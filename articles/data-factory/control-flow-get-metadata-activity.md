@@ -10,14 +10,14 @@ ms.assetid: 1c46ed69-4049-44ec-9b46-e90e964a4a8e
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 04/15/2020
+ms.date: 07/24/2020
 ms.author: jingwang
-ms.openlocfilehash: a59d9291d1eaa4aa87d40914679e39c9cbf29cee
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: a5d203664520aebadefd16c19813d7957dd37fc4
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84112640"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87171255"
 ---
 # <a name="get-metadata-activity-in-azure-data-factory"></a>Aktivität „Metadaten abrufen“ in Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -60,6 +60,7 @@ Die Aktivität „Metadaten abrufen“ nutzt ein Dataset als Eingabe und gibt Me
 - Für Azure Blob Storage gilt `lastModified` für den Container und das Blob, aber nicht für den virtuellen Ordner.
 - Der Filter `lastModified` gilt aktuell für untergeordnete Filterelemente, aber nicht für den angegebenen Ordner bzw. die angegebene Datei selbst.
 - Platzhalterfilter für Ordner/Dateien werden für die Aktivität „Metadaten abrufen" nicht unterstützt.
+- `structure` und `columnCount` werden beim Abrufen von Metadaten aus Binär-, JSON- oder XML-Dateien nicht unterstützt.
 
 **Relationale Datenbank**
 
@@ -137,7 +138,7 @@ Sie können die folgenden Metadatentypen in der Feldliste der Aktivität „Meta
 
 Die Aktivität „Metadaten abrufen“ kann zurzeit die folgenden Arten von Metadateninformationen zurückgeben:
 
-Eigenschaft | BESCHREIBUNG | Erforderlich
+Eigenschaft | Beschreibung | Erforderlich
 -------- | ----------- | --------
 fieldList | Die erforderlichen Arten von Metadateninformationen. Ausführliche Informationen zu unterstützten Metadaten finden Sie im Abschnitt [Metadatenoptionen](#metadata-options) dieses Artikels. | Ja 
 dataset | Das Referenzdataset, dessen Metadaten von der Aktivität „Metadaten abrufen“ abgerufen werden sollen. Weitere Informationen zu unterstützten Connectors finden Sie im Abschnitt [Funktionen](#capabilities). Ausführliche Informationen zur Syntax von Datasets finden Sie in den jeweiligen Connectorthemen. | Ja

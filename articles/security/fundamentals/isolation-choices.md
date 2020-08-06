@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: TomSh
-ms.openlocfilehash: 9cb516b6d13b4b57a89bb276683857c62a758618
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 0bcc67e80861df2827237298444175c3abdb6602
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84021873"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084046"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Isolation in der öffentlichen Azure-Cloud
 
@@ -64,9 +64,9 @@ Das Konzept der Mandantencontainer ist auf allen Ebenen tief in den Verzeichnisd
 
 Auch wenn Metadaten mehrerer Azure Active Directory-Mandanten auf demselben physischen Datenträger gespeichert sind, besteht keine Beziehung zwischen den Containern, sondern es gilt nur, was vom Verzeichnisdienst definiert wird. Dies wird wiederum vom Mandantenadministrator vorgegeben.
 
-### <a name="azure-role-based-access-control-rbac"></a>Rollenbasierte Zugriffssteuerung in Azure
+### <a name="azure-role-based-access-control-azure-rbac"></a>Rollenbasierte Zugriffssteuerung von Azure (Azure RBAC)
 
-Die [rollenbasierte Zugriffssteuerung von Azure](../../role-based-access-control/overview.md) (Role-Based Access Control, RBAC) unterstützt Sie beim Freigeben der unterschiedlichen Komponenten, die in einem Azure-Abonnement verfügbar sind, indem eine präzise Zugriffsverwaltung für Azure ermöglicht wird. Mithilfe von Azure RBAC können Sie die Aufgabenbereiche in Ihrer Organisation unterteilen und den Zugriff jeweils in Abhängigkeit davon gewähren, was Benutzer zum Erledigen ihrer Arbeit benötigen. Anstatt allen Benutzern uneingeschränkte Berechtigungen für das Azure-Abonnement oder Ressourcen zu gewähren, können Sie die Berechtigungen auf bestimmte Aktionen beschränken.
+Die [rollenbasierte Zugriffssteuerung von Azure](../../role-based-access-control/overview.md) (Azure RBAC) unterstützt Sie beim Freigeben der unterschiedlichen Komponenten, die in einem Azure-Abonnement verfügbar sind, indem eine präzise Zugriffsverwaltung für Azure ermöglicht wird. Mithilfe von Azure RBAC können Sie die Aufgabenbereiche in Ihrer Organisation unterteilen und den Zugriff jeweils in Abhängigkeit davon gewähren, was Benutzer zum Erledigen ihrer Arbeit benötigen. Anstatt allen Benutzern uneingeschränkte Berechtigungen für das Azure-Abonnement oder Ressourcen zu gewähren, können Sie die Berechtigungen auf bestimmte Aktionen beschränken.
 
 Azure RBAC verfügt über drei grundlegende Rollen, die für alle Ressourcentypen gelten:
 
@@ -319,4 +319,4 @@ Eine Azure-Bereitstellung umfasst mehrere Stufen der Netzwerkisolation. Das folg
 
 - Erfahren Sie mehr über die [Optionen der Netzwerkisolation für Computer in virtuellen Windows Azure-Netzwerken](https://azure.microsoft.com/blog/network-isolation-options-for-machines-in-windows-azure-virtual-networks/). Dies schließt auch das klassische Front-End- und Back-End-Szenario ein, bei dem Computer in einem bestimmten Back-End-Netzwerk oder Unternetzwerk basierend auf einer Zulassungsliste mit IP-Adressen nur für bestimmte Clients oder andere Computer das Herstellen einer Verbindung mit einem bestimmten Endpunkt zulassen.
 
-- Erfahren Sie mehr über die [Isolation von virtuellen Computern in Azure](../../virtual-machines/windows/isolation.md). Azure Compute bietet VM-Größen, die für einen bestimmten Hardwaretyp isoliert und für einen einzelnen Kunden bestimmt sind.
+- Erfahren Sie mehr über die [Isolation von virtuellen Computern in Azure](../../virtual-machines/isolation.md). Azure Compute bietet VM-Größen, die für einen bestimmten Hardwaretyp isoliert und für einen einzelnen Kunden bestimmt sind.

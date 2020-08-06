@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: carlrab
-ms.date: 3/14/2019
-ms.openlocfilehash: 4cc5ad575b0fbe371d9432668e8ccf43b45ae717
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.date: 7/28/2020
+ms.openlocfilehash: 8cd8dda807b27bc1a83176c6a46596eccfd19073
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84032071"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372092"
 ---
 # <a name="scale-elastic-pool-resources-in-azure-sql-database"></a>Skalieren von Ressourcen für Pools für elastische Datenbanken in Azure SQL-Datenbank
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -56,7 +56,17 @@ Die geschätzte Latenz beim Ändern der Dienstebene oder beim erneuten Skalieren
 >
 > - Beim Ändern der Dienstebene oder Skalieren der Computegröße für einen Pool für elastische Datenbanken muss der verwendete Speicherplatz aller Datenbanken im Pool addiert werden, um die Schätzung zu berechnen.
 > - Wenn eine Datenbank in einen oder aus einem Pool für elastische Datenbanken verschoben wird, ist für die Wartezeit nur der Speicherplatz relevant, der von der Datenbank verwendet wird, nicht der verwendete Speicherplatz des Pools für elastische Datenbanken.
->
+> - Bei Pools für elastische Datenbanken vom Typ „Standard“ und „Universell“ verhält sich die Latenzzeit beim Verschieben einer Datenbank in einen/aus einem Pool für elastische Datenbanken oder zwischen Pools für elastische Datenbanken proportional zur Datenbankgröße, wenn für den Pool für elastische Datenbanken [PFS](https://docs.microsoft.com/azure/storage/files/storage-files-introduction)-Speicher (Premium File Share, Premium-Dateifreigabe) verwendet wird. Um zu ermitteln, ob ein Pool PFS-Speicher verwendet, führen Sie die folgende Abfrage im Kontext einer beliebigen Datenbank im Pool aus. Lautet der Wert in der AccountType-Spalte `PremiumFileStorage`, verwendet der Pool PFS-Speicher.
+
+```sql
+SELECT s.file_id,
+       s.type_desc,
+       s.name,
+       FILEPROPERTYEX(s.name, 'AccountType') AS AccountType
+FROM sys.database_files AS s
+WHERE s.type_desc IN ('ROWS', 'LOG');
+```
+
 > [!TIP]
 > Weitere Informationen zum Überwachen aktuell ausgeführter Vorgänge finden Sie unter: [Verwalten von Vorgängen mit der SQL-REST-API](https://docs.microsoft.com/rest/api/sql/operations/list), [Verwalten von Vorgängen mithilfe der CLI](/cli/azure/sql/db/op), [Überwachen von Vorgängen mit T-SQL](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) und unter diesen beiden PowerShell-Befehlen: [Get-AzSqlDatabaseActivity](/powershell/module/az.sql/get-azsqldatabaseactivity) und [Stop-AzSqlDatabaseActivity](/powershell/module/az.sql/stop-azsqldatabaseactivity).
 

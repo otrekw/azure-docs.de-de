@@ -3,12 +3,12 @@ title: Unterstützung der VMware-Migration in Azure Migrate
 description: Erfahren Sie etwas über die Unterstützung der Migration virtueller VMware-Computer in Azure Migrate.
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: d8a2488e16031a4d960d039d646d9da5de1c1c2e
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 9de0609361e67d5251b25df798b61a4ab13e432c
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223702"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387420"
 ---
 # <a name="support-matrix-for-vmware-migration"></a>Unterstützungsmatrix für die VMware-Migration
 
@@ -41,7 +41,7 @@ In der Tabelle werden die VMware-Hypervisor-Anforderungen zusammengefasst.
 --- | ---
 **VMware vCenter Server** | Version 5.5, 6.0, 6.5 oder 6.7
 **VMware vSphere ESXI-Host** | Version 5.5, 6.0, 6.5 oder 6.7
-**vCenter Server-Berechtigungen** | Bei der Migration ohne Agent wird die [Migrate-Appliance](migrate-appliance.md) verwendet. Für die Appliance sind folgende Berechtigungen in vCenter Server erforderlich:<br/><br/> - **Datastore.Browse:** Ermöglicht das Durchsuchen von VM-Protokolldateien zur Fehlerbehebung bei der Erstellung und Löschung von Momentaufnahmen.<br/><br/> - **Datastore.LowLevelFileOperations**: Ermöglicht Lese-/Schreib-/Lösch-/Umbenennungsvorgänge im Datenspeicherbrowser, um Probleme bei der Erstellung und Löschung von Momentaufnahmen zu beheben.<br/><br/> - **VirtualMachine.Configuration.DiskChangeTracking:** Ermöglicht die Aktivierung oder Deaktivierung der Änderungsverfolgung von VM-Datenträgern, um geänderte Datenblöcke zwischen Momentaufnahmen abzurufen.<br/><br/> - **VirtualMachine.Configuration.DiskLease:** Ermöglicht Datenträger-Leasevorgänge für eine VM, damit der Datenträger mit dem VMware vSphere Virtual Disk Development Kit (VDDK) gelesen werden kann.<br/><br/> - **VirtualMachine.Provisioning.AllowDiskAccess**: (insbesondere für vSphere 6.0 und höher) ermöglicht das Öffnen eines Datenträgers auf einem virtuellen Computer für den zufälligen Lesezugriff auf den Datenträger mit dem VDDK.<br/><br/> - **VirtualMachine.Provisioning.AllowReadOnlyDiskAccess:** Ermöglicht das Öffnen eines Datenträgers auf einer VM, damit der Datenträger mit dem VDDK gelesen werden kann.<br/><br/> - **VirtualMachine.Provisioning.AllowDiskRandomAccess**: Ermöglicht das Öffnen eines Datenträgers auf einer VM, damit der Datenträger mit dem VDDK gelesen werden kann.<br/><br/> - **VirtualMachine.Provisioning.AllowVirtualMachineDownload:** Ermöglicht Lesevorgänge für Dateien, die einer VM zugeordnet sind, um die Protokolle herunterzuladen und ggf. Fehler zu beheben.<br/><br/> - **VirtualMachine.SnapshotManagement:*** Ermöglicht das Erstellen und Verwalten von VM-Momentaufnahmen zur Replikation.<br/><br/> - **Virtual Machine.Interaction.Power Off:** Ermöglicht das Ausschalten der VM während der Migration zu Azure.
+**vCenter Server-Berechtigungen** | Bei der Migration ohne Agent wird die [Migrate-Appliance](migrate-appliance.md) verwendet. Für die Appliance sind folgende Berechtigungen in vCenter Server erforderlich:<br/><br/> - **Datastore.Browse:** Ermöglicht das Durchsuchen von VM-Protokolldateien zur Fehlerbehebung bei der Erstellung und Löschung von Momentaufnahmen.<br/><br/> - **Datastore.LowLevelFileOperations**: Ermöglicht Lese-/Schreib-/Lösch-/Umbenennungsvorgänge im Datenspeicherbrowser, um Probleme bei der Erstellung und Löschung von Momentaufnahmen zu beheben.<br/><br/> - **VirtualMachine.Configuration.DiskChangeTracking:** Ermöglicht die Aktivierung oder Deaktivierung der Änderungsverfolgung von VM-Datenträgern, um geänderte Datenblöcke zwischen Momentaufnahmen abzurufen.<br/><br/> - **VirtualMachine.Configuration.DiskLease:** Ermöglicht Datenträger-Leasevorgänge für eine VM, damit der Datenträger mit dem VMware vSphere Virtual Disk Development Kit (VDDK) gelesen werden kann.<br/><br/> - **VirtualMachine.Provisioning.DiskAccess**: (insbesondere für vSphere 6.0 und höher) ermöglicht das Öffnen eines Datenträgers auf einem virtuellen Computer für den zufälligen Lesezugriff auf den Datenträger mit dem VDDK.<br/><br/> - **VirtualMachine.Provisioning.ReadOnlyDiskAccess**: Ermöglicht das Öffnen eines Datenträgers auf einer VM, damit der Datenträger mit dem VDDK gelesen werden kann.<br/><br/> - **VirtualMachine.Provisioning.DiskRandomAccess**: Ermöglicht das Öffnen eines Datenträgers auf einer VM, damit der Datenträger mit dem VDDK gelesen werden kann.<br/><br/> - **VirtualMachine.Provisioning.VirtualMachineDownload**: Ermöglicht Lesevorgänge für Dateien, die einer VM zugeordnet sind, um die Protokolle herunterzuladen und ggf. Fehler zu beheben.<br/><br/> - **VirtualMachine.SnapshotManagement.\*** : Ermöglicht das Erstellen und Verwalten von VM-Momentaufnahmen zur Replikation.<br/><br/> - **Virtual Machine.Interaction.Power Off:** Ermöglicht das Ausschalten der VM während der Migration zu Azure.
 
 
 

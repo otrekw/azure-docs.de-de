@@ -4,18 +4,18 @@ description: Dieser Artikel enthält die Voraussetzungen für die Verwendung von
 author: msmbaldwin
 ms.service: virtual-machines-linux
 ms.subservice: security
-ms.topic: article
+ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: dbd44c5a90a656b804ff4e3bb9984a059ec3a89a
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: c85d362f7295e8edef1b4070a779c6aa99c3991f
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135420"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372636"
 ---
-# <a name="azure-disk-encryption-with-azure-ad-previous-release"></a>Azure Disk Encryption mit Azure AD (vorherige Version)
+# <a name="azure-disk-encryption-with-azure-active-directory-ad-previous-release"></a>Azure Disk Encryption mit Azure Active Directory (AD) (vorherige Version)
 
 Beim neuen Release von Azure Disk Encryption muss kein Azure AD-Anwendungsparameter (Azure Active Directory) mehr angegeben werden, um die VM-Datenträgerverschlüsselung zu aktivieren. Sie müssen beim neuen Release während des Schritts zum Aktivieren der Verschlüsselung keine Azure AD-Anmeldeinformationen mehr angeben. Alle neuen virtuellen Computer müssen mit dem neuen Release und ohne die Azure AD-Anwendungsparameter verschlüsselt werden. Eine Anleitung zum Aktivieren der VM-Datenträgerverschlüsselung mit dem neuen Release finden Sie unter [Azure Disk Encryption für Linux-VMs](disk-encryption-overview.md). Virtuelle Computer, die bereits mit Azure AD-Anwendungsparametern verschlüsselt wurden, werden weiterhin unterstützt und sollten weiterhin mit der AAD-Syntax gepflegt werden.
 
@@ -47,9 +47,9 @@ Virtuelle IaaS-Computer (Infrastructure-as-a-Service) müssen die folgenden Anfo
   ```
 
 ### <a name="group-policy"></a>Gruppenrichtlinie
- - Die Azure Disk Encryption-Lösung verwendet für virtuelle Windows-IaaS-Computer die externe BitLocker-Schlüsselschutzvorrichtung. Pushen Sie für in eine Domäne eingebundene virtuelle Computer keine Gruppenrichtlinien, die TPM-Schutzvorrichtungen erzwingen. Informationen zur Gruppenrichtlinie für die Option **BitLocker ohne kompatibles TPM zulassen** finden Sie in der [Referenz zur BitLocker-Gruppenrichtlinie](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings#bkmk-unlockpol1).
+ - Die Azure Disk Encryption-Lösung verwendet für virtuelle Windows-IaaS-Computer die externe BitLocker-Schlüsselschutzvorrichtung. Pushen Sie für in eine Domäne eingebundene virtuelle Computer keine Gruppenrichtlinien, die TPM-Schutzvorrichtungen erzwingen. Informationen zur Gruppenrichtlinie für die Option **BitLocker ohne kompatibles TPM zulassen** finden Sie in der [Referenz zur BitLocker-Gruppenrichtlinie](/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings#bkmk-unlockpol1).
 
-- Die BitLocker-Richtlinie für in eine Domäne eingebundene virtuelle Computer mit benutzerdefinierter Gruppenrichtlinie muss die folgende Einstellung enthalten: [Speichern von BitLocker-Wiederherstellungsinformationen durch Benutzer konfigurieren -> 256-Bit-Wiederherstellungsschlüssel zulassen](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings). Wenn Einstellungen für die benutzerdefinierte Gruppenrichtlinie nicht mit BitLocker kompatibel sind, tritt für Azure Disk Encryption ein Fehler auf. Auf Computern ohne korrekte Richtlinieneinstellung müssen Sie die neue Richtlinie anwenden und die Aktualisierung der neuen Richtlinie erzwingen (gpupdate.exe /force). Danach ist möglicherweise ein Neustart erforderlich. 
+- Die BitLocker-Richtlinie für in eine Domäne eingebundene virtuelle Computer mit benutzerdefinierter Gruppenrichtlinie muss die folgende Einstellung enthalten: [Speichern von BitLocker-Wiederherstellungsinformationen durch Benutzer konfigurieren -> 256-Bit-Wiederherstellungsschlüssel zulassen](/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings). Wenn Einstellungen für die benutzerdefinierte Gruppenrichtlinie nicht mit BitLocker kompatibel sind, tritt für Azure Disk Encryption ein Fehler auf. Auf Computern ohne korrekte Richtlinieneinstellung müssen Sie die neue Richtlinie anwenden und die Aktualisierung der neuen Richtlinie erzwingen (gpupdate.exe /force). Danach ist möglicherweise ein Neustart erforderlich. 
 
 ## <a name="encryption-key-storage-requirements"></a>Speicheranforderungen für Verschlüsselungsschlüssel 
 

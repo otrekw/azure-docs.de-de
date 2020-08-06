@@ -3,12 +3,12 @@ title: Bewerten einer großen Anzahl von VMware-VMs für die Migration zu Azure 
 description: Erfahren Sie, wie Sie eine große Anzahl von VMware-VMs mithilfe des Azure Migrate-Diensts für die Migration zu Azure bewerten.
 ms.topic: how-to
 ms.date: 03/23/2020
-ms.openlocfilehash: d404583b1bad474a5e24e8c7cf060aeb80d610bc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6490a5448bb68dcccd61784d149e9765107400c2
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80336851"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87171916"
 ---
 # <a name="assess-large-numbers-of-vmware-vms-for-migration-to-azure"></a>Bewerten einer großen Anzahl von VMware-VMs für die Migration zu Azure
 
@@ -34,8 +34,10 @@ Bei der Planung für die Bewertung einer großen Anzahl von VMware-VMs sind eini
 
 - **Planen von Azure Migrate-Projekten**: Finden Sie heraus, wie Azure Migrate-Projekte bereitgestellt werden. Wenn sich Ihre Rechenzentren beispielsweise in verschiedenen geografischen Regionen befinden oder Sie ermittlungs-, bewertungs- oder migrationsspezifische Metadaten in einer anderen geografischen Region speichern müssen, benötigen Sie möglicherweise mehrere Projekte. 
 - **Planen von Appliances**: Azure Migrate verwendet für die kontinuierliche Erkennung von VMs eine lokale Azure Migrate-Appliance, die als VMware-VM bereitgestellt wird. Die Appliance überwacht Umgebungsänderungen wie z.B. das Hinzufügen von VMs, Datenträgern oder Netzwerkadaptern. Sie sendet außerdem deren Meta- und Leistungsdaten an Azure. Sie müssen herausfinden, wie viele Appliances Sie bereitstellen sollten.
-- **Planen von Konten für die Ermittlung:** Die Azure Migrate-Appliance verwendet ein Konto mit Zugriff auf vCenter Server, um VMs für die Bewertung und Migration zu ermitteln. Wenn Sie mehr als 10.000 VMs ermitteln, richten Sie mehrere Konten ein.
+- **Planen von Konten für die Ermittlung:** Die Azure Migrate-Appliance verwendet ein Konto mit Zugriff auf vCenter Server, um VMs für die Bewertung und Migration zu ermitteln. Wenn Sie mehr als 10.000 VMs entdecken, richten Sie mehrere Konten ein, da es keine Überlappungen zwischen VMs gibt, die von zwei beliebigen Appliances in einem Projekt entdeckt wurden. 
 
+> [!NOTE]
+> Wenn Sie mehrere Appliances einrichten, stellen Sie sicher, dass es keine Überlappungen zwischen den VMs der bereitgestellten vCenter-Konten gibt. Eine Entdeckung mit einer solchen Überlappung ist ein nicht unterstütztes Szenario. Wenn eine VM von mehr als einer Appliance erkannt wird, führt dies zu Duplikaten bei der Erkennung und zu Problemen, während gleichzeitig die Replikation für die VM über das Azure-Portal bei der Servermigration ermöglicht wird.
 
 ## <a name="planning-limits"></a>Planen von Einschränkungen
  
@@ -52,11 +54,12 @@ In Anbetracht dieser Einschränkungen sind hier einige Beispiele für Bereitstel
 
 
 **vCenter-Server** | **VMs auf Server** | **Empfehlung** | **Aktion**
----|---|---
+---|---|---|---
 Eine | < 10.000 | Ein Azure Migrate-Projekt<br/> Eine Appliance<br/> Ein vCenter-Konto für die Ermittlung | Richten Sie die Appliance ein, und stellen Sie eine Verbindung mit vCenter Server mit einem Konto her.
-Eine | > 10.000 | Ein Azure Migrate-Projekt<br/> Mehrere Appliances<br/> Mehrere vCenter-Konten | Richten Sie eine Appliance für je 10.000 VMs ein.<br/><br/> Richten Sie vCenter-Konten ein, und teilen Sie das Inventar auf, um den Zugriff auf ein Konto auf weniger als 10.000 VMs zu beschränken.<br/> Stellen Sie für jede Appliance eine Verbindung mit der vCenter Server-Instanz mit einem Konto her.<br/> Sie können Abhängigkeiten zwischen Computern analysieren, die mit unterschiedlichen Appliances ermittelt wurden.
+Eine | > 10.000 | Ein Azure Migrate-Projekt<br/> Mehrere Appliances<br/> Mehrere vCenter-Konten | Richten Sie eine Appliance für je 10.000 VMs ein.<br/><br/> Richten Sie vCenter-Konten ein, und teilen Sie das Inventar auf, um den Zugriff auf ein Konto auf weniger als 10.000 VMs zu beschränken.<br/> Stellen Sie für jede Appliance eine Verbindung mit der vCenter Server-Instanz mit einem Konto her.<br/> Sie können Abhängigkeiten zwischen Computern analysieren, die mit unterschiedlichen Appliances ermittelt wurden. <br/> <br/> Stellen Sie sicher, dass es keine Überlappungen zwischen den VMs auf den bereitgestellten vCenter-Konten gibt. Eine Entdeckung mit einer solchen Überlappung ist ein nicht unterstütztes Szenario. Wenn ein virtueller Computer von mehreren Geräten erkannt wird, führt dies zu einem Duplikat bei der Ermittlung und bei Problemen beim Aktivieren der Replikation für den virtuellen Computer mithilfe des Azure-Portal in der Server Migration.
 Mehrere | < 10.000 |  Ein Azure Migrate-Projekt<br/> Mehrere Appliances<br/> Ein vCenter-Konto für die Ermittlung | Richten Sie Appliances ein, und stellen Sie eine Verbindung mit vCenter Server mit einem Konto her.<br/> Sie können Abhängigkeiten zwischen Computern analysieren, die mit unterschiedlichen Appliances ermittelt wurden.
-Mehrere | > 10.000 | Ein Azure Migrate-Projekt<br/> Mehrere Appliances<br/> Mehrere vCenter-Konten | Wenn die vCenter Server-Ermittlung weniger als 10.000 VMs umfasst, richten Sie für jede vCenter Server-Instanz eine Appliance ein.<br/><br/> Wenn die vCenter Server-Ermittlung mehr als 10.000 VMs umfasst, richten Sie eine Appliance für je 10.000 VMs ein.<br/> Richten Sie vCenter-Konten ein, und teilen Sie das Inventar auf, um den Zugriff auf ein Konto auf weniger als 10.000 VMs zu beschränken.<br/> Stellen Sie für jede Appliance eine Verbindung mit der vCenter Server-Instanz mit einem Konto her.<br/> Sie können Abhängigkeiten zwischen Computern analysieren, die mit unterschiedlichen Appliances ermittelt wurden.
+Mehrere | > 10.000 | Ein Azure Migrate-Projekt<br/> Mehrere Appliances<br/> Mehrere vCenter-Konten | Wenn die vCenter Server-Ermittlung weniger als 10.000 VMs umfasst, richten Sie für jede vCenter Server-Instanz eine Appliance ein.<br/><br/> Wenn die vCenter Server-Ermittlung mehr als 10.000 VMs umfasst, richten Sie eine Appliance für je 10.000 VMs ein.<br/> Richten Sie vCenter-Konten ein, und teilen Sie das Inventar auf, um den Zugriff auf ein Konto auf weniger als 10.000 VMs zu beschränken.<br/> Stellen Sie für jede Appliance eine Verbindung mit der vCenter Server-Instanz mit einem Konto her.<br/> Sie können Abhängigkeiten zwischen Computern analysieren, die mit unterschiedlichen Appliances ermittelt wurden. <br/><br/> Stellen Sie sicher, dass es keine Überlappungen zwischen den VMs auf den bereitgestellten vCenter-Konten gibt. Eine Entdeckung mit einer solchen Überlappung ist ein nicht unterstütztes Szenario. Wenn ein virtueller Computer von mehreren Geräten erkannt wird, führt dies zu einem Duplikat bei der Ermittlung und bei Problemen beim Aktivieren der Replikation für den virtuellen Computer mithilfe des Azure-Portal in der Server Migration.
+
 
 
 ## <a name="plan-discovery-in-a-multi-tenant-environment"></a>Planen der Ermittlung in einer Umgebung mit mehreren Mandanten

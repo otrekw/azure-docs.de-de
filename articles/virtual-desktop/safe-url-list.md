@@ -5,15 +5,15 @@ services: virtual-desktop
 author: heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 07/10/2020
+ms.date: 07/15/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 9b1bdfc326ff217e68785d823b4af046af3241b7
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 9f7a3b51afa11562123a280da8634e100a22e6b6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86224960"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075613"
 ---
 # <a name="safe-url-list"></a>Liste der sicheren URLs
 
@@ -33,6 +33,7 @@ Die virtuellen Azure-Computer, die Sie für Windows Virtual Desktop erstellen, m
 |catalogartifact.azureedge.net|443|Azure Marketplace|AzureCloud|
 |kms.core.windows.net|1688|Aktivierung von Windows|Internet|
 |wvdportalstorageblob.blob.core.windows.net|443|Unterstützung des Azure-Portals|AzureCloud|
+| 169.254.169.254 | 80 | [Azure-Instanzmetadatendienst-Endpunkt](../virtual-machines/windows/instance-metadata-service.md) | – |
 
 >[!IMPORTANT]
 >Windows Virtual Desktop unterstützt jetzt das FQDN-Tag. Weitere Informationen finden Sie unter [Verwenden von Azure Firewall zum Schutz von Windows Virtual Desktop-Bereitstellungen](../firewall/protect-windows-virtual-desktop.md).
@@ -59,8 +60,8 @@ In der folgenden Tabelle sind optionale URLs aufgeführt, auf die Ihre virtuelle
 >Sie müssen das Platzhalterzeichen (*) für URLs für Dienstdatenverkehr verwenden. Wenn Sie kein Platzhalterzeichen (*) für Agent-Datenverkehr verwenden möchten, ermitteln Sie wie folgt die URLs ohne Platzhalter:
 >
 >1. Registrieren Sie Ihre virtuellen Computer für den Windows Virtual Desktop-Hostpool.
->2. Öffnen Sie die **Ereignisanzeige**, navigieren Sie dann zu **Windows-Protokolle** > **Anwendung** > **WVD-Agent**, und suchen Sie nach der Ereignis-ID 3702.
->3. Nehmen Sie die URLs, die Sie unter der Ereignis-ID 3702 finden, in eine Whitelist auf. Die URLs unter der Ereignis-ID 3702 sind regionsspezifisch. Sie müssen den Freigabeprozess mit den relevanten URLs für jede Region wiederholen, in der Sie Ihre virtuellen Computer bereitstellen möchten.
+>2. Öffnen Sie die **Ereignisanzeige**, navigieren Sie dann zu **Windows-Protokolle** > **Anwendung** > **WVD-Agent**, und suchen Sie nach der Ereignis-ID 3701.
+>3. Nehmen Sie die URLs, die Sie unter der Ereignis-ID 3701 finden, in eine Whitelist auf. Die URLs unter der Ereignis-ID 3701 sind regionsspezifisch. Sie müssen den Freigabeprozess mit den relevanten URLs für jede Region wiederholen, in der Sie Ihre virtuellen Computer bereitstellen möchten.
 
 ## <a name="remote-desktop-clients"></a>Remotedesktopclients
 

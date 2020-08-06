@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e0498a2015b75221763ab5fdd4f6e94428922bd6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e6238e89b3941668f831f3128bb0e723a4097e48
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85386741"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87027511"
 ---
 # <a name="add-an-api-connector-to-a-user-flow"></a>Hinzufügen eines API-Connectors zu einem Benutzerflow
 
@@ -76,7 +76,7 @@ POST <API-endpoint>
 Content-type: application/json
 
 {
- "email_address": "johnsmith@fabrikam.onmicrosoft.com",
+ "email": "johnsmith@fabrikam.onmicrosoft.com",
  "identities": [ //Sent for Google and Facebook identity providers
      {
      "signInType":"federated",
@@ -99,7 +99,7 @@ Wenn ein zu sendender Anspruch zum Zeitpunkt des Aufrufs des API-Endpunkts keine
 Für den Benutzer können benutzerdefinierte Attribute im Format **extension_\<extensions-app-id>_AttributeName** erstellt werden. Die API sollte den Empfang von Ansprüchen in diesem serialisierten Format erwarten. Die API kann Ansprüche mit oder ohne `<extensions-app-id>` zurückgeben. Weitere Informationen zu benutzerdefinierten Attributen finden Sie unter [Definieren von benutzerdefinierten Attributen für Self-Service-Registrierungsflows](user-flow-add-custom-attributes.md).
 
 > [!TIP] 
-> Die Ansprüche [**Identitäten („identities“)** ](https://docs.microsoft.com/graph/api/resources/objectidentity?view=graph-rest-1.0) und **E-Mail-Adresse („email_address“)** können verwendet werden, um einen Benutzer zu identifizieren, bevor er über ein Konto in Ihrem Mandanten verfügt. Der Anspruch „identities“ wird gesendet, wenn sich ein Benutzer mit einem Google- oder Facebook-Konto authentifiziert. „email_address“ wird immer gesendet.
+> Mit den Ansprüchen [**Identitäten („identities“)** ](https://docs.microsoft.com/graph/api/resources/objectidentity?view=graph-rest-1.0) und **E-Mail-Adresse („email“)** können Sie einen Benutzer identifizieren, bevor er über ein Konto in Ihrem Mandanten verfügt. Der Anspruch „identities“ wird gesendet, wenn sich ein Benutzer mit einem Google- oder Facebook-Konto authentifiziert. Der Anspruch „email“ wird immer gesendet.
 
 ## <a name="expected-response-types-from-the-web-api"></a>Erwartete Antworttypen von der Web-API
 
@@ -138,13 +138,13 @@ Content-type: application/json
 | version                                            | String            | Ja      | Die Version der API.                                                                                                                                                                                                                                                                |
 | action                                             | String            | Ja      | Der Wert muss `Continue` sein.                                                                                                                                                                                                                                                              |
 | \<builtInUserAttribute>                            | \<attribute-type> | Nein       | Werte können im Verzeichnis gespeichert werden, wenn sie als **zu empfangender Anspruch** in der API-Connector-Konfiguration und als **Benutzerattribute** für einen Benutzerflow ausgewählt sind. Werte können im Token zurückgegeben werden, wenn sie als **Anwendungsanspruch** ausgewählt sind.                                              |
-| \<extension\_{extensions-app-id}\_CustomAttribute> | \<attribute-type> | Nein       | Der zurückgegebene Anspruch kann optional `_<extensions-app-id>_` nicht enthalten. Werte werden im Verzeichnis gespeichert, wenn sie als **zu empfangender Anspruch** in der API-Connector-Konfiguration und als **Benutzerattribute** für einen Benutzerflow ausgewählt sind. Benutzerdefinierte Attribute können im Token nicht zurückgesendet werden. |
+| \<extension\_{extensions-app-id}\_CustomAttribute> | \<attribute-type> | Nein       | Der zurückgegebene Anspruch muss `_<extensions-app-id>_` nicht enthalten. Werte werden im Verzeichnis gespeichert, wenn sie als **zu empfangender Anspruch** in der API-Connector-Konfiguration und als **Benutzerattribute** für einen Benutzerflow ausgewählt sind. Benutzerdefinierte Attribute können im Token nicht zurückgesendet werden. |
 
 ### <a name="blocking-response"></a>Blockierungsantwort
 
 Eine Blockierungsantwort beendet den Benutzerflow. Sie kann von der API absichtlich ausgegeben werden, um die Fortsetzung des Benutzerflows zu beenden, indem für den Benutzer eine Blockierungsseite angezeigt wird. Auf der Blockierungsseite wird die von der API angegebene `userMessage` angezeigt.
 
-Beispiel für eine Blockierungsantwort
+Beispiel für eine Blockierungsanwort:
 
 ```http
 HTTP/1.1 200 OK

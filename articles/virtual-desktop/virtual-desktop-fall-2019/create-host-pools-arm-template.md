@@ -1,6 +1,6 @@
 ---
-title: 'Windows Virtual Desktop-Hostpool in Azure Resource Manager: Azure'
-description: Beschreibt, wie Sie in Windows Virtual Desktop mit einer Azure Resource Manager-Vorlage einen Hostpool erstellen.
+title: 'Windows Virtual Desktop-Hostpool (klassisch) in Azure Resource Manager: Azure'
+description: Beschreibt, wie Sie in Windows Virtual Desktop (klassisch) mit einer Azure Resource Manager-Vorlage einen Hostpool erstellen.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,17 +8,17 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 925d3ab7c01ef8dc4a2c5d590a56b4d558170472
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 88027db54f9b7d4a7ef2ef32d4ea0434d8a26a10
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85204760"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87270259"
 ---
-# <a name="create-a-host-pool-with-an-azure-resource-manager-template"></a>Erstellen eines Hostpools mit einer Azure Resource Manager-Vorlage
+# <a name="create-a-host-pool-in-windows-virtual-desktop-classic-with-an-azure-resource-manager-template"></a>Erstellen eines Windows Virtual Desktop-Hostpools (klassisch) mit einer Azure Resource Manager-Vorlage
 
 >[!IMPORTANT]
->Dieser Inhalt gilt für die Version Herbst 2019, die Windows Virtual Desktop-Objekte in Azure Resource Manager nicht unterstützt.
+>Dieser Inhalt gilt für Windows Virtual Desktop (klassisch). Der Dienst unterstützt keine Windows Virtual Desktop-Objekte in Azure Resource Manager.
 
 Hostpools sind eine Sammlung identischer virtueller Computer innerhalb von Windows Virtual Desktop-Mandantenumgebungen. Jeder Hostpool kann eine App-Gruppe enthalten, mit der Benutzer genau wie auf einem physischen Desktop interagieren können.
 

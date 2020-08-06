@@ -5,12 +5,12 @@ description: Hier erfahren Sie, wie Sie die Dienstprinzipal- oder AAD-Anwendungs
 services: container-service
 ms.topic: article
 ms.date: 03/11/2019
-ms.openlocfilehash: a9cc19184cc39975cce18d17a6047bedf5915555
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: a824606bc0e77ba069b6b54725645ee3f348de27
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86251025"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386927"
 ---
 # <a name="update-or-rotate-the-credentials-for-azure-kubernetes-service-aks"></a>Aktualisieren oder Rotieren der Anmeldeinformationen für Azure Kubernetes Service (AKS)
 
@@ -28,8 +28,10 @@ Azure CLI-Version 2.0.65 oder höher muss installiert und konfiguriert sein. Fü
 
 Wenn Sie die Anmeldeinformationen für einen AKS-Cluster aktualisieren möchten, haben Sie folgende Möglichkeiten:
 
-* Aktualisieren der Anmeldeinformationen für den vorhandenen, vom Cluster verwendeten Dienstprinzipal ODER
-* Erstellen eines Dienstprinzipals und Aktualisieren des Clusters zur Verwendung der neuen Anmeldeinformationen
+* Aktualisieren der Anmeldeinformationen für den vorhandenen Dienstprinzipal.
+* Erstellen eines neuen Dienstprinzipals und Aktualisieren des Clusters zur Verwendung der neuen Anmeldeinformationen. 
+
+> ![WARNUNG] Wenn Sie sich dafür entscheiden, einen *neuen* Dienstprinzipal zu erstellen, kann die Aktualisierung eines großen AKS-Clusters zur Verwendung dieser Anmeldeinformationen sehr viel Zeit in Anspruch nehmen.
 
 ### <a name="check-the-expiration-date-of-your-service-principal"></a>Überprüfen des Ablaufdatums Ihres Dienstprinzipals
 
@@ -41,7 +43,7 @@ SP_ID=$(az aks show --resource-group myResourceGroup --name myAKSCluster \
 az ad sp credential list --id $SP_ID --query "[].endDate" -o tsv
 ```
 
-### <a name="reset-existing-service-principal-credential"></a>Zurücksetzen der vorhandenen Dienstprinzipal-Anmeldeinformationen
+### <a name="reset-the-existing-service-principal-credential"></a>Zurücksetzen der vorhandenen Dienstprinzipal-Anmeldeinformationen
 
 Um die Anmeldeinformationen für den vorhandenen Dienstprinzipal zu aktualisieren, rufen Sie über den Befehl [az aks show][az-aks-show] die Dienstprinzipal-ID für Ihren Cluster ab. Im folgenden Beispiel wird die ID für den Cluster *myAKSCluster* in der Ressourcengruppe *myResourceGroup* abgerufen. Die Dienstprinzipal-ID wird als Variable mit dem Namen *SP_ID* zur Verwendung in einem zusätzlichen Befehl festgelegt. Diese Befehle verwenden die Bash-Syntax.
 
@@ -90,6 +92,9 @@ Setzen Sie jetzt den Vorgang anhand des Abschnitts [Aktualisieren des AKS-Cluste
 
 ## <a name="update-aks-cluster-with-new-service-principal-credentials"></a>Aktualisieren des AKS-Clusters mit neuen Dienstprinzipal-Anmeldeinformationen
 
+> [!IMPORTANT]
+> Bei großen Clustern kann die Aktualisierung des AKS-Clusters mit einem neuen Dienstprinzipal viel Zeit in Anspruch nehmen.
+
 Aktualisieren Sie nun unabhängig davon, ob Sie die Anmeldeinformationen für den vorhandenen Dienstprinzipal aktualisieren oder einen Dienstprinzipal erstellen, den AKS-Cluster mit Ihren neuen Anmeldeinformationen. Verwenden Sie dazu den Befehl[az aks update-credentials][az-aks-update-credentials]. Es werden die Variablen für *--service-principal* und *--client-secret* verwendet:
 
 ```azurecli-interactive
@@ -101,11 +106,11 @@ az aks update-credentials \
     --client-secret "$SP_SECRET"
 ```
 
-Es dauert einige Augenblicke, bis die Anmeldeinformationen für den Dienstprinzipal in AKS aktualisiert werden.
+Bei kleinen und mittelgroßen Clustern dauert es einige Augenblicke, bis die Anmeldeinformationen für den Dienstprinzipal in AKS aktualisiert werden.
 
 ## <a name="update-aks-cluster-with-new-aad-application-credentials"></a>Aktualisieren eines AKS-Clusters mit neuen AAD-Anwendungs-Anmeldeinformationen
 
-Sie können neue AAD-Server- und -Clientanwendungen erstellen, indem Sie die [Schritte für die AAD-Integration][create-aad-app] ausführen. Oder setzen Sie Ihre vorhandenen AAD-Anwendungen durch Ausführung [derselben Methode wie beim Zurücksetzen des Dienstprinzipals](#reset-existing-service-principal-credential) zurück. Danach müssen Sie nur noch die Anmeldeinformationen für Ihre Cluster-AAD-Anwendung mit dem gleichen [az aks update-credentials][az-aks-update-credentials]-Befehl aktualisieren, allerdings dabei die Variablen *–reset-aad* verwenden.
+Sie können neue AAD-Server- und -Clientanwendungen erstellen, indem Sie die [Schritte für die AAD-Integration][create-aad-app] ausführen. Oder setzen Sie Ihre vorhandenen AAD-Anwendungen durch Ausführung [derselben Methode wie beim Zurücksetzen des Dienstprinzipals](#reset-the-existing-service-principal-credential) zurück. Danach müssen Sie nur noch die Anmeldeinformationen für Ihre Cluster-AAD-Anwendung mit dem gleichen [az aks update-credentials][az-aks-update-credentials]-Befehl aktualisieren, allerdings dabei die Variablen *–reset-aad* verwenden.
 
 ```azurecli-interactive
 az aks update-credentials \

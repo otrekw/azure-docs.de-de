@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.author: memildin
-ms.openlocfilehash: f7aca2820e599c4f3dad364f1ea14eadc634a548
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: c6a779deef3ed1dc0a4d5e83c38f483776adf6fe
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86519713"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387369"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Datensammlung in Azure Security Center
 Security Center sammelt Daten von Ihren virtuellen Azure-Computern (VMs), VM-Skalierungsgruppen, IaaS-Containern und Azure-fremden Computern (auch lokal), um sie auf Sicherheitslücken und Bedrohungen zu überwachen. Die Daten werden mit dem Log Analytics-Agent gesammelt. Der Agent liest verschiedene sicherheitsrelevante Konfigurationen und Ereignisprotokolle auf dem Computer und kopiert die Daten zur Analyse in den Arbeitsbereich. Beispiele für Daten dieser Art: Betriebssystemtyp und -version, Betriebssystemprotokolle (Windows-Ereignisprotokolle), ausgeführte Prozesse, Computername, IP-Adressen und angemeldeter Benutzer.
@@ -211,15 +211,17 @@ Security Center installiert die Log Analytics-Agent-Erweiterung parallel zum vor
     - Wenn Sie über eine Umgebung verfügen, in der der Log Analytics-Agent auf Clientarbeitsstationen installiert ist und an einen vorhandenen Log Analytics-Arbeitsbereich berichtet, überprüfen Sie die Liste der [von Azure Security Center unterstützten Betriebssysteme](security-center-os-coverage.md), um sicherzustellen, dass Ihr Betriebssystem unterstützt wird. Weitere Informationen finden Sie unter [Log Analytics-Bestandskunden](./faq-azure-monitor-logs.md).
  
 ### <a name="turn-off-automatic-provisioning"></a>Deaktivieren der automatischen Bereitstellung <a name="offprovisioning"></a>
-Sie können die automatische Bereitstellung in Ressourcen jederzeit deaktivieren, indem Sie diese Einstellung in der Sicherheitsrichtlinie deaktivieren. 
+So deaktivieren Sie die automatische Bereitstellung des Log Analytics-Agents:
 
+1. Wählen Sie im Portal im Security Center-Menü **Preise & Einstellungen** aus.
+2. Wählen Sie das relevante Abonnement aus.
 
-1. Kehren Sie zum Hauptmenü von Security Center zurück, und klicken Sie auf die Sicherheitsrichtlinie.
-2. Klicken Sie in der Zeile des Abonnements, für das Sie die automatische Bereitstellung deaktivieren möchten, **Einstellungen bearbeiten>** aus.
-3. Wählen Sie auf der Seite **Sicherheitsrichtlinie – Datensammlung** unter **Automatische Bereitstellung** die Option **Aus** aus.
-4. Wählen Sie **Speichern** aus.
+   ![Auswählen des Abonnements][7]
 
-   ![Deaktivieren der automatischen Bereitstellung][6]
+3. Klicken Sie auf **Datensammlung**.
+4. Wählen Sie unter **Automatische Bereitstellung** die Option **Aus** aus, um die automatische Bereitstellung zu deaktivieren.
+5. Wählen Sie **Speichern** aus. 
+
 
 Wenn die automatische Bereitstellung deaktiviert ist, wird der Abschnitt mit der standardmäßigen Arbeitsbereichskonfiguration nicht angezeigt.
 

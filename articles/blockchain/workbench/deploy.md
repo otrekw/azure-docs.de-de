@@ -1,15 +1,16 @@
 ---
 title: Bereitstellen von Azure Blockchain Workbench Preview
 description: 'Vorgehensweise: Bereitstellen von Azure Blockchain Workbench Preview'
-ms.date: 01/08/2020
+ms.date: 07/16/2020
 ms.topic: how-to
-ms.reviewer: brendal
-ms.openlocfilehash: aaef42f715c9f4fa2550f4a2468b42c5077af14c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.reviewer: ravastra
+ms.custom: references_regions
+ms.openlocfilehash: b46a35b45a51d0cc76942c4ca142c4c7792a28b4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85210762"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077026"
 ---
 # <a name="deploy-azure-blockchain-workbench-preview"></a>Bereitstellen von Azure Blockchain Workbench Preview
 
@@ -45,7 +46,7 @@ Die Kosten für Blockchain Workbench stellen eine Aggregation der Kosten der zug
 Für Azure Blockchain Workbench sind Konfigurationen in Azure AD und Anwendungsregistrierungen vonnöten. Sie können die Azure AD-Konfigurationen vor einer Bereitstellung [manuell](#azure-ad-configuration) durchführen oder ein Skript nach der Bereitstellung ausführen. Wenn Sie Blockchain Workbench erneut bereitstellen, lesen Sie den Abschnitt [Azure AD-Konfiguration](#azure-ad-configuration) zur Überprüfung Ihrer Azure AD-Konfiguration.
 
 > [!IMPORTANT]
-> Workbench muss nicht in demselben Mandanten bereitgestellt werden, den Sie zum Registrieren einer Azure AD-Anwendung verwenden. Workbench muss in einem Mandanten bereitgestellt werden, in dem Sie über ausreichende Berechtigungen zum Bereitstellen von Ressourcen verfügen. Weitere Informationen über Azure AD-Mandanten finden Sie unter [Einrichten eines Azure Active Directory-Mandanten](../../active-directory/develop/quickstart-create-new-tenant.md) und [Integrieren von Anwendungen in Azure Active Directory](../../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md).
+> Workbench muss nicht in demselben Mandanten bereitgestellt werden, den Sie zum Registrieren einer Azure AD-Anwendung verwenden. Workbench muss in einem Mandanten bereitgestellt werden, in dem Sie über ausreichende Berechtigungen zum Bereitstellen von Ressourcen verfügen. Weitere Informationen über Azure AD-Mandanten finden Sie unter [Einrichten eines Azure Active Directory-Mandanten](../../active-directory/develop/quickstart-create-new-tenant.md) und [Integrieren von Anwendungen in Azure Active Directory](../../active-directory/develop/quickstart-register-app.md).
 
 ## <a name="deploy-blockchain-workbench"></a>Bereitstellen von Blockchain Workbench
 
@@ -66,7 +67,7 @@ Wenn die erforderlichen Schritte abgeschlossen sind, können Sie die Blockchain 
     | Kennwort | Das Kennwort wird für die Verbindung mit VMs verwendet. |
     | SSH | Verwenden Sie einen öffentlichen RSA-Schlüssel im einzeiligen Format beginnend mit **ssh-rsa**, oder verwenden Sie das mehrzeilige PEM-Format. Sie können SSH-Schlüssel mit `ssh-keygen` unter Linux und OS X oder mit PuTTYGen unter Windows erzeugen. Weitere Informationen zu SSH-Schlüsseln finden Sie unter [Verwenden von SSH-Schlüsseln mit Windows in Azure](../../virtual-machines/linux/ssh-from-windows.md). |
     | Datenbank- und Blockchain-Kennwort | Geben Sie das Kennwort für den Zugriff auf die im Rahmen der Bereitstellung erstellte Datenbank an. Das Kennwort muss drei der folgenden vier Anforderungen erfüllen: Es muss zwischen 12 und 72 Zeichen lang sein und muss einen Kleinbuchstaben, einen Großbuchstaben, eine Zahl und ein Sonderzeichen beinhalten (nicht zulässig: Raute (#), Prozentzeichen (%), Komma (,), Stern (*), Backquote (\`), doppelte Anführungszeichen ("), einfache Anführungszeichen ('), Bindestriche (-) oder Semikolons (;)). |
-    | Bereitstellungsregion | Geben Sie an, wo die Blockchain Workbench-Ressourcen bereitgestellt werden sollen. Für optimale Verfügbarkeit sollte dies der Einstellung **Ort** entsprechen. |
+    | Bereitstellungsregion | Geben Sie an, wo die Blockchain Workbench-Ressourcen bereitgestellt werden sollen. Für optimale Verfügbarkeit sollte dies der Standorteinstellung **Region** entsprechen. Nicht alle Regionen sind während der Vorschau verfügbar. Features sind unter Umständen in einigen Regionen nicht verfügbar. Azure Blockchain Data Manager ist in den folgenden Azure-Regionen verfügbar: („USA, Osten“ und „Europa, Westen“) ausgeführt werden.|
     | Subscription | Geben Sie das Azure-Abonnement an, das Sie für Ihre Bereitstellung verwenden möchten. |
     | Ressourcengruppen | Erstellen Sie eine Ressourcengruppe, indem Sie **Neu erstellen** auswählen, und geben Sie einen eindeutigen Namen für die Ressourcengruppe ein. |
     | Standort | Geben Sie die Region an, in der Sie das Framework bereitstellen möchten. |
@@ -106,7 +107,7 @@ Wenn die erforderlichen Schritte abgeschlossen sind, können Sie die Blockchain 
      | Azure Active Directory-Einstellungen | Klicken Sie auf **Später hinzufügen**.</br>Hinweis: Wenn Sie [Azure AD vorab konfigurieren](#azure-ad-configuration) möchten oder wenn sie es erneut bereitstellen, klicken Sie auf *Jetzt hinzufügen*. |
      | VM-Auswahl | Wählen Sie die bevorzugte Speicherleistung und VM-Größe für Ihr Blockchainnetzwerk aus. Wählen Sie eine kleinere VM-Größe wie *Standard DS1 v2* aus, wenn Sie ein Abonnement mit niedrigen Dienstlimits verwenden, z.B. den Azure-Free-Tarif. |
 
-1. Klicken Sie auf **OK**, um die Konfiguration der erweiterten Einstellungen abzuschließen.
+1. Wählen Sie **Überprüfen + erstellen** aus, um die erweiterten Einstellungen abzuschließen.
 
 1. Überprüfen Sie die Zusammenfassung, um sicherzustellen, dass die eingegebenen Parameter richtig sind.
 

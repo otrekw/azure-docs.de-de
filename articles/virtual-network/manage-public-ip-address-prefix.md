@@ -1,7 +1,7 @@
 ---
 title: Erstellen, Ändern oder Löschen des Präfix einer öffentlichen Azure-IP-Adresse
 titlesuffix: Azure Virtual Network
-description: Erfahren Sie, wie Sie das Präfix einer öffentlichen IP-Adresse erstellen, ändern oder löschen.
+description: Erfahren Sie mehr über Präfixe öffentlicher IP-Adressen und wo Sie zusätzliche Informationen finden, wenn Sie damit nicht vertraut sind. Erfahren Sie auch, wie Sie ein solches erstellen, ändern oder löschen können.
 services: virtual-network
 documentationcenter: na
 author: asudbring
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/13/2019
 ms.author: allensu
-ms.openlocfilehash: 4eac4a7ecc6febedd205fcde45ea550dd15a6b93
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 85e649944b155fc9e51fe01c282fc7f34f8a00d2
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84703841"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87283162"
 ---
 # <a name="create-change-or-delete-a-public-ip-address-prefix"></a>Erstellen, Ändern oder Löschen des Präfix einer öffentlichen IP-Adresse
 

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 07/10/2020
+ms.date: 07/15/2020
 ms.author: alkohli
-ms.openlocfilehash: 34b1ce42850fcefcc2b0d146e7f33d720fd8062d
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: a99499110951ccbc0458b5ce848930fed9205dad
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86202539"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372010"
 ---
 # <a name="use-the-local-web-ui-to-administer-your-data-box-and-data-box-heavy"></a>Verwalten von Data Box und Data Box Heavy über die lokale Webbenutzeroberfläche
 
@@ -35,7 +35,7 @@ Dieser Artikel enthält folgende Lernprogramme:
 
 Wenn Sie Geräteprobleme haben, können Sie anhand der Systemprotokolle ein Unterstützungspaket erstellen. Der Microsoft-Support verwendet dieses Paket, um das Problem zu beheben. Führen Sie die folgenden Schritte aus, um ein Supportpaket zu generieren:
 
-1. Wechseln Sie auf der lokalen Webbenutzeroberfläche zu **Support kontaktieren**, und klicken Sie auf **Unterstützungspaket erstellen**.
+1. Wechseln Sie in der lokalen Webbenutzeroberfläche zu **Support kontaktieren**, und wählen Sie **Unterstützungspaket erstellen** aus.
 
     ![Unterstützungspaket erstellen 1](media/data-box-local-web-ui-admin/create-support-package-1.png)
 
@@ -43,14 +43,13 @@ Wenn Sie Geräteprobleme haben, können Sie anhand der Systemprotokolle ein Unte
 
     ![Unterstützungspaket erstellen 2](media/data-box-local-web-ui-admin/create-support-package-2.png)
 
-3. Sobald die Erstellung des Unterstützungspakets abgeschlossen ist, klicken Sie auf **Unterstützungspaket herunterladen**. 
+3. Sobald die Erstellung des Unterstützungspakets abgeschlossen ist, wählen Sie **Unterstützungspaket herunterladen** aus.
 
     ![Unterstützungspaket erstellen 4](media/data-box-local-web-ui-admin/create-support-package-4.png)
 
 4. Navigieren Sie zum Speicherort des Downloads. Öffnen Sie den Ordner, um den Inhalt anzuzeigen.
 
     ![Unterstützungspaket erstellen 5](media/data-box-local-web-ui-admin/create-support-package-5.png)
-
 
 ## <a name="shut-down-or-restart-your-device"></a>Herunterfahren oder Neustarten des Geräts
 
@@ -59,7 +58,7 @@ Sie können Ihr Gerät über die lokale Webbenutzeroberfläche herunterfahren od
 Führen Sie die folgenden Schritte aus, um Ihr Gerät herunterzufahren.
 
 1. Wechseln Sie auf der lokalen Webbenutzeroberfläche zu **Herunterfahren oder neu starten**.
-2. Klicken Sie auf **Herunterfahren**.
+2. Wählen Sie **Herunterfahren** aus.
 
     ![Data Box herunterfahren 1](media/data-box-local-web-ui-admin/shut-down-local-web-ui-1.png)
 
@@ -72,7 +71,7 @@ Sobald das Gerät heruntergefahren ist, schalten Sie es über den Netzschalter a
 Führen Sie zum Neustarten Ihres Data Box-Geräts die folgenden Schritte aus.
 
 1. Wechseln Sie auf der lokalen Webbenutzeroberfläche zu **Herunterfahren oder neu starten**.
-2. Klicken Sie auf **Restart**.
+2. Wählen Sie **Neu starten** aus.
 
     ![Data Box neu starten 1](media/data-box-local-web-ui-admin/restart-local-web-ui-1.png)
 
@@ -90,9 +89,9 @@ Stellen Sie zunächst sicher, dass für Ihr Gerät der Schritt **Versandvorberei
 
     ![Gerät bereit für den Versand](media/data-box-portal-admin/ready-to-ship.png)
 
-2. Klicken Sie auf **Dateiliste herunterladen**, um die Liste der Dateien herunterzuladen, die auf Ihre Data Box kopiert wurden.
+2. Wählen Sie **Dateiliste herunterladen** aus, um die Liste der Dateien herunterzuladen, die auf Ihre Data Box kopiert wurden.
 
-    ![Klicken auf „Dateiliste herunterladen“](media/data-box-portal-admin/download-list-of-files.png)
+    ![Wählen Sie „Dateiliste herunterladen“ aus.](media/data-box-portal-admin/download-list-of-files.png)
 
 3. Sie sehen im Datei-Explorer, dass eine separate Dateiliste generiert wird. Ausschlaggebend hierfür sind das Protokoll, das für die Verbindungsherstellung mit dem Gerät verwendet wird, und der verwendete Azure Storage-Typ.
 
@@ -179,10 +178,51 @@ Es wird dringend empfohlen, die Prüfsumme nicht zu deaktivieren, es sei denn, d
     ![Prüfsumme deaktivieren](media/data-box-local-web-ui-admin/disable-checksum.png)
 
 2. **Deaktivieren** Sie die Überprüfung der Prüfsumme.
-3. Klicken Sie auf **Anwenden**.
+3. Wählen Sie **Übernehmen**.
 
 > [!NOTE]
 > Die Option zum Überspringen der Prüfsummenberechnung ist nur verfügbar, wenn das Azure Data Box-Gerät entsperrt ist. Die Option wird nicht angezeigt, wenn das Gerät gesperrt ist.
 
-- Erfahren Sie mehr zum [Verwalten von Data Box und Data Box Heavy im Azure-Portal](data-box-portal-admin.md).
+## <a name="enable-smb-signing"></a>Aktivieren von SMB-Signaturen
 
+Mithilfe der Funktion für SMB-Signaturen (Server Message Block) kann die Kommunikation unter Verwendung von SMB auf Paketebene digital signiert werden. Diese Signaturen verhindern Angriffe, durch die SMB-Pakete während der Übertragung manipuliert werden könnten.
+
+Weitere Informationen zu SMB-Signaturen finden Sie in der [Übersicht zu Server Message Block-Signaturen](https://support.microsoft.com/help/887429/overview-of-server-message-block-signing).
+
+So aktivieren Sie SMB-Signaturen auf Ihrem Azure-Gerät
+
+1. Wählen Sie in der lokalen Webbenutzeroberfläche für Ihr Gerät in der oberen rechten Ecke **Einstellungen** aus.
+
+    ![Öffnen der Einstellungen](media/data-box-local-web-ui-admin/data-box-settings-1.png)
+
+2. **Aktivieren** Sie SMB-Signaturen.
+
+    ![Aktivieren von SMB-Signaturen](media/data-box-local-web-ui-admin/data-box-smb-signing-1.png)
+
+3. Wählen Sie **Übernehmen**.
+4. Wechseln Sie auf der lokalen Webbenutzeroberfläche zu **Herunterfahren oder neu starten**.
+5. Wählen Sie **Neu starten** aus.
+
+## <a name="enable-tls-11"></a>Aktivieren von TLS 1.1
+
+Azure Data Box nutzt standardmäßig Transport Layer Security (TLS) 1.2 für die Verschlüsselung, da diese eine höhere Sicherheit als TSL 1.1 bietet. Wenn Sie oder Ihre Kunden für den Datenzugriff jedoch einen Browser verwenden, der TLS 1.2 nicht unterstützt, können Sie TLS 1.1 aktivieren.
+
+Weitere Informationen zu TLS finden Sie unter [Azure Data Box Gateway – Sicherheit](../databox-online/data-box-gateway-security.md).
+
+So aktivieren Sie TLS 1.1 auf Ihrem Azure-Gerät
+
+1. Wählen Sie in der lokalen Webbenutzeroberfläche für Ihr Gerät in der oberen rechten Ecke **Einstellungen** aus.
+
+    ![Öffnen der Einstellungen](media/data-box-local-web-ui-admin/data-box-settings-1.png)
+
+2. **Aktivieren** Sie TLS 1.1.
+
+    ![Aktivieren von TLS 1.1](media/data-box-local-web-ui-admin/data-box-tls-1-1.png)
+
+3. Wählen Sie **Übernehmen**.
+4. Wechseln Sie auf der lokalen Webbenutzeroberfläche zu **Herunterfahren oder neu starten**.
+5. Wählen Sie **Neu starten** aus.
+
+## <a name="next-steps"></a>Nächste Schritte
+
+- Erfahren Sie mehr zum [Verwalten von Data Box und Data Box Heavy im Azure-Portal](data-box-portal-admin.md).

@@ -1,6 +1,6 @@
 ---
-title: 'Windows Virtual Desktop-Diagnose: Protokollanalyse – Azure'
-description: Hier erfahren Sie, wie Sie die Protokollanalyse mit der Windows Virtual Desktop-Diagnosefunktion verwenden.
+title: 'Windows Virtual Desktop-Diagnose (klassisch): Protokollanalyse – Azure'
+description: Hier erfahren Sie, wie Sie die Protokollanalyse mit der Windows Virtual Desktop-Diagnosefunktion (klassisch) verwenden.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,17 +8,17 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: beb48b90afd54b044eb6d0ceaff32b53ebfcdc34
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 500758839b426143650707d3d77d78e8a064533e
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85205967"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285066"
 ---
-# <a name="use-log-analytics-for-the-diagnostics-feature"></a>Verwenden von Log Analytics für die Diagnosefunktion
+# <a name="use-log-analytics-for-the-diagnostics-feature-in-windows-virtual-desktop-classic"></a>Verwenden von Log Analytics für das Diagnosefeature in Windows Virtual Desktop (klassisch)
 
 >[!IMPORTANT]
->Dieser Inhalt gilt für das Release vom Herbst 2019, das keine Windows Virtual Desktop-Objekte in Azure Resource Manager unterstützt. Wenn Sie Windows Virtual Desktop-Objekte in Azure Resource Manager verwalten möchten, die im Update vom Frühjahr 2020 eingeführt wurden, finden Sie weitere Informationen in [diesem Artikel](../diagnostics-log-analytics.md).
+>Dieser Inhalt gilt für Windows Virtual Desktop (klassisch). Der Dienst unterstützt keine Windows Virtual Desktop-Objekte in Azure Resource Manager. Wenn Sie Windows Virtual Desktop-Objekte in Azure Resource Manager verwalten möchten, helfen Ihnen die Informationen in [diesem Artikel](../diagnostics-log-analytics.md) weiter.
 
 Windows Virtual Desktop verfügt über eine Diagnosefunktion, mit der der Administrator Probleme über eine zentrale Benutzeroberfläche identifizieren kann. Diese Funktion protokolliert Diagnoseinformationen, wenn jemand mit Windows Virtual Desktop-Rolle den Dienst verwendet. Neben Mandanten- und Benutzerinformationen enthält jedes Protokoll Informationen darüber, welche Windows Virtual Desktop-Rolle an der Aktivität beteiligt war und welche Fehlermeldungen ggf. während der Sitzung angezeigt wurden. Die Diagnosefunktion erstellt Aktivitätsprotokolle für Benutzer- und Administratoraktionen. Jedes Aktivitätsprotokoll lässt sich einer von drei Hauptkategorien zuordnen:
 

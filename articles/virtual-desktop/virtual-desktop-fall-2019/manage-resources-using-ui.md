@@ -1,6 +1,6 @@
 ---
 title: Bereitstellen eines Verwaltungstools mit einer Azure Resource Manager-Vorlage – Azure
-description: Hier erfahren Sie, wie Sie ein Benutzeroberflächentool zum Verwalten von Windows Virtual Desktop-Ressourcen mit einer Azure Resource Manager-Vorlage installieren.
+description: Hier erfahren Sie, wie Sie ein Benutzeroberflächentool zum Verwalten von Windows Virtual Desktop-Ressourcen (klassisch) mit einer Azure Resource Manager-Vorlage installieren.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,17 +8,17 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 3c3e93cf711d4dadfdc2354a297b0588fb637c80
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bf9fff614f638aec9519c11b2bb558cc77b94814
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85514228"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284947"
 ---
-# <a name="deploy-a-management-tool-with-an-azure-resource-manager-template"></a>Bereitstellen eines Verwaltungstools mit einer Azure Resource Manager-Vorlage
+# <a name="deploy-a-windows-virtual-desktop-classic-management-tool-with-an-azure-resource-manager-template"></a>Bereitstellen eines Windows Virtual Desktop-Verwaltungstools (klassisch) mit einer Azure Resource Manager-Vorlage
 
 >[!IMPORTANT]
->Dieser Inhalt gilt für das Release vom Herbst 2019, das keine Windows Virtual Desktop-Objekte in Azure Resource Manager unterstützt.
+>Dieser Inhalt gilt für Windows Virtual Desktop (klassisch). Der Dienst unterstützt keine Windows Virtual Desktop-Objekte in Azure Resource Manager.
 
 Die Anweisungen in diesem Artikel beschreiben, wie die Benutzeroberfläche mit einer Azure Resource Manager-Vorlage bereitgestellt wird.
 

@@ -4,12 +4,12 @@ description: In diesem Artikel erfahren Sie, wie Sie Probleme mit der Installati
 ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/15/2019
-ms.openlocfilehash: ddff3ca8a89d8d5674be00fdebc70b0232cdbd13
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: b810b5abfb15a39d19a0571b6ac36a6c86bf0b4f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539056"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87054639"
 ---
 # <a name="troubleshoot-the-microsoft-azure-recovery-services-mars-agent"></a>Problembehandlung beim Microsoft Azure Recovery Services-Agent (MARS)
 
@@ -75,6 +75,12 @@ Wir empfehlen, die folgenden Prüfungen durchzuführen, bevor Sie mit der Proble
 | Fehler  | Mögliche Ursache | Empfohlene Aktionen |
 | ---     | ---     | ---    |
 | <br /><ul><li>Es konnte keine Verbindung zwischen dem Microsoft Azure Recovery Services-Agent und Microsoft Azure Backup hergestellt werden. (ID: 100050) Überprüfen Sie Ihre Netzwerkeinstellungen, und stellen Sie sicher, dass Sie eine Verbindung mit dem Internet herstellen können.<li>(407) Proxyauthentifizierung erforderlich. |Ein Proxy blockiert die Verbindung. |  <ul><li>Navigieren Sie in Internet Explorer zu **Extras** > **Internetoptionen** > **Sicherheit** > **Internet**. Wählen Sie **Stufe anpassen** aus, und scrollen Sie zum Abschnitt **Dateidownload**. Wählen Sie **Aktivieren** aus.<p>Sie müssen möglicherweise auch [URLs und IP-Adressen](install-mars-agent.md#verify-internet-access) zu Ihren vertrauenswürdigen Sites in Internet Explorer hinzufügen.<li>Ändern Sie die Einstellungen dahingehend, dass ein Proxyserver verwendet wird. Geben Sie dann die Proxyserverdetails an.<li> Wenn Ihr Computer über einen eingeschränkten Internetzugang verfügt, stellen Sie sicher, dass die Firewalleinstellungen auf dem Computer oder Proxyserver diese [URLs und IP-Adressen](install-mars-agent.md#verify-internet-access) zulassen. <li>Wenn Sie Antivirensoftware auf dem Server installiert haben, schließen Sie die folgenden Dateien vom Virenscan aus: <ul><li>CBEngine.exe (statt dpmra.exe)<li>CSC.exe: (Diese Datei ist mit dem .NET Framework verknüpft.) Für jede auf dem Server installierte .NET Framework-Version gibt es eine Datei namens „CSC.exe“. Schließen Sie Dateien mit dem Namen „CSC.exe“ für alle .NET Framework-Versionen auf dem betroffenen Server aus. <li>Speicherort des Ablageordners oder Caches. <br>Der Standardspeicherort für den Ablageordner oder der Cachepfad lautet „C:\Programme\Microsoft Azure Recovery Services Agent\Scratch“.<li>Ordner „Bin“ im Pfad C:\Program Files\Microsoft Azure Recovery Services Agent\Bin.
+
+## <a name="the-specified-vault-credential-file-cannot-be-used-as-it-is-not-downloaded-from-the-vault-associated-with-this-server"></a>Die angegebene Datei mit Tresoranmeldeinformationen kann nicht verwendet werden, weil sie nicht aus dem Tresor heruntergeladen wird, der diesem Server zugeordnet ist.
+
+| Fehler  | Mögliche Ursache | Empfohlene Aktionen |
+| ---     | ---     | ---    |
+| Die angegebene Datei mit Tresoranmeldeinformationen kann nicht verwendet werden, weil sie nicht aus dem Tresor heruntergeladen wird, der diesem Server zugeordnet ist. (ID: 100110) Geben Sie die entsprechenden Tresoranmeldeinformationen an. | Die Datei mit den Tresoranmeldeinformationen stammt aus einem anderen Tresor als dem, bei dem dieser Server bereits registriert ist. | Stellen Sie sicher, dass der Zielcomputer und der Quellcomputer beim selben Recovery Services-Tresor registriert sind. Wenn der Zielserver bereits bei einem anderen Tresor registriert wurde, verwenden Sie die Option **Server registrieren**, um die Registrierung beim richtigen Tresor auszuführen.  
 
 ## <a name="backup-jobs-completed-with-warning"></a>Mit Warnungen abgeschlossene Sicherungsaufträge
 

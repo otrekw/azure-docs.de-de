@@ -1,5 +1,5 @@
 ---
-title: Hochverfügbarkeit von Azure Virtual Machines für SAP NetWeaver | Microsoft-Dokumentation
+title: Hochverfügbarkeit von Azure Virtual Machines für SAP NetWeaver
 description: Handbuch zum Thema „Hohe Verfügbarkeit“ für SAP NetWeaver auf virtuellen Azure-Computern
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
@@ -16,14 +16,14 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d1b028472785b146a45c22b3d23db7cb241c11da
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dbdbae3d310d6e4c3224663dd523cb124744dfbd
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84557314"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080181"
 ---
-# <a name="azure-virtual-machines-high-availability-for-sap-netweaver"></a>Hochverfügbarkeit von Azure Virtual Machines für SAP NetWeaver
+# <a name="high-availability-azure-virtual-machines-for-sap-netweaver"></a>Azure Virtual Machines mit Hochverfügbarkeit für SAP NetWeaver
 
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
@@ -36,7 +36,7 @@ ms.locfileid: "84557314"
 [azure-resource-manager/management/azure-subscription-service-limits]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
 [azure-resource-manager/management/azure-subscription-service-limits-subscription]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
 
-[dbms-guide]:../../virtual-machines-windows-sap-dbms-guide.md
+[dbms-guide]:dbms-guide.md
 
 [deployment-guide]:deployment-guide.md
 
@@ -171,7 +171,7 @@ Zur Vereinfachung der Bereitstellung und Konfiguration verwenden wir in diesem A
 ## <a name="prerequisites"></a><a name="217c5479-5595-4cd8-870d-15ab00d4f84c"></a> Voraussetzungen
 Achten Sie vor Beginn darauf, dass die in den folgenden Abschnitten beschriebenen Voraussetzungen erfüllt sind. Überprüfen Sie darüber hinaus alle Ressourcen im Abschnitt [Ressourcen][sap-ha-guide-2].
 
-In diesem Artikel verwenden wir Azure Resource Manager-Vorlagen für [SAP NetWeaver mit drei Ebenen und Managed Disks](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image-md/). Eine hilfreiche Übersicht über die Vorlagen finden Sie unter [Azure Resource Manager-Vorlagen für SAP](https://blogs.msdn.microsoft.com/saponsqlserver/2016/05/16/azure-quickstart-templates-for-sap/).
+In diesem Artikel verwenden wir Azure Resource Manager-Vorlagen für [SAP NetWeaver mit drei Ebenen und Managed Disks](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image-md/). Eine hilfreiche Übersicht über die Vorlagen finden Sie unter [Azure Resource Manager-Vorlagen für SAP](/archive/blogs/saponsqlserver/azure-quickstart-templates-for-sap).
 
 ## <a name="resources"></a><a name="42b8f600-7ba3-4606-b8a5-53c4f026da08"></a> Ressourcen
 In diesen Artikeln werden SAP-Bereitstellungen in Azure behandelt:
@@ -320,7 +320,7 @@ Alle virtuellen Computer, auf denen SAP-Anwendungsserverinstanzen gehostet werde
 * Alle virtuellen Computer sind Teil derselben Upgradedomäne. Eine Upgradedomäne stellt beispielsweise sicher, dass die virtuellen Computer nicht gleichzeitig mit geplanten Wartungsausfallzeiten aktualisiert werden.
 * Alle virtuellen Computer sind Teil derselben Fehlerdomäne. Eine Fehlerdomäne stellt beispielsweise bei der Bereitstellung virtueller Computer sicher, dass kein Single Point of Failure Auswirkungen auf die Verfügbarkeit aller virtuellen Computer hat.
 
-Erfahren Sie mehr über das [Verwalten der Verfügbarkeit virtueller Computer][virtual-machines-manage-availability].
+Erfahren Sie mehr über das [Verwalten der Verfügbarkeit virtueller Computer][../manage-availability.md].
 
 Nur nicht verwalteter Datenträger: Da das Azure-Speicherkonto ein potenzieller Single Point of Failure sein kann, benötigen Sie unbedingt mindestens zwei Azure-Speicherkonten, auf die mindestens zwei virtuelle Computer verteilt sind. In einer idealen Konfiguration würden die Datenträger jedes virtuellen Computers, auf dem eine SAP-Dialoginstanz ausgeführt wird, in einem anderen Speicherkonto bereitgestellt werden.
 
@@ -771,7 +771,7 @@ Fügen Sie zuerst diese Windows-Registrierungseinträge auf beiden Windows-Clust
 | Variablenname |`KeepAliveTime` |
 | Variablentyp |REG_DWORD-Wert (dezimal) |
 | Wert |120000 |
-| Link zur Dokumentation |[https://technet.microsoft.com/library/cc957549.aspx](https://technet.microsoft.com/library/cc957549.aspx) |
+| Link zur Dokumentation |[https://technet.microsoft.com/library/cc957549.aspx](/previous-versions/windows/it-pro/windows-2000-server/cc957549(v=technet.10)) |
 
 _**Tabelle 3:** Ändern des ersten TCP/IP-Parameters_
 
@@ -782,7 +782,7 @@ Fügen Sie diese Windows-Registrierungseinträge dann auf beiden Windows-Cluster
 | Variablenname |`KeepAliveInterval` |
 | Variablentyp |REG_DWORD-Wert (dezimal) |
 | Wert |120000 |
-| Link zur Dokumentation |[https://technet.microsoft.com/library/cc957548.aspx](https://technet.microsoft.com/library/cc957548.aspx) |
+| Link zur Dokumentation |[https://technet.microsoft.com/library/cc957548.aspx](/previous-versions/windows/it-pro/windows-2000-server/cc957548(v=technet.10)) |
 
 _**Tabelle 4:** Ändern des zweiten TCP/IP-Parameters_
 

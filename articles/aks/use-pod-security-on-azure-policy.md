@@ -4,12 +4,13 @@ description: Erfahren Sie, wie Sie Pods mit Azure Policy in Azure Kubernetes Ser
 services: container-service
 ms.topic: article
 ms.date: 07/06/2020
-ms.openlocfilehash: 8a5107b9ba3c05c92a06753b2cb30bcfc2896d91
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+author: jluk
+ms.openlocfilehash: 8be0b05c260037bbe8afc92726d81668e1391d4a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86090828"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87050467"
 ---
 # <a name="secure-pods-with-azure-policy-preview"></a>Sichern von Pods mit Azure Policy (Vorschau)
 
@@ -63,7 +64,7 @@ In diesem Dokument wird ausführlich beschrieben, wie Sie mit Azure Policy die P
 
 Nach der Installation des Azure Policy-Add-Ons werden standardmäßig keine Richtlinien angewendet.
 
-Es gibt vierzehn (14) integrierte individuelle Azure-Richtlinien und zwei (2) integrierte Initiativen, die speziell Pods in einem AKS-Cluster sichern.
+Es gibt elf (11) integrierte individuelle Azure-Richtlinien und zwei (2) integrierte Initiativen, die speziell Pods in einem AKS-Cluster sichern.
 Jede Richtlinie kann mit einer Auswirkung angepasst werden. Eine vollständige Liste der [AKS-Richtlinien und ihrer unterstützten Auswirkungen ist hier aufgeführt][policy-samples]. Erfahren Sie mehr über die [Azure Policy-Auswirkungen](../governance/policy/concepts/effects.md).
 
 Azure-Richtlinien können auf Verwaltungsgruppenebene, Abonnement- oder Ressourcengruppenebene angewendet werden. Stellen Sie bei der Zuweisung einer Richtlinie auf Ressourcengruppenebene sicher, dass die Ressourcengruppe des AKS-Zielclusters innerhalb des Gültigkeitsbereichs der Richtlinie ausgewählt wird. Jeder Cluster im zugewiesenen Bereich mit installiertem Azure Policy-Add-On befindet sich im Gültigkeitsbereich der Richtlinie.
@@ -78,24 +79,41 @@ Azure Policy für Kubernetes bietet zwei integrierte Initiativen zur Sicherung v
 
 Beide integrierten Initiativen bauen auf Definitionen auf, die in [Podsicherheitsrichtlinie aus Kubernetes](https://github.com/kubernetes/website/blob/master/content/en/examples/policy/baseline-psp.yaml) verwendet werden.
 
-|[Steuerung der Podsicherheitsrichtlinie](https://kubernetes.io/docs/concepts/policy/pod-security-policy/#what-is-a-pod-security-policy)| Link zur Azure Policy-Definition| Baseline-Initiative | Eingeschränkte Initiative |
+|[Steuerung der Podsicherheitsrichtlinie](https://kubernetes.io/docs/concepts/policy/pod-security-policy/#what-is-a-pod-security-policy)| Link zur Azure Policy-Definition| [Baseline-Initiative](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicySetDefinitions%2Fa8640138-9b0a-4a28-b8cb-1666c838647d) | [Eingeschränkte Initiative](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicySetDefinitions%2F42b8ef37-b724-4e24-bbc8-7a7708edfe00) |
 |---|---|---|---|
 |Unterbinden der Ausführung privilegierter Container|[Öffentliche Cloud](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F95edb821-ddaf-4404-9732-666045e056b4)| Ja | Ja
 |Unterbinden der gemeinsamen Verwendung von Hostnamespaces|[Öffentliche Cloud](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F47a1ee2f-2a2a-4576-bf2a-e0e36709c2b8)| Ja | Ja
-|Einschränken der Verwendung von Hostnetzwerken und Ports auf eine bekannte Liste|[Öffentliche Cloud](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F82985f06-dc18-4a48-bc1c-b9f4f0098cfe)| Ja | Ja
-|Einschränken der Verwendung des Hostdateisystems|[Öffentliche Cloud](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F098fc59e-46c7-4d99-9b16-64990e543d75)| Ja | Ja
-|Hinzufügen von Linux-Funktionen, die über den [Standardsatz](https://docs.docker.com/engine/reference/run/#runtime-privilege-and-linux-capabilities) hinausgehen|[Öffentliche Cloud](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc26596ff-4d70-4e6a-9a30-c2506bd2f80c) | Ja | Ja
-|Einschränken der Verwendung definierter Volumetypen|[Öffentliche Cloud](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F16697877-1118-4fb1-9b65-9898ec2509ec)| - | Ja
+|Einschränken jeglicher Nutzung von Hostnetzwerken und Ports|[Öffentliche Cloud](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F82985f06-dc18-4a48-bc1c-b9f4f0098cfe)| Ja | Ja
+|Einschränken jeglicher Nutzung des Hostdateisystems|[Öffentliche Cloud](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F098fc59e-46c7-4d99-9b16-64990e543d75)| Ja | Ja
+|Einschränken der Linux-Funktionen auf den [Standardsatz](https://docs.docker.com/engine/reference/run/#runtime-privilege-and-linux-capabilities)|[Öffentliche Cloud](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc26596ff-4d70-4e6a-9a30-c2506bd2f80c) | Ja | Ja
+|Einschränken der Verwendung definierter Volumetypen|[Öffentliche Cloud](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F16697877-1118-4fb1-9b65-9898ec2509ec)| - | Ja: Zulässige Volumetypen sind `configMap`, `emptyDir`, `projected`, `downwardAPI`, `persistentVolumeClaim`|
 |Rechteausweitung auf den Stamm|[Öffentliche Cloud](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1c6e92c9-99f0-4e55-9cf2-0c234dc48f99) | - | Ja |
-|Einschränken der Benutzer- und Gruppen-IDs des Containers|[Öffentliche Cloud](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff06ddb64-5fa3-4b77-b166-acb36f7f6042) | - | Ja |
-|Einschränken der Zuordnung einer FSGroup, die Besitzer der Podvolumes ist|[Öffentliche Cloud](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff06ddb64-5fa3-4b77-b166-acb36f7f6042) | - | Ja |
-|Erfordert die Verwendung des seccomp-Profils|[Öffentliche Cloud](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F975ce327-682c-4f2e-aa46-b9598289b86c) | - | - |
-|Einschränken des von Containern verwendeten sysctl-Profils|[Öffentliche Cloud](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F56d0a13f-712f-466b-8416-56fb354fb823) | - | - |
-|Definition von Proc Mount-Standardtypen zum Reduzieren der Angriffsfläche|[Öffentliche Cloud](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff85eb0dd-92ee-40e9-8a76-db25a507d6d3) | - | - |
-|Einschränken auf bestimmte FlexVolume-Treiber|[Öffentliche Cloud](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff4a8fce0-2dd5-4c21-9a36-8f0ec809d663) | - | - |
-|Zulassen von nicht schreibgeschützten Einbindungen|[Öffentliche Cloud](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fdf49d893-a74c-421d-bc95-c663042e5b80) | - | - |
-|Definieren des benutzerdefinierten SELinux-Kontexts eines Containers|[Öffentliche Cloud](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe1e6c427-07d9-46ab-9689-bfa85431e636) | - | - |
-|Definieren des von Containern verwendeten AppArmor-Profils|[Öffentliche Cloud](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F511f5417-5d12-434d-ab2e-816901e72a5e) | - | - |
+|Einschränken der Benutzer- und Gruppen-IDs des Containers|[Öffentliche Cloud](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff06ddb64-5fa3-4b77-b166-acb36f7f6042) | - | Ja|
+|Einschränken der Zuordnung einer FSGroup, die Besitzer der Podvolumes ist|[Öffentliche Cloud](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff06ddb64-5fa3-4b77-b166-acb36f7f6042) | - | Ja: Zulässige Regeln sind `runAsUser: mustRunAsNonRoot`, `supplementalGroup: mustRunAs 1:65536`, `fsGroup: mustRunAs 1:65535`, `runAsGroup: mustRunAs 1:65535`.  |
+|Erfordert seccomp-Profil|[Öffentliche Cloud](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F975ce327-682c-4f2e-aa46-b9598289b86c) | - | Ja: allowedProfiles sind *`docker/default` oder `runtime/default` |
+
+\* Docker/Standard ist in Kubernetes seit v1.11 veraltet
+
+### <a name="additional-optional-policies"></a>Zusätzliche optionale Richtlinien
+
+Es gibt zusätzliche Azure-Richtlinien, die außerhalb der Anwendung einer Initiative einzeln angewendet werden können. Ziehen Sie in Betracht, diese Richtlinien zusätzlich zu den Initiativen anzufügen, wenn Ihre Anforderungen durch die integrierten Initiativen nicht erfüllt werden.
+
+|[Steuerung der Podsicherheitsrichtlinie](https://kubernetes.io/docs/concepts/policy/pod-security-policy/#what-is-a-pod-security-policy)| Link zur Azure Policy-Definition| Anwendung zusätzlich zur Baseline-Initiative | Anwendung zusätzlich zur eingeschränkten Initiative |
+|---|---|---|---|
+|Definieren des von Containern verwendeten AppArmor-Profils|[Öffentliche Cloud](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F511f5417-5d12-434d-ab2e-816901e72a5e) | Optional | Optional |
+|Zulassen von nicht schreibgeschützten Einbindungen|[Öffentliche Cloud](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fdf49d893-a74c-421d-bc95-c663042e5b80) | Optional | Optional |
+|Einschränken auf bestimmte FlexVolume-Treiber|[Öffentliche Cloud](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff4a8fce0-2dd5-4c21-9a36-8f0ec809d663) | Optional: Verwenden Sie diese Option, wenn Sie nur FlexVolume-Treiber einschränken möchten, nicht aber andere, die durch „Einschränken der Verwendung definierter Volumetypen“ festgelegt wurden. | Nicht zutreffend: Die eingeschränkte Initiative umfasst die „Einschränken der Verwendung definierter Volumetypen“, die keine FlexVolume-Treiber zulässt. |
+
+### <a name="unsupported-built-in-policies-for-managed-aks-clusters"></a>Nicht unterstützte integrierte Richtlinien für verwaltete AKS-Cluster
+
+> [!NOTE]
+> Die folgenden drei Richtlinien werden in AKS aufgrund von Anpassungsaspekten, die von AKS als verwalteter Dienst verwaltet und gesichert werden, **nicht unterstützt**. Diese Richtlinien sind speziell für mit Azure Arc verbundene Cluster mit nicht verwalteten Steuerungsebenen integriert.
+
+|[Steuerung der Podsicherheitsrichtlinie](https://kubernetes.io/docs/concepts/policy/pod-security-policy/#what-is-a-pod-security-policy)|
+|---|
+|Definieren des benutzerdefinierten SELinux-Kontexts eines Containers|
+|Einschränken des von Containern verwendeten sysctl-Profils|
+|Definition von Proc Mount-Standardtypen zum Reduzieren der Angriffsfläche|
 
 <!---
 # Removing until custom initiatives are supported the week after preview

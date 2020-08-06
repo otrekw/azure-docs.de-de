@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 06/14/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: 11f8442f188ea6ce7ee1de5a093362279da4594c
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 417ca42e014c0bb197d7dd834b960f25fcfdf468
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86251162"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87056814"
 ---
 # <a name="use-a-public-standard-load-balancer-in-azure-kubernetes-service-aks"></a>Verwenden einer öffentlichen Instanz von Load Balancer Standard in Azure Kubernetes Service (AKS)
 
@@ -167,7 +167,7 @@ az aks update \
 
 #### <a name="create-the-cluster-with-your-own-public-ip-or-prefixes"></a>Erstellen des Clusters mit Ihren eigenen öffentlichen IP-Adressen oder Präfixen
 
-Möglicherweise möchten Sie zum Zeitpunkt der Clustererstellung Ihre eigenen IP-Adressen oder IP-Präfixe für den ausgehenden Datenverkehr einbinden, um Szenarien wie das Aufnehmen von Endpunkten für ausgehenden Datenverkehr in die Whitelists zu unterstützen. Fügen Sie die oben gezeigten Parameter im Schritt zur Clustererstellung an, um Ihre eigenen öffentlichen IP-Adressen und IP-Präfixe zu Beginn des Lebenszyklus eines Clusters zu definieren.
+Möglicherweise möchten Sie zum Zeitpunkt der Clustererstellung Ihre eigenen IP-Adressen oder IP-Präfixe für den ausgehenden Datenverkehr einbinden, um Szenarien wie das Hinzufügen von Endpunkten für ausgehende Datenverkehr zu einer Zulassungsliste zu unterstützen. Fügen Sie die oben gezeigten Parameter im Schritt zur Clustererstellung an, um Ihre eigenen öffentlichen IP-Adressen und IP-Präfixe zu Beginn des Lebenszyklus eines Clusters zu definieren.
 
 Verwenden Sie den Befehl *az aks create* mit dem Parameter *load-balancer-outbound-ips*, um einen neuen Cluster mit Ihren öffentlichen IP-Adressen zu Beginn zu erstellen.
 
@@ -293,11 +293,29 @@ spec:
   - MY_EXTERNAL_IP_RANGE
 ```
 
+## <a name="maintain-the-clients-ip-on-inbound-connections"></a>Beibehalten der IP-Adresse des Clients bei eingehenden Verbindungen
+
+Standardmäßig behält ein Dienst vom Typ `LoadBalancer` [in Kubernetes](https://kubernetes.io/docs/tutorials/services/source-ip/#source-ip-for-services-with-type-loadbalancer) und in AKS die IP-Adresse des Clients für die Verbindung zum Pod nicht bei. Die Quell-IP-Adresse des Pakets, das an den Pod übermittelt wird, ist die private IP-Adresse des Knotens. Sie müssen in der Dienstdefinition `service.spec.externalTrafficPolicy` auf `local` festlegen, um die IP-Adresse des Clients beizubehalten. Das folgende Manifest zeigt ein Beispiel:
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: azure-vote-front
+spec:
+  type: LoadBalancer
+  externalTrafficPolicy: Local
+  ports:
+  - port: 80
+  selector:
+    app: azure-vote-front
+```
+
 ## <a name="additional-customizations-via-kubernetes-annotations"></a>Weitere Anpassungen mit Kubernetes-Anmerkungen
 
 Hier ist eine Liste mit Anmerkungen angegeben, die für Kubernetes-Dienste vom Typ `LoadBalancer` unterstützt werden. Diese Anmerkungen gelten nur für eingehende Datenflüsse (**INBOUND**):
 
-| Anmerkung | Wert | BESCHREIBUNG
+| Anmerkung | Wert | Beschreibung
 | ----------------------------------------------------------------- | ------------------------------------- | ------------------------------------------------------------ 
 | `service.beta.kubernetes.io/azure-load-balancer-internal`         | `true` oder `false`                     | Geben Sie an, ob es ein interner Lastenausgleich sein soll. Wenn Sie nichts angeben, wird standardmäßig „Öffentlich“ verwendet.
 | `service.beta.kubernetes.io/azure-load-balancer-internal-subnet`  | Name des Subnetzes                    | Geben Sie an, an welches Subnetz der interne Lastenausgleich gebunden werden soll. Wenn Sie nichts angeben, wird standardmäßig das in der Cloudkonfigurationsdatei konfigurierte Subnetz verwendet.

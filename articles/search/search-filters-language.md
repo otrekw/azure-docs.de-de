@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/22/2020
-ms.openlocfilehash: b0ebbbb64e173e1501f08f8385b14c365759a804
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3bd0f01193b1e6579d60b581b43ad71ebb6001e3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82116280"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084193"
 ---
 # <a name="how-to-filter-by-language-in-azure-cognitive-search"></a>Filtern nach Sprache in der kognitiven Azure-Suche 
 
@@ -34,7 +34,7 @@ In der kognitiven Azure-Suche sind Abfragen auf einen einzelnen Index ausgericht
 
 Das folgende Beispiel stammt aus dem [Immobilienbeispiel](search-get-started-portal.md), das über mehrere Zeichenfolgenfelder verfügt, die Inhalte in verschiedenen Sprachen enthalten. Sehen Sie sich die Sprachanalysezuweisungen für die Felder in diesem Index an. Aus Leistungsgründen empfiehlt es sich, Felder mit Textinhalt bei der Volltextsuche mit einer Analysekomponente zu kombinieren, die die linguistischen Regeln der Zielsprache behandelt.
 
-  ![](./media/search-filters-language/lang-fields.png)
+  ![Screenshot für den Bildschirm „Felder“ des Immobilienbeispiels. Eine Gruppe von Feldern wird hervorgehoben, um darauf hinzuweisen, wie die Zuweisungen der Sprachanalyse den Sprachen für die hervorgehobenen Felder entsprechen.](./media/search-filters-language/lang-fields.png)
 
 > [!Note]
 > Codebeispiele zur Veranschaulichung von Felddefinitionen mit Sprachanalysen finden Sie unter [Definieren eines Index (.NET)](https://docs.microsoft.com/azure/search/search-create-index-dotnet) sowie unter [Definieren eines Index (REST)](search-create-index-rest-api.md).

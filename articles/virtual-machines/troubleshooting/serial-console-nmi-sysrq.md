@@ -13,14 +13,14 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: 3ad68438f5fc015b6a9150d67485b90a095f1a4a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 545399e1d7941351ce861ac98d995d5e57006ea1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79226734"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074361"
 ---
-# <a name="use-serial-console-for-sysrq-and-nmi-calls"></a>Verwenden der seriellen Konsole für SysRq- und NMI-Aufrufe
+# <a name="use-the-azure-serial-console-for-sysrq-and-nmi-calls"></a>Verwenden der seriellen Azure-Konsole für SysRq- und NMI-Aufrufe
 
 ## <a name="system-request-sysrq"></a>SysRq (System Request, Systemabfrage)
 Eine SysRq ist eine Sequenz von Schlüsseln, die vom Linux-Betriebssystemkernel verstanden wird und eine Reihe von vordefinierten Aktionen auslösen kann. Diese Befehle werden häufig verwendet, wenn die Problembehandlung des virtuellen Computers oder dessen Wiederherstellung nicht über die herkömmliche Verwaltung ausgeführt werden kann (etwa, wenn der virtuelle Computer nicht reagiert). Mithilfe des SysRq-Features der seriellen Azure-Konsole wird das Drücken der SysRq-Taste (je nach Tastatur auch S-Abf-Taste genannt) imitiert, und auf einer physischen Tastatur werden Zeichen eingegeben.
@@ -29,11 +29,11 @@ Sobald die SysRq-Sequenz übermittelt wurde, bestimmt die Kernelkonfiguration di
 
 Mit der seriellen Konsole in Azure können Sie einen SysRq-Befehl an einen virtuellen Azure-Computer senden. Verwenden Sie dazu das Tastatursymbol in der unten gezeigten Befehlsleiste.
 
-![](../media/virtual-machines-serial-console/virtual-machine-serial-console-command-menu.jpg)
+![Screenshot der seriellen Azure-Konsole. Das Tastatursymbol ist hervorgehoben, und das Menü ist sichtbar. Dieses Menü enthält das Element „SysRq-Befehl senden“.](../media/virtual-machines-serial-console/virtual-machine-serial-console-command-menu.jpg)
 
 Durch die Auswahl von „SysRq-Befehl senden“ wird ein Dialogfeld geöffnet. Hier werden entweder allgemeine SysRq-Optionen bereitgestellt, oder Sie können eine Sequenz von im Dialogfeld eingegebenen SysRq-Befehlen übernehmen.  Dadurch werden eine Reihe von SysRq-Befehlen zum Ausführen einer Operation auf höchster Stufe (z. B. ein sicherer Neustart mit `REISUB`) ermöglicht.
 
-![](../media/virtual-machines-serial-console/virtual-machine-serial-console-sysreq_UI.png)
+![Screenshot des Dialogfelds „SysRq-Befehl an Gast senden“. Die Option zum Eingeben von Befehlen ist ausgewählt, und das Befehlsfeld enthält „REISUB“.](../media/virtual-machines-serial-console/virtual-machine-serial-console-sysreq_UI.png)
 
 Der SysRq-Befehl kann nicht auf virtuellen Computern verwendet werden, die angehalten wurden oder deren Kernel sich in einem nicht reaktionsfähigen Status befindet (z. B. Kernel panic).
 
@@ -62,7 +62,7 @@ Aus dem oben genannten SysRq-Administratorhandbuch entnommen:
 |``h``  |   Zeigt die Hilfe an (mit jeder anderen außer den hier genannten Tasten können Sie ebenfalls die Hilfe anzeigen, jedoch ist ``h`` einfacher zu merken :-)
 |``i``  |    Sendet ein SIGKILL-Signal an alle Prozesse, mit Ausnahme von „init“.
 |``j``  |    Zwangsweise „einfach reaktivieren“ – von FIFREEZE ioctl fixierte Dateisysteme.
-|``k``  |    Secure Access Key (SAK) beendet alle Programme auf der aktuellen virtuellen Konsole. HINWEIS: Beachten Sie die wichtigen Kommentare im SAK-Abschnitt weiter unten.
+|``k``  |    Secure Access Key (SAK) beendet alle Programme auf der aktuellen virtuellen Konsole. HINWEIS:  Beachten Sie die wichtigen Kommentare im SAK-Abschnitt weiter unten.
 |``l``  |    Zeigt einen Stack-Backtrace für alle aktiven CPUs.
 |``m``  |    Sichert die aktuellen Speicherinformationen in der Konsole.
 |``n``  |    Wird verwendet, um RT-Tasks ansprechend zu machen.
@@ -102,7 +102,7 @@ Ein nicht maskierbarer Interrupt (NMI) dient dazu, ein Signal zu erstellen, das 
 
 Sie können mit der seriellen Konsole einen NMI an einen virtuellen Azure-Computer senden. Verwenden Sie dazu das Tastatursymbol in der unten gezeigten Befehlsleiste. Nach der Übermittlung des NMI bestimmt die Konfiguration des virtuellen Computers, wie das System reagiert.  Linux-Betriebssysteme können so konfiguriert werden, dass beim Empfang eines NMI ein Absturz erfolgt und ein Speicherabbild erstellt wird.
 
-![](../media/virtual-machines-serial-console/virtual-machine-serial-console-command-menu.jpg) <br>
+![Screenshot der seriellen Konsole. Das Tastatursymbol ist hervorgehoben, und das Menü ist sichtbar. Dieses Menü enthält das Element „Nicht maskierbaren Interrupt senden“.](../media/virtual-machines-serial-console/virtual-machine-serial-console-command-menu.jpg) <br>
 
 ### <a name="enable-nmi"></a>Aktivieren von NMI
 Bei Linux-Systemen, die sysctl zum Konfigurieren von Kernelparametern unterstützen, können Sie beim Empfang dieses NMI einen „Panic“-Status aktivieren. Gehen Sie dazu wie folgt vor:
@@ -111,7 +111,7 @@ Bei Linux-Systemen, die sysctl zum Konfigurieren von Kernelparametern unterstüt
 1. Neustarten oder Aktualisieren von sysctl durch Ausführen von <br>
     `sysctl -p`
 
-Weitere Informationen zu Linux-Kernelkonfigurationen, einschließlich `unknown_nmi_panic`, `panic_on_io_nmi` und `panic_on_unrecovered_nmi`, finden Sie unter [Documentation for /proc/sys/kernel/*](https://www.kernel.org/doc/Documentation/sysctl/kernel.txt). Eine distributionsspezifische Dokumentation zu NMI und eine Beschreibung der Schritte, mit denen Sie Linux so konfigurieren, dass beim Empfangen eines NMI ein Absturzabbild erstellt wird, finden Sie unter folgenden Links:
+Weitere Informationen zu Linux-Kernelkonfigurationen (einschließlich `unknown_nmi_panic`, `panic_on_io_nmi` und `panic_on_unrecovered_nmi`) finden Sie hier: [Documentation for /proc/sys/kernel/*](https://www.kernel.org/doc/Documentation/sysctl/kernel.txt) (Dokumentation zu /proc/sys/kernel/) Eine distributionsspezifische Dokumentation zu NMI und eine Beschreibung der Schritte, mit denen Sie Linux so konfigurieren, dass beim Empfangen eines NMI ein Absturzabbild erstellt wird, finden Sie unter folgenden Links:
 
 ### <a name="ubuntu"></a>Ubuntu
  - [Kernel-Absturzabbild](https://help.ubuntu.com/lts/serverguide/kernel-crash-dump.html)

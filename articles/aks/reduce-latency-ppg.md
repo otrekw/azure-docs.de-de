@@ -4,26 +4,27 @@ description: Hier erfahren Sie, wie Sie mithilfe von Näherungsplatzierungsgrupp
 services: container-service
 manager: gwallace
 ms.topic: article
-ms.date: 06/22/2020
-ms.openlocfilehash: 1bcdfb4bb3c910feeac0521308e1e7d733fbd959
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.date: 07/10/2020
+author: jluk
+ms.openlocfilehash: f6cb370d258a79420b03baf17ec964b091cdebb7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86244071"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87056584"
 ---
 # <a name="reduce-latency-with-proximity-placement-groups-preview"></a>Verringern der Wartezeit mithilfe von Näherungsplatzierungsgruppen (Vorschauversion)
 
 > [!Note]
 > Wenn Sie Näherungsplatzierungsgruppen mit AKS verwenden, betrifft die Colocation nur die Agent-Knoten. Die Wartezeit zwischen Knoten und die entsprechende Wartezeit zwischen gehosteten Pods werden verbessert. Die Colocation hat keine Auswirkung auf die Platzierung der Steuerungsebene eines Clusters.
 
-Wenn Sie Ihre Anwendung in Azure bereitstellen, führt die Verteilung von VM-Instanzen (Virtual Machine, virtueller Computer) auf Regionen oder Verfügbarkeitszonen zu Netzwerkwartezeit, die die Gesamtleistung Ihrer Anwendung beeinträchtigen kann. Eine Näherungsplatzierungsgruppe ist eine logische Gruppierung, die dazu dient, eine geringe physische Entfernung zwischen Azure-Computeressourcen sicherzustellen. Einige Anwendungsbereiche wie Spiele, technische Simulationen und Hochfrequenzhandel (High-Frequency Trading, HFT) erfordern geringe Wartezeiten und eine schnelle Aufgabenausführung. In solchen HPC-Szenarien (High Performance Computing) empfiehlt sich ggf. der Einsatz von [Näherungsplatzierungsgruppen](../virtual-machines/linux/co-location.md#proximity-placement-groups) für die Knotenpools Ihres Clusters.
+Wenn Sie Ihre Anwendung in Azure bereitstellen, führt die Verteilung von VM-Instanzen (Virtual Machine, virtueller Computer) auf Regionen oder Verfügbarkeitszonen zu Netzwerkwartezeit, die die Gesamtleistung Ihrer Anwendung beeinträchtigen kann. Eine Näherungsplatzierungsgruppe ist eine logische Gruppierung, die dazu dient, eine geringe physische Entfernung zwischen Azure-Computeressourcen sicherzustellen. Einige Anwendungsbereiche wie Spiele, technische Simulationen und Hochfrequenzhandel (High-Frequency Trading, HFT) erfordern geringe Wartezeiten und eine schnelle Aufgabenausführung. In solchen HPC-Szenarien (High Performance Computing) empfiehlt sich ggf. der Einsatz von [Näherungsplatzierungsgruppen](../virtual-machines/linux/co-location.md#proximity-placement-groups) (PPG) für die Knotenpools Ihres Clusters.
 
 ## <a name="limitations"></a>Einschränkungen
 
-* Die Näherungsplatzierungsgruppe umfasst eine einzelne Verfügbarkeitszone.
-* AKS-Cluster, die VM-Verfügbarkeitsgruppen nutzen, werden aktuell nicht unterstützt.
-* Bereits vorhandene Knotenpools können nicht für die Verwendung einer Näherungsplatzierungsgruppe geändert werden.
+* Eine Näherungsplatzierungsgruppe kann höchstens einer Verfügbarkeitszone zugeordnet werden.
+* Ein Knotenpool muss Virtual Machine Scale Sets verwenden, um eine Näherungsplatzierungsgruppe zuzuordnen.
+* Ein Knotenpool kann eine Näherungsplatzierungsgruppe nur für die Erstellungszeit des Knotenpools zuordnen.
 
 > [!IMPORTANT]
 > AKS-Previewfunktionen stehen gemäß dem Self-Service- und Aktivierungsprinzip zur Verfügung. Vorschauversionen werden „wie besehen“ und „wie verfügbar“ bereitgestellt und sind von den Vereinbarungen zum Service Level und der eingeschränkten Garantie ausgeschlossen. AKS-Vorschauversionen werden teilweise vom Kundensupport auf Grundlage der bestmöglichen Leistung abgedeckt. Daher sind diese Funktionen nicht für die Verwendung in der Produktion vorgesehen. Weitere Informationen finden Sie in den folgenden Supportartikeln:
@@ -40,7 +41,7 @@ Die folgenden Ressourcen müssen installiert sein:
 ### <a name="set-up-the-preview-feature-for-proximity-placement-groups"></a>Einrichten der Previewfunktion für Näherungsplatzierungsgruppen
 
 > [!IMPORTANT]
-> Wenn Sie Näherungsplatzierungsgruppen mit AKS verwenden, betrifft die Colocation nur die Agent-Knoten. Die Wartezeit zwischen Knoten und die entsprechende Wartezeit zwischen gehosteten Pods werden verbessert. Die Colocation hat keine Auswirkung auf die Platzierung der Steuerungsebene eines Clusters.
+> Wenn Sie Näherungsplatzierungsgruppen mit AKS-Knotenpools verwenden, betrifft die Colocation nur die Agent-Knoten. Die Wartezeit zwischen Knoten und die entsprechende Wartezeit zwischen gehosteten Pods werden verbessert. Die Colocation hat keine Auswirkung auf die Platzierung der Steuerungsebene eines Clusters.
 
 ```azurecli-interactive
 # register the preview feature
@@ -63,6 +64,7 @@ az extension add --name aks-preview
 # Update the extension to make sure you have the latest version installed
 az extension update --name aks-preview
 ```
+
 ## <a name="node-pools-and-proximity-placement-groups"></a>Knotenpools und Näherungsplatzierungsgruppen
 
 Die erste Ressource, die Sie mit einer Näherungsplatzierungsgruppe bereitstellen, wird einem bestimmten Rechenzentrum zugeordnet. Weitere Ressourcen, die mit der gleichen Näherungsplatzierungsgruppe bereitgestellt werden, werden im gleichen Rechenzentrum platziert. Wenn alle Ressourcen, von denen die Näherungsplatzierungsgruppe verwendet wird, beendet (Zuordnung aufgehoben) oder gelöscht wurden, ist sie nicht mehr zugeordnet.
@@ -70,13 +72,23 @@ Die erste Ressource, die Sie mit einer Näherungsplatzierungsgruppe bereitstelle
 * Viele Knotenpools können einer einzelnen Näherungsplatzierungsgruppe zugeordnet werden.
 * Ein Knotenpool darf immer nur einer einzelnen Näherungsplatzierungsgruppe zugeordnet werden.
 
+### <a name="configure-proximity-placement-groups-with-availability-zones"></a>Konfigurieren von Näherungsplatzierungsgruppen mit Verfügbarkeitszonen
+
+> [!NOTE]
+> Während Näherungsplatzierungsgruppen einen Knotenpool benötigen, um höchstens eine Verfügbarkeitszone nutzen zu können, gilt für VMs in einer einzelnen Zone immer noch die [grundlegende Azure VM-SLA von 99,9 %](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_9/).
+
+Näherungsplatzierungsgruppen sind ein Knotenpoolkonzept und mit jedem einzelnen Knotenpool verbunden. Die Verwendung einer PPG-Ressource hat keine Auswirkungen auf die Verfügbarkeit der AKS-Steuerungsebene. Dies kann Auswirkungen darauf haben, wie ein Cluster mit Zonen gestaltet werden sollte. Um sicherzustellen, dass ein Cluster über mehrere Zonen verteilt ist, wird der folgende Entwurf empfohlen.
+
+* Stellen Sie einen Cluster mit dem ersten Systempool bereit, der drei Zonen verwendet und dem keine Näherungsplatzierungsgruppe zugeordnet ist. Dadurch wird sichergestellt, dass die Pods des Systems in einem dedizierten Knotenpool landen, der sich über mehrere Zonen verteilen wird.
+* Fügen Sie zusätzliche Benutzerknotenpools mit einer eindeutigen Zone und einer jedem Pool zugeordneten Näherungsplatzierungsgruppe hinzu. Ein Beispiel ist „nodepool1“ in Zone 1 und PPG1, „nodepool2“ in Zone 2 und PPG2, „nodepool3“ in Zone 3 mit PPG3. Dadurch wird auf Clusterebene sichergestellt, dass die Knoten über mehrere Zonen verteilt sind und jeder einzelne Knotenpool in der festgelegten Zone mit einer dedizierten PPG-Ressource verbunden ist.
+
 ## <a name="create-a-new-aks-cluster-with-a-proximity-placement-group"></a>Erstellen eines neuen AKS-Clusters mit einer Näherungsplatzierungsgruppe
 
-Im folgenden Beispiel wird der Befehl [az group create][az-group-create] verwendet, um eine Ressourcengruppe namens *myResourceGroup* in der Region *centralus* zu erstellen. Anschließend wird mit dem Befehl [az aks create][az-aks-create] ein AKS-Cluster mit dem Namen *myAKSCluster* erstellt. 
+Im folgenden Beispiel wird der Befehl [az group create][az-group-create] verwendet, um eine Ressourcengruppe namens *myResourceGroup* in der Region *centralus* zu erstellen. Anschließend wird mit dem Befehl [az aks create][az-aks-create] ein AKS-Cluster mit dem Namen *myAKSCluster* erstellt.
 
 Beschleunigter Netzwerkbetrieb trägt erheblich zur Verbesserung der Netzwerkleistung virtueller Computer bei. Es empfiehlt sich daher, Näherungsplatzierungsgruppen zusammen mit beschleunigtem Netzwerkbetrieb zu verwenden. Beschleunigter Netzwerkbetrieb wird von AKS standardmäßig in [unterstützten VM-Instanzen](../virtual-network/create-vm-accelerated-networking-cli.md?toc=/azure/virtual-machines/linux/toc.json#limitations-and-constraints) verwendet. Hierzu zählen die meisten virtuellen Azure-Computer mit mindestens zwei vCPUs.
 
-Erstellen Sie einen neuen AKS-Cluster mit einer Näherungsplatzierungsgruppe:
+Erstellen Sie einen neuen AKS-Cluster mit einer Näherungsplatzierungsgruppe, die dem ersten Systemknotenpool zugeordnet ist:
 
 ```azurecli-interactive
 # Create an Azure resource group
@@ -110,7 +122,7 @@ Die Ausgabe des Befehls enthält den für anstehende CLI-Befehle erforderlichen 
 Verwenden Sie im folgenden Befehl die Ressourcen-ID der Näherungsplatzierungsgruppe für den Wert *myPPGResourceID*:
 
 ```azurecli-interactive
-# Create an AKS cluster that uses a proximity placement group for the initial node pool
+# Create an AKS cluster that uses a proximity placement group for the initial system node pool only. The PPG has no effect on the cluster control plane.
 az aks create \
     --resource-group myResourceGroup \
     --name myAKSCluster \

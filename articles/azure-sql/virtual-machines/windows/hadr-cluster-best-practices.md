@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: d20ac5964ef70618d4d7dc2d4a7fe7d7d01284ce
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: de773bb2188f09822cae59ce42924a9a49f8087e
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85965392"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285627"
 ---
 # <a name="cluster-configuration-best-practices-sql-server-on-azure-vms"></a>Bewährte Methoden für die Clusterkonfiguration (SQL Server auf Azure-VMS)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -42,27 +42,26 @@ Technisch gesehen kann ein Cluster mit drei Knoten den Verlust eines einzelnen K
 
 Die Quorumressource schützt den Cluster gegen diese Probleme. 
 
-Zum Konfigurieren der Quorumressource mit SQL Server auf Azure-VMs können Sie die folgenden Zeugentypen verwenden: 
+In der folgenden Tabelle sind die verfügbaren Quorumoptionen in der Reihenfolge aufgeführt, in der sie für einen virtuellen Azure-Computer verwendet werden sollten. Dabei ist der Datenträgerzeuge die bevorzugte Wahl: 
 
 
 ||[Datenträgerzeuge](/windows-server/failover-clustering/manage-cluster-quorum#configure-the-cluster-quorum)  |[Cloudzeuge](/windows-server/failover-clustering/deploy-cloud-witness)  |[Dateifreigabenzeuge](/windows-server/failover-clustering/manage-cluster-quorum#configure-the-cluster-quorum)  |
 |---------|---------|---------|---------|
 |**Unterstütztes Betriebssystem**| All |Windows Server 2016+| Windows Server 2012+|
-|**Unterstützte SQL Server-Versionen**|SQL Server 2019|SQL Server 2016+|SQL Server 2016+|
+
 
 
 
 ### <a name="disk-witness"></a>Datenträgerzeuge
 
-Ein Datenträgerzeuge ist ein kleiner Clusterdatenträger in der Gruppe „Verfügbarer Clusterspeicher“. Dieser Datenträger ist hochverfügbar und unterstützt ein Failover zwischen Knoten. Er enthält eine Kopie der Clusterdatenbank mit einer Standardgröße, die in der Regel weniger als 1 GB beträgt. 
+Ein Datenträgerzeuge ist ein kleiner Clusterdatenträger in der Gruppe „Verfügbarer Clusterspeicher“. Dieser Datenträger ist hochverfügbar und unterstützt ein Failover zwischen Knoten. Er enthält eine Kopie der Clusterdatenbank mit einer Standardgröße, die in der Regel weniger als 1 GB beträgt. Der Datenträgerzeuge ist die bevorzugte Quorumoption für einen virtuellen Azure-Computer, da mit dieser Option im Gegensatz zum Cloudzeugen und Dateifreigabenzeugen das Problem „Partition in der Zeit“ behoben werden kann. 
 
 Konfigurieren Sie einen freigegebenen Azure-Datenträger als Datenträgerzeuge. 
 
 Informationen zu den ersten Schritten finden Sie unter [Konfigurieren eines Datenträgerzeugen](/windows-server/failover-clustering/manage-cluster-quorum#configure-the-cluster-quorum).
 
 
-**Unterstütztes Betriebssystem**: All    
-**Unterstützte SQL-Version**: SQL Server 2019   
+**Unterstütztes Betriebssystem**: All   
 
 
 ### <a name="cloud-witness"></a>Cloudzeuge
@@ -73,21 +72,18 @@ Informationen zu den ersten Schritten finden Sie unter [Konfigurieren eines Clou
 
 
 **Unterstütztes Betriebssystem**: Windows Server 2016 oder höher   
-**Unterstützte SQL-Version**: SQL Server 2016 und höher     
 
 
 ### <a name="file-share-witness"></a>Dateifreigabenzeuge
 
 Ein Dateifreigabezeuge ist eine SMB-Dateifreigabe, die in der Regel auf einem Dateiserver mit Windows Server konfiguriert ist. Dieser Zeuge verwaltet Clusteringinformationen in einer Datei „witness.log“, speichert aber keine Kopie der Clusterdatenbank. In Azure können Sie eine [Azure-Dateifreigabe](../../../storage/files/storage-how-to-create-file-share.md) zur Verwendung als Dateifreigabezeuge konfigurieren, oder Sie können eine Dateifreigabe auf einem separaten virtuellen Computer verwenden.
 
-Wenn Sie eine andere Azure-Dateifreigabe verwenden möchten, können Sie diese mit dem gleichen Prozess einbinden wie die [Premium-Dateifreigabe](failover-cluster-instance-premium-file-share-manually-configure.md#mount-premium-file-share). 
+Wenn Sie eine Azure-Dateifreigabe verwenden möchten, können Sie diese mit dem gleichen Prozess einbinden wie die [Premium-Dateifreigabe](failover-cluster-instance-premium-file-share-manually-configure.md#mount-premium-file-share). 
 
 Informationen zu den ersten Schritten finden Sie unter [Konfigurieren eines Dateifreigabenzeugen](/windows-server/failover-clustering/manage-cluster-quorum#configure-the-cluster-quorum).
 
 
 **Unterstütztes Betriebssystem**: Windows Server 2012 und höher   
-**Unterstützte SQL-Version**: SQL Server 2016 und höher   
-
 
 ## <a name="connectivity"></a>Konnektivität
 

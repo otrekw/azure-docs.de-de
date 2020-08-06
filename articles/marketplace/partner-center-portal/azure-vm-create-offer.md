@@ -1,18 +1,18 @@
 ---
 title: Erstellen eines Azure-VM-Angebots im Azure Marketplace
-description: Erfahren Sie, wie Sie ein VM-Angebot im Azure Marketplace mit der gewünschten SKU erstellen.
+description: Erfahren Sie, wie Sie ein VM-Angebot im Azure Marketplace veröffentlichen.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
+ms.topic: how-to
 author: emuench
 ms.author: mingshen
-ms.date: 06/17/2020
-ms.openlocfilehash: fe53de2c81f9e9df5fd9270951f943b0b3505f1e
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/28/2020
+ms.openlocfilehash: 9db6fbe002492c0db6e9e0e5e0a23ca1946759a5
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86110979"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386434"
 ---
 # <a name="create-an-azure-virtual-machine-offer-on-azure-marketplace"></a>Erstellen eines Azure-VM-Angebots im Azure Marketplace
 
@@ -286,7 +286,7 @@ Wählen Sie **Entwurf speichern** aus, bevor Sie mit dem nächsten Abschnitt for
 
 ## <a name="plan-overview"></a>Planübersicht
 
-Sie können verschiedene Planoptionen innerhalb desselben Angebots in Partner Center angeben. Diese Pläne wurden zuvor als SKUs bezeichnet. Ein Angebot erfordert mindestens einen Plan, der sich hinsichtlich Monetarisierungszielgruppe, Azure-Region, Features und VM-Images unterscheiden kann.
+Sie können verschiedene Planoptionen innerhalb desselben Angebots in Partner Center angeben. Ein Angebot erfordert mindestens einen Plan (zuvor als SKU bezeichnet), der sich hinsichtlich der Monetarisierungszielgruppe, Azure-Region, Features oder VM-Images unterscheiden kann.
 
 Wählen Sie nach dem Erstellen Ihrer Pläne die Registerkarte **Planübersicht** aus, um folgende Informationen anzuzeigen:
 
@@ -368,7 +368,7 @@ Wählen Sie **Entwurf speichern** aus, bevor Sie fortfahren.
 
 In diesem Bereich konfigurieren Sie Folgendes:
 
-- Märkte, in denen dieser Plan verfügbar ist
+- Märkte, in denen dieser Plan verfügbar ist Jeder Plan muss in mindestens einem [Markt](../marketplace-geo-availability-currencies.md) verfügbar sein.
 - Preis pro Stunde
 - Ob der Plan für alle Benutzer oder nur für bestimmte Kunden (eine private Zielgruppe) angezeigt werden soll
 
@@ -412,7 +412,6 @@ Sie können jeden Plan so entwerfen, dass er für alle Benutzer oder nur für ei
 
 >[!Note]
 >Private Angebote werden bei Azure-Abonnements, die über einen Handelspartner des Cloud Solution Provider-Programms (CSP) eingerichtet wurden, nicht unterstützt.
-
 
 #### <a name="hide-a-plan"></a>Ausblenden eines Plans
 
@@ -517,9 +516,9 @@ Die Seite **Angebotsübersicht** weist eine visuelle Darstellung sowohl der abge
 Diese Seite enthält außerdem Links, die Ihnen bei der Arbeit mit dem Angebot helfen, je nach Status:
 
 - Wenn das Angebot ein Entwurf ist: [Delete draft offer](update-existing-offer.md#delete-a-draft-offer) (Angebotsentwurf löschen)
-- Wenn das Angebot live geschaltet wurde: [Stop selling the offer](update-existing-offer.md#stop-selling-an-offer-or-plan) (Angebot nicht mehr verkaufen)
-- Wenn sich das Angebot in der Vorschau befindet: [Go-live](publishing-status.md#publisher-approval) (Live schalten)
-- Wenn keine Bestätigung durch den Herausgeber erfolgt ist: [Cancel publishing](update-existing-offer.md#cancel-publishing) (Veröffentlichung abbrechen)
+- Wenn das Angebot live geschaltet wurde: [Stop selling the offer](update-existing-offer.md#stop-selling-an-offer-or-plan) (Verkauf des Angebots beenden)
+- Wenn sich das Angebot in der Vorschau befindet: [Live schalten](publishing-status.md#publisher-approval)
+- Wenn keine Bestätigung durch den Herausgeber erfolgt ist: [Veröffentlichung abbrechen](update-existing-offer.md#cancel-publishing)
 
 ## <a name="marketplace-examples"></a>Marketplace-Beispiele
 

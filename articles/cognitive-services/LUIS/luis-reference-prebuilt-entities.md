@@ -9,18 +9,26 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
-ms.date: 10/03/2019
+ms.date: 07/20/2020
 ms.author: diberry
-ms.openlocfilehash: a49452653f8ac4bcc62758d801a235be0929d314
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 7ec9cd8aade1edb7d2df2bab5cec8de445af7e44
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84686629"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337975"
 ---
 # <a name="entities-per-culture-in-your-luis-model"></a>Entitäten nach Kultur in Ihrem LUIS-Modell
 
-LUIS stellt vordefinierte Entitäten bereit. Wenn eine vordefinierte Entität in Ihrer Anwendung enthalten ist, schließt LUIS die entsprechende Entitätsvorhersage in die Endpunktantwort ein. Alle Beispieläußerungen sind ebenfalls mit der Entität gekennzeichnet. Das Verhalten der vordefinierten Entitäten **kann nicht** geändert werden. Sofern nicht anders vermerkt, sind vordefinierte Entitäten in allen LUIS-Anwendungsgebietsschemas (Kulturen) verfügbar. Die folgende Tabelle zeigt die vordefinierten Entitäten, die für die jeweilige Kultur unterstützt werden.
+LUIS stellt vordefinierte Entitäten bereit.
+
+## <a name="entity-resolution"></a>Entitätsauflösung
+Wenn eine vordefinierte Entität in Ihrer Anwendung enthalten ist, schließt LUIS die entsprechende Entitätsauflösung in die Endpunktantwort ein. Alle Beispieläußerungen sind ebenfalls mit der Entität gekennzeichnet.
+
+Das Verhalten vordefinierter Entitäten kann nicht geändert werden, aber Sie können die Auflösung verbessern, indem Sie [die vordefinierte Entität als Feature zu einer Entität für maschinelles Lernen oder einer untergeordneten Entität hinzufügen](luis-concept-entity-types.md#effective-prebuilt-entities).
+
+## <a name="availability"></a>Verfügbarkeit
+Sofern nicht anders vermerkt, sind vordefinierte Entitäten in allen LUIS-Anwendungsgebietsschemas (Kulturen) verfügbar. Die folgende Tabelle zeigt die vordefinierten Entitäten, die für die jeweilige Kultur unterstützt werden.
 
 |Kultur|Subkulturen|Notizen|
 |--|--|--|
@@ -44,8 +52,8 @@ Die Verfügbarkeit einer vordefinierten Entität in einer bestimmten Sprache wir
 
 Die folgenden Entitäten werden unterstützt:
 
-|Vordefinierte Entität|```zh-CN``` |
-------|:------:|
+| Vordefinierte Entität | zh-CN |
+| --------------- | :---: |
 [Age](luis-reference-prebuilt-age.md):<br>year<br>month<br>week<br>day   |    V2 und V3   |
 [Währung (Geld)](luis-reference-prebuilt-currency.md):<br>Dollar<br>Untereinheit (z.B. „penny“)  |    V2 und V3   |
 [DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>daterange<br>time<br>timerange   |    V2 und V3   |
@@ -66,8 +74,8 @@ Die folgenden Entitäten werden unterstützt:
 
 Die folgenden Entitäten werden unterstützt:
 
-|Vordefinierte Entität|```nl-NL``` |
-------|:------:|
+| Vordefinierte Entität | nl-NL |
+| --------------- | :---: |
 [Age](luis-reference-prebuilt-age.md):<br>year<br>month<br>week<br>day   |    V2 und V3   |
 [Währung (Geld)](luis-reference-prebuilt-currency.md):<br>Dollar<br>Untereinheit (z.B. „penny“)  |    V2 und V3   |
 [Datetime](luis-reference-prebuilt-deprecated.md)   |    -   |
@@ -88,8 +96,8 @@ Die folgenden Entitäten werden unterstützt:
 
 Die folgenden Entitäten werden unterstützt:
 
-|Vordefinierte Entität|```en-US``` |
-------|:------:|
+| Vordefinierte Entität | de-DE |
+| --------------- | :---: |
 [Age](luis-reference-prebuilt-age.md):<br>year<br>month<br>week<br>day   |    V2 und V3   |
 [Währung (Geld)](luis-reference-prebuilt-currency.md):<br>Dollar<br>Untereinheit (z.B. „penny“)  |    V2 und V3   |
 [DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>daterange<br>time<br>timerange   |    V2 und V3   |
@@ -110,8 +118,8 @@ Die folgenden Entitäten werden unterstützt:
 
 Die folgenden Entitäten werden unterstützt:
 
-|Vordefinierte Entität|```fr-FR``` |
-------|:------:|
+| Vordefinierte Entität | fr-FR |
+| --------------- | :---: |
 [Age](luis-reference-prebuilt-age.md):<br>year<br>month<br>week<br>day   |    V2 und V3   |
 [Währung (Geld)](luis-reference-prebuilt-currency.md):<br>Dollar<br>Untereinheit (z.B. „penny“)  |    V2 und V3   |
 [DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>daterange<br>time<br>timerange   |    V2 und V3   |
@@ -132,8 +140,8 @@ Die folgenden Entitäten werden unterstützt:
 
 Die folgenden Entitäten werden unterstützt:
 
-|Vordefinierte Entität|```fr-CA``` |
-------|:------:|
+| Vordefinierte Entität | fr-CA |
+| --------------- | :---: |
 [Age](luis-reference-prebuilt-age.md):<br>year<br>month<br>week<br>day   |    V2 und V3   |
 [Währung (Geld)](luis-reference-prebuilt-currency.md):<br>Dollar<br>Untereinheit (z.B. „penny“)  |    V2 und V3   |
 [DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>daterange<br>time<br>timerange   |    V2 und V3   |
@@ -154,8 +162,8 @@ Die folgenden Entitäten werden unterstützt:
 
 Die folgenden Entitäten werden unterstützt:
 
-|Vordefinierte Entität|```de-DE``` |
-------|:------:|
+|Vordefinierte Entität | de-DE |
+| -------------- | :---: |
 [Age](luis-reference-prebuilt-age.md):<br>year<br>month<br>week<br>day   |    V2 und V3   |
 [Währung (Geld)](luis-reference-prebuilt-currency.md):<br>Dollar<br>Untereinheit (z.B. „penny“)  |    V2 und V3   |
 [DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>daterange<br>time<br>timerange   |    V2 und V3   |
@@ -178,8 +186,8 @@ Die _Auflösung_ der vordefinierten italienischen Entitäten Alter, Währung, Di
 
 Die folgenden Entitäten werden unterstützt:
 
-|Vordefinierte Entität|```it-IT``` |
-------|:------:|
+| Vordefinierte Entität | it-IT |
+| --------------- | :---: |
 [Age](luis-reference-prebuilt-age.md):<br>year<br>month<br>week<br>day   |    V2 und V3   |
 [Währung (Geld)](luis-reference-prebuilt-currency.md):<br>Dollar<br>Untereinheit (z.B. „penny“)  |    V2 und V3   |
 [Datetime](luis-reference-prebuilt-deprecated.md)   |    -   |
@@ -200,8 +208,8 @@ Die folgenden Entitäten werden unterstützt:
 
 Die folgenden Entitäten werden unterstützt:
 
-|Vordefinierte Entität|```ja-JP``` |
-------|:------:|
+|Vordefinierte Entität | ja-JP |
+| -------------- | :---: |
 [Age](luis-reference-prebuilt-age.md):<br>year<br>month<br>week<br>day   |    V2, -   |
 [Währung (Geld)](luis-reference-prebuilt-currency.md):<br>Dollar<br>Untereinheit (z.B. „penny“)  |    V2, -   |
 [Datetime](luis-reference-prebuilt-deprecated.md)   |    -   |
@@ -222,8 +230,8 @@ Die folgenden Entitäten werden unterstützt:
 
 Die folgenden Entitäten werden unterstützt:
 
-|Vordefinierte Entität|```ko-KR``` |
-------|:------:|
+| Vordefinierte Entität | ko-KR |
+| --------------- | :---: |
 [Age](luis-reference-prebuilt-age.md):<br>year<br>month<br>week<br>day   |    -   |
 [Währung (Geld)](luis-reference-prebuilt-currency.md):<br>Dollar<br>Untereinheit (z.B. „penny“)  |    -   |
 [Datetime](luis-reference-prebuilt-deprecated.md)   |    -   |
@@ -244,8 +252,8 @@ Die folgenden Entitäten werden unterstützt:
 
 Die folgenden Entitäten werden unterstützt:
 
-|Vordefinierte Entität|```pt-BR``` |
-------|:------:|
+| Vordefinierte Entität | pt-BR |
+| --------------- | :---: |
 [Age](luis-reference-prebuilt-age.md):<br>year<br>month<br>week<br>day   |    V2 und V3   |
 [Währung (Geld)](luis-reference-prebuilt-currency.md):<br>Dollar<br>Untereinheit (z.B. „penny“)  |    V2 und V3   |
 [DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>daterange<br>time<br>timerange   |    V2 und V3   |
@@ -266,8 +274,8 @@ Die folgenden Entitäten werden unterstützt:
 
 Die folgenden Entitäten werden unterstützt:
 
-|Vordefinierte Entität|```es-ES``` |
-------|:------:|
+| Vordefinierte Entität | es-ES |
+| --------------- | :---: |
 [Age](luis-reference-prebuilt-age.md):<br>year<br>month<br>week<br>day   |    V2 und V3   |
 [Währung (Geld)](luis-reference-prebuilt-currency.md):<br>Dollar<br>Untereinheit (z.B. „penny“)  |    V2 und V3   |
 [DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>daterange<br>time<br>timerange   |    V2 und V3   |
@@ -288,8 +296,8 @@ Die folgenden Entitäten werden unterstützt:
 
 Die folgenden Entitäten werden unterstützt:
 
-|Vordefinierte Entität|```es-MX``` |
-------|:------:|
+| Vordefinierte Entität | es-MX |
+| --------------- | :---: |
 [Age](luis-reference-prebuilt-age.md):<br>year<br>month<br>week<br>day   |    -   |
 [Währung (Geld)](luis-reference-prebuilt-currency.md):<br>Dollar<br>Untereinheit (z.B. „penny“)  |    -   |
 [DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>daterange<br>time<br>timerange   |    -   |
@@ -316,8 +324,8 @@ Die keyPhrase-Entität ist nicht für alle Unterkulturen von Portugiesisch (Bras
 
 <!--
 
-|Prebuilt entity|```tr-tr``` |
-------|:------:|
+| Prebuilt entity | tr-tr |
+| --------------- | :---: |
 [Age](luis-reference-prebuilt-age.md):<br>year<br>month<br>week<br>day   |    -   |
 [Currency (money)](luis-reference-prebuilt-currency.md):<br>dollar<br>fractional unit (ex: penny)  |    -   |
 [DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>daterange<br>time<br>timerange   |    -   |

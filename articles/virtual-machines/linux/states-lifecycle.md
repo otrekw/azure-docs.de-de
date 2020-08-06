@@ -4,16 +4,16 @@ description: Übersicht über den Lebenszyklus einer VM in Azure, einschließlic
 services: virtual-machines
 author: shandilvarun
 ms.service: virtual-machines
-ms.topic: article
+ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 08/09/2018
 ms.author: vashan
-ms.openlocfilehash: c1452252e6cbd7b741c14c2ea52728ba144c65a1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a12f4156947eb55696ffe2ba067250bd1282989d
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81757856"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292172"
 ---
 # <a name="virtual-machines-lifecycle-and-states"></a>Lebenszyklus und Status virtueller Computer
 
@@ -21,4 +21,4 @@ ms.locfileid: "81757856"
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zum Überwachen Ihres virtuellen Computers finden Sie unter [Informationen zum Überwachen von virtuellen Computern in Azure](monitor.md).
+Weitere Informationen zum Überwachen Ihres virtuellen Computers finden Sie unter [Überwachen von virtuellen Computern in Azure](../../azure-monitor/insights/monitor-vm-azure.md).

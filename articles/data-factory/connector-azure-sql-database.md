@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 07/15/2020
-ms.openlocfilehash: 424f858fff0ad050286122fcbbd03fdef78c11f6
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 0d11e320db5e037f855c01738de592a2d21d60e8
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86497708"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87171484"
 ---
 # <a name="copy-and-transform-data-in-azure-sql-database-by-using-azure-data-factory"></a>Kopieren und Transformieren von Daten in Azure SQL-Datenbank mithilfe von Azure Data Factory
 
@@ -263,7 +263,7 @@ Zum Kopieren von Daten aus Azure SQL-Datenbank werden die folgenden Eigenschafte
 | sqlReaderQuery | Diese Eigenschaft verwendet die benutzerdefinierte SQL-Abfrage zum Lesen von Daten. z. B. `select * from MyTable`. | Nein |
 | sqlReaderStoredProcedureName | Name der gespeicherten Prozedur, die Daten aus der Quelltabelle liest. Die letzte SQL-Anweisung muss eine SELECT-Anweisung in der gespeicherten Prozedur sein. | Nein |
 | storedProcedureParameters | Parameter für die gespeicherte Prozedur.<br/>Zulässige Werte sind Namen oder Name-Wert-Paare. Die Namen und die Groß-/Kleinschreibung von Parametern müssen den Namen und der Groß-/Kleinschreibung der Parameter der gespeicherten Prozedur entsprechen. | Nein |
-| isolationLevel | Gibt das Sperrverhalten für Transaktionen für die SQL-Quelle an. Zulässige Werte sind: **ReadCommitted** (Standard), **ReadUncommitted**, **RepeatableRead**, **Serializable**, **Snapshot**. Weitere Informationen finden Sie in [dieser Dokumentation](https://docs.microsoft.com/dotnet/api/system.data.isolationlevel). | Nein |
+| isolationLevel | Gibt das Sperrverhalten für Transaktionen für die SQL-Quelle an. Zulässige Werte sind: **ReadCommitted**, **ReadUncommitted**, **RepeatableRead**, **Serializable**, **Snapshot**. Ohne Angabe wird die standardmäßige Isolationsstufe der Datenbank verwendet. Weitere Informationen finden Sie in [dieser Dokumentation](https://docs.microsoft.com/dotnet/api/system.data.isolationlevel). | Nein |
 
 **Beachten Sie Folgendes:**
 
@@ -467,7 +467,7 @@ Das Anfügen von Daten ist das Standardverhalten dieses Senkenconnectors für Az
 
 ### <a name="upsert-data"></a>Durchführen von Upsert für Daten
 
-**Option 1:** Wenn Sie große Datenmengen kopieren möchten, können Sie mithilfe der Kopieraktivität für alle Datensätze einen Massenladevorgang in eine Stagingtabelle ausführen. Führen Sie anschließend eine Aktivität der gespeicherten Prozedur aus, um eine [MERGE](https://docs.microsoft.com/sql/t-sql/statements/merge-transact-sql?view=azuresqldb-current)- oder INSERT/UPDATE-Anweisung in einem Schritt anzuwenden. 
+**Option 1:** Wenn Sie große Datenmengen kopieren möchten, können Sie mithilfe der Kopieraktivität für alle Datensätze einen Massenladevorgang in eine Stagingtabelle ausführen. Führen Sie anschließend eine Aktivität einer gespeicherten Prozedur aus, um eine [MERGE](https://docs.microsoft.com/sql/t-sql/statements/merge-transact-sql?view=azuresqldb-current)- oder INSERT/UPDATE-Anweisung in einem Schritt anzuwenden. 
 
 Das Laden von Daten in eine temporäre Datenbanktabelle wird derzeit nicht nativ von der Kopieraktivität unterstützt. Zur Einrichtung dieser Funktion gibt es eine erweiterte Methode, bei der mehrere Aktivitäten kombiniert werden. Informationen hierzu finden Sie unter [Optimieren von Szenarios mit Massenupsert in Azure SQL-Datenbank](https://github.com/scoriani/azuresqlbulkupsert). Das Beispiel unten zeigt die Verwendung einer permanenten Tabelle als Stagingtabelle.
 
@@ -493,7 +493,7 @@ BEGIN
 END
 ```
 
-**Option 2:** Sie können auch [eine gespeicherte Prozedur innerhalb der Kopieraktivität aufrufen](#invoke-a-stored-procedure-from-a-sql-sink). Dabei wird jeder Batch in der Quelltabelle (entsprechend der `writeBatchSize`-Eigenschaft) ausgeführt, statt Masseneinfügen als Standardansatz in der Kopieraktivität zu verwenden.
+**Option 2:** Sie können [eine gespeicherte Prozedur in der Kopieraktivität aufrufen](#invoke-a-stored-procedure-from-a-sql-sink). Dabei wird jeder Batch in der Quelltabelle (entsprechend der `writeBatchSize`-Eigenschaft) ausgeführt, statt Masseneinfügen als Standardansatz in der Kopieraktivität zu verwenden.
 
 **Option 3:** Über die Funktion [Zuordnungsdatenfluss](#sink-transformation) können Sie auch integrierte Insert-/Upsert-/Update-Methoden verwenden.
 
@@ -662,26 +662,26 @@ Dies gilt insbesondere in folgenden Fällen:
 
 1. Richten Sie eine selbstgehostete Integration Runtime ein, sofern noch nicht vorhanden. Im Artikel [Selbstgehostete Integration Runtime](create-self-hosted-integration-runtime.md) finden Sie Details.
 
-2. Laden Sie [hier](https://docs.microsoft.com/sql/connect/odbc/download-odbc-driver-for-sql-server?view=azuresqldb-current) den 64-Bit-ODBC-Treiber für SQL Server herunter, und installieren Sie ihn auf dem Computer mit der Integration Runtime. Weitere Informationen zur Funktionsweise dieses Treibers finden Sie unter [Verwenden von Always Encrypted mit dem ODBC-Treiber for SQL Server](https://docs.microsoft.com/sql/connect/odbc/using-always-encrypted-with-the-odbc-driver?view=azuresqldb-current#using-the-azure-key-vault-provider).
+2. Laden Sie [hier](https://docs.microsoft.com/sql/connect/odbc/download-odbc-driver-for-sql-server?view=azuresqldb-current) den 64-Bit-ODBC-Treiber für SQL Server herunter, und installieren Sie ihn auf dem Computer mit der Integration Runtime. Weitere Informationen zur Funktionsweise dieses Treibers finden Sie unter [Verwendung von Always Encrypted mit dem ODBC-Treiber für SQL Server](https://docs.microsoft.com/sql/connect/odbc/using-always-encrypted-with-the-odbc-driver?view=azuresqldb-current#using-the-azure-key-vault-provider).
 
-3. Erstellen Sie, wie in den folgenden Beispielen gezeigt, einen verknüpften Dienst mit dem ODBC-Typ, um eine Verbindung mit Ihrer SQL-Datenbankinstanz herzustellen:
+3. Erstellen Sie einen verknüpften Dienst mit dem ODBC-Typ für die Verbindung mit Ihrer SQL-Datenbank. Nachfolgend sind einige Beispiele gezeigt:
 
-    - Mit **SQL-Authentifizierung**: Geben Sie die ODBC-Verbindungszeichenfolge wie im folgenden Beispiel gezeigt an, und wählen Sie die Option **Standardauthentifizierung** aus, um den Benutzernamen und das Kennwort festzulegen.
+    - Zur Verwendung der **SQL-Authentifizierung**: Geben Sie die ODBC-Verbindungszeichenfolge wie unten gezeigt an, und wählen Sie die **Standardauthentifizierung** zum Festlegen von Benutzername und Kennwort aus.
 
         ```
         Driver={ODBC Driver 17 for SQL Server};Server=<serverName>;Database=<databaseName>;ColumnEncryption=Enabled;KeyStoreAuthentication=KeyVaultClientSecret;KeyStorePrincipalId=<servicePrincipalKey>;KeyStoreSecret=<servicePrincipalKey>
         ```
 
-    - Mit **Authentifizierung über die verwaltete Data Factory-Identität**: 
+    - Zur Verwendung der **Authentifizierung der verwalteten Identität über Data Factory**: 
 
-        1. Befolgen Sie die [Voraussetzungen](#managed-identity) für das Erstellen eines Datenbankbenutzers für die verwaltete Identität, und erteilen Sie der Datenbank die entsprechende Rolle.
-        2. Geben Sie im verknüpften Dienst die ODBC-Verbindungszeichenfolge wie im folgenden Beispiel gezeigt an, und wählen Sie die Option **Anonyme Authentifizierung** aus, da die Verbindungszeichenfolge selbst `Authentication=ActiveDirectoryMsi` angibt.
+        1. Stellen Sie sicher, dass diese [Voraussetzungen](#managed-identity) erfüllt sind, um einen Datenbankbenutzer für die verwaltete Identität zu erstellen, und weisen Sie in Ihrer Datenbank die entsprechende Rolle zu.
+        2. Geben Sie im verknüpften Dienst die ODBC-Verbindungszeichenfolge wie unten gezeigt an, und wählen Sie die **anonyme Authentifizierung** aus, da die Verbindungszeichenfolge selbst `Authentication=ActiveDirectoryMsi` angibt.
 
         ```
         Driver={ODBC Driver 17 for SQL Server};Server=<serverName>;Database=<databaseName>;ColumnEncryption=Enabled;KeyStoreAuthentication=KeyVaultClientSecret;KeyStorePrincipalId=<servicePrincipalKey>;KeyStoreSecret=<servicePrincipalKey>; Authentication=ActiveDirectoryMsi;
         ```
 
-4. Erstellen Sie ein Dataset und eine Kopieraktivität mit dem ODBC-Typ. Weitere Informationen finden Sie im Artikel [ODBC-Connector](connector-odbc.md).
+4. Erstellen Sie ein Dataset und eine Kopieraktivität mit dem ODBC-Typ. Weitere Informationen finden Sie im Artikel zum [ODBC-Connector](connector-odbc.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

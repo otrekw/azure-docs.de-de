@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 07/25/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7f2c7a6f9c1146627f81dc20386c59a91724b245
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c1a3d0b05f04ad8c182d428843479160666b96ee
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84698953"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87070319"
 ---
 # <a name="deploy-storsimple-virtual-array---prepare-the-azure-portal"></a>Bereitstellen von StorSimple Virtual Array – Vorbereiten des Azure-Portals
 
-![](./media/storsimple-virtual-array-deploy1-portal-prep/getstarted4.png)
+![Abbildung der Schritte, die zur Bereitstellung eines virtuellen Arrays erforderlich sind. Der erste Schritt ist mit „Erste Schritte“ bezeichnet und hervorgehoben.](./media/storsimple-virtual-array-deploy1-portal-prep/getstarted4.png)
 
 
 ## <a name="overview"></a>Übersicht
@@ -87,7 +87,7 @@ Stellen Sie Folgendes sicher, bevor Sie beginnen:
 
 Verwenden Sie die folgende Schritt-für-Schritt-Anleitung, um Ihr Portal für den StorSimple-Geräte-Manager-Dienst vorzubereiten.
 
-## <a name="step-1-create-a-new-service"></a>Schritt 1: Erstellen eines neuen Diensts
+## <a name="step-1-create-a-new-service"></a>Schritt 1: Erstellen eines neuen Diensts
 
 Mit einer einzelnen Instanz des StorSimple-Geräte-Manager-Diensts können mehrere StorSimple Virtual Arrays verwaltet werden. Führen Sie die folgenden Schritte aus, um eine Instanz des StorSimple-Geräte-Manager-Diensts zu erstellen. Falls Sie einen vorhandenen StorSimple-Geräte-Manager-Dienst zum Verwalten Ihrer virtuellen Arrays verwenden, können Sie diesen Schritt überspringen und mit [Schritt 2: Abrufen des Dienstregistrierungsschlüssels](#step-2-get-the-service-registration-key) fortfahren.
 
@@ -97,7 +97,7 @@ Mit einer einzelnen Instanz des StorSimple-Geräte-Manager-Diensts können mehre
 > Wenn Sie nicht die automatische Erstellung eines Speicherkontos mit Ihrem Dienst aktiviert haben, müssen Sie mindestens ein Speicherkonto erstellen, nachdem Sie einen Dienst erstellt haben.
 > 
 > * Wenn Sie nicht automatisch ein Speicherkonto erstellt haben, finden Sie unter [Konfigurieren eines neuen Speicherkontos für den Dienst](#optional-step-configure-a-new-storage-account-for-the-service) ausführliche Anweisungen.
-> * Wenn Sie die automatische Erstellung eines Speicherkontos aktiviert haben, fahren Sie mit [Schritt 2: Abrufen des Dienstregistrierungsschlüssels](#step-2-get-the-service-registration-key)fort.
+> * Wenn Sie die automatische Erstellung eines Speicherkontos aktiviert haben, fahren Sie mit Folgendem fort: [Schritt 2: Abrufen des Dienstregistrierungsschlüssels](#step-2-get-the-service-registration-key).
 > 
 > 
 

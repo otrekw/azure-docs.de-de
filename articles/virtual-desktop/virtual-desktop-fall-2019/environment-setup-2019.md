@@ -1,6 +1,6 @@
 ---
-title: 'Windows Virtual Desktop-Umgebung: Azure'
-description: Enthält eine Beschreibung der grundlegenden Elemente einer Windows Virtual Desktop-Umgebung.
+title: 'Windows Virtual Desktop-Umgebung (klassisch): Azure'
+description: Enthält eine Beschreibung der grundlegenden Elemente einer Windows Virtual Desktop-Umgebung (klassisch).
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 153532b3c33158ee1a43db7883eb7a9ec621ade7
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 2c019dd187c0ccd7a63f71c0373a0388135afda9
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86241674"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285015"
 ---
-# <a name="windows-virtual-desktop-environment"></a>Windows Virtual Desktop-Umgebung
+# <a name="windows-virtual-desktop-classic-environment"></a>Windows Virtual Desktop-Umgebung (klassisch)
 
 >[!IMPORTANT]
->Dieser Inhalt gilt für das Release vom Herbst 2019, das keine Windows Virtual Desktop-Objekte in Azure Resource Manager unterstützt. Wenn Sie Windows Virtual Desktop-Objekte in Azure Resource Manager verwalten möchten, die im Update vom Frühjahr 2020 eingeführt wurden, finden Sie weitere Informationen in [diesem Artikel](../environment-setup.md).
+>Dieser Inhalt gilt für Windows Virtual Desktop (klassisch). Der Dienst unterstützt keine Windows Virtual Desktop-Objekte in Azure Resource Manager. Wenn Sie Windows Virtual Desktop-Objekte in Azure Resource Manager verwalten möchten, helfen Ihnen die Informationen in [diesem Artikel](../environment-setup.md) weiter.
 
 Windows Virtual Desktop ist ein Dienst, mit dem Benutzer einfachen und sicheren Zugriff auf ihre virtualisierten Desktops und RemoteApps erhalten. In diesem Thema wird die allgemeine Struktur der Windows Virtual Desktop-Umgebung näher erläutert.
 

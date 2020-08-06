@@ -5,15 +5,15 @@ services: virtual-machines
 ms.subservice: sizes
 author: vikancha-MSFT
 ms.service: virtual-machines
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 9f5d5bd9775507a663a4171faa8b8892357f65b0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9ea48eedf03c34e5269e65c70f04b45bd73172cf
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84736542"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284760"
 ---
 # <a name="nvv3-series"></a>NVv3-Serie
 
@@ -27,13 +27,15 @@ Livemigration: Nicht unterstützt
 
 Updates mit Speicherbeibehaltung: Nicht unterstützt
 
-| Size | vCPU | Memory: GiB | Temporärer Speicher (SSD): GiB | GPU | GPU-Arbeitsspeicher: GiB | Max. Anzahl Datenträger | Maximaler Durchsatz des Datenträgers ohne Cache: IOPS/MBit/s | Maximale Anzahl NICs | Virtuelle Arbeitsstationen | Virtuelle Anwendungen |
+| Size | vCPU | Memory: GiB | Temporärer Speicher (SSD): GiB | GPU | GPU-Arbeitsspeicher: GiB | Max. Anzahl Datenträger | Maximaler Durchsatz des Datenträgers ohne Cache: IOPS/MBit/s | Maximale Anzahl NICs/Erwartete Netzwerkbandbreite (MBit/s) | Virtuelle Arbeitsstationen | Virtuelle Anwendungen |
 |---|---|---|---|---|---|---|---|---|---|---|
-| Standard_NV12s_v3 |12 | 112 | 320  | 1 | 8  | 12 | 20.000/200 | 4 | 1 | 25  |
-| Standard_NV24s_v3 |24 | 224 | 640  | 2 | 16 | 24 | 40.000/400 | 8 | 2 | 50  |
-| Standard_NV48s_v3 |48 | 448 | 1280 | 4 | 32 | 32 | 80.000/800 | 8 | 4 | 100 |
+| Standard_NV12s_v3 |12 | 112 | 320  | 1 | 8  | 12 | 20.000/200 | 4/6000 | 1 | 25  |
+| Standard_NV24s_v3 |24 | 224 | 640  | 2 | 16 | 24 | 40.000/400 | 8 / 12000 | 2 | 50  |
+| Standard_NV48s_v3 |48 | 448 | 1280 | 4 | 32 | 32 | 80.000/800 | 8/24000 | 4 | 100 |
 
-1 GPU = halbe M60-Karte
+<sup>1</sup> 1 GPU = halbe M60-Karte
+
+<sup>2</sup> Derzeit wird der beschleunigte Netzwerkbetrieb auf dieser VM-Familie nicht unterstützt, sodass die reale Netzwerkleistung möglicherweise niedriger ist als die hier erfassten theoretischen Spitzenwerte.
 
 [!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
 

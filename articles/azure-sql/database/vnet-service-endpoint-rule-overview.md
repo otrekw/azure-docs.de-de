@@ -11,12 +11,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto, genemi
 ms.date: 11/14/2019
-ms.openlocfilehash: 51d7ae8671d4b57e1822aa1c4ee5bf30a5f24cbd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c1ac3c1e312704f8a0afa751d0efc6d0cef897f9
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85253986"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371769"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-servers-in-azure-sql-database"></a>Verwenden von Virtual Network-Dienstendpunkten und -Regeln für Server in Azure SQL-Datenbank
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -31,8 +31,6 @@ Damit eine VNET-Regel erstellt werden kann, muss zuerst ein [VNET-Dienstendpunkt
 ## <a name="how-to-create-a-virtual-network-rule"></a>Erstellen einer VNET-Regel
 
 Wenn Sie nur eine VNET-Regel erstellen, können Sie mit den Schritten und der Erklärung [weiter unten in diesem Artikel](#anchor-how-to-by-using-firewall-portal-59j) fortfahren.
-
-<!--<a name="anch-details-about-vnet-rules-38q"/> -->
 
 ## <a name="details-about-virtual-network-rules"></a>Details zu VNET-Regeln
 
@@ -141,7 +139,7 @@ PolyBase wird häufig verwendet, um Daten aus Azure Storage-Konten in Azure Syn
 1. Navigieren Sie unter Ihrem Speicherkonto zu **Zugriffssteuerung (IAM)** , und wählen Sie **Rollenzuweisung hinzufügen** aus. Weisen Sie dem Server, auf der Ihre bei Azure Active Directory (AAD) registrierte Azure Synapse Analytics-Instanz gehostet wird, die RBAC-Rolle **Mitwirkender an Storage-Blobdaten** zu (wie in Schritt 1).
 
    > [!NOTE]
-   > Nur Mitglieder mit der Berechtigung „Besitzer“ für das Speicherkonto können diesen Schritt ausführen. Verschiedene integrierte Rollen für Azure-Ressourcen finden Sie in [diesem Leitfaden](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles).
+   > Nur Mitglieder mit der Berechtigung „Besitzer“ für das Speicherkonto können diesen Schritt ausführen. Verschiedene integrierte Azure-Rollen finden Sie in diesem [Leitfaden](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles).
   
 1. **PolyBase-Konnektivität mit dem Azure Storage-Konto:**
 

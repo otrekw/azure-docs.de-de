@@ -3,16 +3,16 @@ title: Informationen zur Sicherung von Azure-VMs
 description: In diesem Artikel erfahren Sie, wie der Azure Backup-Dienst virtuelle Azure-Computer sichert und wie bewährte Methoden befolgt werden können.
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: 9838f4993e71f2991500af0e152abee36f996050
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3c73b489404d1e8198fbd984b5188a7a2ccb973f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84322908"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091044"
 ---
 # <a name="an-overview-of-azure-vm-backup"></a>Ein Überblick über die Sicherung von Azure-VMs
 
-In diesem Artikel wird beschrieben, wie Azure-VMs (Virtual Machines) mit dem Dienst [Azure Backup](backup-introduction-to-azure-backup.md) gesichert werden.
+In diesem Artikel wird beschrieben, wie Azure-VMs (Virtual Machines) mit dem Dienst [Azure Backup](./backup-overview.md) gesichert werden.
 
 Azure Backup bietet unabhängige und isolierte Sicherungen zum Schutz vor dem versehentlichen Löschen der Daten auf Ihren VMs. Sicherungen werden in einem Recovery Services-Tresor mit integrierter Verwaltung von Wiederherstellungspunkten gespeichert. Konfiguration und Skalierung sind unkompliziert. Sicherungen werden außerdem optimiert und können bei Bedarf problemlos wiederhergestellt werden.
 
@@ -26,8 +26,8 @@ Hier erfahren Sie, wie Azure Backup eine Sicherung für Azure-VMs durchführt:
 
 1. Für Azure-VMs, die zur Sicherung ausgewählt sind, startet Azure Backup einen Sicherungsauftrag gemäß dem von Ihnen angegebenen Sicherungszeitplan.
 1. Während der ersten Sicherung wird auf dem virtuellen Computer eine Sicherungserweiterung installiert, wenn die VM ausgeführt wird.
-    - Für virtuelle Windows-Computer wird die [Erweiterung VMSnapshot](https://docs.microsoft.com/azure/virtual-machines/extensions/vmsnapshot-windows) installiert.
-    - Für virtuelle Linux-Computer wird die [Erweiterung VMSnapshotLinux](https://docs.microsoft.com/azure/virtual-machines/extensions/vmsnapshot-linux) installiert.
+    - Für virtuelle Windows-Computer wird die [Erweiterung VMSnapshot](../virtual-machines/extensions/vmsnapshot-windows.md) installiert.
+    - Für virtuelle Linux-Computer wird die [Erweiterung VMSnapshotLinux](../virtual-machines/extensions/vmsnapshot-linux.md) installiert.
 1. Bei ausgeführten Windows-VMs erstellt Azure Backup in Koordination mit dem Volumeschattenkopie-Dienst (Volume Shadow Copy Service, VSS) von Windows eine App-konsistente Momentaufnahme des virtuellen Computers.
     - Backup erstellt standardmäßig vollständige VSS-Sicherungen.
     - Wenn Backup keine App-konsistente Momentaufnahme erstellen kann, wird eine dateikonsistente Momentaufnahme des zugrunde liegenden Speichers erstellt (weil keine Schreibvorgänge der Anwendung stattfinden, solange die VM beendet ist).
@@ -64,7 +64,7 @@ BEKs werden auch gesichert. Wenn die BEKs verloren gehen, können autorisierte B
 
 Azure Backup erstellt Momentaufnahmen gemäß des Sicherungszeitplans.
 
-- **Virtuelle Windows-Computer:** Für virtuelle Windows-Computer erstellt der Backup-Dienst in Zusammenarbeit mit VSS eine App-konsistente Momentaufnahme der VM-Datenträger.  Standardmäßig führt Azure Backup eine vollständige VSS-Sicherung durch (die Protokolle der Anwendung, z. B. SQL Server zum Zeitpunkt der Sicherung, werden abgeschnitten, um eine konsistente Sicherung auf Anwendungsebene zu erhalten).  Wenn Sie in einer Azure-VM-Sicherung eine SQL Server-Datenbank verwenden, können Sie die Einstellung ändern, um eine VSS-Kopiesicherung (zum Beibehalten von Protokollen) zu erstellen. [hier finden Sie weitere Informationen](https://docs.microsoft.com/azure/backup/backup-azure-vms-troubleshoot#troubleshoot-vm-snapshot-issues)
+- **Virtuelle Windows-Computer:** Für virtuelle Windows-Computer erstellt der Backup-Dienst in Zusammenarbeit mit VSS eine App-konsistente Momentaufnahme der VM-Datenträger.  Standardmäßig führt Azure Backup eine vollständige VSS-Sicherung durch (die Protokolle der Anwendung, z. B. SQL Server zum Zeitpunkt der Sicherung, werden abgeschnitten, um eine konsistente Sicherung auf Anwendungsebene zu erhalten).  Wenn Sie in einer Azure-VM-Sicherung eine SQL Server-Datenbank verwenden, können Sie die Einstellung ändern, um eine VSS-Kopiesicherung (zum Beibehalten von Protokollen) zu erstellen. [hier finden Sie weitere Informationen](./backup-azure-vms-troubleshoot.md#troubleshoot-vm-snapshot-issues)
 
 - **Virtuelle Linux-Computer:** Um App-konsistente Momentaufnahmen der Linux-VMs zu erstellen, verwenden Sie das Linux-Framework für vorher und nachher auszuführende Skripts (Pre- und Post-Skripts), um Ihre eigenen benutzerdefinierten Skripts zu schreiben und Konsistenz zu gewährleisten.
 
@@ -81,6 +81,9 @@ In der folgenden Tabelle werden die verschiedenen Typen der Konsistenz von Momen
 **Anwendungskonsistent** | Anwendungskonsistente Sicherungen erfassen Speicherinhalte und ausstehende E/A-Vorgänge. App-konsistente Momentaufnahmen verwenden einen VSS Writer (oder Pre-/Post-Skripts für Linux), um die Konsistenz der App-Daten zu gewährleisten, ehe eine Sicherung erfolgt. | Wenn Sie die Wiederherstellung einer VM mit einer anwendungskonsistenten Momentaufnahme durchführen, wird die VM hochgefahren. Es kommt weder zu einer Beschädigung noch zum Verlust von Daten. Die Apps starten in einem konsistenten Zustand. | Windows: Alle VSS-Writer wurden erfolgreich abgeschlossen.<br/><br/> Linux: Pre-/Post-Skripts sind konfiguriert und erfolgreich abgeschlossen.
 **Dateisystemkonsistent** | Dateisystemkonsistente Sicherungen bieten Konsistenz, indem eine Momentaufnahme aller Dateien gleichzeitig erstellt wird.<br/><br/> | Wenn Sie die Wiederherstellung einer VM mit einer dateisystemkonsistenten Momentaufnahme durchführen, wird die VM hochgefahren. Es kommt weder zu einer Beschädigung noch zum Verlust von Daten. Apps müssen einen eigenen Reparaturmechanismus implementieren, um sicherzustellen, dass wiederhergestellte Daten konsistent sind. | Windows: Fehler bei einigen VSS-Writern <br/><br/> Linux: Standardmäßig (wenn Pre-/Post-Skripts nicht konfiguriert oder bei ihnen Fehler aufgetreten sind)
 **Absturzkonsistent** | Absturzkonsistente Momentaufnahmen treten in der Regel auf, wenn eine Azure-VM zum Zeitpunkt der Sicherung heruntergefahren wird. Nur die Daten, die zum Zeitpunkt der Sicherung bereits auf dem Datenträger vorhanden sind, werden erfasst und gesichert. | Beginnt mit dem VM-Startvorgang, gefolgt von einer Überprüfung des Datenträgers, um Beschädigungen zu beheben. Alle Daten im Arbeitsspeicher oder Schreibvorgänge, die vor dem Absturz nicht vollständig auf den Datenträger übertragen wurden, gehen verloren. Apps implementieren ihre eigene Datenüberprüfung. Beispielsweise kann eine Datenbank-App das Transaktionsprotokoll für die Überprüfung verwenden. Falls das Transaktionsprotokoll Einträge enthält, die nicht in der Datenbank vorhanden sind, führt die Datenbanksoftware ein Transaktionenrollback durch, bis die Daten konsistent sind. | Der virtuelle Computer befindet sich im heruntergefahrenen (beendeten/neu zugeordneten) Zustand.
+
+>[!NOTE]
+> Wenn der Bereitstellungsstatus **Erfolgreich** war, führt Azure Backup dateisystemkonsistente Sicherungen aus. Wenn der Bereitstellungsstatus **Nicht verfügbar** oder **Fehlerhaft** war, werden absturzkonsistente Sicherungen durchgeführt. Wenn der Bereitstellungsstatus **Wird erstellt** oder **Wird gelöscht** ist, bedeutet dies, dass Azure Backup den Vorgang wiederholt.
 
 ## <a name="backup-and-restore-considerations"></a>Überlegungen zu Sicherung und Wiederherstellung
 
@@ -108,8 +111,8 @@ Diese gängigen Szenarien können die gesamte Sicherungsdauer beeinflussen:
 Berücksichtigen Sie beim Konfigurieren von VM-Sicherungen die folgenden bewährten Methoden:
 
 - Ändern Sie die in einer Richtlinie festgelegten Standardzeiten des Zeitplans. Wenn die Standardzeit in der Richtlinie beispielsweise auf 0:00 Uhr festgelegt ist, setzen Sie sie um einigen Minuten herauf, damit die Ressourcen optimal verwendet werden.
-- Wenn Sie VMs in einem einzigen Tresor wiederherstellen, sollten Sie unbedingt verschiedene [„Allgemein v2“-Speicherkonten](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade) verwenden, um sicherzustellen, dass das Zielspeicherkonto nicht gedrosselt wird. Beispielsweise muss jeder virtuelle Computer über ein anderes Speicherkonto verfügen. Wenn also 10 virtuelle Computer wiederhergestellt werden, verwenden Sie 10 verschiedene Speicherkonten.
-- Wenn Sie virtuelle Computer, die Storage Premium verwenden, mit der sofortigen Wiederherstellung sichern, empfiehlt es sich, *50 %* freien Speicherplatz des gesamten zugeordneten Speicherplatzes zuzuweisen, der **nur** für die erste Sicherung erforderlich ist. Der freie Speicherplatz von 50 % ist keine Voraussetzung für Sicherungen, die nach Abschluss der ersten Sicherung ausgeführt werden.
+- Wenn Sie VMs in einem einzigen Tresor wiederherstellen, sollten Sie unbedingt verschiedene [„Allgemein v2“-Speicherkonten](../storage/common/storage-account-upgrade.md) verwenden, um sicherzustellen, dass das Zielspeicherkonto nicht gedrosselt wird. Beispielsweise muss jeder virtuelle Computer über ein anderes Speicherkonto verfügen. Wenn also 10 virtuelle Computer wiederhergestellt werden, verwenden Sie 10 verschiedene Speicherkonten.
+- Wenn Sie virtuelle Storage Premium-Computer mit der sofortigen Wiederherstellung sichern, empfiehlt es sich, *50 %* freien Speicherplatz des gesamten zugeordneten Speicherplatzes zuzuordnen. Er wird **nur** für die erste Sicherung benötigt. Der freie Speicherplatz von 50 % ist keine Voraussetzung für Sicherungen, die nach Abschluss der ersten Sicherung ausgeführt werden.
 - Die maximale Anzahl von Datenträgern pro Speicherkonto hängt davon ab, wie stark Anwendungen, die auf einer IaaS-VM (Infrastructure-as-a-Service) ausgeführt werden, auf den Datenträger zugreifen. Wenn 5 bis 10 Datenträger oder mehr in einem einzelnen Speicherkonto vorhanden sind, sollten Sie grundsätzlich die Last ausgleichen, indem Sie einige Datenträger in getrennte Speicherkonten verschieben.
 
 ## <a name="backup-costs"></a>Sicherungskosten

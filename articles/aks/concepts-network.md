@@ -4,12 +4,12 @@ description: Lernen Sie Netzwerke in Azure Kubernetes Service (AKS) kennen, eins
 ms.topic: conceptual
 ms.date: 06/11/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: d0e2c193e626b2d82fc57ef0699a2558ec3a9629
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: dacb14664b21412df1b1d48c023017378cf364c9
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86244649"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387760"
 ---
 # <a name="network-concepts-for-applications-in-azure-kubernetes-service-aks"></a>Netzwerkkonzepte für Anwendungen in Azure Kubernetes Service (AKS)
 
@@ -105,7 +105,7 @@ Folgende Unterschiede treten im Verhalten von kubenet und Azure CNI auf:
 | Verfügbarmachen von Kubernetes-Diensten über einen Lastenausgleichsdienst, App Gateway oder einen Eingangscontroller | Unterstützt | Unterstützt |
 | Standard: Azure DNS und private Zonen                                                          | Unterstützt | Unterstützt |
 
-DNS wird sowohl bei kubenet- als auch bei Azure-CNI-Plug-Ins von CoreDNS bereitgestellt, einem in AKS ausgeführten Deamonset. Weitere Informationen zu CoreDNS in Kubernetes finden Sie unter [Anpassen des DNS-Dienst](https://kubernetes.io/docs/tasks/administer-cluster/dns-custom-nameservers/). CoreDNS ist standardmäßig so konfiguriert, dass unbekannte Domänen an die Knoten-DNS-Server weitergeleitet werden, also an die DNS-Funktionalität der Azure Virtual Network-Instanz, in der der AKS-Cluster bereitgestellt wird. Daher können Azure DNS und private Zonen für Pods verwendet werden, die in AKS ausgeführt werden.
+DNS wird sowohl mit Kubenet- als auch mit Azure-CNI-Plug-Ins von CoreDNS angeboten, einer Bereitstellung, die in AKS mit eigener automatischer Skalierung ausgeführt wird. Weitere Informationen zu CoreDNS in Kubernetes finden Sie unter [Anpassen des DNS-Dienst](https://kubernetes.io/docs/tasks/administer-cluster/dns-custom-nameservers/). CoreDNS ist standardmäßig so konfiguriert, dass unbekannte Domänen an die Knoten-DNS-Server weitergeleitet werden, also an die DNS-Funktionalität der Azure Virtual Network-Instanz, in der der AKS-Cluster bereitgestellt wird. Daher können Azure DNS und private Zonen für Pods verwendet werden, die in AKS ausgeführt werden.
 
 ### <a name="support-scope-between-network-models"></a>Supportumfang der Netzwerkmodelle
 

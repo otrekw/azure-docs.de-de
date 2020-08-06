@@ -9,21 +9,21 @@ ms.topic: conceptual
 ms.author: daperlov
 author: djpmsft
 manager: anandsub
-ms.date: 10/10/2019
-ms.openlocfilehash: f033651eb7e52ba60cce9b74941a4ef0eb376d2b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/16/2020
+ms.openlocfilehash: 7239c1516c4a04b57249ea4f39bff4aec9156d72
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81418999"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337686"
 ---
 # <a name="execute-azure-machine-learning-pipelines-in-azure-data-factory"></a>Ausführen von Azure Machine Learning-Pipelines in Azure Data Factory-Pipelines
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Führen Sie Ihre Azure Machine Learning-Pipelines als Schritt in Ihren Azure Data Factory-Pipelines aus. Die Machine Learning-Pipelineausführungsaktivität ermöglicht Batchvorhersageszenarien wie etwa die Ermittlung möglicher Kreditausfälle, die Ermittlung der Stimmung oder die Analyse von Kundenverhaltensmustern.
 
-Das nachstehende Video enthält eine Einführung und eine Demonstration dieses Features (Dauer 6 Minuten).
+Das folgende Video enthält eine sechsminütige Einführung und Demonstration dieses Features.
 
 > [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/How-to-execute-Azure-Machine-Learning-service-pipelines-in-Azure-Data-Factory/player]
 
@@ -60,6 +60,9 @@ experimentName | Name des Ausführungsverlaufexperiments der Machine Learning-P
 mlPipelineParameters | Schlüssel-Wert-Paare, die an den veröffentlichten Azure Machine Learning-Pipeline-Endpunkt übergeben werden sollen. Die Schlüssel müssen den Namen von Pipelineparametern entsprechen, die in der veröffentlichten Machine Learning-Pipeline definiert sind. | Objekt mit Schlüssel-Wert-Paaren (oder Ausdruck mit resultType-Objekt) | Nein
 mlParentRunId | ID der übergeordneten Azure Machine Learning-Pipelineausführung | Zeichenfolge (oder ein Ausdruck mit resultType der Zeichenfolge) | Nein
 continueOnStepFailure | Gibt an, ob die Ausführung weiterer Schritte in der Machine Learning-Pipelineausführung fortgesetzt werden soll, wenn ein Schritt nicht erfolgreich war. | boolean | Nein
+
+> [!NOTE]
+> Zum Auffüllen der Dropdownelemente im Namen und der ID der Machine Learning-Pipeline muss der Benutzer berechtigt sein, ML-Pipelines aufzulisten. ADF UX ruft AzureMLService-APIs mithilfe der Anmeldeinformationen des angemeldeten Benutzers direkt auf.  
 
 ## <a name="next-steps"></a>Nächste Schritte
 In den folgenden Artikeln erfahren Sie, wie Daten auf andere Weisen transformiert werden:

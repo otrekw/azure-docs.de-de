@@ -1,20 +1,22 @@
 ---
-title: 'Marketplace-Erkenntnisse: kommerzieller Microsoft-Marketplace'
+title: Marketplace-Erkenntnisse – Kommerzieller Microsoft-Marketplace, Microsoft AppSource und Azure Marketplace
 description: Nutzen Sie eine Zusammenfassung der Marketplace-Webanalysen, mit denen Sie die Kundeninteraktion in Microsoft AppSource- und Azure Marketplace messen können.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
-ms.date: 12/16/2019
-ms.openlocfilehash: 8b5f90449f27007febe93f1193c6d2245b076e7e
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.topic: article
+ms.date: 07/22/2019
+author: mingshen-ms
+ms.author: mingshen
+ms.openlocfilehash: 877d5436628fdeb973f6d7f30cc71e91eeb92364
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120397"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323280"
 ---
 # <a name="marketplace-insights-dashboard-in-partner-center"></a>Dashboard mit Marketplace-Erkenntnissen in Partner Center
 
-Dieser Artikel bietet Informationen zum Dashboard „Marketplace-Erkenntnisse“ im Partner Center. In diesem Dashboard wird eine Zusammenfassung der Marketplace-Webanalysen angezeigt, mit deren Hilfe Herausgeber die Kundeninteraktion mit ihren jeweiligen Produktdetailseiten messen können, die in den Marketplace-Storefronts gelistet sind: Microsoft AppSource und Azure Marketplace.
+Dieser Artikel bietet Informationen zum Dashboard „Marketplace-Erkenntnisse“ im Partner Center. In diesem Dashboard wird eine Zusammenfassung der Marketplace-Webanalysen angezeigt, mit deren Hilfe Herausgeber die Kundeninteraktion mit ihren jeweiligen Produktdetailseiten messen können, die in den Storefronts des kommerziellen Marketplace aufgelistet sind: Microsoft AppSource und Azure Marketplace.
 
 ## <a name="marketplace-insights-dashboard"></a>Dashboard „Marketplace-Erkenntnisse“
 
@@ -25,18 +27,20 @@ Sie können grafische Darstellungen folgender Elemente anzeigen:
 - [Marketplace-Erkenntnisse – Zusammenfassung](#marketplace-insights-summary)
 - [Seitenbesuche nach Geografie](#page-visits-by-geography)  
 - [Trend: Seitenbesuche/unterschiedliche Besucher im Vergleich](#page-visits-versus-unique-visitors-trend)
-- [Handlungsaufforderung/unterschiedliche Besucher mit Handlungsaufforderungen im Vergleich](#call-to-action-versus-unique-visitors-with-ctas)
+- [Handlungsaufforderung (Call-to-Action, CTA)/unterschiedliche Besucher mit CTAs im Vergleich](#call-to-action-versus-unique-visitors-with-ctas)
 - [Seitenbesuche und Handlungsaufforderung nach Angeboten](#page-visits-and-calls-to-action-by-offers)
 - [Trend für Handlungsaufforderungen in Prozent](#call-to-action-percentage-trend)
 - [Seitenbesuche und Handlungsaufforderungen nach Empfehlungsdomänen](#page-visits-and-calls-to-action-by-referral-domains)
 - [Marketplace-Erkenntnisse – Tabelle „Details“](#marketplace-insights-details-table)
+
+Die maximale Latenz zwischen dem Zeitpunkt, zu dem sich Benutzer Angebote im Azure Marketplace oder in AppSource ansehen, und der Berichterstattung im Partner Center beträgt 48 Stunden.
 
 >[!NOTE]
 > Ausführliche Definitionen der Analyseterminologie finden Sie unter [Analysen für den kommerziellen Marketplace: Häufig gestellte Fragen und Terminologie](./faq-terminology.md).
 
 ### <a name="insights-dashboard-layout"></a>Layout des Dashboards „Erkenntnisse“
 
-Sie können die Marketplace-Metriken auf verschiedene Arten anzeigen:
+Sie können Metriken des kommerziellen Marketplace auf verschiedene Arten anzeigen:
 
 - Storefront-Registerkarten
 - Seitenfilter
@@ -74,7 +78,7 @@ Dieser Wert steht für die Anzahl individueller Benutzer im ausgewählten Datums
 
 ### <a name="call-to-action"></a>Call-to-Action (Handlungsaufforderung)
 
-Dieser Wert steht für die Anzahl von Klicks auf die Schaltfläche **Handlungsaufforderung**, die auf der Angebotsseite (Produktdetailseite) ausgeführt wurden. **Handlungsaufforderungen** werden gezählt, wenn die Schaltflächen **Jetzt abrufen**, **Kostenlose Testversion**, **Kontakt mit mir aufnehmen** und **Testversion** ausgewählt werden.
+Dieser Wert steht für die Anzahl von Klicks auf die Schaltfläche **Handlungsaufforderung**, die auf der Angebotsseite (Produktdetailseite) ausgeführt wurden. **Handlungsaufforderungen** werden gezählt, wenn Benutzer die Schaltfläche **Jetzt abrufen**, **Kostenlose Testversion**, **Kontakt mit mir aufnehmen** oder **Testversion** auswählen.
 
 ![Partner Center-Erkenntnisse: Zusammenfassung für Handlungsaufforderungen](./media/insights-summary.png)
 
@@ -128,7 +132,7 @@ Diese Tabelle enthält eine Listenansicht der Seitenbesuche und Handlungsaufford
 
 - Die Daten können in eine CSV-Datei extrahiert werden, wenn die Anzahl weniger als 1000 Einträge beträgt.
 - Liegt die Anzahl der Einträge über 1000, werden die exportierten Daten für die nächsten 30 Tage asynchron auf einer Downloadseite abgelegt.
-- Sie können Filter anwenden, um die Daten anzuzeigen, die für Sie von Interesse sind. Daten können nach Angebotsnamen und Kampagnennamen gefiltert werden.  
+- Filtern Sie Daten nach Angebotsnamen und Kampagnennamen, um die für Sie interessanten Daten anzuzeigen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

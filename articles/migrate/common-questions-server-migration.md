@@ -3,12 +3,12 @@ title: Häufig gestellte Fragen zur Azure Migrate-Servermigration
 description: Hier erhalten Sie Antworten auf häufig gestellte Fragen zur Verwendung der Azure Migrate-Servermigration für das Migrieren von Computern.
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: 282f7ab27eead59fc87a95ea7d397268177f4f2c
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: af40aecaa1614542074cf87ce95eb81492233bdc
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86224127"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321223"
 ---
 # <a name="azure-migrate-server-migration-common-questions"></a>Azure Migrate-Servermigration: Häufig gestellte Fragen
 
@@ -80,7 +80,7 @@ Nein. Azure Migrate unterstützt nur die Migration zu verwalteten Datenträgern 
 
 ## <a name="how-many-vms-can-i-replicate-at-one-time-by-using-agentless-migration"></a>Wie viele VMs kann ich gleichzeitig mithilfe der Migration ohne Agent replizieren?
 
-Zurzeit können Sie pro vCenter Server-Instanz 100 VMs gleichzeitig migrieren. Migrieren Sie in Batches von 10 VMs.
+Zurzeit können Sie pro vCenter Server-Instanz 300 VMs gleichzeitig migrieren. Migrieren Sie in Batches von 10 VMs.
 
 ## <a name="how-do-i-throttle-replication-in-using-azure-migrate-appliance-for-agentless-vmware-replication"></a>Wie kann ich die Replikation mithilfe der Azure Migrate-Appliance für die VMware-Replikation ohne Agent drosseln?  
 
@@ -106,7 +106,7 @@ Die Behandlung von Computern als physische Server für die Migration ist in vers
 
 ## <a name="i-deployed-two-or-more-appliances-to-discover-vms-in-my-vcenter-server-however-when-i-try-to-migrate-the-vms-i-only-see-vms-corresponding-to-one-of-the-appliance"></a>Ich habe zwei (oder mehr) Appliances zum Entdecken von VMs auf meiner vCenter Server-Instanz bereitgestellt. Wenn ich versuche, die VMs zu migrieren, werden mir aber nur die VMs für eine der Appliances angezeigt.
 
-Dies ist möglicherweise ein guter Anwendungsfall, wird aber derzeit nicht unterstützt. Die Bereitstellung von zwei (oder mehr) Appliances zum Entdecken der gleichen Gruppe aus VMs führ zu einem Dienstproblem, bei dem der VM-Besitz ständig zwischen den Appliances wechselt. Dies ist der Grund dafür, dass VMs scheinbar auftauchen und wieder verschwinden. Um dieses Problem zu lösen, müssen Sie eine Appliance löschen und eine Aktualisierung mit Leerung des Caches durchführen.
+Wenn mehrere Appliances eingerichtet sind, ist es erforderlich, dass es keine Überlappungen zwischen den VMs auf den bereitgestellten vCenter-Konten gibt. Eine Entdeckung mit einer solchen Überlappung ist ein nicht unterstütztes Szenario.
 
 ## <a name="do-i-need-vmware-vcenter-to-migrate-vmware-vms"></a>Benötige ich VMware vCenter, um VMware-VMs zu migrieren?
 Zum [Migrieren von VMware-VMs](server-migrate-overview.md) mithilfe der VMware-Migration mit oder ohne Agent müssen ESXi-Hosts, auf denen sich VMs befinden, von vCenter Server verwaltet werden. Wenn Sie nicht über vCenter Server verfügen, können Sie VMware-VMs migrieren, indem Sie sie als physische Server migrieren. [Weitere Informationen](migrate-support-matrix-physical-migration.md)

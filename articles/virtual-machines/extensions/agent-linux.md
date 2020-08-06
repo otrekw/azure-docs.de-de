@@ -1,26 +1,19 @@
 ---
 title: Azure-Linux-VM-Agent – Übersicht
 description: Erfahren Sie, wie Sie den Linux-Agent (waagent) zum Verwalten der Interaktion Ihres virtuellen Computers mit Azure Fabric Controller installieren und konfigurieren.
-services: virtual-machines-linux
-documentationcenter: ''
 author: axayjo
-manager: gwallace
-editor: ''
-tags: azure-service-management,azure-resource-manager
-ms.assetid: e41de979-6d56-40b0-8916-895bf215ded6
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 10/17/2016
 ms.author: akjosh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4143e049f0a89d1218d9442eaebc1c5ebaf4cc77
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: fda228f6a24e981bb848fbb106709aaa3d8e8613
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186825"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87269120"
 ---
 # <a name="understanding-and-using-the-azure-linux-agent"></a>Grundlegendes zum Azure Linux-Agent und seiner Verwendung
 
@@ -72,7 +65,7 @@ Der Informationsfluss von der Plattform zum Agenten erfolgt über zwei Kanäle:
 Folgende Systeme können nachweislich mit dem Azure Linux-Agent verwendet werden:
 
 > [!NOTE]
-> Diese Liste kann von der offiziellen Liste unterstützter Systemen für die Microsoft Azure-Plattform abweichen. Weitere Informationen finden Sie unter [https://support.microsoft.com/kb/2805216](https://support.microsoft.com/kb/2805216).
+> Diese Liste kann von der offiziellen Liste der [unterstützten Distributionen](../linux/endorsed-distros.md) abweichen.
 > 
 > 
 
@@ -344,5 +337,4 @@ Ubuntu Cloud Images verwenden [cloud-init](https://launchpad.net/ubuntu/+source/
 * Berücksichtigen Sie zum Konfigurieren des Bereitstellungspunkts und des Auslagerungsbereichs für den Ressourcendatenträger von Ubuntu Cloud Images die folgenden Ressourcen:
   
   * [Ubuntu Wiki: Configure Swap Partitions](https://go.microsoft.com/fwlink/?LinkID=532955&clcid=0x409) (Konfigurieren von Swappartitionen)
-  * [Einfügen benutzerdefinierter Daten in einen virtuellen Azure-Computer](../windows/classic/inject-custom-data.md)
-
+  * [Einfügen benutzerdefinierter Daten in einen virtuellen Azure-Computer](../windows/tutorial-automate-vm-deployment.md)

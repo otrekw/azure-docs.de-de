@@ -4,15 +4,15 @@ description: Hier finden Sie Spezifikationen für die virtuellen Computer der Mv
 author: ayshakeen
 ms.service: virtual-machines
 ms.subservice: sizes
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/07/2020
 ms.author: jushiman
-ms.openlocfilehash: 4576a8bdcb6077a9d5de20c52f99325fdcacc0f4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 74d8c4dc9f6b8f1a409f5f6766bea57b23b15ba7
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84673697"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284794"
 ---
 # <a name="mv2-series"></a>Mv2-Serie
 
@@ -28,14 +28,14 @@ Livemigration: Nicht unterstützt
 
 Updates mit Speicherbeibehaltung: Nicht unterstützt
 
-Schreibbeschleunigung: [Unterstützt](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator)
+Schreibbeschleunigung: [Unterstützt](./windows/how-to-enable-write-accelerator.md)
 
-|Size | vCPU | Memory: GiB | Temporärer Speicher (SSD): GiB | Max. Anzahl Datenträger | Maximaler Durchsatz (Cache und temporärer Speicher): IOPS/MBps (Cachegröße in GiB) | Maximaler Durchsatz des Datenträgers ohne Cache: IOPS/MBps | Maximale Anzahl NICs/Erwartete Netzwerkbandbreite (MBps) |
-|---|---|---|---|---|---|---|---|
-| Standard_M208ms_v2<sup>1</sup> | 208 | 5\.700 | 4096 | 64 | 80000/800 (7040) | 40000/1000 | 8/16000 |
-| Standard_M208s_v2<sup>1</sup> | 208 | 2850 | 4096 | 64 | 80000/800 (7040) | 40000/1000 | 8/16000 |
-| Standard_M416ms_v2<sup>1</sup> | 416 | 11.400 | 8192 | 64 | 250.000/1.600 (14.080) | 80000/2000 | 8 / 32.000 |
-| Standard_M416s_v2<sup>1</sup> | 416 | 5\.700 | 8192 | 64 | 250.000/1.600 (14.080) | 80000/2000 | 8 / 32.000 |
+|Size | vCPU | Memory: GiB | Temporärer Speicher (SSD): GiB | Max. Anzahl Datenträger | Maximaler Durchsatz (Cache und temporärer Speicher): IOPS/MBps (Cachegröße in GiB) | Maximaler Durchsatz des Datenträgers ohne Cache: IOPS/MBps | Maximale Anzahl NICs | Erwartete Netzwerkbandbreite (MBit/s) |
+|---|---|---|---|---|---|---|---|---|
+| Standard_M208ms_v2<sup>1</sup> | 208 | 5\.700 | 4096 | 64 | 80000/800 (7040) | 40000/1000 | 8 | 16000 |
+| Standard_M208s_v2<sup>1</sup> | 208 | 2850 | 4096 | 64 | 80000/800 (7040) | 40000/1000 | 8 | 16000 |
+| Standard_M416ms_v2<sup>1</sup> | 416 | 11.400 | 8192 | 64 | 250.000/1.600 (14.080) | 80000/2000 | 8 | 32000 |
+| Standard_M416s_v2<sup>1</sup> | 416 | 5\.700 | 8192 | 64 | 250.000/1.600 (14.080) | 80000/2000 | 8 | 32000 |
 
 <sup>1</sup> VMs der Mv2-Serie sind nur Generation 2 und unterstützen eine Teilmenge der unterstützten Images der Generation 2. Im Folgenden finden Sie eine vollständige Liste der unterstützten Images für die Mv2-Serie. Wenn Sie Linux verwenden, finden Sie unter [Unterstützung für VMs der Generation 2 in Azure](./linux/generation-2.md) Anweisungen zum Suchen und Auswählen eines Images. Wenn Sie Windows verwenden, finden Sie unter [Unterstützung für VMs der Generation 2 in Azure](./windows/generation-2.md) Anweisungen zum Suchen und Auswählen eines Images. 
 
@@ -48,7 +48,7 @@ Schreibbeschleunigung: [Unterstützt](https://docs.microsoft.com/azure/virtual-m
 
 [!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
 
-## <a name="other-sizes"></a>Andere Größen
+## <a name="other-sizes-and-information"></a>Weitere Größen und Informationen
 
 - [Allgemeiner Zweck](sizes-general.md)
 - [Arbeitsspeicheroptimiert](sizes-memory.md)
@@ -56,6 +56,11 @@ Schreibbeschleunigung: [Unterstützt](https://docs.microsoft.com/azure/virtual-m
 - [GPU-optimiert](sizes-gpu.md)
 - [High Performance Computing](sizes-hpc.md)
 - [Vorherige Generationen](sizes-previous-gen.md)
+
+Preisrechner: [Preisrechner](https://azure.microsoft.com/pricing/calculator/)
+
+Weitere Informationen zu Datenträgertypen: [Datenträgertypen](https://docs.microsoft.com/azure/virtual-machines/linux/disks-types#ultra-ssd-preview/)
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -3,30 +3,28 @@ title: Erstellen und Verwalten von Aktionsgruppen im Azure-Portal
 description: Erfahren Sie, wie Sie Aktionsgruppen im Azure-Portal erstellen und verwalten.
 author: dkamstra
 ms.topic: conceptual
-ms.date: 07/15/2020
+ms.date: 07/28/2020
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: e88d51e014244892fc3ac9e2cca242dacdfd9997
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: a9d0fa9efaa07582212344e617d9a42f264b99ee
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86516174"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337738"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Erstellen und Verwalten von Aktionsgruppen im Azure-Portal
 Eine Aktionsgruppe ist eine Sammlung von Benachrichtigungseinstellungen, die vom Besitzer eines Azure-Abonnements definiert wurden. Azure Monitor- und Service Health-Warnungen verwenden Aktionsgruppen, um Benutzer zu benachrichtigen, dass eine Warnung ausgelöst wurde. Verschiedene Warnungen können je nach den Bedürfnissen des Benutzers die gleiche Aktionsgruppe oder verschiedene Aktionsgruppen verwenden. Sie können in einem Abonnement bis zu 2.000 Aktionsgruppen konfigurieren.
-
-Sie konfigurieren eine Aktion, um eine Person per E-Mail oder SMS zu benachrichtigen. Die Person erhält eine Bestätigung mit dem Hinweis, dass sie der Aktionsgruppe hinzugefügt wurde.
 
 In diesem Artikel wird beschrieben, wie Sie Aktionsgruppen im Azure-Portal erstellen und verwalten.
 
 Jede Aktion besteht aus den folgenden Eigenschaften:
 
-* **Name**: Ein eindeutiger Bezeichner innerhalb der Aktionsgruppe.  
-* **Aktionstyp:** Die ausgeführte Aktion. Beispiele sind das Senden eines Sprachanrufs, SMS, E-Mail oder das Auslösen verschiedener Arten von automatisierten Aktionen. Siehe „Typen“ weiter unten in diesem Artikel.
-* **Details**: Die entsprechenden Details. Diese können je nach *Aktionstyp* variieren.
+* **Typ:** Die ausgeführte Benachrichtigung oder Aktion. Beispiele sind das Senden eines Sprachanrufs, SMS, E-Mail oder das Auslösen verschiedener Arten von automatisierten Aktionen. Siehe „Typen“ weiter unten in diesem Artikel.
+* **Name**: Ein eindeutiger Bezeichner innerhalb der Aktionsgruppe.
+* **Details**: Die entsprechenden Details. Diese können je nach *Typ* variieren.
 
-Weitere Informationen zum Verwenden von Azure Resource Manager-Vorlagen zur Konfigurierung von Aktionsgruppen finden Sie unter [Aktionsgruppen-Resource Manager-Vorlagen](../../azure-monitor/platform/action-groups-create-resource-manager-template.md).
+Weitere Informationen zum Verwenden von Azure Resource Manager-Vorlagen zur Konfigurierung von Aktionsgruppen finden Sie unter [Aktionsgruppen-Resource Manager-Vorlagen](./action-groups-create-resource-manager-template.md).
 
 ## <a name="create-an-action-group-by-using-the-azure-portal"></a>Erstellen einer Aktionsgruppe mit dem Azure-Portal
 
@@ -34,31 +32,73 @@ Weitere Informationen zum Verwenden von Azure Resource Manager-Vorlagen zur Konf
 
 1. Wählen Sie **Warnungen** und dann **Aktionen verwalten** aus.
 
-    ![Verwalten der Schaltfläche „Aktionen“](./media/action-groups/manage-action-groups.png)
+    ![Schaltfläche „Aktionen verwalten“](./media/action-groups/manage-action-groups.png)
     
-1. Wählen Sie **Aktionsgruppe hinzufügen**, und füllen Sie die Felder aus.
+1. Wählen Sie **Aktionsgruppe hinzufügen** aus, und füllen Sie die relevanten Felder im Assistenten aus.
 
-    ![Der Befehl „Aktionsgruppe hinzufügen“](./media/action-groups/add-action-group.png)
+    ![Der Befehl „Aktionsgruppe hinzufügen“](./media/action-groups/add-action-group.PNG)
+
+### <a name="configure-basic-action-group-settings"></a>Konfigurieren grundlegender Aktionsgruppeneinstellungen
+
+Gehen Sie unter **Projektdetails** wie folgt vor:
+
+Wählen Sie das **Abonnement** und die **Ressourcengruppe** aus, in der die Aktionsgruppe gespeichert ist.
+
+Gehen Sie unter **Instanzendetails** wie folgt vor:
+
+1. Geben Sie einen **Aktionsgruppennamen** ein.
+
+1. Geben Sie einen **Anzeigenamen** ein. Der Anzeigename wird anstelle eines vollständigen Aktionsgruppennamens verwendet, wenn Benachrichtigungen unter Verwendung dieser Gruppe gesendet werden.
+
+      ![Das Dialogfeld „Aktionsgruppe hinzufügen“](./media/action-groups/action-group-1-basics.png)
+
+
+### <a name="configure-notifications"></a>Konfigurieren von Benachrichtigungen
+
+1. Klicken Sie auf die Schaltfläche **Weiter: Benachrichtigungen >** , um zur Registerkarte **Benachrichtigungen** zu wechseln, oder wählen Sie die Registerkarte **Benachrichtigungen** am oberen Rand des Bildschirms aus.
+
+1. Definieren Sie eine Liste von Benachrichtigungen, die bei Auslösung einer Warnung gesendet werden. Geben Sie für jede Benachrichtigung Folgendes an:
+
+    a. **Benachrichtigungstyp**: Wählen Sie den Typ der zu sendenden Benachrichtigung aus. Verfügbare Optionen:
+      * E-Mail an Azure Resource Manager-Rolle: Sendet eine E-Mail an Benutzer, die bestimmten ARM-Rollen auf Abonnementebene zugewiesen sind.
+      * E-Mail/SMS/Push/Sprachanruf: Sendet diese Benachrichtigungstypen an bestimmte Empfänger.
     
-1. Geben Sie jeweils einen Namen in die Felder **Aktionsgruppenname** und **Kurzname** ein. Der Kurzname wird anstelle eines vollständigen Aktionsgruppennamens verwendet, wenn Benachrichtigungen mithilfe dieser Gruppe gesendet werden.
+    b. **Name**: Geben Sie einen eindeutigen Namen für die Benachrichtigung ein.
 
-      ![Das Dialogfeld „Aktionsgruppe hinzufügen“](./media/action-groups/action-group-define.png)
-
-1. In das Feld **Abonnement** wird automatisch Ihr aktuelles Abonnement eingetragen. In diesem Abonnement wird die Aktionsgruppe gespeichert.
-
-1. Wählen Sie die **Ressourcengruppe**, in der die Aktionsgruppe gespeichert wird.
-
-1. Definieren Sie eine Liste mit Aktionen. Geben Sie für jede Aktion Folgendes an:
-
-    1. **Name**: Geben Sie einen eindeutigen Bezeichner für diese Aktion ein.
-
-    1. **Aktionstyp**: Automation Runbook auswählen, Azure-Funktion, E-Mail an Azure Resource Manager-Rolle, E-Mail/SMS/Push/Sprachanruf, ITSM, Logik-App, sicherer Webhook, Webhook.
-
-    1. **Details**: Geben Sie je nach Aktionstyp eine Telefonnummer, eine E-Mail-Adresse, einen Webhook-URI, eine Azure-App, eine ITSM-Verbindung oder ein Automation-Runbook ein. Legen Sie für die ITSM-Aktion darüber hinaus **Arbeitselement** und andere Felder fest, die Ihr ITSM-Tool benötigt.
+    c. **Details**: Geben Sie je nach ausgewähltem Benachrichtigungstyp eine E-Mail-Adresse, eine Telefonnummer usw. ein.
     
-    1. **Allgemeines Warnungsschema**: Sie können auch das [allgemeine Warnungsschema](https://aka.ms/commonAlertSchemaDocs) verwenden, das den Vorteil einer einzelnen erweiterbaren und einheitlichen Warnungsnutzlast für alle Benachrichtigungsdienste in Azure Monitor bietet.
+    d. **Allgemeines Warnungsschema**: Sie können auch das [allgemeine Warnungsschema](https://aka.ms/commonAlertSchemaDocs) verwenden, das den Vorteil einer einzelnen erweiterbaren und einheitlichen Warnungsnutzlast für alle Benachrichtigungsdienste in Azure Monitor bietet.
 
-1. Wählen Sie **OK**, um die Aktionsgruppe zu erstellen.
+    ![Die Registerkarte „Benachrichtigungen“](./media/action-groups/action-group-2-notifications.png)
+    
+### <a name="configure-actions"></a>Konfigurieren von Aktionen
+
+1. Klicken Sie auf die Schaltfläche **Weiter: Aktionen >** , um zur Registerkarte **Aktionen** zu wechseln, oder wählen Sie die Registerkarte **Aktionen** am oberen Rand des Bildschirms aus.
+
+1. Definieren Sie eine Liste von Aktionen, die bei Auslösung einer Warnung gestartet werden. Geben Sie für jede Aktion Folgendes an:
+
+    a. **Aktionstyp:** Wählen Sie „Automation-Runbook“, „Azure-Funktion“, „ITSM“, „Logik-App“, „Sicherer Webhook“ oder „Webhook“ aus.
+    
+    b. **Name**: Geben Sie einen eindeutigen Namen für die Aktion ein.
+
+    c. **Details**: Geben Sie je nach Aktionstyp einen Webhook-URI, eine Azure-App, eine ITSM-Verbindung oder ein Automation-Runbook ein. Legen Sie für die ITSM-Aktion darüber hinaus **Arbeitselement** und andere Felder fest, die Ihr ITSM-Tool benötigt.
+    
+    d. **Allgemeines Warnungsschema**: Sie können auch das [allgemeine Warnungsschema](https://aka.ms/commonAlertSchemaDocs) verwenden, das den Vorteil einer einzelnen erweiterbaren und einheitlichen Warnungsnutzlast für alle Benachrichtigungsdienste in Azure Monitor bietet.
+    
+    ![Die Registerkarte „Aktionen“](./media/action-groups/action-group-3-actions.png)
+
+### <a name="create-the-action-group"></a>Erstellen der Aktionsgruppe
+
+1. Bei Interesse können Sie sich die Einstellungen für **Tags** genauer ansehen. Auf diese Weise können Sie der Aktionsgruppe Schlüssel-Wert-Paare für die Kategorisierung zuordnen. Dieses Feature ist für jede Azure-Ressource verfügbar.
+
+    ![Die Registerkarte „Tags“](./media/action-groups/action-group-4-tags.png)
+    
+1. Klicken Sie auf **Überprüfen + erstellen**, um die Einstellungen zu überprüfen. Dadurch wird eine schnelle Überprüfung Ihrer Eingaben vorgenommen, um sicherzustellen, dass alle erforderlichen Felder ausgewählt sind. Wenn Probleme vorliegen, werden diese hier angezeigt. Nachdem Sie die Einstellungen überprüft haben, klicken Sie auf **Erstellen**, um die Aktionsgruppe bereitzustellen.
+    
+    ![Die Registerkarte „Überprüfen + erstellen“](./media/action-groups/action-group-5-review.png)
+
+> [!NOTE]
+> Wenn Sie eine Aktion konfigurieren, um eine Person per E-Mail oder SMS zu benachrichtigen, erhält diese Person eine Bestätigung mit dem Hinweis, dass sie der Aktionsgruppe hinzugefügt wurde.
 
 ## <a name="manage-your-action-groups"></a>Verwalten von Aktionsgruppen
 
@@ -86,12 +126,12 @@ E-Mails werden von den folgenden E-Mail-Adressen gesendet. Achten Sie darauf, da
 - azureemail-noreply@microsoft.com
 - alerts-noreply@mail.windowsazure.com
 
-Es kann sein, dass Sie in einer Aktionsgruppe über eine begrenzte Anzahl von E-Mail-Aktionen verfügen. Weitere Informationen finden Sie im Artikel [Ratenlimits für Sprache, SMS-Nachrichten, E-Mail-Nachrichten, Azure App-Pushbenachrichtigungen und Webhookbeiträge](./../../azure-monitor/platform/alerts-rate-limiting.md).
+Es kann sein, dass Sie in einer Aktionsgruppe über eine begrenzte Anzahl von E-Mail-Aktionen verfügen. Weitere Informationen finden Sie im Artikel [Ratenlimits für Sprache, SMS-Nachrichten, E-Mail-Nachrichten, Azure App-Pushbenachrichtigungen und Webhookbeiträge](./alerts-rate-limiting.md).
 
 ### <a name="email-azure-resource-manager-role"></a>E-Mail an Azure Resource Manager-Rolle
 Senden Sie eine E-Mail an die Mitglieder dieser Rolle im Abonnement. Die E-Mail wird nur an Mitglieder der Rolle gesendet, die **Azure AD-Benutzer** sind. E-Mail wird nicht an Azure AD-Gruppen oder Dienstprinzipale gesendet.
 
-Es kann sein, dass Sie in einer Aktionsgruppe über eine begrenzte Anzahl von E-Mail-Aktionen verfügen. Weitere Informationen finden Sie im Artikel [Ratenlimits für Sprache, SMS-Nachrichten, E-Mail-Nachrichten, Azure App-Pushbenachrichtigungen und Webhookbeiträge](./../../azure-monitor/platform/alerts-rate-limiting.md).
+Es kann sein, dass Sie in einer Aktionsgruppe über eine begrenzte Anzahl von E-Mail-Aktionen verfügen. Weitere Informationen finden Sie im Artikel [Ratenlimits für Sprache, SMS-Nachrichten, E-Mail-Nachrichten, Azure App-Pushbenachrichtigungen und Webhookbeiträge](./alerts-rate-limiting.md).
 
 ### <a name="function"></a>Funktion
 Diese Aktion ruft einen vorhandenen HTTP-Triggerendpunkt in [Azure Functions](../../azure-functions/functions-create-first-azure-function.md#create-a-function-app) auf.
@@ -99,7 +139,7 @@ Diese Aktion ruft einen vorhandenen HTTP-Triggerendpunkt in [Azure Functions](..
 Es kann sein, dass Sie in einer Aktionsgruppe über eine begrenzte Anzahl von Functions-Aktionen verfügen.
 
 ### <a name="itsm"></a>ITSM
-Für eine ITSM-Aktion muss eine ITSM-Verbindung hergestellt werden. Informieren Sie sich, wie Sie [eine ITSM-Verbindung erstellen](../../azure-monitor/platform/itsmc-overview.md).
+Für eine ITSM-Aktion muss eine ITSM-Verbindung hergestellt werden. Informieren Sie sich, wie Sie [eine ITSM-Verbindung erstellen](./itsmc-overview.md).
 
 Es kann sein, dass Sie in einer Aktionsgruppe über eine begrenzte Anzahl von ITSM-Aktionen verfügen. 
 
@@ -109,8 +149,8 @@ Es kann sein, dass Sie in einer Aktionsgruppe über eine begrenzte Anzahl von Lo
 ### <a name="secure-webhook"></a>Sicherer Webhook
 Mithilfe der Aktion „Aktionsgruppenwebhook“ können Sie Azure Active Directory nutzen, um die Verbindung zwischen Ihrer Aktionsgruppe und Ihrer geschützten Web-API (Webhookendpunkt) zu sichern. Der gesamte Workflow für das Nutzen dieser Funktionalität wird unten beschrieben. Eine Übersicht über Azure AD-Anwendungen und -Dienstprinzipale finden Sie unter [Microsoft Identity Platform (v2.0): Übersicht](../../active-directory/develop/v2-overview.md).
 
-1. Erstellen Sie eine Azure AD-Anwendung für ihre geschützte Web-API. Weitere Informationen finden Sie unter [Geschützte Web-API: App-Registrierung](https://docs.microsoft.com/azure/active-directory/develop/scenario-protected-web-api-app-registration).
-    - Konfigurieren Sie Ihre geschützte API so, dass Sie von einer [Daemon-App aufgerufen wird](https://docs.microsoft.com/azure/active-directory/develop/scenario-protected-web-api-app-registration#if-your-web-api-is-called-by-a-daemon-app).
+1. Erstellen Sie eine Azure AD-Anwendung für ihre geschützte Web-API. Weitere Informationen finden Sie unter [Geschützte Web-API: App-Registrierung](../../active-directory/develop/scenario-protected-web-api-app-registration.md).
+    - Konfigurieren Sie Ihre geschützte API so, dass Sie von einer [Daemon-App aufgerufen wird](../../active-directory/develop/scenario-protected-web-api-app-registration.md#if-your-web-api-is-called-by-a-daemon-app).
     
 2. Aktivieren Sie Aktionsgruppen, um Ihre Azure AD-Anwendung zu verwenden.
 
@@ -196,7 +236,7 @@ Write-Host $myApp.AppRoles
 ```
 
 ### <a name="sms"></a>sms
-Weitere wichtige Informationen finden Sie in den Artikeln zu [Ratenlimits](./../../azure-monitor/platform/alerts-rate-limiting.md) und zum [Verhalten von SMS-Benachrichtigungen](../../azure-monitor/platform/alerts-sms-behavior.md). 
+Weitere wichtige Informationen finden Sie in den Artikeln zu [Ratenlimits](./alerts-rate-limiting.md) und zum [Verhalten von SMS-Benachrichtigungen](./alerts-sms-behavior.md). 
 
 Es kann sein, dass Sie in einer Aktionsgruppe über eine begrenzte Anzahl von SMS-Aktionen verfügen.
 
@@ -207,7 +247,7 @@ Die Preise für unterstützte Länder/Regionen sind auf der [Seite mit der Preis
   
 
 ### <a name="voice"></a>Sprache
-Weitere wichtige Informationen finden Sie im Artikeln zu [Ratenlimits](./../../azure-monitor/platform/alerts-rate-limiting.md).
+Weitere wichtige Informationen finden Sie im Artikeln zu [Ratenlimits](./alerts-rate-limiting.md).
 
 Es kann sein, dass Sie in einer Aktionsgruppe über eine begrenzte Anzahl von Sprachaktionen verfügen.
 
@@ -248,9 +288,10 @@ Es kann sein, dass Sie in einer Aktionsgruppe über eine begrenzte Anzahl von We
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Erfahren Sie mehr über das [SMS-Warnungsverhalten in Aktionsgruppen](../../azure-monitor/platform/alerts-sms-behavior.md).  
-* Erweitern Sie Ihr [Verständnis des Webhookschemas für Aktivitätsprotokollwarnungen](../../azure-monitor/platform/activity-log-alerts-webhook.md).  
-* Weitere Informationen zum ITSM-Connector finden Sie [hier](../../azure-monitor/platform/itsmc-overview.md).
-* Weitere Informationen zu [Ratenlimits](../../azure-monitor/platform/alerts-rate-limiting.md) für Warnungen.
-* Verschaffen Sie sich eine [Übersicht über Aktivitätsprotokollwarnungen](../../azure-monitor/platform/alerts-overview.md), und erfahren Sie, wie Sie Warnungen empfangen können.  
+* Erfahren Sie mehr über das [SMS-Warnungsverhalten in Aktionsgruppen](./alerts-sms-behavior.md).  
+* Erweitern Sie Ihr [Verständnis des Webhookschemas für Aktivitätsprotokollwarnungen](./activity-log-alerts-webhook.md).  
+* Weitere Informationen zum ITSM-Connector finden Sie [hier](./itsmc-overview.md).
+* Weitere Informationen zu [Ratenlimits](./alerts-rate-limiting.md) für Warnungen.
+* Verschaffen Sie sich eine [Übersicht über Aktivitätsprotokollwarnungen](./alerts-overview.md), und erfahren Sie, wie Sie Warnungen empfangen können.  
 * Erfahren Sie, wie Sie [Warnungen konfigurieren, wenn eine Dienstintegritätsbenachrichtigung gesendet wird](../../service-health/alerts-activity-log-service-notifications-portal.md).
+

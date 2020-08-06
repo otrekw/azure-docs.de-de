@@ -3,12 +3,12 @@ title: Entitätstypen – LUIS
 description: Eine Entität extrahiert zur Vorhersagelaufzeit Daten aus einer Benutzeräußerung. Ein _optionaler_ sekundärer Zweck besteht darin, die Vorhersage der Absicht oder anderer Entitäten zu verstärken, indem die Entität als Feature verwendet wird.
 ms.topic: conceptual
 ms.date: 06/10/2020
-ms.openlocfilehash: 61dc0688cd304a672321f846a3ae5798c271345d
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: ced4a3e23b8e532b54d0b3cf974dab233b81b375
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84676487"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337618"
 ---
 # <a name="extract-data-with-entities"></a>Extrahieren von Daten mit Entitäten
 
@@ -77,6 +77,12 @@ So erstellen Sie durch maschinelles Lernen erworbene Entitäten effektiv:
 * Ihre Bezeichnungen sollten für alle Absichten einheitlich sein. Dazu gehören auch Äußerungen, die Sie in der Absicht **None** (Keine) angeben, die diese Entität enthält. Andernfalls kann das Modell die Sequenz nicht effektiv bestimmen.
 * Wenn Sie eine durch maschinelles Lernen erworbene Entität mit untergeordneten Entitäten besitzen, sollten Sie sicherstellen, dass die verschiedenen Reihenfolgen und Varianten der Entität und der untergeordneten Entitäten in dem bezeichneten Äußerungen dargestellt werden. Beispieläußerungen mit Bezeichnungen sollten alle gültigen Formen sowie die Entitäten enthalten, die angezeigt werden, fehlen oder innerhalb der Äußerung neu angeordnet werden.
 * Sie sollten eine Überanpassung der Entitäten an eine feste Gruppe vermeiden. Eine **Überanpassung** tritt auf, wenn das Modell nicht gut generalisiert wird. Dies ist ein gängiges Problem bei Machine Learning-Modellen. Sie impliziert, dass die App mit neuen Daten nicht richtig funktioniert. Daher sollten Sie die bezeichneten Beispieläußerungen variieren, damit die App über die von Ihnen angegebenen Beispiele hinaus generalisiert werden kann. Sie sollten die verschiedenen untergeordneten Entitäten mit ausreichend Änderungen für das Modell variieren, damit das Konzept im Mittelpunkt steht, und nicht nur die gezeigten Beispiele.
+
+## <a name="effective-prebuilt-entities"></a>Effektive vordefinierte Entitäten
+
+Für die Erstellung effektiver Entitäten, die gemeinsame Daten extrahieren, wie sie z. B. von den [vordefinierten Entitäten](luis-reference-prebuilt-entities.md) bereitgestellt werden, empfehlen wir das folgende Verfahren.
+
+Verbessern Sie die Extraktion von Daten, indem Sie Ihre eigenen Daten als Feature in eine Entität einbringen. Auf diese Weise lernen alle zusätzlichen Bezeichnungen in den Daten den Kontext, in dem Personennamen in Ihrer Anwendung existieren.
 
 <a name="composite-entity"></a>
 <a name="list-entity"></a>

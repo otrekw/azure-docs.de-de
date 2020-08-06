@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 1300ef64b6081135c400baa10aa73b8139aec170
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 965118345a003aface0373bda7496243bcab8429
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86025589"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87290175"
 ---
 # <a name="azure-database-for-postgresql-single-server-data-encryption-with-a-customer-managed-key"></a>Datenverschlüsselung auf Azure Database for PostgreSQL-Einzelservern mit einem kundenseitig verwalteten Schlüssel
 
@@ -22,7 +22,7 @@ Datenverschlüsselung mit vom Kunden verwalteten Schlüsseln für Azure Database
 Key Vault ist ein cloudbasiertes, externes Schlüsselverwaltungssystem. Es bietet hochverfügbaren und skalierbaren sicheren Speicher für RSA-Kryptografieschlüssel, der optional von FIPS 140-2 Level 2-geprüften Hardwaresicherheitsmodulen (HSM) geschützt wird. Dabei wird kein direkter Zugriff auf einen gespeicherten Schlüssel zugelassen, sondern Verschlüsselung und Entschlüsselung werden für die autorisierten Entitäten bereitgestellt. Key Vault kann den Schlüssel generieren, importieren oder [von einem lokalen HSM-Gerät](../key-vault/key-Vault-hsm-protected-keys.md) übertragen lassen.
 
 > [!NOTE]
-> Dieses Feature steht in allen Azure-Regionen zur Verfügung, in denen Azure Database for PostgreSQL-Einzelserver die Tarife „Universell“ und „Arbeitsspeicheroptimiert“ unterstützen.
+> Dieses Feature steht in allen Azure-Regionen zur Verfügung, in denen Azure Database for PostgreSQL-Einzelserver die Tarife „Universell“ und „Arbeitsspeicheroptimiert“ unterstützen. Weitere Einschränkungen finden Sie im Abschnitt [Einschränkungen](concepts-data-encryption-postgresql.md#limitations).
 
 ## <a name="benefits"></a>Vorteile
 
@@ -51,7 +51,7 @@ Damit ein PostgreSQL-Server vom Kunden verwaltete Schlüssel, die in Key Vault g
 * **wrapKey**: Zum Verschlüsseln des DEK erforderlich.
 * **unwrapKey**: Zum Entschlüsseln des DEK erforderlich.
 
-Der Key Vault-Administrator kann auch die [Protokollierung von Key Vault-Überwachungsereignissen aktivieren](../azure-monitor/insights/azure-key-vault.md), damit sie später überprüft werden können.
+Der Key Vault-Administrator kann auch die [Protokollierung von Key Vault-Überwachungsereignissen aktivieren](../azure-monitor/insights/key-vault-insights-overview.md), damit sie später überprüft werden können.
 
 Wenn der Server für die Verwendung des in Key Vault gespeicherten vom Kunden verwalteten Schlüssels konfiguriert ist, sendet der Server den DEK für Verschlüsselungen an Key Vault. Key Vault gibt den verschlüsselten DEK zurück, der in der Benutzerdatenbank gespeichert wird. Entsprechend sendet der Server bei Bedarf den geschützten DEK zur Entschlüsselung an Key Vault. Prüfer können Azure Monitor verwenden, um die Überwachungsereignisprotokoll von Key Vault zu überprüfen, sofern die Protokollierung aktiviert wurde.
 

@@ -4,16 +4,16 @@ description: Dieser Artikel enthält eine Anleitung zur Aktivierung von Microsof
 author: msmbaldwin
 ms.service: virtual-machines-linux
 ms.subservice: security
-ms.topic: article
+ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: b55707612c34cb3c95eafd95780955bf991c409c
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 7452a08125008e3d25ffb7d0eff59f55ca9be0b1
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206148"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372653"
 ---
 # <a name="azure-disk-encryption-scenarios-on-linux-vms"></a>Azure Disk Encryption-Szenarien auf virtuellen Linux-Computern
 
@@ -205,13 +205,13 @@ Die folgende Tabelle enthält Resource Manager-Vorlagenparameter für vorhandene
 | forceUpdateTag | Dient zum Übergeben eines eindeutigen Werts (beispielsweise einer GUID), wenn die Ausführung des Vorgangs erzwungen werden muss. |
 | location | Der Standort für alle Ressourcen. |
 
-Weitere Informationen zum Konfigurieren zur Datenträgerverschlüsselungsvorlage für Linux-VMs finden Sie unter [Azure Disk Encryption für Linux-VMs](https://docs.microsoft.com/azure/virtual-machines/extensions/azure-disk-enc-linux).
+Weitere Informationen zum Konfigurieren zur Datenträgerverschlüsselungsvorlage für Linux-VMs finden Sie unter [Azure Disk Encryption für Linux-VMs](../extensions/azure-disk-enc-linux.md).
 
 ## <a name="use-encryptformatall-feature-for-data-disks-on-linux-vms"></a>Verwenden des Features EncryptFormatAll für Datenträger auf virtuellen Linux-Computern
 
 Mit dem Parameter **EncryptFormatAll** wird die Zeit reduziert, die zum Verschlüsseln von Linux-Datenträgern benötigt wird. Partitionen, die bestimmte Kriterien erfüllen, werden formatiert (zusammen mit ihrem aktuellen Dateisystem) und dann erneut an dem Speicherort eingebunden, an dem sie sich vor der Befehlsausführung befunden haben. Wenn Sie einen Datenträger ausschließen möchten, der die Kriterien erfüllt, können Sie die Bereitstellung vor dem Ausführen des Befehls aufheben.
 
- Nach der Ausführung dieses Befehls werden alle zuvor eingebundenen Laufwerke formatiert, und die Verschlüsselungsschicht wird über dem jetzt leeren Laufwerk gestartet. Bei Auswahl dieser Option wird auch der temporäre Datenträger verschlüsselt, der an die VM angefügt ist. Nachdem der temporäre Datenträger zurückgesetzt wurde, wird er erneut formatiert und bei der nächsten Gelegenheit von der Azure Disk Encryption-Lösung für die VM erneut verschlüsselt. Nachdem der Ressourcendatenträger verschlüsselt wurde, kann der [Microsoft Azure-Agent für Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux) den Ressourcendatenträger nicht mehr verwalten und die Auslagerungsdatei nicht mehr aktivieren. Sie können die Auslagerungsdatei jedoch manuell konfigurieren.
+ Nach der Ausführung dieses Befehls werden alle zuvor eingebundenen Laufwerke formatiert, und die Verschlüsselungsschicht wird über dem jetzt leeren Laufwerk gestartet. Bei Auswahl dieser Option wird auch der temporäre Datenträger verschlüsselt, der an die VM angefügt ist. Nachdem der temporäre Datenträger zurückgesetzt wurde, wird er erneut formatiert und bei der nächsten Gelegenheit von der Azure Disk Encryption-Lösung für die VM erneut verschlüsselt. Nachdem der Ressourcendatenträger verschlüsselt wurde, kann der [Microsoft Azure-Agent für Linux](../extensions/agent-linux.md) den Ressourcendatenträger nicht mehr verwalten und die Auslagerungsdatei nicht mehr aktivieren. Sie können die Auslagerungsdatei jedoch manuell konfigurieren.
 
 >[!WARNING]
 > EncryptFormatAll sollte nicht verwendet werden, wenn sich auf den Datenvolumes der VM erforderliche Daten befinden. Sie können Datenträger von der Verschlüsselung ausschließen, indem Sie deren Bereitstellung aufheben. Sie sollten EncryptFormatAll zuerst auf einer Test-VM ausprobieren und sich mit dem Featureparameter und dessen Auswirkungen vertraut machen, bevor Sie das Feature auf einer VM für die Produktion einsetzen. Mit der EncryptFormatAll-Option wird der Datenträger formatiert, und alle darauf befindlichen Daten gehen verloren. Stellen Sie vor dem Fortfahren sicher, dass die Bereitstellung der auszuschließenden Datenträger ordnungsgemäß aufgehoben wird. </br></br>
@@ -262,7 +262,7 @@ Wir empfehlen Ihnen, ein LVM-on-crypt-Setup zu verwenden. Ersetzen Sie für alle
 
 1. Formatieren Sie diese Datenträger, stellen Sie sie bereit, und fügen Sie sie der FSTAB-Datei hinzu.
 
-1. Wählen Sie einen Partitionsstandard aus, erstellen Sie eine Partition, die das gesamte Laufwerk umfasst, und formatieren Sie dann die Partition. Hier verwenden wir von Azure generierte symlinks. Durch die Verwendung von symlinks werden Probleme in Bezug auf sich ändernde Gerätenamen vermieden. Weitere Informationen finden Sie im Artikel zur [Behandlung von Problemen mit Gerätenamen](troubleshoot-device-names-problems.md).
+1. Wählen Sie einen Partitionsstandard aus, erstellen Sie eine Partition, die das gesamte Laufwerk umfasst, und formatieren Sie dann die Partition. Hier verwenden wir von Azure generierte symlinks. Durch die Verwendung von symlinks werden Probleme in Bezug auf sich ändernde Gerätenamen vermieden. Weitere Informationen finden Sie im Artikel zur [Behandlung von Problemen mit Gerätenamen](../troubleshooting/troubleshoot-device-names-problems.md).
     
     ```bash
     parted /dev/disk/azure/scsi1/lun0 mklabel gpt
@@ -332,7 +332,7 @@ Sie können einen neuen Datenträger hinzufügen, indem Sie den Befehl [az vm di
 
 ### <a name="enable-encryption-on-a-newly-added-disk-with-azure-cli"></a>Aktivieren der Verschlüsselung für einen neu hinzugefügten Datenträger per Azure CLI
 
- Wenn der virtuelle Computer zuvor mit „All“ verschlüsselt war, sollte der Parameter --volume-type auf „All“ belassen werden. Bei „All“ sind sowohl Betriebssystem als auch Datenträger enthalten. Wenn der virtuelle Computer zuvor mit dem Volumetyp „OS“ verschlüsselt war, sollte der Parameter --volume-type in „All“ geändert werden, damit sowohl das Betriebssystem als auch der neue Datenträger enthalten sind. Wenn der virtuelle Computer nur mit dem Volumetyp „Data“ verschlüsselt war, kann er auf „Data“ belassen werden, wie es nachfolgend gezeigt ist. Das Hinzufügen und Anfügen eines neuen Datenträgers an einen virtuellen Computer ist keine ausreichende Vorbereitung für die Verschlüsselung. Der neu angefügte Datenträger muss außerdem formatiert und vor dem Aktivieren der Verschlüsselung ordnungsgemäß im virtuellen Computer bereitgestellt werden. Unter Linux muss der Datenträger in „/etc/fstab“ mit einem [persistenten Blockgerätenamen](troubleshoot-device-names-problems.md) bereitgestellt werden.  
+ Wenn der virtuelle Computer zuvor mit „All“ verschlüsselt war, sollte der Parameter --volume-type auf „All“ belassen werden. Bei „All“ sind sowohl Betriebssystem als auch Datenträger enthalten. Wenn der virtuelle Computer zuvor mit dem Volumetyp „OS“ verschlüsselt war, sollte der Parameter --volume-type in „All“ geändert werden, damit sowohl das Betriebssystem als auch der neue Datenträger enthalten sind. Wenn der virtuelle Computer nur mit dem Volumetyp „Data“ verschlüsselt war, kann er auf „Data“ belassen werden, wie es nachfolgend gezeigt ist. Das Hinzufügen und Anfügen eines neuen Datenträgers an einen virtuellen Computer ist keine ausreichende Vorbereitung für die Verschlüsselung. Der neu angefügte Datenträger muss außerdem formatiert und vor dem Aktivieren der Verschlüsselung ordnungsgemäß im virtuellen Computer bereitgestellt werden. Unter Linux muss der Datenträger in „/etc/fstab“ mit einem [persistenten Blockgerätenamen](../troubleshooting/troubleshoot-device-names-problems.md) bereitgestellt werden.  
 
 Im Gegensatz zur PowerShell-Syntax erfordert die Befehlszeilenschnittstelle vom Benutzer keine Angabe einer eindeutigen Sequenzversion beim Aktivieren der Verschlüsselung. Die Befehlszeilenschnittstelle wird automatisch generiert und verwendet einen eigenen eindeutigen Sequenzversionswert.
 
@@ -409,11 +409,11 @@ Die folgenden Linux-Szenarien,- Features und -Technologien werden von Azure Disk
 - Kernel-Absturzabbild (kdump).
 - Oracle-ACFS (ASM-Clusterdateisystem).
 - Gen2-VMs (siehe: [Unterstützung für VMs der Generation 2 in Azure](generation-2.md#generation-1-vs-generation-2-capabilities)).
-- VMs der Lsv2-Serie (siehe: [LSv2-Serie](../lsv2-series.md)).
+- Die NVMe-Datenträger der VMs der Lsv2-Serie (siehe: [LSv2-Serie](../lsv2-series.md)).
 - Eine VM mit „geschachtelten Bereitstellungspunkten“, also mehrere Bereitstellungspunkte in einem einzelnen Pfad (z. B. „/1stmountpoint/data/2stmountpoint“).
 - Eine VM mit einem Datenlaufwerk, das über einem Betriebssystemordner eingebunden ist
 - VMs der M-Serie mit Datenträgern mit Schreibbeschleunigung
-- Anwenden der [serverseitigen Verschlüsselung mit kundenseitig verwalteten Schlüsseln](disk-encryption.md) auf mit ADE verschlüsselte VMs und umgekehrt.
+- Anwenden von ADE auf eine VM mit einem Datenträger, der mit [serverseitiger Verschlüsselung mit kundenseitig verwalteten Schlüsseln](disk-encryption.md) (SSE + CMK) verschlüsselt ist, oder das Anwenden von SSE + CMK auf einen Datenträger auf einer mit ADE verschlüsselten VM.
 - Migrieren einer mit ADE verschlüsselten VM zur [serverseitigen Verschlüsselung mit kundenseitig verwalteten Schlüsseln](disk-encryption.md).
 
 ## <a name="next-steps"></a>Nächste Schritte

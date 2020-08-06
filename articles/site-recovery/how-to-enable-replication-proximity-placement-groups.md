@@ -5,12 +5,12 @@ author: Sharmistha-Rai
 manager: gaggupta
 ms.topic: how-to
 ms.date: 05/25/2020
-ms.openlocfilehash: c125f11400a75d221a62aa62020001104e05d167
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 6e87b54e2641b1e4a8cfdc134a2190bd56e4f61c
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134894"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87384020"
 ---
 # <a name="replicate-azure-virtual-machines-running-in-proximity-placement-groups-to-another-region"></a>Replizieren von virtuellen Azure-Computern, die in Näherungsplatzierungsgruppen ausgeführt werden
 
@@ -28,14 +28,21 @@ In einem typischen Szenario können Ihre virtuellen Computer in einer Näherungs
 -  Wenn eine Verfügbarkeitsgruppe an eine Näherungsplatzierungsgruppe fixiert ist und während des Failover/Failbacks VMs in der Verfügbarkeitsgruppe eine Zuordnungsbeschränkung aufweisen, werden die virtuellen Computer außerhalb sowohl der Verfügbarkeitsgruppe als auch der Näherungsplatzierungsgruppe erstellt.
 -  Site Recovery für Näherungsplatzierungsgruppen wird für nicht verwaltete Datenträger nicht unterstützt.
 
-> [!Note]
+> [!NOTE]
 > Das Failback von verwalteten Datenträgern für Szenarien vom Typ „Hyper-V zu Azure“ wird von Azure Site Recovery nicht unterstützt. Daher wird das Failback von der Näherungsplatzierungsgruppe in Azure zu Hyper-V nicht unterstützt.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 1. Stellen Sie sicher, dass Sie über das PowerShell-Modul „Az“ verfügen. Wenn Sie PowerShell installieren oder aktualisieren müssen, befolgen Sie die Anweisungen unter [Handbuch zum Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/install-az-ps).
+2. Die Mindestversion von Azure PowerShell Az sollte 4.1.0 sein. Verwenden Sie den folgenden Befehl, um die aktuelle Version zu überprüfen:
+    ```
+    Get-InstalledModule -Name Az
+    ```
 
 ## <a name="set-up-site-recovery-for-virtual-machines-in-proximity-placement-group"></a>Einrichten von Site Recovery für Virtual Machines in einer Näherungsplatzierungsgruppe
+
+> [!NOTE]
+> Vergewissern Sie sich, dass Sie die eindeutige ID der Ziel-Näherungsplatzierungsgruppe zur Hand haben. Wenn Sie eine neue Näherungsplatzierungsgruppe erstellen, überprüfen Sie den Befehl [hier](https://docs.microsoft.com/azure/virtual-machines/windows/proximity-placement-groups#create-a-proximity-placement-group), und wenn Sie eine vorhandene Näherungsplatzierungsgruppe verwenden, verwenden Sie den Befehl [hier](https://docs.microsoft.com/azure/virtual-machines/windows/proximity-placement-groups#list-proximity-placement-groups).
 
 ### <a name="azure-to-azure"></a>Azure zu Azure
 
@@ -48,7 +55,7 @@ In einem typischen Szenario können Ihre virtuellen Computer in einer Näherungs
 7. Erstellen Sie eine Schutzcontainerzuordnung zwischen dem primären Container und dem Wiederherstellungsschutzcontainer. Verwenden Sie dazu [diese](./azure-to-azure-powershell.md#create-a-protection-container-mapping-between-the-primary-and-recovery-protection-container) Schritte sowie eine Schutzcontainerzuordnung für Failback, wie [hier](./azure-to-azure-powershell.md#create-a-protection-container-mapping-for-failback-reverse-replication-after-a-failover) beschrieben.
 8. Erstellen Sie ein Cachespeicherkonto mit den [hier](./azure-to-azure-powershell.md#create-cache-storage-account-and-target-storage-account) beschriebenen Schritten.
 9. Erstellen Sie die erforderlichen Netzwerkzuordnungen, wie [hier](./azure-to-azure-powershell.md#create-network-mappings) beschrieben.
-10. Verwenden Sie das folgende PowerShell-Cmdlet, um den virtuellen Azure-Computer mit verwalteten Datenträgern zu replizieren: 
+10. Verwenden Sie das folgende PowerShell-Cmdlet, um den virtuellen Azure-Computer mit verwalteten Datenträgern zu replizieren:
 
 ```azurepowershell
 #Get the resource group that the virtual machine must be created in when failed over.
@@ -56,19 +63,21 @@ $RecoveryRG = Get-AzResourceGroup -Name "a2ademorecoveryrg" -Location "West US 2
 
 #Specify replication properties for each disk of the VM that is to be replicated (create disk replication configuration)
 
-#OsDisk
-$OSdiskId = $vm.StorageProfile.OsDisk.ManagedDisk.Id
-$RecoveryOSDiskAccountType = $vm.StorageProfile.OsDisk.ManagedDisk.StorageAccountType
-$RecoveryReplicaDiskAccountType = $vm.StorageProfile.OsDisk.ManagedDisk.StorageAccountType
+#OS Disk
+$OSdisk = Get-AzDisk -DiskName $OSdiskName -ResourceGroupName $OSdiskResourceGroup
+$OSdiskId = $OSdisk.Id
+$RecoveryOSDiskAccountType = $OSdisk.Sku.Name
+$RecoveryReplicaDiskAccountType = $OSdisk.Sku.Name
 
-$OSDiskReplicationConfig = New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig -ManagedDisk -LogStorageAccountId $EastUSCacheStorageAccount.Id ` -DiskId $OSdiskId -RecoveryResourceGroupId  $RecoveryRG.ResourceId -RecoveryReplicaDiskAccountType  $RecoveryReplicaDiskAccountType ` -RecoveryTargetDiskAccountType $RecoveryOSDiskAccountType
+$OSDiskReplicationConfig = New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig -ManagedDisk -LogStorageAccountId $EastUSCacheStorageAccount.Id -DiskId $OSdiskId -RecoveryResourceGroupId $RecoveryRG.ResourceId -RecoveryReplicaDiskAccountType $RecoveryReplicaDiskAccountType -RecoveryTargetDiskAccountType $RecoveryOSDiskAccountType
 
-# Data disk
-$datadiskId1 = $vm.StorageProfile.DataDisks[0].ManagedDisk.Id
-$RecoveryReplicaDiskAccountType = $vm.StorageProfile.DataDisks[0].ManagedDisk.StorageAccountType
-$RecoveryTargetDiskAccountType = $vm.StorageProfile.DataDisks[0].ManagedDisk.StorageAccountType
+#Data disk
+$datadisk = Get-AzDisk -DiskName $datadiskName -ResourceGroupName $datadiskResourceGroup
+$datadiskId1 = $datadisk.Id
+$RecoveryReplicaDiskAccountType = $datadisk.Sku.Name
+$RecoveryTargetDiskAccountType = $datadisk.Sku.Name
 
-$DataDisk1ReplicationConfig  = New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig -ManagedDisk -LogStorageAccountId $CacheStorageAccount.Id ` -DiskId $datadiskId1 -RecoveryResourceGroupId $RecoveryRG.ResourceId -RecoveryReplicaDiskAccountType $RecoveryReplicaDiskAccountType ` -RecoveryTargetDiskAccountType $RecoveryTargetDiskAccountType
+$DataDisk1ReplicationConfig  = New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig -ManagedDisk -LogStorageAccountId $EastUSCacheStorageAccount.Id -DiskId $datadiskId1 -RecoveryResourceGroupId $RecoveryRG.ResourceId -RecoveryReplicaDiskAccountType $RecoveryReplicaDiskAccountType -RecoveryTargetDiskAccountType $RecoveryTargetDiskAccountType
 
 #Create a list of disk replication configuration objects for the disks of the virtual machine that are to be replicated.
 
@@ -77,7 +86,7 @@ $diskconfigs += $OSDiskReplicationConfig, $DataDisk1ReplicationConfig
 
 #Start replication by creating replication protected item. Using a GUID for the name of the replication protected item to ensure uniqueness of name.
 
-$TempASRJob = New-AzRecoveryServicesAsrReplicationProtectedItem -AzureToAzure -AzureVmId $VM.Id -Name (New-Guid).Guid -ProtectionContainerMapping $EusToWusPCMapping -AzureToAzureDiskReplicationConfiguration $diskconfigs -RecoveryResourceGroupId $RecoveryRG.ResourceId -RecoveryProximityPlacementGroupId $recPpg.Id
+$TempASRJob = New-AzRecoveryServicesAsrReplicationProtectedItem -AzureToAzure -AzureVmId $VM.Id -Name (New-Guid).Guid -ProtectionContainerMapping $EusToWusPCMapping -AzureToAzureDiskReplicationConfiguration $diskconfigs -RecoveryResourceGroupId $RecoveryRG.ResourceId -RecoveryProximityPlacementGroupId $targetPpg.Id
 ```
 Sobald der Replikationsvorgang erfolgreich gestartet wurde, werden Daten des virtuellen Computers in die Wiederherstellungsregion repliziert.
 
@@ -85,7 +94,7 @@ Zu Beginn des Replikationsprozesses wird zunächst durch Seeding eine Kopie der 
 
 Sobald die erste Replikation abgeschlossen ist, wird in die Phase der differenziellen Synchronisierung gewechselt. An diesem Punkt ist der virtuelle Computer geschützt, und es kann ein Testfailover ausgeführt werden. Nach Abschluss der ersten Replikation wechselt der Replikationsstatus des replizierten Elements, das den virtuellen Computer darstellt, in den Zustand „Geschützt“.
 
-Überwachen Sie den Replikationsstatus und die Replikationsintegrität für den virtuellen Computer, indem Sie Details des entsprechenden replikationsgeschützten Elements abrufen. 
+Überwachen Sie den Replikationsstatus und die Replikationsintegrität für den virtuellen Computer, indem Sie Details des entsprechenden replikationsgeschützten Elements abrufen.
 
 ```azurepowershell
 Get-AzRecoveryServicesAsrReplicationProtectedItem -ProtectionContainer $PrimaryProtContainer | Select FriendlyName, ProtectionState, ReplicationHealth
@@ -103,6 +112,7 @@ $WestUSCacheStorageAccount = New-AzStorageAccount -Name "a2acachestoragewestus" 
 #Use the recovery protection container, new cache storage account in West US and the source region VM resource group 
 Update-AzRecoveryServicesAsrProtectionDirection -ReplicationProtectedItem $ReplicationProtectedItem -AzureToAzure -ProtectionContainerMapping $WusToEusPCMapping -LogStorageAccountId $WestUSCacheStorageAccount.Id -RecoveryResourceGroupID $sourceVMResourcegroup.ResourceId -RecoveryProximityPlacementGroupId $vm.ProximityPlacementGroup.Id
 ```
+
 14. Führen Sie zum Deaktivieren der Replikation die [hier](./azure-to-azure-powershell.md#disable-replication) beschriebenen Schritte aus.
 
 ### <a name="vmware-to-azure"></a>VMware zu Azure
@@ -120,7 +130,7 @@ Update-AzRecoveryServicesAsrProtectionDirection -ReplicationProtectedItem $Repli
 $ResourceGroup = Get-AzResourceGroup -Name "VMwareToAzureDrPs"
 
 #Get the target virtual network to be used
-$RecoveryVnet = Get-AzVirtualNetwork -Name "ASR-vnet" -ResourceGroupName "asrrg" 
+$RecoveryVnet = Get-AzVirtualNetwork -Name "ASR-vnet" -ResourceGroupName "asrrg"
 
 #Get the protection container mapping for replication policy named ReplicationPolicy
 $PolicyMap = Get-AzRecoveryServicesAsrProtectionContainerMapping -ProtectionContainer $ProtectionContainer | where PolicyFriendlyName -eq "ReplicationPolicy"
@@ -130,15 +140,17 @@ $VM1 = Get-AzRecoveryServicesAsrProtectableItem -ProtectionContainer $Protection
 
 # Enable replication for virtual machine CentOSVM1 using the Az.RecoveryServices module 2.0.0 onwards to replicate to managed disks
 # The name specified for the replicated item needs to be unique within the protection container. Using a random GUID to ensure uniqueness
-$Job_EnableReplication1 = New-AzRecoveryServicesAsrReplicationProtectedItem -VMwareToAzure -ProtectableItem $VM1 -Name (New-Guid).Guid -ProtectionContainerMapping $PolicyMap -ProcessServer $ProcessServers[1] -Account $AccountHandles[2] -RecoveryResourceGroupId $ResourceGroup.ResourceId -logStorageAccountId $LogStorageAccount.Id -RecoveryAzureNetworkId $RecoveryVnet.Id -RecoveryAzureSubnetName "Subnet-1" -RecoveryProximityPlacementGroupId $recPpg.Id
+$Job_EnableReplication1 = New-AzRecoveryServicesAsrReplicationProtectedItem -VMwareToAzure -ProtectableItem $VM1 -Name (New-Guid).Guid -ProtectionContainerMapping $PolicyMap -ProcessServer $ProcessServers[1] -Account $AccountHandles[2] -RecoveryResourceGroupId $ResourceGroup.ResourceId -logStorageAccountId $LogStorageAccount.Id -RecoveryAzureNetworkId $RecoveryVnet.Id -RecoveryAzureSubnetName "Subnet-1" -RecoveryProximityPlacementGroupId $targetPpg.Id
 ```
+
 8. Sie können den Replikationsstatus und die Replikationsintegrität des virtuellen Computers mit dem Cmdlet Get-ASRReplicationProtectedItem überprüfen.
 
 ```azurepowershell
 Get-AzRecoveryServicesAsrReplicationProtectedItem -ProtectionContainer $ProtectionContainer | Select FriendlyName, ProtectionState, ReplicationHealth
 ```
+
 9. Konfigurieren Sie die Failovereinstellungen, indem Sie die [hier](./vmware-azure-disaster-recovery-powershell.md#configure-failover-settings) beschriebenen Schritte ausführen.
-10. [Führen Sie ein Testfailover durch](./vmware-azure-disaster-recovery-powershell.md#run-a-test-failover). 
+10. [Führen Sie ein Testfailover durch](./vmware-azure-disaster-recovery-powershell.md#run-a-test-failover).
 11. Führen Sie das Failover auf Azure mithilfe [dieser](./vmware-azure-disaster-recovery-powershell.md#fail-over-to-azure) Schritte aus.
 
 ### <a name="hyper-v-to-azure"></a>Hyper-V in Azure
@@ -161,7 +173,7 @@ Get-AzRecoveryServicesAsrReplicationProtectedItem -ProtectionContainer $Protecti
     
     ```azurepowershell
     $OSType = "Windows"          # "Windows" or "Linux"
-    $DRjob = New-AzRecoveryServicesAsrReplicationProtectedItem -ProtectableItem $VM -Name $VM.Name -ProtectionContainerMapping $ProtectionContainerMapping -RecoveryAzureStorageAccountId   $StorageAccountID -OSDiskName $OSDiskNameList[$i] -OS $OSType -RecoveryResourceGroupId $ResourceGroupID -RecoveryProximityPlacementGroupId $recPpg.Id
+    $DRjob = New-AzRecoveryServicesAsrReplicationProtectedItem -ProtectableItem $VM -Name $VM.Name -ProtectionContainerMapping $ProtectionContainerMapping -RecoveryAzureStorageAccountId   $StorageAccountID -OSDiskName $OSDiskNameList[$i] -OS $OSType -RecoveryResourceGroupId $ResourceGroupID -RecoveryProximityPlacementGroupId $targetPpg.Id
     ```
     c. Warten Sie, bis die virtuellen Computer nach der ersten Replikation einen geschützten Zustand erreicht haben. Abhängig von Faktoren wie der Menge der zu replizierenden Daten und der verfügbare Upstreambandbreite zu Azure kann dies länger dauern. Die Aufträge „State“ und „StateDescription“ werden wie folgt aktualisiert, sobald der virtuelle Computer einen geschützten Zustand erreicht: 
     

@@ -4,16 +4,16 @@ description: Verwenden der seriellen Konsole für GRUB in Azure Virtual Machines
 services: virtual-machines-linux
 author: asinn826
 ms.service: virtual-machines-linux
-ms.topic: article
+ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: 2aa7110ab4e52fdc5c3804bd27be5f41081fb435
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: da7e558464c82db9d71132c4b1f53f9892d2d653
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81758508"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292249"
 ---
 # <a name="use-serial-console-to-access-grub-and-single-user-mode"></a>Verwenden der seriellen Konsole zum Zugreifen auf den GRUB- und Einzelbenutzermodus
 GRUB steht für GRand Unified Bootloader. Mit GRUB können Sie unter anderem Ihre Startkonfiguration so ändern, dass das System im Einzelbenutzermodus gestartet wird.
@@ -78,7 +78,7 @@ Wenn Sie GRUB und den Stammzugriff wie oben beschrieben eingerichtet haben, kön
 1. Drücken Sie STRG+X, um den Modus zu beenden und einen Neustart mit den angewendeten Einstellungen durchzuführen.
 1. Sie werden zur Eingabe des Administratorkennworts aufgefordert, bevor Sie in den Einzelbenutzermodus wechseln können. Dies ist das Kennwort, das Sie in den obigen Anweisungen erstellt haben.    
 
-    ![](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-rhel-enter-emergency-shell.gif)
+    ![Animiertes Bild, das eine Befehlszeilenschnittstelle zeigt. Der Benutzer wählt einen Server aus, sucht das Ende der Kernelzeile und gibt dann den angegebenen Text ein.](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-rhel-enter-emergency-shell.gif)
 
 ### <a name="enter-single-user-mode-without-root-account-enabled-in-rhel"></a>Aktivieren des Einzelbenutzermodus ohne aktiviertes Stammkonto in RHEL
 Wenn Sie die obigen Schritte zum Aktivieren des Stammbenutzers nicht ausgeführt haben, können Sie dennoch das Stammkennwort zurücksetzen. Gehen Sie folgendermaßen vor:
@@ -95,7 +95,7 @@ Wenn Sie die obigen Schritte zum Aktivieren des Stammbenutzers nicht ausgeführt
 1. Geben Sie nach dem Start im Einzelbenutzermodus `chroot /sysroot` ein, um in das `sysroot`-Jail zu wechseln.
 1. Sie sind jetzt der Root-Benutzer. Sie können Ihr Stammkennwort mit `passwd` zurücksetzen und anschließend wie oben beschrieben in den Einzelbenutzermodus wechseln. Geben Sie anschließend `reboot -f` ein, um neu zu starten.
 
-![](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-rhel-emergency-mount-no-root.gif)
+![Animiertes Bild, das eine Befehlszeilenschnittstelle zeigt. Der Benutzer wählt einen Server aus, lokalisiert das Ende der Kernelzeile und gibt die angegebenen Befehle ein.](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-rhel-emergency-mount-no-root.gif)
 
 > Hinweis: Wenn Sie den obigen Anweisungen folgen, gelangen Sie in die Notfall-Shell, sodass Sie auch Aufgaben wie das Bearbeiten von `fstab` ausführen können. Im Allgemeinen wird jedoch empfohlen, das Stammkennwort zurückzusetzen und damit den Einzelbenutzermodus zu aktivieren. 
 
@@ -157,7 +157,7 @@ Der GRUB-Zugriff in SLES erfordert eine Bootloaderkonfiguration über YaST. Gehe
 1. Starten Sie zum Aktivieren des GRUB-Modus Ihre VM neu, und drücken Sie während der Startsequenz eine beliebige Taste, damit der GRUB-Bildschirm nicht geschlossen wird.
     - Das Standardzeitlimit für GRUB ist 1 Sekunde. Sie können diese Einstellung ändern, indem Sie die Variable `GRUB_TIMEOUT` in `/etc/default/grub` bearbeiten.
 
-![](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-sles-yast-grub-config.gif)
+![Animiertes Bild, das eine Befehlszeilenschnittstelle zeigt. Der Benutzer gibt den angegebenen Text ein, wählt die angegebene Option aus und speichert die Einstellungen.](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-sles-yast-grub-config.gif)
 
 ### <a name="single-user-mode-in-suse-sles"></a>Einzelbenutzermodus in SUSE SLES
 Die Notfall-Shell wird automatisch geöffnet, wenn SLES nicht normal gestartet werden kann. Gehen Sie wie folgt vor, um die Notfall-Shell manuell zu öffnen:
@@ -178,7 +178,7 @@ In Oracle Linux ist GRUB standardmäßig aktiviert. Starten Sie zum Aktivieren d
 Befolgen Sie die obigen Anweisungen für RHEL, um den Einzelbenutzermodus in Oracle Linux zu aktivieren.
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Die Hauptseite der Linux-Dokumentation für die serielle Konsole finden Sie [hier](serial-console.md).
+* Die Hauptseite der Linux-Dokumentation für die serielle Konsole finden Sie [hier](../troubleshooting/serial-console-linux.md).
 * Verwenden der seriellen Konsole für [NMI- und SysRq-Aufrufe](serial-console-nmi-sysrq.md)
-* Die serielle Konsole ist auch für [virtuelle Windows-Computer](../windows/serial-console.md) verfügbar.
-* Erfahren Sie mehr über die [Startdiagnose](boot-diagnostics.md).
+* Die serielle Konsole ist auch für [virtuelle Windows-Computer](../troubleshooting/serial-console-windows.md) verfügbar.
+* Erfahren Sie mehr über die [Startdiagnose](../troubleshooting/boot-diagnostics.md).

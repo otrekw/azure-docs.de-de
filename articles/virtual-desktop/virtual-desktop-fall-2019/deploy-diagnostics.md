@@ -1,6 +1,6 @@
 ---
-title: Bereitstellen des Diagnosetools für Windows Virtual Desktop – Azure
-description: So stellen Sie das Diagnose-UX-Tool für Windows Virtual Desktop bereit.
+title: Bereitstellen des Diagnosetools für Windows Virtual Desktop (klassisch) – Azure
+description: So stellen Sie das Diagnose-UX-Tool für Windows Virtual Desktop (klassisch) bereit.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,17 +8,17 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 544610f4011f7ad12d5b311aab3afd4bc1373ac5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bf05d495442a39b42fddf5f373fb2616bf0c6fbe
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85362338"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285100"
 ---
-# <a name="deploy-the-diagnostics-tool"></a>Bereitstellen des Diagnosetools
+# <a name="deploy-the-windows-virtual-desktop-classic-diagnostics-tool"></a>Bereitstellen des Diagnosetools für Windows Virtual Desktop (klassisch)
 
 >[!IMPORTANT]
->Dieser Inhalt gilt für das Release vom Herbst 2019, das keine Windows Virtual Desktop-Objekte in Azure Resource Manager unterstützt.
+>Dieser Inhalt gilt für Windows Virtual Desktop (klassisch). Der Dienst unterstützt keine Windows Virtual Desktop-Objekte in Azure Resource Manager.
 
 >[!IMPORTANT]
 >Seit dem 16. März 2020 haben wir Diagnoseabfragen vorübergehend deaktiviert, die sich aufgrund steigender Dienstanforderung negativ auf die Funktionalität für Benutzer ausgewirkt haben. Dies bewirkt, dass das Tool nicht mehr funktioniert, da es dafür diese Abfragen benötigt. Wir aktualisieren diesen Artikel, sobald Diagnoseabfragen wieder verfügbar sind.

@@ -7,17 +7,17 @@ author: cynthn
 manager: gwallace
 tags: azure-resource-manager
 ms.service: virtual-machines-linux
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: cynthn
-ms.openlocfilehash: 25e8be28903d490a7a8c17e16d2beddc44c95c41
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4214fca9e295dc7716d8e2c069f52c719aa74697
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84782771"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292102"
 ---
 # <a name="time-sync-for-linux-vms-in-azure"></a>Zeitsynchronisierung für Linux-VMs in Azure
 
@@ -128,11 +128,11 @@ In diesem Beispiel lautet der zurückgegebene Wert *ptp0*, sodass wir diesen ver
 cat /sys/class/ptp/ptp0/clock_name
 ```
 
-Dabei sollte **hyperv** zurückgegeben werden.
+Dieser Befehl sollte `hyperv` zurückgegeben.
 
 ### <a name="chrony"></a>chrony
 
-Unter Ubuntu 19.10 und höher, Red Hat Enterprise Linux und CentOS 7.x wird [chrony](https://chrony.tuxfamily.org/) für die Verwendung einer PTP-Zeitquelle konfiguriert. Anstelle von chrony verwenden ältere Linux-Releases den Network Time Protocol-Daemon (ntpd), der keine PTP-Quellen unterstützt. Um PTP in diesen Releases zu aktivieren, muss chrony manuell installiert und mit dem folgenden Code konfiguriert (in chrony.conf) werden:
+Unter Ubuntu 19.10 und höher, Red Hat Enterprise Linux und CentOS 8.x wird [chrony](https://chrony.tuxfamily.org/) für die Verwendung einer PTP-Zeitquelle konfiguriert. Anstelle von chrony verwenden ältere Linux-Releases den Network Time Protocol-Daemon (ntpd), der keine PTP-Quellen unterstützt. Um PTP in diesen Releases zu aktivieren, muss chrony manuell installiert und mit dem folgenden Code konfiguriert (in chrony.conf) werden:
 
 ```bash
 refclock PHC /dev/ptp0 poll 3 dpoll -2 offset 0
@@ -144,7 +144,7 @@ Weitere Informationen zu Red Hat und NTP finden Sie unter [Konfigurieren von NTP
 
 Weitere Informationen zu „chrony“ finden Sie unter [Verwenden von Chrony](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/ch-configuring_ntp_using_the_chrony_suite#sect-Using_chrony).
 
-Wenn chrony- und TimeSync-Quellen gleichzeitig aktiviert sind, können Sie eine Quelle als **bevorzugt** kennzeichnen, wodurch die andere Quelle als Sicherung festlegt wird. Da NTP-Dienste die Uhr bei großen Abweichungen außer nach einem längeren Zeitraum nicht aktualisieren, stellt der VMICTimeSync-Dienst die Uhr nach Ereignissen von angehaltenen virtuellen Computern deutlich schneller wieder her als NTP-basierte Tools alleine.
+Wenn chrony- und VMICTimeSync-Quellen gleichzeitig aktiviert sind, können Sie eine Quelle als **bevorzugt** kennzeichnen, wodurch die andere Quelle als Sicherung festlegt wird. Da NTP-Dienste die Uhr bei großen Abweichungen außer nach einem längeren Zeitraum nicht aktualisieren, stellt der VMICTimeSync-Dienst die Uhr nach Ereignissen von angehaltenen virtuellen Computern deutlich schneller wieder her als NTP-basierte Tools alleine.
 
 Standardmäßig beschleunigt oder verlangsamt chronyd die Systemuhr, um zeitliche Abweichungen zu beheben. Wenn die Abweichung zu groß wird, kann diese von „chrony“ nicht mehr behoben werden. Dieses Problem kann umgangen werden, indem der `makestep`-Parameter in **/etc/chrony.conf** so geändert wird, dass eine Zeitsynchronisierung erzwungen wird, wenn die Drift den angegebenen Schwellenwert überschreitet.
 

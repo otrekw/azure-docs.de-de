@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: thfalgou
 ms.custom: fasttrack-edit
-ms.openlocfilehash: e4e2a1fc08851e4e625bfc59419fc274ebbce1c8
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 578560eccb13ff4b9169e11b0674859acc1fc901
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86251195"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285865"
 ---
 # <a name="best-practices-for-business-continuity-and-disaster-recovery-in-azure-kubernetes-service-aks"></a>Best Practices für Geschäftskontinuität und Notfallwiederherstellung in Azure Kubernetes Service (AKS)
 
@@ -57,9 +57,9 @@ Traffic Manager führt DNS-Suchen durch und gibt den am besten geeigneten Endpun
 
 Informationen zum Einrichten der Endpunkte und der Weiterleitung finden Sie unter [Konfigurieren der geografischen Routingmethode für Datenverkehr mithilfe von Traffic Manager](../traffic-manager/traffic-manager-configure-geographic-routing-method.md).
 
-### <a name="layer-7-application-routing-with-azure-front-door-service"></a>Layer-7-Anwendungsrouting mit Azure Front Door Service
+### <a name="application-routing-with-azure-front-door-service"></a>Anwendungsrouting mit Azure Front Door Service
 
-Traffic Manager verwendet DNS (Layer 3) zum Formen des Datenverkehrs. [Azure Front Door Service](../frontdoor/front-door-overview.md) stellt eine Routingoption über HTTP/HTTPS (Layer 7) bereit. Zu den weiteren Features von Azure Front Door Service gehören TLS-Terminierung, benutzerdefinierte Domänen, Web Application Firewall, URL-Rewrite und Sitzungsaffinität. Überprüfen Sie die Anforderungen des Anwendungsdatenverkehrs, um zu ermitteln, welche Lösung sich am besten eignet.
+Durch Verwendung des TCP-basierten geteilten Anycast-Protokolls stellt [Azure Front Door Service](../frontdoor/front-door-overview.md) sicher, dass Ihre Endbenutzer sofort mit dem nächstgelegenen Front Door-POP (Point of Presence) verbunden werden. Zu den weiteren Features von Azure Front Door Service gehören TLS-Terminierung, benutzerdefinierte Domänen, Web Application Firewall, URL-Rewrite und Sitzungsaffinität. Überprüfen Sie die Anforderungen des Anwendungsdatenverkehrs, um zu ermitteln, welche Lösung sich am besten eignet.
 
 ### <a name="interconnect-regions-with-global-virtual-network-peering"></a>Verbinden von Regionen mit globalem Peering virtueller Netzwerke
 

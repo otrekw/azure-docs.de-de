@@ -1,6 +1,6 @@
 ---
-title: 'Windows Virtual Desktop: PowerShell – Azure'
-description: Informationen zum Behandeln von Problemen mit PowerShell, wenn Sie eine Windows Virtual Desktop-Mandantenumgebung einrichten.
+title: 'Windows Virtual Desktop (klassisch): PowerShell – Azure'
+description: Informationen zum Behandeln von Problemen mit PowerShell, wenn Sie eine Windows Virtual Desktop-Mandantenumgebung (klassisch) einrichten.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,17 +8,17 @@ ms.topic: troubleshooting
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: de3933b1686b433a720e78d89bd3e50c0ce5e5dd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 04ef12d6de8820740be687bd09ffaa5a8e69eb86
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82614291"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87269613"
 ---
-# <a name="windows-virtual-desktop-powershell"></a>Windows Virtual Desktop: PowerShell
+# <a name="windows-virtual-desktop-classic-powershell"></a>Windows Virtual Desktop (klassisch): PowerShell
 
 >[!IMPORTANT]
->Dieser Inhalt gilt für das Release vom Herbst 2019, das keine Windows Virtual Desktop-Objekte in Azure Resource Manager unterstützt. Wenn Sie Windows Virtual Desktop-Objekte in Azure Resource Manager verwalten möchten, die im Update vom Frühjahr 2020 eingeführt wurden, finden Sie weitere Informationen in [diesem Artikel](../troubleshoot-powershell.md).
+>Dieser Inhalt gilt für Windows Virtual Desktop (klassisch). Der Dienst unterstützt keine Windows Virtual Desktop-Objekte in Azure Resource Manager. Wenn Sie Windows Virtual Desktop-Objekte in Azure Resource Manager verwalten möchten, helfen Ihnen die Informationen in [diesem Artikel](../troubleshoot-powershell.md) weiter.
 
 Verwenden Sie diesen Artikel, um Fehler und Probleme bei der Verwendung von PowerShell mit Windows Virtual Desktop zu beheben. Weitere Informationen zu PowerShell von Remote Desktop Services finden Sie unter [Windows Virtual Desktop: PowerShell](/powershell/module/windowsvirtualdesktop/).
 

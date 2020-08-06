@@ -2,14 +2,14 @@
 title: Unterstützungsmatrix für Azure Migrate
 description: Enthält eine Zusammenfassung der Unterstützungseinstellungen und Einschränkungen für den Azure Migrate-Dienst.
 ms.topic: conceptual
-ms.date: 04/19/2020
+ms.date: 07/23/2020
 ms.author: raynew
-ms.openlocfilehash: 8350f557efd9224d92388835f55871cb861eda25
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: fae5af9c8717604d71ec2bf2628ea25125d5b2d5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86108752"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87022717"
 ---
 # <a name="azure-migrate-support-matrix"></a>Unterstützungsmatrix für Azure Migrate
 
@@ -21,14 +21,16 @@ Die Tabelle enthält eine Übersicht über die unterstützten Ermittlungs-, Bewe
 
 **Bereitstellung** | **Details** 
 --- | --- 
-**App-spezifische Ermittlung** | Sie können die Apps, Rollen und Features ermitteln, die auf VMware-VMs ausgeführt werden. Diese Funktion ist zurzeit nur auf die Ermittlung beschränkt. Die Bewertung erfolgt zurzeit auf der Computerebene. Es ist noch keine app-, rollen- oder featurespezifische Bewertung verfügbar. 
-**Lokale Bewertung** | Bewerten Sie lokale Workloads und Daten, die auf VMware-VMs, Hyper-V-VMs und physischen Servern ausgeführt werden. Verwenden Sie für die Bewertung die Azure Migrate-Serverbewertung und den Microsoft-Datenmigrations-Assistenten (DMA) sowie andere Tools und ISV-Angebote.
-**Migration von einem lokalen Standort zu Azure** | Migrieren Sie auf physischen Servern, VMware-VMs, Hyper-V-VMs und cloudbasierten VMs ausgeführte Workloads und Daten zu Azure. Verwenden Sie für die Migration die Azure Migrate-Serverbewertung und Azure Database Migration Service (DMS) sowie andere Tools und ISV-Angebote.
+**Ermittlung** | Sie können Metadaten von Computern und dynamische Leistungsdaten ermitteln.
+**App-Ermittlung** | Sie können die Apps, Rollen und Features ermitteln, die auf VMware-VMs ausgeführt werden. Diese Funktion ist zurzeit nur auf die Ermittlung beschränkt. Die Bewertung erfolgt zurzeit auf der Computerebene. Es sind noch keine app-, rollen- oder featurebasierte Bewertungen verfügbar. 
+**Bewertung** | Bewerten Sie lokale Workloads und Daten, die auf VMware-VMs, Hyper-V-VMs und physischen Servern ausgeführt werden. Verwenden Sie für die Bewertung die Azure Migrate-Serverbewertung, den Microsoft-Datenmigrations-Assistenten (DMA) sowie andere Tools und ISV-Angebote.
+**Migration** | Migrieren Sie auf physischen Servern, VMware-VMs, Hyper-V-VMs und cloudbasierten VMs ausgeführte Workloads und Daten zu Azure. Verwenden Sie für die Migration die Azure Migrate-Serverbewertung und Azure Database Migration Service (DMS) sowie andere Tools und ISV-Angebote.
 
 > [!NOTE]
 > Zurzeit können ISV-Tools in Azure Government keine Daten an Azure Migrate senden. Unabhängig davon können Sie integrierte Microsoft-Tools oder Partnertools verwenden.
 
 ## <a name="supported-tools"></a>Unterstützte Tools
+
 
 Die Informationen zur Toolunterstützung sind in der Tabelle zusammengefasst.
 
@@ -73,7 +75,11 @@ Erstellen eines Schlüsseltresors für die VMware-Migration ohne Agent | Für di
 
 ## <a name="supported-geographies-public-cloud"></a>Unterstützte geografische Regionen (öffentliche Cloud)
 
-Sie können Azure Migrate-Projekte in verschiedenen geografischen Regionen in der öffentlichen Cloud erstellen. Obwohl Sie Projekte nur in diesen geografischen Regionen erstellen können, haben Sie die Möglichkeit, Computer für andere Zielstandorte zu bewerten und dorthin zu migrieren. Die Projektgeografie wird nur zum Speichern der ermittelten Metadaten verwendet.
+Sie können Azure Migrate-Projekte in verschiedenen geografischen Regionen in der öffentlichen Cloud erstellen.
+
+- Obwohl Sie Projekte nur in diesen geografischen Regionen erstellen können, haben Sie die Möglichkeit, Computer für andere Zielstandorte zu bewerten und dorthin zu migrieren.
+- Die Projektgeografie wird nur zum Speichern der ermittelten Metadaten verwendet.
+- Wenn Sie ein Projekt erstellen, wählen Sie eine Geografie aus. Das Projekt und die damit verbundenen Ressourcen werden in einer der Regionen in der Geografie erstellt. Die Region wird durch den Azure Migrate-Dienst zugeordnet.
 
 **Geografie** | **Speicherort der Metadaten**
 --- | ---

@@ -1,6 +1,6 @@
 ---
-title: Herstellen einer Verbindung zu Windows Virtual Desktop in Android – Azure
-description: Informationen zum Herstellen einer Verbindung mit Windows Virtual Desktop mithilfe des Android-Clients.
+title: Herstellen einer Verbindung zu Windows Virtual Desktop (klassisch) in Android – Azure
+description: Informationen zum Herstellen einer Verbindung mit Windows Virtual Desktop (klassisch) mithilfe des Android-Clients.
 services: virtual-desktop
 author: heidilohr
 ms.service: virtual-desktop
@@ -8,22 +8,19 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 802e957c9473276dfa73a3ffd93fdd7c526dbf26
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c83d243a24fb0cacdf032dfa77e9bb17fdf5e824
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85213243"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87383799"
 ---
-# <a name="connect-with-the-android-client"></a>Herstellen einer Verbindung mit dem Android-Client
+# <a name="connect-to-windows-virtual-desktop-classic-with-the-android-client"></a>Herstellen einer Verbindung mit Windows Virtual Desktop (klassisch) mithilfe des Android-Clients
 
 > Gilt für: Android 4.1 und höher, Chromebooks mit ChromeOS 53 und höher.
 
 >[!IMPORTANT]
->Dieser Inhalt gilt für das Release vom Herbst 2019, das keine Windows Virtual Desktop-Objekte in Azure Resource Manager unterstützt. Wenn Sie Windows Virtual Desktop-Objekte in Azure Resource Manager verwalten möchten, die im Update vom Frühjahr 2020 eingeführt wurden, finden Sie weitere Informationen in [diesem Artikel](../connect-android.md).
-
->[!NOTE]
-> Die Möglichkeit, auf Windows Virtual Desktop-Ressourcen über den Android-Client zuzugreifen, ist zurzeit als Vorschau verfügbar.
+>Dieser Inhalt gilt für Windows Virtual Desktop (klassisch). Der Dienst unterstützt keine Windows Virtual Desktop-Objekte in Azure Resource Manager. Wenn Sie Windows Virtual Desktop-Objekte in Azure Resource Manager verwalten möchten, helfen Ihnen die Informationen in [diesem Artikel](../connect-android.md) weiter.
 
 Mit unserem herunterladbaren Client können Sie über Ihr Android-Gerät auf Windows Virtual Desktop-Ressourcen zugreifen. Sie können den Android-Client auch auf Chromebook-Geräten verwenden, die Google Play Store unterstützen. In dieser Anleitung erfahren Sie, wie Sie den Android-Client einrichten.
 

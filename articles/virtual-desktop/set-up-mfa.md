@@ -5,17 +5,20 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: how-to
-ms.date: 04/30/2020
+ms.date: 07/15/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 16abe8d155a0d7d7f65c69e6305da62bd8813ea4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8a8f5cb792f524354754b4368c0b68d5f9d40699
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85361148"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87291370"
 ---
 # <a name="enable-azure-multi-factor-authentication-for-windows-virtual-desktop"></a>Aktivieren von Azure Multi-Factor Authentication für Windows Virtual Desktop
+
+>[!IMPORTANT]
+> Wenn Sie diese Seite von der Dokumentation zu Windows Virtual Desktop (klassisch) aus besuchen, stellen Sie sicher, dass Sie [zur Dokumentation zu Windows Virtual Desktop (klassisch) zurückkehren](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md), wenn Sie fertig sind.
 
 Der Windows-Client für Windows Virtual Desktop ist eine hervorragende Option für die Integration von Windows Virtual Desktop in Ihren lokalen Computer. Wenn Sie jedoch Ihr Windows Virtual Desktop-Konto für den Windows-Client konfigurieren, müssen Sie bestimmte Maßnahmen ergreifen, um sich selbst und Ihre Benutzer zu schützen.
 
@@ -36,28 +39,39 @@ Voraussetzungen für die ersten Schritte:
 
 ## <a name="create-a-conditional-access-policy"></a>Erstellen der Richtlinie für bedingten Zugriff
 
-In diesem Abschnitt erfahren Sie, wie Sie eine Richtlinie für bedingten Zugriff erstellen, die beim Herstellen einer Verbindung mit Windows Virtual Desktop Multi-Factor Authentication erfordert.
+Hier erfahren Sie, wie Sie eine Richtlinie für bedingten Zugriff erstellen, die beim Herstellen einer Verbindung mit Windows Virtual Desktop Multi-Factor Authentication erfordert:
 
 1. Melden Sie sich beim **Azure-Portal** als globaler Administrator, Sicherheitsadministrator oder Administrator für bedingten Zugriff an.
 2. Navigieren Sie zu **Azure Active Directory** > **Sicherheit** > **Bedingter Zugriff**.
 3. Wählen Sie **Neue Richtlinie**.
 4. Benennen Sie Ihre Richtlinie. Es wird empfohlen, dass Unternehmen einen aussagekräftigen Standard für die Namen ihrer Richtlinien erstellen.
 5. Klicken Sie unter **Zuweisungen** auf **Benutzer und Gruppen**.
-   - Wählen Sie unter **Einschließen** **Benutzer und Gruppen auswählen** > **Benutzer und Gruppen** aus, und wählen Sie die Gruppe aus, die Sie in der Voraussetzungsphase erstellt haben.
-   - Wählen Sie **Fertig**aus.
-6. Wählen Sie unter **Cloud-Apps oder -Aktionen** > **Einschließen** die Option **Apps auswählen** aus.
-   - Wählen Sie **Windows Virtual Desktop** (App-ID 9cdead84-a844-4324-93f2-b2e6bb768d07), dann **Auswählen** und anschließend **Fertig** aus.
+6. Wählen Sie unter **Einschließen** **Benutzer und Gruppen auswählen** > **Benutzer und Gruppen** aus, und wählen Sie die Gruppe aus, die Sie in der [Voraussetzungsphase](#prerequisites) erstellt haben.
+7. Wählen Sie **Fertig**aus.
+8. Wählen Sie unter **Cloud-Apps oder -Aktionen** > **Einschließen** die Option **Apps auswählen** aus.
+9. Wählen Sie eine der folgenden Gruppen von Apps aus, je nachdem, welche Version von Windows Virtual Desktop Sie verwenden.
+   - Wenn Sie Windows Virtual Desktop (klassisch) verwenden, wählen Sie diese beiden Apps aus:
+       - **Windows Virtual Desktop** (App-ID 5a0aa725-4958-4b0c-80a9-34562e23f3b7)
+       - **Windows Virtual Desktop Client** (App-ID fa4345a4-a730-4230-84a8-7d9651b86739)
+   - Wenn Sie Windows Virtual Desktop verwenden, wählen Sie stattdessen diese beiden Apps aus:
+       -  **Windows Virtual Desktop** (App-ID 9cdead84-a844-4324-93f2-b2e6bb768d07)
+       -  **Windows Virtual Desktop-Client** (App-ID a85cf173-4192-42f8-81fa-777a763e6e2c)
 
-     > [!div class="mx-imgBorder"]
-     > ![Screenshot der Seite „Cloud-Apps oder -aktionen“. Die Windows Virtual Desktop- und Windows Virtual Desktop-Client-Apps werden rot hervorgehoben.](media/cloud-apps-enterprise.png)
+   >[!IMPORTANT]
+   > Die Windows Virtual Desktop-Client-Apps werden für den Webclient verwendet. Wählen Sie jedoch nicht die App namens Windows Virtual Desktop Azure Resource Manager-Anbieter (50e95039-b200-4007-bc97-8d5790743a63) aus. Diese App wird nur zum Abrufen des Benutzerfeeds verwendet und sollte keine MFA aufweisen.
+  
+1. Nachdem Sie Ihre App ausgewählt haben, wählen Sie **Auswählen** und dann **Fertig** aus.
 
-     >[!NOTE]
-     >Um die App-ID der auszuwählenden App zu finden, wechseln Sie zu **Unternehmensanwendungen**, und wählen Sie **Microsoft-Anwendungen** aus dem Dropdownmenü für den Anwendungstyp aus.
+   > [!div class="mx-imgBorder"]
+   > ![Screenshot der Seite „Cloud-Apps oder -aktionen“. Die Windows Virtual Desktop- und Windows Virtual Desktop-Client-Apps werden rot hervorgehoben.](media/cloud-apps-enterprise.png)
 
-7. Wählen Sie unter **Zugriffssteuerung** > **Erteilen** die Option **Zugriff erteilen**, dann **Mehrstufige Authentifizierung erforderlich** und anschließend **Auswählen** aus.
-8. Wählen Sie unter **Zugriffssteuerung** > **Sitzung** die Option **Anmeldehäufigkeit** aus, legen Sie den Wert auf **1** und die Einheit auf **Stunden** fest, und wählen Sie dann **Auswählen** aus.
-9. Bestätigen Sie die Einstellungen und legen Sie **Richtlinie aktivieren** auf **Ein** fest.
-10. Wählen Sie **Erstellen** aus, um die Richtlinie zu aktivieren.
+   >[!NOTE]
+   >Um die App-ID der auszuwählenden App zu finden, wechseln Sie zu **Unternehmensanwendungen**, und wählen Sie **Microsoft-Anwendungen** aus dem Dropdownmenü für den Anwendungstyp aus.
+
+10. Wählen Sie unter **Zugriffssteuerung** > **Erteilen** die Option **Zugriff erteilen**, dann **Mehrstufige Authentifizierung erforderlich** und anschließend **Auswählen** aus.
+11. Wählen Sie unter **Zugriffssteuerung** > **Sitzung** die Option **Anmeldehäufigkeit** aus, legen Sie den Wert auf **1** und die Einheit auf **Stunden** fest, und wählen Sie dann **Auswählen** aus.
+12. Bestätigen Sie die Einstellungen und legen Sie **Richtlinie aktivieren** auf **Ein** fest.
+13. Wählen Sie **Erstellen** aus, um die Richtlinie zu aktivieren.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/18/2020
-ms.openlocfilehash: cb9214dcd79e45b4c587c7ab47e425f2fdd8714c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d6fbfc7dced59580e91c3beceb6054f223a0a17d
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85564427"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319047"
 ---
 # <a name="ai-enrichment-in-azure-cognitive-search"></a>KI-Anreicherung in Azure Cognitive Search
 
@@ -59,7 +59,7 @@ Ein [Skillset](cognitive-search-defining-skillset.md) mit integrierten Fähigkei
 
 Benutzerdefinierte Fähigkeiten können komplexere Szenarien unterstützen, z. B. das Erkennen von Formularen oder die benutzerdefinierte Entitätserkennung mithilfe eines Modells, das Sie bereitstellen und in der [benutzerdefinierten Skills-Webschnittstelle](cognitive-search-custom-skill-interface.md) umschließen. Beispiele für benutzerdefinierte Fähigkeiten sind die [Formularerkennung](/azure/cognitive-services/form-recognizer/overview), die Integration der [Bing-Entitätssuche-API](https://docs.microsoft.com/azure/search/cognitive-search-create-custom-skill-example) und [die Erkennung von benutzerdefinierten Entitäten](https://github.com/Microsoft/SkillsExtractorCognitiveSearch).
 
-<a name="enrichment-steps"> ## Schritte in einer Anreicherungspipeline </a>
+## <a name="steps-in-an-enrichment-pipeline"></a>Schritte in einer Anreicherungspipeline <a name="enrichment-steps"></a>
 
 Eine Anreicherungspipeline basiert auf [*Indexern*](search-indexer-overview.md). Indexer füllen einen Index auf der Grundlage von Feld-zu-Feld-Zuordnungen zwischen dem Index und Ihrer Datenquelle für Dokumententschlüsselung auf. Die jetzt an Indexer angefügten Fähigkeiten fangen Dokumente entsprechend dem/den von Ihnen definierten Skillset(s) ab und reichern sie an. Nach der Indizierung können Sie über Suchanforderungen über sämtliche [von Azure Cognitive Search unterstützte Abfragetypen](search-query-overview.md) auf Inhalte zugreifen.  Wenn Sie mit Indexern noch nicht vertraut sind, werden Ihnen in diesem Abschnitt die erforderlichen Schritte erläutert.
 

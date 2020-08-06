@@ -7,12 +7,12 @@ ms.service: iot-fundamentals
 ms.topic: conceptual
 ms.date: 06/16/2020
 ms.author: jlian
-ms.openlocfilehash: f15f0c3f6b442419d3d2e3a253d15465e130eae2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7776345ee4e02baa2d2a6ae7bc08389aa94bd09b
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090602"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534480"
 ---
 # <a name="iot-hub-support-for-virtual-networks-with-private-link-and-managed-identity"></a>IoT Hub-Unterstützung für virtuelle Netzwerke mit Private Link und verwalteter Identität
 
@@ -174,7 +174,7 @@ IoT Hub kann Nachrichten an ein Speicherkonto im Kundenbesitz weiterleiten. Dami
 
 1. Navigieren Sie im Azure-Portal zur Registerkarte **Zugriffssteuerung (IAM)** Ihres Speicherkontos, und klicken Sie im Abschnitt **Rollenzuweisung hinzufügen** auf **Hinzufügen**.
 
-2. Wählen Sie **Mitwirkender an Storage-Blobdaten** ([*nicht* „Mitwirkender“ oder „Speicherkontomitwirkender“](../storage/common/storage-auth-aad-rbac-portal.md#rbac-roles-for-blobs-and-queues)) als **Rolle** und **Azure AD-Benutzer, -Gruppe oder -Dienstprinzipal** für **Zugriff zuweisen für** aus, und wählen Sie dann in der Dropdownliste den Ressourcennamen Ihrer IoT Hub-Instanz aus. Klicken Sie auf die Schaltfläche **Save** .
+2. Wählen Sie **Mitwirkender an Storage-Blobdaten** ([*nicht* „Mitwirkender“ oder „Speicherkontomitwirkender“](../storage/common/storage-auth-aad-rbac-portal.md#azure-roles-for-blobs-and-queues)) als **Rolle** und **Azure AD-Benutzer, -Gruppe oder -Dienstprinzipal** für **Zugriff zuweisen für** aus, und wählen Sie dann in der Dropdownliste den Ressourcennamen Ihrer IoT Hub-Instanz aus. Klicken Sie auf die Schaltfläche **Save** .
 
 3. Navigieren Sie in Ihrem Speicherkonto zur Registerkarte **Firewalls und virtuelle Netzwerke**, und aktivieren Sie die Option **Allow access from selected networks** (Zugriff von ausgewählten Netzwerken zulassen). Aktivieren Sie unter **Ausnahmen** das Kontrollkästchen für **Vertrauenswürdigen Microsoft-Diensten den Zugriff auf dieses Speicherkonto erlauben**. Klicken Sie auf die Schaltfläche **Save** .
 
@@ -228,7 +228,7 @@ Das IoT Hub-Feature für den Dateiupload ermöglicht Geräten das Hochladen von 
 
 1. Navigieren Sie im Azure-Portal zur Registerkarte **Zugriffssteuerung (IAM)** Ihres Speicherkontos, und klicken Sie im Abschnitt **Rollenzuweisung hinzufügen** auf **Hinzufügen**.
 
-2. Wählen Sie **Mitwirkender an Storage-Blobdaten** ([*nicht* „Mitwirkender“ oder „Speicherkontomitwirkender“](../storage/common/storage-auth-aad-rbac-portal.md#rbac-roles-for-blobs-and-queues)) als **Rolle** und **Azure AD-Benutzer, -Gruppe oder -Dienstprinzipal** für **Zugriff zuweisen für** aus, und wählen Sie dann in der Dropdownliste den Ressourcennamen Ihrer IoT Hub-Instanz aus. Klicken Sie auf die Schaltfläche **Save** .
+2. Wählen Sie **Mitwirkender an Storage-Blobdaten** ([*nicht* „Mitwirkender“ oder „Speicherkontomitwirkender“](../storage/common/storage-auth-aad-rbac-portal.md#azure-roles-for-blobs-and-queues)) als **Rolle** und **Azure AD-Benutzer, -Gruppe oder -Dienstprinzipal** für **Zugriff zuweisen für** aus, und wählen Sie dann in der Dropdownliste den Ressourcennamen Ihrer IoT Hub-Instanz aus. Klicken Sie auf die Schaltfläche **Save** .
 
 3. Navigieren Sie in Ihrem Speicherkonto zur Registerkarte **Firewalls und virtuelle Netzwerke**, und aktivieren Sie die Option **Allow access from selected networks** (Zugriff von ausgewählten Netzwerken zulassen). Aktivieren Sie unter **Ausnahmen** das Kontrollkästchen für **Vertrauenswürdigen Microsoft-Diensten den Zugriff auf dieses Speicherkonto erlauben**. Klicken Sie auf die Schaltfläche **Save** .
 
@@ -246,7 +246,7 @@ Diese Funktion erfordert Konnektivität von IoT Hub mit dem Speicherkonto. Damit
 
 1. Navigieren Sie im Azure-Portal zur Registerkarte **Zugriffssteuerung (IAM)** Ihres Speicherkontos, und klicken Sie im Abschnitt **Rollenzuweisung hinzufügen** auf **Hinzufügen**.
 
-2. Wählen Sie **Mitwirkender an Storage-Blobdaten** ([*nicht* „Mitwirkender“ oder „Speicherkontomitwirkender“](../storage/common/storage-auth-aad-rbac-portal.md#rbac-roles-for-blobs-and-queues)) als **Rolle** und **Azure AD-Benutzer, -Gruppe oder -Dienstprinzipal** für **Zugriff zuweisen für** aus, und wählen Sie dann in der Dropdownliste den Ressourcennamen Ihrer IoT Hub-Instanz aus. Klicken Sie auf die Schaltfläche **Save** .
+2. Wählen Sie **Mitwirkender an Storage-Blobdaten** ([*nicht* „Mitwirkender“ oder „Speicherkontomitwirkender“](../storage/common/storage-auth-aad-rbac-portal.md#azure-roles-for-blobs-and-queues)) als **Rolle** und **Azure AD-Benutzer, -Gruppe oder -Dienstprinzipal** für **Zugriff zuweisen für** aus, und wählen Sie dann in der Dropdownliste den Ressourcennamen Ihrer IoT Hub-Instanz aus. Klicken Sie auf die Schaltfläche **Save** .
 
 3. Navigieren Sie in Ihrem Speicherkonto zur Registerkarte **Firewalls und virtuelle Netzwerke**, und aktivieren Sie die Option **Allow access from selected networks** (Zugriff von ausgewählten Netzwerken zulassen). Aktivieren Sie unter **Ausnahmen** das Kontrollkästchen für **Vertrauenswürdigen Microsoft-Diensten den Zugriff auf dieses Speicherkonto erlauben**. Klicken Sie auf die Schaltfläche **Save** .
 

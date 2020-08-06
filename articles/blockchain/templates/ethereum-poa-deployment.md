@@ -1,15 +1,16 @@
 ---
 title: Bereitstellen der Lösungsvorlage „Ethereum-Proof-of-Authority-Konsortium“ auf Azure
 description: Verwenden der Lösung „Ethereum-Proof-of-Authority-Konsortium“, um ein Netzwerk mit vielen Elementen für das Ethereum-Konsortium auf Azure bereitzustellen und zu konfigurieren
-ms.date: 07/07/2020
+ms.date: 07/23/2020
 ms.topic: how-to
 ms.reviewer: ravastra
-ms.openlocfilehash: 859be5d779663e429ef333c8fd8163c0aa60eab5
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.custom: devx-track-javascript
+ms.openlocfilehash: f0b7d056d37ffb11945a5c50e2705b5d74402007
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86085921"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386111"
 ---
 # <a name="deploy-ethereum-proof-of-authority-consortium-solution-template-on-azure"></a>Bereitstellen der Lösungsvorlage „Ethereum-Proof-of-Authority-Konsortium“ auf Azure
 
@@ -23,11 +24,14 @@ Die Lösungsvorlage kann von jedem Konsortiummitglied verwendet werden, um mithi
 
 Bevor Sie sich für die Lösungsvorlage „Ethereum-Proof-of-Authority-Konsortium“ entscheiden, sollten Sie Ihr Szenario mit den gängigen Anwendungsfällen der verfügbaren Azure Blockchain-Optionen vergleichen.
 
+> [!IMPORTANT]
+> Erwägen Sie die Verwendung des [Azure Blockchain Service](../service/overview.md) anstelle der Lösungsvorlage für Ethereum unter Azure. Azure Blockchain Service ist ein unterstützter verwalteter Azure-Dienst. Parity Ethereum ist zu einer von der Community gesteuerten Entwicklung und Wartung übergegangen. Weitere Informationen finden Sie unter [Wechsel von Parity Ethereum zu OpenEthereum DAO](https://www.parity.io/parity-ethereum-openethereum-dao/).
+
 Option | Dienstmodell | Gängiger Anwendungsfall
 -------|---------------|-----------------
-Lösungsvorlagen | IaaS | Lösungsvorlagen sind Azure Resource Manager-Vorlagen, die Sie verwenden können, um eine vollständig konfigurierte Blockchainnetzwerktopologie bereitzustellen. Die Vorlagen stellen Microsoft Azure-Dienste für Compute-, Netzwerk- und Speicherfunktionen für einen bestimmten Blockchainnetzwerktyp bereit und konfigurieren diese. Lösungsvorlagen werden ohne Vereinbarung zum Servicelevel bereitgestellt. Nutzen Sie die [Frageseite von Microsoft Q&A (Fragen und Antworten)](https://docs.microsoft.com/answers/topics/azure-blockchain-workbench.html) zur Unterstützung.
+Lösungsvorlagen | IaaS | Lösungsvorlagen sind Azure Resource Manager-Vorlagen, die Sie verwenden können, um eine vollständig konfigurierte Blockchainnetzwerktopologie bereitzustellen. Die Vorlagen stellen Microsoft Azure-Dienste für Compute-, Netzwerk- und Speicherfunktionen für einen bestimmten Blockchainnetzwerktyp bereit und konfigurieren diese. Lösungsvorlagen werden ohne Vereinbarung zum Servicelevel bereitgestellt. Nutzen Sie die [Frageseite von Microsoft Q&A (Fragen und Antworten)](/answers/topics/azure-blockchain-workbench.html) zur Unterstützung.
 [Azure Blockchain Service](../service/overview.md) | PaaS | Mit der Vorschauversion von Azure Blockchain Service wird die Einrichtung, Verwaltung und Governance von Konsortiumblockchainnetzwerken vereinfacht. Setzen Sie Azure Blockchain Service für Lösungen ein, bei denen PaaS, Konsortiumverwaltung oder Datenschutz für Vertrags- und Transaktionsaktivitäten erforderlich ist.
-[Azure Blockchain Workbench](../workbench/overview.md) | IaaS und PaaS | Azure Blockchain Workbench (Vorschauversion) ist eine Sammlung mit Azure-Diensten und -Funktionen zum Erstellen und Bereitstellen von Blockchain-Anwendungen, mit denen Geschäftsprozesse und Daten mit anderen Organisationen gemeinsam genutzt werden können. Verwenden Sie Azure Blockchain Workbench, um einen Prototyp für eine Blockchainlösung oder einen Proof of Concept für eine Blockchainanwendung zu erstellen. Azure Blockchain Workbench wird ohne Vereinbarung zum Servicelevel bereitgestellt. Nutzen Sie die [Frageseite von Microsoft Q&A (Fragen und Antworten)](https://docs.microsoft.com/answers/topics/azure-blockchain-workbench.html) zur Unterstützung.
+[Azure Blockchain Workbench](../workbench/overview.md) | IaaS und PaaS | Azure Blockchain Workbench (Vorschauversion) ist eine Sammlung mit Azure-Diensten und -Funktionen zum Erstellen und Bereitstellen von Blockchain-Anwendungen, mit denen Geschäftsprozesse und Daten mit anderen Organisationen gemeinsam genutzt werden können. Verwenden Sie Azure Blockchain Workbench, um einen Prototyp für eine Blockchainlösung oder einen Proof of Concept für eine Blockchainanwendung zu erstellen. Azure Blockchain Workbench wird ohne Vereinbarung zum Servicelevel bereitgestellt. Nutzen Sie die [Frageseite von Microsoft Q&A (Fragen und Antworten)](/answers/topics/azure-blockchain-workbench.html) zur Unterstützung.
 
 ## <a name="solution-architecture"></a>Lösungsarchitektur
 
@@ -731,10 +735,10 @@ Neues zu Azure Blockchain: Mit dem [Azure Blockchain-Blog](https://azure.microso
 
 Diskutieren Sie mit Microsoft-Technikern und Azure Blockchain-Communityexperten.
 
-* [Frageseite von Microsoft Q&A (Fragen und Antworten)](https://docs.microsoft.com/answers/topics/azure-blockchain-workbench.html) Der technische Support für Blockchain-Vorlagen ist auf Bereitstellungsprobleme beschränkt.
+* [Frageseite von Microsoft Q&A (Fragen und Antworten)](/answers/topics/azure-blockchain-workbench.html). Der technische Support für Blockchain-Vorlagen ist auf Bereitstellungsprobleme beschränkt.
 * [Microsoft Tech Community](https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain)
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-blockchain-workbench)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Azure Blockchain-Lösungen finden Sie in der [Dokumentation zu Azure Blockchain](https://docs.microsoft.com/azure/blockchain/).
+Weitere Azure Blockchain-Lösungen finden Sie in der [Dokumentation zu Azure Blockchain](../index.yml).

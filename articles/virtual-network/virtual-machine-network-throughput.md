@@ -1,6 +1,6 @@
 ---
 title: Netzwerkdurchsatz virtueller Azure-Computer | Microsoft-Dokumentation
-description: Informationen zum Netzwerkdurchsatz virtueller Azure-Computer.
+description: Erfahren Sie mehr über den Netzwerkdurchsatz von Azure Virtual Machine, einschließlich der Zuweisung von Bandbreite an einen virtuellen Computer.
 services: virtual-network
 documentationcenter: na
 author: steveesp
@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 4/26/2019
 ms.author: steveesp
 ms.reviewer: kumud, mareat
-ms.openlocfilehash: 47f58b25b082784177910d14ab95d8d242fda71a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4fed883c8fa92df77af432e1e4a4b3acca72a0d2
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84695999"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87265113"
 ---
 # <a name="virtual-machine-network-bandwidth"></a>Netzwerkdurchsatz virtueller Computer
 
@@ -56,8 +56,8 @@ Datenübertragungen zwischen Endpunkten erfordern die Erstellung von mehreren Fl
 
 Zurzeit unterstützt der Azure-Netzwerkstapel 250.000 Netzwerkflows insgesamt mit guter Leistung für virtuelle Computer mit mehr als 8 CPU-Kernen und 100.000 Flows insgesamt mit guter Leistung für virtuelle Computer mit weniger als 8 CPU-Kernen. Jenseits dieses Grenzwerts nimmt die Leistung für weitere Flows nach und nach ab. Dies gilt bis zur absoluten Obergrenze von 500.000 Flows (250.000 eingehend und 250.000 ausgehend), ab der weitere Flows verworfen werden.
 
-||VMs mit weniger als 8 CPU-Kernen|VMs mit mehr als 8 CPU-Kernen|
-|---|---|---|
+| Leistungsstufe | VMs mit weniger als 8 CPU-Kernen | VMs mit mehr als 8 CPU-Kernen |
+| ----------------- | --------------------- | --------------------- |
 |<b>Gute Leistung</b>|100.000 Flows |250.000 Flows|
 |<b>Abgeminderte Leistung</b>|Über 100.000 Flows|Über 250.000 Flows|
 |<b>Grenzwert für Flows</b>|500.000 Flows|500.000 Flows|

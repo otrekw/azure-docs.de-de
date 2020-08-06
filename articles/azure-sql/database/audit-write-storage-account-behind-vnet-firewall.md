@@ -10,12 +10,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 06/17/2020
 ms.custom: azure-synapse
-ms.openlocfilehash: 7b8c6e09616f261c371b010b38d2c0f81376a6f9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4f6a64cf30ecc684e05675d366ff5c9fc6642126
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84944763"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372160"
 ---
 # <a name="write-audit-to-a-storage-account-behind-vnet-and-firewall"></a>Schreiben von Überwachungsprotokollen in ein Speicherkonto hinter einem VNET oder einer Firewall
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -120,7 +120,7 @@ So konfigurieren Sie die SQL-Überwachung für das Schreiben von Ereignissen in 
 2. Öffnen Sie das [Azure-Portal](https://portal.azure.com). Navigieren Sie zum Speicherkonto. Suchen Sie **Zugriffssteuerung (IAM)** , und klicken Sie auf **Rollenzuweisung hinzufügen**. Weisen Sie dem Server, der die im vorherigen Schritt bei Azure Active Directory (Azure AD) registrierte Datenbank hostet, die RBAC-Rolle **Mitwirkender an Storage-Blobdaten** zu.
 
    > [!NOTE]
-   > Nur Mitglieder mit der Berechtigung „Besitzer“ können diesen Schritt ausführen. Verschiedene integrierte Rollen für Azure-Ressourcen finden Sie unter [In Azure integrierte Rollen](../../role-based-access-control/built-in-roles.md).
+   > Nur Mitglieder mit der Berechtigung „Besitzer“ können diesen Schritt ausführen. Informationen zu verschiedenen integrierten Azure-Rollen finden Sie unter [Integrierte Azure-Rollen](../../role-based-access-control/built-in-roles.md).
 
 3. Konfigurieren Sie die [Blobüberwachungsrichtlinie des Servers](/rest/api/sql/server%20auditing%20settings/createorupdate), ohne einen *storageAccountAccessKey* anzugeben:
 

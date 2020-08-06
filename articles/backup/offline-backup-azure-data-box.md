@@ -3,12 +3,12 @@ title: Offlinesicherung unter Verwendung von Azure Data Box
 description: In diesem Artikel erfahren Sie, wie Sie Azure Data Box verwenden können, um ein Offlineseeding für eine große Menge Erstsicherungsdaten vom MARS-Agent in einen Recovery Services-Tresor auszuführen.
 ms.topic: conceptual
 ms.date: 1/27/2020
-ms.openlocfilehash: a60d749f270c9efab0649b49b5c0c41945faddf5
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: e377ccde714c1486ff731d24d5a0cd64364bca37
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86513692"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091027"
 ---
 # <a name="azure-backup-offline-backup-by-using-azure-data-box"></a>Offlinesicherung in Azure Backup unter Verwendung von Azure Data Box
 
@@ -153,7 +153,7 @@ Der MARS-Agent wird im Kontext des lokalen Systems ausgeführt. Deshalb ist es e
 So stellen Sie sicher, dass Sie Ihr Data Box-Gerät mithilfe des NFS-Protokolls als lokales System einbinden können
 
 1. Aktivieren Sie das Feature „Client für NFS“ auf dem Windows-Server, auf dem der MARS-Agent installiert ist. Geben Sie die alternative Quelle *WIM:D:\Sources\Install.wim:4* an.
-1. Laden Sie PSExec von <https://download.sysinternals.com/files/PSTools.zip> auf den Server herunter, auf dem der MARS-Agent installiert ist.
+1. Laden Sie PsExec von der [Sysinternals](/sysinternals/downloads/psexec)-Seite auf den Server herunter, auf dem der MARS-Agent installiert ist.
 1. Öffnen Sie eine Eingabeaufforderung mit erhöhten Rechten, und führen Sie den folgenden Befehl aus. Das Verzeichnis muss dabei *PSExec.exe* als aktuelles Verzeichnis enthalten.
 
     ```cmd

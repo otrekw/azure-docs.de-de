@@ -6,12 +6,12 @@ author: jnoller
 ms.topic: article
 ms.date: 01/24/2020
 ms.author: jenoller
-ms.openlocfilehash: ce014fc338ebfad18b91ba65b614ca0a380a3f7c
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: be80c0d5999ed06bcc505ec5737e7e416d28b981
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86243850"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87050682"
 ---
 # <a name="support-policies-for-azure-kubernetes-service"></a>Unterstützungsrichtlinien für Azure Kubernetes Service
 
@@ -137,7 +137,7 @@ Obwohl sich Kunden bei Workerknoten anmelden und diese ändern können, ist dies
 
 ## <a name="network-ports-access-and-nsgs"></a>Netzwerkports, Zugriff und NSGs
 
-Als verwalteter Dienst gelten für AKS bestimmte Netzwerk- und Konnektivitätsanforderungen. Diese Anforderungen sind weniger flexibel als bei normalen IaaS-Komponenten. In AKS können Vorgänge wie das Anpassen von NSG-Regeln, das Blockieren eines bestimmten Ports (z. B. durch Firewallregeln, die den ausgehenden Port 443 blockieren) und Whitelist-URLs dazu führen, dass Ihr Cluster nicht mehr unterstützt wird.
+Als verwalteter Dienst gelten für AKS bestimmte Netzwerk- und Konnektivitätsanforderungen. Diese Anforderungen sind weniger flexibel als bei normalen IaaS-Komponenten. In AKS können Vorgänge wie das Anpassen von NSG-Regeln, das Blockieren eines bestimmten Ports (z. B. durch Firewallregeln, die den ausgehenden Port 443 blockieren) und das Hinzufügen von URLs zu einer Zulassungsliste dazu führen, dass Ihr Cluster nicht mehr unterstützt wird.
 
 > [!NOTE]
 > Derzeit ist es in AKS nicht zulässig, ausgehenden Datenverkehr von Ihrem Cluster vollständig zu sperren. Informationen zum Steuern der Liste mit URLs und Ports, die Ihr Cluster für ausgehenden Datenverkehr nutzen kann, finden Sie unter [Vorschau: Einschränken des ausgehenden Datenverkehrs für Clusterknoten und Steuern des Zugriffs auf erforderliche Ports und Dienste in Azure Kubernetes Service (AKS)](limit-egress-traffic.md).

@@ -4,15 +4,15 @@ description: Hier finden Sie Spezifikationen für die virtuellen Computer der Ls
 author: sasha-melamed
 ms.service: virtual-machines
 ms.subservice: sizes
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 9db5f391635505c18c7fe7c868431a0abc943730
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cedb5899b392cb111f9c1bb76949e940ef837252
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84675977"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284811"
 ---
 # <a name="lsv2-series"></a>Lsv2-Reihe
 
@@ -37,14 +37,14 @@ Livemigration: Nicht unterstützt
 
 Updates mit Speicherbeibehaltung: Nicht unterstützt
 
-| Size | vCPU | Arbeitsspeicher (GiB) | Temporäre Datenträger<sup>1</sup> (GiB) | NVMe-Datenträger<sup>2</sup> | NVMe-Datenträgerdurchsatz<sup>3</sup> (Lese-IOPS/MBit/s) | Datenträgerdurchsatz ohne Cache (IOPS/MB/s)<sup>4</sup> | Maximaler Burst-Datenträgerdurchsatz ohne Cache: (IOPS/MB/s)<sup>5</sup>| Max. Anzahl Datenträger | Maximale Anzahl NICs/Erwartete Netzwerkbandbreite (MBps) |
-|---|---|---|---|---|---|---|---|---|---|
-| Standard_L8s_v2   |  8 |  64 |  80 |  1x1,92 TB  | 400.000/2.000  | 8\.000/160   | 8\.000/1.280 | 16 | 2/3.200   |
-| Standard_L16s_v2  | 16 | 128 | 160 |  2x1,92 TB  | 800.000/4.000  | 16.000/320  | 16.000/1.280 | 32 | 4/6.400   |
-| Standard_L32s_v2  | 32 | 256 | 320 |  4x1,92 TB  | 1.500.000/8.000    | 32.000/640  | 32.000/1.280 | 32 | 8/12.800  |
-| Standard_L48s_v2  | 48 | 384 | 480 |  6x 1,92 TB  | 2.200.000/14.000   | 48.000/960  | 48.000/2.000 | 32 | 8/16.000+ |
-| Standard_L64s_v2  | 64 | 512 | 640 |  8x1,92 TB  | 2.900.000/16.000   | 64.000/1.280 | 64.000/2.000 | 32 | 8/16.000+ |
-| Standard_L80s_v2<sup>6</sup> | 80 | 640 | 800 | 10x1,92 TB | 3.800.000/20.000 | 80.000/1.400 | 80000/2000 | 32 | 8/16.000+ |
+| Size | vCPU | Arbeitsspeicher (GiB) | Temporäre Datenträger<sup>1</sup> (GiB) | NVMe-Datenträger<sup>2</sup> | NVMe-Datenträgerdurchsatz<sup>3</sup> (Lese-IOPS/MBit/s) | Datenträgerdurchsatz ohne Cache (IOPS/MB/s)<sup>4</sup> | Maximaler Burst-Datenträgerdurchsatz ohne Cache: (IOPS/MB/s)<sup>5</sup>| Max. Anzahl Datenträger | Maximale Anzahl NICs | Erwartete Netzwerkbandbreite (MBit/s) |
+|---|---|---|---|---|---|---|---|---|---|---|
+| Standard_L8s_v2   |  8 |  64 |  80 |  1x1,92 TB  | 400.000/2.000  | 8\.000/160   | 8\.000/1.280 | 16 | 2 | 3200   |
+| Standard_L16s_v2  | 16 | 128 | 160 |  2x1,92 TB  | 800.000/4.000  | 16.000/320  | 16.000/1.280 | 32 | 4 | 6400   |
+| Standard_L32s_v2  | 32 | 256 | 320 |  4x1,92 TB  | 1.500.000/8.000    | 32.000/640  | 32.000/1.280 | 32 | 8 | 12800  |
+| Standard_L48s_v2  | 48 | 384 | 480 |  6x 1,92 TB  | 2.200.000/14.000   | 48.000/960  | 48.000/2.000 | 32 | 8 | 16000+ |
+| Standard_L64s_v2  | 64 | 512 | 640 |  8x1,92 TB  | 2.900.000/16.000   | 64.000/1.280 | 64.000/2.000 | 32 | 8 | 16000+ |
+| Standard_L80s_v2<sup>6</sup> | 80 | 640 | 800 | 10x1,92 TB | 3.800.000/20.000 | 80.000/1.400 | 80000/2000 | 32 | 8 | 16000+ |
 
 <sup>1</sup> VMs der Lsv2-Reihe verfügen über einen standardmäßigen SCSI-basierten temporären Ressourcendatenträger für die Verwendung als Auslagerungsdatei des Betriebssystems (D: unter Windows, /dev/sdb unter Linux). Dieser Datenträger bietet 80 GiB Speicher, 4.000 IOPS und eine Übertragungsrate von 80 MB/s für jeweils 8 vCPUs (beispielsweise bietet Standard_L80s_v2 800 GiB bei 40.000 IOPS und 800 MB/s). Dadurch wird sichergestellt, dass die NVMe-Laufwerke vollständig für die Anwendungsnutzung reserviert werden können. Dieser Datenträger ist kurzlebig, und beim Beenden oder Aufheben der Zuordnung gehen alle Daten verloren.
 
@@ -74,6 +74,21 @@ Updates mit Speicherbeibehaltung: Nicht unterstützt
 - Der Datenträgerdurchsatz wird in E/A-Vorgängen pro Sekunde (Input/Output Operations Per Second, IOPS) und MB/s gemessen, wobei MB/s = 10^6 Bytes/Sekunde beträgt.
 - Die beste Leistung für Ihre virtuellen Computer erhalten Sie, wenn Sie die Anzahl von Datenträgern auf zwei Datenträger pro vCPU beschränken.
 - **Erwartete Netzwerkbandbreite** ist die maximale aggregierte [Bandbreite pro VM-Typ](../virtual-network/virtual-machine-network-throughput.md), die NIC-übergreifend für alle Ziele zugeordnet ist. Obergrenzen werden zwar nicht garantiert, können aber bei der Wahl des passenden VM-Typs für die geplante Anwendung als Richtwert herangezogen werden. Die tatsächliche Netzwerkleistung hängt von unterschiedlichen Faktoren ab. Hierzu zählen beispielsweise Netzwerküberlastung, Anwendungslasten und die Netzwerkeinstellungen. Informationen zum Optimieren des Netzwerkdurchsatzes finden Sie unter [Optimieren des Netzwerkdurchsatzes für virtuelle Azure-Computer](../virtual-network/virtual-network-optimize-network-bandwidth.md). Unter Umständen muss eine bestimmte Version gewählt oder der virtuelle Computer optimiert werden, um die erwartete Netzwerkbandbreite unter Linux oder Windows zu erzielen. Weitere Informationen finden Sie unter [Testen der Bandbreite/des Durchsatzes (NTTTCP)](../virtual-network/virtual-network-bandwidth-testing.md).
+
+
+## <a name="other-sizes-and-information"></a>Weitere Größen und Informationen
+
+- [Allgemeiner Zweck](sizes-general.md)
+- [Arbeitsspeicheroptimiert](sizes-memory.md)
+- [Speicheroptimiert](sizes-storage.md)
+- [GPU-optimiert](sizes-gpu.md)
+- [High Performance Computing](sizes-hpc.md)
+- [Vorherige Generationen](sizes-previous-gen.md)
+
+Preisrechner: [Preisrechner](https://azure.microsoft.com/pricing/calculator/)
+
+Weitere Informationen zu Datenträgertypen: [Datenträgertypen](https://docs.microsoft.com/azure/virtual-machines/linux/disks-types#ultra-ssd-preview/)
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

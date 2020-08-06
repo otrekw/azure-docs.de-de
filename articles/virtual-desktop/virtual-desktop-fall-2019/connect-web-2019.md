@@ -1,6 +1,6 @@
 ---
-title: Herstellen einer Windows Virtual Desktop-Webclientverbindung – Azure
-description: Informationen zum Herstellen einer Verbindung mit Windows Virtual Desktop mithilfe des Webclients.
+title: Herstellen einer Windows Virtual Desktop-Webclientverbindung (klassisch) – Azure
+description: Informationen zum Herstellen einer Verbindung mit Windows Virtual Desktop (klassisch) mithilfe des Webclients.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,17 +8,17 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: e95498498fd15d7a6e73630e218f9bdd1b892f09
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: efe97c86ebfac8e130489b3105a97302866d6822
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85204794"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87270378"
 ---
-# <a name="connect-with-the-web-client"></a>Herstellen einer Verbindung mit dem Webclient
+# <a name="connect-to-windows-virtual-desktop-classic-with-the-web-client"></a>Herstellen einer Verbindung mit Windows Virtual Desktop (klassisch) mithilfe des Webclients
 
 >[!IMPORTANT]
->Dieser Inhalt gilt für das Release vom Herbst 2019, das keine Windows Virtual Desktop-Objekte in Azure Resource Manager unterstützt. Wenn Sie Windows Virtual Desktop-Objekte in Azure Resource Manager verwalten möchten, die im Update vom Frühjahr 2020 eingeführt wurden, finden Sie weitere Informationen in [diesem Artikel](../connect-web.md).
+>Dieser Inhalt gilt für Windows Virtual Desktop (klassisch). Der Dienst unterstützt keine Windows Virtual Desktop-Objekte in Azure Resource Manager. Wenn Sie Windows Virtual Desktop-Objekte in Azure Resource Manager verwalten möchten, helfen Ihnen die Informationen in [diesem Artikel](../connect-web.md) weiter.
 
 Mit dem Webclient können Sie über einen Webbrowser auf Ihre Ressourcen von Windows Virtual Desktop zugreifen, ohne den langwierigen Installationsvorgang durchführen zu müssen.
 
@@ -42,7 +42,7 @@ Es sollten alle HTML5-fähigen Browser funktionieren, aber hier sind die Betrieb
 Navigieren Sie in einem Browser unter <https://rdweb.wvd.microsoft.com/webclient> zum Windows Virtual Desktop-Webclient, und melden Sie sich mit Ihrem Benutzerkonto an.
 
 >[!NOTE]
->Wenn Sie das Windows Virtual Desktop-Release vom Frühjahr 2020 mit Azure Resource Manager-Integration verwenden, stellen Sie stattdessen bei <https://rdweb.wvd.microsoft.com/arm/webclient> eine Verbindung mit Ihren Ressourcen her.
+>Wenn Sie Windows Virtual Desktop mit Azure Resource Manager-Integration verwenden, stellen Sie stattdessen bei <https://rdweb.wvd.microsoft.com/arm/webclient> eine Verbindung mit Ihren Ressourcen her.
 
 >[!NOTE]
 >Wenn Sie sich bereits mit einem anderen Azure Active Directory-Konto angemeldet haben als dem, das Sie für Windows Virtual Desktop verwenden möchten, sollten Sie sich entweder abmelden oder ein privates Browserfenster verwenden.

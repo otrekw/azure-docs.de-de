@@ -1,6 +1,6 @@
 ---
-title: 'Herstellen einer Verbindung mit Windows Virtual Desktop unter macOS: Azure'
-description: Vorgehensweise beim Herstellen einer Verbindung mit Windows Virtual Desktop mithilfe des macOS-Clients.
+title: 'Herstellen einer Verbindung mit Windows Virtual Desktop (klassisch) unter macOS: Azure'
+description: Informationen zum Herstellen einer Verbindung mit Windows Virtual Desktop (klassisch) mithilfe des macOS-Clients.
 services: virtual-desktop
 author: heidilohr
 ms.service: virtual-desktop
@@ -8,19 +8,19 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 024a1ab1a7fef58bd5fd8f9e7e0fc743a4ecee71
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a4aac80f7e4ef93b6503398c225b2aeffe566dbe
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85213158"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87270565"
 ---
-# <a name="connect-with-the-macos-client"></a>Herstellen einer Verbindung mit dem macOS-Client
+# <a name="connect-to-windows-virtual-desktop-classic-with-the-macos-client"></a>Herstellen einer Verbindung mit Windows Virtual Desktop (klassisch) mithilfe des macOS-Clients
 
 > Gilt für: macOS 10.12 oder höher
 
 >[!IMPORTANT]
->Dieser Inhalt gilt für das Release vom Herbst 2019, das keine Windows Virtual Desktop-Objekte in Azure Resource Manager unterstützt. Wenn Sie Windows Virtual Desktop-Objekte in Azure Resource Manager verwalten möchten, die im Update vom Frühjahr 2020 eingeführt wurden, finden Sie weitere Informationen in [diesem Artikel](../connect-macos.md).
+>Dieser Inhalt gilt für Windows Virtual Desktop (klassisch). Der Dienst unterstützt keine Windows Virtual Desktop-Objekte in Azure Resource Manager. Wenn Sie Windows Virtual Desktop-Objekte in Azure Resource Manager verwalten möchten, helfen Ihnen die Informationen in [diesem Artikel](../connect-macos.md) weiter.
 
 Mit unserem herunterladbaren Client können Sie über Ihre macOS-Geräte auf Windows Virtual Desktop-Ressourcen zugreifen. In dieser Anleitung erfahren Sie, wie Sie den-Client einrichten.
 

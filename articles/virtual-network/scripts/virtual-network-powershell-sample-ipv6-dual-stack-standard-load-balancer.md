@@ -1,7 +1,7 @@
 ---
 title: 'Azure PowerShell-Skriptbeispiel: Konfigurieren eines IPv6-Front-Ends mit Load Balancer Standard (Vorschau)'
 titlesuffix: Azure Virtual Network
-description: Aktivieren von IPv6-Endpunkten mithilfe von Azure Powershell in Azure Virtual Network
+description: Erfahren Sie mehr über die Konfiguration eines IPv6-Front-Ends in einem Skriptbeispiel für ein virtuelles Netzwerk mit Load Balancer Standard.
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -11,12 +11,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 07/15/2019
 ms.author: kumud
-ms.openlocfilehash: 24d25813a5cafc98f04d3daef2803aa44acc7f69
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 24057c494d76cf9435ed60ecf2a13db4eab36fbf
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77201321"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87291907"
 ---
 # <a name="configure-ipv6-frontend-in-virtual-network-script-sample-with-standard-load-balancerpreview"></a>Konfigurieren eines IPv6-Front-Ends im virtuellen Netzwerk: Skriptbeispiel mit Load Balancer Standard (Vorschau)
 
@@ -268,6 +268,6 @@ In diesem Skript werden die folgenden Befehle verwendet, um eine Ressourcengrupp
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zu Azure PowerShell finden Sie in der [Azure PowerShell-Dokumentation](https://docs.microsoft.com/powershell/azure/overview).
+Weitere Informationen zu Azure PowerShell finden Sie in der [Azure PowerShell-Dokumentation](https://docs.microsoft.com/powershell/azure/).
 
 Zusätzliche Netzwerk-PowerShell-Skriptbeispiele finden Sie unter [Azure-Dokumentation für Netzwerke – Übersicht](../powershell-samples.md?toc=%2fazure%2fnetworking%2ftoc.json).

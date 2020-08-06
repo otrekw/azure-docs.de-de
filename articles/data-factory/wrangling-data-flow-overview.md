@@ -7,12 +7,12 @@ ms.reviewer: gamal
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 11/01/2019
-ms.openlocfilehash: 203e5fcaa99f7aebeda34e6968f636ed72851ec8
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: 5d0393ab5f2582efa2a4b727543bc799cdb1143e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85921527"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082850"
 ---
 # <a name="what-are-wrangling-data-flows"></a>Was sind Wranglingdatenflüsse?
 
@@ -28,7 +28,7 @@ Wranglingdatenflüsse übersetzen M-Code, der vom Power Query Online Mashup Edit
 Wranglingdatenflüsse sind besonders nützlich für Datentechniker oder für Datenintegratoren ohne Programmiererfahrung.
 
 > [!NOTE]
-> Wranglingdatenflüsse sind derzeit in der öffentlichen Vorschau verfügbar
+> Wranglingdatenflüsse derzeit in der öffentlichen Vorschau verfügbar
 
 ## <a name="use-cases"></a>Anwendungsfälle
 

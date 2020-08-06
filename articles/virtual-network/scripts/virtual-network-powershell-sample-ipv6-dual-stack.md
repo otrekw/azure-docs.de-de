@@ -1,7 +1,7 @@
 ---
 title: 'Azure PowerShell-Skriptbeispiel: Konfigurieren von IPv6-Endpunkten'
 titlesuffix: Azure Virtual Network
-description: Aktivieren von IPv6-Endpunkten mithilfe von Azure Powershell in Azure Virtual Network
+description: Konfigurieren Sie IPv6-Endpunkte in einem virtuellen Netzwerk mit einem Azure PowerShell-Skript, und finden Sie Links zu befehlsspezifischer Dokumentation als Hilfe für das PowerShell-Beispiel.
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -12,12 +12,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 07/15/2019
 ms.author: kumud
-ms.openlocfilehash: 4dfc6da8dcf33f49ceb203b32e81033fd81fa329
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 83153023d7d58f215d5e62d8502baa01b99ed2e1
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86507487"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87291877"
 ---
 # <a name="configure-ipv6-endpoints-in-virtual-network-with-azure-powershell-script-sample-preview"></a>Konfigurieren von IPv6-Endpunkten in einem virtuellen Netzwerk mit einem Azure PowerShell-Skriptbeispiel (Vorschau)
 
@@ -269,6 +269,6 @@ In diesem Skript werden die folgenden Befehle verwendet, um eine Ressourcengrupp
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zu Azure PowerShell finden Sie in der [Azure PowerShell-Dokumentation](https://docs.microsoft.com/powershell/azure/overview).
+Weitere Informationen zu Azure PowerShell finden Sie in der [Azure PowerShell-Dokumentation](https://docs.microsoft.com/powershell/azure/).
 
 Zusätzliche Netzwerk-PowerShell-Skriptbeispiele finden Sie unter [Azure-Dokumentation für Netzwerke – Übersicht](../powershell-samples.md?toc=%2fazure%2fnetworking%2ftoc.json).

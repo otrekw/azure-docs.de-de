@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 03/31/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 76348a0aee48cc6d768e8233e376f266eca31917
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
+ms.openlocfilehash: f91e68ec2bd4b0b5400ee3e8e380d91ea6f31f36
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2020
-ms.locfileid: "83005999"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87291327"
 ---
 # <a name="troubleshoot-the-remote-desktop-client"></a>Troubleshooting für den Remotedesktopclient
 
@@ -64,7 +64,7 @@ Wenn bei der Verwendung des Webclients Probleme mit Ihrem Browser auftreten oder
 
 Überprüfen Sie zunächst das Azure Active Directory-Konto, das Sie verwenden. Wenn Sie sich bereits mit einem anderen Azure Active Directory-Konto angemeldet haben als dem, das Sie für Windows Virtual Desktop verwenden möchten, sollten Sie sich entweder abmelden oder ein privates Browserfenster verwenden.
 
-Wenn Sie das Windows Virtual Desktop Fall 2019 Release verwenden, verwenden Sie den Webclientlink in [diesem Artikel](./virtual-desktop-fall-2019/connect-web-2019.md), um eine Verbindung zu Ihren Ressourcen herzustellen.
+Wenn Sie Windows Virtual Desktop (klassisch) verwenden, verwenden Sie den Webclientlink in [diesem Artikel](./virtual-desktop-fall-2019/connect-web-2019.md), um eine Verbindung zu Ihren Ressourcen herzustellen.
 
 ## <a name="web-client-stops-responding-or-disconnects"></a>Der Webclient reagiert nicht mehr oder trennt die Verbindung.
 

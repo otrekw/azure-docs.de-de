@@ -16,12 +16,12 @@ ms.workload: na
 ms.date: 09/19/2018
 ms.author: terrylan
 Customer intent: As an IT Pro or decision maker I am trying to learn about identity management capabilities in Azure
-ms.openlocfilehash: f61b6193a0d2082296a17128b41d7220f9b7e05f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6abfcaac06dd82be79c9136718878f801ca241cc
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77565892"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87384530"
 ---
 # <a name="azure-identity-management-security-overview"></a>Übersicht über die Sicherheit der Azure-Identitätsverwaltung
 
@@ -64,7 +64,7 @@ Weitere Informationen:
 
 * [Übersicht über „Einmaliges Anmelden“](https://azure.microsoft.com/documentation/videos/overview-of-single-sign-on/)
 * [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../../active-directory/manage-apps/what-is-single-sign-on.md)
-* [Integrieren des einmaligen Anmeldens mit Azure Active Directory in SaaS-Apps](../../active-directory/manage-apps/configure-single-sign-on-non-gallery-applications.md)
+* [Schnellstartserie zur App-Verwaltung](../../active-directory/manage-apps/view-applications-portal.md)
 
 ## <a name="reverse-proxy"></a>Reverseproxy
 
@@ -91,10 +91,15 @@ Weitere Informationen:
 
 RBAC ist ein Autorisierungssystem, das auf Azure Resource Manager basiert und eine präzise Verwaltung des Zugriffs auf Ressourcen in Azure ermöglicht. RBAC ermöglicht Ihnen eine präzise Steuerung der Zugriffsebene, über die Benutzer verfügen. Beispielsweise können Sie einen Benutzer auf die alleinige Verwaltung von virtuellen Netzwerken und einen anderen Benutzer auf die Verwaltung aller Ressourcen in einer Ressourcengruppe beschränken. Azure umfasst mehrere integrierte Rollen, die Sie verwenden können. Im Folgenden werden vier grundlegende integrierte Rollen aufgeführt. Die ersten drei Rollen gelten für alle Ressourcentypen.
 
+- [Besitzer](/azure/role-based-access-control/built-in-roles#owner) verfügen über vollständigen Zugriff auf alle Ressourcen, einschließlich des Rechts, den Zugriff an andere Personen zu delegieren. 
+- [Mitwirkende](/azure/role-based-access-control/built-in-roles#contributor) können alle Arten von Azure-Ressourcen erstellen und verwalten, aber keinen anderen Personen Zugriff gewähren.
+- [Leser](/azure/role-based-access-control/built-in-roles#reader) können vorhandene Azure-Ressourcen anzeigen.
+- Mit einem [Benutzerzugriffsadministrator](/azure/role-based-access-control/built-in-roles#user-access-administrator) können Sie den Benutzerzugriff auf Azure-Ressourcen verwalten.
+
 Weitere Informationen:
 
-* [Was ist die rollenbasierte Zugriffssteuerung (RBAC)?](/azure/role-based-access-control/overview)
-* [Integrierte Rollen für die rollenbasierte Zugriffssteuerung in Azure](/azure/role-based-access-control/built-in-roles)
+* [Was ist die rollenbasierte Zugriffssteuerung in Azure (Azure Role-Based Access Control, Azure RBAC)?](/azure/role-based-access-control/overview)
+* [Integrierte Azure-Rollen](/azure/role-based-access-control/built-in-roles)
 
 ## <a name="security-monitoring-alerts-and-machine-learning-based-reports"></a>Sicherheitsüberwachung, Warnungen und Machine Learning-basierte Berichte
 
@@ -106,7 +111,7 @@ Im Azure-Portal fallen Berichte in die folgenden Kategorien:
 * **Integrierte Anwendungsberichte:** Bieten Einblicke, wie Cloudanwendungen in Ihrer Organisation verwendet werden. Azure AD ermöglicht die Integration in Tausende von Cloudanwendungen.
 * **Fehlerberichte:** Enthalten Hinweise auf Fehler, die bei der Bereitstellung von Konten für externe Anwendungen auftreten können.
 * **Benutzerspezifische Berichte:** Enthalten Geräte- und Anmeldeaktivitätsdaten für einen bestimmten Benutzer.
-* **Aktivitätsprotokolle**: Enthalten eine Aufzeichnung aller überwachten Ereignisse in den letzten 24 Stunden, 7 Tagen oder 30 Tagen sowie geänderte Gruppenaktivitäten und Kennwortzurücksetzungs- und Registrierungsaktivitäten.
+* **Aktivitätsprotokolle**: Enthalten eine Aufzeichnung aller überwachten Ereignisse in den letzten 24 Stunden, 7 Tagen oder 30 Tagen sowie geänderte Gruppenaktivitäten und Kennwortzurücksetzungs- und Registrierungsaktivitäten.
 
 Weitere Informationen:
 

@@ -3,12 +3,12 @@ title: Informationen zum Überwachen der Inhalte virtueller Computer
 description: Hier erfahren Sie, wie Azure Policy mithilfe des Gastkonfigurations-Agents Einstellungen in VMs überprüft.
 ms.date: 05/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: ec2a9f53fbe2ad0201af0250b0dcfa8dc4d519f0
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: f2f07a3e88984a84ca1529052d5899ad8570a268
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85971095"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87072821"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Informationen zu Guest Configuration von Azure Policy
 
@@ -35,9 +35,8 @@ Bevor Sie Guest Configuration verwenden können, müssen Sie den Ressourcenanbie
 Zum Überwachen von Einstellungen innerhalb eines Computers ist eine [VM-Erweiterung](../../../virtual-machines/extensions/overview.md) aktiviert, und der Computer muss über eine systemseitig verwaltete Identität verfügen. Mit der Erweiterung werden anwendbare Richtlinienzuweisungen sowie die entsprechende Konfigurationsdefinition heruntergeladen. Die Identität wird verwendet, um den Computer zu authentifizieren, wenn Lese- und Schreibvorgänge im Gastkonfigurationsdienst durchgeführt werden. Die Erweiterung ist für über Arc verbundene Computer nicht erforderlich, da sie im Agent für über Arc verbundene Computer enthalten ist.
 
 > [!IMPORTANT]
-> Die Gastkonfigurationserweiterung ist zum Durchführen von Überprüfungen in virtuellen Azure-Computern erforderlich. Weisen Sie die folgenden Richtliniendefinitionen zu, um die Erweiterung im gewünschten Umfang bereitzustellen: 
->  - [Erforderliche Komponenten bereitstellen, um die Gastkonfigurationsrichtlinie auf Windows-VMs zu aktivieren](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0ecd903d-91e7-4726-83d3-a229d7f2e293)
->  - [Erforderliche Komponenten bereitstellen, um die Gastkonfigurationsrichtlinie auf Linux-VMs zu aktivieren](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffb27e9e0-526e-4ae1-89f2-a2a0bf0f8a50)
+> Die Gastkonfigurationserweiterung und eine verwaltete Identität sind zum Überwachen von virtuellen Azure-Computern erforderlich. Die Gastkonfigurationserweiterung ist zum Überwachen von virtuellen Azure-Computern erforderlich. Um die Erweiterung bedarfsorientiert bereitzustellen, weisen Sie die folgende Richtlinieninitiative zu. Um die Erweiterung bedarfsorientiert bereitzustellen, weisen Sie die folgende Richtliniendefinitionen zu: 
+>  - [Voraussetzungen zum Aktivieren der Gastkonfigurationsrichtlinien auf VMs bereitstellen](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F12794019-7a00-42cf-95c2-882eed337cc8)
 
 ### <a name="limits-set-on-the-extension"></a>Für die Erweiterung festgelegte Grenzwerte
 
@@ -81,10 +80,11 @@ Für die Kommunikation mit dem Gastkonfigurations-Ressourcenanbieter in Azure be
 
 ## <a name="managed-identity-requirements"></a>Anforderungen für verwaltete Identitäten
 
-Die **DeployIfNotExists**-Richtlinien, die die Erweiterung zu virtuellen Computern hinzufügen, aktivieren auch eine systemseitig zugewiesene verwaltete Identität, sofern noch keine vorhanden ist.
+Durch Richtlinien in der Initiative [Voraussetzungen zum Aktivieren der Gastkonfigurationsrichtlinien auf VMs bereitstellen](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F12794019-7a00-42cf-95c2-882eed337cc8) wird eine systemseitig zugewiesene verwaltete Identität aktiviert, falls noch nicht vorhanden. Die Initiative enthält zwei Richtliniendefinitionen, durch die die Identitätserstellung verwaltet wird. Die IF-Bedingungen in den Richtliniendefinitionen gewährleisten das korrekte Verhalten basierend auf dem aktuellen Zustand der Computerressource in Azure.
 
-> [!WARNING]
-> Vermeiden Sie die Aktivierung benutzerseitig zugewiesener verwalteter Identitäten für virtuelle Computer im Umfang für Richtlinien, die eine systemseitig zugewiesene verwaltete Identität aktivieren. Die benutzerseitig zugewiesene Identität wird ersetzt, und möglicherweise reagiert der Computer nicht mehr.
+Wenn der Computer derzeit keine verwalteten Identitäten aufweist, lautet die effektive Richtlinie: [\[Vorschau\]: Systemseitig zugewiesene verwaltete Identität hinzufügen, um Gastkonfigurationszuweisungen auf VMs ohne Identität zu aktivieren](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F3cf2ab00-13f1-4d0c-8971-2ac904541a7e)
+
+Wenn der Computer derzeit über eine benutzerseitig zugewiesene Systemidentität verfügt, lautet die effektive Richtlinie: [\[Vorschau\]: Systemseitig zugewiesene verwaltete Identität hinzufügen, um Gastkonfigurationszuweisungen auf VMs mit einer benutzerseitig zugewiesenen Identität zu aktivieren](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F497dff13-db2a-4c0f-8603-28fa3b331ab6)
 
 ## <a name="guest-configuration-definition-requirements"></a>Anforderungen an die Guest Configuration-Definition
 

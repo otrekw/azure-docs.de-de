@@ -4,12 +4,12 @@ description: In diesem Artikel erfahren Sie mehr über die Überwachungs- und Be
 ms.topic: conceptual
 ms.date: 03/05/2019
 ms.assetid: 86ebeb03-f5fa-4794-8a5f-aa5cbbf68a81
-ms.openlocfilehash: f4b91302723119e707d12a86480bbaff2eb4bec5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 645bf701a8f8561b2cb4f19378036ada82c4bedd
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84485102"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87054552"
 ---
 # <a name="monitoring-azure-backup-workloads"></a>Überwachen von Azure Backup-Workloads
 
@@ -28,7 +28,7 @@ Im Folgenden werden die Aufträge der folgenden Azure Backup-Lösungen vorgestel
 - Azure VM Backup
 - Azure-Dateisicherung
 - Azure-Workloadsicherung wie SQL und SAP HANA
-- Azure Backup-Agent (Microsoft Azure Backup, MAB)
+- Microsoft Azure Recovery Services-Agent (MARS)
 
 Aufträge aus System Center Data Protection Manager (SC-DPM) und Microsoft Azure Backup Server (MABS) werden nicht aufgeführt.
 
@@ -44,7 +44,7 @@ Bei Warnungen handelt es sich in erster Linie um Szenarios, in denen Benutzer be
 Die folgenden Szenarios werden vom Dienst als solche definiert, in denen Warnungen ausgelöst werden können.
 
 - Fehler bei der Sicherung/Wiederherstellung
-- Sicherung mit Warnungen für Azure Backup-Agent (MAB) erfolgreich abgeschlossen
+- Sicherung für den Microsoft Azure Recovery Services-Agent (MARS) mit Warnungen abgeschlossen
 - Beenden des Schutzes unter Beibehaltung der Daten/Beenden des Schutzes inklusive Löschung der Daten
 
 ### <a name="alerts-from-the-following-azure-backup-solutions-are-shown-here"></a>Hier sehen Sie die Warnungen der folgenden Azure Backup-Lösungen:
@@ -52,7 +52,7 @@ Die folgenden Szenarios werden vom Dienst als solche definiert, in denen Warnung
 - Azure-VM-Sicherungen
 - Azure-Dateisicherungen
 - Azure-Workloadsicherungen wie SQL, SAP HANA
-- Azure Backup-Agent (Microsoft Azure Backup, MAB)
+- Microsoft Azure Recovery Services-Agent (MARS) 
 
 > [!NOTE]
 > Warnungen aus System Center Data Protection Manager (SC-DPM) und Microsoft Azure Backup Server (MABS) werden hier nicht aufgeführt.

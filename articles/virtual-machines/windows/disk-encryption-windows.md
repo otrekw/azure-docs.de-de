@@ -4,16 +4,16 @@ description: Dieser Artikel enthält eine Anleitung zum Aktivieren von Microsoft
 author: msmbaldwin
 ms.service: virtual-machines-windows
 ms.subservice: security
-ms.topic: article
+ms.topic: how-to
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: b423cc4cd933f84fccae5c2116be7abbdc288c67
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 8b2a8d552a2b9a1d6d3bb02bf02be95af031a5e4
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86203667"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87291975"
 ---
 # <a name="azure-disk-encryption-scenarios-on-windows-vms"></a>Azure Disk Encryption-Szenarien auf virtuellen Windows-Computern
 
@@ -140,6 +140,33 @@ Die folgende Tabelle enthält die Resource Manager-Vorlagenparameter für vorhan
 | resizeOSDisk | Gibt an, ob die Größe der Betriebssystempartition angepasst werden soll, um die gesamte Betriebssystem-VHD einzunehmen, bevor das Systemvolume aufgeteilt wird. |
 | location | Der Standort für alle Ressourcen. |
 
+## <a name="enable-encryption-on-nvme-disks-for-lsv2-vms"></a>Aktivieren der Verschlüsselung auf NVMe-Datenträgern für Lsv2-VMs
+
+In diesem Szenario wird die Aktivierung von Azure Disk Encryption auf NVMe-Datenträgern für virtuelle Computer der Lsv2-Serie beschrieben.  Die Lsv2-Serie unterstützt lokalen NVMe-Speicher. Lokale NVMe-Datenträger sind temporär und die Daten auf diesen Datenträgern gehen verloren, wenn Sie den virtuellen Computer beenden oder seine Zuordnung aufheben (Siehe: [LSv2-Serie](../lsv2-series.md)).
+
+So aktivieren Sie die Verschlüsselung auf NVMe-Datenträgern
+
+1. Initialisieren Sie die NVMe-Datenträger, und erstellen Sie NTFS-Volumes.
+1. Aktivieren Sie die Verschlüsselung auf dem virtuellen Computer mit dem VolumeType-Parameter, der auf „All“ festgelegt ist. Dadurch wird die Verschlüsselung für alle Datenträger für Betriebssysteme und Daten ermöglicht, einschließlich der von NVMe-Datenträgern gesicherten Volumes. Weitere Informationen finden Sie unter [Aktivieren der Verschlüsselung auf einem vorhandenen oder ausgeführten virtuellen Windows-Computer](#enable-encryption-on-an-existing-or-running-windows-vm).
+
+In den folgenden Szenarien bleibt die Verschlüsselung auf den NVMe-Datenträgern bestehen:
+- VM-Neustart
+- VMSS-Reimaging
+- Wechsel des Betriebssystems
+
+NVMe-Datenträger werden in den folgenden Szenarien nicht initialisiert:
+
+- Starten der VM nach Belegungsfreigabe
+- Dienstreparatur
+- Backup
+
+In diesen Szenarien müssen die NVMe-Datenträger nach dem Start der VM initialisiert werden. Führen Sie zum Aktivieren der Verschlüsselung auf den NVMe-Datenträgern den Befehl zum erneuten Aktivieren von Azure Disk Encryption aus, nachdem die NVMe-Datenträger initialisiert wurden.
+
+Zusätzlich zu den im Abschnitt [Nicht unterstützte Szenarien](#unsupported-scenarios) aufgeführten Szenarien wird die Verschlüsselung von NVMe-Datenträgern für Folgendes nicht unterstützt:
+
+- Mit Azure Disk Encryption mit AAD (vorherige Version) verschlüsselte VMs
+- NVMe-Datenträger mit Speicherplätzen
+- Azure Site Recovery von SKUs mit NVMe-Datenträgern (siehe [Unterstützungsmatrix für die Notfallwiederherstellung von Azure-VMs zwischen Azure-Regionen: Replizierte Computer – Speicher](../../site-recovery/azure-to-azure-support-matrix.md#replicated-machines---storage)).
 
 ## <a name="new-iaas-vms-created-from-customer-encrypted-vhd-and-encryption-keys"></a>Neue virtuelle IaaS-Computer, die aus einer vom Kunden verschlüsselten VHD und mit Verschlüsselungsschlüsseln erstellt wurden
 
@@ -236,9 +263,8 @@ Die folgenden Szenarios, Features und Technologien werden von Azure Disk Encrypt
 - Verschieben von verschlüsselten virtuellen Computern in ein anderes Abonnement oder in eine andere Region
 - Erstellen eines Images oder einer Momentaufnahme einer verschlüsselten VM und dessen oder deren Verwendung zum Bereitstellen weiterer VMs
 - Gen2-VMs (siehe: [Unterstützung für VMs der Generation 2 in Azure](generation-2.md#generation-1-vs-generation-2-capabilities))
-- VMs der Lsv2-Serie (siehe: [Lsv2-Serie](../lsv2-series.md))
 - VMs der M-Serie mit Datenträgern mit Schreibbeschleunigung
-- Anwenden der [serverseitigen Verschlüsselung mit kundenseitig verwalteten Schlüsseln](disk-encryption.md) auf mit ADE verschlüsselte VMs und umgekehrt.
+- Anwenden von ADE auf eine VM mit einem Datenträger, der mit [serverseitiger Verschlüsselung mit kundenseitig verwalteten Schlüsseln](disk-encryption.md) (SSE + CMK) verschlüsselt ist, oder das Anwenden von SSE + CMK auf einen Datenträger auf einer mit ADE verschlüsselten VM.
 - Migrieren einer mit ADE verschlüsselten VM zur [serverseitigen Verschlüsselung mit kundenseitig verwalteten Schlüsseln](disk-encryption.md).
 
 

@@ -8,13 +8,13 @@ ms.topic: conceptual
 author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
-ms.date: 05/19/2020
-ms.openlocfilehash: 6d82446a915863e6aa95cc79a421f86b8c4dd3a2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/25/2020
+ms.openlocfilehash: bc7410325bbcf3086c4ac2054b7bc663629a29e5
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85252643"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373112"
 ---
 # <a name="connect-and-query-azure-sql-edge-preview"></a>Herstellen einer Verbindung mit und Abfragen von Azure SQL Edge (Vorschau)
 
@@ -29,7 +29,7 @@ In Azure SQL Edge können Sie nach der Bereitstellung eines Containers von einem
 
 Sie können eine Verbindung mit einer Azure SQL Edge-Instanz von einem dieser gängigen Tools aus herstellen:
 
-* [sqlcmd](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-tools): sqlcmd-Clienttools sind bereits im Azure SQL Edge-Containerimage enthalten. Wenn Sie mithilfe einer interaktiven Bash-Shell mit einem ausgeführten Container verbunden sind, können Sie die Tools lokal ausführen.
+* [sqlcmd](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-tools): sqlcmd-Clienttools sind bereits im Azure SQL Edge-Containerimage enthalten. Wenn Sie mithilfe einer interaktiven Bash-Shell mit einem ausgeführten Container verbunden sind, können Sie die Tools lokal ausführen. Auf der ARM64-Plattform sind KEINE SQL-Clienttools verfügbar, da Sie nicht in der ARM64-Version der SQL Edge-Container enthalten sind. 
 * [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms)
 * [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/download-azure-data-studio)
 * [Visual Studio Code](https://docs.microsoft.com/sql/visual-studio-code/sql-server-develop-use-vscode)
@@ -55,7 +55,7 @@ Um von einem Netzwerkcomputer aus eine Verbindung mit einer Azure SQL Edge-Daten
 
 ## <a name="connect-to-the-database-engine-from-within-the-container"></a>Herstellen einer Verbindung mit der Datenbank-Engine aus dem Container
 
-Die [SQL Server-Befehlszeilentools](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-tools) sind im Azure SQL Edge-Containerimage enthalten. Wenn Sie den Container über eine interaktive Befehlszeile anfügen, können Sie die Tools lokal ausführen.
+Die [SQL Server-Befehlszeilentools](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-tools) sind im Azure SQL Edge-Containerimage enthalten. Wenn Sie den Container über eine interaktive Befehlszeile anfügen, können Sie die Tools lokal ausführen. Auf der ARM64-Plattform sind KEINE SQL-Clienttools verfügbar, da Sie nicht in der ARM64-Version der SQL Edge-Container enthalten sind. 
 
 1. Verwenden Sie den Befehl `docker exec -it`, um in Ihrem laufenden Container eine interaktive Bash-Shell zu starten. Im folgenden Beispiel entspricht `e69e056c702d` der Container-ID.
 

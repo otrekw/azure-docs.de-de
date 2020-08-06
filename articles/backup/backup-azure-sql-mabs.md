@@ -3,12 +3,12 @@ title: Sichern von SQL Server mithilfe von Azure Backup Server
 description: Dieser Artikel enthält Informationen zur Konfiguration für die Sicherung von SQL Server-Datenbanken mithilfe von Microsoft Azure Backup Server (MABS).
 ms.topic: conceptual
 ms.date: 03/24/2017
-ms.openlocfilehash: 2bb172ca36f3f932fdaaf5b71e8fa183c04d1510
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: d682e63424ca247161e9784a8a05b91186da54b7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84194183"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87003643"
 ---
 # <a name="back-up-sql-server-to-azure-by-using-azure-backup-server"></a>Sichern von SQL Server in Azure mithilfe von Azure Backup Server
 
@@ -19,6 +19,34 @@ Das Sichern und Wiederherstellen einer SQL Server-Datenbank unter Verwendung vo
 1. Erstellen einer Sicherungsrichtlinie zum Schutz von SQL Server-Datenbanken in Azure
 1. Bedarfsgesteuertes Erstellen von Sicherungskopien in Azure
 1. Wiederherstellen der Datenbank in Azure
+
+## <a name="prerequisites-and-limitations"></a>Voraussetzungen und Einschränkungen
+
+* Wenn Sie über eine Datenbank mit Dateien auf einer Remotedateifreigabe verfügen, werden die darauf enthaltenen Daten nicht geschützt und ein Fehler mit der ID 104 ausgegeben. Der Schutz von SQL Server-Daten auf einer Remotedateifreigabe wird von MABS nicht unterstützt.
+* Datenbanken, die auf SMB-Remotefreigaben gespeichert sind, können von MABS nicht geschützt werden.
+* Stellen Sie sicher, dass die [Replikate der Verfügbarkeitsgruppe als schreibgeschützt konfiguriert sind](/sql/database-engine/availability-groups/windows/configure-read-only-access-on-an-availability-replica-sql-server?view=sql-server-ver15).
+* Sie müssen das Systemkonto **NTAuthority\System** der Systemadministratorgruppe in SQL Server explizit hinzufügen.
+* Wenn Sie für eine teilweise eigenständige Datenbank eine Wiederherstellung an einem anderen Speicherort durchführen, müssen Sie sicherstellen, dass für die SQL-Zielinstanz die Funktion für [eigenständige Datenbanken](/sql/relational-databases/databases/migrate-to-a-partially-contained-database?view=sql-server-ver15#enable) aktiviert wurde.
+* Wenn Sie für eine Filestream-Datenbank eine Wiederherstellung an einem anderen Speicherort durchführen, müssen Sie sicherstellen, dass für die SQL-Zielinstanz die Funktion für [Filestream-Datenbanken](/sql/relational-databases/blob/enable-and-configure-filestream?view=sql-server-ver15) aktiviert wurde.
+* Schutz für SQL Server AlwaysOn:
+  * Verfügbarkeitsgruppen werden von MABS beim Ausführen von Abfragen während der Erstellung von Schutzgruppen erkannt.
+  * Ein Failover wird von MABS erkannt, und die Datenbank wird weiterhin geschützt.
+  * Mehrere Standorte umfassende Clusterkonfigurationen für eine Instanz von SQL Server werden von MABS unterstützt.
+* Wenn Sie Datenbanken schützen, für die die Funktion „AlwaysOn“ verwendet wird, gelten für MABS folgende Einschränkungen:
+  * Die Sicherungsrichtlinie für Verfügbarkeitsgruppen, die in SQL Server auf Basis der Sicherungseinstellungen festgelegt wird, wird von MABS wie folgt berücksichtigt:
+    * Sekundär bevorzugen: Sicherungen müssen für ein sekundäres Replikat ausgeführt werden, es sei denn, das primäre Replikat ist als einziges Replikat online. Wenn mehrere sekundäre Replikate verfügbar sind, wird der Knoten mit der höchsten Sicherungspriorität für die Sicherung ausgewählt. Wenn nur das primäre Replikat verfügbar ist, muss die Sicherung für das primäre Replikat stattfinden.
+    * Nur sekundäre: Die Sicherung darf nicht für das primäre Replikat ausgeführt werden. Wenn nur das primäre Replikat online ist, darf keine Sicherung ausgeführt werden.
+    * Primär: Sicherungen müssen immer für das primäre Replikat ausgeführt werden.
+    * Beliebiges Replikat: Sicherungen können für ein beliebiges Verfügbarkeitsreplikat in der Verfügbarkeitsgruppe ausgeführt werden. Der Knoten, von dem aus die Sicherung erfolgen soll, basiert auf den Sicherungsprioritäten für die einzelnen Knoten.
+  * Beachten Sie Folgendes:
+    * Sicherungen können für jedes lesbare Replikat erfolgen, d h. für ein primäres, ein synchrones sekundäres oder ein asynchrones sekundäres Replikat.
+    * Wenn ein Replikat von der Sicherung ausgeschlossen ist, etwa weil **Replikat ausschließen** aktiviert oder das Replikat als nicht lesbar gekennzeichnet wurde, wird dieses Replikat unter keiner der Optionen für die Sicherung ausgewählt.
+    * Wenn mehrere Replikate verfügbar und lesbar sind, wird der Knoten mit der höchsten Sicherungspriorität für die Sicherung ausgewählt.
+    * Bei einem Sicherungsfehler auf dem ausgewählten Knoten ist der Sicherungsvorgang fehlerhaft.
+    * Die Wiederherstellung am ursprünglichen Speicherort wird nicht unterstützt.
+* Sicherungsprobleme bei SQL Server 2014 oder höher:
+  * SQL Server 2014 wurde durch eine neue Funktion zum Erstellen einer [Datenbank für lokale SQL Server-Instanzen in Windows Azure Blob Storage](/sql/relational-databases/databases/sql-server-data-files-in-microsoft-azure?view=sql-server-ver15) erweitert. Diese Konfiguration kann nicht mithilfe von MABS geschützt werden.
+  * Die Sicherungseinstellung „Sekundär bevorzugen“ verursacht bei Verwendung der Option „SQL AlwaysOn“ einige bekannte Probleme. Von MABS wird immer eine Sicherung für das sekundäre Replikat ausgeführt. Wenn kein sekundäres Replikat gefunden wird, tritt bei der Sicherung ein Fehler auf.
 
 ## <a name="before-you-start"></a>Vorbereitung
 

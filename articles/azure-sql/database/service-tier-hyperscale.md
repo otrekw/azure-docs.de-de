@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 06/03/2020
-ms.openlocfilehash: 3c4252f926163b00d3b4f4bf4a26373988017ac1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d74e3f196e58e522eb9377ca9f18fd05ec8460ae
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85255004"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87023992"
 ---
 # <a name="hyperscale-service-tier"></a>Hyperscale-Dienstebene
 
@@ -218,7 +218,7 @@ Hierbei handelt es sich um die aktuellen Einschränkungen der Hyperscale-Dienste
 
 | Problem | BESCHREIBUNG |
 | :---- | :--------- |
-| Im Bereich „Sicherungen verwalten“ für einen Server werden keine Hyperscale-Datenbanken angezeigt. Diese sind aus der Ansicht herausgefiltert.  | Hyperscale verfügt über eine separate Methode zum Verwalten von Sicherungen, sodass die Einstellungen für Langzeitaufbewahrung und Aufbewahrung von Point-in-Time-Sicherungen nicht gelten. Daher werden Hyperscale-Datenbanken nicht im Bereich „Sicherungen verwalten“ angezeigt.|
+| Im Bereich „Sicherungen verwalten“ für einen Server werden keine Hyperscale-Datenbanken angezeigt. Diese sind aus der Ansicht herausgefiltert.  | Hyperscale verfügt über eine separate Methode zum Verwalten von Sicherungen, sodass die Einstellungen für Langzeitaufbewahrung und Aufbewahrung von Point-in-Time-Sicherungen nicht gelten. Daher werden Hyperscale-Datenbanken nicht im Bereich „Sicherungen verwalten“ angezeigt.<br><br>Bei Datenbanken, die von anderen Dienstebenen von Azure SQL-Datenbank zu Hyperscale migriert wurden, werden Sicherungen vor der Migration so lange aufbewahrt, wie in der [Beibehaltungsdauer für Sicherungen](automated-backups-overview.md#backup-retention) der Quelldatenbank angegeben. Mit diesen Sicherungen kann die Quelldatenbank auf einen Zeitpunkt vor der Migration [wiederhergestellt](recovery-using-backups.md#programmatic-recovery-using-automated-backups) werden.|
 | Wiederherstellung bis zu einem bestimmten Zeitpunkt | Datenbanken mit einer anderen Dienstebene als Hyperscale können nicht als Hyperscale-Datenbanken wiederhergestellt werden, und eine Hyperscale-Datenbank kann nicht als eine Datenbank mit einer anderen Dienstebene wiederhergestellt werden. Bei Datenbanken mit einer anderen Dienstebene als Hyperscale, die durch Ändern der Dienstebene zu Hyperscale migriert wurden, kann die Wiederherstellung bis zu einem bestimmten Zeitpunkt vor der Migration und innerhalb des Aufbewahrungszeitraums für die Sicherung der Datenbank [programmgesteuert](recovery-using-backups.md#programmatic-recovery-using-automated-backups) erfolgen. Die wiederhergestellte Datenbank gehört dann aber nicht der Dienstebene „Hyperscale“ an. |
 | Wenn eine Datenbank mindestens eine Datendatei enthält, die größer als 1 TB ist, schlägt die Migration fehl. | In einigen Fällen kann es möglich sein, dieses Problem zu umgehen, indem die großen Dateien auf weniger als 1 TB verkleinert werden. Wenn Sie eine Datenbank migrieren, die während des Migrationsvorgangs verwendet wird, stellen Sie sicher, dass keine Datei größer als 1 TB wird. Verwenden Sie die folgende Abfrage, um die Größe von Datenbankdateien zu ermitteln. `SELECT *, name AS file_name, size * 8. / 1024 / 1024 AS file_size_GB FROM sys.database_files WHERE type_desc = 'ROWS'`;|
 | Verwaltete SQL-Instanz | Azure SQL Managed Instance wird für Hyperscale-Datenbanken derzeit nicht unterstützt. |

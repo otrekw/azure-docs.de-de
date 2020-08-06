@@ -1,6 +1,6 @@
 ---
-title: 'Herstellen einer Verbindung mit Windows Virtual Desktop unter iOS: Azure'
-description: Informationen zum Herstellen einer Verbindung mit Windows Virtual Desktop mithilfe des iOS-Clients.
+title: 'Herstellen einer Verbindung mit Windows Virtual Desktop (klassisch) unter iOS: Azure'
+description: Informationen zum Herstellen einer Verbindung mit Windows Virtual Desktop (klassisch) mithilfe des iOS-Clients.
 services: virtual-desktop
 author: heidilohr
 ms.service: virtual-desktop
@@ -8,19 +8,19 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 10ad1e3fdcccce4eb0ce97806f67486ce5cc391b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 06de85e23b1d6350a48735506c8931922d40b799
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85213209"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87270735"
 ---
-# <a name="connect-with-the-ios-client"></a>Herstellen einer Verbindung mit dem iOS-Client
+# <a name="connect-to-windows-virtual-desktop-classic-with-the-ios-client"></a>Herstellen einer Verbindung mit Windows Virtual Desktop (klassisch) mithilfe des iOS-Clients
 
 > Gilt für: iOS 13.0 oder höher. Kompatibel mit iPhone, iPad und iPod Touch.
 
 >[!IMPORTANT]
->Dieser Inhalt gilt für das Release vom Herbst 2019, das keine Windows Virtual Desktop-Objekte in Azure Resource Manager unterstützt. Wenn Sie Windows Virtual Desktop-Objekte in Azure Resource Manager verwalten möchten, die im Update vom Frühjahr 2020 eingeführt wurden, finden Sie weitere Informationen in [diesem Artikel](../connect-ios.md).
+>Dieser Inhalt gilt für Windows Virtual Desktop (klassisch). Der Dienst unterstützt keine Windows Virtual Desktop-Objekte in Azure Resource Manager. Wenn Sie Windows Virtual Desktop-Objekte in Azure Resource Manager verwalten möchten, helfen Ihnen die Informationen in [diesem Artikel](../connect-ios.md) weiter.
 
 Mit unserem herunterladbaren Client können Sie über Ihr iOS-Gerät auf virtuelle Windows Virtual Desktop-Ressourcen zugreifen. In dieser Anleitung erfahren Sie, wie Sie den iOS-Client einrichten.
 

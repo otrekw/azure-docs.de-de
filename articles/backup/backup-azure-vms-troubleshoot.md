@@ -4,12 +4,12 @@ description: In diesem Artikel erfahren Sie, wie Sie Fehler beheben können, die
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 08/30/2019
-ms.openlocfilehash: e40b74cc5bf995e943b20ddcd21127ed4f7d7ead
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 0f598e0058d817fbba8d816500ab252134be0eb5
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86184190"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371735"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>Problembehandlung bei Sicherungsfehlern auf virtuellen Azure-Computern
 
@@ -21,13 +21,13 @@ Dieser Abschnitt behandelt Fehler im Sicherungsvorgang für virtuelle Azure-Comp
 
 ### <a name="basic-troubleshooting"></a>Grundlegendes zur Problembehandlung
 
-* Stellen Sie sicher, dass der VM-Agent (WA-Agent) die [neueste Version](https://docs.microsoft.com/azure/backup/backup-azure-arm-vms-prepare#install-the-vm-agent) aufweist.
-* Stellen Sie sicher, dass die Betriebssystemversion des virtuellen Windows- oder Linux-Computers unterstützt wird. Entsprechende Informationen finden Sie in der [Supportmatrix zur IaaS-VM-Sicherung](https://docs.microsoft.com/azure/backup/backup-support-matrix-iaas).
+* Stellen Sie sicher, dass der VM-Agent (WA-Agent) die [neueste Version](./backup-azure-arm-vms-prepare.md#install-the-vm-agent) aufweist.
+* Stellen Sie sicher, dass die Betriebssystemversion des virtuellen Windows- oder Linux-Computers unterstützt wird. Entsprechende Informationen finden Sie in der [Supportmatrix zur IaaS-VM-Sicherung](./backup-support-matrix-iaas.md).
 * Überprüfen Sie, ob kein anderer Sicherungsdienst ausgeführt wird.
-  * Um sicherzustellen, dass keine Probleme bei der Momentaufnahmenerweiterung vorliegen, [deinstallieren Sie die Erweiterungen, um erneutes Laden zu erzwingen, und wiederholen Sie die Sicherung](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout).
+  * Um sicherzustellen, dass keine Probleme bei der Momentaufnahmenerweiterung vorliegen, [deinstallieren Sie die Erweiterungen, um erneutes Laden zu erzwingen, und wiederholen Sie die Sicherung](./backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md).
 * Überprüfen Sie, ob der virtuelle Computer über Internetkonnektivität verfügt.
   * Vergewissern Sie sich, dass kein anderer Sicherungsdienst ausgeführt wird.
-* Stellen Sie über `Services.msc` sicher, dass sich der **Microsoft Azure-Gast-Agent-Dienst** im Status **Wird ausgeführt** befindet. Wenn der **Microsoft Azure-Gast-Agent-Dienst** nicht vorhanden ist, installieren Sie ihn aus [Sichern virtueller Azure-Computer in einem Recovery Services-Tresor](https://docs.microsoft.com/azure/backup/backup-azure-arm-vms-prepare#install-the-vm-agent).
+* Stellen Sie über `Services.msc` sicher, dass sich der **Microsoft Azure-Gast-Agent-Dienst** im Status **Wird ausgeführt** befindet. Wenn der **Microsoft Azure-Gast-Agent-Dienst** nicht vorhanden ist, installieren Sie ihn aus [Sichern virtueller Azure-Computer in einem Recovery Services-Tresor](./backup-azure-arm-vms-prepare.md#install-the-vm-agent).
 * Das **Ereignisprotokoll** zeigt möglicherweise Sicherungsfehler an, die aus anderen Sicherungsprodukten, z.B. der Windows Server-Sicherung, stammen und nicht auf Azure Backup zurückzuführen sind. Ermitteln Sie anhand der folgenden Schritte, ob das Problem bei Azure Backup liegt:
   * Wenn in der Ereignisquelle oder -meldung ein Fehler bei einer **Eintragsicherung** vorliegt, überprüfen Sie, ob die Sicherungen der Azure IaaS-VM-Sicherung erfolgreich waren und ob ein Wiederherstellungspunkt mit dem gewünschten Momentaufnahmetyp erstellt wurde.
   * Wenn Azure Backup funktioniert, liegt das Problem wahrscheinlich bei einer anderen Sicherungslösung.
@@ -39,14 +39,24 @@ Dieser Abschnitt behandelt Fehler im Sicherungsvorgang für virtuelle Azure-Comp
 
 Im Folgenden werden häufige Probleme bei Sicherungsfehlern auf virtuellen Azure-Computern erläutert.
 
-## <a name="copyingvhdsfrombackupvaulttakinglongtime---copying-backed-up-data-from-vault-timed-out"></a>CopyingVHDsFromBackUpVaultTakingLongTime – Timeout beim Kopieren gesicherter Daten aus dem Tresor
+### <a name="vmrestorepointinternalerror---antivirus-configured-in-the-vm-is-restricting-the-execution-of-backup-extension"></a>VMRestorePointInternalError: Das auf der VM konfigurierte Antivirenprogramm schränkt die Ausführung der Sicherungserweiterung ein.
+
+Fehlercode: VMRestorePointInternalError
+
+Falls zum Zeitpunkt der Sicherung in den **Anwendungsprotokollen der Ereignisanzeige** ein ähnlicher Eintrag wie der folgende angezeigt wird, **Fehlerhafter Anwendungsname: IaaSBcdrExtension.exe**, wird die Ausführung der Sicherungserweiterung durch das auf der VM konfigurierte Antivirenprogramm tatsächlich eingeschränkt.
+Um dieses Problem zu beheben, schließen Sie die folgenden Verzeichnisse aus der Antivirenkonfiguration aus, und wiederholen Sie den Sicherungsvorgang.
+
+* `C:\Packages\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot`
+* `C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot`
+
+### <a name="copyingvhdsfrombackupvaulttakinglongtime---copying-backed-up-data-from-vault-timed-out"></a>CopyingVHDsFromBackUpVaultTakingLongTime – Timeout beim Kopieren gesicherter Daten aus dem Tresor
 
 Fehlercode: CopyingVHDsFromBackUpVaultTakingLongTime <br/>
 Fehlermeldung: Timeout beim Kopieren gesicherter Daten aus dem Tresor
 
 Dies kann durch vorübergehende Speicherfehler oder einen Mangel an Speicherkonto-IOPS für den Sicherungsdienst zum Übertragen von Daten in den Tresor innerhalb des Timeoutzeitraums passieren. Konfigurieren Sie die VM-Sicherung mit diesen [bewährten Methoden](backup-azure-vms-introduction.md#best-practices), und wiederholen Sie den Sicherungsvorgang.
 
-## <a name="usererrorvmnotindesirablestate---vm-is-not-in-a-state-that-allows-backups"></a>UserErrorVmNotInDesirableState – Aufgrund des Zustands des virtuellen Computers sind keine Sicherungen möglich.
+### <a name="usererrorvmnotindesirablestate---vm-is-not-in-a-state-that-allows-backups"></a>UserErrorVmNotInDesirableState – Aufgrund des Zustands des virtuellen Computers sind keine Sicherungen möglich.
 
 Fehlercode: UserErrorVmNotInDesirableState <br/>
 Fehlermeldung: Aufgrund des Zustands des virtuellen Computers sind keine Sicherungen möglich.<br/>
@@ -56,7 +66,7 @@ Beim Sicherungsvorgang ist ein Fehler aufgetreten, da sich der virtuelle Compute
 * Wenn sich der virtuelle Computer in einem Übergangszustand zwischen **Wird ausgeführt** und **Heruntergefahren** befindet, müssen Sie warten, bis der Zustand geändert wurde. Lösen Sie dann den Sicherungsauftrag aus.
 * Schließen Sie im Falle eines virtuellen Linux-Computers mit dem Kernelmodul Security Enhanced Linux den Azure Linux-Agent-Pfad **/var/lib/waagent** aus der Sicherheitsrichtlinie aus, und stellen Sie sicher, dass die Azure Backup-Erweiterung installiert ist.
 
-## <a name="usererrorfsfreezefailed---failed-to-freeze-one-or-more-mount-points-of-the-vm-to-take-a-file-system-consistent-snapshot"></a>UserErrorFsFreezeFailed – Fehler beim Einfrieren mindestens eines Bereitstellungspunkts der VM zum Erfassen einer dateisystemkonsistenten Momentaufnahme
+### <a name="usererrorfsfreezefailed---failed-to-freeze-one-or-more-mount-points-of-the-vm-to-take-a-file-system-consistent-snapshot"></a>UserErrorFsFreezeFailed – Fehler beim Einfrieren mindestens eines Bereitstellungspunkts der VM zum Erfassen einer dateisystemkonsistenten Momentaufnahme
 
 Fehlercode: UserErrorFsFreezeFailed <br/>
 Fehlermeldung: Fehler beim Einfrieren mindestens eines Bereitstellungspunkts der VM zum Erfassen einer dateisystemkonsistenten Momentaufnahme.
@@ -65,7 +75,7 @@ Fehlermeldung: Fehler beim Einfrieren mindestens eines Bereitstellungspunkts der
 * Führen Sie mit dem Befehl **fsck** eine Dateisystem-Konsistenzprüfung für diese Geräte aus.
 * Stellen Sie die Geräte erneut bereit, und versuchen Sie, die Sicherung auszuführen.</ol>
 
-## <a name="extensionsnapshotfailedcom--extensioninstallationfailedcom--extensioninstallationfailedmdtc---extension-installationoperation-failed-due-to-a-com-error"></a>ExtensionSnapshotFailedCOM / ExtensionInstallationFailedCOM / ExtensionInstallationFailedMDTC – Fehler bei Installation/Betrieb der Erweiterung aufgrund eines COM+-Fehlers
+### <a name="extensionsnapshotfailedcom--extensioninstallationfailedcom--extensioninstallationfailedmdtc---extension-installationoperation-failed-due-to-a-com-error"></a>ExtensionSnapshotFailedCOM / ExtensionInstallationFailedCOM / ExtensionInstallationFailedMDTC – Fehler bei Installation/Betrieb der Erweiterung aufgrund eines COM+-Fehlers
 
 Fehlercode: ExtensionSnapshotFailedCOM <br/>
 Fehlermeldung: Fehler bei Momentaufnahmevorgang aufgrund eines COM+-Fehlers
@@ -88,7 +98,7 @@ Fehler beim Sicherungsvorgang aufgrund eines Problems mit dem Windows-Dienst **C
   * Starten Sie den Dienst „MS DTC“.
 * Starten Sie den Windows-Dienst **COM+-Systemanwendung**. Lösen Sie nach dem Starten des Diensts **COM+-Systemanwendung** einen Sicherungsauftrag über das Azure-Portal aus.</ol>
 
-## <a name="extensionfailedvsswriterinbadstate---snapshot-operation-failed-because-vss-writers-were-in-a-bad-state"></a>ExtensionFailedVssWriterInBadState – Fehler beim Momentaufnahmevorgang aufgrund eines fehlerhaften Zustands von VSS Writer-Instanzen
+### <a name="extensionfailedvsswriterinbadstate---snapshot-operation-failed-because-vss-writers-were-in-a-bad-state"></a>ExtensionFailedVssWriterInBadState – Fehler beim Momentaufnahmevorgang aufgrund eines fehlerhaften Zustands von VSS Writer-Instanzen
 
 Fehlercode: ExtensionFailedVssWriterInBadState <br/>
 Fehlermeldung: Fehler beim Momentaufnahmevorgang aufgrund eines fehlerhaften Zustands von VSS Writer-Instanzen.
@@ -100,19 +110,19 @@ Starten Sie die in einem fehlerhaften Zustand befindlichen VSS Writer-Instanzen 
 
 Ein weiteres Verfahren, das Ihnen helfen kann, besteht darin, den folgenden Befehl an einer Eingabeaufforderung mit erhöhten Rechten (als Administrator) auszuführen.
 
-```CMD
+```console
 REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v SnapshotWithoutThreads /t REG_SZ /d True /f
 ```
 
 Das Hinzufügen dieses Registrierungsschlüssels bewirkt, dass die Threads nicht für BLOB-Momentaufnahmen erstellt werden und ein Timeout verhindert wird.
 
-## <a name="extensionconfigparsingfailure--failure-in-parsing-the-config-for-the-backup-extension"></a>ExtensionConfigParsingFailure – Fehler beim Analysieren der Konfigurationsdatei für die Sicherungserweiterung
+### <a name="extensionconfigparsingfailure--failure-in-parsing-the-config-for-the-backup-extension"></a>ExtensionConfigParsingFailure – Fehler beim Analysieren der Konfigurationsdatei für die Sicherungserweiterung
 
 Fehlercode: ExtensionConfigParsingFailure<br/>
 Fehlermeldung: Fehler beim Analysieren der Konfigurationsdatei für die Sicherungserweiterung.
 
 Dieser Fehler tritt aufgrund geänderter Berechtigungen für das Verzeichnis **MachineKeys** ( **%systemdrive%\programdata\microsoft\crypto\rsa\machinekeys**) auf.
-Führen Sie den folgenden Befehl aus, und stellen Sie sicher, dass für das Verzeichnis **MachineKeys** die Standardberechtigungen gelten: **icacls %systemdrive%\programdata\microsoft\crypto\rsa\machinekeys**.
+Führen Sie den folgenden Befehl aus, und stellen Sie sicher, dass für das Verzeichnis **MachineKeys** die Standardberechtigungen gelten `icacls %systemdrive%\programdata\microsoft\crypto\rsa\machinekeys`.
 
 Die Standardberechtigungen lauten wie folgt:
 
@@ -133,11 +143,11 @@ Wenn für das Verzeichnis **MachineKeys** andere Berechtigungen als die Standard
    * Leseberechtigungen
 2. Löschen Sie alle Zertifikate, für die **Ausgestellt für** das klassische Bereitstellungsmodell oder **Windows Azure CRP Certificate Generator** ist:
 
-   * [Öffnen Sie in der Konsole auf dem lokalen Computer die Zertifikate](https://docs.microsoft.com/dotnet/framework/wcf/feature-details/how-to-view-certificates-with-the-mmc-snap-in).
+   * [Öffnen Sie in der Konsole auf dem lokalen Computer die Zertifikate](/dotnet/framework/wcf/feature-details/how-to-view-certificates-with-the-mmc-snap-in).
    * Löschen Sie unter **Eigene Zertifikate** > **Zertifikate** alle Zertifikate, für die **Ausgestellt für** das klassische Bereitstellungsmodell ist, oder löschen Sie **Microsoft Azure CRP Certificate Generator**.
 3. Lösen Sie einen Sicherungsauftrag für den virtuellen Computer aus.
 
-## <a name="extensionstuckindeletionstate---extension-state-is-not-supportive-to-backup-operation"></a>ExtensionStuckInDeletionState – Sicherungsvorgang wird von Erweiterungsstatus nicht unterstützt
+### <a name="extensionstuckindeletionstate---extension-state-is-not-supportive-to-backup-operation"></a>ExtensionStuckInDeletionState – Sicherungsvorgang wird von Erweiterungsstatus nicht unterstützt
 
 Fehlercode: ExtensionStuckInDeletionState <br/>
 Fehlermeldung: Sicherungsvorgang wird von Erweiterungsstatus nicht unterstützt
@@ -150,7 +160,7 @@ Beim Sicherungsvorgang ist aufgrund eines inkonsistenten Status der Sicherungser
 * Wiederholen Sie den Sicherungsvorgang, nachdem Sie die Sicherungserweiterung gelöscht haben.
 * Mit dem nachfolgenden Sicherungsvorgang wird die neue Erweiterung mit dem gewünschten Status installiert.
 
-## <a name="extensionfailedsnapshotlimitreachederror---snapshot-operation-failed-as-snapshot-limit-is-exceeded-for-some-of-the-disks-attached"></a>ExtensionFailedSnapshotLimitReachedError – Fehler bei Momentaufnahmevorgang, weil für einige der angefügten Datenträger das Limit für Momentaufnahmen überschritten wurde
+### <a name="extensionfailedsnapshotlimitreachederror---snapshot-operation-failed-as-snapshot-limit-is-exceeded-for-some-of-the-disks-attached"></a>ExtensionFailedSnapshotLimitReachedError – Fehler bei Momentaufnahmevorgang, weil für einige der angefügten Datenträger das Limit für Momentaufnahmen überschritten wurde
 
 Fehlercode: ExtensionFailedSnapshotLimitReachedError  <br/>
 Fehlermeldung: Fehler bei Momentaufnahmevorgang, weil für einige der angefügten Datenträger das Limit für Momentaufnahmen überschritten wurde
@@ -164,7 +174,7 @@ Beim Momentaufnahmevorgang ist ein Fehler aufgetreten, da das Momentaufnahmenlim
   * Vergewissern Sie sich, dass in „/etc/azure/vmbackup.conf“ für **isanysnapshotfailed** der Wert „false“ festgelegt ist.
   * Planen Sie Azure Site Recovery für einen anderen Zeitpunkt, sodass kein Konflikt mit dem Sicherungsvorgang auftritt.
 
-## <a name="extensionfailedtimeoutvmnetworkunresponsive---snapshot-operation-failed-due-to-inadequate-vm-resources"></a>ExtensionFailedTimeoutVMNetworkUnresponsive – Fehler beim Momentaufnahmevorgang aufgrund nicht ausreichender VM-Ressourcen.
+### <a name="extensionfailedtimeoutvmnetworkunresponsive---snapshot-operation-failed-due-to-inadequate-vm-resources"></a>ExtensionFailedTimeoutVMNetworkUnresponsive – Fehler beim Momentaufnahmevorgang aufgrund nicht ausreichender VM-Ressourcen.
 
 Fehlercode: ExtensionFailedTimeoutVMNetworkUnresponsive<br/>
 Fehlermeldung: Fehler beim Momentaufnahmevorgang aufgrund nicht ausreichender VM-Ressourcen.
@@ -175,7 +185,7 @@ Fehler beim Sicherungsvorgang auf der VM aufgrund von Netzwerkaufrufen beim Durc
 
 Führen Sie an einer Eingabeaufforderung mit erhöhten Rechten (Administrator) den folgenden Befehl aus:
 
-```text
+```console
 REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v SnapshotMethod /t REG_SZ /d firstHostThenGuest /f
 REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v CalculateSnapshotTimeFromHost /t REG_SZ /d True /f
 ```
@@ -186,58 +196,63 @@ So wird sichergestellt, dass die Momentaufnahmen nicht über den Gast, sondern �
 
 **Schritt 3:** Versuchen Sie, [die Größe der VM zu erhöhen](https://azure.microsoft.com/blog/resize-virtual-machines/) und den Vorgang dann erneut durchzuführen.
 
-
-## <a name="320001-resourcenotfound---could-not-perform-the-operation-as-vm-no-longer-exists--400094-bcmv2vmnotfound---the-virtual-machine-doesnt-exist--an-azure-virtual-machine-wasnt-found"></a>320001, ResourceNotFound: Der Vorgang konnte nicht ausgeführt werden, weil der virtuelle Computer nicht mehr vorhanden ist./400094, BCMV2VMNotFound: Der virtuelle Computer ist nicht vorhanden/Der virtuelle Azure-Computer wurde nicht gefunden.
+### <a name="320001-resourcenotfound---could-not-perform-the-operation-as-vm-no-longer-exists--400094-bcmv2vmnotfound---the-virtual-machine-doesnt-exist--an-azure-virtual-machine-wasnt-found"></a>320001, ResourceNotFound: Der Vorgang konnte nicht ausgeführt werden, weil der virtuelle Computer nicht mehr vorhanden ist./400094, BCMV2VMNotFound: Der virtuelle Computer ist nicht vorhanden/Der virtuelle Azure-Computer wurde nicht gefunden.
 
 Fehlercode: 320001, ResourceNotFound <br/> Fehlermeldung: Der Vorgang konnte nicht ausgeführt werden, da der virtuelle Computer nicht mehr vorhanden ist. <br/> <br/> Fehlercode: 400094, BCMV2VMNotFound <br/> Fehlermeldung: Der virtuelle Computer ist nicht vorhanden <br/>
 Der virtuelle Azure-Computer wurde nicht gefunden.
 
 Dieser Fehler tritt auf, wenn der primäre virtuelle Computer gelöscht wird, die Sicherungsrichtlinie jedoch weiterhin einen zu sichernden virtuellen Computer sucht. Führen Sie zum Beheben dieses Fehlers die folgenden Schritte aus:
-- Erstellen Sie den virtuellen Computer mit dem gleichen Namen und dem gleichen Ressourcengruppennamen (**Clouddienstname**) neu.<br>oder
-- Beenden Sie den Schutz für den virtuellen Computer mit oder ohne Löschung der Sicherungsdaten. Weitere Informationen finden Sie unter [Beenden des Schutzes für virtuelle Computer](backup-azure-manage-vms.md#stop-protecting-a-vm).</li></ol>
 
-## <a name="usererrorbcmpremiumstoragequotaerror---could-not-copy-the-snapshot-of-the-virtual-machine-due-to-insufficient-free-space-in-the-storage-account"></a>UserErrorBCMPremiumStorageQuotaError: Die Momentaufnahme des virtuellen Computers konnte nicht kopiert werden, weil das Speicherkonto nicht über genügend freien Speicherplatz verfügt.
+* Erstellen Sie den virtuellen Computer mit dem gleichen Namen und dem gleichen Ressourcengruppennamen (**Clouddienstname**) neu.<br>oder
+* Beenden Sie den Schutz für den virtuellen Computer mit oder ohne Löschung der Sicherungsdaten. Weitere Informationen finden Sie unter [Beenden des Schutzes für virtuelle Computer](backup-azure-manage-vms.md#stop-protecting-a-vm).</li></ol>
+
+### <a name="usererrorbcmpremiumstoragequotaerror---could-not-copy-the-snapshot-of-the-virtual-machine-due-to-insufficient-free-space-in-the-storage-account"></a>UserErrorBCMPremiumStorageQuotaError: Die Momentaufnahme des virtuellen Computers konnte nicht kopiert werden, weil das Speicherkonto nicht über genügend freien Speicherplatz verfügt.
 
 Fehlercode: UserErrorBCMPremiumStorageQuotaError<br/> Fehlermeldung: Die Momentaufnahme des virtuellen Computers konnte nicht kopiert werden, weil das Speicherkonto nicht über genügend freien Speicherplatz verfügt
 
  Bei Premium-VMs mit dem VM-Sicherungsstapel V1 wird die Momentaufnahme in das Speicherkonto kopiert. Durch diesen Schritt wird sichergestellt, dass der Sicherungsverwaltungsdatenverkehr für die Momentaufnahme nicht die Anzahl der IOPS begrenzt, die der Anwendung zur Verfügung stehen, die Premium-Datenträger verwendet. <br><br>Wir empfehlen Ihnen, nur 50 % (17,5 TB) des gesamten Speicherplatzes des Speicherkontos zuzuordnen. Der Azure Backup-Dienst kann dann die Momentaufnahme in das Speicherkonto kopieren und Daten von diesem Kopierspeicherort in das Speicherkonto des Tresors übertragen.
 
+### <a name="380008-azurevmoffline---failed-to-install-microsoft-recovery-services-extension-as-virtual-machine--is-not-running"></a>380008, AzureVmOffline: Fehler beim Installieren der Microsoft Recovery Services-Erweiterung, da der virtuelle Computer nicht ausgeführt wird.
 
-## <a name="380008-azurevmoffline---failed-to-install-microsoft-recovery-services-extension-as-virtual-machine--is-not-running"></a>380008, AzureVmOffline: Fehler beim Installieren der Microsoft Recovery Services-Erweiterung, da der virtuelle Computer nicht ausgeführt wird.
 Fehlercode: 380008, AzureVmOffline <br/> Fehlermeldung: Fehler beim Installieren der Microsoft Recovery Services-Erweiterung, da der virtuelle Computer nicht ausgeführt wird
 
 Der VM-Agent ist eine erforderliche Komponente für die Azure Recovery Services-Erweiterung. Installieren Sie den Agent für virtuelle Azure-Computer, und starten Sie den Registrierungsvorgang erneut. <br> <ol> <li>Überprüfen Sie, ob der VM-Agent ordnungsgemäß installiert ist. <li>Stellen Sie sicher, dass das Flag für die VM-Konfiguration richtig festgelegt wurde.</ol> Erfahren Sie mehr über das Installieren des VM-Agents und das Überprüfen der VM-Agent-Installation.
 
-## <a name="extensionsnapshotbitlockererror---the-snapshot-operation-failed-with-the-volume-shadow-copy-service-vss-operation-error"></a>ExtensionSnapshotBitlockerError: Der Momentaufnahmevorgang ist mit dem folgenden Vorgangsfehler des Volumeschattenkopie-Diensts (Volume Shadow Copy Service, VSS) fehlgeschlagen.
+### <a name="extensionsnapshotbitlockererror---the-snapshot-operation-failed-with-the-volume-shadow-copy-service-vss-operation-error"></a>ExtensionSnapshotBitlockerError: Der Momentaufnahmevorgang ist mit dem folgenden Vorgangsfehler des Volumeschattenkopie-Diensts (Volume Shadow Copy Service, VSS) fehlgeschlagen.
+
 Fehlercode: ExtensionSnapshotBitlockerError <br/> Fehlermeldung: Der Momentaufnahmevorgang ist mit dem folgenden Vorgangsfehler des Volumeschattenkopie-Diensts (Volume Shadow Copy Service, VSS) fehlgeschlagen: **Dieses Laufwerk ist durch die BitLocker-Laufwerkverschlüsselung gesperrt. Das Laufwerk muss mithilfe der Systemsteuerung entsperrt werden.**
 
 Deaktivieren Sie BitLocker für alle Laufwerke auf dem virtuellen Computer, und überprüfen Sie, ob der VSS-Fehler behoben wurde.
 
-## <a name="vmnotindesirablestate---the-vm-isnt-in-a-state-that-allows-backups"></a>VmNotInDesirableState: VM befindet sich nicht in einem Zustand, der Sicherungen zulässt.
+### <a name="vmnotindesirablestate---the-vm-isnt-in-a-state-that-allows-backups"></a>VmNotInDesirableState: VM befindet sich nicht in einem Zustand, der Sicherungen zulässt.
+
 Fehlercode: VmNotInDesirableState <br/> Fehlermeldung:  Der Zustand des virtuellen Computers lässt keine Sicherungen zu.
-- Wenn sich der virtuelle Computer in einem Übergangszustand zwischen **Wird ausgeführt** und **Heruntergefahren** befindet, müssen Sie warten, bis der Zustand geändert wurde. Lösen Sie dann den Sicherungsauftrag aus.
-- Schließen Sie im Falle eines virtuellen Linux-Computers mit dem Kernelmodul Security Enhanced Linux den Azure Linux-Agent-Pfad **/var/lib/waagent** aus der Sicherheitsrichtlinie aus, und stellen Sie sicher, dass die Azure Backup-Erweiterung installiert ist.
 
-- Der VM-Agent ist auf dem virtuellen Computer nicht vorhanden: <br>Installieren Sie alle erforderlichen Komponenten und den VM-Agent. Wiederholen Sie dann den Vorgang. Weitere Informationen zur VM-Agent-Installation sowie zur Überprüfung der VM-Agent-Installation finden Sie [hier](#vm-agent).
+* Wenn sich der virtuelle Computer in einem Übergangszustand zwischen **Wird ausgeführt** und **Heruntergefahren** befindet, müssen Sie warten, bis der Zustand geändert wurde. Lösen Sie dann den Sicherungsauftrag aus.
+* Schließen Sie im Falle eines virtuellen Linux-Computers mit dem Kernelmodul Security Enhanced Linux den Azure Linux-Agent-Pfad **/var/lib/waagent** aus der Sicherheitsrichtlinie aus, und stellen Sie sicher, dass die Azure Backup-Erweiterung installiert ist.
 
+* Der VM-Agent ist auf dem virtuellen Computer nicht vorhanden: <br>Installieren Sie alle erforderlichen Komponenten und den VM-Agent. Wiederholen Sie dann den Vorgang. Weitere Informationen zur VM-Agent-Installation sowie zur Überprüfung der VM-Agent-Installation finden Sie [hier](#vm-agent).
 
-## <a name="extensionsnapshotfailednosecurenetwork---the-snapshot-operation-failed-because-of-failure-to-create-a-secure-network-communication-channel"></a>ExtensionSnapshotFailedNoSecureNetwork: Der Momentaufnahmevorgang ist aufgrund eines Fehlers beim Erstellen eines sicheren Netzwerkkommunikationskanals fehlgeschlagen.
+### <a name="extensionsnapshotfailednosecurenetwork---the-snapshot-operation-failed-because-of-failure-to-create-a-secure-network-communication-channel"></a>ExtensionSnapshotFailedNoSecureNetwork: Der Momentaufnahmevorgang ist aufgrund eines Fehlers beim Erstellen eines sicheren Netzwerkkommunikationskanals fehlgeschlagen.
+
 Fehlercode: ExtensionSnapshotFailedNoSecureNetwork <br/> Fehlermeldung: Der Momentaufnahmevorgang ist aufgrund eines Fehlers beim Erstellen eines sicheren Netzwerkkommunikationskanals fehlgeschlagen.
-- Öffnen Sie den Registrierungs-Editor, indem Sie **regedit.exe** im Modus mit erhöhten Rechten ausführen.
-- Identifizieren Sie alle auf Ihrem System vorhandenen Versionen von .NET Framework. Sie werden unter der Hierarchie des Registrierungsschlüssels **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft** aufgeführt.
-- Fügen Sie für jede im Registrierungsschlüssel vorhandene .NET Framework-Version den folgenden Schlüssel hinzu: <br> **SchUseStrongCrypto"=dword:00000001** </ol>
 
+* Öffnen Sie den Registrierungs-Editor, indem Sie **regedit.exe** im Modus mit erhöhten Rechten ausführen.
+* Identifizieren Sie alle auf Ihrem System vorhandenen Versionen von .NET Framework. Sie werden unter der Hierarchie des Registrierungsschlüssels **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft** aufgeführt.
+* Fügen Sie für jede im Registrierungsschlüssel vorhandene .NET Framework-Version den folgenden Schlüssel hinzu: <br> **SchUseStrongCrypto"=dword:00000001** </ol>
 
-## <a name="extensionvcredistinstallationfailure---the-snapshot-operation-failed-because-of-failure-to-install-visual-c-redistributable-for-visual-studio-2012"></a>ExtensionVCRedistInstallationFailure: Der Momentaufnahmevorgang ist aufgrund eines Fehlers beim Installieren von Visual C++ Redistributable für Visual Studio 2012 fehlgeschlagen.
+### <a name="extensionvcredistinstallationfailure---the-snapshot-operation-failed-because-of-failure-to-install-visual-c-redistributable-for-visual-studio-2012"></a>ExtensionVCRedistInstallationFailure: Der Momentaufnahmevorgang ist aufgrund eines Fehlers beim Installieren von Visual C++ Redistributable für Visual Studio 2012 fehlgeschlagen.
+
 Fehlercode: ExtensionVCRedistInstallationFailure <br/> Fehlermeldung: Der Momentaufnahmevorgang ist aufgrund eines Fehlers beim Installieren von Visual C++ Redistributable für Visual Studio 2012 fehlgeschlagen.
-- Navigieren Sie zu `C:\Packages\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot\agentVersion`, und installieren Sie vcredist2013_x64.<br/>Stellen Sie sicher, dass der richtige Registrierungsschlüsselwert zum Zulassen der Dienstinstallation festgelegt wird. Das heißt, legen Sie den Wert für **Start** in **HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Msiserver** auf **3** und nicht auf **4** fest. <br><br>Wenn immer noch Probleme bei der Installation bestehen, starten Sie den Installationsdienst neu, indem Sie an einer Eingabeaufforderung mit erhöhten Rechten den Befehl **MSIEXEC /UNREGISTER** und dann **MSIEXEC /REGISTER** ausführen.
-- Überprüfen Sie das Ereignisprotokoll, auf Zugriffsprobleme. Beispiel: *Product: Microsoft Visual C++ 2013 x64 Minimum Runtime - 12.0.21005 -- Error 1401.Could not create key: Software\Classes.  System error 5.  Verify that you have sufficient access to that key, or contact your support personnel.* (Produkt: Microsoft Visual C++ 2013 x64 Minimum Runtime, 12.0.21005, Fehler 1401. Schlüssel Software\Classes konnte nicht erstellt werden. Systemfehler 5. Überprüfen Sie, ob Sie ausreichende Zugriffsrechte für diesen Schlüssel besitzen, oder setzen Sie sich mit dem Support in Verbindung.) <br><br> Stellen Sie sicher, dass das Administrator- oder Benutzerkonto über ausreichende Berechtigungen zum Aktualisieren des Registrierungsschlüssels **HKEY_LOCAL_MACHINE\SOFTWARE\Classes** verfügt. Erteilen Sie ausreichende Berechtigungen, und starten Sie den Windows Azure-Gast-Agent neu.<br><br> <li> Wenn Sie Antivirusprodukte eingerichtet haben, stellen Sie sicher, dass die richtigen Ausschlussregeln festgelegt wurden, um die Installation zu ermöglichen.
 
+* Navigieren Sie zu `C:\Packages\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot\agentVersion`, und installieren Sie vcredist2013_x64.<br/>Stellen Sie sicher, dass der richtige Registrierungsschlüsselwert zum Zulassen der Dienstinstallation festgelegt wird. Das heißt, legen Sie den Wert für **Start** in **HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Msiserver** auf **3** und nicht auf **4** fest. <br><br>Wenn immer noch Probleme bei der Installation bestehen, starten Sie den Installationsdienst neu, indem Sie an einer Eingabeaufforderung mit erhöhten Rechten den Befehl **MSIEXEC /UNREGISTER** und dann **MSIEXEC /REGISTER** ausführen.
+* Überprüfen Sie das Ereignisprotokoll, auf Zugriffsprobleme. Beispiel: *Product: Microsoft Visual C++ 2013 x64 Minimum Runtime - 12.0.21005 -- Error 1401.Could not create key: Software\Classes.  System error 5.  Verify that you have sufficient access to that key, or contact your support personnel.* (Produkt: Microsoft Visual C++ 2013 x64 Minimum Runtime, 12.0.21005, Fehler 1401. Schlüssel Software\Classes konnte nicht erstellt werden. Systemfehler 5. Überprüfen Sie, ob Sie ausreichende Zugriffsrechte für diesen Schlüssel besitzen, oder setzen Sie sich mit dem Support in Verbindung.) <br><br> Stellen Sie sicher, dass das Administrator- oder Benutzerkonto über ausreichende Berechtigungen zum Aktualisieren des Registrierungsschlüssels **HKEY_LOCAL_MACHINE\SOFTWARE\Classes** verfügt. Erteilen Sie ausreichende Berechtigungen, und starten Sie den Windows Azure-Gast-Agent neu.<br><br> <li> Wenn Sie Antivirusprodukte eingerichtet haben, stellen Sie sicher, dass die richtigen Ausschlussregeln festgelegt wurden, um die Installation zu ermöglichen.
 
-## <a name="usererrorrequestdisallowedbypolicy---an-invalid-policy-is-configured-on-the-vm-which-is-preventing-snapshot-operation"></a>UserErrorRequestDisallowedByPolicy: Auf dem virtuellen Computer ist eine ungültige Richtlinie konfiguriert. Dadurch wird der Momentaufnahmevorgang verhindert.
+### <a name="usererrorrequestdisallowedbypolicy---an-invalid-policy-is-configured-on-the-vm-which-is-preventing-snapshot-operation"></a>UserErrorRequestDisallowedByPolicy: Auf dem virtuellen Computer ist eine ungültige Richtlinie konfiguriert. Dadurch wird der Momentaufnahmevorgang verhindert.
+
 Fehlercode:  UserErrorRequestDisallowedByPolicy <BR> Fehlermeldung: Auf der VM wurde eine ungültige Richtlinie konfiguriert, die den Momentaufnahmevorgang verhindert.
 
-Erwägen Sie bei einer Azure Policy-Richtlinie, mit der die [Tag-Governance in Ihrer Umgebung verwaltet wird](https://docs.microsoft.com/azure/governance/policy/tutorials/govern-tags), entweder die Änderung der Richtlinie von der [Auswirkung „Deny“](https://docs.microsoft.com/azure/governance/policy/concepts/effects#deny) in die [Auswirkung „Modify“](https://docs.microsoft.com/azure/governance/policy/concepts/effects#modify), oder erstellen Sie die Ressourcengruppe manuell gemäß des [für Azure Backup erforderlichen Benennungsschemas](https://docs.microsoft.com/azure/backup/backup-during-vm-creation#azure-backup-resource-group-for-virtual-machines).
+Erwägen Sie bei einer Azure Policy-Richtlinie, mit der die [Tag-Governance in Ihrer Umgebung verwaltet wird](../governance/policy/tutorials/govern-tags.md), entweder die Änderung der Richtlinie von der [Auswirkung „Deny“](../governance/policy/concepts/effects.md#deny) in die [Auswirkung „Modify“](../governance/policy/concepts/effects.md#modify), oder erstellen Sie die Ressourcengruppe manuell gemäß des [für Azure Backup erforderlichen Benennungsschemas](./backup-during-vm-creation.md#azure-backup-resource-group-for-virtual-machines).
 
 ## <a name="jobs"></a>Aufträge
 
@@ -277,12 +292,12 @@ Normalerweise ist der VM-Agent auf virtuellen Computern, die über den Azure-Kat
 #### <a name="windows-vms"></a>Virtuelle Windows-Computer
 
 * Laden Sie den [Agent-MSI](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)herunter, und installieren Sie ihn. Sie benötigen Administratorberechtigungen, um die Installation ausführen zu können.
-* [Aktualisieren Sie die VM-Eigenschaft](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/install-vm-agent-offline#use-the-provisionguestagent-property-for-classic-vms) auf mit dem klassischen Bereitstellungsmodell erstellten virtuellen Computern, um anzugeben, dass der Agent installiert wurde. Dieser Schritt ist nicht für virtuelle Azure Resource Manager-Computer erforderlich.
+* [Aktualisieren Sie die VM-Eigenschaft](../virtual-machines/troubleshooting/install-vm-agent-offline.md#use-the-provisionguestagent-property-for-classic-vms) auf mit dem klassischen Bereitstellungsmodell erstellten virtuellen Computern, um anzugeben, dass der Agent installiert wurde. Dieser Schritt ist nicht für virtuelle Azure Resource Manager-Computer erforderlich.
 
 #### <a name="linux-vms"></a>Virtuelle Linux-Computer
 
 * Installieren Sie die neueste Version des Agents über das Repository der Distribution. Ausführliche Informationen zum Paketnamen finden Sie im [Linux-Agent-Repository](https://github.com/Azure/WALinuxAgent).
-* [Aktualisieren Sie die VM-Eigenschaft](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/install-vm-agent-offline#use-the-provisionguestagent-property-for-classic-vms) auf mit dem klassischen Bereitstellungsmodell erstellten VMs, und stellen Sie sicher, dass der Agent installiert ist. Dieser Schritt ist nicht für virtuelle Azure Resource Manager-Computer erforderlich.
+* [Aktualisieren Sie die VM-Eigenschaft](../virtual-machines/troubleshooting/install-vm-agent-offline.md#use-the-provisionguestagent-property-for-classic-vms) auf mit dem klassischen Bereitstellungsmodell erstellten VMs, und stellen Sie sicher, dass der Agent installiert ist. Dieser Schritt ist nicht für virtuelle Azure Resource Manager-Computer erforderlich.
 
 ### <a name="update-the-vm-agent"></a>Aktualisieren des VM-Agents
 
@@ -292,7 +307,7 @@ Normalerweise ist der VM-Agent auf virtuellen Computern, die über den Azure-Kat
 
 #### <a name="linux-vms"></a>Virtuelle Linux-Computer
 
-* Aktualisieren Sie den Agent des virtuellen Linux-Computers gemäß den Anweisungen im Artikel [Aktualisieren des Azure Linux-Agents](../virtual-machines/linux/update-agent.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+* Aktualisieren Sie den Agent des virtuellen Linux-Computers gemäß den Anweisungen im Artikel [Aktualisieren des Azure Linux-Agents](../virtual-machines/extensions/update-linux-agent.md?toc=/azure/virtual-machines/linux/toc.json).
 
     > [!NOTE]
     > Verwenden Sie zum Aktualisieren des Agents immer das Repository der Distribution.
@@ -312,7 +327,7 @@ Bei der VM-Sicherung werden Momentaufnahmenbefehle an den zugrunde liegenden Spe
 
 * **Virtuelle Computer mit konfigurierter SQL Server-Sicherung können Momentaufnahmeaufgaben verzögern**. Standardmäßig wird bei der Sicherung virtueller Computer eine vollständige VSS-Sicherung auf virtuellen Windows-Computern erstellt. Bei virtuellen Computern mit SQL Server und einer konfigurierten SQL Server-Sicherung kann es zu Verzögerungen bei Momentaufnahmen kommen. Wenn Verzögerungen bei Momentaufnahmen Sicherungsfehler verursachen, legen Sie den folgenden Registrierungsschlüssel fest:
 
-   ```text
+   ```console
    [HKEY_LOCAL_MACHINE\SOFTWARE\MICROSOFT\BCDRAGENT]
    "USEVSSCOPYBACKUP"="TRUE"
    ```
@@ -326,5 +341,5 @@ Bei der VM-Sicherung werden Momentaufnahmenbefehle an den zugrunde liegenden Spe
 Für die VM-Sicherung mithilfe von IaaS muss auf dem Gastsystem DHCP aktiviert sein. Wenn Sie eine statische private IP-Adresse benötigen, konfigurieren Sie diese im Azure-Portal oder mithilfe von PowerShell. Stellen Sie sicher, dass die DHCP-Option auf dem virtuellen Computer aktiviert ist.
 Weitere Informationen zum Einrichten einer statischen IP-Adresse mithilfe von PowerShell finden Sie unter:
 
-* [Hinzufügen einer statischen internen IP-Adresse zu einem vorhandenen virtuellen Computer](https://docs.microsoft.com/powershell/module/az.network/set-aznetworkinterfaceipconfig?view=azps-3.5.0#description)
+* [Hinzufügen einer statischen internen IP-Adresse zu einem vorhandenen virtuellen Computer](/powershell/module/az.network/set-aznetworkinterfaceipconfig#description)
 * [Ändern der Zuordnungsmethode für eine private IP-Adresse, die einer Netzwerkschnittstelle zugewiesen ist](../virtual-network/virtual-networks-static-private-ip-arm-ps.md#change-the-allocation-method-for-a-private-ip-address-assigned-to-a-network-interface)

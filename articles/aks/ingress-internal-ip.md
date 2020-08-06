@@ -4,13 +4,13 @@ titleSuffix: Azure Kubernetes Service
 description: Erfahren Sie, wie Sie einen NGINX-Eingangscontroller für ein internes privates Netzwerk in einem Azure Kubernetes Service-Cluster (AKS) installieren und konfigurieren.
 services: container-service
 ms.topic: article
-ms.date: 07/02/2020
-ms.openlocfilehash: eecf34c6ad622c374e6f43670972279e297662a9
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.date: 07/21/2020
+ms.openlocfilehash: a20ef3155e41a438aed7cea7e7d9814b3add4d14
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86251585"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87056968"
 ---
 # <a name="create-an-ingress-controller-to-an-internal-virtual-network-in-azure-kubernetes-service-aks"></a>Erstellen eines Eingangscontrollers für ein internes virtuelles Netzwerk in Azure Kubernetes Service (AKS)
 
@@ -35,7 +35,7 @@ Für den Artikel wird außerdem mindestens Version 2.0.64 der Azure-Befehlszeile
 
 Standardmäßig wird ein NGINX-Eingangscontroller mit Zuweisung einer dynamischen öffentlichen IP-Adresse erstellt. Eine verbreitete Konfigurationsanforderung stellt die Verwendung eines internen privaten Netzwerks und einer IP-Adresse dar. Dieser Ansatz ermöglicht die Beschränkung des Zugriffs auf Ihre Dienste auf interne Benutzer, sodass kein externer Zugriff möglich ist.
 
-Erstellen Sie eine Datei mit dem Namen *internal-ingress.yaml* anhand der folgenden Beispielmanifestdatei. In diesem Beispiel wird *10.240.0.42* der Ressource *loadBalancerIP* zugewiesen. Geben Sie eine eigene interne IP-Adresse für die Verwendung für den Eingangscontroller an. Stellen Sie sicher, dass diese IP-Adresse nicht bereits in Ihrem virtuellen Netzwerk verwendet wird.
+Erstellen Sie eine Datei mit dem Namen *internal-ingress.yaml* anhand der folgenden Beispielmanifestdatei. In diesem Beispiel wird *10.240.0.42* der Ressource *loadBalancerIP* zugewiesen. Geben Sie eine eigene interne IP-Adresse für die Verwendung für den Eingangscontroller an. Stellen Sie sicher, dass diese IP-Adresse nicht bereits in Ihrem virtuellen Netzwerk verwendet wird. Wenn Sie außerdem ein vorhandenes virtuelles Netzwerk und Subnetz verwenden, müssen Sie Ihren AKS-Cluster mit den richtigen Berechtigungen zur Verwaltung des virtuellen Netzwerks und Subnetzes konfigurieren. Weitere Informationen finden Sie unter [Verwenden von kubenet-Netzwerken mit Ihren eigenen IP-Adressbereichen in Azure Kubernetes Service (AKS)][aks-configure-kubenet-networking] oder [Konfigurieren von Azure CNI-Netzwerken in Azure Kubernetes Service (AKS)][aks-configure-advanced-networking].
 
 ```yaml
 controller:
@@ -185,7 +185,7 @@ Im folgenden Beispiel wird der Datenverkehr an die Adresse `http://10.240.0.42/`
 Erstellen Sie eine Datei mit dem Namen `hello-world-ingress.yaml`, und fügen Sie den folgenden YAML-Beispielcode ein.
 
 ```yaml
-apiVersion: extensions/v1beta1
+apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
   name: hello-world-ingress
@@ -358,3 +358,5 @@ Sie können außerdem:
 [aks-http-app-routing]: http-application-routing.md
 [aks-ingress-own-tls]: ingress-own-tls.md
 [client-source-ip]: concepts-network.md#ingress-controllers
+[aks-configure-kubenet-networking]: configure-kubenet.md
+[aks-configure-advanced-networking]: configure-azure-cni.md

@@ -6,12 +6,12 @@ ms.service: analysis-services
 ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: chlound
-ms.openlocfilehash: c3c9827814b7d638745761dbb5f3c7d2e581491b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5314c933b01a1fb9c4ea9902a6fbb698c104d195
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85389971"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87025403"
 ---
 # <a name="refresh-with-azure-automation"></a>Aktualisieren mit Azure Automation
 
@@ -64,7 +64,10 @@ Der von Ihnen erstellte Dienstprinzipal muss über Serveradministratorberechtigu
 
     ![Importieren des Runbooks](./media/analysis-services-refresh-azure-automation/8.png)
 
-4. Suchen Sie nach der Datei **Refresh-Model.ps1**, geben Sie einen **Namen** und eine **Beschreibung** an, und klicken Sie dann auf **Erstellen**.
+4. Suchen Sie nach der Datei [Refresh-Model.ps1](#sample-powershell-runbook), geben Sie einen **Namen** und eine **Beschreibung** an, und klicken Sie dann auf **Erstellen**.
+
+    > [!NOTE]
+    > Verwenden Sie das Skript aus dem Abschnitt [PowerShell-Beispielrunbook](#sample-powershell-runbook) am Ende dieses Dokuments, um eine Datei namens „Refresh-Model.ps1“ zu erstellen und auf dem lokalen Computer zu speichern, um sie in Runbook zu importieren.
 
     ![Importieren des Runbooks](./media/analysis-services-refresh-azure-automation/9.png)
 

@@ -1,14 +1,14 @@
 ---
 title: Entwerfen von Workflows für Policy-as-Code
 description: Erfahren Sie, wie Sie Workflows entwerfen, um Ihre Azure Policy-Definitionen als Code bereitzustellen und Ressourcen automatisch zu überprüfen.
-ms.date: 05/20/2020
+ms.date: 07/23/2020
 ms.topic: conceptual
-ms.openlocfilehash: 17964459c6c06e6d7df09da4d3f0813350f209ec
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: 02ff979feac1afb5f1664e6387e0abcde69b60eb
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85970942"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87131496"
 ---
 # <a name="design-policy-as-code-workflows"></a>Entwerfen von Workflows für Policy-as-Code
 
@@ -20,6 +20,24 @@ Je weiter Sie Ihre Cloudgovernance entwickeln, desto mehr werden Sie von der man
 Policy-as-Code ist eine Kombination dieser beiden Ansätze. Im Wesentlichen behalten Sie Ihre Richtliniendefinitionen in der Quellcodeverwaltung und testen und validieren Änderungen, wann immer diese eingeführt werden sollen. Dies sollte jedoch nicht der einzige Aspekt der Einbeziehung von Richtlinien in Infrastructure-as-Code oder DevOps sein.
 
 Der Validierungsschritt sollte auch Teil anderer Continuous Integration- oder Continuous Deployment-Workflows sein. Dies gilt beispielsweise für die Bereitstellung einer Anwendungsumgebung oder einer virtuellen Infrastruktur. Indem die Azure Policy-Validierung bereits frühzeitig im Erstellungs- und Bereitstellungsprozess erfolgt, können Anwendungs- und Betriebsteams eine eventuelle Nichteinhaltung von Richtlinien ermitteln, lange bevor es zu spät ist und die Teams die Anwendung in der Produktion bereitstellen möchten.
+
+## <a name="definitions-and-foundational-information"></a>Definitionen und grundlegende Informationen
+
+Bevor Sie sich mit den Details des Workflows für Policy-as-Code befassen, informieren Sie sich über die folgenden Definitionen und Beispiele:
+
+- [Richtliniendefinition](./definition-structure.md)
+- [Initiativdefinition](./initiative-definition-structure.md)
+
+Die Dateinamen entsprechen Teilen der Richtlinie oder der Initiativdefinition:
+- `policy(set).json` – Die gesamte Definition
+- `policy(set).parameters.json` – Der `properties.parameters`-Teil der Definition
+- `policy.rules.json` – Der `properties.policyRule`-Teil der Definition
+- `policyset.definitions.json` – Der `properties.policyDefinitions`-Teil der Definition
+
+Beispiele für diese Dateiformate sind im [Azure Policy-GitHub-Repository](https://github.com/Azure/azure-policy/) verfügbar:
+
+- Richtliniendefinition: [Tag zu Ressourcen hinzufügen](https://github.com/Azure/azure-policy/tree/master/samples/Tags/add-tag)
+- Initiativdefinition: [Abrechnung von Tags](https://github.com/Azure/azure-policy/tree/master/samples/PolicyInitiatives/multiple-billing-tags)
 
 ## <a name="workflow-overview"></a>Übersicht über Workflow
 

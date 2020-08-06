@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 06/16/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 76edc88f127d7e52514ab72539f7212ac982b5e4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6f8e20f97ae19a33674631e4dee18901d54462b3
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85204471"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87291513"
 ---
 # <a name="set-up-msix-app-attach"></a>Einrichten des MSIX-Features zum Anfügen von Apps
 
@@ -29,7 +29,7 @@ In diesem Thema wird erläutert, wie Sie das MSIX-Feature zum Anfügen von Apps 
 Bevor Sie beginnen, müssen Sie Folgendes für das MSIX-Feature zum Anfügen von Apps konfigurieren:
 
 - Zugriff auf das Windows-Insider-Portal, um die Version von Windows 10 mit Unterstützung für die APIs für das MSIX-Feature zum Anfügen von Apps abzurufen.
-- Eine funktionierende Windows Virtual Desktop-Bereitstellung. Informationen zur Bereitstellung der Windows Virtual Desktop-Release vom Herbst 2019 finden Sie unter [Erstellen eines Mandanten in Windows Virtual Desktop](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md). Informationen zur Bereitstellung der Windows Virtual Desktop-Release vom Frühjahr 2020 finden Sie unter [Erstellen eines Hostpools mit dem Azure-Portal](./create-host-pools-azure-marketplace.md).
+- Eine funktionierende Windows Virtual Desktop-Bereitstellung. Informationen zur Bereitstellung von Windows Virtual Desktop (klassisch) finden Sie unter [Erstellen eines Mandanten in Windows Virtual Desktop](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md). Informationen zum Bereitstellen von Windows Virtual Desktop mit Azure Resource Manager-Integration finden Sie unter [Erstellen eines Hostpools mit dem Azure-Portal](./create-host-pools-azure-marketplace.md).
 - Das MSIX-Pakettool.
 - Eine Netzwerkfreigabe in der Windows Virtual Desktop-Bereitstellung, in der das MSIX-Paket gespeichert wird.
 

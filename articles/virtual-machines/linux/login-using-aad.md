@@ -1,18 +1,18 @@
 ---
 title: Anmelden bei einem virtuellen Linux-Computer mit Azure Active Directory-Anmeldeinformationen
 description: Es wird beschrieben, wie Sie eine Linux-VM erstellen und für die Anmeldung per Azure Active Directory-Authentifizierung konfigurieren.
-author: iainfoulds
+author: SanDeo-MSFT
 ms.service: virtual-machines-linux
-ms.topic: article
+ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 08/29/2019
-ms.author: iainfou
-ms.openlocfilehash: c5275a979cbffe7fb6600978487454ac11cd2002
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.author: sandeo
+ms.openlocfilehash: fe9d4e5a981f9d626bb6086659593e1c3ce06469
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86510428"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87291131"
 ---
 # <a name="preview-log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication"></a>Vorschau: Anmelden bei einem virtuellen Linux-Computer in Azure mit der Azure Active Directory-Authentifizierung
 
@@ -113,7 +113,7 @@ Nachdem die Installation der Erweiterung auf dem virtuellen Computer erfolgreich
 
 ## <a name="configure-role-assignments-for-the-vm"></a>Konfigurieren der Rollenzuweisungen für den virtuellen Computer
 
-Mit der Azure RBAC-Richtlinie wird festgelegt, wer sich bei dem virtuellen Computer anmelden kann. Zur Autorisierung der Anmeldung bei virtuellen Computern werden zwei RBAC-Rollen verwendet:
+Mit der Richtlinie für die rollenbasierte Zugriffssteuerung in Azure (Azure RBAC) wird festgelegt, wer sich bei dem virtuellen Computer anmelden kann. Zur Autorisierung der Anmeldung bei virtuellen Computern werden zwei RBAC-Rollen verwendet:
 
 - **VM-Administratoranmeldung:** Benutzer, denen diese Rolle zugewiesen ist, können sich mit den Berechtigungen eines Windows-Administrators oder Linux-Root-Benutzers bei einem virtuellen Azure-Computer anmelden.
 - **VM-Benutzeranmeldung:** Benutzer, denen diese Rolle zugewiesen ist, können sich mit normalen Benutzerberechtigungen bei einem virtuellen Azure-Computer anmelden.

@@ -11,12 +11,12 @@ author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: ''
 ms.date: 03/03/2020
-ms.openlocfilehash: dbb1d73fc2b19ef701cb08ced24c634bbbadb235
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 983bf848b3be2501b70ba1c0396207e514b7b8d6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86231589"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87024016"
 ---
 # <a name="azure-sql-database-hyperscale-faq"></a>Azure SQL-Datenbank Hyperscale – Häufig gestellte Fragen (FAQs)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -204,7 +204,9 @@ Ja. Die Datenseiten einer bestimmten Tabelle können auf mehrere Datendateien, d
 
 ### <a name="can-i-move-my-existing-databases-in-azure-sql-database-to-the-hyperscale-service-tier"></a>Können vorhandene Datenbanken in Azure SQL-Datenbank zur Dienstebene „Hyperscale“ migriert werden?
 
-Ja. Sie können Ihre vorhandenen Datenbanken in Azure SQL-Datenbank zu Hyperscale migrieren. Dies erfolgt im Rahmen einer unidirektionalen Migration. Datenbanken können nicht von Hyperscale zu einer anderen Dienstebene migriert werden. Für Proof of Concepts (POCs) wird empfohlen, eine Kopie Ihrer Datenbank zu erstellen und die Kopie zu Hyperscale zu migrieren.
+Ja. Sie können Ihre vorhandenen Datenbanken in Azure SQL-Datenbank zu Hyperscale migrieren. Dies erfolgt im Rahmen einer unidirektionalen Migration. Datenbanken können nicht von Hyperscale zu einer anderen Dienstebene migriert werden. Für Proof of Concepts (POCs) wird empfohlen, eine Kopie Ihrer Datenbank zu erstellen und die Kopie zu Hyperscale zu migrieren. 
+
+Die Zeit zum Verschieben einer vorhandenen Datenbank zu Hyperscale umfasst die Zeit zum Kopieren der Daten und die Zeit zum Wiedergeben der Änderungen, die beim Kopieren von Daten in der Quelldatenbank vorgenommen wurden. Die Zeit für das Kopieren der Daten verhält sich proportional zur Datenmenge. Die Zeit für die Wiedergabe von Änderungen ist kürzer, wenn die Verschiebung während geringer Schreibaktivitäten erfolgt.
   
 ### <a name="can-i-move-my-hyperscale-databases-to-other-service-tiers"></a>Kann ich meine Hyperscale-Datenbanken zu anderen Dienstebenen migrieren?
 

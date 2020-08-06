@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/06/2019
 ms.author: alsin
-ms.openlocfilehash: 06cb3fe5d551ddfc95fcbd37cd9620adebd825c5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3b074bb1d439a6d20ac476f4e10b6a26b7107be8
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "70883933"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284709"
 ---
 # <a name="use-serial-console-to-access-grub-and-single-user-mode"></a>Verwenden der seriellen Konsole für den Zugriff auf den GRUB- und den Einzelbenutzermodus
 Der GRand Unified Bootloader (GRUB) ist wahrscheinlich das Erste, was Ihnen beim Starten eines virtuellen Computers angezeigt wird. Weil GRUB vor dem Start des Betriebssystems angezeigt wird, ist ein Zugriff über SSH nicht möglich. In GRUB können Sie unter anderem Ihre Startkonfiguration so ändern, dass das System im Einzelbenutzermodus gestartet wird.
@@ -37,7 +37,7 @@ Damit Sie in den Einzelbenutzermodus wechseln können, öffnen Sie GRUB beim Sta
 ## <a name="general-grub-access"></a>Allgemeiner GRUB-Zugriff
 Um auf GRUB zuzugreifen, starten Sie den virtuellen Computer neu, während der Bereich der seriellen Konsole geöffnet ist. Für einige Distributionen ist zum Anzeigen von GRUB eine Tastatureingabe erforderlich, während andere Distributionen GRUB automatisch einige Sekunden lang anzeigen, damit das Zeitlimit durch Benutzereingaben über die Tastatur abgebrochen werden kann.
 
-Damit Sie auf den Einzelbenutzermodus zugreifen können, müssen Sie sicherstellen, dass GRUB auf Ihrer VM aktiviert ist. Je nach Distribution müssen Sie möglicherweise einige Einrichtungsschritte durchführen, um sicherzustellen, dass GRUB aktiviert ist. Distributionsspezifische Informationen finden Sie im nächsten Abschnitt und auf unserer Seite zum [Support für Linux in Azure](https://blogs.msdn.microsoft.com/linuxonazure/2018/10/23/why-proactively-ensuring-you-have-access-to-grub-and-sysrq-in-your-linux-vm-could-save-you-lots-of-down-time/).
+Damit Sie auf den Einzelbenutzermodus zugreifen können, müssen Sie sicherstellen, dass GRUB auf Ihrer VM aktiviert ist. Je nach Distribution müssen Sie möglicherweise einige Einrichtungsschritte durchführen, um sicherzustellen, dass GRUB aktiviert ist. Distributionsspezifische Informationen finden Sie im nächsten Abschnitt.
 
 ### <a name="restart-your-vm-to-access-grub-in-serial-console"></a>Neustarten der VM zum Zugreifen auf GRUB in der seriellen Konsole
 Sie können Ihre VM in der seriellen Konsole neu starten, indem Sie auf die Schaltfläche **Neu starten** zeigen und dann **VM neu starten** auswählen. Am unteren Rand des Bereichs wird eine Benachrichtigung über den Neustart angezeigt.
@@ -113,7 +113,7 @@ Wenn Sie GRUB und Stammzugriff mit den vorangehenden Anweisungen eingerichtet ha
 
    Sie werden zur Eingabe des Administratorkennworts aufgefordert, bevor Sie in den Einzelbenutzermodus wechseln können. Dieses Kennwort ist das Kennwort, das Sie in den vorherigen Anweisungen erstellt haben.
 
-    ![](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-rhel-enter-emergency-shell.gif)
+    ![Animiertes Bild, das eine Befehlszeilenschnittstelle zeigt. Der Benutzer wählt einen Server aus, sucht das Ende der Kernelzeile und gibt dann den angegebenen Text ein.](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-rhel-enter-emergency-shell.gif)
 
 ### <a name="enter-single-user-mode-without-root-account-enabled-in-rhel"></a>Aktivieren des Einzelbenutzermodus ohne aktiviertes Stammkonto in RHEL
 Wenn Sie den Stammbenutzer nicht anhand der vorherigen Anweisungen aktiviert haben, können Sie das Stammkennwort trotzdem zurücksetzen, indem Sie die folgenden Schritte ausführen:
@@ -137,7 +137,7 @@ Wenn Sie den Stammbenutzer nicht anhand der vorherigen Anweisungen aktiviert hab
 1. Sie befinden sich jetzt im Stammverzeichnis. Sie können Ihr Stammkennwort durch Eingabe von `passwd` zurücksetzen und anschließend mit den obigen Anweisungen in den Einzelbenutzermodus wechseln. 
 1. Geben Sie zum Schluss `reboot -f` ein, um einen Neustart durchzuführen.
 
-![](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-rhel-emergency-mount-no-root.gif)
+![Animiertes Bild, das eine Befehlszeilenschnittstelle zeigt. Der Benutzer wählt einen Server aus, lokalisiert das Ende der Kernelzeile und gibt die angegebenen Befehle ein.](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-rhel-emergency-mount-no-root.gif)
 
 > [!NOTE]
 > Wenn Sie den obigen Anweisungen folgen, gelangen Sie in die Notfallshell, sodass Sie auch Aufgaben wie das Bearbeiten von `fstab` ausführen können. Es wird jedoch normalerweise empfohlen, das Stammkennwort zurückzusetzen und für den Wechsel in den Einzelbenutzermodus zu verwenden.
@@ -241,7 +241,7 @@ Befolgen Sie die obigen Anweisungen für RHEL, um den Einzelbenutzermodus in Ora
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zur seriellen Konsole:
 * [Dokumentation zur seriellen Konsole für Linux](serial-console-linux.md)
-* [Verwenden der seriellen Konsole zum Aktivieren von GRUB in verschiedenen Distributionen](https://blogs.msdn.microsoft.com/linuxonazure/2018/10/23/why-proactively-ensuring-you-have-access-to-grub-and-sysrq-in-your-linux-vm-could-save-you-lots-of-down-time/)
+* [Verwenden der seriellen Konsole zum Aktivieren von GRUB in verschiedenen Distributionen](http://linuxonazure.azurewebsites.net/why-proactively-ensuring-you-have-access-to-grub-and-sysrq-in-your-linux-vm-could-save-you-lots-of-down-time/)
 * [Verwenden der seriellen Konsole für NMI- und SysRq-Aufrufe](serial-console-nmi-sysrq.md)
 * [Serielle Konsole für Windows-VMs](serial-console-windows.md)
 * [Startdiagnose](boot-diagnostics.md)

@@ -3,12 +3,12 @@ title: Fragen zur Ermittlung, Bewertung und Abhängigkeitsanalyse in Azure Migra
 description: Erhalten Sie Antworten auf häufig gestellte Fragen zur Ermittlung, Bewertung und Abhängigkeitsanalyse in Azure Migrate.
 ms.topic: conceptual
 ms.date: 06/09/2020
-ms.openlocfilehash: 7b26d4442f9a84375205e7778ae037b565f53438
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: e2aa0f5c2dae33cd995b30d84e7406da9b501e8f
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86118833"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87385720"
 ---
 # <a name="discovery-assessment-and-dependency-analysis---common-questions"></a>Häufig gestellte Fragen zur Ermittlung, Bewertung und Abhängigkeitsanalyse
 
@@ -113,7 +113,7 @@ Bei importbasierten Azure VM-Bewertungen handelt es sich um Bewertungen, die mit
 
 ## <a name="why-is-the-suggested-migration-tool-in-import-based-avs-assessment-marked-as-unknown"></a>Warum wird das vorgeschlagene Migrationstool in der importbasierten AVS-Bewertung als unbekannt markiert?
 
-Für Computer, die über eine CSV-Datei importiert wurden, ist das Standardmigrationstool in einer AVS-Bewertung unbekannt. Für VMware-Computer empfiehlt sich jedoch die Verwendung der VMware HCX-Lösung (Hybrid Cloud Extension). [Weitere Informationen](../azure-vmware/hybrid-cloud-extension-installation.md).
+Für Computer, die über eine CSV-Datei importiert wurden, ist das Standardmigrationstool in einer AVS-Bewertung unbekannt. Für VMware-Computer empfiehlt sich jedoch die Verwendung der VMware HCX-Lösung (Hybrid Cloud Extension). [Weitere Informationen](../azure-vmware/hybrid-cloud-extension-installation.md).
 
 
 ## <a name="what-is-dependency-visualization"></a>Was ist die Visualisierung von Abhängigkeiten?

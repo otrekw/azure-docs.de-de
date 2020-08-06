@@ -5,15 +5,15 @@ author: bwren
 services: cosmos-db
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 05/20/2020
+ms.date: 07/22/2020
 ms.author: bwren
 ms.custom: subject-monitoring
-ms.openlocfilehash: cd100fca074e63c56cd6a19843cc68e1a1ddf214
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 9c2a87f3d70d3873771b3a59114b424efffe4fb9
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85850284"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87130187"
 ---
 # <a name="monitoring-azure-cosmos-db"></a>Überwachen von Azure Cosmos DB
 
@@ -23,7 +23,7 @@ Sie können Ihre Daten mit clientseitigen und serverseitigen Metriken überwache
 
 * **Überwachen über das Azure Cosmos DB-Portal:** Sie können die Überwachung mit den Metriken durchführen, die über die Registerkarte **Metriken** im Azure Cosmos-Konto verfügbar sind. Die Metriken auf dieser Registerkarte sind unter anderem Durchsatz, Speicher, Verfügbarkeit, Latenz, Konsistenz und Metriken auf Systemebene. Standardmäßig haben diese Metriken eine Beibehaltungsdauer von 7 Tagen. Weitere Informationen finden Sie im Abschnitt [Von Azure Cosmos DB gesammelte Überwachungsdaten](#monitoring-from-azure-cosmos-db) dieses Artikels.
 
-* **Überwachung mit Metriken in Azure Monitor:** Sie können die Metriken Ihres Azure Cosmos-Kontos überwachen und Dashboards über das Azure Monitor-Menü erstellen. Azure Monitor sammelt die Azure Cosmos DB-Metriken standardmäßig, Sie müssen also nichts explizit konfigurieren. Dieses Metriken werden mit einer Granularität von einer Minute erfasst. Die Granularität kann allerdings basierend auf den von Ihnen ausgewählten Metriken variieren. Standardmäßig haben diese Metriken eine Beibehaltungsdauer von 30 Tagen. Die meisten Metriken, die über die vorherigen Optionen verfügbar sind, sind auch in diesen Metriken verfügbar. Weitere Informationen finden Sie im Abschnitt [Analysieren von Metrikdaten](#analyze-metric-data) in diesem Artikel.
+* **Überwachung mit Metriken in Azure Monitor:** Sie können die Metriken Ihres Azure Cosmos-Kontos überwachen und Dashboards über das Azure Monitor-Menü erstellen. Azure Monitor sammelt die Azure Cosmos DB-Metriken standardmäßig, Sie müssen also nichts explizit konfigurieren. Dieses Metriken werden mit einer Granularität von einer Minute erfasst. Die Granularität kann allerdings basierend auf den von Ihnen ausgewählten Metriken variieren. Standardmäßig haben diese Metriken eine Beibehaltungsdauer von 30 Tagen. Die meisten Metriken, die über die vorherigen Optionen verfügbar sind, sind auch in diesen Metriken verfügbar. Bei den Dimensionswerten für die Metriken, wie den Containernamen, wird keine Groß-/Kleinschreibung berücksichtigt. Daher müssen Sie bei Zeichenfolgenvergleichen für diese Dimensionswerte Vergleiche verwenden, bei denen keine Groß-/Kleinschreibung berücksichtigt wird. Weitere Informationen finden Sie im Abschnitt [Analysieren von Metrikdaten](#analyze-metric-data) in diesem Artikel.
 
 * **Überwachen mit Diagnoseprotokollen in Azure Monitor:** Sie können die Protokolle Ihres Azure Cosmos-Kontos überwachen und Dashboards über das Azure Monitor-Menü erstellen. Telemetriedaten wie Ereignisse und Ablaufverfolgungsdaten, die mit einer zweiten Granularität erfolgen, werden als Protokolle gespeichert. Wenn der Durchsatz eines Containers sich beispielsweise ändert und sich die Eigenschaften eines Cosmos-Kontos ändern, werden diese Ereignisse in Protokollen erfasst. Sie können diese Protokolle analysieren, indem Sie Abfragen für die gesammelten Daten ausführen. Weitere Informationen finden Sie im Abschnitt [Analysieren von Protokolldaten](#analyze-log-data) in diesem Artikel.
 

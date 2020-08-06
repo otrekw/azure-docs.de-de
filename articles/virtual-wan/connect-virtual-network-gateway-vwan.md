@@ -5,14 +5,14 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: how-to
-ms.date: 03/19/2020
+ms.date: 07/28/2020
 ms.author: cherylmc
-ms.openlocfilehash: ca5880f76ffd3a85d4b3cec8e01f58ae5c024a58
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7e26b00a78d2ce533aa4d16e88649e7e73e3af91
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84749693"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387199"
 ---
 # <a name="connect-a-vpn-gateway-virtual-network-gateway-to-virtual-wan"></a>Herstellen einer Verbindung zwischen einem VPN Gateway (VNet-Gateway) und Virtual WAN
 
@@ -33,9 +33,9 @@ Virtuelles Azure-Netzwerk
 
 * Erstellen Sie ein virtuelles Netzwerk ohne VNet-Gateways. Stellen Sie sicher, dass sich kein Subnetz Ihres lokalen Netzwerks mit den virtuellen Netzwerken für die Verbindungsherstellung überschneidet. Informationen zum Erstellen eines virtuellen Netzwerks im Azure-Portal finden Sie in der [Schnellstartanleitung](../virtual-network/quick-create-portal.md).
 
-## <a name="1-create-an-azure-virtual-network-gateway"></a><a name="vnetgw"></a>1. Erstellen eines Azure VNet-Gateways
+## <a name="1-create-a-vpn-gateway-virtual-network-gateway"></a><a name="vnetgw"></a>1. Erstellen eines virtuellen Netzwerk-Gateways für VPN Gateways
 
-Erstellen Sie VPN Gateway VNet-Gateway für Ihr virtuelles Netzwerk im Aktiv/Aktiv-Modus für das virtuelle Netzwerk. Beim Erstellen des Gateways können Sie entweder vorhandene öffentliche IP-Adressen für die beiden Instanzen des Gateways verwenden oder neue öffentliche IP-Adressen erstellen. Diese öffentlichen IP-Adressen werden beim Einrichten der Virtual WAN-Standorte verwendet. Weitere Informationen zum Aktiv/Aktiv-Modus finden Sie unter [Konfigurieren von Aktiv/Aktiv-Verbindungen](../vpn-gateway/vpn-gateway-activeactive-rm-powershell.md#aagateway).
+Erstellen Sie ein virtuellen Netzwerk-Gateway für **VPN Gateways** im Aktiv/Aktiv-Modus für das virtuelle Netzwerk. Beim Erstellen des Gateways können Sie entweder vorhandene öffentliche IP-Adressen für die beiden Instanzen des Gateways verwenden oder neue öffentliche IP-Adressen erstellen. Diese öffentlichen IP-Adressen werden beim Einrichten der Virtual WAN-Standorte verwendet. Weitere Informationen zu Aktiv/Aktiv-VPN-Gateways und Konfigurationsschritten finden Sie unter [Konfigurieren von Aktiv/Aktiv-VPN-Gateways](../vpn-gateway/vpn-gateway-activeactive-rm-powershell.md#aagateway).
 
 ### <a name="active-active-mode-setting"></a><a name="active-active"></a>Aktiv/Aktiv-Moduseinstellung
 

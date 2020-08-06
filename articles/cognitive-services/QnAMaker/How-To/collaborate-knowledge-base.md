@@ -2,13 +2,13 @@
 title: 'Zusammenarbeit an der Wissensdatenbank: QnA Maker'
 description: QnA Maker ermöglicht mehreren Personen, an einer Wissensdatenbank zusammenzuarbeiten. Dieses Feature wird im Rahmen der rollenbasierten Zugriffssteuerung in Azure bereitgestellt.
 ms.topic: conceptual
-ms.date: 03/17/2020
-ms.openlocfilehash: 1a2908b4b65017f427682627ce5d83b186956a58
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.date: 07/13/2020
+ms.openlocfilehash: 4c550a36dd045873df4bc4a382e1c884466f95ad
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83650786"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87054059"
 ---
 # <a name="collaboration-with-authors-and-editors"></a>Zusammenarbeit mit Autoren und Redakteuren
 
@@ -30,15 +30,15 @@ In den folgenden Schritten wird zwar die Rolle „Projektmitarbeiter“ verwende
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an, und navigieren Sie zu Ihrer QnA Maker-Ressource.
 
-    ![QnA Maker-Ressourcenliste](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-resource-list.PNG)
+    ![QnA Maker-Ressourcenliste](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-resource-list.png)
 
 1. Öffnen Sie die Registerkarte **Zugriffssteuerung (IAM)** .
 
-    ![IAM in QnA Maker](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-iam.PNG)
+    ![IAM in QnA Maker](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-iam.png)
 
 1. Wählen Sie **Hinzufügen**.
 
-    ![Hinzufügen von IAM in QnA Maker](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-iam-add.PNG)
+    ![Hinzufügen von IAM in QnA Maker](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-iam-add.png)
 
 1. Wählen Sie eine Rolle aus der folgenden Liste aus:
 
@@ -46,17 +46,23 @@ In den folgenden Schritten wird zwar die Rolle „Projektmitarbeiter“ verwende
     |--|
     |Besitzer|
     |Mitwirkender|
-    |QnA Maker-Leseberechtigter|
-    |QnA Maker-Editor|
+    |Cognitive Services QnA Maker-Leseberechtigter|
+    |Cognitive Services QnA Maker-Editor|
     |Cognitive Services-Benutzer|
 
-    ![Hinzufügen einer IAM-Rolle in QnA Maker](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-iam-add-role.PNG)
+    :::image type="content" source="../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-add-role-iam.png" alt-text="Hinzufügen einer IAM-Rolle in QnA Maker.":::
 
 1. Geben Sie die E-Mail-Adresse des Benutzers ein, und klicken Sie auf **Speichern**.
 
-    ![Hinzufügen einer E-Mail-Adresse für IAM in QnA Maker](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-iam-add-email.PNG)
+    ![Hinzufügen einer E-Mail-Adresse für IAM in QnA Maker](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-iam-add-email.png)
+
+### <a name="view-qna-maker-knowledge-bases"></a>Anzeigen von QnA Maker-Wissensdatenbanken
 
 Wenn sich die Person, für die Sie Ihren QnA Maker-Dienst freigegeben haben, beim [QnA Maker-Portal](https://qnamaker.ai) anmeldet, werden ihr basierend auf ihrer Rolle alle Wissensdatenbanken in diesem Dienst angezeigt.
+
+Wenn sie eine Wissensdatenbank auswählen, wird ihre aktuelle Rolle auf dieser QnA Maker-Ressource neben dem Namen der Wissensdatenbank angezeigt.
+
+:::image type="content" source="../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-knowledge-base-role-name.png" alt-text="Screenshot der Wissensdatenbank im Bearbeitungsmodus mit Rollennamen in Klammern neben dem Namen der Wissensdatenbank in der linken oberen Ecke der Webseite.":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 
