@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie mithilfe von Java Funktionen entwickeln könn
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.custom: devx-track-java
-ms.openlocfilehash: 121a3263a28da5e17b1ab918529aa9f285089687
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: ffdb6ee9747c76e7f4a6ff3e2f7b65ae96f53fb4
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372415"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87810087"
 ---
 # <a name="azure-functions-java-developer-guide"></a>Java-Entwicklerhandbuch für Azure Functions
 
@@ -19,7 +19,7 @@ Wenn Sie noch nicht mit Azure Functions vertraut sind, sollten Sie als Java-Entw
 
 | Erste Schritte | Konzepte| 
 | -- | -- |  
-| <ul><li>[Java-Funktion unter Verwendung von Visual Studio Code](/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-java)</li><li>[Java-/Maven-Funktion mit Terminal/Eingabeaufforderung](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-java)</li><li>[Java-Funktion unter Verwendung von Gradle](functions-create-first-java-gradle.md)</li><li>[Java-Funktion unter Verwendung von Eclipse](functions-create-maven-eclipse.md)</li><li>[Java-Funktion unter Verwendung von IntelliJ IDEA](functions-create-maven-intellij.md)</li></ul> | <ul><li>[Entwicklerhandbuch](functions-reference.md)</li><li>[Hostingoptionen](functions-scale.md)</li><li>[Überlegungen zur &nbsp;Leistung](functions-best-practices.md)</li></ul> |
+| <ul><li>[Java-Funktion unter Verwendung von Visual Studio Code](./functions-create-first-function-vs-code.md?pivots=programming-language-java)</li><li>[Java-/Maven-Funktion mit Terminal/Eingabeaufforderung](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-java)</li><li>[Java-Funktion unter Verwendung von Gradle](functions-create-first-java-gradle.md)</li><li>[Java-Funktion unter Verwendung von Eclipse](functions-create-maven-eclipse.md)</li><li>[Java-Funktion unter Verwendung von IntelliJ IDEA](functions-create-maven-intellij.md)</li></ul> | <ul><li>[Entwicklerhandbuch](functions-reference.md)</li><li>[Hostingoptionen](functions-scale.md)</li><li>[Überlegungen zur &nbsp;Leistung](functions-best-practices.md)</li></ul> |
 
 ## <a name="java-function-basics"></a>Grundlagen zu Java-Funktionen
 

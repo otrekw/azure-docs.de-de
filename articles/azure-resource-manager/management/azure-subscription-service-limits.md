@@ -4,12 +4,12 @@ description: Stellt eine Liste allgemeiner Azure-Abonnements und Diensteinschrä
 ms.topic: conceptual
 author: davidsmatlak
 ms.date: 06/04/2020
-ms.openlocfilehash: ffe0703fbbea75b221dfc6fd16f334dcf58e8ab3
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 79aaa594a708fe775a2cdcc6e15b7c7f880f9f50
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86515865"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87810478"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen
 
@@ -375,11 +375,11 @@ Weitere Informationen zu Grenzwerten für Azure Files finden Sie unter [Skalierb
 
 [!INCLUDE [azure-storage-limits-vm-disks](../../../includes/azure-storage-limits-vm-disks.md)]
 
-Weitere Informationen finden Sie unter [Größen virtueller Computer](../../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Weitere Informationen finden Sie unter [Größen virtueller Computer](../../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 #### <a name="disk-encryption-sets"></a>Datenträgerverschlüsselungssätze
 
-Pro Region und Abonnement können maximal 50 Datenträgerverschlüsselungssätze erstellt werden. Weitere Informationen finden Sie in der Dokumentation zur Verschlüsselung für [Linux](/azure/virtual-machines/linux/disk-encryption#restrictions)- oder [Windows](/azure/virtual-machines/windows/disk-encryption#restrictions)-VMs. Wenn Sie das Kontingent erhöhen müssen, wenden Sie sich an den Azure-Support.
+Pro Region und Abonnement können maximal 50 Datenträgerverschlüsselungssätze erstellt werden. Weitere Informationen finden Sie in der Dokumentation zur Verschlüsselung für [Linux](../../virtual-machines/linux/disk-encryption.md#restrictions)- oder [Windows](../../virtual-machines/windows/disk-encryption.md#restrictions)-VMs. Wenn Sie das Kontingent erhöhen müssen, wenden Sie sich an den Azure-Support.
 
 ### <a name="managed-virtual-machine-disks"></a>Verwaltete VM-Datenträger
 
@@ -426,6 +426,6 @@ Pro Abonnement gibt es Einschränkungen hinsichtlich der Bereitstellung von Ress
 ## <a name="see-also"></a>Weitere Informationen
 
 * [Understand Azure limits and increases](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) (Grundlegendes zu Grenzwerten und Erhöhungen für Azure)
-* [Virtual machine and cloud service sizes for Azure](../../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) (Größen virtueller Computer und Clouddienste für Azure)
+* [Virtual machine and cloud service sizes for Azure](../../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) (Größen virtueller Computer und Clouddienste für Azure)
 * [Sizes for Azure Cloud Services](../../cloud-services/cloud-services-sizes-specs.md) (Größen für Azure Cloud Services)
 * [Benennungsregeln und -einschränkungen für Azure-Ressourcen](resource-name-rules.md)

@@ -6,12 +6,13 @@ ms.topic: conceptual
 ms.date: 07/09/2020
 ms.reviewer: andalmia
 ms.author: banders
-ms.openlocfilehash: 20175e252d009620585e20cf76cdb634549b4f1d
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 1b4c16dd276f9f564963fdefe8d16dbc92c1303d
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323909"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87810444"
 ---
 # <a name="programmatically-create-azure-subscriptions-preview"></a>Programmgesteuertes Erstellen von Azure-Abonnements (Vorschau)
 
@@ -156,7 +157,7 @@ POST https://management.azure.com/providers/Microsoft.Billing/enrollmentAccounts
 | `offerType`   | Ja      | String | Das Angebot des Abonnements. Die beiden Optionen für EA sind [MS-AZR-0017P](https://azure.microsoft.com/pricing/enterprise-agreement/) (Verwendung in der Produktion) und [MS-AZR-0148P](https://azure.microsoft.com/offers/ms-azr-0148p/) (Dev/Test, muss [mit dem EA-Portal aktiviert werden](https://ea.azure.com/helpdocs/DevOrTestOffer)).                |
 | `owners`      | Nein       | String | Die Objekt-ID eines Benutzers, den Sie als RBAC Besitzer für das Abonnement hinzufügen möchten, wenn es erstellt wird.  |
 
-In der Antwort wird als Teil des Headers `Location` eine URL zurückgegeben, über die Sie den Status des Erstellens des Abonnements abfragen können. Nach Abschluss der Abonnementerstellung wird bei einem GET-Vorgang für die URL vom Typ `Location` ein Objekt vom Typ `subscriptionLink` zurückgegeben, das die Abonnement-ID enthält. Ausführlichere Informationen finden Sie in der [Dokumentation zur Abonnement-API](https://docs.microsoft.com/rest/api/subscription/).
+In der Antwort wird als Teil des Headers `Location` eine URL zurückgegeben, über die Sie den Status des Erstellens des Abonnements abfragen können. Nach Abschluss der Abonnementerstellung wird bei einem GET-Vorgang für die URL vom Typ `Location` ein Objekt vom Typ `subscriptionLink` zurückgegeben, das die Abonnement-ID enthält. Ausführlichere Informationen finden Sie in der [Dokumentation zur Abonnement-API](/rest/api/subscription/).
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 

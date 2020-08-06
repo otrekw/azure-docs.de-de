@@ -3,12 +3,12 @@ title: MABS & System Center DPM-Unterstützungsmatrix
 description: Dieser Artikel enthält eine Zusammenfassung der Unterstützung für Azure Backup bei Verwendung von Microsoft Azure Backup Server (MABS) oder System Center DPM zum Sichern von lokalen Ressourcen und Ressourcen auf virtuellen Azure-Computern.
 ms.date: 02/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: 938fb751de90112dc206779a36b88f95f1d7d508
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: a97c37accd1275fa99437862a8d939df31360e87
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289462"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87810427"
 ---
 # <a name="support-matrix-for-backup-with-microsoft-azure-backup-server-or-system-center-dpm"></a>Unterstützungsmatrix für die Sicherung mit Microsoft Azure Backup Server oder System Center DPM
 
@@ -24,7 +24,7 @@ MABS basiert auf System Center DPM und bietet ähnliche Funktionen mit einigen U
 
 - Für die Ausführung von MABS ist keine Lizenz für System Center erforderlich.
 - In Azure ist für MABS und für DPM die langfristige Sicherungsspeicherung möglich. Darüber hinaus können Sie mit DPM Daten zur langfristigen Speicherung auf Band sichern. Diese Funktion ist in MABS nicht enthalten.
-- [Sie können einen primären DPM-Server mit einem sekundären DPM-Server sichern.](https://docs.microsoft.com/system-center/dpm/back-up-the-dpm-server?view=sc-dpm-2019) Der sekundäre Server schützt die primäre Serverdatenbank und die auf dem primären Server gespeicherten Datenquellenreplikate. Wenn der primäre Server ausfällt, kann der sekundäre Server die vom primären Server geschützten Workloads weiterhin schützen, bis der primäre Server wieder verfügbar ist.  Diese Funktion ist in MABS nicht enthalten.
+- [Sie können einen primären DPM-Server mit einem sekundären DPM-Server sichern.](/system-center/dpm/back-up-the-dpm-server?view=sc-dpm-2019) Der sekundäre Server schützt die primäre Serverdatenbank und die auf dem primären Server gespeicherten Datenquellenreplikate. Wenn der primäre Server ausfällt, kann der sekundäre Server die vom primären Server geschützten Workloads weiterhin schützen, bis der primäre Server wieder verfügbar ist.  Diese Funktion ist in MABS nicht enthalten.
 
 Sie können MABS über das [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=57520) herunterladen. Es kann lokal oder auf einem virtuellen Azure-Computer ausgeführt werden.
 
