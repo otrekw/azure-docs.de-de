@@ -58,6 +58,10 @@
       href: remote-work-support.md
     - name: FQDN in Netzwerkregeln
       href: fqdn-filtering-network-rules.md
+    - name: Konzepte
+      items:
+        - name: Sicherheitsbaseline
+          href: security-baseline.md
 - name: Anleitungen
   items:
     - name: Bereitstellen mit Azure PowerShell
@@ -88,7 +92,7 @@
       href: firewall-diagnostics.md
 - name: Verweis
   items:
-    - name: Azure CLI
+    - name: Azure-Befehlszeilenschnittstelle
       href: /cli/azure/ext/azure-firewall/network/firewall
     - name: Azure PowerShell
       href: /powershell/module/az.network/new-azfirewall
