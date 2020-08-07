@@ -635,7 +635,7 @@
             - name: Einrichten von Continuous Integration mit Azure Pipelines
               href: ./service-fabric-tutorial-deploy-app-with-cicd-vsts.md
             - name: Bereitstellen von Linux-Anwendungen mithilfe von Jenkins
-              href: service-fabric-cicd-your-linux-applications-with-jenkins.md
+              href: /azure/developer/jenkins/deploy-to-service-fabric-cluster
     - name: Einrichten und Konfigurieren eines Reverseproxys
       items:
         - name: Einrichten und Konfigurieren eines Reverseproxys
