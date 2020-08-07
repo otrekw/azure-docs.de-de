@@ -3,12 +3,12 @@ title: 'CAF-Basisblaupausenbeispiel: Übersicht'
 description: Übersicht und Architektur des Framework für die Cloudeinführung (Cloud Adoption Framework, CAF) für das Basisblaupausenbeispiel für Azure
 ms.date: 04/15/2020
 ms.topic: sample
-ms.openlocfilehash: 3291fdc299652d2b22bff89f5b1dadbdc064e561
-ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
+ms.openlocfilehash: b8bd0015d5f95fc61806197ca21fdaeeb3452700
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82901299"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87852343"
 ---
 # <a name="overview-of-the-microsoft-cloud-adoption-framework-for-azure-foundation-blueprint-sample"></a>Übersicht über das Microsoft Cloud Adoption Framework-Basisblaupausenbeispiel für Azure
 
@@ -35,7 +35,7 @@ Diese Implementierung umfasst mehrere Azure-Dienste, die für die Bereitstellung
   - Erzwingung der sicheren Übertragungsverschlüsselung für das Azure Storage-Konto
   - Ablehnung von Ressourcentypen (werden bei der Bereitstellung ausgewählt)  
 - Initiativen
-  - Aktivieren der Überwachung im Azure Security Center (89 Richtlinien)
+  - Aktivieren der Überwachung in Azure Security Center (über 100 Richtliniendefinitionen)
 
 Für alle diese Elemente werden die bewährten Methoden befolgt, die unter [Azure Architecture Center: Referenzarchitekturen](/azure/architecture/reference-architectures/) veröffentlicht wurden.
 

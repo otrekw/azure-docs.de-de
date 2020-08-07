@@ -7,6 +7,8 @@
 - name: Schnellstarts
   expanded: true
   items:
+    - name: Konfigurieren von NSG-Flowprotokollen mithilfe einer ARM-Vorlage
+      href: quickstart-configure-network-security-group-flow-logs-from-arm-template.md
     - name: Diagnostizieren eines Problems mit dem Filter für VM-Datenverkehr – Portal
       href: diagnose-vm-network-traffic-filtering-problem.md
     - name: Diagnostizieren eines Problems mit dem Filter für VM-Datenverkehr – PowerShell
@@ -174,7 +176,7 @@
           href: resource-move.md
 - name: Verweis
   items:
-    - name: Azure CLI
+    - name: Azure-Befehlszeilenschnittstelle
       href: /cli/azure/network/watcher
     - name: Azure PowerShell
       href: /powershell/module/az.network/#network_watcher

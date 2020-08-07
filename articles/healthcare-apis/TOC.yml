@@ -19,7 +19,7 @@
       href: fhir-oss-powershell-quickstart.md
     - name: 'Bereitstellen des FHIR-Servers für Azure: CLI'
       href: fhir-oss-cli-quickstart.md
-    - name: 'Bereitstellen eines IoT-Connectors: Portal'
+    - name: "Bereitstellen von Azure\_IoT-Konnektor für FHIR (Vorschauversion): Portal"
       href: iot-fhir-portal-quickstart.md
 - name: Tutorials
   expanded: false
@@ -86,7 +86,7 @@
       href: enable-diagnostic-logging.md
     - name: 'Abrufen eines Tokens für die Azure-API für FHIR: CLI'
       href: get-healthcare-apis-access-token-cli.md
-    - name: Beheben von Fehlern im IoT-Connector
+    - name: Beheben von Fehlern in Azure IoT-Konnektor für FHIR (Vorschauversion)
       href: iot-troubleshoot-guide.md
 - name: Konzepte
   expanded: false
@@ -97,12 +97,12 @@
       href: azure-ad-hcapi-token-validation.md
     - name: Hinzufügen von Daten zu Überwachungsprotokollen mithilfe benutzerdefinierter HTTP-Header
       href: use-custom-headers.md
-    - name: Funktionsweise des IoT-Connectors
+    - name: Funktionsweise von Azure IoT-Konnektor für FHIR (Vorschauversion)
       expanded: false
       items:
-        - name: Datenfluss des IoT-Connectors
+        - name: Datenfluss in Azure IoT-Konnektor für FHIR (Vorschauversion)
           href: iot-data-flow.md
-        - name: Zuordnungsvorlagen für den IoT-Connector
+        - name: Zuordnungsvorlagen von Azure IoT-Konnektor für FHIR (Vorschauversion)
           href: iot-mapping-templates.md
 - name: Ressourcen
   items:
@@ -114,5 +114,5 @@
       href: partner-ecosystem.md
 - name: Verweis
   items:
-    - name: Azure CLI
+    - name: Azure-Befehlszeilenschnittstelle
       href: /cli/azure/ext/healthcareapis/healthcareapis

@@ -88,7 +88,7 @@
       href: 'https://docs.microsoft.com/samples/browse/?products=azure-cognitive-search&languages=python'
     - name: REST-Beispiele
       href: 'https://docs.microsoft.com/samples/browse/?languages=http&expanded=azure&products=azure-cognitive-search'
-    - name: Integrierte Azure Policy-Aktionen
+    - name: Azure Policy-Integrationen
       displayName: 'samples, policies, definitions'
       href: ./policy-samples.md
 - name: Konzepte
@@ -312,9 +312,15 @@
         - name: Liste der Previewfunktionen
           href: search-api-preview.md
         - name: Entwickeln in .NET
-          href: search-howto-dotnet-sdk.md
+          items:
+            - name: Verwenden von Microsoft.Azure.Search (v10)
+              href: search-howto-dotnet-sdk.md
+            - name: Erste Schritte (v10)
+              href: search-get-started-dotnet-v10.md
         - name: Aktualisieren des SDK
           items:
+            - name: .NET SDK 11.0
+              href: search-dotnet-sdk-migration-version-11.md
             - name: .NET SDK 10.0
               href: search-dotnet-sdk-migration-version-10.md
             - name: .NET SDK 9.0
@@ -349,7 +355,7 @@
           items:
             - name: Sicherheitsfilter
               href: search-security-trimming-for-azure-search.md
-            - name: Filtern nach AAD-Identitäten
+            - name: Filtern nach Benutzeridentitäten
               href: search-security-trimming-for-azure-search-with-aad.md
     - name: Verwalten
       items:
@@ -381,7 +387,7 @@
           href: cognitive-search-common-errors-warnings.md
 - name: Verweis
   items:
-    - name: Azure CLI
+    - name: Azure-Befehlszeilenschnittstelle
       href: /cli/azure/search?view=azure-cli-latest
     - name: Azure PowerShell
       href: /powershell/module/az.search

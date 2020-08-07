@@ -94,7 +94,7 @@
               href: reservations/understand-reserved-instance-usage.md?toc=/azure/cost-management-billing/toc.json
             - name: Nutzungsdaten für Unternehmenskunden
               href: reservations/understand-reserved-instance-usage-ea.md?toc=/azure/cost-management-billing/toc.json
-        - name: Abrechnungsterminologie
+        - name: Abrechnung
           items:
             - name: Nutzungsbedingungen für einzelne Abonnements
               href: understand/understand-usage.md
@@ -108,6 +108,8 @@
               href: manage/mca-understand-pricesheet.md
             - name: "Microsoft\_Partner-Vereinbarung: Rechnungsbedingungen"
               href: understand/mpa-invoice-terms.md
+            - name: Änderungen an Ihrem aktualisierten individuellen Abrechnungskonto
+              href: understand/mosp-new-customer-experience.md
             - name: Abrechnungskonten für Microsoft-Kundenvereinbarung
               href: understand/mca-overview.md
             - name: Abrechnungskonten für Microsoft-Partnervereinbarung

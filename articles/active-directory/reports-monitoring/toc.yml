@@ -23,6 +23,8 @@
       href: tutorial-access-api-with-certificates.md
     - name: Streamen von Protokollen an einen Event Hub
       href: tutorial-azure-monitor-stream-logs-to-event-hub.md
+    - name: Protokollanalyse-Assistent
+      href: tutorial-log-analytics-wizard.md
 - name: Konzepte
   items:
     - name: Planen einer Bereitstellung für Berichterstellung und Überwachung
