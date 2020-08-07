@@ -17,7 +17,7 @@
       items:
         - name: Azure-Portal
           href: event-hubs-create.md
-        - name: Azure CLI
+        - name: Azure-Befehlszeilenschnittstelle
           href: event-hubs-quickstart-cli.md
         - name: Azure PowerShell
           href: event-hubs-quickstart-powershell.md
@@ -75,7 +75,7 @@
     - name: Verarbeiten von Apache Kafka für Event Hubs-Ereignisse mithilfe von Stream Analytics
       href: event-hubs-kafka-stream-analytics.md
     - name: Streamen von Daten an Azure Databricks unter Verwendung von Event Hubs
-      href: ../azure-databricks/databricks-stream-from-eventhubs.md
+      href: /azure/databricks/scenarios/databricks-stream-from-eventhubs
       maintainContext: true
 - name: Beispiele
   items:
