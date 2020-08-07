@@ -63,6 +63,8 @@
           href: security-center-policy-definitions.md
         - name: Verwenden von Empfehlungen zur Verbesserung der Sicherheit
           href: security-center-using-recommendations.md
+        - name: Sicherheitsbaseline
+          href: security-baseline.md
     - name: Bedrohungsschutz und Sicherheitswarnungen
       items:
         - name: Übersicht über Bedrohungsschutz in Security Center

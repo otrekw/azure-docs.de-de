@@ -174,7 +174,7 @@
     - name: Azure Media Player
       items:
         - name: Übersicht über Azure Media Player
-          href: 'https://docs.microsoft.com/en-us/azure/media-services/azure-media-player/azure-media-player-overview'
+          href: ../azure-media-player/azure-media-player-overview.md
     - name: Entwickeln mit v3-APIs
       items:
         - name: Übersicht
@@ -362,7 +362,7 @@
     - name: Verwenden von Media Playern
       items:
         - name: Vollständiges Setup von Azure Media Player
-          href: 'https://docs.microsoft.com/azure/media-services/azure-media-player/azure-media-player-full-setup'
+          href: ../azure-media-player/azure-media-player-full-setup.md
         - name: Verwenden des Video.js-Players
           href: how-to-video-js-player.md
         - name: Verwenden des Shaka-Videoplayers
@@ -373,8 +373,8 @@
       href: 'https://aka.ms/ams-v3-rest-sdk'
       displayName: schema
     - name: REST
-      href: 'https://docs.microsoft.com/rest/api/media/'
-    - name: Azure CLI
+      href: /rest/api/media/
+    - name: Azure-Befehlszeilenschnittstelle
       href: 'https://aka.ms/ams-v3-cli-ref'
     - name: SDKs
       items:
@@ -411,7 +411,7 @@
       href: 'https://aka.ms/ams-v3-rest-sdk'
     - name: SDKs/Tools
       items:
-        - name: Azure CLI
+        - name: Azure-Befehlszeilenschnittstelle
           href: 'https://aka.ms/ams-v3-cli'
         - name: .NET
           href: 'https://aka.ms/ams-v3-dotnet-sdk'

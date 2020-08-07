@@ -79,7 +79,7 @@
 - name: Ressourcen
   items:
     - name: Preise und Einschränkungen
-      href: 'https://go.microsoft.com/fwlink/?linkid=2087258'
+      href: 'https://azure.microsoft.com/en-us/pricing/details/cognitive-services/form-recognizer/'
     - name: UserVoice
       href: 'https://go.microsoft.com/fwlink/?linkid=2090535'
     - name: Stack Overflow
@@ -90,7 +90,7 @@
       href: 'https://go.microsoft.com/fwlink/?linkid=2087185'
     - name: Sprachunterstützung
       href: language-support.md
-    - name: Compliance
+    - name: Kompatibilität
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Verschlüsselung
       href: form-recognizer-encryption-of-data-at-rest.md

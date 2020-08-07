@@ -11,7 +11,7 @@
       href: service-fabric-mesh-quickstart-deploy-container.md
     - name: Erstellen einer Web-App mit Visual Studio
       href: service-fabric-mesh-quickstart-dotnet-core.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: Erstellen und Bereitstellen einer Mesh-App mit Visual Studio
       items:
@@ -51,7 +51,7 @@
       href: service-fabric-mesh-storing-state.md
     - name: Geheimnisse
       href: service-fabric-mesh-secrets-overview.md
-- name: Gewusst-wie-Anleitungen
+- name: Anleitungen
   items:
     - name: Einrichten der Entwicklungsumgebung
       href: service-fabric-mesh-howto-setup-developer-environment-sdk.md
@@ -82,11 +82,9 @@
     - name: Referenz zur Service Fabric Mesh-Befehlszeilenschnittstelle
       href: /cli/azure/ext/mesh
     - name: Ressourcen-REST-APIs im Service Fabric-Client
-      href: '/rest/api/servicefabric/sfclient-index#service-fabric-resource-model'
+      href: /rest/api/servicefabric/sfclient-index#service-fabric-resource-model
     - name: Referenz zur Service Fabric-Befehlszeilenschnittstelle (Maven)
       href: service-fabric-mesh-reference-maven.md
-    - name: Resource Manager-Vorlage
-      href: /azure/templates/microsoft.servicefabricmesh/allversions
 - name: Ressourcen
   items:
     - name: Häufig gestellte Fragen
