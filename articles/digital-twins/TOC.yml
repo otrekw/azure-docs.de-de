@@ -6,7 +6,7 @@
       href: overview.md
     - name: Unterschiede zur vorherigen Version
       href: overview-differences.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: Codieren einer Client-App
       href: tutorial-code.md
@@ -92,6 +92,8 @@
           href: troubleshoot-metrics.md
         - name: Aktivieren von Diagnoseprotokollen
           href: troubleshoot-diagnostics.md
+        - name: Aktivieren von Warnungen
+          href: troubleshoot-alerts.md
         - name: Bekannte Probleme
           href: troubleshoot-known-issues.md
         - name: Problemlösung
