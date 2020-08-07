@@ -30,7 +30,7 @@
       items:
         - name: Azure-Portal
           href: tutorial-design-database-using-portal.md
-        - name: Azure CLI
+        - name: Azure-Befehlszeilenschnittstelle
           href: tutorial-design-database-cli.md
         - name: Azure PowerShell
           href: tutorial-design-database-using-powershell.md
@@ -126,13 +126,13 @@
       items:
         - name: Azure-Portal
           href: howto-manage-firewall-portal.md
-        - name: Azure CLI
+        - name: Azure-Befehlszeilenschnittstelle
           href: howto-manage-firewall-cli.md
     - name: Wiederherstellen eines Servers
       items:
         - name: Azure-Portal
           href: howto-restore-server-portal.md
-        - name: Azure CLI
+        - name: Azure-Befehlszeilenschnittstelle
           href: howto-restore-server-cli.md
         - name: Azure PowerShell
           href: howto-restore-server-powershell.md
@@ -145,7 +145,11 @@
         - name: Erstellen von Benutzern
           href: howto-create-users.md
         - name: Verbindungszeichenfolgen
-          href: howto-connection-string.md
+          items:
+            - name: Herstellen einer Verbindung mit Anwendungen
+              href: howto-connection-string.md
+            - name: Azure PowerShell
+              href: howto-connection-string-powershell.md
         - name: Konfigurieren von SSL
           href: howto-configure-ssl.md
         - name: Konfigurieren von TLS
@@ -156,7 +160,7 @@
       items:
         - name: Azure-Portal
           href: howto-server-parameters.md
-        - name: Azure CLI
+        - name: Azure-Befehlszeilenschnittstelle
           href: howto-configure-server-parameters-cli.md
         - name: Azure PowerShell
           href: howto-configure-server-parameters-using-powershell.md
@@ -164,7 +168,7 @@
       items:
         - name: Azure-Portal
           href: howto-auto-grow-storage-portal.md
-        - name: Azure CLI
+        - name: Azure-Befehlszeilenschnittstelle
           href: howto-auto-grow-storage-cli.md
         - name: Azure PowerShell
           href: howto-auto-grow-storage-powershell.md
@@ -178,13 +182,13 @@
           items:
             - name: Azure-Portal
               href: howto-configure-server-logs-portal.md
-            - name: Azure CLI
+            - name: Azure-Befehlszeilenschnittstelle
               href: howto-configure-server-logs-cli.md
         - name: Überwachungsprotokolle
           items:
             - name: Azure-Portal
               href: howto-configure-audit-logs-portal.md
-            - name: Azure CLI
+            - name: Azure-Befehlszeilenschnittstelle
               href: howto-configure-audit-logs-cli.md
     - name: Überwachen
       items:
@@ -214,25 +218,25 @@
       items:
         - name: Azure-Portal
           href: howto-manage-vnet-portal.md
-        - name: Azure CLI
+        - name: Azure-Befehlszeilenschnittstelle
           href: howto-manage-vnet-cli.md
     - name: Private Link
       items:
         - name: Azure-Portal
           href: howto-configure-privatelink-portal.md
-        - name: Azure CLI
+        - name: Azure-Befehlszeilenschnittstelle
           href: howto-configure-privatelink-cli.md
     - name: Neustarten des Servers
       items:
         - name: Azure-Portal
           href: howto-restart-server-portal.md
-        - name: Azure CLI
+        - name: Azure-Befehlszeilenschnittstelle
           href: howto-restart-server-cli.md
         - name: Azure PowerShell
           href: howto-restart-server-powershell.md
 - name: Verweis
   items:
-    - name: Azure CLI
+    - name: Azure-Befehlszeilenschnittstelle
       href: /cli/azure/mariadb
     - name: REST-API
       href: /rest/api/mariadb
