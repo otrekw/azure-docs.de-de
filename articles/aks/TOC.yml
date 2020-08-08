@@ -42,7 +42,7 @@
       href: tutorial-kubernetes-upgrade-cluster.md
 - name: Beispiele
   items:
-    - name: Integrierte Azure Policy-Aktionen
+    - name: Azure Policy-Integrationen
       displayName: 'samples, policies, definitions'
       href: ./policy-samples.md
 - name: Konzepte
@@ -60,7 +60,7 @@
           href: ./security-controls-policy.md
     - name: Netzwerk
       href: concepts-network.md
-    - name: Speicher
+    - name: Storage
       href: concepts-storage.md
     - name: Skalieren
       href: concepts-scale.md
@@ -290,8 +290,8 @@
           href: windows-container-powershell.md
         - name: Herstellen einer Remoteverbindung
           href: rdp.md
-        - name: Bekannte Einschränkungen
-          href: windows-node-limitations.md
+        - name: FAQ zu Windows Server-Containern
+          href: windows-faq.md
         - name: Verwenden des Kubernetes-Dashboards
           href: kubernetes-dashboard.md
         - name: Erstellen von Dockerfiles für Windows Server-Container
@@ -366,7 +366,7 @@
           href: troubleshoot-linux.md
 - name: Verweis
   items:
-    - name: Azure CLI
+    - name: Azure-Befehlszeilenschnittstelle
       href: /cli/azure/aks
     - name: REST
       href: /rest/api/aks

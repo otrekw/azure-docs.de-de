@@ -7,14 +7,14 @@
 - name: Schnellstarts
   expanded: true
   items:
-    - name: Konfigurieren von NSG-Flowprotokollen mithilfe einer ARM-Vorlage
-      href: quickstart-configure-network-security-group-flow-logs-from-arm-template.md
     - name: Diagnostizieren eines Problems mit dem Filter für VM-Datenverkehr – Portal
       href: diagnose-vm-network-traffic-filtering-problem.md
     - name: Diagnostizieren eines Problems mit dem Filter für VM-Datenverkehr – PowerShell
       href: diagnose-vm-network-traffic-filtering-problem-powershell.md
     - name: Diagnostizieren eines Problems mit dem Filter für VM-Datenverkehr – Azure CLI
       href: diagnose-vm-network-traffic-filtering-problem-cli.md
+    - name: Konfigurieren von NSG-Flowprotokollen mithilfe einer ARM-Vorlage
+      href: quickstart-configure-network-security-group-flow-logs-from-arm-template.md
 - name: Tutorials
   items:
     - name: Diagnostizieren eines VM-Routingproblems

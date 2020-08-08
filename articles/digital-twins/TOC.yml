@@ -55,7 +55,7 @@
         - name: Verwalten benutzerdefinierter Modelle
           href: how-to-manage-model.md
         - name: Analysieren und Validieren von Modellen
-          href: how-to-use-parser.md
+          href: how-to-parse-models.md
         - name: Hinzufügen von Tags
           href: how-to-use-tags.md
     - name: Verwenden einer Liveausführungsumgebung
