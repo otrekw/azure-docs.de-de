@@ -1,18 +1,18 @@
 ---
 title: Organisieren Ihrer Rechnung basierend auf Ihren Anforderungen – Azure
-description: Erfahren Sie, wie Sie die Kosten in Ihrer Rechnung organisieren können.
+description: Hier erfahren Sie, wie Sie die Kosten in Ihrer Rechnung organisieren können. Sie können Ihr Abrechnungskonto anpassen, indem Sie Abrechnungsprofile und Rechnungsabschnitte erstellen.
 author: amberbhargava
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: c9cb1d7d1dcc6e7872b22d8c58fe44b9bce25f13
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 553263ebac3c64e27a7711b4407a7d4ba573998c
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77200743"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460030"
 ---
 # <a name="organize-costs-by-customizing-your-billing-account"></a>Organisieren von Kosten durch Anpassen Ihres Abrechnungskontos
 
@@ -78,7 +78,7 @@ Um einen Rechnungsabschnitt erstellen zu können, müssen Sie ein **Besitzer des
 
 3. Wählen Sie im linken Bereich die Option **Abrechnungsprofile** aus. Wählen Sie in der Liste ein Abrechnungsprofil aus. Der neue Abschnitt wird auf der Rechnung des ausgewählten Abrechnungsprofils angezeigt.
 
-   [![Screenshot: Liste mit Abrechnungsprofilen](./media/mca-section-invoice/mca-select-profile.png)](./media/mca-section-invoice/mca-select-profile-zoomed-in.png#lightbox)
+   [![Screenshot der Liste von Abrechnungsprofilen](./media/mca-section-invoice/mca-select-profile.png)](./media/mca-section-invoice/mca-select-profile-zoomed-in.png#lightbox)
 
 4. Wählen Sie im linken Bereich **Rechnungsabschnitte** und dann oben auf der Seite **Hinzufügen** aus.
 
@@ -106,7 +106,7 @@ Um ein Abrechnungsprofil erstellen zu können, müssen Sie ein **Besitzer des Ab
 
 3. Wählen Sie im linken Bereich **Abrechnungsprofile** und dann oben auf der Seite **Hinzufügen** aus.
 
-   [![Screenshot: Liste mit Abrechnungsprofilen](./media/mca-section-invoice/mca-list-profiles.png)](./media/mca-section-invoice/mca-list-profiles-zoomed-in.png#lightbox)
+   [![Screenshot der Liste von Abrechnungsprofilen](./media/mca-section-invoice/mca-list-profiles.png)](./media/mca-section-invoice/mca-list-profiles-zoomed-in.png#lightbox)
 
     > [!Note]
     >

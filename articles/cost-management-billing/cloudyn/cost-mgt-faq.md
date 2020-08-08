@@ -1,6 +1,6 @@
 ---
 title: Häufig gestellte Fragen zu Cloudyn in Azure
-description: Dieser Artikel bietet Antworten auf einige der häufig gestellten Fragen zu Cloudyn.
+description: Hier erfahren Sie, wie Sie über das Cloudyn-Portal Fehler beheben, die bei der indirekten Enterprise-Einrichtung häufig auftreten, und finden Sie Antworten auf andere häufig gestellte Fragen.
 author: bandersmsft
 ms.author: banders
 ms.date: 03/12/2020
@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.reviewer: benshy
 ms.custom: seodec18
 ROBOTS: NOINDEX
-ms.openlocfilehash: b1ec81ea135079defb390becc025f51cde2dad7f
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: b9d19923302a40985906fa3c2e0e183045a95860
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80411238"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460455"
 ---
 # <a name="frequently-asked-questions-for-cloudyn"></a>Häufig gestellte Fragen zu Cloudyn
 

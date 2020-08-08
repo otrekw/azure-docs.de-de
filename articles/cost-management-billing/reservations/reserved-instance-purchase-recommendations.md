@@ -1,20 +1,20 @@
 ---
-title: Erstellen von Azure-Reservierungsempfehlungen
-description: Erfahren Sie, wie Azure-Reservierungsempfehlungen für virtuelle Computer erstellt werden.
+title: Azure-Reservierungsempfehlungen
+description: Hier erfahren Sie mehr über Azure-Reservierungsempfehlungen.
 author: banders
 ms.author: banders
 ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 01/28/2020
-ms.openlocfilehash: 90967e740b87c2f93bd46bfb78684af96f36193a
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.date: 08/04/2020
+ms.openlocfilehash: 661e3bfa149718eb2893c5722ab3931a8a9f9afe
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82508478"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87797933"
 ---
-# <a name="how-reservation-recommendations-are-created"></a>Erstellen von Reservierungsempfehlungen
+# <a name="reservation-recommendations"></a>Reservierungsempfehlungen
 
 Kaufempfehlungen für reservierte Azure-Instanzen werden über die [Reservierungsempfehlungs-API](/rest/api/consumption/reservationrecommendations) des Azure-Verbrauchs, über [Azure Advisor](../../advisor/advisor-cost-recommendations.md#buy-reserved-virtual-machine-instances-to-save-money-over-pay-as-you-go-costs) und über die Benutzeroberfläche für den Reservierungserwerb im Azure-Portal bereitgestellt.
 
@@ -25,12 +25,36 @@ Im Anschluss erfahren Sie, wie Empfehlungen berechnet werden:
 3. Die Kosten werden für unterschiedliche Mengen simuliert, und die Menge mit der maximalen Einsparung wird empfohlen.
 4. Falls Ihre Ressourcen regelmäßig heruntergefahren werden, können von der Simulation keine Einsparungen ermittelt werden, und es wird keine Kaufempfehlung abgegeben.
 
+## <a name="recommendations-in-the-azure-portal"></a>Empfehlungen im Azure-Portal
+
+Empfehlungen für den Reservierungserwerb werden auch im Azure-Portal in der Benutzeroberfläche für den Reservierungserwerb gezeigt. Empfehlungen werden mit der **empfohlenen Menge** gezeigt. Beim Erwerb bietet die von Azure empfohlene Menge die maximal möglichen Einsparungen. Obwohl Sie jede beliebige Menge kaufen können, sind Ihre Einsparungen nicht optimal, wenn Sie eine andere Menge kaufen.
+
+Sehen wir uns nun einige Beispiele für die Gründe an.
+
+Im folgenden Beispielbild für die ausgewählte Empfehlung empfiehlt Azure die Kaufmenge 6.
+
+:::image type="content" source="./media/reserved-instance-purchase-recommendations/recommended-quantity.png" alt-text="Beispiel einer Empfehlung für den Reservierungserwerb" lightbox="./media/reserved-instance-purchase-recommendations/recommended-quantity.png" :::
+
+Weitere Informationen zu der Empfehlung werden angezeigt, wenn Sie den Link **Details anzeigen** auswählen. Das folgende Bild zeigt Details zur Empfehlung. Die empfohlene Menge wird – basierend auf Ihrer verlaufsbezogenen Nutzung – für die höchstmögliche Nutzung berechnet. Ihre Empfehlung ist möglicherweise nicht für 100%ige Auslastung vorgesehen, wenn sie nicht durchgehend genutzt wird. Beachten Sie im Beispiel, dass diese Auslastung im Laufe der Zeit geschwankt hat. Gezeigt werden die Kosten der Reservierung, mögliche Einsparungen und die prozentuale Auslastung.
+
+:::image type="content" source="./media/reserved-instance-purchase-recommendations/recommended-quantity-details.png" alt-text="Beispiel mit Details zur Empfehlung für den Reservierungserwerb" :::
+
+Wenn Sie die Reservierungsmenge über die Empfehlung hinaus erhöhen oder verringern, ändern sich das Diagramm und die geschätzten Werte. Durch Erhöhung der Reservierungsmenge werden Ihre Einsparungen verringert, weil dies letztlich zu einer geringeren Reservierungsnutzung führt. Mit anderen Worten: Sie bezahlen für Reservierungen, die nicht vollständig genutzt werden.
+
+Wenn Sie die Reservierungsmenge verringern, werden Ihre Einsparungen ebenfalls verringert. Obwohl Sie die Auslastung erhöht haben, gibt es wahrscheinlich Zeiträume, in denen Ihre Reservierungen ihre Nutzung nicht vollständig abdecken werden. Die über die Reservierungsmenge hinausgehende Nutzung wird von teureren Ressourcen mit nutzungsbasierter Bezahlung verwendet. Das folgende Beispielbild veranschaulicht dies. Wir haben die Reservierungsmenge manuell auf 4 verringert. Die Reservierungsnutzung wird erhöht, die Gesamtersparnis aber verringert, weil Kosten für die nutzungsbasierte Bezahlung anfallen.
+
+:::image type="content" source="./media/reserved-instance-purchase-recommendations/recommended-quantity-details-changed.png" alt-text="Beispiel mit geänderten Details zur Empfehlung für den Reservierungserwerb" :::
+
+Wenn Sie Einsparungen durch Reservierungen maximieren möchten, versuchen Sie, Reservierungen zu erwerben, die der Empfehlung so weit wie möglich entsprechen.
+
 ## <a name="recommendations-in-azure-advisor"></a>Empfehlungen in Azure Advisor
 
-Empfehlungen für den Reservierungserwerb im Zusammenhang mit virtuellen Computern werden in Azure Advisor bereitgestellt. Berücksichtigen Sie dabei Folgendes:
+Empfehlungen für den Reservierungserwerb stehen in Azure Advisor zur Verfügung. Berücksichtigen Sie dabei Folgendes:
 
 - Von Advisor werden nur Empfehlungen für Einzelabonnementbereiche abgegeben.
-- In Advisor stehen Empfehlungen zur Verfügung, die auf der Grundlage der letzten 30 Tage berechnet wurden.
+- Empfehlungen werden unter Berücksichtigung des Trends der Nutzung über die letzten 30  Tage berechnet.
+- Die Menge und Einsparung von Empfehlungen ist – soweit verfügbar – eine 3-jährige Reservierung. Wenn für den Dienst keine 3-jährige Reservierung verkauft wird, wird die Empfehlung mit einem Reservierungspreis für 1 Jahr berechnet.
+- Empfehlungen berücksichtigen alle speziellen Rabatte, die es bei Ihren bedarfsgesteuerten Nutzungsraten möglicherweise gibt.
 - Wenn Sie eine Reservierung mit gemeinsam genutztem Bereich erwerben, kann es bis zu 30 Tage dauern, bis Advisor-Empfehlungen für den Reservierungserwerb nicht mehr angezeigt werden.
 
 ## <a name="other-expected-api-behavior"></a>Sonstiges erwartetes API-Verhalten

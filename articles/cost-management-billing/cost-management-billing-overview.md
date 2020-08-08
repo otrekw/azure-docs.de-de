@@ -1,23 +1,36 @@
 ---
-title: Übersicht über die Azure-Kostenverwaltung und -Abrechnung | Microsoft-Dokumentation
-description: Mit den Features der Azure-Kostenverwaltung und -Abrechnung können Sie Verwaltungsaufgaben für die Abrechnung ausführen und den Abrechnungszugriff auf Kosten verwalten. Darüber hinaus können Sie Azure-Ausgaben überwachen und steuern sowie die Nutzung von Azure-Ressourcen optimieren.
+title: Übersicht über „Azure Cost Management + Abrechnung“
+description: Mit den Features „Azure Cost Management + Abrechnung“ können Sie Verwaltungsaufgaben für die Abrechnung ausführen und den Abrechnungszugriff auf Kosten verwalten. Außerdem können Sie mithilfe dieser Features Azure-Ausgaben überwachen und steuern sowie die Nutzung von Azure-Ressourcen optimieren.
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/24/2020
+ms.date: 07/29/2020
 ms.topic: overview
 ms.service: cost-management-billing
 ms.custom: ''
-ms.openlocfilehash: 2f96208ff3f9664d82bfc1d9ddf9bc5b9aec37c3
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: 76121dd8126922de2843e430a4e01cae1c7c0d53
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80879087"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87412999"
 ---
-# <a name="what-is-azure-cost-management-and-billing"></a>Was ist die Azure-Kostenverwaltung und -Abrechnung?
+# <a name="what-is-azure-cost-management--billing"></a>Was ist „Azure Cost Management + Abrechnung“?
 
-Bei Azure-Produkten und -Diensten bezahlen Sie nur für die tatsächliche Nutzung. Wenn Sie Azure-Ressourcen erstellen und verwenden, werden Ihnen diese Ressourcen in Rechnung gestellt. Mit den Features der Azure-Kostenverwaltung und -Abrechnung können Sie Verwaltungsaufgaben für die Abrechnung ausführen und den Abrechnungszugriff auf Kosten verwalten. Darüber hinaus können Sie mit den Features Azure-Ausgaben überwachen und steuern sowie die Nutzung von Azure-Ressourcen optimieren.
+Mithilfe der Microsoft-Cloud können Sie die technische Leistung Ihrer geschäftlichen Workloads erheblich verbessern. Sie kann auch Ihre Kosten und den Mehraufwand senken, der zum Verwalten von Unternehmensressourcen erforderlich ist. Allerdings entsteht aufgrund der Möglichkeit von Verschwendung und Ineffizienzen, die in Ihre Cloudbereitstellungen eingeführt werden, ein Risiko für die Geschäftschance. „Azure Cost Management + Abrechnung“ ist eine Suite von Microsoft-Tools, die Ihnen beim Analysieren, Verwalten und Optimieren der Kosten für Ihre Workloads helfen. Mithilfe dieser Suite können Sie sicherstellen, dass Ihre Organisation die Vorteile der Cloud nutzt.
+
+Sie können sich Ihre Azure-Workloads wie die Lampen in Ihrem Zuhause vorstellen. Bleiben die Lampen eingeschaltet, wenn Sie es morgens verlassen? Könnten Sie verschiedene effizientere Glühbirnen verwenden, um Ihre monatliche Stromrechnung zu senken? Gibt es in einem Zimmer mehr Lampen, als darin eigentlich erforderlich sind? Mit „Azure Cost Management + Abrechnung“ können Sie einen ähnlichen Denkprozess auf die von Ihrer Organisation genutzten Workloads anwenden.
+
+Bei Azure-Produkten und -Diensten bezahlen Sie nur für die tatsächliche Nutzung. Wenn Sie Azure-Ressourcen erstellen und nutzen, werden Ihnen die Ressourcen in Rechnung gestellt. Aufgrund der Erleichterung bei der Bereitstellung neuer Ressourcen können die Kosten für Ihre Workloads ohne entsprechende Analyse und Überwachung erheblich steigen. Sie verwenden die Features „Azure Cost Management + Abrechnung“ für folgende Aufgaben:
+
+- Ausführen administrativer Abrechnungsaufgaben, z. B. Bezahlen Ihrer Rechnung
+- Verwalten des Abrechnungszugriffs auf Kosten
+- Herunterladen der Kosten- und Nutzungsdaten, die zum Generieren Ihrer monatlichen Rechnung verwendet wurden
+- Proaktives Anwenden der Datenanalyse auf Ihre Kosten
+- Festlegen von Schwellenwerten für Ausgaben
+- Erkennen von Möglichkeiten für Workloadänderungen, wodurch Ihre Ausgaben optimiert werden können
+
+Wenn Sie sich weiter über den Kostenverwaltungsansatz von Organisationen informieren möchten, sehen Sie den Artikel [Azure Cost Management – bewährte Methoden](./costs/cost-mgt-best-practices.md) ein.
 
 ## <a name="understand-azure-billing"></a>Grundlegendes zur Azure-Abrechnung
 
@@ -42,9 +55,8 @@ Ein Bereich ist ein Knoten in einem Abrechnungskonto, den Sie zum Anzeigen und V
 
 |`Scope`  |Definition  |
 |---------|---------|
-|Abrechnungskonto     | Stellt einen einzigen Besitzer (Kontoadministrator) für ein oder mehrere Azure-Abonnements dar. Ein Kontoadministrator ist autorisiert, verschiedene Abrechnungsaufgaben wie das Erstellen von Abonnements, das Anzeigen von Rechnungen oder das Ändern der Abrechnung für Abonnements auszuführen.  |
+|Abrechnungskonto     | Stellt einen einzigen Besitzer (Kontoadministrator) für ein oder mehrere Azure-Abonnements dar. Ein Kontoadministrator ist berechtigt, verschiedene Abrechnungsaufgaben wie das Erstellen von Abonnements, Anzeigen von Rechnungen oder Ändern der Abrechnung für Abonnements auszuführen.  |
 |Subscription     |  Stellt eine Gruppierung von Azure-Ressourcen dar. Eine Rechnung wird für den Abonnementbereich generiert. Für jedes Abonnement gelten eigene Zahlungsmethoden, die zum Bezahlen der Rechnung verwendet werden.|
-
 
 #### <a name="enterprise-agreement"></a>Enterprise Agreement
 
@@ -54,7 +66,6 @@ Ein Bereich ist ein Knoten in einem Abrechnungskonto, den Sie zum Anzeigen und V
 |Department     |  Optionale Gruppierung von Registrierungskonten.      |
 |Registrierungskonto     |  Stellt einen einzigen Kontobesitzer dar. Azure-Abonnements werden im Registrierungskontobereich erstellt.  |
 
-
 #### <a name="microsoft-customer-agreement"></a>Microsoft-Kundenvereinbarung
 
 |`Scope`  |Aufgaben  |
@@ -63,19 +74,17 @@ Ein Bereich ist ein Knoten in einem Abrechnungskonto, den Sie zum Anzeigen und V
 |Abrechnungsprofil     |  Stellt eine Rechnung und die zugehörigen Zahlungsmethoden dar. In diesem Bereich wird die Rechnung generiert. Das Abrechnungsprofil kann mehrere Rechnungsabschnitte enthalten.      |
 |Rechnungsabschnitt     |   Stellt eine Gruppe von Kosten in einer Rechnung dar. Dem Rechnungsabschnittbereich werden Abonnements und andere Käufe zugeordnet.    |
 
-
 ## <a name="understand-azure-cost-management"></a>Grundlegendes zur Azure-Kostenverwaltung
-Die Kostenverwaltung ist der Prozess, bei dem Sie die Kosten Ihrer Geschäftstätigkeit effektiv planen und steuern. Kostenverwaltungsaufgaben werden im Allgemeinen durch die Finanz-, Management- und App-Teams ausgeführt. Die Azure-Kostenverwaltung und -Abrechnung unterstützt Organisationen bei der kostenbewussten Planung. Zudem können damit Kosten effektiv analysiert und Maßnahmen zum Optimieren der Cloudausgaben ergriffen werden. Wenn Sie sich weiter über den Kostenverwaltungsansatz von Organisationen informieren möchten, sehen Sie den Artikel [Azure Cost Management – bewährte Methoden](./costs/cost-mgt-best-practices.md) ein.
+
+Die Abrechnung steht zwar in enger Beziehung zur Kostenverwaltung, ist jedoch nicht identisch mit dieser. Bei der Abrechnung werden Kunden Waren oder Dienstleistungen in Rechnungen gestellt, zudem werden Geschäftsbeziehungen verwaltet.
+
+Cost Management zeigt die Kosten und Verwendungsmuster der Organisation mit erweiterten Analysen. Berichte in Cost Management zeigen die nutzungsbasierten Kosten von Azure-Diensten und Marketplace-Angeboten von Drittanbietern an. Kosten basieren auf vereinbarten Preisen und berücksichtigen die Reservierung und Rabatte für den Azure-Hybridvorteil. Die Berichte liefern eine Übersicht Ihrer internen und externen Kosten für die Nutzung sowie Azure Marketplace-Gebühren. Andere Gebühren wie Reservierungseinkäufe, Support und Steuern werden in den Berichten noch nicht ausgewiesen. Anhand der Berichte verstehen Sie Ihre Ausgaben und Ihre Ressourcennutzung, und Sie können außergewöhnliche Ausgaben ermitteln. Vorhersageanalysen sind ebenfalls verfügbar. Cost Management zeigt anhand von Azure-Verwaltungsgruppen, Budgets und Empfehlungen deutlich die Struktur Ihrer Ausgaben sowie Möglichkeiten der Kostensenkung auf.
+
+Über das Azure-Portal oder mithilfe diverser APIs können Sie Exportvorgänge automatisieren, um Kostendaten in externe Systeme und Prozesse zu integrieren. Automatisierter Abrechnungsdatenexport und geplante Berichte sind ebenfalls verfügbar.
 
 Sehen Sie das [Übersichtsvideo zu Azure Cost Management](https://www.youtube.com/watch?v=el4yN5cHsJ0) an, um sich einen schnellen Überblick zu verschaffen, wie Azure Cost Management Sie beim Sparen in Azure unterstützen kann. Weitere Videos finden Sie im [YouTube-Kanal zu Cost Management](https://www.youtube.com/c/AzureCostManagement).
 
 >[!VIDEO https://www.youtube.com/embed/el4yN5cHsJ0]
-
-Die Abrechnung steht zwar in enger Beziehung zur Kostenverwaltung, ist jedoch nicht identisch mit dieser. Bei der Abrechnung werden Kunden Waren oder Dienstleistungen in Rechnungen gestellt, zudem werden Geschäftsbeziehungen verwaltet.
-
-Cost Management zeigt die Kosten und Verwendungsmuster der Organisation mit erweiterten Analysen. Berichte in Cost Management zeigen die nutzungsbasierten Kosten von Azure-Diensten und Marketplace-Angeboten von Drittanbietern an. Kosten basieren auf vereinbarten Preisen und berücksichtigen die Reservierung und Rabatte für den Azure-Hybridvorteil. Die Berichte liefern eine Übersicht Ihrer internen und externen Kosten für die Nutzung sowie Azure Marketplace-Gebühren. Andere Gebühren wie Reservierungskäufe, Support und Steuern werden in den Berichten noch nicht ausgewiesen. Anhand der Berichte verstehen Sie Ihre Ausgaben und Ihre Ressourcennutzung, und Sie können außergewöhnliche Ausgaben ermitteln. Vorhersageanalysen sind ebenfalls verfügbar. Cost Management zeigt anhand von Azure-Verwaltungsgruppen, Budgets und Empfehlungen deutlich die Struktur Ihrer Ausgaben sowie Möglichkeiten der Kostensenkung auf.
-
-Über das Azure-Portal oder mithilfe diverser APIs können Sie Exportvorgänge automatisieren, um Kostendaten in externe Systeme und Prozesse zu integrieren. Automatisierter Abrechnungsdatenexport und geplante Berichte sind ebenfalls verfügbar.
 
 ### <a name="plan-and-control-expenses"></a>Ausgaben planen und steuern
 
@@ -99,17 +108,16 @@ Sehen Sie sich das [Video zu Azure Cost Management und Cloudyn](https://www.yout
 
 ### <a name="additional-azure-tools"></a>Zusätzliche Azure-Tools
 
-Azure bietet weitere Tools, die im Funktionsumfang der Azure-Kostenverwaltung und -Abrechnung nicht enthalten sind. Sie spielen dennoch eine wichtige Rolle im Kostenverwaltungsprozess. Weitere Informationen zu diesen Tools finden Sie unter den folgenden Links.
+Azure bietet weitere Tools, die in der Featuregruppe „Azure Cost Management + Abrechnung“ nicht enthalten sind. Sie spielen dennoch eine wichtige Rolle im Kostenverwaltungsprozess. Weitere Informationen zu diesen Tools finden Sie unter den folgenden Links.
 
 - [Azure-Preisrechner](https://azure.microsoft.com/pricing/calculator/): Mit diesem Tool können Sie Ihre im Voraus anfallenden Cloudkosten schätzen.
 - [Azure Migrate](../migrate/migrate-overview.md): Bewerten Sie die aktuelle Arbeitsauslastung Ihrer Rechenzentren, und stellen Sie fest, welche Anforderungen eine Azure-Austauschlösung erfüllen muss.
 - [Azure Advisor](../advisor/advisor-overview.md): Identifizieren Sie nicht genutzte virtuelle Computer, und erhalten Sie Empfehlungen zum Kauf von reservierten Azure-VM-Instanzen.
 - [Azure-Hybridvorteil](https://azure.microsoft.com/pricing/hybrid-benefit/): Nutzen Sie Ihre aktuellen Lizenzen für lokale Windows Server oder SQL Server für VMs in Azure, um Kosten zu sparen.
 
-
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nachdem Sie sich mit der Kostenverwaltung und Abrechnung vertraut gemacht haben, können Sie im nächsten Schritt mit der Nutzung des Diensts beginnen.
+Nachdem Sie sich mit „Cost Management + Abrechnung“ vertraut gemacht haben, können Sie im nächsten Schritt mit der Nutzung des Diensts beginnen.
 
 - Steigen Sie in Azure Cost Management ein, um [Kosten zu analysieren](./costs/quick-acm-cost-analysis.md).
 - Weitere Informationen finden Sie auch in [Azure Cost Management – bewährte Methoden](./costs/cost-mgt-best-practices.md).

@@ -1,18 +1,18 @@
 ---
 title: Anwenden eines Azure Databricks-Vorauszahlungsrabatts
-description: Hier erfahren Sie, wie sich ein Azure Databricks-Vorauszahlungsrabatt auf die Nutzung auswirkt.
+description: Hier erfahren Sie, wie sich ein Azure Databricks-Vorauszahlungsrabatt auf die Nutzung auswirkt. Sie können diese Databricks jederzeit während der Laufzeit des Kaufs nutzen.
 author: yashesvi
 ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: 69f83fc1d390fcbea77468045b89ee6024e7fe9a
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 380c4c7fdcccf45d83adaf355c2cc12da0b327fc
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77200315"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460319"
 ---
 # <a name="how-azure-databricks-pre-purchase-discount-is-applied"></a>Anwenden eines Azure Databricks-Vorauszahlungsrabatts
 

@@ -1,6 +1,6 @@
 ---
 title: Bezahlen Ihrer Rechnung für Microsoft Azure | Microsoft-Dokumentation
-description: Hier wird beschrieben, wie Sie eine Rechnung im Azure-Portal bezahlen.
+description: Hier erfahren Sie, wie Sie eine Rechnung im Azure-Portal bezahlen. Sie müssen Besitzer, Mitwirkender oder Rechnungs-Manager des Abrechnungsprofils sein, um im Portal bezahlen zu können.
 keywords: Rechnung, überfällig, Restbetrag, jetzt bezahlen
 author: banders
 ms.reviewer: judupont
@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/10/2020
 ms.author: banders
-ms.openlocfilehash: 8db50a25d98f5e4dc2ae96c708a5da49709f9ed5
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: bb3c9686ca734bb800f090af44f56643e07c6833
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77200145"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87459299"
 ---
 # <a name="how-to-pay-your-bill-for-microsoft-azure"></a>Bezahlen Ihrer Rechnung für Microsoft Azure
 

@@ -1,18 +1,18 @@
 ---
 title: Überwachen und Nachverfolgen der Nutzung von kostenlosen Azure-Diensten
-description: Erfahren Sie, wie Sie die Nutzung von kostenlosen Diensten im Azure-Portal überprüfen.
+description: Erfahren Sie, wie Sie die Nutzung von kostenlosen Diensten im Azure-Portal überprüfen. Es werden keine Gebühren für in einem kostenlosen Konto enthaltene Dienste in Rechnung gestellt, solange Sie deren Grenzwerte nicht überschreiten.
 author: amberbhargava
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: 0a62deecc6f70bb21059ae3ddda9eea173de65fe
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 03efb7e4d0aa06e4c33a94f15621d58330e52e50
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77199805"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87461866"
 ---
 # <a name="check-usage-of-free-services-included-with-your-azure-free-account"></a>Überprüfen der Verwendung der kostenlosen Dienste, die in Ihrem kostenlosen Azure-Konto enthalten sind
 
@@ -38,9 +38,9 @@ Ihnen werden keine Gebühren für kostenlose Dienste, die in einem kostenlosen A
 * **Nutzung/Limit:** Nutzung und Grenzwert für die Verbrauchseinheit für den aktuellen Monat.
 * **Status:** Verwendungsstatus des Diensts. Basierend auf Ihrer Nutzung kann einer der folgenden Status gelten:
   * **Nicht in Verwendung:** Sie haben diese Verbrauchseinheit nicht verwendet, oder die Verwendung der Verbrauchseinheit hat das Abrechnungssystem nicht erreicht.
-  * **Überschritten am \<Datum>:** Sie haben den Grenzwert für die Verbrauchseinheit am \<Datum> überschritten.
+  * **Überschritten am \<Date>:** Sie haben den Grenzwert für die Verbrauchseinheit am \<Date> überschritten.
   * **Überschreitung unwahrscheinlich:** Es ist unwahrscheinlich, dass Sie den Grenzwert für diese Verbrauchseinheit überschreiten.
-  * **Überschreitung am \<Datum>:** Sie werden den Grenzwert für die Verbrauchseinheit voraussichtlich am \<Datum> überschreiten.
+  * **Überschreitung am \<Date>:** Sie werden den Grenzwert für die Verbrauchseinheit wahrscheinlich am \<Date> überschreiten.
 
 > [!IMPORTANT]
 >

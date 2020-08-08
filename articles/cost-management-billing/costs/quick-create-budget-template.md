@@ -8,12 +8,12 @@ ms.service: cost-management-billing
 ms.topic: quickstart
 ms.date: 07/28/2020
 ms.custom: subject-armqs
-ms.openlocfilehash: 984f2d82e21344dd7e3bb8b7267e289832343e1b
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 70408a3ed6638ec76af113c24cc3c8190a44f55c
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87385777"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87445996"
 ---
 # <a name="quickstart-create-a-budget-with-an-arm-template"></a>Schnellstart: Erstellen eines Budgets mit einer ARM-Vorlage
 
@@ -33,7 +33,7 @@ Bei einem neuen Abonnement können Sie nicht sofort ein Budget erstellen oder an
 
 Budgets werden für die folgenden Arten von Azure-Kontentypen und -Bereichen unterstützt:
 
-- RBAC-Bereiche (Role-Based Access Control, rollenbasierte Zugriffssteuerung)
+- Bereiche für rollenbasierte Zugriffssteuerung von Azure (Azure RBAC)
     - Verwaltungsgruppen
     - Subscription
 - Enterprise Agreement-Bereiche

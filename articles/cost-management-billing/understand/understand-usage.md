@@ -1,6 +1,6 @@
 ---
 title: Grundlegendes zu detaillierter Nutzung und Gebühren | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie Ihre detaillierte Nutzung und Gebühren lesen und verstehen.
+description: Hier erfahren Sie, wie Sie Ihre Datei zu detaillierter Nutzung und Gebühren lesen und verstehen. Zeigen Sie eine Liste der in der Datei verwendeten Begriffe und Beschreibungen an.
 author: bandersmsft
 ms.reviewer: micflan
 tags: billing
@@ -8,12 +8,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 03/20/2020
 ms.author: banders
-ms.openlocfilehash: 3b4a5601f18a07ba1ecd6fdd93628d671a0acad2
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 1b53869c9ef90dd0edf3ab9a3120e65db8f16e8a
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80065643"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460285"
 ---
 # <a name="understand-the-terms-in-your-azure-usage-and-charges-file"></a>Grundlegendes zu den Bedingungen in der Datei für die Azure-Nutzung und -Gebühren
 
@@ -37,7 +37,7 @@ Sie können Ihre Nutzungs- und Gebühren-CSV-Datei in Microsoft Excel oder einer
 In der folgenden Tabelle werden die wichtigen Begriffe in der neuesten Version der Datei für die Azure-Nutzung und -Gebühren erläutert.
 Die Liste umfasst Konten für nutzungsbasierte Bezahlung (Pay-as-you-go, PAYG), Enterprise Agreement (EA) und Microsoft-Kundenvereinbarung (Microsoft Customer Agreement, MCA).
 
-Begriff | Kontotyp | BESCHREIBUNG
+Begriff | Kontotyp | Beschreibung
 --- | --- | ---
 AccountName | EA, PAYG | Anzeigename des EA-Registrierungs- oder PAYG-Abrechnungskontos.
 AccountOwnerId<sup>1</sup> | EA, PAYG | Eindeutiger Bezeichner des EA-Registrierungs- oder PAYG-Abrechnungskontos.
@@ -67,7 +67,7 @@ InvoiceSection | MCA | Siehe „InvoiceSectionName“.
 InvoiceSectionId<sup>1</sup> | EA, MCA | Eindeutiger Bezeichner für EA-Abteilung oder MCA-Rechnungsabschnitt.
 InvoiceSectionName | EA, MCA | Name für EA-Abteilung oder MCA-Rechnungsabschnitt.
 IsAzureCreditEligible | All | Gibt an, ob die Gebühr mit einer Azure-Gutschrift bezahlt werden kann (Werte: True, False).
-Position | MCA | Standort des Rechenzentrums, in dem die Ressource ausgeführt wird.
+Standort | MCA | Standort des Rechenzentrums, in dem die Ressource ausgeführt wird.
 MeterCategory | All | Name der Klassifizierungskategorie der Verbrauchseinheit. Beispiele: *Clouddienste* und *Netzwerk*.
 MeterId<sup>1</sup> | All | Der eindeutige Bezeichner für die Verbrauchseinheit.
 MeterName | All | Der Name der Verbrauchseinheit.

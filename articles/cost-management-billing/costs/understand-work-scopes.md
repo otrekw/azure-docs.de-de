@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: micflan
 ms.custom: ''
-ms.openlocfilehash: ae6205db4e120f0496fa47be6788887b155361b0
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: ecc442049ba63b64f951335940c312dc71985453
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86077157"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87501524"
 ---
 # <a name="understand-and-work-with-scopes"></a>Verstehen von und Arbeiten mit Bereichen
 
@@ -93,8 +93,8 @@ Governancebereiche sind ein einzelnes Verzeichnis gebunden, EA-Abrechnungsbereic
 
 EA-Abrechnungsbereiche unterstützen die folgenden Rollen:
 
-- **Unternehmensadministrator**: Ermöglicht die Verwaltung von und den Zugriff auf Abrechnungskontoeinstellungen, die Anzeige aller Kosten und die Verwaltung der Kostenkonfiguration. Beispiele: Budgets und Exporte. In der Praxis entspricht der EA-Abrechnungsbereich der [Azure RBAC-Rolle „Cost Management-Mitwirkender“](../../role-based-access-control/built-in-roles.md#cost-management-contributor).
-- **Unternehmensbenutzer mit Leseberechtigung**: Ermöglicht das Anzeigen der Abrechnungskontoeinstellungen, Kostendaten und Kostenkonfiguration. Beispiele: Budgets und Exporte. In der Praxis entspricht der EA-Abrechnungsbereich der [Azure RBAC-Rolle „Cost Management-Leser“](../../role-based-access-control/built-in-roles.md#cost-management-reader).
+- **Unternehmensadministrator**: Ermöglicht die Verwaltung von und den Zugriff auf Abrechnungskontoeinstellungen, die Anzeige aller Kosten und die Verwaltung der Kostenkonfiguration. Beispiele: Budgets und Exporte. In der Praxis entspricht der EA-Abrechnungsbereich der [Azure-Rolle „Cost Management-Mitwirkender“](../../role-based-access-control/built-in-roles.md#cost-management-contributor).
+- **Unternehmensbenutzer mit Leseberechtigung**: Ermöglicht das Anzeigen der Abrechnungskontoeinstellungen, Kostendaten und Kostenkonfiguration. Beispiele: Budgets und Exporte. In der Praxis entspricht der EA-Abrechnungsbereich der [Azure-Rolle „Cost Management-Leser“](../../role-based-access-control/built-in-roles.md#cost-management-reader).
 - **Abteilungsadministrator**: Ermöglicht das Verwalten der Abteilungseinstellungen, wie z.B. Kostenstelle, sowie den Zugriff auf und die Anzeige aller Kosten sowie das Verwalten der Kostenkonfiguration. Beispiele: Budgets und Exporte.  Die Abrechnungskontoeinstellung **Abteilung – Gebühren anzeigen** muss für Abteilungsadministratoren und Benutzer mit Leseberechtigung aktiviert sein, um Kosten einzusehen. Wenn **Abteilung – Gebühren anzeigen** deaktiviert ist, können Abteilungsbenutzer keine Kosten auf einer beliebigen Ebene einsehen, selbst wenn sie Konto- oder Abonnementbesitzer sind.
 - **Abteilungsbenutzer mit Leseberechtigung**: Ermöglicht das Anzeigen der Abteilungseinstellungen, Kostendaten und Kostenkonfiguration. Beispiele: Budgets und Exporte. Wenn **Abteilung – Gebühren anzeigen** deaktiviert ist, können Abteilungsbenutzer keine Kosten auf einer beliebigen Ebene einsehen, selbst wenn sie Konto- oder Abonnementbesitzer sind.
 - **Kontobesitzer**: Ermöglicht das Verwalten von Registrierungskontoeinstellungen (z.B. Kostenstelle), das Anzeigen aller Kosten und das Verwalten der Kostenkonfiguration (z.B. Budgets und Exporte) für das Registrierungskonto. Die Abrechnungskontoeinstellung **Kontobesitzer – Gebühren anzeigen** muss für Kontobesitzer und RBAC-Benutzer aktiviert sein, um Kosten einzusehen.
@@ -141,10 +141,10 @@ Abrechnungsbereiche der Kundenvereinbarung gelten nicht für Partner. Partnerrol
 
 Abrechnungsbereiche der Kundenvereinbarung unterstützen die folgenden Rollen:
 
-- **Besitzer**: Ermöglicht die Verwaltung von und den Zugriff auf Abrechnungseinstellungen, die Anzeige aller Kosten und die Verwaltung der Kostenkonfiguration. Beispiele: Budgets und Exporte. In der Praxis entspricht der Abrechnungsbereich der Kundenvereinbarung der [Azure RBAC-Rolle „Cost Management-Mitwirkender“](../../role-based-access-control/built-in-roles.md#cost-management-contributor).
-- **Mitwirkender**: Ermöglicht die Verwaltung von und den Zugriff auf Abrechnungseinstellungen, die Anzeige aller Kosten und die Verwaltung der Kostenkonfiguration. Beispiele: Budgets und Exporte. In der Praxis entspricht der Abrechnungsbereich der Kundenvereinbarung der [Azure RBAC-Rolle „Cost Management-Mitwirkender“](../../role-based-access-control/built-in-roles.md#cost-management-contributor).
-- **Leser**: Ermöglicht die Anzeige von Abrechnungseinstellungen, Kostendaten und der Kostenkonfiguration. Beispiele: Budgets und Exporte. In der Praxis entspricht der Abrechnungsbereich der Kundenvereinbarung der [Azure RBAC-Rolle „Cost Management-Leser“](../../role-based-access-control/built-in-roles.md#cost-management-reader).
-- **Rechnungs-Manager**: Ermöglicht das Anzeigen und Bezahlen von Rechnungen sowie das Anzeigen von Kostendaten und Konfiguration. Beispiele: Budgets und Exporte. In der Praxis entspricht der Abrechnungsbereich der Kundenvereinbarung der [Azure RBAC-Rolle „Cost Management-Leser“](../../role-based-access-control/built-in-roles.md#cost-management-reader).
+- **Besitzer**: Ermöglicht die Verwaltung von und den Zugriff auf Abrechnungseinstellungen, die Anzeige aller Kosten und die Verwaltung der Kostenkonfiguration. Beispiele: Budgets und Exporte. In der Praxis entspricht dieser Abrechnungsbereich der Kundenvereinbarung der [Azure-Rolle „Cost Management-Mitwirkender“](../../role-based-access-control/built-in-roles.md#cost-management-contributor).
+- **Mitwirkender**: Ermöglicht die Verwaltung von und den Zugriff auf Abrechnungseinstellungen, die Anzeige aller Kosten und die Verwaltung der Kostenkonfiguration. Beispiele: Budgets und Exporte. In der Praxis entspricht dieser Abrechnungsbereich der Kundenvereinbarung der [Azure-Rolle „Cost Management-Mitwirkender“](../../role-based-access-control/built-in-roles.md#cost-management-contributor).
+- **Leser**: Ermöglicht die Anzeige von Abrechnungseinstellungen, Kostendaten und der Kostenkonfiguration. Beispiele: Budgets und Exporte. In der Praxis entspricht dieser Abrechnungsbereich der Kundenvereinbarung der [Azure-Rolle „Cost Management-Leser“](../../role-based-access-control/built-in-roles.md#cost-management-reader).
+- **Rechnungs-Manager**: Ermöglicht das Anzeigen und Bezahlen von Rechnungen sowie das Anzeigen von Kostendaten und Konfiguration. Beispiele: Budgets und Exporte. In der Praxis entspricht dieser Abrechnungsbereich der Kundenvereinbarung der [Azure-Rolle „Cost Management-Leser“](../../role-based-access-control/built-in-roles.md#cost-management-reader).
 - **Azure-Abonnementersteller**: Ermöglicht das Erstellen von Azure-Abonnements, Anzeigen von Kosten und Verwalten der Kostenkonfiguration. Beispiele: Budgets und Exporte. In der Praxis entspricht der Abrechnungsbereich der Kundenvereinbarung der EA-Rolle „Registrierungskontobesitzer“.
 
 Azure-Abonnements werden ähnlich wie unter EA-Registrierungskonten unter Rechnungsabschnitten geschachtelt. Abrechnungsbenutzer haben Zugriff auf Kostendaten für die Abonnements und Ressourcengruppen, die sich unter ihren jeweiligen Bereichen befinden. Sie haben jedoch keinen Zugriff zum Anzeigen oder Verwalten von Ressourcen im Azure-Portal. Abrechnungsbenutzer können Kosten einsehen, indem sie in der Liste der Dienste im Azure-Portal zu **Kostenverwaltung + Abrechnung** navigieren. Anschließend können sie die Kosten für die spezifischen Abonnements und Ressourcengruppen filtern, über die sie Berichte erstellen müssen.

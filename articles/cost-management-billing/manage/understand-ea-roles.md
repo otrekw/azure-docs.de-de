@@ -1,18 +1,18 @@
 ---
 title: Informationen zu den Administratorrollen für Enterprise in Azure
-description: Erfahren Sie etwas über Enterprise-Administratorrollen in Azure.
+description: Erfahren Sie etwas über Enterprise-Administratorrollen in Azure. Sie können fünf verschiedene administrative Rollen zuweisen.
 author: bandersmsft
 ms.reviewer: adwise
 ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: banders
-ms.openlocfilehash: 2cd786304180369fee39c7b362f27a44728f3ad8
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 8a4705a68b0b96a8f95cc2356cda454fdef65054
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87124339"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87531488"
 ---
 # <a name="managing-azure-enterprise-roles"></a>Verwalten von Azure Enterprise-Rollen
 
@@ -103,9 +103,9 @@ Möglicherweise werden Ihnen im Azure-Portal abhängig von Ihrer administrativen
 
 Informationen zum Festlegen dieser Richtlinien finden Sie unter [Verwalten des Zugriffs auf Abrechnungsinformationen für Azure](manage-billing-access.md).
 
-Die folgende Tabelle zeigt die Beziehungen zwischen den Enterprise Agreement-Administratorrollen, den Richtlinien zum Anzeigen von Gebühren, der Rolle für rollenbasierte Zugriffssteuerung (RBAC) im Azure-Portal und den im Azure-Portal angezeigten Preisen. Dem Unternehmensadministrator werden Nutzungsdetails immer basierend auf den EA-Preisen der Organisation angezeigt. Dem Abteilungsadministrator und dem Kontobesitzer werden jedoch unterschiedliche Preise angezeigt, entsprechend der Richtlinie zum Anzeigen von Gebühren und ihrer RBAC-Rolle. Die in der folgenden Tabelle aufgeführte Rolle des Abteilungsadministrators bezieht sich sowohl auf die Rolle „Abteilungsadministrator“ als auch die auf die Rolle „Abteilungsadministrator (nur Leseberechtigung)“.
+Die folgende Tabelle zeigt die Beziehungen zwischen den Enterprise Agreement-Administratorrollen, den Richtlinien zum Anzeigen von Gebühren, der Azure-Rolle im Azure-Portal und den im Azure-Portal angezeigten Preisen. Dem Unternehmensadministrator werden Nutzungsdetails immer basierend auf den EA-Preisen der Organisation angezeigt. Dem Abteilungsadministrator und dem Kontobesitzer werden jedoch – entsprechend der Richtlinie zum Anzeigen von Gebühren und ihrer Azure-Rolle – unterschiedliche Preise angezeigt. Die in der folgenden Tabelle aufgeführte Rolle des Abteilungsadministrators bezieht sich sowohl auf die Rolle „Abteilungsadministrator“ als auch die auf die Rolle „Abteilungsadministrator (nur Leseberechtigung)“.
 
-|Enterprise Agreement-Administratorrolle|Richtlinie zum Anzeigen von Gebühren für die Rolle|RBAC-Rolle|Preisansicht|
+|Enterprise Agreement-Administratorrolle|Richtlinie zum Anzeigen von Gebühren für die Rolle|Azure-Rolle|Preisansicht|
 |---|---|---|---|
 |Kontobesitzer ODER Abteilungsadministrator|✔ Aktiviert|Besitzer|EA-Preise der Organisation|
 |Kontobesitzer ODER Abteilungsadministrator|✘ Deaktiviert|Besitzer|Einzelhandelspreise|
@@ -113,7 +113,7 @@ Die folgende Tabelle zeigt die Beziehungen zwischen den Enterprise Agreement-Adm
 |Kontobesitzer ODER Abteilungsadministrator|✘ Deaktiviert |none|Keine Preise|
 |Keine|Nicht verfügbar |Besitzer|Einzelhandelspreise|
 
-Sie legen die Enterprise-Administratorrolle und die Richtlinien zum Anzeigen von Gebühren im Enterprise-Portal fest. Die RBAC-Rolle kann im Azure-Portal aktualisiert werden. Weitere Informationen finden Sie unter [Verwalten des Zugriffs mithilfe von RBAC und des Azure-Portals](../../role-based-access-control/role-assignments-portal.md).
+Sie legen die Enterprise-Administratorrolle und die Richtlinien zum Anzeigen von Gebühren im Enterprise-Portal fest. Die Azure-Rolle kann im Azure-Portal aktualisiert werden. Weitere Informationen finden Sie unter [Verwalten des Zugriffs mithilfe von RBAC und des Azure-Portals](../../role-based-access-control/role-assignments-portal.md).
 
 
 

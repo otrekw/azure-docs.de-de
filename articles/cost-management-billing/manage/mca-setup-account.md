@@ -1,18 +1,18 @@
 ---
 title: Einrichten der Abrechnung für eine Microsoft-Kundenvereinbarung – Azure
-description: Erfahren Sie, wie Sie Ihr Abrechnungskonto für eine Microsoft-Kundenvereinbarung einrichten.
+description: Erfahren Sie, wie Sie Ihr Abrechnungskonto für eine Microsoft-Kundenvereinbarung einrichten. Informieren Sie sich über Voraussetzungen für die Einrichtung, und zeigen Sie zusätzliche verfügbare Ressourcen an.
 author: amberbhargava
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: 81b6b8a7024de9ff3361e24cb14190d479e50681
-ms.sourcegitcommit: 2a09565db8681cdb76607e7ed51eecf68f4ff8f0
+ms.openlocfilehash: 2b8ef67366df7c8a6ba76d2cdc693b36229b861b
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80258055"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87461849"
 ---
 # <a name="set-up-your-billing-account-for-a-microsoft-customer-agreement"></a>Einrichten Ihres Abrechnungskontos für eine Microsoft-Kundenvereinbarung
 
@@ -250,7 +250,7 @@ Unternehmensadministratoren sind als Besitzer des Abrechnungsprofils aufgeführt
 
 2. Suchen Sie nach **Kostenverwaltung + Abrechnung**.
 
-   ![Screenshot, der die Suche im Azure-Portal zeigt](./media/mca-setup-account/search-cmb.png)erforderlich.
+   ![Screenshot, der die Suche im Azure-Portal zeigt](./media/mca-setup-account/search-cmb.png).
 
 3. Wählen Sie einen Rechnungsabschnitt aus. Rechnungsabschnitte haben die gleichen Namen wie die jeweiligen Abteilungen in Enterprise Agreement-Registrierungen. Abhängig von Ihren Zugriffsberechtigungen müssen Sie möglicherweise ein Abrechnungskonto auswählen. Wählen Sie im Abrechnungskonto die Option **Abrechnungsprofile** und dann **Rechnungsabschnitte** aus. Wählen Sie aus der Liste der Rechnungsabschnitte einen Rechnungsabschnitt aus.
 

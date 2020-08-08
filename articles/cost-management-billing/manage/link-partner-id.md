@@ -7,28 +7,28 @@ ms.author: banders
 ms.date: 07/24/2020
 ms.service: cost-management-billing
 ms.topic: how-to
-ms.openlocfilehash: 343db06ba658f31c258d2a63c4a52aa86993c1cd
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 5f50c63fa95018c13c48e9769f9e4049b2a81021
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281785"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87529909"
 ---
 # <a name="link-a-partner-id-to-your-azure-accounts"></a>Verknüpfen einer Partner-ID mit Ihren Azure-Konten
 
 Microsoft-Partner stellen Dienste bereit, die Kunden beim Erreichen ihrer Geschäftsziele und der Ziele beim Einsatz von Microsoft-Produkten unterstützen. Wenn die Partner Azure-Dienste im Auftrag des Kunden verwalten, konfigurieren und unterstützen, benötigen sie als Benutzer Zugriff auf die Umgebung des Kunden. Mit dem Partnerzuordnungstyp „Partner Admin Link“ (PAL) können Partner Ihre Partnernetzwerk-ID mit den für die Bereitstellung von Diensten verwendeten Anmeldeinformationen verknüpfen.
 
-Mithilfe von PAL kann Microsoft Partner ermitteln und würdigen, die zum Erfolg von Azure-Kunden beitragen. Die Zuordnung von Einfluss und Umsatz Ihrer Organisation basiert dabei auf den Berechtigungen des Kontos (RBAC-Rolle) sowie auf dem Umfang (Abonnement, Ressourcengruppe, Ressource).
+Mithilfe von PAL kann Microsoft Partner ermitteln und würdigen, die zum Erfolg von Azure-Kunden beitragen. Die Zuordnung von Einfluss und Umsatz Ihrer Organisation basiert dabei auf den Berechtigungen des Kontos (Azure-Rolle) sowie auf dem Umfang (Abonnement, Ressourcengruppe, Ressource).
 
 ## <a name="get-access-from-your-customer"></a>Erlangen des Zugriffs seitens Ihres Kunden
 
 Bevor Sie Ihre Partner-ID verknüpfen, muss Ihr Kunde Ihnen über eine der folgenden Optionen Zugriff auf ihre Azure-Ressourcen erteilen:
 
-- **Gastbenutzer**: Ihr Kunde kann Sie als Gastbenutzer hinzufügen und Ihnen eine beliebige rollenbasierte Zugriffssteuerungsrolle (Role-Based Access Control, RBAC) zuweisen. Weitere Informationen finden Sie unter [Hinzufügen von Gastbenutzern aus einem anderen Verzeichnis](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b).
+- **Gastbenutzer**: Ihr Kunde kann Sie als Gastbenutzer hinzufügen und Ihnen eine beliebige Azure-Rolle zuweisen. Weitere Informationen finden Sie unter [Hinzufügen von Gastbenutzern aus einem anderen Verzeichnis](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b).
 
-- **Verzeichniskonto**: Ihr Kunde kann ein Benutzerkonto für die Sie in seinem eigenen Verzeichnis erstellen und dem Konto eine beliebige RBAC-Rolle zuweisen.
+- **Verzeichniskonto**: Ihr Kunde kann ein Benutzerkonto für Sie in seinem eigenen Verzeichnis erstellen und dem Konto eine beliebige Azure-Rolle zuweisen.
 
-- **Dienstprinzipal**: Ihr Kunde kann eine App oder ein Skript von Ihrer Organisation in seinem Verzeichnis hinzufügen und dieser oder diesem eine beliebige RBAC-Rolle zuweisen. Die Identität der App oder des Skripts wird als Dienstprinzipal bezeichnet.
+- **Dienstprinzipal**: Ihr Kunde kann eine App oder ein Skript von Ihrer Organisation in seinem Verzeichnis hinzufügen und dieser oder diesem eine beliebige Azure-Rolle zuweisen. Die Identität der App oder des Skripts wird als Dienstprinzipal bezeichnet.
 
 - **Azure Lighthouse**: Ihr Kunde kann ein Abonnement (oder eine Ressourcengruppe) delegieren, sodass Ihre Benutzer innerhalb Ihres Mandanten daran arbeiten können. Weitere Informationen finden Sie unter [Delegierte Azure-Ressourcenverwaltung](https://docs.microsoft.com/azure/lighthouse/concepts/azure-delegated-resource-management).
 
@@ -168,9 +168,8 @@ Mit Partner Admin Link (PAL) kann Microsoft die Partner identifizieren und erken
 
 **Welche Daten werden über PAL gesammelt?**
 
-Bei der PAL-Zuordnung zu vorhandenen Anmeldeinformationen werden keine neuen Kundendaten an Microsoft geliefert. Für Microsoft werden lediglich die Telemetriedaten bereitgestellt, wenn ein Partner aktiv an der Azure-Umgebung eines Kunden beteiligt ist. Basierend auf den Daten zu den Berechtigungen (RBAC-Rolle) und zum Umfang (Verwaltungsgruppe, Abonnement, Ressourcengruppe, Ressource) des Kontos, die vom Kunden für den Partner bereitgestellt werden, kann Microsoft den Einfluss und den Azure-bezogenen Umsatz aus der Kundenumgebung dem Partnerunternehmen zuordnen. 
+Bei der PAL-Zuordnung zu vorhandenen Anmeldeinformationen werden keine neuen Kundendaten an Microsoft geliefert. Für Microsoft werden lediglich die Telemetriedaten bereitgestellt, wenn ein Partner aktiv an der Azure-Umgebung eines Kunden beteiligt ist. Basierend auf den Daten zu den Berechtigungen (Azure-Rolle) und zum Umfang (Verwaltungsgruppe, Abonnement, Ressourcengruppe, Ressource) des Kontos, die vom Kunden für den Partner bereitgestellt werden, kann Microsoft den Einfluss und den Azure-bezogenen Umsatz aus der Kundenumgebung der Partnerorganisation zuordnen. 
 
 **Wird hierdurch die Sicherheit der Azure-Umgebung eines Kunden beeinträchtigt?**
 
-Bei der PAL-Zuordnung wird lediglich die MPN-ID des Partners den bereits bereitgestellten Anmeldeinformationen hinzugefügt. Es werden keine Berechtigungen (RBAC-Rolle) geändert und keine zusätzlichen Daten von Azure-Diensten an den Partner oder an Microsoft gesendet. 
-
+Bei der PAL-Zuordnung wird lediglich die MPN-ID des Partners den bereits bereitgestellten Anmeldeinformationen hinzugefügt. Es werden keine Berechtigungen (Azure-Rolle) geändert und keine zusätzlichen Daten von Azure-Diensten an den Partner oder an Microsoft gesendet. 

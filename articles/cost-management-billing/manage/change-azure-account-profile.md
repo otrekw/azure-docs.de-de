@@ -6,15 +6,15 @@ ms.reviewer: dcscontentpm
 tags: billing
 ms.service: cost-management-billing
 ms.topic: how-to
-ms.date: 07/24/2020
+ms.date: 08/03/2020
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 449f1e50bda2991db8eec15464a32d295a054c6f
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: cb7978dfa2c3ded2ae8e8c621bcb679f19620a2c
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87286596"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87553477"
 ---
 # <a name="change-the-contact-information-for-your-azure-account"></a>Ändern der Kontaktinformationen Ihres Azure-Kontos
 
@@ -24,7 +24,7 @@ Dieser Artikel unterstützt Sie beim Aktualisieren der Kontaktinformationen Ihre
 
 *Rechnungsadresse*: Bei der Rechnungsadresse handelt es sich um die Anschrift und die Kontaktinformationen der Organisation oder der Person, die für die für ein Abrechnungskonto generierten Rechnungen verantwortlich ist. Bei einem Abrechnungskonto für ein Microsoft-Onlineabonnementprogramm (Microsoft Online Service Program, MOSP) gibt es eine Rechnungsadresse, die auf allen für das Konto generierten Rechnungen angezeigt wird. Bei einem Abrechnungskonto für eine Microsoft-Kundenvereinbarung (Microsoft Customer Agreement, MCA) gibt es eine Rechnungsadresse für jedes Abrechnungsprofil, die auf der für das jeweilige Abrechnungsprofil generierten Rechnung angezeigt wird.
 
-*Kontakt-E-Mail-Adresse für Dienst- und Marketing-E-Mails*: Sie können eine E-Mail-Adresse angeben, die sich von der E-Mail-Adresse unterscheidet, mit der Sie sich anmelden, um wichtige abrechnungs- und dienstbezogene Benachrichtigungen sowie Benachrichtigungen über Empfehlungen für Ihr Azure-Konto zu erhalten.  
+*Kontakt-E-Mail-Adresse für Dienst- und Marketing-E-Mails*: Sie können eine E-Mail-Adresse angeben, die sich von der E-Mail-Adresse unterscheidet, mit der Sie sich anmelden, um wichtige abrechnungs- und dienstbezogene Benachrichtigungen sowie Benachrichtigungen zu Empfehlungen für Ihr Azure-Konto zu erhalten. Dienstbenachrichtigungs-E-Mails, z. B. zu dringenden Sicherheitsproblemen, Preisänderungen oder Breaking Changes bei Diensten, die von Ihrem Konto genutzt werden, werden immer an Ihre Anmeldeadresse gesendet.
 
 ## <a name="update-an-mosp-billing-account-address"></a>Aktualisieren einer Adresse für ein MOSP-Abrechnungskonto
 

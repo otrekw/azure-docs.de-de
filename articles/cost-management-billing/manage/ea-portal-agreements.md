@@ -3,16 +3,16 @@ title: 'Azure EA: Vereinbarungen und Ergänzungen'
 description: In diesem Artikel wird erläutert, wie sich Azure EA-Vereinbarungen und -Zusatzvereinbarungen auf Ihre Azure EA-Portalnutzung auswirken.
 author: bandersmsft
 ms.author: banders
-ms.date: 07/13/2020
+ms.date: 08/04/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: 4d40ffb04882e9809fc818ab492a4c97260d1ff4
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: bc1749ba8246aa2181890c4c846f9159a0557aff
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86537798"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87563482"
 ---
 # <a name="azure-ea-agreements-and-amendments"></a>Azure EA: Vereinbarungen und Ergänzungen
 
@@ -20,7 +20,7 @@ In diesem Artikel wird beschrieben, wie sich Azure-EA-Vereinbarungen und -Zusatz
 
 ## <a name="enrollment-provisioning-status"></a>Registrierungsbereitstellungsstatus
 
-Das Startdatum einer neuen Azure-Vorauszahlung wird durch das Datum definiert, an dem das regionale Betriebszentrum diese verarbeitet hat. Da Azure-Vorauszahlungsbestellungen über das Azure-EA-Portal in der Zeitzone „UTC“ verarbeitet werden, kann es zu Verzögerungen kommen, wenn Ihre Bestellung im Rahmen der Azure-Vorauszahlung in einer anderen Zeitzone verarbeitet wurde. Das Startdatum der Abdeckung in der Bestellung unter https://www.explore.ms zeigt den Beginn der Azure-Vorauszahlung an. Das Startdatum der Abdeckung ist dann, wenn die Azure-Vorauszahlung im Azure EA-Portal angezeigt wird.
+Das Startdatum einer neuen Azure-Vorauszahlung wird durch das Datum definiert, an dem das regionale Betriebszentrum diese verarbeitet hat. Da Azure-Vorauszahlungsbestellungen über das Azure-EA-Portal in der Zeitzone „UTC“ verarbeitet werden, kann es zu Verzögerungen kommen, wenn Ihre Bestellung im Rahmen der Azure-Vorauszahlung in einer anderen Zeitzone verarbeitet wurde. Das Startdatum der Abdeckung in der Bestellung zeigt den Beginn der Azure-Vorauszahlung an. Das Startdatum der Abdeckung ist dann, wenn die Azure-Vorauszahlung im Azure EA-Portal angezeigt wird.
 
 ## <a name="support-for-enterprise-customers"></a>Support für Unternehmenskunden
 
@@ -43,7 +43,7 @@ Eine Registrierung weist einen der folgenden Statuswerte auf. Jeder Wert bestimm
 
 **Abgelaufen**: Die EA-Registrierung läuft ab, wenn das Enddatum für das Enterprise Agreement erreicht ist. Der EA-Kunde hat keine Option für eine Laufzeitverlängerung mehr und alle seine Dienste werden deaktiviert.
 
-Neue Kündigungsformulare werden ab dem 1. August 2019 für kommerzielle Azure-Kunden nicht mehr akzeptiert. Stattdessen werden alle Registrierungen unbegrenzt verlängert. Wenn Sie die Verwendung von Azure-Diensten beenden möchten, schließen Sie Ihr Abonnement im [Azure-Portal](https://portal.azure.com). Alternativ kann Ihr Partner unter https://www.explore.ms eine Anforderung zur Beendigung übermitteln. Für Kunden mit behördlichen Verträgen ändert sich nichts.
+Neue Kündigungsformulare werden ab dem 1. August 2019 für kommerzielle Azure-Kunden nicht mehr akzeptiert. Stattdessen werden alle Registrierungen unbegrenzt verlängert. Wenn Sie die Verwendung von Azure-Diensten beenden möchten, schließen Sie Ihr Abonnement im [Azure-Portal](https://portal.azure.com). Alternativ kann Ihr Partner eine Anforderung zur Beendigung übermitteln. Für Kunden mit behördlichen Verträgen ändert sich nichts.
 
 **Übertragen**: Der Status „Übertragen“ gilt für Registrierungen, deren zugeordnete Konten und Dienste in eine neue Registrierung übertragen werden. Registrierungen werden nicht automatisch übertragen, wenn während der Verlängerung eine neue Registrierungsnummer generiert wird. Die vorherige Registrierungsnummer muss in die Verlängerungsanforderung des Kunden aufgenommen werden, damit eine automatische Übertragung erfolgt.
 

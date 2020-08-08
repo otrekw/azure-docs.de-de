@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 3572cbb3f8c4a4f20c0141ac1fae5f0aa6fbd216
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a48e4b594b82f6e910db26fc2319032fbef30b6b
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87044989"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87445999"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>Tutorial: Erstellen und Verwalten von Azure-Budgets
 
@@ -40,7 +40,7 @@ In diesem Tutorial lernen Sie Folgendes:
 
 Budgets werden für die folgenden Arten von Azure-Kontentypen und -Bereichen unterstützt:
 
-- RBAC-Bereiche (Role-Based Access Control, rollenbasierte Zugriffssteuerung)
+- Bereiche für rollenbasierte Zugriffssteuerung von Azure (Azure RBAC)
     - Verwaltungsgruppen
     - Subscription
 - Enterprise Agreement-Bereiche

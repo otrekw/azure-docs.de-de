@@ -3,17 +3,17 @@ title: Erste Schritte mit Azure Cost Management für Partner
 description: In diesem Artikel wird erläutert, wie Partner Features von Azure Cost Management verwenden und den Zugriff auf Cost Management für ihre Kunden aktivieren.
 author: bandersmsft
 ms.author: banders
-ms.date: 07/28/2020
+ms.date: 08/04/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: 25a64dd4d06c24b0f7e1f8433a1abf5f67fa6eba
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: b5f00ee67803819b4d13cdc630bed3de26ac1be9
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372143"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87563941"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>Erste Schritte mit Azure Cost Management für Partner
 
@@ -140,7 +140,7 @@ Wenn die Richtlinie auf **Nein** festgelegt ist, ist Azure Cost Management für 
 
 Wenn die Kostenrichtlinie auf **Ja** festgelegt ist, können Abonnementbenutzer, die dem Kundenmandanten zugeordnet sind, nutzungsbasierte Nutzungsgebühren anzeigen.
 
-Wenn die Kostensichtbarkeits-Richtlinie aktiviert ist, werden für alle Dienste im Rahmen der Abonnementnutzung die durch nutzungsbasierte Gebühren anfallenden Kosten angezeigt. Die Reservierungsnutzung wird ohne Gebühren für tatsächliche und amortisierte Kosten angezeigt. Käufe und Berechtigungen werden keinem bestimmten Abonnement zugeordnet. Käufe werden also nicht im Abonnementbereich angezeigt.
+Wenn die Kostensichtbarkeits-Richtlinie aktiviert ist, werden für alle Dienste im Rahmen der Abonnementnutzung die durch nutzungsbasierte Gebühren anfallenden Kosten angezeigt. Die Reservierungsnutzung wird ohne Gebühren für tatsächliche und amortisierte Kosten angezeigt. Käufe und Berechtigungen werden keinem bestimmten Abonnement zugeordnet. Käufe werden also nicht im Abonnementbereich angezeigt. Der globale Administrator/Administrator-Agent eines direkten Partners oder indirekten Anbieters kann auch mithilfe der [Update Customer-API](/rest/api/billing/2019-10-01-preview/policies/updatecustomer) die Richtlinie für Kostentransparenz jedes Kunden im gewünschten Umfang festlegen.
 
 ### <a name="view-subscription-costs-in-the-customer-tenant"></a>Anzeigen der Abonnementkosten auf dem Kundenmandanten
 
