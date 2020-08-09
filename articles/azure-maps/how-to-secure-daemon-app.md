@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 066118622f19d7efac71ddd66ac1abe058008b55
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: cc39f8250ddc1b2fb1baaf073969f6aab5b1372c
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87126770"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87531370"
 ---
 # <a name="secure-a-daemon-application"></a>Schützen einer Daemon-Anwendung
 
@@ -109,7 +109,7 @@ Bei der Ausführung in einer nicht von Azure stammenden Umgebung sind verwaltete
 
 ### <a name="grant-role-based-access-for-the-daemon-application-to-azure-maps"></a>Gewähren des rollenbasierten Zugriffs auf Azure Maps für die Daemon-Anwendung
 
-Sie gewähren die *rollenbasierte Zugriffssteuerung*, indem Sie entweder der verwalteten Identität oder dem Dienstprinzipal mindestens eine Azure Maps-Rollendefinition für die Zugriffssteuerung zuweisen. Informationen über die für Azure Maps verfügbaren Rollendefinitionen für die rollenbasierte Zugriffssteuerung finden Sie unter **Zugriffssteuerung (IAM)** . Wählen Sie **Rollen** aus, und suchen Sie dann nach Rollen, die mit *Azure Maps* beginnen. Hierbei handelt es sich um die Azure Maps-Rollen, denen Sie den Zugriff gewähren können.
+Sie gewähren die *rollenbasierte Zugriffssteuerung*, indem Sie entweder der verwalteten Identität oder dem Dienstprinzipal mindestens eine Azure Maps-Rollendefinition für die Zugriffssteuerung zuweisen. Informationen über die für Azure Maps verfügbaren Rollendefinitionen für die rollenbasierte Zugriffssteuerung von Azure finden Sie unter **Zugriffssteuerung (IAM)** . Wählen Sie **Rollen** aus, und suchen Sie dann nach Rollen, die mit *Azure Maps* beginnen. Hierbei handelt es sich um die Azure Maps-Rollen, denen Sie den Zugriff gewähren können.
 
 > [!div class="mx-imgBorder"]
 > ![Anzeigen verfügbarer Rollen](./media/how-to-manage-authentication/how-to-view-avail-roles.png)

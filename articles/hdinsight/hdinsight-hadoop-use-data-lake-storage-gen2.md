@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/24/2020
-ms.openlocfilehash: 2a534bd0cb89e837ff2315cb3fb9cfe70ad01f5f
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 2992324a1080b75a98264958f56ea28e93b54651
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86078985"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534582"
 ---
 # <a name="use-azure-data-lake-storage-gen2-with-azure-hdinsight-clusters"></a>Verwenden von Azure Data Lake Storage Gen2 mit Azure HDInsight-Clustern
 
@@ -79,7 +79,7 @@ Weisen Sie die verwaltete Identität der Rolle **Besitzer von Speicherblobdaten*
 1. Klicken Sie auf die Schaltfläche **+ Rollenzuweisung hinzufügen**, um eine neue Rolle hinzuzufügen.
 1. Wählen Sie im Fenster **Rollenzuweisung hinzufügen** die Rolle **Besitzer von Speicherblobdaten** aus. Wählen Sie dann das Abonnement aus, das über die verwaltete Identität und das Speicherkonto verfügt. Suchen Sie als Nächstes die vom Benutzer zugewiesene verwaltete Identität, die Sie zuvor erstellt haben. Wählen Sie abschließend die verwaltete Identität aus, sodass sie unter **Ausgewählte Mitglieder** aufgelistet wird.
 
-    ![Screenshot: Zuweisen einer RBAC-Rolle](./media/hdinsight-hadoop-use-data-lake-storage-gen2/add-rbac-role3-window.png)
+    ![Screenshot: Zuweisen einer Azure-Rolle](./media/hdinsight-hadoop-use-data-lake-storage-gen2/add-rbac-role3-window.png)
 
 1. Wählen Sie **Speichern** aus. Die vom Benutzer zugewiesene Identität, die Sie ausgewählt haben, wird jetzt unter der ausgewählten Rolle aufgelistet.
 1. Nachdem das anfängliche Setup abgeschlossen ist, können Sie einen Cluster über das Portal erstellen. Der Cluster muss sich in der gleichen Azure-Region befinden wie das Speicherkonto. Wählen Sie auf der Registerkarte **Speicher** des Menüs zur Clustererstellung die folgenden Optionen aus:
@@ -159,7 +159,7 @@ Data Lake Storage Gen2 verwendet ein Zugriffssteuerungsmodell, das sowohl die ro
 
 Für die RBAC in Azure werden Rollenzuweisungen verwendet, um Benutzern, Gruppen und Dienstprinzipalen Berechtigungen für Azure-Ressourcen effektiv zuzuweisen. In der Regel sind diese Azure-Ressourcen auf Ressourcen auf oberster Ebene (z.B. Azure Storage-Konten) beschränkt. Für Azure Storage und damit auch Data Lake Storage Gen2 wurde dieser Mechanismus auf die Dateisystemressource ausgeweitet.
 
- Weitere Informationen zu Dateiberechtigungen mit rollenbasierter Zugriffssteuerung finden Sie im Abschnitt „Rollenbasierte Zugriffssteuerung in Azure (RBAC)“ unter [Zugriffssteuerung in Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-access-control.md#azure-role-based-access-control-rbac).
+ Weitere Informationen zu Dateiberechtigungen mit rollenbasierter Zugriffssteuerung finden Sie unter [Rollenbasierte Zugriffssteuerung in Azure (Azure RBAC)](../storage/blobs/data-lake-storage-access-control.md#azure-role-based-access-control-rbac).
 
 Weitere Informationen zu Dateiberechtigungen mit ACLs finden Sie im Abschnitt „Zugriffssteuerungslisten für Dateien und Verzeichnisse“ unter [Zugriffssteuerung in Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-access-control.md#access-control-lists-on-files-and-directories).
 

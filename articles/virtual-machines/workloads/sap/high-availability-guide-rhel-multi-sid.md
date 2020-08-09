@@ -12,14 +12,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 03/24/2020
+ms.date: 08/04/2020
 ms.author: radeltch
-ms.openlocfilehash: 1de6ce3a653b4ef007c6f8c878cbe2aa49f507ca
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 892c45db835457d5f0127d7377d722fc7f0df518
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87085179"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87760752"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-red-hat-enterprise-linux-for-sap-applications-multi-sid-guide"></a>Hochverfügbarkeit für SAP NetWeaver auf virtuellen Azure-Computern unter Red Hat Enterprise Linux für SAP-Anwendungen: Multi-SID-Leitfaden
 
@@ -367,9 +367,11 @@ In dieser Dokumentation wird Folgendes vorausgesetzt:
       #Restart_Program_01 = local $(_EN) pf=$(_PF)
       Start_Program_01 = local $(_EN) pf=$(_PF)
 
-      # Add the keep alive parameter
+      # Add the keep alive parameter, if using ENSA1
       enque/encni/set_so_keepalive = true
       ```
+
+     Stellen Sie sowohl für ENSA1 als auch für ENSA2 sicher, dass die `keepalive`-Parameter des Betriebssystems wie im SAP-Hinweis [1410736](https://launchpad.support.sap.com/#/notes/1410736) beschrieben festgelegt sind.    
 
    * ERS-Profil
 

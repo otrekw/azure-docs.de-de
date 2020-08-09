@@ -5,22 +5,22 @@ ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
 ms.author: dpalled
-manager: cshankar
+manager: diviso
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 04/17/2020
+ms.date: 06/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: 9604f0c6eeb9d0ac4b7d07f1ab1ba03285fd60fe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a552f03c8a8fa05ed7d2c6eb87374d4e7e17838d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81640070"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87070081"
 ---
-# <a name="how-to-scale-your-time-series-insights-environment"></a>Gewusst wie: Skalieren der Azure Time Series Insights-Umgebung
+# <a name="how-to-scale-your-azure-time-series-insights-gen1-environment"></a>Vorgehensweise zur Skalierung Ihrer Azure Time Series Insights Gen1-Umgebung
 
-In diesem Artikel erfahren Sie, wie Sie die Kapazität Ihrer Time Series Insights-Umgebung über das [Azure-Portal](https://portal.azure.com) ändern. Die Kapazität ist der Multiplikator, der auf die Erfassungsrate, Speicherkapazität und Kosten der gewählten SKU angewendet wird.
+In diesem Artikel erfahren Sie, wie Sie die Kapazität Ihrer Azure Time Series Insights-Umgebung über das [Azure-Portal](https://portal.azure.com) ändern. Die Kapazität ist der Multiplikator, der auf die Erfassungsrate, Speicherkapazität und Kosten der gewählten SKU angewendet wird.
 
 Über das Azure-Portal können Sie die Kapazität innerhalb einer bestimmten Preis-SKU erhöhen oder verringern.
 
@@ -32,11 +32,11 @@ Die Tarif-SKU darf hingegen nicht geändert werden. Eine Umgebung mit der SKU �
 
 ## <a name="change-the-capacity-of-your-environment"></a>Ändern der Kapazität Ihrer Umgebung
 
-1. Navigieren Sie im Azure-Portal zu Ihrer Time Series Insights-Umgebung, und wählen Sie sie aus.
+1. Navigieren Sie im Azure-Portal zu Ihrer Azure Time Series Insights-Umgebung, und wählen Sie sie aus.
 
-1. Wählen Sie im Menü für Ihre Time Series Insights-Umgebung die Option **Speicherkonfiguration** aus.
+1. Wählen Sie im Menü für Ihre Azure Time Series Insights-Umgebung die Option **Speicherkonfiguration** aus.
 
-   [![Konfigurieren Ihrer Time Series Insights-Kapazität](media/scale-your-environment/scale-your-environment-configure.png)](media/scale-your-environment/scale-your-environment-configure.png#lightbox)
+   [![Konfigurieren Ihrer Azure Time Series Insights-Kapazität](media/scale-your-environment/scale-your-environment-configure.png)](media/scale-your-environment/scale-your-environment-configure.png#lightbox)
 
 1. Passen Sie die Kapazität mithilfe des Schiebereglers **Kapazität** an Ihre Anforderungen in den Bereichen Erfassungsrate und Speicherkapazität an. **Erfassungsrate**, **Speicherkapazität** und **voraussichtliche Kosten** werden dynamisch aktualisiert, um die Auswirkungen der Änderung zu zeigen.
 
@@ -50,7 +50,7 @@ Die Tarif-SKU darf hingegen nicht geändert werden. Eine Umgebung mit der SKU �
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Weitere Informationen finden Sie unter [Grundlegendes zur Vermerkdauer in Time Series Insights](time-series-insights-concepts-retention.md).
+- Weitere Informationen finden Sie unter [Grundlagen der Datenaufbewahrung in Azure Time Series Insights](time-series-insights-concepts-retention.md).
 
 - Machen Sie sich mit dem [Konfigurieren der Datenaufbewahrung in Azure Time Series Insights](time-series-insights-how-to-configure-retention.md) vertraut.
 

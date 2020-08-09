@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 08/28/2019
 ms.author: tiag
-ms.openlocfilehash: 5353bad3ff631fd7baa5d9892d38449ba622ea46
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 5a2fd7fcfdae8559bfb39bffff7c73c7082a86aa
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284675"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543281"
 ---
 # <a name="linux-vm-boots-to-grub-rescue"></a>Linux-VM startet mit Grub Rescue
 
@@ -35,7 +35,7 @@ Führen Sie die passenden Problembehandlungsschritte für Ihren Fehler aus:
 * Der Fehler **Unbekanntes Dateisystem** kann auf eine Beschädigung des Dateisystems auf der Startpartition oder auf eine falsche Kernelkonfiguration zurückzuführen sein.
 
    * Informationen zur Vorgehensweise bei Dateisystemproblemen finden Sie im Artikel [Linux Recovery: Cannot SSH to Linux VM due to file system errors (fsck, inodes)](/archive/blogs/linuxonazure/linux-recovery-cannot-ssh-to-linux-vm-due-to-file-system-errors-fsck-inodes) (Linux-Wiederherstellung: Aufgrund von Dateisystemfehlern keine SSH-Verbindung mit virtuellem Linux-Computer möglich (fsck, inodes)).
-   * Informationen zur Vorgehensweise bei Kernelproblemen finden Sie im Artikel [Linux Recovery: Manually fixing non-boot issues related to Kernel problems](http://linuxonazure.azurewebsites.net/linux-recovery-fixing-non-boot-issues-related-to-kernel-problems-using-chroot/) (Linux-Wiederherstellung: Manuelles Beheben nicht startbezogener Probleme im Zusammenhang mit Kernelproblemen) oder unter [Linux Recovery: Fixing non-boot issues related to Kernel problems using chroot](http://linuxonazure.azurewebsites.net/linux-recovery-fixing-non-boot-issues-related-to-kernel-problems-using-chroot/) (Linux-Wiederherstellung: Beheben nicht startbezogener Probleme im Zusammenhang mit Kernelproblemen mithilfe von chroot).
+   * Wenn Kernel Probleme vorliegen, führen Sie die Schritte in den folgenden Artikeln aus: [Wiederherstellen eines virtuellen Azure Linux-Computers von kernelbezogenen Startproblemen](https://support.microsoft.com/help/4091524/how-recover-azure-linux-vm-from-kernel-related-boot-related-issues) oder [Linux-Wiederherstellung: Fixing non-boot issues related to Kernel problems using chroot](http://linuxonazure.azurewebsites.net/linux-recovery-fixing-non-boot-issues-related-to-kernel-problems-using-chroot/) (Linux-Wiederherstellung: Beheben nicht startbezogener Probleme im Zusammenhang mit Kernelproblemen mithilfe von chroot).
    
 ### <a name="error---file-not-found"></a>Fehler: Datei nicht gefunden
 

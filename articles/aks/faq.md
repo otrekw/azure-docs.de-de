@@ -2,13 +2,13 @@
 title: Häufig gestellte Fragen zu Azure Kubernetes Service (AKS)
 description: Finden Sie Antworten auf einige der häufig gestellten Fragen zu Azure Kubernetes Service (AKS).
 ms.topic: conceptual
-ms.date: 05/14/2020
-ms.openlocfilehash: ba4ceaf0d7f9e3b344b2a6efbb84f2145c4a2f65
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.date: 07/31/2020
+ms.openlocfilehash: 6d30bc1faa6a896233d09f9247fe8c56f82371fa
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86275715"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87485625"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Häufig gestellte Fragen zu Azure Kubernetes Service (AKS)
 
@@ -79,7 +79,7 @@ Beachten Sie beim Verwenden der Knotenressourcengruppe, dass Folgendes nicht mö
 
 ## <a name="can-i-modify-tags-and-other-properties-of-the-aks-resources-in-the-node-resource-group"></a>Kann ich Tags und andere Eigenschaften der AKS-Ressourcen in der Knotenressourcengruppe ändern?
 
-Wenn Sie die in Azure erstellten Tags und andere Ressourceneigenschaften in der Knotenressourcengruppe ändern oder löschen, kann dies zu unerwarteten Ergebnissen wie Skalierungs- und Aktualisierungsfehlern führen. In AKS können Sie benutzerdefinierte Tags erstellen und von Endbenutzern erstellte Tags ändern. Sie können benutzerdefinierte Tags erstellen oder ändern, um beispielsweise eine Geschäftseinheit oder eine Kostenstelle zuzuweisen. Hierzu können Sie Azure-Richtlinien erstellen, die auf die verwaltete Ressourcengruppe ausgerichtet sind.
+Wenn Sie die in Azure erstellten Tags und andere Ressourceneigenschaften in der Knotenressourcengruppe ändern oder löschen, kann dies zu unerwarteten Ergebnissen wie Skalierungs- und Aktualisierungsfehlern führen. In AKS können Sie benutzerdefinierte Tags, die von Endbenutzern erstellt wurden, erstellen und ändern, und Sie können diese Tags hinzufügen, wenn Sie [einen Knotenpool erstellen](use-multiple-node-pools.md#specify-a-taint-label-or-tag-for-a-node-pool). Sie können benutzerdefinierte Tags erstellen oder ändern, um beispielsweise eine Geschäftseinheit oder eine Kostenstelle zuzuweisen. Dies können Sie auch durch Erstellen von Azure-Richtlinien erreichen, die auf die verwaltete Ressourcengruppe ausgerichtet sind.
 
 **Von Azure erstellte Tags** für Ressourcen unter der Knotenressourcengruppe im AKS-Cluster dürfen dagegen nicht geändert werden, da dies zu einer Verletzung des Servicelevelziels (Service-Level Objective, SLO) führt. Weitere Informationen finden Sie unter [Bietet AKS eine Vereinbarung zum Servicelevel?](#does-aks-offer-a-service-level-agreement)
 
@@ -137,7 +137,7 @@ AKS-Agent-Knoten werden als standardmäßige Azure-VMs abgerechnet. Wenn Sie als
 
 ## <a name="can-i-movemigrate-my-cluster-between-azure-tenants"></a>Kann ich meinen Cluster zwischen Azure-Mandanten verschieben/migrieren?
 
-Der Befehl `az aks update-credentials` kann verwendet werden, um einen AKS-Cluster zwischen Azure-Mandanten zu verschieben. Folgen Sie den Anweisungen unter [Aktualisieren oder Erstellen eines Dienstprinzipals](./update-credentials.md), und [aktualisieren Sie den AKS-Cluster mit neuen Anmeldeinformationen](./update-credentials.md#update-aks-cluster-with-new-service-principal-credentials).
+Das Verschieben Ihres AKS-Clusters zwischen Mandanten wird derzeit nicht unterstützt.
 
 ## <a name="can-i-movemigrate-my-cluster-between-subscriptions"></a>Kann ich meinen Cluster zwischen Abonnements verschieben/migrieren?
 
@@ -190,6 +190,10 @@ AKS verfügt zwar über Resilienzmechanismen, um eine solche Konfiguration zu ü
 ## <a name="can-i-use-custom-vm-extensions"></a>Kann ich benutzerdefinierte VM-Erweiterungen verwenden?
 
 Nein. AKS ist ein verwalteter Dienst, und die Bearbeitung der IaaS-Ressourcen wird nicht unterstützt. Wenn Sie benutzerdefinierte Komponenten installieren möchten, nutzen Sie die Kubernetes-APIs und -Mechanismen. Nutzen Sie beispielsweise DaemonSets, um erforderliche Komponenten zu installieren.
+
+## <a name="does-aks-store-any-customer-data-outside-of-the-clusters-region"></a>Speichert AKS Kundendaten außerhalb der Region des Clusters?
+
+Nein. Alle Daten, die in einem AKS-Cluster erstellt werden, verbleiben innerhalb der Region des Clusters.
 
 <!-- LINKS - internal -->
 

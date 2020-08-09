@@ -4,16 +4,16 @@ description: Erfahren Sie, wie Sie Managed Cache Service- und In-Role Cache-Anwe
 author: yegu-ms
 ms.service: cache
 ms.topic: conceptual
-ms.date: 05/30/2017
+ms.date: 07/23/2020
 ms.author: yegu
-ms.openlocfilehash: 909329a4326354a890c3c4645002f7248f30e8fa
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 3f5cfccd1f85f68c619192496c62bf80ea8d4785
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86184785"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87170176"
 ---
-# <a name="migrate-from-managed-cache-service-to-azure-cache-for-redis"></a>Migrieren von Managed Cache Service zu Azure Cache for Redis
+# <a name="migrate-from-managed-cache-service-to-azure-cache-for-redis-deprecated"></a>Migrieren von Managed Cache Service zu Azure Cache for Redis (veraltet)
 Zum Migrieren von Anwendungen, die Azure Managed Cache Service verwenden, zu Azure Cache for Redis, sind je nach den von Ihrer Cachinganwendung verwendeten Features nur minimale Änderungen an der Anwendung erforderlich. Sie APIs sind zwar nicht identisch, aber doch sehr ähnlich. Der vorhandene Code für die Verwendung von Managed Cache Service kann nach minimalen Änderungen für den Zugriff auf einen Cache wiederverwendet werden. In diesem Artikel wird beschrieben, wie Sie die erforderlichen Änderungen an der Konfiguration und der Anwendung vornehmen, um Managed Cache Service-Anwendungen zur Verwendung von Azure Cache for Redis zu migrieren. Zudem erfahren Sie, wie Sie mit einigen der Features von Azure Cache for Redis die Funktionen eines Managed Cache Service-Caches implementieren.
 
 >[!NOTE]

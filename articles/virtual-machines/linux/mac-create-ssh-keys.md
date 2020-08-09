@@ -4,19 +4,19 @@ description: Es wird beschrieben, wie Sie ein SSH-Schlüsselpaar (öffentlicher 
 author: cynthn
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
-ms.topic: article
+ms.topic: how-to
 ms.date: 12/06/2019
 ms.author: cynthn
-ms.openlocfilehash: df02378e638e9883d802318eba86dbfb066cd6cb
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 33ba816227db4cf958fd30c9dac1a0745505c504
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86527288"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87513688"
 ---
 # <a name="quick-steps-create-and-use-an-ssh-public-private-key-pair-for-linux-vms-in-azure"></a>Kurzanleitung: Erstellen und Verwenden eines SSH-Schlüsselpaars (öffentlich und privat) für virtuelle Linux-Computer in Azure
 
-Mit einem SSH-Schlüsselpaar (Secure Shell) können Sie virtuelle Computer (VMs) in Azure erstellen, bei deren Authentifizierung SSH-Schlüssel verwendet werden, sodass zum Anmelden keine Kennwörter mehr erforderlich sind. In diesem Artikel erfahren Sie, wie Sie für virtuelle Linux-Computer schnell eine Datei mit einem SSH-Schlüsselpaar (ein öffentlicher und ein privater Schlüssel) generieren. Sie können diese Schritte mit Azure Cloud Shell, einem macOS- oder Linux-Host, dem Windows-Subsystem für Linux und anderen Tools ausführen, die OpenSSH unterstützen. 
+Mit einem SSH-Schlüsselpaar (Secure Shell) können Sie virtuelle Computer (VMs) in Azure erstellen, bei deren Authentifizierung SSH-Schlüssel verwendet werden. In diesem Artikel erfahren Sie, wie Sie für virtuelle Linux-Computer schnell eine Datei mit einem SSH-Schlüsselpaar (ein öffentlicher und ein privater Schlüssel) generieren. Sie können diese Schritte mit Azure Cloud Shell, einem macOS- oder einem Linux-Host Linux ausführen. 
 
 > [!NOTE]
 > Mit SSH-Schlüsseln erstellte VMs sind standardmäßig mit deaktivierten Kennwörtern konfiguriert, was die Schwierigkeit für Brute-Force-Angriffe wesentlich erhöht. 
@@ -37,10 +37,10 @@ Der folgende Befehl erstellt ein SSH-Schlüsselpaar mittels RSA-Verschlüsselung
 ssh-keygen -m PEM -t rsa -b 4096
 ```
 
-Bei Verwendung der [Azure CLI](/cli/azure) zum Erstellen Ihres virtuellen Computers mit dem Befehl [az vm create](/cli/azure/vm#az-vm-create) können Sie optional Dateien für öffentliche und private SSH-Schlüssel mit der Option `--generate-ssh-keys` generieren. Die Schlüsseldateien im Verzeichnis „~/.ssh“ gespeichert, sofern nicht mit der Option `--ssh-dest-key-path` anders angegeben. Die Option `--generate-ssh-keys` überschreibt keine vorhandenen Schlüsseldateien, sondern gibt stattdessen einen Fehler zurück. Ersetzen Sie im folgenden Befehl *VMname* und *RGname* durch Ihre eigenen Werte:
+Bei Verwendung der [Azure CLI](/cli/azure) zum Erstellen Ihres virtuellen Computers mit dem Befehl [az vm create](/cli/azure/vm#az-vm-create) können Sie optional Dateien für öffentliche und private SSH-Schlüssel mit der Option `--generate-ssh-keys` generieren. Die Schlüsseldateien im Verzeichnis „~/.ssh“ gespeichert, sofern nicht mit der Option `--ssh-dest-key-path` anders angegeben. Wenn ein SSH-Schlüsselpaar bereits vorhanden ist und die Option `--generate-ssh-keys` verwendet wird, wird kein neues Schlüsselpaar generiert, sondern stattdessen wird das vorhandene Schlüsselpaar verwendet. Ersetzen Sie im folgenden Befehl *VMname* und *RGname* durch Ihre eigenen Werte:
 
 ```azurecli
-az vm create --name VMname --resource-group RGname --generate-ssh-keys 
+az vm create --name VMname --resource-group RGname --image UbuntuLTS --generate-ssh-keys 
 ```
 
 ## <a name="provide-an-ssh-public-key-when-deploying-a-vm"></a>Angeben eines öffentlichen SSH-Schlüssels beim Bereitstellen eines virtuellen Computers

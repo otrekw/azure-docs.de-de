@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.subservice: machine-learning
 ms.date: 04/15/2020
 ms.author: euang
-ms.openlocfilehash: b7ae2e3045b8f6e56b756ac1b2a4233ac8af9688
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: f31e238c705a4b03c400a38fa6eb5f42db7204b0
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373452"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87535024"
 ---
 # <a name="build-a-machine-learning-app-with-apache-spark-mllib-and-azure-synapse-analytics"></a>Erstellen einer Machine Learning-App mit Apache Spark MLlib und Azure Synapse Analytics
 
@@ -148,7 +148,7 @@ plt.show()
 ![Kastengrafikplot](./media/apache-spark-machine-learning-mllib-notebook/apache-spark-mllib-eda-box-whisker.png)
 ![Punktdiagramm](./media/apache-spark-machine-learning-mllib-notebook/apache-spark-mllib-eda-scatter.png)
 
-## <a name="preparing-the-data"></a>Vorbereiten der Daten
+## <a name="prepare-the-data"></a>Vorbereiten der Daten
 
 Die Daten im Rohformat sind häufig nicht für die direkte Übergabe an ein Modell geeignet. Eine Reihe von Aktionen muss an den Daten ausgeführt werden, um sie in einen Zustand zu versetzen, in dem das Modell sie verwenden kann.
 
@@ -225,7 +225,7 @@ train_data_df, test_data_df = encoded_final_df.randomSplit([trainingFraction, te
 Nachdem nun zwei DataFrames vorhanden sind, besteht die nächste Aufgabe darin, die Modellformel zu erstellen, sie mit dem Trainings-DataFrame auszuführen und dann anhand des Test-DataFrames zu validieren. Sie sollten mit verschiedenen Versionen der Modellformel experimentieren, um die Auswirkungen verschiedener Kombinationen herauszufinden.
 
 > [!Note]
-> Sie benötigen in Azure die RBAC-Rolle „Mitwirkender an Storage-Blobdaten“, um das Modell speichern zu können. Navigieren Sie unter Ihrem Speicherkonto zu „Zugriffssteuerung (IAM)“, und klicken Sie auf „Rollenzuweisung hinzufügen“. Weisen Sie Ihrem SQL-Datenbank-Server die RBAC-Rolle „Mitwirkender an Storage-Blobdaten“ zu. Nur Mitglieder mit der Berechtigung „Besitzer“ können diesen Schritt ausführen. Verschiedene integrierte Azure-Rollen finden Sie in [diesem Leitfaden](../../role-based-access-control/built-in-roles.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
+> Sie benötigen in Azure die Azure-Rolle „Mitwirkender an Storage-Blobdaten“, um das Modell speichern zu können. Navigieren Sie unter Ihrem Speicherkonto zu „Zugriffssteuerung (IAM)“, und klicken Sie auf „Rollenzuweisung hinzufügen“. Weisen Sie Ihrem SQL-Datenbank-Server die Azure-Rolle „Mitwirkender an Storage-Blobdaten“ zu. Nur Mitglieder mit der Berechtigung „Besitzer“ können diesen Schritt ausführen. Verschiedene integrierte Azure-Rollen finden Sie in [diesem Leitfaden](../../role-based-access-control/built-in-roles.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
 
 ```python
 ## Create a new LR object for the model

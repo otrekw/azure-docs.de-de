@@ -8,12 +8,12 @@ ms.author: rogarana
 ms.service: virtual-machines-linux
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 0847f2360a3562f96454992470e3cc2000f66b11
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: e0a1f97cc7467d115ecc8462a301e45f90d73818
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86502723"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87449152"
 ---
 # <a name="server-side-encryption-of-azure-disk-storage"></a>Serverseitige Verschlüsselung von Azure Disk Storage
 
@@ -31,7 +31,7 @@ In den folgenden Abschnitten werden die einzelnen Optionen für die Schlüsselve
 
 ### <a name="platform-managed-keys"></a>Von der Plattform verwaltete Schlüssel
 
-Verwaltete Datenträger verwenden standardmäßig von der Plattform verwaltete Verschlüsselungsschlüssel. Seit 10. Juni 2017 werden alle neuen verwalteten Datenträger, Momentaufnahmen, Images und neuen Daten, die auf vorhandene verwaltete Datenträger geschrieben wurden, im Ruhezustand automatisch mit von der Plattform verwalteten Schlüsseln verschlüsselt.
+Verwaltete Datenträger verwenden standardmäßig von der Plattform verwaltete Verschlüsselungsschlüssel. Alle verwalteten Datenträger, Momentaufnahmen, Images und Daten, die auf vorhandene verwaltete Datenträger geschrieben wurden, werden im Ruhezustand automatisch mit von der Plattform verwalteten Schlüsseln verschlüsselt.
 
 ### <a name="customer-managed-keys"></a>Vom Kunden verwaltete Schlüssel
 
@@ -80,8 +80,7 @@ Kunden mit besonders hohen Sicherheitsanforderungen, die befürchten, dass ein e
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Aktivieren der End-to-End-Verschlüsselung mit Verschlüsselung auf dem Host – Azure CLI](disks-enable-host-based-encryption-cli.md)
-- [Azure CLI: Aktivieren der doppelten Verschlüsselung für ruhende Daten auf Ihren verwalteten Datenträgern](disks-enable-double-encryption-at-rest-cli.md)
-- [Azure CLI: Aktivieren kundenseitig verwalteter Schlüssel mit serverseitiger Verschlüsselung – verwaltete Datenträger](disks-enable-customer-managed-keys-cli.md)
-- [Aktivieren kundenseitig verwalteter Schlüssel mit serverseitiger Verschlüsselung – verwaltete Datenträger – Portal](disks-enable-customer-managed-keys-portal.md)
+- Aktivieren der End-to-End-Verschlüsselung mit Verschlüsselung auf dem Host mit entweder [CLI](disks-enable-host-based-encryption-cli.md) oder dem [Azure-Portal](disks-enable-host-based-encryption-portal.md).
+- Aktivieren sie doppelte Verschlüsselung für verwaltete Datenträger mithilfe der [CLI](disks-enable-double-encryption-at-rest-cli.md) oder des [Azure-Portals](disks-enable-double-encryption-at-rest-portal.md).
+- Aktivieren Sie kundenseitig verwaltete Schlüssel für verwaltete Datenträger mit der [CLI](disks-enable-customer-managed-keys-cli.md) oder dem [Azure-Portal](disks-enable-customer-managed-keys-portal.md).
 - [Was ist der Azure-Schlüsseltresor?](../../key-vault/general/overview.md)

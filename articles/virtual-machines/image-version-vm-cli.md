@@ -9,12 +9,13 @@ ms.workload: infrastructure
 ms.date: 05/01/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 92660063a5699855b9ae2d745136327cf8bf287a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: fa4a649115f8e89c27f435888b682b7de36e9894
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86494699"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533919"
 ---
 # <a name="create-an-image-version-from-a-vm-in-azure-using-the-azure-cli"></a>Erstellen einer Imageversion von einer VM in Azure mithilfe der Azure CLI
 
@@ -99,7 +100,7 @@ az sig image-version create \
 > [!NOTE]
 > Sie müssen warten, bis die Imageversion vollständig erstellt und repliziert wurde, bevor Sie dieses verwaltete Image verwenden können, um eine weitere Imageversion zu erstellen.
 >
-> Sie können Ihr Image auch in einem Premium-Speicher durch Hinzufügen von `--storage-account-type  premium_lrs` oder in einem [zonenredundanten Speicher](../storage/common/storage-redundancy.md) speichern, indem Sie `--storage-account-type  standard_zrs` hinzufügen, wenn Sie die Imageversion erstellen.
+> Fügen Sie beim Erstellen der Imageversion entweder `--storage-account-type  premium_lrs` hinzu, um Ihr Image in Premium-Speicher zu speichern, oder `--storage-account-type  standard_zrs`, um Ihr Image in [zonenredundantem Speicher](../storage/common/storage-redundancy.md) zu speichern.
 >
 
 ## <a name="next-steps"></a>Nächste Schritte

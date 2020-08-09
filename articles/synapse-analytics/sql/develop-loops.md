@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: ec15f87bdbf381b71faa7cefd986dd5e55e17a19
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 9db7f2016de01edbedfa9e7d7254561fea957d2a
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85964990"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495300"
 ---
 # <a name="use-t-sql-loops-in-synapse-sql"></a>Verwenden von T-SQL-Schleifen in Synapse SQL
 In diesem Artikel erhalten Sie wichtige Tipps zur Verwendung von T-SQL-Schleifen, zum Ersetzen von Cursorn und zur Entwicklung verwandter Lösungen mit SQL-Pool in Synapse SQL.
@@ -26,7 +26,7 @@ Synapse SQL unterstützt die [WHILE](https://docs.microsoft.com/sql/t-sql/langua
 
 Schleifen im SQL-Pool sind nützlich, um im SQL-Code definierte Cursor zu ersetzen. Glücklicherweise sind fast alle Cursor, die per SQL-Code geschrieben werden, schreibgeschützte Cursor für den schnellen Vorlauf. Daher sind [WHILE]-Schleifen eine gute Alternative zum Ersetzen von Cursorn.
 
-## <a name="replacing-cursors-in-sql-pool"></a>Ersetzen von Cursorn im SQL-Pool
+## <a name="replace-cursors-in-sql-pool"></a>Ersetzen von Cursorn im SQL-Pool
 
 Vor dem Einstieg sollte die folgende Frage bedacht werden: „Könnte dieser Cursor so umgeschrieben werden, dass er setbasierte Vorgänge verwendet?“ In vielen Fällen können Sie die Frage bejahen, daher ist dies häufig der beste Ansatz. Ein satzbasierter Vorgang wird oft schneller als ein iterativer Durchlauf Zeile für Zeile ausgeführt.
 

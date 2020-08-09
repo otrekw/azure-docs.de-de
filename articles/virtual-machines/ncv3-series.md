@@ -4,19 +4,19 @@ description: Spezifikationen für die VMs der NCv3-Serie
 ms.subservice: sizes
 author: vikancha-MSFT
 ms.service: virtual-machines
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: c553117aa02106e744150469dee533da3ddc0265
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: de118f7a4a29d306fe351199795a5a8cacb38fcd
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84736984"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289745"
 ---
 # <a name="ncv3-series"></a>NCv3-Serie
 
-NCv3-Serien-VMs werden mit [NVIDIA Tesla V100](https://www.nvidia.com/data-center/tesla-v100/)-GPUs betrieben. Diese GPUs können eine 1,5-mal so hohe Rechenleistung erzielen wie die NCv2-Serie. Kunden können diese neuen GPUs für herkömmliche HPC-Workloads wie Modellierung von Lagerstätten, DNA-Sequenzierung, Proteinanalysen, Monte Carlo-Simulationen und Ähnliches nutzen. Die NC24rs v3-Konfiguration bietet eine Netzwerkschnittstelle mit geringer Wartezeit und hohem Durchsatz, die sich ideal für die Verarbeitung eng gekoppelter paralleler Computingworkloads eignet. Zusätzlich zu den GPUs werden virtuelle Computer der NCv3-Serie mit Intel Xeon E5-2690 v4-CPUs (Broadwell) betrieben.
+NCv3-Serien-VMs werden mit NVIDIA Tesla V100-GPUs betrieben. Diese GPUs können eine 1,5-mal so hohe Rechenleistung erzielen wie die NCv2-Serie. Kunden können diese neuen GPUs für herkömmliche HPC-Workloads wie Modellierung von Lagerstätten, DNA-Sequenzierung, Proteinanalysen, Monte Carlo-Simulationen und Ähnliches nutzen. Die NC24rs v3-Konfiguration bietet eine Netzwerkschnittstelle mit geringer Wartezeit und hohem Durchsatz, die sich ideal für die Verarbeitung eng gekoppelter paralleler Computingworkloads eignet. Zusätzlich zu den GPUs werden virtuelle Computer der NCv3-Serie mit Intel Xeon E5-2690 v4-CPUs (Broadwell) betrieben.
 
 Storage Premium  Unterstützt
 
@@ -27,7 +27,7 @@ Livemigration: Nicht unterstützt
 Updates mit Speicherbeibehaltung: Nicht unterstützt
 
 > [!IMPORTANT]
-> Für diese VM-Serie ist das vCPU-Kontingent (Kernkontingent) in Ihrem Abonnement anfänglich in jeder Region auf 0 festgelegt. Sie können für diese Serie in einer [verfügbaren Region](https://azure.microsoft.com/regions/services/) eine [Anhebung des vCPU-Kontingents anfordern](../azure-supportability/resource-manager-core-quotas-request.md).
+> Für diese VM-Serie ist das vCPU-Kontingent (Kernkontingent) in Ihrem Abonnement anfänglich in jeder Region auf 0 festgelegt. Sie können für diese Serie in einer [verfügbaren Region](https://azure.microsoft.com/regions/services/) eine [Anhebung des vCPU-Kontingents anfordern](../azure-portal/supportability/resource-manager-core-quotas-request.md).
 >
 | Size | vCPU | Memory: GiB | Temporärer Speicher (SSD): GiB | GPU | GPU-Arbeitsspeicher: GiB | Max. Anzahl Datenträger | Maximaler Durchsatz des Datenträgers ohne Cache: IOPS/MBit/s | Maximale Anzahl NICs |
 |---|---|---|---|---|---|---|---|---|

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/05/2020
 ms.author: allensu
-ms.openlocfilehash: 1c8acd2d8055359288608f7bd2e5f54f8c4f6cc3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b49669dac2b28dac631f71b9cd07c0851ff8df05
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84809188"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448842"
 ---
 # <a name="azure-monitor-logs-for-public-basic-load-balancer"></a>Azure Monitor-Protokolle für öffentlichen Load Balancer vom Typ „Basic“
 
@@ -29,7 +29,7 @@ Sie können in Azure verschiedene Protokolltypen verwenden, um Load Balancer vom
 * **Integritätstestprotokolle:** Verwenden Sie dieses Protokoll zum Anzeigen von Problemen, die vom Integritätstest erkannt wurden, z.B. die Anzahl der Instanzen in Ihrem Back-End-Pool, die aufgrund von Integritätstestfehlern keine Anforderungen vom Lastenausgleich empfangen. In dieses Protokoll wird geschrieben, wenn sich der Integritätsteststatus ändert.
 
 > [!IMPORTANT]
-> Azure Monitor-Protokolle funktioniert derzeit nur für Load Balancer vom Typ „Basic“. Protokolle sind nur für Ressourcen verfügbar, die im Ressourcen-Manager-Bereitstellungsmodell bereitgestellt werden. Sie können Protokolle nicht für Ressourcen im klassischen Bereitstellungsmodell verwenden. Weitere Informationen zu diesen Bereitstellungsmodellen finden Sie unter [Grundlegendes zur Bereitstellung über Resource Manager im Vergleich zur klassischen Bereitstellung](../azure-resource-manager/management/deployment-models.md).
+> **Ereignisprotokolle von Integritätstests funktionieren zurzeit nicht und werden unter [bekannte Probleme für den Azure Load Balancer](whats-new.md#known-issues).** aufgeführt. Azure Monitor-Protokolle funktioniert derzeit nur für Load Balancer vom Typ „Basic“. Protokolle sind nur für Ressourcen verfügbar, die im Ressourcen-Manager-Bereitstellungsmodell bereitgestellt werden. Sie können Protokolle nicht für Ressourcen im klassischen Bereitstellungsmodell verwenden. Weitere Informationen zu diesen Bereitstellungsmodellen finden Sie unter [Grundlegendes zur Bereitstellung über Resource Manager im Vergleich zur klassischen Bereitstellung](../azure-resource-manager/management/deployment-models.md).
 
 ## <a name="enable-logging"></a>Aktivieren der Protokollierung
 
@@ -40,7 +40,7 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. Wenn Sie noch 
 1. Klicken Sie im Portal auf **Ressourcengruppen**.
 2. Wählen Sie den **\<resource-group-name>** der Ressourcengruppe aus, in der sich Ihr Lastenausgleichsmodul befindet.
 3. Wählen Sie Ihren Load Balancer aus.
-4. Wählen Sie **Überwachung** > **Diagnoseeinstellungen** aus.
+4. Wählen Sie **Aktivitätsprotokoll** > **Diagnoseeinstellungen** aus.
 5. Wählen Sie im Bereich **Diagnoseeinstellungen** unter **Diagnoseeinstellungen**, den Eintrag **Diagnoseeinstellung hinzufügen** aus.
 6. Geben Sie im Bereich zum Erstellen von **Diagnoseeinstellungen** im Feld **Name** den Wert **myLBDiagnostics** ein.
 7. Sie haben die Wahl unter drei Optionen für die **Diagnoseeinstellungen**.  Sie können eine, zwei oder alle drei auswählen und jede nach Ihren Anforderungen konfigurieren:

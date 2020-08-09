@@ -4,12 +4,12 @@ description: Hier erfahren Sie, wie Sie den Zugriff auf die Kubernetes-Konfigura
 services: container-service
 ms.topic: article
 ms.date: 05/06/2020
-ms.openlocfilehash: 4d25babd13bb8ecdcd8c9eb60a976a05702fb9b6
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 5ed2f74d9de30b5fbdeaeb38316831db0777a0d6
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86255267"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87501626"
 ---
 # <a name="use-azure-role-based-access-controls-to-define-access-to-the-kubernetes-configuration-file-in-azure-kubernetes-service-aks"></a>Definieren des Zugriffs auf die Kubernetes-Konfigurationsdatei in Azure Kubernetes Service (AKS) mithilfe der rollenbasierten Zugriffssteuerung von Azure
 
@@ -27,7 +27,7 @@ Für den Artikel wird außerdem mindestens Version 2.0.65 der Azure-Befehlszeile
 
 Wenn Sie das Tool `kubectl` verwenden, um mit einem AKS-Cluster zu interagieren, wird eine Konfigurationsdatei verwendet, die Clusterverbindungsinformationen definiert. Diese Konfigurationsdatei ist üblicherweise unter *~/.kube/config* gespeichert. In dieser Datei vom Typ *kubeconfig* können mehrere Cluster definiert werden. Verwenden Sie den Befehl [kubectl config use-context][kubectl-config-use-context], um zwischen Clustern zu wechseln.
 
-Der Befehl [az aks get-credentials][az-aks-get-credentials] ermöglicht das Abrufen der Anmeldeinformationen für den Zugriff auf einen AKS-Cluster und führt sie in der Datei *kubeconfig* zusammen. Der Zugriff auf diese Anmeldeinformationen kann mithilfe der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) von Azure gesteuert werden. Mithilfe dieser Azure RBAC-Rollen können Sie definieren, wer die Datei *kubeconfig* abrufen kann und über welche Berechtigungen diese Personen innerhalb des Clusters verfügen sollen.
+Der Befehl [az aks get-credentials][az-aks-get-credentials] ermöglicht das Abrufen der Anmeldeinformationen für den Zugriff auf einen AKS-Cluster und führt sie in der Datei *kubeconfig* zusammen. Der Zugriff auf diese Anmeldeinformationen kann mithilfe der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) von Azure gesteuert werden. Mithilfe dieser Azure-Rollen können Sie definieren, wer die Datei *kubeconfig* abrufen kann und über welche Berechtigungen diese Personen innerhalb des Clusters verfügen sollen.
 
 Es stehen zwei integrierte Rollen zur Verfügung:
 

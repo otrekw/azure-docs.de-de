@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 07/23/2020
+ms.date: 07/30/2020
 ms.author: victorh
-ms.openlocfilehash: bd849a413d718ba5a25839c50c63ec2ad39be440
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 3f2b844163abce0946dc5df29c3121691e83035b
+ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87128096"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87439227"
 ---
 # <a name="azure-firewall-faq"></a>Azure Firewall – Häufig gestellte Fragen
 
@@ -168,7 +168,9 @@ Die anfängliche Durchsatzkapazität von Azure Firewall liegt zwischen 2,5 und 
 
 ## <a name="how-long-does-it-take-for-azure-firewall-to-scale-out"></a>Wie lange dauert es, bis Azure Firewall aufskaliert wird?
 
-Azure Firewall wird schrittweise skaliert, wenn der durchschnittliche Durchsatz oder die CPU-Auslastung 60 % beträgt. Das Aufskalieren dauert zwischen fünf und sieben Minuten. Sorgen Sie bei Leistungstests dafür, mindestens 10 bis 15 Minuten zu testen, und richten Sie neue Verbindungen ein, um neu erstellte Firewallknoten nutzen zu können.
+Azure Firewall wird schrittweise skaliert, wenn der durchschnittliche Durchsatz oder die CPU-Auslastung 60 % beträgt. Der maximale Durchsatz einer standardmäßigen Bereitstellung beträgt ungefähr 2,5–3 GBit/s und beginnt mit dem Aufskalieren, wenn 60 % dieses Werts erreicht werden. Das Aufskalieren dauert zwischen fünf und sieben Minuten. 
+
+Sorgen Sie bei Leistungstests dafür, mindestens 10 bis 15 Minuten zu testen, und richten Sie neue Verbindungen ein, um neu erstellte Firewallknoten nutzen zu können.
 
 ## <a name="does-azure-firewall-allow-access-to-active-directory-by-default"></a>Lässt Azure Firewall standardmäßig den Zugriff auf Active Directory zu?
 

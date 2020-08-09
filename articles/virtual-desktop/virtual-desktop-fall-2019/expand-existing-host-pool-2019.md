@@ -1,6 +1,6 @@
 ---
-title: Erweitern eines vorhandenen Hostpools um neue Sitzungshosts (Herbst 2019) – Azure
-description: Hier finden Sie Informationen dazu, wie Sie einen vorhandenen Hostpool in Windows Virtual Desktop um neue Sitzungshosts erweitern.
+title: Erweitern eines vorhandenen Hostpools in Windows Virtual Desktop (klassisch) mit neuen Sitzungshosts – Azure
+description: Hier finden Sie Informationen dazu, wie Sie einen vorhandenen Hostpool in Windows Virtual Desktop (klassisch) um neue Sitzungshosts erweitern.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,17 +8,17 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 291dc32453001dd1e188bacae8be372bb3645ece
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ecdd63b054fda7f973898b0b3a42a29fc94c03bb
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86527539"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285032"
 ---
-# <a name="expand-an-existing-host-pool-with-new-session-hosts-fall-2019"></a>Erweitern eines vorhandenen Hostpools um neue Sitzungshosts (Herbst 2019)
+# <a name="expand-an-existing-host-pool-with-new-session-hosts-in-windows-virtual-desktop-classic"></a>Erweitern eines vorhandenen Hostpools in Windows Virtual Desktop (klassisch) mit neuen Sitzungshosts
 
 >[!IMPORTANT]
->Dieser Inhalt gilt für das Release vom Herbst 2019, das keine Windows Virtual Desktop-Objekte in Azure Resource Manager unterstützt. Wenn Sie Windows Virtual Desktop-Objekte in Azure Resource Manager verwalten möchten, die im Update vom Frühjahr 2020 eingeführt wurden, finden Sie weitere Informationen in [diesem Artikel](../expand-existing-host-pool.md).
+>Dieser Inhalt gilt für den Windows Virtual Desktop-Dienst (klassisch), der keine Windows Virtual Desktop-Objekte in Azure Resource Manager unterstützt. Wenn Sie Windows Virtual Desktop-Objekte in Azure Resource Manager verwalten möchten, helfen Ihnen die Informationen in [diesem Artikel](../expand-existing-host-pool.md) weiter.
 
 Wenn Sie die Nutzung in Ihrem Hostpool erhöhen, müssen Sie den vorhandenen Pool möglicherweise um neue Sitzungshosts erweitern, um die neue Last zu verarbeiten.
 

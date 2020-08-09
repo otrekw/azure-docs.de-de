@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 06/23/2020
+ms.date: 07/30/2020
 ms.author: victorh
-ms.openlocfilehash: 7bfa1ae5bd0f2ffe92fb37494f9fe589e1b2040e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 97d8d10e30d0d0c1654c82651220489785a37059
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85565544"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460217"
 ---
 # <a name="ip-groups-in-azure-firewall"></a>IP-Adressgruppen in Azure Firewall
 
@@ -70,43 +70,7 @@ IP-Gruppen sind in allen öffentlichen Cloudregionen verfügbar.
 
 ## <a name="ip-address-limits"></a>Grenzwerte für IP-Adressen
 
-Bei nicht mehr als 50 IP-Gruppen können Sie höchstens 5000 individuelle IP-Adressen pro Firewallinstanz haben. Bei 51 bis 100 IP-Gruppen können Sie höchstens 500 individuelle IP-Adressen pro Firewallinstanz haben.
-
-### <a name="examples"></a>Beispiele
-
-#### <a name="example-1-supported"></a>Beispiel 1: unterstützt
-
-|IP-Adressgruppen  |Anzahl IP-Adressen  |Notation  |Regel  |
-|---------|---------|---------|---------|
-|IPGroup1 |4096     |10.0.0.0/20  |Rule1|
-|IPGroup2     |3|196.0.0.0 – 196.0.0.2|Rule1|
-|IPGroup3     |1|1.2.3.4|Rule1|
-|     |**Gesamt 4100**|         |         |
-|     |         |         |         |
-
-#### <a name="example-2-supported"></a>Beispiel 2: unterstützt
-
-|IP-Adressgruppen  |Anzahl IP-Adressen  |Notation  |Regel  |
-|---------|---------|---------|---------|
-|IPGroup1 |4096     |10.0.0.0/20  |Rule1|
-|IPGroup2     |4096|11.0.0.0/20|Rule1|
-|     |**Gesamt 8192**|         |         |
-
-#### <a name="example-3-not-supported"></a>Beispiel 3: nicht unterstützt
-
-|IP-Adressgruppen  |Anzahl IP-Adressen  |Notation  |Regel  |
-|---------|---------|---------|---------|
-|IPGroup1 |8192     |10.0.0.0/20, 11.0.0.0/20  |Rule1|
-|     |**Gesamt 8192**|||
-
-#### <a name="example-4-supported"></a>Beispiel 4: unterstützt
-
-|IP-Adressgruppen  |Anzahl IP-Adressen  |Notation  |Regel  |
-|---------|---------|---------|---------|
-|IPGroup1 |4096     |10.0.0.0/20  |Rule1|
-|IPGroup2     |4096|11.0.0.0/20|Rule2|
-|     |**Gesamt 8192**|         |         |
-
+Sie können maximal 100 IP-Gruppen pro Fiewall mit maximal 5000 einzelnen IP-Adressen oder IP-Präfixen pro IP-Gruppe haben.
 
 ## <a name="related-azure-powershell-cmdlets"></a>Zugehörige Azure PowerShell-Cmdlets
 

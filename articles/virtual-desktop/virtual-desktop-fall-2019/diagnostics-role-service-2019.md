@@ -1,6 +1,6 @@
 ---
-title: Diagnostizieren von Problemen mit Windows Virtual Desktop – Azure
-description: Verwendung der Diagnosefunktion von Windows Virtual Desktop zum Diagnostizieren von Problemen.
+title: Diagnostizieren von Problemen mit Windows Virtual Desktop (klassisch)– Azure
+description: Verwendung der Diagnosefunktion von Windows Virtual Desktop (klassisch) zum Diagnostizieren von Problemen.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 05/13/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: b1822f6a5bf0d3ac4217a43978dfcc739044e812
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 257ad5aa11bfaece70f676b452119d7800e2d1e2
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84235562"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285049"
 ---
-# <a name="identify-and-diagnose-issues"></a>Identifizieren und Diagnostizieren von Problemen
+# <a name="identify-and-diagnose-issues-in-windows-virtual-desktop-classic"></a>Identifizieren und Diagnostizieren von Problemen in Windows Virtual Desktop (klassisch)
 
 >[!IMPORTANT]
->Dieser Inhalt gilt für das Release vom Herbst 2019, das keine Windows Virtual Desktop-Objekte in Azure Resource Manager unterstützt. Wenn Sie Windows Virtual Desktop-Objekte in Azure Resource Manager verwalten möchten, die im Update vom Frühjahr 2020 eingeführt wurden, finden Sie weitere Informationen in [diesem Artikel](../diagnostics-role-service.md).
+>Dieser Inhalt gilt für den Windows Virtual Desktop-Dienst (klassisch), der keine Windows Virtual Desktop-Objekte in Azure Resource Manager unterstützt. Wenn Sie Windows Virtual Desktop-Objekte in Azure Resource Manager verwalten möchten, helfen Ihnen die Informationen in [diesem Artikel](../diagnostics-role-service.md) weiter.
 
 Windows Virtual Desktop verfügt über eine Diagnosefunktion, mit der der Administrator Probleme über eine zentrale Benutzeroberfläche identifizieren kann. Die Windows Virtual Desktop-Rollen protokollieren jeweils eine Diagnoseaktivität, wenn ein Benutzer mit dem System interagiert. Jedes Protokoll enthält relevante Informationen, z. B. die an der Transaktion beteiligten Windows Virtual Desktop-Rollen, Fehlermeldungen, Mandanteninformationen und Benutzerinformationen. Diagnoseaktivitäten werden sowohl bei Endbenutzer- als auch bei Administratoraktionen erstellt und können in drei Buckets kategorisiert werden:
 

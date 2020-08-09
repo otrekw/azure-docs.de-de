@@ -13,19 +13,19 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/06/2019
 ms.author: alsin
-ms.openlocfilehash: 3b074bb1d439a6d20ac476f4e10b6a26b7107be8
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 5341cc62a7d02c3072df90becf893dec18427ac2
+ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284709"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87439542"
 ---
 # <a name="use-serial-console-to-access-grub-and-single-user-mode"></a>Verwenden der seriellen Konsole für den Zugriff auf den GRUB- und den Einzelbenutzermodus
 Der GRand Unified Bootloader (GRUB) ist wahrscheinlich das Erste, was Ihnen beim Starten eines virtuellen Computers angezeigt wird. Weil GRUB vor dem Start des Betriebssystems angezeigt wird, ist ein Zugriff über SSH nicht möglich. In GRUB können Sie unter anderem Ihre Startkonfiguration so ändern, dass das System im Einzelbenutzermodus gestartet wird.
 
 Der Einzelbenutzermodus ist eine minimale Umgebung mit minimaler Funktionalität. Dieser Modus kann beim Untersuchen von Start-, Dateisystem- oder Netzwerkproblemen hilfreich sein. Es können weniger Dienste im Hintergrund ausgeführt werden, und je nach Ausführungsebene kann auch ein Dateisystem nicht automatisch eingebunden werden.
 
-Der Einzelbenutzermodus ist auch in Situationen hilfreich, in denen Ihr virtueller Computer so konfiguriert ist, dass für die Anmeldung nur SSH-Schlüssel akzeptiert werden. In diesem Fall können Sie möglicherweise den Einzelbenutzermodus verwenden, um ein Konto mit Kennwortauthentifizierung zu erstellen. 
+Der Einzelbenutzermodus ist auch in Situationen hilfreich, in denen Ihr virtueller Computer so konfiguriert ist, dass für die Anmeldung nur SSH-Schlüssel akzeptiert werden. In diesem Fall können Sie möglicherweise den Einzelbenutzermodus verwenden, um ein Konto mit Kennwortauthentifizierung zu erstellen.
 
 > [!NOTE]
 > Der Dienst für die serielle Konsole gestattet den Zugriff auf die serielle Konsole einer VM nur Benutzern, die mindestens über die Zugriffsebene *Mitwirkender* verfügen.
@@ -66,6 +66,9 @@ In RHEL ist GRUB standardmäßig aktiviert. Zum Aktivieren von GRUB starten Sie 
 
 **Für RHEL 8**
 
+>[!NOTE]
+> Red Hat empfiehlt die Verwendung von Grubby zum Konfigurieren der Kernel-Befehlszeilenparametern in RHEL 8+. Es ist derzeit nicht möglich, das Grub-Timeout und die Terminalparameter mithilfe von Grubby zu aktualisieren. Um das GRUB_CMDLINE_LINUX-Argument für alle Starteinträge zu ändern, führen Sie `grubby --update-kernel=ALL --args="console=ttyS0,115200 console=tty1 console=ttyS0 earlyprintk=ttyS0 rootdelay=300"` aus. Weitere Details finden Sie [hier](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/managing_monitoring_and_updating_the_kernel/configuring-kernel-command-line-parameters_managing-monitoring-and-updating-the-kernel).
+
 ```
 GRUB_TIMEOUT=5
 GRUB_TERMINAL="serial console"
@@ -90,8 +93,7 @@ Der Stammbenutzer ist standardmäßig deaktiviert. Für den Einzelbenutzermodus 
 1. Wechseln Sie zum Stamm.
 1. Aktivieren Sie das Kennwort für den Stammbenutzer, indem Sie die folgenden Schritte ausführen:
     * Führen Sie `passwd root` aus. (Legen Sie ein sicheres Stammkennwort fest.)
-1. Stellen Sie sicher, dass der Stammbenutzer sich nur über ttyS0 anmelden kann. Gehen Sie hierzu wie folgt vor:  
-    a. Führen Sie `edit /etc/ssh/sshd_config` aus, und stellen Sie sicher, dass „PermitRootLogIn“ auf `no` festgelegt ist.  
+1. Stellen Sie sicher, dass der Stammbenutzer sich nur über ttyS0 anmelden kann. Gehen Sie hierzu wie folgt vor: a. Führen Sie `edit /etc/ssh/sshd_config` aus, und stellen Sie sicher, dass „PermitRootLogIn“ auf `no` festgelegt ist.
     b. Führen Sie `edit /etc/securetty file` aus, um die Anmeldung nur über ttyS0 zuzulassen.
 
 Wenn das System jetzt im Einzelbenutzermodus gestartet wird, können Sie sich mit dem Stammkennwort anmelden.
@@ -106,7 +108,7 @@ Wenn Sie GRUB und Stammzugriff mit den vorangehenden Anweisungen eingerichtet ha
 1. Suchen Sie die Zeile für den Kernel. In Azure beginnt diese mit *linux16*.
 1. Drücken Sie STRG+E, um zum Ende der Zeile zu gelangen.
 1. Fügen Sie am Ende der Zeile *systemd.unit=rescue.target* hinzu.
-    
+
     Durch diese Aktion erfolgt der Start im Einzelbenutzermodus. Wenn Sie den Notfallmodus verwenden möchten, fügen Sie am Ende der Zeile *systemd.unit=emergency.target* ein (anstelle von *systemd.unit=rescue.target*).
 
 1. Drücken Sie STRG+X, um GRUB zu beenden und einen Neustart mit den angewendeten Einstellungen durchzuführen.
@@ -130,11 +132,11 @@ Wenn Sie den Stammbenutzer nicht anhand der vorherigen Anweisungen aktiviert hab
     Durch diese Aktion wird der Startprozess unterbrochen, bevor die Steuerung von `initramfs` an `systemd` übergeben wird. (Eine Beschreibung hierzu finden Sie in der [Red Hat-Dokumentation](https://aka.ms/rhel7rootpassword).)
 1. Drücken Sie STRG+X, um GRUB zu beenden und einen Neustart mit den angewendeten Einstellungen durchzuführen.
 
-   Nach dem Neustart wird der Notfallmodus mit einem schreibgeschützten Dateisystem aktiviert. 
-   
+   Nach dem Neustart wird der Notfallmodus mit einem schreibgeschützten Dateisystem aktiviert.
+
 1. Geben Sie in der Shell `mount -o remount,rw /sysroot` ein, um das Stammdateisystem mit Lese-/Schreibberechtigungen erneut einzubinden.
 1. Geben Sie nach dem Start im Einzelbenutzermodus `chroot /sysroot` ein, um in das `sysroot`-Jail zu wechseln.
-1. Sie befinden sich jetzt im Stammverzeichnis. Sie können Ihr Stammkennwort durch Eingabe von `passwd` zurücksetzen und anschließend mit den obigen Anweisungen in den Einzelbenutzermodus wechseln. 
+1. Sie befinden sich jetzt im Stammverzeichnis. Sie können Ihr Stammkennwort durch Eingabe von `passwd` zurücksetzen und anschließend mit den obigen Anweisungen in den Einzelbenutzermodus wechseln.
 1. Geben Sie zum Schluss `reboot -f` ein, um einen Neustart durchzuführen.
 
 ![Animiertes Bild, das eine Befehlszeilenschnittstelle zeigt. Der Benutzer wählt einen Server aus, lokalisiert das Ende der Kernelzeile und gibt die angegebenen Befehle ein.](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-rhel-emergency-mount-no-root.gif)
@@ -197,7 +199,7 @@ Wenn CoreOS nicht normal gestartet werden kann, wird automatisch der Einzelbenut
 1. Drücken Sie in GRUB die Taste E, um Ihren Starteintrag zu bearbeiten.
 
 1. Suchen Sie nach der Zeile, die mit *linux$* beginnt. Es sollten zwei Instanzen der Zeile vorhanden sein, die jeweils in einer anderen *if...else*-Klausel eingebettet sind.
-1. Fügen Sie *coreos.autologin=ttyS0* an das Ende jeder *linux$* -Zeile an.
+1. Fügen Sie *coreos.autologin=ttyS0* an das Ende jeder *linux$*-Zeile an.
 1. Drücken Sie STRG+X, um einen Neustart mit diesen Einstellungen durchzuführen und den Einzelbenutzermodus zu aktivieren.
 
 ## <a name="access-for-suse-sles"></a>Zugriff für SUSE SLES

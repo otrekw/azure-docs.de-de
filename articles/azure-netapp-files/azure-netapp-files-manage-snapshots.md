@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 07/24/2020
 ms.author: b-juche
-ms.openlocfilehash: caa73b5a86c5c245aefd18de9b60ec49616b3b84
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 271c3c9f63ee3f761826e214f3bf32a8df5f1cbe
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281547"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533290"
 ---
 # <a name="manage-snapshots-by-using-azure-netapp-files"></a>Verwalten von Momentaufnahmen mithilfe von Azure NetApp Files
 
@@ -47,8 +47,24 @@ Sie können bei Bedarf Volumemomentaufnahmen erstellen.
 
 Mithilfe von Momentaufnahmenrichtlinien können Sie planen, dass automatisch Volumemomentaufnahmen erstellt werden. Sie können eine Momentaufnahmenrichtlinie nach Bedarf auch ändern oder sogar löschen, wenn Sie sie nicht mehr benötigen.  
 
-> [!IMPORTANT] 
-> Die Verwendung der Funktion für Momentaufnahmenrichtlinien erfordert die Whitelist. Senden Sie eine E-Mail mit Ihrer Abonnement-ID an anffeedback@microsoft.com, um dieses Feature anzufordern.
+### <a name="register-the-feature"></a>Registrieren der Funktion
+
+Die Funktion **Momentaufnahmenrichtlinie** steht derzeit als Vorschau zur Verfügung. Wenn Sie diese Funktion zum ersten Mal verwenden, müssen Sie sie zuerst registrieren. 
+
+1. Registrieren Sie die Funktion: 
+
+    ```azurepowershell-interactive
+    Register-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFSnapshotPolicy
+    ```
+
+2. Überprüfen Sie den Status der Funktionsregistrierung: 
+
+    > [!NOTE]
+    > Der **RegistrationState** kann einige Minuten lang den Status `Registering` aufweisen, bevor der Wechsel in `Registered` erfolgt. Warten Sie, bis der Status **Registriert** lautet, bevor Sie fortfahren.
+
+    ```azurepowershell-interactive
+    Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFSnapshotPolicy
+    ```
 
 ### <a name="create-a-snapshot-policy"></a>Erstellen einer Momentaufnahmenrichtlinie 
 

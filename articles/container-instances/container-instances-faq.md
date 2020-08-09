@@ -4,12 +4,12 @@ description: Antworten auf häufig gestellte Fragen im Zusammenhang mit dem Azur
 author: dkkapur
 ms.topic: article
 ms.date: 06/02/2020
-ms.openlocfilehash: 21643ccfb6bb256e29114435ccb39a009d1b8dae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 95190496df4037a973207e14292911225094782e
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85806600"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421279"
 ---
 # <a name="frequently-asked-questions-about-azure-container-instances"></a>Häufig gestellte Fragen zu Azure Container Instances
 
@@ -89,7 +89,7 @@ Zurzeit ist die Skalierung für Container und Containergruppen nicht verfügbar.
 
 ### <a name="what-features-are-available-to-instances-running-in-a-custom-vnet"></a>Welche Features sind für Instanzen verfügbar, die in einem benutzerdefinierten VNET ausgeführt werden?
 
-Sie können [Containergruppen in einem virtuellen Azure-Netzwerk Ihrer Wahl bereitstellen](container-instances-vnet.md) und private IP-Adressen an die Containergruppen delegieren, um Datenverkehr innerhalb des VNET Azure-Ressourcen-übergreifend weiterzuleiten. Die Bereitstellung einer Containergruppe in einem virtuellen Netzwerk ist derzeit in einigen Azure-Regionen für Produktionsworkloads verfügbar.
+Sie können [Containergruppen in einem virtuellen Azure-Netzwerk Ihrer Wahl bereitstellen](container-instances-vnet.md) und private IP-Adressen an die Containergruppen delegieren, um Datenverkehr innerhalb des VNET Azure-Ressourcen-übergreifend weiterzuleiten. Informationen zu Netzwerkszenarien und -einschränkungen mit Azure Container Instances finden Sie unter [Virtuelle Netzwerkszenarien und -ressourcen](container-instances-virtual-network-concepts.md).
 
 ## <a name="pricing"></a>Preise
 

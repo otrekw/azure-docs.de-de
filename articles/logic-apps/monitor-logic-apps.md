@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: divswa, logicappspm
 ms.topic: article
 ms.date: 05/04/2020
-ms.openlocfilehash: 69d018db26a42c331ff41d242eae54d6fcc43990
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 66796a819c0ca7e114d82210a988fc7e13003941
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86536249"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87078195"
 ---
 # <a name="monitor-run-status-review-trigger-history-and-set-up-alerts-for-azure-logic-apps"></a>Überwachen des Ausführungsstatus, Überprüfen des Triggerverlaufs und Einrichten von Benachrichtigungen für Azure Logic Apps
 
@@ -86,7 +86,7 @@ Jedes Mal, wenn der Trigger für ein Element oder Ereignis ausgelöst wird, erst
      Sie können jetzt Informationen wie Eingaben unf Ausgaben für diesen Schritt anzeigen, z. B.:
 
    > [!NOTE]
-   > Alle Informationen und Ereignisse zur Laufzeit werden im Logic Apps-Dienst verschlüsselt. Sie werden nur entschlüsselt, wenn ein Benutzer das Anzeigen dieser Daten anfordert. Sie können [Eingaben und Ausgaben im Ausführungsverlauf ausblenden](../logic-apps/logic-apps-securing-a-logic-app.md#obfuscate) oder den Benutzerzugriff auf diese Informationen mithilfe von [rollenbasierter Azure-Zugriffssteuerung (Role-Based, RBAC)](../role-based-access-control/overview.md) kontrollieren.
+   > Alle Informationen und Ereignisse zur Laufzeit werden im Logic Apps-Dienst verschlüsselt. Sie werden nur entschlüsselt, wenn ein Benutzer das Anzeigen dieser Daten anfordert. Sie können [Eingaben und Ausgaben im Ausführungsverlauf ausblenden](../logic-apps/logic-apps-securing-a-logic-app.md#obfuscate) oder den Benutzerzugriff auf diese Informationen mithilfe von [rollenbasierter Azure-Zugriffssteuerung (Azure RBAC)](../role-based-access-control/overview.md) kontrollieren.
 
 <a name="review-trigger-history"></a>
 

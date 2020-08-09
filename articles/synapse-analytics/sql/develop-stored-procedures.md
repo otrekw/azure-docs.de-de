@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 0f88b994104ed8a2d80fb3b16f125f8a087cbe3c
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 2b106a28514179d9be43b3c56ea8030eaf7ba13f
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85958377"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87494994"
 ---
 # <a name="use-stored-procedures-in-sql-pool"></a>Verwenden gespeicherter Prozeduren im SQL-Pool
 
@@ -27,7 +27,7 @@ Der SQL-Pool unterstützt viele der T-SQL-Features, die in SQL Server verwendet 
 
 In Bezug auf die Verwaltung der Skalierung und Leistung des SQL-Pools sind auch einige Features und Funktionen vorhanden, die Unterschiede beim Verhalten aufweisen. Es gibt auch Features, die nicht unterstützt werden.
 
-## <a name="introducing-stored-procedures"></a>Einführung in gespeicherte Prozeduren
+## <a name="stored-procedures-in-sql-pool"></a>Gespeicherte Prozeduren im SQL-Pool
 
 Gespeicherte Prozeduren sind eine hervorragende Möglichkeit zum Einschließen (Kapseln) von SQL-Code. Hierbei wird Code im Data Warehouse in der Nähe Ihrer Daten gespeichert. Gespeicherte Prozeduren unterstützen Entwickler beim Modularisieren ihrer Lösungen, indem Code in besser verwaltbare Einheiten eingeschlossen wird. Dies ermöglicht eine bessere Wiederverwendbarkeit des Codes. Für jede gespeicherte Prozedur können außerdem Parameter verwendet werden, um sie flexibler zu machen.
 

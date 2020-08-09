@@ -9,16 +9,16 @@ ms.workload: mobile
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: article
-ms.date: 04/02/2020
+ms.date: 08/03/2020
 ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 01/28/2019
-ms.openlocfilehash: 855a050afa14144f8963f24398c6b7b3939ef562
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 1455259bc42aea9d506a9a2a19d725cac3d643f8
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80656464"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87562768"
 ---
 # <a name="change-pricing-tier-of-an-azure-notification-hubs-namespace"></a>Ändern des Tarifs bei Azure Notification Hubs-Namespace
 
@@ -26,11 +26,11 @@ Notification Hubs wird in drei Tarifen angeboten: **Free**, **Basic** und **Stan
 
 ## <a name="overview"></a>Übersicht
 
-In Azure Notification Hubs ist ein Hub die kleinste Ressource/Entität. Er ist in der Regel einer einzigen Anwendung zugeordnet und kann für jedes Plattformbenachrichtigungssystem (PNS), das für die App unterstützt wird, ein Zertifikat aufnehmen. Die Anwendung kann hybrid oder nativ und plattformübergreifend sein.
+In Azure Notification Hubs ist ein *Benachrichtigungshub* die kleinste Ressource/Entität. Er ist in der Regel einer einzigen Anwendung zugeordnet und kann für jedes Plattformbenachrichtigungssystem (PNS), das für die App unterstützt wird, ein Zertifikat aufnehmen. Die Anwendung kann hybrid oder nativ und plattformübergreifend sein.
 
-Ein **Namespace** ist eine Sammlung von Benachrichtigungshubs. Jeder Namespace besteht in der Regel aus Hubs, die im Zusammenhang stehen und für einen bestimmten Zweck verwendet werden. Sie können z. B. drei verschiedene Namespaces für Entwicklungs-, Test- und Produktionszwecke verwenden.
+Ein *Namespace* ist eine Sammlung von Benachrichtigungshubs. Jeder Namespace besteht in der Regel aus Hubs, die im Zusammenhang stehen und für einen bestimmten Zweck verwendet werden. Sie können z. B. drei verschiedene Namespaces für Entwicklungs-, Test- und Produktionszwecke verwenden.
 
-Sie können einen Namespace mit den **Free**-, **Basic**- oder **Standard**-Tarifen verknüpfen. Sie können den Tarif für einen Namespace verwenden, der Ihren Anforderungen am besten entspricht. Die folgenden Abschnitte zeigen Ihnen, wie Sie den Tarif eines Notification Hubs-Namespace ändern.
+Sie können einen Namespace mit den **Free**-, **Basic**- oder **Standard**-Tarifen verknüpfen. Sie können für jeden Namespace den Tarif verwenden, der Ihren Anforderungen am besten entspricht. Die folgenden Abschnitte zeigen Ihnen, wie Sie den Tarif eines Notification Hubs-Namespace ändern.
 
 ## <a name="use-azure-portal"></a>Verwenden des Azure-Portals
 
@@ -42,7 +42,7 @@ Mit den Schritten des folgenden Verfahrens ändern Sie den Tarif für einen Name
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Wählen Sie im Menü links **Alle Dienste** aus.
-3. Wählen Sie **Notification Hub-Namespaces** im Abschnitt **Internet der Dinge** aus. Bei Auswahl des Sternchens (`*`) neben dem Text wird der Eintrag der linken Navigationsleiste unter **Favoriten** hinzugefügt. Dies hilft Ihnen, in Zukunft schneller auf die Namespaceseite zuzugreifen. Wählen Sie **Notification Hub-Namespaces** aus, nachdem Sie den Eintrag den Favoriten hinzugefügt haben.
+3. Wählen Sie **Notification Hub-Namespaces** im Abschnitt **Internet der Dinge** aus. Bei Auswahl des Sternchens (`*`) neben dem Text wird der Eintrag der linken Navigationsleiste unter **Favoriten** hinzugefügt. Dies hilft Ihnen, beim nächsten Mal schneller auf die Namespaceseite zuzugreifen. Wählen Sie **Notification Hub-Namespaces** aus, nachdem Sie den Eintrag den **FAVORITEN** hinzugefügt haben.
 
     ![Alle Dienste -> Notification Hub-Namespaces](./media/change-pricing-tier/all-services-nhub.png)
 
@@ -62,7 +62,7 @@ Mit den Schritten des folgenden Verfahrens ändern Sie den Tarif für einen Name
 
 ### <a name="change-tier-on-the-hub-page"></a>Ändern des Tarifs auf der Hubseite
 
-Mit den Schritten des folgenden Verfahrens ändern Sie den Tarif für einen Namespace auf der Hubseite. Auch wenn Sie die folgenden Schritte auf der Hubseite beginnen, ändern Sie den Tarif für den Namespace und alle Hubs tatsächlich im Namespace.
+Befolgen Sie diese Schritte, um den Tarif für einen Namespace auf der Hubseite zu ändern. Auch wenn Sie die folgenden Schritte auf der Hubseite beginnen, ändern Sie den Tarif für den Namespace und alle Hubs tatsächlich im Namespace:
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Wählen Sie im Menü links **Alle Dienste** aus.

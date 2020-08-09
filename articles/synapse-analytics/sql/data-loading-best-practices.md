@@ -11,18 +11,18 @@ ms.date: 04/15/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 6321fa484c883e196279ddf33661e78397bc3855
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: acfb2af7d482f9c0a51596818b1302584277defb
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85963885"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87486815"
 ---
 # <a name="best-practices-for-loading-data-for-data-warehousing"></a>Bewährte Methoden zum Laden von Daten für Data Warehousing
 
 Empfehlungen und Leistungsoptimierungen für das Laden von Daten
 
-## <a name="preparing-data-in-azure-storage"></a>Vorbereiten von Daten in Azure Storage
+## <a name="prepare-data-in-azure-storage"></a>Vorbereiten von Daten in Azure Storage
 
 Zur Minimierung der Wartezeit sollten sich Speicherebene und Data Warehouse am gleichen Ort befinden.
 
@@ -34,13 +34,13 @@ Alle Dateiformate weisen unterschiedliche Leistungsmerkmale auf. Am schnellsten 
 
 Teilen Sie große komprimierte Dateien in kleinere komprimierte Dateien.
 
-## <a name="running-loads-with-enough-compute"></a>Ausführen von Ladevorgängen mit ausreichender Compute-Kapazität
+## <a name="run-loads-with-enough-compute"></a>Ausführen von Ladevorgängen mit ausreichender Computekapazität
 
 Führen Sie immer nur einen einzelnen Ladeauftrag aus, um die bestmögliche Ladegeschwindigkeit zu erzielen. Sollte das nicht möglich sein, führen Sie eine möglichst geringe Anzahl von Ladevorgängen gleichzeitig aus. Wenn ein umfangreicher Ladeauftrag ansteht, empfiehlt es sich unter Umständen, Ihren SQL-Pool Data Warehouse vor dem Laden zentral hochzuskalieren.
 
 Erstellen Sie „Ladebenutzer“, die für das Ausführen von Ladevorgängen vorgesehen sind, um Ladevorgänge mit den geeigneten Computeressourcen durchzuführen. Weisen Sie jedem Ladebenutzer eine bestimmte Ressourcenklasse oder Arbeitsauslastungsgruppe zu. Melden Sie sich zum Ausführen eines Ladevorgangs als ein Ladebenutzer an, und führen Sie den Ladevorgang aus. Der Ladevorgang wird mit der Ressourcenklasse des Benutzers ausgeführt.  Diese Methode ist einfacher als der Versuch, die Ressourcenklasse eines Benutzers zu ändern, um die jeweilige Ressourcenklassenanforderung zu erfüllen.
 
-### <a name="example-of-creating-a-loading-user"></a>Beispiel für die Erstellung eines Ladebenutzers
+### <a name="create-a-loading-user"></a>Erstellen eines Ladebenutzers
 
 In diesem Beispiel wird ein Ladebenutzer für die Ressourcenklasse „staticrc20“ erstellt. Der erste Schritt umfasst das **Herstellen einer Verbindung mit dem Master** und das Erstellen einer Anmeldung.
 
@@ -62,7 +62,7 @@ Melden Sie sich zum Ausführen eines Ladevorgangs mit Ressourcen für die Ressou
 
 Führen Sie Ladevorgänge nicht unter dynamischen Ressourcenklassen, sondern unter statischen Ressourcenklassen aus. Wenn Sie die statischen Ressourcenklassen verwenden, ist unabhängig von Ihren [Data Warehouse-Einheiten](resource-consumption-models.md) garantiert, dass dieselben Ressourcen genutzt werden. Wenn Sie eine dynamische Ressourcenklasse verwenden, variieren die Ressourcen je nach Ihrer Dienstebene. Für dynamische Klassen bedeutet eine niedrigere Dienstebene, dass Sie für Ihren Ladebenutzer wahrscheinlich eine größere Ressourcenklasse nutzen müssen.
 
-## <a name="allowing-multiple-users-to-load"></a>Ermöglichen von Ladevorgängen für mehrere Benutzer
+## <a name="allow-multiple-users-to-load"></a>Ermöglichen von Ladevorgängen für mehrere Benutzer
 
 Oftmals müssen mehrere Benutzer in der Lage sein, Daten in ein Data Warehouse zu laden. Das Laden mit [CREATE TABLE AS SELECT (Transact-SQL)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) setzt CONTROL-Berechtigungen der Datenbank voraus.  Die CONTROL-Berechtigung erteilt Steuerungszugriff auf alle Schemas. Unter Umständen sollen aber nicht alle Benutzer, die Daten laden, über Steuerungszugriff auf alle Schemas verfügen. Berechtigungen können mithilfe der DENY CONTROL-Anweisung eingeschränkt werden.
 
@@ -75,13 +75,13 @@ Beispiel: Wenn Sie über die Datenbankschemas Schema_A für Abteilung A und Sche
 
 Benutzer_A und Benutzer_B sind für das Schema der anderen Abteilung jetzt gesperrt.
 
-## <a name="loading-to-a-staging-table"></a>Laden in eine Stagingtabelle
+## <a name="load-to-a-staging-table"></a>Laden in eine Stagingtabelle
 
 Laden Sie Daten in eine Stagingtabelle, um beim Verschieben von Daten in eine Data Warehouse-Tabelle die bestmögliche Ladegeschwindigkeit zu erzielen.  Definieren Sie die Stagingtabelle als Heap, und verwenden Sie Roundrobin als Verteilungsoption.
 
 Beachten Sie, dass das Laden üblicherweise ein zweistufiger Prozess ist, bei dem die Daten zunächst in eine Stagingtabelle geladen und anschließend in eine Data Warehouse-Produktionstabelle eingefügt werden. Wenn die Produktionstabelle eine Hashverteilung verwendet, ist das Laden und Einfügen unter Umständen insgesamt schneller, wenn Sie die Stagingtabelle mit der Hashverteilung definieren. Das Laden in die Stagingtabelle dauert zwar länger, der zweite Schritt (also das Einfügen der Zeilen in die Produktionstabelle) kommt jedoch ohne verteilungsübergreifende Datenverschiebung aus.
 
-## <a name="loading-to-a-columnstore-index"></a>Laden in einen Columnstore-Index
+## <a name="load-to-a-columnstore-index"></a>Laden in einen Columnstore-Index
 
 Columnstore-Indizes erfordern große Mengen an Arbeitsspeicher, um Daten in Zeilengruppen mit hoher Qualität zu komprimieren. Um in Bezug auf die Komprimierung und den Index die höchste Effizienz zu erzielen, muss der Columnstore-Index in jeder Zeilengruppe die maximale Anzahl von Zeilen (1.048.576) komprimieren. Wenn der Arbeitsspeicher knapp ist, können für den Columnstore-Index unter Umständen nicht die maximalen Komprimierungsraten erzielt werden. Dies wirkt sich wiederum auf die Abfrageleistung aus. Ausführliche Informationen hierzu finden Sie unter [Maximieren der Zeilengruppenqualität für Columnstore](data-load-columnstore-compression.md).
 
@@ -92,19 +92,19 @@ Columnstore-Indizes erfordern große Mengen an Arbeitsspeicher, um Daten in Zeil
 
 Wie bereits erwähnt erzielt das Laden mit PolyBase den höchsten Durchsatz mit dem Synapse SQL-Pool. Wenn Sie PolyBase nicht zum Laden verwenden können und die SqlBulkCopy-API (oder BCP) verwenden müssen, sollten Sie eine Erhöhung der Batchgröße für einen besseren Durchsatz in Betracht ziehen. Eine gute Faustregel ist eine Batchgröße zwischen 100 KB und 1 Mio. Zeilen.
 
-## <a name="handling-loading-failures"></a>Behandeln von Ladefehlern
+## <a name="manage-loading-failures"></a>Verwalten von Ladefehlern
 
 Das Laden von Daten mithilfe einer externen Tabelle kann folgenden Fehler auslösen: *Abfrage abgebrochen – der maximale Ablehnungsgrenzwert wurde beim Lesen aus einer externen Quelle erreicht*. Diese Meldung weist darauf hin, dass die externen Daten fehlerhafte Datensätze enthalten. Ein Datensatz gilt als fehlerhaft, wenn die Datentypen und die Spaltenanzahl nicht den Spaltendefinitionen der externen Tabelle entsprechen oder wenn die Daten nicht im angegebenen externen Dateiformat vorliegen.
 
 Vergewissern Sie sich zur Behebung dieses Problems, dass die Formatdefinitionen der externen Tabelle und Datei korrekt sind und Ihre externen Daten diesen Definitionen entsprechen. Sollte ein Teil der externen Datensätze fehlerhaft sein, können Sie diese Datensätze für Ihre Abfragen mithilfe der Ablehnungsoptionen in „CREATE EXTERNAL TABLE“ ablehnen.
 
-## <a name="inserting-data-into-a-production-table"></a>Einfügen von Daten in eine Produktionstabelle
+## <a name="insert-data-into-a-production-table"></a>Einfügen von Daten in eine Produktionstabelle
 
 Bei einem einmaligen Ladevorgang für eine kleine Tabelle mit einer [INSERT-Anweisung](/sql/t-sql/statements/insert-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) oder beim periodischen erneuten Laden eines Suchvorgangs wird unter Umständen eine ausreichende Leistung für Ihre Zwecke erzielt, wenn Sie eine Anweisung wie `INSERT INTO MyLookup VALUES (1, 'Type 1')` verwenden.  Singleton-Einfügungen sind jedoch nicht so effizient wie ein Massenladevorgang.
 
 Wenn Sie im Laufe eines Tages über Tausende oder mehr einzelne Einfügungen verfügen, sollten Sie sie zu einem Batch zusammenfassen, um das Massenladen zu ermöglichen.  Entwickeln Sie Ihre Prozesse so, dass die einzelnen Einfügungen an eine Datei angefügt werden, und erstellen Sie dann einen weiteren Prozess, mit dem die Datei regelmäßig geladen wird.
 
-## <a name="creating-statistics-after-the-load"></a>Erstellen von Statistiken nach dem Laden
+## <a name="create-statistics-after-the-load"></a>Erstellen von Statistiken nach dem Laden
 
 Zur Verbesserung der Abfrageleistung ist es wichtig, nach dem ersten Laden oder nach Datenänderungen Statistiken für alle Spalten sämtlicher Tabellen zu erstellen.  Dies kann manuell ausgeführt werden, oder Sie können das [automatische Erstellen von Statistiken](../sql-data-warehouse/sql-data-warehouse-tables-statistics.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) aktivieren.
 

@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 06/02/2020
 ms.reviewer: nieberts, jomore
-ms.openlocfilehash: c5369d63c0937605cc288e3a90466e723e69d163
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 037e07a1d8a6a3b4016d00f1b5a68bffc9caf335
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86255437"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543366"
 ---
 # <a name="use-kubenet-networking-with-your-own-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Verwenden von kubenet-Netzwerken mit Ihren eigenen IP-Adressbereichen in Azure Kubernetes Service (AKS)
 
@@ -47,6 +47,17 @@ Mit *kubenet* erhalten nur die Knoten eine IP-Adresse im Subnetz des virtuellen 
 Azure unterstützt maximal 400 Routen in einer UDR, also können Sie keinen AKS-Cluster mit mehr als 400 Knoten haben. AKS-Features wie z. B. [virtuelle Knoten][virtual-nodes] und Azure-Netzwerkrichtlinien werden mit *kubenet* nicht unterstützt.  Sie können [Calico-Netzwerkrichtlinien][calico-network-policies] verwenden, da diese mit kubenet unterstützt werden.
 
 Mit *Azure CNI* empfängt jeder Pod eine IP-Adresse im IP-Subnetz und kann direkt mit anderen Pods und Diensten kommunizieren. Ihre Cluster können so groß wie der IP-Adressbereich sein, den Sie angeben. Allerdings muss der IP-Adressbereich im Voraus geplant werden, und alle IP-Adressen werden von den AKS-Knoten basierend auf der maximalen Anzahl von Pods genutzt, die sie unterstützen können. Erweiterte Netzwerkfeatures und -szenarien wie z. B. [virtuelle Knoten][virtual-nodes] oder Netzwerkrichtlinien (entweder Azure oder Calico) werden mit *Azure CNI* unterstützt.
+
+### <a name="limitations--considerations-for-kubenet"></a>Einschränkungen und Erwägungen für kubenet
+
+* Beim Entwurf von kubenet ist ein zusätzlicher Hop erforderlich, wodurch der Pod-Kommunikation eine geringfügige Wartezeit hinzugefügt wird.
+* Routingtabellen und benutzerdefinierte Routen sind für die Verwendung von kubenet erforderlich, wodurch die Vorgänge komplexer werden.
+* Direkte Pod-Adressierung wird aufgrund des kubenet-Designs für kubenet nicht unterstützt.
+* Im Gegensatz zu Azure CNI-Clustern können mehrere kubenet-Clustern Subnetze nicht gemeinsam verwenden.
+* Zu den **in kubenet nicht unterstützten** Funktionen gehören:
+   * [Azure-Netzwerkrichtlinien](use-network-policies.md#create-an-aks-cluster-and-enable-network-policy), aber Calico-Netzwerkrichtlinien werden in kubenet unterstützt.
+   * [Windows-Knotenpools](windows-node-limitations.md)
+   * [Add-On für virtuelle Knoten](virtual-nodes-portal.md#known-limitations)
 
 ### <a name="ip-address-availability-and-exhaustion"></a>IP-Adressenverfügbarkeit und -auslastung
 

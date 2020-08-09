@@ -13,14 +13,14 @@ ms.workload: infrastructure
 ms.date: 10/16/2019
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9cb2647cc5ac2dc60f5ae7327ee39ed2ff625193
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 79ef279423c524f0d409815e7ae163aa699f5428
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82901389"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082204"
 ---
-# <a name="backup-and-restore"></a>Sichern und Wiederherstellen
+# <a name="backup-and-restore-on-sap-hana-on-azure"></a>Sichern und Wiederherstellen in SAP HANA in Azure
 
 >[!IMPORTANT]
 >Dieser Artikel ist kein Ersatz für die Verwaltungsdokumentation zu SAP HANA oder für SAP Notes. Es wird davon ausgegangen, dass Sie über solide Kenntnisse in Bezug auf die SAP HANA-Verwaltung und den Betrieb verfügen, insbesondere in den Bereichen Sicherung, Wiederherstellung, Hochverfügbarkeit und Notfallwiederherstellung. In diesem Artikel werden Screenshots von SAP HANA Studio gezeigt. Inhalt, Struktur und grundlegender Aufbau der Bildschirme in den SAP-Verwaltungstools sowie auch die Tools selbst können sich von Release zu Release von SAP HANA ändern.

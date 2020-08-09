@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 0231070e73c5b38562e8d110d80a2fba3c28724d
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: b0e8de797d66b875b65c1b6b593852707c587e6e
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87385482"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87446553"
 ---
 # <a name="azure-security-baseline-for-linux-virtual-machines"></a>Azure-Sicherheitsbaseline für Virtuelle Linux-Computer
 
@@ -628,9 +628,9 @@ Microsoft verwendet das TLS-Protokoll (Transport Layer Security) zum Schutz von 
 
 **Leitfaden**: Verwenden Sie die Azure-Updateverwaltung, um Updates und Patches für Ihre VMs zu verwalten. In der Updateverwaltung werden unterstützte Systeme mithilfe des lokal konfigurierten Updaterepositorys gepatcht.
 
-* [Updateverwaltung in Azure](../../automation/automation-update-management.md)
+* [Updateverwaltung in Azure](../../automation/update-management/update-mgmt-overview.md)
 
-* [Verwalten von Updates und Patches für Ihre Azure-VMs](../../automation/automation-tutorial-update-management.md)
+* [Verwalten von Updates und Patches für Ihre VMs](../../automation/update-management/update-mgmt-manage-updates-for-vm.md)
 
 **Azure Security Center-Überwachung:** Ja
 
@@ -640,9 +640,9 @@ Microsoft verwendet das TLS-Protokoll (Transport Layer Security) zum Schutz von 
 
 **Leitfaden**: Sie können eine Lösung für die Patchverwaltung von Drittanbietern verwenden. Sie können die Azure-Updateverwaltung verwenden, um Updates und Patches für Ihre VMs zu verwalten. In der Updateverwaltung werden unterstützte Systeme mithilfe des lokal konfigurierten Updaterepositorys gepatcht.
 
-* [Updateverwaltung in Azure](../../automation/automation-update-management.md)
+* [Updateverwaltung in Azure](../../automation/update-management/update-mgmt-overview.md)
 
-* [Verwalten von Updates und Patches für Ihre Azure-VMs](../../automation/automation-tutorial-update-management.md)
+* [Verwalten von Updates und Patches für Ihre VMs](../../automation/update-management/update-mgmt-manage-updates-for-vm.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar.
 

@@ -1,5 +1,5 @@
 ---
-title: Ausführen von benutzerdefinierten Skripts auf Linux-VMs in Azure
+title: Ausführen von benutzerdefinierten Skripterweiterungen auf Linux-VMs in Azure
 description: Automatisieren von Konfigurationsaufgaben für virtuelle Linux-Computer mithilfe der Erweiterung für benutzerdefinierte Skripts (v2)
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/25/2018
 ms.author: mimckitt
-ms.openlocfilehash: 92bb254873669ae7c0894d633f17b5701b7ddc97
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 367116948034fd4bedbeec15e655a09b179865d6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82594728"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085723"
 ---
 # <a name="use-the-azure-custom-script-extension-version-2-with-linux-virtual-machines"></a>Verwenden von Version 2 der Azure-Erweiterung für benutzerdefinierte Skripts mit virtuellen Linux-Computern
 Version 2 der Erweiterung für benutzerdefinierte Skripts lädt Skripts auf virtuelle Azure-Computer herunter und führt sie dort aus. Diese Erweiterung ist hilfreich bei der Konfiguration nach der Bereitstellung, bei der Softwareinstallation oder bei anderen Konfigurations-/Verwaltungsaufgaben. Sie können Skripts von Azure Storage oder einem anderen zugänglichen Speicherort im Internet herunterladen oder sie für die Erweiterungsruntime bereitstellen. 
@@ -38,14 +38,14 @@ Stellen Sie neue und bereits vorhandene Bereitstellungen auf die neue Version 2 
 
 ### <a name="operating-system"></a>Betriebssystem
 
-Die Erweiterung für benutzerdefinierte Skripts für Linux wird auf den von Erweiterungen unterstützten Betriebssystemen ausgeführt. Weitere Informationen finden Sie in diesem [Artikel](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros).
+Die Erweiterung für benutzerdefinierte Skripts für Linux wird auf den von Erweiterungen unterstützten Betriebssystemen ausgeführt. Weitere Informationen finden Sie in diesem [Artikel](../linux/endorsed-distros.md).
 
 ### <a name="script-location"></a>Speicherort des Skripts
 
 Mit der Erweiterung können Sie unter Verwendung Ihrer Azure Blob Storage-Anmeldeinformationen auf Azure Blob Storage zugreifen. Alternativ kann das Skript an einem beliebigen Ort gespeichert sein, solange der virtuelle Computer ein Routing an diesen Endpunkt (GitHub, interner Dateiserver oder Ähnliches) durchführen kann.
 
 ### <a name="internet-connectivity"></a>Internetverbindung
-Wenn Sie ein Skript extern herunterladen möchten (etwa im Fall von GitHub oder Azure Storage), müssen zusätzliche Firewall-/Netzwerksicherheitsgruppen-Ports geöffnet werden. Wenn sich Ihr Skript also beispielsweise in Azure Storage befindet, können Sie Zugriff über Azure-NSG-Diensttags für [Storage](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags) gewähren.
+Wenn Sie ein Skript extern herunterladen möchten (etwa im Fall von GitHub oder Azure Storage), müssen zusätzliche Firewall-/Netzwerksicherheitsgruppen-Ports geöffnet werden. Wenn sich Ihr Skript also beispielsweise in Azure Storage befindet, können Sie Zugriff über Azure-NSG-Diensttags für [Storage](../../virtual-network/security-overview.md#service-tags) gewähren.
 
 Befindet sich Ihr Skript auf einem lokalen Server, müssen gegebenenfalls noch weitere Firewall-/Netzwerksicherheitsgruppen-Ports geöffnet werden.
 
@@ -56,7 +56,8 @@ Befindet sich Ihr Skript auf einem lokalen Server, müssen gegebenenfalls noch w
 * Die Skriptausführung darf maximal 90 Minuten dauern. Danach gilt die Bereitstellung der Erweiterung als nicht erfolgreich.
 * Das Skript darf keine Systemneustarts enthalten, da diese zu Problemen mit anderen Erweiterungen führen, die installiert werden. Außerdem wird die Erweiterung nach dem Neustart nicht fortgesetzt. 
 * Wenn Sie über ein Skript verfügen, das einen Neustart des Systems bewirkt, installieren Sie Anwendungen, und führen Sie Skripts usw. aus. Planen Sie den Neustart des Systems mithilfe eines Cron-Auftrags oder mit einem Tool wie DSC oder Chef oder mit Puppet-Erweiterungen.
-* Die Erweiterung führt jedes Skript nur einmal aus. Soll ein Skript bei jedem Neustart des Systems ausgeführt werden, können Sie [cloud-init image](https://docs.microsoft.com/azure/virtual-machines/linux/using-cloud-init) und ein Modul vom Typ [Scripts Per Boot](https://cloudinit.readthedocs.io/en/latest/topics/modules.html#scripts-per-boot) (Skripts pro Boot) verwenden. Alternativ können Sie mithilfe des Skripts eine systemd-Diensteinheit erstellen.
+* Die Erweiterung führt jedes Skript nur einmal aus. Soll ein Skript bei jedem Neustart des Systems ausgeführt werden, können Sie [cloud-init image](../linux/using-cloud-init.md) und ein Modul vom Typ [Scripts Per Boot](https://cloudinit.readthedocs.io/en/latest/topics/modules.html#scripts-per-boot) (Skripts pro Boot) verwenden. Alternativ können Sie mithilfe des Skripts eine systemd-Diensteinheit erstellen.
+* Es kann nur eine Version einer Erweiterung auf die VM angewendet werden. Um ein zweites benutzerdefiniertes Skript auszuführen, müssen Sie die benutzerdefinierte Skripterweiterung entfernen und sie mit dem aktualisierten Skript erneut anwenden. 
 * Wenn Sie den Ausführungszeitpunkt eines Skripts planen möchten, erstellen Sie mithilfe der Erweiterung einen Cron-Auftrag. 
 * Während der Skriptausführung wird im Azure-Portal sowie in der CLI nur ein Übergangsstatus für die Erweiterung angezeigt. Sollten Sie häufigere Statusaktualisierungen für ein ausgeführtes Skript benötigen, müssen Sie eine eigene Lösung erstellen.
 * Die Erweiterung für benutzerdefinierte Skripts verfügt über keine native Proxyserverunterstützung. Sie können innerhalb Ihres Skripts jedoch ein Dateiübertragungstool mit Proxyserverunterstützung verwenden (beispielsweise *cURL*). 
@@ -134,7 +135,7 @@ Diese Elemente müssen als vertrauliche Daten behandelt und in der Konfiguration
 * `fileUris` (optional, Zeichenfolgenarray): die URLs für die herunterzuladenden Dateien.
 * `storageAccountName` (optional, Zeichenfolge): der Name des Speicherkontos. Wenn Sie Speicheranmeldeinformationen angeben, muss es sich bei allen `fileUris` um URLs für Azure-Blobs handeln.
 * `storageAccountKey` (optional, Zeichenfolge): der Zugriffsschlüssel des Speicherkontos.
-* `managedIdentity` (optional, JSON-Objekt): die [verwaltete Identität](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) zum Herunterladen von Dateien
+* `managedIdentity` (optional, JSON-Objekt): die [verwaltete Identität](../../active-directory/managed-identities-azure-resources/overview.md) zum Herunterladen von Dateien
   * `clientId` (optional, Zeichenfolge): die Client-ID der verwalteten Identität
   * `objectId` (optional, Zeichenfolge): die Objekt-ID der verwalteten Identität
 
@@ -212,9 +213,9 @@ CustomScript verwendet den folgenden Algorithmus zum Ausführen eines Skripts.
 > [!NOTE]
 > Diese Eigenschaft **muss** nur in geschützten Einstellungen angegeben werden.
 
-CustomScript (ab Version 2.1) unterstützt [verwaltete Identitäten](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) zum Herunterladen von Dateien von URLs, die in der Einstellung „fileUris“ angegeben werden. So kann CustomScript auf private Azure Storage-Blobs oder -Container zugreifen, ohne dass der Benutzer Geheimnisse wie SAS-Token oder Speicherkontoschlüssel übergeben muss.
+CustomScript (ab Version 2.1) unterstützt [verwaltete Identitäten](../../active-directory/managed-identities-azure-resources/overview.md) zum Herunterladen von Dateien von URLs, die in der Einstellung „fileUris“ angegeben werden. So kann CustomScript auf private Azure Storage-Blobs oder -Container zugreifen, ohne dass der Benutzer Geheimnisse wie SAS-Token oder Speicherkontoschlüssel übergeben muss.
 
-Um diese Funktion verwenden zu können, muss der Benutzer der VM oder VMSS, auf der CustomScript ausgeführt werden soll, eine [vom System zugewiesene](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet#add-a-system-assigned-identity) oder [vom Benutzer zugewiesene](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet#add-a-user-assigned-identity) Identität hinzufügen und [der verwalteten Identität Zugriff auf den Azure Storage-Container oder das -Blob gewähren](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/tutorial-vm-windows-access-storage#grant-access).
+Um diese Funktion verwenden zu können, muss der Benutzer der VM oder VMSS, auf der CustomScript ausgeführt werden soll, eine [vom System zugewiesene](../../app-service/overview-managed-identity.md?tabs=dotnet#add-a-system-assigned-identity) oder [vom Benutzer zugewiesene](../../app-service/overview-managed-identity.md?tabs=dotnet#add-a-user-assigned-identity) Identität hinzufügen und [der verwalteten Identität Zugriff auf den Azure Storage-Container oder das -Blob gewähren](../../active-directory/managed-identities-azure-resources/tutorial-vm-windows-access-storage.md#grant-access).
 
 Um die vom System zugewiesene Identität für die Ziel-VM/VMSS zu verwenden, legen Sie das Feld „managedidentity“ auf ein leeres JSON-Objekt fest. 
 
@@ -285,7 +286,7 @@ Azure-VM-Erweiterungen können mithilfe von Azure Resource Manager-Vorlagen bere
 >[!NOTE]
 >Bei Eigenschaftennamen wird zwischen Groß- und Kleinschreibung unterschieden. Um Bereitstellungsprobleme zu vermeiden, verwenden Sie die Namen wie hier gezeigt.
 
-## <a name="azure-cli"></a>Azure CLI
+## <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
 Wenn Sie die Azure-Befehlszeilenschnittstelle zum Ausführen der Erweiterung für benutzerdefinierte Skripts verwenden, erstellen Sie eine Konfigurationsdatei oder mehrere Konfigurationsdateien. Es muss mindestens commandToExecute festgelegt sein.
 
 ```azurecli

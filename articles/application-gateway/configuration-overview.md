@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: conceptual
-ms.date: 07/20/2020
+ms.date: 07/30/2020
 ms.author: absha
-ms.openlocfilehash: 8a9373893b1381e9a2f54bb83717e6001efac295
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 9315884db30c053d86c889ff3b45aaea17d48b17
+ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386332"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87438914"
 ---
 # <a name="application-gateway-configuration-overview"></a>Application Gateway – Konfigurationsübersicht
 
@@ -55,7 +55,7 @@ Netzwerksicherheitsgruppen (NSG) werden im Application Gateway-Subnetz unterstü
   - Entfernen Sie die Standardausgangsregeln nicht.
   - Erstellen Sie keine anderen Ausgangsregeln, die ausgehende Konnektivität verweigern.
 
-- Datenverkehr vom **AzureLoadBalancer**-Tag muss zulässig sein.
+- Datenverkehr vom **AzureLoadBalancer**-Tag mit dem Zielsubnetz als **Beliebig** muss zulässig sein.
 
 #### <a name="allow-application-gateway-access-to-a-few-source-ips"></a>Zulassen des Application Gateway-Zugriffs auf einige wenige Quell-IPs
 
@@ -122,11 +122,19 @@ Verwenden Sie für dieses Szenario Netzwerksicherheitsgruppen im Application Gat
 
 ## <a name="front-end-ip"></a>Front-End-IP
 
-Sie können das Application Gateway mit einer öffentlichen IP-Adresse, mit einer privaten IP-Adresse oder mit beidem konfigurieren. Eine öffentliche IP-Adresse ist erforderlich, wenn Sie ein Back-End hosten, auf das Clients über eine für den Internetzugriff verfügbare virtuelle IP (VIP) über das Internet zugreifen müssen. 
+Sie können das Application Gateway mit einer öffentlichen IP-Adresse, mit einer privaten IP-Adresse oder mit beidem konfigurieren. Eine öffentliche IP-Adresse ist erforderlich, wenn Sie ein Back-End hosten, auf das Clients über eine für den Internetzugriff verfügbare virtuelle IP (VIP) über das Internet zugreifen müssen.
+
+> [!NOTE]
+> Application Gateway v2 unterstützt derzeit nicht den rein privaten IP-Modus. Es unterstützt die folgenden Kombinationen:
+>* Private IP- und öffentliche IP-Adresse
+>* Nur öffentliche IP-Adresse
+>
+> Weitere Informationen finden Sie in den [häufig gestellten Fragen zu Application Gateway](application-gateway-faq.md#how-do-i-use-application-gateway-v2-with-only-private-frontend-ip-address).
+
 
 Eine öffentliche IP-Adresse ist nicht für einen internen Endpunkt erforderlich, der nicht für den Internetzugriff verfügbar ist. Dieser wird als *Interner Lastenausgleich*-Endpunkt (Internal Load-Balancer, ILB) oder private Front-End-IP bezeichnet. Ein ILB-Application Gateway ist für interne Branchenanwendungen nützlich, die nicht für das Internet verfügbar gemacht werden. Es ist auch hilfreich für Dienste und Ebenen in einer Anwendung mit mehreren Ebenen innerhalb einer Sicherheitsgrenze, die nicht für das Internet verfügbar gemacht werden, aber eine Roundrobin-Lastverteilung, Sitzungspersistenz oder TLS-Beendigung erfordern.
 
-Es werden nur jeweils eine öffentliche und private IP-Adresse unterstützt. Sie wählen die Front-End-IP beim Erstellen des Application Gateways aus.
+Es werden nur jeweils eine öffentliche oder private IP-Adresse unterstützt. Sie wählen die Front-End-IP beim Erstellen des Application Gateways aus.
 
 - Für eine öffentliche IP-Adresse können Sie eine neue öffentliche IP-Adresse erstellen oder eine vorhandene öffentliche IP-Adresse am gleichen Speicherort wie das Application Gateway verwenden. Weitere Informationen finden Sie unter [Statische und dynamische öffentliche IP-Adresse im Vergleich](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address).
 

@@ -5,12 +5,12 @@ services: container-service
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.custom: references_regions
-ms.openlocfilehash: 277bdc19635231628cea8c308b30c57b129dc364
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 8748e4f78582ab133d7e527daba1c126dcb7e7e2
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86250701"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543706"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-in-the-azure-portal"></a>Erstellen und Konfigurieren eines AKS-Clusters zur Verwendung von virtuellen Knoten im Azure-Portal
 
@@ -68,6 +68,7 @@ Die Funktionalität der virtuellen Knoten ist stark abhängig von den ACI-Featur
 * [Argumente](../container-instances/container-instances-exec.md#restrictions) für „exec“ in ACI.
 * [DaemonSets](concepts-clusters-workloads.md#statefulsets-and-daemonsets) stellen keine Pods auf dem virtuellen Knoten bereit.
 * Virtuelle Knoten unterstützen die Planung von Linux-Pods. Sie können den Open-Source-ACI-Anbieter [Virtual Kubelet](https://github.com/virtual-kubelet/azure-aci) manuell installieren, um Windows Server-Container für ACI zu planen.
+* Virtuelle Knoten erfordern AKS-Cluster mit Azure CNI-Netzwerk
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 

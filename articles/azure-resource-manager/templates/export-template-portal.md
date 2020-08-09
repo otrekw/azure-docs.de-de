@@ -2,13 +2,13 @@
 title: Exportieren einer Vorlage im Azure-Portal
 description: Verwenden Sie das Azure-Portal, um eine Azure Resource Manager-Vorlage aus Ressourcen in Ihrem Abonnement zu exportieren.
 ms.topic: conceptual
-ms.date: 12/12/2019
-ms.openlocfilehash: dbdcaa6e6db4a7a4a958f1be2e9977a14e092663
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.date: 07/29/2020
+ms.openlocfilehash: 0262517df11f0d91920fd7e44f96ff532ffbe63f
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86057703"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423234"
 ---
 # <a name="single-and-multi-resource-export-to-a-template-in-azure-portal"></a>Exportieren von einzelnen oder mehreren Ressourcen in eine Vorlage im Azure-Portal
 
@@ -52,6 +52,8 @@ Beim Exportieren aus einer Ressourcengruppe oder Ressource wird die exportierte 
 Die Funktion „Vorlage exportieren“ unterstützt nicht das Exportieren von Azure Data Factory-Ressourcen. Informationen zum Exportieren von Data Factory-Ressourcen finden Sie unter [Kopieren oder Klonen einer Data Factory in Azure Data Factory](https://aka.ms/exportTemplateViaAdf).
 
 Um über das klassische Bereitstellungsmodell erstellte Ressourcen zu exportieren, müssen Sie [sie zum Resource Manager-Bereitstellungsmodell migrieren](https://aka.ms/migrateclassicresourcetoarm).
+
+Wenn beim Exportieren einer Vorlage eine Warnung angezeigt wird, die angibt, dass ein Ressourcentyp nicht exportiert wurde, können Sie die Eigenschaften für diese Ressource immer noch ermitteln. Weitere Informationen zu den verschiedenen Optionen zum Anzeigen von Ressourceneigenschaften finden Sie unter [Ermitteln von Ressourceneigenschaften](view-resources.md). Sie können den Ressourcentyp auch in der [Azure-REST-API](/rest/api/azure/) nachschlagen.
 
 ## <a name="export-template-from-a-resource-group"></a>Exportieren einer Vorlage aus einer Ressourcengruppe
 

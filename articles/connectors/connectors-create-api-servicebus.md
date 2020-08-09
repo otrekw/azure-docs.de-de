@@ -3,16 +3,16 @@ title: Austauschen von Meldungen mit Azure Service Bus
 description: Erstellen von automatisierten Aufgaben und Workflows, die Nachrichten mithilfe von Azure Service Bus in Azure Logic Apps senden und empfangen
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: logicappspm
 ms.topic: conceptual
-ms.date: 09/19/2019
+ms.date: 07/31/2020
 tags: connectors
-ms.openlocfilehash: 870ec6997b0abf5afc1c1bfa788bbca18c08ead7
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 768186d4b1cf9ac62d4ffdb0af8fdb3df04e9b19
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87283995"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87461603"
 ---
 # <a name="exchange-messages-in-the-cloud-by-using-azure-logic-apps-and-azure-service-bus"></a>Austauschen von Nachrichten in der Cloud mit Azure Logic Apps und Azure Service Bus
 
@@ -31,7 +31,7 @@ Sie können Trigger verwenden, die Antworten von Service Bus erhalten und die Au
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein Azure-Abonnement. Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/).
+* Ein Azure-Konto und ein Azure-Abonnement. Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/).
 
 * Ein Service Bus-Namespace und eine Messagingentität, z.B. eine Warteschlange. Diese Elemente und Ihre Logik-App müssen dasselbe Azure-Abonnement verwenden. Wenn Sie nicht über diese Elemente verfügen, informieren Sie sich, wie Sie [Ihren Service Bus-Namespace und eine Warteschlange erstellen](../service-bus-messaging/service-bus-create-namespace-portal.md).
 
@@ -45,7 +45,7 @@ Sie können Trigger verwenden, die Antworten von Service Bus erhalten und die Au
 
 Vergewissern Sie sich, dass Ihre Logik-App über Berechtigungen für den Zugriff auf Ihren Service Bus-Namespace verfügt.
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) mit Ihrem Azure-Konto an.
 
 1. Navigieren Sie zu Ihrem Service Bus-*Namespace*. Wählen Sie auf der Seite „Namespace“ unter **Einstellungen** die Option **Freigegebene Zugriffsrichtlinien** aus. Stellen Sie im Bereich **Ansprüche** sicher, dass Sie die **Verwaltungsberechtigungen** für diesen Namespace besitzen.
 
@@ -54,7 +54,7 @@ Vergewissern Sie sich, dass Ihre Logik-App über Berechtigungen für den Zugriff
 1. Rufen Sie die Verbindungszeichenfolge für Ihren Service Bus-Namespace ab. Sie benötigen diese Zeichenfolge, wenn Sie die Verbindungsinformationen in Ihrer Logik-App bereitstellen.
 
    1. Wählen Sie im Bereich **Richtlinien für gemeinsamen Zugriff** auf **RootManageSharedAccessKey** aus.
-   
+
    1. Wählen Sie neben der primären Verbindungszeichenfolge die Schaltfläche „Kopieren“ aus. Speichern Sie die Verbindungszeichenfolge für die spätere Verwendung.
 
       ![Kopieren der Verbindungszeichenfolge für Service Bus-Namespaces](./media/connectors-create-api-azure-service-bus/find-service-bus-connection-string.png)
@@ -171,4 +171,3 @@ Andere technische Details zu Triggern, Aktionen und Beschränkungen aus der Swag
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Informationen zu anderen [Logic Apps-Connectors](../connectors/apis-list.md)
-

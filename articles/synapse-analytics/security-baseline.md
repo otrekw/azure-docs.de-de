@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: ef8c4754afc921eaeb68a84fbd8147f336a4940c
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 2cd42d8d4ba1ecabc1b87942536e2ef9a9017b22
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87370273"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87501949"
 ---
 # <a name="azure-security-baseline-for-synapse-analytics"></a>Azure-Sicherheitsbaseline für Synapse Analytics
 
@@ -158,7 +158,7 @@ Sie können Azure PowerShell oder die Azure-Befehlszeilenschnittstelle verwenden
 
 * [Erstellen und Verwenden von Tags](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
 
-**Azure Security Center-Überwachung:** Zurzeit nicht verfügbar
+**Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
 
 **Verantwortlichkeit**: Kunde
 
@@ -428,7 +428,7 @@ Bei der SQL Server-Überwachung können Sie Serverüberwachungen erstellen, die 
 
 * [Konfigurieren benannter Standorte in Azure](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations)
 
-**Azure Security Center-Überwachung:** Zurzeit nicht verfügbar
+**Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
 
 **Verantwortlichkeit**: Kunde
 
@@ -472,7 +472,7 @@ Wenn Sie die SQL-Authentifizierung verwenden, erstellen Sie eigenständige Daten
 
 * [Grundlegendes zu Anmeldungen und Benutzerkonten in Azure SQL](https://docs.microsoft.com/azure/azure-sql/database/logins-create-manage)
 
-**Azure Security Center-Überwachung:** Zurzeit nicht verfügbar
+**Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
 
 **Verantwortlichkeit**: Kunde
 
@@ -490,7 +490,7 @@ Wenn Sie die SQL-Authentifizierung verwenden, erstellen Sie eigenständige Daten
 
 * [Grundlegendes zu Anmeldungen und Benutzerkonten in Azure SQL](https://docs.microsoft.com/azure/azure-sql/database/logins-create-manage)
 
-**Azure Security Center-Überwachung:** Zurzeit nicht verfügbar
+**Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
 
 **Verantwortlichkeit**: Kunde
 
@@ -500,7 +500,7 @@ Wenn Sie die SQL-Authentifizierung verwenden, erstellen Sie eigenständige Daten
 
 * [Grundlegendes zu Kunden-Lockbox](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview)
 
-**Azure Security Center-Überwachung:** Zurzeit nicht verfügbar
+**Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
 
 **Verantwortlichkeit**: Kunde
 
@@ -578,13 +578,13 @@ Außerdem können Sie eine Richtlinie für die dynamische Datenmaskierung (DDM) 
 
 * [Grundlegendes zur dynamischen Datenmaskierung für Azure Synapse SQL](https://docs.microsoft.com/azure/sql-database/sql-database-dynamic-data-masking-get-started)
 
-**Azure Security Center-Überwachung:** Ja
+**Azure Security Center-Überwachung**: Ja
 
 **Verantwortlichkeit**: Kunde
 
 ### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4.6: Verwenden der rollenbasierten Zugriffssteuerung zum Steuern des Zugriffs auf Ressourcen
 
-**Leitfaden**: Verwenden Sie die rollenbasierte Zugriffssteuerung von Azure (RBAC), um den Zugriff auf Azure SQL-Datenbanken in Ihrem Synapse SQL-Pool zu verwalten.
+**Leitfaden**: Verwenden Sie die rollenbasierte Zugriffssteuerung von Azure (Azure RBAC), um den Zugriff auf Azure SQL-Datenbanken in Ihrem Synapse SQL-Pool zu verwalten.
 
 Die Autorisierung wird durch die Rollenmitgliedschaften und Berechtigungen auf Objektebene der Datenbank Ihres Benutzerkontos gesteuert. Als bewährte Methode sollten Sie Benutzern nur die minimal erforderlichen Berechtigungen erteilen.
 
@@ -594,7 +594,7 @@ Die Autorisierung wird durch die Rollenmitgliedschaften und Berechtigungen auf O
 
 * [Grundlegendes zu Authentifizierung und Autorisierung in Azure SQL](https://docs.microsoft.com/azure/azure-sql/database/logins-create-manage)
 
-**Azure Security Center-Überwachung:** Ja
+**Azure Security Center-Überwachung**: Ja
 
 **Verantwortlichkeit**: Kunde
 
@@ -632,7 +632,7 @@ Darüber hinaus können Sie Warnungen für Datenbanken in Ihrem SQL Synapse-Pool
 
 * [Erstellen von Warnungen für Azure SQL Synapse](https://docs.microsoft.com/azure/azure-sql/database/alerts-insights-configure-portal)
 
-**Azure Security Center-Überwachung:** Ja
+**Azure Security Center-Überwachung**: Ja
 
 **Verantwortlichkeit**: Kunde
 
@@ -880,7 +880,7 @@ Verwenden Sie Azure Resource Graph, um Ressourcen in Ihren Abonnements abzufrage
 
 ### <a name="74-maintain-secure-operating-system-configurations"></a>7.4: Verwalten sicherer Betriebssystemkonfigurationen
 
-**Anleitung:** Nicht zutreffend. Diese Empfehlung ist für Computeressourcen vorgesehen.
+**Leitfaden**: Nicht zutreffend. Diese Empfehlung ist für Computeressourcen vorgesehen.
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -934,7 +934,7 @@ Verwenden Sie Azure Resource Graph, um Ressourcen in Ihren Abonnements abzufrage
 
 ### <a name="710-implement-automated-configuration-monitoring-for-operating-systems"></a>7.10: Implementieren der automatisierten Konfigurationsüberwachung für Betriebssysteme
 
-**Anleitung:** Nicht zutreffend. Diese Empfehlung ist für Computeressourcen vorgesehen.
+**Leitfaden**: Nicht zutreffend. Diese Empfehlung ist für Computeressourcen vorgesehen.
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -1014,7 +1014,7 @@ Führen Sie eine Vorabprüfung aller Inhalte durch, die in computefremde Azure-R
 
 **Leitfaden**: Momentaufnahmen Ihres Synapse SQL-Pools werden im Verlauf des Tages automatisch erstellt, und die generierten Wiederherstellungspunkte sind für sieben Tage verfügbar. Dieser Aufbewahrungszeitraum kann nicht geändert werden. Ein SQL-Pool unterstützt eine RPO (Recovery Point Objective) von acht Stunden. Sie können das Data Warehouse in der primären Region anhand einer beliebigen Momentaufnahme wiederherstellen, die in den vergangenen sieben Tagen erstellt wurde. Beachten Sie, dass Sie Momentaufnahmen ggf. auch manuell auslösen können.
 
-* [Sichern und Wiederherstellen in einem Azure Synapse SQL-Pool](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/backup-and-restore)
+* [Sichern und Wiederherstellen in einem Azure Synapse SQL-Pool](/azure/synapse-analytics/sql-data-warehouse/backup-and-restore)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 

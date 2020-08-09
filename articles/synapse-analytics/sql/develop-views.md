@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 3a073c9539f2fb996ae59ef513525c217170f2e7
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 84cd5c2de0b1a6d0909a31071506d98627966775
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81426654"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500741"
 ---
 # <a name="t-sql-views-using-synapse-sql"></a>T-SQL-Sichten mit Synapse SQL
 In diesem Artikel finden Sie Tipps zur Verwendung von T-SQL-Sichten und zur Entwicklung von Lösungen mit Synapse SQL. 

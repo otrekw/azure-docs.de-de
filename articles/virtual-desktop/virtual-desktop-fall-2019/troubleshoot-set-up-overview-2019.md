@@ -1,6 +1,6 @@
 ---
-title: 'Problembehandlung von Windows Virtual Desktop: Übersicht – Azure'
-description: Eine Übersicht zur Problembehandlung bei der Einrichtung einer Windows Virtual Desktop-Mandantenumgebung.
+title: 'Problembehandlung von Windows Virtual Desktop (klassisch): Übersicht – Azure'
+description: Eine Übersicht zur Problembehandlung bei der Einrichtung einer Windows Virtual Desktop (klassisch)-Mandantenumgebung.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,17 +8,17 @@ ms.topic: troubleshooting
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 7fff21ec4fdb53483eea1a6c37ce9269081fe77e
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: efcdc203884a5aaff3b02e730f1dddb7fff66e95
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82614275"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289820"
 ---
-# <a name="troubleshooting-overview-feedback-and-support"></a>Problembehandlung: Übersicht, Feedback und Support
+#  <a name="windows-virtual-desktop-classic-troubleshooting-overview-feedback-and-support"></a>Problembehandlung von Windows Virtual Desktop (klassisch): Übersicht, Feedback und Support
 
 >[!IMPORTANT]
->Dieser Inhalt gilt für das Release vom Herbst 2019, das keine Windows Virtual Desktop-Objekte in Azure Resource Manager unterstützt. Wenn Sie Windows Virtual Desktop-Objekte in Azure Resource Manager verwalten möchten, die im Update vom Frühjahr 2020 eingeführt wurden, finden Sie weitere Informationen in [diesem Artikel](../troubleshoot-set-up-overview.md).
+>Dieser Inhalt gilt für den Windows Virtual Desktop-Dienst (klassisch), der keine Windows Virtual Desktop-Objekte in Azure Resource Manager unterstützt. Wenn Sie Windows Virtual Desktop-Objekte in Azure Resource Manager verwalten möchten, helfen Ihnen die Informationen in [diesem Artikel](../troubleshoot-set-up-overview.md) weiter.
 
 Dieser Artikel gibt einen Überblick über die Probleme, die bei der Einrichtung einer Windows Virtual Desktop-Mandantenumgebung auftreten können, und beschreibt Möglichkeiten, diese Probleme zu lösen.
 

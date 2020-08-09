@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: c3c34ea9e32e100d5756a3930ce9d0147363e379
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 7ea1995b6d1232b3e4c6371313e5b3d45bdbb756
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027871"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075400"
 ---
 # <a name="use-creator-to-create-indoor-maps"></a>Verwenden von Creator zum Erstellen von Gebäudeplänen
 
@@ -32,7 +32,7 @@ In diesem Tutorial wird die Erstellung von Gebäudeplänen gezeigt. Sie erfahren
 
 Zum Erstellen von Gebäudeplänen ist Folgendes erforderlich:
 
-1. [Erstellen eines Azure Maps-Kontos](quick-demo-map-app.md#create-an-account-with-azure-maps)
+1. [Erstellen eines Azure Maps-Kontos](quick-demo-map-app.md#create-an-azure-maps-account)
 2. [Abrufen eines Primärschlüssels](quick-demo-map-app.md#get-the-primary-key-for-your-account) (auch primärer Schlüssel oder Abonnementschlüssel genannt)
 3. [Erstellen einer Creator-Ressource](how-to-manage-creator.md)
 4. Herunterladen des [Beispielzeichenpakets](https://github.com/Azure-Samples/am-creator-indoor-data-examples)
@@ -52,7 +52,7 @@ Bei der Datenupload-API handelt es sich um eine zeitintensive Transaktion, durch
 
 2. Klicken Sie erneut auf **New** (Neu), um die Anforderung zu erstellen. Wählen Sie im Fenster **Create New** (Neu erstellen) die Option **Request** (Anforderung) aus. Geben Sie einen Anforderungsnamen (**Request name**) ein. Wählen Sie die im vorherigen Schritt erstellte Sammlung und anschließend **Save** (Speichern) aus.
 
-3. Wählen Sie auf der Registerkarte „Builder“ (Generator) die HTTP-Methode **POST** aus, und geben Sie die folgende URL ein, um das Zeichnungspaket in den Azure Maps-Dienst hochzuladen. Ersetzen Sie bei dieser Anforderung sowie bei den anderen in diesem Artikel angegebenen Anforderungen jeweils `<Azure-Maps-Primary-Subscription-key>` durch Ihren primären Abonnementschlüssel.
+3. Wählen Sie auf der Registerkarte „Builder“ (Generator) die HTTP-Methode **POST** aus, und geben Sie die folgende URL ein, um das Zeichnungspaket in den Azure Maps-Dienst hochzuladen. Ersetzen Sie bei dieser Anforderung sowie bei den anderen in diesem Artikel angegebenen Anforderungen jeweils `{Azure-Maps-Primary-Subscription-key}` durch Ihren primären Abonnementschlüssel.
 
     ```http
     https://atlas.microsoft.com/mapData/upload?api-version=1.0&dataFormat=zip&subscription-key={Azure-Maps-Primary-Subscription-key}
@@ -67,7 +67,7 @@ Bei der Datenupload-API handelt es sich um eine zeitintensive Transaktion, durch
 6. Erstellen Sie zum Überprüfen des Status des API-Aufrufs eine **GET**-HTTP-Anforderung für `status URL`. An die URL muss zur Authentifizierung der primäre Abonnementschlüssel angefügt werden. Die **GET**-Anforderung sollte wie die folgende URL aussehen:
 
     ```http
-    https://atlas.microsoft.com/mapData/operations/{operationId}?api-version=1.0&subscription-key={Azure-Maps-Primary-Subscription-key}
+    https://atlas.microsoft.com/mapData/operations/<operationId>?api-version=1.0&subscription-key={Azure-Maps-Primary-Subscription-key}
     ```
 
 7. Wenn die **GET**-HTTP-Anforderung erfolgreich abgeschlossen wurde, wird ein `resourceLocation` zurückgegeben. Der `resourceLocation` enthält die eindeutige `udid` für den hochgeladenen Inhalt. Optional können Sie im nächsten Schritt mithilfe der `resourceLocation`-URL Metadaten aus dieser Ressource abzurufen.
@@ -170,7 +170,7 @@ Das Dataset ist eine Sammlung von Kartenfeatures wie Gebäuden, Ebenen und Räum
 4. Erstellen Sie eine Anforderung vom Typ **GET** für die Status-URL (`statusURL`), um die Dataset-ID (`datasetId`) zu erhalten. Fügen Sie zur Authentifizierung Ihren primären Abonnementschlüssel für Azure Maps an. Die Anforderung sollte wie die folgende URL aussehen:
 
     ```http
-    https://atlas.microsoft.com/dataset/operations/{operationId}?api-version=1.0&subscription-key=<Azure-Maps-Primary-Subscription-key>
+    https://atlas.microsoft.com/dataset/operations/<operationId>?api-version=1.0&subscription-key={Azure-Maps-Primary-Subscription-key}
     ```
 
 5. Nach erfolgreichem Abschluss der HTTP-Anforderung vom Typ **GET** enthält der Antwortheader die Dataset-ID (`datasetId`) für das erstellte Dataset. Kopieren Sie die Dataset-ID (`datasetId`). Die Dataset-ID (`datasetId`) wird zum Erstellen eines Kachelsets benötigt.
@@ -199,7 +199,7 @@ Bei einem Kachelset handelt es sich um eine Gruppe von Vektorkacheln, die auf de
 3. Erstellen Sie eine Anforderung vom Typ **GET** für die Status-URL (`statusURL`) für das Kachelset. Fügen Sie zur Authentifizierung Ihren primären Abonnementschlüssel für Azure Maps an. Die Anforderung sollte wie die folgende URL aussehen:
 
    ```http
-    https://atlas.microsoft.com/tileset/operations/{operationId}?api-version=1.0&subscription-key=<Azure-Maps-Primary-Subscription-key>
+    https://atlas.microsoft.com/tileset/operations/<operationId>?api-version=1.0&subscription-key=<Azure-Maps-Primary-Subscription-key>
     ```
 
 4. Nach erfolgreichem Abschluss der HTTP-Anforderung vom Typ **GET** enthält der Antwortheader die Dataset-ID (`tilesetId`) für das erstellte Kachelset. Kopieren Sie die Kachelset-ID (`tilesetId`).

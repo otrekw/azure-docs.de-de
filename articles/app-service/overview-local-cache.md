@@ -6,12 +6,12 @@ ms.assetid: e34d405e-c5d4-46ad-9b26-2a1eda86ce80
 ms.topic: article
 ms.date: 03/04/2016
 ms.custom: seodec18
-ms.openlocfilehash: 2a1fc4de572fbb8634f8f58452ce5f9b632023a5
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.openlocfilehash: d1595354803b0625137dd1ac45d17962063ce4e0
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82628792"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87562445"
 ---
 # <a name="azure-app-service-local-cache-overview"></a>Übersicht über den lokalen Cache von Azure App Service
 
@@ -104,6 +104,9 @@ Wenn Sie das Feature für den lokalen Cache mit Stagingumgebungen verwenden, fin
 
 ### <a name="i-just-published-new-changes-but-my-app-does-not-seem-to-have-them-why"></a>Ich habe soeben neue Änderungen veröffentlicht, aber in meiner App scheinen diese nicht verfügbar zu sein. Warum?
 Wenn Ihre App den lokalen Cache verwendet, müssen Sie Ihre Site neu starten, um die neuesten Änderungen abzurufen. Sie möchten Änderungen nicht für eine Produktionssite veröffentlichen? Relevante Informationen finden Sie bei den Slotoptionen im oben stehenden Abschnitt zu den bewährten Methoden.
+
+> [!NOTE]
+> Die Bereitstellungsoption [aus Paket ausführen](deploy-run-package.md) ist mit dem lokalen Cache nicht kompatibel.
 
 ### <a name="where-are-my-logs"></a>Wo sind meine Protokolle?
 Bei Verwendung des lokalen Caches sehen Ihre Protokolle und Datenordner etwas anders aus. Die Struktur Ihrer Unterordner bleibt jedoch erhalten, mit der Ausnahme, dass sie unterhalb eines Unterordners mit folgendem Format geschachtelt sind: „eindeutiger VM-Bezeichner“ + Zeitstempel

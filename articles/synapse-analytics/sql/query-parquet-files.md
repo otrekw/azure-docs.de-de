@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: dd1e387727b0a80781b1103ddfb40afcbce8fce8
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 8083edaf647f52a07d55dddf21fe5751340783be
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386621"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496235"
 ---
 # <a name="query-parquet-files-using-sql-on-demand-preview-in-azure-synapse-analytics"></a>Abfragen von Parquet-Dateien mit SQL On-Demand (Vorschauversion) in Azure Synapse Analytics
 
@@ -24,7 +24,7 @@ In diesem Artikel erfahren Sie, wie Sie eine Abfrage mit SQL On-Demand (Vorschau
 
 Mit der Funktion `OPENROWSET` können Sie den Inhalt einer Parquet-Datei lesen, indem Sie die URL zur Datei bereitstellen.
 
-### <a name="reading-parquet-file"></a>Lesen einer Parquet-Datei
+### <a name="read-parquet-file"></a>Lesen einer Parquet-Datei
 
 Am einfachsten können Sie den Inhalt Ihrer `PARQUET`-Datei anzeigen, indem Sie der Funktion `OPENROWSET` die Datei-URL bereitstellen und Parquet als `FORMAT` angeben. Wenn die Datei öffentlich verfügbar ist oder Ihre Azure AD-Identität auf diese Datei zugreifen kann, sollten Sie den Inhalt der Datei mithilfe einer Abfrage wie im folgenden Beispiel anzeigen können:
 
@@ -37,7 +37,7 @@ from openrowset(
 
 Stellen Sie sicher, dass Sie auf diese Datei zugreifen können. Wenn Ihre Datei mit einem SAS-Schlüssel oder einer benutzerdefinierten Azure-Identität geschützt ist, müssen Sie [Anmeldeinformationen auf Serverebene für die SQL-Anmeldung](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#server-scoped-credential) einrichten.
 
-### <a name="using-data-source"></a>Verwenden einer Datenquelle
+### <a name="data-source-usage"></a>Datenquellennutzung
 
 Im vorherigen Beispiel wird der vollständige Pfad zur Datei verwendet. Alternativ können Sie eine externe Datenquelle mit dem Speicherort erstellen, der auf den Stammordner des Speichers verweist, und diese Datenquelle sowie den relativen Pfad zur Datei in der Funktion `OPENROWSET` verwenden:
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: 075837d0c382f5bc6f436a63dfe227c17f0a57a3
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: f87e3f4add0cb5949036ec6caca2e361e2e88ea0
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87128657"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498122"
 ---
 # <a name="access-and-identity-options-for-azure-kubernetes-service-aks"></a>Zugriffs- und Identitätsoptionen für Azure Kubernetes Service (AKS)
 
@@ -75,8 +75,6 @@ Mit in Azure AD integrierten AKS-Clustern können Sie Benutzern oder Gruppen Zug
 
 Die Azure AD-Authentifizierung wird für AKS-Cluster mit OpenID Connect bereitgestellt. OpenID Connect ist eine Identitätsebene, die auf dem OAuth 2.0-Protokoll aufbaut. Weitere Informationen zu OpenID Connect finden Sie in der [OpenID Connect-Dokumentation][openid-connect]. Innerhalb des Kubernetes-Clusters werden Authentifizierungstoken mithilfe der [Webhooktokenauthentifizierung][webhook-token-docs] überprüft. Die Webhooktokenauthentifizierung wird als Teil des AKS-Clusters konfiguriert und verwaltet.
 
-Innerhalb des Kubernetes-Clusters werden Authentifizierungstoken mithilfe der Webhooktokenauthentifizierung überprüft. Die Webhooktokenauthentifizierung wird als Teil des AKS-Clusters konfiguriert und verwaltet.
-
 ### <a name="webhook-and-api-server"></a>Webhook und API-Server
 
 ![Authentifizierungsablauf für Webhook und API-Server](media/concepts-identity/auth-flow.png)
@@ -121,7 +119,7 @@ Weitere Informationen zum Schützen des Zugriffs auf die kubeconfig-Datei, die d
 
 ### <a name="azure-rbac-for-kubernetes-authorization-preview"></a>Azure RBAC für die Kubernetes-Autorisierung (Vorschau)
 
-Mit der Azure-RBAC-Integration verwendet AKS einen Kubernetes-Webhookserver für die Autorisierung, damit Sie Berechtigungen und Zuweisungen von in Azure AD integrierten K8s-Clusterressourcen mit Azure RBAC-Rollendefinitionen und Rollenzuweisungen verwalten können.
+Mit der Azure-RBAC-Integration verwendet AKS einen Kubernetes-Webhookserver für die Autorisierung, damit Sie Berechtigungen und Zuweisungen von in Azure AD integrierten K8s-Clusterressourcen mit Azure-Rollendefinitionen und Rollenzuweisungen verwalten können.
 
 ![Azure RBAC für die Kubernetes-Autorisierungsablauf](media/concepts-identity/azure-rbac-k8s-authz-flow.png)
 

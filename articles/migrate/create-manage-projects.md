@@ -2,13 +2,13 @@
 title: Erstellen und Verwalten von Azure Migrate-Projekten
 description: Suchen, erstellen, verwalten und löschen Sie Projekte in Azure Migrate.
 ms.topic: how-to
-ms.date: 04/19/2020
-ms.openlocfilehash: 644ac5ecab9f5384b446c3b1ebe762a5d06aaf12
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/23/2020
+ms.openlocfilehash: d60868f9d0d4c60291cfd92a9e8d11fd3f9a42b9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86113427"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87071806"
 ---
 # <a name="create-and-manage-azure-migrate-projects"></a>Erstellen und Verwalten von Azure Migrate-Projekten
 
@@ -65,7 +65,6 @@ Gehen Sie beim Löschen wie folgt vor:
     - Der Ressourcentyp ist **Microsoft.Migrate/migrateprojects**.
     - Wenn die Ressourcengruppe ausschließlich vom Azure Migrate-Projekt verwendet wird, können Sie die gesamte Ressourcengruppe löschen.
 
-
 Beachten Sie dabei Folgendes:
 
 - Beim Löschen werden sowohl das Projekt als auch die Metadaten zu den gefundenen Computern gelöscht.
@@ -73,6 +72,7 @@ Beachten Sie dabei Folgendes:
 - Wenn Sie die Abhängigkeitsanalyse mit einem Azure Log Analytics-Arbeitsbereich verwenden:
     - Wenn Sie dem Serverbewertungstool einen Log Analytics-Arbeitsbereich angefügt hatten, wird dieser nicht automatisch gelöscht. Derselbe Log Analytics-Arbeitsbereich kann für mehrere Szenarien verwendet werden.
     - Wenn Sie den Log Analytics-Arbeitsbereich löschen möchten, gehen Sie manuell vor.
+- Das Löschen eines Projekts kann nicht rückgängig gemacht werden. Gelöschte Objekte können nicht wiederhergestellt werden.
 
 ### <a name="delete-a-workspace-manually"></a>Manuelles Löschen eines Arbeitsbereichs
 

@@ -1,7 +1,7 @@
 ---
 title: Erstellen, Ändern oder Löschen eines virtuellen Azure-Netzwerks
 titlesuffix: Azure Virtual Network
-description: In diesem Artikel erfahren Sie, wie Sie ein virtuelles Netzwerk in Azure erstellen, ändern oder löschen.
+description: Erstellen und löschen Sie ein virtuelles Netzwerk, und ändern Sie Einstellungen für vorhandene virtuelle Netzwerke wie DNS-Server und IP-Adressräume.
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/10/2019
 ms.author: kumud
-ms.openlocfilehash: 3f0060944a2733c31c3bef67aa005e5476778ce2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0a35576435780ee43d9f2aa99167b736f90799ab
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84710030"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87265244"
 ---
 # <a name="create-change-or-delete-a-virtual-network"></a>Erstellen, Ändern oder Löschen eines virtuellen Netzwerks
 

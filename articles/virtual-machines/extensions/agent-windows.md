@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 07/20/2019
 ms.author: akjosh
-ms.openlocfilehash: 6ff5825f3272f0dadc74147d36e8c5fd8e7838d7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 100e75520d1165d4772579ba9b179cd350d6df18
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87010953"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87542618"
 ---
 # <a name="azure-virtual-machine-agent-overview"></a>Übersicht über den Agent für virtuelle Azure-Computer
 Der Agent für virtuelle Microsoft Azure-Computer (VM-Agent) ist ein sicherer, einfacher Prozess zur Verwaltung der VM-Interaktion mit dem Azure Fabric Controller. Der VM-Agent spielt eine primäre Rolle bei der Aktivierung und Ausführung von Azure-VM-Erweiterungen. VM-Erweiterungen ermöglichen es, VMs nach der Bereitstellung zu konfigurieren (beispielsweise, um Software zu installieren und zu konfigurieren). Außerdem ermöglichen VM-Erweiterungen den Einsatz von Wiederherstellungsfeatures wie das Zurücksetzen des Administratorkennworts einer VM. Ohne den Azure-VM-Agent können keine VM-Erweiterungen ausgeführt werden.
@@ -111,7 +111,7 @@ Wenn Sie bei einem virtuellen Windows-Computer angemeldet sind, können Sie mith
 
 
 ## <a name="upgrade-the-vm-agent"></a>Upgraden des VM-Agents
-Der Azure VM-Agent für Windows wird automatisch aktualisiert. Wenn neue VMs für Azure bereitgestellt werden, erhalten diese bei der VM-Bereitstellung jeweils den neuesten VM-Agent. Benutzerdefinierte VM-Images sollten bei der Erstellung von Images manuell mit dem neuen VM-Agent aktualisiert werden.
+Der Azure VM-Agent für Windows wird automatisch in Images aktualisiert, die aus dem Azure Marketplace bereitgestellt werden. Wenn neue VMs für Azure bereitgestellt werden, erhalten diese bei der VM-Bereitstellung jeweils den neuesten VM-Agent. Wenn Sie den Agent manuell installiert haben oder benutzerdefinierte VM-Images bereitstellen, müssen Sie diese manuell so aktualisieren, dass der neue VM-Agent zum Zeitpunkt der Imageerstellung eingeschlossen wird.
 
 ## <a name="windows-guest-agent-automatic-logs-collection"></a>Automatische Protokollerfassung für Windows-Gast-Agent
 Der Windows-Gast-Agent verfügt über eine Funktion zum automatischen Erfassen einiger Protokolle. Diese Funktion wird durch den Prozess CollectGuestLogs.exe gesteuert. Sie ist sowohl für PaaS Cloud Services als auch für IaaS-VMs vorhanden und darauf ausgelegt, schnell und automatisch einige Diagnoseprotokolle von einer VM zu erfassen, sodass sie für die Offlineanalyse verwendet werden können. Erfasst werden Ereignisprotokolle, Betriebssystemprotokolle, Azure-Protokolle sowie einige Registrierungsschlüssel. Es wird eine ZIP-Datei erstellt, die an den Host der VM übertragen wird. Diese ZIP-Datei kann dann von Technikerteams und Supportmitarbeitern verwendet werden, um Probleme auf Anforderung des Besitzers der VM zu untersuchen.

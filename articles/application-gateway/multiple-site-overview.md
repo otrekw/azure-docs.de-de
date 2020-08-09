@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.date: 07/20/2020
-ms.author: amsriva
+ms.author: surmb
 ms.topic: conceptual
-ms.openlocfilehash: 23f76f18256ecadcbef59a498292222ea358008f
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 53f6f37454de886934a483b40daad24204958baf
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87290980"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87474324"
 ---
 # <a name="application-gateway-multiple-site-hosting"></a>Anwendungsgateways – Hosten mehrerer Websites
 
@@ -42,6 +42,7 @@ Durch ein Platzhalterzeichen im Hostnamen können Sie mehrere Hostnamen einem ei
 
 >[!NOTE]
 >Dieses Feature ist derzeit nur über [Azure PowerShell](tutorial-multiple-sites-powershell.md) und [Azure CLI](tutorial-multiple-sites-cli.md) verfügbar. Unterstützung für das Portal ist in Kürze verfügbar.
+> Beachten Sie Folgendes: Da die Portalunterstützung nicht vollständig verfügbar ist, wenn Sie nur den HostNames-Parameter verwenden, wird der Listener im Portal als Basislistener angezeigt, und in der Spalte „Hostname“ der Listenerlistenansicht werden nicht die konfigurierten Hostnamen angezeigt. Wenn Sie Änderungen an einem Platzhalterlistener vornehmen möchten, stellen Sie sicher, dass Sie Azure PowerShell oder die CLI verwenden, bis dies im Portal unterstützt wird.
 
 In [Azure PowerShell](tutorial-multiple-sites-powershell.md) müssen Sie `-HostNames` anstelle von `-HostName` verwenden. Wenn Sie „HostNames“ verwenden, können Sie bis zu fünf Hostnamen als durch Trennzeichen getrennte Werte angeben sowie Platzhalterzeichen verwenden. Zum Beispiel, `-HostNames "*.contoso.com,*.fabrikam.com"`
 

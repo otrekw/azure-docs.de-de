@@ -9,14 +9,14 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: bf62d57aab07f5b1f2839b9e6e45c42e6b1b2c51
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6beda409f03938f471f089bceebaa97c6d02ae7e
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85478415"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496218"
 ---
-# <a name="using-file-metadata-in-queries"></a>Verwenden von Dateimetadaten in Abfragen
+# <a name="use-file-metadata-in-queries"></a>Verwenden von Dateimetadaten in Abfragen
 
 Der SQL On-Demand-Abfragedienst kann mehrere Dateien und Ordner behandeln, wie im Artikel [Abfrageordner und mehrere Dateien](query-folders-multiple-csv-files.md) beschrieben. In diesem Artikel erfahren Sie, wie Sie Metadateninformationen zu Datei- und Ordnernamen in den Abfragen verwenden können.
 

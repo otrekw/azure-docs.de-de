@@ -5,12 +5,12 @@ description: Lernen Sie die Best Practices für virtuelle Netzwerkressourcen und
 services: container-service
 ms.topic: conceptual
 ms.date: 12/10/2018
-ms.openlocfilehash: 560a832821f5e5ff2fbbc2d66252945951d69511
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: fc839fd69e3b574c47aa7bb712583dfc0b9c711d
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82208056"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87542703"
 ---
 # <a name="best-practices-for-network-connectivity-and-security-in-azure-kubernetes-service-aks"></a>Best Practices für Netzwerkkonnektivität und Sicherheit in Azure Kubernetes Service (AKS)
 
@@ -37,7 +37,9 @@ Die Container Networking Interface (CNI) ist ein herstellerneutrales Protokoll, 
 
 ![Diagramm mit zwei Knoten jeweils mit Bridges für die Verbindungsherstellung mit einem Azure VNET](media/operator-best-practices-network/advanced-networking-diagram.png)
 
-Für die meisten Produktionsbereitstellungen sollten Sie Azure CNI-Netzwerke verwenden. Dieses Netzwerkmodell ermöglicht eine Trennung von Steuerung und Verwaltung von Ressourcen. Aus Sicherheitssicht möchten Sie diese Ressourcen oft von verschiedenen Teams verwalten und absichern lassen. Mit Azure CNI-Netzwerken können Sie die Verbindung zu vorhandenen Azure-Ressourcen, lokalen Ressourcen oder anderen Diensten direkt über die jedem Pod zugeordneten IP-Adressen herstellen.
+Bei Produktionsbereitstellungen sind sowohl kubenet als auch Azure CNI gültige Optionen.
+
+Ein beachtlicher Vorteil des Azure CNI-Netzwerks besteht darin, dass das Netzwerkmodell eine Trennung von Steuerung und Verwaltung von Ressourcen ermöglicht. Aus Sicherheitssicht möchten Sie diese Ressourcen oft von verschiedenen Teams verwalten und absichern lassen. Mit Azure CNI-Netzwerken können Sie die Verbindung zu vorhandenen Azure-Ressourcen, lokalen Ressourcen oder anderen Diensten direkt über die jedem Pod zugeordneten IP-Adressen herstellen.
 
 Wenn Sie Azure CNI-Netzwerke verwenden, befindet sich die virtuelle Netzwerkressource in einer vom AKS-Cluster getrennten Ressourcengruppe. Delegieren Sie Berechtigungen für den AKS-Dienstprinzipal, um auf diese Ressourcen zuzugreifen und sie zu verwalten. Der vom AKS-Cluster verwendete Dienstprinzipal muss zumindest über Berechtigungen [Netzwerkmitwirkender](../role-based-access-control/built-in-roles.md#network-contributor) für das Subnetz in Ihrem virtuellen Netzwerk verfügen. Wenn Sie eine [benutzerdefinierte Rolle](../role-based-access-control/custom-roles.md) anstelle der integrierten Rolle des Netzwerkmitwirkenden definieren möchten, sind die folgenden Berechtigungen erforderlich:
   * `Microsoft.Network/virtualNetworks/subnets/join/action`

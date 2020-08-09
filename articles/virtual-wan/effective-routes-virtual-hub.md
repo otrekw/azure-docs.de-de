@@ -7,19 +7,19 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 06/29/2020
 ms.author: cherylmc
-ms.openlocfilehash: 20cdc55b474034480392f9dfb05b20ad25df6939
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: a7e42ddeb4abacd8707dda4cd558933b0d7a34f4
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86037765"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87513705"
 ---
 # <a name="view-virtual-hub-effective-routes"></a>Anzeigen effektiver Routen eines virtuellen Hubs
 
 Sie können alle Routen Ihres Virtual WAN-Hubs im Azure-Portal anzeigen. In diesem Artikel erfahren Sie die Schritte zum Anzeigen effektiver Routen. Weitere Informationen zum Routing für virtuelle Hubs finden Sie unter [Informationen zum Routing virtueller Hubs](about-virtual-hub-routing.md).
 
 > [!NOTE]
-> Im Azure-Portal werden einige dieser Features möglicherweise noch verteilt und sind bis zur Woche um den 3. August nicht verfügbar. 
+> Im Azure-Portal werden einige dieser Features möglicherweise noch verteilt und sind bis zur am 17. August beginnenden Woche nicht verfügbar. 
 >
 
 ## <a name="select-connections-or-route-tables"></a><a name="routing"></a>Auswählen von Verbindungen oder Routingtabellen

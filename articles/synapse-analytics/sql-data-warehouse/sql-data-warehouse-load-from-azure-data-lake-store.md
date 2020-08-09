@@ -11,12 +11,12 @@ ms.date: 06/07/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: fcebf66dba2fc13457ca359b81565fc5870032c9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c634b4f7ac3aa1fe83e6ab3f863e998b8d25232c
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85213294"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533936"
 ---
 # <a name="load-data-from-azure-data-lake-storage-for-synapse-sql"></a>Laden von Daten aus Azure Data Lake Storage für Synapse SQL
 
@@ -39,7 +39,7 @@ Bevor Sie mit diesem Tutorial beginnen, laden Sie die neueste Version von [SQL S
 Für dieses Tutorial benötigen Sie Folgendes:
 
 * Einen SQL-Pool. Lesen Sie dazu [Erstellen eines SQL-Pools und Abfragen von Daten](create-data-warehouse-portal.md).
-* Ein Data Lake Storage-Konto. Siehe [Erste Schritte mit Azure Data Lake Storage](../../data-lake-store/data-lake-store-get-started-portal.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json). Für dieses Speicherkonto müssen Sie zum Laden eine der folgenden Anmeldeinformationen konfigurieren oder angeben: einen Speicherkontoschlüssel, einen SAS-Schlüssel (Shared Access Signature), einen Azure Directory-Anwendungsbenutzer oder einen AAD-Benutzer, der über die entsprechende RBAC-Rolle für das Speicherkonto verfügt.
+* Ein Data Lake Storage-Konto. Siehe [Erste Schritte mit Azure Data Lake Storage](../../data-lake-store/data-lake-store-get-started-portal.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json). Für dieses Speicherkonto müssen Sie zum Laden eine der folgenden Anmeldeinformationen konfigurieren oder angeben: einen Speicherkontoschlüssel, einen SAS-Schlüssel (Shared Access Signature), einen Azure Directory-Anwendungsbenutzer oder einen AAD-Benutzer, der über die entsprechende Azure-Rolle für das Speicherkonto verfügt.
 
 ## <a name="create-the-target-table"></a>Erstellen der Zieltabelle
 

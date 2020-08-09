@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: a3b012d86444ca2bb9b84af37aa17424221457d1
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: d476bef6faa19defad1d2e1ef1a90f7e5d83def5
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85955062"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495691"
 ---
 # <a name="performance-tuning-with-materialized-views"></a>Leistungsoptimierung mit materialisierten Sichten
 
@@ -40,7 +40,7 @@ Die meisten Anforderungen an eine Standardsicht gelten weiterhin für eine mater
 |Zusätzlicher Speicher                   | Nein                                           | Ja
 |Syntax                          | CREATE VIEW                                  | CREATE MATERIALIZED VIEW AS SELECT
 
-## <a name="benefits-of-using-materialized-views"></a>Vorteile der Verwendung von materialisierten Sichten
+## <a name="benefits-of-materialized-views"></a>Vorteile von materialisierten Sichten
 
 Eine ordnungsgemäß entworfene materialisierte Sicht bietet folgende Vorteile:
 

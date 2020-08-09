@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 88f06bd30c97f857cd5a81068322a95c480a7b34
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: e78f4133e7f722870f6c84de2ab7e784cd151d79
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86187420"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87562683"
 ---
 # <a name="azure-security-baseline-for-automation"></a>Azure-Sicherheitsbaseline für Automation
 
@@ -34,7 +34,7 @@ Zur weiteren Isolation ihrer Runbooks können Sie auf virtuellen Azure-Computern
 
 Alternativ kann für eine bestimmte Anforderung auch die Azure-Firewall verwendet werden.
 
-* [Virtuelle Netzwerke und virtuelle Computer in Azure](../virtual-machines/windows/network-overview.md)
+* [Virtuelle Netzwerke und virtuelle Computer in Azure](../virtual-machines/network-overview.md)
 
 * [Erstellen eines virtuellen Netzwerks](../virtual-network/quick-create-portal.md)
 
@@ -68,7 +68,7 @@ Obwohl NSG-Regeln und benutzerdefinierte Routen nicht für den privaten Endpunkt
 
 **Anleitung:** Nicht zutreffend. Diese Empfehlung ist für Webanwendungen gedacht, die in Azure App Service oder auf Computeressourcen ausgeführt werden.
 
-**Azure Security Center-Überwachung:** Nicht verfügbar
+**Azure Security Center-Überwachung**: Nicht verfügbar
 
 **Verantwortlichkeit**: Nicht verfügbar
 
@@ -220,7 +220,7 @@ Alternativ dazu können Sie auch Daten in Azure Sentinel oder einer Drittanbiete
 
 * [Unterstützte Regionen für einen verknüpften Log Analytics-Arbeitsbereich](./how-to/region-mappings.md)
 
-* [Abfragen von Protokollen der Updateverwaltung](./automation-update-management-query-logs.md)
+* [Abfragen von Protokollen der Updateverwaltung](./update-management/update-mgmt-query-logs.md)
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -646,9 +646,9 @@ Bei der Verwendung von Hybrid Runbook Worker-Instanzen werden die virtuellen Dat
 
 Wenn Sie Hybrid Runbook Worker-Instanzen verwenden, die von Azure-VMs unterstützt werden, verwalten Sie mit der Azure-Updateverwaltung Updates und Patches für Ihre virtuellen Computer. In der Updateverwaltung wird das lokal konfigurierte Updaterepository verwendet, um unterstützte Windows-Systeme zu patchen. Mit Tools wie System Center Updates Publisher (Updates Publisher) können Sie benutzerdefinierte Updates in Windows Server Update Services (WSUS) veröffentlichen. Dadurch kann die Updateverwaltung Computer, auf denen Configuration Manager als Updaterepository verwendet wird, mit Software von Drittanbietern patchen.
 
-* [Updateverwaltung in Azure](./automation-update-management.md)
+* [Updateverwaltung in Azure](./update-management/update-mgmt-overview.md)
 
-* [Verwalten von Updates und Patches für Ihre Azure-VMs](./automation-tutorial-update-management.md)
+* [Verwalten von Updates und Patches für Ihre VMs](./update-management/update-mgmt-manage-updates-for-vm.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -660,9 +660,9 @@ Wenn Sie Hybrid Runbook Worker-Instanzen verwenden, die von Azure-VMs unterstüt
 
 Wenn Sie Hybrid Runbook Worker-Instanzen verwenden, die von Azure-VMs unterstützt werden, können Sie mit der Azure-Updateverwaltung Updates und Patches für Ihre virtuellen Computer verwalten. In der Updateverwaltung wird das lokal konfigurierte Updaterepository verwendet, um unterstützte Windows-Systeme zu patchen. Mit Tools wie System Center Updates Publisher (Updates Publisher) können Sie benutzerdefinierte Updates in Windows Server Update Services (WSUS) veröffentlichen. Dadurch kann die Updateverwaltung Computer, auf denen Configuration Manager als Updaterepository verwendet wird, mit Software von Drittanbietern patchen.
 
-* [Updateverwaltung in Azure](./automation-update-management.md)
+* [Updateverwaltung in Azure](./update-management/update-mgmt-overview.md)
 
-* [Verwalten von Updates und Patches für Ihre Azure-VMs](./automation-tutorial-update-management.md)
+* [Verwalten von Updates und Patches für Ihre Azure-VMs](./update-management/update-mgmt-manage-updates-for-vm.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -848,7 +848,7 @@ Die adaptive Anwendungssteuerung ist eine intelligente, automatisierte End-to-En
 
 **Leitfaden**: Anwendungen mit hohem Risiko, die in Ihrer Azure-Umgebung bereitgestellt werden, können mithilfe von separaten Netzwerk- und Ressourcencontainern unter Verwendung von Konstrukten wie virtuellen Netzwerken, Subnetzen, Abonnements, Verwaltungsgruppen isoliert und durch eine Azure Firewall-Instanz, eine Web Application Firewall (WAF) oder eine Netzwerksicherheitsgruppe (NSG) ausreichend geschützt werden.
 
-* [Virtuelle Netzwerke und virtuelle Computer in Azure](../virtual-machines/windows/network-overview.md)
+* [Virtuelle Netzwerke und virtuelle Computer in Azure](../virtual-machines/network-overview.md)
 
 * [Übersicht über Azure Firewall](../firewall/overview.md)
 
@@ -918,7 +918,7 @@ Wenn Sie die Hybrid Runbook Worker-Funktion verwenden, verwalten Sie Sicherheits
 
 * [Grundlegendes zu Azure Policy-Auswirkungen](../governance/policy/concepts/effects.md)
 
-* [Bereitstellen eines Automation-Kontos mithilfe einer Azure Resource Manager-Vorlage](./automation-create-account-template.md#deploy-the-template)
+* [Bereitstellen eines Automation-Kontos mithilfe einer Azure Resource Manager-Vorlage](./quickstart-create-automation-account-template.md#deploy-the-template)
 
 * [Integrierte Azure Policy-Beispiele für Azure Automation](./policy-samples.md)
 
@@ -1064,7 +1064,7 @@ Wenn Sie die Hybrid Runbook Worker-Funktion verwenden, verwenden Sie Azure Autom
 
 **Anleitung:** Implementieren Sie Credential Scanner, um Anmeldeinformationen im Code zu identifizieren. In Credential Scanner wird auch das Verschieben von ermittelten Anmeldeinformationen an sicherere Speicherorte (z. B. Azure Key Vault) empfohlen.
 
-* [Einrichten von Credential Scanner](https://secdevtools.azurewebsites.net/helpcredscan.htm)
+* [Einrichten von Credential Scanner](https://secdevtools.azurewebsites.net/helpcredscan.html)
 
 **Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
 
@@ -1124,7 +1124,7 @@ Halten Sie die Runbooks mit der Funktion zur Integration der Quellcodeverwaltung
 
 * [Azure Resource Manager-Vorlagenreferenz für Azure Automation-Ressourcen](/azure/templates/microsoft.automation/allversions)
 
-* [Erstellen eines Automation-Kontos mithilfe einer Azure Resource Manager-Vorlage](./automation-create-account-template.md)
+* [Erstellen eines Automation-Kontos mithilfe einer Azure Resource Manager-Vorlage](./quickstart-create-automation-account-template.md)
 
 * [Exportieren von einzelnen oder mehreren Ressourcen in eine Vorlage im Azure-Portal](../azure-resource-manager/templates/export-template-portal.md)
 
@@ -1150,7 +1150,7 @@ Halten Sie die Runbooks mit der Funktion zur Integration der Quellcodeverwaltung
 
 * [Azure Resource Manager-Vorlagenreferenz für Azure Automation-Ressourcen](/azure/templates/microsoft.automation/allversions)
 
-* [Erstellen eines Automation-Kontos mithilfe einer Azure Resource Manager-Vorlage](./automation-create-account-template.md)
+* [Erstellen eines Automation-Kontos mithilfe einer Azure Resource Manager-Vorlage](./quickstart-create-automation-account-template.md)
 
 * [Exportieren von einzelnen oder mehreren Ressourcen in eine Vorlage im Azure-Portal](../azure-resource-manager/templates/export-template-portal.md)
 
@@ -1278,7 +1278,7 @@ Kennzeichnen Sie außerdem die Abonnements (z. B. Produktion, Nicht-Produktion)
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11.1: Durchführen regelmäßiger Penetrationstests Ihrer Azure-Ressourcen und Sicherstellen der Behebung aller kritischen Sicherheitsergebnissen
 
-**Leitfaden**: Befolgen Sie die Microsoft Rules of Engagement, um sicherzustellen, dass Ihre Penetrationstests nicht gegen Microsoft-Richtlinien verstoßen. Nutzen Sie die Microsoft-Strategie und die Red Teaming- und Livewebsite-Penetrationstests für von Microsoft verwaltete Cloudinfrastrukturen, Dienste und Anwendungen.
+**Leitfaden**: Befolgen Sie die Microsoft Rules of Engagement, um sicherzustellen, dass Ihre Penetrationstests nicht gegen Microsoft-Richtlinien verstoßen. Nutzen Sie die Microsoft-Strategie und Durchführung von Red Team- und Livewebsite-Penetrationstests für von Microsoft verwaltete Cloudinfrastruktur, Dienste und Anwendungen.
 
 * [Penetrationstests – Rules of Engagement](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1)
 

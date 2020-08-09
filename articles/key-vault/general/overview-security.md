@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: mbaldwin
 Customer intent: As a key vault administrator, I want to learn the options available to secure my vaults
-ms.openlocfilehash: cd8557a33971be9fd0913bfdf84397d344901581
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 3170b51b8e580a625b2dbb4d83229c59bafa900e
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83834377"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534803"
 ---
 # <a name="azure-key-vault-security"></a>Azure Key Vault – Sicherheit
 
@@ -46,11 +46,11 @@ Das Modell eines einzelnen Mechanismus für die Authentifizierung für beide Ebe
 
 ### <a name="managing-administrative-access-to-key-vault"></a>Verwalten des Administratorzugriffs auf Key Vault
 
-Wenn Sie einen Schlüsseltresor in einer Ressourcengruppe erstellen, steuern Sie den Zugriff mithilfe von Azure AD. So können Sie Benutzern oder einer Gruppe die Verwaltung von Schlüsseltresoren in einer Ressourcengruppe ermöglichen. Sie können den Zugriff auf eine bestimmte Bereichsebene gewähren, indem Sie entsprechende RBAC-Rollen zuordnen. Um einem Benutzer Zugriff für die Verwaltung von Schlüsseltresoren zu gewähren, weisen Sie ihm für einen bestimmten Bereich die vordefinierte Rolle `key vault Contributor` zu. Die folgenden Bereichsebenen können einer RBAC-Rolle zugeordnet werden:
+Wenn Sie einen Schlüsseltresor in einer Ressourcengruppe erstellen, steuern Sie den Zugriff mithilfe von Azure AD. So können Sie Benutzern oder einer Gruppe die Verwaltung von Schlüsseltresoren in einer Ressourcengruppe ermöglichen. Sie können den Zugriff auf eine bestimmte Bereichsebene gewähren, indem Sie entsprechende Azure-Rollen zuordnen. Um einem Benutzer Zugriff für die Verwaltung von Schlüsseltresoren zu gewähren, weisen Sie ihm für einen bestimmten Bereich die vordefinierte Rolle `key vault Contributor` zu. Die folgenden Bereichsebenen können einer Azure-Rolle zugeordnet werden:
 
-- **Abonnement**: Eine auf Abonnementebene zugewiesene RBAC-Rolle gilt für alle Ressourcengruppen und Ressourcen innerhalb des Abonnements.
-- **Ressourcengruppe**: Eine auf Ressourcengruppenebene zugewiesene RBAC-Rolle gilt für alle Ressourcen in der Ressourcengruppe.
-- **Bestimmte Ressourcen**: Eine für eine bestimmte Ressource zugewiesene RBAC-Rolle gilt für diese Ressource. In diesem Fall ist die Ressource ein bestimmter Schlüsseltresor.
+- **Abonnement**: Eine auf Abonnementebene zugewiesene Azure-Rolle gilt für alle Ressourcengruppen und Ressourcen innerhalb des Abonnements.
+- **Ressourcengruppe**: Eine auf Ressourcengruppenebene zugewiesene Azure-Rolle gilt für alle Ressourcen in der Ressourcengruppe.
+- **Bestimmte Ressourcen**: Eine für eine bestimmte Ressource zugewiesene Azure-Rolle gilt für diese Ressource. In diesem Fall ist die Ressource ein bestimmter Schlüsseltresor.
 
 Es gibt verschiedene vordefinierte Rollen. Wenn eine vordefinierte Rolle nicht Ihren Anforderungen entspricht, können Sie Ihre eigene Rolle definieren. Weitere Informationen finden Sie unter [RBAC: Integrierte Rollen](../../role-based-access-control/built-in-roles.md).
 
@@ -65,7 +65,7 @@ Mit Schlüsseltresor-Zugriffsrichtlinien können separate Berechtigungen für Sc
 > [!IMPORTANT]
 > Die Schlüsseltresor-Zugriffsrichtlinie unterstützt keine differenzierten Berechtigungen auf Objektebene, wie z.B. für bestimmte Schlüssel, Geheimnisse oder Zertifikate. Wenn einem Benutzer die Berechtigung zum Erstellen und Löschen von Schlüsseln gewährt wird, kann er diese Vorgänge für alle Schlüssel in diesem Schlüsseltresor ausführen.
 
-Zum Festlegen von Zugriffsrichtlinien für einen Schlüsseltresor können Sie das [Azure-Portal](https://portal.azure.com/), die [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest), [Azure PowerShell](/powershell/azureps-cmdlets-docs) oder die [REST-APIs für die Schlüsseltresorverwaltung](/rest/api/keyvault/) verwenden.
+Zum Festlegen von Zugriffsrichtlinien für einen Schlüsseltresor können Sie das [Azure-Portal](https://portal.azure.com/), die [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest), [Azure PowerShell](/powershell/azure/) oder die [REST-APIs für die Schlüsseltresorverwaltung](/rest/api/keyvault/) verwenden.
 
 Sie können den Datenebenenzugriff über [VNET-Dienstendpunkte für Azure Key Vault](overview-vnet-service-endpoints.md) einschränken. Konfigurieren Sie [Firewallregeln und VNET-Regeln](network-security.md), um eine zusätzliche Sicherheitsebene zu erstellen.
 

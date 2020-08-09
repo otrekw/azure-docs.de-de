@@ -5,14 +5,14 @@ services: static-web-apps
 author: craigshoemaker
 ms.service: static-web-apps
 ms.topic: conceptual
-ms.date: 06/10/2020
+ms.date: 07/18/2020
 ms.author: cshoe
-ms.openlocfilehash: 41f0c44ad65af5fdf2560da3f977a28f135af878
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3220b9d56ff7107245a0a00aac44bb58f87099f9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84976709"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075974"
 ---
 # <a name="configure-front-end-frameworks-and-libraries-with-azure-static-web-apps-preview"></a>Konfigurieren von Front-End-Frameworks und Bibliotheken mit Azure Static Web Apps (Vorschauversion)
 
@@ -55,7 +55,7 @@ Die Absicht der Tabellenspalten wird durch die folgenden Punkte erläutert:
 | [Svelte](https://svelte.dev/) | `public` | – |
 | [Three.js](https://threejs.org/) | `/` | – |
 | [TypeScript](https://www.typescriptlang.org/) | `dist` | – |
-| [Vue](http://vuejs.com/) | `dist` | – |
+| [Vue.js](https://vuejs.org/) | `dist` | – |
 
 <sup>1</sup> Die obige Tabelle ist nicht als umfassende Liste von Frameworks und Bibliotheken gedacht, die mit Azure Static Web Apps arbeiten.
 

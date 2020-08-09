@@ -7,17 +7,16 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: reference
 keywords: Kinect, Azure, Sensor, SDK, Tiefe, RGB, Aufzeichnung, Wiedergabe, Matroska, MKV
-ms.openlocfilehash: d0f7653afe3cc92e059b2615ebef18312faa716b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3a78ed158c78df1c9a6eadcc0bfb2e40b22750bd
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85276696"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87501779"
 ---
 # <a name="use-azure-kinect-sensor-sdk-to-record-file-format"></a>Verwenden des Dateiformats des Sensor-SDK für Azure Kinect zum Aufzeichnen
 
-Zum Aufzeichnen von Sensordaten wird das Matroska-Containerformat (.mkv) verwendet, mit dem mehrere Tracks gespeichert werden können und
-bei dem eine Vielzahl von Codecs verwendet wird. Die Aufzeichnungsdatei enthält Tracks zum Speichern von Farbe, Tiefe, IR-Bildern und IMU.
+Zum Aufzeichnen von Sensordaten wird das Matroska-Containerformat (.mkv) verwendet, mit dem mehrere Tracks mithilfe einer breiten Palette von Codecs gespeichert werden können. Die Aufzeichnungsdatei enthält Tracks zum Speichern von Farbe, Tiefe, IR-Bildern und IMU.
 
 Allgemeine Informationen zum MKV-Containerformat finden Sie auf der [Matroska-Website](https://www.matroska.org/index.html).
 

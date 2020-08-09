@@ -1,6 +1,6 @@
 ---
 title: Delegieren eines Subnetzes an Azure NetApp Files | Microsoft-Dokumentation
-description: Dieser Artikel beschreibt das Delegieren eines Subnetzes an Azure NetApp Files.
+description: Erfahren Sie, wie Sie ein Subnetz an Azure NetApp Files delegieren. Geben Sie das delegierte Subnetz an, wenn Sie ein Volume erstellen.
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -12,21 +12,21 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 05/04/2020
+ms.date: 07/28/2020
 ms.author: b-juche
-ms.openlocfilehash: 713a72b0a406d2038d56dc6fcc41e169d02c54eb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9bb3e93b99ce8d5a61501d417a71e5e38753f5ff
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85483617"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87513025"
 ---
 # <a name="delegate-a-subnet-to-azure-netapp-files"></a>Delegieren eines Subnetzes an Azure NetApp Files 
 
 Sie müssen ein Subnetze an Azure NetApp Files delegieren.   Wenn Sie ein Volume erstellen, müssen Sie das delegierte Subnetz angeben.
 
 ## <a name="considerations"></a>Überlegungen
-* Der Assistent zum Erstellen eines neuen Subnetzes verwendet standardmäßig eine /24-Netzwerkmaske, die 251 IP-Adressen bereitstellt. Die Verwendung einer /28-Netzwerkmaske, die 16 nutzbare IP-Adressen bereitstellt, ist für den Dienst ausreichend.
+* Der Assistent zum Erstellen eines neuen Subnetzes verwendet standardmäßig eine /24-Netzwerkmaske, die 251 IP-Adressen bereitstellt. Die Verwendung einer /28-Netzwerkmaske, die 11 nutzbare IP-Adressen bereitstellt, ist für den Dienst ausreichend.
 * In jedem Azure Virtual Network (VNET) kann nur ein Subnetz an Azure NetApp Files delegiert werden.   
    Azure ermöglicht es Ihnen, mehrere delegierte Subnetze in einem VNet zu erstellen.  Alle Versuche, ein neues Volume zu erstellen, schlagen jedoch fehl, wenn Sie mehr als ein delegiertes Subnetz verwenden.  
    Sie können nur über ein delegiertes Subnetz in einem VNet verfügen. Ein NetApp-Konto kann Volumes in mehreren VNets bereitstellen, die jeweils über ihre eigenen delegierte Subnetze verfügen.  

@@ -3,17 +3,17 @@ title: Erstellen und Konfigurieren eines Schlüsseltresors für Azure Disk Encry
 description: Dieser Artikel enthält Schritte zum Erstellen und Konfigurieren eines Schlüsseltresors für die Verwendung mit Azure Disk Encryption.
 ms.service: virtual-machines
 ms.subservice: security
-ms.topic: article
+ms.topic: how-to
 author: msmbaldwin
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: ec0862a0d4de644630c972387f01feaa1a327e67
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 0779cad02f266d49be055ea485e87c9c8075b7b3
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86500751"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284522"
 ---
 # <a name="creating-and-configuring-a-key-vault-for-azure-disk-encryption"></a>Erstellen und Konfigurieren eines Schlüsseltresors für Azure Disk Encryption
 
@@ -25,7 +25,7 @@ Azure Disk Encryption verwendet Azure Key Vault zum Steuern und Verwalten von Ve
 Das Erstellen und Konfigurieren eines Schlüsseltresors für Azure Disk Encryption umfasst drei Schritte:
 
 > [!Note]
-> Um den Zugriff auf Azure Disk Encryption für die Volumeverschlüsselung zu aktivieren, müssen Sie die Option in den Zugriffsrichtlinieneinstellungen von Azure Key Vault auswählen.
+> Um den Zugriff auf Azure Disk Encryption für die Volumeverschlüsselung zu aktivieren, müssen Sie die Option in den Zugriffsrichtlinieneinstellungen von Azure Key Vault auswählen. Wenn Sie die Firewall im Schlüsseltresor aktiviert haben, müssen Sie zur Registerkarte „Netzwerk“ im Schlüsseltresor wechseln und den Zugriff auf vertrauenswürdige Microsoft-Dienste aktivieren. 
 
 1. Erstellen einer Ressourcengruppe (bei Bedarf)
 2. Erstellen eines Schlüsseltresors 
@@ -43,7 +43,7 @@ Sie können auch einen Schlüssel für die Schlüsselverschlüsselung (Key Encry
 
 ## <a name="install-tools-and-connect-to-azure"></a>Installieren von Tools und Herstellen einer Verbindung mit Azure
 
-Die Schritte in diesem Artikel können mit der [Azure-Befehlszeilenschnittstelle](/cli/azure/), dem [Azure PowerShell-Az-Modul](/powershell/azure/overview) oder dem [Azure-Portal](https://portal.azure.com) abgeschlossen werden.
+Die Schritte in diesem Artikel können mit der [Azure-Befehlszeilenschnittstelle](/cli/azure/), dem [Azure PowerShell-Az-Modul](/powershell/azure/) oder dem [Azure-Portal](https://portal.azure.com) abgeschlossen werden.
 
 Während das Portal über Ihren Browser zugänglich ist, erfordern die Azure-Befehlszeilenschnittstelle und Azure PowerShell eine lokale Installation. Weitere Informationen finden Sie unter [Azure Disk Encryption für Windows: Installieren von Tools](disk-encryption-windows.md#install-tools-and-connect-to-azure).
 

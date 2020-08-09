@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 06/01/2020
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 3a5e2c368fd956abb98b2b4c9ccd1060677f3e06
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6632d65fa07788e35b24c2f957e713f824f6b091
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87085757"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87542737"
 ---
 # <a name="find-and-delete-unattached-azure-managed-and-unmanaged-disks---azure-portal"></a>Suchen und Löschen von nicht angefügten verwalteten und nicht verwalteten Azure-Datenträgern – Azure-Portal
 
@@ -27,7 +27,7 @@ Falls Sie über nicht angefügte verwaltete Datenträger verfügen und die Daten
 
     Auf dem Blatt **Datenträger** wird eine Liste aller Ihrer Datenträger angezeigt. Jeder Datenträger mit „ **-** “ in der Spalte **Besitzer** ist ein nicht angefügter Datenträger.
 
-    [![](media/disks-find-unattached-portal/managed-disk-unattached-owner.png "Screenshot of the managed disks blade, if a disk has - in the Owner column, it is an unattached disk")](media/disks-find-unattached-portal/managed-disk-owner-unattached.png#lightbox)
+    [![Screenshot: Blatt für verwaltete Datenträger. Wenn ein Datenträger in der Spalte „Besitzer“ den Wert „-“ aufweist, ist er ein nicht angefügter Datenträger.](media/disks-find-unattached-portal/managed-disk-unattached-owner.png)](media/disks-find-unattached-portal/managed-disk-owner-unattached.png#lightbox)
 
 1. Wählen Sie den nicht angefügten Datenträger aus, den Sie löschen möchten. Daraufhin wird das Blatt des Datenträgers geöffnet.
 1. Auf dem Blatt des Datenträgers können Sie bestätigen, dass der Datenträger nicht angefügt ist, und dann **Löschen** auswählen.

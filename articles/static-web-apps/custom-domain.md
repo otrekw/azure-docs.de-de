@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: buhollan
-ms.openlocfilehash: 8e832f57053cb950f705875f2895a9197cc7c83e
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 61ec96a35fac6a033fe6c8b65cff156ba63e5e58
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85960298"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87563346"
 ---
 # <a name="setup-a-custom-domain-in-azure-static-web-apps-preview"></a>Einrichten einer benutzerdefinierten Domäne in Azure Static Web Apps (Vorschau)
 
@@ -37,7 +37,7 @@ Für eine Anwendung sind verschiedene Arten von DNS-Konfigurationen verfügbar.
 
 ## <a name="map-a-cname-record"></a>Zuordnen eines CNAME-Eintrags
 
-Mit einem CNAME-Eintrag wird eine Domäne einer anderen zugeordnet. Sie können einen CNAME-Eintrag verwenden, um `www.example.com` der automatisch generierten Domäne zuzuordnen, die von Azure Static Web Apps bereitgestellt wird.
+Mit einem CNAME-Eintrag wird eine Domäne einer anderen zugeordnet. Sie können einen CNAME-Eintrag verwenden, um `www.example.com`, `blog.example.com` oder jede andere Unterdomäne der automatisch generierten Domäne zuzuordnen, die von Azure Static Web Apps bereitgestellt wird.
 
 1. Öffnen Sie das [Azure-Portal](https://portal.azure.com), und melden Sie sich mit Ihrem Azure-Konto an.
 

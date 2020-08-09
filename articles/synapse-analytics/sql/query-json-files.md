@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 8b95f6b6eca0f1464a7d09d2810aa66836d76f8f
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 04b2d7842222426010b76a1a7ed4c72ee74e3d87
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386638"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87489723"
 ---
 # <a name="query-json-files-using-sql-on-demand-preview-in-azure-synapse-analytics"></a>Abfragen von JSON-Dateien mit SQL On-Demand (Vorschauversion) in Azure Synapse Analytics
 
@@ -22,7 +22,7 @@ In diesem Artikel erfahren Sie, wie Sie eine Abfrage mit SQL On-Demand (Vorschau
 - JSON-Standarddateien, in denen mehrere JSON-Dokumente als JSON-Array gespeichert sind.
 - Durch Zeilen getrennte JSON-Dateien, in denen JSON-Dokumente durch Zeilenumbruchzeichen getrennt sind. Gängige Erweiterungen für diese Dateitypen sind `jsonl`, `ldjson`und `ndjson`.
 
-## <a name="reading-json-documents"></a>Lesen von JSON-Dokumenten
+## <a name="read-json-documents"></a>Lesen von JSON-Dokumenten
 
 Am einfachsten können Sie den Inhalt Ihrer JSON-Datei anzeigen, indem Sie der Funktion `OPENROWSET` die Datei-URL bereitstellen, CSV als `FORMAT` angeben und den Wert `0x0b` für `fieldterminator` und `fieldquote` festlegen. Wenn Sie durch Zeilen getrennte JSON-Dateien lesen müssen, ist dies ausreichend. Wenn Sie über eine klassische JSON-Datei verfügen, müssen Sie für `rowterminator` den Wert `0x0b` festlegen. Die Funktion `OPENROWSET` analysiert die JSON-Datei und gibt jedes Dokument im folgenden Format zurück:
 
@@ -60,7 +60,7 @@ from openrowset(
 
 Diese Abfrage gibt jedes JSON-Dokument als separate Zeile des Resultsets zurück. Stellen Sie sicher, dass Sie auf diese Datei zugreifen können. Wenn Ihre Datei mit einem SAS-Schlüssel oder einer benutzerdefinierten Identität geschützt ist, müssen Sie [Anmeldeinformationen auf Serverebene für die SQL-Anmeldung](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#server-scoped-credential) einrichten. 
 
-### <a name="using-data-source"></a>Verwenden einer Datenquelle
+### <a name="data-source-usage"></a>Datenquellennutzung
 
 Im vorherigen Beispiel wird der vollständige Pfad zur Datei verwendet. Alternativ können Sie eine externe Datenquelle mit dem Speicherort erstellen, der auf den Stammordner des Speichers verweist, und diese Datenquelle sowie den relativen Pfad zur Datei in der Funktion `OPENROWSET` verwenden:
 

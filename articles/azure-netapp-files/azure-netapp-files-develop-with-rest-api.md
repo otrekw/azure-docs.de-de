@@ -1,6 +1,6 @@
 ---
 title: Entwickeln für Azure NetApp Files mit REST-API | Microsoft-Dokumentation
-description: Beschreibt die ersten Schritte zum Verwenden der Azure NetApp Files-REST-API.
+description: Die REST-API für den Azure NetApp Files-Dienst definiert HTTP-Vorgänge für Ressourcen, wie etwa das NetApp-Konto, den Kapazitätspool, die Volumes und Momentaufnahmen.
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 06/02/2020
 ms.author: b-juche
-ms.openlocfilehash: 35800ef95e78a64d7aced13f496ec35d9fe60320
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 90d3ff807275c74ce4495c5631ab913971ebe3e3
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85964599"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87513008"
 ---
 # <a name="develop-for-azure-netapp-files-with-rest-api"></a>Entwickeln für Azure NetApp Files mit REST-API 
 

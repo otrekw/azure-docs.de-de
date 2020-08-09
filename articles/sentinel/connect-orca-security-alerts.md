@@ -1,6 +1,6 @@
 ---
-title: Verknüpfen von Orca-Warnungen mit Azure Sentinel | Microsoft-Dokumentation
-description: Hier erfahren Sie, wie Sie Daten von Orca-Sicherheitswarnungen mit Azure Sentinel verknüpfen, um Dashboards anzuzeigen, benutzerdefinierte Warnungen zu erstellen und die Untersuchung von Daten zu verbessern.
+title: Verbinden von Orca-Sicherheitswarnungen mit Azure Sentinel | Microsoft-Dokumentation
+description: Hier erfahren Sie, wie Sie Daten von Orca-Sicherheitswarnungen mit Azure Sentinel verbinden, um Dashboards anzuzeigen, benutzerdefinierte Warnungen zu erstellen und die Untersuchung von Daten zu verbessern.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -14,14 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2020
 ms.author: yelevin
-ms.openlocfilehash: 1f2f67281079142f0c4fe4985738dc48332a107d
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 735f4b447d7258a9b444f3b75a6537dec20b1307
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86528139"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076274"
 ---
-# <a name="connect-your-orca-alerts-to-azure-sentinel"></a>Verknüpfen Ihrer Orca-Warnungen mit Azure Sentinel 
+# <a name="connect-your-orca-security-alerts-to-azure-sentinel"></a>Verbinden Ihrer Orca-Sicherheitswarnungen mit Azure Sentinel 
+
+> [!IMPORTANT]
+> Der Connector für Orca-Sicherheitswarnungen in Azure Sentinel ist derzeit als öffentliche Vorschau verfügbar.
+> Dieses Feature wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Mit dem Connector für Orca-Sicherheitswarnungen lassen sich Warnungen Ihrer [Orca](https://orca.security/)-Sicherheitslösung problemlos in Azure Sentinel einbinden. Diese Warnungen können Sie dann in Arbeitsmappen anzeigen sowie als Vorlage für benutzerdefinierte Warnungen und zur Untersuchung von Problemen verwenden. Die Integration von Orca-Sicherheitswarnungen und Azure Sentinel stützt sich auf die REST-API.
 

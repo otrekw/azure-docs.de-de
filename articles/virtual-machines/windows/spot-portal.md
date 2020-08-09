@@ -5,15 +5,15 @@ author: cynthn
 ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.topic: how-to
-ms.date: 03/25/2020
+ms.date: 07/17/2020
 ms.author: cynthn
 ms.reviewer: jagaveer
-ms.openlocfilehash: 6e7723a437e90807063e3c3b7af2bf068dca5b9f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ee2ff7119c229b8a0fd94be3b85863fcb1108f58
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82100650"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074162"
 ---
 # <a name="deploy-spot-vms-using-the-azure-portal"></a>Bereitstellen von Spot-VMs mithilfe des Azure-Portals
 
@@ -22,6 +22,8 @@ Mithilfe von [Spot-VMs](spot-vms.md) können Sie unsere ungenutzte Kapazität mi
 Die Preise für Spot-VMs variieren je nach Region und SKU. Weitere Informationen finden Sie unter den VM-Preisen für [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) und [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/). Weitere Informationen zum Festlegen des maximalen Preises finden Sie unter [Spot-VMs – Preise](spot-vms.md#pricing).
 
 Sie haben die Möglichkeit, einen maximalen Preis festzulegen, den Sie pro Stunde für die VM bezahlen möchten. Der maximale Preis für eine Spot-VM kann in US-Dollar (USD) mit bis zu fünf Dezimalstellen festgelegt werden. Der Wert `0.05701` würde beispielsweise einem maximalen Preis von 0,05701 US-Dollar pro Stunde entsprechen. Wenn Sie den maximalen Preis auf `-1` festlegen, wird die VM nicht basierend auf dem Preis entfernt. Der Preis für die VM entspricht dem aktuellen Preis für Spot-VMs oder dem Preis für eine Standard-VM, je nachdem, welcher Preis niedriger ist, solange Kapazitäten und Kontingente verfügbar sind.
+
+Wenn der virtuelle Computer entfernt wird, haben Sie die Möglichkeit, entweder den virtuellen Computer und den zugrunde liegenden Datenträger zu löschen oder die VM freizugeben, damit sie später neu gestartet werden kann.
 
 
 ## <a name="create-the-vm"></a>Erstellen des virtuellen Computers

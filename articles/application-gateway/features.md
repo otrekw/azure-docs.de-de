@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 04/07/2020
 ms.author: victorh
-ms.openlocfilehash: f021eed959ef88a1ef3671e1d0ace8080710c92a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 560d836f99f7a1be85007bb9d488f80a68d7999b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80810231"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87067981"
 ---
 # <a name="azure-application-gateway-features"></a>Azure Application Gateway-Funktionen
 
@@ -35,7 +35,7 @@ Application Gateway umfasst die folgenden Funktionen:
 - [WebSocket- und HTTP/2-Datenverkehr](#websocket-and-http2-traffic)
 - [Verbindungsausgleich](#connection-draining)
 - [Benutzerdefinierte Fehlerseiten](#custom-error-pages)
-- [Erneutes Generieren von HTTP-Headern](#rewrite-http-headers)
+- [Neuschreibung von HTTP-Headern und der URL](#rewrite-http-headers-and-url)
 - [Festlegen der Größe](#sizing)
 
 ## <a name="secure-sockets-layer-ssltls-termination"></a>SSL/TLS-Beendigung (Secure Sockets Layer)
@@ -83,13 +83,13 @@ Weitere Informationen finden Sie unter [Routing auf URL-Pfadbasis – Übersicht
 
 ## <a name="multiple-site-hosting"></a>Hosten mehrerer Websites
 
-Das Hosten mehrerer Websites ermöglicht es Ihnen, mehr als eine Website auf derselben Anwendungsgatewayinstanz zu konfigurieren. Mit dieser Funktion können Sie eine effizientere Topologie für Ihre Bereitstellungen konfigurieren, indem Sie einer Application Gateway-Instanz bis zu 100 Websites hinzufügen (für optimale Leistung). Jede Website kann zu einem eigenen Pool umgeleitet werden. Das Anwendungsgateway kann Datenverkehr beispielsweise für `contoso.com` und `fabrikam.com` über die beiden Serverpools „ContosoServerPool“ und „FabrikamServerPool“ bereitstellen.
+Mit Application Gateway können Sie das Routing basierend auf dem Host- oder Domänennamen für mehr als eine Webanwendung auf demselben Anwendungsgateway konfigurieren. Sie können eine effizientere Topologie für Ihre Bereitstellungen konfigurieren, indem Sie bis zu hundert Websites zu einem einzigen Anwendungsgateway hinzufügen. Jede Website kann an ihren eigenen Back-End-Pool weitergeleitet werden. Beispielsweise können die drei Domänen „contoso.com“, „fabrikam.com“ und „adatum.com“ auf die IP-Adresse des Anwendungsgateways verweisen. Sie erstellen drei Listener vom Typ „Mehrere Websites“ und konfigurieren jeden Listener für den jeweiligen Port und die jeweilige Protokolleinstellung. 
 
-Anforderungen für `http://contoso.com` werden an „ContosoServerPool“ und Anforderungen für `http://fabrikam.com` an „FabrikamServerPool“ weitergeleitet.
+Anforderungen für `http://contoso.com` werden an „ContosoServerPool“, Anforderungen für `http://fabrikam.com` an „FabrikamServerPool“ weitergeleitet usw.
 
-Analog dazu können zwei Unterdomänen der gleichen übergeordneten Domäne in der gleichen Anwendungsgatewaybereitstellung gehostet werden. Beispiele für die Verwendung von untergeordneten Domänen sind `http://blog.contoso.com` und `http://app.contoso.com`, die unter nur einer Anwendungsgatewaybereitstellung gehostet werden.
+Analog dazu können zwei Unterdomänen der gleichen übergeordneten Domäne in der gleichen Anwendungsgatewaybereitstellung gehostet werden. Beispiele für die Verwendung von untergeordneten Domänen sind `http://blog.contoso.com` und `http://app.contoso.com`, die unter nur einer Anwendungsgatewaybereitstellung gehostet werden. Weitere Informationen finden Sie unter [Application Gateway – Hosten mehrerer Websites](multiple-site-overview.md).
 
-Weitere Informationen finden Sie unter [Application Gateway – Hosten mehrerer Websites](multiple-site-overview.md).
+Sie können auch Platzhalterhostnamen in einem Listener für mehrere Standorte und bis zu fünf Hostnamen pro Listener definieren. Weitere Informationen finden Sie unter [Platzhalterhostnamen in Listenern (Vorschauversion)](multiple-site-overview.md#wildcard-host-names-in-listener-preview).
 
 ## <a name="redirection"></a>Umleitung
 
@@ -131,7 +131,7 @@ Mit Application Gateway können Sie benutzerdefinierte Fehlerseiten erstellen, a
 
 Weitere Informationen finden Sie unter [Benutzerdefinierte Fehler](custom-error.md).
 
-## <a name="rewrite-http-headers"></a>Erneutes Generieren von HTTP-Headern
+## <a name="rewrite-http-headers-and-url"></a>Neuschreibung von HTTP-Headern und der URL
 
 HTTP-Header ermöglichen Client und Server das Übergeben von zusätzlichen Informationen mit der Anforderung oder der Antwort. Das Umschreiben dieser HTTP-Header hilft Ihnen, mehrere wichtige Szenarien zu meistern, wie z.B.:
 
@@ -139,9 +139,11 @@ HTTP-Header ermöglichen Client und Server das Übergeben von zusätzlichen Info
 - Entfernen von Headerfeldern aus Antworten, die vertrauliche Informationen preisgeben können.
 - Entfernen von Portinformationen aus X-Forwarded-For-Headern.
 
-Application Gateway unterstützt das Hinzufügen, Entfernen oder Aktualisieren von HTTP-Anforderungs- und -Antwortheadern, während die Anforderungs- und Antwortpakete zwischen dem Client und den Back-End-Pools übertragen werden. Es bietet Ihnen auch die Möglichkeit, Bedingungen hinzuzufügen, um sicherzustellen, dass die angegebenen Header nur dann neu geschrieben werden, wenn bestimmte Bedingungen erfüllt sind.
+Application Gateway und die WAF v2 SKU unterstützen das Hinzufügen, Entfernen oder Aktualisieren von HTTP-Anforderungs- und -Antwortheadern, während die Anforderungs- und Antwortpakete zwischen dem Client und den Back-End-Pools übertragen werden. Sie können URLs, Abfragezeichenfolgenparameter und den Hostnamen auch erneut generieren. Bei URL Rewrite und beim auf dem URL-Pfad basierenden Routing können Sie wählen, ob Sie Anforderungen anhand des ursprünglichen Pfads oder des erneut generierten Pfads an einen der Back-End-Pools weiterleiten, indem Sie die Option „Pfadzuordnung neu auswerten“ verwenden. 
 
-Weitere Informationen finden Sie unter [Erneutes Generieren von HTTP-Headern](rewrite-http-headers.md).
+Sie haben auch die Möglichkeit, Bedingungen hinzuzufügen, um sicherzustellen, dass die angegebenen Header oder die URL nur dann erneut generiert werden, wenn bestimmte Bedingungen erfüllt sind. Diese Bedingungen basieren auf den Anforderungs- und Antwortinformationen.
+
+Weitere Informationen finden Sie unter [Neuschreibung von HTTP-Headern und der URL](rewrite-http-headers-url.md).
 
 ## <a name="sizing"></a>Festlegen der Größe
 

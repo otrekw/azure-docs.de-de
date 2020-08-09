@@ -9,12 +9,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: 79e560f73b69047419626086af9c975c90870edc
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: db665fd952ccadd676056ad2d006e2b1bcbadf9c
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87291123"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448913"
 ---
 # <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager-in-linux"></a>Planen der Migration von IaaS-Ressourcen vom klassischen Bereitstellungsmodell zu Azure Resource Manager unter Linux
 
@@ -190,7 +190,7 @@ Ziehen Sie Folgendes in Betracht:
 
 Entscheiden Sie ganz bewusst, welche Dienste Sie nun in Azure Resource Manager aktivieren möchten.  Viele Kunden finden Folgendes für ihre Azure-Umgebungen hilfreich:
 
-- [Rollenbasierte Zugriffssteuerung](../../role-based-access-control/overview.md).
+- [Rollenbasierte Zugriffssteuerung von Azure (Azure RBAC)](../../role-based-access-control/overview.md).
 - [Azure Resource Manager-Vorlagen zur einfacheren und präziseren Bereitstellung](../../azure-resource-manager/templates/overview.md).
 - [Tags](../../azure-resource-manager/management/tag-resources.md).
 - [Aktivitätssteuerung](../../azure-resource-manager/management/view-activity-logs.md)

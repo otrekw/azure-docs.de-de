@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/13/2020
-ms.openlocfilehash: 142fdf27fde100385140baacdeba9249b2e7989b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8d97886232eecc369746e33df484cbfb9d40da72
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84887892"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87530264"
 ---
 # <a name="enterprise-security-general-information-and-guidelines-in-azure-hdinsight"></a>Allgemeine Informationen und Richtlinien für die Unternehmenssicherheit in Azure HDInsight
 
@@ -62,7 +62,7 @@ Beim Bereitstellen eines sicheren HDInsight-Clusters gibt es einige bewährte Me
 Wenn der hierarchische Namespace nicht aktiviert ist:
 
 * Es gibt keine geerbten Berechtigungen.
-* Die einzige Dateisystemberechtigung, die funktioniert, ist die RBAC-Rolle **Speicherdaten XXXX**, die dem Benutzer direkt im Azure-Portal zugewiesen werden muss.
+* Die einzige Dateisystemberechtigung, die funktioniert, ist die Azure-Rolle **Speicherdaten XXXX**, die dem Benutzer direkt im Azure-Portal zugewiesen werden muss.
 
 ### <a name="default-hdfs-permissions"></a>HDFS-Standardberechtigungen
 

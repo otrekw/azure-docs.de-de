@@ -1,5 +1,5 @@
 ---
-title: Problembehandlung bei der Azure Synapse Studio-Konnektivität (Vorschauversion) – PowerShell
+title: Problembehandlung der Synapse Studio-Konnektivität (Vorschauversion) mit PowerShell
 description: Problembehandlung bei der Azure Synapse Studio-Konnektivität mit PowerShell
 author: julieMSFT
 ms.service: synapse-analytics
@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: bbc985407a6cb56f4f1b539f514ab092b5f7d0de
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: f4afaf536a9c65758ad030e5cdeeee5fb97074d7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81427522"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87046679"
 ---
 # <a name="diagnose-azure-synapse-studio-preview-connectivity-issues-with-powershell-script"></a>Diagnose von Konnektivitätsproblemen zwischen Azure Synapse Studio (Vorschauversion) mit PowerShell-Skript
 

@@ -6,12 +6,12 @@ author: lachie83
 ms.topic: article
 ms.date: 07/20/2020
 ms.author: laevenso
-ms.openlocfilehash: 7349504b5a1ed5a67f3b34be2c4ff5dda29afbf3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 08835bda959fb4fe261e86e4d519ab85bd2a4625
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87025301"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495147"
 ---
 # <a name="http-application-routing"></a>HTTP-Anwendungsrouting
 
@@ -20,7 +20,7 @@ Die Lösung für das HTTP-Anwendungsrouting ermöglicht einen einfachen Zugriff 
 Wenn Sie dieses Add-On aktivieren, erstellt es eine DNS-Zone in Ihrem Abonnement. Weitere Informationen zu den DNS-Kosten finden Sie unter [Azure DNS – Preise][dns-pricing].
 
 > [!CAUTION]
-> Das Add-On für HTTP-Anwendungsrouting ist so ausgelegt, dass Sie schnell einen Eingangscontroller erstellen und auf Ihre Anwendungen zugreifen können. Dieses Add-On wird für die Produktion nicht empfohlen. Informationen zu produktionsreifen Eingangsbereitstellungen mit mehreren Replikaten und TLS-Unterstützung finden Sie unter [Erstellen eines HTTPS-Eingangscontrollers](./ingress-tls.md).
+> Das Add-On für HTTP-Anwendungsrouting ist so ausgelegt, dass Sie schnell einen Eingangscontroller erstellen und auf Ihre Anwendungen zugreifen können. Dieses Add-On ist zurzeit nicht für die Verwendung in einer Produktionsumgebung konzipiert und wird nicht für die Verwendung in der Produktion empfohlen. Informationen zu produktionsreifen Eingangsbereitstellungen mit mehreren Replikaten und TLS-Unterstützung finden Sie unter [Erstellen eines HTTPS-Eingangscontrollers](./ingress-tls.md).
 
 ## <a name="http-routing-solution-overview"></a>Übersicht über die HTTP-Routinglösung
 

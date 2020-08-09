@@ -1,5 +1,5 @@
 ---
-title: Automatisches Skalieren von Apache Spark-Instanzen in Azure Synapse
+title: Automatisches Skalieren von Apache Spark-Instanzen
 description: Verwenden Sie die Funktion für automatische Skalierung von Azure Synapse zum automatischen Skalieren von Apache Spark-Instanzen.
 author: euangMS
 ms.author: euang
@@ -9,12 +9,12 @@ ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: spark
 ms.date: 03/31/2020
-ms.openlocfilehash: 86e9b7425c8c75495a17b66af710d2c55e6e59ca
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c043941543088d9bdbfd535f372e2335e1ba55a5
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85194279"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500350"
 ---
 # <a name="automatically-scale-azure-synapse-analytics-apache-spark-pools"></a>Automatisches Skalieren von Apache Spark-Pools in Azure Synapse Analytics
 
@@ -67,7 +67,7 @@ Die anfängliche Anzahl von Knoten ist der Minimalwert. Dieser Wert definiert di
 
 Es kann 1 bis 5 Minuten dauern, bis ein Skalierungsvorgang abgeschlossen ist.
 
-### <a name="preparation-for-scaling-down"></a>Vorbereitung für das zentrale Herunterskalieren
+### <a name="prepare-for-scaling-down"></a>Vorbereiten für das zentrale Herunterskalieren
 
 Beim Herunterskalieren der Instanz werden die Knoten durch die automatische Skalierung in den Außerbetriebnahmezustand versetzt, sodass keine neuen Executors auf diesen Knoten gestartet werden können.
 

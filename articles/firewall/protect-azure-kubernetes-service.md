@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall
 services: firewall
 ms.topic: how-to
-ms.date: 07/02/2020
+ms.date: 07/29/2020
 ms.author: victorh
-ms.openlocfilehash: 81d65954197c0ebe0de77dc2fea63239d4c3f17b
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 602671f1052de2d9446f32946271cea2f9995044
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86056666"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87412948"
 ---
 # <a name="use-azure-firewall-to-protect-azure-kubernetes-service-aks-deployments"></a>Verwenden von Azure Firewall zum Schützen von AKS-Bereitstellungen (Azure Kubernetes Service)
 
@@ -50,7 +50,9 @@ Azure Firewall bietet ein AKS FQDN-Tag, um die Konfiguration zu vereinfachen. F�
       Genauere Informationen können Sie * *.hcp.<location>.azmk8s.io* und den Adressen in der folgenden Tabelle entnehmen.
    - UDP-Port 123 für die NTP-Zeitsynchronisierung (Network Time Protocol) (Linux-Knoten).
    - UDP-Port 53 für DNS ist ebenfalls erforderlich, wenn Sie über Pods verfügen, die direkt auf den API-Server zugreifen.
-- Konfigurieren Sie die AzureMonitor- und Storage-Diensttags. Azure Monitor empfängt Log Analytics-Daten. 
+
+   Weitere Informationen finden Sie unter [Steuern des ausgehenden Datenverkehrs für Clusterknoten in Azure Kubernetes Service (AKS)](../aks/limit-egress-traffic.md).
+- Konfigurieren Sie die AzureMonitor- und Storage-Diensttags. Azure Monitor empfängt Log Analytics-Daten.
 
    Sie können Ihre Arbeitsbereich-URL auch einzeln zulassen: `<worksapceguid>.ods.opinsights.azure.com`und `<worksapceguid>.oms.opinsights.azure.com`. Sie haben die folgenden Möglichkeiten, um dies zu ändern:
 

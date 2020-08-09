@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2018
 ms.author: damendo
-ms.openlocfilehash: 84e9dab149cfed265833336577d718e57bd9bc2d
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: fa1ed25e8c9a80dda2bf0e4625d28a3befaa49c9
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86165327"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87479845"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>Häufig gestellte Fragen zu Traffic Analytics
 
@@ -36,7 +36,7 @@ Für Traffic Analytics gelten folgende Voraussetzungen:
 
 Ihr Konto muss eine der folgenden Voraussetzungen erfüllen, um Traffic Analytics aktivieren zu können:
 
-- Ihr Konto muss eine der folgenden Rollen für die rollenbasierte Zugriffssteuerung (RBAC) im Abonnementumfang haben: Besitzer, Mitwirkender, Leser oder Netzwerkmitwirkender.
+- Ihr Konto muss eine der folgenden Azure-Rollen im Abonnementumfang haben: Besitzer, Mitwirkender, Leser oder Netzwerkmitwirkender.
 - Wenn Ihr Konto nicht einer der zuvor genannten Rollen zugewiesen ist, müssen Sie es einer benutzerdefinierten Rolle zuweisen, der auf Abonnementebene die folgenden Aktionen zugewiesen sind.
             
     - Microsoft.Network/applicationGateways/read
@@ -401,4 +401,3 @@ Die Seite mit der Topologie der Subnetze hat zwei Hauptabschnitte:
 - Um zu anderen hervorgehobenen Knoten in der Topologieansicht zu gelangen, drücken Sie für die Vorwärtsbewegung `Shift+Right arrow`. 
 - Bei hervorgehobenen Knoten wird der Fokus zur **Infotoolbox** des Knotens verschoben. Standardmäßig wird der Fokus zur Schaltfläche **Weitere Details** in der **Infotoolbox** verschoben. Zur weiteren Navigation in der Ansicht **Box** drücken Sie die Taste `Right arrow` und `Left arrow`, um vorwärts bzw. rückwärts zu navigieren. Das Drücken von `Enter` hat die gleiche Wirkung wie die Auswahl der fokussierten Schaltfläche in der **Infotoolbox**.
 - Wenn Sie einen solchen Knoten auswählen, können Sie alle seine Verbindungen nacheinander aufrufen, indem Sie `Shift+Left arrow` drücken. Der Fokus wird zur **Infotoolbox** dieser Verbindung verschoben. Jederzeit kann der Fokus durch erneutes Drücken von `Shift+Right arrow` zurück zum Knoten verschoben werden.    
-

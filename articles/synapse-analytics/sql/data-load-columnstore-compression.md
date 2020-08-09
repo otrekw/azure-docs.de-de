@@ -11,14 +11,14 @@ ms.date: 04/15/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: c885bce5ca17d5919ec134d179f6009e91a969cc
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 4496b74f162bfaeda7205963cbbe7e355db841f5
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86495481"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503904"
 ---
-# <a name="maximizing-rowgroup-quality-for-columnstore-index-performance"></a>Maximieren der Zeilengruppenqualität für die Columnstore-Indexleistung
+# <a name="maximize-rowgroup-quality-for-columnstore-index-performance"></a>Maximieren der Zeilengruppenqualität für die Columnstore-Indexleistung
 
 Die Zeilengruppenqualität hängt von der Anzahl von Zeilen in einer Zeilengruppe ab. Mit einer Erhöhung des verfügbaren Arbeitsspeicher können Sie die Anzahl von Zeilen maximieren, die ein Columnstore-Index in jede Zeilengruppe komprimieren kann.  Verwenden Sie diese Methoden, um die Komprimierungsrate und Abfrageleistung für Columnstore-Indizes zu verbessern.
 

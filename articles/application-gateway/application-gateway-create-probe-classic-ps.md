@@ -1,5 +1,5 @@
 ---
-title: Erstellen eines benutzerdefinierten Tests mithilfe von PowerShell – Azure Application Gateway
+title: Erstellen eines benutzerdefinierten Tests mithilfe des klassischen Bereitstellungsmodells – Azure Application Gateway
 description: Erfahren Sie, wie Sie mithilfe von PowerShell einen benutzerdefinierten Test für ein Application Gateway im klassischen Bereitstellungsmodell erstellen.
 services: application-gateway
 author: vhorne
@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/13/2019
 ms.author: victorh
-ms.openlocfilehash: 3a555fff758fdd1f4ddff60c7828a3e44af008ce
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1445d1418bde6d5d15e365c59ceb56e7661faccb
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84807287"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088069"
 ---
 # <a name="create-a-custom-probe-for-azure-application-gateway-classic-by-using-powershell"></a>Erstellen eines benutzerdefinierten Tests für ein Azure Application Gateway (klassisch) mithilfe von PowerShell
 

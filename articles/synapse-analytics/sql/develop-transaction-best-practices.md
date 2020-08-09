@@ -10,14 +10,14 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 0c55cc6e0fc15b663667a5131e2dd333106418cd
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 0156cfb0720e78b87abc36f0811db69bc8435894
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85957061"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503190"
 ---
-# <a name="optimizing-transactions-in-sql-pool"></a>Optimieren von Transaktionen im SQL-Pool
+# <a name="optimize-transactions-in-sql-pool"></a>Optimieren von Transaktionen im SQL-Pool
 
 Hier erfahren Sie, wie Sie die Leistung Ihres Transaktionscodes im SQL-Pool optimieren und gleichzeitig das Risiko für lange Rollbacks minimieren können.
 
@@ -82,7 +82,7 @@ Beachten Sie, dass es sich bei allen Schreibvorgängen zum Aktualisieren von sek
 
 Das Laden von Daten in eine nicht leere Tabelle mit einem gruppierten Index kann häufig eine Mischung aus vollständig protokollierten und minimal protokollierten Zeilen umfassen. Bei einem gruppierten Index handelt es sich um eine ausbalancierte Struktur (B-Struktur) von Seiten. Falls die Seite, auf die geschrieben wird, bereits Zeilen aus einer anderen Transaktion enthält, werden diese Schreibvorgänge vollständig protokolliert. Aber wenn die Seite leer ist, wird für das Schreiben auf die Seite nur die minimale Protokollierung genutzt.
 
-## <a name="optimizing-deletes"></a>Optimieren der Löschvorgänge
+## <a name="optimize-deletes"></a>Optimieren von Löschvorgängen
 
 DELETE ist ein Vorgang mit vollständiger Protokollierung.  Wenn Sie eine große Datenmenge in einer Tabelle oder Partition löschen müssen, ist es häufiger sinnvoller, stattdessen mit `SELECT` die Daten auszuwählen, die Sie behalten möchten. Dieser Vorgang kann mit minimaler Protokollierung ausgeführt werden.  Um die Daten auszuwählen, erstellen Sie mit [CTAS](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) eine neue Tabelle.  Verwenden Sie nach der Erstellung [RENAME](/sql/t-sql/statements/rename-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest), um die alte Tabelle gegen die neu erstellte Tabelle auszutauschen.
 
@@ -114,7 +114,7 @@ RENAME OBJECT [dbo].[FactInternetSales]   TO [FactInternetSales_old];
 RENAME OBJECT [dbo].[FactInternetSales_d] TO [FactInternetSales];
 ```
 
-## <a name="optimizing-updates"></a>Optimieren von Aktualisierungen
+## <a name="optimize-updates"></a>Optimieren von Updates
 
 UPDATE ist ein Vorgang mit vollständiger Protokollierung.  Wenn Sie eine große Zahl von Zeilen in einer Tabelle oder einer Partition aktualisieren müssen, ist es häufig viel effizienter, einen Vorgang mit minimaler Protokollierung zu verwenden, z.B. [CTAS](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse).
 
@@ -179,7 +179,7 @@ DROP TABLE [dbo].[FactInternetSales_old]
 > [!NOTE]
 > Bei der Neuerstellung großer Tabellen können die Features zur Workloadverwaltung des SQL-Pools vorteilhaft sein. Weitere Informationen finden Sie unter [Ressourcenklassen für die Workloadverwaltung](../sql-data-warehouse/resource-classes-for-workload-management.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
 
-## <a name="optimizing-with-partition-switching"></a>Optimieren mit Partitionswechsel
+## <a name="optimize-with-partition-switching"></a>Optimieren mit Partitionswechsel
 
 Bei umfangreichen Änderungen innerhalb einer [Tabellenpartition](../sql-data-warehouse/sql-data-warehouse-tables-partition.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) ist ein Muster für Partitionswechsel sinnvoll. Wenn der Datenänderungsaufwand groß ist und mehrere Partitionen umfasst, lässt sich mit dem Durchlaufen der Partitionen das gleiche Ergebnis erzielen.
 

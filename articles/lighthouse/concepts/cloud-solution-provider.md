@@ -1,14 +1,14 @@
 ---
 title: Überlegungen zum Cloud Solution Provider-Programm
 description: Die delegierte Azure-Ressourcenverwaltung unterstützt CSP-Partner bei der Verbesserung der Sicherheit und Kontrolle durch die Aktivierung präziser Berechtigungen.
-ms.date: 07/06/2020
+ms.date: 07/29/2020
 ms.topic: conceptual
-ms.openlocfilehash: 8dd40c5c4f7131554dcc3249777de9f0d92c35bb
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 0ae7ef0b78f2f37708c6b442a9591fcbcce25646
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86131512"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87429447"
 ---
 # <a name="azure-lighthouse-and-the-cloud-solution-provider-program"></a>Azure Lighthouse und das Programm für Cloud-Lösungsanbieter
 
@@ -32,6 +32,9 @@ Mit Azure Lighthouse können Sie verschiedenen Kunden oder Rollen unterschiedlic
 Das Onboarding eines Abonnements, das Sie über das CSP-Programm erstellt haben, erfolgt gemäß den Schritten, die in [Onboarding eines Kunden zu Azure Lighthouse](../how-to/onboard-customer.md) beschrieben sind. Jeder Benutzer, der in Ihrem Mandanten über die Rolle „Administrator-Agent“ verfügt, kann dieses Onboarding durchführen.
 
 ![Mandantenverwaltung mithilfe von AOBO und delegierter Azure-Ressourcenverwaltung](../media/csp-2.jpg)
+
+> [!TIP]
+> [Verwaltete Dienstangebote](managed-services-offers.md) mit privaten Plänen werden bei Abonnements, die über einen Handelspartner des Cloud Solution Provider-Programms (CSP) eingerichtet wurden, nicht unterstützt. Sie können diese Abonnements in Azure Lighthouse integrieren, indem Sie [Azure Resource Manager-Vorlagen](../how-to/onboard-customer.md) verwenden.
 
 > [!NOTE]
 > Die [Seite **Meine Kunden** im Azure-Portal](../how-to/view-manage-customers.md) enthält jetzt einen Abschnitt **Cloud Solution Provider (Vorschau)** , in dem Abrechnungsinformationen und Ressourcen für CSP-Kunden aufgeführt werden, die die [Microsoft-Kundenvereinbarung signiert](/partner-center/confirm-customer-agreement) haben und [den Azure-Plan nutzen](/partner-center/azure-plan-get-started). Weitere Informationen finden Sie unter [Erste Schritte mit Ihrem Abrechnungskonto für eine Microsoft-Partnervereinbarung](../../cost-management-billing/understand/mpa-overview.md).

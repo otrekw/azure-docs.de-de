@@ -3,12 +3,12 @@ title: Unterstützung der Bewertung physischer Server in Azure Migrate
 description: Informationen zur Unterstützung der Bewertung physischer Server mit der Azure Migrate-Serverbewertung
 ms.topic: conceptual
 ms.date: 06/03/2020
-ms.openlocfilehash: 3391a29b2297d192aad0d499f688105db9af528b
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 97da09fa88cc3e69965237cb5b4326b8b59739bd
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87304325"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423778"
 ---
 # <a name="support-matrix-for-physical-server-assessment"></a>Unterstützungsmatrix für die Bewertung physischer Server 
 
@@ -34,7 +34,7 @@ Zum Bewerten von physischen Servern erstellen Sie ein Azure Migrate-Projekt, und
 | **Unterstützung**                | **Details**               
 | :-------------------       | :------------------- |
 | **Physische Serverbereitstellung**       | Der physische Server kann eigenständig sein oder in einem Cluster bereitgestellt werden. |
-| **Berechtigungen**           | **Windows:** Verwenden Sie ein Domänenkonto für Computer, die in eine Domäne eingebunden sind, sowie ein lokales Konto für Computer, die in eine Domäne eingebunden sind. Das Benutzerkonto sollte diesen Gruppen hinzugefügt werden: Remoteverwaltungsbenutzer, Leistungsüberwachungsbenutzer und Leistungsprotokollbenutzer. <br/><br/> **Linux:** Sie benötigen ein root-Konto auf den Linux-Servern, die Sie ermitteln möchten. |
+| **Berechtigungen**           | **Windows:** Verwenden Sie ein Domänenkonto für Computer, die in eine Domäne eingebunden sind, sowie ein lokales Konto für Computer, die in keine Domäne eingebunden sind. Das Benutzerkonto sollte diesen Gruppen hinzugefügt werden: Remoteverwaltungsbenutzer, Leistungsüberwachungsbenutzer und Leistungsprotokollbenutzer. <br/><br/> **Linux:** Sie benötigen ein root-Konto auf den Linux-Servern, die Sie ermitteln möchten. |
 | **Betriebssystem** | Alle Betriebssysteme mit Ausnahme von Windows Server 2003 und SUSE Linux können für die Migration ausgewertet werden. |
 
 

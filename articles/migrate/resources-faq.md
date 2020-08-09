@@ -3,12 +3,12 @@ title: 'Azure Migrate: häufig gestellte Fragen'
 description: Hier erhalten Sie Antworten auf häufig gestellte Fragen zum Azure Migrate-Dienst.
 ms.topic: conceptual
 ms.date: 04/15/2020
-ms.openlocfilehash: 9b71888b284fd9cc125def4758d1e3800a92acf2
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 307a1d417b54ad9546c6e409ad8b105ea443da0e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81530316"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090007"
 ---
 # <a name="azure-migrate-common-questions"></a>Von der Azure Häufig gestellte Fragen
 
@@ -32,6 +32,10 @@ Verwenden Sie Azure Migrate, um lokale Infrastrukturen, Anwendungen und Daten in
 [Azure Site Recovery](../site-recovery/site-recovery-overview.md) ist eine Lösung für die Notfallwiederherstellung. 
 
 Azure Migrate: Servermigration: Dieses Tool nutzt bestimmte Site Recovery-Back-End-Funktionen für die Lift & Shift-Migration einiger lokaler Computer.
+
+## <a name="i-have-a-project-with-the-previous-classic-experience-of-azure-migrate-how-do-i-start-using-the-new-version"></a>Ich habe ein Projekt mit der vorherigen klassischen Erfahrung von Azure Migrate. Wie beginne ich mit der Verwendung der neuen Version?
+
+Sie können keine Projekte oder Komponenten aus der vorherigen Version in die neue Version aktualisieren. Sie müssen [ein neues Azure Migrate-Projekt](create-manage-projects.md) erstellen und ihm [Bewertungs- und Migrationstools](how-to-add-tool-first-time.md) hinzufügen. Verwenden Sie die Tutorials, um zu verstehen, wie die verfügbaren Bewertungs- und Migrationstools verwendet werden. Wenn Sie einen Log Analytics-Arbeitsbereich mit einem klassischen Projekt verknüpft haben, können Sie ihn an ein Projekt der aktuellen Version anfügen, nachdem Sie das klassische Projekt gelöscht haben.
 
 ## <a name="whats-the-difference-between-azure-migrate-server-assessment-and-the-map-toolkit"></a>Was ist der Unterschied zwischen der Serverbewertung von Azure Migrate und dem MAP Toolkit?
 

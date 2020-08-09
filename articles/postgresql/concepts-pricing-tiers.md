@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 02/25/2020
-ms.openlocfilehash: caa5c0178cda563650928be40d02716868255fb1
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 77ce6c8112e8c694b4ccb6a657b24649437d2f07
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121621"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87279235"
 ---
 # <a name="pricing-tiers-in-azure-database-for-postgresql---single-server"></a>Tarife in Azure Database for PostgreSQL – Einzelserver
 
@@ -85,9 +85,9 @@ Wenn Sie also beispielsweise 1.000 GB Speicher bereitgestellt haben und die tat
 
 Beachten Sie, dass der Speicher nur zentral hochskaliert und nicht herunterskaliert werden kann.
 
-## <a name="backup"></a>Backup
+## <a name="backup-storage"></a>Sicherungsspeicher
 
-Der Dienst erstellt automatisch Sicherungen Ihres Servers. Sie können als Aufbewahrungszeitraum einen Bereich von 7 bis 35 Tagen auswählen. Bei universellen und arbeitsspeicheroptimierten Servern können Sie georedundanten Speicher für Sicherungen auswählen. Im [Artikel zu Konzepten](concepts-backup.md) erfahren Sie mehr über Sicherungen.
+Bei Azure Database for PostgreSQL werden bis zu 100% Ihres bereitgestellten Serverspeichers ohne zusätzliche Kosten als Sicherungsspeicher hinzugefügt. Alle Sicherungsspeicher, die Sie über diesen Betrag hinaus verwenden, werden in GB pro Monat abgerechnet. Beispiel: Wenn Sie einen Server mit 250 GB bereitstellen, verfügen Sie über 250 GB an zusätzlichem Speicher, der kostenlos für Serversicherungen zur Verfügung steht. Speicher für Sicherungen, die die 250 GB überschreiten, wird gemäß dem [Preismodell](https://azure.microsoft.com/pricing/details/postgresql/) abgerechnet. Informationen zu Faktoren, die sich auf die Sicherungsspeichernutzung sowie die Überwachung und Steuerung der Sicherungsspeicherkosten beziehen, finden Sie in der [Dokumentation zur Sicherung](concepts-backup.md).
 
 ## <a name="scale-resources"></a>Skalieren von Ressourcen
 
