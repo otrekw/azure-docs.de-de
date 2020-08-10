@@ -12,10 +12,10 @@
   items:
     - name: 'Erstellen eines öffentlichen Lastenausgleichs: Portal'
       href: quickstart-load-balancer-standard-public-portal.md
+    - name: 'Erstellen eines öffentlichen Lastenausgleichs: PowerShell'
+      href: quickstart-create-standard-load-balancer-powershell.md
     - name: 'Erstellen eines öffentlichen Lastenausgleichs: Azure CLI'
       href: quickstart-load-balancer-standard-public-cli.md
-    - name: 'Erstellen eines öffentlichen Lastenausgleichs: Azure PowerShell'
-      href: quickstart-create-standard-load-balancer-powershell.md
     - name: 'Erstellen eines öffentlichen Lastenausgleichs: ARM-Vorlage'
       href: quickstart-load-balancer-standard-public-template.md
     - name: 'Erstellen eines internen Lastenausgleichs: Portal'
@@ -41,7 +41,7 @@
       href: tutorial-load-balancer-port-forwarding-portal.md
 - name: Beispiele
   items:
-    - name: Azure CLI
+    - name: Azure-Befehlszeilenschnittstelle
       href: cli-samples.md
     - name: Azure PowerShell
       href: powershell-samples.md
@@ -99,7 +99,7 @@
           href: upgrade-InternalBasic-To-PublicStandard.md
     - name: Erstellen des öffentlichen Lastenausgleichs mit IPv6
       items:
-        - name: Azure CLI
+        - name: Azure-Befehlszeilenschnittstelle
           href: 'https://docs.microsoft.com/azure/virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-cli'
         - name: Azure PowerShell
           href: 'https://docs.microsoft.com/azure/virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell'
@@ -114,7 +114,7 @@
       items:
         - name: Portal
           href: load-balancer-multiple-ip.md
-        - name: Azure CLI
+        - name: Azure-Befehlszeilenschnittstelle
           href: load-balancer-multiple-ip-cli.md
         - name: Azure PowerShell
           href: load-balancer-multiple-ip-powershell.md
@@ -142,7 +142,7 @@
       href: 'https://azure.microsoft.com/resources/samples/?service=load-balancer'
     - name: Azure PowerShell
       href: /powershell/module/az.network
-    - name: Azure CLI
+    - name: Azure-Befehlszeilenschnittstelle
       href: /cli/azure/network/lb
     - name: .NET
       href: /dotnet/api/microsoft.azure.management.network.models

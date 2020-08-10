@@ -620,6 +620,8 @@
           href: create-shared-self-hosted-integration-runtime-powershell.md
         - name: Automatisierungsskripts einer selbstgehosteten Integration Runtime
           href: self-hosted-integration-runtime-automation-scripts.md
+        - name: Ausführen einer selbstgehosteten Integration Runtime in einem Windows-Container
+          href: how-to-run-self-hosted-integration-runtime-in-windows-container.md
     - name: Ausführen von SSIS-Paketen in Azure
       items:
         - name: Ausführen von SSIS-Paketen in Azure über SSDT

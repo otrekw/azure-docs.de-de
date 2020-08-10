@@ -3,12 +3,12 @@ title: Unterstützung der Hyper-V-Bewertung in Azure Migrate
 description: Informationen zur Unterstützung der Hyper-V-Bewertung mit der Azure Migrate-Serverbewertung
 ms.topic: conceptual
 ms.date: 06/14/2020
-ms.openlocfilehash: 2cf13904a3642b8b91d61c84bb1c51cbb97f0846
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 563a98162a2453ac1c96baf9f04500ee880e0ce5
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87324810"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420956"
 ---
 # <a name="support-matrix-for-hyper-v-assessment"></a>Unterstützungsmatrix für die Hyper-V-Bewertung
 
@@ -34,7 +34,7 @@ Um die Bewertung von Hyper-V-VMs einzurichten, erstellen Sie ein Azure Migrate-P
 
 | **Unterstützung**                | **Details**               
 | :-------------------       | :------------------- |
-| **Hyper-V-Host**       | Der Hyper-V-Host kann eigenständig sein oder in einem Cluster bereitgestellt werden.<br/><br/> Auf dem Hyper-V-Host kann Windows Server 2019, Windows Server 2016 oder Windows Server 2012 R2 ausgeführt werden.<br/> Sie können keine VMs auf Hyper-V-Hosts mit Windows Server 2012 bewerten.
+| **Hyper-V-Host**       | Der Hyper-V-Host kann eigenständig sein oder in einem Cluster bereitgestellt werden.<br/><br/> Auf dem Hyper-V-Host kann Windows Server 2019, Windows Server 2016 oder Windows Server 2012 R2 ausgeführt werden. Die Server Core-Installation von Windows Server 2016 und Windows Server 2012 R2 wird ebenfalls unterstützt. <br/>Sie können keine VMs auf Hyper-V-Hosts mit Windows Server 2012 bewerten.
 | **Berechtigungen**           | Sie benötigen Administratorrechte auf dem Hyper-V-Host. <br/> Falls Sie keine Administratorberechtigungen zuweisen möchten, können Sie ein lokales Benutzerkonto oder ein Domänenbenutzerkonto erstellen und das Benutzerkonto den folgenden Gruppen zuweisen: „Remoteverwaltungsbenutzer“, „Hyper-V-Administratoren“ und „Systemmonitorbenutzer“. |
 | **PowerShell-Remoting**   | [PowerShell-Remoting](/powershell/module/microsoft.powershell.core/enable-psremoting?view=powershell-7) muss auf jedem Hyper-V-Host aktiviert sein. |
 | **Hyper-V-Replikat**       | Wenn Sie Hyper-V Replikate verwenden (oder mehrere VMs mit den gleichen VM-Bezeichnern vorliegen) und sowohl die ursprünglichen als auch die replizierten VMs mit Azure Migrate ermitteln, ist die von Azure Migrate generierte Bewertung möglicherweise nicht korrekt. |

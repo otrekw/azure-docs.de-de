@@ -3,12 +3,12 @@ title: 'Blaupausenbeispiel „ISO 27001: ASE-/SQL-Workload“: Übersicht'
 description: 'Übersicht und Architektur des Beispiels für die Blaupause „ISO 27001: App Service-Umgebungs-/SQL-Datenbank-Workload“.'
 ms.date: 07/13/2020
 ms.topic: sample
-ms.openlocfilehash: 71044ae1754cf4bdfc42be7b6585a1905dce426c
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 76177efcac8b32907c60cecac41404a3834d0fb8
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86536832"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926092"
 ---
 # <a name="overview-of-the-iso-27001-app-service-environmentsql-database-workload-blueprint-sample"></a>Übersicht über das Blaupausenbeispiel „ISO 27001: App Service-Umgebungs-/SQL-Datenbank-Workload“
 
@@ -28,7 +28,7 @@ Im Blaupausenbeispiel „ISO 27001: App Service-Umgebungs-/SQL-Datenbank-Worklo
 
 Diese Umgebung besteht aus mehreren Azure-Diensten, die für die Bereitstellung einer sicheren, vollständig überwachten und unternehmensgerechten Workloadinfrastruktur auf Grundlage von ISO 27001-Standards genutzt werden. Diese Umgebung besteht aus den folgenden Komponenten:
 
-- RBAC-Rolle ([Rollenbasierte Zugriffssteuerung](../../../../role-based-access-control/overview.md)) mit dem Namen „DevOps“, die über Rechte zum Bereitstellen und Verwalten von Ressourcen in [Azure App Service-Umgebungen](../../../../app-service/environment/intro.md) aus dem Blaupausenbeispiel verfügt
+- [Azure-Rolle](../../../../role-based-access-control/overview.md) mit dem Namen „DevOps“, die über Rechte zum Bereitstellen und Verwalten von Ressourcen in [Azure App Service-Umgebungen](../../../../app-service/environment/intro.md) aus dem Blaupausenbeispiel verfügt
 - [Azure-Richtlinien](../../../policy/overview.md) zum Beschränken der Dienste, die für die Umgebung bereitgestellt werden können, und mit Ablehnung der Erstellung von öffentlichen IP-Adressressourcen (PIP)
 - Ein virtuelles Netzwerk, in dem nur ein Subnetz enthalten ist und das über ein Peering mit einer bereits vorhandenen Umgebung für [gemeinsam genutzte Dienste](../iso27001-shared/index.md) verfügt, sodass für den gesamten Datenverkehr der Weg durch die Firewall der [gemeinsam genutzten Dienste](../iso27001-shared/index.md) erzwungen wird Im virtuellen Netzwerk werden die folgenden Ressourcen gehostet:
   - Eine [Azure App Service-Umgebung](../../../../app-service/environment/intro.md), die zum Hosten von einer oder mehreren Webanwendungen, Web-APIs oder Funktionen genutzt wird

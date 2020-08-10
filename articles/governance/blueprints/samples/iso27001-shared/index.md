@@ -3,12 +3,12 @@ title: 'Blaupausenbeispiel „ISO 27001: Gemeinsame Dienste“: Übersicht'
 description: 'Übersicht und Architektur des Beispiels zur Blaupause „ISO 27001: Gemeinsame Dienste“ Dieses Blaupausenbeispiel unterstützt Kunden bei der Bewertung spezifischer ISO 27001-Kontrollen.'
 ms.date: 07/13/2020
 ms.topic: sample
-ms.openlocfilehash: 0ef39a4e409320d08529904239dc17fc563c2044
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 09309fe05200cf8c7a958324f3412967296a8dc9
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87072874"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87927350"
 ---
 # <a name="overview-of-the-iso-27001-shared-services-blueprint-sample"></a>Übersicht über das Blaupausenbeispiel „ISO 27001: Gemeinsame Dienste“
 
@@ -25,7 +25,7 @@ VDC umfasst einen bewährten Satz mit Referenzarchitekturen, Automatisierungstoo
 
 Diese Umgebung besteht aus mehreren Azure-Diensten, die für die Bereitstellung einer sicheren, vollständig überwachten und unternehmensgerechten Infrastruktur mit gemeinsam genutzten Diensten auf Basis von ISO 27001-Standards genutzt werden. Diese Umgebung besteht aus den folgenden Komponenten:
 
-- RBAC-Rollen ([Rollenbasierte Zugriffssteuerung](../../../../role-based-access-control/overview.md)) für die Aufgabentrennung aus Sicht der Steuerungsebene. Vor der Bereitstellung jeder Infrastruktur werden drei Rollen definiert:
+- [Azure-Rollen](../../../../role-based-access-control/overview.md) für die Aufgabentrennung aus Sicht der Steuerungsebene. Vor der Bereitstellung jeder Infrastruktur werden drei Rollen definiert:
   - Die Rolle „NetOps“ verfügt über die Rechte zum Verwalten der Netzwerkumgebung, z. B. Firewalleinstellungen, NSG-Einstellungen, Routing und andere Netzwerkfunktionen.
   - Die Rolle „SecOps“ verfügt über die erforderlichen Rechte zum Bereitstellen und Verwalten von [Azure Security Center](../../../../security-center/security-center-intro.md), Definieren von [Azure-Richtlinien](../../../policy/overview.md) sowie andere sicherheitsbezogene Rechte.
   - Die Rolle „SysOps“ verfügt über die erforderlichen Rechte zum Definieren von [Azure-Richtlinien](../../../policy/overview.md) im Abonnement, Verwalten von [Log Analytics](../../../../azure-monitor/overview.md) für die gesamte Umgebung sowie andere betriebsbezogene Rechte.
