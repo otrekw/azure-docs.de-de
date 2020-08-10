@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.date: 06/25/2020
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 5189a9dc8cd83877b4797fd828e9c9f6da8d1b93
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: 405cb107711845a6699e09bc09a1d2d9f3005cd6
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85392841"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87499975"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-in-the-azure-portal"></a>Schnellstart: Erstellen eines virtuellen Linux-Computers im Azure-Portal
 
@@ -32,11 +32,11 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, falls Sie dies
 1. Wählen Sie auf der Seite **Virtuelle Computer** die Option **Hinzufügen** aus. Die Seite **Virtuellen Computer erstellen** wird geöffnet.
 1. Stellen Sie auf der Registerkarte **Grundlagen** unter **Projektdetails** sicher, dass das richtige Abonnement ausgewählt ist, und wählen Sie dann **Neu erstellen** für „Ressourcengruppe“ aus. Geben Sie als Namen *myResourceGroup* ein. 
 
-    ![Erstellen einer neuen Ressourcengruppe für Ihre VM](./media/quick-create-portal/project-details.png)
+    ![Screenshot: Abschnitt „Projektdetails“, der zeigt, wo Sie das Azure-Abonnement und die Ressourcengruppe für den virtuellen Computer auswählen](./media/quick-create-portal/project-details.png)
 
 1. Geben Sie unter **Instanzdetails** die Zeichenfolge *myVM* als **Namen des virtuellen Computers** ein, wählen Sie *USA, Osten* als Ihre **Region** aus, und wählen Sie *Ubuntu 18.04 LTS* als **Image** aus. Behalten Sie die restlichen Standardwerte bei.
 
-    ![Abschnitt „Instanzdetails“](./media/quick-create-portal/instance-details.png)
+    ![Screenshot: Abschnitt „Instanzdetails“, in dem Sie einen Namen für den virtuellen Computer angeben und Region, Image und Größe für ihn auswählen](./media/quick-create-portal/instance-details.png)
 
 1. Wählen Sie unter **Administratorkonto** die Option **Öffentlicher SSH-Schlüssel** aus.
 
@@ -44,11 +44,11 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, falls Sie dies
 
 1. Für **Öffentliche SSH-Schlüsselquelle** belassen Sie die Voreinstellung **Neues Schlüsselpaar generieren**, und geben Sie dann *myKey* für den **Schlüsselpaarnamen** ein.
 
-    ![Administratorkonto](./media/quick-create-portal/administrator-account.png)
+    ![Screenshot: Abschnitt „Administratorkonto“, in dem Sie einen Authentifizierungstyp auswählen und die Administratoranmeldeinformationen angeben](./media/quick-create-portal/administrator-account.png)
 
 1. Wählen Sie unter **Regeln für eingehende Ports** > **Öffentliche Eingangsports** die Option **Ausgewählte Ports zulassen** aus, und wählen Sie dann **SSH (22)** und **HTTP-(80)** aus der Dropdownliste aus. 
 
-    ![Öffnen von Ports für RDP und HTTP](./media/quick-create-portal/inbound-port-rules.png)
+    ![Screenshot: Abschnitt „Regeln für eingehende Ports“, in dem Sie festlegen, an welchen Ports eingehende Verbindungen zulässig sind](./media/quick-create-portal/inbound-port-rules.png)
 
 1. Belassen Sie die übrigen Standardeinstellungen, und wählen Sie dann die Schaltfläche **Überprüfen + erstellen** am unteren Rand der Seite aus.
 
@@ -61,7 +61,7 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, falls Sie dies
 1. Wählen Sie auf der Seite für Ihren neuen virtuellen Computer (VM) die öffentliche IP-Adresse aus, und kopieren Sie sie in die Zwischenablage.
 
 
-    ![Kopieren der öffentlichen IP-Adresse](./media/quick-create-portal/ip-address.png)
+    ![Screenshot, der zeigt, wie die IP-Adresse für den virtuellen Computer kopiert wird](./media/quick-create-portal/ip-address.png)
 
 ## <a name="connect-to-virtual-machine"></a>Herstellen der Verbindung mit dem virtuellen Computer
 
@@ -94,7 +94,7 @@ Geben Sie abschließend `exit` ein, um die SSH-Sitzung zu verlassen.
 
 Verwenden Sie einen beliebigen Webbrowser, um die Standardwillkommensseite von NGINX anzuzeigen. Geben Sie die öffentliche IP-Adresse Ihres virtuellen Computers als Webadresse ein. Die öffentliche IP-Adresse finden Sie auf der Übersichtsseite für den virtuellen Computer sowie in der weiter oben verwendeten SSH-Verbindungszeichenfolge.
 
-![NGINX-Standardwebsite](./media/quick-create-portal/nginx.png)
+![Screenshot der NGINX-Standardwebsite in einem Browser](./media/quick-create-portal/nginx.png)
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

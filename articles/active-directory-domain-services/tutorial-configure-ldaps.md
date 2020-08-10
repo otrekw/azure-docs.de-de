@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 995ca20ed264d78e93e04a6f54e4f691ec551e84
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 61e2d4607ebe1b688b2874220a170b2539a2226e
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86024858"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87404173"
 ---
 # <a name="tutorial-configure-secure-ldap-for-an-azure-active-directory-domain-services-managed-domain"></a>Tutorial: Konfigurieren von Secure LDAP (LDAPS) für eine verwaltete Azure AD Domain Services-Domäne
 
@@ -110,6 +110,7 @@ Zur Verwendung von Secure LDAP wird der Netzwerkdatenverkehr mithilfe einer Publ
 * Ein **privater** Schlüssel wird auf die verwaltete Domäne angewendet.
     * Mit diesem privaten Schlüssel wird der Datenverkehr über Secure LDAP *entschlüsselt*. Der private Schlüssel sollte nur auf die verwaltete Domäne angewendet und nicht auf Clientcomputer verteilt werden.
     * Ein Zertifikat, das den privaten Schlüssel enthält, verwendet das Dateiformat *PFX*.
+    * Als Verschlüsselungsalgorithmus für das Zertifikat muss *TripleDES-SHA1* verwendet werden.
 * Ein **öffentlicher** Schlüssel wird auf die Clientcomputer angewendet.
     * Mit diesem öffentlichen Schlüssel wird der Datenverkehr über Secure LDAP *verschlüsselt*. Der öffentliche Schlüssel kann auf Clientcomputer verteilt werden.
     * Zertifikate ohne privaten Schlüssel verwenden das Dateiformat *CER*.
@@ -149,7 +150,7 @@ Bevor Sie das im vorherigen Schritt erstellte digitale Zertifikat in Ihrer verwa
 
 1. Da dieses Zertifikat zum Entschlüsseln von Daten verwendet wird, sollten Sie den Zugriff sorgfältig steuern. Zum Schutz des Zertifikats kann ein Kennwort verwendet werden. Ohne das richtige Kennwort kann das Zertifikat nicht auf einen Dienst angewendet werden.
 
-    Wählen Sie auf der Seite **Sicherheit** die Option **Kennwort** aus, um die *PFX*-Zertifikatdatei zu schützen. Geben Sie ein Kennwort ein, bestätigen Sie es, und klicken Sie auf **Weiter**. Dieses Kennwort wird im nächsten Abschnitt zum Aktivieren von Secure LDAP für Ihre verwaltete Domäne verwendet.
+    Wählen Sie auf der Seite **Sicherheit** die Option **Kennwort** aus, um die *PFX*-Zertifikatdatei zu schützen. Als Verschlüsselungsalgorithmus muss *TripleDES-SHA1* verwendet werden. Geben Sie ein Kennwort ein, bestätigen Sie es, und klicken Sie auf **Weiter**. Dieses Kennwort wird im nächsten Abschnitt zum Aktivieren von Secure LDAP für Ihre verwaltete Domäne verwendet.
 1. Geben Sie auf der Seite **Zu exportierende Datei** den Dateinamen und den Speicherort für den Export des Zertifikats an, z. B. *C:\Benutzer\Kontoname\azure-ad-ds.pfx*. Notieren Sie sich das Kennwort und den Speicherort der *PFX*-Datei, da Sie diese Informationen in den nächsten Schritten benötigen.
 1. Klicken Sie auf der Überprüfungsseite auf **Fertig stellen**, um das Zertifikat in eine *PFX*-Zertifikatdatei zu exportieren. Wenn das Zertifikat erfolgreich exportiert wurde, wird ein Bestätigungsdialogfeld angezeigt.
 1. Lassen Sie die MMC für den nächsten Abschnitt geöffnet.
@@ -210,7 +211,7 @@ Sie werden in einer Benachrichtigung darüber informiert, dass Secure LDAP für 
 
 Es dauert einige Minuten, bis Secure LDAP für Ihre verwaltete Domäne aktiviert ist. Wenn das von Ihnen bereitgestellte Secure LDAP-Zertifikat die erforderlichen Kriterien nicht erfüllt, tritt beim Aktivieren von Secure LDAP für die verwaltete Domäne ein Fehler auf.
 
-Häufige Gründe für Fehler sind: Der Domänenname ist falsch, oder das Zertifikat läuft bald ab oder ist bereits abgelaufen. Sie können das Zertifikat mit gültigen Parametern erneut erstellen und dann Secure LDAP mit diesem aktualisierten Zertifikat aktivieren.
+Häufige Gründe für Fehler sind: Der Domänenname ist falsch, als Verschlüsselungsalgorithmus für das Zertifikat ist nicht *TripleDES-SHA1* festgelegt, oder das Zertifikat läuft bald ab oder ist bereits abgelaufen. Sie können das Zertifikat mit gültigen Parametern erneut erstellen und dann Secure LDAP mit diesem aktualisierten Zertifikat aktivieren.
 
 ## <a name="lock-down-secure-ldap-access-over-the-internet"></a>Beschränken des Secure LDAP-Zugriffs über das Internet
 
@@ -231,7 +232,7 @@ Erstellen Sie jetzt eine Regel, um eingehenden Secure LDAP-Zugriff über TCP-Por
     | Destination                       | Any          |
     | Zielportbereiche           | 636          |
     | Protocol                          | TCP          |
-    | Aktion                            | Allow        |
+    | Aktion                            | Zulassen        |
     | Priority                          | 401          |
     | Name                              | AllowLDAPS   |
 

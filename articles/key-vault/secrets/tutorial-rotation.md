@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 01/26/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 67fe36cf86c886f9d67d98cc8d34a090db4a71cb
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: b61ba7f160d012cc3d9ad9f477e969a626fdc38e
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373001"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87541418"
 ---
 # <a name="automate-the-rotation-of-a-secret-for-resources-that-use-one-set-of-authentication-credentials"></a>Automatisieren der Rotation eines Geheimnisses für Ressourcen mit einem Satz mit Anmeldeinformationen für die Authentifizierung
 
@@ -41,7 +41,8 @@ In diesem Tutorial wird gezeigt, wie Sie die regelmäßige Rotation von Geheimni
 
 Sie können den unten angegebenen Bereitstellungslink verwenden, falls Sie nicht über vorhandene Key Vault- und SQL Server-Instanzen verfügen:
 
-<br><a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjlichwa%2FKeyVault-Rotation-SQLPassword-Csharp%2Fmaster%2Farm-templates%2FInitial-Setup%2Fazuredeploy.json" target="_blank"><img src="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png" alt="Deploy to Azure"/></a>
+[![Bild einer Schaltfläche mit der Bezeichnung „Bereitstellung in Azure“](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjlichwa%2FKeyVault-Rotation-SQLPassword-Csharp%2Fmaster%2Farm-templates%2FInitial-Setup%2Fazuredeploy.json)
+
 1. Wählen Sie unter **Ressourcengruppe** die Option **Neu erstellen** aus. Geben Sie der Gruppe den Namen **akvrotation**.
 1. Geben Sie unter **SQL-Administratoranmeldung** den Anmeldenamen des SQL-Administrators ein. 
 1. Klicken Sie auf **Überprüfen + erstellen**.
@@ -76,8 +77,10 @@ Eine Funktions-App benötigt folgende Komponenten:
 - Eine Zugriffsrichtlinie für die Identität der Funktions-App für den Zugriff auf Geheimnisse in Key Vault
 - Event Grid-Ereignisabonnement für das Ereignis **SecretNearExpiry**
 
-1. Wählen Sie den Link zur Bereitstellung der Vorlage in Azure aus:
-<br><a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjlichwa%2FKeyVault-Rotation-SQLPassword-Csharp%2Fmaster%2Farm-templates%2FFunction%2Fazuredeploy.json" target="_blank"><img src="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png" alt="Deploy to Azure"/></a>
+1. Wählen Sie den Link zur Bereitstellung der Vorlage in Azure aus: 
+
+   [![Bild einer Schaltfläche mit der Bezeichnung „Bereitstellung in Azure“](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjlichwa%2FKeyVault-Rotation-SQLPassword-Csharp%2Fmaster%2Farm-templates%2FFunction%2Fazuredeploy.json)
+
 1. Wählen Sie in der Liste **Ressourcengruppe** die Option **akvrotation** aus.
 1. Geben Sie unter **SQL Server-Name** den Namen der SQL Server-Instanz mit dem zu rotierenden Kennwort ein.
 1. Geben Sie unter **Schlüsseltresorname** den Namen des Schlüsseltresors ein.
@@ -217,8 +220,10 @@ Die Web-App benötigt folgende Komponenten:
 - Eine Web-App mit systemseitig verwalteter Identität
 - Eine Zugriffsrichtlinie für den Zugriff auf Geheimnisse in Key Vault mithilfe der verwalteten Identität der Web-App
 
-1. Wählen Sie den Link zur Bereitstellung der Vorlage in Azure aus:
-<br><a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjlichwa%2FKeyVault-Rotation-SQLPassword-Csharp-WebApp%2Fmaster%2Farm-templates%2FWeb-App%2Fazuredeploy.json" target="_blank"> <img src="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png" alt="Deploy to Azure"/></a>
+1. Wählen Sie den Link zur Bereitstellung der Vorlage in Azure aus: 
+
+   [![Bild einer Schaltfläche mit der Bezeichnung „Bereitstellung in Azure“](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjlichwa%2FKeyVault-Rotation-SQLPassword-Csharp-WebApp%2Fmaster%2Farm-templates%2FWeb-App%2Fazuredeploy.json)
+
 1. Wählen Sie die Ressourcengruppe **akvrotation** aus.
 1. Geben Sie unter **SQL Server-Name** den Namen der SQL Server-Instanz mit dem zu rotierenden Kennwort ein.
 1. Geben Sie unter **Schlüsseltresorname** den Namen des Schlüsseltresors ein.

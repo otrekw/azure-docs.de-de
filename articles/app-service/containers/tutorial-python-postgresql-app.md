@@ -10,12 +10,13 @@ ms.custom:
 - seo-python-october2019
 - cli-validate
 - tracking-python
-ms.openlocfilehash: 718c9a62cc867e5d65cc3c79e78ce3282f1037c7
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+- devx-track-azurecli
+ms.openlocfilehash: 0ab19e538d2ffb97f9bb80c47f9ce5471bdb87a9
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285848"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87799463"
 ---
 # <a name="tutorial-deploy-a-django-web-app-with-postgresql-in-azure-app-service"></a>Tutorial: Bereitstellen einer Django-Web-App mit PostgreSQL in Azure App Service
 
@@ -31,10 +32,13 @@ In diesem Tutorial wird die Azure CLI verwendet, um folgende Aufgaben auszufüh
 > * Anzeigen von Diagnoseprotokollen
 > * Verwalten der Web-App im Azure-Portal
 
+Sie können auch die [auf dem Azure-Portal basierende Version dieses Tutorials](/azure/developer/python/tutorial-python-postgresql-app-portal) verwenden.
+
+
 ## <a name="set-up-your-initial-environment"></a>Einrichten der anfänglichen Umgebung
 
 1. Sie benötigen ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-1. Installieren Sie <a href="https://www.python.org/downloads/" target="_blank">Python 3.6 oder höher</a>.
+1. Installieren Sie <a href="https://www.python.org/downloads/" target="_blank">Python 3.6 oder höher</a>.
 1. Installieren Sie die <a href="/cli/azure/install-azure-cli" target="_blank">Azure CLI</a> 2.0.80 oder höher, mit der Sie Befehle in einer beliebigen Shell ausführen, um Azure-Ressourcen bereitzustellen und zu konfigurieren.
 
 Öffnen Sie ein Terminalfenster, und überprüfen Sie, ob mindestens die Python-Version 3.6 installiert ist:
@@ -59,7 +63,7 @@ py -3 --version
 
 ---
 
-Vergewissern Sie sich, dass Sie mindestens Version 2.0.80 der Azure CLI verwenden:
+Vergewissern Sie sich, dass Sie mindestens Version 2.0.80 der Azure CLI verwenden:
 
 ```azurecli
 az --version
@@ -71,7 +75,7 @@ Melden Sie sich anschließend über die CLI bei Azure an:
 az login
 ```
 
-Dieser Befehl öffnet einen Browser zum Erfassen Ihrer Anmeldeinformationen. Nach Abschluss der Befehlsausführung wird eine JSON-Ausgabe mit Informationen zu Ihren Abonnements angezeigt.
+Dieser Befehl öffnet einen Browser zum Erfassen Ihrer Anmeldeinformationen. Wenn der Befehl abgeschlossen ist, wird eine JSON-Ausgabe mit Informationen zu Ihren Abonnements angezeigt.
 
 Nachdem Sie sich angemeldet haben, können Sie Azure-Befehle mit der Azure CLI ausführen, um Ressourcen in Ihrem Abonnement zu verwenden.
 

@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 35e75037b4bf759fe90d608be0682004d3d3f23c
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.openlocfilehash: fc306dbca3191f04a85f2c5cc88d41336c13e09c
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2020
-ms.locfileid: "85480438"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496388"
 ---
 # <a name="sql-on-demand-preview-in-azure-synapse-analytics"></a>SQL On-Demand (Vorschauversion) in Azure Synapse Analytics 
 
@@ -31,7 +31,7 @@ Da es sich bei SQL On-Demand um eine serverlose Lösung handelt, müssen Sie we
 
 Wenn Sie Apache Spark für Azure Synapse in Ihrer Datenpipeline verwenden, können Sie zur Datenvorbereitung, -bereinigung oder -anreicherung [im Rahmen des Prozesses erstellte externe Spark-Tabellen direkt über SQL On-Demand abfragen](develop-storage-files-spark-tables.md). Verwenden Sie [Private Link](../security/how-to-connect-to-workspace-with-private-links.md), um Ihren SQL On-Demand-Endpunkt in das [verwaltete VNET Ihres Arbeitsbereichs](../security/synapse-workspace-managed-vnet.md) zu integrieren.  
 
-## <a name="who-is-sql-on-demand-for"></a>Zielgruppe von SQL On-Demand
+## <a name="sql-on-demand-benefits"></a>Vorteile von SQL On-Demand
 
 Wenn Sie Daten im Data Lake untersuchen, Erkenntnisse aus diesen Daten gewinnen oder Ihre vorhandene Datentransformationspipeline optimieren möchten, können Sie von SQL On-Demand profitieren. SQL On-Demand eignet sich für folgende Szenarien:
 
@@ -46,7 +46,7 @@ Verschiedene professionelle Rollen können von SQL On-Demand profitieren:
 - Datenanalysten können mithilfe der vertrauten T-SQL-Sprache oder mit den von ihnen bevorzugten Tools, die eine Verbindung mit SQL On-Demand herstellen können, [Daten und externe Spark-Tabellen erkunden](develop-storage-files-spark-tables.md), die von Data Scientists und Dateningenieuren erstellt wurden.
 - BI-Experten können schnell [Power BI-Berichte auf der Grundlage von Daten im Data Lake](tutorial-connect-power-bi-desktop.md) sowie Spark-Tabellen erstellen.
 
-## <a name="what-do-i-need-to-do-to-start-using-it"></a>Vorbereitungsschritte
+## <a name="how-to-start-using-sql-on-demand"></a>Beginnen mit der Verwendung von SQL On-Demand
 
 In jedem Azure Synapse-Arbeitsbereich steht ein SQL On-Demand-Endpunkt zur Verfügung. Sie können einen Arbeitsbereich erstellen und sofort damit beginnen, Daten mithilfe Ihrer vertrauten Tools abzufragen.
 
@@ -54,7 +54,7 @@ In jedem Azure Synapse-Arbeitsbereich steht ein SQL On-Demand-Endpunkt zur Ver
 
 SQL On-Demand ermöglicht die Nutzung des Data Lake durch bereits vorhandene Tools für SQL-Ad-hoc-Abfragen und Business Intelligence. Dank der vertrauten T-SQL-Syntax kann jedes Tool, das für SQL-Angebote mit TDS-Verbindung geeignet ist, bei Bedarf [eine Verbindung mit Synapse SQL herstellen und entsprechende Abfragen ausführen](connect-overview.md). Sie können eine Verbindung mit Azure Data Studio herstellen und Ad-hoc-Abfragen ausführen oder eine Verbindung mit Power BI herstellen, um innerhalb weniger Minuten Erkenntnisse zu gewinnen.
 
-## <a name="is-full-t-sql-supported"></a>Wird T-SQL vollständig unterstützt?
+## <a name="t-sql-support"></a>T-SQL-Unterstützung
 
 SQL On-Demand bietet eine Oberfläche für T-SQL-Abfragen, die in einigen Bereichen geringfügig verbessert bzw. erweitert wurde, um Abfragen für teilweise strukturierte und unstrukturierte Daten zu ermöglichen. Darüber hinaus werden einige Aspekte der T-SQL-Sprache aufgrund des Designs von SQL On-Demand nicht unterstützt (beispielsweise die DML-Funktion).
 

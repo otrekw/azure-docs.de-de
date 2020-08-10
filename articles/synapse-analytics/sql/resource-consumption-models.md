@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: a358052d5f3959a236f29461890c989e77edb4dc
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 086c853b21301074cf35f13db52db1fdb145518c
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87369015"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87489570"
 ---
 # <a name="synapse-sql-resource-consumption"></a>Synapse SQL-Ressourcennutzung
 
@@ -27,7 +27,7 @@ SQL On-Demand ist ein Dienst mit abfragebasierter Bezahlung, bei dem Sie nicht d
 
 Empfehlungen zum Auswählen der idealen Anzahl von Data Warehouse-Einheiten (Data Warehouse Units, DWUs) sowie zum Ändern der Anzahl der Einheiten.
 
-### <a name="what-are-data-warehouse-units"></a>Was sind Data Warehouse-Einheiten?
+### <a name="data-warehouse-units"></a>Data Warehouse-Einheiten
 
 Ein Synapse SQL-Pool ist eine Sammlung von Analyseressourcen, die bereitgestellt werden. Analytische Ressourcen werden als eine Kombination aus CPU, Arbeitsspeicher und E/A definiert. Diese drei Ressourcen werden in Computeskalierungseinheiten gebündelt, die als „Data Warehouse-Einheiten“ (Data Warehouse Units, DWUs) bezeichnet werden. Eine DWU stellt ein abstraktes, normalisiertes Maß für Computeressourcen und -leistung dar. Durch eine Änderung der Dienstebene wird die Anzahl von DWUs geändert, die für das System verfügbar sind. Hiermit werden dann die Leistung und die Kosten Ihres Systems angepasst.
 
@@ -79,7 +79,7 @@ Wenn Sie Data Warehouse-Einheiten erhöhen, erhöhen Sie die Computingressourcen
 
 Jeder SQL-Server (z.B. myserver.database.windows.net) weist ein Kontingent für [DTUs (Database Transaction Unit, Datenübertragungseinheiten)](../../azure-sql/database/service-tiers-dtu.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) auf, das eine bestimmte Anzahl von Data Warehouse-Einheiten zulässt. Weitere Informationen finden Sie in den [Kapazitätsgrenzen für die Workloadverwaltung](../sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#workload-management).
 
-### <a name="how-many-data-warehouse-units-do-i-need"></a>Wie viele Data Warehouse-Einheiten benötige ich?
+### <a name="assess-the-number-of-data-warehouse-units-you-need"></a>Ermitteln der Anzahl der benötigten Data Warehouse-Einheiten
 
 Die optimale Anzahl der Data Warehouse-Einheiten hängt in hohem Maß von Ihrer Arbeitsauslastung und der Datenmenge ab, die Sie in das System geladen haben.
 

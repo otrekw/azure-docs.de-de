@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
-ms.openlocfilehash: 4928938c38df8a1ed0f1e31c73e755a4f7f6c371
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: ea951943c3f48443e4348d633c16ed61303f7aa8
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87367629"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87449050"
 ---
 # <a name="tutorial-manipulating-models"></a>Tutorial: Bearbeiten von Modellen
 
@@ -332,18 +332,14 @@ Wenn ein Raycast im **RemoteRayCastPointerHandler**-Element erfolgreich abgeschl
 
 2. Fügen Sie im zuvor erstellten GameObject-Element **TestModel** sowohl die Komponente **RemoteRayCastPointerHandler** als auch die Komponente **RemoteEntityHelper** hinzu.
 1. Weisen Sie die Methode `EntityToDebugLog` dem Ereignis `OnRemoteEntityClicked` zu. Wenn der Ausgabetyp des Ereignisses und der Eingabetyp der Methode stimmen, können wir die dynamische Ereigniseinbindung von Unity verwenden, die den Ereigniswert automatisch an die Methode übergibt.
-    1. Erstellen Sie ein neues Rückruffeld.
-    ![Hinzufügen eines Rückrufs](./media/add-callback-remote-entity-clicked.png)
-    1. Ziehen Sie die Komponente **Remote Entity Helper** (Remoteentität-Hilfsprogramm) in das Objektfeld, um auf das übergeordnete GameObject-Element zu verweisen.
-    ![Zuweisen eines Objekts](./media/assign-object.png)
-    1. Weisen Sie `EntityToDebugLog` als Rückruf zu.
-    ![Zuweisen eines Rückrufs](./media/remote-entity-event.png)
+    1. Erstellen Sie ein neues Rückruffeld: ![Rückruf hinzufügen](./media/add-callback-remote-entity-clicked.png)
+    1. Ziehen Sie die Komponente **Remote Entity Helper** (Remoteentität-Hilfsprogramm) in das Objektfeld, um auf das übergeordnete GameObject-Element zu verweisen: ![Objekt zuweisen](./media/assign-object.png)
+    1. Weisen Sie `EntityToDebugLog` als Rückruf zu: ![Rückruf zuweisen](./media/remote-entity-event.png)
 1. Klicken Sie im Unity-Editor auf die Wiedergabeschaltfläche, um die Szene zu starten, eine Verbindung mit einer Remotesitzung herzustellen und das Testmodell zu laden.
 1. Halten Sie die linke UMSCHALTTASTE mithilfe der MRTK-Handsimulation gedrückt.
 1. Steuern Sie die simulierte Hand so, dass der Handstrahl auf das Testmodell zeigt.
 1. Klicken Sie lange, um eine Tippbewegung zu simulieren und das `OnPointerClicked`-Ereignis auszuführen.
-1. Achten Sie in der Unity-Konsole auf eine Protokollmeldung mit dem Namen der ausgewählten untergeordneten Entität. Beispiel:
-![Beispiel für eine untergeordnete Entität](./media/child-entity-example.png)
+1. Achten Sie in der Unity-Konsole auf eine Protokollmeldung mit dem Namen der ausgewählten untergeordneten Entität. Beispiel: ![Beispiel für eine untergeordnete Entität](./media/child-entity-example.png)
 
 ## <a name="synchronizing-the-remote-object-graph-into-the-unity-hierarchy"></a>Synchronisieren des Remoteobjektgraphs in der Unity-Hierarchie
 
@@ -353,7 +349,7 @@ Bisher haben wir nur ein einzelnes lokales GameObject-Element gesehen, das das g
 1. Erweitern Sie die untergeordneten Elemente des GameObject-Elements **TestModel** in der Unity-Hierarchie, und wählen Sie das GameObject-Element **TestModel_Entity** aus.
 1. Klicken Sie im Inspektor auf die Schaltfläche *Show Children* (Untergeordnete Elemente anzeigen).
 ![Untergeordnete Elemente anzeigen](./media/show-remote-children.png)
-1. Erweitern Sie untergeordnete Elemente in der Hierarchie, und klicken Sie auf *Show Children* (Untergeordnete Elemente anzeigen), bis eine große Liste von untergeordneten Elementen angezeigt wird.
+1. Erweitern Sie untergeordnete Elemente in der Hierarchie, und klicken Sie auf *Show Children* (Untergeordnete Elemente anzeigen), bis eine lange Liste von untergeordneten Elementen angezeigt wird.
 ![Alle untergeordneten Objekte](./media/test-model-children.png)
 
 Eine Liste mit Dutzenden von Entitäten füllt nun die Hierarchie auf. Wenn Sie eines dieser Elemente auswählen, werden die Komponenten `Transform` und `RemoteEntitySyncObject` im Inspektor angezeigt. Standardmäßig wird nicht jede Entität automatisch in jedem Frame synchronisiert, sodass lokale Änderungen an `Transform` nicht mit dem Server synchronisiert werden. Aktivieren Sie das Kontrollkästchen *Sync Every Frame* (Jeden Frame synchronisieren), und verschieben, skalieren oder drehen Sie anschließend die Transformation in der Szenenansicht. Das gerenderte Modell wird in der Szenenansicht nicht angezeigt. Eine visuelle Aktualisierung der Position und Drehung des Modells sehen Sie in der Spielansicht.
@@ -377,7 +373,7 @@ Der gleiche Prozess kann programmgesteuert ausgeführt werden und ist der erste 
 1. Steuern Sie die simulierte Hand so, dass der Handstrahl auf das Testmodell zeigt.
 1. Klicken Sie lange, um eine Tippbewegung zu simulieren und das `OnPointerClicked`-Ereignis auszuführen.
 1. Aktivieren und erweitern Sie die Hierarchie, um ein neues untergeordnetes Objekt anzuzeigen, das die angeklickte Entität darstellt.
-![GameObject-Darstellung](./media/gameobject-representing-entity.png)\
+![GameObject-Darstellung](./media/gameobject-representing-entity.png)
 1. Entfernen Sie nach dem Testen den Rückruf für `MakeSyncedGameObject`, da wir ihn später in andere Effekte integrieren.
 
 > [!NOTE]

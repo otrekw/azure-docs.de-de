@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 10/29/2019
 ms.author: kenwith
-ms.openlocfilehash: eb4a150a1680dd4101249458894ded652cde15a0
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: a1a99e9f02a25f5e1d57ea485930a4f26149b53f
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87338043"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87808404"
 ---
 # <a name="quickstart-configure-properties-for-an-application-in-your-azure-active-directory-azure-ad-tenant"></a>Schnellstart: Konfigurieren von Eigenschaften für eine Anwendung auf Ihrem Azure AD-Mandanten (Azure Active Directory)
 
@@ -95,9 +95,17 @@ So verwenden Sie ein benutzerdefiniertes Logo:
    > [!NOTE]
    > Die in diesem Bereich **Eigenschaften** angezeigte Miniaturansicht wird nicht sofort aktualisiert. Sie können den Bereich **Eigenschaften** schließen und erneut öffnen, um das aktualisierte Symbol anzuzeigen.
 
+
+> [!TIP]
+> Sie können die App-Verwaltung mithilfe der Graph-API automatisieren. Informationen hierzu finden Sie unter [Automatisieren einer SAML-basierten SSO-App-Konfiguration mit Microsoft Graph-API](https://docs.microsoft.com/graph/application-saml-sso-configure-api).
+
+
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+
+Wenn Sie die Schnellstartreihe nicht fortsetzen möchten, sollten Sie die App löschen, um den Testmandanten zu bereinigen. Das Löschen der App wird in der letzten Schnellstartanleitung dieser Reihe behandelt. Informationen finden Sie unter [Schnellstart: Löschen einer Anwendung von Ihrem Azure AD-Mandanten (Azure Active Directory)](delete-application-portal.md).
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nachdem Sie die Eigenschaften einer Anwendung konfiguriert haben, können Sie mit dem Einrichten des einmaligen Anmeldens fortfahren.
-
-- [Einrichten des einmaligen Anmeldens](add-application-portal-setup-sso.md)
-- [Löschen einer App](delete-application-portal.md)
+Im nächsten Artikel erfahren Sie, wie Sie einmaliges Anmelden für eine App einrichten:
+> [!div class="nextstepaction"]
+> [Einrichten des einmaligen Anmeldens](add-application-portal-setup-sso.md)

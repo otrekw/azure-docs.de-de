@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
-ms.openlocfilehash: 4eee6aeaff045264c8d23276ac91a83592ddc601
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 297241c5f939ae15fc77b29614b55d9b2bd63c84
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86207815"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87445907"
 ---
 # <a name="tutorial-securing-azure-remote-rendering-and-model-storage"></a>Tutorial: Schützen von Azure-Remote Rendering und Modellspeicher
 
@@ -156,7 +156,7 @@ Wir ändern **RemoteRenderingCoordinator**, um ein benutzerdefiniertes Modell au
     > Wenn Sie das Skript [**Conversion.ps1**](../../../quickstarts/convert-model.md#run-the-conversion) ohne das Argument „-UseContainerSas“ ausführen, gibt das Skript alle oben aufgeführten Werte anstelle des SAS-Tokens aus. ![Verknüpftes Modell](./media/converted-output.png)
 1. Entfernen oder deaktivieren Sie für den Moment das GameObject-**TestModel**, um Platz für das Laden des benutzerdefinierten Modells zu schaffen.
 1. Spielen Sie die Szene ab, und stellen Sie eine Verbindung mit einer Remotesitzung her.
-1. Klicken Sie mit der rechten Maustaste auf **RemoteRenderingCoordinator**, und wählen Sie die Option **Load Linked Custom Model** (Verknüpftes benutzerdefiniertes Modell laden).
+1. Klicken Sie mit der rechten Maustaste auf **RemoteRenderingCoordinator**, und wählen Sie die Option **Load Linked Custom Model** (Verknüpftes benutzerdefiniertes Modell laden) aus.
     ![Laden des verknüpften Modells](./media/load-linked-model.png)
 
 Diese Schritte erhöhen die Sicherheit der Anwendung, indem Sie das SAS-Token aus der lokalen Anwendung entfernen.
@@ -176,16 +176,13 @@ Das Skript **RemoteRenderingCoordinator** verfügt über einen Delegaten namens 
 1. Befolgen Sie die [Anleitung: Konfigurieren der Authentifizierung: Authentifizierung für bereitgestellte Anwendungen](../../../how-tos/authentication.md#authentication-for-deployed-applications). Insbesondere befolgen Sie die Anweisungen in der Dokumentation für Azure Spatial Anchors [Azure AD-Benutzerauthentifizierung](https://docs.microsoft.com/azure/spatial-anchors/concepts/authentication?tabs=csharp#azure-ad-user-authentication). Dies umfasst das Registrieren einer neuen Azure Active Directory-Anwendung und das Konfigurieren des Zugriffs auf Ihre ARR-Instanz.
 1. Überprüfen Sie nach dem Konfigurieren der neuen AAD-Anwendung, ob Ihre AAD-Anwendung den folgenden Abbildungen gleicht:
 
-    **AAD-Anwendung > Authentifizierung**\
-    ![App-Authentifizierung](./media/app-authentication-public.png)
+    **AAD-Anwendung > Authentifizierung** ![App-Authentifizierung](./media/app-authentication-public.png)
 
-    **AAD-Anwendung > API-Berechtigungen**\
-    ![App-APIs](./media/request-api-permissions-step-five.png)
+    **AAD-Anwendung > API-Berechtigungen** ![App-APIs](./media/request-api-permissions-step-five.png)
 
 1. Überprüfen Sie nach dem Konfigurieren des Remote Rendering-Kontos, ob die Konfiguration der folgenden Abbildung gleicht:
 
-    **AAR > AccessControl (IAM)** \
-    ![ARR-Rolle](./media/azure-remote-rendering-role-assignment-complete.png)
+    **AAR -> AccessControl (IAM)** ![ARR-Rolle](./media/azure-remote-rendering-role-assignment-complete.png)
 
     >[!NOTE]
     > Eine *Besitzer*-Rolle reicht nicht aus, um Sitzungen über die Clientanwendung zu verwalten. Für jeden Benutzer, dem Sie die Möglichkeit zum Verwalten von Sitzungen gewähren möchten, müssen Sie die Rolle **Remote Rendering-Client** bereitstellen. Für jeden Benutzer, dem Sie die Möglichkeit zum Verwalten von Sitzungen und zum Konvertieren von Modellen geben möchten, müssen Sie die Rolle **Remote Rendering-Administrator** bereitstellen.
@@ -357,9 +354,7 @@ Wenn die AAD-Authentifizierung aktiv ist, müssen Sie sich im Unity Editor jedes
 1. Klicken Sie im Unity-Editor auf „Abspielen“, und stimmen Sie dem Ausführen einer Sitzung zu.
     Da die **AADAuthentication**-Komponente über einen Ansichtscontroller verfügt, wird sie automatisch verknüpft, um nach dem modalen Sitzungsautorisierungsbereich eine Eingabeaufforderung anzuzeigen.
 1. Befolgen Sie die Anweisungen im Bereich rechts neben **AppMenu**.
-    Die Anzeige sollte in etwa der folgenden Ausgabe entsprechen:
-    ![AAD-Authentifizierungskomponente](./media/device-flow-instructions.png)\
-    Nach der Eingabe der bereitgestellten Codierung auf Ihrem sekundären Gerät (oder Browser auf demselben Gerät) und dem Einloggen mit Ihren Anmeldeinformationen wird ein Zugriffstoken an die anfordernde Anwendung zurückgegeben. Dies ist in diesem Fall der Unity Editor.
+    Die Anzeige sollte in etwa der folgenden Ausgabe entsprechen: ![AAD-Authentifizierungskomponente](./media/device-flow-instructions.png) Nach der Eingabe der bereitgestellten Codierung auf Ihrem sekundären Gerät (oder im Browser auf demselben Gerät) und dem Einloggen mit Ihren Anmeldeinformationen wird ein Zugriffstoken an die anfordernde Anwendung zurückgegeben. Dies ist in diesem Fall der Unity-Editor.
 1. Jetzt sollten alle Prozesse in der Anwendung normal fortgesetzt werden. Überprüfen Sie die Unity-Konsole auf Fehler, wenn Sie die einzelnen Schritte nicht erwartungsgemäß durchführen können.
 
 ## <a name="build-to-device"></a>Entwickeln auf dem Gerät

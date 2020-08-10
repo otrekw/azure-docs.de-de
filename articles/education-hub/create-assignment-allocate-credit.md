@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 06/30/2020
 ms.service: azure-education
 ms.subservice: education-hub
-ms.openlocfilehash: e0d0804ce1f43d246dc4e87e222cbfbaf7db58aa
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a850e5ea851ee539c663b00ecc7f2053eae8dc34
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87100968"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534089"
 ---
 # <a name="create-an-assignment-and-allocate-credit"></a>Erstellen einer Zuweisung und Zuordnen von Guthaben
 
@@ -31,7 +31,7 @@ Vom Azure-Education Hub werden beliebige E-Mail-Adressen im Format „_____@___.
 > [!IMPORTANT]
 > Geschäfts-, Schul- oder Unikonten unterliegen ihren eigenen Richtlinien. Hierzu zählt unter anderem, ob eine E-Mail-Adresse aus einer organisationsfremden Domäne zulässig ist (beispielsweise das Hinzufügen von student2@outlook.com zur Domäne @school.edu). Überprüfen Sie diese Richtlinien, bevor Sie neue Benutzer hinzufügen.
 
-Wenn ein Geschäfts-, Schul- oder Unikonto (beispielsweise student1@school.edu) als rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) im Educator Sponsor-Portal oder im [Azure-Portal](https://portal.azure.com) hinzugefügt wird, wird von Azure automatisch eine E-Mail an den Empfänger gesendet. In dieser E-Mail wird der Benutzer aufgefordert, das neue Konto und die RBAC-Rolle zu akzeptieren, um Zugriff auf das Abonnement zu erhalten. Tutoren bzw. Professoren müssen die Kursteilnehmer davon in Kenntnis setzen, damit ihr Abonnement wie erwartet im Azure-Portal angezeigt wird. Die E-Mail sollte in etwa wie folgt aussehen:
+Wenn ein Geschäfts-, Schul- oder Unikonto (beispielsweise student1@school.edu) als rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) im Educator Sponsor-Portal oder im [Azure-Portal](https://portal.azure.com) hinzugefügt wird, wird von Azure automatisch eine E-Mail an den Empfänger gesendet. In dieser E-Mail wird der Benutzer aufgefordert, das neue Konto und die Azure-Rolle zu akzeptieren, um Zugriff auf das Abonnement zu erhalten. Tutoren bzw. Professoren müssen die Kursteilnehmer davon in Kenntnis setzen, damit ihr Abonnement wie erwartet im Azure-Portal angezeigt wird. Die E-Mail sollte in etwa wie folgt aussehen:
 
 :::image type="content" source="media/create-assignment-allocate-credit/azure-active-directory-get-started.png" alt-text="Azure Active Directory: Erste Schritte" border="false":::
 

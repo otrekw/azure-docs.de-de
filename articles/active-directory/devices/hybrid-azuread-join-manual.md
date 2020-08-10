@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 007763d65021b0730c6e4e81ada33790d3cf4c02
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b80cd2e40e54837682e72837cf0d1a9058f3a7fc
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87025777"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87428377"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-joined-devices-manually"></a>Tutorial: Manuelles Konfigurieren von in Azure Active Directory eingebundenen Hybridgeräten
 
@@ -59,6 +59,9 @@ Stellen Sie sicher, dass Computer innerhalb Ihres Unternehmensnetzwerks zur Regi
 * `https://login.microsoftonline.com`
 * `https://device.login.microsoftonline.com`
 * Der STS Ihrer Organisation (für Verbunddomänen; muss in die lokalen Intraneteinstellungen des Benutzers eingeschlossen werden)
+
+> [!WARNING]
+> Wenn Ihre Organisation Proxyserver verwendet, die SSL-Datenverkehr für Szenarien wie die Verhinderung von Datenverlust oder Azure AD-Mandanteneinschränkungen abfangen, stellen Sie sicher, dass der Datenverkehr zu „https://device.login.microsoftonline.com“ von TLSI (TLS break and inspect) ausgeschlossen ist. Wird „https://device.login.microsoftonline.com“ nicht ausgeschlossen, kann dies zu Beeinträchtigungen bei der Clientzertifikatauthentifizierung führen und Probleme bei der Geräteregistrierung und beim gerätebasierten bedingten Zugriff verursachen.
 
 Falls Ihre Organisation die Verwendung von nahtlosem einmaligem Anmelden beabsichtigt, muss die folgende URL für Computer in Ihrer Organisation erreichbar sein. Sie muss ebenfalls der lokalen Intranetzone des Benutzers hinzugefügt werden.
 

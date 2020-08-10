@@ -10,12 +10,12 @@ ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 09/03/2019
 ms.custom: seoapril2019 sqldbrb=1
-ms.openlocfilehash: 73ffe7fe6336d9547ebbbf4c894bd1b9398e0900
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 12c3a35e12e3f432345ea788893d0d0ae6e6433f
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87092931"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496915"
 ---
 # <a name="tutorial-secure-a-database-in-azure-sql-database"></a>Tutorial: Schützen einer Datenbank in Azure SQL-Datenbank
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -190,7 +190,7 @@ So fügen Sie einen Benutzer mit SQL-Authentifizierung hinzu:
 Für die Azure Active Directory-Authentifizierung müssen Datenbankbenutzer als Benutzer für eigenständige Datenbanken erstellt werden. Benutzer für eigenständige Datenbanken sind einer Identität im Azure AD-Verzeichnis zugeordnet, die wiederum mit der Datenbank verknüpft ist, und verfügen über keine Anmeldung in der *Masterdatenbank*. Die Azure AD-Identität kann entweder für einen einzelnen Benutzer oder für eine Gruppe verwendet werden. Weitere Informationen finden Sie unter [Eigenständige Datenbankbenutzer - machen Sie Ihre Datenbank portabel](/sql/relational-databases/security/contained-database-users-making-your-database-portable). Im Tutorial [Konfigurieren und Verwalten der Azure Active Directory-Authentifizierung mit SQL](authentication-aad-configure.md) finden Sie außerdem Informationen zur Authentifizierung mithilfe von Azure AD.
 
 > [!NOTE]
-> Datenbankbenutzer (mit Ausnahme von Administratoren) können nicht über das Azure-Portal erstellt werden. Azure RBAC-Rollen werden nicht an SQL-basierte Server, Datenbanken oder Data Warehouses weitergegeben. Sie dienen lediglich zur Verwaltung von Azure-Ressourcen und gelten nicht für Datenbankberechtigungen.
+> Datenbankbenutzer (mit Ausnahme von Administratoren) können nicht über das Azure-Portal erstellt werden. Azure-Rollen werden nicht an SQL-basierte Server, Datenbanken oder Data Warehouses weitergegeben. Sie dienen lediglich zur Verwaltung von Azure-Ressourcen und gelten nicht für Datenbankberechtigungen.
 >
 > So gewährt etwa die Rolle *SQL Server-Mitwirkender* keinen Zugriff für die Verbindungsherstellung mit einer Datenbank oder einem Data Warehouse. Die Berechtigung muss mithilfe von T-SQL-Anweisungen direkt in der Datenbank erteilt werden.
 

@@ -8,12 +8,12 @@ ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 07/14/2020
-ms.openlocfilehash: 18204777a8e61b577b257b67cdd12bed1a5534fa
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: b9507e500282afbdfba5cedd5420974aa8b3ade8
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86529623"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87554021"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-service-in-the-portal"></a>Schnellstart: Erstellen eines Azure Cognitive Search-Diensts im Portal
 
@@ -30,8 +30,8 @@ Bevorzugen Sie PowerShell? Verwenden Sie die Azure Resource Manager-[Dienstvorla
 Die folgenden Diensteigenschaften sind für die Lebensdauer des Diensts festgelegt, und ihre Änderung erfordert einen neuen Dienst. Da sie festgelegt sind, sollten Sie beim Ausfüllen der einzelnen Eigenschaften ihre Auswirkungen auf die Nutzung berücksichtigen:
 
 * Der Dienstname wird Teil des URL-Endpunkts. (Hilfreiche Informationen zu Dienstnamen finden Sie unter [Benennen des Diensts](#name-the-service).)
-* Der Tarif [wirkt sich auf die Abrechnung aus](search-sku-tier.md) und legt eine Obergrenze für die Kapazität fest.
-* Die Dienstregion kann die Verfügbarkeit bestimmter Szenarien bestimmen. Wenn Sie an Knowledge Mining und KI-Anreicherung interessiert sind, benötigen Sie Cognitive Services und ggf. Azure Machine Learning in derselben Region wie Azure Cognitive Search.
+* Der Tarif [wirkt sich auf die Abrechnung aus](search-sku-tier.md) und legt eine Obergrenze für die Kapazität fest. Einige Features sind im Free-Tarif nicht verfügbar.
+* Die Dienstregion kann die Verfügbarkeit bestimmter Szenarien bestimmen. Wenn Sie [Features für hohe Sicherheit](search-security-overview.md) oder [KI-Anreicherung](cognitive-search-concept-intro.md) benötigen, müssen Sie Azure Cognitive Search in derselben Region wie andere Dienste oder in Regionen platzieren, in denen das betreffende Feature bereitgestellt wird. 
 
 ## <a name="subscribe-free-or-paid"></a>Abonnieren (kostenlos oder kostenpflichtig)
 
@@ -51,7 +51,7 @@ Alternativ dazu können Sie Ihre [Vorteile für MSDN-Abonnenten aktivieren](http
 
 ## <a name="choose-a-subscription"></a>Wählen Sie ein Abonnement.
 
-Falls Sie über mehrere Abonnements verfügen, wählen Sie eines für Ihren Suchdienst aus.
+Falls Sie über mehrere Abonnements verfügen, wählen Sie eines für Ihren Suchdienst aus. Wenn Sie [doppelte Verschlüsselung](search-security-overview.md#double-encryption) oder andere Features implementieren, die von verwalteten Dienstidentitäten abhängen, wählen Sie das gleiche Abonnement aus, das für Azure Key Vault oder andere Dienste verwendet wird, für die verwaltete Identitäten genutzt werden.
 
 ## <a name="set-a-resource-group"></a>Festlegen einer Ressourcengruppe
 
@@ -89,6 +89,8 @@ Azure Cognitive Search ist in den meisten Region verfügbar. Sie finden die List
 
 > [!Note]
 > „Indien, Mitte“ und „Vereinigte Arabische Emirate, Norden“ sind zurzeit für neue Dienste nicht verfügbar. Dienste, die bereits in diesen Regionen bereitgestellt sind, können ohne Einschränkungen hochskaliert werden, und Ihr Dienst wird in dieser Region vollständig unterstützt. Die Einschränkungen sind vorübergehend und betreffen nur neue Dienste. Wenn die Einschränkungen nicht mehr gelten, wird dieser Hinweis entfernt.
+>
+> Doppelte Verschlüsselung ist nur in bestimmten Regionen verfügbar. Weitere Informationen finden Sie unter [Doppelte Verschlüsselung](search-security-overview.md#double-encryption).
 
 ### <a name="requirements"></a>Requirements (Anforderungen)
 

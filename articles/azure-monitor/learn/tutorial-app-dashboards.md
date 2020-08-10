@@ -7,16 +7,18 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 07/3/2019
 ms.custom: mvc
-ms.openlocfilehash: a08e00b2debce970bdbd385b785806c8636e5946
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 706ae5a6c93468da9a65293c1bb4eefb136b938d
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87318418"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87553273"
 ---
 # <a name="create-custom-kpi-dashboards-using-azure-application-insights"></a>Erstellen benutzerdefinierter KPI-Dashboards mithilfe von Azure Application Insights
 
-Sie können mehrere Dashboards im Azure-Portal erstellen, wobei jedes Kacheln enthält, die Daten aus mehreren Azure-Ressourcen in verschiedenen Ressourcengruppen und Abonnements visualisieren.  Außerdem lassen sich verschiedene Diagramme und Ansichten aus Azure Application Insights anheften, um benutzerdefinierte Dashboards zu erstellen, mit denen Sie einen vollständigen Überblick über die Integrität und Leistung der Anwendung erhalten. Dieses Tutorial führt Sie durch die Erstellung eines benutzerdefinierten Dashboards, das mehrere Daten- und Visualisierungstypen aus Azure Application Insights enthält.  Folgendes wird vermittelt:
+Sie können mehrere Dashboards im Azure-Portal erstellen, wobei jedes Kacheln enthält, die Daten aus mehreren Azure-Ressourcen in verschiedenen Ressourcengruppen und Abonnements visualisieren.  Außerdem lassen sich verschiedene Diagramme und Ansichten aus Azure Application Insights anheften, um benutzerdefinierte Dashboards zu erstellen, mit denen Sie einen vollständigen Überblick über die Integrität und Leistung der Anwendung erhalten. Dieses Tutorial führt Sie durch die Erstellung eines benutzerdefinierten Dashboards, das mehrere Daten- und Visualisierungstypen aus Azure Application Insights enthält.
+
+ Folgendes wird vermittelt:
 
 > [!div class="checklist"]
 > * Erstellen eines benutzerdefinierten Dashboards in Azure
@@ -25,13 +27,14 @@ Sie können mehrere Dashboards im Azure-Portal erstellen, wobei jedes Kacheln en
 > * Hinzufügen eines benutzerdefinierten Metrikdiagramms in Application Insights zum Dashboard
 > * Hinzufügen der Ergebnisse einer Protokolle (Analytics)-Abfrage zum Dashboard
 
-
-
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Für dieses Tutorial benötigen Sie Folgendes:
 
 - Stellen Sie eine .NET-Anwendung in Azure bereit, und [aktivieren Sie das Application Insights SDK](../app/asp-net.md).
+
+> [!NOTE]
+> Die erforderlichen Berechtigungen für die Verwendung von Dashboards werden im Artikel mit [grundlegenden Informationen zur Zugriffssteuerung für Dashboards](https://docs.microsoft.com/azure/azure-portal/azure-portal-dashboard-share-access#understanding-access-control-for-dashboards) erläutert.
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim Azure-Portal an.

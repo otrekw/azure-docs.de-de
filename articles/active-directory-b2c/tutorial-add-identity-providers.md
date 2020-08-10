@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 07/08/2019
+ms.date: 07/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 746c406c4e6d458f699eb844156190e47d5c7a26
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1bdb7637624a1da5270eb1cba49e9f66e5042ccf
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85384905"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87482004"
 ---
 # <a name="tutorial-add-identity-providers-to-your-applications-in-azure-active-directory-b2c"></a>Tutorial: Hinzufügen von Identitätsanbietern zu Ihren Anwendungen in Azure Active Directory B2C
 
@@ -133,7 +133,7 @@ Nach der Erstellung der Anwendung für den betreffenden Identitätsanbieter füg
 
 In dem Tutorial, das Sie im Rahmen der Voraussetzungen abgeschlossen haben, haben Sie einen Benutzerflow mit dem Namen *B2C_1_signupsignin1* für die Registrierung und Anmeldung erstellt. In diesem Abschnitt fügen Sie die Identitätsanbieter dem Benutzerflow *B2C_1_signupsignin1* hinzu.
 
-1. Wählen Sie **Benutzerflows (Richtlinien)** und dann den Benutzerflow *B2C_1_signupsignin1* aus.
+1. Wählen Sie **Benutzerflows** und dann den Benutzerflow *B2C_1_signupsignin1* aus.
 2. Wählen Sie **Identitätsanbieter** und dann die von Ihnen hinzugefügten Identitätsanbieter **Facebook** und **Contoso Azure AD** aus.
 3. Wählen Sie **Speichern** aus.
 

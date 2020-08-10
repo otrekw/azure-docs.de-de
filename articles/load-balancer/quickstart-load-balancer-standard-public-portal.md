@@ -15,14 +15,14 @@ ms.workload: infrastructure-services
 ms.date: 07/17/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: f9d736098e42bf5ca07eca0cb952275c5e39c2a9
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 1864ce5a3c1b5b0b2e0cfe757e66fca2074b764c
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87125189"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475804"
 ---
-# <a name="quickstart-create-a-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>Schnellstart: Erstellen eines Lastenausgleichs für virtuelle Computer über das Azure-Portal
+# <a name="quickstart-create-a-public-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>Schnellstart: Erstellen eines öffentlichen Lastenausgleichs für den Lastenausgleich virtueller Computer über das Azure-Portal
 
 Beginnen Sie mit der Verwendung von Azure Load Balancer, indem Sie einen öffentlichen Lastenausgleich und drei virtuelle Computer über das Azure-Portal erstellen.
 
@@ -36,7 +36,7 @@ Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim 
 
 ---
 
-# <a name="option-1-default-create-a-load-balancer-standard-sku"></a>[Option 1 (Standard): Erstellen eines Lastenausgleichs (Standard-SKU)](#tab/option-1-create-load-balancer-standard)
+# <a name="option-1-default-create-a-public-load-balancer-standard-sku"></a>[Option 1 (Standard): Erstellen eines öffentlichen Lastenausgleichs (Standard-SKU)](#tab/option-1-create-load-balancer-standard)
 
 >[!NOTE]
 >Ein Lastenausgleich mit Standard-SKU wird für Produktionsworkloads empfohlen.  Weitere Informationen zu SKUs finden Sie unter **[Azure Load Balancer-SKUs](skus.md)** .
@@ -76,7 +76,7 @@ In diesem Abschnitt wird Folgendes konfiguriert:
 
 * Lastenausgleichseinstellungen für einen Back-End-Adresspool
 * Ein Integritätstest
-* Eine Lastenausgleichsregel und eine automatische Ausgangsregel
+* Eine Lastenausgleichsregel
 
 ### <a name="create-a-backend-pool"></a>Erstellen eines Back-End-Pools
 
@@ -281,7 +281,7 @@ Weitere Informationen zu ausgehenden Verbindungen finden Sie unter [Ausgehende V
 
 8. Wählen Sie **Speichern** aus.
 
-# <a name="option-2-create-a-load-balancer-basic-sku"></a>[Option 2: Erstellen eines Lastenausgleichs (Basic-SKU)](#tab/option-1-create-load-balancer-basic)
+# <a name="option-2-create-a-public-load-balancer-basic-sku"></a>[Option 2: Erstellen eines öffentlichen Lastenausgleichs (Basic-SKU)](#tab/option-1-create-load-balancer-basic)
 
 >[!NOTE]
 >Ein Lastenausgleich mit Standard-SKU wird für Produktionsworkloads empfohlen.  Weitere Informationen zu SKUs finden Sie unter **[Azure Load Balancer-SKUs](skus.md)** .
@@ -468,8 +468,9 @@ Diese virtuellen Computer werden dem Back-End-Pool des zuvor erstellten Lastenau
 5. Wählen Sie die Registerkarte **Verwaltung** oder **Weiter** > **Verwaltung**.
 
 6. Wählen Sie auf der Registerkarte **Verwaltung** die folgenden Werte aus, oder geben Sie sie ein:
+    
     | Einstellung | Wert |
-    |-|-|
+    |---|---|
     | **Überwachung** | |
     | Startdiagnose | Wählen Sie **Aus** aus. |
 
@@ -484,6 +485,24 @@ Diese virtuellen Computer werden dem Back-End-Pool des zuvor erstellten Lastenau
     | Name |  **myVM2** |**myVM3**|
     | Verfügbarkeitsgruppe| Wählen Sie **myAvailabilitySet** aus. | Wählen Sie **myAvailabilitySet** aus.|
     | Netzwerksicherheitsgruppe | Wählen Sie die vorhandene Netzwerksicherheitsgruppe (**myNSG**) aus.| Wählen Sie die vorhandene Netzwerksicherheitsgruppe (**myNSG**) aus.|
+
+### <a name="add-virtual-machines-to-the-backend-pool"></a>Hinzufügen virtueller Computer zum Back-End-Pool
+
+Die in den vorherigen Schritten erstellten virtuellen Computer müssen dem Back-End-Pool von **myLoadBalancer** hinzugefügt werden.
+
+1. Wählen Sie im linken Menü **Alle Dienste** > **Alle Ressourcen** und anschließend in der Ressourcenliste den Eintrag **myLoadBalancer** aus.
+
+2. Wählen Sie unter **Einstellungen** die Option **Back-End-Pools** und anschließend **myBackendPool** aus.
+
+3. Wählen Sie unter **Verknüpft mit** die Option **Virtuelle Computer** aus.
+
+4. Wählen Sie im Abschnitt **Virtuelle Computer** die Option **+ Hinzufügen** aus.
+
+5. Aktivieren Sie die Kontrollkästchen neben **myVM1**, **myVM2** und **myVM3**.
+
+6. Wählen Sie **Hinzufügen**.
+
+7. Wählen Sie **Speichern** aus.
 
 ---
 

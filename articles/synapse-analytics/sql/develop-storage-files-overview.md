@@ -9,14 +9,14 @@ ms.subservice: sql
 ms.date: 04/19/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: d7f990b059346c4c782ca923e663997317c4df16
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3c33e2152fc120d406886d89adda26603126a8ba
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87046881"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87483551"
 ---
-# <a name="accessing-external-storage-in-synapse-sql-on-demand"></a>Zugreifen auf externen Speicher in Synapse SQL (On-Demand)
+# <a name="access-external-storage-in-synapse-sql-on-demand"></a>Zugreifen auf externen Speicher in Synapse SQL (On-Demand)
 
 In diesem Dokument wird beschrieben, wie Benutzer Daten aus den Dateien lesen können, die in Azure Storage in Synapse SQL (On-Demand) gespeichert sind. Benutzer haben die folgenden Optionen, um auf Speicher zuzugreifen:
 
@@ -59,7 +59,7 @@ Falls keine serverbezogenen Anmeldeinformationen vorhanden sind, die mit der URL
 > [!NOTE]
 > Diese Version von OPENROWSET ist auf eine schnelle und einfache Datenuntersuchung per Standardauthentifizierung ausgelegt. Verwenden Sie OPENROWSET mit DATASOURCE wie im nächsten Abschnitt beschrieben, um den Identitätswechsel oder die verwaltete Identität zu nutzen.
 
-### <a name="querying-data-sources-using-openrowset"></a>Abfragen von Datenquellen mit OPENROWSET
+### <a name="query-data-sources-using-openrowset"></a>Abfragen von Datenquellen mit OPENROWSET
 
 Mit OPENROWSET können Benutzer die Dateien abfragen, die sich auf einer externen Datenquelle befinden:
 
@@ -91,7 +91,7 @@ Der Aufrufer muss über eine der folgenden Berechtigungen verfügen, um die Funk
   - Mit `ADMINISTER DATABASE BULK OPERATIONS` kann der Datenbankbenutzer die Funktion OPENROWSET ausführen.
 - REFERENCES DATABASE SCOPED CREDENTIAL für die Anmeldeinformationen, auf die in EXTERNAL DATA SOURCE verwiesen wird.
 
-#### <a name="accessing-anonymous-data-sources"></a>Zugreifen auf anonyme Datenquellen
+#### <a name="access-anonymous-data-sources"></a>Zugreifen auf anonyme Datenquellen
 
 Benutzer können die externe Datenquelle (EXTERNAL DATA SOURCE) ohne Anmeldeinformationen erstellen, mit denen auf öffentlich zugänglichen Speicher verwiesen wird, ODER die Azure AD-Pass-Through-Authentifizierung verwenden:
 
@@ -132,7 +132,7 @@ CREATE EXTERNAL DATA SOURCE AzureDataLakeStore
 
 Mit DATABASE SCOPED CREDENTIAL wird angegeben, wie auf die Dateien auf der referenzierten Datenquelle zugegriffen wird.
 
-### <a name="reading-external-files-with-external-table"></a>Lesen von externen Dateien mit EXTERNAL TABLE
+### <a name="read-external-files-with-external-table"></a>Lesen von externen Dateien mit EXTERNAL TABLE
 
 Mit EXTERNAL TABLE können Sie Daten aus den Dateien lesen, auf die über die Datenquelle verwiesen wird, indem Sie die SQL-SELECT-Standardanweisung verwenden:
 

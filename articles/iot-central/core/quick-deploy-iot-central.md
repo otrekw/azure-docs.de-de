@@ -3,18 +3,18 @@ title: Erstellen einer Azure IoT Central-Anwendung | Microsoft-Dokumentation
 description: Erstellen Sie eine neue Azure IoT Central-Anwendung. Erstellen Sie die Anwendung entweder im Free-Tarif oder in einem der Standard-Tarife.
 author: viv-liu
 ms.author: viviali
-ms.date: 02/12/2020
+ms.date: 07/30/2020
 ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: corywink
-ms.openlocfilehash: b670776804c9758774bf216052254148f063e7da
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.openlocfilehash: 4b939505f807385f235def2606d0f29564f5d08f
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81758148"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87552576"
 ---
 # <a name="create-an-azure-iot-central-application"></a>Erstellen einer Azure IoT Central-Anwendung
 
@@ -43,8 +43,11 @@ So erstellen Sie eine neue Azure IoT Central-Anwendung über die Vorlage **Benut
     ![Abrechnungsinformationen zu Azure IoT Central](media/quick-deploy-iot-central/iotcentralcreate-billinginfo.png)
 
     > [!NOTE]
-    > Wenn Sie auf der vorherigen Seite **Benutzerdefinierte App** ausgewählt haben, wird das Dropdownmenü **Anwendungsvorlage** angezeigt. Hier können Sie zwischen benutzerdefinierten Vorlagen und Legacyvorlagen wechseln. Möglicherweise werden auch andere Vorlagen angezeigt, die für Ihre Organisation zur Verfügung gestellt wurden.
+    > Wenn Sie auf der vorherigen Seite **Benutzerdefinierte App** ausgewählt haben, wird das Dropdownmenü **Anwendungsvorlage** angezeigt. Im Dropdownmenü werden unter Umständen andere Vorlagen angezeigt, die von Ihrer Organisation für Sie zur Verfügung gestellt wurden. 
 
+    >[!IMPORTANT]
+    >Die Vorlage **Benutzerdefinierte Anwendung (veraltet)** (V2) wurde eingestellt, da alle Funktionen, die zuvor in der Legacyanwendungsvorlage verfügbar waren, nun in der aktuellen Vorlage **Benutzerdefinierte Anwendung** (V3) zur Verfügung stehen. 
+    
 1. Erstellen Sie die Anwendung entweder im Tarif für die kostenlose 7-Tage-Testversion oder in einem der Standard-Tarife.
 
     - Im Tarif *Free* erstellte Anwendungen sind sieben Tage lang kostenlos und unterstützen bis zu fünf Geräte. Sie können bis zum Ablauftermin jederzeit in Anwendungen mit Standard-Tarif konvertiert werden.

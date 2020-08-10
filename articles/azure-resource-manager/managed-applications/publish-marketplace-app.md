@@ -5,12 +5,12 @@ author: tfitzmac
 ms.topic: tutorial
 ms.date: 07/17/2019
 ms.author: tomfitz
-ms.openlocfilehash: dcd036f09982cba8271ed6057a167eb7440303a9
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: a5e2a3569c70404d64d24ecfc35a8258ea864a4f
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86054490"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87480423"
 ---
 # <a name="tutorial-publish-azure-managed-applications-in-the-marketplace"></a>Tutorial: Veröffentlichen von verwalteten Azure-Anwendungen im Marketplace
 
@@ -98,7 +98,7 @@ Eine SKU wird im Marketplace unterhalb des übergeordneten Angebots angezeigt. S
 
      Die verfügbaren Aktionen finden Sie unter [Vorgänge für Azure Resource Manager-Ressourcenanbieter](../../role-based-access-control/resource-provider-operations.md). Beispiel: Wenn Sie Kunden das Neustarten virtueller Computer erlauben möchten, fügen Sie den zulässigen Aktionen `Microsoft.Compute/virtualMachines/restart/action` hinzu. Die Aktion `*/read` ist automatisch zulässig, sodass Sie diese Einstellung nicht aufnehmen müssen.
    * **PrincipalId:** Bei dieser Eigenschaft handelt es sich um den Azure AD-Bezeichner (Azure Active Directory) eines Benutzers, einer Benutzergruppe oder einer Anwendung, dem bzw. der Zugriff auf die Ressourcen im Kundenabonnement gewährt wird. Die Berechtigungen werden in der Rollendefinition beschrieben.
-   * **Rollendefinition:** Bei dieser Eigenschaft handelt es sich um eine Liste aller integrierten Rollen der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC), die von Azure AD bereitgestellt werden. Sie können die Rolle auswählen, die am besten für die Verwaltung der Ressourcen im Auftrag des Kunden geeignet ist.
+   * **Rollendefinition:** Diese Eigenschaft ist eine Liste aller integrierten Azure-Rollen, die von Azure AD bereitgestellt werden. Sie können die Rolle auswählen, die am besten für die Verwaltung der Ressourcen im Auftrag des Kunden geeignet ist.
    * **Richtlinieneinstellungen:** Wenden Sie eine [Azure-Richtlinie](../../governance/policy/overview.md) auf Ihre verwaltete Anwendung an, um Complianceanforderungen für die bereitgestellten Lösungen anzugeben. Wählen Sie aus den verfügbaren Optionen die anzuwendenden Richtlinien aus. Geben Sie als **Richtlinienparameter** eine JSON-Zeichenfolge mit den Parameterwerten an. Informationen zu Richtliniendefinitionen und zum Format der Parameterwerte finden Sie unter [Azure Policy-Beispiele](../../governance/policy/samples/index.md).
 
 Sie können mehrere Autorisierungen hinzufügen. Es wird empfohlen, eine AD-Benutzergruppe zu erstellen und die jeweilige ID unter **PrincipalId** anzugeben. Auf diese Weise können Sie der Benutzergruppe weitere Benutzer hinzufügen, ohne die SKU aktualisieren zu müssen.

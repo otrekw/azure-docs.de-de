@@ -1,14 +1,14 @@
 ---
 title: Übersicht über Azure Resource Graph
 description: Hier wird erläutert, wie der Azure Resource Graph-Dienst das komplexe bedarfsabhängige Abfragen von Ressourcen für Abonnements und Mandanten ermöglicht.
-ms.date: 06/29/2020
+ms.date: 07/25/2020
 ms.topic: overview
-ms.openlocfilehash: 9c15ff12f21c1d3d168828eae67de51069cdcada
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: 5a2be5e65ecd5590d992e1883f432c173660e78d
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85970602"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87541786"
 ---
 # <a name="what-is-azure-resource-graph"></a>Was ist Azure Resource Graph?
 
@@ -62,6 +62,10 @@ Um Resource Graph verwenden zu können, müssen Sie über die richtigen Rechte f
 > Ressource Graph verwendet die Abonnements, die für einen Prinzipal während der Anmeldung verfügbar sind. Um Ressourcen eines neuen Abonnements anzuzeigen, die während einer aktiven Sitzung hinzugefügt wurden, muss der Prinzipal den Kontext aktualisieren. Diese Aktion erfolgt nach dem Abmelden und erneuten Anmelden automatisch.
 
 Die Azure-Befehlszeilenschnittstelle und Azure PowerShell nutzen Abonnements, auf die der Benutzer Zugriff hat. Bei der direkten Verwendung der REST-API wird die Abonnementliste vom Benutzer bereitgestellt. Hat der Benutzer Zugriff auf eins der Abonnements in der Liste, werden die Abfrageergebnisse für die Abonnements zurückgegeben, auf die der Benutzer Zugriff hat. Dies ist das gleiche Verhalten wie beim Aufrufen von [Resource Groups - List](/rest/api/resources/resourcegroups/list) (Ressourcengruppen – Liste): Sie erhalten Ressourcengruppen, auf die Sie Zugriff haben, ohne Hinweis darauf, dass es sich um ein Teilergebnis handeln könnte. Sind in der Abonnementliste keine Abonnements vorhanden, für die der Benutzer über die entsprechenden Berechtigungen verfügt, lautet die Antwort _403_ (Verboten).
+
+> [!NOTE]
+> In der REST-API-**Vorschauversion** `2020-04-01-preview` wurde die Abonnementliste unter Umständen ausgelassen.
+> Wenn die Eigenschaften `subscriptions` und `managementGroupId` in der Anforderung nicht definiert sind, wird der Bereich (_scope_) auf den Mandanten festgelegt. Weitere Informationen finden Sie unter [Abfragebereich](./concepts/query-language.md#query-scope).
 
 ## <a name="throttling"></a>Drosselung
 

@@ -12,13 +12,12 @@ ms.date: 04/09/2019
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.custom: it-pro
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 249cdbef6214eb8c66da841d9eae817bcf794996
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: dce579596563855022f14bb2c07353b84d1e6127
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86055391"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87808370"
 ---
 # <a name="quickstart-view-the-list-of-applications-that-are-using-your-azure-active-directory-azure-ad-tenant-for-identity-management"></a>Schnellstart: Anzeigen der Liste mit den Anwendungen, von denen Ihr Azure AD-Mandant (Azure Active Directory) für die Identitätsverwaltung genutzt wird
 
@@ -68,11 +67,17 @@ So suchen Sie nach einer bestimmten Anwendung:
 3. Geben Sie die ersten Buchstaben eines Anwendungsnamens ein. Dieses Beispiel zeigt alle Anwendungen, die mit **Sales** beginnen.
     ![Beispiel: Anzeige aller Apps, die mit „Sales“ beginnen](media/view-applications-portal/search-by-prefix.png)
 
+
+> [!TIP]
+> Sie können die App-Verwaltung mithilfe der Graph-API automatisieren. Informationen hierzu finden Sie unter [Automatisieren einer SAML-basierten SSO-App-Konfiguration mit Microsoft Graph-API](https://docs.microsoft.com/graph/application-saml-sso-configure-api).
+
+
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+
+In dieser Schnellstartanleitung haben Sie keine neuen Ressourcen erstellt, sodass keine Bereinigung ausgeführt werden muss.
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-In dieser Schnellstartanleitung haben Sie erfahren, wie die Anwendungen in Ihrem Azure AD-Mandanten angezeigt werden. Sie haben gelernt, wie Sie die Liste der Anwendungen nach Anwendungstyp, -status und -sichtbarkeit filtern. Darüber hinaus haben Sie gelernt, wie Sie nach einer bestimmten Anwendung suchen.
-
-- [Hinzufügen einer App](add-application-portal.md)
-- [Konfigurieren einer App](add-application-portal-configure.md)
-- [Einrichten des einmaligen Anmeldens](add-application-portal-setup-sso.md)
-- [Löschen einer App](delete-application-portal.md)
+Im nächsten Artikel erfahren Sie, wie Sie Azure AD als Identitätsanbieter für eine App verwenden:
+> [!div class="nextstepaction"]
+> [Hinzufügen einer App](add-application-portal.md)

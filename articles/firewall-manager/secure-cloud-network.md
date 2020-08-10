@@ -5,14 +5,14 @@ services: firewall-manager
 author: vhorne
 ms.service: firewall-manager
 ms.topic: tutorial
-ms.date: 07/17/2020
+ms.date: 07/29/2020
 ms.author: victorh
-ms.openlocfilehash: 7634effd5d1ac46955addd723ee7c992eb820a57
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 458ebe14e77c7b190a5c4cdd9b408396589d5d27
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87084703"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420820"
 ---
 # <a name="tutorial-secure-your-virtual-hub-using-azure-firewall-manager"></a>Tutorial: Schützen Ihres virtuellen Hubs mit Azure Firewall Manager
 
@@ -108,7 +108,7 @@ Wiederholen Sie diesen Vorgang, um das virtuelle Netzwerk **Spoke-02** zu verbin
 
 ### <a name="configure-the-hub-and-spoke-routing"></a>Konfigurieren der Hub-and-Spoke-Routenplanung
 
-Öffnen Sie vom Azure-Portal aus eine Cloud Shell, und führen Sie die folgende Azure PowerShell aus, um das erforderliche Hub-and-Spoke-Routing zu konfigurieren.
+Öffnen Sie vom Azure-Portal aus eine Cloud Shell, und führen Sie die folgende Azure PowerShell aus, um das erforderliche Hub-and-Spoke-Routing zu konfigurieren. Bei Spoke-/Branch-Verbindungen mit Peering muss die Weitergabe auf **NONE** festgelegt werden. Dadurch wird die Any-to-Any-Kommunikation zwischen den Spokes verhindert und der Datenverkehr stattdessen mithilfe der Standardroute an die Firewall weitergeleitet.
 
 ```azurepowershell
 $noneRouteTable = Get-AzVHubRouteTable -ResourceGroupName fw-manager `

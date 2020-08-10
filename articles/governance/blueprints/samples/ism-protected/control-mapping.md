@@ -1,14 +1,14 @@
 ---
 title: 'Blaupausenbeispiel für ISM PROTECTED der australischen Regierung: Übersicht'
 description: Enthält eine Übersicht über das Blaupausenbeispiel für „ISM PROTECTED der australischen Regierung“. Dieses Blaupausenbeispiel unterstützt Kunden bei der Bewertung spezifischer ISM PROTECTED-Steuerungen.
-ms.date: 03/10/2020
+ms.date: 08/03/2020
 ms.topic: sample
-ms.openlocfilehash: d82598498fa7eb24ec2ea3f591d08ce8f9503b54
-ms.sourcegitcommit: 581aaca8956b1717b7bc1c1d7710c782c22e6320
+ms.openlocfilehash: 750cc5551f0bbf05e0da6ad41d46729231243f72
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2020
-ms.locfileid: "85517098"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87760429"
 ---
 # <a name="control-mapping-of-the-australian-government-ism-protected-blueprint-sample"></a>Steuerungszuordnung des Blaupausenbeispiels für „ISM PROTECTED der australischen Regierung“
 
@@ -106,10 +106,10 @@ Mit dieser Blaupause können Sie den Standort für die Bereitstellung aller Ress
 
 - Nicht eingeschränkten Netzwerkzugriff auf Speicherkonten überwachen
 - Service Fabric-Cluster sollten nur Azure Active Directory für die Clientauthentifizierung verwenden.
-- \[Vorschau\]: Überwachungsergebnisse von Linux-VMs anzeigen, die Remoteverbindungen über Konten ohne Kennwörter zulassen
-- \[Vorschau\]:  Erforderliche Komponenten zum Überwachen von Linux-VMs bereitstellen, die Remoteverbindungen über Konten ohne Kennwörter zulassen
-- \[Vorschau\]: Überwachungsergebnisse von Linux-VMs anzeigen, die Konten ohne Kennwörter verwenden
-- \[Vorschau\]: Erforderliche Komponenten für die Überwachung von Linux-VMs bereitstellen, die Konten ohne Kennwörter verwenden
+- Überwachungsergebnisse von Linux-VMs anzeigen, die Remoteverbindungen über Konten ohne Kennwörter zulassen
+- Erforderliche Komponenten zum Überwachen von Linux-VMs bereitstellen, die Remoteverbindungen über Konten ohne Kennwörter zulassen
+- Überwachungsergebnisse von Linux-VMs anzeigen, die Konten ohne Kennwörter verwenden
+- Erforderliche Komponenten für die Überwachung von Linux-VMs bereitstellen, die Konten ohne Kennwörter verwenden
 
 ### <a name="0974-multi-factor-authentication-is-used-to-authenticate-standard-users"></a>0974 Mehrstufige Authentifizierung wird verwendet, um Standardbenutzer zu authentifizieren
 
@@ -122,8 +122,8 @@ Mit dieser Blaupause können Sie den Standort für die Bereitstellung aller Ress
 
 ### <a name="0421-passphrases-used-for-single-factor-authentication-are-a-minimum-of-14-characters-with-complexity-ideally-as-4-random-words"></a>0421 Passphrases, die für die einstufige Authentifizierung verwendet werden, verfügen über mindestens 14 Zeichen und eine Komplexität, die idealerweise vier zufällige Wörter umfasst
 
-- \[Vorschau\]: Überwachungsergebnisse aus Windows-VM-Konfigurationen in „Sicherheitseinstellungen – Kontorichtlinien“ anzeigen
-- \[Vorschau\]: Erforderliche Komponenten für die Überwachung von Windows-VM-Konfigurationen in „Sicherheitseinstellungen – Kontorichtlinien“ bereitstellen
+- Überwachungsergebnisse aus Windows-VM-Konfigurationen in „Sicherheitseinstellungen – Kontorichtlinien“ anzeigen
+- Erforderliche Komponenten für die Überwachung von Windows-VM-Konfigurationen in „Sicherheitseinstellungen – Kontorichtlinien“ bereitstellen
 
 ## <a name="guidelines-for-system-management---system-administration"></a>Richtlinien für die Systemverwaltung: Systemverwaltung
 
@@ -147,7 +147,7 @@ Mit dieser Blaupause können Sie den Standort für die Bereitstellung aller Ress
 - Sicherheitsrisiken in SQL-Datenbanken sollten beseitigt werden.
 - Für Ihre SQL Server-Instanzen muss eine Sicherheitsrisikobewertung aktiviert sein.
 - Bewertung von Sicherheitsrisiken für verwaltete SQL-Instanzen aktivieren
-- \[Vorschau\]: Die Sicherheitsrisikobewertung muss auf VMs aktiviert sein
+- Sicherheitsrisikobewertung für Computer muss aktiviert sein.
 - Sicherheitsrisiken in der Sicherheitskonfiguration von VM-Skalierungsgruppen sollten beseitigt werden.
 - Sicherheitsrisiken sollten durch eine Lösung zur Sicherheitsrisikobewertung beseitigt werden.
 - Sicherheitsrisiken in der Sicherheitskonfiguration für Ihre Computer sollten beseitigt werden.
@@ -159,7 +159,7 @@ Mit dieser Blaupause können Sie den Standort für die Bereitstellung aller Ress
 - Sicherheitsrisiken in SQL-Datenbanken sollten beseitigt werden.
 - Für Ihre SQL Server-Instanzen muss eine Sicherheitsrisikobewertung aktiviert sein.
 - Bewertung von Sicherheitsrisiken für verwaltete SQL-Instanzen aktivieren
-- \[Vorschau\]: Die Sicherheitsrisikobewertung muss auf VMs aktiviert sein
+- Die Sicherheitsrisikobewertung muss auf VMs aktiviert sein
 - Sicherheitsrisiken in der Sicherheitskonfiguration von VM-Skalierungsgruppen sollten beseitigt werden.
 - Sicherheitsrisiken sollten durch eine Lösung zur Sicherheitsrisikobewertung beseitigt werden.
 - Sicherheitsrisiken in der Sicherheitskonfiguration für Ihre Computer sollten beseitigt werden.
@@ -171,7 +171,7 @@ Mit dieser Blaupause können Sie den Standort für die Bereitstellung aller Ress
 - Sicherheitsrisiken in SQL-Datenbanken sollten beseitigt werden.
 - Für Ihre SQL Server-Instanzen muss eine Sicherheitsrisikobewertung aktiviert sein.
 - Bewertung von Sicherheitsrisiken für verwaltete SQL-Instanzen aktivieren
-- \[Vorschau\]: Die Sicherheitsrisikobewertung muss auf VMs aktiviert sein
+- Die Sicherheitsrisikobewertung muss auf VMs aktiviert sein
 - Sicherheitsrisiken in der Sicherheitskonfiguration von VM-Skalierungsgruppen sollten beseitigt werden.
 - Sicherheitsrisiken sollten durch eine Lösung zur Sicherheitsrisikobewertung beseitigt werden.
 - Sicherheitsrisiken in der Sicherheitskonfiguration für Ihre Computer sollten beseitigt werden.
@@ -183,7 +183,7 @@ Mit dieser Blaupause können Sie den Standort für die Bereitstellung aller Ress
 - Sicherheitsrisiken in SQL-Datenbanken sollten beseitigt werden.
 - Für Ihre SQL Server-Instanzen muss eine Sicherheitsrisikobewertung aktiviert sein.
 - Bewertung von Sicherheitsrisiken für verwaltete SQL-Instanzen aktivieren
-- \[Vorschau\]: Die Sicherheitsrisikobewertung muss auf VMs aktiviert sein
+- Die Sicherheitsrisikobewertung muss auf VMs aktiviert sein
 - Sicherheitsrisiken in der Sicherheitskonfiguration von VM-Skalierungsgruppen sollten beseitigt werden.
 - Sicherheitsrisiken sollten durch eine Lösung zur Sicherheitsrisikobewertung beseitigt werden.
 - Sicherheitsrisiken in der Sicherheitskonfiguration für Ihre Computer sollten beseitigt werden.
@@ -195,7 +195,7 @@ Mit dieser Blaupause können Sie den Standort für die Bereitstellung aller Ress
 - Sicherheitsrisiken in SQL-Datenbanken sollten beseitigt werden.
 - Für Ihre SQL Server-Instanzen muss eine Sicherheitsrisikobewertung aktiviert sein.
 - Bewertung von Sicherheitsrisiken für verwaltete SQL-Instanzen aktivieren
-- \[Vorschau\]: Die Sicherheitsrisikobewertung muss auf VMs aktiviert sein
+- Die Sicherheitsrisikobewertung muss auf VMs aktiviert sein
 - Sicherheitsrisiken in der Sicherheitskonfiguration von VM-Skalierungsgruppen sollten beseitigt werden.
 - Sicherheitsrisiken sollten durch eine Lösung zur Sicherheitsrisikobewertung beseitigt werden.
 - Sicherheitsrisiken in der Sicherheitskonfiguration für Ihre Computer sollten beseitigt werden.
@@ -207,7 +207,7 @@ Mit dieser Blaupause können Sie den Standort für die Bereitstellung aller Ress
 - Sicherheitsrisiken in SQL-Datenbanken sollten beseitigt werden.
 - Für Ihre SQL Server-Instanzen muss eine Sicherheitsrisikobewertung aktiviert sein.
 - Bewertung von Sicherheitsrisiken für verwaltete SQL-Instanzen aktivieren
-- \[Vorschau\]: Die Sicherheitsrisikobewertung muss auf VMs aktiviert sein
+- Die Sicherheitsrisikobewertung muss auf VMs aktiviert sein
 - Sicherheitsrisiken in der Sicherheitskonfiguration von VM-Skalierungsgruppen sollten beseitigt werden.
 - Sicherheitsrisiken sollten durch eine Lösung zur Sicherheitsrisikobewertung beseitigt werden.
 - Sicherheitsrisiken in der Sicherheitskonfiguration für Ihre Computer sollten beseitigt werden.
@@ -229,8 +229,8 @@ Mit dieser Blaupause können Sie den Standort für die Bereitstellung aller Ress
 ### <a name="0582-the-following-events-are-logged-for-operating-systems-access-to-important-data-and-processes-application-crashes-and-any-error-messages-attempts-to-use-special-privileges-changes-to-accounts-changes-to-security-policy-changes-to-system-configurations-domain-name-system-dns-and-hypertext-transfer-protocol-http-requests-failed-attempts-to-access-data-and-system-resources-service-failures-and-restarts-system-startup-and-shutdown-transfer-of-data-to-external-media-user-or-group-management-use-of-special-privileges"></a>0582 Für Betriebssysteme werden die folgenden Ereignisse protokolliert: Zugriff auf wichtige Daten und Prozesse, Anwendungsabstürze und alle Fehlermeldungen, versuchte Nutzung von besonderen Privilegien, Änderungen von Konten, Änderungen von Sicherheitsrichtlinien, Änderungen von Systemkonfigurationen, DNS- (Domain Name System) und HTTP-Anforderungen (Hypertext Transfer Protocol), fehlgeschlagene Zugriffsversuche auf Daten und Systemressourcen, Dienstausfälle und -neustarts, Starten und Herunterfahren des Systems, Übertragung von Daten auf externe Medien, Benutzer- oder Gruppenverwaltung, Nutzung von besonderen Privilegien
 
 - \[Vorschau\]: Bereitstellung des Log Analytics-Agents überwachen – VM-Image (Betriebssystem) nicht aufgelistet
-- \[Vorschau\]: Bereitstellung des Log Analytics-Agents in VM-Skalierungsgruppen überwachen – VM-Image (Betriebssystem) nicht aufgelistet
-- \[Vorschau\]: Überwachen des Log Analytics-Arbeitsbereichs für VM – Berichtskonflikt
+- Bereitstellung des Log Analytics-Agents in VM-Skalierungsgruppen überwachen – VM-Image (Betriebssystem) nicht aufgelistet
+- Überwachen des Log Analytics-Arbeitsbereichs für VM – Berichtskonflikt
 - Überwachen der Diagnoseeinstellung
 
 ### <a name="1537-the-following-events-are-logged-for-databases-access-to-particularly-important-information-addition-of-new-users-especially-privileged-users-any-query-containing-comments-any-query-containing-multiple-embedded-queries-any-query-or-database-alerts-or-failures-attempts-to-elevate-privileges-attempted-access-that-is-successful-or-unsuccessful-changes-to-the-database-structure-changes-to-user-roles-or-database-permissions-database-administrator-actions-database-logons-and-logoffs-modifications-to-data-use-of-executable-commands"></a>1537 Für Datenbanken werden die folgenden Ereignisse protokolliert: Zugriff auf besonders wichtige Informationen, Hinzufügung neuer Benutzer, Benutzer mit speziellen Privilegien, Abfragen mit Kommentaren, Abfragen mit mehreren eingebetteten Abfragen, Warnungen oder Fehler für Abfragen oder Datenbanken, Versuche zur Rechteerweiterung, erfolgreiche und nicht erfolgreiche Zugriffsversuche, Änderungen der Datenbankstruktur, Änderungen von Benutzerrollen oder Datenbankberechtigungen, Aktionen von Datenbankadministratoren, Datenbankan- und -abmeldungen, Änderungen von Daten, Verwendung von ausführbaren Befehlen
@@ -246,7 +246,7 @@ Mit dieser Blaupause können Sie den Standort für die Bereitstellung aller Ress
 - Sicherheitsrisiken in SQL-Datenbanken sollten beseitigt werden.
 - Für Ihre SQL Server-Instanzen muss eine Sicherheitsrisikobewertung aktiviert sein.
 - Bewertung von Sicherheitsrisiken für verwaltete SQL-Instanzen aktivieren
-- \[Vorschau\]: Die Sicherheitsrisikobewertung muss auf VMs aktiviert sein
+- Die Sicherheitsrisikobewertung muss auf VMs aktiviert sein
 - Sicherheitsrisiken in der Sicherheitskonfiguration von VM-Skalierungsgruppen sollten beseitigt werden.
 - Sicherheitsrisiken sollten durch eine Lösung zur Sicherheitsrisikobewertung beseitigt werden.
 - Sicherheitsrisiken in der Sicherheitskonfiguration für Ihre Computer sollten beseitigt werden.

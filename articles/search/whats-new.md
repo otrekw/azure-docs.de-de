@@ -6,19 +6,26 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
-ms.date: 07/15/2020
-ms.openlocfilehash: 8c6486a3a64dcbe3dd37770844296da73724f3a3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/01/2020
+ms.custom: references_regions
+ms.openlocfilehash: 60efc645b1b5824306c1d4aa3e763eb9d2bc745d
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87076343"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87553925"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Neuerungen in der kognitiven Azure-Suche
 
 Informieren Sie sich über die Neuerungen im Dienst. Legen Sie ein Lesezeichen für diese Seite an, um über den Dienst auf dem Laufenden zu bleiben.
 
 ## <a name="feature-announcements-in-2020"></a>Featureankündigungen 2020
+
+### <a name="august-2020"></a>August 2020
+
+|Funktion&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Category | BESCHREIBUNG | Verfügbarkeit  |
+|---------|------------------|-------------|---------------|
+| [Doppelte Verschlüsselung](search-security-overview.md#encryption) | Sicherheit | Aktivieren Sie die doppelte Verschlüsselung auf Speicherebene, indem Sie die CMK-Verschlüsselung (Customer Managed Key, kundenseitig verwalteter Schlüssel) für neue Suchdienste konfigurieren. Erstellen Sie einen neuen Dienst, [konfigurieren sie kundenseitig verwaltete Schlüssel, und wenden Sie sie auf Indizes oder Synonymzuordnungen an](search-security-manage-encryption-keys.md), und profitieren Sie von doppelter Verschlüsselung für diesen Inhalt. | Allgemein verfügbar für alle Suchdienste, die nach dem 1. August 2020 in den folgenden Regionen erstellt wurden: USA, Westen 2; USA, Osten; USA, Süden-Mitte; US Gov Virginia; US Gov Arizona. Verwenden Sie zum Erstellen des Diensts das Portal, die Verwaltungs-REST-APIs oder SDKs. |
 
 ### <a name="july-2020"></a>Juli 2020
 

@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 05/29/2019
 ms.author: jafreebe
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: ca3c7d6bc6621c4b82a44431ae313384c1653f79
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 0ae304763718f649d7895394d67c2aec307f14af
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87324232"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87799989"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service-on-windows"></a>Schnellstart: Erstellen einer Java-App in Azure App Service für Windows
 
@@ -49,13 +49,19 @@ cd helloworld
 
 ## <a name="configure-the-maven-plugin"></a>Konfigurieren des Maven-Plug-Ins
 
-Der Prozess zur Bereitstellung in Azure App Service kann Ihre Azure-Anmeldeinformation automatisch aus der Azure CLI übernehmen. Wenn Sie Azure CLI nicht installiert haben, werden Sie vom Maven-Plug-In mit OAuth oder der Geräteanmeldung angemeldet. Überprüfen Sie bei Bedarf die Details zur [Authentifizierung mit Maven-Plug-Ins](https://github.com/microsoft/azure-maven-plugins/wiki/Authentication).
+Der Prozess zur Bereitstellung in Azure App Service kann Ihre Azure-Anmeldeinformation automatisch aus der Azure CLI übernehmen. Wenn Sie die Azure CLI nicht lokal installiert haben, werden Sie vom Maven-Plug-In mit OAuth oder der Geräteanmeldung angemeldet. Überprüfen Sie bei Bedarf die Details zur [Authentifizierung mit Maven-Plug-Ins](https://github.com/microsoft/azure-maven-plugins/wiki/Authentication).
 
-Sie können den folgenden maven-Befehl an der Eingabeaufforderung ausführen, um die Bereitstellung zu konfigurieren, indem Sie im ersten Schritt für das **Windows**-Betriebssystem **‚2‘** auswählen, dann die Standardkonfigurationen akzeptieren, indem Sie die **EINGABETASTE** drücken, bis die Eingabeaufforderung **Bestätigen [ja/nein]** angezeigt wird. Drücken Sie dann **‚j‘** , um die Konfiguration abzuschließen. 
-
+Sie können den folgenden Maven-Befehl ausführen, um die Bereitstellung zu konfigurieren.
 ```bash
 mvn com.microsoft.azure:azure-webapp-maven-plugin:1.9.1:config
 ```
+
+Sie werden zur Auswahl der folgenden Angaben aufgefordert: 
+* **OS(Default: `linux`)**
+* **javaVersion(Default: `1.8`)**
+* **webContainer(Default: `tomcat 8.5`)** 
+
+Achten Sie darauf, **`2`** einzugeben, wenn Sie im ersten Schritt das Betriebssystem **windows** auswählen. Für die anderen Konfigurationen können die Standardeinstellungen übernommen werden, indem Sie die **EINGABETASTE** drücken. Drücken Sie schließlich in der Eingabeaufforderung **Confirm (Y/N)** (Bestätigen (J/N)) die Taste **`Y`** , um die Konfiguration abzuschließen.
 
 Ein Beispielprozess sieht wie folgt aus:
 
@@ -143,7 +149,7 @@ code pom.xml
 
 Sie können bei Bedarf die Konfigurationen für den App Service direkt in Ihrer POM-Datei ändern. Einige gängige sind nachstehend aufgeführt:
 
- Eigenschaft | Erforderlich | Beschreibung | Version
+ Eigenschaft | Erforderlich | BESCHREIBUNG | Version
 ---|---|---|---
 `<schemaVersion>` | false | Gibt die Version des Konfigurationsschemas an. Folgende Werte werden unterstützt: `v1` und `v2`. | 1.5.2
 `<resourceGroup>` | true | Azure-Ressourcengruppe für Ihre Web-App. | 0.1.0+
@@ -153,8 +159,11 @@ Sie können bei Bedarf die Konfigurationen für den App Service direkt in Ihrer 
 `<runtime>` | true | Details zur Konfiguration der Laufzeitumgebung finden Sie [hier](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme). | 0.1.0+
 `<deployment>` | true | Details zur Konfiguration der Bereitstellung finden Sie [hier](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme). | 0.1.0+
 
+Notieren Sie sich die Werte `<appName>` und `<resourceGroup>` (`helloworld-1590394316693` in `helloworld-1590394316693-rg` in der Demo). Sie werden später verwendet.
+
 > [!div class="nextstepaction"]
 > [Ich bin auf ein Problem gestoßen](https://www.research.net/r/javae2e?tutorial=app-service-web-get-started-java&step=config)
+
 
 ## <a name="deploy-the-app"></a>Bereitstellen der App
 
@@ -169,13 +178,14 @@ Dann können Sie Ihre Java-App mit dem folgenden Befehl in Azure bereitstellen:
 mvn package azure-webapp:deploy
 ```
 
-Navigieren Sie nach Abschluss der Bereitstellung zur bereitgestellten Anwendung, indem Sie in Ihrem Webbrowser die folgende URL verwenden, z. B. `http://<webapp>.azurewebsites.net/`.
+Nach Abschluss der Bereitstellung steht Ihre Anwendung unter `http://<appName>.azurewebsites.net/` (`http://helloworld-1590394316693.azurewebsites.net` in der Demo) bereit. Öffnen Sie die URL in Ihrem lokalen Webbrowser. Folgendes sollte angezeigt werden:
 
 ![In Azure App Service ausgeführte Beispiel-App](./media/app-service-web-get-started-java/java-hello-world-in-browser-azure-app-service.png)
 
 **Glückwunsch!** Sie haben Ihre erste Java-App in App Service unter Windows bereitgestellt.
 
 [!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 > [!div class="nextstepaction"]

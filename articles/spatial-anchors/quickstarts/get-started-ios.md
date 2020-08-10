@@ -1,6 +1,6 @@
 ---
 title: 'Schnellstart: Erstellen einer iOS-App'
-description: In dieser Schnellstartanleitung wird beschrieben, wie Sie mit Spatial Anchors eine iOS-App erstellen.
+description: Hier wird beschrieben, wie Sie mit Azure Spatial Anchors in Swift oder Objective-C programmgesteuert eine iOS-App erstellen.
 author: craigktreasure
 manager: vriveras
 services: azure-spatial-anchors
@@ -9,12 +9,12 @@ ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
 ms.custom: has-adal-ref
-ms.openlocfilehash: 542b5168bb70d876d91f8a747a230f2b754568e9
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 2df66979d1e8f400f2630f5e531cd201244fdc6d
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873108"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87809985"
 ---
 # <a name="quickstart-create-an-ios-app-with-azure-spatial-anchors-in-either-swift-or-objective-c"></a>Schnellstart: Erstellen einer iOS-App mit Azure Spatial Anchors in Swift oder Objective-C
 
@@ -101,7 +101,7 @@ Suchen Sie nach dem Feld `spatialAnchorsAccountKey`, und ersetzen Sie `Set me` d
 
 Suchen Sie nach dem Feld `spatialAnchorsAccountId`, und ersetzen Sie `Set me` durch den Kontobezeichner.
 
-Suchen Sie `startSession()`, und fügen Sie die folgende Zeile hinzu, die in Ihrer Kontodomäne den vorherigen Wert ersetzt: `cloudSession!.configuration.accountDomain = "MyAccountDomain";`.
+Suchen Sie nach dem Feld `spatialAnchorsAccountDomain`, und ersetzen Sie `Set me` durch die Kontodomäne.
 
 # <a name="objective-c"></a>[Objective-C](#tab/openproject-objc)
 
@@ -111,7 +111,7 @@ Suchen Sie nach dem Feld `SpatialAnchorsAccountKey`, und ersetzen Sie `Set me` d
 
 Suchen Sie nach dem Feld `SpatialAnchorsAccountId`, und ersetzen Sie `Set me` durch den Kontobezeichner.
 
-Suchen Sie `startSession()`, und fügen Sie die folgende Zeile hinzu, die in Ihrer Kontodomäne den vorherigen Wert ersetzt: `_cloudSession.configuration.accountDomain = @"MyAccountDomain";`.
+Suchen Sie nach dem Feld `SpatialAnchorsAccountDomain`, und ersetzen Sie `Set me` durch die Kontodomäne.
 
 ---
 

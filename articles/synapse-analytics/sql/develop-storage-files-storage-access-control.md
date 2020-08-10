@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 06/11/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: d60eeb279f9faa469c98d3d0578d0e4c1cdf0bd2
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: b7005954b14a9263ec074c836180853a99812dd5
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87283451"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534769"
 ---
 # <a name="control-storage-account-access-for-sql-on-demand-preview"></a>Steuern des Speicherkontozugriffs für SQL On-Demand (Vorschau)
 
@@ -89,7 +89,7 @@ Sie können die folgenden Kombinationen aus Autorisierungstypen und Azure Storag
 
 
 > [!IMPORTANT]
-> Beim Zugriff auf Speicher, der mit der Firewall geschützt ist, kann nur die verwaltete Identität verwendet werden. Sie müssen [vertrauenswürdige Microsoft-Dienste zulassen](../../storage/common/storage-network-security.md#trusted-microsoft-services) und der [systemseitig zugewiesenen Identität](../../active-directory/managed-identities-azure-resources/overview.md) für diese Ressourceninstanz explizit [eine RBAC-Rolle zuweisen](../../storage/common/storage-auth-aad.md#assign-rbac-roles-for-access-rights). In diesem Fall entspricht der Zugriffsbereich für die Instanz der RBAC-Rolle, die der verwalteten Identität zugewiesen ist.
+> Beim Zugriff auf Speicher, der mit der Firewall geschützt ist, kann nur die verwaltete Identität verwendet werden. Sie müssen [vertrauenswürdige Microsoft-Dienste zulassen](../../storage/common/storage-network-security.md#trusted-microsoft-services) und der [systemseitig zugewiesenen Identität](../../active-directory/managed-identities-azure-resources/overview.md) für diese Ressourceninstanz explizit [eine Azure-Rolle zuweisen](../../storage/common/storage-auth-aad.md#assign-azure-roles-for-access-rights). In diesem Fall entspricht der Zugriffsbereich für die Instanz der Azure-Rolle, die der verwalteten Identität zugewiesen ist.
 >
 
 ## <a name="credentials"></a>Anmeldeinformationen
@@ -219,7 +219,7 @@ WITH (    LOCATION   = 'https://<storage_account>.dfs.core.windows.net/<containe
 
 ## <a name="examples"></a>Beispiele
 
-**Zugreifen auf eine öffentlich verfügbare Datenquelle**
+### <a name="access-a-publicly-available-data-source"></a>**Zugreifen auf eine öffentlich verfügbare Datenquelle**
 
 Verwenden Sie das folgende Skript, um eine Tabelle zu erstellen, die auf eine öffentlich verfügbare Datenquelle zugreift.
 
@@ -248,7 +248,7 @@ SELECT TOP 10 * FROM OPENROWSET(BULK 'parquet/user-data/*.parquet',
 GO
 ```
 
-**Zugreifen auf eine Datenquelle mithilfe von Anmeldeinformationen**
+### <a name="access-a-data-source-using-credentials"></a>**Zugreifen auf eine Datenquelle mithilfe von Anmeldeinformationen**
 
 Ändern Sie das folgende Skript, um eine externe Tabelle zu erstellen, die mit dem SAS-Token, der Azure AD-Identität des Benutzers oder der verwalteten Identität des Arbeitsbereichs auf den Azure-Speicher zugreift.
 

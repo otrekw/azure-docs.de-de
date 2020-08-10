@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: overview
 ms.date: 06/29/2020
 ms.author: pafarley
-ms.openlocfilehash: ceb9e731b1052d47131dfbc6754e1cb921a8f585
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 0b432a224aa32edf762f6610990027451abe9acc
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87280833"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87759205"
 ---
 # <a name="whats-new-in-computer-vision"></a>Neuerungen beim maschinellen Sehen
 
@@ -23,15 +23,15 @@ Informieren Sie sich über die Neuerungen im Dienst. Dabei kann es sich um Versi
 
 ## <a name="july-2020"></a>Juli 2020
 
-### <a name="read-api-v31-preview1-adds-support-for-simplified-chinese"></a>Read API v3.1-preview.1 fügt die Unterstützung für Chinesisch (vereinfacht) hinzu
-Read API v3.1-preview.1 für maschinelles Sehen fügt die Unterstützung für Chinesisch (vereinfacht) hinzu.
+### <a name="read-api-v31-public-preview-adds-simplified-chinese-support"></a>In der Lese-API v3.1 (Public Preview) wurde Unterstützung für vereinfachtes Chinesisch hinzugefügt.
+In der Lese-API v3.1 (Public Preview) für maschinelles Sehen wurde Unterstützung für vereinfachtes Chinesisch hinzugefügt.
 
 * Diese Vorschauversion der Lese-API unterstützt die Sprachen Englisch, Niederländisch, Französisch, Deutsch, Italienisch, Portugiesisch, Chinesisch (vereinfacht) und Spanisch.
 
 Weitere Informationen finden Sie in der [Übersicht zur Lese-API](concept-recognizing-text.md).
 
 > [!div class="nextstepaction"]
-> [Weitere Informationen zu Read API v3.1-preview.1](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-1/operations/5d986960601faab4bf452005)
+> [Weitere Informationen zur Lese-API v3.1 (Public Preview)](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-1/operations/5d986960601faab4bf452005)
 
 ## <a name="may-2020"></a>Mai 2020
 Maschinelles Sehen-API v3.0 ist nun allgemein verfügbar und beinhaltet Aktualisierungen der [Lese-API](concept-recognizing-text.md):

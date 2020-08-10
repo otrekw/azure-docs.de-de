@@ -7,12 +7,13 @@ ms.date: 03/08/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: quickstart
-ms.openlocfilehash: 95a999f38104e0bb3cfd6a510bd8f9e3d5440562
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 70a0620369792c1aaf2c11867fd468f42d6bb9ef
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86521087"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87494688"
 ---
 # <a name="integrate-key-vault-with-azure-private-link"></a>Integrieren von Key Vault in Azure Private Link
 
@@ -233,6 +234,38 @@ Address:  10.1.0.5 (private IP address)
 Aliases:  <your-key-vault-name>.vault.azure.net
           <your-key-vault-name>.privatelink.vaultcore.azure.net
 ```
+
+## <a name="troubleshooting-guide"></a>Handbuch zur Problembehandlung
+
+* Stellen Sie sicher, dass sich der private Endpunkt im Zustand „Genehmigt“ befindet. 
+    1. Dies kann im Azure-Portal überprüft und behoben werden. Öffnen Sie die Key Vault-Ressource, und klicken Sie auf die Option „Netzwerk“. 
+    2. Wählen Sie die Registerkarte „Private Endpunktverbindungen“ aus. 
+    3. Vergewissern Sie sich, dass der Verbindungsstatus „Genehmigt“ und der Bereitstellungsstatus „Erfolgreich“ lautet. 
+    4. Sie können auch zur privaten Endpunktressource navigieren. Dort können Sie die gleichen Eigenschaften überprüfen und sich vergewissern, dass das virtuelle Netzwerk dem von Ihnen verwendeten Netzwerk entspricht.
+
+* Vergewissern Sie sich, dass Sie über eine Ressource vom Typ „Private DNS-Zone“ verfügen. 
+    1. Sie müssen über eine Ressource vom Typ „Private DNS-Zone“ mit exakt dem folgenden Namen verfügen: privatelink.vaultcore.azure.net. 
+    2. Entsprechende Einrichtungsinformationen finden Sie unter folgendem Link: [Was ist eine private Azure DNS-Zone?](https://docs.microsoft.com/azure/dns/private-dns-privatednszone)
+    
+* Vergewissern Sie sich, dass die private DNS-Zone nicht mit dem virtuellen Netzwerk verknüpft ist. Dieses Problem kann vorliegen, wenn weiterhin die öffentliche IP-Adresse zurückgegeben wird. 
+    1. Ist die private DNS-Zone nicht mit dem virtuellen Netzwerk verknüpft, wird bei der DNS-Abfrage aus dem virtuellen Netzwerk die öffentliche IP-Adresse des Schlüsseltresors zurückgegeben. 
+    2. Navigieren Sie im Azure-Portal zur Ressource „Private DNS-Zone“, und klicken Sie auf die Option „Verknüpfungen virtueller Netzwerke“. 
+    4. Das virtuelle Netzwerk, von dem Aufrufe an den Schlüsseltresor gesendet werden, muss aufgeführt werden. 
+    5. Ist dies nicht der Fall, fügen Sie es hinzu. 
+    6. Eine ausführliche Anleitung finden Sie unter [Verknüpfen des virtuellen Networks](https://docs.microsoft.com/azure/dns/private-dns-getstarted-portal#link-the-virtual-network).
+
+* Vergewissern Sie sich, dass in der privaten DNS-Zone kein A-Eintrag für den Schlüsseltresor fehlt. 
+    1. Navigieren Sie zur Seite „Private DNS-Zone“. 
+    2. Klicken Sie auf „Übersicht“, und vergewissern Sie sich, dass ein A-Eintrag mit dem einfachen Namen Ihres Schlüsseltresors (fabrikam) vorhanden ist. Geben Sie kein Suffix an.
+    3. Überprüfen Sie die Schreibweise, und erstellen oder korrigieren Sie den A-Eintrag. Die Gültigkeitsdauer kann auf „3600“ (eine Stunde) festgelegt werden. 
+    4. Achten Sie darauf, die richtige private IP-Adresse anzugeben. 
+    
+* Vergewissern Sie sich, dass der A-Eintrag über die richtige IP-Adresse verfügt. 
+    1. Zur Bestätigung der IP-Adresse können Sie im Azure-Portal die private Endpunktressource öffnen. 
+    2. Navigieren Sie im Azure-Portal zur Ressource „Microsoft.Network/privateEndpoints“ (nicht zur Key Vault-Ressource).
+    3. Suchen Sie auf der Übersichtsseite nach „Netzwerkschnittstelle“, und klicken Sie auf den entsprechenden Link. 
+    4. Daraufhin wird die Übersicht über die NIC-Ressource mit der Eigenschaft „Private IP-Adresse“ angezeigt. 
+    5. Vergewissern Sie sich, dass es sich bei der IP-Adresse um die richtige Adresse aus dem A-Eintrag handelt.
 
 ## <a name="limitations-and-design-considerations"></a>Einschränkungen und Entwurfsaspekte
 

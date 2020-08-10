@@ -7,12 +7,12 @@ ms.service: load-balancer
 ms.topic: overview
 ms.date: 07/07/2020
 ms.author: anavin
-ms.openlocfilehash: 8b44dc230dbee1b29b9889a1b81e35ebe25f6b97
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 24c5133b9c012b628e43e956c56d5112e1ad4649
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87078688"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87447034"
 ---
 # <a name="whats-new-in-azure-load-balancer"></a>Neues in Azure Load Balancer
 
@@ -34,6 +34,16 @@ Die aktuellen Updates für Azure Load Balancer finden Sie [hier](https://azure.m
 | Überprüfen | Hinzufügung der Überprüfung für Hochverfügbarkeitsports | Es wurde eine Überprüfung hinzugefügt, um sicherzustellen, dass Hochverfügbarkeitsportregeln und Nicht-Hochverfügbarkeitsportregeln nur konfigurierbar sind, wenn Floating IP aktiviert ist. Bisher wurde diese Konfiguration akzeptiert, funktionierte jedoch nicht wie vorgesehen. Es wurde keine Änderung an der Funktionalität vorgenommen. Weitere Informationen finden Sie [hier](load-balancer-ha-ports-overview.md#limitations).| Juni 2020 |
 | Funktion| IPv6 support for Azure Load Balancer (generally available) (IPv6-Unterstützung für Azure Load Balancer (allgemein verfügbar)) | Sie können IPv6-Adressen als Front-End für Ihre Azure Load Balancer-Instanzen verwenden. [Hier](../virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md) erfahren Sie, wie Sie eine Anwendung mit dualem Stapel erstellen. |April 2020|
 | Funktion| TCP Resets on Idle Timeout (generally available) (TCP-Zurücksetzungen bei Leerlauftimeout (allgemein verfügbar))| Verwenden Sie TCP-Zurücksetzungen, um ein besser vorhersagbares Anwendungsverhalten zu ermöglichen. [Weitere Informationen](load-balancer-tcp-reset.md)| Februar 2020 |
+
+## <a name="known-issues"></a>Bekannte Probleme
+
+Die Produktgruppe arbeitet aktiv an Lösungen für die folgenden bekannten Probleme:
+
+|Problem |BESCHREIBUNG  |Minderung  |
+| ---------- |---------|---------|
+| Log Analytics-Export | Von Log Analytics können keine Metriken für Load Balancer Standard-Instanzen und keine Integritätstest-Statusprotokolle für Load Balancer Basic exportiert werden.  | [Verwenden Sie Azure Monitor für mehrdimensionale Metriken für Load Balancer Standard.](load-balancer-standard-diagnostics.md) Zwar kann Log Analytics nicht für die Überwachung verwendet werden, in Azure Monitor kann jedoch ein breites Spektrum mehrdimensionaler Metriken visualisiert werden. Das vorkonfigurierte Metrikdashboard steht auf dem untergeordneten Blatt „Erkenntnisse“ Ihrer Load Balancer-Instanz zur Verfügung. Führen Sie bei Verwendung von Load Balancer Basic ein [Upgrade auf Standard](upgrade-basic-standard.md) durch, um die Metriküberwachung auf Produktionsebene zu ermöglichen.
+
+  
 
 ## <a name="next-steps"></a>Nächste Schritte
 

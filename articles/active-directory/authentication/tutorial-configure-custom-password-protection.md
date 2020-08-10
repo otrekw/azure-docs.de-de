@@ -10,12 +10,12 @@ ms.author: iainfou
 author: iainfoulds
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 642082b3fe23e0d007e21409062fe8e777728cc3
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: a5b2f3a61e2167067bd6e61ee2a36bb1d22950d8
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518538"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87419664"
 ---
 # <a name="tutorial-configure-custom-banned-passwords-for-azure-active-directory-password-protection"></a>Tutorial: Konfigurieren von benutzerdefinierten gesperrten Kennwörtern für den Azure Active Directory-Kennwortschutz
 
@@ -32,7 +32,7 @@ In diesem Tutorial lernen Sie Folgendes:
 
 Für dieses Tutorial benötigen Sie die folgenden Ressourcen und Berechtigungen:
 
-* Ein funktionierender Azure AD-Mandant mit mindestens einer aktivierten Testlizenz.
+* Einen funktionierenden Azure AD-Mandanten mit mindestens einer aktivierten Azure AD Premium P1- oder -Testlizenz.
     * Erstellen Sie ggf. [ein kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Ein Konto mit Berechtigungen vom Typ *Globaler Administrator*.
 * Ein Benutzer ohne Administratorrechte mit einem Ihnen bekannten Kennwort, wie z. B. *testuser*. Sie testen ein Kennwortänderungsereignis, indem Sie im Rahmen des Tutorials dieses Konto nutzen.
@@ -77,7 +77,7 @@ Führen Sie die folgenden Schritte aus, um die benutzerdefinierte Liste mit gesp
 
     Geben Sie Ihre eigenen benutzerdefinierten Kennwörter an, die gesperrt werden sollen. Dies ist im folgenden Beispiel dargestellt.
 
-    [![](media/tutorial-configure-custom-password-protection/enable-configure-custom-banned-passwords-cropped.png "Modify the custom banned password list under Authentication Methods in the Azure portal")](media/tutorial-configure-custom-password-protection/enable-configure-custom-banned-passwords.png#lightbox)
+    [ ![Ändern der benutzerdefinierten Liste gesperrter Kennwörter unter „Authentifizierungsmethoden“ im Azure-Portal](media/tutorial-configure-custom-password-protection/enable-configure-custom-banned-passwords-cropped.png) ](media/tutorial-configure-custom-password-protection/enable-configure-custom-banned-passwords.png#lightbox)
 
 1. Übernehmen Sie für die Option **Kennwortschutz für Windows Server Active Directory aktivieren** die Einstellung *Nein*.
 1. Wählen Sie **Speichern**, um die benutzerdefinierte Liste mit gesperrten Kennwörtern und Ihre Einträge zu aktivieren.

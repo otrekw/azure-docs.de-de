@@ -3,16 +3,16 @@ title: 'Tutorial: Stream Analytics im Edgebereich mit Azure IoT Edge'
 description: In diesem Tutorial stellen Sie Azure Stream Analytics als Modul auf einem IoT Edge-Gerät bereit.
 author: kgremban
 ms.author: kgremban
-ms.date: 11/11/2019
+ms.date: 07/29/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 62ee95db0e3b35c996cb4ee68d772a21c00778fb
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: c259e913a8ee5181bc58aea651af62324cf01fcb
+ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84220286"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87439404"
 ---
 # <a name="tutorial-deploy-azure-stream-analytics-as-an-iot-edge-module"></a>Tutorial: Bereitstellen von Azure Stream Analytics als IoT Edge-Modul
 
@@ -134,7 +134,7 @@ Mithilfe der drei Elemente – Eingabe, Ausgabe und Abfrage – wird in diesem A
     HAVING Avg(machine.temperature) > 70
     ```
 
-1. Wählen Sie **Speichern** aus.
+1. Wählen Sie **Abfrage speichern** aus.
 
 ### <a name="configure-iot-edge-settings"></a>Konfigurieren von IoT Edge-Einstellungen
 
@@ -189,7 +189,7 @@ In diesem Tutorial stellen Sie zwei Module bereit. Das erste ist das Modul **Sim
 
 1. Wählen Sie **Aktualisieren** oder **Abbrechen** aus.
 
-1. Notieren Sie sich den Namen Ihres Stream Analytics-Moduls, da Sie ihn im nächsten Schritt benötigen, und wählen Sie dann **Weiter: Routen** aus, um den Vorgang fortzusetzen.
+1. Notieren Sie sich den Namen Ihres Stream Analytics-Moduls, da Sie ihn im nächsten Schritt benötigen. Wählen Sie anschließend **Weiter: Routen** aus, um den Vorgang fortzusetzen.
 
 1. Auf der Registerkarte **Routen** definieren Sie, wie Nachrichten zwischen Modulen und dem IoT Hub übergeben werden. Nachrichten werden mit Name-Wert-Paaren erstellt. Ersetzen Sie die Standardnamen und -werte für `route` und `upstream` durch die Name-Wert-Paare in der folgenden Tabelle. Ersetzen Sie dabei Instanzen von _{moduleName}_ durch den Namen Ihres Azure Stream Analytics-Moduls.
 

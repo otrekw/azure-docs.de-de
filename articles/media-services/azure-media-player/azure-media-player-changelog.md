@@ -6,12 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: overview
 ms.date: 07/27/2020
-ms.openlocfilehash: 113249f56c1f5f9c035ec2ff6ccb7309dd355763
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 9642f6d1090ef358cf86241640255c647dea52eb
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281343"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87432656"
 ---
 # <a name="changelog"></a>Änderungsprotokoll #
 
@@ -57,13 +57,13 @@ ms.locfileid: "87281343"
 
 ### <a name="changes-234"></a>Änderungen 2.3.4
 
-- Bei der Wiedergabe von HLS unter iOS und MacOS Safari wurde eine leere Untertitelbeschriftung/Spur entfernt.
+- Bei der Wiedergabe von HLS unter iOS und macOS Safari wurde eine leere Untertitelbeschriftung/Spur entfernt.
 - Die Anzahl von 412er für IMSC1-Untertitel wurde verringert.
 - Ausgabewarnung in der Konsole für 10 aufeinanderfolgende leere IMSC1-Untertitelantworten zur Unterstützung des Livedebuggings.
 
 ## <a name="232-official-update-october-9-2019"></a>2.3.2 (Offizielles Update vom 9. Oktober 2019)
 
-### <a name="features"></a>Features
+### <a name="features-232"></a>Features 2.3.2
 
 – Die PlayReady-Unterstützung für die DASH-Wiedergabe wurde für Microsoft Edge-Browser (Chromium) hinzugefügt.
 

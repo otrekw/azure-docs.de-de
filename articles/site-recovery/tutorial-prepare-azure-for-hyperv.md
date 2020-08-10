@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/14/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 3be81d104e32946e2bfd7dc76052dad464f95623
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 4e28a46b8d231b3f228a95ea06b7b9cada50de54
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86130987"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498989"
 ---
 # <a name="prepare-azure-resources-for-hyper-v-disaster-recovery"></a>Vorbereiten von Azure-Ressourcen für die Hyper-V-Notfallwiederherstellung
 
@@ -63,7 +63,7 @@ Images der replizierten Computer sind in Azure Storage gespeichert. Azure-VMs we
 9. Wählen Sie unter **Standort** den geografischen Standort für das Speicherkonto aus. Verwenden Sie für dieses Tutorial **Europa, Westen**.
 10. Wählen Sie **Erstellen**, um das Speicherkonto zu erstellen.
 
-   ![Speicherkonto erstellen](media/tutorial-prepare-azure/create-storageacct.png)
+   ![Screenshot: Optionen zum Erstellen eines Speicherkontos](media/tutorial-prepare-azure/create-storageacct.png)
 
 ## <a name="create-a-recovery-services-vault"></a>Erstellen eines Recovery Services-Tresors
 
@@ -74,7 +74,7 @@ Images der replizierten Computer sind in Azure Storage gespeichert. Azure-VMs we
 3. Wählen Sie unter **Standort** die Region aus, in der sich der Tresor befinden soll. Verwenden Sie für dieses Tutorial **Europa, Westen**.
 4. Wählen Sie **An Dashboard anheften** > **Erstellen**, um über das Dashboard schnell auf den Tresor zuzugreifen.
 
-![Erstellen eines neuen Tresors](./media/tutorial-prepare-azure/new-vault-settings.png)
+![Screenshot: Seite „Recovery Services-Tresor erstellen“](./media/tutorial-prepare-azure/new-vault-settings.png)
 
 Der neue Tresor wird unter **Dashboard** > **Alle Ressourcen** und auf der Hauptseite **Recovery Services-Tresore** angezeigt.
 
@@ -91,7 +91,7 @@ Wenn die Azure-VMs nach einem Failover aus dem Speicher erstellt werden, werden 
 7. Behalten Sie die Standardoptionen des DDoS-Basisschutzes ohne Dienstendpunkt im Netzwerk bei.
 8. Klicken Sie auf **Erstellen**.
 
-![Erstellen eines virtuellen Netzwerks](media/tutorial-prepare-azure/create-network.png)
+![Screenshot: Optionen zum Erstellen eines virtuellen Netzwerks](media/tutorial-prepare-azure/create-network.png)
 
 Die Erstellung des virtuellen Netzwerks dauert ein paar Sekunden. Nach der Erstellung wird es auf dem Dashboard im Azure-Portal angezeigt.
 

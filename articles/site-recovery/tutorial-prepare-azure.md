@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 09/09/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 312723818c4cef82ad6c96b013d7ec81ede276cc
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: ed517f2f6e04f60ec1c9c808f2fdf03203fb891b
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86130913"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498972"
 ---
 # <a name="prepare-azure-for-on-premises-disaster-recovery-to-azure"></a>Vorbereiten von Azure für die lokale Notfallwiederherstellung in Azure
 
@@ -62,7 +62,7 @@ Zum Ausführen dieser Aufgaben muss Ihrem Konto die integrierte Rolle „Mitwirk
 6. Wählen Sie in **Region** die Region aus, in der sich der Tresor befinden soll. verwenden wir **Europa, Westen**.
 7. Klicken Sie auf **Überprüfen + erstellen**.
 
-   ![Erstellen eines neuen Tresors](./media/tutorial-prepare-azure/new-vault-settings.png)
+   ![Screenshot: Seite „Recovery Services-Tresor erstellen“](./media/tutorial-prepare-azure/new-vault-settings.png)
 
    Der neue Tresor wird nun unter **Dashboard** > **Alle Ressourcen** und auf der Hauptseite **Recovery Services-Tresore** aufgeführt.
 
@@ -81,7 +81,7 @@ Lokale Computer werden auf verwalteten Azure-Datenträgern repliziert. Bei einem
 9. Wir behalten die Standardoptionen des DDoS-Basisschutzes ohne Dienstendpunkt oder Firewall im Netzwerk bei.
 9. Klicken Sie auf **Erstellen**.
 
-   ![Erstellen eines virtuellen Netzwerks](media/tutorial-prepare-azure/create-network.png)
+   ![Screenshot: Optionen zum Erstellen eines virtuellen Netzwerks](media/tutorial-prepare-azure/create-network.png)
 
 Die Erstellung des virtuellen Netzwerks dauert ein paar Sekunden. Nach der Erstellung wird es auf dem Dashboard im Azure-Portal angezeigt.
 

@@ -3,15 +3,15 @@ title: Veröffentlichen einer verwalteten Dienstkatalog-App
 description: Erfahren Sie, wie Sie eine verwaltete Azure-Anwendung erstellen, die für Mitglieder Ihrer Organisation vorgesehen ist.
 author: tfitzmac
 ms.topic: quickstart
-ms.custom: subject-armqs
+ms.custom: subject-armqs, devx-track-azurecli
 ms.date: 04/14/2020
 ms.author: tomfitz
-ms.openlocfilehash: d0a3e2a435be679a2a35941dfa24978ae77291b0
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: f6a3a16fe7fd6b0036b36520262e85a9066a4e63
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86249035"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87497853"
 ---
 # <a name="quickstart-create-and-publish-a-managed-application-definition"></a>Schnellstart: Erstellen und Veröffentlichen einer Definition für die verwaltete Anwendung
 
@@ -195,7 +195,7 @@ az storage blob upload \
 
 ### <a name="create-an-azure-active-directory-user-group-or-application"></a>Erstellen einer Azure Active Directory-Benutzergruppe oder -Anwendung
 
-Der zweite Schritt besteht darin, eine Benutzergruppe, einen Benutzer oder eine Anwendung für das Verwalten der Ressourcen für den Kunden zu erstellen. Diese Identität verfügt über Berechtigungen für die verwaltete Ressourcengruppe, die durch die zugewiesene Rolle festgelegt sind. Es kann sich um eine beliebige integrierte rollenbasierte Zugriffssteuerungsrolle (Role-Based Access Control, RBAC) wie „Besitzer“ oder „Mitwirkender“ handeln. Weitere Informationen zum Erstellen einer neuen Active Directory-Benutzergruppe finden Sie unter [Erstellen einer Gruppe und Hinzufügen von Mitgliedern in Azure Active Directory](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
+Der zweite Schritt besteht darin, eine Benutzergruppe, einen Benutzer oder eine Anwendung für das Verwalten der Ressourcen für den Kunden zu erstellen. Diese Identität verfügt über Berechtigungen für die verwaltete Ressourcengruppe, die durch die zugewiesene Rolle festgelegt sind. Die Rolle kann eine beliebige integrierte Azure-Rolle wie „Besitzer“ oder „Mitwirkender“ sein. Weitere Informationen zum Erstellen einer neuen Active Directory-Benutzergruppe finden Sie unter [Erstellen einer Gruppe und Hinzufügen von Mitgliedern in Azure Active Directory](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
 
 Sie benötigen zum Verwalten der Ressourcen die Objekt-ID der Benutzergruppe. 
 

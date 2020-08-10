@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/14/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: f73d20c19e8fc26c553490772f5374e8a88a77b2
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 432c92bcfa8a2e0df26adf1516f5bdc9ee73d267
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289304"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87502374"
 ---
 # <a name="fail-back-an-azure-vm-between-azure-regions"></a>Failback für Azure-VMs zwischen Azure-Regionen
 
@@ -42,7 +42,7 @@ Nachdem virtuelle Computer erneut geschützt wurden, können Sie bei Bedarf ein 
 
 1. Wählen Sie im Tresor **Replizierte Elemente** und dann den virtuellen Computer aus, der erneut geschützt wurde.
 
-    ![Ausführen eines Failbacks auf die primäre Region](./media/site-recovery-azure-to-azure-failback/azure-to-azure-failback.png)
+    ![Screenshot: Failback auf die primäre Region im Azure-Portal](./media/site-recovery-azure-to-azure-failback/azure-to-azure-failback.png)
 
 2. Wählen Sie unter **Replizierte Elemente** den virtuellen Computer und dann **Failover** aus.
 3. Wählen Sie unter **Failover** einen Wiederherstellungspunkt für das Failover aus:
@@ -55,7 +55,7 @@ Nachdem virtuelle Computer erneut geschützt wurden, können Sie bei Bedarf ein 
 7. Wählen Sie nach der Überprüfung des Failovers **Commit** aus. Dadurch werden alle verfügbaren Wiederherstellungspunkte gelöscht. Die Option „Wiederherstellungspunkt ändern“ ist nicht mehr verfügbar.
 8. Für den virtuellen Computer wird angezeigt, dass ein Failover und ein Failback ausgeführt wurden.
 
-    ![VM in primärer und sekundärer Region](./media/site-recovery-azure-to-azure-failback/azure-to-azure-failback-vm-view.png)
+    ![Screenshot: VM in primärer und sekundärer Region](./media/site-recovery-azure-to-azure-failback/azure-to-azure-failback-vm-view.png)
 
 > [!NOTE]
 > Für Computer, für die verwaltete Datenträger verwendet werden und auf denen mindestens Version 9.28.x.x der Site Recovery-Erweiterung ausgeführt wird, bereinigt das [Updaterollup 40](https://support.microsoft.com/help/4521530/update-rollup-40-for-azure-site-recovery) für Site Recovery die Computer in der sekundären Notfallwiederherstellungsregion, nachdem das Failback abgeschlossen ist und die VMs wieder geschützt sind. Es ist nicht erforderlich, VMs und NICs in der sekundären Region manuell zu löschen. Beachten Sie, dass VMs mit nicht verwalteten Datenträgern nicht bereinigt werden. Wenn Sie die Replikation nach dem Failback vollständig deaktivieren, bereinigt Site Recovery zusätzlich zu den VMs und NICs auch die Datenträger in der Notfallwiederherstellungsregion.

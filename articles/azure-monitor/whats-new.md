@@ -6,12 +6,12 @@ ms.topic: overview
 author: bwren
 ms.author: bwren
 ms.date: 07/08/2020
-ms.openlocfilehash: 192219a804365957e9eaa0577019ff18d75861bf
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: b36469a89c7bae39ae3c2d62792c2ccde0fcfda9
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86498507"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87799326"
 ---
 # <a name="whats-new-in-azure-monitor-documentation"></a>Neues in der Azure Monitor-Dokumentation
 
@@ -20,7 +20,7 @@ Dieser Artikel enthält Listen mit neuen oder signifikant aktualisierten Azure 
 ## <a name="june-2020"></a>Juni 2020
 
 ### <a name="general"></a>Allgemein
-- [Bereitstellen von Azure Monitor](platform/deploy-scale.md): Neuer Artikel.
+- [Bereitstellen von Azure Monitor](deploy-scale.md): Neuer Artikel.
 - [Kundenseitig verwaltete Azure Monitor-Schlüssel](platform/customer-managed-keys.md): Aktualisierte Abrechnungstypeigenschaft. Hinzugefügte PowerShell-Befehle.
 
 ### <a name="agents"></a>Agents
@@ -35,7 +35,7 @@ Dieser Artikel enthält Listen mit neuen oder signifikant aktualisierten Azure 
 - [Azure Application Insights für JavaScript-Web-Apps](app/javascript.md): Aktualisierung des JavaScript SDK-Abschnitts. Der Codeausschnitt wurde aktualisiert, um Ladefehler zu melden.
 - [Konfigurieren von BYOS (Bring Your Own Storage) für Profiler und Momentaufnahmedebugger](app/profiler-bring-your-own-storage.md): Neuer Artikel.
 - [Nachverfolgung eingehender Anforderungen in Azure Application Insights mit OpenCensus Python](app/opencensus-python-request.md): Aktualisierte Protokollierung und Konfiguration für OpenCensus.
-- [Überwachen einer ASP.NET-Web-App mit Azure Application Insights](app/monitor-performance-live-website-now.md): Aktualisiertes Ablaufdatum für Statusmonitor v1.
+- [Überwachen einer ASP.NET-Web-App mit Azure Application Insights](app/monitor-performance-live-website-now.md): Aktualisiertes Ablaufdatum für Statusmonitor v1
 - [Überwachen von Node.js-Diensten mit Azure Application Insights](app/nodejs.md): Mehrere Updates, einschließlich Migration von früheren Versionen und SDK-Konfiguration.
 - [Überwachen von Python-Anwendungen mit Azure Monitor (Vorschau)](app/opencensus-python.md): Hinzugefügter Abschnitt zum Konfigurieren von Azure Monitor-Exportprogrammen.
 - [Überwachen von Apps ohne Codeänderungen – automatische Instrumentation für Azure Monitor Application Insights](app/codeless-overview.md): Neuer Artikel.
@@ -54,7 +54,7 @@ Dieser Artikel enthält Listen mit neuen oder signifikant aktualisierten Azure 
 - [Löschen und Wiederherstellen eines Azure Log Analytics-Arbeitsbereichs](platform/delete-workspace.md): Hinzugefügter PowerShell-Befehl. Aktualisierte Problembehandlung.
 - [Verwalten Sie Log Analytics-Arbeitsbereichen in Azure Monitor](platform/manage-access.md): Hinzugefügtes Beispiel für unzulässige Tabellen im RBAC-Abschnitt.
 - [Verwalten der Nutzung und Kosten für Azure Monitor Protokolle](platform/manage-cost-storage.md): Zusätzliche Details zur Berechnung der Datengröße. Aktualisiertes Konfigurieren von Datenvolumewarnungen. Details zu Sicherheitsdaten, die von Azure Sentinel erfasst werden. Präzisierung zur Datenobergrenze.
-- [Verwenden von Azure Monitor-Protokollen mit Azure Logic Apps und Power Automate](platform/logicapp-flow-connector.md): Hinzugefügte Connectorgrenzwerte.
+- [Verwenden von Azure Monitor-Protokollen mit Azure Logic Apps und Power Automate](platform/logicapp-flow-connector.md): Hinzugefügte Connectorgrenzwerte
 
 ### <a name="metrics"></a>Metriken
 - [Von Azure Monitor unterstützte Metriken nach Ressourcentyp](platform/metrics-supported.md): Aktualisierte SQL Server-Metriken.

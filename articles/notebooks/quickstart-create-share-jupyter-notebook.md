@@ -4,12 +4,12 @@ description: Erstellen Sie schnell ein Jupyter-Notebook in Azure Notebooks (Vors
 ms.topic: quickstart
 ms.date: 12/04/2018
 ms.custom: tracking-python
-ms.openlocfilehash: 809cb006e1ea40e31d079b40febee6a09714731f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ec1a03cb1c05248458a47ec4b22a0243b31bafcd
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85832099"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423285"
 ---
 # <a name="quickstart-create-and-share-a-notebook-in-azure-notebooks-preview"></a>Schnellstart: Erstellen und Teilen eines Notebooks in Azure Notebooks (Vorschauversion)
 
@@ -43,9 +43,9 @@ Keine.
 
 1. Nach einigen Augenblicken navigiert Azure Notebooks zum neuen Projekt. Fügen Sie dem Projekt ein Notebook hinzu, indem Sie das Dropdownelement **+ New** (+ Neu) (das möglicherweise nur als **+** angezeigt wird) und dann **Notebook** auswählen:
 
-    [![](media/quickstarts/empty-project-new-notebook-button.png "A new, empty project and add notebook command")](media/quickstarts/empty-project-new-notebook-button.png#lightbox)
+    :::image type="content" source="media/quickstarts/empty-project-new-notebook-button.png" alt-text="Neues leeres Projekt und Befehl zum Hinzufügen eines Notebooks" lightbox="media/quickstarts/empty-project-new-notebook-button.png":::
 
-1. Geben Sie im Popup **Create New Notebook** (Neues Notebook erstellen), das angezeigt wird, einen Dateinamen für Ihr Notebook ein, z. B. *HelloWorldInPython.ipynb* ( *.ipynb* bedeutet IronPython (Jupyter) Notebook), und wählen Sie **Python 3.6** als Sprache aus (auch als *Kernel* bezeichnet):
+1. Geben Sie im Popup **Create New Notebook** (Neues Notebook erstellen), das angezeigt wird, einen Dateinamen für Ihr Notebook ein, z. B. *HelloWorldInPython.ipynb* (*.ipynb* bedeutet IronPython (Jupyter) Notebook), und wählen Sie **Python 3.6** als Sprache aus (auch als *Kernel* bezeichnet):
 
     ![Popup „Create New Notebook“ (Neues Notebook erstellen)](media/quickstarts/new-notebook-popup.png)
 

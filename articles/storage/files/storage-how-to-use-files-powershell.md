@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 10/26/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: c0008ab89f4599e2ada51b5637a9665a249bc1c4
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.openlocfilehash: 360af0406a816a02540881962ed8794d69ce3bbb
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85340829"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87531811"
 ---
 # <a name="quickstart-create-and-manage-an-azure-file-share-with-azure-powershell"></a>Schnellstart: Erstellen und Verwalten einer Azure-Dateifreigabe mit Azure PowerShell 
 In dieser Anleitung werden Schritt für Schritt die Grundlagen der Verwendung von [Azure-Dateifreigaben](storage-files-introduction.md) mit PowerShell beschrieben. Azure-Dateifreigaben sind genau wie andere Dateifreigaben, werden jedoch in der Cloud gespeichert und von der Azure-Plattform unterstützt. Azure-Dateifreigaben unterstützen das SMB-Protokoll nach Industriestandard und ermöglichen es, Dateien für mehrere Computer, Anwendungen und Instanzen freizugeben. 
@@ -88,7 +88,7 @@ In den meisten Fällen werden Sie ihre Azure-Dateifreigabe über das SMB-Protoko
 - Sie nutzen serverlose Ressourcen (beispielsweise [Azure Functions](../../azure-functions/functions-overview.md)). 
 - Sie erstellen einen Mehrwertdienst, der mit zahlreichen Azure-Dateifreigaben interagiert, um beispielsweise Sicherungen zu erstellen oder Antivirenüberprüfungen durchzuführen.
 
-Die folgenden Beispiele zeigen, wie Sie mit dem Azure PowerShell-Modul Ihre Azure-Dateifreigabe mit dem REST-Protokoll „File“ ändern. Der Parameter `-Context` dient zum Abrufen des Speicherkontoschlüssels, um die angegebenen Aktionen für die Dateifreigabe auszuführen. Um den Speicherkontoschlüssel abrufen zu können, müssen Sie für das Speicherkonto über die RBAC-Rolle `Owner` verfügen.
+Die folgenden Beispiele zeigen, wie Sie mit dem Azure PowerShell-Modul Ihre Azure-Dateifreigabe mit dem REST-Protokoll „File“ ändern. Der Parameter `-Context` dient zum Abrufen des Speicherkontoschlüssels, um die angegebenen Aktionen für die Dateifreigabe auszuführen. Um den Speicherkontoschlüssel abrufen zu können, müssen Sie für das Speicherkonto über die Azure-Rolle `Owner` verfügen.
 
 #### <a name="create-directory"></a>Erstellen eines Verzeichnisses
 Verwenden Sie das Cmdlet [New-AzStorageDirectory](/powershell/module/az.storage/New-AzStorageDirectory), um im Stammverzeichnis Ihrer Azure-Dateifreigabe ein neues Verzeichnis mit dem Namen *myDirectory* zu erstellen.

@@ -4,12 +4,12 @@ description: Es wird beschrieben, wie Sie die Bewertung/Migration von physischen
 ms.topic: tutorial
 ms.date: 04/15/2020
 ms.custom: mvc
-ms.openlocfilehash: 31db91b512a4532cca144dc012282ea58a87514f
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 55e6039e5844c575808210cde7ee348f658b40ec
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86113250"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420786"
 ---
 # <a name="prepare-for-assessment-and-migration-of-physical-servers-to-azure"></a>Vorbereiten auf die Bewertung und Migration physischer Server zu Azure
 
@@ -138,7 +138,7 @@ Bevor Sie im nächsten Tutorial die Azure Migrate-Appliance einrichten und mit 
 
 Azure Migrate benötigt Berechtigungen zum Ermitteln lokaler Server.
 
-- **Windows:** Sie benötigen auf allen Windows-Servern, die Sie ermitteln möchten, ein Domänenadministratorkonto oder ein lokales Administratorkonto. Das Benutzerkonto sollte diesen Gruppen hinzugefügt werden: Remoteverwaltungsbenutzer, Leistungsüberwachungsbenutzer und Leistungsprotokollbenutzer.
+- **Windows:** Sie benötigen ein Domänenkonto, um in eine Domäne eingebundene Server zu ermitteln, sowie ein lokales Konto, um Computer zu ermitteln, die in keine Domäne eingebunden sind. Das Benutzerkonto sollte diesen Gruppen hinzugefügt werden: Remoteverwaltungsbenutzer, Leistungsüberwachungsbenutzer und Leistungsprotokollbenutzer.
 - **Linux:** Sie benötigen ein root-Konto auf den Linux-Servern, die Sie ermitteln möchten.
 
 ## <a name="prepare-for-physical-server-migration"></a>Vorbereiten auf die Migration physischer Server

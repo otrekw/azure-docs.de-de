@@ -3,12 +3,12 @@ title: Beispiele erweiterter Abfragen
 description: Verwenden Sie Azure Resource Graph, um einige erweiterte Abfragen auszuführen, z. B. mit Verwendung von Spalten, zum Auflisten sämtlicher verwendeter Tags und zum Abgleichen von Ressourcen mit regulären Ausdrücken.
 ms.date: 07/14/2020
 ms.topic: sample
-ms.openlocfilehash: 38013be583c74e968160cb7ec3a4dd32ede213b0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3277d904ebf955c9f924e60dbf6df12eac138a15
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87087491"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534786"
 ---
 # <a name="advanced-resource-graph-query-samples"></a>Erweiterte Beispiele für Resource Graph-Abfragen
 
@@ -322,7 +322,7 @@ Search-AzGraph -Query "Resources | where type =~ 'microsoft.sql/servers/database
 
 ## <a name="list-virtual-machines-with-their-network-interface-and-public-ip"></a><a name="join-vmpip"></a>Auflisten virtueller Computer mit deren Netzwerkschnittstelle und der öffentlichen IP-Adresse
 
-Diese Abfrage verwendet zwei **leftouter** `join`-Befehle, um virtuelle Maschinen, ihre zugehörigen Netzwerkschnittstellen und alle öffentlichen IP-Adressen, die sich auf diese Netzwerkschnittstellen beziehen, zusammenzuführen.
+Diese Abfrage verwendet zwei **leftouter** `join`-Befehle, um mit dem Resource Manager-Bereitstellungsmodell erstellte virtuelle Maschinen, ihre zugehörigen Netzwerkschnittstellen und alle öffentlichen IP-Adressen zusammenzuführen, die sich auf diese Netzwerkschnittstellen beziehen.
 
 ```kusto
 Resources

@@ -3,12 +3,12 @@ title: 'Verwenden von Web-Apps: Personalisierung'
 description: Passen Sie eine C# .NET-Web-App mit einer Personalisierungsschleife an, um einem Benutzer basierend auf Aktionen (mit Features) und Kontextfeatures die richtigen Inhalte zu präsentieren.
 ms.topic: tutorial
 ms.date: 06/10/2020
-ms.openlocfilehash: b8b5c005f7003f9b0d9ac228c5a5961c80c85599
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 6e3373ef8ace401ff40b3d48026fc46b96f1ad79
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87133128"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87446365"
 ---
 # <a name="tutorial-add-personalizer-to-a-net-web-app"></a>Tutorial: Hinzufügen einer Personalisierung zu einer .NET-Web-App
 
@@ -41,7 +41,7 @@ In diesem Tutorial werden die Aktionen durch Lebensmitteltypen dargestellt:
 * Kaffee
 * Suppe
 
-Um der Personalisierung dabei zu helfen, ihre Aktionen kennenzulernen, senden Sie mit jeder Anforderung der Rangfolge-API sowohl __Aktionen mit Features_ als auch _Kontextmerkmale_.
+Um der Personalisierung dabei zu helfen, ihre Aktionen kennenzulernen, senden Sie mit jeder Anforderung der Rangfolge-API sowohl _Aktionen mit Features_ als auch _Kontextmerkmale_.
 
 Ein **Feature** des Modells sind Informationen über die Aktion oder den Kontext, die über Mitglieder Ihrer Web-App-Benutzerbasis hinweg aggregiert sein können. Ein Feature ist _kein_ individuell spezifisches (wie eine Benutzer-ID) oder hochgradig spezifisches Merkmal (wie eine genaue Uhrzeit).
 

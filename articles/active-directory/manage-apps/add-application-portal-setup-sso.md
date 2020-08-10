@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 07/01/2020
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2f8f19e6b98143bb48430decdd51f5626e72d422
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 461a424f23161e1567c6b32a38db0225efc56b1e
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387284"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87808387"
 ---
 # <a name="quickstart-set-up-single-sign-on-sso-for-an-application-in-your-azure-active-directory-azure-ad-tenant"></a>Schnellstart: Einrichten des einmaligen Anmeldens (Single Sign-On, SSO) für eine Anwendung in Ihrem Azure Active Directory-Mandanten (Azure AD-Mandanten)
 
@@ -61,6 +61,16 @@ Richten Sie einmaliges Anmelden wie folgt für eine Anwendung ein:
     :::image type="content" source="media/add-application-portal-setup-sso/github-pricing.png" alt-text="Screenshot der GitHub-Preisseite mit der Option für einmaliges Anmelden im Enterprise-Abonnement":::
 
 
-## <a name="next-step"></a>Nächster Schritt
+> [!TIP]
+> Sie können die App-Verwaltung mithilfe der Graph-API automatisieren. Informationen hierzu finden Sie unter [Automatisieren einer SAML-basierten SSO-App-Konfiguration mit Microsoft Graph-API](https://docs.microsoft.com/graph/application-saml-sso-configure-api).
 
-- [Löschen einer App](delete-application-portal.md)
+
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+
+Wenn Sie diese Schnellstartserie abgeschlossen haben, sollten Sie die App löschen, um den Testmandanten zu bereinigen. Das Löschen der App wird in der letzten Schnellstartanleitung dieser Reihe behandelt. Informationen finden Sie unter [Schnellstart: Löschen einer Anwendung von Ihrem Azure AD-Mandanten (Azure Active Directory)](delete-application-portal.md).
+
+## <a name="next-steps"></a>Nächste Schritte
+
+Im nächsten Artikel erfahren Sie, wie Sie eine App löschen:
+> [!div class="nextstepaction"]
+> [Löschen einer App](delete-application-portal.md)

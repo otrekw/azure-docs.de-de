@@ -10,12 +10,12 @@ ms.author: iainfou
 author: iainfoulds
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0ac13dc669ed20df58f05c672926b7bee55dbc90
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6b6fe3238a2ad602b388ff24faaee3a200084ae0
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87035025"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87419477"
 ---
 # <a name="tutorial-enable-users-to-unlock-their-account-or-reset-passwords-using-azure-active-directory-self-service-password-reset"></a>Tutorial: Ermöglichen der Kontoentsperrung oder Kennwortzurücksetzung für Benutzer mit der Self-Service-Kennwortzurücksetzung von Azure Active Directory
 
@@ -37,7 +37,7 @@ In diesem Tutorial lernen Sie Folgendes:
 
 Für dieses Tutorial benötigen Sie die folgenden Ressourcen und Berechtigungen:
 
-* Ein funktionierender Azure AD-Mandant mit mindestens einer aktivierten Testlizenz.
+* Einen funktionierenden Azure AD-Mandanten mit mindestens einer aktivierten Azure AD Premium P1- oder -Testlizenz.
     * Erstellen Sie ggf. [ein kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Ein Konto mit Berechtigungen vom Typ *Globaler Administrator*
 * Ein Benutzer ohne Administratorrechte mit einem Ihnen bekannten Kennwort, wie z. B. *testuser*. In diesem Tutorial testen Sie SSPR für Endbenutzer mit diesem Konto.
@@ -60,7 +60,7 @@ In diesem Tutorial konfigurieren Sie SSPR für eine Gruppe von Benutzern in eine
 1. Wählen Sie auf der Seite **Eigenschaften** unter *Self-Service-Kennwortzurücksetzung aktiviert* die Option **Gruppe auswählen** aus.
 1. Navigieren Sie zu Ihrer Azure AD-Gruppe (etwa *SSPR-Test-Group*), und wählen Sie die Gruppe und anschließend *Auswählen* aus.
 
-    [![](media/tutorial-enable-sspr/enable-sspr-for-group-cropped.png "Select a group in the Azure portal to enable for self-service password reset")](media/tutorial-enable-sspr/enable-sspr-for-group.png#lightbox)
+    [ ![Auswählen einer Gruppe im Azure-Portal, für die die Self-Service-Kennwortzurücksetzung aktiviert werden soll](media/tutorial-enable-sspr/enable-sspr-for-group-cropped.png) ](media/tutorial-enable-sspr/enable-sspr-for-group.png#lightbox)
 
 1. Wählen Sie zum Aktivieren von SSPR für die ausgewählten Benutzer **Speichern** aus.
 

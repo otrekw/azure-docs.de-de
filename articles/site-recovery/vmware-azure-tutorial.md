@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 317cc5222b3444ae2ed242df694d317503c72a87
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 9831305f3889f977a270630b40fa0d78ec1085bd
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87290654"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87501200"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-vmware-vms"></a>Einrichten der Notfallwiederherstellung in Azure für lokale VMware-VMs
 
@@ -87,7 +87,7 @@ All diese Komponenten werden zusammen auf dem einzelnen lokalen Computer install
 1. Melden Sie sich mit dem VMware vSphere-Client beim VMware vCenter-Server oder beim vSphere ESXi-Host an.
 2. Wählen Sie im Menü **Datei** die Option **OVF-Vorlage bereitstellen** aus, um den **Assistenten zum Bereitstellen von OVF-Vorlagen** zu starten.
 
-     ![OVF-Vorlage](./media/vmware-azure-tutorial/vcenter-wizard.png)
+     ![Screenshot: Befehl „OVF-Vorlage bereitstellen“ im VMWare vSphere-Client](./media/vmware-azure-tutorial/vcenter-wizard.png)
 
 3. Geben Sie unter **Quelle auswählen** den Speicherort der heruntergeladenen OVF-Vorlage ein.
 4. Klicken Sie unter **Bewertungsdetails** auf **Weiter**.
@@ -153,7 +153,7 @@ Wählen Sie Zielressourcen aus, und überprüfen Sie sie.
 1. Klicken Sie auf **Infrastruktur vorbereiten** > **Ziel**. Wählen Sie das Azure-Abonnement aus, das Sie verwenden möchten. Hier wird ein Resource Manager-Modell verwendet.
 2. Site Recovery überprüft, ob virtuelle Netzwerke vorhanden sind. Diese sollten vorhanden sein, wenn Sie die Azure-Komponenten im [ersten Tutorial](tutorial-prepare-azure.md) in dieser Tutorialreihe eingerichtet haben.
 
-   ![Registerkarte „Ziel“](./media/vmware-azure-tutorial/storage-network.png)
+   ![Screenshot: „Infrastruktur vorbereiten“ und Zieloptionen](./media/vmware-azure-tutorial/storage-network.png)
 
 ## <a name="create-a-replication-policy"></a>Erstellen einer Replikationsrichtlinie
 
@@ -165,7 +165,7 @@ Wählen Sie Zielressourcen aus, und überprüfen Sie sie.
 6. Geben Sie unter **Aufbewahrungszeitraum des Wiederherstellungspunkts** an, wie lange die einzelnen Wiederherstellungspunkte aufbewahrt werden. Für dieses Tutorial legen wir 72 Stunden fest. Replizierte virtuelle Computer können für jeden Punkt im Aufbewahrungszeitfenster wiederhergestellt werden.
 7. Geben Sie unter **App-konsistente Momentaufnahmehäufigkeit** an, wie häufig anwendungskonsistente Momentaufnahmen erstellt werden. Wir verwenden den Standardwert von 60 Minuten. Wählen Sie **OK** aus, um die Richtlinie zu erstellen.
 
-   ![Erstellen einer Replikationsrichtlinie](./media/vmware-azure-tutorial/replication-policy.png)
+   ![Screenshot: Optionen zum Erstellen einer Replikationsrichtlinie](./media/vmware-azure-tutorial/replication-policy.png)
 
 - Die Richtlinie wird dem Konfigurationsserver automatisch zugeordnet.
 - Für das Failback wird standardmäßig automatisch eine passende Richtlinie erstellt. Bei Verwendung der Replikationsrichtlinie **rep-policy** lautet die Failbackrichtlinie beispielsweise **rep-policy-failback**. Diese Richtlinie wird erst verwendet, wenn Sie ein Failback über Azure initiieren.

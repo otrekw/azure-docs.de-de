@@ -8,12 +8,12 @@ ms.subservice: iomt
 ms.topic: quickstart
 ms.date: 05/11/2020
 ms.author: punagpal
-ms.openlocfilehash: bc85765666ba3baeae7ec795118f615f6b4b4368
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 95f5b5f13401c224ccf67c5f013deedf00379de7
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87101071"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87446803"
 ---
 # <a name="quickstart-deploy-iot-connector-preview-using-azure-portal"></a>Schnellstart: Bereitstellen von IoT-Konnektor (Vorschauversion) mithilfe des Azure-Portals
 
@@ -181,7 +181,7 @@ Nach der Bereitstellung Ihrer IoT Central-Anwendung beginnen Ihre beiden vordef
 Mithilfe von Postman können Sie die FHIR-basierten Überwachungsressourcen anzeigen, die von IoT-Konnektor für Azure API for FHIR erstellt wurden. Richten Sie [Postman für den Zugriff auf Azure API for FHIR](access-fhir-postman-tutorial.md) ein, und senden Sie eine Anforderung vom Typ `GET` an `https://your-fhir-server-url/Observation?code=http://loinc.org|8867-4`, um FHIR-Überwachungsressourcen mit Herzfrequenz anzuzeigen. 
 
 > [!TIP]
-> Vergewissern Sie sich, dass Ihr Benutzer über die erforderlichen Zugriffsrechte für die Azure API for FHIR-Datenebene verfügt. Verwenden Sie die [rollenbasierte Zugriffssteuerung in Azure](configure-azure-rbac.md), um die erforderlichen Datenebenenrollen zuzuweisen.
+> Vergewissern Sie sich, dass Ihr Benutzer über die erforderlichen Zugriffsrechte für die Azure API for FHIR-Datenebene verfügt. Verwenden Sie die [rollenbasierte Zugriffssteuerung in Azure](configure-azure-rbac.md) (Azure Role-Based Access Control, Azure RBAC), um die erforderlichen Datenebenenrollen zuzuweisen.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

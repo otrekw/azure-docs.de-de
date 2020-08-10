@@ -6,13 +6,13 @@ ms.suite: integration
 ms.reviewer: estfan, logicappspm
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 07/09/2020
-ms.openlocfilehash: aabb42dc8d86e500875819cbfc169bcc86733219
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 07/30/2020
+ms.openlocfilehash: e492a5f0afdfc2087e5719df65221d08db0a2e77
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87100960"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87499550"
 ---
 # <a name="quickstart-create-and-manage-logic-apps-using-the-azure-cli"></a>Schnellstart: Erstellen und Verwalten von Logik-Apps mithilfe der Azure-Befehlszeilenschnittstelle
 
@@ -271,3 +271,11 @@ Befehle vom Typ `az logic` können mit folgenden optionalen globalen Parametern 
 | Debuggen | `--debug` | Dient zum Anzeigen aller Debugprotokolle. |
 | Hilfemeldung | `--help -h` | Dient zum Anzeigen des Hilfedialogfelds. |
 | Abfrage | `--query` | Dient zum Festlegen einer JMESPath-Abfragezeichenfolge für eine JSON-Ausgabe. |
+
+## <a name="next-steps"></a>Nächste Schritte
+
+Weitere Informationen zur Azure-Befehlszeilenschnittstelle finden Sie in der [Azure CLI-Dokumentation](/cli/azure/?view=azure-cli-latest).
+
+Ein Beispiel für das Erstellen einer einfachen Logik-App über die CLI finden Sie unter [Azure CLI-Skriptbeispiel: Erstellen einer Logik-App](sample-logic-apps-cli-script.md).
+
+Weitere CLI-Skriptbeispiele für Logik-Apps finden Sie [Browser für Codebeispiele von Microsoft](/samples/browse/?products=azure-logic-apps).

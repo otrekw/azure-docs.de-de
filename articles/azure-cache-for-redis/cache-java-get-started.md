@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 05/22/2020
 ms.author: yegu
 ms.custom: mvc, seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: 3cd8b18358128c8566c0cde668c084a22dd261d0
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 16a912b2530d567a11a81fc10e9e09eee572e7e6
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320696"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87528826"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-java"></a>Schnellstart: Verwenden von Azure Cache for Redis mit Java
 
@@ -30,12 +30,24 @@ In dieser Schnellstartanleitung integrieren Sie Azure Cache for Redis in eine Ja
 
 [!INCLUDE [redis-cache-access-keys](../../includes/redis-cache-access-keys.md)]
 
-Fügen Sie Umgebungsvariablen für Ihren **HOSTNAMEN** und Ihren **primären** Zugriffsschlüssel hinzu. Diese Variablen werden verwendet, damit solche vertraulichen Informationen nicht direkt in den Code eingefügt werden müssen.
+## <a name="setting-up-the-working-environment"></a>Einrichten der Arbeitsumgebung 
+
+Fügen Sie abhängig von Ihrem Betriebssystem Umgebungsvariablen für Ihren **Hostnamen** und Ihren **primären Zugriffsschlüssel** hinzu. Öffnen Sie eine Eingabeaufforderung oder ein Terminalfenster, und richten Sie die folgenden Werte ein:
 
 ```CMD 
-set REDISCACHEHOSTNAME=contosoCache.redis.cache.windows.net
-set REDISCACHEKEY=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+set REDISCACHEHOSTNAME=<YOUR_HOST_NAME>.redis.cache.windows.net
+set REDISCACHEKEY=<YOUR_PRIMARY_ACCESS_KEY>
 ```
+
+```bash
+export REDISCACHEHOSTNAME=<YOUR_HOST_NAME>.redis.cache.windows.net
+export REDISCACHEKEY=<YOUR_PRIMARY_ACCESS_KEY>
+```
+
+Ersetzen Sie die Platzhalter durch die folgenden Werte:
+
+- `<YOUR_HOST_NAME>`: Der DNS-Hostname, den Sie im Abschnitt *Eigenschaften* Ihrer Azure Cache for Redis-Ressource im Azure-Portal abgerufen haben
+- `<YOUR_PRIMARY_ACCESS_KEY>`: Der primäre Zugriffsschlüssel, den Sie im Abschnitt *Zugriffsschlüssel* Ihrer Azure Cache for Redis-Ressource im Azure-Portal abgerufen haben
 
 ## <a name="create-a-new-java-app"></a>Erstellen einer neuen Java-App
 

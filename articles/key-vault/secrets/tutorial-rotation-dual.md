@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 06/22/2020
 ms.author: jalichwa
-ms.openlocfilehash: ba9ff0ead1131b091aa1a5ece2ecf94d2319a968
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.openlocfilehash: 0d2ee8fbcb71d8703702f2c72e0bf629563667b9
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85800696"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87542194"
 ---
 # <a name="automate-the-rotation-of-a-secret-for-resources-with-two-sets-of-authentication-credentials"></a>Automatisieren der Rotation eines Geheimnisses für Ressourcen mit zwei Sätzen mit Anmeldeinformationen für die Authentifizierung
 
@@ -41,9 +41,8 @@ In der obigen Lösung werden von Azure Key Vault individuelle Speicherkonto-Zugr
 * Zwei Azure Storage-Konten
 
 Sie können den unten angegebenen Bereitstellungslink verwenden, falls Sie nicht über vorhandene Key Vault- und Storage-Konten verfügen:
-<br><a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjlichwa%2FKeyVault-Rotation-StorageAccountKey-PowerShell%2Fmaster%2Farm-templates%2FInitial-Setup%2Fazuredeploy.json" target="_blank">
-    <img src="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png"/>
-</a>
+
+[![Bild einer Schaltfläche mit der Bezeichnung „Bereitstellung in Azure“](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjlichwa%2FKeyVault-Rotation-StorageAccountKey-PowerShell%2Fmaster%2Farm-templates%2FInitial-Setup%2Fazuredeploy.json)
 
 1. Wählen Sie unter **Ressourcengruppe** die Option **Neu erstellen** aus. Geben Sie der Gruppe den Namen **akvrotation**, und klicken Sie auf **OK**.
 1. Wählen Sie **Bewerten + erstellen** aus.
@@ -79,10 +78,9 @@ Für die Rotationsfunktionen der Funktions-App werden die unten angegebenen Komp
 - Rotationsfunktionen für Speicherkontoschlüssel mit Ereignisauslöser und HTTP-Trigger (bedarfsgesteuerte Rotation)
 - Event Grid-Ereignisabonnement für das Ereignis **SecretNearExpiry**
 
-1. Wählen Sie den Link zur Bereitstellung der Vorlage in Azure aus:
-<br><a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjlichwa%2FKeyVault-Rotation-StorageAccountKey-PowerShell%2Fmaster%2Farm-templates%2FFunction%2Fazuredeploy.json" target="_blank">
-    <img src="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png"/>
-</a>
+1. Wählen Sie den Link zur Bereitstellung der Vorlage in Azure aus: 
+
+   [![Bild einer Schaltfläche mit der Bezeichnung „Bereitstellung in Azure“](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjlichwa%2FKeyVault-Rotation-StorageAccountKey-PowerShell%2Fmaster%2Farm-templates%2FInitial-Setup%2Fazuredeploy.json)
 
 1. Wählen Sie in der Liste **Ressourcengruppe** die Option **akvrotation** aus.
 1. Geben Sie unter **Name des Speicherkontos** den Namen des Speicherkontos ein, für das Zugriffsschlüssel rotiert werden sollen.
@@ -154,10 +152,9 @@ Sie benötigen Folgendes, um für eine vorhandene Funktion zusätzliche Speicher
 - Zuweisung der Dienstrolle „Speicherkonto-Schlüsseloperator“ zur Funktions-App zum Zugreifen auf Speicherkonto-Zugriffsschlüssel
 - Event Grid-Ereignisabonnement für das Ereignis **SecretNearExpiry**
 
-1. Wählen Sie den Link zur Bereitstellung der Vorlage in Azure aus:
-<br><a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjlichwa%2FKeyVault-Rotation-StorageAccountKey-PowerShell%2Fmaster%2Farm-templates%2FAdd-Event-Subscription%2Fazuredeploy.json" target="_blank">
-    <img src="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png"/>
-</a>
+1. Wählen Sie den Link zur Bereitstellung der Vorlage in Azure aus: 
+
+   [![Bild einer Schaltfläche mit der Bezeichnung „Bereitstellung in Azure“](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjlichwa%2FKeyVault-Rotation-StorageAccountKey-PowerShell%2Fmaster%2Farm-templates%2FAdd-Event-Subscription%2Fazuredeploy.json)
 
 1. Wählen Sie in der Liste **Ressourcengruppe** die Option **akvrotation** aus.
 1. Geben Sie unter **Name des Speicherkontos** den Namen des Speicherkontos ein, für das Zugriffsschlüssel rotiert werden sollen.

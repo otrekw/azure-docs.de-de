@@ -12,12 +12,12 @@ ms.date: 08/14/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: aragra, lenalepa, sureshja
-ms.openlocfilehash: e005ba9c5458849863bd4668ffde1e0f6fb4bf91
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 263eb531466e26ed6069dc889c17e2632aa9ed20
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76704220"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87799411"
 ---
 # <a name="quickstart-configure-an-application-to-expose-web-apis"></a>Schnellstart: Konfigurieren einer Anwendung für das Verfügbarmachen von Web-APIs
 
@@ -75,6 +75,13 @@ Machen Sie einen neuen Bereich wie folgt über die Benutzeroberfläche verfügba
 
 1. Legen Sie den **Zustand** fest, und wählen Sie **Bereich hinzufügen**, wenn Sie fertig sind.
 
+1. (Optional) Soll App-Benutzern keine Einwilligungsaufforderung für die von Ihnen festgelegten Bereiche angezeigt werden, können Sie die Clientanwendung vorab für den Zugriff auf Ihre Web-API autorisieren. Sie sollten *nur* die Clientanwendungen vorab autorisieren, denen Sie vertrauen, da Ihre Benutzer keine Möglichkeit haben, die Einwilligung abzulehnen.
+    1. Wählen Sie unter **Autorisierte Clientanwendungen** die Option **Eine Clientanwendung hinzufügen** aus.
+    1. Geben Sie den Wert für **Anwendungs-ID (Client)** der Clientanwendung ein, die Sie vorab autorisieren möchten, beispielsweise den einer zuvor registrierten Webanwendung.
+    1. Wählen Sie unter **Autorisierte Bereiche**die Bereiche aus, für die Sie die Einwilligungsaufforderung unterdrücken möchten, und wählen Sie dann **Anwendung hinzufügen** aus.
+
+    Die Client-App ist jetzt eine vorab autorisierte Client-App, und Benutzer werden bei der Anmeldung nicht zur Einwilligung aufgefordert.
+
 1. Führen Sie die Schritte aus, mit denen Sie [Überprüfen, ob die Web-API für andere Anwendungen verfügbar gemacht wurde](#verify-the-web-api-is-exposed-to-other-applications).
 
 ## <a name="expose-a-new-scope-or-role-through-the-application-manifest"></a>Verfügbarmachen eines neuen Bereichs oder einer Rolle über das Anwendungsmanifest
@@ -84,7 +91,7 @@ Machen Sie einen neuen Bereich wie folgt über die Benutzeroberfläche verfügba
 Machen Sie einen neuen Bereich oder einer Rolle wie folgt über das Anwendungsmanifest verfügbar:
 
 1. Wählen Sie auf der Seite **Übersicht** der App den Abschnitt **Manifest**. Ein webbasierter Manifest-Editor wird geöffnet, mit dem Sie das Manifest im Portal bearbeiten können (**Bearbeiten**). Optional können Sie **Herunterladen** wählen und das Manifest lokal bearbeiten und dann **Hochladen** verwenden, um es wieder auf Ihre Anwendung anzuwenden.
-    
+
     Im folgenden Beispiel wird veranschaulicht, wie Sie den neuen Bereich `Employees.Read.All` für die Ressource/API verfügbar machen können, indem Sie der Sammlung `oauth2Permissions` das folgende JSON-Element hinzufügen.
 
       ```json
@@ -110,14 +117,17 @@ Machen Sie einen neuen Bereich oder einer Rolle wie folgt über das Anwendungsma
 
 ## <a name="verify-the-web-api-is-exposed-to-other-applications"></a>Überprüfen, ob die Web-API für andere Anwendungen verfügbar gemacht wurde
 
-1. Wechseln Sie zurück zu Ihrem Azure AD-Mandanten, wählen Sie **App-Registrierungen**, und suchen Sie nach der Clientanwendung, die Sie konfigurieren möchten. Wählen Sie diese Clientanwendung aus.
+1. Wechseln Sie zurück zu Ihrem Azure AD-Mandanten, wählen Sie **App-Registrierungen** aus, und suchen Sie nach der Clientanwendung, die Sie konfigurieren möchten.
 1. Wiederholen Sie die Schritte unter [Konfigurieren einer Clientanwendung für den Zugriff auf Web-APIs](quickstart-configure-app-access-web-apis.md).
-1. Wenn Sie zum Schritt [API auswählen](quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis
-) gelangen, wählen Sie Ihre Ressource aus. Der neue Bereich, der für Clientberechtigungsanforderungen verfügbar ist, sollte angezeigt werden.
+1. Wenn Sie zum Schritt [API auswählen](quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis) gelangen, wählen Sie Ihre Ressource (die Web-API-App-Registrierung) aus.
+    * Wenn Sie die Web-API-App-Registrierung mithilfe des Azure-Portal erstellt haben, wird Ihre API-Ressource auf der Registerkarte **Meine APIs** aufgelistet.
+    * Wenn Sie Visual Studio die Erstellung der Web-API-App-Registrierung während der Projekterstellung erlaubt haben, wird Ihre API-Ressource auf der Registerkarte **Von meiner Organisation verwendete APIs** aufgeführt.
+
+Nach der Auswahl der Web-API-Ressource sollte der neue Bereich angezeigt werden, der für Clientberechtigungsanforderungen verfügbar ist.
 
 ## <a name="more-on-the-application-manifest"></a>Weitere Informationen zum Anwendungsmanifest
 
-Das Anwendungsmanifest dient als Mechanismus zum Aktualisieren der Anwendungsentität, die alle Attribute der Identitätskonfiguration einer Azure AD-Anwendung definiert. Weitere Informationen zur Anwendungsentität und zum dazugehörigen Schema finden Sie in der [Dokumentation zur Anwendungsentität der Graph-API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#application-entity). Der Artikel enthält umfassende Referenzinformationen zu den Anwendungsentitätselementen, die verwendet werden, um Berechtigungen für Ihre API anzugeben, z.B.:  
+Das Anwendungsmanifest dient als Mechanismus zum Aktualisieren der Anwendungsentität, die alle Attribute der Identitätskonfiguration einer Azure AD-Anwendung definiert. Weitere Informationen zur Anwendungsentität und zum dazugehörigen Schema finden Sie in der [Dokumentation zur Anwendungsentität der Graph-API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#application-entity). Der Artikel enthält umfassende Referenzinformationen zu den Anwendungsentitätselementen, die verwendet werden, um Berechtigungen für Ihre API anzugeben, z.B.:
 
 * Das appRoles-Mitglied, bei es sich um eine Sammlung von [AppRole](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#approle-type)-Entitäten handelt, die zum Definieren der [Anwendungsberechtigungen](developer-glossary.md#permissions) für eine Web-API verwendet werden.
 * Das oauth2Permissions-Mitglied, bei dem es sich um eine Sammlung von [OAuth2Permission](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#oauth2permission-type)-Entitäten handelt, die zum Definieren der [delegierten Berechtigungen](developer-glossary.md#permissions) für eine Web-API verwendet werden.

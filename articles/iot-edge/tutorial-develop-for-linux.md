@@ -4,17 +4,17 @@ description: In diesem Tutorial wird Schritt für Schritt das Einrichten Ihres E
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 11/11/2019
+ms.date: 07/30/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 924654dace53b326e3a29bb834f773122b0476ab
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c6cdde3ae63a2f816db7a978557f72b4b60d2677
+ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87081116"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87439126"
 ---
 # <a name="tutorial-develop-iot-edge-modules-for-linux-devices"></a>Tutorial: Entwickeln von IoT Edge-Modulen für Linux-Geräte
 
@@ -63,7 +63,7 @@ Ein Entwicklungscomputer:
 
 * Sie können je nach Ihren Präferenzen bei der Entwicklung Ihren eigenen Computer oder einen virtuellen Computer verwenden.
   * Stellen Sie sicher, dass Ihr Entwicklungscomputer geschachtelte Virtualisierung unterstützt. Diese Funktion ist zum Ausführen einer Containerengine erforderlich, die Sie im nächsten Abschnitt installieren.
-* Die meisten Betriebssysteme, unter denen eine Container-Engine ausgeführt werden kann, können zum Entwickeln von IoT Edge-Modulen für Linux-Geräte genutzt werden. In diesem Tutorial wird ein Windows-Computer verwendet, aber es wird auf die bekannten Unterschiede unter MacOS oder Linux hingewiesen.
+* Die meisten Betriebssysteme, unter denen eine Container-Engine ausgeführt werden kann, können zum Entwickeln von IoT Edge-Modulen für Linux-Geräte genutzt werden. In diesem Tutorial wird ein Windows-Computer verwendet, aber es wird auf die bekannten Unterschiede unter macOS oder Linux hingewiesen.
 * Installieren Sie [Git](https://git-scm.com/), damit Sie später im Tutorial die Pakete mit den Modulvorlagen per Pullvorgang abrufen können.  
 * [Erweiterung C# for Visual Studio Code mit Unterstützung von OmniSharp](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)
 * [.NET Core 2.1 SDK](https://www.microsoft.com/net/download).
@@ -112,7 +112,7 @@ Verwenden Sie die IoT-Erweiterungen für Visual Studio Code zum Entwickeln von I
 
 8. Öffnen Sie den Explorer-Abschnitt von Visual Studio Code, indem Sie entweder das Symbol in der Aktivitätsleiste auf der linken Seite oder **Ansicht** > **Explorer** wählen.
 
-9. Erweitern Sie unten im Explorer-Abschnitt das reduzierte Menü **Azure IoT Hub Devices** (Azure IoT Hub-Geräte). Es sollten die Geräte und IoT Edge-Geräte angezeigt werden, die dem über die Befehlspalette ausgewählten IoT-Hub zugeordnet sind.
+9. Erweitern Sie unten im Explorer-Abschnitt das reduzierte Menü **Azure IoT Hub / Devices** (Azure IoT Hub/Geräte). Es sollten die Geräte und IoT Edge-Geräte angezeigt werden, die dem über die Befehlspalette ausgewählten IoT-Hub zugeordnet sind.
 
    ![Anzeigen von Geräten in Ihrem IoT-Hub](./media/tutorial-develop-for-linux/view-iot-hub-devices.png)
 
@@ -134,7 +134,7 @@ Wählen Sie in der Befehlspalette von Visual Studio Code die Option **Azure IoT 
    | Provide a solution name (Projektmappennamen angeben) | Geben Sie für Ihre Projektmappe einen aussagekräftigen Namen ein, oder übernehmen Sie den Standardnamen **EdgeSolution**. |
    | Select module template (Modulvorlage auswählen) | Wählen Sie **C#-Modul** aus. |
    | Provide a module name (Modulname angeben) | Übernehmen Sie den Standardnamen **SampleModule**. |
-   | Provide Docker image repository for the module (Docker-Imagerepository für das Modul angeben) | Ein Imagerepository enthält den Namen Ihrer Containerregistrierung und den Namen Ihres Containerimages. Für das Containerimage wird der von Ihnen im vorherigen Schritt angegebene Name übernommen. Ersetzen Sie **localhost:5000** durch den Anmeldeserverwert aus Ihrer Azure-Containerregistrierung. Den Anmeldeserver können Sie im Azure-Portal auf der Übersichtsseite Ihrer Containerregistrierung ermitteln. <br><br> Das endgültige Imagerepository sieht so aus: \<registry name\>.azurecr.io/samplemodule. |
+   | Provide Docker image repository for the module (Docker-Imagerepository für das Modul angeben) | Ein Imagerepository enthält den Namen Ihrer Containerregistrierung und den Namen Ihres Containerimages. Für das Containerimage wird der von Ihnen im vorherigen Schritt angegebene Name übernommen. Ersetzen Sie **localhost:5000** durch den Wert für **Anmeldeserver** aus Ihrer Azure-Containerregistrierung. Den Wert für „Anmeldeserver“ finden Sie im Azure-Portal auf der Seite „Übersicht“ Ihrer Containerregistrierung. <br><br> Das endgültige Imagerepository sieht so aus: \<registry name\>.azurecr.io/samplemodule. |
 
    ![Bereitstellen eines Docker-Imagerepositorys](./media/tutorial-develop-for-linux/image-repository.png)
 
@@ -172,7 +172,7 @@ Mit Visual Studio Code können derzeit C#-Module für Linux AMD64- und ARM32v7-G
 
 Die von Ihnen erstellte Lösungsvorlage enthält Beispielcode für ein IoT Edge-Modul. Dieses Beispielmodul empfängt lediglich Nachrichten und leitet sie dann weiter. Mit der Pipelinefunktionalität wird ein wichtiges Konzept von IoT Edge veranschaulicht. Hierbei geht es darum, wie Module miteinander kommunizieren.
 
-Für jedes Modul können im Code mehrere Warteschlangen für die *Eingabe* und *Ausgabe* deklariert werden. Der IoT Edge-Hub, der auf dem Gerät ausgeführt wird, leitet Nachrichten aus der Ausgabe eines Moduls an die Eingabe mindestens eines anderen Moduls weiter. Die spezifische Sprachanweisung zum Deklarieren von Ein- und Ausgaben variiert je nach Sprache, aber das Konzept ist modulübergreifend identisch. Weitere Informationen zum Routing zwischen Modulen finden Sie unter [Deklarieren von Routen](module-composition.md#declare-routes).
+Für jedes Modul können im Code mehrere Warteschlangen für die *Eingabe* und *Ausgabe* deklariert werden. Der IoT Edge-Hub, der auf dem Gerät ausgeführt wird, leitet Nachrichten aus der Ausgabe eines Moduls an die Eingabe mindestens eines anderen Moduls weiter. Der spezifische Code zum Deklarieren von Ein- und Ausgaben variiert je nach Sprache, aber das Konzept ist modulübergreifend identisch. Weitere Informationen zum Routing zwischen Modulen finden Sie unter [Deklarieren von Routen](module-composition.md#declare-routes).
 
 Der in der Projektvorlage enthaltene C#-Beispielcode verwendet die [ModuleClient-Klasse](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient?view=azure-dotnet) aus dem IoT Hub SDK für .NET.
 
@@ -194,11 +194,11 @@ Der in der Projektvorlage enthaltene C#-Beispielcode verwendet die [ModuleClient
 
 7. Suchen Sie nach der **modules**-Eigenschaft der gewünschten „$edgeAgent“-Eigenschaften.
 
-   Hier sollten zwei Module aufgeführt sein. Das erste Modul ist **SimulatedTemperatureSensor**. Es ist standardmäßig in allen Vorlagen enthalten und stellt simulierte Temperaturdaten bereit, die Sie zum Testen Ihrer Module verwenden können. Das zweite Modul ist **SampleModule**, das Sie im Rahmen dieser Projektmappe erstellt haben.
+   Hier sollten zwei Module aufgeführt sein. Ein Modul ist **SimulatedTemperatureSensor**. Es ist standardmäßig in allen Vorlagen enthalten und stellt simulierte Temperaturdaten bereit, die Sie zum Testen Ihrer Module verwenden können. Das andere Modul ist **SampleModule**, das Sie im Rahmen dieser Projektmappe erstellt haben.
 
 8. Suchen Sie unten in der Datei nach den gewünschten Eigenschaften für das Modul **$edgeHub**.
 
-   Eine der Funktionen des IoT Edge-Hub-Moduls ist das Weiterleiten von Nachrichten zwischen allen Modulen einer Bereitstellung. Sehen Sie sich die Werte in der **routes**-Eigenschaft an. Für die erste Route (**SampleModuleToIoTHub**) wird ein Platzhalterzeichen ( **\*** ) verwendet, um die Nachrichten zu kennzeichnen, die aus einer Ausgabewarteschlange im Modul „SampleModule“ stammen. Diese Nachrichten werden an *$upstream* geleitet. Hierbei handelt es sich um einen reservierten Namen, der auf IoT Hub hinweist. Über die zweite Route (sensorToSampleModule) werden vom Modul „SimulatedTemperatureSensor“ stammende Nachrichten an die Eingabewarteschlange *input1* geleitet, die – wie Sie gesehen haben – im Code von „SampleModule“ initialisiert wird.
+   Eine der Funktionen des IoT Edge-Hub-Moduls ist das Weiterleiten von Nachrichten zwischen allen Modulen einer Bereitstellung. Sehen Sie sich die Werte in der **routes**-Eigenschaft an. Für die eine Route (**SampleModuleToIoTHub**) wird ein Platzhalterzeichen ( **\*** ) verwendet, um die Nachrichten zu kennzeichnen, die aus Ausgabewarteschlangen im Modul „SampleModule“ stammen. Diese Nachrichten werden an *$upstream* geleitet. Hierbei handelt es sich um einen reservierten Namen, der auf IoT Hub hinweist. Über die andere Route (**sensorToSampleModule**) werden vom Modul „SimulatedTemperatureSensor“ stammende Nachrichten an die Eingabewarteschlange *input1* geleitet, die – wie Sie gesehen haben – im Code von „SampleModule“ initialisiert wird.
 
    ![Überprüfen von Routen in „deployment.template.json“](./media/tutorial-develop-for-linux/deployment-routes.png)
 
@@ -276,7 +276,7 @@ Falls beim Erstellen und Pushen Ihres Modulimages Fehler auftreten, liegt dies h
 
 Sie haben sich vergewissert, dass die Containerimages in Ihrer Containerregistrierung gespeichert sind. Diese können nun also auf einem Gerät bereitgestellt werden. Sorgen Sie dafür, dass Ihr IoT Edge-Gerät ordnungsgemäß ausgeführt wird.
 
-1. Erweitern Sie im Visual Studio Code-Explorer den Abschnitt „Azure IoT Hub Devices“ (Azure IoT Hub-Geräte).
+1. Erweitern Sie im Visual Studio Code-Explorer im Abschnitt **Azure IoT Hub** den Bereich **Geräte**, um Ihre IoT-Geräteliste anzuzeigen.
 
 2. Klicken Sie mit der rechten Maustaste auf das IoT Edge-Gerät, auf dem Sie die Bereitstellung durchführen möchten, und wählen Sie dann **Create Deployment for Single Device** (Bereitstellung für einzelnes Gerät erstellen).
 
@@ -286,11 +286,9 @@ Sie haben sich vergewissert, dass die Containerimages in Ihrer Containerregistri
 
    Verwenden Sie nicht die Datei „deployment.template.json“, da sie nicht die Anmeldeinformationen für die Containerregistrierung bzw. die Modulimagewerte enthält. Wenn Sie ein Linux-ARM32-Gerät nutzen, hat das Bereitstellungsmanifest den Namen „deployment.arm32v7.json“.
 
-4. Erweitern Sie die Details für Ihr IoT Edge-Gerät und dann die Liste **Module** für Ihr Gerät.
+4. Erweitern Sie unter Ihrem Gerät den Bereich **Module**, um eine Liste mit bereitgestellten und ausgeführten Modulen anzuzeigen. Klicken Sie auf die Schaltfläche „Aktualisieren“. Die neuen Module „SimulatedTemperatureSensor“ und „SampleModule“ sollten nun auf Ihrem Gerät ausgeführt werden.
 
-5. Aktualisieren Sie die Geräteansicht mithilfe der entsprechenden Schaltfläche, bis die Module „SimulatedTemperatureSensor“ und „SampleModule“ angezeigt werden, die auf Ihrem Gerät ausgeführt werden.
-
-   Es dauert ggf. einige Minuten, bis beide Module gestartet wurden. Die IoT Edge-Runtime muss das neue Bereitstellungsmanifest empfangen, die Modulimages per Pullvorgang aus der Containerruntime abrufen und dann jedes neue Modul starten.
+   Es dauert ggf. einige Minuten, bis die Module gestartet werden. Die IoT Edge-Runtime muss das neue Bereitstellungsmanifest empfangen, die Modulimages per Pullvorgang aus der Containerruntime abrufen und dann jedes neue Modul starten.
 
    ![Anzeigen von Modulen, die auf Ihrem IoT Edge-Gerät ausgeführt werden](./media/tutorial-develop-for-linux/view-running-modules.png)
 
@@ -327,6 +325,14 @@ Die Befehle in diesem Abschnitt gelten für Ihr IoT Edge-Gerät und nicht für I
    Bei IoT Edge-Modulen wird die Groß-/Kleinschreibung beachtet.
 
    In den Protokollen für „SimulatedTemperatureSensor“ und „SampleModule“ sollten die verarbeiteten Nachrichten angezeigt werden. Das Modul „edgeAgent“ ist für das Starten der anderen Module zuständig. Die Protokolle dieses Moduls enthalten also Informationen zur Implementierung des Bereitstellungsmanifests. Falls ein Modul nicht aufgelistet ist oder nicht ausgeführt wird, sind die Fehler wahrscheinlich in den Protokollen von „edgeAgent“ enthalten. Das Modul „edgeHub“ ist für die Kommunikation zwischen den Modulen und IoT Hub zuständig. Wenn die Module betriebsbereit sind und ausgeführt werden, aber die Nachrichten nicht auf Ihrem IoT-Hub ankommen, sind die Fehler wahrscheinlich in den Protokollen von „edgeHub“ enthalten.
+
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+
+Falls Sie mit dem nächsten empfohlenen Artikel fortfahren möchten, können Sie die erstellten Ressourcen und Konfigurationen beibehalten und wiederverwenden. Sie können auch dasselbe IoT Edge-Gerät als Testgerät weiter nutzen.
+
+Andernfalls können Sie die in diesem Artikel verwendeten lokalen Konfigurationen und die Azure-Ressourcen löschen, um Kosten zu vermeiden.
+
+[!INCLUDE [iot-edge-clean-up-cloud-resources](../../includes/iot-edge-clean-up-cloud-resources.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
 

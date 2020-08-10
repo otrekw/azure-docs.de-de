@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 06/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 3ced7e758669041d11d50ae7bfaf1065cf5439b3
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: c4211f21d78ac0e06743c97f1081804fd641f9d2
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84561901"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87563570"
 ---
 # <a name="tutorial-publish-a-jekyll-site-to-azure-static-web-apps-preview"></a>Tutorial: Veröffentlichen einer Jekyll-Website in Azure Static Web Apps (Vorschauversion)
 
@@ -146,7 +146,7 @@ Als Nächstes fügen Sie Konfigurationseinstellungen hinzu, die beim Buildprozes
 
 1. Öffnen Sie die Jekyll-App in einem Text-Editor, und öffnen Sie anschließend die Datei _.github/workflows/azure-pages-<WORKFLOWNAME>.yml_.
 
-1. Ersetzen Sie die Zeile `- uses: actions/checkout@v1` durch den folgenden Konfigurationsblock:
+1. Fügen Sie dem folgenden Konfigurationsblock nach dem Block `- uses: actions/checkout@v2` Zeilen hinzu:
 
     ```yml
     - uses: actions/checkout@v2
@@ -154,12 +154,12 @@ Als Nächstes fügen Sie Konfigurationseinstellungen hinzu, die beim Buildprozes
         submodules: true
     - name: Set up Ruby
       uses: ruby/setup-ruby@ec106b438a1ff6ff109590de34ddc62c540232e0
-        with:
+      with:
         ruby-version: 2.6
     - name: Install dependencies
-        run: bundle install
+      run: bundle install
     - name: Jekyll build
-        run: jekyll build
+      run: jekyll build
     ```
 
 1. Committen Sie den aktualisierten Workflow, und übertragen Sie ihn per Push auf GitHub.

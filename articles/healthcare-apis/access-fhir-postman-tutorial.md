@@ -9,12 +9,12 @@ ms.reviewer: dseven
 ms.author: mihansen
 author: hansenms
 ms.date: 02/07/2019
-ms.openlocfilehash: 684f85042fd09c14621801ec017fea0e632f2598
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: 6e0851a55673792adc905d27fdd3f5c13d572032
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "84870530"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87563958"
 ---
 # <a name="access-azure-api-for-fhir-with-postman"></a>Zugreifen auf Azure API for FHIR mit Postman
 
@@ -23,6 +23,7 @@ Eine Clientanwendung greift über eine [REST-API](https://www.hl7.org/fhir/http.
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - Ein FHIR-Endpunkt in Azure. Sie können diesen mithilfe der verwalteten Azure API for FHIR-Instanz oder dem Open-Source-FHIR-Server für Azure einrichten. Richten Sie die verwaltete Azure API for FHIR-Instanz über das [Azure-Portal](fhir-paas-portal-quickstart.md), mit [PowerShell](fhir-paas-powershell-quickstart.md) oder der [Azure CLI](fhir-paas-cli-quickstart.md) ein.
+- Eine [Clientanwendung](register-confidential-azure-ad-client-app.md), mit der Sie auf den FHIR-Dienst zugreifen
 - Postman ist installiert. Sie können das Tool von [https://www.getpostman.com](https://www.getpostman.com) abrufen.
 
 ## <a name="fhir-server-and-authentication-details"></a>FHIR-Server und Authentifizierungsdetails
@@ -108,7 +109,7 @@ Wenn Sie das Zugriffstoken mit einem Tool wie [https://jwt.ms](https://jwt.ms)un
 }
 ```
 
-Bei der Problembehandlung empfiehlt es sich, zuerst zu überprüfen, ob Sie die richtige Zielgruppe (`aud`-Anspruch) haben. Wenn Ihr Token vom richtigen Aussteller (`iss`-Anspruch) stammt und über die richtige Zielgruppe (`aud`-Anspruch) verfügt, Sie aber dennoch nicht auf die FHIR-API zugreifen können, hat wahrscheinlich der Benutzer oder Dienstprinzipal (`oid`-Anspruch) keinen Zugriff auf die FHIR-Datenebene. Es wird empfohlen, die [rollenbasierte Zugriffssteuerung in Azure](configure-azure-rbac.md) zu verwenden, um Benutzern Datenebenenrollen zuzuweisen. Wenn Sie einen externen, sekundären Azure Active Directory-Mandanten für Ihre Datenebene verwenden, müssen Sie [lokale RBAC-Zuweisungen konfigurieren](configure-local-rbac.md).
+Bei der Problembehandlung empfiehlt es sich, zuerst zu überprüfen, ob Sie die richtige Zielgruppe (`aud`-Anspruch) haben. Wenn Ihr Token vom richtigen Aussteller (`iss`-Anspruch) stammt und über die richtige Zielgruppe (`aud`-Anspruch) verfügt, Sie aber dennoch nicht auf die FHIR-API zugreifen können, hat wahrscheinlich der Benutzer oder Dienstprinzipal (`oid`-Anspruch) keinen Zugriff auf die FHIR-Datenebene. Es wird empfohlen, die [rollenbasierte Zugriffssteuerung in Azure (Azure Role-Based Access Control, Azure RBAC)](configure-azure-rbac.md) zu verwenden, um Benutzern Datenebenenrollen zuzuweisen. Wenn Sie einen externen, sekundären Azure Active Directory-Mandanten für Ihre Datenebene verwenden, müssen Sie [lokale RBAC-Zuweisungen konfigurieren](configure-local-rbac.md).
 
 Es ist auch möglich, [ein Token für Azure API for FHIR mithilfe der Azure CLI](get-healthcare-apis-access-token-cli.md) abzurufen. Wenn Sie ein Token verwenden, das mit der Azure CLI abgerufen wurde, sollten Sie den Autorisierungstyp „Bearertoken“ verwenden und das Token direkt einfügen.
 

@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: a06b4e6ced437cc83fadfad000fa682264264874
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a7e159c94bf1b9f3e8049fd657abb562f1c85671
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87052425"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503921"
 ---
 # <a name="azure-synapse-analytics-ip-firewall-rules-preview"></a>IP-Firewallregeln in Azure Synapse Analytics (Vorschau)
 
@@ -35,7 +35,7 @@ Sie können einem Synapse-Arbeitsbereich auch nach der Erstellung IP-Firewallreg
 
 ![IP-Konfiguration für einen Azure Synapse-Arbeitsbereich im Azure-Portal.](./media/synpase-workspace-ip-firewall/ip-firewall-3.png)
 
-## <a name="connecting-to-synapse-from-your-own-network"></a>Herstellen einer Verbindung mit Synapse aus dem eigenen Netzwerk
+## <a name="connect-to-synapse-from-your-own-network"></a>Herstellen einer Verbindung mit Synapse aus dem eigenen Netzwerk
 
 Sie können über Synapse Studio eine Verbindung mit Ihrem Synapse-Arbeitsbereich herstellen. Sie können auch SQL Server Management Studio (SSMS) verwenden, um eine Verbindung mit den SQL-Ressourcen (SQL-Pools und SQL On-Demand) in Ihrem Arbeitsbereich herzustellen.
 

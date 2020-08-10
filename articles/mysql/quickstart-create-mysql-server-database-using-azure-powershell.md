@@ -7,13 +7,13 @@ ms.service: mysql
 ms.devlang: azurepowershell
 ms.topic: quickstart
 ms.date: 04/28/2020
-ms.custom: mvc
-ms.openlocfilehash: 2e12da29a8388bf4a232930c3737be7ddce80d12
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.custom: mvc, devx-track-azurepowershell
+ms.openlocfilehash: f32f6c4366aac1a39dbc1bc4af3b945e259b3280
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82611941"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543536"
 ---
 # <a name="quickstart-create-an-azure-database-for-mysql-server-using-powershell"></a>Schnellstart: Erstellen eines Azure Database for MySQL-Servers mit PowerShell
 
@@ -237,4 +237,4 @@ Remove-AzMySqlServer -Name mydemoserver -ResourceGroupName myresourcegroup
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Entwerfen einer Azure Database for MySQL-Instanz mithilfe von PowerShell](tutorial-design-database-using-powershell.md)
+> [Generieren einer Verbindungszeichenfolge mit PowerShell: Azure Database for MySQL](connect-powershell.md)

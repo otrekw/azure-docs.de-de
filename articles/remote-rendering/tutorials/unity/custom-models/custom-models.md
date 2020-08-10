@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
-ms.openlocfilehash: b08670c51b56f01ad1193d2729ecc77821242a19
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: ae3d0ac6fb332fa17fbe938572b94c51e0785089
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86200748"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87449021"
 ---
 # <a name="tutorial-interfaces-and-custom-models"></a>Tutorial: Schnittstellen und benutzerdefinierte Modelle
 
@@ -75,14 +75,14 @@ Nun können Sie der Szene das vorgefertigte App-Menü (**AppMenu**) hinzufügen,
 1. Navigieren Sie in *Assets/RemoteRenderingTutorial/Prefabs/AppMenu* zum Prefab **AppMenu**.
 1. Ziehen Sie das Prefab **AppMenu** in die Szene.
 1. Wahrscheinlich wird ein Dialogfeld für **TMP Importer** (TMP-Importprogramm) angezeigt, da wir der Szene erstmals Ressourcen vom Typ *Text Mesh Pro* hinzufügen. Folgen Sie den Anweisungen, um grundlegende TMP-Komponenten zu importieren (**Import TMP Essentials**). Schließen Sie anschließend das Importdialogfeld. Die Beispiele und Extras werden nicht benötigt.
-1. Das App-Menü (**AppMenu**) ist so konfiguriert, dass automatisch eine Verknüpfung eingerichtet und das modale Fenster bereitgestellt wird, über das der Verbindungsherstellung mit einer Sitzung zugestimmt werden kann. Die zuvor verwendete Umgehung kann somit entfernt werden. Entfernen Sie im Spielobjekt **RemoteRenderingCoordinator** die zuvor implementierte Autorisierungsumgehung, indem Sie beim Ereignis **On Requesting Authorization** (Beim Anfordern der Autorisierung) auf die Schaltfläche „-“ klicken.\
- ![Entfernen der Umgehung](./media/remove-bypass-event.png)\
+1. Das App-Menü (**AppMenu**) ist so konfiguriert, dass automatisch eine Verknüpfung eingerichtet und das modale Fenster bereitgestellt wird, über das der Verbindungsherstellung mit einer Sitzung zugestimmt werden kann. Die zuvor verwendete Umgehung kann somit entfernt werden. Entfernen Sie im GameObject-Element **RemoteRenderingCoordinator** die zuvor implementierte Autorisierungsumgehung, indem Sie beim Ereignis **On Requesting Authorization** (Beim Anfordern der Autorisierung) auf die Schaltfläche „-“ klicken.
+ ![Entfernen der Umgehung](./media/remove-bypass-event.png)
 1. Klicken Sie im Unity-Editor auf **Play** (Spielen), um den Ansichtscontroller zu testen.
 1. Nachdem das MRTK nun konfiguriert ist, können Sie im Editor mithilfe der Tasten W, A, S und D die Position Ihrer Ansicht ändern und Ihre Blickrichtung ändern, indem Sie bei gedrückter rechter Maustaste die Maus bewegen. Bewegen Sie sich ein wenig durch die Szene, um ein Gefühl für die Steuerung zu bekommen.
 1. Auf dem Gerät können Sie durch Heben Ihrer Handfläche das App-Menü (**AppMenu**) anzeigen. Im Unity-Editor können Sie dazu die M-TASTE drücken.
 1. Sollte sich das Menü nicht mehr in Ihrem Blickfeld befinden, drücken Sie die M-TASTE, um das Menü anzuzeigen. Das Menü wird zur einfachen Interaktion in der Nähe der Kamera platziert.
-1. Die Autorisierung wird nun als Anforderung rechts neben dem App-Menü (**AppMenu**) angezeigt und von nun an verwendet, um die Verwaltung von Remote Rendering-Sitzungen durch die App zu autorisieren.\
- ![Autorisierung über die Benutzeroberfläche](./media/authorize-request-ui.png)\
+1. Die Autorisierung wird nun als Anforderung rechts neben dem App-Menü (**AppMenu**) angezeigt und von nun an verwendet, um die Verwaltung von Remote Rendering-Sitzungen durch die App zu autorisieren.
+ ![Autorisierung über die Benutzeroberfläche](./media/authorize-request-ui.png)
 1. Beenden Sie das Spiel in Unity, um mit dem Tutorial fortzufahren.
 
 ## <a name="manage-model-state"></a>Verwalten des Modellzustands
@@ -255,11 +255,11 @@ Stark vereinfacht enthält **RemoteRenderedModel** die zum Laden eines Modells e
 Testen wir nun das neue Skript, indem wir noch einmal das Testmodell laden. Wir erstellen ein Spielobjekt, das das Skript enthält und dem Testmodell übergeordnet ist.
 
 1. Erstellen Sie ein neues leeres Spielobjekt in der Szene, und nennen Sie es **TestModel**.
-1. Fügen Sie **TestModel** das Skript *RemoteRenderedModel* hinzu.\
+1. Fügen Sie **TestModel** das Skript *RemoteRenderedModel* hinzu.
 ![Hinzufügen der Komponente „RemoteRenderedModel“](./media/add-remote-rendered-model-script.png)
-1. Geben Sie für `Model Display Name` und `Model Path` den Wert *TestModel* bzw. *builtin://Engine* an.\
+1. Geben Sie für `Model Display Name` und `Model Path` den Wert *TestModel* bzw. *builtin://Engine* an.
 ![Angeben der Modelldetails](./media/add-model-script.png)
-1. Positionieren Sie das Objekt **TestModel** vor der Kamera an der Position **x = 0, y = 0, z = 3**.\
+1. Positionieren Sie das Objekt **TestModel** vor der Kamera an der Position **x = 0, y = 0, z = 3**.
 ![Positionieren des Objekts](./media/test-model-position.png)
 1. Vergewissern Sie sich, dass **AutomaticallyLoad** aktiviert ist.
 1. Klicken Sie im Unity-Editor auf **Play** (Spielen), um die Anwendung zu testen.
@@ -280,7 +280,7 @@ Gehen Sie wie unter [Schnellstart: Konvertieren eines Modells für das Rendering
 ## <a name="load-and-rendering-a-custom-model"></a>Laden und Rendern eines benutzerdefinierten Modells
 
 1. Erstellen Sie in der Szene ein neues leeres Spielobjekt, und nennen Sie es ähnlich wie ihr benutzerdefiniertes Modell.
-1. Fügen Sie dem neu erstellten Spielobjekt das Skript *RemoteRenderedModel* hinzu.\
+1. Fügen Sie dem neu erstellten GameObject-Element das Skript *RemoteRenderedModel* hinzu.
  ![Hinzufügen der Komponente „RemoteRenderedModel“](./media/add-remote-rendered-model-script.png)
 1. Geben Sie für `Model Display Name` einen geeigneten Namen für Ihr Modell an.
 1. Geben Sie für `Model Path` den SAS-URI (*Shared Access Signature*) des Modells an, den Sie in den oben beschriebenen Erfassungsschritten erstellt haben.

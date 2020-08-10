@@ -10,13 +10,12 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 07/01/2020
 ms.author: kenwith
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: ec0b3ef559abe1c65872d8ecf87f63e6ff3ed4b0
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 422c174116bb6973993f5c6093a83f8bdb42a62a
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223906"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87808234"
 ---
 # <a name="quickstart-delete-an-application-from-your-azure-active-directory-azure-ad-tenant"></a>Schnellstart: Löschen einer Anwendung von Ihrem Azure AD-Mandanten (Azure Active Directory)
 
@@ -44,9 +43,15 @@ Löschen Sie eine Anwendung wie folgt von Ihrem Azure AD-Mandanten:
 1. Wählen Sie im linken Bereich im Abschnitt **Verwalten** die Option **Eigenschaften** aus.
 1. Wählen Sie **Löschen** aus, und wählen Sie dann **Ja** aus, um zu bestätigen, dass die App aus Ihrem Azure AD-Mandanten gelöscht werden soll.
 
+> [!TIP]
+> Sie können die App-Verwaltung mithilfe der Graph-API automatisieren. Informationen hierzu finden Sie unter [Automatisieren einer SAML-basierten SSO-App-Konfiguration mit Microsoft Graph-API](https://docs.microsoft.com/graph/application-saml-sso-configure-api).
+
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+
+Wenn Sie diese Schnellstartserie abgeschlossen haben, sollten Sie die App löschen, um den Testmandanten zu bereinigen. Das Löschen der App wurde in dieser Schnellstartanleitung behandelt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Bewährte Methoden für die Anwendungsverwaltung](application-management-fundamentals.md)
-- [Häufige Szenarien für die Anwendungsverwaltung](common-scenarios.md)
-- [Anwendungsverwaltung: Sichtbarkeit und Steuerung](cloud-app-security.md)
+Sie haben die Schnellstartserie abgeschlossen. Im nächsten Schritt erfahren Sie mehr über Best Practices bei der App-Verwaltung.
+> [!div class="nextstepaction"]
+> [Bewährte Methoden für die Anwendungsverwaltung](application-management-fundamentals.md)

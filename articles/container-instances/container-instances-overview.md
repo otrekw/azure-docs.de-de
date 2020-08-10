@@ -2,14 +2,14 @@
 title: Serverlose Container in Azure
 description: Mit den Azure Container Instances-Dienst lassen sich isolierte Container in Azure besonders schnell und einfach ausführen, ohne dass Sie dazu virtuelle Computer verwalten oder einen übergeordneten Orchestrator einführen müssen.
 ms.topic: overview
-ms.date: 04/25/2019
+ms.date: 07/28/2020
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 261e5d0159b4201aab0e8aad1e05fa320cc76a14
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 2871aabe4d81cfb1441e9c74c8fa24e4e906d3b9
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259501"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498683"
 ---
 # <a name="what-is-azure-container-instances"></a>Was ist Azure Container Instances?
 
@@ -20,6 +20,11 @@ Azure Container Instances ist eine großartige Lösung für jedes Szenario, das 
 ## <a name="fast-startup-times"></a>Schneller Start
 
 Container bieten im Vergleich zu virtuellen Computern (VMs) erhebliche Vorteile beim Start. Azure Container Instances kann in Sekundenschnelle Container in Azure starten, ohne virtuelle Computer bereitstellen und verwalten zu müssen.
+
+Verwenden Sie Linux- oder Windows-Containerimages aus Docker Hub, aus einer privaten [Azure-Containerregistrierung](../container-registry/index.yml) oder aus einer anderen cloudbasierten Docker-Registrierung. Von Azure Container Instances werden verschiedene gängige Basis-Betriebssystemimages zwischengespeichert, um die Entwicklung Ihrer benutzerdefinierten Anwendungsimages zu beschleunigen.
+
+> [!NOTE]
+> Aktuell ist es nicht möglich, ein Image aus einer lokalen Registrierung in Azure Container Instances bereitzustellen.
 
 ## <a name="container-access"></a>Containerzugriff
 
@@ -68,7 +73,7 @@ Azure Container Instances unterstützt die Planung von [Gruppen mit mehreren Con
 
 ## <a name="virtual-network-deployment"></a>VNET-Bereitstellung
 
-Dieses Feature von Azure Container Instances ist derzeit in einigen Azure-Regionen für Produktionsworkloads verfügbar und ermöglicht die [Bereitstellung von Containerinstanzen in einem virtuellen Azure-Netzwerk](container-instances-vnet.md). Indem Containerinstanzen in einem Subnetz in Ihrem virtuellen Netzwerk bereitgestellt werden, können diese sicher mit anderen Ressourcen im virtuellen Netzwerk kommunizieren, einschließlich der lokalen Ressourcen (über das [VPN-Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md) oder [ExpressRoute](../expressroute/expressroute-introduction.md)).
+Azure Container Instances ermöglicht die [Bereitstellung von Containerinstanzen in einem virtuellen Azure-Netzwerk](container-instances-vnet.md). Bei Bereitstellung in einem Subnetz Ihres virtuellen Netzwerks können Containerinstanzen sicher mit anderen Ressourcen im virtuellen Netzwerk kommunizieren. Dies gilt auch für lokale Ressourcen (per [VPN-Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md) oder [ExpressRoute](../expressroute/expressroute-introduction.md)).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: overview
 ms.date: 06/08/2020
 ms.author: iainfou
-ms.openlocfilehash: 013b78e0e8ad47e98b1d192bfc48c5c4a4de0163
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 1ed1305939f4f8a9de62de85a2f09c323a2636b1
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84555142"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87489587"
 ---
 # <a name="compare-self-managed-active-directory-domain-services-azure-active-directory-and-managed-azure-active-directory-domain-services"></a>Vergleichen von selbstverwalteten Active Directory Domain Services, Azure Active Directory und verwalteten Azure Active Directory Domain Services
 
@@ -47,7 +47,7 @@ Wenn Sie über Anwendungen und Dienste verfügen, die Zugriff auf herkömmliche 
 
 Mit Azure AD DS werden die wichtigen Dienstkomponenten von Microsoft für Sie als Umgebung für *verwaltete* Domänen bereitgestellt und gepflegt. Sie führen die Bereitstellung, die Verwaltung, das Patchen und das Schützen der AD DS-Infrastruktur für Komponenten wie VMs, Windows Server-Betriebssystem oder Domänencontroller (DCs) nicht durch.
 
-Mit Azure AD DS wird verglichen mit herkömmlichen selbstverwalteten AD DS-Umgebungen eine geringere Menge von Features bereitgestellt, sodass die Komplexität des Entwurfs und der Verwaltung teilweise reduziert wird. Es müssen beispielsweise keine AD-Gesamtstrukturen, -Domänen, -Websites und -Replikationslinks entworfen und gepflegt werden. Das [Erstellen von Gesamtstrukturvertrauensstellungen zwischen Azure AD DS und lokalen Umgebungen (derzeit in der Vorschau)][create-forest-trust] ist nach wie vor möglich.
+Mit Azure AD DS wird verglichen mit herkömmlichen selbstverwalteten AD DS-Umgebungen eine geringere Menge von Features bereitgestellt, sodass die Komplexität des Entwurfs und der Verwaltung teilweise reduziert wird. Es müssen beispielsweise keine AD-Gesamtstrukturen, -Domänen, -Websites und -Replikationslinks entworfen und gepflegt werden. Das [Erstellen von Gesamtstrukturvertrauensstellungen zwischen Azure AD DS und lokalen Umgebungen][create-forest-trust] ist nach wie vor möglich.
 
 Für Anwendungen und Dienste, die in der Cloud ausgeführt werden und Zugriff auf herkömmliche Authentifizierungsmechanismen benötigen, z. B. Kerberos oder NTLM, wird von Azure AD DS eine verwaltete Domänenumgebung mit minimalem Verwaltungsaufwand bereitgestellt. Weitere Informationen finden Sie unter [Verwaltungskonzepte für Benutzerkonten, Kennwörter und die Verwaltung in Azure AD DS][administration-concepts].
 

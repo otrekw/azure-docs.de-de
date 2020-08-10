@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 07/01/2019
+ms.date: 07/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: cc6673615c85b34975d6743da6da88ca841bcf35
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b13decc142328525376ca8b3a93c74b95c90dae6
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87005360"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87481876"
 ---
 # <a name="tutorial-create-user-flows-in-azure-active-directory-b2c"></a>Tutorial: Erstellen von Benutzerflows in Azure Active Directory B2C
 
@@ -31,6 +31,9 @@ In diesem Artikel werden folgende Vorgehensweisen behandelt:
 In diesem Tutorial wird gezeigt, wie Sie einige empfohlene Benutzerflows über das Azure-Portal erstellen. Wenn Sie Informationen zum Einrichten eines Flows für Kennwortanmeldeinformationen von Ressourcenbesitzern (ROPC) in Ihrer Anwendung benötigen, lesen Sie den Artikel [Konfigurieren des Flows für Kennwortanmeldeinformationen von Ressourcenbesitzern in Azure AD B2C](configure-ropc.md).
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+
+> [!IMPORTANT]
+> Benutzerflowversionen werden jetzt anders angegeben. Zuvor wurden V1-Versionen (bereit für die Produktion) sowie V1.1- und V2-Versionen (Vorschauversion) angeboten. Benutzerflows wurden nun in die Versionen **Empfohlen** (Vorschauversion der nächsten Generation) und **Standard** (allgemein verfügbar) konsolidiert. Alle Benutzerflows der V1.1- und V2-Legacyvorschauversionen werden zum **1. August 2021** eingestellt. Weitere Informationen finden Sie unter [Benutzerflowversionen in Azure Active Directory B2C](user-flow-versions.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -50,15 +53,16 @@ Der Benutzerflow für Registrierung und Anmeldung verarbeitet die Benutzeroberfl
 
     ![Seite „Benutzerflows“ im Portal mit hervorgehobener Schaltfläche „Neuer Benutzerflow“](./media/tutorial-create-user-flows/signup-signin-user-flow.png)
 
-1. Wählen Sie auf der Registerkarte **Empfohlen** den Benutzerflow **Registrierung und Anmeldung** aus.
+1. Wählen Sie auf der Seite **Benutzerflow erstellen** den Benutzerflow **Registrierung und Anmeldung** aus.
 
-    ![Seite „Benutzerflow auswählen“ mit hervorgehobenem „Anmeldung“ und „Anmeldeflow“](./media/tutorial-create-user-flows/signup-signin-type.png)
+    ![Seite „Benutzerflow auswählen“ mit hervorgehobenem „Anmeldung“ und „Anmeldeflow“](./media/tutorial-create-user-flows/select-user-flow-type.png)
+
+1. Wählen Sie unter **Version auswählen** die Option **Empfohlen** und dann **Erstellen** aus. (Weitere Informationen zu [Benutzerflowversionen](user-flow-versions.md))
+
+    ![Seite „Benutzerflow erstellen“ im Azure-Portal mit hervorgehobenen Eigenschaften](./media/tutorial-create-user-flows/select-version.png)
 
 1. Geben Sie unter **Name** einen Namen für den Benutzerflow ein. Beispiel: *signupsignin1*.
 1. Wählen Sie unter **Identitätsanbieter** die Option **E-Mail-Registrierung** aus.
-
-    ![Seite „Benutzerflow erstellen“ im Azure-Portal mit hervorgehobenen Eigenschaften](./media/tutorial-create-user-flows/signup-signin-properties.png)
-
 1. Wählen Sie für **Benutzerattribute und Ansprüche** die Ansprüche und Attribute aus, die Sie bei der Registrierung vom Benutzer sammeln und senden möchten. Wählen Sie z.B. **Mehr anzeigen** und dann Attribute und Ansprüche für **Land/Region**, **Anzeigename** und **Postleitzahl** aus. Klicken Sie auf **OK**.
 
     ![Auswahlseite für Attribute und Ansprüche mit drei ausgewählten Ansprüchen](./media/tutorial-create-user-flows/signup-signin-attributes.png)
@@ -83,11 +87,12 @@ Der Benutzerflow für Registrierung und Anmeldung verarbeitet die Benutzeroberfl
 Wenn Sie Benutzern die Profilbearbeitung in Ihrer Anwendung ermöglichen möchten, verwenden Sie einen Benutzerflow für die Profilbearbeitung.
 
 1. Wählen Sie auf der Übersichtsseite des Azure AD B2C-Mandanten im Menü die Option **Benutzerflows** und dann **Neuer Benutzerflow** aus.
-1. Wählen Sie auf der Registerkarte **Empfohlen** den Benutzerflow **Profilbearbeitung** aus.
+1. Wählen Sie auf der Seite **Benutzerflow erstellen** den Benutzerflow **Profilbearbeitung** aus. 
+1. Wählen Sie unter **Version auswählen** die Option **Empfohlen** und dann **Erstellen** aus.
 1. Geben Sie unter **Name** einen Namen für den Benutzerflow ein. Beispiel: *profileediting1*.
 1. Wählen Sie für **Identitätsanbieter** die Option **Anmeldung mit lokalem Konto** aus.
-1. Wählen Sie für **Benutzerattribute** die Attribute aus, die der Kunde in seinem Profil bearbeiten darf. Wählen Sie z.B. **Mehr anzeigen** und dann sowohl Attribute als auch Ansprüche für **Anzeigename** und **Position** aus. Klicken Sie auf **OK**.
-1. Klicken Sie auf **Erstellen**, um den Benutzerflow hinzuzufügen. Dem Namen wird automatisch das Präfix *B2C_1* vorangestellt.
+2. Wählen Sie für **Benutzerattribute** die Attribute aus, die der Kunde in seinem Profil bearbeiten darf. Wählen Sie z.B. **Mehr anzeigen** und dann sowohl Attribute als auch Ansprüche für **Anzeigename** und **Position** aus. Klicken Sie auf **OK**.
+3. Klicken Sie auf **Erstellen**, um den Benutzerflow hinzuzufügen. Dem Namen wird automatisch das Präfix *B2C_1* vorangestellt.
 
 ### <a name="test-the-user-flow"></a>Testen des Benutzerflows
 
@@ -101,12 +106,13 @@ Wenn Sie Benutzern die Profilbearbeitung in Ihrer Anwendung ermöglichen möchte
 Damit Benutzer Ihrer Anwendung die eigenen Kennwörter zurücksetzten können, verwenden Sie einen Benutzerflow für die Kennwortzurücksetzung.
 
 1. Wählen Sie im Übersichtsmenü des Azure AD B2C-Mandanten die Option **Benutzerflows** und dann **Neuer Benutzerflow** aus.
-1. Wählen Sie auf der Registerkarte **Empfohlen** den Benutzerflow **Kennwortzurücksetzung** aus.
+1. Wählen Sie auf der Seite **Benutzerflow erstellen** den Benutzerflow **Kennwortzurücksetzung** aus. 
+1. Wählen Sie unter **Version auswählen** die Option **Empfohlen** und dann **Erstellen** aus.
 1. Geben Sie unter **Name** einen Namen für den Benutzerflow ein. Beispiel *passwordreset1*.
 1. Aktivieren Sie unter **Identitätsanbieter** die Option **Kennwort mittels E-Mail-Adresse zurücksetzen**.
-1. Klicken Sie unter „Anwendungsansprüche“ auf **Mehr anzeigen**, und wählen Sie die Ansprüche aus, die in dem an die Anwendung gesendeten Autorisierungstoken zurückgegeben werden sollen. Wählen Sie beispielsweise **Objekt-ID des Benutzers**.
-1. Klicken Sie auf **OK**.
-1. Klicken Sie auf **Erstellen**, um den Benutzerflow hinzuzufügen. Dem Namen wird automatisch das Präfix *B2C_1* vorangestellt.
+2. Klicken Sie unter „Anwendungsansprüche“ auf **Mehr anzeigen**, und wählen Sie die Ansprüche aus, die in dem an die Anwendung gesendeten Autorisierungstoken zurückgegeben werden sollen. Wählen Sie beispielsweise **Objekt-ID des Benutzers**.
+3. Klicken Sie auf **OK**.
+4. Klicken Sie auf **Erstellen**, um den Benutzerflow hinzuzufügen. Dem Namen wird automatisch das Präfix *B2C_1* vorangestellt.
 
 ### <a name="test-the-user-flow"></a>Testen des Benutzerflows
 

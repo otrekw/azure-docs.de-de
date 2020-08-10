@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 06/22/2020
-ms.openlocfilehash: fa39fe3e065c230f7e06ee443d2aa56227dc6f31
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: fb81405e85d6e2653e0cf6c007c363493992161a
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85965321"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87419970"
 ---
 # <a name="networking-in-azure-red-hat-on-openshift-4"></a>Netzwerk in Azure Red Hat OpenShift 4
 
@@ -102,7 +102,7 @@ In Azure Red Hat OpenShift 4 stehen folgende Netzwerkeinstellungen zur Verfügu
     * „Private“ (Privat): Für Routen wird standardmäßig der interne Lastenausgleich verwendet. (Kann geändert werden.)
 
 ## <a name="network-security-groups"></a>Netzwerksicherheitsgruppen
-Netzwerksicherheitsgruppen werden in der (gesperrten) Ressourcengruppe der Knoten erstellt. Die Netzwerksicherheitsgruppen werden direkt den Subnetzen zugewiesen und nicht den NICs des Knotens. Die Netzwerksicherheitsgruppen sind unveränderlich. Das bedeutet, dass Sie nicht berechtigt sind, sie zu ändern. 
+Netzwerksicherheitsgruppen werden in der (gesperrten) Ressourcengruppe des Knotens erstellt. Die Netzwerksicherheitsgruppen werden direkt den Subnetzen zugewiesen und nicht den NICs des Knotens. Die Netzwerksicherheitsgruppen sind unveränderlich. Das bedeutet, dass Sie nicht berechtigt sind, sie zu ändern. 
 
 Mit einem öffentlich sichtbaren API-Server können Sie jedoch keine Netzwerksicherheitsgruppen erstellen und sie den NICs zuweisen.
 

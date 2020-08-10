@@ -7,12 +7,12 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 04/27/2020
 ms.custom: mvc, seodec18
-ms.openlocfilehash: a594a754f33ae60d151215deb5a5ed57f87126c3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 96a947a20a17c4dc08851824a392143ce162f186
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87050659"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543559"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>Tutorial: Zuordnen eines vorhandenen benutzerdefinierten DNS-Namens zu Azure App Service
 
@@ -95,7 +95,12 @@ Wenn die unten angegebene Benachrichtigung angezeigt wird, ist der Skalierungsvo
 
 ## <a name="get-domain-verification-id"></a>Abrufen der Verifizierungs-ID für eine Domäne
 
-Wenn Sie Ihrer App eine benutzerdefinierte Domäne hinzufügen möchten, müssen Sie den Besitz der Domäne bestätigen, indem Sie bei Ihrem Domänenanbieter eine Verifizierungs-ID als TXT-Datensatz hinzufügen. Klicken Sie im linken Navigationsbereich Ihrer App-Seite unter **Einstellungen** auf **Benutzerdefinierte Domänen**. Kopieren Sie hier den Wert der Verifizierungs-ID für benutzerdefinierte Domänen. Sie benötigen diese Verifizierungs-ID für den nächsten Schritt.
+Wenn Sie Ihrer App eine benutzerdefinierte Domäne hinzufügen möchten, müssen Sie den Besitz der Domäne bestätigen, indem Sie bei Ihrem Domänenanbieter eine Verifizierungs-ID als TXT-Datensatz hinzufügen. Klicken Sie im linken Navigationsbereich Ihrer App-Seite unter auf **Benutzerdefinierte Domänen**. Kopieren Sie auf der Seite **Benutzerdefinierte Domänen** den Wert unter **Verifizierungs-ID für benutzerdefinierte Domänen** für den nächsten Schritt.
+
+![Abrufen der Verifizierungs-ID für benutzerdefinierte Domänen](./media/app-service-web-tutorial-custom-domain/get-custom-domain-verification-id.png)
+
+> [!WARNING]
+> Durch das Hinzufügen von Domänenverifizierungs-IDs zu Ihrer benutzerdefinierten Domäne können verwaiste DNS-Einträge und Unterdomänenübernahmen verhindert werden. Weitere Informationen zu dieser allgemeinen Bedrohung mit hohem Schweregrad finden Sie unter [Verhindern verwaister DNS-Einträge und Vermeiden von Unterdomänenübernahmen](../security/fundamentals/subdomain-takeover.md).
 
 ## <a name="map-your-domain"></a>Zuordnen Ihrer Domäne
 
@@ -331,7 +336,7 @@ Nach Abschluss des Vorgangs sollte Ihre App die korrekte Seite unter dem Stammpf
 
 Durch die [Azure CLI](/cli/azure/install-azure-cli) oder durch [Azure PowerShell](/powershell/azure/) können Sie mithilfe von Skripts die Verwaltung von benutzerdefinierten Domänen automatisieren. 
 
-### <a name="azure-cli"></a>Azure CLI 
+### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle 
 
 Mit dem folgenden Befehl wird ein konfigurierter benutzerdefinierter DNS-Name zu einer App Service-App hinzugefügt. 
 

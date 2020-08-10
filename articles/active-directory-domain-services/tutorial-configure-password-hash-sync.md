@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: e9d6f31674db0744e220a9cd88033a32bb5c1e17
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 02828e0c159e2d30dacc5759f1239dae1268dac5
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86024688"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87491781"
 ---
 # <a name="tutorial-enable-password-synchronization-in-azure-active-directory-domain-services-for-hybrid-environments"></a>Tutorial: Aktivieren der Kennwortsynchronisierung in Azure Active Directory Domain Services für Hybridumgebungen
 
@@ -22,7 +22,7 @@ Für Hybridumgebungen kann ein Azure AD-Mandant (Azure Active Directory) konfigu
 
 Zum Verwenden von Azure AD DS mit Konten, die über eine lokale AD DS-Umgebung synchronisiert werden, müssen Sie Azure AD Connect so konfigurieren, dass die für die NTLM- und Kerberos-Authentifizierung erforderlichen Kennworthashes synchronisiert werden. Nach der Azure AD Connect-Konfiguration wird für die Legacy-Kennworthashes über ein Ereignis zur lokalen Kontoerstellung oder Kennwortänderung dann auch die Synchronisierung mit Azure AD durchgeführt.
 
-Sie müssen diese Schritte nicht ausführen, wenn Sie reine Cloudkonten ohne lokale AD DS-Umgebung verwenden.
+Sie müssen diese Schritte nicht ausführen, wenn Sie reine Cloudkonten ohne lokale AD DS-Umgebung oder eine *Ressourcengesamtstruktur* verwenden. Für verwaltete Domänen mit einer Ressourcengesamtstruktur werden lokale Kennworthashes nie synchronisiert. Bei der Authentifizierung für lokale Konten werden die Gesamtstruktur-Vertrauensstellungen für Ihre eigenen AD DS-Domänencontroller verwendet.
 
 In diesem Tutorial lernen Sie Folgendes:
 

@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 06/11/2020
+ms.date: 07/31/2020
 ms.author: juliako
-ms.openlocfilehash: f019ebd59b2d0b9d6bae8a5dc4904f1bcae0e6c1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 032a3c719610d658ec32492033a04a610117643d
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090109"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87489774"
 ---
 # <a name="dynamic-packaging-in-media-services-v3"></a>Dynamische Paketerstellung in Media Services v3
 
@@ -33,6 +33,8 @@ In Media Services repräsentiert ein [Streamingendpunkt](streaming-endpoint-conc
 ## <a name="to-prepare-your-source-files-for-delivery"></a>So bereiten Sie die Quelldateien für die Bereitstellung vor
 
 Um die dynamische Paketerstellung nutzen zu können, müssen Sie Ihre Eingabedatei (Quelldatei) in einen Satz von MP4-Dateien (ISO Base Media 14496-12) mit mehreren Bitraten [codieren](encoding-concept.md). Sie müssen über ein [Medienobjekt](assets-concept.md) mit den codierten MP4- und Streamingkonfigurationsdateien verfügen, die für die dynamische Paketerstellung von Media Services erforderlich sind. Aus diesem Satz von MP4-Dateien können Sie mithilfe der dynamischen Paketerstellung über die im Anschluss beschriebenen Streamingmedienprotokolle Videos bereitstellen.
+
+Die dynamische Paketerstellung von Azure Media Services unterstützt nur Video- und Audiodateien im MP4-Containerformat. Audiodateien müssen ebenfalls in einen MP4-Container codiert werden, wenn alternative Codecs wie Dolby verwendet werden.  
 
 > [!TIP]
 > Zum Abrufen der MP4-Dateien und Streamingkonfigurationsdateien können Sie beispielsweise [Ihre Zwischendatei (Quelldatei) mit Media Services codieren](#encode-to-adaptive-bitrate-mp4s). 
@@ -87,7 +89,7 @@ Das folgende Diagramm zeigt das On-Demand-Streaming mit dem Workflow der dynamis
 
 ![Diagramm eines Workflows für das On-Demand-Streaming mit dynamischer Paketerstellung](./media/dynamic-packaging-overview/media-services-dynamic-packaging.svg)
 
-Der Downloadpfad in der obigen Abbildung ist nur angegeben, um zu veranschaulichen, dass Sie eine MP4-Datei direkt über den *Streamingendpunkt* (Ursprung) herunterladen können. (Sie geben die herunterladbare [Streamingrichtlinie](streaming-policy-concept.md) im Streaminglocator an.)<br/>Der dynamische Paketerstellungs-Manager verändert die Datei nicht. 
+Der Downloadpfad in der obigen Abbildung ist nur angegeben, um zu veranschaulichen, dass Sie eine MP4-Datei direkt über den *Streamingendpunkt* (Ursprung) herunterladen können. (Sie geben die herunterladbare [Streamingrichtlinie](streaming-policy-concept.md) im Streaminglocator an.)<br/>Der dynamische Paketerstellungs-Manager verändert die Datei nicht. Optional können Sie die Azure Blob Storage-APIs verwenden, um für den progressiven Download direkt auf eine MP4-Datei zuzugreifen, wenn Sie die Features für den *Streamingendpunkt* (Ursprung) umgehen möchten. 
 
 ### <a name="encode-to-adaptive-bitrate-mp4s"></a>Codieren als MP4-Dateien mit adaptiver Bitrate
 
@@ -123,17 +125,17 @@ Informationen zum Livestreaming in Media Services v3 finden Sie unter [Übersich
 
 ## <a name="video-codecs-supported-by-dynamic-packaging"></a>Von der dynamischen Paketerstellung unterstützte Videocodecs
 
-Die dynamische Paketerstellung unterstützt MP4-Dateien mit Video, das mit [H.264](https://en.m.wikipedia.org/wiki/H.264/MPEG-4_AVC) (MPEG-4 AVC oder AVC1) oder [H.265](https://en.m.wikipedia.org/wiki/High_Efficiency_Video_Coding) (HEVC, hev1 oder hvc1) codiert wurde.
+Die dynamische Paketerstellung unterstützt Videodateien, die im MP4-Containerdateiformat vorliegen und Videodaten enthalten, die mit [H.264](https://en.m.wikipedia.org/wiki/H.264/MPEG-4_AVC) (MPEG-4 AVC oder AVC1) oder [H.265](https://en.m.wikipedia.org/wiki/High_Efficiency_Video_Coding) (HEVC, hev1 oder hvc1) codiert sind.
 
 > [!NOTE]
 > Mit der *dynamischen Paketerstellung* wurden Auflösungen von bis zu 4K und Bildfrequenzen von bis zu 60 Frames/Sekunde getestet. Der [Premium-Encoder](../previous/media-services-encode-asset.md#media-encoder-premium-workflow) unterstützt die H.265-Codierung über die v2-Legacy-APIs.
 
 ## <a name="audio-codecs-supported-by-dynamic-packaging"></a>Von der dynamischen Paketerstellung unterstützte Audiocodecs
 
-Die dynamische Paketerstellung unterstützt Audiodaten, die mit den folgenden Protokollen codiert sind:
+Darüber hinaus unterstützt die dynamische Paketerstellung Audiodateien, die im MP4-Dateicontainerformat gespeichert sind und codierte Audiostreams in einem der folgenden Codecs enthalten:
 
-* [AAC](https://en.wikipedia.org/wiki/Advanced_Audio_Coding) (AAC-LC, HE-AAC v1 oder HE-AAC v2)
-* [Dolby Digital Plus](https://en.wikipedia.org/wiki/Dolby_Digital_Plus) (Enhanced AC-3 oder E-AC3)
+* [AAC](https://en.wikipedia.org/wiki/Advanced_Audio_Coding) (AAC-LC, HE-AAC v1 oder HE-AAC v2) 
+* [Dolby Digital Plus](https://en.wikipedia.org/wiki/Dolby_Digital_Plus) (Enhanced AC-3 oder E-AC3).  Die codierte Audiodatei muss im MP4-Containerformat gespeichert werden, damit die dynamische Paketerstellung funktioniert.
 * Dolby Atmos
 
    Das Streaming von Dolby Atmos-Inhalten wird für Standards wie das MPEG-DASH-Protokoll mit fragmentiertem CSF- (Common Streaming Format) oder CMAF-MP4 (Common Media Application Format) und über HTTP Live Streaming (HLS) mit CMAF unterstützt.
@@ -146,6 +148,10 @@ Die dynamische Paketerstellung unterstützt Audiodaten, die mit den folgenden Pr
     * DTS-HD Lossless ohne Core (dtsl)
 
 Die dynamische Paketerstellung unterstützt mehrere Audiospuren mit DASH oder HLS (ab Version 4) für Streamingmedienobjekte, die mehrere Audiospuren mit mehreren Codecs und Sprachen besitzen.
+
+Bei allen oben genannten Codecs muss die codierte Audiodatei im MP4-Containerformat gespeichert sein, damit die dynamische Paketerstellung funktioniert. Der Dienst unterstützt keine unformatierten elementaren Datenstrom-Dateiformate im Blobspeicher. (Folgendes wird beispielsweise nicht unterstützt: .dts, .ac3.) 
+
+Nur Dateien mit der Erweiterung „.mp4“ oder „.mp4a“ werden für die Audiopaketerstellung unterstützt. 
 
 ### <a name="limitations"></a>Einschränkungen
 

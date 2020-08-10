@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/20/2020
 ms.author: mbaldwin
 ms.custom: mvc
-ms.openlocfilehash: e77701e17ef1b47aa6b8e3b8f2d10e93bf5e054e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ead0c13a1fce0b5d56c9dd875c594a2269e2c78c
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87093385"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87513110"
 ---
 # <a name="tutorial-use-azure-key-vault-with-a-virtual-machine-in-net"></a>Tutorial: Verwenden von Azure Key Vault mit einem virtuellen Windows in .NET
 
@@ -56,21 +56,15 @@ Geben Sie Folgendes ein, um sich mithilfe der Azure-Befehlszeilenschnittstelle b
 az login
 ```
 
-### <a name="create-a-resource-group-and-key-vault"></a>Erstellen einer Ressourcengruppe und eines Schlüsseltresors
+## <a name="create-a-resource-group-and-key-vault"></a>Erstellen einer Ressourcengruppe und eines Schlüsseltresors
 
 [!INCLUDE [Create a resource group and key vault](../../../includes/key-vault-rg-kv-creation.md)]
 
-### <a name="populate-your-key-vault-with-a-secret"></a>Einfügen eines Geheimnisses in Ihren Schlüsseltresor
+## <a name="populate-your-key-vault-with-a-secret"></a>Einfügen eines Geheimnisses in Ihren Schlüsseltresor
 
-Fügen Sie nun Ihrem Schlüsseltresor mit dem Befehl [az keyvault secret set](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-set) ein Geheimnis hinzu. Geben Sie den folgenden Befehl ein, um im Schlüsseltresor ein Geheimnis mit dem Namen **mySecret** zu erstellen:
+[!INCLUDE [Create a secret](../../../includes/key-vault-create-secret.md)]
 
-```azurecli
-az keyvault secret set --vault-name "<your-unique-key-vault-name>" --name "mySecret" --value "MySecret"
-```
-
-Dieses Geheimnis speichert den Wert **MySecret**.
-
-### <a name="create-a-virtual-machine"></a>Erstellen eines virtuellen Computers
+## <a name="create-a-virtual-machine"></a>Erstellen eines virtuellen Computers
 Erstellen Sie mit einer der folgenden Methoden einen virtuellen Windows- oder Linux-Computer:
 
 | Windows | Linux |
@@ -79,7 +73,7 @@ Erstellen Sie mit einer der folgenden Methoden einen virtuellen Windows- oder Li
 | [PowerShell](../../virtual-machines/windows/quick-create-powershell.md) | [PowerShell](../../virtual-machines/linux/quick-create-powershell.md) |
 | [Azure portal](../../virtual-machines/windows/quick-create-portal.md) | [Azure portal](../../virtual-machines/linux/quick-create-portal.md) |
 
-### <a name="assign-an-identity-to-the-vm"></a>Zuweisen einer Identität zum virtuellen Computer
+## <a name="assign-an-identity-to-the-vm"></a>Zuweisen einer Identität zum virtuellen Computer
 Erstellen Sie für den virtuellen Computer mit dem Befehl [az vm identity assign](/cli/azure/vm/identity?view=azure-cli-latest#az-vm-identity-assign) eine vom System zugewiesene Identität:
 
 ```azurecli
@@ -95,14 +89,14 @@ Beachten Sie die systemseitig zugewiesene Identität, die im folgenden Code ange
 }
 ```
 
-### <a name="assign-permissions-to-the-vm-identity"></a>Zuweisen von Berechtigungen für die VM-Identität
+## <a name="assign-permissions-to-the-vm-identity"></a>Zuweisen von Berechtigungen für die VM-Identität
 Weisen Sie Ihrem Schlüsseltresor mit dem Befehl [az keyvault set-policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) die zuvor erstellten Identitätsberechtigungen zu:
 
 ```azurecli
 az keyvault set-policy --name '<your-unique-key-vault-name>' --object-id <VMSystemAssignedIdentity> --secret-permissions get list
 ```
 
-### <a name="sign-in-to-the-virtual-machine"></a>Anmelden beim virtuellen Computer
+## <a name="sign-in-to-the-virtual-machine"></a>Anmelden beim virtuellen Computer
 
 Befolgen Sie zum Anmelden beim virtuellen Computer die Anleitung unter [Herstellen einer Verbindung mit einem virtuellen Azure-Computer unter Windows und Anmelden auf diesem Computer](../../virtual-machines/windows/connect-logon.md) bzw. [Vorschau: Anmelden bei einem virtuellen Linux-Computer in Azure mit der Azure Active Directory-Authentifizierung](../../virtual-machines/linux/login-using-aad.md).
 

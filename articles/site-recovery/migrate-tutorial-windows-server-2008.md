@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 07/27/2020
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: c62cb9b64c42446c1f4ba8f6eb496fc792ff59a1
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 8d672c1113f265f9fbbabc7caed8df071f548f2a
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281275"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503819"
 ---
 # <a name="migrate-servers-running-windows-server-2008-to-azure"></a>Migrieren von Servern mit Windows Server 2008 zu Azure
 
@@ -104,7 +104,7 @@ Führen Sie die folgenden Aufgaben zur Vorbereitung des Azure-Abonnements und de
 5. Geben Sie eine Azure-Region an. Eine Liste mit den unterstützten Regionen finden Sie in den [Preisdetails zu Azure Site Recovery](https://azure.microsoft.com/pricing/details/site-recovery/)unter „Geografische Verfügbarkeit“.
 6. Um schnell über das Dashboard auf den Tresor zuzugreifen, klicken Sie auf **An Dashboard anheften** und anschließend auf **Erstellen**.
 
-   ![Neuer Tresor](media/migrate-tutorial-windows-server-2008/migrate-windows-server-2008-vault.png)
+   ![Screenshot: Optionen zum Erstellen eines neuen Tresors](media/migrate-tutorial-windows-server-2008/migrate-windows-server-2008-vault.png)
 
 Der neue Tresor wird dem **Dashboard** unter **Alle Ressourcen** und der Hauptseite **Recovery Services-Tresore** hinzugefügt.
 
@@ -136,15 +136,15 @@ Die Richtlinie wird dem Konfigurationsserver automatisch zugeordnet.
 > [!WARNING]
 > Stellen Sie sicher, dass Sie für die Häufigkeit der Momentaufnahmen für App-Konsistenz der Replikationsrichtlinie **AUS** angeben. Nur absturzkonsistente Wiederherstellungspunkte werden beim Replizieren von Servern unter Windows Server 2008 unterstützt. Wenn Sie einen anderen Wert für die Häufigkeit der Momentaufnahmen für App-Konsistenz angeben, werden falsche Warnungen generiert. Dies führt dazu, dass die Replikationsintegrität des Servers aufgrund mangelnder App-konsistenter Wiederherstellungspunkte kritisch wird.
 
-   ![Erstellen einer Replikationsrichtlinie](media/migrate-tutorial-windows-server-2008/create-policy.png)
+   ![Screenshot: Optionen zum Erstellen einer Replikationsrichtlinie](media/migrate-tutorial-windows-server-2008/create-policy.png)
 
 ### <a name="enable-replication"></a>Aktivieren der Replikation
 
 [Aktivieren Sie die Replikation](physical-azure-disaster-recovery.md#enable-replication) für die Windows Server 2008 SP2- bzw. Windows Server 2008 R2 SP1-Server, die migriert werden sollen.
    
-   ![Hinzufügen eines physischen Servers](media/migrate-tutorial-windows-server-2008/Add-physical-server.png)
+   ![Screenshot: Optionen zum Hinzufügen physischer Computer](media/migrate-tutorial-windows-server-2008/Add-physical-server.png)
 
-   ![Aktivieren der Replikation](media/migrate-tutorial-windows-server-2008/Enable-replication.png)
+   ![Screenshot: Optionen zum Aktivieren der Replikation](media/migrate-tutorial-windows-server-2008/Enable-replication.png)
 
 ### <a name="run-a-test-migration"></a>Ausführen einer Testmigration
 
@@ -152,7 +152,7 @@ Nachdem die erste Replikation abgeschlossen ist und der Serverstatus zu **Gesch�
 
 Führen Sie ein [Testfailover](tutorial-dr-drill-azure.md) in Azure aus, um sicherzustellen, dass alles wie erwartet funktioniert.
 
-   ![Testfailover](media/migrate-tutorial-windows-server-2008/testfailover.png)
+   ![Screenshot: Befehl für das Testfailover](media/migrate-tutorial-windows-server-2008/testfailover.png)
 
 
 ### <a name="migrate-to-azure"></a>Migrieren zu Azure
@@ -168,7 +168,7 @@ Führen Sie ein Failover für die zu migrierenden Computer aus.
     - Der Migrationsvorgang wird abgeschlossen, und die Replikation sowie die Site Recovery-Abrechnung für den Server werden beendet.
     - In diesem Schritt werden die Replikationsdaten entfernt. Die migrierten virtuellen Computer werden nicht gelöscht.
 
-   ![Abschließen der Migration](media/migrate-tutorial-windows-server-2008/complete-migration.png)
+   ![Screenshot: Befehl zum Abschließen der Migration](media/migrate-tutorial-windows-server-2008/complete-migration.png)
 
 
 > [!WARNING]

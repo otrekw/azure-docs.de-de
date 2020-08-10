@@ -3,12 +3,12 @@ title: Organisieren Ihrer Ressourcen mit Verwaltungsgruppen – Azure Governanc
 description: Informationen zu Verwaltungsgruppen und ihrer Verwendung sowie zur Funktionsweise ihrer Berechtigungen
 ms.date: 07/06/2020
 ms.topic: overview
-ms.openlocfilehash: 1856b2d6f8fafb18757d547d0117f584fb2abb24
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 787658cebcb8345edd616bcdde485883ea43e8dc
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87132924"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87529346"
 ---
 # <a name="what-are-azure-management-groups"></a>Was sind Azure-Verwaltungsgruppen?
 
@@ -38,7 +38,7 @@ Ein weiteres Szenario, in dem Sie Verwaltungsgruppen verwenden würden, ist das 
 
 ## <a name="root-management-group-for-each-directory"></a>Stammverwaltungsgruppe für jedes Verzeichnis
 
-Jedes Verzeichnis erhält eine einzelne Verwaltungsgruppe auf oberster Ebene, die als Stammverwaltungsgruppe bezeichnet wird. Die Stammverwaltungsgruppe ist in die Hierarchie integriert, sodass ihr alle Verwaltungsgruppen und Abonnements untergeordnet sind. Diese Stammverwaltungsgruppe ermöglicht das Anwenden von globalen Richtlinien und RBAC-Zuweisungen auf Verzeichnisebene. Der [globale Azure AD-Administrator muss zu Beginn seine eigenen Rechte erhöhen](../../role-based-access-control/elevate-access-global-admin.md) – und zwar auf die Rolle des Benutzerzugriffsadministrators dieser Stammgruppe. Nach der Erhöhung der Zugriffsrechte kann der Administrator jede RBAC-Rolle anderen Benutzern oder Gruppen des Verzeichnisses zuweisen, um die Hierarchie zu verwalten. Als Administrator können Sie Ihr eigenes Konto als Besitzer der Stammverwaltungsgruppe zuweisen.
+Jedes Verzeichnis erhält eine einzelne Verwaltungsgruppe auf oberster Ebene, die als Stammverwaltungsgruppe bezeichnet wird. Die Stammverwaltungsgruppe ist in die Hierarchie integriert, sodass ihr alle Verwaltungsgruppen und Abonnements untergeordnet sind. Diese Stammverwaltungsgruppe ermöglicht das Anwenden von globalen Richtlinien und Azure-Rollenzuweisungen auf Verzeichnisebene. Der [globale Azure AD-Administrator muss zu Beginn seine eigenen Rechte erhöhen](../../role-based-access-control/elevate-access-global-admin.md) – und zwar auf die Rolle des Benutzerzugriffsadministrators dieser Stammgruppe. Nach der Erhöhung der Zugriffsrechte kann der Administrator jede Azure-Rolle anderen Benutzern oder Gruppen des Verzeichnisses zuweisen, um die Hierarchie zu verwalten. Als Administrator können Sie Ihr eigenes Konto als Besitzer der Stammverwaltungsgruppe zuweisen.
 
 ### <a name="important-facts-about-the-root-management-group"></a>Wichtige Fakten zur Stammverwaltungsgruppe
 
@@ -50,7 +50,7 @@ Jedes Verzeichnis erhält eine einzelne Verwaltungsgruppe auf oberster Ebene, di
   - Neue Abonnements werden bei ihrer Erstellung standardmäßig der Stammverwaltungsgruppe zugeordnet.
 - Alle Azure-Kunden können die Stammverwaltungsgruppe sehen, aber nicht alle Kunden besitzen Zugriff, um diese Stammverwaltungsgruppe zu verwalten.
   - Jeder Benutzer, der Zugriff auf ein Abonnement besitzt, kann den Kontext erkennen, in dem sich das Abonnement in der Hierarchie befindet.  
-  - Niemand erhält Standardzugriff auf die Stammverwaltungsgruppe. Globale Azure AD-Administratoren sind die einzigen Benutzer, die ihre Rechte erhöhen können, um Zugriff zu erlangen. Sobald die globalen Administratoren über Zugriff auf die Stammverwaltungsgruppe verfügen, können sie anderen Benutzern eine beliebige RBAC-Rolle zur Verwaltung  
+  - Niemand erhält Standardzugriff auf die Stammverwaltungsgruppe. Globale Azure AD-Administratoren sind die einzigen Benutzer, die ihre Rechte erhöhen können, um Zugriff zu erlangen. Sobald die globalen Administratoren über Zugriff auf die Stammverwaltungsgruppe verfügen, können sie anderen Benutzern eine beliebige Azure-Rolle zur Verwaltung  
     zuweisen.
 - Im SDK fungiert die Stammverwaltungsgruppe, auch „Mandantenstamm“, als Verwaltungsgruppe.
 
@@ -82,12 +82,12 @@ Sollten Sie Fragen zu diesem Abgleichvorgang haben, wenden Sie sich an `manageme
   
 ## <a name="management-group-access"></a>Zugriff auf die Verwaltungsgruppe
 
-Azure-Verwaltungsgruppen unterstützen die [rollenbasierte Zugriffssteuerung (RBAC) in Azure](../../role-based-access-control/overview.md) für alle Ressourcenzugriffe und Rollendefinitionen.
-Diese Berechtigungen werden an untergeordnete Ressourcen in der Hierarchie vererbt. Eine beliebige RBAC-Rolle kann einer Verwaltungsgruppe zugewiesen werden, die an die untergeordneten Ressourcen in der Hierarchie vererbt wird. Beispielsweise kann die RBAC-Rolle „VM-Mitwirkender“ einer Verwaltungsgruppe zugewiesen werden. Diese Rolle verfügt über keine Aktion für die Verwaltungsgruppe, wird jedoch an alle virtuellen Computer unter dieser Verwaltungsgruppe vererbt.
+Azure-Verwaltungsgruppen unterstützen die [rollenbasierte Zugriffssteuerung in Azure (Azure RBAC)](../../role-based-access-control/overview.md) für alle Ressourcenzugriffe und Rollendefinitionen.
+Diese Berechtigungen werden an untergeordnete Ressourcen in der Hierarchie vererbt. Eine beliebige Azure-Rolle kann einer Verwaltungsgruppe zugewiesen werden, die an die untergeordneten Ressourcen in der Hierarchie vererbt wird. Beispielsweise kann die Azure-Rolle „VM-Mitwirkender“ einer Verwaltungsgruppe zugewiesen werden. Diese Rolle verfügt über keine Aktion für die Verwaltungsgruppe, wird jedoch an alle virtuellen Computer unter dieser Verwaltungsgruppe vererbt.
 
 Die folgende Abbildung zeigt die Liste der Rollen und die unterstützten Aktionen für Verwaltungsgruppen.
 
-| Name der RBAC-Rolle             | Erstellen | Umbenennen | Verschieben\*\* | Löschen | Zuweisen des Zugriffs | Zuweisen der Richtlinie | Lesen  |
+| Azure-Rollenname             | Erstellen | Umbenennen | Verschieben\*\* | Löschen | Zuweisen des Zugriffs | Zuweisen der Richtlinie | Lesen  |
 |:-------------------------- |:------:|:------:|:--------:|:------:|:-------------:| :------------:|:-----:|
 |Besitzer                       | X      | X      | X        | X      | X             | X             | X     |
 |Mitwirkender                 | X      | X      | X        | X      |               |               | X     |

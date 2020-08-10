@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: afa8375805ebc5d52ac716126adca86850147166
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 5ce98c785700301bba92926d7d5a243b614eca7f
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134083"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87504227"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>Einrichten der Notfallwiederherstellung von lokalen Hyper-V-VMs in Azure
 
@@ -51,14 +51,14 @@ Dies ist das dritte Tutorial in einer Reihe. Es wird davon ausgegangen, dass Sie
 6. Wählen Sie unter **Are you using System Center VMM to manage your Hyper-V hosts?** (Verwenden Sie System Center VMM für die Verwaltung Ihrer Hyper-V-Hosts?) die Option **Nein** aus.
 7. Klicken Sie auf **OK**.
 
-    ![Replikationsziel](./media/hyper-v-azure-tutorial/replication-goal.png)
+    ![Screenshot: Schutzzieloptionen unter „Infrastruktur vorbereiten“](./media/hyper-v-azure-tutorial/replication-goal.png)
 
 ## <a name="confirm-deployment-planning"></a>Bestätigen der Bereitstellungsplanung
 
 1. Falls Sie eine umfangreiche Bereitstellung planen, laden Sie unter **Bereitstellungsplanung** über den auf der Seite bereitgestellten Link den Bereitstellungsplaner für Hyper-V herunter. Weitere Informationen zur Hyper-V-Bereitstellungsplanung finden Sie [hier](hyper-v-deployment-planner-overview.md).
 2. In diesem Tutorial wird der Bereitstellungsplaner nicht benötigt. Wählen Sie unter **Haben Sie die Bereitstellungsplanung abgeschlossen?** die Option **Wird später durchgeführt** und dann **OK** aus.
 
-    ![Bereitstellungsplanung](./media/hyper-v-azure-tutorial/deployment-planning.png)
+    ![Screenshot: Optionen für die Bereitstellungsplanung unter „Infrastruktur vorbereiten“](./media/hyper-v-azure-tutorial/deployment-planning.png)
 
 ## <a name="set-up-the-source-environment"></a>Einrichten der Quellumgebung
 
@@ -68,17 +68,17 @@ Zum Einrichten der Quellumgebung erstellen Sie eine Hyper-V-Site und fügen dies
 2. Wählen Sie unter **Quelle vorbereiten** **+Hyper-V-Site** aus.
 3. Geben Sie unter **Hyper-V-Site erstellen** einen Namen für die Site an. Hier wird **ContosoHyperVSite** verwendet.
 
-    ![Hyper-V-Standort](./media/hyper-v-azure-tutorial/hyperv-site.png)
+    ![Screenshot: Auswahl des Hyper-V-Standorts unter „Infrastruktur vorbereiten“](./media/hyper-v-azure-tutorial/hyperv-site.png)
 
 4. Wählen Sie nach Erstellung der Site unter **Quelle vorbereiten** > **Schritt 1: Hyper-V-Site auswählen** die Site aus, die Sie erstellt haben.
 5. Wählen Sie **+ Hyper-V-Server** aus.
 
-    ![Hyper-V-Server](./media/hyper-v-azure-tutorial/hyperv-server.png)
+    ![Screenshot: Auswahl des Hyper-V-Servers unter „Infrastruktur vorbereiten“](./media/hyper-v-azure-tutorial/hyperv-server.png)
 
 6. Laden Sie das Installationsprogramm für den Microsoft Azure Site Recovery-Anbieter herunter.
 7. Laden Sie den Tresorregistrierungsschlüssel herunter. Sie benötigen diesen Schlüssel für die Anbieterinstallation. Der Schlüssel ist nach der Erstellung fünf Tage lang gültig.
 
-    ![Herunterladen von Anbieter- und Registrierungsschlüssel](./media/hyper-v-azure-tutorial/download.png)
+    ![Screenshot: Optionen zum Herunterladen des Anbieters und des Registrierungsschlüssels](./media/hyper-v-azure-tutorial/download.png)
     
 
 ### <a name="install-the-provider"></a>Installieren des Anbieters

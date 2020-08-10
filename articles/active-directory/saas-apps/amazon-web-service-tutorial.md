@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 04/20/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 75b6ba110264ae3826093222e9cd3c4073bc17f0
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 0e16fdaed8ce7e73718569652e88e66844850175
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683592"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87416564"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-amazon-web-services-aws"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Amazon Web Services (AWS)
 
@@ -105,7 +105,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
    ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
-1. Im Abschnitt **SAML-Basiskonfiguration** ist die Anwendung vorkonfiguriert, und die notwendigen URLs sind bereits mit Azure aufgefüllt. Der Benutzer muss die Konfiguration speichern, indem er die Schaltfläche **Speichern** auswählt.
+1. Aktualisieren Sie im Abschnitt **Grundlegende SAML-Konfiguration** sowohl **Bezeichner (Entitäts-ID)** als auch **Antwort-URL** mit dem gleichen Standardwert: `https://signin.aws.amazon.com/saml`. Wählen Sie **Speichern** aus, um die Änderungen an der Konfiguration zu speichern.
 
 1. Falls Sie mehre Instanzen konfigurieren, geben Sie einen Bezeichnerwert an. Verwenden Sie ab der zweiten Instanz das folgende Format – einschließlich eines **#** -Zeichens zum Angeben eines eindeutigen SPN-Werts:
 
@@ -123,7 +123,15 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
     | Role            | user.assignedroles |  `https://aws.amazon.com/SAML/Attributes` |
     | SessionDuration             | „Geben Sie einen Wert zwischen 900 Sekunden (15 Minuten) und 43.200 Sekunden (12 Stunden) an“ |  `https://aws.amazon.com/SAML/Attributes` |
 
-1. Navigieren Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** zu **Verbundmetadaten-XML**, und wählen Sie **Herunterladen** aus, um das Zertifikat herunterzuladen und auf Ihrem Computer zu speichern.
+1. Wählen Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Dialogfeld **SAML-Signaturzertifikat** (Schritt 3) die Option **Zertifikat hinzufügen** aus.
+
+    ![Erstellen eines neuen SAML-Zertifikats](common/add-saml-certificate.png)
+
+1. Generieren Sie ein neues SAML-Signaturzertifikat, und wählen Sie **Neues Zertifikat** aus. Geben Sie eine E-Mail-Adresse für Zertifikatbenachrichtigungen ein.
+   
+    ![Neues SAML-Zertifikat](common/new-saml-certificate.png) 
+
+1. Suchen Sie im Abschnitt **SAML-Signaturzertifikat** nach **Verbundmetadaten-XML**, und wählen Sie **Herunterladen** aus, um das Zertifikat herunterzuladen und auf Ihrem Computer zu speichern.
 
     ![Downloadlink für das Zertifikat](common/metadataxml.png)
 

@@ -3,12 +3,12 @@ title: Klonen eines Jupyter-Notebooks von GitHub mithilfe von Azure Notebooks (V
 description: Klonen Sie schnell ein Jupyter-Notebook aus einem GitHub-Repository, und führen Sie es in Ihrem Azure Notebooks-Konto aus.
 ms.topic: quickstart
 ms.date: 12/04/2018
-ms.openlocfilehash: 35352e74a8db071a2f85bd71857d47f3af1953e2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 267e79e7d4bf108ac3b2c72d64cee5a07ba638be
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85833085"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87424476"
 ---
 # <a name="quickstart-clone-a-notebook-in-azure-notebooks-preview"></a>Schnellstart: Klonen eines Notebooks in Azure Notebooks (Vorschauversion)
 
@@ -49,7 +49,7 @@ Keine.
 
 1. Nach dem Abschluss des Klonens führt Azure Notebooks Sie zum neuen Projekt, in dem Sie die Kopien aller Dateien sehen können.
 
-    [![](media/quickstarts/completed-clone.png "View of a completed clone")](media/quickstarts/completed-clone.png#lightbox)
+    :::image type="content" source="media/quickstarts/completed-clone.png" alt-text="Ansicht eines fertig gestellten Klons" lightbox="media/quickstarts/completed-clone.png":::
 
 ## <a name="share-a-notebook"></a>Teilen eines Notebooks
 
