@@ -6,16 +6,16 @@ ms.assetid: daf81798-7acc-419a-bc32-b5a41c6db56b
 ms.topic: reference
 ms.date: 02/21/2020
 ms.author: cshoe
-ms.openlocfilehash: b046017a4e6ae2eb08271792ed708e558dc23093
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 72312df41a74ac8f2321b31287cbb3cd87d1a04b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79235222"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87041749"
 ---
 # <a name="azure-event-hubs-bindings-for-azure-functions"></a>Azure Event Hubs-Bindungen für Azure Functions
 
-In diesem Artikel erfahren Sie, wie Sie [Azure Event Hubs](../event-hubs/event-hubs-what-is-event-hubs.md)-Trigger für Azure Functions verwenden. Azure Functions unterstützt Trigger- und [Ausgabebindungen](functions-bindings-event-hubs-output.md) für Event Hubs.
+In diesem Artikel erfahren Sie, wie Sie [Azure Event Hubs](../event-hubs/event-hubs-about.md)-Trigger für Azure Functions verwenden. Azure Functions unterstützt Trigger- und [Ausgabebindungen](functions-bindings-event-hubs-output.md) für Event Hubs.
 
 Informationen zu Setup- und Konfigurationsdetails finden Sie in der [Übersicht](functions-bindings-event-hubs.md).
 

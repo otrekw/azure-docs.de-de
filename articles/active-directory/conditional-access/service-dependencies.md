@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 00b23a845002f5a92128917d81fdadf5a647d798
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 578f1e97c8a53604edca7b803933139362a763a7
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85253187"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87419732"
 ---
 # <a name="what-are-service-dependencies-in-azure-active-directory-conditional-access"></a>Was sind Dienstabhängigkeiten beim bedingten Azure Active Directory-Zugriff? 
 
@@ -51,6 +51,7 @@ In der Tabelle unten sind die zusätzlichen Dienstabhängigkeiten aufgeführt, d
 |                     | SharePoint                                  | Früh gebunden |
 | Microsoft Teams     | Exchange                                    | Früh gebunden |
 |                     | MS Planner                                  | Spät gebunden  |
+|                     | Microsoft Stream                            | Spät gebunden  |
 |                     | SharePoint                                  | Früh gebunden |
 |                     | Skype for Business Online                   | Früh gebunden |
 | Office-Portal       | Exchange                                    | Spät gebunden  |

@@ -6,12 +6,12 @@ ms.assetid: dea3f41e-cf35-481b-a6bc-33d7fc9d01b1
 ms.topic: article
 ms.date: 11/09/2017
 ms.custom: seodec18
-ms.openlocfilehash: b1c44fb9f44eb75e6d2a766213c5db094ebe79b1
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 93f823a623145f8dd8bf5118de973dfbc095bfb4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81537643"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87068204"
 ---
 # <a name="azure-app-service-plan-overview"></a>Azure App Service-Plan – Übersicht
 
@@ -79,8 +79,10 @@ Für die Nutzung der App Service-Features, die für Sie verfügbar sind (Konfigu
 
 > [!NOTE]
 > Wenn Sie App Service in einen anderen Azure-Dienst integrieren, müssen Sie ggf. Gebühren für diese anderen Dienste berücksichtigen. Beispiel: Wenn Sie Azure Traffic Manager zum geografischen Skalieren Ihrer App verwenden, werden Ihnen für Azure Traffic Manager auch Gebühren je nach Nutzung berechnet. Informationen dazu, wie Sie für Ihre dienstübergreifenden Kosten in Azure einen Schätzwert erhalten, finden Sie unter [Preisrechner](https://azure.microsoft.com/pricing/calculator/). 
->
->
+
+Möchten Sie Ihre Cloudausgaben optimieren und Geld sparen?
+
+[!INCLUDE [cost-management-horizontal](../../includes/cost-management-horizontal.md)]
 
 ## <a name="what-if-my-app-needs-more-capabilities-or-features"></a>Was passiert, wenn meine App mehr Funktionen oder Features benötigt?
 

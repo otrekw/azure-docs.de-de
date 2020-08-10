@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 37a387b93f1c6b3796b66993405787cf43990bc4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 88a8dcb53ab2f845f52121b11c96c23ad0a3e791
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83684022"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87078927"
 ---
 # <a name="sensor-partner-integration"></a>Integration von Partnern für Sensordaten
 
@@ -131,7 +131,7 @@ Der FarmBeats-Datenhub bietet folgende APIs, die Geräte-Partnerunternehmen die 
 - /**SensorModel:** SensorModel entspricht den Metadaten des Sensors. Hierzu zählen beispielsweise der Hersteller, der Sensortyp – analog oder digital – und die Sensormessung, z. B. Umgebungstemperatur und Luftdruck.
 - /**Sensor:** „Sensor“ entspricht einem physischen Sensor, der Werte aufzeichnet. Ein Sensor ist in der Regel mit einem Gerät mit einer Geräte-ID verbunden.
 
-  **DeviceModel** |  |
+  DeviceModel | BESCHREIBUNG |
   --- | ---
   Type (Knoten, Gateway)  | Typ des Geräts – Knoten oder Gateway |
   Hersteller  | Name des Herstellers |
@@ -140,7 +140,7 @@ Der FarmBeats-Datenhub bietet folgende APIs, die Geräte-Partnerunternehmen die 
   Name  | Der Name zur Identifizierung der Ressource. Zum Beispiel Modellname oder Produktname. |
   BESCHREIBUNG  | Aussagekräftige Beschreibung des Modells |
   Eigenschaften  | Zusätzliche Eigenschaften des Herstellers |
-  **Device** |  |
+  **Device** | **Beschreibung** |
   DeviceModelId  |ID des zugeordneten Gerätemodells |
   HardwareId   |Eindeutige ID für das Gerät (beispielsweise MAC-Adresse).  |
   ReportingInterval |Berichtsintervall in Sekunden |
@@ -149,7 +149,7 @@ Der FarmBeats-Datenhub bietet folgende APIs, die Geräte-Partnerunternehmen die 
   Name  | Name zum Identifizieren der Ressource. Gerätepartner müssen einen Namen senden, der mit dem Gerätenamen auf der Partnerseite übereinstimmt. Wenn der Gerätename auf der Seite des Gerätepartners benutzerdefiniert ist, muss derselbe benutzerdefinierte Name in FarmBeats angegeben werden.  |
   BESCHREIBUNG  | Eine aussagekräftige Beschreibung  |
   Eigenschaften  |Zusätzliche Eigenschaften des Herstellers  |
-  **SensorModel** |  |
+  **SensorModel** | **Beschreibung** |
   Type (analog, digital)  |Gibt an, ob der Sensor analog oder digital ist.|
   Hersteller  | Name des Herstellers. |
   ProductCode  | Produktcode oder Modellname oder -nummer. Beispiel: RS-CO2-N01  |
@@ -163,7 +163,7 @@ Der FarmBeats-Datenhub bietet folgende APIs, die Geräte-Partnerunternehmen die 
   Name  | Der Name zur Identifizierung der Ressource. Beispiel: Modell- oder Produktname.
   BESCHREIBUNG  | Aussagekräftige Beschreibung des Modells
   Eigenschaften  | Zusätzliche Eigenschaften des Herstellers
-  **Sensor**  |  |
+  **Sensor**  | **Beschreibung** |
   HardwareId  | Eindeutige, vom Hersteller festgelegte ID für den Sensor
   SensorModelId  | ID des zugeordneten Sensormodells
   Standort  | Breitengrad (–90 bis +90), Längengrad (–180 bis +180) und Höhe (in Metern) des Sensors

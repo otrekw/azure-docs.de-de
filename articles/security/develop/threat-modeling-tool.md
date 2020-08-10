@@ -7,12 +7,12 @@ ms.service: security
 ms.subservice: security-develop
 ms.topic: article
 ms.date: 02/16/2017
-ms.openlocfilehash: 0d800102b6f6ff77944a2b625d3bcecef69c1ee9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dcf782a41dbb09135f7a4cd767a94ff90578b6ba
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75548751"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87169360"
 ---
 # <a name="microsoft-threat-modeling-tool"></a>Microsoft Threat Modeling Tool
 
@@ -35,7 +35,7 @@ Nachfolgend sind einige Funktionen und Innovationen des Tools aufgeführt:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Die folgende Tabelle enthält wichtige Links, um Ihnen den Einstieg in das Threat Modeling Tool zu erleichtern:
+Die folgende Tabelle enthält wichtige Links, um Ihnen den Einstieg in das Threat Modeling Tool zu erleichtern: Weitere Informationen: [Systemanforderungen](threat-modeling-tool-releases.md)
 
 | Schritt  | BESCHREIBUNG                                                                                   |
 | ----- | --------------------------------------------------------------------------------------------- |

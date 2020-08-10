@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/17/2019
 ms.author: kenwith
 ms.reviewer: arvindha, celested
-ms.openlocfilehash: dd5248996661be6d4ace81afd7ab942ab70eb4ff
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cecea24fe002ee64d54052635a6d7dec982aeee2
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84781632"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87445652"
 ---
 # <a name="plan-an-automatic-user-provisioning-deployment"></a>Planen einer automatischen Benutzerbereitstellung
 
@@ -256,7 +256,7 @@ Wählen Sie die auszuführenden Schritte gemäß den Anforderungen Ihrer Lösung
 
 Bei der ersten Ausführung des Azure AD-Bereitstellungsdiensts wird beim ersten Zyklus für das Quellsystem und die Zielsysteme eine Momentaufnahme aller Benutzerobjekte für jedes Zielsystem erstellt.
 
-Wenn Sie die automatische Bereitstellung für eine Anwendung aktivieren, kann der erste Zyklus 20 Minuten bis mehrere Stunden dauern. Die Dauer hängt von der Größe des Azure AD-Verzeichnisses und der Anzahl der Benutzer im Bereitstellungsbereich ab. Weitere Informationen finden Sie unter [Verbessern der Bereitstellungsleistung](../app-provisioning/application-provisioning-when-will-provisioning-finish.md).
+Wenn Sie die automatische Bereitstellung für eine Anwendung aktivieren, kann der erste Zyklus 20 Minuten bis mehrere Stunden dauern. Die Dauer hängt von der Größe des Azure AD-Verzeichnisses und der Anzahl der Benutzer im Bereitstellungsbereich ab.
 
 Der Bereitstellungsdienst speichert den Status beider Systeme nach dem ersten Zyklus, sodass die Leistung der nachfolgenden inkrementellen Zyklen verbessert wird.
 
@@ -299,8 +299,6 @@ Unter den folgenden Links finden Sie Informationen zum Beheben von Problemen, di
 * [Problem beim Konfigurieren der Benutzerbereitstellung für eine Azure AD-Kataloganwendung](../app-provisioning/application-provisioning-config-problem.md)
 
 * [Synchronisieren eines Attributs aus lokalen Active Directory Domain Services mit Azure AD für die Bereitstellung einer Anwendung](../app-provisioning/user-provisioning-sync-attributes-for-mapping.md)
-
-* [Die Benutzerbereitstellung für eine Azure AD-Kataloganwendung dauert Stunden oder länger](../app-provisioning/application-provisioning-when-will-provisioning-finish.md)
 
 * [Problem saving administrator credentials while configuring user provisioning to an Azure Active Directory Gallery application](../app-provisioning/application-provisioning-config-problem-storage-limit.md) (Probleme beim Speichern von Administratoranmeldeinformationen während des Konfigurierens der Benutzerbereitstellung in einer Anwendung aus dem Azure Active Directory-Katalog)
 

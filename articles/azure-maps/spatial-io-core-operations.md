@@ -1,19 +1,20 @@
 ---
 title: Zentrale E/A-Vorgänge | Microsoft Azure Maps
 description: Erfahren Sie, wie Sie XML-Daten und Daten mit Trennzeichen mithilfe von Kernbibliotheken im Modul Spatial IO effizient lesen und schreiben können.
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 03/03/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 0b8fe1b319dc480879944d28f10645025a8cb38e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 021680a81cc5f97bb92c3a9e14036e1a88dae278
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80371443"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87279507"
 ---
 # <a name="core-io-operations"></a>Zentrale E/A-Vorgänge
 
@@ -30,7 +31,7 @@ Die `atlas.io.core.CsvReader`-Klasse liest Zeichenfolgen, die Datasets mit Trenn
 
 Standardmäßig verwendet der Reader das Kommazeichen als Trennzeichen. Das Trennzeichen kann jedoch in ein beliebiges Einzelzeichen geändert oder auf `'auto'` festgelegt werden. Bei Festlegung auf `'auto'` analysiert der Reader die erste Zeile des Texts in der Zeichenfolge. Anschließend wählt er in der nachstehenden Tabelle das am häufigsten verwendete Zeichen aus, um es als Trennzeichen zu verwenden.
 
-| | |
+| Trennzeichen | Zeichen |
 | :-- | :-- |
 | Komma | `,` |
 | Registerkarte | `\t` |

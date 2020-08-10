@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 06/30/2020
+ms.date: 07/30/2020
 ms.author: victorh
-ms.openlocfilehash: 7a30238250c9fcb86f1cc01226d44ab385c61843
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6e90a8bc0998b43a84658958215e4b7977f8fdd0
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87086624"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87461305"
 ---
 # <a name="use-fqdn-filtering-in-network-rules-preview"></a>Verwenden der FQDN-Filterung in Netzwerkregeln (Vorschau)
 
@@ -20,15 +20,16 @@ ms.locfileid: "87086624"
 > Die FQDN-Filterung in Netzwerkregeln befindet sich derzeit in der öffentlichen Vorschau.
 > Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Ein vollqualifizierter Domänenname (Fully Qualified Domain Name, FQDN) stellt den Domänennamen eines Hosts dar. Ein Domänenname ist einer einzelnen oder mehreren IP-Adressen zugeordnet. Sie können FQDNs und FQDN-Tags in Anwendungsregeln zulassen oder blockieren. Mithilfe von benutzerdefinierten DNS- und DNS-Proxyeinstellungen können Sie die FQDN-Filterung auch in Netzwerkregeln anwenden.
+Ein vollqualifizierter Domänenname (Fully Qualified Domain Name, FQDN) stellt den Domänennamen eines Hosts oder von IP-Adressen dar. Sie können FQDNs in Netzwerkregeln verwenden, basierend auf der DNS-Auflösung in Azure Firewall und der Firewallrichtlinie. Diese Funktion ermöglicht es Ihnen, ausgehenden Datenverkehr mit einem beliebigen TCP/UDP-Protokoll (einschließlich NTP, SSH, RDP und mehr) zu filtern. Für die Verwendung von FQDNs in Ihren Netzwerkregeln müssen Sie den DNS-Proxy aktivieren. Weitere Informationen finden Sie unter [DNS-Einstellungen für Azure Firewall (Vorschau)](dns-settings.md).
 
 ## <a name="how-it-works"></a>Funktionsweise
 
-In Azure Firewall wird der vollqualifizierte Domänenname mithilfe der DNS-Einstellungen in eine oder mehrere IP-Adressen umgewandelt und die Regelverarbeitung gemäß der Azure DNS-Konfiguration oder einer benutzerdefinierten DNS-Konfiguration ausgeführt.
+Nachdem Sie definiert haben, welchen DNS-Server Ihre Organisation benötigt (Azure DNS oder Ihr eigenes benutzerdefiniertes DNS), übersetzt Azure Firewall den FQDN in IP-Adressen, basierend auf dem ausgewählten DNS-Server. Diese Übersetzung erfolgt bei der Verarbeitung von Anwendungs- und Netzwerkregeln.
 
-Für die Verwendung von FQDNs in Netzwerkregeln wird die Aktivierung des DNS-Proxys empfohlen. Andernfalls werden die Regeln möglicherweise nicht korrekt verarbeitet. Bei aktiviertem DNS-Proxy wird der DNS-Datenverkehr zu Azure Firewall geleitet, wo Sie den benutzerdefinierten DNS-Server konfigurieren können. Auf diese Weise verwenden Firewall und Clients denselben konfigurierten DNS-Server. Ist der DNS-Proxy nicht aktiviert, erzeugt Azure Firewall möglicherweise unterschiedliche Antworten, da der Client und die Firewall unterschiedliche Server für die Namensauflösung verwenden. Erhalten der Client und die Firewall unterschiedliche DNS-Antworten, wird die FQDN-Filterung in Netzwerkregeln möglicherweise fehlerhaft oder inkonsistent ausgeführt.
+Worin besteht der Unterschied zwischen der Verwendung von Domänennamen in Anwendungsregeln im Vergleich zu der Verwendung in Netzwerkregeln? 
 
-Sie können diese Anforderung außer Kraft setzen, wenn Sie bestätigen, dass Sie sich des Risikos bewusst sind, bevor Sie in der Regelsammlung auf **Speichern** klicken.
+- Die FQDN-Filterung in Anwendungsregeln für HTTP/S und MSSQL basiert auf einem auf Anwendungsebene transparenten Proxy und dem SNI-Header. Daher kann hierbei zwischen zwei FQDNs unterschieden werden, die zur selben IP-Adresse aufgelöst werden. Bei der Verwendung von FQDN-Filterung in Netzwerkregeln ist dies nicht der Fall. Verwenden Sie nach Möglichkeit immer Anwendungsregeln.
+- In Anwendungsregeln können Sie HTTP/S und MSSQL als Ihre ausgewählten Protokolle verwenden. In Netzwerkregeln können Sie ein beliebiges TCP/UDP-Protokoll mit ihren Ziel-FQDNs verwenden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

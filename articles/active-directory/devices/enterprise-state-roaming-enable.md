@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: na
 ms.custom: references_regions
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 47a2f8b69c8ef75be4f9190933969ed20404b5da
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f5f6e44aa89c1e2815d70bb4ba2ae5f5680252ac
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85253000"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87541888"
 ---
 # <a name="enable-enterprise-state-roaming-in-azure-active-directory"></a>Aktivieren von Enterprise State Roaming in Azure Active Directory
 
@@ -31,7 +31,7 @@ Wenn Sie Enterprise State Roaming aktivieren, wird Ihrer Organisation über Azur
 ## <a name="to-enable-enterprise-state-roaming"></a>So aktivieren Sie Enterprise State Roaming
 
 1. Melden Sie sich beim [Azure AD Admin Center](https://aad.portal.azure.com/) an.
-1. Wählen Sie **Azure Active Directory** &gt; **Geräte** &gt; **Enterprise State Roaming** aus.
+1. Wählen Sie **Azure Active Directory** > **Geräte** > **Enterprise State Roaming**.
 1. Wählen Sie **Benutzer können Einstellungen und App-Daten geräteübergreifend synchronisieren**. Weitere Informationen finden Sie unter [Verwalten von Geräten im Azure-Portal – Vorschau](/azure/active-directory/device-management-azure-portal).
   
    ![Bild der Geräteeinstellung „Benutzer können Einstellungen und App-Daten geräteübergreifend synchronisieren“](./media/enterprise-state-roaming-enable/device-settings.png)
@@ -56,7 +56,7 @@ Der Wert für Land/Region wird im Rahmen der Azure AD-Verzeichniserstellung fest
 Führen Sie diese Schritte aus, um einen Bericht zum Gerätesynchronisierungsstatus pro Benutzer anzuzeigen.
 
 1. Melden Sie sich beim [Azure AD Admin Center](https://aad.portal.azure.com/) an.
-1. Wählen Sie **Azure Active Directory** &gt; **Benutzer** &gt; **Alle Benutzer** aus.
+1. Wählen Sie **Azure Active Directory** > **Benutzer** > **Alle Benutzer**.
 1. Wählen Sie den Benutzer und dann **Geräte** aus.
 1. Wählen Sie unter **Anzeigen** die Option **Einstellungen für Gerätesynchronisierung und App-Daten**, um den Synchronisierungsstatus anzuzeigen.
   

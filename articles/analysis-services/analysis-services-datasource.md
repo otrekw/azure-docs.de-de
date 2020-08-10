@@ -4,15 +4,15 @@ description: Beschreibt Datenquellen und Connectors, die für tabellarische Date
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 05/19/2020
+ms.date: 07/31/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: dc25c853a37de5c310d37e7ee64c6f762283cb0a
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 72a1a37bf240355e6bc87cbfd62b0dc2d25ce68b
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86077438"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503598"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>In Azure Analysis Services unterstützte Datenquellen
 
@@ -80,7 +80,7 @@ Datenquellen und -connectors, die im Datenabruf- oder Tabellenimport-Assistenten
 <a name="tab1400b">6</a>: Nur für tabellarische Modelle ab 1400.  
 <a name="sqlim">7</a>: Geben Sie bei Angabe als *Anbieterdatenquelle* in tabellarischen Modellen ab 1200 den Microsoft OLE DB-Treiber für SQL Server (MSOLEDBSQL; empfohlen), SQL Server Native Client 11.0 oder den .NET Framework-Datenanbieter für SQL Server an.  
 <a name="instgw">8</a>: Bei Angabe von MSOLEDBSQL als Datenanbieter muss ggf. der [Microsoft OLE DB-Treiber für SQL Server](https://docs.microsoft.com/sql/connect/oledb/oledb-driver-for-sql-server) heruntergeladen und auf dem Computer installiert werden, auf dem sich auch das lokale Datengateway befindet.  
-<a name="oracle">9</a>: Geben Sie für tabellarische Modelle vom Typ 1200 oder als *Anbieterdatenquelle* in tabellarischen Modellen ab 1400 den Oracle-Datenanbieter für .NET an.  
+<a name="oracle">9</a>: Geben Sie für tabellarische Modelle vom Typ 1200 oder als *Anbieterdatenquelle* in tabellarischen Modellen ab 1400 den Oracle-Datenanbieter für .NET an. Wenn er als strukturierte Datenquelle angegeben ist, stellen Sie sicher, dass Sie den [von Oracle verwalteten Anbieter aktivieren](#enable-oracle-managed-provider).   
 <a name="teradata">10</a>: Geben Sie für tabellarische Modelle vom Typ 1200 oder als *Anbieterdatenquelle* in tabellarischen Modellen ab 1400 den Teradata-Datenanbieter für .NET an.  
 <a name="filesSP">11</a>: Dateien in der lokalen SharePoint-Instanz werden nicht unterstützt.
 
@@ -123,6 +123,43 @@ Für Clouddatenquellen:
 Für tabellarische Modelle mit einem Kompatibilitätsgrad von 1400 und höher, die den In-Memory-Modus verwenden, bieten Azure SQL-Datenbank, Azure Synapse (früher SQL Data Warehouse), Dynamics 365 und SharePoint-Liste Unterstützung für OAuth-Anmeldeinformationen. Azure Analysis Services verwaltet die Tokenaktualisierung für OAuth-Datenquellen, um Timeouts für Aktualisierungsvorgänge mit langer Laufzeit zu vermeiden. Legen Sie Anmeldeinformationen mithilfe von SSMS fest, um gültige Token zu generieren.
 
 Der Direktabfragemodus wird mit OAuth-Anmeldeinformationen nicht unterstützt.
+
+## <a name="enable-oracle-managed-provider"></a>Aktivieren des von Oracle verwalteten Anbieters
+
+In einigen Fällen können DAX-Abfragen an eine Oracle-Datenquelle unerwartete Ergebnisse zurückgeben. Dies kann an dem für die Datenquellenverbindung verwendeten Anbieter liegen.
+
+Wie im Abschnitt [Grundlegendes zu Anbietern](#understanding-providers) beschrieben, stellen tabellarische Modelle eine Verbindung mit Datenquellen entweder als *strukturierte* Datenquelle oder als *Anbieter*datenquelle her. Stellen Sie bei Modellen mit einer Oracle-Datenquelle, die als Anbieterdatenquelle angegeben ist, sicher, dass der angegebene Anbieter Oracle-Datenanbieter für .NET (Oracle.DataAccess.Client) ist. 
+
+Wenn die Oracle-Datenquelle als strukturierte Datenquelle angegeben ist, aktivieren Sie die Servereigenschaft**MDataEngine\UseManagedOracleProvider**. Durch Festlegen dieser Eigenschaft wird sichergestellt, dass Ihr Modell mithilfe des empfohlenen vom Oracle-Datenanbieter für .NET verwalteten Anbieter eine Verbindung mit der Oracle-Datenquelle herstellt.
+ 
+So aktivieren Sie den von Oracle verwalteten Anbieter
+
+1. Stellen Sie in SQL Server Management Studio eine Verbindung mit Ihrem Server her.
+2. Erstellen Sie eine XMLA-Abfrage mit dem folgenden Skript. Ersetzen Sie **ServerName** durch den vollständigen Servernamen, und führen Sie dann die Abfrage aus.
+
+    ```xml
+    <Alter AllowCreate="true" ObjectExpansion="ObjectProperties" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
+        <Object />
+        <ObjectDefinition>
+            <Server xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" 
+    xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" 
+    xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" 
+    xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500">
+                <ID>ServerName</ID>
+                <Name>ServerName</Name>
+                <ServerProperties>
+                    <ServerProperty>
+                        <Name>MDataEngine\UseManagedOracleProvider</Name>
+                        <Value>1</Value>
+                    </ServerProperty>
+                </ServerProperties>
+            </Server>
+        </ObjectDefinition>
+    </Alter>
+    ```
+
+3. Starten Sie den Server neu.
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

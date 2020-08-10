@@ -2,25 +2,22 @@
 title: Verwalten des Zugriffs auf SaaS-Apps mithilfe von Mandanteneinschränkungen – Azure AD
 description: Hier erfahren Sie, wie Sie mithilfe von Mandanteneinschränkungen auf der Grundlage des verwendeten Azure AD-Mandanten steuern, welcher Benutzer auf Apps zugreifen kann.
 services: active-directory
-documentationcenter: ''
 author: kenwith
 manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/28/2019
 ms.author: kenwith
-ms.reviewer: richagi
+ms.reviewer: hpsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cd302791aa783f1a95d48f666366aa845fcaadbb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0f45cc2444a14fc138d201e3d7f81e687f53d3ac
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84763022"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285899"
 ---
 # <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>Verwalten des Zugriffs auf SaaS-Cloudanwendungen mithilfe von Mandanteneinschränkungen
 
@@ -72,6 +69,11 @@ Die folgende Konfiguration ist erforderlich, um Mandanteneinschränkungen über 
 
 Fügen Sie für jede eingehende, an „login.microsoftonline.com“, „login.microsoft.com“ oder „login.windows.net“ gerichtete Anforderung zwei HTTP-Header ein: *Restrict-Access-To-Tenants* und *Restrict-Access-Context*.
 
+> [!NOTE]
+> Stellen Sie beim Konfigurieren des Abfangens von SSL und von Header Injection sicher, dass der Datenverkehr zu https://device.login.microsoftonline.com ausgeschlossen wird. Diese URL wird für die Geräteauthentifizierung verwendet. Beim Ausführen von TLSI (TLS break and inspect) wird möglicherweise die Authentifizierung von Clientzertifikaten beeinträchtigt, was zu Problemem bei der Geräteregistrierung und dem gerätebasierten bedingten Zugriff führen kann.
+
+
+
 Die Header müssen folgende Elemente enthalten:
 
 - *Restrict-Access-To-Tenants:* Verwenden Sie den Wert \<permitted tenant list\>. Dabei handelt es sich um eine durch Kommas getrennte Liste mit Mandanten, auf die Benutzer zugreifen können sollen. Der Mandant in dieser Liste kann mithilfe jeder bei einem Mandanten registrierten Domäne identifiziert werden. Wenn Sie beispielsweise den Zugriff auf die Mandanten Contoso und Fabrikam zulassen möchten, sieht das Name/Wert-Paar wie folgt aus: `Restrict-Access-To-Tenants: contoso.onmicrosoft.com,fabrikam.onmicrosoft.com`
@@ -84,6 +86,9 @@ Die Header müssen folgende Elemente enthalten:
 Um zu verhindern, dass Benutzer ihre eigenen HTTP-Header mit nicht genehmigten Mandanten einfügen, muss der Proxy den *Restrict-Access-To-Tenants*-Header ersetzen, falls er in der eingehenden Anforderung bereits vorhanden ist.
 
 Für Clients muss bei allen Anforderungen an „login.microsoftonline.com“, „login.microsoft.com“ oder „login.windows.net“ die Verwendung des Proxys erzwungen werden. Wenn Clients also z. B. mithilfe von PAC-Dateien zur Verwendung des Proxys angewiesen werden, sollten Endbenutzer die PAC-Dateien nicht bearbeiten oder deaktivieren können.
+
+> [!NOTE]
+> Fügen Sie in der Proxykonfiguration unter „*.login.microsoftonline.com“ keine Unterdomänen ein. Dadurch wird „device.login.microsoftonline.com“ eingefügt, was möglicherweise die Authentifizierung mit Clientzertifikaten beeinträchtigt, die für die Geräteregistrierung und den gerätebasierten bedingten Zugriff verwendet werden. Konfigurieren Sie den Proxyserver so, dass „device.login.microsoftonline.com“ von TLSI (TLS break and inspect) und Header Injection ausgeschlossen ist.
 
 ## <a name="the-user-experience"></a>Die Benutzererfahrung
 
@@ -101,7 +106,7 @@ Die Konfiguration der Mandanteneinschränkungen erfolgt zwar in der Proxyinfrast
 
 2. Wählen Sie im linken Bereich **Azure Active Directory** aus. Die Übersichtsseite „Azure Active Directory Admin Center“ wird angezeigt.
 
-3. Wählen Sie in der Überschrift **Weitere Funktionen** die Option **Mandanteneinschränkungen** aus.
+3. Wählen Sie auf der Übersichtsseite **Mandanteneinschränkungen** aus.
 
 Der Administrator für den Mandanten, der als Restricted-Access-Context-Mandant angegeben ist, kann sich anhand dieses Berichts über Anmeldungen informieren, die aufgrund der Mandanteneinschränkungsrichtlinie blockiert wurden (einschließlich der jeweils verwendeten Identität und der Zielverzeichnis-ID). Anmeldungen sind enthalten, wenn es sich beim Mandanten, der die Einschränkung festlegt, entweder um den Benutzermandanten oder den Ressourcenmandanten für die Anmeldung handelt.
 

@@ -9,18 +9,18 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 91e251c8274ad85fcb0b3a65a3bdbcc660ceba00
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c3bd04d037f7852bd7d9ea51719abf27f09093b0
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85101013"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495674"
 ---
-# <a name="assigning-variables-with-synapse-sql"></a>Zuweisen von Variablen mit Synapse SQL
+# <a name="assign-variables-with-synapse-sql"></a>Zuweisen von Variablen mit Synapse SQL
 
 In diesem Artikel finden Sie Tipps zur Zuweisung von T-SQL-Variablen mit Synapse SQL.
 
-## <a name="setting-variables-with-declare"></a>Festlegen von Variablen mit DECLARE
+## <a name="set-variables-with-declare"></a>Festlegen von Variablen mit DECLARE
 
 Variablen werden in Synapse SQL mit der `DECLARE`-Anweisung oder der `SET`-Anweisung festgelegt. Das Initialisieren von Variablen mit DECLARE ist eine der flexibelsten Möglichkeiten zum Festlegen eines Variablenwerts in Synapse SQL.
 
@@ -45,7 +45,7 @@ DECLARE @p1 int = 0
 ;
 ```
 
-## <a name="setting-values-with-set"></a>Festlegen von Werten mit SET
+## <a name="set-values-with-set"></a>Festlegen von Werten mit SET
 
 SET ist eine allgemeine Methode zum Festlegen einer einzelnen Variablen.
 

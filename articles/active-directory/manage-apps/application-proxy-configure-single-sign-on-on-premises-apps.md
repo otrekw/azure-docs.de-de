@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f9b6753a0aa9e79624b9b972264611fd31f2bba8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2c706de8a7638c16f3778d0d5295069c13b79d98
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84764824"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387267"
 ---
 # <a name="saml-single-sign-on-for-on-premises-applications-with-application-proxy"></a>SAML-SSO (Single Sign-On, einmaliges Anmelden) für lokale Anwendungen mit dem Anwendungsproxy
 
@@ -47,7 +47,7 @@ In den Protokolldiagrammen unten sind die SSO-Sequenzen für einen vom Dienstanb
 
 4. Wählen Sie als SSO-Methode die Option **SAML** aus.
 
-5. Richten Sie zuerst SAML-SSO so ein, dass es bei Nutzung des Unternehmensnetzwerks funktioniert. Navigieren Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** zur Überschrift **Grundlegende SAML-Konfiguration**, und wählen Sie das Symbol **Bearbeiten** (Stift). Führen Sie die Schritte unter [Eingabe der SAML-Basiskonfiguration](configure-single-sign-on-non-gallery-applications.md#step-1-edit-the-basic-saml-configuration) aus, um die SAML-basierte Authentifizierung für die Anwendung zu konfigurieren.
+5. Richten Sie zunächst das SAML-basierte einmalige Anmelden, das im Unternehmensnetzwerk verwendet werden soll. Informationen zum Konfigurieren der SAML-basierten Authentifizierung für die Anwendung finden Sie unter „Grundlegende SAML-Konfiguration“ im Abschnitt [Konfigurieren des SAML-basierten einmaligen Anmeldens](configure-saml-single-sign-on.md).
 
 6. Fügen Sie der Anwendung mindestens einen Benutzer hinzu, und stellen Sie sicher, dass das Testkonto Zugriff auf die Anwendung hat. Verwenden Sie bei bestehender Verbindung mit dem Unternehmensnetzwerk das Testkonto, um zu ermitteln, ob Sie über einmaliges Anmelden für die Anwendung verfügen. 
 

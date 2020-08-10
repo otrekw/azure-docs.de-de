@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 01/05/2019
-ms.openlocfilehash: 0ffcda4a33c43866c3b580a60c87c1ffca59bbc4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8a72dff055f2733a07b6da705b66da939ad29bae
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87066351"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495606"
 ---
 # <a name="create-loops-that-repeat-workflow-actions-or-process-arrays-in-azure-logic-apps"></a>Erstellen von Schleifen in Azure Logic Apps, die Workflowaktionen wiederholen oder Arrays verarbeiten
 
@@ -24,7 +24,7 @@ Um Aktionen zu wiederholen, bis eine Bedingung erfüllt ist oder sich ein Zustan
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein Azure-Abonnement. Falls Sie kein Abonnement besitzen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/). 
+* Ein Azure-Konto und ein Azure-Abonnement. Falls Sie kein Abonnement besitzen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/). 
 
 * Grundlegende Kenntnisse über die [Erstellung von Logik-Apps](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
@@ -32,11 +32,11 @@ Um Aktionen zu wiederholen, bis eine Bedingung erfüllt ist oder sich ein Zustan
 
 ## <a name="foreach-loop"></a>„ForEach“-Schleife
 
-Eine „Foreach-Schleife“ wiederholt eine oder mehrere Aktionen für jedes Arrayelement und funktioniert nur für Arrays. Iterationen in einer „ForEach“-Schleife werden parallel ausgeführt. Sie können jedoch Iterationen nacheinander ausführen, indem Sie eine [sequentielle „ForEach“-Schleife](#sequential-foreach-loop) einrichten. 
+Eine „Foreach-Schleife“ wiederholt eine oder mehrere Aktionen für jedes Arrayelement und funktioniert nur für Arrays. Hier sind einige Aspekte angegeben, die beim Verwenden von „ForEach“-Schleifen berücksichtigt werden sollten:
 
-Hier sind einige Aspekte angegeben, die beim Verwenden von „ForEach“-Schleifen berücksichtigt werden sollten:
+* Standardmäßig werden Iterationen in einer „Foreach“-Schleife gleichzeitig bzw. parallel ausgeführt. Dieses Verhalten unterscheidet sich von der [**Apply to each**-Schleife von Power Automate](/power-automate/apply-to-each), bei der Iterationen einzeln bzw. nacheinander ausgeführt werden. Sie können jedoch [sequenzielle Iterationen für „Foreach“-Schleifen](#sequential-foreach-loop) einrichten. Wenn Sie beispielsweise die nächste Iteration in einer „Foreach“-Schleife mithilfe der Verzögerungsaktion ([Delay](../connectors/connectors-native-delay.md)) anhalten möchten, müssen Sie die Schleife so einrichten, dass sie sequenziell ausgeführt wird.
 
-* In geschachtelten Schleifen werden Iterationen immer nacheinander, nicht parallel ausgeführt. Um Vorgänge für Elemente in einer geschachtelten Schleife parallel auszuführen, erstellen Sie [eine untergeordnete Logik-App und rufen Sie sie auf](../logic-apps/logic-apps-http-endpoint.md).
+  Die Ausnahme beim Standardverhalten sind geschachtelte Schleifen, deren Iterationen immer nacheinander, nicht parallel ausgeführt werden. Um Vorgänge für Elemente in einer geschachtelten Schleife parallel auszuführen, erstellen Sie [eine untergeordnete Logik-App und rufen Sie sie auf](../logic-apps/logic-apps-http-endpoint.md).
 
 * Um vorhersehbare Ergebnisse von Um vorhersagbare Ergebnisse von Vorgängen mit Variablen während jeder Schleifeniteration zu erhalten, führen Sie diese Schleifen nacheinander aus. Wenn beispielsweise eine gleichzeitig laufende Schleife endet, liefern die Inkrementierung, Dekrementierung und Anhänge an variable Vorgänge vorhersehbare Ergebnisse. Bei jeder Iteration in der gleichzeitig laufenden Schleife können diese Vorgänge jedoch zu unvorhersehbaren Ergebnissen führen. 
 

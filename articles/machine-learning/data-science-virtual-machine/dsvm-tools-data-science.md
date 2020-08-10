@@ -10,12 +10,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: c414087270558e21340e50114c0563ff7e50064c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 15c3f3994b9d519a4144fa2c2e1418e92cdbd6ae
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80282306"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87012405"
 ---
 # <a name="machine-learning-and-data-science-tools-on-azure-data-science-virtual-machines"></a>Tools für maschinelles Lernen und Data Science in virtuellen Azure-Data Science Virtual Machines
 Azure Data Science Virtual Machine-Instanzen (DSVMs) verfügen über ein umfangreiches Angebot an Tools und Bibliotheken für maschinelles Lernen in gängigen Sprachen wie Python, R und Julia.
@@ -26,7 +26,7 @@ Im Anschluss sind einige der Machine Learning-Tools und -Bibliotheken auf DSVMs 
 
 Lesen Sie die vollständige Referenz zum [Azure Machine Learning SDK für Python](https://docs.microsoft.com/azure/machine-learning/overview-what-is-azure-ml).
 
-|    |           |
+| Category | Wert |
 | ------------- | ------------- |
 | Was ist das?   |   Azure Machine Learning-Dienst ist ein Clouddienst, den Sie zum Entwickeln und Bereitstellen von Machine Learning-Modellen verwenden können. Sie können Ihre Modelle beim Erstellen, Trainieren, Skalieren und Verwalten mit dem Python SDK nachverfolgen. Stellen Sie Modelle als Container bereit, und führen Sie sie in der Cloud, lokal oder in Azure IoT Edge aus.   |
 | Unterstützte Editionen     | Windows (Conda-Umgebung: AzureML), Linux (Conda-Umgebung: py36)    |
@@ -38,7 +38,7 @@ Lesen Sie die vollständige Referenz zum [Azure Machine Learning SDK für Python
 
 ## <a name="h2o"></a>H2O
 
-|    |           |
+| Category | Wert |
 | ------------- | ------------- |
 | Was ist das?   | Eine Open-Source-KI-Plattform für verteiltes, schnelles und skalierbares maschinelles In-Memory-Lernen.  |
 | Unterstützte Versionen      | Linux   |
@@ -52,7 +52,7 @@ Es gibt mehrere weitere Machine Learning-Bibliotheken auf DSVMs, z. B. das beli
 
 ## <a name="lightgbm"></a>LightGBM
 
-|    |           |
+| Category | Wert |
 | ------------- | ------------- |
 | Was ist das?   | Ein schnelles, verteiltes Gradient Boosting-Hochleistungsframework (GBDT, GBRT, GBM oder MART) auf der Grundlage von Entscheidungsstrukturalgorithmen. Es wird für Rangfolgen, Klassifizierungen und viele andere Aufgaben im Bereich Machine Learning verwendet.    |
 | Unterstützte Versionen      | Windows, Linux    |
@@ -62,7 +62,7 @@ Es gibt mehrere weitere Machine Learning-Bibliotheken auf DSVMs, z. B. das beli
 | Verwandte Tools      | MXNet, XGBoost  |
 
 ## <a name="rattle"></a>Rattle
-|    |           |
+| Category | Wert |
 | ------------- | ------------- |
 | Was ist das?   |   Eine grafische Benutzeroberfläche für Data Mining unter Verwendung von R.   |
 | Unterstützte Editionen     | Windows, Linux     |
@@ -72,7 +72,7 @@ Es gibt mehrere weitere Machine Learning-Bibliotheken auf DSVMs, z. B. das beli
 | Verwandte Tools      |LightGBM, Weka, XGBoost   |
 
 ## <a name="vowpal-wabbit"></a>Vowpal Wabbit
-|    |           |
+| Category | Wert |
 | ------------- | ------------- |
 | Was ist das?   |   Eine schnelle Open-Source-basierte Out-of-Core-Lernsystembibliothek    |
 | Unterstützte Editionen     | Windows, Linux     |
@@ -84,7 +84,7 @@ Es gibt mehrere weitere Machine Learning-Bibliotheken auf DSVMs, z. B. das beli
 
 
 ## <a name="weka"></a>Weka
-|    |           |
+| Category | Wert |
 | ------------- | ------------- |
 | Was ist das?   |  Eine Sammlung von Machine Learning-Algorithmen für Data Mining-Aufgaben. Die Algorithmen können entweder direkt auf ein Dataset angewendet oder über Ihren eigenen Java-Code aufgerufen werden. Weka enthält Tools für Datenvorverarbeitung, Klassifizierung, Regression, Clustering, Zuordnungsregeln und Visualisierung. |
 | Unterstützte Editionen     | Windows, Linux     |
@@ -94,7 +94,7 @@ Es gibt mehrere weitere Machine Learning-Bibliotheken auf DSVMs, z. B. das beli
 | Verwandte Tools      |LightGBM, Rattle, XGBoost   |
 
 ## <a name="xgboost"></a>XGBoost 
-|    |           |
+| Category | Wert |
 | ------------- | ------------- |
 | Was ist das?   |   Schnelle, portable und verteilte Gradient-Boosted-Bibliothek (GBDT, GBRT oder GBM) für Python, R, Java, Scala, C++ und mehr. Sie eignet sich für einen einzelnen Computer und in Apache Hadoop und Spark.    |
 | Unterstützte Editionen     | Windows, Linux     |
@@ -105,10 +105,10 @@ Es gibt mehrere weitere Machine Learning-Bibliotheken auf DSVMs, z. B. das beli
 | Verwandte Tools      | LightGBM, MXNet   |
 
 ## <a name="apache-drill"></a>Apache Drill
-|    |           |
+| Category | Wert |
 | ------------- | ------------- |
 | Was ist das?   | Open Source-SQL-Abfrage-Engine für Big Data    |
-| Unterstützte DSVM-Versionen      | Windows 2019, Linux  |
+| Unterstützte DSVM-Versionen      | Windows 2019, Linux  |
 | Konfiguration und Installation auf der DSVM      |  Installiert unter `/dsvm/tools/drill*` (nur im eingebetteten Modus)   |
 | Typische Verwendung      |  Für direkte Datenauswertung, ohne dass Extrahieren, Transformieren und Laden (ETL) erforderlich ist. Abfragen verschiedener Datenquellen und Formate, einschließlich CSV, JSON, relationale Tabellen und Hadoop.     |
 | Verwenden und Ausführen      | Desktopverknüpfung  <br/> [Drill in 10 Minutes](https://drill.apache.org/docs/drill-in-10-minutes/) (Drill in zehn Minuten)  |

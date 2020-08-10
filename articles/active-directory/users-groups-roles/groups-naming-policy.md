@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 46fdd72842db790a8f4ecadfc875069962dcf449
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 380962b71d6829b8a217a5d3038e2ae4dd7264fd
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84728145"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87497085"
 ---
 # <a name="enforce-a-naming-policy-on-office-365-groups-in-azure-active-directory"></a>Durchsetzen einer Benennungsrichtlinie für Office 365-Gruppen in Azure Active Directory
 
@@ -72,7 +72,7 @@ Regeln für die Liste blockierter Wörter:
 Zum Konfigurieren der Benennungsrichtlinie ist eine der folgenden Rollen erforderlich:
 - Globaler Administrator
 - Gruppenadministrator
-- Benutzeradministrator
+
 
 Ausgewählte Administratoren können von diesen Richtlinien für alle Gruppenworkloads und Endpunkte ausgenommen werden, sodass sie Gruppen erstellen können, die blockierte Wörter enthalten oder ihren eigenen Namenskonventionen entsprechen. Die folgende Liste enthält die Administratorrollen, die von der Benennungsrichtlinie für Gruppen ausgenommen sind.
 
@@ -236,7 +236,7 @@ Nachdem Sie eine Gruppenbenennungsrichtlinie in Azure AD festgelegt haben, wird 
 - Eine Vorschau des Namens gemäß der Benennungsrichtlinie (mit Präfixen und Suffixen) während der Eingabe des Gruppennamens
 - Eine Fehlermeldung, wenn der Benutzer blockierte Wörter eingibt, damit er diese entfernen kann
 
-Workload | Kompatibilität
+Workload | Compliance
 ----------- | -------------------------------
 Azure Active Directory-Portale | Das Azure AD-Portal und das Zugriffsbereichs-Portal zeigen den durch die Benennungsrichtlinie erzwungenen Namen an, wenn der Benutzer beim Erstellen oder Bearbeiten einer Gruppen einen Gruppennamen eingibt. Wenn ein Benutzer ein benutzerdefiniertes blockiertes Wort eingibt, wird eine Fehlermeldung mit dem blockierten Wort angezeigt, damit der Benutzer es entfernen kann.
 Outlook Web Access (OWA) | Outlook Web Access zeigt den durch die Benennungsrichtlinie erzwungenen Namen an, wenn der Benutzer einen Gruppennamen oder Gruppenalias eingibt. Wenn ein Benutzer ein benutzerdefiniertes blockiertes Wort eingibt, wird eine Fehlermeldung auf der Benutzeroberfläche mit dem blockierten Wort angezeigt, damit der Benutzer es entfernen kann.

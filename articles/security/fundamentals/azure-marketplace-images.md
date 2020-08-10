@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/11/2019
 ms.author: terrylan
-ms.openlocfilehash: 3925e39824d1702ff43a6b981ac997ddab658b96
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6058b0d72eafe3a44ebdbabf291af05c08e772b3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80548657"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87038272"
 ---
 # <a name="security-recommendations-for-azure-marketplace-images"></a>Sicherheitsempfehlungen für Azure Marketplace-Images
 
@@ -27,9 +27,8 @@ Führen Sie vor der Übermittlung immer eine Sicherheitsrisikoerkennung für Ihr
 
 ## <a name="open-source-based-images"></a>Open-Source-basierte Images
 
-|||
-|--------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Kategorie**                                                 | **Überprüfung**                                                                                                                                                                                                                                                                              |
+| Category | Prüfen |
+| -------- | ----- |
 | Sicherheit                                                     | Installieren Sie alle aktuellen Sicherheitspatches für die Linux-Distribution.                                                                                                                                                                                                              |
 | Sicherheit                                                     | Befolgen Sie Branchenrichtlinien zum Schutz des VM-Images für die jeweilige Linux-Distribution.                                                                                                                                                                                     |
 | Sicherheit                                                     | Die Angriffsfläche wurde minimiert, indem nur die absolut erforderlichen Windows Server-Rollen, -Features, -Dienste und Netzwerkports aktiviert wurden.                                                                                                                                               |
@@ -50,9 +49,8 @@ Führen Sie vor der Übermittlung immer eine Sicherheitsrisikoerkennung für Ihr
 
 ## <a name="windows-server-based-images"></a>Windows Server-basierte Images
 
-|||
-|-------------| -------------------------|
-| **Kategorie**                                                     | **Überprüfung**                                                                                                                                                                |
+| Category | Prüfen |
+|--------- | ----- |
 | Sicherheit                                                         | Es muss ein sicheres Basisimage für das Betriebssystem verwendet werden. Die für die Quelle von Images auf Basis von Windows Server verwendete virtuelle Festplatte (VHD) muss mit den Windows Server-Betriebssystemimages, die über Microsoft Azure bereitgestellt werden, erstellt werden. |
 | Sicherheit                                                         | Es müssen alle aktuellen Sicherheitsupdates installiert sein.                                                                                                                                     |
 | Sicherheit                                                         | Anwendungen sollten nicht von eingeschränkten Benutzernamen wie „administrator“, „root“ oder „admin“ abhängig sein.                                                                |

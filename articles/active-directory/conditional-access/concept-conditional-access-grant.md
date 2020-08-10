@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d1d30a32a58dd2385a214d813307c645c56afdc8
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: a59939fc7988e1a94bdfb9fac2d77011422e4983
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86024449"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87274679"
 ---
 # <a name="conditional-access-grant"></a>Bedingter Zugriff: Erteilen
 
@@ -80,8 +80,7 @@ Diese Einstellung gilt für die folgenden iOS- und Android-Apps:
 - Microsoft Dynamics 365
 - Microsoft Edge
 - Microsoft Excel
-- Microsoft Flow
-- Microsoft Intune Managed Browser
+- Microsoft Power Automate
 - Microsoft Invoicing
 - Microsoft Kaizala
 - Microsoft Launcher
@@ -123,9 +122,22 @@ Um dieses Gewährungssteuerelement zu nutzen, muss für den bedingten Zugriff da
 Diese Einstellung gilt für die folgenden Client-Apps:
 
 - Microsoft Cortana
+- Microsoft Edge
+- Microsoft Excel
+- Microsoft Office
 - Microsoft OneDrive
+- Microsoft OneNote
 - Microsoft Outlook
 - Microsoft Planner
+- Microsoft Power BI
+- Microsoft PowerPoint
+- Microsoft SharePoint
+- Microsoft Word
+- MultiLine for Intune
+- Nine Mail – Email & Calendar
+
+> [!NOTE]
+> Microsoft Kaizala, Microsoft Skype for Business und Microsoft Visio unterstützen den Gewährungstyp **App-Schutzrichtlinie erforderlich** nicht. Wenn Sie mit diesen Apps arbeiten müssen, verwenden Sie exklusiv den Gewährungstyp **Genehmigte Apps erforderlich**. Die Verwendung der OR-Klausel zwischen den beiden Gewährungstypen funktioniert für diese drei Anwendungen nicht.
 
 **Anmerkungen**
 

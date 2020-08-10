@@ -4,18 +4,18 @@ description: Informieren Sie sich über die Validierungsunterschiede verschieden
 author: SureshJa
 ms.author: sureshja
 manager: CelesteDG
-ms.date: 10/12/2019
+ms.date: 07/21/2020
 ms.topic: conceptual
 ms.subservice: develop
 ms.custom: aaddev
 ms.service: active-directory
 ms.reviewer: lenalepa, manrath
-ms.openlocfilehash: 2a1507b008903085886f9392f3f4e5461997b6e2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e794e277f6731c7b6e57a4710eea437f65be0340
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80128861"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87336343"
 ---
 # <a name="validation-differences-by-supported-account-types-signinaudience"></a>Validierungsunterschiede nach unterstützten Kontotypen (signInAudience)
 
@@ -39,9 +39,9 @@ In der folgenden Tabelle finden Sie die Validierungsunterschiede verschiedener E
 | Zertifikate (`keyCredentials`) | Symmetrischer Signaturschlüssel | Symmetrischer Signaturschlüssel | Verschlüsselungsschlüssel und asymmetrischer Signaturschlüssel | 
 | Geheime Clientschlüssel (`passwordCredentials`) | Keine Begrenzung* | Keine Begrenzung* | Wenn liveSDK aktiviert ist: Maximal 2 geheime Clientschlüssel | 
 | Umleitungs-URIs (`replyURLs`) | Weitere Informationen finden Sie unter [Umleitungs-URI/Antwort-URL: Einschränkungen](reply-url.md). | | | 
-| API-Berechtigungen (`requiredResourceAccess`) | Keine Begrenzung* | Keine Begrenzung* | Maximal 30 Berechtigungen pro Ressource (z.B. Microsoft Graph) | 
+| API-Berechtigungen (`requiredResourceAccess`) | Keine Begrenzung* | Keine Begrenzung* | Maximal 50 Ressourcen pro Anwendung und 30 Berechtigungen pro Ressource (z. B. Microsoft Graph). Begrenzung insgesamt auf 200 pro Anwendung (Ressourcen x Berechtigungen). | 
 | Durch diese API definierte Bereiche (`oauth2Permissions`) | Die maximale Länge des Bereichsnamens beträgt 120 Zeichen <br><br> Keine Begrenzung* bei der Anzahl der definierten Bereiche | Die maximale Länge des Bereichsnamens beträgt 120 Zeichen <br><br> Keine Begrenzung* bei der Anzahl der definierten Bereiche |  Die maximale Länge des Bereichsnamens beträgt 40 Zeichen <br><br> Maximal 100 definierte Bereiche | 
-| Autorisierte Clientanwendungen (`preautorizedApplications`) | Keine Begrenzung* | Keine Begrenzung* | Maximale Gesamtzahl von 500 <br><br> Maximal 100 definierte Client-Apps <br><br> Maximal 30 Bereiche, die pro Client definiert sind | 
+| Autorisierte Clientanwendungen (`preAuthorizedApplications`) | Keine Begrenzung* | Keine Begrenzung* | Maximale Gesamtzahl von 500 <br><br> Maximal 100 definierte Client-Apps <br><br> Maximal 30 Bereiche, die pro Client definiert sind | 
 | appRoles | Unterstützt <br> Keine Begrenzung* | Unterstützt <br> Keine Begrenzung* | Nicht unterstützt | 
 | Abmelde-URL | http://localhost ist zulässig <br><br> Die maximale Länge beträgt 255 Zeichen | http://localhost ist zulässig <br><br> Die maximale Länge beträgt 255 Zeichen | <br><br> https://localhost ist zulässig, http://localhost schlägt bei MSA fehl <br><br> Die maximale Länge beträgt 255 Zeichen <br><br> HTTP-Schema ist nicht zulässig <br><br> Platzhalter werden nicht unterstützt | 
 

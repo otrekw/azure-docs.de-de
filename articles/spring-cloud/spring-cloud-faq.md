@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/07/2019
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: f1871871fa3a191c636a965977dba485d2c77f1f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1cf29438d3785a3406aa8ce3b75929a5d5261121
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87037507"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87800369"
 ---
 # <a name="azure-spring-cloud-faq"></a>Häufig gestellte Fragen zu Azure Spring Cloud
 
@@ -161,6 +161,21 @@ Beim Migrieren vorhandener Spring Cloud-Microservices zu Azure Spring Cloud empf
 * Es wird empfohlen, dass Sie offizielle, stabile Pivotal Spring-Bibliotheken verwenden. Inoffizielle oder verzweigte Versionen und Betaversionen von Pivotal Spring-Bibliotheken haben keine SLA-Unterstützung (Vereinbarung zum Servicelevel).
 
 Überwachen Sie nach der Migration Ihre CPU-/RAM-Metriken und den Netzwerkdatenverkehr, um sicherzustellen, dass die Anwendungsinstanzen entsprechend skaliert werden.
+
+## <a name="trouble-shooting"></a>Problembehandlung
+
+### <a name="what-are-the-impacts-of-service-registry-rarely-unavailable"></a>Was sind die Auswirkungen, wenn die Dienstregistrierung selten verfügbar ist?
+
+In einigen seltenen Szenarien werden möglicherweise einige Fehler angezeigt, wie 
+```
+RetryableEurekaHttpClient: Request execution failure with status code 401; retrying on another server if available
+```
+aus Ihren Anwendungsprotokollen. Dieses Problem wurde vom Spring-Framework mit sehr geringer Geschwindigkeit aufgrund von Netzwerkinstabilitäten oder anderen Netzwerkproblemen eingeführt. 
+
+Es sollte keine Auswirkungen auf die Benutzererfahrung haben, denn der Eureka-Client verfügt über Heartbeat- und Wiederholungsrichtlinien, um dies zu behandeln. Sie könnten dies als einen vorübergehenden Fehler betrachten und ihn problemlos überspringen.
+
+Wir werden diesen Teil verbessern und in Kürze verhindern, dass dieser Fehler in Anwendungen von Benutzern auftritt.
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

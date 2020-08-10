@@ -8,12 +8,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 4c28299758150f56e3f47156382d8a6245a0cf52
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: c1a5d302f63f57a142d014c8ef66d02405e119ea
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386213"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87531165"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Entwicklerhandbuch zu Azure-Schlüsseltresor
 
@@ -38,16 +38,37 @@ Weitere Informationen zu verwalteten Identitäten für Azure-Ressourcen finden S
 
 Bevor Sie mit Schlüsseln, Geheimnissen oder Zertifikaten in Ihrem Schlüsseltresor arbeiten können, müssen Sie diesen über die CLI, PowerShell, Azure Resource Manager-Vorlagen oder REST erstellen und verwalten. Die jeweilige Vorgehensweise wird in den folgenden Artikeln beschrieben:
 
-- [Erstellen und Verwalten von Schlüsseltresoren über die CLI](../secrets/quick-create-cli.md)
-- [Erstellen und Verwalten von Schlüsseltresoren mit PowerShell](../secrets/quick-create-powershell.md)
-- [Erstellen und Verwalten von Schlüsseltresoren über das Azure-Portal](../secrets/quick-create-portal.md)
-- [Erstellen und Verwalten von Schlüsseltresoren mit Python](../secrets/quick-create-python.md)
-- [Erstellen und Verwalten von Schlüsseltresoren mit Java](../secrets/quick-create-java.md)
-- [Erstellen und Verwalten von Schlüsseltresoren mit Node.js](../secrets/quick-create-node.md)
-- [Erstellen und Verwalten von Schlüsseltresoren mit .NET (v4 SDK)](../secrets/quick-create-net.md)
-- [Erstellen eines Schlüsseltresors und Hinzufügen eines Geheimnisses über eine Azure Resource Manager-Vorlage](../secrets/quick-create-template.md)
-- [Erstellen und Verwalten von Schlüsseltresoren über REST](/rest/api/keyvault/)
+- [Erstellen und Verwalten von Schlüsseltresoren über die CLI](quick-create-cli.md)
+- [Erstellen und Verwalten von Schlüsseltresoren mit PowerShell](quick-create-powershell.md)
+- [Erstellen und Verwalten von Schlüsseltresoren über das Azure-Portal](quick-create-portal.md)
+- [Erstellen und Verwalten von Schlüsseltresoren über REST](/rest/api/keyvault/vaults/createorupdate)
 
+### <a name="set-and-retrieve-secrets"></a>Festlegen und Abrufen von Geheimnissen
+
+- [Festlegen und Abrufen eines Geheimnisses mit CLI](../secrets/quick-create-cli.md)
+- [Festlegen und Abrufen eines Geheimnisses mit PowerShell](../secrets/quick-create-powershell.md)
+- [Festlegen und Abrufen eines Geheimnisses mit dem Azure-Portal](../secrets/quick-create-portal.md)
+- [Geheimnisvorgänge mit REST](/rest/api/keyvault/#secret-operations)
+- [Festlegen und Abrufen eines Geheimnisses mit Python](../secrets/quick-create-python.md)
+- [Festlegen und Abrufen eines Geheimnisses mit Java](../secrets/quick-create-java.md)
+- [Festlegen und Abrufen eines Geheimnisses mit Node.js](../secrets/quick-create-node.md)
+- [Festlegen und Abrufen eines Geheimnisses mit .NET (v4 SDK)](../secrets/quick-create-net.md)
+- [Erstellen eines Schlüsseltresors und Hinzufügen eines Geheimnisses über eine Azure Resource Manager-Vorlage](../secrets/quick-create-template.md)
+
+### <a name="set-and-retrieve-keys"></a>Festlegen und Abrufen von Schlüsseln
+
+- [Festlegen und Abrufen eines Schlüssels mit CLI](../keys/quick-create-cli.md)
+- [Festlegen und Abrufen eines Schlüssels mit PowerShell](../keys/quick-create-powershell.md)
+- [Festlegen und Abrufen eines Schlüssels mit dem Azure-Portal](../keys/quick-create-portal.md)
+- [Schlüssel-Vorgänge mit REST](/rest/api/keyvault/#key-operations)
+- [Festlegen und Abrufen eines Schlüssels mit Python](../secrets/quick-create-python.md)
+
+### <a name="set-and-retrieve-certificates"></a>Festlegen und Abrufen von Zertifikaten
+- [Festlegen und Abrufen eines Zertifikats mit CLI](../certificates/quick-create-cli.md)
+- [Festlegen und Abrufen eines Zertifikats mit PowerShell](../certificates/quick-create-powershell.md)
+- [Festlegen und Abrufen eines Zertifikats mit dem Azure-Portal](../certificates/quick-create-portal.md)
+- [Schlüssel-Vorgänge mit REST](/rest/api/keyvault/#certificate-operations)
+- [Festlegen und Abrufen eines Zertifikats mit Python](../certificates/quick-create-python.md)
 
 ## <a name="coding-with-key-vault"></a>Programmieren mit dem Schlüsseltresor
 
@@ -64,8 +85,6 @@ Das Key Vault-Verwaltungssystem für Programmierer besteht aus mehreren Schnitts
 #### <a name="net"></a>.NET
 
 [.NET-API-Referenz für Key Vault](/dotnet/api/overview/azure/key-vault?view=azure-dotnet).
-
-Weitere Informationen über die .NET SDK-Version 2.x finden Sie in den [Anmerkungen zu dieser Version](dotnet2api-release-notes.md).
 
 #### <a name="java"></a>Java
 
@@ -94,7 +113,6 @@ Die Key Vault-Verwaltungs-API und die Key Vault-Objekt-API sind in Node.js getre
 Vollständige Beispiele für die Verwendung von Key Vault mit Ihren Anwendungen finden Sie hier:
 
 - [Azure Key Vault-Codebeispiele](https://azure.microsoft.com/resources/samples/?service=key-vault) – Codebeispiele für Azure Key Vault. 
-- [Verwenden von Azure Key Vault in einer Webanwendung](../secrets/quick-create-net.md) In diesem Tutorial erfahren Sie, wie Sie Azure Key Vault in einer Webanwendung in Azure verwenden. 
 
 ## <a name="how-tos"></a>Vorgehensweisen
 
@@ -124,7 +142,6 @@ Diese Artikel enthalten Informationen zu anderen Szenarien und Diensten, in dene
 
 - [Übersicht über die Azure Key Vault-Funktion für vorläufiges Löschen](soft-delete-overview.md) beschreibt ein Feature, dass die Wiederherstellung gelöschter Objekte unabhängig davon ermöglicht, ob die Löschung versehentlich oder absichtlich erfolgte.
 - [Anleitung zur Drosselung von Azure Key Vault](overview-throttling.md) informiert Sie über die grundlegenden Konzepte der Drosselung und bietet einen Ansatz für Ihre App.
-- [Übersicht zu Azure-Speicherkontoschlüsseln](../secrets/overview-storage-keys.md) beschreibt die Key Vault-Integration in Azure-Speicherkontoschlüssel.
 - [Sicherheitsumgebungen und geografische Grenzen von Azure Key Vault](overview-security-worlds.md) beschreibt die Beziehungen zwischen Regionen und Sicherheitsbereichen.
 
 ## <a name="social"></a>Soziale Netzwerke

@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 07/08/2020
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: 019ae80020dafb54f2c06dd504797f21069914ae
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 273c41a523de8b2776982e5229c5a8b618b82c19
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86507062"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475191"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Unterstützte Kubernetes-Versionen in Azure Kubernetes Service (AKS)
 
@@ -91,6 +91,14 @@ New Supported Version List
 1.17.*9*, 1.17.*8*, 1.16.*11*, 1.16.*10*
 ```
 
+### <a name="supported-kubectl-versions"></a>Unterstützte `kubectl`-Versionen
+
+Sie können eine relativ zu Ihrer *kube-apiserver*-Version niedrigere oder höhere Nebenversion von `kubectl` verwenden, die mit der [Kubernetes-Unterstützungsrichtlinie für kubectl](https://kubernetes.io/docs/setup/release/version-skew-policy/#kubectl) konsistent ist.
+
+Wenn Ihr *kube-apiserver* beispielsweise die Version *1.17* hat, können Sie die Versionen *1.16* bis *1.18*von `kubectl` mit diesem *kube-apiserver* verwenden.
+
+Um Ihre Version von `kubectl` zu installieren oder zu aktualisieren, führen Sie `az aks install-cli` aus.
+
 ## <a name="release-and-deprecation-process"></a>Veröffentlichen und Markieren als veraltet
 
 Sie können neue Releases und veraltete Versionen im [Releasekalender für AKS Kubernetes](#aks-kubernetes-release-calendar) einsehen.
@@ -120,7 +128,6 @@ Um herauszufinden, welche Versionen für Ihr Abonnement und Ihre Region derzeit 
 ```azurecli-interactive
 az aks get-versions --location eastus --output table
 ```
-
 
 ## <a name="aks-kubernetes-release-calendar"></a>Releasekalender für AKS Kubernetes
 
@@ -162,13 +169,13 @@ Wenn ein Cluster für mehr als drei Nebenversionen keinen Supportanspruch mehr 
 
 Die Steuerungsebene muss sich innerhalb eines Fensters von Versionen aller Knotenpools befinden. Ausführliche Informationen zum Aktualisieren der Steuerungsebene oder der Knotenpools finden Sie in der Dokumentation zum [Aktualisieren von Knotenpools](use-multiple-node-pools.md#upgrade-a-cluster-control-plane-with-multiple-node-pools).
 
-**Kann ich beim Upgrade eine Version überspringen?**
+**Kann ich während eines Clusterupgrades mehrere AKS-Versionen überspringen?**
 
-Nein, gemäß den Best Practices von Kubernetes erlaubt AKS nur Upgrades auf die direkt folgende Patch- oder Nebenversion, die unterstützt wird. Im Azure-Portal werden nur die Versionen angezeigt, die Sie für ein Upgrade verwenden können. In der CLI können Sie `az aks get-upgrades -n MyAKSCluster -g MyResourceGroup` ausführen, um die verfügbaren Upgrades für Ihre aktuelle Version anzuzeigen.
+Beim Upgrade eines unterstützten AKS-Clusters können Nebenversionen von Kubernetes nicht übersprungen werden. Beispielsweise sind Upgrades von *1.12.x* -> *1.13.x* oder *1.13.x* -> *1.14.x* zulässig, ein Upgrade von *1.12.x* -> *1.14.x* ist jedoch nicht möglich.
 
-**Wie führe ich ein Upgrade auf eine unterstützte Version aus, wenn mehrere Versionen zwischen der letzten unterstützten Version und meiner derzeitigen Version liegen?**
+Zum Durchführen eines Upgrades von *1.12.x* -> *1.14.x* müssen Sie zuerst ein Upgrade von *1.12.x* -> *1.13.x* und dann ein Upgrade von *1.13.x* -> *1.14.x* durchführen.
 
-Um jederzeit Support zu erhalten, sollten Sie vermeiden, dass mehrere Versionen zwischen Ihrer derzeit verwendeten Version und der Liste der aktuell unterstützten Versionen liegen. Wenn Sie sich jedoch in dieser Situation befinden, ermöglicht AKS immer ein Upgrade auf die unterstützte Mindestversion.
+Das Überspringen mehrerer Versionen ist nur möglich, wenn ein Upgrade von einer nicht unterstützten Version zurück auf eine unterstützte Version erfolgt. Beispielsweise kann ein Upgrade von einer nicht unterstützten Version *1.10.x* --> auf eine unterstützte Version *1.15.x* durchgeführt werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 04/02/2019
 ms.author: rimayber
 ms.reviewer: dgoddard, stegag, steveesp, minale, btalb, prachank
-ms.openlocfilehash: dc77f3267813bd049274f44e43c4d64b0eb3801e
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 67b635f09cb9407279e89b5f7b8526dab3c08946
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120278"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87068524"
 ---
 # <a name="tcpip-performance-tuning-for-azure-vms"></a>Optimierung der TCP/IP-Leistung für Azure-VMs
 
@@ -125,9 +125,8 @@ Für Azure lautet die Empfehlung, TCP-MSS-Clamping auf 1.350 Bytes und die MTU d
 
 Die Netzwerklatenz wird durch die Lichtgeschwindigkeit über ein Glasfasernetz bestimmt. Der Netzwerkdurchsatz von TCP wird außerdem stark durch die Paketumlaufzeit (Round Trip Time, RTT) zwischen zwei Netzwerkgeräten bestimmt.
 
-| | | | |
-|-|-|-|-|
-|**Route**|**Entfernung**|**Zeit (unidirektional)**|**RTT**|
+| Route | Distance | Unidirektionale Zeit | RTT |
+| ----- | -------- | ------------ | --- |
 |New York nach San Francisco|4\.148 km|21 ms|42 ms|
 |New York nach London|5\.585 km|28 ms|56 ms|
 |New York nach Sydney|15.993 km|80 ms|160 ms|
@@ -162,9 +161,8 @@ Die Formel zur Berechnung des maximalen Durchsatzes einer einzelnen TCP-Verbindu
 
 In dieser Tabelle ist der maximale Durchsatz einer einzelnen TCP-Verbindung in Megabytes pro Sekunde (MB/s) aufgeführt. (Zur besseren Lesbarkeit wird MB als Maßeinheit verwendet.)
 
-| | | | |
-|-|-|-|-|
-|**TCP-Fenstergröße (Bytes)**|**RTT-Latenz (ms)**|**Maximaler Durchsatz in MB/s**|**Maximaler Durchsatz in MBit/s**|
+| TCP Window Size (Bytes) | RTT-Latenz (ms) | Maximaler Durchsatz in MB/s | Maximaler Durchsatz in MBit/s |
+| ----------------------- | ---------------- | ---------------------------------- | --------------------------------- |
 |65.535|1|65,54|524,29|
 |65.535|30|2,18|17,48|
 |65.535|60|1,09|8,74|
@@ -179,9 +177,8 @@ TCP Window Scaling (Fensterskalierung) ist eine Technik, bei der die TCP-Fenster
 
 In der folgenden Tabelle sind diese Beziehungen veranschaulicht:
 
-| | | | |
-|-|-|-|-|
-|**TCP-Fenstergröße (Bytes)**|**RTT-Latenz (ms)**|**Maximaler Durchsatz in MB/s**|**Maximaler Durchsatz in MBit/s**|
+| TCP Window Size (Bytes) | RTT-Latenz (ms) | Maximaler Durchsatz in MB/s | Maximaler Durchsatz in MBit/s |
+| ----------------------- | ---------------- | ---------------------------------- | --------------------------------- |
 |65.535|30|2,18|17,48|
 |131.070|30|4.37|34,95|
 |262.140|30|8,74|69,91|
@@ -221,9 +218,8 @@ Set-NetTCPSetting
 
 Dies sind die wirksamen TCP-Einstellungen für `AutoTuningLevel`:
 
-| | | | |
-|-|-|-|-|
-|**AutoTuningLevel**|**Skalierungsfaktor**|**Skalierungsmultiplikator**|**Formel zur <br/>Berechnung der maximalen Fenstergröße**|
+| AutoTuningLevel | Skalierungsfaktor | Skalierungsmultiplikator | Formel zum<br/>Berechnen der maximalen Fenstergröße |
+| --------------- | -------------- | ------------------ | -------------------------------------------- |
 |Disabled|Keine|Keine|Fenstergröße|
 |Eingeschränkt|4|2^4|Fenstergröße * (2^4)|
 |Stark eingeschränkt|2|2^2|Fenstergröße * (2^2)|

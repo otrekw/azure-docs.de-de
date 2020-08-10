@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 75e3f7fc98072957f571937a1627247cdc4a9e7e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0ee138ac41557554ae4b8fde8c9178336fd8d5db
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85374440"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387777"
 ---
 # <a name="plan-a-single-sign-on-deployment"></a>Planen einer Bereitstellung für einmaliges Anmelden
 
@@ -55,7 +55,7 @@ Es gibt zwei grundlegende Möglichkeiten, wie Sie Ihre Benutzer für einmaliges 
 ### <a name="considerations-for-federation-based-sso"></a>Überlegungen zu verbundbasiertem SSO
 
 - **Verwenden von OpenID Connect und OAuth**: Wenn die Anwendung, mit der Sie eine Verbindung herstellen, dies unterstützt, verwenden Sie die OIDC/OAuth 2.0-Methode, um SSO für diese Anwendung zu aktivieren. Diese Methode erfordert weniger Konfiguration und ermöglicht eine größere Benutzerfreundlichkeit. Weitere Informationen finden Sie unter [OAuth 2.0](../develop/v2-oauth2-auth-code-flow.md), [OpenID Connect 1.0](../develop/v2-protocols-oidc.md) und im [Entwicklerhandbuch zu Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide).
-- **Endpunktkonfigurationen für SAML-basiertes SSO**: Wenn Sie SAML verwenden, benötigen Ihre Entwickler vor der Konfiguration der Anwendung spezifische Informationen. Weitere Informationen finden Sie unter [Bearbeiten der grundlegenden SAML-Konfiguration](configure-single-sign-on-non-gallery-applications.md).
+- **Endpunktkonfigurationen für SAML-basiertes SSO**: Wenn Sie SAML verwenden, benötigen Ihre Entwickler vor der Konfiguration der Anwendung spezifische Informationen. Weitere Informationen finden Sie unter [Konfigurieren des einmaligen Anmeldens mit SAML](configure-saml-single-sign-on.md).
 - **Zertifikatverwaltung für SAML-basiertes SSO**: Wenn Sie Verbund-SSO für Ihre Anwendung aktivieren, erstellt Azure AD ein Zertifikat, das standardmäßig drei Jahre lang gültig ist. Sie können das Ablaufdatum für dieses Zertifikat bei Bedarf anpassen. Stellen Sie sicher, dass Sie über Prozesse zur Erneuerung von Zertifikaten vor deren Ablauf verfügen. Weitere Informationen finden Sie unter [Verwalten von Azure AD-Zertifikaten](https://docs.microsoft.com/azure/active-directory/active-directory-sso-certs).
 
 ### <a name="considerations-for-password-based-sso"></a>Überlegungen zu kennwortbasiertem einmaligem Anmelden

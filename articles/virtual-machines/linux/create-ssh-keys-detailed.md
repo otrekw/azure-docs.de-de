@@ -4,34 +4,32 @@ description: Lernen Sie die ausführlichen Schritte zum Erstellen und Verwalten 
 author: cynthn
 ms.service: virtual-machines-linux
 ms.topic: how-to
-ms.date: 12/06/2019
+ms.date: 07/31/2020
 ms.author: cynthn
-ms.openlocfilehash: ebce641aa7cb59deaf74490fb934b3f1536911a9
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 34a84ed333172ea0931c529d2dbeee1b774ae8c5
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372772"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87513185"
 ---
-# <a name="detailed-steps-create-and-manage-ssh-keys-for-authentication-to-a-linux-vm-in-azure"></a>Ausführliche Schritte: Erstellen und Verwalten von SSH-Schlüsseln für die Authentifizierung bei einer Linux-VM in Azure 
-Mit einem SSH-Schlüsselpaar (Secure Shell) können Sie einen virtuellen Linux-Computer in Azure erstellen, bei dem standardmäßig zur Authentifizierung SSH-Schlüssel verwendet werden, sodass zum Anmelden keine Kennwörter mehr erforderlich sind. Mit dem Azure-Portal erstellte VMs, Resource Manager-Vorlagen für Azure CLI oder andere Tools können Ihren öffentlichen SSH-Schlüssel als Teil der Bereitstellung enthalten, die die Authentifizierung mit dem SSH-Schlüssel für SSH-Verbindungen einrichtet. 
+# <a name="detailed-steps-create-and-manage-ssh-keys-for-authentication-to-a-linux-vm-in-azure"></a>Ausführliche Schritte: Erstellen und Verwalten von SSH-Schlüsseln für die Authentifizierung bei einer Linux-VM in Azure
 
-Dieser Artikel enthält ausführliche Hintergrundinformationen und Schritte zum Erstellen und Verwalten einer SSH-RSA-Datei mit öffentlichem/privatem Schlüsselpaar für SSH-Clientverbindungen. Schnellbefehle finden Sie unter [Erstellen eines SSH-Schlüsselpaars (öffentlich und privat) für virtuelle Linux-Computer in Azure](mac-create-ssh-keys.md).
+Mit einem SSH-Schlüsselpaar (Secure Shell) können Sie einen virtuellen Linus-Computer erstellen, bei dessen Authentifizierung SSH-Schlüssel verwendet werden. In diesem Artikel wird gezeigt, wie Sie eine Datei mit einem SSH-Schlüsselpaar (ein öffentlicher und ein privater RSA-Schlüssel) für SSH-Clientverbindungen erstellen und verwenden.
 
-Informationen zum Generieren von SSH-Schlüsseln und deren Verwendung zum Herstellen einer Verbindung mit einem **Windows**-Computer finden Sie unter [Verwenden von SSH-Schlüsseln mit Windows in Azure](ssh-from-windows.md).
+Schnellbefehle finden Sie unter [Erstellen eines SSH-Schlüsselpaars (öffentlich und privat) für virtuelle Linux-Computer in Azure](mac-create-ssh-keys.md).
+
+Informationen zum Erstellen von SSH-Schlüsseln und deren Verwendung zum Herstellen einer Verbindung mit einem **Windows**-Computer finden Sie unter [Verwenden von SSH-Schlüsseln mit Windows in Azure](ssh-from-windows.md). Sie können auch das [Azure-Portal](../ssh-keys-portal.md) verwenden, um SSH-Schlüssel zum Erstellen virtueller Computer im Portal zu erstellen und zu verwalten.
 
 [!INCLUDE [virtual-machines-common-ssh-overview](../../../includes/virtual-machines-common-ssh-overview.md)]
-
-### <a name="private-key-passphrase"></a>Passphrase für den privaten Schlüssel
-Der private SSH-Schlüssel muss mit einer sehr sicheren Passphrase geschützt werden. Diese Passphrase gilt nur für den Zugriff auf die private SSH-Schlüsseldatei und ist *nicht* das Kennwort für das Benutzerkonto. Wenn Sie Ihren SSH-Schlüssel mit einer Passphrase versehen, wird der private Schlüssel mit AES 128 Bit verschlüsselt, sodass er ohne die Passphrase nicht verwendet werden kann. Falls ein Angreifer Ihren privaten Schlüssel entwendet und dafür keine Passphrase konfiguriert wurde, kann sich der Angreifer mithilfe des privaten Schlüssels bei jedem Server anmelden, der über den entsprechenden öffentlichen Schlüssel verfügt. Wenn der private Schlüssel mit einer Passphrase geschützt ist, kann er vom Angreifer nicht verwendet werden, und Ihre Infrastruktur unter Azure verfügt über eine weitere Sicherheitsebene.
 
 [!INCLUDE [virtual-machines-common-ssh-support](../../../includes/virtual-machines-common-ssh-support.md)]
 
 ## <a name="ssh-keys-use-and-benefits"></a>Verwendung und Vorteile von SSH-Schlüsseln
 
-Wenn Sie eine Azure-VM erstellen, indem Sie den öffentlichen Schlüssel angeben, kopiert Azure den öffentlichen Schlüssel (im `.pub`-Format) auf dem virtuellen Computer in den `~/.ssh/authorized_keys`-Ordner. SSH-Schlüssel in `~/.ssh/authorized_keys` werden verwendet, um vom Client zu fordern, für eine SSH-Verbindung den entsprechenden privaten Schlüssel bereitzustellen. Bei einem virtuellen Azure-Computer unter Linux, bei dem SSH-Schlüssel für die Authentifizierung verwendet werden, konfiguriert Azure den SSHD-Server so, dass nur SSH-Schlüssel (und keine kennwortbasierten Anmeldungen) möglich sind. Wenn Sie also virtuelle Azure Linux-Computer mit SSH-Schlüsseln erstellen, können Sie zur Sicherung der Bereitstellung des virtuellen Computers beitragen, und der üblicherweise nachträglich auszuführende Konfigurationsschritt zum Deaktivieren von Kennwörtern in der Datei `sshd_config` entfällt.
+Wenn Sie eine Azure-VM erstellen, indem Sie den öffentlichen Schlüssel angeben, kopiert Azure den öffentlichen Schlüssel (im `.pub`-Format) auf dem virtuellen Computer in den `~/.ssh/authorized_keys`-Ordner. SSH-Schlüssel in `~/.ssh/authorized_keys` werden verwendet, um vom Client zu fordern, für eine SSH-Verbindung den entsprechenden privaten Schlüssel bereitzustellen. Bei einem virtuellen Azure-Computer unter Linux, bei dem SSH-Schlüssel für die Authentifizierung verwendet werden, konfiguriert Azure den SSHD-Server so, dass nur SSH-Schlüssel (und keine kennwortbasierten Anmeldungen) möglich sind. Wenn Sie virtuelle Azure Linux-Computer mit SSH-Schlüsseln erstellen, können Sie zur Sicherung der Bereitstellung des virtuellen Computers beitragen, und der üblicherweise nachträglich auszuführende Konfigurationsschritt zum Deaktivieren von Kennwörtern in der Datei `sshd_config` entfällt.
 
-Falls Sie keine SSH-Schlüssel verwenden möchten, können Sie Ihren virtuellen Linux-Computer für die Kennwortauthentifizierung einrichten. Bei virtuellen Computern ohne Internetverbindung sind Kennwörter unter Umständen ausreichend. Allerdings müssen Sie weiterhin Ihre Kennwörter für die einzelnen virtuellen Linux-Computer verwalten und sich um angemessene Kennwortrichtlinien und -verfahren kümmern, indem Sie beispielsweise eine Mindestlänge für Kennwörter festlegen und sicherstellen, dass sie regelmäßig aktualisiert werden. Die Verwendung von SSH-Schlüsseln reduziert die Komplexität der übergreifenden Verwaltung einzelner Anmeldeinformationen für mehrere virtuelle Computer.
+Falls Sie keine SSH-Schlüssel verwenden möchten, können Sie Ihren virtuellen Linux-Computer für die Kennwortauthentifizierung einrichten. Bei virtuellen Computern ohne Internetverbindung sind Kennwörter unter Umständen ausreichend. Allerdings müssen Sie weiterhin Ihre Kennwörter für die einzelnen virtuellen Linux-Computer verwalten und sich um angemessene Kennwortrichtlinien und -verfahren kümmern, indem Sie beispielsweise eine Mindestlänge für Kennwörter festlegen und sicherstellen, dass sie regelmäßig aktualisiert werden. 
 
 ## <a name="generate-keys-with-ssh-keygen"></a>Generieren von Schlüsseln mit „ssh-keygen“
 
@@ -185,7 +183,8 @@ ssh-add ~/.ssh/id_rsa
 Die Passphrase für den privaten Schlüssel ist jetzt unter `ssh-agent` gespeichert.
 
 ## <a name="use-ssh-copy-id-to-copy-the-key-to-an-existing-vm"></a>Kopieren des Schlüssels auf einen vorhandenen virtuellen Computer mithilfe von „ssh-copy-id“
-Wenn Sie bereits einen virtuellen Computer erstellt haben, können Sie den neuen öffentlichen SSH-Schlüssel für den virtuellen Linux-Computer mit einem ähnlichen Befehl wie dem folgenden installieren:
+
+Wenn Sie bereits einen virtuellen Computer erstellt haben, können Sie einen neuen öffentlichen SSH-Schlüssel zu Ihrem virtuellen Linux-Computer mithilfe von `ssh-copy-id` hinzufügen.
 
 ```bash
 ssh-copy-id -i ~/.ssh/id_rsa.pub azureuser@myserver
@@ -197,21 +196,19 @@ Sie können eine SSH-Konfigurationsdatei (`~/.ssh/config`) erstellen und konfigu
 
 Das folgende Beispiel zeigt eine einfache Konfiguration, mit der Sie sich schnell mithilfe des standardmäßigen privaten SSH-Schlüssels bei einem bestimmten virtuellen Computer als Benutzer anmelden können. 
 
-### <a name="create-the-file"></a>Erstellen der Datei
+Erstellen Sie die Datei.
 
 ```bash
 touch ~/.ssh/config
 ```
 
-### <a name="edit-the-file-to-add-the-new-ssh-configuration"></a>Bearbeiten der Datei zum Hinzufügen der neuen SSH-Konfiguration
+Bearbeiten der Datei zum Hinzufügen der neuen SSH-Konfiguration
 
 ```bash
 vim ~/.ssh/config
 ```
 
-### <a name="example-configuration"></a>Beispielkonfiguration
-
-Fügen Sie die geeigneten Konfigurationseinstellungen für den VM-Host hinzu.
+Fügen Sie die geeigneten Konfigurationseinstellungen für den VM-Host hinzu. In diesem Beispiel lautet der VM-Name *myvm*, und der Kontoname ist *azureuser*.
 
 ```bash
 # Azure Keys
