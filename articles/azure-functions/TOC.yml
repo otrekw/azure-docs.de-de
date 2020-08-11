@@ -78,7 +78,7 @@
           href: /samples/browse/?products=azure-functions&languages=python
         - name: TypeScript
           href: /samples/browse/?products=azure-functions&languages=typescript
-    - name: Azure-Befehlszeilenschnittstelle
+    - name: Azure CLI
       href: functions-cli-samples.md
 - name: Konzepte
   items:
@@ -103,6 +103,7 @@
           href: functions-bindings-example.md
         - name: Registrieren von Bindungserweiterungen
           href: functions-bindings-register.md
+          displayName: 'bundles, extension bundles'
         - name: Muster für Bindungsausdrücke
           href: functions-bindings-expressions-patterns.md
         - name: Verwenden von Bindungsrückgabewerten
@@ -272,8 +273,6 @@
           displayName: 'app setting, application setting'
         - name: Festlegen der Laufzeitversion
           href: set-runtime-version.md
-        - name: Manuelles Registrieren einer Erweiterung
-          href: install-update-binding-extensions-manual.md
         - name: Deaktivieren einer Funktion
           href: disable-function.md
         - name: Georedundante Notfallwiederherstellung

@@ -9,12 +9,12 @@ ms.subservice: sql-dw
 ms.date: 07/10/2020
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: 1e44b58335bf90dbc0e97b58de7f878bc94c91c7
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 05dd1f1d429b59c4d621b63c6b78a1fc00e8d4dd
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371956"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87528462"
 ---
 # <a name="securely-load-data-using-synapse-sql"></a>Sicheres Laden von Daten mithilfe von Synapse SQL
 
@@ -88,13 +88,13 @@ Eine Authentifizierung der verwalteten Identität ist erforderlich, wenn Ihr Spe
    > [!NOTE]
    > Falls Sie über ein universelles Speicherkonto (v1) oder ein Blobspeicherkonto verfügen, müssen Sie zuerst das **Upgrade auf Version 2** durchführen, indem Sie [diesen Leitfaden](../../storage/common/storage-account-upgrade.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) verwenden.
 
-3. Navigieren Sie unter Ihrem Speicherkonto zu **Zugriffssteuerung (IAM)** , und wählen Sie **Rollenzuweisung hinzufügen** aus. Weisen Sie Ihrem SQL-Server die RBAC-Rolle **Besitzer von, Mitwirkender an oder Leser von Speicherblobdaten** zu.
+3. Navigieren Sie unter Ihrem Speicherkonto zu **Zugriffssteuerung (IAM)** , und wählen Sie **Rollenzuweisung hinzufügen** aus. Weisen Sie Ihrem SQL-Server die Azure-Rolle **Besitzer von, Mitwirkender an oder Leser von Speicherblobdaten** zu.
 
    > [!NOTE]
    > Nur Mitglieder mit der Berechtigung „Besitzer“ können diesen Schritt ausführen. Verschiedene integrierte Azure-Rollen finden Sie in [diesem Leitfaden](../../role-based-access-control/built-in-roles.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
    
     > [!IMPORTANT]
-    > Geben Sie die RBAC-Rolle „Besitzer von“, „Mitwirkender an“ oder „Leser von“ **Speicherblobdaten** an. Diese Rollen sind anders als die integrierten Azure-Rollen „Besitzer“, „Mitwirkender“ und „Leser“. 
+    > Geben Sie die Azure-Rolle „Besitzer von“, „Mitwirkender an“ oder „Leser von“ **Speicherblobdaten** **** an. Diese Rollen sind anders als die integrierten Azure-Rollen „Besitzer“, „Mitwirkender“ und „Leser“. 
 
     ![Erteilen der RBAC-Berechtigung zum Laden](./media/quickstart-bulk-load-copy-tsql-examples/rbac-load-permissions.png)
 
@@ -112,10 +112,10 @@ Eine Authentifizierung der verwalteten Identität ist erforderlich, wenn Ihr Spe
 ## <a name="d-azure-active-directory-authentication-aad"></a>D: Authentifizierung über Azure Active Directory (AAD)
 #### <a name="steps"></a>Schritte
 
-1. Navigieren Sie unter Ihrem Speicherkonto zu **Zugriffssteuerung (IAM)** , und wählen Sie **Rollenzuweisung hinzufügen** aus. Weisen Sie Ihrem AAD-Benutzer die RBAC-Rolle **Besitzer von, Mitwirkender an oder Leser von Speicherblobdaten** zu. 
+1. Navigieren Sie unter Ihrem Speicherkonto zu **Zugriffssteuerung (IAM)** , und wählen Sie **Rollenzuweisung hinzufügen** aus. Weisen Sie Ihrem AAD-Benutzer die Azure-Rolle **Besitzer von, Mitwirkender an oder Leser von Speicherblobdaten** zu. 
 
     > [!IMPORTANT]
-    > Geben Sie die RBAC-Rolle „Besitzer von“, „Mitwirkender an“ oder „Leser von“ **Speicherblobdaten** an. Diese Rollen sind anders als die integrierten Azure-Rollen „Besitzer“, „Mitwirkender“ und „Leser“.
+    > Geben Sie die Azure-Rolle „Besitzer von“, „Mitwirkender an“ oder „Leser von“ **Speicherblobdaten** **** an. Diese Rollen sind anders als die integrierten Azure-Rollen „Besitzer“, „Mitwirkender“ und „Leser“.
 
     ![Erteilen der RBAC-Berechtigung zum Laden](./media/quickstart-bulk-load-copy-tsql-examples/rbac-load-permissions.png)
 
