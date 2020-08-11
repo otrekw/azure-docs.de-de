@@ -5,31 +5,31 @@ ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
 ms.author: dpalled
-manager: cshankar
+manager: diviso
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 04/16/2020
+ms.date: 06/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: a670e32058794daeaa233464ba7d054f45ef25e3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3e9075014863e653a986dc4dbec7b9bc5e9f31bc
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81536317"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421194"
 ---
-# <a name="create-time-series-insights-resources-using-azure-resource-manager-templates"></a>Erstellen von Time Series Insights-Ressourcen mit Azure Resource Manager-Vorlagen
+# <a name="create-azure-time-series-insights-gen-1-resources-using-azure-resource-manager-templates"></a>Erstellen von Azure Time Series Insights Gen1-Ressourcen mit Azure Resource Manager-Vorlagen
 
-In diesem Artikel wird das Erstellen und Bereitstellen von Time Series Insights-Ressourcen mithilfe von [Azure Resource Manager-Vorlagen](https://docs.microsoft.com/azure/azure-resource-manager/), PowerShell und des Time Series Insights-Ressourcenanbieters beschrieben.
+In diesem Artikel wird das Erstellen und Bereitstellen von Azure Time Series Insights-Ressourcen mithilfe von [Azure Resource Manager-Vorlagen](https://docs.microsoft.com/azure/azure-resource-manager/), PowerShell und des Azure Time Series Insights-Ressourcenanbieters beschrieben.
 
-Time Series Insights unterstützt die folgenden Ressourcen:
+Azure Time Series Insights unterstützt die folgenden Ressourcen:
 
    | Resource | BESCHREIBUNG |
    | --- | --- |
-   | Environment | Eine Time Series Insights-Umgebung ist eine logische Gruppierung von Ereignissen, die aus Ereignisbrokern gelesen, gespeichert und zur Abfrage zur Verfügung gestellt werden. Weitere Informationen finden Sie unter [Planen Ihrer Azure Time Series Insights-Umgebung](time-series-insights-environment-planning.md). |
-   | Ereignisquelle | Eine Ereignisquelle ist eine Verbindung mit einem Ereignisbroker, von dem Time Series Insights Daten liest und Ereignisse für die Umgebung erfasst. Derzeit werden IoT Hub und Event Hub als Ereignisquellen unterstützt. |
+   | Environment | Eine Azure Time Series Insights-Umgebung ist eine logische Gruppierung von Ereignissen, die aus Ereignisbrokern gelesen, gespeichert und zur Abfrage zur Verfügung gestellt werden. Weitere Informationen finden Sie unter [Planen Ihrer Azure Time Series Insights-Umgebung](time-series-insights-environment-planning.md). |
+   | Ereignisquelle | Eine Ereignisquelle ist eine Verbindung mit einem Ereignisbroker, von dem Azure Time Series Insights Daten liest und Ereignisse für die Umgebung erfasst. Derzeit werden IoT Hub und Event Hub als Ereignisquellen unterstützt. |
    | Verweisdataset | Verweisdatasets stellen Metadaten zu den Ereignissen der Umgebung bereit. Metadaten in den Verweisdaten werden während der Erfassung mit Ereignissen verknüpft. Verweisdatasets werden über die dazugehörigen Ereignisschlüsseleigenschaften als Ressourcen definiert. Die eigentlichen Metadaten, aus denen das Verweisdataset besteht, wird über Datenebenen-APIs hochgeladen oder geändert. |
-   | Zugriffsrichtlinie | Zugriffsrichtlinien gewähren Berechtigungen für die Erstellung von Datenabfragen, für die Bearbeitung von Verweisdaten in der Umgebung und für die Freigabe gespeicherter Abfragen und Perspektiven, die der Umgebung zugeordnet sind. Weitere Informationen finden Sie unter [Gewähren von Datenzugriff für eine Time Series Insights-Umgebung mit Azure-Portal](time-series-insights-data-access.md) |
+   | Zugriffsrichtlinie | Zugriffsrichtlinien gewähren Berechtigungen für die Erstellung von Datenabfragen, für die Bearbeitung von Verweisdaten in der Umgebung und für die Freigabe gespeicherter Abfragen und Perspektiven, die der Umgebung zugeordnet sind. Weitere Informationen finden Sie unter [Gewähren von Datenzugriff für eine Azure Time Series Insights-Umgebung mit Azure-Portal](time-series-insights-data-access.md). |
 
 Eine Resource Manager-Vorlage ist eine JSON-Datei, mit der die Infrastruktur und Konfiguration von Ressourcen in einer Ressourcengruppe definiert wird. In den folgenden Dokumenten werden Vorlagendateien ausführlicher beschrieben:
 
@@ -37,13 +37,13 @@ Eine Resource Manager-Vorlage ist eine JSON-Datei, mit der die Infrastruktur und
 - [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und Azure PowerShell](../azure-resource-manager/templates/deploy-powershell.md)
 - [Microsoft.TimeSeriesInsights-Ressourcentypen](/azure/templates/microsoft.timeseriesinsights/allversions)
 
-Die Schnellstartvorlage [201-timeseriesinsights-environment-with-eventhub](https://github.com/Azure/azure-quickstart-templates/tree/master/201-timeseriesinsights-environment-with-eventhub) ist auf GitHub verfügbar. Mit dieser Vorlage werden eine Time Series Insights-Umgebung, eine untergeordnete Ereignisquelle, die für die Nutzung von Ereignissen von einem Event Hub konfiguriert ist, und Zugriffsrichtlinien erstellt, mit denen Zugriff auf die Daten der Umgebung gewährt wird. Wenn Sie keinen vorhandenen Event Hub angeben, wird einer für die Bereitstellung erstellt.
+Die Schnellstartvorlage [201-timeseriesinsights-environment-with-eventhub](https://github.com/Azure/azure-quickstart-templates/tree/master/201-timeseriesinsights-environment-with-eventhub) ist auf GitHub verfügbar. Mit dieser Vorlage werden eine Azure Time Series Insights-Umgebung, eine untergeordnete Ereignisquelle, die für die Nutzung von Ereignissen von einem Event Hub konfiguriert ist, und Zugriffsrichtlinien erstellt, mit denen Zugriff auf die Daten der Umgebung gewährt wird. Wenn Sie keinen vorhandenen Event Hub angeben, wird einer für die Bereitstellung erstellt.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="specify-deployment-template-and-parameters"></a>Angeben der Bereitstellungsvorlage und der Parameter
 
-Im folgenden Verfahren wird beschrieben, wie Sie PowerShell zum Bereitstellen einer Azure Resource Manager-Vorlage verwenden, mit der eine Time Series Insights-Umgebung, eine untergeordnete Ereignisquelle, die für die Nutzung von Ereignissen von einem Event Hub konfiguriert ist, und Zugriffsrichtlinien erstellen, mit denen Zugriff auf die Daten der Umgebung gewährt wird. Wenn Sie keinen vorhandenen Event Hub angeben, wird einer für die Bereitstellung erstellt.
+Im folgenden Verfahren wird beschrieben, wie Sie PowerShell zum Bereitstellen einer Azure Resource Manager-Vorlage verwenden, mit der eine Azure Time Series Insights-Umgebung, eine untergeordnete Ereignisquelle, die für die Nutzung von Ereignissen von einem Event Hub konfiguriert ist, und Zugriffsrichtlinien erstellen, mit denen Zugriff auf die Daten der Umgebung gewährt wird. Wenn Sie keinen vorhandenen Event Hub angeben, wird einer für die Bereitstellung erstellt.
 
 1. Installieren Sie Azure PowerShell gemäß den Anweisungen unter [Erste Schritte mit Azure PowerShell-Cmdlets](https://docs.microsoft.com/powershell/azure/get-started-azureps).
 
@@ -63,7 +63,7 @@ Im folgenden Verfahren wird beschrieben, wie Sie PowerShell zum Bereitstellen ei
      | --- | --- |
      | eventHubNamespaceName | Der Namespace der Quelle (Event Hub). |
      | eventHubName | Der Name der Quelle (Event Hub). |
-     | consumerGroupName | Der Name der Consumergruppe, die vom Time Series Insights-Dienst verwendet wird, um die Daten vom Event Hub zu lesen. **HINWEIS:** Zur Vermeidung von Ressourcenkonflikten muss diese Consumergruppe dediziert für den Time Series Insights-Dienst verwendet werden und sollte nicht für andere Leser freigegeben werden. |
+     | consumerGroupName | Der Name der Consumergruppe, die vom Azure Time Series Insights-Dienst verwendet wird, um die Daten vom Event Hub zu lesen. **HINWEIS:** Zur Vermeidung von Ressourcenkonflikten muss diese Consumergruppe dediziert für den Azure Time Series Insights-Dienst verwendet werden und sollte nicht für andere Leser freigegeben werden. |
      | environmentName | Der Name der Umgebung. Der Name darf folgende Zeichen nicht enthalten: `<`, `>`, `%`, `&`, `:`, `\\`, `?`, `/` und keine Steuerzeichen. Alle anderen Zeichen sind zulässig.|
      | eventSourceName | Der Name der untergeordneten Ressource der Ereignisquelle. Der Name darf folgende Zeichen nicht enthalten: `<`, `>`, `%`, `&`, `:`, `\\`, `?`, `/` und keine Steuerzeichen. Alle anderen Zeichen sind zulässig. |
 
@@ -73,14 +73,14 @@ Im folgenden Verfahren wird beschrieben, wie Sie PowerShell zum Bereitstellen ei
 
      | Parameter | BESCHREIBUNG |
      | --- | --- |
-     | existingEventHubResourceId | Eine optionale Ressourcen-ID eines vorhandenen Event Hub, der über die Ereignisquelle mit der Time Series Insights-Umgebung verbunden wird. **HINWEIS:** Der Benutzer, der die Vorlage bereitstellt, muss über Berechtigungen zum Durchführen des Vorgangs „listkeys“ auf dem Event Hub verfügen. Wenn kein Wert übergeben wird, wird von der Vorlage ein neuer Event Hub erstellt. |
+     | existingEventHubResourceId | Eine optionale Ressourcen-ID eines vorhandenen Event Hub, der über die Ereignisquelle mit der Azure Time Series Insights-Umgebung verbunden wird. **HINWEIS:** Der Benutzer, der die Vorlage bereitstellt, muss über Berechtigungen zum Durchführen des Vorgangs „listkeys“ auf dem Event Hub verfügen. Wenn kein Wert übergeben wird, wird von der Vorlage ein neuer Event Hub erstellt. |
      | environmentDisplayName | Ein optionaler Anzeigenamen, der in Tools oder Benutzeroberflächen anstelle des Umgebungsnamens angezeigt wird. |
-     | environmentSkuName | Der Name der SKU. Weitere Informationen finden Sie auf der Seite [Time Series Insights – Preise](https://azure.microsoft.com/pricing/details/time-series-insights/).  |
-     | environmentSkuCapacity | Die Einheitenkapazität der SKU. Weitere Informationen finden Sie auf der Seite [Time Series Insights – Preise](https://azure.microsoft.com/pricing/details/time-series-insights/).|
+     | environmentSkuName | Der Name der SKU. Weitere Informationen finden Sie auf der Seite [Azure Time Series Insights – Preise](https://azure.microsoft.com/pricing/details/time-series-insights/).  |
+     | environmentSkuCapacity | Die Einheitenkapazität der SKU. Weitere Informationen finden Sie auf der Seite [Azure Time Series Insights – Preise](https://azure.microsoft.com/pricing/details/time-series-insights/).|
      | environmentDataRetentionTime | Die Mindestzeitspanne der Ereignisse einer Umgebung ist für Abfragen verfügbar. Der Wert muss im ISO 8601-Format angegeben werden, z.B. `P30D` für eine Aufbewahrungsrichtlinie von 30 Tagen. |
      | eventSourceDisplayName | Ein optionaler Anzeigename, der in Tools oder Benutzeroberflächen anstelle des Ereignisquellennamens angezeigt wird. |
      | eventSourceTimestampPropertyName | Die Ereigniseigenschaft, die als Zeitstempel der Ereignisquelle verwendet wird. Wenn für timestampPropertyName kein Name oder wenn Null oder eine leere Zeichenfolge angegeben wird, wird der Zeitpunkt der Ereigniserstellung verwendet. |
-     | eventSourceKeyName | Der Name des freigegebenen Zugriffsschlüssels, der vom Time Series Insights-Dienst verwendet wird, um eine Verbindung mit dem Event Hub herzustellen. |
+     | eventSourceKeyName | Der Name des freigegebenen Zugriffsschlüssels, der vom Azure Time Series Insights-Dienst verwendet wird, um eine Verbindung mit dem Event Hub herzustellen. |
      | accessPolicyReaderObjectIds | Eine Liste mit Objekt-IDs der Benutzer oder Anwendungen in Azure AD, die über Lesezugriff auf die Umgebung verfügen sollen. Die Objekt-ID des Dienstprinzipals kann abgerufen werden, indem das **Get-AzADUser** oder das **Get-AzADServicePrincipal**-Cmdlet aufgerufen wird. Die Erstellung einer Zugriffsrichtlinie für Azure AD-Gruppen wird noch nicht unterstützt. |
      | accessPolicyContributorObjectIds | Eine Liste mit Objekt-IDs der Benutzer oder Anwendungen in Azure AD, die über den Zugriff „Mitwirkender“ auf die Umgebung verfügen sollen. Die Objekt-ID des Dienstprinzipals kann abgerufen werden, indem das **Get-AzADUser** oder das **Get-AzADServicePrincipal**-Cmdlet aufgerufen wird. Die Erstellung einer Zugriffsrichtlinie für Azure AD-Gruppen wird noch nicht unterstützt. |
 
@@ -124,7 +124,7 @@ Im folgenden Verfahren wird beschrieben, wie Sie PowerShell zum Bereitstellen ei
 ## <a name="deploy-the-quickstart-template-locally-using-powershell"></a>Lokales Bereitstellen der Schnellstartvorlage mit PowerShell
 
 > [!IMPORTANT]
-> Die unten angezeigten Befehlszeilenvorgänge beschreiben das [Az-PowerShell-Modul](https://docs.microsoft.com/powershell/azure/overview).
+> Die unten angezeigten Befehlszeilenvorgänge beschreiben das [Az-PowerShell-Modul](https://docs.microsoft.com/powershell/azure/).
 
 1. Melden Sie sich in PowerShell bei Ihrem Azure-Konto an.
 
@@ -247,9 +247,9 @@ Im folgenden Verfahren wird beschrieben, wie Sie PowerShell zum Bereitstellen ei
     </br>
     </br>
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-timeseriesinsights-environment-with-eventhub%2Fazuredeploy.json" target="_blank">
-       <img src="https://azuredeploy.net/deploybutton.png"/>
+       <img src="https://azuredeploy.net/deploybutton.png" alt="The Deploy to Azure button."/>
     </a>
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Informationen zur programmgesteuerten Verwaltung von Time Series Insights-Ressourcen mit REST-APIs finden Sie unter [Time Series Insights Management](https://docs.microsoft.com/rest/api/time-series-insights-management/) (Time Series Insights-Verwaltung).
+- Informationen zur programmgesteuerten Verwaltung von Azure Time Series Insights-Ressourcen mit REST-APIs finden Sie unter [Azure Time Series Insights Management](https://docs.microsoft.com/rest/api/time-series-insights-management/) (Time Series Insights-Verwaltung).

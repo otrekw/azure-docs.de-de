@@ -3,7 +3,7 @@ title: Übersicht über SQL Server Always On-Verfügbarkeitsgruppen
 description: Dieser Artikel bietet eine Einführung in SQL Server Always On-Verfügbarkeitsgruppen auf Azure Virtual Machines.
 services: virtual-machines
 documentationCenter: na
-author: MikeRayMSFT
+author: MashaMSFT
 editor: monicar
 tags: azure-service-management
 ms.assetid: 601eebb1-fc2c-4f5b-9c05-0e6ffd0e5334
@@ -12,14 +12,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/13/2017
-ms.author: mikeray
-ms.custom: seo-lt-2019
-ms.openlocfilehash: f3c7009e5ecb43a809b9a3f703fc5ba289a2fd00
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: mathoma
+ms.custom: seo-lt-2019, devx-track-azurecli
+ms.openlocfilehash: bc0d5b0cdf616904ee7ed61fdc681ba60bff8f75
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84669272"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87480287"
 ---
 # <a name="introducing-sql-server-always-on-availability-groups-on-azure-virtual-machines"></a>Einführung in SQL Server Always On-Verfügbarkeitsgruppen auf Azure Virtual Machines
 
@@ -41,10 +41,9 @@ Um für noch mehr Redundanz und Verfügbarkeit zu sorgen, sollten sich die SQL S
 
 |  | Windows Server-Version | SQL Server-Version | SQL Server-Edition | WSFC-Quorumkonfiguration | Notfallwiederherstellung mit mehreren Regionen | Unterstützung mehrerer Subnetze | Unterstützung für ein vorhandenes AD | Notfallwiederherstellung mit mehreren Zonen in derselben Region | Dist-AG-Unterstützung ohne AD-Domäne | Dist-AG-Unterstützung ohne Cluster |  
 | :------ | :-----| :-----| :-----| :-----| :-----| :-----| :-----| :-----| :-----| :-----|
-| [SQL-VM-Befehlszeilenschnittstelle](availability-group-az-cli-configure.md) | 2016 | 2017 </br>2016   | Ent | Cloudzeuge | Nein | Ja | Ja | Ja | Nein | Nein |
-| [Schnellstartvorlagen](availability-group-quickstart-template-configure.md) | 2016 | 2017</br>2016  | Ent | Cloudzeuge | Nein | Ja | Ja | Ja | Nein | Nein |
-| [Manuell](availability-group-manually-configure-prerequisites-tutorial.md) | All | All | All | All | Ja | Ja | Ja | Ja | Ja | Ja |
-| &nbsp; | &nbsp; |&nbsp; |&nbsp; |&nbsp; |&nbsp; |&nbsp; |&nbsp; |&nbsp; |&nbsp; |&nbsp; |
+| **[SQL-VM-Befehlszeilenschnittstelle](availability-group-az-cli-configure.md)** | 2016 | 2017 </br>2016   | Ent | Cloudzeuge | Nein | Ja | Ja | Ja | Nein | Nein |
+| **[Schnellstartvorlagen](availability-group-quickstart-template-configure.md)** | 2016 | 2017</br>2016  | Ent | Cloudzeuge | Nein | Ja | Ja | Ja | Nein | Nein |
+| **[Manuell](availability-group-manually-configure-prerequisites-tutorial.md)** | All | All | All | All | Ja | Ja | Ja | Ja | Ja | Ja |
 
 Die Vorlage **SQL Server Always On Cluster (Vorschau)** wurde aus Azure Marketplace entfernt und ist nicht mehr verfügbar. 
 

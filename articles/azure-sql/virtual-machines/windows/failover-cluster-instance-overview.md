@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: a40c5512da40ede84251ec16345a3957c391bb71
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 8a5374bf15798fd7e53f0d93e69f2f40a2d57b94
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85965393"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533817"
 ---
 # <a name="failover-cluster-instances-with-sql-server-on-azure-virtual-machines"></a>Failoverclusterinstanzen mit SQL Server in Azure Virtual Machines
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -48,10 +48,10 @@ SQL Server auf Azure-VMs bietet verschiedene Optionen als freigegebene Speicher
 
 ||[Freigegebene Azure-Datenträger](../../../virtual-machines/windows/disks-shared.md)|[Premium-Dateifreigaben](../../../storage/files/storage-how-to-create-premium-fileshare.md) |[Direkte Speicherplätze (S2D)](/windows-server/storage/storage-spaces/storage-spaces-direct-overview)|
 |---------|---------|---------|---------|
-|**Betriebssystemversion (Min.)**| Windows Server 2016|Windows Server 2012|Windows Server 2016|
-|**Mindestversion von SQL Server**|SQL Server 2019|SQL Server 2012|SQL Server 2016|
+|**Betriebssystemversion (Min.)**| All |Windows Server 2012|Windows Server 2016|
+|**Mindestversion von SQL Server**|All|SQL Server 2012|SQL Server 2016|
 |**Unterstützte VM-Verfügbarkeit** |Verfügbarkeitsgruppen mit Näherungsplatzierungsgruppen |Verfügbarkeitsgruppen und Verfügbarkeitszonen|Verfügbarkeitsgruppen |
-|**Unterstützt FileStream**|Nein|Nein|Ja |
+|**Unterstützt FileStream**|Ja|Nein|Ja |
 |**Azure-Blobcache**|Nein|Nein|Ja|
 
 Im restlichen Teil dieses Abschnitts werden die Vorteile und Einschränkungen der einzelnen Speicheroptionen aufgeführt, die für SQL Server auf Azure-VMs verfügbar sind. 
@@ -60,18 +60,18 @@ Im restlichen Teil dieses Abschnitts werden die Vorteile und Einschränkungen de
 
 [Freigegebene Azure-Datenträger](../../../virtual-machines/windows/disks-shared.md) sind eine Funktion von [verwalteten Azure-Datenträgern](../../../virtual-machines/windows/managed-disks-overview.md). Windows Server-Failoverclustering unterstützt die Verwendung von freigegebenen Azure-Datenträgern mit einer Failoverclusterinstanz. 
 
-**Unterstütztes Betriebssystem**: Windows Server 2019   
-**Unterstützte SQL-Version**: SQL Server 2019   
+**Unterstütztes Betriebssystem**: All   
+**Unterstützte SQL-Version**: All     
 
 **Vorteile:** 
 - Nützlich für Anwendungen, die zu Azure unter Beibehaltung der HADR-Architektur (High-Availability and Disaster Recovery, Hochverfügbarkeit und Notfallwiederherstellung) migriert werden sollen. 
 - Clusteranwendungen können aufgrund von SCSI PR-Unterstützung (SCSI Persistent Reservations) unverändert zu Azure migriert werden. 
 - Unterstützt freigegebene Azure-SSDs Premium für alle Versionen von SQL Server und freigegebenes Azure Disk Storage Ultra für SQL Server 2019. 
 - Kann einen einzelnen freigegebenen Datenträger oder Striping für mehrere freigegebene Datenträger verwenden, um einen freigegebenen Speicherpool zu erstellen. 
+- Unterstützt Filestream.
 
 
 **Einschränkungen:** 
-- Während der Vorschauphase nur für SQL Server 2019 und Windows Server 2019 verfügbar. 
 - Virtuelle Computer müssen sich in derselben Verfügbarkeitsgruppe und in derselben Näherungsplatzierungsgruppe befinden.
 - Verfügbarkeitszonen werden nicht unterstützt.
 - Zwischenspeichern von SSD Premium-Datenträgern wird nicht unterstützt.
@@ -98,7 +98,7 @@ Informationen zu den ersten Schritten finden Sie unter [SQL Server-Failoverclus
 - Hohe Netzwerkbandbreite ist erforderlich, um Hochleistung trotz der aktuell ausgeführten Datenträgerreplikation zu erzielen. 
 - Erfordert eine größere VM-Größe und doppelte Speicherkapazität, da der Speicher an jede VM angefügt wird. 
 
-Informationen zu den ersten Schritten finden Sie unter [SQL Server-Failoverclusterinstanz mit direkten Speicherplätzen](failover-cluster-instance-azure-shared-disks-manually-configure.md). 
+Informationen zu den ersten Schritten finden Sie unter [SQL Server-Failoverclusterinstanz mit direkten Speicherplätzen](failover-cluster-instance-storage-spaces-direct-manually-configure.md). 
 
 ### <a name="premium-file-share"></a>Premium-Dateifreigabe
 

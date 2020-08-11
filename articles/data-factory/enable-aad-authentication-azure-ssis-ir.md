@@ -11,12 +11,12 @@ ms.author: sawinark
 manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 07/09/2020
-ms.openlocfilehash: fd9433c2482c4ddd907f7e30c0028dc2a15faed2
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: ffbb81fa56b87281199309d61ab3e2e59c1a5acd
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86187675"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87563992"
 ---
 # <a name="enable-azure-active-directory-authentication-for-azure-ssis-integration-runtime"></a>Aktivieren der Azure Active Directory-Authentifizierung für Azure-SSIS Integration Runtime
 
@@ -128,7 +128,7 @@ Für den nächsten Schritt benötigen Sie [Microsoft SQL Server Management Stud
 
    Der Befehl sollte erfolgreich abgeschlossen werden und dem enthaltenen Benutzer die Möglichkeit gewähren, eine Datenbank (SSISDB) zu erstellen.
 
-10. Wenn Ihre SSISDB mit SQL-Authentifizierung erstellt wurde und Sie zur Azure AD-Authentifizierung wechseln möchten, damit Ihre Azure-SSIS IR darauf zugreifen kann, klicken Sie mit der rechten Maustaste auf die **SSISDB**-Datenbank, und wählen Sie**Neue Abfrage** aus.
+10. Wenn Ihre SSISDB mithilfe von SQL-Authentifizierung erstellt wurde und Sie zur Verwendung der Azure AD-Authentifizierung für Ihre Azure-SSIS IR wechseln möchten, um darauf zugreifen zu können, müssen Sie zunächst sicherstellen, dass die Schritte zum Erteilen der Berechtigung für die **Master**-Datenbank erfolgreich abgeschlossen wurden. Klicken Sie dann mit der rechten Maustaste auf die **SSISDB**-Datenbank, und wählen Sie **Neue Abfrage** aus.
 
 11. Geben Sie im Abfragefenster den folgenden T-SQL-Befehl ein, und wählen Sie auf der Symbolleiste **Ausführen** aus.
 
@@ -176,7 +176,7 @@ Für den nächsten Schritt benötigen Sie [Microsoft SQL Server Management Stud
     
     Der Befehl sollte erfolgreich abgeschlossen werden und der verwalteten Identität für Ihre ADF die Möglichkeit gewähren, eine Datenbank (SSISDB) zu erstellen.
 
-6.  Wenn Ihre SSISDB mit SQL-Authentifizierung erstellt wurde und Sie zur Azure AD-Authentifizierung wechseln möchten, damit Ihre Azure-SSIS IR darauf zugreifen kann, klicken Sie mit der rechten Maustaste auf die **SSISDB**-Datenbank, und wählen Sie**Neue Abfrage** aus.
+6.  Wenn Ihre SSISDB mithilfe von SQL-Authentifizierung erstellt wurde und Sie zur Verwendung der Azure AD-Authentifizierung für Ihre Azure-SSIS IR wechseln möchten, um darauf zugreifen zu können, müssen Sie zunächst sicherstellen, dass die Schritte zum Erteilen der Berechtigung für die **Master**-Datenbank erfolgreich abgeschlossen wurden. Klicken Sie dann mit der rechten Maustaste auf die **SSISDB**-Datenbank, und wählen Sie **Neue Abfrage** aus.
 
 7.  Geben Sie im Abfragefenster den folgenden T-SQL-Befehl ein, und wählen Sie auf der Symbolleiste **Ausführen** aus.
 

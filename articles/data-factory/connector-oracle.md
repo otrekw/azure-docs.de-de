@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 04/09/2020
+ms.date: 07/24/2020
 ms.author: jingwang
-ms.openlocfilehash: d37a9bd4cc29ee60f9833ffbcb5a2701a19bbaa7
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: bac673f5c8c8d6a4e2b368938a0c08c893518022
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81416825"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87171267"
 ---
 # <a name="copy-data-from-and-to-oracle-by-using-azure-data-factory"></a>Kopieren von Daten aus und nach Oracle mit Azure Data Factory
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
@@ -76,6 +76,8 @@ Der verknüpfte Oracle-Dienst unterstützt folgende Eigenschaften:
 
 >[!TIP]
 >Falls der Fehler „ORA-01025: UPI parameter out of range“ (ORA-01025: URI-Parameter außerhalb des zulässigen Bereichs) angezeigt wird und Sie die Oracle-Version 8i verwenden, fügen Sie Ihrer Verbindungszeichenfolge Folgendes hinzu: `WireProtocolMode=1`. Versuchen Sie es anschließend noch mal.
+
+Wenn Sie mehrere Oracle-Instanzen für ein Failoverszenario haben, können Sie den mit Oracle verknüpften Dienst erstellen und den primären Host, den Port, den Benutzernamen, das Kennwort usw. ausfüllen sowie ein neues „**Zusätzliche Verbindungseigenschaften**“ mit dem Eigenschaftsnamen `AlternateServers` und dem Wert `(HostName=<secondary host>:PortNumber=<secondary port>:ServiceName=<secondary service name>)` hinzufügen. Vergessen dabei nicht die eckigen Klammern, und achten Sie auf die Doppelpunkte (`:`) als Trennzeichen. Beispielsweise definiert der folgende Wert von alternativen Servern zwei alternative Datenbankserver für das Verbindungsfailover: `(HostName=AccountingOracleServer:PortNumber=1521:SID=Accounting,HostName=255.201.11.24:PortNumber=1522:ServiceName=ABackup.NA.MyCompany)`.
 
 Weitere Verbindungseigenschaften, die Sie abhängig von Ihrem Anwendungsfall in der Verbindungszeichenfolge festlegen können:
 

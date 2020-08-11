@@ -3,13 +3,13 @@ title: Wiederherstellen von VMs über das Azure-Portal
 description: Wiederherstellen eines virtuellen Azure-Computers mithilfe eines Wiederherstellungspunkts über das Azure-Portal
 ms.reviewer: geg
 ms.topic: conceptual
-ms.date: 09/17/2019
-ms.openlocfilehash: e717a1c514e9ddc8a8c03dbf8d662ffb2f61eb61
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 08/02/2020
+ms.openlocfilehash: a43e7d1d97196afdad0a1e451b0c1618f0ea3a16
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86514259"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87809183"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>Wiederherstellen von Azure-VM-Daten im Azure-Portal
 
@@ -51,37 +51,37 @@ Wenn dies nicht zutrifft, können Sie [einen Datenträger wiederherstellen](#res
 
 ## <a name="select-a-restore-point"></a>Auswählen eines Wiederherstellungspunkts
 
-1. Klicken Sie in dem Tresor, der der wiederherzustellenden VM zugeordnet ist, auf **Sicherungselemente** > **Virtuelle Azure-Computer**.
-2. Klicken Sie auf eine VM. Standardmäßig werden im VM-Dashboard die Wiederherstellungspunkte der letzten 30 Tage angezeigt. Sie können Wiederherstellungspunkte anzeigen, die älter als 30 Tage sind, oder nach Wiederherstellungspunkten filtern, die auf Daten, Zeitbereichen und verschiedenen Arten von Momentaufnahmen basieren.
-3. Um eine VM wiederherzustellen, klicken Sie auf **VM wiederherstellen**.
+1. Wählen Sie in dem Tresor, der der wiederherzustellenden VM zugeordnet ist, die Option **Sicherungselemente** > **Virtuelle Azure-Computer** aus.
+1. Wählen Sie einen virtuellen Computer aus. Standardmäßig werden im VM-Dashboard die Wiederherstellungspunkte der letzten 30 Tage angezeigt. Sie können Wiederherstellungspunkte anzeigen, die älter als 30 Tage sind, oder nach Wiederherstellungspunkten filtern, die auf Daten, Zeitbereichen und verschiedenen Arten von Momentaufnahmen basieren.
+1. Um eine VM wiederherzustellen, klicken Sie auf **VM wiederherstellen**.
 
     ![Wiederherstellungspunkt](./media/backup-azure-arm-restore-vms/restore-point.png)
 
-4. Wählen Sie einen Wiederherstellungspunkt für die Wiederherstellung aus.
+1. Wählen Sie einen Wiederherstellungspunkt für die Wiederherstellung aus.
 
 ## <a name="choose-a-vm-restore-configuration"></a>Auswählen einer Konfiguration für die VM-Wiederherstellung
 
-1. Wählen Sie unter **Konfiguration wiederherstellen** eine Wiederherstellungsoption aus:
+1. Wählen Sie in **Virtuellen Computer wiederherstellen** eine Wiederherstellungsoption aus:
     - **Neue erstellen**: Verwenden Sie diese Option, wenn Sie eine neue VM erstellen möchten. Sie können eine VM mit einfachen Einstellungen erstellen oder einen Datenträger wiederherstellen und eine benutzerdefinierte VM erstellen.
     - **Vorhandene ersetzen**: Verwenden Sie diese Option, wenn Sie Datenträger auf einer vorhandenen VM ersetzen möchten.
 
         ![Assistent für die Wiederherstellungskonfiguration](./media/backup-azure-arm-restore-vms/restore-configuration.png)
 
-2. Geben Sie die Einstellungen für die ausgewählte Wiederherstellungsoption an.
+1. Geben Sie die Einstellungen für die ausgewählte Wiederherstellungsoption an.
 
 ## <a name="create-a-vm"></a>Erstellen einer VM
 
 Als eine der [Wiederherstellungsoptionen](#restore-options) können Sie von einem Wiederherstellungspunkt aus schnell eine VM mit Grundeinstellungen erstellen.
 
-1. Wählen Sie unter **Konfiguration wiederherstellen** > **Neu erstellen** > **Wiederherstellungstyp** die Option **Virtuellen Computer erstellen** aus.
-2. Geben Sie unter **Name des virtuellen Computers** einen virtuellen Computer an, der nicht im Abonnement vorhanden ist.
-3. Wählen Sie unter **Ressourcengruppe** eine vorhandene Ressourcengruppe für den neuen virtuellen Computer aus, oder erstellen Sie eine neue Ressourcengruppe mit einem global eindeutigen Namen. Wenn Sie einen Namen zuweisen, der bereits vorhanden ist, weist Azure der Gruppe denselben Namen wie der VM zu.
-4. Wählen Sie unter **Virtuelles Netzwerk** das virtuelle Netzwerk aus, in das der virtuelle Computer platziert wird. Alle dem Abonnement zugeordneten VNETs werden angezeigt. Wählen Sie das Subnetz aus. Das erste Subnetz wird standardmäßig ausgewählt.
-5. Geben Sie unter **Speicherort** das Speicherkonto für die VM an. [Weitere Informationen](#storage-accounts)
+1. Wählen Sie unter **Virtuellen Computer wiederherstellen** > **Neu erstellen** > **Wiederherstellungstyp** die Option **Virtuellen Computer erstellen** aus.
+1. Geben Sie unter **Name des virtuellen Computers** einen virtuellen Computer an, der nicht im Abonnement vorhanden ist.
+1. Wählen Sie unter **Ressourcengruppe** eine vorhandene Ressourcengruppe für den neuen virtuellen Computer aus, oder erstellen Sie eine neue Ressourcengruppe mit einem global eindeutigen Namen. Wenn Sie einen Namen zuweisen, der bereits vorhanden ist, weist Azure der Gruppe denselben Namen wie der VM zu.
+1. Wählen Sie unter **Virtuelles Netzwerk** das virtuelle Netzwerk aus, in das der virtuelle Computer platziert wird. Alle dem Abonnement zugeordneten VNETs werden angezeigt. Wählen Sie das Subnetz aus. Das erste Subnetz wird standardmäßig ausgewählt.
+1. Geben Sie unter **Stagingspeicherort** das Speicherkonto für die VM an. [Weitere Informationen](#storage-accounts)
 
     ![Assistent für die Wiederherstellungskonfiguration](./media/backup-azure-arm-restore-vms/recovery-configuration-wizard1.png)
 
-6. Klicken Sie unter **Konfiguration wiederherstellen** auf **OK**. Klicken Sie unter **Wiederherstellen** auf **Wiederherstellen**, um den Wiederherstellungsvorgang auszulösen.
+1. Wählen Sie **Wiederherstellen** aus, um den Wiederherstellungsvorgang zu starten.
 
 ## <a name="restore-disks"></a>Wiederherstellen von Datenträgern
 
@@ -92,12 +92,12 @@ Als eine der [Wiederherstellungsoptionen](#restore-options) können einen Datent
 - [Erstellen Sie eine neue VM](./backup-azure-vms-automation.md#create-a-vm-from-restored-disks) aus den wiederhergestellten Datenträgern mit PowerShell.
 
 1. Wählen Sie unter **Konfiguration wiederherstellen** > **Neu erstellen** > **Wiederherstellungstyp** die Option **Datenträger wiederherstellen** aus.
-2. Wählen Sie unter **Ressourcengruppe** eine vorhandene Ressourcengruppe für den wiederhergestellten Datenträger aus, oder erstellen Sie eine neue Ressourcengruppe mit einem global eindeutigen Namen.
-3. Geben Sie für das **Speicherkonto** das Konto an, in das die virtuellen Festplatten kopiert werden sollen. [Weitere Informationen](#storage-accounts)
+1. Wählen Sie unter **Ressourcengruppe** eine vorhandene Ressourcengruppe für den wiederhergestellten Datenträger aus, oder erstellen Sie eine neue Ressourcengruppe mit einem global eindeutigen Namen.
+1. Geben Sie unter **Stagingspeicherort** das Speicherkonto an, in das die virtuellen Festplatten kopiert werden sollen. [Weitere Informationen](#storage-accounts)
 
     ![Konfiguration der Wiederherstellung abgeschlossen](./media/backup-azure-arm-restore-vms/trigger-restore-operation1.png)
 
-4. Klicken Sie unter **Konfiguration wiederherstellen** auf **OK**. Klicken Sie unter **Wiederherstellen** auf **Wiederherstellen**, um den Wiederherstellungsvorgang auszulösen.
+1. Wählen Sie **Wiederherstellen** aus, um den Wiederherstellungsvorgang zu starten.
 
 Wenn Ihr virtueller Computer verwaltete Datenträger verwendet und Sie die Option **Virtuellen Computer erstellen** auswählen, wird Azure Backup das angegebene Speicherkonto nicht verwenden. In den Fällen **Wiederherstellen von Datenträgern** und **Sofortige Wiederherstellung** wird das Speicherkonto nur zum Speichern der Vorlage verwendet. Verwaltete Datenträger werden in der angegebenen Ressourcengruppe erstellt.
 Wenn Ihr virtueller Computer nicht verwaltete Datenträger verwendet, werden diese als Blobs für das Speicherkonto wiederhergestellt.
@@ -106,19 +106,19 @@ Wenn Ihr virtueller Computer nicht verwaltete Datenträger verwendet, werden die
 
 Nachdem der Datenträger wiederhergestellt wurde, verwenden Sie die Vorlage, die im Rahmen der Wiederherstellung erstellt wurde, um eine neue VM anzupassen und zu erstellen:
 
-1. Öffnen Sie **Details zum Wiederherstellungsauftrag** für den entsprechenden Auftrag.
+1. Wählen Sie unter **Sicherungsaufträge** den entsprechenden Wiederherstellungsauftrag aus.
 
-2. Klicken Sie auf **Details zum Wiederherstellungsauftrag** auf **Vorlage bereitstellen**, um die Vorlagenbereitstellung zu initiieren.
+1. Klicken Sie unter **Wiederherstellen** auf **Vorlage bereitstellen**, um die Vorlagenbereitstellung zu initiieren.
 
     ![Drilldown des Wiederherstellungsauftrags](./media/backup-azure-arm-restore-vms/restore-job-drill-down1.png)
 
-3. Um die in der Vorlage angegebene VM-Einstellung anzupassen, klicken Sie auf **Vorlage bearbeiten**. Wenn Sie weitere Anpassungen hinzufügen möchten, klicken Sie auf **Parameter bearbeiten**.
+1. Um die in der Vorlage angegebene VM-Einstellung anzupassen, wählen Sie **Vorlage bearbeiten** aus. Wenn Sie weitere Anpassungen hinzufügen möchten, wählen Sie **Parameter bearbeiten** aus.
     - [Erfahren Sie mehr](../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template) zum Bereitstellen von Ressourcen aus einer benutzerdefinierten Vorlage.
     - [Erfahren Sie mehr](../azure-resource-manager/templates/template-syntax.md) zum Erstellen von Vorlagen.
 
    ![Laden der Vorlagenbereitstellung](./media/backup-azure-arm-restore-vms/edit-template1.png)
 
-4. Geben Sie die benutzerdefinierten Werte für die VM ein, akzeptieren Sie die **Geschäftsbedingungen** und klicken Sie auf **Kaufen**.
+1. Geben Sie die benutzerdefinierten Werte für die VM ein, akzeptieren Sie die **Geschäftsbedingungen**, und wählen Sie **Kaufen** aus.
 
    ![Übermitteln der Vorlagenbereitstellung](./media/backup-azure-arm-restore-vms/submitting-template1.png)
 
@@ -126,9 +126,9 @@ Nachdem der Datenträger wiederhergestellt wurde, verwenden Sie die Vorlage, die
 
 Als eine der [Wiederherstellungsoptionen](#restore-options) können Sie einen vorhandenen VM-Datenträger durch den ausgewählten Wiederherstellungspunkt ersetzen. [Schauen Sie sich alle Wiederherstellungsoptionen an](#restore-options).
 
-1. Klicken Sie unter **Konfiguration wiederherstellen** auf **Vorhandene ersetzen**.
-2. Wählen Sie unter **Wiederherstellungstyp** die Option **Datenträger wiederherstellen**. Dies ist der Wiederherstellungspunkt, der zum Ersetzen vorhandener VM-Datenträger verwendet wird.
-3. Geben Sie unter **Stagingspeicherort** an, wo Momentaufnahmen der aktuellen verwalteten Datenträger während des Wiederherstellungsvorgangs gespeichert werden sollen. [Weitere Informationen](#storage-accounts)
+1. Wählen Sie unter **Konfiguration wiederherstellen** die Option **Vorhandene ersetzen** aus.
+1. Wählen Sie unter **Wiederherstellungstyp** die Option **Datenträger wiederherstellen**. Dies ist der Wiederherstellungspunkt, der zum Ersetzen vorhandener VM-Datenträger verwendet wird.
+1. Geben Sie unter **Stagingspeicherort** an, wo Momentaufnahmen der aktuellen verwalteten Datenträger während des Wiederherstellungsvorgangs gespeichert werden sollen. [Weitere Informationen](#storage-accounts)
 
    ![Assistent für die Wiederherstellungskonfiguration – Vorhandene ersetzen](./media/backup-azure-arm-restore-vms/restore-configuration-replace-existing.png)
 
@@ -145,11 +145,11 @@ Um festzustellen, ob CRR aktiviert ist, befolgen Sie die Anweisungen unter [Konf
 Wenn CRR aktiviert ist, können Sie die Sicherungselemente in der sekundären Region anzeigen.
 
 1. Navigieren Sie im Portal zu **Recovery Services-Tresor** > **Sicherungselemente**.
-2. Klicken Sie auf **Sekundäre Region**, um die Elemente in der sekundären Region anzuzeigen.
+1. Wählen Sie **Sekundäre Region** aus, um die Elemente in der sekundären Region anzuzeigen.
 
-![Virtuelle Computer in der sekundären Region](./media/backup-azure-arm-restore-vms/secbackedupitem.png)
+    ![Virtuelle Computer in der sekundären Region](./media/backup-azure-arm-restore-vms/secbackedupitem.png)
 
-![Auswählen der sekundären Region](./media/backup-azure-arm-restore-vms/backupitems-sec.png)
+    ![Auswählen der sekundären Region](./media/backup-azure-arm-restore-vms/backupitems-sec.png)
 
 ### <a name="restore-in-secondary-region"></a>Wiederherstellen in der sekundären Region
 
@@ -173,13 +173,14 @@ Die Benutzeroberfläche zur Wiederherstellung in der sekundären Region ähnelt 
 >
 >- Nachdem die Wiederherstellung ausgelöst wurde und sich in der Datenübertragungsphase befindet, kann der Wiederherstellungsauftrag nicht abgebrochen werden.
 >- Das Feature zur regionsübergreifenden Wiederherstellungen stellt VMs mit aktivierten CMKs (kundenseitig verwaltete Schlüssel) die nicht in einem Recovery Services-Tresor mit aktivierten CMKs gesichert sind, als VMs ohne aktivierte CMKs in der sekundären Region wieder her.
+>- Die für die Wiederherstellung in der Sekundärregion erforderlichen RBAC-Rollen (rollenbasierte Zugriffssteuerung) sind die gleichen wie in der Primärregion.
 
 ### <a name="monitoring-secondary-region-restore-jobs"></a>Überwachen von Wiederherstellungsaufträgen für die sekundäre Regionen
 
 1. Navigieren Sie im Portal zu **Recovery Services-Tresor** > **Sicherungsaufträge**.
-2. Klicken Sie auf **Sekundäre Region**, um die Elemente in der sekundären Region anzuzeigen.
+1. Wählen Sie **Sekundäre Region** aus, um die Elemente in der sekundären Region anzuzeigen.
 
-![Gefilterte Sicherungsaufträge](./media/backup-azure-arm-restore-vms/secbackupjobs.png)
+    ![Gefilterte Sicherungsaufträge](./media/backup-azure-arm-restore-vms/secbackupjobs.png)
 
 ## <a name="restoring-unmanaged-vms-and-disks-as-managed"></a>Wiederherstellen nicht verwalteter VMs und Datenträger als verwaltet
 
@@ -194,7 +195,7 @@ Es gibt eine Reihe von häufigen Szenarien, in denen Sie möglicherweise VMs wie
 **Szenario** | **Leitfaden**
 --- | ---
 **Wiederherstellen von VM mit dem Vorteil der Hybridnutzung** | Wenn eine Windows-VM die [Lizenzierung für die Vorteile der Hybridnutzeung (HUB)](../virtual-machines/windows/hybrid-use-benefit-licensing.md) verwendet, stellen Sie die Datenträger wieder her, und erstellen Sie eine neue VM mit der bereitgestellten Vorlage (wobei **Lizenztyp** auf **Windows_Server** festgelegt ist) oder PowerShell.  Diese Einstellung kann auch nach dem Erstellen des virtuellen Computers angewendet werden.
-**Wiederherstellen einer VM während einer Azure-Datencenter-Notfallwiederherstellung** | Wenn der Tresor GRS verwendet und das primäre Rechenzentrum für die VM ausfällt, unterstützt Azure Backup die Wiederherstellung von gesicherten VMs im gekoppelten Rechenzentrum. Sie wählen ein Speicherkonto im gekoppelten Rechenzentrum aus, und stellen es wie gewohnt wieder her. Azure Backup verwendet den Computedienst der gekoppelten Region, um die wiederhergestellte VM zu erstellen. Erfahren Sie mehr über die [Resilienz von Rechenzentren](../resiliency/resiliency-technical-guidance-recovery-loss-azure-region.md).<br><br> Wenn der Tresor den Replikationstyp GRS verwendet, können Sie das neue Feature [Regionsübergreifende Wiederherstellung](#cross-region-restore) auswählen. Dadurch wird bei einem vollständigen oder teilweisen Ausfall (und auch ohne jegliches Ausfallszenario) die Wiederherstellung in einer zweiten Region ermöglicht.
+**Wiederherstellen einer VM während einer Azure-Datencenter-Notfallwiederherstellung** | Wenn der Tresor GRS verwendet und das primäre Rechenzentrum für die VM ausfällt, unterstützt Azure Backup die Wiederherstellung von gesicherten VMs im gekoppelten Rechenzentrum. Sie wählen ein Speicherkonto im gekoppelten Rechenzentrum aus, und stellen es wie gewohnt wieder her. Azure Backup verwendet den Computedienst der gekoppelten Region, um die wiederhergestellte VM zu erstellen. Erfahren Sie mehr über die [Resilienz von Rechenzentren](/azure/architecture/resiliency/recovery-loss-azure-region).<br><br> Wenn der Tresor den Replikationstyp GRS verwendet, können Sie das neue Feature [Regionsübergreifende Wiederherstellung](#cross-region-restore) auswählen. Dadurch wird bei einem vollständigen oder teilweisen Ausfall (und auch ohne jegliches Ausfallszenario) die Wiederherstellung in einer zweiten Region ermöglicht.
 **Wiederherstellen einer einzelnen Domänencontroller-VM in einer einzelnen Domäne** | Stellen Sie die VM wie jede andere VM wieder her. Beachten Sie dabei Folgendes:<br/><br/> Aus Active Directory-Sicht entspricht die Azure-VM beliebigen anderen VMs.<br/><br/> Der Verzeichnisdienste-Wiederherstellungsmodus (Directory Services Restore Mode, DSRM) ist ebenfalls verfügbar, sodass alle Active Directory-Wiederherstellungsszenarien realisierbar sind. [Weitere Informationen](#post-restore-steps) zu den Überlegungen zum Sichern und Wiederherstellen virtualisierter Domänencontroller.
 **Wiederherstellen mehrerer Domänencontroller-VMs in einer einzelnen Domäne** | Wenn andere Domänencontroller in derselben Domäne über das Netzwerk erreicht werden können, kann der Domänencontroller wie ein beliebiger virtueller Computer wiederhergestellt werden. Wenn es sich um den letzten verbleibenden Domänencontroller in der Domäne handelt oder eine Wiederherstellung in einem isolierten Netzwerk erfolgt, muss ein Vorgang zur [Wiederherstellung der Gesamtstruktur](/windows-server/identity/ad-ds/manage/ad-forest-recovery-single-domain-in-multidomain-recovery) ausgeführt werden.
 **Wiederherstellen mehrerer Domänen in einer Gesamtstruktur** | Wir empfehlen eine [Wiederherstellung der Gesamtstruktur](/windows-server/identity/ad-ds/manage/ad-forest-recovery-single-domain-in-multidomain-recovery).
@@ -207,17 +208,17 @@ Es gibt eine Reihe von häufigen Szenarien, in denen Sie möglicherweise VMs wie
 
 ## <a name="track-the-restore-operation"></a>Nachverfolgen des Wiederherstellungsvorgangs
 
-Nachdem Sie den Wiederherstellungsvorgang ausgelöst haben, erstellt der Sicherungsdienst einen Auftrag zum Nachverfolgen. Azure Backup zeigt Benachrichtigungen zum Auftrag im Portal an. Wenn sie nicht angezeigt werden, wählen Sie das Symbol **Benachrichtigungen** und dann **Alle Aufträge anzeigen** aus, um den Status des Wiederherstellungsvorgangs anzuzeigen.
+Nachdem Sie den Wiederherstellungsvorgang ausgelöst haben, erstellt der Sicherungsdienst einen Auftrag zum Nachverfolgen. Azure Backup zeigt Benachrichtigungen zum Auftrag im Portal an. Wenn sie nicht angezeigt werden, wählen Sie das Symbol **Benachrichtigungen** und dann **Weitere Ereignisse im Aktivitätsprotokoll** aus, um den Status des Wiederherstellungsvorgangs anzuzeigen.
 
 ![Wiederherstellung ausgelöst](./media/backup-azure-arm-restore-vms/restore-notification1.png)
 
  Die Wiederherstellung können Sie wie folgt nachverfolgen:
 
-1. Um die Vorgänge für den Auftrag anzuzeigen, klicken Sie auf den Hyperlink für Benachrichtigungen. Alternativ können Sie im Tresor auf **Sicherungsaufträge** und dann auf die entsprechende VM klicken.
+1. Um die Vorgänge für den Auftrag anzuzeigen, wählen Sie den Hyperlink für Benachrichtigungen aus. Alternativ können Sie im Tresor **Sicherungsaufträge** und dann die entsprechende VM auswählen.
 
     ![Liste der virtuellen Computer in einem Tresor](./media/backup-azure-arm-restore-vms/restore-job-in-progress1.png)
 
-2. Um den Fortschritt der Wiederherstellung zu überwachen, klicken Sie auf einen beliebigen Wiederherstellungsauftrag mit dem Status **Wird ausgeführt**. Damit wird die Statusanzeige mit Informationen zum Fortschritt der Wiederherstellung anzeigt:
+1. Um den Fortschritt der Wiederherstellung zu überwachen, wählen Sie einen beliebigen Wiederherstellungsauftrag mit dem Status **Wird ausgeführt** aus. Damit wird die Statusanzeige mit Informationen zum Fortschritt der Wiederherstellung anzeigt:
 
     - **Geschätzte Dauer der Wiederherstellung**: Gibt zunächst an, wieviel Zeit benötigt wird, um den Wiederherstellungsvorgang abzuschließen. Während der Vorgang weiter ausgeführt wird, verringert sich die benötigte Zeit und erreicht schließlich 0, sobald der Wiederherstellungsvorgang abgeschlossen ist.
     - **Prozentsatz der Wiederherstellung**. Zeigt an, wie viel Prozent des Wiederherstellungsvorgangs abgeschlossen sind.

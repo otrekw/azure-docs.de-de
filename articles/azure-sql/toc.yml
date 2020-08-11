@@ -619,7 +619,7 @@
                       href: database/saas-multitenantdb-tenant-analytics.md
     - name: Beispiele
       items:
-        - name: Azure-Befehlszeilenschnittstelle
+        - name: Azure CLI
           href: database/az-cli-script-samples-content-guide.md?tabs=single-database
         - name: Azure PowerShell
           href: database/powershell-script-content-guide.md?tabs=single-database
@@ -763,6 +763,18 @@
                           href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/python-clustering-model-build?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
                         - name: '4: Bereitstellen des Modells'
                           href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/python-clustering-model-deploy?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                    - name: NYC-Taxitrinkgelder (Klassifizierung)
+                      items:
+                        - name: '1: Einführung'
+                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/python-taxi-classification-introduction?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                        - name: '2: Durchsuchen von Daten'
+                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/python-taxi-classification-explore-data?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                        - name: 3 – Featureentwicklung
+                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/python-taxi-classification-create-features?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                        - name: '4: Trainieren und Bereitstellen'
+                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/python-taxi-classification-train-model?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                        - name: '5: Vorhersagen'
+                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/python-taxi-classification-deploy-model?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
                 - name: R
                   items:
                     - name: Skiverleih (Entscheidungsstruktur)
@@ -785,6 +797,18 @@
                           href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/r-clustering-model-build?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
                         - name: '4: Bereitstellen des Modells'
                           href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/r-clustering-model-deploy?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                    - name: NYC-Taxitrinkgelder (Klassifizierung)
+                      items:
+                        - name: '1: Einführung'
+                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/r-taxi-classification-introduction?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                        - name: '2: Durchsuchen von Daten'
+                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/r-taxi-classification-explore-data?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                        - name: 3 – Featureentwicklung
+                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/r-taxi-classification-create-features?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                        - name: '4: Trainieren und Bereitstellen'
+                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/r-taxi-classification-train-model?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                        - name: '5: Vorhersagen'
+                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/r-taxi-classification-deploy-model?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
             - name: Verwalten von Python- und R-Paketen
               items:
                 - name: Python
@@ -855,7 +879,7 @@
           href: managed-instance/alerts-create.md
     - name: Beispiele
       items:
-        - name: Azure-Befehlszeilenschnittstelle
+        - name: Azure CLI
           href: database/az-cli-script-samples-content-guide.md?tabs=managed-instance
         - name: Azure PowerShell
           href: database/powershell-script-content-guide.md?tabs=managed-instance
@@ -1018,7 +1042,7 @@
           items:
             - name: Azure PowerShell
               href: /powershell/azure/
-            - name: Azure-Befehlszeilenschnittstelle
+            - name: Azure CLI
               href: /cli/azure/
             - name: T-SQL
               href: 'https://docs.microsoft.com/sql/t-sql/language-reference'
@@ -1080,7 +1104,7 @@
   items:
     - name: Referenz zur T-SQL-Sprache
       href: /sql/t-sql/language-reference
-    - name: Azure-Befehlszeilenschnittstelle
+    - name: Azure CLI
       href: /cli/azure/sql
     - name: Azure PowerShell
       href: /powershell/module/az.sql

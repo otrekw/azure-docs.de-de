@@ -1,17 +1,17 @@
 ---
 title: Rollen und Anforderungen für Azure Data Share
 description: Hier erfahren Sie mehr über die erforderlichen Berechtigungen zum Freigeben und Empfangen von Daten mithilfe von Azure Data Share.
-author: joannapea
-ms.author: joanpo
+author: jifems
+ms.author: jife
 ms.service: data-share
 ms.topic: conceptual
-ms.date: 07/10/2019
-ms.openlocfilehash: 229d4fd6647a8a1b756fedee2a864d00b9c7de62
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/30/2020
+ms.openlocfilehash: 84d1ba6ff343b5f3d1f88d7ae5c618601f416e2c
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86110996"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87513764"
 ---
 # <a name="roles-and-requirements-for-azure-data-share"></a>Rollen und Anforderungen für Azure Data Share 
 
@@ -90,7 +90,13 @@ Weitere Informationen zum Hinzufügen einer Rollenzuweisung finden Sie in [diese
 
 ## <a name="resource-provider-registration"></a>Ressourcenanbieterregistrierung 
 
-Wenn Sie eine Azure Data Share-Einladung zum ersten Mal in Ihrem Azure-Mandanten anzeigen möchten, müssen Sie den Microsoft. DataShare-Ressourcenanbieter in Ihrem Azure-Abonnement möglicherweise manuell registrieren. Führen Sie diese Schritte aus, um den Microsoft.DataShare-Ressourcenanbieter in Ihrem Azure-Abonnement zu registrieren. Sie benötigen Zugriff als *Mitwirkender* auf das Azure-Abonnement, um einen Ressourcenanbieter zu registrieren.
+Sie müssen den Microsoft.DataShare-Ressourcenanbieter möglicherweise in den folgenden Szenarien in Ihrem Azure-Abonnement manuell registrieren: 
+
+* Erstmaliges Anzeigen einer Azure Data Share-Einladung in Ihrem Azure-Mandanten
+* Freigeben von Daten aus einem Azure-Datenspeicher in einem anderen Azure-Abonnement Ihrer Azure Data Share-Ressource
+* Empfangen von Daten in einem Azure-Datenspeicher in einem anderen Azure-Abonnement Ihrer Azure Data Share-Ressource
+
+Führen Sie diese Schritte aus, um den Microsoft.DataShare-Ressourcenanbieter in Ihrem Azure-Abonnement zu registrieren. Sie benötigen Zugriff als *Mitwirkender* auf das Azure-Abonnement, um einen Ressourcenanbieter zu registrieren.
 
 1. Navigieren Sie im Azure-Portal zu **Abonnements**.
 1. Wählen Sie das Abonnement aus, das Sie für Azure Data Share verwenden.

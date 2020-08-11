@@ -4,12 +4,12 @@ description: Enthält eine Zusammenfassung der Unterstützungseinstellungen und 
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.custom: references_regions
-ms.openlocfilehash: d00f6ee8c10144a7c9fd65101dd21ccb7deeb0a6
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 9d7e3b4f565fac42d0a91d155846e672c7437f2d
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289490"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87810461"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Unterstützungsmatrix für die Sicherung virtueller Azure-Computer
 
@@ -32,13 +32,6 @@ Direkte Sicherung von Azure-VMs (nur Windows)  | Sichern bestimmter Dateien, Ord
 Sichern von Azure-VMs auf Sicherungsservern  | Sichern von Dateien, Ordnern oder Volumes, von Systemstatusdateien oder Bare-Metal-Dateien und von Anwendungsdaten in System Center DPM oder Microsoft Azure Backup Server (MABS)<br/><br/> DPM/MABS erstellt die Sicherung dann im Sicherungstresor. | Installieren Sie den MABS- oder DPM-Schutz-Agent auf der VM. Der MARS-Agent wird in DPM oder MABS installiert.| Wiederherstellen von Dateien, Ordnern oder Volumes, von Systemstatus- oder Bare-Metal-Dateien und von Anwendungsdaten
 
 Weitere Informationen zum Sichern finden Sie in den Artikeln zu [Sicherungsservern](backup-architecture.md#architecture-back-up-to-dpmmabs) und den [Anforderungen für die Unterstützung](backup-support-matrix-mabs-dpm.md).
-
->[!NOTE]
-> **Azure Backup unterstützt jetzt die selektive Datenträgersicherung und -wiederherstellung mithilfe der Azure Virtual Machine-Sicherungslösung.**
->
->Heute unterstützt Azure Backup die Sicherung aller Datenträger (Betriebssystem und Daten) auf einem virtuellen Computer mithilfe der Sicherungslösung für virtuelle Computer. Mit der exclude-disk-Funktion haben Sie die Möglichkeit, einen oder eine bestimmte Auswahl der zahlreichen Datenträger auf einem virtuellen Computer zu sichern. Dies stellt eine effiziente und kostengünstige Lösung für Ihre Sicherungs- und Wiederherstellungsanforderungen dar. Jeder Wiederherstellungspunkt enthält Daten der im Sicherungsvorgang enthaltenen Datenträger. Dadurch können Sie während des Wiederherstellungsvorgangs zudem eine Teilmenge der Datenträger des angegebenen Wiederherstellungspunkts wiederherstellen. Dies gilt sowohl für die Wiederherstellung aus der Momentaufnahme als auch aus dem Tresor.
->
->Um sich für die Vorschauversion zu registrieren, schreiben Sie an AskAzureBackupTeam@microsoft.com.
 
 ## <a name="supported-backup-actions"></a>Unterstützte Sicherungsaktionen
 
@@ -144,7 +137,7 @@ Wiederherstellen einer VM in einem anderen virtuellen Netzwerk |Unterstützt.<br
 
 **Compute** | **Unterstützung**
 --- | ---
-Größe des virtuellen Computers |Jede Größe von virtuellen Azure-Computern mit mindestens 2 CPU-Kernen und 1 GB RAM<br/><br/> [Weitere Informationen.](../virtual-machines/windows/sizes.md)
+Größe des virtuellen Computers |Jede Größe von virtuellen Azure-Computern mit mindestens 2 CPU-Kernen und 1 GB RAM<br/><br/> [Weitere Informationen.](../virtual-machines/sizes.md)
 Sicherung virtueller Computer in [Verfügbarkeitsgruppen](../virtual-machines/availability.md#availability-sets) | Unterstützt.<br/><br/> Sie können eine VM in einer Verfügbarkeitsgruppe nicht mit der Option zum schnellen Erstellen einer VM wiederherstellen. Stattdessen müssen Sie bei der Wiederherstellung der VM den Datenträger wiederherstellen und damit entweder eine VM bereitstellen oder einen vorhandenen Datenträger ersetzen.
 Sicherung von mit [Hybridvorteil (HUB)](../virtual-machines/windows/hybrid-use-benefit-licensing.md) bereitgestellten VMs | Unterstützt.
 Sicherung von in einer [Skalierungsgruppe](../virtual-machine-scale-sets/overview.md) bereitgestellten VMs |Unterstützt. Für die Fehlerdomäne sollte der [Orchestrierungsmodus](../virtual-machine-scale-sets/orchestration-modes.md) auf 2 festgelegt werden. Verfügbarkeitsgruppen werden nicht unterstützt.
@@ -201,7 +194,7 @@ Netzwerkdatenverkehr für Azure:
 - Sicherungsdatenverkehr von den Servern zum Recovery Services-Tresor wird per AES 256 (Advanced Encryption Standard) verschlüsselt.
 - Sicherungsdaten werden über eine sichere HTTPS-Verbindung übertragen.
 - Die Sicherungsdaten werden im Recovery Services-Tresor in verschlüsselter Form gespeichert.
-- Nur Sie verfügen über die Passphrase zum Entsperren dieser Daten. Die Sicherungsdaten können zu keinem Zeitpunkt von Microsoft entschlüsselt werden.
+- Nur Sie verfügen über den Verschlüsselungsschlüssel zum Entsperren dieser Daten. Die Sicherungsdaten können zu keinem Zeitpunkt von Microsoft entschlüsselt werden.
 
   > [!WARNING]
   > Nachdem der Tresor eingerichtet wurde, haben nur Sie Zugriff auf den Verschlüsselungsschlüssel. Microsoft bewahrt keine Kopie auf und hat keinen Zugriff auf den Schlüssel. Wenn der Schlüssel verlegt wird, kann Microsoft die gesicherten Daten nicht wiederherstellen.

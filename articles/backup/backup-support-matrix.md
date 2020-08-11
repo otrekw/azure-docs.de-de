@@ -3,12 +3,13 @@ title: Matrix zur Azure Backup-Unterstützung
 description: Enthält eine Zusammenfassung der Unterstützungseinstellungen und Einschränkungen für den Azure Backup-Dienst.
 ms.topic: conceptual
 ms.date: 02/17/2019
-ms.openlocfilehash: 4946a4627d037053e441152182278c26b4f693fe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: references_regions
+ms.openlocfilehash: d75e7053bfff14fbcb6deeae48c48f09e3e9ac0d
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84655623"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87531879"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Supportmatrix für Azure Backup
 
@@ -32,10 +33,10 @@ In der folgenden Tabelle werden die Features von Recovery Services-Tresoren besc
 --- | ---
 **Tresore im Abonnement** | Bis zu 500 Recovery Services-Tresore pro Abonnement.
 **Computer in einem Tresor** | Bis zu 1.000 virtuelle Azure-Computer pro Tresor.<br/><br/> Bis zu 50 MABS-Server können in einem einzigen Tresor registriert werden.
-**Datenquellen** | Die maximale Größe einer einzelnen [Datenquelle](https://docs.microsoft.com/azure/backup/backup-azure-backup-faq#how-is-the-data-source-size-determined) ist 54.400 GB. Die Beschränkung gilt nicht für Sicherungen von Azure-VMs. Es gilt keine Beschränkung der Datenmenge, die in einem Tresor gesichert werden kann.
+**Datenquellen** | Die maximale Größe einer einzelnen [Datenquelle](./backup-azure-backup-faq.md#how-is-the-data-source-size-determined) ist 54.400 GB. Die Beschränkung gilt nicht für Sicherungen von Azure-VMs. Es gilt keine Beschränkung der Datenmenge, die in einem Tresor gesichert werden kann.
 **Sicherungen im Tresor** | **Virtuelle Azure-Computer:** Einmal täglich<br/><br/>**Per DPM/MABS geschützte Computer:** Zweimal pro Tag.<br/><br/> **Computer mit direkter Sicherung per MARS-Agent:** Dreimal pro Tag.
 **Sicherungen zwischen Tresoren** | Die Sicherung erfolgt innerhalb einer Region.<br/><br/> Sie benötigen einen Tresor in jeder Azure-Region, die VMs enthält, die Sie sichern möchten. Eine Sicherung in eine andere Region ist nicht möglich.
-**Verschieben von Tresoren** | Sie können Tresore zwischen Abonnements oder Ressourcengruppen innerhalb desselben Abonnements [verschieben](https://docs.microsoft.com/azure/backup/backup-azure-move-recovery-services-vault). Das Verschieben von Tresoren zwischen Regionen wird hingegen nicht unterstützt.
+**Verschieben von Tresoren** | Sie können Tresore zwischen Abonnements oder Ressourcengruppen innerhalb desselben Abonnements [verschieben](./backup-azure-move-recovery-services-vault.md). Das Verschieben von Tresoren zwischen Regionen wird hingegen nicht unterstützt.
 **Daten zwischen Tresoren verschieben** | Das Verschieben von gesicherten Daten zwischen Tresoren wird nicht unterstützt.
 **Tresorspeichertyp ändern** | Sie können den Speicherreplikationstyp für einen Tresor anpassen (entweder georedundanter Speicher oder lokal redundanter Speicher), bevor Sicherungen gespeichert werden. Nachdem Sicherungsvorgänge im Tresor begonnen haben, kann der Replikationstyp nicht mehr geändert werden.
 
@@ -56,7 +57,7 @@ Im Folgenden werden die Informationen zur Unterstützung beim Sichern von lokale
 
 **Begrenzung** | **Details**
 --- | ---
-**Azure-VM-Datenträger** | Weitere Informationen finden Sie in der [Unterstützungsmatrix für die Sicherung von Azure-VMs](https://docs.microsoft.com/azure/backup/backup-support-matrix-iaas#vm-storage-support).
+**Azure-VM-Datenträger** | Weitere Informationen finden Sie in der [Unterstützungsmatrix für die Sicherung von Azure-VMs](./backup-support-matrix-iaas.md#vm-storage-support).
 **Größe des Azure-VM-Datenträgers** | Die Größe einzelner Datenträger kann bis zu 32 TB und maximal 256 TB für alle Datenträger in einer VM betragen.
 
 ### <a name="azure-vm-backup-options"></a>Optionen für Azure-VM-Sicherungen
@@ -105,10 +106,7 @@ Azure Backup unterstützt die Verschlüsselung für Daten während der Übertrag
 ### <a name="data-security"></a>Datensicherheit
 
 - Sicherungsdaten werden im Recovery Services-Tresor in verschlüsselter Form gespeichert.
-- Nur Sie verfügen über die Passphrase zum Entsperren dieser Daten. Die Sicherungsdaten können zu keinem Zeitpunkt von Microsoft entschlüsselt werden.
-
-    > [!WARNING]
-    > Nachdem der Tresor eingerichtet wurde, haben nur Sie Zugriff auf den Verschlüsselungsschlüssel. Microsoft bewahrt keine Kopie auf und hat keinen Zugriff auf den Schlüssel. Wenn der Schlüssel verlegt wird, kann Microsoft die gesicherten Daten nicht wiederherstellen.
+- Werden die Daten von lokalen Servern mit dem MARS-Agent gesichert, werden die Daten vor dem Hochladen nach Azure Backup mit einer Passphrase verschlüsselt und erst nach dem Herunterladen von Azure Backup entschlüsselt.
 - Beim Sichern von Azure-VMs müssen Sie die Verschlüsselung *auf dem virtuellen Computer* einrichten.
 - Azure Backup unterstützt den Azure Disk Encryption-Dienst, der auf virtuellen Windows-Computern BitLocker und auf virtuellen Linux-Computern **dm-crypt** verwendet.
 - Auf dem Back-End nutzt Azure Backup die [Speicherdienstverschlüsselung von Azure](../storage/common/storage-service-encryption.md), mit der ruhende Daten geschützt werden.

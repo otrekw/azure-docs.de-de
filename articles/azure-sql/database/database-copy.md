@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sashan
 ms.reviewer: carlrab
-ms.date: 07/27/2020
-ms.openlocfilehash: 4dd27a5d3bca5ca1c0395feb049d5a814211c539
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.date: 07/29/2020
+ms.openlocfilehash: 4189ea5fd0b2b52b5bf1e0614e4b43b9411df31d
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87309255"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87530370"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-a-database-in-azure-sql-database"></a>Kopieren einer transaktionskonsistenten Kopie einer Datenbank in Azure SQL-Datenbank
 
@@ -117,6 +117,9 @@ Sie können Ihre Datenbank mit den im Abschnitt [Kopieren einer SQL-Datenbank au
 > [!NOTE]
 > Das [Azure-Portal](https://portal.azure.com), PowerShell und die Azure CLI bieten keine Unterstützung für das Kopieren von Datenbanken in ein anderes Abonnement.
 
+> [!TIP]
+> Die Datenbankkopie, die T-SQL verwendet, unterstützt das Kopieren einer Datenbank aus einem Abonnement in einem anderen Azure-Mandanten.
+
 ## <a name="monitor-the-progress-of-the-copying-operation"></a>Überwachen des Fortschritts des Kopiervorgangs
 
 Überwachen Sie den Kopiervorgang, indem Sie die Ansichten [sys.databases](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-databases-transact-sql), [sys.dm_database_copies](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-database-copies-azure-sql-database) und [sys.dm_operation_status](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) abfragen. Während des Kopiervorgangs wird die Spalte **state_desc** der Ansicht „sys.databases“ für die neue Datenbank auf **COPYING** gesetzt.
@@ -130,7 +133,7 @@ Sie können Ihre Datenbank mit den im Abschnitt [Kopieren einer SQL-Datenbank au
 > [!IMPORTANT]
 > Falls Sie eine Kopie mit einem deutlich niedrigeren Dienstziel als die Quelle erstellen müssen, verfügt die Zieldatenbank ggf. nicht über genügend Ressourcen für die Durchführung des Seedingprozesses. Möglicherweise schlägt dadurch der Kopiervorgang fehl. Verwenden Sie in diesem Szenario eine Anforderung einer Geowiederherstellung, um eine Kopie auf einem anderen Server bzw. in einer anderen Region zu erstellen. Weitere Informationen finden Sie unter [Wiederherstellen einer Azure SQL-Datenbank mit Datenbanksicherungen](recovery-using-backups.md#geo-restore).
 
-## <a name="rbac-roles-to-manage-database-copy"></a>RBAC-Rollen zum Verwalten der Datenbankkopie
+## <a name="azure-roles-to-manage-database-copy"></a>Azure-Rollen zum Verwalten der Datenbankkopie
 
 Zum Erstellen einer Datenbankkopie müssen Sie über die folgenden Rollen verfügen:
 
@@ -152,7 +155,7 @@ Zum Verwalten der Datenbankkopie über das Azure-Portal benötigen Sie außerdem
 
    Microsoft.Resources/subscriptions/resources/read Microsoft.Resources/subscriptions/resources/write Microsoft.Resources/deployments/read Microsoft.Resources/deployments/write Microsoft.Resources/deployments/operationstatuses/read
 
-Wenn Sie die Vorgänge unter Bereitstellungen in der Ressourcengruppe im Portal anzeigen möchten, und zwar Vorgänge über mehrere Ressourcenanbieter hinweg einschließlich SQL-Vorgängen, benötigen Sie diese zusätzlichen RBAC-Rollen:
+Wenn Sie die Vorgänge unter Bereitstellungen in der Ressourcengruppe im Portal anzeigen möchten, und zwar Vorgänge über mehrere Ressourcenanbieter hinweg einschließlich SQL-Vorgängen, benötigen Sie diese zusätzlichen Azure-Rollen:
 
    Microsoft.Resources/subscriptions/resourcegroups/deployments/operations/read Microsoft.Resources/subscriptions/resourcegroups/deployments/operationstatuses/read
 

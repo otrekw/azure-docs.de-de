@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/08/2020
-ms.openlocfilehash: ea6aec9ffcaf01c0db5b297d40783ce4690a8f0a
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: ea5f2d5838c926fa8ee7b92278b0854264346a7b
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84031481"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543757"
 ---
 # <a name="import-or-export-an-azure-sql-database-without-allowing-azure-services-to-access-the-server"></a>Importieren oder Exportieren einer Azure SQL-Datenbank, ohne Azure-Diensten Zugriff auf den Server zu erlauben
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -34,9 +34,7 @@ Erstellen Sie einen virtuellen Azure-Computer, indem Sie die Schaltfläche **In 
 Diese Vorlage bietet die Möglichkeit, einen einfachen virtuellen Windows-Computer mit einigen wenigen Optionen für die Windows-Version bereitzustellen, wobei die neueste gepatchte Version verwendet wird. Damit wird ein virtueller Computer der Größe A2 an der Position der Ressourcengruppe bereitgestellt, und es wird der voll qualifizierte Domänenname des virtuellen Computers zurückgegeben.
 <br><br>
 
-<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-vm-simple-windows%2Fazuredeploy.json" target="_blank">
-    <img src="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png"/>
-</a>
+[![Bild einer Schaltfläche mit der Bezeichnung „Bereitstellung in Azure“](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-vm-simple-windows%2Fazuredeploy.json)
 
 Weitere Informationen finden Sie unter [Sehr einfache Bereitstellung eines virtuellen Windows-Computers](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows).
 

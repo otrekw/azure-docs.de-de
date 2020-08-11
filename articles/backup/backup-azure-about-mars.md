@@ -1,19 +1,20 @@
 ---
 title: Informationen zum MARS-Agent
 description: Erfahren Sie, wie der MARS-Agent die Sicherungsszenarien unterstützt.
-ms.reviewer: srinathv
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: 417fc385750ccab5c2f11f8160d9bbc85a013cde
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 08/04/2020
+ms.openlocfilehash: 8e4ace0c17dbe75e989981db56583ed9477b3716
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86497946"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87562598"
 ---
 # <a name="about-the-microsoft-azure-recovery-services-mars-agent"></a>Informationen zum Microsoft Azure Recovery Services-Agent (MARS)
 
 In diesem Artikel wird beschrieben, wie der Azure Backup-Dienst den Microsoft Azure Recovery Services-Agent (MARS) zum Sichern und Wiederherstellen von Dateien, Ordnern und des Volumes oder Systemstatus von einem lokalen Computer in Azure verwendet.
+
+## <a name="backup-scenarios"></a>Sicherungsszenarien
 
 Der MARS-Agent unterstützt die folgenden Sicherungsszenarien:
 
@@ -23,13 +24,21 @@ Der MARS-Agent unterstützt die folgenden Sicherungsszenarien:
 - **Auf Volumeebene**: Schutz eines gesamten Windows-Volumes auf Ihrem Computer.
 - **Auf Systemebene**: Schutz eines gesamten Windows-Systemstatus.
 
+### <a name="additional-scenarios"></a>Zusätzliche Szenarien
+
+- **Sichern bestimmter Dateien und Ordner in virtuellen Azure-Computern**: Die primäre Methode für die Sicherung von virtuellen Azure-Computern (VMs) besteht in der Verwendung einer Azure Backup-Erweiterung auf der VM. Diese Erweiterung sichert die gesamte VM. Wenn Sie bestimmte Dateien und Ordner einer VM sichern möchten, können Sie den MARS-Agent auf den Azure-VMs installieren. Weitere Informationen finden Sie unter [Architektur: Integrierte Azure-VM-Sicherung](./backup-architecture.md#architecture-built-in-azure-vm-backup).
+
+- **Offlineseeding**: Die erste vollständige Datensicherungen in Azure überträgt in der Regel große Datenmengen und erfordert mehr Netzwerkbandbreite. Bei nachfolgenden Sicherungen wird nur die Delta- oder inkrementelle Datenmenge übertragen. Azure Backup komprimiert die Erstsicherungen. Durch den Prozess des *Offlineseedings* kann Azure Backup Datenträger verwenden, um die komprimierten Daten der Erstsicherungen offline in Azure hochzuladen. Weitere Informationen finden Sie unter [Azure Backup-Offlinesicherung mit Azure Data Box](offline-backup-azure-data-box.md).
+
+## <a name="restore-scenarios"></a>Wiederherstellungsszenarien
+
 Der MARS-Agent unterstützt die folgenden Wiederherstellungsszenarien:
 
 ![MARS-Wiederherstellungsszenarien](./media/backup-try-azure-backup-in-10-mins/restore-scenarios.png)
 
 - **Gleicher Server**: Der Server, auf dem die Sicherung ursprünglich erstellt wurde.
   - **Dateien und Ordner**: Wählen Sie die einzelnen Dateien und Ordner aus, die Sie wiederherstellen möchten.
-  - **Auf Volumeebene**: Wählen Sie das Volume und den Wiederherstellungspunkt aus, die Sie wiederherstellen möchten, und diese am gleichen oder einem anderen Speicherort auf demselben Computer wiederherstellen.  Sie können bei vorhandenen Dateien eine Kopie dieser Dateien erstellen, sie überschreiben oder sie überspringen.
+  - **Auf Volumeebene**: Wählen Sie das Volume und den Wiederherstellungspunkt aus, die Sie wiederherstellen möchten. Stellen Sie sie dann am selben Ort oder an einem anderen Ort auf demselben Computer wieder her.  Sie können bei vorhandenen Dateien eine Kopie dieser Dateien erstellen, sie überschreiben oder sie überspringen.
   - **Auf Systemebene**: Wählen Sie den Systemstatus und den Wiederherstellungspunkt für die Wiederherstellung auf demselben Computer an einem bestimmten Speicherort aus.
 
 - **Alternativer Server**: Ein anderer Server als derjenige, auf dem die Sicherung erstellt wurde.
@@ -54,12 +63,6 @@ Der MARS-Agent unterstützt die folgenden Wiederherstellungsszenarien:
 - **Inkrementelle Sicherungen** (nachfolgende Sicherungen) werden gemäß dem von Ihnen angegebenen Zeitplan ausgeführt. Bei inkrementellen Sicherungen werden geänderte Dateien identifiziert, und es wird eine neue VHD erstellt. Die VHD wird komprimiert und verschlüsselt und dann an den Tresor gesendet. Nach Abschluss der inkrementellen Sicherung wird die neue VHD mit der VHD zusammengeführt, die nach der ersten Replikation erstellt wurde. Durch diese zusammengeführte VHD erhalten Sie den aktuellen Zustand zum Vergleich für die laufende Sicherung.
 
 - Der MARS-Agent kann den Sicherungsauftrag mithilfe des USN-Änderungsjournals (Update Sequence Number, Aktualisierungssequenznummer) im **optimierten Modus** oder durch Überprüfen auf Änderungen in Verzeichnissen oder Dateien durch Scannen des gesamten Volumes im **nicht optimierten Modus** ausführen. Der nicht optimierte Modus ist langsamer, weil der Agent alle Dateien auf dem Volume überprüfen und mit den Metadaten vergleichen muss, um die geänderten Dateien zu bestimmen.  Die **Erstsicherung** wird immer im nicht optimierten Modus ausgeführt. Wenn bei der vorherigen Sicherung ein Fehler aufgetreten ist, wird der nächste geplante Sicherungsauftrag im nicht optimierten Modus ausgeführt. Weitere Informationen zu diesen Modi und deren Überprüfung finden Sie in [diesem Artikel](backup-azure-troubleshoot-slow-backup-performance-issue.md#cause-backup-job-running-in-unoptimized-mode).
-
-### <a name="additional-scenarios"></a>Zusätzliche Szenarien
-
-- **Sichern bestimmter Dateien und Ordner in virtuellen Azure-Computern**: Die primäre Methode für die Sicherung von virtuellen Azure-Computern (VMs) besteht in der Verwendung einer Azure Backup-Erweiterung auf der VM. Diese Erweiterung sichert die gesamte VM. Wenn Sie bestimmte Dateien und Ordner einer VM sichern möchten, können Sie den MARS-Agent auf den Azure-VMs installieren. Weitere Informationen finden Sie unter [Architektur: Integrierte Azure-VM-Sicherung](./backup-architecture.md#architecture-built-in-azure-vm-backup).
-
-- **Offlineseeding**: Die erste vollständige Datensicherungen in Azure überträgt in der Regel große Datenmengen und erfordert mehr Netzwerkbandbreite. Bei nachfolgenden Sicherungen wird nur die Delta- oder inkrementelle Datenmenge übertragen. Azure Backup komprimiert die Erstsicherungen. Durch den Prozess des *Offlineseedings* kann Azure Backup Datenträger verwenden, um die komprimierten Daten der Erstsicherungen offline in Azure hochzuladen. Weitere Informationen finden Sie unter [Azure Backup-Offlinesicherung mit Azure Data Box](offline-backup-azure-data-box.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

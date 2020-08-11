@@ -3,12 +3,12 @@ title: Sichern virtueller Azure-Computer in einem Recovery Services-Tresor
 description: Beschreibt das Sichern virtueller Azure-Computer in einem Recovery Services-Tresor mit Azure Backup
 ms.topic: conceptual
 ms.date: 07/28/2020
-ms.openlocfilehash: c4fbafc63ce063159d0524ddf26bb936c53328df
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 91fca2eef21a817c0f78b826e507901d94156dcd
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373936"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533596"
 ---
 # <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>Sichern virtueller Azure-Computer in einem Recovery Services-Tresor
 
@@ -51,7 +51,8 @@ Passen Sie die Speicherreplikationstyp wie folgt an:
 1. Wählen Sie im neuen Tresor im Abschnitt **Einstellungen** die Option **Eigenschaften** aus.
 2. Wählen Sie in **Eigenschaften** unter **Sicherungskonfiguration** die Option **Aktualisieren** aus.
 3. Wählen Sie den Speicherreplikationstyp und dann **Speichern** aus.
-![Speicherkonfiguration für neuen Tresor festlegen](./media/backup-azure-arm-vms-prepare/full-blade.png)
+
+      ![Speicherkonfiguration für neuen Tresor festlegen](./media/backup-azure-arm-vms-prepare/full-blade.png)
 
 > [!NOTE]
    > Sie können den Speichertyp für die Replikation nicht mehr ändern, nachdem der Tresor eingerichtet wurde und Sicherungselemente enthält. Dazu müssen Sie den Tresor neu erstellen.
@@ -88,7 +89,7 @@ Konfigurieren Sie eine Sicherungsrichtlinie für den Tresor.
      ![Bereich „Virtuelle Computer auswählen“](./media/backup-azure-arm-vms-prepare/select-vms-to-backup.png)
 
     >[!NOTE]
-    > Alle virtuellen Computer in derselben Region und demselben Abonnement wie der Tresor sind zum Konfigurieren der Sicherung verfügbar. Beim Konfigurieren der Sicherung können Sie nach dem Namen des virtuellen Computers und dessen Ressourcengruppe suchen, auch wenn Sie nicht über die erforderliche Berechtigung für diese VMs verfügen.  
+    > Alle virtuellen Computer in derselben Region und demselben Abonnement wie der Tresor sind zum Konfigurieren der Sicherung verfügbar. Beim Konfigurieren der Sicherung können Sie nach dem Namen des virtuellen Computers und dessen Ressourcengruppe suchen, auch wenn Sie nicht über die erforderliche Berechtigung für diese VMs verfügen. Wenn sich Ihre VM in einem vorläufig gelöschten Zustand befindet, wird Sie in dieser Liste nicht angezeigt. Wenn Sie die VM erneut schützen müssen, müssen Sie warten, bis der Zeitraum für das vorläufige Löschen abgelaufen ist, oder die VM aus der Liste der vorläufig gelöschten Elemente wiederherstellen. Weitere Informationen finden Sie im [Artikel zu vorläufigem Löschen für virtuelle Computer](soft-delete-virtual-machines.md#soft-delete-for-vms-using-azure-portal).
 
 1. Klicken Sie unter **Sicherung** auf **Sicherung aktivieren**. Damit wird die Richtlinie für den Tresor und die VMs bereitgestellt, und die Sicherungserweiterung wird auf dem VM-Agent auf der Azure-VM installiert.
 
@@ -166,13 +167,6 @@ Azure Backup sichert Azure-VMs durch die Installation einer Erweiterung für den
 --- | ---
 **Windows** | 1. [Laden Sie die Agent-MSI-Datei herunter, und installieren Sie sie](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409).<br/><br/> 2. Für die Installation benötigen Sie Administratorberechtigungen auf dem Computer.<br/><br/> 3. Überprüfen Sie die Installation. Klicken Sie auf der VM in *C:\WindowsAzure\Packages* mit der rechten Maustaste auf **WaAppAgent.exe** > **Eigenschaften**. Auf der Registerkarte **Details** sollte mindestens die **Produktversion** 2.6.1198.718 angegeben sein.<br/><br/> Wenn Sie den Agent aktualisieren, stellen Sie sicher, dass keine Sicherungsvorgänge ausgeführt werden, und [installieren Sie den Agent erneut](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409).
 **Linux** | Führen Sie die Installation mit einem RPM- oder DEB-Paket aus dem Paketrepository der Distribution durch. Dies ist die bevorzugte Methode zum Installieren und Aktualisieren des Azure Linux-Agents. Das Azure Linux-Agent-Paket wird von allen [unterstützten Distributionsanbietern](../virtual-machines/linux/endorsed-distros.md) in ihre jeweiligen Images und Repositorys integriert. Der Agent steht auf [GitHub](https://github.com/Azure/WALinuxAgent) zur Verfügung, jedoch wird die Installation über GitHub nicht empfohlen.<br/><br/> Wenn Sie den Agent aktualisieren, stellen Sie sicher, dass keine Sicherungsvorgänge ausgeführt werden, und aktualisieren Sie die Binärdateien.
-
->[!NOTE]
-> **Azure Backup unterstützt jetzt die selektive Datenträgersicherung und -wiederherstellung mithilfe der Azure Virtual Machine-Sicherungslösung.**
->
->Heute unterstützt Azure Backup die Sicherung aller Datenträger (Betriebssystem und Daten) auf einem virtuellen Computer mithilfe der Sicherungslösung für virtuelle Computer. Mit der exclude-disk-Funktion haben Sie die Möglichkeit, einen oder eine bestimmte Auswahl der zahlreichen Datenträger auf einem virtuellen Computer zu sichern. Dies stellt eine effiziente und kostengünstige Lösung für Ihre Sicherungs- und Wiederherstellungsanforderungen dar. Jeder Wiederherstellungspunkt enthält Daten der im Sicherungsvorgang enthaltenen Datenträger. Dadurch können Sie während des Wiederherstellungsvorgangs zudem eine Teilmenge der Datenträger des angegebenen Wiederherstellungspunkts wiederherstellen. Dies gilt sowohl für die Wiederherstellung aus der Momentaufnahme als auch aus dem Tresor.
->
->Um sich für die Vorschauversion zu registrieren, schreiben Sie an AskAzureBackupTeam@microsoft.com.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -30,6 +30,20 @@
       items:
         - name: Erstellen einer Micro-Fulfillment-Center-App
           href: tutorial-micro-fulfillment-center.md
+    - name: 'Videoanalyse: Objekt- und Bewegungserkennung'
+      items:
+        - name: 1. Erstellen einer Videoanalyseanwendung
+          href: tutorial-video-analytics-create-app.md
+        - name: "2. Konfigurieren eines IoT\_Edge-Geräts"
+          items:
+            - name: Erstellen eines Videoanalysegeräts am Edge (Linux-VM)
+              href: tutorial-video-analytics-iot-edge-vm.md
+            - name: Erstellen eines Videoanalysegeräts am Edge (Intel NUC)
+              href: tutorial-video-analytics-iot-edge-nuc.md
+        - name: '3: Überwachen und Verwalten einer Videoanalyseanwendung'
+          href: tutorial-video-analytics-manage.md
+        - name: '4: Ändern und Erstellen der Gatewaymodule für die Livevideoanalyse'
+          href: tutorial-video-analytics-build-module.md
 - name: Konzepte
   items:
     - name: Vorlagenarchitektur von Apps für vernetzte Logistik
@@ -42,12 +56,16 @@
       href: store-analytics-architecture.md
     - name: Vorlagenarchitektur für Micro-Fulfillment-Center-Apps
       href: architecture-micro-fulfillment-center.md
+    - name: Vorlagenarchitektur von Apps für die Videoanalyse
+      href: architecture-video-analytics.md
     - name: Konnektivität
       href: ../core/concepts-get-connected.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
     - name: Was sind Anwendungsvorlagen?
       href: ../core/concepts-app-templates.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
 - name: Anleitungen
   items:
+    - name: Bereitstellen einer Anwendung für die Objekt- und Bewegungserkennung
+      href: howto-deploy-video-analytics-template.md
     - name: Herstellen einer Verbindung zwischen Geräten
       items:
         - name: "Vorbereiten und Verbinden einer Rigado Cascade\_500-Einheit"

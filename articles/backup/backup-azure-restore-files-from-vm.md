@@ -4,12 +4,12 @@ description: In diesem Artikel erfahren Sie, wie Sie Dateien und Ordner aus eine
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.custom: references_regions
-ms.openlocfilehash: a594b9636dcb4e584fd10a17bca6c48c2d1fb960
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: e12669609b21d23b775af27f95528c4b42e95e81
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86514083"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533540"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Wiederherstellen von Dateien aus einer Sicherung von virtuellen Azure-Computern
 
@@ -24,13 +24,13 @@ Azure Backup bietet die Möglichkeit zum Wiederherstellen von [virtuellen Azure-
 
 Zum Wiederherstellen von Dateien oder Ordnern aus dem Wiederherstellungspunkt wechseln Sie zum virtuellen Computer und wählen den gewünschten Wiederherstellungspunkt aus.
 
-1. Melden Sie sich am [Azure-Portal](https://portal.Azure.com) an, und klicken Sie im linken Bereich auf **Virtuelle Computer**. Wählen Sie in der Liste der virtuellen Computer den gewünschten virtuellen Computer aus, um sein Dashboard zu öffnen.
+1. Melden Sie sich am [Azure-Portal](https://portal.Azure.com) an, und wählen Sie im linken Bereich **Virtuelle Computer** aus. Wählen Sie in der Liste der virtuellen Computer den gewünschten virtuellen Computer aus, um sein Dashboard zu öffnen.
 
-2. Klicken Sie im Menü des virtuellen Computers auf **Sicherung**, um das Sicherungsdashboard zu öffnen.
+2. Wählen Sie im Menü des virtuellen Computers **Sicherung** aus, um das Sicherungsdashboard zu öffnen.
 
     ![Öffnen des Sicherungselements im Recovery Services-Tresors](./media/backup-azure-restore-files-from-vm/open-vault-for-vm.png)
 
-3. Klicken Sie im Menü des Sicherungsdashboards auf **Dateiwiederherstellung**.
+3. Wählen Sie im Menü des Sicherungsdashboards **Dateiwiederherstellung** aus.
 
     ![Schaltfläche „Dateiwiederherstellung“](./media/backup-azure-restore-files-from-vm/vm-backup-menu-file-recovery-button.png)
 
@@ -40,7 +40,7 @@ Zum Wiederherstellen von Dateien oder Ordnern aus dem Wiederherstellungspunkt we
 
 4. Wählen Sie im Dropdownmenü **Wiederherstellungspunkt auswählen** den Wiederherstellungspunkt mit den gewünschten Dateien aus. Standardmäßig ist der letzte Wiederherstellungspunkt bereits ausgewählt.
 
-5. Klicken Sie auf **Ausführbare Datei herunterladen** (bei virtuellen Microsoft Azure-Computern) oder **Skript herunterladen** (bei virtuellen Linux-Azure-Computern), um die Software zum Kopieren von Dateien aus dem Wiederherstellungspunkt herunterzuladen.
+5. Wählen Sie **Ausführbare Datei herunterladen** (bei virtuellen Microsoft Azure-Computern) oder **Skript herunterladen** (bei virtuellen Linux-Azure-Computern) aus, um die Software zum Kopieren von Dateien aus dem Wiederherstellungspunkt herunterzuladen.
 
     ![Generiertes Kennwort](./media/backup-azure-restore-files-from-vm/download-executable.png)
 
@@ -50,7 +50,7 @@ Zum Wiederherstellen von Dateien oder Ordnern aus dem Wiederherstellungspunkt we
 
     Für die Ausführung der ausführbaren Datei oder des Skripts als Administrator wird empfohlen, die heruntergeladene Datei auf Ihrem Computer zu speichern.
 
-6. Die ausführbare Datei bzw. das Skript ist kennwortgeschützt und erfordert ein Kennwort. Klicken Sie im Menü **Dateiwiederherstellung** auf die Schaltfläche „Kopieren“, um das Kennwort in der Zwischenablage zu speichern.
+6. Die ausführbare Datei bzw. das Skript ist kennwortgeschützt und erfordert ein Kennwort. Wählen Sie im Menü **Dateiwiederherstellung** die Schaltfläche „Kopieren“ aus, um das Kennwort in der Zwischenablage zu speichern.
 
     ![Generiertes Kennwort](./media/backup-azure-restore-files-from-vm/generated-pswd.png)
 
@@ -78,7 +78,7 @@ Unter Linux werden die Volumes des Wiederherstellungspunkts im Ordner bereitgest
 
 ## <a name="closing-the-connection"></a>Schließen der Verbindung
 
-Nachdem die Dateien bestimmt und an den lokalen Speicherort kopiert wurden, können Sie die zusätzlichen Laufwerke entfernen (oder ihre Bereitstellung aufheben). Zum Aufheben der Bereitstellung der Laufwerke klicken Sie im Azure-Portal im Menü **Dateiwiederherstellung** auf **Bereitstellung der Datenträger aufheben**.
+Nachdem die Dateien bestimmt und an den lokalen Speicherort kopiert wurden, können Sie die zusätzlichen Laufwerke entfernen (oder ihre Bereitstellung aufheben). Zum Aufheben der Bereitstellung der Laufwerke wählen Sie im Azure-Portal im Menü **Dateiwiederherstellung** die Option **Bereitstellung der Datenträger aufheben** aus.
 
 ![Aufheben der Bereitstellung der Datenträger](./media/backup-azure-restore-files-from-vm/unmount-disks3.png)
 
@@ -132,28 +132,96 @@ Führen Sie die Befehle in den folgenden Abschnitten aus, um diese Partitionen o
 
 #### <a name="for-lvm-partitions"></a>Für LVM-Partitionen
 
-Hiermit werden die Volumegruppennamen unter einem physischen Volume aufgeführt:
+Sobald das Skript ausgeführt wird, werden die LVM-Partitionen in die in der Skriptausgabe angegebenen physischen Volumes/Datenträger bereitgestellt. Der Vorgang besteht darin,
+
+1. die eindeutigen Liste der Volumegruppennamen von den physischen Volumes oder Datenträgern abzurufen
+2. anschließend die logischen Volumes in diesen Volumegruppen aufzulisten
+3. Anschließend können Sie die logischen Volumes unter einem gewünschten Pfad bereitstellen.
+
+##### <a name="listing-volume-group-names-from-physical-volumes"></a>Auflisten von Volumegruppennamen von physischen Volumes
+
+So listen Sie die Volumegruppennamen auf
+
+```bash
+pvs -o +vguuid
+```
+
+Dieser Befehl listet alle physischen Volumes (einschließlich derjenigen, die vor der Ausführung des Skripts vorhanden waren), deren entsprechende Volumegruppennamen und die eindeutigen Benutzer-IDs (UUIDs) der Datenträgergruppe auf. Ein Beispiel für die Ausgabe des Befehls sehen Sie unten.
+
+```bash
+PV         VG        Fmt  Attr PSize   PFree    VG UUID
+
+  /dev/sda4  rootvg    lvm2 a--  138.71g  113.71g EtBn0y-RlXA-pK8g-de2S-mq9K-9syx-B29OL6
+
+  /dev/sdc   APPvg_new lvm2 a--  <75.00g   <7.50g njdUWm-6ytR-8oAm-8eN1-jiss-eQ3p-HRIhq5
+
+  /dev/sde   APPvg_new lvm2 a--  <75.00g   <7.50g njdUWm-6ytR-8oAm-8eN1-jiss-eQ3p-HRIhq5
+
+  /dev/sdf   datavg_db lvm2 a--   <1.50t <396.50g dhWL1i-lcZS-KPLI-o7qP-AN2n-y2f8-A1fWqN
+
+  /dev/sdd   datavg_db lvm2 a--   <1.50t <396.50g dhWL1i-lcZS-KPLI-o7qP-AN2n-y2f8-A1fWqN
+```
+
+In der ersten Spalte (PV) wird das physische Volume angezeigt, in den folgenden Spalten die entsprechenden Volumengruppennamen, das Format, die Attribute, die Größe, den freien Speicherplatz und die eindeutige ID der Volumengruppe. Die Befehlsausgabe zeigt alle physischen Volumen an. Schauen Sie sich die Skriptausgabe an, und identifizieren Sie die im Zusammenhang mit der Sicherung verwendeten Volumes. Im obigen Beispiel würde die Skriptausgabe „/dev/sdf“ und „/dev/sdd“ anzeigen. Somit gehört die Volumegruppe *datavg_db* zu Skript und die Volumegruppe *Appvg_new* zum Computer. Letztlich besteht die Idee darin, sicherzustellen, dass ein eindeutiger Volumegruppenname eine eindeutige ID aufweist.
+
+###### <a name="duplicate-volume-groups"></a>Doppelte Volumegruppen
+
+Es gibt Szenarien, in denen Volumegruppennamen nach Ausführung des Skripts 2 UUIDs aufweisen können. Das bedeutet, dass die Volumegruppennamen im Computer, auf dem das Skript ausgeführt wird, und auf der gesicherten VM identisch sind. Dann müssen die gesicherten VM-Volumegruppen umbenannt werden. Sehen Sie sich das folgende Beispiel an.
+
+```bash
+PV         VG        Fmt  Attr PSize   PFree    VG UUID
+
+  /dev/sda4  rootvg    lvm2 a--  138.71g  113.71g EtBn0y-RlXA-pK8g-de2S-mq9K-9syx-B29OL6
+
+  /dev/sdc   APPvg_new lvm2 a--  <75.00g   <7.50g njdUWm-6ytR-8oAm-8eN1-jiss-eQ3p-HRIhq5
+
+  /dev/sde   APPvg_new lvm2 a--  <75.00g   <7.50g njdUWm-6ytR-8oAm-8eN1-jiss-eQ3p-HRIhq5
+
+  /dev/sdg   APPvg_new lvm2 a--  <75.00g  508.00m lCAisz-wTeJ-eqdj-S4HY-108f-b8Xh-607IuC
+
+  /dev/sdh   APPvg_new lvm2 a--  <75.00g  508.00m lCAisz-wTeJ-eqdj-S4HY-108f-b8Xh-607IuC
+
+  /dev/sdm2  rootvg    lvm2 a--  194.57g  127.57g efohjX-KUGB-ETaH-4JKB-MieG-EGOc-XcfLCt
+```
+
+Die Skriptausgabe würde „/dev/sdg“, „/dev/sdh“, „/dev/sdm2“ als angefügt anzeigen. Folglich sind die entsprechenden Volumegruppenname „Appvg_new“ und „rootvg“. Die gleichen Namen sind aber auch in der Volumegruppenliste des Computers enthalten. Sie können überprüfen, ob ein Volumegruppenname zwei UUIDs aufweist.
+
+Nun müssen Sie zum Beispiel Volumegruppennamen für skriptbasierte Volumes umbenennen: „/dev/sdg“, „/dev/sdh“, „/dev/sdm2“. Verwenden Sie den folgenden Befehl, um die Volumegruppe umzubenennen.
+
+```bash
+vgimportclone -n rootvg_new /dev/sdm2
+vgimportclone -n APPVg_2 /dev/sdg /dev/sdh
+```
+
+Jetzt weisen alle Volumegruppennamen eindeutige IDs auf.
+
+###### <a name="active-volume-groups"></a>Aktive Volumegruppen
+
+Stellen Sie sicher, dass die Volumegruppen, die den Skriptvolumes entsprechen, aktiv sind. Mit dem folgenden Befehl können Sie aktive Volumegruppen anzeigen. Prüfen Sie, ob die zugehörigen Volumegruppen des Skripts in dieser Liste vorhanden sind.
+
+```bash
+vgdisplay -a
+```  
+
+Verwenden Sie andernfalls den folgenden Befehl, um die Volumegruppe zu aktivieren.
 
 ```bash
 #!/bin/bash
-pvs <volume name as shown above in the script output>
+vgchange –a y  <volume-group-name>
 ```
 
-Hiermit werden alle logischen Volumes mit Name und Pfad in einer Volumegruppe aufgeführt:
+##### <a name="listing-logical-volumes-within-volume-groups"></a>Auflisten logischer Volumes in Volumegruppen
+
+Sobald Sie die eindeutige, aktive Liste der mit dem Skript verbundenen Volumegruppen abgerufen haben, können Sie die in diesen Volumegruppen vorhandenen logischen Volumes mit dem folgenden Befehl auflisten.
 
 ```bash
 #!/bin/bash
-lvdisplay <volume-group-name from the pvs commands results>
+lvdisplay <volume-group-name>
 ```
 
-Der ```lvdisplay```-Befehl zeigt auch an, ob die Volumegruppen aktiv sind. Wenn die Volumegruppe als inaktiv gekennzeichnet ist, muss sie erneut aktiviert werden, damit sie eingebunden werden kann. Wenn die Volumegruppe als inaktiv angezeigt wird, verwenden Sie den folgenden Befehl, um sie zu aktivieren.
+Mit diesem Befehl wird der Pfad der einzelnen logischen Volumes als „LV Path“ angezeigt.
 
-```bash
-#!/bin/bash
-vgchange –a y  <volume-group-name from the pvs commands results>
-```
-
-Sobald der Volumegruppenname aktiv ist, führen Sie den ```lvdisplay```-Befehl erneut aus, um alle relevanten Attribute anzuzeigen.
+##### <a name="mounting-logical-volumes"></a>Bereitstellen logischer Volumes
 
 Hiermit werden die logischen Volumes im Pfad Ihrer Wahl bereitgestellt:
 
@@ -161,6 +229,9 @@ Hiermit werden die logischen Volumes im Pfad Ihrer Wahl bereitgestellt:
 #!/bin/bash
 mount <LV path from the lvdisplay cmd results> </mountpath>
 ```
+
+> [!WARNING]
+> Verwenden Sie nicht „mount -a“. Mit diesem Befehl werden alle in „/etc/fstab“ beschriebenen Geräte bereitgestellt. Dies könnte bedeuten, dass doppelte Geräte bereitgestellt werden. Daten können auf per Skript erstellte Geräte umgeleitet werden, auf denen die Daten nicht persistent sind, was somit zu Datenverlust führen kann.
 
 #### <a name="for-raid-arrays"></a>Für RAID-Arrays
 
@@ -272,7 +343,7 @@ Da bei der Dateiwiederherstellung alle Datenträger aus der Sicherung angefügt 
     - node.conn[0].timeo.noop_out_timeout = 5  to node.conn[0].timeo.noop_out_timeout = 30
 - Nachdem Sie die obige Änderung vorgenommen haben, führen Sie das Skript erneut aus. Mit diesen Änderungen sollte die Dateiwiederherstellung sehr wahrscheinlich erfolgreich sein.
 - Jedes Mal, wenn ein Benutzer ein Skript herunterlädt, initiiert Azure Backup den Prozess zur Vorbereitung des Wiederherstellungspunkts für den Download. Bei großen Datenträgern nimmt dieser Vorgang eine beträchtliche Zeit in Anspruch. Bei aufeinanderfolgenden Anforderungsspitzen verfällt die Zielvorbereitung in eine Downloadspirale. Daher wird empfohlen, ein Skript im Portal, mit PowerShell oder mit der Befehlszeilenschnittstelle herunterzuladen, 20–30 Minuten (ungefähr) zu warten und es dann auszuführen. Zu diesem Zeitpunkt sollte das Ziel für die Verbindung mit dem Skript bereit sein.
-- Wechseln Sie nach der Dateiwiederherstellung unbedingt zurück zum Portal, und klicken Sie dort für die Wiederherstellungspunkte, bei denen Sie keine Volumes einbinden konnten, auf **Einbindung von Datenträgern aufheben**. Mit diesem Schritt werden alle vorhandenen Prozesse/Sitzungen bereinigt, und die Wahrscheinlichkeit für eine Wiederherstellung steigt.
+- Wechseln Sie nach der Dateiwiederherstellung unbedingt zurück zum Portal, und wählen Sie dort für die Wiederherstellungspunkte, bei denen Sie keine Volumes einbinden konnten, **Einbindung von Datenträgern aufheben** aus. Mit diesem Schritt werden alle vorhandenen Prozesse/Sitzungen bereinigt, und die Wahrscheinlichkeit für eine Wiederherstellung steigt.
 
 ## <a name="troubleshooting"></a>Problembehandlung
 

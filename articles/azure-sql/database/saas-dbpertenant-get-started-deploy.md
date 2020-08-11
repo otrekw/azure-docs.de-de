@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: 15a623068c46109b95ce9a9300348d29f95610a3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8d71f6e71a7cd6033e570742a23016df0c25dd27
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85254309"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87542245"
 ---
 # <a name="deploy-and-explore-a-multitenant-saas-app-that-uses-the-database-per-tenant-pattern-with-azure-sql-database"></a>Bereitstellen und Kennenlernen einer mehrinstanzenfähigen SaaS-App, die das Muster mit einer Datenbank pro Mandant mit Azure SQL-Datenbank verwendet
 
@@ -57,7 +57,7 @@ Wählen Sie nun Ihre Namen aus, und notieren Sie sich diese.
 
 1. Wenn Sie **Bereitstellung in Azure** auswählen, wird das Azure-Portal mit der SaaS-Bereitstellungsvorlage für eine Datenbank pro Mandant von Wingtip Tickets geöffnet.
 
-   <a href="https://aka.ms/deploywingtipdpt" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
+   [![Bild einer Schaltfläche mit der Bezeichnung „Bereitstellung in Azure“](https://azuredeploy.net/deploybutton.png)](https://aka.ms/deploywingtipdpt)
 
 1. Geben Sie die Werte für die erforderlichen Parameter in die Vorlage ein.
 

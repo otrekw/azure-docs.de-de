@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 06/09/2020
-ms.openlocfilehash: e8efb43ac0711bac1324ac2c9e3b59373ce59419
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 850879675d4554329f24c86f2ac28660b303084c
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84635123"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475565"
 ---
 # <a name="what-are-mapping-data-flows"></a>Was sind Zuordnungsdatenflüsse?
 
@@ -93,41 +93,9 @@ Die erste Registerkarte im Konfigurationsbereich jeder Transformation enthält d
 
 #### <a name="optimize"></a>Optimieren
 
-Die Registerkarte **Optimieren** enthält Einstellungen zum Konfigurieren von Partitionierungsschemas.
+Die Registerkarte **Optimieren** enthält Einstellungen zum Konfigurieren von Partitionierungsschemas. Weitere Informationen zum Optimieren Ihrer Datenflüsse finden Sie in der [Anleitung zur Leistung des Zuordnungsdatenflusses](concepts-data-flow-performance.md).
 
-![Optimieren](media/data-flow/optimize1.png "Optimieren")
-
-Die Standardeinstellung ist **Aktuelle Partitionierung verwenden**, mit der Azure Data Factory angewiesen wird, das native Partitionierungsschema der in Spark ausgeführten Datenflüsse zu verwenden. Für die meisten Szenarien wird diese Einstellung empfohlen.
-
-Es gibt Fälle, in denen es ratsam sein kann, die Partitionierung anzupassen. Wenn beispielsweise Ihre Transformationen in einer einzigen Datei im Lake ausgegeben werden sollen, wählen Sie in einer Senkentransformation die Option **Einzelne Partition** aus.
-
-Ein weiterer Fall, in dem die Steuerung der Partitionierungsschemas ggf. ratsam ist, ist die Optimierung der Leistung. Das Anpassen der Partitionierung bietet Kontrolle über die Verteilung Ihrer Daten auf Computeknoten und Datenstandortoptimierungen, die sowohl positive als auch negative Auswirkungen auf die gesamte Datenflussleistung haben können. Weitere Informationen finden Sie in der [Anleitung zur Leistung der Mapping Data Flow-Funktion](concepts-data-flow-performance.md).
-
-Wenn Sie die Partitionierung für eine Transformation ändern möchten, wählen Sie die Registerkarte **Optimieren** und das Optionsfeld **Partitionierung festlegen** aus. Ihnen werden mehrere Optionen für die Partitionierung angezeigt. Die beste Methode der Partitionierung richtet sich jeweils nach den Datenmengen, Kandidatenschlüsseln, NULL-Werten und der Kardinalität. 
-
-Eine bewährte Methode besteht darin, mit der Standardpartitionierung zu beginnen und dann verschiedene Partitionierungsoptionen auszuprobieren. Sie können Tests anhand von Debugausführungen der Pipeline durchführen und die Ausführungszeit sowie die Verwendung der Partition in jeder Transformationsgruppierung in der Ansicht „Überwachung“ anzeigen. Weitere Informationen finden Sie unter [Überwachen von Datenflüssen](concepts-data-flow-monitoring.md).
-
-Die folgenden Partitionierungsoptionen sind verfügbar.
-
-##### <a name="round-robin"></a>Roundrobin 
-
-„Roundrobin“ steht für eine einfache Partition, bei der Daten automatisch gleichmäßig auf Partitionen verteilt werden. Verwenden Sie die Option „Roundrobin“, wenn Sie nicht über gute Kandidaten verfügen, um eine solide, intelligente Partitionierungsstrategie zu implementieren. Sie können die Anzahl der physischen Partitionen festlegen.
-
-##### <a name="hash"></a>Hash
-
-Azure Data Factory erzeugt einen Hash von Spalten, um einheitliche Partitionen zu erstellen, sodass Zeilen mit ähnlichen Werten in die gleiche Partition fallen. Führen Sie bei Verwendung der Option „Hash“ einen Test auf mögliche Partitionsungleichmäßigkeiten durch. Sie können die Anzahl der physischen Partitionen festlegen.
-
-##### <a name="dynamic-range"></a>Dynamischer Bereich
-
-Bei dieser Option werden die dynamischen Spark-Bereiche basierend auf den von Ihnen angegebenen Spalten oder Ausdrücken verwendet. Sie können die Anzahl der physischen Partitionen festlegen. 
-
-##### <a name="fixed-range"></a>Fester Bereich
-
-Erstellen Sie einen Ausdruck, der einen festen Bereich für Werte in Ihren partitionierten Datenspalten bereitstellt. Sie sollten über fundiertes Wissen über Ihre Daten verfügen, bevor Sie diese Option verwenden, um Partitionsungleichmäßigkeiten zu vermeiden. Die von Ihnen für den Ausdruck eingegebenen Werte werden als Teil einer Partitionsfunktion verwendet. Sie können die Anzahl der physischen Partitionen festlegen.
-
-##### <a name="key"></a>Schlüssel
-
-Wenn Sie gut mit der Kardinalität Ihrer Daten vertraut sind, kann die Schlüsselpartitionierung eine gute Strategie darstellen. Die Schlüsselpartitionierung erstellt Partitionen für jeden eindeutigen Wert in der Spalte. Sie können die Anzahl der Partitionen nicht festlegen, weil die Anzahl auf den eindeutigen Werten in den Daten basiert.
+![Optimieren](media/data-flow/optimize.png "Optimieren")
 
 #### <a name="inspect"></a>Überprüfen
 

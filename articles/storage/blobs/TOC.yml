@@ -158,8 +158,10 @@
           items:
             - name: Versionsverwaltung
               href: versioning-overview.md
-            - name: Vorläufiges Löschen
-              href: soft-delete-overview.md
+            - name: Vorläufiges Löschen für Blobs
+              href: soft-delete-blob-overview.md
+            - name: Vorläufiges Löschen für Container
+              href: soft-delete-container-overview.md
             - name: Momentaufnahmen
               href: snapshots-overview.md
             - name: Änderungsfeed
@@ -321,7 +323,7 @@
                       href: ../common/storage-access-blobs-queues-portal.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                     - name: PowerShell
                       href: ../common/authorize-active-directory-powershell.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                    - name: Azure-Befehlszeilenschnittstelle
+                    - name: Azure CLI
                       href: ../common/authorize-data-operations-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                 - name: Verwalten von Zugriffsrechten mit RBAC
                   items:
@@ -329,7 +331,7 @@
                       href: ../common/storage-auth-aad-rbac-portal.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                     - name: PowerShell
                       href: ../common/storage-auth-aad-rbac-powershell.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                    - name: Azure-Befehlszeilenschnittstelle
+                    - name: Azure CLI
                       href: ../common/storage-auth-aad-rbac-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                 - name: Authentifizieren und Autorisieren mit Azure AD
                   items:
@@ -351,7 +353,7 @@
                       items:
                         - name: PowerShell
                           href: storage-blob-user-delegation-sas-create-powershell.md
-                        - name: Azure-Befehlszeilenschnittstelle
+                        - name: Azure CLI
                           href: storage-blob-user-delegation-sas-create-cli.md
                         - name: .NET
                           href: storage-blob-user-delegation-sas-create-dotnet.md
@@ -383,7 +385,7 @@
                           href: ../common/storage-encryption-keys-portal.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                         - name: PowerShell
                           href: ../common/storage-encryption-keys-powershell.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                        - name: Azure-Befehlszeilenschnittstelle
+                        - name: Azure CLI
                           href: ../common/storage-encryption-keys-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                 - name: Angeben eines Verschlüsselungsschlüssels bei einer Anforderung
                   href: storage-blob-customer-provided-key.md
@@ -423,8 +425,10 @@
           items:
             - name: Aktivieren der Blobversionsverwaltung
               href: versioning-enable.md
-            - name: Aktivieren von „Vorläufiges Löschen“
-              href: soft-delete-enable.md
+            - name: Aktivieren von „Vorläufiges Löschen“ für Blobs
+              href: soft-delete-blob-enable.md
+            - name: Aktivieren des vorläufigen Löschens für Container
+              href: soft-delete-container-enable.md
             - name: Erstellen von Momentaufnahmen (.NET)
               href: snapshots-manage-dotnet.md
             - name: Verarbeiten von Änderungsfeedprotokollen

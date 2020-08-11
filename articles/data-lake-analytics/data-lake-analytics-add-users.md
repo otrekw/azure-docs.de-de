@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.assetid: db35f16e-1565-4873-a851-bd987accdc58
 ms.topic: how-to
 ms.date: 05/24/2018
-ms.openlocfilehash: 09f866d7ed72e82770a7f3a0fe5da24bb864851f
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 7f9af576640e6d269ff5a44d7b0e2a529c20c505
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87126073"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87502935"
 ---
 # <a name="adding-a-user-in-the-azure-portal"></a>Hinzufügen eines Benutzers im Azure-Portal
 
@@ -33,7 +33,7 @@ Erteilen Sie je nach Bedarf „R-X“ oder „RWX“ für Ordner mit Eingabe- un
 1.  Suchen Sie Ihr Azure Data Lake Storage Gen1-Konto.
 2.  Klicken Sie auf **Benutzer**.
 3. Klicken Sie auf **Hinzufügen**.
-4.  Wählen Sie eine Azure RBAC-Rolle aus, die dieser Gruppe zugewiesen werden soll.
+4.  Wählen Sie eine Azure-Rolle aus, die dieser Gruppe zugewiesen werden soll.
 5.  Weisen Sie die Rolle „Leser“ zu. Diese Rolle verfügt über die mindestens erforderlichen Berechtigungen zum Durchsuchen/Verwalten von Daten, die in ADLSGen1 gespeichert sind. Führen Sie eine Zuweisung zu dieser Rolle durch, wenn die Gruppe nicht zum Verwalten von Azure-Diensten vorgesehen ist.
 6.  Geben Sie den Namen der Gruppe ein.
 7.  Klicken Sie auf **OK**.
@@ -54,4 +54,3 @@ Der Beispielbefehl zum Erteilen von Benutzerzugriff für das Übermitteln von Au
 * [Azure Data Lake Analytics – Übersicht](data-lake-analytics-overview.md)
 * [Erste Schritte mit Azure Data Lake Analytics mithilfe des Azure-Portals](data-lake-analytics-get-started-portal.md)
 * [Verwalten von Azure Data Lake Analytics mithilfe von Azure PowerShell](data-lake-analytics-manage-use-powershell.md)
-

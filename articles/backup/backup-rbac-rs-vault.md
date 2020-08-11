@@ -4,12 +4,12 @@ description: Verwenden Sie die rollenbasierte Zugriffssteuerung zum Verwalten de
 ms.reviewer: utraghuv
 ms.topic: conceptual
 ms.date: 06/24/2019
-ms.openlocfilehash: 89e5cf7c6b46d63b10bd358fc078f8f87db689c8
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 408e25b865c6d244118e505121492ccf22d19b64
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371701"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533460"
 ---
 # <a name="use-role-based-access-control-to-manage-azure-backup-recovery-points"></a>Verwenden der rollenbasierten Zugriffssteuerung zum Verwalten von Azure Backup-Wiederherstellungspunkten
 
@@ -28,9 +28,9 @@ Wenn Sie Ihre eigenen Rollen definieren möchten, um eine noch bessere Kontrolle
 
 ## <a name="mapping-backup-built-in-roles-to-backup-management-actions"></a>Zuordnen der integrierten Backup-Rollen zu Aktionen der Sicherungsverwaltung
 
-In der folgenden Tabelle sind die Aktionen der Sicherungsverwaltung und die entsprechende minimale RBAC-Rolle aufgeführt, die zum Ausführen des jeweiligen Vorgangs erforderlich ist.
+In der folgenden Tabelle sind die Aktionen der Sicherungsverwaltung und die entsprechende minimale Azure-Rolle aufgeführt, die zum Ausführen des jeweiligen Vorgangs erforderlich ist.
 
-| Verwaltungsvorgang | Minimal erforderliche RBAC-Rolle | Bereich erforderlich |
+| Verwaltungsvorgang | Minimal erforderliche Azure-Rolle | Bereich erforderlich |
 | --- | --- | --- |
 | Erstellen eines Recovery Services-Tresors | Mitwirkender für Sicherungen | Ressourcengruppe mit dem Tresor |
 | Aktivieren der Sicherung von virtuellen Azure-Computern | Sicherungsoperator | Ressourcengruppe mit dem Tresor |
@@ -77,7 +77,7 @@ In der folgenden Tabelle sind die Aktionen der Sicherungsverwaltung und die ents
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Rollenbasierte Zugriffssteuerung](../role-based-access-control/role-assignments-portal.md): Erste Schritte mit RBAC im Azure-Portal
+* [Rollenbasierte Zugriffssteuerung von Azure (Azure RBAC)](../role-based-access-control/role-assignments-portal.md): Erste Schritte mit RBAC im Azure-Portal
 * Informationen zur Zugriffsverwaltung mit:
   * [PowerShell](../role-based-access-control/role-assignments-powershell.md)
   * [Azure-Befehlszeilenschnittstelle](../role-based-access-control/role-assignments-cli.md)

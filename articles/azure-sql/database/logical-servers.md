@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: b45714489f13d33d90b5694f458e6339e33595f3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dbcc82d3ec4b50cf51210f8a4319bbf374185a88
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85367569"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498088"
 ---
 # <a name="what-is-a-logical-sql-server-in-azure-sql-database-and-azure-synapse"></a>Was ist ein logischer SQL-Server in Azure SQL-Datenbank und Azure Synapse?
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -34,7 +34,7 @@ Ein Server in SQL-Datenbank und Azure Synapse:
 - ist die übergeordnete Ressource für Datenbanken, Pools für elastische Datenbanken und Data Warehouses
 - stellt einen Namespace für Datenbanken, Pools für elastische Datenbanken und Data Warehouse-Datenbanken bereit
 - ist ein Container mit Semantik von hoher Lebensdauer – beim Löschen eines Servers werden die enthaltenen Datenbanken, Pools für elastische Datenbanken und SQK-Pools gelöscht
-- beteiligt sich an der [rollenbasierten Zugriffssteuerung (role-based access control, RBAC) in Azure](/azure/role-based-access-control/overview) – Datenbanken, Pools für elastische Datenbanken und Data Warehouse-Datenbanken innerhalb eines Servers erben dessen Zugriffsrechte
+- beteiligt sich an der [rollenbasierten Zugriffssteuerung in Azure (Role-Based Access Control, Azure RBAC)](/azure/role-based-access-control/overview) – Datenbanken, Pools für elastische Datenbanken und Data Warehouse-Datenbanken innerhalb eines Servers erben dessen Zugriffsrechte
 - ist ein übergeordnetes Element der Identität von Datenbanken, Pools für elastische Datenbanken und Data Warehouse-Datenbanken für Zwecke der Azure-Ressourcenverwaltung (siehe das URL-Schema für Datenbanken und Pools)
 - stellt in einer Region Ressourcen zusammen
 - bietet eine Verbindungsendpunkt für den Datenbankzugriff (`<serverName>`.database.windows.net)

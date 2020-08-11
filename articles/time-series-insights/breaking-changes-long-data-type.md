@@ -1,6 +1,6 @@
 ---
-title: Hinzufügen von Unterstützung für den Long-Datentyp | Microsoft-Dokumentation
-description: Unterstützung für den Long-Datentyp
+title: Unterstützung für den Datentyp „long“ – Azure Time Series Insights Gen2 | Microsoft-Dokumentation
+description: Unterstützung für den Datentyp „long“ in Azure Time Series Insights Gen2.
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
@@ -10,44 +10,65 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.custom: dpalled
-ms.openlocfilehash: c31ca7fd3eca89159d583b8a51b59a7bd6b8ed67
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 34cf770a8ac75c2516480ec3136e61da15f4e4ff
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86527992"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87446642"
 ---
-# <a name="adding-support-for-long-data-type"></a>Hinzufügen von Unterstützung für den Long-Datentyp
+# <a name="adding-support-for-long-data-type-in-azure-time-series-insights-gen2"></a>Hinzufügen von Unterstützung für den Datentyp „long“ in Azure Time Series Insights Gen2
 
-Diese Änderungen werden nur auf Gen2-Umgebungen angewendet. Wenn Sie eine Gen1-Umgebung verwenden, können Sie diese Änderungen ignorieren.
+Das Hinzufügen von Unterstützung für den Datentyp „long“ wirkt sich nur darauf aus, wie numerische Daten in Azure Time Series Insights Gen2-Umgebungen gespeichert und indiziert werden. Wenn Sie eine Gen1-Umgebung verwenden, können Sie diese Änderungen ignorieren.
 
-Wir nehmen Änderungen an der Weise vor, wie numerische Daten in Azure Time Series Insights Gen2 gespeichert und indiziert werden, die Auswirkungen für Sie haben können. Wenn Sie von einem der unten genannten Fälle betroffen sind, nehmen Sie die erforderlichen Änderungen so bald wie möglich vor. Abhängig von Ihrer Region wird die Indizierung Ihrer Daten als Long und Double zwischen dem 29. Juni und dem 30. Juni 2020 beginnen. Wenn Sie Fragen zu dieser Änderung oder Bedenken haben, reichen Sie ein Supportticket über das Azure-Portal ein, und beziehen Sie sich auf diese Kommunikation.
+Ab dem 29. oder 30. Juni 2020, je nach Ihrer Region, werden Ihre Daten als **Long** oder **Double** indiziert.  Wenn Sie Fragen zu dieser Änderung oder Bedenken haben, reichen Sie ein Supportticket über das Azure-Portal ein, und beziehen Sie sich auf diese Kommunikation.
 
-Diese Änderung betrifft Sie in den folgenden Fällen:
+Wenn Sie von einem der folgenden Fälle betroffen sind, nehmen Sie die empfohlenen Änderungen vor:
 
-1. Wenn Sie aktuell Variablen des Zeitreihenmodells verwenden und in Ihren Telemetriedaten nur ganzzahlige Datentypen senden.
-1. Wenn Sie aktuell Variablen des Zeitreihenmodells verwenden und in Ihren Telemetriedaten sowohl ganzzahlige als auch nicht ganzzahlige Datentypen senden.
-1. Wenn Sie kategorische Variablen verwenden, um Kategorien ganzzahlige Werte zuzuordnen.
-1. Wenn Sie das JavaScript SDK verwenden, um eine benutzerdefinierte Front-End-Anwendung zu erstellen.
-1. Wenn Sie sich an den Grenzwert von 1.000 für Eigenschaftsnamen im warmen Speicher (WS) annähern und sowohl ganzzahlige als auch nicht ganzzahlige Daten senden, kann die Anzahl der Eigenschaften als Metrik im [Azure-Portal](https://portal.azure.com/) angezeigt werden.
+- **Fall 1**: Sie verwenden aktuell Variablen des Zeitreihenmodells und senden in Ihren Telemetriedaten nur ganzzahlige Datentypen.
+- **Fall 2**: Sie verwenden aktuell Variablen des Zeitreihenmodells und senden in Ihren Telemetriedaten sowohl ganzzahlige als auch nicht ganzzahlige Datentypen.
+- **Fall 3**: Sie verwenden kategorische Variablen, um Kategorien ganzzahlige Werte zuzuordnen.
+- **Fall 4**: Sie verwenden das JavaScript SDK, um eine benutzerdefinierte Front-End-Anwendung zu erstellen.
+- **Fall 5**: Sie nähern sich an den Grenzwert von 1.000 für Eigenschaftsnamen im warmen Speicher an und senden sowohl ganzzahlige als auch nicht ganzzahlige Daten. Die Eigenschaftsanzahl kann im [Azure-Portal](https://portal.azure.com/) als Metrik angezeigt werden.
 
-Wenn einer der oben genannten Fälle auf Sie zutrifft, müssen Sie Änderungen an Ihrem Modell vornehmen, um dieser Änderung Rechnung zu tragen. Aktualisieren Sie den Zeitreihenausdruck in Ihrer Variablendefinition sowohl im Azure Time Series Insights Gen2-Explorer als auch in jedem benutzerdefinierten Client, der unsere APIs verwendet, mit den empfohlenen Änderungen. Weitere Informationen siehe unten.
+Wenn einer der Fälle auf Sie zutrifft, nehmen Sie Änderungen an Ihrem Modell vor. Aktualisieren Sie den Zeitreihenausdruck (TSX) in Ihrer Variablendefinition mit den empfohlenen Änderungen. Aktualisieren Sie beides:
 
-Abhängig von ihrer IoT-Lösung und den Einschränkungen haben Sie möglicherweise keinen Einblick in die Daten, die an Ihre Azure Time Series Insights Gen2-Umgebung gesendet werden. Wenn Sie nicht sicher sind, ob Ihre Daten rein ganzzahlig oder aus ganzzahligen und nicht ganzzahligen zusammengesetzt sind, stehen Ihnen einige Optionen offen. Sie können auf die Veröffentlichung der Funktion warten und dann Ihre unformatierten Ereignisse auf der Benutzeroberfläche des Explorers untersuchen, um zu verstehen, welche Eigenschaften in zwei separaten Spalten gespeichert wurden. Sie könnten vorsorglich die unten aufgeführten Änderungen für alle numerischen Tags vornehmen oder vorübergehend eine Teilmenge von Ereignissen an den Speicher weiterleiten, um das Schema besser verstehen und untersuchen zu können. Zum Speichern von Ereignissen aktivieren Sie die [Ereigniserfassung](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview) für Event Hubs, oder Sie [routen](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-d2c#azure-storage) sie von Ihrem IoT Hub an Azure Blob Storage. Daten können außerdem im [Event Hub-Explorer](https://marketplace.visualstudio.com/items?itemName=Summer.azure-event-hub-explorer) oder mithilfe des [Ereignisprozessorhosts](https://docs.microsoft.com/azure/event-hubs/event-hubs-dotnet-standard-getstarted-send#receive-events) beobachtet werden. Wenn Sie IoT Hub verwenden, finden Sie Informationen zum Zugriff auf den integrierten Endpunkt [hier](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-read-builtin).
+- Azure Time Series Insights Gen2-Explorer
+- Alle benutzerdefinierten Clients, die unsere APIs verwenden
 
-Beachten Sie, dass, falls Sie von diesen Änderungen betroffen sind und bis zu den oben genannten Terminen nicht entsprechend reagieren können, eine Unterbrechung auftreten kann, während der die betroffenen Zeitreihenvariablen beim Zugriff über die Abfrage-APIs oder den Time Series Insights-Explorer *NULL* zurückgeben (d. h. keine Daten im Explorer anzeigen).
+Abhängig von ihrer IoT-Lösung und den Einschränkungen haben Sie möglicherweise keinen Einblick in die Daten, die an Ihre Azure Time Series Insights Gen2-Umgebung gesendet werden. Wenn Sie nicht sicher sind, ob Ihre Daten rein ganzzahlig oder aus ganzzahligen und nicht ganzzahligen zusammengesetzt sind, stehen Ihnen einige Optionen offen:
+
+- Sie können warten, bis die Funktion freigegeben wird. Untersuchen Sie dann Ihre unformatierten Ereignisse auf der Benutzeroberfläche des Explorers, um zu verstehen, welche Eigenschaften in zwei separaten Spalten gespeichert werden.
+- Sie können die empfohlenen Änderungen für alle numerischen Tags präventiv vornehmen.
+- Sie könnten vorübergehend eine Teilmenge von Ereignissen an den Speicher weiterleiten, um das Schema besser verstehen und untersuchen zu können.
+
+Zum Speichern von Ereignissen aktivieren Sie die [Ereigniserfassung](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview) für Azure Event Hubs, oder Sie [routen](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-d2c#azure-storage) sie von Ihrem IoT Hub an Azure Blob Storage.
+
+Daten können außerdem im [Event Hub-Explorer](https://marketplace.visualstudio.com/items?itemName=Summer.azure-event-hub-explorer) oder mithilfe des [Ereignisprozessorhosts](https://docs.microsoft.com/azure/event-hubs/event-hubs-dotnet-standard-getstarted-send#receive-events) beobachtet werden.
+
+Wenn Sie IoT Hub verwenden, finden Sie Informationen, wie Sie auf den integrierten Endpunkt zugreifen, unter [Lesen von D2C-Nachrichten vom integrierten Endpunkt](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-read-builtin).
+
+> [!NOTE]
+> Wenn Sie die empfohlenen Änderungen nicht vornehmen, kann es möglicherweise zu Unterbrechungen kommen. Beispielsweise geben die betroffenen Time Series Insights-Variablen, auf die über die Abfrage-APIs oder den Time Series Insights-Explorer zugegriffen wird, **Null** zurück (das heißt, es werden keine Daten im Explorer angezeigt).
 
 ## <a name="recommended-changes"></a>Empfohlene Änderungen
 
-Fälle 1 und 2: **Verwenden von Variablen des Zeitreihenmodells, wenn nur ganzzahlige Datentypen ODER sowohl ganzzahlige als auch nicht ganzzahlige Datentypen in den Telemetriedaten gesendet werden.**
+### <a name="case-1-using-time-series-model-variables-and-sending-only-integral-data-types-in-telemetry-data"></a>Fall 1: Verwenden von Variablen des Zeitreihenmodells und Senden von nur ganzzahlige Datentypen in Ihren Telemetriedaten
 
-Wenn Sie derzeit ganzzahlige Telemetriedaten senden, werden Ihre Daten in zwei Spalten aufgeteilt: „propertyValue_double“ und „propertyValue_long“.
+Die empfohlenen Änderungen für Fall 1 sind identisch mit denen für Fall 2. Folgen Sie den Anweisungen im Abschnitt für Fall 2.
 
-Ihre ganzzahligen Daten werden in „propertyValue_long“ geschrieben, wenn die Änderungen wirksam werden, und zuvor erfasste (sowie zukünftig erfasste) numerische Daten in „propertyValue_double“ werden nicht herüberkopiert.
+### <a name="case-2-using-time-series-model-variables-and-sending-both-integral-and-nonintegral-types-in-telemetry-data"></a>Fall 2: Verwenden von Variablen des Zeitreihenmodells und Senden von sowohl ganzzahligen als auch nicht ganzzahligen Datentypen in den Telemetriedaten
 
-Wenn Sie Daten für die Eigenschaft „propertyValue“ übergreifend für diese zwei Spalten abfragen möchten, müssen Sie die Skalarfunktion *coalesce()* in Ihrem TSX verwenden. Die-Funktion akzeptiert Argumente des gleichen Datentyps und gibt den ersten Wert in der Argumentliste zurück, der nicht NULL ist (weitere Informationen zur Verwendung finden Sie [hier](https://docs.microsoft.com/rest/api/time-series-insights/preview#other-functions)).
+Wenn Sie derzeit ganzzahlige Telemetriedaten senden, werden Ihre Daten in zwei Spalten aufgeteilt:
 
-### <a name="variable-definition-in-time-series-explorer---numeric"></a>Variablendefinition im Time Series Explorer: Numerisch
+- **propertyValue_double**
+- **propertyValue_long**
+
+Die ganzzahligen Daten werden in **propertyValue_long** geschrieben. Zuvor in **propertyValue_double** erfasste (und zukünftige erfasste) numerische Daten werden nicht rüberkopiert.
+
+Wenn Sie Daten für die Eigenschaft **propertyValue** übergreifend für diese zwei Spalten abfragen möchten, müssen Sie die Skalarfunktion **coalesce()** in Ihrem TSX verwenden. Die Funktion akzeptiert Argumente desselben Datentyps (**DataType**) und gibt den ersten Wert in der Argumentliste zurück, der nicht Null ist. Weitere Informationen finden Sie unter [Konzepte des Azure Time Series Insights Gen2-Datenzugriffs](https://docs.microsoft.com/rest/api/time-series-insights/preview#other-functions).
+
+#### <a name="variable-definition-in-tsx---numeric"></a>Variablendefinition in TSX: numerisch
 
 *Vorherige Variablendefinition:*
 
@@ -57,9 +78,9 @@ Wenn Sie Daten für die Eigenschaft „propertyValue“ übergreifend für diese
 
 [![Neue Variablendefinition](media/time-series-insights-long-data-type/var-def.png)](media/time-series-insights-long-data-type/var-def.png#lightbox)
 
-Sie können außerdem *„coalesce($event.propertyValue.Double, toDouble($event.propertyValue.Long))“* als benutzerdefinierten [Zeitreihenausdruck](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax) verwenden.
+Sie können außerdem **coalesce($event.propertyValue.Double, toDouble($event.propertyValue.Long))** als benutzerdefinierten [Zeitreihenausdruck](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax) verwenden.
 
-### <a name="inline-variable-definition-using-time-series-query-apis---numeric"></a>Definition von Inlinevariablen mithilfe von Zeitreihenabfrage-APIs: Numerisch
+#### <a name="inline-variable-definition-using-tsx-query-apis---numeric"></a>Inlinevariablendefinition mithilfe von TSX-Abfrage-APIs: numerisch
 
 *Vorherige Variablendefinition:*
 
@@ -105,16 +126,16 @@ Sie können außerdem *„coalesce($event.propertyValue.Double, toDouble($event.
 }
 ```
 
-Sie können außerdem *„coalesce($event.propertyValue.Double, toDouble($event.propertyValue.Long))“* als benutzerdefinierten [Zeitreihenausdruck](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax) verwenden.
+Sie können außerdem **coalesce($event.propertyValue.Double, toDouble($event.propertyValue.Long))** als benutzerdefinierten [Zeitreihenausdruck](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax) verwenden.
 
 > [!NOTE]
-> Es empfiehlt sich, diese Variablen an allen Orten zu aktualisieren, an denen sie möglicherweise verwendet werden (Zeitreihenmodell, gespeicherte Abfragen, Power BI Connector-Abfragen).
+> Es empfiehlt sich, diese Variablen an allen Stellen zu aktualisieren, an denen sie möglicherweise verwendet werden. Zu diesen Stellen zählen das Zeitreihenmodell, gespeicherte Abfragen und Power BI-Connectorabfragen.
 
-Fall 3: **Verwenden von kategorischen Variablen, um Kategorien ganzzahlige Werte zuzuordnen**
+### <a name="case-3-using-categorical-variables-to-map-integer-values-to-categories"></a>Fall 3: Verwenden von kategorischen Variablen, um Kategorien ganzzahlige Werte zuzuordnen
 
-Wenn Sie zurzeit kategorische Variablen verwenden, die Kategorien ganzzahlige Werte zuordnen, nutzen Sie wahrscheinlich die toLong-Funktion, um Daten aus dem Typ Double in den Typ Long zu konvertieren. Wie in den Fällen oben, müssen Sie die Datentypspalten Double und Long zusammenfügen.
+Wenn Sie zurzeit kategorische Variablen verwenden, die Kategorien ganzzahlige Werte zuordnen, nutzen Sie wahrscheinlich die **toLong**-Funktion, um Daten aus dem Typ **Double** in den Typ **Long** zu konvertieren. Wie in den Fällen 1 und 2 müssen Sie die Datentypspalten (**DataType**) **Double** und **Long** zusammenfügen.
 
-### <a name="variable-definition-in-time-series-explorer---categorical"></a>Variablendefinition im Time Series Explorer: Kategorisch
+#### <a name="variable-definition-in-time-series-explorer---categorical"></a>Variablendefinition im Time Series Explorer: kategorisch
 
 *Vorherige Variablendefinition:*
 
@@ -124,11 +145,11 @@ Wenn Sie zurzeit kategorische Variablen verwenden, die Kategorien ganzzahlige We
 
 [![Neue Variablendefinition](media/time-series-insights-long-data-type/var-def-cat.png)](media/time-series-insights-long-data-type/var-def-cat.png#lightbox)
 
-Sie können außerdem *„coalesce($event.propertyValue.Double, toDouble($event.propertyValue.Long))“* als benutzerdefinierten [Zeitreihenausdruck](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax) verwenden.
+Sie können außerdem **coalesce($event.propertyValue.Double, toDouble($event.propertyValue.Long))** als benutzerdefinierten [Zeitreihenausdruck](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax) verwenden.
 
-Kategorische Variablen erfordern weiterhin einen ganzzahligen Werttyp. Der Datentyp aller Argumente in coalesce() im benutzerdefinierten [Zeitreihenausdruck](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax) muss Long sein.
+Kategorische Variablen erfordern weiterhin einen ganzzahligen Werttyp. Der Datentyp (**DataType**) aller Argumente in **coalesce()** muss im benutzerdefinierten [Zeitreihenausdruck](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax) vom Typ **Long** sein.
 
-### <a name="inline-variable-definition-using-time-series-query-apis---categorical"></a>Definition von Inlinevariablen mithilfe von Zeitreihenabfrage-APIs: Kategorisch
+#### <a name="inline-variable-definition-using-tsx-query-apis---categorical"></a>Inlinevariablendefinition mithilfe von TSX-Abfrage-APIs: kategorisch
 
 *Vorherige Variablendefinition:*
 
@@ -206,19 +227,19 @@ Kategorische Variablen erfordern weiterhin einen ganzzahligen Werttyp. Der Daten
 }
 ```
 
-Kategorische Variablen erfordern weiterhin einen ganzzahligen Werttyp. Der Datentyp aller Argumente in coalesce() im benutzerdefinierten [Zeitreihenausdruck](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax) muss Long sein.
+Kategorische Variablen erfordern weiterhin einen ganzzahligen Werttyp. Der Datentyp (**DataType**) aller Argumente in **coalesce()** muss im benutzerdefinierten [Zeitreihenausdruck](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax) vom Typ **Long** sein.
 
 > [!NOTE]
-> Es empfiehlt sich, diese Variablen an allen Orten zu aktualisieren, an denen sie möglicherweise verwendet werden (Zeitreihenmodell, gespeicherte Abfragen, Power BI Connector-Abfragen).
+> Es empfiehlt sich, diese Variablen an allen Stellen zu aktualisieren, an denen sie möglicherweise verwendet werden. Zu diesen Stellen zählen das Zeitreihenmodell, gespeicherte Abfragen und Power BI-Connectorabfragen.
 
-Fall 4: **Verwenden des JavaScript SDK zum Erstellen einer benutzerdefinierten Front-End-Anwendung**
+### <a name="case-4-using-the-javascript-sdk-to-build-a-custom-front-end-application"></a>Fall 4: Verwenden des JavaScript SDK zum Erstellen einer benutzerdefinierten Front-End-Anwendung
 
-Wenn Sie von den oben dargestellten Fällen 1–3 betroffen sind und benutzerdefinierte Anwendungen erstellen, müssen Sie Ihre Abfragen für die Verwendung der Funktion *coalesce()* aktualisieren, wie in den Beispielen oben gezeigt.
+Wenn Sie von den Fällen 1–3 betroffen sind und benutzerdefinierte Anwendungen erstellen, müssen Sie Ihre Abfragen für die Verwendung der Funktion **coalesce()** aktualisieren, wie in den vorherigen Beispielen gezeigt.
 
-Fall 5: **Annäherung an den Grenzwert von 1.000 Eigenschaften im warmen Speicher**
+### <a name="case-5-nearing-warm-store-1000-property-limit"></a>Fall 5: Annäherung an den Grenzwert von 1.000 Eigenschaften im warmen Speicher
 
-Wenn Sie Benutzer eines warmen Speichers mit einer großen Anzahl von Eigenschaften sind und Grund zu der Annahme haben, dass diese Änderung Ihre Umgebung über den WS-Grenzwert von 1.000 Eigenschaftsnamen bringen würde, reichen Sie über das Azure-Portal ein Supportticket ein, und beziehen Sie sich auf diese Kommunikation.
+Wenn Sie Benutzer eines warmen Speichers mit einer großen Anzahl von Eigenschaften sind und Grund zu der Annahme haben, dass diese Änderung Ihre Umgebung über den Grenzwert für warme Speicher von 1.000 Eigenschaftsnamen bringen würde, reichen Sie über das Azure-Portal ein Supportticket ein, und beziehen Sie sich auf diese Kommunikation.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Die vollständige Liste der unterstützten Datentypen finden Sie unter [Unterstützte Datentypen](concepts-supported-data-types.md).
+- Anzeigen der vollständigen Liste der [unterstützten Datentypen](concepts-supported-data-types.md).

@@ -11,12 +11,12 @@ author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: ''
 ms.date: 03/03/2020
-ms.openlocfilehash: 983bf848b3be2501b70ba1c0396207e514b7b8d6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 359de25d2bdb57ad5c6386586f987942acc120ef
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87024016"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500145"
 ---
 # <a name="azure-sql-database-hyperscale-faq"></a>Azure SQL-Datenbank Hyperscale – Häufig gestellte Fragen (FAQs)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -331,7 +331,7 @@ Für die meisten Leistungsprobleme (insbesondere für solche, die nicht durch di
 
 ### <a name="how-long-would-it-take-to-scale-up-and-down-a-compute-replica"></a>Wie lange würde es dauern, um ein Computereplikat hoch- und herunterzuskalieren?
 
-Das Hoch- bzw. Herunterskalieren der Computeressourcen sollte unabhängig von der Datengröße 5-10 Minuten dauern.
+Das Hoch- oder Herunterskalieren von Compute dauert in der Regel bis zu 2 Minuten, unabhängig von der Datengröße.
 
 ### <a name="is-my-database-offline-while-the-scaling-updown-operation-is-in-progress"></a>Wird die Datenbank während des Vorgangs zum zentralen Hoch- bzw. Herunterskalieren offline geschaltet?
 

@@ -3,12 +3,12 @@ title: Antworten auf häufig gestellte Fragen
 description: 'Antworten auf häufig gestellte Fragen zu: Azure Backup-Features wie Azure Recovery Services-Tresoren, zu sicherbaren Elementen sowie zu Funktionsweise, Verschlüsselung und Grenzwerten. '
 ms.topic: conceptual
 ms.date: 07/07/2019
-ms.openlocfilehash: 96733ffaae101bb2cf716fda7500a8269ce8e357
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: 95d515e65e31304dd4839f851736be6926a5a29f
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85970483"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87553086"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup – häufig gestellte Fragen
 
@@ -111,7 +111,7 @@ Windows 8 oder höher | 54.400 GB
 Windows 7 |1\.700 GB
 Windows Server 2012 oder höher | 54.400 GB
 Windows Server 2008, Windows Server 2008 R2 | 1\.700 GB
-Azure VM | Weitere Informationen finden Sie in der [Unterstützungsmatrix für die Sicherung von Azure-VMs](https://docs.microsoft.com/azure/backup/backup-support-matrix-iaas#vm-storage-support).
+Azure VM | Weitere Informationen finden Sie in der [Unterstützungsmatrix für die Sicherung von Azure-VMs](./backup-support-matrix-iaas.md#vm-storage-support).
 
 ### <a name="how-is-the-data-source-size-determined"></a>Wie wird die Größe der Datenquelle bestimmt?
 
@@ -127,7 +127,7 @@ BMR/Systemstatus |Jede einzelne Kopie der BMR oder des Systemstatus des zu siche
 
 ### <a name="is-there-a-limit-on-the-amount-of-data-backed-up-using-a-recovery-services-vault"></a>Gibt es einen Grenzwert für die Menge der in einem Recovery Services-Tresor gesicherten Daten?
 
-Es gibt keine Beschränkung für die Gesamtmenge der Daten, die in einem Recovery Services-Tresor gesichert werden können. Die einzelnen Datenquellen (neben Azure-VMs) können maximal 54.400 GB groß sein. Weitere Informationen zu Grenzwerten finden Sie im [Abschnitt zu Tresoreinschränkungen in der Unterstützungsmatrix](https://docs.microsoft.com/azure/backup/backup-support-matrix#vault-support).
+Es gibt keine Beschränkung für die Gesamtmenge der Daten, die in einem Recovery Services-Tresor gesichert werden können. Die einzelnen Datenquellen (neben Azure-VMs) können maximal 54.400 GB groß sein. Weitere Informationen zu Grenzwerten finden Sie im [Abschnitt zu Tresoreinschränkungen in der Unterstützungsmatrix](./backup-support-matrix.md#vault-support).
 
 ### <a name="why-is-the-size-of-the-data-transferred-to-the-recovery-services-vault-smaller-than-the-data-selected-for-backup"></a>Warum ist die Datenmenge, die an den Recovery Services-Tresor übertragen wird, kleiner als die Menge der für die Sicherung ausgewählten Daten?
 
@@ -197,6 +197,10 @@ Wenn eine neue Richtlinie angewendet wird, gelten der Zeitplan und die Aufbewahr
 - Bei einer Ausweitung der Aufbewahrung werden bereits vorhandene Wiederherstellungspunkte markiert, um sie gemäß der neuen Richtlinie aufzubewahren.
 - Bei einer Verkürzung der Aufbewahrung werden sie zum Löschen im Rahmen der nächsten Bereinigung markiert und demgemäß gelöscht.
 
+### <a name="how-long-is-data-retained-when-stopping-backups-but-selecting-the-option-to-retain-backup-data"></a>Wie lange werden die Daten nach dem Beenden der Sicherung aufbewahrt, wenn die Option zur Aufbewahrung der Sicherungsdaten ausgewählt ist?
+
+Wenn die Sicherungen beendet und die Daten aufbewahrt werden, enden die bestehenden Richtlinienregeln für die Datenbereinigung, und die Daten werden auf unbestimmte Zeit aufbewahrt, bis der Administrator die Löschung veranlasst.
+
 ## <a name="encryption"></a>Verschlüsselung
 
 ### <a name="is-the-data-sent-to-azure-encrypted"></a>Werden die Daten verschlüsselt an Azure gesendet?
@@ -214,7 +218,7 @@ Die Sicherungsdaten werden zu keinem Zeitpunkt von Microsoft entschlüsselt.
 
 ### <a name="what-is-the-minimum-length-of-the-encryption-key-used-to-encrypt-backup-data"></a>Wie lang muss der Verschlüsselungsschlüssel zur Verschlüsselung von Sicherungsdaten mindestens sein?
 
-Bei Verwendung des Azure Backup-Agents muss der Verschlüsselungsschlüssel mindestens 16 Zeichen lang sein. Bei virtuellen Azure-Computern gibt es keine Längenbegrenzung für Schlüssel, die von Azure Key Vault verwendet werden.
+Der vom Microsoft Azure Recovery Services-Agent (MARS) verwendete Verschlüsselungsschlüssel wird von einer Passphrase abgeleitet, die mindestens 16 Zeichen lang sein sollte. Bei virtuellen Azure-Computern gibt es keine Längenbegrenzung für Schlüssel, die von Azure Key Vault verwendet werden.
 
 ### <a name="what-happens-if-i-misplace-the-encryption-key-can-i-recover-the-data-can-microsoft-recover-the-data"></a>Was geschieht, wenn ich den Schlüssel verlege? Kann ich die Daten wiederherstellen? Kann Microsoft die Daten wiederherstellen?
 

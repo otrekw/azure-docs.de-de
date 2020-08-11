@@ -41,7 +41,7 @@
       href: tutorial-load-balancer-port-forwarding-portal.md
 - name: Beispiele
   items:
-    - name: Azure-Befehlszeilenschnittstelle
+    - name: Azure CLI
       href: cli-samples.md
     - name: Azure PowerShell
       href: powershell-samples.md
@@ -99,7 +99,7 @@
           href: upgrade-InternalBasic-To-PublicStandard.md
     - name: Erstellen des öffentlichen Lastenausgleichs mit IPv6
       items:
-        - name: Azure-Befehlszeilenschnittstelle
+        - name: Azure CLI
           href: 'https://docs.microsoft.com/azure/virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-cli'
         - name: Azure PowerShell
           href: 'https://docs.microsoft.com/azure/virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell'
@@ -114,7 +114,7 @@
       items:
         - name: Portal
           href: load-balancer-multiple-ip.md
-        - name: Azure-Befehlszeilenschnittstelle
+        - name: Azure CLI
           href: load-balancer-multiple-ip-cli.md
         - name: Azure PowerShell
           href: load-balancer-multiple-ip-powershell.md
@@ -128,6 +128,8 @@
           href: move-across-regions-internal-load-balancer-portal.md
         - name: 'Interner Lastenausgleich: PowerShell'
           href: move-across-regions-internal-load-balancer-powershell.md
+    - name: Lastenausgleichskonfiguration (nur ausgehender Datenverkehr)
+      href: egress-only.md
 - name: Problembehandlung
   items:
     - name: Beheben von Problemen mit Azure Load Balancer
@@ -142,7 +144,7 @@
       href: 'https://azure.microsoft.com/resources/samples/?service=load-balancer'
     - name: Azure PowerShell
       href: /powershell/module/az.network
-    - name: Azure-Befehlszeilenschnittstelle
+    - name: Azure CLI
       href: /cli/azure/network/lb
     - name: .NET
       href: /dotnet/api/microsoft.azure.management.network.models

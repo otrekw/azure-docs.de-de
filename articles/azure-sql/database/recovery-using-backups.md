@@ -12,17 +12,17 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
 ms.date: 09/26/2019
-ms.openlocfilehash: e12d5d7e9cfc6cfa80de1032e3d4d5659c44c0a7
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 6b07b6c3e54f4aebcda6c2e84047ecd1a27b3d5b
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86075884"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87809471"
 ---
 # <a name="recover-using-automated-database-backups---azure-sql-database--sql-managed-instance"></a>Azure SQL-Datenbank und SQL Managed Instance: Wiederherstellen automatisierter Datenbanksicherungen
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-Sicherungen von Azure SQL-Datenbank und Azure SQL Managed Instance werden standardmäßig im georeplizierten Blobspeicher (RA-GRS-Speichertyp) gespeichert. Die folgenden Optionen stehen für die Datenbankwiederherstellung mithilfe [automatisierter Datenbanksicherungen](automated-backups-overview.md) zur Verfügung. Ihre Möglichkeiten:
+Die folgenden Optionen stehen für die Datenbankwiederherstellung mithilfe [automatisierter Datenbanksicherungen](automated-backups-overview.md) zur Verfügung. Ihre Möglichkeiten:
 
 - Sie können eine neue Datenbank auf demselben Server erstellen, die zu einem bestimmten Zeitpunkt innerhalb des Aufbewahrungszeitraums wiederhergestellt werden kann.
 - Sie können eine Datenbank auf demselben Server erstellen, die zum Löschzeitpunkt einer gelöschten Datenbank wiederhergestellt werden kann.
@@ -33,6 +33,11 @@ Wenn Sie die [langfristige Aufbewahrung von Sicherungen](long-term-retention-ove
 
 > [!IMPORTANT]
 > Sie können eine vorhandene Datenbank während der Wiederherstellung nicht überschreiben.
+
+Sicherungen von Azure SQL-Datenbank und Azure SQL Managed Instance werden standardmäßig im georeplizierten Blobspeicher (RA-GRS-Speichertyp) gespeichert. Darüber hinaus unterstützt SQL Managed Instance auch lokal redundanten (LRS) und zonenredundanten Sicherungsspeicher (ZRS). Redundanz stellt sicher, dass Ihre Daten vor geplanten und ungeplanten Ereignissen geschützt sind – von vorübergehend auftretenden Hardwarefehlern über Netzwerk- oder Stromausfälle bis hin zu schweren Naturkatastrophen. Zonenredundanter Speicher (ZRS) steht nur in [bestimmten Regionen](../../storage/common/storage-redundancy.md#zone-redundant-storage) zur Verfügung.
+
+> [!IMPORTANT]
+> Das Konfigurieren der Speicherredundanz für Sicherungen ist nur für verwaltete Instanzen verfügbar und während des Erstellungsprozesses erlaubt. Nachdem die Ressource bereitgestellt wurde, können Sie die Option für die Redundanz für Sicherungsspeicher nicht mehr ändern.
 
 Wenn Sie die Dienstebene „Standard“ oder „Premium“ verwenden, fallen bei der Wiederherstellung Ihrer Datenbanken möglicherweise zusätzliche Speicherkosten an. Die zusätzlichen Kosten entstehen, wenn die maximale Größe der wiederhergestellten Datenbank die mit der Dienstebene und Leistungsstufe der Zieldatenbank verbundene Menge des Speicherplatzes überschreitet. Ausführliche Informationen zu den Preisen für zusätzlichen Speicherplatz siehe [SQL-Datenbank – Preise](https://azure.microsoft.com/pricing/details/sql-database/). Wenn die tatsächlich verwendete Speichermenge kleiner als die enthaltene Speichermenge ist, können Sie diese zusätzlichen Kosten durch Festlegen der maximalen Datenbankgröße auf die enthaltene Menge vermeiden.
 
@@ -51,7 +56,7 @@ Bei einer großen oder sehr aktiven Datenbank kann die Wiederherstellung mehrere
 
 Für ein einzelnes Abonnement gibt es Einschränkungen hinsichtlich der Anzahl gleichzeitiger Wiederherstellungsanforderungen. Diese Einschränkungen gelten für eine beliebige Kombination von Point-in-Time-Wiederherstellungen, Geowiederherstellungen und Wiederherstellungen aus einer langfristig aufbewahrten Sicherung.
 
-|| **Max. Anzahl gleichzeitiger Anforderungen, die verarbeitet werden** | **Max. Anzahl gleichzeitiger Anforderungen, die übermittelt werden** |
+| **Bereitstellungsoption** | **Max. Anzahl gleichzeitiger Anforderungen, die verarbeitet werden** | **Max. Anzahl gleichzeitiger Anforderungen, die übermittelt werden** |
 | :--- | --: | --: |
 |**Einzeldatenbank (pro Abonnement)**|10|60|
 |**Pool für elastische Datenbanken (pro Pool)**|4|200|
@@ -136,6 +141,9 @@ Ein PowerShell-Beispielskript, das zeigt, wie eine gelöschte Instanzdatenbank w
 > Informationen zum programmgesteuerten Wiederherstellen einer gelöschten Datenbank finden Sie unter [Programmgesteuerte Wiederherstellung mit automatisierten Sicherungen](recovery-using-backups.md).
 
 ## <a name="geo-restore"></a>Geowiederherstellung
+
+> [!IMPORTANT]
+> Geowiederherstellung ist nur bei verwalteten Instanzen verfügbar, die mit einem georedundanten Sicherungsspeichertyp (georedundanter Speicher mit Lesezugriff, RA-GRS) konfiguriert wurden. Verwaltete Instanzen, die mit lokal redundanten oder zonenredundanten Sicherungsspeichertypen konfiguriert wurden, unterstützen keine Geowiederherstellung.
 
 Sie können eine Datenbank auf einem SQL-Datenbank-Server oder eine Instanzdatenbank einer beliebigen verwalteten Instanz in einer beliebigen Azure-Region aus den aktuellsten georeplizierten Sicherungen wiederherstellen. Geowiederherstellung verwendet eine georeplizierte Sicherung als Quelle. Sie können die Geowiederherstellung auch dann anfordern, wenn aufgrund eines Ausfalls kein Zugriff auf Datenbank oder Rechenzentrum möglich ist.
 

@@ -1,7 +1,7 @@
 ---
 title: Playbook für den Umgang mit allgemeinen Sicherheitsanforderungen
 titleSuffix: Azure SQL Database & Azure SQL Managed Instance
-description: Dieser Artikel enthält allgemeine Sicherheitsanforderungen und bewährte Methoden für Azure SQL-Datenbank und Azure SQL Managed Instance
+description: Dieser Artikel enthält allgemeine Sicherheitsanforderungen und bewährte Methoden für Azure SQL-Datenbank und Azure SQL Managed Instance.
 ms.service: sql-db-mi
 ms.subservice: security
 ms.custom: sqldbrb=2
@@ -10,12 +10,12 @@ ms.author: vanto
 ms.topic: article
 ms.date: 02/20/2020
 ms.reviewer: ''
-ms.openlocfilehash: 6a3a52c90187920be13628a6d2fa44159e1109d7
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 6630b924decacc5ff59611c657e1d7e38b1813a7
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371786"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87541718"
 ---
 # <a name="playbook-for-addressing-common-security-requirements-with-azure-sql-database-and-azure-sql-managed-instance"></a>Playbook für den Umgang mit allgemeinen Sicherheitsanforderungen für Azure SQL-Datenbank und Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -291,7 +291,7 @@ Bei der Trennung von Aufgaben, auch als „Aufteilung von Aufgaben“ bezeichnet
 - Identifizieren Sie eine umfassende Hierarchie von Benutzern (und automatisierten Prozessen), die auf das System zugreifen.
 
 - Erstellen Sie Rollen entsprechend den erforderlichen Benutzergruppen, und weisen Sie Rollen Berechtigungen zu.
-  - Für Aufgaben auf Verwaltungsebene im Azure-Portal oder über PowerShell-Automation verwenden Sie RBAC-Rollen. Suchen Sie entweder nach einer integrierten Rolle, die der Anforderung entspricht, oder erstellen Sie mithilfe der verfügbaren Berechtigungen eine benutzerdefinierte Azure-Rolle
+  - Für Aufgaben auf Verwaltungsebene im Azure-Portal oder über PowerShell-Automatisierung verwenden Sie Azure-Rollen. Suchen Sie entweder nach einer integrierten Rolle, die der Anforderung entspricht, oder erstellen Sie mithilfe der verfügbaren Berechtigungen eine benutzerdefinierte Azure-Rolle
   - Erstellen Sie Serverrollen für serverweite Aufgaben (Erstellen neuer Anmeldungen, Datenbanken) in einer verwalteten Instanz.
   - Erstellen Sie Datenbankrollen für Aufgaben auf Datenbankebene.
 
@@ -318,7 +318,7 @@ Bei der Trennung von Aufgaben, auch als „Aufteilung von Aufgaben“ bezeichnet
 
 - Erstellen und verwenden Sie benutzerdefinierte Rollen, wenn integrierte Rollen zu viele oder unzureichende Berechtigungen gewähren.
 
-- Rollenzuweisungen können auch temporär erfolgen. Dies wird auch als „dynamische Trennung von Aufgaben“ (Dynamic Separation of Duties, DSD) bezeichnet und erfolgt entweder innerhalb von Schritten des SQL Agent-Auftrags in T-SQL oder mithilfe von Azure PIM für RBAC-Rollen.
+- Rollenzuweisungen können auch temporär erfolgen. Dies wird auch als „dynamische Trennung von Aufgaben“ (Dynamic Separation of Duties, DSD) bezeichnet und geschieht entweder innerhalb von Schritten des SQL Agent-Auftrags in T-SQL oder mithilfe von Azure PIM für Azure-Rollen.
 
 - Stellen Sie sicher, dass Datenbankadministratoren keinen Zugriff auf die Verschlüsselungsschlüssel oder Schlüsselspeicher haben und dass andererseits Sicherheitsadministratoren mit Zugriff auf die Schlüssel nicht auf die Datenbank zugreifen können. Mithilfe von [erweiterbarer Schlüsselverwaltung (Extensible Key Management, EKM)](https://docs.microsoft.com/sql/relational-databases/security/encryption/extensible-key-management-ekm) lässt sich diese Trennung einfacher erreichen. Zum Implementieren von EKM kann [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) verwendet werden.
 
