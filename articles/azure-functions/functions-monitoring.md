@@ -5,12 +5,12 @@ ms.assetid: 501722c3-f2f7-4224-a220-6d59da08a320
 ms.topic: conceptual
 ms.date: 04/04/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 5560d24601b8aef0d8a4058cc2c04e27e9c86362
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: a1e72fba4ece24afffba573d954c7627af46a6cd
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170410"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87273372"
 ---
 # <a name="monitor-azure-functions"></a>Überwachen von Azure Functions
 
@@ -58,7 +58,7 @@ Um Application Insights aus einer Funktions-App im Azure-Portal zu öffnen, wäh
 
 ![Öffnen von Application Insights auf der Seite „Übersicht“ von Funktions-Apps](media/functions-monitoring/ai-link.png)
 
-Informationen zur Verwendung von Application Insights finden Sie in der [Application Insights-Dokumentation](https://docs.microsoft.com/azure/application-insights/). In diesem Abschnitt sind einige Beispiele für das Anzeigen von Daten in Application Insights enthalten. Falls Sie mit Application Insights bereits vertraut sind, können Sie direkt zu den [Abschnitten zur Konfiguration und Anpassung der Telemetriedaten](#configure-categories-and-log-levels) springen.
+Informationen zur Verwendung von Application Insights finden Sie in der [Application Insights-Dokumentation](/azure/application-insights/). In diesem Abschnitt sind einige Beispiele für das Anzeigen von Daten in Application Insights enthalten. Falls Sie mit Application Insights bereits vertraut sind, können Sie direkt zu den [Abschnitten zur Konfiguration und Anpassung der Telemetriedaten](#configure-categories-and-log-levels) springen.
 
 ![Application Insights-Registerkarte „Übersicht“](media/functions-monitoring/metrics-explorer.png)
 
@@ -68,12 +68,12 @@ Die folgenden Bereiche von Application Insights können bei der Bewertung des Ve
 | ---- | ----------- |
 | **[Fehler](../azure-monitor/app/asp-net-exceptions.md)** |  Hier können Sie Diagramme und Warnungen basierend auf Funktionsfehlern und Serverausnahmen erstellen. Der **Vorgangsname** ist der Funktionsname. Fehler in Abhängigkeiten werden nur angezeigt, wenn Sie die benutzerdefinierte Telemetrie für Abhängigkeiten implementieren. |
 | **[Leistung](../azure-monitor/app/performance-counters.md)** | Hier können Sie Leistungsprobleme analysieren, indem Sie die Ressourcennutzung und den Durchsatz pro **Cloud-Rolleninstanz** anzeigen. Diese Daten können nützlich für Debugszenarien sein, in denen Ihre zugrunde liegenden Ressourcen durch Funktionen eingeschränkt werden. |
-| **[Metriken](../azure-monitor/app/metrics-explorer.md)** | Hier können Sie Diagramme und Warnungen auf der Grundlage von Metriken erstellen. Metriken enthalten die Anzahl der Funktionsaufrufe, die Ausführungsdauer und die Erfolgsquote. |
+| **[Metriken](../azure-monitor/platform/metrics-charts.md)** | Hier können Sie Diagramme und Warnungen auf der Grundlage von Metriken erstellen. Metriken enthalten die Anzahl der Funktionsaufrufe, die Ausführungsdauer und die Erfolgsquote. |
 | **[Livemetriken](../azure-monitor/app/live-stream.md)** | Sie können Metrikdaten während ihrer Erstellung nahezu in Echtzeit anzeigen. |
 
 ## <a name="query-telemetry-data"></a>Abfragen von Telemetriedaten
 
-Mit [Application Insights Analytics](../azure-monitor/app/analytics.md) haben Sie Zugriff auf alle Telemetriedaten in Form von Tabellen in einer Datenbank. Analytics stellt eine Abfragesprache zum Extrahieren, Bearbeiten und Visualisieren der Daten bereit. 
+Mit [Application Insights Analytics](../azure-monitor/log-query/log-query-overview.md) haben Sie Zugriff auf alle Telemetriedaten in Form von Tabellen in einer Datenbank. Analytics stellt eine Abfragesprache zum Extrahieren, Bearbeiten und Visualisieren der Daten bereit. 
 
 Klicken Sie auf **Protokolle**, um protokollierte Ereignisse zu durchsuchen oder abzufragen.
 
@@ -153,7 +153,7 @@ Mit der Datei [host.json] wird konfiguriert, welcher Protokollierungsgrad von ei
 
 ### <a name="version-2x-and-higher"></a>Version 2.x und höher
 
-Version 2.x und höher der Functions-Runtime verwenden die [Protokollierungsfilterhierarchie von .NET Core](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering). 
+Version 2.x und höher der Functions-Runtime verwenden die [Protokollierungsfilterhierarchie von .NET Core](/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering). 
 
 ```json
 {
@@ -246,7 +246,7 @@ Wie im vorherigen Abschnitt erwähnt, werden von der Laufzeit Daten zu den Funkt
 
 ## <a name="configure-sampling"></a>Konfigurieren des Samplings
 
-Application Insights verfügt über ein Feature zur [Stichprobenentnahme](../azure-monitor/app/sampling.md) als Schutz davor, dass bei Spitzenlast zu viele Telemetriedaten für erfolgte Vorgänge produziert werden. Wenn die Rate der eingehenden ausgeführten Vorgänge einen bestimmten Schwellenwert übersteigt, beginnt Application Insights, einige der eingehenden ausgeführten Vorgänge nach dem Zufallsprinzip zu ignorieren. Die Standardeinstellung für die maximale Anzahl ausgeführter Vorgänge pro Sekunde ist 20 (5 in Version 1.x). Sie können das Sampling in der Datei [host.json](https://docs.microsoft.com/azure/azure-functions/functions-host-json#applicationinsights) konfigurieren.  Hier sehen Sie ein Beispiel:
+Application Insights verfügt über ein Feature zur [Stichprobenentnahme](../azure-monitor/app/sampling.md) als Schutz davor, dass bei Spitzenlast zu viele Telemetriedaten für erfolgte Vorgänge produziert werden. Wenn die Rate der eingehenden ausgeführten Vorgänge einen bestimmten Schwellenwert übersteigt, beginnt Application Insights, einige der eingehenden ausgeführten Vorgänge nach dem Zufallsprinzip zu ignorieren. Die Standardeinstellung für die maximale Anzahl ausgeführter Vorgänge pro Sekunde ist 20 (5 in Version 1.x). Sie können das Sampling in der Datei [host.json](./functions-host-json.md#applicationinsights) konfigurieren.  Hier sehen Sie ein Beispiel:
 
 ### <a name="version-2x-and-later"></a>Version 2.x und höher
 
@@ -285,9 +285,9 @@ Sie können Protokolle in Ihrem Funktionscode schreiben, die in Application Insi
 
 ### <a name="ilogger"></a>ILogger
 
-Verwenden Sie den Parameter [ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger) in Ihren Funktionen anstelle des Parameters `TraceWriter`. Protokolle, die mit `TraceWriter` erstellt werden, werden an Application Insights geleitet, aber mit `ILogger` können Sie die [strukturierte Protokollierung](https://softwareengineering.stackexchange.com/questions/312197/benefits-of-structured-logging-vs-basic-logging) durchführen.
+Verwenden Sie den Parameter [ILogger](/dotnet/api/microsoft.extensions.logging.ilogger) in Ihren Funktionen anstelle des Parameters `TraceWriter`. Protokolle, die mit `TraceWriter` erstellt werden, werden an Application Insights geleitet, aber mit `ILogger` können Sie die [strukturierte Protokollierung](https://softwareengineering.stackexchange.com/questions/312197/benefits-of-structured-logging-vs-basic-logging) durchführen.
 
-Mit einem `ILogger`-Objekt rufen Sie `Log<level>`-[Erweiterungsmethoden in ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.loggerextensions#methods) auf, um Protokolle zu erstellen. Mit dem folgenden Code werden Protokolle vom Typ `Information` mit der Kategorie „Function.<NAME_IHRER_FUNKTION>.User“ geschrieben.
+Mit einem `ILogger`-Objekt rufen Sie `Log<level>`-[Erweiterungsmethoden in ILogger](/dotnet/api/microsoft.extensions.logging.loggerextensions#methods) auf, um Protokolle zu erstellen. Mit dem folgenden Code werden Protokolle vom Typ `Information` mit der Kategorie „Function.<NAME_IHRER_FUNKTION>.User“ geschrieben.
 
 ```cs
 public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, ILogger logger)
@@ -553,7 +553,7 @@ module.exports = function (context, req) {
     var operationIdOverride = {"ai.operation.id":context.traceContext.traceparent};
 
     client.trackEvent({name: "my custom event", tagOverrides:operationIdOverride, properties: {customProperty2: "custom property value"}});
-    client.trackException({exception: new Error("handled exceptions can be logged with this method"), tagOverrides:operationIdOverride);
+    client.trackException({exception: new Error("handled exceptions can be logged with this method"), tagOverrides:operationIdOverride});
     client.trackMetric({name: "custom metric", value: 3, tagOverrides:operationIdOverride});
     client.trackTrace({message: "trace message", tagOverrides:operationIdOverride});
     client.trackDependency({target:"http://dbname", name:"select customers proc", data:"SELECT * FROM Customers", duration:231, resultCode:0, success: true, dependencyTypeName: "ZSQL", tagOverrides:operationIdOverride});
@@ -577,7 +577,7 @@ module.exports = function (context, req) {
     var operationIdOverride = {"ai.operation.id":context.operationId};
 
     client.trackEvent({name: "my custom event", tagOverrides:operationIdOverride, properties: {customProperty2: "custom property value"}});
-    client.trackException({exception: new Error("handled exceptions can be logged with this method"), tagOverrides:operationIdOverride);
+    client.trackException({exception: new Error("handled exceptions can be logged with this method"), tagOverrides:operationIdOverride});
     client.trackMetric({name: "custom metric", value: 3, tagOverrides:operationIdOverride});
     client.trackTrace({message: "trace message", tagOverrides:operationIdOverride});
     client.trackDependency({target:"http://dbname", name:"select customers proc", data:"SELECT * FROM Customers", duration:231, resultCode:0, success: true, dependencyTypeName: "ZSQL", tagOverrides:operationIdOverride});
@@ -596,6 +596,9 @@ Functions v2 erfasst automatisch Abhängigkeiten für HTTP-Anforderungen, Servi
 Sie können benutzerdefinierten Code schreiben, um die Abhängigkeiten anzuzeigen. Dies wird beispielsweise im Beispielcode im [Abschnitt zu den benutzerdefinierten C#-Telemetriedaten](#log-custom-telemetry-in-c-functions) veranschaulicht. Der Beispielcode ergibt in Application Insights eine *Anwendungszuordnung*, die wie die folgende Abbildung aussieht:
 
 ![Anwendungszuordnung](./media/functions-monitoring/app-map.png)
+
+> [!NOTE]
+> Abhängigkeiten werden auf Informationsebene geschrieben. Wenn Sie nach „Warnung“ oder höheren Ebenen filtern, werden keine dieser Daten angezeigt. Außerdem erfolgt die automatische Erfassung von Abhängigkeiten im Nichtbenutzerbereich. Stellen Sie also sicher, dass die Ebene auf mindestens **Information** außerhalb des Benutzerbereichs in Ihrer Datei „host.json“ (d. h. außerhalb von Function.<NAME_IHRER_FUNKTION>.User key) festgelegt ist, wenn Sie möchten, dass diese Abhängigkeiten erfasst werden.
 
 ## <a name="enable-application-insights-integration"></a>Aktivieren der Application Insights-Integration
 
@@ -679,14 +682,11 @@ az webapp log tail --resource-group <RESOURCE_GROUP_NAME> --name <FUNCTION_APP_N
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-Sie können Streamingprotokolle über [Azure PowerShell](/powershell/azure/overview) aktivieren. Verwenden Sie für PowerShell die folgenden Befehle, um Ihr Azure-Konto hinzuzufügen, Ihr Abonnement auszuwählen und Protokolldateien zu streamen:
+Sie können Streamingprotokolle über [Azure PowerShell](/powershell/azure/) aktivieren. Verwenden Sie für PowerShell den Befehl [Set-AzWebApp](/powershell/module/az.websites/set-azwebapp), um Protokollierung für die Funktions-App zu aktivieren, wie im folgenden Codeausschnitt gezeigt: 
 
-```powershell
-Add-AzAccount
-Get-AzSubscription
-Get-AzSubscription -SubscriptionName "<subscription name>" | Select-AzSubscription
-Get-AzWebSiteLog -Name <FUNCTION_APP_NAME> -Tail
-```
+:::code language="powershell" source="~/powershell_scripts/app-service/monitor-with-logs/monitor-with-logs.ps1" range="19-20":::
+
+Weitere Informationen finden Sie im [vollständigen Codebeispiel](../app-service/scripts/powershell-monitor.md#sample-script). 
 
 ## <a name="scale-controller-logs-preview"></a>Skalierungscontrollerprotokolle (Vorschau)
 

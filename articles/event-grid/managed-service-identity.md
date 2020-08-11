@@ -3,12 +3,12 @@ title: Ereignisbereitstellung mit verwalteter Dienstidentität
 description: In diesem Artikel wird beschrieben, wie Sie die verwaltete Dienstidentität für ein Azure Event Grid-Thema aktivieren. So können Sie Ereignisse an unterstützte Ziele weiterleiten.
 ms.topic: how-to
 ms.date: 07/07/2020
-ms.openlocfilehash: c05eb2e78595e962494a60b1ffa8ead899aa0109
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 7eaa3ddd43cc68a99ad7c2bab66630f30d4960c9
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371259"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534242"
 ---
 # <a name="event-delivery-with-a-managed-identity"></a>Ereignisübermittlung mit einer verwalteten Identität
 In diesem Artikel wird beschrieben, wie Sie die [verwaltete Dienstidentität](../active-directory/managed-identities-azure-resources/overview.md) für Azure Event Grid-Themen oder Azure Event Grid-Domänen aktivieren. Verwenden Sie diese Methode, um Ereignisse an unterstützte Ziele wie Service Bus-Warteschlangen und -Themen, Event Hubs und Speicherkonten weiterzuleiten.
@@ -63,20 +63,20 @@ az eventgrid topic update -g $rg --name $topicname --identity systemassigned --s
 
 Der Befehl zum Aktualisieren einer vorhandenen Domäne lautet entsprechend (`az eventgrid domain update`).
 
-## <a name="supported-destinations-and-rbac-roles"></a>Unterstützte Ziele und RBAC-Rollen
-Nachdem Sie die Identität für das Event Grid-Thema oder die Event Grid-Domäne aktiviert haben, erstellt Azure automatisch eine Identität in Azure Active Directory. Fügen Sie diese Identität den entsprechenden RBAC-Rollen hinzu, damit das Thema oder die Domäne Ereignisse an unterstützte Ziele weiterleiten kann. Fügen Sie die Identität z. B. der Rolle **Azure Event Hubs-Datensender** für einen Azure Event Hubs-Namespace hinzu, damit das Event Grid-Thema Ereignisse an Event Hubs in diesem Namespace weiterleiten kann. 
+## <a name="supported-destinations-and-azure-roles"></a>Unterstützte Ziele und Azure-Rollen
+Nachdem Sie die Identität für das Event Grid-Thema oder die Event Grid-Domäne aktiviert haben, erstellt Azure automatisch eine Identität in Azure Active Directory. Fügen Sie diese Identität den entsprechenden Azure-Rollen hinzu, damit das Thema oder die Domäne Ereignisse an unterstützte Ziele weiterleiten kann. Fügen Sie die Identität z. B. der Rolle **Azure Event Hubs-Datensender** für einen Azure Event Hubs-Namespace hinzu, damit das Event Grid-Thema Ereignisse an Event Hubs in diesem Namespace weiterleiten kann. 
 
 Derzeit unterstützt Azure Event Grid Themen oder Domänen, die mit der vom System zugewiesenen verwalteten Identität konfiguriert wurden, um Ereignisse an die folgenden Ziele weiterzuleiten. Diese Tabelle enthält auch die Rollen, die die Identität aufweisen sollte, damit das Thema die Ereignisse weiterleiten kann.
 
-| Destination | RBAC-Rolle | 
+| Destination | Azure-Rolle | 
 | ----------- | --------- | 
 | Service Bus-Warteschlangen und -Themen | [Azure Service Bus-Datensender](../service-bus-messaging/authenticate-application.md#azure-built-in-roles-for-azure-service-bus) |
 | Azure Event Hubs | [Azure Event Hubs-Datensender](../event-hubs/authorize-access-azure-active-directory.md#azure-built-in-roles-for-azure-event-hubs) | 
-| Azure Blob Storage | [Mitwirkender an Speicherblobdaten](../storage/common/storage-auth-aad-rbac-portal.md#rbac-roles-for-blobs-and-queues) |
-| Azure Queue Storage |[Absender der Speicherwarteschlangen-Datennachricht](../storage/common/storage-auth-aad-rbac-portal.md#rbac-roles-for-blobs-and-queues) | 
+| Azure Blob Storage | [Mitwirkender an Speicherblobdaten](../storage/common/storage-auth-aad-rbac-portal.md#azure-roles-for-blobs-and-queues) |
+| Azure Queue Storage |[Absender der Speicherwarteschlangen-Datennachricht](../storage/common/storage-auth-aad-rbac-portal.md#azure-roles-for-blobs-and-queues) | 
 
-## <a name="add-an-identity-to-rbac-roles-on-destinations"></a>Hinzufügen von Identitäten zu RBAC-Rollen auf Zielen
-In diesem Abschnitt wird beschrieben, wie Sie die Identität für das Thema oder die Domäne einer RBAC-Rolle hinzufügen. 
+## <a name="add-an-identity-to-azure-roles-on-destinations"></a>Hinzufügen von Identitäten zu Azure-Rollen für Ziele
+In diesem Abschnitt wird beschrieben, wie Sie die Identität für das Thema oder die Domäne einer Azure-Rolle hinzufügen. 
 
 ### <a name="use-the-azure-portal"></a>Verwenden des Azure-Portals
 Sie können das Azure-Portal verwenden, um die Themen- oder Domänenidentität einer entsprechenden Rolle zuzuweisen, damit das Thema oder die Domäne Ereignisse an das Ziel weiterleiten kann. 
@@ -94,7 +94,7 @@ Im folgenden Beispiel wird eine verwaltete Identität für ein Event Grid-Thema 
 Die Schritte entsprechen dem Hinzufügen einer Identität zu anderen Rollen, die in der Tabelle aufgeführt sind. 
 
 ### <a name="use-the-azure-cli"></a>Verwenden der Azure-CLI
-Im Beispiel in diesem Abschnitt wird gezeigt, wie Sie mit der Azure-Befehlszeilenschnittstelle eine Identität einer RBAC-Rolle hinzufügen. Die Beispielbefehle beziehen sich auf Event Grid-Themen. Die Befehle für Event Grid-Domänen sind ähnlich. 
+Im Beispiel in diesem Abschnitt wird gezeigt, wie Sie mit der Azure-Befehlszeilenschnittstelle eine Identität einer Azure-Rolle hinzufügen. Die Beispielbefehle beziehen sich auf Event Grid-Themen. Die Befehle für Event Grid-Domänen sind ähnlich. 
 
 #### <a name="get-the-principal-id-for-the-topics-system-identity"></a>Abrufen der Prinzipal-ID für die Systemidentität des Themas 
 Rufen Sie zunächst die Prinzipal-ID der vom System verwalteten Identität des Themas ab, und weisen Sie die Identität den entsprechenden Rollen zu.

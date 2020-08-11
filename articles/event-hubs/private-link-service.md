@@ -1,16 +1,16 @@
 ---
 title: Integrieren von Azure Event Hubs in den Azure Private Link-Dienst
 description: Erfahren Sie, wie Sie Azure Event Hubs in den Azure Private Link-Dienst integrieren.
-ms.date: 06/23/2020
+ms.date: 07/29/2020
 ms.topic: article
-ms.openlocfilehash: bfed3f8e4c19463e10b721006d742726cf916900
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 66753e51fd1e918e5659e219c5ebbe471705b3ee
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86512253"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421099"
 ---
-# <a name="integrate-azure-event-hubs-with-azure-private-link"></a>Integrieren von Event Hubs in Azure Private Link
+# <a name="allow-access-to-azure-event-hubs-namespaces-via-private-endpoints"></a>Gewähren des Zugriffs auf Azure Event Hubs-Namespaces über private Endpunkte 
 Mit dem Azure Private Link-Dienst können Sie über einen **privaten Endpunkt** in Ihrem virtuellen Netzwerk auf Azure-Dienste wie Azure Event Hubs, Azure Storage und Azure Cosmos DB sowie auf in Azure gehostete Kunden-/Partnerdienste zugreifen.
 
 Ein privater Endpunkt ist eine Netzwerkschnittstelle, die Sie privat und sicher mit einem von Azure Private Link betriebenen Dienst verbindet. Der private Endpunkt verwendet eine private IP-Adresse aus Ihrem virtuellen Netzwerk und bindet den Dienst dadurch in Ihr virtuelles Netzwerk ein. Der gesamte für den Dienst bestimmte Datenverkehr kann über den privaten Endpunkt geleitet werden. Es sind also keine Gateways, NAT-Geräte, ExpressRoute-/VPN-Verbindungen oder öffentlichen IP-Adressen erforderlich. Der Datenverkehr zwischen Ihrem virtuellen Netzwerk und dem Dienst wird über das Microsoft-Backbone-Netzwerk übertragen und dadurch vom öffentlichen Internet isoliert. Sie können eine Verbindung mit einer Instanz einer Azure-Ressource herstellen, was ein Höchstmaß an Granularität bei der Zugriffssteuerung ermöglicht.
@@ -26,9 +26,7 @@ Weitere Informationen finden Sie unter [Was ist Azure Private Link?](../private-
 > Vertrauenswürdige Microsoft-Dienste werden bei Verwendung von Virtual Networks nicht unterstützt.
 >
 > Allgemeine Azure-Szenarien, die nicht mit Virtual Networks funktionieren (beachten Sie, dass die Liste **NICHT** vollständig ist):
-> - Azure Monitor (Diagnoseeinstellungen)
 > - Azure Stream Analytics
-> - Integration in Azure Event Grid
 > - Azure IoT Hub-Routen
 > - Azure IoT Device Explorer
 >
@@ -44,7 +42,7 @@ Um einen Event Hubs-Namespace in Azure Private Link zu integrieren, benötigen S
 
 - Ein Event Hubs-Namespace
 - Ein virtuelles Azure-Netzwerk
-- Ein Subnetz in dem virtuellen Netzwerk
+- Ein Subnetz in dem virtuellen Netzwerk Sie können das **Standardsubnetz** verwenden. 
 - Berechtigungen vom Typ „Besitzer“ oder „Mitwirkender“ für den Namespace und für das virtuelle Netzwerk.
 
 Der private Endpunkt und das virtuelle Netzwerk müssen sich in der gleichen Region befinden. Wenn Sie über das Portal eine Region für den privaten Endpunkt auswählen, wird automatisch nach virtuellen Netzwerken in dieser Region gefiltert. Der Namespace kann sich in einer anderen Region befinden.
@@ -57,10 +55,15 @@ Wenn Sie bereits über einen Event Hubs-Namespace verfügen, können Sie wie fol
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. 
 2. Geben Sie auf der Suchleiste den Suchbegriff **Event Hubs** ein.
 3. Wählen Sie in der Liste den **Namespace** aus, dem Sie einen privaten Endpunkt hinzufügen möchten.
-4. Wählen Sie die Registerkarte **Netzwerk** unter **Einstellungen** aus.
+4. Wählen Sie im linken Menü unter **Einstellungen** die Option **Netzwerk** aus.
 
     > [!NOTE]
     > Die Registerkarte **Netzwerk** wird nur für Namespaces vom Typ **Standard** oder **Dediziert** angezeigt. 
+
+    :::image type="content" source="./media/private-link-service/selected-networks-page.png" alt-text="Registerkarte „Netzwerk“ mit ausgewählter Option „Netzwerk“" lightbox="./media/private-link-service/selected-networks-page.png":::    
+
+    > [!NOTE]
+    > Standardmäßig ist die Option **Ausgewählte Netzwerke** ausgewählt. Wenn Sie keine IP-Firewallregel angeben oder ein virtuelles Netzwerk hinzufügen, kann auf den Namespace über das öffentliche Internet zugegriffen werden. 
 1. Wählen Sie im oberen Seitenbereich die Registerkarte **Private Endpunktverbindungen** aus. 
 1. Wählen Sie im oberen Seitenbereich die Schaltfläche **+ Privater Endpunkt** aus.
 

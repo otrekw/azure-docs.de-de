@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 06/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 867c32203d8f780b307ede2ba2916ad4e82e1136
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 73e23f24717616ef417460d2fdae6116cfdbdb3a
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373238"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87810410"
 ---
 # <a name="use-the-azure-digital-twins-apis-and-sdks"></a>Verwenden der Azure Digital Twins-APIs und SDKs
 
@@ -43,7 +43,7 @@ Die Datenebenen-APIs werden verwendet, um die Elemente innerhalb Ihrer Azure Dig
 * **Query** – Die Kategorie „Query“ ermöglicht es Entwicklern, [Gruppen von digitalen Zwillingen im Zwillingsgraphen](how-to-query-graph.md) beziehungsübergreifend zu finden.
 * **EventRoutes** – Die Kategorie „EventRoutes“ enthält APIs zur [Weiterleitung von Daten](concepts-route-events.md), durch das System und zu Downstreamdiensten.
 
-Die aktuellste Datenebenen-API-Version für die Public Preview ist _**2020-05-31-preview**_.
+Die aktuellste Datenebenen-API-Version für die Public Preview ist _**2020-05-31-preview**_. Die _2020-03-01-preview_-API-Version für Vorgänge auf Datenebene ist nun veraltet.
 
 So verwenden Sie die Datenebenen-APIs
 * Sie können die APIs direkt aufrufen, indem Sie wie folgt vorgehen:
@@ -284,7 +284,7 @@ API-Metriken wie Anforderungen, Wartezeit und Ausfallrate können im [Azure-Port
 
 Suchen Sie auf der Startseite des Portals nach Ihrer Azure Digital Twins-Instanz, um die Details abzurufen. Wählen Sie die Option **Metrics** aus dem Menü der Azure Digital Twins-Instanz aus, um die Seite *Metriken* aufzurufen.
 
-:::image type="content" source="media/how-to-view-metrics/azure-digital-twins-metrics.png" alt-text="Screenshot der Seite „Metriken“ für Azure Digital Twins":::
+:::image type="content" source="media/troubleshoot-metrics/azure-digital-twins-metrics.png" alt-text="Screenshot der Seite „Metriken“ für Azure Digital Twins":::
 
 Von hier aus können Sie die Metriken für Ihre Instanz anzeigen und benutzerdefinierte Ansichten erstellen.
 

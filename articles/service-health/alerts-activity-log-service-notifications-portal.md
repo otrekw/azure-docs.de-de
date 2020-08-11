@@ -3,29 +3,29 @@ title: Empfangen von Aktivitätsprotokollwarnungen zu Azure-Dienstbenachrichtigu
 description: Lassen Sie sich per SMS, E-Mail oder Webhook benachrichtigen, wenn Ereignisse beim Azure-Dienst eintreten.
 ms.topic: conceptual
 ms.date: 06/27/2019
-ms.openlocfilehash: a8723698cddfb519687525820475517b93219a4a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b90940c4532370e7742f736708625ddec283aab1
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85567647"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87499265"
 ---
 # <a name="create-activity-log-alerts-on-service-notifications-using-the-azure-portal"></a>Erstellen von Aktivitätsprotokollwarnungen zu Dienstbenachrichtigungen über das Azure-Portal
 ## <a name="overview"></a>Übersicht
 
 Dieser Artikel zeigt, wie Sie über das Azure-Portal Aktivitätsprotokollwarnungen für Dienstintegritätsbenachrichtigungen einrichten.  
 
-Dienstintegritätsbenachrichtigung werden im [Azure Aktivitätsprotokoll ](../azure-monitor/platform/platform-logs-overview.md) gespeichert. Angesichts der möglicherweise großen Menge an Informationen, die im Aktivitätsprotokoll gespeichert werden, ist eine separate Benutzeroberfläche vorhanden, um die Anzeige und Einrichtung von Benachrichtigungen zur Dienstintegrität zu erleichtern. 
+Benachrichtigungen zur Dienstintegrität werden im [Azure-Aktivitätsprotokoll](../azure-monitor/platform/platform-logs-overview.md) gespeichert. Angesichts der großen Menge an Informationen, die im Aktivitätsprotokoll gespeichert werden, ist eine separate Benutzeroberfläche vorhanden, um die Anzeige und Einrichtung von Benachrichtigungen zur Dienstintegrität zu erleichtern. 
 
 Sie können eine Warnung erhalten, wenn Azure Benachrichtigungen zur Dienstintegrität an Ihr Azure-Abonnement sendet. Sie können die Warnung konfigurieren auf der Grundlage von:
 
-- Der Klasse der Dienstintegritätsbenachrichtigung (Dientsprobleme, Geplante Wartung, Integritätsempfehlungen).
+- Der Klasse der Dienstintegritätsbenachrichtigung (Dientsprobleme, Geplante Wartung, Integritätsempfehlungen, Sicherheitsempfehlungen).
 - Dem betroffenen Abonnement.
 - Den betroffenen Diensten.
 - Den betroffenen Regionen.
 
 > [!NOTE]
-> Dienstintegritätsbenachrichtigungen senden keine Warnung bezüglich Ereignissen der Ressourcenintegrität.
+> Dienstintegritätsbenachrichtigungen senden keine Warnungen für Ressourcenintegritätsereignisse.
 
 Sie können auch konfigurieren, an wen die Warnung gesendet werden soll:
 
@@ -40,7 +40,7 @@ Informationen zum Konfigurieren von Dienstintegritätsbenachrichtigungs-Warnunge
 
 >[!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2OaXt]
 
-## <a name="alert-and-new-action-group-using-azure-portal"></a>Warnung und neue Aktionsgruppe mit dem Azure-Portal
+## <a name="create-service-health-alert-using-azure-portal"></a>Erstellen einer Service Health-Warnung über das Azure-Portal
 1. Wählen Sie im [Portal](https://portal.azure.com) die Option **Dienstintegrität** aus.
 
     ![Der Dienst „Dienstintegrität“](media/alerts-activity-log-service-notifications/home-servicehealth.png)
@@ -49,54 +49,31 @@ Informationen zum Konfigurieren von Dienstintegritätsbenachrichtigungs-Warnunge
 
     ![Die Registerkarte „Integritätswarnungen“](media/alerts-activity-log-service-notifications/alerts-blades-sh.png)
 
-1. Wählen Sie **Dienstintegritätswarnung erstellen** aus, und füllen Sie die Felder aus.
+1. Wählen Sie **Service Health-Warnung hinzufügen** aus, und füllen Sie die Felder aus.
 
     ![Der Befehl „Dienstintegritätswarnung erstellen“](media/alerts-activity-log-service-notifications/service-health-alert.png)
 
-1. Wählen Sie das **Abonnement**, die **Dienste** und die **Regionen** für Benachrichtigungen aus.
+1. Wählen Sie das **Abonnement**, die **Dienste** und die **Regionen** aus, für die Sie Benachrichtigungen erhalten möchten.
 
-    ![Das Dialogfeld „Aktivitätsprotokollwarnung hinzufügen“](media/alerts-activity-log-service-notifications/activity-log-alert-new-ux.png)
+    [![Das Dialogfeld „Aktivitätsprotokollwarnung hinzufügen“](./media/alerts-activity-log-service-notifications/activity-log-alert-new-ux.png)](./media/alerts-activity-log-service-notifications/activity-log-alert-new-ux.png#lightbox)
 
-    > [!NOTE]
-    > Dieses Abonnement wird verwendet, um die Aktivitätsprotokollwarnung zu speichern. Die Warnungsressource wird für dieses Abonnement bereitgestellt und überwacht hierfür Ereignisse im Aktivitätsprotokoll.
+> [!NOTE]
+>Dieses Abonnement wird verwendet, um die Aktivitätsprotokollwarnung zu speichern. Die Warnungsressource wird für dieses Abonnement bereitgestellt und überwacht hierfür Ereignisse im Aktivitätsprotokoll.
 
-1. Wählen Sie die **Ereignistypen** aus, bei denen Sie benachrichtigt werden möchten: *Dienstproblem*, *Geplante Wartung* und *Integritätsempfehlungen* 
+5. Wählen Sie die **Ereignistypen** aus, bei denen Sie benachrichtigt werden möchten: *Dienstproblem*, *Geplante Wartung*, *Integritätsempfehlungen* und *Sicherheitsempfehlung*.
 
-1. Definieren Sie die Warnungsdetails durch Eingeben eines **Namens für die Warnungsregel** und einer **Beschreibung**.
+6. Klicken Sie auf **Aktionsgruppe auswählen**, um eine vorhandene Aktionsgruppe auszuwählen oder eine neue Aktionsgruppe zu erstellen. Weitere Informationen zu Aktionsgruppen finden Sie unter [Erstellen und Verwalten von Aktionsgruppen im Azure-Portal](../azure-monitor/platform/action-groups.md).
 
-1. Wählen Sie die **Ressourcengruppe** aus, in der die Warnung gespeichert werden soll.
 
-1. Erstellen Sie eine neue Aktionsgruppe, indem Sie **Neue Aktionsgruppe** auswählen. Geben Sie jeweils einen Namen in die Felder **Aktionsgruppenname** und **Kurzname** ein. Auf den kurzen Namen wird in den Benachrichtigungen verwiesen, die gesendet werden, wenn diese Warnung ausgelöst wird.
+7. Definieren Sie die Warnungsdetails durch Eingeben eines **Namens für die Warnungsregel** und einer **Beschreibung**.
 
-    ![Erstellen einer neuen Aktionsgruppe](media/alerts-activity-log-service-notifications/action-group-creation.png)
+8. Wählen Sie die **Ressourcengruppe** aus, in der die Warnung gespeichert werden soll.
 
-1. Definieren Sie eine Liste von Empfängern, indem Sie folgende Daten der Empfänger angeben:
 
-    a. **Name**: Geben Sie Name, Alias oder Bezeichner des Empfängers ein.
-
-    b. **Aktionstyp**: Wählen Sie „SMS“, „E-Mail“, „Webhook“ „Azure-App“ usw. aus.
-
-    c. **Details**: Geben Sie basierend auf dem ausgewählten Aktionstyp eine Telefonnummer, eine E-Mail-Adresse, einen Webhook-URI usw. ein.
-
-1. Wählen Sie **OK** aus, um die Aktionsgruppe zu erstellen, und dann **Warnungsregel erstellen**, um die Warnung abzuschließen.
 
 Innerhalb weniger Minuten wird die Warnung aktiv und entsprechend den Bedingungen ausgelöst, die Sie während der Erstellung angegeben haben.
 
 Erfahren Sie, wie Sie [Webhookbenachrichtigungen für vorhandene Problemverwaltungssysteme konfigurieren](service-health-alert-webhook-guide.md). Informationen über das Webhookschema für Aktivitätsprotokollwarnungen finden Sie unter [Webhook für Azure-Aktivitätsprotokollwarnungen](../azure-monitor/platform/activity-log-alerts-webhook.md).
-
->[!NOTE]
->Die in den folgenden Schritten definierte Aktionsgruppe kann als vorhandene Aktionsgruppe für alle zukünftigen Warnungsdefinitionen wiederverwendet werden.
->
-
-## <a name="alert-with-existing-action-group-using-azure-portal"></a>Warnung mit vorhandener Aktionsgruppe mit dem Azure-Portal
-
-1. Führen Sie die Schritte 1 bis 6 im vorherigen Abschnitt aus, um Ihre Dienstintegritätsbenachrichtigung zu erstellen. 
-
-1. Klicken Sie unter **Aktionsgruppe definieren** auf die Schaltfläche **Aktionsgruppe auswählen**. Wählen Sie die entsprechende Aktionsgruppe aus.
-
-1. Wählen Sie **Hinzufügen** aus, um die Aktionsgruppe hinzuzufügen, und dann **Warnungsregel erstellen**, um die Warnung abzuschließen.
-
-Innerhalb weniger Minuten wird die Warnung aktiv und entsprechend den Bedingungen ausgelöst, die Sie während der Erstellung angegeben haben.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

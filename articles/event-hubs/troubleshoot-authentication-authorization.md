@@ -3,26 +3,26 @@ title: 'Behandeln von Authentifizierungs- und Autorisierungsproblemen: Azure Eve
 description: Dieser Artikel bietet Informationen zum Beheben von Authentifizierungs- und Autorisierungsproblemen mit Azure Event Hubs.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 1c053f60c877cdd26655948c37ab81a5e4d61cf0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bed415c6180953b5a5728032a50d51618c084343
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85322416"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533885"
 ---
 # <a name="troubleshoot-authentication-and-authorization-issues---azure-event-hubs"></a>Behandeln von Authentifizierungs- und Autorisierungsproblemen: Azure Event Hubs
 Dieser Artikel bietet Tipps zum [Beheben von Konnektivitätsproblemen](troubleshooting-guide.md) mit Azure Event Hubs. Dieser Artikel bietet Tipps und Empfehlungen zum Beheben von Authentifizierungs- und Autorisierungsproblemen mit Azure Event Hubs. 
 
 ## <a name="if-you-are-using-azure-active-directory"></a>Wenn Sie Azure Active Directory verwenden
-Wenn Sie Azure Active Directory (Azure AD) für die Authentifizierung und Autorisierung mit Azure Event Hubs verwenden, bestätigen Sie, dass die Identität, die auf den Event Hub zugreift, Mitglied der richtigen **Rolle der rollenbasierten Zugriffssteuerung (RBAC)** im richtigen **Ressourcenbereich** ist (Consumergruppe, Event Hub, Namespace, Ressourcengruppe oder Abonnement).
+Wenn Sie Azure Active Directory (Azure AD) für die Authentifizierung und Autorisierung mit Azure Event Hubs verwenden, bestätigen Sie, dass die Identität, die auf den Event Hub zugreift, Mitglied der richtigen **Azure-Rolle** im richtigen **Ressourcenbereich** ist (Consumergruppe, Event Hub, Namespace, Ressourcengruppe oder Abonnement).
 
-### <a name="rbac-roles"></a>RBAC-Rollen
+### <a name="azure-roles"></a>Azure-Rollen
 - [Azure Event Hubs-Datenbesitzer](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-owner) für den vollständigen Zugriff auf Event Hubs-Ressourcen.
 - [Azure Event Hubs-Datenabsender](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-receiver) für den Sendezugriff.
 - [Azure Event Hubs-Datenempfänger](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-sender) für den Empfangszugriff.
 
 ### <a name="resource-scopes"></a>Ressourcenbereiche
-- **Consumergruppe**: Bei diesem Umfang gilt die Rollenzuweisung nur für diese Entität. Derzeit unterstützt das Azure-Portal keine Zuweisung einer RBAC-Rolle an einen Sicherheitsprinzipal auf dieser Ebene. 
+- **Consumergruppe**: Bei diesem Umfang gilt die Rollenzuweisung nur für diese Entität. Derzeit unterstützt das Azure-Portal keine Zuweisung einer Azure-Rolle zu einem Sicherheitsprinzipal auf dieser Ebene. 
 - **Event Hub**: Die Rollenzuweisung gilt für die Event Hub-Entität und die darunter vorhandene Consumergruppe.
 - **Namespace**: Die Rollenzuweisung umfasst die gesamte Topologie von Event Hubs unter dem Namespace sowie die ihm zugeordnete Consumergruppe.
 - **Ressourcengruppe**: Die Rollenzuweisung gilt für alle Event Hubs-Ressourcen unter der Ressourcengruppe.

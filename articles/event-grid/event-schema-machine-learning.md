@@ -3,12 +3,12 @@ title: Azure Machine Learning als Event Grid-Quelle
 description: Beschreibt die Eigenschaften, die mit Azure Event Grid für Machine Learning-Arbeitsbereichsereignisse bereitgestellt werden.
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: e72123a4f609b93e191c82f11443cbb1de7d012d
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: fb8cd76829622962b642580bbda7f2a655604c2f
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86522073"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87458041"
 ---
 # <a name="azure-machine-learning-as-an-event-grid-source"></a>Azure Machine Learning als Event Grid-Quelle
 
@@ -95,12 +95,12 @@ In diesem Abschnitt wird anhand eines Beispiels gezeigt, wie diese Daten für je
   "eventTime": "2017-06-26T18:41:00.9584103Z",
   "id": "831e1650-001e-001b-66ab-eeb76e069631",
   "data": {
-    "ExperimentId": "0fa9dfaa-cba3-4fa7-b590-23e48548f5c1",
-    "ExperimentName": "automl-local-regression",
-    "RunId": "AutoML_ad912b2d-6467-4f32-a616-dbe4af6dd8fc_5",
-    "RunType": null,
-    "RunTags": {},
-    "RunProperties": {
+    "experimentId": "0fa9dfaa-cba3-4fa7-b590-23e48548f5c1",
+    "experimentName": "automl-local-regression",
+    "runId": "AutoML_ad912b2d-6467-4f32-a616-dbe4af6dd8fc_5",
+    "runType": null,
+    "runTags": {},
+    "runProperties": {
         "runTemplate": "automl_child",
         "pipeline_id": "5adc0a4fe02504a586f09a4fcbb241f9a4012062",
         "pipeline_spec": "{\"objects\": [{\"class_name\": \"StandardScaler\", \"module\": \"sklearn.preprocessing\", \"param_args\": [], \"param_kwargs\": {\"with_mean\": true, \"with_std\": false}, \"prepared_kwargs\": {}, \"spec_class\": \"preproc\"}, {\"class_name\": \"LassoLars\", \"module\": \"sklearn.linear_model\", \"param_args\": [], \"param_kwargs\": {\"alpha\": 0.001, \"normalize\": true}, \"prepared_kwargs\": {}, \"spec_class\": \"sklearn\"}], \"pipeline_id\": \"5adc0a4fe02504a586f09a4fcbb241f9a4012062\"}",
@@ -155,12 +155,12 @@ In diesem Abschnitt wird anhand eines Beispiels gezeigt, wie diese Daten für je
   "eventTime": "2017-06-26T18:41:00.9584103Z",
   "id": "831e1650-001e-001b-66ab-eeb76e069631",
   "data": {
-    "ExperimentId": "0fa9dfaa-cba3-4fa7-b590-23e48548f5c1",
-    "ExperimentName": "automl-local-regression",
-    "RunId": "AutoML_ad912b2d-6467-4f32-a616-dbe4af6dd8fc_5",
-    "RunType": null,
-    "RunTags": {},
-    "RunProperties": {
+    "experimentId": "0fa9dfaa-cba3-4fa7-b590-23e48548f5c1",
+    "experimentName": "automl-local-regression",
+    "runId": "AutoML_ad912b2d-6467-4f32-a616-dbe4af6dd8fc_5",
+    "runType": null,
+    "runTags": {},
+    "runProperties": {
         "runTemplate": "automl_child",
         "pipeline_id": "5adc0a4fe02504a586f09a4fcbb241f9a4012062",
         "pipeline_spec": "{\"objects\": [{\"class_name\": \"StandardScaler\", \"module\": \"sklearn.preprocessing\", \"param_args\": [], \"param_kwargs\": {\"with_mean\": true, \"with_std\": false}, \"prepared_kwargs\": {}, \"spec_class\": \"preproc\"}, {\"class_name\": \"LassoLars\", \"module\": \"sklearn.linear_model\", \"param_args\": [], \"param_kwargs\": {\"alpha\": 0.001, \"normalize\": true}, \"prepared_kwargs\": {}, \"spec_class\": \"sklearn\"}], \"pipeline_id\": \"5adc0a4fe02504a586f09a4fcbb241f9a4012062\"}",
@@ -175,7 +175,7 @@ In diesem Abschnitt wird anhand eines Beispiels gezeigt, wie diese Daten für je
         "scoring_data_location": "aml://artifact/ExperimentRun/dcid.AutoML_ad912b2d-6467-4f32-a616-dbe4af6dd8fc_5/outputs/scoring_file_v_1_0_0.py",
         "model_data_location": "aml://artifact/ExperimentRun/dcid.AutoML_ad912b2d-6467-4f32-a616-dbe4af6dd8fc_5/outputs/model.pkl"
     },
-   "RunStatus": "failed"
+   "runStatus": "failed"
    },
   "dataVersion": "",
   "metadataVersion": "1"
@@ -222,12 +222,12 @@ Das Datenobjekt weist für jeden Ereignistyp die folgenden Eigenschaften auf:
 
 | Eigenschaft | type | BESCHREIBUNG |
 | -------- | ---- | ----------- |
-| ExperimentId | Zeichenfolge | Die ID des Experiments, zu der die Ausführung gehört. |
-| ExperimentName | Zeichenfolge | Der Name des Experiments, zu der die Ausführung gehört. |
-| RunId | Zeichenfolge | Die ID der Ausführung, die abgeschlossen wurde. |
-| RunType | Zeichenfolge | Der Ausführungstyp der abgeschlossenen Ausführung. |
-| RunTags | Objekt (object) | Die Tags der abgeschlossenen Ausführung. |
-| RunProperties | Objekt (object) | Die Eigenschaften der abgeschlossenen Ausführung. |
+| experimentId | Zeichenfolge | Die ID des Experiments, zu der die Ausführung gehört. |
+| experimentName | Zeichenfolge | Der Name des Experiments, zu der die Ausführung gehört. |
+| runId | Zeichenfolge | Die ID der Ausführung, die abgeschlossen wurde. |
+| runType | Zeichenfolge | Der Ausführungstyp der abgeschlossenen Ausführung. |
+| runTags | Objekt (object) | Die Tags der abgeschlossenen Ausführung. |
+| runProperties | Objekt (object) | Die Eigenschaften der abgeschlossenen Ausführung. |
 
 ### <a name="microsoftmachinelearningservicesdatasetdriftdetected"></a>Microsoft.MachineLearningServices.DatasetDriftDetected
 
@@ -246,22 +246,22 @@ Das Datenobjekt weist für jeden Ereignistyp die folgenden Eigenschaften auf:
 
 | Eigenschaft | type | BESCHREIBUNG |
 | -------- | ---- | ----------- |
-| ExperimentId | Zeichenfolge | Die ID des Experiments, zu der die Ausführung gehört. |
-| ExperimentName | Zeichenfolge | Der Name des Experiments, zu der die Ausführung gehört. |
-| RunId | Zeichenfolge | Die ID der Ausführung, die abgeschlossen wurde. |
-| RunType | Zeichenfolge | Der Ausführungstyp der abgeschlossenen Ausführung. |
-| RunTags | Objekt (object) | Die Tags der abgeschlossenen Ausführung. |
-| RunProperties | Objekt (object) | Die Eigenschaften der abgeschlossenen Ausführung. |
-| RunStatus | Zeichenfolge | Der Status der Ausführung |
+| experimentId | Zeichenfolge | Die ID des Experiments, zu der die Ausführung gehört. |
+| experimentName | Zeichenfolge | Der Name des Experiments, zu der die Ausführung gehört. |
+| runId | Zeichenfolge | Die ID der Ausführung, die abgeschlossen wurde. |
+| runType | Zeichenfolge | Der Ausführungstyp der abgeschlossenen Ausführung. |
+| runTags | Objekt (object) | Die Tags der abgeschlossenen Ausführung. |
+| runProperties | Objekt (object) | Die Eigenschaften der abgeschlossenen Ausführung. |
+| runStatus | Zeichenfolge | Der Status der Ausführung |
 
 ## <a name="tutorials-and-how-tos"></a>Tutorials und Anleitungen
 | Titel | BESCHREIBUNG |
 | ----- | ----- |
-| [Nutzen von Azure Machine Learning-Ereignissen](../machine-learning/concept-event-grid-integration.md) | Übersicht über die Integration von Azure Machine Learning in Event Grid. |
+| [Nutzen von Azure Machine Learning-Ereignissen](../machine-learning/how-to-use-event-grid.md) | Übersicht über die Integration von Azure Machine Learning in Event Grid. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Eine Einführung zu Azure Event Grid finden Sie unter [Einführung in Azure Event Grid](overview.md).
 * Weitere Informationen zum Erstellen eines Azure Event Grid-Abonnements finden Sie unter [Event Grid-Abonnementschema](subscription-creation-schema.md).
-* Eine Einführung in die Verwendung von Azure Event Grid mit Azure Machine Learning finden Sie unter [Nutzen von Azure Machine Learning-Ereignissen](/azure/machine-learning/concept-event-grid-integration).
-* Ein Beispiel zur Verwendung von Azure Event Grid mit Azure Machine Learning finden Sie unter [Erstellen ereignisgesteuerter Machine Learning-Workflows](/azure/machine-learning/how-to-use-event-grid).
+* Eine Einführung in die Verwendung von Azure Event Grid mit Azure Machine Learning finden Sie unter [Nutzen von Azure Machine Learning-Ereignissen](../machine-learning/how-to-use-event-grid.md).
+* Ein Beispiel zur Verwendung von Azure Event Grid mit Azure Machine Learning finden Sie unter [Erstellen ereignisgesteuerter Machine Learning-Workflows](../machine-learning/how-to-use-event-grid.md).

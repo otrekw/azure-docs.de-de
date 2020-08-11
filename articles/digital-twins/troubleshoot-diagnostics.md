@@ -7,16 +7,16 @@ ms.author: baanders
 ms.date: 7/28/2020
 ms.topic: troubleshooting
 ms.service: digital-twins
-ms.openlocfilehash: 1a349883c8144aaff4aed70ba46ad0eaab04fe69
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 402eda92d5cc8e5c2566345d31c9ae625b82695c
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87388321"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87809396"
 ---
-# <a name="troubleshooting-azure-digital-twins-with-diagnostics-logging"></a>Problembehandlung bei Azure Digital Twins mit der Diagnoseprotokollierung
+# <a name="troubleshooting-azure-digital-twins-diagnostics-logging"></a>Problembehandlung von Azure Digital Twins: Diagnoseprotokollierung
 
-Azure Digital Twins sammelt [Metriken](how-to-view-metrics.md) für Ihre Dienstinstanz, die Informationen zum Zustand Ihrer Ressourcen bereitstellen. Mit diesen Metriken können Sie die allgemeine Integrität des Azure Digital Twins-Diensts und der damit verbundenen Ressourcen bewerten. Anhand dieser benutzerorientierten Statistiken können Sie Vorgänge in Azure Digital Twins erkennen und die Ursache von Problemen analysieren, ohne sich an den Azure-Support wenden zu müssen.
+Azure Digital Twins sammelt [Metriken](troubleshoot-metrics.md) für Ihre Dienstinstanz, die Informationen zum Zustand Ihrer Ressourcen bereitstellen. Mit diesen Metriken können Sie die allgemeine Integrität des Azure Digital Twins-Diensts und der damit verbundenen Ressourcen bewerten. Anhand dieser benutzerorientierten Statistiken können Sie Vorgänge in Azure Digital Twins erkennen und die Ursache von Problemen analysieren, ohne sich an den Azure-Support wenden zu müssen.
 
 In diesem Artikel erfahren Sie, wie Sie die **Diagnoseprotokollierung** für Ihre Metrikdaten von Ihrer Azure Digital Twins-Instanz aus aktivieren. Sie können diese Protokolle verwenden, um Dienstprobleme zu beheben.
 
@@ -26,7 +26,7 @@ In diesem Artikel erfahren Sie, wie Sie die **Diagnoseprotokollierung** für Ihr
 
 2. Wählen Sie im Menü die Option **Diagnoseeinstellungen** und dann **Diagnoseeinstellung hinzufügen** aus.
 
-    :::image type="content" source="media/how-to-view-metrics/diagnostic-settings.png" alt-text="Screenshot der Seite „Diagnoseeinstellungen“ und der Schaltfläche zum Hinzufügen":::
+    :::image type="content" source="media/troubleshoot-metrics/diagnostic-settings.png" alt-text="Screenshot der Seite „Diagnoseeinstellungen“ und der Schaltfläche zum Hinzufügen":::
 
 3. Geben Sie auf der daraufhin geöffneten Seite die folgenden Werte ein:
      * **Name der Diagnoseeinstellung:** Benennen Sie die Diagnoseeinstellungen.
@@ -52,4 +52,4 @@ Neue Einstellungen werden in etwa zehn Minuten wirksam. Anschließend werden die
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Weitere Informationen zum Konfigurieren von Diagnosen finden Sie unter [*Erfassen und Nutzen von Protokolldaten aus Ihren Azure-Ressourcen*](../azure-monitor/platform/platform-logs-overview.md).
-* Informationen zu den Azure Digital Twins-Metriken finden Sie unter [*Gewusst wie: Anzeigen von Metriken mit Azure Monitor*](how-to-view-metrics.md).
+* Informationen zu den Azure Digital Twins-Metriken finden Sie unter [*Problembehandlung: Anzeigen von Metriken mit Azure Monitor*](troubleshoot-metrics.md).
