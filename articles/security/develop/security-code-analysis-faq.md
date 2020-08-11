@@ -1,6 +1,6 @@
 ---
 title: Dokumentation zur Microsoft-Sicherheitscodeanalyse – häufig gestellte Fragen
-description: Dieser Artikel enthält häufig gestellte Fragen zur Erweiterung „Microsoft-Sicherheitscodeanalyse“.
+description: Erfahren Sie mehr über die Erweiterung „Microsoft-Sicherheitscodeanalyse“, indem Sie die häufig gestellten Fragen (Frequently Asked Questions, FAQs) lesen.
 author: sukhans
 manager: sukhans
 ms.author: terrylan
@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 3d5eac2d3e2f3cd87ddad02aac68ce015163bd00
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f872159e538dc85121a7a6d4d6503fd18a263628
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85362073"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543043"
 ---
 # <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
 Haben Sie Fragen? Weitere Informationen finden Sie in den folgenden häufig gestellten Fragen.
@@ -106,15 +106,17 @@ Im Folgenden finden Sie Details zu zwei der gängigsten Unterdrückungsszenarien
 
 Der Hashschlüssel des Geheimnisses aus der CredScan-Ausgabedatei ist erforderlich, wie im folgenden Beispiel gezeigt.
 
-        {
-            "tool": "Credential Scanner",
-            "suppressions": [
-            {
-                "hash": "CLgYxl2FcQE8XZgha9/UbKLTkJkUh3Vakkxh2CAdhtY=",
-                "_justification": "Secret used by MSDN sample, it is fake."
-            }
-          ]
-        }
+```js
+{
+    "tool": "Credential Scanner",
+    "suppressions": [
+    {
+        "hash": "CLgYxl2FcQE8XZgha9/UbKLTkJkUh3Vakkxh2CAdhtY=",
+        "_justification": "Secret used by MSDN sample, it is fake."
+    }
+  ]
+}
+```
 
 >[!WARNING]
 > Der Hashschlüssel wird von einem Teil des entsprechenden Werts oder Dateiinhalts generiert. Durch jede Quellcoderevision kann der Hashschlüssel geändert und die Unterdrückungsregel deaktiviert werden.
@@ -133,19 +135,21 @@ Beispiele für gültige Unterdrückungsregeln:
 - \lib\angular.js
 - angular.js: unterdrückt alle Dateien mit dem gleichen Namen
 
-        {
-            "tool": "Credential Scanner",
-            "suppressions": [
-            {
-                "file": "\\files\\AdditonalSearcher.xml", 
-                "_justification": "Additional CredScan searcher specific to my team"
-            },
-            {
-                "file": "\\files\\unittest.pfx", 
-                "_justification": "Legitimate UT certificate file with private key"
-            }
-          ]
-        }      
+```js
+{
+    "tool": "Credential Scanner",
+    "suppressions": [
+    {
+        "file": "\\files\\AdditonalSearcher.xml", 
+        "_justification": "Additional CredScan searcher specific to my team"
+    },
+    {
+        "file": "\\files\\unittest.pfx", 
+        "_justification": "Legitimate UT certificate file with private key"
+    }
+  ]
+}
+```
 
 >[!WARNING] 
 > Alle zukünftigen Geheimnisse, die der Datei hinzugefügt werden, werden ebenfalls automatisch unterdrückt.

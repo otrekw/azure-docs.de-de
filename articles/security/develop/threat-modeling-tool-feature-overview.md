@@ -1,18 +1,18 @@
 ---
 title: Übersicht über die Features des Microsoft Threat Modeling Tools – Azure
-description: Erfahren Sie mehr über alle Funktionen im Threat Modeling Tool
+description: Erfahren Sie mehr über alle im Threat Modeling Tool verfügbaren Features wie die Analyseansicht und Berichte.
 author: jegeib
 ms.author: jegeib
 ms.service: security
 ms.subservice: security-develop
 ms.topic: article
 ms.date: 08/17/2017
-ms.openlocfilehash: 88eea0eb2bceb0f6322381a94d4339cbdfa662c0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e405ea35dcaa33ac7c8227385e4aaff86d9244cb
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75552116"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87540001"
 ---
 # <a name="threat-modeling-tool-feature-overview"></a>Übersicht über die Funktionen des Threat Modeling Tools
 

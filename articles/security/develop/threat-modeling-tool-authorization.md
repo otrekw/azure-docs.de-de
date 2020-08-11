@@ -1,6 +1,6 @@
 ---
 title: Autorisierung – Microsoft Threat Modeling Tool – Azure | Microsoft-Dokumentation
-description: Gegenmaßnahmen für durch das Threat Modeling Tool offengelegte Gefahren
+description: Erfahren Sie mehr über mögliche Maßnahmen zur Risikominderung im Bereich der Autorisierung im Threat Modeling Tool. Nachfolgend finden Sie eine Liste mit potenziellen Bedrohungen und Anweisungen zur Risikominderung.
 services: security
 documentationcenter: na
 author: jegeib
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 809e9fa5143ede65f5bc6bf8d81020d508272fd8
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 07e33279452b8296688c358c9ffdab1bfb2e1321
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87021833"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543961"
 ---
 # <a name="security-frame-authorization--mitigations"></a>Sicherheitsrahmen: Autorisierung | Risikominderung 
 | Produkt/Dienst | Artikel |

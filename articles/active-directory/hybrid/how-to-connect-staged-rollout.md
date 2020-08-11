@@ -10,16 +10,16 @@ ms.date: 06/03/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 52684520aed8712aed40318f32a83194f7f86683
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d582db4bd7ef99d86602f49bc9046aadb8c3e8f0
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85357850"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460608"
 ---
 # <a name="migrate-to-cloud-authentication-using-staged-rollout-preview"></a>Migrieren zur Cloudauthentifizierung mithilfe eines gestaffelten Rollouts (Vorschau)
 
-Indem Sie den Ansatz mit einem gestaffelten Rollout nutzen, können Sie eine Umstellung Ihrer gesamten Domäne vermeiden.  Dies ermöglicht Ihnen das selektive Testen von Benutzergruppen mit Cloudauthentifizierungsfunktionen, z. B. Azure Multi-Factor Authentication (MFA), bedingter Zugriff, Identity Protection für kompromittierte Anmeldeinformationen, Identity Governance usw.  In diesem Artikel wird erläutert, wie Sie den Umstieg vornehmen. Bevor Sie mit dem gestaffelten Rollout beginnen, sollten Sie jedoch die Auswirkungen berücksichtigen, wenn mindestens eine der folgenden Bedingungen zutrifft:
+Gestaffelte Rollouts ermöglichen Ihnen das selektive Testen von Benutzergruppen mit Cloudauthentifizierungsfunktionen (wie Azure Multi-Factor Authentication (MFA), bedingter Zugriff, Identity Protection für kompromittierte Anmeldeinformationen, Identity Governance usw.) vor der Umstellung Ihrer Domänen.  In diesem Artikel wird erläutert, wie Sie den Umstieg vornehmen. Bevor Sie mit dem gestaffelten Rollout beginnen, sollten Sie jedoch die Auswirkungen berücksichtigen, wenn mindestens eine der folgenden Bedingungen zutrifft:
     
 -  Sie verwenden zurzeit einen lokalen Server für mehrstufige Authentifizierung. 
 -  Sie verwenden Smartcards für die Authentifizierung. 
@@ -51,6 +51,8 @@ Einen Überblick über das Feature finden Sie hier: „Azure Active Directory: W
 
 -   Um *nahtloses einmaliges Anmelden* für eine bestimmte Active Directory-Gesamtstruktur aktivieren zu können, müssen Sie Domänenadministrator sein.
 
+-  Wenn Sie Azure AD Hybrid oder Azure AD Join bereitstellen, müssen Sie ein Upgrade auf das Update Windows 10 1903 durchführen.
+
 
 ## <a name="supported-scenarios"></a>Unterstützte Szenarios
 
@@ -81,6 +83,8 @@ Die folgenden Szenarien werden für gestaffelten Rollout nicht unterstützt:
 
 
 - Wenn Sie zum ersten Mal eine Sicherheitsgruppe für den gestaffelten Rollout hinzufügen, besteht eine Einschränkung auf 200 Benutzer, um ein UX-Timeout zu vermeiden. Nachdem Sie die Gruppe hinzugefügt haben, können Sie ihr nach Bedarf weitere Benutzer hinzufügen.
+
+- Während für Benutzer ein gestaffelter Rollout ausgeführt wird, ist die Kennwortablaufrichtlinie auf 90 Tage festgelegt, wobei keine Möglichkeit zur Anpassung besteht. 
 
 
 ## <a name="get-started-with-staged-rollout"></a>Erste Schritte mit gestaffeltem Rollout
@@ -173,6 +177,7 @@ Gehen Sie folgendermaßen vor:
 
    >[!NOTE]
    >Die Mitglieder einer Gruppe werden automatisch für den gestaffelten Rollout aktiviert. Geschachtelte und dynamische Gruppen werden für gestaffelte Rollouts nicht unterstützt.
+   >Wenn Sie eine neue Gruppe hinzufügen, werden die Benutzer in der Gruppe (bis zu 200 Benutzer für eine neue Gruppe) aktualisiert, damit die verwaltete Authentifizierung sofort verwendet werden kann. Wenn Sie eine Gruppe bearbeiten (Benutzer hinzufügen oder entfernen), kann es bis zu 24 Stunden dauern, bis die Änderungen wirksam werden.
 
 ## <a name="auditing"></a>Überwachung
 

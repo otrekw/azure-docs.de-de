@@ -16,12 +16,12 @@ ms.topic: reference
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f0c6484f46731e0ff2d16d00cb0038202511d193
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 427a09f3855d44af0206ebf1fd6183099da75f19
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80331075"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87446976"
 ---
 # <a name="azure-ad-connect-health-frequently-asked-questions"></a>Häufig gestellte Fragen zu Azure AD Connect Health
 Dieser Artikel enthält Antworten auf häufig gestellte Fragen (FAQs) zu Azure Active Directory (Azure AD) Connect Health. Diese FAQs liefern Antworten zur Verwendung des Diensts, z.B. in Bezug auf das Abrechnungsmodell, Funktionen, Einschränkungen und den Support.
@@ -135,7 +135,7 @@ Bei der Registrierung des Health-Agents kann aus folgenden Gründen ein Fehler a
 
 * Der Agent kann nicht mit den erforderlichen Endpunkten kommunizieren, da der Datenverkehr durch eine Firewall blockiert wird. Dies ist besonders häufig bei Webanwendungs-Proxyservern der Fall. Stellen Sie sicher, dass Sie die ausgehende Kommunikation mit den erforderlichen Endpunkten und Ports zugelassen haben. Ausführliche Informationen finden Sie im Abschnitt [Anforderungen](how-to-connect-health-agent-install.md#requirements).
 * Die ausgehende Kommunikation unterliegt einer TLS-Überprüfung durch die Vermittlungsschicht. Dies bewirkt, dass das vom Agent verwendete Zertifikat durch den Überprüfungsserver/die Überprüfungsentität ersetzt wird und nicht die Schritte zum Abschluss der Agent-Registrierung ausführt.
-* Der Benutzer verfügt nicht über die Zugriffsrechte, um die Registrierung des Agents auszuführen. Globale Administratoren haben standardmäßig Zugriff. Sie können den Zugriff mit der [Rollenbasierten Zugriffssteuerung](how-to-connect-health-operations.md#manage-access-with-role-based-access-control) an andere Benutzer delegieren.
+* Der Benutzer verfügt nicht über die Zugriffsrechte, um die Registrierung des Agents auszuführen. Globale Administratoren haben standardmäßig Zugriff. Sie können die [rollenbasierte Zugriffssteuerung von Azure (Azure RBAC)](how-to-connect-health-operations.md#manage-access-with-role-based-access-control) verwenden, um den Zugriff an andere Benutzer zu delegieren.
 
 **F: Ich erhalte die Warnmeldung „Die Daten des Integritätsdiensts sind nicht aktuell“. Wie kann ich das Problem beheben?**
 

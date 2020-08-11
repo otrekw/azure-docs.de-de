@@ -1,6 +1,6 @@
 ---
 title: Sitzungsverwaltung – Microsoft Threat Modeling Tool – Azure | Microsoft-Dokumentation
-description: Gegenmaßnahmen für durch das Threat Modeling Tool offengelegte Gefahren
+description: Erfahren Sie mehr über mögliche Maßnahmen zur Risikominderung im Bereich der Sitzungsverwaltung für durch das Threat Modeling Tool offengelegte Bedrohungen. Lesen Sie die Informationen zur Risikominderung, und sehen Sie sich die Codebeispiele an.
 services: security
 documentationcenter: na
 author: jegeib
@@ -15,19 +15,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.custom: has-adal-ref
-ms.openlocfilehash: 7ddc8c3016487ce56bc1a54d74aa94064cef24e4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: has-adal-ref, devx-track-javascript
+ms.openlocfilehash: 6a40d89db3e81721ec8a35973b79a558c17caee4
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83198874"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543689"
 ---
 # <a name="security-frame-session-management"></a>Sicherheitsrahmen: Sitzungsverwaltung
 | Produkt/Dienst | Artikel |
 | --------------- | ------- |
 | **Azure AD**    | <ul><li>[Implementieren der richtigen Abmeldung mit ADAL-Methoden bei Verwendung von Azure AD](#logout-adal)</li></ul> |
-| IoT-Gerät | <ul><li>[Verwenden von begrenzten Gültigkeitsdauern für generierte SAS-Token](#finite-tokens)</li></ul> |
+| **IoT-Gerät** | <ul><li>[Verwenden von begrenzten Gültigkeitsdauern für generierte SAS-Token](#finite-tokens)</li></ul> |
 | **Azure DocumentDB** | <ul><li>[Verwenden von minimalen Tokengültigkeitsdauern für generierte Ressourcentoken](#resource-tokens)</li></ul> |
 | **ADFS** | <ul><li>[Implementieren der richtigen Abmeldung mit WsFederation-Methoden bei Verwendung von ADFS](#wsfederation-logout)</li></ul> |
 | **Identity Server** | <ul><li>[Implementieren der richtigen Abmeldung bei Verwendung von Identity Server](#proper-logout)</li></ul> |

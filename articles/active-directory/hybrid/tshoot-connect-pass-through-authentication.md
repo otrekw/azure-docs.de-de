@@ -16,12 +16,12 @@ ms.date: 07/27/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: baf3566e90802f73accdd27f1cd5435e4af7b9be
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: f480118aaabf24bd7c5ca472bf04b12ee1405010
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281819"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87446997"
 ---
 # <a name="troubleshoot-azure-active-directory-pass-through-authentication"></a>Behandlung von Problemen bei der Azure Active Directory-Passthrough-Authentifizierung
 
@@ -74,10 +74,8 @@ Dieser Fall kann eintreten, wenn sich der lokale Benutzerprinzipalname (User Pri
 
 Sollte der gleiche Benutzernamen-/Kennwortfehler auftreten, funktioniert der Agent für die Passthrough-Authentifizierung ordnungsgemäß, und das Problem ist möglicherweise auf einen nicht routingfähigen lokalen UPN zurückzuführen. Weitere Informationen finden Sie unter [Konfigurieren einer alternativen Anmelde-ID]( https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configuring-alternate-login-id#:~:text=%20Configuring%20Alternate%20Login%20ID,See%20Also.%20%20More).
 
-
-
-
-
+> [!IMPORTANT]
+> Wenn der Azure AD Connect-Server nicht in die Domäne eingebunden ist, eine Anforderung, die unter [Azure AD Connect: Voraussetzungen für die Installation](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-prerequisites#installation-prerequisites) erwähnt wird, tritt das Problem mit dem ungültigen Benutzernamen/Kennwort auf.
 
 ### <a name="sign-in-failure-reasons-on-the-azure-active-directory-admin-center-needs-premium-license"></a>Gründe für Anmeldefehler im Azure Active Directory-Admin Center (Premium-Lizenz erforderlich)
 

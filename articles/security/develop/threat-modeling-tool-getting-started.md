@@ -1,6 +1,6 @@
 ---
 title: Erste Schritte – Microsoft Threat Modeling Tool – Azure | Microsoft-Dokumentation
-description: Dies ist eine detailliertere Übersicht über das Threat Modeling Tool in Aktion.
+description: Informieren Sie sich über die ersten Schritte mit dem Threat Modeling Tool. Erstellen Sie ein Diagramm, identifizieren und entschärfen Sie Bedrohungen, und überprüfen Sie jede Entschärfungsmaßnahme.
 services: security
 documentationcenter: na
 author: jegeib
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: jegeib
-ms.openlocfilehash: 1454826095bcced9b20935405c0befd5a1ed1ddd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3b8467a5983ae9d8928d14987bcee9d2aef094aa
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "68728331"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87539899"
 ---
 # <a name="getting-started-with-the-threat-modeling-tool"></a>Erste Schritte mit dem Threat Modeling Tool
 
@@ -69,13 +69,13 @@ In diesem Abschnitt begleiten wir:
 Sie durchlaufen den Prozess der Entwicklung ihres ersten Bedrohungsmodells.
 
 > Ricardo: Hallo Cristina, ich habe am Bedrohungsmodelldiagramm gearbeitet und möchte sicherstellen, dass alle Details richtig sind. Kannst du mit mir einen Blick darauf werfen?
-> Cristina: Klar. Sehen wir uns das genauer an.
+> Cristina: Absolut. Sehen wir uns das genauer an.
 > Ricardo öffnet das Tool und gibt seinen Bildschirm für Cristina frei.
 
 ![Grundlegendes Bedrohungsmodell](./media/threat-modeling-tool-feature-overview/basictmt.png)
 
-> Cristina: Ok, das sieht einleuchtend aus, doch kannst du es mit mir durchgehen?
-> Ricardo: Sicher! Dies ist die Gliederung:
+> Cristina: OK, das sieht unkompliziert aus, aber kannst du es mit mir durchgehen?
+> Ricardo: Ja, natürlich. Dies ist die Gliederung:
 > - Unsere menschlichen Benutzer werden als externe Entität gezeichnet (ein Quadrat).
 > - Sie senden Befehle an unseren Webserver (den Kreis).
 > - Der Webserver fragt eine Datenbank ab (zwei parallele Geraden)
@@ -83,11 +83,11 @@ Sie durchlaufen den Prozess der Entwicklung ihres ersten Bedrohungsmodells.
 Was Ricardo gerade eben Cristina gezeigt hat, ist ein **[Datenflussdiagramm](https://en.wikipedia.org/wiki/Data_flow_diagram)** . Das Threat Modeling Tool ermöglicht Benutzern die Angabe von Vertrauensstellungsgrenzen, die durch die rot gepunkteten Linien angezeigt werden, um zu veranschaulichen, welche verschiedenen Entitäten die Kontrolle haben. IT-Administratoren benötigen z.B. zu Authentifizierungszwecken ein Active Directory-System, weshalb das Active Directory außerhalb ihrer Kontrolle ist.
 
 > Cristina: Das sieht stimmig aus. Was ist mit den Bedrohungen?
-> Ricardo: Das will ich dir zeigen.
+> Ricardo: Das zeige ich dir.
 
 ## <a name="analyzing-threats"></a>Analysieren von Bedrohungen
 
-Nachdem er auf der Menüleiste mit den Symbolen auf die Analyseansicht (Datei mit Lupe) geklickt hat, gelangt er zu einer Liste generierter Bedrohungen, die das Threat Modeling Tool basierend auf der Standardvorlage gefunden hat. Diese befolgt den DSL-Ansatz **[STRIDE (Spoofing, Tampering, Info Disclosure, Denial of Service and Elevation of Privilege, dt. Spoofing, Manipulation, Veröffentlichung von Informationen, Nichtanerkennung, Denial of Service, Rechteerweiterungen)](https://en.wikipedia.org/wiki/STRIDE_(security))** . Die Idee ist, dass Software mit einer vorhersagbaren Gruppe von Bedrohungen geliefert wird, die mithilfe dieser sechs Kategorien gefunden werden können.
+Nachdem er auf der Menüleiste mit den Symbolen auf die Analyseansicht (Datei mit Lupe) geklickt hat, gelangt er zu einer Liste generierter Bedrohungen, die das Threat Modeling Tool basierend auf der Standardvorlage gefunden hat. Diese befolgt den DSL-Ansatz **[STRIDE (Spoofing, Tampering, Info Disclosure, Denial of Service and Elevation of Privilege, dt. Spoofing, Manipulation, Veröffentlichung von Informationen, Nichtanerkennung, Denial of Service, Rechteerweiterungen)](https://en.wikipedia.org/wiki/STRIDE_(security))**. Die Idee ist, dass Software mit einer vorhersagbaren Gruppe von Bedrohungen geliefert wird, die mithilfe dieser sechs Kategorien gefunden werden können.
 
 Diese Methode ist vergleichbar mit dem Absichern Ihres Hauses, indem sichergestellt wird, dass alle Türen und Fenster über einen Sperrmechanismus verfügen, ehe Sie eine Alarmanlage hinzufügen oder dem Dieb nachjagen.
 

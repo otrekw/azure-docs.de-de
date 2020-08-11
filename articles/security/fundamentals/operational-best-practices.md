@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: 56132eae03a52af425e00bec93a63a697a2a55e6
-ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
+ms.openlocfilehash: 496d99b3d871c66e2557e1f384bb4480cd8b0831
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84204734"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423149"
 ---
 # <a name="azure-operational-security-best-practices"></a>Bewährte Methoden für Azure Operational Security
 Dieser Artikel enthält eine Reihe von bewährten Methoden für den Schutz Ihrer Daten, Anwendungen und anderen Ressourcen in Azure.
@@ -55,7 +55,7 @@ Im Azure-Registrierungsportal können Sie sicherstellen, dass die Kontaktinforma
 ## <a name="organize-azure-subscriptions-into-management-groups"></a>Organisieren von Azure-Abonnements in Verwaltungsgruppen
 Wenn Ihre Organisation über viele Abonnements verfügt, benötigen Sie möglicherweise eine Möglichkeit zur effizienten Verwaltung von Zugriff, Richtlinien und Konformität für diese Abonnements. [Azure-Verwaltungsgruppen](/azure/governance/management-groups/create) stellen einen abonnementübergreifenden Bereich bereit. Sie organisieren Abonnements in Containern, die als Verwaltungsgruppen bezeichnet werden, und wenden Ihre Governancebedingungen auf die Verwaltungsgruppen an. Alle Abonnements in einer Verwaltungsgruppe erben automatisch die auf die Verwaltungsgruppe angewendeten Bedingungen.
 
-Sie können eine flexible Struktur von Verwaltungsgruppen und Abonnements in einem Verzeichnis erstellen. Jedes Verzeichnis erhält eine einzelne Verwaltungsgruppe auf oberster Ebene, die als Stammverwaltungsgruppe bezeichnet wird. Die Stammverwaltungsgruppe ist in die Hierarchie integriert, sodass ihr alle Verwaltungsgruppen und Abonnements untergeordnet sind. Die Stammverwaltungsgruppe ermöglicht das Anwenden von globalen Richtlinien und RBAC-Zuweisungen auf Verzeichnisebene.
+Sie können eine flexible Struktur von Verwaltungsgruppen und Abonnements in einem Verzeichnis erstellen. Jedes Verzeichnis erhält eine einzelne Verwaltungsgruppe auf oberster Ebene, die als Stammverwaltungsgruppe bezeichnet wird. Die Stammverwaltungsgruppe ist in die Hierarchie integriert, sodass ihr alle Verwaltungsgruppen und Abonnements untergeordnet sind. Die Stammverwaltungsgruppe ermöglicht das Anwenden von globalen Richtlinien und Azure-Rollenzuweisungen auf Verzeichnisebene.
 
 Es folgen einige bewährte Methoden für die Verwendung von Verwaltungsgruppen:
 
@@ -182,7 +182,7 @@ Es ist von größter Wichtigkeit sicherzustellen, dass eine Anwendung stabil gen
 
 Konfigurieren Sie für Azure Cloud Services alle Rollen so, dass sie [mehrere Instanzen](../../cloud-services/cloud-services-choose-me.md) verwenden.
 
-Stellen Sie für [Azure-VMS](/azure/virtual-machines/windows/overview) sicher, dass die VM-Architektur mehr als eine VM enthält und dass jede VM zu einer [Verfügbarkeitsgruppe](/azure/virtual-machines/virtual-machines-windows-manage-availability) gehört. Sie sollten VM-Skalierungsgruppen für Funktionen zur automatischen Skalierung verwenden.
+Stellen Sie für [Azure-VMS](../../virtual-machines/windows/overview.md) sicher, dass die VM-Architektur mehr als eine VM enthält und dass jede VM zu einer [Verfügbarkeitsgruppe](../../virtual-machines/windows/tutorial-availability-sets.md) gehört. Sie sollten VM-Skalierungsgruppen für Funktionen zur automatischen Skalierung verwenden.
 
 **Bewährte Methode**: Abwehrmaßnahmen in die Schichten einer Anwendung zu integrieren reduziert die Wahrscheinlichkeit eines erfolgreichen Angriffs. Implementieren Sie sichere Entwürfe für Ihre Anwendungen mithilfe der integrierten Funktionen der Azure-Plattform.  
 **Detail**: Das Angriffsrisiko steigt mit der Größe (Oberflächenbereich) der Anwendung. Sie können den Oberflächenbereich durch Verwendung von Whitelists verringern, um den verfügbar gemachten IP-Adressraum und die Überwachungsports zu schließen, die im Lastenausgleichsmodul ([Azure Load Balancer](/azure/load-balancer/load-balancer-get-started-internet-portal) und [Azure Application Gateway](/azure/application-gateway/application-gateway-create-probe-portal)) nicht mehr benötigt werden.

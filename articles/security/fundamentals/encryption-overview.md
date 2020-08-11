@@ -1,6 +1,6 @@
 ---
 title: Übersicht über die Azure-Verschlüsselung | Microsoft-Dokumentation
-description: Lernen Sie die verschiedenen Verschlüsselungsoptionen in Azure kennen.
+description: Lernen Sie die Verschlüsselungsoptionen in Azure kennen. Lesen Sie die Informationen zur Verschlüsselung ruhender Daten, zur Verschlüsselung in Aktion und zur Schlüsselverwaltung mit Azure Key Vault.
 services: security
 author: msmbaldwin
 ms.assetid: ''
@@ -9,12 +9,12 @@ ms.subservice: security-fundamentals
 ms.topic: article
 ms.date: 07/20/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 14808016b627bc593d90ff88fc9bddf2449f6ee5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5189270a7b9de9ff5a222ad76ce46254ae5d2ee3
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87083955"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87542958"
 ---
 # <a name="azure-encryption-overview"></a>Übersicht über die Azure-Verschlüsselung
 
@@ -113,7 +113,7 @@ Azure bietet viele Verfahren zum Schutz von Daten beim Übertragen zwischen vers
 
 ### <a name="data-link-layer-encryption-in-azure"></a>Verschlüsselung in der Sicherungsschicht in Azure
 
-Immer wenn Datenverkehr von Azure-Kunden zwischen Rechenzentren fließt (außerhalb von physischen Grenzen, die nicht von Microsoft (oder im Auftrag von Microsoft) kontrolliert werden), wird eine Verschlüsselungsmethode für die Sicherungsschicht mit dem [Standard IEEE 802.1AE MAC Security](https://1.ieee802.org/security/802-1ae/) (auch MACsec genannt) von Punkt zu Punkt auf der zugrunde liegenden Netzwerkhardware angewendet.  Die Pakete werden auf den Geräten vor dem Senden verschlüsselt und entschlüsselt. Dadurch werden physische Man-in-the-Middle-Angriffe und Spionage-/Abhörangriffe verhindert.  Da diese Technologie in die Netzwerkhardware selbst integriert ist, bietet sie Verschlüsselung auf der Netzwerkhardware mit der Leitungsrate ohne eine messbar höhere Verbindungslatenz.  Diese MACsec-Verschlüsselung ist standardmäßig für den gesamten Azure-Datenverkehr aktiviert, der innerhalb einer Region oder zwischen Regionen fließt, und der Kunde muss nichts tun, um sie zu aktivieren. 
+Immer wenn Datenverkehr von Azure-Kunden zwischen Rechenzentren fließt (außerhalb von physischen Grenzen, die nicht von Microsoft (oder im Auftrag von Microsoft) kontrolliert werden), wird eine Verschlüsselungsmethode für die Sicherungsschicht mit dem [Standard IEEE 802.1AE MAC Security](https://1.ieee802.org/security/802-1ae/) (auch MACsec genannt) von Punkt zu Punkt auf der zugrunde liegenden Netzwerkhardware angewendet. Die Pakete werden auf den Geräten vor dem Senden verschlüsselt und entschlüsselt. Dadurch werden physische Man-in-the-Middle-Angriffe und Spionage-/Abhörangriffe verhindert. Da diese Technologie in die Netzwerkhardware selbst integriert ist, bietet sie Verschlüsselung auf der Netzwerkhardware mit der Leitungsrate ohne eine messbar höhere Verbindungslatenz. Diese MACsec-Verschlüsselung ist standardmäßig für den gesamten Azure-Datenverkehr aktiviert, der innerhalb einer Region oder zwischen Regionen fließt, und der Kunde muss keine Aktion zum Aktivieren ausführen. 
 
 ### <a name="tls-encryption-in-azure"></a>TLS-Verschlüsselung in Azure
 

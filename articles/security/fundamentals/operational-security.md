@@ -1,6 +1,6 @@
 ---
 title: Azure Operational Security | Microsoft-Dokumentation
-description: Erfahren Sie etwas über Microsoft Azure Monitor-Protokolle, die zugehörigen Dienste und die Funktionsweise.
+description: Lesen Sie diese Übersicht, um sich mit den Protokollen, Diensten und der Funktionsweise von Microsoft Azure Monitor vertraut zu machen.
 services: security
 documentationcenter: na
 author: UnifyCloud
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 34c0c52945abc6e0ab74b1cb180581c76464bee8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b6e5a22a073a2a61db4a630388fee886e2f4ed26
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75749960"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543332"
 ---
 # <a name="azure-operational-security"></a>Azure Operational Security
 ## <a name="introduction"></a>Einführung
@@ -108,7 +108,7 @@ Geschützte Daten werden in Azure Backup in einem Sicherungstresor gespeichert, 
 
 ![Verwaltungslösungen](./media/operational-security/azure-operational-security-fig4.png)
 
-Die [Lösung für die Updateverwaltung](../../automation/automation-update-management.md) ist ein gutes Beispiel für eine Lösung, die mehrere Dienste verwendet, um zusätzliche Funktionen bereitzustellen. Diese Lösung verwendet den Agent für [Azure Monitor-Protokolle](../../log-analytics/log-analytics-queries.md) für Windows und Linux, um Informationen zu erforderlichen Updates für die einzelnen Agents zu sammeln. Die Daten werden in das Repository von Azure Monitor-Protokolle geschrieben, wo Sie sie über ein enthaltenes Dashboard analysieren können.
+Die [Lösung für die Updateverwaltung](../../automation/update-management/update-mgmt-overview.md) ist ein gutes Beispiel für eine Lösung, die mehrere Dienste verwendet, um zusätzliche Funktionen bereitzustellen. Diese Lösung verwendet den Agent für [Azure Monitor-Protokolle](../../log-analytics/log-analytics-queries.md) für Windows und Linux, um Informationen zu erforderlichen Updates für die einzelnen Agents zu sammeln. Die Daten werden in das Repository von Azure Monitor-Protokolle geschrieben, wo Sie sie über ein enthaltenes Dashboard analysieren können.
 
 Wenn Sie eine Bereitstellung erstellen, werden erforderliche Updates mithilfe von Runbooks in [Azure Automation](../../automation/automation-intro.md) installiert. Der gesamte Prozess wird über das Portal verwaltet, und Sie müssen sich keine Gedanken über die zugrunde liegenden Details machen.
 

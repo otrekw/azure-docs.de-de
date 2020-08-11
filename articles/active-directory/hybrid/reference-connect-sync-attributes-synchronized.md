@@ -16,12 +16,12 @@ ms.date: 04/15/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ab51030ad39e1360cabc7d63390af7c1654d2891
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.openlocfilehash: d1754456873e464e4bd624f47c5ea98e4fb88827
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82082117"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87542228"
 ---
 # <a name="azure-ad-connect-sync-attributes-synchronized-to-azure-active-directory"></a>Azure AD Connect-Synchronisierung: Mit Azure Active Directory synchronisierte Attribute
 In diesem Thema werden die Attribute aufgelistet, die bei der Azure AD Connect-Synchronisierung synchronisiert werden.  
@@ -165,7 +165,7 @@ In diesem Fall beginnen Sie mit der in diesem Thema angegebenen Liste von Attrib
 | targetAddress |X |X | | |
 | telephoneAssistant |X |X | | |
 | telephoneNumber |X |X | | |
-| thumbnailphoto |X |X | | |
+| thumbnailphoto |X |X | |Das Attribut wird nur einmal zwischen Azure AD und Exchange Online synchronisiert, nachdem Exchange Online zur Autoritätsquelle für dieses Attribut wurde, und spätere Änderungen am Attribut aus der lokalen Umgebung können nicht synchronisiert werden. Weitere Informationen finden Sie in [diesem KB-Artikel](https://support.microsoft.com/help/3062745/user-photos-aren-t-synced-from-the-on-premises-environment-to-exchange).|
 | title |X |X | | |
 | unauthOrig |X |X |X | |
 | usageLocation |X | | |Mechanische Eigenschaft. Land/Region des Benutzers. Wird für die Lizenzzuweisung verwendet. |
@@ -247,12 +247,12 @@ In diesem Fall beginnen Sie mit der in diesem Thema angegebenen Liste von Attrib
 | targetAddress |X |X | | |
 | telephoneAssistant |X |X | | |
 | telephoneNumber |X |X | | |
-| thumbnailphoto |X |X | | |
+| thumbnailphoto |X |X | |Das Attribut wird nur einmal zwischen Azure AD und Exchange Online synchronisiert, nachdem Exchange Online zur Autoritätsquelle für dieses Attribut wurde, und spätere Änderungen am Attribut aus der lokalen Umgebung können nicht synchronisiert werden. Weitere Informationen finden Sie in [diesem KB-Artikel](https://support.microsoft.com/help/3062745/user-photos-aren-t-synced-from-the-on-premises-environment-to-exchange).|
 | title |X |X | | |
 | unauthOrig |X |X |X | |
 | url |X |X | | |
 | usageLocation |X | | |Mechanische Eigenschaft. Land/Region des Benutzers
-erforderlich. Wird für die Lizenzzuweisung verwendet. |
+. Wird für die Lizenzzuweisung verwendet. |
 | userPrincipalName |X | | |Dieser Benutzerprinzipalname (UPN) ist die Anmelde-ID für den Benutzer. Meistens identisch mit dem Wert [mail]. |
 | wWWHomePage |X |X | | |
 
@@ -298,7 +298,7 @@ erforderlich. Wird für die Lizenzzuweisung verwendet. |
 | st |X |X | | |
 | streetAddress |X |X | | |
 | telephoneNumber |X |X | | |
-| thumbnailphoto |X |X | | |
+| thumbnailphoto |X |X | |Das Attribut wird nur einmal zwischen Azure AD und Exchange Online synchronisiert, nachdem Exchange Online zur Autoritätsquelle für dieses Attribut wurde, und spätere Änderungen am Attribut aus der lokalen Umgebung können nicht synchronisiert werden. Weitere Informationen finden Sie in [diesem KB-Artikel](https://support.microsoft.com/help/3062745/user-photos-aren-t-synced-from-the-on-premises-environment-to-exchange).|
 | title |X |X | | |
 | usageLocation |X | | |Mechanische Eigenschaft. Land/Region des Benutzers. Wird für die Lizenzzuweisung verwendet. |
 | userPrincipalName |X | | |Dieser Benutzerprinzipalname (UPN) ist die Anmelde-ID für den Benutzer. Meistens identisch mit dem Wert [mail]. |

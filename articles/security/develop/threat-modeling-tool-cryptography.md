@@ -1,6 +1,6 @@
 ---
 title: Kryptografie – Microsoft Threat Modeling Tool – Azure | Microsoft-Dokumentation
-description: Gegenmaßnahmen für durch das Threat Modeling Tool offengelegte Gefahren
+description: Erfahren Sie mehr über kryptografiebasierte Gegenmaßnahmen für durch das Threat Modeling Tool offengelegte Bedrohungen. Lesen Sie die Informationen zur Risikominderung, und sehen Sie sich die Codebeispiele an.
 services: security
 documentationcenter: na
 author: jegeib
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: c9116472af5b400ded0fea24f98b07bad9d9039b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7de0cad91e01187a1ed84257c9e3a7cd8106951a
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "68728190"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87539950"
 ---
 # <a name="security-frame-cryptography--mitigations"></a>Sicherheitsrahmen: Kryptografie | Gegenmaßnahmen 
 
@@ -142,7 +142,7 @@ ms.locfileid: "68728190"
 | **Zutreffende Technologien** | Allgemein |
 | **Attribute**              | –  |
 | **Referenzen**              | [ADD SIGNATURE (Transact-SQL)](https://msdn.microsoft.com/library/ms181700) |
-| **Schritte** | In Fällen, in denen die Integrität eines kritischen sicherungsfähigen Elements von Datenbanken überprüft werden muss, müssen digitale Signaturen verwendet werden. Sicherungsfähige Elemente von Datenbanken, z.B. gespeicherte Prozedur, Funktion, Assembly oder Trigger, können digital signiert werden. Es folgt ein Beispiel dazu, wann dies nützlich sein kann: Angenommen, ein unabhängiger Softwarehersteller (Independent Software Vendor, ISV) leistet Support für eine Software, die an einen seiner Kunden geliefert wurde. Vor der Supportleistung möchte der ISV sicherstellen, dass ein sicherungsfähiges Element der Datenbank in der Software nicht versehentlich oder in böser Absicht bewusst manipuliert wurde. Wenn das sicherungsfähige Element digital signiert ist, kann der ISV die digitale Signatur prüfen und die Integrität bestätigen.| 
+| **Schritte** | In Fällen, in denen die Integrität eines kritischen sicherungsfähigen Elements von Datenbanken überprüft werden muss, müssen digitale Signaturen verwendet werden. Sicherungsfähige Elemente von Datenbanken, z.B. gespeicherte Prozedur, Funktion, Assembly oder Trigger, können digital signiert werden. Unten ist ein Beispiel dafür angegeben, wann dies hilfreich ist: Angenommen, ein unabhängiger Softwarehersteller (Independent Software Vendor, ISV) leistet Support für eine Software, die an einen Kunden geliefert wurde. Vor der Supportleistung möchte der ISV sicherstellen, dass ein sicherungsfähiges Element der Datenbank in der Software nicht versehentlich oder in böser Absicht bewusst manipuliert wurde. Wenn das sicherungsfähige Element digital signiert ist, kann der ISV die digitale Signatur prüfen und die Integrität bestätigen.| 
 
 ## <a name="use-sql-server-ekm-to-protect-encryption-keys"></a><a id="ekm-keys"></a>Verwenden der erweiterbaren Schlüsselverwaltung von SQL Server zum Schützen von Verschlüsselungsschlüsseln
 

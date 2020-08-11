@@ -1,18 +1,18 @@
 ---
 title: Azure Disk Encryption für virtuelle Computer und VM-Skalierungsgruppen
-description: Dieser Artikel enthält eine Übersicht zu Azure Disk Encryption.
+description: Erfahren Sie mehr über Azure Disk Encryption für virtuelle Computer (Virtual Machines, VMs) und VM-Skalierungsgruppen. Azure Disk Encryption funktioniert sowohl für Linux- als auch für Windows-VMs.
 author: msmbaldwin
 ms.service: security
 ms.topic: article
 ms.author: mbaldwin
 ms.date: 10/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: c881b2b9743766e4d35e6cb05f6f3469803850bc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 21194bf2fe76a7eb0ee034d4a502c20ee3032dd9
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80062125"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543672"
 ---
 # <a name="azure-disk-encryption-for-virtual-machines-and-virtual-machine-scale-sets"></a>Azure Disk Encryption für virtuelle Computer und VM-Skalierungsgruppen
 
