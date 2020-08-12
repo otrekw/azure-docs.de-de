@@ -10,12 +10,12 @@ ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: scottsta
-ms.openlocfilehash: af410310e3866b547b8c898a1cc4f91f4f851bc7
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 084c50a67fe332751a3679da4c97f67d414ebb94
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223022"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87419528"
 ---
 # <a name="sign-in-to-azure-active-directory-using-email-as-an-alternate-login-id-preview"></a>Anmelden bei Azure Active Directory per E-Mail-Adresse als alternative Anmelde-ID (Vorschauversion)
 
@@ -158,6 +158,8 @@ Während der Vorschauphase können Sie die Funktion zur Anmeldung per E-Mail-Adr
     ```powershell
     Get-AzureADPolicy | where-object {$_.Type -eq "HomeRealmDiscoveryPolicy"} | fl *
     ```
+
+Nachdem die Richtlinie angewendet wurde, kann es bis zu einer Stunde dauern, bis Benutzer sich mit Ihrer alternativen Anmelde-ID anmelden können.
 
 ## <a name="test-user-sign-in-with-email"></a>Testen der Benutzeranmeldung per E-Mail-Adresse
 

@@ -1,26 +1,29 @@
 ---
-title: Erste Schritte bei der kombinierten Registrierung – Azure Active Directory
-description: Aktivieren der kombinierten Registrierung für Azure AD Multi-Factor Authentication und Self-Service-Kennwortzurücksetzung
+title: Aktivieren der kombinierten Registrierung von Sicherheitsinformationen – Azure Active Directory
+description: Erfahren Sie, wie Sie die Endbenutzererfahrung durch die kombinierte Registrierung mit Azure AD Multi-Factor Authentication und Self-Service-Kennwortzurücksetzung vereinfachen.
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 04/17/2020
+ms.date: 07/20/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7feb69b2ea53794b780a983ed8ab4ba5874ac022
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: de76a9138f782ab699bcd6ff56dab09a4e694102
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85260847"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87035518"
 ---
 # <a name="enable-combined-security-information-registration-in-azure-active-directory"></a>Aktivieren der kombinierten Registrierung von Sicherheitsinformationen in Azure Active Directory
 
 Vor der kombinierten Registrierung registrierten Benutzer Authentifizierungsmethoden für Azure Multi-Factor Authentication (MFA) und die Self-Service-Kennwortzurücksetzung (Self-Service Password Reset, SSPR) getrennt voneinander. Benutzer waren verwirrt, dass ähnliche Methoden für Azure Multi-Factor Authentication und für SSPR verwendet wurden, sie sich jedoch für beide Funktionen registrieren mussten. Mit der kombinierten Registrierung können sich Benutzer jetzt einmalig registrieren und die Vorteile von Azure Multi-Factor Authentication und SSPR nutzen.
+
+> [!NOTE]
+> Ab dem 15. August 2020 werden alle neuen Azure AD-Mandanten automatisch für die kombinierte Registrierung aktiviert.
 
 Lesen Sie vor dem Aktivieren der neuen Funktion den Artikel [Kombinierte Registrierung von Sicherheitsinformationen](concept-registration-mfa-sspr-combined.md), um sich mit der Funktionalität und den Auswirkungen dieser Funktion vertraut zu machen.
 
@@ -37,26 +40,30 @@ Führen Sie die folgenden Schritte aus, um die kombinierte Registrierung zu akti
    ![Aktivieren der kombinierten Oberfläche zur Registrierung von Sicherheitsinformationen für Benutzer](media/howto-registration-mfa-sspr-combined/enable-the-combined-security-info.png)
 
 > [!NOTE]
-> Nachdem Sie die kombinierte Registrierung aktiviert haben, können Benutzer, die ihre Telefonnummer oder mobile App durch die neue Funktion registrieren oder bestätigen, diese für Azure Multi-Factor Authentication und SSPR verwenden, wenn diese Methoden in den MFA- und SSPR-Richtlinien aktiviert sind. Wenn Sie diese Funktion dann deaktivieren, müssen Benutzer, die zur vorherigen SSPR-Registrierungsseite unter `https://aka.ms/ssprsetup` navigieren, die mehrstufige Authentifizierung durchführen, bevor sie auf die Seite zugreifen können.
+> Nachdem Sie die kombinierte Registrierung aktiviert haben, können Benutzer, die ihre Telefonnummer oder mobile App durch die neue Funktion registrieren oder bestätigen, diese für Azure Multi-Factor Authentication und SSPR verwenden, wenn diese Methoden in den MFA- und SSPR-Richtlinien aktiviert sind.
+>
+> Wenn Sie diese Funktion dann deaktivieren, müssen Benutzer, die zur vorherigen SSPR-Registrierungsseite unter `https://aka.ms/ssprsetup` navigieren, die mehrstufige Authentifizierung durchführen, bevor sie auf die Seite zugreifen können.
 
-Wenn Sie die „Liste der Site zu Zonenzuweisungen“ in Internet Explorer konfiguriert haben, müssen sich die folgenden Websites in der gleichen Zone befinden:
+Wenn Sie die *Liste der Site-zu-Zonen-Zuweisungen* in Internet Explorer konfiguriert haben, müssen sich die folgenden Websites in der gleichen Zone befinden:
 
-* [https://login.microsoftonline.com](https://login.microsoftonline.com)
-* [https://mysignins.microsoft.com](https://mysignins.microsoft.com)
-* [https://account.activedirectory.windowsazure.com](https://account.activedirectory.windowsazure.com)
+* *[https://login.microsoftonline.com](https://login.microsoftonline.com)*
+* *[https://mysignins.microsoft.com](https://mysignins.microsoft.com)*
+* *[https://account.activedirectory.windowsazure.com](https://account.activedirectory.windowsazure.com)*
 
 ## <a name="conditional-access-policies-for-combined-registration"></a>Richtlinien für bedingten Zugriff für die kombinierte Registrierung
 
-Mit Benutzeraktionen in der Richtlinie für bedingten Zugriff kann jetzt sichergestellt werden, wann und wie sich Benutzer für Azure Multi-Factor Authentication registrieren, und auch die Self-Service-Kennwortzurücksetzung ist möglich. Dieses Feature ist für Organisationen verfügbar, die die [kombinierte Registrierung](../authentication/concept-registration-mfa-sspr-combined.md) aktiviert haben. Diese Funktionalität kann in Organisationen aktiviert werden, in denen sich Benutzer an einem zentralen Ort, z. B. einem vertrauenswürdigen Netzwerkspeicherort während des Onboarding-Prozesses für Personal, für Azure Multi-Factor Authentication und SSPR registrieren sollen.
+Mit Benutzeraktionen in der Richtlinie für bedingten Zugriff kann sichergestellt werden, wann und wie sich Benutzer für Azure Multi-Factor Authentication registrieren, und auch die Self-Service-Kennwortzurücksetzung ist möglich. Diese Funktionalität kann in Organisationen aktiviert werden, in denen sich Benutzer an einem zentralen Ort, z. B. einem vertrauenswürdigen Netzwerkspeicherort während des Onboardings von Personal, für Azure Multi-Factor Authentication und SSPR registrieren sollen.
 
 > [!NOTE]
-> Diese Richtlinie gilt nur, wenn ein Benutzer auf eine kombinierte Registrierungsseite zugreift. Diese Richtlinie erzwingt keine MFA-Registrierung, wenn ein Benutzer auf andere Anwendungen zugreift. Sie können eine MFA-Registrierungsrichtlinie mithilfe von [Azure Identity Protection – MFA-Richtlinie konfigurieren](../identity-protection/howto-identity-protection-configure-mfa-policy.md) erstellen.
+> Diese Richtlinie gilt nur, wenn ein Benutzer auf eine kombinierte Registrierungsseite zugreift. Diese Richtlinie erzwingt keine MFA-Registrierung, wenn ein Benutzer auf andere Anwendungen zugreift.
+>
+> Sie können eine MFA-Registrierungsrichtlinie mithilfe von [Azure Identity Protection – MFA-Richtlinie konfigurieren](../identity-protection/howto-identity-protection-configure-mfa-policy.md) erstellen.
 
-Weitere Informationen zur Erstellung von vertrauenswürdigen Speicherorten bei bedingtem Zugriff finden Sie im Artikel [Was sind Standortbedingungen beim bedingten Zugriff in Azure Active Directory?](../conditional-access/location-condition.md#named-locations)
+Weitere Informationen zum Erstellen vertrauenswürdiger Speicherorte bei bedingtem Zugriff finden Sie unter [Was sind Standortbedingungen beim bedingten Zugriff in Azure Active Directory?](../conditional-access/location-condition.md#named-locations).
 
 ### <a name="create-a-policy-to-require-registration-from-a-trusted-location"></a>Erstellen einer Richtlinie zum Erzwingen der Registrierung von einem vertrauenswürdigen Standort
 
-Die folgende Richtlinie gilt für alle ausgewählten Benutzer, die versuchen, sich über die Benutzeroberfläche für die kombinierte Registrierung zu registrieren. Der Zugriff wird blockiert, sofern die Verbindung nicht von einem Standort aus hergestellt wird, der als ein vertrauenswürdiges Netzwerk gekennzeichnet ist.
+Führen Sie die folgenden Schritte aus, um eine Richtlinie für alle ausgewählten Benutzer zu erstellen, die versuchen, sich über die Benutzeroberfläche mit der kombinierten Registrierung zu registrieren. Der Zugriff wird blockiert, sofern die Verbindung nicht von einem Standort aus hergestellt wird, der als ein vertrauenswürdiges Netzwerk gekennzeichnet ist:
 
 1. Navigieren Sie im **Azure-Portal** zu **Azure Active Directory** > **Sicherheit** > **Bedingter Zugriff**.
 1. Wählen Sie **+ Neue Richtlinie** aus.
@@ -81,10 +88,8 @@ Die folgende Richtlinie gilt für alle ausgewählten Benutzer, die versuchen, si
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Wenn Sie Hilfe benötigen, finden Sie unter [Problembehandlung für die kombinierte Registrierung von Sicherheitsinformationen](howto-registration-mfa-sspr-combined-troubleshoot.md) oder unter [Was sind Standortbedingungen beim bedingten Zugriff in Azure Active Directory?](../conditional-access/location-condition.md) weitere Informationen.
+Wenn Sie Hilfe benötigen, finden Sie unter [Problembehandlung für die kombinierte Registrierung von Sicherheitsinformationen](howto-registration-mfa-sspr-combined-troubleshoot.md) sowie unter [Was sind Standortbedingungen beim bedingten Zugriff in Azure AD?](../conditional-access/location-condition.md) weitere Informationen.
 
-Informationen zum Aktivieren der Features in Ihrem Azure AD-Mandanten finden Sie in den Tutorials [Aktivieren der Self-Service-Kennwortzurücksetzung](tutorial-enable-sspr.md) und [Aktivieren der Azure Multi-Factor Authentication](tutorial-enable-azure-mfa.md).
+Nachdem Benutzer für die kombinierte Registrierung aktiviert wurden, können Sie die [Self-Service-Kennwortzurücksetzung](tutorial-enable-sspr.md) und [Azure Multi-Factor Authentication](tutorial-enable-azure-mfa.md) aktivieren.
 
-Erfahren Sie, wie Sie [die erneute Registrierung von Authentifizierungsmethoden durch Benutzer erzwingen](howto-mfa-userdevicesettings.md#manage-user-authentication-options).
-
-Sie können auch den Artikel [Verfügbare Methoden für Multi-Factor Authentication und SSPR](concept-authentication-methods.md) lesen.
+Informieren Sie sich bei Bedarf, wie Sie [die erneute Registrierung von Authentifizierungsmethoden durch Benutzer erzwingen](howto-mfa-userdevicesettings.md#manage-user-authentication-options).

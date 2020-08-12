@@ -1,6 +1,6 @@
 ---
 title: Häufig gestellte Fragen zu Azure NetApp Files | Microsoft-Dokumentation
-description: Hier erhalten Sie Antworten auf häufig gestellte Fragen zu Azure NetApp Files.
+description: Häufig gestellte Fragen zu Azure NetApp Files, z. B. Netzwerk, Sicherheit, Leistung, Kapazitätsverwaltung und Datenmigration und -schutz.
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/08/2020
+ms.date: 07/27/2020
 ms.author: b-juche
-ms.openlocfilehash: be18a9d54049562eebc27720988b085c3e14f2da
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 7c792ee9c56a044942bb2249a57f2615c72badee
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85956508"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533137"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Häufig gestellte Fragen zu Azure NetApp Files
 
@@ -97,11 +97,15 @@ Sie können MB/s mit der folgenden Formel zu IOPS konvertieren:
 
 ### <a name="how-do-i-change-the-service-level-of-a-volume"></a>Wie ändere ich die Dienstebene eines Volumes?
 
-Das Ändern der Dienstebene eines Volumes wird derzeit nicht unterstützt.
+Sie können den Servicelevel eines vorhandenen Volumes ändern, indem Sie das Volume in einen anderen Kapazitätspool verschieben, der den von Ihnen für das Volume gewünschten [Servicelevel](azure-netapp-files-service-levels.md) verwendet. Siehe [Dynamisches Ändern der Dienstebene eines Volumes](dynamic-change-volume-service-level.md). 
 
 ### <a name="how-do-i-monitor-azure-netapp-files-performance"></a>Wie überwache ich die Leistung von Azure NetApp Files?
 
 Azure NetApp Files bietet Metriken zum Messen der Volumeleistung. Sie können auch Azure Monitor verwenden, um die Nutzungsmetriken für Azure NetApp Files zu überwachen.  Eine Liste der Leistungsmetriken für Azure NetApp Files finden Sie unter [Metriken für Azure NetApp Files](azure-netapp-files-metrics.md).
+
+### <a name="whats-the-performance-impact-of-kerberos-on-nfsv41"></a>Was sind die Leistungsauswirkungen von Kerberos auf NFSv4.1?
+
+Informationen zu den Sicherheitsoptionen für NFSv4.1, den getesteten Leistungsvektoren und den erwarteten Leistungsauswirkungen finden Sie unter [Leistungsauswirkungen von Kerberos auf NFSv4.1](configure-kerberos-encryption.md#kerberos_performance). 
 
 ## <a name="nfs-faqs"></a>Häufig gestellte Fragen zu NFS
 
@@ -164,6 +168,15 @@ Yes, by default, Azure NetApp Files supports both AES-128 and AES-256 encryption
 
 Yes, Azure NetApp Files supports LDAP signing by default. This functionality enables secure LDAP lookups between the Azure NetApp Files service and the user-specified [Active Directory Domain Services domain controllers](https://docs.microsoft.com/windows/win32/ad/active-directory-domain-services). For more information, see [ADV190023 | Microsoft Guidance for Enabling LDAP Channel Binding and LDAP Signing](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/ADV190023).
 --> 
+
+## <a name="dual-protocol-faqs"></a>Häufig gestellte Fragen zum dualen Protokoll
+
+### <a name="i-tried-to-use-the-root-and-local-users-to-access-a-dual-protocol-volume-with-the-ntfs-security-style-on-a-unix-system-why-did-i-encounter-a-permission-denied-error"></a>Ich habe versucht, den Root-Benutzer und den lokalen Benutzer für den Zugriff auf ein Volume mit dualem Protokoll und dem NTFS-Sicherheitsstil auf einem UNIX-System zu verwenden. Warum ist der Fehler „Berechtigung verweigert“ aufgetreten?   
+
+Ein Volume mit dualem Protokoll unterstützt das NFS- und das SMB-Protokoll.  Wenn Sie versuchen, auf das eingebundene Volume auf dem UNIX-System zuzugreifen, versucht das System, den verwendeten UNIX-Benutzer einem Windows-Benutzer zuzuordnen. Wenn keine Zuordnung gefunden wird, tritt der Fehler „Berechtigung verweigert“ auf.  Dies trifft auch zu, wenn Sie den Root-Benutzer für den Zugriff verwenden.    
+
+Um den Fehler „Berechtigung verweigert“ zu vermeiden, sollten Sie sicherstellen, dass Windows Active Directory `pcuser` enthält, bevor Sie auf den Bereitstellungspunkt zugreifen. Wenn Sie `pcuser` hinzufügen, nachdem der Fehler „Berechtigung verweigert“ aufgetreten ist, müssen Sie 24 Stunden warten, bis der Cacheeintrag gelöscht wurde, bevor Sie erneut versuchen, auf das Volume zuzugreifen.
+
 
 ## <a name="capacity-management-faqs"></a>Häufig gestellte Fragen zur Kapazitätsverwaltung
 

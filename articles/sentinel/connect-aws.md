@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/27/2020
 ms.author: yelevin
-ms.openlocfilehash: f8d296e62be9571bdedd5acf40d5547bae8c864e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e80f7d26fb7ab598651d08b4c1b6478b2ae75e3b
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85564573"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87563057"
 ---
 # <a name="connect-azure-sentinel-to-aws-cloudtrail"></a>Herstellen einer Verbindung zwischen Azure Sentinel und AWS CloudTrail
 
-Verwenden Sie den AWS-Connector, um alle Ihre AWS CloudTrail-Ereignisse in Azure Sentinel zu streamen. Dieser Verbindungsprozess delegiert den Zugriff für Azure Sentinel auf Ihre AWS-Ressourcenprotokolle und schafft so eine Vertrauensbeziehung zwischen AWS CloudTrail und Azure Sentinel. Dies erfolgt in AWS durch Erstellen einer Rolle, die Azure Sentinel die Berechtigung erteilt, auf Ihre AWS-Protokolle zuzugreifen.
+Verwenden Sie den AWS-Connector, um Ihre AWS CloudTrail-Verwaltungsereignisse in Azure Sentinel zu streamen. Dieser Verbindungsprozess delegiert den Zugriff für Azure Sentinel auf Ihre AWS-Ressourcenprotokolle und schafft so eine Vertrauensbeziehung zwischen AWS CloudTrail und Azure Sentinel. Dies erfolgt in AWS durch Erstellen einer Rolle, die Azure Sentinel die Berechtigung erteilt, auf Ihre AWS-Protokolle zuzugreifen.
 
 > [!NOTE]
 > AWS CloudTrail weist [integrierte Beschränkungen](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/WhatIsCloudTrail-Limits.html) in seiner LookupEvents-API auf. Es sind nicht mehr als zwei Transaktionen pro Sekunde (TPS) pro Konto zulässig, und jede Abfrage kann maximal 50 Datensätze zurückgeben. Wenn also ein einziger Mandant ständig mehr als 100 Datensätze pro Sekunde in einer Region generiert, kommen es zu Backlogs und Verzögerungen bei der Datenerfassung.
@@ -33,7 +33,7 @@ Verwenden Sie den AWS-Connector, um alle Ihre AWS CloudTrail-Ereignisse in Azure
 Sie benötigen Schreibzugriff auf den Azure Sentinel-Arbeitsbereich.
 
 > [!NOTE]
-> Azure Sentinel sammelt CloudTrail-Ereignisse aus allen Regionen. Es wird davon abgeraten, Ereignisse aus einer Region in eine andere zu streamen.
+> Azure Sentinel sammelt CloudTrail-Verwaltungsereignisse aus allen Regionen. Es wird davon abgeraten, Ereignisse aus einer Region in eine andere zu streamen.
 
 ## <a name="connect-aws"></a>Herstellen einer Verbindung mit AWS 
 

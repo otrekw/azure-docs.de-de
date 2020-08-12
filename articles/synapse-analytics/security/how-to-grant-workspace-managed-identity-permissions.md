@@ -1,5 +1,5 @@
 ---
-title: Gewähren von Berechtigungen für die verwaltete Identität in einem Azure Synapse-Arbeitsbereich
+title: Gewähren von Berechtigungen für die verwaltete Identität in einem Synapse-Arbeitsbereich
 description: In diesem Artikel wird erläutert, wie Berechtigungen für die verwaltete Identität im Azure Synapse-Arbeitsbereich konfiguriert werden.
 author: RonyMSFT
 ms.service: synapse-analytics
@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 8e33bd127fca9ddce7b15d144fd287ec4a6bf0e2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5c07943d517f893e67eed5103660a953b508cc87
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85193463"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87535041"
 ---
 # <a name="grant-permissions-to-workspace-managed-identity-preview"></a>Erteilen von Berechtigungen für die verwaltete Identität eines Arbeitsbereichs (Vorschau)
 
@@ -22,7 +22,7 @@ In diesem Artikel erfahren Sie, wie Sie der verwalteten Identität in einem Azur
 >[!NOTE]
 >Diese verwaltete Identität für den Arbeitsbereich wird im Rest dieses Dokuments als „verwaltete Identität“ bezeichnet.
 
-## <a name="grant-the-managed-identity--permissions-to-the-sql-pool"></a>Gewähren von Berechtigungen für die verwaltete Identität für den SQL-Pool
+## <a name="grant-managed-identity-permissions-to-the-sql-pool"></a>Gewähren von Berechtigungen für die verwaltete Identität für den SQL-Pool
 
 Die verwaltete Identität gewährt Berechtigungen für die SQL-Pools im Arbeitsbereich. Mit gewährten Berechtigungen können Sie Pipelines orchestrieren, die auf SQL-Pools bezogene Aktivitäten ausführen. Wenn Sie über das Azure-Portal einen Azure Synapse-Arbeitsbereich erstellen, können Sie der verwalteten Identität CONTROL-Berechtigungen für SQL-Pools erteilen.
 
@@ -84,11 +84,11 @@ Wählen Sie **+ Hinzufügen**.
 
 ![Neue Rollenzuweisung hinzufügen](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-9.png)
 
-#### <a name="step-5-select-the-rbac-role"></a>Schritt 5: Auswählen der RBAC-Rolle
+#### <a name="step-5-select-the-azure-role"></a>Schritt 5: Auswählen der Azure-Rolle
 
 Wählen Sie die Rolle **Mitwirkender an Storage-Blobdaten** aus.
 
-![Auswählen der RBAC-Rolle](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-10.png)
+![Auswählen der Azure-Rolle](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-10.png)
 
 #### <a name="step-6-select-the-azure-ad-security-principal"></a>Schritt 6: Auswählen des Azure AD-Sicherheitsprinzipals
 

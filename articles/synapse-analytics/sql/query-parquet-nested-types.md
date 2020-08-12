@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 60f2a1992750950b50995fcf36513e44e377004d
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: fb56c4da77ddeb87ebc3724a3b138994e4da98e7
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386604"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87489689"
 ---
 # <a name="query-nested-types-in-parquet-and-json-files-using-sql-on-demand-preview-in-azure-synapse-analytics"></a>Abfragen von geschachtelten Typen in Parquet und JSON-Dateien mit SQL On-Demand (Vorschauversion) in Azure Synapse Analytics
 
@@ -203,7 +203,7 @@ FROM
 
 Die Struktur `MapOfPersons` wird als `VARCHAR`-Spalte zurückgegeben und als JSON-Zeichenfolge formatiert.
 
-## <a name="projecting-values-from-repeated-columns"></a>Projizieren von Werten aus wiederholten Spalten
+## <a name="project-values-from-repeated-columns"></a>Projizieren von Werten aus wiederholten Spalten
 
 Wenn Sie in manchen Spalten über ein Array aus Skalarwerten (z. B. `[1,2,3]`) verfügen, können Sie sie einfach erweitern und mithilfe des folgenden Skripts mit der Hauptzeile verknüpfen:
 

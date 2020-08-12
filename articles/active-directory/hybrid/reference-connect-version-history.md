@@ -12,12 +12,12 @@ ms.date: 05/20/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 72acf60bd9bc5baeba37d8ccffa79fe597954f16
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 04f97dc7296dd2ca9e9f869373cbf82838aa79f5
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86230382"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87445319"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Verlauf der Versionsveröffentlichungen
 Das Azure Active Directory-Team (Azure AD) aktualisiert Azure AD Connect regelmäßig mit neuen Features und Funktionen. Nicht alle Erweiterungen gelten für alle Benutzergruppen.
@@ -47,6 +47,20 @@ Nicht für alle Releases von Azure AD Connect wird das automatische Upgrade zur 
 >Wenn Sie Azure AD Connect für die Synchronisierung aktiviert haben und eine der älteren Versionen ausführen, erhalten Sie in Kürze automatische Integritätsbenachrichtigungen, die Sie vor anstehenden Einstellungen warnen.
 >
 >In [diesem Artikel](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-upgrade-previous-version) erfahren Sie mehr über das Upgrade von Azure AD Connect auf die aktuelle Version.
+
+## <a name="15450"></a>1.5.45.0
+
+### <a name="release-status"></a>Releasestatus
+29.07.2020: Für den Download veröffentlicht
+
+### <a name="functional-changes"></a>Funktionale Änderungen
+Dies ist ein Release zur Fehlerbehebung. Dieses Release enthält keine funktionalen Änderungen.
+
+### <a name="fixed-issues"></a>Behobene Probleme
+
+- Es wurde ein Problem behoben, durch das der Administrator „Nahtloses einmaliges Anmelden“ nicht aktivieren konnte, wenn das Computerkonto AZUREADSSOACC bereits in „Active Directory“ vorhanden war.
+- Es wurde ein Problem behoben, das einen Stagingfehler beim Deltaimport der V2-API für ein in Konflikt stehendes Objekt verursacht hat, das über das Integritätsportal repariert wurde.
+- Es wurde ein Problem in der Import-/Exportkonfiguration behoben, durch das die deaktivierte benutzerdefinierte Regel als aktiviert importiert wurde.
 
 ## <a name="15420"></a>1.5.42.0
 

@@ -12,12 +12,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, carlrab
 ms.date: 07/27/2020
-ms.openlocfilehash: 00efa3ea6fcd299dcdc51b3002d6b0459edf2ec4
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: f98e540a6764869f1d37edfbb0f00bf8d1cc2198
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281156"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87499176"
 ---
 # <a name="configure-and-manage-azure-ad-authentication-with-azure-sql"></a>Konfigurieren und Verwalten der Azure Active Directory-Authentifizierung mit Azure SQL
 
@@ -360,7 +360,7 @@ SQL Managed Instance unterstützt Azure AD-Serverprinzipale (Anmeldungen), desha
 Die Verwendung der Azure Active Directory-Authentifizierung bei SQL-Datenbank und Azure Synapse erfordert jedoch die Verwendung von eigenständigen Datenbankbenutzern auf der Grundlage einer Azure AD-Identität. Ein eigenständiger Datenbankbenutzer umfasst keine Anmeldung in der Masterdatenbank und ist einer Identität in Azure AD zugeordnet, die mit der Datenbank verknüpft ist. Bei der Azure AD-Identität kann es sich entweder um ein einzelnes Benutzerkonto oder um eine Gruppe handeln. Weitere Informationen zu eigenständigen Datenbankbenutzern finden Sie unter [Eigenständige Datenbankbenutzer – machen Sie Ihre Datenbank portabel](https://msdn.microsoft.com/library/ff929188.aspx).
 
 > [!NOTE]
-> Datenbankbenutzer (mit Ausnahme von Administratoren) können nicht im Azure-Portal erstellt werden. RBAC-Rollen werden nicht an die Datenbank in SQL-Datenbank, SQL Managed Instance oder Azure Synapse weitergegeben. Azure RBAC-Rollen dienen zum Verwalten von Azure-Ressourcen und gelten nicht für Datenbankberechtigungen. Beispielsweise gewährt die Rolle **SQL Server-Mitwirkender** keinen Zugriff zur Verbindungsherstellung mit der Datenbank in SQL-Datenbank, SQL Managed Instance oder Azure Synapse. Die Zugriffsberechtigung muss direkt in der Datenbank mithilfe von Transact-SQL-Anweisungen erteilt werden.
+> Datenbankbenutzer (mit Ausnahme von Administratoren) können nicht im Azure-Portal erstellt werden. Azure-Rollen werden nicht an die Datenbank in SQL-Datenbank, SQL Managed Instance oder Azure Synapse weitergegeben. Azure-Rollen dienen zum Verwalten von Azure-Ressourcen und gelten nicht für Datenbankberechtigungen. Beispielsweise gewährt die Rolle **SQL Server-Mitwirkender** keinen Zugriff zur Verbindungsherstellung mit der Datenbank in SQL-Datenbank, SQL Managed Instance oder Azure Synapse. Die Zugriffsberechtigung muss direkt in der Datenbank mithilfe von Transact-SQL-Anweisungen erteilt werden.
 
 > [!WARNING]
 > In den T-SQL-Anweisungen `CREATE LOGIN` und `CREATE USER` werden Sonderzeichen wie Doppelpunkt (`:`) oder kaufmännisches Und-Zeichen (`&`) in Benutzernamen nicht unterstützt.
@@ -544,4 +544,3 @@ Eine Anleitung zur Behandlung von Problemen bei der Azure AD-Authentifizierung f
 [11]: ./media/authentication-aad-configure/active-directory-integrated.png
 [12]: ./media/authentication-aad-configure/12connect-using-pw-auth2.png
 [13]: ./media/authentication-aad-configure/13connect-to-db2.png
-

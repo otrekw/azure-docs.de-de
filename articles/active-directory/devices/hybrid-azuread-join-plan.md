@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 16203ab972f6117cec41e43ee5dd89cda7e95ede
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4c4b9ae0ed682d6b34099c8eff941f1d0b6cabad
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87025694"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87461764"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Anleitung: Planen der Implementierung einer Azure Active Directory-Hybrideinbindung
 
@@ -121,6 +121,9 @@ Azure AD Hybrid-Join funktioniert sowohl in verwalteten als auch in Verbundumge
 Eine verwaltete Umgebung kann entweder durch [Kennworthashsynchronisierung](/azure/active-directory/hybrid/whatis-phs) (Password Hash Sync, PHS) oder [Passthrough-Authentifizierung](/azure/active-directory/hybrid/how-to-connect-pta) (Pass Through Authentication, PTA) mit [nahtlosem einmaligem Anmelden](/azure/active-directory/hybrid/how-to-connect-sso) (Seamless Single Sign-On, Seamless SSO) bereitgestellt werden.
 
 In diesen Szenarien müssen Sie keinen Verbundserver für die Authentifizierung konfigurieren.
+
+> [!NOTE]
+> Die [Cloudauthentifizierung mit gestaffeltem Rollout](/hybrid/how-to-connect-staged-rollout) wird nur ab Windows 10, Update 1903, unterstützt
 
 ### <a name="federated-environment"></a>Verbundumgebung
 

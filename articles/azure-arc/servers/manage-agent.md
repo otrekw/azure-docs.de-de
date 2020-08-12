@@ -6,14 +6,14 @@ ms.service: azure-arc
 ms.subservice: azure-arc-servers
 author: mgoedtel
 ms.author: magoedte
-ms.date: 07/14/2020
+ms.date: 07/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: 122f88e8bf14d3e3b082930716cffc3621afd336
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 73ece3f1bc8d5e88d4c1c37e1040f2494230e4ee
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87067700"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87809594"
 ---
 # <a name="managing-and-maintaining-the-connected-machine-agent"></a>Verwalten des Connected Machine-Agent
 
@@ -182,6 +182,9 @@ Führen Sie den folgenden Befehl aus, um die Verbindung mit Ihren Anmeldeinforma
 
 ### <a name="reconnect"></a>Verbindung wiederherstellen
 
+> [!WARNING]
+> Der Befehl `reconnect` ist veraltet und sollte nicht verwendet werden. Der Befehl wird in einem zukünftigen Release des Agents entfernt, und vorhandene Agents können die Anforderung zum erneuten Herstellen der Verbindung nicht mehr erfüllen. [Trennen](#disconnect) Sie stattdessen die Verbindung mit Ihrem Computer, und stellen Sie erneut eine [Verbindung](#connect) her.
+
 Mit diesem Parameter wird der bereits registrierte oder verbundene Computer erneut mit Azure Arc für Server (Vorschau) verbunden. Dies ist möglicherweise erforderlich, wenn der Computer mindestens 45 Tage lang ausgeschaltet war, damit das Zertifikat abläuft. Dieser Parameter verwendet die angegebenen Authentifizierungsoptionen, um neue Anmeldeinformationen abzurufen, die der Azure Resource Manager-Ressource entsprechen, die diesen Computer darstellt.
 
 Dieser Befehl erfordert höhere Berechtigungen als die Rolle [Azure Connected Machine-Onboarding](agent-overview.md#required-permissions).
@@ -317,6 +320,6 @@ sudo azcmagent_proxy remove
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Erfahren Sie, wie Sie Ihren Computer mithilfe von [Azure Policy](../../governance/policy/overview.md) verwalten, wie z. B. bei der VM-[Gastkonfiguration](../../governance/policy/concepts/guest-configuration.md), dem Überprüfen, ob der Computer dem erwarteten Log Analytics-Arbeitsbereich Bericht erstattet, beim Aktivieren der Überwachung mit [Azure Monitor mit VMs](../../azure-monitor/insights/vminsights-enable-at-scale-policy.md) und vieles mehr.
+- Erfahren Sie, wie Sie Ihren Computer mithilfe von [Azure Policy](../../governance/policy/overview.md) verwalten, wie z. B. bei der VM-[Gastkonfiguration](../../governance/policy/concepts/guest-configuration.md), dem Überprüfen, ob der Computer dem erwarteten Log Analytics-Arbeitsbereich Bericht erstattet, beim Aktivieren der Überwachung mit [Azure Monitor mit VMs](../../azure-monitor/insights/vminsights-enable-policy.md) und vieles mehr.
 
 - Weitere Informationen zum [Log Analytics-Agent](../../azure-monitor/platform/log-analytics-agent.md). Der Log Analytics-Agent für Windows und Linux ist erforderlich, wenn Sie das Betriebssystem und die Workloads auf dem Computer proaktiv überwachen, den Computer mithilfe von Automation-Runbooks oder Funktionen wie der Updateverwaltung verwalten oder andere Azure-Dienste wie [Azure Security Center](../../security-center/security-center-intro.md) verwenden möchten.

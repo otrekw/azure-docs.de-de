@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: beengen
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c35204e37e3aae930577697779b8f945c4fbfbcb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4eaf0ab6cc412b7f5a02f898682e90fdde9de3a1
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84727210"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87542360"
 ---
 # <a name="linkedin-account-connections-data-sharing-and-consent"></a>Datenfreigabe und Benutzereinwilligung bei LinkedIn-Kontoverbindungen
 
@@ -39,7 +39,9 @@ Zugriff auf LinkedIn-Informationen in Microsoft-Apps und -Diensten erleichtert e
 Sie müssen Azure Active Directory-Administrator sein, um die Einstellung für Ihre Organisation zu verwalten. Sie können sie für alle Benutzer oder nur für eine bestimmte Gruppe von Benutzern aktivieren.
 
 1. Um die Integration zu aktivieren bzw. zu deaktivieren, führen Sie die Schritte unter [Einwilligen in die LinkedIn-Integration für Ihre Azure AD Organisation](linkedin-integration.md) aus.
-2. Wenn Sie die LinkedIn-Integration in Ihrer Organisation ankündigen, verweisen Sie Ihre Benutzer auf die häufig gestellten Fragen (FAQ) zu [LinkedIn-Informationen in Microsoft-Apps und -Diensten](https://support.office.com/article/about-linkedin-information-and-features-in-microsoft-apps-and-services-dc81cc70-4d64-4755-9f1c-b9536e34d381). Der Artikel enthält Informationen dazu, wo LinkedIn-Informationen angezeigt werden, wie man Konten verbindet und mehr.
+2. Wenn Sie die LinkedIn-Integration in Ihrer Organisation ankündigen, verweisen Sie Ihre Benutzer auf die häufig gestellten Fragen (FAQ) zu [LinkedIn-Informationen in Microsoft-Apps und -Diensten](https://support.office.com/article/about-linkedin-information-and-features-in-microsoft-apps-and-services-dc81cc70-4d64-4755-9f1c-b9536e34d381). Der Artikel enthält Informationen dazu, wo LinkedIn-Informationen angezeigt werden, wie [Datenfreigabe und Datenschutz](https://support.microsoft.com/office/your-data-ae9c08a7-4d06-45b5-a065-320a97bc1400) funktionieren, [wie Konten verbunden werden](https://support.microsoft.com/office/connect-your-linkedin-and-work-or-school-accounts-c7c245f2-fa56-4c9b-ba20-3fceb23c5772) und mehr.
+
+Sie müssen die LinkedIn-Integration für Ihre Benutzer ankündigen und ihnen alle Informationen im Zusammenhang mit [Datenfreigabe und Datenschutz bei der LinkedIn-Integration](https://support.microsoft.com/office/your-data-ae9c08a7-4d06-45b5-a065-320a97bc1400) bereitstellen. 
 
 ## <a name="user-consent-for-data-access-in-microsoft-and-linkedin"></a>Benutzereinwilligung zum Datenzugriff in Microsoft und LinkedIn
 
@@ -76,7 +78,7 @@ Wenn Sie Ihre Microsoft- und LinkedIn-Konten verbinden, gestatten Sie Microsoft,
 
 Daten, auf die von Microsoft zugegriffen wird, werden nicht dauerhaft in LinkedIn gespeichert, außer Kontakten. Microsoft-Kontakte werden in LinkedIn gespeichert, bis Benutzer sie entfernen. Weitere Informationen zum [Löschen importierter Kontakte aus LinkedIn](https://www.linkedin.com/help/linkedin/answer/43377).
 
-Weitere Informationen zur Verwendung persönlicher Daten durch LinkedIn finden Sie in den [Datenschutzbestimmungen von LinkedIn](https://www.linkedin.com/legal/privacy-policy). Bei Diensten, Datenübertragungen und Speicherung von LinkedInkönnen Daten aus der Europäischen Union in die Vereinigten Staaten und zurück fließen, wobei Ihr Datenschutz wie in [Datenübertragungen in der Europäischen Union](https://www.linkedin.com/help/linkedin/answer/62533) beschrieben gewährleistet wird.
+Weitere Informationen zur Verwendung persönlicher Daten durch LinkedIn finden Sie in den [Datenschutzbestimmungen von LinkedIn](https://www.linkedin.com/legal/privacy-policy). Bei Diensten, Datenübertragungen und Speicherung von LinkedInkönnen Daten aus der Europäischen Union in die Vereinigten Staaten und zurück fließen, wobei Ihr Datenschutz wie in Datenübertragungen in der Europäischen Union beschrieben gewährleistet wird.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

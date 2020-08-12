@@ -1,6 +1,6 @@
 ---
 title: 'Azure NetApp Files: SDKs und CLI-Tools | Microsoft-Dokumentation'
-description: Enthält eine Auflistung der SDKs und Befehlszeilentools (CLI-Tools), die von Azure NetApp Files unterstützt werden.
+description: 'Erfahren Sie etwas über die unterstützten SDKs für Azure NetApp Files und deren Veröffentlichungsorten in GitHub sowie zu den unterstützten Befehlszeilentools: Azure-Befehlszeilenschnittstelle und PowerShell.'
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/06/2020
 ms.author: b-juche
-ms.openlocfilehash: b0cb29d6db339a64a1d9b753acbfd2334364853a
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 54c85fb778d1794f9aeba2eba5ed459292636e35
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045466"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87513620"
 ---
 # <a name="azure-netapp-files-sdks-and-cli-tools"></a>Azure NetApp Files SDKs und CLI-Tools
 

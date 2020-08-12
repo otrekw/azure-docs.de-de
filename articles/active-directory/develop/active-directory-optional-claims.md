@@ -1,32 +1,32 @@
 ---
 title: Bereitstellen optionaler Ansprüche für Azure AD-Apps
 titleSuffix: Microsoft identity platform
-description: Hinzufügen benutzerdefinierter oder zusätzlicher Ansprüche zu den SAML 2.0- und JWT-Token (JSON Web Token), die von Azure Active Directory ausgestellt werden.
+description: Hinzufügen benutzerdefinierter oder zusätzlicher Ansprüche zu den SAML 2.0- und JWT-Token (JSON Web Token), die von Microsoft Identity Platform ausgestellt werden.
 author: rwike77
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: how-to
 ms.workload: identity
-ms.date: 06/11/2020
+ms.date: 07/30/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
-ms.openlocfilehash: f751c45b12ec2c8f6f09080b01b24f59af1fc0d0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f93e2b34c64ce4bd8cec7182c3e990f0e675dc11
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85478330"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87552865"
 ---
-# <a name="how-to-provide-optional-claims-to-your-azure-ad-app"></a>Gewusst wie: Bereitstellen optionaler Ansprüche für Ihre Azure AD-App
+# <a name="how-to-provide-optional-claims-to-your-app"></a>Gewusst wie: Bereitstellen optionaler Ansprüche für Ihre App
 
 Anwendungsentwickler können optionale Ansprüche in ihren Azure AD-Anwendungen verwenden, um anzugeben, welche Ansprüche in Token vorhanden sein sollen, die an ihre Anwendungen gesendet werden.
 
 Sie können optionale Ansprüche zu folgenden Zwecken verwenden:
 
 - Auswählen zusätzlicher Ansprüche, die in Token für Ihre Anwendung aufgenommen werden sollen
-- Ändern des Verhaltens bestimmter Ansprüche, die von Azure AD in Token zurückgegeben werden
+- Ändern des Verhaltens bestimmter Ansprüche, die von Microsoft Identity Platform in Form von Token zurückgegeben werden.
 - Hinzufügen und Zugreifen auf benutzerdefinierte Ansprüche für Ihre Anwendung
 
 Die Listen der Standardansprüche finden Sie in der Anspruchsdokumentation unter [Zugriffstoken](access-tokens.md) und [id_token](id-tokens.md).
@@ -53,12 +53,10 @@ Die Gruppe optionaler Ansprüche, die standardmäßig zur Verwendung in Anwendun
 |----------------------------|----------------|------------|-----------|--------|
 | `auth_time`                | Zeitpunkt der letzten Authentifizierung des Benutzers. Siehe OpenID Connect-Spezifikation.| JWT        |           |  |
 | `tenant_region_scope`      | Region des Ressourcenmandanten | JWT        |           | |
-| `home_oid`                 | Bei Gastbenutzern: Die Objekt-ID des Benutzers im Basismandanten des Benutzers.| JWT        |           | |
 | `sid`                      | Sitzungs-ID, die zur sitzungsbezogenen Abmeldung des Benutzers verwendet wird | JWT        |  Persönliche Konten und Azure AD-Konten   |         |
 | `platf`                    | Geräteplattform    | JWT        |           | Beschränkt auf verwaltete Geräte, die den Gerätetyp überprüfen können.|
 | `verified_primary_email`   | Wird aus der „PrimaryAuthoritativeEmail“ des Benutzers abgerufen      | JWT        |           |         |
 | `verified_secondary_email` | Wird aus der „SecondaryAuthoritativeEmail“ des Benutzers abgerufen   | JWT        |           |        |
-| `enfpolids`                | IDs erzwungener Richtlinien. Eine Liste der Richtlinien-IDs, die für den aktuellen Benutzer ausgewertet wurden. | JWT |  |  |
 | `vnet`                     | Informationen zum VNET-Spezifizierer | JWT        |           |      |
 | `fwd`                      | IP-Adresse.| JWT    |   | Fügt die ursprüngliche IPv4-Adresse des anfordernden Clients hinzu (wenn innerhalb eines VNET). |
 | `ctry`                     | Land/Region des Benutzers | JWT |  | Azure AD gibt den optionalen Anspruch `ctry` zurück, wenn er vorhanden ist und der Wert des Anspruchs ein standardmäßiger aus zwei Buchstaben bestehender Länder-/Regionscode (wie z. B. FR, JP oder SZ) ist. |
@@ -68,8 +66,8 @@ Die Gruppe optionaler Ansprüche, die standardmäßig zur Verwendung in Anwendun
 | `xms_tpl`                  | Bevorzugte Mandantensprache| JWT | | Die bevorzugte Sprache des Ressourcenmandanten, falls festgelegt. Sie wird in Form des Sprachkürzels angegeben (z. B.: en). |
 | `ztdid`                    | ID der Bereitstellung ohne manuelles Eingreifen | JWT | | Die für [Windows Autopilot](https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-10-autopilot) verwendete Geräteidentität |
 | `email`                    | Die adressierbaren E-Mail-Adresse dieses Benutzers, wenn der Benutzer über eine verfügt.  | JWT, SAML | MSA, Azure AD | Dieser Wert ist standardmäßig enthalten, wenn der Benutzer ein Gast im Mandanten ist.  Für verwaltete Benutzer (Benutzer innerhalb des Mandanten) muss er über diese optionale Anforderung oder – nur in v2.0 – mit dem OpenID-Bereich angefordert werden.  Für verwaltete Benutzer muss die E-Mail-Adresse im [Office-Verwaltungsportal](https://portal.office.com/adminportal/home#/users) festgelegt sein.|
-| `groups`| Optionale Formatierung für Gruppenansprüche |JWT, SAML| |Wird in Verbindung mit der Einstellung „GroupMembershipClaims“ im [Anwendungsmanifest](reference-app-manifest.md) verwendet, das ebenfalls festgelegt sein muss. Weitere Informationen finden Sie weiter unten unter [Gruppenansprüche](#configuring-groups-optional-claims). Weitere Informationen zu Gruppenansprüchen finden Sie unter [Konfigurieren von Gruppenansprüchen](../hybrid/how-to-connect-fed-group-claims.md).
 | `acct`                | Benutzerkontostatus im Mandanten. | JWT, SAML | | Wenn der Benutzer dem Mandanten angehört, lautet der Wert `0`. Bei einem Gastbenutzer lautet der Wert `1`. |
+| `groups`| Optionale Formatierung für Gruppenansprüche |JWT, SAML| |Wird in Verbindung mit der Einstellung „GroupMembershipClaims“ im [Anwendungsmanifest](reference-app-manifest.md) verwendet, das ebenfalls festgelegt sein muss. Weitere Informationen finden Sie weiter unten unter [Gruppenansprüche](#configuring-groups-optional-claims). Weitere Informationen zu Gruppenansprüchen finden Sie unter [Konfigurieren von Gruppenansprüchen](../hybrid/how-to-connect-fed-group-claims.md).
 | `upn`                      | UserPrincipalName | JWT, SAML  |           | Obwohl dieser Anspruch automatisch hinzugefügt wird, können Sie ihn als einen optionalen Anspruch angeben, um zusätzliche Eigenschaften zum Ändern des Verhaltens im Fall eines Gastbenutzer anzufügen.  |
 | `idtyp`                    | Tokentyp   | JWT-Zugriffstoken | Besonderheit: Nur in Nur-App-Zugriffstoken |  Der Wert lautet `app`, wenn es sich beim Token um ein Nur-App-Token handelt. Dies ist der genaueste Weg für eine API, zu bestimmen, ob ein Token ein App-Token oder ein App- und Benutzertoken ist.|
 

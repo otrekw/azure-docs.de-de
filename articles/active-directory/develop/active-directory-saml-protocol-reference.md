@@ -1,33 +1,33 @@
 ---
-title: Verwendung des SAML-Protokolls durch Azure AD
+title: Verwenden des SAL-Protokolls durch Microsoft Identity Platform
 description: Dieser Artikel enthält eine Übersicht über die SAML-Profile für das einmalige Anmelden und Abmelden in Azure Active Directory.
 services: active-directory
-author: rwike77
+author: kenwith
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 10/05/2018
-ms.author: ryanwi
+ms.author: kenwith
 ms.custom: aaddev
-ms.reviewer: hirsin
-ms.openlocfilehash: 44d06030d8015d2df9499ce903eb9cb06e1ef27a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.reviewer: paulgarn
+ms.openlocfilehash: 06f80f94be25e42c9e8f0270e6cb15aca086ae18
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80885649"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87552797"
 ---
-# <a name="how-azure-ad-uses-the-saml-protocol"></a>Verwendung des SAML-Protokolls durch Azure AD
+# <a name="how-microsoft-identity-platform-uses-the-saml-protocol"></a>Verwenden des SAL-Protokolls durch Microsoft Identity Platform
 
-Azure Active Directory (Azure AD) verwendet das SAML 2.0-Protokoll, um es Anwendungen zu ermöglichen, für Benutzer das einmalige Anmelden bereitzustellen. In den SAML-Profilen zum [einmaligen Anmelden](single-sign-on-saml-protocol.md) und [einmaligen Abmelden](single-sign-out-saml-protocol.md) von Azure AD wird beschrieben, wie SAML-Assertionen, -Protokolle und -Bindungen im Identitätsanbieterdienst verwendet werden.
+Microsoft Identity Platform verwendet das SAML 2.0-Protokoll, um Anwendungen das Bereitstellen einer Umgebung für einmaliges Anmelden für die Benutzer zu ermöglichen. In den SAML-Profilen zum [einmaligen Anmelden](single-sign-on-saml-protocol.md) und [einmaligen Abmelden](single-sign-out-saml-protocol.md) von Azure AD wird beschrieben, wie SAML-Assertionen, -Protokolle und -Bindungen im Identitätsanbieterdienst verwendet werden.
 
-Für das SAML-Protokoll ist es erforderlich, dass der Identitätsanbieter (Azure AD) und der Dienstanbieter (die Anwendung) Informationen übereinander austauschen.
+Für das SAML-Protokoll ist es erforderlich, dass der Identitätsanbieter (Microsoft Identity Platform) und der Dienstanbieter (die Anwendung) Informationen übereinander austauschen.
 
 Wenn eine Anwendung unter Azure AD registriert ist, registriert der App-Entwickler verbundbezogene Informationen unter Azure AD. Dies gilt auch für den **Umleitungs-URI** und den **Metadaten-URI** der Anwendung.
 
-Azure AD nutzt den **Metadaten-URI** des Clouddiensts, um den Signaturschlüssel und den Abmelde-URI abzurufen. Kunden können die App unter **Azure AD > App-Registrierung** öffnen und dann über **Einstellungen > Eigenschaften** die Abmelde-URL aktualisieren. Auf diese Weise kann Azure AD die Antwort an die richtige URL senden. 
+Microsoft Identity Platform nutzt den **Metadaten-URI** des Clouddiensts, um den Signaturschlüssel und den Abmelde-URI abzurufen. Kunden können die App unter **Azure AD > App-Registrierung** öffnen und dann über **Einstellungen > Eigenschaften** die Abmelde-URL aktualisieren. Dadurch kann Microsoft Identity Platform die Antwort an die richtige URL senden. 
 
 Azure Active Directory macht mandantenspezifische und allgemeine (mandantenunabhängige) Endpunkte für das einmalige Anmelden und das einmalige Abmelden verfügbar. Bei diesen URLs handelt es sich um adressierbare Speicherorte (nicht nur um Bezeichner), damit Sie auf den Endpunkt zugreifen können, um die Metadaten zu lesen.
 

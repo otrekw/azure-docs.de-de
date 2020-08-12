@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 10/02/2019
 ms.author: sngun
-ms.openlocfilehash: 57db2253cbffa8e16313c7613de6d2ddb2f2b0a2
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 1bda235e5f3f867762457d0dc8214bbadc88059e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027238"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084822"
 ---
 # <a name="connect-to-azure-cosmos-db-using-bi-analytics-tools-with-the-odbc-driver"></a>Herstellen einer Azure Cosmos DB-Verbindung mithilfe von BI-Analysetools per ODBC-Treiber
 
@@ -236,9 +236,9 @@ Sie können Ihren neuen DSN verwenden, um Azure Cosmos DB mit beliebigen ODBC-ko
 
 1. Aktivieren Sie das Kontrollkästchen vor dem Tabellennamen, und klicken Sie dann auf **Laden**, um die Daten in Power BI Desktop zu visualisieren.
 
-1. Wählen Sie in Power BI Desktop ganz links die Registerkarte „Daten“ aus, ![Registerkarte „Daten“ in Power BI Desktop](./media/odbc-driver/odbc-driver-data-tab.png) um sich zu vergewissern, dass die Daten importiert wurden.
+1. Wählen Sie in Power BI Desktop ganz links die Registerkarte „Daten“ :::image type="icon" source="./media/odbc-driver/odbc-driver-data-tab.png"::: aus, um sich zu vergewissern, dass die Daten importiert wurden. 
 
-1. Sie können jetzt mit Power BI visuelle Elemente erstellen, indem Sie auf die Registerkarte „Bericht“ ![Registerkarte „Bericht“ in Power BI Desktop](./media/odbc-driver/odbc-driver-report-tab.png) und auf **Neues visuelles Element** klicken und anschließend die Kachel anpassen. Weitere Informationen zur Erstellung von Visualisierungen in Power BI Desktop finden Sie unter [Visualisierungstypen in Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-visualization-types-for-reports-and-q-and-a/).
+1. Sie können jetzt mit Power BI visuelle Elemente erstellen, indem Sie auf die Registerkarte „Bericht“ :::image type="icon" source="./media/odbc-driver/odbc-driver-report-tab.png"::: und auf **Neues visuelles Element** klicken und anschließend die Kachel anpassen. Weitere Informationen zur Erstellung von Visualisierungen in Power BI Desktop finden Sie unter [Visualisierungstypen in Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-visualization-types-for-reports-and-q-and-a/). 
 
 ## <a name="troubleshooting"></a>Problembehandlung
 

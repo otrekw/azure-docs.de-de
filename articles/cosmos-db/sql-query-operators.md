@@ -4,14 +4,14 @@ description: Erfahren Sie mehr über SQL-Operatoren wie Gleichheit, Vergleich un
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 03/19/2020
+ms.date: 07/29/2020
 ms.author: tisande
-ms.openlocfilehash: 8ef41edb687a5df39243880c897d12e83c008ec9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dd1652781d7eae8beb400c52137a8f16891e2b2a
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80063573"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498836"
 ---
 # <a name="operators-in-azure-cosmos-db"></a>Operatoren in Azure Cosmos DB
 
@@ -34,6 +34,14 @@ Die folgende Tabelle zeigt die Ergebnisse für Gleichheitsvergleiche in der SQL-
 Bei Vergleichsoperatoren wie `>`, `>=`, `!=`, `<` und `<=` ergeben Vergleiche unterschiedlicher Typen oder zwischen zwei Objekten oder Arrays den Wert `Undefined`.  
 
 Wenn das Ergebnis des skalaren Ausdrucks `Undefined` ist, wird das Element nicht in das Ergebnis eingeschlossen, da `Undefined` nicht gleich `true` ist.
+
+Beispielsweise erzeugt die folgende Abfrage durch den Vergleich einer Zahl mit einem Zeichenfolgenwert `Undefined`. Daher enthält der Filter keine Ergebnisse.
+
+```sql
+SELECT *
+FROM c
+WHERE 7 = 'a'
+```
 
 ## <a name="logical-and-or-and-not-operators"></a>Logische Operatoren (AND, OR und NOT)
 

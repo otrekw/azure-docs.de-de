@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/30/2016
 ms.author: allensu
-ms.openlocfilehash: 6118763bf76795e30e862826f8f5b847f3382a5c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 135504ad4956836614bfc0f2cb107e610de17c0c
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84687972"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543485"
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-the-azure-portal"></a>Zuweisen von mehreren IP-Adressen zu virtuellen Computern mithilfe des Azure-Portals
 
@@ -30,7 +30,7 @@ ms.locfileid: "84687972"
 
 ## <a name="create-a-vm-with-multiple-ip-addresses"></a><a name = "create"></a>Erstellen eines virtuellen Computers mit mehreren IP-Adressen
 
-Wenn Sie einen virtuellen Computer mit mehreren IP-Adressen oder einer statischen privaten IP-Adresse erstellen möchten, müssen Sie ihn mithilfe von PowerShell oder der Azure-Befehlszeilenschnittstelle erstellen. Informationen zur Vorgehensweise erhalten Sie, indem Sie am Anfang dieses Artikels auf eine der Optionen „PowerShell“ oder „CLI“ klicken. Sie können einen virtuellen Computer mit einem einzelnen dynamischen privaten IP-Adresse und (optional) einer einzelnen öffentlichen IP-Adresse erstellen. Verwenden Sie das Portal anhand der Schritte in einem der Artikel [Erstellen einer Windows-VM](../virtual-machines/virtual-machines-windows-hero-tutorial.md) bzw. [Erstellen einer Linux-VM](../virtual-machines/linux/quick-create-portal.md). Nach der Erstellung des virtuellen Computers können Sie über das Portal den IP-Adresstyp von dynamisch in statisch ändern und weitere IP-Adressen hinzufügen. Führen Sie dazu die folgenden Schritte im Abschnitt [Hinzufügen von IP-Adressen zu einem virtuellen Computer](#add) in diesem Artikel aus.
+Wenn Sie einen virtuellen Computer mit mehreren IP-Adressen oder einer statischen privaten IP-Adresse erstellen möchten, müssen Sie ihn mithilfe von PowerShell oder der Azure-Befehlszeilenschnittstelle erstellen. Informationen zur Vorgehensweise erhalten Sie, indem Sie am Anfang dieses Artikels auf eine der Optionen „PowerShell“ oder „CLI“ klicken. Sie können einen virtuellen Computer mit einem einzelnen dynamischen privaten IP-Adresse und (optional) einer einzelnen öffentlichen IP-Adresse erstellen. Verwenden Sie das Portal anhand der Schritte in einem der Artikel [Erstellen einer Windows-VM](../virtual-machines/windows/quick-create-portal.md) bzw. [Erstellen einer Linux-VM](../virtual-machines/linux/quick-create-portal.md). Nach der Erstellung des virtuellen Computers können Sie über das Portal den IP-Adresstyp von dynamisch in statisch ändern und weitere IP-Adressen hinzufügen. Führen Sie dazu die folgenden Schritte im Abschnitt [Hinzufügen von IP-Adressen zu einem virtuellen Computer](#add) in diesem Artikel aus.
 
 ## <a name="add-ip-addresses-to-a-vm"></a><a name="add"></a>Hinzufügen von IP-Adressen zu einem virtuellen Computer
 
@@ -48,7 +48,7 @@ Sie können einer Azure-Netzwerkschnittstelle private und öffentliche IP-Adress
 
 5. Klicken Sie in dem Bereich, der für die ausgewählte NIC angezeigt wird, auf **IP-Konfigurationen**. Klicken Sie auf **Hinzufügen**. Führen Sie die Schritte in einem der folgenden Abschnitte abhängig vom Typ der IP-Adresse aus, die Sie hinzufügen möchten. Klicken Sie dann auf **OK**. 
 
-### <a name="add-a-private-ip-address"></a>**Hinzufügen einer privaten IP-Adresse**
+### <a name="add-a-private-ip-address"></a>Hinzufügen einer privaten IP-Adresse
 
 Führen Sie die folgenden Schritte aus, um eine neue private IP-Adresse hinzuzufügen:
 

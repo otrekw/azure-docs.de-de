@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/08/2020
 author: Microsoft-BradleyWright
 ms.author: brwrigh
-ms.openlocfilehash: 5cea220b44618787e34ce2297921d715476b7f14
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 31bb6dd188786fda532bf85d071e119e69e5bccc
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87280952"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87797864"
 ---
 # <a name="consulting-service-offers"></a>Beratungsdienstangebote
 
@@ -86,12 +86,12 @@ Systemintegratorpartner können Beratungsdienstangebote für die folgenden 20 L
 [Registrieren](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) Sie zunächst ihre Unternehmensinformationen in Azure Marketplace. Eine vollständige Prüfliste der Registrierungsanforderungen finden Sie unter [Ihr Weg zum Herausgeber im Marketplace](become-publisher.md). 
 
 ## <a name="prepare-your-publishing-artifacts"></a>Vorbereiten von Veröffentlichungsartefakten
-Vor der Registrierung können Sie mit der Sammlung und Vorbereitung der Inhalte beginnen, mit denen Sie im Rahmen Ihrer Auflistung den Wert Ihres Diensts und Ihrer Lösung gegenüber Ihrem Zielkunden darstellen können. 
+Vor der Registrierung können Sie mit der Sammlung und Vorbereitung der Inhalte beginnen, mit denen Sie im Rahmen Ihrer Auflistung den Wert Ihres Diensts und Ihrer Lösung gegenüber Ihrem Zielkunden darstellen können.
 
 |Einrichtung für neue Herausgeber  |
 |---------|
 |MPN-ID     |
-|Unternehmenslogos (48 × 48, 216 × 216 Pixel)     |
+|Unternehmenslogos: 48 × 48 Pixel (optional), 216 × 216 Pixel – 350 × 350 Pixel (erforderlich)  |
 |Leadzielgruppe     |
 ||
 

@@ -1,6 +1,6 @@
 ---
 title: Überlegungen zur Leistung für Azure NetApp Files | Microsoft-Dokumentation
-description: Beschreibt Überlegungen zur Leistung für Azure NetApp Files.
+description: Erfahren Sie etwas über die Leistung für Azure NetApp Files, einschließlich des Verhältnisses zwischen Kontingent und Durchsatzlimit und wie sich das Volumekontingent dynamisch erhöhen und verringern lässt.
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/25/2019
 ms.author: b-juche
-ms.openlocfilehash: 4badf550809df6cc63711c47e6e6f5b3690fdfca
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 5f88b4755c7b4c0b20f27065cf9de2351251bc1c
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82691315"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87513875"
 ---
 # <a name="performance-considerations-for-azure-netapp-files"></a>Überlegungen zur Leistung für Azure NetApp Files
 

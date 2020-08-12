@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: hasshah
-ms.openlocfilehash: 0a6df626f9567b51a8371c17004b454f9c5b4597
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: d7eea031e50a0f54a57d8a9c857d52ca137f3283
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83202045"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87760548"
 ---
 # <a name="what-is-a-keyword"></a>Was ist ein Schlüsselwort?
 
@@ -33,10 +33,30 @@ Mit den Features für Anpassung, Leistung und Integration von Custom Keyword kö
 
 ## <a name="get-started-with-custom-keywords"></a>Erste Schritte mit benutzerdefinierten Schlüsselwörtern
 
-* Tutorial: Informationen zum [Erstellen eines benutzerdefinierten Schlüsselworts mithilfe von Speech Studio](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-devices-sdk-create-kws).
-* Tutorial: Gewusst wie: [Sprachaktivierung für Ihr Produkt mit dem Speech SDK und C#](tutorial-voice-enable-your-bot-speech-sdk.md)
-* Schnellstart: [Erkennen von Schlüsselwörtern mit dem Speech SDK auf der Universellen Windows-Plattform mithilfe von C#](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/csharp/uwp/keyword-recognizer)
-* Schnellstart: [Erkennen von Schlüsselwörtern mit dem Speech SDK unter Android mithilfe von Java](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/java/android/keyword-recognizer)
+* Grundlegende Verwendungs- und Entwurfsmuster finden Sie unter [Grundlagen zu benutzerdefinierten Schlüsselwörtern](custom-keyword-basics.md).
+* Gewusst wie: [Sprachaktivierung für Ihr Produkt mit dem Speech SDK und C#](tutorial-voice-enable-your-bot-speech-sdk.md)
+
+## <a name="choose-an-effective-keyword"></a>Auswählen eines effektiven Schlüsselworts
+
+Das Erstellen eines effektiven Schlüsselworts ist wichtig, um sicherzustellen, dass Ihr Gerät konsistent und genau antwortet. Durch das Anpassen Ihres Schlüsselworts können Sie Ihr Gerät auf effektive Weise differenzieren und Ihr Branding stärken. Berücksichtigen Sie bei der Auswahl eines Schlüsselworts die folgenden Richtlinien:
+
+> [!div class="checklist"]
+> * Ihr Schlüsselwort sollte ein englisches Wort oder ein englischer Ausdruck sein.
+> * Es sollte nicht länger als zwei Sekunden dauern, es auszusprechen.
+> * Wörter mit 4 bis 7 Silben eignen sich am besten. So ist „Hey, Computer“ beispielsweise ein gutes Schlüsselwort. Nur „Hey“ ist ein schlechtes Aktivierungswort.
+> * Bei Schlüsselwörtern sollten englische Ausspracheregeln befolgt werden.
+> * Durch ein einzigartiges Wort oder ein Kunstwort, das die allgemeinen englischen Ausspracheregeln befolgt, könnten Ergebnisse mit falsch positiven Werten verringert werden. „Computerama“ würde sich beispielsweise gut als Schlüsselwort eignen.
+> * Wählen Sie kein gängiges Wort aus. Die Wörter „eat“ und „go“ werden beispielsweise häufig in gewöhnlichen Konversationen gesagt. Sie könnten falsche Auslöser für Ihr Gerät sein.
+> * Vermeiden Sie die Verwendung eines Schlüsselworts, das verschiedene Aussprachevarianten haben könnte. Benutzern müsste die „richtige“ Aussprache bekannt sein, um eine Antwort von ihrem Gerät erhalten zu können. „509“ kann beispielsweise als „five zero nine“, „five oh nine“ oder als „five hundred and nine“ ausgesprochen werden. „R.E.I.“ kann als „r-e-i“ oder als „ray“ ausgesprochen werden. „Live“ kann „/līv/“ oder „/liv/“ ausgesprochen werden.
+> * Verwenden Sie keine Sonderzeichen, Symbole oder Ziffern. „Go#“ und „20 + cats“ können problematische Schlüsselwörter sein. „Go sharp“ oder „twenty plus cats“ kann jedoch funktionieren. Sie können weiterhin die Symbole in Ihrem Branding sowie Marketing und Dokumentation zur Untermauerung der richtigen Aussprache verwenden.
+
+> [!NOTE]
+> Wenn Sie als Schlüsselwort ein markenrechtlich geschütztes Wort auswählen, müssen Sie Eigentümer dieser Marke sein oder über eine Berechtigung vom Eigentümer der Marke zur Verwendung des Worts verfügen. Microsoft haftet nicht für rechtliche Probleme, die möglicherweise durch Ihre Auswahl eines Schlüsselworts auftreten.
+
+## <a name="see-samples-on-github"></a>Weitere Informationen finden Sie in den Beispielen auf GitHub
+
+* [Erkennen von Schlüsselwörtern mit dem Speech SDK auf der Universellen Windows-Plattform mithilfe von C#](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/csharp/uwp/keyword-recognizer)
+* [Erkennen von Schlüsselwörtern mit dem Speech SDK unter Android mithilfe von Java](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/java/android/keyword-recognizer)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

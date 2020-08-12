@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d63cb1d7e2b0086a3d9ef6e3917ebefa11c7ccba
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 60d72a98a22fa85e87eb8560ad968415ca70f9a5
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85253374"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87275427"
 ---
 # <a name="best-practices-for-conditional-access-in-azure-active-directory"></a>Best Practices für den bedingten Zugriff in Azure Active Directory
 
@@ -35,7 +35,7 @@ Wenn Sie eine neue Richtlinie erstellen, werden keine Benutzer, Gruppen, Apps od
 
 Damit Ihre Richtlinie funktioniert, müssen Sie Folgendes konfigurieren:
 
-| Was           | Vorgehensweise                                  | Warum |
+| Was?           | Wie?                                  | Warum? |
 | :--            | :--                                  | :-- |
 | **Cloud-Apps** |Wählen Sie mindestens eine App aus.  | Ziel einer Richtlinie für bedingten Zugriff ist es, Ihnen die Steuerung des Zugriffs autorisierter Benutzer auf Cloud-Apps zu ermöglichen.|
 | **Benutzer und Gruppen** | Wählen Sie mindestens einen Benutzer oder eine Gruppe aus, der bzw. die dazu autorisiert ist, auf die von Ihnen ausgewählten Cloud-Apps zuzugreifen. | Eine Richtlinie für bedingten Zugriff, der keine Benutzer und Gruppen zugewiesen sind, wird niemals ausgelöst. |
@@ -49,14 +49,21 @@ Wenn Sie auf eine Cloud-App zugreifen, können mehrere Richtlinien für bedingte
 
 Alle Richtlinien werden in zwei Phasen erzwungen:
 
-- Phase 1: 
-   - Detailsammlung: Sammeln von Details, um Richtlinien zu ermitteln, die bereits erfüllt sind.
-   - In dieser Phase wird von Benutzern unter Umständen ein Zertifikat angefordert, wenn die Gerätekonformität Teil Ihrer Richtlinien für bedingten Zugriff ist. Diese Anforderung kann für Browser-Apps angezeigt werden, wenn das Gerät nicht das Windows 10-Betriebssystem verwendet.
-   - Die erste Phase der Richtlinienauswertung wird für alle aktivierten Richtlinien sowie für Richtlinien im Modus [Nur Bericht](concept-conditional-access-report-only.md) durchlaufen.
-- Phase 2:
-   - Erzwingung: Sicherstellen, dass der Benutzer sämtliche noch nicht erfüllten Anforderungen erfüllt (unter Berücksichtigung der gesammelten Details aus Phase 1).
-   - Anwenden der Ergebnisse auf die Sitzung. 
-   - Die zweite Phase der Richtlinienauswertung wird für alle aktivierten Richtlinien durchlaufen.
+- Phase 1: Sammeln von Sitzungsdetails 
+   - Sammeln Sie Sitzungsdetails wie Benutzerstandort und Geräteidentität, die für die Richtlinienauswertung benötigt werden. 
+   - In dieser Phase wird von Benutzern unter Umständen ein Zertifikat angefordert, wenn die Gerätekonformität Teil Ihrer Richtlinien für bedingten Zugriff ist. Diese Anforderung kann für Browser-Apps angezeigt werden, wenn das Gerät nicht das Windows 10-Betriebssystem verwendet. 
+   - Phase 1 der Richtlinienauswertung gilt für aktivierte Richtlinien sowie für Richtlinien im Modus [Nur Bericht](concept-conditional-access-report-only.md).
+- Phase 2: Erzwingung 
+   - Identifizieren Sie anhand der in Phase 1 gesammelten Sitzungsdetails alle Anforderungen, die nicht erfüllt wurden. 
+   - Wenn es eine Richtlinie gibt, die so konfiguriert ist, dass der Zugriff blockiert wird (mit dem Gewährungssteuerelement „Blockieren“), wird die Erzwingung hier angehalten, und der Benutzer wird blockiert. 
+   - Der Benutzer wird dann aufgefordert, zusätzliche Anforderungen der Gewährungssteuerelemente zu erfüllen, die in Phase 1 nicht erfüllt wurden, und zwar in der folgenden Reihenfolge, bis die Richtlinie erfüllt ist:  
+      - Multi-Factor Authentication 
+      - Genehmigte Client-App/App-Schutzrichtlinie 
+      - Verwaltetes Gerät (kompatibel oder hybrid in Azure AD eingebunden) 
+      - Nutzungsbedingungen 
+      - Benutzerdefinierte Steuerelemente  
+      - Sobald die Anforderungen der Gewährungssteuerelemente erfüllt sind, wenden Sie Sitzungssteuerelemente an (von der App erzwungene Berechtigungen, Microsoft Cloud App Security und Tokengültigkeitsdauer). 
+   - Die zweite Phase der Richtlinienauswertung wird für alle aktivierten Richtlinien durchlaufen. 
 
 ### <a name="how-are-assignments-evaluated"></a>Wie werden Zuweisungen ausgewertet?
 
@@ -71,7 +78,7 @@ Beim Konfigurieren einer Standortbedingung, die für alle Verbindungen von auße
 
 Wenn Ihr Zugriff auf das Azure AD-Portal aufgrund einer falschen Einstellung in einer Richtlinie für bedingten Zugriff gesperrt wurde, gehen Sie folgendermaßen vor:
 
-- Überprüfen Sie, ob weitere Administratoren in Ihrer Organisation vorhanden sind, die noch nicht gesperrt sind. Ein Administrator mit Zugriff auf das Azure-Portal kann die Richtlinie deaktivieren, die Ihre Anmeldung sperrt. 
+- Überprüfen Sie, ob weitere Administratoren in Ihrer Organisation vorhanden sind, die noch nicht gesperrt sind. Ein Administrator mit Zugriff auf das Azure-Portal kann die Richtlinie deaktivieren, die Ihre Anmeldung verhindert. 
 - Wenn keiner der Administratoren in Ihrer Organisation die Richtlinie aktualisieren kann, müssen Sie eine Supportanfrage übermitteln. Der Microsoft-Support kann Richtlinien für bedingten Zugriff, die den Zugriff verhindern, überprüfen und aktualisieren.
 
 ### <a name="what-happens-if-you-have-policies-in-the-azure-classic-portal-and-azure-portal-configured"></a>Was passiert, wenn Sie im klassischen Azure-Portal und im Azure-Portal Richtlinien konfiguriert haben?  

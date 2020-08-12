@@ -3,18 +3,16 @@ title: Verwalten von Azure Data Lake Analytics mithilfe des Azure-Portals
 description: In diesem Artikel wird beschrieben, wie Sie das Azure-Portal zum Verwalten von Data Lake Analytics-Konten, -Datenquellen, -Benutzern und -Aufträgen verwenden.
 services: data-lake-analytics
 ms.service: data-lake-analytics
-author: saveenr
-ms.author: saveenr
-ms.reviewer: jasonwhowell
+ms.reviewer: jasonh
 ms.assetid: a0e045f1-73d6-427f-868d-7b55c10f811b
 ms.topic: how-to
 ms.date: 12/05/2016
-ms.openlocfilehash: e9709f8ee700958b310b2fa94a546bb3ea4fc511
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: cbce903bc7463cd917d48e341614afbe18536262
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121315"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87531208"
 ---
 # <a name="manage-azure-data-lake-analytics-using-the-azure-portal"></a>Verwalten von Azure Data Lake Analytics mithilfe des Azure-Portals
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
@@ -97,7 +95,7 @@ Sie können den **Assistent für das Hinzufügen von Benutzern** verwenden, um e
 
 Wie andere Azure-Dienste können Sie die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) verwenden, um zu steuern, wie Benutzer mit dem Dienst interagieren.
 
-Die standardmäßigen RBAC-Rollen haben die folgenden Funktionen:
+Die Azure-Standardrollen haben die folgenden Funktionen:
 * **Besitzer:** Kann Aufträge übermitteln, Aufträge überwachen, Aufträge von beliebigen Benutzern abbrechen und das Konto konfigurieren.
 * **Mitwirkender**: Kann Aufträge übermitteln, Aufträge überwachen, Aufträge von beliebigen Benutzern abbrechen und das Konto konfigurieren.
 * **Leser:** Kann Aufträge überwachen.

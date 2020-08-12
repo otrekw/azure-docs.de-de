@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 05/18/2020
 ms.author: jmprieur
 ms.custom: aaddev, tracking-python
-ms.openlocfilehash: 58be0315b272199e74f28654aae315a8c6c5f7b5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 85fb188028e0e61378b1e47c1fb7b88eaaa4d7a0
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84558822"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87541922"
 ---
 # <a name="desktop-app-that-calls-web-apis-acquire-a-token"></a>Desktop-App, die Web-APIs aufruft: Abrufen eines Token
 
@@ -213,7 +213,7 @@ Anmerkungen:
 
 Mit `WithPrompt()` wird durch Angabe einer Eingabeaufforderung die Interaktivität mit dem Benutzer gesteuert.
 
-<img src="https://user-images.githubusercontent.com/13203188/53438042-3fb85700-39ff-11e9-9a9e-1ff9874197b3.png" width="25%" />
+![Abbildung mit den Feldern in der Struktur der Eingabeaufforderung. Diese konstanten Werte steuern die Interaktivität mit dem Benutzer, indem sie den Typ der Eingabeaufforderung definieren, der mit der „WithPrompt ()“-Methode angezeigt wird.](https://user-images.githubusercontent.com/13203188/53438042-3fb85700-39ff-11e9-9a9e-1ff9874197b3.png)
 
 Die Klasse definiert die folgenden Konstanten:
 

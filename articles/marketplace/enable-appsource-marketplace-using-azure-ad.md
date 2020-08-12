@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: keferna
 ms.author: keferna
-ms.date: 04/15/2020
-ms.openlocfilehash: eab7b556dc45d03bf440a3bc63aa6bf2d799face
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/24/2020
+ms.openlocfilehash: 4c700a61de80968b17585faf92e268fef8d86f0e
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86103622"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323263"
 ---
 # <a name="integrate-your-commercial-marketplace-listing-with-azure-active-directory"></a>Integrieren Ihres Eintrags im kommerziellen Marketplace mit Azure Active Directory
 
@@ -40,10 +40,11 @@ Die verschiedenen [Auflistungsoptionen und Angebotstypen](determine-your-listing
 | Container  | – | – | – | Nein |
 | Beratungsdienste  | Nein | – | – | – |
 
-Weitere Informationen zu den technischen Anforderungen für SaaS finden Sie unter [SaaS-Anwendungen: Leitfaden für die Veröffentlichung von Angeboten](marketplace-saas-applications-technical-publishing-guide.md).
+Weitere Informationen zu den technischen SaaS-Anforderungen finden Sie unter [Azure AD und transaktionsfähige SaaS-Angebote im kommerziellen Marketplace](./azure-ad-saas.md).
 
 ## <a name="azure-ad-integration"></a>Azure AD-Integration
 
+- Ausführliche Informationen zum Integrieren von Azure AD für Ihre transaktionsfähigen Software-as-a-Service-Angebote (SaaS) finden Sie unter [Azure AD und transaktionsfähige SaaS-Angebote im kommerziellen Marketplace](./azure-ad-saas.md).
 - Informationen zum Aktivieren der einmaligen Anmeldung (Single Sign-On) durch die Integration von Azure AD in Ihr Angebot finden Sie unter [Azure Active Directory für Entwickler](../active-directory/develop/index.yml).
 - Weitere Informationen zur einmaligen Anmeldung mit Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../active-directory/manage-apps/what-is-single-sign-on.md).
 

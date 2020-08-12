@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 07/09/2020
-ms.openlocfilehash: 43839e19eb252c9fa7ab46605fd247f3a798d223
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.date: 07/30/2020
+ms.openlocfilehash: 48248b07b64278d5c8d4f297bf83df813aa486fe
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86220302"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87529499"
 ---
 # <a name="copy-data-from-and-to-snowflake-by-using-azure-data-factory"></a>Kopieren von Daten aus und in Snowflake mithilfe von Azure Data Factory
 
@@ -49,7 +49,7 @@ Die folgenden Eigenschaften werden für den mit Snowflake verknüpften Dienst un
 | Eigenschaft         | BESCHREIBUNG                                                  | Erforderlich |
 | :--------------- | :----------------------------------------------------------- | :------- |
 | type             | Die „type“-Eigenschaft muss auf **Snowflake** festgelegt werden.              | Ja      |
-| connectionString | Konfigurieren Sie den [vollständigen Kontonamen](https://docs.snowflake.net/manuals/user-guide/connecting.html#your-snowflake-account-name) (einschließlich zusätzlicher Segmente zur Identifizierung von Region und Cloudplattform), den Benutzernamen, das Kennwort, die Datenbank und das Warehouse. Geben Sie die JDBC-Verbindungszeichenfolge für die Verbindung mit der Snowflake-Instanz an. Sie können auch ein Kennwort in Azure Key Vault speichern. Ausführlichere Informationen finden Sie in den Beispielen unter der Tabelle sowie im Artikel [Speichern von Anmeldeinformationen in Azure Key Vault](store-credentials-in-key-vault.md).| Ja      |
+| connectionString | Gibt die erforderlichen Informationen für Verbindungen mit der Snowflake-Instanz an. Sie können das Kennwort oder die gesamte Verbindungszeichenfolge in Azure Key Vault speichern. Ausführlichere Informationen finden Sie in den Beispielen unter der Tabelle sowie im Artikel [Speichern von Anmeldeinformationen in Azure Key Vault](store-credentials-in-key-vault.md).<br><br>Einige typische Einstellungen:<br>- **Kontoname:** Der [vollständige Kontoname](https://docs.snowflake.net/manuals/user-guide/connecting.html#your-snowflake-account-name) Ihres Snowflake-Kontos (einschließlich zusätzlicher Segmente zur Identifizierung von Region und Cloudplattform), z. B. „xy12345.east-us-2.azure“.<br/>- **Benutzername:** Der Anmeldename des Benutzers für die Verbindung.<br>- **Kennwort:** Das Kennwort für den Benutzer.<br>- **Datenbank:** Die Standarddatenbank, die nach dem Herstellen der Verbindung verwendet werden soll. Dabei sollte es sich um eine vorhandene Datenbank handeln, für die die angegebene Rolle über die erforderlichen Berechtigungen verfügt.<br>- **Warehouse:** Das virtuelle Warehouse, das nach dem Herstellen der Verbindung verwendet werden soll. Dabei sollte es sich um ein vorhandenes Warehouse handeln, für das die angegebene Rolle über die erforderlichen Berechtigungen verfügt.<br>- **Rolle:** Die Standardrolle aus der Zugriffssteuerung, die in der Snowflake-Sitzung verwendet werden soll. Die angegebene Rolle sollte vorhanden und dem angegebenen Benutzer bereits zugewiesen sein. Die Standardrolle ist PUBLIC. | Ja      |
 | connectVia       | Die [Integration Runtime](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet wird. Sie können die Azure Integration Runtime oder eine selbstgehostete Integration Runtime verwenden (wenn sich der Datenspeicher in einem privaten Netzwerk befindet). Wenn kein Wert angegeben ist, wird die standardmäßige Azure Integration Runtime verwendet. | Nein       |
 
 **Beispiel:**
@@ -60,7 +60,7 @@ Die folgenden Eigenschaften werden für den mit Snowflake verknüpften Dienst un
     "properties": {
         "type": "Snowflake",
         "typeProperties": {
-            "connectionString": "jdbc:snowflake://<accountname>.snowflakecomputing.com/?user=<username>&password=<password>&db=<database>&warehouse=<warehouse>"
+            "connectionString": "jdbc:snowflake://<accountname>.snowflakecomputing.com/?user=<username>&password=<password>&db=<database>&warehouse=<warehouse>&role=<myRole>"
         },
         "connectVia": {
             "referenceName": "<name of Integration Runtime>",
@@ -78,7 +78,7 @@ Die folgenden Eigenschaften werden für den mit Snowflake verknüpften Dienst un
     "properties": {
         "type": "Snowflake",
         "typeProperties": {
-            "connectionString": "jdbc:snowflake://<accountname>.snowflakecomputing.com/?user=<username>&db=<database>&warehouse=<warehouse>",
+            "connectionString": "jdbc:snowflake://<accountname>.snowflakecomputing.com/?user=<username>&db=<database>&warehouse=<warehouse>&role=<myRole>",
             "password": {
                 "type": "AzureKeyVaultSecret",
                 "store": { 

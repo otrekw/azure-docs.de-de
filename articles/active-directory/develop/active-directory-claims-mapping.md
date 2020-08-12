@@ -10,15 +10,15 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.workload: identity
 ms.topic: how-to
-ms.date: 10/22/2019
+ms.date: 07/29/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
-ms.openlocfilehash: d240ed426bb270ac4cf09f3806bd36a6a52d3633
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.openlocfilehash: 29dc03d663d590c13a1948411ed597388750c1d7
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86275392"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87428003"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>Gewusst wie: Anpassen von in Token ausgegebenen Ansprüchen für eine bestimmte App in einem Mandanten (Vorschau)
 
@@ -362,7 +362,7 @@ Auf der Grundlage der ausgewählten Methode wird eine Reihe von Eingaben und Aus
 |Transformationsmethode|Erwartete Eingabe|Erwartete Ausgabe|BESCHREIBUNG|
 |-----|-----|-----|-----|
 |Join|string1, string2, separator|outputClaim|Verknüpft Eingabezeichenfolgen mit einer eingefügten Trennzeichen. Zum Beispiel: Zeichenfolge1:"foo@bar.com" , Zeichenfolge2:"sandbox" , Trennzeichen:"." ergibt outputClaim:"foo@bar.com.sandbox"|
-|ExtractMailPrefix|E-Mail-Adresse oder UPN|UPN|Erweiterungsattribute 1-15 oder sonstige Schemaerweiterungen, die einen UPN- oder E-Mail-Adress-Wert für den Benutzer speichern, z. B. johndoe@contoso.com. Extrahiert den lokalen Teil einer E-Mail-Adresse. Zum Beispiel: mail:"foo@bar.com" ergibt outputClaim: "foo". Wenn kein \@-Zeichen vorhanden ist, wird die ursprüngliche Eingabezeichenfolge unverändert zurückgegeben.|
+|ExtractMailPrefix|E-Mail oder Benutzerprinzipalname (UPN)|Extrahierte Zeichenfolge|Erweiterungsattribute 1-15 oder sonstige Schemaerweiterungen, die einen UPN- oder E-Mail-Adress-Wert für den Benutzer speichern, z. B. johndoe@contoso.com. Extrahiert den lokalen Teil einer E-Mail-Adresse. Zum Beispiel: mail:"foo@bar.com" ergibt outputClaim: "foo". Wenn kein \@-Zeichen vorhanden ist, wird die ursprüngliche Eingabezeichenfolge unverändert zurückgegeben.|
 
 **InputClaims:** Verwenden Sie ein InputClaims-Element, um die Daten aus einem Anspruchsschemaeintrag an eine Transformation zu übergeben. Es verfügt über zwei Attribute: **ClaimTypeReferenceId** und **TransformationClaimType**.
 
@@ -435,6 +435,9 @@ Anspruchszuordnungsrichtlinien können nur Dienstprinzipalobjekten zugewiesen we
 ### <a name="example-claims-mapping-policies"></a>Beispiel für Anspruchszuordnungsrichtlinien
 
 In Azure AD sind viele Szenarios möglich, in denen Sie in Token ausgegebene Ansprüche für bestimmte Dienstprinzipale anpassen können. In diesem Abschnitt führen wir Sie ausführlich durch einige allgemeine Szenarios, anhand derer veranschaulicht wird, wie Sie den Richtlinientyp „Anspruchszuordnung“ verwenden können.
+
+> [!NOTE]
+> Beim Erstellen einer Richtlinie für die Anspruchszuordnung können Sie auch einen Anspruch aus Erweiterungsattribut eines Verzeichnisschemas in Token ausgeben. Verwenden Sie *ExtensionID* für das Erweiterungsattribut anstelle von *ID* im `ClaimsSchema`-Element.  Weitere Informationen zu Erweiterungsattributen finden Sie unter [Verwenden von Erweiterungsattributen des Verzeichnisschemas](active-directory-schema-extensions.md).
 
 #### <a name="prerequisites"></a>Voraussetzungen
 
@@ -527,4 +530,5 @@ In diesem Beispiel erstellen Sie eine Richtlinie, die einen benutzerdefinierten 
 
 ## <a name="see-also"></a>Weitere Informationen
 
-Weitere Informationen dazu, wie Sie über das Azure-Portal die im SAML-Token ausgestellten Ansprüche anpassen, finden Sie unter [Vorgehensweise: Anpassen von Ansprüchen im SAML-Token für Unternehmensanwendungen](active-directory-saml-claims-customization.md)
+- Weitere Informationen dazu, wie Sie über das Azure-Portal die im SAML-Token ausgestellten Ansprüche anpassen, finden Sie unter [Vorgehensweise: Anpassen von Ansprüchen im SAML-Token für Unternehmensanwendungen](active-directory-saml-claims-customization.md)
+- Weitere Informationen zu Erweiterungsattributen finden Sie unter [Verwenden von Erweiterungsattributen des Verzeichnisschemas in Ansprüchen](active-directory-schema-extensions.md).

@@ -1,6 +1,6 @@
 ---
 title: Verwaltung von Ausnahmen – Microsoft Threat Modeling Tool – Azure | Microsoft-Dokumentation
-description: Gegenmaßnahmen für durch das Threat Modeling Tool offengelegte Gefahren
+description: Erfahren Sie etwas über die Ausnahmeverwaltung im Threat Modeling Tool. Lesen Sie die Informationen zur Risikominderung, und sehen Sie sich die Codebeispiele an.
 services: security
 documentationcenter: na
 author: jegeib
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 074098c3adae0dd8ff2a127d819e2b3630b754da
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 05e9e627afecfc95e03eae39eed1183857df8b4b
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83650088"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87539933"
 ---
-# <a name="security-frame-exception-management--mitigations"></a>Sicherheitsrahmen: Verwaltung von Ausnahmen | Gegenmaßnahmen 
+# <a name="security-frame-exception-management--mitigations"></a>Sicherheitsrahmen: Verwaltung von Ausnahmen | Risikominderung 
 | Produkt/Dienst | Artikel |
 | --------------- | ------- |
 | **WCF** | <ul><li>[WCF – serviceDebug-Knoten nicht in die Konfigurationsdatei aufnehmen](#servicedebug)</li><li>[WCF – serviceMetadata-Knoten nicht in die Konfigurationsdatei aufnehmen](#servicemetadata)</li></ul> |
@@ -202,7 +202,7 @@ public HttpResponseMessage PostProduct(Product item)
 | **Zutreffende Technologien** | Allgemein |
 | **Attribute**              | –  |
 | **Referenzen**              | [Dialogfeld „ASP.NET-Einstellungen für Fehlerseiten bearbeiten“](https://technet.microsoft.com/library/dd569096(WS.10).aspx) |
-| **Schritte** | <p>Wenn eine ASP.NET-Anwendung fehlschlägt und zu einem Fehler vom Typ „HTTP/1.x 500: Interner Serverfehler“ führt oder wenn eine Funktionskonfiguration (z.B. Anforderungsfilterung) verhindert, dass eine Seite angezeigt wird, wird eine Fehlermeldung generiert. Administratoren können auswählen, ob die Anwendung dem Client eine benutzerfreundliche Meldung oder eine detaillierte Fehlermeldung anzeigt bzw. die detaillierte Fehlermeldung nur für „localhost“ anzeigt. Das `<customErrors>`-Tag in der Datei „web.config“ verfügt über drei Modi:</p><ul><li>**On:** Gibt an, dass benutzerdefinierte Fehler aktiviert sind. Benutzer sehen einen allgemeinen Fehler, wenn kein defaultRedirect-Attribut angegeben wird. Die benutzerdefinierten Fehler werden auf den Remoteclients und dem lokalen Host angezeigt.</li><li>**Off:** Gibt an, dass benutzerdefinierte Fehler deaktiviert sind. Die detaillierten ASP.NET-Fehler werden auf den Remoteclients und dem lokalen Host angezeigt.</li><li>**RemoteOnly:** Gibt an, dass benutzerdefinierte Fehler nur auf den Remoteclients angezeigt werden und dass ASP.NET-Fehler auf dem lokalen Host angezeigt werden. Dies ist der Standardwert.</li></ul><p>Öffnen Sie die Datei `web.config` für die Anwendung/Website, und stellen Sie sicher, dass das Tag als `<customErrors mode="RemoteOnly" />` oder `<customErrors mode="On" />` definiert ist.</p>|
+| **Schritte** | <p>Wenn eine ASP.NET-Anwendung fehlschlägt und zu einem Fehler vom Typ „HTTP/1.x 500: Interner Serverfehler“ führt oder wenn eine Funktionskonfiguration (z.B. Anforderungsfilterung) verhindert, dass eine Seite angezeigt wird, wird eine Fehlermeldung generiert. Administratoren können auswählen, ob die Anwendung dem Client eine benutzerfreundliche Meldung oder eine detaillierte Fehlermeldung anzeigt bzw. die detaillierte Fehlermeldung nur für „localhost“ anzeigt. Das `<customErrors>`-Tag in der Datei „web.config“ verfügt über drei Modi:</p><ul><li>**On:** Gibt an, dass benutzerdefinierte Fehler aktiviert sind. Benutzer sehen einen allgemeinen Fehler, wenn kein defaultRedirect-Attribut angegeben wird. Die benutzerdefinierten Fehler werden auf den Remoteclients und dem lokalen Host angezeigt.</li><li>**Off:** Gibt an, dass benutzerdefinierte Fehler deaktiviert sind. Die detaillierten ASP.NET-Fehler werden auf den Remoteclients und dem lokalen Host angezeigt.</li><li>**RemoteOnly:** Gibt an, dass benutzerdefinierte Fehler nur auf den Remoteclients angezeigt werden, und dass ASP.NET-Fehler auf dem lokalen Host angezeigt werden. Dies ist der Standardwert.</li></ul><p>Öffnen Sie die Datei `web.config` für die Anwendung/Website, und stellen Sie sicher, dass das Tag als `<customErrors mode="RemoteOnly" />` oder `<customErrors mode="On" />` definiert ist.</p>|
 
 ## <a name="set-deployment-method-to-retail-in-iis"></a><a id="deployment"></a>Festlegen der Bereitstellungsmethode auf „Retail“ in IIS
 

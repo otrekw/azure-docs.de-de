@@ -1,6 +1,6 @@
 ---
 title: Schutz von Kundendaten in Azure
-description: Dieser Artikel beschreibt, wie Azure die Kundendaten schützt.
+description: Erfahren Sie, wie Azure Kundendaten durch Datentrennung, Datenredundanz und Datenvernichtung schützt.
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/28/2018
+ms.date: 07/10/2020
 ms.author: terrylan
-ms.openlocfilehash: d723e60afe543808c88b1ae040e2979412ff324c
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.openlocfilehash: 14589e4efe22d89468b069bf6ff7e3d9babcc714
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86273471"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543791"
 ---
 # <a name="azure-customer-data-protection"></a>Schutz der Azure-Kundendaten   
 Der Zugriff auf Kundendaten durch Microsoft-Betriebs- und -Supportpersonal wird standardmäßig verweigert. Wenn der Zugriff auf Daten im Zusammenhang mit einem Supportfall gewährt wird, erfolgt dies nur unter Verwendung eines MIT-Modells (Just-In-Time) und Richtlinien, die geprüft und anhand unserer Compliance- und Datenschutzrichtlinien verifiziert werden.  Die Zugriffssteuerungsanforderungen werden in der folgenden Azure-Sicherheitsrichtlinie definiert:

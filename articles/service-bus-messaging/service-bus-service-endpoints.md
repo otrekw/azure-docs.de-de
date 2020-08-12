@@ -3,18 +3,19 @@ title: Konfigurieren von Dienstendpunkten virtueller Netzwerke für Azure Servic
 description: In diesem Artikel werden Informationen zum Hinzufügen eines Microsoft.ServiceBus-Dienstendpunkts zu einem virtuellen Netzwerk beschrieben.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 2b3e7d23dcfd3f932aefa3809ebd13b9cfee0c69
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: fasttrack-edit
+ms.openlocfilehash: f902c77c3c7e614247abd4f8af50b8ed37b7e574
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85340990"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87552984"
 ---
-# <a name="configure-virtual-network-service-endpoints-for-azure-service-bus"></a>Konfigurieren von Dienstendpunkten virtueller Netzwerke für Azure Service Bus
+# <a name="allow-access-to-azure-service-bus-namespace-from-specific-virtual-networks"></a>Zulassen des Zugriffs auf den Azure Service Bus-Namespace aus bestimmten virtuellen Netzwerken
 
 Die Integration von Service Bus mit [VNET-Dienstendpunkten][vnet-sep] ermöglicht den sicheren Zugriff auf Messagingfunktionen für Workloads, z. B. an virtuelle Netzwerke (VNETs) gebundene virtuelle Computer. Der Pfad für den Netzwerkdatenverkehr ist dabei an beiden Enden geschützt.
 
-Nachdem die Konfiguration der Bindung an mindestens einen Dienstendpunkt des VNET-Subnetzes durchgeführt wurde, akzeptiert der entsprechende Service Bus-Namespace nur noch Datenverkehr von autorisierten virtuellen Netzwerken. Aus Sicht des virtuellen Netzwerks wird durch die Bindung eines Service Bus-Namespace an einen Dienstendpunkt ein isolierter Netzwerktunnel vom Subnetz des virtuellen Netzwerks zum Messagingdienst konfiguriert.
+Nachdem die Konfiguration der Bindung an mindestens einen Dienstendpunkt des VNET-Subnetzes durchgeführt wurde, akzeptiert der entsprechende Service Bus-Namespace nur noch Datenverkehr von autorisierten virtuellen Netzwerken und optional bestimmten Internet-IP-Adressen. Aus Sicht des virtuellen Netzwerks wird durch die Bindung eines Service Bus-Namespace an einen Dienstendpunkt ein isolierter Netzwerktunnel vom Subnetz des virtuellen Netzwerks zum Messagingdienst konfiguriert.
 
 Das Ergebnis ist eine private und isolierte Beziehung zwischen den Workloads, die an das Subnetz gebunden sind, und dem entsprechenden Service Bus-Namespace, obwohl sich die beobachtbare Netzwerkadresse des Messaging-Dienstendpunkts in einem öffentlichen IP-Bereich befindet.
 
@@ -31,6 +32,7 @@ Das Ergebnis ist eine private und isolierte Beziehung zwischen den Workloads, di
 > Die folgenden Microsoft-Dienste müssen in einem virtuellen Netzwerk ausgeführt werden:
 > - Azure App Service
 > - Azure-Funktionen
+> - Azure Monitor (Diagnoseeinstellungen)
 
 > [!IMPORTANT]
 > Virtuelle Netzwerke werden nur in Service Bus-Namespaces im [Tarif Premium](service-bus-premium-messaging.md) unterstützt.
@@ -54,21 +56,30 @@ Das Binden eines Service Bus-Namespace an ein virtuelles Netzwerk ist ein Prozes
 Die VNET-Regel ist eine Zuordnung des Service Bus-Namespace zu einem Subnetz eines virtuellen Netzwerks. Während die Regel vorhanden ist, wird allen Workloads, die an das Subnetz gebunden sind, Zugriff auf den Service Bus-Namespace gewährt. Service Bus stellt selbst niemals ausgehende Verbindungen her, muss keinen Zugriff erhalten und erhält daher niemals die Gewährung des Zugriffs auf Ihr Subnetz, indem diese Regel aktiviert wird.
 
 ## <a name="use-azure-portal"></a>Verwenden des Azure-Portals
-In diesem Abschnitt erfahren Sie, wie Sie mit dem Azure-Portal einen VNET-Dienstendpunkt hinzufügen. Zum Beschränken des Zugriffs müssen Sie den Dienstendpunkt des virtuellen Netzwerks (VNET-Dienstendpunkt) für diesen Event Hubs-Namespace integrieren.
+In diesem Abschnitt erfahren Sie, wie Sie mit dem Azure-Portal einen VNET-Dienstendpunkt hinzufügen. Zum Beschränken des Zugriffs müssen Sie den VNET-Dienstendpunkt für diesen Event Hubs-Namespace integrieren.
 
 1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrem **Service Bus-Namespace**.
-2. Wählen Sie im Menü auf der linken Seite die Option **Netzwerk** aus. Standardmäßig ist die Option **Alle Netzwerke** ausgewählt. Ihr Namespace akzeptiert Verbindungen von jeder IP-Adresse. Die Standardeinstellung entspricht einer Regel, bei der der IP-Adressbereich 0.0.0.0/0 zulässig ist. 
+2. Wählen Sie im Menü links unter **Einstellungen** die Option **Netzwerk** aus.  
 
-    ![Firewall: Option „Alle Netzwerke“ ausgewählt](./media/service-endpoints/firewall-all-networks-selected.png)
-1. Wählen Sie oben auf der Seite die Option **Ausgewählte Netzwerke** aus.
-2. Wählen Sie im Abschnitt **Virtuelles Netzwerk** der Seite die Option **+ Vorhandenes virtuelles Netzwerk hinzufügen** aus. 
+    > [!NOTE]
+    > Die Registerkarte **Netzwerk** wird nur für Namespaces vom Typ **Premium** angezeigt.  
+    
+    Standardmäßig ist die Option **Ausgewählte Netzwerke** ausgewählt. Wenn Sie auf dieser Seite nicht mindestens eine IP-Firewallregel oder ein virtuelles Netzwerk hinzufügen, kann über das öffentliche Internet (mit dem Zugriffsschlüssel) auf den Namespace zugegriffen werden.
+
+    :::image type="content" source="./media/service-bus-ip-filtering/default-networking-page.png" alt-text="Seite „Netzwerk“ – Standard" lightbox="./media/service-bus-ip-filtering/default-networking-page.png":::
+    
+    Wenn Sie die Option **Alle Netzwerke** auswählen, akzeptiert der Service Bus-Namespace Verbindungen von beliebigen IP-Adressen. Die Standardeinstellung entspricht einer Regel, bei der der IP-Adressbereich 0.0.0.0/0 zulässig ist. 
+
+    ![Firewall – Option „Alle Netzwerke“ ausgewählt](./media/service-bus-ip-filtering/firewall-all-networks-selected.png)
+2. Um den Zugriff auf bestimmte virtuelle Netzwerke zu beschränken, wählen Sie die Option **Ausgewählte Netzwerke** aus, sofern sie noch nicht ausgewählt wurde.
+1. Wählen Sie im Abschnitt **Virtuelles Netzwerk** der Seite die Option **+ Vorhandenes virtuelles Netzwerk hinzufügen** aus. 
 
     ![Hinzufügen eines vorhandenen virtuellen Netzwerks](./media/service-endpoints/add-vnet-menu.png)
 3. Wählen Sie in der Liste mit den virtuellen Netzwerken das virtuelle Netzwerk und anschließend das **Subnetz** aus. Sie müssen den Dienstendpunkt aktivieren, bevor Sie das virtuelle Netzwerk der Liste hinzufügen. Wenn der Dienstendpunkt nicht aktiviert ist, erhalten Sie im Portal eine entsprechende Aufforderung.
    
    ![Auswählen des Subnetzes](./media/service-endpoints/select-subnet.png)
 
-4. Die folgende Erfolgsmeldung sollte angezeigt werden, nachdem der Dienstendpunkt für das Subnetz für **Microsoft.ServiceBus** aktiviert wurde. Wählen Sie **Hinzufügen** unten auf der Seite aus, um das Netzwerk hinzuzufügen. 
+4. Die folgende Erfolgsmeldung sollte angezeigt werden, nachdem der Dienstendpunkt für das Subnetz für **Microsoft.ServiceBus** aktiviert wurde. Wählen Sie unten auf der Seite die Option **Hinzufügen** aus, um das Netzwerk hinzuzufügen. 
 
     ![Auswählen des Subnetzes und Aktivieren des Endpunkts](./media/service-endpoints/subnet-service-endpoint-enabled.png)
 
@@ -78,13 +89,16 @@ In diesem Abschnitt erfahren Sie, wie Sie mit dem Azure-Portal einen VNET-Dienst
 
     ![Speichern des Netzwerks](./media/service-endpoints/save-vnet.png)
 
+    > [!NOTE]
+    > Anweisungen dazu, wie Sie den Zugriff von bestimmten IP-Adressen oder -Adressbereichen zulassen, finden Sie unter [Zulassen des Zugriffs von bestimmten IP-Adressen oder -Adressbereichen](service-bus-ip-filtering.md).
+
 ## <a name="use-resource-manager-template"></a>Verwenden von Resource Manager-Vorlagen
 Mithilfe der folgenden Resource Manager-Vorlage können Sie einem vorhandenen Service Bus-Namespace eine VNET-Regel hinzufügen.
 
 Vorlagenparameter:
 
-* **namespaceName**: Service Bus-Namespace
-* **virtualNetworkingSubnetId**: Vollqualifizierter Resource Manager-Pfad für das Subnetz des virtuellen Netzwerks, z.B. `/subscriptions/{id}/resourceGroups/{rg}/providers/Microsoft.Network/virtualNetworks/{vnet}/subnets/default` für das Standardsubnetz eines virtuellen Netzwerks
+* **namespaceName**: Der Service Bus-Namespace.
+* **virtualNetworkingSubnetId**: Vollqualifizierter Resource Manager-Pfad für das Subnetz des virtuellen Netzwerks, z. B. `/subscriptions/{id}/resourceGroups/{rg}/providers/Microsoft.Network/virtualNetworks/{vnet}/subnets/default` für das Standardsubnetz eines virtuellen Netzwerks.
 
 > [!NOTE]
 > Obwohl keine Verweigerungsregeln möglich sind, ist in der Azure Resource Manager-Vorlage die Standardaktion auf **„Zulassen“** festgelegt. Dies schränkt die Verbindungen nicht ein.

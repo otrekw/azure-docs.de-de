@@ -1,18 +1,18 @@
 ---
 title: Erstellen eines Beratungsdienstangebots – kommerzieller Microsoft-Marketplace
 description: Erfahren Sie, wie Sie mit dem Partner Center ein Beratungsdienstangebot in Microsoft AppSource oder Azure Marketplace veröffentlichen.
-author: anbene
-ms.author: mingshen
+author: Microsoft-BradleyWright
+ms.author: brwrigh
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: a06f0838f25e771a90fb6dc6f4fcd3bd9bdeda87
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 8dd0abb5c127d51a0feaf0c71188b7fc48e2fd69
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86203800"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87798221"
 ---
 # <a name="create-a-consulting-service-offer"></a>Erstellen eines Beratungsdienstangebots
 
@@ -207,12 +207,14 @@ Stellen Sie Logos und Bilder zur Verwendung mit Ihrem Angebot bereit. Alle Bilde
 
 #### <a name="store-logos"></a>Store-Logos
 
-Stellen Sie PNG-Dateien für das Logo Ihres Angebots in jeder der folgenden Pixelgrößen bereit:
+Geben Sie eine PNG-Datei für das **große** Logo an (zwischen 216 × 216 und 350 × 350 Pixel). Dies wird in Partner Center verwendet, um ein **kleines** (48 × 48 Pixel) Logo zu erstellen. Sie können das Logo durch ein anderes Bild ersetzen.
 
-- **Klein (48 x 48)**
-- **Groß (216 x 216)**
+Beide Logogrößen sind erforderlich und werden an verschiedenen Stellen im Angebot verwendet:
 
-Alle Logos sind erforderlich und werden an verschiedenen Stellen in der Marketplace-Auflistung verwendet.
+- **Klein** (48 x 48)
+- **Groß** (zwischen 216 × 216 und 350 × 350)
+
+[!INCLUDE [Logo suggestions](./includes/graphics-suggestions.md)]
 
 #### <a name="screenshots-optional"></a>Screenshots (optional)
 

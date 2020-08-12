@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 4c224f40996625ead4592a3bf50e02f0877c76db
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 05283c02c2e5f95e22beb6fbeaad7a99e42ee6aa
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87051318"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87540834"
 ---
 # <a name="what-authentication-and-verification-methods-are-available-in-azure-active-directory"></a>Welche Authentifizierungs- und Prüfmethoden stehen in Azure Active Directory zur Verfügung?
 
@@ -74,7 +74,7 @@ Die Microsoft Authenticator-App kann dazu beitragen, nicht autorisierten Zugriff
 ![Screenshot der Webbrowser-Eingabeaufforderung als Beispiel für die Benachrichtigung der Microsoft Authenticator-App zum Abschließen des Anmeldevorgangs](media/tutorial-enable-azure-mfa/azure-multi-factor-authentication-browser-prompt.png)
 
 > [!NOTE]
-> Wenn Mitarbeiter Ihrer Organisation in China arbeiten oder nach China reisen müssen, funktioniert die Methode *Benachrichtigung über mobile App* auf Android-Geräten in diesem Land/dieser Region nicht. Daher sollten diesen Benutzern alternative Authentifizierungsmethoden zur Verfügung gestellt werden.
+> Wenn Mitarbeiter Ihrer Organisation nach China reisen oder dort arbeiten müssen, funktioniert die Methode *Benachrichtigung über mobile App* auf Android-Geräten in diesem Land nicht, da in dieser Region Google Play Services (einschließlich Pushbenachrichtigungen) blockiert sind. iOS-Benachrichtigungen funktionieren jedoch. Daher sollten Benutzern von Android-Geräten alternative Authentifizierungsmethoden zur Verfügung gestellt werden.
 
 ### <a name="verification-code-from-mobile-app"></a>Prüfcode über die mobile App
 

@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 07/10/2020
 ms.author: alkohli
-ms.openlocfilehash: b65d9579686cdf53f1cac35ba47bc5850b45c8e2
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 50dbbe3a6a1af1e73cdf1ee7f5bd3a63cf2f6a50
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86204299"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498802"
 ---
 # <a name="tracking-and-event-logging-for-your-azure-data-box-and-azure-data-box-heavy-import-order"></a>Nachverfolgung und Ereignisprotokollierung für Azure Data Box- und Azure Data Box Heavy-Importaufträge
 
@@ -35,7 +35,7 @@ In diesem Artikel werden die verschiedenen verfügbaren Verfahren und Tools deta
 
 ## <a name="set-up-access-control-on-the-order"></a>Einrichten der Zugriffssteuerung für den Auftrag
 
-Sie können beim Erstellen Ihres Auftrags festlegen, wer auf diesen Auftrag zugreifen kann. Richten Sie RBAC-Rollen (Rollenbasierte Zugriffssteuerung) in verschiedenen Bereichen ein, um den Zugriff auf den Data Box-Auftrag zu steuern. Eine RBAC-Rolle bestimmt die Art des Zugriffs: Lese-/Schreibzugriff, schreibgeschützt, Lese-/Schreibzugriff auf eine Teilmenge von Vorgängen.
+Sie können beim Erstellen Ihres Auftrags festlegen, wer auf diesen Auftrag zugreifen kann. Richten Sie Azure-Rollen in verschiedenen Bereichen ein, um den Zugriff auf den Data Box-Auftrag zu steuern. Eine Azure-Rolle bestimmt die Art des Zugriffs: Lese-/Schreibzugriff, schreibgeschützter Zugriff, Lese-/Schreibzugriff auf eine Teilmenge von Vorgängen.
 
 Für den Azure Data Box-Dienst können die folgenden beiden Rollen definiert werden:
 

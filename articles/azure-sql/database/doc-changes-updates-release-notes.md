@@ -11,12 +11,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.author: sstein
-ms.openlocfilehash: 4257b2fab5e0cca0cb016794673ed39ae4973895
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: af19b72846c78ef80ba170b6d6e0cec97fa2b96e
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87067419"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533358"
 ---
 # <a name="whats-new-in-azure-sql-database--sql-managed-instance"></a>Welche Neuerungen gibt es in Azure SQL-Datenbank und SQL Managed Instance?
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -137,7 +137,7 @@ Unter bestimmten Umständen kann es vorkommen, dass der Agent nicht mehr reagier
 
 ### <a name="permissions-on-resource-group-not-applied-to-sql-managed-instance"></a>Berechtigungen für Ressourcengruppe werden nicht auf SQL Managed Instance angewendet
 
-Wenn die RBAC-Rolle „Mitwirkender“ von SQL Managed Instance auf eine Ressourcengruppe (RG) angewandt wird, betrifft dies nicht SQL Managed Instance und hat keine Auswirkungen.
+Wenn die Azure-Rolle „Mitwirkender“ von SQL Managed Instance auf eine Ressourcengruppe (RG) angewandt wird, betrifft dies nicht SQL Managed Instance und hat keine Auswirkungen.
 
 **Problemumgehung**: Richten Sie eine Rolle „Mitwirkender“ von SQL Managed Instance für Benutzer auf Abonnementebene ein.
 

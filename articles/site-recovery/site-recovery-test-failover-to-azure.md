@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: 26c734b7a2e9f5592ee6d51dfee4650a3998ab1a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4233df62de48dd7a7253c488b0cd69c38cd8d445
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84699055"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503496"
 ---
 # <a name="run-a-test-failover-disaster-recovery-drill-to-azure"></a>Ausführen eines Testfailovers (Notfallwiederherstellungsübung) zu Azure 
 
@@ -25,7 +25,7 @@ Sie führen ein Testfailover aus, um Ihre Replikations- und Notfallwiederherstel
 ## <a name="run-a-test-failover"></a>Ausführen eines Testfailovers
 Hier erfahren Sie, wie Sie ein Test-Failover für einen Wiederherstellungsplan durchführen. Wenn Sie ein Testfailover für einen einzelnen virtuellen Computer ausführen möchten, befolgen Sie die [hier](tutorial-dr-drill-azure.md#run-a-test-failover-for-a-single-vm) genannten Schritte.
 
-![Testfailover](./media/site-recovery-test-failover-to-azure/TestFailover.png)
+![Screenshot der Seite „Testfailover“ im Azure-Portal](./media/site-recovery-test-failover-to-azure/TestFailover.png)
 
 
 1. Klicken Sie im Azure-Portal in der Site Recovery auf **Wiederherstellungspläne** > *wiederherstellungsplan_name* > **Testfailover**.
@@ -48,7 +48,7 @@ Hier erfahren Sie, wie Sie ein Test-Failover für einen Wiederherstellungsplan d
 8. Erfassen und speichern Sie unter **Notizen** alle Beobachtungen im Zusammenhang mit dem Testfailover.
 
 
-![Testfailover](./media/site-recovery-test-failover-to-azure/TestFailoverJob.png)
+![Screenshot der Registerkarte „Testfailoveraufträge“](./media/site-recovery-test-failover-to-azure/TestFailoverJob.png)
 
 Wenn ein Testfailover ausgelöst wird, geschieht Folgendes:
 

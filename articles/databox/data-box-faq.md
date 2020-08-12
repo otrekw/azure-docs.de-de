@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 07/10/2020
+ms.date: 07/15/2020
 ms.author: alkohli
-ms.openlocfilehash: 9e54b9add52e484a95cf5a8291dec90a6bb258b8
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 3024c79b6295762636518e3f77d506ad45f73682
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86207000"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090755"
 ---
 # <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box: Häufig gestellte Fragen
 
@@ -44,7 +44,9 @@ Nach Empfang des Geräts können Sie es auf der lokalen Webbenutzeroberfläche s
 A. Sie profitieren von der Data Box, wenn Sie 40–500 TB Daten nach oder von Azure übertragen möchten. Verwenden Sie Data Box Disk für Datenmengen von weniger als 40 TB und [Data Box Heavy](data-box-heavy-overview.md) für Datenmengen von mehr als 500 TB.
 
 ### <a name="q-what-is-the-price-of-data-box"></a>Q. Was kostet Data Box?
-A. Data Box ist gegen eine Schutzgebühr für 10 Tage erhältlich. Wenn Sie beim Anlegen eines Auftrags im Azure-Portal das Produktmodell auswählen, werden die Gebühren für das Gerät angezeigt. Der Versand ist kostenlos, aber es fallen Gebühren für Azure Storage an. Weitere Informationen finden Sie unter [Azure Data Box – Preise](https://azure.microsoft.com/pricing/details/storage/databox/). 
+A. Data Box ist gegen eine Schutzgebühr für 10 Tage erhältlich. Wenn Sie beim Anlegen eines Auftrags im Azure-Portal das Produktmodell auswählen, werden die Gebühren für das Gerät angezeigt. Auch die Standardgebühren für den Versand und die Gebühren für Azure Storage fallen an. Für Exportaufträge gilt ein ähnliches Preismodell wie für Importaufträge, jedoch fallen möglicherweise zusätzliche Gebühren für ausgehenden Datenverkehr an. 
+
+Weitere Informationen finden Sie unter [Azure Data Box – Preise](https://azure.microsoft.com/pricing/details/storage/databox/) und [Gebühren für ausgehenden Datenverkehr](https://azure.microsoft.com/pricing/details/bandwidth/). 
 
 ### <a name="q-what-is-the-maximum-amount-of-data-i-can-transfer-with-data-box-in-one-instance"></a>Q. Welche maximale Datenmenge kann ich mit Data Box auf einmal übertragen?
 A. Data Box hat eine Rohkapazität von 100 TB und eine nutzbare Kapazität von 80 TB. Sie können mit Data Box bis zu 80 TB Daten übertragen. Um eine größere Datenmenge zu übertragen, müssen Sie weitere Datenträger bestellen.
@@ -250,7 +252,7 @@ A.  Die folgende Art der Berichterstellung ist zur Unterstützung von Rückverfo
 A.  Die Sendungsverfolgungsprotokolle des Zustelldiensts werden im Data Box-Auftragsverlauf erfasst. Dieser Bericht steht Ihnen zur Verfügung, nachdem das Gerät an das Azure-Rechenzentrum zurückgesendet wurde und die Daten auf den Datenträgern des Geräts bereinigt wurden. Bei dringendem Bedarf können Sie auch die Website des Zustelldiensts direkt besuchen, die Sendungsverfolgungsnummer eingeben und die Sendungsverfolgungsinformationen abrufen.
 
 ### <a name="can-i-transport-the-data-box-to-azure-datacenter"></a>Kann ich die Data Box selbst zum Azure-Rechenzentrum transportieren? 
-A.  Nein. Wenn Sie sich für den von Microsoft verwalteten Versand entschieden haben, können Sie die Box nicht selbst transportieren. Derzeit akzeptiert Azure-Rechenzentrum keine Zustellung der Data Box von Kunden oder anderen Zustelldiensten als UPS.
+A.  Nein. Wenn Sie sich für den von Microsoft verwalteten Versand entschieden haben, können Sie die Daten nicht selbst transportieren. Derzeit akzeptiert Azure-Rechenzentrum keine Zustellung der Data Box von Kunden oder anderen Zustelldiensten als UPS.
 
 Wenn Sie sich für den selbst verwalteten Versand entschieden haben, können Sie Ihre Data Box vom Azure-Rechenzentrum abholen oder dort abgeben.
 

@@ -4,15 +4,15 @@ description: Zur Erstellung hoch verfügbarer und robuster Anwendungen in Azure 
 author: cynthn
 ms.service: azure
 ms.topic: article
-ms.date: 07/06/2020
+ms.date: 08/04/2020
 ms.author: cynthn
 ms.custom: fasttrack-edit, mvc, references_regions
-ms.openlocfilehash: 2e337628542475c081a59bffd25368de313011f8
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: e13d7a1cb35d2b0c9544a8be36f834efc6970501
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206212"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87759647"
 ---
 # <a name="regions-that-support-availability-zones-in-azure"></a>Regionen, die Verfügbarkeitszonen in Azure unterstützen
 
@@ -58,12 +58,11 @@ Die in den einzelnen Regionen verfügbaren Dienste, einschließlich der demnäch
 Azure bietet außerdem Unterstützung für Verfügbarkeitszonen in den folgenden Regionen:
 
 - US Government, Virginia
-- Australien (Osten)
 - Südafrika, Norden
 - USA Süd Mitte
 - Kanada, Mitte
 
-Weitere Informationen zur Unterstützung von Verfügbarkeitszonen in diesen fünf Regionen erhalten Sie von Ihrem Microsoft-Vertriebs- oder Kundenbeauftragten.
+Weitere Informationen zur Unterstützung von Verfügbarkeitszonen in diesen vier Regionen erhalten Sie von Ihrem Microsoft-Vertriebs- oder Kundenbeauftragten oder indem Sie eine technische Supportanfrage stellen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

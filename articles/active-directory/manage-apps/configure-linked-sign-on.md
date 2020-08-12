@@ -1,6 +1,6 @@
 ---
-title: Einmaliges Anmelden über Link für Azure AD-Apps – Microsoft Identity Platform
-description: Konfigurieren des einmaligen Anmeldens (Single Sign-On, SSO) über Link für Ihre Azure AD-Unternehmensanwendungen auf der Microsoft Identity Platform (Azure AD)
+title: Konfigurieren der verknüpften Anmeldung in Azure Active Directory
+description: Konfigurieren der verknüpften Anmeldung in Azure AD
 services: active-directory
 author: kenwith
 manager: celestedg
@@ -8,44 +8,47 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: how-to
 ms.workload: identity
-ms.date: 05/08/2019
+ms.date: 07/30/2020
 ms.author: kenwith
 ms.reviewer: arvinh,luleon
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5cfcece43ae1b7d7bcf0c38feba14f1e82b29f18
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2269a8f7f58d35fee5e2ca30a77af5e8cba83678
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84763481"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87459333"
 ---
 # <a name="configure-linked-sign-on"></a>Konfigurieren der Anmeldung über Link
 
-Wenn Sie eine Katalog- oder Nicht-Katalogwebanwendung hinzufügen, ist [einmaliges Anmelden über Link](what-is-single-sign-on.md) eine der Optionen für einmaliges Anmelden, die Ihnen zur Verfügung stehen. Wählen Sie diese Option aus, um im Azure AD-Zugriffsbereich oder Office 365-Portal Ihrer Organisation einen Link zu einer Anwendung hinzufügen. Mit dieser Methode können Sie Links zu benutzerdefinierten Webanwendungen hinzufügen, die derzeit für die Authentifizierung Active Directory-Verbunddienste (oder andere Verbunddienste) anstelle von Azure AD verwenden. Oder Sie können Deep-Links auf spezifische SharePoint-Seiten oder andere Webseiten hinzufügen, die in den Zugriffsbereichen der betreffenden Benutzer angezeigt werden sollen.
+In der [Schnellstartserie](view-applications-portal.md) zur Anwendungsverwaltung haben Sie gelernt, wie Sie Azure AD als Identitätsanbieter (Identity Provider, IdP) für eine Anwendung verwenden. Im Schnellstart richten Sie das SAML-basierte einmalige Anmelden (SSO) ein. Eine weitere Möglichkeit ist die Verwendung der **verknüpften Anmeldung**. In diesem Artikel erfahren Sie mehr über die Option der verknüpften Anmeldung.
+
+Mit der Option **Verknüpft** können Sie den Zielort konfigurieren, wenn ein Benutzer die App in [Meine Apps](https://myapplications.microsoft.com/) Ihrer Organisation oder im Office 365-Portal auswählt.
+
+Die Option der verknüpften Anmeldung ist unter anderem in den folgenden Szenarien sinnvoll:
+- Sie fügen einer benutzerdefinierten Webanwendung, die derzeit einen Verbund verwendet, z. B. Active Directory-Verbunddienste (AD FS), einen Link hinzu.
+- Sie fügen Deep-Links auf spezifische SharePoint-Seiten oder andere Webseiten hinzu, die in den Zugriffsbereichen der betreffenden Benutzer angezeigt werden sollen.
+- Sie fügen einer App, für die keine Authentifizierung erforderlich ist, einen Link hinzu. 
+ 
+ Mit der Option **Verknüpft** werden keine Anmeldefunktionen über Azure AD-Anmeldeinformationen bereitgestellt. Sie können jedoch weiterhin einige andere Features von **Unternehmensanwendungen** nutzen. Beispielsweise können Sie Überwachungsprotokolle verwenden und ein benutzerdefiniertes Logo und einen App-Namen hinzufügen.
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
-Falls die Anwendung Ihrem Azure AD-Mandanten noch nicht hinzugefügt wurde, helfen Ihnen die Artikel [Hinzufügen einer Katalog-App zu Ihrer Azure AD-Organisation](add-gallery-app.md) bzw. [Hinzufügen einer nicht aufgeführten Anwendung (Nicht-Kataloganwendung) zu Ihrer Azure AD-Organisation](add-non-gallery-app.md) weiter.
+Für einen schnellen Einstieg führen Sie die [Schnellstartserie](view-applications-portal.md) zur Anwendungsverwaltung durch. Sie finden im Schnellstart beim Konfigurieren des einmaligen Anmeldens auch die Option **Verknüpft**. 
 
-### <a name="open-the-app-and-select-linked-sign-on"></a>Öffnen der App und Auswählen des einmaligen Anmeldens über Link
+Die Option **Verknüpft** bietet keine Anmeldefunktionen über Azure AD. Die Option legt einfach den Ort fest, an den Benutzer weitergeleitet werden, wenn sie die App in [Meine Apps](https://myapplications.microsoft.com/) oder über das Microsoft 365-App-Startfeld auswählen.
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) als Cloudanwendungsadministrator oder Anwendungsadministrator für Ihren Azure AD-Mandanten an.
+> [!IMPORTANT] 
+> Es gibt einige Szenarien, in denen die Option **Einmaliges Anmelden** in der Navigation für eine Anwendung in **Unternehmensanwendungen** nicht vorhanden ist. 
+>
+> Wenn die Anwendung mit **App-Registrierungen** registriert wurde, wird die Funktion zum einmaligen Anmelden so eingerichtet, dass standardmäßig OIDC OAuth verwendet wird. In diesem Fall wird die Option **Einmaliges Anmelden** in der Navigation unter **Unternehmensanwendungen** nicht angezeigt. Wenn Sie **App-Registrierungen** zum Hinzufügen Ihrer benutzerdefinierten App verwenden, konfigurieren Sie die Optionen in der Manifestdatei. Weitere Informationen zur Manifestdatei finden Sie unter [Azure Active Directory-App-Manifest](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest). Weitere Informationen zu SSO-Standards finden Sie unter [Authentifizierung und Autorisierung mit der Microsoft Identity Platform](https://docs.microsoft.com/azure/active-directory/develop/authentication-vs-authorization#authentication-and-authorization-using-microsoft-identity-platform). 
+>
+> Zu den Szenarien, in denen ebenfalls **Einmaliges Anmelden** in der Navigation fehlt, zählen auch folgende Beispiele: Eine Anwendung wird in einem anderen Mandanten gehostet. Ihr Konto verfügt nicht über die erforderlichen Berechtigungen (globaler Administrator, Cloudanwendungsadministrator, Anwendungsadministrator oder Besitzer des Dienstprinzipals). Berechtigungen können auch zu einem Szenario führen, in dem Sie die Option **Einmaliges Anmelden**  zwar öffnen, aber nicht speichern können. Weitere Informationen zu administrativen Rollen in Azure AD finden Sie unter https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles).
 
-1. Navigieren Sie zu **Azure Active Directory** > **Unternehmensanwendungen**. Eine zufällige Stichprobe von Anwendungen in Ihrem Azure AD-Mandanten wird angezeigt. 
+### <a name="configure-link"></a>Konfigurieren der verknüpften Anmeldung
 
-1. Wählen Sie im Menü **Anwendungstyp** die Option **Alle Anwendungen** und dann **Übernehmen** aus.
-
-1. Geben Sie den Namen Ihrer Anwendung in das Suchfeld ein, und wählen Sie in den Ergebnissen Ihre Anwendung aus.
-
-1. Wählen Sie im Abschnitt **Verwalten** die Option **Einmaliges Anmelden** aus. 
-
-1. Wählen Sie **Mit Link** aus.
-
-1. Geben Sie die URL der Anwendung ein, mit der eine Verknüpfung hergestellt werden soll. Geben Sie die URL ein, und klicken Sie auf **Speichern**. 
+Um einen Link für eine App festzulegen, wählen Sie auf der Seite **Einmaliges Anmelden** die Option **Verknüpft** aus. Geben Sie anschließend den Link ein, und wählen Sie **Speichern** aus. Benötigen Sie eine Erinnerung, wo Sie diese Optionen finden? Sehen Sie sich die [Schnellstartreihe](view-applications-portal.md) an.
  
-1. Sie können der Anwendung Benutzer und Gruppen zuweisen. Dadurch wird die Anwendung im [Office 365-App-Startfeld](https://blogs.office.com/2014/10/16/organize-office-365-new-app-launcher-2/) oder im [Azure AD-Zugriffsbereich](end-user-experiences.md) für die betreffenden Benutzer angezeigt.
-
-1. Wählen Sie **Speichern** aus.
+Nachdem Sie eine App konfiguriert haben, weisen Sie ihr Benutzer und Gruppen zu. Wenn Sie Benutzer zuweisen, können Sie steuern, wann die Anwendung unter [Meine Apps](https://myapplications.microsoft.com/) oder im Microsoft 365-App-Startfeld angezeigt wird.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

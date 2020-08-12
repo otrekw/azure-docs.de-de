@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 16e390f2c206cb1f81914bc02e15818282a54a5b
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ac92e45e69522fe3de8abdb3afcf6049e5f07ac8
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86537563"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87563499"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory-version-1"></a>Von Azure Data Factory Version 1 unterstützte Compute-Umgebungen
 > [!NOTE]
@@ -114,7 +114,7 @@ Die folgende JSON definiert einen bedarfsgesteuerten Linux-basierten mit HDInsig
 > [!IMPORTANT]
 > Der HDInsight-Cluster erstellt einen *Standardcontainer* in dem Azure-Blobspeicher, den Sie in der JSON-Eigenschaft **linkedServiceName** angeben. HDInsight löscht diesen Container nicht, wenn der Cluster gelöscht wird. Dies ist so beabsichtigt. In einem bedarfsgesteuerten verknüpften HDInsight-Dienst wird jedes Mal ein HDInsight-Cluster erstellt, wenn ein Slice verarbeitet werden muss – es sei denn, es ist bereits ein aktiver Cluster vorhanden (**timeToLive**). Der Cluster wird nach Abschluss der Verarbeitung wieder gelöscht. 
 >
-> Wenn mehr Slices verarbeitet werden, werden in Ihrem Blobspeicher viele Container angezeigt. Sofern Sie die Container nicht für Problembehandlungsaufträge benötigen, sollten Sie sie ggf. löschen, um die Speicherkosten zu senken. Die Namen dieser Container folgen einem Muster: `adf<your Data Factory name>-<linked service name>-<date and time>`. Container im Blobspeicher können mit Tools wie dem [Microsoft-Speicher-Explorer](https://storageexplorer.com/) gelöscht werden.
+> Wenn mehr Slices verarbeitet werden, werden in Ihrem Blobspeicher viele Container angezeigt. Sofern Sie die Container nicht für Problembehandlungsaufträge benötigen, sollten Sie sie ggf. löschen, um die Speicherkosten zu senken. Die Namen dieser Container folgen einem Muster: `adf<your Data Factory name>-<linked service name>-<date and time>`. Container in Blob Storage können mit Tools wie dem [Microsoft Azure Storage-Explorer](https://storageexplorer.com/) gelöscht werden.
 >
 > 
 

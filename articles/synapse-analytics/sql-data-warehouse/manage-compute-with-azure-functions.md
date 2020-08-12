@@ -11,12 +11,12 @@ ms.date: 04/27/2018
 ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 9d680283250cc323c833f388f6b20d7fe6fa132d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 60e79ecd4148829c38b237c0e28d60796e84ac01
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85211050"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543655"
 ---
 # <a name="use-azure-functions-to-manage-compute-resources-in-azure-synapse-analytics-sql-pool"></a>Verwalten von Computeressourcen mit Azure Functions im SQL-Pool von Azure Synapse Analytics
 
@@ -38,9 +38,7 @@ Sie benötigen die folgenden Informationen, um die Vorlage bereitzustellen:
 
 Stellen Sie diese Vorlage bereit, nachdem Sie die zuvor angegebenen Informationen ermittelt haben:
 
-<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FMicrosoft%2Fsql-data-warehouse-samples%2Fmaster%2Farm-templates%2FsqlDwTimerScaler%2Fazuredeploy.json" target="_blank">
-<img src="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png"/>
-</a>
+[![Abbildung einer Schaltfläche mit der Bezeichnung „Bereitstellung in Azure“](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FMicrosoft%2Fsql-data-warehouse-samples%2Fmaster%2Farm-templates%2FsqlDwTimerScaler%2Fazuredeploy.json)
 
 Nach dem Bereitstellen der Vorlage sollten drei neue Ressourcen vorhanden sein: ein kostenloser Azure App Service-Plan, ein nutzungsbasierter Funktionen-App-Plan und ein Speicherkonto für die Verarbeitung der Protokollierung und der Warteschlange für die Vorgänge. Fahren Sie mit dem Lesen der anderen Abschnitte fort, um zu erfahren, wie Sie die bereitgestellten Funktionen an Ihre Anforderungen anpassen.
 

@@ -9,17 +9,28 @@ ms.subservice: ''
 author: VasiyaKrishnan
 ms.author: vakrishn
 ms.reviewer: sstein
-ms.date: 06/05/2020
-ms.openlocfilehash: d5d60db2cc0c35b908454be3f00716db6d2da945
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/27/2020
+ms.openlocfilehash: 74e9772ada010d79e81ef36cae89ba586db73077
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85361641"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87553409"
 ---
 # <a name="azure-sql-edge-release-notes"></a>Azure SQL Edge: Versionshinweise 
 
 In diesem Artikel erhalten Sie Informationen zu Neuerungen und Änderungen für neue Azure SQL Edge-Builds.
+
+## <a name="ctp-22"></a>CTP 2.2
+### <a name="sql-engine-build-number---15020001546"></a>SQL-Engine-Buildnummer: 15.0.2000.1546
+### <a name="fixes"></a>Fehlerbehebungen
+1. Unterstützung für Container ohne Root-Berechtigung 
+2. Unterstützung für Verbrauchs- und Diagnosedatensammlung 
+3. T-SQL-Streamingupdates
+   - Unterstützung für Unicode-Zeichen für Streamobjektnamen
+   - Verbesserungen der Prozessbereinigung
+   - Verbesserungen bei Protokollierung und Diagnose
+4. Leistungsverbesserung bei der Datenerfassung
 
 ## <a name="ctp-21"></a>CTP 2.1 
 ### <a name="sql-engine-build-number---15020001545"></a>SQL-Engine-Buildnummer: 15.0.2000.1545

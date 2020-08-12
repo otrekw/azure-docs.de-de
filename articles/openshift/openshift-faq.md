@@ -5,13 +5,13 @@ author: jimzim
 ms.author: jzim
 ms.service: container-service
 ms.topic: conceptual
-ms.date: 05/29/2020
-ms.openlocfilehash: 0c4c5ddfebe9e2b5b37a2c28ec4941f6c38668f1
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.date: 07/31/2020
+ms.openlocfilehash: 93507bae3f817f92cfa427ceca10f651352a46bc
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84219236"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87497578"
 ---
 # <a name="azure-red-hat-openshift-faq"></a>Häufig gestellte Fragen zu Azure Red Hat OpenShift
 
@@ -235,3 +235,7 @@ Bei Clustern der Version 3.11 werden die Daten nicht auf der etcd-Ebene verschl�
 Für Cluster der Version 4.x ist Azure Disk (Premium_LRS) als Standardspeicherklasse konfiguriert. Weitere Speicheranbieter und Einzelheiten zur Konfiguration (einschließlich Azure Files) finden Sie in der Red Hat-Dokumentation zum [permanenten Speicher](https://docs.openshift.com/aro/4/storage/understanding-persistent-storage.html).
 
 Für Cluster der Version 3.11 werden standardmäßig zwei Speicherklassen bereitgestellt: eine für Azure Disk (Premium_LRS) und eine für Azure Files.
+
+## <a name="does-aro-store-any-customer-data-outside-of-the-clusters-region"></a>Speichert ARO Kundendaten außerhalb der Region des Clusters?
+
+Nein. Alle in einem ARO-Cluster erstellten Daten verbleiben innerhalb der Region des Clusters.

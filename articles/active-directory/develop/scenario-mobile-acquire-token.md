@@ -13,12 +13,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 2be074c457eaadd1fb6467cbcfdd45a2e7745613
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 499b7348c645f4792332769ac598ffcea07ea102
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82098899"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87541905"
 ---
 # <a name="get-a-token-for-a-mobile-app-that-calls-web-apis"></a>Abrufen eines Tokens für eine mobile App, die Web-APIs aufruft
 
@@ -221,7 +221,7 @@ In den folgenden Abschnitten werden die optionalen Parameter in MSAL.NET erläut
 
 Der `WithPrompt()`-Parameter steuert die Interaktivität mit dem Benutzer durch Angabe einer Eingabeaufforderung.
 
-<img src="https://user-images.githubusercontent.com/13203188/53438042-3fb85700-39ff-11e9-9a9e-1ff9874197b3.png" width="25%" />
+![Abbildung mit den Feldern in der Struktur der Eingabeaufforderung Diese konstanten Werte steuern die Interaktivität mit dem Benutzer, indem sie den Typ der Eingabeaufforderung definieren, der vom Parameter „WithPrompt ()“ angezeigt wird.](https://user-images.githubusercontent.com/13203188/53438042-3fb85700-39ff-11e9-9a9e-1ff9874197b3.png)
 
 Die Klasse definiert die folgenden Konstanten:
 

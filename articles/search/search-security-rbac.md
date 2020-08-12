@@ -1,5 +1,5 @@
 ---
-title: Festlegen von RBAC-Rollen für den Azure-Administratorzugriff
+title: Festlegen von Azure-Rollen für den Azure-Administratorzugriff
 titleSuffix: Azure Cognitive Search
 description: Rollenbasierte Verwaltungsfunktionen (RBAC) im Azure-Portal zum Steuern und Delegieren von administrativen Aufgaben für die Verwaltung der kognitiven Azure-Suche.
 manager: nitinme
@@ -8,14 +8,14 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/03/2020
-ms.openlocfilehash: 402fae5622219b14cfdab921ebe1a78ad5dd111e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d1b2576eb42cbe25919eb77fc30e2720ed812ca4
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84462837"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534429"
 ---
-# <a name="set-rbac-roles-for-administrative-access-to-azure-cognitive-search"></a>Festlegen von RBAC-Rollen für den Administratorzugriff auf die kognitive Azure-Suche
+# <a name="set-azure-roles-for-administrative-access-to-azure-cognitive-search"></a>Festlegen von Azure-Rollen für den Administratorzugriff auf Azure Cognitive Search
 
 In Azure wird ein [globales Modell für die rollenbasierte Autorisierung](../role-based-access-control/role-assignments-portal.md) für alle Dienste bereitgestellt, die über das Portal oder mit Resource Manager-APIs verwaltet werden. Die Rollen „Besitzer“, „Mitwirkender“ und „Leser“ bestimmen die Ebene der *Dienstverwaltung* für Active Directory-Benutzer, -Gruppen und -Dienstprinzipale, die einer Rolle jeweils zugewiesen sind. 
 
@@ -29,7 +29,7 @@ Für die kognitive Azure-Suche sind Rollen mit Berechtigungsebenen zugeordnet, d
 | Role | Aufgabe |
 | --- | --- |
 | Besitzer |Erstellen oder löschen Sie den Dienst bzw. jedes Objekt im Dienst, einschließlich API-Schlüsseln, Indizes, Indexern sowie Datenquellen und Zeitplänen für Indexer.<p>Zeigen Sie den Dienststatus an, einschließlich Anzahl und Speichergröße.<p>Hinzufügen oder Löschen von Rollenmitgliedschaften (Nur ein Besitzer kann die Rollenmitgliedschaften verwalten.)<p>Abonnementadministratoren und Dienstbesitzer sind automatisch Mitglieder der Besitzerrolle. |
-| Mitwirkender |Die gleiche Ebene wie „Besitzer“, mit Ausnahme der RBAC-Rollenverwaltung. So kann z.B. ein Mitwirkender Objekte erstellen oder löschen bzw. [API-Schlüssel](search-security-api-keys.md) anzeigen und neu generieren, aber nicht die Rollenmitgliedschaften ändern. |
+| Mitwirkender |Die gleiche Zugriffsebene wie „Besitzer“, mit Ausnahme der Azure-Rollenverwaltung. So kann z.B. ein Mitwirkender Objekte erstellen oder löschen bzw. [API-Schlüssel](search-security-api-keys.md) anzeigen und neu generieren, aber nicht die Rollenmitgliedschaften ändern. |
 | [Mitwirkender von Suchdienst](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#search-service-contributor) | Entspricht der Rolle „Mitwirkender“. |
 | Leser |Anzeigen von Dienstzusammenfassungen und Metriken. Mitglieder dieser Rolle können Index, Indexer, Datenquelle oder Schlüsselinformationen nicht anzeigen.  |
 

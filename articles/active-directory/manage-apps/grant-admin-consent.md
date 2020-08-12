@@ -12,12 +12,12 @@ ms.date: 11/04/2019
 ms.author: kenwith
 ms.reviewer: phsignor
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3c24023bdd3540785dec58ebeaa14d99ab659ab1
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 713b4ed2559e3cd16943af92e68818047e249ef4
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85848375"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87501013"
 ---
 # <a name="grant-tenant-wide-admin-consent-to-an-application"></a>Erteilen einer mandantenweiten Administratoreinwilligung für eine Anwendung
 
@@ -30,10 +30,17 @@ Weitere Informationen zur Einwilligung für Anwendungen finden Sie unter [Azure 
 Sie müssen sich als [globaler Administrator](../users-groups-roles/directory-assign-admin-roles.md#global-administrator--company-administrator), als [Anwendungsadministrator](../users-groups-roles/directory-assign-admin-roles.md#application-administrator) oder als [Cloudanwendungsadministrator](../users-groups-roles/directory-assign-admin-roles.md#cloud-application-administrator) anmelden, um eine mandantenweite Administratoreinwilligung erteilen zu können.
 
 > [!IMPORTANT]
-> Wenn für eine Anwendung die mandantenweite Administratoreinwilligung erteilt wurde, können sich alle Benutzer bei der Anwendung anmelden, es sei denn eine Benutzerzuweisung ist erforderlich. Sie benötigen die Benutzerzuweisung, und müssen dann Benutzer oder Gruppen der Anwendung zuweisen, um zu bestimmen, welche Benutzer sich bei der Anwendung anmelden dürfen. Weitere Informationen finden Sie unter [Zuweisen von Benutzern und Gruppen zu einer Anwendung in Azure Active Directory](methods-for-assigning-users-and-groups.md).
+> Wenn für eine Anwendung die mandantenweite Administratoreinwilligung erteilt wurde, können sich alle Benutzer bei der Anwendung anmelden, es sei denn eine Benutzerzuweisung ist erforderlich. Sie benötigen die Benutzerzuweisung und müssen dann der Anwendung Benutzer oder Gruppen zuweisen, um zu bestimmen, welche Benutzer sich bei der Anwendung anmelden dürfen. Weitere Informationen finden Sie unter [Zuweisen von Benutzern und Gruppen zu einer Anwendung in Azure Active Directory](methods-for-assigning-users-and-groups.md).
+>
+> Die Rolle „Globaler Administrator“ ist erforderlich, um die Administratoreinwilligung für die Microsoft Graph-API zu geben.
+>
+
 
 > [!WARNING]
 > Durch das Erteilen der mandantenweiten Administratoreinwilligung für eine Anwendung erhält die App und der Herausgeber der App Zugriff auf die Daten Ihrer Organisation. Überprüfen Sie vor dem Erteilen einer Einwilligung sorgfältig die Berechtigungen, die von der Anwendung angefordert werden.
+>
+> Die Rolle „Globaler Administrator“ ist erforderlich, um die Administratoreinwilligung für die Microsoft Graph-API zu geben.
+>
 
 ## <a name="grant-admin-consent-from-the-azure-portal"></a>Erteilen der Administratoreinwilligung über das Azure-Portal
 
@@ -82,9 +89,9 @@ Dabei gilt:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Konfigurieren der Art und Weise, wie Endbenutzer Anwendungen zustimmen können](configure-user-consent.md)
+[Konfigurieren der Art der Benutzereinwilligung für eine Anwendung in Azure Active Directory](configure-user-consent.md)
 
-[Konfigurieren des Workflows für die Administratoreinwilligung](configure-admin-consent-workflow.md)
+[Konfigurieren des Workflows für die Administratoreinwilligung (Vorschau)](configure-admin-consent-workflow.md)
 
 [Berechtigungen und Zustimmung im Microsoft Identity Platform-Endpunkt](../develop/active-directory-v2-scopes.md)
 

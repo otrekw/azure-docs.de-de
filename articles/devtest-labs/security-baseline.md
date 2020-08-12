@@ -3,12 +3,12 @@ title: Azure-Sicherheitsbaseline für Azure DevTest Labs
 description: Azure-Sicherheitsbaseline für Azure DevTest Labs
 ms.topic: conceptual
 ms.date: 07/23/2020
-ms.openlocfilehash: 7f0dc1fb18740e2b0611b5954821a5ceda2d2657
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 158ead7531b0b3da2e495e36e40e761961bea498
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387828"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87761007"
 ---
 # <a name="azure-security-baseline-for-azure-devtest-labs"></a>Azure-Sicherheitsbaseline für Azure DevTest Labs
 
@@ -32,7 +32,7 @@ Weitere Informationen zum Konfigurieren der Zeitsynchronisierung für Azure-Comp
 **Verantwortlichkeit:** Microsoft
 
 ### <a name="22-configure-central-security-log-management"></a>2.2: Konfigurieren der zentralen Sicherheitsprotokollverwaltung
-**Leitfaden**: Aktivieren Sie die Diagnoseeinstellungen für das Azure-Aktivitätsprotokoll, und senden Sie die Protokolle zwecks Archivierung an einen Log Analytics-Arbeitsbereich, eine Azure Event Hub-Instanz oder ein Azure-Speicherkonto. Aktivitätsprotokolle geben Einblick in die Vorgänge, die für Ihre Azure DevTest Labs-Instanzen auf Verwaltungsebene erfolgen. Mit den Daten aus Azure-Aktivitätsprotokollen können Sie die Antworten auf die Fragen „Was“, „Wer“ und „Wann“ für alle Schreibvorgänge (PUT, POST, DELETE) ermitteln, die auf Verwaltungsebene Ihre Azure DevTest Labs-Instanzen durchgeführt werden.
+**Leitfaden**: Aktivieren Sie die Diagnoseeinstellungen für das Azure-Aktivitätsprotokoll, und senden Sie die Protokolle zwecks Archivierung an einen Log Analytics-Arbeitsbereich, eine Azure Event Hub-Instanz oder ein Azure-Speicherkonto. Aktivitätsprotokolle geben Einblick in die Vorgänge, die für Ihre Azure DevTest Labs-Instanzen auf Verwaltungsebene erfolgen. Mit den Daten aus Azure-Aktivitätsprotokollen können Sie die Antworten auf die Fragen „Was“, „Wer“ und „Wann“ für Schreibvorgänge (PUT, POST, DELETE) ermitteln, die auf Verwaltungsebene für Ihre Azure DevTest Labs-Instanzen durchgeführt werden.
 
 Weitere Informationen finden Sie unter [Erstellen von Diagnoseeinstellungen zum Senden von Plattformprotokollen und Metriken an verschiedene Ziele](../azure-monitor/platform/diagnostic-settings.md).
 
@@ -41,7 +41,7 @@ Weitere Informationen finden Sie unter [Erstellen von Diagnoseeinstellungen zum 
 **Verantwortlichkeit:** Kunde
 
 ### <a name="23-enable-audit-logging-for-azure-resources"></a>2.3: Aktivieren der Überwachungsprotokollierung für Azure-Ressourcen
-**Leitfaden**: Aktivieren Sie die Diagnoseeinstellungen für das Azure-Aktivitätsprotokoll, und senden Sie die Protokolle zwecks Archivierung an einen Log Analytics-Arbeitsbereich, eine Azure Event Hub-Instanz oder ein Azure-Speicherkonto. Aktivitätsprotokolle geben Einblick in die Vorgänge, die für Ihre Azure DevTest Labs-Instanzen auf Verwaltungsebene erfolgen. Mit den Daten aus Azure-Aktivitätsprotokollen können Sie die Antworten auf die Fragen „Was“, „Wer“ und „Wann“ für alle Schreibvorgänge (PUT, POST, DELETE) ermitteln, die auf Verwaltungsebene Ihre Azure DevTest Labs-Instanzen durchgeführt werden.
+**Leitfaden**: Aktivieren Sie die Diagnoseeinstellungen für das Azure-Aktivitätsprotokoll, und senden Sie die Protokolle zwecks Archivierung an einen Log Analytics-Arbeitsbereich, eine Azure Event Hub-Instanz oder ein Azure-Speicherkonto. Aktivitätsprotokolle geben Einblick in die Vorgänge, die für Ihre Azure DevTest Labs-Instanzen auf Verwaltungsebene erfolgen. Mit den Daten aus Azure-Aktivitätsprotokollen können Sie die Antworten auf die Fragen „Was“, „Wer“ und „Wann“ für alle Schreibvorgänge (PUT, POST, DELETE) ermitteln, die auf Verwaltungsebene für Ihre Azure DevTest Labs-Instanzen durchgeführt werden.
 
 Weitere Informationen finden Sie unter [Erstellen von Diagnoseeinstellungen zum Senden von Plattformprotokollen und Metriken an verschiedene Ziele](../azure-monitor/platform/diagnostic-settings.md).
 
@@ -120,7 +120,7 @@ Weitere Informationen finden Sie im folgenden Artikel: [Warnungen bei Log Analyt
 *Weitere Informationen finden Sie unter [Sicherheitskontrolle: Identität und Zugriffssteuerung](../security/benchmarks/security-control-identity-access-control.md).*
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1: Verwalten eines Bestands von Administratorkonten
-**Leitfaden**: Azure Active Directory (Azure AD) umfasst integrierte Rollen, die explizit zugewiesen werden müssen und abgefragt werden können. Verwenden Sie das Azure AD PowerShell-Modul, um Ad-hoc-Abfragen zum Ermitteln von Konten auszuführen, die Mitglieder von administrativen Gruppen sind.
+**Leitfaden**: Azure Active Directory (Azure AD) umfasst integrierte Rollen, die explizit zugewiesen werden müssen und abgefragt werden können. Verwenden Sie das Azure AD-PowerShell-Modul, um Ad-hoc-Abfragen zum Ermitteln von Konten auszuführen, die Mitglieder von administrativen Gruppen sind.
 
 - [Abrufen einer Verzeichnisrolle in Azure AD mit PowerShell](/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
 - [Abrufen von Mitgliedern einer Verzeichnisrolle in Azure AD mit PowerShell](/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
@@ -258,6 +258,110 @@ Sie können diesen Prozess optimieren, indem Sie Diagnoseeinstellungen für Azur
 
 **Verantwortlichkeit:** Kunde
 
+## <a name="data-protection"></a>Datenschutz
+*Weitere Informationen finden Sie unter [Sicherheitskontrolle: Schutz von Daten](../security/benchmarks/security-control-data-protection.md).*
+
+### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4.1: Verwalten eines Bestands an vertraulichen Informationen
+**Leitfaden:** Verwenden Sie Tags für die Nachverfolgung von Azure-Ressourcen, die vertrauliche Informationen speichern oder verarbeiten.
+
+- [Erstellen und Verwenden von Tags](../azure-resource-manager/resource-group-using-tags.md)
+
+**Azure Security Center-Überwachung:** Nicht verfügbar
+
+**Verantwortlichkeit:** Kunde
+
+### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4.2: Isolieren von Systemen, die vertrauliche Informationen speichern oder verarbeiten
+**Leitfaden:** Implementieren Sie getrennte Abonnements oder Verwaltungsgruppen für Entwicklungs-, Test- und Produktionsumgebungen. Azure DevTest Labs-Instanzen müssen durch ein virtuelles Netzwerk/Subnetz getrennt und entsprechend mit Tags versehen werden. 
+
+- [Erstellen zusätzlicher Azure-Abonnements](../billing/billing-create-subscription.md)
+- [Erstellen von Verwaltungsgruppen](../governance/management-groups/create.md)
+- [Konfigurieren eines virtuellen Netzwerks für DevTest Labs](devtest-lab-configure-vnet.md)
+- [Erstellen und Verwenden von Tags](../azure-resource-manager/resource-group-using-tags.md)
+- [Erstellen und Verwenden von Tags für DevTest Labs](devtest-lab-add-tag.md)
+
+**Azure Security Center-Überwachung:** Zurzeit nicht verfügbar
+
+**Verantwortlichkeit:** Kunde
+
+### <a name="43-monitor-and-block-unauthorized-transfer-of-sensitive-information"></a>4.3: Überwachen und Blockieren einer nicht autorisierten Übertragung vertraulicher Informationen
+**Leitfaden:** Noch nicht verfügbar: Funktionen für Datenidentifizierung und -klassifizierung sowie zur Vermeidung von Datenverlust sind für Azure DevTest Labs noch nicht verfügbar.
+
+Microsoft verwaltet die zugrunde liegende Infrastruktur für Azure DevTest Labs und hat strenge Kontrollen implementiert, um den Verlust oder die Offenlegung von Kundendaten zu verhindern.
+
+- [Grundlegendes zum Schutz von Kundendaten in Azure](../security/fundamentals/protection-customer-data.md)
+
+**Azure Security Center-Überwachung:** Zurzeit nicht verfügbar
+
+**Verantwortlichkeit:** Shared
+
+### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4.4: Verschlüsseln aller vertraulichen Informationen während der Übertragung
+**Leitfaden:** Azure DevTest Labs verlangt standardmäßig eine mit TLS verschlüsselte Kommunikation. Derzeit wird die TLS-Version 1.2 unterstützt. Wenn TLS von der Clientbibliothek oder dem Tool nicht unterstützt wird, kann die Aktivierung unverschlüsselter Verbindungen über das Azure-Portal oder über Verwaltungs-APIs vorgenommen werden. Wenn verschlüsselte Verbindungen nicht möglich sind, wird empfohlen, das Lab und die Clientanwendung in ein virtuelles Netzwerk einzubinden.
+
+[Grundlegendes zum Szenario mit Verschlüsselung während der Übertragung für DevTest Labs](https://techcommunity.microsoft.com/t5/azure-developer-community-blog/azure-devtest-labs-enforcing-tls-1-2-starting-may-01-2020/ba-p/1236279)
+
+**Azure Security Center-Überwachung:** Ja
+
+**Verantwortlichkeit:** Shared
+
+### <a name="45-use-an-active-discovery-tool-to-identify-sensitive-data"></a>4.5: Verwenden eines aktiven Ermittlungstools zur Bestimmung vertraulicher Daten
+**Leitfaden:** Funktionen für Datenidentifizierung und -klassifizierung sowie zur Vermeidung von Datenverlust sind für Azure DevTest Labs noch nicht verfügbar. Versehen Sie Instanzen mit vertraulichen Informationen mit entsprechenden Tags, und implementieren Sie eine Drittanbieterlösung, wenn dies aus Compliancegründen erforderlich ist.
+
+Für die zugrunde liegende Plattform, die von Microsoft verwaltet wird, behandelt Microsoft alle Kundeninhalte als vertraulich und unternimmt große Anstrengungen, um Kundendaten vor Verlust und Offenlegung zu schützen. Um die Sicherheit von Kundendaten innerhalb von Azure zu gewährleisten, hat Microsoft eine Reihe von robusten Datenschutzkontrollen und -funktionen implementiert und kümmert sich um deren Verwaltung.
+
+- [Grundlegendes zum Schutz von Kundendaten in Azure](../security/fundamentals/protection-customer-data.md)
+
+**Azure Security Center-Überwachung:** Zurzeit nicht verfügbar
+
+**Verantwortlichkeit:** Kunde
+
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6: Verwenden von Azure RBAC zum Steuern des Zugriffs auf Ressourcen
+**Leitfaden:** Verwenden Sie die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) von Azure Active Directory (Azure AD), um den Zugriff auf Labs in Azure DevTest Labs zu steuern.
+
+- [Konfigurieren von RBAC in Azure](../role-based-access-control/role-assignments-portal.md)
+- [Grundlegendes zu Rollen in DevTest Labs](devtest-lab-add-devtest-user.md)
+
+**Azure Security Center-Überwachung:** Nicht verfügbar
+
+**Verantwortlichkeit:** Kunde
+
+### <a name="47-use-host-based-data-loss-prevention-to-enforce-access-control"></a>4.7: Verwenden der hostbasierten Verhinderung von Datenverlusten zum Erzwingen der Zugriffssteuerung
+**Leitfaden:** Wenn dies aus Compliancegründen für im Rahmen von DevTest Labs erstellte Computeressourcen erforderlich ist, implementieren Sie ein Drittanbietertool wie eine automatisierte Lösung für die hostbasierte Verhinderung von Datenverlust, um Zugriffssteuerungen für Daten auch dann zu erzwingen, wenn sie aus einem System kopiert werden.
+
+Für die zugrunde liegende Plattform, die von Microsoft verwaltet wird, behandelt Microsoft alle Kundeninhalte als vertraulich und unternimmt große Anstrengungen, um Kundendaten vor Verlust und Offenlegung zu schützen. Um die Sicherheit von Kundendaten innerhalb von Azure zu gewährleisten, hat Microsoft eine Reihe von robusten Datenschutzkontrollen und -funktionen implementiert und kümmert sich um deren Verwaltung.
+
+- [Grundlegendes zum Schutz von Kundendaten in Azure](../security/fundamentals/protection-customer-data.md)
+
+**Azure Security Center-Überwachung:** Nicht verfügbar
+
+**Verantwortlichkeit:** Nicht verfügbar
+
+### <a name="48-encrypt-sensitive-information-at-rest"></a>4.8: Verschlüsseln vertraulicher, ruhender Informationen
+**Leitfaden:** Azure DevTest Labs speichert die folgenden Kundendaten:
+
+- [Artefaktergebnisse](add-artifact-vm.md), einschließlich Bereitstellungs- und Erweiterungsprotokollen, die durch das Anwenden von Artefakten erstellt wurden
+- [Formulardokumente](devtest-lab-manage-formulas.md), die zum Erstellen von virtuellen Computern verwendet werden können
+- Datenträger für Betriebssystem und Daten von virtuellen Labcomputern 
+
+Artefaktergebnisse und Formeldokumente werden an ein Azure Storage-Konto gesendet, das im Rahmen jeder Labbereitstellung erstellt wird. Daten in Azure Storage werden auf transparente Weise mit der AES-256-Verschlüsselung – einer der stärksten verfügbaren Blockchiffren – ver- und entschlüsselt und sind mit dem FIPS 140-2-Standard konform. Die Azure Storage-Verschlüsselung kann nicht deaktiviert werden. Sie können von Microsoft verwaltete Schlüssel für die Verschlüsselung Ihres Speicherkontos nutzen, oder Sie können die Verschlüsselung mit Ihren eigenen Schlüsseln verwalten. Weitere Informationen finden Sie unter [Verschlüsselung für Lab-Speicherkonten](encrypt-storage.md).
+
+Standardmäßig werden alle Labdatenträger für Betriebssystem und Daten mit einem von der Plattform verwalteten Schlüssel verschlüsselt. Alle verwalteten Datenträger, Momentaufnahmen, Images und Daten, die auf vorhandene verwaltete Datenträger geschrieben wurden, werden im Ruhezustand automatisch mit von der Plattform verwalteten Schlüsseln verschlüsselt. Als Labbesitzer können Sie Lab-Betriebssystemdatenträger so konfigurieren, dass sie mit einem vom Kunden verwalteten Schlüssel verschlüsselt werden. Die Verschlüsselung mit einem vom Kunden verwalteten Schlüssel für Labdatenträger kann derzeit nicht über das Lab selbst konfiguriert werden. Ein Abonnementadministrator kann diese Einstellung jedoch für Labdatenträger in einem Abonnement konfigurieren. Weitere Informationen finden Sie unter [Verschlüsseln von DevTest Labs-Betriebssystemdatenträgern mit vom Kunden verwalteten Schlüsseln](encrypt-disks-customer-managed-keys.md).
+
+**Azure Security Center-Überwachung:** Nicht verfügbar
+
+**Verantwortlichkeit:** Shared
+
+### <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4.9: Protokollieren und Warnen bei Änderungen an wichtigen Azure-Ressourcen
+**Leitfaden:** Verwenden Sie Azure Monitor mit dem Azure-Aktivitätsprotokoll, um Warnungen für den Fall zu erstellen, dass Änderungen an DevTest Labs-Instanzen und anderen kritischen bzw. zugehörigen Ressourcen vorgenommen werden.
+
+- [Erstellen von Warnungen für Azure-Aktivitätsprotokollereignisse](../azure-monitor/platform/alerts-activity-log.md)
+- [Erstellen von Warnungen für DevTest Labs-Aktivitätsprotokollereignisse](create-alerts.md)
+
+**Azure Security Center-Überwachung:** Nicht verfügbar
+
+**Verantwortlichkeit:** Kunde
+
+
+
 ## <a name="vulnerability-management"></a>Verwaltung von Sicherheitsrisiken
 *Weitere Informationen finden Sie unter [Sicherheitskontrolle: Verwaltung von Sicherheitsrisiken](../security/benchmarks/security-control-vulnerability-management.md).*
 
@@ -273,9 +377,9 @@ Microsoft führt die Verwaltung der Sicherheitsrisiken für die zugrunde liegend
 **Verantwortlichkeit:** Shared
 
 ### <a name="52-deploy-automated-operating-system-patch-management-solution"></a>5.2: Bereitstellen der automatisierten Lösung für die Patchverwaltung von Betriebssystemen
-**Leitfaden**: Verwenden Sie die Azure-Updateverwaltung, um sicherzustellen, dass auf Ihren Windows- und Linux-VMs, die in DevTest Labs gehostet werden, die aktuellen Sicherheitsupdates installiert sind. Stellen Sie bei virtuellen Windows-Computern sicher, dass Windows Update aktiviert wurde und auf „Automatisch Aktualisieren“ festgelegt ist. Diese Einstellung ist derzeit nicht für die Konfiguration über DevTest Labs verfügbar, aber der Lab-Administrator/Abonnementadministrator kann diese Einstellung auf den zugrunde liegenden Compute-VMs in seinem Abonnement konfigurieren. 
+**Leitfaden**: Verwenden Sie die Azure-Updateverwaltung, um sicherzustellen, dass auf Ihren Windows- und Linux-VMs, die in DevTest Labs gehostet werden, die aktuellen Sicherheitsupdates installiert sind. Stellen Sie bei virtuellen Windows-Computern sicher, dass Windows Update aktiviert wurde und auf „Automatisch Aktualisieren“ festgelegt ist. Diese Einstellung kann derzeit nicht über DevTest Labs konfiguriert werden, der Lab-/Abonnementadministrator kann diese Einstellung jedoch auf den zugrunde liegenden Compute-VMs in seinem Abonnement konfigurieren. 
 
-- [Konfigurieren der Updateverwaltung für VMs in Azure](../automation/automation-update-management.md)
+- [Konfigurieren der Updateverwaltung für VMs in Azure](../automation/update-management/update-mgmt-overview.md)
 - [Grundlegendes zu von Security Center überwachten Azure-Sicherheitsrichtlinien](../security-center/security-center-policy-definitions.md)
 
 **Azure Security Center-Überwachung:** Nicht verfügbar
@@ -289,8 +393,8 @@ Erfahren Sie mehr über [DevTest Labs Image Factory](image-factory-create.md), e
 
 Als Abonnementadministrator können Sie die Azure-Updateverwaltung verwenden, um Updates und Patches für DevTest Labs-VMs zu verwalten. In der Updateverwaltung wird das lokal konfigurierte Updaterepository verwendet, um unterstützte Windows-Systeme zu patchen. Mit Tools wie System Center Updates Publisher (Updates Publisher) können Sie benutzerdefinierte Updates in Windows Server Update Services (WSUS) veröffentlichen. Dadurch kann die Updateverwaltung Computer, auf denen Configuration Manager als Updaterepository verwendet wird, mit Software von Drittanbietern patchen.
 
-- [Updateverwaltung in Azure](../automation/automation-update-management.md)
-- [Verwalten von Updates und Patches für Ihre Azure-VMs](../automation/automation-tutorial-update-management.md)
+- [Updateverwaltung in Azure](../automation/update-management/update-mgmt-overview.md)
+- [Verwalten von Updates und Patches für Ihre VMs](../automation/update-management/update-mgmt-overview.md)
 
 **Azure Security Center-Überwachung:** Nicht verfügbar
 
@@ -372,7 +476,7 @@ Verwenden Sie außerdem Azure Resource Graph, um Ressourcen in Ihren Abonnements
 **Verantwortlichkeit:** Kunde
 
 ### <a name="66-monitor-for-unapproved-software-applications-within-compute-resources"></a>6.6: Überwachen auf nicht genehmigte Softwareanwendungen innerhalb von Computeressourcen
-**Leitfaden**: Mit Azure Automation haben Sie in Bezug auf die Bereitstellung, Abläufe und Außerbetriebnahme von Workloads und Ressourcen die volle Kontrolle. Als Abonnementadministrator können Sie den Azure Virtual Machine-Bestand verwenden, um die Erfassung von Informationen zur gesamten Software auf DevTest Labs-VMs in Ihrem Abonnement zu automatisieren. Der Softwarename, die Version, der Herausgeber und die Aktualisierungszeit sind im Azure-Portal verfügbar. Kunden müssen die Diagnose auf Gastebene aktivieren und die Windows-Ereignisprotokolle einem Log Analytics-Arbeitsbereich hinzufügen, um auf das Installationsdatum und andere Informationen zugreifen zu können.
+**Leitfaden**: Mit Azure Automation haben Sie in Bezug auf die Bereitstellung, Abläufe und Außerbetriebnahme von Workloads und Ressourcen die volle Kontrolle. Als Abonnementadministrator können Sie den Bestand an virtuellen Azure-Computern verwenden, um die Erfassung von Informationen zur gesamten Software auf DevTest Labs-VMs in Ihrem Abonnement zu automatisieren. Der Softwarename, die Version, der Herausgeber und die Aktualisierungszeit sind im Azure-Portal verfügbar. Kunden müssen die Diagnose auf Gastebene aktivieren und die Windows-Ereignisprotokolle einem Log Analytics-Arbeitsbereich hinzufügen, um auf das Installationsdatum und andere Informationen zugreifen zu können.
 
 Zusätzlich zur Änderungsnachverfolgung für die Überwachung von Softwareanwendungen verwenden adaptive Anwendungssteuerungen in Azure Security Center maschinelles Lernen, um die auf Ihren Computern ausgeführten Anwendungen zu analysieren und aus diesen Informationen eine Zulassungsliste zu erstellen. Dadurch können Sie Richtlinien für Anwendungszulassungsliste deutlich einfacher konfigurieren und verwalten. Auf diese Weise vermeiden Sie, dass in Ihrer Umgebung unerwünschte Software eingesetzt wird. Sie können den Überwachungsmodus oder den Erzwingungsmodus konfigurieren. Im Überwachungsmodus werden nur die Aktivitäten auf den geschützten VMs überwacht. Im Erzwingungsmodus werden die Regeln erzwungen, und es wird sichergestellt, dass Anwendungen, deren Ausführung unzulässig ist, blockiert werden. 
 
@@ -421,7 +525,7 @@ Weitere Informationen finden Sie in folgenden Artikeln:
 
 
 ### <a name="610-maintain-an-inventory-of-approved-software-titles"></a>6.10: Verwalten eines Bestands an genehmigten Softwaretiteln
-**Leitfaden**: Die adaptive Anwendungssteuerung ist eine intelligente, automatisierte End-to-End-Lösung von Azure Security Center, mit der Sie steuern können, welche Anwendungen auf Ihren Computern mit oder ohne Azure ausgeführt werden können (Windows und Linux), die in DevTest Labs gehostet werden. Beachten Sie, dass Sie ein Abonnementadministrator sein müssen, um diese Einstellung für die zugrunde liegenden Computeressourcen konfigurieren zu können, die in DevTest Labs gehostet werden. Implementieren Sie eine Drittanbieterlösung, wenn diese Einstellung die Anforderung Ihrer Organisation nicht erfüllt.
+**Leitfaden**: Die adaptive Anwendungssteuerung ist eine intelligente, automatisierte End-to-End-Lösung von Azure Security Center, mit der Sie steuern können, welche Anwendungen auf Ihren Computern mit oder ohne Azure ausgeführt werden können (Windows und Linux), die in DevTest Labs gehostet werden. Beachten Sie, dass Sie ein Abonnementadministrator sein müssen, um diese Einstellung für die zugrunde liegenden, in DevTest Labs gehosteten Computeressourcen konfigurieren zu können. Implementieren Sie eine Drittanbieterlösung, wenn diese Einstellung die Anforderung Ihrer Organisation nicht erfüllt.
 
 - [Verwenden der adaptiven Anwendungssteuerungen in Azure Security Center](../security-center/security-center-adaptive-application.md)
 
@@ -464,6 +568,156 @@ Weitere Informationen finden Sie in folgenden Artikeln:
 
 **Verantwortlichkeit:** Kunde
 
+## <a name="secure-configuration"></a>Sichere Konfiguration
+**Weitere Informationen finden Sie unter Sicherheitskontrolle: Sichere Konfiguration.**
+
+### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7.1: Einrichten sicherer Konfigurationen für alle Azure-Ressourcen
+**Leitfaden:** Verwenden Sie Azure Policy-Aliase, um benutzerdefinierte Richtlinien zur Überprüfung oder Durchsetzung der Konfiguration Ihrer im Rahmen von DevTest Labs erstellten Azure-Ressourcen zu erstellen. Sie können auch integrierte Azure Policy-Definitionen verwenden.
+
+Außerdem hat Azure Resource Manager die Möglichkeit, die Vorlage in JSON-Code (JavaScript Object Notation) zu exportieren, der zur Sicherstellung überprüft werden sollte, dass die Konfigurationen die Sicherheitsanforderungen für Ihre Organisation erfüllen/übertreffen.
+
+Sie können auch Empfehlungen von Azure Security Center als sichere Konfigurationsbaseline für Ihre Azure-Ressourcen verwenden.
+
+- [Anzeigen verfügbarer Azure Policy-Aliase](/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
+- [Tutorial: Erstellen und Verwalten von Richtlinien zur Konformitätserzwingung](../governance/policy/tutorials/create-and-manage.md)
+- [Exportieren von einzelnen oder mehreren Ressourcen in eine Vorlage im Azure-Portal](../azure-resource-manager/templates/export-template-portal.md)
+- [Sicherheitsempfehlungen: Referenzhandbuch](../security-center/recommendations-reference.md)
+
+**Azure Security Center-Überwachung:** Nicht verfügbar
+
+**Verantwortlichkeit:** Kunde
+
+### <a name="72-establish-secure-operating-system-configurations"></a>7.2: Einrichten sicherer Betriebssystemkonfigurationen
+**Leitfaden:** Nutzen Sie die Azure Security Center-Empfehlungen, um die Sicherheitskonfigurationen für alle zugrunde liegenden, im Rahmen von DevTest Labs erstellten Computeressourcen zu verwalten. Darüber hinaus können Sie auch benutzerdefinierte Betriebssystemimages, Azure Automation State Configuration oder DevTest Labs-Artefakte verwenden, um die Sicherheitskonfiguration des für Ihre Organisation erforderlichen Betriebssystems festzulegen.
+
+- [Überwachen von Empfehlungen in Azure Security Center](../security-center/security-center-recommendations.md)
+- [Sicherheitsempfehlungen: Referenzhandbuch](../security-center/recommendations-reference.md)
+- [Übersicht über die Azure Automation-Zustandskonfiguration](../automation/automation-dsc-overview.md)
+- [Hochladen einer generalisierten VHD und Verwendung dieser zum Erstellen neuer VMs in Azure](../virtual-machines/windows/upload-generalized-managed.md)
+- [Erstellen eines virtuellen Linux-Computers auf der Grundlage eines benutzerdefinierten Datenträgers mithilfe der Azure-Befehlszeilenschnittstelle](../virtual-machines/linux/upload-vhd.md)
+- [Erstellen und Verteilen von benutzerdefinierten Images an mehrere DevTest Labs-Instanzen](image-factory-save-distribute-custom-images.md)
+
+**Azure Security Center-Überwachung:** Nicht verfügbar
+
+**Verantwortlichkeit:** Nicht verfügbar
+
+### <a name="73-maintain-secure-azure-resource-configurations"></a>7.3: Verwalten von sicheren Konfigurationen für Azure-Ressourcen
+**Leitfaden:** Verwenden Sie die Azure Policy-Regeln **deny** (Verweigern) und **deploy if not exist** (Bereitstellen, falls nicht vorhanden), um sichere Einstellungen für Ihre für DevTest Labs erstellten Azure-Ressourcen zu erzwingen. Sie können auch Azure Resource Manager-Vorlagen verwenden, um die Sicherheitskonfiguration der für Ihre Organisation erforderlichen Azure-Ressourcen zu verwalten.
+
+- [Grundlegendes zu Azure Policy-Auswirkungen](../governance/policy/concepts/effects.md)
+- [Erstellen und Verwalten von Richtlinien zur Konformitätserzwingung](../governance/policy/tutorials/create-and-manage.md)
+- [Übersicht über Azure Resource Manager-Vorlagen](../azure-resource-manager/templates/overview.md)
+
+**Azure Security Center-Überwachung:** Nicht verfügbar
+
+**Verantwortlichkeit:** Kunde
+
+### <a name="74-maintain-secure-operating-system-configurations"></a>7.4: Verwalten sicherer Betriebssystemkonfigurationen
+**Leitfaden:** Befolgen Sie die Azure Security Center-Empfehlungen zum Durchführen von Sicherheitsrisikobewertungen für Ihre zugrunde liegenden, im Rahmen eines Labs erstellten Azure-Computeressourcen. Sie können auch Azure Resource Manager-Vorlagen, benutzerdefinierte Betriebssystemimages oder Azure Automation State Configuration verwenden, um die Sicherheitskonfiguration des für Ihre Organisation erforderlichen Betriebssystems zu verwalten. Außerdem können Sie die Image Factory-Lösung verwenden, eine Lösung zum Erstellen von Konfigurationen in Code, die Images automatisch in regelmäßigen Abständen mit allen gewünschten Konfigurationen erstellt und verteilt.
+
+Von Microsoft im Azure Marketplace veröffentlichte VM-Images werden außerdem von Microsoft verwaltet.
+
+- [Implementieren von Empfehlungen für die Sicherheitsrisikobewertung aus Azure Security Center](../security-center/security-center-vulnerability-assessment-recommendations.md)
+- [Übersicht über die Azure Automation-Zustandskonfiguration](../automation/automation-dsc-overview.md)
+- [Beispielskript zum Hochladen einer generalisierten virtuellen Festplatte nach Azure und Erstellen eines neuen virtuellen Computers](../virtual-machines/scripts/virtual-machines-windows-powershell-upload-generalized-script.md)
+- [Erstellen einer Image Factory in DevTest Labs](image-factory-create.md)
+
+**Azure Security Center-Überwachung:** Ja
+
+**Verantwortlichkeit:** Shared
+
+### <a name="75-securely-store-configuration-of-azure-resources"></a>7.5: Sicheres Speichern der Konfiguration von Azure-Ressourcen
+**Leitfaden:** Verwenden Sie Azure DevOps, um Ihren Code sicher zu speichern und zu verwalten, z. B. benutzerdefinierte Azure-Richtlinien, Azure Resource Manager-Vorlagen und Desired State Configuration-Skripts. Um auf die in Azure DevOps verwalteten Ressourcen zuzugreifen, können Sie bestimmten Benutzern, integrierten Sicherheitsgruppen oder in Azure Active Directory (Azure AD) definierten Gruppen Berechtigungen gewähren oder sie verweigern, sofern diese in Azure DevOps integriert sind.
+
+- [Git-Tutorial zu Azure Repos](/devops/repos/git/gitworkflow?view=azure-devops)
+- [Informationen zu Berechtigungen und Gruppen](/devops/organizations/security/about-permissions?view=azure-devops&tabs=preview-page)
+- [Integration zwischen Azure DevTest Labs und dem Azure DevOps-Workflow](devtest-lab-dev-ops.md)
+
+**Azure Security Center-Überwachung:** Nicht verfügbar
+
+**Verantwortlichkeit:** Kunde
+
+### <a name="76-securely-store-custom-operating-system-images"></a>7.6: Sicheres Speichern von benutzerdefinierten Betriebssystemimages
+**Leitfaden:** Wenn Sie benutzerdefinierte Images verwenden, sollten Sie durch die Nutzung der rollenbasierten Zugriffssteuerung (RBAC) sicherstellen, dass nur autorisierte Benutzer auf die Images zugreifen können. Mithilfe einer Shared Image Gallery können Sie Ihre Images für bestimmte Labs freigeben, die sie benötigen. Speichern Sie Containerimages in Azure Container Registry, und stellen Sie mithilfe von RBAC sicher, dass nur autorisierte Benutzer auf die Images zugreifen können.
+
+- [Grundlegendes zu RBAC in Azure](../role-based-access-control/rbac-and-directory-admin-roles.md)
+- [Konfigurieren von RBAC in Azure](../role-based-access-control/quickstart-assign-role-user-portal.md)
+- [Konfigurieren einer Shared Image Gallery für DevTest Labs](configure-shared-image-gallery.md)
+- [Grundlegendes zu RBAC für Container Registry](../container-registry/container-registry-roles.md)
+
+**Azure Security Center-Überwachung:** Nicht verfügbar
+
+**Verantwortlichkeit:** Kunde
+
+### <a name="77-deploy-system-configuration-management-tools"></a>7.7: Bereitstellen von Verwaltungstools zur Systemkonfiguration
+**Leitfaden:** Definieren und implementieren Sie Standardsicherheitskonfigurationen für Azure-Ressourcen mit Azure Policy. Verwenden Sie Azure Policy-Aliase, um benutzerdefinierte Richtlinien zur Überprüfung oder Durchsetzung der Netzwerkkonfiguration Ihrer in DevTest Labs erstellten Azure-Ressourcen zu erstellen. Sie können auch auf integrierte Richtliniendefinitionen zurückgreifen, die sich auf Ihre spezifischen Ressourcen beziehen. Zusätzlich können Sie Azure Automation verwenden, um Konfigurationsänderungen bereitzustellen.
+
+- [Konfigurieren und Verwalten von Azure Policy](../governance/policy/tutorials/create-and-manage.md)
+- [Verwenden von Aliasen](../governance/policy/concepts/definition-structure.md#aliases)
+
+**Azure Security Center-Überwachung:** Nicht verfügbar
+
+**Verantwortlichkeit:** Kunde
+
+### <a name="78-deploy-system-configuration-management-tools-for-operating-systems"></a>7.8: Bereitstellen von Verwaltungstools für Systemkonfigurationen für Betriebssysteme
+**Leitfaden:** Azure Automation DSC ist ein Konfigurationsverwaltungsdienst für DSC-Knoten (Desired State Configuration) in jedem beliebigen Cloud- oder lokalen Rechenzentrum. Sie können problemlos Computer integrieren, ihnen deklarative Konfigurationen zuweisen und Berichte dazu anzeigen, inwieweit jeder Computer mit dem gewünschten Zustand, den Sie angegeben haben, kompatibel ist. Sie können auch ein benutzerdefiniertes Artefakt schreiben, das auf jedem Labcomputer installiert werden kann, um sicherzustellen, dass er den Organisationsrichtlinien entspricht. 
+
+- [Onboarding von Computern zur Verwaltung durch Azure Automation DSC](../automation/automation-dsc-onboarding.md)
+- [Erstellen benutzerdefinierter Artefakte für virtuelle DevTest Labs-Computer](devtest-lab-artifact-author.md)
+
+**Azure Security Center-Überwachung:** Nicht verfügbar
+
+**Verantwortlichkeit:** Kunde
+
+### <a name="79-implement-automated-configuration-monitoring-for-azure-services"></a>7.9: Implementieren der automatisierten Konfigurationsüberwachung für Azure-Dienste
+**Leitfaden:** Verwenden Sie Azure Security Center, um Baselineüberprüfungen Ihrer in DevTest Labs erstellten Azure-Ressourcen durchzuführen. Nutzen Sie Azure Policy auch für Warnungen und Überprüfungen in Bezug auf Azure-Ressourcenkonfigurationen.
+
+- [Umsetzen von Empfehlungen in Azure Security Center](../security-center/security-center-remediate-recommendations.md)
+ 
+**Azure Security Center-Überwachung:** Nicht verfügbar
+
+**Verantwortlichkeit:** Kunde
+
+### <a name="710-implement-automated-configuration-monitoring-for-operating-systems"></a>7.10: Implementieren der automatisierten Konfigurationsüberwachung für Betriebssysteme
+**Leitfaden:** Verwenden Sie Azure Security Center, um Baselineüberprüfungen für Betriebssystem- und Docker-Einstellungen für Container durchzuführen.
+
+- [Grundlegendes zu Azure Security Center-Containerempfehlungen](../security-center/security-center-container-recommendations.md)
+
+**Azure Security Center-Überwachung:** Nicht verfügbar
+
+**Verantwortlichkeit:** Kunde
+
+### <a name="711-manage-azure-secrets-securely"></a>7.11: Sicheres Verwalten von Azure-Geheimnissen
+**Leitfaden:** Verwenden Sie die verwaltete Dienstidentität in Verbindung mit Azure Key Vault, um die Verwaltung von Geheimnissen für Cloudanwendungen zu vereinfachen und zu schützen.
+
+- [Konfigurieren der verwalteten Identität zum Bereitstellen von Azure Resource Manager-Umgebungen in DevTest Labs](use-managed-identities-environments.md)
+- [Konfigurieren der verwalteten Identität zum Bereitstellen von virtuellen Computern in DevTest Labs](enable-managed-identities-lab-vms.md)
+- [Erstellen eines Schlüsseltresors](../key-vault/quick-create-portal.md)
+- [Bereitstellen der Key Vault-Authentifizierung mit einer verwalteten Identität](../key-vault/managed-identity.md)
+
+**Azure Security Center-Überwachung:** Ja
+
+**Verantwortlichkeit:** Kunde
+
+### <a name="712-manage-identities-securely-and-automatically"></a>7.12: Sicheres und automatisches Verwalten von Identitäten
+**Leitfaden:** Verwenden Sie verwaltete Identitäten, um Azure-Dienste mit einer automatisch verwalteten Identität in Azure AD bereitzustellen. Mit verwalteten Identitäten können Sie die Authentifizierung bei jedem Dienst verwenden, der die Azure AD-Authentifizierung unterstützt, einschließlich Key Vault. Hierfür müssen keine Anmeldeinformationen im Code enthalten sein.
+
+- [Konfigurieren der verwalteten Identität zum Bereitstellen von Azure Resource Manager-Umgebungen in DevTest Labs](use-managed-identities-environments.md)
+- [Konfigurieren der verwalteten Identität zum Bereitstellen von virtuellen Computern in DevTest Labs](enable-managed-identities-lab-vms.md)
+ 
+**Azure Security Center-Überwachung:** Ja
+
+**Verantwortlichkeit:** Kunde
+
+### <a name="713-eliminate-unintended-credential-exposure"></a>7.13: Beheben der unbeabsichtigten Offenlegung von Anmeldeinformationen
+**Leitfaden:** Implementieren Sie Credential Scanner, um Anmeldeinformationen im Code zu identifizieren. In Credential Scanner wird auch das Verschieben von ermittelten Anmeldeinformationen an sicherere Speicherorte (z. B. Azure Key Vault) empfohlen.
+
+- Einrichten von Credential Scanner
+
+**Azure Security Center-Überwachung:** Nicht verfügbar
+
+**Verantwortlichkeit:** Kunde
+
 
 ## <a name="malware-defense"></a>Schutz vor Schadsoftware
 *Weitere Informationen finden Sie unter Sicherheitskontrolle: Schutz vor Schadsoftware.*
@@ -480,7 +734,7 @@ Weitere Informationen finden Sie in folgenden Artikeln:
 
 ### <a name="82-pre-scan-files-to-be-uploaded-to-non-compute-azure-resources"></a>8.2: Vorabprüfen von in computefremde Azure-Ressourcen hochzuladenden Dateien
 **Leitfaden**: Microsoft Antimalware ist auf dem zugrunde liegenden Host für die Azure-Dienste (z. B. Azure App Service, gehostet in einem Lab) aktiviert, wird jedoch nicht für Ihre Inhalte ausgeführt.
-Führen Sie eine Vorabprüfung aller Dateien durch, die in computefremde Azure-Ressourcen hochgeladen werden sollen, z. B. in App Service, Data Lake Storage, Blob Storage usw.
+Überprüfen Sie vorab Dateien, die in computefremde Azure-Ressourcen wie App Service, Data Lake Storage, Blob Storage usw. hochgeladen werden sollen.
 
 Mithilfe der Bedrohungserkennung für Datendienste in Azure Security Center können Sie Schadsoftware erkennen, die in Speicherkonten hochgeladen wurde.
 

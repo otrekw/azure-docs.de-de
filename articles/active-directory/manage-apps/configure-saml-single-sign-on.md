@@ -11,16 +11,16 @@ ms.workload: identity
 ms.date: 07/28/2020
 ms.author: kenwith
 ms.reviewer: arvinh,luleon
-ms.openlocfilehash: 8788bd5c5da4d2f5622a633109e2fa8b6d2a5f03
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: 82b10525fe4d8b9db88300b61ae2da6630030dfd
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87405142"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87461186"
 ---
 # <a name="configure-saml-based-single-sign-on"></a>Konfigurieren des SAML-basierten einmaligen Anmeldens
 
-In der [Schnellstartserie](view-applications-portal.md) zur Anwendungsverwaltung haben Sie gelernt, wie Sie Azure AD als Identitätsanbieter (Identity Provider, IdP) für eine Anwendung verwenden. In diesem Artikel erfahren Sie mehr über die SAML-Option für einmaliges Anmelden. 
+In der [Schnellstartserie](view-applications-portal.md) zur Anwendungsverwaltung haben Sie gelernt, wie Sie Azure AD als Identitätsanbieter (Identity Provider, IdP) für eine Anwendung verwenden. In diesem Artikel erfahren Sie mehr über die SAML-basierte Option für einmaliges Anmelden. 
 
 
 ## <a name="before-you-begin"></a>Voraussetzungen
@@ -42,7 +42,7 @@ In der [Schnellstartserie](view-applications-portal.md) finden Sie einen Artikel
 Sie sollten die Werte vom Hersteller der Anwendung erhalten. Sie können die Werte manuell eingeben oder eine Metadatendatei hochladen, um die Werte der Felder zu extrahieren.
 
 > [!TIP]
-> Viele Apps wurden bereits für die Zusammenarbeit mit Azure AD vorkonfiguriert. Diese Apps werden im App-Katalog aufgelistet, den Sie durchsuchen können, wenn Sie eine App in Ihrem Azure AD-Mandanten hinzufügen. In der [Schnellstartserie](view-applications-portal.md) werden Sie auch durch diesen Vorgang geführt. Für die Apps im Katalog erhalten Sie ausführliche Schrittanleitungen für die Einrichtung. Um die Schritte anzuzeigen, klicken Sie auf den Link auf der SAML-Konfigurationsseite für die App, wie in der Schnellstartserie beschrieben. Sie können auch eine Liste mit allen Tutorials zur App-Konfiguration unter [Tutorials zur SaaS-App-Konfiguration](../saas-apps/tutorial-list.md) durchsuchen.
+> Viele Apps wurden bereits für die Zusammenarbeit mit Azure AD vorkonfiguriert. Diese Apps werden im App-Katalog aufgelistet, den Sie durchsuchen können, wenn Sie eine App in Ihrem Azure AD-Mandanten hinzufügen. In der [Schnellstartserie](view-applications-portal.md) werden Sie auch durch diesen Vorgang geführt. Für die Apps im Katalog erhalten Sie ausführliche schrittweise Anleitungen für die Einrichtung. Um die Schritte anzuzeigen, klicken Sie auf den Link auf der SAML-Konfigurationsseite für die App, wie in der Schnellstartserie beschrieben. Sie können auch eine Liste mit allen Tutorials zur App-Konfiguration unter [Tutorials zur SaaS-App-Konfiguration](../saas-apps/tutorial-list.md) durchsuchen.
 
 | Einstellung für die grundlegende SAML-Konfiguration | Vom Dienstanbieter initiiert | Vom Identitätsanbieter initiiert | BESCHREIBUNG |
 |:--|:--|:--|:--|

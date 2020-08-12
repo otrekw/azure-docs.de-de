@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 10/05/2019
 ms.author: rohink
-ms.openlocfilehash: 4de585a965cfefa6399b0c0929a8f732d0712617
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0945f89e3c18ab20ece0b493a49ec9f7f31e4e13
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76939421"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87529193"
 ---
 # <a name="azure-private-dns-faq"></a>Häufig gestellte Fragen zu privatem Azure-DNS
 
@@ -38,7 +38,7 @@ Ja. Sie können eine private DNS-Zone mit Tausenden virtueller Netzwerke verknü
 
 ## <a name="can-a-virtual-network-that-belongs-to-a-different-subscription-be-linked-to-a-private-zone"></a>Kann ein virtuelles Netzwerk, das zu einem anderen Abonnement gehört, mit einer privaten Zone verknüpft werden?
 
-Ja. Sie müssen über eine Schreibvorgangsberechtigung für die virtuellen Netzwerke und die private DNS-Zone verfügen. Die Schreibberechtigung kann mehreren RBAC-Rollen gewährt werden. Beispielsweise weist die RBAC-Rolle „Mitwirkender von klassischem Netzwerk“ Schreibberechtigungen für virtuelle Netzwerke auf, und die Rolle „Mitwirkender von privaten DNS-Zonen“ besitzt Schreibberechtigungen für die privaten DNS-Zonen. Weitere Informationen zu RBAC-Rollen finden Sie unter [Rollenbasierte Zugriffssteuerung](../role-based-access-control/overview.md).
+Ja. Sie müssen über eine Schreibvorgangsberechtigung für die virtuellen Netzwerke und die private DNS-Zone verfügen. Die Schreibberechtigung kann mehreren Azure-Rollen gewährt werden. Beispielsweise weist die Azure-Rolle „Mitwirkender von klassischem Netzwerk“ Schreibberechtigungen für virtuelle Netzwerke auf, und die Rolle „Mitwirkender von privaten DNS-Zonen“ umfasst Schreibberechtigungen für die privaten DNS-Zonen. Weitere Informationen zu Azure-Rollen finden Sie unter [Rollenbasierte Zugriffssteuerung](../role-based-access-control/overview.md).
 
 ## <a name="will-the-automatically-registered-virtual-machine-dns-records-in-a-private-zone-be-automatically-deleted-when-you-delete-the-virtual-machine"></a>Werden die automatisch registrierten DNS-Einträge virtueller Computer in einer privaten Zone automatisch gelöscht, wenn Sie den virtuellen Computer löschen?
 

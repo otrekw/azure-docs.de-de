@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 56ebb32e2d1c2a9bab9592da63e1ada7130bb7ff
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 2d062ea4f38742129d44be0e2b7ff51fe3ad8dd1
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131632"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87562428"
 ---
 # <a name="understand-twin-models-in-azure-digital-twins"></a>Grundlegendes zu Zwillingsmodellen in Azure Digital Twins
 
@@ -26,7 +26,7 @@ Modelle werden in der auf JSON-LD basierenden Sprache **Digital Twins Definition
 
 Modelle für Azure Digital Twins werden mithilfe von DTDL (Digital Twins Definition Language) definiert. DTDL basiert auf JSON-LD und ist von der Programmiersprache unabhängig. DTDL ist nicht ausschließlich für Azure Digital Twins bestimmt, sondern wird auch zur Darstellung von Gerätedaten in anderen IoT-Diensten wie [IoT Plug & Play](../iot-pnp/overview-iot-plug-and-play.md) verwendet. 
 
-Azure Digital Twins arbeitet mit der DTDL-*Version 2*. Weitere Informationen zu dieser Version von DTDL finden Sie in der Dokumentation zur Spezifikation auf GitHub: [*Digital Twins Definition Language (DTDL): Version 2*](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md).
+Azure Digital Twins arbeitet mit **DTDL _Version 2_**. Weitere Informationen zu dieser Version von DTDL finden Sie in der Dokumentation zur Spezifikation auf GitHub: [*Digital Twins Definition Language (DTDL): Version 2*](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md). Die Verwendung von DTDL _Version 1_ mit Azure Digital Twins ist nun veraltet.
 
 > [!TIP] 
 > Nicht alle Dienste, die DTDL verwenden, implementieren genau die gleichen Features von DTDL. Beispielsweise verwendet IoT Plug & Play keine DTDL-Features, die für Graphen gedacht sind, während Azure Digital Twins derzeit keine DTDL-Befehle implementiert. Weitere Informationen zu den DTDL-Features, die für Azure Digital Twins spezifisch sind, finden Sie in diesem Artikel im Abschnitt [ Besonderheiten der DTDL-Implementierung für Azure Digital Twins](#azure-digital-twins-dtdl-implementation-specifics).
@@ -116,7 +116,7 @@ Beachten Sie, dass die-Planeten auch mit **Monden** interagieren können, die ih
 
 Die Felder des Modells sind wie folgt:
 
-| Feld | Beschreibung |
+| Feld | BESCHREIBUNG |
 | --- | --- |
 | `@id` | Ein Bezeichner für das Modell. Muss das Format `dtmi:<domain>:<unique model identifier>;<model version number>` haben. |
 | `@type` | Gibt die Art der beschriebenen Informationen an. Bei einer Schnittstelle ist der Typ *Schnittstelle*. |

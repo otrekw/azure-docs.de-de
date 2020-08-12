@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: how-to
 ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: 482a3808065bb2ec565bad7e760b9337b3db7007
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: b2164f8927e5c3224f8b07c30d057f48fb7bbc32
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134012"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495969"
 ---
 # <a name="set-up-disaster-recovery-for-hyper-v-vms-to-a-secondary-on-premises-site"></a>Einrichten der Notfallwiederherstellung für Hyper-V-VMs an einem sekundären lokalen Standort
 
@@ -80,7 +80,7 @@ Installieren Sie den Azure Site Recovery-Anbieter auf den VMM-Servern, und ermit
 4. Laden Sie die Installationsdatei für den Azure Site Recovery-Anbieter herunter.
 5. Laden Sie den Registrierungsschlüssel herunter. Sie benötigen ihn, wenn Sie den Anbieter installieren. Der Schlüssel ist nach der Erstellung fünf Tage lang gültig.
 
-    ![Quelle einrichten](./media/hyper-v-vmm-disaster-recovery/source-settings.png)
+    ![Screenshot der Optionen zum Herunterladen von Anbieter und Registrierungsschlüssel](./media/hyper-v-vmm-disaster-recovery/source-settings.png)
 
 6. Installieren Sie den Anbieter auf jedem VMM-Server. Sie müssen nicht explizit etwas auf Hyper-V-Hosts installieren.
 
@@ -94,7 +94,7 @@ Installieren Sie den Azure Site Recovery-Anbieter auf den VMM-Servern, und ermit
 4. Ändern Sie unter **Installation** den Speicherort für die Installation, oder akzeptieren Sie den Standardspeicherort, und klicken Sie auf **Installieren**.
 5. Klicken Sie nach Abschluss der Installation auf **Registrieren**, um den Server im Tresor zu registrieren.
 
-    ![Installationsspeicherort](./media/hyper-v-vmm-disaster-recovery/provider-register.png)
+    ![Screenshot des Installationsbildschirms für den Anbieter einschließlich des Installationsspeicherorts](./media/hyper-v-vmm-disaster-recovery/provider-register.png)
 6. Prüfen Sie unter **Tresorname**den Namen des Tresors, in dem der Server registriert wird. Klicken Sie auf **Weiter**.
 7. Geben Sie unter **Proxyverbindung** an, wie der auf dem VMM-Server ausgeführte Anbieter eine Verbindung mit Azure herstellen soll.
    - Der Anbieter kann entweder eine direkte oder eine proxybasierte Internetverbindung herstellen. Geben Sie ggf. Proxyeinstellungen an.
@@ -115,7 +115,7 @@ Wählen Sie VMM-Zielserver und Cloud aus:
 1. Klicken Sie auf **Infrastruktur vorbereiten** > **Ziel**, und wählen Sie den VMM-Zielserver aus.
 2. VMM-Clouds, die mit Site Recovery synchronisiert werden, werden angezeigt. Wählen Sie die Zielcloud aus.
 
-   ![Ziel](./media/hyper-v-vmm-disaster-recovery/target-vmm.png)
+   ![Screenshot der Auswahl des VMM-Zielservers und der Cloud](./media/hyper-v-vmm-disaster-recovery/target-vmm.png)
 
 
 ## <a name="set-up-a-replication-policy"></a>Einrichten einer Replikationsrichtlinie
@@ -138,7 +138,7 @@ Bevor Sie beginnen, stellen Sie sicher, dass alle Hosts, die die Richtlinie verw
 5. Wählen Sie **Replikat-VM löschen** aus, um anzugeben, dass die Replikat-VM gelöscht werden sollte, wenn Sie den Schutz für die Quell-VM deaktivieren. Wenn Sie diese Einstellung aktivieren, und Sie deaktivieren den Schutz für die Quell-VMs, wird der virtuelle Computer aus der Site Recovery-Konsole entfernt, die Site Recovery-Einstellungen für die VMM werden aus der VMM-Konsole entfernt, und das Replikat wird gelöscht.
 6. Wenn Sie über das Netzwerk replizieren, geben Sie unter **Methode für anfängliche Replikation** an, ob die erste Replikation sofort gestartet werden soll oder ob Sie sie planen möchten. Um Netzwerkbandbreite zu sparen, sollte der Zeitraum außerhalb Ihrer Spitzenzeiten liegen. Klicken Sie dann auf **OK**.
 
-     ![Replikationsrichtlinie](./media/hyper-v-vmm-disaster-recovery/replication-policy.png)
+     ![Screenshot der Replikationsrichtlinienoptionen](./media/hyper-v-vmm-disaster-recovery/replication-policy.png)
      
 7. Die neue Richtlinie wird automatisch der VMM-Cloud zugeordnet. Klicken Sie unter **Replikationsrichtlinie** auf **OK**. 
 

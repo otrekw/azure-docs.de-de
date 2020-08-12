@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 721f9c623255b964e38da1c0f4b7bbf72d0c721d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6867d24d84f6dfb51b2ca7b86ec882102b96552b
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075619"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87504414"
 ---
 # <a name="windows-virtual-desktop-faq"></a>Häufig gestellte Fragen zu Windows Virtual Desktop
 
@@ -46,7 +46,7 @@ Um die Berechtigung eines Administrators auf die Verwaltung von Benutzersitzunge
 
 ## <a name="does-windows-virtual-desktop-support-split-azure-active-directory-models"></a>Unterstützt Windows Virtual Desktop das Aufteilen von Azure Active Directory-Modellen?
 
-Wenn ein Benutzer einer App-Gruppe zugewiesen ist, führt der Dienst eine einfache Azure-RBAC-Rollenzuweisung (Role-Based Access Control, rollenbasierte Zugriffssteuerung) durch. Folglich müssen sich die Azure AD-Instanz des Benutzers und die Azure AD-Instanz der App-Gruppe am selben Standort befinden. Alle Dienstobjekte, wie z. B. Hostpools, App-Gruppen und Arbeitsbereiche, müssen sich ebenfalls in derselben Azure AD-Instanz befinden wie der Benutzer.
+Wenn ein Benutzer einer App-Gruppe zugewiesen ist, führt der Dienst eine einfache Azure-Rollenzuweisung durch. Folglich müssen sich die Azure AD-Instanz des Benutzers und die Azure AD-Instanz der App-Gruppe am selben Standort befinden. Alle Dienstobjekte, wie z. B. Hostpools, App-Gruppen und Arbeitsbereiche, müssen sich ebenfalls in derselben Azure AD-Instanz befinden wie der Benutzer.
 
 Virtuelle Computer können in einer anderen Azure AD-Instanz erstellt werden, sofern Sie diese Instanz mit der Instanz des Benutzers im selben virtuellen Netzwerk synchronisieren.
 

@@ -9,12 +9,12 @@ ms.date: 07/16/2020
 ms.author: tamram
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 61c2b2b8bce676bd7032eb65fcf48b5ad07092ad
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a6f59fff351ecdae82ef7175d54e3b2ab1b7d30b
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87070669"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534106"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Konfigurieren von Azure Storage-Firewalls und virtuellen Netzwerken
 
@@ -120,7 +120,7 @@ Sie können Speicherkonten so konfigurieren, dass nur über bestimmte Subnetze z
 
 Aktivieren Sie einen [Dienstendpunkt](/azure/virtual-network/virtual-network-service-endpoints-overview) für Azure Storage innerhalb des VNETs. Der Dienstendpunkt leitet Datenverkehr aus dem VNET über einen optimalen Pfad an den Azure Storage-Dienst weiter. Mit jeder Anforderung werden außerdem die Identitäten des Subnetzes und des virtuellen Netzwerks übertragen. Administratoren können anschließend Netzwerkregeln für das Speicherkonto konfigurieren, die den Empfang von Anforderungen aus bestimmten Subnetzen in einem VNET zulassen. Clients, denen über diese Netzwerkregeln Zugriff gewährt wird, müssen weiterhin die Autorisierungsanforderungen des Speicherkontos erfüllen, um auf die Daten zugreifen zu können.
 
-Jedes Speicherkonto unterstützt bis zu 100 VNET-Regeln, die mit [IP-Netzwerkregeln](#grant-access-from-an-internet-ip-range) kombiniert werden können.
+Jedes Speicherkonto unterstützt bis zu 200 VNET-Regeln, die mit [IP-Netzwerkregeln](#grant-access-from-an-internet-ip-range) kombiniert werden können.
 
 ### <a name="available-virtual-network-regions"></a>Verfügbare Regionen für virtuelle Netzwerke
 
@@ -365,7 +365,7 @@ Mithilfe von Netzwerkregeln können Sie in den meisten Szenarien eine sichere Um
 Einige Microsoft-Dienste werden aus Netzwerken betrieben, die in Ihren Netzwerkregeln nicht enthalten sein können. Sie können einer Teilmenge solcher vertrauenswürdiger Microsoft-Dienste Zugriff auf das Speicherkonto gewähren und gleichzeitig Netzwerkregeln für andere Apps beibehalten. Diese vertrauenswürdigen Dienste stellen dann mithilfe einer strengen Authentifizierung eine sichere Verbindung mit Ihrem Speicherkonto her. Wir haben zwei Modi für den vertrauenswürdigen Zugriff für Microsoft-Dienste ermöglicht.
 
 - Ressourcen einiger Dienste können, **sofern sie in Ihrem Abonnement registriert sind**, für bestimmte Vorgänge auf Ihr Speicherkonto **im gleichen Abonnement** zugreifen. Hierzu zählen beispielsweise Sicherungsvorgänge und das Schreiben von Protokollen.
-- Ressourcen einiger Dienste kann durch **Zuweisen einer RBAC-Rolle** zur vom System zugewiesenen verwalteten Identität der explizite Zugriff auf Ihr Speicherkonto gewährt werden.
+- Ressourcen einiger Dienste kann durch **Zuweisen einer Azure-Rolle** zur vom System zugewiesenen verwalteten Identität der explizite Zugriff auf Ihr Speicherkonto gewährt werden.
 
 
 Wenn Sie die Einstellung **Vertrauenswürdige Microsoft-Dienste zulassen** festlegen, wird Ressourcen der folgenden Dienste, die im gleichen Abonnement registriert sind wie das Speicherkonto, Zugriff für eine eingeschränkte Gruppe von Vorgängen gewährt:
@@ -384,7 +384,7 @@ Wenn Sie die Einstellung **Vertrauenswürdige Microsoft-Dienste zulassen** festl
 | Azure-Netzwerke         | Microsoft.Network          | Speichern und analysieren Sie Netzwerk-Datenverkehrsprotokolle, beispielsweise mit Network Watcher und Traffic Analytics-Diensten. [Weitere Informationen](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview) |
 | Azure Site Recovery      | Microsoft.SiteRecovery     | Aktivieren Sie die Replikation für die Notfallwiederherstellung von virtuellen Azure-IaaS-Computern bei Verwendung von firewallfähigen Cache-, Quell- oder Zielspeicherkonten.  [Weitere Informationen](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication) |
 
-Die Einstellung **Hiermit erlauben Sie vertrauenswürdigen Microsoft-Diensten...** ermöglicht auch einer bestimmten Instanz der folgenden Dienste den Zugriff auf das Speicherkonto, wenn Sie der [vom System zugewiesenen verwalteten Identität](../../active-directory/managed-identities-azure-resources/overview.md) für diese Ressourceninstanz explizit [eine RBAC-Rolle zuweisen](storage-auth-aad.md#assign-rbac-roles-for-access-rights). In diesem Fall entspricht der Zugriffsbereich für die Instanz der RBAC-Rolle, die der verwalteten Identität zugewiesen ist.
+Die Einstellung **Hiermit erlauben Sie vertrauenswürdigen Microsoft-Diensten ...** ermöglicht auch einer bestimmten Instanz der folgenden Dienste den Zugriff auf das Speicherkonto, wenn Sie der [vom System zugewiesenen verwalteten Identität](../../active-directory/managed-identities-azure-resources/overview.md) für diese Ressourceninstanz explizit [eine Azure-Rolle zuweisen](storage-auth-aad.md#assign-azure-roles-for-access-rights). In diesem Fall entspricht der Zugriffsbereich für die Instanz der Azure-Rolle, die der verwalteten Identität zugewiesen ist.
 
 | Dienst                        | Name des Ressourcenanbieters                 | Zweck            |
 | :----------------------------- | :------------------------------------- | :----------------- |

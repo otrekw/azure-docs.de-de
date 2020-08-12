@@ -3,12 +3,12 @@ title: Sichern einer SAP HANA-Datenbank mit Azure Backup in Azure
 description: In diesem Artikel erfahren Sie, wie Sie eine SAP HANA-Datenbanken mit dem Azure Backup-Dienst auf virtuellen Azure-Computern sichern können.
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.openlocfilehash: 273ba40feee01c2dd2bfe68d1660a5c94f254062
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 0efd26272bbfc4c8f63f7f02a605d48e53577390
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86513861"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87809135"
 ---
 # <a name="back-up-sap-hana-databases-in-azure-vms"></a>Sichern von SAP HANA-Datenbanken auf virtuellen Azure-Computern
 
@@ -25,7 +25,7 @@ In diesem Artikel lernen Sie Folgendes:
 > * Ausführen eines bedarfsgesteuerten Sicherungsauftrag
 
 >[!NOTE]
->[Erste Schritte](./tutorial-backup-sap-hana-db.md) mit SAP HANA-Sicherung (Vorschau) für RHEL (7.4, 7.6, 7.7 oder 8.1). Für weitere Anfragen schreiben Sie uns unter [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com).
+>Seit dem 1. August 2020 sind SAP HANA-Sicherungen für RHEL (7.4, 7.6, 7.7 und 8.1) allgemein verfügbar.
 
 >[!NOTE]
 >**Die Workloads für vorläufiges Löschen für SQL Server auf virtuellen Azure-Computern und vorläufiges Löschen für SAP HANA auf virtuellen Azure-Computern** sind jetzt als Vorschauversion verfügbar.<br>
@@ -67,7 +67,7 @@ Wenn Sie Netzwerksicherheitsgruppen (NSG) verwenden, können Sie den ausgehenden
 
 1. Klicken Sie auf **Hinzufügen**, um die neu erstellte Ausgangssicherheitsregel zu speichern.
 
-Auf ähnliche Weise können Sie ausgehende NSG-Sicherheitsregeln für Azure Storage und Azure AD erstellen.
+Auf ähnliche Weise können Sie ausgehende NSG-Sicherheitsregeln für Azure Storage und Azure AD erstellen. Weitere Informationen zu Diensttags finden Sie in [diesem Artikel](../virtual-network/service-tags-overview.md).
 
 #### <a name="azure-firewall-tags"></a>Azure Firewall-Tags
 
@@ -214,4 +214,4 @@ Führen Sie die folgenden Schritte aus, wenn Sie (mit HANA Studio) eine lokale S
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Erfahren Sie, wie Sie [nur auf virtuellen Azure-Computern ausgeführte SAP HANA-Datenbanken wiederherstellen können](./sap-hana-db-restore.md).
-* Erfahren Sie, wie Sie [mit Azure Backup gesicherte SAP HANA-Datenbanken verwalten können](./sap-hana-db-manage.md).
+* [Verwalten und Überwachen gesicherter SAP HANA-Datenbanken](./sap-hana-db-manage.md)

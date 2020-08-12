@@ -3,12 +3,12 @@ title: Verwenden von PowerShell zum Sichern von Windows Server in Azure
 description: In diesem Artikel erfahren Sie, wie Sie PowerShell zum Einrichten von Azure Backup auf einem Windows Server-Computer oder einem Windows-Client sowie zum Verwalten von Sicherungen und Wiederherstellungen verwenden.
 ms.topic: conceptual
 ms.date: 12/2/2019
-ms.openlocfilehash: 116bdd6b5f48a9d5abc0f9f0d9ce61f857196fd2
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 0deccc49b82d4a8b81889c35174c3efa81b6d74d
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86513726"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87564026"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-windows-serverwindows-client-using-powershell"></a>Bereitstellen und Verwalten der Sicherung in Azure für Windows Server-/Windows-Clientcomputer mit PowerShell
 
@@ -148,7 +148,7 @@ $CredsFilename = Get-AzRecoveryServicesVaultSettingsFile -Backup -Vault $Vault -
 ```
 
 Führen Sie auf dem Windows-Server oder Windows-Clientcomputer das Cmdlet [Start-OBRegistration](/powershell/module/msonlinebackup/start-obregistration) aus, um den Computer beim Tresor zu registrieren.
-Diese und andere Cmdlets, die für die Sicherung verwendet werden, stammen aus dem MSONLINE-Modul, das das Installationsprogramm für den Mars-Agent während des Installationsvorgangs hinzugefügt hat.
+Dieses und andere für die Sicherung verwendete Cmdlets stammen aus dem Modul MSONLINE, das vom Installationsprogramm für den Mars-Agent bei der Installation hinzugefügt wurde.
 
 Das Agent-Installationsprogramm aktualisiert die $Env:PSModulePath-Variable nicht. Dies bedeutet, dass automatisch Ladevorgänge für das Modul zu Fehlern führen. Führen Sie folgende Schritte aus, um dieses Problem zu beheben:
 

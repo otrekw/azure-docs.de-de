@@ -2,13 +2,13 @@
 title: Metrikwarnungen aus Azure Monitor für Container | Microsoft-Dokumentation
 description: In diesem Artikel werden die empfohlenen Metrikwarnungen erläutert, die in Azure Monitor für Container in der öffentlichen Vorschauversion verfügbar sind.
 ms.topic: conceptual
-ms.date: 07/21/2020
-ms.openlocfilehash: c8b75b0d9b22658253c4637bd6507144575934de
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/04/2020
+ms.openlocfilehash: 1826896ad2d5c64d389219018f51238826c840d0
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87094366"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87563363"
 ---
 # <a name="recommended-metric-alerts-preview-from-azure-monitor-for-containers"></a>Empfohlene Metrikwarnungen (Vorschau) aus Azure Monitor für Container
 
@@ -33,7 +33,7 @@ Vergewissern Sie sich, dass folgende Voraussetzungen erfüllt sind, bevor Sie be
 
     Bei dem angezeigten Wert sollte es sich um eine neuere Version als **ciprod05262020** handeln. Wenn in Ihrem Cluster eine ältere Version vorhanden ist, führen Sie die Schritte für ein [Upgrade des Agents im AKS-Cluster](container-insights-manage-agent.md#upgrade-agent-on-aks-cluster) durch, um die neueste Version zu erhalten.
     
-    Weitere Informationen zur Agent-Version finden Sie im [Agent-Versionsverlauf](https://github.com/microsoft/docker-provider/tree/ci_feature_prod). Um festzustellen, ob Metriken gesammelt werden, können Sie im Azure Monitor-Metrik-Explorer überprüfen, ob unter **Metriknamespace** der Eintrag **insights** aufgeführt ist. Wenn das der Fall ist, können Sie mit dem Einrichten der Warnungen beginnen.
+    Weitere Informationen zur Agent-Version finden Sie im [Agent-Versionsverlauf](https://github.com/microsoft/docker-provider/tree/ci_feature_prod). Um festzustellen, ob Metriken gesammelt werden, können Sie im Azure Monitor-Metrik-Explorer überprüfen, ob unter **Metriknamespace** der Eintrag **insights** aufgeführt ist. Wenn das der Fall ist, können Sie mit dem Einrichten der Warnungen beginnen. Wenn keine Metriken erfasst werden, fehlen dem Clusterdienstprinzipal oder der MSI die erforderlichen Berechtigungen. Um zu überprüfen, ob der SPN oder die MSI Mitglied der Rolle **Herausgeber von Überwachungsmetriken** ist, führen Sie die im Abschnitt [Aktualisieren pro Cluster mit der Azure-Befehlszeilenschnittstelle](container-insights-update-metrics.md#upgrade-per-cluster-using-azure-cli) beschriebenen Schritte aus, mit denen Sie die Rollenzuweisung bestätigen und festlegen können.
 
 ## <a name="alert-rules-overview"></a>Übersicht über Warnungsregeln
 
@@ -120,7 +120,7 @@ In diesem Abschnitt wird das Aktivieren von Metrikwarnungen (Vorschau) in Azure 
 
     Nachdem Sie den Umschalter **Aktivieren/Deaktivieren** auf das Aktivieren der Warnung gesetzt haben, wird eine Warnungsregel erstellt und der Regelname so aktualisiert, dass er einen Link zur tatsächlichen Warnungsressource enthält.
 
-    ![Aktivieren der Warnungsregel](./media/container-insights-metric-alerts/recommended-alerts-pane-enable.png)
+    ![Benachrichtigungsregel aktivieren](./media/container-insights-metric-alerts/recommended-alerts-pane-enable.png)
 
 5. Warnungsregeln sind keine [Aktionsgruppen](../platform/action-groups.md) zugeordnet, um Benutzer zu benachrichtigen, dass eine Warnung ausgelöst wurde. Wählen Sie **Keine Aktionsgruppe zugewiesen** aus, und geben Sie auf der Seite **Aktionsgruppen** eine vorhandene Gruppe an, oder erstellen Sie eine Aktionsgruppe, indem Sie **Hinzufügen** bzw. **Erstellen** auswählen.
 

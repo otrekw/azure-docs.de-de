@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 12/17/2019
+ms.date: 7/27/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: e25af1f629ea6fa7db14ce89dfffaa340486a989
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e5fe8e751077bc04850879d27827c197767a81c2
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82689788"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87759069"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-client-credentials-flow"></a>Microsoft Identity Platform und der Fluss von OAuth 2.0-Clientanmeldeinformationen
 
@@ -27,7 +27,7 @@ In diesem Artikel wird beschrieben, wie Sie direkt mit dem Protokoll in Ihrer An
 
 Beim Fluss zur Gewährung von OAuth 2.0-Clientanmeldeinformationen kann ein Webdienst (ein vertraulicher Client) seine eigenen Anmeldeinformationen zum Authentifizieren verwenden, wenn ein anderer Webdienst aufgerufen wird, anstatt die Identität eines Benutzers anzunehmen. In diesem Szenario ist der Client normalerweise ein Webdienst der mittleren Ebene, ein Daemondienst oder eine Website. Für ein höheres Maß an Sicherheit bietet die Microsoft Identity Platform auch die Möglichkeit, dass der aufrufende Dienst ein Zertifikat (statt eines gemeinsamen Geheimnisses) als Anmeldeinformationen verwendet.
 
-In der üblicheren *dreibeinigen OAuth-Autorisierung* wird einer Clientanwendung die Berechtigung zum Zugriff auf eine Ressource im Auftrag eines bestimmten Benutzers gewährt. Die Berechtigung wird in der Regel während des [Zustimmungsprozesses](v2-permissions-and-consent.md) vom Benutzer an die Anwendung delegiert. Allerdings werden Berechtigungen im Clientanmeldeinformations-Flow (*zweibeinige OAuth-Authentifizierung*) direkt an die Anwendung selbst erteilt. Wenn die App einer Ressource ein Token anbietet, erzwingt die Ressource, dass die App selbst (und nicht der Benutzer) für die Ausführung einer Aktion autorisiert ist.
+Im Flow zum Gewähren von Clientanmeldeinformationen werden Berechtigungen von einem Administrator direkt an die eigentliche Anwendung erteilt. Wenn die App einer Ressource ein Token präsentiert, macht die Ressource geltend, dass die App selbst für die Durchführung einer Aktion autorisiert ist, da an der Authentifizierung kein Benutzer beteiligt ist.  In diesem Artikel werden die Schritte beschrieben, die zum [Autorisieren einer Anwendung zum Aufrufen einer API](#application-permissions) erforderlich sind. Es wird aber auch die [Vorgehensweise zum Abrufen der Token, die zum Aufrufen dieser API erforderlich sind](#get-a-token) erläutert.
 
 ## <a name="protocol-diagram"></a>Protokolldiagramm
 
@@ -52,6 +52,9 @@ Ein allgemeiner Anwendungsfall ist die Verwendung einer Zugriffssteuerungsliste 
 
 Diese Art der Autorisierung wird häufig für Daemons und Dienstkonten eingesetzt, die auf Daten zugreifen müssen, die sich im Besitz von Privatnutzern mit persönlichen Microsoft-Konten befinden. Für Daten, die Organisationen gehören, empfiehlt es sich, die erforderliche Autorisierung über Anwendungsberechtigungen zu erhalten.
 
+> [!NOTE]
+> Zum Aktivieren dieses Autorisierungsmusters, das auf der Zugriffssteuerungsliste basiert, setzt Azure AD nicht voraus, dass die Anwendungen zum Abrufen von Token für eine andere Anwendung autorisiert sind – daher können reine App-Token ohne einen `roles`-Anspruch ausgestellt werden. Bei Anwendungen, die APIs verfügbar machen, müssen zum Akzeptieren von Token Berechtigungsüberprüfungen implementiert werden.
+
 ### <a name="application-permissions"></a>Anwendungsberechtigungen
 
 Anstelle von Zugriffssteuerungslisten können Sie APIs verwenden, um einen Satz von **Anwendungsberechtigungen** verfügbar zu machen. Eine Anwendungsberechtigung wird einer Anwendung von einem Administrator einer Organisation erteilt und kann nur für den Zugriff auf Daten verwendet werden, die sich im Besitz der jeweiligen Organisation und deren Mitarbeiter befinden. Microsoft Graph macht beispielsweise verschiedene Anwendungsberechtigungen für Folgendes verfügbar:
@@ -61,21 +64,11 @@ Anstelle von Zugriffssteuerungslisten können Sie APIs verwenden, um einen Satz 
 * Senden von E-Mails als beliebiger Benutzer
 * Verzeichnisdaten lesen
 
-Weitere Informationen zu Anwendungsberechtigungen finden Sie unter [Microsoft Graph](https://developer.microsoft.com/graph).
+Wenn Sie Anwendungsberechtigungen mit Ihrer eigenen API (und nicht mit Microsoft Graph) verwenden möchten, müssen Sie zunächst die [API verfügbar machen](quickstart-configure-app-expose-web-apis.md), indem Sie im Azure-Portal in der App-Registrierung der API Bereiche definieren. [Konfigurieren Sie dann den Zugriff auf die API](quickstart-configure-app-access-web-apis.md), indem Sie diese Berechtigungen in der App-Registrierung Ihrer Clientanwendung auswählen. Wenn Sie in der App-Registrierung Ihrer API keine Bereiche verfügbar gemacht haben, können Sie im Azure-Portal in der App-Registrierung Ihrer Clientanwendung keine Anwendungsberechtigungen für diese API angeben.
 
-Wenn Sie Anwendungsberechtigungen in Ihrer App verwenden möchten, führen Sie die in den nächsten Abschnitten erläuterten Schritte aus.
+Bei der Authentifizierung als Anwendung (im Gegensatz zur Authentifizierung als Benutzer) können Sie keine *delegierten Berechtigungen* (Bereiche, die von einem Benutzer gewährt wurden) verwenden. Sie müssen Anwendungsberechtigungen verwenden, die auch als „Rollen“ bezeichnet und von einem Administrator (oder über die Vorautorisierung durch die Web-API) für die Anwendung gewährt werden.
 
-
-> [!NOTE]
-> Bei der Authentifizierung als Anwendung können Sie im Gegensatz zur Authentifizierung mit einem Benutzer keine „delegierten Berechtigungen“ (Bereiche, die von einem Benutzer gewährt wurden) verwenden.  Sie müssen „Anwendungsberechtigungen“ verwenden, die auch als „Rollen“ bezeichnet und von einem Administrator für die Anwendung (oder über die Vorautorisierung durch die Web-API) gewährt werden.
-
-
-#### <a name="request-the-permissions-in-the-app-registration-portal"></a>Anfordern der Berechtigungen im App-Registrierungsportal
-
-1. Registrieren und erstellen Sie eine App über die neue [Oberfläche „App-Registrierungen“ (Vorschauversion)](quickstart-register-app.md).
-2. Wechseln Sie auf der Benutzeroberfläche von „App-Registrierungen“ (Vorschauversion) zu Ihrer Anwendung. Navigieren Sie zum Abschnitt **Zertifikate und Geheimnisse**, und fügen Sie einen **neuen geheimen Clientschlüssel** hinzu, weil Sie mindestens einen geheimen Clientschlüssel benötigen, um ein Token anzufordern.
-3. Suchen Sie den Abschnitt **API-Berechtigungen**, und fügen Sie die **Anwendungsberechtigungen** hinzu, die von Ihrer App benötigt werden.
-4. **Speichern** Sie die App-Registrierung.
+Weitere Informationen zu Anwendungsberechtigungen finden Sie unter [Berechtigungen und Einwilligung](v2-permissions-and-consent.md#permission-types).
 
 #### <a name="recommended-sign-the-user-into-your-app"></a>Empfohlen: Anmelden des Benutzers bei Ihrer App
 
@@ -105,7 +98,7 @@ Profitipp: Versuchen Sie, die folgende Anforderung in einem Browser einzufügen.
 https://login.microsoftonline.com/common/adminconsent?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&state=12345&redirect_uri=http://localhost/myapp/permissions
 ```
 
-| Parameter | Bedingung | BESCHREIBUNG |
+| Parameter | Bedingung | Beschreibung |
 | --- | --- | --- |
 | `tenant` | Erforderlich | Der Verzeichnismandant, von dem Sie die Berechtigung anfordern möchten. Kann als GUID oder als Anzeigename bereitgestellt werden. Wenn Sie nicht wissen, zu welchem Mandanten der Benutzer gehört, und wenn der Benutzer sich bei jedem Mandanten anmelden können soll, verwenden Sie `common`. |
 | `client_id` | Erforderlich | Die **Anwendungs-ID (Client-ID)** , die Ihrer App im [Azure-Portal auf der Seite „App-Registrierungen“](https://go.microsoft.com/fwlink/?linkid=2083908) zugewiesen wurde. |
@@ -168,7 +161,7 @@ client_id=535fb089-9ff3-47b6-9bfb-4f1264799865
 curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'client_id=535fb089-9ff3-47b6-9bfb-4f1264799865&scope=https%3A%2F%2Fgraph.microsoft.com%2F.default&client_secret=qWgdYAmab0YSkuL1qKv5bPX&grant_type=client_credentials' 'https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token'
 ```
 
-| Parameter | Bedingung | BESCHREIBUNG |
+| Parameter | Bedingung | Beschreibung |
 | --- | --- | --- |
 | `tenant` | Erforderlich | Der Verzeichnismandant, der von der Anwendung für den Betrieb verwendet werden soll, im GUID- oder Domänennamensformat. |
 | `client_id` | Erforderlich | Die Anwendungs-ID, die Ihrer App zugewiesen ist. Diese Informationen finden Sie in dem Portal, in dem Sie Ihre App registriert haben. |
@@ -190,7 +183,7 @@ scope=https%3A%2F%2Fgraph.microsoft.com%2F.default
 &grant_type=client_credentials
 ```
 
-| Parameter | Bedingung | BESCHREIBUNG |
+| Parameter | Bedingung | Beschreibung |
 | --- | --- | --- |
 | `tenant` | Erforderlich | Der Verzeichnismandant, der von der Anwendung für den Betrieb verwendet werden soll, im GUID- oder Domänennamensformat. |
 | `client_id` | Erforderlich |Die Anwendungs-ID (Client-ID), die Ihrer App zugewiesen ist. |

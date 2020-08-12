@@ -1,21 +1,22 @@
 ---
 title: Erstellen eines Containers in Azure Cosmos DB
-description: Erfahren Sie, wie Sie einen Container in Azure Cosmos DB mit dem Azure-Portal, mit .NET, Java, Python, Node.js und anderen SDKs erstellen.
+description: Erfahren Sie, wie Sie einen Container in Azure Cosmos DB mit dem Azure-Portal, mit .NET, Java, Python, Node.js und anderen SDKs erstellen.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 04/24/2020
+ms.date: 07/29/2020
 ms.author: mjbrown
-ms.openlocfilehash: 22c51497a9c9a331f1337134fbaf7c781b9c8ba7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 6e62e307b6c5f5de939505eae8850f0117782a69
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85390889"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498360"
 ---
 # <a name="create-an-azure-cosmos-container"></a>Erstellen eines Azure Cosmos-Containers
 
-In diesem Artikel werden die verschiedenen Möglichkeiten zur Erstellung eines Azure Cosmos-Containers (Sammlung, Tabelle oder Diagramm) erläutert. Sie können dazu das Azure-Portal, die Azure-Befehlszeilenschnittstelle oder unterstützte SDKs verwenden. In diesem Artikel erfahren Sie, wie Sie einen Container erstellen, den Partitionsschlüssel angeben und den Durchsatz bereitstellen.
+In diesem Artikel werden die verschiedenen Möglichkeiten zur Erstellung eines Azure Cosmos-Containers (Sammlung, Tabelle oder Diagramm) mit dem Azure-Portal, der Azure-Befehlszeilenschnittstelle, PowerShell oder den unterstützten SDKs erläutert. In diesem Artikel erfahren Sie, wie Sie einen Container erstellen, den Partitionsschlüssel angeben und den Durchsatz bereitstellen.
 
 > [!NOTE]
 > Stellen Sie beim Erstellen von Containern sicher, dass Sie nicht zwei Container mit demselben Namen, aber unterschiedlicher Groß-/Kleinschreibung erstellen. Der Grund dafür ist, dass bei einigen Teilen der Azure-Plattform die Groß-/Kleinschreibung nicht beachtet wird, und dies kann zu Verwechslungen/Kollisionen von Telemetriedaten und Aktionen für Container mit solchen Namen führen.
@@ -111,7 +112,7 @@ In diesem Artikel werden die verschiedenen Möglichkeiten zur Erstellung eines A
 
 Über die folgenden Links erfahren Sie, wie Sie Containerressourcen für Azure Cosmos DB mithilfe der Azure CLI erstellen.
 
-Eine Liste aller Azure CLI-Beispiele für alle Azure Cosmos DB-APIs finden Sie unter [SQL-API](cli-samples.md), [Cassandra-API](cli-samples-cassandra.md), [MongoDB-API](cli-samples-mongodb.md), [Gremlin-API](cli-samples-gremlin.md) und [Tabellen-API](cli-samples-table.md).
+Eine Auflistung aller Azure CLI-Beispiele für alle Azure Cosmos DB-APIs finden Sie unter [Azure CLI-Beispiele für Azure Cosmos DB](cli-samples.md).
 
 * [Erstellen eines Containers mit der Azure CLI](manage-with-cli.md#create-a-container)
 * [Erstellen einer Sammlung für Azure Cosmos DB für die MongoDB-API mit der Azure CLI](./scripts/cli/mongodb/create.md)
@@ -119,17 +120,17 @@ Eine Liste aller Azure CLI-Beispiele für alle Azure Cosmos DB-APIs finden Sie
 * [Erstellen eines Gremlin-Graph mit der Azure CLI](./scripts/cli/gremlin/create.md)
 * [Erstellen einer Tabellen-API mit der Azure CLI](./scripts/cli/table/create.md)
 
-## <a name="create-a-container-using-powershella-idps-mongodba-idps-gremlin"></a>Erstellen eines Containers mithilfe von PowerShell<a id="ps-sql"></a><a id="ps-mongodb"><a id="ps-cassandra"></a><a id="ps-gremlin"><a id="ps-table"></a>
+## <a name="create-a-container-using-powershell"></a>Erstellen eines Containers mithilfe von PowerShell
 
 Über die folgenden Links erfahren Sie, wie Sie Containerressourcen für Azure Cosmos DB mithilfe von PowerShell erstellen.
 
-Eine Liste aller Azure CLI-Beispiele für alle Azure Cosmos DB-APIs finden Sie unter [SQL-API](powershell-samples-sql.md), [Cassandra-API](powershell-samples-cassandra.md), [MongoDB-API](powershell-samples-mongodb.md), [Gremlin-API](powershell-samples-gremlin.md) und [Tabellen-API](powershell-samples-table.md).
+Eine Auflistung aller PowerShell-Beispiele für alle Azure Cosmos DB-APIs finden Sie unter [PowerShell-Beispiele](powershell-samples.md).
 
 * [Erstellen eines Containers mit PowerShell](manage-with-powershell.md#create-container)
-* [Erstellen einer Sammlung für Azure Cosmos DB für die MongoDB-API mit PowerShell](./scripts/powershell/mongodb/ps-mongodb-create.md)
-* [Erstellen einer Cassandra-Tabelle mit PowerShell](./scripts/powershell/cassandra/ps-cassandra-create.md)
-* [Erstellen eines Gremlin-Graph mit PowerShell](./scripts/powershell/gremlin/ps-gremlin-create.md)
-* [Erstellen einer Tabellen-API-Tabelle mit PowerShell](./scripts/powershell/table/ps-table-create.md)
+* [Erstellen einer Sammlung für Azure Cosmos DB für die MongoDB-API mit PowerShell](./scripts/powershell/mongodb/create.md)
+* [Erstellen einer Cassandra-Tabelle mit PowerShell](./scripts/powershell/cassandra/create.md)
+* [Erstellen eines Gremlin-Graph mit PowerShell](./scripts/powershell/gremlin/create.md)
+* [Erstellen einer Tabellen-API-Tabelle mit PowerShell](./scripts/powershell/table/create.md)
 
 ## <a name="create-a-container-using-net-sdk"></a>Erstellen eines Containers mithilfe des .NET SDK
 

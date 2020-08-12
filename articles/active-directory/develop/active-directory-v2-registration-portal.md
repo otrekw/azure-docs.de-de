@@ -13,12 +13,12 @@ ms.date: 08/13/2019
 ms.author: ryanwi
 ms.reviewer: lenalepa
 ms.custom: aaddev
-ms.openlocfilehash: 910aaf84d3563d4410826d3c0bdfde3d2dfc75e3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 53a44ed270dc47725dddfd57d6a212e859d46bad
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80885632"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87552712"
 ---
 # <a name="app-registration-reference"></a>Referenz zur App-Registrierung
 
@@ -38,11 +38,11 @@ Diese Liste enthält all Ihre Anwendungen, die für die ausschließliche Verwend
 
 ## <a name="application-secrets"></a>Geheime Schlüssel für Anwendungen
 
-Geheime Schlüssel für Anwendungen sind Anmeldeinformationen, mit denen Ihre Anwendung eine zuverlässige [Clientauthentifizierung](https://tools.ietf.org/html/rfc6749#section-2.3) bei Azure AD durchführen kann. In OAuth und OpenID Connect werden Anwendungsgeheimnisse gemeinhin als `client_secret` bezeichnet. Im v2.0-Protokoll muss jede Anwendung, die ein Sicherheitstoken an einem adressierbaren Webspeicherort (nach `https` -Schema) empfängt, einen geheimen Schlüssel für Anwendungen verwenden, um sich beim Einlösen dieses Sicherheitstokens bei Azure AD zu identifizieren. Darüber hinaus wird jedem nativen Client, der auf einem Gerät Token empfängt, die Verwendung eines Anwendungsgeheimnisses zur Clientauthentifizierung untersagt. Dadurch wird die Speicherung von Geheimnissen in unsicheren Umgebungen verhindert.
+Anwendungsgeheimnisse sind Anmeldeinformationen, mit denen Ihre Anwendung eine zuverlässige [Clientauthentifizierung](https://tools.ietf.org/html/rfc6749#section-2.3) bei Microsoft Identity Platform durchführen kann. In OAuth und OpenID Connect werden Anwendungsgeheimnisse gemeinhin als `client_secret` bezeichnet. Im v2.0-Protokoll muss jede Anwendung, die an einem adressierbaren Webspeicherort (nach `https`-Schema) ein Sicherheitstoken empfängt, ein Anwendungsgeheimis verwenden, um sich beim Einlösen dieses Sicherheitstokens bei Microsoft Identity Platform zu identifizieren. Darüber hinaus wird jedem nativen Client, der auf einem Gerät Token empfängt, die Verwendung eines Anwendungsgeheimnisses zur Clientauthentifizierung untersagt. Dadurch wird die Speicherung von Geheimnissen in unsicheren Umgebungen verhindert.
 
 Jede App kann immer nur zwei gültige Anwendungsgeheimnisse enthalten. Durch das Verwalten von zwei Geheimnissen haben Sie die Möglichkeit, in der gesamten Umgebung Ihrer Anwendung regelmäßige Schlüsselrollover durchzuführen. Nachdem Sie Ihre Anwendung vollständig zu einem neuen Geheimnis migriert haben, können Sie das alte Geheimnis löschen und ein neues bereitstellen.
 
-Zurzeit sind nur zwei Arten von Anwendungsgeheimnissen im App-Registrierungsportal zulässig. Wenn Sie **Neues Kennwort generieren** auswählen, wird ein gemeinsames Geheimnis im entsprechenden Datenspeicher generiert und gespeichert, das Sie in Ihrer Anwendung verwenden können. Wenn Sie **Neues Schlüsselpaar generieren** auswählen, wird ein neues Paar aus öffentlichem und privatem Schlüssel erstellt, das heruntergeladen und für die Clientauthentifizierung bei Azure AD verwendet werden kann. Durch die Auswahl von **Öffentlichen Schlüssel hochladen** können Sie ein eigenes Paar aus öffentlichem und privatem Schlüssel verwenden.
+Zurzeit sind nur zwei Arten von Anwendungsgeheimnissen im App-Registrierungsportal zulässig. Wenn Sie **Neues Kennwort generieren** auswählen, wird ein gemeinsames Geheimnis im entsprechenden Datenspeicher generiert und gespeichert, das Sie in Ihrer Anwendung verwenden können. Wenn Sie **Neues Schlüsselpaar generieren** auswählen, wird ein neues Paar aus öffentlichem und privatem Schlüssel erstellt, das heruntergeladen und für die Clientauthentifizierung bei Microsoft Identity Platform verwendet werden kann. Durch die Auswahl von **Öffentlichen Schlüssel hochladen** können Sie ein eigenes Paar aus öffentlichem und privatem Schlüssel verwenden.
 Sie müssen ein Zertifikat hochladen, das einen öffentlichen Schlüssel enthält.
 
 ## <a name="profile"></a>Profil

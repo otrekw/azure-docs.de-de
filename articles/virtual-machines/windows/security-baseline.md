@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 10802cd141e0b10e30cb01d3d1dc385aedf7fc1e
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 11b532b5ece10c8a9ac6dad61e4ca64a9f19f901
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387012"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87445212"
 ---
 # <a name="azure-security-baseline-for-windows-virtual-machines"></a>Azure-Sicherheitsbaseline für virtuelle Windows-Computer
 
@@ -444,7 +444,7 @@ Alternativ dazu können Sie zum Einrichten von Warnungen für anomale Aktivität
 
 * [Verwenden von Zugriffsüberprüfungen für Azure-Identitäten](../../active-directory/governance/access-reviews-overview.md)
 
-**Azure Security Center-Überwachung:** Ja
+**Azure Security Center-Überwachung**: Ja
 
 **Verantwortlichkeit**: Kunde
 
@@ -538,7 +538,7 @@ Bei der zugrunde liegenden Plattform, die von Microsoft verwaltet wird, behandel
 
 ### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4.4: Verschlüsseln aller vertraulichen Informationen während der Übertragung
 
-**Leitfaden**: Daten während der Übertragung zu, von und zwischen virtuellen Windows-Computern werden auf verschiedene Weise verschlüsselt, je nach der Art der Verbindung, z. B. Verbindung mit einer VM in einer RDP- oder SSH-Sitzung.
+**Leitfaden**: Daten während der Übertragung zu, von und zwischen VMs mit Windows werden auf verschiedene Weise verschlüsselt, je nach der Art der Verbindung, z. B. Verbindung mit einer VM in einer RDP- oder SSH-Sitzung.
 
 Microsoft verwendet das TLS-Protokoll (Transport Layer Security) zum Schutz von Daten bei der Übertragung zwischen den Clouddiensten und Kunden.
 
@@ -612,7 +612,7 @@ Microsoft verwendet das TLS-Protokoll (Transport Layer Security) zum Schutz von 
 
 * [Implementieren von Empfehlungen für die Sicherheitsrisikobewertung aus Azure Security Center](../../security-center/security-center-vulnerability-assessment-recommendations.md)
 
-**Azure Security Center-Überwachung:** Ja
+**Azure Security Center-Überwachung**: Ja
 
 **Verantwortlichkeit**: Kunde
 
@@ -620,11 +620,11 @@ Microsoft verwendet das TLS-Protokoll (Transport Layer Security) zum Schutz von 
 
 **Leitfaden**: Verwenden Sie die Azure-Updateverwaltung, um Updates und Patches für Ihre VMs zu verwalten. In der Updateverwaltung wird das lokal konfigurierte Updaterepository verwendet, um unterstützte Windows-Systeme zu patchen. Mit Tools wie System Center Updates Publisher (Updates Publisher) können Sie benutzerdefinierte Updates in Windows Server Update Services (WSUS) veröffentlichen. Dadurch kann die Updateverwaltung Computer, auf denen Configuration Manager als Updaterepository verwendet wird, mit Software von Drittanbietern patchen.
 
-* [Updateverwaltung in Azure](../../automation/automation-update-management.md)
+* [Updateverwaltung in Azure](../../automation/update-management/update-mgmt-overview.md)
 
-* [Verwalten von Updates und Patches für Ihre Azure-VMs](../../automation/automation-tutorial-update-management.md)
+* [Verwalten von Updates und Patches für Ihre VMs](../../automation/update-management/update-mgmt-manage-updates-for-vm.md)
 
-**Azure Security Center-Überwachung:** Ja
+**Azure Security Center-Überwachung**: Ja
 
 **Verantwortlichkeit**: Kunde
 
@@ -632,9 +632,9 @@ Microsoft verwendet das TLS-Protokoll (Transport Layer Security) zum Schutz von 
 
 **Leitfaden**: Sie können eine Lösung für die Patchverwaltung von Drittanbietern verwenden. Sie können die Azure-Updateverwaltung verwenden, um Updates und Patches für Ihre VMs zu verwalten. In der Updateverwaltung wird das lokal konfigurierte Updaterepository verwendet, um unterstützte Windows-Systeme zu patchen. Mit Tools wie System Center Updates Publisher (Updates Publisher) können Sie benutzerdefinierte Updates in Windows Server Update Services (WSUS) veröffentlichen. Dadurch kann die Updateverwaltung Computer, auf denen Configuration Manager als Updaterepository verwendet wird, mit Software von Drittanbietern patchen.
 
-* [Updateverwaltung in Azure](../../automation/automation-update-management.md)
+* [Updateverwaltung in Azure](../../automation/update-management/update-mgmt-overview.md)
 
-* [Verwalten von Updates und Patches für Ihre Azure-VMs](../../automation/automation-tutorial-update-management.md)
+* [Verwalten von Updates und Patches für Ihre VMs](../../automation/update-management/update-mgmt-manage-updates-for-vm.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar.
 
@@ -1081,7 +1081,7 @@ Wenn Sie Azure Disk Encryption verwenden, können Sie die Azure-VM mit den Versc
 
 * [Sichern und Wiederherstellen einer verschlüsselten VM](../../backup/backup-azure-vms-encryption.md)
 
-**Azure Security Center-Überwachung:** Nicht zutreffend
+**Azure Security Center-Überwachung**: Nicht zutreffend
 
 **Verantwortlichkeit**: Kunde
 
@@ -1135,7 +1135,7 @@ Kennzeichnen Sie außerdem die Abonnements (z. B. Produktion, Nicht-Produktion)
 
 * [„Guide to Test, Training, and Exercise Programs for IT Plans and Capabilities“ des National Institute of Standards and Technology (NIST)](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf)
 
-**Azure Security Center-Überwachung:** Nicht zutreffend
+**Azure Security Center-Überwachung**: Nicht zutreffend
 
 **Verantwortlichkeit**: Kunde
 

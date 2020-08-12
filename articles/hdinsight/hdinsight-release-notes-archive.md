@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 01/08/2019
-ms.openlocfilehash: b5e26ef72d4be38c021cbedbcaf1fa919d7276d1
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 07/31/2020
+ms.openlocfilehash: eb533ef93f012e99d135c49725ef8add77b6f7ec
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86511975"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87484197"
 ---
 # <a name="archived-release-notes"></a>Archivierte Versionshinweise
 
@@ -21,9 +21,50 @@ ms.locfileid: "86511975"
 
 Azure HDInsight ist einer der beliebtesten Dienste unter Enterprise-Kunden für die Open Source-Analyseframeworks Apache Hadoop und Apache Spark in Azure.
 
-## <a name="release-date-06112020"></a>Veröffentlichungsdatum: 11.06.2020
+## <a name="release-date-07132020"></a>Veröffentlichungsdatum: 13.07.2020
 
 Diese Version gilt für HDInsight 3.6 und 4.0. Das HDInsight-Release wird über mehrere Tage für alle Regionen verfügbar gemacht. Das hier angegebene Veröffentlichungsdatum entspricht dem Veröffentlichungsdatum in der ersten Region. Es kann sein, dass die unten angegebenen Änderungen in Ihrer Region erst einige Tage später verfügbar werden.
+
+### <a name="new-features"></a>Neue Funktionen
+#### <a name="support-for-customer-lockbox-for-microsoft-azure"></a>Unterstützung der Kunden-Lockbox für Microsoft Azure
+Azure HDInsight unterstützt jetzt die Azure Kunden-Lockbox. Sie stellt für Kunden eine Schnittstelle zum Überprüfen und Genehmigen oder zum Ablehnen von Zugriffsanforderungen für Kundendaten bereit. Die Lockbox wird verwendet, wenn ein Microsoft-Techniker während einer Supportanfrage auf Kundendaten zugreifen muss. Weitere Informationen finden Sie unter [Kunden-Lockbox für Microsoft Azure](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-preview).
+
+#### <a name="service-endpoint-policies-for-storage"></a>Dienstendpunkt-Richtlinien für Speicher
+Kunden können nun im HDInsight-Clustersubnetz Dienstendpunkt-Richtlinien (Service Endpoint Policies, SEP) verwenden. Weitere Informationen finden Sie unter [Azure-Dienstendpunkt-Richtlinie](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoint-policies-overview).
+
+### <a name="deprecation"></a>Eingestellte Unterstützung
+#### <a name="deprecation-of-spark-21-and-22-in-hdinsight-36-spark-cluster"></a>Einstellung der Unterstützung von Spark 2.1 und 2.2 für Spark-Cluster in HDInsight 3.6
+Ab dem 1. Juli 2020 können Kunden in HDInsight 3.6 keine neuen Spark-Cluster mit Spark 2.1 und 2.2 mehr erstellen. Vorhandene Cluster werden unverändert ohne Unterstützung durch Microsoft ausgeführt. Ziehen Sie in Erwägung, bis 30. Juni 2020 in HDInsight 3.6 zu Spark 2.3 zu wechseln, um eine potenzielle Unterbrechung von System/Support zu vermeiden.
+ 
+#### <a name="deprecation-of-spark-23-in-hdinsight-40-spark-cluster"></a>Einstellung der Unterstützung von Spark 2.3 für Spark-Cluster in HDInsight 4.0
+Ab dem 1. Juli 2020 können Kunden in HDInsight 4.0 keine neuen Spark-Cluster mit Spark 2.3 mehr erstellen. Vorhandene Cluster werden unverändert ohne Unterstützung durch Microsoft ausgeführt. Ziehen Sie in Erwägung, bis 30. Juni 2020 in HDInsight 4.0 zu Spark 2.4 zu wechseln, um eine potenzielle Unterbrechung von System/Support zu vermeiden.
+ 
+#### <a name="deprecation-of-kafka-11-in-hdinsight-40-kafka-cluster"></a>Einstellung von Kafka 1.1 für Kafka-Cluster in HDInsight 4.0
+Ab dem 1. Juli 2020 können Kunden in HDInsight 4.0 keine neuen Kafka-Cluster mit Kafka 1.1 mehr erstellen. Vorhandene Cluster werden unverändert ohne Unterstützung durch Microsoft ausgeführt. Es empfiehlt sich, in HDInsight 4.0 bis zum 30. Juni 2020 auf Kafka 2.1 umzustellen, um potenzielle System-/Supportunterbrechungen zu vermeiden.
+
+### <a name="behavior-changes"></a>Verhaltensänderungen
+Keine Verhaltensänderungen, auf die Sie achten müssen.
+
+### <a name="upcoming-changes"></a>Bevorstehende Änderungen
+Die folgenden Änderungen werden in kommenden Versionen durchgeführt. 
+
+#### <a name="ability-to-select-different-zookeeper-sku-for-spark-hadoop-and-ml-services"></a>Möglichkeit zum Auswählen einer anderen Zookeeper-SKU für Spark, Hadoop und ML-Dienste
+HDInsight unterstützt derzeit keine Änderung der Zookeeper-SKU für die Clustertypen „Spark“, „Hadoop“ und „ML-Dienste“. HDInsight verwendet die SKU „A2_v2/A2“ für Zookeeper-Knoten, die Kunden nicht in Rechnung gestellt werden. In der nächsten Version können Kunden nach Bedarf die Zookeeper-SKU für Spark, Hadoop und ML-Dienste ändern. Zookeeper-Knoten mit einer anderen SKU als A2_v2/A2 sind kostenpflichtig. A2_V2/A2 bleibt weiterhin die Standard-SKU und ist kostenfrei.
+
+### <a name="bug-fixes"></a>Behebung von Programmfehlern
+HDInsight sorgt weiterhin für Verbesserungen bei der Clusterzuverlässigkeit und -leistung. 
+#### <a name="fixed-hive-warehouse-connector-issue"></a>Behobenes Problem mit Hive Warehouse Connector
+In der vorherigen Version gab es ein Problem bei der Verwendbarkeit von Hive Warehouse Connector. Dieses Problem wurde behoben. 
+
+#### <a name="fixed-zeppelin-notebook-truncates-leading-zeros-issue"></a>Behobenes Problem mit Zeppelin-Notebook und dem Abschneiden führender Nullen
+Zeppelin hat in der Tabellenausgabe für das Zeichenfolgenformat fälschlicherweise führende Nullen abgeschnitten. Dieses Problem wurde in dieser Version behoben.
+
+### <a name="component-version-change"></a>Änderung der Komponentenversion
+Für dieses Release gibt es keine Änderung der Komponentenversion. Die aktuellen Komponentenversionen für HDInsight 4.0 und HDInsight 3.6 finden Sie in [dieser Dokumentation](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#apache-hadoop-components-available-with-different-hdinsight-versions).
+
+## <a name="release-date-06112020"></a>Veröffentlichungsdatum: 11.06.2020
+
+Diese Version gilt für HDInsight 3.6 und 4.0. Das HDInsight-Release wird über mehrere Tage für alle Regionen verfügbar gemacht. Das hier angegebene Veröffentlichungsdatum entspricht dem Veröffentlichungsdatum in der ersten Region. Es kann sein, dass die unten angegebenen Änderungen bei Ihnen erst ein paar Tage später verfügbar werden.
 
 ### <a name="new-features"></a>Neue Funktionen
 #### <a name="moving-to-azure-virtual-machine-scale-sets"></a>Wechsel zu Azure-VM-Skalierungsgruppen
@@ -1160,7 +1201,7 @@ Dieses Release stellt Zeppelin 0.7.3 und die folgenden Apache-Patches bereit:
 
 Dieses Release stellt ZooKeeper 3.4.6 und die folgenden Apache-Patches bereit:
 
--   [ZOOKEEPER-1256](https://issues.apache.org/jira/browse/ZOOKEEPER-1256): ClientPortBindTest is failing on Mac OS X. (ClientPortBindTest schlägt auf Mac OS X fehl.)
+-   [ZOOKEEPER-1256](https://issues.apache.org/jira/browse/ZOOKEEPER-1256): ClientPortBindTest is failing on Mac OS X. (Bei ClientPortBindTest unter Mac OS X tritt ein Fehler auf.)
 
 -   [ZOOKEEPER-1901](https://issues.apache.org/jira/browse/ZOOKEEPER-1901): \[JDK8\] Sort children for comparison in AsyncOps tests. ([JDK8] Sortieren von untergeordneten Elementen für den Vergleich in AsyncOps-Tests.)
 
@@ -1240,7 +1281,7 @@ Dieser Abschnitt umfasst alle Common Vulnerabilities and Exposures (Allgemeine S
 | **Anbieter:** Hortonworks |
 | **Betroffene Versionen:** Alle Versionen von HDP 2.3/2.4/2.5, einschließlich der Apache Ranger-Versionen 0.5.x/0.6.0/0.6.1/0.6.2  |
 | **Betroffene Benutzer:** Alle Benutzer des Administratortools für Ranger-Richtlinien. |
-| **Auswirkung:** Apache Ranger ist anfällig für webseitenübergreifendes Skripting, wenn benutzerdefinierte Richtlinienbedingungen eingegeben werden. Administratorbenutzer können beliebigen JavaScript-Code speichern, der ausgeführt wird, wenn Benutzer sich anmelden und auf Richtlinien zugreifen. |
+| **Auswirkung:** Apache Ranger ist anfällig für webseitenübergreifendes Skripting, wenn benutzerdefinierte Richtlinienbedingungen eingegeben werden. Administratorbenutzer können beliebigen JavaScript-Code speichern, der ausgeführt wird, wenn normale Benutzer sich anmelden und auf Richtlinien zugreifen. |
 | **Details zur Fehlerbehebung:** Logik zum Säubern der Benutzereingabe wurde hinzugefügt.  |
 | **Empfohlene Maßnahme:** Upgrade auf HDP 2.5.4 oder höher (mit Apache Ranger 0.6.3 oder höher) oder HDP 2.6 oder höher (mit Apache Ranger 0.7.0 oder höher)  |
 

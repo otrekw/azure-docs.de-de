@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: how-to
 ms.date: 06/22/2020
 ms.author: rogarana
-ms.openlocfilehash: 4c374e62c0807269d1457bfe46d3df4260acd45c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 612584a71aa6be54d726ccdd74d9368ba9cddbc9
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85510464"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87535075"
 ---
 # <a name="part-one-enable-ad-ds-authentication-for-your-azure-file-shares"></a>Teil 1: Aktivieren der AD DS-Authentifizierung für Ihre Dateifreigaben in Azure 
 
@@ -30,7 +30,7 @@ Durch die Cmdlets im AzFilesHybrid-PowerShell-Modul werden die erforderlichen Ä
 
 - [Herunterladen und Entpacken des AzFilesHybrid-Moduls](https://github.com/Azure-Samples/azure-files-samples/releases) (GA-Modul: v0.2.0+)
 - Installieren Sie das Modul auf einem Gerät mit Domäneneinbindung in die lokale AD DS-Umgebung mithilfe von AD DS-Anmeldeinformationen, die zum Erstellen eines Dienstanmeldekontos oder eines Computerkontos in der Ziel-AD-Umgebungen berechtigt sind, und führen Sie das Modul dann aus.
--  Führen Sie das Skript mit lokalen AD DS-Anmeldeinformationen aus, die mit Ihrer Azure AD-Umgebung synchronisiert sind. Die lokalen AD DS-Anmeldeinformationen müssen über die Rolle „Speicherkontobesitzer“ oder „Mitwirkender RBAC“ verfügen.
+-  Führen Sie das Skript mit lokalen AD DS-Anmeldeinformationen aus, die mit Ihrer Azure AD-Umgebung synchronisiert sind. Die lokalen AD DS-Anmeldeinformationen müssen über die Rolle „Speicherkontobesitzer“ oder „Mitwirkender“ für Azure-Rollen verfügen.
 
 ### <a name="run-join-azstorageaccountforauth"></a>Ausführen von Join-AzStorageAccountForAuth
 
@@ -53,7 +53,7 @@ Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser
 #Import AzFilesHybrid module
 Import-Module -Name AzFilesHybrid
 
-#Login with an Azure AD credential that has either storage account owner or contributer RBAC assignment
+#Login with an Azure AD credential that has either storage account owner or contributer Azure role assignment
 Connect-AzAccount
 
 #Define parameters

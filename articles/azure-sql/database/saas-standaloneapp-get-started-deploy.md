@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 11/07/2018
-ms.openlocfilehash: fd4b94f6a99241ffddd7ae359059c3a4a918934a
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 52dfc285deaa84792e37d0f012abd7702d856113
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84026941"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87544080"
 ---
 # <a name="deploy-and-explore-a-standalone-single-tenant-application-that-uses-azure-sql-database"></a>Bereitstellen und Untersuchen einer eigenständigen SaaS-Anwendung für einzelne Mandanten, die Azure SQL-Datenbank verwendet
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -43,13 +43,17 @@ Es werden noch weitere Tutorials veröffentlicht. In diesen Tutorials können Si
 
 Stellen Sie die App für die drei bereitgestellten Mandanten bereit:
 
-1. Klicken Sie jeweils auf die blaue Schaltfläche **Deploy to Azure** (In Azure bereitstellen), um die Bereitstellungsvorlage im [Azure-Portal](https://portal.azure.com) zu öffnen. Für jede Vorlage sind zwei Parameterwerte erforderlich: ein Name für eine neue Ressourcengruppe und ein Benutzername, mit dem diese Bereitstellung von anderen Bereitstellungen der App unterschieden wird. Im nächsten Schritt sind Details zum Festlegen dieser Werte angegeben.<br><br>
-    <a href="https://aka.ms/deploywingtipsa-contoso" target="_blank"><img style="vertical-align:middle" src="media/saas-standaloneapp-get-started-deploy/deploy.png"/></a> &nbsp; **Contoso Concert Hall**
-<br><br>
-    <a href="https://aka.ms/deploywingtipsa-dogwood" target="_blank"><img style="vertical-align:middle" src="media/saas-standaloneapp-get-started-deploy/deploy.png"/></a> &nbsp; **Dogwood Dojo**
-<br><br>
-    <a href="https://aka.ms/deploywingtipsa-fabrikam" target="_blank"><img style="vertical-align:middle" src="media/saas-standaloneapp-get-started-deploy/deploy.png"/></a> &nbsp; **Fabrikam Jazz Club**
+1. Klicken Sie jeweils auf die blaue Schaltfläche **Deploy to Azure** (In Azure bereitstellen), um die Bereitstellungsvorlage im [Azure-Portal](https://portal.azure.com) zu öffnen. Für jede Vorlage sind zwei Parameterwerte erforderlich: ein Name für eine neue Ressourcengruppe und ein Benutzername, mit dem diese Bereitstellung von anderen Bereitstellungen der App unterschieden wird. Im nächsten Schritt sind Details zum Festlegen dieser Werte angegeben.
 
+   **Contoso Concert Hall**   
+   [![Abbildung einer Schaltfläche mit der Bezeichnung „Bereitstellung in Azure“](media/saas-standaloneapp-get-started-deploy/deploy.png)](https://aka.ms/deploywingtipsa-contoso)
+
+   **Dogwood Dojo**   
+   [![Abbildung einer Schaltfläche mit der Bezeichnung „Bereitstellung in Azure“](media/saas-standaloneapp-get-started-deploy/deploy.png)](https://aka.ms/deploywingtipsa-dogwood)
+
+   **Fabrikam Jazz Club**   
+   [![Abbildung einer Schaltfläche mit der Bezeichnung „Bereitstellung in Azure“](media/saas-standaloneapp-get-started-deploy/deploy.png)](https://aka.ms/deploywingtipsa-fabrikam)
+ 
 2. Geben Sie die erforderlichen Parameterwerte für jede Bereitstellung ein.
 
     > [!IMPORTANT]

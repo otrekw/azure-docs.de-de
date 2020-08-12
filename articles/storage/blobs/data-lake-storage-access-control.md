@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 5d478723af7d13cc3480f6c2a80bf9b76ba4b84f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 54867278b583124473b5b41c164714bf91f2f631
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091350"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543298"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen2"></a>Zugriffssteuerung in Azure Data Lake Storage Gen2
 
@@ -34,9 +34,9 @@ Informationen zum Zuweisen von Rollen zu Sicherheitsprinzipalen im Bereich Ihres
 
 ### <a name="the-impact-of-role-assignments-on-file-and-directory-level-access-control-lists"></a>Die Auswirkungen von Rollenzuweisungen auf Zugriffssteuerungslisten auf Datei- und Verzeichnisebene
 
-RBAC-Rollenzuweisungen sind zwar ein effektiver Mechanismus zur Steuerung von Zugriffsberechtigungen, aber im Vergleich zu Zugriffssteuerungslisten nicht sehr detailliert. Die kleinste Granularität für RBAC ist die Containerebene, und diese wird mit einer höheren Priorität als Zugriffssteuerungslisten ausgewertet. Wenn Sie einem Sicherheitsprinzipal im Bereich eines Containers eine Rolle zuweisen, hat dieser Sicherheitsprinzipal daher die Autorisierungsstufe dieser Rolle für ALLE Verzeichnisse und Dateien in diesem Container, unabhängig von den ACL-Zuweisungen.
+Azure-Rollenzuweisungen sind zwar ein effektiver Mechanismus zur Steuerung von Zugriffsberechtigungen, aber im Vergleich zu Zugriffssteuerungslisten nicht sehr detailliert. Die kleinste Granularität für RBAC ist die Containerebene, und diese wird mit einer höheren Priorität als Zugriffssteuerungslisten ausgewertet. Wenn Sie einem Sicherheitsprinzipal im Bereich eines Containers eine Rolle zuweisen, hat dieser Sicherheitsprinzipal daher die Autorisierungsstufe dieser Rolle für ALLE Verzeichnisse und Dateien in diesem Container, unabhängig von den ACL-Zuweisungen.
 
-Wenn einem Sicherheitsprinzipal RBAC-Datenberechtigungen über eine [integrierte Rolle](https://docs.microsoft.com/azure/storage/common/storage-auth-aad?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#built-in-rbac-roles-for-blobs-and-queues) oder eine benutzerdefinierte Rolle erteilt werden, erfolgt die Auswertung dieser Berechtigungen bei der Autorisierung einer Anforderung als erstes. Wenn der angeforderte Vorgang durch die RBAC-Zuweisungen des Sicherheitsprinzipals autorisiert wird, erfolgt die Berechtigungsauflösung sofort, ohne dass zusätzliche ACL-Prüfungen durchgeführt werden. Wenn der Sicherheitsprinzipal über keine RBAC-Zuweisung verfügt oder der Vorgang der Anforderung nicht mit der zugewiesenen Berechtigung übereinstimmt, werden alternativ ACL-Prüfungen durchgeführt, um zu bestimmen, ob der Sicherheitsprinzipal für die Durchführung des angeforderten Vorgangs autorisiert ist.
+Wenn einem Sicherheitsprinzipal RBAC-Datenberechtigungen über eine [integrierte Rolle](https://docs.microsoft.com/azure/storage/common/storage-auth-aad?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#built-in-rbac-roles-for-blobs-and-queues) oder eine benutzerdefinierte Rolle erteilt werden, erfolgt die Auswertung dieser Berechtigungen bei der Autorisierung einer Anforderung als erstes. Wenn der Anforderungsvorgang von den Azure-Rollenzuweisungen des Sicherheitsprinzipals autorisiert wurde, wird die Autorisierung sofort aufgelöst, und es werden keine weiteren ACL-Prüfungen durchgeführt. Wenn der Sicherheitsprinzipal nicht über eine Azure-Rollenzuweisung verfügt oder der Vorgang der Anforderung nicht mit der zugewiesenen Berechtigung übereinstimmt, werden alternativ ACL-Prüfungen durchgeführt, um zu bestimmen, ob der Sicherheitsprinzipal für die Durchführung des angeforderten Vorgangs autorisiert ist.
 
 > [!NOTE]
 > Wenn dem Sicherheitsprinzipal die integrierte Rolle des Besitzers der Speicherblobdaten zugewiesen wurde, gilt der Sicherheitsprinzipal als *super-user*, und er erhält Vollzugriff für alle Änderungsvorgänge, einschließlich Festlegung des Besitzers eines Verzeichnisses oder einer Datei sowie von ACLs für Verzeichnisse und Dateien, deren Besitzer er nicht ist. Dieser Administratorzugriff ist die einzige autorisierte Möglichkeit, den Besitzer einer Ressource zu ändern.
@@ -210,13 +210,12 @@ for entry in entries:
 member_count = 0
 perms = 0
 entries = get_acl_entries( path, NAMED_GROUP | OWNING_GROUP )
+mask = get_mask( path )
 for entry in entries:
 if (user_is_member_of_group(user, entry.identity)) :
-    member_count += 1
-    perms | =  entry.permissions
-if (member_count>0) :
-return ((desired_perms & perms & mask ) == desired_perms)
-
+    if ((desired_perms & entry.permissions & mask) == desired_perms)
+        return True 
+        
 # Handle other
 perms = get_perms_for_other(path)
 mask = get_mask( path )
@@ -333,7 +332,7 @@ Wenn Sie über die richtige OID für den Dienstprinzipal verfügen, wechseln Sie
 
 ### <a name="does-data-lake-storage-gen2-support-inheritance-of-acls"></a>Unterstützt Data Lake Storage Gen2 die Vererbung von ACLs?
 
-RBAC-Zuweisungen von Azure werden vererbt. Zuweisungen werden aus Abonnement-, Ressourcengruppen und Speicherkontenressourcen an die Containerressource übertragen.
+Azure-Rollenzuweisungen werden vererbt. Zuweisungen werden aus Abonnement-, Ressourcengruppen und Speicherkontenressourcen an die Containerressource übertragen.
 
 ACLs werden nicht vererbt. Standard-ACLs können jedoch zum Festlegen von ACLs für untergeordnete Unterverzeichnisse und Dateien verwendet werden, die im übergeordneten Verzeichnis erstellt wurden. 
 

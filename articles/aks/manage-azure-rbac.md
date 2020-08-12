@@ -4,15 +4,15 @@ titleSuffix: Azure Kubernetes Service
 description: Erfahren Sie, wie Sie Azure RBAC für Kubernetes-Autorisierung mit Azure Kubernetes Service (AKS) verwenden.
 services: container-service
 ms.topic: article
-ms.date: 07/07/2020
+ms.date: 07/20/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: bb4c689da38606561c657a3e4d85fd9e391267bf
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 824146e7e0b1130b8e5f6c087dbf5ccbac2c8224
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87056739"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87799360"
 ---
 # <a name="use-azure-rbac-for-kubernetes-authorization-preview"></a>Verwenden von Azure RBAC für Kubernetes-Autorisierung (Vorschau)
 
@@ -33,29 +33,25 @@ Die Möglichkeit, RBAC für Kubernetes-Ressourcen aus Azure zu verwalten, bietet
 
 ### <a name="prerequisites"></a>Voraussetzungen 
 - Registrieren Sie sich für die Vorschauversion <https://aka.ms/aad-rbac-sign-up-form>.
+- Stellen Sie sicher, dass Sie mindestens über Version 2.9.0 der Azure-Befehlszeilenschnittstelle verfügen.
 - Stellen Sie sicher, dass das `EnableAzureRBACPreview`-Featureflag aktiviert ist.
-- Stellen Sie sicher, dass das `AAD-V2`-Featureflag aktiviert ist.
 - Stellen Sie sicher, dass die `aks-preview` [-CLI-Erweiterung][az-extension-add] v0.4.55 oder höher installiert ist.
 - Stellen Sie sicher, dass [kubectl v1.18.3 oder höher][az-aks-install-cli] installiert ist.
 
-#### <a name="register-enableazurerbacpreview-and-aad-v2-preview-features"></a>Registrieren der `EnableAzureRBACPreview`- und `AAD-V2`-Vorschaufunktionen
+#### <a name="register-enableazurerbacpreview-preview-feature"></a>Registrieren der Previewfunktion `EnableAzureRBACPreview`
 
-Um einen AKS-Cluster zu erstellen, der Azure RBAC für die Kubernetes-Autorisierung verwendet, müssen Sie die `EnableAzureRBACPreview`- und `AAD-V2`-Featureflags für Ihr Abonnement aktivieren.
+Um einen AKS-Cluster zu erstellen, der Azure RBAC für die Kubernetes-Autorisierung verwendet, müssen Sie das Featureflag `EnableAzureRBACPreview` für Ihr Abonnement aktivieren.
 
-Registrieren Sie die Featureflags `EnableAzureRBACPreview` und `AAD-V2` mit dem Befehl [az feature register][az-feature-register], wie im folgenden Beispiel gezeigt:
+Registrieren Sie das `EnableAzureRBACPreview`-Featureflag mit dem Befehl [az feature register][az-feature-register], wie im folgenden Beispiel gezeigt:
 
 ```azurecli-interactive
 az feature register --namespace "Microsoft.ContainerService" --name "EnableAzureRBACPreview"
-
-az feature register --namespace "Microsoft.ContainerService"  --name "AAD-V2"
 ```
 
 Es dauert einige Minuten, bis der Status *Registered (Registriert)* angezeigt wird. Sie können den Registrierungsstatus mithilfe des Befehls [az feature list][az-feature-list] überprüfen:
 
 ```azurecli-interactive
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/EnableAzureRBACPreview')].{Name:name,State:properties.state}"
-
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AAD-V2')].{Name:name,State:properties.state}"
 ```
 
 Wenn Sie so weit sind, aktualisieren Sie mithilfe des Befehls [az provider register][az-provider-register] die Registrierung des *Microsoft.ContainerService*-Ressourcenanbieters:
@@ -283,7 +279,7 @@ az group delete -n MyResourceGroup
 
 - Lesen Sie [hier](concepts-identity.md) mehr zum Thema AKS-Authentifizierung, -Autorisierung und RBAC.
 - Lesen Sie [hier](../role-based-access-control/overview.md) mehr zum Thema Azure RBAC.
-- Erfahren Sie [hier](../role-based-access-control/resource-provider-operations.md#microsoftcontainerservice) mehr über alle Aktionen, die Sie verwenden können, um benutzerdefinierte Azure RBAC-Rollen für Kubernetes-Autorisierung detailliert zu definieren.
+- Lesen Sie [hier](../role-based-access-control/resource-provider-operations.md#microsoftcontainerservice) mehr über alle Aktionen, die Sie verwenden können, um benutzerdefinierte Azure-Rollen für die Kubernetes-Autorisierung detailliert zu definieren.
 
 
 <!-- LINKS - Internal -->

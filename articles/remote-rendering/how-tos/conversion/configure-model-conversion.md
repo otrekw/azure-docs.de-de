@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 03/06/2020
 ms.topic: how-to
-ms.openlocfilehash: e3be1f9ec900655f4dae45abd402ff8e6a56e283
-ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
+ms.openlocfilehash: 9ddf4641cfba2fb9704c2354e01299df368eb2ac
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84147941"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87432018"
 ---
 # <a name="configure-the-model-conversion"></a>Konfigurieren der Modellkonvertierung
 
@@ -18,7 +18,8 @@ In diesem Kapitel sind die Optionen für die Modellkonvertierung dokumentiert.
 
 ## <a name="settings-file"></a>Einstellungsdatei
 
-Wenn im Eingabecontainer neben dem Eingabemodell eine Datei mit dem Namen `ConversionSettings.json` gefunden wird, wird sie verwendet, um eine weitere Konfiguration für den Prozess zur Modellkonvertierung anzugeben.
+Wenn im Eingangscontainer neben dem Eingangsmodell `<modelName>.<ext>` eine Datei mit dem Namen `<modelName>.ConversionSettings.json` gefunden wird, wird mit ihr eine weitere Konfiguration für den Prozess zur Modellkonvertierung angegeben.
+Beispielsweise wird `box.ConversionSettings.json` ggf. bei der Konvertierung von `box.gltf` verwendet.
 
 Für den Inhalt der Datei sollte das folgende JSON-Schema erfüllt sein:
 
@@ -54,7 +55,7 @@ Für den Inhalt der Datei sollte das folgende JSON-Schema erfüllt sein:
 }
 ```
 
-Ein Beispiel für die Datei `ConversionSettings.json` ist:
+Ein Beispiel für die Datei `box.ConversionSettings.json` ist:
 
 ```json
 {
@@ -66,15 +67,18 @@ Ein Beispiel für die Datei `ConversionSettings.json` ist:
 
 ### <a name="geometry-parameters"></a>Geometrieparameter
 
-* `scaling`: Mit diesem Parameter wird ein Modell einheitlich skaliert. Die Skalierung kann genutzt werden, um ein Modell zu vergrößern oder zu verkleinern, z. B. zum Anzeigen eines Gebäudemodells auf einer Tischplatte. Da das Renderingmodul die Angabe von Längenwerten in Metern erwartet, ist die Verwendung dieses Parameters auch wichtig, wenn ein Modell mit anderen Einheiten definiert wurde. Wenn zum Definieren eines Modells beispielsweise Zentimeter verwendet wurden, sollte es in der richtigen Größe gerendert werden, wenn eine Skalierung mit dem Wert 0,01 angewendet wird.
+* `scaling`: Mit diesem Parameter wird ein Modell einheitlich skaliert. Die Skalierung kann genutzt werden, um ein Modell zu vergrößern oder zu verkleinern, z. B. zum Anzeigen eines Gebäudemodells auf einer Tischplatte.
+Die Skalierung ist auch dann wichtig, wenn ein Modell in anderen Einheiten als Meter definiert ist, da die Rendering-Engine Meter erwartet.
+Wenn zum Definieren eines Modells beispielsweise Zentimeter verwendet wurden, sollte es in der richtigen Größe gerendert werden, wenn eine Skalierung mit dem Wert 0,01 angewendet wird.
 Bei einigen Quelldatenformaten (z. B. FBX) wird auf die Einheitenskalierung hingewiesen. In diesem Fall wird das Modell bei der Konvertierung implizit auf „Meter“ als Einheit skaliert. Die implizite Skalierung durch das Quellformat wird zusätzlich zum Skalierungsparameter angewendet.
 Der abschließende Skalierungsfaktor wird auf die Scheitelpunkte der Geometrie und die lokalen Transformationen der Szenengraphknoten angewendet. Die Skalierung für die Transformation der Stammentität bleibt unverändert.
 
 * `recenterToOrigin`: Gibt an, dass ein Modell so konvertiert werden sollte, dass der Begrenzungsrahmen am Ursprung zentriert ist.
-Die Zentrierung ist wichtig, wenn das Quellmodell gegenüber dem Ursprung weit versetzt wurde. In diesem Fall können Probleme mit der Gleitkommagenauigkeit nämlich zu Artefakten beim Rendering führen.
+Wenn ein Quellmodell gegenüber dem Ursprung weit versetzt wurde, können Probleme mit der Gleitkommagenauigkeit zu Artefakten beim Rendering führen.
+Ein Zentrieren des Modells kann in dieser Situation hilfreich sein.
 
 * `opaqueMaterialDefaultSidedness`: Vom Renderingmodul wird vorausgesetzt, dass undurchsichtige Materialien doppelseitig sind.
-Wenn dies nicht das beabsichtigte Verhalten ist, sollte dieser Parameter auf „SingleSided“ (Einseitig) festgelegt werden. Weitere Informationen zu Rendering vom Typ :::no-loc text="single sided"::: finden Sie unter [Einseitiges Rendering](../../overview/features/single-sided-rendering.md).
+Wenn diese Annahme für ein bestimmtes Modell nicht zutrifft, sollte dieser Parameter auf „SingleSided“ festgelegt werden. Weitere Informationen zu Rendering vom Typ :::no-loc text="single sided"::: finden Sie unter [Einseitiges Rendering](../../overview/features/single-sided-rendering.md).
 
 ### <a name="material-overrides"></a>Materialüberschreibungen
 
@@ -99,10 +103,10 @@ Wenn ein Modell mit dem Gamma-Raum definiert wird, sollten diese Optionen auf �
 
 * `sceneGraphMode`: Definiert, wie der Szenengraph in der Quelldatei konvertiert wird:
   * `dynamic` (Standard): Alle Objekte in der Datei werden als [Entitäten](../../concepts/entities.md) in der API verfügbar gemacht und können unabhängig voneinander transformiert werden. Die Knotenhierarchie zur Runtime ist mit der Struktur in der Quelldatei identisch.
-  * `static`: Alle Objekte werden in der API verfügbar gemacht, aber sie können nicht unabhängig voneinander transformiert werden.
+  * `static`: Alle Objekte werden in der API verfügbar gemacht, sie können jedoch nicht unabhängig voneinander transformiert werden.
   * `none`: Der Szenengraph wird zu einem Objekt reduziert.
 
-Jeder Modus weist eine andere Runtimeleistung auf. Im Modus `dynamic` ist der Leistungsaufwand linear von der Anzahl von [Entitäten](../../concepts/entities.md) im Graphen abhängig. Dies gilt auch, wenn kein Teil verschoben wird. Er sollte nur genutzt werden, wenn für die Anwendung das separate Verschieben von Teilen erforderlich ist, z. B. für eine Animation vom Typ „Explosionsansicht“.
+Jeder Modus weist eine andere Runtimeleistung auf. Im Modus `dynamic` ist der Leistungsaufwand linear von der Anzahl von [Entitäten](../../concepts/entities.md) im Graphen abhängig. Dies gilt auch, wenn kein Teil verschoben wird. Verwenden Sie den Modus `dynamic` nur, wenn Teile einzeln verschoben werden müssen, z. B. für die Animation einer „Explosion“.
 
 Im Modus `static` wird der vollständige Szenengraph exportiert, aber die Teile dieses Graphen verfügen über eine konstante Transformation relativ zum Stammteil. Der Stammknoten des Objekts kann aber weiterhin ohne größeren Leistungsaufwand verschoben, gedreht oder skaliert werden. Darüber hinaus werden bei [räumlichen Abfragen](../../overview/features/spatial-queries.md) einzelne Teile zurückgegeben, und jedes Teil kann anhand von [Zustandsüberschreibungen](../../overview/features/override-hierarchical-state.md) geändert werden. In diesem Modus ist der Runtime-Mehraufwand pro Objekt vernachlässigbar. Er eignet sich ideal für große Szenen, in denen Sie weiterhin Untersuchungen pro Objekt benötigen, aber keine Transformationsänderungen für einzelne Objekte durchführen.
 
@@ -278,6 +282,11 @@ Bei diesen Anwendungsfällen weisen die Modelle häufig einen sehr hohen Detailg
 * Da einzelne Teile auswählbar und verschiebbar sein sollten, muss für `sceneGraphMode` die Einstellung `dynamic` beibehalten werden.
 * Das Raycasting ist meist integraler Bestandteil der Anwendung, sodass Kollisionsgittermodelle generiert werden müssen.
 * Schnittebenen sehen besser aus, wenn das Flag `opaqueMaterialDefaultSidedness` aktiviert ist.
+
+## <a name="deprecated-features"></a>Veraltete Features
+
+Das Bereitstellen von Einstellungen mithilfe der nicht modellspezifischen Datei `conversionSettings.json` wird weiterhin unterstützt, ist jedoch veraltet.
+Verwenden Sie stattdessen den modellspezifischen Dateinamen `<modelName>.ConversionSettings.json`.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

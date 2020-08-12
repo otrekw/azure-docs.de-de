@@ -8,16 +8,17 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 06/29/2020
 ms.author: cherylmc
-ms.openlocfilehash: 659cb9aabe5fcca68aea9a73ea9beadb8e52ec50
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 3d680fb105b6bde26e5b02544359009f316647bb
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259174"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87513722"
 ---
 # <a name="about-virtual-hub-routing"></a>Informationen zum Routing virtueller Hubs
 
-Die Routingfunktionen in einem virtuellen Hub werden von einem Router bereitgestellt, der das gesamte Routing zwischen den Gateways mit dem Border Gateway Protocol (BGP) verwaltet. Ein virtueller Hub kann mehrere Gateways enthalten, z. B. ein Site-to-Site-VPN-Gateway, ExpressRoute-Gateway, Point-to-Site-Gateway, Azure Firewall. Dieser Router bietet auch Transitkonnektivität zwischen virtuellen Netzwerken, die mit einem virtuellen Hub verbunden sind, und kann einen Gesamtdurchsatz von bis zu 50 GBit/s unterstützen. Diese Routingfunktionen gelten für Kunden von Virtual WAN Standard.
+Die Routingfunktionen in einem virtuellen Hub werden von einem Router bereitgestellt, der das gesamte Routing zwischen den Gateways mit dem Border Gateway Protocol (BGP) verwaltet. Ein virtueller Hub kann mehrere Gateways enthalten, z. B. ein Site-to-Site-VPN-Gateway, ExpressRoute-Gateway, Point-to-Site-Gateway, Azure Firewall. Dieser Router bietet auch Transitkonnektivität zwischen virtuellen Netzwerken, die mit einem virtuellen Hub verbunden sind, und kann einen Gesamtdurchsatz von bis zu 50 GBit/s unterstützen. Diese Routingfunktionen gelten für Kunden von Virtual WAN Standard. 
 
 Informationen zur Konfiguration des Routings finden Sie unter [Konfigurieren des Routings für virtuelle Hubs](how-to-virtual-hub-routing.md).
 
@@ -26,7 +27,7 @@ Informationen zur Konfiguration des Routings finden Sie unter [Konfigurieren des
 In den folgenden Abschnitten werden die Schlüsselkonzepte des Routings für virtuelle Hubs beschrieben.
 
 > [!NOTE]
-> Einige dieser neuen Konzepte für Hub-Routingtabelle, Zuordnung, Weitergabe und statische Routen in einer VNET-Verbindung befinden sich möglicherweise noch in der Rolloutphase. Diese ist jedoch voraussichtlich in der Woche ab dem 3. August abgeschlossen.
+> Einige dieser neuen Konzepte für Hub-Routingtabelle, Zuordnung, Weitergabe und statische Routen in einer VNET-Verbindung befinden sich möglicherweise noch in der Rolloutphase, die voraussichtlich in der Woche ab dem 17. August abgeschlossen ist.
 >
 
 ### <a name="hub-route-table"></a><a name="hub-route"></a>Hub-Routingtabelle
@@ -60,6 +61,9 @@ Für jeden virtuellen Hub ist auch eine **Keine-Routingtabelle** verfügbar. Die
 
 :::image type="content" source="./media/about-virtual-hub-routing/concepts-propagation.png" alt-text="Weitergabe":::
 
+### <a name="labels"></a><a name="static"></a>Bezeichnungen
+Bezeichnungen sind ein Verfahren zum logischen Gruppieren von Routingtabellen. Dies ist insbesondere bei der Weitergabe von Routen von Verbindungen zu mehreren Routingtabellen hilfreich. Die Standardroutingtabelle weist beispielsweise eine integrierte Bezeichnung mit dem Namen „Standard“ auf. Wenn Benutzer Verbindungsrouten an die Bezeichnung „Standard“ weitergeben, gilt sie automatisch für alle Standardroutingtabellen über jeden Hub im virtuellen WAN. 
+
 ### <a name="configuring-static-routes-in-a-virtual-network-connection"></a><a name="static"></a>Konfigurieren statischer Routen in einer virtuellen Netzwerkverbindung
 
 Die Konfiguration statischer Routen bietet einen Mechanismus zum Steuern des Datenverkehrs über die IP-Adresse eines nächsten Hops, bei dem es sich um ein virtuelles Netzwerkgerät (NVA) handeln könnte, das in einem an einen virtuellen Hub angefügten Spoke-VNet bereitgestellt wird. Die statische Route besteht aus einem Routennamen, einer Liste von Zielpräfixen und einer IP-Adresse des nächsten Hops.
@@ -73,9 +77,18 @@ Routingtabellen verfügen jetzt über Features für die Zuordnung und Weitergabe
 
 * **Kunden mit Virtual WAN vom Typ „Standard“ mit bereits vorhandenen Routen auf dem virtuellen Hub**:
 
-Wenn Sie neue Routingtabellenfunktionen verwenden möchten, warten Sie bis zum Abschluss des Rollouts in Azure in der Woche ab dem 3. August. Wenn im Azure-Portal im Abschnitt „Routing“ für den Hub bereits Routen vorhanden sind, müssen Sie diese zuerst löschen und dann versuchen, neue Routingtabellen zu erstellen (verfügbar im Abschnitt „Routingtabellen“ für den Hub im Azure-Portal).
+Wenn Sie neue Routingtabellenfunktionen verwenden möchten, warten Sie bis zum Abschluss des Rollouts in Azure in der Woche ab dem 17. August. Wenn im Azure-Portal im Abschnitt „Routing“ für den Hub bereits Routen vorhanden sind, müssen Sie diese zuerst löschen und dann versuchen, neue Routingtabellen zu erstellen (verfügbar im Abschnitt „Routingtabellen“ für den Hub im Azure-Portal).
 
-* **Kunden mit Virtual WAN vom Typ „Basic“ mit bereits vorhandenen Routen auf dem virtuellen Hub**: Wenn Sie die neuen Routingtabellenfunktionen verwenden möchten, warten Sie bis zum Abschluss des Rollouts in Azure in der Woche ab dem 3. August. Wenn im Azure-Portal im Abschnitt „Routing“ für den Hub bereits Routen vorhanden sind, müssen Sie diese zuerst löschen und dann Ihre Virtual WAN-Instanz vom Typ „Basic“ auf „Standard“ **upgraden**. Weitere Informationen finden Sie unter [Upgrade eines Virtual WAN von Basic auf Standard](upgrade-virtual-wan.md).
+* **Kunden mit Virtual WAN vom Typ „Basic“ mit bereits vorhandenen Routen auf dem virtuellen Hub**: Wenn Sie die neuen Routingtabellenfunktionen verwenden möchten, warten Sie bis zum Abschluss des Rollouts in Azure in der Woche ab dem 17. August. Wenn Sie bereits über vorhandene Routen im Routing-Abschnitt für den Hub im Azure-Portal verfügen, müssen Sie diese zuerst löschen und dann Virtual WAN vom Typ „Basic“ auf „Standard“ **upgraden**. Weitere Informationen finden Sie unter [Upgrade eines Virtual WAN von Basic auf Standard](upgrade-virtual-wan.md).
+
+## <a name="virtual-wan-routing-considerations"></a><a name="considerations"></a>Überlegungen zum Routing mit Virtual WAN
+
+Beachten Sie beim Konfigurieren des Virtual WAN-Routings Folgendes:
+
+* Alle Branchverbindungen (Point-to-Site, Site-to-Site und ExpressRoute) müssen der Standardroutingtabelle zugeordnet werden. Auf diese Weise erlernen alle Branches die gleichen Präfixe.
+* Alle Branchverbindungen müssen ihre Routen an dieselbe Gruppe von Routingtabellen weitergeben. Wenn Sie z. B. festlegen, dass Branches an die Standardroutingtabelle weitergeben sollen, muss diese Konfiguration über alle Branches konsistent sein. Somit können alle Verbindungen, die der Standardroutingtabelle zugeordnet sind, alle Branches erreichen.
+* Das Routing zwischen Branches über Azure Firewall wird derzeit nicht unterstützt.
+* Wenn Sie Azure Firewall in mehreren Regionen verwenden, müssen alle virtuellen Spoke-Netzwerke derselben Routingtabelle zugeordnet werden. Beispielsweise ist es nicht möglich, dass eine Teilmenge der VNETs Azure Firewall durchlaufen, während andere VNETs Azure Firewall im selben virtuellen Hub umgehen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

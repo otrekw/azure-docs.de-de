@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.date: 12/13/2019
 ms.author: rogardle
 ms.custom: ''
-ms.openlocfilehash: dd5e3cf8ce9e52768c28598a819a28ad1ec4413c
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 4be24d645d2145ee07f9b9a4696b825a26dcf5c9
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86525516"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448763"
 ---
 # <a name="reference-architectures-for-oracle-database-enterprise-edition-on-azure"></a>Referenzarchitekturen für Oracle Database Enterprise Edition in Azure
 
@@ -211,7 +211,7 @@ Während der ersten Anforderung stellt der Anwendungsserver eine Verbindung mit 
 
 Beim Bereitstellen Ihrer Oracle-Workloads in Azure übernimmt Microsoft das gesamte Patchen auf der Ebene des Hostbetriebssystems. Kunden werden im Voraus über alle geplanten Wartungsarbeiten auf Betriebssystemebene informiert, damit sich der Kunde darauf einstellen kann. Zwei Server, die in zwei unterschiedlichen Verfügbarkeitszonen angeordnet sind, werden niemals gleichzeitig gepatcht. Weitere Informationen zur Wartung und zum Patchen von virtuellen Computern finden Sie unter [Verwalten der Verfügbarkeit virtueller Computer](../../../virtual-machines/linux/manage-availability.md). 
 
-Das Patchen Ihres VM-Betriebssystems kann mit [Azure Automation](../../../automation/automation-tutorial-update-management.md) automatisiert werden. Das Patchen und die Wartung Ihrer Oracle-Datenbank kann mit [Azure Pipelines](/azure/devops/pipelines/get-started/what-is-azure-pipelines?view=azure-devops) oder [Azure Automation](../../../automation/automation-tutorial-update-management.md) automatisiert und geplant werden, um das Auftreten von Ausfallzeiten zu verringern. Im Artikel zum Thema [Continuous Delivery und Blau/Grün-Bereitstellung](/azure/devops/learn/what-is-continuous-delivery) können Sie sich damit vertraut machen, wie Sie dies für Ihre Oracle-Datenbanken nutzen können.
+Das Patchen des Betriebssystems Ihres virtuellen Computers kann mit der [Updateverwaltung von Azure Automation](../../../automation/update-management/update-mgmt-overview.md) automatisiert werden. Das Patchen und Warten Ihrer Oracle-Datenbank kann mit [Azure Pipelines](/azure/devops/pipelines/get-started/what-is-azure-pipelines?view=azure-devops) oder der [Updateverwaltung von Azure Automation](../../../automation/update-management/update-mgmt-overview.md) automatisiert und geplant werden, um das Auftreten von Ausfallzeiten zu minimieren. Im Artikel zum Thema [Continuous Delivery und Blau/Grün-Bereitstellung](/azure/devops/learn/what-is-continuous-delivery) können Sie sich damit vertraut machen, wie Sie dies für Ihre Oracle-Datenbanken nutzen können.
 
 ## <a name="architecture-and-design-considerations"></a>Architektur- und Entwurfsaspekte
 

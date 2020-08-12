@@ -1,5 +1,5 @@
 ---
-title: Entwerfen von ELT anstelle von ETL für den Synapse SQL-Pool | Microsoft-Dokumentation
+title: Entwerfen einer Strategie zum Laden von PolyBase-Daten für einen SQL-Pool
 description: Entwerfen Sie einen ELT- (Extrahieren, Laden und Transformieren) anstelle eines ETL-Prozesses zum Laden von Daten oder für den SQL-Pool.
 services: synapse-analytics
 author: kevinvngo
@@ -10,24 +10,24 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 49ffb848dbcbed72776a5d767bb4b4872978af20
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 31e1eb952bb37f5864e296811ba6e61bb0e58320
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85965358"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87490284"
 ---
-# <a name="designing-a-polybase-data-loading-strategy-for-azure-synapse-sql-pool"></a>Entwerfen einer Strategie für den Azure Synapse SQL-Pool zum Laden von PolyBase-Daten
+# <a name="design-a-polybase-data-loading-strategy-for-azure-synapse-sql-pool"></a>Entwerfen einer Strategie für den Azure Synapse SQL-Pool zum Laden von PolyBase-Daten
 
-Traditionell verwenden SMP-Data Warehouses einen ETL-Prozess (Extrahieren, Transformieren und Laden) zum Laden von Daten. Der Azure SQL-Pool ist eine Architektur mit massiver Parallelverarbeitung (MPP), die die Vorteile der Skalierbarkeit und Flexibilität von Compute- und Speicherressourcen nutzt. Ein ETL-Prozess (Extrahieren, Transformieren und Laden) kann die Vorteile von MPP nutzen und Ressourcen entfernen, die vor dem Laden zum Transformieren der Daten erforderlich sind.
+In herkömmlichen SMP-Data Warehouses wird zum Laden von Daten ein ETL-Prozess (Extrahieren, Transformieren und Laden) verwendet. Der Azure SQL-Pool ist eine Architektur mit massiver Parallelverarbeitung (MPP), die die Vorteile der Skalierbarkeit und Flexibilität von Compute- und Speicherressourcen nutzt. Ein ELT-Prozess (Extrahieren, Laden, Transformieren) kann die Vorteile von MPP nutzen und Ressourcen entfernen, die vor dem Laden zum Transformieren der Daten erforderlich sind.
 
 Auch wenn der SQL-Pool viele Lademethoden unterstützt (u. a. Nicht-PolyBase-Optionen wie BCP und die SQL-BulkCopy-API), stellt PolyBase die schnellste und am besten skalierbare Möglichkeit zum Laden von Daten dar.  PolyBase ist eine Technologie, die über die T-SQL-Sprache auf externe Daten zugreift, die in Azure Blob Storage oder Azure Data Lake Storage gespeichert sind.
 
 > [!VIDEO https://www.youtube.com/embed/l9-wP7OdhDk]
 
-## <a name="what-is-elt"></a>Was ist ELT?
+## <a name="extract-load-and-transform-elt"></a>Extrahieren, Laden und Transformieren (ELT)
 
-ETL (Extrahieren, Transformieren und Laden) ist ein Prozess, mit dem Daten aus einem Quellsystem in ein Ziel-Data Warehouse geladen und dann transformiert werden.
+ELT (Extrahieren, Laden und Transformieren) ist ein Prozess, bei dem Daten aus einem Quellsystem extrahiert, in ein Data Warehouse geladen und anschließend transformiert werden.
 
 Die grundlegenden Schritte zum Implementieren eines PolyBase-ETL-Prozesses für den SQL-Pool sind:
 
@@ -95,7 +95,7 @@ Möglicherweise müssen Sie die Daten in Ihrem Speicherkonto vorbereiten und ber
 
 Bevor Sie Daten laden können, müssen Sie externe Tabellen im Data Warehouse definieren. PolyBase verwendet externe Tabellen, um Daten in Azure Storage zu definieren und auf diese zuzugreifen. Eine externe Tabelle ähnelt einer Datenbanksicht. Die externe Tabelle enthält das Tabellenschema und verweist auf Daten, die außerhalb des Data Warehouse gespeichert sind.
 
-Die Definition externer Tabellen umfasst die Angabe der Datenquelle, des Formats der Textdateien und der Tabellendefinitionen. Dies sind die Themen der T-SQL-Syntax, die Sie benötigen:
+Die Definition externer Tabellen umfasst die Angabe der Datenquelle, des Formats der Textdateien und der Tabellendefinitionen. Im Folgenden finden Sie die Themen zur T-SQL-Syntax, die Sie benötigen:
 
 - [CREATE EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
 - [CREATE EXTERNAL FILE FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)

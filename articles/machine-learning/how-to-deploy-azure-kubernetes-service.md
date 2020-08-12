@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 06/23/2020
-ms.openlocfilehash: ad34195e003e0ca2d73000d3482cc79c3dbe3ee0
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 9503abf147ee89ec03e7e1317df823426ea37b1c
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372109"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87758882"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>Bereitstellen eines Modells in einem Azure Kubernetes Service-Cluster
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -63,7 +63,11 @@ Der AKS-Cluster und der AML-Arbeitsbereich können sich in unterschiedlichen Res
 
 - Bei den in diesem Artikel verwendeten __CLI__-Ausschnitten wird davon ausgegangen, dass Sie ein `inferenceconfig.json`-Dokument erstellt haben. Weitere Informationen zum Erstellen dieses Dokuments finden Sie unter [Wie und wo Modelle bereitgestellt werden](how-to-deploy-and-where.md).
 
-- Wenn Sie einen AKS-Cluster anfügen, der über einen [autorisierten IP-Adressbereich mit Zugriff auf den API-Server](https://docs.microsoft.com/azure/aks/api-server-authorized-ip-ranges) verfügt, aktivieren Sie die IP-Adressbereiche der AML-Steuerungsebene für den AKS-Cluster. Die AML-Steuerungsebene wird für Regionspaare bereitgestellt und stellt Rückschlusspods im AKS-Cluster bereit. Ohne Zugriff auf den API-Server können die Rückschlusspods nicht bereitgestellt werden. Verwenden Sie die [IP-Adressbereiche](https://www.microsoft.com/en-us/download/confirmation.aspx?id=56519) für beide [Regionspaare]( https://docs.microsoft.com/azure/best-practices-availability-paired-regions), wenn Sie die IP-Adressbereiche in einem AKS-Cluster aktivieren
+- Wenn in Ihrem Cluster anstelle eines Load Balancer Basic (BLB) ein Load Balancer Standard (SLB) bereitgestellt werden muss, erstellen Sie im AKS-Portal, über die CLI oder mithilfe des SDK einen Cluster, und fügen Sie diesen Cluster dem AML-Arbeitsbereich hinzu.
+
+- Wenn Sie einen AKS-Cluster anfügen, der über einen [autorisierten IP-Adressbereich mit Zugriff auf den API-Server](https://docs.microsoft.com/azure/aks/api-server-authorized-ip-ranges) verfügt, aktivieren Sie die IP-Adressbereiche der AML-Steuerungsebene für den AKS-Cluster. Die AML-Steuerungsebene wird für Regionspaare bereitgestellt und stellt Rückschlusspods im AKS-Cluster bereit. Ohne Zugriff auf den API-Server können die Rückschlusspods nicht bereitgestellt werden. Verwenden Sie die [IP-Adressbereiche](https://www.microsoft.com/en-us/download/confirmation.aspx?id=56519) für beide [Regionspaare]( https://docs.microsoft.com/azure/best-practices-availability-paired-regions), wenn Sie die IP-Adressbereiche in einem AKS-Cluster aktivieren.
+
+__Autorisierte IP-Adressbereiche funktionieren nur mit Load Balancer Standard.__
  
  - Der Computename MUSS innerhalb eines Arbeitsbereichs eindeutig sein
    - Der Name ist erforderlich und muss zwischen 3 und 24 Zeichen lang sein.
@@ -73,7 +77,7 @@ Der AKS-Cluster und der AML-Arbeitsbereich können sich in unterschiedlichen Res
    
  - Wenn Sie Modelle auf GPU-Knoten oder FPGA-Knoten (oder einer bestimmten SKU) bereitstellen möchten, müssen Sie einen Cluster mit der jeweiligen SKU erstellen. Das Erstellen eines sekundären Knotenpools in einem vorhandenen Cluster und Bereitstellen von Modellen im sekundären Knotenpool wird nicht unterstützt.
  
- - Wenn in Ihrem Cluster anstelle eines Load Balancer Basic (BLB) ein Load Balancer Standard (SLB) bereitgestellt werden muss, erstellen Sie im AKS-Portal, über die CLI oder mithilfe des SDK einen Cluster, und fügen Sie diesen Cluster dem AML-Arbeitsbereich hinzu. 
+ 
 
 
 
@@ -181,6 +185,9 @@ cluster_name = 'myexistingcluster'
 attach_config = AksCompute.attach_configuration(resource_group = resource_group,
                                          cluster_name = cluster_name)
 aks_target = ComputeTarget.attach(ws, 'myaks', attach_config)
+
+# Wait for the attach process to complete
+aks_target.wait_for_completion(show_output = True)
 ```
 
 Weitere Informationen zu den in diesem Beispiel verwendeten Klassen, Methoden und Parametern finden Sie in den folgenden Referenzdokumenten:
@@ -257,6 +264,30 @@ Informationen zur Verwendung von VS Code finden Sie im Artikel zum [Bereitstelle
 
 > [!IMPORTANT]
 > Für die Bereitstellung über VS Code muss der AKS-Cluster im Vorfeld erstellt oder an Ihren Arbeitsbereich angefügt werden.
+
+### <a name="understand-the-deployment-processes"></a>Grundlegendes zu Bereitstellungsvorgängen
+
+Das Wort „Bereitstellung“ wird sowohl in Kubernetes als auch bei Azure Machine Learning verwendet. „Bereitstellung“ hat in diesen beiden Kontexten jedoch eine sehr unterschiedliche Bedeutung. In Kubernetes ist eine `Deployment` eine konkrete Entität, die mit einer deklarativen YAML-Datei angegeben wird. Eine Kubernetes-`Deployment` verfügt über einen definierten Lebenszyklus und konkrete Beziehungen zu anderen Kubernetes-Entitäten, z. B. `Pods` und `ReplicaSets`. Informationen zu Kubernetes in Form von Dokumenten und Videos finden Sie unter [Was ist Kubernetes?](https://aka.ms/k8slearning).
+
+In Azure Machine Learning wird „Bereitstellung“ allgemeiner für das Verfügbarmachen und Bereinigen Ihrer Projektressourcen verwendet. Folgende Schritte werden in Azure Machine Learning als Teil der Bereitstellung betrachtet:
+
+1. Zippen der Dateien in Ihrem Projektordner, wobei die in „.amlignore“ oder „.gitignore“ angegebenen Dateien ignoriert werden
+1. Zentrales Hochskalieren Ihres Computeclusters (bezieht sich auf Kubernetes)
+1. Erstellen oder Herunterladen des Dockerfiles auf den Serverknoten (bezieht sich auf Kubernetes)
+    1. Das System berechnet einen Hashwert aus: 
+        - Dem Basisimage 
+        - Benutzerdefinierten Docker-Schritten (siehe [Bereitstellen eines Modells mithilfe eines benutzerdefinierten Docker-Basisimages](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-custom-docker-image))
+        - Der Conda-Definitions-YAML-Datei (siehe [Erstellen und Verwenden von Softwareumgebungen in Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/how-to-use-environments))
+    1. Das System verwendet diesen Hash als Schlüssel in einer Suche nach der Azure Container Registry (ACR) für den Arbeitsbereich.
+    1. Wenn er nicht gefunden wird, wird nach einer Übereinstimmung in der globalen ACR gesucht.
+    1. Wenn keine gefunden wird, erstellt das System ein neues Image (das zwischengespeichert und bei der ACR des Arbeitsbereichs registriert wird).
+1. Herunterladen der gezippten Projektdatei in den temporären Speicher auf dem Serverknoten
+1. Entzippen der Projektdatei
+1. Ausführen von `python <entry script> <arguments>` auf dem Serverknoten
+1. Speichern von Protokollen, Modelldateien und anderen Dateien, die in dem Speicherkonto, das dem Arbeitsbereich zugeordnet ist, in `./outputs` geschrieben werden
+1. Zentrales Herunterskalieren von Compute, einschließlich Entfernen des temporären Speichers (bezieht sich auf Kubernetes)
+
+Wenn Sie AKS verwenden, wird das zentrale Hoch- und Herunterskalieren von Compute durch Kubernetes gesteuert. Dabei wird das Dockerfile verwendet, das wie oben beschrieben erstellt oder erhalten wurde. 
 
 ## <a name="deploy-models-to-aks-using-controlled-rollout-preview"></a>Bereitstellen von Modellen in AKS mithilfe eines kontrollierten Rollouts (Vorschau)
 
@@ -395,15 +426,12 @@ print(token)
 >
 > Zum Abrufen eines Tokens müssen Sie das Azure Machine Learning SDK oder den Befehl [az ml service get-access-token](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/service?view=azure-cli-latest#ext-azure-cli-ml-az-ml-service-get-access-token) verwenden.
 
-## <a name="update-the-web-service"></a>Aktualisieren des Webdiensts
-
-[!INCLUDE [aml-update-web-service](../../includes/machine-learning-update-web-service.md)]
-
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Schützen von Experimenten und Rückschlüssen in einem virtuellen Netzwerk](how-to-enable-virtual-network.md)
 * [Wie man ein Modell mit einem benutzerdefinierten Docker-Image bereitstellt](how-to-deploy-custom-docker-image.md)
 * [Problembehandlung von Bereitstellungen von Azure Machine Learning Service mit AKS und ACI](how-to-troubleshoot-deployment.md)
+* [Aktualisieren des Webdiensts](how-to-deploy-update-web-service.md)
 * [Verwenden von TLS zum Absichern eines Webdiensts mit Azure Machine Learning](how-to-secure-web-service.md)
 * [Consume a ML Model deployed as a web service (Nutzen eines als Webdienst bereitgestellten Azure Machine Learning-Modells)](how-to-consume-web-service.md).
 * [Überwachen Ihrer Azure Machine Learning-Modelle mit Application Insights](how-to-enable-app-insights.md)

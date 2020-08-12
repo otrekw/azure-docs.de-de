@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/18/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: bc6b3911ed6d04561d25ef166625f9e73023726d
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: d29bccdadeef44f1ae4cdae5875257f95395b96f
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373282"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534038"
 ---
 # <a name="secure-azure-digital-twins-with-role-based-access-control"></a>Schützen von Azure Digital Twins mit rollenbasierter Zugriffssteuerung
 
@@ -33,7 +33,7 @@ Der Zugriff mit Azure AD ist ein zweistufiger Prozess. Wenn ein Sicherheitsprin
 
 Für den Authentifizierungsschritt muss jede Anwendungsanforderung zur Laufzeit ein OAuth 2.0-Zugriffstoken enthalten. Wird eine Anwendung in einer Azure-Entität ausgeführt (beispielsweise in einer [Azure Functions](../azure-functions/functions-overview.md)-App), kann für den Zugriff auf die Ressourcen eine **verwaltete Identität** verwendet werden. Weitere Informationen zu verwalteten Identitäten finden Sie im nächsten Abschnitt.
 
-Für den Autorisierungsschritt muss dem Sicherheitsprinzipal eine RBAC-Rolle zugewiesen werden. Die möglichen Berechtigungen eines Sicherheitsprinzipals sind durch die Rollen vorgegeben, die dem Prinzipal zugewiesen sind. Von Azure Digital Twins werden RBAC-Rollen bereitgestellt, die Berechtigungssätze für Azure Digital Twins-Ressourcen enthalten. Diese Rollen werden weiter unten in diesem Artikel beschrieben.
+Für den Autorisierungsschritt muss dem Sicherheitsprinzipal eine Azure-Rolle zugewiesen werden. Die möglichen Berechtigungen eines Sicherheitsprinzipals sind durch die Rollen vorgegeben, die dem Prinzipal zugewiesen sind. Azure Digital Twins stellt Azure-Rollen bereit, die Berechtigungssätze für Azure Digital Twins-Ressourcen enthalten. Diese Rollen werden weiter unten in diesem Artikel beschrieben.
 
 Weitere Informationen zu in Azure unterstützten Rollen und Rollenzuweisungen finden Sie in der Azure RBAC-Dokumentation unter [*Administratorrollen für klassische Abonnements, Azure-Rollen und Azure AD-Rollen*](../role-based-access-control/rbac-and-directory-admin-roles.md).
 
@@ -41,9 +41,9 @@ Weitere Informationen zu in Azure unterstützten Rollen und Rollenzuweisungen fi
 
 [Verwaltete Identitäten für Azure-Ressourcen](../active-directory/managed-identities-azure-resources/overview.md) ist ein Azure-übergreifendes Feature, mit dem Sie eine sichere Identität für die Bereitstellung erstellen können, in der Ihr Anwendungscode ausgeführt wird. Dieser Identität können dann Zugriffssteuerungsrollen zugeordnet werden, um benutzerdefinierte Berechtigungen für den Zugriff auf bestimmte Azure-Ressourcen zu erteilen, die Ihre Anwendung benötigt.
 
-Die Azure-Plattform verwaltet diese Laufzeitidentität mit verwalteten Identitäten. Sie müssen keine Zugriffsschlüssel in Ihrem Anwendungscode speichern und schützen – weder für die Identität selbst noch für die Ressourcen, auf die zugegriffen werden muss. Von einer Azure Digital Twins-Client-App, die innerhalb einer Azure App Service-Anwendung ausgeführt wird, müssen keine SAS-Regeln und -Schlüssel oder andere Zugriffstoken verarbeitet werden. Die Client-App benötigt nur die Endpunktadresse des Azure Digital Twins-Namespace. Wenn die App eine Verbindung herstellt, bindet Azure Digital Twins den Kontext der verwalteten Entität an den Client. Nach der Zuordnung zu einer verwalteten Identität können von Ihrem Azure Digital Twins-Client sämtliche autorisierten Vorgänge ausgeführt werden. Zur Autorisierung wird dann eine verwaltete Entität einer Azure Digital Twins-RBAC-Rolle zugeordnet, wie im Anschluss beschrieben.
+Die Azure-Plattform verwaltet diese Laufzeitidentität mit verwalteten Identitäten. Sie müssen keine Zugriffsschlüssel in Ihrem Anwendungscode speichern und schützen – weder für die Identität selbst noch für die Ressourcen, auf die zugegriffen werden muss. Von einer Azure Digital Twins-Client-App, die innerhalb einer Azure App Service-Anwendung ausgeführt wird, müssen keine SAS-Regeln und -Schlüssel oder andere Zugriffstoken verarbeitet werden. Die Client-App benötigt nur die Endpunktadresse des Azure Digital Twins-Namespace. Wenn die App eine Verbindung herstellt, bindet Azure Digital Twins den Kontext der verwalteten Entität an den Client. Nach der Zuordnung zu einer verwalteten Identität können von Ihrem Azure Digital Twins-Client sämtliche autorisierten Vorgänge ausgeführt werden. Zur Autorisierung wird dann eine verwaltete Entität einer Azure Digital Twins-Rolle zugeordnet, wie im Anschluss beschrieben.
 
-### <a name="authorization-rbac-roles-for-azure-digital-twins"></a>Autorisierung: RBAC-Rollen für Azure Digital Twins
+### <a name="authorization-azure-roles-for-azure-digital-twins"></a>Autorisierung: Azure-Rollen für Azure Digital Twins
 
 Für die Autorisierung des Zugriffs auf eine Azure Digital Twins-Ressource werden von Azure die folgenden integrierten Rollen bereitgestellt:
 * *Azure Digital Twins Owner (Preview)* (Azure Digital Twins-Besitzer (Vorschau)): Verwenden Sie diese Rolle, um Vollzugriff auf Azure Digital Twins-Ressourcen zu gewähren.
@@ -62,7 +62,7 @@ Ausführlichere Informationen hierzu finden Sie im [*Azure Digital Twins-Tutoria
 
 ## <a name="permission-scopes"></a>Berechtigungsbereiche
 
-Bevor Sie einem Sicherheitsprinzipal eine RBAC-Rolle zuweisen, legen Sie den Zugriffsbereich fest, den der Sicherheitsprinzipal haben soll. Es empfiehlt sich, immer nur den kleinstmöglichen Umfang zu gewähren.
+Bevor Sie einem Sicherheitsprinzipal eine Azure-Rolle zuweisen, legen Sie den Zugriffsbereich fest, den der Sicherheitsprinzipal haben soll. Es empfiehlt sich, immer nur den kleinstmöglichen Umfang zu gewähren.
 
 In der folgenden Liste werden die Ebenen beschrieben, auf denen Sie den Zugriff auf Azure Digital Twins-Ressourcen einschränken können:
 * Modelle: Die Aktionen für diese Ressource geben die Kontrolle über [Modelle](concepts-models.md) vor, die in Azure Digital Twins hochgeladen werden.

@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: e5c57ba56ce236bcf07478e1784eec6d4c632d1c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3431ad88a27da9d83b75ed3661d6129f157b9b1f
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82195246"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87531505"
 ---
 # <a name="azure-security-baseline-for-cosmos-db"></a>Azure-Sicherheitsbaseline für Cosmos DB
 
 Die Azure-Sicherheitsbaseline für Cosmos DB enthält Empfehlungen, mit deren Hilfe Sie den Sicherheitsstatus Ihrer Bereitstellung verbessern können.
 
-Die Baseline für diesen Dienst wird aus [Azure Security Benchmark Version 1.0](https://docs.microsoft.com/azure/security/benchmarks/overview) abgeleitet, die Empfehlungen dazu enthält, wie Sie Ihre Cloudlösungen in Azure mithilfe unserer bewährten Methoden schützen können.
+Die Baseline für diesen Dienst wird von [Azure Security Benchmark-Version 1.0](https://docs.microsoft.com/azure/security/benchmarks/overview) abgeleitet, die Empfehlungen dazu enthält, wie Sie Ihre Cloudlösungen in Azure mithilfe unserer bewährten Methoden schützen können.
 
 Weitere Informationen finden Sie unter [Übersicht über Azure-Sicherheitsbaselines](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview).
 
@@ -78,7 +78,7 @@ Konfigurieren der Ressourcenfreigabe zwischen verschiedenen Ursprüngen: https:/
 
 Aktivieren Sie DDoS Protection Standard in den virtuellen Netzwerken für Ihre Azure Cosmos DB-Instanzen, um sich vor DDoS-Angriffen zu schützen. Verwenden Sie die in Azure Security Center integrierte Threat Intelligence, um die Kommunikation mit bekannten schädlichen oder nicht genutzten IP-Adressen zu verweigern.
 
-Konfigurieren von Advanced Threat Protection für Azure Cosmos DB: https://docs.microsoft.com/azure/cosmos-db/cosmos-db-advanced-threat-protection
+Konfigurieren von Advanced Threat Protection für Azure Cosmos DB: https://docs.microsoft.com/azure/cosmos-db/cosmos-db-advanced-threat-protection
 
 Konfigurieren von DDoS-Schutz: https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection
 
@@ -286,7 +286,7 @@ Erstellen, Anzeigen und Verwalten von Protokollwarnungen mithilfe von Azure Moni
 
 **Leitfaden**: Sie können die Identitäts- und Zugriffssteuerung (Identity and Access control, IAM) im Azure-Portal verwenden, um die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) zu konfigurieren und die Inventur an Azure Cosmos DB Ressourcen aufrechtzuerhalten. Die Rollen werden Benutzern, Gruppen, Dienstprinzipalen und verwalteten Identitäten in Active Directory zugewiesen. Sie können für Einzelbenutzer und Gruppen integrierte oder benutzerdefinierte Rollen verwenden.
 
-Azure Cosmos DB bietet für gängige Verwaltungsszenarien eine integrierte RBAC. Eine Person mit einem Profil in Azure Active Directory (AD) kann diese RBAC-Rollen Benutzern, Gruppen, Dienstprinzipalen oder verwalteten Identitäten zuweisen, um den Zugriff auf Ressourcen und Vorgänge für Azure Cosmos DB-Ressourcen zu gewähren oder zu verweigern.
+Azure Cosmos DB bietet für gängige Verwaltungsszenarien eine integrierte RBAC. Eine Person mit einem Profil in Azure Active Directory (AD) kann diese Azure-Rollen Benutzern, Gruppen, Dienstprinzipalen oder verwalteten Identitäten zuweisen, um den Zugriff auf Ressourcen und Vorgänge für Azure Cosmos DB-Ressourcen zu gewähren oder zu verweigern.
 
 Sie können auch das Azure AD PowerShell-Modul verwenden, um Ad-hoc-Abfragen zum Ermitteln von Konten durchzuführen, die Mitglieder von Verwaltungsgruppen sind. 
 
@@ -324,7 +324,7 @@ Programmgesteuerter Zugriff auf Schlüssel mit Azure Active Directory: https://d
 
 ### <a name="33-use-dedicated-administrative-accounts"></a>3.3: Verwenden dedizierter Administratorkonten
 
-**Leitfaden**: Nicht zutreffend; Azure Cosmos DB unterstützt keine Administratorkonten.  Der gesamte Zugriff ist in Azure Active Directory und die rollenbasierte Zugriffssteuerung in Azure (RBAC) integriert.
+**Leitfaden**: Nicht zutreffend; Azure Cosmos DB unterstützt keine Administratorkonten.  Der gesamte Zugriff ist in Azure Active Directory und die rollenbasierte Zugriffssteuerung in Azure (Azure RBAC) integriert.
 
 
 
@@ -528,7 +528,7 @@ Informationen zum Schutz von Kundendaten in Azure: https://docs.microsoft.com/az
 
 ### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6: Verwenden von Azure RBAC zum Steuern des Zugriffs auf Ressourcen
 
-**Leitfaden**: Azure Cosmos DB bietet für gängige Verwaltungsszenarien eine integrierte rollenbasierte Zugriffssteuerung (RBAC). Eine Person mit einem Profil in Azure Active Directory kann diese RBAC-Rollen Benutzern, Gruppen, Dienstprinzipalen oder verwalteten Identitäten zuweisen, um den Zugriff auf Ressourcen und Vorgänge für Azure Cosmos DB-Ressourcen zu gewähren oder zu verweigern. Rollenzuweisungen sind auf den Zugriff auf Steuerungsebene beschränkt, was den Zugriff auf Konten, Datenbanken, Container und Angebote (Durchsatz) für Azure Cosmos umfasst.
+**Leitfaden**: Azure Cosmos DB bietet für gängige Verwaltungsszenarien eine integrierte rollenbasierte Zugriffssteuerung (RBAC). Eine Person mit einem Profil in Azure Active Directory kann diese Azure-Rollen Benutzern, Gruppen, Dienstprinzipalen oder verwalteten Identitäten zuweisen, um den Zugriff auf Ressourcen und Vorgänge für Azure Cosmos DB-Ressourcen zu gewähren oder zu verweigern. Rollenzuweisungen sind auf den Zugriff auf Steuerungsebene beschränkt, was den Zugriff auf Konten, Datenbanken, Container und Angebote (Durchsatz) für Azure Cosmos umfasst.
 
 Implementieren von RBAC in Azure Cosmos DB: https://docs.microsoft.com/azure/cosmos-db/role-based-access-control
 

@@ -3,12 +3,12 @@ title: Authentifizieren einer Anwendung für den Zugriff auf Azure Event Hubs-Re
 description: Dieser Artikel enthält Informationen zur Authentifizierung einer Anwendung mit Azure Active Directory, um auf Azure Event Hubs-Ressourcen zuzugreifen.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 1def026b1f188eba85ad5a86bf963ba1964b768a
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 2b4456f63ce6d50ab1187f65deb1ee3280487580
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371531"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87531522"
 ---
 # <a name="authenticate-an-application-with-azure-active-directory-to-access-event-hubs-resources"></a>Authentifizieren einer Anwendung mit Azure Active Directory, um auf Azure Event Hubs-Ressourcen zuzugreifen
 Microsoft Azure bietet eine integrierte Verwaltung der Zugriffssteuerung für Ressourcen und Anwendungen, basierend auf Azure Active Directory (Azure AD). Ein wesentlicher Vorteil der Verwendung von Azure AD mit Azure Event Hubs besteht darin, dass Sie Ihre Anmeldeinformationen nicht mehr im Code speichern müssen. Stattdessen können Sie ein OAuth 2.0-Zugriffstoken von der Microsoft Identity Platform anfordern. Der Ressourcenname zum Anfordern eines Tokens lautet `https://eventhubs.azure.net/`. (Für Kafka-Clients ist die Ressource zum Anfordern eines Tokens `https://<namespace>.servicebus.windows.net`.) Azure AD übernimmt die Authentifizierung des Sicherheitsprinzipals (Benutzer, Gruppe oder Dienstprinzipal), der die Anwendung ausführt. Wenn die Authentifizierung erfolgreich ist, gibt Azure AD ein Zugriffstoken an die Anwendung zurück, und die Anwendung kann dann das Zugriffstoken zum Autorisieren von Anforderungen an Azure Event Hubs verwenden.
@@ -28,7 +28,7 @@ Azure stellt die folgenden integrierten Azure-Rollen zum Autorisieren des Zugrif
 > [!IMPORTANT]
 > In unserer Vorschauversion wurde das Hinzufügen von Event Hubs-Datenzugriffsberechtigungen für die Rollen „Besitzer“ und „Mitwirkender“ unterstützt. Datenzugriffsberechtigungen für die Rollen „Besitzer“ und „Mitwirkender“ werden jedoch nicht mehr berücksichtigt. Wenn Sie die Rolle „Besitzer“ oder „Mitwirkender“ verwenden, wechseln Sie zur Verwendung der Rolle „Azure Event Hubs-Datenbesitzer“.
 
-## <a name="assign-rbac-roles-using-the-azure-portal"></a>Zuweisen von RBAC-Rollen im Azure-Portal  
+## <a name="assign-azure-roles-using-the-azure-portal"></a>Zuweisen von Azure-Rollen über das Azure-Portal  
 Weitere Informationen zum Verwalten des Zugriffs auf Azure-Ressourcen mithilfe von RBAC und dem Azure-Portal finden Sie in [diesem Artikel](..//role-based-access-control/role-assignments-portal.md). 
 
 Nachdem Sie den gewünschten Bereich für eine Rollenzuweisung festgelegt haben, navigieren Sie im Azure-Portal zur entsprechenden Ressource. Zeigen Sie die Einstellungen für die Zugriffssteuerung (IAM) für die Ressource an, und befolgen Sie diese Anweisungen zum Verwalten von Rollenzuweisungen:
@@ -108,7 +108,7 @@ Eine Liste der Szenarien, für die das Abrufen von Token unterstützt wird, find
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Weitere Informationen zur rollenbasierten Zugriffssteuerung finden Sie in folgendem Artikel: [Was ist die rollenbasierte Zugriffssteuerung in Azure (Azure Role-Based Access Control, Azure RBAC)?](../role-based-access-control/overview.md)
-- Informationen zum Zuweisen und Verwalten von RBAC-Rollenzuweisungen mit Azure PowerShell, Azure CLI oder der REST-API finden Sie in diesen Artikeln:
+- Informationen zum Zuweisen und Verwalten von Azure-Rollenzuweisungen mit Azure PowerShell, der Azure-Befehlszeilenschnittstelle oder der REST-API finden Sie in diesen Artikeln:
     - [Verwalten der rollenbasierten Zugriffssteuerung mit Azure PowerShell](../role-based-access-control/role-assignments-powershell.md)  
     - [Verwalten der rollenbasierten Zugriffssteuerung mit der Azure-Befehlszeilenschnittstelle](../role-based-access-control/role-assignments-cli.md)
     - [Verwalten der rollenbasierten Zugriffssteuerung mit der REST-API](../role-based-access-control/role-assignments-rest.md)

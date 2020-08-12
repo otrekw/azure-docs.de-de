@@ -5,19 +5,21 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 02/10/2019
-ms.openlocfilehash: 6e351abeede6d1057a9b37ab1f1cfb9021ccd06e
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 08/04/2020
+ms.openlocfilehash: f3ae081c8657a3ee6a27b0f9208c3eb4e4e745cc
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86505089"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87759732"
 ---
 # <a name="create-custom-views-by-using-view-designer-in-azure-monitor"></a>Erstellen benutzerdefinierter Ansichten mithilfe des Ansicht-Designers in Azure Monitor
 Mithilfe des Ansicht-Designers in Azure Monitor können Sie verschiedene benutzerdefinierten Ansichten im Azure-Portal erstellen, in denen Sie Daten in Ihrem Log Analytics-Arbeitsbereich visualisieren können. Dieser Artikel bietet eine Übersicht über den Ansicht-Designer und die Verfahren zum Erstellen und Bearbeiten von benutzerdefinierten Ansichten.
 
 > [!IMPORTANT]
-> Ansichten in Azure Monitor laufen aus und werden durch [Arbeitsmappen](workbooks-overview.md) ersetzt, die zusätzliche Funktionalität bereitstellen. Ausführliche Informationen zum Umwandeln Ihrer vorhandenen Ansichten in Arbeitsmappen finden Sie im [Handbuch für den Übergang von Azure Monitor-Ansichts-Designer zu Arbeitsmappen](view-designer-conversion-overview.md).
+> Ansichten in Azure Monitor wurden durch [Arbeitsmappen](workbooks-overview.md) ersetzt, die zusätzliche Funktionalität bereitstellen. Ausführliche Informationen zum Umwandeln Ihrer vorhandenen Ansichten in Arbeitsmappen finden Sie im [Handbuch für den Übergang von Azure Monitor-Ansichts-Designer zu Arbeitsmappen](view-designer-conversion-overview.md).
+ 
+
 
 Weitere Informationen zum Ansicht-Designer finden Sie in folgenden Artikeln:
 

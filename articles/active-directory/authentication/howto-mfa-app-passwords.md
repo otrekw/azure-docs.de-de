@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5b247b64d563bc2b12c5bffff6a460d77cb96207
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f6bd09a24202b599c1f008e7b046ea5f93ff0323
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84485483"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87489791"
 ---
 # <a name="enable-and-use-azure-multi-factor-authentication-with-legacy-applications-using-app-passwords"></a>Aktivieren und Verwenden von Azure Multi-Factor Authentication mit ältere Anwendungen mithilfe von App-Kennwörtern
 
@@ -88,6 +88,12 @@ Standardmäßig können Benutzer keine App-Kennwörter erstellen. Die App-Kennwo
 5. Wählen Sie auf der Seite **Diensteinstellungen** die Option **Benutzern das Erstellen von App-Kennwörtern zum Anmelden bei nicht browserbasierten Apps gestatten** aus.
 
     ![Screenshot des Azure-Portals mit den Diensteinstellungen für die mehrstufige Authentifizierung und der Erlaubnis für den Benutzer, App-Kennwörter zu erstellen](media/concept-authentication-methods/app-password-authentication-method.png)
+    
+> [!NOTE]
+>
+> Wenn Sie das Erstellen von App-Kennwörtern durch Benutzer deaktivieren, sind vorhandene App-Kennwörter weiterhin funktionsfähig. Benutzer können diese vorhandenen App-Kennwörter jedoch weder verwalten noch löschen, nachdem Sie diese Option deaktiviert haben.
+>
+> Wenn Sie die Möglichkeit zum Erstellen von App-Kennwörtern deaktivieren, empfiehlt es sich auch, [eine Richtlinie für bedingten Zugriff zu erstellen, um die Verwendung der Legacy Authentifizierung zu deaktivieren](../conditional-access/block-legacy-authentication.md). Diese Vorgehensweise verhindert, dass vorhandene App-Kennwörter weiterhin funktionsfähig sind. Die Verwendung moderner Authentifizierungsmethoden wird erzwungen.
 
 ## <a name="create-an-app-password"></a>Erstellen eines App-Kennworts
 

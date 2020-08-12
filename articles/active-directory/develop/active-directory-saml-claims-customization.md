@@ -1,32 +1,32 @@
 ---
-title: Anpassen von SAML-Tokenansprüchen für eine Azure AD-App
+title: Anpassen von SAML-Tokenansprüchen für eine App
 titleSuffix: Microsoft identity platform
-description: Hier erfahren Sie, wie Sie die Ansprüche im SAML-Token für Unternehmensanwendungen in Azure AD anpassen.
+description: Hier erfahren Sie, wie Sie die von Microsoft Identity Platform ausgegebenen Ansprüche im SAML-Token für Unternehmensanwendungen anpassen.
 services: active-directory
-author: rwike77
+author: kenwith
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: how-to
 ms.date: 10/22/2019
-ms.author: ryanwi
+ms.author: kenwith
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 0b0efc7e5dd4a60e33ddd61c19283a048cf4ab78
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f35e5971374f54940396f602a23ffa0ae3abd015
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85478296"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87552831"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>Anpassen von Ansprüchen im SAML-Token für Unternehmensanwendungen
 
-Azure Active Directory (Azure AD) unterstützt derzeit einmaliges Anmelden (Single Sign-On, SSO) für die meisten Unternehmensanwendungen, einschließlich bereits im Azure AD-App-Katalog integrierter Anwendungen sowie benutzerdefinierter Anwendungen. Wenn sich ein Benutzer mithilfe des SAML 2.0-Protokolls über Azure AD bei einer Anwendung authentifiziert, sendet Azure AD ein Token an die Anwendung (über eine HTTP POST-Anfrage). Die Anwendung überprüft und verwendet dann das Token, um den Benutzer anzumelden, anstatt den Benutzernamen und das Kennwort anzufordern. Diese SAML-Token enthalten Informationen über den Benutzer, die als *Ansprüche* bezeichnet werden.
+Microsoft Identity Platform unterstützt derzeit einmaliges Anmelden (Single Sign-On, SSO) für die meisten Unternehmensanwendungen, einschließlich bereits im Azure AD-App-Katalog integrierter Anwendungen sowie benutzerdefinierter Anwendungen. Wenn sich ein Benutzer mithilfe des SAML 2.0-Protokolls über Microsoft Identity Platform bei einer Anwendung authentifiziert, sendet Microsoft Identity Platform ein Token an die Anwendung (über eine HTTP POST-Anfrage). Die Anwendung überprüft und verwendet dann das Token, um den Benutzer anzumelden, anstatt den Benutzernamen und das Kennwort anzufordern. Diese SAML-Token enthalten Informationen über den Benutzer, die als *Ansprüche* bezeichnet werden.
 
 Ein *Anspruch* (Claim) bezeichnet Informationen, die ein Identitätsanbieter über einen Benutzer in dem für diesen Benutzer ausgestellten Token angibt. Im [SAML-Token](https://en.wikipedia.org/wiki/SAML_2.0) sind diese Daten in der Regel in der SAML-Attributanweisung enthalten. Die eindeutige ID des Benutzers wird normalerweise im SAML-Betreff dargestellt und auch als Namensbezeichner bezeichnet.
 
-Standardmäßig stellt Azure AD der Anwendung ein SAML-Token aus, das einen `NameIdentifier`-Anspruch enthält, dessen Wert dem Benutzernamen (auch als Benutzerprinzipalname bezeichnet) in Azure AD entspricht, durch den der Benutzer eindeutig identifiziert werden kann. Das SAML-Token enthält auch zusätzliche Ansprüche, die E-Mail-Adresse des Benutzers, Vorname und Nachname enthält.
+Standardmäßig stellt Microsoft Identity Platform für die Anwendung ein SAML-Token aus, das einen `NameIdentifier`-Anspruch enthält, dessen Wert dem Benutzernamen (auch als Benutzerprinzipalname bezeichnet) in Azure AD entspricht, durch den der Benutzer eindeutig identifiziert werden kann. Das SAML-Token enthält auch zusätzliche Ansprüche, die E-Mail-Adresse des Benutzers, Vorname und Nachname enthält.
 
 Um die im SAML-Token für die Anwendung ausgestellten Ansprüche anzuzeigen oder zu bearbeiten, öffnen Sie die Anwendung im Azure-Portal. Öffnen Sie dann den Abschnitt **Benutzerattribute und Ansprüche**.
 
@@ -48,19 +48,19 @@ Gehen Sie wie folgt vor, um die NameID (den Wert für den Namensbezeichner) zu b
 
 ### <a name="nameid-format"></a>NameID-Format
 
-Wenn die SAML-Anforderung das NameIDPolicy-Element in einem bestimmten Format enthält, berücksichtigt Azure AD das Format in der Anforderung.
+Wenn die SAML-Anforderung das NameIDPolicy-Element in einem bestimmten Format enthält, berücksichtigt Microsoft Identity Platform das Format in der Anforderung.
 
-Wenn die SAML-Anforderung kein Element für NameIDPolicy enthält, gibt Azure AD die NameID in dem von Ihnen angegebenen Format aus. Wenn kein Format angegeben ist, verwendet Azure AD das Standardquellformat, das der ausgewählten Anspruchsquelle zugeordnet ist.
+Wenn die SAML-Anforderung kein Element für NameIDPolicy enthält, gibt Microsoft Identity Platform die NameID in dem von Ihnen angegebenen Format aus. Wenn kein Format angegeben ist, verwendet Microsoft Identity Platform das Standardquellformat, das der ausgewählten Anspruchsquelle zugeordnet ist.
 
 Im Dropdownmenü **Namensbezeichnerformat auswählen** können Sie eine der folgenden Optionen auswählen.
 
 | NameID-Format | BESCHREIBUNG |
 |---------------|-------------|
-| **Standard** | Azure AD verwendet das Standardquellformat. |
-| **Persistent** | Azure AD verwendet das NameID-Format „Persistent“. |
-| **EmailAddress** | Azure AD verwendet das NameID-Format „EmailAddress“. |
-| **Nicht angegeben** | Azure AD verwendet das NameID-Format „Unspecified“. |
-| **Qualifizierter Name der Windows-Domäne** | Azure AD verwendet „WindowsDomainQualifiedName“ als NameID-Format. |
+| **Standard** | Microsoft Identity Platform verwendet das Standardquellformat. |
+| **Persistent** | Microsoft Identity Platform verwendet „Persistent“ als NameID-Format. |
+| **EmailAddress** | Microsoft Identity Platform verwendet „EmailAddress“ als NameID-Format. |
+| **Nicht angegeben** | Microsoft Identity Platform verwendet „Unspecified“ als NameID-Format. |
+| **Qualifizierter Name der Windows-Domäne** | Microsoft Identity Platform verwendet „WindowsDomainQualifiedName“ als NameID-Format. |
 
 Eine vorübergehende NameID wird ebenfalls unterstützt, ist jedoch im Dropdownmenü nicht verfügbar und kann in Azure nicht konfiguriert werden. Weitere Informationen zum NameIDPolicy-Attribut finden Sie unter [SAML-Protokoll für einmaliges Anmelden](single-sign-on-saml-protocol.md).
 
@@ -164,14 +164,14 @@ So fügen Sie eine Anspruchsbedingung hinzu
 
 1. Erweitern Sie unter **Anspruch verwalten** die Anspruchsbedingungen.
 2. Wählen Sie den Benutzertyp aus.
-3. Wählen Sie die Gruppe(n) aus, zu der bzw. denen der Benutzer gehören soll. Sie können übergreifend über alle Ansprüche bis zu 10 eindeutige Gruppen für eine bestimmte Anwendung auswählen. 
+3. Wählen Sie die Gruppe(n) aus, zu der bzw. denen der Benutzer gehören soll. Sie können übergreifend über alle Ansprüche für eine bestimmte Anwendung bis zu 50 eindeutige Gruppen auswählen. 
 4. Wählen Sie die **Quelle** aus, aus der der Anspruch den zugehörigen Wert abruft. Sie können ein Benutzerattribut aus der Dropdownliste für „Quellattribut“ auswählen oder eine Transformation auf das Benutzerattribut anwenden, bevor es als Anspruch ausgegeben wird.
 
 Die Reihenfolge, in der Sie die Bedingungen hinzufügen, spielt eine wichtige Rolle. Azure AD wertet die Bedingungen absteigend (von oben nach unten) aus, um den im Anspruch auszugebenden Wert zu bestimmen. 
 
-Beispiel: Britta Simon ist Gastbenutzer im Contoso-Mandanten. Sie gehört zu einer anderen Organisation, die ebenfalls Azure AD verwendet. Wenn Britta bei der folgenden Konfiguration für die Fabrikam-Anwendung versucht, sich bei Fabrikam anzumelden, wertet Azure AD die Bedingungen wie folgt aus.
+Beispiel: Britta Simon ist Gastbenutzer im Contoso-Mandanten. Sie gehört zu einer anderen Organisation, die ebenfalls Azure AD verwendet. Wenn Britta bei der folgenden Konfiguration für die Fabrikam-Anwendung versucht, sich bei Fabrikam anzumelden, wertet Microsoft Identity Platform die Bedingungen wie folgt aus.
 
-Zuerst überprüft Azure AD, ob Brittas Benutzertyp `All guests` lautet. Da dies der Fall ist, weist Azure AD anschließend `user.extensionattribute1` die Quelle für den Anspruch zu. Danach überprüft Azure AD, ob Brittas Benutzertyp `AAD guests` lautet. Da dies ebenfalls zutrifft, weist Azure AD `user.mail` die Quelle für den Anspruch zu. Abschließend wird der Anspruch mit dem Wert `user.mail` für Britta ausgegeben.
+Zuerst überprüft Microsoft Identity Platform, ob der Benutzertyp von Britta `All guests` lautet. Da dies der Fall ist, weist Microsoft Identity Platform anschließend `user.extensionattribute1` die Quelle für den Anspruch zu. Zweitens überprüft Microsoft Identity Platform, ob der Benutzertyp von Britta `AAD guests` lautet. Da dies ebenfalls zutrifft, weist Microsoft Identity Platform `user.mail` die Quelle für den Anspruch zu. Abschließend wird der Anspruch mit dem Wert `user.mail` für Britta ausgegeben.
 
 ![Bedingte Konfiguration von Ansprüchen](./media/active-directory-saml-claims-customization/sso-saml-user-conditional-claims.png)
 

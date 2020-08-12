@@ -4,17 +4,17 @@ description: Dieser Artikel enthält Informationen dazu, wie Sie Azure Monitor z
 services: service-bus-relay
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 0383d99aaca487bb89ab198c42d0ce189ad20249
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5fcc0f820983da388d808cadf8ce64a555e8ef0a
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85314380"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87532882"
 ---
 # <a name="azure-relay-metrics-in-azure-monitor"></a>Azure Relay-Metriken in Azure Monitor 
 Azure Relay-Metriken informieren Sie über den Status der Ressourcen in Ihrem Azure-Abonnement. Mithilfe eines umfangreichen Satzes von Metrikdaten können Sie die allgemeine Integrität Ihrer Relay-Ressourcen nicht nur auf Namespaceebene, sondern auch auf Entitätsebene bewerten. Diese Statistiken können wichtig sein, da sie Sie beim Überwachen des Zustands von Azure Relay unterstützen. Metriken können auch beim Beheben der Ursachen von Problemen helfen, ohne dass Sie sich an den Azure-Support wenden müssen.
 
-Azure Monitor bietet einheitliche Benutzeroberflächen für die übergreifende Überwachung verschiedener Azure-Dienste. Weitere Informationen finden Sie unter [Überwachung in Microsoft Azure](../monitoring-and-diagnostics/monitoring-overview.md) und im Beispiel zum [Abrufen von Azure Monitor-Metriken mit .NET](https://github.com/Azure-Samples/monitor-dotnet-metrics-api) auf GitHub.
+Azure Monitor bietet einheitliche Benutzeroberflächen für die übergreifende Überwachung verschiedener Azure-Dienste. Weitere Informationen finden Sie unter [Überwachung in Microsoft Azure](../azure-monitor/overview.md) und im Beispiel zum [Abrufen von Azure Monitor-Metriken mit .NET](https://github.com/Azure-Samples/monitor-dotnet-metrics-api) auf GitHub.
 
 > [!IMPORTANT]
 > Dieser Artikel behandelt nur die Azure Relay-Funktion „Hybrid Connections“, nicht die WCF Relay-Funktion. 
@@ -29,7 +29,7 @@ Metriken sind standardmäßig aktiviert, und es stehen Daten für die letzten 30
 
 Im [Azure-Portal](https://portal.azure.com) können Sie Metriken im Zeitverlauf überwachen. Das folgende Beispiel zeigt, wie Sie die erfolgreichen und die eingehenden Anforderungen auf Kontoebene anzeigen:
 
-![][1]
+![Eine Seite mit dem Titel „Monitor – Metriken (Vorschauversion)“ zeigt ein Liniendiagramm der Speicherauslastung für die letzten 30 Tage an.][1]
 
 Sie können auch direkt über den Namespace auf die Metriken zugreifen. Dazu wählen Sie den Namespace aus und klicken dann auf **Metriken**. 
 
@@ -50,24 +50,24 @@ Alle Metrikwerte werden minütlich an Azure Monitor gesendet. Das Aggregationsin
 
 | Metrikname | BESCHREIBUNG |
 | ------------------- | ----------------- |
-| ListenerConnections-Success  | Die Anzahl der erfolgreichen Listenerverbindungen mit Azure Relay in einem bestimmten Zeitraum <br/><br/> Einheit: Anzahl <br/> Aggregationstyp: Summe <br/> Dimension: EntityName|
-|ListenerConnections-ClientError |Die Anzahl der Clientfehler bei Listenerverbindungen in einem bestimmten Zeitraum<br/><br/> Einheit: Anzahl <br/> Aggregationstyp: Summe <br/> Dimension: EntityName|
-|ListenerConnections-ServerError |Die Anzahl der Serverfehler bei Listenerverbindungen in einem bestimmten Zeitraum<br/><br/> Einheit: Anzahl <br/> Aggregationstyp: Summe <br/> Dimension: EntityName|
-|SenderConnections-Success |Die Anzahl der erfolgreichen Absenderverbindungen in einem bestimmten Zeitraum<br/><br/> Einheit: Anzahl <br/> Aggregationstyp: Summe <br/> Dimension: EntityName|
-|SenderConnections-ClientError |Die Anzahl der Clientfehler bei Absenderverbindungen in einem bestimmten Zeitraum<br/><br/> Einheit: Anzahl <br/> Aggregationstyp: Summe <br/> Dimension: EntityName|
-|SenderConnections-ServerError |Die Anzahl der Serverfehler bei Absenderverbindungen in einem bestimmten Zeitraum<br/><br/> Einheit: Anzahl <br/> Aggregationstyp: Summe <br/> Dimension: EntityName|
-|ListenerConnections-TotalRequests |Die Gesamtanzahl der Listenerverbindungen in einem bestimmten Zeitraum<br/><br/> Einheit: Anzahl <br/> Aggregationstyp: Summe <br/> Dimension: EntityName|
-|SenderConnections-TotalRequests |Die Verbindungsanforderungen vom Absender in einem bestimmten Zeitraum<br/><br/> Einheit: Anzahl <br/> Aggregationstyp: Summe <br/> Dimension: EntityName|
-|ActiveConnections |Die Anzahl der aktiven Verbindungen. Dieser Wert ist ein Zeitpunktwert.<br/><br/> Einheit: Anzahl <br/> Aggregationstyp: Summe <br/> Dimension: EntityName|
-|ActiveListeners |Die Anzahl der aktiven Listener. Dieser Wert ist ein Zeitpunktwert.<br/><br/> Einheit: Anzahl <br/> Aggregationstyp: Summe <br/> Dimension: EntityName|
-|ListenerDisconnects |Die Anzahl der getrennten Listener in einem bestimmten Zeitraum<br/><br/> Einheit: Bytes <br/> Aggregationstyp: Summe <br/> Dimension: EntityName|
-|SenderDisconnects |Die Anzahl der getrennten Absender in einem bestimmten Zeitraum<br/><br/> Einheit: Bytes <br/> Aggregationstyp: Summe <br/> Dimension: EntityName|
+| ListenerConnections-Success  | Die Anzahl der erfolgreichen Listenerverbindungen mit Azure Relay in einem bestimmten Zeitraum <br/><br/> Einheit: Anzahl <br/> Aggregationstyp: Gesamt <br/> Dimension: EntityName|
+|ListenerConnections-ClientError |Die Anzahl der Clientfehler bei Listenerverbindungen in einem bestimmten Zeitraum<br/><br/> Einheit: Anzahl <br/> Aggregationstyp: Gesamt <br/> Dimension: EntityName|
+|ListenerConnections-ServerError |Die Anzahl der Serverfehler bei Listenerverbindungen in einem bestimmten Zeitraum<br/><br/> Einheit: Anzahl <br/> Aggregationstyp: Gesamt <br/> Dimension: EntityName|
+|SenderConnections-Success |Die Anzahl der erfolgreichen Absenderverbindungen in einem bestimmten Zeitraum<br/><br/> Einheit: Anzahl <br/> Aggregationstyp: Gesamt <br/> Dimension: EntityName|
+|SenderConnections-ClientError |Die Anzahl der Clientfehler bei Absenderverbindungen in einem bestimmten Zeitraum<br/><br/> Einheit: Anzahl <br/> Aggregationstyp: Gesamt <br/> Dimension: EntityName|
+|SenderConnections-ServerError |Die Anzahl der Serverfehler bei Absenderverbindungen in einem bestimmten Zeitraum<br/><br/> Einheit: Anzahl <br/> Aggregationstyp: Gesamt <br/> Dimension: EntityName|
+|ListenerConnections-TotalRequests |Die Gesamtanzahl der Listenerverbindungen in einem bestimmten Zeitraum<br/><br/> Einheit: Anzahl <br/> Aggregationstyp: Gesamt <br/> Dimension: EntityName|
+|SenderConnections-TotalRequests |Die Verbindungsanforderungen vom Absender in einem bestimmten Zeitraum<br/><br/> Einheit: Anzahl <br/> Aggregationstyp: Gesamt <br/> Dimension: EntityName|
+|ActiveConnections |Die Anzahl der aktiven Verbindungen. Dieser Wert ist ein Zeitpunktwert.<br/><br/> Einheit: Anzahl <br/> Aggregationstyp: Gesamt <br/> Dimension: EntityName|
+|ActiveListeners |Die Anzahl der aktiven Listener. Dieser Wert ist ein Zeitpunktwert.<br/><br/> Einheit: Anzahl <br/> Aggregationstyp: Gesamt <br/> Dimension: EntityName|
+|ListenerDisconnects |Die Anzahl der getrennten Listener in einem bestimmten Zeitraum<br/><br/> Einheit: Byte <br/> Aggregationstyp: Gesamt <br/> Dimension: EntityName|
+|SenderDisconnects |Die Anzahl der getrennten Absender in einem bestimmten Zeitraum<br/><br/> Einheit: Byte <br/> Aggregationstyp: Gesamt <br/> Dimension: EntityName|
 
 ## <a name="memory-usage-metrics"></a>Speichernutzungsmetriken
 
 | Metrikname | BESCHREIBUNG |
 | ------------------- | ----------------- |
-|BytesTransferred |Die Anzahl der in einem bestimmten Zeitraum übertragenen Bytes<br/><br/> Einheit: Bytes <br/> Aggregationstyp: Summe <br/> Dimension: EntityName|
+|BytesTransferred |Die Anzahl der in einem bestimmten Zeitraum übertragenen Bytes<br/><br/> Einheit: Byte <br/> Aggregationstyp: Gesamt <br/> Dimension: EntityName|
 
 ## <a name="metrics-dimensions"></a>Metrikdimensionen
 
@@ -79,10 +79,6 @@ Azure Relay unterstützt folgende Dimensionen für Metriken in Azure Monitor. Da
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen finden Sie unter [Übersicht über die Azure-Überwachung](../monitoring-and-diagnostics/monitoring-overview.md).
+Weitere Informationen finden Sie unter [Übersicht über die Azure-Überwachung](../azure-monitor/overview.md).
 
 [1]: ./media/relay-metrics-azure-monitor/relay-monitor1.png
-
-
-
-

@@ -5,15 +5,15 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 06/29/2020
+ms.date: 07/31/2020
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 15e6cf7adfda995148a75ec21b8d8e5d8a5cab2e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0e7cedaea89e2ed3d998df6ffe0ecaa06115e265
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85559061"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87513790"
 ---
 # <a name="blob-storage-features-available-in-azure-data-lake-storage-gen2"></a>Verfügbare Blob Storage-Features in Azure Data Lake Storage Gen2
 
@@ -40,19 +40,23 @@ In dieser Tabelle sind die Blob Storage-Features aufgeführt, die mit Azure Data
 |Blob Storage-APIs|Allgemein verfügbar|Vorschau|[Schnellstart: Azure Blob Storage-Clientbibliothek v12 für .NET](storage-quickstart-blobs-dotnet.md)<br>[Schnellstart: Verwalten von Blobs per Java v12 SDK](storage-quickstart-blobs-java.md)<br>[Schnellstart: Verwalten von Blobs per Python v12 SDK](storage-quickstart-blobs-python.md)<br>[Schnellstart: Verwalten von Blobs per JavaScript v12 SDK in Node.js](storage-quickstart-blobs-nodejs.md)|
 |Diagnoseprotokolle|Allgemein verfügbar|Vorschau <div role="complementary" aria-labelledby="diagnostic-logging"><sup>1</sup></div> |[Azure Storage Analytics-Protokollierung](../common/storage-analytics-logging.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
 |Zugriffsebene „Archiv“|Allgemein verfügbar|Nicht unterstützt|[Azure Blob Storage: Zugriffsebenen „Heiß“, „Kalt“ und „Archiv“](storage-blob-storage-tiers.md)|
+|Richtlinien für die Lebenszyklusverwaltung|Allgemein verfügbar|Noch nicht unterstützt|[Verwalten des Azure Blob Storage-Lebenszyklus](storage-lifecycle-management-concepts.md)|
 |Protokollierung in Azure Monitor|Vorschau |Noch nicht unterstützt|[Überwachen von Azure Storage](../common/monitor-storage.md)|
-|Momentaufnahmen|Vorschau|Noch nicht unterstützt|[Blobmomentaufnahmen](snapshots-overview.md)|
-|Statische Websites|Vorschau|Noch nicht unterstützt|[Hosten von statischen Websites in Azure Storage](storage-blob-static-website.md)|
-|Unveränderlicher Speicher|Vorschau|Noch nicht unterstützt|[Speichern unternehmenskritischer Blobdaten mit unveränderlichem Speicher](storage-blob-immutable-storage.md)|
-|Richtlinien für die Lebenszyklusverwaltung|Vorschau|Noch nicht unterstützt|[Verwalten des Azure Blob Storage-Lebenszyklus](storage-lifecycle-management-concepts.md)|
+|Momentaufnahmen|Vorschau<div role="complementary" aria-labelledby="preview-form"><sup>3</sup></div>|Noch nicht unterstützt|[Blobmomentaufnahmen](snapshots-overview.md)|
+|Statische Websites|Vorschau<div role="complementary" aria-labelledby="preview-form"><sup>3</sup></div>|Noch nicht unterstützt|[Hosten von statischen Websites in Azure Storage](storage-blob-static-website.md)|
+|Unveränderlicher Speicher|Vorschau<div role="complementary" aria-labelledby="preview-form"><sup>3</sup></div>|Noch nicht unterstützt|[Speichern unternehmenskritischer Blobdaten mit unveränderlichem Speicher](storage-blob-immutable-storage.md)|
 |blobfuse|Vorschau|Noch nicht unterstützt|[Einbinden von Blob Storage als Dateisystem mit blobfuse](storage-how-to-mount-container-linux.md)|
 |Änderungsfeed|Noch nicht unterstützt|Noch nicht unterstützt|[Unterstützung für Änderungsfeeds in Azure Blob Storage](storage-blob-change-feed.md)|
 |Failover des Kontos|Noch nicht unterstützt|Noch nicht unterstützt|[Notfallwiederherstellung und Kontofailover](../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
-|Blobcontainer-ACL|Noch nicht unterstützt|Noch nicht unterstützt|[Set Container ACL](https://docs.microsoft.com/rest/api/storageservices/set-container-acl)|
+|Blobcontainer-ACL|Noch nicht unterstützt<div role="complementary" aria-labelledby="blob-container-ACL"><sup>2</sup></div>|Noch nicht unterstützt<div role="complementary" aria-labelledby="blob-container-ACL"><sup>2</sup></div>|[Set Container ACL](https://docs.microsoft.com/rest/api/storageservices/set-container-acl)|
 |Benutzerdefinierte Domänen|Noch nicht unterstützt|Noch nicht unterstützt|[Zuordnen einer benutzerdefinierten Domäne zu einem Azure Blob Storage-Endpunkt](storage-custom-domain-name.md)|
 |Vorläufiges Löschen|Noch nicht unterstützt|Noch nicht unterstützt|[Vorläufiges Löschen für Azure Storage-Blobs](storage-blob-soft-delete.md)|
 
-<div id="diagnostic-logging"><sup>1</sup> Für Blockblobspeicher Premium-Konten, können Diagnoseprotokolle (klassisch) nicht über das Azure-Portal aktiviert werden. Sie können sie mithilfe von PowerShell aktivieren.</div>
+<div id="diagnostic-logging"><sup>1</sup> Für Blockblobspeicher Premium-Konten, können Diagnoseprotokolle (klassisch) nicht über das Azure-Portal aktiviert werden. Sie können sie mithilfe von PowerShell aktivieren.</div><br>
+
+<div id="blob-container-ACL"><sup>2</sup> Sie können ACLs für den Stammordner des Containers, jedoch nicht für den Container selbst festlegen.</div><br>
+
+<div id="preview-form"><sup>3</sup> Für die Verwendung von Momentaufnahmen, unveränderlichem Speicher oder statischen Websites mit Data Lake Storage Gen2 müssen Sie sich für die Vorschau registrieren. Füllen Sie dazu dieses <a href=https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2EUNXd_ZNJCq_eDwZGaF5VUOUc3NTNQSUdOTjgzVUlVT1pDTzU4WlRKRy4u>Formular</a> aus.  </div>
 
 ## <a name="see-also"></a>Weitere Informationen
 

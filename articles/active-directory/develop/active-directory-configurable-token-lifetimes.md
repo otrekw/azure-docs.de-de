@@ -1,7 +1,7 @@
 ---
-title: Konfigurierbare Azure AD-Tokenlebensdauer
+title: Konfigurierbare Tokengültigkeitsdauer
 titleSuffix: Microsoft identity platform
-description: Es wird beschrieben, wie Sie Gültigkeitsdauern für Token festlegen, die von Azure AD ausgestellt werden.
+description: Erfahren Sie, wie Sie die Gültigkeitsdauer für Token festlegen, die von Microsoft Identity Platform ausgestellt werden.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -13,16 +13,16 @@ ms.date: 04/17/2020
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40
 ms.reviewer: hirsin, jlu, annaba
-ms.openlocfilehash: 23283a44f78522d2b589993c11b494092352cbb6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d25c2e2603f36ff090d01f235a4c8e4a1ae12605
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85478364"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87552848"
 ---
-# <a name="configurable-token-lifetimes-in-azure-active-directory-preview"></a>Konfigurierbare Tokengültigkeitsdauern in Azure Active Directory (Vorschau)
+# <a name="configurable-token-lifetimes-in-microsoft-identity-platform-preview"></a>Konfigurierbare Tokengültigkeitsdauer in Microsoft Identity Platform (Vorschau)
 
-Sie können die Gültigkeitsdauer eines Tokens angeben, das von Azure Active Directory (Azure AD) ausgestellt wird. Die Tokengültigkeitsdauer können Sie für alle Apps Ihrer Organisation, für eine mehrinstanzenfähige Anwendung (Multiorganisationsanwendung) oder für einen bestimmten Dienstprinzipal in Ihrer Organisation festlegen.
+Sie können die Gültigkeitsdauer eines Tokens angeben, das von Microsoft Identity Platform ausgestellt wird. Die Tokengültigkeitsdauer können Sie für alle Apps Ihrer Organisation, für eine mehrinstanzenfähige Anwendung (Multiorganisationsanwendung) oder für einen bestimmten Dienstprinzipal in Ihrer Organisation festlegen.
 
 > [!IMPORTANT]
 > Aufgrund des Kundenfeedbacks während der Vorschauphase haben wir in „Bedingter Azure AD-Zugriff“ [Funktionen zur Verwaltung von Authentifizierungssitzungen](https://go.microsoft.com/fwlink/?linkid=2083106) implementiert. Mithilfe dieses neuen Features können Sie die Lebensdauer von Aktualisierungstoken durch Festlegen der Anmeldehäufigkeit konfigurieren. Ab dem 30. Mai 2020 können neue Mandanten die Richtlinie für die konfigurierbare Tokengültigkeitsdauer zum Konfigurieren von Sitzungs- und Aktualisierungstoken nicht mehr verwenden. Nach einigen Monaten ab diesem Datum wird die Unterstützung eingestellt, d. h., vorhandene Richtlinien für Sitzungs- und Aktualisierungstoken werden nicht mehr berücksichtigt. Die Gültigkeitsdauer von Zugriffstoken kann jedoch auch nach der Einstellung weiterhin konfiguriert werden.
@@ -68,12 +68,12 @@ Vertrauliche Clients sind Anwendungen, die ein Clientkennwort (Geheimnis) sicher
 > Die Eigenschaft „Max. Alter“ ist die Zeitspanne, in der ein Token verwendet werden kann. 
 
 ### <a name="id-tokens"></a>ID-Token
-ID-Token werden an Websites und native Clients übergeben. ID-Token enthalten Profilinformationen zu einem Benutzer. Ein ID-Token ist an eine bestimmte Kombination von Benutzer und Client gebunden. ID-Token werden bis zu ihrem Ablaufdatum als gültig betrachtet. In der Regel passt eine Webanwendung die Gültigkeitsdauer der Sitzung eines Benutzers in der Anwendung an die Gültigkeitsdauer des für den Benutzer ausgegebenen ID-Tokens an. Sie können die Gültigkeitsdauer eines ID-Tokens anpassen, um zu steuern, wie oft die Webanwendung den Ablauf der Anwendungssitzung veranlasst und wie oft der Benutzer für Azure AD erneut authentifiziert werden muss (entweder im Hintergrund oder interaktiv).
+ID-Token werden an Websites und native Clients übergeben. ID-Token enthalten Profilinformationen zu einem Benutzer. Ein ID-Token ist an eine bestimmte Kombination von Benutzer und Client gebunden. ID-Token werden bis zu ihrem Ablaufdatum als gültig betrachtet. In der Regel passt eine Webanwendung die Gültigkeitsdauer der Sitzung eines Benutzers in der Anwendung an die Gültigkeitsdauer des für den Benutzer ausgegebenen ID-Tokens an. Sie können die Gültigkeitsdauer eines ID-Tokens anpassen, um zu steuern, wie oft die Webanwendung den Ablauf der Anwendungssitzung veranlasst und wie oft der Benutzer sich mit Microsoft Identity Platform erneut authentifizieren muss (entweder im Hintergrund oder interaktiv).
 
 ### <a name="single-sign-on-session-tokens"></a>Sitzungstoken für einmaliges Anmelden
-Wenn sich ein Benutzer bei Azure AD authentifiziert, wird eine SSO-Sitzung (Single Sign-On, einmaliges Anmelden) im Browser des Benutzers und bei Azure AD hergestellt. Das SSO-Token stellt diese Sitzung dar (in Form eines Cookies). Das SSO-Sitzungstoken ist nicht an eine bestimmte Ressource/Clientanwendung gebunden. SSO-Sitzungstoken können widerrufen werden, und ihre Gültigkeit wird bei jeder Verwendung überprüft.
+Wenn sich ein Benutzer mit Microsoft Identity Platform authentifiziert, wird eine SSO-Sitzung (Single Sign-On, einmaliges Anmelden) im Browser des Benutzers und bei Microsoft Identity Platform hergestellt. Das SSO-Token stellt diese Sitzung dar (in Form eines Cookies). Das SSO-Sitzungstoken ist nicht an eine bestimmte Ressource/Clientanwendung gebunden. SSO-Sitzungstoken können widerrufen werden, und ihre Gültigkeit wird bei jeder Verwendung überprüft.
 
-In Azure AD werden zwei Arten von SSO-Sitzungstoken verwendet: beständig und nicht beständig. Beständige Sitzungstoken werden vom Browser als beständige Cookies gespeichert. Nicht beständige Sitzungstoken werden als Sitzungscookies gespeichert. (Sitzungscookies werden zerstört, wenn der Browser geschlossen wird.) In der Regel wird ein nicht persistentes Sitzungstoken gespeichert. Wenn der Benutzer jedoch während der Authentifizierung das Kontrollkästchen **Angemeldet bleiben** wählt, wird ein persistentes Sitzungstoken gespeichert.
+Microsoft Identity Platform verwendet zwei Arten von SSO-Sitzungstoken: beständig und nicht beständig. Beständige Sitzungstoken werden vom Browser als beständige Cookies gespeichert. Nicht beständige Sitzungstoken werden als Sitzungscookies gespeichert. (Sitzungscookies werden zerstört, wenn der Browser geschlossen wird.) In der Regel wird ein nicht persistentes Sitzungstoken gespeichert. Wenn der Benutzer jedoch während der Authentifizierung das Kontrollkästchen **Angemeldet bleiben** wählt, wird ein persistentes Sitzungstoken gespeichert.
 
 Nicht beständige Sitzungstoken haben eine Gültigkeitsdauer von 24 Stunden. Beständige Token haben eine Gültigkeitsdauer von 90 Tagen. Jedes Mal, wenn ein SSO-Sitzungstoken innerhalb seiner Gültigkeitsdauer verwendet wird, verlängert sich die Gültigkeitsdauer je nach Tokentyp um weitere 24 Stunden bzw. 90 Tage. Wenn ein SSO-Sitzungstoken innerhalb seiner Gültigkeitsdauer nicht verwendet wird, wird es als abgelaufen erachtet und nicht mehr akzeptiert.
 
@@ -102,7 +102,7 @@ Eine Tokengültigkeitsdauer-Richtlinie ist ein Richtlinienobjekt, das Regeln fü
 | Max. Zeit der Inaktivität für Aktualisierungstoken (für vertrauliche Clients ausgestellt) |Aktualisierungstoken (für vertrauliche Clients ausgestellt) |90 Tage |
 | Max. Alter Aktualisierungstoken (für vertrauliche Clients ausgestellt) |Aktualisierungstoken (für vertrauliche Clients ausgestellt) |Bis zum Widerruf |
 
-* <sup>1</sup>Zu Verbundbenutzern mit unzureichenden Widerrufsinformationen zählen Benutzer, bei denen das Attribut „LastPasswordChangeTimestamp“ nicht synchronisiert ist. Für diese Benutzer gilt dieses kurze maximale Alter, da AAD nicht überprüfen kann, wann Token widerrufen werden müssen, die an alte Anmeldeinformationen (z.B. ein Kennwort, das geändert wurde) gebunden sind, und häufiger sicherstellen muss, dass zwischen dem Benutzer und den zugeordneten Token keine Probleme bestehen. Zum Verbessern dieses Verfahrens müssen Mandantenadministratoren sicherstellen, dass das Attribut „LastPasswordChangeTimestamp“ synchronisiert wird (dies kann für das Benutzerobjekt über Powershell oder AADSync festgelegt werden).
+* <sup>1</sup> Zu Verbundbenutzern mit unzureichenden Widerrufsinformationen zählen Benutzer, bei denen das Attribut „LastPasswordChangeTimestamp“ nicht synchronisiert wird. Für diese Benutzer gilt dieses kurze maximale Alter, da AAD nicht überprüfen kann, wann Token widerrufen werden müssen, die an alte Anmeldeinformationen (z.B. ein Kennwort, das geändert wurde) gebunden sind, und häufiger sicherstellen muss, dass zwischen dem Benutzer und den zugeordneten Token keine Probleme bestehen. Zum Verbessern dieses Verfahrens müssen Mandantenadministratoren sicherstellen, dass das Attribut „LastPasswordChangeTimestamp“ synchronisiert wird (dies kann für das Benutzerobjekt über PowerShell oder AADSync festgelegt werden).
 
 ### <a name="policy-evaluation-and-prioritization"></a>Richtlinienauswertung und Priorisierung
 Sie können eine Richtlinie für die Gültigkeitsdauer von Token erstellen und dann einer bestimmten Anwendung, Ihrer Organisation und Dienstprinzipalen zuweisen. Für eine bestimmte Anwendung können mehrere Richtlinien gelten. Folgende Regeln bestimmen, welche Tokengültigkeitsdauer-Richtlinie wirksam wird:
@@ -129,13 +129,13 @@ Alle hier verwendeten Zeiträume werden nach dem C#-Objekt [TimeSpan](/dotnet/ap
 > * Webanwendung A ist eine regelmäßig verwendete Webanwendung, die nicht mit Richtlinien verknüpft ist.
 > * Webanwendung B wird für hochsensible Prozesse verwendet. Der dazugehörige Dienstprinzipal ist mit der Tokengültigkeitsdauer-Richtlinie 2 verknüpft, die über ein maximales Alter für Sitzungstoken von 30 Minuten verfügt.
 >
-> Um 12:00 Uhr startet der Benutzer eine neue Browsersitzung und versucht, auf die Webanwendung A zuzugreifen. Der Benutzer wird an Azure AD umgeleitet und aufgefordert, sich anzumelden. Es wird ein Cookie erstellt, das über ein Sitzungstoken im Browser verfügt. Der Benutzer wird mit einem ID-Token an die Webanwendung A zurückgeleitet. Dieses ID-Token erlaubt dem Benutzer den Zugriff auf die Anwendung.
+> Um 12:00 Uhr startet der Benutzer eine neue Browsersitzung und versucht, auf Webanwendung A zuzugreifen. Der Benutzer wird an Microsoft Identity Platform umgeleitet und aufgefordert, sich anzumelden. Es wird ein Cookie erstellt, das über ein Sitzungstoken im Browser verfügt. Der Benutzer wird mit einem ID-Token an die Webanwendung A zurückgeleitet. Dieses ID-Token erlaubt dem Benutzer den Zugriff auf die Anwendung.
 >
-> Um 12:15 Uhr versucht der Benutzer, auf Webanwendung B zuzugreifen. Der Browser führt die Umleitung an Azure AD durch, wo das Sitzungscookie erkannt wird. Der Dienstprinzipal von Webanwendung B ist mit Tokengültigkeitsdauer-Richtlinie 2 verknüpft, ist aber zugleich Teil der übergeordneten Organisation mit der Tokengültigkeitsdauer-Standardrichtlinie 1. Tokengültigkeitsdauer-Richtlinie 2 wird wirksam, da mit Dienstprinzipalen verknüpfte Richtlinien eine höhere Priorität als Organisationsstandardrichtlinien haben. Das Sitzungstoken wurde innerhalb der letzten 30 Minuten erstmalig ausgegeben, weshalb es als gültig erachtet wird. Der Benutzer wird mit einem ID-Token, das ihm Zugriff gewährt, an die Webanwendung B zurückgeleitet.
+> Um 12:15 Uhr versucht der Benutzer, auf Webanwendung B zuzugreifen. Der Browser führt die Umleitung an Microsoft Identity Platform durch, wo das Sitzungscookie erkannt wird. Der Dienstprinzipal von Webanwendung B ist mit Tokengültigkeitsdauer-Richtlinie 2 verknüpft, ist aber zugleich Teil der übergeordneten Organisation mit der Tokengültigkeitsdauer-Standardrichtlinie 1. Tokengültigkeitsdauer-Richtlinie 2 wird wirksam, da mit Dienstprinzipalen verknüpfte Richtlinien eine höhere Priorität als Organisationsstandardrichtlinien haben. Das Sitzungstoken wurde innerhalb der letzten 30 Minuten erstmalig ausgegeben, weshalb es als gültig erachtet wird. Der Benutzer wird mit einem ID-Token, das ihm Zugriff gewährt, an die Webanwendung B zurückgeleitet.
 >
-> Um 13:00 Uhr versucht der Benutzer, auf Webanwendung A zuzugreifen. Er wird an Azure AD umgeleitet. Webanwendung A ist nicht mit Richtlinien verknüpft, aber da sie sich in einer Organisation mit Tokengültigkeitsdauer-Standardrichtlinie 1 befindet, ist diese Richtlinie wirksam. Das Sitzungscookie, das innerhalb der letzten acht Stunden ursprünglich ausgestellt wurde, wird erkannt. Der Benutzer wird automatisch zurück an Webanwendung A mit einem neuen ID-Token umgeleitet. Der Benutzer muss sich nicht authentifizieren.
+> Um 13:00 Uhr versucht der Benutzer, auf Webanwendung A zuzugreifen. Er wird an Microsoft Identity Platform umgeleitet. Webanwendung A ist nicht mit Richtlinien verknüpft, aber da sie sich in einer Organisation mit Tokengültigkeitsdauer-Standardrichtlinie 1 befindet, ist diese Richtlinie wirksam. Das Sitzungscookie, das innerhalb der letzten acht Stunden ursprünglich ausgestellt wurde, wird erkannt. Der Benutzer wird automatisch zurück an Webanwendung A mit einem neuen ID-Token umgeleitet. Der Benutzer muss sich nicht authentifizieren.
 >
-> Unmittelbar danach versucht der Benutzer, auf Webanwendung B zuzugreifen. Er wird an Azure AD umgeleitet. Wie zuvor auch, ist Tokengültigkeitsdauer-Richtlinie 2 wirksam. Da das Token vor mehr als 30 Minuten ausgestellt wurde, wird der Benutzer aufgefordert, die Anmeldeinformationen erneut einzugeben. Ein ganz neues Sitzungstoken und ein ID-Token werden ausgestellt. Nun kann der Benutzer auf Webanwendung B zugreifen.
+> Unmittelbar danach versucht der Benutzer, auf Webanwendung B zuzugreifen. Er wird an Microsoft Identity Platform umgeleitet. Wie zuvor auch, ist Tokengültigkeitsdauer-Richtlinie 2 wirksam. Da das Token vor mehr als 30 Minuten ausgestellt wurde, wird der Benutzer aufgefordert, die Anmeldeinformationen erneut einzugeben. Ein ganz neues Sitzungstoken und ein ID-Token werden ausgestellt. Nun kann der Benutzer auf Webanwendung B zugreifen.
 >
 >
 

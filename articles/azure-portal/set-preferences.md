@@ -5,22 +5,23 @@ services: azure-portal
 keywords: Einstellungen, Timeout, Sprache, regional
 author: mgblythe
 ms.author: mblythe
-ms.date: 12/19/2019
+ms.date: 07/30/2020
 ms.topic: how-to
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: d4c675ab18a7a9231229ce0c7de9a7450dc1baa8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a8ce638bf61c69fb732d94d537218aabaeaa9a7c
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84763957"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87461929"
 ---
 # <a name="set-your-azure-portal-preferences"></a>Festlegen Ihrer Azure-Portaleinstellungen
 
 Sie können die Standardeinstellungen des Azure-Portals ändern, um sie an Ihre eigenen Vorlieben anzupassen. Alle unten aufgeführten Einstellungen können geändert werden:
 
 * [Timeout inaktiver Sitzungen](#change-the-idle-duration-for-inactive-sign-out)
+* [Standardabonnement](#choose-your-default-subscription)
 * [Standardansicht](#choose-your-default-view)
 * [Portalmenümodus](#choose-a-portal-menu-mode)
 * [Farbe und Design mit hohem Kontrast](#choose-a-theme)
@@ -55,9 +56,21 @@ Wenn Ihr Administrator eine Richtlinie für das Inaktivitätstimeout aktiviert h
 > Wenn Sie Administrator sind und eine Timeouteinstellung bei Inaktivität für alle Benutzer des Azure-Portals erzwingen möchten, finden Sie weitere Informationen unter [Festlegen des Inaktivitätstimeouts auf Verzeichnisebene für Benutzer des Azure-Portals](admin-timeout.md).
 >
 
+### <a name="choose-your-default-subscription"></a>Auswählen Ihres Standardabonnements
+
+Sie können das Abonnement ändern, das bei der Anmeldung beim Azure-Portal standardmäßig geöffnet wird. Dies ist nützlich, wenn Sie mit einem primären Abonnement arbeiten, aber gelegentlich andere verwenden. 
+
+:::image type="content" source="media/set-preferences/filter-subscription-default-view.png" alt-text="Filtern Sie die Ressourcenliste nach dem Abonnement.":::
+
+1. Wählen Sie das Symbol für den Verzeichnis- und Abonnementfilter auf der oberen Navigationsleiste aus.
+1. Wählen Sie die Abonnements aus, die beim Starten des Portals als Standardabonnements ausgewählt werden sollen. 
+
+    :::image type="content" source="media/set-preferences/default-directory-subscription-filter.png" alt-text="Wählen Sie die Abonnements aus, die beim Starten des Portals als Standardabonnements ausgewählt werden sollen."::: 
+
+
 ### <a name="choose-your-default-view"></a>Auswählen der Standardansicht 
 
-Sie können die Seite ändern, die standardmäßig geöffnet wird, wenn Sie sich am Azure-Portal anmelden.
+Sie können die Seite ändern, die bei der Anmeldung beim Azure-Portal standardmäßig geöffnet wird.
 
    ![Screenshot mit Azure-Portaleinstellungen mit hervorgehobener Standardansicht](./media/set-preferences/default-view.png)
 

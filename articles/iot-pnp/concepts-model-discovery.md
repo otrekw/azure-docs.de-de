@@ -1,83 +1,48 @@
 ---
-title: Implementieren der IoT Plug & Play-Vorschaumodellermittlung | Microsoft-Dokumentation
-description: Erfahren Sie als Lösungsentwickler, wie Sie die IoT Plug & Play-Modellermittlung in Ihre Lösung implementieren können.
-author: prashmo
-ms.author: prashmo
+title: Verwenden von IoT Plug & Play-Modellen in einer Lösung | Microsoft-Dokumentation
+description: Erfahren Sie als Lösungsentwickler, wie Sie IoT Plug & Play-Modelle in Ihrer IoT-Lösung verwenden.
+author: arunmannengal
+ms.author: arunmann
 ms.date: 07/23/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 364b85a8ead09858b97d5d7e6ca8c130b9960b2c
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 4cdd6f63c9e5e717a533b88702b2886387fe3e39
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87337380"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475242"
 ---
-# <a name="implement-iot-plug-and-play-preview-model-discovery-in-an-iot-solution"></a>Implementieren der IoT Plug & Play-Vorschaumodellermittlung in eine IoT-Lösung
+# <a name="use-iot-plug-and-play-models-in-an-iot-solution"></a>Verwenden von IoT Plug & Play-Modellen in einer IoT-Lösung
 
-In diesem Artikel wird beschrieben, wie Sie als Lösungsentwickler die IoT Plug & Play-Vorschaumodellermittlung in eine IoT-Lösung implementieren können. Die Modellermittlung beschreibt Folgendes:
+In diesem Artikel wird beschrieben, wie Sie in einer IoT-Lösung die Modell-ID eines IoT Plug & Play Geräts identifizieren und dann seine Modelldefinition abrufen.
 
-- Wie IoT Plug & Play-Geräte ihre Modell-ID registrieren.
-- Wie eine IoT-Lösung die vom Gerät implementierten Schnittstellen abruft.
+IoT-Lösungen können in zwei Hauptkategorien unterteilt werden:
 
-IoT-Lösungen lassen sich in zwei Hauptkategorien unterteilen:
+- Eine *zweckgebundene Lösung* funktioniert mit einem bekannten Satz von Modellen für die IoT Plug & Play Geräte, die eine Verbindung mit der Lösung herstellen. Diese Modelle werden bei der Entwicklung der Lösung verwendet.
 
-- Eine *zweckgebundene IoT-Lösung* arbeitet mit einem bekannten Satz von IoT Plug & Play-Gerätemodellen.
+- Eine *modellgesteuerte IoT-Lösung* funktioniert mit dem Modell jedes IoT Plug & Play-Geräts. Die Entwicklung einer modellgesteuerten Lösung ist komplexer. Der Vorteil ist jedoch, dass Ihre Lösung mit allen zukünftig hinzugefügten Geräten funktioniert. Eine modellgesteuerte IoT-Lösung ruft ein Modell ab und ermittelt mit ihm die vom Gerät implementierten Telemetriedaten, Eigenschaften und Befehle.
 
-- Eine *modellgesteuerte IoT-Lösung* kann mit jedem IoT Plug & Play-Gerät arbeiten. Die Entwicklung einer modellgesteuerten Lösung ist komplexer. Der Vorteil ist jedoch, dass Ihre Lösung mit allen zukünftig hinzugefügten Geräten funktioniert.
+Zum Verwenden eines IoT Plug & Play-Modells geht eine IoT-Lösung folgendermaßen vor:
 
-    Um eine modellgesteuerte IoT-Lösung zu erstellen, müssen Sie eine Logik für die IoT Plug and Play-Schnittstellenprimitive erstellen: Telemetrie, Eigenschaften und Befehle. Die Logik Ihrer Lösung stellt ein Gerät dar, indem sie mehrere Telemetrie-, Eigenschafts- und Befehlsfunktionen kombiniert.
+1. Sie identifiziert die Modell-ID des Modells, das von dem mit der Lösung verbundenen IoT Plug & Play-Gerät implementiert wird.
 
-In diesem Artikel wird beschrieben, wie Sie die Modellermittlung in beiden Lösungstypen implementieren.
+1. Sie verwendet die Modell-ID zum Abrufen der Modelldefinition des verbundenen Geräts aus einem Modellrepository oder einem benutzerdefinierten Speicher.
 
-## <a name="model-discovery"></a>Modellermittlung
+## <a name="identify-model-id"></a>Identifizieren der Modell-ID
 
-Um das von einem Gerät implementierte Modell zu ermitteln, kann eine Lösung die Modell-ID mithilfe der ereignisbasierten Ermittlung oder der zwillingsbasierten Ermittlung abrufen:
+Wenn ein IoT Plug & Play-Gerät eine Verbindung mit IoT-Hub herstellt, registriert es die Modell-ID des von ihm implementierten Modells bei IoT Hub.
 
-### <a name="event-based-discovery"></a>Ereignisbasierte Ermittlung
+IoT Hub benachrichtigt die Lösung im Rahmen des Geräteverbindungsflows mit der Gerätemodell-ID.
 
-Wenn ein IoT Plug & Play-Gerät eine Verbindung mit einem IoT-Hub herstellt, registriert es das von ihm implementierte Modell. Diese Registrierung führt zu einer Benachrichtigung über ein [Änderungsereignis bei einem digitalen Zwilling](concepts-digital-twin.md#digital-twin-change-events). Informationen zum Aktivieren des Routings für Ereignisse bei digitalen Zwillingen finden Sie unter [Verwenden des IoT Hub-Nachrichtenroutings zum Senden von D2C-Nachrichten an verschiedene Endpunkte](../iot-hub/iot-hub-devguide-messages-d2c.md#non-telemetry-events).
+Eine Lösung kann die Modell-ID des IoT Plug & Play-Geräts mithilfe einer der folgenden drei Methoden erhalten:
 
-Die Lösung kann das im folgenden Codeausschnitt gezeigte Ereignis verwenden, um mehr über das IoT Plug & Play-Gerät zu erfahren, das eine Verbindung herstellt, und seine Modell-ID abrufen:
+### <a name="get-device-twin-api"></a>API zum Abrufen von Gerätezwillingen
 
-```json
-iothub-connection-device-id:sample-device
-iothub-enqueuedtime:7/22/2020 8:02:27 PM
-iothub-message-source:digitalTwinChangeEvents
-correlation-id:100f322dc2c5
-content-type:application/json-patch+json
-content-encoding:utf-8
-[
-  {
-    "op": "replace",
-    "path": "/$metadata/$model",
-    "value": "dtmi:com:example:TemperatureController;1"
-  }
-]
-```
+Die Lösung kann die API zum [Abrufen von Gerätezwillingen](https://docs.microsoft.com/rest/api/iothub/service/twin/getdevicetwin) verwenden, um die Modell-ID des IoT Plug & Play-Geräts abzurufen.
 
-Dieses Ereignis wird ausgelöst, wenn die Gerätemodell-ID hinzugefügt oder aktualisiert wird.
-
-### <a name="twin-based-discovery"></a>Zwillingsbasierte Ermittlung
-
-Wenn die Lösung Informationen über die Funktionen eines bestimmten Geräts erhalten möchte, kann sie die API zum [Abrufen des digitalen Zwillings](https://docs.microsoft.com/rest/api/iothub/service/digitaltwin/getdigitaltwin) verwenden, um diese Informationen abzurufen.
-
-Im folgenden Codeausschnitt für einen digitalen Zwilling enthält `$metadata.$model` die Modell-ID eines IoT Plug & Play-Geräts:
-
-```json
-{
-    "$dtId": "sample-device",
-    "$metadata": {
-        "$model": "dtmi:com:example:TemperatureController;1",
-        "serialNumber": {
-            "lastUpdateTime": "2020-07-17T06:10:31.9609233Z"
-        }
-    }
-}
-```
-
-Die Lösung kann auch die API zum **Abrufen des Gerätezwillings** verwenden, um die Modell-ID aus dem Gerätezwilling abzurufen, wie es im folgenden Codeausschnitt gezeigt wird:
+Im folgenden Antwortausschnitt eines Gerätezwillings enthält `modelId` die Modell-ID eines IoT Plug & Play-Geräts:
 
 ```json
 {
@@ -101,16 +66,79 @@ Die Lösung kann auch die API zum **Abrufen des Gerätezwillings** verwenden, um
 }
 ```
 
-## <a name="model-resolution"></a>Modellauflösung
+### <a name="get-digital-twin-api"></a>API zum Abrufen von digitalen Zwillingen
 
-Eine Lösung verwendet die Modellauflösung, um Zugriff auf die Schnittstellen, aus denen sich ein Modell zusammensetzt, über die Modell-ID zu erhalten. 
+Die Lösung kann die API zum [Abrufen von digitalen Zwillingen](https://docs.microsoft.com/rest/api/iothub/service/digitaltwin/getdigitaltwin) verwenden, um die Modell-ID des Modells abzurufen, das vom IoT Plug & Play-Gerät implementiert wurde.
 
-- Lösungen können diese Schnittstellen als Dateien in einem lokalen Ordner speichern. 
-- Lösungen können das [Modellrepository](concepts-model-repository.md) verwenden.
+Im folgenden Antwortausschnitt eines digitalen Zwillings enthält `$metadata.$model` die Modell-ID eines IoT Plug & Play-Geräts:
+
+```json
+{
+    "$dtId": "sample-device",
+    "$metadata": {
+        "$model": "dtmi:com:example:TemperatureController;1",
+        "serialNumber": {
+            "lastUpdateTime": "2020-07-17T06:10:31.9609233Z"
+        }
+    }
+}
+```
+
+### <a name="digital-twin-change-event-notification"></a>Benachrichtigung über Änderungsereignis für einen digitalen Zwilling
+
+Eine Geräteverbindung führt zu einer Benachrichtigung über ein [Änderungsereignis für einen digitalen Zwilling](concepts-digital-twin.md#digital-twin-change-events). Eine Lösung muss diese Ereignisbenachrichtigungen abonnieren. Informationen zum Aktivieren des Routings für Ereignisse bei digitalen Zwillingen finden Sie unter [Verwenden des IoT Hub-Nachrichtenroutings zum Senden von D2C-Nachrichten an verschiedene Endpunkte](../iot-hub/iot-hub-devguide-messages-d2c.md#non-telemetry-events).
+
+Die Lösung kann das im folgenden Codeausschnitt gezeigte Ereignis verwenden, um mehr über das IoT Plug & Play-Gerät zu erfahren, das eine Verbindung herstellt, und seine Modell-ID abzurufen:
+
+```json
+iothub-connection-device-id:sample-device
+iothub-enqueuedtime:7/22/2020 8:02:27 PM
+iothub-message-source:digitalTwinChangeEvents
+correlation-id:100f322dc2c5
+content-type:application/json-patch+json
+content-encoding:utf-8
+[
+  {
+    "op": "replace",
+    "path": "/$metadata/$model",
+    "value": "dtmi:com:example:TemperatureController;1"
+  }
+]
+```
+
+## <a name="retrieve-a-model-definition"></a>Abrufen einer Modelldefinition
+
+Eine Lösung verwendet die oben identifizierte Modell-ID, um die zugehörige Modelldefinition abzurufen.
+
+Eine Lösung kann die Modelldefinition mithilfe einer der folgenden Optionen erhalten:
+
+### <a name="model-repository"></a>Modellrepository
+
+Lösungen können das [Modellrepository](concepts-model-repository.md) zum Abrufen von Modellen verwenden. Die Gerätegeneratoren oder die Lösungsgeneratoren müssen ihre Modelle vorab in das Repository hochladen, damit die Lösung sie abrufen kann.
+
+Nachdem Sie die Modell-ID für eine neue Geräteverbindung identifiziert haben, führen Sie die folgenden Schritte aus:
+
+1. Rufen Sie die Modelldefinition mithilfe der Modell-ID aus dem Modellrepository ab. Weitere Informationen finden Sie unter [Abrufen von Modellen](https://docs.microsoft.com/rest/api/iothub/digitaltwinmodelrepositoryservice/getmodelasync/getmodelasync).
+
+1. Mithilfe der Modelldefinition des verbundenen Geräts können Sie die Funktionen des Geräts auflisten.
+
+1. Mithilfe der aufgelisteten Funktionen des Geräts können Sie Benutzern gestatten, [mit dem Gerät zu interagieren](quickstart-service-node.md).
+
+### <a name="custom-store"></a>Benutzerdefinierter Speicher
+
+Lösungen können diese Modelldefinitionen in einem lokalen Dateisystem oder in einem öffentlichen Dateispeicher speichern oder eine benutzerdefinierte Implementierung nutzen.
+
+Nachdem Sie die Modell-ID für eine neue Geräteverbindung identifiziert haben, führen Sie die folgenden Schritte aus:
+
+1. Rufen Sie die Modelldefinition mithilfe der Modell-ID aus Ihrem benutzerdefinierten Speicher ab.
+
+1. Mithilfe der Modelldefinition des verbundenen Geräts können Sie die Funktionen des Geräts auflisten. 
+
+1. Mithilfe der aufgelisteten Funktionen des Geräts können Sie Benutzern gestatten, [mit dem Gerät zu interagieren](quickstart-service-node.md).  
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nachdem Sie nun mehr über die Modellermittlung einer IoT-Lösung erfahren haben, können Sie sich mit der [Azure IoT-Plattform](overview-iot-plug-and-play.md) vertraut machen, um andere Funktionen für Ihre Lösung zu verwenden.
+Nachdem Sie gelernt haben, wie IoT Plug & Play-Modelle in eine IoT-Lösung integriert werden, finden Sie hier einige der empfohlenen nächsten Schritte:
 
 - [Interagieren mit einem Gerät über Ihre Lösung](quickstart-service-node.md)
 - [IoT-REST-API für digitale Zwillinge](https://docs.microsoft.com/rest/api/iothub/service/digitaltwin)

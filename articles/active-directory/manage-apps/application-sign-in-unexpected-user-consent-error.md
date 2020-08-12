@@ -16,12 +16,12 @@ ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e2a7709cf0522727257025b2dddc495b20fe8448
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0be99a673fe3d062e114f375891f3c821c118d76
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84763753"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87499499"
 ---
 # <a name="unexpected-error-when-performing-consent-to-an-application"></a>Unerwarteter Fehler beim Vorgang des Genehmigens einer Anwendung
 
@@ -38,6 +38,8 @@ Bestimmte Bedingungen müssen sein erfüllt, damit ein Benutzer die von einer An
 Dieser Fehler tritt auf, wenn ein Benutzer, der kein Unternehmensadministrator ist, versucht, eine Anwendung zu verwenden, die Berechtigungen anfordert, die nur ein Administrator erteilen kann. Dieser Fehler kann von einem Administrator behoben werden, indem der Zugriff auf die Anwendung im Auftrag der Organisation gewährt wird.
 
 Dieser Fehler kann auch auftreten, wenn ein Benutzer daran gehindert wird, einer Anwendung zuzustimmen, weil Microsoft erkennt, dass die Berechtigungsanforderung riskant ist. In diesem Fall wird auch ein Überwachungsereignis der Kategorie „ApplicationManagement“ mit dem Aktivitätstyp „Zustimmung zu Anwendung“ und dem Statusgrund „Riskante Anwendung erkannt“ protokolliert.
+
+Ein weiteres Szenario, in dem dieser Fehler auftreten kann, ist, wenn die Benutzerzuweisung für die Anwendung erforderlich ist, aber keine Administratoreinwilligung gegeben wurde. In diesem Fall muss der Administrator zuerst seine Einwilligung geben.   
 
 ## <a name="policy-prevents-granting-permissions-error"></a>Richtlinien verhindern das Erteilen von Berechtigungen
 * **AADSTS90093:** Ein Administrator von &lt;Anzeigename_des_Mandanten&gt; hat eine Richtlinie festgelegt, die Sie daran hindert, &lt;Name der App&gt; die angeforderten Berechtigungen zu erteilen. Wenden Sie sich an einen Administrator von &lt;Anzeigename_des_Mandanten&gt;, der Berechtigungen für diese App in Ihrem Auftrag erteilen kann.

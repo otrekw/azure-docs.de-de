@@ -9,12 +9,12 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 1a8023a700e83892fae9a16bb2bfbe2a2eb0b307
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6b1fe78ac00b57d7627a64970e84ae8b717ae5c3
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85193412"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87501915"
 ---
 # <a name="secure-your-synapse-workspace-preview"></a>Sichern Ihres Synapse-Arbeitsbereichs (Vorschau)
 
@@ -82,7 +82,7 @@ Erstellen Sie im Azure-Portal einen Synapse-Arbeitsbereich:
   - Weisen Sie **WS1\_SparkAdmins** zu „Synapse Spark-Administratoren“ zu.
   - Weisen Sie **WS1\_SQLAdmins** zu „Synapse SQL-Administratoren“ zu.
 
-## <a name="step-4-configuring-data-lake-storage-gen2-for-use-by-synapse-workspace"></a>SCHRITT 4: Konfigurieren von Data Lake Storage Gen2 für die Verwendung durch den Synapse-Arbeitsbereich
+## <a name="step-4-configure-data-lake-storage-gen2-for-use-by-synapse-workspace"></a>SCHRITT 4: Konfigurieren von Data Lake Storage Gen2 für die Verwendung durch den Synapse-Arbeitsbereich
 
 Der Synapse-Arbeitsbereich benötigt Zugriff auf STG1 und CNT1, damit er Pipelines ausführen und Systemaufgaben ausführen kann.
 
@@ -100,7 +100,7 @@ Der Synapse-Arbeitsbereich benötigt Zugriff auf STG1 und CNT1, damit er Pipelin
 - Klicken Sie unter **Einstellungen** auf **SQL Active Directory-Administrator**.
 - Klicken Sie auf **Administrator festlegen**, und wählen Sie „WS1\_SQLAdmins“ aus.
 
-## <a name="step-6-maintaining-access-control"></a>SCHRITT 6: Verwalten der Zugriffssteuerung
+## <a name="step-6-maintain-access-control"></a>SCHRITT 6: Verwalten der Zugriffssteuerung
 
 Die Konfiguration ist fertig gestellt.
 
@@ -112,7 +112,7 @@ Obwohl Sie Benutzer manuell den Synapse-Rollen zuweisen können, werden die Eins
 
 Benutzer in den einzelnen Rollen müssen die folgenden Schritte durchführen:
 
-|   | Schritt | Arbeitsbereichsadministratoren | Spark-Administratoren | SQL-Administratoren |
+| Number | Schritt | Arbeitsbereichsadministratoren | Spark-Administratoren | SQL-Administratoren |
 | --- | --- | --- | --- | --- |
 | 1 | Hochladen einer Parquet-Datei in CNT1 | YES | YES | YES |
 | 2 | Lesen der Parquet-Datei mithilfe von SQL On-Demand | YES | Nein | YES |

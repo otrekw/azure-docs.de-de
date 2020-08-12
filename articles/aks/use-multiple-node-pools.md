@@ -4,12 +4,12 @@ description: Informationen zum Erstellen und Verwalten mehrerer Knotenpools für
 services: container-service
 ms.topic: article
 ms.date: 04/08/2020
-ms.openlocfilehash: c35b3cdbde79a771eccc42c7c3a60b0ab4e08e8a
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 128b8d07a3fb18ecd70f6ce5a37f41ad0fdd3db1
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86250854"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87563176"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Erstellen und Verwalten mehrerer Knotenpools für einen Cluster in Azure Kubernetes Service (AKS)
 
@@ -489,6 +489,8 @@ Nur Pods mit dieser Toleranz können auf Knoten in *gpunodepool* geplant werden.
 
 ## <a name="specify-a-taint-label-or-tag-for-a-node-pool"></a>Angeben von Taint, Bezeichnung oder Tag für einen Knotenpool
 
+### <a name="setting-nodepool-taints"></a>Festlegen von Knotenpooltaints
+
 Beim Erstellen eines Knotenpools können Sie diesem Knotenpool Taints, Bezeichnungen oder Tags hinzufügen. Wenn Sie einen Taint, eine Bezeichnung oder ein Tag hinzufügen, erhalten alle Knoten innerhalb dieses Knotenpools ebenfalls diesen Taint, diese Bezeichnung oder dieses Tag.
 
 Verwenden Sie [az aks nodepool add][az-aks-nodepool-add], um einen Knotenpool mit einem Taint zu erstellen. Geben Sie den Namen *taintnp* an, und verwenden Sie den Parameter `--node-taints`, um *sku=gpu:NoSchedule* für den Taint anzugeben.
@@ -502,6 +504,9 @@ az aks nodepool add \
     --node-taints sku=gpu:NoSchedule \
     --no-wait
 ```
+
+> [!NOTE]
+> Ein Taint kann nur bei der Erstellung des Knotenpools festgelegt werden.
 
 Die folgende Beispielausgabe des Befehls [az aks nodepool list][az-aks-nodepool-list] zeigt, dass *taintnp* Knoten mit dem angegebenen *nodeTaints* *erstellt*:
 
@@ -528,6 +533,8 @@ $ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
 ```
 
 Die Taint-Informationen sind in Kubernetes für die Behandlung von Planungsregeln für Knoten sichtbar.
+
+### <a name="setting-nodepool-labels"></a>Festlegen von Knotenpoolbezeichnungen
 
 Sie können einem Knotenpool auch während der Erstellung des Knotenpools Bezeichnungen hinzufügen. Für den Knotenpool festgelegte Bezeichnungen werden jedem Knoten im Knotenpool hinzugefügt. Diese [Bezeichnungen sind in Kubernetes][kubernetes-labels] zur Behandlung von Planungsregeln für Knoten sichtbar.
 
@@ -571,7 +578,13 @@ $ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
 ]
 ```
 
+### <a name="setting-nodepool-azure-tags"></a>Festlegen von Azure-Tags für Knotenpools
+
 Sie können ein Azure-Tag auf Knotenpools in Ihrem AKS-Cluster anwenden. Auf einen Knotenpool angewendete Tags werden auf jeden Knoten innerhalb des Knotenpools angewendet und bleiben bei Upgrades erhalten. Tags werden auch auf neue Knoten angewendet, die einem Knotenpool im Rahmen von Vorgängen zum horizontalen Skalieren hinzugefügt werden. Das Hinzufügen eines Tags kann Aufgaben wie das Nachverfolgen von Richtlinien oder die Kostenschätzung erleichtern.
+
+Bei den Schlüsseln von Azure-Tags wird die Groß-/Kleinschreibung für Vorgänge nicht beachtet, z. B. beim Abrufen eines Tags durch Suchen nach dem Schlüssel. In diesem Fall wird ein Tag mit dem angegebenen Schlüssel unabhängig von der Groß-/Kleinschreibung aktualisiert oder abgerufen. Bei den Tagwerten wird Groß- und Kleinschreibung unterschieden.
+
+Wenn in AKS mehrere Tags gleiche Schlüssel mit unterschiedlicher Groß-/Kleinschreibung aufweisen, wird das erste Tag in alphabetischer Reihenfolge verwendet. Beispielsweise führt `{"Key1": "val1", "kEy1": "val2", "key1": "val3"}` zur Festlegung von `Key1` und `val1`.
 
 Erstellen Sie einen Knotenpool mit dem Befehl [az aks nodepool add][az-aks-nodepool-add]. Geben Sie den Namen *tagnodepool* an, und verwenden Sie den `--tag`-Parameter, um *dept=IT* und *costcenter=9999* als Tags anzugeben.
 
@@ -846,7 +859,7 @@ Verwenden Sie [Näherungsplatzierungsgruppe][reduce-latency-ppg], um die Latenz 
 [supported-versions]: supported-kubernetes-versions.md
 [tag-limitation]: ../azure-resource-manager/management/tag-resources.md
 [taints-tolerations]: operator-best-practices-advanced-scheduler.md#provide-dedicated-nodes-using-taints-and-tolerations
-[vm-sizes]: ../virtual-machines/linux/sizes.md
+[vm-sizes]: ../virtual-machines/sizes.md
 [use-system-pool]: use-system-pools.md
 [ip-limitations]: ../virtual-network/virtual-network-ip-addresses-overview-arm#standard
 [node-resource-group]: faq.md#why-are-two-resource-groups-created-with-aks

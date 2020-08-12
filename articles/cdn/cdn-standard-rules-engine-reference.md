@@ -5,14 +5,14 @@ services: cdn
 author: asudbring
 ms.service: azure-cdn
 ms.topic: article
-ms.date: 06/22/2020
+ms.date: 08/04/2020
 ms.author: allensu
-ms.openlocfilehash: 6260a4b78197329e020bebaa3bc08db5ad792086
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f729176d3f79c2a1f6fabb5631d49747219db48f
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85559312"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87760089"
 ---
 # <a name="standard-rules-engine-reference-for-azure-cdn"></a>Referenz zur Standardregel-Engine für Azure CDN
 
@@ -59,15 +59,7 @@ Ein Prozentzeichen wird zum Angeben der URL-Codierung verwendet (z. B. `%20`).
 
 ### <a name="wildcard-values"></a>Platzhalterwerte
 
-Text, der als Platzhalterwert interpretiert wird, weist Sonderzeichen eine zusätzliche Bedeutung zu. In der folgenden Tabelle wird beschrieben, wie spezifische Sonderzeichen in der Standardregel-Engine interpretiert werden:
-
-Zeichen | BESCHREIBUNG
-----------|------------
-\ | Ein umgekehrter Schrägstrich wird als Escapezeichen für die in dieser Tabelle angegebenen Zeichen verwendet. Direkt vor dem Sonderzeichen, das mit Escapezeichen versehen werden soll, muss ein umgekehrter Schrägstrich eingegeben werden. Es folgt als Beispiel die Syntax für das Escapezeichen eines Sternchens: `\*`
-% | Ein Prozentzeichen wird zum Angeben der URL-Codierung verwendet (z. B. `%20`).
-\* | Ein Sternchen ist ein Platzhalter, der ein oder mehrere Zeichen darstellt.
-Leerzeichen | Ein Leerzeichen gibt an, dass eine Übereinstimmungsbedingung entweder mit den angegebenen Werten oder Mustern erfüllt werden kann.
-Einfache Anführungszeichen | Ein einfaches Anführungszeichen hat keine besondere Bedeutung. Eine gruppe einfacher Anführungszeichen gibt jedoch an, dass ein Wert als Literalwert behandelt werden soll. Einfache Anführungszeichen können auf folgende Weisen verwendet werden:<ul><li>Zum Erfüllen einer Übereinstimmungsbedingung, wenn der angegebene Wert mit einem beliebigen Teil des Vergleichswerts übereinstimmt.  Beispielsweise stimmt `'ma'` mit beliebigen der folgenden Zeichenfolgen überein: <ul><li>/business/**ma**rathon/asset.htm</li><li>**ma**p.gif</li><li>/business/template.**ma**p</li></ul><li>Zum Zulassen des Festlegens eines Sonderzeichens als Literalzeichen. Sie können beispielsweise ein literales Leerzeichen festlegen, indem Sie ein Leerzeichen in einfachen Anführungszeichen einschließen (`' '` oder `'<sample value>'`).</li><li>Zum Ermöglichen der Angabe eines leeren Werts. Sie können einen leeren Wert angeben, indem Sie einfache Anführungszeichen angeben ( **''** ).</li></ul>**Wichtig**:<br /><ul><li>Wenn der angegebene Wert keinen Platzhalter enthält, wird der Wert automatisch als Literalwert behandelt. Für einen Literalwert müssen Sie keine einfachen Anführungszeichen angeben.</li><li>Wenn ein umgekehrter Schrägstrich nicht als Escapezeichen für ein anderes Zeichen in dieser Tabelle verwendet wird, wird der umgekehrte Schrägstrich ignoriert, wenn er in einfachen Anführungszeichen steht.</li><li>Eine andere Möglichkeit zum Angeben eines Sonderzeichens als Literalzeichen besteht darin, es mithilfe eines umgekehrten Schrägstrichs (`\`) mit einem Escapezeichen zu versehen.</li></ul>
+Zurzeit wird in der Standardregel-Engine das Platzhalterzeichen in der **UrlPath-Übereinstimmungsbedingung** unterstützt. Das Zeichen \* (Sternchen) steht für ein oder mehrere Zeichen. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

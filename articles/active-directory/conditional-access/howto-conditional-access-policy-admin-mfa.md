@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: how-to
-ms.date: 05/26/2020
+ms.date: 08/03/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: af82a9d19f8dee9062d15a58e83ee3c2a8c59af6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cc38e576f53c3623bacc374a00adcb4cced01517
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83995427"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87552882"
 ---
 # <a name="conditional-access-require-mfa-for-administrators"></a>Bedingter Zugriff: Vorschreiben der MFA für Administratoren
 
@@ -65,10 +65,14 @@ Die folgenden Schritte helfen bei der Erstellung einer Richtlinie für bedingten
       * Sicherheitsadministrator
       * SharePoint-Administrator
       * Benutzeradministrator
+   
+      > [!WARNING]
+      > Richtlinien für bedingten Zugriff unterstützen keine Benutzer, die einer [auf eine Verwaltungseinheit beschränkten](../users-groups-roles/roles-admin-units-assign-roles.md) Verzeichnisrolle zugewiesen sind. Das gleiche gilt für Benutzer, die Verzeichnisrollen zugewiesen sind, die sich direkt auf ein Objekt beziehen (z.B. über [benutzerdefinierte Rollen](../users-groups-roles/roles-create-custom.md)).
+
    1. Wählen Sie unter **Ausschließen** die Option **Benutzer und Gruppen** und dann die Konten für den Notfallzugriff Ihres Unternehmens aus. 
    1. Wählen Sie **Fertig**aus.
 1. Wählen Sie unter **Cloud-Apps oder -aktionen** > **Einschließen** die Option **Alle Cloud-Apps** und dann **Fertig** aus.
-1. Legen Sie unter **Bedingungen** > **Client-Apps (Vorschau)** die Option **Konfigurieren** auf **Ja** fest, und wählen Sie **Fertig** aus.
+1. Lassen Sie unter **Bedingungen** > **Client-Apps (Vorschau)** unter der Option **Wählen Sie die Client-Apps aus, auf die diese Richtlinie angewendet wird** alle Standardwerte aktiviert, und wählen Sie **Fertig** aus.
 1. Wählen Sie unter **Zugriffssteuerung** > **Erteilen** die Option **Zugriff erteilen**, dann **Mehrstufige Authentifizierung erforderlich** und anschließend **Auswählen** aus.
 1. Bestätigen Sie die Einstellungen und legen Sie **Richtlinie aktivieren** auf **Ein** fest.
 1. Wählen Sie **Erstellen** aus, um die Richtlinie zu erstellen und zu aktivieren.

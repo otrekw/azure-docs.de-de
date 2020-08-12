@@ -3,12 +3,12 @@ title: Skalierungskontingente und -beschränkungen in Labs in Azure DevTest Labs
 description: In diesem Artikel wird beschrieben, wie Sie Ihr Lab in Azure DevTest Labs skalieren. Zeigen Sie Ihre Nutzungskontingente und -limits an, und fordern Sie eine Erhöhung an.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: dacc699a6f4e7663d0f314acfc2212bd69d46d18
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 2166eaab073e2abc24ca24494ae13eb876db1fcf
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87287310"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533953"
 ---
 # <a name="scale-quotas-and-limits-in-devtest-labs"></a>Skalierungskontingente und -beschränkungen in DevTest Labs
 Bei der Arbeit mit DevTest Labs werden Sie möglicherweise feststellen, dass bestimmte Standardbeschränkungen für Azure-Ressourcen gelten, die sich auf den DevTest Labs-Dienst auswirken können. Diese Beschränkungen werden als **Kontingente** bezeichnet.
@@ -20,7 +20,7 @@ Sie können jede Azure-Ressource bis zur Ausschöpfung des Kontingents nutzen. J
 
 Jedes Abonnement weist z.B. ein Standardkontingent von 20 Kernen auf. Wenn Sie in Ihrem Lab demnach VMs mit jeweils vier Kernen erstellen, können Sie lediglich fünf VMs erstellen.
 
-Unter [Beschränkungen des Azure-Abonnements und -Diensts](../azure-resource-manager/management/azure-subscription-service-limits.md) werden einige der am häufigsten geltenden Kontingente für Azure-Ressourcen aufgeführt. Zu Ressourcen, die am häufigsten in einem Lab verwendet werden und für die eventuell Kontingente gelten, zählen VM-Kerne, öffentliche IP-Adressen, Netzwerkschnittstellen, verwaltete Datenträger, RBAC-Rollenzuweisung und ExpressRoute-Verbindungen.
+Unter [Beschränkungen des Azure-Abonnements und -Diensts](../azure-resource-manager/management/azure-subscription-service-limits.md) werden einige der am häufigsten geltenden Kontingente für Azure-Ressourcen aufgeführt. Zu den am häufigsten in einem Lab verwendeten Ressourcen, für die eventuell Kontingente gelten, zählen VM-Kerne, öffentliche IP-Adressen, Netzwerkschnittstellen, verwaltete Datenträger, Azure-Rollenzuweisung und ExpressRoute-Verbindungen.
 
 ## <a name="view-your-usage-and-quotas"></a>Anzeigen von Nutzungsdaten und Kontingenten
 In den folgenden Schritten wird gezeigt, wie die aktuellen Kontingente in Ihrem Abonnement für bestimmte Azure-Ressourcen angezeigt werden und der Prozentsatz von jedem Kontingent, das Sie genutzt haben, ermittelt wird.

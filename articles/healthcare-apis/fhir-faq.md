@@ -6,14 +6,14 @@ author: hansenms
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: reference
-ms.date: 02/07/2019
+ms.date: 08/03/2020
 ms.author: mihansen
-ms.openlocfilehash: af891935fd474e6f1f83ff1c2ce56ef71cd065c6
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: b3838c46dcd5515cca81f41a4b8ac55bc68ffe69
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86536724"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87552933"
 ---
 # <a name="frequently-asked-questions-about-the-azure-api-for-fhir"></a>Häufig gestellte Fragen zu Azure API for FHIR
 
@@ -49,38 +49,37 @@ Aus Entwicklersicht wird jedes Feature zuerst auf dem Microsoft Open-Source-FHIR
 Bei SMART (Substitutable Medical Applications and Reusable Technology) on FHIR handelt es sich um eine Reihe offener Spezifikationen für die Integration von Partneranwendungen in FHIR-Server und andere IT-Systeme im Gesundheitswesen, wie elektronische Patientenakten und den Austausch von Gesundheitsinformationen. Indem Sie eine SMART on FHIR-Anwendung erstellen, können Sie sicherstellen, dass auf Ihre Anwendung zugegriffen und diese von einer Vielzahl unterschiedlicher Systeme genutzt werden kann.
 Authentifizierung und Azure API for FHIR. Weitere Informationen zu SMART finden Sie unter [SMART Health IT](https://smarthealthit.org/).
 
-
-## <a name="iot-connector-preview"></a>IoT Connector (Vorschau)
+## <a name="azure-iot-connector-for-fhir-preview"></a>Azure IoT Connector for FHIR (Vorschau)
 
 ### <a name="what-is-iomt"></a>Was ist IoMT?
 IoMT steht für „Internet of Medical Things“ (Internet der medizinischen Dinge) und ist eine Kategorie von IoT-Geräten, die Gesundheits- und Befindlichkeitsdaten erfassen und über ein Netzwerk mit anderen IT-Systemen im Gesundheitswesen austauschen. Einige Beispiele für IoMT-Geräte sind Fitness- und klinische Wearables, Überwachungssensoren, Aktivitätstracker, Point-of-Care-Kioske oder sogar eine digitale Pille.
 
-### <a name="how-many-iot-connectors-do-i-need"></a>Wie viele IoT Connector-Instanzen benötige ich?
-Eine einzige IoT Connector-Instanz kann verwendet werden, um Daten von einer großen Anzahl verschiedener Gerätetypen zu erfassen. Vielleicht entscheiden Sie sich aus folgenden Gründen dennoch für die Verwendung weiterer Connectors:
-- **Skalierung**: Für die öffentliche Vorschau ist die Kapazität der IoT Connector-Ressourcen festgelegt und soll einen Durchsatz von etwa 200 Nachrichten pro Sekunde ermöglichen. Wenn ein höherer Durchsatz erforderlich ist, können Sie weitere IoT Connectors-Instanzen hinzufügen.
-- **Gerätetyp**: Aus Gründen der Geräteverwaltung können Sie für jeden Typ von IoMT-Geräten eine separate IoT Connector-Instanzen einrichten.
+### <a name="how-many-azure-iot-connector-for-fhir-preview-do-i-need"></a>Wie viele Instanzen von Azure IoT Connector for FHIR (Vorschau) benötige ich?
+Ein einziger Azure IoT Connector for FHIR* kann verwendet werden, um Daten von einer großen Anzahl unterschiedlicher Gerätetypen zu erfassen. Vielleicht entscheiden Sie sich aus folgenden Gründen dennoch für die Verwendung weiterer Connectors:
+- **Skalierung**: Für die öffentliche Vorschau ist die Ressourcenkapazität von Azure IoT Connector for FHIR festgelegt, und es wird erwartet, dass sie einen Durchsatz von etwa 200 Nachrichten pro Sekunde bereitstellt. Wenn ein höherer Durchsatz erforderlich ist, können Sie weitere Instanzen von Azure IoT Connector for FHIR hinzufügen.
+- **Gerätetyp**: Zum Zwecke der Geräteverwaltung können Sie für jeden Typ von IoMT-Gerät einen separaten Azure IoT Connector for FHIR einrichten.
 
-### <a name="is-there-a-limit-on-number-of-iot-connectors-during-public-preview"></a>Gibt es eine Beschränkung für die Anzahl von IoT Connector-Instanzen während der öffentlichen Vorschau?
-Ja, Sie können nur zwei IoT Connector-Instanzen pro Abonnement erstellen, während sich die Funktion in der öffentlichen Vorschau befindet. Diese Einschränkung ist vorhanden, um unerwartete Kosten zu vermeiden, da die Funktion während der Vorschau kostenlos verfügbar ist. Auf Anfrage kann diese Grenze auf bis zu fünf IoT Connector-Instanzen angehoben werden.
+### <a name="is-there-a-limit-on-number-of-azure-iot-connector-for-fhir-preview-during-public-preview"></a>Gibt es eine Beschränkung für die Anzahl der Instanzen von Azure IoT Connector for FHIR (Vorschau) während der öffentlichen Vorschau?
+Ja, Sie können nur zwei Instanzen von Azure IoT Connector for FHIR pro Abonnement erstellen, während sich die Funktion in der öffentlichen Vorschau befindet. Diese Einschränkung ist vorhanden, um unerwartete Kosten zu vermeiden, da die Funktion während der Vorschau kostenlos verfügbar ist. Auf Anfrage kann diese Einschränkung auf ein Maximum von bis zu fünf Instanzen von Azure IoT Connector for FHIR angehoben werden.
 
-### <a name="what-azure-regions-iot-connector-feature-is-available-during-public-preview"></a>In welchen Azure-Regionen ist die IoT Connector-Funktion während der öffentlichen Vorschau verfügbar?
-IoT Connector ist in allen Azure-Regionen verfügbar, in denen Azure API for FHIR verfügbar ist.
+### <a name="what-azure-regions-azure-iot-connector-for-fhir-preview-feature-is-available-during-public-preview"></a>In welchen Azure-Regionen ist die Funktion „Azure IoT Connector for FHIR (Vorschau)“ während der öffentlichen Vorschau verfügbar?
+Azure IoT Connector for FHIR ist in allen Azure-Regionen verfügbar, in denen Azure API for FHIR verfügbar ist.
 
-### <a name="can-i-configure-scaling-capacity-for-iot-connector"></a>Kann ich die Skalierungskapazität für IoT Connector konfigurieren?
-Da IoT Connector während der öffentlichen Vorschau kostenlos ist, ist die Skalierungskapazität festgelegt und begrenzt. Die in der öffentlichen Vorschau verfügbare IoT Connector-Konfiguration ermöglicht voraussichtlich einen Durchsatz von etwa 200 Nachrichten pro Sekunde. Die Konfiguration der Ressourcenkapazität wird in irgendeiner Form in der allgemeinen Verfügbarkeit (General Availability, GA) vorhanden sein.
+### <a name="can-i-configure-scaling-capacity-for-azure-iot-connector-for-fhir-preview"></a>Kann ich die Skalierungskapazität für Azure IoT Connector for FHIR (Vorschau) konfigurieren?
+Da Azure IoT Connector for FHIR während der öffentlichen Vorschau kostenlos ist, ist die Skalierungskapazität festgelegt und begrenzt. Die in der öffentlichen Vorschau verfügbare Azure IoT Connector für FHIR-Konfiguration ermöglicht voraussichtlich einen Durchsatz von etwa 200 Nachrichten pro Sekunde. Die Konfiguration der Ressourcenkapazität wird in irgendeiner Form in der allgemeinen Verfügbarkeit (General Availability, GA) vorhanden sein.
 
-### <a name="what-fhir-version-does-iot-connector-support"></a>Welche FHIR-Version unterstützt IoT Connector?
-IoT Connector unterstützt derzeit nur die Version R4 von FHIR. Daher ist diese Funktion nur auf den R4-Instanzen von Azure API for FHIR sichtbar, und Microsoft plant derzeit keine Unterstützung von Version STU3.
+### <a name="what-fhir-version-does-azure-iot-connector-for-fhir-preview-support"></a>Welche FHIR-Version wird von Azure IoT Connector for FHIR (Vorschau) unterstützt?
+Azure IoT Connector for FHIR unterstützt derzeit nur die Version R4 von FHIR. Daher ist diese Funktion nur auf den R4-Instanzen von Azure API for FHIR sichtbar, und Microsoft plant derzeit keine Unterstützung von Version STU3.
 
-### <a name="why-cant-i-install-iot-connector-when-private-link-is-enabled-on-azure-api-for-fhir"></a>Warum kann ich IoT Connector nicht installieren, wenn Private Link für Azure API for FHIR aktiviert ist?
-IoT Connector unterstützt derzeit keine Private Link-Funktionalität. Wenn Sie also Private Link für Azure API for FHIR aktiviert haben, können Sie IoT Connector nicht installieren und umgekehrt. Diese Einschränkung wird voraussichtlich entfernt, wenn IoT Connector für die allgemeine Verfügbarkeit (GA) vorhanden ist.
+### <a name="why-cant-i-install-azure-iot-connector-for-fhir-preview-when-private-link-is-enabled-on-azure-api-for-fhir"></a>Warum kann ich Azure IoT Connector for FHIR (Vorschau) nicht installieren, wenn Private Link für Azure API for FHIR aktiviert ist?
+Azure IoT Connector for FHIR unterstützt derzeit keine Private Link-Funktionalität. Wenn Sie also Private Link für Azure API for FHIR aktiviert haben, können Sie Azure IoT Connector for FHIR nicht installieren und umgekehrt. Diese Einschränkung wird voraussichtlich entfernt, wenn Azure IoT Connector for FHIR für die allgemeine Verfügbarkeit (GA) vorhanden ist.
 
-### <a name="whats-the-difference-between-the-open-source-iomt-fhir-connector-for-azure-and-iot-connector-feature-of-azure-api-for-fhir-service"></a>Worin besteht der Unterschied zwischen dem Open-Source-IoMT-FHIR-Connector für Azure und der IoT Connector-Funktion des Azure API for FHIR-Diensts?
-IoT Connector ist eine gehostete und verwaltete Version des Open-Source-IoMR-FHIR-Connectors für Azure. Im verwalteten Dienst stellt Microsoft die gesamte Wartung und alle Updates zur Verfügung.
+### <a name="whats-the-difference-between-the-open-source-iomt-fhir-connector-for-azure-and-azure-iot-connector-for-fhir-preview-feature-of-azure-api-for-fhir-service"></a>Worin besteht der Unterschied zwischen dem Open-Source-IoMT-FHIR-Connector für Azure und der Funktion „Azure IoT Connector for FHIR (Vorschau)“ des Azure API for FHIR-Diensts?
+Azure IoT Connector for FHIR ist eine gehostete und verwaltete Version des Open-Source-IoMR-FHIR-Connectors für Azure. Im verwalteten Dienst stellt Microsoft die gesamte Wartung und alle Updates zur Verfügung.
 
 Beim Ausführen des IoMT-FHIR-Connectors für Azure haben Sie direkten Zugriff auf die zugrunde liegenden Ressourcen. Sie sind aber auch für die Wartung und Aktualisierung des Servers und alle erforderlichen Compliance-Aufgaben zuständig, wenn Sie PHI-Daten speichern.
 
-Aus Entwicklersicht wird jedes Feature zuerst auf dem Open-Source-IoMT-FHIR-Connector für Azure bereitgestellt. Nachdem es in der Open-Source-Lösung überprüft wurde, wird es in der PaaS-IoT-Connector-Funktion des Azure API for FHIR-Diensts veröffentlicht. Die Zeit zwischen der Veröffentlichung in der Open-Source- und der PaaS-Lösung hängt von der Komplexität des Features und anderen Roadmapprioritäten ab.
+Aus Entwicklersicht wird jedes Feature zuerst auf dem Open-Source-IoMT-FHIR-Connector für Azure bereitgestellt. Nachdem es in der Open-Source-Lösung überprüft wurde, wird es in der PaaS-Funktion „Azure IoT Connector for FHIR“ des Azure API for FHIR-Diensts veröffentlicht. Die Zeit zwischen der Veröffentlichung in der Open-Source- und der PaaS-Lösung hängt von der Komplexität des Features und anderen Roadmapprioritäten ab.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -88,3 +87,7 @@ In diesem Artikel haben Sie einige der häufig gestellten Fragen zu Azure API fo
  
 >[!div class="nextstepaction"]
 >[Unterstützte FHIR-Features](fhir-features-supported.md)
+
+*Im Azure-Portal wird Azure IoT Connector for FHIR als „IoT-Connector (Vorschau)“ bezeichnet.
+
+FHIR ist ein eingetragenes Markenzeichen von HL7 und wird mit Erlaubnis von HL7 verwendet.

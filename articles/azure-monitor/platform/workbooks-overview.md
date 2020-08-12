@@ -6,18 +6,22 @@ manager: carmonm
 services: azure-monitor
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 10/23/2019
+ms.date: 07/23/2020
 ms.author: mbullwin
-ms.openlocfilehash: b06f39de9f977a9f777b21a53e93ca744fccdd93
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1d85f011289bfa27bcf1e94d8da8cd7a32092c2c
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85560159"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87799564"
 ---
 # <a name="azure-monitor-workbooks"></a>Azure Monitor-Arbeitsmappen
 
 Arbeitsmappen bieten einen flexiblen Bereich für die Datenanalyse und die Erstellung umfassender visueller Berichte innerhalb des Azure-Portals. Mit ihnen können Sie mehrere Datenquellen in Azure nutzen und sie zu vereinheitlichten interaktiven Oberflächen kombinieren. 
+
+Im Folgenden finden Sie eine Videoanleitung zum Erstellen von Arbeitsmappen.
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4B4Ap]
 
 ## <a name="data-sources"></a>Datenquellen
 
@@ -52,9 +56,9 @@ Arbeitsmappen bieten eine Vielzahl von Funktionen zur Visualisierung Ihrer Daten
 
 Zum Erkunden der Oberfläche für Arbeitsmappen navigieren Sie zunächst zum Azure Monitor-Dienst. Dazu können Sie **Monitor** in das Suchfeld im Azure-Portal eingeben.
 
-Wählen Sie dann **Arbeitsmappen (Vorschau)** aus.
+Wählen Sie dann **Arbeitsmappen** aus.
 
-![Screenshot der Schaltfläche „Arbeitsmappen (Vorschau)“ in einem roten Kasten](./media/workbooks-overview/workbooks-preview.png)
+![Screenshot der Schaltfläche „Arbeitsmappen“ in einem roten Kasten](./media/workbooks-overview/workbooks.png)
 
 ### <a name="gallery"></a>Galerie
 

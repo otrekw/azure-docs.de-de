@@ -1,14 +1,14 @@
 ---
 title: Mandantenübergreifende Verwaltungsmöglichkeiten
 description: Die delegierte Azure-Ressourcenverwaltung ermöglicht eine mandantenübergreifende Verwaltungserfahrung.
-ms.date: 07/24/2020
+ms.date: 07/31/2020
 ms.topic: conceptual
-ms.openlocfilehash: 979891a3ebea8070c6882fff62ed4a7954041d3e
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: a6d5c7e06ed59ab76b15f4f8ae880408dc6f7835
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371038"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500877"
 ---
 # <a name="cross-tenant-management-experiences"></a>Mandantenübergreifende Verwaltungsmöglichkeiten
 
@@ -33,9 +33,7 @@ Azure Lighthouse ermöglicht größere Flexibilität bei der Verwaltung von Ress
 
 Sie können Verwaltungsaufgaben für delegierte Ressourcen direkt im Portal oder mithilfe von APIs und Verwaltungstools (z. B. Azure-Befehlszeilenschnittstelle und Azure PowerShell) durchführen. Alle vorhandenen APIs können für die Arbeit mit delegierten Ressourcen verwendet werden, solange die Funktionalität für mandantenübergreifende Verwaltung unterstützt wird und der Benutzer über die entsprechenden Berechtigungen verfügt.
 
-Das Azure PowerShell-Cmdlet [Get-AzSubscription](/powershell/module/Az.Accounts/Get-AzSubscription?view=azps-3.5.0) zeigt `tenantID` für jedes Abonnement, sodass Sie ermitteln können, ob ein zurückgegebenes Abonnement zum Mandanten Ihres Dienstanbieters oder zu dem eines verwalteten Kunden gehört.
-
-Ebenso zeigen Azure CLI-Befehle wie [az account list](/cli/azure/account?view=azure-cli-latest#az-account-list) die Attribute **homeTenantId** und **managedByTenants** an.
+Azure CLI-Befehle wie [az account list](/cli/azure/account?view=azure-cli-latest#az-account-list) zeigen die Attribute **homeTenantId** und **managedByTenants** für jedes Abonnement an, sodass Sie ermitteln können, ob ein zurückgegebenes Abonnement zum Mandanten Ihres Dienstanbieters oder zu dem eines verwalteten Kunden gehört.
 
 > [!TIP]
 > Wenn diese Werte bei Verwendung der Azure-Befehlszeilenschnittstelle nicht angezeigt werden, löschen Sie den Cache, indem Sie `az account clear` gefolgt von `az login --identity` ausführen.
@@ -70,7 +68,7 @@ Die meisten Aufgaben und Dienste können auf delegierten Ressourcen über verwal
 
 [Azure-Kostenverwaltung und -Abrechnung](../../cost-management-billing/index.yml):
 
-- Über den verwaltenden Mandanten können CSP-Partner für Kunden, die dem Azure-Plan unterliegen, Verbrauchskosten vor Steuern anzeigen, verwalten und analysieren. (Käufe werden hierbei nicht berücksichtigt.) Die Kosten basieren auf Einzelhandelspreisen sowie auf dem Azure RBAC-Zugriff des Partners für das Abonnement des Kunden.
+- Über den verwaltenden Mandanten können CSP-Partner für Kunden, die dem Azure-Plan unterliegen, Verbrauchskosten vor Steuern anzeigen, verwalten und analysieren. (Käufe werden hierbei nicht berücksichtigt.) Die Kosten basieren auf Einzelhandelspreisen sowie auf dem Umfang des Azure RBAC-Zugriffs (Role-Based Access Control) des Partners für das Abonnement des Kunden.
 
 [Azure Kubernetes Service (AKS)](../../aks/index.yml):
 

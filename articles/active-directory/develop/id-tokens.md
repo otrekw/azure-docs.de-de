@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/21/2020
+ms.date: 07/29/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms:custom: fasttrack-edit
-ms.openlocfilehash: af554b2055102b12a8c0e89c6301400f76021ede
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: e242e6ce59c715cf3a9ca95523a9a9eda274407a
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87313335"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87418915"
 ---
 # <a name="microsoft-identity-platform-id-tokens"></a>Microsoft Identity Platform – ID-Token
 
@@ -71,7 +71,7 @@ Diese Liste zeigt die JWT-Ansprüche, die (sofern nicht anders angegeben) standa
 |`nbf` |  Ganze Zahl, ein UNIX-Zeitstempel | Der Anspruch „nbf“ (nicht vor) gibt die Zeit an, vor der das JWT NICHT für die Bearbeitung akzeptiert werden darf.|
 |`exp` |  Ganze Zahl, ein UNIX-Zeitstempel | Der Anspruch „exp“ (Ablaufzeit) gibt die Ablaufzeit an, ab oder nach der das JWT NICHT für die Bearbeitung akzeptiert werden darf.  Es ist wichtig zu beachten, dass eine Ressource das Token auch vor diesem Zeitpunkt ablehnen kann (wenn beispielsweise eine Änderung der Authentifizierung erforderlich ist oder ein Tokenwiderruf erkannt wurde). |
 | `c_hash`| String |Der Codehash ist nur dann in ID-Token enthalten, wenn das ID-Token zusammen mit einem OAuth 2.0-Autorisierungscode ausgestellt wird. Mit seiner Hilfe kann die Authentizität eines Autorisierungscodes überprüft werden. Weitere Informationen zum Ausführen dieser Überprüfung finden Sie in der [OpenID Connect-Spezifikation](https://openid.net/specs/openid-connect-core-1_0.html). |
-|`at_hash`| String |Der Zugriffstokenhash ist nur in ID-Token enthalten, wenn das ID-Token zusammen mit einem OAuth 2.0-Zugriffstoken ausgestellt wird. Mit seiner Hilfe kann die Authentizität eines Zugriffstokens überprüft werden. Weitere Informationen zum Ausführen dieser Überprüfung finden Sie in der [OpenID Connect-Spezifikation](https://openid.net/specs/openid-connect-core-1_0.html). |
+|`at_hash`| String |Der Zugriffstokenhash ist nur in ID-Token enthalten, wenn das ID-Token vom `/authorize`-Endpunkt zusammen mit einem OAuth 2.0-Zugriffstoken ausgestellt wird. Mit seiner Hilfe kann die Authentizität eines Zugriffstokens überprüft werden. Weitere Informationen zum Ausführen dieser Überprüfung finden Sie in der [OpenID Connect-Spezifikation](https://openid.net/specs/openid-connect-core-1_0.html#HybridIDToken). Dies wird für ID-Token vom `/token`-Endpunkt nicht zurückgegeben. |
 |`aio` | Nicht transparente Zeichenfolge | Ein interner Anspruch, der von Azure AD verwendet wird, um Daten für die Wiederverwendung von Token aufzuzeichnen. Sollte ignoriert werden.|
 |`preferred_username` | String | Der primäre Benutzername, der den Benutzer darstellt. Dabei kann es sich um eine E-Mail-Adresse, eine Telefonnummer oder einen generischen Benutzernamen ohne bestimmtes Format handeln. Der Wert kann geändert werden und sich im Laufe der Zeit ändern. Da er geändert werden kann, darf dieser Wert nicht verwendet werden, um Autorisierungsentscheidungen zu treffen. Der Bereich `profile` ist erforderlich, um diesen Anspruch zu empfangen.|
 |`email` | String | Der Anspruch `email` ist standardmäßig für Gastkonten vorhanden, die über eine E-Mail-Adresse verfügen.  Ihre App kann den E-Mail-Anspruch für verwaltete Benutzer (unter demselben Mandanten wie die Ressource) über den `email` [optionalen Anspruch](active-directory-optional-claims.md) anfordern.  Auf dem v2.0-Endpunkt kann Ihre App auch den OpenID Connect-Bereich `email` anfordern. Sie müssen nicht sowohl den optionalen Anspruch als auch den Bereich abrufen, um den Anspruch zu erhalten.  Für den Anspruch „email“ werden nur adressierbare E-Mails aus den Profilinformationen des Benutzers unterstützt. |

@@ -5,16 +5,17 @@ author: austonli
 ms.author: aul
 ms.subservice: ''
 ms.topic: conceptual
-ms.date: 02/07/2020
-ms.openlocfilehash: 234da921b4f0d1243ca8cfdb12ba2d851db2b43f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 08/04/2020
+ms.openlocfilehash: 19fd1d064a3f106d7b770481d1e456c51cf1e166
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77658692"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87759426"
 ---
 # <a name="azure-monitor-view-designer-to-workbooks-transition-guide"></a>Handbuch für den Übergang vom Azure Monitor-Ansicht-Designer zu Arbeitsmappen
-Der [Ansicht-Designer](view-designer.md) ist eine Funktion in Azure Monitor, mit der Sie verschiedene benutzerdefinierten Ansichten erstellen können, die Ihnen bei der Visualisierung von Daten in Ihrem Log Analytics-Arbeitsbereich mittels Diagrammen, Listen und Zeitachsen helfen. Sie laufen aus und werden durch Arbeitsmappen ersetzt, die zusätzliche Funktionalität bereitstellen. Dieser Artikel bietet eine Übersicht über den Prozess zum Umwandeln Ihrer vorhandener Ansichten in Arbeitsmappen.
+Der [Ansicht-Designer](view-designer.md) ist eine Funktion in Azure Monitor, mit der Sie verschiedene benutzerdefinierten Ansichten erstellen können, die Ihnen bei der Visualisierung von Daten in Ihrem Log Analytics-Arbeitsbereich mittels Diagrammen, Listen und Zeitachsen helfen. Sie wurden in Arbeitsmappen umgewandelt, die einen flexiblen Bereich für die Datenanalyse und die Erstellung umfassender visueller Berichte innerhalb des Azure-Portals bieten. Dieser Artikel unterstützt Sie beim Übergang vom Ansichts-Designer zu Arbeitsmappen. 
+
 
 ## <a name="workbooks-overview"></a>Übersicht über Arbeitsmappen
 [Arbeitsmappen](../insights/vminsights-workbooks.md) kombinieren Text,  [Protokollabfragen](../log-query/query-language.md), Metriken und Parameter zu umfassenden interaktiven Berichten. Teammitglieder mit demselben Zugriff auf Azure-Ressourcen können auch Arbeitsmappen bearbeiten.

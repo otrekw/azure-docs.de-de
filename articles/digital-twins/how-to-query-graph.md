@@ -7,20 +7,24 @@ ms.author: baanders
 ms.date: 3/26/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 05bcbf8df695ba308a6eaff5e7401f0a6d638747
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 3250e4c35f6b898f4431d0f2fe15f84d915c1c8e
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87337601"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87760395"
 ---
 # <a name="query-the-azure-digital-twins-twin-graph"></a>Abfragen des Zwillingsdiagramms von Azure Digital Twins
 
-Dieser Artikel bietet Beispiele und ausführliche Informationen dazu, wie Sie die [Abfragedatenspeicher-Sprache von Azure Digital Twins](concepts-query-language.md) verwenden, um Informationen im [Zwillingsdiagramm](concepts-twins-graph.md) abzufragen. Sie führen Abfragen im Diagramm mithilfe der [**Abfrage-APIs**](how-to-use-apis-sdks.md) von Azure Digital Twins aus.
+Dieser Artikel bietet Beispiele und ausführliche Informationen dazu, wie Sie die [Azure Digital Twins-Abfragesprache](concepts-query-language.md) verwenden, um Informationen im [Zwillingsgraphen](concepts-twins-graph.md) abzufragen. Sie führen Abfragen im Diagramm mithilfe der [**Abfrage-APIs**](how-to-use-apis-sdks.md) von Azure Digital Twins aus.
+
+[!INCLUDE [digital-twins-query-operations.md](../../includes/digital-twins-query-operations.md)]
+
+Im weiteren Verlauf dieses Artikels finden Sie Beispiele für die Verwendung dieser Vorgänge.
 
 ## <a name="query-syntax"></a>Abfragesyntax
 
-Im Folgenden finden Sie einige Beispielabfragen, die die Struktur der Abfragesprache veranschaulichen und mögliche Abfragevorgänge durchführen.
+Dieser Abschnitt enthält einige Beispielabfragen, die die Struktur der Abfragesprache veranschaulichen und mögliche Abfragevorgänge durchführen.
 
 Abrufen von [digitalen Zwillingen](concepts-twins-graph.md) nach Eigenschaften (einschließlich ID und Metadaten):
 ```sql
@@ -31,24 +35,63 @@ AND T.$dtId in ['123', '456']
 AND T.Temperature = 70
 ```
 
-Abrufen von digitalen Zwillingen nach [Modell](concepts-models.md)
-```sql
-SELECT  * 
-FROM DigitalTwins T  
-WHERE IS_OF_MODEL(T , 'dtmi:com:contoso:Space;3')
-AND T.roomSize > 50
-```
-
 > [!TIP]
 > Die ID eines digitalen Zwillings wird mithilfe des Metadatenfelds `$dtId` abgefragt.
 
+Sie können auch Zwillinge über ihre *Tageigenschaften* abrufen, wie unter [Hinzufügen von Tags zu digitalen Zwillingen](how-to-use-tags.md) beschrieben:
+```sql
+select * from digitaltwins where is_defined(tags.red) 
+```
+
+### <a name="select-top-items"></a>Auswählen der obersten Elemente
+
+Mithilfe der `Select TOP`-Klausel können Sie die verschiedenen obersten Elemente in einer Abfrage auswählen.
+
+```sql
+SELECT TOP (5)
+FROM DIGITALTWINS
+WHERE property = 42
+```
+
+### <a name="query-by-model"></a>Abfrage nach Modell
+
+Der `IS_OF_MODEL`-Operator kann verwendet werden, um anhand des [Modells](concepts-models.md) des Zwillings zu filtern. Er unterstützt Vererbung und weist mehrere Überladungsoptionen auf.
+
+Die einfachste Verwendung von `IS_OF_MODEL` nimmt nur einen `twinTypeName`-Parameter entgegen: `IS_OF_MODEL(twinTypeName)`.
+Hier ist eine Beispielabfrage, die in diesem Parameter einen Wert übergibt:
+
+```sql
+SELECT * FROM DIGITALTWINS WHERE IS_OF_MODEL('dtmi:sample:thing;1')
+```
+
+Um eine zu durchsuchende Zwillingssammlung anzugeben, wenn mehrere vorhanden sind (z. B. wenn `JOIN` verwendet wird), fügen Sie den Parameter `twinCollection` hinzu: `IS_OF_MODEL(twinCollection, twinTypeName)`.
+Hier ist eine Beispielabfrage, die einen Wert für diesen Parameter hinzufügt:
+
+```sql
+SELECT * FROM DIGITALTWINS DT WHERE IS_OF_MODEL(DT, 'dtmi:sample:thing;1')
+```
+
+Um eine genaue Übereinstimmung zu überprüfen, fügen Sie den Parameter `exact` hinzu: `IS_OF_MODEL(twinTypeName, exact)`.
+Hier ist eine Beispielabfrage, die einen Wert für diesen Parameter hinzufügt:
+
+```sql
+SELECT * FROM DIGITALTWINS WHERE IS_OF_MODEL('dtmi:sample:thing;1', exact)
+```
+
+Sie können auch alle drei Argumente gemeinsam übergeben: `IS_OF_MODEL(twinCollection, twinTypeName, exact)`.
+Hier ist eine Beispielabfrage, in der für alle drei Parameter ein Wert angegeben ist:
+
+```sql
+SELECT ROOM FROM DIGITALTWINS DT WHERE IS_OF_MODEL(DT, 'dtmi:sample:thing;1', exact)
+```
+
 ### <a name="query-based-on-relationships"></a>Abfrage basierend auf Beziehungen
 
-Für Abfragen anhand der Beziehungen von digitalen Zwillingen weist die Abfragespeichersprache von Azure Digital Twins eine besondere Syntax auf.
+Für Abfragen anhand der Beziehungen von digitalen Zwillingen weist die Azure Digital Twins-Abfragesprache eine besondere Syntax auf.
 
 Beziehungen werden in der `FROM`-Klausel in den Abfragebereich übernommen. Ein wichtiger Unterschied zu „klassischen“ SQL-artigen Sprachen besteht darin, dass die Ausdrücke in dieser `FROM`-Klausel keine Tabellen sind. Stattdessen drückt die `FROM`-Klausel einen entitätsübergreifenden Beziehungsdurchlauf aus, der mit einer Azure Digital Twins-Version von `JOIN` geschrieben wird. 
 
-Denken Sie daran, dass in den Funktionen des Azure Digital Twins-[Modells](concepts-models.md) Beziehungen nur in Abhängigkeit von Zwillingen vorhanden sind. Dies bedeutet, dass sich `JOIN` in der Abfragespeichersprache von Azure Digital Twins leicht von `JOIN` in allgemeiner SQL-Form unterscheidet, da Beziehungen hier nicht unabhängig abgefragt werden können und an einen Zwilling gebunden sein müssen.
+Denken Sie daran, dass in den Funktionen des Azure Digital Twins-[Modells](concepts-models.md) Beziehungen nur in Abhängigkeit von Zwillingen vorhanden sind. Dies bedeutet, dass sich `JOIN` in der Azure Digital Twins-Abfragesprache leicht von `JOIN` in allgemeiner SQL-Form unterscheidet, da Beziehungen hier nicht unabhängig abgefragt werden können und an einen Zwilling gebunden sein müssen.
 Um diesen Unterschied zu berücksichtigen, wird das Schlüsselwort `RELATED` in der `JOIN`-Klausel verwendet, um auf den Beziehungssatz eines Zwillings zu verweisen. 
 
 Der folgende Abschnitt enthält einige Beispiele dafür.
@@ -74,7 +117,7 @@ WHERE T.$dtId = 'ABC'
 
 #### <a name="query-the-properties-of-a-relationship"></a>Abfragen der Eigenschaften einer Beziehung
 
-Ähnlich wie die Eigenschaften digitaler Zwillinge über DTDL beschrieben werden, können Beziehungen ebenfalls über Eigenschaften verfügen. Die Abfragespeichersprache von Azure Digital Twins ermöglicht das Filtern und Projizieren von Beziehungen, indem der Beziehung innerhalb der `JOIN`-Klausel ein Alias zugewiesen wird. 
+Ähnlich wie die Eigenschaften digitaler Zwillinge über DTDL beschrieben werden, können Beziehungen ebenfalls über Eigenschaften verfügen. Die Azure Digital Twins-Abfragesprache ermöglicht das Filtern und Projizieren von Beziehungen, indem der Beziehung innerhalb der `JOIN`-Klausel ein Alias zugewiesen wird. 
 
 Als Beispiel sei eine *servicedBy*-Beziehung angenommen, die über die *reportedCondition*-Eigenschaft verfügt. In der nachstehenden Abfrage erhält diese Beziehung den Alias „R“, um auf die zugehörige-Eigenschaft zu verweisen.
 
@@ -129,7 +172,7 @@ Es kann bis zu 10 Sekunden dauern, bis Änderungen in Ihrer Instanz in Abfragen
 Für die Verwendung von `JOIN` während der Vorschauphase gelten weitere Einschränkungen.
 * In der `FROM`-Anweisung werden keine Unterabfragen unterstützt.
 * `OUTER JOIN`-Semantik wird nicht unterstützt. Das bedeutet, dass die gesamte „Zeile“ aus dem Ausgaberesultset entfernt wird, wenn die Beziehung den Rang null aufweist.
-* Während der Public Preview ist die Durchlauftiefe für den Graphen eingeschränkt: Pro Abfrage ist nur ein `JOIN` zulässig.
+* Während der Vorschauphase ist die Durchlauftiefe für den Graphen auf fünf `JOIN`-Ebenen pro Abfrage beschränkt.
 * Die Quelle für `JOIN`-Vorgänge ist eingeschränkt: Die Abfrage muss die Zwillinge deklarieren, in denen die Abfrage beginnt.
 
 ## <a name="query-best-practices"></a>Best Practices für Abfragen

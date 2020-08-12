@@ -6,22 +6,43 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 06/29/2020
+ms.date: 08/03/2020
 ms.author: cherylmc
-ms.openlocfilehash: ecc2b3cf236cb2a78fd595189649e7f6b176d709
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 95fa7a8c6abd0ad65b367cacef15b8faa16da640
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85567670"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87553426"
 ---
 # <a name="scenario-any-to-any"></a>Szenario: Any-to-Any
 
-Wenn Sie mit Virtual WAN-Routing für virtuelle Hubs arbeiten, stehen Ihnen eine ganze Reihe von Szenarien zur Verfügung. In einem Any-to-Any-Szenario kann jeder Spoke einen anderen Spoke erreichen. Wenn mehrere Hubs vorhanden sind, ist das Hub-zu-Hub-Routing (auch als Routing zwischen Hubs bezeichnet) im virtuellen Standard-WAN standardmäßig aktiviert. 
+Wenn Sie mit Virtual WAN-Routing für virtuelle Hubs arbeiten, stehen Ihnen eine ganze Reihe von Szenarien zur Verfügung. In einem Any-to-Any-Szenario kann jeder Spoke einen anderen Spoke erreichen. Wenn mehrere Hubs vorhanden sind, ist das Hub-zu-Hub-Routing (auch als Routing zwischen Hubs bezeichnet) im virtuellen Standard-WAN standardmäßig aktiviert. Weitere Informationen zum Routing für virtuelle Hubs finden Sie unter [Informationen zum Routing virtueller Hubs](about-virtual-hub-routing.md).
 
-In diesem Szenario sind alle VPN-, ExpressRoute- und Benutzer-VPN-Verbindungen derselben Routingtabelle zugeordnet. Alle VPN-, ExpressRoute- und Benutzer-VPN-Verbindungen geben Routen an denselben Satz von Routingtabellen weiter. Weitere Informationen zum Routing für virtuelle Hubs finden Sie unter [Informationen zum Routing virtueller Hubs](about-virtual-hub-routing.md).
+## <a name="design"></a><a name="design"></a>Entwurf
 
-## <a name="scenario-architecture"></a><a name="architecture"></a>Szenarioarchitektur
+Um herauszufinden, wie viele Routingtabellen in einem Virtual WAN-Szenario erforderlich sind, können Sie eine Verbindungsmatrix erstellen, in der jede Zelle angibt, ob eine Quelle (Zeile) mit einem Ziel (Spalte) kommunizieren kann. Die Verbindungsmatrix in diesem Szenario ist trivial, aber wir haben sie eingeschlossen, um mit anderen Szenarien konsistent zu sein.
+
+| From |   To |  *VNETs* | *Branches* |
+| -------------- | -------- | ---------- | ---|
+| VNETs     | &#8594;|      X     |     X    |
+| Branches   | &#8594;|    X     |     X    |
+
+Jede Zelle in der vorstehenden Tabelle beschreibt, ob eine Virtual WAN-Verbindung (die Seite „From“ des Flows, die Zeilenheader in der Tabelle) ein Zielpräfix (die Seite „To“ des Flows, die kursiv gesetzten Spaltenheader in der Tabelle) für einen bestimmten Datenverkehrsfluss lernt.
+
+Da für alle Verbindungen von VNETs und Branches (VPN, ExpressRoute und Benutzer-VPN) die gleichen Konnektivitätsanforderungen gelten, ist eine einzelne Routingtabelle erforderlich. Dadurch werden alle Verbindungen verknüpft und an dieselbe Routingtabelle weitergegeben, nämlich die Standardroutingtabelle:
+
+* Virtuelle Netzwerke:
+  * Zugeordnete Routingtabelle: **Standard**
+  * Weitergabe an Routingtabellen: **Standard**
+* Branches:
+  * Zugeordnete Routingtabelle: **Standard**
+  * Weitergabe an Routingtabellen: **Standard**
+
+Weitere Informationen zum Routing für virtuelle Hubs finden Sie unter [Informationen zum Routing virtueller Hubs](about-virtual-hub-routing.md).
+
+## <a name="architecture"></a><a name="architecture"></a>Architektur
 
 In **Abbildung 1** können alle VNETs und Branches (VPN, ExpressRoute, P2S) einander erreichen. In einem virtuellen Hub funktionieren die Verbindungen wie folgt:
 
@@ -35,7 +56,7 @@ Diese Verbindungen werden (standardmäßig bei Erstellung) der Standardroutingta
 
 :::image type="content" source="./media/routing-scenarios/any-any/figure-1.png" alt-text="Abbildung 1":::
 
-## <a name="scenario-workflow"></a><a name="workflow"></a>Szenarioworkflow
+## <a name="workflow"></a><a name="workflow"></a>Workflow
 
 Dieses Szenario ist für das virtuelle Standard-WAN standardmäßig aktiviert. Wenn die Einstellung für Branch-to-Branch in der WAN-Konfiguration deaktiviert ist, sind keine Verbindungen zwischen Branchspokes möglich. VPN/ExpressRoute/Benutzer-VPN werden in Virtual WAN als Branchspokes angesehen.
 

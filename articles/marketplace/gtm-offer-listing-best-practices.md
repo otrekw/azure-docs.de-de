@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 07/06/2020
-ms.openlocfilehash: 8adffcc6c7ae4af2e33587f75c83430473180203
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: b7bcdaf9e3935c01a0906ecfaa1570e4bc7caba9
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86118391"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87798119"
 ---
 # <a name="offer-listing-best-practices"></a>Bewährte Methoden für Angebotslistung
 
@@ -56,89 +56,7 @@ Wählen Sie Kategorien und Unterkategorien aus, die am besten zu Ihrem Angebot u
 * Bis zu zwei (2) Kategorien, einschließlich einer primären und einer sekundären Kategorie (optional)
 * Bis zu zwei (2) Unterkategorien für jede primäre und/oder sekundäre Kategorie Wenn keine Unterkategorie ausgewählt wird, ist das Angebot weiterhin auffindbar, allerdings nur unter der ausgewählten Kategorie.
 
-| [**Azure Marketplace**](https://azuremarketplace.microsoft.com/marketplace/apps) (IT-Experten und Entwickler)  | [**AppSource**](https://appsource.microsoft.com/marketplace/apps) (Geschäftsbenutzer)|
-| :------------------- |:----------------|
-|**Analyse** | **Analyse** |
-| &nbsp;&nbsp;Datenerkenntnisse | &nbsp;&nbsp;Erweiterte Analyse  |
-| &nbsp;&nbsp;Datenanalyse |  &nbsp;&nbsp;Visualisierung und Berichterstellung |
-| &nbsp;&nbsp;Big Data | **KI und Machine Learning**  |
-| &nbsp;&nbsp;Predictive Analytics | &nbsp;&nbsp;KI für Unternehmen |
-| &nbsp;&nbsp;Echtzeit-/Streaminganalyse | &nbsp;&nbsp;Bot-Apps |
-| **KI und Machine Learning** | **Kollaboration** |
-| &nbsp;&nbsp;Botdienst | &nbsp;&nbsp;Kontakte und Personen |
-| &nbsp;&nbsp;Cognitive Services | &nbsp;&nbsp;Besprechungsmanagement |
-| &nbsp;&nbsp;ML-Dienst | &nbsp;&nbsp;Websitedesign und -verwaltung |
-| &nbsp;&nbsp;Automatisiertes ML | &nbsp;&nbsp;Aufgaben- und Projektmanagement |
-| &nbsp;&nbsp;Geschäftsprozessautomatisierung/robotergesteuerte Prozessautomatisierung | &nbsp;&nbsp;Sprach- und Videokonferenzen |
-| &nbsp;&nbsp;Datenbeschriftung | **Compliance und rechtliche Angelegenheiten** |
-| &nbsp;&nbsp;Datenaufbereitung | &nbsp;&nbsp;Steuern und Prüfungen |
-| &nbsp;&nbsp;Knowledge Mining | &nbsp;&nbsp;Rechtswesen |
-| &nbsp;&nbsp;ML-Vorgänge | &nbsp;&nbsp;Daten, Governance und Datenschutz |
-| **Blockchain**  | &nbsp;&nbsp;Integrität und Sicherheit |
-| &nbsp;&nbsp;App-Beschleuniger | **Kundendienst**  |
-| &nbsp;&nbsp;Ledger mit einem Knoten | &nbsp;&nbsp;Kontaktcenter |
-| &nbsp;&nbsp;Ledger mit mehreren Knoten | &nbsp;&nbsp;Persönlicher Dienst |
-| &nbsp;&nbsp;Tools | &nbsp;&nbsp;Backoffice und Personaldienste |
-| **Compute**  | &nbsp;&nbsp;Wissens- und Fallmanagement |
-| &nbsp;&nbsp;Anwendungsinfrastruktur | &nbsp;&nbsp;Soziale Medien und Omnichannel-Kundenbindung |
-| &nbsp;&nbsp;Betriebssysteme | **Finanzen** |
-| &nbsp;&nbsp;Cache | &nbsp;&nbsp;Rechnungsstellung |
-| **Container**  | &nbsp;&nbsp;Asset-Management |
-| &nbsp;&nbsp;Erste Schritte mit Containern | &nbsp;&nbsp;Analyse, Konsolidierung und Berichterstellung |
-| &nbsp;&nbsp;Container-Apps | &nbsp;&nbsp;Kredite und Inkasso |
-| &nbsp;&nbsp;Containerimages | &nbsp;&nbsp;Compliance- und Risikomanagement |
-| **Datenbanken**  | **Geolocation** |
-| &nbsp;&nbsp;NoSQL-Datenbanken | &nbsp;&nbsp;Karten |
-| &nbsp;&nbsp;Relationale Datenbanken | &nbsp;&nbsp;Nachrichten und Wetter |
-| &nbsp;&nbsp;Ledger-/Blockchain-Datenbanken | **Personalverwaltung** |
-| &nbsp;&nbsp;Data Lakes | &nbsp;&nbsp;Talentakquise |
-| &nbsp;&nbsp;Data Warehouse | &nbsp;&nbsp;Talentmanagement |
-| **Entwicklertools**  | &nbsp;&nbsp;Personalverwaltung |
-| &nbsp;&nbsp;Tools | &nbsp;&nbsp;Personalplanung und Analyse |
-| &nbsp;&nbsp;Skripts | **IT- und Verwaltungstools** |
-| &nbsp;&nbsp;Entwicklerdienst | &nbsp;&nbsp;Verwaltungslösungen |
-| **DevOps**  | &nbsp;&nbsp;Geschäftsanwendungen |
-| **Integration**  | **Internet der Dinge (IoT)** |
-| &nbsp;&nbsp;Messaging | &nbsp;&nbsp;Asset-Management und Betriebsführung |
-| **IT- und Verwaltungstools**  | &nbsp;&nbsp;Verbundene Produkte |
-| &nbsp;&nbsp;Verwaltungslösungen | &nbsp;&nbsp;Intelligente Lieferkette |
-| &nbsp;&nbsp;Geschäftsanwendungen | &nbsp;&nbsp;Predictive Maintenance |
-| **Identität**  | &nbsp;&nbsp;Remoteüberwachung |
-| &nbsp;&nbsp;Zugriffsverwaltung | &nbsp;&nbsp;Sicherheit |
-| **Internet der Dinge (IoT)**  | &nbsp;&nbsp;Intelligente Infrastruktur und Ressourcen |
-| &nbsp;&nbsp;IoT-Konnektivität | &nbsp;&nbsp;Fahrzeuge und Mobilität |
-| &nbsp;&nbsp;IoT-Basisdienste | **Marketing** |
-| &nbsp;&nbsp;IoT Edge-Module | &nbsp;&nbsp;Werbung |
-| &nbsp;&nbsp;IoT-Lösungen | &nbsp;&nbsp;Analysen |
-| &nbsp;&nbsp;Datenanalyse und Visualisierung | &nbsp;&nbsp;Kampagnenmanagement und -automatisierung |
-| **Medien**  | &nbsp;&nbsp;E-Mail-Marketing |
-| &nbsp;&nbsp;Mediendienste | &nbsp;&nbsp;Veranstaltungs- und Ressourcenmanagement |
-| &nbsp;&nbsp;Inhaltsschutz | &nbsp;&nbsp;Forschung und Analyse |
-| &nbsp;&nbsp;Live- und On-Demand-Streaming | &nbsp;&nbsp;Soziale Medien |
-| **Überwachung und Diagnose**  | **Betrieb und Lieferkette** |
-| **Migration**  | &nbsp;&nbsp;Asset- und Produktionsmanagement |
-| &nbsp;&nbsp;Datenmigration | &nbsp;&nbsp;Bedarfsvorhersage |
-| **Mixed Reality**  | &nbsp;&nbsp;Informationsverwaltung und Konnektivität |
-| **Netzwerk**  | &nbsp;&nbsp;Planung, Einkauf und Berichterstellung |
-| &nbsp;&nbsp;Appliance-Manager | &nbsp;&nbsp;Qualitäts- und Servicemanagement |
-| &nbsp;&nbsp;Konnektivität | &nbsp;&nbsp;Vertriebs- und Auftragsmanagement |
-| &nbsp;&nbsp;Firewalls | &nbsp;&nbsp;Transport- und Lagerverwaltung |
-| &nbsp;&nbsp;Lastenausgleichsmodule | **Produktivität** |
-| **Security**  | &nbsp;&nbsp;Inhaltserstellung und -verwaltung |
-| &nbsp;&nbsp;Identitäts- und Zugriffsverwaltung | &nbsp;&nbsp;Dokumentverwaltung |
-| &nbsp;&nbsp;Bedrohungsschutz | &nbsp;&nbsp;E-Mail-Verwaltung |
-| &nbsp;&nbsp;Informationsschutz | &nbsp;&nbsp;Sprachen und Übersetzungen |
-| **Storage**  | &nbsp;&nbsp;Suche und Referenzierung |
-| &nbsp;&nbsp;Sicherung und Wiederherstellung | &nbsp;&nbsp;Gamification |
-| &nbsp;&nbsp;Unternehmenshybridspeicher | **Vertrieb** |
-| &nbsp;&nbsp;Dateifreigabe | &nbsp;&nbsp;Teleshopping |
-| &nbsp;&nbsp;Lebenszyklusverwaltung von Daten | &nbsp;&nbsp;CPQ (Configure, Price, Quote) |
-| **Web**  | &nbsp;&nbsp;Vertragsverwaltung |
-| &nbsp;&nbsp;Blogs und CMSs | &nbsp;&nbsp;CRM |
-| &nbsp;&nbsp;Web-Apps für Einsteiger | &nbsp;&nbsp;E-Commerce |
-| &nbsp;&nbsp;E-Commerce | &nbsp;&nbsp;Anreicherung von Geschäftsdaten  |
-| &nbsp;&nbsp;Web-App-Frameworks | &nbsp;&nbsp;Vertriebsoptimierung  |
-| &nbsp;&nbsp;Web-Apps |  |
+[!INCLUDE [categories and subcategories](./includes/categories.md)]
 
 **WICHTIG: SaaS-Angebote und Microsoft 365-Add-Ins**
 
@@ -201,9 +119,9 @@ Anhand von Schlüsselwörtern können Kunden Ihr Angebot bei der Suche besser fi
 ## <a name="storefront-marketing-details"></a>Storefront-Marketingdetails
 | Storefronteinstellungen | Bewährte Methode |
 |:--- |:--- |  
-| Angebotslogo (PNG-Format, 48&nbsp;&times;&nbsp;48): Suchseite | Entwerfen und optimieren Sie Ihr Logo für ein digitales Medium:<br>Laden Sie das Logo im PNG-Format auf die Suchseite Ihres Angebots hoch. |
-| Angebotslogo (PNG-Format, 216&nbsp;&times;&nbsp;216): Seite „App-Details“ | Entwerfen und optimieren Sie Ihr Logo für ein digitales Medium:<br>Laden Sie das Logo im PNG-Format auf die Seite mit den Details Ihres Angebotslistings hoch. |
-| Dokumente mit weiteren Informationen | Fügen Sie ergänzende Vertriebs- und Marketingressourcen unter „Weitere Informationen“ hinzu. Beispiele: <ul> <li> Whitepaper </li> <li> Broschüren </li> <li> Prüflisten </li> <li> PowerPoint-Präsentationen</li> </ul>Speichern Sie alle Dateien im PDF-Format. Ihr Ziel an dieser Stelle sollte sein, die Kunden zu informieren, und nicht, ihnen etwas zu verkaufen. <br><br>Fügen Sie allen Ihren Dokumenten den Link zu Ihrer App-Angebotsseite hinzu. Fügen Sie außerdem URL-Parameter hinzu, damit Sie Besucher und Tests verfolgen können. |
+| Angebotslogo (PNG-Format, zwischen 216 × 216 und 350 × 350 Pixel): Seite für App-Details | Entwerfen und optimieren Sie Ihr Logo für ein digitales Medium:<br>Laden Sie das Logo im PNG-Format auf die Seite mit den Details Ihres Angebotslistings hoch. Partner Center ändert die Größe in die erforderlichen Logogrößen. |
+| Angebotslogo (PNG-Format, 48 × 48 Pixel): Suchseite | Partner Center generiert dieses Logo aus dem hochgeladenen großen Logo. Sie können das Logo durch ein anderes Bild ersetzen. |
+| Dokumente mit weiteren Informationen | Fügen Sie ergänzende Vertriebs- und Marketingressourcen unter „Weitere Informationen“ hinzu. Beispiele:<ul><li>Whitepaper</li><li> Broschüren</li><li>Prüflisten</li><li> PowerPoint-Präsentationen</li></ul><br>Speichern Sie alle Dateien im PDF-Format. Ihr Ziel an dieser Stelle sollte sein, die Kunden zu informieren, und nicht, ihnen etwas zu verkaufen.<br><br>Fügen Sie allen Ihren Dokumenten den Link zu Ihrer App-Angebotsseite hinzu. Fügen Sie außerdem URL-Parameter hinzu, damit Sie Besucher und Tests verfolgen können. |
 | Videos: nur AppSource, Beratungsdienste und SaaS-Angebote | Die besten Videos kommunizieren den Nutzen Ihres Angebots in erzählerischer Form:<ul> <li> Stellen Sie Ihre Kunden und nicht Ihre Firma in den Mittelpunkt der Story. </li> <li> Ihr Video sollte die wichtigsten Herausforderungen und Ziele der Zielkunden ansprechen. </li> <li> Empfohlene Länge: 60 bis 90 Sekunden.</li> <li> Binden Sie wichtige Suchbegriffe in den Namen der Videos ein. </li> <li> Erwägen Sie das Hinzufügen weiterer Videos, wie z.B. eines Anleitungsvideos, eines Videos für den Einstieg oder eines Videos mit Kundenstimmen. </li> </ul> |
 | Screenshots (1280&nbsp;&times;&nbsp;720) | Fügen Sie bis zu fünf Screenshots hinzu:<br>Binden Sie wichtige Suchbegriffe in die Dateinamen ein. |
 

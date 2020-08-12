@@ -10,12 +10,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 07/01/2019
-ms.openlocfilehash: 22bfab5b9f00a392054fa1aef6a93195180fd968
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 30e57736d0b0e40eb01573d6acca2c618dcf6ee3
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373486"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87759698"
 ---
 # <a name="azure-sql-database-traffic-migration-to-newer-gateways"></a>Migration des Azure SQL-Datenbank-Datenverkehrs zu neueren Gateways
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -29,17 +29,20 @@ Kunden werden per E-Mail und im Azure-Portal rechtzeitig vor jeder Änderung der
 # <a name="in-progress"></a>[Vorgang wird ausgeführt](#tab/in-progress-ip)
 ### <a name="september-2020"></a>September 2020
 
-Neue SQL-Gateways werden den folgenden Regionen hinzugefügt:
+Neue SQL-Gateways werden den folgenden Regionen hinzugefügt. Diese SQL-Gateways sollen ab dem 10. September 2020 Kundendatenverkehr akzeptieren:
+
+- USA, Westen-Mitte: 13.78.248.43 
+- Südafrika, Norden: 102.133.120.2  
+
+Neue SQL-Gateways werden den folgenden Regionen hinzugefügt. Diese SQL-Gateways sollen ab dem 1. September 2020 Kundendatenverkehr akzeptieren:
 
 - Europa, Norden: 13.74.104.113 
 - USA, Westen 2: 40.78.248.10 
 - Europa, Westen: 52.236.184.163 
 - USA, Süden-Mitte: 20.45.121.1, 20.49.88.1 
 
-Vorhandene SQL-Gateways akzeptieren Datenverkehr in den folgenden Regionen:
+Vorhandene SQL-Gateways akzeptieren Datenverkehr in den folgenden Regionen. Diese SQL-Gateways sollen ab dem 1. September 2020 Kundendatenverkehr akzeptieren. :
 - Japan, Osten: 40.79.184.8, 40.79.192.5
-
-Diese SQL-Gateways sollen ab dem 1. September 2020 Kundendatenverkehr akzeptieren. 
 
 ### <a name="august-2020"></a>August 2020
 
@@ -82,7 +85,7 @@ Möglicherweise sind Sie betroffen, wenn Folgendes zutrifft:
 - Sie verwenden [zonenredundante Konfiguration](high-availability-sla.md#zone-redundant-configuration) für Ihre Datenbank.
 
 In den folgenden Fällen spüren Sie die Auswirkungen nicht:
-
+ 
 - Sie verwenden Umleitung als Verbindungsrichtlinie.
 - Sie nutzen Verbindungen mit SQL-Datenbank aus Azure heraus und über Service Tags.
 - Verbindungen, die mithilfe unterstützter Versionen des JDBC-Treibers für SQL Server hergestellt werden, sind nicht betroffen. Informationen zu unterstützten JDBC-Versionen finden Sie unter [Herunterladen des Microsoft JDBC-Treibers für SQL Server](/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server).

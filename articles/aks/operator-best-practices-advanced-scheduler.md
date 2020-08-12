@@ -5,12 +5,12 @@ description: Lernen Sie die Best Practices des Clusteroperators für die Verwend
 services: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
-ms.openlocfilehash: 5b003c9f0c3b47779bd7da92fb64c57830911fae
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: b8077a772d6fdc4b911fabdfa893a15dcd7615db
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86077846"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87530060"
 ---
 # <a name="best-practices-for-advanced-scheduler-features-in-azure-kubernetes-service-aks"></a>Best Practices für erweiterte Schedulerfunktionen in Azure Kubernetes Service (AKS)
 
@@ -71,8 +71,6 @@ Wenn dieser Pod bereitgestellt wird, z.B. mit `kubectl apply -f gpu-toleration.y
 
 Wenn Sie Taints anwenden, arbeiten Sie mit Ihren Anwendungsentwicklern und -besitzern zusammen, damit sie die erforderlichen Toleranzen in ihren Bereitstellungen definieren können.
 
-Weitere Informationen zu Taints und Toleranzen finden Sie unter [Anwenden von Taints und Toleranzen][k8s-taints-tolerations].
-
 Weitere Informationen zur Verwendung mehrerer Knotenpools in AKS finden Sie unter [Erstellen und Verwalten mehrerer Knotenpools für einen Cluster in AKS][use-multiple-node-pools].
 
 ### <a name="behavior-of-taints-and-tolerations-in-aks"></a>Verhalten von Taints und Toleranzen in AKS
@@ -80,6 +78,7 @@ Weitere Informationen zur Verwendung mehrerer Knotenpools in AKS finden Sie unte
 Wenn Sie ein Upgrade für einen Knotenpool in AKS durchführen, folgen Taints und Toleranzen einem festen Muster, da sie für neue Knoten angewendet werden:
 
 - **Standardcluster, die VM-Skalierungsgruppen verwenden**
+  - Sie können einen Knotenpool über die AKS-API [mit Taints versehen][taint-node-pool], damit neu aufskalierte Knoten die von der API angegebenen Knotentaints erhalten.
   - Stellen Sie sich vor, Sie haben einen Cluster mit zwei Knoten: *node1* und *node2*. Sie führen ein Upgrade für den Knotenpool durch.
   - Zwei zusätzliche Knoten werden erstellt, *node3* und *node4*, und die Taints werden entsprechend übergeben.
   - Die ursprünglichen *node1* und *node2* werden gelöscht.
@@ -198,3 +197,4 @@ Dieser Artikel konzentriert sich auf erweiterte Funktionen des Kubernetes-Schedu
 [aks-best-practices-cluster-isolation]: operator-best-practices-cluster-isolation.md
 [aks-best-practices-identity]: operator-best-practices-identity.md
 [use-multiple-node-pools]: use-multiple-node-pools.md
+[taint-node-pool]: use-multiple-node-pools.md#specify-a-taint-label-or-tag-for-a-node-pool

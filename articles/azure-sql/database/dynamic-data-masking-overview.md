@@ -10,14 +10,14 @@ ms.topic: conceptual
 author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
-ms.date: 04/28/2020
+ms.date: 08/04/2020
 tags: azure-synpase
-ms.openlocfilehash: 4a6de0b2067cdc847b830fba7607be8cb8f265ab
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 14ae9103571d72b0a48ee8e1a9c9dc6bb008373b
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85981389"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87552127"
 ---
 # <a name="dynamic-data-masking"></a>Dynamische Datenmaskierung 
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -76,7 +76,7 @@ Sie können die REST-API verwenden, um Datenmaskierungsrichtlinien und -regeln p
 
 ### <a name="data-masking-policies"></a>Datenmaskierungsrichtlinien
 
-- [Erstellen oder aktualisieren:](https://docs.microsoft.com/rest/api/sql/datamaskingpolicies/createorupdate) Erstellt oder aktualisiert die Vertraulichkeitsbezeichnung der angegebenen Spalte.
+- [Erstellen oder aktualisieren:](https://docs.microsoft.com/rest/api/sql/datamaskingpolicies/createorupdate) Erstellt oder aktualisiert eine Datenbank-Datenmaskierungsrichtlinie.
 - [Get](https://docs.microsoft.com/rest/api/sql/datamaskingpolicies/get) (Abrufen): Ruft eine Datenbank-Datenmaskierungsrichtlinie ab. 
 
 ### <a name="data-masking-rules"></a>Datenmaskierungsregeln

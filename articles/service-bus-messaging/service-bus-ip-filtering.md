@@ -3,14 +3,14 @@ title: Konfigurieren von IP-Firewallregeln für Azure Service Bus
 description: Hier erfahren Sie, wie Sie mithilfe von Firewallregeln Verbindungen von bestimmten IP-Adressen mit Azure Service Bus zulassen.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: a5ae491f82e73c5364788dff8b531e81d17ebb68
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e9b39f1b163a894bf4831662ac050463086133d5
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85341445"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87552916"
 ---
-# <a name="configure-ip-firewall-rules-for-azure-service-bus"></a>Konfigurieren von IP-Firewallregeln für Azure Service Bus
+# <a name="allow-access-to-azure-service-bus-namespace-from-specific-ip-addresses-or-ranges"></a>Zulassen des Zugriffs auf den Azure Service Bus-Namespace von bestimmten IP-Adressen oder -Adressbereichen
 Standardmäßig kann über das Internet auf Service Bus-Namespaces zugegriffen werden, solange die Anforderung eine gültige Authentifizierung und Autorisierung aufweist. Mit der IP-Firewall können Sie den Zugriff auf eine Gruppe von IPv4-Adressen oder IPv4-Adressbereichen in der [CIDR-Notation (Classless Inter-Domain Routing)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) weiter einschränken.
 
 Diese Funktion ist in Szenarien hilfreich, in denen Azure Service Bus nur von bestimmten bekannten Websites aus zugänglich sein soll. Mithilfe von Firewallregeln können Sie Regeln konfigurieren, um Datenverkehr von bestimmten IPv4-Adressen zuzulassen. Wenn Sie Service Bus mit [Azure ExpressRoute][express-route] verwenden, können Sie beispielsweise eine **Firewallregel** erstellen, um nur Datenverkehr von den IP-Adressen Ihrer lokalen Infrastruktur oder von Adressen eines unternehmenseigenen NAT-Gateways zuzulassen. 
@@ -34,15 +34,25 @@ Die IP-Firewallregeln werden auf der Service Bus-Namespaceebene angewendet. Dah
 > Die folgenden Microsoft-Dienste müssen sich in einem virtuellen Netzwerk befinden:
 > - Azure App Service
 > - Azure-Funktionen
+> - Azure Monitor (Diagnoseeinstellungen)
 
 ## <a name="use-azure-portal"></a>Verwenden des Azure-Portals
 In diesem Abschnitt erfahren Sie, wie Sie im Azure-Portal IP-Firewallregeln für einen Service Bus-Namespace erstellen. 
 
 1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrem **Service Bus-Namespace**.
-2. Wählen Sie im Menü auf der linken Seite die Option **Netzwerk** aus. Standardmäßig ist die Option **Alle Netzwerke** ausgewählt. Ihr Service Bus-Namespace akzeptiert Verbindungen von jeder IP-Adresse. Die Standardeinstellung entspricht einer Regel, bei der der IP-Adressbereich 0.0.0.0/0 zulässig ist. 
+2. Wählen Sie im Menü links unter **Einstellungen** die Option **Netzwerk** aus.  
+
+    > [!NOTE]
+    > Die Registerkarte **Netzwerk** wird nur für Namespaces vom Typ **Premium** angezeigt.  
+    
+    Standardmäßig ist die Option **Ausgewählte Netzwerke** ausgewählt. Wenn Sie auf dieser Seite nicht mindestens eine IP-Firewallregel oder ein virtuelles Netzwerk hinzufügen, kann über das öffentliche Internet (mit dem Zugriffsschlüssel) auf den Namespace zugegriffen werden.
+
+    :::image type="content" source="./media/service-bus-ip-filtering/default-networking-page.png" alt-text="Seite „Netzwerk“ – Standard" lightbox="./media/service-bus-ip-filtering/default-networking-page.png":::
+    
+    Wenn Sie die Option **Alle Netzwerke** auswählen, akzeptiert der Service Bus-Namespace Verbindungen von beliebigen IP-Adressen. Die Standardeinstellung entspricht einer Regel, bei der der IP-Adressbereich 0.0.0.0/0 zulässig ist. 
 
     ![Firewall – Option „Alle Netzwerke“ ausgewählt](./media/service-bus-ip-filtering/firewall-all-networks-selected.png)
-1. Wählen Sie oben auf der Seite die Option **Ausgewählte Netzwerke** aus. Gehen Sie im Abschnitt **Firewall** wie folgt vor:
+1. Um den Zugriff nur von bestimmten IP-Adressen aus zuzulassen, wählen Sie die Option **Ausgewählte Netzwerke** aus, sofern sie noch nicht ausgewählt wurde. Gehen Sie im Abschnitt **Firewall** wie folgt vor:
     1. Wählen Sie die Option **Client-IP-Adresse hinzufügen** aus, um Ihrer aktuellen Client-IP Zugriff auf den Namespace zu gewähren. 
     2. Geben Sie für **Adressbereich** eine bestimmte IPv4-Adresse oder einen Bereich von IPv4-Adressen in der CIDR-Notation ein. 
     3. Wählen Sie unter **Vertrauenswürdigen Microsoft-Diensten die Umgehung dieser Firewall erlauben?** die Option „Ja“ oder „Nein“ aus. 
@@ -52,6 +62,9 @@ In diesem Abschnitt erfahren Sie, wie Sie im Azure-Portal IP-Firewallregeln für
 
         ![Firewall: Option „Alle Netzwerke“ ausgewählt](./media/service-bus-ip-filtering/firewall-selected-networks-trusted-access-disabled.png)
 3. Klicken Sie auf der Symbolleiste auf **Speichern**, um die Einstellungen zu speichern. Warten Sie einige Minuten, bis die Bestätigung in den Portalbenachrichtigungen angezeigt wird.
+
+    > [!NOTE]
+    > Informationen zum Beschränken des Zugriffs auf bestimmte virtuelle Netzwerke finden Sie unter [Zulassen des Zugriffs aus bestimmten Netzwerken](service-bus-service-endpoints.md).
 
 ## <a name="use-resource-manager-template"></a>Verwenden von Resource Manager-Vorlagen
 In diesem Abschnitt wird eine Azure Resource Manager-Beispielvorlage verwendet, die ein virtuelles Netzwerk und eine Firewallregel erstellt.

@@ -1,6 +1,6 @@
 ---
 title: Erstellen eines NFS-Volumes für Azure NetApp Files | Microsoft-Dokumentation
-description: Beschreibt die Vorgehensweise zum Erstellen eines NFS-Volumes für Azure NetApp Files.
+description: In diesem Artikel wird beschrieben, wie Sie ein NFS-Volume in Azure NetApp Files erstellen. Außerdem enthält er Überlegungen (z. B. welche Version zu verwenden ist) sowie bewährte Methoden.
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -12,24 +12,24 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 12/01/2019
+ms.date: 07/27/2020
 ms.author: b-juche
-ms.openlocfilehash: b8935dd4138095aa9b8e84ddf75c06307f9ce00d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f176e8fceb4d3e2e07398e6cb878180c8fe2321b
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85483634"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533154"
 ---
 # <a name="create-an-nfs-volume-for-azure-netapp-files"></a>Erstellen eines NFS-Volumes für Azure NetApp Files
 
-Azure NetApp Files unterstützt NFS-Volumes (NFSv3 und NFSv4.1) sowie SMBv3-Volumes. Der Kapazitätsverbrauch eines Volumes wird mit der bereitgestellten Kapazität des dazugehörigen Pools verrechnet. In diesem Artikel wird veranschaulicht, wie Sie ein NFS-Volume erstellen. Wenn Sie ein SMB-Volume erstellen möchten, lesen Sie unter [Erstellen eines SMB-Volumes für Azure NetApp Files](azure-netapp-files-create-volumes-smb.md) nach. 
+Azure NetApp Files unterstützt das Erstellen von Volumes mithilfe von NFS (NFSv3 und NFSv4.1), SMBv3 oder einem dualen Protokoll (NFSv3 und SMB). Der Kapazitätsverbrauch eines Volumes wird mit der bereitgestellten Kapazität des dazugehörigen Pools verrechnet. In diesem Artikel wird veranschaulicht, wie Sie ein NFS-Volume erstellen. 
 
 ## <a name="before-you-begin"></a>Voraussetzungen 
-Sie müssen bereits einen Kapazitätspool eingerichtet haben.   
-[Einrichten eines Kapazitätspools](azure-netapp-files-set-up-capacity-pool.md)   
-Ein Subnetz muss an Azure NetApp Files delegiert werden.  
-[Delegieren eines Subnetzes für Azure NetApp Files](azure-netapp-files-delegate-subnet.md)
+* Sie müssen bereits einen Kapazitätspool eingerichtet haben.  
+    Siehe [Einrichten eines Kapazitätspools](azure-netapp-files-set-up-capacity-pool.md).   
+* Ein Subnetz muss an Azure NetApp Files delegiert werden.  
+    Siehe [Delegieren eines Subnetzes an Azure NetApp Files](azure-netapp-files-delegate-subnet.md).
 
 ## <a name="considerations"></a>Überlegungen 
 
@@ -48,18 +48,15 @@ Ein Subnetz muss an Azure NetApp Files delegiert werden.
 
 * Der NFS-Client sollte sich im gleichen VNET oder im gleichen mittels Peering verbundenen VNET befinden wie das Azure NetApp Files-Volume. Das Herstellen einer Verbindung von außerhalb des VNET wird zwar unterstützt, führt aber zu zusätzlichen Wartezeiten und wirkt sich negativ auf die Gesamtleistung aus.
 
-* Achten Sie darauf, dass der NFS-Client auf dem neuesten Stand ist, und führen Sie die neuesten Updates für das Betriebssystem aus.
+* Stellen Sie sicher, dass der NFS-Client auf dem neuesten Stand ist, und führen Sie die neuesten Updates für das Betriebssystem aus.
 
 ## <a name="create-an-nfs-volume"></a>Erstellen eines NFS-Volumes
 
-1.  Klicken Sie auf dem Blatt „Kapazitätspools“ auf das Blatt **Volumes**. 
+1.  Klicken Sie auf dem Blatt „Kapazitätspools“ auf das Blatt **Volumes**. Klicken Sie auf **+ Volume hinzufügen**, um ein Volume zu erstellen. 
 
-    ![Navigieren zu Volumes](../media/azure-netapp-files/azure-netapp-files-navigate-to-volumes.png)
+    ![Navigieren zu Volumes](../media/azure-netapp-files/azure-netapp-files-navigate-to-volumes.png) 
 
-2.  Klicken Sie auf **+ Volume hinzufügen**, um ein Volume zu erstellen.  
-    Das Fenster „Volume erstellen“ wird angezeigt.
-
-3.  Klicken Sie im Fenster „Volume erstellen“ auf **Erstellen**, und geben Sie Informationen für die folgenden Felder an:   
+2.  Klicken Sie im Fenster „Volume erstellen“ auf **Erstellen**, und geben Sie auf der Registerkarte „Grundlagen“ Informationen in den folgenden Feldern an:   
     * **Volumename**      
         Geben Sie den Namen für das Volume an, das Sie erstellen möchten.   
 
@@ -76,7 +73,7 @@ Ein Subnetz muss an Azure NetApp Files delegiert werden.
         Das Feld **Verfügbares Kontingent** zeigt den ungenutzten Speicherplatz im ausgewählten Kapazitätspool an, den Sie beim Erstellen eines neuen Volumes verwenden können. Die Größe des neuen Volumes darf das verfügbare Kontingent nicht überschreiten.  
 
     * **Virtuelles Netzwerk**  
-        Geben Sie das virtuelle Azure-Netzwerk (VNet) an, von dem aus Sie auf das Volume zugreifen möchten.  
+        Geben Sie das virtuelle Azure-Netzwerk (VNET) an, von dem aus Sie auf das Volume zugreifen möchten.  
 
         Das von Ihnen angegebene VNET muss über ein an Azure NetApp Files delegiertes Subnetz verfügen. Auf den Azure NetApp Files-Dienst kann nur vom gleichen VNET aus oder per VNET-Peering von einem VNET aus zugegriffen werden, das sich in der gleichen Region befindet wie das Volume. Sie können auch über ExpressRoute von Ihrem lokalen Netzwerk aus auf das Volume zugreifen.   
 
@@ -90,7 +87,13 @@ Ein Subnetz muss an Azure NetApp Files delegiert werden.
     
         ![Erstellen eines Subnetzes](../media/azure-netapp-files/azure-netapp-files-create-subnet.png)
 
-4. Klicken Sie auf **Protokoll**, und führen Sie anschließend die folgenden Aktionen aus:  
+    * Wenn Sie eine vorhandene Momentaufnahmenrichtlinie auf das Volume anwenden möchten, klicken Sie auf **Abschnitt „Erweitert“ anzeigen**, um den Bereich zu erweitern, und wählen Sie im Pulldownmenü eine Momentaufnahmenrichtlinie aus. 
+
+        Informationen zum Erstellen einer Momentaufnahmenrichtlinie finden Sie unter [Verwalten von Momentaufnahmenrichtlinien](azure-netapp-files-manage-snapshots.md#manage-snapshot-policies).
+
+        ![Abschnitt „Erweitert“ anzeigen](../media/azure-netapp-files/volume-create-advanced-selection.png)
+
+3. Klicken Sie auf **Protokoll**, und führen Sie anschließend die folgenden Aktionen aus:  
     * Wählen Sie **NFS** als Protokolltyp für das Volume aus.   
     * Geben Sie den **Dateipfad** zum Erstellen des Exportpfads für das neue Volume an. Der Exportpfad dient zum Einbinden und Zugreifen auf das Volume.
 
@@ -99,11 +102,16 @@ Ein Subnetz muss an Azure NetApp Files delegiert werden.
         Der Dateipfad muss innerhalb der einzelnen Abonnements und Regionen eindeutig sein. 
 
     * Wählen Sie die NFS-Version (**NFSv3** oder **NFSv4.1**) für das Volume aus.  
+
+    * Geben Sie bei Verwendung von NFSv4.1 an, ob die **Kerberos**-Verschlüsselung für das Volume aktiviert werden soll.  
+
+        Wenn Sie Kerberos mit NFSv4.1 verwenden, sind zusätzliche Konfigurationen erforderlich. Befolgen Sie die Anweisungen unter [Konfigurieren der NFSv4.1-Kerberos-Verschlüsselung](configure-kerberos-encryption.md).
+
     * Optional können Sie [die Exportrichtlinie für das NFS-Volume konfigurieren](azure-netapp-files-configure-export-policy.md).
 
     ![Angeben des NFS-Protokolls](../media/azure-netapp-files/azure-netapp-files-protocol-nfs.png)
 
-5. Klicken Sie auf **Bewerten + erstellen**, um die Volumedetails zu überprüfen.  Klicken Sie dann auf **Erstellen**, um das NFS-Volume zu erstellen.
+4. Klicken Sie auf **Bewerten + erstellen**, um die Volumedetails zu überprüfen.  Klicken Sie dann auf **Erstellen**, um das Volume zu erstellen.
 
     Das von Ihnen erstellte Volume wird auf der Seite „Volumes“ angezeigt. 
  
@@ -113,6 +121,7 @@ Ein Subnetz muss an Azure NetApp Files delegiert werden.
 ## <a name="next-steps"></a>Nächste Schritte  
 
 * [Konfigurieren der NFSv4.1-Fehlerdomäne für Azure NetApp Files](azure-netapp-files-configure-nfsv41-domain.md)
+* [Konfigurieren der NFSv4.1-Kerberos-Verschlüsselung](configure-kerberos-encryption.md)
 * [Einbinden oder Aufheben der Einbindung eines Volumes auf virtuellen Windows- oder Linux-Computern](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)
 * [Konfigurieren der Exportrichtlinie für ein NFS-Volume](azure-netapp-files-configure-export-policy.md)
 * [Ressourcenlimits für Azure NetApp Files](azure-netapp-files-resource-limits.md)

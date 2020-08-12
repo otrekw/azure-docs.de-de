@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 10/25/2019
+ms.date: 08/03/2020
 ms.author: jingwang
-ms.openlocfilehash: ba5105c6183c88ca7e5641cdacaa5d80ea529bc6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 14b3857211eca39ebe09a3a0752ca1d8eee17bc0
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84263889"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87529992"
 ---
 # <a name="copy-data-from-xero-using-azure-data-factory"></a>Kopieren von Daten aus Xero mithilfe von Azure Data Factory
 
@@ -36,7 +36,8 @@ Sie können Daten aus Xero in beliebige unterstützte Senkendatenspeicher kopier
 Dieser Xero-Connector unterstützt insbesondere Folgendes:
 
 - [Private Anwendung](https://developer.xero.com/documentation/getting-started/getting-started-guide) von Xero, jedoch keine öffentlich Anwendung.
-- Alle Xero-Tabellen (API-Endpunkte) mit Ausnahme von „Reports“. 
+- Alle Xero-Tabellen (API-Endpunkte) mit Ausnahme von „Reports“.
+- OAuth 1.0- und OAuth 2.0-Authentifizierung.
 
 Azure Data Factory enthält einen integrierten Treiber zum Sicherstellen der Konnektivität. Daher müssen Sie mit diesem Connector keinen Treiber manuell installieren.
 
@@ -53,14 +54,19 @@ Folgende Eigenschaften werden für den mit Xero verknüpften Dienst unterstützt
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft muss auf Folgendes festgelegt werden: **Xero** | Ja |
+| connectionProperties | Eine Gruppe von Eigenschaften zum Definieren, wie eine Verbindung mit Xero hergestellt werden soll. | Ja |
+| ***Unter `connectionProperties`:*** | | |
 | host | Der Endpunkt des Xero-Servers (`api.xero.com`).  | Ja |
+| authenticationType | Zulässige Werte sind `OAuth_2.0` und `OAuth_1.0`. | Ja |
 | consumerKey | Der Consumerschlüssel, der der Xero-Anwendung zugeordnet ist. Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | Ja |
-| privateKey | Der private Schlüssel aus der PEM-Datei, der für Ihre private Xero-Anwendung generiert wurde. Weitere Informationen finden Sie unter [Erstellen eines öffentlichen/privaten Schlüsselpaars](https://developer.xero.com/documentation/auth-and-limits/create-publicprivate-key). Achten Sie darauf, **„privatekey.pem“ mit NumBits von 512** mithilfe von `openssl genrsa -out privatekey.pem 512` zu generieren; 1024 wird nicht unterstützt. Schließen Sie gesamten Text der PEM-Datei einschließlich der Unix-Zeilenschaltungen (\n) ein (siehe Beispiel unten).<br/><br/>Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | Ja |
+| privateKey | Der private Schlüssel aus der PEM-Datei, der für Ihre private Xero-Anwendung generiert wurde. Weitere Informationen finden Sie unter [Erstellen eines öffentlichen/privaten Schlüsselpaars](https://developer.xero.com/documentation/auth-and-limits/create-publicprivate-key). Achten Sie darauf, **„privatekey.pem“ mit dem NumBits-Wert 512** mithilfe von `openssl genrsa -out privatekey.pem 512` zu generieren – 1.024 wird nicht unterstützt. Schließen Sie gesamten Text der PEM-Datei einschließlich der Unix-Zeilenschaltungen (\n) ein (siehe Beispiel unten).<br/>Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | Ja |
+| tenantId | Die Mandanten-ID, die Ihrer Xero-Anwendung zugeordnet ist. Gilt für die OAuth 2.0-Authentifizierung.<br>Informationen zum Abrufen der Mandanten-ID finden Sie im Abschnitt [Check the tenants you're authorized to access](https://developer.xero.com/documentation/oauth2/auth-flow) (Überprüfen der Mandanten, denen Zugriff gewährt wurde). | Ja, für die OAuth 2.0-Authentifizierung |
+| refreshToken | Das OAuth 2.0-Aktualisierungstoken, das Ihrer Xero-Anwendung zugeordnet ist und verwendet wird, um das Zugriffstoken zu aktualisieren, wenn es abläuft. Gilt für die OAuth 2.0-Authentifizierung. Weitere Informationen zum Abrufen des Aktualisierungstokens finden Sie in [diesem Artikel](https://developer.xero.com/documentation/oauth2/auth-flow).<br>Das Aktualisierungstoken läuft nie ab. Um ein Aktualisierungstoken zu erhalten, müssen Sie den [offline_access-Bereich](https://developer.xero.com/documentation/oauth2/scopes) anfordern.<br/>Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | Ja, für die OAuth 2.0-Authentifizierung |
 | useEncryptedEndpoints | Gibt an, ob die Endpunkte der Datenquelle mit HTTPS verschlüsselt sind. Der Standardwert lautet „true“.  | Nein |
 | useHostVerification | Gibt an, ob der Hostname im Zertifikat des Servers mit dem Hostnamen des Servers übereinstimmen muss, wenn eine Verbindung über TLS hergestellt wird. Der Standardwert lautet „true“.  | Nein |
 | usePeerVerification | Gibt an, ob die Identität des Servers überprüft werden soll, wenn eine Verbindung über TLS hergestellt wird. Der Standardwert lautet „true“.  | Nein |
 
-**Beispiel:**
+**Beispiel: OAuth 2.0-Authentifizierung**
 
 ```json
 {
@@ -68,15 +74,54 @@ Folgende Eigenschaften werden für den mit Xero verknüpften Dienst unterstützt
     "properties": {
         "type": "Xero",
         "typeProperties": {
-            "host" : "api.xero.com",
-            "consumerKey": {
-                 "type": "SecureString",
-                 "value": "<consumerKey>"
-            },
-            "privateKey": {
-                 "type": "SecureString",
-                 "value": "<privateKey>"
-            }
+            "connectionProperties": { 
+                "host": "api.xero.com",
+                "authenticationType":"OAuth_2.0", 
+                "consumerKey": {
+                    "type": "SecureString",
+                    "value": "<consumer key>"
+                },
+                "privateKey": {
+                    "type": "SecureString",
+                    "value": "<private key>"
+                },
+                "tenantId": "<tenant ID>", 
+                "refreshToken": {
+                    "type": "SecureString",
+                    "value": "<refresh token>"
+                }, 
+                "useEncryptedEndpoints": true, 
+                "useHostVerification": true, 
+                "usePeerVerification": true
+            }            
+        }
+    }
+}
+```
+
+**Beispiel: OAuth 1.0-Authentifizierung**
+
+```json
+{
+    "name": "XeroLinkedService",
+    "properties": {
+        "type": "Xero",
+        "typeProperties": {
+            "connectionProperties": {
+                "host": "api.xero.com", 
+                "authenticationType":"OAuth_1.0", 
+                "consumerKey": {
+                    "type": "SecureString",
+                    "value": "<consumer key>"
+                },
+                "privateKey": {
+                    "type": "SecureString",
+                    "value": "<private key>"
+                }, 
+                "useEncryptedEndpoints": true,
+                "useHostVerification": true,
+                "usePeerVerification": true
+            }
         }
     }
 }

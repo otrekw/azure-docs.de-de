@@ -7,12 +7,12 @@ ms.date: 07/10/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: b06edb83e85ef6d56cf8bf8f91551fe99535eba1
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 126673391b49f884a51521d462060c425a314667
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87351999"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475667"
 ---
 # <a name="iot-plug-and-play-conventions"></a>IoT Plug & Play-Konventionen
 
@@ -25,11 +25,11 @@ Die Telemetriedaten, Eigenschaften und Befehle, die ein Gerät in IoT Plug & Pla
 
 Weitere Informationen finden Sie unter [IoT Plug & Play-Komponenten in Modellen](concepts-components.md).
 
-## <a name="model-discovery"></a>Modellermittlung
+## <a name="identify-the-model"></a>Identifizieren des Modells
 
 Zur Ankündigung des Modells, das vom IoT Plug & Play-Gerät implementiert wird, wird die Modell-ID in das MQTT-Verbindungspaket durch Hinzufügen von `model-id` zum `USERNAME`-Feld eingebunden.
 
-Um das Modell zu ermitteln, das von einem Gerät implementiert wird, kann ein Dienst die Modell-ID an folgender Stelle abrufen:
+Um das von einem Gerät implementierte Modell zu identifizieren, kann ein Dienst die Modell-ID an folgender Stelle abrufen:
 
 - Vom `modelId`-Feld des Gerätezwillings
 - Vom `$metadata.$model`-Feld des digitalen Zwillings

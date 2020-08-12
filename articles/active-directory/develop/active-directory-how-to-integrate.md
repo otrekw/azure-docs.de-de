@@ -1,6 +1,6 @@
 ---
-title: 'Gewusst wie: Integrieren in Azure Active Directory'
-description: Lernen Sie die Vorteile der Integration Ihrer Anwendung in Azure Active Directory kennen, und rufen Sie Ressourcen zu Features wie vereinfachte Anmeldung, Identity Management, Multifactor-Factor Authentication und Zugriffssteuerung ab.
+title: Integration in Microsoft Identity Platform
+description: Lernen Sie die Vorteile der Integration Ihrer Anwendung in Microsoft Identity Platform kennen, und erhalten Sie Featureressourcen wie vereinfachte Anmeldung, Identitätsverwaltung, Multifactor-Factor Authentication und Zugriffssteuerung.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -12,28 +12,28 @@ ms.date: 04/08/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev, seoapril2019
-ms.openlocfilehash: 4eaca7350ac006a2fcf2eed8d3eb0cb8ef274841
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 50748334a59dd6b3d7601bd8a32ac99bfe90b0fe
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80885700"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87552814"
 ---
-# <a name="integrating-with-azure-active-directory"></a>Integration in Azure Active Directory
+# <a name="integrating-with-microsoft-identity-platform"></a>Integration in Microsoft Identity Platform
 
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
 
-In diesem Artikel erfahren Sie mehr über die Vorteile der Integration Ihrer Anwendung in Azure Active Directory (Azure AD), und rufen Ressourcen zur Integration ab. Azure AD bietet Organisationen eine erstklassige Identitätsverwaltung für Cloudanwendungen. Die Azure AD-Integration ermöglicht Ihren Benutzern eine optimierte Anmeldungsumgebung und hilft Ihrer Anwendung bei der Einhaltung von IT-Richtlinien.
+In diesem Artikel erfahren Sie mehr über die Vorteile der Integration Ihrer Anwendung in Microsoft Identity Platform, und Sie erhalten Ressourcen für die Integration. Microsoft Identity Platform und Azure Active Directory (AD) stellen Organisationen eine Identitätsverwaltung für Cloudanwendungen auf Unternehmensniveau bereit. Die Integration in Microsoft Identity Platform bietet Ihren Benutzern eine optimale Anmeldungsumgebung und unterstützt Ihre Anwendung bei der Einhaltung von IT-Richtlinien.
 
 ## <a name="how-to-integrate"></a>Möglichkeiten der Integration
 
-Es gibt mehrere Möglichkeiten, Ihre Anwendung in Azure AD zu integrieren. Nutzen Sie diese den Anforderungen Ihrer Anwendung entsprechend.
+Es gibt mehrere Möglichkeiten, Ihre Anwendung in Microsoft Identity Platform zu integrieren. Nutzen Sie diese den Anforderungen Ihrer Anwendung entsprechend.
 
-### <a name="support-azure-ad-as-a-way-to-sign-in-to-your-application"></a>Unterstützen von Azure AD als Möglichkeit zur Anmeldung bei Ihrer Anwendung
+### <a name="support-microsoft-identity-platform-as-a-way-to-sign-in-to-your-application"></a>Unterstützen von Microsoft Identity Platform als Möglichkeit zum Anmelden bei Ihrer Anwendung
 
-**Verringern von Anmeldeaufwand und Supportkosten.** Wenn sich Ihre Benutzer über Azure AD bei Ihrer Anwendung anmelden, müssen sie sich keinen weiteren Benutzernamen und kein weiteres Kennwort merken. Als Entwickler müssen Sie ein Kennwort weniger speichern und schützen. Allein dadurch, dass keine vergessenen Kennwörter zurückgesetzt werden müssen, kann es zu beträchtlichen Kosteneinsparungen kommen. Azure AD unterstützt das Anmelden für einige der weltweit beliebtesten Cloudanwendungen wie Office 365 und Microsoft Azure. Bei Hunderten Millionen Benutzern in Millionen Organisationen ist es wahrscheinlich, dass Ihr Benutzer bereits bei Azure AD angemeldet ist. Erfahren Sie mehr über das [Hinzufügen von Unterstützung für die Azure AD-Anmeldung](authentication-scenarios.md).
+**Verringern von Anmeldeaufwand und Supportkosten.** Wenn sich Ihre Benutzer über Microsoft Identity Platform bei Ihrer Anwendung anmelden, müssen sie sich keinen weiteren Benutzernamen und kein weiteres Kennwort merken. Als Entwickler müssen Sie ein Kennwort weniger speichern und schützen. Allein dadurch, dass keine vergessenen Kennwörter zurückgesetzt werden müssen, kann es zu beträchtlichen Kosteneinsparungen kommen. Microsoft Identity Platform unterstützt die Anmeldung bei einigen der weltweit beliebtesten Cloudanwendungen (darunter auch Office 365 und Microsoft Azure). Bei mehreren hundert Millionen Benutzern in Millionen von Organisationen ist es wahrscheinlich, dass Ihr Benutzer bereits bei Microsoft Identity Platform angemeldet ist. Erfahren Sie mehr über das [Hinzufügen der Unterstützung für die Anmeldung über Microsoft Identity Platform](authentication-scenarios.md).
 
-**Vereinfachen der Registrierung für Ihre Anwendung.**  Während der Registrierung für Ihre Anwendung kann Azure AD wichtige Informationen über einen Benutzer senden, sodass Sie Ihr Anmeldeformular vorab ausfüllen lassen oder vollständig entfernen können. Benutzer können sich für Ihre Anwendung mit ihrem Azure AD-Konto in einer vertrauten Genehmigungsumgebung registrieren, die derjenigen in sozialen Medien und mobilen Anwendungen ähnelt. Benutzer können sich ohne Beteiligung der IT bei einer Anwendung, die in Azure AD integriert ist, registrieren und anmelden. Erfahren Sie mehr über das [Registrieren Ihrer Anwendung für die Azure AD-Kontoanmeldung](../../app-service/configure-authentication-provider-aad.md).
+**Vereinfachen der Registrierung für Ihre Anwendung.**  Bei der Registrierung für Ihre Anwendung kann Microsoft Identity Platform wichtige Informationen zu einem Benutzer senden, sodass Sie das Anmeldeformular vorab ausfüllen oder vollständig darauf verzichten können. Benutzer können sich für Ihre Anwendung mit ihrem Azure AD-Konto in einer vertrauten Genehmigungsumgebung registrieren, die derjenigen in sozialen Medien und mobilen Anwendungen ähnelt. Benutzer können sich ohne Beteiligung der IT bei einer in Microsoft Identity Platform integrierten Anwendung registrieren und anmelden. Erfahren Sie mehr über das [Registrieren Ihrer Anwendung für die Azure AD-Kontoanmeldung](../../app-service/configure-authentication-provider-aad.md).
 
 ### <a name="browse-for-users-manage-user-provisioning-and-control-access-to-your-application"></a>Suchen nach Benutzern, Verwalten der Benutzerbereitstellung und Steuern des Zugriffs auf Ihre Anwendung
 
@@ -41,13 +41,13 @@ Es gibt mehrere Möglichkeiten, Ihre Anwendung in Azure AD zu integrieren. Nutze
 
 **Wiederverwenden von Active Directory-Gruppen und Verteilerlisten, die Ihr Kunde bereits verwaltet.**  Azure AD enthält die Gruppen, die Ihr Kunde bereits für die E-Mail-Verteilung und das Verwalten des Zugriffs verwendet. Verwenden Sie diese Gruppen über die Microsoft Graph-API erneut, statt dass der Kunde einen getrennten Satz von Gruppen in Ihrer Anwendung erstellen und verwalten muss. Informationen zu Gruppen können auch in Anmeldetoken an Ihre Anwendung gesendet werden. Weitere Informationen zur [Microsoft Graph-API](https://docs.microsoft.com/graph/overview).
 
-**Verwenden von Azure AD zum Steuern des Zugriffs auf Ihre Anwendung.**  Administratoren und Besitzer von Anwendungen in Azure AD können bestimmten Benutzern und Gruppen Zugriff auf Anwendungen zuweisen. Über die Microsoft Graph-API können Sie diese Liste lesen und zum Steuern der Bereitstellung bzw. der Aufhebung der Bereitstellung von Ressourcen und des Zugriffs innerhalb Ihrer Anwendung verwenden.
+**Verwenden von Microsoft Identity Platform zum Steuern des Zugriffs auf Ihre Anwendung**.  Administratoren und Besitzer von Anwendungen in Azure AD können bestimmten Benutzern und Gruppen Zugriff auf Anwendungen zuweisen. Über die Microsoft Graph-API können Sie diese Liste lesen und zum Steuern der Bereitstellung bzw. der Aufhebung der Bereitstellung von Ressourcen und des Zugriffs innerhalb Ihrer Anwendung verwenden.
 
-**Verwenden von Azure AD für die auf Rollen basierende Zugriffskontrolle.**  Administratoren und Besitzer von Anwendungen können Benutzer und Gruppen Rollen zuweisen, die Sie definieren, wenn Sie Ihre Anwendung in Azure AD registrieren. Rolleninformationen werden in Anmeldetoken an die Anwendung gesendet und können auch über die Microsoft Graph-API gelesen werden. Erfahren Sie mehr über das [Verwenden von Azure AD für die Autorisierung](https://cloudblogs.microsoft.com/enterprisemobility/2014/12/18/azure-active-directory-now-with-group-claims-and-application-roles/).
+**Verwenden von Microsoft Identity Platform für die rollenbasierte Zugriffssteuerung**.  Administratoren und Besitzer von Anwendungen können Benutzer und Gruppen zu Rollen zuweisen, die Sie beim Registrieren Ihrer Anwendung in Microsoft Identity Platform definieren. Rolleninformationen werden in Anmeldetoken an die Anwendung gesendet und können auch über die Microsoft Graph-API gelesen werden. Erfahren Sie mehr über die [Authentifizierung mit der Microsoft Identity Platform](https://cloudblogs.microsoft.com/enterprisemobility/2014/12/18/azure-active-directory-now-with-group-claims-and-application-roles/).
 
 ### <a name="get-access-to-users-profile-calendar-email-contacts-files-and-more"></a>Anfordern des Zugriffs auf das Profil, den Kalender, E-Mails, Kontakte, Dateien und andere Informationen des Benutzers
 
-**Azure AD ist der Autorisierungsserver für Office 365 und andere Microsoft-Unternehmensdienste.**  Wenn Sie Azure AD für die Anmeldung bei Ihrer Anwendung oder das Verknüpfen Ihrer aktuellen Benutzerkonten mit Azure AD-Benutzerkonten mithilfe von OAuth 2.0 unterstützen, können Sie einen Lese- und Schreibzugriff auf das Profil, den Kalender, Kontakte, E-Mails und Dateien und andere Informationen des Benutzers anfordern. Sie können problemlos Ereignisse in den Kalender der Benutzer schreiben und Dateien auf ihrem OneDrive lesen oder schreiben. Erfahren Sie mehr über [den Zugriff auf die Office 365-APIs](https://msdn.microsoft.com/office/office365/howto/platform-development-overview).
+**Microsoft Identity Platform ist der Autorisierungsserver für Office 365 und andere Microsoft-Unternehmensdienste.**  Wenn Sie Microsoft Identity Platform für die Anmeldung bei Ihrer Anwendung oder das Verknüpfen Ihrer aktuellen Benutzerkonten über OAuth 2.0 mit Azure AD-Benutzerkonten unterstützen, können Sie Lese- und Schreibzugriff auf das Profil, den Kalender, Kontakte, E-Mails, Dateien und andere Informationen des Benutzers anfordern. Sie können problemlos Ereignisse in den Kalender der Benutzer schreiben und Dateien auf ihrem OneDrive lesen oder schreiben. Erfahren Sie mehr über [den Zugriff auf die Office 365-APIs](https://msdn.microsoft.com/office/office365/howto/platform-development-overview).
 
 ### <a name="promote-your-application-in-the-azure-and-office-365-marketplaces"></a>Werben für Ihre Anwendung im Azure Marketplace und Office 365 Marketplace
 
@@ -57,23 +57,23 @@ Es gibt mehrere Möglichkeiten, Ihre Anwendung in Azure AD zu integrieren. Nutze
 
 ### <a name="secure-device-to-service-and-service-to-service-communication"></a>Sichere Kommunikation zwischen Gerät und Dienst und zwischen Diensten
 
-**Durch Verwenden von Azure AD für die Identitätsverwaltung von Diensten und Geräten verringert sich der Code, den Sie schreiben müssen, und der IT wird das Verwalten des Zugriffs ermöglicht.**  Dienste und Geräte können Token von Azure AD mithilfe von OAuth abrufen und diese Token für den Zugriff auf Web-APIs verwenden. Mithilfe von Azure AD können Sie das Schreiben von komplexem Authentifizierungscode vermeiden. Da die Identitäten der Dienste und Geräte in Azure AD gespeichert sind, kann die IT das Verwalten und Sperren von Schlüsseln zentral verwalten, sodass diese Aufgabe in Ihrer Anwendung nicht separat erfolgen muss.
+**Durch den Einsatz von Microsoft Identity Platform zur Identitätsverwaltung bei Diensten und Geräten reduziert sich der Code, den Sie schreiben müssen, und der Zugriff kann von der IT verwaltet werden.**  Dienste und Geräte können über OAuth Token von Microsoft Identity Platform abrufen und diese Token für den Zugriff auf Web-APIs verwenden. Mithilfe von Microsoft Identity Platform können Sie das Schreiben von komplexem Authentifizierungscode vermeiden. Da die Identitäten der Dienste und Geräte in Azure AD gespeichert sind, kann die IT das Verwalten und Sperren von Schlüsseln zentral verwalten, sodass diese Aufgabe in Ihrer Anwendung nicht separat erfolgen muss.
 
 ## <a name="benefits-of-integration"></a>Vorteile der Integration
 
-Die Integration in Azure AD bietet den Vorteil, dass Sie keinen zusätzlichen Code schreiben müssen.
+Die Integration in Microsoft Identity Platform bietet den Vorteil, dass Sie keinen zusätzlichen Code schreiben müssen.
 
 ### <a name="integration-with-enterprise-identity-management"></a>Integration der Identitätsverwaltung des Unternehmens
 
-**Optimieren Ihrer Anwendung für die Einhaltung von IT-Richtlinien.**  Organisationen integrieren Identitätsverwaltungssysteme in Azure AD, sodass wenn eine Person eine Organisation verlässt, sie automatisch den Zugriff auf Ihre Anwendung verliert, ohne dass die IT eingreifen muss. Die IT kann verwalten, wer Zugriff auf Ihre Anwendung hat und bestimmen, welche Zugriffsrichtlinien erfüllt werden müssen, z. B. Multi-Factor Authentication. Dadurch müssen Sie weniger Code schreiben, um komplexe Unternehmensrichtlinien einzuhalten. Azure AD bietet Administratoren ein detailliertes Überwachungsprotokoll dazu, wer sich bei Ihrer Anwendung angemeldet hat, damit die IT die Nutzung nachverfolgen kann.
+**Optimieren Ihrer Anwendung für die Einhaltung von IT-Richtlinien.**  Organisationen integrieren ihre Identitätsverwaltungssysteme in Microsoft Identity Platform, sodass eine Person beim Verlassen des Unternehmens automatisch den Zugriff auf die Anwendung verliert, ohne dass die IT eingreifen muss. Die IT kann verwalten, wer Zugriff auf Ihre Anwendung hat und bestimmen, welche Zugriffsrichtlinien erfüllt werden müssen, z. B. Multi-Factor Authentication. Dadurch müssen Sie weniger Code schreiben, um komplexe Unternehmensrichtlinien einzuhalten. Azure AD bietet Administratoren ein detailliertes Überwachungsprotokoll dazu, wer sich bei Ihrer Anwendung angemeldet hat, damit die IT die Nutzung nachverfolgen kann.
 
 **Azure AD erweitert Active Directory in die Cloud, damit Ihre Anwendung in Active Directory integriert werden kann.**  Viele Organisationen auf der ganzen Welt nutzen Active Directory als primäres Anmeldungs- und Identitätsverwaltungssystem und verlangen, dass ihre Anwendungen mit AD zusammenarbeiten. Durch die Integration in Azure AD wird Ihre App in Active Directory integriert.
 
 ### <a name="advanced-security-features"></a>Erweiterte Sicherheitsfunktionen
 
-**Multi-Factor Authentication.**  Azure AD bietet eine systemeigene Multi-Factor Authentication. IT-Administratoren können für den Zugriff auf Ihre Anwendung die Multi-Factor Authentication anfordern, damit Sie diese Unterstützung nicht selbst programmieren müssen. Erfahren Sie mehr über die [Multi-Factor Authentication](https://azure.microsoft.com/documentation/services/multi-factor-authentication/).
+**Multi-Factor Authentication.**  Microsoft Identity Platform stellt eine native mehrstufige Authentifizierung (Multi-Factor Authentication, MFA) bereit. IT-Administratoren können für den Zugriff auf Ihre Anwendung die Multi-Factor Authentication anfordern, damit Sie diese Unterstützung nicht selbst programmieren müssen. Erfahren Sie mehr über die [Multi-Factor Authentication](https://azure.microsoft.com/documentation/services/multi-factor-authentication/).
 
-**Erkennung anomaler Anmeldungen.**  Azure AD verarbeitet mehr als eine Milliarde Anmeldungen pro Tag. Dabei kommen Algorithmen für maschinelles Lernen zum Erkennen verdächtiger Aktivitäten zum Einsatz, die IT-Administratoren über mögliche Probleme informieren. Durch die Unterstützung der Azure AD-Anmeldung kommt Ihre Anwendung in den Genuss dieses Schutzes. Erfahren Sie mehr über das [Anzeigen des Azure Active Directory-Zugriffsberichts](../active-directory-view-access-usage-reports.md).
+**Erkennung anomaler Anmeldungen.**  Microsoft Identity Platform verarbeitet mehr als eine Milliarde Anmeldungen pro Tag. Dabei kommen Machine Learning-Algorithmen zum Erkennen verdächtiger Aktivitäten zum Einsatz, die IT-Administratoren über mögliche Probleme informieren. Durch die Unterstützung der Anmeldung über Microsoft Identity Platform kommt Ihre Anwendung in den Genuss dieses Schutzes. Erfahren Sie mehr über das [Anzeigen des Azure Active Directory-Zugriffsberichts](../active-directory-view-access-usage-reports.md).
 
 **Bedingter Zugriff.**  Zusätzlich zur Multi-Factor Authentication können Administratoren anfordern, dass bestimmte Bedingungen erfüllt sein müssen, ehe sich Benutzer bei Ihrer Anwendung anmelden können. Bedingungen, die festgelegt werden können, sind u. a. der IP-Adressbereich von Clientgeräten, Mitgliedschaft in angegebenen Gruppen und den Status des Geräts, das für den Zugriff verwendet wird. Erfahren Sie mehr über den [bedingten Azure Active Directory-Zugriff](../active-directory-conditional-access-azure-portal.md).
 

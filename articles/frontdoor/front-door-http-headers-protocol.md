@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: bb1de5d51afd01cf0aa519f12aa3665bee804efd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a1060cbf1b2204c3feba413b8c8ce0cba58941c6
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79471675"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87799122"
 ---
 # <a name="protocol-support-for-http-headers-in-azure-front-door"></a>Protokollunterstützung für HTTP-Header in Azure Front Door
 Dieser Artikel beschreibt das Protokoll, das Front Door mit Teilen des Aufrufpfads unterstützt (siehe Abbildung). Die folgenden Abschnitte enthalten weitere Informationen zu HTTP-Headern, die von Front Door unterstützt werden.
@@ -44,6 +44,7 @@ Front Door enthält Header aus einer eingehenden Anforderung, sofern sie nicht a
 | X-Forwarded-Host | X-Forwarded-Host: contoso.azurefd.net </br> Das X-Forwarded-Host-HTTP-Headerfeld ist eine gängige Methode zum Identifizieren des ursprünglich vom Client im Host-HTTP-Anforderungsheader angeforderten Hosts. Dies liegt daran, dass der Hostname aus Front Door für den Back-End-Server, der die Anforderung verarbeitet, abweichen kann. |
 | X-Forwarded-Proto | X-Forwarded-Proto: http </br> Das X-Forwarded-Proto-HTTP-Headerfeld wird häufig zum Identifizieren des Ursprungsprotokolls einer HTTP-Anforderung verwendet, da Front Door basierend auf der Konfiguration über HTTPS mit dem Back-End kommunizieren könnte. Dies gilt auch, wenn eine HTTP-Anforderung an den Reverseproxy gesendet wird. |
 | X-FD-HealthProbe | Das HTTP-Headerfeld X-FD-HealthProbe wird verwendet, um den Integritätstest von Azure Front Door zu identifizieren. Wenn der Header auf 1 festgelegt ist, wird ein Integritätstest angefordert. Sie können ihn verwenden, um den Zugriff von Front Door mit dem Headerfeld „X-Forwarded-Host“ einzuschränken. |
+|X-Azure-FDID | X-Azure-FDID-Header: 437c82cd-360a-4a54-94c3-5ff707647783 </br> Dieses Feld enthält eine frontdoorID, mit der ermittelt werden kann, von welcher Front Door die eingehende Anforderung stammt. Dieses Feld wird vom Front Door-Dienst ausgefüllt. | 
 
 ## <a name="front-door-to-client"></a>Front Door zum Client
 
@@ -55,7 +56,7 @@ Vom Back-End an Front Door gesendete Header werden auch an den Client weitergele
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Erstellen einer Azure Front Door Service-Instanz](quickstart-create-front-door.md)
+- [Erstellen einer „Front Door“](quickstart-create-front-door.md)
 - [Übersicht über die Routingarchitektur](front-door-routing-architecture.md)
 
 <!--Image references-->

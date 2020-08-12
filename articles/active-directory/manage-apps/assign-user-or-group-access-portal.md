@@ -12,12 +12,12 @@ ms.date: 02/21/2020
 ms.author: kenwith
 ms.reviewer: luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2eeab9cbb68567b6af3b1381b8ec5e67e82461ec
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 04b0b0120a514591fb4fa23656906203acf443b4
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84763736"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87799501"
 ---
 # <a name="assign-a-user-or-group-to-an-enterprise-app-in-azure-active-directory"></a>Zuweisen eines Benutzers oder einer Gruppe zu einer Unternehmens-App in Azure Active Directory
 
@@ -26,6 +26,9 @@ Dieser Artikel zeigt Ihnen, wie Sie Benutzer oder Gruppen in Azure Active Direct
 Für eine bessere Kontrolle können bestimmte Arten von Unternehmensanwendungen so konfiguriert werden, dass [eine Benutzerzuweisung](#configure-an-application-to-require-user-assignment) erforderlich ist. 
 
 Um [einen Benutzer oder eine Gruppe einer Unternehmens-App zuzuweisen](#assign-users-or-groups-to-an-app-via-the-azure-portal), müssen Sie sich als globaler Administrator, Anwendungsadministrator, Cloudanwendungsadministrator oder als der zugewiesene Besitzer der Unternehmens-App anmelden.
+
+> [!IMPORTANT]
+> Wenn Sie einer Anwendung eine Gruppe zuweisen, haben nur die Benutzer in der Gruppe Zugriff. Die Zuweisung wird nicht an geschachtelte Gruppen weitergegeben.
 
 > [!NOTE]
 > Für die gruppenbasierte Zuweisung ist die Azure Active Directory Premium P1- oder P2-Edition erforderlich. Die gruppenbasierte Zuweisung wird nur für Sicherheitsgruppen unterstützt. Geschachtelte Gruppenmitgliedschaften und Office 365-Gruppen werden aktuell nicht unterstützt. Weitere Informationen zu Lizenzierungsanforderungen für die in diesem Artikel erläuterten Features finden Sie in der [Preisübersicht für Azure Active Directory](https://azure.microsoft.com/pricing/details/active-directory). 

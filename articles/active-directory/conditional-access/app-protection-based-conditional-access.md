@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: how-to
-ms.date: 05/08/2020
+ms.date: 07/20/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol, rosssmi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dae584bdfa97b2c30cab5f15881323c26366592c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c5326fd6adf12d53d836594c8e53bda14e0871e5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85253357"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87009117"
 ---
 # <a name="how-to-require-app-protection-policy-and-an-approved-client-app-for-cloud-app-access-with-conditional-access"></a>Gewusst wie: Erzwingen einer App-Schutzrichtlinie und einer genehmigten Client-App für den Zugriff auf Cloud-Apps mithilfe des bedingten Zugriffs
 
@@ -30,10 +30,11 @@ Dieser Artikel enthält drei Szenarien zum Konfigurieren von Richtlinien für de
 
 Bei bedingtem Zugriff sind diese Client-Apps bekanntermaßen durch eine App-Schutzrichtlinie geschützt. Weitere Informationen zu App-Schutzrichtlinien finden Sie im Artikel [Übersicht über App-Schutzrichtlinien](/intune/apps/app-protection-policy).
 
-Eine Liste der qualifizierten Client-Apps finden Sie unter [App-Schutzrichtlinie als Voraussetzung](concept-conditional-access-grant.md).
+> [!WARNING]
+> Nicht alle Anwendungen werden als genehmigte Anwendungen unterstützt oder unterstützen Anwendungsschutzrichtlinien. Eine Liste der qualifizierten Client-Apps finden Sie unter [App-Schutzrichtlinie als Voraussetzung](concept-conditional-access-grant.md#require-app-protection-policy).
 
 > [!NOTE]
->    Die OR-Klausel wird innerhalb der Richtlinie verwendet, um Benutzern die Verwendung von Apps zu ermöglichen, welche die Zugriffserteilungssteuerung **App-Schutzrichtlinie erforderlich** bzw. **Genehmigte Client-App erforderlich** unterstützen. Weitere Informationen zu den Apps, welche die Zugriffserteilungssteuerung **App-Schutzrichtlinie erforderlich** unterstützen, finden Sie unter [App-Schutzrichtlinie als Voraussetzung](concept-conditional-access-grant.md).
+> Die Option „Eine der ausgewählten Steuerungen anfordern“ unter den Zugriffserteilungssteuerungen funktioniert wie eine ODER-Klausel. Sie wird innerhalb einer Richtlinie verwendet, um Benutzern die Verwendung von Apps zu ermöglichen, welche die Zugriffserteilungssteuerungen **App-Schutzrichtlinie erforderlich** bzw. **Genehmigte Client-App erforderlich** unterstützen. **App-Schutzrichtlinie erforderlich** wird erzwungen, wenn eine App in beiden Richtlinien unterstützt wird. Weitere Informationen zu den Apps, welche die Zugriffserteilungssteuerung **App-Schutzrichtlinie erforderlich** unterstützen, finden Sie unter [App-Schutzrichtlinie als Voraussetzung](concept-conditional-access-grant.md#require-app-protection-policy).
 
 ## <a name="scenario-1-office-365-apps-require-approved-apps-with-app-protection-policies"></a>Szenario 1: Office 365-Apps erfordern genehmigte Apps mit App-Schutzrichtlinien.
 

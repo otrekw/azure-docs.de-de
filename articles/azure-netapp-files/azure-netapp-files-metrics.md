@@ -1,6 +1,6 @@
 ---
 title: Metriken für Azure NetApp Files | Microsoft-Dokumentation
-description: Enthält eine Beschreibung der Metriken für Azure NetApp Files.
+description: 'Azure NetApp Files verfügt über Metriken für Folgendes: zugeteilter Speicher, tatsächliche Speichernutzung, IOPS pro Volume und Latenz. Anhand dieser Metriken können Sie Verbrauch und Leistung analysieren.'
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/17/2020
 ms.author: b-juche
-ms.openlocfilehash: c8e3b616dee1ab4e6bb6e77c6a8bab5661d4e20b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7e6ab90010d4379c1640f73a8deeba874e601daf
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79460431"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87513807"
 ---
 # <a name="metrics-for-azure-netapp-files"></a>Metriken für Azure NetApp Files
 

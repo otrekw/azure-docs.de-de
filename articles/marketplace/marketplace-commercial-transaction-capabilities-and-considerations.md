@@ -4,19 +4,21 @@ description: In diesem Artikel werden Überlegungen zur Preisgestaltung, Abrechn
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 06/15/2020
-ms.openlocfilehash: 653c55fa7476fa5fed077002db226297a33dfef6
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/22/2020
+ms.author: mingshen
+author: mingshen-ms
+ms.openlocfilehash: e2ce35158e8f9a3a2ad9da2b3d67a3f35d5a8c80
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119428"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503564"
 ---
 # <a name="commercial-marketplace-transact-capabilities"></a>Transaktionsfunktionen im kommerziellen Marketplace
 
 ## <a name="transactions-by-publishing-option"></a>Transaktionen nach Veröffentlichungsoption
 
-Für die Verwaltung von Softwarelizenztransaktionen für Angebote im kommerziellen Marketplace ist entweder der Herausgeber oder Microsoft verantwortlich. Wer die Transaktion verwaltet, wird von der Veröffentlichungsoption bestimmt, die Sie für Ihr Angebot auswählen. Informationen zur Verfügbarkeit und Erläuterungen der einzelnen Veröffentlichungsoptionen finden Sie unter [Bestimmen Ihrer Veröffentlichungsoption](./determine-your-listing-type.md#choose-a-publishing-option).
+Für die Verwaltung von Softwarelizenztransaktionen für Angebote im kommerziellen Marketplace ist entweder der Herausgeber oder Microsoft verantwortlich. Wer die Transaktion verwaltet, wird von der Veröffentlichungsoption bestimmt, die Sie für Ihr Angebot auswählen. Informationen zur Verfügbarkeit und Erläuterungen der einzelnen Veröffentlichungsoptionen finden Sie unter [Bestimmen Ihrer Veröffentlichungsoption](./determine-your-listing-type.md#choose-a-call-to-action).
 
 ### <a name="list-trial-and-byol-publishing-options"></a>Veröffentlichungsoptionen „Listung“, „Testversion“ und „BYOL“
 
@@ -134,7 +136,7 @@ In diesem Szenario stellt Microsoft 100,00 USD für Ihre Softwarelizenz in Rech
 |Microsoft zahlt Ihnen 80% Ihrer Lizenzkosten <br> \* Für jede qualifizierte SaaS-App zahlt Microsoft 90 % Ihrer Lizenzkosten.   |   80,00 USD pro Monat <br> \* 90,00 USD pro Monat    |
 |Microsoft behält 20% Ihrer Lizenzkosten ein <br> \* Für jede qualifizierte SaaS-App behält Microsoft 10 % Ihrer Lizenzkosten.  |  20,00 USD pro Monat <br> \* 10,00 USD     |
 
-Für bestimmte SaaS-Produkte, die Sie im kommerziellen Marketplace veröffentlichen, reduziert Microsoft die **Marketplace-Dienstgebühr** von 20 % (wie in der Microsoft-Herausgebervereinbarung angegeben) auf 10 %. Damit Ihr Angebot qualifiziert ist, muss mindestens eines Ihrer Angebote von Microsoft als bereit für IP-Co-Selling oder als priorisiert für IP-Co-Selling gekennzeichnet sein. Die Berechtigung muss mindestens fünf Arbeitstage vor dem Ende des vorherigen Kalendermonats bestehen, damit die reduzierte Marketplace-Dienstgebühr für den Monat in Anspruch genommen werden kann. Die reduzierte Marketplace-Dienstgebühr gilt nicht für virtuelle Computer, verwaltete Apps oder andere Produkte, die über den kommerziellen Marketplace zur Verfügung gestellt werden. Diese reduzierte Gebühr ist für qualifizierte Angebote verfügbar, wobei die Lizenzgebühren von Microsoft zwischen dem 1. Mai 2019 und dem 30. Juni 2020 vereinnahmt werden. Nach diesem Zeitpunkt gilt für die Gebühr wieder der normale Betrag.
+Für bestimmte Angebote, die Sie im kommerziellen Marketplace veröffentlichen, senkt Microsoft die Marketplace-Dienstgebühr von 20 % (wie in der Microsoft-Herausgebervereinbarung angegeben) auf 10 %. Damit Ihre Angebote qualifiziert sind, müssen sie von Microsoft als gefördert für Azure IP-Co-Selling gekennzeichnet worden sein. Die Anforderungen für die Berechtigung müssen mindestens fünf (5) Arbeitstage vor dem Ende eines jeden Kalendermonats erfüllt sein, damit die reduzierte Marketplace-Dienstgebühr für den Monat in Anspruch genommen werden kann. Die gesenkte Marketplace-Dienstgebühr gilt für Azure IP-Co-Selling-Anreize für SaaS, VMs, verwaltete Apps und andere qualifizierte transaktionsfähige IaaS-Angebote, die über den kommerziellen Marketplace bereitgestellt werden.
 
 ### <a name="customer-invoicing-payment-billing-and-collections"></a>Rechnungsstellung für den Kunden, Zahlung, Abrechnung und Inkasso
 
@@ -161,7 +163,7 @@ Kunden kaufen in der Regel im Rahmen eines Enterprise Agreement oder eines Vertr
 
 #### <a name="billing-questions-and-support"></a>Fragen zu Abrechnung und Support
 
-Weitere Informationen und gesetzliche Richtlinien finden Sie in der [Herausgebervereinbarung](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3ypvt) (in Partner Center verfügbar).
+Weitere Informationen und gesetzliche Richtlinien finden Sie in der [Herausgebervereinbarung](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4xqkx) (in Partner Center verfügbar).
 
 Hilfe zu Abrechnungsfragen erhalten Sie beim [Support für Herausgeber im kommerziellen Marketplace](https://aka.ms/marketplacepublishersupport).
 
@@ -180,7 +182,7 @@ Weitere Informationen zum Einrichten dieser Konten finden Sie unter [Verwalten I
 
 Die Veröffentlichungsoption „Transaktion“ ist nur für die folgenden Typen von Marketplace-Angeboten verfügbar:
 
-- **Virtueller Computer**: Wählen Sie aus den Preismodellen „Kostenlos“, „Bring-Your-Own-License“ oder „Nutzungsbasierte Bezahlung“ aus, und weisen Sie sie als auf Angebotsebene definierte SKUs aus. Auf der Azure-Rechnung des Kunden weist Microsoft die Softwarelizenzgebühren des Herausgebers getrennt von den zugrunde liegenden Azure-Infrastrukturgebühren aus. Azure-Infrastrukturgebühren hängen von der Verwendung der Software des Herausgebers ab.
+- **Virtueller Computer:** Wählen Sie zwischen den Preismodellen „Kostenlos“, „Bring-Your-Own-License“ und „Nutzungsbasierte Bezahlung“ aus, und weisen Sie sie als auf Angebotsebene definierte Pläne aus. Auf der Azure-Rechnung des Kunden weist Microsoft die Softwarelizenzgebühren des Herausgebers getrennt von den zugrunde liegenden Azure-Infrastrukturgebühren aus. Azure-Infrastrukturgebühren hängen von der Verwendung der Software des Herausgebers ab.
 
 - **Azure-Anwendung: Lösungsvorlage oder verwaltete App**: Muss einen oder mehrere virtuelle Computer bereitstellen und zieht sich durch die Summe der Preise für virtuelle Computer. Für verwaltete Apps mit einem Einzelplan kann anstelle der Preise für virtuelle Computer ein pauschales Monatsabonnement als Preismodell gewählt werden. In einigen Fällen werden dem Kunden die Nutzungsgebühren der Azure-Infrastruktur getrennt von den Softwarelizenzgebühren in Rechnung gestellt – aber auf derselben Abrechnung. Wenn Sie allerdings ein Angebot für eine verwaltete App für ISV-Infrastrukturgebühren konfigurieren, werden die Azure-Ressourcen dem Herausgeber berechnet. Für den Kunden wird eine Pauschalgebühr verwendet, die die Kosten für die Infrastruktur, Softwarelizenzen und Verwaltungsdienste abdeckt.
 

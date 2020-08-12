@@ -1,6 +1,6 @@
 ---
 title: Erstellen eines SMB-Volumes für Azure NetApp Files | Microsoft-Dokumentation
-description: Beschreibt die Vorgehensweise zum Erstellen eines SMB-Volumes für Azure NetApp Files.
+description: In diesem Artikel wird beschrieben, wie Sie ein SMBv3-Volume in Azure NetApp Files erstellen. Sie erhalten Informationen zu den Anforderungen für Active Directory-Verbindungen und Active Directory Domain Services.
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -12,18 +12,18 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 05/29/2020
+ms.date: 07/24/2020
 ms.author: b-juche
-ms.openlocfilehash: 6bd6ddc8b75b83355f6761ef0567ea949c86b61a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ba66716abe80a1b12bc64b739f498a0a01d54fe3
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85483702"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533171"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>Erstellen eines SMB-Volumes für Azure NetApp Files
 
-Azure NetApp Files unterstützt NFS- und SMBv3-Volumes. Der Kapazitätsverbrauch eines Volumes wird mit der bereitgestellten Kapazität des dazugehörigen Pools verrechnet. In diesem Artikel wird veranschaulicht, wie Sie ein SMB v3-Volume erstellen. Wenn Sie ein NFS-Volume erstellen möchten, lesen Sie unter [Erstellen eines NFS-Volumes für Azure NetApp Files](azure-netapp-files-create-volumes.md) nach. 
+Azure NetApp Files unterstützt das Erstellen von Volumes mithilfe von NFS (NFSv3 und NFSv4.1), SMBv3 oder einem dualen Protokoll (NFSv3 und SMB). Der Kapazitätsverbrauch eines Volumes wird mit der bereitgestellten Kapazität des dazugehörigen Pools verrechnet. In diesem Artikel wird veranschaulicht, wie Sie ein SMB v3-Volume erstellen.
 
 ## <a name="before-you-begin"></a>Voraussetzungen 
 Sie müssen bereits einen Kapazitätspool eingerichtet haben.   
@@ -163,8 +163,20 @@ Diese Einstellung wird in **Active Directory-Verbindungen** unter **NetApp-Konto
      * **Sicherungsrichtlinienbenutzer**  
         Sie können weitere Konten einschließen, die erhöhte Rechte für das für Azure NetApp Files erstellte Computerkonto erfordern. Die angegebenen Konten dürfen die NTFS-Berechtigungen auf Datei- oder Ordnerebene ändern. Beispielsweise können Sie ein nicht privilegiertes Dienstkonto angeben, das zum Migrieren von Daten zu einer SMB-Dateifreigabe in Azure NetApp Files verwendet wird.  
 
-        > [!IMPORTANT] 
-        > Für das Sicherungsrichtlinien-Benutzerfeature ist eine Whitelist erforderlich. Senden Sie eine E-Mail mit Ihrer Abonnement-ID an anffeedback@microsoft.com, um dieses Feature anzufordern. 
+        Das Feature **Sicherungsrichtlinienbenutzer** steht derzeit als Vorschau zur Verfügung. Wenn Sie dieses Feature zum ersten Mal verwenden, registrieren Sie es vor der Verwendung: 
+
+        ```azurepowershell-interactive
+        Register-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFBackupOperator
+        ```
+
+        Überprüfen Sie den Status der Funktionsregistrierung: 
+
+        > [!NOTE]
+        > Der **RegistrationState** kann einige Minuten lang den Status `Registering` aufweisen, bevor der Wechsel in `Registered` erfolgt. Warten Sie, bis der Status **Registriert** lautet, bevor Sie fortfahren.
+
+        ```azurepowershell-interactive
+        Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFBackupOperator
+        ```
 
     * Anmeldeinformationen, einschließlich **Benutzername** und **Kennwort**
 
@@ -185,7 +197,7 @@ Diese Einstellung wird in **Active Directory-Verbindungen** unter **NetApp-Konto
 2. Klicken Sie auf **+ Volume hinzufügen**, um ein Volume zu erstellen.  
     Das Fenster „Volume erstellen“ wird angezeigt.
 
-3. Klicken Sie im Fenster „Volume erstellen“ auf **Erstellen**, und geben Sie Informationen für die folgenden Felder an:   
+3. Klicken Sie im Fenster „Volume erstellen“ auf **Erstellen**, und geben Sie auf der Registerkarte „Grundlagen“ Informationen in den folgenden Feldern an:   
     * **Volumename**      
         Geben Sie den Namen für das Volume an, das Sie erstellen möchten.   
 
@@ -215,6 +227,12 @@ Diese Einstellung wird in **Active Directory-Verbindungen** unter **NetApp-Konto
         ![Erstellen eines Volumes](../media/azure-netapp-files/azure-netapp-files-new-volume.png)
     
         ![Erstellen eines Subnetzes](../media/azure-netapp-files/azure-netapp-files-create-subnet.png)
+
+    * Wenn Sie eine vorhandene Momentaufnahmenrichtlinie auf das Volume anwenden möchten, klicken Sie auf **Abschnitt „Erweitert“ anzeigen**, um den Bereich zu erweitern, und wählen Sie im Pulldownmenü eine Momentaufnahmenrichtlinie aus. 
+
+        Informationen zum Erstellen einer Momentaufnahmenrichtlinie finden Sie unter [Verwalten von Momentaufnahmenrichtlinien](azure-netapp-files-manage-snapshots.md#manage-snapshot-policies).
+
+        ![Abschnitt „Erweitert“ anzeigen](../media/azure-netapp-files/volume-create-advanced-selection.png)
 
 4. Klicken Sie auf **Protokoll**, und geben Sie die folgenden Informationen an:  
     * Wählen Sie **SMB** als Protokolltyp für das Volume aus. 

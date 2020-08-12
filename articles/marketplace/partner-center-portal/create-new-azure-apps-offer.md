@@ -7,12 +7,12 @@ ms.topic: article
 author: AarathiN
 ms.author: aarathin
 ms.date: 07/14/2020
-ms.openlocfilehash: f9d7e88e78800df07dfe82d7336324eef38b92d5
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 7a0f04344d2e4213bbbabb63d57bdaf933154388
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326670"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87797888"
 ---
 # <a name="create-an-azure-application-offer"></a>Erstellen eines Azure-Anwendungsangebots
 
@@ -247,14 +247,15 @@ Stellen Sie Logos und Bilder zur Verwendung mit Ihrem Angebot bereit. Alle Bilde
 
 #### <a name="store-logos"></a>Store-Logos
 
-Geben Sie PNG-Dateien für das Logo Ihres Angebots in den folgenden Bildauflösungen bereit:
+Geben Sie eine PNG-Datei für das **große** Logo an (zwischen 216 × 216 und 350 × 350 Pixel). Aus diesem werden in Partner Center ein **kleines** (48 × 48 Pixel) und ein **mittelgroßes** (90 × 90 Pixel) Logo erstellt. Sie können die Logos durch andere Bilder ersetzen.
+
+Alle drei Logogrößen sind erforderlich und werden an verschiedenen Stellen im Angebot verwendet:
 
 - **Klein** (48 x 48)
 - **Mittel** (90 x 90)
-- **Groß** (216 x 216)
-- **Breit** (255 x 115)
+- **Groß** (zwischen 216 × 216 und 350 × 350)
 
-Alle drei Logos sind erforderlich und werden an verschiedenen Stellen im Angebot verwendet.
+[!INCLUDE [Logo suggestions](./includes/graphics-suggestions.md)]
 
 #### <a name="screenshots"></a>Screenshots
 

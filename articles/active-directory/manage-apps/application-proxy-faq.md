@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 10/03/2019
+ms.date: 07/23/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 839ce418fa8ad72e18537cf673c8af0479409ba7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aa9a930195908671cc0e772fd9643dcbce9dbb1c
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85386282"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87562411"
 ---
 # <a name="active-directory-azure-ad-application-proxy-frequently-asked-questions"></a>Häufig gestellte Fragen zum Azure Active Directory-Anwendungsproxy (Azure AD-Anwendungsproxy)
 
@@ -45,6 +45,10 @@ Nein, dieses Szenario wird nicht unterstützt. Die Standardeinstellungen sind fo
 - Microsoft AAD-Anwendungsproxyconnector – WAPCSvc – Netzwerkdienst
 - Microsoft AAD Application Proxy Connector Updater – WAPCUpdaterSvc – NT-Autorität\System
 
+### <a name="can-a-guest-user-with-the-global-administrator-or-the-application-administrator-role-register-the-connector-for-the-guest-tenant"></a>Kann ein Gastbenutzer mit der Rolle „Globaler Administrator“ oder „Anwendungsadministrator“ den Connector für den (Gast-)Mandanten registrieren?
+
+Nein, dies ist derzeit nicht möglich. Der Registrierungsversuch erfolgt immer beim Basismandanten des Benutzers.
+
 ### <a name="my-back-end-application-is-hosted-on-multiple-web-servers-and-requires-user-session-persistence-stickiness-how-can-i-achieve-session-persistence"></a>Meine Back-End-Anwendung wird auf mehreren Webservern gehostet und erfordert Benutzersitzungspersistenz (Stickiness). Wie kann ich Sitzungspersistenz erreichen? 
 
 Empfehlungen finden Sie unter [Hochverfügbarkeit und Lastenausgleich von Anwendungsproxy-Connectors und -Anwendungen](application-proxy-high-availability-load-balancing.md).
@@ -52,6 +56,9 @@ Empfehlungen finden Sie unter [Hochverfügbarkeit und Lastenausgleich von Anwend
 ### <a name="is-tls-termination-tlshttps-inspection-or-acceleration-on-traffic-from-the-connector-servers-to-azure-supported"></a>Wird die TLS-Terminierung (TLS/HTTPS-Prüfung oder -Beschleunigung) für Datenverkehr von den Connectorservern zu Azure unterstützt?
 
 Der Anwendungsproxyconnector führt eine zertifikatbasierte Authentifizierung bei Azure durch. Die TLS-Terminierung (TLS/HTTPS-Prüfung oder -Beschleunigung) unterbricht diese Authentifizierungsmethode und wird nicht unterstützt. Der Datenverkehr vom Connector zu Azure muss alle Geräte umgehen, die eine TLS-Terminierung ausführen.  
+
+### <a name="is-tls-12-required-for-all-connections"></a>Ist TLS 1.2 für alle Verbindungen erforderlich?
+Ja. Zur Bereitstellung erstklassiger Verschlüsselung für unsere Kunden beschränkt der Anwendungsproxydienst den Zugriff ausschließlich auf TLS 1.2-Protokolle. Diese Änderungen wurden nach und nach bereitgestellt und sind seit dem 31. August 2019 wirksam. Vergewissern Sie sich, dass alle Kombinationen aus Client/Server und Browser/Server zur Verwendung von TLS 1.2 aktualisiert wurden, um die Verbindung mit dem Anwendungsproxydienst sicherzustellen. Dazu gehören Clients, mit denen Ihre Benutzer auf Anwendungen zugreifen, die über den Anwendungsproxy veröffentlicht werden. Nützliche Referenzen und Ressourcen finden Sie unter [Vorbereiten der Verwendung von TLS 1.2 in Office 365](https://docs.microsoft.com/microsoft-365/compliance/prepare-tls-1.2-in-office-365).
 
 ### <a name="can-i-place-a-forward-proxy-device-between-the-connector-servers-and-the-back-end-application-server"></a>Kann ich ein Weiterleitungsproxygerät zwischen den Connectorservern und dem Back-End-Anwendungsserver platzieren?
 Ja, dieses Szenario wird ab Connectorversion 1.5.1526.0 unterstützt. Weitere Informationen finden Sie unter [Verwenden von vorhandenen lokalen Proxyservern](application-proxy-configure-connectors-with-proxy-servers.md).
@@ -93,6 +100,9 @@ Auf der Seite „Anwendungsregistrierungen“ können Sie die Homepage-URL in di
 
 Nein, es gibt keine IIS-Anforderung für Anwendungen, die veröffentlicht werden. Sie können Webanwendungen veröffentlichen, die auf Servern ausgeführt werden, die nicht auf Windows Server basieren. Abhängig davon, ob der Webserver die Aushandlung (Kerberos-Authentifizierung) unterstützt, können Sie jedoch möglicherweise keine Vorauthentifizierung bei einem Nicht-Windows-Server verwenden. IIS ist nicht auf dem Server erforderlich, auf dem der Connector installiert ist.
 
+### <a name="can-i-configure-application-proxy-to-add-the-hsts-header"></a>Kann ich den Anwendungsproxy so konfigurieren, dass der HSTS-Header hinzugefügt wird?
+Der Anwendungsproxy fügt HTTPS-Antworten nicht automatisch den HTTP Strict-Transport-Security-Header hinzu, behält jedoch den Header bei, wenn er sich in der ursprünglichen Antwort befindet, die von der veröffentlichten Anwendung gesendet wurde. Die Suche nach einer Einstellung zur Aktivierung dieser Funktion ist in Planung. Wenn Sie an einer Vorschau interessiert sind, die das Hinzufügen des HSTS-Headers zu Antworten ermöglicht, wenden Sie sich an aadapfeedback@microsoft.com, um weitere Informationen zu erhalten.
+
 ## <a name="integrated-windows-authentication"></a>Integrierte Windows-Authentifizierung
 
 ### <a name="when-should-i-use-the-principalsallowedtodelegatetoaccount-method-when-setting-up-kerberos-constrained-delegation-kcd"></a>In welchen Fällen sollte ich die „PrincipalsAllowedToDelegateToAccount“-Methode beim Einrichten der eingeschränkten Kerberos-Delegierung (Kerberos Constrained Delegation, KCD) verwenden?
@@ -133,7 +143,7 @@ Ja, das entspricht dem erwarteten Verhalten. Für das Szenario der Vorauthentifi
 
 ### <a name="is-the-remote-desktop-web-client-html5-supported"></a>Wird der Remotedesktop-Webclient (HTML5) unterstützt?
 
-Nein, dieses Szenario wird derzeit nicht unterstützt. Besuchen Sie regelmäßig unser [UserVoice](https://aka.ms/aadapuservoice)-Feedbackforum, um Updates zu diesem Feature zu erhalten.
+Ja, dieses Szenario befindet sich derzeit in der öffentlichen Vorschau. Entsprechende Informationen finden Sie unter [Veröffentlichen des Remotedesktops per Azure AD-Anwendungsproxy](application-proxy-integrate-with-remote-desktop-services.md).
 
 ### <a name="after-i-configured-the-pre-authentication-scenario-i-realized-that-the-user-has-to-authenticate-twice-first-on-the-azure-ad-sign-in-form-and-then-on-the-rdweb-sign-in-form-is-this-expected-how-can-i-reduce-this-to-one-sign-in"></a>Nach der Konfiguration des Szenarios der Vorauthentifizierung musste ich feststellen, dass sich der Benutzer zweimal authentifizieren muss: zuerst auf dem Azure AD-Anmeldeformular und dann auf dem RDWeb-Anmeldeformular. Entspricht dies dem erwarteten Verhalten? Wie kann ich das auf eine Anmeldung reduzieren?
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: 99565c8dc8b5cbaea9f449a9f6262a37ae5b66d0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 46ebb122b0165d469b1c40871d5939e50a8595c9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85367188"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87016311"
 ---
 # <a name="tutorial-configure-snowflake-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Snowflake für die automatische Benutzerbereitstellung
 
@@ -163,6 +163,10 @@ Nachdem Sie die Bereitstellung konfiguriert haben, können Sie mit den folgenden
 ## <a name="connector-limitations"></a>Connector-Einschränkungen
 
 * Die von Snowflake generierten SCIM-Token laufen nach 6 Monaten ab. Beachten Sie, dass die Token vor ihrem Ablauf erneuert werden müssen, damit die Bereitstellungssynchronisierung weiterhin fortgesetzt werden kann. 
+
+## <a name="change-log"></a>Änderungsprotokoll
+
+* 21.07.2020: Vorläufiges Löschen für alle Benutzer (über das aktive-Attribut) hinzugefügt.
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

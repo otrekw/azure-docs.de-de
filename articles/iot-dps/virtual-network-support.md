@@ -7,12 +7,12 @@ ms.service: iot-dps
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.author: wesmc
-ms.openlocfilehash: 97168c95893ffdea99180c997265f259176ed07f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 8912ef907641367bda89d7c0e98f9da811c6e577
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86528096"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534599"
 ---
 # <a name="azure-iot-hub-device-provisioning-service-dps-support-for-virtual-networks"></a>Unterstützung von Azure IoT Hub Device Provisioning Service (DPS) für virtuelle Netzwerke
 
@@ -59,7 +59,7 @@ Beachten Sie die folgenden aktuellen Einschränkungen für DPS bei der Verwendun
 
 * Private Endpunkte funktionieren nicht mit DPS, wenn sich die DPS-Ressource und der verknüpfte Hub in unterschiedlichen Clouds befinden, z. B. [Azure Government und globales Azure](../azure-government/documentation-government-welcome.md).
 
-* Derzeit funktionieren [benutzerdefinierte Zuordnungsrichtlinien mit Azure Functions](how-to-use-custom-allocation-policies.md) für DPS nicht mit VNETs und privaten Endpunkten. 
+* Derzeit funktionieren [benutzerdefinierte Zuordnungsrichtlinien mit Azure Functions](how-to-use-custom-allocation-policies.md) für DPS nicht, wenn die Azure-Funktion an ein VNET und private Endpunkte gebunden ist. 
 
 * Die aktuelle VNET-Unterstützung von DPS betrifft nur eingehenden Datenverkehr in DPS. Ausgehender Datenverkehr, also von DPS zu IoT Hub, verwendet einen internen Dienst-zu-Dienst-Mechanismus anstelle eines dedizierten VNET. Eine Unterstützung für die vollständige VNET-basierte Sperrung von ausgehendem Datenverkehr zwischen DPS und IoT Hub ist zurzeit nicht verfügbar.
 

@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 07/07/2020
 ms.author: cherylmc
-ms.openlocfilehash: 6d14094edc7ae21ca0d56b544fb9c2b19f1f0582
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 634967fbe50c74770bdc3b526d68896728e4ee07
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86144997"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87513059"
 ---
 # <a name="how-to-configure-virtual-hub-routing"></a>Konfigurieren des Routings für virtuelle Hubs
 
@@ -22,7 +22,7 @@ Ein virtueller Hub kann mehrere Gateways enthalten, z. B. ein Site-to-Site-VPN-
 Weitere Informationen finden Sie unter [Informationen zum Routing virtueller Hubs](about-virtual-hub-routing.md).
 
 > [!NOTE]
-> Einige dieser Funktionen befinden sich ggf. noch in der Einführungsphase. Diese Phase soll bis zum 3. August abgeschlossen sein.
+> Einige dieser Funktionen befinden sich ggf. noch in der Einführungsphase. Diese Phase wird voraussichtlich bis zum 17. August abgeschlossen sein.
 >
 
 ## <a name="create-a-route-table"></a><a name="create-table"></a>Erstellen einer Routingtabelle

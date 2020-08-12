@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/06/2020
+ms.date: 07/31/2020
 ms.author: b-juche
-ms.openlocfilehash: 23ec482de740cc1ac8800a5de1c0e3be1f055df7
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 19e02012c31246b3b6b4636ef61154fbade347ce
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045483"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87494620"
 ---
 # <a name="solution-architectures-using-azure-netapp-files"></a>Lösungsarchitekturen mit Azure NetApp Files
 Dieser Artikel enthält Verweise auf bewährte Methoden, die Ihnen helfen können, die Lösungsarchitekturen für die Verwendung von Azure NetApp Files zu verstehen.  
@@ -45,6 +45,7 @@ In diesem Abschnitt finden Sie Referenzen zu Lösungen für Windows-Anwendungen 
 ### <a name="file-sharing-and-global-file-caching"></a>Dateifreigaben und globales Dateicaching
 
 * [Talon / Azure NetApp Files Deployment](https://youtu.be/91LKb1qsLIM) (Bereitstellung von Talon / Azure NetApp Files)
+* [Build Your Own Azure NFS? Wrestling Linux File Shares into Cloud](https://cloud.netapp.com/blog/ma-anf-blg-build-your-own-linux-nfs-file-shares) (Erstellen eines eigenen NFS: Verschieben von Linux-Dateifreigaben in die Cloud)
 
 ### <a name="sql-server"></a>SQL Server
 
@@ -86,6 +87,7 @@ Dieser Abschnitt enthält Referenzen zu Lösungen für virtuelle Desktopinfrastr
 
 * [Speicheroptionen für FSLogix-Profilcontainer in Windows Virtual Desktop](https://docs.microsoft.com/azure/virtual-desktop/store-fslogix-profile#azure-platform-details)
 * [Erstellen eines FSLogix-Profilcontainers für einen Hostpool mit Azure NetApp Files](https://docs.microsoft.com/azure/virtual-desktop/create-fslogix-profile-container)
+* [Windows Virtual Desktop auf Unternehmensebene](https://docs.microsoft.com/azure/architecture/example-scenario/wvd/windows-virtual-desktop)
 
 ## <a name="hpc-solutions"></a>Lösungen für HPC
 

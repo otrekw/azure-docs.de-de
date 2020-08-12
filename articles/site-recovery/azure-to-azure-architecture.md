@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 3/13/2020
 ms.author: raynew
-ms.openlocfilehash: 5d0808b93d0c9c7b49d1fd394d2b776c008bc594
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 3cd64de05c44729f1aa714849e12fc8f69998334
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135860"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498615"
 ---
 # <a name="azure-to-azure-disaster-recovery-architecture"></a>Architektur der Notfallwiederherstellung von Azure zu Azure
 
@@ -34,7 +34,7 @@ Die an der Notfallwiederherstellung beteiligten Komponenten für Azure-VMs werde
 **Cachespeicherkonto** | Sie benötigen ein Cachespeicherkonto im Quellnetzwerk. Während der Replikation werden VM-Änderungen im Cache gespeichert, bevor sie an den Zielspeicher gesendet werden.  Cachespeicherkonten müssen Standardkonten sein.<br/><br/> Ein Cache stellt sicher, dass die Auswirkungen auf die auf dem virtuellen Computer ausgeführten Produktionsanwendungen möglichst gering sind.<br/><br/> [Erfahren Sie mehr](azure-to-azure-support-matrix.md#cache-storage) über die Anforderungen an den Cachespeicher. 
 **Zielressourcen** | Zielressourcen werden während der Replikation und bei einem Failover verwendet. Site Recovery kann standardmäßig Zielressourcen einrichten, Sie können diese aber auch selbst erstellen oder bearbeiten.<br/><br/> Überprüfen Sie in der Zielregion, ob Sie virtuelle Computer erstellen können und ob Ihr Abonnement über ausreichend Ressourcen zur Unterstützung der VM-Größen verfügt, die in der Zielregion benötigt werden. 
 
-![Replikationsquelle und -ziel](./media/concepts-azure-to-azure-architecture/enable-replication-step-1-v2.png)
+![Diagramm von Replikationsquelle und -ziel](./media/concepts-azure-to-azure-architecture/enable-replication-step-1-v2.png)
 
 ## <a name="target-resources"></a>Zielressourcen
 
@@ -116,7 +116,7 @@ Wenn Sie die Replikation für eine Azure-VM aktivieren, geschieht Folgendes:
 4. Site Recovery verarbeitet die Daten im Cache und sendet sie an das Zielspeicherkonto oder an verwaltete Replikatdatenträger weiter.
 5. Nach der Verarbeitung der Daten werden alle fünf Minuten absturzkonsistente Wiederherstellungspunkte generiert. App-konsistente Wiederherstellungspunkte werden gemäß der Einstellung in der Replikationsrichtlinie generiert.
 
-![Schritt 2: Aktivieren des Replikationsprozesses](./media/concepts-azure-to-azure-architecture/enable-replication-step-2-v2.png)
+![Diagramm des Replikationsvorgangs, Schritt 2](./media/concepts-azure-to-azure-architecture/enable-replication-step-2-v2.png)
 
 **Replikationsprozess**
 
@@ -128,19 +128,19 @@ Wenn Sie die Replikation für eine Azure-VM aktivieren, geschieht Folgendes:
 
 Wenn der ausgehende Zugriff für virtuelle Computer über URLs gesteuert wird, erlauben Sie diese URLs.
 
-| **URL** | **Details** |
-| ------- | ----------- |
-| *.blob.core.windows.net | Ermöglicht das Schreiben von Daten aus der VM in das Cachespeicherkonto in der Quellregion |
-| login.microsoftonline.com | Stellt die Autorisierung und Authentifizierung für Site Recovery-Dienst-URLs bereit. |
-| *.hypervrecoverymanager.windowsazure.com | Ermöglicht die Kommunikation der VM mit Site Recovery |
-| *.servicebus.windows.net | Ermöglicht es der VM, die Site Recovery-Überwachung und -Diagnosedaten zu schreiben |
-| *.vault.azure.net | Ermöglicht über das Portal Zugriff zum Aktivieren der Replikation für VMs, für die ADE aktiviert ist
-| *.automation.ext.azure.com | Ermöglicht das Aktivieren automatischer Upgrades für den Mobilitäts-Agent für ein repliziertes Element über das Portal
+| **Name**                  | **Kommerziell**                               | **Behörden**                                 | **Beschreibung** |
+| ------------------------- | -------------------------------------------- | ---------------------------------------------- | ----------- |
+| Storage                   | `*.blob.core.windows.net`                  | `*.blob.core.usgovcloudapi.net`               | Ermöglicht das Schreiben von Daten aus der VM in das Cachespeicherkonto in der Quellregion |
+| Azure Active Directory    | `login.microsoftonline.com`                | `login.microsoftonline.us`                   | Stellt die Autorisierung und Authentifizierung für Site Recovery-Dienst-URLs bereit. |
+| Replikation               | `*.hypervrecoverymanager.windowsazure.com` | `*.hypervrecoverymanager.windowsazure.com`     | Ermöglicht die Kommunikation der VM mit Site Recovery |
+| Service Bus               | `*.servicebus.windows.net`                 | `*.servicebus.usgovcloudapi.net`             | Ermöglicht es der VM, die Site Recovery-Überwachung und -Diagnosedaten zu schreiben |
+| Key Vault                 | `*.vault.azure.net`                        | `*.vault.usgovcloudapi.net`                  | Ermöglicht über das Portal Zugriff zum Aktivieren der Replikation für VMs, für die ADE aktiviert ist |
+| Azure Automation          | `*.automation.ext.azure.com`               | `*.azure-automation.us`                      | Ermöglicht das Aktivieren automatischer Upgrades für den Mobilitäts-Agent für ein repliziertes Element über das Portal |
 
 ### <a name="outbound-connectivity-for-ip-address-ranges"></a>Ausgehende Konnektivität für IP-Adressbereiche
 
 Zum Steuern der ausgehenden Konnektivität für virtuelle Computer über IP-Adressen erlauben Sie diese Adressen.
-Einzelheiten zu den Netzwerkverbindungsanforderungen finden Sie unter [Netzwerkkonzepte für die Replikation zwischen Azure-Standorten](azure-to-azure-about-networking.md#outbound-connectivity-using-service-tags). 
+Beachten Sie, dass Sie im [Whitepaper zu Netzwerken](azure-to-azure-about-networking.md#outbound-connectivity-using-service-tags) Einzelheiten zu den Netzwerkverbindungsanforderungen finden. 
 
 #### <a name="source-region-rules"></a>Regeln für die Quellregion
 
@@ -191,7 +191,7 @@ Wenn Sie die Multi-VM-Konsistenz aktivieren, kommunizieren Computer in der Repli
 
 Bei der Initiierung eines Failovers werden die VMs in der Zielressourcengruppe, im virtuellen Zielnetzwerk, im Zielsubnetz und in der Zielverfügbarkeitsgruppe erstellt. Bei einem Failover können Sie einen beliebigen Wiederherstellungspunkt verwenden.
 
-![Failoverprozess](./media/concepts-azure-to-azure-architecture/failover-v2.png)
+![Diagramm des Failovervorgangs mit Quell- und Zielumgebung](./media/concepts-azure-to-azure-architecture/failover-v2.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

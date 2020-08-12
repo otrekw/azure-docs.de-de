@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 05/18/2018
-ms.openlocfilehash: 5fb9e48a6d6a0b95b61478a7877e9b46dd8963e9
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.date: 07/31/2020
+ms.openlocfilehash: 155f27b9f04db74955640aad8f582fdf05539368
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83649396"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87511937"
 ---
 # <a name="using-functions-in-azure-monitor-log-queries"></a>Verwenden von Funktionen in Azure Monitor-Protokollabfragen
 
@@ -33,6 +33,9 @@ Erstellen Sie eine Funktion mit Log Analytics, indem Sie im Azure-Portal auf **S
 
 ## <a name="use-a-function"></a>Verwenden einer Funktion
 Sie verwenden eine Funktion, indem Sie den Alias in eine andere Abfrage einbeziehen. Sie kann wie jede andere Tabelle verwendet werden.
+
+## <a name="function-parameters"></a>Funktionsparameter 
+Sie können einer Funktion Parameter hinzufügen, sodass Sie beim Aufruf Werte für bestimmte Variablen bereitstellen können. Die einzige Möglichkeit, eine Funktion mit Parametern zu erstellen, stellt die Verwendung einer Resource Manager-Vorlage dar. Ein Beispiel finden Sie unter [Beispiele für Resource Manager-Vorlagen für Protokollabfragen in Azure Monitor](../samples/resource-manager-log-queries.md#parameterized-function).
 
 ## <a name="example"></a>Beispiel
 Die folgende Beispielabfrage gibt sämtliche fehlenden Sicherheitsupdates zurück, die am Vortag gemeldet wurden. Speichern Sie diese Abfrage als Funktion mit dem Alias _security_updates_last_day_. 

@@ -7,21 +7,25 @@ ms.author: b-juche
 ms.service: azure-netapp-files
 ms.workload: storage
 ms.topic: how-to
-ms.date: 10/18/2019
-ms.openlocfilehash: e59648ee76b6715029c690329cbf8f4f1eee7243
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/27/2020
+ms.openlocfilehash: 4a20a223932f82c80ad5831ef3a02bad803e26e6
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85483651"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533201"
 ---
 # <a name="configure-export-policy-for-an-nfs-volume"></a>Konfigurieren der Exportrichtlinie für ein NFS-Volume
 
-Sie können optional die Exportrichtlinie zum Steuern des Zugriffs auf ein Azure NetApp Files-Volume konfigurieren. Die Azure NetApp Files-Exportrichtlinie unterstützt nur NFS-Volumes.  Sowohl NFSv3 als auch NFSv4 wird unterstützt. 
+Sie können die Exportrichtlinie zum Steuern des Zugriffs auf ein Azure NetApp Files-Volume konfigurieren. Die Azure NetApp Files-Exportrichtlinie unterstützt Volumes, die das NFS-Protokoll (NFSv3 sowie NFSv4.1) und ein duales Protokoll (NFSv3 und SMB) verwenden. 
+
+Sie können bis zu fünf Exportrichtlinienregeln erstellen.
 
 ## <a name="steps"></a>Schritte 
 
-1.  Klicken Sie im Navigationsbereich von Azure NetApp Files auf **Richtlinie exportieren**. 
+1.  Wählen Sie auf der Seite „Volumes“ das Volume aus, für das Sie die Exportrichtlinie konfigurieren möchten, und klicken Sie auf **Exportrichtlinie**. 
+
+    Sie können die Exportrichtlinie auch während der Erstellung des Volumes konfigurieren.
 
 2.  Geben Sie Informationen für die folgenden Felder an, um eine Exportrichtlinienregel zu erstellen:   
     *  **Index**   
@@ -39,10 +43,18 @@ Sie können optional die Exportrichtlinie zum Steuern des Zugriffs auf ein Azure
         * Lesen/Schreiben
         * Nur Leseberechtigung
 
-    ![Exportrichtlinie](../media/azure-netapp-files/azure-netapp-files-export-policy.png) 
+    * **Nur Leseberechtigung** und **Lesen/Schreiben**  
+        Wenn Sie die Kerberos-Verschlüsselung mit NFSv4.1 verwenden, befolgen Sie die Anweisungen unter [Konfigurieren der NFSv4.1-Kerberos-Verschlüsselung](configure-kerberos-encryption.md).  Informationen zu den Leistungsauswirkungen von Kerberos finden Sie unter [Leistungsauswirkungen von Kerberos auf NFSv4.1](configure-kerberos-encryption.md#kerberos_performance). 
+
+        ![Kerberos-Sicherheitsoptionen](../media/azure-netapp-files/kerberos-security-options.png) 
+
+    * **Root-Zugriff**  
+        Geben Sie an, ob das `root`-Konto auf das Volume zugreifen kann.  Standardmäßig ist der Root-Zugriff auf **Ein** festgelegt, und das `root`-Konto hat Zugriff auf das Volume.
+
+![Exportrichtlinie](../media/azure-netapp-files/azure-netapp-files-export-policy.png) 
+
 
 
 ## <a name="next-steps"></a>Nächste Schritte 
-* [Verwalten von Volumes](azure-netapp-files-manage-volumes.md)
 * [Bereitstellen oder Aufheben der Bereitstellung eines Volumes für virtuelle Computer](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)
 * [Verwalten von Momentaufnahmen](azure-netapp-files-manage-snapshots.md)

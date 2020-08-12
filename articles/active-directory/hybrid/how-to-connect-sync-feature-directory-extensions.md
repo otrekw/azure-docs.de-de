@@ -16,12 +16,12 @@ ms.date: 11/12/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3afec7c31488529af9ba15100c914899a0d1d808
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d64bfe66f5fb871ff9f85a5d58d128ac44643846
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85357459"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87019760"
 ---
 # <a name="azure-ad-connect-sync-directory-extensions"></a>Azure AD Connect Sync: Verzeichniserweiterungen
 Sie können Verzeichniserweiterungen verwenden, um das Schema in Azure Active Directory (Azure AD) um Ihre eigenen Attribute aus dem lokalen Active Directory zu erweitern. Dank dieses Features können Sie Branchen-Apps erstellen, indem Sie Attribute nutzen, die Sie weiterhin lokal verwalten. Diese Attribute können über [Erweiterungen](https://docs.microsoft.com/graph/extensibility-overview
@@ -33,8 +33,8 @@ Derzeit können diese Attribute von keiner Office 365-Workload genutzt werden.
 
 Sie konfigurieren im Installations-Assistenten im Pfad der benutzerdefinierten Einstellungen, welche zusätzlichen Attribute synchronisiert werden sollen.
 
->[!NOTE]
->Im Feld „Verfügbare Attribute“ muss die Groß-/Kleinschreibung beachtet werden.
+> [!NOTE]
+> In Versionen von Azure AD Connect vor 1.2.65.0 wird im Suchfeld für **Verfügbare Attribute** die Groß-/Kleinschreibung beachtet.
 
 ![Schemaerweiterungs-Assistent](./media/how-to-connect-sync-feature-directory-extensions/extension2.png)  
 

@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/13/2020
-ms.openlocfilehash: b7f58c13181c9ec966d548096ffc2756d5d333e3
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 6f0e688f3d483536e0d82186dd8e498cdadf97da
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87124888"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87563550"
 ---
 # <a name="monitor-and-alert-data-factory-by-using-azure-monitor"></a>Durchführen der Überwachung und Verwenden von Warnungen für Data Factory mit Azure Monitor
 
@@ -146,11 +146,11 @@ Hier sind einige Metriken aufgeführt, die von Azure Data Factory Version 2 aus
 | TriggerCancelledRuns                  | Metriken zu abgebrochenen Triggerausführungen            | Anzahl    | Gesamt                | Die Gesamtanzahl von Triggerausführungen, die innerhalb eines Minutenfensters abgebrochen wurden. |
 | TriggerFailedRuns                    | Metriken zu fehlerhaften Triggerausführungen              | Anzahl    | Gesamt                | Die Gesamtanzahl der fehlgeschlagenen Triggerausführungen innerhalb eines Minutenfensters. |
 | TriggerSucceededRuns                 | Metriken zu erfolgreichen Triggerausführungen           | Anzahl    | Gesamt                | Die Gesamtanzahl der erfolgreichen Triggerausführungen innerhalb eines Minutenfensters. |
-| SSISIntegrationRuntimeStartCancelled  | Metriken zu abgebrochenen SSIS IR-Startvorgängen           | Anzahl    | Gesamt                | Die Gesamtanzahl von SSIS IR-Startvorgängen, die innerhalb eines Minutenfensters abgebrochen wurden. |
-| SSISIntegrationRuntimeStartFailed    | Metriken zu fehlgeschlagenen SSIS IR-Startvorgängen             | Anzahl    | Gesamt                | Die Gesamtanzahl von SSIS IR-Startvorgängen, die innerhalb eines Minutenfensters fehlgeschlagen sind. |
-| SSISIntegrationRuntimeStartSucceeded | Metriken zu erfolgreichen SSIS IR-Startvorgängen          | Anzahl    | Gesamt                | Die Gesamtanzahl von SSIS IR-Startvorgängen, die innerhalb eines Minutenfensters erfolgreich waren. |
-| SSISIntegrationRuntimeStopStuck      | Metriken zu hängenden SSIS IR-Beendigungsvorgängen               | Anzahl    | Gesamt                | Die Gesamtanzahl von SSIS IR-Beendigungsvorgängen, die innerhalb eines Minutenfensters hängen geblieben sind. |
-| SSISIntegrationRuntimeStopSucceeded  | Metriken zu erfolgreichen SSIS IR-Beendigungsvorgängen           | Anzahl    | Gesamt                | Die Gesamtanzahl von SSIS IR-Beendigungsvorgängen, die innerhalb eines Minutenfensters erfolgreich waren. |
+| SSISIntegrationRuntimeStartCancelled  | Metriken zu abgebrochenen SSIS-Integration Runtime-Startvorgängen           | Anzahl    | Gesamt                | Die Gesamtanzahl von SSIS-Integration Runtime-Startvorgängen, die innerhalb eines Fensters von einer Minute abgebrochen wurden. |
+| SSISIntegrationRuntimeStartFailed    | Metriken zu fehlerhaften SSIS-Integration Runtime-Startvorgängen             | Anzahl    | Gesamt                | Die Gesamtanzahl von SSIS-Integration Runtime-Startvorgängen, die innerhalb eines Fensters von einer Minute zu einem Fehler führten. |
+| SSISIntegrationRuntimeStartSucceeded | Metriken zu erfolgreichen SSIS-Integration Runtime-Startvorgängen          | Anzahl    | Gesamt                | Die Gesamtanzahl von SSIS-Integration Runtime-Startvorgängen, die innerhalb eines Fensters von einer Minute erfolgreich abgeschlossen wurden. |
+| SSISIntegrationRuntimeStopStuck      | Metriken zu unterbrochenen SSIS-Integration Runtime-Beendigungsvorgängen               | Anzahl    | Gesamt                | Die Gesamtanzahl von SSIS-Integration Runtime-Beendigungsvorgängen, die innerhalb eines Fensters von einer Minute unterbrochen wurden. |
+| SSISIntegrationRuntimeStopSucceeded  | Metriken zu erfolgreichen SSIS-Integration Runtime-Beendigungsvorgängen           | Anzahl    | Gesamt                | Die Gesamtanzahl von SSIS-Integration Runtime-Beendigungsvorgängen, die innerhalb eines Fensters von einer Minute erfolgreich abgeschlossen wurden. |
 | SSISPackageExecutionCancelled         | Metriken zu abgebrochenen SSIS-Paketausführungen  | Anzahl    | Gesamt                | Die Gesamtanzahl von SSIS-Paketausführungen, die innerhalb eines Minutenfensters abgebrochen wurden. |
 | SSISPackageExecutionFailed           | Metriken zu fehlgeschlagenen SSIS-Paketausführungen    | Anzahl    | Gesamt                | Die Gesamtanzahl von SSIS-Paketausführungen, die innerhalb eines Minutenfensters fehlgeschlagen sind. |
 | SSISPackageExecutionSucceeded        | Metriken zu erfolgreichen SSIS-Paketausführungen | Anzahl    | Gesamt                | Die Gesamtanzahl von SSIS-Paketausführungen, die innerhalb eines Minutenfensters erfolgreich waren. |

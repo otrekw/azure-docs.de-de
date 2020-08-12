@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4ee0f3d89d48b23db48e3bf4b78203b09fbcbdbd
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 4e4797c3e089e0ae9d15cc604e9f93605978b36c
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80652634"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87419766"
 ---
 # <a name="enable-on-premises-azure-active-directory-password-protection"></a>Aktivieren des lokalen Azure Active Directory-Kennwortschutzes
 
@@ -40,7 +40,7 @@ In diesem Artikel wird veranschaulicht, wie Sie den Azure AD-Kennwortschutz für
 1. Wir empfehlen Ihnen, den **Modus** anfänglich auf *Überwachen* festzulegen. Wenn Sie sich mit dem Feature und der Auswirkung auf die Benutzer Ihrer Organisation vertraut gemacht haben, können Sie den **Modus** in *Erzwungen* ändern. Weitere Informationen finden Sie unten im Abschnitt [Betriebsmodi](#modes-of-operation).
 1. Wählen Sie **Speichern** aus, wenn Sie so weit sind.
 
-    [![](media/howto-password-ban-bad-on-premises-operations/enable-configure-custom-banned-passwords-cropped.png "Enable on-premises password protection under Authentication Methods in the Azure portal")](media/howto-password-ban-bad-on-premises-operations/enable-configure-custom-banned-passwords.png#lightbox)
+    [![Aktivieren des lokalen Kennwortschutzes unter „Authentifizierungsmethoden“ im Azure-Portal](media/howto-password-ban-bad-on-premises-operations/enable-configure-custom-banned-passwords-cropped.png)](media/howto-password-ban-bad-on-premises-operations/enable-configure-custom-banned-passwords.png#lightbox)
 
 ## <a name="modes-of-operation"></a>Betriebsmodi
 
