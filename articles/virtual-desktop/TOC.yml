@@ -143,11 +143,13 @@
     - name: Linux-Unterstützung
       href: linux-overview.md
     - name: Unterstützte RDP-Dateieinstellungen
-      href: 'https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/rdp-files?context=/azure/virtual-desktop/context/context'
+      href: /windows-server/remote/remote-desktop-services/clients/rdp-files?context=/azure/virtual-desktop/context/context
     - name: Netzwerkleitfaden
-      href: 'https://docs.microsoft.com/windows-server/remote/remote-desktop-services/network-guidance?context=/azure/virtual-desktop/context/context'
+      href: /windows-server/remote/remote-desktop-services/network-guidance?context=/azure/virtual-desktop/context/context
     - name: Leitfaden zur VM-Größe
-      href: 'https://docs.microsoft.com/windows-server/remote/remote-desktop-services/virtual-machine-recs?context=/azure/virtual-desktop/context/context'
+      href: /windows-server/remote/remote-desktop-services/virtual-machine-recs?context=/azure/virtual-desktop/context/context
+    - name: Azure-Befehlszeilenschnittstelle (CLI)
+      href: /cli/azure/ext/desktopvirtualization/?view=azure-cli-latest
 - name: Ressourcen
   items:
     - name: PowerShell
@@ -159,7 +161,7 @@
     - name: Preisrechner
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: Lernpfad
-      href: 'https://docs.microsoft.com/learn/paths/m365-wvd/'
+      href: /learn/paths/m365-wvd/
     - name: Anleitungsvideos
       href: 'https://support.microsoft.com/help/4563049/how-to-videos-about-windows-virtual-desktop'
     - name: Supportgruppe der technischen Community

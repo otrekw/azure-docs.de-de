@@ -149,7 +149,7 @@
         - name: Veröffentlichen im Azure AD-App-Katalog
           href: howto-app-gallery-listing.md
         - name: Veröffentlichen im Office 365-Verkäuferdashboard
-          href: 'https://docs.microsoft.com/office/dev/store/use-the-seller-dashboard-to-submit-to-the-office-store'
+          href: /office/dev/store/use-the-seller-dashboard-to-submit-to-the-office-store
     - name: Azure Access Control Service
       displayName: ACS
       items:
@@ -160,7 +160,7 @@
     - name: Verwenden der Microsoft Graph-API
       href: ../develop/microsoft-graph-intro.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
     - name: AD FS für Entwickler
-      href: 'https://docs.microsoft.com/windows-server/identity/ad-fs/ad-fs-overview'
+      href: /windows-server/identity/ad-fs/ad-fs-overview
 - name: References
   items:
     - name: Authentifizierungsbibliotheken
@@ -192,4 +192,4 @@
       displayName: 'support, help options'
       href: ../develop/developer-support-help-options.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
     - name: Verwaltete Identitäten für Azure-Ressourcen
-      href: 'https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview'
+      href: ../managed-identities-azure-resources/overview.md
