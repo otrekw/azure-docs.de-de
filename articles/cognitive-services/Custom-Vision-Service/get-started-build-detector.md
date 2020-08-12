@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 04/14/2020
+ms.date: 08/05/2020
 ms.author: pafarley
-ms.openlocfilehash: ba121400368f37c4a562a9c34e209c59d15b173c
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 01a5714cb78959a982ad73deb401edbafeebe8f9
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81404111"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87834455"
 ---
 # <a name="quickstart-how-to-build-an-object-detector-with-custom-vision"></a>Schnellstart: Informationen zum Erstellen einer Objekterkennung mit Custom Vision
 
@@ -55,6 +55,7 @@ Navigieren Sie im Webbrowser zur [Custom Vision-Webseite](https://customvision.a
     |---|---|
     |__Allgemein__| Für eine Vielzahl von Aufgaben der Objekterkennung optimiert. Wenn keine der anderen Domänen geeignet erscheint oder Sie unsicher sind, welche Domäne Sie wählen sollen, verwenden Sie die Domäne „Generic“. |
     |__Logo__|Für die Suche nach Markenlogos in Bildern optimiert.|
+    |__Produkte in Regalen__|Für die Erkennung und Klassifizierung von Produkten in Regalen optimiert.|
     |__Kompaktdomänen__| Für die Bedingungen der Echtzeitobjekterkennung auf Mobilgeräten optimiert. Die von Kompaktdomänen generierten Modelle können für die lokale Ausführung exportiert werden.|
 
 1. Wählen Sie schließlich __Create Project__ (Projekt erstellen) aus.

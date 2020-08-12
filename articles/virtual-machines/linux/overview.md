@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.date: 11/14/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: a62cb11e862bb8733e2758297d82aa7732b2d739
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c24989c73aa4343fea2b719a5b1e8c63c06af010
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87082463"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87835628"
 ---
 # <a name="linux-virtual-machines-in-azure"></a>Virtuelle Linux-Computer in Azure
 
@@ -50,13 +50,13 @@ Die folgende Tabelle enthält einige Methoden, mit denen Sie eine Liste verfügb
 | Azure-Portal |Wählen Sie beim Erstellen eines virtuellen Computers einen Standort aus der Liste aus. |
 | Azure PowerShell |Verwenden Sie den Befehl [Get-AzLocation](/powershell/module/az.resources/get-azlocation). |
 | REST-API |Verwenden Sie den Vorgang [List locations](/rest/api/resources/subscriptions) (Standorte auflisten). |
-| Azure-Befehlszeilenschnittstelle |Verwenden Sie den Vorgang [az account list-locations](/cli/azure/account?view=azure-cli-latest). |
+| Azure CLI |Verwenden Sie den Vorgang [az account list-locations](/cli/azure/account?view=azure-cli-latest). |
 
 ## <a name="availability"></a>Verfügbarkeit
 Für Azure wurde eine branchenweit führende Vereinbarung zum Servicelevel von 99,9 Prozent für Einzelinstanz-VMs angekündigt. Sie gilt unter der Voraussetzung, dass Sie den virtuellen Computer mit Storage Premium für alle Datenträger bereitstellen.  Damit Ihre Bereitstellung die Qualifikation für unsere VM-Standardvereinbarung zum Servicelevel von 99,95 Prozent erreicht, müssen Sie weiterhin mindestens zwei virtuelle Computer bereitstellen, die Ihre Workload innerhalb einer Verfügbarkeitsgruppe ausführen. Durch eine Verfügbarkeitsgruppe wird sichergestellt, dass Ihre virtuellen Computer auf mehrere Fehlerdomänen in den Azure-Rechenzentren verteilt und auf Hosts mit unterschiedlichen Wartungsfenstern bereitgestellt werden. Die vollständige [Azure-SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) erläutert die garantierte Verfügbarkeit von Azure insgesamt.
 
 ## <a name="vm-size"></a>Größe des virtuellen Computers
-Die [Größe](sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) des virtuellen Computers richtet sich nach der Workload, die Sie ausführen möchten. Von der gewählten Größe hängen Faktoren wie Rechenleistung, Arbeitsspeicher und Speicherplatz ab. Azure bietet eine Vielzahl von Größen zur Unterstützung vieler Anwendungstypen.
+Die [Größe](../sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) des virtuellen Computers richtet sich nach der Workload, die Sie ausführen möchten. Von der gewählten Größe hängen Faktoren wie Rechenleistung, Arbeitsspeicher und Speicherplatz ab. Azure bietet eine Vielzahl von Größen zur Unterstützung vieler Anwendungstypen.
 
 Bei Azure wird auf der Grundlage von Größe und Betriebssystem des virtuellen Computers ein [Stundenpreis](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) berechnet. Für angefangene Stunden werden lediglich die in Anspruch genommenen Minuten abgerechnet. Speicherplatz wird separat bewertet und in Rechnung gestellt.
 

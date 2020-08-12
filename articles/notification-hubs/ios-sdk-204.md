@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: notification-hubs
 ms.reviewer: thsomasu
 ms.lastreviewed: 06/01/2020
-ms.openlocfilehash: 80a9a98043a39b654f0d62a84ae81e12797b15b9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d89d46e3365a97d9deea8a89de2d9a1d5799cb72
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87022360"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836053"
 ---
 # <a name="tutorial-send-push-notifications-to-ios-apps-using-azure-notification-hubs-version-204"></a>Tutorial: Senden von Pushbenachrichtigungen an iOS-Apps mit Azure Notification Hubs (Version 2.0.4)
 
@@ -456,7 +456,7 @@ Pushbenachrichtigungen werden normalerweise mithilfe einer kompatiblen Bibliothe
 
 Es folgen einige andere Tutorials, die Informationen zum Senden von Benachrichtigungen enthalten:
 
-- Azure Mobile Apps: Ein Beispiel für das Senden von Benachrichtigungen von einem in Notification Hubs integrierten Mobile Apps-Back-End finden Sie unter [Hinzufügen von Pushbenachrichtigungen zu Ihrer iOS-App](/azure/app-service-mobile/app-service-mobile-ios-get-started-push).
+- Azure Mobile Apps: Ein Beispiel für das Senden von Benachrichtigungen von einem in Notification Hubs integrierten Mobile Apps-Back-End finden Sie unter [Hinzufügen von Pushbenachrichtigungen zu Ihrer iOS-App](/previous-versions/azure/app-service-mobile/app-service-mobile-ios-get-started-push).
 - ASP.NET: [Verwenden von Notification Hubs zum Senden von Pushbenachrichtigungen an Benutzer](notification-hubs-aspnet-backend-ios-apple-apns-notification.md).
 - Azure Notification Hubs Java SDK: Informationen zum Senden von Benachrichtigungen über Java finden Sie unter [Verwenden von Notification Hubs von Java aus](notification-hubs-java-push-notification-tutorial.md). Dies wurde für die Android-Entwicklung in Eclipse getestet.
 - PHP: [Verwenden von Notification Hubs von PHP aus](notification-hubs-php-push-notification-tutorial.md).

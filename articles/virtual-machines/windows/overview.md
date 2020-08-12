@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 11/14/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 4868db7df6209c620c5ae1bd9b1207072214ad35
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1d2675a55133d405041be6e309e0cc4d1596084e
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87074216"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87835481"
 ---
 # <a name="windows-virtual-machines-in-azure"></a>Virtuelle Windows-Computer in Azure
 
@@ -57,7 +57,7 @@ Für Azure wurde eine branchenweit führende Vereinbarung zum Servicelevel von 9
 
 
 ## <a name="vm-size"></a>Größe des virtuellen Computers
-Die [Größe](sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) des virtuellen Computers richtet sich nach der Workload, die Sie ausführen möchten. Von der gewählten Größe hängen Faktoren wie Rechenleistung, Arbeitsspeicher und Speicherplatz ab. Azure bietet eine Vielzahl von Größen zur Unterstützung vieler Anwendungstypen.
+Die [Größe](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) des virtuellen Computers richtet sich nach der Workload, die Sie ausführen möchten. Von der gewählten Größe hängen Faktoren wie Rechenleistung, Arbeitsspeicher und Speicherplatz ab. Azure bietet eine Vielzahl von Größen zur Unterstützung vieler Anwendungstypen.
 
 Bei Azure wird auf der Grundlage von Größe und Betriebssystem des virtuellen Computers ein [Stundenpreis](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) berechnet. Für angefangene Stunden werden lediglich die in Anspruch genommenen Minuten abgerechnet. Speicherplatz wird separat bewertet und in Rechnung gestellt.
 
@@ -76,7 +76,7 @@ Die folgende Tabelle enthält einige Methoden zur Ermittlung von Informationen z
 | Azure-Portal |Die Werte werden automatisch angegeben, wenn Sie ein zu verwendendes Image auswählen. |
 | Azure PowerShell |[Get-AzVMImagePublisher](/powershell/module/az.compute/get-azvmimagepublisher) -Location *Speicherort*<BR>[Get-AzVMImageOffer](/powershell/module/az.compute/get-azvmimageoffer) -Location *Speicherort* -Publisher *Herausgebername*<BR>[Get-AzVMImageSku](/powershell/module/az.compute/get-azvmimagesku) -Location *Speicherort* -Publisher *Herausgebername* -Offer *Angebotsname* |
 | REST-APIs |[List image publishers](/rest/api/compute/platformimages/platformimages-list-publishers) (Imageherausgeber auflisten)<BR>[List image offers](/rest/api/compute/platformimages/platformimages-list-publisher-offers) (Imageangebote auflisten)<BR>[List image skus](/rest/api/compute/platformimages/platformimages-list-publisher-offer-skus) (Image-SKUs auflisten) |
-| Azure-Befehlszeilenschnittstelle |[az vm image list-publishers](/cli/azure/vm/image?view=azure-cli-latest) --location *location*<BR>[az vm image list-offers](/cli/azure/vm/image?view=azure-cli-latest) --location *location* --publisher *publisherName*<BR>[az vm image list-skus](/cli/azure/vm?view=azure-cli-latest) --location *location* --publisher *publisherName* --offer *offerName*|
+| Azure CLI |[az vm image list-publishers](/cli/azure/vm/image?view=azure-cli-latest) --location *location*<BR>[az vm image list-offers](/cli/azure/vm/image?view=azure-cli-latest) --location *location* --publisher *publisherName*<BR>[az vm image list-skus](/cli/azure/vm?view=azure-cli-latest) --location *location* --publisher *publisherName* --offer *offerName*|
 
 Sie können auch [ein eigenes Image hochladen und verwenden](upload-generalized-managed.md). In diesem Fall werden Herausgebername, Angebot und SKU nicht verwendet.
 

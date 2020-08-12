@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 11/19/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 2defb00827e6f3ccf49c336007198b7d9ac176f6
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: bb4cfcd48608f90898648450a20d246f9fde002b
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87306110"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836002"
 ---
 # <a name="work-with-the-previous-version-of-azure-migrate"></a>Arbeiten mit der vorherigen Version von Azure Migrate
 
@@ -101,7 +101,7 @@ Die Bereitschaft berücksichtigt eine Reihe von VM-Eigenschaften, um festzustell
 --- | --- | ---
 **Starttyp** | BIOS wird unterstützt. VM wird nicht unterstützt. | Bedingt bereit, wenn der Starttyp UEFI ist.
 **Kerne** | Computerkern <= maximale Anzahl von Kernen (128), die für eine Azure-VM unterstützt werden.<br/><br/> Wenn der Leistungsverlauf verfügbar ist, berücksichtigt Azure Migrate die genutzten Kerne.<br/>Wenn in den Bewertungseinstellungen ein Komfortfaktor festgelegt ist, wird die Anzahl der genutzten Kerne mit dem Komfortfaktor multipliziert.<br/><br/> Wenn kein Leistungsverlauf vorhanden ist, verwendet Azure Migrate die zugeordneten Kerne ohne Anwendung des Komfortfaktors. | Bereit, wenn kleiner als die Grenzwerte oder gleich diesen.
-**Memory** | Größe des Computerarbeitsspeichers <= maximal zulässiger Arbeitsspeicher (3.892GB bei Azure M-Serie Standard_M128m&nbsp;<sup>2</sup>) für einen virtuellen Azure-Computer. [Weitere Informationen](../virtual-machines/windows/sizes.md)<br/><br/> Wenn der Leistungsverlauf verfügbar ist, berücksichtigt Azure Migrate dem genutzten Arbeitsspeicher.<br/><br/>Wenn ein Komfortfaktor festgelegt ist, wird der genutzte Arbeitsspeicher mit dem Komfortfaktor multipliziert.<br/><br/> Wenn kein Verlauf vorhanden ist, wird der zugeordnete Arbeitsspeicher ohne Anwendung des Komfortfaktors verwendet.<br/><br/> | Bereit, wenn innerhalb der Grenzen.
+**Memory** | Größe des Computerarbeitsspeichers <= maximal zulässiger Arbeitsspeicher (3.892GB bei Azure M-Serie Standard_M128m&nbsp;<sup>2</sup>) für einen virtuellen Azure-Computer. [Weitere Informationen](../virtual-machines/sizes.md)<br/><br/> Wenn der Leistungsverlauf verfügbar ist, berücksichtigt Azure Migrate dem genutzten Arbeitsspeicher.<br/><br/>Wenn ein Komfortfaktor festgelegt ist, wird der genutzte Arbeitsspeicher mit dem Komfortfaktor multipliziert.<br/><br/> Wenn kein Verlauf vorhanden ist, wird der zugeordnete Arbeitsspeicher ohne Anwendung des Komfortfaktors verwendet.<br/><br/> | Bereit, wenn innerhalb der Grenzen.
 **Speicherdatenträger** | Die zugeteilte Größe eines Datenträgers darf höchstens 4 TB (4096 GB) betragen.<br/><br/> An den Computer dürfen einschließlich des Betriebssystem-Datenträgers höchstens 65 Datenträger angefügt sein. | Bereit, wenn innerhalb der Grenzen.
 **Netzwerk** | An einen Computer dürfen höchstens 32 NICs angefügt sein. | Bereit, wenn innerhalb der Grenzen.
 
@@ -263,7 +263,7 @@ Bei Computern, die von System Center Operations Manager 2012 R2 oder höher übe
     ```sh InstallDependencyAgent-Linux64.bin```
 
 - Erfahren Sie mehr zur [Unterstützung des Dependency-Agents](../azure-monitor/insights/vminsights-enable-overview.md#supported-operating-systems) für die Betriebssysteme Windows und Linux.
-- [Erfahren Sie mehr](../azure-monitor/insights/vminsights-enable-hybrid-cloud.md#installation-script-examples) darüber, wie Sie den Dependency-Agent mithilfe von Skripts installieren können.
+- [Erfahren Sie mehr](../azure-monitor/insights/vminsights-enable-hybrid.md#dependency-agent) darüber, wie Sie den Dependency-Agent mithilfe von Skripts installieren können.
 
 >[!NOTE]
 > Der angegebene Artikel zu Azure Monitor für VMs enthält eine Übersicht über die Systemvoraussetzungen und die Methoden zur Bereitstellung des Dependency-Agents und gilt auch für die Dienstzuordnungslösung.
