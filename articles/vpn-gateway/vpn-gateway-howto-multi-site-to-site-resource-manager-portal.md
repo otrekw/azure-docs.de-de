@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 10/09/2019
 ms.author: cherylmc
-ms.openlocfilehash: 5a74f1ca8d1055885561a35dbd18899193d3924d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0561be00f50dad0fe89ca47428802f45ee44f50d
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84984138"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121424"
 ---
 # <a name="add-a-site-to-site-connection-to-a-vnet-with-an-existing-vpn-gateway-connection"></a>Hinzufügen einer Site-to-Site-Verbindung (S2S) zu einem VNet mit einer vorhandenen VPN-Gatewayverbindung
 
@@ -43,7 +43,7 @@ Die folgende Tabelle wird aktualisiert, wenn neue Artikel und weitere Tools für
 * Das Gateway für virtuelle Netzwerke für Ihr VNet ist RouteBased. Wenn Sie über ein PolicyBased-VPN Gateway verfügen, müssen Sie das Gateway für virtuelle Netzwerke löschen, und ein neues VPN-Gateway als RouteBased erstellen.
 * Keine der Adressbereiche überlappen sich mit einem der VNets, mit der dieses VNet eine Verbindung herstellt.
 * Sie haben ein kompatibles VPN-Gerät (und eine Person, die es konfigurieren kann). Weitere Informationen finden Sie unter [Informationen zu VPN-Geräten](vpn-gateway-about-vpn-devices.md). Wenn Sie sich mit dem Konfigurieren des VPN-Geräts oder mit den IP-Adressbereichen Ihrer lokalen Netzwerkkonfiguration nicht auskennen, müssen Sie sich an eine Person wenden, die Ihnen diese Details liefern kann.
-* Sie haben eine externe öffentliche IP-Adresse für Ihr VPN-Gerät. Diese IP-Adresse darf sich nicht hinter einer NAT befinden.
+* Sie haben eine externe öffentliche IP-Adresse für Ihr VPN-Gerät.
 
 ## <a name="part-1---configure-a-connection"></a><a name="part1"></a>Teil 1 – Konfigurieren einer Verbindung
 1. Navigieren Sie in einem Browser zum [Azure-Portal](https://portal.azure.com) , und melden Sie sich, falls erforderlich, mit Ihrem Azure-Konto an.
@@ -56,7 +56,7 @@ Die folgende Tabelle wird aktualisiert, wenn neue Artikel und weitere Tools für
     Schaltfläche ![Verbindung hinzufügen](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/addbutton.png "Hinzufügen der Schaltfläche „Verbindung“")<br>
 5. Füllen Sie auf der Seite **Verbindung hinzufügen** folgende Felder aus:
    
-   * **Name:** Der Name, den Sie dem Standort, mit dem Sie die Verbindung herstellen, zuweisen möchten.
+   * **Name:** Der Name, den Sie dem Standort zuweisen möchten, zu dem Sie die Verbindung herstellen.
    * **Verbindungstyp:** Wählen Sie **Site-to-Site (IPsec)** aus.
      
      ![Seite „Verbindung hinzufügen“](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/addconnectionblade.png "Seite „Verbindung hinzufügen“")<br>
@@ -70,8 +70,8 @@ Die folgende Tabelle wird aktualisiert, wenn neue Artikel und weitere Tools für
     ![Seite „Lokales Netzwerkgateway erstellen“](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/createlngblade.png "Erstellen eines lokalen Netzwerkgateways")<br>
 3. Füllen Sie auf der Seite **Lokales Netzwerkgateway erstellen** die folgenden Felder aus:
    
-   * **Name:** Der Name, den Sie der lokalen Netzwerkgateway-Ressource zuweisen möchten.
-   * **IP-Adresse:** Die öffentliche IP-Adresse des VPN-Geräts an dem Standort, mit dem Sie eine Verbindung herstellen möchten.
+   * **Name:** Der Name, den Sie der lokalen Netzwerkgateway-Ressource geben möchten.
+   * **IP-Adresse:** Die öffentliche IP-Adresse des VPN-Geräts auf dem Standort, mit dem Sie eine Verbindung herstellen möchten.
    * **Adressraum:** Der Adressraum, der an den Standort des lokalen Netzwerks weitergeleitet werden soll.
 4. Klicken Sie auf der Seite **Lokales Netzwerkgateway erstellen** auf **OK**, um die Änderungen zu speichern.
 

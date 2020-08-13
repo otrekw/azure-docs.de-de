@@ -139,6 +139,8 @@
               href: howto-monitor-application-health.md
             - name: Über Ihre Anwendung
               href: howto-get-app-info.md
+            - name: Rollen von X.509-Zertifikaten
+              href: how-to-roll-x509-certificates.md
         - name: Verwalten von anderen Orten
           items:
             - name: Verwalten über das Azure-Portal
@@ -159,7 +161,7 @@
               href: howto-show-hide-chat.md
 - name: Verweis
   items:
-    - name: Azure-Befehlszeilenschnittstelle
+    - name: Azure CLI
       href: /cli/azure/azure-cli-reference-for-IoT
 - name: Ressourcen
   items:

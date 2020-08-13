@@ -13,12 +13,12 @@ ms.date: 11/22/2019
 ms.author: negoe
 ms.reviewer: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: f3bb4dd1c564e5f6c4a8ee1bb5bf7424a74a339e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 479e74f9c36864e041685393d35972e7365260da
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81533988"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88119436"
 ---
 # <a name="use-msal-in-a-national-cloud-environment"></a>Verwenden der MSAL in einer nationalen Cloudumgebung
 
@@ -40,7 +40,7 @@ Stellen Sie zu Beginn sicher, dass die folgenden Voraussetzungen erfüllt sind:
 
 ### <a name="choose-the-appropriate-identities"></a>Auswählen der geeigneten Identitäten
 
-[Azure Government](https://docs.microsoft.com/azure/azure-government/)-Anwendungen können zur Authentifizierung von Benutzern sowohl Azure AD Government-Identitäten als auch öffentliche Azure AD-Identitäten verwenden. Da Sie eine beliebige dieser Identitäten verwenden können, müssen Sie sich für einen Autoritätsendpunkt für Ihr Szenario entscheiden:
+[Azure Government](../../azure-government/index.yml)-Anwendungen können zur Authentifizierung von Benutzern sowohl Azure AD Government-Identitäten als auch öffentliche Azure AD-Identitäten verwenden. Da Sie eine beliebige dieser Identitäten verwenden können, müssen Sie sich für einen Autoritätsendpunkt für Ihr Szenario entscheiden:
 
 - Öffentliche Azure AD-Identität: Wird häufig verwendet, wenn Ihre Organisation bereits über einen öffentlichen Azure AD-Mandanten verfügt, um Office 365 (öffentlich oder GCC) oder eine andere Anwendung zu unterstützen.
 - Azure AD Government-Identität: Wird häufig verwendet, wenn Ihre Organisation bereits über einen Azure AD Government-Mandanten verfügt, um Office 365 (GCC High oder DoD) zu unterstützen, oder wenn ein neuer Mandant in Azure AD Government erstellt werden soll.
@@ -49,7 +49,7 @@ Nach dieser Entscheidung müssen Sie sich überlegen, wo die App-Registrierung e
 
 ### <a name="get-an-azure-government-subscription"></a>Erhalten eines Azure Government-Abonnements
 
-Informationen zum Beziehen eines Azure Government-Abonnements finden Sie unter [Verwalten und Herstellen einer Verbindung mit Ihrem Abonnement in Azure Government](https://docs.microsoft.com/azure/azure-government/documentation-government-manage-subscriptions).
+Informationen zum Beziehen eines Azure Government-Abonnements finden Sie unter [Verwalten und Herstellen einer Verbindung mit Ihrem Abonnement in Azure Government](../../azure-government/documentation-government-manage-subscriptions.md).
 
 Wenn Sie kein Azure Government-Abonnement besitzen, können Sie zu Beginn ein [kostenloses Konto](https://azure.microsoft.com/global-infrastructure/government/request/) erstellen.
 
@@ -127,14 +127,14 @@ Informationen zu diesem Code:
     - Falls Ihre Anwendung **nur Konten in diesem Organisationsverzeichnis** unterstützt, ersetzen Sie diesen Wert durch die Mandanten-ID oder durch den Mandantennamen (beispielsweise „contoso.microsoft.com“).
     - Falls Ihre Anwendung **Konten in einem beliebigen Organisationsverzeichnis** unterstützt, ersetzen Sie diesen Wert durch `organizations`.
 
-    Informationen zum Ermitteln von Authentifizierungsendpunkten für alle nationalen Clouds finden Sie unter [Azure AD-Authentifizierungsendpunkte](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud#azure-ad-authentication-endpoints).
+    Informationen zum Ermitteln von Authentifizierungsendpunkten für alle nationalen Clouds finden Sie unter [Azure AD-Authentifizierungsendpunkte](./authentication-national-cloud.md#azure-ad-authentication-endpoints).
 
     > [!NOTE]
     > Persönliche Microsoft-Konten werden in nationalen Clouds nicht unterstützt.
 
 - `graphEndpoint` ist der Microsoft Graph-Endpunkt für Microsoft Cloud for US Government.
 
-   Informationen zum Ermitteln von Microsoft Graph-Endpunkten für alle nationalen Clouds finden Sie unter [Microsoft Graph-Endpunkte in nationalen Clouds](https://docs.microsoft.com/graph/deployments#microsoft-graph-and-graph-explorer-service-root-endpoints).
+   Informationen zum Ermitteln von Microsoft Graph-Endpunkten für alle nationalen Clouds finden Sie unter [Microsoft Graph-Endpunkte in nationalen Clouds](/graph/deployments#microsoft-graph-and-graph-explorer-service-root-endpoints).
 
 ## <a name="python"></a>[Python](#tab/python)
 
@@ -150,7 +150,7 @@ So aktivieren Sie Ihre MSAL-Python-Anwendung für Sovereign Clouds
     "authority": "https://login.microsoftonline.us/Enter_the_Tenant_Info_Here"
     ```
 
-- Zum Aufrufen von Microsoft Graph ist eine bestimmte Graph-Endpunkt-URL erforderlich, die von der verwendeten Cloud abhängt. Informationen zum Ermitteln von Microsoft Graph-Endpunkten für alle nationalen Clouds finden Sie unter [Stammendpunkte für Microsoft Graph und Graph Explorer](https://docs.microsoft.com/graph/deployments#microsoft-graph-and-graph-explorer-service-root-endpoints).
+- Zum Aufrufen von Microsoft Graph ist eine bestimmte Graph-Endpunkt-URL erforderlich, die von der verwendeten Cloud abhängt. Informationen zum Ermitteln von Microsoft Graph-Endpunkten für alle nationalen Clouds finden Sie unter [Stammendpunkte für Microsoft Graph und Graph Explorer](/graph/deployments#microsoft-graph-and-graph-explorer-service-root-endpoints).
 
     Hier ist ein Beispiel für einen Graph-Endpunkt mit einem Bereich:
 
@@ -173,7 +173,7 @@ Hier ist ein Beispiel für eine Autorisierung:
 "authority": "https://login.microsoftonline.us/Enter_the_Tenant_Info_Here"
 ```
 
-- Zum Aufrufen von Microsoft Graph ist eine bestimmte Graph-Endpunkt-URL erforderlich, die von der verwendeten Cloud abhängt. Informationen zum Ermitteln von Microsoft Graph-Endpunkten für alle nationalen Clouds finden Sie unter [Stammendpunkte für Microsoft Graph und Graph Explorer](https://docs.microsoft.com/graph/deployments#microsoft-graph-and-graph-explorer-service-root-endpoints).
+- Zum Aufrufen von Microsoft Graph ist eine bestimmte Graph-Endpunkt-URL erforderlich, die von der verwendeten Cloud abhängt. Informationen zum Ermitteln von Microsoft Graph-Endpunkten für alle nationalen Clouds finden Sie unter [Stammendpunkte für Microsoft Graph und Graph Explorer](/graph/deployments#microsoft-graph-and-graph-explorer-service-root-endpoints).
 
 Hier ist ein Beispiel für einen Graph-Endpunkt mit einem Bereich:
 
@@ -225,6 +225,6 @@ if let application = try? MSALPublicClientApplication(configuration: config) { /
 Weitere Informationen:
 
 - [Authentifizierung in nationalen Clouds](authentication-national-cloud.md)
-- [Azure Government](https://docs.microsoft.com/azure/azure-government/)
-- [Azure China 21Vianet](https://docs.microsoft.com/azure/china/)
-- [Azure Deutschland](https://docs.microsoft.com/azure/germany/)
+- [Azure Government](../../azure-government/index.yml)
+- [Azure China 21Vianet](/azure/china/)
+- [Azure Deutschland](../../germany/index.yml)

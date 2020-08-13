@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 03/03/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: d6cb8cf4b97ed3882d41a4eb179f11bf05f42118
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: 99d16407d1cfadcb7d3a79968fae4436e7c631e3
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82593164"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88115644"
 ---
 # <a name="authentication-flows-and-application-scenarios"></a>Authentifizierungsflows und Anwendungsszenarien
 
@@ -154,9 +154,9 @@ In einigen Szenarien (beispielsweise bei bedingtem Zugriff im Zusammenhang mit e
 Weitere Informationen finden Sie unter [Szenario: Mobile App, die Web-APIs aufruft](scenario-mobile-overview.md).
 
 > [!NOTE]
-> Auf eine mobile App, die MSAL.iOS, MSAL.Android oder MSAL.NET unter Xamarin verwendet, können App-Schutzrichtlinien angewendet werden. Mit diesen Richtlinien kann beispielsweise verhindert werden, dass ein Benutzer geschützten Text kopiert. Die mobile App wird von Intune verwaltet und als verwaltete App erkannt. Weitere Informationen finden Sie in der [Übersicht zum Microsoft Intune App SDK](https://docs.microsoft.com/intune/app-sdk).
+> Auf eine mobile App, die MSAL.iOS, MSAL.Android oder MSAL.NET unter Xamarin verwendet, können App-Schutzrichtlinien angewendet werden. Mit diesen Richtlinien kann beispielsweise verhindert werden, dass ein Benutzer geschützten Text kopiert. Die mobile App wird von Intune verwaltet und als verwaltete App erkannt. Weitere Informationen finden Sie in der [Übersicht zum Microsoft Intune App SDK](/intune/app-sdk).
 >
-> Das [Intune App SDK](https://docs.microsoft.com/intune/app-sdk-get-started) ist von den MSAL-Bibliotheken getrennt und interagiert eigenständig mit Azure AD.
+> Das [Intune App SDK](/intune/app-sdk-get-started) ist von den MSAL-Bibliotheken getrennt und interagiert eigenständig mit Azure AD.
 
 ### <a name="protected-web-api"></a>Geschützte Web-API
 
@@ -305,5 +305,5 @@ Weitere Informationen finden Sie unter [Von Microsoft unterstützte Bibliotheken
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Erfahren Sie mehr über [Authentifizierungsgrundlagen](authentication-scenarios.md) und [Zugriffstoken in der Microsoft Identity Platform](access-tokens.md).
+* Erfahren Sie mehr über [Authentifizierungsgrundlagen](./authentication-vs-authorization.md) und [Zugriffstoken in der Microsoft Identity Platform](access-tokens.md).
 * Erfahren Sie mehr über das [Sichern des Zugriffs auf IoT-Apps](/azure/architecture/example-scenario/iot-aad/iot-aad).

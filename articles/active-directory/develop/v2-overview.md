@@ -12,12 +12,12 @@ ms.date: 07/09/2020
 ms.author: ryanwi
 ms.reviewer: agirling, saeeda, benv
 ms.custom: identityplatformtop40
-ms.openlocfilehash: 566893a9babc3f771e3198970e0a5ae97592e322
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: e34eeeca3b17087fb5bd43ae353e43b5ab355831
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86231674"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88119554"
 ---
 # <a name="microsoft-identity-platform-overview"></a>Übersicht über Microsoft Identity Platform
 
@@ -59,7 +59,7 @@ Wenn Sie mit der Microsoft Identity Platform arbeiten, um Authentifizierungs- un
 
 In den folgenden empfohlenen Artikeln erfahren Sie, wie die Kernauthentifizierungs- und Azure AD-Konzepte Anwendung auf die Microsoft Identity Platform finden:
 
-- [Authentifizierungsszenarien für Azure AD](authentication-scenarios.md)
+- [Authentifizierungsszenarien für Azure AD](./authentication-vs-authorization.md)
 - [Anwendungs- und Dienstprinzipale](app-objects-and-service-principals.md)
 - [Zielgruppen](v2-supported-account-types.md)
 - [Berechtigungen und Einwilligung](v2-permissions-and-consent.md)
@@ -71,7 +71,7 @@ In den folgenden empfohlenen Artikeln erfahren Sie, wie die Kernauthentifizierun
 
 [Azure AD B2C](../../active-directory-b2c/overview.md): Erstellen Sie kundenorientierte Anwendungen, bei denen sich Ihre Benutzer mit ihren Konten sozialer Netzwerke wie Facebook oder Google oder mit einer E-Mail-Adresse und einem Kennwort anmelden können.
 
-[Azure AD B2B](../b2b/what-is-b2b.md): Laden Sie externe Benutzer als „Gastbenutzer“ in Ihren Azure AD-Mandanten ein, und weisen Sie ihnen Berechtigungen für die Autorisierung zu, während sie für die Authentifizierung ihre vorhandenen Anmeldeinformationen verwenden können.
+[Azure AD B2B](../external-identities/what-is-b2b.md): Laden Sie externe Benutzer als „Gastbenutzer“ in Ihren Azure AD-Mandanten ein, und weisen Sie ihnen Berechtigungen für die Autorisierung zu, während sie für die Authentifizierung ihre vorhandenen Anmeldeinformationen verwenden können.
 
 > [!TIP]
 > Suchen Sie nach der Dokumentation zu *Azure Active Directory-Entwicklerplattform (v1.0)* ? Weitere Informationen finden Sie unter [Azure Active Directory für Entwickler (v1.0) – Übersicht](../azuread-dev/v1-overview.md).

@@ -12,12 +12,12 @@ ms.date: 12/3/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 537d609c1281929203d1891f37614b7627e1683a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cb629b80958ed2897f76eb099f738c33b48c3696
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81868661"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88119605"
 ---
 # <a name="admin-consent-on-the-microsoft-identity-platform"></a>Administratoreinwilligung auf Microsoft Identity Platform
 
@@ -88,5 +88,5 @@ Wenn Sie zu den Parametern hinzugefügt werden, die in einer erfolgreichen Antwo
 ## <a name="next-steps"></a>Nächste Schritte
 - Lesen Sie die Informationen unter [Anmelden von Azure Active Directory-Benutzern mit dem mehrinstanzenfähigen Anwendungsmuster](howto-convert-app-to-be-multi-tenant.md).
 - Ausführlichere Informationen zur [OAuth 2.0-Protokollunterstützung für Zustimmung während des Flows zum Gewähren des Autorisierungscodes](v2-oauth2-auth-code-flow.md#request-an-authorization-code).
-- Ausführlichere Informationen zur [Verwendung des Zustimmungsframeworks durch mehrinstanzenfähige Anwendungen](active-directory-devhowto-multi-tenant-overview.md) zur Implementierung von Benutzer- und Administratoreinwilligung mit Unterstützung für erweiterte Anwendungsmuster mit mehreren Ebenen.
+- Ausführlichere Informationen zur [Verwendung des Zustimmungsframeworks durch mehrinstanzenfähige Anwendungen](./howto-convert-app-to-be-multi-tenant.md) zur Implementierung von Benutzer- und Administratoreinwilligung mit Unterstützung für erweiterte Anwendungsmuster mit mehreren Ebenen.
 - Grundlegendes zu [Einwilligungserfahrungen für Azure AD-Anwendungen](application-consent-experience.md)

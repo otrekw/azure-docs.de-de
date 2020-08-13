@@ -13,12 +13,12 @@ ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: c290cbf36fd53d5afb5fd805cda896fb6879bb4b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5ff2858dd8b91ba036c517cbff07be96a729ef8c
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80154949"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88116443"
 ---
 # <a name="application-types-in-v10"></a>Anwendungstypen in v1.0
 
@@ -41,7 +41,7 @@ Azure AD unterstützt die folgenden fünf Hauptanwendungsszenarien:
 Folgen Sie den Links, um mehr über die einzelnen App-Typen und allgemeinen Szenarien zu erfahren, bevor Sie mit dem Code arbeiten. Dort finden Sie auch Information zu den Unterschieden, die Sie beim Schreiben einer bestimmten App, die vom v1.0- oder v2.0-Endpunkt unterstützt wird, beachten müssen.
 
 > [!NOTE]
-> Der v2.0-Endpunkt unterstützt nicht alle Szenarien und Funktionen von Azure AD. Lesen Sie die Informationen zu den [Einschränkungen des v2.0-Endpunkts](../develop/active-directory-v2-limitations.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json), um herauszufinden, ob Sie den v2.0-Endpunkt verwenden sollten.
+> Der v2.0-Endpunkt unterstützt nicht alle Szenarien und Funktionen von Azure AD. Lesen Sie die Informationen zu den [Einschränkungen des v2.0-Endpunkts](./azure-ad-endpoint-comparison.md?bc=%2fazure%2factive-directory%2fazuread-dev%2fbreadcrumb%2ftoc.json&toc=%2fazure%2factive-directory%2fazuread-dev%2ftoc.json), um herauszufinden, ob Sie den v2.0-Endpunkt verwenden sollten.
 
 Alle der hier beschriebenen Apps und Szenarien können mit verschiedenen Programmiersprachen und Plattformen entwickelt werden. Zur Unterstützung stehen jeweils vollständige Codebeispiele in den zugehörigen Anleitungen zur Verfügung: [v1.0-Codebeispiele nach Szenario](sample-v1-code.md) und [v2.0-Codebeispiele nach Szenario](../develop/sample-v2-code.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json). Sie können die Codebeispiele auch direkt aus den entsprechenden [GitHub-Beispielrepositorys](https://github.com/Azure-Samples?q=active-directory) herunterladen.
 

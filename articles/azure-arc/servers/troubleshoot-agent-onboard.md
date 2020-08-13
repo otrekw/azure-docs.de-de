@@ -1,19 +1,14 @@
 ---
 title: Behandeln von Verbindungsproblemen im Zusammenhang mit dem Azure Arc für Server-Agent
 description: In diesem Artikel erfahren Sie, wie Sie Probleme mit dem Connected Machine-Agent behandeln und beheben, die im Zusammenhang mit Azure Arc für Server (Vorschauversion) bei dem Versuch auftreten, eine Verbindung mit dem Dienst herzustellen.
-services: azure-arc
-ms.service: azure-arc
-ms.subservice: azure-arc-servers
-author: mgoedtel
-ms.author: magoedte
 ms.date: 07/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: 2a6f51f1c6901eaa18c1de9c1fc788ed583b7394
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 5cd2560279085485a8ac7b285e4f601060a924f1
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87809441"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88118007"
 ---
 # <a name="troubleshoot-the-connected-machine-agent-connection-issues"></a>Behandeln von Verbindungsproblemen für den Connected Machine-Agent
 

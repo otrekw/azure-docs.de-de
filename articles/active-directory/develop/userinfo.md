@@ -13,12 +13,12 @@ ms.date: 05/22/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 08386e2c54a45fe4a6e35ce6d7ebb51145827a6d
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 59e811b7813ef94682896e0f95e971ca0094ef65
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84268438"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88119639"
 ---
 # <a name="microsoft-identity-platform-userinfo-endpoint"></a>Microsoft Identity Platform: UserInfo-Endpunkt
 
@@ -34,7 +34,7 @@ Als Teil der OpenID Connect-Spezifikation wird der UserInfo-Endpunkt häufig von
 
 Die im ID-Token verfügbaren Informationen, die Ihre App empfangen kann, sind eine übergeordnete Menge der Informationen, die sie vom UserInfo-Endpunkt abrufen kann.  Da Sie ein ID-Token zur gleichen Zeit wie ein Token zum Aufrufen des UserInfo-Endpunkts abrufen können, empfiehlt es sich, Informationen zum Benutzer mithilfe dieses ID-Tokens abzurufen, anstatt den UserInfo-Endpunkt aufzurufen.  Durch die Verwendung des ID-Tokens entfallen ein bis zwei Netzwerkanforderungen vom Anwendungsstart, sodass die Latenz der Anwendung verringert wird.
 
-Wenn Sie weitere Informationen zum Benutzer benötigen, sollten Sie die [Microsoft Graph-API `/user`](https://docs.microsoft.com/graph/api/user-get) aufrufen, um Informationen wie Büronummer oder Position abzurufen.   Sie können auch [optionale Ansprüche](active-directory-optional-claims.md) verwenden, um zusätzliche Benutzerinformationen in Ihre ID und Zugriffstoken einzubeziehen.
+Wenn Sie weitere Informationen zum Benutzer benötigen, sollten Sie die [Microsoft Graph-API `/user`](/graph/api/user-get) aufrufen, um Informationen wie Büronummer oder Position abzurufen.   Sie können auch [optionale Ansprüche](active-directory-optional-claims.md) verwenden, um zusätzliche Benutzerinformationen in Ihre ID und Zugriffstoken einzubeziehen.
 
 ## <a name="calling-the-userinfo-endpoint"></a>Aufrufen des UserInfo-Endpunkts
 

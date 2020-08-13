@@ -13,12 +13,12 @@ ms.date: 04/10/2019
 ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 7238a78279528b4522d09178d00bf916f14bad88
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5d91514af9aea3dd7ea13b94681fbb27c53772fe
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76696417"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88120897"
 ---
 # <a name="differences-between-msal-js-and-adal-js"></a>Unterschiede zwischen MSAL.js und ADAL.js
 
@@ -30,7 +30,7 @@ Dieser Artikel bietet Hilfestellung bei der Auswahl zwischen der Microsoft Authe
 
 In den meisten Fällen möchten Sie wahrscheinlich die Microsoft Identity Platform und MSAL.js verwenden, da es sich hierbei um die neueste Generation von Microsoft-Authentifizierungsbibliotheken handelt. Mithilfe von MSAL.js rufen Sie Token für Benutzer ab, die sich mit Azure AD (Geschäfts-, Schul- und Unikonten), (persönlichen) Microsoft-Konten (MSA) oder Azure AD B2C bei Ihrer Anwendung anmelden.
 
-Wenn Sie bereits mit dem v1.0-Endpunkt (und ADAL.js) vertraut sind, könnte Sie der Artikel [Neuerungen des v2.0-Endpunkts](active-directory-v2-compare.md) interessieren.
+Wenn Sie bereits mit dem v1.0-Endpunkt (und ADAL.js) vertraut sind, könnte Sie der Artikel [Neuerungen des v2.0-Endpunkts](../azuread-dev/azure-ad-endpoint-comparison.md) interessieren.
 
 Wenn Benutzer mit früheren Versionen der [Active Directory-Verbunddienste (AD FS)](/windows-server/identity/active-directory-federation-services) bei Ihrer Anwendung angemeldet werden müssen, müssen Sie jedoch weiterhin ADAL.js verwenden.
 
@@ -96,4 +96,4 @@ Wenn in v2.0 die Autorität `https://login.microsoftonline.com/common` verwendet
     ```
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen finden Sie unter [Vergleich von v1.0 und v2.0](active-directory-v2-compare.md).
+Weitere Informationen finden Sie unter [Vergleich von v1.0 und v2.0](../azuread-dev/azure-ad-endpoint-comparison.md).

@@ -12,12 +12,12 @@ ms.date: 03/12/2020
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40
 ms.reviewer: aragra, lenalepa, sureshja
-ms.openlocfilehash: 79983678d13b810a521a00ba2c1978de92a5029f
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 65fff06b4a2d28bbc276920ccbaba90d814d03f3
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81309511"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88115355"
 ---
 # <a name="quickstart-register-an-application-with-the-microsoft-identity-platform"></a>Schnellstart: Registrieren einer Anwendung bei Microsoft Identity Platform
 
@@ -50,7 +50,7 @@ Ihre App wird bei einem Azure Active Directory-Mandanten registriert, um sie i
     * Geben Sie für Webanwendungen die Basis-URL Ihrer App an. `https://localhost:31544` kann beispielsweise die URL für eine Web-App sein, die auf einem lokalen Computer ausgeführt wird. Benutzer können diese URL nutzen, um sich an einer Webclientanwendung anzumelden.
     * Geben Sie für öffentliche Clientanwendungen den URI an, der von Azure AD zum Zurückgeben von Tokenantworten verwendet wird. Geben Sie einen für Ihre Anwendung spezifischen Wert ein (beispielsweise `myapp://auth`).
 
-    Beispiele für Webanwendungen oder native Anwendungen finden Sie in den Schnellstartanleitungen unter [Microsoft Identity Platform](https://docs.microsoft.com/azure/active-directory/develop).
+    Beispiele für Webanwendungen oder native Anwendungen finden Sie in den Schnellstartanleitungen unter [Microsoft Identity Platform](./index.yml).
 
 1. Wenn Sie so weit sind, klicken Sie auf **Registrieren**.
 
@@ -70,7 +70,7 @@ Azure AD weist Ihrer App eine eindeutige Anwendungs-ID (oder Client-ID) zu. Im 
 
 * Informationen zum Verwalten unterstützter Konten finden Sie unter [Schnellstart: Ändern der von einer Anwendung unterstützten Konten](quickstart-modify-supported-accounts.md).
 
-* Informationen zum Erstellen einer App und zum Hinzufügen von Funktionen finden Sie in den Schnellstartanleitungen unter [Microsoft Identity Platform](https://docs.microsoft.com/azure/active-directory/develop).
+* Informationen zum Erstellen einer App und zum Hinzufügen von Funktionen finden Sie in den Schnellstartanleitungen unter [Microsoft Identity Platform](./index.yml).
 
 * Um mehr über die beiden Azure AD-Objekte, die eine registrierte Anwendung darstellen, und die Beziehung zwischen ihnen zu erfahren, lesen Sie [Anwendungsobjekte und Dienstprinzipalobjekte](app-objects-and-service-principals.md).
 

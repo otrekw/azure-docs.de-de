@@ -13,12 +13,12 @@ ms.date: 01/27/2020
 ms.author: jmprieur
 ms.reviewer: kkrishna
 ms.custom: aaddev
-ms.openlocfilehash: df0caf3ae029353742b4b1060ca5241ac9cbb5bd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5742ddf9553c3ac9187dbef93fc7927564cbc095
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85477803"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88116970"
 ---
 # <a name="handle-samesite-cookie-changes-in-chrome-browser"></a>Verarbeiten von SameSite-Cookieänderungen im Chrome-Browser
 
@@ -59,7 +59,7 @@ Die folgende Tabelle zeigt die Pull Requests, mit denen die SameSite-Änderungen
 
 Ausführliche Informationen zur Behandlung von SameSite-Cookies in ASP.NET und ASP.NET Core finden Sie auch unter:
 
-- [Arbeiten mit SameSite-Cookies in ASP.NET Core](https://docs.microsoft.com/aspnet/core/security/samesite).
+- [Arbeiten mit SameSite-Cookies in ASP.NET Core](/aspnet/core/security/samesite).
 - [ASP.NET-Blog zum SameSite-Thema](https://devblogs.microsoft.com/aspnet/upcoming-samesite-cookie-changes-in-asp-net-and-asp-net-core/)
 
 # <a name="python"></a>[Python](#tab/python)

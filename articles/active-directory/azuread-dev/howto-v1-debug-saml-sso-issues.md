@@ -13,12 +13,12 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: luleon, hirsin, paulgarn
 ROBOTS: NOINDEX
-ms.openlocfilehash: bbd622ccb7aeecfff4d3dc744623105a593e6a67
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3f1829127d1eaf65be586ddff3fb2615cae72c5d
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85383579"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88116137"
 ---
 # <a name="debug-saml-based-single-sign-on-to-applications-in-azure-active-directory"></a>Debuggen des SAML-basierten einmaligen Anmeldens bei Anwendungen in Azure Active Directory.
 
@@ -104,4 +104,4 @@ Gehen Sie folgendermaßen vor, um den Fehler zu beheben:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Da nun einmaliges Anmelden für Ihre Anwendung funktioniert, können Sie mit dem [Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für SaaS-Anwendungen mit Azure Active Directory](../manage-apps/user-provisioning.md) fortfahren oder [die ersten Schritte mit bedingtem Zugriff ausführen](../conditional-access/app-based-conditional-access.md).
+Da nun einmaliges Anmelden für Ihre Anwendung funktioniert, können Sie mit dem [Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für SaaS-Anwendungen mit Azure Active Directory](../app-provisioning/user-provisioning.md) fortfahren oder [die ersten Schritte mit bedingtem Zugriff ausführen](../conditional-access/app-based-conditional-access.md).

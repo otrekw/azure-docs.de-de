@@ -11,22 +11,21 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/15/2019
 ms.author: ryanwi
-ms.openlocfilehash: 2735403ff02914213d68db27e2635e7329261f5e
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: d9b84f2eace9ec268c6ff0942d19b47402e19bde
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80883889"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88120727"
 ---
 # <a name="how-to-select-permissions-for-a-given-api"></a>Auswählen von Berechtigungen für eine bestimmte API 
 
 ## <a name="recommended-documents"></a>Empfohlene Dokumente
 
-- Erfahren Sie mehr darüber, wie Clientanwendungen mit [Anforderungen für delegierte Berechtigungen und Anwendungsberechtigungen](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#permissions) auf Ressourcen zugreifen.
-- Arbeiten Sie schrittweise Anleitungen zum [Konfigurieren der Berechtigungsanforderungen einer Clientanwendung](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications) durch.
-- Weiterführend können Sie sich damit vertraut machen, wie Ressourcenanwendungen [Bereiche](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#scopes) und [Anwendungsrollen](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#roles) für Clientanwendungen verfügbar machen, die im Azure-Portal als delegierte Berechtigungen bzw. als Anwendungsberechtigungen ausgewiesen werden. 
+- Erfahren Sie mehr darüber, wie Clientanwendungen mit [Anforderungen für delegierte Berechtigungen und Anwendungsberechtigungen](./developer-glossary.md#permissions) auf Ressourcen zugreifen.
+- Arbeiten Sie schrittweise Anleitungen zum [Konfigurieren der Berechtigungsanforderungen einer Clientanwendung](./quickstart-register-app.md) durch.
+- Weiterführend können Sie sich damit vertraut machen, wie Ressourcenanwendungen [Bereiche](./developer-glossary.md#scopes) und [Anwendungsrollen](./developer-glossary.md#roles) für Clientanwendungen verfügbar machen, die im Azure-Portal als delegierte Berechtigungen bzw. als Anwendungsberechtigungen ausgewiesen werden. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 [Azure AD bei Stack Overflow](https://stackoverflow.com/questions/tagged/azure-active-directory)
-

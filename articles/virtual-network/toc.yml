@@ -12,6 +12,8 @@
       href: quick-create-powershell.md
     - name: Erstellen eines virtuellen Netzwerks – Azure CLI
       href: quick-create-cli.md
+    - name: 'Erstellen eines virtuellen Netzwerks: ARM-Vorlage'
+      href: quick-create-template.md
   expanded: true
 - name: Tutorials
   items:

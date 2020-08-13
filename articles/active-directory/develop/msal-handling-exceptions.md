@@ -13,12 +13,12 @@ ms.date: 05/18/2020
 ms.author: marsma
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: c27938227a13934de11dd6e88d58138c46c3f58e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 60c61ff4753413d2241820400dcbc899e925eecc
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85204625"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88120948"
 ---
 # <a name="handle-msal-exceptions-and-errors"></a>Verarbeiten von MSAL-Ausnahmen und -Fehlern
 
@@ -236,7 +236,7 @@ In MSAL für Python werden die meisten Fehler als Rückgabewert des API-Aufrufs 
 * Eine erfolgreiche Antwort enthält den Schlüssel `"access_token"`. Das Format der Antwort wird durch das OAuth2-Protokoll definiert. Weitere Informationen finden Sie unter [5.1 Erfolgreiche Antwort](https://tools.ietf.org/html/rfc6749#section-5.1).
 * Eine Fehlerantwort enthält `"error"` und in der Regel `"error_description"`. Das Format der Antwort wird durch das OAuth2-Protokoll definiert. Weitere Informationen finden Sie unter [5.2 Fehlerantwort](https://tools.ietf.org/html/rfc6749#section-5.2).
 
-Wenn ein Fehler zurückgegeben wird, enthält der Schlüssel `"error_description"` eine lesbare Nachricht. Diese wiederum enthält in der Regel einen Fehlercode der Microsoft Identity Platform. Einzelheiten zu den verschiedenen Fehlercodes finden Sie unter [Authentifizierungs- und Autorisierungsfehlercodes](https://docs.microsoft.com/azure/active-directory/develop/reference-aadsts-error-codes).
+Wenn ein Fehler zurückgegeben wird, enthält der Schlüssel `"error_description"` eine lesbare Nachricht. Diese wiederum enthält in der Regel einen Fehlercode der Microsoft Identity Platform. Einzelheiten zu den verschiedenen Fehlercodes finden Sie unter [Authentifizierungs- und Autorisierungsfehlercodes](./reference-aadsts-error-codes.md).
 
 In MSAL für Python sind Ausnahmen selten, da die meisten Fehler durch die Rückgabe eines Fehlerwerts behandelt werden. Die `ValueError`-Ausnahme wird nur ausgelöst, wenn ein Problem mit Ihrer Verwendung der Bibliothek vorliegt, z. B. wenn API-Parameter falsch formatiert sind.
 

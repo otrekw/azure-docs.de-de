@@ -13,12 +13,12 @@ ms.date: 06/22/2018
 ms.author: kenwith
 ms.reviewer: paulgarn
 ms.custom: aaddev
-ms.openlocfilehash: 59ba97ccc0bc4a1a273873d638ef3f519b91e530
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: bab21bfc6dba6e9cd35c8053e943cb76339e2254
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284437"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88114964"
 ---
 # <a name="azure-ad-saml-token-reference"></a>Azure AD-SAML-Tokenreferenz
 
@@ -154,7 +154,7 @@ Dies ist ein Beispiel eines typischen SAML-Tokens.
 
 ## <a name="related-content"></a>Verwandte Inhalte
 
-* Wenn Sie mehr zur Verwaltung der Richtlinie für die Tokengültigkeitsdauer mithilfe der Microsoft Graph-API erfahren möchten, lesen Sie die [Richtlinienressource](https://docs.microsoft.com/graph/api/resources/policy?view=graph-rest-beta).
+* Wenn Sie mehr zur Verwaltung der Richtlinie für die Tokengültigkeitsdauer mithilfe der Microsoft Graph-API erfahren möchten, lesen Sie die [Richtlinienressource](/graph/api/resources/policy?view=graph-rest-beta).
 * Weitere Informationen und Beispiele zur Verwaltung von Richtlinien über PowerShell-Cmdlets finden Sie unter [Konfigurierbare Tokengültigkeitsdauer in Azure AD](../develop/active-directory-configurable-token-lifetimes.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json). 
 * Fügen Sie den Token für Ihre Anwendung [benutzerdefinierte und optionale](../develop/active-directory-optional-claims.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json) Ansprüche hinzu.
 * Verwenden Sie [einmaliges Anmelden (SSO) mit SAML](single-sign-on-saml-protocol.md).

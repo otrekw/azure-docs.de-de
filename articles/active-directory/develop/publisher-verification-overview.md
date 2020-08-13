@@ -12,12 +12,12 @@ ms.date: 05/19/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: 73a96f295d5dfa74130927e5096e9278a0e348e8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f611eefc50fede2ef4d738cd5abfd6afcc08b9ff
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83682426"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88120778"
 ---
 # <a name="publisher-verification-preview"></a>Herausgeberüberprüfung (Vorschauversion)
 
@@ -42,13 +42,13 @@ Für die Herausgeberüberprüfung bestehen bestimmte Voraussetzungen, von denen 
 
 -  Eine MPN-ID für ein gültiges [Microsoft Partner Network](https://partner.microsoft.com/membership)-Konto, für das der [Überprüfungsvorgang](/partner-center/verification-responses) abgeschlossen wurde. Bei diesem MPN-Konto muss es sich um das [globale Partnerkonto (Partner Global Account, PGA)](/partner-center/account-structure#the-top-level-is-the-partner-global-account-pga) für Ihre Organisation handeln. 
 
--  Ein Azure AD-Mandant mit einer DNS-verifizierten [benutzerdefinierten Domäne](/azure/active-directory/fundamentals/add-custom-domain). Die benutzerdefinierte Domäne muss der Domäne der E-Mail-Adresse entsprechen, die bei der Überprüfung im vorherigen Schritt verwendet wurde. 
+-  Ein Azure AD-Mandant mit einer DNS-verifizierten [benutzerdefinierten Domäne](../fundamentals/add-custom-domain.md). Die benutzerdefinierte Domäne muss der Domäne der E-Mail-Adresse entsprechen, die bei der Überprüfung im vorherigen Schritt verwendet wurde. 
 
 -  Eine in einem Azure AD-Mandanten registrierte App, wobei eine [Herausgeberdomäne](howto-configure-publisher-domain.md) konfiguriert ist, die dieselbe zuvor verwendete Domäne verwendet. 
 
 -  Der die Überprüfung durchführende Benutzer muss autorisiert sein, Änderungen an der App-Registrierung in Azure AD und am MPN-Konto in Partner Center vorzunehmen. 
 
-    -  In Azure AD muss dieser Benutzer entweder der Besitzer der App sein oder über eine der folgenden [Rollen](/azure/active-directory/users-groups-roles/directory-assign-admin-roles) verfügen: „Anwendungsadministrator“, „Cloudanwendungsadministrator“ oder „Globaler Administrator“. 
+    -  In Azure AD muss dieser Benutzer entweder der Besitzer der App sein oder über eine der folgenden [Rollen](../users-groups-roles/directory-assign-admin-roles.md) verfügen: „Anwendungsadministrator“, „Cloudanwendungsadministrator“ oder „Globaler Administrator“. 
 
     -  In Partner Center muss dieser Benutzer über die folgenden [Rollen](/partner-center/permissions-overview) verfügen: „MPN-Administrator“, „Kontoadministrator“ oder „Globaler Administrator“ (dies ist eine freigegebene Rolle, die in Azure AD verwaltet wird).
     
@@ -67,7 +67,7 @@ Nachstehend finden Sie einige häufig gestellte Fragen zum Herausgeberüberprüf
 
   Entwickler, die auch Microsoft 365 integrieren, können aus diesen Programmen zusätzliche Vorteile ziehen. Weitere Informationen finden Sie unter [Microsoft 365-Herausgebernachweis](/microsoft-365-app-certification/docs/attestation) und [Microsoft 365-App-Zertifizierungsprogramm](/microsoft-365-app-certification/docs/certification). 
 
-- **Entspricht dies dem Azure AD-Anwendungskatalog?** Nein. Das Herausgeberüberprüfungsprogramm ist ein ergänzendes, aber vom [Azure Active Directory-Anwendungskatalog](/azure/active-directory/azuread-dev/howto-app-gallery-listing) getrenntes Programm. Entwickler, die die oben genannten Kriterien erfüllen, sollten die Herausgeberüberprüfung unabhängig von der Teilnahme an diesem Programm ausführen. 
+- **Entspricht dies dem Azure AD-Anwendungskatalog?** Nein. Das Herausgeberüberprüfungsprogramm ist ein ergänzendes, aber vom [Azure Active Directory-Anwendungskatalog](../azuread-dev/howto-app-gallery-listing.md) getrenntes Programm. Entwickler, die die oben genannten Kriterien erfüllen, sollten die Herausgeberüberprüfung unabhängig von der Teilnahme an diesem Programm ausführen. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Erfahren Sie, wie Sie [eine App als durch den Herausgeber verifiziert markieren](mark-app-as-publisher-verified.md).

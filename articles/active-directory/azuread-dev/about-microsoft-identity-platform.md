@@ -12,12 +12,12 @@ ms.date: 12/09/2019
 ms.author: ryanwi
 ms.reviewer: agirling, saeeda, benv, marsma
 ms.custom: aaddev
-ms.openlocfilehash: 504caffe0505a4e8a66608fcad528130630a5cc8
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 23ab8c5092a546a7b66b93900c6c083ac8e84394
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86236211"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88117769"
 ---
 # <a name="evolution-of-microsoft-identity-platform"></a>Entwicklung der Microsoft Identity Platform
 
@@ -49,7 +49,7 @@ Die Seite **[App-Registrierungen](https://go.microsoft.com/fwlink/?linkid=208390
 
 Zur Integration von Azure AD B2C (für die Authentifizierung von Social Media- oder lokalen Identitäten) müssen Sie Ihre Anwendung bei einem Azure AD B2C-Mandanten registrieren. Diese Funktion ist ebenfalls Bestandteil des Microsoft Azure-Portals.
 
-Verwenden Sie die [Anwendungs-API](https://docs.microsoft.com/graph/api/resources/application?view=graph-rest-1.0), um Ihre in Microsoft Identity Platform integrierten Anwendungen programmgesteuert für die Authentifizierung beliebiger Microsoft-Identitäten zu konfigurieren.
+Verwenden Sie die [Anwendungs-API](/graph/api/resources/application?view=graph-rest-1.0), um Ihre in Microsoft Identity Platform integrierten Anwendungen programmgesteuert für die Authentifizierung beliebiger Microsoft-Identitäten zu konfigurieren.
 
 ### <a name="msal-libraries"></a>MSAL-Bibliotheken
 
@@ -57,7 +57,7 @@ Sie können die MSAL-Bibliothek zum Erstellen von Anwendungen nutzen, die sämtl
 
 Sie können die MSAL-Bibliotheken auch verwenden, um Ihre Anwendung in Azure AD B2C zu integrieren.
 
-Serverseitige Bibliotheken zum Erstellen von Web-Apps und Web-APIs sind allgemein verfügbar: [ASP.NET](https://docs.microsoft.com/aspnet/overview) und [ASP.NET Core](https://docs.microsoft.com/aspnet/core/?view=aspnetcore-2.2)
+Serverseitige Bibliotheken zum Erstellen von Web-Apps und Web-APIs sind allgemein verfügbar: [ASP.NET](/aspnet/overview) und [ASP.NET Core](/aspnet/core/?view=aspnetcore-2.2)
 
 ### <a name="microsoft-identity-platform-endpoint"></a>Microsoft Identity Platform-Endpunkt
 

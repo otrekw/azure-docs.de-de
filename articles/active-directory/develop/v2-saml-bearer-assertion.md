@@ -12,12 +12,12 @@ ms.date: 08/05/2019
 ms.author: kenwith
 ms.reviewer: paulgarn
 ms.custom: aaddev
-ms.openlocfilehash: 2d745ddcf7b1d5bd7976a0ca8461c13d8ae3c849
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: e0db5bec00ce864536b3559eda160acdada5e157
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87282380"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88114692"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-saml-bearer-assertion-flow"></a>Microsoft Identity Platform und OAuth 2.0-SAML-Bearerassertionsflow
 Mit dem OAuth 2.0-SAML-Bearerassertionsflow können Sie ein OAuth-Zugriffstoken mithilfe einer SAML-Assertion anfordern, wenn ein Client eine vorhandene Vertrauensstellung verwenden muss. Die auf die SAML-Assertion angewandte Signatur stellt die Authentifizierung der autorisierten App bereit. Eine SAML-Assertion ist ein XML-Sicherheitstoken, das von einem Identitätsanbieter ausgegeben und von einem Dienstanbieter genutzt wird. Der Dienstanbieter identifiziert basierend auf den Inhalten des Tokens den Antragsteller der Assertion für sicherheitsrelevante Zwecke.
@@ -37,7 +37,7 @@ Im Folgenden wird erläutert, wie die SAML-Assertion programmgesteuert abgerufen
 
 ### <a name="prerequisites"></a>Voraussetzungen
 
-Richten Sie eine Vertrauensstellung zwischen dem Autorisierungsserver bzw. der Umgebung (Microsoft 365) und dem Identitätsanbieter oder dem Aussteller der SAML 2.0-Bearerassertion (AD FS) ein. Informationen zum Konfigurieren von AD FS für einmaliges Anmelden und als Identitätsanbieter finden Sie in [diesem Artikel](https://blogs.technet.microsoft.com/canitpro/2015/09/11/step-by-step-setting-up-ad-fs-and-enabling-single-sign-on-to-office-365/).
+Richten Sie eine Vertrauensstellung zwischen dem Autorisierungsserver bzw. der Umgebung (Microsoft 365) und dem Identitätsanbieter oder dem Aussteller der SAML 2.0-Bearerassertion (AD FS) ein. Informationen zum Konfigurieren von AD FS für einmaliges Anmelden und als Identitätsanbieter finden Sie in [diesem Artikel](/archive/blogs/canitpro/step-by-step-setting-up-ad-fs-and-enabling-single-sign-on-to-office-365).
 
 Registrieren Sie die Anwendung im [Portal](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade):
 1. Melden Sie sich auf dem [Blatt „App-Registrierungen“ des Portals](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) an. (Beachten Sie, dass die v2.0-Endpunkte für die Graph-API verwendet werden und die Anwendung daher in diesem Portal registriert werden muss. Andernfalls können die Registrierungen in Azure Active Directory verwendet werden.) 

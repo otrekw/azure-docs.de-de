@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/15/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 005fb194a5c1539b70ccb8e8ac7d938b190ee4f5
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: 204bc7dd8cc31f48fdc09eae6b00247023de64f3
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87563311"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88120965"
 ---
 # <a name="protected-web-api-verify-scopes-and-app-roles"></a>Geschützte Web-API: Überprüfen von Bereichen und App-Rollen
 
@@ -88,7 +88,7 @@ Mit der `VerifyUserHasAnyAcceptedScope`-Methode werden in etwa folgende Schritte
 
 #### <a name="verify-the-scopes-more-globally"></a>Globaleres Überprüfen der Bereiche
 
-Als Vorgehensweise werden die Definition präziser Bereiche für Ihre Web-API und die Überprüfung der Bereiche bei jeder Controlleraktion empfohlen. Es ist jedoch auch möglich, die Bereiche mithilfe von ASP.NET Core auf Anwendungs- oder Controllerebene zu überprüfen. Einzelheiten hierzu finden Sie in der ASP.NET Core-Dokumentation unter [Anspruchsbasierte Autorisierung](https://docs.microsoft.com/aspnet/core/security/authorization/claims).
+Als Vorgehensweise werden die Definition präziser Bereiche für Ihre Web-API und die Überprüfung der Bereiche bei jeder Controlleraktion empfohlen. Es ist jedoch auch möglich, die Bereiche mithilfe von ASP.NET Core auf Anwendungs- oder Controllerebene zu überprüfen. Einzelheiten hierzu finden Sie in der ASP.NET Core-Dokumentation unter [Anspruchsbasierte Autorisierung](/aspnet/core/security/authorization/claims).
 
 ### <a name="net-mvc"></a>.NET MVC
 
@@ -96,7 +96,7 @@ Ersetzen Sie bei ASP.NET einfach `HttpContext.User` durch `ClaimsPrincipal.Curre
 
 ## <a name="verify-app-roles-in-apis-called-by-daemon-apps"></a>Überprüfen von App-Rollen in APIs, die von Daemon-Apps aufgerufen werden
 
-Wenn Ihre Web-API von einer [Daemon-App](scenario-daemon-overview.md) aufgerufen wird, sollte diese App eine Anwendungsberechtigung für Ihre Web-API anfordern. Unter [Verfügbarmachen von Anwendungsberechtigungen (App-Rollen)](https://docs.microsoft.com/azure/active-directory/develop/scenario-protected-web-api-app-registration#exposing-application-permissions-app-roles) haben Sie gesehen, dass Ihre API solche Berechtigungen verfügbar macht. Ein Beispiel hierfür ist die App-Rolle `access_as_application`.
+Wenn Ihre Web-API von einer [Daemon-App](scenario-daemon-overview.md) aufgerufen wird, sollte diese App eine Anwendungsberechtigung für Ihre Web-API anfordern. Unter [Verfügbarmachen von Anwendungsberechtigungen (App-Rollen)](./scenario-protected-web-api-app-registration.md#exposing-application-permissions-app-roles) haben Sie gesehen, dass Ihre API solche Berechtigungen verfügbar macht. Ein Beispiel hierfür ist die App-Rolle `access_as_application`.
 
 Ihre API muss nun überprüfen, ob das empfangene Token den Anspruch `roles` enthält und ob dieser Anspruch den erwarteten Wert hat. Der Prüfcode ähnelt dem Code, der delegierte Berechtigungen überprüft, wobei jedoch Ihre Controlleraktion jetzt Rollen und nicht Bereiche testet:
 

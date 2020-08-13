@@ -13,12 +13,12 @@ ms.date: 05/18/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: 75c211ea61359c244c6280b9664a4f412b3d2279
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: afa9c6a508e0215b905a39a430cb64161575b748
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85552018"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88116009"
 ---
 # <a name="microsoft-identity-platform-access-tokens"></a>Microsoft Identity Platform-Zugriffstoken
 
@@ -100,7 +100,7 @@ Ansprüche sind nur enthalten, wenn ein Wert zum Füllen des Anspruchs vorhanden
 | `name` | String | Ein lesbarer Wert, der den Antragsteller des Tokens angibt. Der Wert ist nicht zwingend eindeutig, kann geändert werden und dient nur zu Anzeigezwecken. Der Bereich `profile` ist erforderlich, um diesen Anspruch zu empfangen. |
 | `scp` | Zeichenfolge, eine durch Leerzeichen getrennte Liste von Bereichen | Die von Ihrer Anwendung verfügbar gemachte Gruppe von Bereichen, für die die Clientanwendung eine Einwilligung angefordert (und empfangen) hat. Ihre App sollte überprüfen, ob diese Bereiche gültige, von Ihrer App verfügbar gemachte Bereiche sind, und Autorisierungsentscheidungen basierend auf dem Wert der Bereiche treffen. Wird nur für [Benutzertoken](#user-and-application-tokens) verwendet. |
 | `roles` | Array von Zeichenfolgen, eine Liste der Berechtigungen | Die von Ihrer Anwendung verfügbar gemachte Gruppe von Berechtigungen, für die der anfordernden Anwendung bzw. dem anfordernden Benutzer die Berechtigung zum Aufrufen gewährt wurde. Bei [Anwendungstoken](#user-and-application-tokens) wird dieser Anspruch während des Flows für Clientanmeldeinformationen ([v1.0](../azuread-dev/v1-oauth2-client-creds-grant-flow.md), [v2.0](v2-oauth2-client-creds-grant-flow.md)) anstelle von Benutzerbereichen verwendet.  Bei [Benutzertoken](#user-and-application-tokens) wird dieser Wert mit den Rollen aufgefüllt, die dem Benutzer für die Zielanwendung zugewiesen wurden. |
-| `wids` | Array von [RoleTemplateID](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles#role-template-ids)-GUIDs | Gibt die mandantenweiten Rollen an, die diesem Benutzer aus dem Abschnitt mit Rollen auf der Seite[Administratorrollen](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles#role-template-ids) zugewiesen wurden.  Dieser Anspruch wird über die `groupMembershipClaims`-Eigenschaft des [Anwendungsmanifests](reference-app-manifest.md) anwendungsspezifisch konfiguriert.  Der Wert muss auf „All“ oder „DirectoryRole“ festgelegt werden.  Ist in Token, die über den impliziten Flow abgerufen wurden, aufgrund von Beschränkungen der Tokenlänge u. U. nicht enthalten. |
+| `wids` | Array von [RoleTemplateID](../users-groups-roles/directory-assign-admin-roles.md#role-template-ids)-GUIDs | Gibt die mandantenweiten Rollen an, die diesem Benutzer aus dem Abschnitt mit Rollen auf der Seite[Administratorrollen](../users-groups-roles/directory-assign-admin-roles.md#role-template-ids) zugewiesen wurden.  Dieser Anspruch wird über die `groupMembershipClaims`-Eigenschaft des [Anwendungsmanifests](reference-app-manifest.md) anwendungsspezifisch konfiguriert.  Der Wert muss auf „All“ oder „DirectoryRole“ festgelegt werden.  Ist in Token, die über den impliziten Flow abgerufen wurden, aufgrund von Beschränkungen der Tokenlänge u. U. nicht enthalten. |
 | `groups` | JSON-Array von GUIDs | Enthält die Objekt-IDs, die die Gruppenmitgliedschaften des Antragstellers darstellen. Diese Werte sind eindeutig (siehe „Object ID“) und eignen sich zum sicheren Verwalten des Zugriffs, z.B. für das Erzwingen der Autorisierung für den Zugriff auf eine Ressource. Die im Anspruch „groups“ enthaltenen Gruppen werden über die `groupMembershipClaims`-Eigenschaft des [Anwendungsmanifests](reference-app-manifest.md) anwendungsspezifisch konfiguriert. Mit dem Wert "null" werden alle Gruppen ausgeschlossen. Beim Wert "SecurityGroup" sind nur Active Directory-Sicherheitsgruppenmitglieder enthalten. Beim Wert "All" sind sowohl Sicherheitsgruppen als auch Office 365-Verteilerlisten enthalten. <br><br>Informationen zur Verwendung des Anspruchs `groups` mit impliziter Gewährung finden Sie unter dem Anspruch `hasgroups`. <br>Wenn bei anderen Flows die Anzahl von Gruppen, denen der Benutzer angehört, einen Grenzwert überschreitet (150 für SAML, 200 für JWT), wird den Anspruchsquellen, die auf den Microsoft Graph-Endpunkt mit der Liste der Gruppen für den Benutzer verweisen, ein Überschreitungsanspruch hinzugefügt. |
 | `hasgroups` | Boolean | Ist immer auf `true` festgelegt (sofern vorhanden) und gibt an, dass der Benutzer mindestens einer Gruppe angehört. Wird anstelle des Anspruchs `groups` für JWTs in Flows mit impliziter Gewährung verwendet, wenn der Anspruch für vollständige Gruppen das URI-Fragment über die URL-Längenbeschränkung (derzeit 6 oder mehr Gruppen) erweitert. Gibt an, dass der Client die Gruppen des Benutzers über die Microsoft Graph-API bestimmen soll (`https://graph.microsoft.com/v1.0/users/{userID}/getMemberObjects`). |
 | `groups:src1` | JSON-Objekt | Für Tokenanforderungen ohne Längenbeschränkung (siehe `hasgroups` oben), die aber dennoch zu groß für das Token sind, ist ein Link zur Liste der vollständigen Gruppen für den Benutzer enthalten. Für JWTs als verteilter Anspruch, für SAML als neuer Anspruch anstelle des Anspruchs `groups`. <br><br>**JWT-Beispielwert**: <br> `"groups":"src1"` <br> `"_claim_sources`: `"src1" : { "endpoint" : "https://graph.microsoft.com/v1.0/users/{userID}/getMemberObjects" }` |
@@ -142,7 +142,7 @@ Die folgenden Ansprüche werden ggf. in v1.0-Token eingeschlossen, sind standard
 | Anspruch | Format | BESCHREIBUNG |
 |-----|--------|-------------|
 | `ipaddr`| String | Die IP-Adresse, mit der sich der Benutzer authentifiziert hat. |
-| `onprem_sid`| Zeichenfolge, im [SID-Format](https://docs.microsoft.com/windows/desktop/SecAuthZ/sid-components) | In Fällen, in denen der Benutzer über eine lokale Authentifizierung verfügt, gibt dieser Anspruch die SID an. Sie können `onprem_sid` für die Autorisierung in älteren Anwendungen verwenden.|
+| `onprem_sid`| Zeichenfolge, im [SID-Format](/windows/desktop/SecAuthZ/sid-components) | In Fällen, in denen der Benutzer über eine lokale Authentifizierung verfügt, gibt dieser Anspruch die SID an. Sie können `onprem_sid` für die Autorisierung in älteren Anwendungen verwenden.|
 | `pwd_exp`| Ganze Zahl, ein UNIX-Zeitstempel | Gibt an, wann das Kennwort des Benutzers abläuft. |
 | `pwd_url`| String | Eine URL, an die Benutzer zum Zurücksetzen ihres Kennworts weitergeleitet werden können. |
 | `in_corp`| boolean | Signalisiert, ob sich der Client aus dem Unternehmensnetzwerk anmeldet. Andernfalls ist der Anspruch nicht enthalten. |
@@ -171,7 +171,7 @@ Microsoft-Identitäten können auf verschiedene Arten authentifiziert werden, di
 
 Bei der Überprüfung eines „id_token“ oder eines „access_token“ muss Ihre App sowohl die Signatur des Tokens als auch die Ansprüche überprüfen. Um Zugriffstoken zu überprüfen, sollte Ihre App auch den Aussteller, die Zielgruppe und die signierenden Token validieren. Diese müssen anhand der Werte im OpenID Discovery-Dokument überprüft werden. Die mandantenunabhängige Version des Dokuments finden Sie beispielsweise unter [https://login.microsoftonline.com/common/.well-known/openid-configuration](https://login.microsoftonline.com/common/.well-known/openid-configuration).
 
-Azure AD-Middleware verfügt über integrierte Funktionen zum Überprüfen von Zugriffstoken. Sie können auch unsere [Beispiele](https://docs.microsoft.com/azure/active-directory/active-directory-code-samples) nach einer gewünschten Programmiersprache durchsuchen.
+Azure AD-Middleware verfügt über integrierte Funktionen zum Überprüfen von Zugriffstoken. Sie können auch unsere [Beispiele](../azuread-dev/sample-v1-code.md) nach einer gewünschten Programmiersprache durchsuchen.
 
 Wir bieten Bibliotheken und Codebeispiele, die zeigen, wie Sie die Tokenüberprüfung ausführen können. Die folgenden Informationen sind für Leser vorgesehen, die den zugrunde liegenden Prozess verstehen möchten. Für die JWT-Überprüfung stehen zudem verschiedene Open Source-Bibliotheken von Drittanbietern zur Verfügung. Für nahezu jede Plattform und Programmiersprache ist mindestens eine Option verfügbar. Weitere Informationen zu Azure AD-Authentifizierungsbibliotheken und Codebeispiele finden Sie unter [v1.0-Authentifizierungsbibliotheken](../azuread-dev/active-directory-authentication-libraries.md) und [v2.0-Authentifizierungsbibliotheken](reference-v2-libraries.md).
 
@@ -224,13 +224,13 @@ Diesen Schritt bestimmt die Geschäftslogik Ihrer Anwendung. Im Folgenden finden
 * Überprüfen Sie den Authentifizierungsstatus des aufrufenden Clients mit `appidacr`. Er sollte nicht 0 sein, wenn öffentlichen Clients das Aufrufen Ihrer API nicht erlaubt ist.
 * Stellen Sie anhand einer Liste früherer `nonce`-Ansprüche sicher, dass das Token nicht wiedergegeben wird.
 * Stellen Sie sicher, dass der `tid`-Anspruch einem Mandanten entspricht, dem das Aufrufen Ihrer API erlaubt ist.
-* Verwenden Sie den `acr`-Anspruch, um zu überprüfen, ob der Benutzer die MFA ausgeführt hat. Dies sollte durch [bedingten Zugriff](https://docs.microsoft.com/azure/active-directory/conditional-access/overview) erzwungen werden.
+* Verwenden Sie den `acr`-Anspruch, um zu überprüfen, ob der Benutzer die MFA ausgeführt hat. Dies sollte durch [bedingten Zugriff](../conditional-access/overview.md) erzwungen werden.
 * Wenn Sie die `roles`- oder `groups`-Ansprüche im Zugriffstoken angefordert haben, stellen Sie sicher, dass der Benutzer der Gruppe angehört, der das Ausführen dieser Aktion erlaubt ist.
   * Bei Token, die mit dem impliziten Flow abgerufen werden, müssen Sie wahrscheinlich den [Microsoft Graph](https://developer.microsoft.com/graph/) nach diesen Daten abfragen, weil sie oft zu groß für das Token sind.
 
 ## <a name="user-and-application-tokens"></a>Benutzer- und Anwendungstoken
 
-Ihre Anwendung kann Token für einen Benutzer (der in der Regel behandelte Flow) oder direkt von einer Anwendung (über den [Flow für Clientanmeldeinformationen](v1-oauth2-client-creds-grant-flow.md)) empfangen. Diese nur für die App geltenden Token geben an, dass der Aufruf von einer Anwendung stammt und nicht von einem Benutzer unterstützt wird. Diese Token werden weitgehend gleich behandelt:
+Ihre Anwendung kann Token für einen Benutzer (der in der Regel behandelte Flow) oder direkt von einer Anwendung (über den [Flow für Clientanmeldeinformationen](../azuread-dev/v1-oauth2-client-creds-grant-flow.md)) empfangen. Diese nur für die App geltenden Token geben an, dass der Aufruf von einer Anwendung stammt und nicht von einem Benutzer unterstützt wird. Diese Token werden weitgehend gleich behandelt:
 
 * Verwenden Sie `roles`, um die Berechtigungen anzuzeigen, die dem Antragsteller des Tokens erteilt wurden (in diesem Fall dem Dienstprinzipal und keinem Benutzer).
 * Verwenden Sie `oid` oder `sub`, um zu überprüfen, ob der aufrufende Dienstprinzipal der erwartete Dienstprinzipal ist.
@@ -262,8 +262,8 @@ Aktualisierungstoken können vom Server aufgrund einer Änderung der Anmeldeinfo
 | Kennwort wird vom Benutzer geändert | Widerrufen | Widerrufen | Bleibt aktiv | Bleibt aktiv | Bleibt aktiv |
 | Benutzer verwendet SSPR | Widerrufen | Widerrufen | Bleibt aktiv | Bleibt aktiv | Bleibt aktiv |
 | Administrator setzt Kennwort zurück | Widerrufen | Widerrufen | Bleibt aktiv | Bleibt aktiv | Bleibt aktiv |
-| Benutzer widerruft Aktualisierungstoken [über PowerShell](https://docs.microsoft.com/powershell/module/azuread/revoke-azureadsignedinuserallrefreshtoken) | Widerrufen | Widerrufen | Widerrufen | Widerrufen | Widerrufen |
-| Administrator widerruft alle Aktualisierungstoken für einen Benutzer [über PowerShell](https://docs.microsoft.com/powershell/module/azuread/revoke-azureaduserallrefreshtoken) | Widerrufen | Widerrufen |Widerrufen | Widerrufen | Widerrufen |
+| Benutzer widerruft Aktualisierungstoken [über PowerShell](/powershell/module/azuread/revoke-azureadsignedinuserallrefreshtoken) | Widerrufen | Widerrufen | Widerrufen | Widerrufen | Widerrufen |
+| Administrator widerruft alle Aktualisierungstoken für einen Benutzer [über PowerShell](/powershell/module/azuread/revoke-azureaduserallrefreshtoken) | Widerrufen | Widerrufen |Widerrufen | Widerrufen | Widerrufen |
 | Einmaliges Abmelden ([v1.0](../azuread-dev/v1-protocols-openid-connect-code.md#single-sign-out), [v2.0](v2-protocols-oidc.md#single-sign-out)) im Web | Widerrufen | Bleibt aktiv | Widerrufen | Bleibt aktiv | Bleibt aktiv |
 
 > [!NOTE]

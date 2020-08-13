@@ -14,12 +14,12 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.topic: conceptual
 ms.workload: identity
-ms.openlocfilehash: 6b31a03a6367c9c6f2025c1544b59c95b3f69175
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: b1bfefb3b72c151e7a61068b3c0ad9f3e2bc4a6f
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83771076"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88120625"
 ---
 # <a name="developer-guidance-for-azure-active-directory-conditional-access"></a>Anleitung für Entwickler zum bedingten Zugriff mit Azure Active Directory
 
@@ -33,7 +33,7 @@ Im Artikel [Was ist bedingter Zugriff?](../conditional-access/overview.md) finde
 
 Für Entwickler, die Apps für Azure AD erstellen, wird in diesem Artikel veranschaulicht, wie der bedingte Zugriff eingesetzt werden kann. Außerdem werden die Auswirkungen des Zugriffs auf Ressourcen beschrieben, über die Sie keine Kontrolle haben und auf die ggf. Richtlinien für den bedingten Zugriff angewendet werden. Darüber hinaus geht es im Artikel um die Auswirkungen des bedingten Zugriffs auf den „Im Auftrag von“-Ablauf, auf Web-Apps, auf den Zugriff auf Microsoft Graph und auf das Aufrufen von APIs.
 
-Dabei werden Kenntnisse über [einzel](quickstart-register-app.md)- und [mehrinstanzenfähige](howto-convert-app-to-be-multi-tenant.md) Apps sowie über [allgemeine Authentifizierungsmuster](authentication-scenarios.md) vorausgesetzt.
+Dabei werden Kenntnisse über [einzel](quickstart-register-app.md)- und [mehrinstanzenfähige](howto-convert-app-to-be-multi-tenant.md) Apps sowie über [allgemeine Authentifizierungsmuster](./authentication-vs-authorization.md) vorausgesetzt.
 
 > [!NOTE]
 > Für die Verwendung dieses Features ist eine Azure AD Premium P1-Lizenz erforderlich. Um die richtige Lizenz für Ihre Anforderungen zu ermitteln, lesen Sie [Vergleich: Allgemein verfügbare Features der Editionen Free, Basic und Premium](https://azure.microsoft.com/pricing/details/active-directory/).
@@ -52,7 +52,7 @@ Insbesondere die folgenden Szenarien erfordern Code zum Behandeln der speziellen
 * Single-Page-Apps, die MSAL.js verwenden
 * Web-Apps, die eine Ressource aufrufen
 
-Sie können Richtlinien für den bedingten Zugriff auf die App anwenden, aber auch auf eine Web-API, auf die Ihre App zugreift. Weitere Informationen zum Konfigurieren einer Richtlinie für bedingten Zugriff finden Sie unter [Schnellstart: Anfordern der mehrstufigen Authentifizierung (Multi-Factor Authentication, MFA) für bestimmte Apps über den bedingten Zugriff von Azure Active Directory](../conditional-access/app-based-mfa.md).
+Sie können Richtlinien für den bedingten Zugriff auf die App anwenden, aber auch auf eine Web-API, auf die Ihre App zugreift. Weitere Informationen zum Konfigurieren einer Richtlinie für bedingten Zugriff finden Sie unter [Schnellstart: Anfordern der mehrstufigen Authentifizierung (Multi-Factor Authentication, MFA) für bestimmte Apps über den bedingten Zugriff von Azure Active Directory](../authentication/tutorial-enable-azure-mfa.md).
 
 Abhängig vom jeweiligen Szenario können Unternehmenskunden jederzeit Richtlinien für den bedingten Zugriff anwenden und entfernen. Damit Ihre App beim Anwenden einer neuen Richtlinie weiterhin funktioniert, müssen Sie die Behandlung der speziellen Anforderungen implementieren. Die folgenden Beispiele veranschaulichen die Behandlung dieser Anforderungen.
 
@@ -93,7 +93,7 @@ Entwickler können diese Anforderung annehmen und an eine neue Anforderung an Az
 
 ### <a name="prerequisites"></a>Voraussetzungen
 
-Der bedingte Zugriff von Azure AD ist ein Feature von [Azure AD Premium](https://docs.microsoft.com/azure/active-directory/active-directory-whatis). Kunden mit [Microsoft 365 Business-Lizenzen](/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-business-service-description) haben auch Zugriff auf Funktionen für bedingten Zugriff.
+Der bedingte Zugriff von Azure AD ist ein Feature von [Azure AD Premium](../fundamentals/active-directory-whatis.md). Kunden mit [Microsoft 365 Business-Lizenzen](/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-business-service-description) haben auch Zugriff auf Funktionen für bedingten Zugriff.
 
 ### <a name="considerations-for-specific-scenarios"></a>Überlegungen für bestimmte Szenarien
 
@@ -180,7 +180,7 @@ Wenn Sie dieses Szenario testen möchten, sehen Sie sich unser [“Im-Auftrag-vo
 
 ## <a name="see-also"></a>Weitere Informationen
 
-* Weitere Informationen zu den Funktionen finden Sie unter [Bedingter Zugriff in Azure Active Directory](/azure/active-directory/conditional-access/overview).
+* Weitere Informationen zu den Funktionen finden Sie unter [Bedingter Zugriff in Azure Active Directory](../conditional-access/overview.md).
 * Weitere Azure AD-Codebeispiele finden Sie unter [Beispiele](sample-v2-code.md).
 * Weitere Informationen zum MSAL-SDK und zum Zugriff auf die Referenzdokumentation finden Sie in der [Microsoft Authentication Library-Übersicht](msal-overview.md).
 * Weitere Informationen zu Szenarien mit mehreren Mandanten finden Sie unter [Anmelden von Benutzern mit dem mehrinstanzenfähigen Anwendungsmuster](howto-convert-app-to-be-multi-tenant.md).

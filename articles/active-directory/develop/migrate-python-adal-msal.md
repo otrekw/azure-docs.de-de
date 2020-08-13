@@ -13,13 +13,13 @@ ms.workload: identity
 ms.date: 11/11/2019
 ms.author: rayluo
 ms.reviewer: rayluo, nacanuma, twhitney
-ms.custom: aaddev, tracking-python
-ms.openlocfilehash: 0cf711f9a295abaf20cd284e819cf062c462c668
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: aaddev, devx-track-python
+ms.openlocfilehash: 8dcd2b55d177c533336842293b2aedaef6b4222c
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84558689"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88119911"
 ---
 # <a name="adal-to-msal-migration-guide-for-python"></a>Leitfaden für die Migration von ADAL zu MSAL für Python
 
@@ -38,19 +38,19 @@ Unterstützt:
   - OAuth v2.0
   - OpenID Connect (OIDC)
 
-Weitere Informationen finden Sie unter [Neuerungen des Microsoft Identity Platform (v 2.0)-Endpunkts](https://docs.microsoft.com/azure/active-directory/develop/azure-ad-endpoint-comparison).
+Weitere Informationen finden Sie unter [Neuerungen des Microsoft Identity Platform (v 2.0)-Endpunkts](../azuread-dev/azure-ad-endpoint-comparison.md).
 
 ### <a name="scopes-not-resources"></a>Geltungsbereiche im Gegensatz zu Ressourcen
 
-ADAL Python ruft Token für Ressourcen ab, während MSAL Python Token für Geltungsbereiche abruft. Die API-Oberfläche in MSAL Python weist keinen Ressourcenparameter mehr auf. Sie müssten Geltungsbereiche in Form einer Liste von Zeichenfolgen bereitstellen, welche die gewünschten Berechtigungen und Ressourcen deklarieren, die angefordert werden. Einige Beispiele für Geltungsbereiche finden Sie unter [Geltungsbereiche von Microsoft Graph](https://docs.microsoft.com/graph/permissions-reference).
+ADAL Python ruft Token für Ressourcen ab, während MSAL Python Token für Geltungsbereiche abruft. Die API-Oberfläche in MSAL Python weist keinen Ressourcenparameter mehr auf. Sie müssten Geltungsbereiche in Form einer Liste von Zeichenfolgen bereitstellen, welche die gewünschten Berechtigungen und Ressourcen deklarieren, die angefordert werden. Einige Beispiele für Geltungsbereiche finden Sie unter [Geltungsbereiche von Microsoft Graph](/graph/permissions-reference).
 
 Sie können der Ressource das Bereichssuffix `/.default` hinzufügen, um die Migration Ihrer Apps vom v1.0-Endpunkt (ADAL) zum Microsoft Identity Platform-Endpunkt (MSAL) zu unterstützen. Beispielsweise entspricht dem Ressourcenwert `https://graph.microsoft.com` der entsprechende Bereichswert `https://graph.microsoft.com/.default`.  Wenn sich die Ressource nicht im URL-Format befindet, aber eine Ressourcen-ID im Format `XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX` vorliegt, können Sie weiterhin den Bereichswert `XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX/.default` verwenden.
 
-Weitere Informationen zu den verschiedenen Bereichstypen finden Sie in den Artikeln [Berechtigungen und Zustimmung im Microsoft Identity Platform-Endpunkt](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent) und [Geltungsbereiche für eine Web-API, die v1.0-Token akzeptiert](https://docs.microsoft.com/azure/active-directory/develop/msal-v1-app-scopes).
+Weitere Informationen zu den verschiedenen Bereichstypen finden Sie in den Artikeln [Berechtigungen und Zustimmung im Microsoft Identity Platform-Endpunkt](./v2-permissions-and-consent.md) und [Geltungsbereiche für eine Web-API, die v1.0-Token akzeptiert](./msal-v1-app-scopes.md).
 
 ### <a name="error-handling"></a>Fehlerbehandlung
 
-ADAL (Azure Active Directory Authentication Library) für Python verwendet die Ausnahme `AdalError`, um anzugeben, dass ein Problem aufgetreten ist. MSAL für Python verwendet dafür in der Regel Fehlercodes. Weitere Informationen finden Sie unter [MSAL für Python – Fehlerbehandlung](https://docs.microsoft.com/azure/active-directory/develop/msal-handling-exceptions?tabs=python).
+ADAL (Azure Active Directory Authentication Library) für Python verwendet die Ausnahme `AdalError`, um anzugeben, dass ein Problem aufgetreten ist. MSAL für Python verwendet dafür in der Regel Fehlercodes. Weitere Informationen finden Sie unter [MSAL für Python – Fehlerbehandlung](./msal-handling-exceptions.md?tabs=python).
 
 ### <a name="api-changes"></a>API-Änderungen
 
@@ -122,4 +122,4 @@ print("Migration completed")
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen finden Sie unter [Vergleich von v1.0 und v2.0](active-directory-v2-compare.md).
+Weitere Informationen finden Sie unter [Vergleich von v1.0 und v2.0](../azuread-dev/azure-ad-endpoint-comparison.md).

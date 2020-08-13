@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 07/07/2020
 ms.author: aahi
-ms.openlocfilehash: 5c598807f36000a18211e32eba53220bfbeea2f7
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 1a8ce0bc94c61a0cfe6cdad11375763ba954957d
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86108708"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88122348"
 ---
 ### <a name="verify-that-a-container-is-running"></a>Überprüfen auf aktive Container
 
@@ -37,4 +37,4 @@ Es gibt mehrere URLs, mit denen Sie auch überprüfen können, ob der Container 
 |`http://localhost:5000/swagger`|Über diese URL stellt der Container eine umfassende Dokumentation für die Endpunkte sowie die Funktion `Try it now` bereit. Diese Funktion ermöglicht Ihnen die Eingabe Ihrer Einstellungen in einem webbasierten HTML-Formular, sodass Sie die Abfrage ausführen können, ohne Code schreiben zu müssen. Nach der Rückgabe der Abfrage wird ein cURL-Beispielbefehl bereitgestellt, der das erforderliche Format für HTTP-Header und -Text veranschaulicht. |
 |`http://localhost:5000/demo`| Bei Anforderung über einen Browser bietet diese Funktion eine interaktive Visualisierung der Ergebnisse aus Abfragen von Eingabetextbeispielen oder eines von Ihnen bereitgestellten Beispiels.  |
 
-Verwenden Sie diese Anforderungs-URL (`http://localhost:5000/text/analytics/v3.0-preview.1/domains/health`), um eine Abfrage an den Container zu übermitteln.
+Verwenden Sie diese Anforderungs-URL (`http://localhost:5000/text/analytics/v3.2-preview.1/entities/health`), um eine Abfrage an den Container zu übermitteln.

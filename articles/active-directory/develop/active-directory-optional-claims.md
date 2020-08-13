@@ -12,12 +12,12 @@ ms.date: 07/30/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
-ms.openlocfilehash: f93e2b34c64ce4bd8cec7182c3e990f0e675dc11
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: e82f5fb868dd728d439c68943c8809c5373ae133
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87552865"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88115729"
 ---
 # <a name="how-to-provide-optional-claims-to-your-app"></a>Gewusst wie: Bereitstellen optionaler Ansprüche für Ihre App
 
@@ -31,7 +31,7 @@ Sie können optionale Ansprüche zu folgenden Zwecken verwenden:
 
 Die Listen der Standardansprüche finden Sie in der Anspruchsdokumentation unter [Zugriffstoken](access-tokens.md) und [id_token](id-tokens.md).
 
-Zwar werden optionale Ansprüche von Token der Formate v1.0 und v2.0 sowie von SAML-Token unterstützt, sie besitzen jedoch den größten Wert bei der Umstellung von v1.0 auf v2.0. Eines der Ziele des [v2.0 Microsoft Identity Platform-Endpunkts](active-directory-appmodel-v2-overview.md) ist eine geringere Tokengröße, um die optimale Leistung von Clients zu gewährleisten. Daher sind mehrere Ansprüche, die zuvor in den Zugriffs- und ID-Token enthalten waren, nicht mehr in v2.0-Token vorhanden und müssen für einzelne Anwendungen speziell angefordert werden.
+Zwar werden optionale Ansprüche von Token der Formate v1.0 und v2.0 sowie von SAML-Token unterstützt, sie besitzen jedoch den größten Wert bei der Umstellung von v1.0 auf v2.0. Eines der Ziele des [v2.0 Microsoft Identity Platform-Endpunkts](./v2-overview.md) ist eine geringere Tokengröße, um die optimale Leistung von Clients zu gewährleisten. Daher sind mehrere Ansprüche, die zuvor in den Zugriffs- und ID-Token enthalten waren, nicht mehr in v2.0-Token vorhanden und müssen für einzelne Anwendungen speziell angefordert werden.
 
 **Tabelle 1: Anwendbarkeit**
 
@@ -61,10 +61,10 @@ Die Gruppe optionaler Ansprüche, die standardmäßig zur Verwendung in Anwendun
 | `fwd`                      | IP-Adresse.| JWT    |   | Fügt die ursprüngliche IPv4-Adresse des anfordernden Clients hinzu (wenn innerhalb eines VNET). |
 | `ctry`                     | Land/Region des Benutzers | JWT |  | Azure AD gibt den optionalen Anspruch `ctry` zurück, wenn er vorhanden ist und der Wert des Anspruchs ein standardmäßiger aus zwei Buchstaben bestehender Länder-/Regionscode (wie z. B. FR, JP oder SZ) ist. |
 | `tenant_ctry`              | Land/Region des Ressourcenmandanten | JWT | | |
-| `xms_pdl`             | Bevorzugter Datenspeicherort   | JWT | | Für Multi-Geo-Mandanten ist der bevorzugte Datenspeicherort ein aus drei Buchstaben bestehender Code, der die geografische Region anzeigt, in der sich der Benutzer befindet. Weitere Informationen finden Sie unter [Azure Active Directory Connect-Synchronisierung: Konfigurieren des bevorzugten Datenspeicherorts für Office 365-Ressourcen](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-feature-preferreddatalocation).<br/>Zum Beispiel: `APC` für Asien-Pazifik. |
+| `xms_pdl`             | Bevorzugter Datenspeicherort   | JWT | | Für Multi-Geo-Mandanten ist der bevorzugte Datenspeicherort ein aus drei Buchstaben bestehender Code, der die geografische Region anzeigt, in der sich der Benutzer befindet. Weitere Informationen finden Sie unter [Azure Active Directory Connect-Synchronisierung: Konfigurieren des bevorzugten Datenspeicherorts für Office 365-Ressourcen](../hybrid/how-to-connect-sync-feature-preferreddatalocation.md).<br/>Zum Beispiel: `APC` für Asien-Pazifik. |
 | `xms_pl`                   | Bevorzugte Benutzersprache  | JWT ||Die bevorzugte Sprache des Benutzers, falls festgelegt. Wird in Szenarios mit Gastzugriff aus dem Basismandanten abgerufen. Sie wird im Format Sprachkürzel-Länderkürzel angegeben (z. B. en-us). |
 | `xms_tpl`                  | Bevorzugte Mandantensprache| JWT | | Die bevorzugte Sprache des Ressourcenmandanten, falls festgelegt. Sie wird in Form des Sprachkürzels angegeben (z. B.: en). |
-| `ztdid`                    | ID der Bereitstellung ohne manuelles Eingreifen | JWT | | Die für [Windows Autopilot](https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-10-autopilot) verwendete Geräteidentität |
+| `ztdid`                    | ID der Bereitstellung ohne manuelles Eingreifen | JWT | | Die für [Windows Autopilot](/windows/deployment/windows-autopilot/windows-10-autopilot) verwendete Geräteidentität |
 | `email`                    | Die adressierbaren E-Mail-Adresse dieses Benutzers, wenn der Benutzer über eine verfügt.  | JWT, SAML | MSA, Azure AD | Dieser Wert ist standardmäßig enthalten, wenn der Benutzer ein Gast im Mandanten ist.  Für verwaltete Benutzer (Benutzer innerhalb des Mandanten) muss er über diese optionale Anforderung oder – nur in v2.0 – mit dem OpenID-Bereich angefordert werden.  Für verwaltete Benutzer muss die E-Mail-Adresse im [Office-Verwaltungsportal](https://portal.office.com/adminportal/home#/users) festgelegt sein.|
 | `acct`                | Benutzerkontostatus im Mandanten. | JWT, SAML | | Wenn der Benutzer dem Mandanten angehört, lautet der Wert `0`. Bei einem Gastbenutzer lautet der Wert `1`. |
 | `groups`| Optionale Formatierung für Gruppenansprüche |JWT, SAML| |Wird in Verbindung mit der Einstellung „GroupMembershipClaims“ im [Anwendungsmanifest](reference-app-manifest.md) verwendet, das ebenfalls festgelegt sein muss. Weitere Informationen finden Sie weiter unten unter [Gruppenansprüche](#configuring-groups-optional-claims). Weitere Informationen zu Gruppenansprüchen finden Sie unter [Konfigurieren von Gruppenansprüchen](../hybrid/how-to-connect-fed-group-claims.md).
@@ -191,7 +191,7 @@ Deklariert die von einer Anwendung angeforderten optionalen Ansprüche. Eine Anw
 
 ### <a name="optionalclaim-type"></a>Typ „OptionalClaim“
 
-Enthält einen optionalen Anspruch, der einer Anwendung oder einem Dienstprinzipal zugeordnet ist. Die „idToken“-, „accessToken“- und „saml2Token“-Eigenschaften des [OptionalClaims](https://docs.microsoft.com/graph/api/resources/optionalclaims?view=graph-rest-1.0)-Typs ist eine Sammlung von „OptionalClaim“.
+Enthält einen optionalen Anspruch, der einer Anwendung oder einem Dienstprinzipal zugeordnet ist. Die „idToken“-, „accessToken“- und „saml2Token“-Eigenschaften des [OptionalClaims](/graph/api/resources/optionalclaims?view=graph-rest-1.0)-Typs ist eine Sammlung von „OptionalClaim“.
 Wenn durch einen bestimmten Anspruch unterstützt, können Sie auch das Verhalten von „OptionalClaim“ mithilfe des Felds „AdditionalProperties“ ändern.
 
 **Tabelle 6: Eigenschaften des Typs „OptionalClaim“**
@@ -205,7 +205,7 @@ Wenn durch einen bestimmten Anspruch unterstützt, können Sie auch das Verhalte
 
 ## <a name="configuring-directory-extension-optional-claims"></a>Konfigurieren von optionalen Ansprüchen für die Verzeichniserweiterung
 
-Zusätzlich zu den optionalen Standardansprüchen können Sie Token auch so konfigurieren, dass sie Erweiterungen enthalten. Weitere Informationen finden Sie in der [Microsoft Graph-Dokumentation im Teil über extensionProperty](https://docs.microsoft.com/graph/api/resources/extensionproperty?view=graph-rest-1.0).
+Zusätzlich zu den optionalen Standardansprüchen können Sie Token auch so konfigurieren, dass sie Erweiterungen enthalten. Weitere Informationen finden Sie in der [Microsoft Graph-Dokumentation im Teil über extensionProperty](/graph/api/resources/extensionproperty?view=graph-rest-1.0).
 
 Optionale Ansprüche unterstützen keine Schemaerweiterungen und offenen Erweiterungen, sondern nur AAD Graph-Verzeichniserweiterungen. Diese Funktion ist nützlich, um zusätzliche Benutzerinformationen anzufügen, die von Ihrer App verwendet werden können, z. B. einen zusätzlichen Bezeichner oder eine wichtige Konfigurationsoption, die vom Benutzer festgelegt wurde. Ein Beispiel finden Sie unten auf dieser Seite.
 
@@ -362,8 +362,8 @@ In diesem Abschnitt können Sie ein Szenario durchgehen, um zu erfahren, wie Sie
 Es sind mehrere Optionen für das Aktualisieren der Eigenschaften in der Identitätskonfiguration einer Anwendung zum Aktivieren und Konfigurieren optionaler Ansprüche verfügbar:
 
 - Sie können die Benutzeroberfläche für die **Tokenkonfiguration** verwenden (siehe Beispiel unten).
-- Sie können das **Manifest** verwenden (siehe Beispiel unten). Lesen Sie zuerst das Dokument [Grundlegendes zum Azure AD-Anwendungsmanifest](https://docs.microsoft.com/azure/active-directory/develop/active-directory-application-manifest), um eine Einführung in das Manifest zu erhalten.
-- Sie können zum Aktualisieren Ihrer Anwendung auch eine Anwendung schreiben, die die [Microsoft Graph-API](https://docs.microsoft.com/graph/use-the-api?context=graph%2Fapi%2F1.0&view=graph-rest-1.0) nutzt. Der Typ [OptionalClaims](https://docs.microsoft.com/graph/api/resources/optionalclaims?view=graph-rest-1.0) im Referenzhandbuch zur Microsoft Graph-API kann beim Konfigurieren der optionalen Ansprüche hilfreich sein.
+- Sie können das **Manifest** verwenden (siehe Beispiel unten). Lesen Sie zuerst das Dokument [Grundlegendes zum Azure AD-Anwendungsmanifest](./reference-app-manifest.md), um eine Einführung in das Manifest zu erhalten.
+- Sie können zum Aktualisieren Ihrer Anwendung auch eine Anwendung schreiben, die die [Microsoft Graph-API](/graph/use-the-api?context=graph%2fapi%2f1.0&view=graph-rest-1.0) nutzt. Der Typ [OptionalClaims](/graph/api/resources/optionalclaims?view=graph-rest-1.0) im Referenzhandbuch zur Microsoft Graph-API kann beim Konfigurieren der optionalen Ansprüche hilfreich sein.
 
 **Beispiel:**
 
@@ -404,7 +404,7 @@ Im folgenden Beispiel verwenden Sie die Benutzeroberfläche für die **Tokenkonf
 1. Wählen Sie im Menü auf der linken Seite **Azure Active Directory** aus.
 1. Suchen Sie in der Liste nach der Anwendung, für die Sie optionale Ansprüche konfigurieren möchten, und klicken Sie darauf.
 1. Klicken Sie im Abschnitt **Verwalten** auf **Manifest**, um den Inline-Manifest-Editor zu öffnen.
-1. Das Manifest kann mit diesem Editor direkt bearbeitet werden. Das Manifest folgt dem Schema für die [Anwendungsentität](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest). Das Manifest wird nach dem Speichern automatisch formatiert. Neue Elemente werden der `OptionalClaims`-Eigenschaft hinzugefügt.
+1. Das Manifest kann mit diesem Editor direkt bearbeitet werden. Das Manifest folgt dem Schema für die [Anwendungsentität](./reference-app-manifest.md). Das Manifest wird nach dem Speichern automatisch formatiert. Neue Elemente werden der `OptionalClaims`-Eigenschaft hinzugefügt.
 
     ```json
     "optionalClaims": {

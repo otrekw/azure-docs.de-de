@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: ryanwi
 ms.reviewer: zachowd
-ms.openlocfilehash: e96442be50a075ebf2cd81bf1b6fb0f58f883bad
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6e768c1e938006afd62fc097a80f8ebc3ea0f3e6
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80885581"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88115474"
 ---
 # <a name="understanding-azure-ad-application-consent-experiences"></a>Grundlegendes zu Einwilligungserfahrungen für Azure AD-Anwendungen
 
@@ -28,10 +28,10 @@ Erfahren Sie mehr über die Einwilligungsbenutzererfahrung für Azure Active Dir
 
 Einwilligung ist der Prozess, mit dem ein Benutzer einer Anwendung die Autorisierung für den Zugriff auf geschützte Ressourcen in seinem Auftrag gewährt. Ein Administrator oder Benutzer kann zur Einwilligung aufgefordert werden, um den Zugriff auf seine Organisations-/individuellen Daten zuzulassen.
 
-Die tatsächliche Benutzererfahrung des Erteilens der Einwilligung variiert in Abhängigkeit von den auf dem Mandanten des Benutzers festgelegten Richtlinien, dem Gültigkeitsbereich der Autorität (oder Rolle) des Benutzers und dem Typ der [Berechtigungen](https://docs.microsoft.com/azure/active-directory/azuread-dev/v1-permissions-consent), die von der Clientanwendung angefordert werden. Dies bedeutet, dass Anwendungsentwickler und Mandantenadministratoren eine gewisse Kontrolle über die Einwilligungserfahrung haben. Administratoren besitzen die Flexibilität, Richtlinien für einen Mandanten oder eine App festzulegen oder zu deaktivieren, um die Einwilligungserfahrung in ihrem Mandanten zu kontrollieren. Anwendungsentwickler können vorgeben, welche Typen von Berechtigungen angefordert werden, und ob sie Benutzer durch den Benutzereinwilligungsflow bzw. den Administratoreinwilligungsflow führen möchten.
+Die tatsächliche Benutzererfahrung des Erteilens der Einwilligung variiert in Abhängigkeit von den auf dem Mandanten des Benutzers festgelegten Richtlinien, dem Gültigkeitsbereich der Autorität (oder Rolle) des Benutzers und dem Typ der [Berechtigungen](../azuread-dev/v1-permissions-consent.md), die von der Clientanwendung angefordert werden. Dies bedeutet, dass Anwendungsentwickler und Mandantenadministratoren eine gewisse Kontrolle über die Einwilligungserfahrung haben. Administratoren besitzen die Flexibilität, Richtlinien für einen Mandanten oder eine App festzulegen oder zu deaktivieren, um die Einwilligungserfahrung in ihrem Mandanten zu kontrollieren. Anwendungsentwickler können vorgeben, welche Typen von Berechtigungen angefordert werden, und ob sie Benutzer durch den Benutzereinwilligungsflow bzw. den Administratoreinwilligungsflow führen möchten.
 
 - **Benutzereinwilligungsflow** ist, wenn ein Anwendungsentwickler Benutzer mit der Absicht zum Autorisierungsendpunkt weiterleitet, die Einwilligung nur für den aktuellen Benutzer aufzuzeichnen.
-- **Administratoreinwilligungsflow** ist, wenn ein Anwendungsentwickler Benutzer mit der Absicht zum Administratoreinwilligungs-Endpunkt weiterleitet, die Einwilligung für den gesamten Mandanten aufzuzeichnen. Um sicherzustellen, dass der Administratoreinwilligungsflow ordnungsgemäß funktioniert, müssen Anwendungsentwickler alle Berechtigungen in der Eigenschaft `RequiredResourceAccess` im Anwendungsmanifest auflisten. Weitere Informationen finden Sie unter [Anwendungsmanifest](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest).
+- **Administratoreinwilligungsflow** ist, wenn ein Anwendungsentwickler Benutzer mit der Absicht zum Administratoreinwilligungs-Endpunkt weiterleitet, die Einwilligung für den gesamten Mandanten aufzuzeichnen. Um sicherzustellen, dass der Administratoreinwilligungsflow ordnungsgemäß funktioniert, müssen Anwendungsentwickler alle Berechtigungen in der Eigenschaft `RequiredResourceAccess` im Anwendungsmanifest auflisten. Weitere Informationen finden Sie unter [Anwendungsmanifest](./reference-app-manifest.md).
 
 ## <a name="building-blocks-of-the-consent-prompt"></a>Bausteine der Einwilligungsaufforderung
 
@@ -81,6 +81,6 @@ Hier finden Sie die Einwilligungserfahrungen, denen ein Benutzer in den gängigs
     1. Nicht-Administratorbenutzern wird derselbe Bildschirm wie 2.ii, wie oben abgebildet, angezeigt.
 
 ## <a name="next-steps"></a>Nächste Schritte
-- Eine ausführliche Übersicht über die [Zustimmungsimplementierung mit dem Azure AD-Zustimmungsframework](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)
-- Ausführlichere Informationen zur [Verwendung des Zustimmungsframeworks durch mehrinstanzenfähige Anwendungen](active-directory-devhowto-multi-tenant-overview.md) zur Implementierung von Benutzer- und Administratorzustimmung mit Unterstützung für erweiterte Anwendungsmuster mit mehreren Ebenen
+- Eine ausführliche Übersicht über die [Zustimmungsimplementierung mit dem Azure AD-Zustimmungsframework](./quickstart-register-app.md)
+- Ausführlichere Informationen zur [Verwendung des Zustimmungsframeworks durch mehrinstanzenfähige Anwendungen](./howto-convert-app-to-be-multi-tenant.md) zur Implementierung von Benutzer- und Administratorzustimmung mit Unterstützung für erweiterte Anwendungsmuster mit mehreren Ebenen
 - Erfahren Sie, [wie Sie die Herausgeberdomäne der App konfigurieren](howto-configure-publisher-domain.md).

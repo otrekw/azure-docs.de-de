@@ -13,12 +13,12 @@ ms.topic: how-to
 ms.date: 07/29/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
-ms.openlocfilehash: cd21ef8d697570afb2109bb56d552284c03fd9a2
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: 4450b0bcc06b048fd9ad42d2a7bf1c588816eae7
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87552780"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88115610"
 ---
 # <a name="using-directory-schema-extension-attributes-in-claims"></a>Verwenden von Verzeichnisschema-Erweiterungsattributen in Ansprüchen
 
@@ -34,7 +34,7 @@ Der Bezeichner für ein Verzeichnisschema-Erweiterungsattribut hat die Form *Ext
 ## <a name="registering-and-using-directory-schema-extensions"></a>Registrieren und Verwenden von Verzeichnisschemaerweiterungen
 Verzeichnisschema-Erweiterungsattribute können auf zweierlei Art und Weise registriert und aufgefüllt werden:
 
-- Konfigurieren von AD Connect zum Erstellen der Attribute und zum Synchronisieren der enthaltenen Daten aus dem lokalem Active Directory. Informationen hierzu finden Sie unter [Azure AD Connect Sync: Verzeichniserweiterungen](/azure/active-directory/hybrid/how-to-connect-sync-feature-directory-extensions).
+- Konfigurieren von AD Connect zum Erstellen der Attribute und zum Synchronisieren der enthaltenen Daten aus dem lokalem Active Directory. Informationen hierzu finden Sie unter [Azure AD Connect Sync: Verzeichniserweiterungen](../hybrid/how-to-connect-sync-feature-directory-extensions.md).
 - Verwenden von Microsoft Graph zum Registrieren der Attribute, zum Festlegen der Werte und zum Lesen der Verzeichnisschema-Erweiterungsattribute (siehe [Verzeichnisschemaerweiterungen | Graph-API Konzepte](/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-directory-schema-extensions) und/oder PowerShell+ [Verwalten von Erweiterungsattributen mit Azure AD PowerShell-Cmdlets](/powershell/azure/active-directory/using-extension-attributes-sample?view=azureadps-2.0)).
 
 ### <a name="emitting-claims-with-data-from-directory-schema-extension-attributes-created-with-ad-connect"></a>Ausgeben von Ansprüchen mit Daten aus den mit AD Connect erstellten Verzeichnisschema-Erweiterungsattributen

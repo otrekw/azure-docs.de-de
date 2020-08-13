@@ -13,12 +13,12 @@ ms.date: 03/31/2020
 ms.author: brandwe
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 7cecbc48eb362c2c0f1741352e6f7f5f6ad40c9e
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 5abb6852e267fa7d7277e0e0674a4099343e14ca
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80576717"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88114913"
 ---
 # <a name="shared-device-mode-for-ios-devices"></a>Modus für gemeinsam genutzte Geräte für iOS-Geräte
 
@@ -67,7 +67,7 @@ Ihr Gerät muss konfiguriert werden, um den Modus für gemeinsam genutzte Gerät
       - Typ: Boolean
       - Wert: True
 
-    Weitere Informationen zum Konfigurieren mit Intune finden Sie in der [Dokumentation zur Konfiguration von Intune](https://docs.microsoft.com/intune/configuration/ios-device-features-settings).
+    Weitere Informationen zum Konfigurieren mit Intune finden Sie in der [Dokumentation zur Konfiguration von Intune](/intune/configuration/ios-device-features-settings).
 
 1. Konfigurieren Sie als nächstes MDM so, dass die Microsoft Authenticator-App per Pushvorgang über ein MDM-Profil an das Gerät übertragen wird.
 

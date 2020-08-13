@@ -109,6 +109,8 @@
       href: howto-labels-aspnet-core.md
     - name: Importieren oder Exportieren von Konfigurationsdaten
       href: howto-import-export-data.md
+    - name: Verwenden des JSON-Inhaltstyps für Schlüsselwerte
+      href: howto-leverage-json-content-type.md
     - name: Routing von Ereignissen an einen benutzerdefinierten Endpunkt
       href: howto-app-configuration-event.md
     - name: Konfigurationsspeicher automatisch sichern
@@ -117,7 +119,7 @@
   items:
     - name: Konfiguration
       items:
-        - name: Azure-Befehlszeilenschnittstelle
+        - name: Azure CLI
           href: 'https://docs.microsoft.com/cli/azure/appconfig?view=azure-cli-latest'
         - name: .NET Core-Anbieter
           href: 'https://go.microsoft.com/fwlink/?linkid=2074664'

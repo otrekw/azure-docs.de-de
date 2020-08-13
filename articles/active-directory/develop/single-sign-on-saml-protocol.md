@@ -14,12 +14,12 @@ ms.date: 05/18/2020
 ms.author: kenwith
 ms.custom: aaddev
 ms.reviewer: paulgarn
-ms.openlocfilehash: f3896bf795e3b1ca258f65fa2c6f4974f2115014
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 4990b81d929019b3d201f004176234fa0ea78339
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87282992"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88118449"
 ---
 # <a name="single-sign-on-saml-protocol"></a>SAML-Protokoll für einmaliges Anmelden
 
@@ -50,7 +50,7 @@ xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol">
 | --- | --- | --- |
 | id | Erforderlich | Azure AD verwendet dieses Attribut, um das `InResponseTo` -Attribut der zurückgegebenen Antwort aufzufüllen. Die ID darf nicht mit einer Zahl beginnen, weshalb dem GUID-String häufig eine Zeichenfolge wie etwa „id“ vorangestellt wird. `id6c1c178c166d486687be4aaf5e482730` ist beispielsweise eine gültige ID. |
 | Version | Erforderlich | Dieser Parameter sollte auf **2.0** festgelegt werden. |
-| IssueInstant | Erforderlich | Eine DateTime-Zeichenfolge mit einem UTC-Wert und im [Roundtrip-Format („o“)](https://msdn.microsoft.com/library/az4se3k1.aspx). Azure AD erwartet einen DateTime-Wert dieses Typs, dieser Wert wird jedoch weder bewertet noch verwendet. |
+| IssueInstant | Erforderlich | Eine DateTime-Zeichenfolge mit einem UTC-Wert und im [Roundtrip-Format („o“)](/dotnet/standard/base-types/standard-date-and-time-format-strings). Azure AD erwartet einen DateTime-Wert dieses Typs, dieser Wert wird jedoch weder bewertet noch verwendet. |
 | AssertionConsumerServiceUrl | Optional | Dieser Parameter muss (falls angegeben) dem `RedirectUri` des Clouddiensts in Azure AD entsprechen. |
 | ForceAuthn | Optional | Dies ist ein Boolescher Wert. Bei „true“ wird der Benutzer gezwungen, sich erneut zu authentifizieren, selbst wenn für ihn bereits eine gültige Sitzung mit Azure AD besteht. |
 | IsPassive | Optional | Dies ist ein Boolescher Wert, der festlegt, ob Azure AD den Benutzer im Hintergrund ohne Eingreifen des Benutzers, jedoch mithilfe des Sitzungscookies authentifiziert, sofern ein solches vorhanden ist. Bei „true“ versucht Azure AD den Benutzer mithilfe des Sitzungscookies zu authentifizieren. |

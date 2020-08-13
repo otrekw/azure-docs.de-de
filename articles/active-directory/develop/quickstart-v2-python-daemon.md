@@ -10,17 +10,17 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 10/22/2019
 ms.author: jmprieur
-ms.custom: aaddev, identityplatformtop40, tracking-python, scenarios:getting-started, languages:Python
-ms.openlocfilehash: c8fab1449c72dc3e1a27506e97272e322c0e8c6e
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.custom: aaddev, identityplatformtop40, devx-track-python, scenarios:getting-started, languages:Python
+ms.openlocfilehash: 6d4710f0b8756ea9b7f824b8b0aa1221ad8b30f0
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85553876"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88120387"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-python-console-app-using-apps-identity"></a>Schnellstart: Abrufen eines Tokens und Aufrufen der Microsoft Graph-API über eine Python-Konsolen-App unter Verwendung der Identität der App
 
-In dieser Schnellstartanleitung erfahren Sie, wie Sie eine Python-Anwendung schreiben, die unter Verwendung der App-Identität ein Zugriffstoken abruft und anschließend die Microsoft Graph-API aufruft, um eine [Liste der Benutzer](https://docs.microsoft.com/graph/api/user-list) im Verzeichnis anzuzeigen. Dieses Szenario ist für Situationen hilfreich, in denen ein monitorloser, unbeaufsichtigter Auftrag oder ein Windows-Dienst nicht mit der Identität eines Benutzers, sondern mit einer Anwendungsidentität ausgeführt werden muss.
+In dieser Schnellstartanleitung erfahren Sie, wie Sie eine Python-Anwendung schreiben, die unter Verwendung der App-Identität ein Zugriffstoken abruft und anschließend die Microsoft Graph-API aufruft, um eine [Liste der Benutzer](/graph/api/user-list) im Verzeichnis anzuzeigen. Dieses Szenario ist für Situationen hilfreich, in denen ein monitorloser, unbeaufsichtigter Auftrag oder ein Windows-Dienst nicht mit der Identität eines Benutzers, sondern mit einer Anwendungsidentität ausgeführt werden muss.
 
 > [!div renderon="docs"]
 > ![Funktionsweise der in dieser Schnellstartanleitung generierten Beispiel-App](media/quickstart-v2-netcore-daemon/netcore-daemon-intro.svg)

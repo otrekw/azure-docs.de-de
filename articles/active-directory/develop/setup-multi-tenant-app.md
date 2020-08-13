@@ -11,21 +11,21 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/15/2019
 ms.author: ryanwi
-ms.openlocfilehash: a27524f860f17642dcd0640bcb740fc04c187407
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: d865ac8bae475365dbfc6c8bad990a1acc7998f0
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80881382"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88116749"
 ---
 # <a name="how-to-configure-a-new-multi-tenant-application"></a>Konfigurieren einer neuen mehrinstanzenfähigen Anwendung
 
 Im Folgenden finden Sie eine Liste mit empfohlenen Themen und weiterführende Informationen zu mehrinstanzenfähigen Anwendungen:
 
-- Allgemeine Übersicht über [mehrinstanzenfähige Anwendungen](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#multi-tenant-application)
-- Allgemeine Übersicht über [die Konfiguration mehrinstanzenfähiger Anwendungen](https://docs.microsoft.com/azure/active-directory/develop/howto-convert-app-to-be-multi-tenant)
-- Eine ausführliche Übersicht über das [Implementieren der Zustimmung mit dem Azure AD-Zustimmungsframework](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications), das für mehrinstanzenfähige Anwendungen erforderlich ist
-- Ausführlichere Informationen zur [Konfiguration mehrinstanzenfähiger Anwendungen und deren Programmierung](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview), einschließlich Informationen zum Registrieren, zum Verwenden des gemeinsamen Endpunkts, zur Implementierung von Benutzer- und Administratorzustimmung sowie zur Implementierung von fortgeschrittenen Szenarien mit mehreren Ebenen
+- Allgemeine Übersicht über [mehrinstanzenfähige Anwendungen](./developer-glossary.md#multi-tenant-application)
+- Allgemeine Übersicht über [die Konfiguration mehrinstanzenfähiger Anwendungen](./howto-convert-app-to-be-multi-tenant.md)
+- Eine ausführliche Übersicht über das [Implementieren der Zustimmung mit dem Azure AD-Zustimmungsframework](./quickstart-register-app.md), das für mehrinstanzenfähige Anwendungen erforderlich ist
+- Ausführlichere Informationen zur [Konfiguration mehrinstanzenfähiger Anwendungen und deren Programmierung](./howto-convert-app-to-be-multi-tenant.md), einschließlich Informationen zum Registrieren, zum Verwenden des gemeinsamen Endpunkts, zur Implementierung von Benutzer- und Administratorzustimmung sowie zur Implementierung von fortgeschrittenen Szenarien mit mehreren Ebenen
 
 ## <a name="next-steps"></a>Nächste Schritte
 [Azure AD bei Stack Overflow](https://stackoverflow.com/questions/tagged/azure-active-directory)

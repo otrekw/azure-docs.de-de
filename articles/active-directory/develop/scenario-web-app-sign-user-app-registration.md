@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 1adff446e6d41e30db109d0871811dc651f1f4f5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b16ee98b44e52482423229a0940c8927a94d4c83
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87026248"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88118670"
 ---
 # <a name="web-app-that-signs-in-users-app-registration"></a>Web-App für Benutzeranmeldungen: App-Registrierung
 
@@ -41,7 +41,7 @@ Sie können diese Links für den Einstieg in die Erstellung Ihrer Webanwendung v
 > Welches Portal Sie verwenden müssen, hängt davon ab, ob Ihre Anwendung in der öffentlichen Cloud von Microsoft Azure oder in einer nationalen oder Sovereign Cloud ausgeführt wird. Weitere Informationen finden Sie unter [Nationale Clouds](./authentication-national-cloud.md#app-registration-endpoints).
 
 
-1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim [Azure-Portal](https://portal.azure.com) an. Melden Sie sich alternativ beim [Azure-Portal](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud#app-registration-endpoints) der nationalen Cloud Ihrer Wahl an.
+1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim [Azure-Portal](https://portal.azure.com) an. Melden Sie sich alternativ beim [Azure-Portal](./authentication-national-cloud.md#app-registration-endpoints) der nationalen Cloud Ihrer Wahl an.
 2. Wenn Sie unter Ihrem Konto Zugriff auf mehrere Mandanten haben, können Sie Ihr Konto rechts oben auswählen. Legen Sie dann die Portalsitzung auf den gewünschten Azure AD-Mandanten (Azure Active Directory) fest.
 3. Wählen Sie im linken Bereich den Dienst **Azure Active Directory** und anschließend **App-Registrierungen** > **Neue Registrierung** aus.
 
@@ -119,7 +119,7 @@ Sie können diese Links für den Einstieg in die Erstellung Ihrer Webanwendung v
 > - MyOrg (nur Konten in diesem Organisationsverzeichnis)
 > - AnyOrg (Konten in einem beliebigen Organisationsverzeichnis)
 >
-> Sie können eine Anwendung erstellen, die Benutzer mit ihren persönlichen Microsoft-Konten (z. B. Skype, Xbox oder Outlook.com) anmeldet. Erstellen Sie zunächst eine mehrinstanzenfähige Anwendung. Zu den unterstützten Kontotypen gehören Konten in einem beliebigen Organisationsverzeichnis. Ändern Sie dann über das Azure-Portal im [Anwendungsmanifest](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest) die [`accessTokenAcceptedVersion`](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest#accesstokenacceptedversion-attribute)-Eigenschaft in **2** und die [`signInAudience`](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest#signinaudience-attribute)-Eigenschaft in `AzureADandPersonalMicrosoftAccount`. Weitere Informationen finden Sie im ASP.NET Core-Tutorial unter [Schritt 1.3](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-3-AnyOrgOrPersonal#step-1-register-the-sample-with-your-azure-ad-tenant). Sie können diesen Schritt in einer beliebigen Sprache für Web-Apps generalisieren.
+> Sie können eine Anwendung erstellen, die Benutzer mit ihren persönlichen Microsoft-Konten (z. B. Skype, Xbox oder Outlook.com) anmeldet. Erstellen Sie zunächst eine mehrinstanzenfähige Anwendung. Zu den unterstützten Kontotypen gehören Konten in einem beliebigen Organisationsverzeichnis. Ändern Sie dann über das Azure-Portal im [Anwendungsmanifest](./reference-app-manifest.md) die [`accessTokenAcceptedVersion`](./reference-app-manifest.md#accesstokenacceptedversion-attribute)-Eigenschaft in **2** und die [`signInAudience`](./reference-app-manifest.md#signinaudience-attribute)-Eigenschaft in `AzureADandPersonalMicrosoftAccount`. Weitere Informationen finden Sie im ASP.NET Core-Tutorial unter [Schritt 1.3](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-3-AnyOrgOrPersonal#step-1-register-the-sample-with-your-azure-ad-tenant). Sie können diesen Schritt in einer beliebigen Sprache für Web-Apps generalisieren.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

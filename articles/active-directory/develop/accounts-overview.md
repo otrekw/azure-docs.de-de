@@ -13,12 +13,12 @@ ms.date: 09/14/2019
 ms.author: shoatman
 ms.custom: aaddev, devx-track-java
 ms.reviewer: shoatman
-ms.openlocfilehash: 1dabadfe30a28fdae409f8452aac2cca4b765418
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 404ffbc09a69b623a421bd0c01550d72e5c03158
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87313488"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88115984"
 ---
 # <a name="accounts--tenant-profiles-android"></a>Konten und Mandantenprofile (Android)
 
@@ -69,7 +69,7 @@ Für dieses Diagramm gilt:
   - Ein Mandantenprofil für `tom@live.com` ist in jedem dieser Mandanten vorhanden.
 - Informationen zu Tom und Bob in anderen Mandanten können von denen im bevorzugten System abweichen. Sie können sich durch Attribute wie z. B. Position, Büro usw. unterscheiden. Sie könnten in beiden Organisationen Gruppenmitglieder sein bzw. Rollen innehaben (Azure Active Directory-Mandant). Diese Informationen werden als bob@contoso.com-Mandantenprofil bezeichnet.
 
-Im Diagramm haben bob@contoso.com und tom@live.com Zugriff auf Ressourcen in verschiedenen Azure Active Directory-Mandanten. Weitere Informationen finden Sie unter [Hinzufügen von Azure Active Directory B2B-Zusammenarbeitsbenutzern über das Azure-Portal](https://docs.microsoft.com/azure/active-directory/b2b/add-users-administrator).
+Im Diagramm haben bob@contoso.com und tom@live.com Zugriff auf Ressourcen in verschiedenen Azure Active Directory-Mandanten. Weitere Informationen finden Sie unter [Hinzufügen von Azure Active Directory B2B-Zusammenarbeitsbenutzern über das Azure-Portal](../external-identities/add-users-administrator.md).
 
 ## <a name="accounts-and-single-sign-on-sso"></a>Konten und Einmaliges Anmelden (SSO)
 
@@ -118,10 +118,10 @@ String issuer = account.getClaims().get("iss"); // The tenant specific authority
 ```
 
 > [!TIP]
-> Eine Liste der Ansprüche, die im Konto-Objekt verfügbar sind, finden Sie unter [Ansprüche in einem id_token](https://docs.microsoft.com/azure/active-directory/develop/id-tokens#claims-in-an-id_token)
+> Eine Liste der Ansprüche, die im Konto-Objekt verfügbar sind, finden Sie unter [Ansprüche in einem id_token](./id-tokens.md#claims-in-an-id_token)
 
 > [!TIP]
-> Wenn Sie weitere Ansprüche in Ihr id_token einschließen möchten, lesen Sie die Dokumentation zu optionalen Ansprüchen in [So geht’s: Bereitstellen optionaler Ansprüche für Ihre Azure AD-App](https://docs.microsoft.com/azure/active-directory/develop/active-directory-optional-claims)
+> Wenn Sie weitere Ansprüche in Ihr id_token einschließen möchten, lesen Sie die Dokumentation zu optionalen Ansprüchen in [So geht’s: Bereitstellen optionaler Ansprüche für Ihre Azure AD-App](./active-directory-optional-claims.md)
 
 ### <a name="access-tenant-profile-claims"></a>Auf Ansprüche eines Mandantenprofils zugreifen
 

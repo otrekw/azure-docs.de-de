@@ -12,12 +12,12 @@ ms.date: 07/19/2017
 ms.author: kenwith
 ms.custom: aaddev
 ms.reviewer: paulgarn
-ms.openlocfilehash: c2673552638c1829b1640724634e365dc6595703
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 1d09355993af96e9e0cd334c57174cdaa771b388
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284420"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88118262"
 ---
 # <a name="single-sign-out-saml-protocol"></a>SAML-Protokoll für einmaliges Abmelden
 
@@ -42,7 +42,7 @@ Für das an Azure AD gesendete `LogoutRequest` -Element sind die folgenden Attri
 
 * `ID`: Dieses Attribut dient zum Identifizieren der Abmeldeanforderung. Der Wert von `ID` darf nicht mit einer Zahl beginnen. Die übliche Vorgehensweise besteht darin, **id** an die Zeichenfolgendarstellung einer GUID anzufügen.
 * `Version`: Legen Sie den Wert dieses Elements auf **2.0** fest. Dieser Wert ist erforderlich.
-* `IssueInstant`: Bei diesem Attribut handelt es sich um eine `DateTime`-Zeichenfolge mit einem UTC-Wert (Coordinated Universal Time) und [Roundtripformat („o“)](https://msdn.microsoft.com/library/az4se3k1.aspx). Azure AD erwartet einen Wert dieses Typs, aber der Wert wird nicht erzwungen.
+* `IssueInstant`: Bei diesem Attribut handelt es sich um eine `DateTime`-Zeichenfolge mit einem UTC-Wert (Coordinated Universal Time) und [Roundtripformat („o“)](/dotnet/standard/base-types/standard-date-and-time-format-strings). Azure AD erwartet einen Wert dieses Typs, aber der Wert wird nicht erzwungen.
 
 ### <a name="issuer"></a>Issuer (Aussteller)
 Das `Issuer`-Element in einem `LogoutRequest`-Element muss mit einem der **ServicePrincipalNames**-Werte im Clouddienst von Azure AD exakt übereinstimmen. Normalerweise ist es auf den **App-ID-URI** festgelegt, der bei der Anwendungsregistrierung angegeben wird.

@@ -10,13 +10,13 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 07/14/2020
 ms.author: jmprieur
-ms.custom: aaddev, tracking-python
-ms.openlocfilehash: 662520b9e31b4fe9a0925683fd0e661ce179e5b2
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: aaddev, devx-track-python
+ms.openlocfilehash: ac438b42f25fc82a0a5dd5384205e809e45ff57a
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518146"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88120084"
 ---
 # <a name="a-web-app-that-calls-web-apis-code-configuration"></a>Web-App, die Web-APIs aufruft: Codekonfiguration
 
@@ -61,7 +61,7 @@ public void ConfigureServices(IServiceCollection services)
 Wenn Sie daran interessiert sind, mehr über den Tokencache zu erfahren, finden Sie weitere Informationen unter [Optionen für die Tokencacheserialisierung](#token-cache)
 
 > [!NOTE]
-> Um die hier aufgeführten Codebeispiele in vollem Umfang zu verstehen, müssen Sie mit den [ASP.NET Core-Grundlagen](https://docs.microsoft.com/aspnet/core/fundamentals) und insbesondere mit der [Abhängigkeitsinjektion](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection) und den [Optionen](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/options) vertraut sein.
+> Um die hier aufgeführten Codebeispiele in vollem Umfang zu verstehen, müssen Sie mit den [ASP.NET Core-Grundlagen](/aspnet/core/fundamentals) und insbesondere mit der [Abhängigkeitsinjektion](/aspnet/core/fundamentals/dependency-injection) und den [Optionen](/aspnet/core/fundamentals/configuration/options) vertraut sein.
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
@@ -268,7 +268,7 @@ Die Verwendung von Clientassertionen ist ein erweitertes Szenario, das unter [Cl
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-Im ASP.NET Core-Tutorial wird die Abhängigkeitsinjektion verwendet, um Ihnen die Entscheidung über die Tokencache-Implementierung in der Datei „Startup.cs“ für Ihre Anwendung zu ermöglichen. Microsoft.Identity.Web enthält eine Reihe vordefinierter Tokencache-Serialisierungsmodule, die unter [Tokencacheserialisierung](msal-net-token-cache-serialization.md#token-cache-for-a-web-app-confidential-client-application) beschrieben sind. Eine interessante Möglichkeit besteht darin, [verteilte Arbeitsspeichercaches](https://docs.microsoft.com/aspnet/core/performance/caching/distributed#distributed-memory-cache) von ASP.NET Core auszuwählen:
+Im ASP.NET Core-Tutorial wird die Abhängigkeitsinjektion verwendet, um Ihnen die Entscheidung über die Tokencache-Implementierung in der Datei „Startup.cs“ für Ihre Anwendung zu ermöglichen. Microsoft.Identity.Web enthält eine Reihe vordefinierter Tokencache-Serialisierungsmodule, die unter [Tokencacheserialisierung](msal-net-token-cache-serialization.md#token-cache-for-a-web-app-confidential-client-application) beschrieben sind. Eine interessante Möglichkeit besteht darin, [verteilte Arbeitsspeichercaches](/aspnet/core/performance/caching/distributed#distributed-memory-cache) von ASP.NET Core auszuwählen:
 
 ```csharp
 // Use a distributed token cache by adding:

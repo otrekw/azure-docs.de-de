@@ -13,12 +13,12 @@ ms.date: 08/13/2019
 ms.author: ryanwi
 ms.reviewer: lenalepa
 ms.custom: aaddev
-ms.openlocfilehash: 53a44ed270dc47725dddfd57d6a212e859d46bad
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: 0574eb0b8ab0b5d4de671ad44a45a85e434393f1
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87552712"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88115576"
 ---
 # <a name="app-registration-reference"></a>Referenz zur App-Registrierung
 
@@ -26,7 +26,7 @@ Dieses Dokument enthält Kontext und Beschreibungen zu verschiedenen Features de
 
 ## <a name="my-applications-or-converged-applications"></a>Eigene Anwendungen oder konvergente Anwendungen
 
-Diese Liste enthält all Ihre Anwendungen, die für die Verwendung mit dem Endpunkt der Microsoft Identity Platform (v2.0) registriert sind. Diese Anwendungen können Benutzer sowohl über persönliche Microsoft-Konten als auch über Geschäfts-, Schul- oder Unikonten von Azure Active Directory anmelden. Weitere Informationen zum Endpunkt der Identiy Platform finden Sie in der [v2.0-Übersicht](active-directory-appmodel-v2-overview.md). Diese Anwendungen können auch für die Integration in den Microsoft-Konto-Authentifizierungsendpunkt, `https://login.live.com`, verwendet werden.
+Diese Liste enthält all Ihre Anwendungen, die für die Verwendung mit dem Endpunkt der Microsoft Identity Platform (v2.0) registriert sind. Diese Anwendungen können Benutzer sowohl über persönliche Microsoft-Konten als auch über Geschäfts-, Schul- oder Unikonten von Azure Active Directory anmelden. Weitere Informationen zum Endpunkt der Identiy Platform finden Sie in der [v2.0-Übersicht](./v2-overview.md). Diese Anwendungen können auch für die Integration in den Microsoft-Konto-Authentifizierungsendpunkt, `https://login.live.com`, verwendet werden.
 
 ## <a name="azure-ad-only-applications"></a>Nur Azure AD-Anwendungen
 

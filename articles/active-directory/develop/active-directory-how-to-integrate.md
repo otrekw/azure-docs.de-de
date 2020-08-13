@@ -12,12 +12,12 @@ ms.date: 04/08/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev, seoapril2019
-ms.openlocfilehash: 50748334a59dd6b3d7601bd8a32ac99bfe90b0fe
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: c193742527cf69526d69549d3c10f5591f0d2f93
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87552814"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88115695"
 ---
 # <a name="integrating-with-microsoft-identity-platform"></a>Integration in Microsoft Identity Platform
 
@@ -31,15 +31,15 @@ Es gibt mehrere Möglichkeiten, Ihre Anwendung in Microsoft Identity Platform zu
 
 ### <a name="support-microsoft-identity-platform-as-a-way-to-sign-in-to-your-application"></a>Unterstützen von Microsoft Identity Platform als Möglichkeit zum Anmelden bei Ihrer Anwendung
 
-**Verringern von Anmeldeaufwand und Supportkosten.** Wenn sich Ihre Benutzer über Microsoft Identity Platform bei Ihrer Anwendung anmelden, müssen sie sich keinen weiteren Benutzernamen und kein weiteres Kennwort merken. Als Entwickler müssen Sie ein Kennwort weniger speichern und schützen. Allein dadurch, dass keine vergessenen Kennwörter zurückgesetzt werden müssen, kann es zu beträchtlichen Kosteneinsparungen kommen. Microsoft Identity Platform unterstützt die Anmeldung bei einigen der weltweit beliebtesten Cloudanwendungen (darunter auch Office 365 und Microsoft Azure). Bei mehreren hundert Millionen Benutzern in Millionen von Organisationen ist es wahrscheinlich, dass Ihr Benutzer bereits bei Microsoft Identity Platform angemeldet ist. Erfahren Sie mehr über das [Hinzufügen der Unterstützung für die Anmeldung über Microsoft Identity Platform](authentication-scenarios.md).
+**Verringern von Anmeldeaufwand und Supportkosten.** Wenn sich Ihre Benutzer über Microsoft Identity Platform bei Ihrer Anwendung anmelden, müssen sie sich keinen weiteren Benutzernamen und kein weiteres Kennwort merken. Als Entwickler müssen Sie ein Kennwort weniger speichern und schützen. Allein dadurch, dass keine vergessenen Kennwörter zurückgesetzt werden müssen, kann es zu beträchtlichen Kosteneinsparungen kommen. Microsoft Identity Platform unterstützt die Anmeldung bei einigen der weltweit beliebtesten Cloudanwendungen (darunter auch Office 365 und Microsoft Azure). Bei mehreren hundert Millionen Benutzern in Millionen von Organisationen ist es wahrscheinlich, dass Ihr Benutzer bereits bei Microsoft Identity Platform angemeldet ist. Erfahren Sie mehr über das [Hinzufügen der Unterstützung für die Anmeldung über Microsoft Identity Platform](./authentication-vs-authorization.md).
 
 **Vereinfachen der Registrierung für Ihre Anwendung.**  Bei der Registrierung für Ihre Anwendung kann Microsoft Identity Platform wichtige Informationen zu einem Benutzer senden, sodass Sie das Anmeldeformular vorab ausfüllen oder vollständig darauf verzichten können. Benutzer können sich für Ihre Anwendung mit ihrem Azure AD-Konto in einer vertrauten Genehmigungsumgebung registrieren, die derjenigen in sozialen Medien und mobilen Anwendungen ähnelt. Benutzer können sich ohne Beteiligung der IT bei einer in Microsoft Identity Platform integrierten Anwendung registrieren und anmelden. Erfahren Sie mehr über das [Registrieren Ihrer Anwendung für die Azure AD-Kontoanmeldung](../../app-service/configure-authentication-provider-aad.md).
 
 ### <a name="browse-for-users-manage-user-provisioning-and-control-access-to-your-application"></a>Suchen nach Benutzern, Verwalten der Benutzerbereitstellung und Steuern des Zugriffs auf Ihre Anwendung
 
-**Suchen nach Benutzern im Verzeichnis.**  Über die Microsoft Graph-API können Sie Benutzern helfen, nach anderen Personen in ihrer Organisation zu suchen, wenn sie sie einladen oder ihnen Zugriff gewähren möchten, statt dass die Benutzer E-Mail-Adressen eingeben müssen. Benutzer können auf einer vertrauten Adressbuchoberfläche suchen und beispielsweise Details der Organisationshierarchie anzeigen. Weitere Informationen zur [Microsoft Graph-API](https://docs.microsoft.com/graph/overview).
+**Suchen nach Benutzern im Verzeichnis.**  Über die Microsoft Graph-API können Sie Benutzern helfen, nach anderen Personen in ihrer Organisation zu suchen, wenn sie sie einladen oder ihnen Zugriff gewähren möchten, statt dass die Benutzer E-Mail-Adressen eingeben müssen. Benutzer können auf einer vertrauten Adressbuchoberfläche suchen und beispielsweise Details der Organisationshierarchie anzeigen. Weitere Informationen zur [Microsoft Graph-API](/graph/overview).
 
-**Wiederverwenden von Active Directory-Gruppen und Verteilerlisten, die Ihr Kunde bereits verwaltet.**  Azure AD enthält die Gruppen, die Ihr Kunde bereits für die E-Mail-Verteilung und das Verwalten des Zugriffs verwendet. Verwenden Sie diese Gruppen über die Microsoft Graph-API erneut, statt dass der Kunde einen getrennten Satz von Gruppen in Ihrer Anwendung erstellen und verwalten muss. Informationen zu Gruppen können auch in Anmeldetoken an Ihre Anwendung gesendet werden. Weitere Informationen zur [Microsoft Graph-API](https://docs.microsoft.com/graph/overview).
+**Wiederverwenden von Active Directory-Gruppen und Verteilerlisten, die Ihr Kunde bereits verwaltet.**  Azure AD enthält die Gruppen, die Ihr Kunde bereits für die E-Mail-Verteilung und das Verwalten des Zugriffs verwendet. Verwenden Sie diese Gruppen über die Microsoft Graph-API erneut, statt dass der Kunde einen getrennten Satz von Gruppen in Ihrer Anwendung erstellen und verwalten muss. Informationen zu Gruppen können auch in Anmeldetoken an Ihre Anwendung gesendet werden. Weitere Informationen zur [Microsoft Graph-API](/graph/overview).
 
 **Verwenden von Microsoft Identity Platform zum Steuern des Zugriffs auf Ihre Anwendung**.  Administratoren und Besitzer von Anwendungen in Azure AD können bestimmten Benutzern und Gruppen Zugriff auf Anwendungen zuweisen. Über die Microsoft Graph-API können Sie diese Liste lesen und zum Steuern der Bereitstellung bzw. der Aufhebung der Bereitstellung von Ressourcen und des Zugriffs innerhalb Ihrer Anwendung verwenden.
 
@@ -47,13 +47,13 @@ Es gibt mehrere Möglichkeiten, Ihre Anwendung in Microsoft Identity Platform zu
 
 ### <a name="get-access-to-users-profile-calendar-email-contacts-files-and-more"></a>Anfordern des Zugriffs auf das Profil, den Kalender, E-Mails, Kontakte, Dateien und andere Informationen des Benutzers
 
-**Microsoft Identity Platform ist der Autorisierungsserver für Office 365 und andere Microsoft-Unternehmensdienste.**  Wenn Sie Microsoft Identity Platform für die Anmeldung bei Ihrer Anwendung oder das Verknüpfen Ihrer aktuellen Benutzerkonten über OAuth 2.0 mit Azure AD-Benutzerkonten unterstützen, können Sie Lese- und Schreibzugriff auf das Profil, den Kalender, Kontakte, E-Mails, Dateien und andere Informationen des Benutzers anfordern. Sie können problemlos Ereignisse in den Kalender der Benutzer schreiben und Dateien auf ihrem OneDrive lesen oder schreiben. Erfahren Sie mehr über [den Zugriff auf die Office 365-APIs](https://msdn.microsoft.com/office/office365/howto/platform-development-overview).
+**Microsoft Identity Platform ist der Autorisierungsserver für Office 365 und andere Microsoft-Unternehmensdienste.**  Wenn Sie Microsoft Identity Platform für die Anmeldung bei Ihrer Anwendung oder das Verknüpfen Ihrer aktuellen Benutzerkonten über OAuth 2.0 mit Azure AD-Benutzerkonten unterstützen, können Sie Lese- und Schreibzugriff auf das Profil, den Kalender, Kontakte, E-Mails, Dateien und andere Informationen des Benutzers anfordern. Sie können problemlos Ereignisse in den Kalender der Benutzer schreiben und Dateien auf ihrem OneDrive lesen oder schreiben. Erfahren Sie mehr über [den Zugriff auf die Office 365-APIs](/previous-versions/office/office-365-api/).
 
 ### <a name="promote-your-application-in-the-azure-and-office-365-marketplaces"></a>Werben für Ihre Anwendung im Azure Marketplace und Office 365 Marketplace
 
 **Werben Sie für Ihre Anwendung bei Millionen von Organisationen, die Azure AD bereits verwenden.**  Benutzer, die diese Marketplaces durchsuchen bzw durchstöbern, nutzen bereits einen oder mehrere Clouddienste, sodass sie als potenzielle Kunden von Cloudlösungen in Frage kommen. Erfahren Sie mehr über das Werben für Ihre Anwendung in [Azure Marketplace](https://azure.microsoft.com/marketplace/partner-program/).
 
-**Wenn sich Benutzer für Ihre Anwendung registrieren, wird sie in ihrem Azure AD-Zugriffsbereich und Office 365-App-Startfeld angezeigt.**  Benutzer können später schnell und einfach zu Ihrer Anwendung zurückkehren, was die Benutzerbindung verbessert. Erfahren Sie mehr über den [Azure AD-Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md).
+**Wenn sich Benutzer für Ihre Anwendung registrieren, wird sie in ihrem Azure AD-Zugriffsbereich und Office 365-App-Startfeld angezeigt.**  Benutzer können später schnell und einfach zu Ihrer Anwendung zurückkehren, was die Benutzerbindung verbessert. Erfahren Sie mehr über den [Azure AD-Zugriffsbereich](../user-help/my-apps-portal-end-user-access.md).
 
 ### <a name="secure-device-to-service-and-service-to-service-communication"></a>Sichere Kommunikation zwischen Gerät und Dienst und zwischen Diensten
 
@@ -73,9 +73,9 @@ Die Integration in Microsoft Identity Platform bietet den Vorteil, dass Sie kein
 
 **Multi-Factor Authentication.**  Microsoft Identity Platform stellt eine native mehrstufige Authentifizierung (Multi-Factor Authentication, MFA) bereit. IT-Administratoren können für den Zugriff auf Ihre Anwendung die Multi-Factor Authentication anfordern, damit Sie diese Unterstützung nicht selbst programmieren müssen. Erfahren Sie mehr über die [Multi-Factor Authentication](https://azure.microsoft.com/documentation/services/multi-factor-authentication/).
 
-**Erkennung anomaler Anmeldungen.**  Microsoft Identity Platform verarbeitet mehr als eine Milliarde Anmeldungen pro Tag. Dabei kommen Machine Learning-Algorithmen zum Erkennen verdächtiger Aktivitäten zum Einsatz, die IT-Administratoren über mögliche Probleme informieren. Durch die Unterstützung der Anmeldung über Microsoft Identity Platform kommt Ihre Anwendung in den Genuss dieses Schutzes. Erfahren Sie mehr über das [Anzeigen des Azure Active Directory-Zugriffsberichts](../active-directory-view-access-usage-reports.md).
+**Erkennung anomaler Anmeldungen.**  Microsoft Identity Platform verarbeitet mehr als eine Milliarde Anmeldungen pro Tag. Dabei kommen Machine Learning-Algorithmen zum Erkennen verdächtiger Aktivitäten zum Einsatz, die IT-Administratoren über mögliche Probleme informieren. Durch die Unterstützung der Anmeldung über Microsoft Identity Platform kommt Ihre Anwendung in den Genuss dieses Schutzes. Erfahren Sie mehr über das [Anzeigen des Azure Active Directory-Zugriffsberichts](../reports-monitoring/overview-reports.md).
 
-**Bedingter Zugriff.**  Zusätzlich zur Multi-Factor Authentication können Administratoren anfordern, dass bestimmte Bedingungen erfüllt sein müssen, ehe sich Benutzer bei Ihrer Anwendung anmelden können. Bedingungen, die festgelegt werden können, sind u. a. der IP-Adressbereich von Clientgeräten, Mitgliedschaft in angegebenen Gruppen und den Status des Geräts, das für den Zugriff verwendet wird. Erfahren Sie mehr über den [bedingten Azure Active Directory-Zugriff](../active-directory-conditional-access-azure-portal.md).
+**Bedingter Zugriff.**  Zusätzlich zur Multi-Factor Authentication können Administratoren anfordern, dass bestimmte Bedingungen erfüllt sein müssen, ehe sich Benutzer bei Ihrer Anwendung anmelden können. Bedingungen, die festgelegt werden können, sind u. a. der IP-Adressbereich von Clientgeräten, Mitgliedschaft in angegebenen Gruppen und den Status des Geräts, das für den Zugriff verwendet wird. Erfahren Sie mehr über den [bedingten Azure Active Directory-Zugriff](../conditional-access/overview.md).
 
 ### <a name="easy-development"></a>Einfache Entwicklung
 
@@ -91,5 +91,4 @@ Die Integration in Microsoft Identity Platform bietet den Vorteil, dass Sie kein
 
 [Erste Schritte mit dem Schreiben von Code](v2-overview.md#getting-started).
 
-[Anmelden von Benutzern mithilfe von Microsoft Identity Platform](authentication-scenarios.md)
-
+[Anmelden von Benutzern mithilfe von Microsoft Identity Platform](./authentication-vs-authorization.md)

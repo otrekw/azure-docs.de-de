@@ -7,12 +7,12 @@ ms.assetid: bb51e565-e462-4c60-929a-2ff90121f41d
 ms.topic: article
 ms.date: 07/31/2019
 ms.author: jafreebe
-ms.openlocfilehash: 4dd959d75fd582d787e68db4a415a4a694b9cda8
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.openlocfilehash: addc4edba734c350a1e0e4246203c64315f345dd
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81770688"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88081050"
 ---
 # <a name="deployment-best-practices"></a>Bewährte Methoden der Bereitstellung
 
@@ -69,7 +69,7 @@ App Service verfügt über [integrierte Continuous Delivery](deploy-continuous-d
 
 ### <a name="use-github-actions"></a>Verwenden von GitHub Actions
 
-Sie können Ihre Containerbereitstellung auch [mit GitHub Actions](containers/deploy-container-github-action.md) automatisieren.  Die folgende Workflowdatei erstellt und kennzeichnet den Container mit der Commit-ID, pusht ihn in eine Containerregistrierung und aktualisiert den angegebenen Siteslot mit dem neuen Imagetag.
+Sie können Ihre Containerbereitstellung auch [mit GitHub Actions](deploy-container-github-action.md) automatisieren.  Die folgende Workflowdatei erstellt und kennzeichnet den Container mit der Commit-ID, pusht ihn in eine Containerregistrierung und aktualisiert den angegebenen Siteslot mit dem neuen Imagetag.
 
 ```yaml
 name: Build and deploy a container image to Azure Web Apps

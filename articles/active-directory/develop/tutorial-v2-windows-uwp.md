@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 12/13/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 7193affad3da212a6a40c0d9479473ec597e86f6
-ms.sourcegitcommit: 374d1533ea2f2d9d3f8b6e6a8e65c6a5cd4aea47
+ms.openlocfilehash: 38bd83f8bd713f2d5bda658e052c919dd3d7625d
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85807620"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88119707"
 ---
 # <a name="call-the-microsoft-graph-api-from-a-universal-windows-platform-application-xaml"></a>Aufrufen der Microsoft Graph-API über eine UWP-Anwendung (XAML)
 
@@ -27,7 +27,7 @@ Diese Anleitung veranschaulicht, wie eine native UWP-Anwendung (Universelle Wind
 Am Ende dieser Anleitung kann Ihre Anwendung eine geschützte API sowohl mit persönlichen Konten (z.B. outlook.com, live.com u.a.) als auch Geschäfts,- Schul- und Unikonten von Unternehmen oder Organisationen aufrufen, die mit Azure Active Directory (Azure AD) arbeiten.
 
 >[!NOTE]
-> Für diesen Leitfaden ist Visual Studio mit einer installierten Entwicklung für die Universelle Windows-Plattform erforderlich. Eine Anleitung zum Herunterladen und Konfigurieren von Visual Studio für die Entwicklung von UWP-Apps finden Sie im Artikel [Vorbereiten](https://docs.microsoft.com/windows/uwp/get-started/get-set-up).
+> Für diesen Leitfaden ist Visual Studio mit einer installierten Entwicklung für die Universelle Windows-Plattform erforderlich. Eine Anleitung zum Herunterladen und Konfigurieren von Visual Studio für die Entwicklung von UWP-Apps finden Sie im Artikel [Vorbereiten](/windows/uwp/get-started/get-set-up).
 
 >[!NOTE]
 > Sollten Sie noch nicht mit Microsoft Identity Platform vertraut sein, beginnen Sie mit der Schnellstartanleitung [Aufrufen der Microsoft Graph-API über eine UWP-Anwendung (UWP = Universelle Windows-Plattform)](quickstart-v2-uwp.md).

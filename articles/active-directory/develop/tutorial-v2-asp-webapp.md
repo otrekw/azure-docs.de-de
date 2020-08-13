@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 08/28/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: c0d8d2b009194b58c76dbd0a171f701f90df4086
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f62f6702b36915c6a6e1350072982e231cd9c07e
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87058277"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88118228"
 ---
 # <a name="add-sign-in-to-microsoft-to-an-aspnet-web-app"></a>Hinzufügen der Anmeldung bei Microsoft zu einer ASP.NET-Web-App
 
@@ -264,7 +264,7 @@ Erstellen Sie in Visual Studio eine neue Ansicht, um die Schaltfläche „Anmeld
     ```
 
 ### <a name="more-information"></a>Weitere Informationen
-Auf dieser Seite wird eine Anmeldeschaltfläche im SVG-Format mit schwarzem Hintergrund hinzugefügt:<br/>![Bei Microsoft anmelden](media/active-directory-develop-guidedsetup-aspnetwebapp-use/aspnetsigninbuttonsample.png)<br/> Weitere Anmeldeschaltflächen finden Sie in den [Brandingrichtlinien](https://docs.microsoft.com/azure/active-directory/develop/active-directory-branding-guidelines "Brandingrichtlinien").
+Auf dieser Seite wird eine Anmeldeschaltfläche im SVG-Format mit schwarzem Hintergrund hinzugefügt:<br/>![Bei Microsoft anmelden](media/active-directory-develop-guidedsetup-aspnetwebapp-use/aspnetsigninbuttonsample.png)<br/> Weitere Anmeldeschaltflächen finden Sie in den [Brandingrichtlinien](./howto-add-branding-in-azure-ad-apps.md "Brandingrichtlinien").
 
 ## <a name="add-a-controller-to-display-users-claims"></a>Hinzufügen eines Controllers zum Anzeigen von Ansprüchen des Benutzers
 Dieser Controller veranschaulicht die Verwendungen des `[Authorize]`-Attributs, um einen Controller zu schützen. Dieses Attribut beschränkt den Zugriff auf den Controller, indem nur authentifizierte Benutzer zugelassen werden. Der folgende Code verwendet das Attribut zum Anzeigen von Benutzeransprüchen, die als Teil der Anmeldung abgerufen wurden:
@@ -403,7 +403,7 @@ Anwendungen, die sich in die Microsoft Identity Platform integrieren lassen, fol
 - Der Anwendungsentwickler fügt zusätzliche Berechtigungen hinzu, für die die **Administratoreinwilligung** erforderlich ist.
 - Der Mandant wurde (unter **Unternehmensanwendungen > Benutzereinstellungen**) so konfiguriert, dass Benutzer Apps den Zugriff auf Unternehmensdaten in ihrem Namen nicht gestatten können.
 
-Weitere Informationen finden Sie unter [Berechtigungen und Zustimmung im Microsoft Identity Platform-Endpunkt](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent).
+Weitere Informationen finden Sie unter [Berechtigungen und Zustimmung im Microsoft Identity Platform-Endpunkt](./v2-permissions-and-consent.md).
 
 ### <a name="view-application-results"></a>Anzeigen von Anwendungsergebnissen
 
@@ -424,7 +424,7 @@ Nachdem Sie die Controlleransicht aufgerufen haben, sollten Sie eine Tabelle mit
 |**Subject** |Subject |Eine Zeichenfolge, die den Benutzer im Internet eindeutig identifiziert|
 |**Tenant ID** |Guid | Eine **GUID**, die die Azure AD-Organisation des Benutzers eindeutig identifiziert|
 
-Darüber hinaus sollten Sie eine Tabelle aller Ansprüche sehen, die in der Authentifizierungsanforderung enthalten sind. Weitere Informationen finden Sie in der [Liste der in einem ID-Token enthaltenen Ansprüche](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims).
+Darüber hinaus sollten Sie eine Tabelle aller Ansprüche sehen, die in der Authentifizierungsanforderung enthalten sind. Weitere Informationen finden Sie in der [Liste der in einem ID-Token enthaltenen Ansprüche](./id-tokens.md).
 
 ### <a name="test-access-to-a-method-that-has-an-authorize-attribute-optional"></a>Testen des Zugriffs auf eine Methode mit einem Authorize-Attribut (optional)
 
@@ -484,6 +484,6 @@ Informieren Sie sich ausführlicher über Web-Apps, die Web-APIs mit Microsoft I
 Lesen Sie, wie Sie Web-Apps erstellen, die Microsoft Graph aufrufen:
 
 > [!div class="nextstepaction"]
-> [Erstellen von ASP.NET-MVC-Apps mit Microsoft Graph](https://docs.microsoft.com/graph/tutorials/aspnet)
+> [Erstellen von ASP.NET-MVC-Apps mit Microsoft Graph](/graph/tutorials/aspnet)
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]

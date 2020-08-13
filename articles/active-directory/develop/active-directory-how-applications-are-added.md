@@ -13,12 +13,12 @@ ms.date: 11/26/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
-ms.openlocfilehash: 01ea22af472877abe34236ec82a7750eccfcdfb9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d89f0d08fec0b0f341094d422b1091de5a61055e
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80884272"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88115763"
 ---
 # <a name="how-and-why-applications-are-added-to-azure-ad"></a>Wie und warum werden Anwendungen zu Azure AD hinzugefügt?
 
@@ -74,7 +74,7 @@ Der Dienstprinzipal kann Folgendes enthalten:
   * Wenn Sie Office 365 abonnieren oder ein Testabonnement starten, werden im Verzeichnis ein oder mehrere Dienstprinzipale erstellt, die die verschiedenen Dienste darstellen, mit denen die Funktionen von Office 365 bereitgestellt werden.
   * Manche Office 365-Dienste wie beispielsweise SharePoint erstellen fortlaufend neue Dienstprinzipale, um eine sichere Kommunikation zwischen den Komponenten (einschließlich Workflows) zu ermöglichen.
 * Hinzufügen einer Anwendung aus dem App-Katalog durch einen Administrator (dadurch wird ebenfalls ein zugrunde liegendes Anwendungsobjekt erstellt)
-* Hinzufügen einer Anwendung zur Verwendung des [Azure AD-Anwendungsproxys](/azure/active-directory/manage-apps/application-proxy)
+* Hinzufügen einer Anwendung zur Verwendung des [Azure AD-Anwendungsproxys](../manage-apps/application-proxy.md)
 * Verbinden einer Anwendung für einmaliges Anmelden über SAML oder einmaliges Anmelden (SSO) per Kennwort
 * Programmgesteuert über die Microsoft Graph-API oder über PowerShell
 
@@ -104,8 +104,8 @@ Zu Anwendungen, die Sie selbst hinzufügen (dargestellt als **Ihre App** im Diag
   * Transformationsregeln für Ansprüche
   * Attributzuordnungen (Benutzerbereitstellung)
 * Ausführlichere Informationen zu Dienstprinzipalen und Anwendungsobjekten finden Sie in der Referenzdokumentation zur Microsoft Graph-API:
-  * [Anwendung](https://docs.microsoft.com/graph/api/resources/application?view=graph-rest-1.0)
-  * [Dienstprinzipal](https://docs.microsoft.com/graph/api/resources/serviceprincipal?view=graph-rest-beta)
+  * [Anwendung](/graph/api/resources/application?view=graph-rest-1.0)
+  * [Dienstprinzipal](/graph/api/resources/serviceprincipal?view=graph-rest-beta)
 
 ## <a name="why-do-applications-integrate-with-azure-ad"></a>Weshalb werden Anwendung in Azure AD integriert?
 

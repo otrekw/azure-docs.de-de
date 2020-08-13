@@ -13,12 +13,12 @@ ms.date: 10/03/2018
 ms.author: ryanwi
 ms.reviewer: jlu, annaba, hirsin
 ROBOTS: NOINDEX
-ms.openlocfilehash: bae052e06aae4881dd7203a5616b35e9c96997fb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 75c3b325b29e6738a61728d53b85464bb61655f8
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85551725"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88117786"
 ---
 # <a name="how-to-migrate-from-the-azure-access-control-service"></a>Gewusst wie: Migrieren aus dem Azure Access Control Service
 
@@ -59,7 +59,7 @@ Die gesamte Kommunikation mit dem STS und die Verwaltungsvorgänge erfolgen unte
 
 Die Ausnahme hiervon ist sämtlicher bei `https://accounts.accesscontrol.windows.net` eingehender Datenverkehr. Datenverkehr an diese URL wird bereits von einem anderen Dienst verarbeitet und **ist nicht** von der Deaktivierung von Access Control betroffen. 
 
-Weitere Informationen zu Access Control finden Sie unter [Access Control Service 2.0 (archiviert)](https://msdn.microsoft.com/library/hh147631.aspx).
+Weitere Informationen zu Access Control finden Sie unter [Access Control Service 2.0 (archiviert)](/previous-versions/azure/azure-services/hh147631(v=azure.100)).
 
 ## <a name="find-out-which-of-your-apps-will-be-impacted"></a>Ermitteln der betroffenen Apps
 
@@ -129,13 +129,13 @@ Alle Microsoft-Clouddienste, die von Access Control ausgestellte Token akzeptier
 
 | Dienst | Anleitungen |
 | ------- | -------- |
-| Azure-Servicebus | [Migrieren zu Shared Access Signatures](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-migrate-acs-sas) |
-| Azure Service Bus Relay | [Migrieren zu Shared Access Signatures](https://docs.microsoft.com/azure/service-bus-relay/relay-migrate-acs-sas) |
-| Azure Managed Cache | [Migrieren zu Azure Cache for Redis](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-faq#which-azure-cache-offering-is-right-for-me) |
-| Azure DataMarket | [DataMarket ist jetzt veraltet](https://docs.microsoft.com/azure/machine-learning/studio/datamarket-deprecation) |
-| BizTalk Services | [Migrieren zum Feature Logic Apps von Azure App Service](https://docs.microsoft.com/azure/machine-learning/studio/datamarket-deprecation) |
+| Azure-Servicebus | [Migrieren zu Shared Access Signatures](../../service-bus-messaging/service-bus-migrate-acs-sas.md) |
+| Azure Service Bus Relay | [Migrieren zu Shared Access Signatures](../../azure-relay/relay-migrate-acs-sas.md) |
+| Azure Managed Cache | [Migrieren zu Azure Cache for Redis](../../azure-cache-for-redis/cache-faq.md) |
+| Azure DataMarket | [DataMarket ist jetzt veraltet](https://azure.microsoft.com/services/cognitive-services/) |
+| BizTalk Services | [Migrieren zum Feature Logic Apps von Azure App Service](https://azure.microsoft.com/services/cognitive-services/) |
 | Azure Media Services | [Azure Media Services announces support for AAD and deprecation of ACS authentication](https://azure.microsoft.com/blog/azure-media-service-aad-auth-and-acs-deprecation/) (Azure Media Services verkündet Unterstützung für AAD sowie Einstellung der ACS-Authentifizierung) |
-| Azure Backup | [Upgrade des Azure Backup-Agents](https://docs.microsoft.com/azure/backup/backup-azure-file-folder-backup-faq) |
+| Azure Backup | [Upgrade des Azure Backup-Agents](../../backup/backup-azure-file-folder-backup-faq.md) |
 
 <!-- Dynamics CRM: Migrate to new SDK, Dynamics team handling privately -->
 <!-- Azure RemoteApp deprecated in favor of Citrix: https://www.zdnet.com/article/microsoft-to-drop-azure-remoteapp-in-favor-of-citrix-remoting-technologies/ -->
@@ -150,10 +150,10 @@ Kunden von SharePoint 2013, 2016 und SharePoint Online haben ACS lange zu Authen
 
 | Funktion | Anleitungen |
 | ------- | -------- |
-| Authentifizieren von Benutzern aus Azure AD | Bisher wurden SAML 1.1-Token, die SharePoint zur Authentifizierung benötigt, von Azure AD nicht unterstützt, und ACS wurde als Zwischenstufe verwendet, die SharePoint mit Azure AD-Tokenformaten kompatibel machte. Jetzt können Sie [SharePoint mithilfe der lokalen SharePoint-App aus dem Azure AD-App-Katalog direkt mit Azure AD verbinden](https://docs.microsoft.com/azure/active-directory/saas-apps/sharepoint-on-premises-tutorial). |
-| [Lokale App-Authentifizierung und Server-zu-Server-Authentifizierung in SharePoint](https://technet.microsoft.com/library/jj219571(v=office.16).aspx) | Von ACS-Deaktivierung nicht betroffen. Es sind keine Änderungen erforderlich. | 
-| [Autorisierung auf niedriger Vertrauensebene für SharePoint-Add-Ins (Anbieter gehostet und SharePoint gehostet)](https://docs.microsoft.com/sharepoint/dev/sp-add-ins/three-authorization-systems-for-sharepoint-add-ins) | Von ACS-Deaktivierung nicht betroffen. Es sind keine Änderungen erforderlich. |
-| [SharePoint-Cloudhybridsuche](https://blogs.msdn.microsoft.com/spses/2015/09/15/cloud-hybrid-search-service-application/) | Von ACS-Deaktivierung nicht betroffen. Es sind keine Änderungen erforderlich. |
+| Authentifizieren von Benutzern aus Azure AD | Bisher wurden SAML 1.1-Token, die SharePoint zur Authentifizierung benötigt, von Azure AD nicht unterstützt, und ACS wurde als Zwischenstufe verwendet, die SharePoint mit Azure AD-Tokenformaten kompatibel machte. Jetzt können Sie [SharePoint mithilfe der lokalen SharePoint-App aus dem Azure AD-App-Katalog direkt mit Azure AD verbinden](../saas-apps/sharepoint-on-premises-tutorial.md). |
+| [Lokale App-Authentifizierung und Server-zu-Server-Authentifizierung in SharePoint](/SharePoint/security-for-sharepoint-server/authentication-overview) | Von ACS-Deaktivierung nicht betroffen. Es sind keine Änderungen erforderlich. | 
+| [Autorisierung auf niedriger Vertrauensebene für SharePoint-Add-Ins (Anbieter gehostet und SharePoint gehostet)](/sharepoint/dev/sp-add-ins/three-authorization-systems-for-sharepoint-add-ins) | Von ACS-Deaktivierung nicht betroffen. Es sind keine Änderungen erforderlich. |
+| [SharePoint-Cloudhybridsuche](/archive/blogs/spses/cloud-hybrid-search-service-application) | Von ACS-Deaktivierung nicht betroffen. Es sind keine Änderungen erforderlich. |
 
 ### <a name="web-applications-that-use-passive-authentication"></a>Webanwendungen, die passive Authentifizierung verwenden
 
@@ -214,7 +214,7 @@ Im Allgemeinen ist *Azure Active Directory wahrscheinlich die richtige Wahl für
 
 Wenn Sie zu dem Urteil kommen, dass Azure AD den besten Migrationspfad für Ihre Anwendungen und Dienste darstellt, sollten Sie die zwei Möglichkeiten für die Integration Ihrer App in Azure AD beachten.
 
-Um WS-Verbund oder WIF für die Integration mit Azure AD zu verwenden, empfehlen wir die in [Konfigurieren des einmaligen Anmeldens im Verbund für eine nicht im Katalog enthaltene Anwendung](https://docs.microsoft.com/azure/active-directory/application-config-sso-how-to-configure-federated-sso-non-gallery) beschriebene Vorgehensweise. Der Artikel bezieht sich auf die Konfiguration von Azure AD für SAML-basiertes einmaliges Anmelden, betrifft aber ebenfalls das Konfigurieren des WS-Verbunds. Für diesen Ansatz ist eine Azure AD Premium-Lizenz erforderlich. Dieser Ansatz bietet zwei Vorteile:
+Um WS-Verbund oder WIF für die Integration mit Azure AD zu verwenden, empfehlen wir die in [Konfigurieren des einmaligen Anmeldens im Verbund für eine nicht im Katalog enthaltene Anwendung](../manage-apps/configure-federated-single-sign-on-non-gallery-applications.md) beschriebene Vorgehensweise. Der Artikel bezieht sich auf die Konfiguration von Azure AD für SAML-basiertes einmaliges Anmelden, betrifft aber ebenfalls das Konfigurieren des WS-Verbunds. Für diesen Ansatz ist eine Azure AD Premium-Lizenz erforderlich. Dieser Ansatz bietet zwei Vorteile:
 
 - Sie profitieren von der vollständigen Flexibilität der Azure AD-Tokenanpassung. Sie können die von Azure AD ausgestellten Ansprüche so anpassen, dass sie mit den von Access Control ausgestellten Ansprüchen übereinstimmen. Das betrifft insbesondere den Anspruch für Benutzer-ID oder Namensbezeichner. Um nach der Technologieumstellung weiterhin konsistente Benutzer-ID-Bezeichner für Ihre Benutzer zu empfangen, müssen Sie sicherstellen, dass die von Azure AD ausgestellten IDs mit den von Access Control ausgestellten IDs übereinstimmen.
 - Sie können ein für Ihre Anwendung spezifisches Tokensignaturzertifikat konfigurieren, dessen Gültigkeitsdauer Sie steuern können.
@@ -224,7 +224,7 @@ Um WS-Verbund oder WIF für die Integration mit Azure AD zu verwenden, empfehlen
 
 Eine andere Möglichkeit ist die Umsetzung [dieses Codebeispiels](https://github.com/Azure-Samples/active-directory-dotnet-webapp-wsfederation), aus dem sich etwas abweichende Anweisungen zum Einrichten des WS-Verbunds ergeben. Dieses Codebeispiel verwendet nicht WIF, sondern stattdessen ASP.NET 4.5-OWIN-Middleware. Die Anweisungen für die App-Registrierung gelten jedoch auch für Apps, die WIF nutzen, und es ist keine Azure AD Premium-Lizenz erforderlich. 
 
-Wenn Sie sich für diesen Ansatz entscheiden, müssen Sie mit dem [Rollover von Signaturschlüsseln in Azure AD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-signing-key-rollover) vertraut sein. Dieser Ansatz verwendet den globalen Azure AD-Signaturschlüssel zum Ausstellen von Token. Standardmäßig aktualisiert WIF Signaturschlüssel nicht automatisch. Wenn Azure AD durch die globalen Signaturschlüssel wechselt, muss Ihre WIF-Implementierung entsprechend vorbereitet sein und die Änderungen akzeptieren. Weitere Informationen finden Sie unter [Wichtige Informationen zum Rollover von Signaturschlüsseln in Azure Active Directory](https://msdn.microsoft.com/library/azure/dn641920.aspx).
+Wenn Sie sich für diesen Ansatz entscheiden, müssen Sie mit dem [Rollover von Signaturschlüsseln in Azure AD](../develop/active-directory-signing-key-rollover.md) vertraut sein. Dieser Ansatz verwendet den globalen Azure AD-Signaturschlüssel zum Ausstellen von Token. Standardmäßig aktualisiert WIF Signaturschlüssel nicht automatisch. Wenn Azure AD durch die globalen Signaturschlüssel wechselt, muss Ihre WIF-Implementierung entsprechend vorbereitet sein und die Änderungen akzeptieren. Weitere Informationen finden Sie unter [Wichtige Informationen zum Rollover von Signaturschlüsseln in Azure Active Directory](/previous-versions/azure/dn641920(v=azure.100)).
 
 Wenn die Integration in Azure AD über das OpenID Connect- oder das OAuth-Protokoll möglich ist, wird diese Vorgehensweise empfohlen. Unter [Azure Active Directory für Entwickler](https://aka.ms/aaddev) stehen ausführliche Dokumentationen und Anweisungen für die Integration von Azure AD in Ihre Webanwendung zur Verfügung.
 
@@ -265,8 +265,8 @@ Die folgende Tabelle vergleicht die für Webanwendungen relevanten Funktionen vo
 
 Wenn Sie zu dem Urteil gelangen, dass Azure AD B2C den besten Migrationspfad für Ihre Anwendungen und Dienste darstellt, lesen Sie zunächst die Informationen in den folgenden Ressourcen:
 
-- [Azure AD B2C-Dokumentation](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-overview)
-- [Azure Active Directory B2C: Benutzerdefinierte Richtlinien](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-overview-custom)
+- [Azure AD B2C-Dokumentation](../../active-directory-b2c/overview.md)
+- [Azure Active Directory B2C: Benutzerdefinierte Richtlinien](../../active-directory-b2c/custom-policy-overview.md)
 - [Azure Active Directory B2C – Preise](https://azure.microsoft.com/pricing/details/active-directory-b2c/)
 
 #### <a name="migrate-to-ping-identity-or-auth0"></a>Migrieren zu Ping Identity oder Auth0

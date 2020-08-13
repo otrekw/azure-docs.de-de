@@ -14,12 +14,12 @@ ms.author: ryanwi
 ms.reviewer: jesakowi
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: 08def16f53cb0f544513c39a85f26e97c3606a42
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c600e1fddc0089a508ff0cfebbbb3476f3a90008
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80154473"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88117616"
 ---
 # <a name="permissions-and-consent-in-the-azure-active-directory-v10-endpoint"></a>Berechtigungen und Zustimmung im Azure Active Directory-v1.0-Endpunkt
 
@@ -33,8 +33,8 @@ In Azure Active Directory (Azure AD) werden Berechtigungen sowohl für OAuth- al
 
 Azure AD definiert zwei Arten von Berechtigungen:
 
-* **Delegierte Berechtigungen:** Werden von Apps verwendet, für die ein angemeldeter Benutzer vorhanden ist. Für diese Apps stimmt entweder der Benutzer oder ein Administrator den von der App angeforderten Berechtigungen zu. An die App wird die Berechtigung delegiert, als angemeldeter Benutzer zu fungieren, wenn eine API aufgerufen wird. Je nach API kann der Benutzer unter Umständen der API nicht direkt zustimmen und [benötigt stattdessen einen Administrator, der seine Zustimmung erteilt](/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview).
-* **Anwendungsberechtigungen:** Werden von Apps verwendet, die ohne vorhandenen angemeldeten Benutzer ausgeführt werden. Dies können beispielsweise Apps ein, die als Hintergrunddienste oder Daemons ausgeführt werden. Anwendungsberechtigungen können ihre [Zustimmung nur durch Administratoren](/azure/active-directory/develop/active-directory-v2-scopes#requesting-consent-for-an-entire-tenant) erhalten, da sie normalerweise leistungsfähig sind und den Zugriff auf Daten über Benutzergrenzen hinweg oder auf Daten zulassen, die sonst nur für Administratoren zugänglich sind. Benutzer, die als Besitzer der Ressourcenanwendung (d. h. der API, die die Berechtigungen veröffentlicht) definiert sind, können auch den APIs, die sie besitzen, Anwendungsberechtigungen erteilen.
+* **Delegierte Berechtigungen:** Werden von Apps verwendet, für die ein angemeldeter Benutzer vorhanden ist. Für diese Apps stimmt entweder der Benutzer oder ein Administrator den von der App angeforderten Berechtigungen zu. An die App wird die Berechtigung delegiert, als angemeldeter Benutzer zu fungieren, wenn eine API aufgerufen wird. Je nach API kann der Benutzer unter Umständen der API nicht direkt zustimmen und [benötigt stattdessen einen Administrator, der seine Zustimmung erteilt](../develop/howto-convert-app-to-be-multi-tenant.md).
+* **Anwendungsberechtigungen:** Werden von Apps verwendet, die ohne vorhandenen angemeldeten Benutzer ausgeführt werden. Dies können beispielsweise Apps ein, die als Hintergrunddienste oder Daemons ausgeführt werden. Anwendungsberechtigungen können ihre [Zustimmung nur durch Administratoren](../develop/v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant) erhalten, da sie normalerweise leistungsfähig sind und den Zugriff auf Daten über Benutzergrenzen hinweg oder auf Daten zulassen, die sonst nur für Administratoren zugänglich sind. Benutzer, die als Besitzer der Ressourcenanwendung (d. h. der API, die die Berechtigungen veröffentlicht) definiert sind, können auch den APIs, die sie besitzen, Anwendungsberechtigungen erteilen.
 
 Effektive Berechtigungen sind die Berechtigungen, über die Ihre App verfügt, wenn Anforderungen an eine API gesendet werden. 
 
@@ -75,12 +75,12 @@ Für Anwendungen in Azure AD ist eine Zustimmung erforderlich, um Zugriff auf be
 * **Statische Benutzerzustimmung:** Erfolgt automatisch während des [OAuth 2.0-Autorisierungsdatenflusses](v1-protocols-oauth-code.md#request-an-authorization-code), wenn Sie die Ressource angeben, mit der Ihre App interagieren möchte. Beim Szenario mit statischer Benutzerzustimmung müssen für Ihre App alle erforderlichen Berechtigungen bereits im Azure-Portal in der Konfiguration der App angegeben werden. Wenn der Benutzer (bzw. Administrator) die Zustimmung für diese App nicht erteilt hat, wird der Benutzer von Azure AD aufgefordert, die Zustimmung jetzt zu erteilen. 
 
     Informieren Sie sich weiter über die Registrierung einer Azure AD-App, die den Zugriff auf eine statische Gruppe mit APIs anfordert.
-* **Dynamische Benutzerzustimmung:** Dies ist ein Feature der Version 2 (v2) des Azure AD-App-Modells. In diesem Szenario fordert Ihre App eine benötigte Gruppe von Berechtigungen im [OAuth 2.0-Autorisierungsdatenfluss für v2-Apps](/azure/active-directory/develop/active-directory-v2-scopes#requesting-individual-user-consent) an. Wenn der Benutzer nicht bereits zugestimmt hat, wird er aufgefordert, dies jetzt nachzuholen. [Informieren Sie sich weiter über die dynamische Zustimmung](/azure/active-directory/develop/active-directory-v2-compare#incremental-and-dynamic-consent).
+* **Dynamische Benutzerzustimmung:** Dies ist ein Feature der Version 2 (v2) des Azure AD-App-Modells. In diesem Szenario fordert Ihre App eine benötigte Gruppe von Berechtigungen im [OAuth 2.0-Autorisierungsdatenfluss für v2-Apps](../develop/v2-permissions-and-consent.md#requesting-individual-user-consent) an. Wenn der Benutzer nicht bereits zugestimmt hat, wird er aufgefordert, dies jetzt nachzuholen. [Informieren Sie sich weiter über die dynamische Zustimmung](./azure-ad-endpoint-comparison.md#incremental-and-dynamic-consent).
 
     > [!IMPORTANT]
     > Die dynamische Zustimmung kann komfortabel sein. Sie stellt aber eine große Herausforderung in Bezug auf Berechtigungen dar, für die die Zustimmung durch einen Administrator erforderlich ist, da diese Berechtigungen in der Umgebung für die Administratorzustimmung zum Zustimmungszeitpunkt nicht bekannt sind. Falls Sie Administratorberechtigungen benötigen oder Ihre App eine dynamische Zustimmung verwendet, müssen Sie alle Berechtigungen im Azure-Portal registrieren (nicht nur die Berechtigungen, für die eine Administratoreinwilligung erforderlich ist). Dadurch können Mandantenadministratoren im Namen aller ihrer Benutzer zustimmen.
   
-* **Zustimmung des Administrators:** Ist erforderlich, wenn Ihre App Zugriff auf bestimmte hochrangige Berechtigungen benötigt. Mit der Zustimmung des Administrators wird sichergestellt, dass Administratoren über einige zusätzliche Steuerelemente verfügen, bevor sie für Apps oder Benutzer den Zugriff auf Organisationsdaten mit hoher Berechtigungsebene autorisieren. [Erfahren Sie mehr dazu, wie Sie die Zustimmung des Administrators erteilen](/azure/active-directory/develop/active-directory-v2-scopes#using-the-admin-consent-endpoint).
+* **Zustimmung des Administrators:** Ist erforderlich, wenn Ihre App Zugriff auf bestimmte hochrangige Berechtigungen benötigt. Mit der Zustimmung des Administrators wird sichergestellt, dass Administratoren über einige zusätzliche Steuerelemente verfügen, bevor sie für Apps oder Benutzer den Zugriff auf Organisationsdaten mit hoher Berechtigungsebene autorisieren. [Erfahren Sie mehr dazu, wie Sie die Zustimmung des Administrators erteilen](../develop/v2-permissions-and-consent.md#using-the-admin-consent-endpoint).
 
 ## <a name="best-practices"></a>Bewährte Methoden
 

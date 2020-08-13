@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 04/21/2020
+ms.date: 07/16/2020
 ms.author: aahi
-ms.openlocfilehash: c9c598d385768e604d9b42e3ea055629e6ae2866
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 7d008dc0f7ed90397ac07e12320d861b107f0f46
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86108548"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88120931"
 ---
 # <a name="model-versioning-in-the-text-analytics-api"></a>Versionsverwaltung der Modelle in der Textanalyse-API
 
@@ -26,27 +26,29 @@ Mit Version 3 der Textanalyse-API können Sie die für Ihre Daten verwendete Mo
 Ermitteln Sie anhand der Tabelle unten, welche Modellversionen von den einzelnen Endpunkten unterstützt werden.
 
 
-| Endpunkt                        | Unterstützte Versionen                       | Aktuelle Version |
-|---------------------------------|------------------------------------------|----------------|
-| `/sentiment`                    | `2019-10-01`, `2020-04-01`               | `2020-04-01`   |
-| `/languages`                    | `2019-10-01`                             | `2019-10-01`   |
-| `/entities/linking`             | `2019-10-01`, `2020-02-01`               | `2020-02-01`   |
-| `/entities/recognition/general` | `2019-10-01`, `2020-02-01`, `2020-04-01` | `2020-04-01`   |
-| `/entities/recognition/pii`     | `2019-10-01`, `2020-02-01`, `2020-04-01` | `2020-04-01`   |
-| `/keyphrases`                   | `2019-10-01`                             | `2019-10-01`   |
+| Endpunkt                        | Unterstützte Versionen                                     | Aktuelle Version |
+|---------------------------------|--------------------------------------------------------|----------------|
+| `/sentiment`                    | `2019-10-01`, `2020-04-01`                             | `2020-04-01`   |
+| `/languages`                    | `2019-10-01`, `2020-07-01`                             | `2020-07-01`   |
+| `/entities/linking`             | `2019-10-01`, `2020-02-01`                             | `2020-02-01`   |
+| `/entities/recognition/general` | `2019-10-01`, `2020-02-01`, `2020-04-01`,              | `2020-04-01`   |
+| `/entities/recognition/pii`     | `2019-10-01`, `2020-02-01`, `2020-04-01`,`2020-07-01`  | `2020-07-01`   |
+| `/keyphrases`                   | `2019-10-01`, `2020-07-01`                             | `2020-07-01`   |
 
 
 Sie finden Details zu den Updates für diese Modelle im Artikel zu den [Neuigkeiten ](../whats-new.md).
 
-## <a name="text-analytics-for-health"></a>Text Analytics for Health
+## <a name="text-analytics-for-health"></a>Textanalyse für Gesundheit
 
 Der Container [Text Analytics for Health](../how-tos/text-analytics-for-health.md) verwaltet gegenüber den oben aufgeführten API-Endpunkten die Modellversionen separat.  Bitte beachten Sie, dass pro Containerimage nur jeweils eine Modellversion verfügbar ist.
 
 | Endpunkt                        | Tag für Containerimage                     | Modellversion |
 |---------------------------------|-----------------------------------------|---------------|
-| `/domains/health`               | `1.1.012640001-amd64-preview` oder aktuellste | `2020-05-08`  |
+| `/domains/health`               | `1.1.013150001-amd64-preview` oder aktuellste | `2020-07-24`  |
+| `/domains/health`               | `1.1.012640001-amd64-preview`           | `2020-05-08`  |
 | `/domains/health`               | `1.1.012420001-amd64-preview`           | `2020-05-08`  |
 | `/domains/health`               | `1.1.012070001-amd64-preview`           | `2020-04-16`  |
+| `/domains/health`               | `1.1.012070001-amd64-preview`           | `2020-07-24`  |
 
 
 

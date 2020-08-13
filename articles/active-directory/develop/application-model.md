@@ -13,12 +13,12 @@ ms.date: 04/28/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: 774822eae5ab327f57da3eca4499ca14d3e0c7a1
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 5aca96a9c3bc4e8f1061f677e316565b10014ac9
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82584166"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88117480"
 ---
 # <a name="application-model"></a>Anwendungsmodell
 
@@ -86,4 +86,4 @@ Weitere Informationen zum Anwendungsmodell:
 
 * Unter [Wie und warum werden Anwendungen zu Azure AD hinzugefügt?](active-directory-how-applications-are-added.md) erhalten Sie weitere Informationen zu Anwendungsobjekten und Dienstprinzipalen in Microsoft Identity Platform.
 * Unter [Mandanten in Azure Active Directory](single-and-multi-tenant-apps.md) erhalten Sie weitere Informationen zu Einzelmandanten-Apps und mehrinstanzenfähigen Apps.
-* In der [Azure Active Directory B2C-Dokumentation](https://docs.microsoft.com/azure/active-directory-b2c) erfahren Sie, wie Azure AD auch Azure Active Directory B2C bereitstellt, damit Organisationen für die Anmeldung von Benutzern (meist Kunden) Identitäten sozialer Netzwerke, z. B. ein Google-Konto, verwenden können.
+* In der [Azure Active Directory B2C-Dokumentation](../../active-directory-b2c/index.yml) erfahren Sie, wie Azure AD auch Azure Active Directory B2C bereitstellt, damit Organisationen für die Anmeldung von Benutzern (meist Kunden) Identitäten sozialer Netzwerke, z. B. ein Google-Konto, verwenden können.
