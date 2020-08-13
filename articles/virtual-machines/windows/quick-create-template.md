@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.date: 06/04/2020
 ms.author: cynthn
 ms.custom: subject-armqs
-ms.openlocfilehash: d74994609799c155453f0c7cac887f2e033ea90b
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 11e5d4e31f388dcffe7f1292afa223562d44b20a
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087281"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87832296"
 ---
 # <a name="quickstart-create-a-windows-virtual-machine-using-an-arm-template"></a>Schnellstart: Erstellen eines virtuellen Windows-Computers mithilfe einer ARM-Vorlage
 
@@ -63,7 +63,7 @@ In der Vorlage sind mehrere Ressourcen definiert:
     - **Administratorkennwort**: Geben Sie ein Kennwort für das Administratorkonto an. Das Kennwort muss mindestens zwölf Zeichen lang sein und die [definierten Anforderungen an die Komplexität](faq.md#what-are-the-password-requirements-when-creating-a-vm) erfüllen.
     - **Präfix der DNS-Bezeichnung**: Geben Sie einen eindeutigen Bezeichner ein, der als Teil der DNS-Bezeichnung verwendet wird.
     - **Windows-Betriebssystemversion**: Wählen Sie aus, welche Version von Windows auf der VM ausgeführt werden soll.
-    - **VM-Größe**: Wählen Sie die [Größe](sizes.md) aus, die für die VM verwendet werden soll.
+    - **VM-Größe**: Wählen Sie die [Größe](../sizes.md) aus, die für die VM verwendet werden soll.
     - **Standort**: Hierfür wird standardmäßig derselbe Standort wie für die Ressourcengruppe verwendet, falls diese bereits vorhanden ist.
 1. Klicken Sie auf **Überprüfen + erstellen**. Wählen Sie nach Abschluss der Überprüfung die Option **Erstellen** aus, um die VM zu erstellen und bereitzustellen.
 

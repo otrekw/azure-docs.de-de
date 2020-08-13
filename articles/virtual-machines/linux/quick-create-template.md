@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.date: 06/04/2020
 ms.author: cynthn
 ms.custom: subject-armqs
-ms.openlocfilehash: 479e580ee8821f0a6de054c631714c5386927e4f
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 0849aeb6180a17238f0885896a863936cfdf715d
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86083915"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87827655"
 ---
 # <a name="quickstart-create-an-ubuntu-linux-virtual-machine-using-an-arm-template"></a>Schnellstart: Erstellen eines virtuellen Ubuntu Linux-Computers mithilfe einer ARM-Vorlage
 
@@ -65,7 +65,7 @@ In der Vorlage sind mehrere Ressourcen definiert:
     - **Präfix der DNS-Bezeichnung**: Geben Sie einen eindeutigen Bezeichner ein, der als Teil der DNS-Bezeichnung verwendet wird.
     - **Ubuntu-Betriebssystemversion**: Wählen Sie aus, welche Version von Ubuntu auf der VM ausgeführt werden soll.
     - **Standort**: Hierfür wird standardmäßig derselbe Standort wie für die Ressourcengruppe verwendet, falls diese bereits vorhanden ist.
-    - **VM-Größe**: Wählen Sie die [Größe](sizes.md) aus, die für die VM verwendet werden soll.
+    - **VM-Größe**: Wählen Sie die [Größe](../sizes.md) aus, die für die VM verwendet werden soll.
     - **Name des virtuellen Netzwerks**: Der Name, der für das VNET verwendet werden soll.
     - **Subnetzname**: Der Name des Subnetzes, das von der VM verwendet werden sollte.
     - **Name der Netzwerksicherheitsgruppe**: Der Name für die Netzwerksicherheitsgruppe.

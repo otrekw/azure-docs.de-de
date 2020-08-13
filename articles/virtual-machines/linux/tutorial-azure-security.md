@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 06/11/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 6711075ba3a58e526733c3a18cab03084edc067e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 24117e914afa0e443ce979ae71eb506156fa11b3
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87080096"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87830409"
 ---
 # <a name="tutorial-use-azure-security-center-to-monitor-linux-virtual-machines"></a>Tutorial: Verwenden von Azure Security Center zum Überwachen virtueller Linux-Computer
 
@@ -133,4 +133,4 @@ In diesem Tutorial richten Sie Azure Security Center ein und überprüfen dann V
 Wechseln Sie zum nächsten Tutorial, um mehr über das Erstellen einer CI/CD-Pipeline mit Jenkins, GitHub und Docker zu erfahren.
 
 > [!div class="nextstepaction"]
-> [Erstellen einer CI/CD-Infrastruktur mit Jenkins, GitHub und Docker](../../jenkins/tutorial-jenkins-github-docker-cicd.md)
+> [Erstellen einer CI/CD-Infrastruktur mit Jenkins, GitHub und Docker](/azure/developer/jenkins/pipeline-with-github-and-docker)

@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 09/12/2019
 ms.author: cynthn
 ms.custom: mvc, devx-track-javascript
-ms.openlocfilehash: 2a07480bf5b3defb4176437d99274e9ecfb4ba13
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: f1d439569f15d7680d54b35e7ec1c52ca7843af7
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87433029"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87828964"
 ---
 # <a name="tutorial---how-to-use-cloud-init-to-customize-a-linux-virtual-machine-in-azure-on-first-boot"></a>Tutorial: Verwenden von cloud-init zum Anpassen eines virtuellen Linux-Computers in Azure beim ersten Start
 
@@ -57,7 +57,7 @@ Um cloud-init in Aktion zu sehen, erstellen Sie einen virtuellen Computer, der N
 
 Erstellen Sie an der Bash-Eingabeaufforderung oder in der Cloud Shell eine Datei namens *cloud-init.txt*, und fügen Sie die folgende Konfiguration ein. Geben Sie beispielsweise `sensible-editor cloud-init.txt` ein, um die Datei zu erstellen und eine Liste mit verfügbaren Editoren anzuzeigen. Stellen Sie sicher, dass die gesamte Datei „cloud-init“ ordnungsgemäß kopiert wird, insbesondere die erste Zeile:
 
-```bash
+```yaml
 #cloud-config
 package_upgrade: true
 packages:

@@ -10,12 +10,12 @@ ms.workload: infrastructure
 ms.date: 11/29/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 9f7f3e0dfd7da98cade0183825463c6b17f49dc1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 69d346d554ee6f30e4ef578bacf358aaba722b5b
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077454"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87825173"
 ---
 # <a name="tutorial---manage-azure-disks-with-azure-powershell"></a>Tutorial: Verwalten von Azure-Datenträgern mit Azure PowerShell
 
@@ -40,7 +40,7 @@ Beim Erstellen eines virtuellen Azure-Computers werden zwei Datenträger automat
 
 **Betriebssystem-Datenträger**: Betriebssystem-Datenträger können mit einer Größe von bis zu 4 TB konfiguriert werden und hosten das Betriebssystem des virtuellen Computers. Wenn Sie einen neuen virtuellen Computer auf der Grundlage eines [Azure Marketplace](https://azure.microsoft.com/marketplace/)-Images erstellen, hat der Betriebssystemdatenträger in der Regel eine Größe von 127 GB. (Bei manchen Images ist der Betriebssystemdatenträger allerdings kleiner.) Dem Betriebssystem-Datenträger wird standardmäßig der Laufwerkbuchstabe *C:* zugewiesen. Die Konfiguration der Datenträgerzwischenspeicherung des Betriebssystem-Datenträgers ist für die Leistung des Betriebssystems optimiert. Der Betriebssystem-Datenträger **sollte keine** Anwendungen oder Daten hosten. Verwenden Sie für Anwendungen und Daten einen Datenträger. Dies wird weiter unten in diesem Artikel ausführlich erläutert.
 
-**Temporärer Datenträger**: Temporäre Datenträger verwenden ein Solid State Drive, das sich auf dem gleichen Azure-Host wie der virtuelle Computer befindet. Temporäre Datenträger sind äußerst leistungsfähig und können für Vorgänge wie die temporäre Datenverarbeitung verwendet werden. Wenn der virtuelle Computer jedoch auf einen neuen Host verschoben wird, werden alle auf einem temporären Datenträger gespeicherten Daten entfernt. Die Größe des temporären Datenträgers richtet sich nach der [Größe des virtuellen Computers](sizes.md). Temporären Datenträgern wird standardmäßig der Laufwerkbuchstabe *D:* zugewiesen.
+**Temporärer Datenträger**: Temporäre Datenträger verwenden ein Solid State Drive, das sich auf dem gleichen Azure-Host wie der virtuelle Computer befindet. Temporäre Datenträger sind äußerst leistungsfähig und können für Vorgänge wie die temporäre Datenverarbeitung verwendet werden. Wenn der virtuelle Computer jedoch auf einen neuen Host verschoben wird, werden alle auf einem temporären Datenträger gespeicherten Daten entfernt. Die Größe des temporären Datenträgers richtet sich nach der [Größe des virtuellen Computers](../sizes.md). Temporären Datenträgern wird standardmäßig der Laufwerkbuchstabe *D:* zugewiesen.
 
 ## <a name="azure-data-disks"></a>Azure-Datenträger
 
@@ -57,7 +57,7 @@ In Azure stehen zwei Arten von Datenträgern zur Verfügung.
 ### <a name="premium-disk-performance"></a>Leistung von Premium-Datenträgern
 [!INCLUDE [disk-storage-premium-ssd-sizes](../../../includes/disk-storage-premium-ssd-sizes.md)]
 
-In dieser Tabelle ist zwar die maximale IOPS-Anzahl pro Datenträger angegeben, eine höhere Leistung kann aber durch Striping mehrerer Datenträger erreicht werden. An einen virtuellen Standard_GS5-Computer können beispielsweise 64 Datenträger angefügt werden. Wenn jeder dieser Datenträger die Größe P30 hat, kann eine maximale Größe von 80.000 IOPS erreicht werden. Ausführliche Informationen zur maximalen IOPS-Anzahl pro VM finden Sie unter [Größen für virtuelle Windows-Computer in Azure](./sizes.md).
+In dieser Tabelle ist zwar die maximale IOPS-Anzahl pro Datenträger angegeben, eine höhere Leistung kann aber durch Striping mehrerer Datenträger erreicht werden. An einen virtuellen Standard_GS5-Computer können beispielsweise 64 Datenträger angefügt werden. Wenn jeder dieser Datenträger die Größe P30 hat, kann eine maximale Größe von 80.000 IOPS erreicht werden. Ausführliche Informationen zur maximalen IOPS-Anzahl pro VM finden Sie unter [Größen für virtuelle Windows-Computer in Azure](../sizes.md).
 
 ## <a name="create-and-attach-disks"></a>Erstellen und Anfügen von Datenträgern
 
