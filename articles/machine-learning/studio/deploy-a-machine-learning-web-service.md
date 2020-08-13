@@ -1,6 +1,5 @@
 ---
-title: Bereitstellen eines Webdiensts
-titleSuffix: ML Studio (classic) - Azure
+title: 'ML Studio (Classic): Bereitstellen eines Webdiensts – Azure'
 description: So konvertieren Sie ein Trainingsexperiment in ein Vorhersageexperiment, bereiten es auf die Bereitstellung vor und stellen es dann als (klassischen) Azure Machine Learning Studio-Webdienst bereit.
 services: machine-learning
 ms.service: machine-learning
@@ -10,14 +9,17 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 01/06/2017
-ms.openlocfilehash: 3fcf4e180233c6ceaa552b3505462639569ed974
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8195d310de708e48b27b5a2d81023d02792be1d3
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84696387"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87429474"
 ---
 # <a name="deploy-an-azure-machine-learning-studio-classic-web-service"></a>Bereitstellen eines (klassischen) Azure Machine Learning Studio-Webdiensts
+
+**GILT FÜR:** ![Ja](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (Classic) ![Nein](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)
+
 
 Azure Machine Learning Studio (klassisch) ermöglicht Ihnen, Vorhersageanalyselösungen zu erstellen und zu testen. Dann können Sie die Lösung als Webdienst bereitstellen.
 
@@ -32,9 +34,9 @@ Die Eingabe für BES gleicht der für RRS verwendeten Dateneingabe. BES liest im
 
 Allgemein betrachtet stellen Sie Ihr Modell in drei Schritten bereit:
 
-* **[Erstellen eines Trainingsexperiments]** : In Studio (klassisch) können Sie ein Vorhersageanalysemodell mit Trainingsdaten, die Sie angeben, unter Verwendung eines großen Satzes von integrierten Machine Learning-Algorithmen trainieren und testen.
-* **[Konvertierten in ein Vorhersageexperiment]** : Sobald Ihr Modell mit vorhandenen Daten trainiert wurde, können Sie es verwenden, um neue Daten zu bewerten. Sie bereiten das Experiment auf Vorhersagen vor und optimieren es.
-* **Bereitstellung** als **[Neuer Webdienst]** oder **[Klassischer Webdienst]** : Wenn Sie Ihr Vorhersageexperiment als Azure-Webdienst bereitstellen, können Benutzer Daten an Ihr Modell senden und dessen Vorhersagen empfangen.
+* **[Erstellen eines Trainingsexperiments]**: In Studio (klassisch) können Sie ein Vorhersageanalysemodell mit Trainingsdaten, die Sie angeben, unter Verwendung eines großen Satzes von integrierten Machine Learning-Algorithmen trainieren und testen.
+* **[Konvertieren in ein Vorhersageexperiment]**: Sobald Ihr Modell mit vorhandenen Daten trainiert wurde, können Sie es verwenden, um neue Daten zu bewerten. Sie bereiten das Experiment auf Vorhersagen vor und optimieren es.
+* **Bereitstellung** als **[Neuer Webdienst]** oder **[Klassischer Webdienst]**: Wenn Sie Ihr Vorhersageexperiment als Azure-Webdienst bereitstellen, können Benutzer Daten an Ihr Modell senden und dessen Vorhersagen empfangen.
 
 ## <a name="create-a-training-experiment"></a>Erstellen eines Trainingsexperiments
 
@@ -136,7 +138,7 @@ Die folgenden Schritte zeigen, wie Sie ein Vorhersageexperiment als neuen Webdie
 
 Nachdem das Vorhersageexperiment vorbereitet wurde, können Sie es als neuen Azure-Webdienst (auf Resource Manager-Basis) bereitstellen. Mithilfe des Webdiensts können Benutzer Daten an das Modell senden, und das Modell gibt seine Vorhersagen zurück.
 
-Um das Vorhersageexperiment bereitzustellen, klicken Sie unten im Experimentbereich auf **Run** . Sobald das Experiment ausgeführt wurde, klicken Sie auf **Deploy Web Service**, und wählen Sie **Deploy Web Service [Neu]** aus.  Die Bereitstellungsseite des Webdienstportals von Machine Learning Studio (klassisch) wird geöffnet.
+Um das Vorhersageexperiment bereitzustellen, klicken Sie unten im Experimentbereich auf **Run** . Sobald das Experiment ausgeführt wurde, klicken Sie auf **Deploy Web Service**, und wählen Sie **Deploy Web Service [neuen]** aus.  Die Bereitstellungsseite des Webdienstportals von Machine Learning Studio (klassisch) wird geöffnet.
 
 > [!NOTE] 
 > Zum Bereitstellen eines neuen Webdiensts müssen Sie über ausreichende Berechtigungen in dem Abonnement verfügen, an das Sie den Webdienst bereitstellen. Weitere Informationen finden Sie unter [Verwalten eines Webdiensts im Azure Machine Learning Web Services-Portal](manage-new-webservice.md). 
@@ -295,7 +297,7 @@ Eine Option zum Aktualisieren des Webdiensts ist das programmgesteuerte erneute 
 [Konvertierten in ein Vorhersageexperiment]: #convert-the-training-experiment-to-a-predictive-experiment
 [Neuer Webdienst]: #deploy-it-as-a-new-web-service
 [Klassischer Webdienst]: #deploy-it-as-a-classic-web-service
-[Neu]: #deploy-it-as-a-new-web-service
+[neuen]: #deploy-it-as-a-new-web-service
 [classic]: #deploy-the-predictive-experiment-as-a-classic-web-service
 [Access]: #access-the-Web-service
 [Manage]: #manage-the-Web-service-in-the-azure-management-portal
