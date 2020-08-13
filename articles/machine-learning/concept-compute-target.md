@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
-ms.date: 06/26/2020
-ms.openlocfilehash: 95177282ad5b07a600f11f72789e0fc08f4b52c0
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.date: 07/27/2020
+ms.openlocfilehash: 27c129af9fbf3e76c6c57fbf084596876b51955b
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86199809"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88141924"
 ---
 #  <a name="what-are-compute-targets-in-azure-machine-learning"></a>Was sind Computeziele in Azure Machine Learning? 
 
@@ -53,7 +53,7 @@ Sie können Azure Machine Learning-Compute-Instanzen oder -Computecluster erstel
 * Azure-Portal
 * Python SDK-Klassen [ComputeInstance](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.computeinstance(class)?view=azure-ml-py) und [AmlCompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute(class)?view=azure-ml-py)
 * [R SDK](https://azure.github.io/azureml-sdk-for-r/reference/index.html#section-compute-targets) (Vorschau)
-* Resource Manager-Vorlage
+* Resource Manager-Vorlage Eine Beispielvorlage finden Sie unter [Erstellen einer Azure Machine Learning Compute-Vorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/101-machine-learning-compute-create-amlcompute).
 * Machine-Learning-[Erweiterung für die Azure CLI](reference-azure-machine-learning-cli.md#resource-management)  
 
 Nach der Erstellung sind diese Computeressourcen im Gegensatz zu anderen Arten von Computezielen automatisch Teil Ihres Arbeitsbereichs.
@@ -85,7 +85,9 @@ In der folgenden Tabelle finden Sie weitere Informationen zu unterstützten Seri
 | D | Keine |
 | Dv2 | Keine |  
 | DSv2 | Keine |  
-| FSv2 | Keine |  
+| FSv2 | Keine | 
+| HBv2 | Genehmigung erforderlich |  
+| HCS | Genehmigung erforderlich |  
 | M | Genehmigung erforderlich |
 | NC | Keine |    
 | NCsv2 | Genehmigung erforderlich |
