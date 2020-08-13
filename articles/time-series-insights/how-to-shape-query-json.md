@@ -7,14 +7,14 @@ ms.author: dpalled
 manager: diviso
 ms.service: time-series-insights
 ms.topic: article
-ms.date: 06/30/2020
+ms.date: 08/12/2020
 ms.custom: seodec18
-ms.openlocfilehash: cc24c1f49a48e81509961d5d7d01dba60dc50475
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1a7a88e0db38f399dc47c030f3b97f6b26f4da07
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077658"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88168234"
 ---
 # <a name="shape-json-to-maximize-query-performance-in-your-gen1-environment"></a>Strukturieren von JSON zum Maximieren der Abfrageleistung in Ihrer Gen1-Umgebung
 
@@ -24,7 +24,7 @@ Dieser Artikel bietet Hilfestellung bei der JSON-Strukturierung, um die Effizien
 
 ### <a name="learn-best-practices-for-shaping-json-to-meet-your-storage-needsbr"></a>Bewährte Methoden für die Anpassung von JSON an Ihre Speicheranforderungen</br>
 
-> [!VIDEO https://www.youtube.com/embed/b2BD5hwbg5I]
+> [!VIDEO <https://www.youtube.com/embed/b2BD5hwbg5I>]
 
 ## <a name="best-practices"></a>Bewährte Methoden
 
@@ -60,7 +60,6 @@ Im folgenden Beispiel wird eine einzelne Azure IoT Hub-Nachricht verwendet, bei 
 
 Beachten Sie die folgende JSON-Nutzlast, die mithilfe eines [IoT-Gerätemeldungsobjekts](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.message?view=azure-dotnet), das beim Senden an die Azure-Cloud in JSON serialisiert wird, an Ihre allgemein verfügbare Azure Time Series Insights-Umgebung gesendet wird:
 
-
 ```JSON
 [
     {
@@ -90,14 +89,14 @@ Beachten Sie die folgende JSON-Nutzlast, die mithilfe eines [IoT-Gerätemeldungs
 ]
 ```
 
-* Verweisdatentabelle mit Schlüsseleigenschaft **deviceID**:
+- Verweisdatentabelle mit Schlüsseleigenschaft **deviceID**:
 
    | deviceId | messageId | deviceLocation |
    | --- | --- | --- |
    | FXXX | LINE\_DATA | EU |
    | FYYY | LINE\_DATA | US |
 
-* Azure Time Series Insights-Ereignistabelle, flache Ansicht:
+- Azure Time Series Insights-Ereignistabelle, flache Ansicht:
 
    | deviceId | messageId | deviceLocation | timestamp | series.Flow Rate ft3/s | series.Engine Oil Pressure psi |
    | --- | --- | --- | --- | --- | --- |
@@ -106,6 +105,7 @@ Beachten Sie die folgende JSON-Nutzlast, die mithilfe eines [IoT-Gerätemeldungs
    | FYYY | LINE\_DATA | US | 2018-01-17T01:18:00Z | 0.58015072345733643 | 22.2 |
 
 > [!NOTE]
+
 > - Die Spalte **deviceId** dient als Spaltenüberschrift für die verschiedenen Geräte in einem Bestand. Die Verwendung von **deviceID** als eigener Eigenschaftenname beschränkt die Gesamtzahl der Geräte mit den fünf weiteren Spalten auf 595 (S1-Umgebungen) oder 795 (S2-Umgebungen).
 > - Unnötige Eigenschaften werden vermieden (z. B. Fabrikat- und Modellinformationen). Da die Eigenschaften künftig nicht abgefragt werden, wird durch ihr Entfernen die Netzwerk- und Speichereffizienz verbessert.
 > - Verweisdaten werden verwendet, um die Anzahl von Bytes zu verringern, die über das Netzwerk übertragen werden. Die beiden Attribute (**messageId** und **deviceLocation**) werden mithilfe der Schlüsseleigenschaft **deviceId** verknüpft. Diese Daten werden zum Zeitpunkt ihres Eingangs mit den Telemetriedaten verknüpft und anschließend zur Abfrage in Azure Time Series Insights gespeichert.
@@ -160,7 +160,7 @@ Beispiel-JSON-Nutzlast:
 ]
 ```
 
-* Verweisdatentabelle mit den Schlüsseleigenschaften **deviceId** und **series.tagId**:
+- Verweisdatentabelle mit den Schlüsseleigenschaften **deviceId** und **series.tagId**:
 
    | deviceId | series.tagId | messageId | deviceLocation | type | unit |
    | --- | --- | --- | --- | --- | --- |
@@ -169,18 +169,19 @@ Beispiel-JSON-Nutzlast:
    | FYYY | pumpRate | LINE\_DATA | US | Flow Rate | ft3/s |
    | FYYY | oilPressure | LINE\_DATA | US | Engine Oil Pressure | psi |
 
-* Azure Time Series Insights-Ereignistabelle, flache Ansicht:
+- Azure Time Series Insights-Ereignistabelle, flache Ansicht:
 
    | deviceId | series.tagId | messageId | deviceLocation | type | unit | timestamp | series.value |
    | --- | --- | --- | --- | --- | --- | --- | --- |
-   | FXXX | pumpRate | LINE\_DATA | EU | Flow Rate | ft3/s | 2018-01-17T01:17:00Z | 1.0172575712203979 | 
+   | FXXX | pumpRate | LINE\_DATA | EU | Flow Rate | ft3/s | 2018-01-17T01:17:00Z | 1.0172575712203979 |
    | FXXX | oilPressure | LINE\_DATA | EU | Engine Oil Pressure | psi | 2018-01-17T01:17:00Z | 34.7 |
-   | FXXX | pumpRate | LINE\_DATA | EU | Flow Rate | ft3/s | 2018-01-17T01:17:00Z | 2.445906400680542 | 
+   | FXXX | pumpRate | LINE\_DATA | EU | Flow Rate | ft3/s | 2018-01-17T01:17:00Z | 2.445906400680542 |
    | FXXX | oilPressure | LINE\_DATA | EU | Engine Oil Pressure | psi | 2018-01-17T01:17:00Z | 49.2 |
    | FYYY | pumpRate | LINE\_DATA | US | Flow Rate | ft3/s | 2018-01-17T01:18:00Z | 0.58015072345733643 |
    | FYYY | oilPressure | LINE\_DATA | US | Engine Oil Pressure | psi | 2018-01-17T01:18:00Z | 22.2 |
 
 > [!NOTE]
+
 > - Die Spalten **deviceId** und **series.tagId** dienen als Spaltenüberschriften für die verschiedenen Geräte und Tags in einem Bestand. Eine Verwendung als eigenes Attribut beschränkt die Abfrage mit den weiteren sechs Spalten auf insgesamt 594 (für S1-Umgebungen) oder 794 (für S2-Umgebungen).
 > - Unnötige Eigenschaften werden (aus dem gleichen Grund wie im ersten Beispiel) vermieden.
 > - Verweisdaten werden verwendet, um die Anzahl von Bytes zu verringern, die über das Netzwerk übertragen werden. Dies wird durch die Einführung von **deviceId** für ein eindeutiges Paar aus **messageId** und **deviceLocation** erreicht. Der zusammengesetzte Schlüssel **series.tagId** wird für das eindeutige Paar aus **type** und **unit** verwendet. Der zusammengesetzte Schlüssel ermöglicht die Verwendung des Paars aus **deviceId** und **series.tagId**, um auf vier Werte zu verweisen: **messageId, deviceLocation, type** und **unit**. Diese Daten werden zur Eingangszeit mit den Telemetriedaten verknüpft. Sie werden dann für Abfragen in Azure Time Series Insights gespeichert.
@@ -190,13 +191,13 @@ Beispiel-JSON-Nutzlast:
 
 Für eine Eigenschaft mit einer großen Anzahl möglicher Werte werden diese am besten als eindeutige Werte innerhalb einer einzelnen Spalte gesendet, anstatt eine neue Spalte für jeden Wert zu erstellen. Aus den zwei vorangehenden Beispielen:
 
-  - Im ersten Beispiel weisen einige wenige Eigenschaften verschiedene Werte auf, deshalb ist es angemessen, jeweils eine separate Eigenschaft zu verwenden.
-  - Im zweiten Beispiel werden die Messwerte nicht als einzelne Eigenschaften angegeben. Stattdessen bilden sie ein Array von Werten oder Messwerten unter einer gemeinsamen Reiheneigenschaft. Der neue Schlüssel (**tagId**) wird gesendet, mit dem die neue Spalte (**series.tagId**) in der flachen Tabelle erstellt wird. Die neuen Eigenschaften **type** und **unit** werden mithilfe von Verweisdaten erstellt, sodass das Eigenschaftenlimit nicht erreicht wird.
+- Im ersten Beispiel weisen einige wenige Eigenschaften verschiedene Werte auf, deshalb ist es angemessen, jeweils eine separate Eigenschaft zu verwenden.
+- Im zweiten Beispiel werden die Messwerte nicht als einzelne Eigenschaften angegeben. Stattdessen bilden sie ein Array von Werten oder Messwerten unter einer gemeinsamen Reiheneigenschaft. Der neue Schlüssel (**tagId**) wird gesendet, mit dem die neue Spalte (**series.tagId**) in der flachen Tabelle erstellt wird. Die neuen Eigenschaften **type** und **unit** werden mithilfe von Verweisdaten erstellt, sodass das Eigenschaftenlimit nicht erreicht wird.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Weitere Informationen zum Senden von [IoT Hub-Gerätemeldungen an die Cloud](../iot-hub/iot-hub-devguide-messages-construct.md).
 
-- Lesen Sie den Artikel [Azure Time Series Insights-Abfragesyntax](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-syntax), um mehr über die Abfragesyntax der REST-API für den Azure Time Series Insights-Datenzugriff zu erfahren.
+- Lesen Sie den Artikel [Azure Time Series Insights-Abfragesyntax](https://docs.microsoft.com/rest/api/time-series-insights/gen1-query-syntax), um mehr über die Abfragesyntax der REST-API für den Azure Time Series Insights-Datenzugriff zu erfahren.
 
 - Erfahren Sie mehr über das [Strukturieren von Ereignissen](./time-series-insights-send-events.md).

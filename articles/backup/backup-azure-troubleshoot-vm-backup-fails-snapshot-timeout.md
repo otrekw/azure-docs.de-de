@@ -4,12 +4,12 @@ description: Erfahren Sie mehr über die Symptome, Ursachen und Lösungen von Az
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.service: backup
-ms.openlocfilehash: 188eef5471e93661041dadfc93f561d2173ba7f2
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 274435a958820c3fd08fef4a61643a1d656e31e3
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87809764"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88167928"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Behandeln von Azure Backup-Fehlern: Probleme mit dem Agent oder der Erweiterung
 
@@ -23,7 +23,7 @@ Die häufigsten Sicherungsfehler können mithilfe der unten aufgeführten Schrit
 
 ### <a name="step-1-check-azure-vm-health"></a>Schritt 1: Überprüfen der Integrität der Azure-VM
 
-- **Sicherstellen, dass der Bereitstellungsstatus der Azure-VM „Wird ausgeführt“ ist:** Wenn der [VM-Bereitstellungsstatus](../virtual-machines/windows/states-lifecycle.md#provisioning-states) dem Zustand **„Beendet“, „Zuweisung aufgehoben“ oder „Aktualisiert“** entspricht, wird der Sicherungsvorgang beeinträchtigt. Öffnen Sie das *Azure-Portal > VM > Übersicht*, und überprüfen Sie den VM-Status, um sicherzustellen, dass dieser **Wird ausgeführt** lautet. Wiederholen Sie anschließend den Sicherungsvorgang.
+- **Sicherstellen, dass der Bereitstellungsstatus der Azure-VM „Wird ausgeführt“ ist:** Wenn der [VM-Bereitstellungsstatus](../virtual-machines/states-lifecycle.md#provisioning-states) dem Zustand **„Beendet“, „Zuweisung aufgehoben“ oder „Aktualisiert“** entspricht, wird der Sicherungsvorgang beeinträchtigt. Öffnen Sie das *Azure-Portal > VM > Übersicht*, und überprüfen Sie den VM-Status, um sicherzustellen, dass dieser **Wird ausgeführt** lautet. Wiederholen Sie anschließend den Sicherungsvorgang.
 - **Überprüfen ausstehender Betriebssystemupdates oder Neustarts:** Stellen Sie sicher, dass es auf der VM keine ausstehenden Betriebssystemupdates oder Neustarts gibt.
 
 ### <a name="step-2-check-azure-vm-guest-agent-service-health"></a>Schritt 2: Überprüfen der Dienstintegrität des Gast-Agents auf der Azure-VM
@@ -101,7 +101,7 @@ Nachdem Sie eine VM für den Azure Backup-Dienst registriert und geplant haben, 
 **Fehlercode**: UserErrorVmProvisioningStateFailed<br>
 **Fehlermeldung**: Der VM befindet sich im Zustand „Fehler bei der Bereitstellung“<br>
 
-Dieser Fehler tritt auf, wenn einer der Erweiterungsfehler dazu führt, dass der virtuelle Computer in den Zustand „Fehler bei der Bereitstellung“ versetzt wird.<br>Navigieren Sie im Azure-Portal zu **VM > Einstellungen > Erweiterungen > Status der Erweiterungen**, und überprüfen Sie, ob der Zustand aller Erweiterungen **Bereitstellung erfolgreich** lautet. Weitere Informationen finden Sie unter [Bereitstellungszustände](../virtual-machines/windows/states-lifecycle.md#provisioning-states).
+Dieser Fehler tritt auf, wenn einer der Erweiterungsfehler dazu führt, dass der virtuelle Computer in den Zustand „Fehler bei der Bereitstellung“ versetzt wird.<br>Navigieren Sie im Azure-Portal zu **VM > Einstellungen > Erweiterungen > Status der Erweiterungen**, und überprüfen Sie, ob der Zustand aller Erweiterungen **Bereitstellung erfolgreich** lautet. Weitere Informationen finden Sie unter [Bereitstellungszustände](../virtual-machines/states-lifecycle.md#provisioning-states).
 
 - Wenn die VMSnapshot-Erweiterung den Status „Fehler“ aufweist, klicken Sie mit der rechten Maustaste auf die fehlerhafte Erweiterung, und entfernen Sie sie. Auslösen einer bedarfsgesteuerten Sicherung Durch diese Aktion werden die Erweiterungen neu installiert, und der Sicherungsauftrag wird ausgeführt.  <br>
 - Wenn eine andere Erweiterung den Status „Fehler“ aufweist, kann die Sicherung beeinträchtigt werden. Stellen Sie sicher, dass diese Erweiterungsprobleme gelöst sind, und wiederholen Sie den Sicherungsvorgang.

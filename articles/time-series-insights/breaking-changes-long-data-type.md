@@ -8,14 +8,14 @@ ms.author: dpalled
 manager: diviso
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 07/07/2020
+ms.date: 08/12/2020
 ms.custom: dpalled
-ms.openlocfilehash: 34cf770a8ac75c2516480ec3136e61da15f4e4ff
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: ab7a30cf6ca71e9260a9cb6e9136f2579e51812c
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87446642"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88167996"
 ---
 # <a name="adding-support-for-long-data-type-in-azure-time-series-insights-gen2"></a>Hinzufügen von Unterstützung für den Datentyp „long“ in Azure Time Series Insights Gen2
 
@@ -66,7 +66,7 @@ Wenn Sie derzeit ganzzahlige Telemetriedaten senden, werden Ihre Daten in zwei S
 
 Die ganzzahligen Daten werden in **propertyValue_long** geschrieben. Zuvor in **propertyValue_double** erfasste (und zukünftige erfasste) numerische Daten werden nicht rüberkopiert.
 
-Wenn Sie Daten für die Eigenschaft **propertyValue** übergreifend für diese zwei Spalten abfragen möchten, müssen Sie die Skalarfunktion **coalesce()** in Ihrem TSX verwenden. Die Funktion akzeptiert Argumente desselben Datentyps (**DataType**) und gibt den ersten Wert in der Argumentliste zurück, der nicht Null ist. Weitere Informationen finden Sie unter [Konzepte des Azure Time Series Insights Gen2-Datenzugriffs](https://docs.microsoft.com/rest/api/time-series-insights/preview#other-functions).
+Wenn Sie Daten für die Eigenschaft **propertyValue** übergreifend für diese zwei Spalten abfragen möchten, müssen Sie die Skalarfunktion **coalesce()** in Ihrem TSX verwenden. Die Funktion akzeptiert Argumente desselben Datentyps (**DataType**) und gibt den ersten Wert in der Argumentliste zurück, der nicht Null ist. Weitere Informationen finden Sie unter [Konzepte des Azure Time Series Insights Gen2-Datenzugriffs](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax#other-functions).
 
 #### <a name="variable-definition-in-tsx---numeric"></a>Variablendefinition in TSX: numerisch
 
@@ -78,7 +78,7 @@ Wenn Sie Daten für die Eigenschaft **propertyValue** übergreifend für diese z
 
 [![Neue Variablendefinition](media/time-series-insights-long-data-type/var-def.png)](media/time-series-insights-long-data-type/var-def.png#lightbox)
 
-Sie können außerdem **coalesce($event.propertyValue.Double, toDouble($event.propertyValue.Long))** als benutzerdefinierten [Zeitreihenausdruck](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax) verwenden.
+Sie können außerdem **coalesce($event.propertyValue.Double, toDouble($event.propertyValue.Long))** als benutzerdefinierten [Zeitreihenausdruck](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax) verwenden.
 
 #### <a name="inline-variable-definition-using-tsx-query-apis---numeric"></a>Inlinevariablendefinition mithilfe von TSX-Abfrage-APIs: numerisch
 
@@ -126,7 +126,7 @@ Sie können außerdem **coalesce($event.propertyValue.Double, toDouble($event.pr
 }
 ```
 
-Sie können außerdem **coalesce($event.propertyValue.Double, toDouble($event.propertyValue.Long))** als benutzerdefinierten [Zeitreihenausdruck](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax) verwenden.
+Sie können außerdem **coalesce($event.propertyValue.Double, toDouble($event.propertyValue.Long))** als benutzerdefinierten [Zeitreihenausdruck](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax) verwenden.
 
 > [!NOTE]
 > Es empfiehlt sich, diese Variablen an allen Stellen zu aktualisieren, an denen sie möglicherweise verwendet werden. Zu diesen Stellen zählen das Zeitreihenmodell, gespeicherte Abfragen und Power BI-Connectorabfragen.
@@ -147,7 +147,7 @@ Wenn Sie zurzeit kategorische Variablen verwenden, die Kategorien ganzzahlige We
 
 Sie können außerdem **coalesce($event.propertyValue.Double, toDouble($event.propertyValue.Long))** als benutzerdefinierten [Zeitreihenausdruck](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax) verwenden.
 
-Kategorische Variablen erfordern weiterhin einen ganzzahligen Werttyp. Der Datentyp (**DataType**) aller Argumente in **coalesce()** muss im benutzerdefinierten [Zeitreihenausdruck](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax) vom Typ **Long** sein.
+Kategorische Variablen erfordern weiterhin einen ganzzahligen Werttyp. Der Datentyp (**DataType**) aller Argumente in **coalesce()** muss im benutzerdefinierten [Zeitreihenausdruck](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax) vom Typ **Long** sein.
 
 #### <a name="inline-variable-definition-using-tsx-query-apis---categorical"></a>Inlinevariablendefinition mithilfe von TSX-Abfrage-APIs: kategorisch
 
@@ -227,7 +227,7 @@ Kategorische Variablen erfordern weiterhin einen ganzzahligen Werttyp. Der Daten
 }
 ```
 
-Kategorische Variablen erfordern weiterhin einen ganzzahligen Werttyp. Der Datentyp (**DataType**) aller Argumente in **coalesce()** muss im benutzerdefinierten [Zeitreihenausdruck](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax) vom Typ **Long** sein.
+Kategorische Variablen erfordern weiterhin einen ganzzahligen Werttyp. Der Datentyp (**DataType**) aller Argumente in **coalesce()** muss im benutzerdefinierten [Zeitreihenausdruck](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax) vom Typ **Long** sein.
 
 > [!NOTE]
 > Es empfiehlt sich, diese Variablen an allen Stellen zu aktualisieren, an denen sie möglicherweise verwendet werden. Zu diesen Stellen zählen das Zeitreihenmodell, gespeicherte Abfragen und Power BI-Connectorabfragen.
