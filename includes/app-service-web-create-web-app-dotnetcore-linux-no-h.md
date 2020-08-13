@@ -8,22 +8,22 @@ ms.topic: include
 ms.date: 04/22/2020
 ms.author: cephalin
 ms.custom: include file
-ms.openlocfilehash: f397a3df7280b9277b2b7205368ef5788ed321aa
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d5fe447e8a1467530cd0eb4c9d2f8a20a4273876
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82206669"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080880"
 ---
-Erstellen Sie eine [Web-App](../articles/app-service/containers/app-service-linux-intro.md) im App Service-Plan `myAppServicePlan`. 
+Erstellen Sie eine [Web-App](../articles/app-service/overview.md#app-service-on-linux) im App Service-Plan `myAppServicePlan`. 
 
-In Cloud Shell können Sie den Befehl [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest) verwenden. Ersetzen Sie im folgenden Beispiel `<app-name>` durch einen global eindeutigen App-Namen (gültige Zeichen sind `a-z`, `0-9` und `-`). Die Runtime ist auf `DOTNETCORE|LTS` festgelegt, d. h. .NET Core 3.1. Führen Sie [`az webapp list-runtimes --linux`](/cli/azure/webapp?view=azure-cli-latest) aus, um alle unterstützten Laufzeiten anzuzeigen. 
+In Cloud Shell können Sie den Befehl [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest) verwenden. Ersetzen Sie im folgenden Beispiel `<app-name>` durch einen global eindeutigen App-Namen (gültige Zeichen sind `a-z`, `0-9` und `-`). Die Runtime ist auf `DOTNETCORE|3.1` festgelegt. Führen Sie [`az webapp list-runtimes --linux`](/cli/azure/webapp?view=azure-cli-latest) aus, um alle unterstützten Laufzeiten anzuzeigen. 
 
 ```azurecli-interactive
 # Bash
-az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app-name> --runtime "DOTNETCORE|LTS" --deployment-local-git
+az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app-name> --runtime "DOTNETCORE|3.1" --deployment-local-git
 # PowerShell
-az --% webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app-name> --runtime "DOTNETCORE|LTS" --deployment-local-git
+az --% webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app-name> --runtime "DOTNETCORE|3.1" --deployment-local-git
 ```
 
 Nach Erstellung der Web-App zeigt die Azure CLI eine Ausgabe wie im folgenden Beispiel an:
@@ -49,12 +49,3 @@ Sie haben eine leere Web-App in einem Linux-Container mit aktivierter Git-Bereit
 > [!NOTE]
 > Die URL des Git-Remotespeicherorts wird in der `deploymentLocalGitUrl`-Eigenschaft im Format `https://<username>@<app-name>.scm.azurewebsites.net/<app-name>.git` angezeigt. Speichern Sie diese URL, da Sie sie später noch benötigen.
 >
-
-Derzeit müssen Sie den folgenden zusätzlichen Befehl ausführen, um die .NET Core-Version ordnungsgemäß zu konfigurieren (ersetzen Sie `<app-name>` durch die Angabe aus dem vorherigen Schritt):
-
-```azurecli-interactive
-# Bash
-az webapp config set --resource-group myResourceGroup --name <app-name> --linux-fx-version "DOTNETCORE|3.1"
-# PowerShell
-az --% webapp config set --resource-group myResourceGroup --name <app-name> --linux-fx-version "DOTNETCORE|3.1"
-```

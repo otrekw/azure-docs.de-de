@@ -3,12 +3,12 @@ title: Verwenden von PowerShell zum Verwalten von Azure Service Bus-Ressourcen |
 description: In diesem Artikel wird beschrieben, wie das Azure PowerShell-Modul verwendet wird, um Service Bus-Entitäten (Namespaces, Warteschlangen, Themen, Abonnements) zu erstellen und zu verwalten.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 7ff79d8cf2aac09a0b8d2f04ade0b3d1d9b2e74e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b6439deb2b86c2ea5b50fe3bdbad89a0875b2acc
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85341751"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88065742"
 ---
 # <a name="use-powershell-to-manage-service-bus-resources"></a>Verwenden von PowerShell zum Verwalten von Service Bus-Ressourcen
 
@@ -159,8 +159,8 @@ Mit dem [PowerShell-Modul für Service Bus](/powershell/module/az.servicebus) k�
 
 Service Bus-Entitäten können auch auf andere Weise verwaltet werden. Dies wird in den folgenden Blogbeiträgen beschrieben:
 
-* [How to create Service Bus queues, topics and subscriptions using a PowerShell script (Erstellen von Service Bus-Warteschlangen, -Themen und -Abonnements mithilfe eines PowerShell-Skripts, in englischer Sprache)](https://docs.microsoft.com/archive/blogs/paolos/how-to-create-service-bus-queues-topics-and-subscriptions-using-a-powershell-script)
-* [How to create a Service Bus Namespace and an Event Hub using a PowerShell script (Erstellen eines Service Bus-Namespace und eines Event Hubs mithilfe eines PowerShell-Skripts, in englischer Sprache)](https://docs.microsoft.com/archive/blogs/paolos/how-to-create-a-service-bus-namespace-and-an-event-hub-using-a-powershell-script)
+* [How to create Service Bus queues, topics and subscriptions using a PowerShell script (Erstellen von Service Bus-Warteschlangen, -Themen und -Abonnements mithilfe eines PowerShell-Skripts, in englischer Sprache)](/archive/blogs/paolos/how-to-create-service-bus-queues-topics-and-subscriptions-using-a-powershell-script)
+* [How to create a Service Bus Namespace and an Event Hub using a PowerShell script (Erstellen eines Service Bus-Namespace und eines Event Hubs mithilfe eines PowerShell-Skripts, in englischer Sprache)](/archive/blogs/paolos/how-to-create-a-service-bus-namespace-and-an-event-hub-using-a-powershell-script)
 * [Service Bus PowerShell-Skripts](https://code.msdn.microsoft.com/Service-Bus-PowerShell-a46b7059)
 
 <!--Anchors-->

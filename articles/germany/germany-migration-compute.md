@@ -9,12 +9,12 @@ ms.service: germany
 ms.date: 12/12/2019
 ms.topic: article
 ms.custom: bfmigrate
-ms.openlocfilehash: 1b3ca729a1f2eae6807e2105d9094f10fe2d6263
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 64d810fe4d87b5829c801a2557d7361e10d8a535
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87072897"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080464"
 ---
 # <a name="migrate-compute-resources-to-global-azure"></a>Migrieren von Computeressourcen zu Azure weltweit
 
@@ -216,7 +216,7 @@ Derzeit können Apps, die Sie mit dem Web Apps-Feature von Azure App Service ers
 
 Weitere Informationen finden Sie unter:
 
-- Frischen Sie Ihre Kenntnisse auf, indem Sie die [Tutorials zu App Service](https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-dotnetcore-sqldb) durcharbeiten.
+- Frischen Sie Ihre Kenntnisse auf, indem Sie die [Tutorials zu App Service](https://docs.microsoft.com/azure/app-service/tutorial-dotnetcore-sqldb-app) durcharbeiten.
 - Erfahren Sie, wie Sie [eine Resource Manager-Vorlage exportieren](../azure-resource-manager/templates/export-template-portal.md), oder lesen Sie die Übersicht zu [Azure Resource Manager](../azure-resource-manager/management/overview.md).
 - Lesen Sie die [Übersicht über Azure App Service](../app-service/overview.md).
 - Lesen Sie die [Übersicht über Azure-Standorte](https://azure.microsoft.com/global-infrastructure/locations/).

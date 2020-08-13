@@ -3,12 +3,12 @@ title: Azure Service Bus-Themenfilter | Microsoft-Dokumentation
 description: In diesem Artikel wird erläutert, wie Abonnenten definieren können, welche Nachrichten von einem Thema empfangen werden sollen, indem Filter angegeben werden.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: b722c040248c199782f6c8dea020ae582762e102
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5df343ff63c01a7cf10315b758e3d6fba8ac5674
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85339959"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88066745"
 ---
 # <a name="topic-filters-and-actions"></a>Themenfilter und -aktionen
 
@@ -62,6 +62,4 @@ Sehen Sie sich die folgenden Beispiele an:
 
 - [.NET – Grundlegendes Tutorial zum Senden und Empfangen mit Filtern](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/GettingStarted/BasicSendReceiveTutorialwithFilters/BasicSendReceiveTutorialWithFilters)
 - [.NET – Themenfilter](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/TopicFilters)
-- [Azure Resource Manager-Vorlage](https://docs.microsoft.com/azure/templates/microsoft.servicebus/2017-04-01/namespaces/topics/subscriptions/rules)
-
-
+- [Azure Resource Manager-Vorlage](/azure/templates/microsoft.servicebus/2017-04-01/namespaces/topics/subscriptions/rules)

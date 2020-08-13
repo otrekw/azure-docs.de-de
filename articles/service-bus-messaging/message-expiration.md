@@ -3,12 +3,12 @@ title: 'Azure Service Bus: Ablauf von Nachrichten'
 description: In diesem Artikel werden der Ablauf und die Gültigkeitsdauer von Azure Service Bus-Nachrichten behandelt. Nach einer solchen Frist wird die Nachricht nicht mehr zugestellt.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: ca789be91e835576ec06a422bdbbbf25eb775dac
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 41711428711533a6ecac449f59d415e86474545b
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85341211"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88064722"
 ---
 # <a name="message-expiration-time-to-live"></a>Nachrichtenablauf (Gültigkeitsdauer)
 
@@ -27,9 +27,9 @@ Solange die Nachricht gesperrt ist, kann die Anwendung möglicherweise im Besitz
 Alle Nachrichten, die in eine Warteschlange oder an ein Thema gesendet werden, unterliegen einer Standardablaufzeit, die auf Entitätsebene mit der [defaultMessageTimeToLive](/azure/templates/microsoft.servicebus/namespaces/queues)-Eigenschaft festgelegt wird. Diese Einstellung auch im Portal während der Erstellung festgelegt und später angepasst werden kann. Die Standardablaufzeit wird für alle an die Entität gesendeten Nachrichten verwendet, bei denen [TimeToLive](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive) nicht explizit festgelegt ist. Die Standardablaufzeit dient auch als Obergrenze für den **TimeToLive**-Wert. Nachrichten, die eine längere **TimeToLive**-Ablaufzeit als der Standardwert haben, werden automatisch an den **defaultMessageTimeToLive**-Wert angepasst, bevor sie in die Warteschlange gestellt werden.
 
 > [!NOTE]
-> Der Standardwert [TimeToLive](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive) für eine im Broker gespeicherte Nachricht ist [TimeSpan.Max](https://docs.microsoft.com/dotnet/api/system.timespan.maxvalue), wenn nicht anders angegeben.
+> Der Standardwert [TimeToLive](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive) für eine im Broker gespeicherte Nachricht ist [TimeSpan.Max](/dotnet/api/system.timespan.maxvalue), wenn nicht anders angegeben.
 >
-> Für Messaging-Entitäten (Warteschlangen und Themen) ist die Standardablaufzeit ebenfalls [TimeSpan.Max](https://docs.microsoft.com/dotnet/api/system.timespan.maxvalue) in den Service Bus-Tarifen „Standard“ und „Premium“.  Im Tarif „Basic“ beträgt die Standardablaufzeit 14 Tage.
+> Für Messaging-Entitäten (Warteschlangen und Themen) ist die Standardablaufzeit ebenfalls [TimeSpan.Max](/dotnet/api/system.timespan.maxvalue) in den Service Bus-Tarifen „Standard“ und „Premium“.  Im Tarif „Basic“ beträgt die Standardablaufzeit 14 Tage.
 
 Abgelaufene Nachrichten können optional in eine [Warteschlange für nicht zustellbare Nachrichten](service-bus-dead-letter-queues.md) verschoben werden, indem die [EnableDeadLetteringOnMessageExpiration](/dotnet/api/microsoft.servicebus.messaging.queuedescription.enabledeadletteringonmessageexpiration#Microsoft_ServiceBus_Messaging_QueueDescription_EnableDeadLetteringOnMessageExpiration)-Eigenschaft festgelegt oder das entsprechende Kontrollkästchen im Portal aktiviert wird. Wenn die Option deaktiviert bleibt, werden abgelaufene Nachrichten verworfen. Abgelaufene Nachrichten, die in die Warteschlange für unzustellbare Nachrichten verschoben werden, können durch die Auswertung der [DeadletterReason](service-bus-dead-letter-queues.md#moving-messages-to-the-dlq)-Eigenschaft, die der Broker in den Benutzereigenschaften speichert, von anderen unzustellbaren Nachrichten unterschieden werden. In diesem Fall ist der Wert [TTLExpiredException](service-bus-dead-letter-queues.md#moving-messages-to-the-dlq).
 

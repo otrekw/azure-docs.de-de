@@ -3,16 +3,16 @@ title: 'Azure Service Bus: Migrieren zur Shared Access Signature-Autorisierung'
 description: Erfahren Sie, wie Sie vom Azure Active Directory Access Control Service zur SAS-Autorisierung (Shared Access Signature) migrieren.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 9ef6eda205af150a20236da68e1b6b1dbf91059e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e8cd12ac97020417f9958beded1fd198dd485fff
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85340117"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88064620"
 ---
 # <a name="service-bus---migrate-from-azure-active-directory-access-control-service-to-shared-access-signature-authorization"></a>Service Bus: Migrieren von Azure Active Directory Access Control Service zur SAS-Autorisierung
 
-Bei Service Bus-Anwendungen standen bisher zwei verschiedene Autorisierungsmodelle zur Wahl: Zum einen gab es das direkt von Service Bus bereitgestellte [SAS-Tokenmodell (Shared Access Signature)](service-bus-sas.md). Zum anderen gab es ein Verbundmodell, bei dem die Verwaltung von Autorisierungsregeln intern vom [Azure Active Directory](/azure/active-directory/)-Access Control Service (ACS) verwaltet wird und vom ACS bezogene Token zur Autorisierung des Zugriffs auf die gewünschten Features an Service Bus übergeben werden.
+Bei Service Bus-Anwendungen standen bisher zwei verschiedene Autorisierungsmodelle zur Wahl: Zum einen gab es das direkt von Service Bus bereitgestellte [SAS-Tokenmodell (Shared Access Signature)](service-bus-sas.md). Zum anderen gab es ein Verbundmodell, bei dem die Verwaltung von Autorisierungsregeln intern vom [Azure Active Directory](../active-directory/index.yml)-Access Control Service (ACS) verwaltet wird und vom ACS bezogene Token zur Autorisierung des Zugriffs auf die gewünschten Features an Service Bus übergeben werden.
 
 Das ACS-Autorisierungsmodell wurde längst von der [SAS-Autorisierung](service-bus-authentication-and-authorization.md) als bevorzugtes Modell abgelöst, und in sämtlichen Dokumentationen, Leitfäden und Beispielen wird heutzutage nur noch SAS verwendet. Außerdem können inzwischen keine neuen Service Bus-Namespaces mit ACS-Koppelung mehr erstellt werden.
 
@@ -56,4 +56,3 @@ Weitere Informationen zur Service Bus-Authentifizierung finden Sie in den folgen
 
 * [Service Bus-Authentifizierung und -Autorisierung](service-bus-authentication-and-authorization.md)
 * [Service Bus-Authentifizierung mit Shared Access Signatures](service-bus-sas.md)
-

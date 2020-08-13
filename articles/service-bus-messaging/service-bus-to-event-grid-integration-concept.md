@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/23/2020
 ms.author: spelluru
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 0d9c9c061e31ac4d3eba8d31352253bb25b62a9b
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 641cae751b0b87d93235e1272bc5f46f7797d834
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87503292"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88065113"
 ---
 # <a name="azure-service-bus-to-event-grid-integration-overview"></a>Übersicht über die Integration von Azure Service Bus in Event Grid
 
@@ -41,9 +41,9 @@ Service Bus sendet derzeit Ereignisse für zwei Szenarien:
 * [ActiveMessagesWithNoListenersAvailable](#active-messages-available-event)
 * DeadletterMessagesAvailable
 
-Darüber hinaus verwendet Service Bus die Standardsicherheit und die [Authentifizierungsmechanismen](https://docs.microsoft.com/azure/event-grid/security-authentication) von Event Grid.
+Darüber hinaus verwendet Service Bus die Standardsicherheit und die [Authentifizierungsmechanismen](../event-grid/security-authentication.md) von Event Grid.
 
-Weitere Informationen finden Sie unter [Azure Event Grid-Ereignisschema](https://docs.microsoft.com/azure/event-grid/event-schema).
+Weitere Informationen finden Sie unter [Azure Event Grid-Ereignisschema](../event-grid/event-schema.md).
 
 #### <a name="active-messages-available-event"></a>Ereignis: Aktive Nachrichten verfügbar
 
@@ -132,7 +132,7 @@ Gehen Sie wie folgt vor, um ein neues Event Grid-Abonnement zu erstellen:
 
 ## <a name="azure-cli-instructions"></a>Anleitung für die Azure-Befehlszeilenschnittstelle
 
-Vergewissern Sie sich zunächst, dass mindestens die Version 2.0 der Azure-Befehlszeilenschnittstelle installiert ist. [Laden Sie das Installationsprogramm herunter.](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) Drücken Sie **WINDOWS-TASTE+X**, und öffnen Sie eine neue PowerShell-Konsole mit Administratorberechtigungen. Alternativ können Sie auch eine Befehlsshell im Azure-Portal verwenden.
+Vergewissern Sie sich zunächst, dass mindestens die Version 2.0 der Azure-Befehlszeilenschnittstelle installiert ist. [Laden Sie das Installationsprogramm herunter.](/cli/azure/install-azure-cli?view=azure-cli-latest) Drücken Sie **WINDOWS-TASTE+X**, und öffnen Sie eine neue PowerShell-Konsole mit Administratorberechtigungen. Alternativ können Sie auch eine Befehlsshell im Azure-Portal verwenden.
 
 Führen Sie den folgenden Code aus:
 
@@ -150,7 +150,7 @@ Wenn Sie BASH verwenden
 
 ## <a name="powershell-instructions"></a>Anleitung für PowerShell
 
-Vergewissern Sie sich, dass Azure PowerShell installiert ist. [Laden Sie das Installationsprogramm herunter.](https://docs.microsoft.com/powershell/azure/install-Az-ps) Drücken Sie **WINDOWS-TASTE+X**, und öffnen Sie eine neue PowerShell-Konsole mit Administratorberechtigungen. Alternativ können Sie auch eine Befehlsshell im Azure-Portal verwenden.
+Vergewissern Sie sich, dass Azure PowerShell installiert ist. [Laden Sie das Installationsprogramm herunter.](/powershell/azure/install-Az-ps) Drücken Sie **WINDOWS-TASTE+X**, und öffnen Sie eine neue PowerShell-Konsole mit Administratorberechtigungen. Alternativ können Sie auch eine Befehlsshell im Azure-Portal verwenden.
 
 ```powershell-interactive
 Connect-AzAccount
@@ -171,10 +171,10 @@ Als Nächstes können Sie sich die anderen Setupoptionen ansehen oder sich verge
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Rufen Sie [Beispiele](service-bus-to-event-grid-integration-example.md) für Service Bus und Event Grid ab.
-* Informieren Sie sich ausführlicher über [Event Grid](https://docs.microsoft.com/azure/event-grid/).
-* Erfahren Sie mehr über [Azure Functions](https://docs.microsoft.com/azure/azure-functions/).
-* Informieren Sie sich ausführlicher über [Logic Apps](https://docs.microsoft.com/azure/logic-apps/).
-* Erfahren Sie mehr über [Service Bus](https://docs.microsoft.com/azure/service-bus/).
+* Informieren Sie sich ausführlicher über [Event Grid](../event-grid/index.yml).
+* Erfahren Sie mehr über [Azure Functions](../azure-functions/index.yml).
+* Informieren Sie sich ausführlicher über [Logic Apps](../logic-apps/index.yml).
+* Erfahren Sie mehr über [Service Bus](/azure/service-bus/).
 
 [1]: ./media/service-bus-to-event-grid-integration-concept/sbtoeventgrid1.png
 [19]: ./media/service-bus-to-event-grid-integration-concept/sbtoeventgriddiagram.png

@@ -31,6 +31,8 @@
       href: quickstart-create-security-twin.md
     - name: Erstellen benutzerdefinierter Sicherheitswarnungen
       href: quickstart-create-custom-alerts.md
+    - name: Untersuchen von Sicherheitswarnungen
+      href: quickstart-investigate-security-alerts.md
 - name: Konzepte
   items:
     - name: Authentifizierung von Sicherheits-Agents

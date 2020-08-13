@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie den Java Message Service (JMS) mit Azure Serv
 ms.topic: article
 ms.date: 06/23/2020
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: 935579bdcb142969d9baf7ca24cf03268620bf46
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: be6b5de7946fc54ab58087fccabed9f5ed09251d
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87799683"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88065776"
 ---
 # <a name="use-the-java-message-service-jms-with-azure-service-bus-and-amqp-10"></a>Verwenden von Java Message Service (JMS) mit Azure Service Bus und AMQP 1.0
 
@@ -29,7 +29,7 @@ Unterstützung für AMQP 1.0 in Azure Service Bus bedeutet, dass Sie die gebroke
 In diesem Leitfaden wird davon ausgegangen, dass Sie bereits einen Service Bus-Namespace haben, der eine Warteschlange mit dem Namen `basicqueue` enthält. Falls nicht, können Sie [den Namespace und die Warteschlange](service-bus-create-namespace-portal.md) im [Azure-Portal](https://portal.azure.com) erstellen. Weitere Informationen zum Erstellen von Namespaces und Warteschlangen für Service Bus finden Sie unter [Erste Schritte mit Service Bus-Warteschlangen](service-bus-dotnet-get-started-with-queues.md).
 
 > [!NOTE]
-> Partitionierte Warteschlangen und Themen unterstützen zudem AMQP. Weitere Informationen finden Sie unter [Partitionierte Messagingentitäten](service-bus-partitioning.md) und [AMQP 1.0-Unterstützung für partitionierte Warteschlangen und Themen von Service Bus](service-bus-partitioned-queues-and-topics-amqp-overview.md).
+> Partitionierte Warteschlangen und Themen unterstützen zudem AMQP. Weitere Informationen finden Sie unter [Partitionierte Messagingentitäten](service-bus-partitioning.md) und [AMQP 1.0-Unterstützung für partitionierte Warteschlangen und Themen von Service Bus](./service-bus-amqp-protocol-guide.md).
 > 
 > 
 
@@ -380,7 +380,7 @@ Sie können Service Bus AMQP 1.0 auch mit anderen Sprachen verwenden, unter ande
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [AMQP 1.0-Unterstützung in Azure Service Bus](service-bus-amqp-overview.md)
-* [Gewusst wie: Verwenden von AMQP 1.0 mit der .NET-API für Service Bus](service-bus-dotnet-advanced-message-queuing.md)
+* [Gewusst wie: Verwenden von AMQP 1.0 mit der .NET-API für Service Bus](./service-bus-amqp-dotnet.md)
 * [Entwicklerhandbuch für Service Bus AMQP 1.0](service-bus-amqp-dotnet.md)
 * [Erste Schritte mit Service Bus-Warteschlangen](service-bus-dotnet-get-started-with-queues.md)
 * [Java Developer Center](https://azure.microsoft.com/develop/java/)

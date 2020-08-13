@@ -3,12 +3,12 @@ title: Bewährte Methoden zur Verbesserung der Leistung mit Azure Service Bus
 description: Beschreibt, wie Service Bus verwendet wird, um die Leistung beim Austausch von Brokernachrichten zu optimieren.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: e0a6e54c1e941d7b7ff244ac40066a564e2ebbc4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a81e6fa1c6097f46bbfa3016beb1b7780ad3c351
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85341095"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88065300"
 ---
 # <a name="best-practices-for-performance-improvements-using-service-bus-messaging"></a>Bewährte Methoden für Leistungsoptimierungen mithilfe von Service Bus Messaging
 
@@ -40,7 +40,7 @@ Es gibt zwei unterstützte Azure Service Bus .NET SDKs. Da sich die zugehörigen
 | <a href="https://www.nuget.org/packages/Microsoft.Azure.ServiceBus" target="_blank">Microsoft.Azure.ServiceBus <span class="docon docon-navigate-external x-hidden-focus"></span></a> | `Microsoft.Azure.ServiceBus`<br>`Microsoft.Azure.ServiceBus.Management` | .NET Core 2.0<br>.NET Framework 4.6.1<br>Mono 5.4<br>Xamarin.iOS 10.14<br>Xamarin.Mac 3.8<br>Xamarin.Android 8.0<br>Universelle Windows-Plattform 10.0.16299 | AMQP<br>HTTP |
 | <a href="https://www.nuget.org/packages/WindowsAzure.ServiceBus" target="_blank">WindowsAzure.ServiceBus <span class="docon docon-navigate-external x-hidden-focus"></span></a> | `Microsoft.ServiceBus`<br>`Microsoft.ServiceBus.Messaging` | .NET Framework 4.6.1 | AMQP<br>SBMP<br>HTTP |
 
-Weitere Informationen zu den Mindestplattformen für die Unterstützung von .NET Standard finden Sie unter [Unterstützung der .NET-Implementierung](https://docs.microsoft.com/dotnet/standard/net-standard#net-implementation-support).
+Weitere Informationen zu den Mindestplattformen für die Unterstützung von .NET Standard finden Sie unter [Unterstützung der .NET-Implementierung](/dotnet/standard/net-standard#net-implementation-support).
 
 ## <a name="reusing-factories-and-clients"></a>Wiederverwenden von Factorys und Clients
 

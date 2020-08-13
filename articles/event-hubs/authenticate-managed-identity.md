@@ -3,12 +3,12 @@ title: Authentifizieren einer verwalteten Identität mit Azure Active Directory
 description: Dieser Artikel enthält Informationen zur Authentifizierung einer verwalteten Identität mit Azure Active Directory, um auf Azure Event Hubs-Ressourcen zuzugreifen.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 707c93d1f104dcc2982999c4e7461947280918ef
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: c74e49eff8233d9918fcdb55e6fa2ad8d7517f6f
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534412"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88079140"
 ---
 # <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-event-hubs-resources"></a>Authentifizieren einer verwalteten Identität mit Azure Active Directory für den Zugriff auf Event Hubs-Ressourcen
 Azure Event Hubs unterstützt die Azure AD-Authentifizierung (Azure Active Directory) mit [verwalteten Identitäten für Azure-Ressourcen](../active-directory/managed-identities-azure-resources/overview.md). Sie können verwaltete Identitäten für Azure-Ressourcen verwenden, um den Zugriff auf Event Hubs-Ressourcen mithilfe von Azure AD-Anmeldeinformationen über Anwendungen zu autorisieren, die auf virtuellen Azure-Computern, in Funktions-Apps, in VM-Skalierungsgruppen und anderen Diensten ausgeführt werden. Durch Verwendung von verwalteten Identitäten für Azure-Ressourcen zusammen mit der Azure AD-Authentifizierung können Sie vermeiden, dass Anmeldeinformationen mit den in der Cloud ausgeführten Anwendungen gespeichert werden.
@@ -32,7 +32,7 @@ Weitere Informationen zum Zuweisen von Azure-Rollen finden Sie unter [Autorisier
 ## <a name="use-event-hubs-with-managed-identities"></a>Verwenden von Event Hubs mit verwalteten Identitäten
 Wenn Sie Event Hubs mit verwalteten Identitäten verwenden möchten, müssen Sie der Identität die Rolle und den entsprechenden Bereich zuweisen. Im Verfahren in diesem Abschnitt wird eine einfache Anwendung verwendet, die unter einer verwalteten Identität ausgeführt wird und auf Event Hubs-Ressourcen zugreift.
 
-Hier verwenden wir eine einfache Beispielwebanwendung, die in [Azure App Service](https://azure.microsoft.com/services/app-service/) gehostet wird. Eine Schritt-für-Schritt-Anleitung zum Erstellen einer Webanwendung finden Sie unter [Erstellen einer ASP.NET Core-Web-App in Azure](../app-service/app-service-web-get-started-dotnet.md).
+Hier verwenden wir eine einfache Beispielwebanwendung, die in [Azure App Service](https://azure.microsoft.com/services/app-service/) gehostet wird. Eine Schritt-für-Schritt-Anleitung zum Erstellen einer Webanwendung finden Sie unter [Erstellen einer ASP.NET Core-Web-App in Azure](../app-service/quickstart-dotnetcore.md).
 
 Führen Sie nach der Erstellung der Anwendung die folgenden Schritte aus: 
 

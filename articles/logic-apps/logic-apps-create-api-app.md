@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 05/26/2017
-ms.openlocfilehash: 01ddef37702cb4dedaefb3e94e488ef478f292c3
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 0fc4fb91653f4a764540df0a7bc0cf0deee30fe6
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86520799"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080829"
 ---
 # <a name="create-custom-apis-you-can-call-from-azure-logic-apps"></a>Erstellen benutzerdefinierter APIs, die über Azure Logic Apps aufgerufen werden können
 
@@ -30,12 +30,12 @@ Sie können Ihre APIs in [Azure App Service](../app-service/overview.md) hosten,
 > [!TIP] 
 > Sie können Ihre APIs zwar als Web-Apps bereitstellen, sollten jedoch in Erwägung ziehen, Ihre APIs als API-Apps bereitzustellen. Dadurch wird das Erstellen, Hosten und Nutzen der APIs in der Cloud und lokal vereinfacht. Sie müssen keinen Code in Ihren APIs ändern. Stellen Sie einfach Ihren Code für eine API-App bereit. Erfahren Sie beispielsweise, wie Sie mit den folgenden Sprachen API-Apps erstellen: 
 > 
-> * [ASP.NET](../app-service/app-service-web-get-started-dotnet.md). 
-> * [Java](../app-service/app-service-web-get-started-java.md)
-> * [Node.js](../app-service/app-service-web-get-started-nodejs.md)
-> * [PHP](../app-service/app-service-web-get-started-php.md)
-> * [Python](../app-service/containers/quickstart-python.md)
-> * [Ruby](../app-service/containers/quickstart-ruby.md)
+> * [ASP.NET](../app-service/quickstart-dotnetcore.md). 
+> * [Java](../app-service/quickstart-java.md)
+> * [Node.js](../app-service/quickstart-nodejs.md)
+> * [PHP](../app-service/quickstart-php.md)
+> * [Python](../app-service/quickstart-python.md)
+> * [Ruby](../app-service/quickstart-ruby.md)
 >
 > API-App-Beispiele für Logik-Apps finden Sie im [Azure Logic Apps GitHub-Repository](https://github.com/logicappsio) oder [Blog](https://aka.ms/logicappsblog).
 

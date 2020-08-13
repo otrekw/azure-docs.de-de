@@ -5,12 +5,12 @@ ms.date: 03/24/2020
 ms.topic: conceptual
 description: Beschreibt die Prozesse, auf denen Azure Dev Spaces basiert, und die Funktionsweise von Routing
 keywords: Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container
-ms.openlocfilehash: 8677284d61a0a08a3262c26d6307399922dab4be
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 19a55f37725464da73e93877d9c5238f3ebaced1
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86512468"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88077664"
 ---
 # <a name="how-routing-works-with-azure-dev-spaces"></a>Funktionsweise von Routing mit Azure Dev Spaces
 
@@ -49,7 +49,7 @@ Jeglicher sonstiger TCP-Datenverkehr, der kein HTTP-Datenverkehr ist, durchläuf
 
 ## <a name="sharing-a-dev-space"></a>Freigeben eines Entwicklungsbereichs (Dev Space)
 
-Wenn Sie in einem Team arbeiten, können Sie [einen Entwicklungsbereich für das gesamte Team freigeben](how-to/share-dev-spaces.md) und abgeleitete Entwicklungsbereiche erstellen. Ein Entwicklungsbereich kann von jeder Person verwendet werden, die Zugriff für Mitwirkende auf die Ressourcengruppe des Entwicklungsbereichs hat.
+Wenn Sie in einem Team arbeiten, können Sie einen Entwicklungsbereich für das gesamte Team freigeben und abgeleitete Entwicklungsbereiche erstellen. Ein Entwicklungsbereich kann von jeder Person verwendet werden, die Zugriff für Mitwirkende auf die Ressourcengruppe des Entwicklungsbereichs hat.
 
 Sie können außerdem einen neuen Entwicklungsbereich erstellen, der aus einem anderen Entwicklungsbereich abgeleitet ist. Wenn Sie einen abgeleiteten Entwicklungsbereich erstellen, wird dem Namespace dieses abgeleiteten Entwicklungsbereichs die Bezeichnung *azds.io/parent-space=NAME-ÜBERGEORDNETER-BEREICH* hinzugefügt. Darüber hinaus werden alle Anwendungen aus dem übergeordneten Entwicklungsbereich für den abgeleiteten Entwicklungsbereich freigegeben. Wenn Sie eine aktualisierte Version einer Anwendung im abgeleiteten Entwicklungsbereich bereitstellen, ist diese Version nur im abgeleiteten Entwicklungsbereich vorhanden, und der übergeordnete Entwicklungsbereich ist nicht betroffen. Sie können mit bis zu drei Ebenen abgeleiteter Entwicklungsbereiche oder *über-übergeordneter* Bereiche arbeiten.
 

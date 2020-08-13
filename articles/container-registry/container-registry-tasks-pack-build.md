@@ -4,12 +4,12 @@ description: Verwenden Sie den Befehl „az acr pack build“, um ein Containeri
 ms.topic: article
 ms.date: 10/24/2019
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 1892f4c20eb75e5e95140c829c49a708a81c2184
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: f99175165e01a9287a66c59957fc7a239b00393a
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87408015"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88077219"
 ---
 # <a name="build-and-push-an-image-from-an-app-using-a-cloud-native-buildpack"></a>Erstellen und Übertragen eines Images aus einer App mithilfe eines Cloud Native-Buildpacks
 
@@ -96,7 +96,7 @@ Navigieren Sie in Ihrem bevorzugten Browser zu `localhost:8080`, um die Beispiel
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nachdem Sie mithilfe des Befehls `az acr pack build` ein Containerimage erstellt und mithilfe von Push übertragen haben, können Sie es wie jedes andere Image für ein Ziel Ihrer Wahl bereitstellen. Zu den Azure-Bereitstellungsoptionen gehört unter anderem die Ausführung in [App Service](../app-service/containers/tutorial-custom-docker-image.md) oder [Azure Kubernetes Service](../aks/tutorial-kubernetes-deploy-cluster.md).
+Nachdem Sie mithilfe des Befehls `az acr pack build` ein Containerimage erstellt und mithilfe von Push übertragen haben, können Sie es wie jedes andere Image für ein Ziel Ihrer Wahl bereitstellen. Zu den Azure-Bereitstellungsoptionen gehört unter anderem die Ausführung in [App Service](../app-service/tutorial-custom-container.md) oder [Azure Kubernetes Service](../aks/tutorial-kubernetes-deploy-cluster.md).
 
 Weitere Informationen zu den ACR Tasks-Funktionen finden Sie unter [Automate container image builds and maintenance with ACR Tasks (Automatisieren der Erstellung und der Wartung von Containerimages mit ACR Tasks)](container-registry-tasks-overview.md).
 

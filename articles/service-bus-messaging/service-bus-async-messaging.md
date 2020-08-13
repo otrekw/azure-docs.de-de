@@ -3,12 +3,12 @@ title: Asynchrones Messaging mit Service Bus | Microsoft Docs
 description: Erfahren Sie, wie Azure Service Bus Asynchronität über einen Speicher- und Weiterleitungsmechanismus mit Warteschlangen, Themen und Abonnements unterstützt.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: b628dd72efe0280e688b602f873a3f01d15ef587
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0ea2a2f51d29f1a65926509581df49b453bde59f
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85337794"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067544"
 ---
 # <a name="asynchronous-messaging-patterns-and-high-availability"></a>Asynchrone Nachrichtenmuster und Hochverfügbarkeit
 
@@ -57,7 +57,7 @@ In diesen Fällen generiert die Clientanwendung eine Ausnahme des Typs [System.T
 Da Sie nun mit den Grundlagen des asynchronen Messagings in Service Bus vertraut sind, können Sie sich ausführlicher mit [Ausfällen und Notfällen][handling outages and disasters] beschäftigen.
 
 [ServerBusyException]: /dotnet/api/microsoft.servicebus.messaging.serverbusyexception
-[System.TimeoutException]: https://msdn.microsoft.com/library/system.timeoutexception.aspx
+[System.TimeoutException]: /dotnet/api/system.timeoutexception?view=netcore-3.1
 [MessagingException]: /dotnet/api/microsoft.servicebus.messaging.messagingexception
 [Best practices for insulating applications against Service Bus outages and disasters]: service-bus-outages-disasters.md
 [Microsoft.ServiceBus.Messaging.MessagingFactory]: /dotnet/api/microsoft.servicebus.messaging.messagingfactory
@@ -70,8 +70,8 @@ Da Sie nun mit den Grundlagen des asynchronen Messagings in Service Bus vertraut
 [NamespaceManager]: /dotnet/api/microsoft.servicebus.namespacemanager
 [PairNamespaceAsync]: /dotnet/api/microsoft.servicebus.messaging.messagingfactory
 [EnableSyphon]: /dotnet/api/microsoft.servicebus.messaging.sendavailabilitypairednamespaceoptions
-[System.TimeSpan.Zero]: https://msdn.microsoft.com/library/system.timespan.zero.aspx
+[System.TimeSpan.Zero]: /dotnet/api/system.timespan.zero?view=netcore-3.1
 [IsTransient]: /dotnet/api/microsoft.servicebus.messaging.messagingexception
-[UnauthorizedAccessException]: https://msdn.microsoft.com/library/system.unauthorizedaccessexception.aspx
+[UnauthorizedAccessException]: /dotnet/api/system.unauthorizedaccessexception?view=netcore-3.1
 [BacklogQueueCount]: /dotnet/api/microsoft.servicebus.messaging.sendavailabilitypairednamespaceoptions?redirectedfrom=MSDN
 [handling outages and disasters]: service-bus-outages-disasters.md

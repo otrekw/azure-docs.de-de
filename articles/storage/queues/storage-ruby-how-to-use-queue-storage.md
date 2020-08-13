@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: how-to
 ms.reviewer: dineshm
-ms.openlocfilehash: 518a1b01f52edcf5fa365e2275d4b995ffd719c6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ac47747f7789b23801900804522681e5a4b10e5a
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84805184"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88078698"
 ---
 # <a name="how-to-use-queue-storage-from-ruby"></a>Verwenden des Warteschlangenspeichers mit Ruby
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
@@ -29,7 +29,7 @@ Zu den Szenarien gehören das **Einfügen**, **Einsehen**, **Abrufen** und **Lö
 [!INCLUDE [storage-create-account-include](../../../includes/storage-create-account-include.md)]
 
 ## <a name="create-a-ruby-application"></a>Erstellen einer Ruby-Anwendung
-Erstellen Sie eine Ruby-Anwendung. Anweisungen finden Sie unter [Erstellen einer Ruby-App in App Service unter Linux](https://docs.microsoft.com/azure/app-service/containers/quickstart-ruby).
+Erstellen Sie eine Ruby-Anwendung. Anweisungen finden Sie unter [Erstellen einer Ruby-App in App Service unter Linux](https://docs.microsoft.com/azure/app-service/quickstart-ruby).
 
 ## <a name="configure-your-application-to-access-storage"></a>Konfigurieren der Anwendung für den Speicherzugriff
 Um den Azure-Speicher zu verwenden, müssen Sie das Ruby-Azure-Paket, das eine Reihe von Bibliotheken enthält, die mit den Speicher-REST-Diensten kommunizieren, herunterladen und verwenden.

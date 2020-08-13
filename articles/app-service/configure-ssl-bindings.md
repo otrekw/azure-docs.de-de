@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 04/30/2020
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: c93938db4632f6509e386d440c9be75596ea254f
-ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
+ms.openlocfilehash: fb62d4d2ca22b6043e63645006c2d60cf0b7859b
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82597894"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88078630"
 ---
 # <a name="secure-a-custom-dns-name-with-a-tlsssl-binding-in-azure-app-service"></a>Schützen eines benutzerdefinierten DNS-Namens mit einer TLS-/SSL-Bindung in Azure App Service
 
@@ -52,7 +52,7 @@ Im Rahmen dieser Schrittanleitung müssen Sie folgende Schritte durchführen:
 
 Führen Sie die folgenden Schritte aus:
 
-Wählen Sie im linken Menü des <a href="https://portal.azure.com" target="_blank">Azure-Portals</a> die Optionen **App Services** >  **\<App-Name>** aus.
+Wählen Sie im <a href="https://portal.azure.com" target="_blank">Azure-Portal</a> im linken Menü **App Services** >  **\<app-name>** aus.
 
 Öffnen Sie im linken Navigationsbereich Ihrer App das Dialogfeld **TLS-/SSL-Bindung**, indem Sie folgende Schritte ausführen:
 
@@ -153,7 +153,7 @@ Nach Abschluss des Vorgangs lehnt Ihre App alle Verbindungen mit niedrigerer TLS
 
 In App Service erfolgt die [TLS-Terminierung](https://wikipedia.org/wiki/TLS_termination_proxy) in den Modulen für den Netzwerklastenausgleich, sodass alle HTTPS-Anforderungen Ihre App unverschlüsselt erreichen. Wenn Ihre App-Logik überprüfen muss, ob Benutzeranforderungen verschlüsselt sind, können Sie dazu den Header `X-Forwarded-Proto` untersuchen.
 
-In sprachspezifischen Konfigurationsleitfäden (etwa unter [Konfigurieren einer Linux-Node.js-App für Azure App Service](containers/configure-language-nodejs.md#detect-https-session)) wird die Erkennung einer HTTPS-Sitzung in Ihrem Anwendungscode gezeigt.
+In sprachspezifischen Konfigurationsleitfäden (etwa unter [Konfigurieren einer Linux-Node.js-App für Azure App Service](configure-language-nodejs.md#detect-https-session)) wird die Erkennung einer HTTPS-Sitzung in Ihrem Anwendungscode gezeigt.
 
 ## <a name="automate-with-scripts"></a>Automatisieren mit Skripts
 

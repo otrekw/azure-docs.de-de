@@ -3,12 +3,12 @@ title: AMQP 1.0-Anforderungs-/Antwortvorgänge in Azure Service Bus
 description: In diesem Artikel wird die Liste der Vorgänge im Zusammenhang mit AMQP-Anforderungen und -Antworten in Microsoft Azure Service Bus definiert.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 82eb968cc952fab6e828c8b98f4ec2ba569b4441
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b845f4086ee1ac4fe868571c1754caf6d29b9021
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85337831"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88064413"
 ---
 # <a name="amqp-10-in-microsoft-azure-service-bus-request-response-based-operations"></a>AMQP 1.0 in Microsoft Azure Service Bus: anforderungs-/antwortbasierte Vorgänge
 
@@ -696,4 +696,4 @@ Klicken Sie auf die folgenden Links, um mehr über AMQP und Service Bus zu erfah
 
 [Übersicht über Service Bus AMQP]: service-bus-amqp-overview.md
 [AMQP 1.0 – Protokollleitfaden]: service-bus-amqp-protocol-guide.md
-[AMQP in Service Bus für Windows Server]: https://docs.microsoft.com/previous-versions/service-bus-archive/dn282144(v=azure.100)
+[AMQP in Service Bus für Windows Server]: /previous-versions/service-bus-archive/dn282144(v=azure.100)

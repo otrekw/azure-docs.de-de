@@ -4,12 +4,12 @@ description: In diesem Artikel wird erläutert, wie mit den Azure Service Bus-Ve
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 042edcd1851f86dd2a660673bc87884b68410bfb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 63a8f0f8ef299f9d27d3c1be2746052536c4e5e8
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85341723"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88066167"
 ---
 # <a name="service-bus-management-libraries"></a>Service Bus-Verwaltungsbibliotheken
 
@@ -26,11 +26,11 @@ Die Azure Service Bus-Verwaltungsbibliotheken können dynamisch Service Bus-Name
 
 Zur Verwendung der Service Bus-Verwaltungsbibliotheken müssen Sie sich zunächst beim Azure Active Directory-Dienst (Azure AD) authentifizieren. Azure AD erfordert, dass Sie sich als Dienstprinzipal authentifizieren. Dadurch erhalten Sie Zugriff auf Ihre Azure-Ressourcen. Informationen zum Erstellen eines Dienstprinzipals finden Sie in einem der folgenden Artikel:  
 
-* [Erstellen einer Active Directory-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff mithilfe des Portals](/azure/azure-resource-manager/resource-group-create-service-principal-portal)
-* [Erstellen eines Dienstprinzipals für den Zugriff auf Ressourcen mithilfe von Azure PowerShell](/azure/azure-resource-manager/resource-group-authenticate-service-principal)
-* [Erstellen eines Dienstprinzipals für den Zugriff auf Ressourcen mithilfe der Azure-Befehlszeilenschnittstelle](/azure/azure-resource-manager/resource-group-authenticate-service-principal-cli)
+* [Erstellen einer Active Directory-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff mithilfe des Portals](../active-directory/develop/howto-create-service-principal-portal.md)
+* [Erstellen eines Dienstprinzipals für den Zugriff auf Ressourcen mithilfe von Azure PowerShell](../active-directory/develop/howto-authenticate-service-principal-powershell.md)
+* [Erstellen eines Dienstprinzipals für den Zugriff auf Ressourcen mithilfe der Azure-Befehlszeilenschnittstelle](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest)
 
-In diesen Tutorials erhalten Sie Werte für `AppId` (Client-ID), `TenantId` und `ClientSecret` (Authentifizierungsschlüssel). Diese werden von den Verwaltungsbibliotheken für die Authentifizierung verwendet. Sie müssen mindestens über die Berechtigungen [**Datenbesitzer in Azure Service Bus**](/azure/role-based-access-control/built-in-roles#azure-service-bus-data-owner) oder [**Mitwirkender**](/azure/role-based-access-control/built-in-roles#contributor) für die Ressourcengruppe sein, für die die Ausführung erfolgen soll.
+In diesen Tutorials erhalten Sie Werte für `AppId` (Client-ID), `TenantId` und `ClientSecret` (Authentifizierungsschlüssel). Diese werden von den Verwaltungsbibliotheken für die Authentifizierung verwendet. Sie müssen mindestens über die Berechtigungen [**Datenbesitzer in Azure Service Bus**](../role-based-access-control/built-in-roles.md#azure-service-bus-data-owner) oder [**Mitwirkender**](../role-based-access-control/built-in-roles.md#contributor) für die Ressourcengruppe sein, für die die Ausführung erfolgen soll.
 
 ## <a name="programming-pattern"></a>Muster für die Programmierung
 

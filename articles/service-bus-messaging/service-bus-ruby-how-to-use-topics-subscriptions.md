@@ -6,12 +6,12 @@ documentationcenter: ruby
 ms.devlang: ruby
 ms.topic: quickstart
 ms.date: 06/23/2020
-ms.openlocfilehash: ef4bb8ba724a8ae1f708ab80a770a521f7879685
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.openlocfilehash: aba326a63558632bee3bf0c48d34e471bbe30886
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85336737"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067561"
 ---
 # <a name="quickstart-how-to-use-service-bus-topics-and-subscriptions-with-ruby"></a>Schnellstart: Verwenden von Service Bus-Themen und -Abonnements mit Ruby
  
@@ -62,7 +62,7 @@ Themenabonnements werden ebenfalls mit dem **Azure::ServiceBusService**-Objekt e
 
 Abonnements sind standardmäßig persistent. Sie existieren, bis sie selbst oder die ihnen zugeordneten Themen gelöscht werden. Wenn Ihre Anwendung Logik beinhaltet, sollte sie bei der Erstellung eines Abonnements zuerst mithilfe der getSubscription-Methode überprüfen, ob das Abonnement bereits vorhanden ist.
 
-Sie können angeben, dass Abonnements automatisch gelöscht werden sollen, indem Sie die [AutoDeleteOnIdle-Eigenschaft](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription.autodeleteonidle) festlegen.
+Sie können angeben, dass Abonnements automatisch gelöscht werden sollen, indem Sie die [AutoDeleteOnIdle-Eigenschaft](/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription.autodeleteonidle) festlegen.
 
 ### <a name="create-a-subscription-with-the-default-matchall-filter"></a>Erstellen eines Abonnements mit dem Standardfilter (MatchAll)
 Wenn beim Erstellen eines neuen Abonnements kein Filter angegeben wird, wird der Filter **MatchAll** (Standard) verwendet. Wenn der Filter **MatchAll** verwendet wird, werden alle für das Thema veröffentlichten Nachrichten in die virtuelle Warteschlange des Abonnements gestellt. Mit dem folgenden Beispiel wird ein Abonnement namens „all-messages“ erstellt, für das der Standardfilter **MatchAll** verwendet wird.
@@ -150,7 +150,7 @@ Zudem wird einer im Abonnement gesperrten Anwendung ein Zeitlimit zugeordnet. We
 Falls die Anwendung nach der Verarbeitung der Nachricht, aber vor dem Aufruf der Methode `delete_subscription_message()` abstürzt, wird die Nachricht wieder an die Anwendung zugestellt, wenn diese neu gestartet wird. Dies wird häufig als *at least once processing* bezeichnet und bedeutet, dass jede Nachricht mindestens einmal verarbeitet wird, wobei eine Nachricht in bestimmten Situationen unter Umständen erneut übermittelt wird. Wenn eine doppelte Verarbeitung im betreffenden Szenario nicht geeignet ist, sollten Anwendungsentwickler ihrer Anwendung zusätzliche Logik für den Umgang mit der Übermittlung doppelter Nachrichten hinzufügen. Diese Logik wird häufig durch Verwendung der Nachrichteneigenschaft `message_id` erreicht, die über mehrere Übermittlungsversuche hinweg konstant bleibt.
 
 ## <a name="delete-topics-and-subscriptions"></a>Löschen von Themen und Abonnements
-Themen und Abonnements sind persistent, sofern nicht die [AutoDeleteOnIdle-Eigenschaft](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription.autodeleteonidle) festgelegt ist. Sie können entweder über das [Azure-Portal][Azure portal] oder programmgesteuert gelöscht werden. Das folgende Beispiel zeigt das Löschen des Themas `test-topic`.
+Themen und Abonnements sind persistent, sofern nicht die [AutoDeleteOnIdle-Eigenschaft](/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription.autodeleteonidle) festgelegt ist. Sie können entweder über das [Azure-Portal][Azure portal] oder programmgesteuert gelöscht werden. Das folgende Beispiel zeigt das Löschen des Themas `test-topic`.
 
 ```ruby
 azure_service_bus_service.delete_topic("test-topic")

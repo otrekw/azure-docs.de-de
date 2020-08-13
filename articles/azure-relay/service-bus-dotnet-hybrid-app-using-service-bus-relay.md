@@ -3,12 +3,12 @@ title: Lokale oder cloudbasierte Hybridanwendung (.NET) mit Azure Windows Commun
 description: Erfahren Sie, wie Sie einen lokalen Windows Communication Foundation-Anwendungsdienst (WCF-Dienst) für eine Webanwendung in der Cloud mit Azure Relay verfügbar machen.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 78d250eb2572f137df4bcfd40c5c85cee9fb61dc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a9ac01beb28b1246122f437bcf1c7a7be7a1dfd9
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85314415"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88079959"
 ---
 # <a name="expose-an-on-premises-wcf-service-to-a-web-application-in-the-cloud-by-using-azure-relay"></a>Machen Sie einen lokalen Windows Communication Foundation-Anwendungsdienst (WCF-Dienst) für eine Webanwendung in der Cloud mit Azure Relay verfügbar.
 
@@ -244,7 +244,7 @@ In diesem Abschnitt erstellen Sie eine einfache ASP.NET-Anwendung, in der aus Ih
     ![Angeben des Authentifizierungstyps][18]
 
 1. Wählen Sie im Dialogfeld **Neue ASP.NET-Webanwendung erstellen** die Option **Erstellen** aus, um die MVC-App zu erstellen.
-1. Konfigurieren Sie die Azure-Ressourcen für eine neue Web-App. Befolgen Sie die Schritte unter [Veröffentlichen Ihrer Webanwendung](../app-service/app-service-web-get-started-dotnet-framework.md#launch-the-publish-wizard). Kehren Sie anschließend zu diesem Tutorial zurück, und fahren Sie mit dem nächsten Schritt fort.
+1. Konfigurieren Sie die Azure-Ressourcen für eine neue Web-App. Befolgen Sie die Schritte unter [Veröffentlichen Ihrer Webanwendung](../app-service/quickstart-dotnet-framework.md#launch-the-publish-wizard). Kehren Sie anschließend zu diesem Tutorial zurück, und fahren Sie mit dem nächsten Schritt fort.
 1. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf **Modelle**, und wählen Sie dann **Hinzufügen** > **Klasse** aus.
 1. Benennen Sie die Klasse *Produkt.cs*, und wählen Sie dann **Hinzufügen** aus.
 

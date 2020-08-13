@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 12/09/2019
 ms.author: madsd
 ms.custom: seodec18
-ms.openlocfilehash: 5e32baa10e98f0f57a861f8cebfb7506ad615631
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2bedd8d9ab0b879886042de3dc2fcff7f7b36f2f
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74979923"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080931"
 ---
 # <a name="application-gateway-integration-with-service-endpoints"></a>Application Gateway-Integration mit Dienstendpunkten
 Es gibt drei Varianten von App Service, die jeweils eine etwas andere Konfiguration der Integration mit Azure Application Gateway erfordern. Zu diesen Varianten zählen die reguläre App Service-Instanz (mehrinstanzenfähig) sowie ILB-ASE (Internal Load Balancer App Service Environment, App Service-Umgebung mit internem Lastenausgleich) und die externe ASE. In diesem Artikel erfahren Sie Schritt für Schritt, wie Sie die Konfiguration mit App Service (mehrinstanzenfähig) durchführen, und Sie finden Informationen zu ILB und externer ASE.
@@ -33,7 +33,7 @@ Diese Konfiguration umfasst zwei Teile (neben der Erstellung der App Service- u
 
 ## <a name="using-azure-portal"></a>Verwenden des Azure-Portals
 Im Azure-Portal müssen vier Schritte ausgeführt werden, um das Setup bereitzustellen und zu konfigurieren. Wenn Sie bereits über Ressourcen verfügen, können Sie die ersten Schritte überspringen.
-1. Erstellen Sie mithilfe einer der Schnellstartanleitungen aus der App Service-Dokumentation (beispielsweise [Erstellen von ASP.NET Core-Web-Apps in Azure](../../app-service/app-service-web-get-started-dotnet.md)) eine App Service-Instanz.
+1. Erstellen Sie mithilfe einer der Schnellstartanleitungen aus der App Service-Dokumentation (beispielsweise [Erstellen von ASP.NET Core-Web-Apps in Azure](../quickstart-dotnetcore.md)) eine App Service-Instanz.
 2. Erstellen Sie gemäß der Schnellstartanleitung [Weiterleiten von Webdatenverkehr per Azure Application Gateway – Azure-Portal](../../application-gateway/quick-create-portal.md) eine Application Gateway-Instanz, überspringen Sie dabei aber den Abschnitt „Hinzufügen von Back-End-Zielen“.
 3. Konfigurieren Sie [App Service als Back-End in Application Gateway](../../application-gateway/configure-web-app-portal.md), überspringen Sie dabei aber den Abschnitt „Beschränken des Zugriffs“.
 4. Erstellen Sie abschließend die [Zugriffseinschränkung mithilfe von Dienstendpunkten](../../app-service/app-service-ip-restrictions.md#service-endpoints).

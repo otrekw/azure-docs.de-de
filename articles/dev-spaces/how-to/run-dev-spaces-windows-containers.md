@@ -5,12 +5,12 @@ ms.date: 01/16/2020
 ms.topic: conceptual
 description: Erfahren Sie, wie Sie Azure Dev Spaces für einen vorhandenen Cluster mit Windows-Containern ausführen.
 keywords: Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container, Windows-Container
-ms.openlocfilehash: 0b3f221c9e62343a02ba8742e4cf988c7cf26c12
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: deee02bf13778950b934d87d02eb21068d89f323
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80240487"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88077049"
 ---
 # <a name="interact-with-windows-containers-using-azure-dev-spaces"></a>Interagieren mit Windows-Containern unter Verwendung von Azure Dev Spaces
 
@@ -179,6 +179,5 @@ Informieren Sie sich darüber, wie Azure Dev Spaces Sie bei der Entwicklung komp
 [sample-application-toleration-example]: https://github.com/Azure/dev-spaces/blob/master/samples/existingWindowsBackend/mywebapi-windows/charts/templates/deployment.yaml#L24-L27
 [team-development-qs]: ../quickstart-team-development.md
 [az-aks-get-credentials]: /cli/azure/aks?view=azure-cli-latest#az-aks-get-credentials
-[team-development]: ../team-development-netcore.md
 [using-taints]: ../../aks/use-multiple-node-pools.md#schedule-pods-using-taints-and-tolerations
 [windows-container-cli]: ../../aks/windows-container-cli.md

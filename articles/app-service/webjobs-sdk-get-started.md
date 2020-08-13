@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: 287b58f85cad0082ac782a20cdfb0b9b9ea810e7
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: a3b3e52b8386f212521f0fa1ca97cbd658374209
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83743619"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88078307"
 ---
 # <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Erste Schnitte mit dem Azure WebJobs SDK für die ereignisgesteuerte Hintergrundverarbeitung
 
@@ -310,7 +310,7 @@ In diesem Abschnitt führen Sie die folgenden Aufgaben zum Einrichten der Applic
 
 ### <a name="create-app-service-app-and-application-insights-instance"></a>Erstellen einer App Service-App und einer Application Insights-Instanz
 
-1. Wenn Sie noch nicht über eine App Service-App verfügen, die Sie verwenden können, [erstellen Sie eine](app-service-web-get-started-dotnet-framework.md). Beim Erstellen Ihrer App können Sie auch eine verbundene Application Insights-Ressource erstellen. Wenn Sie sich dazu entscheiden, wird das `APPINSIGHTS_INSTRUMENTATIONKEY`-Element in Ihrer App für Sie festgelegt.
+1. Wenn Sie noch nicht über eine App Service-App verfügen, die Sie verwenden können, [erstellen Sie eine](quickstart-dotnet-framework.md). Beim Erstellen Ihrer App können Sie auch eine verbundene Application Insights-Ressource erstellen. Wenn Sie sich dazu entscheiden, wird das `APPINSIGHTS_INSTRUMENTATIONKEY`-Element in Ihrer App für Sie festgelegt.
 
 1. Wenn Sie noch nicht über eine Application Insights-Ressource verfügen, die Sie verwenden können, [erstellen Sie eine](../azure-monitor/app/create-new-resource.md ). Legen Sie den **Anwendungstyp** auf **Allgemein** fest, und überspringen Sie die Abschnitte die dem Abschnitt **Kopieren des Instrumentierungsschlüssels** folgen.
 

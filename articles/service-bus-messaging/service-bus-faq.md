@@ -3,12 +3,12 @@ title: Häufig gestellte Fragen (FAQ) zu Azure Service Bus | Microsoft-Dokumenta
 description: Dieser Artikel bietet Antworten auf einige häufig gestellte Fragen (FAQ) zu Azure Service Bus.
 ms.topic: article
 ms.date: 07/15/2020
-ms.openlocfilehash: 04ff12d28be1dd232c5666b17d8a121f8020ca89
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: e098b05dba25a51d5d6ef7c50a1b73730828357a
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371242"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080812"
 ---
 # <a name="azure-service-bus---frequently-asked-questions-faq"></a>Häufig gestellte Fragen (FAQ) zu Azure Service Bus
 
@@ -57,7 +57,7 @@ Um die richtigen IP-Adressen zu ermitteln, die Sie in die Zulassungsliste für I
 1. Führen Sie den folgenden Befehl an einer Eingabeaufforderung aus: 
 
     ```
-    nslookup <YourNamespaceName>.cloudapp.net
+    nslookup <YourNamespaceName>.servicebus.windows.net
     ```
 2. Notieren Sie sich die IP-Adresse, die in `Non-authoritative answer` zurückgegeben werden. Diese IP-Adresse ist statisch. Sie würde sich nur dann ändern, wenn Sie den Namespace in einem anderen Cluster wiederherstellen.
 
@@ -66,7 +66,7 @@ Wenn Sie die Zonenredundanz für Ihren Namespace verwenden, müssen Sie einige z
 1. Führen Sie zunächst nslookup für den Namespace aus.
 
     ```
-    nslookup <yournamespace>.cloudapp.net
+    nslookup <yournamespace>.servicebus.windows.net
     ```
 2. Notieren Sie sich den Namen im Abschnitt **non-authoritative answer** (nicht autorisierende Antwort), der in einem der folgenden Formate vorliegt: 
 

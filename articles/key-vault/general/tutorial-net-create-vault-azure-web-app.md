@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 05/06/2020
 ms.author: mbaldwin
-ms.openlocfilehash: a198456412c3146db2bc3e2a2483377e387f452d
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.openlocfilehash: b957ea9131c5124925b74576fd78665522afd8dc
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87513331"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080231"
 ---
 # <a name="tutorial-use-a-managed-identity-to-connect-key-vault-to-an-azure-web-app-with-net"></a>Tutorial: Verwenden einer verwalteten Identität, um eine Verbindung zwischen Key Vault und einer Azure-Web-App mit .NET herzustellen
 
@@ -140,7 +140,7 @@ Nach Erstellung des App Service-Plans zeigt die Azure-Befehlszeilenschnittstelle
 
 ### <a name="create-a-remote-web-app"></a>Erstellen einer Remote-Web-App
 
-Erstellen Sie eine [Azure-Web-App](../../app-service/containers/app-service-linux-intro.md) im App Service-Plan `myAppServicePlan`. 
+Erstellen Sie eine [Azure-Web-App](../../app-service/overview.md#app-service-on-linux) im App Service-Plan `myAppServicePlan`. 
 
 > [!Important]
 > Eine Azure-Web-App muss genau wie eine Key Vault-Instanz einen eindeutigen Namen haben. Ersetzen Sie in den folgenden Beispielen \<your-webapp-name\> durch den Namen Ihrer Web-App.

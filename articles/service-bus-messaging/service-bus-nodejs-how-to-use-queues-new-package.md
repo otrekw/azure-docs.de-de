@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 06/23/2020
 ms.author: spelluru
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 63b8c33b61d6bff28eca98929e344df7ea54e779
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: c082eff4f70b0255b7701340ac6e8b377223c0b5
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87430677"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88076862"
 ---
 # <a name="quickstart-how-to-use-service-bus-queues-with-nodejs-and-the-azureservice-bus-package"></a>Schnellstart: Verwenden von Service Bus-Warteschlangen mit Node.js und dem Paket „azure/service-bus“
 In diesem Tutorial erfahren Sie, wie Sie ein Node.js-Programm schreiben, um Nachrichten mithilfe des neuen [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus)-Pakets an eine Service Bus-Warteschlange zu senden und Antworten zu empfangen. Dieses Paket verwendet das schnellere [Advance Message Queueing Protocol 1.0](service-bus-amqp-overview.md). Im Gegensatz dazu hat das ältere Paket [azure-sb](https://www.npmjs.com/package/azure-sb) die [Service Bus-REST-Laufzeit-APIs](/rest/api/servicebus/service-bus-runtime-rest) verwendet. Die Beispiele sind in JavaScript geschrieben.
@@ -22,7 +22,7 @@ In diesem Tutorial erfahren Sie, wie Sie ein Node.js-Programm schreiben, um Nach
 - Wenn Sie über keine Warteschlange verfügen, führen Sie die Schritte im Artikel [Schnellstart: Erstellen einer Service Bus-Warteschlange mithilfe des Azure-Portals](service-bus-quickstart-portal.md) aus, um eine Warteschlange zu erstellen. Notieren Sie sich die Verbindungszeichenfolge für Ihre Service Bus-Instanz und den Namen der Warteschlange, die Sie erstellt haben. Diese Werte benötigen Sie für die Beispiele.
 
 > [!NOTE]
-> - Dieses Tutorial funktioniert für die Beispiele, die Sie mit [Node.js](https://nodejs.org/) kopieren und ausführen können. Anweisungen zum Erstellen von Node.js-Anwendungen finden Sie unter [Erstellen einer Node.js-Web-App in Azure](../app-service/app-service-web-get-started-nodejs.md) und [Erstellen und Bereitstellen einer Node.js-Anwendung in einem Azure-Clouddienst](../cloud-services/cloud-services-nodejs-develop-deploy-app.md).
+> - Dieses Tutorial funktioniert für die Beispiele, die Sie mit [Node.js](https://nodejs.org/) kopieren und ausführen können. Anweisungen zum Erstellen von Node.js-Anwendungen finden Sie unter [Erstellen einer Node.js-Web-App in Azure](../app-service/quickstart-nodejs.md) und [Erstellen und Bereitstellen einer Node.js-Anwendung in einem Azure-Clouddienst](../cloud-services/cloud-services-nodejs-develop-deploy-app.md).
 > - Das neue [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus)-Paket unterstützt die Erstellung von Warteschlangen noch nicht. Wenn Sie sie programmgesteuert erstellen möchten, verwenden Sie das Paket [@azure/arm-servicebus](https://www.npmjs.com/package/@azure/arm-servicebus).
 
 ### <a name="use-node-package-manager-npm-to-install-the-package"></a>Verwenden des Node-Paket-Managers (NPM) zum Installieren des Pakets
@@ -33,7 +33,7 @@ npm install @azure/service-bus
 ```
 
 ## <a name="send-messages-to-a-queue"></a>Senden von Nachrichten an eine Warteschlange
-Die Interaktion mit einer Service Bus-Warteschlange beginnt damit, die [ServiceBusClient](https://docs.microsoft.com/javascript/api/@azure/service-bus/servicebusclient)-Klasse zu instanziieren und diese zum Instanziieren der [QueueClient](https://docs.microsoft.com/javascript/api/%40azure/service-bus/queueclient)-Klasse zu verwenden. Sobald Sie über den Warteschlangenclient verfügen, können Sie einen Sender erstellen und mit diesem die Methoden [send](https://docs.microsoft.com/javascript/api/%40azure/service-bus/sender#send-sendablemessageinfo-) oder [sendBatch](https://docs.microsoft.com/javascript/api/@azure/service-bus/sender#sendbatch-sendablemessageinfo---) zum Senden von Nachrichten verwenden.
+Die Interaktion mit einer Service Bus-Warteschlange beginnt damit, die [ServiceBusClient](/javascript/api/@azure/service-bus/servicebusclient)-Klasse zu instanziieren und diese zum Instanziieren der [QueueClient](/javascript/api/@azure/service-bus/queueclient)-Klasse zu verwenden. Sobald Sie über den Warteschlangenclient verfügen, können Sie einen Sender erstellen und mit diesem die Methoden [send](/javascript/api/@azure/service-bus/sender#send-sendablemessageinfo-) oder [sendBatch](/javascript/api/@azure/service-bus/sender#sendbatch-sendablemessageinfo---) zum Senden von Nachrichten verwenden.
 
 1. Öffnen Sie Ihren bevorzugten Editor, z. B. [Visual Studio Code](https://code.visualstudio.com/).
 2. Erstellen Sie eine Datei namens `send.js`, und fügen Sie den folgenden Code ein. Dieser Code sendet 10 Nachrichten an Ihre Warteschlange.
@@ -83,7 +83,7 @@ Nachrichten verfügen über einige Standardeigenschaften wie `label` und `messag
 Service Bus-Warteschlangen unterstützen eine maximale Nachrichtengröße von 256 KB für den [Standard-Tarif](service-bus-premium-messaging.md) und 1 MB für den [Premium-Tarif](service-bus-premium-messaging.md). Bei der Anzahl der Nachrichten, die in einer Warteschlange enthalten sein können, besteht keine Beschränkung. Allerdings gilt eine Obergrenze bei der Gesamtgröße der in einer Warteschlange enthaltenen Nachrichten. Die Warteschlangengröße wird bei der Erstellung definiert. Die Obergrenze beträgt 5 GB. Weitere Informationen zu Kontingenten finden Sie unter [Service Bus-Kontingente](service-bus-quotas.md).
 
 ## <a name="receive-messages-from-a-queue"></a>Empfangen von Nachrichten aus einer Warteschlange
-Die Interaktion mit einer Service Bus-Warteschlange beginnt damit, die [ServiceBusClient](https://docs.microsoft.com/javascript/api/@azure/service-bus/servicebusclient)-Klasse zu instanziieren und diese zum Instanziieren der [QueueClient](https://docs.microsoft.com/javascript/api/%40azure/service-bus/queueclient)-Klasse zu verwenden. Sobald Sie über den Warteschlangenclient verfügen, können Sie einen Empfänger erstellen und mit diesem die Methoden [receiveMessages](https://docs.microsoft.com/javascript/api/%40azure/service-bus/receiver#receivemessages-number--undefined---number-) oder [registerMessageHandler](https://docs.microsoft.com/javascript/api/%40azure/service-bus/receiver#registermessagehandler-onmessage--onerror--messagehandleroptions-) zum Empfangen von Nachrichten verwenden.
+Die Interaktion mit einer Service Bus-Warteschlange beginnt damit, die [ServiceBusClient](/javascript/api/@azure/service-bus/servicebusclient)-Klasse zu instanziieren und diese zum Instanziieren der [QueueClient](/javascript/api/@azure/service-bus/queueclient)-Klasse zu verwenden. Sobald Sie über den Warteschlangenclient verfügen, können Sie einen Empfänger erstellen und mit diesem die Methoden [receiveMessages](/javascript/api/@azure/service-bus/receiver#receivemessages-number--undefined---number-) oder [registerMessageHandler](/javascript/api/@azure/service-bus/receiver#registermessagehandler-onmessage--onerror--messagehandleroptions-) zum Empfangen von Nachrichten verwenden.
 
 1. Öffnen Sie Ihren bevorzugten Editor, z. B. [Visual Studio Code](https://code.visualstudio.com/).
 2. Erstellen Sie eine Datei namens `recieve.js`, und fügen Sie den folgenden Code ein. Dieser Code versucht, 10 Nachrichten aus Ihrer Warteschlange zu empfangen. Die tatsächliche Anzahl der empfangenen Nachrichten hängt von der Anzahl der Nachrichten in der Warteschlange und der Netzwerklatenz ab.
@@ -119,7 +119,7 @@ Die Interaktion mit einer Service Bus-Warteschlange beginnt damit, die [ServiceB
 
 Glückwunsch! Sie haben soeben Nachrichten aus einer Service Bus-Warteschlange erhalten.
 
-Die [createReceiver](https://docs.microsoft.com/javascript/api/%40azure/service-bus/queueclient#createreceiver-receivemode-)-Methode verwendet `ReceiveMode` (eine Enumeration mit den Werten [ReceiveAndDelete](message-transfers-locks-settlement.md#settling-receive-operations) und [PeekLock](message-transfers-locks-settlement.md#settling-receive-operations)). Denken Sie daran, [Ihre Nachrichten abzugleichen](message-transfers-locks-settlement.md#settling-receive-operations), wenn Sie den `PeekLock`-Modus verwenden, indem Sie die Methode `complete()`, `abandon()`, `defer()` oder `deadletter()` für die Nachricht verwenden.
+Die [createReceiver](/javascript/api/@azure/service-bus/queueclient#createreceiver-receivemode-)-Methode verwendet `ReceiveMode` (eine Enumeration mit den Werten [ReceiveAndDelete](message-transfers-locks-settlement.md#settling-receive-operations) und [PeekLock](message-transfers-locks-settlement.md#settling-receive-operations)). Denken Sie daran, [Ihre Nachrichten abzugleichen](message-transfers-locks-settlement.md#settling-receive-operations), wenn Sie den `PeekLock`-Modus verwenden, indem Sie die Methode `complete()`, `abandon()`, `defer()` oder `deadletter()` für die Nachricht verwenden.
 
 > [!NOTE]
 > Sie können Service Bus-Ressourcen mit dem [Service Bus-Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/) verwalten. Mit dem Service Bus-Explorer können Benutzer eine Verbindung mit einem Service Bus-Namespace herstellen und Messagingentitäten auf einfache Weise verwalten. Das Tool stellt erweiterte Features wie Import-/Exportfunktionen oder Testmöglichkeiten für Themen, Warteschlangen, Abonnements, Relaydienste, Notification Hubs und Event Hubs zur Verfügung. 
@@ -129,4 +129,3 @@ Weitere Informationen finden Sie in den folgenden Ressourcen.
 - [Service Bus-Warteschlangen, -Themen und -Abonnements](service-bus-queues-topics-subscriptions.md)
 - Weitere [Node.js-Beispiele für Service Bus auf GitHub](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/servicebus/service-bus/samples/javascript)
 - [Node.js Developer Center (in englischer Sprache)](https://azure.microsoft.com/develop/nodejs/)
-

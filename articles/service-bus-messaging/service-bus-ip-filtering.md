@@ -3,12 +3,12 @@ title: Konfigurieren von IP-Firewallregeln für Azure Service Bus
 description: Hier erfahren Sie, wie Sie mithilfe von Firewallregeln Verbindungen von bestimmten IP-Adressen mit Azure Service Bus zulassen.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: e9b39f1b163a894bf4831662ac050463086133d5
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: 699ece2e78ff0605ff4076b09c023d14e289b1f7
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87552916"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88064637"
 ---
 # <a name="allow-access-to-azure-service-bus-namespace-from-specific-ip-addresses-or-ranges"></a>Zulassen des Zugriffs auf den Azure Service Bus-Namespace von bestimmten IP-Adressen oder -Adressbereichen
 Standardmäßig kann über das Internet auf Service Bus-Namespaces zugegriffen werden, solange die Anforderung eine gültige Authentifizierung und Autorisierung aufweist. Mit der IP-Firewall können Sie den Zugriff auf eine Gruppe von IPv4-Adressen oder IPv4-Adressbereichen in der [CIDR-Notation (Classless Inter-Domain Routing)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) weiter einschränken.
@@ -164,4 +164,4 @@ Informationen zum Einschränken des Service Bus-Zugriffs für virtuelle Azure-Ne
 
 [lnk-deploy]: ../azure-resource-manager/templates/deploy-powershell.md
 [lnk-vnet]: service-bus-service-endpoints.md
-[express-route]:  /azure/expressroute/expressroute-faqs#supported-services
+[express-route]:  ../expressroute/expressroute-faqs.md#supported-services

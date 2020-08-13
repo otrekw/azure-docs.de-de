@@ -290,12 +290,16 @@
                   href: customize-encoder-presets-how-to.md
                 - name: Erstellen einer Überlagerungstransformation
                   href: how-to-create-overlay.md
+                - name: Generieren von Miniaturansichten mit .NET
+                  href: media-services-generate-thumbnails-dotnet.md
             - name: Mit der Befehlszeilenschnittstelle
               displayName: 'encode, encoding, custom, transform'
               href: custom-preset-cli-howto.md
             - name: Mit REST
               displayName: 'encode, encoding, custom, transform'
               href: custom-preset-rest-howto.md
+            - name: Generieren von Miniaturansichten mit REST
+              href: media-services-generate-thumbnails-rest.md
         - name: Erstellen von Subclips für ein Video
           items:
             - name: Mit .NET
@@ -374,7 +378,7 @@
       displayName: schema
     - name: REST
       href: /rest/api/media/
-    - name: Azure-Befehlszeilenschnittstelle
+    - name: Azure CLI
       href: 'https://aka.ms/ams-v3-cli-ref'
     - name: SDKs
       items:
@@ -411,7 +415,7 @@
       href: 'https://aka.ms/ams-v3-rest-sdk'
     - name: SDKs/Tools
       items:
-        - name: Azure-Befehlszeilenschnittstelle
+        - name: Azure CLI
           href: 'https://aka.ms/ams-v3-cli'
         - name: .NET
           href: 'https://aka.ms/ams-v3-dotnet-sdk'

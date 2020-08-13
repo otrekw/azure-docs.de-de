@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 07/10/2019
 ms.author: cephalin
 ms.custom: include file
-ms.openlocfilehash: 95f0e542022f64a5a5bf7d7009c79382e25392df
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: d76bcf7e7b251f8c371658d8fca34f4162fe0b87
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "86035828"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080044"
 ---
-Erstellen Sie eine [Web-App](../articles/app-service/containers/app-service-linux-intro.md) im App Service-Plan `myAppServicePlan`. 
+Erstellen Sie eine [Web-App](../articles/app-service/overview.md#app-service-on-linux) im App Service-Plan `myAppServicePlan`. 
 
 In Cloud Shell können Sie den Befehl [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest) verwenden. Ersetzen Sie im folgenden Beispiel `<app-name>` durch einen global eindeutigen App-Namen (gültige Zeichen sind `a-z`, `0-9` und `-`). Die Runtime ist auf `RUBY|2.6.2` festgelegt. Führen Sie [`az webapp list-runtimes --linux`](/cli/azure/webapp?view=azure-cli-latest) aus, um alle unterstützten Laufzeiten anzuzeigen. 
 

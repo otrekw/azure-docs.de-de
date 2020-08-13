@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 06/23/2020
 ms.author: spelluru
 ms.custom: seo-javascript-september2019, seo-javascript-october2019, devx-track-javascript
-ms.openlocfilehash: 076233c52074bca646c072e9a1abe63b15412c1b
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: ba0fd6cf7214beeaca9e93b1fe003a144c247cb5
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87430648"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88076998"
 ---
 # <a name="quickstart-use-service-bus-queues-in-azure-with-nodejs-and-the-azure-sb-package"></a>Schnellstart: Verwenden von Service Bus-Warteschlangen in Azure mit Node.js und dem Paket „azure-sb“
 In diesem Tutorial erfahren Sie, wie Sie Node.js-Anwendungen erstellen, um Nachrichten mithilfe des Pakets [azure-sb](https://www.npmjs.com/package/azure-sb) an eine Azure Service Bus-Warteschlange zu senden und Antworten zu empfangen. Die Beispiele sind in JavaScript geschrieben und verwenden das [Azure-Modul](https://www.npmjs.com/package/azure) von Node.js, das intern das Paket „azure-sb“ verwendet.
@@ -20,7 +20,7 @@ In diesem Tutorial erfahren Sie, wie Sie Node.js-Anwendungen erstellen, um Nachr
 > [!IMPORTANT]
 > Das [azure-sb](https://www.npmjs.com/package/azure-sb)-Paket verwendet [Service Bus-REST-Laufzeit-APIs](/rest/api/servicebus/service-bus-runtime-rest). Sie können die Funktionalität beschleunigen, wenn Sie das neue [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) verwenden, das das schnellere Protokoll [AMQP 1.0](service-bus-amqp-overview.md) nutzt. 
 > 
-> Weitere Informationen zu diesem neuen Paket finden Sie unter [How to use Service Bus queues with Node.js and @azure/service-bus package (Verwenden von Service Bus-Warteschlangen mit Node.js und dem Paket „@azure/service-bus“)](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-nodejs-how-to-use-queues-new-package), oder Sie lesen hier weiter, um zu erfahren, wie das [azure](https://www.npmjs.com/package/azure)-Paket verwendet wird.
+> Weitere Informationen zu diesem neuen Paket finden Sie unter [How to use Service Bus queues with Node.js and @azure/service-bus package (Verwenden von Service Bus-Warteschlangen mit Node.js und dem Paket „@azure/service-bus“)](./service-bus-nodejs-how-to-use-queues-new-package.md), oder Sie lesen hier weiter, um zu erfahren, wie das [azure](https://www.npmjs.com/package/azure)-Paket verwendet wird.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 - Ein Azure-Abonnement. Um dieses Tutorial abzuschließen, benötigen Sie ein Azure-Konto. Sie können Ihre [MSDN-Abonnentenvorteile](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) aktivieren oder sich für ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF) registrieren.
@@ -193,6 +193,6 @@ Weitere Informationen zu Warteschlangen finden Sie in den folgenden Ressourcen:
 
 [Node.js Cloud Service]: ../cloud-services/cloud-services-nodejs-develop-deploy-app.md
 [Queues, topics, and subscriptions]: service-bus-queues-topics-subscriptions.md
-[Create and deploy a Node.js application to an Azure Website]: ../app-service/app-service-web-get-started-nodejs.md
+[Create and deploy a Node.js application to an Azure Website]: ../app-service/quickstart-nodejs.md
 [Node.js Web Application with Storage]:../cosmos-db/table-storage-how-to-use-nodejs.md
 [Service Bus quotas]: service-bus-quotas.md

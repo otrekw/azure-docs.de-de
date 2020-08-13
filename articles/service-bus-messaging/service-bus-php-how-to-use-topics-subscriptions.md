@@ -4,12 +4,12 @@ description: In diesem Tutorial erfahren Sie, wie Sie Azure Service Bus-Themen
 ms.devlang: PHP
 ms.topic: quickstart
 ms.date: 06/23/2020
-ms.openlocfilehash: f2161d39961cc52bc0f0da509abec3ed6377cc07
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.openlocfilehash: 706f523fdfb3c710bb16b048cfc68ce98875adb1
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85341087"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88066201"
 ---
 # <a name="quickstart-how-to-use-service-bus-topics-and-subscriptions-with-php"></a>Schnellstart: Verwenden von Service Bus-Themen und -Abonnements mit PHP
 
@@ -261,13 +261,13 @@ for($i = 0; $i < 5; $i++){
 Service Bus-Themen unterstützen eine maximale Nachrichtengröße von 256 KB im [Standard-Tarif](service-bus-premium-messaging.md) und 1 MB im [Premium-Tarif](service-bus-premium-messaging.md). Der Header, der die standardmäßigen und benutzerdefinierten Anwendungseigenschaften enthält, kann eine maximale Größe von 64 KB haben. Es gibt keine Beschränkung für die Anzahl der Nachrichten, die ein Thema enthält. Es gibt jedoch eine Obergrenze für die Gesamtgröße der Nachrichten eines Themas. Die Obergrenze für die Themengröße beträgt 5 GB. Weitere Informationen zu Kontingenten finden Sie unter [Service Bus-Kontingente][Service Bus quotas].
 
 ## <a name="receive-messages-from-a-subscription"></a>Empfangen von Nachrichten aus einem Abonnement
-Die beste Vorgehensweise zum Empfangen von Nachrichten aus einem Abonnement ist die Verwendung einer `ServiceBusRestProxy->receiveSubscriptionMessage`-Methode. Nachrichten können in zwei unterschiedlichen Modi empfangen werden: [*ReceiveAndDelete* und *PeekLock*](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.receivemode). **PeekLock** ist die Standardeinstellung.
+Die beste Vorgehensweise zum Empfangen von Nachrichten aus einem Abonnement ist die Verwendung einer `ServiceBusRestProxy->receiveSubscriptionMessage`-Methode. Nachrichten können in zwei unterschiedlichen Modi empfangen werden: [*ReceiveAndDelete* und *PeekLock*](/dotnet/api/microsoft.servicebus.messaging.receivemode). **PeekLock** ist die Standardeinstellung.
 
-Bei Verwendung des [ReceiveAndDelete](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.receivemode)-Modus ist der Nachrichtenempfang ein Single-Shot-Vorgang. Dies bedeutet: Wenn Service Bus eine Leseanforderung für eine Nachricht in einem Abonnement erhält, wird die Nachricht als verarbeitet gekennzeichnet und an die Anwendung zurückgesendet. Der [ReceiveAndDelete](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.receivemode)*-Modus ist das einfachste Modell. Er wird am besten für Szenarios eingesetzt, bei denen eine Anwendung tolerieren kann, wenn eine Nachricht bei Auftreten eines Fehlers nicht verarbeitet wird. Um dieses Verfahren zu verstehen, stellen Sie sich ein Szenario vor, in dem der Consumer die Empfangsanforderung ausstellt und dann abstürzt, bevor diese verarbeitet wird. Da die Nachricht von Service Bus als verarbeitet gekennzeichnet wurde, wird die vor dem Absturz verarbeitete Nachricht nicht berücksichtigt, wenn die Anwendung neu gestartet und die Verarbeitung von Nachrichten wieder aufgenommen wird.
+Bei Verwendung des [ReceiveAndDelete](/dotnet/api/microsoft.servicebus.messaging.receivemode)-Modus ist der Nachrichtenempfang ein Single-Shot-Vorgang. Dies bedeutet: Wenn Service Bus eine Leseanforderung für eine Nachricht in einem Abonnement erhält, wird die Nachricht als verarbeitet gekennzeichnet und an die Anwendung zurückgesendet. Der [ReceiveAndDelete](/dotnet/api/microsoft.servicebus.messaging.receivemode)*-Modus ist das einfachste Modell. Er wird am besten für Szenarios eingesetzt, bei denen eine Anwendung tolerieren kann, wenn eine Nachricht bei Auftreten eines Fehlers nicht verarbeitet wird. Um dieses Verfahren zu verstehen, stellen Sie sich ein Szenario vor, in dem der Consumer die Empfangsanforderung ausstellt und dann abstürzt, bevor diese verarbeitet wird. Da die Nachricht von Service Bus als verarbeitet gekennzeichnet wurde, wird die vor dem Absturz verarbeitete Nachricht nicht berücksichtigt, wenn die Anwendung neu gestartet und die Verarbeitung von Nachrichten wieder aufgenommen wird.
 
-Im standardmäßigen [PeekLock](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.receivemode)-Modus ist der Nachrichtenempfang zweistufig. Dadurch können Anwendungen ohne Toleranz für fehlende Nachrichten unterstützt werden. Wenn Service Bus eine Anfrage erhält, ermittelt der Dienst die nächste zu verarbeitende Nachricht, sperrt diese, um zu verhindern, dass andere Consumer sie erhalten, und sendet sie dann zurück an die Anwendung. Nachdem die Anwendung die Verarbeitung der Nachricht abgeschlossen (oder sie zur späteren Verarbeitung zuverlässig gespeichert) hat, führt Sie die zweite Phase des Empfangsprozesses aus, indem sie die empfangene Nachricht an `ServiceBusRestProxy->deleteMessage` übergibt. Wenn Service Bus den `deleteMessage`-Aufruf registriert, wird die Nachricht als verarbeitet markiert und aus der Warteschlange entfernt.
+Im standardmäßigen [PeekLock](/dotnet/api/microsoft.servicebus.messaging.receivemode)-Modus ist der Nachrichtenempfang zweistufig. Dadurch können Anwendungen ohne Toleranz für fehlende Nachrichten unterstützt werden. Wenn Service Bus eine Anfrage erhält, ermittelt der Dienst die nächste zu verarbeitende Nachricht, sperrt diese, um zu verhindern, dass andere Consumer sie erhalten, und sendet sie dann zurück an die Anwendung. Nachdem die Anwendung die Verarbeitung der Nachricht abgeschlossen (oder sie zur späteren Verarbeitung zuverlässig gespeichert) hat, führt Sie die zweite Phase des Empfangsprozesses aus, indem sie die empfangene Nachricht an `ServiceBusRestProxy->deleteMessage` übergibt. Wenn Service Bus den `deleteMessage`-Aufruf registriert, wird die Nachricht als verarbeitet markiert und aus der Warteschlange entfernt.
 
-Das folgende Beispiel zeigt, wie eine Nachricht mit dem (standardmäßigen) [PeekLock](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.receivemode)-Modus empfangen und verarbeitet wird. 
+Das folgende Beispiel zeigt, wie eine Nachricht mit dem (standardmäßigen) [PeekLock](/dotnet/api/microsoft.servicebus.messaging.receivemode)-Modus empfangen und verarbeitet wird. 
 
 ```php
 require_once 'vendor/autoload.php';

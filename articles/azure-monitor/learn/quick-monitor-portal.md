@@ -7,18 +7,18 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 06/26/2019
 ms.custom: mvc
-ms.openlocfilehash: 074010a2f3b1f4f4a58b3c4727bf4eed28402e0a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ed7cec34b4bca1882d069997d4f89677cda32447
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82142630"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080948"
 ---
 # <a name="start-monitoring-your-aspnet-web-application"></a>Starten der Überwachung Ihrer ASP.NET-Webanwendung
 
 Mit Azure Application Insights können Sie die Verfügbarkeit, Leistung und Nutzung Ihrer Webanwendung ganz einfach überwachen.  Sie können auch Fehler in Ihrer Anwendung schnell erkennen und diagnostizieren, ohne darauf warten zu müssen, dass diese Fehler von Benutzern gemeldet werden.  Mit den Informationen, die Sie in Application Insights über die Leistung und Effizienz Ihrer App sammeln, können Sie fundierte Entscheidungen zur Wartung und Verbesserung der Anwendung treffen.
 
-Diese Schnellstartanleitung zeigt, wie Sie Application Insights zu einer vorhandenen ASP.NET-Webanwendung hinzufügen und mit der Analyse von Livestatistiken beginnen, einer der vielen Methoden, mit denen Sie Ihre Anwendung analysieren können. Wenn Sie noch nicht über eine ASP.NET-Webanwendung verfügen, können Sie mithilfe der Schnellstartanleitung unter [Erstellen einer ASP.NET-Web-App](../../app-service/app-service-web-get-started-dotnet-framework.md) eine erstellen.
+Diese Schnellstartanleitung zeigt, wie Sie Application Insights zu einer vorhandenen ASP.NET-Webanwendung hinzufügen und mit der Analyse von Livestatistiken beginnen, einer der vielen Methoden, mit denen Sie Ihre Anwendung analysieren können. Wenn Sie noch nicht über eine ASP.NET-Webanwendung verfügen, können Sie mithilfe der Schnellstartanleitung unter [Erstellen einer ASP.NET-Web-App](../../app-service/quickstart-dotnet-framework.md) eine erstellen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 So führen Sie diesen Schnellstart durch:
@@ -76,7 +76,7 @@ Sie können jetzt Application Insights im Azure-Portal öffnen, um verschiedene 
 
     ![Live Stream](media/quick-monitor-portal/7livemetrics.png)
 
-    Wenn Sie bereit sind, Ihre Anwendung in Azure zu hosten, können Sie sie jetzt veröffentlichen. Führen Sie die in der Schnellstartanleitung [Erstellen einer ASP.NET-Web-App](../../app-service/app-service-web-get-started-dotnet.md#update-the-app-and-redeploy) beschriebenen Schritte aus.
+    Wenn Sie bereit sind, Ihre Anwendung in Azure zu hosten, können Sie sie jetzt veröffentlichen. Führen Sie die in der Schnellstartanleitung [Erstellen einer ASP.NET-Web-App](../../app-service/quickstart-dotnetcore.md#update-the-app-and-redeploy) beschriebenen Schritte aus.
 
 5. Wenn Sie die Application Insights-Überwachung mithilfe von Visual Studio hinzufügen, können Sie die clientseitige Überwachung automatisch hinzufügen. Um die clientseitige Überwachung manuell einer Anwendung hinzuzufügen, fügen Sie Ihrer Anwendung den folgenden JavaScript-Code hinzu:
 

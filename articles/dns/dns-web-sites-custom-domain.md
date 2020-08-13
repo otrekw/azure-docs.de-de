@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: tutorial
 ms.date: 3/11/2019
 ms.author: rohink
-ms.openlocfilehash: 8722a52a097f7f830287d125a4e56e9bbcb9f932
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 7a250eaeb8ac4d0c8cacfb1748855700c9986bf5
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76939099"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88079449"
 ---
 # <a name="tutorial-create-dns-records-in-a-custom-domain-for-a-web-app"></a>Tutorial: Erstellen von DNS-Einträgen in einer benutzerdefinierten Domäne für eine Web-App 
 
@@ -48,7 +48,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 * Sie müssen über einen Domänennamen zum Testen verfügen, den Sie in Azure DNS hosten können. Sie müssen uneingeschränkte Kontrolle über diese Domäne haben. Das bedeutet, Sie müssen unter anderem die Namenservereinträge für die Domäne festlegen können.
-* [Erstellen Sie eine App Service-App](../app-service/app-service-web-get-started-html.md), oder verwenden Sie eine App, die Sie für ein anderes Tutorial erstellt haben.
+* [Erstellen Sie eine App Service-App](../app-service/quickstart-html.md), oder verwenden Sie eine App, die Sie für ein anderes Tutorial erstellt haben.
 
 * Erstellen Sie in Azure DNS eine DNS-Zone, und delegieren Sie die Zone in Ihrer Registrierungsstelle an Azure DNS.
 

@@ -3,12 +3,12 @@ title: Verwenden von DevTest Labs in Build- und Releasepipelines in Azure Pipeli
 description: Erfahren Sie, wie Sie Azure DevTest Labs in Build- und Releasepipelines in Azure Pipelines verwenden.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 71af1e0dfe205fe1028f7b82b41f3ed38ebefd3c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d04ed5dd7bebac0c8f24deb9145c3d2e4b77122e
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85483073"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080333"
 ---
 # <a name="use-devtest-labs-in-azure-pipelines-build-and-release-pipelines"></a>Verwenden von DevTest Labs in Build- und Releasepipelines in Azure Pipelines
 Dieser Artikel enthält Informationen dazu, wie DevTest Labs in Build- und Releasepipelines in Azure Pipelines verwendet werden kann. 
@@ -26,7 +26,7 @@ Nach dem erfolgreichen Erstellen des Builds verwendet die **Releasepipeline** di
 
 Eine der notwendigen Voraussetzungen besteht darin, dass alle zum Neuerstellen des getesteten Ökosystems erforderlichen Informationen innerhalb der Buildartefakte verfügbar sind, einschließlich der Konfiguration der Azure-Ressourcen. Da für die Verwendung von Azure-Ressourcen Kosten anfallen, möchten Unternehmen die Nutzung dieser Ressourcen kontrollieren oder nachverfolgen. In einigen Fällen können die zum Erstellen und Konfigurieren der Ressourcen verwendeten Azure Resource Manager-Vorlagen in einer anderen Abteilung verwaltet werden, beispielsweise der IT-Abteilung. Außerdem sind diese Vorlagen vielleicht in einem anderen Repository gespeichert. Dies kann zu dem interessanten Szenario führen, in dem ein Build erstellt und getestet wird und sowohl der Code als auch die Konfiguration innerhalb der Buildartefakte gespeichert werden müssen, damit das System in der Produktionsumgebung ordnungsgemäß neu erstellt wird. 
 
-Durch Verwendung von DevTest Labs in der Build- und Testphase können Sie den Buildquellen Azure Resource Manager-Vorlagen und Unterstützungsdateien hinzufügen, sodass während der Releasephase die genaue zum Testen verwendete Konfiguration auch in der Produktionsumgebung bereitgestellt wird. Mit der Aufgabe **Create Azure DevTest Labs Environment** (Azure DevTest Labs-Umgebung erstellen) mit der richtigen Konfiguration werden die Resource Manager-Vorlagen in den Buildartefakten gespeichert. In diesem Beispiel verwenden Sie den Code aus dem [Tutorial: Erstellen einer .NET Core- und SQL-Datenbank-Web-App in Azure App Service](../app-service/app-service-web-tutorial-dotnetcore-sqldb.md) zum Bereitstellen und Testen der Web-App in Azure.
+Durch Verwendung von DevTest Labs in der Build- und Testphase können Sie den Buildquellen Azure Resource Manager-Vorlagen und Unterstützungsdateien hinzufügen, sodass während der Releasephase die genaue zum Testen verwendete Konfiguration auch in der Produktionsumgebung bereitgestellt wird. Mit der Aufgabe **Create Azure DevTest Labs Environment** (Azure DevTest Labs-Umgebung erstellen) mit der richtigen Konfiguration werden die Resource Manager-Vorlagen in den Buildartefakten gespeichert. In diesem Beispiel verwenden Sie den Code aus dem [Tutorial: Erstellen einer .NET Core- und SQL-Datenbank-Web-App in Azure App Service](../app-service/tutorial-dotnetcore-sqldb-app.md) zum Bereitstellen und Testen der Web-App in Azure.
 
 ![Allgemeiner Ablauf](./media/use-devtest-labs-build-release-pipelines/overall-flow.png)
 
@@ -40,7 +40,7 @@ Verschiedene Elemente müssen im Voraus erstellt werden:
 Mit der Buildpipeline wird eine DevTest Labs-Umgebung erstellt und der Code zum Testen bereitgestellt.
 
 ## <a name="set-up-a-build-pipeline"></a>Einrichten einer Buildpipeline
-Erstellen Sie in Azure Pipelines eine Buildpipeline mit dem Code aus dem [Tutorial: Erstellen einer .NET Core- und SQL-Datenbank-Web-App in Azure App Service](../app-service/app-service-web-tutorial-dotnetcore-sqldb.md). Verwenden Sie die **ASP.NET Core**-Vorlage, über die die erforderliche Aufgabe zum Erstellen, Testen und Veröffentlichen des Codes gefüllt wird.
+Erstellen Sie in Azure Pipelines eine Buildpipeline mit dem Code aus dem [Tutorial: Erstellen einer .NET Core- und SQL-Datenbank-Web-App in Azure App Service](../app-service/tutorial-dotnetcore-sqldb-app.md). Verwenden Sie die **ASP.NET Core**-Vorlage, über die die erforderliche Aufgabe zum Erstellen, Testen und Veröffentlichen des Codes gefüllt wird.
 
 ![Auswählen der ASP.NET-Vorlage](./media/use-devtest-labs-build-release-pipelines/select-asp-net.png)
 

@@ -5,19 +5,19 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 04/27/2020
 ms.custom: mvc, cli-validate
-ms.openlocfilehash: e38711cbb5ccd9fe4cc8584a9229a1c57550d618
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 206da4e7fe92846352120d604cd8bee578eb45dc
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84021227"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88077729"
 ---
 # <a name="tutorial-secure-azure-sql-database-connection-from-app-service-using-a-managed-identity"></a>Tutorial: Schützen der Azure SQL-Datenbank-Verbindung von App Service mittels einer verwalteten Identität
 
 [App Service](overview.md) bietet einen hochgradig skalierbaren Webhostingdienst mit Self-Patching in Azure. Außerdem steht eine [verwaltete Identität](overview-managed-identity.md) für Ihre App zur Verfügung. Hierbei handelt es sich um eine vorgefertigte Lösung zum Schutz des Zugriffs auf [Azure SQL-Datenbank](/azure/sql-database/) und andere Azure-Dienste. Verwaltete Identitäten in App Service machen Ihre App frei von Geheimnissen (wie etwa Anmeldeinformationen in Verbindungszeichenfolgen) und verbessern so die Sicherheit Ihrer App. In diesem Tutorial fügen Sie der in einem der folgenden Tutorials erstellten Beispiel-Web-App eine verwaltete Identität hinzu: 
 
 - [Tutorial: Erstellen einer ASP.NET-App in Azure mit SQL-Datenbank](app-service-web-tutorial-dotnet-sqldatabase.md)
-- [Tutorial: Erstellen einer ASP.NET Core- und SQL-Datenbank-App in Azure App Service](app-service-web-tutorial-dotnetcore-sqldb.md)
+- [Tutorial: Erstellen einer ASP.NET Core- und SQL-Datenbank-App in Azure App Service](tutorial-dotnetcore-sqldb-app.md)
 
 Danach stellt Ihre Beispiel-App ganz ohne Benutzername und Kennwort eine sichere Verbindung mit SQL-Datenbank her.
 
@@ -43,7 +43,7 @@ Sie lernen Folgendes:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Dieser Artikel fährt dort fort, wo Sie hier aufgehört haben: [Tutorial: Erstellen einer ASP.NET-App in Azure mit SQL-Datenbank](app-service-web-tutorial-dotnet-sqldatabase.md) oder [Tutorial: Erstellen einer ASP.NET Core- und SQL-Datenbank-App in Azure App Service](app-service-web-tutorial-dotnetcore-sqldb.md). Absolvieren Sie zunächst eins der beiden Tutorials, sofern noch nicht geschehen. Alternativ können Sie die Schritte für Ihre eigene .NET-App mit SQL-Datenbank anpassen.
+Dieser Artikel fährt dort fort, wo Sie hier aufgehört haben: [Tutorial: Erstellen einer ASP.NET-App in Azure mit SQL-Datenbank](app-service-web-tutorial-dotnet-sqldatabase.md) oder [Tutorial: Erstellen einer ASP.NET Core- und SQL-Datenbank-App in Azure App Service](tutorial-dotnetcore-sqldb-app.md). Absolvieren Sie zunächst eins der beiden Tutorials, sofern noch nicht geschehen. Alternativ können Sie die Schritte für Ihre eigene .NET-App mit SQL-Datenbank anpassen.
 
 Vergewissern Sie sich zum Debuggen Ihrer App mit SQL-Datenbank als Back-End, dass Sie Clientverbindung von Ihrem Computer zugelassen haben. Falls nicht, fügen Sie die Client-IP mithilfe der Schritte unter the steps at [IP-Firewallregeln für Azure SQL-Datenbank and SQL Data Warehouse](../azure-sql/database/firewall-configure.md#use-the-azure-portal-to-manage-server-level-ip-firewall-rules) hinzu.
 
@@ -74,14 +74,14 @@ Weitere Informationen zum Hinzufügen eines Active Directory-Administrators fin
 
 ## <a name="set-up-visual-studio"></a>Einrichten von Visual Studio
 
-### <a name="windows"></a>Windows
+### <a name="windows-client"></a>Windows-Client
 Visual Studio für Windows ist in die Azure AD-Authentifizierung integriert. Fügen Sie in Visual Studio Ihren Azure AD-Benutzer hinzu, um in Visual Studio entwickeln und debuggen zu können. Wählen Sie dazu über das Menü **Datei** > **Kontoeinstellungen** aus, und klicken Sie auf **Konto hinzufügen**.
 
 Wählen Sie über das Menü **Extras** > **Optionen** und anschließend **Azure Service Authentication** (Azure-Dienstauthentifizierung) > **Kontoauswahl** aus, um den Azure AD-Benutzer für die Azure-Dienstauthentifizierung festzulegen. Wählen Sie den Azure AD-Benutzer aus, den Sie hinzugefügt haben, und klicken Sie auf **OK**.
 
 Nun können Sie Ihre App mit der SQL-Datenbank als Back-End entwickeln und debuggen und dabei die Azure AD-Authentifizierung verwenden.
 
-### <a name="macos"></a>MacOS
+### <a name="macos-client"></a>macOS-Client
 
 Visual Studio für Mac ist nicht in die Azure AD-Authentifizierung integriert. Die Bibliothek [Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication), die Sie später verwenden werden, kann jedoch Token von der Azure CLI verwenden. Um die Entwicklung und das Debuggen in Visual Studio zu ermöglichen, müssen Sie zunächst die [Azure CLI auf dem lokalen Computer installieren](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
@@ -142,7 +142,7 @@ Drücken Sie `Ctrl+F5`, um die App erneut auszuführen. Die gleiche CRUD-App in 
 Install-Package Microsoft.Azure.Services.AppAuthentication -Version 1.4.0
 ```
 
-Unter [Tutorial: Erstellen einer ASP.NET Core- und SQL-Datenbank-App in Azure App Service](app-service-web-tutorial-dotnetcore-sqldb.md) wird die Verbindungszeichenfolge `MyDbConnection` überhaupt nicht verwendet, weil die lokale Entwicklungsumgebung eine Sqlite-Datenbankdatei und die Azure-Produktionsumgebung eine Verbindungszeichenfolge aus App Service nutzt. Bei der Active Directory-Authentifizierung müssen beide Umgebungen die gleiche Verbindungszeichenfolge verwenden. Ersetzen Sie in *appsettings.json* den Wert der Verbindungszeichenfolge `MyDbConnection` durch Folgendes:
+Unter [Tutorial: Erstellen einer ASP.NET Core- und SQL-Datenbank-App in Azure App Service](tutorial-dotnetcore-sqldb-app.md) wird die Verbindungszeichenfolge `MyDbConnection` überhaupt nicht verwendet, weil die lokale Entwicklungsumgebung eine Sqlite-Datenbankdatei und die Azure-Produktionsumgebung eine Verbindungszeichenfolge aus App Service nutzt. Bei der Active Directory-Authentifizierung müssen beide Umgebungen die gleiche Verbindungszeichenfolge verwenden. Ersetzen Sie in *appsettings.json* den Wert der Verbindungszeichenfolge `MyDbConnection` durch Folgendes:
 
 ```json
 "Server=tcp:<server-name>.database.windows.net,1433;Database=<database-name>;"
@@ -245,7 +245,7 @@ Wurden Sie vom **[Tutorial: Erstellen einer ASP.NET-App in Azure mit SQL-Datenba
 
 Klicken Sie auf der Veröffentlichungsseite auf **Veröffentlichen**. 
 
-Wurden Sie vom **[Tutorial: Erstellen einer ASP.NET Core- und SQL-Datenbank-App in Azure App Service](app-service-web-tutorial-dotnetcore-sqldb.md)** weitergeleitet, veröffentlichen Sie Ihre Änderungen mithilfe von Git mit den folgenden Befehlen:
+Wurden Sie vom **[Tutorial: Erstellen einer ASP.NET Core- und SQL-Datenbank-App in Azure App Service](tutorial-dotnetcore-sqldb-app.md)** weitergeleitet, veröffentlichen Sie Ihre Änderungen mithilfe von Git mit den folgenden Befehlen:
 
 ```bash
 git commit -am "configure managed identity"

@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 05/14/2018
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 18054e47a987a7e79e9083b6f7a2f20b059c7f28
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 470324799cd157c8b33311e1cae8b5b698433e1f
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81254613"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88079908"
 ---
 # <a name="tutorial-add-azure-cdn-to-an-azure-app-service-web-app"></a>Tutorial: Hinzufügen von Azure CDN zu einer Azure App Service-Web-App
 
@@ -49,7 +49,7 @@ Für dieses Tutorial benötigen Sie Folgendes:
 
 ## <a name="create-the-web-app"></a>Erstellen der Web-App
 
-Befolgen Sie zum Erstellen der Web-App, die Sie verwenden werden, die Anleitung unter [Erstellen einer statischen HTML-Web-App in Azure in fünf Minuten](../app-service/app-service-web-get-started-html.md) bis zum Schritt **Navigieren zur App**.
+Befolgen Sie zum Erstellen der Web-App, die Sie verwenden werden, die Anleitung unter [Erstellen einer statischen HTML-Web-App in Azure in fünf Minuten](../app-service/quickstart-html.md) bis zum Schritt **Navigieren zur App**.
 
 ## <a name="log-in-to-the-azure-portal"></a>Anmelden beim Azure-Portal
 
@@ -60,7 +60,7 @@ Wenn Sie Ihren CDN-Endpunkt für die Beschleunigung dynamischer Websites (Dynami
 
 ## <a name="create-a-cdn-profile-and-endpoint"></a>Erstellen eines CDN-Profils und -Endpunkts
 
-Wählen Sie im Navigationsbereich auf der linken Seite die Option **App Services** und dann die App aus, die Sie unter [Erstellen einer statischen HTML-Web-App in Azure in fünf Minuten](../app-service/app-service-web-get-started-html.md) erstellt haben.
+Wählen Sie im Navigationsbereich auf der linken Seite die Option **App Services** und dann die App aus, die Sie unter [Erstellen einer statischen HTML-Web-App in Azure in fünf Minuten](../app-service/quickstart-html.md) erstellt haben.
 
 ![Auswählen der App Service-App im Portal](media/cdn-add-to-web-app/portal-select-app-services.png)
 

@@ -9,12 +9,12 @@ ms.subservice: queues
 ms.topic: how-to
 ms.reviewer: dineshm
 ms.custom: seo-javascript-september2019, devx-track-javascript
-ms.openlocfilehash: 950d85f391504095ceaaa10996145ca832b6db19
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 56099a7d350a29db5a57708bc87b7174cfdb3b29
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87432732"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88079278"
 ---
 # <a name="use-azure-queue-service-to-create-and-delete-queues-from-nodejs"></a>Warteschlangen aus Node.js erstellen und löschen mit Azure Queue Service
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
@@ -32,7 +32,7 @@ In diesem Leitfaden wird die Durchführung häufiger Szenarios mit dem Microsoft
 [!INCLUDE [storage-create-account-include](../../../includes/storage-create-account-include.md)]
 
 ## <a name="create-a-nodejs-application"></a>Erstellen einer Node.js-Anwendung
-Erstellen Sie eine leere Node.js-Anwendung. Anweisungen zum Erstellen von Node.js-Anwendungen finden Sie unter [Erstellen einer Node.js-Web-App in Azure App Service](../../app-service/app-service-web-get-started-nodejs.md), [Erstellen und Bereitstellen einer Node.js-Anwendung in einem Azure-Clouddienst](../../cloud-services/cloud-services-nodejs-develop-deploy-app.md) mithilfe von Windows PowerShell oder [Visual Studio Code](https://code.visualstudio.com/docs/nodejs/nodejs-tutorial).
+Erstellen Sie eine leere Node.js-Anwendung. Anweisungen zum Erstellen von Node.js-Anwendungen finden Sie unter [Erstellen einer Node.js-Web-App in Azure App Service](../../app-service/quickstart-nodejs.md), [Erstellen und Bereitstellen einer Node.js-Anwendung in einem Azure-Clouddienst](../../cloud-services/cloud-services-nodejs-develop-deploy-app.md) mithilfe von Windows PowerShell oder [Visual Studio Code](https://code.visualstudio.com/docs/nodejs/nodejs-tutorial).
 
 ## <a name="configure-your-application-to-access-storage"></a>Konfigurieren der Anwendung für den Speicherzugriff
 Um Azure-Speicher verwenden zu können, müssen Sie das Azure Storage-SDK für Node.js herunterladen. Es enthält eine Reihe von Bibliotheken, die mit den REST-Speicherdiensten kommunizieren.
@@ -341,7 +341,7 @@ Nachdem Sie sich nun mit den Grundlagen des Warteschlangenspeichers vertraut gem
 
 [Azure Portal]: https://portal.azure.com
 
-[Erstellen einer Node.js-Web-App in Azure App Service](../../app-service/app-service-web-get-started-nodejs.md)
+[Erstellen einer Node.js-Web-App in Azure App Service](../../app-service/quickstart-nodejs.md)
 
 [Erstellen und Bereitstellen einer Node.js-Anwendung in einem Azure-Clouddienst](../../cloud-services/cloud-services-nodejs-develop-deploy-app.md)
 

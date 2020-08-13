@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 07/08/2020
 ms.reviewer: mahender
 ms.custom: seodec18, fasttrack-edit, has-adal-ref
-ms.openlocfilehash: c8e0b476c50378bde00e01a39985fbcc188f04ed
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: 8362cc3b8f8477f77d8ec672144e7c68d2e3434d
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87562377"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080727"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service-and-azure-functions"></a>Authentifizierung und Autorisierung in Azure App Service und Azure Functions
 
@@ -56,7 +56,7 @@ Das Modul für Authentifizierung und Autorisierung wird in einem separaten Conta
 
 ### <a name="userapplication-claims"></a>Benutzer-/Anwendungsansprüche
 
-App Service stellt Ihrem Code für alle Sprachenframeworks die Ansprüche im eingehenden Token (ob dieses von einem authentifizierten Endbenutzer oder einer Clientanwendung stammt) zur Verfügung, indem sie in die Anforderungsheader eingefügt werden. Für ASP.NET 4.6-Apps füllt App Service die [ClaimsPrincipal.Current](/dotnet/api/system.security.claims.claimsprincipal.current)-Eigenschaft mit Ansprüchen des authentifizierten Benutzers, sodass Sie dem standardmäßigen .NET Codemuster einschließlich des `[Authorize]`-Attributs folgen können. Auf ähnliche Weise füllt App Service die `_SERVER['REMOTE_USER']`-Variable für PHP-Apps. Für Java-Apps sind die Ansprüche [über das Tomcat-Servlet zugänglich](containers/configure-language-java.md#authenticate-users-easy-auth).
+App Service stellt Ihrem Code für alle Sprachenframeworks die Ansprüche im eingehenden Token (ob dieses von einem authentifizierten Endbenutzer oder einer Clientanwendung stammt) zur Verfügung, indem sie in die Anforderungsheader eingefügt werden. Für ASP.NET 4.6-Apps füllt App Service die [ClaimsPrincipal.Current](/dotnet/api/system.security.claims.claimsprincipal.current)-Eigenschaft mit Ansprüchen des authentifizierten Benutzers, sodass Sie dem standardmäßigen .NET Codemuster einschließlich des `[Authorize]`-Attributs folgen können. Auf ähnliche Weise füllt App Service die `_SERVER['REMOTE_USER']`-Variable für PHP-Apps. Für Java-Apps sind die Ansprüche [über das Tomcat-Servlet zugänglich](configure-language-java.md#authenticate-users-easy-auth).
 
 Für [Azure Functions](../azure-functions/functions-overview.md) wird `ClaimsPrincipal.Current` nicht für .NET Code aufgefüllt, Sie können die Benutzeransprüche jedoch weiterhin in den Anforderungsheadern finden oder das `ClaimsPrincipal`-Objekt aus dem Anforderungskontext oder selbst durch einen Bindungsparameter abrufen. Weitere Informationen finden Sie unter [Arbeiten mit Clientidentitäten](../azure-functions/functions-bindings-http-webhook-trigger.md#working-with-client-identities).
 
@@ -149,7 +149,7 @@ Mit dieser Option müssen Sie in Ihrer App keinen Authentifizierungscode schreib
 
 ## <a name="more-resources"></a>Weitere Ressourcen
 
-[Tutorial: Umfassendes Authentifizieren und Autorisieren von Benutzern in Azure App Service (Windows)](app-service-web-tutorial-auth-aad.md)  
+[Tutorial: Umfassendes Authentifizieren und Autorisieren von Benutzern in Azure App Service (Windows)](tutorial-auth-aad.md)  
 [Tutorial: Umfassendes Authentifizieren und Autorisieren von Benutzern in Azure App Service für Linux](containers/tutorial-auth-aad.md)  
 [Anpassen der Authentifizierung und Autorisierung in App Service](app-service-authentication-how-to.md)
 [.NET Core-Integration von Azure AppService EasyAuth (Drittanbieter)](https://github.com/MaximRouiller/MaximeRouiller.Azure.AppService.EasyAuth)
