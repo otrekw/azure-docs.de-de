@@ -11,13 +11,13 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 05/18/2020
 ms.author: jmprieur
-ms.custom: aaddev, tracking-python
-ms.openlocfilehash: 85fb188028e0e61378b1e47c1fb7b88eaaa4d7a0
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.custom: aaddev, devx-track-python
+ms.openlocfilehash: 300bc6acbe7821841b578dcc2166ecfc498ad750
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87541922"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88141294"
 ---
 # <a name="desktop-app-that-calls-web-apis-acquire-a-token"></a>Desktop-App, die Web-APIs aufruft: Abrufen eines Token
 
@@ -175,7 +175,7 @@ catch(MsalUiRequiredException)
 
 ### <a name="mandatory-parameters"></a>Erforderliche Parameter
 
-`AcquireTokenInteractive` verfügt über nur einen obligatorischen Parameter (``scopes``) mit einer Enumeration von Zeichenfolgen, die die Bereiche definieren, für die ein Token erforderlich ist. Wenn das Token für Microsoft Graph bestimmt ist, finden Sie die erforderlichen Bereiche in der API-Referenz der einzelnen Microsoft Graph-APIs im Abschnitt „Berechtigungen“. Zum [Auflisten der Kontakte des Benutzers](https://docs.microsoft.com/graph/api/user-list-contacts) muss beispielsweise der Bereich „User.Read“, „Contacts.Read“ verwendet werden. Weitere Informationen finden Sie in der [Microsoft Graph-Referenz zu Berechtigungen](https://developer.microsoft.com/graph/docs/concepts/permissions_reference).
+`AcquireTokenInteractive` verfügt über nur einen obligatorischen Parameter (``scopes``) mit einer Enumeration von Zeichenfolgen, die die Bereiche definieren, für die ein Token erforderlich ist. Wenn das Token für Microsoft Graph bestimmt ist, finden Sie die erforderlichen Bereiche in der API-Referenz der einzelnen Microsoft Graph-APIs im Abschnitt „Berechtigungen“. Zum [Auflisten der Kontakte des Benutzers](/graph/api/user-list-contacts) muss beispielsweise der Bereich „User.Read“, „Contacts.Read“ verwendet werden. Weitere Informationen finden Sie in der [Microsoft Graph-Referenz zu Berechtigungen](/graph/permissions-reference).
 
 Bei Android müssen Sie außerdem mit `.WithParentActivityOrWindow` die übergeordnete Aktivität angeben (siehe Abbildung), sodass das Token nach der Interaktion wieder an die betreffende übergeordnete Aktivität zurückgegeben wird. Wenn Sie diese nicht angeben, wird beim Aufrufen von `.ExecuteAsync()` eine Ausnahme ausgelöst.
 
@@ -278,7 +278,7 @@ Das MSAL.NET-Team hat die Benutzeroberflächentests so umgeschrieben, dass Sie d
 
 ##### <a name="provide-a-great-experience-with-systemwebviewoptions"></a>Mehr Benutzerfreundlichkeit mit SystemWebViewOptions
 
-Von MSAL.NET 4.1 [`SystemWebViewOptions`](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.systemwebviewoptions?view=azure-dotnet) können Sie Folgendes angeben:
+Von MSAL.NET 4.1 [`SystemWebViewOptions`](/dotnet/api/microsoft.identity.client.systemwebviewoptions?view=azure-dotnet) können Sie Folgendes angeben:
 
 - URI, zu dem navigiert werden soll (`BrowserRedirectError`), oder das anzuzeigende HTML-Fragment (`HtmlMessageError`), wenn Anmelde- oder Einwilligungsfehler im Systemwebbrowser auftreten.
 - URI, zu dem navigiert werden soll (`BrowserRedirectSuccess`), oder das bei erfolgreicher Anmeldung oder Einwilligung anzuzeigende HTML-Fragment (`HtmlMessageSuccess`).
@@ -433,13 +433,13 @@ Wenn Sie einen Domänenbenutzer in einer Domäne oder einen in Azure AD eingebun
   - Oder der Mandantenadministrator muss zuvor für alle Benutzer im Mandanten zugestimmt haben, die Anwendung zu nutzen.
   - Anders gesagt:
     - Entweder haben Sie als Entwickler im Azure-Portal die Schaltfläche **Gewähren** für sich selbst ausgewählt.
-    - Oder ein Mandantenadministrator hat bei der Anwendungsregistrierung auf der Registerkarte **API-Berechtigungen** die Schaltfläche **Administratoreinwilligung für {Mandantendomäne} erteilen/widerrufen** ausgewählt. Weitere Informationen finden Sie unter [Hinzufügen von Zugriffsberechtigungen für Web-APIs](https://docs.microsoft.com/azure/active-directory/develop/quickstart-configure-app-access-web-apis#add-permissions-to-access-web-apis).
-    - Oder Sie haben eine Möglichkeit für Benutzer eingeräumt, der Anwendung zuzustimmen. Weitere Informationen finden Sie unter [Anfordern der Zustimmung einzelner Benutzer](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent#requesting-individual-user-consent).
-    - Oder Sie haben eine Möglichkeit für den Mandantenadministrator eingeräumt, der Anwendung zuzustimmen. Weitere Informationen finden Sie unter [Zustimmung des Administrators](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent#requesting-consent-for-an-entire-tenant).
+    - Oder ein Mandantenadministrator hat bei der Anwendungsregistrierung auf der Registerkarte **API-Berechtigungen** die Schaltfläche **Administratoreinwilligung für {Mandantendomäne} erteilen/widerrufen** ausgewählt. Weitere Informationen finden Sie unter [Hinzufügen von Zugriffsberechtigungen für Web-APIs](./quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis).
+    - Oder Sie haben eine Möglichkeit für Benutzer eingeräumt, der Anwendung zuzustimmen. Weitere Informationen finden Sie unter [Anfordern der Zustimmung einzelner Benutzer](./v2-permissions-and-consent.md#requesting-individual-user-consent).
+    - Oder Sie haben eine Möglichkeit für den Mandantenadministrator eingeräumt, der Anwendung zuzustimmen. Weitere Informationen finden Sie unter [Zustimmung des Administrators](./v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant).
 
 - Dieser Flow ist aktiviert für .NET Desktop-, .NET Core- und UWP-Apps.
 
-Weitere Informationen zur Zustimmung finden Sie unter [Berechtigungen und Zustimmung in Microsoft Identity Platform](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent).
+Weitere Informationen zur Zustimmung finden Sie unter [Berechtigungen und Zustimmung in Microsoft Identity Platform](./v2-permissions-and-consent.md).
 
 ### <a name="learn-how-to-use-it"></a>Informationen zur Verwendung
 

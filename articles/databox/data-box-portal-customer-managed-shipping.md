@@ -2,18 +2,18 @@
 title: Microsoft Azure Data Box – Selbst verwalteter Versand | Microsoft-Dokumentation
 description: Beschreibt den Workflow des selbst verwalteten Versands für Azure Data Box-Geräte.
 services: databox
-author: priestlg
+author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: how-to
-ms.date: 05/20/2020
-ms.author: v-grpr
-ms.openlocfilehash: 99c7021744467484656c52cf72378c6f553c3913
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/12/2020
+ms.author: alkohli
+ms.openlocfilehash: cfa2dee41f07e273d933da356f74063453cb1775
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84608586"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88142535"
 ---
 # <a name="use-self-managed-shipping-for-azure-data-box-in-the-azure-portal"></a>Verwenden des selbst verwalteten Versands für Azure Data Box im Azure-Portal
 
@@ -28,6 +28,8 @@ Der selbst verwaltete Versand ist als Option verfügbar, wenn Sie [Azure Data Bo
 * Japan
 * Singapur
 * Südkorea
+* Indien
+* Südafrika
 
 ## <a name="use-self-managed-shipping"></a>Verwenden des selbst verwalteten Versands
 

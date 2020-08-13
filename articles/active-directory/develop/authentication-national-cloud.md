@@ -13,12 +13,12 @@ ms.date: 08/28/2019
 ms.author: negoe
 ms.reviewer: negoe,celested
 ms.custom: aaddev,references_regions
-ms.openlocfilehash: 20a158aac6a03dfe0bd8929de9fa66ea215aa29c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d27498748f03fb101d165351ec80c77d57f78f1a
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84194117"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88141498"
 ---
 # <a name="national-clouds"></a>Nationale Clouds
 
@@ -67,7 +67,7 @@ Ersetzen Sie bei Anwendungen mit einem Mandanten in den oben genannten URLs „c
 
 ## <a name="microsoft-graph-api"></a>Microsoft Graph-API
 
-Informationen zum Aufrufen der Microsoft Graph-APIs in der Umgebung der nationalen Cloud finden Sie unter [Microsoft Graph in nationalen Cloudbereitstellungen](https://developer.microsoft.com/graph/docs/concepts/deployments).
+Informationen zum Aufrufen der Microsoft Graph-APIs in der Umgebung der nationalen Cloud finden Sie unter [Microsoft Graph in nationalen Cloudbereitstellungen](/graph/deployments).
 
 > [!IMPORTANT]
 > Bestimmte Dienste und Funktionen, die in bestimmten Regionen des globalen Diensts vorhanden sind, sind möglicherweise nicht in allen nationalen Clouds verfügbar. Um herauszufinden, welche Dienste verfügbar sind, wechseln Sie zu [Verfügbare Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/?products=all&regions=usgov-non-regional,us-dod-central,us-dod-east,usgov-arizona,usgov-iowa,usgov-texas,usgov-virginia,china-non-regional,china-east,china-east-2,china-north,china-north-2,germany-non-regional,germany-central,germany-northeast).
@@ -78,7 +78,7 @@ Wie Sie eine Anwendung mit Microsoft Identity Platform erstellen können, erfahr
 
 Weitere Informationen:
 
-- [Azure Government](https://docs.microsoft.com/azure/azure-government/)
-- [Azure China 21Vianet](https://docs.microsoft.com/azure/china/)
-- [Azure Deutschland](https://docs.microsoft.com/azure/germany/)
-- [Azure AD-Authentifizierungsgrundlagen](authentication-scenarios.md)
+- [Azure Government](../../azure-government/index.yml)
+- [Azure China 21Vianet](/azure/china/)
+- [Azure Deutschland](../../germany/index.yml)
+- [Azure AD-Authentifizierungsgrundlagen](./authentication-vs-authorization.md)

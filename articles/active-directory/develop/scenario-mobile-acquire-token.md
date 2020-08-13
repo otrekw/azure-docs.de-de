@@ -13,12 +13,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 499b7348c645f4792332769ac598ffcea07ea102
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: dfccc274ef920c59d39c160055ab27a6900c839c
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87541905"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88141277"
 ---
 # <a name="get-a-token-for-a-mobile-app-that-calls-web-apis"></a>Abrufen eines Tokens für eine mobile App, die Web-APIs aufruft
 
@@ -209,7 +209,7 @@ catch(MsalUiRequiredException)
 
 `AcquireTokenInteractive` weist nur einen obligatorischen Parameter auf: `scopes`. Der `scopes`-Parameter enumeriert Zeichenfolgen , die die Bereiche definieren, für die ein Token erforderlich ist. Wenn das Token für Microsoft Graph bestimmt ist, finden Sie die erforderlichen Bereiche in der API-Referenz der einzelnen Microsoft Graph-APIs. Navigieren Sie in der Referenz zum Abschnitt „Berechtigungen“.
 
-Um beispielsweise die [Kontakte des Benutzers aufzulisten](https://docs.microsoft.com/graph/api/user-list-contacts), verwenden Sie den Bereich „User.Read“, „Contacts.Read“. Weitere Informationen finden Sie in der [Microsoft Graph-Referenz zu Berechtigungen](https://developer.microsoft.com/graph/docs/concepts/permissions_reference).
+Um beispielsweise die [Kontakte des Benutzers aufzulisten](/graph/api/user-list-contacts), verwenden Sie den Bereich „User.Read“, „Contacts.Read“. Weitere Informationen finden Sie in der [Microsoft Graph-Referenz zu Berechtigungen](/graph/permissions-reference).
 
 Unter Android können Sie beim Erstellen der App mithilfe von `PublicClientApplicationBuilder` eine übergeordnete Aktivität angeben. Wenn Sie die übergeordnete Aktivität nicht zu diesem Zeitpunkt festlegen, können Sie sie später mithilfe von `.WithParentActivityOrWindow` angeben, wie im folgenden Abschnitt zu sehen. Wenn Sie die übergeordnete Aktivität angeben, wird das Token nach der Interaktion wieder an diese übergeordnete Aktivität übergeben. Wenn Sie sie nicht angeben, wird durch den `.ExecuteAsync()`-Aufruf eine Ausnahme ausgelöst.
 
@@ -234,7 +234,7 @@ Die Klasse definiert die folgenden Konstanten:
 - `ForceLogin` ermöglicht es dem Dienst, den Benutzer zur Eingabe von Anmeldeinformationen aufzufordern, auch wenn keine Eingabeaufforderung erforderlich ist.
 
     Diese Option kann nützlich sein, wenn beim Tokenerwerb ein Fehler auftritt, und Sie dem Benutzer die erneute Anmeldung ermöglichen wollen. In diesem Fall sendet MSAL `prompt=login` an den Identitätsanbieter. Die Verwendung dieser Option kann in sicherheitsorientierten Anwendungen sinnvoll sein, wenn die Governance der Organisation vorschreibt, dass sich Benutzer beim Zugriff auf bestimmte Teile einer Anwendung stets erneut anmelden müssen.
-- `Never` ist nur für .NET 4.5 und Windows Runtime (WinRT) verfügbar. Mit dieser Konstante ergeht keine Aufforderung an den Benutzer, vielmehr wird versucht, das in der verborgenen eingebetteten Webansicht gespeicherte Cookie zu verwenden. Weitere Informationen finden Sie unter [Verwenden von Webbrowsern mit MSAL.NET](https://docs.microsoft.com/azure/active-directory/develop/msal-net-web-browsers).
+- `Never` ist nur für .NET 4.5 und Windows Runtime (WinRT) verfügbar. Mit dieser Konstante ergeht keine Aufforderung an den Benutzer, vielmehr wird versucht, das in der verborgenen eingebetteten Webansicht gespeicherte Cookie zu verwenden. Weitere Informationen finden Sie unter [Verwenden von Webbrowsern mit MSAL.NET](./msal-net-web-browsers.md).
 
     Wenn bei dieser Option ein Fehler auftritt, löst `AcquireTokenInteractive` eine Ausnahme aus, um Sie zu informieren, dass ein Eingriff an der Benutzeroberfläche erforderlich ist. Dann müssen Sie einen anderen `Prompt`-Parameter verwenden.
 - `NoPrompt` sendet keine Eingabeaufforderung an den Identitätsanbieter.
