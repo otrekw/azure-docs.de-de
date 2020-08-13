@@ -15,16 +15,16 @@ ms.date: 11/08/2018
 ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 94c434a2892060acfdd56c496a31e41597c21357
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 31235936109361f0f15a071346baee128060375a
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84763430"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88164987"
 ---
 # <a name="how-to-deploy-the-access-panel-extension-for-internet-explorer-using-group-policy"></a>Gewusst wie: Bereitstellen der Zugriffsbereichserweiterung für Internet Explorer mithilfe von Gruppenrichtlinien
 
-In diesem Tutorial wird erläutert, wie Sie mithilfe von Gruppenrichtlinien die Zugriffsbereichserweiterung für Internet Explorer per Remotezugriff auf den Computern Ihrer Benutzer installieren. Diese Erweiterung ist für Benutzer von Internet Explorer erforderlich, die sich bei Apps anmelden müssen, die mit der [kennwortbasierten einmaligen Anmeldung](what-is-single-sign-on.md#password-based-sso)konfiguriert wurden.
+In diesem Tutorial wird erläutert, wie Sie mithilfe von Gruppenrichtlinien die Zugriffsbereichserweiterung für Internet Explorer per Remotezugriff auf den Computern Ihrer Benutzer installieren. Diese Erweiterung ist für Benutzer von Internet Explorer erforderlich, die sich bei Apps anmelden müssen, die mit der [kennwortbasierten einmaligen Anmeldung](sso-options.md#password-based-sso)konfiguriert wurden.
 
 Administratoren wird empfohlen, die Bereitstellung dieser Erweiterung zu automatisieren. Andernfalls müssen Benutzer die Erweiterung selbst herunterladen und installieren. Diese Vorgehensweise ist jedoch fehleranfällig; zudem sind Administratorberechtigungen erforderlich. In diesem Tutorial wird eine Methode zum Automatisieren von Softwarebereitstellungen mithilfe von Gruppenrichtlinien erläutert. [Weitere Informationen zu Gruppenrichtlinien](https://technet.microsoft.com/windowsserver/bb310732.aspx)
 

@@ -14,18 +14,18 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c5e3d08f887cc1c816dda54863c412660494418b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 00b25f1b506228d2d80aecae3845467759a4bc4f
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84764773"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88165038"
 ---
 # <a name="password-vaulting-for-single-sign-on-with-application-proxy"></a>Kennworttresore (Password Vaulting) für einmaliges Anmelden mit Anwendungsproxy
 
 Mit dem Azure Active Directory-Anwendungsproxy können Sie die Produktivität steigern, indem Sie lokale Anwendungen so veröffentlichen, dass auch Remotemitarbeiter sicher darauf zugreifen können. Im Azure-Portal können Sie auch einmaliges Anmelden (Single Sign-On, SSO) für diese Apps einrichten. Ihre Benutzer müssen sich nur bei Azure AD authentifizieren. Dann können sie auf die Unternehmensanwendung zugreifen, ohne sich erneut anzumelden.
 
-Der Anwendungsproxy unterstützt mehrere [Modi für einmaliges Anmelden](what-is-single-sign-on.md#choosing-a-single-sign-on-method). Die kennwortbasierte Anmeldung ist für Anwendungen bestimmt, bei denen für die Authentifizierung eine Kombination aus Benutzername und Kennwort verwendet wird. Wenn Sie die kennwortbasierte Anmeldung für Ihre Anwendung konfigurieren, müssen sich Ihre Benutzer nur einmal an der lokalen Anwendung anmelden. Danach speichert Azure Active Directory die Anmeldeinformationen und stellt sie automatisch für die Anwendung bereit, wenn Ihre Benutzer von einem Remotestandort aus darauf zugreifen.
+Der Anwendungsproxy unterstützt mehrere [Modi für einmaliges Anmelden](sso-options.md#choosing-a-single-sign-on-method). Die kennwortbasierte Anmeldung ist für Anwendungen bestimmt, bei denen für die Authentifizierung eine Kombination aus Benutzername und Kennwort verwendet wird. Wenn Sie die kennwortbasierte Anmeldung für Ihre Anwendung konfigurieren, müssen sich Ihre Benutzer nur einmal an der lokalen Anwendung anmelden. Danach speichert Azure Active Directory die Anmeldeinformationen und stellt sie automatisch für die Anwendung bereit, wenn Ihre Benutzer von einem Remotestandort aus darauf zugreifen.
 
 Sie sollten Ihre App bereits mit dem Anwendungsproxy veröffentlicht und getestet haben. Führen Sie andernfalls die Schritte unter [Veröffentlichen von Anwendungen mit dem Azure AD-Anwendungsproxy](application-proxy-add-on-premises-application.md) aus, und fahren Sie dann hier fort.
 

@@ -12,13 +12,13 @@ ms.workload: identity
 ms.date: 04/10/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
-ms.custom: aaddev
-ms.openlocfilehash: e758c69f91fb60a83dfcc119b2c7f7aba44384ca
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.custom: devx-track-csharp, aaddev
+ms.openlocfilehash: cdd93cf8751ce2e46f06020b1d18d42416f793d4
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86054660"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88166107"
 ---
 # <a name="migrating-applications-to-msalnet"></a>Migrieren von Anwendungen zu MSAL.NET
 
@@ -37,7 +37,7 @@ Dieser Artikel beschreibt die Unterschiede zwischen der Microsoft-Authentifizier
 
 In den meisten Fällen möchten Sie wahrscheinlich MSAL.NET und den Microsoft Identity Platform-Endpunkt verwenden, da es sich hierbei um die neueste Generation von Microsoft-Authentifizierungsbibliotheken handelt. Mithilfe von MSAL.NET rufen Sie Token für Benutzer ab, die sich mit Azure AD (Geschäfts-, Schul- und Unikonten), (persönlichen) Microsoft-Konten (MSA) oder Azure AD B2C bei Ihrer Anwendung anmelden.
 
-Wenn Sie bereits mit dem Azure AD für Entwickler (v1.0)-Endpunkt (und ADAL.NET) vertraut sind, könnte Sie der Artikel zu den [Neuerungen des Microsoft Identity Platform (v2.0)-Endpunkts](active-directory-v2-compare.md) interessieren.
+Wenn Sie bereits mit dem Azure AD für Entwickler (v1.0)-Endpunkt (und ADAL.NET) vertraut sind, könnte Sie der Artikel zu den [Neuerungen des Microsoft Identity Platform (v2.0)-Endpunkts](../azuread-dev/azure-ad-endpoint-comparison.md) interessieren.
 
 Wenn Benutzer in Ihrer Anwendung mit früheren Versionen der [Active Directory-Verbunddienste (AD FS)](/windows-server/identity/active-directory-federation-services) angemeldet werden müssen, benötigen Sie jedoch weiterhin ADAL.NET. Weitere Informationen finden Sie unter [ADFS-Support](https://aka.ms/msal-net-adfs-support).
 
@@ -161,7 +161,7 @@ Weitere Informationen zu v1.0- und v2.0-Token finden Sie im Thema zu [Azure Acti
 
 ## <a name="scopes-for-a-web-api-accepting-v10-tokens"></a>Geltungsbereiche für eine Web-API, die v1.0-Token akzeptiert
 
-OAuth2-Berechtigungen sind Berechtigungsbereiche, die eine v1.0-Web-API-Anwendung (Ressource) für Clientanwendungen verfügbar macht. Diese Berechtigungsbereiche können Clientanwendungen im Zuge der Zustimmung gewährt werden. Informationen finden Sie im Abschnitt zu oauth2Permissions im [Azure Active Directory-Anwendungsmanifest](active-directory-application-manifest.md).
+OAuth2-Berechtigungen sind Berechtigungsbereiche, die eine v1.0-Web-API-Anwendung (Ressource) für Clientanwendungen verfügbar macht. Diese Berechtigungsbereiche können Clientanwendungen im Zuge der Zustimmung gewährt werden. Informationen finden Sie im Abschnitt zu oauth2Permissions im [Azure Active Directory-Anwendungsmanifest](./reference-app-manifest.md).
 
 ### <a name="scopes-to-request-access-to-specific-oauth2-permissions-of-a-v10-application"></a>Geltungsbereiche, mit denen der Zugriff auf bestimmte OAuth2-Berechtigungen einer v1.0-Anwendung angefordert wird
 

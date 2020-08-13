@@ -12,13 +12,13 @@ ms.workload: identity
 ms.date: 05/07/2020
 ms.author: jeferrie
 ms.reviewer: saeeda
-ms.custom: aaddev
-ms.openlocfilehash: 3aac63369dffa5b8ba0b9e55b5063ad8136c95cf
-ms.sourcegitcommit: d815163a1359f0df6ebfbfe985566d4951e38135
+ms.custom: devx-track-csharp, aaddev
+ms.openlocfilehash: ed3e9da628ab779ab47673fa2ce728c5c25539be
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82883225"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88166432"
 ---
 # <a name="use-msalnet-to-sign-in-users-with-social-identities"></a>Verwenden von MSAL.NET zur Anmeldung von Benutzern mit Identitäten sozialer Netzwerke
 
@@ -134,7 +134,7 @@ Durch die Verwendung von Benutzername/Kennwort in einem ROPC-Flow setzen Sie vie
 
 ### <a name="configure-the-ropc-flow-in-azure-ad-b2c"></a>Konfigurieren des ROPC-Flows in Azure AD B2C
 
-Erstellen Sie in Ihrem Azure AD B2C-Mandanten einen neuen Benutzerflow, und wählen Sie **Mit ROPC anmelden** aus, um ROPC für den Benutzerflow zu aktivieren. Weitere Informationen finden Sie unter [Konfigurieren des ROPC-Flows](/azure/active-directory-b2c/configure-ropc).
+Erstellen Sie in Ihrem Azure AD B2C-Mandanten einen neuen Benutzerflow, und wählen Sie **Mit ROPC anmelden** aus, um ROPC für den Benutzerflow zu aktivieren. Weitere Informationen finden Sie unter [Konfigurieren des ROPC-Flows](../../active-directory-b2c/configure-ropc.md).
 
 `IPublicClientApplication` enthält die Methode `AcquireTokenByUsernamePassword`:
 
@@ -182,7 +182,7 @@ Die Rückgabe der Meldung von MSAL.NET `Missing from the token response`, wenn S
 
 Als Problemumgehung wird das zuvor beschriebene [Zwischenspeichern nach Richtlinie](#acquire-a-token-to-apply-a-policy) vorgeschlagen.
 
-Alternativ können Sie den Anspruch `tid` verwenden, wenn Sie [benutzerdefinierte Richtlinien](../../active-directory-b2c/custom-policy-get-started.md) in Azure AD B2C verwenden. Benutzerdefinierte Richtlinien können mithilfe von [Anspruchstransformationen](/azure/active-directory-b2c/claims-transformation-technical-profile) zusätzliche Ansprüche an Ihre Anwendung zurückgeben.
+Alternativ können Sie den Anspruch `tid` verwenden, wenn Sie [benutzerdefinierte Richtlinien](../../active-directory-b2c/custom-policy-get-started.md) in Azure AD B2C verwenden. Benutzerdefinierte Richtlinien können mithilfe von [Anspruchstransformationen](../../active-directory-b2c/claims-transformation-technical-profile.md) zusätzliche Ansprüche an Ihre Anwendung zurückgeben.
 
 #### <a name="mitigation-for-missing-from-the-token-response"></a>Problemumgehung für „Fehlt in der Tokenantwort“
 

@@ -12,13 +12,13 @@ ms.workload: identity
 ms.date: 07/16/2019
 ms.author: marsma
 ms.reviewer: saeeda
-ms.custom: aaddev
-ms.openlocfilehash: 0654bce86cf5fb0b5bd117e444721e95f137dd47
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp, aaddev
+ms.openlocfilehash: f716af1d50eb8a24d8ab70f784cba31f65795cb7
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82652692"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88165905"
 ---
 # <a name="considerations-for-using-universal-windows-platform-with-msalnet"></a>Überlegungen zur Verwendung der Universellen Windows-Plattform mit MSAL.NET
 Entwickler von Anwendungen, die die UWP (Universelle Windows-Plattform) mit MSAL.NET verwenden, sollten sich mit den Konzepten befassen, die in diesem Artikel vorgestellt werden.
@@ -56,7 +56,7 @@ Sie können dieses Problem vermeiden, indem Sie sicherstellen, dass WAB (die zug
 HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\authhost.exe\EnablePrivateNetwork = 00000001
 ```
 
-Weitere Informationen finden Sie unter [Webauthentifizierungsbroker: Fiddler](https://docs.microsoft.com/windows/uwp/security/web-authentication-broker#fiddler).
+Weitere Informationen finden Sie unter [Webauthentifizierungsbroker: Fiddler](/windows/uwp/security/web-authentication-broker#fiddler).
 
 ## <a name="next-steps"></a>Nächste Schritte
 Die folgenden Beispiele enthalten weitere Informationen.

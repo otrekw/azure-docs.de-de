@@ -9,13 +9,13 @@ ms.technology: vs-azure
 ms.topic: how-to
 ms.date: 03/12/2018
 ms.author: ghogen
-ms.custom: aaddev, vs-azure
-ms.openlocfilehash: 7075fbd098736bb297f4a2e3a93aecca5b9182a8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp, aaddev, vs-azure
+ms.openlocfilehash: a070bee7a9fa836eeac7c739cf2757295533ad7f
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85478857"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88165361"
 ---
 # <a name="what-happened-to-my-webapi-project-visual-studio-azure-active-directory-connected-service"></a>Was ist mit dem WebAPI-Projekt passiert (verbundener Visual Studio-Dienst für Azure Active Directory)?
 
@@ -127,5 +127,5 @@ Wenn Sie den verbundenen Dienst hinzufügen, sichert Visual Studio 2015 geänder
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Authentifizierungsszenarien für Azure Active Directory](authentication-scenarios.md)
+- [Authentifizierungsszenarien für Azure Active Directory](./authentication-vs-authorization.md)
 - [Hinzufügen von „Mit Microsoft anmelden“ zu einer ASP.NET-Web-App](quickstart-v2-aspnet-webapp.md)

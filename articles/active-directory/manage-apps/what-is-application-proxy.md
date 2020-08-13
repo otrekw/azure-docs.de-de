@@ -11,13 +11,12 @@ ms.workload: identity
 ms.date: 05/31/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 94d120973939dd1efabee868fc75e9f6c1352bf3
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: 68ccf3518a7011c0c39003d8e447a4e1d233fd91
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87562632"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88164579"
 ---
 # <a name="using-azure-ad-application-proxy-to-publish-on-premises-apps-for-remote-users"></a>Veröffentlichen von lokalen Apps für Remotebenutzer mit dem Azure AD-Anwendungsproxy
 
@@ -100,7 +99,7 @@ Der Anwendungsproxy unterstützt auch die folgenden Authentifizierungsprotokolle
 * [**Formular- oder kennwortbasierte Authentifizierung**](application-proxy-configure-single-sign-on-password-vaulting.md). Bei dieser Authentifizierungsmethode melden sich Benutzer mit einem Benutzernamen und einem Kennwort bei der Anwendung an, wenn sie zum ersten Mal darauf zugreifen. Nach der ersten Anmeldung werden der Benutzername und das Kennwort von Azure AD für die Anwendung bereitgestellt. In diesem Szenario erfolgt die Authentifizierung durch Azure AD.
 * [**SAML-Authentifizierung**](application-proxy-configure-single-sign-on-on-premises-apps.md). SAML-basiertes einmaliges Anmelden wird für Anwendungen unterstützt, die das SAML 2.0- oder das WS-Verbundprotokoll verwenden. Mit SAML-SSO nimmt Azure AD die Authentifizierung bei der Anwendung mithilfe des Azure AD-Kontos des Benutzers vor.
 
-Weitere Informationen zu unterstützten Methoden finden Sie unter [Auswählen einer Methode für einmaliges Anmelden](what-is-single-sign-on.md#choosing-a-single-sign-on-method).
+Weitere Informationen zu unterstützten Methoden finden Sie unter [Auswählen einer Methode für einmaliges Anmelden](sso-options.md#choosing-a-single-sign-on-method).
 
 ### <a name="security-benefits"></a>Sicherheitsvorteile
 

@@ -5,17 +5,17 @@ author: ghogen
 manager: jillfra
 ms.prod: visual-studio-windows
 ms.technology: vs-azure
-ms.custom: aaddev, vs-azure
+ms.custom: devx-track-csharp, aaddev, vs-azure
 ms.workload: azure-vs
 ms.topic: how-to
 ms.date: 03/12/2018
 ms.author: ghogen
-ms.openlocfilehash: b77241b1413fea09e5a16e8bd5cbcda8db5b2327
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a1ba7db72743ac122a697bf271e783ec64e041e8
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85477123"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88165480"
 ---
 # <a name="add-an-azure-active-directory-by-using-connected-services-in-visual-studio"></a>Hinzufügen von Azure Active Directory mithilfe von verbundenen Diensten in Visual Studio
 
@@ -72,5 +72,5 @@ Beim Hinzufügen des verbundenen Diensts zum Assistenten fügt Visual Studio Ihr
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Authentifizierungsszenarien für Azure Active Directory](authentication-scenarios.md)
+- [Authentifizierungsszenarien für Azure Active Directory](./authentication-vs-authorization.md)
 - [Hinzufügen von „Mit Microsoft anmelden“ zu einer ASP.NET-Web-App](quickstart-v2-aspnet-webapp.md)

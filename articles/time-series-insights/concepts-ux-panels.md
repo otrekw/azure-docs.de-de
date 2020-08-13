@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 06/30/2020
+ms.date: 08/12/2020
 ms.custom: seodec18
-ms.openlocfilehash: 53e29734095506a3f55593f938c2d9aba5903771
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 68b80a3511a82ff06677d3b7bb1fbea1c68cb2ae
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87094986"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88164154"
 ---
 # <a name="azure-time-series-insights-gen2-explorer"></a>Azure Time Series Insights Gen2-Explorer
 
@@ -28,7 +28,7 @@ Für die ersten Schritte mit dem Azure Time Series Insights Gen2-Explorer ist Fo
 * Bereitstellung einer Azure Time Series Insights Gen2-Umgebung. Weitere Informationen zur Bereitstellung einer Instanz erhalten Sie im Tutorial [Azure Time Series Insights Gen2](./time-series-insights-update-create-environment.md).
 * [Bereitstellung von Datenzugriff](./time-series-insights-data-access.md) auf die Azure Time Series Insights Gen2-Umgebung, die Sie für das Konto erstellt haben. Außer Ihnen, können Sie auch anderen Zugriff gewähren.
 * Hinzufügen einer Ereignisquelle zur Azure Time Series Insights Gen2-Umgebung zum Übertragen von Daten an die Umgebung mithilfe von Push:
-  * Informationen zum [Herstellen einer Verbindung mit einem Event Hub](./time-series-insights-how-to-add-an-event-source-eventhub.md) 
+  * Informationen zum [Herstellen einer Verbindung mit einem Event Hub](./time-series-insights-how-to-add-an-event-source-eventhub.md)
   * Informationen zum [Herstellen einer Verbindung mit einem IoT-Hub](./time-series-insights-how-to-add-an-event-source-iothub.md)
 
 ## <a name="explore-the-azure-time-series-insights-gen2-explorer"></a>Erkunden des Azure Time Series Insights Gen2-Explorers
@@ -44,7 +44,6 @@ Der Azure Time Series Insights Gen2-Explorer besteht aus den folgenden sieben El
 1. [Diagrammbereich](#5-chart-panel): Zeigt Ihr aktuelles Arbeitsdiagramm an.
 1. [Zeitachse](#6-time-editor-panel): Ermöglicht Ihnen die Änderung Ihres Arbeitszeitraums.
 1. [App-Leiste](#7-app-bar): Enthält Ihre Benutzerverwaltungsoptionen (z. B. den aktuellen Mandanten) und gestattet Ihnen die Änderung von Design- und Spracheinstellungen.
-
 
 ## <a name="1-environment-panel"></a>1. Umgebungsbereich
 
@@ -79,19 +78,19 @@ Weitere Informationen zum Zeitreihenmodell finden Sie unter [Zeitreihenmodelle](
 
 ## <a name="3-hierarchy-tree-and-search-panel"></a>3. Hierarchiestruktur und Suchbereich
 
-Mit der HIerarchiestruktur und dem Suchbereich können Sie ganz einfach in Ihrer [Zeitreihenmodell](./concepts-model-overview.md)-Hierarchie suchen und navigieren, um die spezifischen Zeitreiheninstanzen zu finden, die Sie in Ihrem Diagramm anzeigen möchten. Wenn Sie Ihre Instanzen auswählen, werden sie nicht nur dem aktuellen Diagramm, sondern auch den Daten hinzugefügt. 
+Mit der HIerarchiestruktur und dem Suchbereich können Sie ganz einfach in Ihrer [Zeitreihenmodell](./concepts-model-overview.md)-Hierarchie suchen und navigieren, um die spezifischen Zeitreiheninstanzen zu finden, die Sie in Ihrem Diagramm anzeigen möchten. Wenn Sie Ihre Instanzen auswählen, werden sie nicht nur dem aktuellen Diagramm, sondern auch den Daten hinzugefügt.
 
 [![Hierarchiestruktur und Suchbereich](media/v2-update-explorer/tsi-preview-explorer-hierarchy-search.png)](media/v2-update-explorer/tsi-preview-explorer-hierarchy-search.png#lightbox)
 
 Der Suchergebnissebereich erlaubt Ihnen außerdem, Ihre Ergebnisse in einer Hierarchie- oder Listenansicht anzuzeigen, die das Auffinden der anzuzeigenden Instanzen erleichtern.
- 
+
 ## <a name="4-time-series-well"></a>4. Zeitreihenquelle
 
-In der Quelle werden Instanzfelder und andere Metadaten angezeigt, die ausgewählten Zeitreihenmodellinstanzen zugeordnet sind. Mithilfe der Kontrollkästchen auf der rechten Seite können Sie bestimmte Instanzen im aktuellen Diagramm ausblenden oder anzeigen. 
+In der Quelle werden Instanzfelder und andere Metadaten angezeigt, die ausgewählten Zeitreihenmodellinstanzen zugeordnet sind. Mithilfe der Kontrollkästchen auf der rechten Seite können Sie bestimmte Instanzen im aktuellen Diagramm ausblenden oder anzeigen.
 
   [![Gen2-Quelle](media/v2-update-explorer/tsi-preview-ui-explorer-well.png)](media/v2-update-explorer/tsi-preview-ui-explorer-well.png#lightbox)
 
-Sie können bestimmte Datenelemente aus Ihrer aktuellen Datenquelle entfernen, indem Sie auf der linken Seite des Elements auf das rote Steuerelement **Löschen** (Papierkorb) klicken. Über die Quelle können Sie außerdem steuern, wie jedes Element in dem Diagramm angezeigt wird. Sie können auswählen, Mindest-/Höchstwert für Schatten und Datenpunkte hinzufügen, das Element zeitlich zu verschieben und die Instanz auf abgestufte Weise zu visualisieren. 
+Sie können bestimmte Datenelemente aus Ihrer aktuellen Datenquelle entfernen, indem Sie auf der linken Seite des Elements auf das rote Steuerelement **Löschen** (Papierkorb) klicken. Über die Quelle können Sie außerdem steuern, wie jedes Element in dem Diagramm angezeigt wird. Sie können auswählen, Mindest-/Höchstwert für Schatten und Datenpunkte hinzufügen, das Element zeitlich zu verschieben und die Instanz auf abgestufte Weise zu visualisieren.
 
 Darüber hinaus können Sie mithilfe des Steuerelements für Erkundungen problemlos Zeitverschiebungen und Punktdiagramme erstellen.  
 
@@ -104,7 +103,7 @@ Darüber hinaus können Sie mithilfe des Steuerelements für Erkundungen problem
 
 ## <a name="5-chart-panel"></a>5. Diagrammbereich
 
-Mit dem Diagramm können Sie Zeitreiheninstanzen als Linien anzeigen. Sie können den Umgebungsbereich, das Datenmodell und den Zeitraumsteuerelement-Bereich reduzieren, indem Sie auf die Websteuerelemente klicken, um das Diagramm zu vergrößern. 
+Mit dem Diagramm können Sie Zeitreiheninstanzen als Linien anzeigen. Sie können den Umgebungsbereich, das Datenmodell und den Zeitraumsteuerelement-Bereich reduzieren, indem Sie auf die Websteuerelemente klicken, um das Diagramm zu vergrößern.
 
   [![Gen2-Diagrammübersicht](media/v2-update-explorer/tsi-preview-chart-overview.png)](media/v2-update-explorer/tsi-preview-chart-overview.png#lightbox)
 
@@ -149,7 +148,7 @@ Wenn Sie mit Azure Time Series Insights Gen2 arbeiten, wählen Sie zunächst ein
 > [!TIP]
 > Ein Teil der Zeitachse wird in Bernstein oder Orange hervorgehoben, um die Datenspanne anzugeben, die im warmen Speicher verfügbar ist.
 
-In Azure Time Series Insights Gen2 stehen die folgenden Websteuerelemente zum Auswählen Ihres Arbeitszeitraums zur Verfügung. 
+In Azure Time Series Insights Gen2 stehen die folgenden Websteuerelemente zum Auswählen Ihres Arbeitszeitraums zur Verfügung.
 
   [![Steuerelement für Erkundungsquelle](media/v2-update-explorer/exploration-well-control.png)](media/v2-update-explorer/exploration-well-control.png#lightbox)
 
@@ -205,7 +204,7 @@ Der Azure Time Series Insights Gen2-Explorer unterstützt zwei Designs:
 
 ### <a name="gen2-terms-panel"></a>Gen2-Begriffsbereich
 
-Dieser Abschnitt gilt nur für vorhandene Gen1-Umgebungen, die versuchen, den Explorer mit der aktualisierten Benutzeroberfläche zu verwenden. Sie sollten die Gen1- und das Gen2-Produkte auch in Kombination verwenden. Wir haben dem aktualisierten Explorer einige Funktionen aus der vorhandenen Benutzeroberfläche hinzugefügt, aber Sie können die vollständigen Benutzeroberflächenfunktionen für eine Gen1-Umgebung im neuen Azure Time Series Insights Gen2-Explorer nutzen. 
+Dieser Abschnitt gilt nur für vorhandene Gen1-Umgebungen, die versuchen, den Explorer mit der aktualisierten Benutzeroberfläche zu verwenden. Sie sollten die Gen1- und das Gen2-Produkte auch in Kombination verwenden. Wir haben dem aktualisierten Explorer einige Funktionen aus der vorhandenen Benutzeroberfläche hinzugefügt, aber Sie können die vollständigen Benutzeroberflächenfunktionen für eine Gen1-Umgebung im neuen Azure Time Series Insights Gen2-Explorer nutzen.
 
 Anstelle der Hierarchie wird der Azure Time Series Insights Gen2-Begriffsbereich angezeigt. Mit dem Begriffsbereich können Sie Abfragen in Ihrer Umgebung definieren. Verwenden Sie ihn auch, um Daten basierend auf einem Prädikat zu filtern.
 
@@ -222,7 +221,7 @@ Der Bereich des Azure Time Series Insights Gen2-Begriffs-Editors akzeptiert die 
 | `IN` | String, Bool, Double, DateTime, TimeSpan, NULL | Alle Operanden müssen denselben Typ aufweisen oder eine NULL-Konstante sein. |
 | `HAS` | String | Im rechten Bereich sind nur konstante Zeichenfolgenliterale zulässig. Leere Zeichenfolgen und NULL sind nicht zulässig. |
 
-Informationen zu den unterstützten Abfragevorgängen und Datentypen finden Sie unter [Time Series Expression (TSX)](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax).
+Informationen zu den unterstützten Abfragevorgängen und Datentypen finden Sie unter [Time Series Expression (TSX)](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax).
 
 ### <a name="examples-of-where-clauses"></a>Beispiele für Where-Klauseln
 
@@ -240,10 +239,10 @@ Sie können Elemente im Diagrammbereich ein- und ausblenden, indem Sie das Symbo
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Erfahren Sie, wie Sie [Daten in Ihrer Umgebung erfassen](./concepts-ingestion-overview.md) können.
+* Erfahren Sie, wie Sie [Daten in Ihrer Umgebung erfassen](./concepts-ingestion-overview.md) können.
 
-- Lesen Sie den Artikel zum [Speicher](concepts-storage.md).
+* Lesen Sie den Artikel zum [Speicher](concepts-storage.md).
 
-- Informieren Sie sich über die [Datenmodellierung](./concepts-model-overview.md) in Azure Time Series Insights Gen2.
+* Informieren Sie sich über die [Datenmodellierung](./concepts-model-overview.md) in Azure Time Series Insights Gen2.
 
-- Außerdem sollten Sie sich über das [Diagnostizieren und Beheben von Problemen](./time-series-insights-update-how-to-troubleshoot.md) in Ihrer Umgebung informieren.
+* Außerdem sollten Sie sich über das [Diagnostizieren und Beheben von Problemen](./time-series-insights-update-how-to-troubleshoot.md) in Ihrer Umgebung informieren.
