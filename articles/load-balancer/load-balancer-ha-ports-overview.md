@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2019
 ms.author: allensu
-ms.openlocfilehash: da776c679d5ded6f53cd0d224828fffee058d37d
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: 62c3dad980b65c3e8cfc64c98ba173f667e0b5fe
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85920611"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87447053"
 ---
 # <a name="high-availability-ports-overview"></a>Übersicht über Hochverfügbarkeitsports
 
@@ -99,5 +99,5 @@ Sie können *eine* öffentliche Load Balancer Standard-Ressource für die Back-E
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Erfahren Sie, wie Sie HA-Ports für Ihren ILB über das Portal(tutorial-load-balancer-standard-internal-portal.mdl#create-a-load-balancer-rule), [PowerShell](load-balancer-get-started-ilb-arm-ps.md#create-the-configuration-rules-probe-and-load-balancer), die [CLI](load-balancer-get-started-ilb-arm-cli.md#create-the-load-balancer-rule) oder über [Vorlagen](load-balancer-get-started-ilb-arm-template.md) konfigurieren.
+- [Informieren Sie sich über das Konfigurieren von Hochverfügbarkeitsports für Ihren ILB über das Portal](tutorial-load-balancer-standard-internal-portal.md#create-a-load-balancer-rule), [PowerShell](load-balancer-get-started-ilb-arm-ps.md#create-the-configuration-rules-probe-and-load-balancer), die [CLI](load-balancer-get-started-ilb-arm-cli.md#create-the-load-balancer-rule) oder [Vorlagen.](load-balancer-get-started-ilb-arm-template.md)
 - [Übersicht über Standard Load Balancer](load-balancer-standard-overview.md)

@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 03/25/2020
+ms.date: 08/03/2020
 ms.author: jingwang
-ms.openlocfilehash: 74210864332319dabb16eda865da9dc9793e3dbd
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 54597953aac6fabe419a9d1b62b16de7ca7bd1e0
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84187667"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534344"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Kopieraktivität in Azure Data Factory
 
@@ -186,7 +186,7 @@ Informationen dazu, wie die Quelldaten von der Kopieraktivität der Senke zugeor
 Über das Kopieren von Daten aus dem Quelldatenspeicher in die Senke hinaus können Sie auch so konfigurieren, dass zusätzliche Datenspalten zum Kopieren in die Senke hinzugefügt werden. Beispiel:
 
 - Beim Kopieren aus einer dateibasierten Quelle speichern Sie den relativen Dateipfad als zusätzliche Spalte, in der Sie verfolgen können, aus welcher Datei die Daten stammen.
-- Fügen Sie eine Spalte mit ADF-Ausdruck hinzu, um ADF-Systemvariablen wie „pipeline name/pipeline id“ anzufügen oder einen anderen dynamischen Wert aus der Ausgabe der Upstreamaktivität zu speichern.
+- Fügen Sie eine Spalte mit ADF-Ausdruck hinzu, um ADF-Systemvariablen wie „pipeline name/pipeline ID“ anzufügen oder einen anderen dynamischen Wert aus der Ausgabe der Upstreamaktivität zu speichern.
 - Fügen Sie eine Spalte mit statischem Wert hinzu, um Ihren Bedarf an Downstreamnutzung zu erfüllen.
 
 Auf der Registerkarte „Quelle der Kopieraktivität“ finden Sie die folgende Konfiguration: 
@@ -240,6 +240,19 @@ Wenn es programmgesteuert konfiguriert werden soll, fügen Sie in Ihrer Quelle f
     }
 ]
 ```
+
+## <a name="auto-create-sink-tables"></a>Automatisches Erstellen von Senkentabellen
+
+Wenn beim Kopieren von Daten in SQL-Datenbank/Azure Synapse Analytics die Zieltabelle nicht vorhanden ist, unterstützt die Copy-Aktivität ihre automatische Erstellung basierend auf den Quelldaten. Das soll Ihnen helfen, schnell mit dem Laden der Daten und dem Evaluieren von SQL-Datenbank/Azure Synapse Analytics zu beginnen. Nach der Datenerfassung können Sie das Schema der Senkentabelle überprüfen und Ihren Anforderungen entsprechend anpassen.
+
+Diese Funktion wird unterstützt, wenn Daten aus einer beliebigen Quelle in die folgenden Senkendatenspeicher kopiert werden. Die Option finden Sie unter *Benutzeroberfläche für die ADF-Dokumentenerstellung* > *Copy activity sink* (Senke der Copy-Aktivität) > *Tabellenoption* > *Auto create table* (Tabelle automatisch erstellen) oder über die Eigenschaft `tableOption` in der Senkennutzlast der Copy-Aktivität.
+
+- [Azure SQL-Datenbank](connector-azure-sql-database.md)
+- [Verwaltete Azure SQL-Datenbank-Instanz](connector-azure-sql-managed-instance.md)
+- [Azure Synapse Analytics (ehemals Azure SQL Data Warehouse)](connector-azure-sql-data-warehouse.md)
+- [SQL Server](connector-sql-server.md)
+
+![Erstellen von Senkentabellen](media/copy-activity-overview/create-sink-table.png)
 
 ## <a name="fault-tolerance"></a>Fehlertoleranz
 

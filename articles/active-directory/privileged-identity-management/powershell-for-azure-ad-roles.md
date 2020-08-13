@@ -16,12 +16,12 @@ ms.date: 05/11/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8e3791da8f8a990f62de0052e1662fd6037e936b
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 6792fdc405d539a662c8dc20c04b2891fd036704
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85849284"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421908"
 ---
 # <a name="powershell-for-azure-ad-roles-in-privileged-identity-management"></a>PowerShell für Azure AD-Rollen in Privileged Identity Management (PIM)
 
@@ -140,7 +140,7 @@ Get-AzureADMSPrivilegedRoleSetting -ProviderId 'aadRoles' -Filter "ResourceId eq
 
 Die Einstellung enthält vier Hauptobjekte. Nur drei dieser Objekte werden derzeit von PIM verwendet. „UserMemberSettings“ sind Aktivierungseinstellungen, „AdminEligibleSettings“ sind Zuweisungseinstellungen für berechtigte Zuweisungen, und „AdminmemberSettings“ sind Zuweisungseinstellungen für aktive Zuweisungen.
 
-[![](media/powershell-for-azure-ad-roles/get-update-role-settings-result.png "Get and update role settings")](media/powershell-for-azure-ad-roles/get-update-role-settings-result.png#lightbox)
+[![Abrufen und Aktualisieren von Rolleneinstellungen](media/powershell-for-azure-ad-roles/get-update-role-settings-result.png)](media/powershell-for-azure-ad-roles/get-update-role-settings-result.png#lightbox)
 
 Zum Aktualisieren der Rolleneinstellung müssen Sie das vorhandene Einstellungsobjekt für eine bestimmte Rolle abrufen und Änderungen daran vornehmen:
 

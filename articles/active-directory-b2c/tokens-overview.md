@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/21/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: c31053f62f768cc534e07a8ac8d692176cf52b1e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8acdf714f459ae604ccd7788b021aee3ee037935
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83757618"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87482582"
 ---
 # <a name="overview-of-tokens-in-azure-active-directory-b2c"></a>Übersicht über Token in Azure Active Directory B2C
 
@@ -97,7 +97,7 @@ Die folgenden Eigenschaften werden zum [Verwalten der Tokenkompatibilität](conf
 
 ## <a name="pass-through"></a>Pass-Through
 
-Zu Beginn einer User Journey erhält Azure AD B2C ein Zugriffstoken von einem Identitätsanbieter. Azure AD B2C verwendet dieses Token, um Informationen zum Benutzer abzurufen. Sie [aktivieren einen Anspruch in Ihrem Benutzerflow](idp-pass-through-user-flow.md) oder [definieren einen Anspruch in Ihrer benutzerdefinierten Richtlinie](idp-pass-through-custom.md), um das Token an die Anwendungen zu übergeben, die Sie in Azure AD B2C registrieren. Ihre Anwendung muss einen [v2-Benutzerflow](user-flow-versions.md) verwenden, um von der Übergabe des Tokens als Anspruch profitieren zu können.
+Zu Beginn einer User Journey erhält Azure AD B2C ein Zugriffstoken von einem Identitätsanbieter. Azure AD B2C verwendet dieses Token, um Informationen zum Benutzer abzurufen. Sie [aktivieren einen Anspruch in Ihrem Benutzerflow](idp-pass-through-user-flow.md) oder [definieren einen Anspruch in Ihrer benutzerdefinierten Richtlinie](idp-pass-through-custom.md), um das Token an die Anwendungen zu übergeben, die Sie in Azure AD B2C registrieren. Ihre Anwendung muss einen [empfohlenen Benutzerflow](user-flow-versions.md) verwenden, um von der Übergabe des Tokens als Anspruch profitieren zu können.
 
 Azure AD B2C unterstützt derzeit nur die Übergabe des Zugriffstokens für OAuth 2.0-Identitätsanbieter. Hierzu zählen unter anderem Facebook und Google. Für alle weiteren Identitätsanbieter wird ein leerer Anspruch zurückgegeben.
 

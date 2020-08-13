@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.topic: how-to
 ms.subservice: users-groups-roles
 ms.workload: identity
-ms.date: 04/16/2020
+ms.date: 07/10/2020
 ms.author: curtand
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 578fb481ec858e65ede49bdce2d8bc26470aa2ca
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 918675b111b7b1b85669692b63fed683ea2831f8
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85850773"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475633"
 ---
 # <a name="assign-scoped-roles-to-an-administrative-unit"></a>Zuweisen von bereichsbezogenen Rollen zu einer Verwaltungseinheit
 
@@ -46,17 +46,19 @@ Wechseln Sie im Portal zu **Azure AD > Verwaltungseinheiten**. Wählen Sie die V
 
 ![Auswählen einer Verwaltungseinheit zum Ändern des Rollenbereichs](./media/roles-admin-units-assign-roles/select-role-to-scope.png)
 
-Wählen Sie die zuzuweisende Rolle und dann **Zuweisungen hinzufügen** aus. Dadurch wird ein Bereich auf der rechten Seite eingeblendet, in dem Sie einen oder mehrere Benutzer auswählen können, die der Rolle zugewiesen werden sollen.
+Wählen Sie die zuzuweisende Rolle und dann **Zuweisungen hinzufügen** aus. Es wird ein Bereich auf der rechten Seite geöffnet, in dem Sie einen oder mehrere Benutzer auswählen können, die der Rolle zugewiesen werden sollen.
 
 ![Auswählen der Rolle für den Bereich und dann Auswählen von „Zuweisungen hinzufügen“](./media/roles-admin-units-assign-roles/select-add-assignment.png)
 
 ### <a name="powershell"></a>PowerShell
 
 ```powershell
-$administrative = Get-AzureADAdministrativeUnit -Filter "displayname eq 'Test administrative unit 2'"
-$AdminUser = Get-AzureADUser -ObjectId 'janedoe@fabidentity.onmicrosoft.com'
-$uaRoleMemberInfo = New-Object -TypeName Microsoft.Open.AzureAD.Model.RoleMemberInfo -Property @{ObjectId = $AdminUser.ObjectId}
-Add-AzureADScopedRoleMembership -RoleObjectId $UserAdminRole.ObjectId -ObjectId $administrative unitObj.ObjectId -RoleMemberInfo  $uaRoleMemberInfo
+$AdminUser = Get-AzureADUser -ObjectId "Use the user's UPN, who would be an admin on this unit"
+$Role = Get-AzureADDirectoryRole | Where-Object -Property DisplayName -EQ -Value "User Account Administrator"
+$administrativeUnit = Get-AzureADAdministrativeUnit -Filter "displayname eq 'The display name of the unit'"
+$RoleMember = New-Object -TypeName Microsoft.Open.AzureAD.Model.RoleMemberInfo
+$RoleMember.ObjectId = $AdminUser.ObjectId
+Add-AzureADScopedRoleMembership -ObjectId $administrativeUnit.ObjectId -RoleObjectId $Role.ObjectId -RoleMemberInfo $RoleMember
 ```
 
 Der markierte Abschnitt kann nach Bedarf für die jeweilige Umgebung geändert werden.
@@ -85,8 +87,8 @@ Alle Rollenzuweisungen, die auf Verwaltungseinheiten bezogen sind, können im Ab
 ### <a name="powershell"></a>PowerShell
 
 ```powershell
-$administrative unitObj = Get-AzureADAdministrativeUnit -Filter "displayname eq 'Test administrative unit 2'"
-Get-AzureADScopedRoleMembership -ObjectId $administrative unitObj.ObjectId | fl *
+$administrativeUnit = Get-AzureADAdministrativeUnit -Filter "displayname eq 'The display name of the unit'"
+Get-AzureADScopedRoleMembership -ObjectId $administrativeUnit.ObjectId | fl *
 ```
 
 Der markierte Abschnitt kann nach Bedarf für die jeweilige Umgebung geändert werden.
@@ -102,4 +104,5 @@ Request body
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Problembehandlung und häufig gestellte Fragen im Zusammenhang mit Verwaltungseinheiten](roles-admin-units-faq-troubleshoot.md)
+- [Verwenden von Cloudgruppen zum Verwalten von Rollenzuweisungen](roles-groups-concept.md)
+- [Problembehandlung bei Rollen, die Cloudgruppen zugewiesen sind](roles-groups-faq-troubleshooting.md)

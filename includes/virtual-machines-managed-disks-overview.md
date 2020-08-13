@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 07/17/2020
+ms.date: 08/11/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 2ef1fab7a6f32f45ee3047a24610085a2133a339
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 26d6ca641c03395996fdeaa4e54d2a001cf02bef
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87102675"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88162694"
 ---
 ## <a name="benefits-of-managed-disks"></a>Vorteile von verwalteten Datenträgern
 
@@ -41,7 +41,7 @@ Zum Schutz vor regionalen Katastrophen kann mit [Azure Backup](../articles/backu
 
 ### <a name="granular-access-control"></a>Genau abgestimmte Zugriffssteuerung
 
-Sie können die [Rollenbasierte Zugriffssteuerung in Azure (RBAC)](../articles/role-based-access-control/overview.md) verwenden, um die spezifischen Berechtigungen für einen verwalteten Datenträger einem oder mehreren Benutzern zuzuweisen. Verwaltete Datenträger bieten viele verschiedene Vorgänge, z.B. Lesen, Schreiben (Erstellen/Aktualisieren), Löschen und Abrufen eines [SAS-URI (Shared Access Signature)](../articles/storage/common/storage-dotnet-shared-access-signature-part-1.md) für den Datenträger. Sie haben die Möglichkeit, Personen nur Zugriff auf die Vorgänge zu gewähren, die sie jeweils benötigen, um ihre Aufgaben zu erledigen. Wenn Sie es für eine Person beispielsweise nicht zulassen möchten, dass sie einen verwalteten Datenträger auf ein Speicherkonto kopiert, können Sie festlegen, dass der Zugriff auf die Exportaktion für diesen verwalteten Datenträger nicht gewährt wird. Wenn Sie nicht möchten, dass eine Person einen SAS-URI zum Kopieren eines verwalteten Datenträgers verwendet, können Sie auch festlegen, dass diese Berechtigung für den verwalteten Datenträger nicht gewährt wird.
+Sie können die [Rollenbasierte Zugriffssteuerung in Azure (Azure RBAC)](../articles/role-based-access-control/overview.md) verwenden, um die spezifischen Berechtigungen für einen verwalteten Datenträger einem oder mehreren Benutzern zuzuweisen. Verwaltete Datenträger bieten viele verschiedene Vorgänge, z.B. Lesen, Schreiben (Erstellen/Aktualisieren), Löschen und Abrufen eines [SAS-URI (Shared Access Signature)](../articles/storage/common/storage-dotnet-shared-access-signature-part-1.md) für den Datenträger. Sie haben die Möglichkeit, Personen nur Zugriff auf die Vorgänge zu gewähren, die sie jeweils benötigen, um ihre Aufgaben zu erledigen. Wenn Sie es für eine Person beispielsweise nicht zulassen möchten, dass sie einen verwalteten Datenträger auf ein Speicherkonto kopiert, können Sie festlegen, dass der Zugriff auf die Exportaktion für diesen verwalteten Datenträger nicht gewährt wird. Wenn Sie nicht möchten, dass eine Person einen SAS-URI zum Kopieren eines verwalteten Datenträgers verwendet, können Sie auch festlegen, dass diese Berechtigung für den verwalteten Datenträger nicht gewährt wird.
 
 ### <a name="upload-your-vhd"></a>Hochladen der VHD
 
@@ -53,7 +53,7 @@ Informationen zur Übertragung Ihrer VHD in Azure finden Sie im Artikel zur [CLI
 
 ### <a name="private-links"></a>Private Links
 
-Verwaltete Datenträger unterstützen die Verwendung von privaten Links zum Importieren oder Exportieren eines verwalteten Datenträgers innerhalb Ihres Netzwerks. Mit privaten Links können Sie einen zeitgebundenen SAS-URI (Shared Access Signature) für nicht angefügte verwaltete Datenträger und Momentaufnahmen generieren, um die Daten zur regionalen Erweiterung, zur Notfallwiederherstellung und für die forensische Analyse in eine andere Region zu exportieren. Sie können den SAS-URI auch verwenden, um eine VHD aus der lokalen Umgebung direkt auf einen leeren Datenträger hochzuladen. Jetzt können Sie [Private Links](../articles/private-link/private-link-overview.md) verwenden, um den Export und Import von verwalteten Datenträgern einzuschränken, sodass er nur innerhalb Ihres virtuellen Azure-Netzwerks erfolgen kann. Mit privaten Links können Sie sicherstellen, dass Ihre Daten nur innerhalb des sicheren Microsoft-Backbone-Netzwerks übertragen werden.
+Die Private Link-Unterstützung für verwaltete Datenträger befindet sich derzeit in der Vorschauphase. Der Dienst kann zum Importieren und Exportieren eines verwalteten Datenträgers innerhalb Ihres Netzwerks verwendet werden. Mit privaten Links können Sie einen zeitgebundenen SAS-URI (Shared Access Signature) für nicht angefügte verwaltete Datenträger und Momentaufnahmen generieren, um die Daten zur regionalen Erweiterung, zur Notfallwiederherstellung und für die forensische Analyse in eine andere Region zu exportieren. Sie können den SAS-URI auch verwenden, um eine VHD aus der lokalen Umgebung direkt auf einen leeren Datenträger hochzuladen. Jetzt können Sie [Private Links](../articles/private-link/private-link-overview.md) verwenden, um den Export und Import von verwalteten Datenträgern einzuschränken, sodass er nur innerhalb Ihres virtuellen Azure-Netzwerks erfolgen kann. Mit privaten Links können Sie sicherstellen, dass Ihre Daten nur innerhalb des sicheren Microsoft-Backbone-Netzwerks übertragen werden.
 
 Wie Sie private Links zum Importieren oder Exportieren eines verwalteten Datenträgers aktivieren können, erfahren Sie in den Artikeln zur [CLI](../articles/virtual-machines/linux/disks-export-import-private-links-cli.md) oder zum [Portal](../articles/virtual-machines/disks-enable-private-links-for-import-export-portal.md).
 

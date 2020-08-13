@@ -5,21 +5,21 @@ ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
 ms.author: dpalled
-manager: cshankar
+manager: diviso
 ms.reviewer: v-mamcge, jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: troubleshooting
-ms.date: 01/21/2020
+ms.date: 06/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: 2812b535c7aef7987db7106bfa6b07e15a1b61c7
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 9fa47c81aede9de5d083f16f9e1705f687ad39a4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81263385"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87046433"
 ---
-# <a name="monitor-and-mitigate-throttling-to-reduce-latency-in-azure-time-series-insights"></a>Überwachen und Mindern der Drosselung zur Verhinderung von Latenz in Azure Time Series Insights
+# <a name="monitor-and-mitigate-throttling-to-reduce-latency-in-azure-time-series-insights-gen1"></a>Überwachen und Mindern der Drosselung zur Verhinderung von Wartezeit in Azure Time Series Insights Gen1
 
 Wenn die Menge der eingehenden Daten die Konfiguration Ihrer Umgebung übersteigt, kann dies zu Latenz oder Drosselung in Azure Time Series Insights führen.
 
@@ -27,14 +27,14 @@ Sie können Latenz und Drosselung vermeiden, indem Sie die Umgebung korrekt für
 
 Am wahrscheinlichsten treten Latenz und Drosselung in folgenden Fällen auf:
 
-- Sie fügen eine Ereignisquelle hinzu, die alte Daten enthält, die möglicherweise die zugewiesene Eingangsrate überschreiten. (Time Series Insights muss auf den neuesten Stand gebracht werden.)
+- Sie fügen eine Ereignisquelle hinzu, die alte Daten enthält, die möglicherweise die zugewiesene Eingangsrate überschreiten. (Azure Time Series Insights muss auf den neuesten Stand gebracht werden.)
 - Sie fügen einer Umgebung weitere Ereignisquellen hinzu, was zu einer Spitze durch zusätzliche Ereignisse führt (die die Kapazität der Umgebung überschreiten kann).
-- Sie übertragen große Mengen an Verlaufsereignissen in eine Ereignisquelle, was zu einer Verzögerung führt. (Time Series Insights muss auf den neuesten Stand gebracht werden.)
+- Sie übertragen große Mengen an Verlaufsereignissen in eine Ereignisquelle, was zu einer Verzögerung führt. (Azure Time Series Insights muss auf den neuesten Stand gebracht werden.)
 - Sie verknüpfen Verweisdaten mit Telemetriedaten, was zu einer umfangreicheren Ereignisgröße führt. Die maximal zulässige Paketgröße ist 32 KB. Datenpakete mit einer Größe von über 32 KB werden abgeschnitten.
 
 ## <a name="video"></a>Video
 
-### <a name="learn-about-time-series-insights-data-ingress-behavior-and-how-to-plan-for-itbr"></a>Erfahren Sie mehr über das Time Series Insights-Dateneingangsverhalten und dessen Planung.</br>
+### <a name="learn-about-azure-time-series-insights-data-ingress-behavior-and-how-to-plan-for-itbr"></a>Erfahren Sie mehr über das Azure Time Series Insights-Dateneingangsverhalten und dessen Planung.</br>
 
 > [!VIDEO https://www.youtube.com/embed/npeZLAd9lxo]
 
@@ -42,9 +42,9 @@ Am wahrscheinlichsten treten Latenz und Drosselung in folgenden Fällen auf:
 
 Mithilfe von Warnungen können Sie in Ihrer Umgebung auftretende Latenzprobleme diagnostizieren und verringern.
 
-1. Wählen Sie im Azure-Portal Ihre Time Series Insights-Umgebung aus. Wählen Sie dann **Warnungen** aus.
+1. Wählen Sie im Azure-Portal Ihre Azure Time Series Insights-Umgebung aus. Wählen Sie dann **Warnungen** aus.
 
-   [![Hinzufügen einer Warnung zu Ihrer Time Series Insights-Umgebung](media/environment-mitigate-latency/mitigate-latency-add-alert.png)](media/environment-mitigate-latency/mitigate-latency-add-alert.png#lightbox)
+   [![Hinzufügen einer Warnung zu Ihrer Azure Time Series Insights-Umgebung](media/environment-mitigate-latency/mitigate-latency-add-alert.png)](media/environment-mitigate-latency/mitigate-latency-add-alert.png#lightbox)
 
 1. Wählen Sie **+ Neue Warnungsregel** aus. Daraufhin wird der Bereich **Regel erstellen** angezeigt. Wählen Sie unter **BEDINGUNG** die Option **Hinzufügen** aus.
 
@@ -74,7 +74,7 @@ Mithilfe von Warnungen können Sie in Ihrer Umgebung auftretende Latenzprobleme 
 
 ## <a name="throttling-and-ingress-management"></a>Drosselung und Eingangsverwaltung
 
-* Im Falle einer Drosselung wird ein Wert für *Ingress Received Message Time Lag* (Zeitverzögerung empfangene Eingangsnachrichten) registriert, um Sie darüber zu informieren, wie viele Sekunden Ihre Time Series Insights-Umgebung hinter dem tatsächlichen Zeitpunkt zurückliegt, zu dem die Nachricht bei der Ereignisquelle eintrifft (ohne Indizierungszeitraum von ca. 30 bis 60 Sekunden).  
+* Im Falle einer Drosselung wird ein Wert für *Ingress Received Message Time Lag* (Zeitverzögerung empfangene Eingangsnachrichten) registriert, um Sie darüber zu informieren, wie viele Sekunden Ihre Azure Time Series Insights-Umgebung hinter dem tatsächlichen Zeitpunkt zurückliegt, zu dem die Nachricht bei der Ereignisquelle eintrifft (ohne Indizierungszeitraum von ca. 30 bis 60 Sekunden).  
 
   *Eingang Verzögerung aufgrund der Anzahl empfangener Nachrichten* sollte ebenfalls über einen Wert verfügen, sodass Sie bestimmen können, um wie viele Nachrichten Sie zurückliegen.  Die einfachste Möglichkeit zum Aufholen des Rückstands besteht darin, die Kapazität Ihrer Umgebung auf eine Einstellung zu erhöhen, die Ihnen das Wettmachen des Unterschieds ermöglicht.  
 
@@ -84,7 +84,7 @@ Mithilfe von Warnungen können Sie in Ihrer Umgebung auftretende Latenzprobleme 
 
   Wenn Sie beispielsweise drei S1-Einheiten (oder eine Eingangskapazität von 2.100 Ereignissen pro Minute) bereitgestellt haben, können Sie eine Warnung vom Typ **Ingress Stored Events** (Eingang gespeicherte Ereignisse) >= 1.900 Ereignisse für 2 Stunden festlegen. Wenn dieser Schwellenwert konstant überschritten und dadurch die Warnung ausgelöst wird, ist die Bereitstellung wahrscheinlich nicht ausreichend.  
 
-* Wenn Sie vermuten, dass eine Drosselung vorliegt, können Sie die Warnung vom Typ **Ingress Received Messages** (Eingang empfangene Nachrichten) mit den ausgehenden Nachrichten der Ereignisquelle vergleichen.  Wenn der Eingang in den Event Hub größer ist als der Wert für **Ingress Received Messages** (Eingang empfangene Nachrichten), wird der Time Series Insights-Dienst wahrscheinlich gedrosselt.
+* Wenn Sie vermuten, dass eine Drosselung vorliegt, können Sie die Warnung vom Typ **Ingress Received Messages** (Eingang empfangene Nachrichten) mit den ausgehenden Nachrichten der Ereignisquelle vergleichen.  Wenn der Eingang beim Event Hub größer ist als der Wert für **Ingress Received Messages** (Eingang empfangene Nachrichten), wird der Azure Time Series Insights-Dienst wahrscheinlich gedrosselt.
 
 ## <a name="improving-performance"></a>Verbessern der Leistung
 
@@ -94,6 +94,6 @@ Sie können Latenz und Drosselung vermeiden, indem Sie die Umgebung korrekt für
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Informieren Sie sich über das [Diagnostizieren und Beheben von Problemen in der Time Series Insights-Umgebung](time-series-insights-diagnose-and-solve-problems.md).
+- Informieren Sie sich über das [Diagnostizieren und Beheben von Problemen in der Azure Time Series Insights-Umgebung](time-series-insights-diagnose-and-solve-problems.md).
 
-- Machen Sie sich mit der [Vorgehensweise zur Skalierung Ihrer Time Series Insights-Umgebung](time-series-insights-how-to-scale-your-environment.md) vertraut.
+- Machen Sie sich mit der [Vorgehensweise zur Skalierung Ihrer Azure Time Series Insights-Umgebung](time-series-insights-how-to-scale-your-environment.md) vertraut.

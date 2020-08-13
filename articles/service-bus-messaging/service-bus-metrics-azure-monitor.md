@@ -2,19 +2,19 @@
 title: Azure Service Bus-Metriken in Azure Monitor | Microsoft-Dokumentation
 description: In diesem Artikel wird erläutert, wie Sie mit Azure Monitor Service Bus-Entitäten (Warteschlangen, Themen und Abonnements) überwachen können.
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: 57b791e67157908447956a14fae99545843f3bc0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/15/2020
+ms.openlocfilehash: 3081b46bebdba8e83e5584178b37aab2dffee599
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85340294"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88065011"
 ---
 # <a name="azure-service-bus-metrics-in-azure-monitor"></a>Azure Service Bus-Metriken in Azure Monitor
 
 Service Bus-Metriken informieren Sie über den Status der Ressourcen in Ihrem Azure-Abonnement. Mithilfe eines umfangreichen Satzes von Metrikdaten können Sie die allgemeine Integrität Ihrer Service Bus-Ressourcen nicht nur auf Namespaceebene, sondern auch auf Entitätsebene bewerten. Diese Statistiken können wichtig sein, da sie Sie beim Überwachen des Zustands von Service Bus unterstützen. Metriken können auch beim Beheben der Ursachen von Problemen helfen, ohne dass Sie sich an den Azure-Support wenden müssen.
 
-Azure Monitor bietet einheitliche Benutzeroberflächen für die übergreifende Überwachung verschiedener Azure-Dienste. Weitere Informationen finden Sie unter [Überwachung in Microsoft Azure](../monitoring-and-diagnostics/monitoring-overview.md) und im Beispiel zum [Abrufen von Azure Monitor-Metriken mit .NET](https://github.com/Azure-Samples/monitor-dotnet-metrics-api) auf GitHub.
+Azure Monitor bietet einheitliche Benutzeroberflächen für die übergreifende Überwachung verschiedener Azure-Dienste. Weitere Informationen finden Sie unter [Überwachung in Microsoft Azure](../azure-monitor/overview.md) und im Beispiel zum [Abrufen von Azure Monitor-Metriken mit .NET](https://github.com/Azure-Samples/monitor-dotnet-metrics-api) auf GitHub.
 
 > [!IMPORTANT]
 > Wenn seit 2 Stunden keine Interaktion mit einer Entität mehr stattgefunden hat, zeigen die Metriken solange „0“ als Wert an, bis die Entität sich nicht mehr im Leerlauf befindet.
@@ -29,11 +29,11 @@ Metriken sind standardmäßig aktiviert, und es stehen Daten für die letzten 30
 
 Im [Azure-Portal](https://portal.azure.com) können Sie Metriken im Zeitverlauf überwachen. Das folgende Beispiel zeigt, wie Sie die erfolgreichen und die eingehenden Anforderungen auf Kontoebene anzeigen:
 
-![][1]
+![Screenshot: Seite „Monitor – Metriken (Vorschauversion)“ im Azure-Portal][1]
 
 Sie können auch direkt über den Namespace auf die Metriken zugreifen. Dazu wählen Sie den Namespace aus und klicken dann auf **Metriken**. Um Metriken, die auf Entitätsebene gefiltert werden, anzuzeigen, wählen Sie die Entität aus und klicken dann auf **Metriken**.
 
-![][2]
+![Screenshot: Seite „Monitor – Metriken (Vorschauversion)“, gefiltert nach dem Entitätsbereich][2]
 
 Bei Metriken mit Dimensionsunterstützung müssen Sie den gewünschten Dimensionswert als Filter verwenden.
 
@@ -56,11 +56,11 @@ Zählt die Anzahl der Anforderungen von Daten und Verwaltungsvorgängen
 
 | Metrikname | BESCHREIBUNG |
 | ------------------- | ----------------- |
-| Eingehende Anforderungen| Die Anzahl der Anforderungen an den Service Bus-Dienst in einem bestimmten Zeitraum <br/><br/> Einheit: Anzahl <br/> Aggregationstyp: Gesamt <br/> Dimension: EntityName|
-|Erfolgreiche Anforderungen|Die Anzahl der erfolgreichen Anforderungen an den Service Bus-Dienst in einem bestimmten Zeitraum<br/><br/> Einheit: Anzahl <br/> Aggregationstyp: Gesamt <br/> Dimension: EntityName|
-|Serverfehler|Die Anzahl der aufgrund eines Fehlers nicht verarbeiteten Anforderungen an den Service Bus-Dienst in einem bestimmten Zeitraum<br/><br/> Einheit: Anzahl <br/> Aggregationstyp: Gesamt <br/> Dimension: EntityName|
-|Benutzerfehler (siehe folgender Unterabschnitt)|Die Anzahl der aufgrund von Benutzerfehlern nicht verarbeiteten Anforderungen in einem bestimmten Zeitraum<br/><br/> Einheit: Anzahl <br/> Aggregationstyp: Gesamt <br/> Dimension: EntityName|
-|Gedrosselte Anforderungen|Die Anzahl der Anforderungen, die aufgrund eines überschrittenen Verbrauchs gedrosselt wurden<br/><br/> Einheit: Anzahl <br/> Aggregationstyp: Gesamt <br/> Dimension: EntityName|
+| Eingehende Anforderungen| Die Anzahl der Anforderungen an den Service Bus-Dienst in einem bestimmten Zeitraum <br/><br/> Einheit: Anzahl <br/> Aggregationstyp: Gesamt <br/> Dimension: Name der Entität|
+|Erfolgreiche Anforderungen|Die Anzahl der erfolgreichen Anforderungen an den Service Bus-Dienst in einem bestimmten Zeitraum<br/><br/> Einheit: Anzahl <br/> Aggregationstyp: Gesamt <br/> Dimension: Name der Entität|
+|Serverfehler|Die Anzahl der aufgrund eines Fehlers nicht verarbeiteten Anforderungen an den Service Bus-Dienst in einem bestimmten Zeitraum<br/><br/> Einheit: Anzahl <br/> Aggregationstyp: Gesamt <br/> Dimension: Name der Entität|
+|Benutzerfehler (siehe folgender Unterabschnitt)|Die Anzahl der aufgrund von Benutzerfehlern nicht verarbeiteten Anforderungen in einem bestimmten Zeitraum<br/><br/> Einheit: Anzahl <br/> Aggregationstyp: Gesamt <br/> Dimension: Name der Entität|
+|Gedrosselte Anforderungen|Die Anzahl der Anforderungen, die aufgrund eines überschrittenen Verbrauchs gedrosselt wurden<br/><br/> Einheit: Anzahl <br/> Aggregationstyp: Gesamt <br/> Dimension: Name der Entität|
 
 ### <a name="user-errors"></a>Benutzerfehler
 
@@ -74,12 +74,13 @@ Die beiden folgenden Arten von Fehlern werden als Benutzerfehler klassifiziert:
 
 | Metrikname | BESCHREIBUNG |
 | ------------------- | ----------------- |
-|Eingehende Nachrichten|Die Anzahl von Ereignissen oder Nachrichten, die in einem bestimmten Zeitraum an Service Bus gesendet wurden<br/><br/> Einheit: Anzahl <br/> Aggregationstyp: Gesamt <br/> Dimension: EntityName|
-|Ausgehende Nachrichten|Die Anzahl von Ereignissen oder Nachrichten, die in einem bestimmten Zeitraum von Service Bus empfangen wurden<br/><br/> Einheit: Anzahl <br/> Aggregationstyp: Gesamt <br/> Dimension: EntityName|
-| Meldungen| Anzahl von Nachrichten in einer Warteschlange/einem Thema <br/><br/> Einheit: Anzahl <br/> Aggregationstyp: Average <br/> Dimension: EntityName |
-| ActiveMessages| Anzahl von aktiven Nachrichten in einer Warteschlange/einem Thema <br/><br/> Einheit: Anzahl <br/> Aggregationstyp: Average <br/> Dimension: EntityName |
-| Unzustellbare Nachrichten| Anzahl von unzustellbaren Nachrichten in einer Warteschlange/einem Thema. <br/><br/> Einheit: Anzahl <br/> Aggregationstyp: Average <br/>Dimension: EntityName |
-| Geplante Nachrichten| Anzahl von geplanten Nachrichten in einer Warteschlange/einem Thema. <br/><br/> Einheit: Anzahl <br/> Aggregationstyp: Average  <br/> Dimension: EntityName |
+|Eingehende Nachrichten|Die Anzahl von Ereignissen oder Nachrichten, die in einem bestimmten Zeitraum an Service Bus gesendet wurden<br/><br/> Einheit: Anzahl <br/> Aggregationstyp: Gesamt <br/> Dimension: Name der Entität|
+|Ausgehende Nachrichten|Die Anzahl von Ereignissen oder Nachrichten, die in einem bestimmten Zeitraum von Service Bus empfangen wurden<br/><br/> Einheit: Anzahl <br/> Aggregationstyp: Gesamt <br/> Dimension: Name der Entität|
+| Meldungen| Anzahl von Nachrichten in einer Warteschlange/einem Thema <br/><br/> Einheit: Anzahl <br/> Aggregationstyp: Average <br/> Dimension: Name der Entität |
+| Aktive Nachrichten| Anzahl von aktiven Nachrichten in einer Warteschlange/einem Thema <br/><br/> Einheit: Anzahl <br/> Aggregationstyp: Average <br/> Dimension: Name der Entität |
+| Unzustellbare Nachrichten| Anzahl von unzustellbaren Nachrichten in einer Warteschlange/einem Thema. <br/><br/> Einheit: Anzahl <br/> Aggregationstyp: Average <br/>Dimension: Name der Entität |
+| Geplante Nachrichten| Anzahl von geplanten Nachrichten in einer Warteschlange/einem Thema. <br/><br/> Einheit: Anzahl <br/> Aggregationstyp: Average  <br/> Dimension: Name der Entität |
+| Size | Größe einer Entität (Warteschlange oder Thema) in Byte <br/><br/>Einheit: Anzahl <br/>Aggregationstyp: Average <br/>Dimension: Name der Entität | 
 
 > [!NOTE]
 > Werte für die folgenden Metriken sind Zeitpunktwerte. Eingehende Nachrichten, die unmittelbar nach diesem Zeitpunkt verarbeitet wurden, werden in diesen Metriken möglicherweise nicht berücksichtigt. 
@@ -92,9 +93,9 @@ Die beiden folgenden Arten von Fehlern werden als Benutzerfehler klassifiziert:
 
 | Metrikname | BESCHREIBUNG |
 | ------------------- | ----------------- |
-|ActiveConnections|Die Anzahl der aktiven Verbindungen in einem Namespace und bei einer Entität<br/><br/> Einheit: Anzahl <br/> Aggregationstyp: Gesamt <br/> Dimension: EntityName|
-|Geöffnete Verbindungen |Die Anzahl der geöffneten Verbindungen<br/><br/> Einheit: Anzahl <br/> Aggregationstyp: Gesamt <br/> Dimension: EntityName|
-|Geschlossene Verbindungen |Die Anzahl der geschlossenen Verbindungen<br/><br/> Einheit: Anzahl <br/> Aggregationstyp: Gesamt <br/> Dimension: EntityName|
+|Die aktiven Verbindungen.|Die Anzahl der aktiven Verbindungen in einem Namespace und bei einer Entität<br/><br/> Einheit: Anzahl <br/> Aggregationstyp: Gesamt <br/> Dimension: Name der Entität|
+|Geöffnete Verbindungen |Die Anzahl der geöffneten Verbindungen<br/><br/> Einheit: Anzahl <br/> Aggregationstyp: Gesamt <br/> Dimension: Name der Entität|
+|Geschlossene Verbindungen |Die Anzahl der geschlossenen Verbindungen<br/><br/> Einheit: Anzahl <br/> Aggregationstyp: Gesamt <br/> Dimension: Name der Entität|
 
 ## <a name="resource-usage-metrics"></a>Metriken zur Ressourcennutzung
 
@@ -107,8 +108,8 @@ Die beiden folgenden Arten von Fehlern werden als Benutzerfehler klassifiziert:
 
 | Metrikname | BESCHREIBUNG |
 | ------------------- | ----------------- |
-|CPU-Auslastung pro Namespace|Der Prozentsatz der CPU-Auslastung des Namespace<br/><br/> Einheit: Percent <br/> Aggregationstyp: Maximum <br/> Dimension: EntityName|
-|Auslastung der Arbeitsspeichergröße pro Namespace|Der Prozentsatz der Arbeitsspeichernutzung des Namespace<br/><br/> Einheit: Percent <br/> Aggregationstyp: Maximum <br/> Dimension: EntityName|
+|CPU-Auslastung pro Namespace|Der Prozentsatz der CPU-Auslastung des Namespace<br/><br/> Einheit: Percent <br/> Aggregationstyp: Maximum <br/> Dimension: Name der Entität|
+|Auslastung der Arbeitsspeichergröße pro Namespace|Der Prozentsatz der Arbeitsspeichernutzung des Namespace<br/><br/> Einheit: Percent <br/> Aggregationstyp: Maximum <br/> Dimension: Name der Entität|
 
 ## <a name="metrics-dimensions"></a>Metrikdimensionen
 
@@ -116,7 +117,7 @@ Azure Service Bus unterstützt folgende Dimensionen für Metriken in Azure Monit
 
 |Dimensionsname|BESCHREIBUNG|
 | ------------------- | ----------------- |
-|EntityName| Service Bus unterstützt Messagingentitäten unter dem Namespace.|
+|Entitätsname| Service Bus unterstützt Messagingentitäten unter dem Namespace.|
 
 ## <a name="set-up-alerts-on-metrics"></a>Einrichten von Warnungen zu Metriken
 
@@ -168,9 +169,7 @@ Azure Service Bus unterstützt folgende Dimensionen für Metriken in Azure Monit
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Siehe die [Azure Monitor – Übersicht](../monitoring-and-diagnostics/monitoring-overview.md).
+Siehe die [Azure Monitor – Übersicht](../azure-monitor/overview.md).
 
 [1]: ./media/service-bus-metrics-azure-monitor/service-bus-monitor1.png
 [2]: ./media/service-bus-metrics-azure-monitor/service-bus-monitor2.png
-
-

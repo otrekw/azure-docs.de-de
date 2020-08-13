@@ -9,16 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 04/19/2017
-ms.openlocfilehash: 4c6c73d29e04889b390bc071511eef8591da1543
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 57856f449a4eb4ac53cda698e82569adeca8cade
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87318690"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87429222"
 ---
 # <a name="azure-machine-learning-studio-classic-web-services-deployment-and-consumption"></a>Azure Machine Learning Studio-Webdienste (klassisch): Bereitstellung und Nutzung
 
-**BETRIFFT:** ![Nein](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-azure-ml.md) ![Ja](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (Classic) 
+**GILT FÜR:** ![Ja](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (Classic) ![Nein](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)
 
 Mit Azure Machine Learning Studio (klassisch) können Sie Machine Learning-Workflows und -Modelle als Webdienste bereitstellen. Diese Webdienste können dann verwendet werden, um die Machine Learning-Modelle in Anwendungen über das Internet aufzurufen und Vorhersagen im Echtzeit- oder Batchmodus zu nutzen. Da die Webdienste RESTful sind, können Sie sie über verschiedene Programmiersprachen und Plattformen wie etwa .NET und Java sowie über Anwendungen wie Excel aufrufen.
 

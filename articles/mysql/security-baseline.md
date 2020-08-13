@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 02050745e7c8a9aa05d3f2de63a4bc5f1ebf8318
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e73f53fe983c1ebe77044993a281847ad362a840
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83654773"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496772"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-mysql"></a>Azure-Sicherheitsbaseline für Azure Database for MySQL
 
@@ -62,7 +62,7 @@ Aktivieren und Verwenden von Traffic Analytics: https://docs.microsoft.com/azure
 
 **Anleitung:** Nicht zutreffend. Diese Empfehlung ist für Webanwendungen gedacht, die in Azure App Service oder auf Computeressourcen ausgeführt werden.
 
-**Azure Security Center-Überwachung:** Nicht verfügbar
+**Azure Security Center-Überwachung**: Nicht verfügbar
 
 **Verantwortlichkeit**: –
 
@@ -106,7 +106,7 @@ Konfigurieren von Advanced Threat Protection für Azure Database for MySQL: http
 
 **Anleitung:** Nicht zutreffend. Diese Empfehlung ist für Webanwendungen gedacht, die in Azure App Service oder auf Computeressourcen ausgeführt werden.
 
-**Azure Security Center-Überwachung:** Nicht verfügbar
+**Azure Security Center-Überwachung**: Nicht verfügbar
 
 **Verantwortlichkeit**: –
 
@@ -547,7 +547,7 @@ Grundlegendes zum Schutz von Kundendaten in Azure: https://docs.microsoft.com/az
 
 ### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6: Verwenden von Azure RBAC zum Steuern des Zugriffs auf Ressourcen
 
-**Leitfaden**: Verwenden Sie die rollenbasierte Zugriffssteuerung (RBAC) von Azure, um den Zugriff auf die Azure Database for MySQL-Steuerungsebene (z. B. Azure-Portal) zu steuern. Verwenden Sie für den Zugriff auf die Datenebene (in der Datenbank selbst) SQL-Abfragen, um Benutzer zu erstellen und Benutzerberechtigungen zu konfigurieren. RBAC wirkt sich nicht auf Benutzerberechtigungen in der Datenbank aus.
+**Leitfaden**: Verwenden Sie die rollenbasierte Zugriffssteuerung von Azure (Azure RBAC), um den Zugriff auf die Azure Database for MySQL-Steuerungsebene (z. B. Azure-Portal) zu steuern. Verwenden Sie für den Zugriff auf die Datenebene (in der Datenbank selbst) SQL-Abfragen, um Benutzer zu erstellen und Benutzerberechtigungen zu konfigurieren. RBAC wirkt sich nicht auf Benutzerberechtigungen in der Datenbank aus.
 
 Konfigurieren von RBAC in Azure: https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal
 
@@ -752,7 +752,7 @@ Ablehnen eines bestimmten Ressourcentyps mit Azure Policy: https://docs.microsof
 
 ### <a name="610-implement-approved-application-list"></a>6.10: Implementieren einer Liste genehmigter Anwendungen
 
-**Anleitung:** Nicht zutreffend. Diese Empfehlung ist für Computeressourcen vorgesehen.
+**Leitfaden**: Nicht zutreffend. Diese Empfehlung ist für Computeressourcen vorgesehen.
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -780,7 +780,7 @@ Konfigurieren des bedingten Zugriffs, um den Zugriff auf Azure Resource Manager 
 
 **Anleitung:** Nicht zutreffend. Diese Empfehlung ist für Webanwendungen gedacht, die in Azure App Service oder auf Computeressourcen ausgeführt werden.
 
-**Azure Security Center-Überwachung:** Nicht verfügbar
+**Azure Security Center-Überwachung**: Nicht verfügbar
 
 **Verantwortlichkeit**: –
 
@@ -804,7 +804,7 @@ Konfigurieren und Verwalten von Azure Policy: https://docs.microsoft.com/azure/g
 
 ### <a name="72-establish-secure-operating-system-configurations"></a>7.2: Einrichten sicherer Betriebssystemkonfigurationen
 
-**Anleitung:** Nicht zutreffend. Diese Empfehlung ist für Computeressourcen vorgesehen.
+**Leitfaden**: Nicht zutreffend. Diese Empfehlung ist für Computeressourcen vorgesehen.
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 

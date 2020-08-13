@@ -2,13 +2,13 @@
 title: Problembehandlung für Azure Monitor für Container | Microsoft-Dokumentation
 description: In diesem Artikel wird beschrieben, wie Sie Probleme mit Azure Monitor für Container behandeln und lösen können.
 ms.topic: conceptual
-ms.date: 10/15/2019
-ms.openlocfilehash: bc4105dc23445c29364961501f93e42f8c3b683d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/21/2020
+ms.openlocfilehash: fcd799c63e4afb68d96f67d1c03016a4d3b10f34
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85800442"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092829"
 ---
 # <a name="troubleshooting-azure-monitor-for-containers"></a>Problembehandlung für Azure Monitor für Container
 
@@ -37,18 +37,18 @@ Wenn Azure Monitor für Container erfolgreich aktiviert und konfiguriert wurde, 
 
     `kubectl get ds omsagent --namespace=kube-system`
 
-    Die Ausgabe sollte wie folgt aussehen, was auf eine ordnungsgemäße Bereitstellung hinweist:
+    Die Ausgabe sollte wie im folgenden Beispiel aussehen, was auf eine ordnungsgemäße Bereitstellung hinweist:
 
     ```
     User@aksuser:~$ kubectl get ds omsagent --namespace=kube-system
     NAME       DESIRED   CURRENT   READY     UP-TO-DATE   AVAILABLE   NODE SELECTOR                 AGE
     omsagent   2         2         2         2            2           beta.kubernetes.io/os=linux   1d
     ```
-2. Wenn Sie über Windows Server-Knoten verfügen, überprüfen Sie den Status des Agents, indem Sie den folgenden Befehl ausführen:
+2. Wenn Sie über Windows Server-Knoten verfügen, überprüfen Sie den Status des Agents, indem Sie den folgenden Befehl ausführen:
 
     `kubectl get ds omsagent-win --namespace=kube-system`
 
-    Die Ausgabe sollte wie folgt aussehen, was auf eine ordnungsgemäße Bereitstellung hinweist:
+    Die Ausgabe sollte wie im folgenden Beispiel aussehen, was auf eine ordnungsgemäße Bereitstellung hinweist:
 
     ```
     User@aksuser:~$ kubectl get ds omsagent-win --namespace=kube-system
@@ -82,33 +82,6 @@ Wenn Azure Monitor für Container erfolgreich aktiviert und konfiguriert wurde, 
     omsagent-win-6drwq                  1/1       Running   0          1d
     ```
 
-5. Überprüfen Sie die Agent-Protokolle. Beim Bereitstellen des Container-Agents wird durch OMI-Befehle eine Schnellüberprüfung ausgeführt und die Agent- sowie Anbieterversion angezeigt.
-
-6. Um zu überprüfen, ob der Agent erfolgreich bereitgestellt wurde, führen Sie diesen Befehl aus: `kubectl logs omsagent-484hw --namespace=kube-system`
-
-    Der Status sollte wie im folgenden Beispiel aussehen:
-
-    ```
-    User@aksuser:~$ kubectl logs omsagent-484hw --namespace=kube-system
-    :
-    :
-    instance of Container_HostInventory
-    {
-        [Key] InstanceID=3a4407a5-d840-4c59-b2f0-8d42e07298c2
-        Computer=aks-nodepool1-39773055-0
-        DockerVersion=1.13.1
-        OperatingSystem=Ubuntu 16.04.3 LTS
-        Volume=local
-        Network=bridge host macvlan null overlay
-        NodeRole=Not Orchestrated
-        OrchestratorType=Kubernetes
-    }
-    Primary Workspace: b438b4f6-912a-46d5-9cb1-b44069212abc    Status: Onboarded(OMSAgent Running)
-    omi 1.4.2.2
-    omsagent 1.6.0.23
-    docker-cimprov 1.0.0.31
-    ```
-
 ## <a name="error-messages"></a>Fehlermeldungen
 
 In der unten stehenden Tabelle sind bekannte Fehler aufgeführt, die bei der Verwendung von Azure Monitor für Container auftreten können.
@@ -117,7 +90,7 @@ In der unten stehenden Tabelle sind bekannte Fehler aufgeführt, die bei der Ver
 | ---- | --- |
 | Fehlermeldung `No data for selected filters`  | Die Einrichtung der Überwachung des Datenflusses für neu erstellte Cluster kann einige Zeit in Anspruch nehmen. Es dauert mindestens 10 bis 15 Minuten, bis Daten für Ihren Cluster angezeigt werden. |
 | Fehlermeldung `Error retrieving data` | Während der Einrichtung eines Azure Kubernetes Service-Clusters für die Überwachung von Integrität und Leistung wird zwischen dem Cluster und dem Azure Log Analytics-Arbeitsbereich eine Verbindung hergestellt. Zum Speichern sämtlicher Überwachungsdaten für Ihren Cluster wird ein Log Analytics-Arbeitsbereich verwendet. Dieser Fehler kann auftreten, wenn Ihr Log Analytics-Arbeitsbereich gelöscht wurde. Überprüfen Sie, ob der Arbeitsbereich gelöscht wurde. Ist das der Fall, müssen Sie die Überwachung des Clusters mit Azure Monitor für Container erneut aktivieren und einen vorhandenen Arbeitsbereich angeben oder einen neuen Arbeitsbereich erstellen. Zum erneuten Aktivieren müssen Sie die Überwachung für den Cluster [deaktivieren](container-insights-optout.md) und dann mit Azure Monitor für Container [erneut aktivieren](container-insights-enable-new-cluster.md). |
-| `Error retrieving data` nach dem Hinzufügen von Azure Monitor für Container mithilfe von „az aks cli“ | Beim Aktivieren der Überwachung mithilfe von `az aks cli` wird Azure Monitor für Container möglicherweise nicht ordnungsgemäß bereitgestellt. Überprüfen Sie, ob die Lösung bereitgestellt ist. Wechseln Sie zu diesem Zweck zu Ihrem Log Analytics-Arbeitsbereich, und wählen Sie im linken Bereich **Lösungen** aus, um zu überprüfen, ob die Lösung verfügbar ist. Um dieses Problem zu lösen, müssen Sie die Lösung erneut bereitstellen. Befolgen Sie dazu die Anweisungen zum [Bereitstellen von Azure Monitor für Container](container-insights-onboard.md). |
+| `Error retrieving data` nach dem Hinzufügen von Azure Monitor für Container mithilfe von „az aks cli“ | Beim Aktivieren der Überwachung mithilfe von `az aks cli` wird Azure Monitor für Container möglicherweise nicht ordnungsgemäß bereitgestellt. Überprüfen Sie, ob die Lösung bereitgestellt ist. Wechseln Sie zur Überprüfung zu Ihrem Log Analytics-Arbeitsbereich, und wählen Sie im linken Bereich **Lösungen** aus, um zu überprüfen, ob die Lösung verfügbar ist. Um dieses Problem zu lösen, müssen Sie die Lösung erneut bereitstellen. Befolgen Sie dazu die Anweisungen zum [Bereitstellen von Azure Monitor für Container](container-insights-onboard.md). |
 
 Um Sie bei der Diagnose zu unterstützen, haben wir [hier](https://raw.githubusercontent.com/microsoft/Docker-Provider/ci_dev/scripts/troubleshoot/TroubleshootError_nonAzureK8s.ps1) ein Skript zur Problembehandlung bereitgestellt.
 

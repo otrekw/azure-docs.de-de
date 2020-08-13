@@ -10,13 +10,13 @@ metadata:
   ms.collection: collection
   author: hrasheed-msft
   ms.author: hrasheed
-  ms.date: 09/13/2019
-  ms.openlocfilehash: 66350050a84617b789c6a73c38170dc25dad331d
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.date: 08/11/2020
+  ms.openlocfilehash: 43de19b3caa87bf410ad30a237c2c9e91beba63f
+  ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "73802904"
+  ms.lasthandoff: 08/12/2020
+  ms.locfileid: "88136370"
 landingContent:
 - title: Informationen zu Azure Data Share
   linkLists:
@@ -24,13 +24,17 @@ landingContent:
     links:
     - text: Was ist Azure Data Share?
       url: overview.md
+    - text: Unterstützte Datenspeicher
+      url: supported-data-stores.md
   - linkListType: concept
     links:
-    - text: Azure Data Share-Konzepte
+    - text: Azure Data Share-Terminologie
       url: terminology.md
     - text: Rollen und Anforderungen für Azure Data Share
       url: concepts-roles-permissions.md
-- title: Freigeben von Daten
+    - text: Grundlegendes zu Preisen
+      url: concepts-pricing.md
+- title: Freigeben und Empfangen von Daten
   linkLists:
   - linkListType: tutorial
     links:
@@ -40,21 +44,25 @@ landingContent:
       url: subscribe-to-data-share.md
   - linkListType: how-to-guide
     links:
-    - text: Konfigurieren von Dataset-Mappings
-      url: how-to-configure-mapping.md
     - text: Hinzufügen von Datasets
       url: how-to-add-datasets.md
+    - text: Konfigurieren von Dataset-Mappings
+      url: how-to-configure-mapping.md
 - title: Überwachen und Verwalten
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: Überwachen von Azure Data Share
+    - text: Überwachen Ihrer Freigabe
       url: how-to-monitor.md
     - text: Häufig auftretende Probleme und Problembehandlung
       url: data-share-troubleshoot.md
-    - text: Hinzufügen von Datasets
-      url: how-to-add-datasets.md
+    - text: Hinzufügen von Empfängern
+      url: how-to-add-recipients.md
     - text: Löschen einer Einladung
       url: how-to-delete-invitation.md
     - text: Aufheben einer Abonnementfreigabe
       url: how-to-revoke-share-subscription.md
+    - text: Sicherheitsübersicht für Azure Data Share
+      url: security.md
+    - text: Notfallwiederherstellung
+      url: disaster-recovery.md

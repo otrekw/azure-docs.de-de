@@ -1,6 +1,6 @@
 ---
-title: Verwenden benutzerdefinierter Rollen für Azure-Ressourcen in PIM – Azure AD | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie benutzerdefinierte Rollen für Azure-Ressourcen in Azure AD Privileged Identity Management (PIM) verwenden.
+title: 'Verwenden benutzerdefinierter Azure-Rollen in PIM: Azure AD | Microsoft-Dokumentation'
+description: Hier erfahren Sie, wie Sie benutzerdefinierte Azure-Rollen in Azure AD Privileged Identity Management (PIM) aktivieren.
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -14,14 +14,14 @@ ms.subservice: pim
 ms.date: 11/08/2019
 ms.author: curtand
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aa51508746d0024be0a5acfaeeac62e86db67d3f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d1c9255de6b9f449a89a994cb3286139daa28ea9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84743744"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87034098"
 ---
-# <a name="use-custom-roles-for-azure-resources-in-privileged-identity-management"></a>Verwenden benutzerdefinierter Rollen für Azure-Ressourcen in Privileged Identity Management
+# <a name="use-azure-custom-roles-in-privileged-identity-management"></a>Verwenden von benutzerdefinierten Azure-Rollen in Privileged Identity Management
 
 Möglicherweise müssen Sie auf einige Benutzer in einer privilegierten Rolle in Ihrer Azure Active Directory-Organisation (Azure AD) strikte Privileged Identity Management-Einstellungen (PIM) anwenden, während anderen Benutzern eine größere Autonomie eingeräumt werden kann. Stellen Sie sich z. B. ein Szenario vor, bei dem Ihre Organisation auf mehrere Vertragspartner zurückgreift, die Unterstützung bei der Entwicklung einer Anwendung leisten, die in einem Azure-Abonnement ausgeführt wird.
 
@@ -31,7 +31,7 @@ Führen Sie die im nächsten Abschnitt angegebenen Schritte aus, um Privileged I
 
 ## <a name="create-the-custom-role"></a>Erstellen der benutzerdefinierten Rolle
 
-Um eine benutzerdefinierte Rolle für eine Ressource zu erstellen, führen Sie die Schritte unter [Erstellen benutzerdefinierter Rollen für rollenbasierte Zugriffssteuerung in Azure](../role-based-access-control-custom-roles.md) aus.
+Um eine benutzerdefinierte Rolle für eine Ressource zu erstellen, führen Sie die Schritte unter [Benutzerdefinierte Azure-Rollen](../role-based-access-control-custom-roles.md) aus.
 
 Wenn Sie benutzerdefinierte Rollen erstellen, fügen Sie einen beschreibenden Namen hinzu, damit Sie sich leicht merken können, welche integrierte Rolle dupliziert werden soll.
 

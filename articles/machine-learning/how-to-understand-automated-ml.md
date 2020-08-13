@@ -8,14 +8,15 @@ ms.author: anumamah
 ms.reviewer: nibaccam
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
 ms.date: 12/05/2019
-ms.openlocfilehash: 119f26f8d5a425462382a873d7ca4bcfdd6f3d03
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.topic: conceptual
+ms.custom: how-to
+ms.openlocfilehash: 89fe1d80fb7282a72bde6bcafa070f2d7461b02f
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85214501"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320832"
 ---
 # <a name="understand-automated-machine-learning-results"></a>Grundlagen von Ergebnissen des automatisierten maschinellen Lernens
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -23,8 +24,8 @@ ms.locfileid: "85214501"
 In diesem Artikel wird beschrieben, wie Sie Diagramme und Metriken für Ihre verschiedenen automatisierten Machine Learning-Ausführungen anzeigen und sich damit vertraut machen. 
 
 Weitere Informationen:
-+ [Metriken, Diagramme und Kurven für Klassifizierungsmodelle](#classification)
-+ [Metriken, Diagramme und Graphen für Regressionsmodelle](#regression)
++ [Metriken und Diagramme für Klassifizierungsmodelle](#classification)
++ [Metriken und Diagramme für Regressionsmodelle](#regression)
 + [Interpretierbarkeit von Modellen und Featurepriorität](#explain-model)
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -78,9 +79,9 @@ Bei jeder Ausführungsiteration werden die unten angegebenen Metriken für eine 
 
 Metrik|BESCHREIBUNG|Berechnung|Zusätzliche Parameter
 --|--|--|--
-AUC_Macro| AUC ist die Fläche unter der ROC-Kurve (Receiver Operating Characteristic Curve). Macro ist das arithmetische Mittel der AUC für jede Klasse.  | [Berechnung](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html) | average="macro"|
-AUC_Micro| AUC ist die Fläche unter der ROC-Kurve (Receiver Operating Characteristic Curve). „Micro“ wird global durch die Kombination der echt positiven und der falsch positiven Ergebnisse aus jeder Klasse berechnet.| [Berechnung](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html) | average="micro"|
-AUC_Weighted  | AUC ist die Fläche unter der ROC-Kurve (Receiver Operating Characteristic Curve). Der gewichtete Wert ist das arithmetische Mittel des Ergebnisses für jede Klasse, gewichtet gemäß der Anzahl der TRUE-Instanzen in jeder Klasse.| [Berechnung](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html)|average="weighted"
+AUC_macro| AUC ist die Fläche unter der ROC-Kurve (Receiver Operating Characteristic Curve). Macro ist das arithmetische Mittel der AUC für jede Klasse.  | [Berechnung](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html) | average="macro"|
+AUC_micro| AUC ist die Fläche unter der ROC-Kurve (Receiver Operating Characteristic Curve). „Micro“ wird global durch die Kombination der echt positiven und der falsch positiven Ergebnisse aus jeder Klasse berechnet.| [Berechnung](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html) | average="micro"|
+AUC_weighted  | AUC ist die Fläche unter der ROC-Kurve (Receiver Operating Characteristic Curve). Der gewichtete Wert ist das arithmetische Mittel des Ergebnisses für jede Klasse, gewichtet gemäß der Anzahl der TRUE-Instanzen in jeder Klasse.| [Berechnung](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html)|average="weighted"
 accuracy|Die Genauigkeit ist der Prozentsatz der prognostizierten Bezeichnungen, die den TRUE-Bezeichnungen genau entsprechen. |[Berechnung](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.accuracy_score.html) |Keine|
 average_precision_score_macro|Die durchschnittliche Genauigkeit fasst eine Precision-Recall-Kurve als gewichteten Mittelwert der bei jedem Schwellenwert erzielten Genauigkeiten zusammen, wobei die Zunahme beim Recall aus dem vorherigen Schwellenwert als Gewichtung verwendet wird. „Macro“ ist das arithmetische Mittel des durchschnittlichen Genauigkeitswerts jeder Klasse.|[Berechnung](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.average_precision_score.html)|average="macro"|
 average_precision_score_micro|Die durchschnittliche Genauigkeit fasst eine Precision-Recall-Kurve als gewichteten Mittelwert der bei jedem Schwellenwert erzielten Genauigkeiten zusammen, wobei die Zunahme beim Recall aus dem vorherigen Schwellenwert als Gewichtung verwendet wird. „Micro“ wird global durch Kombinieren der echt positiven und der falsch positiven Ergebnisse bei jedem Cutoff berechnet.|[Berechnung](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.average_precision_score.html)|average="micro"|
@@ -98,6 +99,12 @@ recall_score_macro|Der Abruf ist der prozentuale Anteil der richtig bezeichneten
 recall_score_micro|Der Abruf ist der prozentuale Anteil der richtig bezeichneten Elemente in einer bestimmten Klasse. „Micro“ wird global durch Zählen der insgesamt echt positiven, falsch negativen und falsch positiven Ergebnisse berechnet.|[Berechnung](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html)|average="micro"|
 recall_score_weighted|Der Abruf ist der prozentuale Anteil der richtig bezeichneten Elemente in einer bestimmten Klasse. Der gewichtete Wert ist das arithmetische Mittel des Recalls für jede Klasse, gewichtet gemäß der Anzahl der TRUE-Instanzen in jeder Klasse.|[Berechnung](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html)|average="weighted"|
 weighted_accuracy|Die gewichtete Genauigkeit ist die Genauigkeit, bei der die Gewichtung, die jedem Beispiel zugewiesen wird, gleich dem Anteil der TRUE-Instanzen in der TRUE-Klasse dieses Beispiels ist.|[Berechnung](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.accuracy_score.html)|sample_weight ist ein Vektor gleich dem Anteil der betreffenden Klasse für jedes Element im Ziel.|
+
+### <a name="binary-vs-multiclass-metrics"></a>Gegenüberstellung von Binär- und Multiklassenmetriken
+
+AutoML unterscheidet nicht zwischen Binär- und Multiklassenmetriken. Für Datasets mit zwei Klassen werden die gleichen Validierungsmetriken gemeldet wie für Datasets mit mehr als zwei Klassen. Einige Metriken sind jedoch für die Klassifizierung mit mehreren Klassen vorgesehen. Wenn eine solche Metrik auf ein binäres Dataset angewendet wird, wird keine Klasse als `true` behandelt. Metriken, die eindeutig für mehrere Klassen vorgesehen sind, sind mit dem Suffix `micro`, `macro`oder `weighted` gekennzeichnet. Beispiele hierfür sind etwa `average_precision_score`, `f1_score`, `precision_score`, `recall_score` und `AUC`.
+
+Im Anschluss finden Sie ein konkretes Beispiel, um diesen Unterschied zu verdeutlichen: Anstatt die Wiedererkennung als `tp / (tp + fn)` zu berechnen, wird bei der Durchschnittswiedererkennung mit mehreren Klassen (`micro`, `macro` oder `weighted`) für beide Klassen eines Datasets mit Binärklassifizierung ein Durchschnitt gebildet. Dies entspricht der separaten Berechnung der Wiedererkennung für die Klassen `true` und `false` und der anschließenden Bildung des Durchschnitts der beiden Klassen.
 
 <a name="confusion-matrix"></a>
 
@@ -144,15 +151,13 @@ Abhängig vom Ziel des Geschäftsproblems kann sich die ideale Genauigkeit-Treff
 ### <a name="roc-chart"></a>ROC-Diagramm
 
 #### <a name="what-is-a-roc-chart"></a>Was ist ein ROC-Diagramm?
-Receiver Operating Characteristic (oder ROC) ist ein Diagramm der richtig klassifizierten Bezeichnungen im Vergleich zu den falsch klassifizierten Bezeichnungen für ein bestimmtes Modell. Die ROC-Kurve kann weniger aussagekräftig sein, wenn Modelle mit Datasets mit einem großen Bias trainiert werden, da sie die falsch-positiven Bezeichnungen nicht anzeigt.
+ROC (Receiver Operating Characteristic) ist ein Diagramm der korrekt klassifizierten Bezeichnungen im Vergleich zu den falsch klassifizierten Bezeichnungen für ein bestimmtes Modell. Die ROC-Kurve kann weniger aussagekräftig sein, wenn Modelle auf der Grundlage von Datasets mit stark unausgeglichenen Klassen trainiert werden, da der Beitrag von Minderheitsklassen ggf. durch die Mehrheitsklasse verdrängt wird.
 
 #### <a name="what-does-automated-ml-do-with-the-roc-chart"></a>Was macht automatisiertes ML mit dem ROC-Diagramm?
-Automatisiertes ML generiert die durchschnittliche Makro-Genauigkeit-Trefferquote, die durchschnittliche Mikro-Genauigkeit-Trefferquote und die Genauigkeit-Trefferquote, die allen Klassen für ein Modell zugeordnet ist. 
-
-Der Makrodurchschnitt berechnet die Metrik unabhängig für jede Klasse und nimmt dann den Durchschnitt, sodass alle Klassen gleich behandelt werden. Der Mikrodurchschnitt aggregiert jedoch die Beiträge aller Klassen, um den Durchschnitt zu berechnen. Der Mikrodurchschnitt ist vorzuziehen, wenn im Dataset ein Klassenungleichgewicht vorhanden ist.
+Der Bereich unter der ROC-Kurve kann als Anteil korrekt klassifizierter Stichproben visualisiert werden. Ein erfahrener Betrachter des ROC-Diagramms kann ggf. über den Bereich unter der Kurve hinausblicken und ein Gefühl für die True Positive- und False Positive-Raten als Funktion des Klassifizierungsschwellenwerts oder der Entscheidungsgrenze bekommen.
 
 #### <a name="what-does-a-good-model-look-like"></a>Wie sieht ein gutes Modell aus?
-Im Idealfall weist das Modell eine True Positive-Rate in der Nähe von 100 % und eine False Positive-Rate in der Nähe von 0 % auf. 
+Eine ROC-Kurve, die sich der linken oberen Ecke mit einer True Positive-Rate von 100 Prozent und einer False Positive-Rate von 0 Prozent annähert, ist das beste Modell. Ein Zufallsmodell wird als gerade Linie dargestellt, die von links unten nach rechts oben verläuft. Schlechter als zufällig wäre, wenn die Linie unter die y=x-Linie fällt.
 
 ##### <a name="example-1-a-classification-model-with-low-true-labels-and-high-false-labels"></a>Beispiel 1: Ein Klassifizierungsmodell mit niedrigen wahren Bezeichnungen und hohen falschen Bezeichnungen.
 ![Ein Klassifizierungsmodell mit niedrigen wahren Bezeichnungen und hohen falschen Bezeichnungen.](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-roc-1.png)
@@ -162,7 +167,8 @@ Im Idealfall weist das Modell eine True Positive-Rate in der Nähe von 100 % und
 <a name="lift-curve"></a>
 ### <a name="lift-chart"></a>Prognosegütediagramm
 #### <a name="what-is-a-lift-chart"></a>Was ist ein Prognosegütediagramm?
-Prognosegütediagramme werden verwendet, um die Leistung eines Klassifizierungsmodells auszuwerten. Sie zeigen, wie viel bessere Ergebnisse hinsichtlich der Genauigkeit Sie bei der Verwendung des generierten Modells im Vergleich dazu erwarten können, wenn kein Modell verwendet wird.
+Prognosegütediagramme werden verwendet, um die Leistung von Klassifizierungsmodellen auszuwerten. Ein Prognosegütediagramm zeigt, wie viel besser ein Modell im Vergleich zu einem Zufallsmodell abschneidet. Dadurch erhalten Sie eine relative Leistungsangabe, bei der die Tatsache berücksichtigt wird, dass die Klassifizierung mit zunehmender Klassenanzahl schwieriger wird. Von einem Zufallsmodell wird bei einem Dataset mit zehn Klassen ein höherer Anteil von Stichproben falsch vorhergesagt als bei einem Dataset mit zwei Klassen.
+
 #### <a name="what-does-automated-ml-do-with-the-lift-chart"></a>Was macht automatisiertes ML mit dem Prognosegütediagramm?
 Sie können die Prognosegüte des automatisch mit Azure Machine Learning erstellten Modells mit der Baseline vergleichen, um den Wertzuwachs dieses bestimmten Modells anzuzeigen.
 #### <a name="what-does-a-good-model-look-like"></a>Wie sieht ein gutes Modell aus?
@@ -172,10 +178,10 @@ Sie können die Prognosegüte des automatisch mit Azure Machine Learning erstell
 ##### <a name="example-2-a-classification-model-that-performs-better-than-a-random-selection-model"></a>Beispiel 2: Ein Klassifizierungsmodell, das besser abschneidet als ein Zufallsauswahlmodell.
 ![Ein Klassifizierungsmodell, das besser abschneidet.](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-lift-curve2.png)
 <a name="gains-curve"></a>
-### <a name="gains-chart"></a>Gewinndiagramm
-#### <a name="what-is-a-gains-chart"></a>Was ist ein Gewinndiagramm?
+### <a name="cumulative-gains-chart"></a>Kumuliertes Gewinndiagramm
+#### <a name="what-is-a-cumulative-gains-chart"></a>Was ist ein kumuliertes Gewinndiagramm?
 
-Ein Gewinndiagramm wertet die Leistung eines Klassifizierungsmodells anhand jedes Teils der Daten aus. Es zeigt für jedes Perzentil des Datensatzes an, wie viel besser Sie im Vergleich zu einem Zufallsauswahlmodell abschneiden können.
+Ein kumuliertes Gewinndiagramm wertet die Leistung eines Klassifizierungsmodells anhand jedes Teils der Daten aus. Das Diagramm zeigt für jedes Perzentil des Datasets, wie viele weitere Stichproben korrekt klassifiziert wurden.
 
 #### <a name="what-does-automated-ml-do-with-the-gains-chart"></a>Was macht automatisiertes ML mit dem Gewinndiagramm?
 Verwenden Sie das kumulierte Gewinndiagramm, um die Auswahl der Klassifizierungsgrenze anhand eines Prozentsatzes zu erleichtern, der einem gewünschten Gewinn aus dem Modell entspricht. Diese Informationen bieten eine weitere Möglichkeit, die Ergebnisse im zugehörigen Prognosegütediagramm zu untersuchen.
@@ -196,7 +202,7 @@ Für alle Klassifizierungsprobleme können Sie die Kalibrierungskurve auf Mikrod
 
 Der Makrodurchschnitt berechnet die Metrik unabhängig für jede Klasse und nimmt dann den Durchschnitt, sodass alle Klassen gleich behandelt werden. Der Mikrodurchschnitt aggregiert jedoch die Beiträge aller Klassen, um den Durchschnitt zu berechnen. 
 #### <a name="what-does-a-good-model-look-like"></a>Wie sieht ein gutes Modell aus?
- Ein gut kalibriertes Modell richtet sich nach der y=x-Linie aus, wo es in Bezug auf seine Vorhersagen recht zuverlässig ist. Ein übermäßig zuverlässiges Modell richtet sich nach der y=0-Linie aus, wobei die vorhergesagte Wahrscheinlichkeit vorhanden ist, aber keine tatsächliche Wahrscheinlichkeit vorliegt. 
+Ein gut kalibriertes Modell ist an der y=x-Linie ausgerichtet, wo es die Wahrscheinlichkeit der Zugehörigkeit von Stichproben zu den einzelnen Klassen korrekt vorhersagt. Bei einem übermäßig zuverlässigen Modell werden Wahrscheinlichkeiten übermäßig nah bei Null bzw. Eins vorhergesagt, sodass hinsichtlich der Klasse der jeweiligen Stichproben selten eine Unsicherheit besteht.
 
 
 ##### <a name="example-1-a-well-calibrated-model"></a>Beispiel 1: Ein gut kalibriertes Modell.
@@ -250,11 +256,11 @@ Nach jeder Ausführung wird für jedes Regressionsmodell ein Diagramm mit den vo
 
 ### <a name="histogram-of-residuals-chart"></a><a name="histo"></a> Histogramm der Residualwerte
 #### <a name="what-is-a-residuals-chart"></a>Was ist ein Residualwertediagramm?
-Ein Residual stellt ein beobachtetes y dar: das vorhergesagte y. Um eine Fehlerspanne mit geringem Bias darzustellen, sollte das Histogramm der Residualwerte als Glockenkurve geformt sein, die um 0 zentriert ist. 
+Ein Residualwert ist die Differenz zwischen der Vorhersage und dem tatsächlichen Wert (`y_pred - y_true`). Um eine Fehlerspanne mit geringem Bias darzustellen, sollte das Histogramm der Residualwerte als Glockenkurve geformt sein, die um 0 zentriert ist. 
 #### <a name="what-does-automated-ml-do-with-the-residuals-chart"></a>Was macht automatisiertes ML mit dem Residualwertediagramm?
 Automatisiertes ML stellt automatisch ein Residualwertediagramm bereit, um die Fehlerverteilung in den Vorhersagen zu zeigen.
 #### <a name="what-does-a-good-model-look-like"></a>Wie sieht ein gutes Modell aus?
-Ein gutes Modell weist in der Regel eine Glockenkurvenform oder Fehler um Null herum auf.
+Bei einem guten Modell liegt der Anteil von Residualwerten in der Regel nahe Null.
 
 ##### <a name="example-1-a-regression-model-with-bias-in-its-errors"></a>Beispiel 1: Ein Regressionsmodell mit Verzerrung bei seinen Fehlern.
 ![Ein Regressionsmodell mit Verzerrung bei seinen Fehlern.](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-regression3.png)

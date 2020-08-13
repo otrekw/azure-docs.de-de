@@ -9,12 +9,12 @@ ms.workload: mobile
 ms.topic: article
 ms.author: apimpm
 ms.date: 04/23/2020
-ms.openlocfilehash: 51ce2e0dec8b38c9285f4f4e71dd35056b292b66
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: abcda4ea4b14f058325318661daa574494268780
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86254281"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87056377"
 ---
 # <a name="deploy-a-self-hosted-gateway-to-kubernetes"></a>Bereitstellen eines selbstgehosteten Gateways für Kubernetes
 
@@ -35,7 +35,7 @@ In diesem Artikel werden die Schritte für die Bereitstellung der selbstgehostet
 3. Wählen Sie **Bereitstellung** aus.
 4. Im Textfeld **Token** wurde auf Grundlage der Standardwerte **Ablauf** und **Geheimer Schlüssel** automatisch ein Zugriffstoken für Sie generiert. Wählen Sie bei Bedarf Werte in einem oder beiden Steuerelementen aus, um ein neues Token zu generieren.
 5. Wählen Sie unter **Bereitstellungsskripts** die Registerkarte **Kubernetes** aus.
-6. Wählen Sie den Link zur Datei **<Gatewayname>.yml** aus, und laden Sie die YAML-Datei herunter.
+6. Wählen Sie den Link zur Datei **\<gateway-name\>.yml** aus, und laden Sie die YAML-Datei herunter.
 7. Wählen Sie rechts unten im Textfeld **Bereitstellen** das Symbol **Kopieren** aus, um die `kubectl`-Befehle in der Zwischenablage zu speichern.
 8. Fügen Sie die Befehle in das Terminalfenster (oder Befehlsfenster) ein. Mit dem ersten Befehl wird ein Kubernetes-Geheimnis erstellt, welches das in Schritt 4 generierte Zugriffstoken enthält. Der zweite Befehl wendet die in Schritt 6 heruntergeladene Konfigurationsdatei auf den Kubernetes-Cluster an und erwartet, dass sich die Datei im aktuellen Verzeichnis befindet.
 9. Führen Sie die Befehle aus, um die erforderlichen Kubernetes-Objekte im [Standardnamespace](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/) zu erstellen. Starten Sie die selbstgehosteten Gatewaypods aus dem [Containerimage](https://aka.ms/apim/sputnik/dhub), das aus der Microsoft Container Registry heruntergeladen wurde.
@@ -106,6 +106,12 @@ Die DNS-Namensauflösung spielt eine entscheidende Rolle bei der Fähigkeit des 
 Die im Azure-Portal bereitgestellte YAML-Datei wendet die Standardrichtlinie [ClusterFirst](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-s-dns-policy) an. Diese Richtlinie bewirkt, dass vom Cluster-DNS nicht aufgelöste Namensauflösungsanforderungen an den vom Knoten geerbten vorgelagerten DNS-Server weitergeleitet werden.
 
 Weitere Informationen zur Namensauflösung in Kubernetes finden Sie auf der [Kubernetes-Website](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service). Erwägen Sie, die [DNS-Richtlinie](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-s-dns-policy) oder [DNS-Konfiguration](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-s-dns-config) entsprechend Ihrer Einrichtung anzupassen.
+
+### <a name="custom-domain-names-and-ssl-certificates"></a>Benutzerdefinierte Domänennamen und SSL-Zertifikate
+
+Wenn Sie benutzerdefinierte Domänennamen für die API Management-Endpunkte und insbesondere einen benutzerdefinierten Domänennamen für den Verwaltungsendpunkt verwenden, müssen Sie unter Umständen den Wert `config.service.endpoint` in der Datei **\<gateway-name\>.yaml** aktualisieren, um den Standarddomänennamen durch den benutzerdefinierten Domänennamen zu ersetzen. Vergewissern Sie sich, dass auf den Verwaltungsendpunkt über den Pod des selbstgehosteten Gateways im Kubernetes-Cluster zugegriffen werden kann.
+
+Wenn das vom Verwaltungsendpunkt verwaltete SSL-Zertifikat nicht von einem bekannten Zertifizierungsstellenzertifikat signiert ist, müssen Sie in diesem Szenario sicherstellen, dass das Zertifizierungsstellenzertifikat vom Pod des selbstgehosteten Gateways als vertrauenswürdig eingestuft wird.
 
 ### <a name="configuration-backup"></a>Sicherung der Konfiguration
 Weitere Informationen zum Verhalten selbstgehosteter Gateways bei einem vorübergehenden Ausfall der Verbindung mit Azure finden Sie unter [Selbstgehostetes Gateway – Übersicht](self-hosted-gateway-overview.md#connectivity-to-azure).

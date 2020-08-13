@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 755e59a029b0a12e51db53c6c7d3bb00358af635
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 89b8097aa288be710e95e835bb66904ef2c6ab56
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84742011"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421670"
 ---
 # <a name="bulk-add-group-members-in-azure-active-directory"></a>Massenhinzufügen von Gruppenmitgliedern in Azure Active Directory
 
@@ -69,7 +69,7 @@ Die Zeilen der heruntergeladenen CSV-Vorlage lauten wie folgt:
 
 Auf der Seite **Ergebnisse von Massenvorgängen** können Sie den Status aller Ihrer ausstehenden Massenanforderungen anzeigen.
 
-[![](media/groups-bulk-import-members/bulk-center.png "Check status in the Bulk Operations Results page")](media/groups-bulk-import-members/bulk-center.png#lightbox)
+[![Überprüfen des Status auf der Seite „Ergebnisse von Massenvorgängen“](media/groups-bulk-import-members/bulk-center.png)](media/groups-bulk-import-members/bulk-center.png#lightbox)
 
 Wenn Sie ausführliche Informationen zu jedem Zeilenelement des Massenvorgangs erhalten möchten, wählen Sie die Werte unter der Spalte **# Erfolg**, **# Fehler** oder **Anforderungen insgesamt** aus. Wenn Fehler aufgetreten sind, werden die Fehlerursachen aufgeführt.
 

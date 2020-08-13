@@ -1,15 +1,15 @@
 ---
 title: Unterstützte Azure Resource Manager-Ressourcentypen
 description: Stellen Sie eine Liste der Azure Resource Manager-Ressourcentypen bereit, die von Azure Resource Graph und dem Änderungsverlauf unterstützt werden.
-ms.date: 06/04/2020
+ms.date: 08/10/2020
 ms.topic: reference
 ms.custom: generated
-ms.openlocfilehash: 7a1890c8decb6f918ecacee99764e45817e3d38a
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: 91b8a88fd056db2fd8495c85dccbcc08f4a94fda
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85970568"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88065997"
 ---
 # <a name="azure-resource-graph-table-and-resource-type-reference"></a>Azure Resource Graph-Tabelle und Ressourcentypreferenz
 
@@ -19,6 +19,7 @@ Azure Resource Graph unterstützt die folgenden **Ressourcentypen** von [Azure R
 
 - microsoft.advisor/configurations
 - microsoft.advisor/recommendations
+- microsoft.advisor/recommendations/suppressions
 - microsoft.advisor/suppressions
 
 ## <a name="alertsmanagementresources"></a>alertsmanagementresources
@@ -184,7 +185,6 @@ Azure Resource Graph unterstützt die folgenden **Ressourcentypen** von [Azure R
 - microsoft.desktopvirtualization/applicationgroups
 - microsoft.desktopvirtualization/hostpools
 - microsoft.desktopvirtualization/workspaces
-- microsoft.detonationservice/detonationinstances
 - microsoft.devices/elasticpools
 - microsoft.devices/elasticpools/iothubtenants
 - microsoft.devices/iothubs

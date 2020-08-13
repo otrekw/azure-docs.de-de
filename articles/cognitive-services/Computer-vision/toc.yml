@@ -133,7 +133,7 @@
       href: Vision-API-How-to-Topics/HowtoAnalyzeVideo_Vision.md
 - name: Verweis
   items:
-    - name: Azure-Befehlszeilenschnittstelle
+    - name: Azure CLI
       href: 'https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az_cognitiveservices_list'
     - name: Azure PowerShell
       href: 'https://aka.ms/azure-powershell-cognitiveservices'
@@ -185,3 +185,5 @@
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
     - name: Kompatibilität
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
+    - name: Ausführen eines Upgrades von 2.0 oder 2.1 auf v3.0
+      href: upgrade-api-versions.md

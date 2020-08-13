@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 06/26/2020
 ms.author: rajosh
-ms.openlocfilehash: 8c06365531a4977b6b792e136e515b5b56c2c930
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: b2917c10e13f110d7ac9784da16a10fc61eb9298
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86110027"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87288851"
 ---
 # <a name="create-an-azure-vmware-solution-avs-assessment"></a>Erstellen einer Bewertung vom Typ „Azure VMware Solution (AVS)“
 
@@ -110,7 +110,7 @@ Eine Bewertung vom Typ „Azure VMware Solution (AVS)“ beschreibt Folgendes:
     - **Bereitschaft unbekannt**: Azure Migrate konnte die Bereitschaft des Computers aufgrund unzureichender Metadaten aus der lokalen Umgebung nicht bestimmen.
 
 3. Überprüfen Sie das vorgeschlagene Tool:
-    - **VMware HCX oder Enterprise**: Für VMware-Computer wird die VMware HCX-Lösung (Hybrid Cloud Extension) empfohlen, um Ihre lokale Workload zu Ihrer privaten AVS-Cloud (Azure VMware Solution) zu migrieren. [Weitere Informationen](../azure-vmware/hybrid-cloud-extension-installation.md).
+    - **VMware HCX oder Enterprise**: Für VMware-Computer wird die VMware HCX-Lösung (Hybrid Cloud Extension) empfohlen, um Ihre lokale Workload zu Ihrer privaten AVS-Cloud (Azure VMware Solution) zu migrieren. [Weitere Informationen](../azure-vmware/hybrid-cloud-extension-installation.md).
     - **Unbekannt:** Für Computer, die über eine CSV-Datei importiert wurden, ist das Standardmigrationstool unbekannt. Für VMware-Computer empfiehlt sich jedoch die Verwendung der VMware HCX-Lösung (Hybrid Cloud Extension). 
 
 4. Klicken Sie auf einen **AVS-Bereitschaftsstatus**. Sie können Details zur VM-Bereitschaft sowie VM-Details wie Compute-, Speicher- und Netzwerkeinstellungen anzeigen.

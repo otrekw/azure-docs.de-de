@@ -46,6 +46,8 @@
       href: how-to-integrate-certificate-authority.md
     - name: 'Problembehandlung: Importieren von Zertifikaten'
       href: import-cert-faqs.md
+    - name: Exportieren eines Zertifikats aus Key Vault
+      href: how-to-export-certificate.md
 - name: Verweis
   items:
     - name: Azure PowerShell

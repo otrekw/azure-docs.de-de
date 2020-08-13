@@ -4,12 +4,12 @@ description: Ein .NET-Lernprogramm, das Ihnen hilft, eine Anwendung mit mehreren
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: c7a64e708d860fe9e5832ad3f1375f41f9b86724
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 044d0698f1ea181e8f508f92ad2c30ec29b6490b
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85340300"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067833"
 ---
 # <a name="net-multi-tier-application-using-azure-service-bus-queues"></a>.NET-Anwendungen mit mehreren Ebenen unter Verwendung von Azure Service Bus-Warteschlangen
 
@@ -24,11 +24,11 @@ Sie lernen Folgendes:
 
 [!INCLUDE [create-account-note](../../includes/create-account-note.md)]
 
-In diesem Lernprogramm werden Sie eine Anwendung mit mehreren Ebenen in einem Azure-Cloud-Dienst erstellen und ausführen. Als Front-End dient eine ASP.NET MVC-Webrolle, und als Back-End eine Workerrolle, die eine Service Bus-Warteschlange nutzt. Dieselbe Anwendung mit mehreren Ebenen kann auch mit einem Webprojekt als Front-End erstellt und auf einer Azure-Website anstelle eines Clouddiensts bereitgestellt werden. Sie können auch das Tutorial [Hybride lokale/Cloud-.NET-Anwendung](../service-bus-relay/service-bus-dotnet-hybrid-app-using-service-bus-relay.md) ausprobieren.
+In diesem Lernprogramm werden Sie eine Anwendung mit mehreren Ebenen in einem Azure-Cloud-Dienst erstellen und ausführen. Als Front-End dient eine ASP.NET MVC-Webrolle, und als Back-End eine Workerrolle, die eine Service Bus-Warteschlange nutzt. Dieselbe Anwendung mit mehreren Ebenen kann auch mit einem Webprojekt als Front-End erstellt und auf einer Azure-Website anstelle eines Clouddiensts bereitgestellt werden. Sie können auch das Tutorial [Hybride lokale/Cloud-.NET-Anwendung](../azure-relay/service-bus-dotnet-hybrid-app-using-service-bus-relay.md) ausprobieren.
 
 Der folgende Screenshot zeigt die fertige Anwendung.
 
-![][0]
+![Screenshot: Übermittlungsseite der Anwendung][0]
 
 ## <a name="scenario-overview-inter-role-communication"></a>Szenario-Übersicht: Kommunikation zwischen Rollen
 Um eine Bestellung zur Verarbeitung zu übermitteln, muss die Front-End-GUI in ihrer Funktion als Webrolle mit der Logikkomponente in der mittleren Ebene interagieren, die eine Workerrolle erfüllt. In diesem Beispiel wird Service Bus-Messaging für die Kommunikation zwischen Ebenen verwendet.
@@ -37,15 +37,15 @@ Durch die Nutzung von Service Bus-Messaging zwischen Web- und mittlerer Ebene we
 
 Service Bus bietet zwei Entitäten für das Brokermessaging: Warteschlangen und Themen. Mit Warteschlangen wird jede Nachricht von einem einzelnen Empfänger konsumiert. Themen unterstützen das Veröffentlichungs- und Abonnementmuster, mit dem jede veröffentlichte Nachricht den für das entsprechende Thema registrierten Abonnements zugänglich gemacht wird. Jedes Abonnement pflegt eine eigene Nachrichten-Warteschlange. Abonnements können mit Filterregeln konfiguriert werden. Diese sorgen dafür, dass nur Nachrichten in der Abonnement-Warteschlange landen, welche die Filterregeln erfüllen. Das folgende Beispiel verwendet Service Bus-Warteschlangen.
 
-![][1]
+![Diagramm: Kommunikation zwischen Webrolle, Service Bus und Workerrolle][1]
 
 Dieser Kommunikationsmechanismus bietet verschiedene Vorteile gegenüber direkten Nachrichten:
 
 * **Zeitliche Entkopplung:** Dank des asynchronen Nachrichtenmusters müssen Producer und Consumer nicht gleichzeitig online sein. Der Servicebus speichert die Nachrichten zuverlässig, bis der Consumer diese entgegennehmen kann. Auf diese Weise können die Komponenten verteilter Anwendungen voneinander entkoppelt werden, z. B. zu Wartungszwecken oder bei einem Komponentenausfall, ohne das Gesamtsystem zu beeinträchtigen. Außerdem genügt es unter Umständen, wenn die konsumierende Anwendung nur zu bestimmten Tageszeiten online ist.
 * **Belastungsausgleich:** In vielen Anwendungen schwankt die Systemlast mit der Zeit, während die Bearbeitungszeit pro Arbeitseinheit normalerweise konstant ist. Durch die Einführung einer Warteschlange zwischen Nachrichtenproducer und Consumer muss der Consumer (Arbeiter) anstatt der Spitzenlast nur die durchschnittliche Last verarbeiten können. Die Tiefe der Warteschlange erhöht und verringert sich mit der eingehenden Last. Dies ermöglicht direkte Einsparungen bei der Infrastruktur, die zur Bearbeitung der Anwendungslast benötigt wird.
-* **Lastenausgleich:** Mit zunehmender Last können zusätzliche Arbeitsprozesse zur Verarbeitung der Warteschlange eingesetzt werden. Jede Nachricht wird nur von einem der Arbeitsprozesse verarbeitet. Außerdem ermöglicht dieser entnahmebasierte Lastenausgleich eine optimale Auslastung der Workercomputer, selbst wenn sich deren Rechenleistung stark unterscheidet, da jeder Workercomputer die Nachrichten mit seinem eigenen Maximaldurchsatz aus der Warteschlange entnimmt. Dieses Schema hat auch die Bezeichnung *Konkurrierende Consumer*.
+* **Lastenausgleich:** Mit zunehmender Last können zusätzliche Arbeitsprozesse zur Verarbeitung der Warteschlange eingesetzt werden. Jede Nachricht wird nur von einem der Arbeitsprozesse verarbeitet. Außerdem ermöglicht dieser entnahmebasierte Lastenausgleich eine optimale Auslastung der Workercomputer, selbst wenn sich deren Rechenleistung stark unterscheidet, da jeder Workercomputer die Nachrichten mit seinem eigenen Maximaldurchsatz aus der Warteschlange entnimmt. Dieses Muster nennt man auch *konkurrierende Consumer*.
   
-  ![][2]
+  ![Diagramm: Kommunikation zwischen Webrolle, Service Bus und zwei Workerrollen][2]
 
 In den folgenden Abschnitten wird der Code für die Implementierung dieser Architektur behandelt.
 
@@ -64,27 +64,27 @@ Anschließend fügen Sie Code hinzu, mit dem Elemente an eine Service Bus-Wartes
 
 1. Starten Sie Visual Studio mit Administratorrechten: Klicken Sie mit der rechten Maustaste auf das Programmsymbol von **Visual Studio**, und klicken Sie anschließend auf **Als Administrator ausführen**. Für den ebenfalls in diesem Artikel behandelten Azure-Serveremulator muss Visual Studio mit Administratorrechten gestartet werden.
    
-   Klicken Sie in Visual Studio im Menü **Datei** auf **Neu** und anschließend auf **Projekt**.
+   Klicken Sie in Visual Studio im Menü **Datei** auf **Neu** und dann auf **Projekt**.
 2. Klicken Sie im Menü **Installierte Vorlagen** unter **Visual C#** auf **Cloud** und anschließend auf **Azure-Clouddienst**. Geben Sie dem Projekt den Namen **MultiTierApp**. Klicken Sie dann auf **OK**.
    
-   ![][9]
+   ![Screenshot: Dialogfeld „Neues Projekt“, in dem die Option „Cloud“ ausgewählt und „Azure-Clouddienst“/„Visual C#“ hervorgehoben und rot umrandet wurde][9]
 3. Doppelklicken Sie im Bereich **Rollen** auf **ASP.NET-Webrolle**.
    
-   ![][10]
+   ![Screenshot: Dialogfeld „Neuer Cloud-Dienst in Microsoft Azure“, in dem „ASP.NET-Webrolle“ und „WebRole1“ ausgewählt sind][10]
 4. Zeigen Sie auf **WebRole1** unter **Azure-Clouddienst-Lösung**, klicken Sie auf das Stiftsymbol, und geben Sie der Webrolle den Namen **FrontendWebRole**. Klicken Sie dann auf **OK**. (Achten Sie darauf „Frontend“ mit kleinem „e“ einzugeben, nicht als „FrontEnd“.)
    
-   ![][11]
+   ![Screenshot: Dialogfeld „Neuer Cloud-Dienst in Microsoft Azure“, in dem die Lösung in „FrontendWebRole“ umbenannt wurde][11]
 5. Klicken Sie im Dialogfeld **Neues ASP.NET-Projekt** in der Liste **Vorlage auswählen** auf **MVC**.
    
-   ![][12]
+   ![Screenshot: Dialogfeld „Neues ASP.NET-Projekt“, in dem „MVC“ hervorgehoben und rot umrandet und die Option „Authentifizierung ändern“ rot umrandet wurde][12]
 6. Klicken Sie ebenfalls im Dialogfeld **Neues ASP.NET-Projekt** auf die Schaltfläche **Authentifizierung ändern**. Stellen Sie sicher, dass im Dialogfeld **Authentifizierung ändern** die Option **Keine Authentifizierung** ausgewählt wurde, und klicken Sie dann auf **OK**. Für dieses Tutorial stellen Sie eine App bereit, für die keine Benutzeranmeldung erforderlich ist.
    
-    ![][16]
+    ![Screenshot: Dialogfeld „Authentifizierung ändern“, in dem die Option „Keine Authentifizierung“ ausgewählt und rot umrandet wurde][16]
 7. Klicken Sie im Dialogfeld **Neues ASP.NET-Projekt** auf **OK**, um das Projekt zu erstellen.
 8. Klicken Sie im **Projektmappen-Explorer** im Projekt **FrontendWebRole** mit der rechten Maustaste auf **Verweise**, und klicken Sie dann auf **NuGet-Pakete verwalten**.
 9. Klicken Sie auf die Registerkarte **Durchsuchen**, und suchen Sie nach **WindowsAzure.ServiceBus**. Wählen Sie das Paket **WindowsAzure.ServiceBus**, klicken Sie auf **Installieren**, und akzeptieren Sie die Nutzungsbedingungen.
    
-   ![][13]
+   ![Screenshot: Dialogfeld „NuGet-Pakete verwalten“, in dem „WindowsAzure.ServiceBus“ hervorgehoben und die Installationsoption rot umrandet wurde][13]
    
    Beachten Sie, dass die benötigten Clientassemblys nun referenziert sind und einige neue Codedateien hinzugefügt wurden.
 10. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf **Modelle**, und klicken Sie anschließend auf **Hinzufügen** und dann auf **Klasse**. Geben Sie in das Feld **Name** den Namen **OnlineOrder.cs** ein. Klicken Sie anschließend auf **Hinzufügen**.
@@ -166,16 +166,16 @@ In diesem Abschnitt erstellen Sie die verschiedenen Seiten, aus denen Ihre Anwen
 4. Klicken Sie im Menü **Build** auf **Projektmappe erstellen**, um die Richtigkeit Ihrer bisherigen Arbeit zu überprüfen.
 5. Erstellen Sie anschließend die Ansicht für die zuvor erstellte `Submit()`-Methode. Klicken Sie mit der rechten Maustaste in die `Submit()`-Methode (Überladung von `Submit()` ohne Parameter), und wählen Sie **Ansicht hinzufügen**.
    
-   ![][14]
+   ![Screenshot: Code mit Fokus auf der Übermittlungsmethode und einer Dropdownliste mit hervorgehobener Option „Ansicht hinzufügen“][14]
 6. Ein Dialogfeld zum Erstellen der Ansicht wird geöffnet. Wählen Sie in der Liste **Vorlage** die Option **Erstellen** aus. Wählen Sie in der Liste **Modellklasse** die **OnlineOrder**-Klasse aus.
    
-   ![][15]
+   ![Screenshot: Dialogfeld „Ansicht hinzufügen“, in dem die Dropdownlisten „Vorlage“ und „Modell“ rot umrandet wurden][15]
 7. Klicken Sie auf **Hinzufügen**.
 8. Ändern Sie nun den angezeigten Namen Ihrer Anwendung. Doppelklicken Sie im **Projektmappen-Explorer** auf die Datei **Views\Shared\\_Layout.cshtml**, um sie im Visual Studio-Editor zu öffnen.
 9. Ersetzen Sie alle Vorkommnisse von **My ASP.NET Application** durch **Northwind Traders Products**.
 10. Entfernen Sie die Links **Home**, **About** und **Contact**. Löschen Sie den hervorgehobenen Code:
     
-    ![][28]
+    ![Screenshot: Code mit drei hervorgehobenen Zeilen vom Typ „Html.ActionLink“][28]
 11. Erweitern Sie anschließend die Übermittlungsseite um einige Informationen zur Warteschlange. Doppelklicken Sie im **Projektmappen-Explorer** auf die Datei **Views\Home\Submit.cshtml**, um sie im Visual Studio-Editor zu öffnen. Fügen Sie nach `<h2>Submit</h2>` die folgende Zeile hinzu. Derzeit ist `ViewBag.MessageCount` leer. Sie werden diesen Bereich später ausfüllen.
     
     ```html
@@ -183,7 +183,7 @@ In diesem Abschnitt erstellen Sie die verschiedenen Seiten, aus denen Ihre Anwen
     ```
 12. Sie haben nun Ihre GUI implementiert. Drücken Sie **F5** , um Ihre Anwendung auszuführen und zu prüfen, ob diese korrekt angezeigt wird.
     
-    ![][17]
+    ![Screenshot: Übermittlungsseite der Anwendung][17]
 
 ### <a name="write-the-code-for-submitting-items-to-a-service-bus-queue"></a>Schreiben des Codes für die Übermittlung von Elementen an die Service Bus-Warteschlange
 Sie fügen nun den Code für die Übermittlung von Elementen in die Warteschlange hinzu. Zuerst erstellen Sie die Klasse mit den Verbindungsinformationen für die Service Bus-Warteschlange. Anschließend initialisieren Sie Ihre Verbindung in „Global.aspx.cs“. Zuletzt aktualisieren Sie den zuvor in „HomeController.cs“ erstellten Übermittlungscode, um die Elemente an die Service Bus-Warteschlange zu übermitteln.
@@ -290,32 +290,32 @@ Sie fügen nun den Code für die Übermittlung von Elementen in die Warteschlang
        }
        else
        {
-           return View(order);
+           return View(order); 
        }
    }
    ```
 9. Führen Sie die Anwendung nun erneut aus. Bei jeder Übermittlung einer Bestellung steigt der Nachrichtenzähler an.
    
-   ![][18]
+   ![Screenshot: Übermittlungsseite der Anwendung, auf der sich die Nachrichtenanzahl auf „1“ erhöht hat][18]
 
 ## <a name="create-the-worker-role"></a>Erstellen einer Workerrolle
 Sie werden nun die Workerrolle zur Verarbeitung der übermittelten Nachrichten erstellen. In diesem Beispiel wird die Visual Studio-Projektvorlage **Workerrolle mit Service Bus-Warteschlange** verwendet. Sie haben die erforderlichen Anmeldeinformationen bereits aus dem Portal abgerufen.
 
 1. Stellen Sie sicher, dass Sie Visual Studio mit Ihrem Azure-Konto verbunden haben.
 2. Klicken Sie in Visual Studio im **Projektmappen-Explorer** mit der rechten Maustaste auf den Ordner **Rollen** im Projekt **MultiTierApp**.
-3. Klicken Sie auf **Hinzufügen** und anschließend auf **Neues Workerrollenprojekt**. Das Dialogfeld **Neues Rollenprojekt hinzufügen** wird geöffnet.
+3. Klicken Sie auf **Hinzufügen**, und klicken Sie dann auf **Neues Workerrollenprojekt**. Das Dialogfeld **Neues Rollenprojekt hinzufügen** wird geöffnet.
    
-   ![][26]
+   ![Screenshot: Projektmappen-Explorer mit hervorgehobenen Optionen „Neues Workerrollenprojekt“ und „Hinzufügen“][26]
 4. Klicken Sie im Dialogfeld **Neues Rollenprojekt hinzufügen** auf **Workerrolle mit Service Bus-Warteschlange**.
    
-   ![][23]
-5. Geben Sie in das Feld **Name** den Namen **OrderProcessingRole** für das Projekt ein. Klicken Sie anschließend auf **Hinzufügen**.
+   ![Screenshot: Dialogfeld „Neues Rollenprojekt hinzufügen“ mit hervorgehobener und rot umrandeter Option „Workerrolle mit Service Bus-Warteschlange“][23]
+5. Geben Sie im dem Projekt im Feld **Name** den Namen **OrderProcessingRole**. Klicken Sie anschließend auf **Hinzufügen**.
 6. Kopieren Sie die Verbindungszeichenfolge, die Sie in Schritt 9 des Abschnitts „Erstellen eines Service Bus-Namespaces“ abgerufen haben, in die Zwischenablage.
-7. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf die in Schritt 5 erstellte **OrderProcessingRole** (klicken Sie auf **OrderProcessingRole** unter **Rollen**, nicht auf die Klasse). Klicken Sie anschließend auf **Eigenschaften**.
+7. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf die in Schritt 5 erstellte **OrderProcessingRole** (klicken Sie auf **OrderProcessingRole** unter **Rollen**, nicht auf die Klasse). Klicken Sie dann auf **Eigenschaften**.
 8. Klicken Sie auf der Registerkarte **Einstellungen** im Dialogfeld **Eigenschaften** in das Textfeld **Wert** für **Microsoft.ServiceBus.ConnectionString**, und fügen Sie den in Schritt 6 kopierten Endpunktwert ein.
    
-   ![][25]
-9. Erstellen Sie die **OnlineOrder**-Klasse, um die Nachrichten abzubilden, während diese aus der Warteschlange verarbeitet werden. Sie können dabei eine zuvor erstellte Klasse wiederverwenden. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf die **OrderProcessingRole**-Klasse (Rechtsklick auf die Klasse, nicht die Rolle). Klicken Sie auf **Hinzufügen** und anschließend auf **Vorhandenes Element**.
+   ![Screenshot: Dialogfeld „Eigenschaften“, in dem die Registerkarte „Einstellungen“ ausgewählt und die Tabellenzeile „Microsoft.ServiceBus.ConnectionString“ rot umrandet wurde][25]
+9. Erstellen Sie die **OnlineOrder**-Klasse, um die Nachrichten abzubilden, während diese aus der Warteschlange verarbeitet werden. Sie können dabei eine zuvor erstellte Klasse wiederverwenden. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf die **OrderProcessingRole**-Klasse (Rechtsklick auf die Klasse, nicht die Rolle). Klicken Sie auf **Hinzufügen** und dann auf **Vorhandenes Element**.
 10. Durchsuchen Sie den Unterordner nach **FrontendWebRole\Models**, und doppelklicken Sie dann auf **OnlineOrder.cs**, um die Klasse dem Projekt hinzuzufügen.
 11. Ändern Sie wie im folgenden Code gezeigt in **WorkerRole.cs** den Wert der Variablen **QueueName** von `"ProcessingQueue"` in `"OrdersQueue"`.
     
@@ -339,14 +339,14 @@ Sie werden nun die Workerrolle zur Verarbeitung der übermittelten Nachrichten e
     ```
 14. Ihre Anwendung ist nun fertig. Sie können die vollständige Anwendung testen, indem Sie im Projektmappen-Explorer mit der rechten Maustaste auf das MultiTierApp-Projekt klicken und dann **Set as Startup Project** auswählen und F5 drücken. Beachten Sie, dass die Nachrichtenzahl nicht ansteigt, da die Workerrolle die Elemente in der Warteschlange verarbeitet und als abgeschlossen markiert. Sie können die Ausgabe Ihrer Workerrolle in der Azure-Serveremulator-GUI anzeigen. Klicken Sie dazu mit der rechten Maustaste in den Infobereich Ihrer Taskleiste, und wählen Sie **Serveremulator-GUI anzeigen**.
     
-    ![][19]
+    ![Screenshot: Anzeige nach dem Klicken auf das Emulatorsymbol „Serveremulator-GUI anzeigen“ ist in der Optionenliste enthalten.][19]
     
-    ![][20]
+    ![Screenshot: Dialogfeld „Microsoft Azure-Serveremulator (Express)“][20]
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zum Servicebus finden Sie in den folgenden Ressourcen:  
 
-* [Erste Schritte mit Service Bus-Warteschlangen][sbacomqhowto]
+* [Erste Schritte mit der Verwendung von Service Bus-Warteschlangen][sbacomqhowto]
 * [Service Bus-Dienstseite][sbacom]  
 
 Weitere Informationen zu Szenarien mit mehreren Ebenen finden Sie unter:  

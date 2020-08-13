@@ -170,6 +170,8 @@
         - name: Bereitstellen von AKS mit Terraform
           href: ../terraform/terraform-create-k8s-cluster-with-tf-and-aks.md
           maintainContext: true
+        - name: Verwenden der Kubernetes-Ressourcenanzeige (Vorschauversion)
+          href: kubernetes-portal.md
         - name: Verwenden des Kubernetes-Dashboards
           href: kubernetes-dashboard.md
     - name: Konfigurieren von Datenvolumes
@@ -366,7 +368,7 @@
           href: troubleshoot-linux.md
 - name: Verweis
   items:
-    - name: Azure-Befehlszeilenschnittstelle
+    - name: Azure CLI
       href: /cli/azure/aks
     - name: REST
       href: /rest/api/aks

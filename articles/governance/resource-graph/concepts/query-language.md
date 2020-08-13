@@ -1,14 +1,14 @@
 ---
 title: Grundlegendes zur Abfragesprache
 description: Beschreibt Resource Graph-Tabellen und die verfügbaren Kusto-Datentypen, -Operatoren und -Funktionen, die mit Azure Resource Graph verwendet werden können.
-ms.date: 06/29/2020
+ms.date: 08/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: 4c545a8a5113f800545660a3ea812b61711630c2
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: b59811ecd877b9b2e22a43c00329ed7d02dfb97d
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85970449"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87541820"
 ---
 # <a name="understanding-the-azure-resource-graph-query-language"></a>Grundlegendes zur Azure Resource Graph-Abfragesprache
 
@@ -19,6 +19,7 @@ In diesem Artikel werden die von Resource Graph unterstützten Sprachkomponenten
 - [Resource Graph-Tabellen](#resource-graph-tables)
 - [Benutzerdefinierte Sprachelemente in Resource Graph](#resource-graph-custom-language-elements)
 - [Unterstützte KQL-Sprachelemente](#supported-kql-language-elements)
+- [Abfragebereich](#query-scope)
 - [Escapezeichen](#escape-characters)
 
 ## <a name="resource-graph-tables"></a>Resource Graph-Tabellen
@@ -116,6 +117,31 @@ Es folgt eine Liste der von Resource Graph unterstützten tabellarischen KQL-Ope
 |[top](/azure/kusto/query/topoperator) |[Anzeigen der ersten fünf virtuellen Computer nach Name und BS-Typ](../samples/starter.md#show-sorted) | |
 |[union](/azure/kusto/query/unionoperator) |[Vereinen von Ergebnissen aus zwei Abfragen in einem einzigen Ergebnis](../samples/advanced.md#unionresults) |Einzelne Tabelle zulässig: _T_ `| union` \[`kind=` `inner`\|`outer`\] \[`withsource=`_ColumnName_\] _Table_. Maximal drei `union`-Verzweigungen in einer einzelnen Abfrage. Fuzzyauflösung von `union`-Verzweigungstabellen ist nicht zulässig. Kann innerhalb einer einzelnen Tabelle oder zwischen den Tabellen _Resources_ und _ResourceContainers_ verwendet werden. |
 |[where](/azure/kusto/query/whereoperator) |[Anzeigen von Ressourcen, die Speicher enthalten](../samples/starter.md#show-storage) | |
+
+## <a name="query-scope"></a>Abfragebereich
+
+Der Bereich der Abonnements, aus denen Ressourcen von einer Abfrage zurückgegeben werden, hängt von der Methode des Zugriffs auf Resource Graph ab. Azure CLI und Azure PowerShell füllen die Liste der Abonnements, die in die Anforderung eingeschlossen werden sollen, basierend auf dem Kontext des autorisierten Benutzers auf. Die Liste der Abonnements kann jeweils manuell mit dem Parameter **subscriptions** bzw. **Subscription** definiert werden.
+In der REST-API und allen anderen SDKs muss die Liste der Abonnements, aus denen Ressourcen eingeschlossen werden sollen, explizit als Teil der Anforderung definiert werden.
+
+Als **Vorschau** fügt die REST-API-Version `2020-04-01-preview` eine Eigenschaft hinzu, um die Abfrage auf eine [Verwaltungsgruppe](../../management-groups/overview.md) zu beschränken. In dieser Vorschau-API ist außerdem die Abonnementeigenschaft optional. Wenn weder die Verwaltungsgruppe noch die Abonnementliste definiert ist, umfasst der Abfragebereich alle Ressourcen, auf die der authentifizierte Benutzer zugreifen kann. Die neue Eigenschaft `managementGroupId` übernimmt die Verwaltungsgruppen-ID, die sich von dem Namen der Verwaltungsgruppe unterscheidet.
+Wenn `managementGroupId` angegeben ist, werden Ressourcen aus den ersten 5000 Abonnements in oder unter der angegebenen Verwaltungsgruppenhierarchie eingeschlossen. `managementGroupId` kann nicht gleichzeitig mit `subscriptions` verwendet werden.
+
+Beispiel: Abfragen aller Ressourcen in der Hierarchie der Verwaltungsgruppe mit Namen „My Management Group“ mit der ID „myMG“
+
+- REST-API-URI
+
+  ```http
+  POST https://management.azure.com/providers/Microsoft.ResourceGraph/resources?api-version=2020-04-01-preview
+  ```
+
+- Anforderungstext
+
+  ```json
+  {
+      "query": "Resources | summarize count()",
+      "managementGroupId": "myMG"
+  }
+  ```
 
 ## <a name="escape-characters"></a>Escape-Zeichen
 

@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 06/08/2020
+ms.date: 07/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: bc0bcd4a978912dccc9f08802acbf2ec1151b3a1
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: a0d5b369e1c143b3df4157329bcf7d3a3f7142d7
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170104"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87489468"
 ---
 # <a name="integrating-trusona-with-azure-active-directory-b2c"></a>Integrieren von Trusona mit Azure Active Directory B2C
 
@@ -125,25 +125,26 @@ In diesem Szenario fungiert Trusona als Identitätsanbieter für Azure AD B2C, u
 
 ### <a name="create-a-user-flow-policy"></a>Erstellen einer Benutzerflowrichtlinie
 
-1. Trusona sollte jetzt als **neuer OpenID Connect-Identitätsanbieter** unter Ihren B2C-Identitätsanbietern aufgeführt sein.
+Trusona sollte jetzt als **neuer OpenID Connect-Identitätsanbieter** unter Ihren B2C-Identitätsanbietern aufgeführt sein.
 
-2. Wählen Sie im linken Navigationsbereich die Option **Benutzerflows (Richtlinien)** aus.
+1. Wählen Sie auf Ihrem Azure AD B2C-Mandanten unter **Richtlinien** die Option **Benutzerflows** aus.
 
-3. Wählen Sie **Hinzufügen** > **Neuer Benutzerflow** > **Registrierung und Anmeldung** aus.
+1. Wählen Sie die Option **Neuer Benutzerflow** aus.
 
-### <a name="configure-the-policy"></a>Konfigurieren der Richtlinie
+1. Wählen Sie **Registrierung und Anmeldung**, dann eine Version und anschließend **Erstellen** aus.
 
-1. Geben Sie Ihrer Richtlinie einen Namen.
+1. Geben Sie einen **Namen** für die Richtlinie ein.
 
-2. Wählen Sie Ihren neu erstellten **Trusona-Identitätsanbieter** aus.
+1. Wählen Sie im Abschnitt **Identitätsanbieter** den neu erstellten **Trusona-Identitätsanbieter** aus.
 
-3. Da es sich bei Trusona quasi um eine mehrstufige Authentifizierung handelt, sollten Sie die Option für die mehrstufige Authentifizierung deaktiviert lassen.
+   > [!NOTE]
+   > Da es sich bei Trusona quasi um eine mehrstufige Authentifizierung handelt, sollten Sie die Option für die mehrstufige Authentifizierung deaktiviert lassen.
 
-4. Klicken Sie auf **Erstellen**.
+1. Klicken Sie auf **Erstellen**.
 
-5. Wählen Sie unter **Benutzerattribute und Ansprüche** die Option **Mehr anzeigen** aus. Wählen Sie im Formular mindestens ein Attribut aus, das Sie oben bei der Einrichtung Ihres Identitätsanbieters angegeben haben.
+1. Wählen Sie unter **Benutzerattribute und Ansprüche** die Option **Mehr anzeigen** aus. Wählen Sie im Formular mindestens ein Attribut aus, das Sie oben bei der Einrichtung Ihres Identitätsanbieters angegeben haben.
 
-6. Klicken Sie auf **OK**.  
+1. Klicken Sie auf **OK**.  
 
 ### <a name="test-the-policy"></a>Testen der Richtlinie
 

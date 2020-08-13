@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/18/2020
-ms.openlocfilehash: ffbc850c580daee5890f9c75021cc518918d098e
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 073a92f07d17614cb386c5c33a8058af9b59aaea
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86145387"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084074"
 ---
 # <a name="set-up-a-connection-to-an-azure-storage-account-using-a-managed-identity-preview"></a>Einrichten einer Verbindung mit einem Azure Storage-Konto mithilfe einer verwalteten Identität (Vorschau)
 
@@ -53,17 +53,19 @@ In diesem Schritt erteilen Sie dem Azure Cognitive Search-Dienst die Berechtigun
     ![Hinzufügen der Rollenzuweisung](./media/search-managed-identities/add-role-assignment-storage.png "Rollenzuweisung hinzufügen")
 
 4. Wählen Sie die entsprechenden Rollen je nach Speicherkontotyp aus, den Sie indizieren möchten:
-    1. Azure Blob Storage erfordert, dass Sie Ihren Suchdienst zu den Rollen **Lese- und Datenzugriff** und **Storage-Blobdatenleser** hinzufügen.
-    1. Azure Data Lake Storage Gen2 erfordert, dass Sie Ihren Suchdienst zu den Rollen **Lese- und Datenzugriff** und **Storage-Blobdatenleser** hinzufügen.
-    1. Der Azure-Tabellenspeicher erfordert, dass Sie Ihren Suchdienst nur zur Rolle **Lese- und Datenzugriff** hinzufügen.
+    1. Azure Blob Storage erfordert, dass Sie Ihren Suchdienst zur Rolle **Storage-Blobdatenleser** hinzufügen.
+    1. Azure Data Lake Storage Gen2 erfordert, dass Sie Ihren Suchdienst zur Rolle **Storage-Blobdatenleser** hinzufügen.
+    1. Azure Table Storage erfordert, dass Sie Ihren Suchdienst zur Rolle **Lese- und Datenzugriff** hinzufügen.
 5.  Behalten Sie unter **Zugriff zuweisen zu** die Option **Azure AD-Benutzer, -Gruppe oder -Dienstprinzipal** bei.
 6.  Suchen Sie nach Ihrem Suchdienst, wählen Sie ihn aus, und wählen Sie dann **Speichern** aus.
 
+    Beispiel für Azure Blob Storage und Azure Data Lake Storage Gen2:
+
+    ![Hinzufügen der Rollenzuweisung „Storage-Blobdatenleser“](./media/search-managed-identities/add-role-assignment-storage-blob-data-reader.png "Hinzufügen der Rollenzuweisung „Storage-Blobdatenleser“")
+
+    Beispiel für Azure Table Storage:
+
     ![Hinzufügen der Rollenzuweisung „Lese- und Datenzugriff“](./media/search-managed-identities/add-role-assignment-reader-and-data-access.png "Hinzufügen der Rollenzuweisung „Lese- und Datenzugriff“")
-
-Beachten Sie, dass Sie beim Herstellen einer Verbindung mit Azure Blob Storage und Azure Data Lake Storage Gen2 auch die Rollenzuweisung **Storage-Blobdatenleser** hinzufügen müssen.
-
-![Hinzufügen der Rollenzuweisung „Storage-Blobdatenleser“](./media/search-managed-identities/add-role-assignment-storage-blob-data-reader.png "Hinzufügen der Rollenzuweisung „Storage-Blobdatenleser“")
 
 ### <a name="3---create-the-data-source"></a>3\. Erstellen der Datenquelle
 

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: a61f7ff69e648262eb721eb61a98b09dbbee924c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 43942c20a353ff69383f3e721679e4c95ab9d230
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73961425"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495942"
 ---
 # <a name="set-up-ip-addressing-to-connect-to-a-secondary-on-premises-site-after-failover"></a>Einrichten der IP-Adressierung zum Herstellen einer Verbindung mit einem sekundären lokalen Standort nach einem Failover
 
@@ -63,11 +63,11 @@ Die folgende Abbildung zeigt die Subnetze vor und nach dem Failover.
 
 **Vor dem Failover**
 
-![Vor dem Failover](./media/hyper-v-vmm-networking/network-design2.png)
+![Diagramm: Subnetze vor dem Failover](./media/hyper-v-vmm-networking/network-design2.png)
 
 **Nach dem Failover**
 
-![Nach dem Failover](./media/hyper-v-vmm-networking/network-design3.png)
+![Diagramm: Subnetze nach dem Failover](./media/hyper-v-vmm-networking/network-design3.png)
 
 Nach dem Failover weist Site Recovery eine IP-Adresse für jede Netzwerkschnittstelle auf dem virtuellen Computer zu. Die Adresse wird aus dem statischen IP-Adresspool im relevanten Netzwerk für jede VM-Instanz zugewiesen.
 
@@ -79,12 +79,12 @@ Nach dem Failover weist Site Recovery eine IP-Adresse für jede Netzwerkschnitts
 
 Nachdem Sie den Schutz für einen virtuellen Computer aktiviert haben, können Sie das folgende Beispielskript verwenden, um die Adresse zu überprüfen, die dem virtuellen Computer zugewiesen wurde. Diese IP-Adresse wird als Failover-IP-Adresse festgelegt und dem virtuellen Computer zum Zeitpunkt des Failovers zugewiesen:
 
-    ```
-    $vm = Get-SCVirtualMachine -Name <VM_NAME>
-    $na = $vm[0].VirtualNetworkAdapters>
-    $ip = Get-SCIPAddress -GrantToObjectID $na[0].id
-    $ip.address 
-    ```
+```powershell
+$vm = Get-SCVirtualMachine -Name <VM_NAME>
+$na = $vm[0].VirtualNetworkAdapters>
+$ip = Get-SCIPAddress -GrantToObjectID $na[0].id
+$ip.address
+```
 
 ## <a name="use-a-different-ip-address"></a>Verwenden einer anderen IP-Adresse
 
@@ -93,7 +93,7 @@ In diesem Szenario werden die IP-Adressen von VMs, für die ein Failover durchge
 - Verwenden Sie niedrige TTL-Werte für Intranetanwendungen.
 - Verwenden Sie das folgende Skript in einem Site Recovery-Wiederherstellungsplan, um den DNS-Server rechtzeitig zu aktualisieren. Wenn Sie die dynamische DNS-Registrierung verwenden, benötigen Sie das Skript nicht.
 
-    ```
+    ```powershell
     param(
     string]$Zone,
     [string]$name,
@@ -118,11 +118,11 @@ In diesem Beispiel sind am primären und am sekundären Standort verschiedene IP
 
 **Vor dem Failover**
 
-![Andere IP-Adresse: vor dem Failover](./media/hyper-v-vmm-networking/network-design10.png)
+![Diagramm: Verschiedene IP-Adressen vor dem Failover](./media/hyper-v-vmm-networking/network-design10.png)
 
 **Nach dem Failover**
 
-![Andere IP-Adresse: nach dem Failover](./media/hyper-v-vmm-networking/network-design11.png)
+![Diagramm: Verschiedene IP-Adressen nach dem Failover](./media/hyper-v-vmm-networking/network-design11.png)
 
 
 ## <a name="next-steps"></a>Nächste Schritte

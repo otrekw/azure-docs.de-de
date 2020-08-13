@@ -9,13 +9,13 @@ ms.subservice: spark
 ms.date: 05/01/2020
 ms.author: ruxu
 ms.reviewer: ''
-ms.custom: tracking-python
-ms.openlocfilehash: e0b0525035732a54965f7c391ac6041b114d7304
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.custom: devx-track-python
+ms.openlocfilehash: 6e0062450889a2bbbdfcd47137ffbe36b83cae57
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045687"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87849097"
 ---
 # <a name="create-develop-and-maintain-synapse-studio-preview-notebooks-in-azure-synapse-analytics"></a>Erstellen, Entwickeln und Verwalten von Synapse Studio-Notebooks (Vorschauversion) in Azure Synapse Analytics
 
@@ -191,6 +191,10 @@ Um ganz rechts auf das Menü mit zusätzlichen Zellenaktionen zuzugreifen, wähl
    ![Zellen-oberhalb-oder-unterhalb-ausführen](./media/apache-spark-development-using-notebooks/synapse-run-cells-above-or-below.png)
 
 
+### <a name="cancel-all-running-cells"></a>Abbrechen aller ausgeführten Zellen
+Klicken Sie auf die Schaltfläche **Alle abbrechen**, um die ausgeführten oder in der Warteschlange wartenden Zellen abzubrechen. 
+   ![cancel-all-cells](./media/apache-spark-development-using-notebooks/synapse-cancel-all.png) 
+
 ### <a name="cell-status-indicator"></a>Zellenstatusindikator
 
 Unterhalb der Zelle wird ein schrittweiser Zellenausführungsstatus angezeigt, damit Sie den aktuellen Fortschritt verfolgen können. Nachdem die Ausführung der Zelle abgeschlossen wurde, wird eine Ausführungszusammenfassung mit Gesamtdauer und Endzeit angezeigt, die zur späteren Bezugnahme dort auch aufbewahrt wird.
@@ -200,6 +204,7 @@ Unterhalb der Zelle wird ein schrittweiser Zellenausführungsstatus angezeigt, d
 ### <a name="spark-progress-indicator"></a>Spark-Statusanzeige
 
 Ein Azure Synapse Studio-Notebook ist vollständig Spark-basiert. Codezellen werden remote im Spark-Pool ausgeführt. Eine Spark-Auftragsstatusanzeige wird mit einem Statusbalken in Echtzeit angezeigt, um Ihnen den Status der Auftragsausführung zu verdeutlichen.
+Anhand der Anzahl der Aufgaben pro Auftrag oder Phase können Sie die parallele Ebene Ihres Spark-Auftrags identifizieren. Sie können außerdem die Spark-Benutzeroberfläche eines spezifischen Auftrags (oder einer Phase) erweitern, indem Sie auf den Link im Auftragsnamen (oder Phasennamen) klicken.
 
 
 ![Spark-Statusanzeige](./media/apache-spark-development-using-notebooks/synapse-spark-progress-indicator.png)
@@ -208,7 +213,11 @@ Ein Azure Synapse Studio-Notebook ist vollständig Spark-basiert. Codezellen wer
 
 Sie können in **Sitzung konfigurieren** die Timeoutdauer sowie die Anzahl und Größe der Executors angeben, die für die aktuelle Spark-Sitzung gelten sollen. Sie müssen die Spark-Sitzung neu starten, damit die Konfigurationsänderungen wirksam werden. Alle zwischengespeicherten Notebook-Variablen werden gelöscht.
 
-![Sitzungsverwaltung](./media/apache-spark-development-using-notebooks/synapse-spark-session-mgmt.png)
+[![session-management](./media/apache-spark-development-using-notebooks/synapse-spark-session-management.png)](./media/apache-spark-development-using-notebooks/synapse-spark-session-management.png#lightbox)
+
+Im Spark-Sitzungskonfigurationsbereich ist nun eine Spark-Sitzungsempfehlung verfügbar. Sie können einen Spark-Pool direkt aus dem Sitzungskonfigurationsbereich auswählen und einsehen, wie viele Knoten verwendet werden und wie viele verbleibende Executors verfügbar sind. Diese Informationen können Sie beim richtigen Festlegen der Sitzungsgröße unterstützen, sodass Sie diese nicht immer wieder neu anpassen müssen.
+
+![session-recommend](./media/apache-spark-development-using-notebooks/synapse-spark-session-recommender.png)
 
 
 ## <a name="bring-data-to-a-notebook"></a>Einfügen von Daten in ein Notebook
@@ -264,15 +273,25 @@ Sie können auf Daten im primären Speicherkonto direkt zugreifen. Es besteht ke
 
 ## <a name="visualize-data-in-a-notebook"></a>Visualisieren von Daten in einem Notebook
 
-### <a name="display"></a>Display()
+### <a name="produce-rendered-table-view"></a>Erzeugen einer gerenderten Tabellenansicht
 
 Eine tabellarische Ergebnisansicht wird zusammen mit der Möglichkeit zum Erstellen eines Balkendiagramms, eines Liniendiagramms, eines Kreisdiagramms, eines Punktdiagramms und eines Flächendiagramms bereitgestellt. Sie können Ihre Daten visualisieren, ohne Code schreiben zu müssen. Die Diagramme lassen sich in den **Diagrammoptionen** anpassen. 
 
-Die Ausgabe der **%%sql**-Magic-Befehle wird standardmäßig in der gerenderten Tabellenansicht angezeigt. Sie können **display(`<DataFrame name>`)** für Spark-Datenrahmen oder eine RDD-Funktion (resiliente verteilte Datasets) aufrufen, um die gerenderte Tabellenansicht zu erzeugen.
+Die Ausgabe der **%%sql**-Magic-Befehle wird standardmäßig in der gerenderten Tabellenansicht angezeigt. Sie können <code>display(df)</code> für Spark-Datenrahmen aufrufen oder die Funktion „Resilient Distributed Datasets“ (RDD) verwenden, um die gerenderte Tabellenansicht zu erzeugen.
 
-   ![integrierte-Diagramme](./media/apache-spark-development-using-notebooks/synapse-builtin-charts.png)
+   [![integrierte-Diagramme](./media/apache-spark-development-using-notebooks/synapse-builtin-charts.png)](./media/apache-spark-development-using-notebooks/synapse-builtin-charts.png#lightbox)
 
-### <a name="displayhtml"></a>DisplayHTML()
+### <a name="visualize-built-in-charts-from-large-scale-dataset"></a>Visualisieren von integrierten Diagrammen aus umfangreichen Datasets 
+
+Die <code>display(df)</code>-Funktion erfasst standardmäßig nur die ersten 1.000 Zeilen der Daten zum Rendern der Diagramme. Überprüfen Sie die **Gesamtergebnisse der Aggregation**, und klicken Sie auf **Anwenden**, um die Diagrammgenerierung auf das gesamte Dataset anzuwenden. Ein Spark-Auftrag wird ausgelöst, wenn die Diagrammeinstellung geändert wird. Es dauert eine Weile, bis die Berechnung abgeschlossen und das Diagramm gerendert wird. 
+    [![builtin-charts-aggregation-all](./media/apache-spark-development-using-notebooks/synapse-builtin-charts-aggregation-all.png)](./media/apache-spark-development-using-notebooks/synapse-builtin-charts-aggregation-all.png#lightbox)
+
+
+### <a name="visualize-data-statistic-information"></a>Visualisieren von statistischen Dateninformationen
+Sie können <code>display(df, summary = true)</code> verwenden, um die statistische Zusammenfassung eines jeweiligen Spark-Datenrahmens zu überprüfen, dazu gehören Spaltennamen, Spaltentypen, eindeutige Werte und fehlende Werte für jede Spalte. Sie können auch eine spezifische Spalte auswählen, um ihren Mindestwert, Höchstwert, Durchschnittswert und die Standardabweichung anzuzeigen.
+    [ ![builtin-charts-summary](./media/apache-spark-development-using-notebooks/synapse-builtin-charts-summary.png) ](./media/apache-spark-development-using-notebooks/synapse-builtin-charts-summary.png#lightbox)
+
+### <a name="render-html-or-interactive-libraries"></a>Rendern von HTML oder interaktiven Bibliotheken
 
 Sie können HTML-oder interaktive Bibliotheken wie **bokeh** mithilfe von **displayHTML()** rendern.
 
@@ -332,9 +351,36 @@ In den Notebook-Eigenschaften können Sie konfigurieren, ob die Zellenausgabe be
 ## <a name="magic-commands"></a>Magic-Befehle
 Sie können Ihre vertrauten Jupyter-Magic-Befehle in Azure Synapse Studio-Notebooks verwenden. Überprüfen Sie die nachstehende Liste mit den aktuellen verfügbaren Magic-Befehlen. Teilen Sie uns Ihre Anwendungsfälle auf GitHub mit, damit wir weitere Magic-Befehle erstellen können, um Ihre Anforderungen zu erfüllen.
 
-Verfügbare Zeilen-Magics: [%lsmagic](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-lsmagic), [%time](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-time), [%timeit](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-timeit)
+Verfügbare Magic-Befehle für Zeilen: [%lsmagic](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-lsmagic), [%time](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-time), [%time it](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-timeit)
 
 Verfügbare Zellen-Magics: [%%time](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-time), [%%timeit](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-timeit), [%%capture](https://ipython.readthedocs.io/en/stable/interactive/magics.html#cellmagic-capture), [%%writefile](https://ipython.readthedocs.io/en/stable/interactive/magics.html#cellmagic-writefile), [%%sql](#use-multiple-languages), [%%pyspark](#use-multiple-languages), [%%spark](#use-multiple-languages), [%%csharp](#use-multiple-languages)
+
+
+## <a name="orchestrate-notebook"></a>Orchestrieren von Notebooks
+
+### <a name="add-a-notebook-to-a-pipeline"></a>Hinzufügen eines Notebooks zu einer Pipeline
+
+Klicken Sie in der oberen rechten Ecke auf **Zur Pipeline hinzufügen**, um ein Notebook zu einer vorhandenen Pipeline hinzuzufügen oder eine neue Pipeline zu erstellen.
+
+![add-to-pipeline](./media/apache-spark-development-using-notebooks/add-to-pipeline.png)
+
+### <a name="designate-a-parameters-cell"></a>Festlegen einer Parameterzelle
+
+Klicken Sie zum Parametrisieren Ihres Notebooks auf die Auslassungspunkte (...), um auf Menü für zusätzliche Zellenaktionen ganz rechts zuzugreifen. Klicken Sie dann auf **Parameterzelle umschalten**, um die Zelle als Parameterzelle festzulegen.
+
+![toggle-parameter](./media/apache-spark-development-using-notebooks/toggle-parameter-cell.png)
+
+Azure Data Factory sucht nach der Parameterzelle und behandelt diese Zelle als Standard für die Parameter, die zur Ausführungszeit übermittelt werden. Die Ausführungs-Engine fügt eine neue Zelle mit Eingabeparametern unter der Parameterzelle hinzu, um die Standardwerte zu überschreiben. Wenn keine Parameterzelle festgelegt wird, wird die Zelle ganz oben im Notebook eingefügt.
+
+### <a name="assign-parameters-values-from-a-pipeline"></a>Zuweisen von Parameterwerten über eine Pipeline
+
+Sobald Sie ein Notebook mit Parametern erstellt haben, können Sie dieses über eine Pipeline mit der Azure Synapse Analytics-Aktivität ausführen. Nachdem Sie die Aktivität zu Ihrem Pipelinecanvas hinzugefügt haben, können Sie die Parameterwerte auf der Registerkarte **Einstellungen** im Abschnitt **Basisparameter** festlegen. 
+
+![assign-parameter](./media/apache-spark-development-using-notebooks/assign-parameter.png)
+
+Beim Zuweisen von Parameterwerten können Sie die [Pipelineausdruckssprache](../../data-factory/control-flow-expression-language-functions.md) oder [Systemvariablen](../../data-factory/control-flow-system-variables.md) verwenden.
+
+
 
 ## <a name="shortcut-keys"></a>Tastenkombinationen
 
@@ -390,7 +436,7 @@ Mithilfe der folgenden Tastenkombinationen können Sie in Azure Synapse-Notebook
 |In den Befehlsmodus wechseln| Esc |
 
 ## <a name="next-steps"></a>Nächste Schritte
-
+- [Beispiele für Synapse-Notebooks](https://github.com/Azure-Samples/Synapse/tree/master/Notebooks)
 - [Schnellstart: Erstellen eines Apache Spark-Pools (Vorschauversion) in Azure Synapse Analytics mithilfe von Webtools](../quickstart-apache-spark-notebook.md)
 - [Was ist Apache Spark in Azure Synapse Analytics?](apache-spark-overview.md)
 - [Verwenden von .NET für Apache Spark mit Azure Synapse Analytics](spark-dotnet.md)

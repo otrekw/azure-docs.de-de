@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/14/2020
-ms.openlocfilehash: 00080322b4fa474e5095d40afb041134e1a85fe7
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 93fb65fc7c7551635c49e33d0f626d72c2755a11
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86519732"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87553970"
 ---
 # <a name="choose-a-pricing-tier-for-azure-cognitive-search"></a>Auswählen eines Tarifs für die kognitive Azure-Suche
 
@@ -61,9 +61,18 @@ Weitere Informationen zu den verschiedenen Tarifen finden Sie auf der [Seite mit
 Für eine auf der kognitiven Azure-Suche basierende Lösung können folgende Kosten anfallen:
 
 + Kosten für den Dienst selbst, der rund um die Uhr mit einer minimalen Konfiguration ausgeführt wird (eine Partition und ein Replikat)
+
 + Hinzufügen von Kapazität (Replikate oder Partitionen)
-+ Bandbreitengebühren (ausgehende Datenübertragung) 
-+ Add-On-Dienste wie z. B. die KI-Anreicherung (Anfügen von Cognitive Services an Skillsets, die die KI-Verarbeitung definieren, oder Verwenden von Azure Storage für den Wissensspeicher) oder das Bereitstellen eines Suchdiensts in einem privaten virtuellen Netzwerk
+
++ Bandbreitengebühren (ausgehende Datenübertragung)
+
++ Für bestimmte Funktionen oder Features erforderliche Add-On-Dienste:
+
+  + KI-Anreicherung (erfordert [Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/))
+  + Wissensspeicher (erfordert [Azure Storage](https://azure.microsoft.com/pricing/details/storage/))
+  + Inkrementelle Anreicherung (erfordert [Azure Storage](https://azure.microsoft.com/pricing/details/storage/), gilt für KI-Anreicherung)
+  + Kundenseitig verwaltete Schlüssel und doppelte Verschlüsselung (erfordert [Azure Key Vault](https://azure.microsoft.com/pricing/details/key-vault/))
+  + Private Endpunkte für ein Zugriffsmodell ohne Internet (erfordert [Azure Private Link](https://azure.microsoft.com/pricing/details/private-link/))
 
 ### <a name="service-costs"></a>Dienstkosten
 

@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 02/20/2020
-ms.openlocfilehash: 8af8db6b6853d6b8cbd4ba1105f05ebb9bcf771b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c4ea8db464c7cae57b80837ced9f8886a8b3cf4a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84974839"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87093016"
 ---
 # <a name="prepay-for-azure-cache-for-redis-compute-resources-with-reserved-capacity"></a>Vorauszahlung für Azure Cache for Redis-Computeressourcen mit reservierter Kapazität
 
@@ -32,7 +32,7 @@ Einzelheiten zur Berechnung der Reservierung von Kapazitäten für Unternehmensk
 
 Die Größe der Reservierung sollte auf der Gesamtgröße des Arbeitsspeichers basieren, die von dem bereits vorhandenen oder in Kürze bereitzustellenden Cache innerhalb einer bestimmten Region genutzt werden und die gleiche Dienstebene verwenden.
 
-Angenommen, Sie führen zwei Caches aus: einen mit 13 GB und den anderen mit 26 GB. Beide werden für mindestens ein Jahr benötigt. Gehen Sie außerdem davon aus, dass Sie die vorhandenen Caches mit 13 GB für einen Monat auf 26 GB hochskalieren möchten, um einer saisonalen Nachfrage nachkommen zu können. Danach möchten Sie zur Ausgangssituation zurück skalieren. In diesem Fall können Sie entweder einen P1-Cache und einen P2-Cache oder drei P1-Caches mit einjähriger Reservierung erwerben, um möglichst hohe Einsparungen zu haben. Unabhängig davon, wie der Betrag Ihren Caches zugeordnet wird, erhalten Sie einen Rabatt auf den gesamten Cachespeicher, den Sie reservieren.
+Angenommen, Sie führen zwei Caches aus: einen mit 13 GB und den anderen mit 26 GB. Beide werden für mindestens ein Jahr benötigt. Gehen Sie außerdem davon aus, dass Sie die vorhandenen Caches mit 13 GB für einen Monat auf 26 GB hochskalieren möchten, um einer saisonalen Nachfrage nachkommen zu können. Danach möchten Sie zur Ausgangssituation zurück skalieren. In diesem Fall können Sie entweder einen P2-Cache und einen P3-Cache oder drei P2-Caches mit einjähriger Reservierung erwerben, um die Einsparungen zu maximieren. Unabhängig davon, wie der Betrag Ihren Caches zugeordnet wird, erhalten Sie einen Rabatt auf den gesamten Cachespeicher, den Sie reservieren.
 
 
 ## <a name="buy-azure-cache-for-redis-reserved-capacity"></a>Kaufen von reservierter Azure Cache for Redis-Kapazität
@@ -55,7 +55,7 @@ In der folgenden Tabelle werden die erforderlichen Felder beschrieben.
 | Region | Die Azure-Region, die durch die Reservierung von Azure Cache for Redis-Kapazitäten abgedeckt wird.
 | Tarif | Die Dienstebene für die Azure Cache for Redis-Server.
 | Begriff | Ein Jahr oder drei Jahre.
-| Menge | Die Menge an Computeressourcen, die im Rahmen der Azure Cache for Redis-Kapazitätsreservierung erworben werden. Die Menge entspricht einer Anzahl von Caches in der ausgewählten Azure-Region und Dienstebene, die reserviert werden und den Abrechnungsrabatt erhalten. Wenn Sie beispielsweise Azure Cache for Redis-Server mit der Gesamtcomputekapazität von 26 GB in der Region „USA, Osten“ ausführen oder deren Ausführung beabsichtigen, geben Sie als Menge „26“ an, um den Vorteil für alle Caches zu maximieren.
+| Menge | Die Menge an Computeressourcen, die im Rahmen der Azure Cache for Redis-Kapazitätsreservierung erworben werden. Die Menge entspricht einer Anzahl von Caches in der ausgewählten Azure-Region und Dienstebene, die reserviert werden und den Abrechnungsrabatt erhalten. Wenn Sie beispielsweise Azure Cache for Redis-Server mit der Gesamtcachekapazität von 26 GB in der Region „USA, Osten“ ausführen oder deren Ausführung beabsichtigen, geben Sie eine Menge an, die 26 GB entspricht, um den Vorteil für alle Caches zu maximieren. Sie können einen P3-Cache oder zwei P2-Caches verwenden.
 
 ## <a name="cancel-exchange-or-refund-reservations"></a>Stornieren, Umtauschen oder Rückerstatten von Reservierungen
 

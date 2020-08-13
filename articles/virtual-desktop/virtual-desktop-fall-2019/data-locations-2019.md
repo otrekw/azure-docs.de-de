@@ -1,24 +1,22 @@
 ---
-title: Datenstandorte für Windows Virtual Desktop – Azure
-description: Eine kurze Übersicht der Standorte, an denen die Daten und Metadaten von Windows Virtual Desktop gespeichert werden.
-services: virtual-desktop
+title: Datenstandorte für Windows Virtual Desktop (klassisch) – Azure
+description: Eine kurze Übersicht der Standorte, an denen die Daten und Metadaten von Windows Virtual Desktop (klassisch) gespeichert werden
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: b8cbee74a8f9639fc2c3838f38dabf2a62cf339e
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 869defde657c9cb4c8bea6bbacebb9458e5a2b96
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82613967"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008813"
 ---
-# <a name="data-locations-for-windows-virtual-desktop"></a>Datenstandorte für Windows Virtual Desktop
+# <a name="data-locations-for-windows-virtual-desktop-classic"></a>Datenstandorte für Windows Virtual Desktop (klassisch)
 
 >[!IMPORTANT]
->Dieser Inhalt gilt für das Release vom Herbst 2019, das keine Windows Virtual Desktop-Objekte in Azure Resource Manager unterstützt. Wenn Sie Windows Virtual Desktop-Objekte in Azure Resource Manager verwalten möchten, die im Update vom Frühjahr 2020 eingeführt wurden, finden Sie weitere Informationen in [diesem Artikel](../data-locations.md).
+>Dieser Inhalt gilt für den Windows Virtual Desktop-Dienst (klassisch), der keine Windows Virtual Desktop-Objekte in Azure Resource Manager unterstützt. Wenn Sie Windows Virtual Desktop-Objekte in Azure Resource Manager verwalten möchten, helfen Ihnen die Informationen in [diesem Artikel](../data-locations.md) weiter.
 
 Windows Virtual Desktop ist zurzeit für alle geografischen Standorte verfügbar. Anfänglich können Dienstmetadaten nur in den Regionen in den USA gespeichert werden. Administratoren können den Standort zum Speichern von Benutzerdaten auswählen, wenn sie die virtuellen Computer des Hostpools und die zugehörigen Dienste wie Dateiserver erstellen. Weitere Informationen zu Azure-Regionen erhalten Sie in der [Karte der Azure-Rechenzentren](https://azuredatacentermap.azurewebsites.net/).
 

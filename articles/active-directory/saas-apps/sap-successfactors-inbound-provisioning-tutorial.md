@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/05/2019
+ms.date: 08/05/2020
 ms.author: chmutali
-ms.openlocfilehash: 77b4336fd9430b523f4f9fa288b7451117f7e0c5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 95c46550570d579af7ab8107686ad20838a3a62e
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87016971"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87809951"
 ---
-# <a name="tutorial-configure-sap-successfactors-to-active-directory-user-provisioning-preview"></a>Tutorial: Konfigurieren der Benutzerbereitstellung von SAP SuccessFactors zu Active Directory (Vorschauversion)
-In diesem Tutorial werden die Schritte vorgestellt, die Sie zum Bereitstellen von Benutzern aus SuccessFactors Employee Central in sowohl Active Directory (AD) als auch Azure AD ausführen müssen, wobei einige E-Mail-Adressen optional in SuccessFactors zurückgeschrieben werden. Diese Integration befindet sich in der öffentlichen Vorschau und unterstützt das Abrufen von mehr als [70 Benutzerattributen](../app-provisioning/sap-successfactors-attribute-reference.md) von SuccessFactors Employee Central.
+# <a name="tutorial-configure-sap-successfactors-to-active-directory-user-provisioning"></a>Tutorial: Konfigurieren der Benutzerbereitstellung von SAP SuccessFactors in Active Directory 
+In diesem Tutorial werden die Schritte vorgestellt, die Sie zum Bereitstellen von Benutzern aus SuccessFactors Employee Central in sowohl Active Directory (AD) als auch Azure AD ausführen müssen, wobei einige E-Mail-Adressen optional in SuccessFactors zurückgeschrieben werden. 
 
 >[!NOTE]
 >Verwenden Sie dieses Tutorial, wenn die Benutzer, die Sie aus SuccessFactors bereitstellen möchten, ein lokales AD-Konto und optional ein Azure AD-Konto benötigen. Wenn die Benutzer aus SuccessFactors nur Azure AD-Konten benötigen (reine Cloudbenutzer), informieren Sie sich im Tutorial zum [Konfigurieren der Benutzerbereitstellung von SAP SuccessFactors in Azure AD](sap-successfactors-inbound-provisioning-cloud-only-tutorial.md). 
@@ -82,7 +82,7 @@ Das Konfigurieren einer cloudbasierten Benutzerbereitstellung für die Personala
 * Anzahl der bereitzustellenden SuccessFactors-Apps für die Benutzerbereitstellung in AD
 * Filter für Übereinstimmungs-ID, Attributzuordnung, Transformation und Bereich
 
-Ausführliche Anleitungen zu diesen Themen finden Sie unter [Planen der HR-Cloudbereitstellung](../app-provisioning/plan-cloud-hr-provision.md). 
+Ausführliche Anleitungen zu diesen Themen finden Sie unter [Planen der HR-Cloudbereitstellung](../app-provisioning/plan-cloud-hr-provision.md). Weitere Informationen zu den unterstützten Entitäten, Verarbeitungsdetails und zum Anpassen der Integration für verschiedene HR-Szenarien finden Sie im [Referenzhandbuch zur Integration von SAP SuccessFactors](../app-provisioning/sap-successfactors-integration-reference.md). 
 
 ## <a name="configuring-successfactors-for-the-integration"></a>Konfigurieren von SuccessFactors für die Integration
 

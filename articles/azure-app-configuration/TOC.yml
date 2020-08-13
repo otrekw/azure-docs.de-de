@@ -91,8 +91,6 @@
           href: concept-customer-managed-keys.md
         - name: Schützen Ihres Konfigurationsspeichers mithilfe privater Endpunkte
           href: concept-private-endpoint.md
-        - name: Integrieren mit verwalteter Azure-Identität
-          href: howto-integrate-azure-managed-service-identity.md
         - name: Aktivieren des Zugriffs mit Azure Active Directory Access
           href: concept-enable-rbac.md
         - name: Zuweisen einer verwalteten Azure-Identität
@@ -115,6 +113,8 @@
       href: howto-app-configuration-event.md
     - name: Konfigurationsspeicher automatisch sichern
       href: howto-backup-config-store.md
+    - name: Verwenden verwalteter Identitäten für den Zugriff auf App Configuration
+      href: howto-integrate-azure-managed-service-identity.md
 - name: Verweis
   items:
     - name: Konfiguration

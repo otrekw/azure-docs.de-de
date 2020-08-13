@@ -3,12 +3,12 @@ title: Azure Relay-Authentifizierung und -Autorisierung | Microsoft-Dokumentatio
 description: Dieser Artikel bietet eine Übersicht über die SAS-Authentifizierung (Shared Access Signature) beim Azure Relay-Dienst.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 63e075bc9bf75005a92866f9fa0f90ddaba2f016
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4b0a5c7a092155a006419eedd170a63abed42bb3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85316935"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87033376"
 ---
 # <a name="azure-relay-authentication-and-authorization"></a>Azure Relay-Authentifizierung und -Autorisierung
 
@@ -20,7 +20,7 @@ Mit der [SAS-Authentifizierung](../service-bus-messaging/service-bus-sas.md) kö
 
 Sie können Schlüssel für SAS für einen Relaynamespace konfigurieren. Im Gegensatz zum Service Bus-Messaging unterstützen [Relay Hybrid Connections](relay-hybrid-connections-protocol.md) nicht autorisierte oder anonyme Sender. Wie in dem folgenden Screenshot des Portals gezeigt wird, können Sie den anonymen Zugriff auf die Entität bei der Erstellung aktivieren:
 
-![][0]
+![Ein Dialogfeld mit der Bezeichnung „Hybridverbindung erstellen“ enthält das Textfeld „Name“ und das aktivierte Kontrollkästchen „Requires Client Authentication“ (Clientauthentifizierung erforderlich).][0]
 
 Wenn Sie SAS verwenden möchten, können Sie ein [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule)-Objekt für einen Relaynamespace konfigurieren, das aus den folgenden Elementen besteht:
 

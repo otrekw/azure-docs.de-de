@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.date: 04/29/2019
 ms.topic: conceptual
-ms.openlocfilehash: 52c7a4bfeddf808e5a714c7ad4ab164d65868940
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 7bc8427a51a9931ca82155232569767f12a8e266
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86201202"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534021"
 ---
 # <a name="common-questions-azure-to-azure-disaster-recovery"></a>Häufig gestellte Fragen sind: Azure-zu-Azure-Notfallwiederherstellung
 
@@ -70,6 +70,10 @@ Konfigurieren Sie die Notfallwiederherstellung [über Abonnements hinweg](https:
 ### <a name="can-i-replicate-zone-pinned-azure-vms-to-another-region"></a>Kann ich an Zonen geheftete virtuelle Azure-Computer in eine andere Region replizieren?
 
 Ja, Sie können [an Zonen geheftete virtuelle Computer](https://azure.microsoft.com/blog/disaster-recovery-of-zone-pinned-azure-virtual-machines-to-another-region) in eine andere Region replizieren.
+
+### <a name="can-i-replicate-vms-in-a-region-that-has-zones-from-non-zone-to-zonal-configuration"></a>Kann ich VMs in einer Region mit Zonen von einer nicht zonalen Konfiguration in eine zonale Konfiguration replizieren?
+
+Nein, dies wird derzeit nicht unterstützt. Dieses Problem können Sie umgehen, indem Sie die VM mithilfe von ASR in eine zonale Konfiguration in einer anderen Region replizieren und dann die Replikation deaktivieren. Anschließend aktivieren Sie die Replikation von dieser Region in die ursprüngliche Region erneut und wählen eine zonale Konfiguration für das Failover aus.
 
 ### <a name="can-i-exclude-disks"></a>Kann ich Datenträger ausschließen?
 

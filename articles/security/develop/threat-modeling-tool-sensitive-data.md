@@ -1,6 +1,6 @@
 ---
 title: Sensible Daten – Microsoft Threat Modeling Tool – Azure | Microsoft-Dokumentation
-description: Gegenmaßnahmen für durch das Threat Modeling Tool offengelegte Gefahren
+description: Erfahren Sie mehr über mögliche Maßnahmen zur Risikominderung in Bezug auf vertrauliche Daten im Threat Modeling Tool. Lesen Sie die Informationen zur Risikominderung, und sehen Sie sich die Codebeispiele an.
 services: security
 documentationcenter: na
 author: jegeib
@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: ab22e9843ca133274361838eeb49abbe326588dc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 8f8b18d36453ac65300a5dd19fa7e07b1449bc28
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79502230"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87538947"
 ---
 # <a name="security-frame-sensitive-data--mitigations"></a>Sicherheitsrahmen: Sensible Daten | Gegenmaßnahmen 
 | Produkt/Dienst | Artikel |

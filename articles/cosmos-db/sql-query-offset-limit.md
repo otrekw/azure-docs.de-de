@@ -4,14 +4,14 @@ description: Hier erfahren Sie, wie Sie mit der OFFSET LIMIT-Klausel beim Abfrag
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 06/10/2019
-ms.author: mjbrown
-ms.openlocfilehash: 3d23676885323e370cee1e9cc9e98c7128faf2e0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 07/29/2020
+ms.author: tisande
+ms.openlocfilehash: 9342c0c10ed4f7287716d21823fddfe992e0568f
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76771571"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87432718"
 ---
 # <a name="offset-limit-clause-in-azure-cosmos-db"></a>OFFSET LIMIT-Klausel in Azure Cosmos DB
 
@@ -39,9 +39,9 @@ OFFSET <offset_amount> LIMIT <limit_amount>
   
   Die `OFFSET`-Anzahl und die `LIMIT`-Anzahl sind in der `OFFSET LIMIT`-Klausel erforderlich. Wenn eine optionale `ORDER BY`-Klausel verwendet wird, wird das Resultset durch Überspringen der sortierten Werte erzeugt. Andernfalls gibt die Abfrage eine feste Reihenfolge der Werte zurück.
 
-  Die RU-Gebühr für eine Abfrage mit `OFFSET LIMIT` steigt mit zunehmender Anzahl der versetzten Begriffe. Für Abfragen mit mehreren Ergebnisseiten empfiehlt es sich in der Regel, Fortsetzungstoken zu verwenden. Fortsetzungstoken sind „Lesezeichen“ für die Stelle, an der die Abfrage später fortgesetzt werden kann. Wenn Sie `OFFSET LIMIT` verwenden, gibt es kein „Lesezeichen“. Wenn Sie die nächste Seite der Abfrage zurückgeben möchten, müssen Sie vom Anfang beginnen.
+  Die RU-Gebühr für eine Abfrage mit `OFFSET LIMIT` steigt mit zunehmender Anzahl der versetzten Begriffe. Für Abfragen mit [mehreren Ergebnisseiten](sql-query-pagination.md) empfiehlt es sich in der Regel, [Fortsetzungstoken](sql-query-pagination.md#continuation-tokens) zu verwenden. Fortsetzungstoken sind „Lesezeichen“ für die Stelle, an der die Abfrage später fortgesetzt werden kann. Wenn Sie `OFFSET LIMIT` verwenden, gibt es kein „Lesezeichen“. Wenn Sie die nächste Seite der Abfrage zurückgeben möchten, müssen Sie vom Anfang beginnen.
   
-  Sie sollten `OFFSET LIMIT` in Fällen verwenden, in denen Sie Dokumente vollständig überspringen und Clientressourcen speichern möchten. Sie sollten `OFFSET LIMIT` z. B. verwenden, wenn Sie alles bis zum 1.000. Ergebnis der Abfrage überspringen und die Ergebnisse 1 bis 999 nicht anzeigen möchten. Auf dem Back-End lädt `OFFSET LIMIT` immer noch jedes Dokument, einschließlich der übersprungenen Dokumente. Der Leistungsvorteil ergibt sich aus der Einsparung von Clientressourcen, indem die Verarbeitung von nicht benötigten Dokumenten vermieden wird.
+  Sie sollten `OFFSET LIMIT` in Fällen verwenden, in denen Sie Elemente vollständig überspringen und Clientressourcen speichern möchten. Sie sollten `OFFSET LIMIT` z. B. verwenden, wenn Sie alles bis zum 1.000. Ergebnis der Abfrage überspringen und die Ergebnisse 1 bis 999 nicht anzeigen möchten. Auf dem Back-End lädt `OFFSET LIMIT` immer noch jedes Element, einschließlich der übersprungenen Elemente. Der Leistungsvorteil ergibt sich aus der Einsparung von Clientressourcen, indem die Verarbeitung von nicht benötigten Elementen vermieden wird.
 
 ## <a name="examples"></a>Beispiele
 
@@ -68,7 +68,7 @@ Die Ergebnisse sind:
 Dies ist eine Abfrage, die den ersten Wert überspringt und den zweiten Wert (ohne Sortierung) zurückgibt:
 
 ```sql
-   SELECT f.id, f.address.city
+    SELECT f.id, f.address.city
     FROM Families f
     OFFSET 1 LIMIT 1
 ```

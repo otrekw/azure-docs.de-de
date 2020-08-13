@@ -7,20 +7,20 @@ ms.author: baanders
 ms.date: 4/10/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 6d51abab46cd8450dd3a09e5e5ef47e6267b990d
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 7f7239e0c13478af712d8e8d9dad8fda23fe42c7
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86258094"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87125531"
 ---
 # <a name="manage-a-graph-of-digital-twins-using-relationships"></a>Verwalten eines Graphen von digitalen Zwillingen mithilfe von Beziehungen
 
 Das Herzstück von Azure Digital Twins ist der [Zwillingsgraph](concepts-twins-graph.md), der Ihre gesamte Umgebung darstellt. Der Zwillingsgraph setzt sich aus einzelnen digitalen Zwillingen zusammen, die über **Beziehungen** verbunden sind.
 
-Sobald Sie über eine funktionierende [Azure Digital Twins-Instanz](how-to-set-up-instance.md) verfügen und eine [Authentifizierung](how-to-authenticate-client.md) für Ihre Client-App eingerichtet haben, können Sie die [**DigitalTwins-APIs**](how-to-use-apis-sdks.md) verwenden, um digitale Zwillinge und ihre Beziehungen in einer Azure Digital Twins-Instanz zu erstellen, zu ändern und zu löschen. Sie können auch das [.NET (C#) SDK](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core) oder die [Azure Digital Twins-CLI](how-to-use-cli.md) verwenden.
+Sobald Sie über eine funktionierende [Azure Digital Twins-Instanz](how-to-set-up-instance-scripted.md) verfügen und [Authentifizierungscode](how-to-authenticate-client.md) in Ihrer Client-App eingerichtet haben, können Sie die [**DigitalTwins-APIs**](how-to-use-apis-sdks.md) verwenden, um digitale Zwillinge und ihre Beziehungen in einer Azure Digital Twins-Instanz zu erstellen, zu ändern und zu löschen. Sie können auch das [.NET (C#) SDK](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core) oder die [Azure Digital Twins-CLI](how-to-use-cli.md) verwenden.
 
-Dieser Artikel konzentriert sich auf die Verwaltung von Beziehungen und den Graphen als Ganzes. Für die Arbeit mit einzelnen digitalen Zwillingen finden Sie weitere Informationen in der [Anleitung: Verwalten digitaler Zwillinge](how-to-manage-twin.md).
+Dieser Artikel konzentriert sich auf die Verwaltung von Beziehungen und den Graphen als Ganzes. Für die Arbeit mit einzelnen digitalen Zwillingen finden Sie weitere Informationen unter [ *Verwalten digitaler Zwillinge*](how-to-manage-twin.md).
 
 [!INCLUDE [visualizing with Azure Digital Twins explorer](../../includes/digital-twins-visualization.md)]
 
@@ -62,7 +62,7 @@ public async static Task CreateRelationship(DigitalTwinsClient client, string sr
 }
 ```
 
-Weitere Informationen zur Hilfsklasse `BasicRelationship` finden Sie unter [Anleitung: Verwenden der APIs und SDKs für Azure Digital Twins](how-to-use-apis-sdks.md).
+Weitere Informationen zur Hilfsklasse `BasicRelationship` finden Sie unter [ *Verwenden der Azure Digital Twins-APIs und SDKs*](how-to-use-apis-sdks.md).
 
 ## <a name="list-relationships"></a>Auflisten von Beziehungen
 
@@ -108,7 +108,7 @@ Azure Digital Twins verfügt auch über eine API, um alle eingehenden Beziehunge
 
 Das vorherige Codebeispiel konzentrierte sich auf die Suche nach ausgehenden Beziehungen. Das folgende Beispiel ist ähnlich, findet aber stattdessen eingehende Beziehungen. Es löscht diese auch, sobald sie gefunden werden.
 
-Beachten Sie, dass die IncomingRelationship-Aufrufe keine vollständige Rückgabe bieten
+Beachten Sie, dass die `IncomingRelationship`-Aufrufe nicht den vollständigen Text der Beziehung zurückgeben.
 
 ```csharp
 async Task<List<IncomingRelationship>> FindIncomingRelationshipsAsync(string dtId)
@@ -301,10 +301,10 @@ foreach (JsonElement row in data.RootElement.EnumerateArray())
 ```
 ## <a name="manage-relationships-with-cli"></a>Verwalten von Beziehungen mit der CLI
 
-Zwillinge und ihre Beziehungen können auch über die Azure Digital Twins-Befehlszeilenschnittstelle (CLI) verwaltet werden. Die Befehle finden Sie in [Gewusst wie: Verwenden der Azure Digital Twins-Befehlszeilenschnittstelle](how-to-use-cli.md).
+Zwillinge und ihre Beziehungen können auch über die Azure Digital Twins-Befehlszeilenschnittstelle (CLI) verwaltet werden. Die Befehle finden Sie unter [*Vorgehensweise: Verwenden der Azure Digital Twins-Befehlszeilenschnittstelle*](how-to-use-cli.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Erfahren Sie mehr über die Abfrage eines Azure Digital Twins-Zwillingsgraphen:
-* [Konzepte: Abfragesprache](concepts-query-language.md)
-* [Gewusst wie: Abfragen des Zwillingsgraphen](how-to-query-graph.md)
+* [*Konzepte: Abfragesprache*](concepts-query-language.md)
+* [*Verwenden Abfragen des Zwillingsgraphen*](how-to-query-graph.md)

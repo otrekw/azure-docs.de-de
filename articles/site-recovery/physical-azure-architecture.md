@@ -3,12 +3,12 @@ title: Physische Serverarchitektur der Notfallwiederherstellung in Azure Site Re
 description: Dieser Artikel bietet einen Überblick über die Komponenten und die Architektur, die bei der Notfallwiederherstellung von lokalen physischen Servern in Azure mit dem Azure Site Recovery-Dienst verwendet werden.
 ms.topic: conceptual
 ms.date: 02/11/2020
-ms.openlocfilehash: 089d981284986a2b6eb0ee7f1dbd401fc7ce4fcd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f2184654a8169cb353fb40fa76f0a7fe9b3df6f6
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77162836"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87422656"
 ---
 # <a name="physical-server-to-azure-disaster-recovery-architecture"></a>Architektur der Notfallwiederherstellung physischer Server in Azure
 
@@ -28,6 +28,25 @@ Die folgende Tabelle und Grafik bieten eine allgemeine Übersicht der Komponente
 **Physisch-zu-Azure-Architektur**
 
 ![Komponenten](./media/physical-azure-architecture/arch-enhanced.png)
+
+## <a name="set-up-outbound-network-connectivity"></a>Einrichten der ausgehenden Netzwerkkonnektivität
+
+Damit Site Recovery erwartungsgemäß funktioniert, müssen Sie die ausgehende Netzwerkkonnektivität ändern, um Ihrer Umgebung das Replizieren zu ermöglichen.
+
+> [!NOTE]
+> Site Recovery unterstützt die Verwendung eines Authentifizierungsproxys zur Steuerung der Netzwerkkonnektivität nicht.
+
+### <a name="outbound-connectivity-for-urls"></a>Ausgehende Konnektivität für URLs
+
+Lassen Sie den Zugriff auf die folgenden URLs zu, wenn Sie einen URL-basierten Firewallproxy zum Steuern der ausgehenden Konnektivität verwenden:
+
+| **Name**                  | **Kommerziell**                               | **Behörden**                                 | **Beschreibung** |
+| ------------------------- | -------------------------------------------- | ---------------------------------------------- | ----------- |
+| Storage                   | `*.blob.core.windows.net`                  | `*.blob.core.usgovcloudapi.net`               | Ermöglicht das Schreiben von Daten aus der VM in das Cachespeicherkonto in der Quellregion |
+| Azure Active Directory    | `login.microsoftonline.com`                | `login.microsoftonline.us`                   | Stellt die Autorisierung und Authentifizierung für Site Recovery-Dienst-URLs bereit. |
+| Replikation               | `*.hypervrecoverymanager.windowsazure.com` | `*.hypervrecoverymanager.windowsazure.com`   | Ermöglicht die Kommunikation der VM mit Site Recovery |
+| Service Bus               | `*.servicebus.windows.net`                 | `*.servicebus.usgovcloudapi.net`             | Ermöglicht es der VM, die Site Recovery-Überwachung und -Diagnosedaten zu schreiben |
+
 
 ## <a name="replication-process"></a>Replikationsprozess
 

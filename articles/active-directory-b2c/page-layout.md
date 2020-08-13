@@ -8,21 +8,29 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/26/2020
+ms.date: 07/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 3d0cb06f84fdd96d099e05f55ba62c37cb1192c7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4548b50e4168f260cb401c40dd4e61192cea1015
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78183974"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87489536"
 ---
 # <a name="page-layout-versions"></a>Seitenlayoutversionen
 
 Seitenlayoutpakete werden regelmäßig aktualisiert, um Korrekturen und Verbesserungen in ihre Seitenelemente aufzunehmen. Das folgende Änderungsprotokoll gibt die in den einzelnen Versionen eingeführten Änderungen an.
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
+
+## <a name="210"></a>2.1.0
+
+- Selbstbestätigte Seite (`selfasserted`)
+  - Korrekturen für Lokalisierung und Barrierefreiheit.
+- Einheitliche SSP-Seite (`unifiedssp`)
+  - Unterstützung für mehrere Registrierungslinks hinzugefügt.
+  - Unterstützung für die Validierung von Benutzereingaben gemäß den in der Richtlinie definierten Prädikatsregeln hinzugefügt.
 
 ## <a name="200"></a>2.0.0
 
@@ -40,6 +48,8 @@ Seitenlayoutpakete werden regelmäßig aktualisiert, um Korrekturen und Verbesse
   - Unterstützung für den Google Chrome-Übersetzer
 - Einheitliche und selbstbestätigte Seiten
   - Die Felder für Benutzername/E-Mail-Adresse und Kennwort verwenden jetzt das HTML-Element `form`, damit Microsoft Edge und Internet Explorer (IE) diese Informationen ordnungsgemäß speichern können.
+- Selbstbestätigte Seite
+  - Konfigurierbare Verzögerung bei Validierung von Benutzereingaben für verbesserte Benutzerfreundlichkeit hinzugefügt.
 
 ## <a name="110"></a>1.1.0
 

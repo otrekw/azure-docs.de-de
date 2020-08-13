@@ -3,8 +3,8 @@ title: 'Bekannte Probleme: Onlinemigrationen zu Azure Database for MySQL'
 titleSuffix: Azure Database Migration Service
 description: Hier erfahren Sie mehr zu bekannten Problemen und Migrationseinschränkungen bei Onlinemigrationen zu Azure Database for MySQL, wenn Sie Azure Database Migration Service verwenden.
 services: database-migration
-author: HJToland3
-ms.author: jtoland
+author: arunkumarthiags
+ms.author: arthiaga
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
@@ -14,12 +14,12 @@ ms.custom:
 - seo-dt-2019
 ms.topic: article
 ms.date: 02/20/2020
-ms.openlocfilehash: 8c3de28ea934302086a5b14e61482e6a4ab9a7ca
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9a2e28439efaa1983c4deeff4c6746108fc28e4e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80235274"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090704"
 ---
 # <a name="online-migration-issues--limitations-to-azure-db-for-mysql-with-azure-database-migration-service"></a>Onlinemigrationsprobleme und Einschränkungen bei Azure DB for MySQL mit Azure Database Migration Service
 
@@ -135,6 +135,8 @@ Beim Versuch der Onlinemigration von AWS RDS MySQL zu Azure Database for MySQL k
     ```
 
 - In Azure Database Migration Service ist die Anzahl der in einer einzelnen Migrationsaktivität zu migrierenden Datenbanken auf vier Datenbanken beschränkt.
+
+- Azure DMS unterstützt die referenzielle CASCADE-Aktion nicht, die verwendet werden kann, um eine übereinstimmende Zeile in der untergeordneten Tabelle automatisch zu löschen oder zu aktualisieren, wenn eine Zeile in der übergeordneten Tabelle gelöscht oder aktualisiert wird. Weitere Informationen finden Sie in der MySQL-Dokumentation im Abschnitt „Referenzielle Aktionen“ des Artikels [FOREIGN KEY-Einschränkungen](https://dev.mysql.com/doc/refman/8.0/en/create-table-foreign-keys.html). Azure DMS erfordert, dass Sie Fremdschlüsseleinschränkungen auf dem Zieldatenbankserver während des anfänglichen Ladens von Daten löschen. Zudem können Sie keine referenziellen Aktionen verwenden. Wenn Ihre Workload von der Aktualisierung einer zugehörigen untergeordneten Tabelle über diese referenzielle Aktion abhängt, empfiehlt es sich, stattdessen eine [Sicherung und Wiederherstellung](https://docs.microsoft.com/azure/mysql/concepts-migrate-dump-restore) durchzuführen. 
 
 - **Fehler:** Zeile zu groß (> 8126). Das Ändern einiger Spalten in TEXT oder BLOB kann helfen. Beim aktuellen Zeilenformat wird das BLOB-Präfix von 0 Byte inline gespeichert.
 

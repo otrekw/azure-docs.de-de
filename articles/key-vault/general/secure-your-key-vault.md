@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 05/11/2020
 ms.author: sudbalas
-ms.openlocfilehash: 1aea1f3b2401d7b9639c32927ffa7390727d25b2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f9995b82c1dc437cdaa2f9f987abba3e9681454a
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85833637"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926755"
 ---
 # <a name="secure-access-to-a-key-vault"></a>Sicherer Zugriff auf einen Schlüsseltresor
 
@@ -59,13 +59,13 @@ Die folgende Tabelle zeigt die Endpunkte für die Verwaltungs- und Datenebene.
 
 ## <a name="management-plane-and-rbac"></a>Verwaltungsebene und rollenbasierte Zugriffssteuerung (RBAC)
 
-Auf Verwaltungsebene autorisieren Sie mit RBAC (Role Based Access Control, rollenbasierte Zugriffssteuerung) die Operationen, die ein Anrufer ausführen darf. Im RBAC-Modell verfügt jedes Azure-Abonnement über eine Instanz von Azure AD. Über dieses Verzeichnis gewähren Sie Benutzern, Gruppen und Anwendungen Zugriff. Der Zugriff wird gewährt, um Ressourcen im Azure-Abonnement zu verwalten, die das Bereitstellungsmodell von Azure Resource Manager verwenden. Um den Zugriff zu gewähren, können Sie das [Azure-Portal](https://portal.azure.com/), die [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest), [Azure PowerShell](/powershell/azureps-cmdlets-docs) oder die [Azure Resource Manager-REST-APIs](https://msdn.microsoft.com/library/azure/dn906885.aspx) verwenden.
+Auf Verwaltungsebene autorisieren Sie mit Azure RBAC (Azure Role-Based Access Control, rollenbasierte Zugriffssteuerung in Azure) die Vorgänge, die ein Aufrufer ausführen darf. Im RBAC-Modell verfügt jedes Azure-Abonnement über eine Instanz von Azure AD. Über dieses Verzeichnis gewähren Sie Benutzern, Gruppen und Anwendungen Zugriff. Der Zugriff wird gewährt, um Ressourcen im Azure-Abonnement zu verwalten, die das Bereitstellungsmodell von Azure Resource Manager verwenden. Um den Zugriff zu gewähren, können Sie das [Azure-Portal](https://portal.azure.com/), die [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest), [Azure PowerShell](/powershell/azure/) oder die [Azure Resource Manager-REST-APIs](https://msdn.microsoft.com/library/azure/dn906885.aspx) verwenden.
 
-Mit Azure AD erstellen Sie einen Schlüsseltresor in einer Ressourcengruppe und steuern den Zugriff. So können Sie Benutzern oder einer Gruppe die Verwaltung von Schlüsseltresoren in einer Ressourcengruppe ermöglichen. Sie gewähren den Zugriff auf eine bestimmte Bereichsebene, indem Sie entsprechende RBAC-Rollen zuordnen. Um einem Benutzer Zugriff für die Verwaltung von Schlüsseltresoren zu gewähren, weisen Sie ihm für einen bestimmten Bereich die vordefinierte Rolle `key vault Contributor` zu. Die folgenden Bereichsebenen können einer RBAC-Rolle zugeordnet werden:
+Mit Azure AD erstellen Sie einen Schlüsseltresor in einer Ressourcengruppe und steuern den Zugriff. So können Sie Benutzern oder einer Gruppe die Verwaltung von Schlüsseltresoren in einer Ressourcengruppe ermöglichen. Sie gewähren den Zugriff auf eine bestimmte Bereichsebene, indem Sie entsprechende Azure-Rollen zuordnen. Um einem Benutzer Zugriff für die Verwaltung von Schlüsseltresoren zu gewähren, weisen Sie ihm für einen bestimmten Bereich die vordefinierte Rolle `key vault Contributor` zu. Die folgenden Bereichsebenen können einer Azure-Rolle zugeordnet werden:
 
-- **Abonnement**: Eine auf Abonnementebene zugewiesene RBAC-Rolle gilt für alle Ressourcengruppen und Ressourcen innerhalb des Abonnements.
-- **Ressourcengruppe**: Eine auf Ressourcengruppenebene zugewiesene RBAC-Rolle gilt für alle Ressourcen in der Ressourcengruppe.
-- **Bestimmte Ressourcen**: Eine für eine bestimmte Ressource zugewiesene RBAC-Rolle gilt für diese Ressource. In diesem Fall ist die Ressource ein bestimmter Schlüsseltresor.
+- **Abonnement**: Eine auf Abonnementebene zugewiesene Azure-Rolle gilt für alle Ressourcengruppen und Ressourcen innerhalb des Abonnements.
+- **Ressourcengruppe**: Eine auf Ressourcengruppenebene zugewiesene Azure-Rolle gilt für alle Ressourcen in der Ressourcengruppe.
+- **Bestimmte Ressourcen**: Eine für eine bestimmte Ressource zugewiesene Azure-Rolle gilt für diese Ressource. In diesem Fall ist die Ressource ein bestimmter Schlüsseltresor.
 
 Es gibt verschiedene vordefinierte Rollen. Wenn eine vordefinierte Rolle nicht Ihren Anforderungen entspricht, können Sie Ihre eigene Rolle definieren. Weitere Informationen finden Sie unter [RBAC: Integrierte Rollen](../../role-based-access-control/built-in-roles.md).
 
@@ -82,7 +82,7 @@ Sie können einem Benutzer, einer Gruppe oder einer Anwendung Zugriff auf das Au
 
 Die folgende Referenz enthält die vollständige Liste der Tresor- und Geheimnisvorgänge sowie Informationen zu den zulässigen Vorgängen beim Konfigurieren von Key Vault-Zugriffsrichtlinien: [Tresorvorgänge](https://docs.microsoft.com/rest/api/keyvault/#vault-operations)
 
-Mit <a id="key-vault-access-policies"></a>Schlüsseltresor-Zugriffsrichtlinien können separate Berechtigungen für Schlüssel, Geheimnisse und Zertifikate gewährt werden. Sie können einem Benutzer nur Zugriff auf Schlüssel, nicht auf Geheimnisse gewähren. Zugriffsberechtigungen für Schlüssel, Geheimnisse und Zertifikate gelten auf Tresorebene. Die Schlüsseltresor-Zugriffsrichtlinie unterstützt keine differenzierten Berechtigungen auf Objektebene, wie z.B. für bestimmte Schlüssel, Geheimnisse oder Zertifikate. Zum Festlegen von Zugriffsrichtlinien für einen Schlüsseltresor können Sie das [Azure-Portal](https://portal.azure.com/), die [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest), [Azure PowerShell](/powershell/azureps-cmdlets-docs) oder die [REST-APIs für die Schlüsseltresorverwaltung](https://msdn.microsoft.com/library/azure/mt620024.aspx) verwenden.
+Mit <a id="key-vault-access-policies"></a>Schlüsseltresor-Zugriffsrichtlinien können separate Berechtigungen für Schlüssel, Geheimnisse und Zertifikate gewährt werden. Sie können einem Benutzer nur Zugriff auf Schlüssel, nicht auf Geheimnisse gewähren. Zugriffsberechtigungen für Schlüssel, Geheimnisse und Zertifikate gelten auf Tresorebene. Die Schlüsseltresor-Zugriffsrichtlinie unterstützt keine differenzierten Berechtigungen auf Objektebene, wie z.B. für bestimmte Schlüssel, Geheimnisse oder Zertifikate. Zum Festlegen von Zugriffsrichtlinien für einen Schlüsseltresor können Sie das [Azure-Portal](https://portal.azure.com/), die [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest), [Azure PowerShell](/powershell/azure/) oder die [REST-APIs für die Schlüsseltresorverwaltung](https://msdn.microsoft.com/library/azure/mt620024.aspx) verwenden.
 
 > [!IMPORTANT]
 > Key Vault-Zugriffsrichtlinien gelten auf Tresorebene. Wenn einem Benutzer die Berechtigung zum Erstellen und Löschen von Schlüsseln gewährt wird, kann er diese Vorgänge für alle Schlüssel in diesem Schlüsseltresor ausführen.
@@ -197,7 +197,7 @@ Sie sollten den Zugriff auf Ihren Schlüsseltresor weiterhin durch die [Konfigur
 
 ## <a name="resources"></a>Ressourcen
 
-* [Azure AD RBAC](../../role-based-access-control/role-assignments-portal.md)
+* [Azure RBAC](../../role-based-access-control/role-assignments-portal.md)
 
 * [RBAC: Integrierte Rollen](../../role-based-access-control/built-in-roles.md).
 

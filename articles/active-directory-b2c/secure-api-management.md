@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 04/10/2020
+ms.date: 07/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 1ea11008155899e09bf461e56a8bb4981d37238d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0e8802d612f2497cc58c90856e9a5a5572a142f1
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85385415"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87482837"
 ---
 # <a name="secure-an-azure-api-management-api-with-azure-ad-b2c"></a>Sichern einer Azure API Management-API mit Azure AD B2C
 
@@ -60,7 +60,7 @@ Zum Registrieren einer Anwendung in Ihrem Azure AD B2C-Mandanten können Sie un
 Rufen Sie als Nächstes die bekannte Konfigurations-URL für einen Ihrer Azure AD B2C-Benutzerflows ab. Sie benötigen außerdem den Tokenaussteller-Endpunkt-URI, der in Azure API Management unterstützt werden soll.
 
 1. Navigieren Sie zu Ihrem Azure AD B2C-Mandanten im [Azure-Portal](https://portal.azure.com).
-1. Wählen Sie unter **Richtlinien** die Option **Benutzerflows (Richtlinien)** aus.
+1. Wählen Sie unter **Richtlinien** die Option **Benutzerflows** aus.
 1. Wählen Sie eine vorhandene Richtlinie (etwa *B2C_1_signupsignin1*) und dann **Benutzerflow ausführen** aus.
 1. Notieren Sie sich die URL des Hyperlinks, der unter der Überschrift **Benutzerflow ausführen** oben auf der Seite angezeigt wird. Diese URL ist der bekannte OpenID Connect-Ermittlungsendpunkt für den Benutzerflow. Verwenden Sie ihn im nächsten Abschnitt beim Konfigurieren der eingehenden Richtlinie in Azure API Management.
 
@@ -126,7 +126,7 @@ Zum Aufrufen der API benötigen Sie sowohl ein von Azure AD B2C ausgestelltes Zu
 Sie benötigen zunächst ein Token, das von Azure AD B2C zur Verwendung im `Authorization`-Header in Postman ausgestellt wird. Dieses können Sie mithilfe der Funktion **Jetzt ausführen** Ihres Benutzerflows für die Registrierung bzw. Anmeldung, den Sie als eine der Voraussetzungen erstellt haben, abrufen.
 
 1. Navigieren Sie zu Ihrem Azure AD B2C-Mandanten im [Azure-Portal](https://portal.azure.com).
-1. Wählen Sie unter **Richtlinien** die Option **Benutzerflows (Richtlinien)** aus.
+1. Wählen Sie unter **Richtlinien** die Option **Benutzerflows** aus.
 1. Wählen Sie eine vorhandene Richtlinie für die Registrierung bzw. Anmeldung aus, wie z. B. *B2C_1_signupsignin1*.
 1. Wählen Sie für **Anwendung** die Option *webapp1* aus.
 1. Wählen Sie für **Antwort-URL**`https://jwt.ms` aus.

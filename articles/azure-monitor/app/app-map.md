@@ -3,14 +3,13 @@ title: Anwendungszuordnung in Azure Application Insights | Microsoft-Dokumentati
 description: Überwachen von komplexen Anwendungstopologien mit der Anwendungsübersicht
 ms.topic: conceptual
 ms.date: 03/15/2019
-ms.custom: devx-track-javascript
 ms.reviewer: sdash
-ms.openlocfilehash: 7e4035e382aaa3f8b5d2327054a50a5360c60bfa
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: b99998a7b1bcb2348a1a73696661de7cf8b44b85
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 07/29/2020
-ms.locfileid: "87367009"
+ms.locfileid: "87421296"
 ---
 # <a name="application-map-triage-distributed-applications"></a>Anwendungsübersicht: Selektieren verteilter Anwendungen
 
@@ -82,9 +81,12 @@ Wählen Sie **Warnungen** aus, um aktive Warnungen und die zugrunde liegenden Re
 
 ![Screenshot: Analytics-Bereich](media/app-map/alerts-view.png)
 
-## <a name="set-cloud-role-name"></a>Festlegen von „Cloudrollenname“
+## <a name="set-or-override-cloud-role-name"></a>Festlegen oder Außerkraftsetzen des Cloudrollennamens
 
-In der Anwendungsübersicht wird die Eigenschaft **Cloudrollenname** verwendet, um die Komponenten in der Zuordnung zu identifizieren. Das Application Insights SDK versieht die von Komponenten ausgegebenen Telemetriedaten automatisch mit der Eigenschaft „Cloudrollenname“. So fügt das SDK der Eigenschaft „Cloudrollenname“ beispielsweise einen Websitenamen oder einen Dienstrollennamen hinzu. Manchmal soll der Standardwert jedoch möglicherweise überschrieben werden. So überschreiben Sie den Cloudrollennamen und ändern den Inhalt der Anwendungsübersicht
+In der Anwendungsübersicht wird die Eigenschaft **Cloudrollenname** verwendet, um die Komponenten in der Zuordnung zu identifizieren. So können Sie den Cloudrollennamen manuell festlegen oder außer Kraft setzen und den Inhalt der Anwendungsübersicht ändern:
+
+> [!NOTE]
+> Das Application Insights SDK oder der Application Insights-Agent versieht die von Komponenten in einer Azure App Service-Umgebung ausgegebenen Telemetriedaten automatisch mit der Eigenschaft „Cloudrollenname“.
 
 # <a name="netnetcore"></a>[.NET/.NetCore](#tab/net)
 
@@ -266,7 +268,7 @@ Bei Problemen mit der Anwendungsübersicht können Sie Folgendes versuchen:
 
 3. Wenn Sie Azure Functions mit C# verwenden, führen Sie ein Upgrade auf [Functions V2](../../azure-functions/functions-versions.md) durch.
 
-4. Vergewissern Sie sich, dass [Cloudrollenname](#set-cloud-role-name) richtig konfiguriert wurde.
+4. Vergewissern Sie sich, dass [Cloudrollenname](#set-or-override-cloud-role-name) richtig konfiguriert wurde.
 
 5. Sollte eine Abhängigkeit fehlen, stellen Sie sicher, dass sie sich in der Liste [automatisch erfasster Abhängigkeiten](./auto-collect-dependencies.md) befindet. Andernfalls können Sie sie auch manuell mit einem [TrackDependency-Aufruf](./api-custom-events-metrics.md#trackdependency) nachverfolgen.
 
@@ -282,7 +284,7 @@ Um dies zu beheben, müssen Sie die Instrumentierung ändern, um die Felder für
 
 * Der Abhängigkeitstyp muss den logischen Typ einer Abhängigkeit darstellen. HTTP, SQL oder Azure-Blob sind beispielsweise typische Abhängigkeitstypen. Er sollte keine eindeutigen IDs enthalten.
 
-* Der Zweck des Cloudrollennamens ist im [Abschnitt weiter oben](#set-cloud-role-name) beschrieben.
+* Der Zweck des Cloudrollennamens ist im [Abschnitt weiter oben](#set-or-override-cloud-role-name) beschrieben.
 
 ## <a name="portal-feedback"></a>Feedback zum Portal
 

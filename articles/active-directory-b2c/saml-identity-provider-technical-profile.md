@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 03/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 724178f71befbe4eace0d3d5615871c21253c1f1
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 0c30d5c072c66e04b97cae2f88e4c8ef96b32779
+ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170070"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87116206"
 ---
 # <a name="define-a-saml-identity-provider-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definieren eines technischen Profils für einen SAML-Identitätsanbieter in einer benutzerdefinierten Richtlinie in Azure Active Directory B2C
 
@@ -169,6 +169,38 @@ Das **CryptographicKeys**-Element enthält die folgenden Attribute:
 | SamlMessageSigning |Ja | Das X509-Zertifikat (RSA-Schlüssel) zum Signieren der SAML-Nachrichten. Azure AD B2C verwendet diesen Schlüssel, um die Anforderungen zu signieren und an den Identitätsanbieter zu senden. |
 | SamlAssertionDecryption |Ja | Das X509-Zertifikat (RSA-Schlüssel) zum Entschlüsseln der SAML-Nachrichten. Das Zertifikat sollte vom Identitätsanbieter bereitgestellt werden. Azure AD B2C verwendet das Zertifikat, um die vom Identitätsanbieter gesendeten Daten zu senden. |
 | MetadataSigning |Nein | Das X509-Zertifikat (RSA-Schlüssel) zum Signieren der SAML-Metadaten. Azure AD B2C verwendet diesen Schlüssel zum Signieren der Metadaten.  |
+
+## <a name="saml-entityid-customization"></a>Anpassung der SAML-Entitäts-ID
+
+Wenn Sie mehrere SAML-Anwendungen haben, die von unterschiedlichen Entitäts-ID-Werten (entityID) abhängen, können Sie den `issueruri`-Wert in der Datei der vertrauenden Seite überschreiben. Dazu kopieren Sie das technische Profil mit der „Saml2AssertionIssuer“-ID aus der Basisdatei, und überschreiben Sie den `issueruri`-Wert.
+
+> [!TIP]
+> Kopieren Sie den Abschnitt `<ClaimsProviders>` aus der Basisdatei, und bewahren Sie diese Elemente im Anspruchsanbieter auf: `<DisplayName>Token Issuer</DisplayName>`, `<TechnicalProfile Id="Saml2AssertionIssuer">` und `<DisplayName>Token Issuer</DisplayName>`.
+ 
+Beispiel:
+
+```xml
+   <ClaimsProviders>   
+    <ClaimsProvider>
+      <DisplayName>Token Issuer</DisplayName>
+      <TechnicalProfiles>
+        <TechnicalProfile Id="Saml2AssertionIssuer">
+          <DisplayName>Token Issuer</DisplayName>
+          <Metadata>
+            <Item Key="IssuerUri">customURI</Item>
+          </Metadata>
+        </TechnicalProfile>
+      </TechnicalProfiles>
+    </ClaimsProvider>
+  </ClaimsProviders>
+  <RelyingParty>
+    <DefaultUserJourney ReferenceId="SignUpInSAML" />
+    <TechnicalProfile Id="PolicyProfile">
+      <DisplayName>PolicyProfile</DisplayName>
+      <Protocol Name="SAML2" />
+      <Metadata>
+     …
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -1,24 +1,22 @@
 ---
-title: Veröffentlichen von integrierten Apps in Windows Virtual Desktop – Azure
-description: Hier erfahren Sie, wie Sie integrierte Apps in Windows Virtual Desktop veröffentlichen.
-services: virtual-desktop
+title: Veröffentlichen von integrierten Apps in Windows Virtual Desktop (klassisch) – Azure
+description: Hier erfahren Sie, wie Sie integrierte Apps in Windows Virtual Desktop (klassisch) veröffentlichen.
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 7a453ef44a1ede86290f4130a6147eaaad09fa97
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 80cd1a4c92441fb17ce0a66814ff0a39a92fb287
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85214144"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88005566"
 ---
-# <a name="publish-built-in-apps-in-windows-virtual-desktop"></a>Veröffentlichen von integrierten Apps in Windows Virtual Desktop
+# <a name="publish-built-in-apps-in-windows-virtual-desktop-classic"></a>Veröffentlichen von integrierten Apps in Windows Virtual Desktop (klassisch)
 
 >[!IMPORTANT]
->Dieser Inhalt gilt für das Release vom Herbst 2019, das keine Windows Virtual Desktop-Objekte in Azure Resource Manager unterstützt. Wenn Sie Windows Virtual Desktop-Objekte in Azure Resource Manager verwalten möchten, die im Update vom Frühjahr 2020 eingeführt wurden, finden Sie weitere Informationen in [diesem Artikel](../publish-apps.md).
+>Dieser Inhalt gilt für den Windows Virtual Desktop-Dienst (klassisch), der keine Windows Virtual Desktop-Objekte in Azure Resource Manager unterstützt. Wenn Sie Windows Virtual Desktop-Objekte in Azure Resource Manager verwalten möchten, helfen Ihnen die Informationen in [diesem Artikel](../publish-apps.md) weiter.
 
 In diesem Artikel erfahren Sie, wie Sie Apps in Ihrer Windows Virtual Desktop-Umgebung veröffentlichen.
 

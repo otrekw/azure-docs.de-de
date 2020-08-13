@@ -4,14 +4,14 @@ description: Erfahren Sie mehr über SQL-Schlüsselwörter für Azure Cosmos DB.
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 04/10/2020
+ms.date: 07/29/2020
 ms.author: tisande
-ms.openlocfilehash: 069548b9b69ef6f7f6bde85ede830d97f3d312db
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f00e757f9b51da850c49924f6ae49bf00c9c53d1
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81261566"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496680"
 ---
 # <a name="keywords-in-azure-cosmos-db"></a>Schlüsselwörter in Azure Cosmos DB
 
@@ -35,9 +35,6 @@ Sie können auch das Schlüsselwort `BETWEEN` in der `SELECT`-Klausel verwenden,
 ```
 
 In der SQL-API können Sie – im Gegensatz zu ANSI SQL – Bereichsabfragen für Eigenschaften gemischter Typen ausdrücken. Beispielsweise kann `grade` in einigen Elementen eine Zahl (z.B. `5`) und in anderen eine Zeichenfolge (z.B. `grade4`) sein. In diesen Fällen (etwa in JavaScript) gibt der Vergleich zwischen den beiden unterschiedlichen Typen `Undefined` zurück, sodass das Element übersprungen wird.
-
-> [!TIP]
-> Für kürzere Ausführungszeiten von Abfragen erstellen Sie eine Indizierungsrichtlinie, die einen Bereichsindextyp für alle von der `BETWEEN`-Klausel gefilterten numerischen Eigenschaften oder Pfade verwendet.
 
 ## <a name="distinct"></a>DISTINCT
 
@@ -76,7 +73,7 @@ Die Ergebnisse sind:
 ]
 ```
 
-DISTINCT kann auch in der Projektion in einer Unterabfrage verwendet werden:
+`DISTINCT` kann auch in der Projektion in einer Unterabfrage verwendet werden:
 
 ```sql
 SELECT f.id, ARRAY(SELECT DISTINCT VALUE c.givenName FROM c IN f.children) as ChildNames

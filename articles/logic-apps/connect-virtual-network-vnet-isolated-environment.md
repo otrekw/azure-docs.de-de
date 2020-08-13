@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 06/18/2020
-ms.openlocfilehash: 3643092cf867fb49a24d5c1961d1a10834d5d3a3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/22/2020
+ms.openlocfilehash: b1290a17c93043ffbedb7a641e1a0afad6ae79d1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85298853"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87066472"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>Herstellen einer Verbindung mit virtuellen Azure-Netzwerken in Azure Logic Apps mithilfe einer Integrationsdienstumgebung
 
@@ -44,7 +44,7 @@ Sie können eine ISE auch erstellen, indem Sie das [Beispiel für die Azure Reso
   > [!IMPORTANT]
   > Für Logik-Apps, integrierte Trigger, integrierte Aktionen und Connectors, die in Ihrer ISE ausgeführt werden, gilt ein anderer als der nutzungsbasierte Tarif. Weitere Informationen zur Preisgestaltung und Abrechnung für ISEs finden Sie unter [Feststehendes Preismodell](../logic-apps/logic-apps-pricing.md#fixed-pricing). Eine Preisübersicht finden Sie unter [Logic Apps – Preise](../logic-apps/logic-apps-pricing.md).
 
-* Ein [virtuelles Azure-Netzwerk](../virtual-network/virtual-networks-overview.md). Ihr virtuelles Netzwerk muss über vier *leere* Subnetze verfügen, die nicht an einen anderen Dienst delegiert sind, um Ressourcen in Ihrer ISE zu erstellen und bereitzustellen. Jedes Subnetz unterstützt eine andere Logic Apps-Komponente, die in Ihrer ISE verwendet wird. Die Subnetze können vorab oder bei der ISE-Erstellung erstellt werden. Erfahren Sie mehr über die [Voraussetzungen für Subnetze](#create-subnet).
+* Ein [virtuelles Azure-Netzwerk](../virtual-network/virtual-networks-overview.md). Ihr virtuelles Netzwerk muss vier *leere* Subnetze enthalten. Diese sind zum Erstellen und Bereitstellen von Ressourcen in Ihrer ISE erforderlich und werden von internen Logic Apps-Komponenten (etwa Connectors und Zwischenspeicherung zur Leistungsverbesserung) verwendet. Die Subnetze können vorab oder bei der ISE-Erstellung erstellt werden. Überprüfen Sie jedoch vor dem Erstellen Ihrer Subnetze die [Subnetzanforderungen](#create-subnet).
 
   > [!IMPORTANT]
   >
@@ -55,8 +55,6 @@ Sie können eine ISE auch erstellen, indem Sie das [Beispiel für die Azure Reso
   > * 127.0.0.0/8
   > * 168.63.129.16/32
   > * 169.254.169.254/32
-  > 
-  > Subnetznamen müssen entweder mit einem alphabetischen Zeichen oder einem Unterstrich beginnen und können keins der folgenden Zeichen verwenden: `<`, `>`, `%`, `&`, `\\`, `?`, `/`. Wenn Sie Ihre ISE über eine Azure Resource Manager-Vorlage bereitstellen möchten, delegieren Sie zunächst ein leeres Subnetz an `Microsoft.Logic/integrationServiceEnvironment`. Sie müssen diese Delegierung nicht durchführen, wenn die Bereitstellung über das Azure-Portal erfolgt.
 
   * Stellen Sie sicher, dass Ihr virtuelles Netzwerk [den Zugriff für Ihre ISE ermöglicht](#enable-access), damit Ihre ISE ordnungsgemäß funktioniert und zugänglich ist.
 
@@ -134,6 +132,7 @@ In dieser Tabelle werden die Ports beschrieben, die für Ihre ISE erforderlich s
 | Azure Resource Health | **VirtualNetwork** | * | **AzureMonitor** | 1886 | Zum Veröffentlichen des Integritätsstatus in Resource Health erforderlich. |
 | Abhängigkeit von Richtlinie zum Anmelden bei Event Hub und Überwachungs-Agent | **VirtualNetwork** | * | **EventHub** | 5672 ||
 | Zugriff auf Azure Cache for Redis-Instanzen zwischen Rolleninstanzen | **VirtualNetwork** | * | **VirtualNetwork** | 6379 - 6383, siehe außerdem **Hinweise**| Damit die ISE mit Azure Cache for Redis funktioniert, müssen Sie die [Ports für ausgehenden und eingehenden Datenverkehr öffnen, die in den häufig gestellten Fragen zu Azure Cache for Redis beschrieben werden](../azure-cache-for-redis/cache-how-to-premium-vnet.md#outbound-port-requirements). |
+| DNS-Namensauflösung | **VirtualNetwork** | * | IP-Adressen für beliebige benutzerdefinierte DNS-Server (Domain Name System) in Ihrem virtuellen Netzwerk | 53 | Nur erforderlich, wenn Sie benutzerdefinierte DNS-Server in Ihrem virtuellen Netzwerk verwenden |
 |||||||
 
 Darüber hinaus müssen Ausgangsregeln für die [App Service-Umgebung (App Service Environment, ASE)](../app-service/environment/intro.md) hinzugefügt werden:
@@ -168,18 +167,30 @@ Darüber hinaus müssen Ausgangsregeln für die [App Service-Umgebung (App Serv
    | **Zusätzliche Kapazität** | Premium: <br>Ja <p><p>Developer: <br>Nicht verfügbar | Premium: <br>0 bis 10 <p><p>Developer: <br>Nicht verfügbar | Die Anzahl der für diese ISE-Ressource zu verwendenden zusätzlichen Verarbeitungseinheiten. Weitere Informationen zum Hinzufügen von Kapazität nach dem Erstellen finden Sie im Abschnitt [Hinzufügen von ISE-Kapazität](../logic-apps/ise-manage-integration-service-environment.md#add-capacity). |
    | **Zugriffsendpunkt** | Ja | **Intern** oder **Extern** | Der für Ihre ISE zu verwendende Typ von Zugriffsendpunkten. Diese Endpunkte bestimmen, ob Anforderungs- oder Webhooktrigger für Logik-Apps in Ihrer ISE Aufrufe von außerhalb Ihres virtuellen Netzwerks empfangen können. <p><p>Ihre Auswahl hat auch Einfluss auf die Methode, mit der Sie Eingaben und Ausgaben im Ausführungsverlauf Ihrer Logik-App anzeigen und darauf zugreifen können. Weitere Informationen finden Sie unter [ISE-Endpunktzugriff](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access). <p><p>**Wichtig**: Sie können den Zugriffsendpunkt nur während der Erstellung der ISE auswählen und diese Option später nicht mehr ändern. |
    | **Virtuelles Netzwerk** | Ja | <*Azure-virtual-network-name*> | Das virtuelle Azure-Netzwerk, in das Sie Ihre Umgebung einfügen möchten, damit Logik-Apps in dieser Umgebung auf Ihr virtuelles Netzwerk zugreifen können. Wenn Sie nicht über ein Netzwerk verfügen, [erstellen Sie zunächst ein virtuelles Azure-Netzwerk](../virtual-network/quick-create-portal.md). <p><p>**Wichtig**: Sie können diese Einfügung *nur* einmalig durchführen, wenn Sie Ihre ISE erstellen. |
-   | **Subnetze** | Ja | <*subnet-resource-list*> | Für eine ISE sind vier *leere* Subnetze zum Erstellen und Bereitstellen von Ressourcen in Ihrer Umgebung erforderlich. Um jedes Subnetz zu erstellen, [führen Sie die Schritte unter dieser Tabelle aus](#create-subnet). |
+   | **Subnetze** | Ja | <*subnet-resource-list*> | Für eine ISE werden vier *leere* Subnetze benötigt. Diese sind zum Erstellen und Bereitstellen von Ressourcen in Ihrer ISE erforderlich und werden von internen Logic Apps-Komponenten (etwa Connectors und Zwischenspeicherung zur Leistungsverbesserung) verwendet. <p>**Wichtig**: [Überprüfen Sie unbedingt die Subnetzanforderungen, bevor Sie mit diesen Schritten zum Erstellen Ihrer Subnetze fortfahren.](#create-subnet) |
    |||||
 
    <a name="create-subnet"></a>
 
-   **Erstellen eines Subnetzes**
+   **Erstellen von Subnetzen**
 
-   Für Ihre ISE sind vier *leere* Subnetze erforderlich, die an keinen Dienst delegiert wurden, um eine Ressource in Ihrer Umgebung zu erstellen und bereitzustellen. Jedes Subnetz unterstützt eine andere Logic Apps-Komponente, die in Ihrer ISE verwendet wird. Sie können diese Subnetzadressen *nicht mehr ändern*, nachdem Sie Ihre Umgebung erstellt haben. Jedes Subnetz muss folgende Anforderungen erfüllen:
+   Für Ihre ISE werden vier *leere* Subnetze benötigt. Diese sind zum Erstellen und Bereitstellen von Ressourcen in Ihrer ISE erforderlich und werden von internen Logic Apps-Komponenten (etwa Connectors und Zwischenspeicherung zur Leistungsverbesserung) verwendet. Sie können diese Subnetzadressen *nicht mehr ändern*, nachdem Sie Ihre Umgebung erstellt haben. Stellen Sie bei der Erstellung und Bereitstellung Ihrer ISE über das Azure-Portal sicher, dass Sie diese Subnetze nicht an Azure-Dienste delegieren. Wenn Sie die ISE jedoch über die REST-API, über Azure PowerShell oder eine Azure Resource Manager-Vorlage erstellen und bereitstellen, müssen Sie ein leeres Subnetz an `Microsoft.integrationServiceEnvironment` [delegieren](../virtual-network/manage-subnet-delegation.md). Weitere Informationen finden Sie unter [Hinzufügen oder Entfernen einer Subnetzdelegierung](../virtual-network/manage-subnet-delegation.md).
 
-   * Der Name muss mit einem alphabetischen Zeichen oder mit einem Unterstrich beginnen (keine Zahlen) und darf keines der folgenden Zeichen enthalten: `<`, `>`, `%`, `&`, `\\`, `?`, `/`.
+   Jedes Subnetz muss folgende Anforderungen erfüllen:
+
+   * Verwenden Sie einen Namen, der mit einem alphabetischen Zeichen oder mit einem Unterstrich beginnt (keine Zahlen) und keines der folgenden Zeichen enthält: `<`, `>`, `%`, `&`, `\\`, `?`, `/`.
 
    * Das Format [Classless Inter-Domain Routing (CIDR)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) und einen Class B-Adressraum
+   
+     > [!IMPORTANT]
+     >
+     > Die folgenden IP-Adressräume können von Azure Logic Apps nicht aufgelöst werden und dürfen daher nicht für das virtuelle Netzwerk oder für die Subnetze verwendet werden:<p>
+     > 
+     > * 0.0.0.0/8
+     > * 100.64.0.0/10
+     > * 127.0.0.0/8
+     > * 168.63.129.16/32
+     > * 169.254.169.254/32
 
    * Im Adressbereich wird `/27` verwenden, da jedes Subnetz 32 Adressen benötigt. `10.0.0.0/27` hat z. B. 32 Adressen, da 2<sup>(32 – 27)</sup> 2<sup>5</sup> oder 32 ist. Zusätzliche Adressen haben keine weiteren Vorteile. Weitere Informationen zum Berechnen der Adressen finden Sie unter [Übersicht für IPv4](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#IPv4_CIDR_blocks).
 

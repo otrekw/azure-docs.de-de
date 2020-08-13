@@ -19,6 +19,8 @@
       href: terminology.md
     - name: Rollen und Anforderungen
       href: concepts-roles-permissions.md
+    - name: Grundlegendes zu Preisen
+      href: concepts-pricing.md
 - name: Beispiele
   items:
     - name: Codebeispiele
@@ -29,12 +31,12 @@
   items:
     - name: Überwachen
       href: how-to-monitor.md
-    - name: Konfigurieren von Dataset-Mappings
-      href: how-to-configure-mapping.md
     - name: Problembehandlung
       href: data-share-troubleshoot.md
     - name: Hinzufügen von Datasets
       href: how-to-add-datasets.md
+    - name: Konfigurieren von Dataset-Mappings
+      href: how-to-configure-mapping.md
     - name: Hinzufügen von Empfängern
       href: how-to-add-recipients.md
     - name: Löschen einer Einladung

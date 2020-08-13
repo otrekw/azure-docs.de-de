@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: lcozzens
 ms.custom: mvc
-ms.openlocfilehash: 4da024eb4eb3747b8e0d6b291ca5b00df12aaeab
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 08a65ff8d276cd27c9f8fa07393600bc24e7b17f
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87367519"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500299"
 ---
 # <a name="azure-app-configuration-best-practices"></a>Bewährte Methoden für Azure App Configuration
 
@@ -86,6 +86,10 @@ Sie können Web-Apps oder Funktionen mit einer der folgenden Methoden Zugriff au
 ## <a name="importing-configuration-data-into-app-configuration"></a>Importieren von Konfigurationsdaten in App Configuration
 
 App Configuration bietet die Möglichkeit, Ihre Konfigurationseinstellungen aus Ihren aktuellen Konfigurationsdateien massenhaft zu [importieren](https://aka.ms/azconfig-importexport1), entweder über das Azure-Portal oder mithilfe der CLI. Sie können auch dieselben Optionen verwenden, um Werte aus App Configuration zu exportieren, z. B. zwischen verwandten Stores. Wenn Sie eine fortlaufende Synchronisierung mit Ihrem GitHub-Repository einrichten möchten, können Sie unsere [GitHub-Aktion](https://aka.ms/azconfig-gha2) verwenden, damit Sie Ihre vorhandenen Quellcodeverwaltungs-Verfahren weiterhin nutzen können und gleichzeitig die Vorteile von App Configuration genießen.
+
+## <a name="multi-region-deployment-in-app-configuration"></a>Bereitstellung in mehreren Regionen in App Configuration
+
+App Configuration ist ein regionaler Dienst. Bei Anwendungen mit unterschiedlichen Konfigurationen pro Region kann das Speichern dieser Konfigurationen in einer Instanz zu einem Single Point of Failure führen. Die Bereitstellung einer App Configuration-Instanz pro Region über mehrere Regionen hinweg ist unter Umständen die bessere Option. Dies kann bei der regionalen Notfallwiederherstellung, zur Sicherstellung der Leistung und bei der Erstellung von Sicherheitssilos hilfreich sein. Durch die Konfiguration nach Region wird auch die Wartezeit verkürzt, und es werden getrennte Drosselungskontingente verwendet, da die Drosselung pro Instanz erfolgt. Zur Anwendung von Notfallwiederherstellungsmaßnahmen können Sie [mehrere Konfigurationsspeicher](./concept-disaster-recovery.md) verwenden. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 4ad0cdedfa28e5b46f77d5e87f5bd48e25f11cc4
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: f1517fd577c5e6bd7341e5dde0204456524ba976
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87292397"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87545159"
 ---
 ## <a name="understand-vm-reboots---maintenance-vs-downtime"></a>Grundlegendes zu VM-Neustarts – Gegenüberstellung von Wartung und Ausfallzeit
 Drei Szenarien können zu einer Beeinträchtigung virtueller Computer in Azure führen: eine ungeplante Hardwarewartung, eine unerwartete Ausfallzeit und eine geplante Wartung.
@@ -53,7 +53,9 @@ Informieren Sie sich über das Bereitstellen einer [Windows](../articles/virtual
 Verfügbarkeitsgruppen sind eine weitere Datencenterkonfiguration, um VM-Redundanz und -Verfügbarkeit bereitzustellen. Durch diese Konfiguration in einem Datencenter wird sichergestellt, dass während eines geplanten oder ungeplanten Wartungsereignisses mindestens ein virtueller Computer verfügbar ist und die von der Azure-SLA zugesicherte Verfügbarkeit von 99,95 Prozent eingehalten wird. Weitere Informationen finden Sie unter [SLA für Virtual Machines](https://azure.microsoft.com/support/legal/sla/virtual-machines/).
 
 > [!IMPORTANT]
-> Ein virtueller Computer mit einer einzelnen Instanz in einer selbst festgelegten Verfügbarkeit sollte für alle Datenträger für Betriebssysteme und Daten entweder SSD Premium oder Ultra Disk verwenden, um sich für die SLA für die Konnektivität von virtuellen Computern von mindestens 99,9 % zu qualifizieren.
+> Ein virtueller Computer mit einer einzelnen Instanz in einer selbst festgelegten Verfügbarkeit sollte für alle Datenträger für Betriebssysteme und Daten entweder SSD Premium oder Ultra Disk verwenden, um sich für die SLA für die Konnektivität von virtuellen Computern von mindestens 99,9 % zu qualifizieren. 
+> 
+> Für einen virtuellen Einzelinstanzcomputer mit SSD Standard gilt eine SLA von mindestens 99,5 Prozent, für einen virtuellen Einzelinstanzcomputer mit HDD Standard hingegen eine SLA von mindestens 95 Prozent.  Siehe [SLA für Virtual Machines](https://azure.microsoft.com/support/legal/sla/virtual-machines/)
 
 Jeder virtuelle Computer in der Verfügbarkeitsgruppe wird einer **Updatedomäne** (UD) und einer **Fehlerdomäne** (FD) der zugrunde liegenden Azure-Plattform zugewiesen. Für eine bestimmte Verfügbarkeitsgruppe werden fünf nicht von Benutzern konfigurierbare Updatedomänen standardmäßig zugewiesen (Resource Manager-Bereitstellungen können dann vergrößert werden, um bis zu 20 Updatedomänen bereitzustellen), um die Gruppen mit virtuellen Computern und die zugehörigen physischen Hardwareelemente zu kennzeichnen, die gleichzeitig neu gestartet werden können. Wenn innerhalb einer Verfügbarkeitsgruppe mehr als fünf virtuelle Computer konfiguriert sind, wird der sechste virtuelle Computer in derselben Updatedomäne wie der erste virtuelle Computer gespeichert, der siebte in derselben Updatedomäne wie der zweite virtuelle Computer usw. Während einer geplanten Wartung werden die Updatedomänen unter Umständen nicht der Reihe nach neu gestartet, sondern es wird jeweils nur eine Updatedomäne neu gestartet. Bei einer neu gestarteten Updatedomäne wird 30 Minuten gewartet, bevor die Wartung für eine andere Updatedomäne initiiert wird.
 

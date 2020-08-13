@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 34d2d96e28f90249ad25788f6994dac63f83b1f6
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 6a686f6915e332893f619e66944591999063a07c
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86261480"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87288168"
 ---
 # <a name="add-a-bar-chart-layer"></a>Hinzufügen einer Balkendiagrammebene
 

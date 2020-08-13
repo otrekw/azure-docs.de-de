@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.date: 06/16/2020
 ms.author: jenhayes
 ms.custom: include file
-ms.openlocfilehash: 1b21141a4b3f9ae92cdcf1d5a93a457012cb136a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3e4bca058f554f60dfa5c237633d1fecf06dfea7
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85506595"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87507527"
 ---
 ### <a name="general-requirements"></a>Allgemeine Anforderungen
 
@@ -89,7 +89,7 @@ Konfigurieren Sie eingehenden Datenverkehr am Port 3389 (Windows) bzw. am Port 2
 
 `/subscriptions/{subscription}/resourceGroups/{group}/providers/Microsoft.ClassicNetwork /virtualNetworks/{network}/subnets/{subnet}`
 
-**Berechtigungen:** Der Dienstprinzipal `Microsoft Azure Batch` muss für das angegebene VNET über die RBAC-Rolle `Classic Virtual Machine Contributor` verfügen.
+**Berechtigungen:** Der Dienstprinzipal `Microsoft Azure Batch` muss für das angegebene VNET über die Azure-Rolle `Classic Virtual Machine Contributor` verfügen.
 
 #### <a name="network-security-groups"></a>Netzwerksicherheitsgruppen
 

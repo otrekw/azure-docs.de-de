@@ -4,6 +4,8 @@
   items:
     - name: Informationen zur Azure-API für FHIR
       href: overview.md
+    - name: Informationen zu Azure IoT-Konnektor für FHIR (Vorschauversion)
+      href: overview.md#azure-iot-connector-for-fhir-preview
 - name: Schnellstarts
   expanded: true
   items:
@@ -114,5 +116,5 @@
       href: partner-ecosystem.md
 - name: Verweis
   items:
-    - name: Azure-Befehlszeilenschnittstelle
+    - name: Azure CLI
       href: /cli/azure/ext/healthcareapis/healthcareapis

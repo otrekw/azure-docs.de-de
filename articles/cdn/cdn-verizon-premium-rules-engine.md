@@ -7,12 +7,12 @@ ms.service: azure-cdn
 ms.topic: how-to
 ms.date: 05/31/2019
 ms.author: allensu
-ms.openlocfilehash: 3c61407b2a0c9d0423d1f856101400771e27d846
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a49912bc2275e478d657f06587c4ddc830210d3a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84887422"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87040209"
 ---
 # <a name="override-http-behavior-using-the-azure-cdn-from-verizon-premium-rules-engine"></a>Überschreiben des HTTP-Verhaltens mithilfe der Regel-Engine für Azure CDN Premium von Verizon
 
@@ -55,7 +55,7 @@ Um auf die Regel-Engine zuzugreifen, müssen Sie für den Zugriff auf die Azure 
     ![Optionen für neue CDN-Regeln](./media/cdn-rules-engine/cdn-new-rule.png)
    
    > [!IMPORTANT]
-   > Die Reihenfolge, in der mehrere Regeln aufgelistet sind, beeinflusst deren Verarbeitung. Eine Regel kann die von einer vorherigen Regel angegebenen Aktionen überschreiben.
+   > Die Reihenfolge, in der mehrere Regeln aufgelistet sind, beeinflusst deren Verarbeitung. Eine Regel kann die von einer vorherigen Regel angegebenen Aktionen überschreiben. Besitzen Sie beispielsweise eine Regel, die den Zugriff auf eine Ressource basierend auf einer Anforderungseigenschaft zulässt, sowie eine Regel, die den Zugriff für alle Anforderungen verweigert, setzt die zweite Regel die erste außer Kraft. Regeln setzen frühere Regeln nur dann außer Kraft, wenn sie mit denselben Eigenschaften interagieren.
    >
 
 3. Geben Sie einen Namen in das Textfeld **Name/Beschreibung** ein.

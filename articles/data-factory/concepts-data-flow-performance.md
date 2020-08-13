@@ -6,171 +6,277 @@ ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
-ms.date: 07/06/2020
-ms.openlocfilehash: 9f420b37bd44a46d4149e89cf5876d8e8b712581
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/27/2020
+ms.openlocfilehash: 55483b93b770687703b381366d48edbc7d48f26e
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86114379"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475321"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Anleitung zur Leistung und Optimierung der Mapping Data Flow-Funktion
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Die Mapping Data Flow-Funktion in Azure Data Factory bietet eine codefreie Schnittstelle zum Entwerfen, Bereitstellen und Orchestrieren von Datentransformationen in beliebigen Größenordnungen. Wenn Sie mit der Mapping Data Flow-Funktion nicht vertraut sind, finden Sie weitere Informationen in der [Übersicht über Mapping Data Flow](concepts-data-flow-overview.md).
+Die Funktion „Zuordnungsdatenfluss“ (Mapping Data Flow) in Azure Data Factory verfügt über eine codefreie Benutzeroberfläche zum Entwerfen und Ausführen von Datentransformationen im großen Stil. Wenn Sie mit der Mapping Data Flow-Funktion nicht vertraut sind, finden Sie weitere Informationen in der [Übersicht über Mapping Data Flow](concepts-data-flow-overview.md). In diesem Artikel werden verschiedene Möglichkeiten beschrieben, wie Sie Ihre Datenflüsse so anpassen und optimieren können, dass sie Ihre Leistungsbenchmarks erreichen.
 
-Stellen Sie beim Entwerfen und Testen von Datenflüssen auf der Benutzeroberfläche von ADF sicher, dass der Debugmodus aktiviert ist, damit Sie Ihre Datenflüsse in Echtzeit ausführen können, ohne die Aufwärmphase eines Clusters abwarten zu müssen. Weitere Informationen finden Sie unter [Debugmodus](concepts-data-flow-debug-mode.md).
+Sehen Sie sich das folgende Video an, das einige Beispiele für die erforderliche Dauer beim Transformieren von Daten mit Datenflüssen enthält:
 
-Dieses Video zeigt einige Beispielzeiten für das Transformieren von Daten mit Datenflüssen:
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4rNxM]
+
+## <a name="testing-data-flow-logic"></a>Testen der Datenflusslogik
+
+Beim Entwerfen und Testen von Datenflüssen über die ADF-Benutzeroberfläche können Sie im Debugmodus einen interaktiven Test für einen Spark-Livecluster durchführen. Dies ermöglicht Ihnen das Anzeigen einer Vorschau für die Daten und das Ausführen Ihrer Datenflüsse, ohne auf das „Aufwärmen“ eines Clusters warten zu müssen. Weitere Informationen finden Sie unter [Debugmodus](concepts-data-flow-debug-mode.md).
 
 ## <a name="monitoring-data-flow-performance"></a>Überwachen der Datenflussleistung
 
-Beim Entwerfen einer Mapping Data Flow-Funktion können Sie Komponententests für die einzelnen Transformationen durchführen, indem Sie im Konfigurationsbereich auf die Registerkarte für die Datenvorschau klicken. Nachdem Sie die Logik überprüft haben, führen Sie einen End-to-End-Test des Datenflusses als Aktivität in einer Pipeline durch. Fügen Sie eine Aktivität zum Ausführen der Datenflussaktivität (Execute Data Flow) aus, und verwenden Sie die Schaltfläche „Debug“ zum Testen der Leistung des Datenflusses. Um den Ausführungsplan und das Leistungsprofil Ihres Datenflusses zu öffnen, klicken Sie auf der Registerkarte „Ausgabe“ der Pipeline unter „Aktionen“ auf das Brillensymbol.
+Nachdem Sie Ihre Transformationslogik im Debugmodus überprüft haben, sollten Sie Ihren Datenfluss per End-to-End-Vorgang als Aktivität in einer Pipeline ausführen. Datenflüsse werden in einer Pipeline mit der [Aktivität zum Ausführen eines Datenflusses](control-flow-execute-data-flow-activity.md) operationalisiert. Die Datenflussaktivität verfügt im Gegensatz zu anderen Azure Data Factory-Aktivitäten über eine einzigartige Überwachungsoberfläche, auf der ein ausführlicher Ausführungsplan und das Leistungsprofil der Transformationslogik angezeigt werden. Klicken Sie in der Ausgabe der Aktivitätsausführung einer Pipeline auf das Brillensymbol, um für den Datenfluss ausführliche Überwachungsinformationen anzuzeigen. Weitere Informationen finden Sie unter [Überwachen von Datenflüssen](concepts-data-flow-monitoring.md).
 
-![Datenflussüberwachung](media/data-flow/mon002.png "Datenflussüberwachung 2")
+![Datenflussüberwachung](media/data-flow/monitoring-details.png "Datenflussüberwachung 2")
 
- Anhand dieser Informationen können Sie die Leistung des Datenflusses für Datenquellen verschiedener Größen schätzen. Weitere Informationen finden Sie unter [Überwachen von Datenflüssen](concepts-data-flow-monitoring.md).
+Beim Überwachen der Leistung von Datenflüssen gibt es vier mögliche Engpässe, auf die Sie achten sollten:
 
-![Datenflussüberwachung](media/data-flow/mon003.png "Datenflussüberwachung 3")
+* Startzeit des Clusters
+* Lesen von einer Quelle
+* Transformationszeit
+* Schreiben in eine Senke 
 
- Bei Debugausführungen der Pipeline muss ungefähr eine Minute Einrichtungszeit für den Cluster in die Berechnung der Gesamtleistung für einen „warmen“ Cluster eingerechnet werden. Wenn Sie die standardmäßige Azure Integration Runtime initialisieren, kann die Einrichtungszeit etwa 4 Minuten betragen.
+![Datenflussüberwachung](media/data-flow/monitoring-performance.png "Datenflussüberwachung 3")
 
-## <a name="increasing-compute-size-in-azure-integration-runtime"></a>Vergrößern der Computegröße in Azure Integration Runtime
+Die Startzeit des Clusters ist die benötigte Dauer für den Start eines Apache Spark-Clusters. Dieser Wert befindet sich oben rechts auf dem Überwachungsbildschirm. Datenflüsse basieren auf einem Just-In-Time-Modell, bei dem für jeden Auftrag ein isolierter Cluster verwendet wird. Diese Startzeit hat normalerweise eine Dauer von drei bis fünf Minuten. Für sequenzielle Aufträge kann dies reduziert werden, indem ein Wert für die Gültigkeitsdauer aktiviert wird. Weitere Informationen finden Sie unter [Optimieren der Azure Integration Runtime](#ir).
 
-Durch eine Integration Runtime mit mehr Kernen wird die Anzahl der Knoten in den Spark-Computeumgebungen erhöht und eine höhere Verarbeitungsleistung für das Lesen, Schreiben und Transformieren Ihrer Daten geboten. ADF-Datenflüsse nutzen Spark für die Compute-Engine. Die Spark-Umgebung funktioniert sehr gut für speicheroptimierte Ressourcen.
+Für Datenflüsse wird ein Spark-Optimierer genutzt, mit dem Ihre Geschäftslogik in „Stufen“ neu sortiert und ausgeführt wird, damit die Dauer möglichst kurz ist. Für jede Senke, in die Ihr Datenfluss geschrieben wird, sind in der Ausgabe der Überwachung die Dauer der einzelnen Transformationsstufen sowie die Zeiten enthalten, die zum Schreiben der Daten in die Senke benötigt werden. Anhand der längsten Dauer können Sie wahrscheinlich den Engpass für Ihren Datenfluss ermitteln. Falls die Transformationsstufe mit der längsten Dauer eine Quelle enthält, sollten Sie überlegen, ob Sie Ihre Lesedauer weiter optimieren können. Wenn eine Transformation lange dauert, müssen Sie ggf. neu partitionieren oder die Größe für Ihre Integration Runtime erhöhen. Bei einer langen Dauer der Senkenverarbeitung müssen Sie unter Umständen Ihre Datenbank hochskalieren oder sich vergewissern, dass die Ausgabe nicht nur in eine einzelne Datei erfolgt.
 
-Wir empfehlen die Verwendung von **Speicheroptimiert** für die meisten Workloads in der Produktion. Sie können mehr Daten im Arbeitsspeicher speichern und Fehler aufgrund nicht genügenden Arbeitsspeichers minimieren. Bei der arbeitsspeicheroptimierten Variante fallen zwar höhere Kosten pro Kern an als bei der computeoptimierten Variante, dafür ist jedoch wahrscheinlich die Transformationsgeschwindigkeit und die Anzahl erfolgreicher Pipelines höher. Wenn beim Ausführen der Datenflüsse Fehler aufgrund von nicht genügend Arbeitsspeicher auftreten, wechseln Sie zu einer arbeitsspeicheroptimierten Azure IR-Konfiguration.
+Nachdem Sie den Engpass für Ihren Datenfluss identifiziert haben, sollten Sie die unten angegebenen Strategien nutzen, um die Leistung zu verbessern.
 
-**Für Compute optimiert** kann für Debuggen und Datenvorschau einer begrenzten Anzahl von Datenzeilen ausreichen. „Für Compute optimiert“ wird für die Workloads in der Produktion wahrscheinlich nicht so gut funktionieren.
+## <a name="optimize-tab"></a>Registerkarte „Optimieren“
 
-![Neue Integration Runtime](media/data-flow/ir-new.png "Neue Integration Runtime")
+Die Registerkarte **Optimieren** enthält Einstellungen zum Konfigurieren des Partitionsschemas für den Spark-Cluster. Diese Registerkarte ist für jede Transformation des Datenflusses vorhanden und gibt an, ob Sie die Daten neu partitionieren sollten, **nachdem** die Transformation abgeschlossen ist. Das Anpassen der Partitionierung bietet Kontrolle über die Verteilung Ihrer Daten auf Computeknoten und Datenstandortoptimierungen, die sowohl positive als auch negative Auswirkungen auf die gesamte Datenflussleistung haben können.
+
+![Optimieren](media/data-flow/optimize.png "Optimieren")
+
+Standardmäßig ist die Option *Aktuelle Partitionierung verwenden* ausgewählt, bei der Azure Data Factory angewiesen wird, die aktuelle Ausgabepartitionierung der Transformation beizubehalten. Da die erneute Partitionierung einige Zeit in Anspruch nimmt, ist die Verwendung der Option *Aktuelle Partitionierung verwenden* in den meisten Szenarien zu empfehlen. Szenarien, in denen Sie Ihre Daten ggf. neu partitionieren sollten, sind beispielsweise Aggregations- und Joinvorgänge, bei denen es für Ihre Daten zu einer erheblichen Datenschiefe kommt, oder bei Verwendung einer Quellpartitionierung auf einer SQL-Datenbank-Instanz.
+
+Wenn Sie die Partitionierung für eine Transformation ändern möchten, wählen Sie die Registerkarte **Optimieren** und das Optionsfeld **Partitionierung festlegen** aus. Ihnen werden mehrere Optionen für die Partitionierung angezeigt. Die beste Methode der Partitionierung richtet sich jeweils nach den Datenmengen, Kandidatenschlüsseln, NULL-Werten und der Kardinalität. 
+
+> [!IMPORTANT]
+> Bei nur einer Partition werden darin alle verteilten Daten kombiniert. Hierbei handelt es sich um einen sehr langsamen Vorgang, bei dem auch alle nachgeschalteten Transformationen und Schreibvorgänge erheblich beeinträchtigt werden. Für Azure Data Factory wird von dieser Option dringend abgeraten. Ihre Verwendung wird nur empfohlen, wenn es einen triftigen geschäftlichen Grund gibt.
+
+Die folgenden Partitionierungsoptionen sind in jeder Transformation verfügbar:
+
+### <a name="round-robin"></a>Roundrobin 
+
+Per Roundrobin werden Daten gleichmäßig auf die Partitionen verteilt. Verwenden Sie die Option „Roundrobin“, wenn Sie nicht über gute Kandidaten verfügen, um eine solide, intelligente Partitionierungsstrategie zu implementieren. Sie können die Anzahl der physischen Partitionen festlegen.
+
+### <a name="hash"></a>Hash
+
+Azure Data Factory erzeugt einen Hash von Spalten, um einheitliche Partitionen zu erstellen, sodass Zeilen mit ähnlichen Werten in die gleiche Partition fallen. Führen Sie bei Verwendung der Option „Hash“ einen Test auf mögliche Partitionsungleichmäßigkeiten durch. Sie können die Anzahl der physischen Partitionen festlegen.
+
+### <a name="dynamic-range"></a>Dynamischer Bereich
+
+Bei dieser Option werden die dynamischen Spark-Bereiche basierend auf den von Ihnen angegebenen Spalten oder Ausdrücken verwendet. Sie können die Anzahl der physischen Partitionen festlegen. 
+
+### <a name="fixed-range"></a>Fester Bereich
+
+Erstellen Sie einen Ausdruck, der einen festen Bereich für Werte in Ihren partitionierten Datenspalten bereitstellt. Sie sollten über fundiertes Wissen über Ihre Daten verfügen, bevor Sie diese Option verwenden, um Partitionsungleichmäßigkeiten zu vermeiden. Die von Ihnen für den Ausdruck eingegebenen Werte werden als Teil einer Partitionsfunktion verwendet. Sie können die Anzahl der physischen Partitionen festlegen.
+
+### <a name="key"></a>Schlüssel
+
+Wenn Sie gut mit der Kardinalität Ihrer Daten vertraut sind, kann die Schlüsselpartitionierung eine gute Strategie darstellen. Die Schlüsselpartitionierung erstellt Partitionen für jeden eindeutigen Wert in der Spalte. Sie können die Anzahl der Partitionen nicht festlegen, weil die Anzahl auf den eindeutigen Werten in den Daten basiert.
+
+> [!TIP]
+> Beim manuellen Festlegen des Partitionierungsschemas werden die Daten neu angeordnet, sodass die Vorteile des Spark-Optimierers ggf. nicht voll zur Geltung kommen. Eine bewährte Methode besteht darin, die Partitionierung nicht manuell festzulegen, sofern dies nicht unbedingt erforderlich ist.
+
+## <a name="optimizing-the-azure-integration-runtime"></a><a name="ir"></a> Optimieren der Azure Integration Runtime
+
+Datenflüsse werden in Spark-Clustern ausgeführt, die zur Laufzeit gestartet werden. Die Konfiguration für den verwendeten Cluster wird in der Integration Runtime (IR) der Aktivität definiert. Beim Definieren Ihrer Integration Runtime müssen drei Leistungsaspekte berücksichtigt werden: Clustertyp, Clustergröße und Gültigkeitsdauer.
 
 Weitere Informationen zum Erstellen einer Integration Runtime finden Sie unter [Integrationslaufzeit in Azure Data Factory](concepts-integration-runtime.md).
 
-### <a name="increase-the-size-of-your-debug-cluster"></a>Erhöhen der Größe Ihres Debugclusters
+### <a name="cluster-type"></a>Clustertyp
 
-Standardmäßig wird beim Aktivieren des Debugmodus die standardmäßige Azure Integration Runtime verwendet, die automatisch für jede Data Factory erstellt wird. Diese standardmäßige Azure Integration Runtime ist auf acht Kerne festgelegt, d.h. vier für einen Treiberknoten und vier für einen Workerknoten, wobei die Eigenschaften für „Compute allgemein“ verwendet werden. Beim Testen mit größeren Datenmengen können Sie Ihren Debugcluster vergrößern, indem Sie eine Azure Integration Runtime mit umfangreicheren Konfigurationen erstellen und diese neue Azure Integration Runtime auswählen, wenn Sie das Debuggen aktivieren. Dadurch wird ADF angewiesen, diese Azure Integration Runtime für die Datenvorschau und das Debuggen der Pipeline mit Datenflüssen zu verwenden.
+In Bezug auf den Typ des gestarteten Spark-Clusters gibt es drei verfügbare Optionen: „Universell“, „Arbeitsspeicheroptimiert“ und „Für Compute optimiert“.
 
-### <a name="decrease-cluster-compute-start-up-time-with-ttl"></a>Verkürzen der Computestartzeit für Cluster mit TTL
+Standardmäßig werden Cluster vom Typ **Universell** verwendet. Sie sind für die meisten Datenflussworkloads am besten geeignet. Bei dieser Option erhalten Sie normalerweise die beste Mischung aus Leistung und Kostenaufwand.
 
-In der Azure IR gibt es unter den Datenflusseigenschaften eine Eigenschaft, mit der Sie einen Pool aus Clustercomputeressourcen für Ihre Factory einrichten können. Mit diesem Pool können Sie Datenflussaktivitäten sequenziell zur Ausführung übermitteln. Wenn der Pool eingerichtet ist, benötigt der bedarfsgesteuerte Spark-Cluster 1-2 Minuten für jeden nachfolgenden Auftrag. Die anfängliche Einrichtung des Ressourcenpools dauert etwa 4 Minuten. Geben Sie in der TTL-Einstellung (Time-To-Live) an, wie lange der Ressourcenpool beibehalten werden soll.
+Falls Ihr Datenfluss über viele Joins und Suchvorgänge verfügt, sollten Sie einen Cluster vom Typ **Arbeitsspeicheroptimiert** verwenden. Bei Clustern vom Typ „Arbeitsspeicheroptimiert“ können mehr Daten im Arbeitsspeicher gespeichert werden, und die Menge an Fehlern der Art „Nicht genügend Arbeitsspeicher“ wird stark reduziert. Die Arbeitsspeicheroptimierung ist mit dem höchsten Preis pro Kern verbunden, aber sie führt auch zu erfolgreicheren Pipelines. Wenn beim Ausführen der Datenflüsse Fehler aufgrund von unzureichendem Arbeitsspeicher auftreten, sollten Sie zu einer arbeitsspeicheroptimierten Azure IR-Konfiguration wechseln. 
 
-## <a name="optimizing-for-azure-sql-database-and-azure-sql-data-warehouse-synapse"></a>Optimierung für Azure SQL-Datenbank und Azure SQL Data Warehouse – Synapse
+Der Typ **Für Compute optimiert** ist für ETL-Workflows nicht ideal und wird vom Azure Data Factory-Team für die meisten Produktionsworkloads nicht empfohlen. Für einfachere Datentransformationen, die nicht arbeitsspeicherintensiv sind, z. B. Filtern von Daten oder Hinzufügen von abgeleiteten Spalten, können Cluster vom Typ „Für Compute optimiert“ zu einem günstigeren Preis pro Kern verwendet werden.
 
-### <a name="partitioning-on-source"></a>Partitionierung für die Quelle
+### <a name="cluster-size"></a>Clustergröße
 
-1. Wechseln Sie zur Registerkarte **Optimieren**, und wählen Sie **Partitionierung festlegen** aus.
-1. Wählen Sie **Quelle** aus.
-1. Legen Sie unter **Anzahl von Partitionen** die maximale Anzahl von Verbindungen mit Ihrer Azure SQL-Datenbank-Instanz fest. Sie können eine höhere Einstellung testen, um parallele Verbindungen mit Ihrer Datenbank nutzen zu können. In einigen Fällen erreichen Sie jedoch mit einer begrenzten Anzahl von Verbindungen eine höhere Leistung.
-1. Wählen Sie aus, ob nach einer bestimmten Tabellenspalte oder einer Abfrage partitioniert werden soll.
-1. Wenn Sie **Spalte** ausgewählt haben, wählen Sie noch die Partitionsspalte aus.
-1. Wenn Sie **Abfrage** ausgewählt haben, geben Sie eine Abfrage ein, die dem Partitionierungsschema Ihrer Datenbanktabelle entspricht. Diese Abfrage ermöglicht der Quelldatenbank-Engine die Nutzung der Partitionsbeseitigung. Ihre Quelldatenbanktabellen müssen nicht partitioniert werden. Ist Ihre Quelle nicht bereits partitioniert, wird von ADF die Datenpartitionierung in der Spark-Transformationsumgebung weiterhin basierend auf dem in der Quelltransformation ausgewählten Schlüssel verwendet.
+Bei Datenflüssen wird die Datenverarbeitung auf unterschiedliche Knoten eines Spark-Clusters verteilt, damit Vorgänge parallel durchgeführt werden können. Bei Verwendung eines Spark-Clusters mit mehr Kernen erhöht sich die Anzahl von Knoten in der Compute-Umgebung. Eine größere Anzahl von Knoten führt zu einer Erhöhung der Verarbeitungsleistung des Datenflusses. Die Erhöhung der Clustergröße ist häufig eine einfache Möglichkeit, um die Verarbeitungszeit zu verkürzen.
 
-![Quellteil](media/data-flow/sourcepart3.png "Quellteil")
+Die Standardclustergröße beträgt vier Treiberknoten und vier Workerknoten.  Je mehr Daten Sie verarbeiten, desto größere Cluster sollten Sie verwenden. Unten sind die möglichen Optionen für die Größenanpassung angegeben:
+
+| Workerkerne | Treiberkerne | Total cores (Kerne gesamt) | Notizen |
+| ------------ | ------------ | ----------- | ----- |
+| 4 | 4 | 8 | Nicht verfügbar für die Option „Für Compute optimiert“ |
+| 8 | 8 | 16 | |
+| 16 | 16 | 32 | |
+| 32 | 16 | 48 | |
+| 64 | 16 | 80 | |
+| 128 | 16 | 144 | |
+| 256 | 16 | 272 | |
+
+Die Preise von Datenflüssen werden nach „Stunden der virtuellen Kerne“ berechnet. Dies bedeutet, dass sowohl die Clustergröße als auch die Ausführungszeit einfließen. Beim Hochskalieren erhöhen sich Ihre Clusterkosten pro Minute, aber die Gesamtdauer verringert sich.
+
+> [!TIP]
+> Für die Auswirkung der Größe eines Clusters auf die Leistung eines Datenflusses gibt es eine Obergrenze. Je nach Umfang Ihrer Daten gibt es einen bestimmten Punkt, an dem die Erhöhung der Größe eines Clusters nicht mehr zu einer Verbesserung der Leistung führt. Wenn Sie beispielsweise über mehr Knoten als Partitionen mit Daten verfügen, ist das Hinzufügen weiterer Knoten nicht hilfreich. Eine bewährte Methode besteht darin, klein anzufangen und dann hochzuskalieren, um Ihre Leistungsanforderungen zu erfüllen. 
+
+### <a name="time-to-live"></a>Gültigkeitsdauer
+
+Standardmäßig startet jede Datenflussaktivität basierend auf der IR-Konfiguration einen neuen Cluster. Das Starten des Clusters dauert einige Minuten, und die Datenverarbeitung kann erst gestartet werden, nachdem dieser Vorgang abgeschlossen ist. Wenn Ihre Pipelines mehrere **sequenzielle** Datenflüsse enthalten, können Sie einen Wert für die Gültigkeitsdauer aktivieren. Bei Angabe eines Werts für die Gültigkeitsdauer bleibt ein Cluster nach Abschluss der Ausführung noch eine bestimmte Zeit aktiv. Falls die IR während der Gültigkeitsdauer von einem neuen Auftrag genutzt wird, wird der vorhandene Cluster wiederverwendet, und die Startzeit beträgt nicht mehrere Minuten, sondern nur wenige Sekunden. Nachdem der zweite Auftrag abgeschlossen ist, bleibt der Cluster erneut so lange aktiv, wie dies durch die Gültigkeitsdauer vorgegeben ist.
+
+In einem Cluster kann jeweils nur ein Auftrag ausgeführt werden. Wenn ein Cluster verfügbar ist, aber zwei Datenflüsse gestartet werden, wird er nur für einen davon verwendet. Für den zweiten Auftrag wird ein eigener isolierter Cluster gestartet.
+
+Falls die meisten Datenflüsse parallel ausgeführt werden, ist die Aktivierung der Gültigkeitsdauer nicht zu empfehlen. 
 
 > [!NOTE]
-> Ein guter Anhaltspunkt für die Auswahl der Anzahl der Partitionen für Ihre Quelle basiert auf der Anzahl der Kerne, die Sie für Ihre Azure Integration Runtime festgelegt haben, multipliziert mit fünf. Wenn Sie beispielsweise eine Reihe von Dateien in Ihren ADLS-Ordnern transformieren und eine Azure IR mit 32 Kernen verwenden möchten, ist die Zielanzahl der Partitionen 32 x 5 = 160.
+> Die Gültigkeitsdauer ist nicht verfügbar, wenn Sie die Integration Runtime mit automatischer Auflösung verwenden.
 
-### <a name="source-batch-size-input-and-isolation-level"></a>Batchgröße, Eingabe und Isolationsstufe der Quelle
+## <a name="optimizing-sources"></a>Optimieren von Quellen
 
-Die folgenden Einstellungen unter **Quelloptionen** in der Quelltransformation können sich auf die Leistung auswirken:
+Für jede Quelle – mit Ausnahme von Azure SQL-Datenbank – lautet die Empfehlung, die Option **Aktuelle Partitionierung verwenden** ausgewählt zu lassen. Beim Lesen von allen anderen Quellsystemen werden Daten von Datenflüssen je nach Größe automatisch gleichmäßig partitioniert. Für ca. 128 MB an Daten wird jeweils eine neue Partition erstellt. Wenn die Datengröße zunimmt, steigt die Anzahl von Partitionen.
 
-* Durch die Batchgröße wird ADF angewiesen, Daten im Spark-Speicher in Gruppen statt zeilenweise zu speichern. Die Batchgröße ist eine optionale Einstellung. Sie könnte dazu führen, dass nicht genügend Ressourcen auf den Computeknoten vorhanden sind, wenn diese nicht ordnungsgemäß dimensioniert sind. Wenn diese Eigenschaft nicht festgelegt wird, werden Batchstandardwerte für die Spark-Zwischenspeicherung verwendet.
-* Durch das Festlegen einer Abfrage können Sie Zeilen an der Quelle filtern, bevor sie im Datenfluss zur Verarbeitung eintreffen. Dadurch kann die anfängliche Datenerfassung beschleunigt werden. Wenn Sie eine Abfrage verwenden, können Sie optionale Abfragehinweise für Ihre Azure SQL-Datenbank-Instanz hinzufügen, z.B. READ UNCOMMITTED.
-* READ UNCOMMITTED bietet schnellere Abfrageergebnisse zur Quelltransformation.
+Alle benutzerdefinierten Partitionierungen werden durchgeführt, *nachdem* die Daten von Spark eingelesen wurden. Dies wirkt sich negativ auf die Leistung Ihres Datenflusses aus. Dies ist nicht zu empfehlen, da die Daten beim Lesen gleichmäßig partitioniert sind. 
 
-![Quelle](media/data-flow/source4.png "`Source`")
+> [!NOTE]
+> Die Lesegeschwindigkeiten können aufgrund des Durchsatzes Ihres Quellsystems begrenzt sein.
 
-### <a name="sink-batch-size"></a>Batchgröße für die Senke
+### <a name="azure-sql-database-sources"></a>Azure SQL-Datenbank-Quellen
 
-Um die zeilenweise Verarbeitung Ihrer Datenflüsse zu vermeiden, legen Sie die **Batchgröße** auf der Registerkarte „Einstellungen“ für die Azure SQL-Datenbank- und Azure SQL Data Warehouse-Senke fest. Ist die Batchgröße festgelegt, verarbeitet ADF Schreibvorgänge in der Datenbank in Batches basierend auf der angegebenen Größe. Wenn diese Eigenschaft nicht festgelegt wird, werden Batchstandardwerte für die Spark-Zwischenspeicherung verwendet.
+Azure SQL-Datenbank verfügt über eine eindeutige Partitionierungsoption, die die Bezeichnung „Quellpartitionierung“ hat. Mit dem Aktivieren der Quellpartitionierung können Sie Ihre Lesedauern für Azure SQL-Datenbank verbessern, indem Sie auf dem Quellsystem parallele Verbindungen aktivieren. Geben Sie die Anzahl von Partitionen und die Partitionierung Ihrer Daten an. Verwenden Sie eine Partitionsspalte mit hoher Kardinalität. Sie können auch eine Abfrage eingeben, die zum Partitionierungsschema Ihrer Quelltabelle passt.
 
-![Senke](media/data-flow/sink4.png "Senke")
+> [!TIP]
+> Bei der Quellpartitionierung ist der E/A-Vorgang von SQL Server der Engpass. Das Hinzufügen von zu vielen Partitionen kann dazu führen, dass die Quelldatenbank vollständig ausgelastet ist. Im Allgemeinen sind bei Verwendung dieser Option vier oder fünf Partitionen ideal.
 
-### <a name="partitioning-on-sink"></a>Partitionierung für die Senke
+![Quellpartitionierung](media/data-flow/sourcepart3.png "Quellpartitionierung")
 
-Auch wenn die Daten in den Zieltabellen nicht partitioniert sind, wird empfohlen, die Daten in der Senkentransformation zu partitionieren. Partitionierte Daten bewirken häufig sehr viel schnellere Ladevorgänge, da alle Verbindungen gezwungen werden, einen einzigen Knoten bzw. eine einzige Partition zu verwenden. Wechseln Sie zur Registerkarte „Optimieren“ der Senke, und wählen Sie die *Roundrobin*-Partitionierung aus, um die ideale Anzahl von Partitionen zum Schreiben in die Senke auszuwählen.
+#### <a name="isolation-level"></a>Isolationsstufe
 
-### <a name="disable-indexes-on-write"></a>Deaktivieren von Indizes beim Schreiben
+Die Isolationsstufe des Lesevorgangs auf einem Azure SQL-Quellsystem hat eine Auswirkung auf die Leistung. Wenn Sie die Option „Lesen ohne Commit“ auswählen, ergibt sich die schnellste Leistung, und Datenbanksperren werden verhindert. Weitere Informationen zu SQL-Isolationsstufen finden Sie unter [Grundlegendes zu Isolationsstufen](https://docs.microsoft.com/sql/connect/jdbc/understanding-isolation-levels?view=sql-server-ver15).
 
-Fügen Sie in der Pipeline eine [Aktivität „Gespeicherte Prozedur“](transform-data-using-stored-procedure.md) vor der Datenflussaktivität hinzu, die Indizes in Ihren Zieltabellen deaktiviert, in die von der Senke aus geschrieben wird. Fügen Sie nach der Datenflussaktivität eine weitere Aktivität „Gespeicherte Prozedur“ hinzu, die diese Indizes aktiviert. Nutzen Sie alternativ die vorab und nachträglich verarbeiteten Skripts in einer Datenbanksenke.
+#### <a name="read-using-query"></a>Lesen per Abfrage
 
-### <a name="increase-the-size-of-your-azure-sql-db-and-dw"></a>Erhöhen der Größe Ihrer Azure SQL-Datenbank- und Azure SQL Data Warehouse-Instanz
+Sie können Lesevorgänge aus Azure SQL-Datenbank durchführen, indem Sie eine Tabelle oder SQL-Abfrage verwenden. Wenn Sie eine SQL-Abfrage ausführen, muss diese beendet werden, bevor die Transformation gestartet werden kann. SQL-Abfragen können nützlich sein, um einen Pushdown für Vorgänge durchzuführen, damit diese dann ggf. schneller ausgeführt werden, und um die Menge der von einer SQL Server-Instanz gelesenen Daten zu reduzieren, z. B. SELECT-, WHERE- und JOIN-Anweisungen. Bei einem Pushdown von Vorgängen ist es nicht mehr möglich, die Herkunft und Leistung der Transformationen nachzuverfolgen, bevor die Daten in den Datenfluss gelangen.
+
+### <a name="azure-synapse-analytics-sources"></a>Azure Synapse Analytics-Quellen
+
+Bei Verwendung von Azure Synapse Analytics ist in den Quelloptionen die Einstellung **Staging aktivieren** vorhanden. Dies ermöglicht ADF das Lesen aus Synapse über [PolyBase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide?view=sql-server-ver15). Bei dieser Vorgehensweise ergibt sich eine starke Verbesserung der Leseleistung. Beim Aktivieren von PolyBase müssen Sie in den Einstellungen für Datenflussaktivitäten einen Azure Blob Storage- oder Azure Data Lake Storage Gen2-Stagingspeicherort angeben.
+
+![Staging aktivieren](media/data-flow/enable-staging.png "Staging aktivieren")
+
+### <a name="file-based-sources"></a>Dateibasierte Quellen
+
+Für Datenflüsse werden zwar verschiedene Dateitypen unterstützt, aber für Azure Data Factory wird empfohlen, zur Erzielung von optimalen Lese- und Schreibdauern das native Spark-Format „Parquet“ zu verwenden.
+
+Wenn Sie den gleichen Datenfluss für mehrere Dateien ausführen, empfehlen wir Ihnen, die Daten aus einem Ordner zu lesen, Platzhalterpfade zu verwenden oder die Daten aus einer Liste mit Dateien zu lesen. Mit nur einer Datenfluss-Aktivitätsausführung können Ihre gesamten Dateien als Batch verarbeitet werden. Weitere Informationen zum Festlegen dieser Einstellungen finden Sie in der Dokumentation zu Connectors, z. B. [Azure Blob Storage](connector-azure-blob-storage.md#source-transformation).
+
+Vermeiden Sie nach Möglichkeit die Verwendung der For-Each-Aktivität, um Datenflüsse für mehrere Dateien auszuführen. Dies führt dazu, dass bei jeder Iteration des For-Each-Vorgangs ein eigener Spark-Cluster gestartet wird. Häufig ist dies nicht nötig, und diese Vorgehensweise kann teuer werden. 
+
+## <a name="optimizing-sinks"></a>Optimieren von Senken
+
+Wenn Datenflüsse in Senken schreiben, werden alle benutzerdefinierten Partitionierungen direkt vor dem Schreibvorgang durchgeführt. Wie auch bei der Quelle, ist es in den meisten Fällen zu empfehlen, die Auswahl der Partitionierungsoption **Aktuelle Partitionierung verwenden** beizubehalten. Partitionierte Daten werden deutlich schneller als nicht partitionierte Daten geschrieben. Dies gilt auch, wenn Ihr Ziel nicht partitioniert ist. Unten sind die einzelnen Aspekte für die verschiedenen Senkentypen angegeben. 
+
+### <a name="azure-sql-database-sinks"></a>Azure SQL-Datenbank-Senken
+
+Bei Azure SQL-Datenbank sollte die Standardpartitionierung in den meisten Fällen funktionieren. Es besteht die Möglichkeit, dass Ihre Senke über zu viele Partitionen verfügt, sodass sie von Ihrer SQL-Datenbank-Instanz nicht mehr verarbeitet werden können. Reduzieren Sie in diesem Fall die Anzahl von Partitionen, die von Ihrer SQL-Datenbank-Senke ausgegeben werden.
+
+#### <a name="disabling-indexes-using-a-sql-script"></a>Deaktivieren von Indizes per SQL-Skript
+
+Durch das Deaktivieren von Indizes vor dem Laden in eine SQL-Datenbank kann die Leistung beim Schreiben in die Tabelle erheblich verbessert werden. Führen Sie den unten angegebenen Befehl aus, bevor Sie in Ihre SQL-Senke schreiben.
+
+`ALTER INDEX ALL ON dbo.[Table Name] DISABLE`
+
+Nachdem der Schreibvorgang abgeschlossen ist, sollten Sie die Indizes mit dem folgenden Befehl neu erstellen:
+
+`ALTER INDEX ALL ON dbo.[Table Name] REBUILD`
+
+Dies kann sowohl nativ mit Pre- und Post-SQL-Skripts auf einer Azure SQL-Datenbank-Instanz als auch über eine Synapse-Senke in Zuordnungsdatenflüssen durchgeführt werden.
+
+![Indizes deaktivieren](media/data-flow/disable-indexes-sql.png "Indizes deaktivieren")
+
+> [!WARNING]
+> Beim Deaktivieren von Indizes übernimmt der Datenfluss quasi die Kontrolle über eine Datenbank, und die Durchführung von Abfragen ist dann wahrscheinlich nicht erfolgreich. Aus diesem Grund werden viele ETL-Aufträge nachts ausgelöst, um Konflikte dieser Art zu vermeiden. Weitere Informationen finden Sie im Artikel [Deaktivieren von Indizes und Einschränkungen](https://docs.microsoft.com/sql/relational-databases/indexes/disable-indexes-and-constraints?view=sql-server-ver15).
+
+#### <a name="scaling-up-your-database"></a>Hochskalieren Ihrer Datenbank
 
 Planen Sie die Anpassung der Größe Ihrer Quelle und Senke in Azure SQL-Datenbank und Azure SQL Data Warehouse vor der Pipelineausführung, um den Durchsatz zu erhöhen und die Drosselung durch Azure beim Erreichen der DTU-Grenzwerte zu minimieren. Stellen Sie nach Abschluss der Pipelineausführung die Größe Ihrer Datenbanken für die normale Ausführung wieder her.
 
-* Bei Verwendung arbeitsspeicheroptimierter Debug-Azure IRs mit 80 Kernen dauert die Transformation einer SQL-Datenbank-Quelltabelle mit 887.000 Zeilen und 74 Spalten in eine SQL-Datenbank-Tabelle mit einer einzelnen abgeleiteten Spalte etwa drei Minuten.
+### <a name="azure-synapse-analytics-sinks"></a>Azure Synapse Analytics-Senken
 
-### <a name="azure-synapse-sql-dw-only-use-staging-to-load-data-in-bulk-via-polybase"></a>Verwenden von Staging zum Massenladen von Daten über Polybase [nur Azure Synapse SQL-DW]
+Stellen Sie beim Schreiben in Azure Synapse Analytics sicher, dass die Option **Staging aktivieren** aktiviert ist. Hierdurch wird für ADF das Schreiben mit [PolyBase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide) ermöglicht, sodass für die Daten quasi ein Massenladevorgang erfolgt. Bei Verwendung von PolyBase müssen Sie auf ein Azure Data Lake Storage Gen2- oder Azure Blob Storage-Konto für das Staging der Daten verweisen.
 
-Um zeilenweise Einfügungen in Data Warehouse zu vermeiden, aktivieren Sie unter den Senkeneinstellungen die Option **Staging aktivieren**, damit ADF [PolyBase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide) verwenden kann. PolyBase ermöglicht ADF das Massenladen der Daten.
-* Wenn Sie die Datenflussaktivität aus einer Pipeline ausführen, müssen Sie einen Blob- oder ADLS Gen2-Speicherort auswählen, um die Daten während des Massenladevorgangs bereitzustellen.
+Mit Ausnahme von PolyBase gelten für Azure Synapse Analytics die gleichen bewährten Methoden wie für Azure SQL-Datenbank.
 
-* Bei Verwendung arbeitsspeicheroptimierter Debug-Azure IRs mit 80 Kernen dauert die Transformation einer Dateiquelle mit einer Datei (421 MB) mit 74 Spalten in eine Synapse-Tabelle und eine einzelne abgeleitete Spalte etwa vier Minuten.
+### <a name="file-based-sinks"></a>Dateibasierte Senken 
 
-## <a name="optimizing-for-files"></a>Optimieren für Dateien
+Für Datenflüsse werden zwar verschiedene Dateitypen unterstützt, aber für Azure Data Factory wird empfohlen, zur Erzielung von optimalen Lese- und Schreibdauern das native Spark-Format „Parquet“ zu verwenden.
 
-Bei jeder Transformation können Sie das Partitionierungsschema, das von Data Factory verwendet werden soll, auf der Registerkarte „Optimieren“ festlegen. Es empfiehlt sich, zunächst dateibasierte Senken zu testen und dabei die Standardpartitionierung und -optimierungen beizubehalten. Das Belassen der Partitionierung auf „aktuelle Partitionierung“ in der Senke für ein Dateiziel ermöglicht es Spark, eine geeignete Standardpartitionierung für Ihre Workloads festzulegen. Die Standardpartitionierung verwendet 128 MB pro Partition.
+Wenn die Daten gleichmäßig verteilt sind, ist **Aktuelle Partitionierung verwenden** die schnellste Partitionierungsoption für das Schreiben von Dateien.
 
-* Bei kleineren Dateien kann manchmal das Auswählen von weniger Partitionen besser und schneller sein, als Spark anzuweisen, die kleinen Dateien zu partitionieren.
-* Wenn Sie nicht über genügend Informationen zu Ihren Quelldaten verfügen, wählen Sie die *Roundrobin*-Partitionierung aus, und legen Sie die Anzahl der Partitionen fest.
-* Wenn die Daten Spalten aufweisen, die gute Hashschlüssel darstellen können, wählen Sie *Hashpartitionierung* aus.
+#### <a name="file-name-options"></a>Dateinamenoptionen
 
-* Bei Verwendung arbeitsspeicheroptimierter Debug-Azure IRs mit 80 Kernen dauert die Transformation einer Dateiquelle mit einer Dateisenke einer Datei (421 MB) mit 74 Spalten in eine einzelne abgeleitete Spalte etwa zwei Minuten.
+Beim Schreiben von Dateien können Sie zwischen verschiedenen Benennungsoptionen wählen, die sich jeweils auf die Leistung auswirken.
 
-Beim Debuggen in der Datenvorschau sowie beim Debuggen der Pipeline gelten das Limit und die Stichprobengrößen für dateibasierte Quelldatasets nur für die Anzahl zurückgegebener Zeilen (nicht für die Anzahl gelesener Zeilen). Dies kann sich auf die Leistung der Debugausführungen auswirken und ggf. dazu führen, dass der Ablauf nicht erfolgreich ist.
-* Debugcluster sind standardmäßig kleine Cluster mit einem einzelnen Knoten, und es wird empfohlen, kleine Beispieldateien zum Debuggen zu verwenden. Navigieren Sie zu den Debugeinstellungen, und verweisen Sie unter Verwendung einer temporären Datei auf eine kleine Teilmenge Ihrer Daten.
+![Senkenoptionen](media/data-flow/file-sink-settings.png "Senkenoptionen")
 
-    ![Debugeinstellungen](media/data-flow/debugsettings3.png "Debugeinstellungen")
+Wenn Sie die Option **Standard** auswählen, ist der Schreibvorgang am schnellsten. Jede Partition entspricht einer Datei mit dem Standardnamen von Spark. Dies ist hilfreich, wenn Sie nur aus dem Ordner mit den Daten lesen.
 
-### <a name="file-naming-options"></a>Optionen für die Benennung von Dateien
+Wenn Sie ein **Muster** für die Benennung auswählen, wird jede Partitionsdatei mit einem benutzerfreundlicheren Namen benannt. Dieser Vorgang erfolgt nach dem Schreibvorgang und ist etwas langsamer als bei der Option „Standard“. Es gibt auch eine Option, bei der Sie jede einzelne Partition manuell benennen können.
 
-Die gängigste Methode zum Schreiben transformierter Daten in Mapping Data Flow ist das Schreiben in den Blob- oder ADLS-Dateispeicher. Sie müssen in Ihrer Senke ein Dataset auswählen, das auf einen Container oder Ordner verweist, und nicht auf eine benannte Datei. Da Mapping Data Flow für die Ausführung Spark verwendet, wird die Ausgabe basierend auf dem Partitionierungsschema auf mehrere Dateien aufgeteilt.
+Falls eine Spalte bereits die gewünschte Form für die Ausgabe der Daten aufweist, können Sie die Option **Wie Daten in Spalte** auswählen. Die Daten werden dann neu angeordnet und können die Leistung beeinträchtigen, falls die Spalten nicht gleichmäßig verteilt sind.
 
-Ein häufig verwendetes Partitionierungsschema ist die Auswahl von _Ausgabe in eine einzelne Datei_, wodurch alle PART-Dateien der Ausgabe in einer einzigen Datei in der Senke zusammengefasst werden. Dieser Vorgang erfordert, dass die Ausgabe sich auf eine einzige Partition auf einem einzigen Clusterknoten beschränkt. Wenn Sie viele große Quelldateien in einer einzigen Ausgabedatei kombinieren, kann dies dazu führen, dass die Clusterknotenressourcen nicht mehr ausreichen.
+Bei **Ausgabe in eine einzelne Datei** werden alle Daten in einer Partition kombiniert. Dies führt besonders für große Datasets zu langen Schreibzeiten. Die dringende Empfehlung des Azure Data Factory-Teams lautet, diese Option **nicht** auszuwählen. Ihre Verwendung wir nur empfohlen, wenn es einen triftigen geschäftlichen Grund gibt.
 
-Um zu vermeiden, dass die Computeknotenressourcen erschöpft werden, behalten Sie das standardmäßige, optimierte Schema im Datenfluss bei, und fügen Sie eine Kopieraktivität zur Pipeline hinzu, durch die alle PART-Dateien des Ausgabeordners in eine neue Einzeldateien zusammengeführt werden. Diese Technik wird verwendet, um die Aktion der Transformation von der Dateizusammenführung zu trennen, erzielt aber dasselbe Ergebnis wie das Festlegen der _Ausgabe in eine einzelne Datei_.
+### <a name="cosmosdb-sinks"></a>Cosmos DB-Senken
 
-### <a name="looping-through-file-lists"></a>Durchlaufen von Dateilisten
+Beim Schreiben in Cosmos DB kann die Leistung verbessert werden, indem der Durchsatz und die Batchgröße während der Ausführung des Datenflusses geändert werden. Diese Änderungen sind nur während der Datenfluss-Aktivitätsausführung wirksam und werden nach Abschluss des Vorgangs auf die ursprünglichen Sammlungseinstellungen zurückgesetzt. 
 
-Eine Mapping Data Flow-Funktion wird besser ausgeführt, wenn die Quelltransformation mehrere Dateien durchläuft, anstatt über die ForEach-Aktivität als Schleife ausgeführt zu werden. Es wird empfohlen, Platzhalter oder Dateilisten in der Quelltransformation zu verwenden. Der Datenflussprozess wird schneller ausgeführt, wenn die Schleife innerhalb des Spark-Clusters ausgeführt werden kann. Weitere Informationen finden Sie unter [Platzhalter in der Quelltransformation](connector-azure-data-lake-storage.md#mapping-data-flow-properties).
+**Batchgröße:** Berechnen Sie die ungefähre Zeilengröße der Daten, und stellen Sie sicher, dass die Multiplikation von Zeilengröße und Batchgröße einen Wert von weniger als 2 Millionen ergibt. Erhöhen Sie andernfalls die Batchgröße, um einen besseren Durchsatz zu erzielen.
 
-Wenn Sie z.B. über eine Liste von Datendateien vom Juli 2019 verfügen, die Sie in einem Ordner in Blob Storage verarbeiten möchten, können Sie den folgenden Platzhalter in der Quelltransformation verwenden.
+**Durchsatz:** Legen Sie hier einen höheren Durchsatz fest, damit Dokumente schneller in Cosmos DB geschrieben werden können. Beachten Sie die höheren RU-Kosten bei einer höheren Durchsatzeinstellung.
 
-```DateFiles/*_201907*.txt```
+**Write Throughput Budget** (Budget für Schreibdurchsatz): Verwenden Sie einen Wert, der kleiner als die Gesamtanzahl der RUs pro Minute ist. Wenn Ihr Datenfluss eine hohe Anzahl von Spark-Partitionen enthält, können Sie durch das Festlegen eines Durchsatzbudgets eine bessere Balance zwischen diesen Partitionen erzielen.
 
-Durch die Verwendung von Platzhaltern enthält die Pipeline nur eine Datenflussaktivität. Dadurch erzielen Sie eine bessere Leistung als bei einem Suchvorgang für den Blobspeicher, bei der dann alle entsprechenden Dateien mittels „ForEach“ mit einer eingeschlossenen Aktivität zum Ausführen des Datenflusses durchlaufen werden.
 
-Die Pipeline „ForEach“ im parallelen Modus erzeugt mehrere Cluster, indem sie Auftragscluster für jede ausgeführte Datenflussaktivität erzeugt. Dies kann zu einer Drosselung des Azure-Diensts mit einer hohen Anzahl gleichzeitiger Ausführungen führen. Durch das Ausführen des Datenflusses in einer ForEach-Schleife, wobei die sequenzielle Ausführung in der Pipeline festgelegt ist, werden jedoch Drosselung und Ressourcenauslastung vermieden. Dies erzwingt die sequenzielle Ausführung der einzelnen Dateien für einen Datenfluss durch die Data Factory.
+## <a name="optimizing-transformations"></a>Optimieren von Transformationen
 
-Es wird empfohlen, bei sequenzieller Verwendung von ForEach mit einem Datenfluss die TTL-Einstellung in der Azure Integration Runtime verwenden. Der Grund dafür ist, dass jede Datei eine Clusterstartzeit von 4 Minuten im Iterator erfordert.
+### <a name="optimizing-joins-exists-and-lookups"></a>Optimieren von Joins, Exists-Transformationen und Suchvorgängen
 
-### <a name="optimizing-for-cosmosdb"></a>Optimieren für Cosmos DB
+#### <a name="broadcasting"></a>Übertragung
 
-Die Festlegungen für Durchsatz- und Batcheigenschaften für Cosmos DB-Senken gelten nur während der Ausführung dieses Datenflusses von einer Pipeline-Datenflussaktivität. Nach der Datenflussausführung gelten in Cosmos DB wieder die ursprünglichen Sammlungseinstellungen.
+Wenn bei Joins, Suchvorgängen und Exists-Transformationen der Arbeitsspeicher des Workerknotens groß genug für einen oder beide Datenströme ist, können Sie die Leistung optimieren, indem Sie die **Übertragung** aktivieren. Bei einer Übertragung senden Sie kleine Datenrahmen an alle Knoten im Cluster. Dies ermöglicht für die Spark-Engine die Durchführung eines Joinvorgangs, ohne dass die Daten im großen Datenstrom neu angeordnet werden. Standardmäßig entscheidet die Spark-Engine automatisch, ob eine Seite eines Joins übertragen werden soll. Wenn Sie mit Ihren eingehenden Daten vertraut sind und wissen, dass ein Datenstrom erheblich kleiner als der andere ist, können Sie für die Übertragung die Option **Feststehend** auswählen. Bei der feststehenden Übertragung wird Spark gezwungen, den ausgewählten Datenstrom zu übertragen. 
 
-* Batchgröße: Berechnen Sie die ungefähre Zeilengröße der Daten, und stellen Sie sicher, dass Zeilengröße × Batchgröße kleiner als 2 Millionen ist. Erhöhen Sie andernfalls die Batchgröße, um einen besseren Durchsatz zu erzielen.
-* Durchsatz: Legen Sie hier einen höheren Durchsatz fest, damit Dokumente schneller in Cosmos DB geschrieben werden können. Beachten Sie die höheren RU-Kosten bei einer höheren Durchsatzeinstellung.
-*   Schreibdurchsatz: Verwenden Sie einen Wert, der kleiner als die Gesamtanzahl der RUs pro Minute ist. Wenn Ihr Datenfluss eine hohe Anzahl von Spark-Partitionen enthält, können Sie durch das Festlegen eines Durchsatzbudgets eine bessere Balance zwischen diesen Partitionen erzielen.
+Wenn die Größe der übertragenen Daten für den Spark-Knoten zu hoch ist, tritt ggf. ein Fehler vom Typ „Nicht genügend Arbeitsspeicher“ auf. Verwenden Sie Cluster vom Typ **Arbeitsspeicheroptimiert**, um Fehler vom Typ „Nicht genügend Arbeitsspeicher“ zu vermeiden. Wenn bei den Datenflussausführungen Übertragungstimeouts auftreten, können Sie die Broadcastoptimierung deaktivieren. Dies führt jedoch zu Datenflüssen mit geringerer Leistung.
 
-## <a name="join-and-lookup-performance"></a>Leistung bei Verknüpfung und Suchvorgängen
+![Optimieren der Join-Transformation](media/data-flow/joinoptimize.png "Join-Optimierung")
 
-Das Verwalten der Leistung von Verknüpfungen in Ihrem Datenfluss ist ein sehr gängiger Vorgang, den Sie während des Lebenszyklus Ihrer Datentransformationen ausführen. In ADF müssen Daten in Datenflüssen nicht vor Verknüpfungen sortiert werden, da diese Vorgänge in Spark als Hashjoins ausgeführt werden. Sie können jedoch von der verbesserten Leistung mit der Join-Optimierung „Broadcast“ (Übertragen) profitieren, die für die Transformationen „Joins“, „Exists“ und „Lookup“ gilt.
+#### <a name="cross-joins"></a>Kreuzprodukte
 
-Hierdurch werden dynamische Zufallswiedergaben vermieden, indem die Inhalte von beiden Seiten Ihrer Verknüpfungsbeziehung per Push in den Spark-Knoten übertragen werden. Dies funktioniert gut bei kleineren Tabellen, die für Verweissuchvorgänge verwendet werden. Größere Tabellen, die möglicherweise nicht in den Arbeitsspeicher des Knotens passen, sind für die Broadcastoptimierung wenig geeignet.
+Wenn Sie Literalwerte in Ihren Verknüpfungsbedingungen verwenden oder auf beiden Seiten eines Joins über mehrere Übereinstimmungen verfügen, führt Spark den Joinvorgang als „Kreuzprodukt“ aus. Ein Kreuzprodukt ist ein vollständiges kartesisches Produkt, mit dem dann die verknüpften Werte herausgefiltert werden. Dieser Vorgang ist deutlich langsamer als andere Jointypen. Stellen Sie sicher, dass Sie auf beiden Seiten Ihrer Verknüpfungsbedingungen über Spaltenverweise verfügen, um eine Beeinträchtigung der Leistung zu vermeiden.
 
-Die empfohlene Konfiguration für Datenflüsse mit vielen Join-Vorgängen ist die Beibehaltung der Optimierung auf „Auto“ (für „Broadcast“) und die Verwendung einer ***arbeitsspeicheroptimierten*** Azure Integration Runtime-Konfiguration. Wenn bei den Datenflussausführungen Speicherfehler oder Übertragungstimeouts auftreten, können Sie die Broadcastoptimierung deaktivieren. Dies führt jedoch zu Datenflüssen mit geringerer Leistung. Optional können Sie den Datenfluss anweisen, nur die linke oder rechte Seite des Joins bzw. beide Seiten weiterzugeben.
+#### <a name="sorting-before-joins"></a>Sortieren vor Joinvorgängen
 
-![Broadcasteinstellungen](media/data-flow/newbroad.png "Broadcasteinstellungen")
+Im Gegensatz zu „Merge Join“ in Tools wie SSIS ist die Join-Transformation kein obligatorischer Vorgang vom Typ „Merge Join“. Für die Joinschlüssel ist vor der Transformation kein Sortiervorgang erforderlich. Das Azure Data Factory-Team rät von der Verwendung von Transformationen für die Sortierung in Zuordnungsdatenflüssen ab.
 
-Eine andere Optimierung der Verknüpfung besteht darin, ihre Verknüpfungen so zu erstellen, dass die Spark-Tendenz zum Implementieren von Kreuzprodukten vermieden wird. Wenn Sie beispielsweise Literalwerte in Ihre Verknüpfungsbedingungen einbeziehen, kann Spark dies zuerst als eine Anforderung zur Ausführung eines vollständigen kartesischen Produkts erkennen und dann die verknüpften Werte herausfiltern. Wenn Sie aber sicherstellen, dass es auf beiden Seiten Ihrer Verknüpfungsbedingung Spaltenwerte gibt, können Sie dieses durch Spark ausgelöste kartesische Produkt vermeiden und die Leistung Ihrer Verknüpfungen und Datenflüsse verbessern.
+### <a name="repartitioning-skewed-data"></a>Erneutes Partitionieren bei Datenschiefe
+
+Bei bestimmten Transformationen, z. B. Joins und Aggregatvorgängen, werden Ihre Datenpartitionen neu angeordnet und können gelegentlich zu Datenschiefe führen. Datenschiefe bedeutet, dass Daten nicht gleichmäßig auf die Partitionen verteilt werden. Bei hoher Datenschiefe kann es zu einer Verlangsamung von nachgeschalteten Transformationen und Senkenschreibvorgängen kommen. Sie können die Datenschiefe bei Ihnen während einer Datenflussausführung jederzeit überprüfen, indem Sie in der Überwachungsanzeige auf die Transformation klicken.
+
+![Schiefe und Wölbung](media/data-flow/skewness-kurtosis.png "Schiefe und Wölbung")
+
+In der Überwachungsanzeige wird angegeben, wie die Daten auf die einzelnen Partitionen verteilt sind, und die beiden Metriken für „Schiefe“ und „Wölbung“ werden angezeigt. Die **Schiefe** ist ein Maß dafür, wie asymmetrisch die Daten sind. Der Wert kann „Positiv“, „Null“, „Negativ“ oder „Nicht definiert“ lauten. Bei einer negativen Datenschiefe ist der linke Ausläufer länger als der rechte Ausläufer. Die **Wölbung** ist das Maß dafür, ob die Daten eine Verteilung mit schweren oder leichten Rändern aufweisen. Hohe Wölbungswerte sind nicht wünschenswert. Ideale Bereiche für die Datenschiefe liegen zwischen -3 und 3, und bei der Wölbung werden Werte angestrebt, die unter 10 liegen. Eine einfache Möglichkeit zur Interpretation dieser Zahlen besteht darin, im Partitionsdiagramm zu überprüfen, ob ein Balken deutlich größer als die anderen ist.
+
+Falls Ihre Daten nach einer Transformation nicht gleichmäßig partitioniert sind, können Sie die [Registerkarte „Optimieren“](#optimize-tab) verwenden, um sie neu zu partitionieren. Die Neuanordnung von Daten nimmt Zeit in Anspruch und führt ggf. nicht zu einer Verbesserung der Datenflussleistung.
+
+> [!TIP]
+> Wenn Sie Ihre Daten neu partitionieren, aber die Daten bei Ihnen von nachgeschalteten Transformationen dann neu angeordnet werden, sollten Sie die Hashpartitionierung für eine Spalte verwenden, die als Joinschlüssel genutzt wird.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Lesen Sie die folgenden Artikel zu Datenflüssen in Bezug auf die Leistung:
 
-- [Registerkarte „Optimieren“ für Datenflüsse](concepts-data-flow-overview.md#optimize)
 - [Datenflussaktivität](control-flow-execute-data-flow-activity.md)
 - [Überwachen der Datenflussleistung](concepts-data-flow-monitoring.md)

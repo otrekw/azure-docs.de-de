@@ -5,14 +5,14 @@ services: application-gateway
 author: abshamsft
 ms.service: application-gateway
 ms.topic: conceptual
-ms.date: 02/20/2019
+ms.date: 07/20/2020
 ms.author: absha
-ms.openlocfilehash: 798137a74f22824dbfec9653bff327d3a0a1f3b4
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 20d43666919f8528c25735592c2727601af10bbb
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186757"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088086"
 ---
 # <a name="application-gateway-components"></a>Application Gateway-Komponenten
 
@@ -69,13 +69,13 @@ Es gibt zwei Arten von Listenern:
 
 - **Basic**. Diese Listener lauschen an einer einzelnen Domänenwebsite, wo eine einzelne DNS-Zuordnung zur IP-Adresse des Anwendungsgateways vorliegt. Diese Listenerkonfiguration ist erforderlich, wenn Sie eine einzelne Website hinter einem Anwendungsgateway hosten.
 
-- **Mehrere Websites**. Diese Listenerkonfiguration ist erforderlich, wenn Sie mehrere Webanwendungen in der gleichen Anwendungsgateway-Instanz konfigurieren. Sie können eine effizientere Topologie für Ihre Bereitstellungen konfigurieren, indem Sie bis zu 100 Websites zu einem einzigen Anwendungsgateway hinzufügen. Jede Website kann an ihren eigenen Back-End-Pool weitergeleitet werden. Beispiel: Drei Unterdomänen („abc.contoso.com“, „xyz.contoso.com“ und „pqr.contoso.com“) zeigen auf die IP-Adresse des Anwendungsgateways. Sie erstellen drei Listener vom Typ „Mehrere Websites“ und konfigurieren jeden Listener für den jeweiligen Port und die jeweilige Protokolleinstellung.
+- **Mehrere Websites**. Diese Listenerkonfiguration ist erforderlich, wenn Sie das Routing basierend auf dem Host- oder Domänennamen für mehr als eine Webanwendung auf demselben Anwendungsgateway konfigurieren möchten. Sie können eine effizientere Topologie für Ihre Bereitstellungen konfigurieren, indem Sie bis zu hundert Websites zu einem einzigen Anwendungsgateway hinzufügen. Jede Website kann an ihren eigenen Back-End-Pool weitergeleitet werden. Beispielsweise können die drei Domänen „contoso.com“, „fabrikam.com“ und „adatum.com“ auf die IP-Adresse des Anwendungsgateways verweisen. Sie erstellen drei [Listener vom Typ „Mehrere Websites“](multiple-site-overview.md) und konfigurieren jeden Listener für den jeweiligen Port und die jeweilige Protokolleinstellung. 
 
-    Weitere Informationen finden Sie unter [Hosten von mehreren Websites](application-gateway-web-app-overview.md).
+    Sie können auch Platzhalterhostnamen in einem Listener für mehrere Standorte und bis zu fünf Hostnamen pro Listener definieren. Weitere Informationen finden Sie unter [Platzhalterhostnamen in Listenern (Vorschauversion)](multiple-site-overview.md#wildcard-host-names-in-listener-preview).
 
-Nachdem Sie einen Listener erstellt haben, ordnen Sie ihm eine Anforderungsroutingregel zu. Diese Regel bestimmt, wie die vom Listener empfangene Anforderung an das Back-End weitergeleitet werden soll.
+    Weitere Informationen zum Konfigurieren eines Listener für mehrere Standorte finden Sie unter [Tutorial: Erstellen und Konfigurieren eines Anwendungsgateways als Host mehrerer Websites über das Azure-Portal](create-multiple-sites-portal.md).
 
-Application Gateway verarbeitet Listener in der [gezeigten Reihenfolge](configuration-overview.md#order-of-processing-listeners).
+Nachdem Sie einen Listener erstellt haben, ordnen Sie ihm eine Anforderungsroutingregel zu. Diese Regel bestimmt, wie die vom Listener empfangene Anforderung an das Back-End weitergeleitet werden soll. Die Anforderungsroutingregel enthält auch den Back-End-Pool für die Weiterleitung sowie die HTTP-Einstellung, in der der Back-End-Port, das Protokoll usw. angegeben werden.
 
 ## <a name="request-routing-rules"></a>Anforderungsroutingregeln
 
@@ -99,13 +99,13 @@ Sie können als Umleitungsziel einen anderen Listener (wodurch die automatische 
 
 Weitere Informationen finden Sie unter [Umleiten von Datenverkehr im Application Gateway](redirect-overview.md).
 
-### <a name="rewrite-http-headers"></a>Erneutes Generieren von HTTP-Headern
+### <a name="rewrite-http-headers-and-url"></a>Neuschreibung von HTTP-Headern und der URL
 
-Mit Anwendungsroutingregeln können Sie HTTP(S)-Anforderungs- und -Antwortheader hinzufügen, entfernen oder aktualisieren, während die Anforderungs- und Antwortpakete über das Anwendungsgateway zwischen dem Client und den Back-End-Pools weitergeleitet werden.
+Mithilfe von Neuschreibungsregeln können Sie HTTP(S)-Anforderungs- und -Antwortheader sowie den URL-Pfad und Abfragezeichenfolgenparameter hinzufügen, entfernen oder aktualisieren, während die Anforderungs- und Antwortpakete über das Anwendungsgateway zwischen dem Client und den Back-End-Pools weitergeleitet werden.
 
-Die Header können auf statische Werte und auf andere Header und Servervariablen festgelegt werden. Dies ist hilfreich bei wichtigen Anwendungsfällen, z.B. beim Extrahieren von Client-IP-Adressen, beim Entfernen vertraulicher Informationen zum Back-End, beim Verbessern der Sicherheit usw.
+Die Header und URL-Parameter können auf statische Werte oder auf andere Header und Servervariablen festgelegt werden. Dies ist hilfreich bei wichtigen Anwendungsfällen, z.B. beim Extrahieren von Client-IP-Adressen, beim Entfernen vertraulicher Informationen zum Back-End, beim Verbessern der Sicherheit usw.
 
-Weitere Informationen finden Sie unter [Erneutes Generieren von HTTP-Headern im Application Gateway](rewrite-http-headers.md).
+Weitere Informationen finden Sie im Artikel zum [erneuten Generieren von HTTP-Headern und URLs für Ihr Anwendungsgateway](rewrite-http-headers-url.md).
 
 ## <a name="http-settings"></a>HTTP-Einstellungen
 

@@ -1,14 +1,14 @@
 ---
 title: Leitfaden für gedrosselte Anforderungen
 description: Lernen Sie, parallel zu gruppieren, zu staffeln, zu paginieren und abzufragen, um zu vermeiden, dass Anforderungen durch Azure Resource Graph gedrosselt werden.
-ms.date: 05/20/2020
+ms.date: 08/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: dbcd438f1eda4edd30deef41542beeae6d746dc2
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 343d0c02e300431b63b908199931c20a50b85dd2
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83682060"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87541837"
 ---
 # <a name="guidance-for-throttled-requests-in-azure-resource-graph"></a>Leitfaden für gedrosselte Anforderungen in Azure Resource Graph
 
@@ -29,6 +29,8 @@ In jeder Abfrageantwort fügt Azure Resource Graph zwei Drosselungsheader ein:
 
 - `x-ms-user-quota-remaining` (int): Das verbleibende Ressourcenkontingent für den Benutzer. Dieser Wert entspricht der Anzahl von Abfragen.
 - `x-ms-user-quota-resets-after` (hh:mm:ss): Der Zeitraum, bis die Kontingentnutzung eines Benutzers zurückgesetzt wird.
+
+Wenn ein Sicherheitsprinzipal Zugriff auf mehr als 5000 Abonnements innerhalb des [Abfragebereichs](./query-language.md#query-scope) der Mandanten- oder Verwaltungsgruppe hat, ist die Antwort auf die ersten 5000 Abonnements begrenzt, und der Header `x-ms-tenant-subscription-limit-hit` wird als `true` zurückgegeben.
 
 Zur Veranschaulichung der Funktionsweise von Headern sehen wir uns eine Abfrageantwort mit dem Header und den Werten von `x-ms-user-quota-remaining: 10` und `x-ms-user-quota-resets-after: 00:00:03` an.
 

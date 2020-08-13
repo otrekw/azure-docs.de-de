@@ -5,14 +5,14 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 12/02/2019
+ms.date: 07/23/2020
 ms.reviewer: sngun
-ms.openlocfilehash: f234579c6fb2b6f1bc0cd518b87ea69fae30093a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f5a867a00fa28dcd03842d02be16d88e3a7d2e9f
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74869832"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132652"
 ---
 # <a name="unique-key-constraints-in-azure-cosmos-db"></a>Einschränkungen für eindeutige Schlüssel in Azure Cosmos DB
 
@@ -20,7 +20,7 @@ Eindeutige Schlüssel fügen einem Azure Cosmos-Container eine Datenintegritäts
 
 Nachdem Sie einen Container mit einer Richtlinie für eindeutige Schlüssel erstellt haben, wird verhindert, dass innerhalb einer logischen Partition neue oder aktualisierte Kopien vorhandener Elemente erstellt werden (gemäß der Einschränkung für eindeutige Schlüssel). Die Kombination aus Partitionsschlüssel und eindeutigem Schlüssel garantiert die Eindeutigkeit eines Elements innerhalb des Containerbereichs.
 
-Stellen Sie sich beispielsweise einen Azure Cosmos-Container mit E-Mail-Adresse als Einschränkung für eindeutige Schlüssel und `CompanyID` als Partitionsschlüssel vor. Wenn Sie die E-Mail-Adresse des Benutzers mit einem eindeutigen Schlüssel konfigurieren, verfügt jedes Element innerhalb einer bestimmten Unternehmens-ID (`CompanyID`) über eine eindeutige e-Mail-Adresse. Es können keine zwei Elemente mit der gleichen E-Mail-Adresse und dem gleichen Partitionsschlüsselwert erstellt werden. 
+Stellen Sie sich beispielsweise einen Azure Cosmos-Container mit E-Mail-Adresse als Einschränkung für eindeutige Schlüssel und `CompanyID` als Partitionsschlüssel vor. Wenn Sie die E-Mail-Adresse des Benutzers mit einem eindeutigen Schlüssel konfigurieren, verfügt jedes Element innerhalb einer bestimmten Unternehmens-ID (`CompanyID`) über eine eindeutige e-Mail-Adresse. Es können keine zwei Elemente mit der gleichen E-Mail-Adresse und dem gleichen Partitionsschlüsselwert erstellt werden. In der SQL-API (Core-API) von Azure Cosmos DB werden Elemente als JSON-Werte gespeichert. Bei diesen JSON-Werten wird die Groß- und Kleinschreibung berücksichtigt. Wenn Sie eine Eigenschaft als eindeutigen Schlüssel auswählen, können Sie Werte, bei denen die Groß-/Kleinschreibung beachtet werden muss, für diese Eigenschaft einfügen. Wenn Sie beispielsweise einen eindeutigen Schlüssel für die name-Eigenschaft definiert haben, unterscheidet sich „Gaby“ von „gaby“, und Sie können beide Schreibweisen in den Container einfügen.
 
 Um Elemente mit derselben E-Mail-Adresse, nicht jedoch mit derselben Kombination aus Vorname, Nachname und E-Mail-Adresse, zu erstellen, fügen Sie der Richtlinie für eindeutige Schlüssel weitere Pfade hinzu. Anstelle eines eindeutigen Schlüssels, der nur auf der E-Mail-Adresse basiert, können Sie auch einen eindeutigen Schlüssel mit einer Kombination aus Vorname, Nachname und E-Mail-Adresse erstellen. Dieser Schlüssel wird als einen zusammengesetzter eindeutiger Schlüssel bezeichnet. In diesem Fall ist jede eindeutige Kombination der drei Werte innerhalb einer bestimmten Unternehmens-ID (`CompanyID`) zulässig. 
 

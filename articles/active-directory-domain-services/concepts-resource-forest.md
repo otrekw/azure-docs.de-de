@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 310527d8e98e474faa43f19406f037e1a3835756
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 62a2ffeea1d15a16c4ec4aa6a2b88c8e34763064
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86040264"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87480406"
 ---
 # <a name="resource-forest-concepts-and-features-for-azure-active-directory-domain-services"></a>Ressourcengesamtstrukturkonzepte und -features für Azure Active Directory Domain Services
 
@@ -23,10 +23,7 @@ Azure Active Directory Domain Services (Azure AD DS) stellt eine Anmeldeumgebung
 
 Obwohl diese Benutzerkennworthashes sicher sind und zusätzliche Sicherheitsvorteile bieten, können einige Organisationen die Hashes nicht mit Azure AD oder Azure AD DS synchronisieren. Benutzer in einer Organisation wissen Ihr Kennwort möglicherweise nicht, da sie nur Smartcard-Authentifizierung verwenden. Diese Einschränkungen verhindern für einige Organisationen, dass sie Azure AD DS verwenden, um lokale klassische Anwendungen per Lift & Shift zu Azure zu migrieren.
 
-Um diese Anforderungen und Einschränkungen zu behandeln, können Sie eine verwaltete Domäne erstellen, in der eine Ressourcengesamtstruktur verwendet wird. In diesem konzeptionellen Artikel wird erläutert, was Gesamtstrukturen sind und wie sie anderen Ressourcen vertrauen, um eine sichere Authentifizierungsmethode bereitzustellen. Azure AD DS-Ressourcengesamtstrukturen befinden sich derzeit in der Vorschauphase.
-
-> [!IMPORTANT]
-> Azure AD DS-Ressourcengesamtstrukturen unterstützen derzeit weder Microsoft Azure HDInsight noch Azure Files. Die standardmäßigen Azure AD DS-Benutzergesamtstrukturen unterstützen diese beiden zusätzlichen Dienste.
+Um diese Anforderungen und Einschränkungen zu behandeln, können Sie eine verwaltete Domäne erstellen, in der eine Ressourcengesamtstruktur verwendet wird. In diesem konzeptionellen Artikel wird erläutert, was Gesamtstrukturen sind und wie sie anderen Ressourcen vertrauen, um eine sichere Authentifizierungsmethode bereitzustellen.
 
 ## <a name="what-are-forests"></a>Was sind Gesamtstrukturen?
 
@@ -34,9 +31,9 @@ Eine *Gesamtstruktur* ist ein logisches Konstrukt, das von Active Directory Doma
 
 In einer verwalteten Azure AD DS-Domäne enthält die Gesamtstruktur nur eine Domäne. Lokale AD DS-Gesamtstrukturen enthalten häufig mehrere Domänen. In großen Unternehmen sind, insbesondere nach Fusionen und Übernahmen, unter Umständen mehrere lokale Gesamtstrukturen vorhanden, die jeweils mehrere Domänen enthalten.
 
-Eine verwaltete Domäne wird standardmäßig als *Benutzer*gesamtstruktur erstellt. Mit dieser Art von Gesamtstruktur werden alle Objekte aus Azure AD synchronisiert – einschließlich aller in einer lokalen AD DS-Umgebung erstellten Benutzerkonten. Benutzerkonten können sich direkt bei der verwalteten Domäne authentifizieren, um sich beispielsweise bei einem in eine Domäne eingebundenen virtuellen Computer anzumelden. Eine Benutzergesamtstruktur ist geeignet, wenn die Kennworthashes synchronisiert werden können und Benutzer keine exklusiven Anmeldemethoden wie etwa die Smartcard-Authentifizierung verwenden.
+Eine verwaltete Domäne wird standardmäßig als *Benutzergesamtstruktur* erstellt. Mit dieser Art von Gesamtstruktur werden alle Objekte aus Azure AD synchronisiert – einschließlich aller in einer lokalen AD DS-Umgebung erstellten Benutzerkonten. Benutzerkonten können sich direkt bei der verwalteten Domäne authentifizieren, um sich beispielsweise bei einem in eine Domäne eingebundenen virtuellen Computer anzumelden. Eine Benutzergesamtstruktur ist geeignet, wenn die Kennworthashes synchronisiert werden können und Benutzer keine exklusiven Anmeldemethoden wie etwa die Smartcard-Authentifizierung verwenden.
 
-In der einer verwalteten Domäne mit *Ressourcen*gesamtstruktur authentifizieren sich die Benutzer über eine unidirektionale Gesamtstruktur-*Vertrauensstellung* von ihrer lokalen AD DS-Instanz aus. Hierbei werden die Benutzerobjekte und Kennworthashes nicht mit der verwalteten Domäne synchronisiert. Die Benutzerobjekte und Anmeldeinformationen sind nur in der lokalen AD DS-Instanz vorhanden. Mit diesem Ansatz können Unternehmen Ressourcen und Anwendungsplattformen in Azure hosten, die eine klassische Authentifizierung (beispielsweise LDAPS, Kerberos oder NTLM) benötigen, und gleichzeitig sämtliche Authentifizierungsprobleme oder -bedenken beseitigen. Azure AD DS-Ressourcengesamtstrukturen befinden sich derzeit in der Vorschauphase.
+In der einer verwalteten Domäne mit *Ressourcen*gesamtstruktur authentifizieren sich die Benutzer über eine unidirektionale Gesamtstruktur-*Vertrauensstellung* von ihrer lokalen AD DS-Instanz aus. Hierbei werden die Benutzerobjekte und Kennworthashes nicht mit der verwalteten Domäne synchronisiert. Die Benutzerobjekte und Anmeldeinformationen sind nur in der lokalen AD DS-Instanz vorhanden. Mit diesem Ansatz können Unternehmen Ressourcen und Anwendungsplattformen in Azure hosten, die eine klassische Authentifizierung (beispielsweise LDAPS, Kerberos oder NTLM) benötigen, und gleichzeitig sämtliche Authentifizierungsprobleme oder -bedenken beseitigen.
 
 Ressourcengesamtstrukturen bieten außerdem die Möglichkeit, Ihre Anwendungen komponentenweise per Lift & Shift zu migrieren. Viele ältere lokale Anwendungen sind mehrstufig, wobei häufig ein Webserver oder ein Front-End und viele datenbankbezogene Komponenten verwendet werden. Wegen dieser Stufen ist es schwierig, die gesamte Anwendung in einem Schritt per Lift & Shift in die Cloud zu migrieren. Mit Ressourcengesamtstrukturen können Sie Ihre Anwendung in einem schrittweisen Ansatz in die Cloud übertragen, wodurch es Ihnen vereinfacht wird, die Anwendung nach Azure zu verschieben.
 
@@ -116,7 +113,7 @@ Vertrauensstellungen stellen diesen Mechanismus bereit, um Authentifizierungsanf
 
 Weitere Informationen zu Vertrauensstellungen finden Sie unter [Funktionsweise von Vertrauensstellungen für Ressourcengesamtstrukturen in Azure Active Directory Domain Services][concepts-trust].
 
-Informationen zu den ersten Schritten beim Erstellen einer verwalteten Domäne mit einer Ressourcengesamtstruktur finden Sie unter [Erstellen und Konfigurieren einer verwalteten Azure AD DS-Domäne][tutorial-create-advanced]. Danach können Sie die Schritte für [Erstellen einer ausgehenden Gesamtstruktur-Vertrauensstellung zu einer lokalen Domäne in Azure Active Directory Domain Services (Vorschauversion)][create-forest-trust] ausführen.
+Informationen zu den ersten Schritten beim Erstellen einer verwalteten Domäne mit einer Ressourcengesamtstruktur finden Sie unter [Erstellen und Konfigurieren einer verwalteten Azure AD DS-Domäne][tutorial-create-advanced]. Danach können Sie die Schritte für [Erstellen einer ausgehenden Gesamtstruktur-Vertrauensstellung zu einer lokalen Domäne in Azure Active Directory Domain Services][create-forest-trust] ausführen.
 
 <!-- LINKS - INTERNAL -->
 [concepts-trust]: concepts-forest-trust.md

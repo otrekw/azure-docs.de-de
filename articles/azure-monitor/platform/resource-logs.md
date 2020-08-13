@@ -4,20 +4,20 @@ description: Hier erfahren Sie, wie Sie Azure-Ressourcenprotokolle an einen Log 
 author: bwren
 services: azure-monitor
 ms.topic: conceptual
-ms.date: 12/18/2019
+ms.date: 07/17/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 492aae69895d62c784d15cd77405d0c52ec13e3e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ccf470abadb28919e4fca3c4862b71946a5bb204
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84946964"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87800499"
 ---
 # <a name="azure-resource-logs"></a>Azure-Ressourcenprotokolle
 Azure-Ressourcenprotokolle sind [Plattformprotokolle](platform-logs-overview.md), die Einblicke in Vorgänge bereitstellen, die in einer Azure-Ressource ausgeführt wurden. Der Inhalt dieser Protokolle variiert je nach Azure-Dienst und -Ressourcentyp. Ressourcenprotokolle werden standardmäßig nicht erfasst. Sie müssen eine Diagnoseeinstellung für jede Azure-Ressource erstellen, um deren Ressourcenprotokolle an einen Log Analytics-Arbeitsbereich zu senden, damit sie mit [Azure Monitor-Protokollen](data-platform-logs.md), Azure Event Hubs zur Weiterleitung außerhalb von Azure oder Azure Storage zur Archivierung verwendet werden können.
 
-Ausführliche Informationen zum Erstellen einer Diagnoseeinstellung finden Sie unter [Erstellen von Diagnoseeinstellungen zum Senden von Plattformprotokollen und Metriken an verschiedene Ziele](diagnostic-settings.md). Informationen zur Verwendung von Azure Policy zum automatischen Erstellen einer Diagnoseeinstellung für jede erstellte Azure-Ressource finden Sie unter [Bedarfsorientiertes Bereitstellen von Azure Monitor mithilfe von Azure Policy](deploy-scale.md).
+Ausführliche Informationen zum Erstellen einer Diagnoseeinstellung finden Sie unter [Erstellen von Diagnoseeinstellungen zum Senden von Plattformprotokollen und Metriken an verschiedene Ziele](diagnostic-settings.md). Informationen zur Verwendung von Azure Policy zum automatischen Erstellen einer Diagnoseeinstellung für jede erstellte Azure-Ressource finden Sie unter [Bedarfsorientiertes Bereitstellen von Azure Monitor mithilfe von Azure Policy](../deploy-scale.md).
 
 ## <a name="send-to-log-analytics-workspace"></a>Senden an den Log Analytics-Arbeitsbereich
  Senden Sie Ressourcenprotokolle an einen Log Analytics-Arbeitsbereich, um die Features von [Azure Monitor-Protokolle](data-platform-logs.md) zu aktivieren. Hierzu zählen Folgende:
@@ -85,17 +85,15 @@ Im obigen Beispiel hätte das zur Folge, dass drei Tabellen erstellt werden:
 
 
 ### <a name="select-the-collection-mode"></a>Auswählen des Sammlungsmodus
-Die meisten Azure-Ressourcen schreiben Daten entweder im Modus **Azure-Diagnose** oder im Modus **Ressourcenspezifisch** in den Arbeitsbereich, ohne dass Sie eine Auswahl treffen können. Ausführliche Informationen zum jeweils verwendeten Modus finden Sie in der [Dokumentation zu den einzelnen Diensten](diagnostic-logs-schema.md). Alle Azure-Dienste verwenden letztendlich den Modus „Ressourcenspezifisch“. Im Rahmen dieses Übergangs können Sie bei einigen Ressourcen einen Modus in der Diagnoseeinstellung auswählen. Geben Sie den Modus „Ressourcenspezifisch“ für alle neuen Diagnoseeinstellungen an, da die Daten dadurch einfacher zu verwalten sind und komplexe Migrationen zu einem späteren Zeitpunkt vermieden werden können.
+Die meisten Azure-Ressourcen schreiben Daten entweder im Modus **Azure-Diagnose** oder im Modus **Ressourcenspezifisch** in den Arbeitsbereich, ohne dass Sie eine Auswahl treffen können. Ausführliche Informationen zum jeweils verwendeten Modus finden Sie in der [Dokumentation zu den einzelnen Diensten](./resource-logs-schema.md). Alle Azure-Dienste verwenden letztendlich den Modus „Ressourcenspezifisch“. Im Rahmen dieses Übergangs können Sie bei einigen Ressourcen einen Modus in der Diagnoseeinstellung auswählen. Geben Sie den Modus „Ressourcenspezifisch“ für alle neuen Diagnoseeinstellungen an, da die Daten dadurch einfacher zu verwalten sind und komplexe Migrationen zu einem späteren Zeitpunkt vermieden werden können.
   
    ![Auswahl eines Modus in den Diagnose-Einstellungen](media/resource-logs-collect-workspace/diagnostic-settings-mode-selector.png)
 
-
-
-
 > [!NOTE]
-> Derzeit können der Modus **Azure-Diagnose** und der Modus **Ressourcenspezifisch** nur beim Konfigurieren der Diagnoseeinstellung im Azure-Portal ausgewählt werden. Wenn Sie die Einstellung mithilfe der CLI, PowerShell oder der Rest-API konfigurieren, wird standardmäßig **Azure-Diagnose** verwendet.
+> Ein Beispiel für das Festlegen des Sammlungsmodus mithilfe einer Resource Manager-Vorlage finden Sie unter [Beispiele für Resource Manager-Vorlagen für Diagnoseeinstellungen in Azure Monitor](../samples/resource-manager-diagnostic-settings.md#diagnostic-setting-for-recovery-services-vault).
 
-Sie können eine vorhandene Diagnoseeinstellung in den Modus „Ressourcenspezifisch“ ändern. In diesem Fall verbleiben Daten, die bereits gesammelt wurden, in der Tabelle _AzureDiagnostics_, bis sie gemäß Ihrer Aufbewahrungseinstellung für den Arbeitsbereich entfernt werden. Neue Daten werden in der dedizierten Tabelle gesammelt. Verwenden Sie den [union](https://docs.microsoft.com/azure/kusto/query/unionoperator)-Operator, um Daten in beiden Tabellen abzufragen.
+
+Sie können eine vorhandene Diagnoseeinstellung in den Modus „Ressourcenspezifisch“ ändern. In diesem Fall verbleiben Daten, die bereits gesammelt wurden, in der Tabelle _AzureDiagnostics_, bis sie gemäß Ihrer Aufbewahrungseinstellung für den Arbeitsbereich entfernt werden. Neue Daten werden in der dedizierten Tabelle gesammelt. Verwenden Sie den [union](/azure/kusto/query/unionoperator)-Operator, um Daten in beiden Tabellen abzufragen.
 
 Sehen Sie regelmäßig im Blog [Azure-Updates](https://azure.microsoft.com/updates/) nach, ob Ankündigungen für Azure-Dienste vorliegen, die den Modus „Ressourcenspezifisch“ unterstützen.
 
@@ -191,7 +189,7 @@ insights-logs-networksecuritygrouprulecounter/resourceId=/SUBSCRIPTIONS/00000000
 
 Jedes Blob vom Typ „PT1H.json“ enthält ein JSON-Blob mit Ereignissen, die innerhalb der in der Blob-URL angegebenen Stunde (Beispiel: h=12) aufgetreten sind. Während der aktuellen Stunde werden Ereignisse an die Datei „PT1H.json“ angefügt, sobald sie auftreten. Der Minutenwert (m=00) ist immer „00“, da Ressourcenprotokollereignisse stundenweise in einzelne Blobs unterteilt werden.
 
-Innerhalb der Datei „PT1H.json“ wird jedes Ereignis im folgenden Format gespeichert. Hierbei wird ein gemeinsames Schema der obersten Ebene verwendet. Es ist aber für jeden Azure-Dienst eindeutig, wie unter [Ressourcenprotokollschema](diagnostic-logs-schema.md) beschrieben.
+Innerhalb der Datei „PT1H.json“ wird jedes Ereignis im folgenden Format gespeichert. Hierbei wird ein gemeinsames Schema der obersten Ebene verwendet. Es ist aber für jeden Azure-Dienst eindeutig, wie unter [Ressourcenprotokollschema](./resource-logs-schema.md) beschrieben.
 
 ``` JSON
 {"time": "2016-07-01T00:00:37.2040000Z","systemId": "46cdbb41-cb9c-4f3d-a5b4-1d458d827ff1","category": "NetworkSecurityGroupRuleCounter","resourceId": "/SUBSCRIPTIONS/s1id1234-5679-0123-4567-890123456789/RESOURCEGROUPS/TESTRESOURCEGROUP/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/TESTNSG","operationName": "NetworkSecurityGroupCounters","properties": {"vnetResourceGuid": "{12345678-9012-3456-7890-123456789012}","subnetPrefix": "10.3.0.0/24","macAddress": "000123456789","ruleName": "/subscriptions/ s1id1234-5679-0123-4567-890123456789/resourceGroups/testresourcegroup/providers/Microsoft.Network/networkSecurityGroups/testnsg/securityRules/default-allow-rdp","direction": "In","type": "allow","matchedConnections": 1988}}

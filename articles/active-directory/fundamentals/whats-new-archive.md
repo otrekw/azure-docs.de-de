@@ -2,7 +2,7 @@
 title: Archiv für Neuerungen in Azure Active Directory | Microsoft-Dokumentation
 description: Die Versionshinweise zu Neuerungen im Abschnitt „Übersicht“ dieses Inhaltssatzes enthalten sechs Monate Aktivität. Nach 6 Monaten werden die Elemente aus den Hauptartikel entfernt und in diesem Archivartikel abgelegt.
 services: active-directory
-author: msaburnley
+author: ajburnle
 manager: daveba
 ms.service: active-directory
 ms.subservice: fundamentals
@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan, has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f04fcae1ba218949019637e9a101492a487b430f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4fd7ce0229d5e26bc4bf3b05f7b97d20d2a23dff
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85603739"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87927197"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Archiv für Neuerungen in Azure Active Directory
 
@@ -32,6 +32,86 @@ Der primäre Artikel [Neuerungen in Azure Active Directory – Anmerkungen zu di
 - Veraltete Funktionen
 - Pläne für Änderungen
 
+---
+ 
+## <a name="january-2020"></a>Januar 2020
+ 
+### <a name="the-new-my-apps-portal-is-now-generally-available"></a>Das neue Portal „Meine Apps“ ist jetzt allgemein verfügbar
+
+**Typ:** Plan für Änderung  
+**Dienstkategorie**: Meine Apps  
+**Produktfunktion:** Endbenutzerumgebungen
+ 
+Führen Sie für Ihre Organisation ein Upgrade auf das neue Portal „Meine Apps“ durch, das jetzt allgemein verfügbar ist! Weitere Informationen zum neuen Portal und zu Sammlungen finden Sie unter [Erstellen von Sammlungen im Portal „Meine Apps“](https://docs.microsoft.com/azure/active-directory/manage-apps/access-panel-collections).
+
+---
+ 
+### <a name="workspaces-in-azure-ad-have-been-renamed-to-collections"></a>Arbeitsbereiche in Azure AD wurden in Sammlungen umbenannt
+
+**Typ:** Geänderte Funktion  
+**Dienstkategorie**: Meine Apps   
+**Produktfunktion:** Endbenutzerumgebungen
+ 
+Arbeitsbereiche (die Filter, die Administratoren zum Organisieren Ihrer Benutzer-Apps konfigurieren können) werden nun als Sammlungen bezeichnet. Weitere Informationen zum Konfigurieren dieser Sammlungen finden Sie unter [Erstellen von Sammlungen im Portal „Meine Apps“](https://docs.microsoft.com/azure/active-directory/manage-apps/access-panel-collections).
+
+---
+ 
+### <a name="azure-ad-b2c-phone-sign-up-and-sign-in-using-custom-policy-public-preview"></a>Telefonregistrierung und -anmeldung mit benutzerdefinierten Richtlinien in Azure AD B2C (Öffentliche Vorschau)
+
+**Typ:** Neue Funktion  
+**Dienstkategorie**: B2C – Kundenidentitätsverwaltung  
+**Produktfunktion**: B2B/B2C
+ 
+Mit der Telefonregistrierung und -anmeldung können Entwickler und Unternehmen ihren Kunden die Registrierung und Anmeldung mit einem Einmalkennwort ermöglichen, das per SMS an die Telefonnummer des Benutzers gesendet wird. Mit dieser Funktion kann der Kunden auch seine Telefonnummer ändern, falls er keinen Zugriff auf das Telefon mehr hat. Dank der Leistungsfähigkeit benutzerdefinierter Richtlinien können Entwickler und Unternehmen mit der Telefonregistrierung und -anmeldung ihre Marke durch Seitenanpassung kommunizieren. Weitere Informationen finden Sie unter [Einrichten von Telefonregistrierung und -anmeldung mit benutzerdefinierten Richtlinien in Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/phone-authentication).
+ 
+---
+ 
+### <a name="new-provisioning-connectors-in-the-azure-ad-application-gallery---january-2020"></a>Neue Bereitstellungsconnectors im Azure AD-Anwendungskatalog – Januar 2020
+
+**Typ:** Neues Feature  
+**Dienstkategorie**: Unternehmens-Apps  
+**Produktfunktion**: Integration von Drittanbieteranwendungen
+ 
+Sie können ab sofort das Erstellen, Aktualisieren und Löschen von Benutzerkonten für diese neu integrierten Apps automatisieren:
+
+- [Promapp]( https://docs.microsoft.com/azure/active-directory/saas-apps/promapp-provisioning-tutorial)
+- [Zscaler Private Access](https://docs.microsoft.com/azure/active-directory/saas-apps/zscaler-private-access-provisioning-tutorial)
+
+Weitere Informationen dazu, wie Sie Ihre Organisation durch die automatisierte Bereitstellung von Benutzerkonten besser schützen können, finden Sie unter [Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für SaaS-Anwendungen mit Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning).
+
+---
+ 
+### <a name="new-federated-apps-available-in-azure-ad-app-gallery---january-2020"></a>Neue Verbund-Apps im Azure AD-Anwendungskatalog – Januar 2020
+
+**Typ:** Neues Feature  
+**Dienstkategorie**: Unternehmens-Apps  
+**Produktfunktion**: Integration von Drittanbieteranwendungen
+ 
+Im Januar 2020 haben wir die folgenden 33 neuen Apps mit Verbundunterstützung in den App-Katalog aufgenommen: 
+
+[JOSA](https://docs.microsoft.com/azure/active-directory/saas-apps/josa-tutorial), [Fastly Edge Cloud](https://docs.microsoft.com/azure/active-directory/saas-apps/fastly-edge-cloud-tutorial), [Terraform Enterprise](https://docs.microsoft.com/azure/active-directory/saas-apps/terraform-enterprise-tutorial), [Spintr SSO](https://docs.microsoft.com/azure/active-directory/saas-apps/spintr-sso-tutorial), [Abibot Netlogistik](https://azuremarketplace.microsoft.com/marketplace/apps/aad.abibotnetlogistik), [SkyKick](https://login.skykick.com/login?state=g6Fo2SBTd3M5Q0xBT0JMd3luS2JUTGlYN3pYTE1remJQZnR1c6N0aWTZIDhCSkwzYVQxX2ZMZjNUaWxNUHhCSXg2OHJzbllTcmYto2NpZNkgM0h6czk3ZlF6aFNJV1VNVWQzMmpHeFFDbDRIMkx5VEc&client=3Hzs97fQzhSIWUMUd32jGxQCl4H2LyTG&protocol=oauth2&audience=https://papi.skykick.com&response_type=code&redirect_uri=https://portal.skykick.com/callback&scope=openid%20profile%20offline_access), [Upshotly](https://docs.microsoft.com/azure/active-directory/saas-apps/upshotly-tutorial), [LeaveBot](https://leavebot.io/#home), [DataCamp](https://docs.microsoft.com/azure/active-directory/saas-apps/datacamp-tutorial), [TripActions](https://docs.microsoft.com/azure/active-directory/saas-apps/tripactions-tutorial), [SmartWork](https://www.intumit.com/english/SmartWork.html), [Dotcom-Monitor](https://docs.microsoft.com/azure/active-directory/saas-apps/dotcom-monitor-tutorial), [SSOGEN – Azure AD SSO Gateway for Oracle E-Business Suite – EBS, PeopleSoft und JDE](https://docs.microsoft.com/azure/active-directory/saas-apps/ssogen-tutorial), [Hosted MyCirqa SSO](https://docs.microsoft.com/azure/active-directory/saas-apps/hosted-mycirqa-sso-tutorial), [Yuhu Property Management Platform](https://docs.microsoft.com/azure/active-directory/saas-apps/yuhu-property-management-platform-tutorial), [LumApps](https://sites.lumapps.com/login), [Upwork Enterprise](https://docs.microsoft.com/azure/active-directory/saas-apps/upwork-enterprise-tutorial), [Talentsoft](https://docs.microsoft.com/azure/active-directory/saas-apps/talentsoft-tutorial), [SmartDB for Microsoft Teams](http://teams.smartdb.jp/login/), [PressPage](https://docs.microsoft.com/azure/active-directory/saas-apps/presspage-tutorial), [ContractSafe Saml2 SSO](https://docs.microsoft.com/azure/active-directory/saas-apps/contractsafe-saml2-sso-tutorial), [Maxient Conduct Manager Software](https://docs.microsoft.com/azure/active-directory/saas-apps/maxient-conduct-manager-software-tutorial), [Helpshift](https://docs.microsoft.com/azure/active-directory/saas-apps/helpshift-tutorial), [PortalTalk 365](https://www.portaltalk.com/), [CoreView](https://portal.coreview.com/), [Squelch Cloud Office365 Connector](https://laxmi.squelch.io/login), [PingFlow Authentication](https://app-staging.pingview.io/), [ PrinterLogic SaaS](https://docs.microsoft.com/azure/active-directory/saas-apps/printerlogic-saas-tutorial), [Taskize Connect](https://docs.microsoft.com/azure/active-directory/saas-apps/taskize-connect-tutorial), [Sandwai](https://app.sandwai.com/), [EZRentOut](https://docs.microsoft.com/azure/active-directory/saas-apps/ezrentout-tutorial), [AssetSonar](https://docs.microsoft.com/azure/active-directory/saas-apps/assetsonar-tutorial), [Akari Virtual Assistant](https://akari.io/akari-virtual-assistant/)
+
+Weitere Informationen zu den Apps finden Sie unter [SaaS-Anwendungsintegration mit Azure Active Directory](https://aka.ms/appstutorial). Weitere Informationen zum Listen Ihrer Anwendung im Azure AD-App-Katalog finden Sie unter [Listen Ihrer Anwendung im Azure Active Directory-Anwendungskatalog](https://aka.ms/azureadapprequest).
+
+---
+
+### <a name="two-new-identity-protection-detections"></a>Zwei neue Erkennungen in Identity Protection
+
+**Typ:** Neue Funktion  
+**Dienstkategorie**: Identitätsschutz  
+**Produktfunktion**: Identitätssicherheit und -schutz
+ 
+Identity Protection wurde um zwei neue, mit der Anmeldung verknüpfte Erkennungstypen ergänzt: „Verdächtige Regeln zur Posteingangsänderung“ und „Unmöglicher Ortswechsel“. Diese Offline-Erkennungen werden von MACS (Microsoft Cloud App Security) erkannt und beeinflussen das Benutzer- und Anmelderisiko in Identity Protection. Weitere Informationen zu diesen Erkennungen finden Sie unter [Risikotypen für die Anmeldung](https://docs.microsoft.com/azure/active-directory/identity-protection/concept-identity-protection-risks#sign-in-risk).
+ 
+---
+ 
+### <a name="breaking-change-uri-fragments-will-not-be-carried-through-the-login-redirect"></a>Breaking Change: URI-Fragmente werden nicht über die Anmeldeumleitung übergeben
+
+**Typ:** Geänderte Funktion  
+**Dienstkategorie**: Authentifizierungen (Anmeldungen)  
+**Produktfunktion**: Benutzerauthentifizierung
+ 
+<a name="starting-on-february-8-2020-when-a-request-is-sent-to-loginmicrosoftonlinecom-to-sign-in-a-user-the-service-will-append-an-empty-fragment-to-the-request--this-prevents-a-class-of-redirect-attacks-by-ensuring-that-the-browser-wipes-out-any-existing-fragment-in-the-request-no-application-should-have-a-dependency-on-this-behavior-for-more-information-see-breaking-changes-in-the-microsoft-identity-platform-documentation"></a>Ab dem 8. Februar 2020 fügt der Dienst ein leeres Fragment an die Anforderung an, wenn eine Anforderung an login.microsoftonline.com gesendet wird, um einen Benutzer anzumelden.  Dadurch wird eine Klasse von Umleitungsangriffen verhindert, indem sichergestellt wird, dass der Browser jedes vorhandene Fragment in der Anforderung bereinigt. Keine Anwendung sollte eine Abhängigkeit von diesem Verhalten aufweisen. Weitere Informationen finden Sie unter [Breaking Changes](https://docs.microsoft.com/azure/active-directory/develop/reference-breaking-changes#february-2020) in der Dokumentation zu Microsoft Identity Platform.
 ---
 
 ## <a name="december-2019"></a>Dezember 2019
@@ -51,7 +131,7 @@ Weitere Informationen zur Einrichtung der eingehenden SAP SuccessFactors-Bereits
 ### <a name="support-for-customized-emails-in-azure-ad-b2c-public-preview"></a>Unterstützung für angepasste E-Mails in Azure AD B2C (Public Preview)
 
 **Typ:** Neues Feature  
-**Dienstkategorie:** B2C – Verwaltung von Endbenutzeridentitäten  
+**Dienstkategorie**: B2C – Kundenidentitätsverwaltung  
 **Produktfunktion:** B2B/B2C
 
 Mit Azure AD B2C können Sie nun angepasste E-Mails erstellen, wenn Ihre Benutzer sich für Ihre Apps registrieren. Mithilfe von Anzeigesteuerelementen (Vorschauversion) und einem E-Mail-Drittanbieter wie [SendGrid](https://sendgrid.com/), [SparkPost](https://sparkpost.com/) oder einer benutzerdefinierten REST-API können Sie eigene Vorlagen, **Absenderadressen** und Betrefftexte verwenden. Darüber hinaus werden die Lokalisierung und benutzerdefinierte Einstellungen für einmalige Kennwörter unterstützt.
@@ -77,7 +157,7 @@ Weitere Informationen zu den neuen Sicherheitsstandards finden Sie unter [Was si
 ### <a name="support-for-the-samesite-attribute-and-chrome-80"></a>Unterstützung für das SameSite-Attribut und Chrome 80
 
 **Typ:** Plan für Änderung  
-**Dienstkategorie:** Authentifizierungen (Anmeldungen)  
+**Dienstkategorie**: Authentifizierungen (Anmeldungen)  
 **Produktfunktion:** Benutzerauthentifizierung
 
 Im Rahmen des standardmäßig sicheren Modells für Cookies wird geändert, wie der Chrome 80-Browser Cookies ohne `SameSite`-Attribut verarbeitet. Cookies ohne das `SameSite`-Attribut werden so behandelt, als wäre dieses auf `SameSite=Lax` festgelegt. Dadurch blockiert Chrome bestimmte domänenübergreifenden Cookiefreigaben, von denen Ihre App möglicherweise abhängig ist. Sie können das bisherige Verhalten von Chrome beibehalten, indem Sie das `SameSite=None`-Attribut verwenden und das `Secure`-Attribut hinzufügen, damit auf seitenübergreifende Cookies nur über HTTPS-Verbindungen zugegriffen werden kann. Diese Änderung in Chrome soll bis zum 4. Februar 2020 abgeschlossen sein.
@@ -109,7 +189,7 @@ Weitere Informationen und das downloadbare Hotfixpaket finden Sie unter [Microso
 ### <a name="new-ad-fs-app-activity-report-to-help-migrate-apps-to-azure-ad-public-preview"></a>Neuer AD FS-Bericht zu App-Aktivitäten zum Migrieren von Apps zu Azure AD (Public Preview)
 
 **Typ:** Neues Feature  
-**Dienstkategorie:** Unternehmens-Apps  
+**Dienstkategorie**: Unternehmens-Apps  
 **Produktfunktion:** SSO
 
 Verwenden Sie den neuen Bericht zu App-Aktivitäten für Active Directory-Verbunddienste (AD FS) im Azure-Portal, um zu ermitteln, welche Ihrer Apps zu Azure AD migriert werden können. Im Bericht werden alle AD FS-Apps im Hinblick auf die Kompatibilität mit Azure AD bewertet und auf Probleme überprüft sowie Anleitungen zum Vorbereiten einzelner Apps für die Migration bereitgestellt.
@@ -133,7 +213,7 @@ Weitere Informationen finden Sie unter [Konfigurieren des Workflows für die Adm
 ### <a name="new-azure-ad-app-registrations-token-configuration-experience-for-managing-optional-claims-public-preview"></a>Neue Option „Azure AD App Registrations Token configuration“ (Konfiguration von Azure AD-App-Registrierungstoken) zur Verwaltung optionaler Ansprüche (Public Preview)
 
 **Typ:** Neues Feature  
-**Dienstkategorie:** Andere  
+**Dienstkategorie:** Sonstige  
 **Produktfunktion:** Entwickleroberfläche
 
 Das neue Blatt **Azure AD App Registrations Token configuration** (Konfiguration von Azure AD-App-Registrierungstoken) im Azure-Portal zeigt App-Entwicklern eine dynamische Liste optionaler Ansprüche für ihre Apps an. Mit den neuen Optionen können Sie die Migration von Azure AD-Apps optimieren und Fehlkonfigurationen bei optionalen Ansprüchen auf ein Minimum reduzieren.
@@ -145,7 +225,7 @@ Weitere Informationen finden Sie unter [Bereitstellen optionaler Ansprüche für
 ### <a name="new-two-stage-approval-workflow-in-azure-ad-entitlement-management-public-preview"></a>Neuer zweistufiger Genehmigungsworkflow in der Azure AD-Berechtigungsverwaltung (Public Preview)
 
 **Typ:** Neues Feature  
-**Dienstkategorie:** Andere  
+**Dienstkategorie:** Sonstige  
 **Produktfunktion:** Berechtigungsverwaltung
 
 Wir haben einen neuen zweistufigen Genehmigungsworkflow eingeführt, der es Ihnen ermöglicht, dass zwei genehmigende Personen die Anforderung eines Benutzers für den Zugriffs auf ein Paket genehmigen müssen. So können Sie z. B. festlegen, dass der Vorgesetzte des anfordernden Benutzers zunächst die Genehmigung erteilen muss. Anschließend muss der Ressourcenbesitzer die Genehmigung erteilen. Wenn eine der genehmigenden Personen keine Genehmigung verteilt, wird der Zugriff verweigert.
@@ -181,7 +261,7 @@ Weitere Informationen finden Sie unter [Hinzufügen von Google als Identitätsan
 ### <a name="microsoft-edge-mobile-support-for-conditional-access-and-single-sign-on-general-availability"></a>Microsoft Edge-Unterstützung für Mobilgeräte für bedingten Zugriff und einmaliges Anmelden (allgemeine Verfügbarkeit)
 
 **Typ:** Neues Feature  
-**Dienstkategorie:** Bedingter Zugriff  
+**Dienstkategorie**: Bedingter Zugriff  
 **Produktfunktion:** Identitätssicherheit und -schutz
 
 Azure AD für Microsoft Edge in iOS und Android unterstützt jetzt einmaliges Anmelden und bedingten Zugriff in Azure AD:
@@ -197,7 +277,7 @@ Weitere Informationen zum bedingten Zugriff und zum einmaligen Anmelden mit Micr
 ### <a name="azure-ad-entitlement-management-general-availability"></a>Azure AD-Berechtigungsverwaltung (allgemeine Verfügbarkeit)
 
 **Typ:** Neues Feature  
-**Dienstkategorie:** Andere  
+**Dienstkategorie:** Sonstige  
 **Produktfunktion:** Berechtigungsverwaltung
 
 Die Azure AD-Berechtigungsverwaltung ist ein neues Identity-Governance-Feature, mit dem Organisationen Identitäts- und Zugriffslebenszyklen bedarfsgesteuert verwalten können. Mit diesem neuen Feature können Workflows für Zugriffsanforderungen, Zugriffszuweisungen, Überprüfungen und das Ablaufen von Gruppen, Apps und SharePoint Online-Websites automatisiert werden.
@@ -211,8 +291,8 @@ Weitere Informationen finden Sie unter [Was ist die Azure AD-Berechtigungsverwal
 ### <a name="automate-user-account-provisioning-for-these-newly-supported-saas-apps"></a>Automatisieren der Bereitstellung von Benutzerkonten für diese neu unterstützten SaaS-Apps
 
 **Typ:** Neues Feature  
-**Dienstkategorie:** Unternehmens-Apps  
-**Produktfunktion:** Integration von Drittanbieterprodukten  
+**Dienstkategorie**: Unternehmens-Apps  
+**Produktfunktion**: Integration von Drittanbieteranwendungen  
 
 Sie können ab sofort das Erstellen, Aktualisieren und Löschen von Benutzerkonten für diese neu integrierten Apps automatisieren:
 
@@ -225,7 +305,7 @@ Weitere Informationen dazu, wie Sie Ihre Organisation durch die automatisierte B
 ### <a name="new-federated-apps-available-in-azure-ad-app-gallery---november-2019"></a>Neue Verbund-Apps im Azure AD-App-Katalog verfügbar (November 2019)
 
 **Typ:** Neues Feature  
-**Dienstkategorie:** Unternehmens-Apps  
+**Dienstkategorie**: Unternehmens-Apps  
 **Produktfunktion:** Integration von Drittanbieterprodukten
 
 Im November 2019 haben wir diese 21 neuen Apps mit Verbundunterstützung in unseren App-Katalog aufgenommen:
@@ -239,7 +319,7 @@ Weitere Informationen zu den Apps finden Sie unter [SaaS-Anwendungsintegration m
 ### <a name="new-and-improved-azure-ad-application-gallery"></a>Neuer und verbesserter Azure AD-App-Katalog
 
 **Typ:** Geändertes Feature  
-**Dienstkategorie:** Unternehmens-Apps  
+**Dienstkategorie**: Unternehmens-Apps  
 **Produktfunktion:** SSO
 
 Wir haben den Azure AD-App-Katalog überarbeitet, damit Sie einfacher nach vorintegrierten Apps suchen können, die die Bereitstellung, OpenID Connect und SAML in Ihrem Azure Active Directory-Mandanten unterstützen.
@@ -251,7 +331,7 @@ Weitere Informationen finden Sie unter [Hinzufügen einer Anwendung zum Azure Ac
 ### <a name="increased-app-role-definition-length-limit-from-120-to-240-characters"></a>Erhöhtes Zeichenlimit für App-Rollendefinitionen (240 statt 120 Zeichen)
 
 **Typ:** Geändertes Feature  
-**Dienstkategorie:** Unternehmens-Apps  
+**Dienstkategorie**: Unternehmens-Apps  
 **Produktfunktion:** SSO
 
 Kunden haben uns gemeldet, dass das Zeichenlimit von 120 Zeichen für die App-Rollendefinition bei einigen Apps und Diensten zu kurz ist. Deshalb haben wir die maximale Länge für Rollendefinitionen auf 240 Zeichen erhöht.
@@ -1026,7 +1106,7 @@ Weitere Informationen dazu, wie Sie Ihre Organisation durch die automatisierte B
 
 Wir haben die Azure AD-Bereitstellungsbenutzeroberfläche mit einer neuen Statusanzeige aktualisiert, die Ihnen anzeigt, wie weit Sie im Prozess der Benutzerbereitstellung fortgeschritten sind. Diese aktualisierte Benutzeroberfläche liefert auch Informationen über die Anzahl der Benutzer, die während des aktuellen Zyklus bereitgestellt wurden, sowie darüber, wie viele Benutzer bisher bereitgestellt wurden.
 
-Weitere Informationen finden Sie unter [Ermitteln, wann ein bestimmter Benutzer auf eine Anwendung zugreifen kann](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user).
+Weitere Informationen finden Sie unter [Ermitteln, wann ein bestimmter Benutzer auf eine Anwendung zugreifen kann](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user).
 
 ---
 
@@ -3323,11 +3403,11 @@ Weitere Informationen finden Sie unter [Mit moderner Authentifizierung unterstü
 
 **Typ:** Geändertes Feature-**Dienstkategorie:** Privileged Identity Management-**Produktfunktion:** Privileged Identity Management
 
-Mit der aktualisierten Public Preview von Azure AD Privileged Identity Management (PIM) für die rollenbasierte Zugriffssteuerung in Azure (RBAC) haben Sie nun folgende Möglichkeiten:
+Mit der aktualisierten Public Preview von Azure AD Privileged Identity Management (PIM) für die rollenbasierte Zugriffssteuerung in Azure (Azure RBAC) haben Sie nun folgende Möglichkeiten:
 
 * Nicht mehr Verwaltung als nötig
 * Erfordern der Genehmigung zum Aktivieren von Ressourcenrollen
-* Planen einer zukünftigen Rollenaktivierung, die eine Genehmigung für Azure AD- und Azure RBAC-Rollen erfordert
+* Planen einer zukünftigen Rollenaktivierung, die eine Genehmigung für Azure AD- und Azure-Rollen erfordert
 
 Weitere Informationen finden Sie unter [PIM für Azure-Ressourcen (Vorschauversion)](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/azure-pim-resource-rbac).
 

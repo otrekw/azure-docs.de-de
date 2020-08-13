@@ -6,14 +6,14 @@ ms.service: storage
 ms.topic: include
 ms.date: 07/16/2020
 ms.author: tamram
-ms.openlocfilehash: c222869df561a9a36ebd69eb9ae09fa688ba0086
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 96d8100f2cffcfb001a693575128ce19e742225d
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518678"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534130"
 ---
-Bevor Sie einem Sicherheitsprinzipal eine RBAC-Rolle zuweisen, legen Sie den Zugriffsbereich fest, den der Sicherheitsprinzipal haben soll. Es hat sich als am besten bewährt, stets nur den kleinstmöglichen Umfang an Zugriffsrechten zu gewähren.
+Bevor Sie einem Sicherheitsprinzipal eine Azure-Rolle zuweisen, legen Sie den Zugriffsbereich fest, den der Sicherheitsprinzipal haben soll. Es hat sich als am besten bewährt, stets nur den kleinstmöglichen Umfang an Zugriffsrechten zu gewähren.
 
 In der folgenden Liste werden die Ebenen beschrieben, auf denen Sie den Zugriff auf Azure-Blob- und -Warteschlangenressourcen einschränken können, beginnend mit dem kleinstmöglichen Umfang:
 
@@ -24,4 +24,4 @@ In der folgenden Liste werden die Ebenen beschrieben, auf denen Sie den Zugriff 
 - **Das Abonnement**. Bei diesem Umfang gilt eine Rollenzuweisung für alle Container oder Warteschlangen in allen Speicherkonten in allen Ressourcengruppen des Abonnements.
 - **Eine Verwaltungsgruppe**. Bei diesem Umfang gilt eine Rollenzuweisung für alle Container oder Warteschlangen in allen Speicherkonten in allen Ressourcengruppen und allen Abonnements in der Ressourcengruppe.
 
-Weitere Informationen zur RBAC-Rollenzuweisung und zum Umfang finden Sie unter [Was ist die rollenbasierte Zugriffssteuerung in Azure (Azure Role-Based Access Control, Azure RBAC)?](../articles/role-based-access-control/overview.md).
+Weitere Informationen zu Azure-Rollenzuweisungen und zum Umfang finden Sie unter [Was ist die rollenbasierte Zugriffssteuerung in Azure (Azure Role-Based Access Control, Azure RBAC)?](../articles/role-based-access-control/overview.md).

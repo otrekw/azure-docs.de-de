@@ -8,12 +8,12 @@ ms.date: 07/07/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 4ce23e9da84d01a288c1c37c6a6d884db2ed3969
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: ce8f7347e4813e72ede426ab17f09221ab859136
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86077557"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87015407"
 ---
 # <a name="add-a-service-principal-to-the-server-administrator-role"></a>Hinzufügen eines Dienstprinzipals zur Serveradministratorrolle 
 
@@ -44,7 +44,7 @@ Sie können mit SQL Server Management Studio (SSMS) Serveradministrator konfigur
 
 ## <a name="using-a-resource-manager-template"></a>Verwenden einer Resource Manager-Vorlage
 
-Sie können Serveradministratoren auch durch Bereitstellen des Analysis Services-Servers mithilfe einer Azure Resource Manager-Vorlage konfigurieren. Die Identität, die die Bereitstellung ausführt, muss zu der Rolle **Mitwirkender** für die Ressource in der [Rollenbasierten Zugriffssteuerung von Azure (Azure Role-Based Access Control, RBAC)](../role-based-access-control/overview.md) gehören.
+Sie können Serveradministratoren auch durch Bereitstellen des Analysis Services-Servers mithilfe einer Azure Resource Manager-Vorlage konfigurieren. Die Identität, die die Bereitstellung ausführt, muss zu der Rolle **Mitwirkender** für die Ressource in der [rollenbasierten Zugriffssteuerung von Azure (Azure Role-Based Access Control, Azure RBAC)](../role-based-access-control/overview.md) gehören.
 
 > [!IMPORTANT]
 > Der Dienstprinzipal muss mit dem Format `app:{service-principal-client-id}@{azure-ad-tenant-id}` hinzugefügt werden.
@@ -119,5 +119,3 @@ Mit dieser Client-ID können Sie dann in Verbindung mit der Mandanten-ID der Lis
 
 * [Herunterladen des SQL Server PowerShell-Moduls](https://docs.microsoft.com/sql/ssms/download-sql-server-ps-module)   
 * [Herunterladen von SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)   
-
-

@@ -8,13 +8,13 @@ ms.topic: conceptual
 author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
-ms.date: 05/19/2020
-ms.openlocfilehash: 2e1f98cffd17d0a8823cc5849830667fcdad1212
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 07/27/2020
+ms.openlocfilehash: 346a59f085e766fef09d73b9e7baa03dad510148
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86515222"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321716"
 ---
 # <a name="create-an-azure-stream-analytics-job-in-azure-sql-edge-preview"></a>Erstellen eines Azure Stream Analytics-Auftrags in Azure SQL Edge (Vorschau) 
 
@@ -43,7 +43,6 @@ Azure SQL Edge unterstützt derzeit nur die folgenden Datenquellen als Streamein
 |------------------|-------|--------|------------------|
 | Azure IoT Edge Hub | J | J | Datenquelle zum Lesen und Schreiben von Streamingdaten in einen Azure IoT Edge Hub. Weitere Informationen finden Sie unter [IoT Edge Hub](https://docs.microsoft.com/azure/iot-edge/iot-edge-runtime#iot-edge-hub).|
 | SQL-Datenbank | N | J | Datenquellenverbindung, um Streamingdaten in SQL-Datenbank zu schreiben. Die Datenbank kann eine lokale Datenbank in Azure SQL Edge oder eine Remotedatenbank in SQL Server oder Azure SQL-Datenbank sein.|
-| Azure Blob Storage | N | J | Datenquelle zum Schreiben von Daten in ein Blob in einem Azure-Speicherkonto. |
 | Kafka | J | N | Datenquelle zum Lesen von Streamingdaten aus einem Kafka-Thema. Dieser Adapter ist zurzeit nur für Intel- oder AMD-Versionen von Azure SQL Edge verfügbar. Er ist für die ARM64-Version von Azure SQL Edge nicht verfügbar.|
 
 ### <a name="example-create-an-external-stream-inputoutput-object-for-azure-iot-edge-hub"></a>Beispiel: Erstellen eines externen Streameingabe-/-ausgabeobjekts für Azure IoT Edge Hub
@@ -54,7 +53,8 @@ Im folgenden Beispiel wird ein externes Streamobjekt für Azure IoT Edge Hub ers
 
     ```sql
     Create External file format InputFileFormat
-    WITH (  
+    WITH 
+    (  
        format_type = JSON,
     )
     go
@@ -63,8 +63,10 @@ Im folgenden Beispiel wird ein externes Streamobjekt für Azure IoT Edge Hub ers
 2. Erstellen Sie eine externe Datenquelle für den Azure IoT Edge Hub. Das folgende T-SQL-Skript erstellt eine Datenquellenverbindung mit einem IOT Edge Hub, der auf demselben Docker-Host wie Azure SQL Edge ausgeführt wird.
 
     ```sql
-    CREATE EXTERNAL DATA SOURCE EdgeHubInput WITH (
-    LOCATION = 'edgehub://'
+    CREATE EXTERNAL DATA SOURCE EdgeHubInput 
+    WITH 
+    (
+        LOCATION = 'edgehub://'
     )
     go
     ```
@@ -72,13 +74,15 @@ Im folgenden Beispiel wird ein externes Streamobjekt für Azure IoT Edge Hub ers
 3. Erstellen Sie das externe Streamobjekt für den Azure IoT Edge Hub. Das folgende T-SQL-Skript erstellt ein Streamobjekt für den IoT Edge Hub. Im Fall eines IoT Edge Hub-Streamobjekts ist der LOCATION-Parameter der Name des IoT Edge Hub-Themas oder -Kanals für Lese- bzw. Schreibvorgänge.
 
     ```sql
-    CREATE EXTERNAL STREAM MyTempSensors WITH (
-    DATA_SOURCE = EdgeHubInput,
-    FILE_FORMAT = InputFileFormat,
-    LOCATION = N'TemperatureSensors',
-    INPUT_OPTIONS = N'',
-    OUTPUT_OPTIONS = N''
-    )
+    CREATE EXTERNAL STREAM MyTempSensors 
+    WITH 
+    (
+        DATA_SOURCE = EdgeHubInput,
+        FILE_FORMAT = InputFileFormat,
+        LOCATION = N'TemperatureSensors',
+        INPUT_OPTIONS = N'',
+        OUTPUT_OPTIONS = N''
+    );
     go
     ```
 
@@ -107,9 +111,11 @@ Im folgenden Beispiel wird ein externes Streamobjekt für die lokale Datenbank i
     * Werden die zuvor erstellten Anmeldeinformationen verwendet.
 
     ```sql
-    CREATE EXTERNAL DATA SOURCE LocalSQLOutput WITH (
-    LOCATION = 'sqlserver://tcp:.,1433'
-    ,CREDENTIAL = SQLCredential
+    CREATE EXTERNAL DATA SOURCE LocalSQLOutput 
+    WITH 
+    (
+        LOCATION = 'sqlserver://tcp:.,1433',
+        CREDENTIAL = SQLCredential
     )
     go
     ```
@@ -117,12 +123,52 @@ Im folgenden Beispiel wird ein externes Streamobjekt für die lokale Datenbank i
 4. Erstellen Sie das externe Streamobjekt. Im folgenden Beispiel wird ein externes Streamobjekt erstellt, das auf eine Tabelle *dbo.TemperatureMeasurements* in der Datenbank *MySQLDatabase* verweist.
 
     ```sql
-    CREATE EXTERNAL STREAM TemperatureMeasurements WITH (
-    DATA_SOURCE = LocalSQLOutput,
-    LOCATION = N'MySQLDatabase.dbo.TemperatureMeasurements',
-    INPUT_OPTIONS = N'',
-    OUTPUT_OPTIONS = N''
+    CREATE EXTERNAL STREAM TemperatureMeasurements 
+    WITH 
+    (
+        DATA_SOURCE = LocalSQLOutput,
+        LOCATION = N'MySQLDatabase.dbo.TemperatureMeasurements',
+        INPUT_OPTIONS = N'',
+        OUTPUT_OPTIONS = N''
+    );
+    ```
+
+### <a name="example-create-an-external-stream-object-for-kafka"></a>Beispiel: Erstellen eines externen Streamobjekts für Kafka
+
+Im folgenden Beispiel wird ein externes Streamobjekt für die lokale Datenbank in Azure SQL Edge erstellt. In diesem Beispiel wird davon ausgegangen, dass der Kafka-Server für den anonymen Zugriff konfiguriert ist. 
+
+1. Erstellen Sie mit CREATE EXTERNAL DATA SOURCE eine externe Datenquelle. Im folgenden Beispiel:
+
+    ```sql
+    Create EXTERNAL DATA SOURCE [KafkaInput] 
+    With
+    (
+        LOCATION = N'kafka://<kafka_bootstrap_server_name_ip>:<port_number>'
     )
+    GO
+    ```
+2. Erstellen Sie ein externes Dateiformat für die Kafka-Eingabe. Im folgenden Beispiel wurde ein JSON-Dateiformat mit GZIP-Komprimierung erstellt: 
+
+   ```sql
+   CREATE EXTERNAL FILE FORMAT JsonGzipped  
+    WITH 
+    (  
+        FORMAT_TYPE = JSON , 
+        DATA_COMPRESSION = 'org.apache.hadoop.io.compress.GzipCodec' 
+    )
+   ```
+    
+3. Erstellen Sie das externe Streamobjekt. Im folgenden Beispiel wird ein externes Streamobjekt erstellt, das auf das Kafka-Thema `*TemperatureMeasurement*` verweist:
+
+    ```sql
+    CREATE EXTERNAL STREAM TemperatureMeasurement 
+    WITH 
+    (  
+        DATA_SOURCE = KafkaInput, 
+        FILE_FORMAT = JsonGzipped,
+        LOCATION = 'TemperatureMeasurement',     
+        INPUT_OPTIONS = 'PARTITIONS: 10' 
+    ); 
     ```
 
 ## <a name="create-the-streaming-job-and-the-streaming-queries"></a>Erstellen des Streamingauftrags und der Streamingabfragen

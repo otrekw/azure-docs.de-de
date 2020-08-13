@@ -6,13 +6,13 @@ ms.author: nimoolen
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 06/02/2020
-ms.openlocfilehash: 27de2d3926a1f03cbd9169216e8f68c8ca81f2a5
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.date: 07/29/2020
+ms.openlocfilehash: d28cd7a7edd5d6405761bf21ee87ec39dc9ec9cb
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84298600"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448542"
 ---
 # <a name="data-flow-script-dfs"></a>Datenflussskript (DFS)
 
@@ -202,6 +202,14 @@ aggregate(updates = countIf(isUpdate(), 1),
         inserts = countIf(isInsert(), 1),
         upserts = countIf(isUpsert(), 1),
         deletes = countIf(isDelete(),1)) ~> RowCount
+```
+
+### <a name="distinct-row-using-all-columns"></a>Eindeutige Zeile mit allen Spalten
+Mit diesem Codeausschnitt wird dem Datenfluss eine neue Transformation für das Aggregieren hinzugefügt. Dabei werden alle eingehenden Spalten angenommen, ein Hash wird generiert, der für die Gruppierung zum Entfernen von Duplikaten verwendet wird, und anschließend wird das erste Vorkommen der einzelnen Duplikate als Ausgabe bereitgestellt. Sie müssen die Spalten nicht explizit benennen, da sie automatisch aus dem eingehenden Datenstrom generiert werden.
+
+```
+aggregate(groupBy(mycols = sha2(256,columns())),
+    each(match(true()), $$ = first($$))) ~> DistinctRows
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte

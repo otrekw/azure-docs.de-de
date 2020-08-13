@@ -12,16 +12,16 @@ ms.date: 5/4/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 55adff17445639ee5685613b418054075c704449
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0c5abf345fda9db4cc5123360245e42ea0ef40e1
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85477242"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88115032"
 ---
 # <a name="whats-new-for-authentication"></a>Neuerungen bei der Authentifizierung
 
->Erhalten Sie Benachrichtigungen über Aktualisierungen dieser Seite. Fügen Sie Ihrem RSS-Feedreader einfach [diese URL](https://docs.microsoft.com/api/search/rss?search=%22whats%20new%20for%20authentication%22&locale=en-us) hinzu.
+> Erhalten Sie Benachrichtigungen über Aktualisierungen dieser Seite, indem Sie die URL in Ihren RSS-Feedreader einfügen:<br/>`https://docs.microsoft.com/api/search/rss?search=%22whats%20new%20for%20authentication%22&locale=en-us`
 
 Für das Authentifizierungssystem werden fortlaufend Änderungen vorgenommen und Features hinzugefügt, um die Sicherheit und Einhaltung von Standards zu verbessern. Damit Sie auf dem neuesten Stand der aktuellen Entwicklungen bleiben, bietet dieser Artikel Informationen zu Folgendem:
 
@@ -49,7 +49,7 @@ Zurzeit sind keine geplant.  Nachfolgend finden Sie weitere Informationen zu den
 
 Am 1. Juni 2018 hat sich die offizielle Azure Active Directory (AAD)-Autorität für Azure Government von `https://login-us.microsoftonline.com` in `https://login.microsoftonline.us` geändert. Diese Änderung gilt auch für Microsoft 365 GCC High und DoD, die ebenfalls von Azure Government AAD bedient werden. Wenn Sie eine Anwendung in einem US Government-Mandanten besitzen, müssen Sie Ihre Anwendung aktualisieren, damit die Benutzer am `.us`-Endpunkt angemeldet werden.  
 
-Ab dem 5. Mai wird in Azure AD mit der Durchsetzung der Endpunktänderung begonnen. Government-Benutzer werden daran gehindert, sich mit dem öffentlichen Endpunkt (`microsoftonline.com`) bei in US Government-Mandanten gehosteten Apps anzumelden.  Bei betroffenen Apps wird der Fehler `AADSTS900439` - `USGClientNotSupportedOnPublicEndpoint` angezeigt. Dieser Fehler weist darauf hin, dass die App versucht, einen US Government-Benutzer beim öffentlichen Cloudendpunkt anzumelden. Wenn sich Ihre App in einem Mandanten in der öffentlichen Cloud befindet und US Government-Benutzer unterstützen soll, müssen Sie [Ihre App zur expliziten Unterstützung aktualisieren](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud). Dies setzt möglicherweise das Erstellen einer neuen App-Registrierung in der US Government-Cloud voraus. 
+Ab dem 5. Mai wird in Azure AD mit der Durchsetzung der Endpunktänderung begonnen. Government-Benutzer werden daran gehindert, sich mit dem öffentlichen Endpunkt (`microsoftonline.com`) bei in US Government-Mandanten gehosteten Apps anzumelden.  Bei betroffenen Apps wird der Fehler `AADSTS900439` - `USGClientNotSupportedOnPublicEndpoint` angezeigt. Dieser Fehler weist darauf hin, dass die App versucht, einen US Government-Benutzer beim öffentlichen Cloudendpunkt anzumelden. Wenn sich Ihre App in einem Mandanten in der öffentlichen Cloud befindet und US Government-Benutzer unterstützen soll, müssen Sie [Ihre App zur expliziten Unterstützung aktualisieren](./authentication-national-cloud.md). Dies setzt möglicherweise das Erstellen einer neuen App-Registrierung in der US Government-Cloud voraus. 
 
 Die Erzwingung dieser Änderung erfolgt über einen schrittweisen Rollout, der sich danach richtet, wie oft sich Benutzer der US Government-Cloud bei der Anwendung anmelden. Bei Apps, die US Government-Benutzer eher selten anmelden, erfolgt die Durchsetzung zuerst. Apps, die US Government-Benutzer sehr häufig anmelden, sind zuletzt von der Durchsetzung betroffen. Wir gehen davon aus, dass die Erzwingung für alle Apps im Juni 2020 abgeschlossen ist. 
 
@@ -98,7 +98,7 @@ Wenn eine Authentifizierungsantwort von login.microsoftonline.com über die HTTP
 
 **Betroffene Endpunkte:** v1.0 und v2.0
 
-**Betroffenes Protokoll:** Überall dort, wo POST verwendet wird ([Clientanmeldeinformationen](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-client-creds-grant-flow), [Einlösung von Autorisierungscodes](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-auth-code-flow), [ROPC](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth-ropc), [OBO](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow) und [Einlösung von Aktualisierungstoken](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-auth-code-flow#refresh-the-access-token))
+**Betroffenes Protokoll:** Überall dort, wo POST verwendet wird ([Clientanmeldeinformationen](./v2-oauth2-client-creds-grant-flow.md), [Einlösung von Autorisierungscodes](./v2-oauth2-auth-code-flow.md), [ROPC](./v2-oauth-ropc.md), [OBO](./v2-oauth2-on-behalf-of-flow.md) und [Einlösung von Aktualisierungstoken](./v2-oauth2-auth-code-flow.md#refresh-the-access-token))
 
 Ab der Woche vom 2. September werden Authentifizierungsanforderungen, die die POST-Methode verwenden, mit strengeren HTTP-Standards überprüft.  Insbesondere werden Leerzeichen und doppelte Anführungszeichen (") nicht mehr aus den Anforderungsformularwerten entfernt. Es wird nicht erwartet, dass diese Änderungen vorhandene Clients unterbrechen, und durch diese Änderungen wird sichergestellt, dass an Azure AD gesendete Anforderungen jedes Mal zuverlässig verarbeitet werden. In Zukunft (siehe oben) planen wir, doppelte Parameter zusätzlich abzulehnen und die BOM innerhalb von Anforderungen zu ignorieren.
 
@@ -113,9 +113,9 @@ Heute wird `?e=    "f"&g=h` wie `?e=f&g=h` analysiert, also `e` == `f`.  Durch d
 
 **Gültigkeitsdatum:** 26. Juli 2019
 
-**Betroffene Endpunkte:** [v1.0](https://docs.microsoft.com/azure/active-directory/develop/v1-oauth2-client-creds-grant-flow) und [v2.0](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-client-creds-grant-flow)
+**Betroffene Endpunkte:** [v1.0](../azuread-dev/v1-oauth2-client-creds-grant-flow.md) und [v2.0](./v2-oauth2-client-creds-grant-flow.md)
 
-**Betroffenes Protokoll:** [Clientanmeldeinformationen (reine App-Token)](https://docs.microsoft.com/azure/active-directory/develop/v1-oauth2-client-creds-grant-flow)
+**Betroffenes Protokoll:** [Clientanmeldeinformationen (reine App-Token)](../azuread-dev/v1-oauth2-client-creds-grant-flow.md)
 
 Ab dem 26. Juli gilt eine Sicherheitsänderung, mit der die Ausgabe von reinen App-Token (über die Zuweisung von Clientanmeldeinformationen) geändert wird. Bisher konnten Anwendungen Token zum Aufruf einer beliebigen anderen App abrufen, unabhängig vom Vorhandensein im Mandanten oder von genehmigten Rollen für diese Anwendung.  Dieses Verhalten wurde aktualisiert, sodass für Ressourcen (gelegentlich auch Web-APIs genannt) mit einem einzigen Mandanten (Standard) die Clientanwendung jetzt innerhalb des Ressourcenmandanten vorliegen muss.  Beachten Sie, dass eine vorhandene Zustimmung zwischen Client und API weiterhin nicht erforderlich ist. Ferner müssen Apps weiterhin eigene Autorisierungsüberprüfungen durchführen, um sicherzustellen, dass ein `roles`-Anspruch vorhanden ist und den erwarteten Wert für die API enthält.
 

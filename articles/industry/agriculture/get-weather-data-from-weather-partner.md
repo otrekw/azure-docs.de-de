@@ -5,16 +5,20 @@ author: sunasing
 ms.topic: article
 ms.date: 03/31/2020
 ms.author: sunasing
-ms.openlocfilehash: e6678eb2e738c206bbe67151361b594679d97b35
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 35acf4e9bd338a0e67b046a59d8884df0626e516
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281020"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87429256"
 ---
 # <a name="get-weather-data-from-weather-partners"></a>Abrufen von Wetterdaten von Partnern für Wetterdaten
 
-Azure FarmBeats unterstützt Sie beim Abrufen von Wetterdaten von Ihren entsprechenden Anbietern, indem Sie ein Docker-basiertes Connectorframework nutzen. Mit diesem Framework implementieren die Anbieter von Wetterdaten eine Docker-Instanz, die in FarmBeats integriert werden kann. Derzeit wird nur der Wetterdatenanbieter [DTN](https://www.dtn.com/dtn-content-integration/) unterstützt.
+Azure FarmBeats unterstützt Sie beim Abrufen von Wetterdaten von Ihren entsprechenden Anbietern, indem Sie ein Docker-basiertes Connectorframework nutzen. Mit diesem Framework implementieren die Anbieter von Wetterdaten eine Docker-Instanz, die in FarmBeats integriert werden kann. Derzeit wird der folgende Anbieter von Wetterdaten unterstützt.
+
+  ![FarmBeats-Partner](./media/get-sensor-data-from-sensor-partner/dtn-logo.png)
+  
+   [DTN](https://www.dtn.com/dtn-content-integration/)
 
 Die Wetterdaten können verwendet werden, um verwertbare Erkenntnisse zu generieren und KI/ML-Modelle in FarmBeats zu entwickeln.
 

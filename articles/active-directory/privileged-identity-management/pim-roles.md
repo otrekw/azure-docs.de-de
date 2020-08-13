@@ -14,12 +14,12 @@ ms.date: 05/11/2020
 ms.author: curtand
 ms.custom: pim ; H1Hack27Feb2017;oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7d1d7ad27c43a0f8b4bbb763a1eb933a63cec58e
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 80762511591d10bd2823101e2ff233fdd0f0eb00
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83115641"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495623"
 ---
 # <a name="roles-you-cant-manage-in-privileged-identity-management"></a>Rollen, die nicht in Privileged Identity Management verwaltet werden können
 
@@ -33,7 +33,7 @@ Die folgenden Administratorrollen klassischer Abonnements können Sie nicht in P
 - Dienstadministrator
 - Co-Administrator
 
-Weitere Informationen zu Administratorrollen klassischer Abonnements finden Sie unter [Administratorrollen für klassische Abonnements, Azure RBAC-Rollen und Azure AD-Administratorrollen](../../role-based-access-control/rbac-and-directory-admin-roles.md).
+Weitere Informationen zu Administratorrollen klassischer Abonnements finden Sie unter [Administratorrollen für klassische Abonnements, Azure-Rollen und Azure AD-Administratorrollen](../../role-based-access-control/rbac-and-directory-admin-roles.md).
 
 ## <a name="what-about-office-365-admin-roles"></a>Informationen zu Office 365-Administratorrollen
 

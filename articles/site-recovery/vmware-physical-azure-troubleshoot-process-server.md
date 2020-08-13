@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: troubleshooting
 ms.date: 09/09/2019
 ms.author: raynew
-ms.openlocfilehash: 7679148e195bd67ab5da58636552a684c25c31b0
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 4816b597d66aea3bbe7f834004f924b5108de939
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86131980"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87499754"
 ---
 # <a name="troubleshoot-the-process-server"></a>Problembehandlung des Prozessservers
 
@@ -91,7 +91,7 @@ Wenn kein Heartbeat vom Prozessserver (Fehlercode 806) vorhanden ist, führen Si
 
  Fehler bei der ersten und fortlaufenden Replikation werden häufig von Konnektivitätsproblemen zwischen Quellcomputern und dem Prozessserver oder zwischen dem Prozessserver und Azure verursacht. Diese Schritte werden in der folgenden Abbildung zusammengefasst, gefolgt von Verfahren zum Ausführen der einzelnen Schritte.
 
-![Problembehandlung der Konnektivität und Replikation](./media/vmware-physical-azure-troubleshoot-process-server/troubleshoot-connectivity-replication.png)
+![Flussdiagramm: Schritte zur Problembehandlung der Konnektivität und Replikation](./media/vmware-physical-azure-troubleshoot-process-server/troubleshoot-connectivity-replication.png)
 
 
 ## <a name="step-4-verify-time-sync-on-source-machine"></a>Schritt 4: Überprüfen der Zeitsynchronisierung auf dem Quellcomputer
@@ -170,7 +170,7 @@ Probleme mit Datenuploads, die von den Quellcomputern zum Prozessdienst blockier
   2. Klicken Sie auf der Registerkarte **Leistung** auf **Ressourcenmonitor öffnen**.
   3. Wählen Sie auf der Seite **Ressourcenmonitor** die Registerkarte **Netzwerk** aus. Überprüfen Sie unter **Prozess mit Netzwerkaktivität**, ob „cbengine.exe“ aktiv große Datenvolumen sendet.
 
-       ![Volumen unter „Prozesse mit Netzwerkaktivität“](./media/vmware-physical-azure-troubleshoot-process-server/cbengine.png)
+       ![Screenshot: Hoher Wert für Volumen unter „Prozesse mit Netzwerkaktivität“](./media/vmware-physical-azure-troubleshoot-process-server/cbengine.png)
 
   Wenn „cbengine.exe“ keine großen Datenmengen sendet, führen Sie die Schritte in den folgenden Abschnitten aus.
 
@@ -179,7 +179,7 @@ Probleme mit Datenuploads, die von den Quellcomputern zum Prozessdienst blockier
 1. Wählen Sie im Ressourcenmonitor **cbengine.exe** aus.
 2. Überprüfen Sie unter **TCP-Verbindungen**, ob eine Verbindung vom Prozessserver mit dem Azure-Speicher besteht.
 
-  ![Konnektivität zwischen „cbengine.exe“ und der URL von Azure Blob Storage](./media/vmware-physical-azure-troubleshoot-process-server/rmonitor.png)
+  ![Screenshot: Konnektivität zwischen „cbengine.exe“ und der URL von Azure Blob Storage](./media/vmware-physical-azure-troubleshoot-process-server/rmonitor.png)
 
 ### <a name="check-services"></a>Dienstüberprüfung
 

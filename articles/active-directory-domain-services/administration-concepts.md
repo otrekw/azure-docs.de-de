@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: iainfou
-ms.openlocfilehash: 4f1f6c60ef2e0ccdd3e166e2272fe917ead3ed2e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6266248b817485562c7ed2643b3dda5f32cecc53
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84735046"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87489672"
 ---
 # <a name="management-concepts-for-user-accounts-passwords-and-administration-in-azure-active-directory-domain-services"></a>Verwaltungskonzepte für Benutzerkonten, Kennwörter und die Verwaltung in Azure Active Directory Domain Services
 
@@ -70,7 +70,7 @@ In Azure AD DS enthält die Gesamtstruktur nur eine einzelne Domäne. Lokale A
 
 Eine verwaltete Domäne wird standardmäßig als *Benutzergesamtstruktur* erstellt. Mit dieser Art von Gesamtstruktur werden alle Objekte aus Azure AD synchronisiert – einschließlich aller in einer lokalen AD DS-Umgebung erstellten Benutzerkonten. Benutzerkonten können sich direkt bei der verwalteten Domäne authentifizieren, um sich beispielsweise bei einem in eine Domäne eingebundenen virtuellen Computer anzumelden. Eine Benutzergesamtstruktur ist geeignet, wenn die Kennworthashes synchronisiert werden können und Benutzer keine exklusiven Anmeldemethoden wie etwa die Smartcard-Authentifizierung verwenden.
 
-In einer *Ressourcengesamtstruktur* für Azure AD DS authentifizieren sich Benutzer über eine unidirektionale Gesamtstruktur-*Vertrauensstellung* von der lokalen AD DS-Instanz aus. Hierbei werden die Benutzerobjekte und Kennworthashes nicht mit Azure AD DS synchronisiert. Die Benutzerobjekte und Anmeldeinformationen sind nur in der lokalen AD DS-Instanz vorhanden. Mit diesem Ansatz können Unternehmen Ressourcen und Anwendungsplattformen in Azure hosten, die eine klassische Authentifizierung (beispielsweise LDAPS, Kerberos oder NTLM) benötigen, und gleichzeitig sämtliche Authentifizierungsprobleme oder -bedenken beseitigen. Azure AD DS-Ressourcengesamtstrukturen befinden sich derzeit in der Vorschauphase.
+In einer *Ressourcengesamtstruktur* für Azure AD DS authentifizieren sich Benutzer über eine unidirektionale Gesamtstruktur-*Vertrauensstellung* von der lokalen AD DS-Instanz aus. Hierbei werden die Benutzerobjekte und Kennworthashes nicht mit Azure AD DS synchronisiert. Die Benutzerobjekte und Anmeldeinformationen sind nur in der lokalen AD DS-Instanz vorhanden. Mit diesem Ansatz können Unternehmen Ressourcen und Anwendungsplattformen in Azure hosten, die eine klassische Authentifizierung (beispielsweise LDAPS, Kerberos oder NTLM) benötigen, und gleichzeitig sämtliche Authentifizierungsprobleme oder -bedenken beseitigen.
 
 Weitere Informationen zu Gesamtstrukturtypen in Azure AD DS finden Sie unter [Was sind Ressourcengesamtstrukturen?][concepts-forest] sowie unter [Wie funktionieren Gesamtstruktur-Vertrauensstellungen in Azure AD DS?][concepts-trust].
 
@@ -102,7 +102,7 @@ Je höher der SKU-Tarif, desto häufiger werden Sicherungsmomentaufnahmen erstel
 
 ### <a name="outbound-forest-trusts"></a>Ausgehende Gesamtstruktur-Vertrauensstellungen
 
-Im vorherigen Abschnitt wurde die unidirektionale ausgehende Gesamtstrukturvertrauensstellung von einer verwalteten Domäne zu einer lokalen AD DS-Umgebung (derzeit in der Vorschau verfügbar) beschrieben. Die SKU bestimmt die maximale Anzahl von Gesamtstrukturvertrauensstellungen, die Sie für eine verwaltete Domäne erstellen können. Überprüfen Sie Ihre Geschäfts- und Anwendungsanforderungen, um zu bestimmen, wie viele Vertrauensstellungen Sie tatsächlich benötigen, und wählen Sie die entsprechende Azure AD DS-SKU aus. Wenn sich Ihre geschäftlichen Anforderungen ändern und Sie zusätzliche Gesamtstrukturvertrauensstellungen erstellen müssen, können Sie zu einer anderen SKU wechseln.
+Im vorherigen Abschnitt wurde die unidirektionale ausgehende Gesamtstrukturvertrauensstellung von einer verwalteten Domäne zu einer lokalen AD DS-Umgebung beschrieben. Die SKU bestimmt die maximale Anzahl von Gesamtstrukturvertrauensstellungen, die Sie für eine verwaltete Domäne erstellen können. Überprüfen Sie Ihre Geschäfts- und Anwendungsanforderungen, um zu bestimmen, wie viele Vertrauensstellungen Sie tatsächlich benötigen, und wählen Sie die entsprechende Azure AD DS-SKU aus. Wenn sich Ihre geschäftlichen Anforderungen ändern und Sie zusätzliche Gesamtstrukturvertrauensstellungen erstellen müssen, können Sie zu einer anderen SKU wechseln.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

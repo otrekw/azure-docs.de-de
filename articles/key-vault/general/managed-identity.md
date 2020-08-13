@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: bb5288d043ab5638bb33c357cea55c64b03fcf1d
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: d2d4af5086e3cf4099013969cd359f8e11873c6d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81427722"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090619"
 ---
 # <a name="provide-key-vault-authentication-with-a-managed-identity"></a>Bereitstellen der Key Vault-Authentifizierung mit einer verwalteten Identität
 
@@ -35,7 +35,7 @@ Für diesen Leitfaden benötigen Sie die folgenden Ressourcen.
    - [Erstellen eines Schlüsseltresors mit Azure PowerShell](../secrets/quick-create-powershell.md)
    - [Erstellen eines Schlüsseltresors im Azure-Portal](../secrets/quick-create-portal.md)
 - Eine vorhandene App Service-Anwendung, der der Zugriff auf den Schlüsseltresor gewährt werden soll. Sie können schnell eine Anwendung erstellen, indem Sie die Schritte in der [App Service-Dokumentation](../../app-service/overview.md) ausführen.
-- [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) oder [Azure PowerShell](/powershell/azure/overview) Alternativ können Sie auch das [Azure-Portal](https://portal.azure.com) verwenden.
+- [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) oder [Azure PowerShell](/powershell/azure/) Alternativ können Sie auch das [Azure-Portal](https://portal.azure.com) verwenden.
 
 
 ## <a name="adding-a-system-assigned-identity"></a>Hinzufügen einer systemseitig zugewiesenen Identität 
@@ -52,7 +52,7 @@ Um eine verwaltete Entität im Portal einzurichten, erstellen Sie wie gewohnt zu
 
 1. Ändern Sie auf der Registerkarte **Systemseitig zugewiesen** den **Status** in **Ein**. Klicken Sie auf **Speichern**. 
 
-    ![](../media/managed-identity-system-assigned.png)
+   ![Screenshot: Speichern einer systemseitig zugewiesenen Identität](../media/managed-identity-system-assigned.png)
 
 ### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
 
@@ -100,7 +100,7 @@ Notieren Sie sich den Wert von `PrincipalId`, der im nächsten Abschnitt benöti
 
 1.  Klicken Sie auf **Hinzufügen**, um die neue Zugriffsrichtlinie hinzuzufügen.
 
-    ![](../media/managed-identity-access-policy.png)
+    ![Screenshot: Hinzufügen einer neuen Zugriffsrichtlinie im Azure-Portal](../media/managed-identity-access-policy.png)
 
 ### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
 

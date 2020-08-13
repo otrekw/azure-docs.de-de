@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: f4bfffe54fb87953ae737ecf83ea898cfe78743c
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 424a05d6a096538aa296bb11863702b816410fb9
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86040332"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87480644"
 ---
 # <a name="how-trust-relationships-work-for-resource-forests-in-azure-active-directory-domain-services"></a>Funktionsweise von Vertrauensstellungen für Ressourcengesamtstrukturen in Azure Active Directory Domain Services
 
@@ -280,7 +280,7 @@ Administratoren können *Active Directory-Domänen und -Vertrauensstellungen*, *
 
 Weitere Informationen zu Ressourcengesamtstrukturen finden Sie unter [Funktionsweise von Vertrauensstellungen für Ressourcengesamtstrukturen in Azure Active Directory Domain Services][concepts-trust].
 
-Informationen zu den ersten Schritten beim Erstellen einer verwalteten Domäne mit einer Ressourcengesamtstruktur finden Sie unter [Tutorial: Erstellen und Konfigurieren einer verwalteten Azure Active Directory Domain Services-Domäne][tutorial-create-advanced]. Danach können Sie die Schritte für [Erstellen einer ausgehenden Gesamtstruktur-Vertrauensstellung zu einer lokalen Domäne in Azure Active Directory Domain Services (Vorschauversion)][create-forest-trust] ausführen.
+Informationen zu den ersten Schritten beim Erstellen einer verwalteten Domäne mit einer Ressourcengesamtstruktur finden Sie unter [Tutorial: Erstellen und Konfigurieren einer verwalteten Azure Active Directory Domain Services-Domäne][tutorial-create-advanced]. Danach können Sie die Schritte für [Erstellen einer ausgehenden Gesamtstruktur-Vertrauensstellung zu einer lokalen Domäne in Azure Active Directory Domain Services][create-forest-trust] ausführen.
 
 <!-- LINKS - INTERNAL -->
 [concepts-trust]: concepts-forest-trust.md

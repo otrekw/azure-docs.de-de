@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 05/28/2020
-ms.openlocfilehash: b01d6c36b31ef4f03522d03ca327439cfa31be8d
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 8e3657128ddcff7f9436398ac4bcc6e220b86168
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373741"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87552474"
 ---
 # <a name="featurization-in-automated-machine-learning"></a>Featurisierung mit automatisiertem maschinellem Lernen
 
@@ -64,7 +64,7 @@ In der folgenden Tabelle sind die Verfahren zusammengefasst, die automatisch auf
 | ------------- | ------------- |
 |**Löschen von Features mit hoher Kardinalität oder ohne Varianz*** |Löschen Sie diese Features aus Trainings-und Validierungssätzen. Gilt für Features, denen alle Werte fehlen, die denselben Wert für alle Zeilen haben oder die eine sehr hohe Kardinalität (z. B. Hashes, IDs oder GUIDs) aufweisen.|
 |**Imputieren von fehlenden Werten*** |Bei numerischen Features werden fehlende Werte mit dem Durchschnitt der Werte in der Spalte imputiert.<br/><br/>Bei kategorischen Features werden fehlende Werte mit dem am häufigsten vorkommenden Wert imputiert.|
-|**Generieren zusätzlicher Features*** |Für DateTime-Funktionen: Jahr, Monat, Tag, Tag der Woche, Tag des Jahres, Quartal, Woche des Jahres, Stunde, Minute, Sekunde.<br/><br/>Für Text-Funktionen: Ausdruckshäufigkeit basierend auf Unigrammen, Bigrammen und Trigrammen. Informieren Sie sich, [wie Sie hierzu BERT verwenden](#bert-integration).|
+|**Generieren zusätzlicher Features*** |Für DateTime-Funktionen: Jahr, Monat, Tag, Tag der Woche, Tag des Jahres, Quartal, Woche des Jahres, Stunde, Minute, Sekunde.<br><br> *Für Vorhersageaufgaben* werden diese zusätzlichen DateTime-Features erstellt: ISO-Jahr, Halb – Halbjahr, Kalendermonat als Zeichenfolge, Wocke, Wochentag als Zeichenfolge, Quartalstag, Tag des Jahres, AM/PM (0, wenn die Stunde vor Mittag ist (12 pm), andernfalls 1), AM/PM als Zeichenfolge, Tageszeit (12-Stunden-Basis)<br/><br/>Für Text-Funktionen: Ausdruckshäufigkeit basierend auf Unigrammen, Bigrammen und Trigrammen. Informieren Sie sich, [wie Sie hierzu BERT verwenden](#bert-integration).|
 |**Transformieren und Codieren***|Numerische Features mit wenigen eindeutigen Werten werden in kategorische Features transformiert.<br/><br/>One-Hot-Codierung wird für kategorische Features mit geringer Kardinalität verwendet. One-Hot-Hashcodierung wird für kategorische Features mit hoher Kardinalität verwendet.|
 |**Worteinbettungen**|Ein Textfeaturizer konvertiert Vektoren von Texttoken mithilfe eines vortrainierten Modells in Satzvektoren. Der Einbettungsvektor jedes Worts in einem Dokument wird mit dem Rest zusammengefasst und produziert so einen Dokumentenfeaturevektor.|
 |**Zielcodierungen**|Bei kategorischen Features wird durch diesen Schritt jede Kategorie einem gemitteltem Zielwert für Regressionsprobleme und der Klassenwahrscheinlichkeit für jede Klasse für Klassifizierungsprobleme zugeordnet. Häufigkeitsbasierte Gewichtung und k-fache Kreuzvalidierung werden angewendet, um die Überanpassung der Zuordnung und das Rauschen durch dünn besetzte Datenkategorien zu verringern.|
@@ -106,7 +106,7 @@ Schutzmaßnahme|Status|Bedingung&nbsp;für&nbsp;Auslösung
 **Ergänzen fehlender Featurewerte durch Imputation** |Erfolgreich <br><br><br> Vorgehensweise| Es wurden keine fehlenden Featurewerte in Ihren Trainingsdaten festgestellt. Erfahren Sie mehr über die [Imputation fehlender Werte](https://docs.microsoft.com/azure/machine-learning/how-to-use-automated-ml-for-ml-models#advanced-featurization-options). <br><br> Fehlende Featurewerte wurden in Ihren Trainingsdaten festgestellt und imputiert.
 **Behandeln von Features mit hoher Kardinalität** |Erfolgreich <br><br><br> Vorgehensweise| Ihre Eingaben wurden analysiert, und es wurden keine Features mit hoher Kardinalität gefunden. <br><br> Features mit hoher Kardinalität wurden in Ihren Eingaben erkannt und behandelt.
 **Verarbeitung der Überprüfungsaufteilung** |Vorgehensweise| Die Überprüfungskonfiguration wurde auf `'auto'` festgelegt, und die Trainingsdaten enthielten *mehr als 20.000 Zeilen*. <br> Jede Iteration des trainierten Modells wurde durch Kreuzvalidierung überprüft. Erfahren Sie mehr über [Überprüfungsdaten](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train#train-and-validation-data). <br><br> Die Überprüfungskonfiguration wurde auf `'auto'` festgelegt, und die Trainingsdaten enthielten *weniger als 20.000 Zeilen*. <br> Die Eingabedaten wurden zur Überprüfung des Modells in ein Trainingsdataset und ein Validierungsdataset aufgeteilt.
-**Ausgewogenheitserkennung für Klassen** |Erfolgreich <br><br><br><br><br> Benachrichtigt | Ihre Eingaben wurden analysiert, und alle Klassen in Ihren Trainingsdaten sind ausgeglichen. Ein Dataset gilt als ausgewogen, wenn jede Klasse im Datensatz gemessen an Anzahl und Verhältnis der Stichproben gut repräsentiert ist. <br><br><br> In Ihren Eingaben wurden unausgeglichene Klassen erkannt. Beheben Sie das Ausgleichsproblem, um den Modelltrend zu beheben. Erfahren Sie mehr über [unausgeglichene Daten](https://docs.microsoft.com/azure/machine-learning/concept-manage-ml-pitfalls#identify-models-with-imbalanced-data).
+**Ausgewogenheitserkennung für Klassen** |Erfolgreich <br><br><br><br><br> Benachrichtigt <br><br><br><br> Vorgehensweise| Ihre Eingaben wurden analysiert, und alle Klassen in Ihren Trainingsdaten sind ausgeglichen. Ein Dataset gilt als ausgewogen, wenn jede Klasse im Datensatz gemessen an Anzahl und Verhältnis der Stichproben gut repräsentiert ist. <br><br> In Ihren Eingaben wurden unausgeglichene Klassen erkannt. Beheben Sie das Ausgleichsproblem, um den Modelltrend zu beheben. Erfahren Sie mehr über [unausgeglichene Daten](https://docs.microsoft.com/azure/machine-learning/concept-manage-ml-pitfalls#identify-models-with-imbalanced-data). <br><br> In Ihren Eingaben wurden unausgeglichene Klassen festgestellt, und die Sweeping-Logik hat beschlossen, einen Ausgleich anzuwenden.
 **Erkennung von Arbeitsspeicherproblemen** |Erfolgreich <br><br><br><br> Vorgehensweise |<br> Die ausgewählten Werte (Horizont, Verzögerung und rollierendes Zeitfenster) wurden analysiert, und es wurden keine potenziellen Probleme aufgrund von unzureichendem Speicherplatz erkannt. Erfahren Sie mehr über [Vorhersagekonfigurationen](https://docs.microsoft.com/azure/machine-learning/how-to-auto-train-forecast#configure-and-run-experiment) von Zeitreihen. <br><br><br>Die ausgewählten Werte (Horizont, Verzögerung und rollierendes Zeitfenster) wurden analysiert, und für Ihr Experiment steht unter Umständen nicht genügend Speicherplatz zur Verfügung. Die Konfigurationen für Verzögerung oder rollierende Zeitfenster wurden deaktiviert.
 **Häufigkeitserkennung** |Erfolgreich <br><br><br><br> Vorgehensweise |<br> Die Zeitreihe wurde analysiert, und alle Datenpunkte entsprechen der erkannten Häufigkeit. <br> <br> Die Zeitreihe wurde analysiert, und es wurden Datenpunkte ermittelt, die nicht mit der erkannten Häufigkeit übereinstimmen. Diese Datenpunkte wurden aus dem Dataset entfernt. Erfahren Sie mehr über die [Datenaufbereitung für die Zeitreihenvorhersage](https://docs.microsoft.com/azure/machine-learning/how-to-auto-train-forecast#preparing-data).
 
@@ -120,7 +120,7 @@ Unterstützte Anpassungen umfassen:
 
 |Anpassung|Definition|
 |--|--|
-|**Aktualisierung des Spaltenzwecks**|Der automatisch erkannte Featuretyp für die angegebene Spalte wird außer Kraft gesetzt.|
+|**Aktualisierung des Spaltenzwecks**|Außerkraftsetzen des automatisch erkannten Featuretyps für die angegebene Spalte|
 |**Aktualisierung von Transformationsparametern** |Aktualisieren der Parameter für den angegebenen Transformator. Unterstützt derzeit *Imputer* (Mittelwert, häufigster Wert und medianer Wert) und *HashOneHotEncoder*.|
 |**Löschen von Spalten** |Gibt Spalten an, die aus der Featureverwendung gelöscht werden sollen.|
 |**Blockieren von Transformatoren**| Gibt Blockiertransformatoren an, die für die Featurebereitstellung verwendet werden.|
@@ -161,11 +161,13 @@ text_transformations_used
 > [!NOTE]
 > Bei unserer Implementierung von BERT ist die Gesamttextlänge eines Trainingsbeispiels auf 128 Token eingeschränkt. Das bedeutet, dass bei der Verkettung alle Textspalten idealerweise höchstens 128 Token aufweisen sollten. Im Idealfall sollte jede Spalte gekürzt werden, wenn mehrere Spalten vorhanden sind, sodass diese Bedingung erfüllt ist. Wenn beispielsweise zwei Textspalten in den Daten vorhanden sind, sollten beide Textspalten auf jeweils 64 Token gekürzt werden (vorausgesetzt, Sie möchten, dass beide Spalten in der endgültigen verketteten Textspalte gleichmäßig dargestellt werden), bevor die Daten in AutoML eingegeben werden. Bei verketteten Spalten mit einer Länge von mehr als 128 Token kürzt die Tokenizerebene von BERT diese Eingabe auf 128 Token.
 
-3. Beim Featuresweepingschritt vergleicht AutoML BERT mit der Baseline (Sammlung von Wortfeatures und vortrainierte Worteinbettungen) für eine Stichprobe der Daten und legt fest, ob BERT die Genauigkeit verbessern würde. Wenn festgestellt wird, dass BERT bessere Ergebnisse als die Baseline liefert, verwendet AutoML BERT für die Textfeaturisierung als optimale Featurisierungsstrategie und featurisiert weiterhin die gesamten Daten. In diesem Fall wird „PretrainedTextDNNTransformer“ im endgültigen Modell angezeigt.
+3. Beim Featuresweepingschritt vergleicht AutoML BERT mit der Baseline (Sammlung von Wortfeatures) für eine Stichprobe der Daten und legt fest, ob BERT die Genauigkeit verbessern würde. Wenn festgestellt wird, dass BERT bessere Ergebnisse als die Baseline liefert, verwendet AutoML BERT für die Textfeaturisierung als optimale Featurisierungsstrategie und featurisiert weiterhin die gesamten Daten. In diesem Fall wird „PretrainedTextDNNTransformer“ im endgültigen Modell angezeigt.
+
+Die Ausführung von BERT dauert im Allgemeinen länger als bei den meisten anderen Featurizern. Sie kann beschleunigt werden, indem Sie die Computeleistung in Ihrem Cluster erhöhen. AutoML verteilt das BERT-Training auf mehrere Knoten, wenn diese verfügbar sind (bis zu maximal 8 Knoten). Dies kann erreicht werden, indem [max_concurrent_iterations](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py) auf einen Wert größer als 1 festgelegt wird. Für eine bessere Leistung empfehlen wir die Verwendung von SKUs mit RDMA-Fähigkeiten (z. B. „STANDARD_NC24r“ oder „STANDARD_NC24rs_V3“)
 
 AutoML unterstützt derzeit ungefähr 100 Sprachen und wählt abhängig von der Sprache des Datasets das entsprechende BERT-Modell aus. Für Daten in deutscher Sprache wird das deutsche BERT-Modell verwendet. Für englische Daten wird das englische BERT-Modell verwendet. Für alle anderen Sprachen nutzen wir das mehrsprachige BERT-Modell.
 
-Im folgenden Code wird das deutsche BERT-Modell ausgelöst, da „deu“ als Datasetsprache angegeben ist, was gemäß [ISO-Klassifizierung](https://iso639-3.sil.org/code/hbs) dem dreibuchstabigen Ländercode für Deutschland entspricht.
+Im folgenden Code wird das deutsche BERT-Modell ausgelöst, da „deu“ als Datasetsprache angegeben ist, was gemäß [ISO-Klassifizierung](https://iso639-3.sil.org/code/deu) dem dreibuchstabigen Ländercode für Deutschland entspricht.
 
 ```python
 from azureml.automl.core.featurization import FeaturizationConfig

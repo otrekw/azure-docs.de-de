@@ -7,15 +7,15 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/13/2020
-ms.openlocfilehash: 6048b5f0a3702e95cef9175933041fe36f2f07bb
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2ef7095d186902425adb5065c470325be1283023
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87081558"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475735"
 ---
-# <a name="azure-monitor-logs-connector-for-logic-apps-and-flow"></a>Connector für Azure Monitor-Protokolle für Azure Logic Apps und Flow
-Mit [Azure Logic Apps](../../logic-apps/index.yml) und [Power Automate](https://ms.flow.microsoft.com) können Sie automatisierte Workflows erstellen, indem Sie Hunderte von Aktionen für eine Vielzahl von Diensten verwenden. Mit dem Connector für Azure Monitor-Protokolle können Sie Workflows erstellen, die Daten aus einem Log Analytics-Arbeitsbereich oder einer Application Insights-Anwendung in Azure Monitor abrufen. In diesem Artikel werden die mit dem Connector möglichen Aktionen beschrieben. Außerdem wird eine Anleitung zur Erstellung eines Workflows unter Verwendung dieser Daten gegeben.
+# <a name="azure-monitor-logs-connector-for-logic-apps-and-power-automate"></a>Connector für Azure Monitor-Protokolle für Azure Logic Apps und Power Automate
+Mit [Azure Logic Apps](../../logic-apps/index.yml) und [Power Automate](https://flow.microsoft.com) können Sie automatisierte Workflows erstellen, indem Sie Hunderte von Aktionen für eine Vielzahl von Diensten verwenden. Mit dem Connector für Azure Monitor-Protokolle können Sie Workflows erstellen, die Daten aus einem Log Analytics-Arbeitsbereich oder einer Application Insights-Anwendung in Azure Monitor abrufen. In diesem Artikel werden die mit dem Connector möglichen Aktionen beschrieben. Außerdem wird eine Anleitung zur Erstellung eines Workflows unter Verwendung dieser Daten gegeben.
 
 Beispielsweise können Sie eine Logik-App zum Verwenden von Azure Monitor-Protokolldaten in einer E-Mail-Benachrichtigung aus Office 365, zum Erstellen eines Fehlers in Azure DevOps oder zum Posten einer Slack-Nachricht nutzen.  Sie können einen Workflow auslösen, indem Sie einen einfachen Zeitplan oder eine Aktion in einem verbundenen Dienst verwenden, z.B. bei Erhalt einer E-Mail oder eines Tweets. 
 
@@ -126,4 +126,4 @@ Prüfen Sie nach Abschluss der Logik-App den Posteingang des von Ihnen angegeben
 
 - Erfahren Sie mehr über [Protokollabfragen in Azure Monitor](../log-query/log-query-overview.md).
 - Weitere Informationen zu [Logik-Apps](../../logic-apps/index.yml)
-- Erfahren Sie mehr über [Microsoft Flow](https://ms.flow.microsoft.com).
+- Weitere Informationen zu [Power Automate](https://flow.microsoft.com)

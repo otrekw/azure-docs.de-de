@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/3/2019
 ms.author: jeedes
-ms.openlocfilehash: 423ba8c7aea9659a4c91f68a01392954c2ba6db2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0c83d43fe1a2068fa4c9f24a10c0975610142a84
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77059162"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87018688"
 ---
 # <a name="tutorial-configure-4me-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von 4me für die automatische Benutzerbereitstellung
 
@@ -128,7 +128,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitst
 
     ![Benutzerzuordnungen in 4me](media/4me-provisioning-tutorial/4me-user-mapping.png)
     
-11. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Benutzerattribute, die von Azure AD mit 4me synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden für den Abgleich der Benutzerkonten in 4me für Updatevorgänge verwendet. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
+11. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Benutzerattribute, die von Azure AD mit 4me synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden für den Abgleich der Benutzerkonten in 4me für Updatevorgänge verwendet. Stellen Sie sicher, dass [4me das Filtern für das ausgewählte Attribut unterstützt](https://developer.4me.com/v1/scim/users/). Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
     ![Benutzerzuordnungen in 4me](media/4me-provisioning-tutorial/4me-user-attributes.png)
     

@@ -13,12 +13,12 @@ metadata:
   ms.topic: hub-page
   ms.date: 03/24/2020
   ms.author: trbye
-  ms.openlocfilehash: 455f71c7fd9defd7a1187f6b5df6b5b3b9c3131b
-  ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+  ms.openlocfilehash: 74fd89633e4add1c577e44b822f1f90a86b3f498
+  ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 06/30/2020
-  ms.locfileid: "85563766"
+  ms.lasthandoff: 08/13/2020
+  ms.locfileid: "88167775"
 highlightedContent:
   items:
   - title: Worum handelt es sich beim Speech-Dienst?
@@ -51,15 +51,15 @@ conceptualContent:
       url: index-speech-to-text.yml
   - title: Text-zu-Sprache
     links:
+    - itemType: overview
+      text: Informationen zur Sprachsynthese
+      url: text-to-speech.md
     - itemType: quickstart
-      text: Synthetisieren von Sprache über einen Lautsprecher
-      url: quickstarts/text-to-speech.md
-    - itemType: quickstart
-      text: Synthetisieren von Sprache in eine Audiodatei
-      url: quickstarts/text-to-speech-audio-file.md
+      text: Erste Schritte bei der Sprachsynthese
+      url: get-started-text-to-speech.md
     - itemType: how-to-guide
-      text: Grundlagen der Sprachsynthese
-      url: text-to-speech-basics.md
+      text: Verbessern der Synthese mit SSML
+      url: speech-synthesis-markup.md
     footerLink:
       text: Weitere Informationen
       url: index-text-to-speech.yml

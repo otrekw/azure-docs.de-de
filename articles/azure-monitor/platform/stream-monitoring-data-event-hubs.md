@@ -1,22 +1,22 @@
 ---
-title: Streamen von Azure-Überwachungsdaten an einen Event Hub
+title: Streamen von Azure-Überwachungsdaten an einen Event Hub und externe Partner
 description: Erfahren Sie, wie Sie Ihre Azure-Überwachungsdaten an einen Event Hub streamen, um die Daten in einem SIEM- oder Analysetool von Partnern abzurufen.
-author: bwren
 services: azure-monitor
-ms.topic: conceptual
-ms.date: 11/15/2019
+author: bwren
 ms.author: bwren
+ms.topic: conceptual
+ms.date: 07/15/2020
 ms.subservice: ''
-ms.openlocfilehash: 8bfec756c365c451a4e2b8236814454980d1d563
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: f6272e3d976c7c3b04d5b1332e2d7b3410c3045c
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539311"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318877"
 ---
-# <a name="stream-azure-monitoring-data-to-an-event-hub"></a>Streamen von Azure-Überwachungsdaten an einen Event Hub
-Azure Monitor bietet eine vollständige Lösung für die Stapelüberwachung für Anwendungen und Dienste in Azure, in anderen Clouds und lokal. Sie sollten diese Daten nicht nur mit Azure Monitor analysieren und für verschiedene Überwachungsszenarios nutzen, sondern sie auch an andere Überwachungstools in Ihrer Umgebung senden. Die effektivste Methode zum Streamen von Überwachungsdaten an externe Tools ist in den meisten Fällen die Verwendung von [Azure Event Hubs](../../event-hubs/index.yml). Dieser Artikel enthält eine kurze Beschreibung der Vorgehensweise beim Streamen von Überwachungsdaten aus verschiedenen Quellen an einen Event Hub und Links zu ausführlichen Anleitungen.
+# <a name="stream-azure-monitoring-data-to-an-event-hub-or-external-partner"></a>Streamen von Azure-Überwachungsdaten an einen Event Hub oder externen Partner
 
+Azure Monitor bietet eine vollständige Lösung für die Stapelüberwachung für Anwendungen und Dienste in Azure, in anderen Clouds und lokal. Sie sollten diese Daten nicht nur mit Azure Monitor analysieren und für verschiedene Überwachungsszenarios nutzen, sondern sie auch an andere Überwachungstools in Ihrer Umgebung senden. In den meisten Fällen ist die effektivste Methode zum Streamen von Überwachungsdaten an externe Tools die Verwendung von [Azure Event Hubs](../../event-hubs/index.yml). Dieser Artikel enthält eine kurze Beschreibung der Vorgehensweise und listet dann einige der Partner auf, an die Sie Daten senden können. Einige davon weisen eine besondere Integration in Azure Monitor auf und können in Azure gehostet werden.  
 
 ## <a name="create-an-event-hubs-namespace"></a>Erstellen eines Event Hubs-Namespace
 
@@ -38,7 +38,7 @@ Im Artikel [Quellen für Überwachungsdaten für Azure Monitor](data-sources.md)
 | [Azure-Abonnement](data-sources.md#azure-subscription) | Azure-Aktivitätsprotokoll | Erstellen Sie ein Protokollprofil zum Exportieren von Ereignissen des Aktivitätsprotokolls an Event Hubs.  Ausführliche Informationen finden Sie unter [Streamen von Protokollen der Azure-Plattform an Azure Event Hubs](./resource-logs.md#send-to-azure-event-hubs). |
 | [Azure-Ressourcen](data-sources.md#azure-resources) | Plattformmetriken<br> Ressourcenprotokolle |Beide Arten von Daten werden mithilfe einer Ressourcendiagnoseeinstellung an einen Event Hub gesendet. Ausführliche Informationen finden Sie unter [Streamen von Azure-Ressourcenprotokollen an einen Event Hub](./resource-logs.md#send-to-azure-event-hubs). |
 | [Betriebssystem (Gast)](data-sources.md#operating-system-guest) | Virtuelle Azure-Computer | Installieren Sie die [Azure-Diagnoseerweiterung](diagnostics-extension-overview.md) auf virtuellen Windows- und Linux-Computern in Azure. Weitere Informationen zu virtuellen Windows-Computern finden Sie unter [Streamen von Azure-Diagnosedaten auf dem langsamsten Pfad mithilfe von Event Hubs](diagnostics-extension-stream-event-hubs.md) und zu virtuellen Linux-Computern unter [Verwenden der Linux-Diagnoseerweiterung zum Überwachen von Metriken und Protokollen](../../virtual-machines/extensions/diagnostics-linux.md#protected-settings). |
-| [Anwendungscode](data-sources.md#application-code) | Application Insights | Application Insights bietet keine direkte Methode zum Streamen von Daten an Event Hubs. Sie können einen [fortlaufenden Export](../../azure-monitor/app/export-telemetry.md) der Application Insights-Daten an ein Speicherkonto einrichten und die Daten dann mithilfe einer Logik-App an einen Event Hub senden, wie unter [Manuelles Streamen mit einer Logik-App](#manual-streaming-with-logic-app) beschrieben. |
+| [Anwendungscode](data-sources.md#application-code) | Application Insights | Application Insights bietet keine direkte Methode zum Streamen von Daten an Event Hubs. Sie können einen [fortlaufenden Export](../app/export-telemetry.md) der Application Insights-Daten an ein Speicherkonto einrichten und die Daten dann mithilfe einer Logik-App an einen Event Hub senden, wie unter [Manuelles Streamen mit einer Logik-App](#manual-streaming-with-logic-app) beschrieben. |
 
 ## <a name="manual-streaming-with-logic-app"></a>Manuelles Streamen mit einer Logik-App
 Für Daten, die sich nicht direkt an einen Event Hub streamen lassen, können Sie einen Azure-Speicher nutzen und dann eine zu bestimmten Zeiten ausgelöste Logik-App verwenden, die [die Daten aus dem Blob-Speicher holt](../../connectors/connectors-create-api-azureblobstorage.md#add-action) und [sie als Nachricht an den Event Hub überträgt](../../connectors/connectors-create-api-azure-event-hubs.md#add-action). 
@@ -58,8 +58,10 @@ Die Weiterleitung Ihrer Überwachungsdaten an einen Event Hub mit Azure Monitor 
 | LogRhythm | Nein| Anweisungen zum Einrichten von LogRhythm zum Erfassen von Protokollen aus einem Event Hub sind [hier](https://logrhythm.com/six-tips-for-securing-your-azure-cloud-environment/) verfügbar. 
 |Logz.io | Ja | Weitere Informationen finden Sie unter [Erste Schritte bei der Überwachung und Protokollierung mithilfe von Logz.io für in Azure ausgeführte Java-Apps](/azure/developer/java/fundamentals/java-get-started-with-logzio).
 
+Möglicherweise sind auch andere Partner verfügbar. Eine vollständigere Liste aller Azure Monitor-Partner und ihrer Funktionen finden Sie unter [Azure Monitor – integrierte Partnerlösungen](partners.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Archivieren Sie das Aktivitätsprotokoll in einem Speicherkonto.](./activity-log.md#legacy-collection-methods)
-* [Lesen Sie die Übersicht über das Azure-Aktivitätsprotokoll.](../../azure-monitor/platform/platform-logs-overview.md)
-* [Richten Sie eine Warnung ein, die auf einem Aktivitätsprotokollereignis basiert.](../../azure-monitor/platform/alerts-log-webhook.md)
+* [Lesen Sie die Übersicht über das Azure-Aktivitätsprotokoll.](./platform-logs-overview.md)
+* [Richten Sie eine Warnung ein, die auf einem Aktivitätsprotokollereignis basiert.](./alerts-log-webhook.md)
+

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/30/2019
-ms.openlocfilehash: 9ae0aec6b87a746ed1f141dcf98f599acd20ab3a
-ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
+ms.openlocfilehash: dca320168805e9f7c8f6336b39c4f9394255f9b8
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82864248"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87416314"
 ---
 # <a name="optimize-log-queries-in-azure-monitor"></a>Optimieren von Protokollabfragen in Azure Monitor
 Azure Monitor-Protokolle verwendet [Azure Data Explorer (ADX)](/azure/data-explorer/), um Protokolldaten zu speichern und Abfragen zum Analysieren dieser Daten auszuführen. Es werden die ADX-Cluster für Sie erstellt, verwaltet und gepflegt sowie für Ihre Protokollanalyse-Workload optimiert. Wenn Sie eine Abfrage ausführen, wird diese optimiert und an den entsprechenden ADX-Cluster weitergeleitet, der die Arbeitsbereichsdaten speichert. Sowohl Azure Monitor-Protokolle als auch Azure Data Explorer nutzen eine Vielzahl automatischer Mechanismen zur Abfrageoptimierung. Automatische Optimierungen bieten zwar eine deutliche Steigerung, aber in einigen Fällen können Sie damit die Abfrageleistung erheblich verbessern. In diesem Artikel werden Leistungsaspekte sowie verschiedene Verfahren zur Behebung von Leistungsproblemen erläutert.
@@ -98,14 +98,14 @@ Beispielsweise wird mit den folgenden Abfragen genau das gleiche Ergebnis erziel
 Heartbeat 
 | extend IPRegion = iif(RemoteIPLongitude  < -94,"WestCoast","EastCoast")
 | where IPRegion == "WestCoast"
-| summarize count() by Computer
+| summarize count(), make_set(IPRegion) by Computer
 ```
 ```Kusto
 //more efficient
 Heartbeat 
 | where RemoteIPLongitude  < -94
 | extend IPRegion = iif(RemoteIPLongitude  < -94,"WestCoast","EastCoast")
-| summarize count() by Computer
+| summarize count(), make_set(IPRegion) by Computer
 ```
 
 ### <a name="use-effective-aggregation-commands-and-dimensions-in-summarize-and-join"></a>Verwenden effektiver Aggregationsbefehle und -dimensionen bei join- und summarize-Operatoren
@@ -157,7 +157,7 @@ Heartbeat
 > Dieser Indikator zeigt nur die CPU-Auslastung des unmittelbaren Clusters an. Bei einer Abfrage in mehreren Regionen würde nur eine der Regionen dargestellt. Bei einer Abfrage in mehreren Arbeitsbereichen sind möglicherweise nicht alle Arbeitsbereiche enthalten.
 
 ### <a name="avoid-full-xml-and-json-parsing-when-string-parsing-works"></a>Vermeiden der vollständigen XML- und JSON-Analyse bei funktionierender Zeichenfolgenanalyse
-Die vollständige Analyse eines XML- oder JSON-Objekts kann hohe CPU- und Speicherressourcen beanspruchen. In vielen Fällen, in denen nur ein oder zwei Parameter erforderlich sind und die XML- oder JSON-Objekte einfach sind, ist es einfacher, diese mithilfe des [parse-Operators](/azure/kusto/query/parseoperator) oder anderen [Textanalysetechniken](/azure/azure-monitor/log-query/parse-text) als Zeichenfolgen zu analysieren. Die Leistungssteigerung wird noch deutlicher, wenn die Anzahl der Datensätze im XML- oder JSON-Objekt zunimmt. Es ist von entscheidender Bedeutung, wenn die Anzahl der Datensätze zehn Millionen erreicht.
+Die vollständige Analyse eines XML- oder JSON-Objekts kann hohe CPU- und Speicherressourcen beanspruchen. In vielen Fällen, in denen nur ein oder zwei Parameter erforderlich sind und die XML- oder JSON-Objekte einfach sind, ist es einfacher, diese mithilfe des [parse-Operators](/azure/kusto/query/parseoperator) oder anderen [Textanalysetechniken](./parse-text.md) als Zeichenfolgen zu analysieren. Die Leistungssteigerung wird noch deutlicher, wenn die Anzahl der Datensätze im XML- oder JSON-Objekt zunimmt. Es ist von entscheidender Bedeutung, wenn die Anzahl der Datensätze zehn Millionen erreicht.
 
 Beispielsweise gibt die folgende Abfrage genau die gleichen Ergebnisse zurück wie die obigen Abfragen, ohne dabei eine vollständige XML-Analyse durchzuführen. Beachten Sie, dass sich für die XML-Dateistruktur einige Annahmen ergeben. Das FilePath-Element kommt beispielsweise nach FileHash, und keines der Elemente verfügt über Attribute. 
 
@@ -219,6 +219,64 @@ SecurityEvent
 | where EventID == 4624 //Logon GUID is relevant only for logon event
 | summarize LoginSessions = dcount(LogonGuid) by Account
 ```
+
+### <a name="avoid-multiple-scans-of-same-source-data-using-conditional-aggregation-functions-and-materialize-function"></a>Vermeiden mehrerer Überprüfungen derselben Quelldaten mithilfe bedingter Aggregationsfunktionen und der materialize-Funktion
+Wenn eine Abfrage mehrere Unterabfragen enthält, die mithilfe von join- oder union-Operatoren zusammengeführt werden, überprüft jede Unterabfrage die gesamte Quelle separat und führt dann die Ergebnisse zusammen. Dadurch vervielfacht sich die Anzahl der Datenüberprüfungen – ein kritischer Faktor bei sehr großen Datasets.
+
+Eine Technik, um dies zu vermeiden, ist die Verwendung der bedingten Aggregationsfunktionen. Die meisten der [Aggregationsfunktionen](/azure/data-explorer/kusto/query/summarizeoperator#list-of-aggregation-functions), die im summarize-Operator verwendet werden, verfügen über eine bedingte Version, bei der Sie einen einzelnen summarize-Operator mit mehreren Bedingungen verwenden können. 
+
+Die folgenden Abfragen zeigen beispielsweise die Anzahl der Anmeldeereignisse und die Anzahl der Prozessausführungsereignisse für jedes Konto. Sie geben die gleichen Ergebnisse zurück, doch werden bei der ersten Abfrage die Daten zweimal überprüft, bei der zweiten nur einmal:
+
+```Kusto
+//Scans the SecurityEvent table twice and perform expensive join
+SecurityEvent
+| where EventID == 4624 //Login event
+| summarize LoginCount = count() by Account
+| join 
+(
+    SecurityEvent
+    | where EventID == 4688 //Process execution event
+    | summarize ExecutionCount = count(), ExecutedProcesses = make_set(Process) by Account
+) on Account
+```
+
+```Kusto
+//Scan only once with no join
+SecurityEvent
+| where EventID == 4624 or EventID == 4688 //early filter
+| summarize LoginCount = countif(EventID == 4624), ExecutionCount = countif(EventID == 4688), ExecutedProcesses = make_set_if(Process,EventID == 4688)  by Account
+```
+
+Ein weiterer Fall, in dem Unterabfragen unnötig sind, ist das Vorfiltern für den [parse-Operator](/azure/data-explorer/kusto/query/parseoperator?pivots=azuremonitor), um sicherzustellen, dass nur Datensätze verarbeitet werden, die einem bestimmten Muster entsprechen. Dies ist unnötig, da der parse-Operator und andere ähnliche Operatoren leere Ergebnisse zurückgeben, wenn das Muster nicht übereinstimmt. Nachfolgend sind zwei Abfragen aufgeführt, die genau die gleichen Ergebnisse zurückgeben, doch werden bei der zweiten Abfrage die Daten nur einmal überprüft. Bei der zweiten Abfrage ist jeder parse-Befehl nur für die jeweiligen Ereignisse relevant. Der darauf folgende extend-Operator zeigt, wie auf leere Daten Bezug genommen wird.
+
+```Kusto
+//Scan SecurityEvent table twice
+union(
+SecurityEvent
+| where EventID == 8002 
+| parse EventData with * "<FilePath>" FilePath "</FilePath>" * "<FileHash>" FileHash "</FileHash>" *
+| distinct FilePath
+),(
+SecurityEvent
+| where EventID == 4799
+| parse EventData with * "CallerProcessName\">" CallerProcessName1 "</Data>" * 
+| distinct CallerProcessName1
+)
+```
+
+```Kusto
+//Single scan of the SecurityEvent table
+SecurityEvent
+| where EventID == 8002 or EventID == 4799
+| parse EventData with * "<FilePath>" FilePath "</FilePath>" * "<FileHash>" FileHash "</FileHash>" * //Relevant only for event 8002
+| parse EventData with * "CallerProcessName\">" CallerProcessName1 "</Data>" *  //Relevant only for event 4799
+| extend FilePath = iif(isempty(CallerProcessName1),FilePath,"")
+| distinct FilePath, CallerProcessName1
+```
+
+Wenn im Fall oben die Verwendung von Unterabfragen nicht vermieden werden kann, besteht eine weitere Technik darin, die Abfrage-Engine mithilfe der [materialize()-Funktion](/azure/data-explorer/kusto/query/materializefunction?pivots=azuremonitor) darauf hinzuweisen, dass jeweils die gleichen Quelldaten verwenden werden. Dies ist nützlich, wenn die Quelldaten aus einer Funktion stammen, die mehrmals innerhalb der Abfrage verwendet wird.
+
+
 
 ### <a name="reduce-the-number-of-columns-that-is-retrieved"></a>Reduzieren der Anzahl von abgerufenen Spalten
 
@@ -375,7 +433,7 @@ Hier einige Abfrageverhalten, die zur einer Verringerung der Parallelität führ
 - Verwendung von Serialisierungs- und Fensterfunktionen, z. B. dem [serialize-Operator](/azure/kusto/query/serializeoperator), [next()](/azure/kusto/query/nextfunction), [prev()](/azure/kusto/query/prevfunction) und den [row](/azure/kusto/query/rowcumsumfunction)-Funktionen. In einigen dieser Fälle können Zeitreihen- und Benutzeranalysefunktionen verwendet werden. Eine ineffiziente Serialisierung kann auch auftreten, wenn die folgenden Operatoren nicht am Ende der Abfrage verwendet werden: [range](/azure/kusto/query/rangeoperator), [sort](/azure/kusto/query/sortoperator), [order](/azure/kusto/query/orderoperator), [top](/azure/kusto/query/topoperator), [top-hitters](/azure/kusto/query/tophittersoperator), [getschema](/azure/kusto/query/getschemaoperator).
 -    Durch Verwendung der Aggregationsfunktion [dcount()](/azure/kusto/query/dcount-aggfunction) wird das System gezwungen, eine zentrale Kopie der eindeutigen Werte zu verwenden. Wenn die Datenmenge groß ist, sollten Sie die optionalen Parameter der dcount-Funktion verwenden, um die Genauigkeit zu verringern.
 -    In vielen Fällen verringert der [join](/azure/kusto/query/joinoperator?pivots=azuremonitor)-Operator die Gesamtparallelität. Prüfen Sie Shuffle-Join als Alternative, wenn die Leistung problematisch ist.
--    Bei Abfragen mit Ressourcenbereich können sich die RBAC-Prüfungen vor der Ausführung in Situationen, in denen eine große Anzahl von RBAC-Zuweisungen vorliegt, verzögern. Dies kann zu längeren Überprüfungen führen, was wiederum eine geringere Parallelität bewirkt. Beispielsweise wird eine Abfrage für ein Abonnement ausgeführt, bei dem Tausende von Ressourcen vorhanden sind, und jede Ressource verfügt über viele Rollenzuweisungen auf der Ressourcenebene und nicht auf Ebene des Abonnements oder der Ressourcengruppe.
+-    Bei Abfragen mit Ressourcenbereich können sich die RBAC-Prüfungen vor der Ausführung in Situationen, in denen eine große Anzahl von Azure-Rollenzuweisungen vorliegt, verzögern. Dies kann zu längeren Überprüfungen führen, was wiederum eine geringere Parallelität bewirkt. Beispielsweise wird eine Abfrage für ein Abonnement ausgeführt, bei dem Tausende von Ressourcen vorhanden sind, und jede Ressource verfügt über viele Rollenzuweisungen auf der Ressourcenebene und nicht auf Ebene des Abonnements oder der Ressourcengruppe.
 -    Wenn eine Abfrage kleine Datenblöcke verarbeitet, ist die Parallelität gering, da sie vom System nicht auf viele Computeknoten verteilt wird.
 
 

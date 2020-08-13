@@ -117,30 +117,16 @@
   items:
     - name: Dokumentation zur Sprachsynthese
       href: index-text-to-speech.yml
-    - name: Übersicht
-      items:
-        - name: Was ist Text-zu-Sprache?
-          href: text-to-speech.md
-        - name: Grundlegendes zur Sprachsynthese
-          href: text-to-speech-basics.md
-    - name: Schnellstart
-      items:
-        - name: Synthetisieren von Sprache über einen Lautsprecher
-          href: quickstarts/text-to-speech.md
-        - name: Synthetisieren von Sprache in eine Audiodatei
-          href: quickstarts/text-to-speech-audio-file.md
-        - name: Synthetisieren von Sprache mit langen Audioinhalten
-          href: quickstarts/text-to-speech/async-synthesis-long-form-audio.md
+    - name: Was ist Text-zu-Sprache?
+      href: text-to-speech.md
+    - name: Schnellstartanleitung zur Sprachsynthese
+      href: get-started-text-to-speech.md
     - name: Anleitungen
       items:
         - name: Verbessern der Synthese mit SSML
           href: speech-synthesis-markup.md
         - name: Synthetisieren von Sprache mit der API für lange Audioinhalte
           href: long-audio-api.md
-        - name: Abrufen einer Liste von Stimmen mit REST (Python)
-          href: quickstart-python-get-text-to-speech-voices.md
-        - name: Konvertieren von Text in Sprache mit REST (Python)
-          href: quickstart-python-text-to-speech.md
     - name: Anpassung
       items:
         - name: Verantwortungsvolle Bereitstellung

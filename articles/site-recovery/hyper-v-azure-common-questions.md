@@ -3,12 +3,12 @@ title: Allgemeine Fragen zur Hyper-V-Notfallwiederherstellung mit Azure Site Rec
 description: In diesem Artikel werden häufig gestellte Fragen zum Einrichten der Notfallwiederherstellung für lokale virtuelle Hyper-V-Computer in Azure mithilfe des Azure Site Recovery-Diensts zusammengefasst.
 ms.date: 11/12/2019
 ms.topic: conceptual
-ms.openlocfilehash: b3d806908ce2274d07e6b508c8cc269b553e684f
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: c168ba9ff14e57f238069e8ca5b0c34a8fb58015
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86132659"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87799887"
 ---
 # <a name="common-questions---hyper-v-to-azure-disaster-recovery"></a>Allgemeine Fragen: Hyper-V-Notfallwiederherstellung in Azure
 
@@ -156,6 +156,10 @@ Wenn Sie nach Azure replizieren, erreicht der Replikationsdatenverkehr die öffe
 ### <a name="what-are-the-replicated-vm-requirements"></a>Welche Anforderungen stellt die Replikation an virtuelle Computer?
 
 Für die Replikation muss auf einer Hyper-V-VM ein unterstütztes Betriebssystem ausgeführt werden. Darüber hinaus muss der virtuelle Computer die Anforderungen für Azure-VMs erfüllen. [Erfahren Sie mehr](hyper-v-azure-support-matrix.md#replicated-vms) in der Unterstützungsmatrix.
+
+### <a name="why-is-an-additional-standard-storage-account-required-if-i-replicate-my-virtual-machine-disks-to-premium-storage"></a>Warum ist ein zusätzliches Storage Standard-Konto erforderlich, wenn ich meine VM-Datenträger in Storage Premium repliziere?
+
+Wenn Sie Ihre lokalen virtuellen Computer/physischen Server in Storage Premium replizieren, werden alle Daten auf den Datenträgern des geschützten Computers im Storage Premium-Konto repliziert. Zum Speichern von Replikationsprotokollen ist ein zusätzliches Storage Standard-Konto erforderlich. Nachdem die Anfangsphase der Replikation von Datenträgerdaten abgeschlossen ist, werden alle Änderungen an den Daten der lokalen Datenträger kontinuierlich nachverfolgt und als Replikationsprotokolle in diesem zusätzlichen Standard Storage-Konto gespeichert.
 
 ### <a name="how-often-can-i-replicate-to-azure"></a>Wie oft kann ich zu Azure replizieren?
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: e59a985f59da1b6a40a6b583d5e2a490611a702c
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: b73727e6bd824b80fbc3897055d71f6b9c632a61
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86043851"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084363"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>Einführung in die Datenflussprotokollierung für Netzwerksicherheitsgruppen
 
@@ -357,7 +357,7 @@ https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecurity
 
 **Kosten der Datenflussprotokollierung**: Die NSG-Datenflussprotokollierung wird über die Menge der erzeugten Protokolle abgerechnet. Hohe Datenverkehrsvolumen können zu großen Datenflussprotokollvolumen und den damit verbundenen Kosten führen. Preise für NSG-Datenflussprotokolle enthalten nicht die zugrunde liegenden Kosten der Speicherung. Die Verwendung der Aufbewahrungsrichtlinienfunktion mit NSG-Datenflussprotokollierung bedeutet, dass separate Speicherkosten für längere Zeiträume anfallen. Wenn Sie die Aufbewahrungsrichtlinienfunktion nicht benötigen, empfehlen wir, dass Sie diesen Wert auf 0 festlegen. Weitere Informationen und zusätzliche Details finden Sie unter [Network Watcher – Preise](https://azure.microsoft.com/pricing/details/network-watcher/) und [Preise für Azure Storage](https://azure.microsoft.com/pricing/details/storage/).
 
-**Falsche Byte- und Paketanzahl für eingehende Datenflüsse**: [Netzwerksicherheitsgruppen (NSGs)](https://docs.microsoft.com/azure/virtual-network/security-overview) werden als eine [zustandsbehaftete Firewall](https://en.wikipedia.org/wiki/Stateful_firewall?oldformat=true) implementiert. Aufgrund von Plattformeinschränkungen werden Regeln, die eingehende Datenflüsse steuern, jedoch in einer zustandslosen Weise implementiert. Daher wird die Byte- und Paketanzahl für diese Datenflüsse nicht aufgezeichnet. Entsprechend kann die Anzahl der Bytes und Pakete, die in den NSG-Flussprotokollen (und der Datenverkehrsanalyse) gemeldet wird, von den tatsächlichen Werten abweichen. Außerdem sind die eingehenden Datenflüsse jetzt nicht beendend. Die Aufhebung dieser Einschränkung ist für Dezember 2020 geplant. 
+**Probleme mit benutzerdefinierten TCP-Eingangsregeln:** [Netzwerksicherheitsgruppen (NSGs)](https://docs.microsoft.com/azure/virtual-network/security-overview) werden als eine [zustandsbehaftete Firewall](https://en.wikipedia.org/wiki/Stateful_firewall?oldformat=true) implementiert. Aufgrund der aktuellen Plattformeinschränkungen werden benutzerdefinierte Regeln, die sich auf eingehende TCP-Flows auswirken, jedoch in einer zustandslosen Weise implementiert. Aus diesem Grund führen die von den benutzerdefinierten Eingangsregeln betroffenen Flows zu keiner Beendigung. Darüber hinaus wird die Byte- und Paketanzahl für diese Flows nicht aufgezeichnet. Entsprechend kann die Anzahl der Bytes und Pakete, die in den NSG-Flussprotokollen (und der Datenverkehrsanalyse) gemeldet wird, von den tatsächlichen Werten abweichen. Ein Flag, das diese Probleme behebt und abonniert werden kann, soll spätestens im Dezember 2020 zur Verfügung stehen. In der Zwischenzeit können Kunden mit schwerwiegenden Problemen, die infolge dieses Verhaltens auftreten, die Aktivierung des Flags über den Support anfordern. Stellen Sie dazu unter „Network Watcher“ > „NSG-Flowprotokolle“ eine Supportanfrage.  
 
 **Aus Internet-IP-Adressen protokollierte eingehende Datenflüsse an virtuelle Computer ohne öffentliche IP-Adressen**: Für virtuelle Computer, denen keine öffentliche IP-Adresse über eine öffentliche IP-Adresse zugewiesen wurde, die der Netzwerkkarte als öffentliche IP-Adresse auf Instanzebene zugeordnet ist, oder die zu einem Basis-Back-End-Pool für Lastenausgleich gehören, werden [standardmäßiges SNAT](../load-balancer/load-balancer-outbound-connections.md) und eine IP-Adresse verwendet, die von Azure zugewiesen wurde, um ausgehende Verbindung zu unterstützen. Daher sehen Sie möglicherweise Datenflussprotokolleinträge für Datenflüsse von Internet-IP-Adressen, wenn der jeweilige Datenfluss für einen Port im Bereich der Ports bestimmt war, die für SNAT zugewiesen sind. Obwohl Azure diese Datenflüsse zu dem virtuellen Computer nicht zulässt, wird der Versuch protokolliert und konzeptbedingt im NSG-Datenflussprotokoll von Network Watcher aufgeführt. Es empfiehlt sich, unerwünschten eingehenden Internet-Datenverkehr explizit mit NSG zu blockieren.
 

@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 07/28/2020
 ms.author: cherylmc
-ms.openlocfilehash: 7e26b00a78d2ce533aa4d16e88649e7e73e3af91
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 9d94904e580cefb53b2c71d21259bebfc07c1ad6
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387199"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87431280"
 ---
 # <a name="connect-a-vpn-gateway-virtual-network-gateway-to-virtual-wan"></a>Herstellen einer Verbindung zwischen einem VPN Gateway (VNet-Gateway) und Virtual WAN
 
@@ -39,11 +39,13 @@ Erstellen Sie ein virtuellen Netzwerk-Gateway für **VPN Gateways** im Aktiv/Akt
 
 ### <a name="active-active-mode-setting"></a><a name="active-active"></a>Aktiv/Aktiv-Moduseinstellung
 
+Aktivieren Sie auf der Seite **Konfiguration** des Gateways für virtuelle Netzwerke den Aktiv/Aktiv-Modus.
+
 ![Aktiv/Aktiv](./media/connect-virtual-network-gateway-vwan/active.png "Aktiv-aktiv")
 
 ### <a name="bgp-setting"></a><a name="BGP"></a>BGP-Einstellung
 
-Die BGP-ASN kann nicht 65515 sein. 66515 wird vom Azure Virtual WAN verwendet.
+Auf der Seite **Konfiguration** des Gateways für virtuelle Netzwerke können Sie die **BGP-ASN** konfigurieren. Ändern Sie die BGP-ASN. Die BGP-ASN kann nicht 65515 sein. 66515 wird vom Azure Virtual WAN verwendet.
 
 ![BGP](./media/connect-virtual-network-gateway-vwan/bgp.png "bgp")
 
@@ -60,16 +62,16 @@ Um Virtual WAN VPN-Standorte zu erstellen, navigieren Sie zum virtuellen WAN und
 1. Wählen Sie **+ Standort erstellen**.
 2. Geben Sie auf der Seite **VPN-Standorte erstellen** die folgenden Werte ein:
 
-   * **Region**: Geben Sie dieselbe Region wie für das Azure VPN Gateway VNet-Gateway ein.
+   * **Region**: Geben Sie dieselbe Region wie für das Gateway für virtuelle Netzwerke von Azure VPN Gateway ein.
    * **Gerätehersteller**: Geben Sie den Gerätehersteller (beliebiger Name) ein.
-   * **Privater Adressraum**: Geben Sie einen Wert ein oder lassen Sie das Feld leer, wenn BGP aktiviert ist.
-   * **Border Gateway Protocol**: Wählen Sie **Aktivieren** aus, wenn für das Azure VPN Gateway VNet-Gateway BGP aktiviert ist.
-   * **Mit Hubs verbinden**:Wählen Sie in der Dropdown-Liste den Hub aus, den Sie in den Voraussetzungen erstellt haben.
+   * **Privater Adressraum**: Geben Sie einen Wert ein, oder lassen Sie das Feld leer, wenn BGP aktiviert ist.
+   * **Border Gateway Protocol**: Wählen Sie **Aktivieren** aus, wenn für das Gateway für virtuelle Netzwerke von Azure VPN Gateway BGP aktiviert ist.
+   * **Mit Hubs verbinden**:Wählen Sie in der Dropdownliste den Hub aus, den Sie in den Voraussetzungen erstellt haben. Wird kein Hub angezeigt, vergewissern Sie sich, dass Sie ein Site-to-Site-VPN-Gateway für Ihren Hub erstellt haben.
 3. Geben Sie unter **Links** die folgenden Werte ein:
 
    * **Anbietername**: Geben Sie einen Linknamen und einen Anbieternamen (beliebiger Name) ein.
    * **Geschwindigkeit**: Geben Sie die Geschwindigkeit ein (beliebige Zahl).
-   * **IP-Adresse**: Geben Sie die IP-Adresse ein (identisch mit der ersten öffentlichen IP-Adresse, die in den Eigenschaften des VPN Gateway VNet-Gateways angezeigt wird).
+   * **IP-Adresse**: Geben Sie die IP-Adresse ein (identisch mit der ersten öffentlichen IP-Adresse, die in den Eigenschaften des Gateways für virtuelle Netzwerke (von VPN Gateway) angezeigt wird).
    * **BGP-Adresse** und **ASN**: Geben Sie BGP-Adresse und ASN ein. Diese müssen mit einer der BGP-Peer-IP-Adressen und ASN des VPN Gateway VNet-Gateway übereinstimmen, das Sie in [Schritt 1](#vnetgw) konfiguriert haben.
 4. Klicken Sie auf **Bestätigen**, um den Standort zu erstellen.
 5. Wiederholen Sie die vorherigen Schritte, um den zweiten Standort entsprechend der zweiten Instanz des VPN Gateway VNet-Gateways zu erstellen. Sie übernehmen die gleichen Einstellungen, verwenden allerdings die zweite öffentliche IP-Adresse und die zweite BGP-Peer-IP-Adresse der VPN Gateway-Konfiguration.
@@ -114,12 +116,12 @@ In diesem Abschnitt erstellen Sie eine Verbindung zwischen den lokalen VPN Gatew
    * **Lokales Netzwerkgateway:** Diese Verbindung verbindet das VNet-Gateway mit dem lokalen Netzwerkgateway. Wählen Sie eines der lokalen Netzwerkgateways aus, das Sie zuvor erstellt haben.
    * **Gemeinsam verwendeter Schlüssel:** Geben Sie einen gemeinsam verwendeten Schlüssel ein.
    * **IKE-Protokoll:** Wählen Sie das IKE-Protokoll aus.
-   * **BGP:** Wählen Sie **BGP aktivieren** aus, wenn die Verbindung über BGP erfolgt.
 3. Klicken Sie auf **OK** , um die Verbindung zu erstellen.
 4. Die Verbindung wird auf der Seite **Verbindungen** des Gateways für virtuelle Netzwerke angezeigt.
 
    ![Connection](./media/connect-virtual-network-gateway-vwan/connect.png "connection")
 5. Wiederholen Sie anschließend die oben aufgeführten Schritte, um eine weitere Verbindung zu erstellen. Wählen Sie für die zweite Verbindung das andere lokale Netzwerkgateway aus, das Sie erstellt haben.
+6. Wenn die Verbindungen über BGP hergestellt wurden, navigieren Sie nach dem Erstellen der Verbindungen zu einer Verbindung, und wählen Sie **Konfiguration** aus. Wählen Sie auf der Seite **Konfiguration** für **BGP** die Option **Aktiviert** aus. Klicken Sie dann auf **Speichern**. Wiederholen Sie dies für die zweite Verbindung.
 
 ## <a name="6-test-connections"></a><a name="test"></a>6. Testen von Verbindungen
 

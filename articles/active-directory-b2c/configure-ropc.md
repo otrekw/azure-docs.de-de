@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 05/12/2020
+ms.date: 07/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 4f44e9853182a8fcb222b8f895796cf5efc67def
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3dbafac99ebc1b7472bf884647ad5e8657f0de0b
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85389597"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87482854"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-ad-b2c"></a>Konfigurieren des Flows für Kennwortanmeldeinformationen von Ressourcenbesitzern in Azure AD B2C
 
@@ -30,13 +30,14 @@ Der Flow für Kennwortanmeldeinformationen von Ressourcenbesitzern (Resource Own
 
 1. Melden Sie sich beim Azure-Portal als globaler Administrator Ihres Azure AD B2C-Mandanten an.
 2. Wählen Sie für einen Wechsel zu Ihrem Azure AD B2C-Mandanten in der oberen rechten Ecke des Portals das B2C-Verzeichnis aus.
-3. Klicken Sie auf **Benutzerflows**, und wählen Sie **Neuer Benutzerflow** aus.
-4. Klicken Sie auf die Registerkarte **Alle**, und wählen Sie **Mit ROPC anmelden** aus.
-5. Geben Sie einen Namen für den Benutzerflow an, z. B. *ROPC_Auth*.
-6. Klicken Sie unter **Anwendungsansprüche** auf **Mehr anzeigen**.
-7. Wählen Sie die Anwendungsansprüche aus, die Sie für Ihre Anwendung benötigen, z. B. „Anzeigename“, „E-Mail-Adresse“ und „Identitätsanbieter“.
-8. Wählen Sie **OK** und anschließend **Erstellen**.
-9. Klicken Sie auf **Benutzerflow ausführen**.
+3. Wählen Sie **Benutzerflows** und dann **Neuer Benutzerflow** aus.
+4. Wählen Sie **Mit Ressourcenbesitzer-Kennwortanmeldeinformationen (ROPC) anmelden** aus.
+5. Vergewissern Sie sich, dass unter **Version** die Option **Vorschau** aktiviert ist, und wählen Sie dann **Erstellen** aus.
+7. Geben Sie einen Namen für den Benutzerflow an, z. B. *ROPC_Auth*.
+8. Klicken Sie unter **Anwendungsansprüche** auf **Mehr anzeigen**.
+9. Wählen Sie die Anwendungsansprüche aus, die Sie für Ihre Anwendung benötigen, z. B. „Anzeigename“, „E-Mail-Adresse“ und „Identitätsanbieter“.
+10. Wählen Sie **OK** und anschließend **Erstellen**.
+11. Klicken Sie auf **Benutzerflow ausführen**.
 
    Es wird dann ein Endpunkt angezeigt (wie das folgende Beispiel):
 
@@ -131,7 +132,3 @@ Eine erfolgreiche Antwort ähnelt dem folgenden Beispiel:
 Die Azure AD B2C-Implementierung entspricht den OAuth 2.0-Standards für Kennwortanmeldeinformationen von Ressourcenbesitzern öffentlicher Clients und sollte mit den meisten Client-SDKs kompatibel sein. Wir haben diesen Flow ausgiebig in Produktionsumgebungen mit AppAuth für iOS und AppAuth für Android getestet. Die neuesten Informationen finden Sie unter [Natives App-SDK für OAuth 2.0 und OpenID Connect für die Implementierung moderner Best Practices](https://appauth.io/).
 
 Laden Sie funktionierende Beispiele, die für die Verwendung mit Azure AD B2C konfiguriert sind, von GitHub unter [für Android](https://aka.ms/aadb2cappauthropc) und [für iOS](https://aka.ms/aadb2ciosappauthropc) herunter.
-
-
-
-

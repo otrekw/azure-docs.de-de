@@ -1,5 +1,6 @@
 ---
 title: Benutzerflowtypen in Azure Active Directory B2C | Microsoft-Dokumentation
+titleSuffix: Azure AD B2C
 description: Erfahren Sie etwas über das erweiterbare Richtlinienframework von Azure Active Directory B2C und das Erstellen verschiedener Benutzerflows.
 services: active-directory-b2c
 author: msmimart
@@ -7,23 +8,20 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/30/2018
+ms.date: 07/30/2020
+ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: c11bc48742c398d2048a236c7d00af044971f845
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7a7736602fafb740d1d76fa09fd26da25e4ff9f5
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78185607"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87481596"
 ---
 # <a name="user-flows-in-azure-active-directory-b2c"></a>Benutzerflows in Azure Active Directory B2C
 
-Das erweiterbare Richtlinienframework von Azure Active Directory B2C (Azure AD B2C) ist der Hauptvorteil des Diensts. Die Richtlinien beschreiben Benutzeroberflächen im Zusammenhang mit der Identität, z.B. Registrierung, Anmeldung oder Profilbearbeitung. Um Ihnen die Einrichtung der gängigsten Identitätsaufgaben zu erleichtern, enthält das Azure AD B2C-Portal vordefinierte und konfigurierbare Richtlinien, die als **Benutzerflows** bezeichnet werden.
-
-## <a name="what-are-user-flows"></a>Was sind Benutzerflows?
-
-Ein Benutzerflow ermöglicht das Steuern des Verhaltens in Ihren Anwendungen durch Konfigurieren der folgenden Einstellungen:
+Um Ihnen die Einrichtung der gängigsten Identitätsaufgaben für Ihre Anwendungen zu erleichtern, enthält das Azure AD B2C-Portal vordefinierte und konfigurierbare Richtlinien, die als **Benutzerflows** bezeichnet werden. Mithilfe eines Benutzerflows können Sie feststellen, wie Benutzer mit Ihrer Anwendung interagieren, wenn sie Aktionen wie Anmelden, Registrieren, Bearbeiten eines Profils oder Zurücksetzen eines Kennworts ausführen. Mit Benutzerflows können Sie die folgenden Funktionen steuern:
 
 - Kontotypen für die Anmeldung, z.B. Konten für soziale Netzwerke wie Facebook oder lokale Konten
 - Attribute, die vom Kunden gesammelt werden, wie z.B. Vorname, Postleitzahl und Schuhgröße
@@ -61,13 +59,21 @@ client_id=2d4d11a2-f814-46a7-890a-274a72a7309e      // Your registered Applicati
 
 ## <a name="user-flow-versions"></a>Benutzerflowversionen
 
-Im Azure-Portal werden ständig neue [Versionen von Benutzerflows](user-flow-versions.md) hinzugefügt. Wenn Sie neu bei Azure AD B2C sind, sollten Sie getestete Benutzerflows verwenden. Wenn Sie einen neuen Benutzerflow erstellen, wählen Sie den benötigten Benutzerflow auf der Registerkarte **Empfohlen** aus.
+Azure AD B2C beinhaltet mehrere Typen von Benutzerflows:
 
-Die folgenden Benutzerflows werden derzeit empfohlen:
-
-- **Registrierung und Anmeldung:** verarbeitet die Benutzeroberfläche für Registrierung und Anmeldung in ein und derselben Konfiguration. Die Benutzer werden je nach Kontext auf den jeweils entsprechenden Pfad geleitet. Sie sollten diesen Benutzerflow anstelle eines **Registrierungs-** oder **Anmeldebenutzerflows** verwenden.
+- **Registrierung und Anmeldung:** verarbeitet die Benutzeroberfläche für Registrierung und Anmeldung in ein und derselben Konfiguration. Die Benutzer werden je nach Kontext auf den jeweils entsprechenden Pfad geleitet. Außerdem sind separate Benutzerflows für **Registrierung** oder **Anmeldung** enthalten. Im Allgemeinen wird jedoch der kombinierte Benutzerflow für Registrierung und Anmeldung empfohlen.
 - **Profilbearbeitung:** ermöglicht Benutzern, ihre Profilinformationen zu bearbeiten.
 - **Zurücksetzen des Kennworts:** ermöglicht Ihnen, festzulegen, ob und wie Benutzer ihr Kennwort zurücksetzen können.
+
+Die meisten Benutzerflowtypen verfügen sowohl über eine Version vom Typ **Empfohlen** als auch über eine Version vom Typ **Standard**. Weitere Informationen finden Sie unter [Benutzerflowversionen in Azure Active Directory B2C](user-flow-versions.md).
+
+> [!IMPORTANT]
+> Wenn Sie in Azure AD B2C bereits mit Benutzerflows gearbeitet haben, werden Sie feststellen, dass Benutzerflowversionen jetzt anders angegeben werden. Zuvor wurden V1-Versionen (bereit für die Produktion) sowie V1.1- und V2-Versionen (Vorschauversion) angeboten. Nun wurden Benutzerflows in zwei Versionen zusammengefasst:
+>
+>- **Empfohlene** Benutzerflows sind die neuen Vorschauversionen von Benutzerflows. Sie wurden gründlich getestet und umfassen alle Features der alten Versionen **V2** und **V1.1**. Die neuen empfohlenen Benutzerflows werden in Zukunft verwaltet und aktualisiert. Nachdem Sie auf diese neuen empfohlenen Benutzerflows umgestellt haben, erhalten Sie Zugriff auf neue Features, sobald diese veröffentlicht werden.
+>- **Standardbenutzerflows** wurden zuvor als **V1** bezeichnet und sind allgemein verfügbare und produktionsbereite Benutzerflows. Wenn Ihre Benutzerflows unternehmenskritisch sind und stark von stabilen Versionen abhängen, können Sie weiterhin die Standardbenutzerflows verwenden. Sie sollten jedoch wissen, dass diese Versionen nicht mehr verwaltet und aktualisiert werden.
+>
+>Alle Benutzerflows der Legacyvorschauversionen (V1.1 und V2) werden zum **1. August 2021** eingestellt. Es wird dringend empfohlen, so bald wie möglich [zu den neuen **empfohlenen** Benutzerflows zu wechseln](user-flow-versions.md#how-to-switch-to-a-new-recommended-user-flow), damit Sie stets die neuen Features und Updates nutzen können.
 
 ## <a name="linking-user-flows"></a>Verknüpfen von Benutzerflows
 

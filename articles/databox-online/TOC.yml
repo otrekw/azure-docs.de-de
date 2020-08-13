@@ -7,7 +7,7 @@
       items:
         - name: Was ist Data Box Gateway?
           href: data-box-gateway-overview.md
-    - name: Lernprogramme
+    - name: Tutorials
       items:
         - name: 1 – Vorbereiten
           href: data-box-gateway-deploy-prep.md
@@ -117,10 +117,14 @@
               href: azure-stack-edge-manage-access-power-connectivity-mode.md
             - name: Über PowerShell
               href: azure-stack-edge-connect-powershell-interface.md
-        - name: Problembehandlung
-          href: azure-stack-edge-troubleshoot.md
-        - name: Microsoft-Support kontaktieren
-          href: azure-stack-edge-contact-microsoft-support.md
+            - name: Problembehandlung
+              items:
+                - name: Über Protokolle
+                  href: azure-stack-edge-troubleshoot.md
+                - name: Probleme bei der Bestellung
+                  href: azure-stack-edge-troubleshoot-ordering.md
+                - name: Microsoft-Support kontaktieren
+                  href: azure-stack-edge-contact-microsoft-support.md
         - name: Überwachen
           href: azure-stack-edge-monitor.md
         - name: Zurückgeben des Geräts

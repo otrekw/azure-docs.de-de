@@ -7,18 +7,18 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
-ms.date: 02/27/2020
-ms.openlocfilehash: 545c1720ef379ec74bd2e7c0bc68f6a2fcbba789
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 07/24/2020
+ms.openlocfilehash: e47cd89b2f0a5de4e0fc7663f37a2960e2ada971
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82115498"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87078634"
 ---
 # <a name="exchange-as2-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Austauschen von AS2-Nachrichten für die B2B-Unternehmensintegration in Azure Logic Apps mit Enterprise Integration Pack
 
 > [!IMPORTANT]
-> Der ursprüngliche AS2-Connector wird als veraltet markiert, stellen Sie also sicher, dass Sie stattdessen den **AS2 (v2)** -Connector verwenden. Diese Version bietet die gleichen Funktionen wie die ursprüngliche Version, ist in der Logic Apps-Runtime nativ und sorgt für erhebliche Leistungsverbesserungen in Bezug auf Durchsatz und Nachrichtengröße. Außerdem erfordert der native v2-Connector keine Verbindung mit Ihrem Integrationskonto. Stellen Sie stattdessen sicher, dass Sie, wie in den Voraussetzungen beschrieben, Ihr Integrationskonto mit der Logik-App verbinden, in der Sie den Connector verwenden möchten.
+> Der ursprüngliche AS2-Connector wird als veraltet markiert, verwenden Sie stattdessen den **AS2 (v2)** -Connector, es sei denn, Sie benötigen Nachverfolgungsfunktionen. Mit Ausnahme der Nachverfolgung bietet diese Version die gleichen Funktionen wie die ursprüngliche Version, ist in der Logic Apps-Runtime nativ und sorgt für erhebliche Leistungsverbesserungen in Bezug auf Nachrichtengröße, -durchsatz und -wartezeit. Außerdem erfordert der v2-Connector keine Verbindung mit Ihrem Integrationskonto. Stellen Sie stattdessen sicher, dass Sie, wie in den Voraussetzungen beschrieben, Ihr Integrationskonto mit der Logik-App verbinden, in der Sie den Connector verwenden möchten.
 
 Um mit AS2-Nachrichten in Azure Logic Apps zu arbeiten, können Sie den AS2-Connector verwenden, der Auslöser und Aktionen für die Verwaltung der AS2-Kommunikation bereitstellt. Um z. B. Sicherheit und Zuverlässigkeit bei der Übertragung von Nachrichten zu gewährleisten, können Sie die folgenden Aktionen verwenden:
 
@@ -119,7 +119,7 @@ Wenn Sie eine uneingeschränkt funktionsfähige Logik-App und ein AS2-Beispielsz
 
 ## <a name="connector-reference"></a>Connector-Referenz
 
-Weitere technische Details zu diesem Connector, z. B. Aktionen und Grenzwerte, wie sie in der Swagger-Datei des Connectors beschrieben werden, finden Sie auf der [Referenzseite des Connectors](https://docs.microsoft.com/connectors/as2/). 
+Weitere technische Details zu diesem Connector, z. B. Aktionen und Grenzwerte, wie sie in der Swagger-Datei des Connectors beschrieben werden, finden Sie auf der [Referenzseite des Connectors](/connectors/as2/). 
 
 > [!NOTE]
 > Für Logik-Apps in einer [Integrationsdienstumgebung (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) verwendet die mit ISE bezeichnete Version dieses Connectors die [B2B-Nachrichtengrenzwerte für ISE](../logic-apps/logic-apps-limits-and-config.md#b2b-protocol-limits).

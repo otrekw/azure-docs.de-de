@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 02/10/2020
+ms.date: 07/30/2020
 ms.custom: project-no-code, devx-track-javascript
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: d85ffca8c72e7a247d5bbd1e593335fd7995b594
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: 58ddca6bb7844288aae0370f035bc4dfa2dc942f
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87170140"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87481676"
 ---
 # <a name="javascript-and-page-layout-versions-in-azure-active-directory-b2c"></a>JavaScript und Seitenlayoutversionen in Azure Active Directory B2C
 
@@ -41,7 +41,7 @@ Im Benutzerflow **Eigenschaften** können Sie JavaScript aktivieren. Das Aktivie
 
 ## <a name="select-a-page-layout-version"></a>Auswählen einer Seitenlayoutversion
 
-Sie können eine Seitenlayoutversion für Ihre Benutzerflowseiten unabhängig davon angeben, ob Sie JavaScript in den Benutzerfloweigenschaften aktivieren oder nicht. Öffnen Sie den Benutzerflow, und wählen Sie **Seitenlayouts** aus. Wählen Sie unter **LAYOUTNAME** eine Benutzerflowseite und dann die Option **Seitenlayoutversion** aus.
+Sie können eine Seitenlayoutversion für Ihre Benutzerflowseiten unabhängig davon angeben, ob Sie JavaScript in den Benutzerfloweigenschaften aktivieren oder nicht. Öffnen Sie den Benutzerflow, und wählen Sie **Seitenlayouts** aus. Wählen Sie unter **Layoutname** eine Benutzerflowseite und dann die Option **Seitenlayoutversion (Vorschau)** aus.
 
 Informationen zu den verschiedenen Seitenlayoutversionen finden Sie im [Versionsänderungsprotokoll für das Seitenlayout](page-layout.md).
 

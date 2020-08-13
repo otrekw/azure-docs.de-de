@@ -6,12 +6,12 @@ ms.author: thweiss
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 01/21/2020
-ms.openlocfilehash: 9c851a172fcfe89e6e7aa31c298a5b3d7931a528
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 3a9039470c32b89d398dd41e3df99e91c70d913c
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86023583"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87542635"
 ---
 # <a name="secure-access-to-data-in-azure-cosmos-db"></a>Sicherer Zugriff auf Daten in Azure Cosmos DB
 
@@ -57,7 +57,7 @@ Der Hauptschlüssel kann ganz einfach gewechselt werden.
 
 ### <a name="code-sample-to-use-a-master-key"></a>Codebeispiel für die Verwendung eines Hauptschlüssels
 
-Das folgende Codebeispiel veranschaulicht, wie mit einem Cosmos DB-Kontoendpunkt und einem Hauptschlüssel eine DocumentClient-Instanz instanziiert und eine Datenbank erstellt wird.
+Das folgende Codebeispiel veranschaulicht, wie mit einem Cosmos DB-Kontoendpunkt und einem Hauptschlüssel eine DocumentClient-Instanz instanziiert und eine Datenbank erstellt wird:
 
 ```csharp
 //Read the Azure Cosmos DB endpointUrl and authorization keys from config.
@@ -69,6 +69,10 @@ private static readonly string authorizationKey = ConfigurationManager.AppSettin
 
 CosmosClient client = new CosmosClient(endpointUrl, authorizationKey);
 ```
+
+Das folgende Codebeispiel veranschaulicht, wie mit dem Azure Cosmos DB-Kontoendpunkt und dem Hauptschlüssel ein `CosmosClient`-Objekt instanziiert wird:
+
+:::code language="python" source="~/cosmosdb-python-sdk/sdk/cosmos/azure-cosmos/samples/access_cosmos_with_resource_token.py" id="configureConnectivity":::
 
 ## <a name="resource-tokens"></a>Ressourcentoken <a id="resource-tokens"></a>
 

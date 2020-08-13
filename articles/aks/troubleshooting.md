@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie allgemeine Probleme bei der Verwendung von Az
 services: container-service
 ms.topic: troubleshooting
 ms.date: 06/20/2020
-ms.openlocfilehash: f334f501335e9e384cfcc35b356e61ab66efe7a8
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: a65e5e2b507f45fe51a8f6406edae4d96affe227
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86243680"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87056514"
 ---
 # <a name="aks-troubleshooting"></a>AKS-Problembehandlung
 
@@ -80,7 +80,11 @@ AKS verfügt über Steuerungsebenen mit Hochverfügbarkeit, die vertikal nach de
     - https://github.com/helm/helm/issues/4821
     - https://github.com/helm/helm/issues/3500
     - https://github.com/helm/helm/issues/4543
+- **[Wird interner Datenverkehr zwischen Knoten blockiert?](#im-receiving-tcp-timeouts-such-as-dial-tcp-node_ip10250-io-timeout)**
 
+## <a name="im-receiving-tcp-timeouts-such-as-dial-tcp-node_ip10250-io-timeout"></a>Ich erhalte `TCP timeouts`, etwa `dial tcp <Node_IP>:10250: i/o timeout`.
+
+Diese Timeouts können damit zusammenhängen, dass interner Datenverkehr zwischen Knoten blockiert wird. Vergewissern Sie sich, dass dieser Datenverkehr nicht blockiert wird, etwa von [Netzwerksicherheitsgruppen](concepts-security.md#azure-network-security-groups) im Subnetz für die Clusterknoten.
 
 ## <a name="im-trying-to-enable-role-based-access-control-rbac-on-an-existing-cluster-how-can-i-do-that"></a>Ich versuche, rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) in einem vorhandenen Cluster zu aktivieren. Wie gehe ich dazu vor?
 

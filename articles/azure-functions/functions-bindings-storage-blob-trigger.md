@@ -5,13 +5,13 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
-ms.custom: tracking-python
-ms.openlocfilehash: c88ace8693d15a58c78c70ba46001c98e92fc0a6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-python
+ms.openlocfilehash: 28b608446c543fc568a5c322ffce1df6100d4a73
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84559976"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87852462"
 ---
 # <a name="azure-blob-storage-trigger-for-azure-functions"></a>Azure Blob Storage-Trigger für Azure Functions
 
@@ -301,7 +301,7 @@ Greifen Sie über `context.bindings.<NAME>` auf Blobdaten zu, wobei `<NAME>` mit
 
 # <a name="python"></a>[Python](#tab/python)
 
-Greifen Sie über den als [InputStream](https://docs.microsoft.com/python/api/azure-functions/azure.functions.inputstream?view=azure-python) typisierten Parameter auf Blob-Daten zu. Weitere Detailinformationen finden Sie im [Triggerbeispiel](#example).
+Greifen Sie über den als [InputStream](/python/api/azure-functions/azure.functions.inputstream?view=azure-python) typisierten Parameter auf Blob-Daten zu. Weitere Detailinformationen finden Sie im [Triggerbeispiel](#example).
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -331,7 +331,7 @@ Im folgenden Beispiel wird der Trigger nur für Blobs im Container `input` ausge
 "path": "input/original-{name}",
 ```
 
-Wenn der Blobname *original-Blob1.txt* lautet, hat die Variable `name` im Funktionscode den Wert `Blob1`.
+Wenn der Blobname *original-Blob1.txt* lautet, hat die Variable `name` im Funktionscode den Wert `Blob1.txt`.
 
 ### <a name="filter-on-file-type"></a>Filtern nach Dateityp
 
@@ -412,7 +412,7 @@ Der Blobtrigger verwendet intern eine Warteschlange, sodass die maximal zulässi
 
 [Der Verbrauchstarif](functions-scale.md#how-the-consumption-and-premium-plans-work) beschränkt den Arbeitsspeicher einer Funktions-App auf einer VM auf 1,5 GB. Der Arbeitsspeicher wird von jeder parallel ausgeführten Funktionsinstanz und durch die Functions-Runtime selbst verwendet. Wenn eine durch einen Blob ausgelöste Funktion das gesamte Blob in den Arbeitsspeicher lädt, entspricht der maximal von dieser Funktion verwendete Arbeitsspeicher nur für Blobs dem 24 * der maximalen Blobgröße. Beispiel: Eine Funktions-App, die drei Funktionen mit Blobtrigger umfasst und die Standardeinstellungen verwendet, weist pro VM eine maximale Nebenläufigkeit von 3 * 24 = 72 Funktionsaufrufen auf.
 
-JavaScript- und Java-Funktionen laden das gesamte Blob in den Arbeitsspeicher, C#-Funktionen zeigen dieses Verhalten bei einer Bindung an `string`, `Byte[]` oder POCO.
+JavaScript- und Java-Funktionen laden das gesamte Blob in den Arbeitsspeicher, C#-Funktionen zeigen dieses Verhalten bei einer Bindung an `string` oder `Byte[]`.
 
 ## <a name="polling"></a>Abruf
 

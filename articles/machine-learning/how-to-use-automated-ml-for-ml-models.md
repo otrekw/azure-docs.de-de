@@ -5,23 +5,28 @@ description: Hier erfahren Sie, wie Sie mit Azure Machine Learning automatisiert
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
 ms.author: nibaccam
 author: aniththa
-manager: cgronlun
 ms.reviewer: nibaccam
-ms.date: 05/20/2020
-ms.openlocfilehash: 9871d2ef46a4bbcaa0de7a2aee7d2c91f2bfefab
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/10/2020
+ms.topic: conceptual
+ms.custom: how-to
+ms.openlocfilehash: 6e4ed8514cd99d42790296a58296a73696989b69
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85831912"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87539134"
 ---
 # <a name="create-review-and-deploy-automated-machine-learning-models-with-azure-machine-learning"></a>Erstellen, Überprüfen und Bereitstellen von automatisierten Machine Learning-Modellen mit Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
-In diesem Artikel erfahren Sie, wie Sie automatisierte Machine Learning-Modelle ohne eine einzige Codezeile über die Azure Machine Learning Studio-Oberfläche erstellen, untersuchen und bereitstellen. Automatisiertes Machine Learning ist ein Prozess, bei dem der beste Machine Learning-Algorithmus für Ihre spezifischen Daten für Sie ausgewählt wird. Dieser Prozess ermöglicht Ihnen die schnelle Erstellung von Machine Learning-Modellen. [Weitere Informationen zu automatisiertem Machine Learning](concept-automated-ml.md).
+In diesem Artikel erfahren Sie, wie Sie automatisierte Machine Learning-Modelle ohne eine einzige Codezeile in Azure Machine Learning Studio erstellen, untersuchen und bereitstellen.
+
+>[!IMPORTANT]
+> Die Umgebung für automatisiertes ML in Azure Machine Learning Studio befindet sich in der Vorschauphase. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar.
+
+ Automatisiertes Machine Learning ist ein Prozess, bei dem der beste Machine Learning-Algorithmus für Ihre spezifischen Daten für Sie ausgewählt wird. Dieser Prozess ermöglicht Ihnen die schnelle Erstellung von Machine Learning-Modellen. [Weitere Informationen zu automatisiertem Machine Learning](concept-automated-ml.md).
  
 Ein End-to-End-Beispiel finden Sie im [Tutorial zum Erstellen eines Klassifizierungsmodells mit der Oberfläche für automatisiertes maschinelles Lernen von Azure Machine Learning](tutorial-first-experiment-automated-ml.md). 
 
@@ -51,18 +56,22 @@ Andernfalls wird eine Liste ihrer letzten automatisierten Machine Learning-Exper
 
 1. Wählen Sie **+ Neue Ausführung von automatisiertem ML** aus, und füllen Sie das Formular aus.
 
-1. Wählen Sie ein Dataset in Ihrem Speichercontainer aus, oder erstellen Sie ein neues Dataset. Datasets können aus lokalen Dateien, Web-URLs, Datenspeichern oder Azure Open Datasets erstellt werden. 
+1. Wählen Sie ein Dataset in Ihrem Speichercontainer aus, oder erstellen Sie ein neues Dataset. Datasets können aus lokalen Dateien, Web-URLs, Datenspeichern oder Azure Open Datasets erstellt werden. Weitere Informationen zur Erstellung von Datasets finden Sie [hier](how-to-create-register-datasets.md).  
 
     >[!Important]
     > Anforderungen für Trainingsdaten:
     >* Die Daten müssen in Tabellenform vorliegen.
     >* Der Wert, den Sie vorhersagen möchten (Zielspalte), muss in den Daten vorhanden sein.
 
-    1. Um ein neues Dataset aus einer Datei auf Ihrem lokalen Computer zu erstellen, wählen Sie **Durchsuchen** aus, und wählen Sie dann die Datei aus. 
+    1. Um ein neues Dataset aus einer Datei auf Ihrem lokalen Computer zu erstellen, wählen Sie **+Dataset erstellen** und anschließend **Aus lokaler Datei** aus. 
 
-    1. Weisen Sie Ihrem Dataset einen eindeutigen Namen zu, und geben Sie eine optionale Beschreibung ein. 
+    1. Geben Sie Ihrem Dataset im Formular **Grundlegende Informationen** einen eindeutigen Namen, und geben Sie optional eine Beschreibung an. 
 
     1. Wählen Sie **Weiter** aus, um das Formular **Datenspeicher- und Dateiauswahl** zu öffnen. In diesem Formular wählen Sie aus, wo das Dataset hochgeladen werden soll. Dies kann der Standardspeichercontainer sein, der automatisch mit Ihrem Arbeitsbereich erstellt wird, oder ein Speichercontainer, den Sie für das Experiment auswählen. 
+    
+        1. Wenn sich Ihre Daten hinter einem virtuellen Netzwerk befinden, müssen Sie die Funktion zum **Überspringen der Überprüfung** aktivieren, um sicherzustellen, dass der Arbeitsbereich auf Ihre Daten zugreifen kann. Weitere Informationen zur Netzwerkisolation und zum Datenschutz finden Sie [hier](how-to-enable-virtual-network.md#machine-learning-studio). 
+    
+    1. Wählen Sie **Durchsuchen** aus, um die Datendatei für das Dataset hochzuladen. 
 
     1. Überprüfen Sie das Formular **Einstellungen und Vorschau** auf Genauigkeit. Das Formular wird ausgehend vom Dateityp intelligent aufgefüllt. 
 
@@ -96,8 +105,11 @@ Andernfalls wird eine Liste ihrer letzten automatisierten Machine Learning-Exper
     Feld|BESCHREIBUNG
     ---|---
     Computename| Geben Sie einen eindeutigen Namen ein, der Ihren Computekontext identifiziert.
+    VM-Priorität| Virtuelle Computer mit niedriger Priorität sind kostengünstiger, bieten jedoch keine garantierten Computeknoten. 
+    Typ des virtuellen Computers| Wählen Sie CPU oder GPU als VM-Typ aus.
     Größe des virtuellen Computers| Wählen Sie die Größe für Ihren Computes aus.
-    Min/Max nodes (Min./Max. Knoten) (unter „Erweiterte Einstellungen“)| Um ein Datenprofil zu erstellen, müssen Sie mindestens einen Knoten angeben. Geben Sie die maximale Anzahl von Knoten für Ihren Compute ein. Der Standardwert ist 6 Knoten für einen AML-Compute.
+    Min/Max nodes (Min./Max. Knoten)| Um ein Datenprofil zu erstellen, müssen Sie mindestens einen Knoten angeben. Geben Sie die maximale Anzahl von Knoten für Ihren Compute ein. Der Standardwert ist 6 Knoten für einen AML-Compute.
+    Erweiterte Einstellungen | Mit diesen Einstellungen können Sie ein Benutzerkonto und ein vorhandenes virtuelles Netzwerk für Ihr Experiment konfigurieren. 
     
     Klicken Sie auf **Erstellen**. Das Erstellen einer neuen Computeressource kann einige Minuten dauern.
 
@@ -108,19 +120,21 @@ Andernfalls wird eine Liste ihrer letzten automatisierten Machine Learning-Exper
 
 1. Wählen Sie auf dem Formular **Aufgabentyp und Einstellungen** den Aufgabentyp aus: Klassifizierung, Regression oder Prognose (Vorhersage). Weitere Informationen finden Sie unter [Unterstützte Aufgabentypen](concept-automated-ml.md#when-to-use-automl-classify-regression--forecast).
 
-    1. Für eine Klassifizierung können Sie auch Deep Learning aktivieren, das für Textmerkmalserstellungen verwendet wird.
+    1. Für eine **Klassifizierung** können Sie auch Deep Learning aktivieren, das für Textfeaturisierungen verwendet wird.
 
-    1. Für Vorhersagen:
-        1. Wählen Sie die Zeitspalte aus: Diese Spalte enthält die zu verwendenden Zeitdaten.
+    1. Für **Vorhersagen** haben Sie folgende Möglichkeiten: 
+    
+        1. Aktivieren von Deep Learning
+    
+        1. Auswählen der *Zeitspalte*: Diese Spalte enthält die zu verwendenden Zeitdaten.
 
-        1. Wählen Sie den Vorhersagehorizont aus: Geben Sie an, wie viele Zeiteinheiten (Minuten/Stunden/Tage/Wochen/Monate/Jahre) das Modell die Zukunft vorhersagen können soll. Je weiter das Modell die Zukunft vorhersagen muss, desto ungenauer wird es. [Weitere Informationen zu Vorhersagen und zum Vorhersagehorizont](how-to-auto-train-forecast.md).
+        1. Auswählen des *Vorhersagehorizonts*: Geben Sie an, wie viele Zeiteinheiten (Minuten/Stunden/Tage/Wochen/Monate/Jahre) das Modell die Zukunft vorhersagen können soll. Je weiter das Modell die Zukunft vorhersagen muss, desto ungenauer wird es. [Weitere Informationen zu Vorhersagen und zum Vorhersagehorizont](how-to-auto-train-forecast.md).
 
 1. (Optional:) Anzeigen weiterer Konfigurationseinstellungen: zusätzliche Einstellungen, mit denen Sie den Trainingsauftrag besser steuern können. Andernfalls werden die Standardwerte auf Basis der Experimentauswahl und -daten angewendet. 
 
     Zusätzliche Konfigurationen|BESCHREIBUNG
     ------|------
     Primary metric (Primäre Metrik)| Die wichtigste Metrik, die für die Bewertung Ihres Modells verwendet wird. [Weitere Informationen zur Modellmetriken](how-to-configure-auto-train.md#explore-model-metrics).
-    Automatische Featurebereitstellung| Aktivieren oder deaktivieren Sie mit dieser Option die Featurisierung durch automatisiertes maschinelles Lernen. Die automatische Featurisierung umfasst die automatische Datenbereinigung, die Vorbereitung und die Transformation, um synthetische Features zu generieren. Für den Aufgabentyp Zeitreihenvorhersagen nicht unterstützt. Weitere Informationen zur Featurisierung finden Sie [hier](how-to-configure-auto-features.md#featurization). 
     Explain best model (Bestes Modell erläutern) | Wählen Sie diese Option aus, um die Erläuterungsfähigkeit des empfohlenen besten Modells anzuzeigen oder zu deaktivieren.
     Blocked algorithm (Blockierter Algorithmus)| Wählen Sie Algorithmen aus, die Sie aus den Trainingsauftrag ausschließen möchten.
     Beendigungskriterium| Wenn eines dieser Kriterien erfüllt ist, wird der Trainingsauftrag beendet. <br> *Training job time (hours)* Trainingsauftragszeit (Stunden): Gibt an, wie lange der Trainingsauftrag ausgeführt werden soll. <br> *Metric score threshold* (Metrischer Bewertungsschwellenwert):  Die Metrikmindestbewertung für alle Pipelines. Auf diese Weise wird sichergestellt, dass Sie nicht mehr Zeit für den Trainingsauftrag aufwenden als nötig, wenn Sie eine definierte Zielmetrik verwenden, die Sie erreichen möchten.
@@ -163,7 +177,7 @@ Im Formular **Featurisierung** können Sie die automatische Featurisierung aktiv
 
 In der folgenden Tabelle sind die derzeit in Studio verfügbaren Anpassungen zusammengefasst: 
 
-Column| Anpassung
+Spalte| Anpassung
 ---|---
 Enthalten | Gibt an, welche Spalten in das Training einbezogen werden sollen.
 Featuretyp| Dient zum Ändern des Werttyps für die ausgewählte Spalte.
@@ -185,7 +199,7 @@ Die Registerkarte **Modelle** enthält eine Liste der erstellten Modelle, wobei 
 
 ### <a name="view-training-run-details"></a>Anzeigen der Details der Trainingsausführung
 
-Führen Sie einen Drilldown für eines der abgeschlossenen Modelle aus, um Details zur Trainingsausführung anzuzeigen, z. B. Ausführungsmetriken auf der Registerkarte **Modelldetails** oder Leistungsdiagramme auf der Registerkarte **Visualisierungen**. [Weitere Informationen zu Diagrammen](how-to-understand-automated-ml.md).
+Führen Sie einen Drilldown für eines der abgeschlossenen Modelle aus, um Details zur Trainingsausführung anzuzeigen, z. B. eine Modellzusammenfassung auf der Registerkarte **Modell** oder Leistungsmetrikdiagramme auf der Registerkarte **Metriken**. [Weitere Informationen zu Diagrammen](how-to-understand-automated-ml.md).
 
 [![Details zur Iteration](media/how-to-use-automated-ml-for-ml-models/iteration-details.png)](media/how-to-use-automated-ml-for-ml-models/iteration-details-expanded.png)
 
@@ -197,9 +211,14 @@ Automatisiertes maschinelles Lernen unterstützt Sie dabei, das Modell bereitzus
 
 1. Sie haben einige Optionen für die Bereitstellung. 
 
-    + Option 1: Um das beste Modell (entsprechend den definierten Metrikkriterien) bereitzustellen, wählen Sie die Schaltfläche **Deploy Best Model** (Bestes Modell bereitstellen) auf der Registerkarte **Details** aus.
+    + Option 1: Stellen Sie das beste Modell gemäß den von Ihnen definierten Metrikkriterien bereit. 
+        1. Navigieren Sie nach Abschluss des Experiments zur Seite mit der übergeordneten Ausführung, indem Sie oben auf dem Bildschirm **Ausführung 1** auswählen. 
+        1.  Wählen Sie das Modell aus, das im Abschnitt **Zusammenfassung des besten Modells** aufgeführt ist. 
+        1. Wählen Sie oben links im Fenster **Bereitstellen** aus. 
 
-    + Option 2: Um eine bestimmte Modelliteration aus diesem Experiment bereitzustellen, führen Sie einen Drilldown für das Modell aus, um die Registerkarte **Modelldetails** zu öffnen, und wählen Sie **Modell bereitstellen** aus.
+    + Option 2: Stellen Sie eine bestimmte Modelliteration aus diesem Experiment bereit.
+        1. Wählen Sie das gewünschte Modell auf der Registerkarte **Modelle** aus.
+        1. Wählen Sie oben links im Fenster **Bereitstellen** aus.
 
 1. Füllen Sie den Bereich **Modell bereitstellen** aus.
 
@@ -210,7 +229,7 @@ Automatisiertes maschinelles Lernen unterstützt Sie dabei, das Modell bereitzus
     Computetyp| Wählen Sie die Art des bereitzustellenden Endpunkts aus: *Azure Kubernetes Service (AKS)* oder *Azure-Containerinstanz (ACI)* .
     Computename| *Nur für AKS:* Wählen Sie den Namen des AKS-Clusters aus, der als Ziel für die Bereitstellung verwendet werden soll.
     Authentifizierung aktivieren | Wählen Sie diese Option aus, um eine token- oder schlüsselbasierte Authentifizierung zu ermöglichen.
-    Use custom deployment assets (Benutzerdefinierte Bereitstellungsressourcen verwenden)| Aktivieren Sie dieses Feature, wenn Sie Ihr eigenes Bewertungsskript und Ihre eigene Umgebungsdatei hochladen möchten. Weitere Informationen zu Bewertungsskripts finden Sie [hier](how-to-deploy-and-where.md#script).
+    Use custom deployment assets (Benutzerdefinierte Bereitstellungsressourcen verwenden)| Aktivieren Sie dieses Feature, wenn Sie Ihr eigenes Bewertungsskript und Ihre eigene Umgebungsdatei hochladen möchten. Weitere Informationen zu Bewertungsskripts finden Sie [hier](how-to-deploy-and-where.md).
 
     >[!Important]
     > Ein Dateiname muss weniger als 32 Zeichen haben und muss mit einem alphanumerischen Zeichen beginnen und enden. Dazwischen darf ein Name Bindestriche, Unterstriche, Punkte und alphanumerische Zeichen enthalten. Leerzeichen sind nicht zulässig.
@@ -218,7 +237,7 @@ Automatisiertes maschinelles Lernen unterstützt Sie dabei, das Modell bereitzus
     Das Menü *Erweitert* enthält Standard-Bereitstellungsfeatures wie [Datensammlung](how-to-enable-app-insights.md) und Einstellungen für die Ressourcenauslastung. Wenn Sie diese Standardeinstellungen überschreiben möchten, verwenden Sie dafür dieses Menü.
 
 1. Klicken Sie auf **Bereitstellen**. Die Bereitstellung kann bis zu 20 Minuten dauern.
-    Wenn die Bereitstellung beginnt, wird die Registerkarte **Modelldetails** angezeigt. Der Bereitstellungsstatus wird im Abschnitt **Bereitstellungsstatus** des Bereichs **Eigenschaften** angezeigt. 
+    Wenn die Bereitstellung beginnt, wird die Registerkarte **Modellzusammenfassung** angezeigt. Der Bereitstellungsstatus wird im Abschnitt **Bereitstellungsstatus** angezeigt. 
 
 Nun haben Sie einen einsatzfähigen Webdienst, mit dem Vorhersagen generiert werden können! Sie können die Vorhersagen testen, indem Sie den Dienst über die [in Power BI integrierte Azure Machine Learning-Unterstützung](how-to-consume-web-service.md#consume-the-service-from-power-bi) abfragen.
 

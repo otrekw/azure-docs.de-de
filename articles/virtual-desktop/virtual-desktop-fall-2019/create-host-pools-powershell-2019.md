@@ -1,24 +1,22 @@
 ---
-title: 'Erstellen eines Windows Virtual Desktop-Hostpools (Fall 2019) – PowerShell: Azure'
-description: Informationen zum Erstellen eines Hostpools in Windows Virtual Desktop mit PowerShell-Cmdlets.
-services: virtual-desktop
+title: 'Erstellen eines Windows Virtual Desktop-Hostpools (klassisch) – PowerShell: Azure'
+description: Informationen zum Erstellen eines Hostpools in Windows Virtual Desktop (klassisch) mit PowerShell-Cmdlets
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 552a3fdd20d67d81fe0c6a81a965fd3231da643d
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: c035a7fbafe9b3a42fbd16e3f8377014010ddd49
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86527641"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88003542"
 ---
-# <a name="create-a-host-pool-with-powershell"></a>Erstellen eines Hostpools mit PowerShell
+# <a name="create-a-host-pool-in-windows-virtual-desktop-classic-with-powershell"></a>Erstellen eines Hostpools in Windows Virtual Desktop (klassisch) mit PowerShell
 
 >[!IMPORTANT]
->Dieser Inhalt gilt für das Release vom Herbst 2019, das keine Windows Virtual Desktop-Objekte in Azure Resource Manager unterstützt. Wenn Sie Windows Virtual Desktop-Objekte in Azure Resource Manager verwalten möchten, die im Update vom Frühjahr 2020 eingeführt wurden, finden Sie weitere Informationen in [diesem Artikel](../create-host-pools-powershell.md).
+>Dieser Inhalt gilt für den Windows Virtual Desktop-Dienst (klassisch), der keine Windows Virtual Desktop-Objekte in Azure Resource Manager unterstützt. Wenn Sie Windows Virtual Desktop-Objekte in Azure Resource Manager verwalten möchten, finden Sie weitere Informationen in [diesem Artikel](../create-host-pools-powershell.md).
 
 Hostpools sind eine Sammlung identischer virtueller Computer innerhalb von Windows Virtual Desktop-Mandantenumgebungen. Jeder Hostpool kann eine App-Gruppe enthalten, mit der Benutzer genau wie auf einem physischen Desktop interagieren können.
 

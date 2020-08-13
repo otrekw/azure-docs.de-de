@@ -16,12 +16,12 @@ ms.date: 08/06/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ffe72a4d45dbe40b1d75194f42cc26b2821b202d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 64a8cab82511a495ed2eef444b05dc534c0f1891
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84743098"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87422044"
 ---
 # <a name="configure-azure-ad-custom-roles-in-privileged-identity-management"></a>Konfigurieren von benutzerdefinierten Azure AD-Rollen in Privileged Identity Management
 
@@ -30,7 +30,7 @@ Ein Administrator mit einer privilegierten Rolle kann die Rolleneinstellungen ä
 > [!NOTE]
 > Benutzerdefinierte Azure AD-Rollen sind in der Vorschauversion nicht in die integrierten Verzeichnisrollen integriert. Sobald die Funktion allgemein verfügbar ist, erfolgt die Rollenverwaltung auf der Benutzeroberfläche für integrierte Rollen. Wenn das folgende Banner angezeigt wird, sollten diese Rollen [auf der Benutzeroberfläche für integrierte Rollen](pim-how-to-activate-role.md) verwaltet werden, und dieser Artikel trifft nicht zu:
 >
-> [![](media/pim-how-to-add-role-to-user/pim-new-version.png "Select Azure AD > Privileged Identity Management")](media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox)
+> [![Auswählen von „Azure AD“ > „Privileged Identity Management“](media/pim-how-to-add-role-to-user/pim-new-version.png)](media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox)
 
 ## <a name="open-role-settings"></a>Öffnen von Rolleneinstellungen
 

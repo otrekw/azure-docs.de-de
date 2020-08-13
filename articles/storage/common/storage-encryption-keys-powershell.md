@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 04/02/2020
+ms.date: 07/13/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 6b2983bbaf22ae1b9e09ff3362a4bc06e6658b33
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a3fdde755a5e024efead5c8861a1d5cd769b6d23
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85506196"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87036827"
 ---
 # <a name="configure-customer-managed-keys-with-azure-key-vault-by-using-powershell"></a>Konfigurieren von kundenseitig verwalteten Schlüsseln mit Azure Key Vault mithilfe von PowerShell
 
@@ -39,15 +39,16 @@ Weitere Informationen zur Konfiguration systemseitig zugewiesener verwalteter Id
 
 ## <a name="create-a-new-key-vault"></a>Erstellen eines neuen Schlüsseltresors
 
-Rufen Sie zum Erstellen eines neuen Schlüsseltresors mit PowerShell [New-AzKeyVault](/powershell/module/az.keyvault/new-azkeyvault) auf. Für den Schlüsseltresor, den Sie zum Speichern von Kunden verwalteter Schlüssel für die Azure Storage-Verschlüsselung verwenden, müssen zwei wichtige Schutzeinstellungen aktiviert sein: **Vorläufiges Löschen** und **Do Not Purge** (Nicht bereinigen).
+Um einen neuen Schlüsseltresor mit PowerShell zu erstellen, installieren Sie Version 2.0.0 oder höher des [Az.KeyVault](https://www.powershellgallery.com/packages/Az.KeyVault/2.0.0) PowerShell-Moduls. Rufen Sie dann [New-AzKeyVault](/powershell/module/az.keyvault/new-azkeyvault) auf, um einen neuen Schlüsseltresor zu erstellen.
 
-Denken Sie daran, die Platzhalterwerte in den spitzen Klammern durch Ihre eigenen Werte zu ersetzen.
+Für den Schlüsseltresor, den Sie zum Speichern von Kunden verwalteter Schlüssel für die Azure Storage-Verschlüsselung verwenden, müssen zwei wichtige Schutzeinstellungen aktiviert sein: **Vorläufiges Löschen** und **Do Not Purge** (Nicht bereinigen). In Version 2.0.0 und höher des Az.KeyVault-Moduls ist das vorläufige Löschen standardmäßig aktiviert, wenn Sie einen neuen Schlüsseltresor erstellen.
+
+Im folgenden Beispiel wird ein neuer Schlüsseltresor mit den Eigenschaften **Soft Delete** (Vorläufiges Löschen) und **Do Not Purge** (Nicht bereinigen) erstellt. Denken Sie daran, die Platzhalterwerte in den spitzen Klammern durch Ihre eigenen Werte zu ersetzen.
 
 ```powershell
 $keyVault = New-AzKeyVault -Name <key-vault> `
     -ResourceGroupName <resource_group> `
     -Location <location> `
-    -EnableSoftDelete `
     -EnablePurgeProtection
 ```
 
@@ -78,9 +79,27 @@ Die Azure Storage-Verschlüsselung unterstützt RSA- und RSA-HSM-Schlüssel mit 
 
 ## <a name="configure-encryption-with-customer-managed-keys"></a>Konfigurieren der Verschlüsselung mit von Kunden verwalteten Schlüsseln
 
-Die Azure Storage-Verschlüsselung verwendet standardmäßig von Microsoft verwaltete Schlüssel. In diesem Schritt konfigurieren Sie Ihr Azure Storage-Konto für von Kunden verwaltete Schlüssel und legen den Schlüssel fest, der dem Speicherkonto zugeordnet werden soll.
+Die Azure Storage-Verschlüsselung verwendet standardmäßig von Microsoft verwaltete Schlüssel. In diesem Schritt konfigurieren Sie Ihr Azure Storage-Konto für kundenseitig verwaltete Schlüssel mit Azure Key Vault. Legen Sie dann den Schlüssel fest, der dem Speicherkonto zugeordnet werden soll.
 
-Rufen Sie [Set-AzStorageAccount](/powershell/module/az.storage/set-azstorageaccount) wie im folgenden Beispiel gezeigt auf, um die Verschlüsselungseinstellungen des Speicherkontos zu aktualisieren. Fügen Sie die Option **-KeyvaultEncryption** ein, um vom Kunden verwaltete Schlüssel für das Speicherkonto zu aktivieren. Denken Sie daran, die Platzhalterwerte in Klammern durch Ihre eigenen Werte zu ersetzen und die in den vorherigen Beispielen definierten Variablen zu verwenden.
+Beim Konfigurieren der Verschlüsselung mit kundenseitig verwalteten Schlüsseln können Sie festlegen, dass der für die Verschlüsselung verwendete Schlüssel automatisch rotiert wird, wenn sich die Version im zugeordneten Schlüsseltresor ändert. Alternativ können Sie explizit eine Schlüsselversion angeben, die für die Verschlüsselung verwendet werden soll, bis die Schlüsselversion manuell aktualisiert wird.
+
+### <a name="configure-encryption-for-automatic-rotation-of-customer-managed-keys"></a>Konfigurieren der Verschlüsselung für die automatische Rotation von kundenseitig verwalteten Schlüsseln
+
+Installieren Sie zum Konfigurieren der Verschlüsselung für die automatische Rotation von kundenseitig verwalteten Schlüsseln das [Az.Storage](https://www.powershellgallery.com/packages/Az.Storage)-Modul, Version 2.0.0 oder höher.
+
+Zur automatischen Rotation von kundenseitig verwalteten Schlüsseln lassen Sie die Schlüsselversion beim Konfigurieren der kundenseitig verwalteten Schlüsseln für das Speicherkonto aus. Rufen Sie [Set-AzStorageAccount](/powershell/module/az.storage/set-azstorageaccount) auf, um die Verschlüsselungseinstellungen des Speicherkontos zu aktualisieren, wie im folgenden Beispiel gezeigt, und fügen Sie die Option **-KeyvaultEncryption** ein, um kundenseitig verwaltete Schlüssel für das Speicherkonto zu aktivieren. Denken Sie daran, die Platzhalterwerte in Klammern durch Ihre eigenen Werte zu ersetzen und die in den vorherigen Beispielen definierten Variablen zu verwenden.
+
+```powershell
+Set-AzStorageAccount -ResourceGroupName $storageAccount.ResourceGroupName `
+    -AccountName $storageAccount.StorageAccountName `
+    -KeyvaultEncryption `
+    -KeyName $key.Name `
+    -KeyVaultUri $keyVault.VaultUri
+```
+
+### <a name="configure-encryption-for-manual-rotation-of-key-versions"></a>Konfigurieren der Verschlüsselung für die manuelle Rotation von Schlüsselversionen
+
+Wenn Sie explizit eine Schlüsselversion für die Verschlüsselung angeben möchten, geben Sie diese Schlüsselversion beim Konfigurieren der Verschlüsselung mit kundenseitig verwalteten Schlüsseln für das Speicherkonto an. Rufen Sie [Set-AzStorageAccount](/powershell/module/az.storage/set-azstorageaccount) auf, um die Verschlüsselungseinstellungen des Speicherkontos zu aktualisieren, wie im folgenden Beispiel gezeigt, und fügen Sie die Option **-KeyvaultEncryption** ein, um kundenseitig verwaltete Schlüssel für das Speicherkonto zu aktivieren. Denken Sie daran, die Platzhalterwerte in Klammern durch Ihre eigenen Werte zu ersetzen und die in den vorherigen Beispielen definierten Variablen zu verwenden.
 
 ```powershell
 Set-AzStorageAccount -ResourceGroupName $storageAccount.ResourceGroupName `
@@ -91,9 +110,7 @@ Set-AzStorageAccount -ResourceGroupName $storageAccount.ResourceGroupName `
     -KeyVaultUri $keyVault.VaultUri
 ```
 
-## <a name="update-the-key-version"></a>Aktualisieren der Schlüsselversion
-
-Wenn Sie eine neue Version eines Schlüssels erstellen, müssen Sie das Speicherkonto aktualisieren, damit dieses die neue Version nutzt. Rufen Sie zunächst [Get-AzKeyVaultKey](/powershell/module/az.keyvault/get-azkeyvaultkey) auf, um die neueste Version des Schlüssels abzurufen. Rufen Sie dann [Set-AzStorageAccount](/powershell/module/az.storage/set-azstorageaccount) auf, um die Verschlüsselungseinstellungen des Speicherkontos zu aktualisieren, damit wie im vorherigen Abschnitt gezeigt die neue Version des Schlüssels verwendet wird.
+Wenn Sie die Schlüsselversion manuell rotieren, müssen Sie die Verschlüsselungseinstellungen des Speicherkontos aktualisieren, damit die neue Version verwendet wird. Rufen Sie zunächst [Get-AzKeyVaultKey](/powershell/module/az.keyvault/get-azkeyvaultkey) auf, um die neueste Version des Schlüssels abzurufen. Rufen Sie dann [Set-AzStorageAccount](/powershell/module/az.storage/set-azstorageaccount) auf, um die Verschlüsselungseinstellungen des Speicherkontos zu aktualisieren, damit wie im vorherigen Beispiel gezeigt die neue Version des Schlüssels verwendet wird.
 
 ## <a name="use-a-different-key"></a>Verwenden eines anderen Schlüssels
 
@@ -101,7 +118,7 @@ Um den Schlüssel zu ändern, der für die Azure Storage-Verschlüsselung verwen
 
 ## <a name="revoke-customer-managed-keys"></a>Widerrufen von kundenseitig verwalteten Schlüsseln
 
-Wenn Sie den Verdacht haben, dass ein Schlüssel kompromittiert wurde, können Sie kundenseitig verwaltete Schlüssel widerrufen, indem Sie die Key Vault-Zugriffsrichtlinie entfernen. Zum Widerrufen eines kundenseitig verwalteten Schlüssels rufen Sie den Befehl [Remove-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/remove-azkeyvaultaccesspolicy) auf, wie im folgenden Beispiel gezeigt. Denken Sie daran, die Platzhalterwerte in Klammern durch Ihre eigenen Werte zu ersetzen und die in den vorherigen Beispielen definierten Variablen zu verwenden.
+Sie können kundenseitig verwaltete Schlüssel widerrufen, indem Sie die Schlüsseltresor-Zugriffsrichtlinie entfernen. Zum Widerrufen eines kundenseitig verwalteten Schlüssels rufen Sie den Befehl [Remove-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/remove-azkeyvaultaccesspolicy) auf, wie im folgenden Beispiel gezeigt. Denken Sie daran, die Platzhalterwerte in Klammern durch Ihre eigenen Werte zu ersetzen und die in den vorherigen Beispielen definierten Variablen zu verwenden.
 
 ```powershell
 Remove-AzKeyVaultAccessPolicy -VaultName $keyVault.VaultName `

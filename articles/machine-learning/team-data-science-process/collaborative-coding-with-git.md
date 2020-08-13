@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 0708e395eff90ff5b889c05f0fd5e7a98205c5bc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 739be373992fcd994f085f8571675779e450bfee
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76721896"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090211"
 ---
 # <a name="collaborative-coding-with-git"></a>Gemeinsames Schreiben von Code mit Git
 
@@ -29,7 +29,7 @@ Wählen Sie zum Verbinden eines Arbeitselements mit einer neuen Branch unter **A
 
 ![1](./media/collaborative-coding-with-git/1-sprint-board-view.png)
 
-Geben Sie im Dialogfeld **Branch erstellen** den Namen des neuen Branchs sowie das Azure Repos-Git-Basisrepository und den Branch ein. Das Basisrepository muss sich in demselben Azure DevOps-Projekt wie das Arbeitselement befinden. Der Basisbranch kann der Masterbranch oder eine andere vorhandene Verzweigung sein. Wählen Sie die Option **Branch erstellen** aus. 
+Geben Sie im Dialogfeld **Branch erstellen** den Namen des neuen Branchs sowie das Azure Repos-Git-Basisrepository und den Branch ein. Das Basisrepository muss sich in demselben Azure DevOps-Projekt wie das Arbeitselement befinden. Der Basisbranch kann ein beliebiger vorhandener Branch sein. Wählen Sie die Option **Branch erstellen** aus. 
 
 ![2](./media/collaborative-coding-with-git/2-create-a-branch.png)
 
@@ -51,7 +51,7 @@ Nach dem Wechsel zum Arbeitsbranch können Sie mit dem Entwickeln von Code- oder
 
 Eine bewährte Methode besteht darin, für jedes User Story-Arbeitselement einen Git-Branch zu erstellen. Anschließend erstellen Sie für jedes Arbeitselement basierend auf dem User Story-Branch einen Branch. Organisieren Sie die Branches in einer Hierarchie, die der Beziehung zwischen User Story und Aufgabe entspricht, wenn mehrere Personen an verschiedenen User Storys für dasselbe Projekt bzw. an verschiedenen Aufgaben für dieselbe User Story arbeiten. Sie können Konflikte verringern, indem jedes Teammitglied in einem anderen Branch oder bei gemeinsamer Branchnutzung an anderem Code oder anderen Artefakten arbeitet. 
 
-Das folgende Diagramm zeigt die empfohlene Verzweigungsstrategie für TDSP. Unter Umständen benötigen Sie nicht so viele Verzweigungen wie hier dargestellt. Dies gilt vor allem, wenn nur eine oder zwei Personen an demselben Projekt arbeiten oder nur eine Person alle Aufgaben einer User Story bearbeitet. Die bewährte Methode besteht aber immer darin, den Entwicklungsbranch vom Masterbranch zu trennen. So kann verhindert werden, dass der Releasebranch von Entwicklungsaktivitäten unterbrochen wird. Eine vollständige Beschreibung des Git-Branchmodells finden Sie unter [A Successful Git Branching Model](https://nvie.com/posts/a-successful-git-branching-model/) (Ein erfolgreiches Git-Branchmodell).
+Das folgende Diagramm zeigt die empfohlene Verzweigungsstrategie für TDSP. Unter Umständen benötigen Sie nicht so viele Verzweigungen wie hier dargestellt. Dies gilt vor allem, wenn nur eine oder zwei Personen an demselben Projekt arbeiten oder nur eine Person alle Aufgaben einer User Story bearbeitet. Die bewährte Methode besteht aber immer darin, den Entwicklungsbranch vom primären Branch zu trennen. So kann verhindert werden, dass der Releasebranch von Entwicklungsaktivitäten unterbrochen wird. Eine vollständige Beschreibung des Git-Branchmodells finden Sie unter [A Successful Git Branching Model](https://nvie.com/posts/a-successful-git-branching-model/) (Ein erfolgreiches Git-Branchmodell).
 
 ![3](./media/collaborative-coding-with-git/3-git-branches.png)
 
@@ -98,7 +98,7 @@ Vergewissern Sie sich, dass der Pull Request als **ABGESCHLOSSEN** gekennzeichne
 
 ![11](./media/collaborative-coding-with-git/11-spring-merge-pullrequest.png)
 
-Wenn Sie im Navigationsbereich auf der linken Seite zurück zu **Repos** wechseln, sehen Sie, dass für Sie die Umstellung auf den Masterbranch durchgeführt wurde (Branch `script` wurde gelöscht).
+Wenn Sie im Navigationsbereich auf der linken Seite zurück zu **Repos** wechseln, sehen Sie, dass für Sie die Umstellung auf den Hauptbranch durchgeführt wurde (Branch `script` wurde gelöscht).
 
 ![12](./media/collaborative-coding-with-git/12-spring-branch-deleted.png)
 

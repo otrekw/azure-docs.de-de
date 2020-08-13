@@ -3,12 +3,12 @@ title: Dynamisches Hinzufügen von Partitionen zu einem Event Hub in Azure Event
 description: In diesem Artikel erfahren Sie, wie Sie einem Event Hub in Azure Event Hubs dynamisch Partitionen hinzufügen.
 ms.topic: how-to
 ms.date: 06/23/2020
-ms.openlocfilehash: ea0477dcc695c7a2fb936daadc3679c94bfac12f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4a729147eaa11497c66f82a9764dfee9492786b9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85317947"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87002538"
 ---
 # <a name="dynamically-add-partitions-to-an-event-hub-apache-kafka-topic-in-azure-event-hubs"></a>Dynamisches Hinzufügen von Partitionen zu einem Event Hub (Apache Kafka-Thema) in Azure Event Hubs
 Event Hubs bietet Nachrichtenstreaming über ein partitioniertes Consumermuster, in dem jeder Consumer nur eine bestimmte Teilmenge oder Partition des Nachrichtenstreams liest. Dieses Muster ermöglicht eine horizontale Skalierung für die Ereignisverarbeitung und bietet andere datenstrombezogene Features, die in Warteschlangen und Themen nicht verfügbar sind. Eine Partition ist eine geordnete Sequenz von Ereignissen, die in einem Event Hub besteht. Neu eingehende Ereignisse werden am Ende dieser Sequenz hinzugefügt. Weitere Informationen zu Partitionen im Allgemeinen finden Sie unter [Partitionen](event-hubs-scalability.md#partitions).
@@ -33,7 +33,7 @@ Set-AzureRmEventHub -ResourceGroupName MyResourceGroupName -Namespace MyNamespac
 ```
 
 ### <a name="cli"></a>Befehlszeilenschnittstelle (CLI)
-Verwenden Sie den CLI-Befehl [az eventhubs eventhub update](/cli/azure/eventhubs/eventhub?view=azure-cli-latest#az-eventhubs-eventhub-update), um Partitionen in einem Event Hub zu aktualisieren. 
+Verwenden Sie den CLI-Befehl [`az eventhubs eventhub update`](/cli/azure/eventhubs/eventhub?view=azure-cli-latest#az-eventhubs-eventhub-update), um Partitionen in einem Event Hub zu aktualisieren. 
 
 ```azurecli-interactive
 az eventhubs eventhub update --resource-group MyResourceGroupName --namespace-name MyNamespaceName --name MyEventHubName --partition-count 12
@@ -64,7 +64,7 @@ Verwenden Sie die API `AlterTopics` (z. B. über das CLI-Tool **kafka-topics**)
 ## <a name="event-hubs-clients"></a>Event Hubs-Clients
 Sehen wir uns das Verhalten von Event Hubs-Clients an, wenn die Partitionsanzahl für einen Event Hub aktualisiert wird. 
 
-Wenn Sie einem vorhandenen Event Hub eine Partition hinzufügen, empfängt der Event Hubs-Client eine MessagingException vom Dienst, mit der die Clients informiert werden, dass Entitätsmetadaten geändert wurden. (Ihr Event Hub ist die Entität, und die Partitionsinformationen sind die Metadaten.) Die AMQP-Links werden von den Clients automatisch erneut geöffnet, sodass die geänderten Metadateninformationen abgerufen werden. Die Clients werden dann normal ausgeführt.
+Wenn Sie einem vorhandenen Event Hub eine Partition hinzufügen, empfängt der Event Hub-Client eine `MessagingException` vom Dienst, mit der die Clients informiert werden, dass Entitätsmetadaten geändert wurden. (Ihr Event Hub ist die Entität, und die Partitionsinformationen sind die Metadaten.) Die AMQP-Links werden von den Clients automatisch erneut geöffnet, sodass die geänderten Metadateninformationen abgerufen werden. Die Clients werden dann normal ausgeführt.
 
 ### <a name="senderproducer-clients"></a>Sender-/Producerclients
 Event Hubs umfasst drei Senderoptionen:
@@ -84,7 +84,7 @@ Event Hubs umfasst direkte Empfänger und eine einfache Consumerbibliothek, die 
 ## <a name="apache-kafka-clients"></a>Apache Kafka-Clients
 In diesem Abschnitt wird das Verhalten von Apache Kafka-Clients beschrieben, die den Kafka-Endpunkt von Azure Event Hubs verwenden, wenn die Partitionsanzahl für einen Event Hub aktualisiert wird. 
 
-Das Verhalten von Kafka-Clients, die Event Hubs mit dem Apache Kafka-Protokoll verwenden, unterscheidet sich von dem von Event Hubs-Clients, die das AMQP-Protokoll verwenden. Kafka-Clients aktualisieren die zugehörigen Metadaten alle `metadata.max.age.ms` Millisekunden. Diesen Wert geben Sie in den Clientkonfigurationen an. Auch die `librdkafka`-Bibliotheken verwenden die gleiche Konfiguration. Bei Aktualisierungen der Metadaten werden die Clients über Dienständerungen, darunter auch über Erhöhungen der Partitionsanzahl, informiert. Eine Liste der Konfigurationen finden Sie in den [Apache Kafka-Konfigurationen für Event Hubs](https://github.com/Azure/azure-event-hubs-for-kafka/blob/master/CONFIGURATION.md).
+Das Verhalten von Kafka-Clients, die Event Hubs mit dem Apache Kafka-Protokoll verwenden, unterscheidet sich von dem von Event Hubs-Clients, die das AMQP-Protokoll verwenden. Kafka-Clients aktualisieren die zugehörigen Metadaten alle `metadata.max.age.ms` Millisekunden. Diesen Wert geben Sie in den Clientkonfigurationen an. Auch die `librdkafka`-Bibliotheken verwenden die gleiche Konfiguration. Bei Aktualisierungen der Metadaten werden die Clients über Dienständerungen, darunter auch über Erhöhungen der Partitionsanzahl, informiert. Eine Liste der Konfigurationen finden Sie in den [Apache Kafka-Konfigurationen für Event Hubs](apache-kafka-configurations.md).
 
 ### <a name="senderproducer-clients"></a>Sender-/Producerclients
 Producer legen immer fest, dass Sendeanforderungen das Partitionsziel für jede Gruppe von erstellten Datensätzen enthalten. Daher wird die gesamte Producerpartitionierung auf Clientseite mit der Produceransicht der Brokermetadaten erstellt. Nachdem die neuen Partitionen der Metadatenansicht des Producers hinzugefügt wurden, stehen sie für Produceranforderungen zur Verfügung.

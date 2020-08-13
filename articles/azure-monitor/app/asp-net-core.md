@@ -3,12 +3,12 @@ title: Azure Application Insights für ASP.NET Core-Anwendungen | Microsoft-Doku
 description: Überwachen Sie ASP.NET Core-Webanwendungen auf Verfügbarkeit, Leistung und Auslastung.
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: 1d5ce4fe2a3ceb3235b77916aa408c681f81b0de
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 1a9bc3e46e108c50b36e0318e0f9a51a94e83573
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86517228"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475514"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>Application Insights für ASP.NET Core-Anwendungen
 
@@ -221,7 +221,7 @@ Die aktuelle Liste finden Sie unter den [konfigurierbaren Einstellungen in `Appl
 
 Das Application Insights SDK für ASP.NET Core unterstützt sowohl die feste als auch die adaptive Stichprobenerstellung. Die adaptive Stichprobenerstellung ist standardmäßig aktiviert. 
 
-Weitere Informationen finden Sie unter [Konfigurieren der adaptiven Stichprobenerstellung für ASP.NET Core-Anwendungen](../../azure-monitor/app/sampling.md#configuring-adaptive-sampling-for-aspnet-core-applications).
+Weitere Informationen finden Sie unter [Konfigurieren der adaptiven Stichprobenerstellung für ASP.NET Core-Anwendungen](./sampling.md#configuring-adaptive-sampling-for-aspnet-core-applications).
 
 ### <a name="adding-telemetryinitializers"></a>Hinzufügen von TelemetryInitializers
 
@@ -455,12 +455,15 @@ Dieses SDK erfordert `HttpContext` und kann daher nicht in Nicht-HTTP-Anwendunge
 
 ## <a name="open-source-sdk"></a>Open Source SDK
 
-[Lesen und Hinzufügen von Code](https://github.com/microsoft/ApplicationInsights-dotnet#recent-updates).
+* [Lesen und Hinzufügen von Code](https://github.com/microsoft/ApplicationInsights-dotnet#recent-updates).
+
+Informationen zu den neuesten Updates und Fehlerbehebungen [finden Sie in den Versionshinweisen](./release-notes.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Machen Sie sich Benutzerflows vertraut](../../azure-monitor/app/usage-flows.md), um die Benutzernavigation in Ihrer App nachzuvollziehen.
+* [Machen Sie sich Benutzerflows vertraut](./usage-flows.md), um die Benutzernavigation in Ihrer App nachzuvollziehen.
 * [Konfigurieren Sie eine Momentaufnahmensammlung](./snapshot-debugger.md), um den Status des Quellcodes und der Variablen zu dem Zeitpunkt anzuzeigen, an dem eine Ausnahme ausgelöst wurde.
-* [Verwenden Sie die API](../../azure-monitor/app/api-custom-events-metrics.md), um Ihre eigenen Ereignisse und Metriken für eine detaillierte Ansicht der Leistung und Nutzung Ihrer App zu senden.
-* Überprüfen Sie Ihre App mit [Verfügbarkeitstests](../../azure-monitor/app/monitor-web-app-availability.md) fortwährend von jedem Ort der Welt aus.
+* [Verwenden Sie die API](./api-custom-events-metrics.md), um Ihre eigenen Ereignisse und Metriken für eine detaillierte Ansicht der Leistung und Nutzung Ihrer App zu senden.
+* Überprüfen Sie Ihre App mit [Verfügbarkeitstests](./monitor-web-app-availability.md) fortwährend von jedem Ort der Welt aus.
 * [Dependency Injection in ASP.NET Core](/aspnet/core/fundamentals/dependency-injection)
+

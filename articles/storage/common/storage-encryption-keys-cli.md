@@ -6,16 +6,17 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 04/02/2020
+ms.date: 07/13/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: d2390cbf41f9a93515f994040a287d69f0036168
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 351fe5acd8d607b5b60817c235161ac09e530e99
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85506197"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495011"
 ---
 # <a name="configure-customer-managed-keys-with-azure-key-vault-by-using-azure-cli"></a>Konfigurieren von kundenseitig verwalteten Schlüsseln mit Azure Key Vault mithilfe der Azure CLI
 
@@ -30,6 +31,7 @@ Sie müssen zunächst eine systemseitig zugewiesene verwaltete Identität zum Sp
 Rufen Sie [az storage account update](/cli/azure/storage/account#az-storage-account-update) auf, um eine verwaltete Identität mit der Azure CLI zuzuweisen. Denken Sie daran, die Platzhalterwerte in den spitzen Klammern durch Ihre eigenen Werte zu ersetzen.
 
 ```azurecli-interactive
+az login
 az account set --subscription <subscription-id>
 
 az storage account update \
@@ -90,9 +92,33 @@ Die Azure Storage-Verschlüsselung unterstützt RSA- und RSA-HSM-Schlüssel mit 
 
 ## <a name="configure-encryption-with-customer-managed-keys"></a>Konfigurieren der Verschlüsselung mit von Kunden verwalteten Schlüsseln
 
-Die Azure Storage-Verschlüsselung verwendet standardmäßig von Microsoft verwaltete Schlüssel. Konfigurieren Sie Ihr Azure Storage-Konto für von Kunden verwaltete Schlüssel, und legen Sie fest, dass der Schlüssel dem Speicherkonto zugeordnet ist.
+Die Azure Storage-Verschlüsselung verwendet standardmäßig von Microsoft verwaltete Schlüssel. In diesem Schritt konfigurieren Sie Ihr Azure Storage-Konto für kundenseitig verwaltete Schlüssel mit Azure Key Vault. Legen Sie dann den Schlüssel fest, der dem Speicherkonto zugeordnet werden soll.
 
-Rufen Sie [az storage account update](/cli/azure/storage/account#az-storage-account-update) wie im folgenden Beispiel gezeigt auf, um die Verschlüsselungseinstellungen des Speicherkontos zu aktualisieren. Fügen Sie den Parameter `--encryption-key-source` ein, und legen Sie ihn auf `Microsoft.Keyvault` fest, um vom Kunden verwaltete Schlüssel für das Speicherkonto zu aktivieren. Im Beispiel werden außerdem der Schlüsseltresor-URI und die neueste Schlüsselversion abgefragt. Beide Werte sind erforderlich, um den Schlüssel dem Speicherkonto zuzuordnen. Denken Sie daran, die Platzhalterwerte in den spitzen Klammern durch Ihre eigenen Werte zu ersetzen.
+Beim Konfigurieren der Verschlüsselung mit kundenseitig verwalteten Schlüsseln können Sie festlegen, dass der für die Verschlüsselung verwendete Schlüssel automatisch rotiert wird, wenn sich die Version im zugeordneten Schlüsseltresor ändert. Alternativ können Sie explizit eine Schlüsselversion angeben, die für die Verschlüsselung verwendet werden soll, bis die Schlüsselversion manuell aktualisiert wird.
+
+### <a name="configure-encryption-for-automatic-rotation-of-customer-managed-keys"></a>Konfigurieren der Verschlüsselung für die automatische Rotation von kundenseitig verwalteten Schlüsseln
+
+Installieren Sie zum Konfigurieren der Verschlüsselung für die automatische Rotation von kundenseitig verwalteten Schlüsseln mindestens die [Azure CLI-Version 2.4.0](/cli/azure/release-notes-azure-cli#april-21-2020). Weitere Informationen finden Sie unter [Installieren der Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+
+Zur automatischen Rotation von kundenseitig verwalteten Schlüsseln lassen Sie die Schlüsselversion beim Konfigurieren der kundenseitig verwalteten Schlüsseln für das Speicherkonto aus. Rufen Sie [az storage account update](/cli/azure/storage/account#az-storage-account-update) wie im folgenden Beispiel gezeigt auf, um die Verschlüsselungseinstellungen des Speicherkontos zu aktualisieren. Fügen Sie den Parameter `--encryption-key-source` ein, und legen Sie ihn auf `Microsoft.Keyvault` fest, um kundenseitig verwaltete Schlüssel für das Speicherkonto zu aktivieren. Denken Sie daran, die Platzhalterwerte in den spitzen Klammern durch Ihre eigenen Werte zu ersetzen.
+
+```azurecli-interactive
+key_vault_uri=$(az keyvault show \
+    --name <key-vault> \
+    --resource-group <resource_group> \
+    --query properties.vaultUri \
+    --output tsv)
+az storage account update
+    --name <storage-account> \
+    --resource-group <resource_group> \
+    --encryption-key-name <key> \
+    --encryption-key-source Microsoft.Keyvault \
+    --encryption-key-vault $key_vault_uri
+```
+
+### <a name="configure-encryption-for-manual-rotation-of-key-versions"></a>Konfigurieren der Verschlüsselung für die manuelle Rotation von Schlüsselversionen
+
+Wenn Sie explizit eine Schlüsselversion für die Verschlüsselung angeben möchten, geben Sie diese Schlüsselversion beim Konfigurieren der Verschlüsselung mit kundenseitig verwalteten Schlüsseln für das Speicherkonto an. Rufen Sie [az storage account update](/cli/azure/storage/account#az-storage-account-update) wie im folgenden Beispiel gezeigt auf, um die Verschlüsselungseinstellungen des Speicherkontos zu aktualisieren. Fügen Sie den Parameter `--encryption-key-source` ein, und legen Sie ihn auf `Microsoft.Keyvault` fest, um kundenseitig verwaltete Schlüssel für das Speicherkonto zu aktivieren. Denken Sie daran, die Platzhalterwerte in den spitzen Klammern durch Ihre eigenen Werte zu ersetzen.
 
 ```azurecli-interactive
 key_vault_uri=$(az keyvault show \
@@ -114,9 +140,7 @@ az storage account update
     --encryption-key-vault $key_vault_uri
 ```
 
-## <a name="update-the-key-version"></a>Aktualisieren der Schlüsselversion
-
-Wenn Sie eine neue Version eines Schlüssels erstellen, müssen Sie das Speicherkonto aktualisieren, damit dieses die neue Version nutzt. Rufen Sie zunächst [az keyvault show](/cli/azure/keyvault#az-keyvault-show) zum Abfragen des Schlüsseltresor-URIs und [az keyvault key list-versions](/cli/azure/keyvault/key#az-keyvault-key-list-versions) zum Abfragen der Schlüsselversion auf. Rufen Sie dann [az storage account update](/cli/azure/storage/account#az-storage-account-update) auf, um die Verschlüsselungseinstellungen des Speicherkontos zu aktualisieren, damit wie im vorherigen Abschnitt gezeigt die neue Version des Schlüssels verwendet wird.
+Wenn Sie die Schlüsselversion manuell rotieren, müssen Sie die Verschlüsselungseinstellungen des Speicherkontos aktualisieren, damit die neue Version verwendet wird. Rufen Sie zunächst [az keyvault show](/cli/azure/keyvault#az-keyvault-show) zum Abfragen des Schlüsseltresor-URIs und [az keyvault key list-versions](/cli/azure/keyvault/key#az-keyvault-key-list-versions) zum Abfragen der Schlüsselversion auf. Rufen Sie dann [az storage account update](/cli/azure/storage/account#az-storage-account-update) auf, um die Verschlüsselungseinstellungen des Speicherkontos zu aktualisieren, damit wie im vorherigen Beispiel gezeigt die neue Version des Schlüssels verwendet wird.
 
 ## <a name="use-a-different-key"></a>Verwenden eines anderen Schlüssels
 
@@ -124,7 +148,7 @@ Um den Schlüssel zu ändern, der für die Azure Storage-Verschlüsselung verwen
 
 ## <a name="revoke-customer-managed-keys"></a>Widerrufen von kundenseitig verwalteten Schlüsseln
 
-Wenn Sie den Verdacht haben, dass ein Schlüssel kompromittiert wurde, können Sie kundenseitig verwaltete Schlüssel widerrufen, indem Sie die Key Vault-Zugriffsrichtlinie entfernen. Zum Widerrufen eines kundenseitig verwalteten Schlüssels rufen Sie den Befehl [az keyvault delete-policy](/cli/azure/keyvault#az-keyvault-delete-policy) auf, wie im folgenden Beispiel gezeigt. Denken Sie daran, die Platzhalterwerte in Klammern durch Ihre eigenen Werte zu ersetzen und die in den vorherigen Beispielen definierten Variablen zu verwenden.
+Sie können kundenseitig verwaltete Schlüssel widerrufen, indem Sie die Schlüsseltresor-Zugriffsrichtlinie entfernen. Zum Widerrufen eines kundenseitig verwalteten Schlüssels rufen Sie den Befehl [az keyvault delete-policy](/cli/azure/keyvault#az-keyvault-delete-policy) auf, wie im folgenden Beispiel gezeigt. Denken Sie daran, die Platzhalterwerte in Klammern durch Ihre eigenen Werte zu ersetzen und die in den vorherigen Beispielen definierten Variablen zu verwenden.
 
 ```azurecli-interactive
 az keyvault delete-policy \

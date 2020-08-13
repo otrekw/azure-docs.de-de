@@ -8,15 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 04/04/2020
+ms.date: 07/30/2020
+ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: ebf83807629cc56aa381c97a9ce36d90c94d61f2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8c0b6ba4045e1e92d395752f106258d3c0709108
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85388900"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87486726"
 ---
 # <a name="customize-the-user-interface-in-azure-active-directory-b2c"></a>Anpassen der Benutzeroberfläche in Azure Active Directory B2C
 
@@ -187,7 +188,7 @@ Nachdem Sie das Unternehmensbranding konfiguriert haben, können Sie es in Ihren
 
 1. Wählen Sie im Azure-Portal im linken Menü die Option **Azure AD B2C** aus.
 1. Wählen Sie unter **Richtlinien** die Option **Benutzerflows (Richtlinien)** aus.
-1. Wählen Sie den Benutzerflow aus, für den Sie das Unternehmensbranding aktivieren möchten. Für die Benutzerflowtypen *Anmeldung v1* und *Profilbearbeitung v1* wird das Unternehmensbranding **nicht unterstützt**.
+1. Wählen Sie den Benutzerflow aus, für den Sie das Unternehmensbranding aktivieren möchten. Für die Standard-Benutzerflowtypen *Anmeldung* und *Profilbearbeitung* wird das Unternehmensbranding **nicht unterstützt**.
 1. Wählen Sie unter **Anpassen** die Option **Seitenlayouts** aus, und wählen Sie dann das Layout aus, das Sie mit Branding versehen möchten. Wählen Sie z. B. **Einheitliche Seite für Registrierung oder Anmeldung** aus.
 1. Wählen Sie für **Seitenlayoutversion (Vorschau)** die Version **1.2.0** oder eine höhere Version aus.
 1. Wählen Sie **Speichern** aus.

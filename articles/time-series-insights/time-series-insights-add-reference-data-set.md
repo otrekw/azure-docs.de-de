@@ -5,24 +5,24 @@ ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
 ms.author: dpalled
-manager: cshankar
+manager: diviso
 ms.reviewer: jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 05/05/2020
-ms.custom: seodec18~~~~
-ms.openlocfilehash: 010f7b908ceb9c8d07208db1312d8af8d4e27051
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/12/2020
+ms.custom: seodec18
+ms.openlocfilehash: 57e99dfd0cec4ee396cc90173f1f22715c7ba760
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82838517"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88168183"
 ---
-# <a name="create-a-reference-data-set-for-your-time-series-insights-environment-using-the-azure-portal"></a>Erstellen eines Verweis-DataSets für Ihre Time Series Insights-Umgebung über das Azure-Portal
+# <a name="create-a-reference-data-set-for-your-azure-time-series-insights-gen1-environment-using-the-azure-portal"></a>Erstellen eines Referenzdatasets für Ihre Azure Time Series Insights Gen1-Umgebung über das Azure-Portal
 
 In diesem Artikel wird beschrieben, wie Sie Ihrer Azure Time Series Insights-Umgebung ein Verweis-DataSet hinzufügen. Verweisdaten lassen sich praktisch mit Ihren Quelldaten verknüpfen, um die Werte zu erweitern.
 
-Ein Verweisdataset ist eine Sammlung von Elementen, die die Ereignisse aus Ihrer Ereignisquelle ergänzen. Die Time Series Insights-Erfassungs-Engine verknüpft jedes Ereignis aus Ihrer Ereignisquelle mit der entsprechenden Datenzeile in Ihrem Verweisdataset. Dieses ergänzte Ereignis ist dann für Abfragen verfügbar. Diese Verknüpfung basiert auf den in Ihrem Verweisdataset definierten Primärschlüsselspalten.
+Ein Verweisdataset ist eine Sammlung von Elementen, die die Ereignisse aus Ihrer Ereignisquelle ergänzen. Die Azure Time Series Insights-Erfassungs-Engine verknüpft jedes Ereignis aus Ihrer Ereignisquelle mit der entsprechenden Datenzeile in Ihrem Referenzdataset. Dieses ergänzte Ereignis ist dann für Abfragen verfügbar. Diese Verknüpfung basiert auf den in Ihrem Verweisdataset definierten Primärschlüsselspalten.
 
 Verweisdaten werden nicht rückwirkend verknüpft. Somit werden nur aktuelle und künftige eingehende Daten nach dem Konfigurieren und Hochladen abgeglichen und dem Verweisdataset hinzugefügt.
 
@@ -30,21 +30,21 @@ Verweisdaten werden nicht rückwirkend verknüpft. Somit werden nur aktuelle und
 
 ### <a name="learn-about-time-series-insights-reference-data-modelbr"></a>Informationen zum Time Series Insights-Verweisdatenmodell.</br>
 
-> [!VIDEO https://www.youtube.com/embed/Z0NuWQUMv1o]
+> [!VIDEO <https://www.youtube.com/embed/Z0NuWQUMv1o>]
 
 ## <a name="add-a-reference-data-set"></a>Hinzufügen eines Verweis-DataSets
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
-1. Suchen Sie die vorhandene Azure Time Series Insights-Umgebung. Wählen Sie im Azure-Portal im Menü auf der linken Seite **Alle Ressourcen** aus. Wählen Sie Ihre Time Series Insights-Umgebung aus.
+1. Suchen Sie die vorhandene Azure Time Series Insights-Umgebung. Wählen Sie im Azure-Portal im Menü auf der linken Seite **Alle Ressourcen** aus. Wählen Sie Ihre Azure Time Series Insights-Umgebung aus.
 
 1. Klicken Sie auf die Seite **Übersicht**. Erweitern Sie den Abschnitt **Essentials** am oberen Rand der Seite, suchen Sie die **URL des Time Series Insights-Explorers**, und öffnen Sie den Link.  
 
    [![Abschnitt „Essentials“ erweitern](media/add-reference-data-set/essentials.png)](media/add-reference-data-set/essentials.png#lightbox)
 
-   Zeigen Sie den Explorer für Ihre Time Series Insights-Umgebung an.
+   Zeigen Sie den Explorer für Ihre Azure Time Series Insights-Umgebung an.
 
-1. Erweitern Sie die Umgebungsauswahl im Times Series Insights-Explorer. Wählen Sie die aktive Umgebung aus. Klicken Sie oben rechts auf der Explorer-Seite auf das Symbol für Verweisdaten.
+1. Erweitern Sie die Umgebungsauswahl im Azure Times Series Insights-Explorer. Wählen Sie die aktive Umgebung aus. Klicken Sie oben rechts auf der Explorer-Seite auf das Symbol für Verweisdaten.
 
    [![Hinzufügen von Verweisdaten](media/add-reference-data-set/tsi-select-environment-and-data-icons.png)](media/add-reference-data-set/tsi-select-environment-and-data-icons.png#lightbox)
 
@@ -116,6 +116,6 @@ Verweisdaten werden nicht rückwirkend verknüpft. Somit werden nur aktuelle und
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Verwalten Sie Verweisdaten](time-series-insights-manage-reference-data-csharp.md) programmgesteuert.
+- [Verwalten Sie Verweisdaten](time-series-insights-manage-reference-data-csharp.md) programmgesteuert.
 
-* Die vollständige API-Referenz finden Sie im Dokument zur [Verweisdaten-API](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api).
+- Die vollständige API-Referenz finden Sie im Dokument zur [Verweisdaten-API](https://docs.microsoft.com/rest/api/time-series-insights/gen1-reference-data-api).

@@ -8,18 +8,16 @@ ms.topic: how-to
 ms.date: 07/28/2020
 ms.author: yushwang
 ms.reviewer: cherylmc
-ms.openlocfilehash: d6a28922aca7105d90e6c8662986b68c90804481
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 3747be15f7a15d3d47af2d3495eea2315d40a044
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387590"
+ms.locfileid: "87419902"
 ---
 # <a name="configure-active-active-s2s-vpn-connections-with-azure-vpn-gateways"></a>Konfigurieren von Aktiv/Aktiv-S2S-VPN-Verbindungen mit Azure VPN Gateways
 
-In diesem Artikel werden die Schritte zur Herstellung von Aktiv/Aktiv-Verbindungen (lokal und VNet zu VNet) mit dem Resource Manager-Bereitstellungsmodell und PowerShell beschrieben.
-
-
+In diesem Artikel werden die Schritte zur Herstellung von Aktiv/Aktiv-Verbindungen (lokal und VNet zu VNet) mit dem Resource Manager-Bereitstellungsmodell und PowerShell beschrieben. Sie können auch ein Aktiv/Aktiv-Gateway im Azure-Portal konfigurieren.
 
 ## <a name="about-highly-available-cross-premises-connections"></a>Informationen zu standortübergreifenden Verbindungen mit hoher Verfügbarkeit
 Um für lokale und VNET-zu-VNET-Verbindungen Hochverfügbarkeit zu erzielen, sollten Sie mehrere VPN-Gateways bereitstellen und mehrere parallele Verbindungen zwischen Ihren Netzwerken und Azure herstellen. Eine Übersicht über Verbindungsoptionen und die Topologie finden Sie unter [Standortübergreifende Verbindungen und VNET-zu-VNET-Verbindungen mit hoher Verfügbarkeit](vpn-gateway-highlyavailable.md).
@@ -49,11 +47,19 @@ Die anderen Eigenschaften sind mit den Eigenschaften von anderen Gateways identi
 
 ### <a name="before-you-begin"></a>Voraussetzungen
 * Stellen Sie sicher, dass Sie über ein Azure-Abonnement verfügen. Wenn Sie noch kein Azure-Abonnement besitzen, können Sie Ihre [MSDN-Abonnentenvorteile](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) aktivieren oder sich für ein [kostenloses Konto](https://azure.microsoft.com/pricing/free-trial/) registrieren.
-* Sie müssen die PowerShell-Cmdlets für Azure-Ressourcen-Manager installieren. Weitere Informationen zur Installation der PowerShell-Cmdlets finden Sie unter [Übersicht über Azure PowerShell](/powershell/azure/).
+* Sie müssen die PowerShell-Cmdlets für Azure Resource Manager installieren, wenn Sie CloudShell nicht im Browser verwenden möchten. Weitere Informationen zur Installation der PowerShell-Cmdlets finden Sie unter [Übersicht über Azure PowerShell](/powershell/azure/).
 
 ### <a name="step-1---create-and-configure-vnet1"></a>Schritt 1: Erstellen und Konfigurieren von VNet1
 #### <a name="1-declare-your-variables"></a>1. Deklarieren von Variablen
-Bei dieser Übung beginnen wir mit dem Deklarieren der Variablen. Im folgenden Beispiel werden die Variablen mit den Werten für diese Übung deklariert. Achten Sie darauf, dass Sie die Werte durch Ihre eigenen Werte ersetzen, wenn Sie die Konfiguration für die Produktion durchführen. Sie können diese Variablen verwenden, wenn Sie die Schritte durchgehen, um sich mit dieser Art der Konfiguration vertraut zu machen. Ändern Sie die Variablen, kopieren Sie sie, und fügen Sie sie in die PowerShell-Konsole ein.
+
+Bei dieser Übung beginnen wir mit dem Deklarieren der Variablen. Wenn Sie die Cloud Shell-Version zum Ausprobieren verwenden, wird automatisch eine Verbindung mit Ihrem Konto hergestellt. Verwenden Sie das folgende Beispiel, um eine Verbindung herzustellen, wenn Sie PowerShell lokal nutzen:
+
+```powershell
+Connect-AzAccount
+Select-AzSubscription -SubscriptionName $Sub1
+```
+
+Im folgenden Beispiel werden die Variablen mit den Werten für diese Übung deklariert. Achten Sie darauf, dass Sie die Werte durch Ihre eigenen Werte ersetzen, wenn Sie die Konfiguration für die Produktion durchführen. Sie können diese Variablen verwenden, wenn Sie die Schritte durchgehen, um sich mit dieser Art der Konfiguration vertraut zu machen. Ändern Sie die Variablen, kopieren Sie sie, und fügen Sie sie in die PowerShell-Konsole ein.
 
 ```azurepowershell-interactive
 $Sub1 = "Ross"
@@ -80,14 +86,11 @@ $Connection151 = "VNet1toSite5_1"
 $Connection152 = "VNet1toSite5_2"
 ```
 
-#### <a name="2-connect-to-your-subscription-and-create-a-new-resource-group"></a>2. Herstellen einer Verbindung mit Ihrem Abonnement und Erstellen einer neuen Ressourcengruppe
-Stellen Sie sicher, dass Sie in den PowerShell-Modus wechseln, um die Ressourcen-Manager-Cmdlets zu verwenden. Weitere Informationen finden Sie unter [Verwenden von Windows PowerShell mit Resource Manager](../powershell-azure-resource-manager.md).
+#### <a name="2-create-a-new-resource-group"></a>2. Erstellen einer neuen Ressourcengruppe
 
-Öffnen Sie die PowerShell-Konsole, und stellen Sie eine Verbindung mit Ihrem Konto her. Verwenden Sie das folgende Beispiel, um eine Verbindung herzustellen:
+Verwenden Sie das folgende Beispiel zum Erstellen einer neuen Ressourcengruppe:
 
 ```azurepowershell-interactive
-Connect-AzAccount
-Select-AzSubscription -SubscriptionName $Sub1
 New-AzResourceGroup -Name $RG1 -Location $Location1
 ```
 
@@ -368,11 +371,11 @@ Danach wird die Verbindung innerhalb weniger Minuten hergestellt, und die BGP-Pe
 
 ## <a name="update-an-existing-vpn-gateway"></a><a name ="aaupdate"></a>Aktualisieren eines vorhandenen VPN-Gateways
 
-Dieser Abschnitt zeigt Ihnen, wie Sie den Modus eines vorhandenen Azure-VPN-Gateways von Aktiv/Standby in Aktiv/Aktiv ändern (oder umgekehrt).
+Wenn Sie ein Aktiv/Standby- in ein Aktiv/Aktiv-Gateway ändern, erstellen Sie eine weitere öffentliche IP-Adresse und fügen anschließend eine zweite Gateway-IP-Konfiguration hinzu. Dieser Abschnitt zeigt Ihnen, wie Sie den Modus eines vorhandenen Azure-VPN-Gateways mithilfe von PowerShell von Aktiv/Standby in Aktiv/Aktiv ändern (oder umgekehrt). Sie können ein Gateway auch im Azure-Portal auf der Seite **Konfiguration** für Ihr Gateway für virtuelle Netzwerke ändern.
 
 ### <a name="change-an-active-standby-gateway-to-an-active-active-gateway"></a>Ändern eines Aktiv/Standby-Gateways in ein Aktiv/Aktiv-Gateway
 
-Im folgenden Beispiel wird ein Aktiv/Standby-Gateway in ein Aktiv/Aktiv-Gateway konvertiert. Wenn Sie ein Aktiv/Standby- in ein Aktiv/Aktiv-Gateway ändern, erstellen Sie eine weitere öffentliche IP-Adresse und fügen anschließend eine zweite Gateway-IP-Konfiguration hinzu.
+Im folgenden Beispiel wird ein Aktiv/Standby-Gateway in ein Aktiv/Aktiv-Gateway konvertiert. 
 
 #### <a name="1-declare-your-variables"></a>1. Deklarieren von Variablen
 

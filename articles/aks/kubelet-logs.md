@@ -4,12 +4,12 @@ description: Informationen zur Problembehandlung in den Kubelet-Protokollen aus 
 services: container-service
 ms.topic: article
 ms.date: 03/05/2019
-ms.openlocfilehash: b7a74803af916f9e9de72dd528273007ce37832f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2ef38aa76f4ef9152e7bc55a1d74c84ef426f0ac
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77595381"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87056749"
 ---
 # <a name="get-kubelet-logs-from-azure-kubernetes-service-aks-cluster-nodes"></a>Abrufen von Kubelet-Protokollen aus Azure Kubernetes Service-Clusterknoten (AKS)
 
@@ -32,6 +32,12 @@ Sobald Sie mit dem Knoten verbunden sind, können Sie den folgenden Befehl ausf�
 ```console
 sudo journalctl -u kubelet -o cat
 ```
+
+> [!NOTE]
+> Bei Windows-Knoten befinden sich die Protokolldaten unter `C:\k` und können mithilfe des Befehls *more* angezeigt werden:
+> ```
+> more C:\k\kubelet.log
+> ```
 
 Die folgende Beispielausgabe zeigt die *Kubelet*-Protokolldaten:
 

@@ -1,6 +1,6 @@
 ---
-title: Bereitstellen von ONNX und Treffen von Vorhersagen damit in Azure SQL Edge (Vorschau)
-description: Hier erfahren Sie, wie Sie ein Modell trainieren, es in ONNX konvertieren, in Azure SQL Edge (Vorschau) bereitstellen und dann mithilfe des hochgeladenen ONNX-Modells PREDICT (nativ) für Daten ausführen.
+title: Bereitstellen und Erstellen von Vorhersagen mit ONNX
+description: Hier erfahren Sie, wie Sie ein Modell trainieren, es in ONNX konvertieren, anschließend in Azure SQL Edge (Vorschau) oder Azure SQL Managed Instance (Vorschau) bereitstellen und dann mithilfe des hochgeladenen ONXX-Modells PREDICT (nativ) für Daten ausführen.
 keywords: SQL Edge bereitstellen
 services: sql-edge
 ms.service: sql-edge
@@ -8,32 +8,40 @@ ms.subservice: machine-learning
 ms.topic: conceptual
 author: dphansen
 ms.author: davidph
-ms.date: 05/19/2020
-ms.openlocfilehash: b5cd655aaf9992c6908a7f9287f691fd36d84871
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/14/2020
+ms.openlocfilehash: fe1e4a195903803d3103da5f350de30a016e614b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85476732"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085012"
 ---
-# <a name="deploy-and-make-predictions-with-an-onnx-model-in-azure-sql-edge-preview"></a>Bereitstellen eines ONNX-Modells und Treffen von Vorhersagen damit in Azure SQL Edge (Vorschau)
+# <a name="deploy-and-make-predictions-with-an-onnx-model"></a>Bereitstellen eines ONNX-Modells und Treffen von Vorhersagen mit diesem Modell
 
-In dieser Schnellstartanleitung erfahren Sie, wie Sie ein Modell trainieren, es in ONNX konvertieren, anschließend in Azure SQL Edge (Vorschau) bereitstellen und dann mithilfe des hochgeladenen ONXX-Modells PREDICT (nativ) für Daten ausführen. Weitere Informationen finden Sie unter [Machine Learning und KI mit ONNX in SQL Edge (Vorschau)](onnx-overview.md).
+In dieser Schnellstartanleitung erfahren Sie, wie Sie ein Modell trainieren, es in ONNX konvertieren, anschließend in [Azure SQL Edge (Vorschau)](onnx-overview.md) oder [Azure SQL Managed Instance (Vorschau)](../azure-sql/managed-instance/machine-learning-services-overview.md) bereitstellen und dann mithilfe des hochgeladenen ONXX-Modells PREDICT (nativ) für Daten ausführen.
 
 Dieser Schnellstart basiert auf **SciKit-learn** und verwendet das [Boston Housing-Dataset](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_boston.html).
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
-* Wenn Sie noch kein Azure SQL Edge-Modul bereitgestellt haben, führen Sie die Schritte unter [Bereitstellen von Azure SQL Edge (Vorschau)](deploy-portal.md) aus.
+* Wenn Sie Azure SQL Edge verwenden und kein Azure SQL Edge-Modul bereitgestellt haben, führen Sie die Schritte unter [Bereitstellen von Azure SQL Edge (Vorschau)](deploy-portal.md) aus.
 
 * Installieren Sie [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/download).
 
-* Öffnen Sie Azure Data Studio, und führen Sie die folgenden Schritte zum Installieren der für diesen Schnellstart benötigten Pakete aus:
+* Installieren Sie die für diese Schnellstartanleitung erforderlichen Python-Pakete.
 
-    1. Öffnen Sie [Neues Notebook](https://docs.microsoft.com/sql/azure-data-studio/sql-notebooks), das mit dem Python 3-Kernel verbunden ist. 
-    1. Klicken Sie auf **Pakete verwalten**, suchen Sie unter **Neues hinzufügen** nach **scikit-learn**, und installieren Sie das Paket „SciKit-learn“. 
-    1. Installieren Sie außerdem die Pakete **setuptools**, **numpy**, **onnxmltools**, **onnxruntime**, **skl2onnx**, **pyodbc** und **sqlalchemy**.
-    
+  1. Öffnen Sie [Neues Notebook](https://docs.microsoft.com/sql/azure-data-studio/sql-notebooks), das mit dem Python 3-Kernel verbunden ist. 
+  1. Klicken Sie auf **Manage Packages** (Pakete verwalten).
+  1. Suchen Sie auf der Registerkarte **Installiert** in der Liste der installierten Pakete nach den folgenden Python-Paketen. Ist eines dieser Pakete nicht installiert, wählen Sie die Registerkarte **Neu hinzufügen** aus, suchen Sie nach dem Paket, und klicken Sie auf **Installieren**.
+     - **scikit-learn**
+     - **numpy**
+     - **onnxmltools**
+     - **onnxruntime**
+     - **pyodbc**
+     - **setuptools**
+     - **skl2onnx**
+     - **sqlalchemy**
+
 * Geben Sie jeden der nachstehenden Skriptteile in eine Zelle im Azure Data Studio-Notebook ein, und führen Sie die Zelle aus.
 
 ## <a name="train-a-pipeline"></a>Trainieren einer Pipeline
@@ -219,7 +227,7 @@ MSE are equal
 
 ## <a name="insert-the-onnx-model"></a>Einfügen des ONNX-Modells
 
-Speichern Sie das Modell in Azure SQL Edge, und zwar in einer `models`-Tabelle in einer Datenbank vom Typ `onnx`. Geben Sie in der Verbindungszeichenfolge die **Serveradresse**, den **Benutzernamen** und das **Kennwort** an.
+Speichern Sie das Modell in Azure SQL Edge oder Azure SQL Managed Instance, und zwar in einer `models`-Tabelle in einer Datenbank vom Typ `onnx`. Geben Sie in der Verbindungszeichenfolge die **Serveradresse**, den **Benutzernamen** und das **Kennwort** an.
 
 ```python
 import pyodbc
@@ -277,7 +285,7 @@ conn.commit()
 
 ## <a name="load-the-data"></a>Laden der Daten
 
-Laden Sie die Daten in Azure SQL Edge.
+Laden Sie die Daten in SQL.
 
 Erstellen Sie zuerst zwei Tabellen – **Features** und **Ziel** – zum Speichern von Teilmengen des Boston Housing-Datasets.
 
@@ -350,7 +358,7 @@ Jetzt können Sie die Daten in der Datenbank anzeigen.
 
 ## <a name="run-predict-using-the-onnx-model"></a>Ausführen von PREDICT mithilfe des ONNX-Modells
 
-Führen Sie mit dem Modell in Azure SQL Edge PREDICT (nativ) für die Daten aus, und verwenden Sie dazu das hochgeladene ONNX-Modell.
+Führen Sie mit dem Modell in SQL PREDICT (nativ) für die Daten aus, und verwenden Sie dazu das hochgeladene ONNX-Modell.
 
 > [!NOTE]
 > Ändern Sie den Notebook-Kernel in SQL, um die verbleibende Zelle auszuführen.
@@ -390,3 +398,4 @@ FROM PREDICT(MODEL = @model, DATA = predict_input, RUNTIME=ONNX) WITH (variable1
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Machine Learning und KI mit ONNX in SQL Edge](onnx-overview.md)
+* [Machine Learning Services in Azure SQL Managed Instance (Vorschauversion)](../azure-sql/managed-instance/machine-learning-services-overview.md)

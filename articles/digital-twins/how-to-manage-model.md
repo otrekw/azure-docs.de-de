@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 01bb5f9ae6d8c7a6374a8b1392b061f31fdb63a3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 64c7db4223fcb703272749b0bf8d5b1583fbb818
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85390583"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87987323"
 ---
 # <a name="manage-azure-digital-twins-models"></a>Verwalten von Azure Digital Twins-Modellen
 
@@ -65,8 +65,9 @@ Dieses Modell definiert einen Namen und eine eindeutige ID für das Patientenzim
 
 Mit dieser Methode können Sie Modelle für die Stationen oder Bereiche des Krankenhauses oder sogar das gesamte Krankenhaus definieren.
 
-> [!TIP]
-> Es steht eine clientseitige Bibliothek zum Analysieren und Überprüfen von DTDL zur Verfügung. Diese generiert ein C#-Objektmodell des DTDL-Inhalts, das in modellgesteuerten Entwicklungsszenarios verwendet werden kann, z. B. beim Generieren von Benutzeroberflächenelementen. Sie können diese Bibliothek auch verwenden, um sicherzustellen, dass Ihre Modelle keine Syntaxfehler aufweisen, bevor Sie sie hochladen. Weitere Informationen zu dieser Bibliothek und ein Beispiel für ein DTDL-Validierungssteuerelement, das auf dieser basiert, finden Sie unter [Vorgehensweise: Analysieren und Validieren von Modellen](how-to-use-parser.md).
+### <a name="validate-syntax"></a>Überprüfen der Syntax
+
+[!INCLUDE [Azure Digital Twins: validate models info](../../includes/digital-twins-validate.md)]
 
 ## <a name="manage-models-with-apis"></a>Verwalten von Modellen mit APIs
 
@@ -82,7 +83,10 @@ In den folgenden Abschnitten wird erläutert, wie Sie unterschiedliche Modellver
 
 Nachdem Sie Modelle erstellt haben, können Sie sie in die Azure Digital Twins-Instanz hochladen.
 
-Im folgenden Codeausschnitt sehen Sie, wie das geht:
+> [!TIP]
+> Es wird empfohlen, Ihre Modelle offline zu validieren, bevor Sie sie in Ihre Azure Digital Twins-Instanz hochladen. Sie können die [clientseitige DTDL-Parserbibliothek](https://nuget.org/packages/Microsoft.Azure.DigitalTwins.Parser/) und das [Beispiel für das DTDL-Validierungssteuerelement](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator) verwenden, die im Artikel [ *Analysieren und Überprüfen von Modellen mit der DTDL-Parserbibliothek*](how-to-parse-models.md) beschrieben sind, um Ihre Modelle vor dem Hochladen in den Dienst zu überprüfen.
+
+Wenn Sie zum Hochladen eines Modells bereit sind, können Sie den folgenden Codeausschnitt verwenden:
 
 ```csharp
 // 'client' is an instance of DigitalTwinsClient
@@ -126,10 +130,7 @@ Modelldateien können mehr als ein einzelnes Modell enthalten. In diesem Fall m�
 ]
 ```
  
-Modelldateien werden beim Hochladen überprüft.
-
-> [!TIP] 
-> Sie können auch die [clientseitige DTDL-Parserbibliothek](how-to-use-parser.md) verwenden, um Modelle auf Clientseite zu überprüfen.
+Modelldateien werden beim Hochladen vom Dienst überprüft.
 
 ### <a name="retrieve-models"></a>Abrufen von Modellen
 
@@ -190,7 +191,7 @@ Der Status „Außerbetriebsetzung“ eines Modells ist in den `ModelData`-Daten
 
 Sie können entweder alle Modelle auf einmal aus der Instanz löschen oder einzeln bestimmte Modelle zum Löschen auswählen.
 
-Ein Beispiel für das Löschen aller Modelle finden Sie in der Beispiel-App, die im folgenden Tutorial verwendet wird: [Tutorial: Untersuchen der Grundlagen mit einer Beispielclient-App](tutorial-command-line-app.md). In der Datei *CommandLoop.cs* wird dies in einer `CommandDeleteAllModels`-Funktion durchgeführt.
+Ein Beispiel für das Löschen aller Modelle finden Sie in der Beispiel-App, die im folgenden Tutorial verwendet wird: [*Tutorial: Erkunden von Azure Digital Twins mit einer Beispielclient-App*](tutorial-command-line-app.md). In der Datei *CommandLoop.cs* wird dies in einer `CommandDeleteAllModels`-Funktion durchgeführt.
 
 Im Rest dieses Abschnitts wird das Löschen von Modellen ausführlicher beschrieben, und Sie erfahren, wie Sie einzelne Modelle löschen können.
 
@@ -247,9 +248,9 @@ Azure Digital Twins geht dagegen nicht vor. Deshalb sollten Sie darauf achten, T
 
 ## <a name="manage-models-with-cli"></a>Verwalten von Modellen mit der CLI
 
-Modelle können auch mit der Azure Digital Twins-CLI verwaltet werden. Die Befehle finden Sie unter [Vorgehensweise: Verwenden der Azure Digital Twins-Befehlszeilenschnittstelle](how-to-use-cli.md).
+Modelle können auch mit der Azure Digital Twins-CLI verwaltet werden. Die Befehle finden Sie unter [*Vorgehensweise: Verwenden der Azure Digital Twins-Befehlszeilenschnittstelle*](how-to-use-cli.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Informationen zum Erstellen und Verwalten von digitalen Zwillingen basierend auf Ihren Modellen finden Sie unter
-* [Gewusst wie: Verwalten digitaler Zwillinge](how-to-manage-twin.md)
+* [*Verwenden Verwalten digitaler Zwillinge*](how-to-manage-twin.md)

@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 07/09/2020
 ms.author: iainfou
-ms.openlocfilehash: 879138d882913b8ab43c5689ff72a40e6987c104
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 7d1cd032f6042f57a096c5c8e7624f66a4b01355
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223039"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87419596"
 ---
 # <a name="review-security-audit-events-in-azure-active-directory-domain-services-using-azure-monitor-workbooks"></a>Überprüfen von Sicherheitsüberwachungsereignissen in Azure Active Directory Domain Services mithilfe von Azure Monitor-Arbeitsmappen
 
@@ -75,7 +75,7 @@ Führen Sie die folgenden Schritte aus, um auf die Arbeitsmappenvorlage für „
 
 1. Im unteren Bereich von „Security Overview Report“ (Sicherheitsübersichtsbericht) unterhalb des Diagramms wird dann der ausgewählte Aktivitätstyp aufgeschlüsselt. Sie können wie im folgenden Beispielbericht gezeigt auf der rechten Seite nach enthaltenen Benutzernamen filtern:
 
-    [![](./media/use-azure-monitor-workbooks/account-lockout-details-cropped.png "Details of account lockouts in Azure Monitor Workbooks")](./media/use-azure-monitor-workbooks/account-lockout-details.png#lightbox)
+    [![Details zu Kontosperrungen in Azure Monitor-Arbeitsmappen](./media/use-azure-monitor-workbooks/account-lockout-details-cropped.png)](./media/use-azure-monitor-workbooks/account-lockout-details.png#lightbox)
 
 ## <a name="use-the-account-activity-report-workbook"></a>Verwenden der Arbeitsmappe „Account Activity Report“ (Bericht zur Kontoaktivität)
 
@@ -93,7 +93,7 @@ Führen Sie die folgenden Schritte aus, um auf die Arbeitsmappenvorlage für „
 
     Sie können nach **Kontobenutzername** filtern, z. B. *felix*, wie im folgenden Beispielbericht dargestellt:
 
-    [![](./media/use-azure-monitor-workbooks/account-activity-report-cropped.png "Account activity report in Azure Monitor Workbooks")](./media/use-azure-monitor-workbooks/account-activity-report.png#lightbox)
+    [![„Account Activity Report“ (Bericht zur Kontoaktivität) in Azure Monitor-Arbeitsmappen](./media/use-azure-monitor-workbooks/account-activity-report-cropped.png)](./media/use-azure-monitor-workbooks/account-activity-report.png#lightbox)
 
     Im Bereich unterhalb des Diagramms werden einzelne Anmeldeereignisse mit zugehörigen Informationen angezeigt, z. B. dem Aktivitätsergebnis und der Quellarbeitsstation. Anhand dieser Informationen können Sie wiederholte Quellen von Anmeldeereignissen ermitteln, die möglicherweise zu Kontosperrungen führen oder auf einen potenziellen Angriff hindeuten.
 

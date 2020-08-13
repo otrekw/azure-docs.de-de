@@ -72,7 +72,7 @@
               items:
                 - name: Konfigurieren der Azure AD-Authentifizierung
                   href: database/authentication-aad-configure.md
-                - name: Mehrstufige AAD-Authentifizierung
+                - name: Mehrstufige Azure AD-Authentifizierung
                   href: database/authentication-mfa-ssms-overview.md
                 - name: Konfigurieren der mehrstufigen Authentifizierung
                   href: database/authentication-mfa-ssms-configure.md
@@ -891,8 +891,10 @@
           href: managed-instance/threat-detection-configure.md
         - name: Herstellen einer Verbindung mit Anwendungen
           href: managed-instance/connect-application-instance.md
-        - name: Erstellen von Warnungen
+        - name: Erstellen von Warnungen für eine verwaltete Instanz
           href: managed-instance/alerts-create.md
+        - name: Manuelles Initiieren eines Failovers für eine verwaltete Instanz
+          href: managed-instance/user-initiated-failover.md
     - name: Beispiele
       items:
         - name: Azure CLI

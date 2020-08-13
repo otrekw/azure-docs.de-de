@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 02/25/2020
-ms.openlocfilehash: b9cf070e1431c04a7e899a3b8875c8db796608d3
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 163f440c9f98a1d53793fddab2590f7345944fda
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119887"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87171013"
 ---
 # <a name="azure-database-for-mysql-pricing-tiers"></a>Azure Database for MySQL – Tarife
 
@@ -83,9 +83,9 @@ Wenn Sie also beispielsweise 1000 GB Speicher bereitgestellt haben und die tats
 
 Beachten Sie, dass der Speicher nur zentral hochskaliert und nicht herunterskaliert werden kann.
 
-## <a name="backup"></a>Backup
+## <a name="backup-storage"></a>Sicherungsspeicher 
 
-Der Dienst erstellt automatisch Sicherungen Ihres Servers. Sie können als Aufbewahrungszeitraum einen Bereich von 7 bis 35 Tagen auswählen. Bei universellen und arbeitsspeicheroptimierten Servern können Sie georedundanten Speicher für Sicherungen auswählen. Im [Artikel zu Konzepten](concepts-backup.md) erfahren Sie mehr über Sicherungen.
+Bei Azure Database for MySQL werden bis zu 100% Ihres bereitgestellten Serverspeichers ohne zusätzliche Kosten als Sicherungsspeicher hinzugefügt. Alle Sicherungsspeicher, die Sie über diesen Betrag hinaus verwenden, werden in GB pro Monat abgerechnet. Beispiel: Wenn Sie einen Server mit 250 GB bereitstellen, verfügen Sie über 250 GB an zusätzlichem Speicher, der kostenlos für Serversicherungen zur Verfügung steht. Speicher für Sicherungen, die die 250 GB überschreiten, wird gemäß dem [Preismodell](https://azure.microsoft.com/pricing/details/mysql/) abgerechnet. Informationen zu Faktoren, die sich auf die Sicherungsspeichernutzung sowie die Überwachung und Steuerung der Sicherungsspeicherkosten beziehen, finden Sie in der [Dokumentation zur Sicherung](concepts-backup.md).
 
 ## <a name="scale-resources"></a>Skalieren von Ressourcen
 

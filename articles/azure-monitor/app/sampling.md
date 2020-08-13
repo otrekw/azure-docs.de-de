@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 01/17/2020
 ms.reviewer: vitalyg
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 4e2557b114b5eb90b03e59dc64cbd6e69c7dd9a4
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 4a618b00b211ce65b170379cc14d6b83a1183d28
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326578"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460354"
 ---
 # <a name="sampling-in-application-insights"></a>Erstellen von Stichproben in Application Insights
 
@@ -78,7 +78,7 @@ In [`ApplicationInsights.config`](./configuration-with-applicationinsights-confi
 
 * `<MaxTelemetryItemsPerSecond>5</MaxTelemetryItemsPerSecond>`
   
-    Der Zielprozentsatz, den der Adaptionsalgorithmus **auf jedem einzelnen Serverhost**zu erreichen versucht. Wenn Ihre Web-App auf mehreren Hosts ausgeführt wird, reduzieren Sie diesen Wert, damit Sie innerhalb des Zielprozentsatzes für den Datenverkehr im Application Insights-Portal bleiben.
+    Der Zielprozentsatz von [logischen Vorgängen](./correlation.md#data-model-for-telemetry-correlation), den der Adaptionsalgorithmus **auf jedem einzelnen Serverhost** zu erreichen versucht. Wenn Ihre Web-App auf mehreren Hosts ausgeführt wird, reduzieren Sie diesen Wert, damit Sie innerhalb des Zielprozentsatzes für den Datenverkehr im Application Insights-Portal bleiben.
 
 * `<EvaluationInterval>00:00:15</EvaluationInterval>` 
   

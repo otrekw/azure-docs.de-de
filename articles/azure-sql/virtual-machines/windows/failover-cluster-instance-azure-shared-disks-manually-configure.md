@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/26/2020
 ms.author: mathoma
-ms.openlocfilehash: 4e704a25e0c9700afbe4fa85031d7ff4d6a8d0c1
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: e1a4a366b3e4fa045df69683d6e72b157ccf0a1f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85965357"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87003626"
 ---
 # <a name="create-an-fci-with-azure-shared-disks-sql-server-on-azure-vms"></a>Erstellen einer FCI mit freigegebenen Azure-Datenträgern (SQL Server auf Azure-VMs)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -157,7 +157,7 @@ Um den Cluster über die Benutzeroberfläche zu validieren, gehen Sie auf einem 
 1. Geben Sie unter **Server oder Cluster auswählen** die Namen der beiden virtuellen Computer ein.
 1. Wählen Sie unter **Testoptionen** die Option **Nur ausgewählte Tests ausführen** aus. 
 1. Wählen Sie **Weiter** aus.
-1. Wählen Sie unter **Testauswahl** Alle Tests aus, *ausgenommen* **Direkte Speicherplätze**.
+1. Wählen Sie unter **Testauswahl** alle Tests aus, *ausgenommen* den Test **Speicher**.
 
 ## <a name="test-cluster-failover"></a>Testen des Failovers des Clusters
 
@@ -181,9 +181,7 @@ Nachdem Sie den Failovercluster und alle Clusterkomponenten einschließlich Spei
 
 1. Wählen Sie **Neue SQL Server-Failoverclusterinstallation** aus. Befolgen Sie im Assistenten die Anleitung zum Installieren der SQL Server-FCI.
 
-   Die FCI-Datenverzeichnisse müssen sich in gruppiertem Speicher befinden. Bei „Direkte Speicherplätze“handelt es sich nicht um einen freigegebenen Datenträger, sondern um einen Bereitstellungspunkt für ein Volume auf jedem Server. „Direkte Speicherplätze“ synchronisiert das Volume zwischen beiden Knoten. Das Volume wird dem Cluster als freigegebenes Clustervolume (Cluster Shared Volume, CSV) angezeigt. Verwenden Sie den CSV-Bereitstellungspunkt für die Datenverzeichnisse.
-
-   ![Datenverzeichnisse](./media/failover-cluster-instance-storage-spaces-direct-manually-configure/20-data-dicrectories.png)
+Die FCI-Datenverzeichnisse müssen sich auf freigegebenen Azure-Datenträgern befinden. 
 
 1. Nach Durchführung der Anweisungen im Assistenten wird vom Setup eine SQL Server-FCI auf dem ersten Knoten installiert.
 
@@ -232,4 +230,4 @@ Weitere Informationen finden Sie in der Übersicht zu [FCI mit SQL Server auf A
 
 Weitere Informationen finden Sie unter: 
 - [Windows-Clustertechnologie](/windows-server/failover-clustering/failover-clustering-overview)   
-- [SQL Server-Failoverclusterinstanzen](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)
+- [SQL Server-Failoverclusterinstanzen](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)

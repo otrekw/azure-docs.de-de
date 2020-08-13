@@ -11,26 +11,28 @@ ms.subservice: user-help
 ms.topic: end-user-help
 ms.date: 10/28/2019
 ms.author: curtand
-ms.openlocfilehash: 0e74ea4a3204efb35fa6113504356e87c85aa0dd
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: ec050f3dfd2537f8cffde353772d61c32cb9d676
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83742096"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87422363"
 ---
 # <a name="view-how-your-organization-uses-your-privacy-related-data"></a>Anzeigen, wie Ihre Organisation Ihre datenschutzrelevanten Daten verwendet
 
-Im Portal **Mein Konto** können Sie auf der Seite **Datenschutz** anzeigen, wie Ihre Organisation Ihre Daten verwendet.
+Im Portal **Mein Konto** können Sie auf der Seite **Einstellungen und Datenschutz** anzeigen, wie Ihre Organisation Ihre Daten verwendet.
 
 ## <a name="view-your-privacy-related-info"></a>Anzeigen der datenschutzrelevanten Informationen
 
 1. Melden Sie sich bei Ihrem Geschäfts-, Schul- oder Unikonto an, und rufen Sie die Seite https://myaccount.microsoft.com/ auf.
 
-2. Wählen Sie im linken Navigationsbereich **Datenschutz** aus, oder wählen Sie im Block **Datenschutz** den Link **Datenschutz überprüfen** aus.
+2. Wählen Sie im linken Navigationsbereich **Einstellungen und Datenschutz** oder im Block **Einstellungen und Datenschutz** den Link **Einstellungen und Datenschutz anzeigen** aus.
 
-    ![Seite „Mein Konto“ mit hervorgehobenen Links für den Datenschutz](media/my-account-portal/my-account-portal-privacy.png)
+    ![Seite „Mein Konto“ mit hervorgehobenem Link „Einstellungen und Datenschutz“](media/my-account-portal/my-account-portal-privacy.png)
 
-3. Überprüfen Sie unter anderem folgende Informationen:
+3. Wählen Sie **Datenschutz** aus, wie im folgenden Beispielscreenshot gezeigt, und überprüfen Sie dann u. a. die folgenden Informationen:
+
+    ![Seite „Einstellungen und Datenschutz“ mit hervorgehobener Registerkartenoption „Datenschutz“](media/my-account-portal/my-account-portal-privacy-tab.png)
 
     - **Dienste**. Eine Liste der Onlinedienste, mit denen Sie über Ihr Geschäfts-, Schul- oder Unikonto verbunden sind.
 
@@ -47,5 +49,7 @@ Nach dem Anzeigen der Informationen zur Nutzung Ihrer Daten innerhalb der Organi
 - Anzeigen oder Verwalten Ihrer [Organisationen](my-account-portal-organizations-page.md)
 
 - Anzeigen Ihrer [Anmeldeaktivitäten](my-account-portal-sign-ins-page.md).
+
+- Ändern der [Portaleinstellungen für „Mein Konto“](my-account-portal-settings.md)
 
 - Sie können auch Ihre Kontakteinstellungen und Datenschutzinformationen für Microsoft Office im [Office-Portal auf der Seite „Sicherheit und Datenschutz“](https://portal.office.com/account/#security) anzeigen.

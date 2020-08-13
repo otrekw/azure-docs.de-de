@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/08/2020
 ms.author: jingwang
 ms.custom: include file
-ms.openlocfilehash: 995339f91be37b71d73b409f3eaeafb3dd1777ab
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bfb42e0ba81eef145932db072c8a80a2f8e00932
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84754679"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87425076"
 ---
 Azure Data Factory ist ein mehrinstanzenfähiger Dienst mit den folgenden Standardgrenzwerten, die sicherstellen sollen, dass Kundenabonnements vor anderen Workloads geschützt sind. Wenden Sie sich an den Support, um die Grenzwerte bis zum Höchstwert für Ihr Abonnement zu erhöhen.
 
@@ -22,7 +22,7 @@ Azure Data Factory ist ein mehrinstanzenfähiger Dienst mit den folgenden Standa
 | Resource | Standardlimit | Maximales Limit |
 | -------- | ------------- | ------------- |
 | Data Factorys in einem Azure-Abonnement | 800 | [Wenden Sie sich an den Support](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
-| Gesamtanzahl von Entitäten (z. B. Pipeline, Datasets, Trigger, verknüpfte Dienste, Integration Runtimes) in einer Data Factory | 5\.000 | [Wenden Sie sich an den Support](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
+| Gesamtanzahl von Entitäten (z. B. Pipelines, Datasets, Trigger, verknüpfte Dienste, private Endpunkte und Integration Runtimes) in einer Data Factory | 5\.000 | [Wenden Sie sich an den Support](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
 | Gesamtanzahl CPU-Kerne für Azure-SSIS Integration Runtimes unter einem Abonnement | 256 | [Wenden Sie sich an den Support](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
 | Gleichzeitige Pipelineausführungen pro Data Factory (von allen Pipelines der Factory gemeinsam genutzt) | 10.000  | [Wenden Sie sich an den Support](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
 | Gleichzeitige externe Aktivitätsausführungen pro Abonnement und [Azure Integration Runtime-Region](../articles/data-factory/concepts-integration-runtime.md#integration-runtime-location)<br><small>Externe Aktivitäten werden in der Integration Runtime verwaltet, aber in verknüpften Diensten ausgeführt. Hierzu gehören unter anderem Databricks, gespeicherte Prozeduren, HDInsights und Web.</small> | 3000 | [Wenden Sie sich an den Support](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |

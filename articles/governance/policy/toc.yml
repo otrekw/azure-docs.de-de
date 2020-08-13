@@ -10,16 +10,22 @@
   items:
     - name: Zuweisen einer Richtlinie – Portal
       displayName: 'assign, compliance'
-      href: assign-policy-portal.md
-    - name: 'Zuweisen einer Richtlinie: Azure PowerShell'
-      displayName: 'assign, compliance'
-      href: assign-policy-powershell.md
+      href: ./assign-policy-portal.md
     - name: Zuweisen einer Richtlinie – Azure CLI
       displayName: 'assign, compliance'
-      href: assign-policy-azurecli.md
+      href: ./assign-policy-azurecli.md
+    - name: 'Zuweisen einer Richtlinie: Azure PowerShell'
+      displayName: 'assign, compliance'
+      href: ./assign-policy-powershell.md
+    - name: 'Zuweisen einer Richtlinie: Python'
+      displayName: 'assign, compliance'
+      href: ./assign-policy-python.md
+    - name: 'Zuweisen einer Richtlinie: REST'
+      displayName: 'armclient, postman'
+      href: ./assign-policy-rest-api.md
     - name: 'Zuweisen einer Richtlinie: ARM-Vorlage'
       displayName: 'assign, compliance, resource manager'
-      href: assign-policy-template.md
+      href: ./assign-policy-template.md
 - name: Tutorials
   items:
     - name: Erstellen und Verwalten einer Azure-Richtlinie
@@ -164,7 +170,7 @@
   href: ./troubleshoot/general.md
 - name: Verweis
   items:
-    - name: Azure-Befehlszeilenschnittstelle
+    - name: Azure CLI
       href: /cli/azure/policy
     - name: Azure PowerShell
       items:

@@ -5,15 +5,15 @@ services: azure-monitor
 author: rboucher
 tags: azure-service-management
 ms.topic: include
-ms.date: 02/07/2019
+ms.date: 08/11/2020
 ms.author: robb
 ms.custom: include file
-ms.openlocfilehash: 61bc3933c699f747da10ac6d1b38ad64c76ab681
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 332841d4ee4791cb8da1620aa292b05bbde74955
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84793713"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88162676"
 ---
 | Resource | Standardlimit | Maximales Limit |
 | --- | --- | --- |
@@ -22,5 +22,8 @@ ms.locfileid: "84793713"
 | Aktivitätsprotokollwarnungen | 100 aktive Warnungsregeln pro Abonnement. | Wie Standard. |
 | Protokollwarnungen | 512 aktive Warnungsregeln pro Abonnement. 200 aktive Warnungsregeln pro Ressource. | Wenden Sie sich an den Support. |
 | Aktionsgruppen |2\.000 Aktionsgruppen pro Abonnement. | Wenden Sie sich an den Support. |
+| Länge der Beschreibungen von Warnungsregeln und Aktionsregeln| Protokollsuchwarnungen: 4.096 Zeichen<br/>Alle anderen: 2.048 Zeichen | Wie Standard. |
 | Einstellungen für automatische Skalierung |100 pro Region und Abonnement. | Wie Standard. |
 | Profile für die automatische Skalierung |20 Profile pro Einstellung für die Autoskalierung. | Wie Standard. |
+
+

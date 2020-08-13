@@ -1,5 +1,5 @@
 ---
-title: Anzeigen und Suchen Ihrer letzten Anmeldeaktivität auf der Seite „Meine Anmeldungen“ (Vorschauversion) – Azure Active Directory | Microsoft-Dokumentation
+title: Anzeigen und Suchen Ihrer letzten Anmeldeaktivität auf der Seite „Meine Anmeldungen“ – Azure Active Directory | Microsoft-Dokumentation
 description: Details zur Anzeige und Suche Ihrer letzten Anmeldeaktivität auf der Seite „Meine Anmeldungen“ im Portal „Mein Konto“.
 services: active-directory
 author: curtand
@@ -9,58 +9,64 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 10/28/2019
+ms.date: 08/03/2020
 ms.author: curtand
-ms.openlocfilehash: 0b3b0d686ae10f9b376c977bf165eccddda32239
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 1816170da0fb6e5120f8cec6b6dda68d2ea1c678
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744528"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543192"
 ---
-# <a name="view-and-search-your-recent-sign-in-activity-from-the-my-sign-ins-preview-page"></a>Anzeigen und Suchen Ihrer letzten Anmeldeaktivität auf der Seite „Meine Anmeldedaten“ (Vorschauversion)
+# <a name="view-and-search-your-recent-sign-in-activity-from-the-my-sign-ins-page"></a>Anzeigen und Suchen Ihrer letzten Anmeldeaktivität auf der Seite „Meine Anmeldungen“
 
 Sie können die letzten Anmeldeaktivitäten für Ihr Geschäfts-, Schul- oder Unikonto auf der Seite **Meine Anmeldungen** im Portal **Mein Konto** einsehen. Durch die Überprüfung Ihres Anmeldeverlaufs können Sie feststellen, ob ungewöhnliche Aktivitäten stattgefunden haben. Dabei wird Ihnen Folgendes angezeigt:
 
 - Ob jemand versucht, Ihr Kennwort zu erraten.
-
 - Ob sich ein Angreifer erfolgreich bei ihrem Konto angemeldet hat und an welchem Standort die Anmeldung erfolgt ist.
-
 - Auf welche Apps der Angreifer versucht hat, zuzugreifen.
 
 ## <a name="view-your-recent-sign-in-activity"></a>Anzeigen Ihrer letzten Anmeldeaktivität
 
 1. Melden Sie sich bei Ihrem Geschäfts-, Schul- oder Unikonto an, und rufen Sie die Seite https://myaccount.microsoft.com/ auf.
 
-2. Wählen Sie im linken Navigationsbereich **Meine Anmeldungen (Vorschauversion)** aus, oder wählen Sie im Block **Meine Anmeldungen (Vorschauversion)** den Link **Letzte Aktivität überprüfen** aus.
+2. Wählen Sie im linken Navigationsbereich **Meine Anmeldungen** aus, oder wählen Sie im Block **Meine Anmeldungen** den Link **Letzte Aktivität überprüfen** aus.
 
     ![Seite „Mein Konto“ mit hervorgehobenen Links für die letzte Aktivität](media/my-account-portal/my-account-portal-sign-ins.png)
 
-3. Erweitern Sie alle Anmeldeelemente, und überprüfen Sie diese. Stellen Sie sicher, dass Sie alle erkennen. Wenn Sie ein Anmeldeelement finden, das Ihnen unbekannt ist, empfehlen wir dringend, Ihr Kennwort zu ändern, um Ihr Konto vor einer Sicherheitsgefährdung zu schützen.
+3. Erweitern Sie alle Anmeldeelemente, und überprüfen Sie diese. Stellen Sie sicher, dass Sie alle erkennen. Wenn Sie ein Anmeldeelement finden, das Ihnen unbekannt ist, ändern Sie Ihr Kennwort, um das Konto vor einer Sicherheitsgefährdung zu schützen.
 
-    ![Seite „Letzte Aktivität“ mit erweiterten Anmeldedetails](media/my-account-portal/my-account-portal-sign-ins-page.png)
+    ![Seite „Letzte Aktivität“ mit erweiterten Anmeldedetails](media/my-account-portal-sign-ins-page/recent-activity.png)
 
 ### <a name="if-you-see-a-successful-sign-in"></a>Wenn eine erfolgreiche Anmeldung angezeigt wird
 
-Sie sollten ihre eigene Aktivität als unauffällige Aktivität erkennen. Wenn Sie jedoch eine erfolgreiche Anmeldung von einem fremden Standort, Browser oder Betriebssystem feststellen, kann dies bedeuten, dass ein Angreifer Zugriff auf Ihr Konto erhalten hat. In dieser Situation empfehlen wir Ihnen, Ihr Kennwort sofort zu ändern und dann auf der Seite [Sicherheitsinformation](https://mysignins.microsoft.com/security-info) Ihre Sicherheitseinstellungen zu aktualisieren.
+Manchmal kann bei der Überprüfung der eigenen normalen Anmeldeaktivitäten eine erfolgreiche Anmeldung von einem unbekannten Standort, Browser oder Betriebssystem angezeigt werden. Unbekannte Anmeldungen können bedeuten, dass ein Angreifer Zugriff auf Ihr Konto erlangt hat. Wenn Sie Aktivitäten sehen, die nicht von Ihnen autorisiert wurden, wird empfohlen, Ihr Kennwort sofort zu ändern und dann zu [Sicherheitsinformation](https://mysignins.microsoft.com/security-info) zu wechseln und Ihre Sicherheitseinstellungen zu aktualisieren.
 
-Bevor Sie festlegen, dass etwas nicht richtig ist, stellen Sie sicher, dass Sie kein falsch-positives Ergebnis sehen (wobei das Element fragwürdig aussieht, aber in Ordnung ist). So ermitteln wir beispielsweise Ihren ungefähren Standort und die Zuordnung basierend auf Ihrer IP-Adresse. Mobilfunknetze sind besonders schwer zu lokalisieren, da sie den Datenverkehr gelegentlich über entfernte Standorte leiten. Wenn Sie sich also mit Ihrem mobilen Gerät im Bundesstaat Washington angemeldet haben, kann als Standort für die Anmeldung Kalifornien angegeben sein. Aus diesem Grund empfehlen wir Ihnen dringend, weitere Details als nur den Standort zu überprüfen. Sie sollten auch sicherstellen, dass Betriebssystem, Browser und App ebenfalls für Sie Sinn ergeben.
+Bevor Sie festlegen, dass etwas nicht richtig ist, stellen Sie sicher, dass Sie kein falsch-positives Ergebnis sehen (wobei das Element fragwürdig aussieht, aber in Ordnung ist). So wird beispielsweise Ihr ungefährer Standort und die Zuordnung basierend auf Ihrer IP-Adresse ermittelt. Mobilfunknetze sind besonders schwer zu lokalisieren, da sie den Datenverkehr gelegentlich über entfernte Standorte leiten. Auch wenn Sie sich mit Ihrem mobilen Gerät im Bundesstaat Washington angemeldet haben, kann als Standort für die Anmeldung Kalifornien angegeben sein. Es wird dringend empfohlen, weitere Details als nur den Standort zu überprüfen. Vergewissern Sie sich, dass auch Betriebssystem, Browser und App für Sie Sinn ergeben.
 
 ### <a name="if-you-see-an-unsuccessful-sign-in"></a>Wenn eine nicht erfolgreiche Anmeldung angezeigt wird
 
-Eine nicht erfolgreiche Anmeldung ohne Sitzungsaktivität bedeutet, dass die primäre Überprüfungsmethode (Benutzername/Kennwort) nicht erfolgreich war. Dies könnte bedeuten, dass Sie Ihren Benutzernamen oder Ihr Kennwort falsch eingegeben haben, aber auch, dass ein Angreifer versucht hat, Ihr Kennwort zu erraten. Wenn Sie denken, dass ein Angreifer erfolglos versucht hat, Ihr Kennwort zu erraten, müssen Sie nicht unbedingt Ihr Kennwort ändern, aber wir empfehlen Ihnen dringend, sich für Azure Multi-Factor Authentication (MFA) zu registrieren. Mit MFA ist das Kennwort auch dann nicht ausreichend für die Anmeldung, wenn der Hacker Ihr Kennwort letztendlich erraten hat.
+Wenn eine nicht erfolgreiche Anmeldung angezeigt wird, kann das bedeuten, dass Sie Ihre Anmeldeinformationen falsch eingegeben haben. Es kann auch bedeuten, dass ein Angreifer versucht hat, Ihr Kennwort zu erraten. Als Reaktion auf dieses Risiko müssen Sie Ihr Kennwort nicht ändern, aber es wird empfohlen, dass Sie sich für Azure Multi-Factor Authentication (MFA) registrieren. Mit Multi-Factor Authentication ist das Kennwort auch dann nicht ausreichend für den Zugriff auf Ihr Konto, wenn der Hacker es erraten hat.
 
-Wenn eine nicht erfolgreiche Anmeldung angezeigt wird, bei der für die Sitzungsaktivität der Hinweis **Zusätzliche Überprüfung fehlgeschlagen, ungültiger Code** angegeben ist, bedeutet dies, dass Ihre primäre Authentifizierungsmethode (Benutzername/Kennwort) erfolgreich war, die MFA aber fehlgeschlagen ist. Wenn es sich hierbei um einen Angreifer handelt, wurde Ihr Kennwort zwar richtig erraten, aber die MFA-Prüfung trotzdem nicht bestanden. In diesem Fall empfehlen wir Ihnen, Ihr Kennwort trotzdem zu ändern, da der Angreifer dieses Element richtig erraten hat, und dann auf der Seite [Sicherheitsinformation](https://mysignins.microsoft.com/security-info) Ihre Sicherheitseinstellungen zu aktualisieren.
+![Kachel „Nicht erfolgreiche Anmeldung“](media/my-account-portal-sign-ins-page/unsuccessful.png)
+
+Wenn eine nicht erfolgreiche Anmeldung angezeigt wird, bei der unter **Sitzungsaktivität** der Hinweis `Additional verification failed, invalid code` angegeben ist, bedeutet dies, dass Ihre primären Anmeldeinformationen für die Authentifizierung erfolgreich waren, Multi-Factor Authentication aber fehlgeschlagen ist. Das kann bedeuten, dass ein Angreifer Ihr Kennwort richtig erraten hat, aber Multi-Factor Authentication nicht durchlaufen konnte. Es wird empfohlen, Ihr Kennwort trotzdem zu ändern, da der Angreifer bereits darüber verfügen könnte, und zur Seite [Sicherheitsinformation](https://mysignins.microsoft.com/security-info) zu wechseln und Ihre Sicherheitseinstellungen zu aktualisieren.
 
 ## <a name="search-for-specific-sign-in-activity"></a>Suchen nach einer spezifischen Anmeldeaktivität
 
 Sie können Ihre letzten Anmeldeaktivitäten anhand der verfügbaren Informationen suchen. Beispielsweise können Sie nach der aktuellen Anmeldeaktivität anhand von Betriebssystem, Standort, App usw. suchen.
 
-1. Geben Sie auf der Seite **Letzte Aktivität überprüfen** die gesuchten Informationen in die Leiste **Suchen** ein. Geben Sie z. B. `My Account` ein, um nach allen von der App „Mein Konto“ gesammelten Aktivitäten zu suchen.
+1. Geben Sie auf der Seite **Letzte Aktivität überprüfen** die gesuchten Informationen in die Leiste **Suchen** ein. Geben Sie z. B. `Unsuccessful` ein, um nach allen von der App „Mein Konto“ gesammelten erfolglosen Anmeldeaktivitäten zu suchen.
 
 2. Wählen Sie die Schaltfläche **Suche** aus, um die Suche zu starten.
 
-    ![Seite „Letzte Aktivität“ mit hervorgehobener Suchleiste, Schaltfläche „Suche“ und den Ergebnissen](media/my-account-portal/my-account-portal-sign-ins-page-search.png)
+    ![Seite „Letzte Aktivität“ mit hervorgehobener Suchleiste, Schaltfläche „Suche“ und den Ergebnissen](media/my-account-portal-sign-ins-page/sign-in-search.png)
+
+### <a name="confirm-unusual-activity"></a>Bestätigen ungewöhnlicher Aktivitäten
+
+Anmeldungen, die als ungewöhnliche Aktivitäten gekennzeichnet sind, können in der Kachel für diese Aktivität auf der Seite **Meine Anmeldungen** bestätigt werden.
+
+![Kachel für ungewöhnliche Anmeldung zur Bestätigung, dass der Anmeldeversuch von Ihnen durchgeführt wurde](media/my-account-portal-sign-ins-page/this-wasnt-me.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -73,3 +79,5 @@ Nach dem Anzeigen der letzten Anmeldeaktivität haben Sie folgende Möglichkeite
 - Anzeigen oder Verwalten Ihrer [Organisationen](my-account-portal-organizations-page.md)
 
 - Anzeigen von Informationen zur [Nutzung der datenschutzrelevanten Informationen](my-account-portal-privacy-page.md) in Ihrer Organisation.
+
+- Ändern der [Portaleinstellungen für „Mein Konto“](my-account-portal-settings.md)

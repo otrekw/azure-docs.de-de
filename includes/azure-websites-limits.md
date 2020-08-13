@@ -4,12 +4,12 @@ ms.service: app-service
 ms.topic: include
 ms.date: 03/04/2020
 ms.author: jroth
-ms.openlocfilehash: 469138da19248bc7872028508f3080de5fae4a52
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1811590dcf9077a503f89a900f661c52aa442c96
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85838837"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87424958"
 ---
 | Resource | Kostenlos | Shared | Basic | Standard | Premium (v2) | Isolated </th> |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -28,8 +28,9 @@ ms.locfileid: "85838837"
 | Gleichzeitige [Debuggerverbindungen](../articles/app-service/troubleshoot-dotnet-visual-studio.md) pro Anwendung |1 |1 |1 |5 |5 |5 |
 | App Service-Zertifikate pro Abonnement<sup>9</sup>| Nicht unterstützt | Nicht unterstützt |10 |10 |10 |10 |
 | Benutzerdefinierte Domänen pro App</a> |0 (nur Unterdomäne azurewebsites.net)|500 |500 |500 |500 |500 |
-| benutzerdefinierte Domäne [SSL-Unterstützung](../articles/app-service/configure-ssl-certificate.md) |Nicht unterstützt, Platzhalterzertifikat für „*.azurewebsites.net“ standardmäßig verfügbar|Nicht unterstützt, Platzhalterzertifikat für „*.azurewebsites.net“ standardmäßig verfügbar|Unbegrenzte Anzahl von SNI SSL-Verbindungen |Unbegrenzte Anzahl von SNI SSL-Verbindungen und 1 IP-SSL-Verbindung inbegriffen |Unbegrenzte Anzahl von SNI SSL-Verbindungen und 1 IP-SSL-Verbindung inbegriffen | Unbegrenzte Anzahl von SNI SSL-Verbindungen und 1 IP-SSL-Verbindung inbegriffen|
-| Hybridverbindungen pro Plan | | | 5 | 25 | 200 | 200 |
+| benutzerdefinierte Domäne [SSL-Unterstützung](../articles/app-service/configure-ssl-certificate.md) |Nicht unterstützt, Platzhalterzertifikat für „\*.azurewebsites.net“ standardmäßig verfügbar|Nicht unterstützt, Platzhalterzertifikat für „\*.azurewebsites.net“ standardmäßig verfügbar|Unbegrenzte Anzahl von SNI SSL-Verbindungen |Unbegrenzte Anzahl von SNI SSL-Verbindungen und 1 IP-SSL-Verbindung inbegriffen |Unbegrenzte Anzahl von SNI SSL-Verbindungen und 1 IP-SSL-Verbindung inbegriffen | Unbegrenzte Anzahl von SNI SSL-Verbindungen und 1 IP-SSL-Verbindung inbegriffen|
+| Hybridverbindungen | | | 5 pro Plan | 25 pro Plan | 200 pro App | 200 pro App |
+| [Virtual Network-Integration](../articles/app-service/web-sites-integrate-with-vnet.md) | | |   |  X |  X  |  X  |
 | Integrierter Lastenausgleich | |X |X |X |X |X<sup>10</sup> |
 | [Always On](../articles/app-service/configure-common.md) | | |X |X |X |X |
 | [Geplante Sicherungen](../articles/app-service/manage-backup.md) | | | | Geplante Sicherungen alle 2 Stunden, höchstens 12 Sicherungen pro Tag (manuell + geplant) | Geplante Sicherungen jede Stunde, höchstens 50 Sicherungen pro Tag (manuell + geplant) | Geplante Sicherungen jede Stunde, höchstens 50 Sicherungen pro Tag (manuell + geplant) |
@@ -37,6 +38,11 @@ ms.locfileid: "85838837"
 | [WebJobs](../articles/app-service/webjobs-create.md)<sup>11</sup> |X |X |X |X |X |X |
 | [Endpunktüberwachung](../articles/app-service/web-sites-monitor.md) | | |X |X |X |X |
 | [Stagingslots](../articles/app-service/deploy-staging-slots.md) pro App| | | |5 |20 |20 |
+| [Test-in-Produktion](../articles/app-service/deploy-staging-slots.md#route-traffic)| | | |X |X |X |
+| [Diagnoseprotokolle](../articles/app-service/troubleshoot-diagnostic-logs.md) | X | X | X | X | X | X |
+| Kudu | X | X | X | X | X | X |
+| [Authentifizierung und Autorisierung](../articles/app-service/overview-authentication-authorization.md) | X | X | X | X | X | X |
+| [Von App Service verwaltete Zertifikate (Public Preview)](https://azure.microsoft.com/updates/secure-your-custom-domains-at-no-cost-with-app-service-managed-certificates-preview/)<sup>12</sup> | |  | X | X | X | X |
 | SLA | |  |99,95 %|99,95 %|99,95 %|99,95 %|  
 
 <sup>1</sup>Sofern nicht anderweitig vermerkt, gelten Apps- und Speicherkontingente gemäß dem App Service-Plan.  
@@ -49,4 +55,6 @@ ms.locfileid: "85838837"
 <sup>8</sup>Die maximalen IP-Verbindungen sind pro Instanz und abhängig von der Instanzgröße: 1.920 pro B1/S1/P1V2-Instanz, 3.968 pro B2/S2/P2V2-Instanz, 8.064 pro B3/S3/P3V2-Instanz.  
 <sup>9</sup>Die App Service Certificate-Kontingentgrenze pro Abonnement kann über eine Supportanfrage bis auf eine Obergrenze von 200 erhöht werden.  
 <sup>10</sup>Für SKUs vom Typ „App Service (isoliert)“ kann ein interner Lastausgleich (Internal Load Balancing, ILB) mit Azure Load Balancer vorgenommen werden, sodass keine öffentliche Verbindung mit dem Internet erforderlich ist. Aus diesem Grund müssen einige Features eines isolierten App Service mit internem Lastausgleich auf Computern ausgeführt werden, die über Direktzugriff auf den Endpunkt des ILB-Netzwerks verfügen.  
-<sup>11</sup>Sie können benutzerdefinierte ausführbare Dateien und/oder Skripts bei Bedarf, nach Zeitplan oder fortwährend als Hintergrundaufgabe in Ihrer App Service-Instanz ausführen. Für die fortlaufende WebJobs-Ausführung ist „Immer bereit“ erforderlich. Es gibt keine vordefinierte Grenze für die Anzahl der WebJobs, die in einer App Service-Instanz ausgeführt werden können. Es gibt praktische Grenzwerte, die davon abhängen, was der Anwendungscode auszuführen versucht.  
+<sup>11</sup>Sie können benutzerdefinierte ausführbare Dateien und/oder Skripts bei Bedarf, nach Zeitplan oder fortwährend als Hintergrundaufgabe in Ihrer App Service-Instanz ausführen. Für die fortlaufende WebJobs-Ausführung ist „Immer bereit“ erforderlich. Es gibt keine vordefinierte Grenze für die Anzahl der WebJobs, die in einer App Service-Instanz ausgeführt werden können. Es gibt praktische Grenzwerte, die davon abhängen, was der Anwendungscode auszuführen versucht.
+
+<sup>12</sup>Domänen ohne das Präfix „www“ werden nicht unterstützt. Es werden nur Standardzertifikate ausgegeben (Platzhalterzertifikate sind nicht verfügbar). Nur auf ein kostenloses Zertifikat pro benutzerdefinierter Domäne beschränkt.

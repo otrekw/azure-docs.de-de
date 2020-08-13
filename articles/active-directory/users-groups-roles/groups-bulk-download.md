@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 00fdd94e8a8cd4b8769260cd595dfee5ff898039
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 46c0fccf965f4a4c9d05d82601d75e314aba7d73
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84732617"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421687"
 ---
 # <a name="bulk-download-a-list-of-groups-in-azure-active-directory"></a>Herunterladen einer Liste von Gruppen in einem Massenvorgang in Azure Active Directory
 
@@ -36,7 +36,7 @@ Im Azure Active Directory-Portal (Azure AD) können Sie die Liste aller Gruppen 
 
 Sie können den Status aller Ihrer ausstehenden Massenanforderungen auf der Seite **Ergebnisse von Massenvorgängen** anzeigen.
 
-[![](media/groups-bulk-download/bulk-center.png "Check status in the Bulk Operations Results page")](media/groups-bulk-download/bulk-center.png#lightbox)
+[![Überprüfen des Status auf der Seite „Ergebnisse von Massenvorgängen“](media/groups-bulk-download/bulk-center.png)](media/groups-bulk-download/bulk-center.png#lightbox)
 
 ## <a name="bulk-download-service-limits"></a>Grenzwerte für den Massendownloaddienst
 
