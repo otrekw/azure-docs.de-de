@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: how-to
 ms.reviewer: hux
-ms.openlocfilehash: 6e3ce99211da35105fd9e118a850110dfd48ece1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 57366011c93065803162164c03c7878e1610af9f
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84986281"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500384"
 ---
 # <a name="utilize-blob-index-tags-preview-to-manage-and-find-data-on-azure-blob-storage"></a>Verwenden von Blobindextags (Vorschauversion) zum Verwalten und Suchen von Daten in Azure Blob Storage
 
@@ -32,11 +32,9 @@ Weitere Informationen zum Blobindex finden Sie unter [Verwalten und Suchen von D
 # <a name="net"></a>[.NET](#tab/net)
 Da sich der Blobindex in der öffentlichen Vorschauphase befindet, wird das .NET-Speicherpaket im NuGet-Vorschaufeed veröffentlicht. Diese Bibliothek kann bis zu ihrer offiziellen Veröffentlichung noch geändert werden. 
 
-1. Fügen Sie in Visual Studio die URL-`https://azuresdkartifacts.blob.core.windows.net/azure-sdk-for-net/index.json` zu den NuGet-Paketquellen hinzu. 
+1. Richten Sie Ihr Visual Studio-Projekt für die ersten Schritte mit der Azure Blob Storage-Clientbibliothek V12 für .NET ein. Weitere Informationen finden Sie unter [Schnellstart: Azure Blob Storage-Clientbibliothek v12 für .NET](storage-quickstart-blobs-dotnet.md).
 
-   Entsprechende Informationen finden Sie unter [Paketquellen](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-visual-studio#package-sources).
-
-2. Suchen Sie im NuGet-Paket-Manager nach dem Paket **Azure.Storage.Blobs**, und installieren Sie Version **12.5.0-dev.20200422.2** in Ihrem Projekt. Sie können auch den Befehl ```Install-Package Azure.Storage.Blobs -Version 12.5.0-dev.20200422.2``` ausführen.
+2. Suchen Sie im NuGet-Paket-Manager nach dem Paket **Azure.Storage.Blobs**, und installieren Sie Version **12.5.0-preview.6** oder höher in Ihrem Projekt. Sie können auch den Befehl ```Install-Package Azure.Storage.Blobs -Version 12.5.0-preview.6``` ausführen.
 
    Weitere Informationen finden Sie unter [Suchen und Installieren eines Pakets](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-visual-studio#find-and-install-a-package).
 
@@ -70,7 +68,9 @@ using System.Threading.Tasks;
 ![Hochladen von Daten mit Blobindextags](media/storage-blob-index-concepts/blob-index-upload-data-with-tags.png)
 
 # <a name="net"></a>[.NET](#tab/net)
+
 Im folgenden Beispiel wird das Erstellen eines Anfügeblobs gezeigt, bei dem Tags während der Erstellung festgelegt wurden.
+
 ```csharp
 static async Task BlobIndexTagsOnCreate()
    {
@@ -84,7 +84,7 @@ static async Task BlobIndexTagsOnCreate()
 
           // Create an append blob
           AppendBlobClient appendBlobWithTags = container.GetAppendBlobClient("myAppendBlob0.logs");
-         
+
           // Blob Index tags to upload
           CreateAppendBlobOptions appendOptions = new CreateAppendBlobOptions();
           appendOptions.Tags = new Dictionary<string, string>

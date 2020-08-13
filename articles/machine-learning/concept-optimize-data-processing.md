@@ -10,12 +10,12 @@ ms.subservice: core
 ms.reviewer: nibaccam
 ms.topic: conceptual
 ms.date: 06/26/2020
-ms.openlocfilehash: b0badd92a3156f76f99bf1f48fca2093a2bca2f5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6bb85ada5ab1cd443d47ed85024b45d98354e97f
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87012636"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500962"
 ---
 # <a name="optimize-data-processing-with-azure-machine-learning"></a>Optimieren der Datenverarbeitung mit Azure Machine Learning
 
@@ -65,7 +65,6 @@ Wenn die vorherigen Empfehlungen nicht ausreichen und Sie keinen virtuellen Comp
 
 * Nehmen Sie mithilfe eines verteilten Frameworks ein Aufskalieren zu einem Cluster vor. Bei dieser Option werden die Datenverarbeitungslasten aufgeteilt und auf mehreren parallel arbeitenden CPUs verarbeitet, wobei das Endergebnis am Ende zusammengeführt wird.
 
-
 ### <a name="recommended-distributed-frameworks"></a>Empfohlene verteilte Frameworks
 
 In der folgenden Tabelle werden verteilte Frameworks, die in Azure Machine Learning integriert sind, basierend auf Ihrer Codepräferenz oder Datengröße empfohlen.
@@ -82,4 +81,4 @@ Sie können `Dask`-Cluster in Azure ML-Computeclustern mit dem Paket [dask-cloud
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Optionen für die Datenerfassung in Azure Machine Learning](concept-data-ingestion.md)
-* [Datenerfassung mit Azure Data Factory](how-to-data-ingest-adf.md)
+* [Erstellen und Registrieren von Datenspeichern](how-to-create-register-datasets.md)

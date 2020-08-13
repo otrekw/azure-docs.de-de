@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: f1eec76d92edc97f7e4058d3afe813f0bb2aae47
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 9cb1b4d33a538b48ca1519d66f6602d902033c3e
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81427646"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87494824"
 ---
 # <a name="design-tables-using-synapse-sql"></a>Entwerfen von Tabellen mit Synapse SQL
 
@@ -45,7 +45,7 @@ In der folgenden Tabelle sind die Themen aufgelistet, die für SQL-Pool und SQL 
 | [Statistik](#statistics)                                    | Ja                | Ja                     |
 | [Primärschlüssel und eindeutiger Schlüssel](#primary-key-and-unique-key)    | Ja                | Nein                      |
 | [Befehle zum Erstellen von Tabellen](#commands-for-creating-tables) | Ja                | Nein                      |
-| [Ausrichten von Quelldaten am Data Warehouse](#aligning-source-data-with-the-data-warehouse) | Ja                | Nein                      |
+| [Ausrichten von Quelldaten am Data Warehouse](#align-source-data-with-the-data-warehouse) | Ja                | Nein                      |
 | [Nicht unterstützte Tabellenfunktionen](#unsupported-table-features)    | Ja                | Nein                      |
 | [Abfragen für die Tabellengröße](#table-size-queries)                    | Ja                | Nein                      |
 
@@ -214,7 +214,7 @@ Sie können eine Tabelle als neue leere Tabelle erstellen. Alternativ können Si
 | [CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) | Füllt eine neue Tabelle mit den Ergebnissen einer SELECT-Anweisung. Die Spalten und Datentypen der Tabelle basieren auf den Ergebnissen der SELECT-Anweisung. Mit dieser Anweisung können Daten zum Importieren aus einer externen Tabelle ausgewählt werden. |
 | [CREATE EXTERNAL TABLE AS SELECT](/sql/t-sql/statements/create-external-table-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) | Erstellt eine neue externe Tabelle durch den Export der Ergebnisse einer SELECT-Anweisung an einen externen Speicherort.  Dieser Speicherort ist entweder Azure Blob Storage oder Azure Data Lake Storage. |
 
-## <a name="aligning-source-data-with-the-data-warehouse"></a>Ausrichten von Quelldaten am Data Warehouse
+## <a name="align-source-data-with-the-data-warehouse"></a>Ausrichten von Quelldaten am Data Warehouse
 
 Data Warehouse-Tabellen werden durch das Laden von Daten aus einer anderen Datenquelle gefüllt. Um einen Ladevorgang erfolgreich ausführen zu können, müssen die Anzahl und die Datentypen der Spalten in den Quelldaten an der Tabellendefinition im Data Warehouse ausgerichtet werden.
 

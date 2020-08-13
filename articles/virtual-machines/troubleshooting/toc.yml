@@ -56,7 +56,7 @@
     - name: Der virtuelle Computer bleibt beim Starten hängen.
       href: troubleshoot-vm-boot-configure-update.md
     - name: VM-Lebenszyklus und -Zustände
-      href: ../windows/states-lifecycle.md
+      href: ../states-lifecycle.md
 - name: VM startet nicht
   items:
     - name: Linux

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: fbd11c279708cd828693baab3f9f6df91515bc48
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 703a6afdc12c8a9863ff0f480ec7a577ec31ef77
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86133901"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495997"
 ---
 # <a name="architecture---hyper-v-replication-to-a-secondary-site"></a>Architektur – Hyper-V-Replikation an einem sekundären Standort
 
@@ -32,7 +32,7 @@ Die folgende Tabelle und Grafik bietet eine Übersicht der Komponenten, die für
 
 **Lokal-zu-lokal-Architektur**
 
-![Lokal zu lokal](./media/hyper-v-vmm-architecture/arch-onprem-onprem.png)
+![Diagramm, das den Schutz zwischen lokalen Standorten anzeigt](./media/hyper-v-vmm-architecture/arch-onprem-onprem.png)
 
 ## <a name="replication-process"></a>Replikationsprozess
 

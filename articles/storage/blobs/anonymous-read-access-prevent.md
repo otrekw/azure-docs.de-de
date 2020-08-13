@@ -6,27 +6,29 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 07/13/2020
+ms.date: 08/02/2020
 ms.author: tamram
 ms.reviewer: fryu
-ms.openlocfilehash: 24d726f7600c3ba80833640be8036bf0daa2c014
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: f46a7927c149009eaf5baddbad2758732d4da758
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518723"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534271"
 ---
 # <a name="prevent-anonymous-public-read-access-to-containers-and-blobs"></a>Verhindern von anonymem öffentlichem Lesezugriff auf Container und Blobs
 
 Anonymer öffentlicher Lesezugriff auf Container und Blobs in Azure Storage ist eine praktische Methode für die Weitergabe von Daten, stellt aber unter Umständen auch ein Sicherheitsrisiko dar. Anonymer Zugriff muss mit Bedacht verwaltet werden, und Sie müssen verstehen, wie Sie den anonymen Zugriff auf Ihre Daten auswerten können. Betriebliche Komplexität, menschliche Fehler oder böswillige Angriffe auf öffentlich zugängliche Daten können kostspielige Datenschutzverletzungen zur Folge haben. Microsoft empfiehlt, den anonymen Zugriff nur zu aktivieren, wenn dies für Ihr Anwendungsszenario erforderlich ist.
 
-Standardmäßig kann ein Benutzer mit entsprechenden Berechtigungen den öffentlichen Zugriff auf Container und Blobs konfigurieren. Sie können den gesamten öffentlichen Zugriff auf der Ebene des Speicherkontos verhindern. Wenn Sie den öffentlichen Zugriff auf Blobs für das Speicherkonto verweigern, können Container im Konto nicht für öffentlichen Zugriff konfiguriert werden. Container, die bereits für öffentlichen Zugriff konfiguriert wurden, akzeptieren keine anonymen Anforderungen mehr. Weitere Informationen finden Sie unter [Konfigurieren des anonymen öffentlichen Lesezugriffs für Container und Blobs](anonymous-read-access-configure.md).
+Standardmäßig ist der öffentliche Zugriff auf Ihre Blobdaten immer verboten. Die Standardkonfiguration für ein Speicherkonto gestattet es einem Benutzer mit entsprechenden Berechtigungen jedoch, den öffentlichen Zugriff auf Container und Blobs in einem Speicherkonto zu konfigurieren. Zur Erhöhung der Sicherheit können Sie den gesamten öffentlichen Zugriff auf das Speicherkonto sperren, unabhängig von der Einstellung für den öffentlichen Zugriff für einen einzelnen Container. Wenn Sie den öffentlichen Zugriff auf das Speicherkonto nicht zulassen, wird verhindert, dass ein Benutzer den öffentlichen Zugriff für einen Container im Konto aktiviert. Microsoft empfiehlt, den öffentlichen Zugriff auf ein Speicherkonto zu verbieten, es sei denn, es ist für Ihr Szenario erforderlich. Wenn Sie den öffentlichen Zugriff nicht zulassen, können Sie Sicherheitsverletzungen bei den Daten verhindern, die durch den unerwünschten anonymen Zugriff verursacht werden.
 
-In diesem Artikel erfahren Sie, wie Sie anonyme Anforderungen für ein Speicherkonto analysieren und den anonymen Zugriff für das gesamte Speicherkonto oder für einen einzelnen Container verhindern.
+Wenn Sie den öffentlichen Blobzugriff für das Speicherkonto verbieten, lehnt Azure Storage alle anonymen Anforderungen an dieses Konto ab. Nachdem der öffentliche Zugriff für ein Konto gesperrt wurde, können Container in diesem Konto nachträglich nicht mehr für den öffentlichen Zugriff konfiguriert werden. Container, die bereits für öffentlichen Zugriff konfiguriert wurden, akzeptieren keine anonymen Anforderungen mehr. Weitere Informationen finden Sie unter [Konfigurieren des anonymen öffentlichen Lesezugriffs für Container und Blobs](anonymous-read-access-configure.md).
+
+In diesem Artikel wird beschrieben, wie Sie ein DRAG-Framework (Detection-Remediation-Audit-Governance) zur kontinuierlichen Verwaltung des öffentlichen Zugriffs für Ihre Speicherkonten verwenden können.
 
 ## <a name="detect-anonymous-requests-from-client-applications"></a>Erkennen anonymer Anforderungen von Clientanwendungen
 
-Wenn Sie öffentlichen Lesezugriff für ein Speicherkonto verweigern, besteht die Gefahr, dass Anforderungen für Container und Blobs abgelehnt werden, die zurzeit für öffentlichen Zugriff konfiguriert sind. Durch Verweigerung des öffentlichen Zugriffs für ein Speicherkonto werden die Einstellungen für den öffentlichen Zugriff für alle Container in diesem Konto außer Kraft gesetzt. Wenn der öffentliche Zugriff für das Speicherkonto verweigert wird, tritt bei künftigen anonymen Anforderungen für dieses Konto ein Fehler auf.
+Wenn Sie öffentlichen Lesezugriff für ein Speicherkonto verweigern, besteht die Gefahr, dass Anforderungen für Container und Blobs abgelehnt werden, die zurzeit für öffentlichen Zugriff konfiguriert sind. Durch Verweigerung des öffentlichen Zugriffs für ein Speicherkonto werden die Einstellungen für den öffentlichen Zugriff für einzelne Container in diesem Konto außer Kraft gesetzt. Wenn der öffentliche Zugriff für das Speicherkonto verweigert wird, tritt bei künftigen anonymen Anforderungen für dieses Konto ein Fehler auf.
 
 Wenn Sie die möglichen Auswirkungen einer Verweigerung des öffentlichen Zugriffs auf Clientanwendungen verstehen möchten, empfiehlt Microsoft, dass Sie die Protokollierung und Metriken für dieses Konto aktivieren sowie Muster anonymer Anforderungen über einen Zeitraum analysieren. Verwenden Sie Metriken, um die Anzahl anonymer Anforderungen für das Speicherkonto zu ermitteln, und Protokolle, um zu ermitteln, auf welche Container anonym zugegriffen wird.
 
@@ -155,6 +157,126 @@ $ctx = $storageAccount.Context
 
 New-AzStorageContainer -Name $containerName -Permission Blob -Context $ctx
 ```
+
+### <a name="check-the-public-access-setting-for-multiple-accounts"></a>Überprüfen der Einstellung für den öffentlichen Zugriff für mehrere Konten
+
+Wenn Sie die Einstellung für den öffentlichen Zugriff für eine Gruppe von Speicherkonten mit optimaler Leistung überprüfen möchten, können Sie den Azure Resource Graph-Explorer im Azure-Portal verwenden. Weitere Informationen zur Verwendung des Resource Graph-Explorers finden Sie unter [Schnellstart: Ausführen Ihrer ersten Resource Graph-Abfrage mithilfe des Azure Resource Graph-Explorers](/azure/governance/resource-graph/first-query-portal).
+
+Wenn Sie die folgende Abfrage im Resource Graph-Explorer ausführen, wird eine Liste der Speicherkonten zurückgegeben und für jedes Konto die Einstellung für den öffentlichen Zugriff angezeigt:
+
+```kusto
+resources
+| where type =~ 'Microsoft.Storage/storageAccounts'
+| extend allowBlobPublicAccess = parse_json(properties).allowBlobPublicAccess
+| project subscriptionId, resourceGroup, name, allowBlobPublicAccess
+```
+
+## <a name="use-azure-policy-to-audit-for-compliance"></a>Verwenden von Azure Policy zur Überwachung der Konformität
+
+Wenn Sie über eine große Anzahl von Speicherkonten verfügen, möchten Sie vielleicht eine Überwachung durchführen, um sicherzustellen, dass diese Konten so konfiguriert sind, dass der öffentliche Zugriff verhindert wird. Verwenden Sie Azure Policy, um eine Reihe von Speicherkonten auf ihre Konformität zu überwachen. Azure Policy ist ein Dienst, mit dem Sie Richtlinien zum Anwenden von Regeln auf Azure-Ressourcen erstellen, zuweisen und verwalten können. Azure Policy hilft Ihnen, die Konformität dieser Ressourcen mit Ihren Unternehmensstandards und Vereinbarungen zum Servicelevel sicherzustellen. Weitere Informationen finden Sie in der [Übersicht über Azure Policy](../../governance/policy/overview.md).
+
+### <a name="create-a-policy-with-an-audit-effect"></a>Erstellen einer Richtlinie mit der Auswirkung „Audit“
+
+Azure Policy unterstützt Auswirkungen, die bestimmen, was passiert, wenn eine Richtlinie anhand einer Ressource ausgewertet wird. Die Auswirkung „Audit“ erzeugt eine Warnung, wenn eine Ressource nicht konform ist, beendet aber die Anforderung nicht. Weitere Informationen zu Auswirkungen finden Sie unter [Grundlegendes zu Azure Policy-Auswirkungen](../../governance/policy/concepts/effects.md).
+
+Führen Sie die folgenden Schritte aus, um eine Richtlinie mit der Auswirkung „Audit“ für die Einstellung für den öffentlichen Zugriff für ein Speicherkonto mit dem Azure-Portal zu erstellen:
+
+1. Navigieren Sie im Azure-Portal zum Azure Policy-Dienst.
+1. Wählen Sie unter dem Abschnitt **Autorisierung** die Option **Definitionen** aus.
+1. Wählen Sie **Richtliniendefinition hinzufügen** aus, um eine neue Richtliniendefinition zu erstellen.
+1. Wählen Sie für das Feld **Definitionsspeicherort** die Schaltfläche **Mehr** aus, um anzugeben, wo sich die Ressource für die Überwachungsrichtlinie befindet.
+1. Geben Sie einen Namen für die Richtlinie an. Sie können optional eine Beschreibung und eine Kategorie angeben.
+1. Fügen Sie unter **Richtlinienregel** die folgende Richtliniendefinition zum Abschnitt **policyRule** hinzu.
+
+    ```json
+    {
+      "if": {
+        "allOf": [
+          {
+            "field": "type",
+            "equals": "Microsoft.Storage/storageAccounts"
+          },
+          {
+            "not": {
+              "field":"Microsoft.Storage/storageAccounts/allowBlobPublicAccess",
+              "equals": "false"
+            }
+          }
+        ]
+      },
+      "then": {
+        "effect": "audit"
+      }
+    }
+    ```
+
+1. Speichern Sie die Richtlinie.
+
+### <a name="assign-the-policy"></a>Zuweisen der Richtlinie
+
+Anschließend weisen Sie die Richtlinie einer Ressource zu. Der Umfang der Richtlinie entspricht der Ressource und den darunter liegenden Ressourcen. Weitere Informationen zur Zuweisung von Richtlinien finden Sie unter [Azure Policy-Zuweisungsstruktur](../../governance/policy/concepts/assignment-structure.md).
+
+Führen Sie die folgenden Schritte aus, um die Richtlinie dem Azure-Portal zuzuweisen:
+
+1. Navigieren Sie im Azure-Portal zum Azure Policy-Dienst.
+1. Wählen Sie unter dem Abschnitt **Autorisierung** die Option **Zuweisungen** aus.
+1. Wählen Sie **Richtlinie zuweisen** aus, um eine neue Richtlinienzuweisung zu erstellen.
+1. Wählen Sie für das Feld **Umfang** den Umfang der Richtlinienzuweisung aus.
+1. Wählen Sie für das Feld **Richtliniendefinition** die Schaltfläche **Mehr** und dann die im vorherigen Abschnitt definierte Richtlinie aus der Liste aus.
+1. Geben Sie einen Namen für die Richtlinienzuweisung an. Die Angabe einer Beschreibung ist optional.
+1. Behalten Sie für **Richtlinienerzwingung** die Einstellung *Aktiviert* bei. Diese Einstellung hat keine Auswirkung auf die Überwachungsrichtlinie.
+1. Klicken Sie zum Erstellen der Zuweisung auf **Überprüfen + erstellen**.
+
+### <a name="view-compliance-report"></a>Anzeigen des Konformitätsberichts
+
+Nachdem Sie die Richtlinie zugewiesen haben, können Sie den Konformitätsbericht anzeigen. Der Konformitätsbericht für eine Überwachungsrichtlinie gibt Auskunft darüber, welche Speicherkonten nicht mit der Richtlinie konform sind. Weitere Informationen finden Sie unter [Abrufen von Daten zur Richtlinienkonformität](../../governance/policy/how-to/get-compliance-data.md).
+
+Es kann einige Minuten dauern, bis der Konformitätsbericht nach Erstellung der Richtlinienzuweisung verfügbar ist.
+
+Führen Sie die folgenden Schritte aus, um den Konformitätsbericht im Azure-Portal anzuzeigen:
+
+1. Navigieren Sie im Azure-Portal zum Azure Policy-Dienst.
+1. Wählen Sie **Compliance** aus.
+1. Filtern Sie die Ergebnisse nach dem Namen der Richtlinienzuweisung, die Sie im vorherigen Schritt erstellt haben. Der Bericht zeigt, wie viele Ressourcen nicht mit der Richtlinie konform sind.
+1. Sie können einen Drilldown in den Bericht ausführen, um weitere Details anzuzeigen, einschließlich einer Liste von Speicherkonten, die nicht konform sind.
+
+    :::image type="content" source="media/anonymous-read-access-prevent/compliance-report-policy-portal.png" alt-text="Screenshot mit Konformitätsbericht für Überwachungsrichtlinien für den öffentlichen Blobzugriff":::
+
+## <a name="use-azure-policy-to-enforce-authorized-access"></a>Erzwingen des autorisierten Zugriffs mit Azure Policy
+
+Azure Policy unterstützt die Cloudgovernance, indem es sicherstellt, dass Azure-Ressourcen den Anforderungen und Standards entsprechen. Um sicherzustellen, dass Speicherkonten in Ihrer Organisation nur autorisierte Anforderungen zulassen, können Sie eine Richtlinie erstellen, die die Erstellung eines neuen Speicherkontos mit einer Einstellung für den öffentlichen Zugriff verhindert, die anonyme Anforderungen zulässt. Diese Richtlinie verhindert auch alle Konfigurationsänderungen an einem bestehenden Konto, wenn die Einstellung für den öffentlichen Zugriff für dieses Konto nicht mit der Richtlinie übereinstimmt.
+
+Die Erzwingungsrichtlinie nutzt die Auswirkung „Deny“, um eine Anforderung zu verhindern, die ein Speicherkonto erstellen oder ändern würde, um den öffentlichen Zugriff zu ermöglichen. Weitere Informationen zu Auswirkungen finden Sie unter [Grundlegendes zu Azure Policy-Auswirkungen](../../governance/policy/concepts/effects.md).
+
+Um eine Richtlinie mit der Auswirkung „Deny“ für eine Einstellung für den öffentlichen Zugriff zu erstellen, die anonyme Anforderungen zulässt, befolgen Sie dieselben Schritte, die unter [Verwenden von Azure Policy zur Überwachung der Konformität](#use-azure-policy-to-audit-for-compliance) beschrieben sind, aber stellen Sie den folgenden JSON-Code im Abschnitt **policyRule** der Richtliniendefinition zur Verfügung:
+
+```json
+{
+  "if": {
+    "allOf": [
+      {
+        "field": "type",
+        "equals": "Microsoft.Storage/storageAccounts"
+      },
+      {
+        "not": {
+          "field":"Microsoft.Storage/storageAccounts/allowBlobPublicAccess",
+          "equals": "false"
+        }
+      }
+    ]
+  },
+  "then": {
+    "effect": "deny"
+  }
+}
+```
+
+Nachdem Sie die Richtlinie mit der Auswirkung „Deny“ erstellt und einem Bereich zugewiesen haben, kann ein Benutzer kein Speicherkonto erstellen, das den öffentlichen Zugriff gestattet. Außerdem kann ein Benutzer keine Konfigurationsänderungen an einem vorhandenen Speicherkonto vornehmen, das zurzeit den öffentlichen Zugriff zulässt. Ein entsprechender Versuch führt zu einem Fehler. Die Einstellung für den öffentlichen Zugriff für das Speicherkonto muss auf **false** (falsch) festgelegt werden, um mit der Kontoerstellung oder -konfiguration fortzufahren.
+
+Die folgende Abbildung zeigt den Fehler, der beim Erstellen eines Speicherkontos auftritt, das den öffentlichen Zugriff erlaubt (die Standardeinstellung für ein neues Konto), wenn eine Richtlinie mit der Auswirkung „Deny“ erfordert, dass der öffentliche Zugriff nicht gestattet wird.
+
+:::image type="content" source="media/anonymous-read-access-prevent/deny-policy-error.png" alt-text="Screenshot mit dem Fehler, der beim Erstellen eines Speicherkontos bei einem Verstoß gegen die Richtlinie auftritt":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

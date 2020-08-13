@@ -5,14 +5,14 @@ services: cdn
 author: asudbring
 ms.service: azure-cdn
 ms.topic: article
-ms.date: 11/01/2019
+ms.date: 08/04/2020
 ms.author: allensu
-ms.openlocfilehash: 29138b4fc6716ae5361cc4d7f97ceba41b90c2da
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 051737a9f5e0d4092cda26a3f7ce3df1d7f535ef
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81259951"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87760123"
 ---
 # <a name="actions-in-the-standard-rules-engine-for-azure-cdn"></a>Aktionen in der Standardregel-Engine für Azure CDN
 
@@ -33,12 +33,12 @@ Verwenden Sie diese Aktion, um die Gültigkeitsdauer (TTL) des Endpunkts für An
 Cacheverhalten |  BESCHREIBUNG              
 ---------------|----------------
 Cache umgehen | Wenn diese Option ausgewählt ist und die Regel übereinstimmt, wird der Inhalt nicht zwischengespeichert.
-Überschreiben | Wenn diese Option ausgewählt ist und die Regel übereinstimmt, wird der vom Ursprung zurückgegebene TTL-Wert mit dem in der Aktion angegebenen Wert überschrieben.
-Bei Fehlen festlegen | Wenn diese Option ausgewählt ist, die Regel übereinstimmt und vom Ursprung kein TTL-Wert zurückgegeben wurde, legt die Regel den TTL-Wert auf den in der Aktion angegebenen Wert fest.
+Überschreiben | Wenn diese Option ausgewählt ist und die Regel übereinstimmt, wird der vom Ursprung zurückgegebene TTL-Wert mit dem in der Aktion angegebenen Wert überschrieben. Dieses Verhalten wird nur angewendet, wenn die Antwort zwischengespeichert werden kann. Für den Antwortheader „cache-control“ mit den Werten „no-cache“, „private“ und „no-store“ ist die Aktion nicht anwendbar.
+Bei Fehlen festlegen | Wenn diese Option ausgewählt ist, die Regel übereinstimmt und vom Ursprung kein TTL-Wert zurückgegeben wurde, legt die Regel den TTL-Wert auf den in der Aktion angegebenen Wert fest. Dieses Verhalten wird nur angewendet, wenn die Antwort zwischengespeichert werden kann. Für den Antwortheader „cache-control“ mit den Werten „no-cache“, „private“ und „no-store“ ist die Aktion nicht anwendbar.
 
 #### <a name="additional-fields"></a>Zusätzliche Felder
 
-Days | Stunden | Minuten | Sekunden
+Tage | Stunden | Minuten | Sekunden
 -----|-------|---------|--------
 Int | Int | Int | Int 
 
@@ -50,7 +50,7 @@ Verwenden Sie diese Aktion, um den Cacheschlüssel basierend auf Abfragezeichenf
 
 Verhalten | BESCHREIBUNG
 ---------|------------
-Include | Wenn diese Option ausgewählt ist und die Regel übereinstimmt, werden bei der Generierung des Cacheschlüssels die in den Parametern angegebenen Abfragezeichenfolgen berücksichtigt. 
+Einschließen | Wenn diese Option ausgewählt ist und die Regel übereinstimmt, werden bei der Generierung des Cacheschlüssels die in den Parametern angegebenen Abfragezeichenfolgen berücksichtigt. 
 Zwischenspeichern jeder eindeutigen URL | Wenn diese Option ausgewählt ist und die Regel übereinstimmt, verfügt jede eindeutige URL über einen eigenen Cacheschlüssel. 
 Exclude | Wenn diese Option ausgewählt ist und die Regel übereinstimmt, werden bei der Generierung des Cacheschlüssels die in den Parametern angegebenen Abfragezeichenfolgen ausgeschlossen.
 Ignorieren von Abfragezeichenfolgen | Wenn diese Option ausgewählt ist und die Regel übereinstimmt, werden Abfragezeichenfolgen bei der Generierung des Cacheschlüssels nicht berücksichtigt. 
@@ -79,7 +79,7 @@ Anfügen | Wenn diese Option ausgewählt ist und die Regel übereinstimmt, wird 
 Overwrite | Wenn diese Option ausgewählt ist und die Regel übereinstimmt, wird der im **Headernamen** angegebene Header mit dem angegebenen **Wert** der Antwort hinzugefügt. Wenn der Header bereits vorhanden ist, überschreibt der **Wert** den vorhandenen Wert. | String
 Löschen | Wenn diese Option ausgewählt ist, die Regel übereinstimmt und der in der Regel angegebene Header vorhanden ist, wird der Header aus der Antwort gelöscht. | String
 
-### <a name="url-redirect"></a>URL Redirect
+### <a name="url-redirect"></a>Umleitungs-URL
 
 Leiten Sie mit dieser Aktion Clients an eine neue URL um. 
 
@@ -90,7 +90,7 @@ Feld | BESCHREIBUNG
 type | Wählen Sie den Antworttyp aus, der an den Anforderer zurückgegeben werden soll: „Gefunden“ (302), „Verschoben“ (301), „Temporäre Umleitung“ (307) und „Permanente Umleitung“ (308).
 Protocol | Übereinstimmungsanforderung, HTTP, HTTPS.
 Hostname | Wählen Sie den Hostnamen aus, an den die Anforderung umgeleitet werden soll. Lassen Sie das Feld leer, um den eingehenden Host beizubehalten.
-`Path` | Definieren Sie den bei der Umleitung zu verwendenden Pfad. Lassen Sie das Feld leer, um den eingehenden Pfad beizubehalten.  
+Pfad | Definieren Sie den bei der Umleitung zu verwendenden Pfad. Lassen Sie das Feld leer, um den eingehenden Pfad beizubehalten.  
 Abfragezeichenfolge | Definieren Sie die bei der Umleitung zu verwendende Abfragezeichenfolge. Lassen Sie das Feld leer, um die eingehende Abfragezeichenfolge beizubehalten. 
 Fragment | Definieren Sie das bei der Umleitung zu verwendende Fragment. Lassen Sie das Feld leer, um das eingehende Fragment beizubehalten. 
 

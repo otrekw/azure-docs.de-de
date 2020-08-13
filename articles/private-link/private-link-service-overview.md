@@ -7,20 +7,27 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: sumi
-ms.openlocfilehash: 9ba0ad1414a09aec7ec2fb6b8c209b23f3f37050
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: a6bbb2abe24eba96fd2c55b7aaf15ccd8ae33530
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82202212"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87760945"
 ---
 # <a name="what-is-azure-private-link-service"></a>Was ist der Azure Private Link-Dienst?
 
 Der Azure Private Link-Dienst ist der Verweis auf Ihren eigenen Dienst, der von Azure Private Link unterstützt wird. Ihr Dienst, der hinter [Azure Load Balancer Standard](../load-balancer/load-balancer-standard-overview.md) ausgeführt wird, kann für den Zugriff auf Private Link aktiviert werden, sodass die Nutzer Ihres Dienstes privat über ihre eigenen virtuellen Netzwerke darauf zugreifen können. Ihre Kunden können einen privaten Endpunkt in ihrem VNet erstellen und diesem Dienst zuordnen. Dieser Artikel erläutert Konzepte, die sich auf die Seite des Dienstanbieters beziehen. 
 
+:::image type="content" source="./media/private-link-service-overview/consumer-provider-endpoint.png" alt-text="Private Link-Dienstworkflow" border="true":::
+
+*Abbildung: Azure Private Link-Dienst*
+
 ## <a name="workflow"></a>Workflow
 
 ![Private Link-Dienstworkflow](media/private-link-service-overview/private-link-service-workflow.png)
+
+
+*Abbildung: Azure Private Link-Dienstworkflow*
 
 ### <a name="create-your-private-link-service"></a>Erstellen eines Private Link-Diensts
 

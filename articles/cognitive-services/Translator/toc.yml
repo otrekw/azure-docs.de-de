@@ -6,6 +6,8 @@
       items:
         - name: Worum handelt es sich bei Translator?
           href: translator-info-overview.md
+        - name: Sprachunterstützung
+          href: 'https://docs.microsoft.com/azure/cognitive-services/translator/language-support#customization'
     - name: Schnellstarts
       items:
         - name: Text übersetzen
@@ -22,7 +24,7 @@
           href: quickstart-sentences.md
     - name: Tutorials
       items:
-        - name: 'Erstellen einer WPF-App für Translator (C#)'
+        - name: Erstellen einer WPF-App für Translator (C#)
           href: tutorial-wpf-translation-csharp.md
         - name: Erstellen einer Flask-Übersetzungs-App (Python)
           href: tutorial-build-flask-app-translation-synthesis.md
@@ -50,7 +52,7 @@
           href: firewalls.md
     - name: Beispiele
       items:
-        - name: 'C#'
+        - name: C#
           href: 'https://github.com/MicrosoftTranslator/Text-Translation-API-V3-C-Sharp'
         - name: Java
           href: 'https://github.com/MicrosoftTranslator/Text-Translation-API-V3-Java'
@@ -92,22 +94,20 @@
               href: ctf-reporting.md
             - name: Zurückgeben von N besten Übersetzungen
               href: return-n-best-translations.md
+        - name: Anforderungsgrenzwerte
+          href: request-limits.md
     - name: Ressourcen
       items:
         - name: Codebeispiele auf GitHub
           href: 'https://aka.ms/TranslatorGitHub'
         - name: Häufig gestellte Fragen
           href: 'https://www.microsoft.com/translator/faq.aspx'
-        - name: Sprachunterstützung
-          href: language-support.md
         - name: Preise
           href: 'https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/'
         - name: Regionale Verfügbarkeit
           href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
         - name: Kompatibilität
           href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
-        - name: Anforderungsgrenzwerte
-          href: request-limits.md
         - name: Stack Overflow
           href: 'https://stackoverflow.com/questions/tagged/microsoft-translator'
 - name: Benutzerdefinierter Translator
@@ -162,8 +162,6 @@
           href: custom-translator/unsupported-language-deployments.md
     - name: Ressourcen
       items:
-        - name: Sprachunterstützung
-          href: 'https://docs.microsoft.com/azure/cognitive-services/translator/language-support#customization'
         - name: Glossar
           href: custom-translator/glossary.md
         - name: Häufig gestellte Fragen

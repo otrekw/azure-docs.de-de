@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 author: iqshahmicrosoft
 ms.author: iqshah
-ms.date: 07/14/2020
-ms.openlocfilehash: f3589fb9ae176e04f727f516cca7c18c87dad9e0
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.date: 07/29/2020
+ms.openlocfilehash: 2bc129fc37347bd108ad62409490c5ce31b7728f
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87317500"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87538930"
 ---
 # <a name="get-shared-access-signature-uri-for-your-vm-image"></a>Abrufen des Shared Access Signature-URI für Ihr VM-Image
 
@@ -31,17 +31,15 @@ Stellen Sie beim Generieren von SAS-URIs für Ihre VHDs sicher, dass die folgend
 
 Es gibt zwei Tools, die häufig zum Erstellen einer SAS-Adresse (URL) verwendet werden:
 
-* **Microsoft Azure Storage-Explorer**: Grafisches Tool für Windows, macOS und Linux.
+* **Microsoft Azure Storage-Explorer**: Im Azure-Portal verfügbares grafisches Tool.
 * **Microsoft Azure CLI**: Empfohlen für andere Betriebssysteme als Windows und für automatisierte oder Continuous Integration-Umgebungen.
 
-### <a name="use-microsoft-storage-explorer"></a>Verwenden von Microsoft Azure Storage-Explorer
+### <a name="use-microsoft-azure-storage-explorer"></a>Verwenden von Microsoft Azure Storage-Explorer
 
-1. Laden Sie den [Microsoft Azure Storage-Explorer](https://azure.microsoft.com/features/storage-explorer/) herunter, und installieren Sie ihn.
-2. Öffnen Sie den Explorer, und wählen Sie im Menü auf der linken Seite die Option **Konto hinzufügen** aus. Das Dialogfeld **Verbindung mit Azure Storage herstellen** wird angezeigt.
-3. Wählen Sie **Azure-Konto hinzufügen** und dann **Anmelden** aus. Führen Sie die erforderlichen Schritte aus, um sich bei Ihrem Azure-Konto anzumelden.
-4. Navigieren Sie im linken **Explorer**-Bereich zu Ihren **Speicherkonten**, und erweitern Sie diesen Knoten.
-5. Klicken Sie mit der rechten Maustaste auf Ihre virtuelle Festplatte, und wählen Sie **Shared Access Signature abrufen** aus.
-6. Das Dialogfeld **Shared Access Signature** wird angezeigt. Füllen Sie die folgenden Felder aus:
+1. Wechseln Sie im Azure-Portal zu Ihrem Speicherkonto.
+2. Öffnen Sie im Explorer-Bereich auf der linken Seite das Tool **Storage-Explorer** (Vorschau).
+3. Klicken Sie mit der rechten Maustaste auf Ihre virtuelle Festplatte, und wählen Sie **Shared Access Signature abrufen** aus.
+4. Das Dialogfeld **Shared Access Signature** wird angezeigt. Füllen Sie die folgenden Felder aus:
 
     * **Startzeit**: Das Startdatum der Berechtigung für den Zugriff auf die virtuelle Festplatte. Geben Sie ein Datum an, das einen Tag vor dem aktuellen Datum liegt.
     * **Ablaufzeit**: Das Ablaufdatum der Berechtigung für den Zugriff auf die virtuelle Festplatte. Geben Sie ein Datum an, das mindestens drei Wochen nach dem aktuellen Datum liegt.
@@ -50,20 +48,11 @@ Es gibt zwei Tools, die häufig zum Erstellen einer SAS-Adresse (URL) verwendet 
 
         :::image type="content" source="media/create-sas-uri-storage-explorer.png" alt-text="Darstellung des Dialogfelds „Shared Access Signature“":::
 
-7. Wählen Sie **Erstellen** aus, um den zugehörigen SAS-URI für diese VHD zu erstellen. Das Dialogfeld wird aktualisiert und enthält danach Details zu diesem Vorgang.
-8. Kopieren Sie den **URI**, und speichern Sie ihn in einer Textdatei an einem sicheren Ort.
+5. Wählen Sie **Erstellen** aus, um den zugehörigen SAS-URI für diese VHD zu erstellen. Das Dialogfeld wird aktualisiert und enthält danach Details zu diesem Vorgang.
+6. Kopieren Sie den **URI**, und speichern Sie ihn in einer Textdatei an einem sicheren Ort.
 
     :::image type="content" source="media/create-sas-uri-shared-access-signature-details.png" alt-text="Darstellung des Dialogfelds mit den Details zu „Shared Access Signature“":::
-
-    Damit wurde der SAS-URI für den Zugriff auf Containerebene generiert. Bearbeiten Sie die Textdatei, und fügen Sie den Namen der VHD hinzu (nächster Schritt), um dies spezifisch anzugeben.
-
-9. Fügen Sie den Namen Ihrer virtuellen Festplatte nach der Zeichenfolge „vhds“ in den SAS-URI ein (einschließlich Schrägstrich). Der endgültige SAS-URI sollte wie folgt aussehen:
-
-    `<blob-service-endpoint-url> + /vhds/ + <vhd-name>? + <sas-connection-string>` Wenn der Name der virtuellen Festplatte beispielsweise `TestRGVM2.vhd` lautet, sieht der resultierende SAS-URI wie folgt aus:
-
-    `https://catech123.blob.core.windows.net/vhds/TestRGVM2.vhd?st=2018-05-06T07%3A00%3A00Z&se=2019-08-02T07%3A00%3A00Z&sp=rl&sv=2017-04-17&sr=c&sig=wnEw9RfVKeSmVgqDfsDvC9IHhis4x0fc9Hu%2FW4yvBxk%3D`
-
-10. Wiederholen Sie diese Schritte für jede VHD in den Plänen, die Sie veröffentlichen möchten.
+7. Wiederholen Sie diese Schritte für jede VHD in den Plänen, die Sie veröffentlichen möchten.
 
 ### <a name="using-azure-cli"></a>Verwenden der Azure-Befehlszeilenschnittstelle
 

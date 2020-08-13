@@ -1,16 +1,18 @@
 ---
-title: Dashboard „Nutzung“ in Analysen für den kommerziellen Microsoft-Marketplace
+title: Dashboard „Nutzung“ in Analysen für den kommerziellen Microsoft-Marketplace, im Azure Marketplace und in Microsoft AppSource
 description: Erfahren Sie, wie Sie auf Metriken zur Nutzung und getakteten Abrechnung für alle VM-Angebote zugreifen. Navigieren Sie zum Dashboard „Nutzung“ im Partner Center unter „Kommerzieller Marketplace“.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
-ms.date: 12/11/2019
-ms.openlocfilehash: 8747ff98cd2b53773d9e0a95436d90fef74fda55
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.topic: article
+ms.date: 07/22/2020
+author: mingshen-ms
+ms.author: mingshen
+ms.openlocfilehash: c6964a28956230dabad007d60d84dcdd1cffab23
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120669"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319914"
 ---
 # <a name="usage-dashboard-in-microsoft-commercial-marketplace-analytics"></a>Dashboard „Nutzung“ in Analysen für den kommerziellen Microsoft-Marketplace
 
@@ -30,14 +32,13 @@ Die Registerkarte „VM-Nutzung“ enthält grafische Darstellungen der folgende
 - [Nutzungszusammenfassung](#usage-summary)
 - [Nutzung nach Geografie](#usage-by-geography)
 - [Nutzung nach Angeboten](#usage-by-offers)
-- [Nutzungstrend nach Angeboten und SKUs](#usage-trend-by-offers-and-skus)
+- [Nutzungstrend nach Angeboten und Plänen](#usage-trend-by-offers-and-plans)
 - [Nutzung nach Angebotstyp](#usage-by-offer-type)
 - [Nutzung nach VM-Größe](#usage-by-vm-size)
 - [Nutzung nach Vertriebskanal](#usage-by-sales-channel)
 - [Detaillierte Nutzungsdaten](#detailed-usage-data)
 
-> [!NOTE]
-> Analyseberichte werden im Cloud-Partnerportal (CPP) und im Partner Center unterschiedlich angezeigt. **Verkäufer-Insights** in CPP verfügt über eine Registerkarte „Aufträge und Nutzung“, auf der Daten für nutzungsbasierte Angebote und nicht nutzungsbasierte Angebote angezeigt werden. Im Partner Center werden die Nutzungsmetriken auf einer getrennten Seite angezeigt.
+Die maximale Latenz zwischen der Generierung von Nutzungsereignissen und der Berichterstattung im Partner Center beträgt 48 Stunden.
 
 ### <a name="usage-summary"></a>Nutzungszusammenfassung
 
@@ -60,9 +61,9 @@ Im Wärmebild zur **normalisierten Nutzung nach Geografie** werden die Nutzungss
 - Im Balkendiagramm wird der Wachstumstrend für den ausgewählten Datumsbereich nach Monaten angezeigt. In den Monatsspalten sind die Nutzungsstunden aus den Angeboten mit den meisten Nutzungsstunden für den jeweiligen Monat dargestellt. Im Liniendiagramm wird der prozentuale Wachstumstrend auf der sekundären Y-Achse dargestellt.
 - Mit dem Schieberegler oben im Diagramm können Sie entlang der X-Achse nach rechts und links scrollen und/oder sich auf bestimmte Datenpunkte konzentrieren.
 
-### <a name="usage-trend-by-offers-and-skus"></a>Nutzungstrend nach Angeboten und SKUs
+### <a name="usage-trend-by-offers-and-plans"></a>Nutzungstrend nach Angeboten und Plänen
 
-In diesem Diagramm wird der Trend der normalisierten Nutzung für die ausgewählten SKUs eines Angebots angezeigt. In der Angebotsbestenliste werden die 50 Topangebote mit der höchsten Nutzung nach Nutzungsstunden sortiert aufgelistet. In der SKU-Bestenliste werden die 50 Top-SKUs mit der höchsten Nutzung für das ausgewählte Angebot aufgelistet.
+In diesem Diagramm wird der Trend der normalisierten Nutzung für die ausgewählten Pläne (zuvor als SKUs bezeichnet) eines Angebots angezeigt. In der Angebotsbestenliste werden die 50 Topangebote mit der höchsten Nutzung nach Nutzungsstunden sortiert aufgelistet. In der Plan-Bestenliste werden die 50 Top-Pläne mit der höchsten Nutzung für das ausgewählte Angebot aufgelistet.
 
 ### <a name="usage-by-offer-type"></a>Nutzung nach Angebotstyp
 
@@ -72,7 +73,7 @@ In diesem Diagramm wird der Trend der normalisierten Nutzung für die ausgewähl
 
 ### <a name="usage-by-vm-size"></a>Nutzung nach VM-Größe
 
-In diesem Diagramm wird der Nutzungstrend für ausgewählte VM-Größen (max. 5) all Ihrer Angebote/SKUs dargestellt. Im Säulendiagramm sind Nutzungsstunden der ausgewählten VM-Größen gestapelt dargestellt.
+In diesem Diagramm wird der Nutzungstrend für ausgewählte VM-Größen (max. fünf) all Ihrer Angebote/Pläne dargestellt. Im Säulendiagramm sind Nutzungsstunden der ausgewählten VM-Größen gestapelt dargestellt.
 
 In der Bestenliste werden die 50 Top-VM-Größen mit der höchsten Nutzung nach Nutzungsstunden sortiert aufgelistet.
 
@@ -90,7 +91,7 @@ In der **Tabelle „Nutzungsdetails“** wird eine nummerierte Liste der 1000 T
 - Jede Spalte im Raster ist sortierbar.
 - Die Daten können in eine CSV-Datei extrahiert werden, wenn die Anzahl weniger als 1000 Einträge beträgt.
 - Liegt die Anzahl der Einträge über 1000, werden die exportierten Daten asynchron auf einer Downloadseite abgelegt und sind für die nächsten 30 Tage verfügbar.
-- Sie können auf die **detaillierten Nutzungsdaten** Filter anwenden, um nur die Daten anzuzeigen, die für Sie von Interesse sind. Daten können nach Land/Region, Vertriebskanal, Marketplace-Lizenztyp, Nutzungstyp, Angebotsname, Angebotstyp, kostenlosen Testversionen, Marketplace-Abonnement-ID, Kunden-ID und Unternehmensname gefiltert werden.
+- Wenden Sie Filter auf **detaillierte Nutzungsdaten** an, um nur die Daten anzuzeigen, die für Sie von Interesse sind. Filtern Sie Daten nach Land/Region, Vertriebskanal, Marketplace-Lizenztyp, Nutzungstyp, Angebotsname, Angebotstyp, kostenlosen Testversionen, Marketplace-Abonnement-ID, Kunden-ID und Firmenname.
 
 > [!NOTE]
 > Wählen Sie im Seitenfilter den **Nutzungstyp** aus, um die Diagramme auf der Seite entweder in der normalisierten Ansicht oder in der Rohdatenansicht anzuzeigen. Die normalisierte Ansicht ist die Standardansicht für diese Diagramme.
@@ -107,7 +108,7 @@ In der **Tabelle „Nutzungsdetails“** wird eine nummerierte Liste der 1000 T
 Auf der Registerkarte **Nutzung nach getakteter Abrechnung** werden Nutzungsinformationen für Angebotstypen dargestellt, wobei die Nutzung per Verbrauchseinheitsdimension gemessen wird. Derzeit wird die Überschreitung des SaaS-Angebotstyps dargestellt. Die Registerkarte enthält grafische Darstellungen von Überschreitungstrends für die SaaS-Nutzung nach getakteter Abrechnung:
 
 - **Überschreitungstrend nach Verbrauchseinheitsdimension**: Zeigt den monatlichen Überschreitungstrend für die ausgewählte Verbrauchseinheitsdimension eines Angebots an. Die X-Achse stellt den Monat und die Y-Achse die Nutzungsmenge dar. Die Maßeinheit der benutzerdefinierten Verbrauchseinheit wird ebenfalls auf der Y-Achse angezeigt.
-- **Überschreitungstrend nach SKU**: Stellt den Trend der Nutzungsmenge der ausgewählten Verbrauchseinheitsdimension nach SKUs dar. Die angezeigten SKUs stellen die 5 Top-SKUs mit der höchsten Nutzungsmenge für das ausgewählte Angebot dar.
+- **Überschreitungstrend nach Plan**: Stellt den Trend der Nutzungsmenge der ausgewählten Verbrauchseinheitsdimension nach Plänen dar. Die angezeigten Pläne stellen die 5 Top-Pläne mit der höchsten Nutzungsmenge für das ausgewählte Angebot dar.
 - **Überschreitungstrend nach wichtigsten 50 Kunden**: Die 50 Top-Angebote mit den meisten Nutzungsstunden werden in einer ***Bestenliste*** angezeigt und nach der höchsten Nutzung der benutzerdefinierten Verbrauchseinheit bewertet. Wählen Sie einen Kunden in der Bestenliste aus, um den Nutzungstrend einer ausgewählten Verbrauchseinheitsdimension anzuzeigen.
 - **Überschreitungstrend nach wichtigsten Kunden**: Stellt das bzw. die Perzentile der wichtigsten Kunden dar, die einen prozentualen Anteil an der Gesamtnutzung haben. Das Perzentil der wichtigsten Kunden wird entlang der X-Achse angezeigt und durch die Nutzungsmenge des Kunden bestimmt. Auf der Y-Achse wird die Nutzungsmenge angezeigt. Sie können Details anzeigen, indem Sie den Cursor über Punkte entlang des Liniendiagramms bewegen.
 
