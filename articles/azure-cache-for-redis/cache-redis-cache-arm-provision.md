@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 01/23/2017
-ms.openlocfilehash: 0dbcbd173ce0a7c4c6a123f0644b870aa3cec2f5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2d00a6b7753a61bb2527a56231b2fe054736f1b0
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85829889"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008575"
 ---
 # <a name="create-an-azure-cache-for-redis-using-a-template"></a>Erstellen eines Azure Cache for Redis mithilfe einer Vorlage
 
@@ -26,7 +26,7 @@ Weitere Informationen zum Erstellen von Vorlagen finden Sie unter [Erstellen von
 Die vollständige Vorlage finden Sie unter [Azure Cache for Redis-Vorlage](https://github.com/Azure/azure-quickstart-templates/blob/master/101-redis-cache/azuredeploy.json).
 
 > [!NOTE]
-> Resource Manager-Vorlagen für den neuen [Tarif „Premium“](cache-premium-tier-intro.md) sind verfügbar. 
+> Resource Manager-Vorlagen für den neuen [Tarif „Premium“](cache-overview.md#service-tiers) sind verfügbar. 
 > 
 > * [Erstellen eines Azure Cache for Redis vom Typ „Premium“ mit Clustering](https://azure.microsoft.com/resources/templates/201-redis-premium-cluster-diagnostics/)
 > * [Erstellen eines Azure Cache for Redis vom Typ „Premium“ mit Datenpersistenz](https://azure.microsoft.com/resources/templates/201-redis-premium-persistence/)

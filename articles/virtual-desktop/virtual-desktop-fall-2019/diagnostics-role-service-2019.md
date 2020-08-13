@@ -1,19 +1,17 @@
 ---
 title: Diagnostizieren von Problemen mit Windows Virtual Desktop (klassisch)– Azure
 description: Verwendung der Diagnosefunktion von Windows Virtual Desktop (klassisch) zum Diagnostizieren von Problemen.
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 257ad5aa11bfaece70f676b452119d7800e2d1e2
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 7e652f04b42b132e7c1307503b1764dda7b2036b
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285049"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009340"
 ---
 # <a name="identify-and-diagnose-issues-in-windows-virtual-desktop-classic"></a>Identifizieren und Diagnostizieren von Problemen in Windows Virtual Desktop (klassisch)
 
@@ -25,7 +23,7 @@ Windows Virtual Desktop verfügt über eine Diagnosefunktion, mit der der Admini
 * Feedabonnementaktivitäten: Der Endbenutzer löst diese Aktivitäten jeweils aus, wenn er versucht, über Microsoft-Remotedesktopanwendungen eine Verbindung mit seinem Feed herzustellen.
 * Verbindungsaktivitäten: Der Endbenutzer löst diese Aktivitäten jeweils aus, wenn er versucht, über Microsoft-Remotedesktopanwendungen eine Verbindung mit einem Desktop oder einer RemoteApp herzustellen.
 * Verwaltungsaktivitäten: Der Administrator löst diese Aktivitäten jeweils aus, wenn er im System Verwaltungsvorgänge durchführt, z. B. das Erstellen von Hostpools, Zuweisen von Benutzern zu App-Gruppen und Erstellen von Rollenzuweisungen.
-  
+
 Verbindungen, die Windows Virtual Desktop nicht erreichen, werden nicht in den Diagnoseergebnissen angezeigt, da der Diagnoserollendienst selbst Teil von Windows Virtual Desktop ist. Windows Virtual Desktop-Verbindungsprobleme können auftreten, wenn es für den Endbenutzer zu Problemen mit der Netzwerkkonnektivität kommt.
 
 Zunächst müssen Sie das [Windows Virtual Desktop-PowerShell-Modul herunterladen und importieren](/powershell/windows-virtual-desktop/overview/), um es in Ihrer PowerShell-Sitzung verwenden zu können. Führen Sie anschließend das folgende Cmdlet aus, um sich bei Ihrem Konto anzumelden:
@@ -39,7 +37,7 @@ Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 Für die Windows Virtual Desktop-Diagnose wird nur ein PowerShell-Cmdlet verwendet, aber es sind viele optionale Parameter verfügbar, mit denen Probleme eingegrenzt und isoliert werden können. In den folgenden Abschnitten sind die Cmdlets aufgeführt, die Sie zum Diagnostizieren von Problemen ausführen können. Die meisten Filter können zusammen angewendet werden. Die Werte in Klammern, z. B. `<tenantName>`, sollten durch die Werte ersetzt werden, die für Ihre Situation gelten.
 
 >[!IMPORTANT]
->Die Diagnosefunktion ist für die Problembehandlung von einzelnen Benutzern vorgesehen. Alle Abfragen mit PowerShell müssen entweder den Parameter *-UserName* oder *-ActivityID* enthalten. Verwenden Sie zur Nutzung von Überwachungsfunktionen Log Analytics. Weitere Informationen zum Senden von Diagnosedaten an Ihren Arbeitsbereich finden Sie unter [Verwenden von Log Analytics für die Diagnosefunktion](diagnostics-log-analytics-2019.md). 
+>Die Diagnosefunktion ist für die Problembehandlung von einzelnen Benutzern vorgesehen. Alle Abfragen mit PowerShell müssen entweder den Parameter *-UserName* oder *-ActivityID* enthalten. Verwenden Sie zur Nutzung von Überwachungsfunktionen Log Analytics. Weitere Informationen zum Senden von Diagnosedaten an Ihren Arbeitsbereich finden Sie unter [Verwenden von Log Analytics für die Diagnosefunktion](diagnostics-log-analytics-2019.md).
 
 ### <a name="filter-diagnostic-activities-by-user"></a>Filtern von Diagnoseaktivitäten nach Benutzer
 

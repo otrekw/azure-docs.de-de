@@ -1,23 +1,21 @@
 ---
 title: Speicher für FSLogix-Profilcontainer mit Windows Virtual Desktop – Azure
 description: Optionen zum Speichern Ihres Windows Virtual Desktop-FSLogix-Profils in Azure Storage.
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 3dfa5d6bc5707679bbe5dada9f28046202e7aae5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4702c68dcda0c794aef34d3c0675e2fd158e6d4f
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84808533"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009408"
 ---
 # <a name="storage-options-for-fslogix-profile-containers-in-windows-virtual-desktop"></a>Speicheroptionen für FSLogix-Profilcontainer in Windows Virtual Desktop
 
-Azure bietet mehrere Speicherlösungen für die Speicherung Ihres FSLogix-Profilcontainers. In diesem Artikel werden die Speicherlösungen verglichen, die Azure für Windows Virtual Desktop-FSLogix-Benutzerprofilcontainer bietet. Für die meisten unserer Kunden wird empfohlen, die FSLogix-Profilcontainer in Azure Files zu speichern. 
+Azure bietet mehrere Speicherlösungen für die Speicherung Ihres FSLogix-Profilcontainers. In diesem Artikel werden die Speicherlösungen verglichen, die Azure für Windows Virtual Desktop-FSLogix-Benutzerprofilcontainer bietet. Für die meisten unserer Kunden wird empfohlen, die FSLogix-Profilcontainer in Azure Files zu speichern.
 
 Windows Virtual Desktop stellt FSLogix-Profilcontainer als empfohlene Lösung für Benutzerprofile bereit. FSLogix ist für das Roaming von Profilen in Remotecomputingumgebungen wie z.B. Windows Virtual Desktop konzipiert. Bei der Anmeldung wird dieser Container dynamisch an die Computingumgebung angefügt. Hierzu werden eine nativ unterstützte virtuelle Festplatte (Virtual Hard Disk, VHD) und eine virtuelle Hyper-V-Festplatte (VHDX) verwendet. Das Benutzerprofil ist sofort verfügbar und wird im System genau so angezeigt wie ein natives Benutzerprofil.
 

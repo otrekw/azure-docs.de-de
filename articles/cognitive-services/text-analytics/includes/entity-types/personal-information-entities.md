@@ -6,14 +6,14 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 04/30/2020
+ms.date: 07/16/2020
 ms.author: aahi
-ms.openlocfilehash: dd7a8b94aefbf389afef30b327ffaa367a30dd51
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 2349c92fb74b546eaa929752f3d2343b9c97e6d1
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86108493"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88010948"
 ---
 > [!NOTE]
 > Um `PHI` (geschützte Gesundheitsinformationen) zu ermitteln, verwenden Sie den `domain=phi`-Parameter und die Modellversion `2020-04-01` oder höher.
@@ -28,20 +28,18 @@ Die folgenden Entitätskategorien werden beim Senden von Anforderungen an den `/
 | PersonType | –         | Von einer Person eingenommene Position oder Rolle | `2020-02-01` | |
 | PhoneNumber | – | Telefonnummern (nur US- und EU-Telefonnummern) | `2019-10-01` | Wird auch mit `domain=phi` zurückgegeben |
 |Organization  | – | Firmen, politische Gruppen, Musikgruppen, Sportvereine, Regierungsstellen und öffentliche Organisationen  | `2019-10-01` | Nationalitäten und Religionen werden in diesem Entitätstyp nicht berücksichtigt.  |
-|Organization | Medizin | Medizinische Unternehmen und Gruppen | `2020-04-01` | Wird auch mit `domain=phi`zurückgegeben |
-|Organization | Börse | Börsengruppen | `2020-04-01` | Wird auch mit `domain=phi`zurückgegeben |
-| Organization | Sport | Sportbezogene Organisationen | `2020-04-01` | Wird auch mit `domain=phi`zurückgegeben |
+|Organization | Medizin | Medizinische Unternehmen und Gruppen | `2020-04-01` |  |
+|Organization | Börse | Börsengruppen | `2020-04-01` |  |
+| Organization | Sport | Sportbezogene Organisationen | `2020-04-01` |  |
 | Adresse | – | Vollständige Postanschrift  | `2020-04-01` | Wird auch mit `domain=phi`zurückgegeben |
 | EU-GPS-Koordinaten | – | GPS-Koordinaten für Standorte innerhalb der Europäischen Union.  | `2019-10-01` |  |
 | Email | – | E-Mail-Adressen | `2019-10-01` | Wird auch mit `domain=phi`zurückgegeben   |
 | URL | – | URLs zu Websites | `2019-10-01` | Wird auch mit `domain=phi`zurückgegeben |
-| IP | – | Netzwerk-IP-Adressen | `2019-10-01` | |
+| IP | – | Netzwerk-IP-Adressen | `2019-10-01` | Wird auch mit `domain=phi`zurückgegeben |
 | Datetime | – | Datums- und Uhrzeitangaben | `2019-10-01` |  | 
 | Datetime | Date | Kalenderdatumsangaben | `2019-10-01` | Wird auch mit `domain=phi`zurückgegeben |
 | Menge | – | Zahlen und numerische Mengen. | `2019-10-01` |  |
 | Menge | Age | Altersangaben | `2019-10-01` | | |
-| Internationale Klassifikation der Krankheiten (ICD-9-CM) | – | Entitäten in Bezug auf die internationale Klassifizierung von Krankheiten, neunte Revision   | `2020-04-01` | |
-| Internationale Klassifikation der Krankheiten (ICD-10-CM) | – | Entitäten in Bezug auf die internationale Klassifizierung von Krankheiten, zehnte Revision    | `2020-04-01` | |
 
 ## <a name="azure-information"></a>Azure-Informationen
 

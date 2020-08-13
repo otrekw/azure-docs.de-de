@@ -1,19 +1,17 @@
 ---
 title: 'Herstellen einer Verbindung mit Windows Virtual Desktop (klassisch) unter iOS: Azure'
 description: Informationen zum Herstellen einer Verbindung mit Windows Virtual Desktop (klassisch) mithilfe des iOS-Clients.
-services: virtual-desktop
-author: heidilohr
-ms.service: virtual-desktop
+author: Heidilohr
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 06de85e23b1d6350a48735506c8931922d40b799
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: c7efedadbba196223db2ad5700035e27d37fb414
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87270735"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008456"
 ---
 # <a name="connect-to-windows-virtual-desktop-classic-with-the-ios-client"></a>Herstellen einer Verbindung mit Windows Virtual Desktop (klassisch) mithilfe des iOS-Clients
 

@@ -1,19 +1,17 @@
 ---
 title: 'Einrichten von Azure Multi-Factor Authentication für Windows Virtual Desktop: Azure'
 description: Erfahren Sie, wie Sie Azure Multi-Factor Authentication einrichten, um die Sicherheit in Windows Virtual Desktop zu erhöhen.
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 07/15/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 8a8f5cb792f524354754b4368c0b68d5f9d40699
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 5e42ca0a0d0ff9d9df3dc42f1e165d1035d56d6a
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87291370"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009459"
 ---
 # <a name="enable-azure-multi-factor-authentication-for-windows-virtual-desktop"></a>Aktivieren von Azure Multi-Factor Authentication für Windows Virtual Desktop
 
@@ -59,7 +57,7 @@ Hier erfahren Sie, wie Sie eine Richtlinie für bedingten Zugriff erstellen, die
 
    >[!IMPORTANT]
    > Die Windows Virtual Desktop-Client-Apps werden für den Webclient verwendet. Wählen Sie jedoch nicht die App namens Windows Virtual Desktop Azure Resource Manager-Anbieter (50e95039-b200-4007-bc97-8d5790743a63) aus. Diese App wird nur zum Abrufen des Benutzerfeeds verwendet und sollte keine MFA aufweisen.
-  
+
 1. Nachdem Sie Ihre App ausgewählt haben, wählen Sie **Auswählen** und dann **Fertig** aus.
 
    > [!div class="mx-imgBorder"]

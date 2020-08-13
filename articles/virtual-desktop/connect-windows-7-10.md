@@ -1,19 +1,17 @@
 ---
 title: 'Herstellen einer Verbindung mit Windows Virtual Desktop (Windows 10 oder 7): Azure'
 description: Informationen zum Herstellen einer Verbindung mit Windows Virtual Desktop mithilfe des Windows Desktop-Clients.
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 07/16/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 88e325c5a743513baa5a580ae65005c545a07b78
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 85e0c1b146cfba0cb95a6612f33e42a465bfd20b
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87288789"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008745"
 ---
 # <a name="connect-with-the-windows-desktop-client"></a>Herstellen einer Verbindung mit dem Windows-Desktopclient
 

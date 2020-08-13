@@ -1,18 +1,16 @@
 ---
 title: 'Konfigurieren einer GPU für Windows Virtual Desktop (Classic): Azure'
 description: Erfahren Sie, wie Sie durch eine GPU beschleunigtes Rendering und eine schnellere Codierung in Windows Virtual Desktop (Classic) ermöglichen.
-services: virtual-desktop
 author: gundarev
-ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: denisgun
-ms.openlocfilehash: e6c8fe95508937604c53d817d60dd637352fb6fa
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 32d5c280e80b2f21b30bb34a182070da51e21026
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87288682"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008490"
 ---
 # <a name="configure-graphics-processing-unit-gpu-acceleration-for-windows-virtual-desktop-classic"></a>Konfigurieren der Beschleunigung durch eine Graphics Processing Unit (GPU) für Windows Virtual Desktop (Classic)
 

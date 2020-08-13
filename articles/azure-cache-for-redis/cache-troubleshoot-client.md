@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: troubleshooting
 ms.date: 10/18/2019
-ms.openlocfilehash: 7d5ab5c125a8a395d1bc0139421ec804e1221e12
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 122c96c95aea794fbba9cab8a9a5b867f9f34b48
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86506433"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008966"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-client-side-issues"></a>Behandeln von clientseitigen Problemen bei Azure Cache for Redis
 
@@ -53,7 +53,7 @@ In der oben aufgeführten Ausnahme zeigen sich mehrere interessante Probleme:
 - Beachten Sie, dass in den Abschnitten `IOCP` und `WORKER` der `Busy`-Wert größer als der `Min`-Wert ist. Dieser Unterschied bedeutet, dass die `ThreadPool`-Einstellungen angepasst werden müssen.
 - Außerdem wird `in: 64221` angegeben. Dieser Wert bedeutet, dass 64.211 Bytes auf der Kernelsocketebene des Clients empfangen, aber von der Anwendung noch nicht gelesen wurden. Dieser Unterschied bedeutet in der Regel, dass Ihre Anwendung (z. B. StackExchange.Redis) Daten aus dem Netzwerk nicht so schnell liest, wie sie vom Server gesendet werden.
 
-Sie können Ihre [`ThreadPool`-Einstellungen konfigurieren](cache-faq.md#important-details-about-threadpool-growth), um sicherzustellen, dass Ihr Threadpool bei Datenverkehrsspitzen schnell hochskaliert wird.
+Sie können Ihre [`ThreadPool`-Einstellungen konfigurieren](cache-management-faq.md#important-details-about-threadpool-growth), um sicherzustellen, dass Ihr Threadpool bei Datenverkehrsspitzen schnell hochskaliert wird.
 
 ## <a name="high-client-cpu-usage"></a>Hohe Auslastung der Client-CPU
 
@@ -109,4 +109,4 @@ Lösungen für große Antworten variieren, umfass aber unter anderem:
 ## <a name="additional-information"></a>Zusätzliche Informationen
 
 - [Behandeln von serverseitigen Problemen bei Azure Cache for Redis](cache-troubleshoot-server.md)
-- [Wie kann ich die Leistung meines Caches messen und testen?](cache-faq.md#how-can-i-benchmark-and-test-the-performance-of-my-cache)
+- [Wie kann ich die Leistung meines Caches messen und testen?](cache-management-faq.md#how-can-i-benchmark-and-test-the-performance-of-my-cache)

@@ -1,19 +1,17 @@
 ---
 title: 'Delegierter Zugriff in Windows Virtual Desktop: Azure'
 description: Es wird beschrieben, wie Sie Verwaltungsfunktionen in einer Windows Virtual Desktop-Bereitstellung delegieren, und es werden Beispiele gezeigt.
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: df4d1b98eac782641fb36c614d2df9508c6131ad
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: f2aa2c74704cf89c082d2837b39e82902efa0a62
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87498666"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88010054"
 ---
 # <a name="delegated-access-in-windows-virtual-desktop"></a>Delegierter Zugriff in Windows Virtual Desktop
 
@@ -40,18 +38,18 @@ Beim delegierten Zugriff von Windows Virtual Desktop werden für jedes Element d
 
 Bevor Sie beginnen, stellen Sie sicher, dass Sie die Anweisungen unter [Einrichten des PowerShell-Moduls](powershell-module.md) befolgt haben, um das Windows Virtual Desktop PowerShell-Modul einzurichten, falls dies noch nicht geschehen ist.
 
-Windows Virtual Desktop verwendet rollenbasierte Zugriffssteuerung (Azure RBAC) von Azure beim Veröffentlichen von App-Gruppen für Benutzer oder Benutzergruppen. Die Benutzerrolle „Desktopvirtualisierung“ wird dem Benutzer oder der Benutzergruppe zugewiesen, und der Bereich ist die App-Gruppe. Diese Rolle gewährt dem Benutzer speziellen Datenzugriff auf die App-Gruppe.  
+Windows Virtual Desktop verwendet rollenbasierte Zugriffssteuerung (Azure RBAC) von Azure beim Veröffentlichen von App-Gruppen für Benutzer oder Benutzergruppen. Die Benutzerrolle „Desktopvirtualisierung“ wird dem Benutzer oder der Benutzergruppe zugewiesen, und der Bereich ist die App-Gruppe. Diese Rolle gewährt dem Benutzer speziellen Datenzugriff auf die App-Gruppe.
 
 Führen Sie das folgende Cmdlet aus, um einer App-Gruppe Azure Active Directory-Benutzer hinzuzufügen:
 
 ```powershell
-New-AzRoleAssignment -SignInName <userupn> -RoleDefinitionName "Desktop Virtualization User" -ResourceName <hostpoolname> -ResourceGroupName <resourcegroupname> -ResourceType 'Microsoft.DesktopVirtualization/applicationGroups'  
+New-AzRoleAssignment -SignInName <userupn> -RoleDefinitionName "Desktop Virtualization User" -ResourceName <appgroupname> -ResourceGroupName <resourcegroupname> -ResourceType 'Microsoft.DesktopVirtualization/applicationGroups'
 ```
 
 Führen Sie das folgende Cmdlet aus, um einer App-Gruppe eine Azure Active Directory-Benutzergruppe hinzuzufügen:
 
 ```powershell
-New-AzRoleAssignment -ObjectId <usergroupobjectid> -RoleDefinitionName "Desktop Virtualization User" -ResourceName <hostpoolname> -ResourceGroupName <resourcegroupname> -ResourceType 'Microsoft.DesktopVirtualization/applicationGroups' 
+New-AzRoleAssignment -ObjectId <usergroupobjectid> -RoleDefinitionName "Desktop Virtualization User" -ResourceName <appgroupname> -ResourceGroupName <resourcegroupname> -ResourceType 'Microsoft.DesktopVirtualization/applicationGroups'
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte

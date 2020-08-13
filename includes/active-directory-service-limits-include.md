@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/28/2020
 ms.author: curtand
 ms.custom: include file
-ms.openlocfilehash: 840357f51bbeeb877aba48fd8d04baad204cec1e
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: ba0791108878dada5088428ce40d1af672d1892a
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87374873"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88010934"
 ---
 Nachstehend finden Sie die Verwendungs- und andere Diensteinschränkungen für den Azure Active Directory-Dienst (Azure AD).
 
@@ -30,4 +30,4 @@ Nachstehend finden Sie die Verwendungs- und andere Diensteinschränkungen für d
 | Anpassung des Zugriffsbereichs |Es gibt keine Beschränkung für die Anzahl der Anwendungen, die im Zugriffsbereich pro Benutzer unabhängig von den zugewiesenen Lizenzen angezeigt werden können.  |
 | Berichte | In einem Bericht können maximal 1.000 Zeilen angezeigt oder heruntergeladen werden. Weitere Daten werden abgeschnitten. |
 | Verwaltungseinheiten | Eine Azure AD-Ressource kann zu höchstens 30 Verwaltungseinheiten gehören. |
-| Administratorrollen und -berechtigungen | <ul><li>Eine Gruppe kann nicht als [Besitzer](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context#object-ownership) hinzugefügt werden.</li><li>Eine Gruppe kann nicht zu einer [Rolle](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) zugewiesen werden.</li><li>Die Fähigkeit von Benutzern, Verzeichnisinformationen anderer Benutzer lesen zu können, kann außerhalb des Azure AD-organisationsweiten Switches nicht eingeschränkt werden, um den Zugriff für alle Nicht-Administratorbenutzer auf alle Verzeichnisinformationen zu deaktivieren (nicht empfohlen). Weitere Informationen zu den Standardberechtigungen finden Sie [hier](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context#to-restrict-the-default-permissions-for-member-users).</li><li>Es kann bis zu 15 Minuten für Abmelden/Anmelden dauern, bevor Ergänzungen und Widerrufe für eine Mitgliedschaft in einer Administratorrolle wirksam werden.</li></ul> |
+| Administratorrollen und -berechtigungen | <ul><li>Eine Gruppe kann nicht als [Besitzer](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context#object-ownership) hinzugefügt werden.</li><li>Die Fähigkeit von Benutzern, Verzeichnisinformationen anderer Benutzer lesen zu können, kann außerhalb des Azure AD-organisationsweiten Switches nicht eingeschränkt werden, um den Zugriff für alle Nicht-Administratorbenutzer auf alle Verzeichnisinformationen zu deaktivieren (nicht empfohlen). Weitere Informationen zu den Standardberechtigungen finden Sie [hier](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context#to-restrict-the-default-permissions-for-member-users).</li><li>Es kann bis zu 15 Minuten für Abmelden/Anmelden dauern, bevor Ergänzungen und Widerrufe für eine Mitgliedschaft in einer Administratorrolle wirksam werden.</li></ul> |
