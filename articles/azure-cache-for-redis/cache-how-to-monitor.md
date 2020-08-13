@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 07/13/2017
-ms.openlocfilehash: 8dd228add317b5c4cd19f1d0daefa90ce3c937b7
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 7d703c63ebdc5b70987ead3ed2ccbe5f4843a06f
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86184870"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88004858"
 ---
 # <a name="how-to-monitor-azure-cache-for-redis"></a>Überwachen von Azure Cache for Redis
 
@@ -99,7 +99,7 @@ Jede Metrik umfasst zwei Versionen. Eine Metrik misst die Leistung für den gesa
 | Cachetreffer |Die Anzahl der erfolgreichen Schlüsselsuchen während des angegebenen Berichtsintervalls. Diese Zahl ist `keyspace_hits` aus dem Redis-Befehl [INFO](https://redis.io/commands/info) zugeordnet. |
 | Cachelatenz (Vorschau) | Die auf Basis der Latenz des Caches zwischen Knoten berechnete Cachelatenz. Diese Metrik wird in Mikrosekunden gemessen und verfügt über drei Dimensionen: ,`Avg`, `Min` und `Max`, die die durchschnittliche, minimale und maximale Latenz des Caches bzw. während des angegebenen Berichtsintervalls darstellen. |
 | Cachefehler |Die Anzahl der fehlerhaften Schlüsselsuchen während des angegebenen Berichtsintervalls. Diese Zahl ist `keyspace_misses` aus dem Redis-Befehl INFO zugeordnet. Cachefehler bedeuten nicht unbedingt, dass ein Problem mit dem Cache vorhanden ist. Bei Verwendung des cachefremden Programmierschemas sucht eine Anwendung zuerst im Cache nach einem Element. Wenn das gesuchte Element nicht vorhanden ist (Cachefehler), wird es aus der Datenbank abgerufen und dem Cache für das nächste Mal hinzugefügt. Cachefehler sind ein normales Verhalten für das cachefremde Programmierschema. Wenn die Anzahl der Cachefehler höher ist als erwartet, untersuchen Sie die Anwendungslogik, die den Cache auffüllt und aus dem Cache liest. Wenn Elemente aufgrund von ungenügendem Arbeitsspeicher aus dem Cache entfernt werden, können Cachefehler auftreten. Zur Überwachung der Arbeitsspeicherauslastung eignen sich jedoch die Metriken `Used Memory` oder `Evicted Keys` besser. |
-| Cache-Lesevorgänge |Die Menge an Daten in Megabyte pro Sekunde (MB/s), die während des angegebenen Berichtsintervalls im Cache gelesen wurden. Dieser Wert wird von den Netzwerkschnittstellenkarten für die virtuelle Maschine abgeleitet, die den Cache hostet, und ist nicht Redis-spezifisch. **Dieser Wert entspricht der von diesem Cache verwendeten Netzwerkbandbreite. Wenn Sie Warnungen für serverseitige Grenzwerte bei der Netzwerkbandbreite einrichten möchten, erstellen Sie sie mithilfe des `Cache Read`-Leistungsindikators. Die beobachteten Bandbreitengrenzwerte für verschiedene Cachetarife und -größen finden Sie in [dieser Tabelle](cache-faq.md#cache-performance).** |
+| Cache-Lesevorgänge |Die Menge an Daten in Megabyte pro Sekunde (MB/s), die während des angegebenen Berichtsintervalls im Cache gelesen wurden. Dieser Wert wird von den Netzwerkschnittstellenkarten für die virtuelle Maschine abgeleitet, die den Cache hostet, und ist nicht Redis-spezifisch. **Dieser Wert entspricht der von diesem Cache verwendeten Netzwerkbandbreite. Wenn Sie Warnungen für serverseitige Grenzwerte bei der Netzwerkbandbreite einrichten möchten, erstellen Sie sie mithilfe des `Cache Read`-Leistungsindikators. Die beobachteten Bandbreitengrenzwerte für verschiedene Cachetarife und -größen finden Sie in [dieser Tabelle](cache-planning-faq.md#azure-cache-for-redis-performance).** |
 | Cache-Schreibvorgänge |Die Menge an Daten in Megabyte pro Sekunde (MB/s), die während des angegebenen Berichtsintervalls in den Cache geschrieben wurden. Dieser Wert wird von den Netzwerkschnittstellenkarten für die virtuelle Maschine abgeleitet, die den Cache hostet, und ist nicht Redis-spezifisch. Dieser Wert entspricht der Netzwerkbandbreite der vom Client an den Cache gesendeten Daten. |
 | Verbundene Clients |Die Anzahl von Clientverbindungen mit dem Cache während des angegebenen Berichtsintervalls. Diese Zahl ist `connected_clients` aus dem Redis-Befehl INFO zugeordnet. Sobald der [Grenzwert für Verbindungen](cache-configure.md#default-redis-server-configuration) erreicht ist, treten bei weiteren Verbindungsversuchen mit dem Cache Fehler auf. Auch wenn keine Clientanwendungen aktiv sind, können aufgrund interner Prozesse und Verbindungen dennoch einige Instanzen verbundener Clients vorhanden sein. |
 | CPU |Die CPU-Auslastung des Azure Cache for Redis-Servers in Prozent während des angegebenen Berichtsintervalls. Dieser Wert ist dem Betriebssystem-Leistungsindikator `\Processor(_Total)\% Processor Time` zugeordnet, |

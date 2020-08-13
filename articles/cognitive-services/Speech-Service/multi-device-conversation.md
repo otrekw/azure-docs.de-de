@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: trbye
-ms.openlocfilehash: 7c30ee2ef4a6ab0cd4241cac921a59eeadf5ce17
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 15b69e664ae9a01635afb44d7b6b7c24d7551ce9
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81401044"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87921417"
 ---
 # <a name="what-is-multi-device-conversation-preview"></a>Worum handelt es sich bei der Konversation mit mehreren Geräten (Vorschauversion)?
 
@@ -60,7 +60,7 @@ Mithilfe von Echtzeittranskription und -übersetzung können Konversationen auch
 Sie können auch Untertitel für Präsentationen und Vorträge auf dem Bildschirm und auf den eigenen Geräten der Teilnehmer bereitstellen. Nachdem die Teilnehmer mithilfe des Konversationscodes beigetreten sind, können sie die Aufzeichnung in ihrer bevorzugten Sprache auf ihrem eigenen Gerät anzeigen.
 
 > [!NOTE]
-> Ein Beispiel finden Sie unter [Presentation Translator](https://www.microsoft.com/translator/apps/presentation-translator/) (Präsentationsübersetzer), einem PowerPoint-Add-In, das den Konversationsdienst für mehrere Geräte nutzt. Sie können es [hier](https://www.microsoft.com/download/details.aspx?id=55024)herunterladen.
+> Ein Beispiel finden Sie unter [Presentation Translator](https://www.microsoft.com/translator/apps/presentation-translator/) (Präsentationsübersetzer), einem PowerPoint-Add-In, das den Konversationsdienst für mehrere Geräte nutzt. Sie können sie [hier](https://download.cnet.com/s/powerpoint-add-in/) herunterladen.
 
 ## <a name="how-it-works"></a>Funktionsweise
 

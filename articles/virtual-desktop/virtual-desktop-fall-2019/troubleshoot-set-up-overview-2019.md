@@ -1,19 +1,17 @@
 ---
 title: 'Problembehandlung von Windows Virtual Desktop (klassisch): Übersicht – Azure'
 description: Eine Übersicht zur Problembehandlung bei der Einrichtung einer Windows Virtual Desktop (klassisch)-Mandantenumgebung.
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: efcdc203884a5aaff3b02e730f1dddb7fff66e95
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 7b2220ffe92446338e1b9db9b329847d93830334
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289820"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88005430"
 ---
 #  <a name="windows-virtual-desktop-classic-troubleshooting-overview-feedback-and-support"></a>Problembehandlung von Windows Virtual Desktop (klassisch): Übersicht, Feedback und Support
 

@@ -1,19 +1,17 @@
 ---
 title: 'Windows Virtual Desktop-Diagnose: Protokollanalyse – Azure'
 description: Hier erfahren Sie, wie Sie die Protokollanalyse mit der Windows Virtual Desktop-Diagnosefunktion verwenden.
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 05/27/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 85cd94c9ba0cf8909e2013a49d43a473a313db8b
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: f4b1207f85f87755c8c0f2b8e9935f7e88118df3
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87292602"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88005110"
 ---
 # <a name="use-log-analytics-for-the-diagnostics-feature"></a>Verwenden von Log Analytics für die Diagnosefunktion
 
@@ -134,7 +132,7 @@ Greifen Sie über die Azure Monitor Log Analytics-Benutzeroberfläche auf Beispi
 1. Wechseln Sie zu Ihrem Log Analytics-Arbeitsbereich, und wählen Sie dann **Fertig** aus. Die Benutzeroberfläche der Beispielabfrage wird automatisch angezeigt.
 1. Ändern Sie den Filter in **Kategorie**.
 1. Wählen Sie **Windows Virtual Desktop** aus, um verfügbare Abfragen zu überprüfen.
-1. Wählen Sie **Ausführen** aus, um die ausgewählte Abfrage auszuführen. 
+1. Wählen Sie **Ausführen** aus, um die ausgewählte Abfrage auszuführen.
 
 Erfahren Sie mehr über die Benutzeroberfläche der Beispielabfrage in [Gespeicherte Abfragen in Azure Monitor Log Analytics](../azure-monitor/log-query/saved-queries.md).
 

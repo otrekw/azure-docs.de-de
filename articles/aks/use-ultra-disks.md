@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie Ultra Disks in einem Azure Kubernetes Service
 services: container-service
 ms.topic: article
 ms.date: 07/10/2020
-ms.openlocfilehash: 46be67a415f67e260262e5b80e5a1dad534aea79
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: f74da764f5a0b021199782dbad03e6e95cceb7f2
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86528112"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87986830"
 ---
 # <a name="use-azure-ultra-disks-on-azure-kubernetes-service-preview"></a>Verwenden von Azure Ultra Disks in Azure Kubernetes Service (Vorschauversion)
 
@@ -49,11 +49,7 @@ Wenn Sie so weit sind, aktualisieren Sie mithilfe des Befehls [az provider regis
 az provider register --namespace Microsoft.ContainerService
 ```
 
-> [!IMPORTANT]
-> AKS-Previewfunktionen stehen gemäß dem Self-Service- und Aktivierungsprinzip zur Verfügung. Vorschauversionen werden „wie besehen“ und „wie verfügbar“ bereitgestellt und sind von den Vereinbarungen zum Service Level und der eingeschränkten Garantie ausgeschlossen. AKS-Vorschauen werden teilweise vom Kundensupport auf der Grundlage der bestmöglichen Leistung abgedeckt. Daher sind diese Funktionen nicht für die Verwendung in der Produktion vorgesehen. Weitere Informationen hierzu finden Sie in den folgenden Supportartikeln:
->
-> - [Unterstützungsrichtlinien für Azure Kubernetes Service](support-policies.md)
-> - [Häufig gestellte Fragen zum Azure-Support](faq.md)
+[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
 ### <a name="install-aks-preview-cli-extension"></a>Installieren der CLI-Erweiterung „aks-preview“
 
@@ -95,9 +91,8 @@ Wenn Sie Cluster ohne Unterstützung für Ultra Disks erstellen möchten, lassen
 
 Sie können Ultra Disks in vorhandenen Clustern aktivieren, indem Sie dem Cluster einen neuen Knotenpool hinzufügen, der Ultra Disks unterstützt. Konfigurieren Sie einen neuen Knotenpool für die Verwendung der hostbasierten Verschlüsselung mit dem `--aks-custom-headers`-Flag.
 
-
 ```azurecli
-az aks nodepool add --name hostencrypt --cluster-name myAKSCluster --resource-group myResourceGroup --node-vm-size Standard_L8s_v2 --zones 1 2 --node-count 2 --aks-custom-headers EnableEncryptionAtHost=true
+az aks nodepool add --name ultradisk --cluster-name myAKSCluster --resource-group myResourceGroup --node-vm-size Standard_L8s_v2 --zones 1 2 --node-count 2 --aks-custom-headers EnableUltraSSD=true
 ```
 
 Wenn Sie neue Knotenpools ohne Unterstützung für Ultra Disks erstellen möchten, lassen Sie den benutzerdefinierten Parameter `--aks-custom-headers` weg.

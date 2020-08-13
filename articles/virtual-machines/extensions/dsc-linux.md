@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/12/2018
 ms.author: robreed
-ms.openlocfilehash: a33d74c01771c2b60ac8667a1494ebe80271a8ac
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: a1a166d12ef753a7a6fc7225d0467ead08514f99
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86494784"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87876715"
 ---
 # <a name="dsc-extension-for-linux-microsoftostcextensionsdscforlinux"></a>DSC-Erweiterung für Linux (Microsoft.OSTCExtensions.DSCForLinux)
 
@@ -29,25 +29,17 @@ Desired State Configuration (DSC) ist eine Verwaltungsplattform, die Ihnen das V
 
 Die DSCForLinux-Erweiterung wird von Microsoft veröffentlicht und unterstützt. Die Erweiterung installiert den OMI- und DSC-Agent auf virtuellen Azure-Computern. Die DSC-Erweiterung kann auch die folgenden Aktionen ausführen:
 
-
 - Registrieren des virtuellen Linux-Computers beim Azure Automation-Konto, um Konfigurationen vom Azure Automation-Dienst zu pullen (Register-ExtensionAction)
 - Pushen von MOF-Konfigurationen zum virtuellen Linux-Computer (Push-ExtensionAction)
 - Anwenden der MOF-Metakonfiguration auf den virtuellen Linux-Computer, um den Pullserver so zu konfigurieren, dass die Knotenkonfiguration gepullt wird (Pull-ExtensionAction)
 - Installieren von benutzerdefinierten DSC-Modulen für den virtuellen Linux-Computer (Install-ExtensionAction)
 - Entfernen von benutzerdefinierten DSC-Modulen für den virtuellen Linux-Computer (Remove-ExtensionAction)
 
- 
-
 ## <a name="prerequisites"></a>Voraussetzungen
 
 ### <a name="operating-system"></a>Betriebssystem
 
-Die DSC Linux-Erweiterung unterstützt alle [von Azure unterstützte Distributionen von Linux](../linux/endorsed-distros.md), außer:
-
-| Distribution | Version |
-|---|---|
-| Debian | Alle Versionen |
-| Ubuntu| 18,04 |
+Für Linux-Knoten unterstützt die DSC-Linux-Erweiterung alle in der [PowerShell-DSC-Dokumentation](/powershell/scripting/dsc/getting-started/lnxgettingstarted) aufgeführten Linux-Distributionen.
  
 ### <a name="internet-connectivity"></a>Internetkonnektivität
 
@@ -425,7 +417,7 @@ Die Ausgabe der Erweiterungsausführung wird in der folgenden Datei protokollier
 ```
 
 Fehlercode: 51 stellt eine nicht unterstützte Distribution oder eine nicht unterstützte Erweiterungsaktion dar.
-In einigen Fällen kann die DSC-Linus-Erweiterung OMI nicht installieren, wenn bereits eine höhere Version von OMI auf dem Rechner vorhanden ist. [Fehlerantwort: (000003) Downgrade nicht zulässig.]
+In einigen Fällen kann die DSC-Linus-Erweiterung OMI nicht installieren, wenn bereits eine höhere Version von OMI auf dem Rechner vorhanden ist. [Fehlerantwort: (000003) Downgrade nicht zulässig]
 
 
 

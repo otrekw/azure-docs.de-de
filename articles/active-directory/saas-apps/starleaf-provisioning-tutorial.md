@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2019
 ms.author: zhchia
-ms.openlocfilehash: 520373fc6a05bcaada973273e3553f9da623c669
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 74e37bda28bed3ecd2c842c4659bcff3cb86eb6a
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77064290"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87920686"
 ---
 # <a name="tutorial-configure-starleaf-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von StarLeaf für die automatische Benutzerbereitstellung
 
@@ -36,7 +36,7 @@ In diesem Tutorial werden die Schritte erläutert, die in StarLeaf und Azure Act
 Das diesem Tutorial zu Grunde liegende Szenario setzt voraus, dass Sie bereits über die folgenden Voraussetzungen verfügen:
 
 * Einen Azure AD-Mandanten.
-* Einen [StarLeaf-Mandanten](https://www.starleaf.com/solutions/).
+* Einen [StarLeaf-Mandanten](https://starleaf.com/).
 * Ein Benutzerkonto in StarLeaf mit Administratorberechtigungen.
 
 ## <a name="assign-users-to-starleaf"></a>Zuweisen von Benutzern zu StarLeaf

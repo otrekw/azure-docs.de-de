@@ -7,13 +7,13 @@ ms.reviewer: dannyevers
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
-ms.date: 07/10/2020
-ms.openlocfilehash: d360b890023c1a14f80d9fc8efc703abd7544710
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.date: 08/06/2020
+ms.openlocfilehash: 96e23c22568229ec5f5ba2365747e261b7e471ad
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87328022"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87921383"
 ---
 # <a name="build-the-landing-page-for-your-free-or-trial-saas-offer-in-the-commercial-marketplace"></a>Erstellen der Landing Page für Ihr kostenloses SaaS-Angebot oder Ihr SaaS-Testangebot im kommerziellen Marketplace
 
@@ -53,7 +53,7 @@ Befolgen Sie zunächst die Anweisungen zum [Registrieren einer neuen Anwendung](
 
 [Konfigurieren Sie Ihre neue Anwendung für den Zugriff auf Web-APIs](https://docs.microsoft.com/azure/active-directory/develop/quickstart-configure-app-access-web-apis), wenn Sie beabsichtigen, Abfragen an die Microsoft Graph-API zu senden. Bei der Auswahl der API-Berechtigungen für diese Anwendung ist die Standardeinstellung **User.Read** ausreichend, um grundlegende Informationen zum Benutzer zu erfassen. Dadurch kann das Onboarding reibungslos und automatisiert durchgeführt werden. Legen Sie keine API-Berechtigungen vom Typ **Administratoreinwilligung erforderlich** als erforderlich fest. Anderenfalls kann Ihre Landing Page nur von Benutzern mit Administratorfunktion besucht werden.
 
-Wenn Sie im Rahmen Ihres Onboarding- oder Bereitstellungsvorgangs jedoch erhöhte Rechte benötigen, verwenden Sie gegebenenfalls die [inkrementelle Einwilligung](https://docs.microsoft.com/azure/active-directory/azuread-dev/azure-ad-endpoint-comparison#incremental-and-dynamic-consent) von Azure AD. Bei Verwendung dieser Funktion sind alle Benutzer, die vom Marketplace weitergeleitet werden, anfänglich in der Lage, mit der Landing Page zu interagieren.
+Wenn Sie im Rahmen Ihres Onboarding- oder Bereitstellungsvorgangs jedoch erhöhte Rechte benötigen, verwenden Sie gegebenenfalls die [inkrementelle Einwilligung](https://aka.ms/incremental-consent) von Azure AD. Bei Verwendung dieser Funktion sind alle Benutzer, die vom Marketplace weitergeleitet werden, anfänglich in der Lage, mit der Landing Page zu interagieren.
 
 ## <a name="use-a-code-sample-as-a-starting-point"></a>Verwenden eines Codebeispiels als Ausgangspunkt
 

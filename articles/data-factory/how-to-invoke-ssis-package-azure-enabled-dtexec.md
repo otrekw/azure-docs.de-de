@@ -11,12 +11,12 @@ author: swinarko
 ms.author: sawinark
 manager: mflasko
 ms.reviewer: douglasl
-ms.openlocfilehash: dce7fb87ee49aefdedf5653243fa5729eee34519
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 94b581f677e370911a60db08276ff7dd0eb45486
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81414326"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87927078"
 ---
 # <a name="run-sql-server-integration-services-packages-with-the-azure-enabled-dtexec-utility"></a>Ausführen von SQL Server Integration Services-Paketen mit dem Azure-fähigen Hilfsprogramm dtexec
 
@@ -87,7 +87,7 @@ Bei Aufrufen von AzureDTExec stehen ähnliche Optionen zur Verfügung wie bei dt
 - **/F[ile]** : Lädt ein Paket, das in einem Dateisystem, in einer Dateifreigabe oder in Azure Files gespeichert ist. Als Wert für diese Option können Sie den UNC-Pfad für Ihre Paketdatei im Dateisystem, in der Dateifreigabe oder in Azure Files zusammen mit der Erweiterung „.dtsx“ angeben. Enthält der angegebene UNC-Pfad Leerzeichen, schließen Sie den gesamten Pfad in Anführungszeichen ein.
 - **/Conf[igFile]** : Gibt eine Konfigurationsdatei an, aus der Werte extrahiert werden sollen. Mit dieser Option können Sie eine Laufzeitkonfiguration für Ihr Paket festlegen, die sich von der zur Entwurfszeit angegebenen Konfiguration unterscheidet. Sie können verschiedene Einstellungen in einer XML-Konfigurationsdatei speichern und diese dann vor der Paketausführung laden. Weitere Informationen finden Sie unter [Legacy-Paketbereitstellung (SSIS)](https://docs.microsoft.com/sql/integration-services/packages/package-configurations?view=sql-server-2017). Als Wert für diese Option können Sie den UNC-Pfad für Ihre Konfigurationsdatei im Dateisystem, in der Dateifreigabe oder in Azure Files zusammen mit der Erweiterung „dtsConfig“ angeben. Enthält der angegebene UNC-Pfad Leerzeichen, schließen Sie den gesamten Pfad in Anführungszeichen ein.
 - **/Conn[ection]** : Gibt Verbindungszeichenfolgen für vorhandene Verbindungs-Manager in Ihrem Paket an. Mit dieser Option können Sie Laufzeitverbindungszeichenfolgen für vorhandene Verbindungs-Manager in Ihrem Paket festlegen, die sich von den zur Entwurfszeit angegebenen unterscheiden. Geben Sie den Wert für diese Option wie folgt an: `connection_manager_name_or_id;connection_string [[;connection_manager_name_or_id;connection_string]...]`.
-- **/Set**: Setzt die Konfiguration eines Parameters, einer Variablen, einer Eigenschaft, eines Containers, eines Protokollanbieters, eines Foreach-Enumerators oder einer Verbindung in Ihrem Paket außer Kraft. Diese Option kann mehrfach angegeben werden. Geben Sie den Wert für diese Option wie folgt an: `property_path;value`. `\package.variables[counter].Value;1` überschreibt beispielsweise den Wert der Variablen `counter` mit „1“. Sie können den **Paketkonfigurations-Assistenten** verwenden, um den Wert von `property_path` für Elemente in Ihrem Paket, deren Wert Sie überschreiben möchten, zu suchen, zu kopieren und einzufügen. Weitere Informationen finden Sie in der [Referenz zur Benutzeroberfläche des Paketkonfigurations-Assistenten](https://docs.microsoft.com/sql/integration-services/package-configuration-wizard-ui-reference?view=sql-server-2014).
+- **/Set**: Setzt die Konfiguration eines Parameters, einer Variablen, einer Eigenschaft, eines Containers, eines Protokollanbieters, eines Foreach-Enumerators oder einer Verbindung in Ihrem Paket außer Kraft. Diese Option kann mehrfach angegeben werden. Geben Sie den Wert für diese Option wie folgt an: `property_path;value`. `\package.variables[counter].Value;1` überschreibt beispielsweise den Wert der Variablen `counter` mit „1“. Sie können den **Paketkonfigurations-Assistenten** verwenden, um den Wert von `property_path` für Elemente in Ihrem Paket, deren Wert Sie überschreiben möchten, zu suchen, zu kopieren und einzufügen. Weitere Informationen finden Sie in der [Referenz zur Benutzeroberfläche des Paketkonfigurations-Assistenten](https://docs.microsoft.com/sql/integration-services/packages/legacy-package-deployment-ssis).
 - **/De[crypt]** : Legt das Entschlüsselungskennwort für Ihr Paket fest, das mit der Schutzebene **EncryptAllWithPassword**/**EncryptSensitiveWithPassword** konfiguriert ist.
 
 > [!NOTE]

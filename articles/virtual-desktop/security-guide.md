@@ -1,19 +1,17 @@
 ---
 title: 'Bewährte Sicherheitsmethoden für Windows Virtual Desktop: Azure'
 description: Bewährte Methoden zum Schützen Ihrer Windows Virtual Desktop Umgebung.
-services: virtual-desktop
 author: heidilohr
-ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 95f1027f4f5ace6963a38edf0dc028ddca351b7e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a194074b75a404e5a28e86015b0d0bcea2619fc2
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84736671"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88002295"
 ---
 # <a name="security-best-practices"></a>Bewährte Sicherheitsmethoden
 
@@ -103,7 +101,7 @@ Sitzungshosts sind virtuelle Computer, die in einem Azure-Abonnement und einem v
 
 ### <a name="enable-endpoint-protection"></a>Aktivieren von Endpoint Protection
 
-Zum Schutz Ihrer Bereitstellung vor bekannter bösartiger Software empfehlen wir, Endpoint Protection auf allen Sitzungshosts zu aktivieren. Sie können entweder Windows Defender Antivirus oder ein Programm eines Drittanbieters verwenden. Weitere Informationen finden Sie unter [Leitfaden zur Bereitstellung für Windows Defender Antivirus in einer VDI-Umgebung](/windows/security/threat-protection/windows-defender-antivirus/deployment-vdi-windows-defender-antivirus). 
+Zum Schutz Ihrer Bereitstellung vor bekannter bösartiger Software empfehlen wir, Endpoint Protection auf allen Sitzungshosts zu aktivieren. Sie können entweder Windows Defender Antivirus oder ein Programm eines Drittanbieters verwenden. Weitere Informationen finden Sie unter [Leitfaden zur Bereitstellung für Windows Defender Antivirus in einer VDI-Umgebung](/windows/security/threat-protection/windows-defender-antivirus/deployment-vdi-windows-defender-antivirus).
 
 Für Profillösungen wie FSLogix oder andere Lösungen, die VHD-Dateien einbinden, empfehlen wir, VHD-Dateierweiterungen auszuschließen.
 

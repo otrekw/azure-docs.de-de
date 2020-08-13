@@ -1,19 +1,17 @@
 ---
 title: 'Windows Virtual Desktop: PowerShell – Azure'
 description: Informationen zum Behandeln von Problemen mit PowerShell, wenn Sie eine Windows Virtual Desktop-Umgebung einrichten.
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 06/05/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: cd34fa2bc4c1083d4bd4dda7d118e0348a1a7fd0
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 03b6da1d35247749d8ec2c6459c8ddee69bfccb6
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87288725"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88002270"
 ---
 # <a name="windows-virtual-desktop-powershell"></a>Windows Virtual Desktop: PowerShell
 
@@ -33,10 +31,10 @@ Dieser Abschnitt listet PowerShell-Befehle auf, die typischerweise beim Einricht
 ### <a name="error-new-azroleassignment-the-provided-information-does-not-map-to-an-ad-object-id"></a>Error: New-AzRoleAssignment: Die angegebenen Informationen stimmen mit keiner AD-Objekt-ID überein.
 
 ```powershell
-New-AzRoleAssignment -SignInName "admins@contoso.com" -RoleDefinitionName "Desktop Virtualization User" -ResourceName "0301HP-DAG" -ResourceGroupName 0301RG -ResourceType 'Microsoft.DesktopVirtualization/applicationGroups' 
+New-AzRoleAssignment -SignInName "admins@contoso.com" -RoleDefinitionName "Desktop Virtualization User" -ResourceName "0301HP-DAG" -ResourceGroupName 0301RG -ResourceType 'Microsoft.DesktopVirtualization/applicationGroups'
 ```
 
-**Ursache:** Der durch den Parameter *-SignInName* angegebene Benutzer kann nicht im Azure Active Directory gefunden werden, das an die Windows Virtual Desktop-Umgebung gebunden ist. 
+**Ursache:** Der durch den Parameter *-SignInName* angegebene Benutzer kann nicht im Azure Active Directory gefunden werden, das an die Windows Virtual Desktop-Umgebung gebunden ist.
 
 **Behebung:** Stellen Sie Folgendes sicher.
 
@@ -46,7 +44,7 @@ New-AzRoleAssignment -SignInName "admins@contoso.com" -RoleDefinitionName "Deskt
 
 ### <a name="error-new-azroleassignment-the-client-with-object-id-does-not-have-authorization-to-perform-action-over-scope-code-authorizationfailed"></a>Error: New-AzRoleAssignment: „Der Client mit der Objekt-ID hat keine Berechtigung zum Ausführen der Aktion über Bereich (Code: AuthorizationFailed)“
 
-**Ursache 1:** Das verwendete Konto hat keine Besitzerberechtigungen für das Abonnement. 
+**Ursache 1:** Das verwendete Konto hat keine Besitzerberechtigungen für das Abonnement.
 
 **Behebung 1:** Ein Benutzer mit Besitzerberechtigungen muss die Rollenzuweisung ausführen. Alternativ muss der Benutzer der Rolle „Benutzerzugriffsadministrator“ zugewiesen werden, um einen Benutzer einer Anwendungsgruppe zuzuweisen.
 
@@ -57,7 +55,7 @@ New-AzRoleAssignment -SignInName "admins@contoso.com" -RoleDefinitionName "Deskt
 ### <a name="error-new-azwvdhostpool----the-location-is-not-available-for-resource-type"></a>Error: New-AzWvdHostPool: Der Speicherort ist für den Ressourcentyp nicht verfügbar.
 
 ```powershell
-New-AzWvdHostPool_CreateExpanded: The provided location 'southeastasia' is not available for resource type 'Microsoft.DesktopVirtualization/hostpools'. List of available regions for the resource type is 'eastus,eastus2,westus,westus2,northcentralus,southcentralus,westcentralus,centralus'. 
+New-AzWvdHostPool_CreateExpanded: The provided location 'southeastasia' is not available for resource type 'Microsoft.DesktopVirtualization/hostpools'. List of available regions for the resource type is 'eastus,eastus2,westus,westus2,northcentralus,southcentralus,westcentralus,centralus'.
 ```
 
 Ursache: Windows Virtual Desktop unterstützt die Auswahl des Speicherorts von Hostpools, Anwendungsgruppen und Arbeitsbereichen, um Dienstmetadaten an bestimmten Orten zu speichern. Ihre Optionen sind darauf beschränkt, wo diese Funktion verfügbar ist. Dieser Fehler bedeutet, dass das Feature nicht an dem von Ihnen ausgewählten Speicherort verfügbar ist.

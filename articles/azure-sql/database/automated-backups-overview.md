@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
 ms.date: 08/04/2020
-ms.openlocfilehash: 205e99303cd53adf6aa952ccd65441b72471f3a2
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 3e37d907d00acd3e2b368700b70b4e268bad3ec9
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87810269"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87921944"
 ---
 # <a name="automated-backups---azure-sql-database--sql-managed-instance"></a>Automatisierte Sicherungen – Azure SQL-Datenbank und SQL Managed Instance
 
@@ -111,7 +111,7 @@ Der Speicherverbrauch für Sicherungen bis zur maximalen Datengröße für eine 
 
 - Reduzieren Sie den [Aufbewahrungszeitraum für Sicherungen](#change-the-pitr-backup-retention-period-by-using-the-azure-portal) auf die Mindestanforderungen für Ihre Zwecke.
 - Vermeiden Sie es, große Schreibvorgänge, wie z.B. die Neuerstellung von Indizes, öfter als nötig durchzuführen.
-- Bei umfangreichen Datenladevorgängen sollten Sie [gruppierte Columnstore-Indizes](https://docs.microsoft.com/sql/database-engine/using-clustered-columnstore-indexes) verwenden und die entsprechenden [Best Practices](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-data-loading-guidance) befolgen oder die Anzahl der nicht gruppierten Indizes reduzieren.
+- Bei umfangreichen Datenladevorgängen sollten Sie [gruppierte Columnstore-Indizes](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview) verwenden und die entsprechenden [Best Practices](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-data-loading-guidance) befolgen oder die Anzahl der nicht gruppierten Indizes reduzieren.
 - Auf der Dienstebene „Universell“ ist der bereitgestellte Datenspeicher günstiger als die Kosten für den Sicherungsspeicher. Wenn ständig hohe Kosten durch zusätzlichen Sicherungsspeicher anfallen, können Sie eine Vergrößerung des Datenspeichers in Betracht ziehen, um beim Sicherungsspeicher zu sparen.
 - Verwenden Sie TempDB anstelle permanenter Tabellen in Ihrer Anwendungslogik zum Speichern temporärer Ergebnisse oder vorübergehender Daten.
 - Nutzen Sie nach Möglichkeit lokal redundanten Sicherungsspeicher (z. B. dev/Testumgebungen).

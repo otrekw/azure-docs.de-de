@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu, calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2cf89864eb6e52baf925f82aa590619d7cfeabb2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b7d2bb927569a125015f1b0befa27fd3e1f17c00
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85552113"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87874774"
 ---
 # <a name="configure-authentication-session-management-with-conditional-access"></a>Konfigurieren der Verwaltung von Authentifizierungssitzungen mit bedingtem Zugriff
 
@@ -106,8 +106,6 @@ Der bedingte Zugriff ist eine Azure AD Premium-Funktion und erfordert eine Premi
 ![Richtlinie für bedingten Zugriff, die für die Anmeldehäufigkeit konfiguriert ist](media/howto-conditional-access-session-lifetime/conditional-access-policy-session-sign-in-frequency.png)
 
 Auf Windows-Geräten, die in Azure AD registriert sind, gilt die Anmeldung beim Gerät als Erfüllung einer Aufforderung. Beispiel: Wenn Sie die Anmeldehäufigkeit für Office-Apps auf 24 Stunden festgelegt haben, erfüllen Benutzer von Windows-Geräten, die in Azure AD registriert sind, die Richtlinie für die Anmeldehäufigkeit bereits, indem sie sich beim Gerät anmelden. Sie erhalten keine erneute Aufforderung, wenn sie Office-Apps öffnen.
-
-Wenn Sie unterschiedliche Anmeldehäufigkeiten für unterschiedliche Web-Apps konfiguriert haben, die in derselben Browsersitzung ausgeführt werden, wird die strengste Richtlinie auf beide Apps angewendet, da alle Apps, die in derselben Browsersitzung ausgeführt werden, dasselbe Sitzungstoken nutzen.
 
 ### <a name="policy-2-persistent-browser-session"></a>Richtlinie 2: Persistente Browsersitzung
 

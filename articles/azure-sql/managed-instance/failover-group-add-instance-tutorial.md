@@ -12,12 +12,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sashan, carlrab
 ms.date: 08/27/2019
-ms.openlocfilehash: ad0079a0a48178f1e662e2fdf1daa685ae768857
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 47f33d8b1a7792487491cbe7f2ddb5c7f5b087af
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87024192"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88002992"
 ---
 # <a name="tutorial-add-sql-managed-instance-to-a-failover-group"></a>Tutorial: Hinzufügen einer SQL Managed Instance zu einer Failovergruppe
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -32,7 +32,7 @@ Hinzufügen verwalteter Instanzen von Azure SQL Managed Instance zu einer Failov
   > [!NOTE]
   > - Stellen Sie beim Durcharbeiten dieses Tutorials sicher, dass Sie Ihre Ressourcen mit den [Voraussetzungen für das Einrichten von Failovergruppen für SQL Managed Instance](../database/auto-failover-group-overview.md#enabling-geo-replication-between-managed-instances-and-their-vnets) konfigurieren. 
   > - Das Erstellen einer verwalteten Instanz kann sehr viel Zeit in Anspruch nehmen. Folglich kann es mehrere Stunden dauern, bis Sie dieses Tutorial fertiggestellt haben. Weitere Informationen zu den Bereitstellungszeiten finden Sie unter [Verwaltungsvorgänge für SQL Managed Instance](sql-managed-instance-paas-overview.md#management-operations). 
-  > - Verwaltete Instanzen, die einer Failovergruppe angehören, benötigen entweder [Azure ExpressRoute](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md) oder zwei verbundene VPN-Gateways. Dieses Tutorial beschreibt die Schritte zum Erstellen und Verbinden der VPN-Gateways. Überspringen Sie diese Schritte, wenn Sie ExpressRoute bereits konfiguriert haben. 
+  > - Verwaltete Instanzen, die einer Failovergruppe angehören, benötigen entweder [Azure ExpressRoute](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md) oder zwei verbundene VPN-Gateways. Globales VNET-Peering wird nicht unterstützt. Dieses Tutorial beschreibt die Schritte zum Erstellen und Verbinden der VPN-Gateways. Überspringen Sie diese Schritte, wenn Sie ExpressRoute bereits konfiguriert haben. 
 
 
 ## <a name="prerequisites"></a>Voraussetzungen

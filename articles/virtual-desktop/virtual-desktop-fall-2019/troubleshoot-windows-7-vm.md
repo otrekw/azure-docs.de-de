@@ -1,19 +1,17 @@
 ---
 title: Virtuelle Windows 7-Computer in Windows Virtual Desktop (klassisch) – Azure
 description: Vorgehensweise beim Beheben von Problemen mit virtuellen Windows 7-Computern (VMs) in einer Windows Virtual Desktop-Umgebung (klassisch).
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: e7f433668c34fb5edc35889adcd604023202ada4
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 1d71b4472b16372927db56b20eca4fcbde0cc625
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87286341"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88005413"
 ---
 # <a name="troubleshoot-windows-7-virtual-machines-in-windows-virtual-desktop-classic"></a>Problembehandlung für virtuelle Windows 7-Computer in Windows Virtual Desktop (klassisch)
 
@@ -47,7 +45,7 @@ Fügen Sie den Benutzer der Remote Desktop Benutzergruppe hinzu, um diesen Fehle
 2. Wählen Sie den virtuellen Computer aus, für den die Fehlermeldung angezeigt wurde.
 3. Wählen Sie **Befehl ausführen** aus.
 4. Führen Sie den folgenden Befehl aus, wobei `<username>` durch den Namen des Benutzers ersetzt wird, den Sie hinzufügen möchten:
-   
+
    ```cmd
    net localgroup "Remote Desktop Users" <username> /add
    ```

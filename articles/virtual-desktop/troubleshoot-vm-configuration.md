@@ -1,19 +1,17 @@
 ---
 title: 'Problembehandlung für Windows Virtual Desktop-Sitzungshost: Azure'
 description: Beheben von Problemen beim Konfigurieren von virtuellen Hostcomputern in einer Windows Virtual Desktop-Sitzung.
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 05/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: f0665aa8427371fa458039d73297fa0e02b4eb4d
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 31e9b4b065b2acb8378c2eeac332341f48b28165
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87286375"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88005228"
 ---
 # <a name="session-host-virtual-machine-configuration"></a>Konfiguration des virtuellen Sitzungshostcomputers
 
@@ -138,8 +136,8 @@ Wenn der Windows Virtual Desktop-Agent zum ersten Mal auf Sitzungshost-VMs insta
 
 **Behebung:** Befolgen Sie diese Anweisungen, um den Fehler in der Agent-Registrierung zu beheben.
 
-1. Sollte bereits ein Registrierungstoken vorhanden sein, entfernen Sie es mit „Remove-AzWvdRegistrationInfo“. 
-2. Führen Sie das Cmdlet **New-AzWvdRegistrationInfo** aus, um ein neues Token zu generieren. 
+1. Sollte bereits ein Registrierungstoken vorhanden sein, entfernen Sie es mit „Remove-AzWvdRegistrationInfo“.
+2. Führen Sie das Cmdlet **New-AzWvdRegistrationInfo** aus, um ein neues Token zu generieren.
 3. Vergewissern Sie sich, dass der Parameter *-ExpriationTime* auf drei Tage festgelegt ist.
 
 ### <a name="error-windows-virtual-desktop-agent-isnt-reporting-a-heartbeat-when-running-get-azwvdsessionhost"></a>Error: Der Windows Virtual Desktop-Agent meldet beim Ausführen von „Get-AzWvdSessionHost“ keinen Heartbeat.
@@ -305,7 +303,7 @@ Wenn Sie sich bei Windows 10 Enterprise (mehrere Sitzungen) mit einem Administr
 
 Wenn das Zeitlimit abgelaufen ist, wird die folgende Fehlermeldung angezeigt: „Die Verbindung mit der Remotesitzung wurde getrennt, da keine Remotedesktop-Clientzugriffslizenzen für diesen Computer vorhanden sind.“
 
-Wenn eine dieser Meldungen angezeigt wird, bedeutet dies, dass für das Image nicht die neuesten Windows-Updates installiert sind oder Sie den Remotedesktop-Lizenzierungsmodus über Gruppenrichtlinien festlegen. Führen Sie die Schritte in den nächsten Abschnitten aus, um die Gruppenrichtlinieneinstellung zu überprüfen, die Version von Windows 10 Enterprise Multisession zu ermitteln und das entsprechende Update zu installieren.  
+Wenn eine dieser Meldungen angezeigt wird, bedeutet dies, dass für das Image nicht die neuesten Windows-Updates installiert sind oder Sie den Remotedesktop-Lizenzierungsmodus über Gruppenrichtlinien festlegen. Führen Sie die Schritte in den nächsten Abschnitten aus, um die Gruppenrichtlinieneinstellung zu überprüfen, die Version von Windows 10 Enterprise Multisession zu ermitteln und das entsprechende Update zu installieren.
 
 >[!NOTE]
 >Windows Virtual Desktop erfordert nur dann eine RDS-Clientzugriffslizenz (Client Access License, CAL), wenn Ihr Hostpool Windows Server-Sitzungshosts enthält. Informationen zum Konfigurieren einer RDS-CAL finden Sie unter [Lizenzieren deiner RDS-Bereitstellung mit Clientzugriffslizenzen (CALs)](/windows-server/remote/remote-desktop-services/rds-client-access-license/).

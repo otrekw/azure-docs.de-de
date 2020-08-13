@@ -6,12 +6,12 @@ manager: gwallace
 ms.topic: article
 ms.date: 07/10/2020
 author: jluk
-ms.openlocfilehash: f6cb370d258a79420b03baf17ec964b091cdebb7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5b3dc3803cfb89f4a74d082b5913e69df1d03a00
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87056584"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87986711"
 ---
 # <a name="reduce-latency-with-proximity-placement-groups-preview"></a>Verringern der Wartezeit mithilfe von Näherungsplatzierungsgruppen (Vorschauversion)
 
@@ -26,11 +26,7 @@ Wenn Sie Ihre Anwendung in Azure bereitstellen, führt die Verteilung von VM-Ins
 * Ein Knotenpool muss Virtual Machine Scale Sets verwenden, um eine Näherungsplatzierungsgruppe zuzuordnen.
 * Ein Knotenpool kann eine Näherungsplatzierungsgruppe nur für die Erstellungszeit des Knotenpools zuordnen.
 
-> [!IMPORTANT]
-> AKS-Previewfunktionen stehen gemäß dem Self-Service- und Aktivierungsprinzip zur Verfügung. Vorschauversionen werden „wie besehen“ und „wie verfügbar“ bereitgestellt und sind von den Vereinbarungen zum Service Level und der eingeschränkten Garantie ausgeschlossen. AKS-Vorschauversionen werden teilweise vom Kundensupport auf Grundlage der bestmöglichen Leistung abgedeckt. Daher sind diese Funktionen nicht für die Verwendung in der Produktion vorgesehen. Weitere Informationen finden Sie in den folgenden Supportartikeln:
->
-> - [Unterstützungsrichtlinien für Azure Kubernetes Service](support-policies.md)
-> - [Häufig gestellte Fragen zum Azure-Support](faq.md)
+[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 

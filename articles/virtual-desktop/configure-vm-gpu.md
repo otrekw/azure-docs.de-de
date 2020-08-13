@@ -1,18 +1,16 @@
 ---
 title: 'Konfigurieren einer GPU für Windows Virtual Desktop: Azure'
 description: Erfahren Sie, wie Sie durch GPU beschleunigtes Rendering und schnellere Codierung in Windows Virtual Desktop ermöglichen.
-services: virtual-desktop
 author: gundarev
-ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 05/06/2019
 ms.author: denisgun
-ms.openlocfilehash: a80e9940aff69d351fde7512cfc38a12d6029f74
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: dd5eb8acb76fe5901149d90a6d551d8d14d363cc
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87291488"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88007775"
 ---
 # <a name="configure-graphics-processing-unit-gpu-acceleration-for-windows-virtual-desktop"></a>Konfigurieren der Beschleunigung durch Graphics Processing Units (GPUs) für Windows Virtual Desktop
 
@@ -58,7 +56,7 @@ Apps und Desktops, die mit Konfigurationen für mehrere Sitzungen ausgeführt we
 ## <a name="configure-gpu-accelerated-frame-encoding"></a>Konfigurieren der durch GPU beschleunigten Framecodierung
 
 Der Remotedesktop codiert alle Grafiken, die von Apps und Desktops gerendert werden für die Übertragung an Remotedesktopclients (unabhängig davon, ob diese mit GPU oder CPU gerendert wurden). Wenn ein Teil des Bildschirms häufig aktualisiert wird, wird dieser mit einem Videocodec (H.264/AVC) codiert. Standardmäßig nutzt der Remotedesktop die verfügbaren GPUs nicht für diese Codierung. Konfigurieren Sie eine Gruppenrichtlinie für den Sitzungshost, um durch GPU beschleunigte Framecodierung zu aktivieren. Führen Sie ähnlich wie oben die folgenden Schritte durch:
- 
+
 >[!NOTE]
 >Die durch GPU beschleunigte Framecodierung ist in VMs der Serie NVv4 nicht verfügbar.
 

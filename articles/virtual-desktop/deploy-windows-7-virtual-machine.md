@@ -1,19 +1,17 @@
 ---
 title: Bereitstellen eines virtuellen Windows 7-Computers in Windows Virtual Desktop – Azure
 description: Konfigurieren und Bereitstellen eines virtuellen Windows 7-Computers in Windows Virtual Desktop.
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 07/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 6cb4a31e3360f3f9f8c9ed4684c30295489d27d8
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 0dcf21190b52f966dafb9caa9ae28fdf9b99ba86
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285152"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88007572"
 ---
 # <a name="deploy-a-windows-7-virtual-machine-on-windows-virtual-desktop"></a>Bereitstellen eines virtuellen Windows 7-Computers in Windows Virtual Desktop
 
@@ -24,7 +22,7 @@ Der Vorgang zum Bereitstellen eines virtuellen Windows 7-Computers (VM) in Windo
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Bevor Sie beginnen, befolgen Sie die Anleitungen unter [Erstellen eines Hostpools mit PowerShell](create-host-pools-powershell.md), um einen Hostpool zu erstellen. Wenn Sie das Portal verwenden, befolgen Sie die Anweisungen in den unter [Erstellen eines Hostpools mit dem Azure-Portal](create-host-pools-azure-marketplace.md) beschriebenen Schritten 1 bis 9. Klicken Sie anschließend auf **Überprüfen + Erstellen**, um einen leeren Hostpool zu erstellen. 
+Bevor Sie beginnen, befolgen Sie die Anleitungen unter [Erstellen eines Hostpools mit PowerShell](create-host-pools-powershell.md), um einen Hostpool zu erstellen. Wenn Sie das Portal verwenden, befolgen Sie die Anweisungen in den unter [Erstellen eines Hostpools mit dem Azure-Portal](create-host-pools-azure-marketplace.md) beschriebenen Schritten 1 bis 9. Klicken Sie anschließend auf **Überprüfen + Erstellen**, um einen leeren Hostpool zu erstellen.
 
 ## <a name="configure-a-windows-7-virtual-machine"></a>Konfigurieren eines virtuellen Windows 7-Computers
 
@@ -49,9 +47,9 @@ So richten Sie einen virtuellen Windows 7-Computer in Windows Virtual Desktop ei
      ```
 
 12. Führen Sie die [hier](/powershell/module/az.desktopvirtualization/new-azwvdregistrationinfo?view=azps-4.3.0) aufgeführten Schritte aus, um ein Registrierungstoken abzurufen.
-      
+
       - Wenn Sie stattdessen das Azure-Portal verwenden möchten, können Sie auch zur Übersichtsseite des Hostpools wechseln, dem Sie den virtuellen Computer hinzufügen möchten, und dort ein Token erstellen.
-  
+
 13. [Herunterladen des Windows Virtual Desktop-Agents für Windows 7](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3JZCm).
 14. [Herunterladen des Windows Virtual Desktop-Agent-Managers für Windows 7](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3K2e3).
 15. Öffnen Sie das Installationsprogramm für den Windows Virtual Desktop-Agent, und befolgen Sie die Anweisungen. Wenn Sie dazu aufgefordert werden, geben Sie den in Schritt 12 erstellten Registrierungsschlüssel ein.

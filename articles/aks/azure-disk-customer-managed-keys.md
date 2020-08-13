@@ -3,20 +3,17 @@ title: Verwenden eines kundenseitig verwalteten Schlüssels zum Verschlüsseln v
 description: Bring Your Own Key(BYOK) zum Verschlüsseln von AKS-Datenträgern für Betriebssystem und Daten.
 services: container-service
 ms.topic: article
-ms.date: 01/12/2020
-ms.openlocfilehash: 6452facc999456c35aa5d1c3bfe6b2f59141b7c5
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.date: 07/17/2020
+ms.openlocfilehash: d4f7842330862013644cf961f5bd8e079d097069
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86252044"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87985841"
 ---
 # <a name="bring-your-own-keys-byok-with-azure-disks-in-azure-kubernetes-service-aks"></a>Bring Your Own Key (BYOK) mit Azure-Datenträgern in Azure Kubernetes Service (AKS)
 
 Azure Storage verschlüsselt alle Daten in einem ruhenden Speicherkonto. Standardmäßig werden Daten mit von Microsoft verwalteten Schlüsseln verschlüsselt. Für zusätzliche Kontrolle über die Verschlüsselungsschlüssel können Sie [kundenseitig verwaltete Schlüssel][customer-managed-keys] bereitstellen, die für die ruhende Verschlüsselung der Datenträger für Betriebssystem und Daten für Ihre AKS-Cluster verwendet werden sollen.
-
-> [!NOTE]
-> Linux- und Windows-basierte AKS-Cluster mit BYOK sind in [Azure-Regionen][supported-regions] verfügbar, die die serverseitige Verschlüsselung von verwalteten Azure-Datenträgern unterstützen.
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
@@ -26,11 +23,7 @@ Azure Storage verschlüsselt alle Daten in einem ruhenden Speicherkonto. Standar
 
 * Sie benötigen Version 2.0.79 oder höher der Azure-Befehlszeilenschnittstelle sowie die Erweiterung „aks-preview 0.4.26“.
 
-> [!IMPORTANT]
-> AKS-Previewfunktionen stehen gemäß dem Self-Service- und Aktivierungsprinzip zur Verfügung. Vorschauversionen werden „wie besehen“ und „wie verfügbar“ bereitgestellt und sind von den Vereinbarungen zum Service Level und der eingeschränkten Garantie ausgeschlossen. AKS-Vorschauen werden teilweise vom Kundensupport auf der Grundlage der bestmöglichen Leistung abgedeckt. Daher sind diese Funktionen nicht für die Verwendung in der Produktion vorgesehen. Weitere Informationen finden Sie in den folgenden Supportartikeln:
->
-> * [Unterstützungsrichtlinien für Azure Kubernetes Service](support-policies.md)
-> * [Häufig gestellte Fragen zum Azure-Support](faq.md)
+[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
 ## <a name="install-latest-aks-cli-preview-extension"></a>Installieren der neuesten AKS-CLI-Vorschauerweiterung
 
@@ -164,9 +157,7 @@ kubectl apply -f byok-azure-disk.yaml
 
 ## <a name="limitations"></a>Einschränkungen
 
-* BYOK ist derzeit allgemein und als Preview nur in bestimmten [Azure-Regionen][supported-regions] verfügbar.
-* Verschlüsselung des Datenträgers für Daten wird mit Version 1.17 und höher von Kubernetes unterstützt   
-* Nur in Regionen verfügbar, in denen BYOK unterstützt wird.
+* Verschlüsselung des Datenträgers für Daten wird mit Version 1.17 und höher von Kubernetes unterstützt
 * Verschlüsselung mit kundenseitig verwalteten Schlüsseln ist derzeit nur für neue AKS-Cluster vorgesehen, ein Upgrade vorhandener Cluster ist nicht möglich.
 
 ## <a name="next-steps"></a>Nächste Schritte

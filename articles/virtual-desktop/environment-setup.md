@@ -1,19 +1,17 @@
 ---
 title: 'Windows Virtual Desktop-Umgebung: Azure'
 description: Lernen Sie die grundlegenden Elemente einer Windows Virtual Desktop-Umgebung kennen wie Hostpools und App-Gruppen.
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: e382c1d52130d44479e94378da895c6add7ba3ee
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 99a07dd1791b539ea44fcbab250aa9c227ee1705
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87283417"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88002621"
 ---
 # <a name="windows-virtual-desktop-environment"></a>Windows Virtual Desktop-Umgebung
 
@@ -49,7 +47,7 @@ Zum Veröffentlichen von Ressourcen für Benutzer müssen Sie sie App-Gruppen zu
 
 ## <a name="workspaces"></a>Arbeitsbereiche
 
-Ein Arbeitsbereich ist eine logische Gruppierung von Anwendungsgruppen in Windows Virtual Desktop. Jede Windows Virtual Desktop-Anwendungsgruppe muss einem Arbeitsbereich zugeordnet sein, damit Benutzer die Remote-Apps und Desktops anzeigen können, die für sie veröffentlicht wurden.  
+Ein Arbeitsbereich ist eine logische Gruppierung von Anwendungsgruppen in Windows Virtual Desktop. Jede Windows Virtual Desktop-Anwendungsgruppe muss einem Arbeitsbereich zugeordnet sein, damit Benutzer die Remote-Apps und Desktops anzeigen können, die für sie veröffentlicht wurden.
 
 ## <a name="end-users"></a>Endbenutzer
 
