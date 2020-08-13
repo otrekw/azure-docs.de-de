@@ -9,12 +9,12 @@ ms.subservice: networking
 ms.date: 06/25/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: f63bcbb26752dc787d508260cce0b0518cdc7c38
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6113ee61d4949649b65607c0f1bd606be4edb2ac
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87080402"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87837158"
 ---
 # <a name="networking-for-azure-virtual-machine-scale-sets"></a>Netzwerk für Azure-VM-Skalierungsgruppen
 
@@ -244,7 +244,7 @@ Beispielausgabe des [Azure-Ressourcen-Explorers](https://resources.azure.com) un
 Jeder NIC, die an einen virtuellen Computer in einer Skalierungsgruppe angefügt ist, kann mindestens eine IP-Konfiguration zugeordnet sein. Jeder Konfiguration wird eine private IP-Adresse zugewiesen. Außerdem kann jeder Konfiguration eine öffentliche IP-Adressressource zugeordnet sein. Informationen dazu, wie viele IP-Adressen einer NIC zugewiesen werden und wie viele öffentliche IP-Adressen Sie in einem Azure-Abonnement verwenden können, finden Sie unter [Netzwerkgrenzwerte – Azure Resource Manager](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
 
 ## <a name="multiple-nics-per-virtual-machine"></a>Mehrere NICs vor virtuellem Computer
-Ein virtueller Computer kann je nach Größe über bis zu acht NICs verfügen. Informationen zur maximalen Anzahl von NICs pro Computer finden Sie im Artikel [Größen für virtuelle Windows-Computer in Azure](../virtual-machines/windows/sizes.md). Alle mit einer VM-Instanz verbundenen NICs müssen eine Verbindung mit dem gleichen virtuellen Netzwerk herstellen. Die NICs können eine Verbindung mit verschiedenen Subnetzen herstellen, aber alle Subnetze müssen Teil des gleichen virtuellen Netzwerks sein.
+Ein virtueller Computer kann je nach Größe über bis zu acht NICs verfügen. Informationen zur maximalen Anzahl von NICs pro Computer finden Sie im Artikel [Größen für virtuelle Windows-Computer in Azure](../virtual-machines/sizes.md). Alle mit einer VM-Instanz verbundenen NICs müssen eine Verbindung mit dem gleichen virtuellen Netzwerk herstellen. Die NICs können eine Verbindung mit verschiedenen Subnetzen herstellen, aber alle Subnetze müssen Teil des gleichen virtuellen Netzwerks sein.
 
 Das folgende Beispiel ist ein Skalierungsgruppen-Netzwerkprofil mit mehreren NIC-Einträgen und mehreren öffentlichen IP-Adressen pro virtuellem Computer:
 

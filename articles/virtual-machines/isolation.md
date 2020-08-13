@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 09/18/2019
 ms.author: ayshak
-ms.openlocfilehash: 7732f83dfd44cbf686e2d076c665c980962b19d5
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 58b3f9c3655a2e15842f7fa28ad3e6921395beba
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87292363"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87831446"
 ---
 # <a name="virtual-machine-isolation-in-azure"></a>Isolation von virtuellen Computern in Azure
 
@@ -59,7 +59,7 @@ Da es sich bei der Größe isolierter VMs um eine hardwaregebundene Größe hand
 **A:** Wir werden 12 Monate vor der offiziellen Einstellung der Unterstützung der Größen von isolierten VMs Erinnerungen bereitstellen.
 
 ### <a name="q-im-an-azure-service-fabric-customer-relying-on-the-silver-or-gold-durability-tiers-does-this-change-impact-me"></a>F: Ich bin ein Azure Service Fabric-Kunde, der die Dauerhaftigkeitsstufen Silver oder Gold verwendet. Wirkt sich diese Änderung auf mich aus?
-**A:** Nein. Die von den [Dauerhaftigkeitsstufen](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-durability-characteristics-of-the-cluster) von Service Fabric bereitgestellten Garantien werden auch nach dieser Änderung weiterhin funktionieren. Wenn Sie aus anderen Gründen physische Hardwareisolierung benötigen, müssen Sie möglicherweise dennoch eine der oben beschriebenen Aktionen ausführen. 
+**A:** Nein. Die von den [Dauerhaftigkeitsstufen](../service-fabric/service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster) von Service Fabric bereitgestellten Garantien werden auch nach dieser Änderung weiterhin funktionieren. Wenn Sie aus anderen Gründen physische Hardwareisolierung benötigen, müssen Sie möglicherweise dennoch eine der oben beschriebenen Aktionen ausführen. 
  
 ### <a name="q-what-are-the-milestones-for-d15_v2-or-ds15_v2-isolation-retirement"></a>F: Welche Meilensteine gibt es bei der Einstellung der Unterstützung der Isolation von D15_v2 bzw. DS15_v2? 
 **A:** 

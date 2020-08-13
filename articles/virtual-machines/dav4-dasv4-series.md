@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 06fe0cf14346b9a1a5a1f3c093abeec1d1be159a
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 570e2798cf2ae5a20d55973622cca9344ea4a4a3
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87292505"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87837141"
 ---
 # <a name="dav4-and-dasv4-series"></a>Dav4- und Dasv4-Serie
 
@@ -81,7 +81,7 @@ Die Größen der Dasv4-Serie basieren auf dem AMD-Prozessor EPYC<sup>TM</sup> 74
 
 Preisrechner: [Preisrechner](https://azure.microsoft.com/pricing/calculator/)
 
-Weitere Informationen zu Datenträgertypen: [Datenträgertypen](https://docs.microsoft.com/azure/virtual-machines/linux/disks-types#ultra-ssd-preview/)
+Weitere Informationen zu Datenträgertypen: [Datenträgertypen](./linux/disks-types.md#ultra-disk)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

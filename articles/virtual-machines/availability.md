@@ -6,12 +6,12 @@ ms.author: cynthn
 ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 05/10/2019
-ms.openlocfilehash: d26e1edb53f963d591b1ee1fba58b87fd454e898
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 18d7755bf6bf9d09a8da30cb5c2892af6ed90c7d
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87288571"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87830647"
 ---
 # <a name="availability-options-for-virtual-machines-in-azure"></a>Verfügbarkeitsoptionen für virtuelle Computer in Azure
 
@@ -47,11 +47,11 @@ Mit diesem Ansatz wird sichergestellt, dass mindestens eine Instanz Ihrer Anwend
 
 ## <a name="virtual-machines-scale-sets"></a>Skalierungsgruppen für virtuelle Computer 
 
-Mit Azure-VM-Skalierungsgruppen können Sie eine Gruppe VMs mit Lastenausgleich erstellen und verwalten. Die Anzahl von VM-Instanzen kann automatisch erhöht oder verringert werden, wenn sich der Bedarf ändert, oder es kann ein Zeitplan festgelegt werden. Skalierungsgruppen ermöglichen Hochverfügbarkeit für Ihre Anwendungen und das zentrale Verwalten, Konfigurieren und Aktualisieren zahlreicher VMs. Es empfiehlt sich, mindestens zwei VMs in einer Skalierungsgruppe zu erstellen, um eine Anwendung mit hoher Verfügbarkeit zu erhalten und die [Azure-SLA von 99,95 Prozent](https://azure.microsoft.com/support/legal/sla/virtual-machines/) zu erfüllen. Für die Skalierungssgruppe selbst entstehen keine Kosten. Sie bezahlen nur für die einzelnen VM-Instanzen, die Sie erstellen. Wenn ein einzelner virtuelle Computer [Azure Premium SSD](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#premium-ssd) verwendet, gilt die Azure-SLA für ungeplante Wartungsereignisse. VMs in einer Skalierungsgruppe können über mehrere Updatedomänen und Fehlerdomänen hinweg bereitgestellt werden, um die Verfügbarkeit und Ausfallsicherheit für den Fall von Rechenzentrumsausfällen sowie geplanten oder ungeplanten Wartungsereignissen zu maximieren. VMs in einer Skalierungsgruppe können auch in einer einzelnen Verfügbarkeitszone oder regional bereitgestellt werden. Die Bereitstellungsoptionen für Verfügbarkeitszonen können je nach Orchestrierungsmodus variieren.
+Mit Azure-VM-Skalierungsgruppen können Sie eine Gruppe VMs mit Lastenausgleich erstellen und verwalten. Die Anzahl von VM-Instanzen kann automatisch erhöht oder verringert werden, wenn sich der Bedarf ändert, oder es kann ein Zeitplan festgelegt werden. Skalierungsgruppen ermöglichen Hochverfügbarkeit für Ihre Anwendungen und das zentrale Verwalten, Konfigurieren und Aktualisieren zahlreicher VMs. Es empfiehlt sich, mindestens zwei VMs in einer Skalierungsgruppe zu erstellen, um eine Anwendung mit hoher Verfügbarkeit zu erhalten und die [Azure-SLA von 99,95 Prozent](https://azure.microsoft.com/support/legal/sla/virtual-machines/) zu erfüllen. Für die Skalierungssgruppe selbst entstehen keine Kosten. Sie bezahlen nur für die einzelnen VM-Instanzen, die Sie erstellen. Wenn ein einzelner virtuelle Computer [Azure Premium SSD](./windows/disks-types.md#premium-ssd) verwendet, gilt die Azure-SLA für ungeplante Wartungsereignisse. VMs in einer Skalierungsgruppe können über mehrere Updatedomänen und Fehlerdomänen hinweg bereitgestellt werden, um die Verfügbarkeit und Ausfallsicherheit für den Fall von Rechenzentrumsausfällen sowie geplanten oder ungeplanten Wartungsereignissen zu maximieren. VMs in einer Skalierungsgruppe können auch in einer einzelnen Verfügbarkeitszone oder regional bereitgestellt werden. Die Bereitstellungsoptionen für Verfügbarkeitszonen können je nach Orchestrierungsmodus variieren.
 
 **Fehler- und Updatedomänen**
 
-VM-Skalierungsgruppen vereinfachen durch das Ausrichten von Fehlerdomänen und Updatedomänen das Entwerfen für Hochverfügbarkeit. Sie müssen nur die Anzahl der Fehlerdomänen für die Skalierungsgruppe definieren. Die Anzahl der für die Skalierungsgruppe verfügbaren Fehlerdomänen kann je nach Region variieren. Weitere Informationen finden Sie unter [Verwalten der Verfügbarkeit virtueller Windows-Computer in Azure](https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability).
+VM-Skalierungsgruppen vereinfachen durch das Ausrichten von Fehlerdomänen und Updatedomänen das Entwerfen für Hochverfügbarkeit. Sie müssen nur die Anzahl der Fehlerdomänen für die Skalierungsgruppe definieren. Die Anzahl der für die Skalierungsgruppe verfügbaren Fehlerdomänen kann je nach Region variieren. Weitere Informationen finden Sie unter [Verwalten der Verfügbarkeit virtueller Windows-Computer in Azure](./windows/manage-availability.md).
 
 
 ## <a name="availability-sets"></a>Verfügbarkeitsgruppen
@@ -72,4 +72,3 @@ VMs innerhalb einer Verfügbarkeitsgruppe werden automatisch auf die Updatedomä
 
 ## <a name="next-steps"></a>Nächste Schritte
 Sie können diese Verfügbarkeits- und Redundanzfunktionen jetzt nutzen, um Ihre Azure-Umgebung zu erstellen. Weitere Informationen zu bewährten Methoden finden Sie unter [Checkliste für die Verfügbarkeit](/azure/architecture/checklist/resiliency-per-service).
-

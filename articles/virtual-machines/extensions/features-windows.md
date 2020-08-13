@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: akjosh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c28fe96fe88a3b0744aaad72d49e8e2f52912fb6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 611edb06762b96ded7671b70ec0f5d4f07f51848
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87082629"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87829083"
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>Erweiterungen und Features für virtuelle Computer für Windows
 
@@ -36,7 +36,7 @@ Es sind verschiedene Azure VM-Erweiterungen für jeweils spezifische Anwendungsf
 
 - Anwenden von gewünschten Statuskonfigurationen mit PowerShell auf eine VM mithilfe der DSC-Erweiterung für Windows. Weitere Informationen finden Sie unter [Azure Desired State configuration extension](dsc-overview.md) (Azure-Erweiterung für die gewünschte Statuskonfiguration).
 - Konfigurieren der Überwachung einer VM mit der Log Analytics-Agent-VM-Erweiterung. Weitere Informationen finden Sie unter [Verbinden von virtuellen Azure-Computern mit Azure Monitor-Protokollen](../../azure-monitor/learn/quick-collect-azurevm.md).
-- Konfigurieren eines virtuellen Azure-Computers mit Chef. Weitere Informationen finden Sie unter [Automatisieren der Bereitstellung virtueller Azure-Computer mit Chef](../../chef/chef-automation.md).
+- Konfigurieren eines virtuellen Azure-Computers mit Chef. Weitere Informationen finden Sie unter [Automatisieren der Bereitstellung virtueller Azure-Computer mit Chef](/azure/developer/chef/windows-vm-configure).
 - Konfigurieren der Überwachung Ihrer Azure-Infrastruktur mit der Datadog-Erweiterung. Weitere Informationen finden Sie im [Datadog-Blog](https://www.datadoghq.com/blog/introducing-azure-monitoring-with-one-click-datadog-deployment/).
 
 

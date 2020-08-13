@@ -6,18 +6,18 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: 7a6105e8742a4cb3d2f113c6ef723f6171baf4d9
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 3b30cefdd72286c15095828c409a87f173200a7b
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87328012"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87828403"
 ---
 # <a name="enable-azure-monitor-for-vms-for-a-hybrid-virtual-machine"></a>Aktivieren von Azure Monitor für VMs für eine Hybrid-VM
 In diesem Artikel wird beschrieben, wie Sie Azure Monitor für VMs für einen virtuellen Computer außerhalb von Azure aktivieren, einschließlich lokaler und anderer Cloudumgebungen.
 
 > [!IMPORTANT]
-> Bei der empfohlenen Methode zum Aktivieren von Hybrid-VMs wird zunächst [Azure Arc für Server](/azure-arc/servers/overview.md) aktiviert, damit die VMs mithilfe von Prozessen, die Azure-VMs ähneln, für Azure Monitor für VMs aktiviert werden können. In diesem Artikel wird beschrieben, wie Sie Hybrid-VMs integrieren, falls Sie sich gegen die Verwendung von Azure Arc entschieden haben.
+> Bei der empfohlenen Methode zum Aktivieren von Hybrid-VMs wird zunächst [Azure Arc für Server](../../azure-arc/servers/overview.md) aktiviert, damit die VMs mithilfe von Prozessen, die Azure-VMs ähneln, für Azure Monitor für VMs aktiviert werden können. In diesem Artikel wird beschrieben, wie Sie Hybrid-VMs integrieren, falls Sie sich gegen die Verwendung von Azure Arc entschieden haben.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -31,7 +31,7 @@ Virtuelle Computer außerhalb von Azure erfordern denselben Log Analytics-Agent 
 Ausführliche Informationen zum Bereitstellen des Log Analytics-Agents finden Sie unter [Verbinden von Windows-Computern mit Azure Monitor](../platform/agent-windows.md) oder [Verbinden von Linux-Computern mit Azure Monitor](../platform/agent-linux.md). Ausführliche Informationen zum Dependency-Agent sind in diesem Artikel enthalten. 
 
 ## <a name="firewall-requirements"></a>Firewallanforderungen
-Die Firewallanforderungen für den Log Analytics-Agent finden Sie in der [Übersicht über den Log Analytics-Agent](..//platform/log-analytics-agent.md#network-requirements). Der Dependency-Agent für das Zuordnungsfeature von Azure Monitor für VMs überträgt selbst keine Daten und erfordert keine Änderungen an Firewalls oder Ports. Die Zuordnungsdaten werden immer vom Log Analytics-Agent an den Azure Monitor-Dienst übertragen, entweder direkt oder über das [Operations Management Suite-Gateway](../../azure-monitor/platform/gateway.md), falls Ihre IT-Sicherheitsrichtlinien es nicht zulassen, dass Computer im Netzwerk eine Verbindung mit dem Internet herstellen.
+Die Firewallanforderungen für den Log Analytics-Agent finden Sie in der [Übersicht über den Log Analytics-Agent](../platform/log-analytics-agent.md#network-requirements). Der Dependency-Agent für das Zuordnungsfeature von Azure Monitor für VMs überträgt selbst keine Daten und erfordert keine Änderungen an Firewalls oder Ports. Die Zuordnungsdaten werden immer vom Log Analytics-Agent an den Azure Monitor-Dienst übertragen, entweder direkt oder über das [Operations Management Suite-Gateway](../../azure-monitor/platform/gateway.md), falls Ihre IT-Sicherheitsrichtlinien es nicht zulassen, dass Computer im Netzwerk eine Verbindung mit dem Internet herstellen.
 
 
 ## <a name="dependency-agent"></a>Abhängigkeits-Agent
@@ -158,7 +158,7 @@ Wenn die Installation des Dependency-Agents erfolgreich war, der Computer jedoch
 
     **Linux:** Suchen Sie nach dem laufenden Prozess „microsoft-dependency-agent“.
 
-2. Nutzen Sie den [Tarif „Free“ von Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions)? Der kostenlose Plan („Free“) lässt bis zu fünf eindeutige Computer zu. Alle weiteren Computer werden auf der Karte nicht angezeigt, selbst wenn die vorherigen fünf keine Daten mehr senden.
+2. Nutzen Sie den [Tarif „Free“ von Log Analytics](./solutions.md)? Der kostenlose Plan („Free“) lässt bis zu fünf eindeutige Computer zu. Alle weiteren Computer werden auf der Karte nicht angezeigt, selbst wenn die vorherigen fünf keine Daten mehr senden.
 
 3. Sendet der Computer Protokoll- und Leistungsdaten an Azure Monitor-Protokolle? Führen Sie die folgende Abfrage für Ihren Computer aus:
 

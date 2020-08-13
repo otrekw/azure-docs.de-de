@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: cedb5899b392cb111f9c1bb76949e940ef837252
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 64f1de178e2b1e1692ddad316e6c1c1d20517b78
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284811"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87835832"
 ---
 # <a name="lsv2-series"></a>Lsv2-Reihe
 
@@ -52,7 +52,7 @@ Updates mit Speicherbeibehaltung: Nicht unterstützt
 
 <sup>3</sup> Hyper-V NVMe Direct-Technologie ermöglicht den ungedrosselten Zugriff auf lokale NVMe-Laufwerke, die sicher dem Bereich der Gast-VM zugeordnet sind.  Für das Erreichen maximaler Leistung sind entweder der neueste WS2019-Build oder Ubuntu 18.04 oder 16.04 aus dem Azure Marketplace erforderlich.  Die Schreibleistung weicht je nach EA-Größe, Laufwerksauslastung und Kapazitätsnutzung ab.
 
-<sup>4</sup> VMs der Lsv2-Reihe stellen keinen Hostcache für Datenträger bereit, da dieser den Lsv2-Workloads nicht zugute kommt.  Allerdings können Lsv2-VMs die kurzlebige VM-Betriebssystemdatenträger-Option (bis zu 30 GiB) von Azure bieten.
+<sup>4</sup> VMs der Lsv2-Reihe stellen keinen Hostcache für Datenträger bereit, da dieser den Lsv2-Workloads nicht zugute kommt.
 
 <sup>5</sup> VMs der Lsv2-Serie können ihre Datenträgerleistung für jeweils bis zu 30 Minuten mit [Burst](linux/disk-bursting.md) verbessern. 
 
@@ -87,7 +87,7 @@ Updates mit Speicherbeibehaltung: Nicht unterstützt
 
 Preisrechner: [Preisrechner](https://azure.microsoft.com/pricing/calculator/)
 
-Weitere Informationen zu Datenträgertypen: [Datenträgertypen](https://docs.microsoft.com/azure/virtual-machines/linux/disks-types#ultra-ssd-preview/)
+Weitere Informationen zu Datenträgertypen: [Datenträgertypen](./linux/disks-types.md#ultra-disk)
 
 
 ## <a name="next-steps"></a>Nächste Schritte

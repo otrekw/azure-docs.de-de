@@ -5,12 +5,12 @@ ms.date: 06/02/2020
 ms.topic: conceptual
 description: Beschreibt die Prozesse, auf denen Azure Dev Spaces basiert.
 keywords: Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container
-ms.openlocfilehash: 536918e1b1db88dcae6985b853b3cb0a6c91a52a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 40125b07029c78b4e8858d54058aabe038109057
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86522277"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87837413"
 ---
 # <a name="how-azure-dev-spaces-works"></a>Funktionsweise von Azure Dev Spaces
 
@@ -48,7 +48,7 @@ Informationen zu den ersten Schritten beim Verbinden Ihres lokalen Entwicklungsc
 
 Informationen zu den ersten Schritten bei der Verwendung von Azure Dev Spaces für die Teamentwicklung finden Sie im Schnellstart [Teamentwicklung in Azure Dev Spaces][quickstart-team].
 
-[connect]: how-to/local-process-kubernetes-vs-code.md
+[connect]: https://code.visualstudio.com/docs/containers/local-process-kubernetes
 [how-it-works-local-process-kubernetes]: /visualstudio/containers/overview-local-process-kubernetes
 [how-it-works-prep]: how-dev-spaces-works-prep.md
 [how-it-works-remote-debugging]: how-dev-spaces-works-remote-debugging.md

@@ -9,12 +9,12 @@ ms.subservice: autoscale
 ms.date: 06/25/2020
 ms.reviwer: jushiman
 ms.custom: avverma
-ms.openlocfilehash: 1ee4c8a52098bfa7c012e85f25371c306b106b86
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b5e786a64d7d9606a3a99a3f1b3f8c67c9869cd1
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87029432"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87830681"
 ---
 # <a name="troubleshooting-autoscale-with-virtual-machine-scale-sets"></a>Beheben von Problemen bei der automatischen Skalierung von VM-Skalierungsgruppen
 **Problem:** Sie haben im Azure Resource Manager mithilfe von VM-Skalierungsgruppen eine Infrastruktur mit automatischer Skalierung erstellt, beispielsweise durch Bereitstellung der folgenden Vorlage: https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale. Sie haben die Skalierungsregeln festgelegt, und alles funktioniert einwandfrei, aber auch bei hoher Auslastung der virtuellen Computer erfolgt keine automatische Skalierung.
@@ -23,7 +23,7 @@ ms.locfileid: "87029432"
 Folgende Punkte sollten berücksichtigt werden:
 
 * Über wie viele vCPUs verfügt jeder virtuelle Computer, und laden Sie jede vCPU?
-  Das vorstehende Beispiel einer Azure-Schnellstartvorlage enthält das Skript „do_work.php“, das eine einzelne vCPU lädt. Wenn Sie einen größeren virtuellen Computer als eine Größe mit einer vCPU wie Standard_A1 oder D1 verwenden, müssten Sie diese Last mehrmals ausführen. Überprüfen Sie die Anzahl der vCPUs Ihrer virtuellen Computer. Lesen Sie dazu die Informationen unter [Größen für virtuelle Windows-Computer in Azure](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+  Das vorstehende Beispiel einer Azure-Schnellstartvorlage enthält das Skript „do_work.php“, das eine einzelne vCPU lädt. Wenn Sie einen größeren virtuellen Computer als eine Größe mit einer vCPU wie Standard_A1 oder D1 verwenden, müssten Sie diese Last mehrmals ausführen. Überprüfen Sie die Anzahl der vCPUs Ihrer virtuellen Computer. Lesen Sie dazu die Informationen unter [Größen für virtuelle Windows-Computer in Azure](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 * Wie viele virtuelle Computer sind in der VM-Skalierungsgruppe enthalten? Wird auf jedem virtuellen Computer eine Last ausgeführt?
   
     Das horizontale Hochskalieren erfolgt nur, wenn die durchschnittliche CPU auf **allen** virtuellen Computer in einer Skalierungsgruppe den Schwellenwert in dem Zeitintervall überschreitet, das in den Regeln für die automatische Skalierung festgelegt ist.

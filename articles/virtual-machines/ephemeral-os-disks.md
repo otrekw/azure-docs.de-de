@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 07/23/2020
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: 4fabaed28ca186f3ca091107e51ed3900168ba41
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: f312170fd357e64e2fbd7d455987993cdad76123
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387726"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87837107"
 ---
 # <a name="ephemeral-os-disks-for-azure-vms"></a>Kurzlebige Betriebssystemdatenträger für virtuelle Azure-Computer
 
@@ -51,7 +51,7 @@ Sie können VM- und Instanzimages bis zur Größe des VM-Caches bereitstellen. W
 Kurzlebige Datenträger erfordern außerdem, dass die VM-Größe Storage Premium unterstützt. Die Größen weisen in der Regel (aber nicht immer) ein `s` im Namen auf, z.B. DSv2- und EsV3. Ausführliche Informationen dazu, welche Größen Storage Premium unterstützen, finden Sie unter den [Größen für virtuelle Azure-Computer](sizes.md).
 
 ## <a name="preview---ephemeral-os-disks-can-now-be-stored-on-temp-disks"></a>Vorschau: kurzlebige Betriebssystem Datenträger können jetzt auf temporären Datenträgern gespeichert werden
-Kurzlebige Betriebssystemdatenträger können jetzt zusätzlich zum VM-Cache auf dem temporären bzw. Ressourcendatenträger einer VM gespeichert werden. Daher können Sie nun kurzlebige Betriebssystemdatenträger mit einer VM verwenden, die keinen Cache oder zu wenig Cache, aber einen temporären bzw. Ressourcendatenträger hat, um den kurzlebigen Betriebssystemdatenträger zu speichern, etwa Dav3, Dav4, Eav4 und Eav3. Hat eine VM ausreichend Cache und temporären Speicherplatz, können Sie nun auch angeben, wo der kurzlebige Betriebssystemdatenträger gespeichert werden soll, indem Sie die neue Eigenschaft [DiffDiskPlacement](https://docs.microsoft.com/rest/api/compute/virtualmachines/list#diffdiskplacement) verwenden. Diese Funktion steht derzeit als Vorschau zur Verfügung. Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Um zu beginnen, [fordern Sie Zugriff an](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR6cQw0fZJzdIsnbfbI13601URTBCRUZPMkQwWFlCOTRIMFBSNkM1NVpQQS4u).
+Kurzlebige Betriebssystemdatenträger können jetzt zusätzlich zum VM-Cache auf dem temporären bzw. Ressourcendatenträger einer VM gespeichert werden. Daher können Sie nun kurzlebige Betriebssystemdatenträger mit einer VM verwenden, die keinen Cache oder zu wenig Cache, aber einen temporären bzw. Ressourcendatenträger hat, um den kurzlebigen Betriebssystemdatenträger zu speichern, etwa Dav3, Dav4, Eav4 und Eav3. Hat eine VM ausreichend Cache und temporären Speicherplatz, können Sie nun auch angeben, wo der kurzlebige Betriebssystemdatenträger gespeichert werden soll, indem Sie die neue Eigenschaft [DiffDiskPlacement](/rest/api/compute/virtualmachines/list#diffdiskplacement) verwenden. Diese Funktion steht derzeit als Vorschau zur Verfügung. Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Um zu beginnen, [fordern Sie Zugriff an](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR6cQw0fZJzdIsnbfbI13601URTBCRUZPMkQwWFlCOTRIMFBSNkM1NVpQQS4u).
 
 ## <a name="powershell"></a>PowerShell
 

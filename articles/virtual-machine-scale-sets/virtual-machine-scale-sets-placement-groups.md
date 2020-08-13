@@ -9,15 +9,15 @@ ms.subservice: management
 ms.date: 06/25/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: 0848d092c342b29c1839a4dd4cebd0bad62ea3ca
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 16c9c103053c0cd36273feb84cd9b07fcf2627bb
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86023005"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87830630"
 ---
 # <a name="working-with-large-virtual-machine-scale-sets"></a>Verwenden umfangreicher VM-Skalierungsgruppen
-Sie können nun [Azure-VM-Skalierungsgruppen](/azure/virtual-machine-scale-sets/) mit einer Kapazität von bis zu 1.000 virtuellen Computern erstellen. Eine _umfangreiche VM-Skalierungsgruppe_ ist in diesem Dokument als Skalierungsgruppe mit mehr als 100 virtuellen Computern definiert. Diese Funktion wird über eine Skalierungsgruppeneigenschaft (_singlePlacementGroup=False_) festgelegt. 
+Sie können nun [Azure-VM-Skalierungsgruppen](./index.yml) mit einer Kapazität von bis zu 1.000 virtuellen Computern erstellen. Eine _umfangreiche VM-Skalierungsgruppe_ ist in diesem Dokument als Skalierungsgruppe mit mehr als 100 virtuellen Computern definiert. Diese Funktion wird über eine Skalierungsgruppeneigenschaft (_singlePlacementGroup=False_) festgelegt. 
 
 Bestimmte Aspekte umfangreicher Skalierungsgruppen (wie etwa Lastenausgleich und Fehlerdomänen) verhalten sich anders als bei Standardskalierungsgruppen. In diesem Dokument werden die Merkmale umfangreicher Skalierungsgruppen erläutert, und Sie erfahren, wie Sie sie erfolgreich in Ihren Anwendungen verwenden. 
 
@@ -34,10 +34,10 @@ Die effektive Nutzung umfangreicher Skalierungsgruppen durch eine Anwendung hän
 - Skalierungsgruppen, die auf der Grundlage benutzerdefinierter Images (selbst erstellte und hochgeladene VM-Images) erstellt wurden, können derzeit auf bis zu 600 virtuelle Computer skaliert werden.
 - Umfangreiche Skalierungsgruppen erfordern Azure Managed Disks. Für Skalierungsgruppen, die nicht mit Managed Disks erstellt wurden, sind mehrere Speicherkonten (jeweils eins pro 20 virtuelle Computer) erforderlich. Umfangreiche Skalierungsgruppen wurden exklusiv für die Verwendung mit Managed Disks konzipiert, um die Speicherverwaltung zu vereinfachen und um zu verhindern, dass Abonnementgrenzwerte für Speicherkonten erreicht werden. 
 - Umfangreiche Skalierung (SPG=false) unterstützt keine InfiniBand-Netzwerkfunktionen.
-- Für den Layer-4-Lastenausgleich mit Skalierungsgruppen bestehend aus mehreren Platzierungsgruppen ist die [Standard-SKU von Azure Load Balancer](../load-balancer/load-balancer-standard-overview.md) erforderlich. Mit der Standard-SKU von Azure Load Balancer profitieren Sie von weiteren Vorteilen, z.B. der Möglichkeit zum Durchführen des Lastenausgleichs zwischen mehreren Skalierungsgruppen. Außerdem ist es für die Standard-SKU erforderlich, dass der Skalierungsgruppe eine Netzwerksicherheitsgruppe zugeordnet ist. Andernfalls funktionieren NAT-Pools nicht richtig. Falls Sie die Azure Load Balancer Basic-SKU verwenden müssen, sollten Sie darauf achten, dass die Skalierungsgruppe für die Verwendung einer einzelnen Platzierungsgruppe konfiguriert ist. Dies ist die Standardeinstellung.
+- Für den Layer-4-Lastenausgleich mit Skalierungsgruppen bestehend aus mehreren Platzierungsgruppen ist die [Standard-SKU von Azure Load Balancer](../load-balancer/load-balancer-overview.md) erforderlich. Mit der Standard-SKU von Azure Load Balancer profitieren Sie von weiteren Vorteilen, z.B. der Möglichkeit zum Durchführen des Lastenausgleichs zwischen mehreren Skalierungsgruppen. Außerdem ist es für die Standard-SKU erforderlich, dass der Skalierungsgruppe eine Netzwerksicherheitsgruppe zugeordnet ist. Andernfalls funktionieren NAT-Pools nicht richtig. Falls Sie die Azure Load Balancer Basic-SKU verwenden müssen, sollten Sie darauf achten, dass die Skalierungsgruppe für die Verwendung einer einzelnen Platzierungsgruppe konfiguriert ist. Dies ist die Standardeinstellung.
 - Layer-7-Lastenausgleich mit Azure Application Gateway wird für alle Skalierungsgruppen unterstützt.
 - Eine Skalierungsgruppe ist mit einem einzelnen Subnetz definiert. Vergewissern Sie sich daher, dass Ihr Subnetz über einen ausreichend großen Adressbereich für alle benötigten virtuellen Computer verfügt. Zur Verbesserung der Zuverlässigkeit und der Leistung der Bereitstellung findet bei Skalierungsgruppen standardmäßig eine Überbereitstellung statt. (Zur Bereitstellungszeit oder beim horizontalen Hochskalieren werden also zusätzliche virtuelle Computer erstellt.) Die Größe des Adressraums sollte daher die geplante Anzahl von virtuellen Computern, auf die Sie skalieren möchten, um etwa 20 Prozent übersteigen.
-- Fehler- und Upgradedomänen sind nur innerhalb einer Platzierungsgruppe konsistent. Diese Architektur ändert nichts an der allgemeinen Verfügbarkeit einer Skalierungsgruppe, da virtuelle Computer gleichmäßig auf unterschiedliche physische Hardware verteilt werden. Wenn Sie jedoch sicherstellen müssen, dass sich zwei virtuelle Computer auf unterschiedlicher Hardware befinden, müssen Sie sich vergewissern, dass sie sich in unterschiedlichen Fehlerdomänen in der gleichen Platzierungsgruppe befinden. Weitere Informationen finden Sie unter [Verfügbarkeitsoptionen für virtuelle Computer in Azure](/azure/virtual-machines/windows/availability). 
+- Fehler- und Upgradedomänen sind nur innerhalb einer Platzierungsgruppe konsistent. Diese Architektur ändert nichts an der allgemeinen Verfügbarkeit einer Skalierungsgruppe, da virtuelle Computer gleichmäßig auf unterschiedliche physische Hardware verteilt werden. Wenn Sie jedoch sicherstellen müssen, dass sich zwei virtuelle Computer auf unterschiedlicher Hardware befinden, müssen Sie sich vergewissern, dass sie sich in unterschiedlichen Fehlerdomänen in der gleichen Platzierungsgruppe befinden. Weitere Informationen finden Sie unter [Verfügbarkeitsoptionen für virtuelle Computer in Azure](../virtual-machines/availability.md). 
 - Fehlerdomäne und Platzierungsgruppen-ID werden in der _Instanzansicht_ eines virtuellen Skalierungsgruppencomputers angezeigt. Die Instanzansicht eines virtuellen Skalierungsgruppencomputers können Sie im [Azure-Ressourcen-Explorer](https://resources.azure.com/) anzeigen.
 
 ## <a name="creating-a-large-scale-set"></a>Erstellen einer umfangreichen Skalierungsgruppe
@@ -84,5 +84,3 @@ Wenn eine vorhandene VM-Skalierungsgruppe auf über 100 VMs skalierbar sein soll
 
 > [!NOTE]
 > Eine Skalierungsgruppe, die nur eine einzelne Platzierungsgruppe unterstützt (Standardverhalten), kann in eine Skalierungsgruppe konvertiert werden, die mehrere Skalierungsgruppen unterstützt, aber nicht umgekehrt. Machen Sie sich daher vor der Konvertierung sorgfältig mit den Eigenschaften umfangreicher Skalierungsgruppen vertraut.
-
-

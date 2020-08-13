@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 04/07/2020
 ms.author: jushiman
-ms.openlocfilehash: 74d8c4dc9f6b8f1a409f5f6766bea57b23b15ba7
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: f86400f1fb45217133bbd715788986994f5f77cc
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284794"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836257"
 ---
 # <a name="mv2-series"></a>Mv2-Serie
 
@@ -59,7 +59,7 @@ Schreibbeschleunigung: [Unterstützt](./windows/how-to-enable-write-accelerator.
 
 Preisrechner: [Preisrechner](https://azure.microsoft.com/pricing/calculator/)
 
-Weitere Informationen zu Datenträgertypen: [Datenträgertypen](https://docs.microsoft.com/azure/virtual-machines/linux/disks-types#ultra-ssd-preview/)
+Weitere Informationen zu Datenträgertypen: [Datenträgertypen](./linux/disks-types.md#ultra-disk)
 
 
 ## <a name="next-steps"></a>Nächste Schritte

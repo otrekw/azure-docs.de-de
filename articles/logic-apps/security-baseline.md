@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: d27abfda789a9bb1bd5479b059355703388333f8
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 7dc0913ab206c6b9152d7d6155642c28b430d6f2
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86520645"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836325"
 ---
 # <a name="azure-security-baseline-for-logic-apps"></a>Azure-Sicherheitsbaseline für Logic Apps
 
@@ -643,7 +643,7 @@ Microsoft verwaltet die zugrunde liegende Infrastruktur für Azure Logic Apps un
 
 ### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4.6: Verwenden der rollenbasierten Zugriffssteuerung zum Steuern des Zugriffs auf Ressourcen
 
-**Leitfaden**: Sie können nur bestimmten Benutzern oder Gruppen erlauben, bestimmte Aufgaben auszuführen, wie z. B. das Verwalten, Bearbeiten und Anzeigen von Logik-Apps. Um die jeweiligen Berechtigungen zu steuern, verwenden Sie die rollenbasierte Zugriffssteuerung in Azure (Role-Based Access Control, RBAC), damit Sie den Mitgliedern in Ihrem Azure-Abonnement benutzerdefinierte oder integrierte Rollen zuweisen können:
+**Leitfaden**: Sie können nur bestimmten Benutzern oder Gruppen erlauben, bestimmte Aufgaben auszuführen, wie z. B. das Verwalten, Bearbeiten und Anzeigen von Logik-Apps. Um die jeweiligen Berechtigungen zu steuern, verwenden Sie die rollenbasierte Zugriffssteuerung in Azure (Azure Role-Based Access Control, RBAC), damit Sie den Mitgliedern in Ihrem Azure-Abonnement benutzerdefinierte oder integrierte Rollen zuweisen können:
 - Logik-App-Mitwirkender: Ermöglicht Ihnen die Verwaltung von Logik-Apps, aber nicht die Änderung des App-Zugriffs.
 - Logik-App-Operator: Ermöglicht Ihnen das Lesen, Aktivieren und Deaktivieren von Logik-Apps, die Sie aber nicht bearbeiten oder aktualisieren können.
 
@@ -841,7 +841,7 @@ Verwenden Sie Azure Resource Graph, um Ressourcen in ihren Abonnements abzufrage
 
 * [Konfigurieren und Verwalten von Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-* [Ablehnen eines bestimmten Ressourcentyps mit Azure Policy](/azure/governance/policy/samples/not-allowed-resource-types)
+* [Ablehnen eines bestimmten Ressourcentyps mit Azure Policy](../governance/policy/samples/index.md)
 
 **Azure Security Center-Überwachung**: –
 

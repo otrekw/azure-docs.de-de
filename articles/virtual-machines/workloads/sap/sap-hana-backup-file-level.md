@@ -12,20 +12,20 @@ ums.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/01/2020
 ms.author: juergent
-ms.openlocfilehash: 93b67936166eb73db5e9a15db42c2c6135794108
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 183273e6f93bbfda8ed4e5fe913192994a0b6ce2
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78271384"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87833384"
 ---
 # <a name="sap-hana-azure-backup-on-file-level"></a>SAP HANA-Sicherung mit Azure Backup auf Dateiebene
 
 ## <a name="introduction"></a>Einführung
 
-Dieser Artikel ist ein verwandter Artikel zur [Sicherungsanleitung für SAP HANA in Azure Virtual Machines](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-backup-guide), der eine Übersicht und Informationen zu den ersten Schritten sowie weitere Details zum Azure Backup-Dienst und zu Speichermomentaufnahmen bietet. 
+Dieser Artikel ist ein verwandter Artikel zur [Sicherungsanleitung für SAP HANA in Azure Virtual Machines](./sap-hana-backup-guide.md), der eine Übersicht und Informationen zu den ersten Schritten sowie weitere Details zum Azure Backup-Dienst und zu Speichermomentaufnahmen bietet. 
 
-Verschiedene VM-Typen in Azure lassen eine unterschiedliche Anzahl angefügter VHDs zu. Die genauen Details finden Sie unter [Größen für virtuelle Linux-Computer in Azure](https://docs.microsoft.com/azure/virtual-machines/linux/sizes). Für die in dieser Dokumentation erwähnten Tests haben wir eine Azure-VM des Typs GS5 verwendet, die 64 angefügte Datenträger unterstützt. Bei umfangreichen SAP HANA-Systemen wird ein Großteil der Datenträger u.U. bereits für Daten- und Protokolldateien benötigt – möglicherweise in Kombination mit Software-Striping für einen optimalen Datenträger-E/A-Durchsatz. Weitere Informationen zu empfohlenen Datenträgerkonfigurationen für SAP HANA-Bereitstellungen auf Azure-VMs finden Sie im Artikel [SAP HANA: Speicherkonfigurationen für virtuelle Azure-Computer](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage). Die gegebenen Empfehlungen berücksichtigen auch Angaben zum Speicherplatz für lokale Sicherungen.
+Verschiedene VM-Typen in Azure lassen eine unterschiedliche Anzahl angefügter VHDs zu. Die genauen Details finden Sie unter [Größen für virtuelle Linux-Computer in Azure](../../sizes.md). Für die in dieser Dokumentation erwähnten Tests haben wir eine Azure-VM des Typs GS5 verwendet, die 64 angefügte Datenträger unterstützt. Bei umfangreichen SAP HANA-Systemen wird ein Großteil der Datenträger u.U. bereits für Daten- und Protokolldateien benötigt – möglicherweise in Kombination mit Software-Striping für einen optimalen Datenträger-E/A-Durchsatz. Weitere Informationen zu empfohlenen Datenträgerkonfigurationen für SAP HANA-Bereitstellungen auf Azure-VMs finden Sie im Artikel [SAP HANA: Speicherkonfigurationen für virtuelle Azure-Computer](./hana-vm-operations-storage.md). Die gegebenen Empfehlungen berücksichtigen auch Angaben zum Speicherplatz für lokale Sicherungen.
 
 Die Sicherung/Wiederherstellung auf Dateiebene wird standardmäßig mit einer dateibasierten Sicherung über SAP HANA Studio oder über SAP HANA-SQL-Anweisungen verwaltet. Weitere Informationen finden Sie im Artikel [SAP HANA SQL and System Views Reference](https://help.sap.com/hana/SAP_HANA_SQL_and_System_Views_Reference_en.pdf) (Referenz zu SAP HANA-SQL und zu Systemansichten).
 
@@ -35,15 +35,15 @@ Diese Abbildung zeigt das Dialogfeld des Sicherungsmenüelements in SAP HANA-Stu
 
 Diese Option klingt zwar recht einfach und unkompliziert, es sind jedoch ein paar Punkte zu berücksichtigen. An eine Azure-VM kann nur eine begrenzte Anzahl von Datenträgern angefügt werden. Ggf. reicht die Dateisystemkapazität des virtuellen Computers nicht aus, um SAP HANA-Sicherungsdateien zu speichern. Das hängt von der Größe der Datenbank und von den Anforderungen für den Datenträgerdurchsatz (ggf. mit Software-Striping auf mehreren Datenträgern) ab. Weiter unten in diesem Artikel finden Sie verschiedene Optionen zum Verschieben dieser Sicherungsdateien sowie zum Verwalten der Dateigrößenbeschränkungen und der Leistung beim Verarbeiten großer Datenmengen.
 
-Eine weitere Option mit größerer Freiheit bei der Gesamtkapazität ist Azure Blob Storage. Ein einzelnes Blob ist zwar ebenfalls auf 1 TB beschränkt, die Gesamtkapazität eines einzelnen Blobcontainers liegt momentan jedoch bei 500 TB. Darüber hinaus haben Kunden die Möglichkeit, so genannten &quot;kalten&quot; Blobspeicher auszuwählen und dadurch Kosten zu sparen. Ausführliche Informationen zu kaltem Blobspeicher finden Sie unter [Azure Blob Storage: Zugriffsebenen „Heiß“, „Kalt“ und „Archiv“](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers?tabs=azure-portal).
+Eine weitere Option mit größerer Freiheit bei der Gesamtkapazität ist Azure Blob Storage. Ein einzelnes Blob ist zwar ebenfalls auf 1 TB beschränkt, die Gesamtkapazität eines einzelnen Blobcontainers liegt momentan jedoch bei 500 TB. Darüber hinaus haben Kunden die Möglichkeit, so genannten &quot;kalten&quot; Blobspeicher auszuwählen und dadurch Kosten zu sparen. Ausführliche Informationen zu kaltem Blobspeicher finden Sie unter [Azure Blob Storage: Zugriffsebenen „Heiß“, „Kalt“ und „Archiv“](../../../storage/blobs/storage-blob-storage-tiers.md?tabs=azure-portal).
 
-Die SAP HANA-Sicherungen können auch in einem georeplizierten Speicherkonto gespeichert werden, um die Sicherheit weiter zu erhöhen. Ausführliche Informationen zur Speicherredundanz und zur Speicherreplikation finden Sie unter [Azure Storage-Redundanz](https://docs.microsoft.com/azure/storage/common/storage-redundancy).
+Die SAP HANA-Sicherungen können auch in einem georeplizierten Speicherkonto gespeichert werden, um die Sicherheit weiter zu erhöhen. Ausführliche Informationen zur Speicherredundanz und zur Speicherreplikation finden Sie unter [Azure Storage-Redundanz](../../../storage/common/storage-redundancy.md).
 
 Sie können dedizierte VHDs für SAP HANA-Sicherungen in einem dedizierten Sicherungsspeicherkonto mit Georeplizierung platzieren. Alternativ können Sie die VHDs mit den SAP HANA-Sicherungen in ein georepliziertes Speicherkonto oder in ein Speicherkonto in einer anderen Region kopieren.
 
 ## <a name="azure-blobxfer-utility-details"></a>Details zum Azure-Hilfsprogramm „blobxfer“
 
-Wenn Sie Verzeichnisse und Dateien in Azure Storage speichern möchten, können Sie dazu entweder die Befehlszeilenschnittstelle oder PowerShell verwenden oder ein Tool mit einem der [Azure SDKs](https://azure.microsoft.com/downloads/) entwickeln. Zum Kopieren von Daten in Azure Storage steht auch das sofort einsatzbereite Hilfsprogramm AzCopy zur Verfügung. (Siehe [Übertragen von Daten mit dem Befehlszeilenprogramm AzCopy](../../../storage/common/storage-use-azcopy.md).)
+Wenn Sie Verzeichnisse und Dateien in Azure Storage speichern möchten, können Sie dazu entweder die Befehlszeilenschnittstelle oder PowerShell verwenden oder ein Tool mit einem der [Azure SDKs](https://azure.microsoft.com/downloads/) entwickeln. Zum Kopieren von Daten in Azure Storage steht auch das sofort einsatzbereite Hilfsprogramm AzCopy zur Verfügung. (Siehe [Übertragen von Daten mit dem Befehlszeilenprogramm AzCopy](../../../storage/common/storage-use-azcopy-v10.md).)
 
 Aus diesem Grund wurde „blobxfer“ zum Kopieren von SAP HANA-Sicherungsdateien verwendet. Dieses Open Source-Programm wird von vielen Kunden in Produktionsumgebungen genutzt und ist über [GitHub](https://github.com/Azure/blobxfer) erhältlich. Mit dem Tool können Daten direkt in Azure Blob Storage oder in eine Azure-Dateifreigabe kopiert werden. Darüber hinaus bietet es eine Reihe nützlicher Features wie MD5-Hash oder automatische Parallelität beim Kopieren eines Verzeichnisses mit mehreren Dateien.
 
@@ -65,7 +65,7 @@ Bei der Wiederholung der gleichen Sicherung mit Software-RAID und übergreifende
 ## <a name="copy-sap-hana-backup-files-to-azure-blob-storage"></a>Kopieren von SAP HANA-Sicherungsdateien in Azure Blob Storage
 Die angegebenen Werte für Leistung, Sicherungsdauer und Kopierdauer stellen möglicherweise nicht den neuesten Status der Azure-Technologie dar. Microsoft verbessert Azure Storage ständig, um einen höheren Durchsatz und eine geringere Latenz zu erzielen. Die Angaben dienen daher lediglich zur Veranschaulichung. Sie müssen Tests entsprechend Ihren individuellen Anforderungen in der Azure-Region Ihrer Wahl ausführen, um einschätzen zu können, welche Methode für Sie am besten geeignet ist.
 
-Azure Blob Storage ist die beste Option zur schnellen Speicherung von SAP HANA-Sicherungsdateien. Ein einzelner Blobcontainer ist auf etwa 500 TB beschränkt. Das sollte für Sicherungen von SAP HANA-Systemen unter Verwendung der Azure-VM-Typen M32ts, M32ls, M64ls und GS5 ausreichend sein. Kunden haben die Wahl zwischen &quot;heißem&quot; und &quot;kaltem&quot; Blobspeicher. (Weitere Informationen finden Sie unter [Azure Blob Storage: Zugriffsebenen „Heiß“, „Kalt“ und „Archiv“](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers?tabs=azure-portal).)
+Azure Blob Storage ist die beste Option zur schnellen Speicherung von SAP HANA-Sicherungsdateien. Ein einzelner Blobcontainer ist auf etwa 500 TB beschränkt. Das sollte für Sicherungen von SAP HANA-Systemen unter Verwendung der Azure-VM-Typen M32ts, M32ls, M64ls und GS5 ausreichend sein. Kunden haben die Wahl zwischen &quot;heißem&quot; und &quot;kaltem&quot; Blobspeicher. (Weitere Informationen finden Sie unter [Azure Blob Storage: Zugriffsebenen „Heiß“, „Kalt“ und „Archiv“](../../../storage/blobs/storage-blob-storage-tiers.md?tabs=azure-portal).)
 
 Mit dem blobxfer-Tool lassen sich die SAP HANA-Sicherungsdateien komfortabel direkt in Azure Blob Storage kopieren.
 
@@ -90,12 +90,12 @@ Wenn Sie sich über das Kopieren von Sicherungen lokaler Datenträger an anderen
 
 ## <a name="copy-sap-hana-backup-files-to-nfs-share"></a>Kopieren von SAP HANA-Sicherungsdateien in eine NFS-Freigabe
 
-Microsoft Azure bietet native NFS-Freigaben über [Azure NetApp Files](https://azure.microsoft.com/services/netapp/). Sie können verschiedene Volumes mit einer Kapazität von Dutzenden TB erstellen, um Sicherungen zu speichern und zu verwalten. Sie können auch eine Momentaufnahme dieser Volumes basierend auf der NetApp-Technologie erstellen. Azure NetApp Files (ANF) wird in drei Dienstebenen angeboten, die unterschiedlichen Speicherdurchsatz unterstützen. Im Artikel [Dienstebenen für Azure NetApp Files](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-service-levels) finden Sie weitere Informationen. Sie können ein NFS-Volume aus ANF erstellen und einbinden, wie im Artikel [Schnellstart: Einrichten von Azure NetApp Files und Erstellen eines NFS-Volumes](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-quickstart-set-up-account-create-volumes?tabs=azure-portal) beschrieben.
+Microsoft Azure bietet native NFS-Freigaben über [Azure NetApp Files](https://azure.microsoft.com/services/netapp/). Sie können verschiedene Volumes mit einer Kapazität von Dutzenden TB erstellen, um Sicherungen zu speichern und zu verwalten. Sie können auch eine Momentaufnahme dieser Volumes basierend auf der NetApp-Technologie erstellen. Azure NetApp Files (ANF) wird in drei Dienstebenen angeboten, die unterschiedlichen Speicherdurchsatz unterstützen. Im Artikel [Dienstebenen für Azure NetApp Files](../../../azure-netapp-files/azure-netapp-files-service-levels.md) finden Sie weitere Informationen. Sie können ein NFS-Volume aus ANF erstellen und einbinden, wie im Artikel [Schnellstart: Einrichten von Azure NetApp Files und Erstellen eines NFS-Volumes](../../../azure-netapp-files/azure-netapp-files-quickstart-set-up-account-create-volumes.md?tabs=azure-portal) beschrieben.
 
 Neben der Verwendung von nativen NFS-Volumes in Azure mithilfe von ANF können Sie auf verschiedene Weise eigene Bereitstellungen erstellen, die NFS-Freigaben in Azure bereitstellen. Alle haben den Nachteil, dass Sie diese Lösungen selbst bereitstellen und verwalten müssen. Einige dieser Möglichkeiten sind in den folgenden Artikeln dokumentiert:
 
-- [Hochverfügbarkeit für NFS auf Azure-VMs unter SUSE Linux Enterprise Server](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs)
-- [GlusterFS auf virtuellen Azure-Computern unter Red Hat Enterprise Linux für SAP NetWeaver](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-glusterfs)
+- [Hochverfügbarkeit für NFS auf Azure-VMs unter SUSE Linux Enterprise Server](./high-availability-guide-suse-nfs.md)
+- [GlusterFS auf virtuellen Azure-Computern unter Red Hat Enterprise Linux für SAP NetWeaver](./high-availability-guide-rhel-glusterfs.md)
 
 Mithilfe der oben beschriebenen NFS-Freigaben können für Sicherungen direkt HANA-Sicherungen erstellt oder Sicherungen lokaler Datenträger auf diese NFS-Freigaben kopiert werden.
 
@@ -104,7 +104,7 @@ Mithilfe der oben beschriebenen NFS-Freigaben können für Sicherungen direkt HA
 
 ## <a name="copy-sap-hana-backup-files-to-azure-files"></a>Kopieren von SAP HANA-Sicherungsdateien in Azure Files
 
-Sie können eine Azure Files-Freigabe innerhalb einer Azure-Linux-VM einbinden. Ausführliche Informationen zum Durchführen der Konfiguration finden Sie im Artikel [Verwenden des Azure-Dateispeichers unter Linux](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-linux). Informationen zu Einschränkungen von Azure Files oder Azure Files Premium finden Sie im Artikel [Skalierbarkeits- und Leistungsziele für Azure Files](https://docs.microsoft.com/azure/storage/files/storage-files-scale-targets).
+Sie können eine Azure Files-Freigabe innerhalb einer Azure-Linux-VM einbinden. Ausführliche Informationen zum Durchführen der Konfiguration finden Sie im Artikel [Verwenden des Azure-Dateispeichers unter Linux](../../../storage/files/storage-how-to-use-files-linux.md). Informationen zu Einschränkungen von Azure Files oder Azure Files Premium finden Sie im Artikel [Skalierbarkeits- und Leistungsziele für Azure Files](../../../storage/files/storage-files-scale-targets.md).
 
 > [!NOTE]
 > SMB mit CIFS-Dateisystem wird von SAP HANA zum Schreiben von HANA-Sicherungen nicht unterstützt. Siehe auch [SAP-Supporthinweis Nr. 1820529](https://launchpad.support.sap.com/#/notes/1820529). Sie können diese Lösung daher nur als endgültiges Ziel einer HANA-Datenbanksicherung verwenden, die direkt für lokale angefügte Datenträger durchgeführt wurde.

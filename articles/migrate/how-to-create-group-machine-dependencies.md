@@ -3,12 +3,12 @@ title: Einrichten der agentbasierten Abhängigkeitsanalyse in der Azure Migrate-
 description: In diesem Artikel wird das Einrichten der agentbasierten Abhängigkeitsanalyse in der Azure Migrate-Serverbewertung beschrieben.
 ms.topic: how-to
 ms.date: 6/09/2020
-ms.openlocfilehash: 50061bead9b00ade0defba45691ea8a7c84625dd
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: c41f8eb82cf912fc566975f833fc73589f17be98
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321206"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87829916"
 ---
 # <a name="set-up-dependency-visualization"></a>Einrichten der Abhängigkeitsvisualisierung
 
@@ -104,7 +104,7 @@ So installieren Sie MMA auf einem Linux-Computer
 
     ```sh InstallDependencyAgent-Linux64.bin```
 
-- [Erfahren Sie mehr](../azure-monitor/insights/vminsights-enable-hybrid-cloud.md#installation-script-examples) darüber, wie Sie den Dependency-Agent mithilfe von Skripts installieren können.
+- [Erfahren Sie mehr](../azure-monitor/insights/vminsights-enable-hybrid.md#dependency-agent) darüber, wie Sie den Dependency-Agent mithilfe von Skripts installieren können.
 - [Erfahren Sie mehr](../azure-monitor/insights/vminsights-enable-overview.md#supported-operating-systems) über die vom Abhängigkeits-Agent unterstützten Betriebssysteme.
 
 
@@ -208,5 +208,3 @@ VMConnection
 ## <a name="next-steps"></a>Nächste Schritte
 
 [Erstellen einer Bewertung](how-to-create-assessment.md) für eine Gruppe.
-
-

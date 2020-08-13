@@ -4,16 +4,16 @@ description: Dieser Artikel enthält eine Anleitung zur Aktivierung von Microsof
 author: msmbaldwin
 ms.service: virtual-machines
 ms.subservice: security
-ms.topic: article
+ms.topic: how-to
 ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8677fa2620c1edc646dcffe120938f03fd13a0e5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0e8ea218aa9c557fb109aee0dba318cfd5f605c7
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82085620"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836240"
 ---
 # <a name="azure-disk-encryption-with-azure-ad-for-windows-vms-previous-release"></a>Azure Disk Encryption mit Azure AD für virtuelle Windows-Computer (vorheriges Release)
 
@@ -74,7 +74,7 @@ In diesem Szenario können Sie die Verschlüsselung aktivieren, indem Sie eine V
 
 
 ### <a name="enable-encryption-on-existing-or-running-vms-with-azure-powershell"></a><a name="bkmk_RunningWinVMPSH"></a> Aktivieren der Verschlüsselung auf vorhandenen oder ausgeführten VMs mit Azure PowerShell 
-Verwenden Sie das Cmdlet [Set-AzVMDiskEncryptionExtension](/powershell/module/az.compute/set-azvmdiskencryptionextension), um die Verschlüsselung auf einem ausgeführten virtuellen IaaS-Computer in Azure zu aktivieren. Informationen dazu, wie die Verschlüsselung mit Azure Disk Encryption über PowerShell-Cmdlets aktiviert wird, finden Sie in den Blogbeiträgen [Explore Azure Disk Encryption with Azure PowerShell - Part 1](https://blogs.msdn.com/b/azuresecurity/archive/2015/11/17/explore-azure-disk-encryption-with-azure-powershell.aspx) (Erkunden von Azure Disk Encryption mit Azure PowerShell – Teil 1) und [Explore Azure Disk Encryption with Azure PowerShell - Part 2](https://blogs.msdn.com/b/azuresecurity/archive/2015/11/21/explore-azure-disk-encryption-with-azure-powershell-part-2.aspx) (Erkunden von Azure Disk Encryption mit Azure PowerShell – Teil 2).
+Verwenden Sie das Cmdlet [Set-AzVMDiskEncryptionExtension](/powershell/module/az.compute/set-azvmdiskencryptionextension), um die Verschlüsselung auf einem ausgeführten virtuellen IaaS-Computer in Azure zu aktivieren. Informationen dazu, wie die Verschlüsselung mit Azure Disk Encryption über PowerShell-Cmdlets aktiviert wird, finden Sie in den Blogbeiträgen [Explore Azure Disk Encryption with Azure PowerShell - Part 1](/archive/blogs/azuresecurity/explore-azure-disk-encryption-with-azure-powershell) (Erkunden von Azure Disk Encryption mit Azure PowerShell – Teil 1) und [Explore Azure Disk Encryption with Azure PowerShell - Part 2](/archive/blogs/azuresecurity/explore-azure-disk-encryption-with-azure-powershell-part-2) (Erkunden von Azure Disk Encryption mit Azure PowerShell – Teil 2).
 
 -  **Verschlüsseln einer ausgeführten VM mit einem geheimen Clientschlüssel:** Das folgende Skript initialisiert Ihre Variablen und führt das Cmdlet „Set-AzVMDiskEncryptionExtension“ aus. Die Ressourcengruppe, die VM, der Schlüsseltresor, die AAD-App und der geheime Clientschlüssel sollten bereits beim Erfüllen der Voraussetzungen erstellt worden sein. Ersetzen Sie „MyKeyVaultResourceGroup“, „MyVirtualMachineResourceGroup“, „MySecureVM“, „MySecureVault“, „My-AAD-client-ID“ und „My-AAD-client-secret“ durch Ihre Werte.
      ```azurepowershell

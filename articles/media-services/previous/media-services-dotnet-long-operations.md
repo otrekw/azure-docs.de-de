@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 7298e935da8b4c81bfb0a7b07d9f94f7c100b2b9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1c5b008b9771e636201f95f3a56f81d4e75b7ea2
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87038782"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87831735"
 ---
 # <a name="delivering-live-streaming-with-azure-media-services"></a>Bereitstellen von Livestreaming mit Azure Media Services
 
@@ -27,7 +27,7 @@ ms.locfileid: "87038782"
 
 Microsoft Azure Media Services bietet APIs, die Anforderungen zum Starten von Vorgängen an Media Services senden (beispielsweise zum Erstellen, Starten, Beenden oder Löschen eines Kanals). Diese Vorgänge haben eine lange Laufzeit.
 
-Das Media Services .NET SDK stellt APIs bereit, die die Anforderung senden und auf den Abschluss des Vorgangs warten (intern fragen die APIs in regelmäßigen Intervallen den Vorgangsfortschritt ab). Wenn Sie beispielsweise "channel.Start()" aufrufen, wird die Methode nach dem Start des Kanals zurückgegeben. Sie können auch die asynchrone Version „await channel.StartAsync()“ verwenden (Informationen zu taskbasierten asynchronen Mustern finden Sie unter [TAP](/azure/media-services/previous/media-services-mes-schema)). APIs, die eine Vorgangsanforderung senden und den Status abfragen, bis der Vorgang abgeschlossen ist, werden als "Abfragemethoden" bezeichnet. Diese Methoden (insbesondere die asynchrone Version) werden für Rich Client-Anwendungen und/oder für zustandsbehaftete Dienste empfohlen.
+Das Media Services .NET SDK stellt APIs bereit, die die Anforderung senden und auf den Abschluss des Vorgangs warten (intern fragen die APIs in regelmäßigen Intervallen den Vorgangsfortschritt ab). Wenn Sie beispielsweise "channel.Start()" aufrufen, wird die Methode nach dem Start des Kanals zurückgegeben. Sie können auch die asynchrone Version „await channel.StartAsync()“ verwenden (Informationen zu taskbasierten asynchronen Mustern finden Sie unter [TAP](./media-services-mes-schema.md)). APIs, die eine Vorgangsanforderung senden und den Status abfragen, bis der Vorgang abgeschlossen ist, werden als "Abfragemethoden" bezeichnet. Diese Methoden (insbesondere die asynchrone Version) werden für Rich Client-Anwendungen und/oder für zustandsbehaftete Dienste empfohlen.
 
 Es gibt Szenarien, in denen eine Anwendung nicht auf eine HTTP-Anforderung mit langer Laufzeit warten kann und der Vorgangsfortschritt manuell abgerufen werden soll. Ein typisches Beispiel wäre die Interaktion mit einem zustandsloser Webdienst: Wenn der Browser die Erstellung eines Kanals anfordert, startet der Webdienst einen Vorgang mit langer Laufzeit und gibt die Vorgangs-ID an den Browser zurück. Der Browser kann dann beim Webdienst den Abruf des Vorgangsstatus basierend auf der ID anfordern. Das Media Services .NET SDK stellt APIs bereit, die für dieses Szenario von Nutzen sind. Diese APIs werden als "Methoden ohne Abfrage" bezeichnet.
 Die „Methoden ohne Abfrage“ weisen das folgende Benennungsmuster auf: Send*Vorgangsname*Operation (z.B. SendCreateOperation). Send*Vorgangsname*Operation-Methoden geben das **IOperation**-Objekt zurück. Das zurückgegebene Objekt enthält Informationen, die zum Nachverfolgen des Vorgangs verwendet werden können. Die Send*Vorgangsname*OperationAsync-Methoden geben **Task\<IOperation>** zurück.

@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 07/15/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f119acc06883dc077218c56accd31c805092db85
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 293a0fcd1211739be07e58f414bd6861bf47eb76
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87088290"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87831106"
 ---
 # <a name="sap-business-one-on-azure-virtual-machines"></a>SAP Business One in Azure Virtual Machines
 Dieses Dokument enthält Anleitungen zum Bereitstellen von SAP Business One in Azure Virtual Machines. Diese Dokumentation ist kein Ersatz für die Installationsdokumentation für Business One für SAP. Die Dokumentation enthält grundlegende Planungs- und Bereitstellungsrichtlinien für die Azure-Infrastruktur zur Ausführung von Business One-Anwendungen.
@@ -149,7 +149,7 @@ Für SAP HANA Sicherungs- und Wiederherstellungsstrategien sollten Sie das Dokum
 ### <a name="business-one-client-server"></a>Business One-Clientserver
 Für diese Komponenten sind Überlegungen zur Speicherung nicht das Hauptanliegen. Trotzdem möchten Sie eine zuverlässige Plattform zusammenstellen. Aus diesem Grund sollten Sie auch für die Basis-VHD Azure Storage Premium für diesen virtuellen Computer verwenden. Dimensionieren Sie die VM mit den in [SAP Business One Hardware Requirements Guide](https://help.sap.com/http.svc/rc/011000358700000244612011e/9.3/en-US/B1_Hardware_Requirements_Guide.pdf) (Handbuch zur Hardwareanforderungen für SAP Business One) angegebenen Daten. Für Azure müssen Sie sich auf die in Kapitel 2.4 des Dokuments genannten Anforderungen konzentrieren und diese zur Berechnung verwenden. Bei der Berechnung der Anforderungen müssen Sie diese mit den folgenden Dokumenten vergleichen, um die für Sie ideale VM zu finden:
 
-- [Größen für virtuelle Windows-Computer in Azure](../../windows/sizes.md)
+- [Größen für virtuelle Windows-Computer in Azure](../../sizes.md)
 - [SAP Note #1928533](https://launchpad.support.sap.com/#/notes/1928533) (SAP-Hinweis #1928533)
 
 Vergleichen Sie die erforderlich Anzahl an CPUs und den benötigten Speicher mit den Angaben von Microsoft. Berücksichtigen Sie bei der Auswahl der VMs auch den Netzwerkdurchsatz.

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/20/2020
 ms.author: jushiman
-ms.openlocfilehash: d6fb5c384d5e9489c4213277a43d5be0ed14afb6
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 01c7d5610daa703e910fb485b5e9d945a6cdc940
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289715"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87831293"
 ---
 # <a name="previous-generations-of-virtual-machine-sizes"></a>Vorherige Generationen von Größen virtueller Computer
 
@@ -80,7 +80,7 @@ Alle GPUs in NVv2-Instanzen beinhalten eine GRID-Lizenz. Diese Lizenz bietet Ihn
 
 ## <a name="older-generations-of-virtual-machine-sizes"></a>Ältere Generationen von Größen virtueller Computer
 
-Dieser Abschnitt enthält Informationen zu den älteren Generationen von Größen für virtuelle Computer. Diese Größen werden weiterhin unterstützt, erhalten jedoch keine zusätzliche Kapazität. Es gibt neuere oder alternative Größen, die allgemein verfügbar sind. Wählen Sie anhand des Artikels [Größen für virtuelle Linux-Computer in Azure](linux/sizes.md) die Größen für virtuelle Computer, die am besten zu Ihren Anforderungen passen.  
+Dieser Abschnitt enthält Informationen zu den älteren Generationen von Größen für virtuelle Computer. Diese Größen werden weiterhin unterstützt, erhalten jedoch keine zusätzliche Kapazität. Es gibt neuere oder alternative Größen, die allgemein verfügbar sind. Wählen Sie anhand des Artikels [Größen für virtuelle Linux-Computer in Azure](./sizes.md) die Größen für virtuelle Computer, die am besten zu Ihren Anforderungen passen.  
 
 Weitere Informationen zum Ändern der Größe einer Linux-VM finden Sie unter [Ändern der Größe einer Linux-VM](linux/change-vm-size.md).  
 

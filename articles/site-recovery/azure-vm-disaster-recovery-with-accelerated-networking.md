@@ -9,12 +9,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: mayg
-ms.openlocfilehash: 27691d8fab3e7c8ccd60351dc0be83898ff984ed
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: baa15b656f061d812b29ded99d55da13294f9800
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73622434"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87835849"
 ---
 # <a name="accelerated-networking-with-azure-virtual-machine-disaster-recovery"></a>Beschleunigter Netzwerkbetrieb mit Notfallwiederherstellung für virtuelle Azure-Computer
 
@@ -45,7 +45,7 @@ Der beschleunigte Netzwerkbetrieb wird in den meisten universellen, computeoptim
 
 Bei Instanzen, die Hyperthreading unterstützen, wird der beschleunigte Netzwerkbetrieb auf VM-Instanzen mit mindestens 4 vCPUs unterstützt. Folgende Reihen werden unterstützt: D/DSv3, E/ESv3, Fsv2 und Ms/Mms
 
-Weitere Informationen zu VM-Instanzen finden Sie unter [Größen für virtuelle Windows-Computer](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+Weitere Informationen zu VM-Instanzen finden Sie unter [Größen für virtuelle Windows-Computer](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 ## <a name="accelerated-networking-with-linux-vms"></a>Beschleunigter Netzwerkbetrieb mit virtuellen Linux-Computern
 
@@ -66,7 +66,7 @@ Der beschleunigte Netzwerkbetrieb wird in den meisten universellen, computeoptim
 
 Bei Instanzen, die Hyperthreading unterstützen, wird der beschleunigte Netzwerkbetrieb auf VM-Instanzen mit mindestens 4 vCPUs unterstützt. Folgende Reihen werden unterstützt: D/DSv3, E/ESv3, Fsv2 und Ms/Mms.
 
-Weitere Informationen zu VM-Instanzen finden Sie unter [Größen für virtuelle Linux-Computer in Azure](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+Weitere Informationen zu VM-Instanzen finden Sie unter [Größen für virtuelle Linux-Computer in Azure](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 ## <a name="enabling-accelerated-networking-for-replicated-vms"></a>Aktivieren des beschleunigten Netzwerkbetriebs für replizierte VMs
 

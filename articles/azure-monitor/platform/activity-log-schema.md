@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 06/09/2020
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: e50d6b6fe88cbad42d238ee2779abfe10e752f0e
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 656161849ce8d48fb15cfac4024ec5b77adb5fee
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327275"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87829508"
 ---
 # <a name="azure-activity-log-event-schema"></a>Ereignisschema des Azure-Aktivitätsprotokolls
 Das [Azure-Aktivitätsprotokoll](platform-logs-overview.md) gewährt Einblick in alle Ereignisse auf Abonnementebene, die in Azure aufgetreten sind. Dieser Artikel beschreibt die Kategorien des Aktivitätsprotokolls und das jeweils zugehörige Schema. 
@@ -796,7 +796,7 @@ Diese Kategorie enthält Datensätze aller Aktionsvorgänge für Auswirkungen, d
 Beim Streamen des Azure-Aktivitätsprotokolls an ein Speicherkonto oder Event Hub entsprechen die Daten dem [Ressourcenprotokollschema](./resource-logs-schema.md). Die folgende Tabelle zeigt die Zuordnung der Eigenschaften aus den oben genannten Schemas zum Ressourcenprotokollschema.
 
 > [!IMPORTANT]
-> Das Format der Aktivitätsprotokolldaten, die in das Speicherkonto geschrieben werden, wurde am 1. November 2018 in JSON Lines geändert. Einzelheiten zu dieser Formatumstellung finden Sie unter [Vorbereiten der Formatumstellung auf Azure Monitor-Ressourcenprotokolle, die in einem Speicherkonto archiviert werden](/azure/azure-monitor/platform/resource-logs-blob-format).
+> Das Format der Aktivitätsprotokolldaten, die in das Speicherkonto geschrieben werden, wurde am 1. November 2018 in JSON Lines geändert. Einzelheiten zu dieser Formatumstellung finden Sie unter [Vorbereiten der Formatumstellung auf Azure Monitor-Ressourcenprotokolle, die in einem Speicherkonto archiviert werden](./resource-logs-blob-format.md).
 
 
 | Eigenschaft im Ressourcenprotokollschema | Eigenschaft im REST-API-Schema des Aktivitätsprotokolls | Notizen |
@@ -885,4 +885,3 @@ Es folgt ein Beispiel für ein Ereignis mit diesem Schema.
 ## <a name="next-steps"></a>Nächste Schritte
 * [Weitere Informationen zum Aktivitätsprotokoll](platform-logs-overview.md)
 * [Erstellen einer Diagnoseeinstellung zum Senden des Aktivitätsprotokolls an einen Log Analytics-Arbeitsbereich, Azure Storage oder Event Hubs](diagnostic-settings.md)
-

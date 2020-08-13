@@ -3,12 +3,12 @@ title: Weitere Informationen zu Azure Service Fabric
 description: Erfahren Sie mehr über die grundlegenden Konzepte und die wesentlichen Bereiche von Azure Service Fabric. Dieser Artikel bietet eine erweiterte Übersicht über Service Fabric und das Erstellen von Microservices.
 ms.topic: conceptual
 ms.date: 12/08/2017
-ms.openlocfilehash: 8d578d6b3e0232d0733097d68bac22af566b2083
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: d09d774ed32c98222b71423ca733f1b4294957ef
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86246258"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836699"
 ---
 # <a name="so-you-want-to-learn-about-service-fabric"></a>Sie möchten sich über Service Fabric informieren?
 Azure Service Fabric ist eine Plattform für verteilte Systeme, die das Packen, Bereitstellen und Verwalten skalierbarer und zuverlässiger Microservices vereinfacht.  Service Fabric bietet allerdings eine große Oberfläche, und es gibt viel darüber zu erfahren.  Dieser Artikel enthält eine Zusammenfassung von Service Fabric und beschreibt die grundlegenden Konzepte, Programmiermodelle, Cluster, den Anwendungslebenszyklus und die Systemüberwachung. Eine Einführung und eine Anleitung zum Erstellen von Microservices mit Service Fabric finden Sie unter [Übersicht](service-fabric-overview.md) und [Was sind Microservices?](service-fabric-overview-microservices.md). Dieser Artikel enthält keine umfassende Liste der Inhalte, aber Links zu Artikeln zur Übersicht und zu den ersten Schritten für die einzelnen Bereiche von Service Fabric. 
@@ -87,7 +87,7 @@ Bei einer [ausführbaren Gastanwendungsdatei](service-fabric-guest-executables-i
 ## <a name="application-lifecycle"></a>Anwendungslebenszyklus
 Ähnlich wie auf anderen Plattformen durchläuft eine Anwendung auf Service Fabric normalerweise die folgenden Phasen: Entwurf, Entwicklung, Test, Bereitstellung, Upgrade, Wartung und Deinstallation. Service Fabric bietet erstklassige Unterstützung für den gesamten Anwendungslebenszyklus von Cloudanwendungen: von der Entwicklung über die Bereitstellung, die tägliche Verwaltung und die Wartung bis zur endgültigen Außerbetriebnahme. Das Dienstmodell ermöglicht die unabhängige Beteiligung verschiedener Rollen am Anwendungslebenszyklus. [Service Fabric-Anwendungslebenszyklus](service-fabric-application-lifecycle.md) bietet eine Übersicht über die APIs und wie sie von den verschiedenen Rollen während der Phasen des Service Fabric-Anwendungslebenszyklus verwendet werden. 
 
-Der gesamte App-Lebenszyklus kann mithilfe von [PowerShell-Cmdlets](/powershell/module/ServiceFabric/), [CLI-Befehle](service-fabric-sfctl.md), [C#-APIs](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient), [Java-APIs](/java/api/overview/azure/servicefabric) und [REST-APIs](/rest/api/servicefabric/). verwaltet werden. Sie können auch Continuous Integration-/Continuous Deployment-Pipelines mit Tools wie [Azure Pipelines](./service-fabric-tutorial-deploy-app-with-cicd-vsts.md) oder [Jenkins](service-fabric-cicd-your-linux-applications-with-jenkins.md) einrichten.
+Der gesamte App-Lebenszyklus kann mithilfe von [PowerShell-Cmdlets](/powershell/module/ServiceFabric/), [CLI-Befehle](service-fabric-sfctl.md), [C#-APIs](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient), [Java-APIs](/java/api/overview/azure/servicefabric) und [REST-APIs](/rest/api/servicefabric/). verwaltet werden. Sie können auch Continuous Integration-/Continuous Deployment-Pipelines mit Tools wie [Azure Pipelines](./service-fabric-tutorial-deploy-app-with-cicd-vsts.md) oder [Jenkins](/azure/developer/jenkins/deploy-to-service-fabric-cluster) einrichten.
 
 ## <a name="test-applications-and-services"></a>Testen von Anwendungen und Diensten
 Zum Erstellen echter Dienste für die Cloud müssen Sie unbedingt sicherstellen, dass Ihre Anwendungen und Dienste für die in der Praxis auftretenden Fehler gerüstet sind. Der Fault Analysis Service ist auf das Testen von Diensten ausgelegt, die in Service Fabric erstellt werden. Mit dem [Fault Analysis Service](service-fabric-testability-overview.md) können Sie aussagekräftige Fehler auslösen und vollständige Testszenarien für Ihre Anwendungen ausführen. Mit diesen Fehlern und Szenarien werden die verschiedenen Zustände und Übergänge durchgespielt und überprüft, die während der Lebensdauer eines Diensts auftreten – und zwar auf kontrollierte, sichere und einheitliche Weise.
@@ -110,7 +110,7 @@ Ein [Service Fabric-Cluster](service-fabric-deploy-anywhere.md) enthält eine pe
 Service Fabric-Cluster können auf virtuellen oder physischen Computern erstellt werden, auf denen Windows Server oder Linux ausgeführt wird. Es lassen sich Service Fabric-Anwendungen in jeder lokalen oder cloudbasierten Umgebung oder in einer Microsoft Azure-Umgebung bereitstellen und ausführen, in der sich miteinander verbundene Computer mit Windows Server oder Linux befinden.
 
 ### <a name="clusters-on-azure"></a>Cluster in Azure
-Das Ausführen von Service Fabric-Clustern unter Azure ermöglicht die Integration anderer Azure-Features und -Dienste, die den Betrieb und die Verwaltung des Clusters vereinfachen und zuverlässiger machen. Ein Cluster ist eine Azure Resource Manager-Ressource, daher können Sie Cluster wie alle anderen Ressourcen in Azure modellieren. Resource Manager ermöglicht auch eine einfache Verwaltung aller Ressourcen, die vom Cluster als einzelne Einheit verwendet werden. Cluster unter Azure werden mit Azure-Diagnose und Azure Monitor-Protokollen integriert. Clusterknotentypen sind [Skalierungsgruppen für virtuelle Computer](/azure/virtual-machine-scale-sets/index), daher sind automatische Skalierungsfunktionen bereits integriert.
+Das Ausführen von Service Fabric-Clustern unter Azure ermöglicht die Integration anderer Azure-Features und -Dienste, die den Betrieb und die Verwaltung des Clusters vereinfachen und zuverlässiger machen. Ein Cluster ist eine Azure Resource Manager-Ressource, daher können Sie Cluster wie alle anderen Ressourcen in Azure modellieren. Resource Manager ermöglicht auch eine einfache Verwaltung aller Ressourcen, die vom Cluster als einzelne Einheit verwendet werden. Cluster unter Azure werden mit Azure-Diagnose und Azure Monitor-Protokollen integriert. Clusterknotentypen sind [Skalierungsgruppen für virtuelle Computer](../virtual-machine-scale-sets/index.yml), daher sind automatische Skalierungsfunktionen bereits integriert.
 
 Sie können einen Cluster über das [Azure-Portal](service-fabric-cluster-creation-via-portal.md), mithilfe einer [Vorlage](service-fabric-cluster-creation-via-arm.md) oder mit [Visual Studio](./service-fabric-cluster-creation-via-arm.md) in Azure erstellen.
 

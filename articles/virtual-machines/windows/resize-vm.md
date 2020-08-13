@@ -8,16 +8,16 @@ ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 01/13/2020
 ms.author: cynthn
-ms.openlocfilehash: 552b397a93978d2790a69e9574b4ccf256e478b8
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 4860422fefb5a95fe41912b4898f02867f7b3aeb
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289646"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87832245"
 ---
 # <a name="resize-a-windows-vm"></a>Ändern der Größe eines virtuellen Windows-Computers
 
-In diesem Artikel erfahren Sie, wie Sie einen virtuellen Computer auf eine andere [VM-Größe](sizes.md) verschieben.
+In diesem Artikel erfahren Sie, wie Sie einen virtuellen Computer auf eine andere [VM-Größe](../sizes.md) verschieben.
 
 Nachdem Sie einen virtuellen Computer (virtual machine; VM) erstellen, können Sie den virtuellen Computer zentral hoch- oder herunterskalieren, indem Sie die VM-Größe ändern. In einigen Fällen müssen Sie zuerst die Zuordnung des virtuellen Computers aufheben. Dies ist möglicherweise der Fall, falls die neue Größe auf dem Hardwarecluster nicht verfügbar ist, auf dem die VM aktuell gehostet wird.
 
@@ -99,29 +99,22 @@ Wenn die gewünschte Größe nicht aufgelistet ist, fahren Sie mit den folgenden
 Beenden Sie alle virtuellen Computer in der Verfügbarkeitsgruppe.
    
 ```powershell
-$as = Get-AzAvailabilitySet -ResourceGroupName $resourceGroup
-$vmIds = $as.VirtualMachinesReferences
-foreach ($vmId in $vmIDs){
-    $string = $vmID.Id.Split("/")
-    $vmName = $string[8]
-    Stop-AzVM -ResourceGroupName $resourceGroup -Name $vmName -Force
-    } 
+$availabilitySetName = "<availabilitySetName>"
+$as = Get-AzAvailabilitySet -ResourceGroupName $resourceGroup -Name $availabilitySetName
+$virtualMachines = $as.VirtualMachinesReferences |  Get-AzResource | Get-AzVM
+$virtualMachines |  Stop-AzVM -Force -NoWait  
 ```
 
 Skalieren Sie alle virtuellen Computer in der Verfügbarkeitsgruppe und starten sie neu.
    
 ```powershell
+$availabilitySetName = "<availabilitySetName>"
 $newSize = "<newVmSize>"
-$as = Get-AzAvailabilitySet -ResourceGroupName $resourceGroup
-$vmIds = $as.VirtualMachinesReferences
-  foreach ($vmId in $vmIDs){
-    $string = $vmID.Id.Split("/")
-    $vmName = $string[8]
-    $vm = Get-AzVM -ResourceGroupName $resourceGroup -Name $vmName
-    $vm.HardwareProfile.VmSize = $newSize
-    Update-AzVM -ResourceGroupName $resourceGroup -VM $vm
-    Start-AzVM -ResourceGroupName $resourceGroup -Name $vmName
-    }
+$as = Get-AzAvailabilitySet -ResourceGroupName $resourceGroup -Name $availabilitySetName
+$virtualMachines = $as.VirtualMachinesReferences |  Get-AzResource | Get-AzVM
+$virtualMachines | Foreach-Object { $_.HardwareProfile.VmSize = $newSize }
+$virtualMachines | Update-AzVM
+$virtualMachines | Start-AzVM
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte

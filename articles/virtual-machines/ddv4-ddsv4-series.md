@@ -9,12 +9,12 @@ ms.service: virtual-machines
 ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 06/01/2020
-ms.openlocfilehash: b5d23442af5afb90071dbf9e3c50d42b91d195d1
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: f6d03b289dce3987d6b939fdaf545d6206766e02
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86494835"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87852870"
 ---
 # <a name="ddv4-and-ddsv4-series"></a>Ddv4- und Ddsv4-Serie
 
@@ -38,15 +38,15 @@ Livemigration: Unterstützt
 
 Updates mit Speicherbeibehaltung: Unterstützt
 
-| Size | vCPU | Memory: GiB | Temporärer Speicher (SSD): GiB | Max. Anzahl Datenträger | Maximaler Durchsatz (Cache und temporärer Speicher): IOPS/MBit/s | Maximale Anzahl NICs/erwartete Netzwerkbandbreite (MBit/s) |
-|---|---|---|---|---|---|---|
-| Standard_D2d_v4 | 2 | 8 | 75 | 4 | 19.000/120 | 2/1000 |
-| Standard_D4d_v4 | 4 | 16 | 150 | 8 | 38.500/242 | 2/2000 |
-| Standard_D8d_v4 | 8 | 32 | 300 | 16 | 77.000/485 | 4/4000 |
-| Standard_D16d_v4 | 16 | 64 | 600 | 32 | 154.000/968 | 8/8000 |
-| Standard_D32d_v4 | 32 | 128 | 1200 | 32 | 308.000/1.936 | 8/16000 |
-| Standard_D48d_v4 | 48 | 192 | 1800 | 32 | 462.000/2.904 | 8/24000 |
-| Standard_D64d_v4 | 64 | 256 | 2400 | 32 | 615.000/3.872 | 8/30000 |
+| Size | vCPU | Memory: GiB | Temporärer Speicher (SSD): GiB | Max. Anzahl Datenträger | Maximaler Durchsatz (Cache und temporärer Speicher): IOPS/MBit/s | Maximale Anzahl NICs|Erwartete Netzwerkbandbreite (MBit/s) |
+|---|---|---|---|---|---|---|---|
+| Standard_D2d_v4 | 2 | 8 | 75 | 4 | 19.000/120 | 2|1000 |
+| Standard_D4d_v4 | 4 | 16 | 150 | 8 | 38.500/242 | 2|2000 |
+| Standard_D8d_v4 | 8 | 32 | 300 | 16 | 77.000/485 | 4|4000 |
+| Standard_D16d_v4 | 16 | 64 | 600 | 32 | 154.000/968 | 8|8.000 |
+| Standard_D32d_v4 | 32 | 128 | 1200 | 32 | 308.000/1.936 | 8|16000 |
+| Standard_D48d_v4 | 48 | 192 | 1800 | 32 | 462.000/2.904 | 8|24.000 |
+| Standard_D64d_v4 | 64 | 256 | 2400 | 32 | 615.000/3.872 | 8|30.000 |
 
 ## <a name="ddsv4-series"></a>Ddsv4-Serie
 
@@ -67,19 +67,19 @@ Livemigration: Unterstützt
 
 Updates mit Speicherbeibehaltung: Unterstützt
 
-| Size | vCPU | Memory: GiB | Temporärer Speicher (SSD): GiB | Max. Anzahl Datenträger | Maximaler Durchsatz (Cache und temporärer Speicher): IOPS/MBit/s (Cachegröße in GiB) | Maximaler Durchsatz des Datenträgers ohne Cache: IOPS/MBit/s | Maximale Anzahl NICs/erwartete Netzwerkbandbreite (MBit/s) |
-|---|---|---|---|---|---|---|---|
-| Standard_D2ds_v4 | 2 | 8 | 75 | 4 | 19000/120(50) | 3000/48 | 2/1000 |
-| Standard_D4ds_v4 | 4 | 16 | 150 | 8 | 38.500/242(100) | 6400/96 | 2/2000 |
-| Standard_D8ds_v4 | 8 | 32 | 300 | 16 | 77.000/485(200) | 12800/192 | 4/4000 |
-| Standard_D16ds_v4 | 16 | 64 | 600 | 32 | 154.000/968(400) | 25600/384 | 8/8000 |
-| Standard_D32ds_v4 | 32 | 128 | 1200 | 32 | 308.000/1.936(800) | 51200/768 | 8/16000 |
-| Standard_D48ds_v4 | 48 | 192 | 1800 | 32 | 462.000/2.904(1.200) | 76800/1152 | 8/24000 |
-| Standard_D64ds_v4 | 64 | 256 | 2400 | 32 | 615.000/3.872(1.600) | 80000/1200 | 8/30000 |
+| Size | vCPU | Memory: GiB | Temporärer Speicher (SSD): GiB | Max. Anzahl Datenträger | Maximaler Durchsatz (Cache und temporärer Speicher): IOPS/MBit/s (Cachegröße in GiB) | Maximaler Durchsatz des Datenträgers ohne Cache: IOPS/MBit/s | Maximale Anzahl NICs|Erwartete Netzwerkbandbreite (MBit/s) |
+|---|---|---|---|---|---|---|---|---|
+| Standard_D2ds_v4 | 2 | 8 | 75 | 4 | 19.000/120(50) | 3200/48 | 2|1000 |
+| Standard_D4ds_v4 | 4 | 16 | 150 | 8 | 38.500/242(100) | 6400/96 | 2|2000 |
+| Standard_D8ds_v4 | 8 | 32 | 300 | 16 | 77.000/485(200) | 12800/192 | 4|4000 |
+| Standard_D16ds_v4 | 16 | 64 | 600 | 32 | 154.000/968(400) | 25600/384 | 8|8.000 |
+| Standard_D32ds_v4 | 32 | 128 | 1200 | 32 | 308.000/1.936(800) | 51200/768 | 8|16000 |
+| Standard_D48ds_v4 | 48 | 192 | 1800 | 32 | 462.000/2.904(1.200) | 76800/1152 | 8|24.000 |
+| Standard_D64ds_v4 | 64 | 256 | 2400 | 32 | 615.000/3.872(1.600) | 80000/1200 | 8|30.000 |
 
 [!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
 
-## <a name="other-sizes"></a>Andere Größen
+## <a name="other-sizes-and-information"></a>Weitere Größen und Informationen
 
 - [Allgemeiner Zweck](sizes-general.md)
 - [Arbeitsspeicheroptimiert](sizes-memory.md)
@@ -87,6 +87,11 @@ Updates mit Speicherbeibehaltung: Unterstützt
 - [GPU-optimiert](sizes-gpu.md)
 - [High Performance Computing](sizes-hpc.md)
 - [Vorherige Generationen](sizes-previous-gen.md)
+
+Preisrechner: [Preisrechner](https://azure.microsoft.com/pricing/calculator/)
+
+Weitere Informationen zu Datenträgertypen: [Datenträgertypen](./linux/disks-types.md#ultra-disk)
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

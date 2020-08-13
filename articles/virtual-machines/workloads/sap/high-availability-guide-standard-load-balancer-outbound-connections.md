@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/16/2020
 ms.author: radeltch
-ms.openlocfilehash: 9419ed320089ff85722e0d9c0582e92491377ab1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a0dc9f673abcac549fffc7291b8ac376c297da6b
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84907464"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836121"
 ---
 # <a name="public-endpoint-connectivity-for-virtual-machines-using-azure-standard-load-balancer-in-sap-high-availability-scenarios"></a>Konnektivität öffentlicher Endpunkte für VMs, die Azure Load Balancer Standard in SAP-Hochverfügbarkeitsszenarien verwenden
 
@@ -31,11 +31,11 @@ In diesem Artikel werden verschiedene Optionen vorgestellt, damit Sie die für I
 
 ## <a name="overview"></a>Übersicht
 
-Bei der Implementierung der Hochverfügbarkeit für SAP-Lösungen über das Clustering ist [Azure Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview) eine der erforderlichen Komponenten. Azure bietet zwei Load Balancer-SKUs: Standard und Basic.
+Bei der Implementierung der Hochverfügbarkeit für SAP-Lösungen über das Clustering ist [Azure Load Balancer](../../../load-balancer/load-balancer-overview.md) eine der erforderlichen Komponenten. Azure bietet zwei Load Balancer-SKUs: Standard und Basic.
 
 Die Standard-Variante von Azure Load Balancer bietet einige Vorteile gegenüber der Basic-Variante. Es funktioniert z. B. in allen Azure-Verfügbarkeitszonen, es verfügt über bessere Überwachungs- und Protokollierungsfunktionen zur einfacheren Problembehandlung und über reduzierte Wartezeiten. Das Feature „HA-Ports“ umfasst sämtliche Ports, d. h. es ist nicht mehr erforderlich, alle einzelnen Ports aufzulisten.  
 
-Es gibt einige wichtige Unterschiede zwischen der Basic- und der Standard-SKU von Azure Load Balancer. Einer davon ist die Behandlung des ausgehenden Datenverkehrs zum öffentlichen Endpunkt. Einen vollständigen Vergleich zwischen Basic- und Standard-SKU für Load Balancer finden Sie unter [Vergleich der Load Balancer-SKUs](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview).  
+Es gibt einige wichtige Unterschiede zwischen der Basic- und der Standard-SKU von Azure Load Balancer. Einer davon ist die Behandlung des ausgehenden Datenverkehrs zum öffentlichen Endpunkt. Einen vollständigen Vergleich zwischen Basic- und Standard-SKU für Load Balancer finden Sie unter [Vergleich der Load Balancer-SKUs](../../../load-balancer/load-balancer-overview.md).  
  
 Wenn virtuelle Computer ohne öffentliche IP-Adressen im Back-End-Pool einer internen Azure Load Balancer Standard-Instanz (ohne öffentliche IP-Adresse) platziert werden, gibt es keine ausgehende Konnektivität mit öffentlichen Endpunkten, sofern keine zusätzliche Konfiguration erfolgt.  
 
@@ -60,20 +60,20 @@ Wenn Ihre SAP-Bereitstellung keine ausgehenden Verbindungen mit öffentlichen En
 Lesen Sie zuerst die folgenden Dokumente:
 
 * Azure Load Balancer Standard
-  * [Übersicht über Azure Load Balancer Standard](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview): Umfassende Übersicht über Azure Load Balancer Standard, wichtige Grundsätze, Konzepte und Tutorials. 
-  * [Ausgehende Verbindungen in Azure](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#scenarios): Szenarien zum Erreichen von ausgehenden Verbindungen in Azure.
-  * [Load Balancer-Ausgangsregeln](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-rules-overview): Erläutert die Konzepte der Load Balancer-Ausgangsregeln und die Erstellung von Ausgangsregeln.
+  * [Übersicht über Azure Load Balancer Standard](../../../load-balancer/load-balancer-overview.md): Umfassende Übersicht über Azure Load Balancer Standard, wichtige Grundsätze, Konzepte und Tutorials. 
+  * [Ausgehende Verbindungen in Azure](../../../load-balancer/load-balancer-outbound-connections.md#scenarios): Szenarien zum Erreichen von ausgehenden Verbindungen in Azure.
+  * [Load Balancer-Ausgangsregeln](../../../load-balancer/load-balancer-outbound-connections.md#outboundrules): Erläutert die Konzepte der Load Balancer-Ausgangsregeln und die Erstellung von Ausgangsregeln.
 * Azure Firewall
-  * [Übersicht über Azure Firewall](https://docs.microsoft.com/azure/firewall/overview): Übersicht über Azure Firewall.
-  * [Tutorial: Bereitstellen und Konfigurieren von Azure Firewall](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal): Anweisungen zur Konfiguration von Azure Firewall über das Azure-Portal.
-* [Virtuelle Netzwerke – Benutzerdefinierte Regeln](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview#user-defined): Konzepte und Regeln für das Azure-Routing.  
-* [Diensttags für Sicherheitsgruppen](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags): Informationen zum Vereinfachen Ihrer Konfiguration für Netzwerksicherheitsgruppen und Firewall mit Diensttags.
+  * [Übersicht über Azure Firewall](../../../firewall/overview.md): Übersicht über Azure Firewall.
+  * [Tutorial: Bereitstellen und Konfigurieren von Azure Firewall](../../../firewall/tutorial-firewall-deploy-portal.md): Anweisungen zur Konfiguration von Azure Firewall über das Azure-Portal.
+* [Virtuelle Netzwerke – Benutzerdefinierte Regeln](../../../virtual-network/virtual-networks-udr-overview.md#user-defined): Konzepte und Regeln für das Azure-Routing.  
+* [Diensttags für Sicherheitsgruppen](../../../virtual-network/security-overview.md#service-tags): Informationen zum Vereinfachen Ihrer Konfiguration für Netzwerksicherheitsgruppen und Firewall mit Diensttags.
 
 ## <a name="additional-external-azure-standard-load-balancer-for-outbound-connections-to-internet"></a>Zusätzlicher externer Azure Load Balancer Standard für ausgehende Verbindungen mit dem Internet.
 
-Eine Möglichkeit, ausgehende Verbindungen mit öffentlichen Endpunkten zu erreichen, ohne die eingehende Verbindung zur VM vom öffentlichen Endpunkt aus zu erlauben, besteht darin, einen zweiten Load Balancer mit öffentlicher IP-Adresse zu erstellen, die VMs zum Back-End-Pool des zweiten Load Balancers hinzuzufügen und nur [ausgehende Regeln](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-rules-overview) zu definieren.  
-Verwenden Sie [Netzwerksicherheitsgruppen](https://docs.microsoft.com/azure/virtual-network/security-overview), um die öffentlichen Endpunkte zu steuern, die für ausgehende Aufrufe von der VM zugänglich sind.  
-Weitere Informationen finden Sie unter Szenario 2 im Dokument [Ausgehende Verbindungen](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#scenarios).  
+Eine Möglichkeit, ausgehende Verbindungen mit öffentlichen Endpunkten zu erreichen, ohne die eingehende Verbindung zur VM vom öffentlichen Endpunkt aus zu erlauben, besteht darin, einen zweiten Load Balancer mit öffentlicher IP-Adresse zu erstellen, die VMs zum Back-End-Pool des zweiten Load Balancers hinzuzufügen und nur [ausgehende Regeln](../../../load-balancer/load-balancer-outbound-connections.md#outboundrules) zu definieren.  
+Verwenden Sie [Netzwerksicherheitsgruppen](../../../virtual-network/security-overview.md), um die öffentlichen Endpunkte zu steuern, die für ausgehende Aufrufe von der VM zugänglich sind.  
+Weitere Informationen finden Sie unter Szenario 2 im Dokument [Ausgehende Verbindungen](../../../load-balancer/load-balancer-outbound-connections.md#scenarios).  
 Die Konfiguration würde wie folgt aussehen:  
 
 ![Steuern der Konnektivität mit öffentlichen Endpunkten mit Netzwerksicherheitsgruppen](./media/high-availability-guide-standard-load-balancer/high-availability-guide-standard-load-balancer-public.png)
@@ -81,11 +81,11 @@ Die Konfiguration würde wie folgt aussehen:
 ### <a name="important-considerations"></a>Wichtige Hinweise
 
 - Sie können einen zusätzlichen öffentlichen Load Balancer für mehrere VMs in demselben Subnetz verwenden, um ausgehende Verbindungen mit öffentlichen Endpunkten zu erreichen und die Kosten zu optimieren.  
-- Verwenden Sie [Netzwerksicherheitsgruppen](https://docs.microsoft.com/azure/virtual-network/security-overview), um zu steuern, welche öffentlichen Endpunkte von den VMs aus zugänglich sind. Sie können die Netzwerksicherheitsgruppe entweder dem Subnetz oder den einzelnen virtuellen Computern zuordnen. Verwenden Sie nach Möglichkeit [Diensttags](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags), um die Komplexität der Sicherheitsregeln zu reduzieren.  
+- Verwenden Sie [Netzwerksicherheitsgruppen](../../../virtual-network/security-overview.md), um zu steuern, welche öffentlichen Endpunkte von den VMs aus zugänglich sind. Sie können die Netzwerksicherheitsgruppe entweder dem Subnetz oder den einzelnen virtuellen Computern zuordnen. Verwenden Sie nach Möglichkeit [Diensttags](../../../virtual-network/security-overview.md#service-tags), um die Komplexität der Sicherheitsregeln zu reduzieren.  
 - Azure Load Balancer Standard mit öffentlicher IP-Adresse und Ausgangsregeln ermöglicht den direkten Zugriff auf den öffentlichen Endpunkt. Wenn unternehmensweite Sicherheitsanforderungen bestehen, dass der gesamte ausgehende Datenverkehr über eine zentrale Unternehmenslösung für Überwachung und Protokollierung abgewickelt wird, können Sie die Anforderung mit diesem Szenario möglicherweise nicht erfüllen.  
 
 >[!TIP]
->Verwenden Sie nach Möglichkeit [Diensttags](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags), um die Komplexität der Netzwerksicherheitsgruppe zu reduzieren. 
+>Verwenden Sie nach Möglichkeit [Diensttags](../../../virtual-network/security-overview.md#service-tags), um die Komplexität der Netzwerksicherheitsgruppe zu reduzieren. 
 
 ### <a name="deployment-steps"></a>Bereitstellungsschritte
 
@@ -100,7 +100,7 @@ Die Konfiguration würde wie folgt aussehen:
 2. Erstellen Sie den Back-End-Pool **MyBackendPoolOfPublicILB**, und fügen Sie die virtuellen Computer hinzu.  
    1. Wählen Sie das virtuelle Netzwerk aus.  
    1. Wählen Sie die virtuellen Computer und ihre IP-Adressen aus, und fügen Sie sie dem Back-End-Pool hinzu.  
-3. [Erstellen Sie Ausgangsregeln](https://docs.microsoft.com/azure/load-balancer/configure-load-balancer-outbound-cli#create-outbound-rule). Derzeit ist es nicht möglich, Ausgangsregeln über das Azure-Portal zu erstellen. Sie können Ausgangsregeln mit der [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/azure/cloud-shell/overview?view=azure-cli-latest) erstellen.  
+3. [Erstellen Sie Ausgangsregeln](../../../load-balancer/quickstart-load-balancer-standard-public-cli.md?tabs=option-1-create-load-balancer-standard%3ftabs%3doption-1-create-load-balancer-standard#create-outbound-rule-configuration). Derzeit ist es nicht möglich, Ausgangsregeln über das Azure-Portal zu erstellen. Sie können Ausgangsregeln mit der [Azure-Befehlszeilenschnittstelle](../../../cloud-shell/overview.md?view=azure-cli-latest) erstellen.  
 
    ```azurecli
     az network lb outbound-rule create --address-pool MyBackendPoolOfPublicILB --frontend-ip-configs MyPublicILBFrondEndIP --idle-timeout 30 --lb-name MyPublicILB --name MyOutBoundRules  --outbound-ports 10000 --enable-tcp-reset true --protocol All --resource-group MyResourceGroup
@@ -117,13 +117,13 @@ Die Konfiguration würde wie folgt aussehen:
 
    ![Ausgehende Verbindung mit zweitem Load Balancer mit öffentlicher IP-Adresse](./media/high-availability-guide-standard-load-balancer/high-availability-guide-standard-load-balancer-network-security-groups.png)
 
-   Weitere Informationen zu Azure-Netzwerksicherheitsgruppen finden Sie unter [Sicherheitsgruppen](https://docs.microsoft.com/azure/virtual-network/security-overview). 
+   Weitere Informationen zu Azure-Netzwerksicherheitsgruppen finden Sie unter [Sicherheitsgruppen](../../../virtual-network/security-overview.md). 
 
 ## <a name="azure-firewall-for-outbound-connections-to-internet"></a>Azure Firewall für ausgehende Verbindungen mit dem Internet
 
 Eine weitere Möglichkeit, ausgehende Verbindungen mit öffentlichen Endpunkten zu erreichen, ohne die eingehende Verbindung mit dem virtuellen Computer von öffentlichen Endpunkten aus zu ermöglichen, bietet Azure Firewall. Azure Firewall ist ein verwalteter Dienst mit integrierter Hochverfügbarkeit, der mehrere Verfügbarkeitszonen umfassen kann.  
-Sie müssen auch eine [Benutzerdefinierte Route](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview#custom-routes) bereitstellen, die mit dem Subnetz verbunden ist, in dem virtuelle Computer und der Azure Load Balancer bereitgestellt werden, und auf Azure Firewall verweisen, um den Datenverkehr über Azure Firewall zu leiten.  
-Weitere Informationen zum Bereitstellen von Azure Firewall finden Sie unter [Bereitstellen und Konfigurieren von Azure Firewall](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal).  
+Sie müssen auch eine [Benutzerdefinierte Route](../../../virtual-network/virtual-networks-udr-overview.md#custom-routes) bereitstellen, die mit dem Subnetz verbunden ist, in dem virtuelle Computer und der Azure Load Balancer bereitgestellt werden, und auf Azure Firewall verweisen, um den Datenverkehr über Azure Firewall zu leiten.  
+Weitere Informationen zum Bereitstellen von Azure Firewall finden Sie unter [Bereitstellen und Konfigurieren von Azure Firewall](../../../firewall/tutorial-firewall-deploy-portal.md).  
 
 Die Architektur sieht folgendermaßen aus:
 
@@ -137,7 +137,7 @@ Die Architektur sieht folgendermaßen aus:
 - Wenn die Firewalllösung im Unternehmen nicht Azure Firewall ist und die Sicherheitsanforderungen bestehen, dass sämtlicher ausgehender Datenverkehr über eine zentralisierte Unternehmenslösung geleitet wird, ist diese Lösung möglicherweise nicht praktikabel.  
 
 >[!TIP]
->Verwenden Sie nach Möglichkeit [Diensttags](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags), um die Komplexität der Azure Firewall-Regeln zu reduzieren.  
+>Verwenden Sie nach Möglichkeit [Diensttags](../../../virtual-network/security-overview.md#service-tags), um die Komplexität der Azure Firewall-Regeln zu reduzieren.  
 
 ### <a name="deployment-steps"></a>Bereitstellungsschritte
 
@@ -229,5 +229,5 @@ Wenn ausgehender Datenverkehr über eine Drittanbieterfirewall geleitet wird, gi
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Informationen zum Konfigurieren von Pacemaker unter SUSE in Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker)
-* [Informationen zum Konfigurieren von Pacemaker unter Red Hat in Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-pacemaker)
+* [Informationen zum Konfigurieren von Pacemaker unter SUSE in Azure](./high-availability-guide-suse-pacemaker.md)
+* [Informationen zum Konfigurieren von Pacemaker unter Red Hat in Azure](./high-availability-guide-rhel-pacemaker.md)

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: e5523b7c39763fb53d0847b79c70d5ab8b9d3b52
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: e9cf5a65c664df321e8cee1c867e637a4718c9ee
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86169322"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87837328"
 ---
 # <a name="how-to-encode-an-asset-by-using-media-encoder-standard"></a>Codieren eines Medienobjekts mit Media Encoder Standard
 > [!div class="op_single_selector"]
@@ -33,7 +33,7 @@ ms.locfileid: "86169322"
 
 Um digitale Videos über das Internet zu übermitteln, müssen Sie die Medien komprimieren. Digitale Videodateien sind umfangreich und möglicherweise zu groß, um sie über das Internet zu übermitteln oder auf den Geräten Ihrer Kunden ordnungsgemäß wiederzugeben. Bei der Codierung werden Video- und Audiodaten komprimiert, damit Ihre Kunden Ihre Medien anzeigen können.
 
-Die Codierung ist einer der häufigsten Verarbeitungsvorgänge in Azure Media Services. Sie erstellen Codierungsaufträge, um Mediendateien von einer Codierung in eine andere zu konvertieren. Zum Codieren können Sie den in Media Services integrierten Encoder (Media Encoder Standard) verwenden. Sie können auch einen Encoder von einem Media Services-Partner verwenden. Drittanbieter-Encoder sind über den Azure Marketplace erhältlich. Sie können Details zu Codierungsaufgaben angeben, indem Sie für Ihren Encoder vordefinierte Zeichenfolgen oder vordefinierte Konfigurationsdateien verwenden. Welche Arten von Voreinstellungen verfügbar sind, erfahren Sie unter [Aufgabenvoreinstellungen für Media Encoder Standard](https://msdn.microsoft.com/library/mt269960).
+Die Codierung ist einer der häufigsten Verarbeitungsvorgänge in Azure Media Services. Sie erstellen Codierungsaufträge, um Mediendateien von einer Codierung in eine andere zu konvertieren. Zum Codieren können Sie den in Media Services integrierten Encoder (Media Encoder Standard) verwenden. Sie können auch einen Encoder von einem Media Services-Partner verwenden. Drittanbieter-Encoder sind über den Azure Marketplace erhältlich. Sie können Details zu Codierungsaufgaben angeben, indem Sie für Ihren Encoder vordefinierte Zeichenfolgen oder vordefinierte Konfigurationsdateien verwenden. Welche Arten von Voreinstellungen verfügbar sind, erfahren Sie unter [Aufgabenvoreinstellungen für Media Encoder Standard](./media-services-mes-presets-overview.md).
 
 Je nach Art der Verarbeitung, die Sie durchführen möchten, können einem Auftrag eine oder mehrere Aufgaben zugeordnet sein. Sie haben zwei Möglichkeiten, um über die REST-API Aufträge und die zugehörigen Aufgaben zu erstellen:
 
@@ -65,7 +65,7 @@ Informationen zum Herstellen einer Verbindung mit der AMS-API finden Sie unter [
 >
 >
 
-Das folgende Beispiel zeigt, wie Sie einen Auftrag mit einer Aufgabe erstellen und bereitstellen, die für die Codierung eines Videos mit einer bestimmten Auflösung und Qualität konfiguriert wurde. Bei der Codierung mit Media Encoder Standard können Sie die [hier](https://msdn.microsoft.com/library/mt269960)angegebenen Voreinstellungen für die Aufgabenkonfiguration verwenden.
+Das folgende Beispiel zeigt, wie Sie einen Auftrag mit einer Aufgabe erstellen und bereitstellen, die für die Codierung eines Videos mit einer bestimmten Auflösung und Qualität konfiguriert wurde. Bei der Codierung mit Media Encoder Standard können Sie die [hier](./media-services-mes-presets-overview.md)angegebenen Voreinstellungen für die Aufgabenkonfiguration verwenden.
 
 Anforderung:
 

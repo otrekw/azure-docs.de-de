@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 07/10/2017
 ms.author: cynthn
 ms.custom: storage accounts
-ms.openlocfilehash: 288a697339fc6f8b001b445840e3fa98ab92f9a4
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: d667ff3949fcf58affc72b5d75a40abd8ca0dcb6
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87292265"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87830307"
 ---
 # <a name="upload-and-create-a-linux-vm-from-custom-disk-with-the-azure-cli"></a>Hochladen und Erstellen eines virtuellen Linux-Computers auf der Grundlage eines benutzerdefinierten Datenträgers mithilfe der Azure CLI
 
@@ -72,7 +72,7 @@ az vm create --resource-group myResourceGroup --location westus \
     --use-unmanaged-disk
 ```
 
-Das Zielspeicherkonto muss mit dem Konto identisch sein, in das Sie den virtuellen Datenträger hochgeladen haben. Sie müssen außerdem alle erforderlichen Zusatzparameter für den **az vm create**-Befehl angeben bzw. entsprechende Eingabeaufforderungen beantworten. Dazu gehören: virtuelles Netzwerk, öffentliche IP-Adresse, Benutzername und SSH-Schlüssel. Erfahren Sie mehr zu den [verfügbaren Resource Manager-Parametern für die klassische Befehlszeilenschnittstelle](../azure-cli-arm-commands.md#virtual-machines).
+Das Zielspeicherkonto muss mit dem Konto identisch sein, in das Sie den virtuellen Datenträger hochgeladen haben. Sie müssen außerdem alle erforderlichen Zusatzparameter für den **az vm create**-Befehl angeben bzw. entsprechende Eingabeaufforderungen beantworten. Dazu gehören: virtuelles Netzwerk, öffentliche IP-Adresse, Benutzername und SSH-Schlüssel. Erfahren Sie mehr zu den [verfügbaren Resource Manager-Parametern für die klassische Befehlszeilenschnittstelle](/previous-versions/azure/virtual-machines/azure-cli-arm-commands#virtual-machines).
 
 ## <a name="requirements"></a>Requirements (Anforderungen)
 Um die folgenden Schritte ausführen zu können, benötigen Sie Folgendes:

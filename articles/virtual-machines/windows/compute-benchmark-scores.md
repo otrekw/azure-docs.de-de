@@ -9,12 +9,12 @@ ms.workload: infrastructure-services
 ms.date: 04/29/2020
 ms.author: cynthn
 ms.reviewer: davberg
-ms.openlocfilehash: 019c627743c344fc0f07c8954ebdfdf2eca0437b
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: ccaf44f733958bff461e954c78196f7376a59771
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87267046"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836206"
 ---
 # <a name="compute-benchmark-scores-for-windows-vms"></a>Compute-Benchmarkergebnisse für virtuelle Windows-Computer
 Die folgenden SPECInt-Benchmarkergebnisse zeigen die Computeleistung für ausgewählte Azure-VMs unter Windows Server. Compute-Benchmarkergebnisse stehen auch für [virtuelle Linux-Computer](../linux/compute-benchmark-scores.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)zur Verfügung.
@@ -389,5 +389,4 @@ Die folgenden SPECInt-Benchmarkergebnisse zeigen die Computeleistung für ausgew
 Die Windows-Zahlen wurden durch die Ausführung von [SPECint 2006](https://www.spec.org/cpu2006/results/rint2006.html) unter Windows Server berechnet. SPECint wurde mit der Option für die Basisrate (SPECint_rate2006) mit einer Kopie pro vCPU ausgeführt. SPECint besteht aus 12 getrennten Tests, die jeweils dreimal ausgeführt wurden. Der Mittelwert jedes Tests wurde gewichtet, um eine zusammengesetzte Bewertung zu erhalten. Diese Tests wurden dann auf mehreren virtuellen Computern ausgeführt, um die gezeigten Durchschnittsergebnisse zu liefern.
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Speicherkapazitäten, Details zu Datenträgern und weitere Überlegungen zur Auswahl von Größen für virtuelle Computer finden Sie unter [Größen für virtuelle Computer](sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-
+* Speicherkapazitäten, Details zu Datenträgern und weitere Überlegungen zur Auswahl von Größen für virtuelle Computer finden Sie unter [Größen für virtuelle Computer](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).

@@ -10,12 +10,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 11/09/2018
 ms.author: edprice
-ms.openlocfilehash: ac9c8b0fe974c0a4dfebf1bcc303a379e2bd07ed
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 0b032f48e18651af7f360471cc2834a5c45acc56
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87268032"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87831412"
 ---
 # <a name="ibm-db2-purescale-on-azure"></a>IBM DB2 pureScale in Azure
 
@@ -67,7 +67,7 @@ Bei dieser Architektur werden die Anwendungs-, Speicher- und Datenebenen auf vir
 
 -   Einen DB2 pureScale-Cluster. Der Typ der in Azure benötigten Computeressourcen hängt von der jeweiligen Einrichtung ab. Im Allgemeinen können zwei Ansätze verwendet werden:
 
-    -   Verwendung eines Netzwerks in HPC-Ausführung (High-Performance Computing) mit mehreren Knoten, bei dem kleine bis mittlere Instanzen auf freigegebenen Speicher zugreifen. Für diesen HPC-Konfigurationstyp bieten arbeitsspeicheroptimierte [virtuelle Computer](../windows/sizes.md) der E-Serie oder L-Serie in Azure die erforderliche Computeleistung.
+    -   Verwendung eines Netzwerks in HPC-Ausführung (High-Performance Computing) mit mehreren Knoten, bei dem kleine bis mittlere Instanzen auf freigegebenen Speicher zugreifen. Für diesen HPC-Konfigurationstyp bieten arbeitsspeicheroptimierte [virtuelle Computer](../sizes.md) der E-Serie oder L-Serie in Azure die erforderliche Computeleistung.
 
     -   Verwendung weniger großer VM-Instanzen für die Daten-Engines. Bei großen Instanzen sind die größten speicheroptimierten virtuellen Computer der [M-Serie](https://azure.microsoft.com/pricing/details/virtual-machines/series/) ideal für arbeitsspeicherintensive Workloads. Je nach Größe der logischen Partition (LPAR), die zum Ausführen von DB2 verwendet wird, kann eine dedizierte Instanz erforderlich sein.
 

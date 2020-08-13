@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 12/14/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3301667c0ee6ad739b6fb734c2cea3aef4889bd9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 15838e1e9acf328a0deaa981d1227c22c08dbbdf
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87051845"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87832262"
 ---
 # <a name="azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Azure Virtual Machines – DBMS-Bereitstellung für SAP-Workload
 
@@ -359,9 +359,9 @@ Wir empfehlen dringend die Verwendung von [Azure Managed Disks](../../windows/ma
 
 Netzlaufwerke und Remotefreigaben wie Azure-Dateidienste werden für Oracle Database-Dateien nicht unterstützt. Weitere Informationen finden Sie unter
 
-- [Einführung in den Microsoft Azure-Dateidienst](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx)
+- [Einführung in den Microsoft Azure-Dateidienst](/archive/blogs/windowsazurestorage/introducing-microsoft-azure-file-service)
 
-- [Beibehalten von Verbindungen zu Microsoft Azure-Dateien](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx)
+- [Beibehalten von Verbindungen zu Microsoft Azure-Dateien](/archive/blogs/windowsazurestorage/persisting-connections-to-microsoft-azure-files)
 
 
 Die in [Azure Virtual Machines – DBMS-Bereitstellung für SAP-Workload](dbms_guide_general.md) getroffenen Aussagen gelten auch für Bereitstellungen mit Oracle Database, wenn Sie Datenträger auf Basis von Azure-Seitenblobspeicher oder Managed Disks verwenden.
@@ -450,9 +450,9 @@ Es wird ausdrücklich empfohlen, [Azure Managed Disks](../../windows/managed-dis
 
 Netzlaufwerke und Remotefreigaben wie Azure-Dateidienste werden für Oracle Database-Dateien nicht unterstützt. Weitere Informationen finden Sie unter 
 
-- [Einführung in den Microsoft Azure-Dateidienst](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx)
+- [Einführung in den Microsoft Azure-Dateidienst](/archive/blogs/windowsazurestorage/introducing-microsoft-azure-file-service)
 
-- [Beibehalten von Verbindungen zu Microsoft Azure-Dateien](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx)
+- [Beibehalten von Verbindungen zu Microsoft Azure-Dateien](/archive/blogs/windowsazurestorage/persisting-connections-to-microsoft-azure-files)
 
 Die im Artikel [Überlegungen zur DBMS-Bereitstellung von Azure Virtual Machines für die SAP-Workload](dbms_guide_general.md) getroffenen Aussagen gelten auch für Bereitstellungen mit Oracle Database, wenn Sie Datenträger auf Basis von Azure-Seitenblobspeicher oder Managed Disks verwenden.
 

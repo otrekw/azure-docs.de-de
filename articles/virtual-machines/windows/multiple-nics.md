@@ -7,15 +7,15 @@ ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 09/26/2017
 ms.author: cynthn
-ms.openlocfilehash: 2667ff571070b2e62dcfa4af6e202f1851aa3e80
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ed1c5b749b778ef8334ea3b31ef17d3bf106484f
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86525771"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87835543"
 ---
 # <a name="create-and-manage-a-windows-virtual-machine-that-has-multiple-nics"></a>Erstellen und Verwalten eines virtuellen Windows-Computers mit mehrere Netzwerkkarten
-Virtuelle Computer (VMs) in Azure können über mehrere virtuelle Netzwerkkarten (Network Interface Cards, NICs) verfügen. Ein häufiges Szenario ist das Vorhandensein unterschiedlicher Subnetze für Front-End- und Back-End-Konnektivität. Sie können mehrere NICs auf einem virtuellen Computer mehreren Subnetzen zuordnen, aber diese Subnetze müssen sich alle im gleichen virtuellen Netzwerk (VNET) befinden. In diesem Artikel erfahren Sie, wie Sie einen virtuellen Computer mit mehreren Netzwerkkarten erstellen. Außerdem erfahren Sie, wie Sie Netzwerkkarten zu einem vorhandenen virtuellen Computer hinzufügen oder davon entfernen. Verschiedene [VM-Größen](sizes.md) unterstützen eine unterschiedliche Anzahl von Netzwerkkarten, passen Sie die Größe Ihres virtuellen Computers daher entsprechend an.
+Virtuelle Computer (VMs) in Azure können über mehrere virtuelle Netzwerkkarten (Network Interface Cards, NICs) verfügen. Ein häufiges Szenario ist das Vorhandensein unterschiedlicher Subnetze für Front-End- und Back-End-Konnektivität. Sie können mehrere NICs auf einem virtuellen Computer mehreren Subnetzen zuordnen, aber diese Subnetze müssen sich alle im gleichen virtuellen Netzwerk (VNET) befinden. In diesem Artikel erfahren Sie, wie Sie einen virtuellen Computer mit mehreren Netzwerkkarten erstellen. Außerdem erfahren Sie, wie Sie Netzwerkkarten zu einem vorhandenen virtuellen Computer hinzufügen oder davon entfernen. Verschiedene [VM-Größen](../sizes.md) unterstützen eine unterschiedliche Anzahl von Netzwerkkarten, passen Sie die Größe Ihres virtuellen Computers daher entsprechend an.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -73,7 +73,7 @@ $myNic2 = New-AzNetworkInterface -ResourceGroupName "myResourceGroup" `
 In der Regel erstellen Sie auch eine [Netzwerksicherheitsgruppe](../../virtual-network/security-overview.md), um den Netzwerkdatenverkehr zur VM zu filtern, und einen [Lastenausgleich](../../load-balancer/load-balancer-overview.md) zum Verteilen des Datenverkehrs auf mehrere VMs.
 
 ### <a name="create-the-virtual-machine"></a>Erstellen des virtuellen Computers
-Beginnen Sie jetzt damit, Ihre VM-Konfiguration zu erstellen. Jede VM-Größe weist eine maximale Anzahl von Netzwerkkarten auf, die Sie einem virtuellen Computer hinzufügen können. Weitere Informationen finden Sie unter [Windows-VM-Größen](sizes.md) .
+Beginnen Sie jetzt damit, Ihre VM-Konfiguration zu erstellen. Jede VM-Größe weist eine maximale Anzahl von Netzwerkkarten auf, die Sie einem virtuellen Computer hinzufügen können. Weitere Informationen finden Sie unter [Windows-VM-Größen](../sizes.md) .
 
 1. Legen Sie Ihre VM-Anmeldeinformationen wie folgt auf die Variable `$cred` fest:
 
@@ -119,7 +119,7 @@ Beginnen Sie jetzt damit, Ihre VM-Konfiguration zu erstellen. Jede VM-Größe we
 6. Fügen Sie Routen für sekundäre NICs zum Betriebssystem hinzu. Führen Sie dazu die Schritte unter [Erstellen und Verwalten eines virtuellen Windows-Computers mit mehreren Netzwerkkarten](#configure-guest-os-for-multiple-nics) aus.
 
 ## <a name="add-a-nic-to-an-existing-vm"></a>Hinzufügen einer Netzwerkkarte auf einem vorhandenen virtuellen Computer
-Wenn Sie einem vorhandenen virtuellen Computer eine virtuelle Netzwerkkarte hinzufügen möchten, heben Sie die Zuordnung des virtuellen Computers auf, fügen Sie die virtuelle Netzwerkkarte hinzu, und starten Sie anschließend den virtuellen Computer. Verschiedene [VM-Größen](sizes.md) unterstützen eine unterschiedliche Anzahl von Netzwerkkarten, passen Sie die Größe Ihres virtuellen Computers daher entsprechend an. Bei Bedarf können Sie die [Größe eines virtuellen Computers ändern](resize-vm.md).
+Wenn Sie einem vorhandenen virtuellen Computer eine virtuelle Netzwerkkarte hinzufügen möchten, heben Sie die Zuordnung des virtuellen Computers auf, fügen Sie die virtuelle Netzwerkkarte hinzu, und starten Sie anschließend den virtuellen Computer. Verschiedene [VM-Größen](../sizes.md) unterstützen eine unterschiedliche Anzahl von Netzwerkkarten, passen Sie die Größe Ihres virtuellen Computers daher entsprechend an. Bei Bedarf können Sie die [Größe eines virtuellen Computers ändern](resize-vm.md).
 
 1. Heben Sie mit [Stop-AzVM](/powershell/module/az.compute/stop-azvm) die Zuordnung des virtuellen Computers auf. Im folgenden Beispiel wird die Zuordnung für den virtuellen Computer *myVM* in *myResourceGroup* aufgehoben:
 
@@ -288,4 +288,4 @@ Azure weist der ersten (primären) Netzwerkschnittstelle, die an den virtuellen 
     Die mit *192.168.1.1* unter **Gateway** aufgeführte Route ist die Route, die standardmäßig für die primäre Netzwerkschnittstelle vorhanden ist. Die Route mit *192.168.2.1* unter **Gateway** ist die von Ihnen hinzugefügte Route.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Überprüfen Sie die [Größen für virtuelle Windows-Computer](sizes.md), wenn Sie einen virtuellen Computer mit mehreren Netzwerkkarten erstellen. Achten Sie auf die maximale Anzahl von Netzwerkkarten, die von jeder VM-Größe unterstützt wird. 
+Überprüfen Sie die [Größen für virtuelle Windows-Computer](../sizes.md), wenn Sie einen virtuellen Computer mit mehreren Netzwerkkarten erstellen. Achten Sie auf die maximale Anzahl von Netzwerkkarten, die von jeder VM-Größe unterstützt wird. 

@@ -3,12 +3,12 @@ title: Fragen zur Ermittlung, Bewertung und Abhängigkeitsanalyse in Azure Migra
 description: Erhalten Sie Antworten auf häufig gestellte Fragen zur Ermittlung, Bewertung und Abhängigkeitsanalyse in Azure Migrate.
 ms.topic: conceptual
 ms.date: 06/09/2020
-ms.openlocfilehash: e2aa0f5c2dae33cd995b30d84e7406da9b501e8f
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 8db9103494c0006127c45c0ae5f9672d3bd2bbb1
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87385720"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87829882"
 ---
 # <a name="discovery-assessment-and-dependency-analysis---common-questions"></a>Häufig gestellte Fragen zur Ermittlung, Bewertung und Abhängigkeitsanalyse
 
@@ -169,7 +169,7 @@ Nein, der Bericht für die Visualisierung von Abhängigkeiten in der Agent-basie
 
 Für die Agent-basierte Visualisierung von Abhängigkeiten:
 
-- Verwenden Sie ein [Skript für die Installation des Dependency-Agents](../azure-monitor/insights/vminsights-enable-hybrid-cloud.md#installation-script-examples).
+- Verwenden Sie ein [Skript für die Installation des Dependency-Agents](../azure-monitor/insights/vminsights-enable-hybrid.md#dependency-agent).
 - Für MMA [verwenden Sie die Befehlszeile oder die Automatisierung](../azure-monitor/platform/log-analytics-agent.md#installation-and-configuration), oder verwenden Sie ein [Skript](https://gallery.technet.microsoft.com/scriptcenter/Install-OMS-Agent-with-2c9c99ab).
 - Zusätzlich zu Skripts können Sie Bereitstellungstools wie Microsoft Endpoint Configuration Manager und [Intigua](https://www.intigua.com/intigua-for-azure-migration) zum Bereitstellen der Agents verwenden.
 

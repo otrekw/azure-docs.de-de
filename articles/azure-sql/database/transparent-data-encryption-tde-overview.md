@@ -12,12 +12,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 06/15/2020
-ms.openlocfilehash: 8bf1a19c8756e8c51b79ec63f10822efa7816d32
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d9bc5e91d45b75c47cee31c45b937f7d3f0118b8
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84986948"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836682"
 ---
 # <a name="transparent-data-encryption-for-sql-database-sql-managed-instance-and-azure-synapse-analytics"></a>TDE (Transparent Data Encryption) für SQL-Datenbank, SQL Managed Instance und Azure Synapse Analytics
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -26,7 +26,7 @@ ms.locfileid: "84986948"
 
 Die TDE führt die E/A-Verschlüsselung und -Entschlüsselung der Daten und auf Seitenebene durch. Jede Seite wird entschlüsselt, wenn sie in den Speicher gelesen wird, und dann verschlüsselt, bevor sie auf den Datenträger geschrieben wird. TDE verschlüsselt den Speicher einer gesamten Datenbank mithilfe eines symmetrischen Schlüssels, der als Datenbank-Verschlüsselungsschlüssel (Database Encryption Key, DEK) bezeichnet wird. Beim Datenbankstart wird der verschlüsselte DEK entschlüsselt und dann für die Entschlüsselung und erneute Verschlüsselung der Datenbankdateien im Prozess der SQL Server-Datenbank-Engine verwendet. Der DEK ist durch die TDE-Schutzvorrichtung geschützt. Beim TDE-Schutzvorrichtung handelt es sich entweder um ein von einem Dienst verwaltetes Zertifikat (dienstseitig verwaltete transparente Datenverschlüsselung) oder um einen asymmetrischen Schlüssel, der in [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault) gespeichert ist (kundenseitig verwaltete transparente Datenverschlüsselung).
 
-Bei Azure SQL-Datenbank und Azure Synapse ist der TDE-Schutz auf der [Serverebene](logical-servers.md) festgelegt und wird von allen Datenbanken übernommen, die diesem Server zugeordnet sind. Bei einer verwalteten Azure SQL-Instanz (BYOK-Feature in der Vorschau) ist die TDE-Schutzvorrichtung auf Instanzebene festgelegt und wird von allen verschlüsselten Datenbanken in dieser Instanz geerbt. In diesem Dokument bezieht sich der Begriff *Server* sowohl auf den Server als auch die Instanz (sofern nicht anders angegeben).
+Bei Azure SQL-Datenbank und Azure Synapse ist der TDE-Schutz auf der [Serverebene](logical-servers.md) festgelegt und wird von allen Datenbanken übernommen, die diesem Server zugeordnet sind. Bei der verwalteten Azure SQL-Instanz ist die TDE-Schutzvorrichtung auf Instanzebene festgelegt und wird von allen verschlüsselten Datenbanken für diese Instanz geerbt. In diesem Dokument bezieht sich der Begriff *Server* sowohl auf den Server als auch die Instanz (sofern nicht anders angegeben).
 
 > [!IMPORTANT]
 > Alle neu erstellten Datenbanken in SQL-Datenbank werden standardmäßig mithilfe einer dienstseitig verwalteten transparenten Datenverschlüsselung verschlüsselt. Vorhandene SQL-Datenbanken, die vor Mai 2017 erstellt wurden, und SQL-Datenbanken, die durch Wiederherstellung, Georeplikation und Datenbankkopie erstellt wurden, sind standardmäßig nicht verschlüsselt. Vorhandene SQL Managed Instance-Datenbanken, die vor Februar 2019 erstellt wurden, sind standardmäßig nicht verschlüsselt. Azure SQL Managed Instance-Datenbanken, die durch Wiederherstellen erstellt wurden, erben den Verschlüsselungsstatus von der Quelle.

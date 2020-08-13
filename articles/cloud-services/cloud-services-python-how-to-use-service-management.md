@@ -14,13 +14,13 @@ ms.devlang: python
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: tagore
-ms.custom: tracking-python
-ms.openlocfilehash: 311d882814c45b3b001fde2a4f3f9027e879f29c
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.custom: devx-track-python
+ms.openlocfilehash: 35d0f77d5f4dde9e156d22e64881ba674189d327
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85919879"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87851510"
 ---
 # <a name="use-service-management-from-python"></a>Verwenden der Dienstverwaltung aus Python
 In diesem Leitfaden wird die programmgesteuerte Durchführung gängiger Dienstverwaltungsaufgaben aus Python erläutert. Die Klasse **ServiceManagementService** im [Azure SDK für Python](https://github.com/Azure/azure-sdk-for-python) unterstützt den programmgesteuerten Zugriff auf viele der Dienstverwaltungsfunktionen, die im [Azure-Portal][management-portal] zur Verfügung stehen. Sie können mit diesen Funktionen Clouddienste, Bereitstellungen, Datenverwaltungsdienste und virtuelle Computer erstellen, aktualisieren und löschen. Diese Funktionalität kann bei der Erstellung von Anwendungen hilfreich sein, die programmgesteuert auf Dienstverwaltungsfunktionen zugreifen müssen.

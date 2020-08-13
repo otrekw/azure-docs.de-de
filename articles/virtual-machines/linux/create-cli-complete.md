@@ -6,12 +6,12 @@ ms.service: virtual-machines-linux
 ms.topic: how-to
 ms.date: 12/14/2017
 ms.author: cynthn
-ms.openlocfilehash: e9613cdf38eecd750eb8ca3e9f3046112c558ea2
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 4348d3d71259b5bdf63b1c52af53bff59c650086
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87368335"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87829015"
 ---
 # <a name="create-a-complete-linux-virtual-machine-with-the-azure-cli"></a>Erstellen einer vollständigen Linux-VM mit der Azure CLI
 Um schnell einen virtuellen Computer (VM) in Azure zu erstellen, können Sie einen einzelnen Azure CLI-Befehl mit Standardwerten verwenden, um alle erforderlichen unterstützenden Ressourcen zu erstellen. Ressourcen wie ein virtuelles Netzwerk, eine öffentliche IP-Adresse und Regeln für Netzwerksicherheitsgruppen werden automatisch erstellt. Um mehr Kontrolle über Ihre Umgebung in der Produktionsumgebung zu erhalten, können Sie diese Ressourcen im Voraus erstellen und Ihre virtuellen Computer ihnen dann hinzufügen. Dieser Artikel führt Sie schrittweise durch das Erstellen eines virtuellen Computers und der einzelnen unterstützenden Ressourcen.
@@ -324,7 +324,7 @@ Ausgabe:
 ```
 
 ## <a name="create-a-virtual-nic"></a>Erstellen einer virtuellen Netzwerkkarte
-Virtuelle Netzwerkkarten (NICs) sind programmgesteuert verfügbar, da Sie Regeln für ihre Verwendung anwenden können. Abhängig von der [VM-Größe](sizes.md) können Sie mehrere virtuelle NICs bei einem virtuellen Computer anfügen. Mit dem folgenden Befehl [az network nic create](/cli/azure/network/nic) erstellen Sie eine Netzwerkkarte namens *myNic*, die Sie Ihrer Netzwerksicherheitsgruppe zuordnen. Die öffentliche IP-Adresse *myPublicIP* ist auch der virtuellen Netzwerkkarte zugeordnet.
+Virtuelle Netzwerkkarten (NICs) sind programmgesteuert verfügbar, da Sie Regeln für ihre Verwendung anwenden können. Abhängig von der [VM-Größe](../sizes.md) können Sie mehrere virtuelle NICs bei einem virtuellen Computer anfügen. Mit dem folgenden Befehl [az network nic create](/cli/azure/network/nic) erstellen Sie eine Netzwerkkarte namens *myNic*, die Sie Ihrer Netzwerksicherheitsgruppe zuordnen. Die öffentliche IP-Adresse *myPublicIP* ist auch der virtuellen Netzwerkkarte zugeordnet.
 
 ```azurecli
 az network nic create \

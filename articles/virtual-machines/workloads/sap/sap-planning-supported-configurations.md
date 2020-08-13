@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 03/11/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a79db217c5444e59e35d4dfad9fbb98bbccbd251
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1945dc3b9fa03354ef447f813d95b6040a4b7b91
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87079807"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87833333"
 ---
 # <a name="sap-workload-on-azure-virtual-machine-supported-scenarios"></a>SAP-Workload in Szenarien mit Unterstützung von virtuellen Azure-Computern
 Der Entwurf einer SAP NetWeaver-, Business One-, `Hybris`- oder S/4HANA-Systemarchitektur in Azure eröffnet eine Vielzahl von Möglichkeiten für verschiedene Architekturen und Werkzeuge, um zu einer skalierbaren, effizienten und hochverfügbaren Bereitstellung zu gelangen. Abhängig vom verwendeten Betriebssystem oder DBMS gelten jedoch Einschränkungen. Darüber hinaus werden nicht alle Szenarien, die lokal unterstützt werden, in gleicher Weise auch in Azure unterstützt. Das vorliegende Dokument stellt die unterstützten Nicht-Hochverfügbarkeitskonfigurationen und Hochverfügbarkeitskonfigurationen sowie Architekturen vor, die ausschließlich Azure-VMs verwenden. Informationen zu unterstützten Szenarien mit [großen HANA-Instanzen](./hana-overview-architecture.md) finden Sie im Artikel [Unterstützte Szenarien für große HANA-Instanzen](./hana-supported-scenario.md). 
@@ -246,7 +246,7 @@ In der Region für die Notfallwiederherstellung wird die Verwendung einer kleine
 - Eine Größenänderung zwischen VM-Familien kann ein Problem darstellen, wenn die verschiedenen VMs in einer Verfügbarkeitsgruppe zusammengefasst sind oder wenn die Größenänderung zwischen VMs der M-Serie und der Mv2-Familie erfolgen soll.
 - Es muss ausreichend CPU-Kapazität und Arbeitsspeicher vorhanden sein, damit die Datenbankinstanz den Änderungsstream mit minimaler Verzögerung empfangen und diese Änderungen mit minimaler Verzögerung auf die Daten anwenden kann.  
 
-Weitere Details zu den Beschränkungen für verschiedene VM-Größen finden Sie [hier](../../linux/sizes.md). 
+Weitere Details zu den Beschränkungen für verschiedene VM-Größen finden Sie [hier](../../sizes.md). 
 
 Eine weitere unterstützte Methode zur Bereitstellung eines Notfallwiederherstellungsziels ist die Installation einer zweiten DBMS-Instanz auf einer VM, die eine nicht in der Produktion eingesetzte DBMS-Instanz einer nicht in der Produktion eingesetzten SAP-Instanz ausführt. Dies kann eine Herausforderung darstellen, da Sie herausfinden müssen, welche Mengen an Arbeitsspeicher, CPU-Ressourcen, Netzwerkbandbreite und Speicherbandbreite für die jeweiligen Zielinstanzen benötigt werden, die im Notfallwiederherstellungsszenario als Hauptinstanz fungieren sollen. Insbesondere in HANA wird dringend empfohlen, die als Notfallwiederherstellungsziel verwendete Instanz auf einem gemeinsam genutzten Host zu konfigurieren, damit die Daten nicht vorab in die Zielinstanz für die Notfallwiederherstellung geladen werden.
 

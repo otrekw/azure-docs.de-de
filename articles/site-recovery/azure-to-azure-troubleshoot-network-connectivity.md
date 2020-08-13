@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 04/06/2020
-ms.openlocfilehash: 71176c87ee805eb4a634dd6c2f344922fc13c4f3
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 9600f1cae61b59af5d026eb74f504658395a11ae
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86132717"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87835883"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-network-connectivity-issues"></a>Problembehandlung für Azure-zu-Azure-VM-Netzwerkkonnektivitätsprobleme
 
@@ -18,12 +18,12 @@ In diesem Artikel werden allgemeine Probleme im Zusammenhang mit der Netzwerkkon
 
 Damit die Site Recovery-Replikation funktioniert, ist für die VM die ausgehende Konnektivität zu bestimmten URLs oder IP-Bereichen erforderlich. Wenn sich Ihr virtueller Computer hinter einer Firewall befindet oder Netzwerksicherheitsgruppen-Regeln (NSG-Regeln) zum Steuern der ausgehenden Konnektivität verwendet werden, wird ggf. eine dieser Fehlermeldungen angezeigt.
 
-| URL | Details |
-|---|---|
-| `*.blob.core.windows.net` | Erforderlich, damit Daten in das Cachespeicherkonto in der Quellregion über die VM geschrieben werden können. Wenn Sie alle Cachespeicherkonten für Ihre VMs kennen, können Sie eine Zulassungsliste für die spezifischen Speicherkonto-URLs verwenden. Beispielsweise `cache1.blob.core.windows.net` und `cache2.blob.core.windows.net` anstelle von `*.blob.core.windows.net`. |
-| `login.microsoftonline.com` | Erforderlich für die Autorisierung und Authentifizierung bei den Site Recovery-Dienst-URLs. |
-| `*.hypervrecoverymanager.windowsazure.com` | Erforderlich, um die Kommunikation mit dem Site Recovery-Dienst über die VM zu ermöglichen. Sie können die entsprechende _Site Recovery-IP_ verwenden, wenn Ihr Firewallproxy IPs unterstützt. |
-| `*.servicebus.windows.net` | Erforderlich, damit die Site Recovery-Überwachungs- und -Diagnosedaten über die VM geschrieben werden können. Sie können die entsprechende _Site Recovery-Überwachungs-IP_ verwenden, wenn Ihr Firewallproxy IPs unterstützt. |
+| **Name**                  | **Kommerziell**                               | **Behörden**                                 | **Beschreibung** |
+| ------------------------- | -------------------------------------------- | ---------------------------------------------- | ----------- |
+| Storage                   | `*.blob.core.windows.net`                  | `*.blob.core.usgovcloudapi.net`              | Erforderlich, damit Daten in das Cachespeicherkonto in der Quellregion über die VM geschrieben werden können. Wenn Sie alle Cachespeicherkonten für Ihre VMs kennen, können Sie eine Zulassungsliste für die spezifischen Speicherkonto-URLs verwenden. Beispielsweise `cache1.blob.core.windows.net` und `cache2.blob.core.windows.net` anstelle von `*.blob.core.windows.net`. |
+| Azure Active Directory    | `login.microsoftonline.com`                | `login.microsoftonline.us`                   | Erforderlich für die Autorisierung und Authentifizierung bei den Site Recovery-Dienst-URLs. |
+| Replikation               | `*.hypervrecoverymanager.windowsazure.com` | `*.hypervrecoverymanager.windowsazure.com`   | Erforderlich, um die Kommunikation mit dem Site Recovery-Dienst über die VM zu ermöglichen. Sie können die entsprechende _Site Recovery-IP_ verwenden, wenn Ihr Firewallproxy IPs unterstützt. |
+| Service Bus               | `*.servicebus.windows.net`                 | `*.servicebus.usgovcloudapi.net`             | Erforderlich, damit die Site Recovery-Überwachungs- und -Diagnosedaten über die VM geschrieben werden können. Sie können die entsprechende _Site Recovery-Überwachungs-IP_ verwenden, wenn Ihr Firewallproxy IPs unterstützt. |
 
 ## <a name="outbound-connectivity-for-site-recovery-urls-or-ip-ranges-error-code-151037-or-151072"></a>Ausgehende Konnektivität für Site Recovery-URLs oder IP-Bereiche (Fehlercode 151037 oder 151072)
 
@@ -51,7 +51,7 @@ Versuchen Sie, über den virtuellen Computer auf den DNS-Server zuzugreifen. Wen
 ### <a name="issue-2-site-recovery-configuration-failed-151196"></a>Problem 2: Fehler bei der Site Recovery-Konfiguration (151196)
 
 > [!NOTE]
-> Falls die VMs hinter einem internen Lastenausgleichsmodul vom Typ **Standard** angeordnet sind, besteht standardmäßig kein Zugriff auf die IP-Adressen von Office 365, z. B. `login.microsoftonline.com`. Ändern Sie dies entweder in den Typ **Basic** für das interne Lastenausgleichsmodul, oder ermöglichen Sie den Zugriff in ausgehender Richtung, wie dies im Artikel [Konfigurieren von Lastenausgleichs- und Ausgangsregeln in Load Balancer Standard mithilfe der Azure CLI](../load-balancer/configure-load-balancer-outbound-cli.md) beschrieben ist.
+> Falls die VMs hinter einem internen Lastenausgleichsmodul vom Typ **Standard** angeordnet sind, besteht standardmäßig kein Zugriff auf die IP-Adressen von Office 365, z. B. `login.microsoftonline.com`. Ändern Sie dies entweder in den Typ **Basic** für das interne Lastenausgleichsmodul, oder ermöglichen Sie den Zugriff in ausgehender Richtung, wie dies im Artikel [Konfigurieren von Lastenausgleichs- und Ausgangsregeln in Load Balancer Standard mithilfe der Azure CLI](../load-balancer/quickstart-load-balancer-standard-public-cli.md?tabs=option-1-create-load-balancer-standard#create-outbound-rule-configuration) beschrieben ist.
 
 #### <a name="possible-cause"></a>Mögliche Ursache
 
@@ -147,4 +147,4 @@ Führen Sie die Schritte im [Dokument mit der Netzwerkanleitung](./azure-to-azur
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Replizieren virtueller Azure-Computer zu einer anderen Azure-Region](azure-to-azure-how-to-enable-replication.md)
+[Replizieren von Azure-VMs in eine andere Azure-Region](azure-to-azure-how-to-enable-replication.md)

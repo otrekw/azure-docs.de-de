@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 09/26/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b1771b0b55301fe4beaf2049859ebf3b9642fdd5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6e217540b1dd3744da855c71e0add289dd1c9e18
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077340"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87831055"
 ---
 # <a name="sql-server-azure-virtual-machines-dbms-deployment-for-sap-netweaver"></a>Azure Virtual Machines – SQL Server-DBMS-Bereitstellung für SAP NetWeaver
 
@@ -336,7 +336,7 @@ In Übereinstimmung mit der allgemeinen Beschreibung sollten sich ausführbare S
 
 
 * Für alle SAP-zertifizierten VM-Typen (siehe SAP-Hinweis [1928533]), außer für VMs der A-Serie, können tempdb-Daten- und Protokolldateien auf dem nicht permanenten Laufwerk D:\ platziert werden. 
-* Dennoch wird empfohlen, mehrere tempdb-Datendateien zu verwenden. Beachten Sie, dass das Laufwerkvolumen bei „D:\“ je nach VM-Typ variieren kann. Weitere Informationen zur genauen Größe des Laufwerks „D:\“ verschiedener virtueller Computer finden Sie im Artikel [Größen für virtuelle Windows-Computer in Azure](../../windows/sizes.md).
+* Dennoch wird empfohlen, mehrere tempdb-Datendateien zu verwenden. Beachten Sie, dass das Laufwerkvolumen bei „D:\“ je nach VM-Typ variieren kann. Weitere Informationen zur genauen Größe des Laufwerks „D:\“ verschiedener virtueller Computer finden Sie im Artikel [Größen für virtuelle Windows-Computer in Azure](../../sizes.md).
 
 Mithilfe dieser Konfigurationen kann tempdb mehr Speicherplatz nutzen, als auf dem Systemlaufwerk vorhanden ist. Außerdem bietet das nicht permanente Laufwerk „D:\“ eine bessere E/A-Latenz und einen höheren E/A-Durchsatz (mit Ausnahme von VMs der A-Serie). Um die richtige tempdb-Größe zu bestimmen, können Sie die tempdb-Größen auf vorhandenen Systemen überprüfen. 
 
@@ -379,7 +379,7 @@ SQL Server 2014 und höher bietet die Möglichkeit, Datenbankdateien direkt in A
 
 * Das verwendete Speicherkonto muss sich in derselben Azure-Region befinden wie das Speicherkonto, das zur Bereitstellung des virtuellen Computers verwendet wird, auf dem SQL Server ausgeführt wird.
 * Die bereits genannten Überlegungen im Hinblick auf die Verteilung von VHDs auf verschiedene Azure Storage-Konten gelten auch für diese Bereitstellungsmethode. Dies bedeutet, dass die E/A-Vorgänge für die Grenzwerte des Azure-Speicherkontos eingerechnet werden.
-* Anstatt mit dem E/A-Speicherkontingent der VM verrechnet zu werden, wird der Datenverkehr mit Speicherblobs verrechnet, die die SQL Server-Daten und Protokolldateien darstellen, und zählt so zur Netzwerkbandbreite der VM des jeweiligen VM-Typs. Weitere Informationen zur Netzwerk- und Speicherbandbreite eines bestimmten VM-Typs finden Sie im Artikel [Größen für virtuelle Windows-Computer in Azure](../../windows/sizes.md).
+* Anstatt mit dem E/A-Speicherkontingent der VM verrechnet zu werden, wird der Datenverkehr mit Speicherblobs verrechnet, die die SQL Server-Daten und Protokolldateien darstellen, und zählt so zur Netzwerkbandbreite der VM des jeweiligen VM-Typs. Weitere Informationen zur Netzwerk- und Speicherbandbreite eines bestimmten VM-Typs finden Sie im Artikel [Größen für virtuelle Windows-Computer in Azure](../../sizes.md).
 * Indem Sie den E/A-Dateidurchsatz über das Netzwerkkontingent leiten, vergeuden Sie das Speicherkontingent zu weiten Teilen und nutzen die gesamte Bandbreite der VM daher nur teilweise.
 * Die Leistungsziele des IOPS- und E/A-Durchsatzes, die Azure Storage Premium für die verschiedenen Datenträgergrößen hat, gelten nicht mehr. Dies gilt auch für von Ihnen erstellte und in Azure Storage Premium gespeicherte Blobs. Die Ziele finden Sie unter [Storage Premium-Hochleistungsspeicher und verwaltete Datenträger für VMs](../../windows/disks-types.md#premium-ssd). Da SQL Server-Datendateien und -Protokolldateien direkt auf Blobs platziert werden, die in Azure Storage Premium gespeichert sind, können die Leistungsmerkmale im Vergleich zu VHDs in Azure Storage Premium unterschiedlich sein.
 * Hostbasiertes Caching, wie es für Azure Storage Premium-Datenträger verfügbar ist, steht nicht zur Verfügung, wenn Sie SQL Server-Datendateien direkt in Azure-Blobs platzieren.

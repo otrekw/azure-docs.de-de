@@ -9,12 +9,12 @@ ms.subservice: management
 ms.date: 08/20/2019
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: c4b0cb8204891538ef9c4eef3fa0ff5fd9686536
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5521e49c767a2510bf7c8c53cf6ac5e86b73b466
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83200092"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87837175"
 ---
 # <a name="planned-maintenance-notifications-for-virtual-machine-scale-sets"></a>Benachrichtigungen zu geplanten Wartungen für VM-Skalierungsgruppen
 
@@ -112,7 +112,7 @@ Nach dem Starten der Wartung werden die betroffenen virtuellen Computer in Ihrer
  
 ## <a name="check-maintenance-status-by-using-powershell"></a>Überprüfen des Wartungsstatus mithilfe von PowerShell
 
-Sie können mithilfe von Azure PowerShell einsehen, wann die Wartung von virtuellen Computern in Ihrer VM-Skalierungsgruppe geplant ist. Informationen zur geplanten Wartung können mit dem Cmdlet [Get-AzVmss](https://docs.microsoft.com/powershell/module/az.compute/get-azvmss) unter Verwendung des Parameters `-InstanceView` ermittelt werden.
+Sie können mithilfe von Azure PowerShell einsehen, wann die Wartung von virtuellen Computern in Ihrer VM-Skalierungsgruppe geplant ist. Informationen zur geplanten Wartung können mit dem Cmdlet [Get-AzVmss](/powershell/module/az.compute/get-azvmss) unter Verwendung des Parameters `-InstanceView` ermittelt werden.
  
 Wartungsinformationen werden nur zurückgegeben, wenn eine Wartung geplant ist. Ist keine Wartung geplant, die Auswirkungen auf die VM-Instanz besitzt, gibt das Cmdlet keine Wartungsinformationen zurück. 
 
@@ -181,7 +181,7 @@ az vmss perform-maintenance -g rgName -n vmssName --instance-ids id
 
 **A:** In einer Verfügbarkeitsgruppe oder VM-Skalierungsgruppe bereitgestellte virtuelle Computer verwenden Updatedomänen. Bei der Wartung berücksichtigt Azure die Updatedomäneneinschränkung und startet virtuelle Computer aus einer anderen Updatedomäne (innerhalb derselben Verfügbarkeitsgruppe) nicht neu. Azure wartet auch mindestens 30 Minuten bis zum Wechsel zur nächsten Gruppe von virtuellen Computern. 
 
-Weitere Informationen zu Hochverfügbarkeit finden Sie unter [Regionen und Verfügbarkeit für virtuelle Computer in Azure](../virtual-machines/windows/availability.md).
+Weitere Informationen zu Hochverfügbarkeit finden Sie unter [Regionen und Verfügbarkeit für virtuelle Computer in Azure](../virtual-machines/availability.md).
 
 **F: Wie kann ich über eine geplante Wartung benachrichtigt werden?**
 

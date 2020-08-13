@@ -9,12 +9,12 @@ ms.service: virtual-machines
 ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 6/8/2020
-ms.openlocfilehash: 28bde63bb9972b8e8de6261282007c1762fd6818
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: aa7e773cb45ea23d0e091ce12cc8488114ddfbdf
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87269307"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87837056"
 ---
 # <a name="ev4-and-esv4-series"></a>Ev4- und Esv4-Serie
 
@@ -97,7 +97,7 @@ Updates mit Speicherbeibehaltung: Unterstützt
 
 Preisrechner: [Preisrechner](https://azure.microsoft.com/pricing/calculator/)
 
-Weitere Informationen zu Datenträgertypen: [Datenträgertypen](https://docs.microsoft.com/azure/virtual-machines/linux/disks-types#ultra-ssd-preview/)
+Weitere Informationen zu Datenträgertypen: [Datenträgertypen](./linux/disks-types.md#ultra-disk)
 
 
 ## <a name="next-steps"></a>Nächste Schritte

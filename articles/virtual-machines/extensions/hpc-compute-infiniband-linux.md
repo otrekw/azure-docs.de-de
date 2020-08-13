@@ -12,18 +12,18 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/20/2020
 ms.author: amverma
-ms.openlocfilehash: 9085549486333968b98b4d34679c8616282d960f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: eb06f98d1a6e9b76c321e3d202043d656a2d94eb
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87095036"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87829049"
 ---
 # <a name="infiniband-driver-extension-for-linux"></a>InfiniBand-Treibererweiterung für Linux
 
 Diese Erweiterung installiert InfiniBand-OFED-Treiber auf VMs der [H-Serie](../sizes-hpc.md) und [N-Serie](../sizes-gpu.md), auf denen InfiniBand und SR-IOV (r-Größen) aktiviert ist und Linux ausgeführt wird. Je nach VM-Familie installiert die Erweiterung die entsprechenden Treiber für die Connect-X-NIC.
 
-Anweisungen zur manuellen Installation der OFED-Treiber sind [hier](https://docs.microsoft.com/azure/virtual-machines/workloads/hpc/enable-infiniband#manually-install-mellanox-ofed) verfügbar.
+Anweisungen zur manuellen Installation der OFED-Treiber sind [hier](../workloads/hpc/enable-infiniband.md#manual-installation) verfügbar.
 
 Außerdem ist eine Erweiterung zur Installation der InfiniBand-Treiber für [Windows-VMs](hpc-compute-infiniband-windows.md) verfügbar.
 

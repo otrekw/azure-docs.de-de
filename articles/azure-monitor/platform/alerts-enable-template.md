@@ -6,17 +6,17 @@ ms.author: robb
 ms.topic: conceptual
 ms.date: 03/09/2020
 ms.subservice: alerts
-ms.openlocfilehash: 380a1366994e970c208a6c3ad505414cb12bc0c2
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: d7d9f55bbd3d8060670008f321a77b2a28376e47
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87324096"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87849018"
 ---
 # <a name="create-a-classic-metric-alert-with-a-resource-manager-template"></a>Erstellen einer klassischen Metrikwarnung anhand einer Resource Manager-Vorlage
+
 > [!WARNING]
-> 
-> Dieser Artikel beschreibt das Erstellen von **klassischen Metrikwarnungen** mithilfe von Resource Manager-Vorlagen. Klassische Warnungen wurden im August 2019 eingestellt und werden im Juni 2020 als vollständig veraltet eingestuft. Sie können keine neuen klassischen Warnungen im öffentlichen Azure-Bereich erstellen. Einige regionale Versionen von Azure bieten möglicherweise weiterhin die Möglichkeit, es wird aber empfohlen, stattdessen [neuere Metrikwarnungen](./alerts-metric-near-real-time.md) mithilfe von Vorlagen zu erstellen, sofern dies möglich ist. In [diesem Artikel](alerts-metric-create-templates.md) finden Sie ausführliche Informationen.
+> In diesem Artikel erfahren Sie, wie Sie ältere klassische Metrikwarnungen erstellen. Azure Monitor unterstützt nun [neuere Metrikwarnungen, die nahezu in Echtzeit stattfinden, und eine neue Oberfläche für Warnungen](./alerts-overview.md). Klassische Warnungen werden [eingestellt](./monitoring-classic-retirement.md), sind jedoch weiterhin für Ressourcen, die die neuen Warnungen noch nicht unterstützen, beschränkt im Einsatz.
 >
 
 In diesem Artikel erfahren Sie, wie Sie mit einer [Azure Resource Manager-Vorlage](../../azure-resource-manager/templates/template-syntax.md) klassische Metrikwarnungen in Azure konfigurieren. So können Sie Warnungen für Ihre Ressourcen gleich bei der Erstellung automatisch einrichten, um sicherzustellen, dass alle Ressourcen ordnungsgemäß überwacht werden.

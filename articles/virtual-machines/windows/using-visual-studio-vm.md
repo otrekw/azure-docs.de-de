@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: cathys
 keywords: visualstudio
-ms.openlocfilehash: f1da7dabfb562ea32697745460d92ed27089878c
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 5ec8e0f6448e725998628e41b917942966d3ef2a
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86525533"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836155"
 ---
 # <a name="visual-studio-images-on-azure"></a>Visual Studio-Images in Azure
 Die Verwendung von Visual Studio auf einem vorkonfigurierten virtuellen Azure-Computer (VM) ist eine schnelle und einfache Methode zum Erzielen einer einsatzfähigen Entwicklungsumgebung ohne Ausgangsvoraussetzungen. Systemimages mit verschiedenen Visual Studio-Konfigurationen sind im [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/compute?filters=virtual-machine-images%3Bmicrosoft%3Bwindows&page=1&subcategories=application-infrastructure) verfügbar.
@@ -77,7 +77,7 @@ Azure bietet eine umfassende Palette von Größen für virtuelle Computer. Da Vi
    * Standard_D2S_v2
    * Standard_D3_v2
     
-Weitere Informationen zu den aktuellen VM-Größen finden Sie unter [Größen für virtuelle Windows-Computer in Azure](./sizes.md).
+Weitere Informationen zu den aktuellen VM-Größen finden Sie unter [Größen für virtuelle Windows-Computer in Azure](../sizes.md).
 
 Mit Azure können Sie die Größe des virtuellen Computers ändern, um einen erneuten Abgleich Ihrer ursprünglichen Wahl vorzunehmen. Sie können einen neuen virtuellen Computer mit einer besser geeigneten Größe bereitstellen oder die Größe des vorhandenen virtuellen Computers an verschiedene zugrunde liegende Hardware anpassen. Weitere Informationen finden Sie unter [Ändern der Größe eines virtuellen Windows-Computers](./resize-vm.md).
 

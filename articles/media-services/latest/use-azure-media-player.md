@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 07/17/2019
 ms.author: juliako
-ms.openlocfilehash: bfc22862bc40679644d7dc9eddedf45fbacccab1
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: ca2da842d9a2d529cf5ea01211efaff2047a9e9a
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87292880"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836019"
 ---
 # <a name="playback-with-azure-media-player"></a>Wiedergabe mit Azure Media Player
 
@@ -47,7 +47,7 @@ Sie können mithilfe der [Azure Media Player-Demoseite](https://aka.ms/azuremedi
 
 ## <a name="set-up-azure-media-player-in-your-html"></a>Einrichten von Azure Media Player in Ihrem HTML-Code
 
-Die Einrichtung von Azure Media Player ist einfach. Es dauert nur einige Augenblicke, bis die einfache Wiedergabe von Medieninhalten über Ihr Media Services-Konto möglich ist. Ausführliche Informationen zur Einrichtung und Konfiguration von Azure Media Player finden Sie in der [Azure Media Player-Dokumentation](https://docs.microsoft.com/azure/media-services/azure-media-player/azure-media-player-overview).
+Die Einrichtung von Azure Media Player ist einfach. Es dauert nur einige Augenblicke, bis die einfache Wiedergabe von Medieninhalten über Ihr Media Services-Konto möglich ist. Ausführliche Informationen zur Einrichtung und Konfiguration von Azure Media Player finden Sie in der [Azure Media Player-Dokumentation](../azure-media-player/azure-media-player-overview.md).
 
 ## <a name="additional-notes"></a>Zusätzliche Hinweise
 
@@ -55,5 +55,5 @@ Die Einrichtung von Azure Media Player ist einfach. Es dauert nur einige Augenbl
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Azure Media Player-Dokumentation](https://docs.microsoft.com/azure/media-services/azure-media-player/azure-media-player-overview)
+* [Azure Media Player-Dokumentation](../azure-media-player/azure-media-player-overview.md)
 * [Azure Media Player-Beispiele](https://github.com/Azure-Samples/azure-media-player-samples)

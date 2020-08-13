@@ -3,12 +3,12 @@ title: Azure Event Grid-Partnerthemen
 description: Mit Azure Event Grid können Sie Ereignisse von SaaS- und PaaS-Drittanbieterpartnern direkt an Azure-Dienste senden.
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 97829f262a00e2353624b2a3fa9df210518ad3a0
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: e56055c55a3b30c5d13736b9838257f3c0bbec10
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86115994"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87831905"
 ---
 # <a name="partner-topics-in-azure-event-grid-preview"></a>Partnerthemen in Azure Event Grid (Vorschau)
 Mit Partnerthemen können Sie Ereignisquellen von Drittanbietern direkt mit Azure Event Grid verbinden. Diese Integration ermöglicht Ihnen, Ereignisse von Partnern auf dieselbe Weise wie Ereignisse von Azure-Diensten zu abonnieren. 
@@ -22,7 +22,7 @@ Der erste Partner, der über Event Grid-Partnerthemen verfügbar ist, ist Auth0.
 Partnerthemen werden zum gleichen Tarif wie Systemthemen in Rechnung gestellt.
 
 ## <a name="limits"></a>Einschränkungen
-Partnerthemen sind in der Public Preview-Phase. In dieser Phase gelten für Partnerthemen die [ gleichen Grenzwerte](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#event-grid-limits) wie für System- und benutzerdefinierte Themen.
+Partnerthemen sind in der Public Preview-Phase. In dieser Phase gelten für Partnerthemen die [ gleichen Grenzwerte](../azure-resource-manager/management/azure-subscription-service-limits.md#event-grid-limits) wie für System- und benutzerdefinierte Themen.
 
 ## <a name="how-do-i-become-an-event-grid-partner"></a>Wie werde ich Event Grid-Partner?
 Die zur Unterstützung dieser Produkteinführung geschaffene Infrastruktur ermöglicht neuen Partnern einfach und schnell, ihre Ereignisverarbeitungskapazitäten in Event Grid zu integrieren. Weitere Informationen finden Sie in der [Dokumentation zum Onboarding von Partnern](partner-onboarding-overview.md).

@@ -4,16 +4,16 @@ description: Erfahren Sie, wie Sie Python zum Erstellen und Verwalten einer Wind
 author: cynthn
 ms.service: virtual-machines-windows
 ms.workload: infrastructure
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/22/2017
 ms.author: cynthn
-ms.custom: tracking-python
-ms.openlocfilehash: b5f8b0e8f22a476ad379b55275d79c2874966852
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-python
+ms.openlocfilehash: 1e2558074275f9b97bd4a2fd9a3d111c5de02948
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84551974"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87853414"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-python"></a>Erstellen und Verwalten von Windows-VMs in Azure mithilfe von Python
 
@@ -32,7 +32,7 @@ Die Ausführung dieser Schritte dauert etwa 20 Minuten.
 
 ## <a name="create-a-visual-studio-project"></a>Erstellen eines Visual Studio-Projekts
 
-1. Wenn Sie dies noch nicht getan haben, installieren Sie [Visual Studio](https://docs.microsoft.com/visualstudio/install/install-visual-studio). Wählen Sie auf der Seite „Workloads“ **Python-Entwicklung** aus, und klicken Sie dann auf **Installieren**. In der Zusammenfassung können Sie sehen, dass **Python 3 64-Bit (3.6.0)** automatisch für Sie ausgewählt wurde. Wenn Sie Visual Studio bereits installiert haben, können Sie die Python-Workload mit dem Visual Studio-Startprogramm hinzufügen.
+1. Wenn Sie dies noch nicht getan haben, installieren Sie [Visual Studio](/visualstudio/install/install-visual-studio). Wählen Sie auf der Seite „Workloads“ **Python-Entwicklung** aus, und klicken Sie dann auf **Installieren**. In der Zusammenfassung können Sie sehen, dass **Python 3 64-Bit (3.6.0)** automatisch für Sie ausgewählt wurde. Wenn Sie Visual Studio bereits installiert haben, können Sie die Python-Workload mit dem Visual Studio-Startprogramm hinzufügen.
 2. Klicken Sie nach dem Installieren und Starten von Visual Studio auf **Datei** > **Neu** > **Projekt**.
 3. Klicken Sie auf **Vorlagen** > **Python** > **Python-Anwendung**, geben Sie *myPythonProject* als Namen für das Projekt ein, wählen Sie den Speicherort des Projekts aus, und klicken Sie dann auf **OK**.
 
@@ -464,7 +464,7 @@ Sie können einen virtuellen Computer beenden und sämtliche Einstellungen beibe
 
 ### <a name="resize-the-vm"></a>Ändern der Größe der VM
 
-Viele Aspekte der Bereitstellung müssen berücksichtigt werden, wenn Sie die Größe für den virtuellen Computer festlegen. Weitere Informationen finden Sie unter [VM-Größen](sizes.md).
+Viele Aspekte der Bereitstellung müssen berücksichtigt werden, wenn Sie die Größe für den virtuellen Computer festlegen. Weitere Informationen finden Sie unter [VM-Größen](../sizes.md).
 
 1. Um die Größe des virtuellen Computers zu ändern, fügen Sie diese Funktion nach den Variablen in der PY-Datei hinzu:
 
@@ -566,6 +566,5 @@ Da in Azure die genutzten Ressourcen in Rechnung gestellt werden, empfiehlt es s
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Falls bei der Bereitstellung Probleme aufgetreten sind, empfiehlt sich unter Umständen die Lektüre des Artikels [Anzeigen von Bereitstellungsvorgängen mit dem Azure-Portal](../../resource-manager-troubleshoot-deployments-portal.md).
-- Erfahren Sie mehr über die [Azure Python-Bibliothek](https://docs.microsoft.com/python/api/overview/azure/?view=azure-python).
-
+- Falls bei der Bereitstellung Probleme aufgetreten sind, empfiehlt sich unter Umständen die Lektüre des Artikels [Anzeigen von Bereitstellungsvorgängen mit dem Azure-Portal](../../azure-resource-manager/templates/deployment-history.md).
+- Erfahren Sie mehr über die [Azure Python-Bibliothek](/python/api/overview/azure/?view=azure-python).
