@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 06/23/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 65fbd84a6fa4b03db9f5dfce81eeba23aceebbc9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ae3851da1dbcc5f7ac37821a64cada20164c7661
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87042310"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87825003"
 ---
 # <a name="azure-storage-types-for-sap-workload"></a>Azure Storage-Typen für die SAP-Workload
 Azure umfasst zahlreiche Speichertypen, die sich in den Funktionen, dem Durchsatz, der Latenz und den Preisen stark unterscheiden. Einige der Speichertypen sind für SAP-Szenarien nicht oder nur eingeschränkt verwendbar. Dagegen sind verschiedene Azure-Speichertypen für spezifische SAP-Workloadszenarien gut geeignet und optimiert. Speziell für SAP HANA wurden einige Azure-Speichertypen für die Verwendung mit SAP HANA zertifiziert. In diesem Dokument werden die verschiedenen Speichertypen erläutert und ihre Funktionen und Verwendbarkeit mit SAP-Workloads und SAP-Komponenten beschrieben.
@@ -146,7 +146,7 @@ Die Funktionsmatrix für die SAP-Workload sieht folgendermaßen aus:
 | Latency | niedrig bis mittel | - |
 | IOPS-SLA | YES | - |
 | IOPS linear zur Kapazität | halblinear in Klammern  | [Verwaltete Datenträger – Preise](https://azure.microsoft.com/pricing/details/managed-disks/) |
-| Maximale Anzahl IOPS pro Datenträger | 20.000, [abhängig von der Größe des Datenträgers](https://azure.microsoft.com/pricing/details/managed-disks/) | Zu berücksichtigen sind auch die [Grenzwerte für virtuelle Computer](../../linux/sizes.md) |
+| Maximale Anzahl IOPS pro Datenträger | 20.000, [abhängig von der Größe des Datenträgers](https://azure.microsoft.com/pricing/details/managed-disks/) | Zu berücksichtigen sind auch die [Grenzwerte für virtuelle Computer](../../sizes.md) |
 | Durchsatz-SLA | YES | - |
 | Durchsatz linear zur Kapazität | halblinear in Klammern | [Verwaltete Datenträger – Preise](https://azure.microsoft.com/pricing/details/managed-disks/) |
 | HANA-zertifiziert | YES | [speziell für SAP HANA](../../windows/how-to-enable-write-accelerator.md) |
@@ -335,11 +335,11 @@ Im Unterschied zu lokalen Szenarien spielt der einzelne ausgewählte VM-Typ eine
 
 | Speichertyp| Linux | Windows | Kommentare |
 | --- | --- | --- | --- |
-| HDD Standard | [Größen für virtuelle Linux-Computer in Azure](../../linux/sizes.md) | [Größen für virtuelle Windows-Computer in Azure](../../windows/sizes.md) | Speichergrenzwerte mittlerer oder großer virtueller Computer wahrscheinlich schwierig erreichbar |
-| SSD Standard | [Größen für virtuelle Linux-Computer in Azure](../../linux/sizes.md) | [Größen für virtuelle Windows-Computer in Azure](../../windows/sizes.md) | Speichergrenzwerte mittlerer oder großer virtueller Computer wahrscheinlich schwierig erreichbar |
-| Storage Premium | [Größen für virtuelle Linux-Computer in Azure](../../linux/sizes.md) | [Größen für virtuelle Windows-Computer in Azure](../../windows/sizes.md) | VM-Grenzwerte für IOPS oder Speicherdurchsatz mit Speicherkonfiguration einfach zu erreichen |
-| Disk Storage Ultra | [Größen für virtuelle Linux-Computer in Azure](../../linux/sizes.md) | [Größen für virtuelle Windows-Computer in Azure](../../windows/sizes.md) | VM-Grenzwerte für IOPS oder Speicherdurchsatz mit Speicherkonfiguration einfach zu erreichen |
-| Azure NetApp Files | [Größen für virtuelle Linux-Computer in Azure](../../linux/sizes.md) | [Größen für virtuelle Windows-Computer in Azure](../../windows/sizes.md) | Beim Speicherdatenverkehr wird die Durchsatzbandbreite des Netzwerks und nicht die Speicherbandbreite genutzt! |
+| HDD Standard | [Größen für virtuelle Linux-Computer in Azure](../../sizes.md) | [Größen für virtuelle Windows-Computer in Azure](../../sizes.md) | Speichergrenzwerte mittlerer oder großer virtueller Computer wahrscheinlich schwierig erreichbar |
+| SSD Standard | [Größen für virtuelle Linux-Computer in Azure](../../sizes.md) | [Größen für virtuelle Windows-Computer in Azure](../../sizes.md) | Speichergrenzwerte mittlerer oder großer virtueller Computer wahrscheinlich schwierig erreichbar |
+| Storage Premium | [Größen für virtuelle Linux-Computer in Azure](../../sizes.md) | [Größen für virtuelle Windows-Computer in Azure](../../sizes.md) | VM-Grenzwerte für IOPS oder Speicherdurchsatz mit Speicherkonfiguration einfach zu erreichen |
+| Disk Storage Ultra | [Größen für virtuelle Linux-Computer in Azure](../../sizes.md) | [Größen für virtuelle Windows-Computer in Azure](../../sizes.md) | VM-Grenzwerte für IOPS oder Speicherdurchsatz mit Speicherkonfiguration einfach zu erreichen |
+| Azure NetApp Files | [Größen für virtuelle Linux-Computer in Azure](../../sizes.md) | [Größen für virtuelle Windows-Computer in Azure](../../sizes.md) | Beim Speicherdatenverkehr wird die Durchsatzbandbreite des Netzwerks und nicht die Speicherbandbreite genutzt! |
 
 Beachten Sie folgende Einschränkungen:
 

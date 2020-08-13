@@ -15,17 +15,17 @@ ms.topic: article
 ms.date: 09/22/2019
 ms.author: juliako
 ms.reviewer: johndeu
-ms.openlocfilehash: 7ccc2d5956b44a8cd85f19e0905539c32f58bc5e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8b9f0e824352126204c7a6f1cfe08d3e7c6c29a9
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78163997"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87826057"
 ---
 # <a name="indexing-media-files-with-azure-media-indexer"></a>Indizieren von Mediendateien mit Azure Media Indexer
 
 > [!NOTE]
-> Der **Azure Media Indexer**-Medienprozessor wird eingestellt. Die Daten zur Einstellung finden Sie unter dem Thema [Legacykomponenten](legacy-components.md). [Azure Media Services Video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) ersetzt diesen Legacy-Medienprozessor. Weitere Informationen finden Sie unter [Migration von Azure Media Indexer v1 und Azure Media Indexer v2 zu Azure Media Services Video Indexer](migrate-indexer-v1-v2.md).
+> Der **Azure Media Indexer**-Medienprozessor wird eingestellt. Die Daten zur Einstellung finden Sie unter dem Thema [Legacykomponenten](legacy-components.md). [Azure Media Services Video Indexer](../video-indexer/index.yml) ersetzt diesen Legacy-Medienprozessor. Weitere Informationen finden Sie unter [Migration von Azure Media Indexer v1 und Azure Media Indexer v2 zu Azure Media Services Video Indexer](migrate-indexer-v1-v2.md).
 
 Mit dem Azure Media Indexer können Sie die Inhalte Ihrer Mediendateien durchsuchbar machen und eine Volltext-Aufzeichnung für Untertitel und Schlüsselwörter generieren. Sie können eine einzelne Mediendatei oder mehrere Mediendateien in einem Batch verarbeiten.  
 
@@ -45,7 +45,7 @@ Sie können weitere Details für Ihre Indizierungsaufgaben mithilfe einer Aufgab
 
 Sie können auch mehrere Mediendateien gleichzeitig mithilfe einer Manifestdatei verarbeiten.
 
-Weitere Informationen finden Sie unter [Aufgabenvoreinstellung für Azure Media Indexer](https://msdn.microsoft.com/library/dn783454.aspx).
+Weitere Informationen finden Sie unter [Aufgabenvoreinstellung für Azure Media Indexer](./media-services-analytics-overview.md).
 
 ## <a name="index-an-asset"></a>Indizieren eines Medienobjekts
 Mit der folgenden Methode werden eine Mediendatei als Medienobjekt hochgeladen und ein Auftrag zum Indizieren des Medienobjekts erstellt.
@@ -158,7 +158,7 @@ Wenn nicht alle Eingabemediendateien erfolgreich indiziert werden, verursacht de
 ## <a name="index-multiple-files"></a>Indizieren mehrerer Dateien
 Mit der folgenden Methode werden mehrere Mediendateien als Medienobjekt hochgeladen und ein Auftrag zum Indizieren all dieser Dateien in einem Batch erstellt.
 
-Eine Manifestdatei mit der Erweiterung LST wird erstellt und in das Medienobjekt hochgeladen. Die Manifestdatei enthält die Liste sämtlicher Medienobjektdateien. Weitere Informationen finden Sie unter [Aufgabenvoreinstellung für Azure Media Indexer](https://msdn.microsoft.com/library/dn783454.aspx).
+Eine Manifestdatei mit der Erweiterung LST wird erstellt und in das Medienobjekt hochgeladen. Die Manifestdatei enthält die Liste sämtlicher Medienobjektdateien. Weitere Informationen finden Sie unter [Aufgabenvoreinstellung für Azure Media Indexer](./media-services-analytics-overview.md).
 
 ```csharp
     static bool RunBatchIndexingJob(string[] inputMediaFiles, string outputFolder)
@@ -278,4 +278,3 @@ Derzeit werden die Sprachen Englisch und Spanisch unterstützt.
 [Azure Media Services Analytics – Übersicht](media-services-analytics-overview.md)
 
 [Indizieren von Mediendateien mit der Vorschauversion von Azure Media Indexer 2](media-services-process-content-with-indexer2.md)
-

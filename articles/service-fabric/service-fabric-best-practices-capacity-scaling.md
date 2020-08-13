@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: pepogors
-ms.openlocfilehash: d41a71ff5f97449968d82812119cfdfd4bc2ef44
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 09c56646ffa9bcadcec821bcd83411077d6a55ae
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86261177"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87824595"
 ---
 # <a name="capacity-planning-and-scaling-for-azure-service-fabric"></a>Kapazitätsplanung und Skalierung für Azure Service Fabric
 
@@ -19,7 +19,7 @@ Vor der Erstellung eines Azure Service Fabric-Clusters oder der Skalierung von C
 Neben der Berücksichtigung der Merkmale von Knotentypen und Clustern sollten Sie einplanen, dass Skalierungsvorgänge für eine Produktionsumgebung länger als eine Stunde dauern. Dieser Aspekt gilt unabhängig von der Anzahl der hinzugefügten virtuellen Computer.
 
 ## <a name="autoscaling"></a>Automatische Skalierung
-Sie sollten Skalierungsvorgänge über Azure Resource Manager-Vorlagen ausführen, da dies als bewährte Methode für [Ressourcenkonfigurationen als Code]( https://docs.microsoft.com/azure/service-fabric/service-fabric-best-practices-infrastructure-as-code) gilt. 
+Sie sollten Skalierungsvorgänge über Azure Resource Manager-Vorlagen ausführen, da dies als bewährte Methode für [Ressourcenkonfigurationen als Code](./service-fabric-best-practices-infrastructure-as-code.md) gilt. 
 
 Durch die Verwendung der automatischen Skalierung über VM-Skalierungsgruppen definiert Ihre versionierte Resource Manager-Vorlage die Anzahl von Instanzen für VM-Skalierungsgruppen falsch. Durch eine falsche Definition steigt das Risiko, dass zukünftige Bereitstellungen unbeabsichtigte Skalierungsvorgänge verursachen. Im Allgemeinen sollten Sie die automatische Skalierung in folgenden Fällen verwenden:
 

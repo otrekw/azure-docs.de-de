@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: 96783955eac6ade90a155236891307720616ed20
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: e3c5f6d7e04620cf36f6cd952467d47afd775b19
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323943"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87824765"
 ---
 # <a name="enable-azure-monitor-for-vms-overview"></a>Aktivieren von Azure Monitor für VMs: Übersicht
 
@@ -174,10 +174,10 @@ Im Folgenden sind verschiedene Methoden für die Bereitstellung dieser Agents au
 
 | Methode | BESCHREIBUNG |
 |:---|:---|
-| [Azure portal](vminsights-enable-single-vm.md) | Installieren Sie beide Agents auf einem einzelnen virtuellen Computer, einer VM-Skalierungsgruppe oder virtuellen Hybridcomputern, die mit Azure Arc verbunden sind. |
+| [Azure portal](./vminsights-enable-portal.md) | Installieren Sie beide Agents auf einem einzelnen virtuellen Computer, einer VM-Skalierungsgruppe oder virtuellen Hybridcomputern, die mit Azure Arc verbunden sind. |
 | [Resource Manager-Vorlagen](vminsights-enable-powershell.md) | Installieren Sie beide Agents mithilfe einer der unterstützten Methoden zum Bereitstellen einer Resource Manager-Vorlage, z. B. über die CLI oder PowerShell. |
-| [Azure Policy](vminsights-enable-at-scale-policy.md) | Weisen Sie eine Azure Policy-Initiative zu, um die Agents bei der Erstellung eines virtuellen Computers oder einer VM-Skalierungsgruppe automatisch zu installieren. |
-| [Manuelle Installation](vminsights-enable-hybrid-cloud.md) | Installieren Sie die Agents auf dem Gastbetriebssystem auf Computern, die außerhalb von Azure gehostet werden, z. B. in Ihrem Rechenzentrum oder anderen Cloudumgebungen. |
+| [Azure Policy](./vminsights-enable-policy.md) | Weisen Sie eine Azure Policy-Initiative zu, um die Agents bei der Erstellung eines virtuellen Computers oder einer VM-Skalierungsgruppe automatisch zu installieren. |
+| [Manuelle Installation](./vminsights-enable-hybrid.md) | Installieren Sie die Agents auf dem Gastbetriebssystem auf Computern, die außerhalb von Azure gehostet werden, z. B. in Ihrem Rechenzentrum oder anderen Cloudumgebungen. |
 
 
 
@@ -200,4 +200,3 @@ Weitere Informationen zur Sammlung und Nutzung von Daten finden Sie in den [Date
 ## <a name="next-steps"></a>Nächste Schritte
 
 Informationen zum Verwenden der Leistungsüberwachung finden Sie unter [Azure Monitor für VMs – Leistung anzeigen](vminsights-performance.md). Informationen zu ermittelten Anwendungsabhängigkeiten finden Sie unter [Azure Monitor für VMs – Zuordnung anzeigen](vminsights-maps.md).
-

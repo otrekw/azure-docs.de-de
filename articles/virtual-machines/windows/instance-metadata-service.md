@@ -11,12 +11,12 @@ ms.workload: infrastructure-services
 ms.date: 03/30/2020
 ms.author: sukumari
 ms.reviewer: azmetadatadev
-ms.openlocfilehash: 071baacd375cb5595bc99eeead7e818a35c4539b
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: d074c3f806b36ff530396fbafcb3c7c6f9661fcf
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86500411"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87827570"
 ---
 # <a name="azure-instance-metadata-service"></a>Azure-Instanzmetadatendienst
 
@@ -262,7 +262,7 @@ tagsList | Tags, die zur einfacheren programmgesteuerten Analyse als JSON-Arrays
 version | Version des VM-Image | 2017-04-02
 vmId | [Eindeutiger Bezeichner](https://azure.microsoft.com/blog/accessing-and-using-azure-vm-unique-id/) für die VM | 2017-04-02
 vmScaleSetName | [Name Ihrer VM-Skalierungsgruppe](../../virtual-machine-scale-sets/overview.md) | 2017-12-01
-vmSize | [Größe des virtuellen Computers](sizes.md) | 2017-04-02
+vmSize | [Größe des virtuellen Computers](../sizes.md) | 2017-04-02
 Zone | [Verfügbarkeitszone](../../availability-zones/az-overview.md) Ihres virtuellen Computers | 2017-12-01
 
 ### <a name="sample-1-tracking-vm-running-on-azure"></a>Beispiel 1: Nachverfolgen einer in Azure ausgeführten VM

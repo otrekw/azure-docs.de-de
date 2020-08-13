@@ -5,12 +5,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.topic: conceptual
 ms.date: 05/18/2020
-ms.openlocfilehash: e66ae6aa0b9b7e309fbd6fcc3699cb873a266bbe
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 186d4c510b58e06fcb0b823ca0d5770a2684196e
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83647898"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87824986"
 ---
 # <a name="workspace-based-application-insights-resources-preview"></a>Arbeitsbereichsbasierte Application Insights-Ressourcen (Vorschau)
 
@@ -19,13 +19,13 @@ Arbeitsbereichsbasierte Ressourcen unterstützen die vollständige Integration z
 Damit ist auch eine gemeinsame rollenbasierte Zugriffssteuerung über Ihre Ressourcen hinweg möglich, und die Notwendigkeit app- bzw. arbeitsbereichsübergreifender Abfragen entfällt.
 
 > [!NOTE]
-> Die Abrechnung der Datenerfassung und -aufbewahrung für arbeitsbereichsbasierte Application Insights-Ressourcen erfolgt über den Log Analytics-Arbeitsbereich, in dem sich die Daten befinden. [Erfahren Sie mehr]( https://docs.microsoft.com/azure/azure-monitor/app/pricing#workspace-based-application-insights) über die Abrechnung für arbeitsbereichsbasierte Application Insights-Ressourcen.
+> Die Abrechnung der Datenerfassung und -aufbewahrung für arbeitsbereichsbasierte Application Insights-Ressourcen erfolgt über den Log Analytics-Arbeitsbereich, in dem sich die Daten befinden. [Erfahren Sie mehr]( ./pricing.md#workspace-based-application-insights) über die Abrechnung für arbeitsbereichsbasierte Application Insights-Ressourcen.
 
 Um die neue Funktion zu testen, melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und erstellen Sie eine Application Insights-Ressource:
 
 ![Arbeitsbereichsbasierte Application Insights-Ressource](./media/create-workspace-resource/create-workspace-based.png)
 
-Wenn Sie noch nicht über einen Log Analytics-Arbeitsbereich verfügen, [sehen Sie sich die Dokumentation zur Erstellung von Log Analytics-Arbeitsbereichen an](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace).
+Wenn Sie noch nicht über einen Log Analytics-Arbeitsbereich verfügen, [sehen Sie sich die Dokumentation zur Erstellung von Log Analytics-Arbeitsbereichen an](../learn/quick-create-workspace.md).
 
 Für die öffentliche Vorschau **sind arbeitsbereichsbasierte Ressourcen derzeit auf die Regionen „USA, Westen 2“, „USA, Osten“ und „USA, Süden-Mitte“ beschränkt**.
 
@@ -40,7 +40,7 @@ Durch Klicken auf den blauen Linktext gelangen Sie zum zugeordneten Log Analytic
 
 ## <a name="copy-the-connection-string"></a>Verbindungszeichenfolge kopieren
 
-Die [Verbindungszeichenfolge](https://docs.microsoft.com/azure/azure-monitor/app/sdk-connection-string?tabs=net) identifiziert die Ressource, der Sie Ihre Telemetriedaten zuordnen möchten. Hier können Sie die Endpunkte ändern, die Ihre Ressource als Ziel für die Telemetrie verwendet. Sie müssen die Verbindungszeichenfolge kopieren und dem Code Ihrer Anwendung oder einer Umgebungsvariable hinzufügen.
+Die [Verbindungszeichenfolge](./sdk-connection-string.md?tabs=net) identifiziert die Ressource, der Sie Ihre Telemetriedaten zuordnen möchten. Hier können Sie die Endpunkte ändern, die Ihre Ressource als Ziel für die Telemetrie verwendet. Sie müssen die Verbindungszeichenfolge kopieren und dem Code Ihrer Anwendung oder einer Umgebungsvariable hinzufügen.
 
 ## <a name="monitoring-configuration"></a>Überwachungskonfiguration
 
@@ -52,14 +52,14 @@ Bei der codebasierten Anwendungsüberwachung installieren Sie einfach das entspr
 
 Detaillierte Informationen zum Einrichten eines Application Insights SDK für die codebasierte Überwachung finden Sie in der jeweiligen sprach- bzw. frameworkspezifischen Dokumentation:
 
-- [ASP.NET](https://docs.microsoft.com/azure/azure-monitor/app/asp-net)
-- [ASP.NET Core ](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core)
-- [Hintergrundaufgaben und moderne Konsolenanwendungen (.NET/.NET Core)](https://docs.microsoft.com/azure/azure-monitor/app/worker-service)
-- [Klassische Konsolenanwendungen (.NET)](https://docs.microsoft.com/azure/azure-monitor/app/console) 
-- [Java](https://docs.microsoft.com/azure/azure-monitor/app/java-get-started?tabs=maven)
-- [JavaScript](https://docs.microsoft.com/azure/azure-monitor/app/javascript)
-- [Node.js](https://docs.microsoft.com/azure/azure-monitor/app/nodejs)
-- [Python](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python)
+- [ASP.NET](./asp-net.md)
+- [ASP.NET Core ](./asp-net-core.md)
+- [Hintergrundaufgaben und moderne Konsolenanwendungen (.NET/.NET Core)](./worker-service.md)
+- [Klassische Konsolenanwendungen (.NET)](./console.md) 
+- [Java](./java-get-started.md?tabs=maven)
+- [JavaScript](./javascript.md)
+- [Node.js](./nodejs.md)
+- [Python](./opencensus-python.md)
 
 ### <a name="codeless-monitoring-and-visual-studio-resource-creation"></a>Codelose Überwachung und Erstellung von Visual Studio-Ressourcen
 
@@ -102,7 +102,7 @@ az monitor app-insights component create --app
 az monitor app-insights component create --app demoApp --location eastus --kind web -g my_resource_group --workspace "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test1234/providers/microsoft.operationalinsights/workspaces/test1234555"
 ```
 
-Vollständige Informationen zu diesem Befehl finden Sie in der [Azure CLI-Dokumentation](https://docs.microsoft.com/cli/azure/ext/application-insights/monitor/app-insights/component?view=azure-cli-latest#ext-application-insights-az-monitor-app-insights-component-create).
+Vollständige Informationen zu diesem Befehl finden Sie in der [Azure CLI-Dokumentation](/cli/azure/ext/application-insights/monitor/app-insights/component?view=azure-cli-latest#ext-application-insights-az-monitor-app-insights-component-create).
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
@@ -197,10 +197,10 @@ Die Legacyfunktion für den fortlaufenden Export wird für arbeitsbereichsbasier
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Untersuchen von Metriken](../../azure-monitor/platform/metrics-charts.md)
-* [Schreiben von Analytics-Abfragen](../../azure-monitor/app/analytics.md)
+* [Untersuchen von Metriken](../platform/metrics-charts.md)
+* [Schreiben von Analytics-Abfragen](../log-query/log-query-overview.md)
 
-[api]: ../../azure-monitor/app/api-custom-events-metrics.md
-[diagnostic]: ../../azure-monitor/app/diagnostic-search.md
-[metrics]: ../../azure-monitor/platform/metrics-charts.md
-[start]: ../../azure-monitor/app/app-insights-overview.md
+[api]: ./api-custom-events-metrics.md
+[diagnostic]: ./diagnostic-search.md
+[metrics]: ../platform/metrics-charts.md
+[start]: ./app-insights-overview.md

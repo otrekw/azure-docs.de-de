@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: 7f71e52fd1fd40015ff93e189495daef0e2c333e
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: a2cdcab08bba76cb385666956b7663324f32c669
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327996"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87824578"
 ---
 # <a name="enable-azure-monitor-for-vms-using-powershell"></a>Aktivieren von Azure Monitor für VMs mithilfe von PowerShell
 In diesem Artikel wird beschrieben, wie Sie Azure Monitor für VMs auf virtuellen Azure-Computern mithilfe von PowerShell aktivieren. Dieses Verfahren kann für Folgendes verwendet werden:
@@ -35,7 +35,7 @@ Sie können das PowerShell-Skript [Install-VMInsights.ps1](https://www.powershel
 
 Für jede VM bzw. jede VM-Skalierungsgruppe überprüft das Skript, ob die VM-Erweiterung für den Log Analytics-Agent und den Abhängigkeits-Agent bereits installiert wurde. Wenn beide Erweiterungen installiert sind, versucht das Skript, sie neu zu installieren. Wenn beide Erweiterungen nicht installiert sind, werden sie vom Skript installiert.
 
-Vergewissern Sie sich, dass Sie mindestens die Version 1.0.0 des Azure PowerShell-Moduls „Az“ mit aktivierten `Enable-AzureRM`-Kompatibilitätsaliasen verwenden. Führen Sie `Get-Module -ListAvailable Az` aus, um die Version zu ermitteln. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](https://docs.microsoft.com/powershell/azure/install-az-ps) Informationen dazu. Wenn Sie PowerShell lokal ausführen, müssen Sie auch `Connect-AzAccount` ausführen, um eine Verbindung mit Azure herzustellen.
+Vergewissern Sie sich, dass Sie mindestens die Version 1.0.0 des Azure PowerShell-Moduls „Az“ mit aktivierten `Enable-AzureRM`-Kompatibilitätsaliasen verwenden. Führen Sie `Get-Module -ListAvailable Az` aus, um die Version zu ermitteln. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-az-ps) Informationen dazu. Wenn Sie PowerShell lokal ausführen, müssen Sie auch `Connect-AzAccount` ausführen, um eine Verbindung mit Azure herzustellen.
 
 Führen Sie `Get-Help` aus, um eine Liste der Argumentendetails des Skripts und der Beispielverwendung zu erhalten.
 

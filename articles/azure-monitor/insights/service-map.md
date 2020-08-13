@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/24/2019
-ms.openlocfilehash: 77684ffef6be988dbb6b7057ba8c56f5227007b6
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: e422b019dd17c8c56ba99b5826e9f6215459c382
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326068"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87825360"
 ---
 # <a name="using-service-map-solution-in-azure"></a>Verwenden der Service Map-Lösung in Azure
 
@@ -35,7 +35,7 @@ Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim 
 ## <a name="enable-service-map"></a>Aktivieren der Dienstzuordnung
 
 1. Aktivieren Sie die Dienstzuordnungslösung über den [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ServiceMapOMS?tab=Overview) oder gemäß dem unter [Hinzufügen von Überwachungslösungen aus dem Lösungskatalog](solutions.md) beschriebenen Prozess.
-1. Installieren Sie den Dependency-Agent auf jedem Computer, von dem Sie Daten abrufen möchten. Entsprechende Informationen finden Sie unter [Installieren des Dependency-Agents unter Windows](vminsights-enable-hybrid-cloud.md#install-the-dependency-agent-on-windows) und [Installieren des Dependency-Agents unter Linux](vminsights-enable-hybrid-cloud.md#install-the-dependency-agent-on-linux). Der Dependency-Agent kann Verbindungen zu unmittelbaren Nachbarn überwachen, sodass Sie nicht auf jedem Computer einen Agent benötigen.
+1. Installieren Sie den Dependency-Agent auf jedem Computer, von dem Sie Daten abrufen möchten. Entsprechende Informationen finden Sie unter [Installieren des Dependency-Agents unter Windows](./vminsights-enable-hybrid.md#install-the-dependency-agent-on-windows) und [Installieren des Dependency-Agents unter Linux](./vminsights-enable-hybrid.md#install-the-dependency-agent-on-linux). Der Dependency-Agent kann Verbindungen zu unmittelbaren Nachbarn überwachen, sodass Sie nicht auf jedem Computer einen Agent benötigen.
 
 Greifen Sie im Azure-Portal von Ihrem Log Analytics-Arbeitsbereich aus auf die Dienstzuordnung zu, und wählen Sie im linken Bereich die Option **Lösungen** aus.<br><br> ![Option „Lösungen“ im Arbeitsbereich auswählen](./media/service-map/select-solution-from-workspace.png).<br> Wählen Sie in der Liste der Lösungen **ServiceMap(workspaceName)** aus, und klicken Sie in der Lösungsübersichtsseite der Dienstzuordnung auf die Dienstzuordnung-Zusammenfassungskachel.<br><br> ![Dienstzuordnung-Zusammenfassungskachel](./media/service-map/service-map-summary-tile.png).
 
@@ -603,4 +603,3 @@ Wenn Ihr Computer in der Dienstzuordnung angezeigt wird, aber keine Prozess- ode
 ## <a name="suggestions"></a>Vorschläge
 
 Haben Sie Feedback für uns zu Service Map oder dieser Dokumentation?  Besuchen Sie unsere [User Voice-Webseite](https://feedback.azure.com/forums/267889-log-analytics/category/184492-service-map), auf der Sie Funktionen vorschlagen oder vorhandene Vorschläge unterstützen können.
-

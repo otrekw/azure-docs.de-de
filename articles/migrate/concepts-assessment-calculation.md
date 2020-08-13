@@ -3,12 +3,12 @@ title: Azure VM-Bewertungen mit der Azure Migrate-Serverbewertung
 description: Erfahren Sie mehr über Bewertungen mit der Azure Migrate-Serverbewertung.
 ms.topic: conceptual
 ms.date: 05/27/2020
-ms.openlocfilehash: 52cdd6bb9cb062b5c36e10c67524fa4d266ca6e0
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 7664c8296f0d47f37f9542dee82d3c718be40126
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86108000"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87825989"
 ---
 # <a name="azure-vm-assessments-in-azure-migrate-server-assessment"></a>Azure VM-Bewertungen in Azure Migrate: Migrate-Serverbewertung
 
@@ -152,7 +152,7 @@ Eigenschaft | Details | Azure-Bereitschaftsstatus
 --- | --- | ---
 **Starttyp** | Azure unterstützt virtuelle Computer mit dem Starttyp BIOS, jedoch nicht UEFI. | Bedingt bereit, wenn der Starttyp UEFI ist
 **Kerne** | Pro Computer sind maximal 128 Kerne zulässig. Dies ist die maximale Anzahl, die von einer Azure-VM unterstützt wird.<br/><br/> Wenn der Leistungsverlauf verfügbar ist, berücksichtigt Azure Migrate die genutzten Kerne beim Vergleich. Wenn in den Bewertungseinstellungen ein Komfortfaktor festgelegt ist, wird die Anzahl von genutzten Kernen mit diesem Komfortfaktor multipliziert.<br/><br/> Wenn kein Leistungsverlauf vorhanden ist, verwendet Azure Migrate die zugeordneten Kerne ohne Anwendung des Komfortfaktors. | Bereit, wenn die Anzahl von Kernen innerhalb des Limits liegt
-**RAM** | Pro Computer sind maximal 3.892 GB RAM zulässig. Dies ist die maximale Größe, die von einer Azure-VM der M-Serie vom Typ Standard_M128m&nbsp;<sup>2</sup> unterstützt wird. [Weitere Informationen](../virtual-machines/windows/sizes.md)<br/><br/> Wenn der Leistungsverlauf verfügbar ist, berücksichtigt Azure Migrate den genutzten RAM zum Vergleich. Wenn ein Komfortfaktor festgelegt ist, wird der genutzte RAM mit dem Komfortfaktor multipliziert.<br/><br/> Wenn kein Verlauf vorhanden ist, wird der zugeordnete RAM verwendet, ohne einen Komfortfaktor anzuwenden.<br/><br/> | Bereit, wenn die RAM-Größe innerhalb des Limits liegt
+**RAM** | Pro Computer sind maximal 3.892 GB RAM zulässig. Dies ist die maximale Größe, die von einer Azure-VM der M-Serie vom Typ Standard_M128m&nbsp;<sup>2</sup> unterstützt wird. [Weitere Informationen](../virtual-machines/sizes.md)<br/><br/> Wenn der Leistungsverlauf verfügbar ist, berücksichtigt Azure Migrate den genutzten RAM zum Vergleich. Wenn ein Komfortfaktor festgelegt ist, wird der genutzte RAM mit dem Komfortfaktor multipliziert.<br/><br/> Wenn kein Verlauf vorhanden ist, wird der zugeordnete RAM verwendet, ohne einen Komfortfaktor anzuwenden.<br/><br/> | Bereit, wenn die RAM-Größe innerhalb des Limits liegt
 **Speicherdatenträger** | Die zugeordnete Größe eines Datenträgers darf maximal 32 TB betragen. Wenngleich in Azure 64-TB-Datenträger mit Azure SSD Ultra-Datenträgern unterstützt werden, überprüft die Serverbewertung von Azure Migrate derzeit die Datenträgergröße auf Überschreitung von 32 TB, da sie SSD Ultra aktuell noch nicht unterstützt. <br/><br/> Pro Computer dürfen einschließlich des Betriebssystemdatenträgers höchstens 65 Datenträger angefügt sein. | Bereit, wenn die Größe und Anzahl von Datenträgern innerhalb der Limits liegen
 **Netzwerk** | Pro Computer dürfen maximal 32 Netzwerkschnittstellen (NICs) angefügt sein. | Bereit, wenn die Anzahl von NICs innerhalb des Limits liegt
 

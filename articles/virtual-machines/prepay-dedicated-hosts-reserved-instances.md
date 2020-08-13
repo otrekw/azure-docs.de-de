@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/28/2020
 ms.author: banders
-ms.openlocfilehash: c3c4c4ea25a8f8057a5830ad2207bb674d9cc011
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 919ff7474dd64cfe3005975beb4cab6f77c177ce
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86501550"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87825258"
 ---
 # <a name="save-costs-with-azure-dedicated-host-reservations"></a>Einsparen von Kosten mit Azure Dedicated Host-Reservierungen
 
@@ -24,7 +24,7 @@ Wenn Sie sich für eine reservierte Instanz von Azure Dedicated Hosts entscheide
 
 Bevor Sie eine Reservierung erwerben, sollten Sie die ermitteln, welchen dedizierten Host Sie benötigen. Eine SKU ist für einen dedizierten Host definiert und stellt die VM-Serie und den VM-Typ dar. 
 
-Beginnen Sie, indem Sie die unterstützten Größen für [virtuellen Windows-Computer](./windows/sizes.md) oder [Linux](./linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) ermitteln, um die VM-Serie zu identifizieren.
+Beginnen Sie, indem Sie die unterstützten Größen für [virtuellen Windows-Computer](./sizes.md) oder [Linux](./sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) ermitteln, um die VM-Serie zu identifizieren.
 
 Überprüfen Sie dann, ob sie unter Azure Dedicated Hosts unterstützt wird. Die Seite [Preise für Azure Dedicated Hosts](https://aka.ms/ADHPricing) enthält die vollständige Liste der SKUs für dedizierte Hosts, ihre CPU-Informationen sowie verschiedene Preisoptionen (auch für reservierte Instanzen).
 

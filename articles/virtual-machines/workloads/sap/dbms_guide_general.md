@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 12/04/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 44a41f43aa31c15b71d7b35ebd29bf935c7df966
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 34b7f4bc55fc8e33b7d66f53e6f2fc241801f965
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86525465"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87827417"
 ---
 # <a name="considerations-for-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Azure Virtual Machines – DBMS-Bereitstellung für SAP-Workload
 [1114181]:https://launchpad.support.sap.com/#/notes/1114181
@@ -174,7 +174,7 @@ Ein Azure-Speicherkonto ist nicht nur ein Konzept für Verwaltungsaufgaben, sond
 
 Denken Sie daran, dass bei Storage Standard eine Begrenzung der IOPS pro Speicherkonto gilt. Finden Sie die Zeile mit der **Gesamtanforderungsrate** im Artikel [Skalierbarkeits- und Leistungsziele für Azure Storage](../../../storage/common/scalability-targets-standard-account.md). Für Speicherkonten gilt pro Azure-Abonnement außerdem eine anfängliche Einschränkung. Verteilen Sie daher VHDs für die größeren SAP-Landschaften auf verschiedene Speicherkonten, um die Grenzen dieser Speicherkonten nicht zu überschreiten. Dies ist sehr aufwändig, wenn Sie einige hundert VMs mit über tausend VHDs haben.
 
-Da die Verwendung von Standard-Speicher für DBMS-Bereitstellungen in Verbindung mit SAP-Workload nicht empfohlen wird, sind die entsprechenden Verweise und Empfehlungen auf diesen kurzen [Artikel](https://blogs.msdn.com/b/mast/archive/2014/10/14/configuring-azure-virtual-machines-for-optimal-storage-performance.aspx) beschränkt.
+Da die Verwendung von Standard-Speicher für DBMS-Bereitstellungen in Verbindung mit SAP-Workload nicht empfohlen wird, sind die entsprechenden Verweise und Empfehlungen auf diesen kurzen [Artikel](/archive/blogs/mast/configuring-azure-virtual-machines-for-optimal-storage-performance) beschränkt.
 
 Damit keine Verwaltung der Planung und Bereitstellung von VHDs über verschiedene Azure-Speicherkonten hinweg erforderlich ist, führte Microsoft 2017 den Dienst [Azure Managed Disks](https://azure.microsoft.com/services/managed-disks/) ein. Verwaltete Datenträger sind für Storage Standard und Storage Premium verfügbar. Hauptvorteile von verwalteten Datenträgern im Vergleich zu nicht verwalteten Datenträgern:
 
@@ -327,7 +327,7 @@ Die Load Balancer-Instanz bietet eine Möglichkeit, DirectServerReturn. Wenn die
 
 Wir empfehlen, „DirectServerReturn“ in Kombination mit Lastenausgleichen zu konfigurieren, die zwischen der SAP-Anwendungsschicht und der DBMS-Schicht positioniert sind. Diese Konfiguration verringert die Netzwerklatenz zwischen den zwei Schichten.
 
-Ein Beispiel für die Einrichtung dieser Konfiguration mit SQL Server Always On finden Sie unter [Konfigurieren eines ILB-Listeners für Always On-Verfügbarkeitsgruppen in Azure](/azure/virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-ps-sql-int-listener).
+Ein Beispiel für die Einrichtung dieser Konfiguration mit SQL Server Always On finden Sie unter [Konfigurieren eines ILB-Listeners für Always On-Verfügbarkeitsgruppen in Azure](/previous-versions/azure/virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-ps-sql-int-listener).
 
 Wenn Sie veröffentlichte GitHub-JSON-Vorlagen als Referenz für Ihre SAP-Infrastrukturbereitstellungen in Azure verwenden, sehen Sie sich diese [Vorlage für ein dreischichtiges SAP-System](https://github.com/Azure/azure-quickstart-templates/tree/4099ad9bee183ed39b88c62cd33f517ae4e25669/sap-3-tier-marketplace-image-converged-md) an. In dieser Vorlage finden Sie auch die korrekten Einstellungen für den Lastenausgleich.
 

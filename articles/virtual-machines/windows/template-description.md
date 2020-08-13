@@ -7,12 +7,12 @@ ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 01/03/2019
 ms.author: cynthn
-ms.openlocfilehash: cd96fe550a508e54c467ca52cd36322581029654
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: e420fe81941352d1002ed2c25c04fc686115c7c2
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87283230"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87827451"
 ---
 # <a name="virtual-machines-in-an-azure-resource-manager-template"></a>Virtuelle Computer in einer Azure Resource Manager-Vorlage
 
@@ -274,7 +274,7 @@ Zum Festlegen dieser Eigenschaft muss die Netzwerkschnittstelle vorhanden sein. 
 
 Beim Definieren einer VM-Ressource werden mehrere Profilelemente verwendet. Einige sind erforderlich, und einige sind optional. Die Elemente „hardwareProfile“, „osProfile“, „storageProfile“ und „networkProfile“ sind erforderlich, aber „diagnosticsProfile“ ist optional. Mit diesen Profilen werden beispielsweise folgende Einstellungen definiert:
    
-- [size](sizes.md)
+- [size](../sizes.md)
 - [Name](/azure/architecture/best-practices/resource-naming) und Anmeldeinformationen
 - Datenträger- und [Betriebssystemeinstellungen](cli-ps-findimage.md)
 - [Netzwerkschnittstelle](/previous-versions/azure/virtual-network/virtual-network-deploy-multinic-classic-ps) 
@@ -353,7 +353,7 @@ Entfernen Sie zum Erstellen von virtuellen Computern von vorhandenen Datenträge
 
 ### <a name="attach-data-disks"></a>Anfügen von Datenträgern für Daten
 
-Optional können Sie den VMs Datenträger für Daten hinzufügen. Die [Anzahl von Datenträgern](sizes.md) richtet sich nach der Größe des von Ihnen genutzten Betriebssystemdatenträgers. Wenn die Größe der VMs auf „Standard_DS1_v2“ festgelegt ist, können ihnen maximal zwei Datenträger für Daten hinzugefügt werden. Im Beispiel wird jeder VM ein verwalteter Datenträger für Daten hinzugefügt:
+Optional können Sie den VMs Datenträger für Daten hinzufügen. Die [Anzahl von Datenträgern](../sizes.md) richtet sich nach der Größe des von Ihnen genutzten Betriebssystemdatenträgers. Wenn die Größe der VMs auf „Standard_DS1_v2“ festgelegt ist, können ihnen maximal zwei Datenträger für Daten hinzugefügt werden. Im Beispiel wird jeder VM ein verwalteter Datenträger für Daten hinzugefügt:
 
 ```json
 "dataDisks": [
