@@ -3,14 +3,14 @@ title: 'Schnellstart: LUIS-Erstellungsclientbibliothek (Language Understanding)'
 description: Diese Schnellstartanleitung enthält Informationen zu den ersten Schritten mit der LUIS-Clientbibliothek. Führen Sie die nachfolgenden Schritte zum Installieren des Pakets aus, und testen Sie den Beispielcode für grundlegende Aufgaben.
 ms.topic: quickstart
 ms.date: 07/28/2020
-ms.custom: tracking-python, devx-track-javascript
+ms.custom: devx-track-python, devx-track-javascript
 zone_pivot_groups: programming-languages-set-diberry-3core
-ms.openlocfilehash: e5fc21ed42d3704cf102a820cebb64c09aff23ab
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 124cfbac897be76365710ffd505dee18af7adcec
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87369425"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87876970"
 ---
 # <a name="quickstart-language-understanding-luis-authoring-client-library"></a>Schnellstart: LUIS-Erstellungsclientbibliothek (Language Understanding)
 

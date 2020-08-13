@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 808d1ad522f6678ced54de334e7ea39fb60cd165
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: d26179ab82f29ce8f937f5b444463c1308d92047
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420684"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87904053"
 ---
 # <a name="tutorial-connect-a-sample-iot-plug-and-play-preview-multiple-component-device-application-to-iot-hub-nodejs"></a>Tutorial: Herstellen einer Verbindung zwischen einer exemplarischen IoT Plug & Play Preview-Geräteanwendung mit mehreren Komponenten und IoT Hub (Node.js)
 
@@ -98,29 +98,29 @@ Der Code in der Datei *pnpTemperatureController.js* dient zum Implementieren ein
 
 1. Definieren der Modell-ID (`modelId`). Hierbei handelt es sich um den DTMI für das zu implementierende Gerät. Dieser DTMI ist benutzerdefiniert und muss dem DTMI im [DTDL-Modell des Temperaturreglers](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/TemperatureController.json) entsprechen.
 
-1. Implementieren der im DTDL-Modell des Temperaturreglers definierten Komponenten. Von den Komponenten in einem echten Temperaturregler müssen die beiden folgenden Schnittstellen implementiert werden. Die beiden Schnittstellen sind bereits in einem zentralen Repository veröffentlicht. In diesem Beispiel werden die beiden folgenden Schnittstellen verwendet:
+2. Implementieren der im DTDL-Modell des Temperaturreglers definierten Komponenten. Von den Komponenten in einem echten Temperaturregler müssen die beiden folgenden Schnittstellen implementiert werden. Die beiden Schnittstellen sind bereits in einem zentralen Repository veröffentlicht. In diesem Beispiel werden die beiden folgenden Schnittstellen verwendet:
   - Thermostat
   - Von Azure entwickelte Geräteinformationen
 
-1. Definieren von Komponentennamen. Dieses Beispiel umfasst zwei Thermostate und eine Geräteinformationskomponente.
+3. Definieren von Komponentennamen. Dieses Beispiel umfasst zwei Thermostate und eine Geräteinformationskomponente.
 
-1. Definieren von Befehlsnamen. Hierbei handelt es sich um die Befehle, auf die das Gerät antwortet.
+4. Definieren von Befehlsnamen. Hierbei handelt es sich um die Befehle, auf die das Gerät antwortet.
 
-1. Definieren der Konstante `serialNumber`. Die Seriennummer (`serialNumber`) ist für jedes Gerät fest vorgegeben.
+5. Definieren der Konstante `serialNumber`. Die Seriennummer (`serialNumber`) ist für jedes Gerät fest vorgegeben.
 
-1. Definieren der Befehlshandler
+6. Definieren der Befehlshandler
 
-1. Definieren der Funktionen zum Senden von Befehlsantworten
+7. Definieren der Funktionen zum Senden von Befehlsantworten
 
-1. Definieren von Hilfsfunktionen zum Protokollieren von Befehlsanforderungen
+8. Definieren von Hilfsfunktionen zum Protokollieren von Befehlsanforderungen
 
-1. Definieren einer Hilfsfunktion zum Erstellen der Eigenschaften
+9. Definieren einer Hilfsfunktion zum Erstellen der Eigenschaften
 
-1. Definieren eines Listeners für Eigenschaftsaktualisierungen
+10. Definieren eines Listeners für Eigenschaftsaktualisierungen
 
-1. Definieren einer Funktion, um Telemetriedaten von diesem Gerät zu senden. Telemetriedaten werden von beiden Thermostaten sowie von der Stammkomponente gesendet. Diese Funktion empfängt den Komponentennamen als Parameter.
+11. Definieren einer Funktion, um Telemetriedaten von diesem Gerät zu senden. Telemetriedaten werden von beiden Thermostaten sowie von der Stammkomponente gesendet. Diese Funktion empfängt den Komponentennamen als Parameter.
 
-1. Definieren einer Funktion vom Typ `main`, für die Folgendes gilt:
+12. Definieren einer Funktion vom Typ `main`, für die Folgendes gilt:
 
     1. Sie verwendet das Geräte-SDK, um einen Geräteclient zu erstellen und eine Verbindung mit Ihrem IoT-Hub herzustellen. Vom Gerät wird die Modell-ID (`modelId`) bereitgestellt, damit es vom IoT-Hub als IoT Plug & Play-Gerät identifiziert werden kann.
 

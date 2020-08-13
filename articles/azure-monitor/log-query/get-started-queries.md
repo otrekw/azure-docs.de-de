@@ -6,17 +6,17 @@ ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 10/24/2019
-ms.openlocfilehash: dcb3afd14a7355a08291cd8553d5050d96919aec
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.openlocfilehash: 345d4fe218f5eed433204622bd47481628ec810f
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85801426"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87874060"
 ---
 # <a name="get-started-with-log-queries-in-azure-monitor"></a>Erste Schritte mit Protokollabfragen in Azure Monitor
 
 > [!NOTE]
-> Sie können diese Übung in Ihrer eigenen Umgebung durcharbeiten, wenn Sie Daten von mindestens einem virtuellen Computer sammeln. Andernfalls verwenden Sie die [Demoumgebung](https://portal.loganalytics.io/demo), die eine Vielzahl von Beispieldaten enthält.  Falls Sie bereits wissen, wie Sie Abfragen in KQL ausführen, und nur schnell nützliche Abfragen basierend auf Ressourcentypen erstellen möchten, hilft Ihnen der [Bereich mit den gespeicherten Beispielabfragen](saved-queries.md) weiter.
+> Sie können diese Übung in Ihrer eigenen Umgebung durcharbeiten, wenn Sie Daten von mindestens einem virtuellen Computer sammeln. Andernfalls verwenden Sie die [Demoumgebung](https://ms.portal.azure.com/#blade/Microsoft_Azure_Monitoring_Logs/DemoLogsBlade), die eine Vielzahl von Beispieldaten enthält.  Falls Sie bereits wissen, wie Sie Abfragen in KQL ausführen, und nur schnell nützliche Abfragen basierend auf Ressourcentypen erstellen möchten, hilft Ihnen der [Bereich mit den gespeicherten Beispielabfragen](saved-queries.md) weiter.
 
 In diesem Tutorial erfahren Sie, wie Sie Protokollabfragen in Azure Monitor schreiben. Es wird Folgendes vermittelt:
 

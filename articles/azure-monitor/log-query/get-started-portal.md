@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 03/17/2020
-ms.openlocfilehash: 522a13c6de87dd8074b76f95670baf79fc96d419
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8917c73474b81ee76e6acdf8c6f274e962ee1215
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075335"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87874230"
 ---
 # <a name="tutorial-get-started-with-log-analytics-queries"></a>Tutorial: Erste Schritte mit Log Analytics-Abfragen
 
@@ -32,7 +32,7 @@ Ein ausführliches Tutorial zum Schreiben von Protokollabfragen finden Sie unter
 ## <a name="open-log-analytics"></a>Öffnen von Log Analytics
 Um Log Analytics verwenden zu können, müssen Sie bei einem Azure-Konto angemeldet sein. Falls Sie kein Azure-Konto haben, können Sie [kostenlos eines erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-Die meisten Schritte in diesem Tutorial können Sie [in dieser Demoumgebung](https://portal.loganalytics.io/demo) ausführen, die zahlreiche Beispieldaten enthält. In der Demoumgebung können Sie weder Abfragen speichern noch Ergebnisse an ein Dashboard anheften.
+Die meisten Schritte in diesem Tutorial können Sie [in dieser Demoumgebung](https://ms.portal.azure.com/#blade/Microsoft_Azure_Monitoring_Logs/DemoLogsBlade) ausführen, die zahlreiche Beispieldaten enthält. In der Demoumgebung können Sie weder Abfragen speichern noch Ergebnisse an ein Dashboard anheften.
 
 Sie können auch Ihre eigene Umgebung verwenden, wenn Sie mit Azure Monitor Protokolldaten für mindestens eine Azure-Ressource sammeln. Wählen Sie im linken Navigationsbereich von Azure Monitor **Protokolle** aus, um einen Log Analytics-Arbeitsbereich zu öffnen. 
 

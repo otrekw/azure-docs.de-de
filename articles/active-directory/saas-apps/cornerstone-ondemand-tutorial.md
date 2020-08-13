@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/31/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 34a92a11880d61ff3e75e0b2a982b6375841b4b7
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: b0fb9f10dbe9b5018ce0a5d02bcb668b09cd5e5a
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76983536"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87902285"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cornerstone-ondemand"></a>Tutorial: Integration des einmaligen Anmeldens von Azure Active Directory (Single Sign-On, SSO) mit Cornerstone OnDemand
 
@@ -38,6 +38,9 @@ Für die ersten Schritte benötigen Sie Folgendes:
 
 * Ein Azure AD-Abonnement Falls Sie über kein Abonnement verfügen, können Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/) verwenden.
 * Cornerstone OnDemand-Abonnement, für das einmaliges Anmelden (Single Sign-On, SSO) aktiviert ist
+
+> [!NOTE]
+> Diese Integration kann auch über die Azure AD-Umgebung für die US Government-Cloud verwendet werden. Sie finden diese Anwendung im Azure AD-Katalog für US Government-Cloudanwendungen und konfigurieren sie auf die gleiche Weise wie in der öffentlichen Cloud.
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 
@@ -67,8 +70,8 @@ Sie müssen die folgenden Schritte ausführen, um das einmalige Anmelden von Azu
 1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-sso)** , um Ihren Benutzern die Verwendung dieses Features zu ermöglichen.
     1. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit dem Testbenutzer B. Simon zu testen.
     1. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um B. Simon die Verwendung des einmaligen Anmeldens von Azure AD zu ermöglichen.
-2. **[Konfigurieren des einmaligen Anmeldens für Cornerstone OnDemand](#configure-cornerstone-ondemand-sso)** , um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
-    1. **[Erstellen eines Cornerstone OnDemand-Testbenutzers](#create-cornerstone-ondemand-test-user)** , um ein Pendant von B. Simon in Cornerstone OnDemand zu erhalten, das mit ihrer Darstellung in Azure AD verknüpft ist
+2. **[Konfigurieren des einmaligen Anmeldens für Cornerstone OnDemand](#configure-cornerstone-ondemand-sso)**, um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
+    1. **[Erstellen eines Cornerstone OnDemand-Testbenutzers](#create-cornerstone-ondemand-test-user)**, um ein Pendant von B. Simon in Cornerstone OnDemand zu erhalten, das mit ihrer Darstellung in Azure AD verknüpft ist
 3. **[Testen des einmaligen Anmeldens](#test-sso)** , um zu überprüfen, ob die Konfiguration funktioniert
 
 ## <a name="configure-azure-ad-sso"></a>Konfigurieren des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD
@@ -138,7 +141,7 @@ In diesem Abschnitt wird in Cornerstone OnDemand eine Benutzerin namens B. Sim
 
 **Wenn Sie einen Benutzer manuell erstellen möchten, führen Sie die folgenden Schritte aus:**
 
-Zum Konfigurieren der Benutzerbereitstellung senden Sie die Informationen (z. B. Name und E-Mail) für den Azure AD-Benutzer, den Sie bereitstellen möchten, an das [Supportteam von Cornerstone OnDemand](mailto:moreinfo@csod.com).
+Um die Benutzerbereitstellung zu konfigurieren, senden Sie die Informationen (z.B. Name und E-Mail) für den Azure AD-Benutzer, den Sie bereitstellen möchten, an das [Supportteam von Cornerstone OnDemand](mailto:moreinfo@csod.com).
 
 >[!NOTE]
 >Sie können Azure AD-Benutzerkonten auch mit anderen Tools zum Erstellen von Cornerstone OnDemand-Benutzerkonten oder mit den APIs von Cornerstone OnDemand bereitstellen.

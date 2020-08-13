@@ -3,13 +3,13 @@ title: Erstellen eines Projekts mit benutzerdefinierter Umgebung in Azure Notebo
 description: Erstellen Sie ein neues Projekt in Azure Notebooks (Vorschauversion), das mit einem bestimmten Satz installierter Pakete und Startskripts konfiguriert wird.
 ms.topic: quickstart
 ms.date: 12/04/2018
-ms.custom: tracking-python
-ms.openlocfilehash: c5f73b73b4bab99e07874c2d16d47da69f8026ba
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-python
+ms.openlocfilehash: 655c016b55abdcf4b6f546a1fe16348ec4c83724
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85832898"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87853363"
 ---
 # <a name="quickstart-create-a-project-with-a-custom-environment-in-azure-notebooks-preview"></a>Schnellstart: Erstellen eines Projekts mit benutzerdefinierter Umgebung in Azure Notebooks (Vorschauversion)
 
