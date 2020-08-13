@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 5/8/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: ce3f775b7a72239fba7eb7c1538ec4f0831f1c74
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: d02766d82690d2f546fdcbad76efcda043f54471
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87124557"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87986270"
 ---
 # <a name="explore-azure-digital-twins-with-a-sample-client-app"></a>Erkunden von Azure Digital Twins mit einer Beispielclient-App
 
@@ -78,7 +78,7 @@ Achten Sie darauf, die Datei vor dem Fortfahren zu speichern.
 > Wenn Sie ein eigenes Modell erstellen möchten, können Sie den *Room*-Modellcode in eine neue Datei einfügen, die Sie mit der Erweiterung *.json* im Ordner *AdtSampleApp\SampleClientApp\Models* speichern. Fügen Sie dann zum Experimentieren Eigenschaften und Beziehungen hinzu, um die gewünschten Informationen darzustellen. Sie können sich auch die anderen Beispielmodelle in diesem Ordner ansehen, um sich inspirieren zu lassen.
 
 > [!TIP] 
-> Es gibt ein sprachunabhängiges [DTDL-Überprüfungsbeispiel](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator), mit dem Sie Modelldokumente überprüfen können, um sicherzustellen, dass die DTDL gültig ist. Es basiert auf der DTDL-Parserbibliothek. Weitere Informationen dazu finden Sie unter [ *Clientseitige DTDL-Parserbibliothek*](how-to-use-parser.md).
+> Es gibt ein sprachunabhängiges [DTDL-Überprüfungsbeispiel](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator), mit dem Sie Modelldokumente überprüfen können, um sicherzustellen, dass die DTDL gültig ist. Es basiert auf der DTDL-Parserbibliothek. Weitere Informationen dazu finden Sie unter [ *Clientseitige DTDL-Parserbibliothek*](how-to-parse-models.md).
 
 ### <a name="get-started-with-the-command-line-app"></a>Erste Schritte mit der Befehlszeilen-App
 

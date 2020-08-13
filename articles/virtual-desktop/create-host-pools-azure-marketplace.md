@@ -1,19 +1,17 @@
 ---
 title: 'Windows Virtual Desktop-Hostpool im Azure-Portal: Azure'
 description: Hier erfahren Sie, wie Sie einen Windows Virtual Desktop-Hostpool im Azure-Portal erstellen.
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: e27bbdcec9b0c9e2bcabf4228a19d87e263d60f4
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: c9a421e15f3561bb4de7f528ab1c707a0251dfe5
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87291447"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88002667"
 ---
 # <a name="tutorial-create-a-host-pool-with-the-azure-portal"></a>Tutorial: Erstellen eines Hostpools mit dem Azure-Portal
 
@@ -61,7 +59,7 @@ Zum Erstellen des neuen Hostpools führen Sie zunächst die folgenden Schritte a
 6. Geben Sie einen eindeutigen Namen für Ihren Hostpool ein.
 
 7. Wählen Sie im Feld „Standort“ im Dropdownmenü die Region aus, in der Sie den Hostpool erstellen möchten.
-   
+
    Die Metadaten für diesen Hostpool und die zugehörigen Objekte werden in der Azure-Geografie gespeichert, die den von Ihnen ausgewählten Regionen zugeordnet ist. Stellen Sie sicher, dass Sie die Regionen innerhalb der Geografie auswählen, in der die Dienstmetadaten gespeichert werden sollen.
 
      > [!div class="mx-imgBorder"]
@@ -140,7 +138,7 @@ So richten Sie Ihre VM im Rahmen des Einrichtungsprozesses für den Hostpool ein
 
     > [!div class="mx-imgBorder"]
     > ![Screenshot der Seite „Sicherheitsgruppe“ mit einer Liste verfügbarer Ports in einem Dropdownmenü.](media/available-ports.png)
-    
+
     Wählen Sie bei Auswahl von **Erweitert** eine vorhandene Netzwerksicherheitsgruppe aus, die Sie bereits konfiguriert haben.
 
 10. Wählen Sie anschließend aus, ob die VMs einer bestimmten Domäne und Organisationseinheit beitreten sollen. Geben Sie bei Auswahl von **Ja** die jeweilige Domäne an. Sie können auch eine spezifische Organisationseinheit hinzufügen, in der die VMs enthalten sein sollen.
@@ -153,7 +151,7 @@ Damit sind Sie bereit für die nächste Phase der Einrichtung Ihres Hostpools: R
 
 ## <a name="workspace-information"></a>Informationen zum Arbeitsbereich
 
-Beim Einrichtungsprozess für den Hostpool wird standardmäßig eine Desktopanwendungsgruppe erstellt. Damit der Hostpool wie beabsichtigt funktioniert, müssen Sie diese App-Gruppe für Benutzer oder Benutzergruppen veröffentlichen und die App-Gruppe in einem Arbeitsbereich registrieren. 
+Beim Einrichtungsprozess für den Hostpool wird standardmäßig eine Desktopanwendungsgruppe erstellt. Damit der Hostpool wie beabsichtigt funktioniert, müssen Sie diese App-Gruppe für Benutzer oder Benutzergruppen veröffentlichen und die App-Gruppe in einem Arbeitsbereich registrieren.
 
 So registrieren Sie die Desktop-App-Gruppe in einem Arbeitsbereich:
 
@@ -167,10 +165,10 @@ So registrieren Sie die Desktop-App-Gruppe in einem Arbeitsbereich:
 
     Hier können Sie Tags hinzufügen, damit Sie die Objekte mit Metadaten gruppieren und dadurch Ihren Administratoren die Arbeit erleichtern können.
 
-4. Wählen Sie abschließend **Überprüfen + erstellen** aus. 
+4. Wählen Sie abschließend **Überprüfen + erstellen** aus.
 
      >[!NOTE]
-     >Beim Überprüfungsprozess „Überprüfen + erstellen“ wird nicht überprüft, ob Ihr Kennwort den Sicherheitsstandards entspricht oder Ihre Architektur korrekt ist. Sie müssen daher selbst überprüfen, ob in dieser Hinsicht Probleme vorliegen. 
+     >Beim Überprüfungsprozess „Überprüfen + erstellen“ wird nicht überprüft, ob Ihr Kennwort den Sicherheitsstandards entspricht oder Ihre Architektur korrekt ist. Sie müssen daher selbst überprüfen, ob in dieser Hinsicht Probleme vorliegen.
 
 5. Überprüfen Sie die Informationen zu Ihrer Bereitstellung, um sicherzustellen, dass alles richtig ist. Wählen Sie **Erstellen**, wenn Sie fertig sind. Dadurch wird der Bereitstellungsprozess gestartet, bei dem die folgenden Objekte erstellt werden:
 

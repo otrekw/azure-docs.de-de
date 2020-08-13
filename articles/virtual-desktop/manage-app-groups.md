@@ -1,19 +1,17 @@
 ---
 title: 'Verwalten von App-Gruppen per Windows Virtual Desktop-Portal: Azure'
 description: Es wird beschrieben, wie Sie Windows Virtual Desktop-App-Gruppen mit dem Azure-Portal verwalten.
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 5b0269b80cb879923f9f00861494915b6abe103e
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 6baada4c3b376b936f693d45e39e5887e77ef54b
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87283400"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88010088"
 ---
 # <a name="tutorial-manage-app-groups-with-the-azure-portal"></a>Tutorial: Verwalten von App-Gruppen mit dem Azure-Portal
 
@@ -49,16 +47,16 @@ Falls Sie bereits einen Hostpool und Sitzungshost-VMs erstellt haben, indem Sie 
     > ![Screenshot: Registerkarte „Grundlagen“ im Azure-Portal](media/basics-tab.png)
 
 6. Wählen Sie im Menü links auf der Seite die Option **Hostpools** aus, wenn Sie Ihrem Hostpool Anwendungsgruppen hinzufügen möchten.
-   
+
     Wählen Sie als Nächstes den Namen des Hostpools aus, dem Sie Anwendungsgruppen hinzufügen möchten.
-   
+
     Wählen Sie anschließend im Menü links auf der Seite die Option **Anwendungsgruppen** und dann **+ Hinzufügen** aus.
 
     Wählen Sie abschließend die Abonnementgruppe und Ressourcengruppe aus, in der Sie die App-Gruppe erstellen möchten. Sie können entweder im Dropdownmenü den Namen einer vorhandenen Ressourcengruppe oder die Option **Neu erstellen** auswählen, um eine neue zu erstellen.
 
       >[!NOTE]
       >Wenn Sie Ihrem Hostpool Anwendungsgruppen hinzufügen, ist der Hostpool, der zu der Anwendungsgruppe gehört, bereits ausgewählt, weil Sie den Navigationsvorgang von dort aus gestartet haben.
-      > 
+      >
       > [!div class="mx-imgBorder"]
       >![Screenshot: Registerkarte „Grundlagen“ mit vorausgewähltem Hostpool](media/host-pool-selected.png)
 
@@ -80,7 +78,7 @@ Falls Sie bereits einen Hostpool und Sitzungshost-VMs erstellt haben, indem Sie 
 
 12.  Wählen Sie die Registerkarte **Anwendungen** und dann **+ Anwendungen hinzufügen** aus.
 
-13.  Fügen Sie wie folgt eine Anwendung über das Startmenü hinzu: 
+13.  Fügen Sie wie folgt eine Anwendung über das Startmenü hinzu:
 
       - Navigieren Sie zu **Anwendungsquelle**, und wählen Sie im Dropdownmenü **Startmenü** aus. Navigieren Sie als Nächstes zu **Anwendung**, und wählen Sie im Dropdownmenü die Anwendung aus.
 
@@ -111,7 +109,7 @@ Falls Sie bereits einen Hostpool und Sitzungshost-VMs erstellt haben, indem Sie 
 16.  Navigieren Sie zu **Register application group** (Anwendungsgruppe registrieren), und wählen Sie **Ja** aus, wenn Sie die App-Gruppe in einem Arbeitsbereich registrieren möchten. Wählen Sie **Nein** aus, falls Sie die App-Gruppe zu einem späteren Zeitpunkt registrieren möchten.
 
 17.  Bei Auswahl von **Ja** können Sie einen vorhandenen Arbeitsbereich für die Registrierung Ihrer App-Gruppe auswählen.
-       
+
        >[!NOTE]
        >Sie können die App-Gruppe nur in Arbeitsbereichen registrieren, die an demselben Standort wie der Hostpool erstellt werden. Außerdem gilt: Wenn Sie zuvor eine andere App-Gruppe aus demselben Hostpool als Ihre neue App-Gruppe für einen Arbeitsbereich registriert haben, wird sie ausgewählt, und Sie können sie nicht bearbeiten. Alle App-Gruppen aus einem Hostpool müssen unter demselben Arbeitsbereich registriert sein.
 

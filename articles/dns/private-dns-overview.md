@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: overview
 ms.date: 6/12/2019
 ms.author: rohink
-ms.openlocfilehash: 97b266398b3ea46d09b04524dad34922f21b1a95
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 540c4d6f2dde64cef9b5795d635ac6259bfc69c3
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76939284"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87985630"
 ---
 # <a name="what-is-azure-private-dns"></a>Was ist privates Azure-DNS?
 
@@ -62,7 +62,7 @@ Für Azure DNS gelten die folgenden Einschränkungen:
 * Ein bestimmtes virtuelles Netzwerk kann nur mit genau einer privaten Zone verknüpft werden, wenn die automatische Registrierung von VM-DNS-Einträgen aktiviert ist. Sie können jedoch mehrere virtuelle Netzwerke mit einer einzelnen DNS-Zone verknüpfen.
 * Reverse-DNS funktioniert nur für den privaten IP-Bereich im verknüpften virtuellen Netzwerk.
 * Reverse-DNS für eine private IP-Adresse für ein verknüpftes virtuelles Netzwerk gibt *internal.cloudapp.net* als Standardsuffix für den virtuellen Computer zurück. Für virtuelle Netzwerke, die mit einer privaten Zone mit aktivierter automatischer Registrierung verknüpft sind, gibt Reverse-DNS für eine private IP-Adresse zwei vollqualifizierte Domänennamen zurück: einen mit dem Standardsuffix *internal.cloudapp.net* und den anderen mit dem Suffix der privaten Zone.
-* Die bedingte Weiterleitung wird derzeit nicht nativ unterstützt. Sie können die Auflösung zwischen Azure-Netzwerken und lokalen Netzwerken aktivieren. Informationen hierzu finden Sie unter [Namensauflösung für virtuelle Computer und Rolleninstanzen](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md).
+* Die bedingte Weiterleitung wird derzeit nicht nativ unterstützt. Informationen zum Aktivieren der Auflösung zwischen Azure-Netzwerken und lokalen Netzwerken finden Sie unter [Namensauflösung für Ressourcen in virtuellen Azure-Netzwerken](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md).
  
 ## <a name="pricing"></a>Preise
 

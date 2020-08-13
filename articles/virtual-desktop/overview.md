@@ -1,19 +1,17 @@
 ---
 title: Was ist Windows Virtual Desktop? - Azure
 description: Eine Übersicht über Windows Virtual Desktop.
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: overview
 ms.date: 07/10/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 6ff1f20314d79c507c696325d19c83e10ec4513f
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 003662beefcb2ee8f99a5f565ed680d406421a62
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386572"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88002370"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Was ist Windows Virtual Desktop?
 
@@ -139,7 +137,7 @@ Die verfügbaren Automatisierungs- und Bereitstellungsoptionen hängen davon ab,
 |Windows 7 Enterprise|Ja|Ja|Nein|Nein|
 |Windows Server 2019|Ja|Ja|Nein|Nein|
 |Windows Server 2016|Ja|Ja|Ja|Ja|
-|Windows Server 2012 R2|Ja|Ja|Nein|Nein|
+|Windows Server 2012 R2|Ja|Ja|Nein|Nein|
 
 ## <a name="next-steps"></a>Nächste Schritte
 

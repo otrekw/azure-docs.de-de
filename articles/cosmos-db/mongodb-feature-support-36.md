@@ -4,15 +4,15 @@ description: Hier finden Sie Informationen zu unterstützten Features und zur Sy
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: overview
-ms.date: 07/15/2020
+ms.date: 08/07/2020
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: bd59b27b5af92d7aa90851c592ba4de495e41283
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2b389b71e15edcf0558b2ce60290c1ad7b171eab
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87076836"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88030540"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb-36-version-supported-features-and-syntax"></a>Azure Cosmos DB-API für MongoDB (Version 3.6): unterstützte Features und Syntax
 
@@ -495,10 +495,10 @@ $nearSphere |  Ja |
 $geometry |  Ja |
 $minDistance | Ja |
 $maxDistance | Ja |
-$center | Ja |
-$centerSphere | Ja |
-$box | Ja |
-$polygon |  Ja |
+$center | Nein |
+$centerSphere | Nein |
+$box | Nein |
+$polygon |  Nein |
 
 ## <a name="cursor-methods"></a>Cursormethoden
 

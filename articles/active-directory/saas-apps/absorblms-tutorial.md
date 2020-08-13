@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/02/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 936de76d1117c56f5a9dec48b51f33b9afa15351
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: d3d5dbd5c831b4e3cf2ab63796165dc6bad005a5
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67107497"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905838"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-absorb-lms"></a>Tutorial: Azure Active Directory-Integration mit Absorb LMS
 
@@ -41,6 +41,9 @@ Um die Azure AD-Integration mit Absorb LMS konfigurieren zu können, benötigen 
 
 * Ein Azure AD-Abonnement Sollten Sie über keine Azure AD-Umgebung verfügen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) verwenden.
 * Absorb LMS-Abonnement, für das einmaliges Anmelden aktiviert ist
+
+> [!NOTE]
+> Diese Integration kann auch über die Azure AD-Umgebung für die US Government-Cloud verwendet werden. Sie finden diese Anwendung im Azure AD-Katalog für US Government-Cloudanwendungen und konfigurieren sie auf die gleiche Weise wie in der öffentlichen Cloud.
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 
@@ -78,10 +81,10 @@ Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem A
 Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei Absorb LMS müssen Sie die folgenden Bausteine ausführen:
 
 1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)** , um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
-2. **[Konfigurieren des einmaligen Anmeldens für Absorb LMS](#configure-absorb-lms-single-sign-on)** , um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
+2. **[Konfigurieren des einmaligen Anmeldens für Absorb LMS](#configure-absorb-lms-single-sign-on)**, um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
 3. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
 4. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-5. **[Erstellen eines Absorb LMS-Testbenutzers](#create-absorb-lms-test-user)** , um eine Entsprechung von Britta Simon in Absorb LMS zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
+5. **[Erstellen eines Absorb LMS-Testbenutzers](#create-absorb-lms-test-user)**, um eine Entsprechung von Britta Simon in Absorb LMS zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
 6. **[Testen der einmaligen Anmeldung](#test-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Azure AD
@@ -163,7 +166,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei Absorb L
 
     b. Wählen Sie **SAML** als **Methode** aus.
 
-    c. Öffnen Sie im Editor das Zertifikat, das Sie aus dem Azure-Portal heruntergeladen haben. Entfernen Sie die Tags **---BEGIN CERTIFICATE---** und **---END CERTIFICATE---** . Fügen Sie anschließend im Feld **Schlüssel** den verbleibenden Inhalt ein.
+    c. Öffnen Sie im Editor das Zertifikat, das Sie aus dem Azure-Portal heruntergeladen haben. Entfernen Sie die Tags **---BEGIN CERTIFICATE---** und **---END CERTIFICATE---**. Fügen Sie anschließend im Feld **Schlüssel** den verbleibenden Inhalt ein.
 
     d. Wählen Sie im Feld **Modus** die Option **Identity Provider Initiated** (Vom Identitätsanbieter initiiert).
 
