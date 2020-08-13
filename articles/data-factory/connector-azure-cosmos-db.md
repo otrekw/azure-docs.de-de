@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/11/2019
-ms.openlocfilehash: f0aa70333454b327a0ca76beef2985062ce56715
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: be6dbb74883f12498c5c011e35fa955509ff627c
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81415381"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88042767"
 ---
 # <a name="copy-and-transform-data-in-azure-cosmos-db-sql-api-by-using-azure-data-factory"></a>Kopieren und Transformieren von Daten in Azure Cosmos DB (SQL-API) mithilfe von Azure Data Factory
 
@@ -204,7 +204,7 @@ Als Methode zum Kopieren von Daten aus Cosmos DB hat es sich bewährt, die Zuord
 
 Legen Sie zum Kopieren von Daten in Azure Cosmos DB (SQL-API) den **Senkentyp** in der Copy-Aktivität auf **DocumentDbCollectionSink** fest. 
 
-Die folgenden Eigenschaften werden im Abschnitt **source** der Kopieraktivität unterstützt:
+Die folgenden Eigenschaften werden im Abschnitt **sink** der Kopieraktivität unterstützt:
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |

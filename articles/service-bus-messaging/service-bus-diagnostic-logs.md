@@ -3,12 +3,12 @@ title: Azure Service Bus-Diagnoseprotokolle | Microsoft-Dokumentation
 description: Dieser Artikel enthält eine Übersicht über alle verfügbaren Betriebs- und Diagnoseprotokolle für Azure Service Bus.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: eeaa7e92488fd59994fc07ea0081b0f00c8768df
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f227f5a988ccd51425b4f43e87b4ed4d9af74e1f
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85337525"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88064433"
 ---
 # <a name="enable-diagnostics-logs-for-service-bus"></a>Aktivieren von Diagnoseprotokollen für Service Bus
 
@@ -101,7 +101,7 @@ Betriebsprotokolle sind standardmäßig deaktiviert. Führen Sie folgende Schrit
 
 Die neuen Einstellungen werden in etwa zehn Minuten wirksam. Danach werden die Protokolle im gewünschten Archivierungsziel im Bereich **Diagnoseprotokolle** angezeigt.
 
-Weitere Informationen zum Konfigurieren der Diagnoseeinstellungen finden Sie in der [Übersicht über Protokolle der Azure-Plattform](../azure-monitor/platform/diagnostic-logs-overview.md).
+Weitere Informationen zum Konfigurieren der Diagnoseeinstellungen finden Sie in der [Übersicht über Protokolle der Azure-Plattform](../azure-monitor/platform/platform-logs-overview.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

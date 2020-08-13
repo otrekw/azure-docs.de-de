@@ -16,12 +16,12 @@ ms.date: 05/01/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eaeaa8625a5bdb5bbf8ce76a68e616a913da5655
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: c2b65f8cd22e72e0ba90918121a02d66fe6bf3e7
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86147004"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88053047"
 ---
 # <a name="azure-ad-connect-sync-scheduler"></a>Azure AD Connect-Synchronisierung: Scheduler
 In diesem Thema wird der integrierte Scheduler in Azure AD Connect-Synchronisierung (Synchronisierungsmodul) beschrieben.
@@ -171,7 +171,7 @@ Während ein Synchronisierungszyklus ausgeführt wird, sind Änderungen an der K
 Der Scheduler ist noch immer aktiv und wird bei der nächsten Gelegenheit wieder gestartet.
 
 ## <a name="custom-scheduler"></a>Benutzerdefinierter Scheduler
-Die in diesem Abschnitt dokumentierten Cmdlets stehen nur in Build [1.1.130.0](reference-connect-version-history.md#111300) und höher zur Verfügung.
+Die in diesem Abschnitt dokumentierten Cmdlets stehen nur in Build [1.1.130.0](reference-connect-version-history.md) und höher zur Verfügung.
 
 Wenn der integrierte Scheduler Ihre Anforderungen nicht erfüllt, können Sie die Connectors mithilfe von PowerShell planen.
 

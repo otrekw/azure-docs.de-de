@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.service: service-bus
 ms.date: 07/02/2020
 ms.author: alvidela
-ms.openlocfilehash: cf21030fbf1aaa9f36e4d34aac918c4604066ec2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 373629c86f2d842ad2e02dd2b66739f3963bf7ed
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87071635"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88064552"
 ---
 # <a name="how-to-integrate-rabbitmq-with-azure-service-bus"></a>Integrieren von RabbitMQ in Azure Service Bus
 
@@ -20,7 +20,7 @@ In dieser Anleitung erfahren Sie, wie Nachrichten von RabbitMQ an Azure Service 
 
 Im Folgenden werden einige Szenarios beschrieben, in denen diese Funktionen genutzt werden können:
 
-- **Edge-Einrichtungen**: In einer Edge-Einrichtung werden Nachrichten an RabbitMQ gesendet. Wir möchten diese Nachrichten jedoch zur weiteren Verarbeitung an [Azure Service Bus](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-messaging-overview) weiterleiten, sodass wir viele [Azure-Funktionen für Big Data](https://docs.microsoft.com/azure/architecture/guide/architecture-styles/big-data) nutzen können.
+- **Edge-Einrichtungen**: In einer Edge-Einrichtung werden Nachrichten an RabbitMQ gesendet. Wir möchten diese Nachrichten jedoch zur weiteren Verarbeitung an [Azure Service Bus](./service-bus-messaging-overview.md) weiterleiten, sodass wir viele [Azure-Funktionen für Big Data](/azure/architecture/guide/architecture-styles/big-data) nutzen können.
 - **Hybrid Cloud**: Ihr Unternehmen hat soeben einen Drittanbieter gefunden, der für die eigenen Messaginganforderungen RabbitMQ verwendet. Er befindet sich in einer anderen Cloud. Während er zu Azure wechselt, können Sie bereits Daten freigeben, indem Sie RabbitMQ mit Azure Service Bus überbrücken.
 - **Drittanbieterintegration**: Ein Drittanbieter verwendet RabbitMQ als Broker, und möchte uns seine Daten senden. Er befindet sich jedoch außerhalb unserer Organisation. Wir können ihm einen SAS-Schlüssel bereitstellen, mit dem er Zugriff auf bestimmte Azure Service Bus-Warteschlangen hat, an die er seine Nachrichten weiterleiten kann.
 
@@ -28,7 +28,7 @@ Die Liste lässt sich beliebig fortführen. Bei den meisten dieser Anwendungsfä
 
 Zunächst müssen Sie ein kostenloses Azure-Konto erstellen, indem Sie sich [hier](https://azure.microsoft.com/free/) registrieren.
 
-Nachdem Sie sich bei Ihrem Konto angemeldet haben, wechseln Sie zum [Azure-Portal](https://portal.azure.com/). Erstellen Sie dort einen neuen Azure Service Bus-[Namespace](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-create-namespace-portal). Bei Namespaces handelt es sich um die Bereichscontainer, in denen sich unsere Messagingkomponenten wie Warteschlangen und Themen befinden.
+Nachdem Sie sich bei Ihrem Konto angemeldet haben, wechseln Sie zum [Azure-Portal](https://portal.azure.com/). Erstellen Sie dort einen neuen Azure Service Bus-[Namespace](./service-bus-create-namespace-portal.md). Bei Namespaces handelt es sich um die Bereichscontainer, in denen sich unsere Messagingkomponenten wie Warteschlangen und Themen befinden.
 
 ## <a name="adding-a-new-azure-service-bus-namespace"></a>Hinzufügen eines neuen Azure Service Bus-Namespace
 
@@ -40,7 +40,7 @@ Wählen Sie anschließend „Integration“ aus, und klicken Sie auf „Azure Se
 
 :::image type="content" source="./media/service-bus-integrate-with-rabbitmq/integration.png" alt-text="Azure Service Bus auswählen":::
 
-Sie werden aufgefordert, die Namespaceinformationen einzugeben. Wählen Sie das Azure-Abonnement aus, das Sie verwenden möchten. Wenn keine [Ressourcengruppe](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resource-groups-portal) vorhanden ist, können Sie eine neue erstellen.
+Sie werden aufgefordert, die Namespaceinformationen einzugeben. Wählen Sie das Azure-Abonnement aus, das Sie verwenden möchten. Wenn keine [Ressourcengruppe](../azure-resource-manager/management/manage-resource-groups-portal.md) vorhanden ist, können Sie eine neue erstellen.
 
 :::image type="content" source="./media/service-bus-integrate-with-rabbitmq/create-namespace.png" alt-text="Namespace erstellen":::
 
@@ -76,7 +76,7 @@ Nun müssen Sie die Anmeldeinformationen zum Herstellen der Verbindung zwischen 
 
 ## <a name="connecting-rabbitmq-to-azure-service-bus"></a>Herstellen einer Verbindung zwischen RabbitMQ und Azure Service Bus
 
-Sie müssen für Ihre Warteschlange eine [SAS-Richtlinie](https://docs.microsoft.com/azure/storage/common/storage-sas-overview) erstellen, damit diese von RabbitMQ zum Veröffentlichen von Nachrichten verwendet werden kann. Mithilfe einer SAS-Richtlinie können Sie angeben, welche Aktionen eine externe Partei für Ihre Ressource durchführen darf. Damit soll sichergestellt werden, dass RabbitMQ Nachrichten senden, die Warteschlange jedoch nicht belauschen oder verwalten kann.
+Sie müssen für Ihre Warteschlange eine [SAS-Richtlinie](../storage/common/storage-sas-overview.md) erstellen, damit diese von RabbitMQ zum Veröffentlichen von Nachrichten verwendet werden kann. Mithilfe einer SAS-Richtlinie können Sie angeben, welche Aktionen eine externe Partei für Ihre Ressource durchführen darf. Damit soll sichergestellt werden, dass RabbitMQ Nachrichten senden, die Warteschlange jedoch nicht belauschen oder verwalten kann.
 
 :::image type="content" source="./media/service-bus-integrate-with-rabbitmq/create-sas-policy.png" alt-text="SAS-Richtlinie hinzufügen":::
 

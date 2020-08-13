@@ -7,13 +7,13 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.author: spelluru
-ms.custom: tracking-python
-ms.openlocfilehash: 4c490d252fa1153324df62a6119ae6bdc548c331
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.custom: devx-track-python
+ms.openlocfilehash: f6d1b25cb502b8cb208ba5b59c91667e03c77778
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85341038"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88064382"
 ---
 # <a name="quickstart-use-service-bus-topics-and-subscriptions-with-python"></a>Schnellstart: Verwenden von Service Bus-Themen und -Abonnements mit Python
 
@@ -176,7 +176,7 @@ Beim Löschen eines Themas werden alle Abonnements für das Thema gelöscht. Abo
 bus_service.delete_subscription('mytopic', 'HighMessages')
 ```
 
-Standardmäßig sind Themen und Abonnements persistent und so lange vorhanden, bis Sie sie löschen. Um Abonnements nach Ablauf eines bestimmten Zeitraums automatisch zu löschen, können Sie den Parameter [auto_delete_on_idle](https://docs.microsoft.com/python/api/azure-mgmt-servicebus/azure.mgmt.servicebus.models.sbsubscription?view=azure-python) für das Abonnement festlegen. 
+Standardmäßig sind Themen und Abonnements persistent und so lange vorhanden, bis Sie sie löschen. Um Abonnements nach Ablauf eines bestimmten Zeitraums automatisch zu löschen, können Sie den Parameter [auto_delete_on_idle](/python/api/azure-mgmt-servicebus/azure.mgmt.servicebus.models.sbsubscription?view=azure-python) für das Abonnement festlegen. 
 
 > [!TIP]
 > Sie können Service Bus-Ressourcen mit dem [Service Bus-Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/) verwalten. Mit dem Service Bus-Explorer können Sie eine Verbindung mit einem Service Bus-Namespace herstellen und Messagingentitäten einfach verwalten. Das Tool stellt erweiterte Features wie Import-/Exportfunktionen und Testmöglichkeiten für Themen, Warteschlangen, Abonnements, Relaydienste, Notification Hubs und Event Hubs zur Verfügung. 
@@ -192,4 +192,4 @@ Nachdem Sie nun mit den Grundlagen der Service Bus-Themen vertraut sind, finden 
 [Azure Python package]: https://pypi.python.org/pypi/azure
 [Queues, topics, and subscriptions]: service-bus-queues-topics-subscriptions.md
 [SqlFilter.SqlExpression]: service-bus-messaging-sql-filter.md
-[Service Bus quotas]: service-bus-quotas.md 
+[Service Bus quotas]: service-bus-quotas.md

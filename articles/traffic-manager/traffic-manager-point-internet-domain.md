@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/11/2016
 ms.author: rohink
-ms.openlocfilehash: 4b0f79ba072c813a7639e87025c19a34e65df023
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 69bdf9a0e04b4d9c2a55f1c0f346d601830ded09
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86183459"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88053064"
 ---
 # <a name="point-a-company-internet-domain-to-an-azure-traffic-manager-domain"></a>Verweisen einer Unternehmens-Internetdomäne auf einen Azure Traffic Manager-Domänennamen
 
@@ -23,7 +23,7 @@ Wenn Sie ein Traffic Manager-Profil erstellen, weist Azure dem Profil automatisc
 
 Beispiel: Um mit dem Namen `www.contoso.com` auf den Traffic Manager-DNS-Namen `contoso.trafficmanager.net` zu verweisen, erstellen Sie den folgenden DNS-Ressourceneintrag:
 
-`www.contoso.com IN CNAME contoso.trafficmanager.net`
+`www.contoso.com IN CNAME contoso.trafficmanager.net.`
 
 Alle Datenverkehrsanforderungen an *www\.contoso.com* werden an *contoso.trafficmanager.net* umgeleitet.
 

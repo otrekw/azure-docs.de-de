@@ -3,19 +3,19 @@ title: 'Spracherkennungs-API-Referenz (REST): Speech-Dienst'
 titleSuffix: Azure Cognitive Services
 description: Erfahren Sie, wie Sie die Spracherkennungs-REST-API verwenden. In diesem Artikel erfahren Sie mehr über Autorisierungs- und Abfrageoptionen sowie darüber, wie Sie eine Anforderung strukturieren und eine Antwort erhalten.
 services: cognitive-services
-author: yinhew
+author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/13/2020
-ms.author: yinhew
-ms.openlocfilehash: e7bbedf253d6a64609179a8710fc9accd1f03818
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.author: trbye
+ms.openlocfilehash: 5c356a1c707ede3b9417bc3e742a940333b4c4ac
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86537968"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056821"
 ---
 # <a name="speech-to-text-rest-api"></a>Spracherkennungs-REST-API
 
@@ -302,6 +302,6 @@ Eine typische Antwort für Erkennung mit Bewertung der Aussprache:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Abrufen Ihres Testabonnements für Speech](https://azure.microsoft.com/try/cognitive-services/)
+- [Erstellen Sie ein kostenloses Azure-Konto.](https://azure.microsoft.com/free/cognitive-services/)
 - [Tutorial: Erstellen eines benutzerdefinierten Akustikmodells](how-to-customize-acoustic-models.md)
 - [Tutorial: Erstellen eines benutzerdefinierten Sprachmodells](how-to-customize-language-model.md)

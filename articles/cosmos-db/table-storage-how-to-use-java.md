@@ -9,12 +9,12 @@ ms.date: 07/23/2020
 author: sakash279
 ms.author: akshanka
 ms.custom: devx-track-java
-ms.openlocfilehash: 02adda920b838e39ce713709a952a23be6dc3a0c
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: e28770bae9f845ae8f5edd3b67bc55175392052a
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321070"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056668"
 ---
 # <a name="how-to-use-azure-table-storage-or-azure-cosmos-db-table-api-from-java"></a>Verwenden von Azure Table Storage oder der Azure Cosmos DB-Tabellen-API aus Java
 
@@ -622,7 +622,7 @@ catch (Exception e)
 * [Azure Storage-SDK für Java][Azure Storage SDK for Java]
 * [Referenz für Azure Storage-Client-SDKs][Azure Storage Client SDK Reference]
 * [Azure Storage-REST-API][Azure Storage REST API]
-* [Azure Storage-Teamblog][Azure Storage-Teamblog]
+* [Azure Storage-Teamblog][Azure Storage Team Blog]
 
 Weitere Informationen finden Sie im Artikel [Azure für Java-Entwickler](/java/azure).
 
@@ -631,3 +631,4 @@ Weitere Informationen finden Sie im Artikel [Azure für Java-Entwickler](/java/a
 [Azure Storage SDK for Android]: https://github.com/azure/azure-storage-android
 [Referenz für Azure Storage-Client-SDKs]: https://azure.github.io/azure-storage-java/
 [Azure Storage REST API]: https://msdn.microsoft.com/library/azure/dd179355.aspx
+[Azure Storage Team Blog]: https://blogs.msdn.microsoft.com/windowsazurestorage/

@@ -2,14 +2,14 @@
 author: roygara
 ms.service: storage
 ms.topic: include
-ms.date: 06/07/2019
+ms.date: 08/10/2020
 ms.author: rogarana
-ms.openlocfilehash: b28427b3ede0cfaeb9e08d3c73b15ea7f2961f1b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d704c6026e9d007a7365a3b72649ca509585da4d
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "71180049"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88057787"
 ---
 #### <a name="additional-premium-file-share-level-limits"></a>Zusätzliche Freigabegrenzwerte für Dateien auf Premiumebene
 
@@ -23,11 +23,11 @@ ms.locfileid: "71180049"
 
 #### <a name="file-level-limits"></a>Grenzwerte auf Dateiebene
 
-|Bereich  |Premiumdateien  |Standarddateien |
+|Bereich  |Standarddateien  |Premiumdateien  |
 |---------|---------|---------|
-|Size                  |1 TiB         |1 TiB|
-|Max. IOPS pro Datei     |5\.000         |1\.000|
-|Gleichzeitige Handles    |2\.000         |2\.000|
-|Ausgehende Daten  |300 MiB/s|      Siehe: Durchsatzwerte für Standarddateien|
-|Eingehende Daten  |200 MiB/s| Siehe: Durchsatzwerte für Standarddateien|
-|Throughput| Siehe: Ein-/Ausgangswerte für Premiumdateien| Bis zu 60 MiB/s|
+|Size     |1 TiB         |4 TiB         |
+|Max. IOPS pro Datei      |1\.000         |5\.000         |
+|Gleichzeitige Handles     |2\.000         |2\.000         |
+|Ausgehende Daten     |Siehe: Durchsatzwerte für Standarddateien         |300 MiB/s         |
+|Eingehende Daten     |Siehe: Durchsatzwerte für Standarddateien         |200 MiB/s         |
+|Throughput     |Bis zu 60 MiB/s         |Siehe: Ein-/Ausgangswerte für Premiumdateien         |

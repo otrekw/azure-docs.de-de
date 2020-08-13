@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: trbye
-ms.openlocfilehash: 2aacf8881a57f0677177cd341a0ddc63224b26b6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 272367d5311952b45c73febe0e05b1ec2d225261
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81402052"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056685"
 ---
 # <a name="get-started-with-custom-voice"></a>Erste Schritte mit Custom Voice
 
@@ -56,7 +56,7 @@ Nachdem Sie ein Azure-Konto und ein Abonnement für den Speech-Dienst erstellt h
 4. Wenn Sie zu einem anderen Speech-Abonnement wechseln möchten, verwenden Sie das Zahnradsymbol auf der oberen Navigationsleiste.
 
 > [!NOTE]
-> Der Schlüssel der 30-tägigen kostenlosen Testversion wird vom Custom Voice-Dienst NICHT unterstützt. Sie müssen über einen in Azure erstellten F0- oder S0-Schlüssel verfügen, um den Dienst nutzen zu können.
+> Sie müssen über einen in Azure erstellten F0- oder S0-Schlüssel verfügen, um den Dienst nutzen zu können.
 
 ## <a name="how-to-create-a-project"></a>So erstellen Sie ein Projekt
 

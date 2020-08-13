@@ -16,12 +16,12 @@ ms.date: 03/26/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 753e00ef5f015c554e49d7326120d29f5c5da4a9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1879df40122549ddc4c57557017fa2c84c883368
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85357765"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88061505"
 ---
 # <a name="azure-ad-connect-sync-configure-filtering"></a>Azure AD Connect-Synchronisierung: Konfigurieren der Filterung
 Per Filterung können Sie für Ihr lokales Verzeichnis steuern, welche Objekte in Azure Active Directory (Azure AD) angezeigt werden. Die Standardkonfiguration deckt alle Objekte in allen Domänen der konfigurierten Gesamtstrukturen ab. Dies ist die für den Normalfall empfohlene Konfiguration. Benutzer, die Office 365-Workloads wie etwa Exchange Online und Skype for Business verwenden, profitieren von einer vollständigen globalen Adressliste, die zum Senden von E-Mails und Anrufen anderer Personen genutzt werden kann. In der Standardkonfiguration erhalten diese Benutzer die gleiche Funktionalität wie bei einer lokalen Implementierung von Exchange oder Lync.
@@ -47,7 +47,7 @@ Da bei der Filterung viele Objekte gleichzeitig entfernt werden können, sollten
 
 Um das versehentliche Löschen von vielen Objekten zu verhindern, ist das Feature zum [Verhindern versehentlicher Löschungen](how-to-connect-sync-feature-prevent-accidental-deletes.md) standardmäßig aktiviert. Wenn Sie aufgrund einer Filterung viele Objekte löschen (standardmäßig 500), müssen Sie die Schritte in diesem Artikel ausführen, damit die Löschvorgänge auch für Azure AD gelten.
 
-Wenn Sie einen älteren Build als November 2015 nutzen ([1.0.9125](reference-connect-version-history.md#1091250)), eine Änderung an der Filterkonfiguration vornehmen und die Kennworthashsynchronisierung verwenden, müssen Sie eine vollständige Synchronisierung aller Kennwörter auslösen, nachdem Sie die Konfiguration abgeschlossen haben. Informationen zu Schritten zum Auslösen einer vollständigen Kennwortsynchronisierung finden Sie unter [Auslösen einer vollständigen Synchronisierung aller Kennwörter](tshoot-connect-password-hash-synchronization.md#trigger-a-full-sync-of-all-passwords). Falls Sie Version 1.0.9125 oder höher verwenden, wird mit der normalen Aktion **Vollständige Synchronisierung** auch berechnet, ob Kennwörter synchronisiert werden sollen. Dieser zusätzliche Schritt ist nicht mehr erforderlich.
+Wenn Sie einen älteren Build als November 2015 nutzen ([1.0.9125](reference-connect-version-history.md)), eine Änderung an der Filterkonfiguration vornehmen und die Kennworthashsynchronisierung verwenden, müssen Sie eine vollständige Synchronisierung aller Kennwörter auslösen, nachdem Sie die Konfiguration abgeschlossen haben. Informationen zu Schritten zum Auslösen einer vollständigen Kennwortsynchronisierung finden Sie unter [Auslösen einer vollständigen Synchronisierung aller Kennwörter](tshoot-connect-password-hash-synchronization.md#trigger-a-full-sync-of-all-passwords). Falls Sie Version 1.0.9125 oder höher verwenden, wird mit der normalen Aktion **Vollständige Synchronisierung** auch berechnet, ob Kennwörter synchronisiert werden sollen. Dieser zusätzliche Schritt ist nicht mehr erforderlich.
 
 Wenn **Benutzerobjekte** in Azure AD aufgrund eines Filterungsfehlers versehentlich gelöscht wurden, können Sie die Benutzerobjekte in Azure AD neu erstellen, indem Sie Ihre Filterkonfigurationen entfernen. Anschließend können Sie Ihre Verzeichnisse erneut synchronisieren. Mit dieser Aktion werden die Benutzer aus dem Papierkorb in Azure AD wiederhergestellt. Das Löschen anderer Objekttypen kann jedoch nicht rückgängig gemacht werden. Wenn Sie beispielsweise eine Sicherheitsgruppe versehentlich löschen, die als Zugriffssteuerungsliste (ACL) für eine Ressource verwendet wurde, können die Gruppe und die zugehörigen ACLs nicht wiederhergestellt werden.
 
@@ -202,7 +202,7 @@ Sie können konfigurieren, dass das Synchronisierungsmodul neue Organisationsein
 Bei dieser Konfiguration wird eine neue Organisationseinheit, die unter ManagedObjects erstellt wurde, nicht synchronisiert.
 
 ## <a name="attribute-based-filtering"></a>Attributbasierte Filterung
-Stellen Sie sicher, dass Sie den Build vom November 2015 ([1.0.9125](reference-connect-version-history.md#1091250)) oder höher verwenden, damit diese Schritte funktionieren.
+Stellen Sie sicher, dass Sie den Build vom November 2015 ([1.0.9125](reference-connect-version-history.md)) oder höher verwenden, damit diese Schritte funktionieren.
 
 > [!IMPORTANT]
 >Microsoft empfiehlt, die von **Azure AD Connect** erstellten Standardregeln nicht zu ändern. Falls Sie die Regel ändern möchten, können Sie sie klonen und dann die ursprüngliche Regel deaktivieren. Nehmen Sie die gewünschten Änderungen an der geklonten Regel vor. Beachten Sie, dass Sie dadurch (das Deaktivieren der ursprünglichen Regel) keine der Fehlerbehebungen oder Features erhalten, die durch diese Regel aktiviert werden.

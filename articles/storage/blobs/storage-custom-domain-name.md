@@ -9,18 +9,18 @@ ms.date: 01/23/2020
 ms.author: normesta
 ms.reviewer: dineshm
 ms.subservice: blobs
-ms.openlocfilehash: 95fd62584ef73f3f2f198c84913652f460fc5b1a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 903413b6ca00600e15ac3af0a93b98a8d67a1c28
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84465540"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88053625"
 ---
 # <a name="map-a-custom-domain-to-an-azure-blob-storage-endpoint"></a>Zuordnen einer benutzerdefinierten Domäne zu einem Azure Blob Storage-Endpunkt
 
 Sie können einem Blob-Dienstendpunkt oder einem Endpunkt einer [statischen Website](storage-blob-static-website.md) eine benutzerdefinierte Domäne zuordnen. 
 
-[!INCLUDE [updated-for-az](../../../includes/storage-data-lake-gen2-support.md)]
+[!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
 > [!NOTE] 
 > Diese Zuordnung funktioniert nur für Unterdomänen (z. B. `www.contoso.com`). Wenn Ihr Webendpunkt für die Stammdomäne (z. B. `contoso.com`) verfügbar sein soll, müssen Sie Azure CDN verwenden. Eine entsprechende Anleitung finden Sie im Abschnitt [Zuordnen einer benutzerdefinierten Domäne mit aktiviertem HTTPS](#enable-https) in diesem Artikel. Weil Sie in diesem Abschnitt dieses Artikels die Stammdomäne Ihrer benutzerdefinierten Domäne aktivieren, ist der Schritt innerhalb dieses Abschnitts zum Aktivieren von HTTPS optional. 

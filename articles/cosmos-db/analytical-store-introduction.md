@@ -1,17 +1,17 @@
 ---
 title: Was ist der Azure Cosmos DB-Analysespeicher (Vorschau)?
 description: Erfahren Sie mehr über den Azure Cosmos DB-Transaktionsspeicher (zeilenbasiert) und -Analysespeicher (spaltenbasiert). Vorteile des Analysespeichers, Auswirkungen auf die Leistung bei umfangreichen Workloads und automatische Synchronisierung von Daten aus dem Transaktionsspeicher in den Analysespeicher
-author: SriChintala
+author: Rodrigossz
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.author: srchi
-ms.openlocfilehash: a6f486f15fb5967dfb14508115e2340e4953be81
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: rosouz
+ms.openlocfilehash: 3b210ea558f857d017504d07e571e94e34c0d4f6
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85116025"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037098"
 ---
 # <a name="what-is-azure-cosmos-db-analytical-store-preview"></a>Was ist der Azure Cosmos DB-Analysespeicher (Vorschau)?
 

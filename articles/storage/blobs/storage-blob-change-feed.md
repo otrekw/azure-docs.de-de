@@ -8,18 +8,18 @@ ms.topic: how-to
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: sadodd
-ms.openlocfilehash: d464897c031522b2227c682f9581f0d34c8db64b
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 09a97897ca7e3984c7003c1dbbca65cddaec1ee6
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518740"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88055420"
 ---
 # <a name="change-feed-support-in-azure-blob-storage-preview"></a>Unterstützung für Änderungsfeeds in Azure Blob Storage (Vorschau)
 
 Zweck des Änderungsfeeds ist es, Transaktionsprotokolle für alle Änderungen bereitzustellen, die in den Blobs und Blobmetadaten in Ihrem Speicherkonto auftreten. Der Änderungsfeed bietet **sortierte**, **garantierte**, **permanente**, **unveränderliche** und **schreibgeschützte** Protokolle dieser Änderungen. Clientanwendungen können diese Protokolle jederzeit lesen, entweder im Streaming- oder im Batchmodus. Der Änderungsfeed ermöglicht es Ihnen, effiziente und skalierbare Lösungen zu erstellen, mit denen Änderungsereignisse, die in Ihrem Blob Storage-Konto auftreten, kostengünstig verarbeitet werden.
 
-[!INCLUDE [updated-for-az](../../../includes/storage-data-lake-gen2-support.md)]
+[!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
 Der Änderungsfeed wird in Form von [Blobs](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs) in einem speziellen Container Ihres Speicherkontos zu standardmäßigen [Blobpreisen](https://azure.microsoft.com/pricing/details/storage/blobs/) gespeichert. Sie können den Aufbewahrungszeitraum dieser Dateien Ihren Anforderungen entsprechend steuern (Informationen hierzu finden Sie in den [Bedingungen](#conditions) für das aktuelle Release). Änderungsereignisse werden in der [Apache Avro](https://avro.apache.org/docs/1.8.2/spec.html)-Formatspezifikation als Datensätze an den Änderungsfeed angehängt. Dies ist ein kompaktes, schnelles Binärformat, das umfangreiche Datenstrukturen mit Inlineschemas bereitstellt. Dieses Format wird häufig im Hadoop-Ökosystem, von Stream Analytics und von Azure Data Factory verwendet.
 
@@ -71,7 +71,7 @@ So aktivieren Sie den Änderungsfeed für Ihr Speicherkonto über das Azure-Port
 
 4. Wählen Sie die Schaltfläche **Speichern** aus, um Ihre **Datenschutzeinstellungen** zu bestätigen.
 
-    ![Screenshot: Einstellungen für den Schutz von Daten](media/soft-delete-enable/storage-blob-soft-delete-portal-configuration.png)
+    ![Screenshot: Einstellungen für den Schutz von Daten](media/soft-delete-blob-enable/storage-blob-soft-delete-portal-configuration.png)
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 

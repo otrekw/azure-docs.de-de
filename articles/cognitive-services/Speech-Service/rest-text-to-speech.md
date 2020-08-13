@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
-ms.openlocfilehash: 0f43d1f780f838fdc49eb055536204026edcc729
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6fafb668ecc2ae36dbe5a6bbc3d1e1d501545b50
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87079224"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056804"
 ---
 # <a name="text-to-speech-rest-api"></a>Text-to-Speech-REST-API
 
@@ -241,6 +241,6 @@ Wenn der HTTP-Status `200 OK` ist, enthält der Text der Antwort eine Audiodatei
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Abrufen Ihres Testabonnements für Speech](https://azure.microsoft.com/try/cognitive-services)
+- [Erstellen Sie ein kostenloses Azure-Konto.](https://azure.microsoft.com/free/cognitive-services/)
 - [Asynchrone Synthese für lange Audioinhalte](quickstarts/text-to-speech/async-synthesis-long-form-audio.md)
 - [Erste Schritte mit Custom Voice](how-to-custom-voice.md)

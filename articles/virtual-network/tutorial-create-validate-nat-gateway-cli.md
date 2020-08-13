@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Erstellen und Testen eines NAT-Gateways: Azure CLI'
+title: 'Erstellen und Testen eines NAT-Gateways: Azure CLI'
 titlesuffix: Azure Virtual Network NAT
 description: In diesem Tutorial wird veranschaulicht, wie Sie mit der Azure CLI ein NAT-Gateway erstellen und den NAT-Dienst testen.
 services: virtual-network
@@ -10,17 +10,17 @@ Customer intent: I want to test a NAT gateway for outbound connectivity for my v
 ms.service: virtual-network
 ms.subservice: nat
 ms.devlang: na
-ms.topic: tutorial
+ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 06/11/2020
 ms.author: allensu
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 1cd3f9aa429e02bd3666e47acf2f4c58761b0d81
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 7d4467e557105100fc32940c05fa349722689867
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87494654"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88054356"
 ---
 # <a name="tutorial-create-a-nat-gateway-using-azure-cli-and-test-the-nat-service"></a>Tutorial: Erstellen eines NAT-Gateways mit der Azure CLI und Testen des NAT-Diensts
 

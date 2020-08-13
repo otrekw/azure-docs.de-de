@@ -1,14 +1,14 @@
 ---
 title: Untersuchen von Azure-Ressourcen
 description: Hier erfahren Sie, wie Sie mit der Abfragesprache Resource Graph Ihre Ressourcen untersuchen und herausfinden, wie diese miteinander vernetzt sind.
-ms.date: 05/20/2020
+ms.date: 08/10/2020
 ms.topic: conceptual
-ms.openlocfilehash: 33bf457a57f7e62b9c99471bcb7676f62046f61d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2dcd27380cb67213c3c2c7a5776243b5e9a2e37f
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83654487"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056583"
 ---
 # <a name="explore-your-azure-resources-with-resource-graph"></a>Untersuchen Ihrer Azure-Ressourcen mit Resource Graph
 
@@ -207,8 +207,8 @@ Resources
 | where type =~ 'Microsoft.Compute/disks' and id == '/subscriptions/<subscriptionId>/resourceGroups/MyResourceGroup/providers/Microsoft.Compute/disks/ContosoVM1_OsDisk_1_9676b7e1b3c44e2cb672338ebe6f5166'
 ```
 
-Woher wussten wir vor dem Ausführen der Abfrage, dass für **type** jetzt **Microsoft.Compute/disks** festgelegt werden muss?
-Wenn Sie sich die vollständige ID ansehen, erkennen Sie, dass **/providers/Microsoft.Compute/disks/** Teil der Zeichenfolge ist. Dieses Zeichenfolgenfragment ist ein Hinweis darauf, nach welchem Typ gesucht werden muss. Alternativ kann auch der Grenzwert nach Typ entfernt und stattdessen nur nach dem ID-Feld gesucht werden. Da die ID eindeutig ist, wird nur ein Datensatz zurückgegeben, und dessen **type**-Eigenschaft enthält diese Information.
+Woher wussten wir vor dem Ausführen der Abfrage, dass für **type** jetzt **Microsoft.Compute/disks** festgelegt werden muss? Wenn Sie sich die vollständige ID ansehen, erkennen Sie, dass **/providers/Microsoft.Compute/disks/** Teil der Zeichenfolge ist.
+Dieses Zeichenfolgenfragment ist ein Hinweis darauf, nach welchem Typ gesucht werden muss. Alternativ kann auch der Grenzwert nach Typ entfernt und stattdessen nur nach dem ID-Feld gesucht werden. Da die ID eindeutig ist, wird nur ein Datensatz zurückgegeben, und dessen **type**-Eigenschaft enthält diese Information.
 
 > [!NOTE]
 > Damit dieses Beispiel funktioniert, müssen Sie das ID-Feld durch ein Ergebnis aus Ihrer Umgebung ersetzen.

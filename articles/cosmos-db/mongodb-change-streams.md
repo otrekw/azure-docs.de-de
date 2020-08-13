@@ -1,19 +1,19 @@
 ---
 title: Änderungsdatenströme in der API für MongoDB von Azure Cosmos-DB
 description: Erfahren Sie, wie Sie Änderungsdatenströme in der API für MongoDB von Azure Cosmos DB verwenden, um die an Ihren Daten vorgenommenen Änderungen abzurufen.
-author: srchi
+author: Rodrigossz
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: how-to
 ms.date: 06/04/2020
-ms.author: srchi
+ms.author: rosouz
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 845398744637d0e0092934248d4eb4533d7b9344
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: b13585b4a839bfcf6c0645c911e98d1f1885f3ca
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87415532"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88036707"
 ---
 # <a name="change-streams-in-azure-cosmos-dbs-api-for-mongodb"></a>Änderungsdatenströme in der API für MongoDB von Azure Cosmos-DB
 
