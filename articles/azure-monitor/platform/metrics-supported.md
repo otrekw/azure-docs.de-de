@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 07/16/2020
 ms.author: robb
 ms.subservice: metrics
-ms.openlocfilehash: 81e2abc1b4fd0c540b08f96e6b34c16fca3319f1
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 59df49d320b23686a3d053335ea2b95e98125b28
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87132015"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88135554"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Unterstützte Metriken von Azure Monitor
 
@@ -1267,6 +1267,20 @@ Weitere wichtige Informationen finden Sie unter [Übersicht über Azure Monitor-
 |requests/failed|Nein|Anforderungsfehler|Anzahl|Anzahl|Anzahl der als fehlerhaft markierten HTTP-Anforderungen. In den meisten Fällen sind dies Anforderungen mit dem Antwortcode >= 400 und ungleich 401.|request/performanceBucket, request/resultCode, operation/synthetic, cloud/roleInstance, cloud/roleName|
 |requests/rate|Nein|Serveranforderungsrate|Anzahl pro Sekunde|Average|Rate der Serveranforderungen pro Sekunde|request/performanceBucket, request/resultCode, operation/synthetic, cloud/roleInstance, request/success, cloud/roleName|
 |traces/count|Ja|Traces|Anzahl|Anzahl|Dokumentanzahl nachverfolgen|trace/severityLevel, operation/synthetic, cloud/roleName, cloud/roleInstance|
+
+## <a name="microsoftiotcentraliotapps"></a>Microsoft.IoTCentral/IoTApps
+
+|Metrik|Über Diagnoseeinstellungen exportierbar?|Metrikanzeigename|Einheit|Aggregationstyp|BESCHREIBUNG|Dimensionen|
+|---|---|---|---|---|---|---|
+|c2d.property.read.failure|Ja|Fehlerhafte Lesevorgänge für Geräteeigenschaften über IoT Central|Anzahl|Gesamt|Die Anzahl aller fehlerhaften Eigenschaftslesevorgänge, die über IoT Central initiiert wurden|Keine Dimensionen|
+|c2d.property.read.success|Ja|Erfolgreiche Lesevorgänge für Geräteeigenschaften über IoT Central|Anzahl|Gesamt|Die Anzahl aller erfolgreichen Eigenschaftslesevorgänge, die über IoT Central initiiert wurden|Keine Dimensionen|
+|c2d.property.update.failure|Ja|Fehlerhafte Aktualisierungen von Geräteeigenschaften über IoT Central|Anzahl|Gesamt|Die Anzahl aller fehlerhaften Eigenschaftsaktualisierungen, die über IoT Central initiiert wurden|Keine Dimensionen|
+|c2d.property.update.success|Ja|Erfolgreiche Aktualisierungen von Geräteeigenschaften über IoT Central|Anzahl|Gesamt|Die Anzahl aller erfolgreichen Eigenschaftsaktualisierungen, die über IoT Central initiiert wurden|Keine Dimensionen|
+|connectedDeviceCount|Nein|Gesamtzahl der verbundenen Geräte|Anzahl|Average|Anzahl von Geräten, die mit IoT Central verbunden sind|Keine Dimensionen|
+|d2c.property.read.failure|Ja|Fehlerhafte Lesevorgänge für Geräteeigenschaften über Geräte|Anzahl|Gesamt|Die Anzahl aller fehlerhaften Eigenschaftslesevorgänge, die von Geräten initiiert wurden|Keine Dimensionen|
+|d2c.property.read.success|Ja|Erfolgreiche Lesevorgänge für Geräteeigenschaften über Geräte|Anzahl|Gesamt|Die Anzahl aller erfolgreichen Eigenschaftslesevorgänge, die von Geräten initiiert wurden|Keine Dimensionen|
+|d2c.property.update.failure|Ja|Fehlerhafte Aktualisierungen von Geräteeigenschaften über Geräte|Anzahl|Gesamt|Die Anzahl aller fehlerhaften Eigenschaftsaktualisierungen, die über Geräte initiiert wurden|Keine Dimensionen|
+|d2c.property.update.success|Ja|Erfolgreiche Aktualisierungen von Geräteeigenschaften über Geräte|Anzahl|Gesamt|Die Anzahl aller erfolgreichen Eigenschaftsaktualisierungen, die über Geräte initiiert wurden|Keine Dimensionen|
 
 
 ## <a name="microsoftkeyvaultvaults"></a>Microsoft.KeyVault/vaults

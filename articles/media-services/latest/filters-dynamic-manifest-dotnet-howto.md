@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 06/03/2019
+ms.date: 08/11/2020
 ms.author: juliako
-ms.openlocfilehash: 2226d7a769caf049af30bbca81ca3079d72970b4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0d8a60d6c4b3fb66b46742fbd99e3a73a63fff45
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87023125"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88136081"
 ---
 # <a name="create-filters-with-media-services-net-sdk"></a>Erstellen von Filtern mit dem Media Services .NET SDK
 
@@ -36,7 +36,7 @@ In diesem Thema wird beschrieben, wie Sie mit dem Media Services .NET SDK einen 
 - Lesen Sie [Filter und dynamische Manifeste](filters-dynamic-manifest-overview.md).
 - [Erstellen Sie ein Media Services-Konto.](./create-account-howto.md) Merken Sie sich den Namen der Ressourcengruppe und den Namen des Media Services-Kontos. 
 - Beschaffen Sie die Informationen, die für den [Zugriff auf APIs](./access-api-howto.md) benötigt werden.
-- Lesen Sie [Hochladen, Codieren und Streamen mit Azure Media Services](stream-files-tutorial-with-api.md), um sich über den [Einstieg in die Verwendung des .NET SDK](stream-files-tutorial-with-api.md#start_using_dotnet) zu informieren.
+- Lesen Sie [Hochladen, Codieren und Streamen mit Azure Media Services](stream-files-tutorial-with-api.md), um sich über den [Einstieg in die Verwendung des .NET SDK](stream-files-tutorial-with-api.md#start-using-media-services-apis-with-net-sdk) zu informieren.
 
 ## <a name="define-a-filter"></a>Definieren eines Filters  
 
