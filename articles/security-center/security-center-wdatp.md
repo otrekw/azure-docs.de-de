@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/07/2020
 ms.author: memildin
-ms.openlocfilehash: d394f0bb72f353e65c48a564fa7187364eae8121
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: f8ed7dc2caf3ad471ea7d4bb2fc8213114aad109
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85970806"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089701"
 ---
 # <a name="microsoft-defender-advanced-threat-protection-with-azure-security-center"></a>Microsoft Defender Advanced Threat Protection mit Azure Security Center
 
@@ -44,7 +44,7 @@ Durch die Integration von Defender ATP in das Azure Security Center können Sie 
 
 ## <a name="platform-support"></a>Plattformunterstützung
 
-Microsoft Defender ATP in Security Center unterstützt die Erkennung unter Windows Server 2016-, 2012 R2- und 2008 R2 SP1. Für virtuelle Azure-Computer benötigen Sie ein Abonnement im Standard-Tarif, und für andere als Azure-VMs benötigen Sie den Standard-Tarif nur auf der Arbeitsbereichsebene.
+Microsoft Defender ATP in Security Center unterstützt die Erkennung unter Windows Server 2016-, 2012 R2- und 2008 R2 SP1. Für Azure-VMs benötigen Sie ein Abonnement im Standard-Tarif, und für Nicht-Azure-VMs benötigen Sie den Standard-Tarif nur auf Arbeitsbereichsebene.
 
 Die Serverendpunktüberwachung, die diese Integration verwendet, wurde für Office 365-GCC-Kunden deaktiviert.
 
@@ -59,8 +59,9 @@ Nach der Konfiguration können Sie den Speicherort der Daten nicht mehr ändern.
 
 Klicken Sie unter der Integration von Servern in Microsoft Defender ATP auf **Go to Azure Security Center to onboard servers** (Zum Azure Security Center wechseln, um Server zu integrieren), um Server in Security Center zu integrieren.
 
-1. Wählen Sie im Bereich **Onboarding** einen Arbeitsbereich aus (oder erstellen Sie einen Arbeitsbereich), in dem die Daten gespeichert werden sollen. <br>
-2. Wenn nicht alle Arbeitsbereiche angezeigt werden, kann dies auf fehlende Berechtigungen zurückzuführen sein. Stellen Sie daher sicher, dass Ihr Arbeitsbereich auf den Tarif „Standard“ von Azure Security Center eingestellt ist. Weitere Informationen finden Sie unter [Upgrade auf den Standard-Tarif von Azure Security Center für erhöhte Sicherheit](security-center-pricing.md).
+1. Wählen Sie im Bereich **Onboarding** einen Arbeitsbereich aus (oder erstellen Sie einen Arbeitsbereich), in dem die Daten gespeichert werden sollen.
+
+2. Wenn nicht alle Arbeitsbereiche angezeigt werden, kann dies auf fehlende Berechtigungen zurückzuführen sein. Stellen Sie daher sicher, dass Ihr Arbeitsbereich auf den Azure Security-Tarif „Standard“ festgelegt ist. Weitere Informationen finden Sie unter [Upgrade auf den Standard-Tarif von Azure Security Center für erhöhte Sicherheit](security-center-pricing.md).
     
 3. Wählen Sie **Server hinzufügen** aus, um Anweisungen zum Installieren des Log Analytics-Agents anzuzeigen. 
 

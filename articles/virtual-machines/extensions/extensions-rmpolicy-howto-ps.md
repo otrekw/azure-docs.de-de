@@ -1,5 +1,5 @@
 ---
-title: Verwenden der Azure Policy, um die Installation der VM-Erweiterung einzuschränken
+title: Verwenden der Azure Policy, um die Installation der VM-Erweiterung einzuschränken (Windows)
 description: Verwenden Sie Azure Policy, um Erweiterungsbereitstellungen einzuschränken.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 03/23/2018
 ms.author: akjosh
 ms.reviewer: cynthn
-ms.openlocfilehash: 96cd16c08421a4e365391c0db0b257f71a06551f
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: e4959c9dca909afde4bf6d351d79ecca1e4022a0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85919807"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87069752"
 ---
 # <a name="use-azure-policy-to-restrict-extensions-installation-on-windows-vms"></a>Verwenden von Azure Policy, um die Installation von Erweiterungen auf virtuellen Windows-Computern einzuschränken
 
@@ -98,7 +98,7 @@ Wenn Sie fertig sind, drücken die **STRG + O** und dann die **EINGABETASTE** zu
 
 ## <a name="create-the-policy"></a>Erstellen der Richtlinie
 
-Eine Richtliniendefinition ist ein Objekt, mit dem die Konfiguration gespeichert wird, die Sie verwenden möchten. Die Richtliniendefinition verwendet die Regeln und Parameterdateien zum Definieren der Richtlinie. Erstellen Sie eine Richtliniendefinition mithilfe des Cmdlets [New-AzPolicyDefinition](https://docs.microsoft.com/powershell/module/az.resources/new-azpolicydefinition).
+Eine Richtliniendefinition ist ein Objekt, mit dem die Konfiguration gespeichert wird, die Sie verwenden möchten. Die Richtliniendefinition verwendet die Regeln und Parameterdateien zum Definieren der Richtlinie. Erstellen Sie eine Richtliniendefinition mithilfe des Cmdlets [New-AzPolicyDefinition](/powershell/module/az.resources/new-azpolicydefinition).
 
  Die Richtlinienregeln und Parameter sind die Dateien, die Sie erstellt und als JSON-Dateien in Ihrer Cloud Shell gespeichert haben.
 
@@ -117,9 +117,9 @@ $definition = New-AzPolicyDefinition `
 
 ## <a name="assign-the-policy"></a>Zuweisen der Richtlinie
 
-In diesem Beispiel wird die Richtlinie mit [New-AzPolicyAssignment](https://docs.microsoft.com/powershell/module/az.resources/new-azpolicyassignment) einer Ressourcengruppe zugewiesen. Alle in der Ressourcengruppe **myResourceGroup** erstellten virtuellen Computer werden nicht in der Lage sein, die VM Access Agent- oder Custom Script-Erweiterungen zu installieren. 
+In diesem Beispiel wird die Richtlinie mit [New-AzPolicyAssignment](/powershell/module/az.resources/new-azpolicyassignment) einer Ressourcengruppe zugewiesen. Alle in der Ressourcengruppe **myResourceGroup** erstellten virtuellen Computer werden nicht in der Lage sein, die VM Access Agent- oder Custom Script-Erweiterungen zu installieren. 
 
-Rufen Sie mit dem Cmdlet [Get-AzSubscription | Format-Table](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription) Ihre Abonnement-ID ab, die Sie anstelle der im Beispiel angegebenen ID verwenden.
+Rufen Sie mit dem Cmdlet [Get-AzSubscription | Format-Table](/powershell/module/az.accounts/get-azsubscription) Ihre Abonnement-ID ab, die Sie anstelle der im Beispiel angegebenen ID verwenden.
 
 ```azurepowershell-interactive
 $scope = "/subscriptions/<subscription id>/resourceGroups/myResourceGroup"

@@ -5,18 +5,18 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 04/13/2020
+ms.date: 07/14/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aa25cffd84ee9255fed8bbaa0f2fb6adf762b47e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d6f5cabace81d53edf36ac6be0a2eb8830e6cc5f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84483781"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87035076"
 ---
 # <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>Häufig gestellte Fragen zu Azure Multi-Factor Authentication
 
@@ -56,6 +56,8 @@ Die optionalen Felder können im Multi-Factor Authentication-Server konfiguriert
 
 Das Authentifizierungsergebnis (Erfolg oder Ablehnung) und der Grund für etwaige Ablehnungen werden mit den Authentifizierungsdaten gespeichert. Diese Daten stehen in den Authentifizierungs- und Verwendungsberichten zur Verfügung.
 
+Weitere Informationen finden Sie unter [Datenresidenz und Kundendaten für Azure Multi-Factor Authentication](concept-mfa-data-residency.md).
+
 ### <a name="what-sms-short-codes-are-used-for-sending-sms-messages-to-my-users"></a>Welche SMS-Kurzcodes werden für das Senden von SMS-Nachrichten an meine Benutzer verwendet?
 
 In den USA verwenden wir die folgenden SMS-Kurzcodes:
@@ -70,7 +72,9 @@ In Kanada verwenden wir die folgenden SMS-Kurzcodes:
 * *759731*
 * *673801*
 
-Die Zustellung einheitlicher SMS- oder sprachbasierter Aufforderungen zur Multi-Factor Authentication an dieselbe Nummer kann nicht garantiert werden. Im Interesse unserer Benutzer können wir jederzeit Kurzcodes hinzuzufügen oder entfernen, wenn wir Routenanpassungen zur Verbesserung der Zustellbarkeit von SMS vornehmen. Wir unterstützt keine Kurzcodes für Länder/Regionen außerhalb der USA und Kanadas.
+Die Zustellung einheitlicher SMS- oder sprachbasierter Aufforderungen zur Multi-Factor Authentication an dieselbe Nummer kann nicht garantiert werden. Im Interesse unserer Benutzer können wir jederzeit Kurzcodes hinzuzufügen oder entfernen, wenn wir Routenanpassungen zur Verbesserung der Zustellbarkeit von SMS vornehmen.
+
+Wir unterstützt keine Kurzcodes für Länder/Regionen außerhalb der USA und Kanadas.
 
 ## <a name="billing"></a>Abrechnung
 

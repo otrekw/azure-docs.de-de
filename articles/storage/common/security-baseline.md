@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 4e10843eab8ac2ccbda3d6876f51c88a598d7139
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: a9c3264a9a9d6ae27eee6da4338fa6fd401da461
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371684"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534055"
 ---
 # <a name="azure-security-baseline-for-azure-storage"></a>Azure-Sicherheitsbaseline für Azure Storage
 
@@ -292,7 +292,7 @@ Aktivieren Sie zudem Advanced Threat Protection für Ihr Azure Storage-Konto. Ad
 
 ### <a name="32-change-default-passwords-where-applicable"></a>3.2: Ändern von Standardkennwörtern bei Bedarf
 
-**Leitfaden**: Azure Storage-Konten und Azure Active Directory unterstützen keine Standardkennwörter oder leeren Kennwörter. Azure Storage implementiert ein Zugriffssteuerungsmodell, das die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) von Azure sowie Shared Key und Shared Access Signature (SAS) unterstützt. Ein Merkmal der Shared-Key- und SAS-Authentifizierung ist, dass dem Aufrufer keine Identität zugeordnet wird und daher keine auf Sicherheitsprinzipalberechtigungen basierende Autorisierung erfolgen kann. 
+**Leitfaden**: Azure Storage-Konten und Azure Active Directory unterstützen keine Standardkennwörter oder leeren Kennwörter. Azure Storage implementiert ein Zugriffssteuerungsmodell, das die rollenbasierte Zugriffssteuerung von Azure (Azure RBAC) sowie Shared Key und Shared Access Signature (SAS) unterstützt. Ein Merkmal der Shared-Key- und SAS-Authentifizierung ist, dass dem Aufrufer keine Identität zugeordnet wird und daher keine auf Sicherheitsprinzipalberechtigungen basierende Autorisierung erfolgen kann. 
 
 - [Autorisierung des Datenzugriffs in Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-auth)
 
@@ -448,7 +448,7 @@ Erstellen Sie Diagnoseeinstellungen für Azure Active Directory-Benutzerkonten, 
 
 - [Durchführen des Onboardings für Azure Sentinel](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
 
-**Azure Security Center-Überwachung:** Zurzeit nicht verfügbar
+**Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
 
 **Verantwortlichkeit**: Kunde
 
@@ -536,7 +536,7 @@ Richtlinien für VNET-Dienstendpunkte ermöglichen es Ihnen zudem, ausgehenden v
 
 **Leitfaden**: Azure Active Directory (Azure AD) autorisiert Rechte für den Zugriff auf abgesicherte Ressourcen über die rollenbasierte Zugriffssteuerung. Azure Storage bietet eine Reihe in Azure integrierter Rollen mit allgemeinen Berechtigungssätzen für den Zugriff auf Blob- und Warteschlangendaten. 
 
-- [Zuweisen von RBAC-Rollen für Azure Storage-Konten](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal#assign-rbac-roles-using-the-azure-portal)
+- [Zuweisen von Azure-Rollen für Azure Storage-Konten](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal#assign-azure-roles-using-the-azure-portal)
 
 - [Verwenden des Azure Storage-Ressourcenanbieters für den Zugriff auf Verwaltungsressourcen](https://docs.microsoft.com/azure/storage/common/authorization-resource-provider)
 
@@ -878,7 +878,7 @@ Nutzen Sie die Empfehlungen des Azure Security Center als Konfigurationsbaseline
 
 ### <a name="710-implement-automated-configuration-monitoring-for-operating-systems"></a>7.10: Implementieren der automatisierten Konfigurationsüberwachung für Betriebssysteme
 
-**Anleitung:** Nicht zutreffend. Diese Empfehlung ist für Computeressourcen vorgesehen.
+**Leitfaden**: Nicht zutreffend. Diese Empfehlung ist für Computeressourcen vorgesehen.
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 

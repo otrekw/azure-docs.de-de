@@ -10,12 +10,12 @@ ms.date: 07/17/2020
 ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: common
-ms.openlocfilehash: 108dd37370290a68d620a61f84b4553ed59792ab
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 185992284e353c3e58104bc46296c1741fbca7d9
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077863"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87502170"
 ---
 # <a name="grant-limited-access-to-azure-storage-resources-using-shared-access-signatures-sas"></a>Gewähren von eingeschränktem Zugriff auf Azure Storage-Ressourcen mithilfe von SAS (Shared Access Signature)
 
@@ -58,7 +58,7 @@ Zum Signieren einer SAS stehen zwei Möglichkeiten zur Verfügung:
 
 - Mit einem *Benutzerdelegierungsschlüssel*, der mit Azure Active Directory-Anmeldeinformationen (Azure AD) erstellt wurde. Eine SAS für die Benutzerdelegierung wird mit dem Benutzerdelegierungsschlüssel signiert.
 
-    Um den Benutzerdelegierungsschlüssel abzurufen und die SAS zu erstellen, muss einem Azure AD-Sicherheitsprinzipal rollenbasierte Zugriffssteuerung (RBAC) zugewiesen werden, die die Aktion **Microsoft.Storage/storageAccounts/blobServices/generateUserDelegationKey** beinhaltet. Ausführliche Informationen zu RBAC-Rollen mit Berechtigungen zum Abrufen des Benutzerdelegierungsschlüssels finden Sie unter [Erstellen einer SAS für die Benutzerdelegierung (Rest-API)](/rest/api/storageservices/create-user-delegation-sas).
+    Um den Benutzerdelegierungsschlüssel abzurufen und die SAS zu erstellen, muss einem Azure AD-Sicherheitsprinzipal eine Azure-Rolle zugewiesen werden, die die Aktion **Microsoft.Storage/storageAccounts/blobServices/generateUserDelegationKey** beinhaltet. Ausführliche Informationen zu Azure-Rollen mit Berechtigungen zum Abrufen des Benutzerdelegierungsschlüssels finden Sie unter [Erstellen einer SAS für die Benutzerdelegierung (Rest-API)](/rest/api/storageservices/create-user-delegation-sas).
 
 - Mit dem Speicherkontoschlüssel. Sowohl eine Dienst-SAS als auch eine Konto-SAS werden mit dem Speicherkontoschlüssel signiert. Zum Erstellen einer SAS, die mit dem Kontoschlüssel signiert ist, muss eine Anwendung Zugriff auf den Kontoschlüssel besitzen.
 

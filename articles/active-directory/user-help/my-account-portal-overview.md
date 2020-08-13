@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 04/20/2020
+ms.date: 07/29/2020
 ms.author: curtand
-ms.openlocfilehash: 878fbb81e05db058aa015f8b4a7eae42e8cfea2e
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: da00d77138eb3ff737c26d7fa52ab0bb56ec6ae4
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83742206"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87422408"
 ---
 # <a name="what-is-the-my-account-portal"></a>Was ist das Portal „Mein Konto“?
 
@@ -33,7 +33,7 @@ Sie können auf das Portal **Mein Konto** (https://myaccount.microsoft.com) in d
 ![Portal „Mein Konto“, Übersichtsseite](media/my-account-portal/my-account-portal-overview.png)
 
 >[!Important]
->Dieser Artikel richtet sich an Benutzer, die das Portal „Mein Konto“ aufrufen möchten, um die Sicherheitsinformation, Geräteinformationen, das Kennwort, verbundene Organisationen, den Datenschutz oder frühere Anmeldeinformationen zu aktualisieren. Wenn Sie Administrator sind und Informationen zum Aktivieren der Authentifizierung und anderer Azure AD-Funktionen (Azure Active Directory) für Ihre Mitarbeiter oder andere Benutzer benötigen, sehen Sie sich die [Dokumentation zu Azure Active Directory](https://docs.microsoft.com/azure/active-directory/) an.
+>Dieser Artikel richtet sich an Benutzer, die das Portal „Mein Konto“ aufrufen möchten, um die Sicherheitsinformationen, Geräteinformationen, das Kennwort, verbundene Organisationen, Spracheinstellungen, den Datenschutz oder frühere Anmeldeinformationen zu aktualisieren. Wenn Sie Administrator sind und Informationen zum Aktivieren der Authentifizierung und anderer Azure AD-Funktionen (Azure Active Directory) für Ihre Mitarbeiter oder andere Benutzer benötigen, sehen Sie sich die [Dokumentation zu Azure Active Directory](https://docs.microsoft.com/azure/active-directory/) an.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -46,6 +46,8 @@ Sie können auf das Portal **Mein Konto** (https://myaccount.microsoft.com) in d
 - Anzeigen Ihrer [Anmeldeaktivitäten](my-account-portal-sign-ins-page.md)
 
 - Anzeigen, wie Ihre Organisation [Ihre datenschutzrelevanten Daten verwendet](my-account-portal-privacy-page.md)
+
+- Ändern der [Portaleinstellungen für „Mein Konto“](my-account-portal-settings.md)
 
 ## <a name="related-microsoft-office-content"></a>Verwandte Microsoft Office-Inhalte
 

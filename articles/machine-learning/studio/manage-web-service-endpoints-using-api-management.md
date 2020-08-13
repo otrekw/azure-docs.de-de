@@ -1,6 +1,5 @@
 ---
-title: Verwalten von Webdiensten mithilfe von API Management
-titleSuffix: ML Studio (classic) - Azure
+title: 'ML Studio (Classic): Verwalten von Webdiensten mithilfe von API Management – Azure'
 description: Diese Leitfaden zeigt, wie Sie Azure ML-Webdienste mithilfe von API Management verwalten. Verwalten Sie Ihre REST-API-Endpunkte, indem Sie Benutzerzugriff, Nutzungseinschränkungen und Dashboardüberwachung definieren.
 services: machine-learning
 ms.service: machine-learning
@@ -10,14 +9,17 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 11/03/2017
-ms.openlocfilehash: c397c52b39cd8056122424a5bcf6736edcfdbaa5
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 08fcf3540b2f8677f3fbfff49f21f99062d0ca40
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086822"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87433265"
 ---
 # <a name="manage-azure-machine-learning-studio-classic-web-services-using-api-management"></a>Verwalten von (klassischen) Azure Machine Learning Studio-Webdiensten mit API Management
+
+**GILT FÜR:** ![Ja](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (Classic) ![Nein](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)
+
 
 ## <a name="overview"></a>Übersicht
 Dieser Leitfaden beschreibt die ersten Schritte zur Verwaltung Ihrer (klassischen) Azure Machine Learning Studio-Webdienste mit API Management.

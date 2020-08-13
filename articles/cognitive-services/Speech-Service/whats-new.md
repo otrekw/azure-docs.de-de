@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/12/2020
 ms.author: erhopf
-ms.openlocfilehash: 017de2f66d6e57c9081e0d1ed53232a4634d4f4f
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 4c448b8ed50863457da69db3f74b959f04e26ec1
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84740272"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87131853"
 ---
 # <a name="speech-service-whats-new-in-docs"></a>Sprachdienst: Neues in der Dokumentation
 
@@ -56,7 +56,7 @@ Informationen zu Updates des Sprachdiensts, des Speech SDK, des Speech Devices S
 
 ### <a name="github-issues-opened-in-may"></a>Neue GitHub-Issues im Mai
 
-Die folgenden Issues wurden im Juni eröffnet. In der nachstehenden Tabelle wird der Benutzer aufgelistet, der das Issue eröffnet hat, das Datum der Eröffnung sowie der Status des Issue.  
+Die folgenden Issues wurden im Mai eröffnet. In der nachstehenden Tabelle wird der Benutzer aufgelistet, der das Issue eröffnet hat, das Datum der Eröffnung sowie der Status des Issue.  
 
 Diese Tabelle wird monatlich aktualisiert und enthält nur die im Mai eröffneten Issues.  
 

@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 00dfac7c3036c4fd457c5d3a6bb4eb7bd4e56998
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cb119ef0ffd4da4dc524c9d3c0a88b94e2251142
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84731323"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423557"
 ---
 # <a name="download-a-list-of-users-in-azure-active-directory-portal"></a>Herunterladen einer Liste von Benutzern im Azure Active Directory-Portal
 
@@ -72,7 +72,7 @@ Um die Liste der Benutzer aus dem Azure AD Admin Center herunterzuladen, müsse
 
 Sie können den Status Ihrer ausstehenden Massenanforderungen auf der Seite **Ergebnisse von Massenvorgängen** anzeigen.
 
-[![](media/users-bulk-download/bulk-center.png "Check status in the Bulk Operations Results page")](media/users-bulk-download/bulk-center.png#lightbox)
+[![Überprüfen des Status auf der Seite „Ergebnisse von Massenvorgängen“](media/users-bulk-download/bulk-center.png)](media/users-bulk-download/bulk-center.png#lightbox)
 
 ## <a name="bulk-download-service-limits"></a>Grenzwerte für den Massendownloaddienst
 

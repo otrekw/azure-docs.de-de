@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 05/20/2020
-ms.openlocfilehash: 5f159ffcea0aa88f354ae503be96a5c571c10adb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 26df3c49e44dd79d87a1e0a982ceb8133f425447
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85806831"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423319"
 ---
 # <a name="partitioning-in-azure-cosmos-db-cassandra-api"></a>Partitionierung in der Cassandra-API von Azure Cosmos DB
 
@@ -31,7 +31,7 @@ Apache Cassandra empfiehlt für die Datenmenge, die in einer Partition gespeiche
 
 In Azure Cosmos DB besteht jede physische Partition aus einem Satz von Replikaten (auch als Replikatgruppen bezeichnet), wobei jede Partition mindestens 4 Replikate aufweist. Bei Apache Cassandra können Sie im Gegensatz dazu zwar einen Replikationsfaktor von 1 festlegen, dies führt jedoch zu einer geringeren Verfügbarkeit, wenn der einzige Knoten mit den Daten ausfällt. In der Cassandra-API lautet der Replikationsfaktor immer 4 (Quorum von 3). Azure Cosmos DB verwaltet Replikatgruppen automatisch, während sie in Apache Cassandra mithilfe verschiedener Tools verwaltet werden müssen. 
 
-Apache Cassandra verfügt über ein Konzept von Token, bei denen es sich um Hashwerte von Partitionsschlüsseln handelt. Die Token basieren auf einem murmur3-64-Byte-Hash mit Werten im Bereich von –2^63 bis –2^63 – 1. Dieser Bereich wird in Apache Cassandra meist als „Tokenring“ bezeichnet. Der Tokenring ist in Tokenbereiche unterteilt, und diese Bereiche werden unter den Knoten in einem nativen Apache Cassandra-Cluster aufgeteilt. In Azure Cosmos DB wird die Partitionierung auf ähnliche Weise implementiert, mit der Ausnahme, dass ein anderer Hashalgorithmus und ein größerer Tokenring verwendet wird. 
+Apache Cassandra verfügt über ein Konzept von Token, bei denen es sich um Hashwerte von Partitionsschlüsseln handelt. Die Token basieren auf einem murmur3-64-Byte-Hash mit Werten im Bereich von –2^63 bis –2^63 – 1. Dieser Bereich wird in Apache Cassandra meist als „Tokenring“ bezeichnet. Der Tokenring ist in Tokenbereiche unterteilt, und diese Bereiche werden unter den Knoten in einem nativen Apache Cassandra-Cluster aufgeteilt. In Azure Cosmos DB wird die Partitionierung auf ähnliche Weise implementiert, mit der Ausnahme, dass ein anderer Hashalgorithmus und ein größerer interner Tokenring verwendet wird. Extern machen wir jedoch denselben Tokenbereich verfügbar wie Apache Cassandra, d. h. -2^63 to -2^63 - 1.
 
 
 ## <a name="primary-key"></a>Primary key (Primärschlüssel)

@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: 'Erstellen eines Azure Arc-fähigen Onboardingdienstprinzipals '
 keywords: Kubernetes, Arc, Azure, Container
-ms.openlocfilehash: 3c95c6bb85c7c1bc097b7751a560a658863c0afd
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 02689dba32c8cc91e4a4a4de4dee98bc990b4dd6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83725600"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87050070"
 ---
 # <a name="create-an-azure-arc-enabled-onboarding-service-principal-preview"></a>Erstellen eines Azure Arc-fähigen Onboardingdienstprinzipals (Vorschauversion)
 
@@ -45,7 +45,7 @@ az ad sp create-for-RBAC --skip-assignment --name "https://azure-arc-for-k8s-onb
 
 ## <a name="assign-permissions"></a>Zuweisen von Berechtigungen
 
-Nachdem Sie den neuen Dienstprinzipal erstellt haben, weisen Sie ihm die Rolle „Azure Arc for Kubernetes Onboarding“ zu. Dabei handelt es sich um eine integrierte Azure-Rolle mit eingeschränkten Berechtigungen, die dem Prinzipal ausschließlich das Registrieren von Clustern in Azure gestattet. Der Prinzipal kann keine anderen Cluster oder Ressourcen im Abonnement aktualisieren, löschen oder ändern.
+Nachdem Sie den neuen Dienstprinzipal erstellt haben, weisen Sie ihm die Rolle „Kubernetes-Cluster – Azure Arc-Onboarding“ zu. Dabei handelt es sich um eine integrierte Azure-Rolle mit eingeschränkten Berechtigungen, die dem Prinzipal ausschließlich das Registrieren von Clustern in Azure gestattet. Der Prinzipal kann keine anderen Cluster oder Ressourcen im Abonnement aktualisieren, löschen oder ändern.
 
 Aufgrund der begrenzten Möglichkeiten können Kunden diesen Prinzipal problemlos wiederverwenden, um mehrere Cluster zu integrieren.
 

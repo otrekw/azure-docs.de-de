@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 01/08/2020
-ms.openlocfilehash: 31dfae60b1967e221e294195f66bb7fe59a15e64
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 69926671730e41845cd28df3108ec86b24a57075
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84187520"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448527"
 ---
 # <a name="network-topologies-for-azure-sql-managed-instance-migrations-using-azure-database-migration-service"></a>Netzwerktopologien für Migrationen von verwalteten Azure SQL-Instanzen mithilfe von Azure Database Migration Service
 
@@ -39,7 +39,7 @@ Verwenden Sie diese Topologie, wenn die verwaltete Azure SQL-Instanz mit Ihrem l
 Verwenden Sie diese Netzwerktopologie, wenn Ihre Umgebung mindestens eines der folgenden Szenarien erfordert:
 
 - Die verwaltete SQL-Instanz ist von der lokalen Konnektivität isoliert, aber die Azure Database Migration Service-Instanz ist mit dem lokalen Netzwerk verbunden.
-- Es gelten RBAC-Richtlinien (rollenbasierte Zugriffssteuerung), und Sie müssen den Benutzerzugriff auf das Abonnement beschränken, unter dem die verwaltete SQL-Instanz gehostet wird.
+- Es gelten rollenbasierte Azure-Richtlinien (rollenbasierte Azure-Zugriffssteuerung), und Sie müssen den Benutzerzugriff auf das Abonnement beschränken, unter dem die verwaltete SQL-Instanz gehostet wird.
 - Die für die verwaltete SQL-Instanz und Azure Database Migration Service verwendeten virtuellen Netzwerke befinden sich in unterschiedlichen Abonnements.
 
 ![Netzwerktopologie für eine vom lokalen Netzwerk isolierte verwaltete Instanz](media/resource-network-topologies/mi-isolated-workload.png)
@@ -64,7 +64,7 @@ Verwenden Sie diese Topologie, wenn die SQL Server-Quelle auf einer Azure-VM geh
 Verwenden Sie diese Netzwerktopologie, wenn Ihre Umgebung mindestens eines der folgenden Szenarien erfordert:
 
 - Die verwaltete SQL-Instanz wird in einem isolierten virtuellen Netzwerk bereitgestellt.
-- Es gelten RBAC-Richtlinien (rollenbasierte Zugriffssteuerung), und Sie müssen den Benutzerzugriff auf das Abonnement beschränken, unter dem die verwaltete SQL-Instanz gehostet wird.
+- Es gelten rollenbasierte Azure-Richtlinien (rollenbasierte Azure-Zugriffssteuerung), und Sie müssen den Benutzerzugriff auf das Abonnement beschränken, unter dem SQL Managed Instance gehostet wird.
 - Die für die verwaltete SQL-Instanz und Azure Database Migration Service verwendeten virtuellen Netzwerke befinden sich in unterschiedlichen Abonnements.
 
 ![Netzwerktopologie für Cloud-zu-Cloud-Migrationen mit einem isolierten VNet](media/resource-network-topologies/cloud-to-cloud-isolated.png)

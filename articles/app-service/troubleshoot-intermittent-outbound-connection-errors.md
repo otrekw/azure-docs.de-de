@@ -4,15 +4,15 @@ description: Beheben von zeitweiligen Verbindungsfehlern und zugehörigen Leistu
 author: v-miegge
 manager: barbkess
 ms.topic: troubleshooting
-ms.date: 03/24/2020
+ms.date: 07/24/2020
 ms.author: ramakoni
 ms.custom: security-recommendations
-ms.openlocfilehash: 704c6b026ab656ce52b34e5ac70ba7e2087ccbcd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5e1f2108c5607917c77330f362952f960e57e03a
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85252439"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87447906"
 ---
 # <a name="troubleshooting-intermittent-outbound-connection-errors-in-azure-app-service"></a>Beheben zeitweiliger Fehler bei ausgehenden Verbindungen in Azure App Service
 
@@ -37,6 +37,8 @@ Eine Hauptursache für diese Symptome ist, dass die Anwendungsinstanz keine neue
 Wenn Anwendungen oder Funktionen schnell eine neue Verbindung öffnen, können Sie ihr vorab zugewiesenes Kontingent von 128 Ports schnell erschöpfen. Sie werden dann blockiert, bis ein neuer SNAT-Port verfügbar wird, entweder durch dynamisches Zuweisen zusätzlicher SNAT-Ports oder durch Wiederverwendung eines freigegebenen SNAT-Ports. Bei Anwendungen oder Funktionen, die blockiert werden, weil keine neuen Verbindungen erstellt werden können, tritt mindestens eines der Probleme auf, die im Abschnitt **Symptome** dieses Artikels beschrieben werden.
 
 ## <a name="avoiding-the-problem"></a>Vermeiden des Problems
+
+Wenn Ihr Ziel ein Azure-Dienst ist, der Dienstendpunkte unterstützt, können Sie Probleme durch eine Überlastung von SNAT-Ports vermeiden, indem Sie die [regionale VNET-Integration](https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet) und Dienstendpunkte oder private Endpunkte verwenden. Wenn Sie die regionale VNET-Integration verwenden und Endpunkte im Integrationssubnetz platzieren, gelten für den ausgehenden Datenverkehr Ihrer App an diese Dienste keine Einschränkungen für ausgehende SNAT-Ports. Ebenso treten keine Probleme bei ausgehenden SNAT-Ports an dieses Ziel auf, wenn Sie die regionale VNET-Integration und private Endpunkte verwenden. 
 
 Das Vermeiden des SNAT-Portproblems bedeutet, das wiederholte Erstellen neuer Verbindungen mit demselben Host und Port zu vermeiden.
 

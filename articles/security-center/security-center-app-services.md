@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 01/27/2019
 ms.author: memildin
-ms.openlocfilehash: 2d81e1a1218add504e1e35015276b6924da0e3e3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 35b91aab8c228fc7dced5dfe06e33f939f4634f5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77616482"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080793"
 ---
 # <a name="protect-your-azure-app-service-web-apps-and-apis"></a>Schützen Ihrer Azure App Service-Web-Apps und -APIs
 
@@ -38,7 +38,7 @@ Security Center nutzt die Skalierung der Cloud und die Sichtbarkeit von Azure al
 2. Navigieren Sie zu **Preise und Einstellungen**, und wählen Sie ein Abonnement aus.
 3. Schalten Sie Ihren Tarif unter **Tarif** in der Zeile **App Service** auf **Aktiviert** um.
 
-    [![Aktivieren von App-Diensten in Ihrem Abonnement zum Standard-Tarif](media/security-center-app-services/app-services-toggle.png)](media/security-center-app-services/app-services-toggle.png#lightbox)
+    [![Aktivieren von App-Diensten in Ihrem Abonnement mit Standard-Tarif](media/security-center-app-services/app-services-toggle.png)](media/security-center-app-services/app-services-toggle.png#lightbox)
 
 
 >[!NOTE]

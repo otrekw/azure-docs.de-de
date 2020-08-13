@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/23/2020
 ms.author: memildin
-ms.openlocfilehash: a7ff8a0cf23bf0701a7cc35cb137ec0965f295ec
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 3d63ccc2c47bca9410b5b9105b90aa1f0cf5854a
+ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223974"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87439277"
 ---
 # <a name="prevent-dangling-dns-entries-and-avoid-subdomain-takeover"></a>Verhindern verwaister DNS-Einträge und Vermeiden von Unterdomänenübernahmen
 
@@ -120,20 +120,80 @@ Entwickler und Betriebsteams müssen häufig Bereinigungsprozesse durchführen, 
         - Vorhanden – fragen Sie die DNS-Zonen in Bezug auf Ressourcen ab, die auf Azure-Unterdomänen wie *.azurewebsites.net oder *.cloudapp.azure.com verweisen (siehe dazu [diese Referenzliste](azure-domains.md)).
         - In Ihrem Besitz – stellen Sie sicher, dass Sie alle Ressourcen besitzen, auf die Ihre DNS-Unterdomänen verweisen.
 
-    - Pflegen Sie einen Dienstkatalog mit Ihren Azure-FQDN-Endpunkten (Fully Qualified Domain Name, vollqualifizierter Domänenname) und den Anwendungsbesitzern. Zum Erstellen des Dienstkatalogs führen Sie die folgende Azure Resource Graph-Abfrage (ARG) mit den Parametern aus der folgenden Tabelle aus:
-    
+    - Pflegen Sie einen Dienstkatalog mit Ihren Azure-FQDN-Endpunkten (Fully Qualified Domain Name, vollqualifizierter Domänenname) und den Anwendungsbesitzern. Führen Sie zum Erstellen des Dienstkatalogs das folgende Azure Resource Graph-Abfrageskript aus. Das Skript projiziert die FQDN-Endpunktinformationen der Ressourcen, auf die Sie Zugriff haben, und gibt sie in einer CSV-Datei aus. Wenn Sie Zugriff auf alle Abonnements Ihres Mandanten haben, berücksichtigt das Skript all diese Abonnements, wie im folgenden Beispielskript gezeigt. Um die Ergebnisse auf eine bestimmte Gruppe von Abonnements zu beschränken, bearbeiten Sie das Skript wie gezeigt.
+
         >[!IMPORTANT]
-        > **Berechtigungen** – führen Sie die Abfrage als Benutzer mit Zugriff auf alle Ihre Azure-Abonnements aus. 
+        > **Berechtigungen**: Führen Sie die Abfrage als Benutzer aus, der Zugriff auf all Ihre Azure-Abonnements hat. 
         >
-        > **Einschränkungen** – bei Azure Resource Graph gibt es Einschränkungen in Bezug auf die Drosselung und die Auslagerung, die Sie beachten müssen, wenn Sie über eine große Azure-Umgebung verfügen. [Erfahren Sie mehr](https://docs.microsoft.com/azure/governance/resource-graph/concepts/work-with-data) über das Arbeiten mit großen Datasets von Azure-Ressourcen.  
+        > **Einschränkungen** – bei Azure Resource Graph gibt es Einschränkungen in Bezug auf die Drosselung und die Auslagerung, die Sie beachten müssen, wenn Sie über eine große Azure-Umgebung verfügen. [Erfahren Sie mehr](https://docs.microsoft.com/azure/governance/resource-graph/concepts/work-with-data) über das Arbeiten mit großen Datasets von Azure-Ressourcen. Das folgende Beispielskript verwendet eine Batchverarbeitung für Abonnements, um diese Einschränkungen zu vermeiden.
 
         ```powershell
-        Search-AzGraph -Query "resources | where type == '<ResourceType>' | 
-        project tenantId, subscriptionId, type, resourceGroup, name, 
-        endpoint = <FQDNproperty>"
-        ``` 
+        
+            # Fetch the full array of subscription IDs.
+            $subscriptions = Get-AzSubscription
 
-        Dienstparameter für die ARG-Abfrage:
+            $subscriptionIds = $subscriptions.Id
+                   # Output file path and names
+                   $date = get-date
+                   $fdate = $date.ToString("MM-dd-yyy hh_mm_ss tt")
+                   $fdate #log to console
+                   $rpath = [Environment]::GetFolderPath("MyDocuments") + '\' # Feel free to update your path.
+                   $rname = 'Tenant_FQDN_Report_' + $fdate + '.csv' # Feel free to update the document name.
+                   $fpath = $rpath + $rname
+                   $fpath #This is the output file of FQDN report.
+
+            # query
+            $query = "where type in ('microsoft.network/frontdoors',
+                                    'microsoft.storage/storageaccounts',
+                                    'microsoft.cdn/profiles/endpoints',
+                                    'microsoft.network/publicipaddresses',
+                                    'microsoft.network/trafficmanagerprofiles',
+                                    'microsoft.containerinstance/containergroups',
+                                    'microsoft.apimanagement/service',
+                                    'microsoft.web/sites',
+                                    'microsoft.web/sites/slots')
+                        | extend FQDN = case(
+                            type =~ 'microsoft.network/frontdoors', properties['cName'],
+                            type =~ 'microsoft.storage/storageaccounts', parse_url(tostring(properties['primaryEndpoints']['blob'])).Host,
+                            type =~ 'microsoft.cdn/profiles/endpoints', properties['hostName'],
+                            type =~ 'microsoft.network/publicipaddresses', properties['dnsSettings']['fqdn'],
+                            type =~ 'microsoft.network/trafficmanagerprofiles', properties['dnsConfig']['fqdn'],
+                            type =~ 'microsoft.containerinstance/containergroups', properties['ipAddress']['fqdn'],
+                            type =~ 'microsoft.apimanagement/service', properties['hostnameConfigurations']['hostName'],
+                            type =~ 'microsoft.web/sites', properties['defaultHostName'],
+                            type =~ 'microsoft.web/sites/slots', properties['defaultHostName'],
+                            '')
+                        | project id, ['type'], name, FQDN
+                        | where isnotempty(FQDN)";
+
+            # Paging helper cursor
+            $Skip = 0;
+            $First = 1000;
+
+            # If you have large number of subscriptions, process them in batches of 2,000.
+            $counter = [PSCustomObject] @{ Value = 0 }
+            $batchSize = 2000
+            $response = @()
+
+            # Group the subscriptions into batches.
+            $subscriptionsBatch = $subscriptionIds | Group -Property { [math]::Floor($counter.Value++ / $batchSize) }
+
+            # Run the query for each subscription batch with paging.
+            foreach ($batch in $subscriptionsBatch)
+            { 
+                $Skip = 0; #Reset after each batch.
+
+                $response += do { Start-Sleep -Milliseconds 500;   if ($Skip -eq 0) {$y = Search-AzGraph -Query $query -First $First -Subscription $batch.Group ; } `
+                else {$y = Search-AzGraph -Query $query -Skip $Skip -First $First -Subscription $batch.Group } `
+                $cont = $y.Count -eq $First; $Skip = $Skip + $First; $y; } while ($cont)
+            }
+
+            # View the completed results of the query on all subscriptions.
+            $response | Export-Csv -Path $fpath -Append 
+
+        ```
+
+        Hier finden Sie eine Liste der Typen und zugehörigen `FQDNProperty`-Werte, wie in der obigen Resource Graph-Abfrage angegeben:
 
         |Ressourcenname  | `<ResourceType>`  | `<FQDNproperty>`  |
         |---------|---------|---------|
@@ -146,23 +206,6 @@ Entwickler und Betriebsteams müssen häufig Bereinigungsprozesse durchführen, 
         |Azure API Management|microsoft.apimanagement/service|properties.hostnameConfigurations.hostName|
         |Azure App Service|microsoft.web/sites|properties.defaultHostName|
         |Azure App Service – Slots|microsoft.web/sites/slots|properties.defaultHostName|
-
-        
-        **Beispiel 1** – diese Abfrage gibt die Ressourcen aus Azure App Service zurück: 
-
-        ```powershell
-        Search-AzGraph -Query "resources | where type == 'microsoft.web/sites' | 
-        project tenantId, subscriptionId, type, resourceGroup, name, 
-        endpoint = properties.defaultHostName"
-        ```
-        
-        **Beispiel 2** – diese Abfrage kombiniert mehrere Ressourcentypen, um die Ressourcen aus Azure App Service **und** Azure App Service zurückzugeben – Slots:
-
-        ```powershell
-        Search-AzGraph -Query "resources | where type in ('microsoft.web/sites', 
-        'microsoft.web/sites/slots') | project tenantId, subscriptionId, type, 
-        resourceGroup, name, endpoint = properties.defaultHostName"
-        ```
 
 
 - **Erstellen von Verfahren zur Korrektur:**

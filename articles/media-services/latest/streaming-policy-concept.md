@@ -11,16 +11,16 @@ ms.workload: ''
 ms.topic: article
 ms.date: 05/28/2019
 ms.author: juliako
-ms.openlocfilehash: 9c80056fd62173ff1e5a6ed3979adba71b7706cc
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 30164e1af1948f86c68e102f4d348674ea931e7b
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80582755"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87544012"
 ---
 # <a name="streaming-policies"></a>Streamingrichtlinien
 
-In Azure Media Services v3 können Sie mithilfe von [Streamingrichtlinien](https://docs.microsoft.com/rest/api/media/streamingpolicies) Streamingprotokolle und Verschlüsselungsoptionen für Ihre [Streaminglocator](streaming-locators-concept.md) definieren. Media Services v3 bietet einige vordefinierte Streamingrichtlinien, die Sie direkt für Tests oder in der Produktion verwenden können. 
+In Azure Media Services v3 können Sie mithilfe von [Streamingrichtlinien](/rest/api/media/streamingpolicies) Streamingprotokolle und Verschlüsselungsoptionen für Ihre [Streaminglocator](streaming-locators-concept.md) definieren. Media Services v3 bietet einige vordefinierte Streamingrichtlinien, die Sie direkt für Tests oder in der Produktion verwenden können. 
 
 Die folgenden vordefinierten Streamingrichtlinien sind aktuell verfügbar:<br/>
 * „Predefined_DownloadOnly“
@@ -40,15 +40,15 @@ Die folgenden „Entscheidungsstruktur“ hilft Ihnen bei der Auswahl einer vord
 
 Klicken Sie auf Bild, um es in voller Größe anzeigen.  
 
-<a href="./media/streaming-policy/large.png" target="_blank"><img src="./media/streaming-policy/large.png"></a> 
+[![Diagramm mit einer Entscheidungsstruktur, die Sie bei der Auswahl einer vordefinierten Streamingrichtlinie für Ihr Szenario unterstützen soll.](./media/streaming-policy/large.png)](./media/streaming-policy/large.png#lightbox)
 
 Werden Ihre Inhalte verschlüsselt, müssen Sie eine [Richtlinie für Inhaltsschlüssel](content-key-policy-concept.md) erstellen. Zum Streamen oder Herunterladen in Klartext ist die **Richtlinie für Inhaltsschlüssel** nicht erforderlich. 
 
-Wenn Sie besondere Anforderungen haben (wenn Sie z. B. verschiedene Protokolle angeben möchten oder einen benutzerdefinierten Schlüsselbereitstellungsdienst oder eine klare Audiospur verwenden müssen), können Sie eine benutzerdefinierte Streamingrichtlinie [erstellen](https://docs.microsoft.com/rest/api/media/streamingpolicies/create). 
+Wenn Sie besondere Anforderungen haben (wenn Sie z. B. verschiedene Protokolle angeben möchten oder einen benutzerdefinierten Schlüsselbereitstellungsdienst oder eine klare Audiospur verwenden müssen), können Sie eine benutzerdefinierte Streamingrichtlinie [erstellen](/rest/api/media/streamingpolicies/create). 
 
 ## <a name="get-a-streaming-policy-definition"></a>Abrufen einer Streamingrichtliniendefinition  
 
-Wenn Sie die Definition einer Streamingrichtlinie anzeigen möchten, verwenden Sie [Get](https://docs.microsoft.com/rest/api/media/streamingpolicies/get) und geben den Namen der Richtlinie an. Beispiel:
+Wenn Sie die Definition einer Streamingrichtlinie anzeigen möchten, verwenden Sie [Get](/rest/api/media/streamingpolicies/get) und geben den Namen der Richtlinie an. Beispiel:
 
 ### <a name="rest"></a>REST
 

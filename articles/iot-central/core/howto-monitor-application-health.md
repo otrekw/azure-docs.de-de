@@ -7,14 +7,17 @@ ms.date: 05/14/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 664819b209aeb09093ce8711456b86ff4d3e8949
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.openlocfilehash: d246adbf8e87d5503bc19bcd497dd00370c0a867
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84249475"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87001908"
 ---
 # <a name="monitor-the-overall-health-of-the-devices-connected-to-an-iot-central-application"></a>Überwachen der Gesamtintegrität der mit einer IoT Central-Anwendung verbundenen Geräte
+
+> [!NOTE]
+> Metriken sind nur für IoT Central-Anwendungen der Version 3 verfügbar. Informationen zum Überprüfen Ihrer Anwendungsversion finden Sie unter [Über Ihre Anwendung](./howto-get-app-info.md).
 
 *Dieser Artikel gilt für Bediener und Administratoren.*
 
@@ -35,25 +38,15 @@ So zeigen Sie IoT Central-Metriken im Portal an:
 1. Navigieren Sie im Portal zu Ihrer IoT Central-Anwendungsressource. IoT Central-Ressourcen befinden sich standardmäßig in der Ressourcengruppe **IOTC**.
 1. Wenn Sie ein Diagramm aus den Metriken Ihrer Anwendung erstellen möchten, wählen Sie im Abschnitt **Überwachung** die Option **Metriken** aus.
 
+![Azure-Metriken](media/howto-monitor-application-health/metrics.png)
+
 ### <a name="azure-portal-permissions"></a>Azure-Portalberechtigungen
 
 Der Zugriff auf Metriken im Azure-Portal wird von der [rollenbasierten Zugriffssteuerung in Azure](../../role-based-access-control/overview.md) verwaltet. Verwenden Sie das Azure-Portal, um der/dem IoT Central-Anwendung/-Ressourcengruppe/-Abonnement Benutzer hinzuzufügen, damit ihnen Zugriff gewährt wird. Sie müssen einen Benutzer im Portal auch dann hinzufügen, wenn er der IoT Central-Anwendung bereits hinzugefügt wurde. Verwenden Sie [integrierte Azure-Rollen](../../role-based-access-control/built-in-roles.md) für eine präzisere Zugriffssteuerung.
 
 ## <a name="iot-central-metrics"></a>IoT Central-Metriken
 
-In der folgenden Tabelle werden die Metriken beschrieben, die für IoT Central zurzeit verfügbar sind:
-
-| Metrik | Anzeigename der Metrik | Einheit | Aggregationstyp | BESCHREIBUNG |
-|--------|---------------------|------|------------------|-------------|
-| connectedDeviceCount         | Gesamtzahl der verbundenen Geräte                              | Anzahl  | Gesamt             | Anzahl von Geräten, die mit IoT Central verbunden sind                               |
-| c2d.property.read.success    | Erfolgreiche Lesevorgänge für Geräteeigenschaften über IoT Central    | Anzahl  | Gesamt             | Die Anzahl aller erfolgreichen Eigenschaftslesevorgänge, die über IoT Central initiiert wurden    |
-| c2d.property.read.failure    | Fehlerhafte Lesevorgänge für Geräteeigenschaften über IoT Central        | Anzahl  | Gesamt             | Die Anzahl aller fehlerhaften Eigenschaftslesevorgänge, die über IoT Central initiiert wurden        |
-| d2c.property.read.success    | Erfolgreiche Lesevorgänge für Geräteeigenschaften über Geräte        | Anzahl  | Gesamt             | Die Anzahl aller erfolgreichen Eigenschaftslesevorgänge, die von Geräten initiiert wurden        |
-| d2c.property.read.failure    | Fehlerhafte Lesevorgänge für Geräteeigenschaften über Geräte            | Anzahl  | Gesamt             | Die Anzahl aller fehlerhaften Eigenschaftslesevorgänge, die von Geräten initiiert wurden            |
-| c2d.property.update.success  | Erfolgreiche Aktualisierungen von Geräteeigenschaften über IoT Central  | Anzahl  | Gesamt             | Die Anzahl aller erfolgreichen Eigenschaftsaktualisierungen, die über IoT Central initiiert wurden  |
-| c2d.property.update.failure  | Fehlerhafte Aktualisierungen von Geräteeigenschaften über IoT Central      | Anzahl  | Gesamt             | Die Anzahl aller fehlerhaften Eigenschaftsaktualisierungen, die über IoT Central initiiert wurden      |
-| d2c.property.update.success  | Erfolgreiche Aktualisierungen von Geräteeigenschaften über Geräte      | Anzahl  | Gesamt             | Die Anzahl aller erfolgreichen Eigenschaftsaktualisierungen, die über Geräte initiiert wurden      |
-| d2c.property.update.failure  | Fehlerhafte Aktualisierungen von Geräteeigenschaften über Geräte          | Anzahl  | Gesamt             | Die Anzahl aller fehlerhaften Eigenschaftsaktualisierungen, die über Geräte initiiert wurden          |
+Eine Liste der aktuell für IoT Central verfügbaren Metriken finden Sie unter [Unterstützte Metriken von Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftiotcentraliotapps).
 
 ### <a name="metrics-and-invoices"></a>Metriken und Rechnungen
 

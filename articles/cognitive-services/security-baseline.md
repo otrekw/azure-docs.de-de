@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 1c5ce50a3736d6e96620e25cf084c5c66c456a5f
-ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
+ms.openlocfilehash: bde1ff4003ba69a4c5449996f4e18d646e6ecff6
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85375098"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498343"
 ---
 # <a name="azure-security-baseline-for-cognitive-services"></a>Azure-Sicherheitsbaseline für Cognitive Services
 
@@ -73,7 +73,7 @@ Beachten Sie außerdem, dass Sie die eingehende Paketuntersuchung für Ihre Fire
 **Leitfaden**: Wenn virtuelle Computer im gleichen virtuellen Netzwerk wie Ihr Azure Cognitive Services-Container bereitgestellt werden, definieren und implementieren Sie mit Azure Policy Standard-Sicherheitskonfigurationen für verknüpfte Netzwerkressourcen. Verwenden Sie Azure Policy-Aliase in den Namespaces „Microsoft.CognitiveServices“ und „Microsoft.Network“, um benutzerdefinierte Richtlinien zum Überwachen oder Erzwingen der Netzwerkkonfiguration Ihrer Azure Cache for Redis-Instanzen zu erstellen. Sie können auch integrierte Richtliniendefinitionen verwenden, z. B.:
 - DDoS Protection Standard sollte aktiviert sein.
 
-Sie können auch Azure Blueprints verwenden, um umfangreiche Azure-Bereitstellungen zu vereinfachen, indem wichtige Umgebungsartefakte, z. B. Azure Resource Manager-Vorlagen, Azure rollenbasierte Zugriffssteuerung (RBAC) und Richtlinien, gemeinsam in einer Blaupausendefinition gepackt werden. Sie können die Blaupause leicht auf neue Abonnements und Umgebungen anwenden und die Steuerung und Verwaltung durch die Versionsverwaltung optimieren.
+Sie können auch Azure Blueprints verwenden, um umfangreiche Azure-Bereitstellungen zu vereinfachen, indem wichtige Umgebungsartefakte, z. B. Azure Resource Manager-Vorlagen, rollenbasierte Zugriffssteuerung von Azure (Azure RBAC) und Richtlinien, gemeinsam in einer Blaupausendefinition gepackt werden. Sie können die Blaupause leicht auf neue Abonnements und Umgebungen anwenden und die Steuerung und Verwaltung durch die Versionsverwaltung optimieren.
 
 Wenn Sie Cognitive Services in einem Container verwenden, können Sie Ihre Containerbereitstellung mit einer Front-End-Firewall-Lösung für Webanwendungen verbessern, die schädlichen Datenverkehr filtert und die End-to-End-TLS-Verschlüsselung unterstützt, sodass der Containerendpunkt privat und sicher bleibt.
 
@@ -760,7 +760,7 @@ Verwenden Sie darüber hinaus Azure Resource Graph, um Ressourcen in Ihren Abonn
 
 **Anleitung:** Nicht zutreffend. Diese Empfehlung ist für Webanwendungen gedacht, die in Azure App Service oder auf Computeressourcen ausgeführt werden.
 
-**Azure Security Center-Überwachung:** Nicht verfügbar
+**Azure Security Center-Überwachung**: Nicht verfügbar
 
 **Verantwortlichkeit**: Nicht verfügbar
 

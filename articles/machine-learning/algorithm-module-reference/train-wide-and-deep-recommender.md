@@ -1,5 +1,5 @@
 ---
-title: Bewerten eines Bildmodells
+title: Verwenden des Train Wide & Deep Recommender-Moduls
 titleSuffix: Azure Machine Learning
 description: Erfahren Sie, wie Sie das Train Wide & Deep Recommender-Modul zum Trainieren eines Empfehlungsmodells verwenden.
 services: machine-learning
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 06/12/2020
-ms.openlocfilehash: 2ac5e5874ebb34b68cbfe8be1986852c67b97c21
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bb213776d41c07238fcaba1ccdd4e06f5d5bbb5f
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84739791"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420888"
 ---
 # <a name="train-wide--deep-recommender"></a>Train Wide & Deep Recommender
 In diesem Artikel wird die Verwendung des Moduls **Train Wide & Deep Recommender** im Azure Machine Learning-Designer (Vorschauversion) zum Trainieren eines Empfehlungsmodells beschrieben. Dieses Modul basiert auf Wide & Deep Learning von Google.
@@ -105,7 +105,7 @@ Ein typischer Satz von Elementfeatures könnte z. B. wie folgt aussehen:
 
     Dieser Hyperparameter bestimmt die Schrittgröße der einzelnen Trainingsschritte bei der Umstellung auf eine Funktion mit minimalem Verlust. Eine zu große Lernrate kann dazu führen, dass das Lernen das Minimum überspringt, während eine zu kleine Lernrate zu Konvergenzproblemen führen kann.
 
-7.  **Crossed feature dimension** (Dimension für übergreifende Features): Geben Sie die Dimension der übergreifenden Benutzer-ID- und Element-ID-Features ein. 
+7.  **Crossed feature dimension** (Dimension für übergreifende Features): Geben Sie die Dimension ein, indem Sie die gewünschten Benutzer-IDs und Element-ID-Features eingeben. 
 
     Die Wide & Deep-Empfehlung führt standardmäßig eine produktübergreifende Transformation über Benutzer-ID- und Element-ID-Features aus. Das übergreifende Ergebnis wird gemäß dieser Zahl als Hashwert verwendet, um die Dimension sicherzustellen.
 

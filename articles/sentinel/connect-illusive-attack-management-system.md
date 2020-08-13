@@ -14,14 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2020
 ms.author: yelevin
-ms.openlocfilehash: 7d2d3871dd9836e2c68155aa82ce01dced128bf3
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ea7953be25473357f7ed572fa8b76076edc6f75a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86528120"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87038116"
 ---
 # <a name="connect-your-illusive-attack-management-system-to-azure-sentinel"></a>Verknüpfen Ihrer Illusive Attack Management System-Daten mit Azure Sentinel
+
+> [!IMPORTANT]
+> Der Illusive Attack Management System-Datenconnector in Azure Sentinel befindet sich derzeit in der öffentlichen Vorschau.
+> Dieses Feature wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 In diesem Artikel erfahren Sie, wie Sie [Illusive Attack Management System](https://www.illusivenetworks.com/technology/platform/attack-detection-system) mit Azure Sentinel verknüpfen. Mit dem Connector für Illusive Attack Management System-Daten können Sie Analysedaten zur Angriffsfläche und Incidentprotokolle von Illusive für Azure Sentinel freigeben und diese Informationen in speziellen Dashboards anzeigen. So erhalten Sie Einblick in potenzielle Angriffsflächen für Ihre Organisation (ASM-Dashboard) und können Lateral Movement-Ereignisse im Netzwerk Ihrer Organisation nachverfolgen (ADS-Dashboard).
 
@@ -34,7 +38,7 @@ Konfigurieren Sie Attack Management System so, dass Syslog-Nachrichten im CEF-Fo
 
 1. Melden Sie sich bei der Illusive-Konsole an, und navigieren Sie zu „Settings“ (Einstellungen) > „Reporting“ (Berichterstellung).
 
-1. Suchen Sie nach „Syslog Servers“ (Syslog-Server).
+1. Suchen Sie nach Syslog-Servern.
 
 1. Geben Sie die folgenden Informationen an:
    - Hostname: IP-Adresse des Linux-Syslog-Agents oder FQDN-Hostname
@@ -44,7 +48,7 @@ Konfigurieren Sie Attack Management System so, dass Syslog-Nachrichten im CEF-Fo
 
 1. Klicken Sie zum Hinzufügen des Syslog-Servers auf die entsprechende Option.
 
-1. Suchen Sie nach „CommonSecurityLog“, um das relevante Log Analytics-Schema für Illusive Attack Management System zu verwenden.
+1. Suchen Sie nach **CommonSecurityLog**, um das relevante Schema in den **Protokollen** für Illusive Attack Management System zu verwenden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

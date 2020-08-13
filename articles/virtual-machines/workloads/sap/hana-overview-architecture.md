@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 07/12/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 39fcf5d0fe2273c4debd3ae5ebe5fd1190ddc959
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e1575ee02a520fd39a1c659eadaeda5822207539
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77616952"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87171129"
 ---
 #  <a name="what-is-sap-hana-on-azure-large-instances"></a>Was ist SAP HANA in Azure (große Instanzen)?
 
@@ -54,8 +54,9 @@ Die anderen Dokumente mit Anleitungen zu großen HANA-Instanzen behandeln die fo
 - [Installieren und Konfigurieren von SAP HANA in Azure (große Instanzen)](hana-installation.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 - [Hochverfügbarkeit und Notfallwiederherstellung für SAP HANA in Azure (große Instanzen)](hana-overview-high-availability-disaster-recovery.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 - [Problembehandlung und Überwachung von SAP HANA in Azure (große Instanzen)](troubleshooting-monitoring.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-- [Hochverfügbarkeitskonfiguration unter SUSE mit STONITH](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/ha-setup-with-stonith)
-- [OS backup and restore for Type II SKUs of Revision 3 stamps (Sichern und Wiederherstellen des Betriebssystems für Typ-II-SKUs)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/os-backup-type-ii-skus)
+- [Hochverfügbarkeitskonfiguration unter SUSE mit STONITH](./ha-setup-with-stonith.md)
+- [OS backup and restore for Type II SKUs of Revision 3 stamps (Sichern und Wiederherstellen des Betriebssystems für Typ-II-SKUs)](./os-backup-type-ii-skus.md)
+- [Sparen bei SAP HANA (große Instanzen) mit einer Azure-Reservierung](../../../cost-management-billing/reservations/prepay-hana-large-instances-reserved-capacity.md)
 
 **Nächste Schritte**
 - Lesen Sie [Informationen zu Begriffen](hana-know-terms.md).

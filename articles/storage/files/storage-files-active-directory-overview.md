@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: conceptual
 ms.date: 05/29/2020
 ms.author: rogarana
-ms.openlocfilehash: 48441a48fe6f72e88e080967451d9904c3e586b2
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 65d7845763b60a66f396d9081f3c9c6e1d04c1bc
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372319"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87447246"
 ---
 # <a name="overview-of-azure-files-identity-based-authentication-options-for-smb-access"></a>Übersicht über die Optionen der identitätsbasierten Authentifizierung mit Azure Files für den SMB-Zugriff
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
@@ -44,7 +44,7 @@ Sie sollten die folgenden Begriffe im Zusammenhang mit der Azure AD Domain Serv
 
     Durch die Integration von lokalen Active Directory Domain Services (AD DS) und Azure Files werden Methoden zum Speichern von Verzeichnisdaten bereitgestellt und die Daten Netzwerkbenutzern und Administratoren zur Verfügung gestellt. Sicherheit ist in AD DS über die Anmeldeauthentifizierung und die Zugriffssteuerung für Objekte im Verzeichnis integriert. Mit einer einzigen Netzwerkanmeldung können Administratoren Verzeichnisdaten und die Organisation im gesamten Netzwerk verwalten, und autorisierte Netzwerkbenutzer können überall im Netzwerk auf Ressourcen zugreifen. AD DS wird häufig von Unternehmen in lokalen Umgebungen eingeführt, und AD DS-Anmeldeinformationen werden als Identität für die Zugriffssteuerung verwendet. Weitere Informationen finden Sie unter [Active Directory Domain Services – Übersicht](https://docs.microsoft.com/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview).
 
--   **Rollenbasierte Zugriffssteuerung in Azure (Role-Based Access Control, RBAC)**
+-   **Rollenbasierte Zugriffssteuerung von Azure (Azure RBAC)**
 
     Die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) in Azure ermöglicht eine präzise Zugriffsverwaltung für Azure. Mit RBAC können Sie den Zugriff auf Ressourcen verwalten, indem Sie Benutzern die Mindestberechtigungen zum Ausführen ihrer Aufgaben erteilen. Weitere Informationen zu rollenbasierter Zugriffssteuerung finden Sie unter [Was ist die rollenbasierte Azure-Zugriffssteuerung (Azure RBAC) in Azure?](../../role-based-access-control/overview.md).
 

@@ -1,7 +1,7 @@
 ---
 title: Ausführen von PowerShell-Befehlen mit Azure AD-Anmeldeinformationen für den Zugriff auf Blob- oder Warteschlangendaten
 titleSuffix: Azure Storage
-description: PowerShell unterstützt die Anmeldung mit Azure AD-Anmeldeinformationen zum Ausführen von Befehlen für Daten in Azure Storage-Blobs und -Warteschlangen. Ein Zugriffstoken wird jeweils für die Sitzung bereitgestellt und zum Autorisieren von Aufrufvorgängen verwendet. Die Berechtigungen hängen von der RBAC-Rolle (Role-Based Access Control = rollenbasierte Zugriffssteuerung) ab, die dem Azure AD-Sicherheitsprinzipal zugewiesen ist.
+description: PowerShell unterstützt die Anmeldung mit Azure AD-Anmeldeinformationen zum Ausführen von Befehlen für Daten in Azure Storage-Blobs und -Warteschlangen. Ein Zugriffstoken wird jeweils für die Sitzung bereitgestellt und zum Autorisieren von Aufrufvorgängen verwendet. Die Berechtigungen hängen von der Azure-Rolle ab, die dem Azure AD-Sicherheitsprinzipal zugewiesen ist.
 services: storage
 author: tamram
 ms.service: storage
@@ -10,18 +10,18 @@ ms.date: 12/30/2019
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 80ca5b63a91da31a5b226a589e15fb202eabd4ad
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a99b2841441e43ac02688494b1324fa5d630dcd5
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84805772"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534922"
 ---
 # <a name="run-powershell-commands-with-azure-ad-credentials-to-access-blob-or-queue-data"></a>Ausführen von PowerShell-Befehlen mit Azure AD-Anmeldeinformationen für den Zugriff auf Blob- oder Warteschlangendaten
 
 Azure Storage bietet Erweiterungen für PowerShell, mit deren Hilfe Sie sich mit Azure Active Directory-Anmeldeinformationen (Azure AD) anmelden und Skriptbefehle ausführen können. Wenn Sie sich mit Azure AD-Anmeldeinformationen bei PowerShell anmelden, wird ein OAuth 2.0-Zugriffstoken zurückgegeben. Dieses Token wird dann automatisch von PowerShell verwendet, um nachfolgende Vorgänge für Blob- oder Queue Storage-Daten zu autorisieren. Für unterstützte Vorgänge müssen Sie mit dem Befehl keinen Kontoschlüssel und kein SAS-Token mehr übergeben.
 
-Sie können einem Azure AD-Sicherheitsprinzipal über die rollenbasierte Zugriffssteuerung (RBAC) Berechtigungen für Blob- und Warteschlangendaten zuweisen. Weitere Informationen zu RBAC-Rollen in Azure Storage finden Sie unter [Verwalten der Zugriffsrechte für Azure Storage-Daten mit RBAC](storage-auth-aad-rbac.md).
+Sie können einem Azure AD-Sicherheitsprinzipal über die rollenbasierte Zugriffssteuerung (RBAC) Berechtigungen für Blob- und Warteschlangendaten zuweisen. Weitere Informationen zu Azure-Rollen in Azure Storage finden Sie unter [Verwalten der Zugriffsrechte für Azure Storage-Daten mit RBAC](storage-auth-aad-rbac.md).
 
 ## <a name="supported-operations"></a>Unterstützte Vorgänge
 
@@ -68,10 +68,10 @@ Im folgenden Beispiel sehen Sie, wie in einem neuen Speicherkonto mithilfe Ihrer
     $ctx = New-AzStorageContext -StorageAccountName "<storage-account>" -UseConnectedAccount
     ```
 
-1. Weisen Sie sich vor der Erstellung des Containers selbst die Rolle [Mitwirkender an Storage-Blobdaten](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor) zu. Obwohl Sie der Kontobesitzer sind, benötigen Sie explizite Berechtigungen, um Datenvorgänge in Ihrem Speicherkonto ausführen zu können. Weitere Informationen zum Zuweisen von RBAC-Rollen finden Sie unter [Gewähren von Zugriff auf Azure-Blob- und -Warteschlangendaten mit RBAC über das Azure-Portal](storage-auth-aad-rbac.md).
+1. Weisen Sie sich vor der Erstellung des Containers selbst die Rolle [Mitwirkender an Storage-Blobdaten](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor) zu. Obwohl Sie der Kontobesitzer sind, benötigen Sie explizite Berechtigungen, um Datenvorgänge in Ihrem Speicherkonto ausführen zu können. Weitere Informationen zum Zuweisen von Azure-Rollen finden Sie unter [Gewähren von Zugriff auf Azure-Blob- und -Warteschlangendaten mit RBAC über das Azure-Portal](storage-auth-aad-rbac.md).
 
     > [!IMPORTANT]
-    > Die RBAC-Rollenzuweisungen können einige Minuten dauern.
+    > Die Azure-Rollenzuweisungen können einige Minuten dauern.
 
 1. Erstellen Sie einen Container, indem Sie [New-AzStorageContainer](/powershell/module/az.storage/new-azstoragecontainer) aufrufen. Da dieser Aufruf den Kontext verwendet, den Sie im vorherigen Schritt erstellt haben, wird der Container mithilfe Ihrer Azure AD-Anmeldeinformationen erstellt.
 
@@ -82,5 +82,5 @@ Im folgenden Beispiel sehen Sie, wie in einem neuen Speicherkonto mithilfe Ihrer
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Zuweisen einer RBAC-Rolle für den Zugriff auf Blob- und Warteschlangendaten mithilfe von PowerShell](storage-auth-aad-rbac-powershell.md)
+- [Zuweisen einer Azure-Rolle für den Zugriff auf Blob- und Warteschlangendaten mithilfe von PowerShell](storage-auth-aad-rbac-powershell.md)
 - [Autorisieren des Zugriffs auf Blob- und Warteschlangendaten mit verwalteten Identitäten für Azure-Ressourcen](storage-auth-aad-msi.md)

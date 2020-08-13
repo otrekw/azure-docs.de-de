@@ -5,14 +5,14 @@ author: spelluru
 ms.author: spelluru
 ms.date: 06/23/2020
 ms.topic: article
-ms.openlocfilehash: 4516405472abf733c8ef06fb5ee5855f8e97d396
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ef469eb74c3dd7d82dec908dba8c53136df206e4
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85340446"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423421"
 ---
-# <a name="integrate-azure-service-bus-with-azure-private-link"></a>Integrieren von Azure Service Bus in Azure Private Link
+# <a name="allow-access-to-azure-service-bus-namespaces-via-private-endpoints"></a>Gewähren des Zugriffs auf Azure Service Bus-Namespaces über private Endpunkte
 
 Mit Azure Private Link können Sie über einen **privaten Endpunkt** in Ihrem virtuellen Netzwerk auf Azure-Dienste wie Azure Service Bus, Azure Storage und Azure Cosmos DB sowie auf in Azure gehostete Kunden-/Partnerdienste zugreifen.
 
@@ -46,7 +46,7 @@ Um einen Service Bus-Namespace in Azure Private Link zu integrieren, benötigen 
 
 - Einen Service Bus-Namespace.
 - Ein virtuelles Azure-Netzwerk
-- Ein Subnetz in dem virtuellen Netzwerk
+- Ein Subnetz in dem virtuellen Netzwerk Sie können das **Standardsubnetz** verwenden. 
 - Berechtigungen vom Typ „Besitzer“ oder „Mitwirkender“ für den Service Bus-Namespace und für das virtuelle Netzwerk.
 
 Der private Endpunkt und das virtuelle Netzwerk müssen sich in der gleichen Region befinden. Wenn Sie über das Portal eine Region für den privaten Endpunkt auswählen, wird automatisch nach virtuellen Netzwerken in dieser Region gefiltert. Der Service Bus-Namespace kann sich in einer anderen Region befinden. Außerdem verwendet der private Endpunkt eine private IP-Adresse in Ihrem virtuellen Netzwerk.
@@ -58,8 +58,19 @@ Wenn Sie bereits über einen Namespace verfügen, können Sie wie folgt einen pr
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. 
 2. Geben Sie auf der Suchleiste den Suchbegriff **Service Bus** ein.
 3. Wählen Sie in der Liste den **Namespace** aus, dem Sie einen privaten Endpunkt hinzufügen möchten.
-4. Wählen Sie die Registerkarte **Netzwerk** unter **Einstellungen** aus.
-5. Wählen Sie im oberen Seitenbereich die Registerkarte **Private Endpunktverbindungen** aus.
+2. Wählen Sie im Menü links unter **Einstellungen** die Option **Netzwerk** aus. 
+
+    > [!NOTE]
+    > Die Registerkarte **Netzwerk** wird nur für Namespaces vom Typ **Premium** angezeigt.  
+    
+    Standardmäßig ist die Option **Ausgewählte Netzwerke** ausgewählt. Wenn Sie auf dieser Seite nicht mindestens eine IP-Firewallregel oder ein virtuelles Netzwerk hinzufügen, kann über das öffentliche Internet (mit dem Zugriffsschlüssel) auf den Namespace zugegriffen werden.
+
+    :::image type="content" source="./media/service-bus-ip-filtering/default-networking-page.png" alt-text="Seite „Netzwerk“ – Standard" lightbox="./media/service-bus-ip-filtering/default-networking-page.png":::
+    
+    Wenn Sie die Option **Alle Netzwerke** auswählen, akzeptiert der Service Bus-Namespace Verbindungen von beliebigen IP-Adressen (mit dem Zugriffsschlüssel). Die Standardeinstellung entspricht einer Regel, bei der der IP-Adressbereich 0.0.0.0/0 zulässig ist. 
+
+    ![Firewall – Option „Alle Netzwerke“ ausgewählt](./media/service-bus-ip-filtering/firewall-all-networks-selected.png)
+5. Um den Zugriff auf den Namespace über private Endpunkte zuzulassen, klicken Sie oben auf der Seite auf die Registerkarte **Private Endpunktverbindungen**.
 6. Wählen Sie im oberen Seitenbereich die Schaltfläche **+ Privater Endpunkt** aus.
 
     ![Hinzufügen einer Schaltfläche für den privaten Endpunkt](./media/private-link-service/private-link-service-3.png)

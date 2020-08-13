@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 05/11/2020
 ms.author: v-miegge
-ms.openlocfilehash: 817f9e362e639cbb8f0cc79607c376c0e8216ec7
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 3677d67f55cfccdc80245b2ec870ffa76b0a1940
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83663728"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088664"
 ---
 # <a name="troubleshoot-windows-boot-manager-error----0xc0000225-status-not-found"></a>Problembehandlung beim Windows-Start-Manager-Fehler 0xC0000225 „Status not found“
  
@@ -27,7 +27,7 @@ In diesem Artikel finden Sie Schritte zum Beheben von Problemen, bei denen Fehle
 
 ## <a name="symptoms"></a>Symptome
 
-Wenn Sie die [Startdiagnose](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) verwenden, um den Screenshot des virtuellen Computers anzuzeigen, wird im Screenshot der Windows-Startfehler mit dem Statuscode *0xc0000225* angezeigt.
+Wenn Sie die [Startdiagnose](./boot-diagnostics.md) verwenden, um den Screenshot des virtuellen Computers anzuzeigen, wird im Screenshot der Windows-Startfehler mit dem Statuscode *0xc0000225* angezeigt.
 
 Die diesem Fehlercode zugeordnete Datei informiert Sie über die erforderlichen Schritte zum Beheben dieses Problems. Suchen Sie den Text im Abschnitt **File:** (Datei:), um die entsprechende Vorgehensweise zu bestimmen.
 
@@ -90,7 +90,7 @@ Eine Beschädigung der Registrierungsstruktur kann folgende Ursachen haben:
 
 ### <a name="create-and-access-a-repair-vm"></a>Erstellen einer Reparatur-VM und Zugreifen darauf
 
-1. Führen Sie die Schritte 1-3 der [Reparaturbefehle für virtuelle Computer](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands) aus, um eine Reparatur-VM vorzubereiten.
+1. Führen Sie die Schritte 1-3 der [Reparaturbefehle für virtuelle Computer](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md) aus, um eine Reparatur-VM vorzubereiten.
 1. Stellen Sie über eine Remotedesktopverbindung eine Verbindung mit der Reparatur-VM her.
 
 ### <a name="select-a-solution"></a>Auswählen einer Lösung
@@ -178,7 +178,7 @@ Wenn diese Informationssammlung zu einem Fehler wegen einer fehlenden **\boot\bc
          sel disk <DISK #>
          ```
 
-         Die folgende Abbildung zeigt das Ergebnis der Auflistung und Auswahl eines Datenträgers. Datenträger 0 (127 GB | Online), Datenträger 1 (32 GB | Online) und Datenträger 2 (127 GB | Online) werden aufgelistet, wobei Datenträger 2 mithilfe des Befehls `sel disk 2` ausgewählt wurde.
+         Die folgende Abbildung zeigt das Ergebnis der Auflistung und Auswahl eines Datenträgers. Datenträger 0 (127 GB / Online), Datenträger 1 (32 GB / Online) und Datenträger 2 (127 GB / Online) werden aufgelistet, Datenträger 2 wurde mithilfe des Befehls `sel disk 2` ausgewählt.
 
          ![Das Ergebnis der Auflistung und anschließenden Auswahl eines Datenträgers. Datenträger 0 (127 GB | Online), Datenträger 1 (32 GB | Online) und Datenträger 2 (127 GB | Online) werden aufgelistet, wobei Datenträger 2 ausgewählt ist.](./media/troubleshoot-boot-error-status-not-found/9.png)
 
@@ -189,7 +189,7 @@ Wenn diese Informationssammlung zu einem Fehler wegen einer fehlenden **\boot\bc
          sel partition <PARTITION #>
          ```
 
-         Die folgende Abbildung zeigt das Ergebnis der Auflistung und Auswahl einer Partition. Partition 1 (Reserviert | 16 MB), Partition 2 (System | 100 MB) und Partition 3 (Primär | 126 GB) werden aufgelistet, wobei Partition 2 mit dem Befehl `sel part 2` ausgewählt wurde.
+         Die folgende Abbildung zeigt das Ergebnis der Auflistung und Auswahl einer Partition. Partition 1 (Reserviert | 16 MB), Partition 2 (System | 100 MB) und Partition 3 (Primär | 126 GB) werden aufgelistet, Partition 2 wurde mithilfe des Befehls `sel part 2` ausgewählt.
 
          ![Das Ergebnis der Auflistung und anschließenden Auswahl einer Partition. Partition 1 (Reserviert | 16 MB), Partition 2 (System | 100 MB) und Partition 3 (Primär | 126 GB) werden aufgelistet, mit ausgewählter Partition 2.](./media/troubleshoot-boot-error-status-not-found/10.png)
 
@@ -303,4 +303,4 @@ Für den **Registrierungsdatei**-Fehler gibt es eine Lösung, Sie müssen aber [
    
 ### <a name="rebuild-the-vm"></a>Neuerstellen der VM
 
-Verwenden Sie [Schritt 5 der VM-Reparaturbefehle](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example), um die VM neu zu erstellen.
+Verwenden Sie [Schritt 5 der VM-Reparaturbefehle](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example), um die VM neu zu erstellen.

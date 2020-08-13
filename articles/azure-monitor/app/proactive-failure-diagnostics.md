@@ -4,12 +4,12 @@ description: Macht Sie auf ungewöhnliche Änderungen bei der Rate fehlgeschlage
 ms.topic: conceptual
 ms.date: 12/18/2018
 ms.reviewer: yalavi
-ms.openlocfilehash: 30bb95c4c47c02fe6b3d31d6e6763656aa96fdec
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: a093d5d6bdb96aa6f0a8a92fea48835971aebe16
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87315936"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420208"
 ---
 # <a name="smart-detection---failure-anomalies"></a>Smart Detection – ungewöhnliche fehlgeschlagene Anforderungen
 [Application Insights](./app-insights-overview.md) warnt Sie automatisch und nahezu in Echtzeit, wenn es für Ihre Web-App zu einer ungewöhnlichen Häufung bei den fehlgeschlagenen Anforderungen kommt. Die Lösung erkennt eine ungewöhnliche Zunahme der Rate fehlerhafter HTTP-Anforderungen oder Abhängigkeitsaufrufen. Nicht erfolgreiche Anforderungen weisen normalerweise Antwortcodes im Bereich 400 oder höher auf. Um Sie bei der Selektierung und Diagnose des Problems zu unterstützen, wird in den Warnungsdetails eine Analyse der Merkmale der Fehler und der zugehörigen Anwendungsdaten angegeben. Außerdem werden Links zum Application Insights-Portal zur weiteren Diagnose bereitgestellt. Diese Funktion muss nicht eingerichtet oder konfiguriert werden, da sie Machine Learning-Algorithmen verwendet, um die normale Fehlerrate zu bestimmen.
@@ -20,7 +20,7 @@ Nachdem Sie [Application Insights für Ihr Projekt](./app-insights-overview.md) 
 
 Hier ist ein Beispiel für eine Warnung angegeben:
 
-[![](./media/proactive-failure-diagnostics/013.png "Sample smart detection alert showing cluster analysis around failure")](./media/proactive-failure-diagnostics/013.png#lightbox)
+:::image type="content" source="./media/proactive-failure-diagnostics/013.png" alt-text="Beispiel für eine intelligente Erkennung mit Clusteranalyse im Umfeld des Fehlers" lightbox="./media/proactive-failure-diagnostics/013.png":::
 
 Die Warnungsdetails enthalten Folgendes:
 
@@ -72,11 +72,11 @@ Diese Warnungsregel wird mit einer zugehörigen [Aktionsgruppe](../platform/acti
 
 Öffnen Sie die Seite „Warnungen“. Warnungsregeln vom Typ „Fehleranomalien“ werden zusammen mit allen Warnungen aufgeführt, die Sie ggf. manuell festgelegt haben, und Sie können sehen, ob diese derzeit den Status „Warnung“ aufweisen.
 
-[![](./media/proactive-failure-diagnostics/021.png "On the Application Insights resource page, click 'Alerts' tile, then 'Manage alert rules'")](./media/proactive-failure-diagnostics/021.png#lightbox)
+:::image type="content" source="./media/proactive-failure-diagnostics/021.png" alt-text="Klicken Sie auf der Application Insights-Ressourcenseite auf die Kachel „Warnungen“ und dann auf „Warnungsregeln verwalten“." lightbox="./media/proactive-failure-diagnostics/021.png":::
 
 Klicken Sie auf die Warnung, um sie zu konfigurieren.
 
-[![](./media/proactive-failure-diagnostics/032.png "Rule configuration screen")](./media/proactive-failure-diagnostics/032.png#lightbox)
+:::image type="content" source="./media/proactive-failure-diagnostics/032.png" alt-text="Bildschirm „Regelkonfiguration“." lightbox="./media/proactive-failure-diagnostics/032.png":::
 
 Beachten Sie, dass Sie eine Warnungsregel vom Typ „Fehleranomalien“ deaktivieren oder löschen können, aber das Erstellen einer weiteren Warnungsregel unter derselben Application Insights-Ressource nicht möglich ist.
 
@@ -298,7 +298,7 @@ Sie können auch das [Azure-Portal](https://portal.azure.com) öffnen, zur Appli
 
 Wenn Sie auf „Fehlerdiagnose“ klicken, erhalten Sie weitere Details und können das Problem leichter beheben.
 
-[![](./media/proactive-failure-diagnostics/051.png "Diagnostic search")](./media/proactive-failure-diagnostics/051.png#lightbox)
+:::image type="content" source="./media/proactive-failure-diagnostics/051.png" alt-text="Diagnosesuche." lightbox="./media/proactive-failure-diagnostics/051.png#lightbox":::
 
 Anhand des Prozentsatzes der Anforderungen und der Anzahl der betroffenen Benutzer können Sie entscheiden, wie dringend das Problem ist. Im Beispiel oben verdeutlicht die Fehlerrate von 78,5 %, die einer normalen Fehlerrate von 2,2 % gegenübersteht, dass ganz offensichtlich Probleme bestehen. Allerdings sind nur 46 Benutzer betroffen. Wenn es sich um Ihre App handeln würde, könnten Sie beurteilen, wie schwerwiegend dies ist.
 
@@ -306,13 +306,13 @@ In vielen Fällen können Sie das Problem über den Anforderungsnamen, die Ausna
 
 In diesem Beispiel ist eine Ausnahme für die SQL-Datenbank aufgetreten, weil das Anforderungslimit erreicht wurde.
 
-[![](./media/proactive-failure-diagnostics/052.png "Failed request details")](./media/proactive-failure-diagnostics/052.png#lightbox)
+:::image type="content" source="./media/proactive-failure-diagnostics/052.png" alt-text="Details zu Anforderungen mit Fehlern." lightbox="./media/proactive-failure-diagnostics/052.png":::
 
 ## <a name="review-recent-alerts"></a>Überprüfen aktueller Warnungen
 
 Klicken Sie auf der Application Insights-Ressourcenseite auf **Warnungen**, um die zuletzt ausgelösten Warnungen anzuzeigen:
 
-[![](./media/proactive-failure-diagnostics/070.png "Alerts summary")](./media/proactive-failure-diagnostics/070.png#lightbox)
+:::image type="content" source="./media/proactive-failure-diagnostics/070.png" alt-text="Zusammenfassung von Warnungen." lightbox="./media/proactive-failure-diagnostics/070.png":::
 
 ## <a name="whats-the-difference-"></a>Wo liegt der Unterschied?
 Smart Detection für ungewöhnliche fehlgeschlagene Anforderungen ergänzt andere ähnliche, aber doch verschiedene Features von Application Insights.

@@ -5,27 +5,29 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 08/01/2019
-ms.openlocfilehash: dd75ad4ed1024292868f113e474fe8b8b73679b0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 07/24/2020
+ms.openlocfilehash: e1c60542ec16ca19d26a77c1b9fb9676cf875e3d
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75445128"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318265"
 ---
 # <a name="optimize-query-cost-in-azure-cosmos-db"></a>Optimieren der Abfragekosten in Azure Cosmos DB
 
-Azure Cosmos DB bietet eine umfangreiche Sammlung von Datenbankvorgängen einschließlich relationalen und hierarchischen Abfragen, die für die Elemente in einem Container ausgeführt werden. Die Kosten im Zusammenhang mit diesen Vorgängen variieren basierend auf dem CPU-, E/A- und Speicheraufwand, der für den jeweiligen Vorgang erforderlich ist. Anstatt sich Gedanken über Hardwareressourcen und deren Verwaltung zu machen, können Sie sich eine Anforderungseinheit (RU) als alleinige Maßeinheit für die Ressourcen vorstellen, die für die verschiedenen Datenbankvorgänge zum Verarbeiten einer Anforderung erforderlich sind. In diesem Artikel wird beschrieben, wie Sie die berechneten Anforderungseinheiten für eine Abfrage auswerten und die Abfrage in Hinblick auf Leistung und Kosten optimieren. 
+Azure Cosmos DB bietet eine umfangreiche Sammlung von Datenbankvorgängen einschließlich relationalen und hierarchischen Abfragen, die für die Elemente in einem Container ausgeführt werden. Die Kosten im Zusammenhang mit diesen Vorgängen variieren basierend auf dem CPU-, E/A- und Speicheraufwand, der für den jeweiligen Vorgang erforderlich ist. Anstatt sich Gedanken über Hardwareressourcen und deren Verwaltung zu machen, können Sie sich eine Anforderungseinheit (RU) als alleinige Maßeinheit für die Ressourcen vorstellen, die für die verschiedenen Datenbankvorgänge zum Verarbeiten einer Anforderung erforderlich sind. In diesem Artikel wird beschrieben, wie Sie die berechneten Anforderungseinheiten für eine Abfrage auswerten und die Abfrage in Hinblick auf Leistung und Kosten optimieren.
 
-Die Abfragen in Azure Cosmos DB werden in der Regel in Bezug auf den Durchsatz (absteigend von den schnellsten/effizientesten zu den langsameren/weniger effizienten Abfragen) wie folgt sortiert:  
+Lesevorgänge in Azure Cosmos DB werden in der Regel in Bezug auf den Durchsatz (absteigend von den schnellsten/effizientesten zu den langsameren/weniger effizienten Vorgängen) wie folgt sortiert:  
 
-* GET-Operation für einen einzelnen Partitions- und Elementschlüssel
+* Punktlesevorgänge (Suche nach Schlüssel-Wert-Paar anhand einer einzelnen Element-ID und einem einzelnen Partitionsschlüssel)
 
 * Abfrage mit einer Filterklausel in einem einzelnen Partitionsschlüssel
 
 * Abfrage ohne eine Gleichheits- oder Bereichsfilterklausel in einer Eigenschaft
 
 * Abfrage ohne Filter
+
+Da Schlüssel-Wert-Suchvorgänge anhand der Element-ID die effizienteste Art von Lesevorgängen sind, sollten Sie sicherstellen, dass die Element-ID einen aussagekräftigen Wert erhält.
 
 Abfragen, die Daten von einer oder mehreren Partitionen lesen, verursachen eine höhere Latenz und verbrauchen eine höhere Anzahl von Anforderungseinheiten. Da jede Partition über eine automatische Indizierung für alle Eigenschaften verfügt, kann die Abfrage effizient über den Index verarbeitet werden. Mithilfe der Optionen für die Parallelverarbeitung können Sie partitionsübergreifende Abfragen schneller machen. Weitere Informationen zur Partitionierung und zu Partitionsschlüsseln finden Sie unter [Partitionieren in Azure Cosmos DB](partitioning-overview.md).
 
@@ -36,7 +38,7 @@ Nachdem Sie einige Daten in Ihren Azure-Cosmos-Containern gespeichert haben, kö
 Sie können die Kosten für die Abfragen auch programmgesteuert mithilfe der SDKs abrufen. Zum Messen des Aufwands für einen Vorgang wie Erstellen, Aktualisieren oder Löschen überprüfen Sie den Header `x-ms-request-charge`, wenn Sie die REST-API verwenden. Bei Verwendung des .NET- oder Java-SDKs ist `RequestCharge` die entsprechende Eigenschaft zum Abrufen der Anforderungsgebühr. Diese Eigenschaft ist in ResourceResponse oder FeedResponse zu finden.
 
 ```csharp
-// Measure the performance (request units) of writes 
+// Measure the performance (request units) of writes
 ResourceResponse<Document> response = await client.CreateDocumentAsync(collectionSelfLink, myDocument); 
 
 Console.WriteLine("Insert of an item consumed {0} request units", response.RequestCharge); 

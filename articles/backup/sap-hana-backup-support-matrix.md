@@ -3,12 +3,13 @@ title: Unterstützungsmatrix für SAP HANA-Sicherungen
 description: Dieser Artikel enthält Informationen zu den unterstützten Szenarien und zu Einschränkungen beim Sichern von SAP HANA-Datenbanken auf virtuellen Azure-Computern unter Verwendung von Azure Backup.
 ms.topic: conceptual
 ms.date: 11/7/2019
-ms.openlocfilehash: 19d62fac6a7072018508808b1c9695eb8b260b15
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.custom: references_regions
+ms.openlocfilehash: 674bbf968b42f66a4c421aec6653881c8fd52a8b
+ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170614"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87439580"
 ---
 # <a name="support-matrix-for-backup-of-sap-hana-databases-on-azure-vms"></a>Unterstützungsmatrix für die Sicherung von SAP HANA-Datenbanken auf virtuellen Azure-Computern
 
@@ -23,7 +24,7 @@ Azure Backup unterstützt die Sicherung von SAP HANA-Datenbanken in Azure. In d
 | -------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | **Topologie**               | Nur SAP HANA-Ausführung auf virtuellen Azure-Computern unter Linux                    | SAP HANA (große Instanzen)                                   |
 | **Regionen**                   | **GA:**<br> **Nord- und Südamerika** – USA, Mitte; USA, Osten 2; USA, Osten; USA, Norden-Mitte; USA, Süden-Mitte; USA, Westen 2; USA, Westen-Mitte; USA, Westen; Kanada, Mitte; Kanada, Osten; Brasilien, Süden <br> **Asien-Pazifik** – Australien, Mitte; Australien, Mitte 2; Australien, Osten; Australien, Südosten; Japan, Osten; Japan, Westen; Südkorea, Mitte; Südkorea, Süden; Asien, Osten; Asien, Südosten; Indien, Mitte; Indien, Süden; Indien, Westen; China, Osten; China, Norden; China Osten 2; China, Norden 2 <br> **Europa** – Europa, Westen; Europa, Norden; Frankreich, Mitte; Vereinigtes Königreich, Süden; Vereinigtes Königreich, Westen; Deutschland, Norden; Deutschland, Westen-Mitte; Schweiz, Norden; Schweiz, Westen; Schweiz, Norden; Norwegen, Osten; Norwegen, Westen <br> **Afrika/Naher Osten** – Südafrika, Norden; Südafrika, Westen; VAE, Norden; VAE, Mitte  <BR>  **Azure Government-Regionen** | Frankreich, Süden; Deutschland, Mitte; Deutschland, Nordosten; US Gov IOWA |
-| **Betriebssystemversionen**            | SLES 12 mit SP2, SP3 und SP4; SLES 15 mit SP0 und SP1 <br><br>   **Vorschau** – 7.4, 7.6, 7.7 und 8.1  <br>     [Erste Schritte](https://docs.microsoft.com/azure/backup/tutorial-backup-sap-hana-db) mit SAP HANA-Sicherung (Vorschau) für RHEL (7.4, 7.6, 7.7 und 8.1). Für weitere Anfragen schreiben Sie uns unter [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com).                |                                             |
+| **Betriebssystemversionen**            | SLES 12 mit SP2, SP3 und SP4; SLES 15 mit SP0 und SP1 <br><br>  Seit dem 1. August 2020 sind SAP HANA-Sicherungen für RHEL (7.4, 7.6, 7.7 und 8.1) allgemein verfügbar.                |                                             |
 | **HANA-Versionen**          | SDC unter HANA 1.x, MDC unter HANA 2.x <= SPS04 Rev 48, SPS05 (für Szenarien mit Verschlüsselung noch nicht überprüft)      |                                                            |
 | **HANA-Bereitstellungen**       | SAP HANA auf einem einzelnen virtuellen Azure-Computer: nur zentrales Hochskalieren. <br><br> Bei Bereitstellungen mit hoher Verfügbarkeit werden beide Knoten auf den beiden verschiedenen Computern als einzelne Knoten mit separaten Datenketten behandelt.               | Horizontales Skalieren <br><br> Bei Bereitstellungen mit hoher Verfügbarkeit wird kein automatisches Failover der Sicherung auf den sekundären Knoten ausgeführt. Das Konfigurieren der Sicherung sollte für jeden Knoten separat durchgeführt werden.                                           |
 | **HANA-Instanzen**         | Eine einzelne SAP HANA-Instanz auf einem einzelnen virtuellen Azure-Computer: nur Hochskalieren | Mehrere SAP HANA-Instanzen auf einem einzelnen virtuellen Computer                  |
@@ -43,11 +44,11 @@ Azure Backup unterstützt die Sicherung von SAP HANA-Datenbanken in Azure. In d
 
 
 > [!NOTE]
-> Sie können jetzt [Sicherungs- und Wiederherstellungsaufträge](https://docs.microsoft.com/azure/backup/sap-hana-db-manage#monitor-manual-backup-jobs-in-the-portal) (auf demselben Computer) überwachen, die von nativen HANA-Clients (SAP HANA Studio/Cockpit/DBA Cockpit) im Azure-Portal ausgelöst wurden.
+> Sie können jetzt [Sicherungs- und Wiederherstellungsaufträge](./sap-hana-db-manage.md#monitor-manual-backup-jobs-in-the-portal) (auf demselben Computer) überwachen, die von nativen HANA-Clients (SAP HANA Studio/Cockpit/DBA Cockpit) im Azure-Portal ausgelöst wurden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Sichern von SAP HANA-Datenbanken auf virtuellen Azure-Computern](https://docs.microsoft.com/azure/backup/backup-azure-sap-hana-database)
-* [Wiederherstellen von SAP HANA-Datenbanken auf virtuellen Azure-Computern](https://docs.microsoft.com/azure/backup/sap-hana-db-restore)
+* [Sichern von SAP HANA-Datenbanken auf virtuellen Azure-Computern](./backup-azure-sap-hana-database.md)
+* Erfahren Sie, wie Sie [nur auf virtuellen Azure-Computern ausgeführte SAP HANA-Datenbanken wiederherstellen können](./sap-hana-db-restore.md).
 * [Verwalten und Überwachen gesicherter SAP HANA-Datenbanken](sap-hana-db-manage.md)
-* [Behandeln von Problemen beim Sichern von SAP HANA-Datenbanken in Azure](https://docs.microsoft.com/azure/backup/backup-azure-sap-hana-database-troubleshoot)
+* [Behandeln von Problemen beim Sichern von SAP HANA-Datenbanken in Azure](./backup-azure-sap-hana-database-troubleshoot.md)

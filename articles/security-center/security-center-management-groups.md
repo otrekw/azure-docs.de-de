@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/19/2018
 ms.author: memildin
-ms.openlocfilehash: 236153612f6056e90cb9b5af128f49ed550e3fe9
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 43a6c10c8c73e8fb5189b6f085a6969c0d776593
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86080872"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534905"
 ---
 # <a name="gain-tenant-wide-visibility-for-azure-security-center"></a>Erzielen der mandantenweiten Sichtbarkeit für Azure Security Center
 In diesem Artikel wird erläutert, wie Sie den Sicherheitsstatus Ihrer Organisation bedarfsorientiert verwalten, indem Sie Sicherheitsrichtlinien auf alle Azure-Abonnements anwenden, die mit Ihrem Azure Active Directory-Mandanten verknüpft sind.
@@ -26,7 +26,7 @@ In diesem Artikel wird erläutert, wie Sie den Sicherheitsstatus Ihrer Organisat
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="management-groups"></a>Verwaltungsgruppen
-Azure-Verwaltungsgruppen ermöglichen Ihnen das effiziente Verwalten der Bereiche Zugriff, Richtlinien und Berichterstellung für Gruppen von Abonnements sowie das effektive Verwalten der gesamten Azure-Umgebung, indem Aktionen für die Stammverwaltungsgruppe durchgeführt werden. Jeder Azure AD-Mandant erhält eine einzelne Verwaltungsgruppe der obersten Ebene, die als Stammverwaltungsgruppe bezeichnet wird. Die Stammverwaltungsgruppe ist in die Hierarchie integriert, sodass ihr alle Verwaltungsgruppen und Abonnements untergeordnet sind. Diese Gruppe ermöglicht das Anwenden von globalen Richtlinien und RBAC-Zuweisungen auf Verzeichnisebene. 
+Azure-Verwaltungsgruppen ermöglichen Ihnen das effiziente Verwalten der Bereiche Zugriff, Richtlinien und Berichterstellung für Gruppen von Abonnements sowie das effektive Verwalten der gesamten Azure-Umgebung, indem Aktionen für die Stammverwaltungsgruppe durchgeführt werden. Jeder Azure AD-Mandant erhält eine einzelne Verwaltungsgruppe der obersten Ebene, die als Stammverwaltungsgruppe bezeichnet wird. Die Stammverwaltungsgruppe ist in die Hierarchie integriert, sodass ihr alle Verwaltungsgruppen und Abonnements untergeordnet sind. Diese Gruppe ermöglicht das Anwenden von globalen Richtlinien und Azure-Rollenzuweisungen auf Verzeichnisebene. 
 
 Die Stammverwaltungsgruppe wird automatisch erstellt, wenn Sie die folgenden Aktionen durchführen: 
 1. Aktivieren Sie die Nutzung von Azure-Verwaltungsgruppen, indem Sie im [Azure-Portal](https://portal.azure.com) zu **Verwaltungsgruppen** navigieren.
@@ -60,10 +60,10 @@ Sie können Abonnements in Verwaltungsgruppen organisieren und Ihre Governanceri
 
 ## <a name="grant-tenant-level-visibility-and-the-ability-to-assign-policies"></a>Gewähren der Sichtbarkeit auf Mandantenebene und der Möglichkeit zum Zuweisen von Richtlinien
 
-Eine RBAC-Rolle mit ausreichenden Leseberechtigungen muss für die Stammverwaltungsgruppe zugewiesen werden, um Sichtbarkeit für den Sicherheitsstatus aller Abonnements zu erzielen, die unter dem Azure AD-Mandanten registriert sind.
+Eine Azure-Rolle mit ausreichenden Leseberechtigungen muss für die Stammverwaltungsgruppe zugewiesen werden, um Sichtbarkeit für den Sicherheitsstatus aller Abonnements zu erzielen, die unter dem Azure AD-Mandanten registriert sind.
 
 ### <a name="elevate-access-for-a-global-administrator-in-azure-active-directory"></a>Erhöhen der Zugriffsrechte für einen globalen Administrator in Azure Active Directory
-Ein Azure Active Directory-Mandantenadministrator hat keinen direkten Zugriff auf Azure-Abonnements. Als Verzeichnisadministrator können diese Personen aber ihre Rechte erhöhen und sich eine Rolle zuweisen, mit der der Zugriff möglich ist. Ein Azure AD-Mandantenadministrator muss für sich auf der Ebene der Stammverwaltungsgruppe das Höherstufen auf den Benutzerzugriffsadministrator durchführen, um RBAC-Rollen zuweisen zu können. Eine PowerShell-Anleitung und weitere Informationen finden Sie unter [Erhöhen der Zugriffsrechte für einen globalen Administrator in Azure Active Directory](../role-based-access-control/elevate-access-global-admin.md). 
+Ein Azure Active Directory-Mandantenadministrator hat keinen direkten Zugriff auf Azure-Abonnements. Als Verzeichnisadministrator können diese Personen aber ihre Rechte erhöhen und sich eine Rolle zuweisen, mit der der Zugriff möglich ist. Ein Azure AD-Mandantenadministrator muss für sich auf der Ebene der Stammverwaltungsgruppe das Höherstufen auf den Benutzerzugriffsadministrator durchführen, um Azure-Rollen zuweisen zu können. Eine PowerShell-Anleitung und weitere Informationen finden Sie unter [Erhöhen der Zugriffsrechte für einen globalen Administrator in Azure Active Directory](../role-based-access-control/elevate-access-global-admin.md). 
 
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) oder [Azure Active Directory Admin Center](https://aad.portal.azure.com) an.
@@ -87,11 +87,11 @@ Ein Azure Active Directory-Mandantenadministrator hat keinen direkten Zugriff au
 5. Führen Sie die Aufgaben aus, die Sie mit erhöhten Zugriffsrechten vornehmen müssen. Wenn Sie fertig sind, können Sie wieder **Nein** festlegen.
 
 
-### <a name="assign-rbac-roles-to-users"></a>Zuweisen von RBAC-Rollen für Benutzer
-Um die Sichtbarkeit aller Abonnements zu erzielen, müssen Mandantenadministratoren jedem Benutzer, dem mandantenweite Sichtbarkeit gewährt werden soll, eine geeignete RBAC-Rolle auf der Stammebene der Verwaltungsgruppe zuweisen (auch sich selbst). Die empfohlenen Rollen, die zugewiesen werden sollten, sind **Sicherheitsadministrator** oder **Sicherheitsleseberechtigter**. Im Allgemeinen ist die Rolle „Sicherheitsadministrator“ erforderlich, um Richtlinien auf der Stammebene anzuwenden, während „Sicherheitsleseberechtigter“ ausreicht, um Sichtbarkeit für die Mandantenebene bereitzustellen. Weitere Informationen zu den Berechtigungen, die durch diese Rollen gewährt werden, finden Sie in der [Beschreibung der integrierten Rolle „Sicherheitsadministrator“](../role-based-access-control/built-in-roles.md#security-admin) bzw. in der [Beschreibung der integrierten Rolle „Sicherheitsleseberechtigter“](../role-based-access-control/built-in-roles.md#security-reader).
+### <a name="assign-azure-roles-to-users"></a>Zuweisen von Azure-Rollen zu Benutzern
+Um die Sichtbarkeit aller Abonnements zu erzielen, müssen Mandantenadministratoren jedem Benutzer, dem mandantenweite Sichtbarkeit gewährt werden soll, eine geeignete Azure-Rolle auf der Stammebene der Verwaltungsgruppe zuweisen (auch sich selbst). Die empfohlenen Rollen, die zugewiesen werden sollten, sind **Sicherheitsadministrator** oder **Sicherheitsleseberechtigter**. Im Allgemeinen ist die Rolle „Sicherheitsadministrator“ erforderlich, um Richtlinien auf der Stammebene anzuwenden, während „Sicherheitsleseberechtigter“ ausreicht, um Sichtbarkeit für die Mandantenebene bereitzustellen. Weitere Informationen zu den Berechtigungen, die durch diese Rollen gewährt werden, finden Sie in der [Beschreibung der integrierten Rolle „Sicherheitsadministrator“](../role-based-access-control/built-in-roles.md#security-admin) bzw. in der [Beschreibung der integrierten Rolle „Sicherheitsleseberechtigter“](../role-based-access-control/built-in-roles.md#security-reader).
 
 
-#### <a name="assign-rbac-roles-to-users-through-the-azure-portal"></a>Weisen Sie Benutzern RBAC-Rollen über das Azure-Portal zu: 
+#### <a name="assign-azure-roles-to-users-through-the-azure-portal"></a>Weisen Sie Benutzern Azure-Rollen über das Azure-Portal zu: 
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. 
 1. Wählen Sie zum Anzeigen von Verwaltungsgruppen **Alle Dienste** im Azure-Hauptmenü und dann **Verwaltungsgruppen** aus.
@@ -108,7 +108,7 @@ Um die Sichtbarkeit aller Abonnements zu erzielen, müssen Mandantenadministrato
    ![Screenshot zum Hinzufügen der Rolle „Sicherheitsleseberechtigter“](./media/security-center-management-groups/asc-security-reader.png)
 
 
-#### <a name="assign-rbac-roles-to-users-with-powershell"></a>Weisen Sie Benutzern RBAC-Rollen mit PowerShell zu: 
+#### <a name="assign-azure-roles-to-users-with-powershell"></a>Weisen Sie Benutzern Azure-Rollen mit PowerShell zu: 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -155,7 +155,7 @@ Wenn Sie erhöhte Zugriffsrechte besitzen, können Sie Azure Security Center öf
     ![Screenshot: Liste zur Abonnementabdeckung](./media/security-center-management-groups/security-center-coverage.png)
 
 ### <a name="remove-elevated-access"></a>Entfernen der erhöhten Zugriffsrechte 
-Nachdem den Benutzern die RBAC-Rollen zugewiesen wurden, sollte der Mandantenadministrator für sich selbst die Rolle „Benutzerzugriffsadministrator“ entfernen.
+Nachdem den Benutzern die Azure-Rollen zugewiesen wurden, sollte der Mandantenadministrator für sich selbst die Rolle „Benutzerzugriffsadministrator“ entfernen.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) oder [Azure Active Directory Admin Center](https://aad.portal.azure.com) an.
 
@@ -183,7 +183,7 @@ Sie können Abonnements der von Ihnen erstellten Verwaltungsgruppe hinzufügen. 
 4. Wiederholen Sie die Schritte 1 bis 3, bis Sie alle betreffenden Abonnements hinzugefügt haben.
 
    > [!NOTE]
-   > Verwaltungsgruppen können sowohl Abonnements als auch untergeordnete Verwaltungsgruppen enthalten. Wenn Sie einem Benutzer eine RBAC-Rolle für die übergeordnete Verwaltungsgruppe zuweisen, wird der Zugriff von den Abonnements der untergeordneten Verwaltungsgruppe geerbt. Richtlinien, die für die übergeordnete Verwaltungsgruppe festgelegt werden, werden ebenfalls von den untergeordneten Elementen geerbt. 
+   > Verwaltungsgruppen können sowohl Abonnements als auch untergeordnete Verwaltungsgruppen enthalten. Wenn Sie einem Benutzer eine Azure-Rolle für die übergeordnete Verwaltungsgruppe zuweisen, wird der Zugriff von den Abonnements der untergeordneten Verwaltungsgruppe geerbt. Richtlinien, die für die übergeordnete Verwaltungsgruppe festgelegt werden, werden ebenfalls von den untergeordneten Elementen geerbt. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Artikel wurde beschrieben, wie Sie mandantenweite Sichtbarkeit für Azure Security Center erzielen. Weitere Informationen zu Security Center finden Sie in den folgenden Artikeln:
@@ -193,4 +193,3 @@ In diesem Artikel wurde beschrieben, wie Sie mandantenweite Sichtbarkeit für Az
 
 > [!div class="nextstepaction"]
 > [Verwalten von und Reagieren auf Sicherheitswarnungen in Azure Security Center](security-center-managing-and-responding-alerts.md)
-

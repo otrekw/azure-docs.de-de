@@ -5,13 +5,13 @@ author: shreyasharmamsft
 ms.author: shresha
 ms.service: time-series-insights
 ms.topic: conceptual
-ms.date: 07/07/2020
-ms.openlocfilehash: 73d5c3abb2edc940bee9727ce1f3b0c4e8e0a62e
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.date: 08/12/2020
+ms.openlocfilehash: d0a5b48e93e839b0a0adaf185700d7f60fec7948
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289942"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88140682"
 ---
 # <a name="time-series-model-variables"></a>Zeitreihenmodellvariablen
 
@@ -27,14 +27,14 @@ Die folgende Tabelle zeigt die Eigenschaften, die für die jeweilige Variablenar
 
 [![Tabelle für Zeitreihenmodellvariable](media/v2-update-tsm/time-series-model-variable-table.png)](media/v2-update-tsm/time-series-model-variable-table.png#lightbox)
 
-#### <a name="numeric-variables"></a>Numerische Variablen
+## <a name="numeric-variables"></a>Numerische Variablen
 
 | Variableneigenschaft | BESCHREIBUNG |
 | --- | ---|
 | Variablenfilter | Filter sind optionale Bedingungsklauseln, um die Anzahl von Zeilen zu beschränken, die bei der Berechnung berücksichtigt werden. |
 | Variablenwert | Für Berechnungen verwendete Telemetriewerte, die aus Geräten oder Sensoren stammen oder mithilfe von Zeitreihenausdrücken transformiert werden. Numerische Variablen müssen den Typ *Double* aufweisen.|
 | Variableninterpolation | Die Interpolation gibt an, wie ein Signal anhand von vorhandenen Daten rekonstruiert wird. Für numerische Variablen sind die Interpolationsoptionen *Schritt* und *linear* verfügbar. |
-| Variablenaggregation | Führen Sie Berechnungen über die unterstützten [Aggregationsfunktionen für numerische Variablen](https://docs.microsoft.com/rest/api/time-series-insights/preview#numeric-variable-kind-1) durch. |
+| Variablenaggregation | Führen Sie Berechnungen über die unterstützten [Aggregationsfunktionen für numerische Variablen](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax#numeric-variable-kind) durch. |
 
 Variablen entsprechen dem folgenden JSON-Beispiel:
 
@@ -57,7 +57,7 @@ Variablen entsprechen dem folgenden JSON-Beispiel:
 }
 ```
 
-#### <a name="categorical-variables"></a>Kategorische Variablen
+## <a name="categorical-variables"></a>Kategorische Variablen
 
 | Variableneigenschaft | BESCHREIBUNG |
 | --- | ---|
@@ -73,7 +73,7 @@ Variablen entsprechen dem folgenden JSON-Beispiel:
 "Status": {
   "kind": "categorical",
   "value": {
-     "tsx": "$event.Status.Long" 
+     "tsx": "$event.Status.Long"
 },
   "interpolation": {
     "kind": "step",
@@ -97,12 +97,12 @@ Variablen entsprechen dem folgenden JSON-Beispiel:
 }
 ```
 
-#### <a name="aggregate-variables"></a>Aggregieren von Variablen
+## <a name="aggregate-variables"></a>Aggregieren von Variablen
 
 | Variableneigenschaft | BESCHREIBUNG |
 | --- | ---|
 | Variablenfilter | Filter sind optionale Bedingungsklauseln, um die Anzahl von Zeilen zu beschränken, die bei der Berechnung berücksichtigt werden. |
-| Variablenaggregation | Führen Sie Berechnungen über die unterstützten [Aggregationsfunktionen für aggregierte Variablen](https://docs.microsoft.com/rest/api/time-series-insights/preview#aggregate-variable-kind-1) durch. |
+| Variablenaggregation | Führen Sie Berechnungen über die unterstützten [Aggregationsfunktionen für aggregierte Variablen](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax#aggregate-variable-kind) durch. |
 
 Variablen entsprechen dem folgenden JSON-Beispiel:
 
@@ -123,4 +123,3 @@ Variablen werden in der Typdefinition eines Zeitreihenmodells gespeichert und k�
 * Erfahren Sie mehr über [Zeitreihenmodelle](./concepts-model-overview.md).
 
 * Erfahren Sie mehr darüber, wie Sie mithilfe von [Abfrage-APIs](./concepts-query-overview.md) Variablen inline definieren.
-

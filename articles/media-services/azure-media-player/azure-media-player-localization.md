@@ -6,14 +6,14 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: reference
 ms.date: 04/20/2020
-ms.openlocfilehash: ca4dc888af414ede270118eff72652f098d3306c
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: 8a459d1fba4353b4b3e092e83a759314cc455ead
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82779041"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087287"
 ---
-# <a name="localization"></a>Lokalisierung #
+# <a name="azure-media-player-localization"></a>Azure Media Player-Lokalisierung #
 
 Die Unterstützung mehrerer Sprachen ermöglicht Benutzern aus nicht englischsprachigen Gebieten die native Interaktion mit dem Player. Azure Media Player wird mit einem globalen Sprachwörterbuch instanziiert, wodurch lokalisierte Fehlermeldungen ausgehend von der Sprache der Seite zur Verfügung stehen. Entwickler können außerdem eine Playerinstanz mit einer erzwungenen festgelegten Sprache erstellen. Die Standardsprache ist Englisch (en).
 

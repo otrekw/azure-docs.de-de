@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: TomSh
-ms.openlocfilehash: 0bcc67e80861df2827237298444175c3abdb6602
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 42582c9474647c4c203bd0cafae0be664398ba41
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87084046"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533902"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Isolation in der öffentlichen Azure-Cloud
 
@@ -76,9 +76,9 @@ Azure RBAC verfügt über drei grundlegende Rollen, die für alle Ressourcentype
 
 - **Leser** können vorhandene Azure-Ressourcen anzeigen.
 
-![Rollenbasierte Zugriffssteuerung in Azure](./media/isolation-choices/azure-isolation-fig3.png)
+![Rollenbasierte Zugriffssteuerung von Azure (Azure RBAC)](./media/isolation-choices/azure-isolation-fig3.png)
 
-Die verbleibenden RBAC-Rollen in Azure ermöglichen die Verwaltung von bestimmten Azure-Ressourcen. Mit der Rolle „Mitwirkender von virtuellen Computern“ können Benutzer beispielsweise virtuelle Computer erstellen und verwalten. Sie haben damit keinen Zugriff auf das virtuelle Azure-Netzwerk oder das Subnetz, mit dem der virtuelle Computer verbunden ist.
+Die verbleibenden Azure-Rollen in Azure ermöglichen die Verwaltung von bestimmten Azure-Ressourcen. Mit der Rolle „Mitwirkender von virtuellen Computern“ können Benutzer beispielsweise virtuelle Computer erstellen und verwalten. Sie haben damit keinen Zugriff auf das virtuelle Azure-Netzwerk oder das Subnetz, mit dem der virtuelle Computer verbunden ist.
 
 Unter [Integrierte Rollen für die rollenbasierte Zugriffssteuerung in Azure](../../role-based-access-control/built-in-roles.md) sind die Rollen aufgeführt, die in Azure verfügbar sind. Hierbei werden die Vorgänge und der Bereich angegeben, die mit jeder integrierten Rolle für Benutzer gewährt werden. Wenn Sie Ihre eigenen Rollen definieren möchten, um eine noch bessere Kontrolle zu haben, helfen Ihnen die Informationen zum Erstellen von [benutzerdefinierten Rollen in Azure RBAC](../../role-based-access-control/custom-roles.md)weiter.
 

@@ -3,12 +3,12 @@ title: Allgemeine Fragen zu VMware-Notfallwiederherstellung mit Azure Site Recov
 description: Hier erhalten Sie Antworten auf allgemeine Fragen zur Notfallwiederherstellung von lokalen virtuellen VMware-Computern in Azure mithilfe von Azure Site Recovery.
 ms.date: 11/14/2019
 ms.topic: conceptual
-ms.openlocfilehash: a523df21caca2a6def4274542979e9963345384b
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 603dc77e6f2a53abb1d65688ced77e58297b8ab5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135162"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086148"
 ---
 # <a name="common-questions-about-vmware-to-azure-replication"></a>Allgemeine Fragen zur VMware-zu-Azure-Replikation
 
@@ -181,6 +181,10 @@ Nein. Eine Änderung von VMware Vcenter oder der Migration beeinträchtigt die l
 ### <a name="can-i-replicate-to-a-cache-or-target-storage-account-that-has-a-virtual-network-with-azure-firewalls-configured-on-it"></a>Kann ich die Replikation in einem Cache oder einem Zielspeicherkonto durchführen, für den bzw. das ein virtuelles Netzwerk (mit Azure Firewalls) konfiguriert ist?
 
 Nein, Site Recovery unterstützt keine Replikation zu Azure Storage über virtuelle Netzwerke.
+
+### <a name="what-is-the-frequency-of-generation-of-crash-consistent-recovery-points"></a>Wie häufig wird ein absturzkonsistenter Wiederherstellungspunkt generiert?
+
+Site Recovery generiert alle 5 Minuten einen absturzkonsistenten Wiederherstellungspunkt.
 
 ## <a name="component-upgrade"></a>Upgrade von Komponenten
 

@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.subservice: azuread-dev
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/26/2019
+ms.date: 07/17/2020
 ms.author: ryanwi
 ms.reviewer: saeeda, hirsin, jmprieur, sureshja, jesakowi, lenalepa, kkrishna, negoe
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: 67a54a2cd4fa071fd47bcebb9aa53fd11fefd61e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c6e59ab0432ad2b7bdccb5ce9916e85eb6d95048
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80154915"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88116392"
 ---
 # <a name="why-update-to-microsoft-identity-platform-v20"></a>Gründe für eine Aktualisierung auf die Microsoft Identity Platform (v2.0)
 
@@ -33,9 +33,9 @@ Beim Entwickeln einer neuen Anwendung ist es wichtig, dass Sie die Unterschiede 
 
 * Beim v1.0-Endpunkt ist die Anmeldung an Ihrer Anwendung (Azure AD) nur mit Geschäfts-, Schul- und Unikonten möglich.
 * Beim Microsoft Identity Platform-Endpunkt ist die Anmeldung mit Geschäfts-, Schul- und Unikonten über Azure AD und mit persönlichen Microsoft-Konten (MSA) (z. B. hotmail.com, outlook.com und msn.com) möglich.
-* Für beide Endpunkte werden außerdem Anmeldungen von *[Gastbenutzern](https://docs.microsoft.com/azure/active-directory/b2b/what-is-b2b)* eines Azure AD-Verzeichnisses für Anwendungen akzeptiert, die für *[einen Mandanten](../develop/single-and-multi-tenant-apps.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)* konfiguriert sind, oder für Anwendungen mit *mehreren Mandanten*, für die ein Verweis auf den mandantenspezifischen Endpunkt (`https://login.microsoftonline.com/{TenantId_or_Name}`) konfiguriert ist.
+* Für beide Endpunkte werden außerdem Anmeldungen von *[Gastbenutzern](../external-identities/what-is-b2b.md)* eines Azure AD-Verzeichnisses für Anwendungen akzeptiert, die für *[einen Mandanten](../develop/single-and-multi-tenant-apps.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)* konfiguriert sind, oder für Anwendungen mit *mehreren Mandanten*, für die ein Verweis auf den mandantenspezifischen Endpunkt (`https://login.microsoftonline.com/{TenantId_or_Name}`) konfiguriert ist.
 
-Mit dem Microsoft Identity Platform-Endpunkt können Sie Anwendungen schreiben, die Anmeldungen von persönlichen Microsoft-Konten sowie Geschäfts-, Schul- und Unikonten akzeptieren. Dies gibt Ihnen die Möglichkeit, Ihre Anwendung vollständig kontounabhängig zu schreiben. Wenn Ihre Anwendung beispielsweise [Microsoft Graph](https://graph.microsoft.io) aufruft, sind einige zusätzliche Funktionen und Daten für Geschäftskonten verfügbar, z.B. SharePoint-Websites oder Verzeichnisdaten. Aber für viele Aktionen, z.B. das [Lesen der E-Mail eines Benutzers](https://docs.microsoft.com/graph/api/user-list-messages?view=graph-rest-1.0), kann mit demselben Code auf E-Mails für persönliche Konten und auch für Geschäfts-, Schul- und Unikonten zugegriffen werden.
+Mit dem Microsoft Identity Platform-Endpunkt können Sie Anwendungen schreiben, die Anmeldungen von persönlichen Microsoft-Konten sowie Geschäfts-, Schul- und Unikonten akzeptieren. Dies gibt Ihnen die Möglichkeit, Ihre Anwendung vollständig kontounabhängig zu schreiben. Wenn Ihre Anwendung beispielsweise [Microsoft Graph](https://graph.microsoft.io) aufruft, sind einige zusätzliche Funktionen und Daten für Geschäftskonten verfügbar, z.B. SharePoint-Websites oder Verzeichnisdaten. Aber für viele Aktionen, z.B. das [Lesen der E-Mail eines Benutzers](/graph/api/user-list-messages?view=graph-rest-1.0), kann mit demselben Code auf E-Mails für persönliche Konten und auch für Geschäfts-, Schul- und Unikonten zugegriffen werden.
 
 Für den Microsoft Identity Platform-Endpunkt können Sie die Microsoft Authentication Library (MSAL) nutzen, um Zugriff auf die Bereiche für Konsumenten, Weiterbildung und Unternehmen zu erhalten. Der Azure AD v1.0-Endpunkt akzeptiert nur Anmeldungen von Geschäfts-, Schul- und Unikonten.
 
@@ -141,34 +141,7 @@ App-Registrierungen, die Geschäfts-, Schul- und Unikonten und persönliche Kont
 
 ### <a name="restrictions-on-redirect-urls"></a>Einschränkungen für Umleitungs-URLs
 
-Apps, die für die Microsoft Identity Platform registriert sind, sind auf einen begrenzten Satz von URL-Umleitungswerten beschränkt. Die Umleitungs-URL für Web-Apps und -Dienste muss mit dem Schema `https` beginnen, und alle Umleitungs-URL-Werte müssen dieselbe DNS-Domäne verwenden.  Das Registrierungssystem vergleicht den gesamten DNS-Namen der vorhandenen Umleitungs-URL mit dem DNS-Namen der von Ihnen hinzugefügten Umleitungs-URL. `http://localhost` wird auch als Umleitungs-URL unterstützt.  
-
-Die Anforderung zum Hinzufügen des DNS-Namens schlägt fehl, wenn eine der folgenden Bedingungen erfüllt ist:  
-
-* Der gesamte DNS-Name der neuen Umleitungs-URL entspricht nicht dem DNS-Namen der vorhandenen Umleitungs-URL.
-* Der gesamte DNS-Name der neuen Umleitungs-URL ist keine Unterdomäne der vorhandenen Umleitungs-URL.
-
-#### <a name="example-1"></a>Beispiel 1
-
-Wenn die Anwendung eine Umleitungs-URL von `https://login.contoso.com` hat, können Sie eine Umleitungs-URL hinzufügen, bei der der DNS-Name genau übereinstimmt, wie im folgenden Beispiel gezeigt:
-
-`https://login.contoso.com/new`
-
-Oder Sie können sich auf eine DNS-Unterdomäne von login.contoso.com beziehen, wie im folgenden Beispiel gezeigt:
-
-`https://new.login.contoso.com`
-
-#### <a name="example-2"></a>Beispiel 2
-
-Wenn Sie eine Anwendung verwenden möchten, für die `login-east.contoso.com` und `login-west.contoso.com` als Umleitungs-URLs angegeben sind, müssen Sie diese URLs in der folgenden Reihenfolge hinzufügen:
-
-`https://contoso.com`  
-`https://login-east.contoso.com`  
-`https://login-west.contoso.com`  
-
-Die beiden letztgenannten URLs können hinzugefügt werden, da es sich hierbei um Unterdomänen der ersten Umleitungs-URL „contoso.com“ handelt.
-
-Sie können nur 20 Antwort-URLs für eine bestimmte Anwendung haben – diese Begrenzung gilt für alle Anwendungstypen, die die Registrierung unterstützt (SPA, nativer Client, Web-App und Dienst).  
+Aktuelle Informationen zu Einschränkungen bei Umleitungs-URLs für Apps, die für die Microsoft Identity Platform registriert sind, finden Sie unter [Umleitungs-URI/Antwort-URL: Einschränkungen](../develop/reply-url.md) in der Dokumentation zu Microsoft Identity Platform.
 
 Informationen dazu, wie Sie eine App für die Nutzung mit der Microsoft Identity Platform registrieren, finden Sie unter [Schnellstart: Registrieren einer Anwendung bei Microsoft Identity Platform](../develop/quickstart-register-app.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json).
 

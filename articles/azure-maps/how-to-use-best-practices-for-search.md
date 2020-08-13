@@ -1,19 +1,19 @@
 ---
 title: Bewährte Methoden für den Azure Maps-Suchdienst | Microsoft Azure Maps
 description: Erfahren Sie, wie Sie beim Nutzen des Suchdiensts von Microsoft Azure Maps bewährte Methoden verwenden.
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 01/23/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 8f8f5a2f605f8e8b7109267e5223593eb1e2cfb9
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 5e98763a3a1c8273cdeec5e945dd324ae43e773f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84264365"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87064261"
 ---
 # <a name="best-practices-for-azure-maps-search-service"></a>Bewährte Methoden für den Suchdienst von Azure Maps
 
@@ -28,7 +28,7 @@ In diesem Artikel wird erläutert, wie Sie beim Aufrufen von Daten aus dem Suchd
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Um die Azure Maps-Dienst-APIs aufrufen zu können, benötigen Sie ein Azure Maps-Konto mit zugehörigem Schlüssel. Weitere Informationen finden Sie unter [Erstellen eines Kontos](quick-demo-map-app.md#create-an-account-with-azure-maps) und [Abrufen eines Primärschlüssels](quick-demo-map-app.md#get-the-primary-key-for-your-account). 
+Um die Azure Maps-Dienst-APIs aufrufen zu können, benötigen Sie ein Azure Maps-Konto mit zugehörigem Schlüssel. Weitere Informationen finden Sie unter [Erstellen eines Kontos](quick-demo-map-app.md#create-an-azure-maps-account) und [Abrufen eines Primärschlüssels](quick-demo-map-app.md#get-the-primary-key-for-your-account). 
 
 Informationen zur Authentifizierung in Azure Maps finden Sie unter [Verwalten der Authentifizierung in Azure Maps](./how-to-manage-authentication.md).
 
@@ -85,7 +85,7 @@ Es wird empfohlen, die Azure Maps-API für die [Fuzzysuche](https://docs.microso
 
 ### <a name="reverse-geocode-and-filter-for-a-geography-entity-type"></a>Inverser Geocode und Filter für einen Geografieentitätstyp
 
-Wenn Sie eine inverse Geocodesuche mit der [API für die umgekehrte Adresssuche](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) durchführen, kann der Dienst Polygone für Verwaltungsbereiche zurückgeben. Sie möchten beispielsweise das Flächenpolygon für eine Stadt abrufen. Nehmen Sie den Parameter `entityType` in Ihre Anforderungen auf, um die Suche auf bestimmte Geografieentitätstypen einzugrenzen. 
+Wenn Sie eine inverse Geocodesuche mit der [API für die umgekehrte Adresssuche](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) durchführen, kann der Dienst Polygone für Verwaltungsbereiche zurückgeben. Ein Beispiel: Sie möchten das Flächenpolygon für einen Ort abrufen. Nehmen Sie den Parameter `entityType` in Ihre Anforderungen auf, um die Suche auf bestimmte Geografieentitätstypen einzugrenzen. 
 
 Die resultierende Antwort enthält die Geografie-ID und den passenden Entitätstyp. Wenn Sie mehr als eine Entität angeben, gibt der Endpunkt die *kleinste verfügbare Entität* zurück. Sie können die zurückgegebene Geometrie-ID verwenden, um die Geometrie der Geografie über den [Dienst „Polygonsuche“](https://docs.microsoft.com/rest/api/maps/search/getsearchpolygon) abzurufen.
 

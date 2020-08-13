@@ -16,12 +16,12 @@ ms.date: 05/08/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 043c30af6d28e61a532c8030dabdc17b73303e7a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3b139441adb02f5fb33ae8c4a70aaa9b423f0d0e
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85360128"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87447092"
 ---
 # <a name="azure-ad-connect-enabling-device-writeback"></a>Azure AD Connect: Aktivieren des Geräterückschreibens
 > [!NOTE]
@@ -61,7 +61,7 @@ Installieren Sie Azure AD Connect mit benutzerdefinierten Einstellungen oder Ex
 
     a. **Anmeldeinformationen eines Unternehmensadministrators angeben**: Wenn die Anmeldeinformationen eines Unternehmensadministrators für die Gesamtstruktur angegeben werden, für die Geräte zurückgeschrieben werden müssen, bereitet Azure AD Connect die Gesamtstruktur während der Konfiguration des Geräterückschreibens automatisch vor.
 
-    b. **PowerShell-Skript herunterladen**: Azure AD Connect generiert automatisch ein PowerShell-Skript, mit dem Active Directory für das Geräterückschreiben vorbereitet werden kann. Falls die Anmeldeinformationen eines Unternehmensadministrators in Azure AD Connect nicht angegeben werden können, wird vorgeschlagen, das PowerShell-Skript herunterzuladen. Stellen Sie das heruntergeladene PowerShell-Skript **CreateDeviceContainer.psq** für den Unternehmensadministrator der Gesamtstruktur bereit, in die das Rückschreiben der Geräte erfolgt.
+    b. **PowerShell-Skript herunterladen**: Azure AD Connect generiert automatisch ein PowerShell-Skript, mit dem Active Directory für das Geräterückschreiben vorbereitet werden kann. Falls die Anmeldeinformationen eines Unternehmensadministrators in Azure AD Connect nicht angegeben werden können, wird vorgeschlagen, das PowerShell-Skript herunterzuladen. Stellen Sie das heruntergeladene PowerShell-Skript **CreateDeviceContainer.ps1** für den Unternehmensadministrator der Gesamtstruktur bereit, in die das Rückschreiben der Geräte erfolgt.
     ![Vorbereiten der Active Directory-Gesamtstruktur](./media/how-to-connect-device-writeback/devicecontainercreds.png)
     
     Zur Vorbereitung der Active Directory-Gesamtstruktur werden die folgenden Vorgänge durchgeführt:

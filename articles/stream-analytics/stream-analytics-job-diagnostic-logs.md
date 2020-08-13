@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: troubleshooting
 ms.date: 06/18/2020
-ms.openlocfilehash: 2fb1f22fd555e8ddbdc04842906cddb990956fb5
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 6d0a778dee31d93244479c08c7bb7b6f37cf49cb
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86044514"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319353"
 ---
 # <a name="troubleshoot-azure-stream-analytics-by-using-resource-logs"></a>Problembehandlung von Azure Stream Analytics mit Ressourcenprotokollen
 
@@ -59,7 +59,7 @@ Aktivitätsprotokolle sind standardmäßig aktiviert und geben allgemeine Einbli
 
 Sie sollten unbedingt Ressourcenprotokolle aktivieren und an Azure Monitor-Protokolle senden. Sie sind standardmäßig **deaktiviert**. Um sie zu aktivieren, führen Sie die folgenden Schritte aus:
 
-1.  Falls Sie noch nicht über einen Arbeitsbereich verfügen, [erstellen Sie einen Log Analytics-Arbeitsbereich](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace). Es wird empfohlen, dass sich Ihr Log Analytics-Arbeitsbereich in derselben Region befindet, in der auch Ihr Stream Analytics-Auftrag ausgeführt wird.
+1.  Sofern nicht bereits geschehen, erstellen Sie einen Log Analytics-Arbeitsbereich. Es wird empfohlen, dass sich Ihr Log Analytics-Arbeitsbereich in derselben Region befindet, in der auch Ihr Stream Analytics-Auftrag ausgeführt wird.
 
 2.  Melden Sie sich im Azure-Portal an, und navigieren Sie zu Ihrem Stream Analytics-Auftrag. Wählen Sie unter **Überwachung** die Option **Diagnoseprotokolle** aus. Wählen Sie dann **Diagnose aktivieren** aus.
 
@@ -138,12 +138,9 @@ Name | BESCHREIBUNG
 Fehler | (optional) Fehlerinformationen. In der Regel sind dies Ausnahmeinformationen, sofern diese verfügbar sind.
 `Message`| Protokollmeldung.
 type | Meldungstyp. Wird der internen Kategorisierung von Fehlern zugeordnet. Beispiele: **JobValidationError** oder **BlobOutputAdapterInitializationFailure**.
-Korrelations-ID | Ein [GUID](https://en.wikipedia.org/wiki/Universally_unique_identifier)-Wert, der die Auftragsausführung eindeutig identifiziert. Alle Ausführungsprotokolleinträge ab dem Zeitpunkt, an dem der Auftrag gestartet wird, bis zum Beenden des Auftrags weisen denselben Wert für **Korrelations-ID** auf.
+Korrelations-ID | GUID, die die Auftragsausführung eindeutig identifiziert. Alle Ausführungsprotokolleinträge ab dem Zeitpunkt, an dem der Auftrag gestartet wird, bis zum Beenden des Auftrags weisen denselben Wert für **Korrelations-ID** auf.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Einführung in Azure Stream Analytics](stream-analytics-introduction.md)
-* [Erste Schritte mit Stream Analytics](stream-analytics-real-time-fraud-detection.md)
-* [Skalieren von Stream Analytics-Aufträgen](stream-analytics-scale-jobs.md)
-* [Referenz zur Stream Analytics-Abfragesprache](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Datenfehler in Azure Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/data-errors)
+* [Referenz zur Stream Analytics-Abfragesprache](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)

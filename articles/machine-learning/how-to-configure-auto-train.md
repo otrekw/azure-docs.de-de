@@ -8,15 +8,15 @@ ms.reviewer: nibaccam
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
 ms.date: 05/20/2020
-ms.custom: seodec18, tracking-python
-ms.openlocfilehash: 528696daf4bddd1f448266243b511e600351606a
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.topic: conceptual
+ms.custom: how-to, devx-track-python
+ms.openlocfilehash: 025d3b1e0ce2f46cc689d74fe659facf026dc215
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86202605"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87852496"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Konfigurieren automatisierter ML-Experimente in Python
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -212,26 +212,26 @@ Beim Konfigurieren Ihrer Experimente im Objekt `AutoMLConfig` können Sie die Ei
 Der `forecasting`-Zeitreihentask erfordert zusätzliche Parameter im Konfigurationsobjekt:
 
 1. `time_column_name`: Dies ist ein erforderlicher Parameter, der den Namen der Spalte in Ihren Trainingsdaten mit einer gültigen Zeitreihe definiert.
-1. `max_horizon`: Definiert die Zeitspanne, die Sie basierend auf der Periodizität der Trainingsdaten vorhersagen möchten. Wenn z. B. Trainingsdaten mit täglichen Aggregationsintervallen vorliegen, legen Sie fest, für wie viele Tage das Modell im voraus trainieren soll.
-1. `grain_column_names`: Definiert den Namen von Spalten, die in Ihren Trainingsdaten einzelne Zeitreihendaten enthalten. Wenn Sie z. B. den Umsatz einer bestimmten Marke nach Filialen vorhersagen, würden Sie Filial- und Markenspalten als Aggregationsspalten definieren. Für jede Körnung/Gruppierung werden separate Zeitreihen und Prognosen erstellt. 
+1. `forecast_horizon`: Definiert die Anzahl der Zeiträume, die Sie vorhersagen möchten. Der ganzzahlige Horizontwert wird in Einheiten der Zeitreihenhäufigkeit angegeben. Wenn z. B. Trainingsdaten mit täglicher Häufigkeit vorliegen, legen Sie fest, für wie viele Tage das Modell im voraus trainieren soll.
+1. `time_series_id_column_names`: Definiert die Spalten, die die Zeitreihe in Daten eindeutig identifizieren, die mehrere Zeilen mit demselben Zeitstempel aufweisen. Wenn Sie z. B. den Umsatz einer bestimmten Marke nach Filialen vorhersagen, würden Sie Filial- und Markenspalten als Zeitreihenbezeichner definieren. Für jede Gruppierung werden separate Vorhersagen erstellt. Ohne definierte Zeitreihenbezeichner wird bei dem Dataset von einer einzelnen Zeitreihe ausgegangen.
 
 Beispiele für die unten verwendeten Einstellungen finden Sie im [Beispiel-Notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-orange-juice-sales/auto-ml-forecasting-orange-juice-sales.ipynb).
 
 ```python
-# Setting Store and Brand as grains for training.
-grain_column_names = ['Store', 'Brand']
-nseries = data.groupby(grain_column_names).ngroups
+# Setting Store and Brand as time series identifiers for training.
+time_series_id_column_names = ['Store', 'Brand']
+nseries = data.groupby(time_series_id_column_names).ngroups
 
-# View the number of time series data with defined grains
+# View the number of time series data with defined time series identifiers
 print('Data contains {0} individual time-series.'.format(nseries))
 ```
 
 ```python
 time_series_settings = {
     'time_column_name': time_column_name,
-    'grain_column_names': grain_column_names,
+    'time_series_id_column_names': time_series_id_column_names,
     'drop_column_names': ['logQuantity'],
-    'max_horizon': n_test_periods
+    'forecast_horizon': n_test_periods
 }
 
 automl_config = AutoMLConfig(task = 'forecasting',
@@ -342,7 +342,7 @@ Es gibt einige Optionen, die Sie definieren können, um Ihr Experiment zu beende
 
 ### <a name="explore-model-metrics"></a>Untersuchen von Modellmetriken
 
-Sie können Ihre Trainingsergebnisse in einem Widget oder in der Inlineansicht anzeigen, wenn Sie ein Notebook verwenden. Weitere Details finden Sie unter [Verfolgen und Auswerten von Modellen](how-to-track-experiments.md#view-run-details).
+Sie können Ihre Trainingsergebnisse in einem Widget oder in der Inlineansicht anzeigen, wenn Sie ein Notebook verwenden. Weitere Details finden Sie unter [Verfolgen und Auswerten von Modellen](how-to-monitor-view-training-logs.md#monitor-automated-machine-learning-runs).
 
 Details zum Herunterladen oder Registrieren eines Modells für die Bereitstellung in einem Webdienst finden Sie unter [Wie und wo Modelle bereitgestellt werden](how-to-deploy-and-where.md).
 

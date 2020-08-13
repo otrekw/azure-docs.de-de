@@ -3,12 +3,12 @@ title: Exportieren aus Application Insights nach SQL | Microsoft-Dokumentation
 description: Exportiere Sie Application Insights-Daten kontinuierlich in SQL mit Stream Analytics.
 ms.topic: conceptual
 ms.date: 09/11/2017
-ms.openlocfilehash: 4975d91cc20b81de302a1dd0cb7b3326878a96a1
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 9c559a61794b36ea1bc33abc14271151fbea9d4c
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86540093"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87311227"
 ---
 # <a name="walkthrough-export-to-sql-from-application-insights-using-stream-analytics"></a>Exemplarische Vorgehensweise: Exportieren aus Application Insights in SQL mit Stream Analytics
 In diesem Artikel wird veranschaulicht, wie Sie Telemetriedaten aus [Azure Application Insights][start] mithilfe von [fortlaufendem Export][export] und [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) in Azure SQL-Datenbank verschieben. 
@@ -24,9 +24,9 @@ In diesem Beispiel verwenden wir die Seitenzugriffsdaten. Dasselbe Muster kann j
 ## <a name="add-application-insights-to-your-application"></a>Hinzufügen von Application Insights zu Ihrer Anwendung
 Erste Schritte:
 
-1. [Richten Sie Application Insights für Ihre Webseiten ein](../../azure-monitor/app/javascript.md). 
+1. [Richten Sie Application Insights für Ihre Webseiten ein](./javascript.md). 
    
-    (In diesem Beispiel konzentrieren wir uns auf die Verarbeitung von Seitenansichtsdaten von Clientbrowsern, allerdings könnten Sie Application Insights auch für die Serverseite Ihrer [Java](../../azure-monitor/app/java-get-started.md)- oder [ASP.NET](../../azure-monitor/app/asp-net.md)-App einrichten und Anforderung, Abhängigkeit und andere Servertelemetrie verarbeiten.)
+    (In diesem Beispiel konzentrieren wir uns auf die Verarbeitung von Seitenansichtsdaten von Clientbrowsern, allerdings könnten Sie Application Insights auch für die Serverseite Ihrer [Java](./java-get-started.md)- oder [ASP.NET](./asp-net.md)-App einrichten und Anforderung, Abhängigkeit und andere Servertelemetrie verarbeiten.)
 2. Veröffentlichen Sie Ihre App, und beobachten Sie die Telemetriedaten, die in Ihrer Application Insights-Ressource angezeigt werden.
 
 ## <a name="create-storage-in-azure"></a>Erstellen von Speicher in Azure
@@ -61,7 +61,7 @@ Durch fortlaufende Exportaktivitäten werden Daten an ein Azure-Speicherkonto ü
     ![Wählen Sie Ereignistypen aus.](./media/code-sample-export-sql-stream-analytics/085-types.png)
 
 
-1. Warten Sie, bis sich einige Daten angesammelt haben. Lehnen Sie sich zurück, und lassen Sie Ihre Benutzer die Anwendung eine Weile lang verwenden. Telemetriedaten gehen ein, und Sie sehen statistische Diagramme im [Metrik-Explorer](../../azure-monitor/platform/metrics-charts.md) sowie einzelne Ereignisse in der [Diagnosesuche](../../azure-monitor/app/diagnostic-search.md). 
+1. Warten Sie, bis sich einige Daten angesammelt haben. Lehnen Sie sich zurück, und lassen Sie Ihre Benutzer die Anwendung eine Weile lang verwenden. Telemetriedaten gehen ein, und Sie sehen statistische Diagramme im [Metrik-Explorer](../platform/metrics-charts.md) sowie einzelne Ereignisse in der [Diagnosesuche](./diagnostic-search.md). 
    
     Darüber hinaus werden die Daten in Ihren Speicher exportiert. 
 2. Überprüfen Sie die exportierten Daten, entweder im Portal (wählen Sie **Durchsuchen**, anschließend Ihr Speicherkonto und dann **Container** aus) oder in Visual Studio. Wählen Sie in Visual Studio **Anzeigen/Cloud Explorer**, und öffnen Sie „Azure/Storage“. (Wenn diese Menüoption nicht verfügbar ist, müssen Sie das Azure SDK installieren: Öffnen Sie das Dialogfeld „Neues Projekt“ und anschließend „Visual C#/Cloud/Microsoft Azure SDK für .NET abrufen“.)
@@ -128,7 +128,7 @@ CREATE CLUSTERED INDEX [pvTblIdx] ON [dbo].[PageViewsTable]
 
 ![Erstellen einer PageViewsTable](./media/code-sample-export-sql-stream-analytics/34-create-table.png)
 
-In diesem Beispiel verwenden wir Daten aus Seitenaufrufen. Überprüfen Sie zum Anzeigen der anderen verfügbaren Daten die JSON-Ausgabe, und sehen Sie sich das [Exportdatenmodell](../../azure-monitor/app/export-data-model.md)an.
+In diesem Beispiel verwenden wir Daten aus Seitenaufrufen. Überprüfen Sie zum Anzeigen der anderen verfügbaren Daten die JSON-Ausgabe, und sehen Sie sich das [Exportdatenmodell](./export-data-model.md)an.
 
 ## <a name="create-an-azure-stream-analytics-instance"></a>Erstellen einer Azure Stream Analytics-Instanz
 Wählen Sie im [Azure-Portal](https://portal.azure.com/) den Azure Stream Analytics-Dienst aus, und erstellen Sie einen neuen Stream Analytics-Auftrag:
@@ -165,7 +165,7 @@ In diesem Beispiel:
 
 * `webapplication27` ist der Name der Application Insights-Ressource in **Kleinbuchstaben**. 
 * `1234...` ist der Instrumentierungsschlüssel der Application Insights-Ressource **ohne Bindestriche**. 
-* `PageViews` ist die Art der zu analysierenden Daten. Die verfügbaren Typen sind abhängig von dem Filter, den Sie im fortlaufenden Export festlegen. Untersuchen Sie die exportierten Daten, um die anderen verfügbaren Typen anzuzeigen, und sehen Sie sich das [Exportdatenmodell](../../azure-monitor/app/export-data-model.md)an.
+* `PageViews` ist die Art der zu analysierenden Daten. Die verfügbaren Typen sind abhängig von dem Filter, den Sie im fortlaufenden Export festlegen. Untersuchen Sie die exportierten Daten, um die anderen verfügbaren Typen anzuzeigen, und sehen Sie sich das [Exportdatenmodell](./export-data-model.md)an.
 * `/{date}/{time}` ist ein als Literal geschriebenes Muster.
 
 Um den Namen und iKey Ihrer Application Insights-Ressource zu erhalten, öffnen Sie auf der Seite "Übersicht" den Eintrag "Essentials", oder öffnen Sie "Einstellungen".
@@ -215,7 +215,7 @@ Ersetzen Sie die Standardabfrage durch folgende:
 
 ```
 
-Beachten Sie, dass die ersten Eigenschaften sich speziell auf die Seitenzugriffsdaten beziehen. Exporte anderer Telemetrietypen verfügen über andere Eigenschaften. Weitere Informationen finden Sie in der [detaillierten Datenmodellreferenz für die Eigenschaftstypen und -werte.](../../azure-monitor/app/export-data-model.md)
+Beachten Sie, dass die ersten Eigenschaften sich speziell auf die Seitenzugriffsdaten beziehen. Exporte anderer Telemetrietypen verfügen über andere Eigenschaften. Weitere Informationen finden Sie in der [detaillierten Datenmodellreferenz für die Eigenschaftstypen und -werte.](./export-data-model.md)
 
 ## <a name="set-up-output-to-database"></a>Einrichten der Ausgabe an die Datenbank
 Wählen Sie SQL als Ausgabe.
@@ -243,15 +243,16 @@ FROM [dbo].[PageViewsTable]
 ```
 
 ## <a name="related-articles"></a>Verwandte Artikel
-* [Exportieren in Power BI mit Stream Analytics](../../azure-monitor/app/export-power-bi.md )
-* [Detaillierte Datenmodellreferenz für die Eigenschaftstypen und -werte.](../../azure-monitor/app/export-data-model.md)
-* [Fortlaufender Export in Application Insights](../../azure-monitor/app/export-telemetry.md)
+* [Exportieren in Power BI mit Stream Analytics](./export-power-bi.md)
+* [Detaillierte Datenmodellreferenz für die Eigenschaftstypen und -werte.](./export-data-model.md)
+* [Fortlaufender Export in Application Insights](./export-telemetry.md)
 * [Application Insights](https://azure.microsoft.com/services/application-insights/)
 
 <!--Link references-->
 
-[diagnostic]: ../../azure-monitor/app/diagnostic-search.md
-[export]: ../../azure-monitor/app/export-telemetry.md
-[metrics]: ../../azure-monitor/platform/metrics-charts.md
+[diagnostic]: ./diagnostic-search.md
+[export]: ./export-telemetry.md
+[metrics]: ../platform/metrics-charts.md
 [portal]: https://portal.azure.com/
-[start]: ../../azure-monitor/app/app-insights-overview.md
+[start]: ./app-insights-overview.md
+

@@ -2,13 +2,13 @@
 title: Speicheraspekte für Azure Functions
 description: Erfahren Sie über die Speicheranforderungen von Azure Functions und über das Verschlüsseln gespeicherter Daten.
 ms.topic: conceptual
-ms.date: 01/21/2020
-ms.openlocfilehash: 324516240d09a5443908cbffec514e4caba2b604
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/27/2020
+ms.openlocfilehash: aefd9a35235a09d94973f383603349f6862bbdd9
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83648799"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318180"
 ---
 # <a name="storage-considerations-for-azure-functions"></a>Speicheraspekte für Azure Functions
 
@@ -18,12 +18,12 @@ Azure Functions erfordert ein Azure Storage-Konto, wenn Sie eine Funktions-App-I
 |Speicherdienst  | Verwendung in Functions  |
 |---------|---------|
 | [Azure Blob Storage](../storage/blobs/storage-blobs-introduction.md)     | Aufrechterhalten von Bindungszustand und Funktionsschlüsseln.  <br/>Wird auch von [Aufgabenhubs in Durable Functions](durable/durable-functions-task-hubs.md) verwendet. |
-| [Azure Files](../storage/files/storage-files-introduction.md)  | Dateifreigabe, die zum Speichern und Ausführen Ihres Funktions-App-Codes in einem [Verbrauchstarif](functions-scale.md#consumption-plan) verwendet wird. |
+| [Azure Files](../storage/files/storage-files-introduction.md)  | Dateifreigabe, die zum Speichern und Ausführen Ihres Funktions-App-Codes in einem [Verbrauchstarif](functions-scale.md#consumption-plan) und [Premium-Plan](functions-scale.md#premium-plan) verwendet wird. |
 | [Azure Queue Storage](../storage/queues/storage-queues-introduction.md)     | Wird von [Aufgabenhubs in Durable Functions](durable/durable-functions-task-hubs.md) verwendet.   |
 | [Azure Table Storage](../storage/tables/table-storage-overview.md)  |  Wird von [Aufgabenhubs in Durable Functions](durable/durable-functions-task-hubs.md) verwendet.       |
 
 > [!IMPORTANT]
-> Wenn der verbrauchsbasierte Hostingplan verwendet wird, werden die Funktionscode- und Bindungskonfigurationsdateien in Azure File Storage im Hauptspeicherkonto gespeichert. Wenn Sie das Hauptspeicherkonto löschen, wird dieser Inhalt ebenfalls gelöscht und kann nicht wiederhergestellt werden.
+> Wenn der verbrauchsbasierte Premium-Hostingplan verwendet wird, werden die Funktionscode- und Bindungskonfigurationsdateien in Azure File Storage im Hauptspeicherkonto gespeichert. Wenn Sie das Hauptspeicherkonto löschen, wird dieser Inhalt ebenfalls gelöscht und kann nicht wiederhergestellt werden.
 
 ## <a name="storage-account-requirements"></a>Anforderungen an das Speicherkonto
 
@@ -41,7 +41,7 @@ Jede Funktions-App benötigt für den Betrieb ein Speicherkonto. Wenn dieses Kon
 
 Die Speicherkontoverbindung wird in der Anwendungseinstellung [AzureWebJobsStorage](./functions-app-settings.md#azurewebjobsstorage) verwaltet. 
 
-Die Verbindungszeichenfolgen für das Speicherkonto muss aktualisiert werden, wenn Sie Speicherschlüssel neu generieren. [Erfahren Sie hier mehr über die Verwaltung von Speicherschlüsseln](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account).
+Die Verbindungszeichenfolgen für das Speicherkonto muss aktualisiert werden, wenn Sie Speicherschlüssel neu generieren. [Erfahren Sie hier mehr über die Verwaltung von Speicherschlüsseln](../storage/common/storage-account-create.md).
 
 ### <a name="shared-storage-accounts"></a>Freigegebene Speicherkonten
 
@@ -80,5 +80,3 @@ Weitere Informationen zu Hostingoptionen von Azure Functions.
 
 > [!div class="nextstepaction"]
 > [Skalierung und Hosting von Azure Functions](functions-scale.md)
-
-

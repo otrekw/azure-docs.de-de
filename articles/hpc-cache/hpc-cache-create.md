@@ -4,18 +4,18 @@ description: Hier erfahren Sie, wie Sie eine Azure HPC Cache-Instanz erstellen.
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 06/01/2020
+ms.date: 07/10/2020
 ms.author: v-erkel
-ms.openlocfilehash: 894595ee3660532bf046a39e994fa669f7c6b002
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a988f08b2b6e30543c112b20e5b374130ceddc47
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84434108"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092489"
 ---
 # <a name="create-an-azure-hpc-cache"></a>Erstellen einer Azure HPC Cache-Instanz
 
-Erstellen Sie Ihren Cache mithilfe des Azure-Portals.
+Verwenden Sie das Azure-Portal oder die Azure CLI, um Ihren Cache zu erstellen.
 
 ![Screenshot: Cacheübersicht im Azure-Portal mit der Schaltfläche „Erstellen“ im unteren Bereich](media/hpc-cache-home-page.png)
 
@@ -23,11 +23,13 @@ Klicken Sie auf das Bild unten, um eine [Videodemonstration](https://azure.micro
 
 [![Videominiaturansicht: Azure HPC Cache: Setup (klicken Sie, um die Videoseite aufzurufen)](media/video-4-setup.png)](https://azure.microsoft.com/resources/videos/set-up-hpc-cache/)
 
+## <a name="portal"></a>[Portal](#tab/azure-portal)
+
 ## <a name="define-basic-details"></a>Definieren grundlegender Informationen
 
 ![Screenshot: Projektdetailseite im Azure-Portal](media/hpc-cache-create-basics.png)
 
-Wählen Sie auf der Seite **Projektdetails** das Abonnement und die Ressourcengruppe zum Hosten des Caches aus. Achten Sie darauf, dass sich das Abonnement in der [Zugriffsliste](hpc-cache-prereqs.md#azure-subscription) befindet.
+Wählen Sie auf der Seite **Projektdetails** das Abonnement und die Ressourcengruppe zum Hosten des Caches aus. Achten Sie darauf, dass sich das Abonnement in der [Zugriffsliste](hpc-cache-prerequisites.md#azure-subscription) befindet.
 
 Legen Sie unter **Dienstdetails** den Cachenamen sowie folgende weitere Attribute fest:
 
@@ -57,7 +59,7 @@ Mit Azure HPC Cache wird verwaltet, welche Dateien zwischengespeichert und vorab
 
 ## <a name="enable-azure-key-vault-encryption-optional"></a>Aktivieren der Azure Key Vault-Verschlüsselung (optional)
 
-Wenn sich Ihr Cache in einer Region befindet, die kundenseitig verwaltete Verschlüsselungsschlüssel unterstützt, wird die Seite **Datenträgerverschlüsselungsschlüssel** zwischen den Registerkarten **Cache** und **Tags** angezeigt. Zum Zeitpunkt der Veröffentlichung wird diese Option in den Regionen „USA, Osten“, „USA, Süden-Mitte“ und „USA, Westen 2“ unterstützt.
+Wenn sich Ihr Cache in einer Region befindet, die kundenseitig verwaltete Verschlüsselungsschlüssel unterstützt, wird die Seite **Datenträgerverschlüsselungsschlüssel** zwischen den Registerkarten **Cache** und **Tags** angezeigt. Weitere Informationen zur Unterstützung von Regionen finden Sie unter [Regionale Verfügbarkeit](hpc-cache-overview.md#region-availability).
 
 Wenn Sie die für Ihren Cachespeicher verwendeten Verschlüsselungsschlüssel verwalten möchten, geben Sie die Azure Key Vault-Informationen auf der Seite **Datenträgerverschlüsselungsschlüssel** an. Der Schlüsseltresor muss sich in derselben Region und im selben Abonnement befinden wie der Cache.
 
@@ -95,6 +97,99 @@ Wenn die Erstellung abgeschlossen ist, wird eine Benachrichtigung mit einem Link
 
 > [!NOTE]
 > Wenn für Ihren Cache kundenseitig verwaltete Verschlüsselungsschlüssel verwendet werden, wird der Cache möglicherweise in der Ressourcenliste aufgeführt, bevor der Bereitstellungsstatus in „Fertig“ geändert wird. Sobald der Status des Caches **Warten auf Schlüssel** lautet, können Sie ihn für die Verwendung des Schlüsseltresors [autorisieren](customer-keys.md#3-authorize-azure-key-vault-encryption-from-the-cache).
+
+## <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+
+## <a name="create-the-cache-with-azure-cli"></a>Erstellen des Caches mit der Azure CLI
+
+[!INCLUDE [cli-reminder.md](includes/cli-reminder.md)]
+
+> [!NOTE]
+> Die Azure CLI unterstützt derzeit die Erstellung eines Caches mit kundenseitig verwalteten Verschlüsselungsschlüsseln nicht. Verwenden Sie dafür das Azure-Portal.
+
+Verwenden Sie den Befehl [az hpc-cache create](/cli/azure/ext/hpc-cache/hpc-cache#ext-hpc-cache-az-hpc-cache-create), um einen neuen Azure HPC Cache zu erstellen.
+
+Geben Sie die folgenden Werte an:
+
+* Name der Cacheressourcengruppe
+* Cachename
+* Azure-Region
+* Cachesubnetz im folgenden Format:
+
+  ``--subnet "/subscriptions/<subscription_id>/resourceGroups/<cache_resource_group>/providers/Microsoft.Network/virtualNetworks/<virtual_network_name>/sub
+nets/<cache_subnet_name>"``
+
+  Das Cachesubnetz benötigt mindestens 64 IP-Adressen (/24) und kann keine anderen Ressourcen hosten.
+
+* Cachekapazität: zwei Werte legen den maximalen Durchsatz Ihrer Azure HPC Cache-Instanz fest:
+
+  * Die Cachegröße (in GB)
+  * Die SKU der in der Cache-Infrastruktur verwendeten VMs
+
+  [az hpc-cache skus list](/cli/azure/ext/hpc-cache/hpc-cache/skus) zeigt die verfügbaren SKUs und die gültigen Optionen für die Cachegröße für jede SKU an. Die Optionen für die Cachegröße reichen von 3 TB bis 48 TB, es werden aber nur einige Werte unterstützt.
+
+  Dieses Diagramm zeigt die gültigen Kombinationen aus Cachegröße und SKU zum Zeitpunkt der Erstellung dieses Dokuments (Juli 2020).
+
+  | Cachegröße | Standard_2G | Standard_4G | Standard_8G |
+  |------------|-------------|-------------|-------------|
+  | 3\.072 GB    | ja         | nein          | nein          |
+  | 6144 GB    | ja         | ja         | nein          |
+  | 12288 GB   | ja         | ja         | ja         |
+  | 24576 GB   | nein          | ja         | ja         |
+  | 49152 GB   | nein          | nein          | ja         |
+
+  Lesen Sie den Abschnitt **Cachekapazität festlegen** auf der Portalregisterkarte mit Anweisungen, um wichtige Informationen zu den Preisen, dem Durchsatz und der richtigen Dimensionierung des Caches für Ihren Workflow zu erhalten.
+
+Beispiel für die Cacheerstellung:
+
+```azurecli
+az hpc-cache create --resource-group doc-demo-rg --name my-cache-0619 \
+    --location "eastus" --cache-size-gb "3072" \
+    --subnet "/subscriptions/<subscription-ID>/resourceGroups/doc-demo-rg/providers/Microsoft.Network/virtualNetworks/vnet-doc0619/subnets/default" \
+    --sku-name "Standard_2G"
+```
+
+Die Erstellung des Caches dauert einige Minuten. Bei erfolgreicher Ausführung gibt der create-Befehl eine Ausgabe ähnlich der folgenden zurück:
+
+```azurecli
+{
+  "cacheSizeGb": 3072,
+  "health": {
+    "state": "Healthy",
+    "statusDescription": "The cache is in Running state"
+  },
+  "id": "/subscriptions/<subscription-ID>/resourceGroups/doc-demo-rg/providers/Microsoft.StorageCache/caches/my-cache-0619",
+  "location": "eastus",
+  "mountAddresses": [
+    "10.3.0.17",
+    "10.3.0.18",
+    "10.3.0.19"
+  ],
+  "name": "my-cache-0619",
+  "provisioningState": "Succeeded",
+  "resourceGroup": "doc-demo-rg",
+  "sku": {
+    "name": "Standard_2G"
+  },
+  "subnet": "/subscriptions/<subscription-ID>/resourceGroups/doc-demo-rg/providers/Microsoft.Network/virtualNetworks/vnet-doc0619/subnets/default",
+  "tags": null,
+  "type": "Microsoft.StorageCache/caches",
+  "upgradeStatus": {
+    "currentFirmwareVersion": "5.3.42",
+    "firmwareUpdateDeadline": "0001-01-01T00:00:00+00:00",
+    "firmwareUpdateStatus": "unavailable",
+    "lastFirmwareUpdate": "2020-04-01T15:19:54.068299+00:00",
+    "pendingFirmwareVersion": null
+  }
+}
+```
+
+Die Meldung enthält einige nützliche Informationen, u. a. folgende:
+
+* Adressen zur Clienteinbindung: Verwenden Sie diese Adressen, wenn Sie Clients mit dem Cache verbinden möchten. Weitere Informationen finden Sie unter [Einbinden einer Azure HPC Cache-Instanz](hpc-cache-mount.md).
+* Upgradestatus: Wenn ein Softwareupdate veröffentlicht wird, ändert sich diese Meldung. Sie können ein [Upgrade der Cachesoftware](hpc-cache-manage.md#upgrade-cache-software) manuell zu einem von Ihnen gewünschten Zeitpunkt durchführen. Andernfalls wird das Upgrade nach einigen Tagen automatisch angewendet.
+
+---
 
 ## <a name="next-steps"></a>Nächste Schritte
 

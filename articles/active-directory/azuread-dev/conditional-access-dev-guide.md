@@ -13,14 +13,14 @@ ms.custom: aaddev
 ms.topic: conceptual
 ms.workload: identity
 ROBOTS: NOINDEX
-ms.openlocfilehash: 5c1c03a407315fc4f1b3eb967531e2800fc7497f
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 1075cce9b9e3bc3267756bba84691788293fa8d2
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83738046"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88116296"
 ---
-# <a name="developer-guidance-for-azure-active-directory-conditional-access"></a>Anleitung für Entwickler zum bedingten Zugriff mit Azure Active Directory
+# <a name="developer-guidance-for-the-azure-active-directory-conditional-access-feature"></a>Anleitung für Entwickler zum bedingten Zugriff mit Azure Active Directory
 
 [!INCLUDE [active-directory-azuread-dev](../../../includes/active-directory-azuread-dev.md)]
 
@@ -90,7 +90,7 @@ Entwickler können diese Anforderung annehmen und an eine neue Anforderung an Az
 
 ### <a name="prerequisites"></a>Voraussetzungen
 
-Der bedingte Zugriff von Azure AD ist ein Feature von [Azure AD Premium](https://docs.microsoft.com/azure/active-directory/active-directory-whatis). Weitere Informationen zu Lizenzanforderungen finden Sie im [Bericht zu nicht lizenzierter Nutzung](../active-directory-conditional-access-unlicensed-usage-report.md). Entwickler können sich für das [Microsoft Developer Network](https://msdn.microsoft.com/dn308572.aspx) registrieren, das ein kostenloses Abonnement für die Enterprise Mobility Suite mit Azure AD Premium umfasst.
+Der bedingte Zugriff von Azure AD ist ein Feature von [Azure AD Premium](../fundamentals/active-directory-whatis.md). Weitere Informationen zu Lizenzanforderungen finden Sie im [Bericht zu nicht lizenzierter Nutzung](../reports-monitoring/overview-reports.md). Entwickler können sich für das [Microsoft Developer Network](/) registrieren, das ein kostenloses Abonnement für die Enterprise Mobility Suite mit Azure AD Premium umfasst.
 
 ### <a name="considerations-for-specific-scenarios"></a>Überlegungen für bestimmte Szenarien
 
@@ -177,7 +177,7 @@ Wenn Sie dieses Szenario testen möchten, sehen Sie sich unser [“Im-Auftrag-vo
 
 ## <a name="see-also"></a>Weitere Informationen
 
-* Weitere Informationen zu den Funktionen finden Sie unter [Bedingter Zugriff in Azure Active Directory](../active-directory-conditional-access-azure-portal.md).
+* Weitere Informationen zu den Funktionen finden Sie unter [Bedingter Zugriff in Azure Active Directory](../conditional-access/overview.md).
 * Weitere Azure AD-Codebeispiele finden Sie im [GitHub-Repository mit Codebeispielen](https://github.com/azure-samples?utf8=%E2%9C%93&q=active-directory).
 * Weitere Informationen zum ADAL-SDK und zum Zugriff auf die Referenzdokumentation finden Sie in der [Bibliotheksanleitung](active-directory-authentication-libraries.md).
 * Weitere Informationen zu Szenarien mit mehreren Mandanten finden Sie unter [Anmelden von Benutzern mit dem mehrinstanzenfähigen Anwendungsmuster](../develop/howto-convert-app-to-be-multi-tenant.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json).

@@ -9,12 +9,12 @@ ms.subservice: management
 ms.date: 02/22/2018
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: 430c08fc318a89c4d11575eab90ee524b88a979a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 07f72d54c0d62748196302ed1b77ea750dede8ff
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84607345"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080453"
 ---
 # <a name="understand-instance-ids-for-azure-vm-scale-set-vms"></a>Grundlegendes zu Instanz-IDs für virtuelle Computer in Azure-VM-Skalierungsgruppen
 In diesem Artikel werden Instanz-IDs für Skalierungsgruppen und die verschiedenen Arten beschrieben, wie sie in Erscheinung treten.
@@ -23,19 +23,19 @@ In diesem Artikel werden Instanz-IDs für Skalierungsgruppen und die verschieden
 
 Jeder virtuelle Computer in einer Skalierungsgruppe erhält eine Instanz-ID, die ihn eindeutig identifiziert. Diese Instanz-ID wird in den Skalierungsgruppen-APIs für Vorgänge auf einem bestimmten virtuellen Computer in der Skalierungsgruppe verwendet. Beispielsweise können Sie eine bestimmte Instanz-ID zum Durchführen eines Reimaging angeben, wenn die Reimaging-API verwendet wird:
 
-REST-API: `POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualmachines/{instanceId}/reimage?api-version={apiVersion}` (Weitere Informationen finden Sie in der [REST-API-Dokumentation](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesetvms/reimage).)
+REST-API: `POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualmachines/{instanceId}/reimage?api-version={apiVersion}` (Weitere Informationen finden Sie in der [REST-API-Dokumentation](/rest/api/compute/virtualmachinescalesetvms/reimage).)
 
-PowerShell: `Set-AzVmssVM -ResourceGroupName {resourceGroupName} -VMScaleSetName {vmScaleSetName} -InstanceId {instanceId} -Reimage` (Weitere Informationen finden Sie in der [PowerShell-Dokumentation](https://docs.microsoft.com/powershell/module/az.compute/set-azvmssvm).)
+PowerShell: `Set-AzVmssVM -ResourceGroupName {resourceGroupName} -VMScaleSetName {vmScaleSetName} -InstanceId {instanceId} -Reimage` (Weitere Informationen finden Sie in der [PowerShell-Dokumentation](/powershell/module/az.compute/set-azvmssvm).)
 
-CLI: `az vmss reimage -g {resourceGroupName} -n {vmScaleSetName} --instance-id {instanceId}` (Weitere Informationen finden Sie in der [Dokumentation zur Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/vmss?view=azure-cli-latest).)
+CLI: `az vmss reimage -g {resourceGroupName} -n {vmScaleSetName} --instance-id {instanceId}` (Weitere Informationen finden Sie in der [Dokumentation zur Befehlszeilenschnittstelle](/cli/azure/vmss?view=azure-cli-latest).)
 
 Sie können die Liste der Instanz-IDs abrufen, indem Sie alle Instanzen in einer Skalierungsgruppe auflisten:
 
-REST-API: `GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines?api-version={apiVersion}` (Weitere Informationen finden Sie in der [REST-API-Dokumentation](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesetvms/list).)
+REST-API: `GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines?api-version={apiVersion}` (Weitere Informationen finden Sie in der [REST-API-Dokumentation](/rest/api/compute/virtualmachinescalesetvms/list).)
 
-PowerShell: `Get-AzVmssVM -ResourceGroupName {resourceGroupName} -VMScaleSetName {vmScaleSetName}` (Weitere Informationen finden Sie in der [PowerShell-Dokumentation](https://docs.microsoft.com/powershell/module/az.compute/get-azvmssvm).)
+PowerShell: `Get-AzVmssVM -ResourceGroupName {resourceGroupName} -VMScaleSetName {vmScaleSetName}` (Weitere Informationen finden Sie in der [PowerShell-Dokumentation](/powershell/module/az.compute/get-azvmssvm).)
 
-CLI: `az vmss list-instances -g {resourceGroupName} -n {vmScaleSetName}` (Weitere Informationen finden Sie in der [Dokumentation zur Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/vmss?view=azure-cli-latest).)
+CLI: `az vmss list-instances -g {resourceGroupName} -n {vmScaleSetName}` (Weitere Informationen finden Sie in der [Dokumentation zur Befehlszeilenschnittstelle](/cli/azure/vmss?view=azure-cli-latest).)
 
 Sie können auch [resources.azure.com](https://resources.azure.com) oder die [Azure-SDKs](https://azure.microsoft.com/downloads/) zum Auflisten der virtuellen Computer in einer Skalierungsgruppe verwenden.
 
@@ -66,7 +66,7 @@ Wie Sie sehen, ist die Eigenschaft „instanceId“ nur eine Dezimalzahl. Die In
 
 Die Beispielausgabe oben enthält auch einen „Namen“ für den virtuellen Computer. Dieser Name hat das Format „{Name-der-Skalierungsgruppe}_{Instanz-ID}“. Dieser Name wird im Azure-Portal angezeigt, wenn Sie Instanzen in einer Skalierungsgruppe auflisten:
 
-![](./media/virtual-machine-scale-sets-instance-ids/vmssInstances.png)
+![Screenshot einer Liste der Instanzen in einer VM-Skalierungsgruppe im Azure-Portal](./media/virtual-machine-scale-sets-instance-ids/vmssInstances.png)
 
 Der Teil {Instanz-ID} des Namens ist dieselbe Dezimalzahl wie die zuvor erläuterte Eigenschaft „instanceId“.
 

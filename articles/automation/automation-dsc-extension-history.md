@@ -1,20 +1,17 @@
 ---
 title: Arbeiten mit der Versionsgeschichte der Azure Desired State Configuration-Erweiterung
 description: In diesem Artikel wird beschrieben, wie Sie mit der Versionsgeschichte für die Desired State Configuration-Erweiterung (DSC) in Azure arbeiten.
-ms.date: 06/21/2018
+ms.date: 07/22/2020
 keywords: DSC, PowerShell, Azure, Erweiterung
-author: mgoedtel
-ms.author: magoedte
 services: automation
-ms.service: automation
 ms.subservice: dsc
 ms.topic: conceptual
-ms.openlocfilehash: 0bb82ce92a151bd8e955c136751d8e7f307bbf1b
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: b45512faf09cfe745023d29d32f89a4432cc3b2b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186417"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079756"
 ---
 # <a name="work-with-azure-desired-state-configuration-extension-version-history"></a>Arbeiten mit der Versionsgeschichte der Azure Desired State Configuration-Erweiterung
 
@@ -23,6 +20,29 @@ Die VM-Erweiterung von Azure Desired State Configuration (DSC) wird bei Bedarf a
 Dieser Artikel informiert Sie über alle Versionen der Azure DSC-VM-Erweiterung sowie über die unterstützten Umgebungen und enthält Kommentare und Hinweise zu neuen Features und Änderungen.
 
 ## <a name="latest-version"></a>Aktuelle Version
+
+### <a name="version-280"></a>Version 2.80
+
+- **Veröffentlichungsdatum:**
+  - 26. September, Sep-2019 (Azure) | 6. Juli 2020 (Azure China 21Vianet) | 20. Juli 2020 (Azure Government)
+- **Betriebssystemunterstützung :**
+  - Windows Server 2019
+  - Windows Server 2016
+  - Windows Server 2012 R2
+  - Windows Server 2012
+  - Windows Server 2008 R2 SP1
+  - Windows Client 7/8.1/10
+  - Nano Server
+- **WMF-Support:**
+  - WMF 5.1
+  - WMF 5.0 RTM
+  - WMF 4.0 Update
+  - WMF 4.0
+- **Umgebung:**
+  - Azure
+  - Azure China 21Vianet
+  - Azure Government
+- **Hinweise:** In diesem Release wurden keine neuen Features hinzugefügt.
 
 ### <a name="version-276"></a>Version 2.76
 

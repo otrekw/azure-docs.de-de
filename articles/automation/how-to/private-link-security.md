@@ -6,12 +6,12 @@ ms.author: magoedte
 ms.topic: conceptual
 ms.date: 07/09/2020
 ms.subservice: ''
-ms.openlocfilehash: a7ff659eb6fc204208c84146a2fc33c8278f7154
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: c81d9774dccf8c02d2eab7b1ebbb69e6671869e8
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86207280"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423795"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-automation-preview"></a>Verwenden von Azure Private Link zum sicheren Verbinden von Netzwerken mit Azure Automation (Vorschauversion)
 
@@ -132,15 +132,15 @@ Wenn der Dienstconsumer über RBAC-Berechtigungen für die Automation-Ressource 
 
 ## <a name="set-public-network-access-flags"></a>Einrichten von Netzwerkzugriffsflags
 
-Sie können ein Automation-Konto so konfigurieren, dass es alle öffentlichen Konfigurationen verweigert und nur Verbindungen über private Endpunkte zulässt, um die Netzwerksicherheit weiter zu erhöhen. Wenn Sie den Zugriff auf das Automation-Konto so einschränken möchten, dass nur noch aus dem VNet darauf zugegriffen werden kann, und nicht über das öffentliche Internet, können Sie die Eigenschaft `publicNetworkAccess` auf `$true` festlegen.
+Sie können ein Automation-Konto so konfigurieren, dass es alle öffentlichen Konfigurationen verweigert und nur Verbindungen über private Endpunkte zulässt, um die Netzwerksicherheit weiter zu erhöhen. Wenn Sie den Zugriff auf das Automation-Konto so einschränken möchten, dass nur noch aus dem VNet darauf zugegriffen werden kann, und nicht über das öffentliche Internet, können Sie die Eigenschaft `publicNetworkAccess` auf `$false` festlegen.
 
-Wenn die Einstellung **Zugriff auf öffentliches Netzwerk verweigern** auf `true` festgelegt ist, sind nur Verbindungen über private Endpunkte zulässig, und alle Verbindungen über öffentliche Endpunkte werden mit einer Fehlermeldung verweigert.
+Wenn die Einstellung **Öffentlicher Netzwerkzugriff** auf `$false` festgelegt ist, sind nur Verbindungen über private Endpunkte zulässig, und alle Verbindungen über öffentliche Endpunkte werden mit einer Fehlermeldung zu nicht autorisiertem Zugriff und dem HTTP-Statuscode 401 verweigert. 
 
 Das folgende PowerShell-Skript zeigt, wie Sie die **Public Network Access**-Eigenschaft auf der Ebene des Automation-Kontos mit `Get` und `Set` abrufen und festlegen können:
 
 ```powershell
 $account = Get-AzResource -ResourceType Microsoft.Automation/automationAccounts -ResourceGroupName "<resourceGroupName>" -Name "<automationAccountName>" -ApiVersion "2020-01-13-preview"
-$account.Properties | Add-Member -Name 'publicNetworkAccess' -Type NoteProperty -Value $true
+$account.Properties | Add-Member -Name 'publicNetworkAccess' -Type NoteProperty -Value $false
 $account | Set-AzResource -Force -ApiVersion "2020-01-13-preview"
 ```
 

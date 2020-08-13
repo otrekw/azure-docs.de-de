@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 04/01/2020
 ms.author: juliako
-ms.openlocfilehash: 055f651552313732c000a2e91d2862cda22a9c26
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: c2845cd0fad8375db67d1aa86333f144222dc0aa
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82995874"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87446326"
 ---
 <!-- If you update limits in this topic, make sure to also update https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#media-services-limits -->
 # <a name="azure-media-services-quotas-and-limits"></a>Azure Media Services-Kontingente und -Grenzwerte
@@ -28,14 +28,14 @@ In diesem Artikel sind einige der gängigsten Limits in Microsoft Azure Media Se
 
 ## <a name="account-limits"></a>Kontolimits
 
-| Resource | Standardlimit | 
-| --- | --- | 
+| Resource | Standardlimit |
+| --- | --- |
 | [Media Services-Konten](media-services-account-concept.md) in einem einzelnen Abonnement | 25 (feststehend) |
 
 ## <a name="asset-limits"></a>Medienobjektlimits
 
-| Resource | Standardlimit | 
-| --- | --- | 
+| Resource | Standardlimit |
+| --- | --- |
 | [Medienobjekte](assets-concept.md) pro Media Services-Konto | 1\.000.000|
 
 ## <a name="storage-limits"></a>Speichergrenzwerte
@@ -86,14 +86,15 @@ Alle Auftragsdatensätze in Ihrem Konto, die älter als 90 Tage sind, werden aut
 
 ## <a name="packaging--delivery-limits"></a>Limits für Verpackung und Bereitstellung
 
-| Resource | Standardlimit | 
-| --- | --- | 
+| Resource | Standardlimit |
+| --- | --- |
 | [Streamingendpunkte](streaming-endpoint-concept.md) (angehalten oder ausgeführt) pro Media Services-Konto|2 |
+| Premium-Streamingeinheiten | 10 |
 | [Dynamische Manifestfilter](filters-dynamic-manifest-overview.md)|100|
 | [Streamingrichtlinien](streaming-policy-concept.md) | 100 <sup>(6)</sup> |
 | Eindeutige [Streaminglocator](streaming-locators-concept.md), die einem Medienobjekt gleichzeitig zugeordnet sind | 100<sup>(7)</sup> (feststehend) |
 
-<sup>6</sup> Wenn Sie eine benutzerdefinierte [Streamingrichtlinie](https://docs.microsoft.com/rest/api/media/streamingpolicies) verwenden, sollten Sie eine begrenzte Sammlung solcher Richtlinien für Ihr Media Services-Konto erstellen und diese für Ihre Streaminglocators wiederverwenden, wenn dieselben Verschlüsselungsoptionen und Protokolle benötigt werden. Sie sollten nicht für jeden Streaminglocator eine neue Streamingrichtlinie erstellen.
+<sup>6</sup> Wenn Sie eine benutzerdefinierte [Streamingrichtlinie](/rest/api/media/streamingpolicies) verwenden, sollten Sie eine begrenzte Sammlung solcher Richtlinien für Ihr Media Services-Konto erstellen und diese für Ihre Streaminglocators wiederverwenden, wenn dieselben Verschlüsselungsoptionen und Protokolle benötigt werden. Sie sollten nicht für jeden Streaminglocator eine neue Streamingrichtlinie erstellen.
 
 <sup>7</sup> Streaminglocators sind nicht für die Verwaltung der benutzerbezogenen Zugriffssteuerung konzipiert. Um einzelnen Benutzern verschiedene Zugriffsrechte zu erteilen, verwenden Sie Lösungen zur Verwaltung digitaler Rechte (Digital Rights Management, DRM).
 

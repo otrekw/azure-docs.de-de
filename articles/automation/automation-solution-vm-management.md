@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 06/04/2020
 ms.topic: conceptual
-ms.openlocfilehash: dbfb50b40b4705cae55ba6e4f1ef950b586b5fb5
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 2cbed4d6dd2a9c5e63e73d89e5327fa3759777fd
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86185873"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87064458"
 ---
 # <a name="startstop-vms-during-off-hours-overview"></a>VMs außerhalb der Geschäftszeiten starten/beenden – Übersicht
 
@@ -49,9 +49,9 @@ Wenn Sie Mitwirkender im Abonnement und globaler Administrator in Ihrem Azure Ac
 
 ### <a name="permissions-for-pre-existing-automation-account-and-log-analytics-workspace"></a>Berechtigungen bei bereits vorhandenem Automation-Konto und Log Analytics-Arbeitsbereich
 
-Um VMs für die Funktion „VMs außerhalb der Geschäftszeiten starten/beenden“ unter Verwendung eines vorhandenen Automation-Kontos und eines vorhandenen Log Analytics-Arbeitsbereichs zu aktivieren, benötigen Sie die folgenden Berechtigungen für den Gültigkeitsbereich der Ressourcengruppe. Weitere Informationen zu Rollen finden Sie unter [Benutzerdefinierte Rollen für Azure-Ressourcen](../role-based-access-control/custom-roles.md).
+Um VMs für die Funktion „VMs außerhalb der Geschäftszeiten starten/beenden“ unter Verwendung eines vorhandenen Automation-Kontos und eines vorhandenen Log Analytics-Arbeitsbereichs zu aktivieren, benötigen Sie die folgenden Berechtigungen für den Gültigkeitsbereich der Ressourcengruppe. Weitere Informationen zu Rollen finden Sie unter [Benutzerdefinierte Azure-Rollen](../role-based-access-control/custom-roles.md).
 
-| Berechtigung | `Scope`|
+| Berechtigung | Bereich|
 | --- | --- |
 | Microsoft.Automation/automationAccounts/read | Ressourcengruppe |
 | Microsoft.Automation/automationAccounts/variables/write | Ressourcengruppe |

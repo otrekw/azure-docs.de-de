@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 06/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: 6913ae8cbd8c73bd2763bd89172280feee9df973
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 634f200280a85ff865741cd03905101ff1e5c19f
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86185618"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448043"
 ---
 # <a name="deploy-a-windows-hybrid-runbook-worker"></a>Bereitstellen eines Windows Hybrid Runbook Workers
 
@@ -28,7 +28,7 @@ Die „Hybrid Runbook Worker“-Rolle ist hinsichtlich ihrer Installation und Ko
 
 Wenn Sie über keinen Azure Monitor Log Analytics-Arbeitsbereich verfügen, lesen Sie zuerst die [Entwurfsanleitung für Azure Monitor-Protokolle](../azure-monitor/platform/design-logs-deployment.md), bevor Sie einen Arbeitsbereich erstellen.
 
-Wenn Sie einen Arbeitsbereich besitzen, dieser aber nicht mit Ihrem Automation-Konto verknüpft ist, fügt das Aktivieren einer Automation-Funktion Funktionen für Azure Automation hinzu, einschließlich der Unterstützung für den Hybrid Runbook Worker. Wenn Sie eine der Azure Automation-Funktionen in Ihrem Log Analytics-Arbeitsbereich aktivieren, insbesondere [Updateverwaltung](automation-update-management.md) oder [Änderungsnachverfolgung und Bestand](change-tracking.md), werden die Workerkomponenten automatisch auf den Agentcomputer gepusht.
+Wenn Sie einen Arbeitsbereich besitzen, dieser aber nicht mit Ihrem Automation-Konto verknüpft ist, fügt das Aktivieren einer Automation-Funktion Funktionen für Azure Automation hinzu, einschließlich der Unterstützung für den Hybrid Runbook Worker. Wenn Sie eine der Azure Automation-Funktionen in Ihrem Log Analytics-Arbeitsbereich aktivieren, insbesondere [Updateverwaltung](update-management/update-mgmt-overview.md) oder [Änderungsnachverfolgung und Bestand](change-tracking.md), werden die Workerkomponenten automatisch auf den Agentcomputer gepusht.
 
    Um Ihrem Arbeitsbereich die Funktion „Updateverwaltung“ hinzuzufügen, führen Sie das folgende PowerShell-Cmdlet aus:
 
@@ -77,7 +77,7 @@ Weitere Netzwerkanforderungen für den Hybrid Runbook Worker finden Sie unter [K
 Sie können den Workercomputer einer Hybrid Runbook Worker-Gruppe in Ihrem Automation-Konto hinzufügen. Beachten Sie, dass Sie Automation-Runbooks unterstützen müssen, sofern Sie sowohl für die Azure Automation-Funktion als auch die Mitgliedschaft in der Hybrid Runbook Worker-Gruppe dasselbe Konto verwenden. Diese Funktionalität wurde Version 7.2.12024.0 des Hybrid Runbook Worker hinzugefügt.
 
 >[!NOTE]
->Beim Aktivieren der Azure Automation-[Updateverwaltung](automation-update-management.md) werden alle mit dem Log Analytics-Arbeitsbereich verbundenen Windows-Computer automatisch als Hybrid Runbook Worker konfiguriert, um die Verwaltung seiner Betriebssystemupdates zu unterstützen. Es erfolgt jedoch keine Registrierung des Workers für Hybrid Runbook Worker-Gruppen, die in Ihrem Automation-Konto bereits definiert wurden.
+>Beim Aktivieren der Azure Automation-[Updateverwaltung](update-management/update-mgmt-overview.md) werden alle mit dem Log Analytics-Arbeitsbereich verbundenen Windows-Computer automatisch als Hybrid Runbook Worker konfiguriert, um die Verwaltung seiner Betriebssystemupdates zu unterstützen. Es erfolgt jedoch keine Registrierung des Workers für Hybrid Runbook Worker-Gruppen, die in Ihrem Automation-Konto bereits definiert wurden.
 
 ## <a name="enabling-machines-for-management-with-azure-automation-state-configuration"></a>Aktivieren von Computern für die Verwaltung mit Azure Automation State Configuration
 
@@ -169,11 +169,11 @@ Heartbeat
 
 In den Suchergebnissen sollten Heartbeat-Datensätze für den Computer angezeigt werden, die angeben, dass dieser verbunden ist und Berichte an den Dienst übermittelt. Standardmäßig leitet jeder Agent einen Heartbeat-Datensatz an seinen zugewiesenen Arbeitsbereich weiter. Führen Sie die folgenden Schritte aus, um Installation und Einrichtung des Agents abzuschließen.
 
-1. Aktivieren Sie das Feature, um den Agentcomputer hinzuzufügen. Informationen zur Updateverwaltung und zu Azure-VMs finden Sie unter [Aktivieren von virtuellen Azure-Computern](automation-onboard-solutions-from-automation-account.md#enable-azure-vms) und zu Nicht-Azure-VMs unter [Aktivieren von Computern im Arbeitsbereich](automation-onboard-solutions-from-automation-account.md#enable-machines-in-the-workspace). Informationen zur Änderungsnachverfolgung und zu Azure-VMs finden Sie unter [Aktivieren von virtuellen Azure-Computern](automation-enable-changes-from-auto-acct.md#enable-azure-vms) und zu Nicht-Azure-VMs unter [Aktivieren von Computern im Arbeitsbereich](automation-enable-changes-from-auto-acct.md#enable-machines-in-the-workspace).
+1. Aktivieren Sie das Feature, um den Agentcomputer hinzuzufügen. Informationen zu Updateverwaltung und Azure-VMs finden Sie unter [Aktivieren der Updateverwaltung über ein Automation-Konto](update-management/update-mgmt-enable-automation-account.md), [Aktivieren der Updateverwaltung über das Azure-Portal](update-management/update-mgmt-enable-portal.md), [Aktivieren der Updateverwaltung über ein Runbook](update-management/update-mgmt-enable-runbook.md) oder [Aktivieren der Updateverwaltung über einen virtuellen Azure-Computer](update-management/update-mgmt-enable-vm.md). Informationen zur Änderungsnachverfolgung und zu Azure-VMs finden Sie unter [Aktivieren von virtuellen Azure-Computern](automation-enable-changes-from-auto-acct.md#enable-azure-vms) und zu Nicht-Azure-VMs unter [Aktivieren von Computern im Arbeitsbereich](automation-enable-changes-from-auto-acct.md#enable-machines-in-the-workspace).
 
 2. Zum Überprüfen der Hybrid Runbook Worker-Version wechseln Sie zu `C:\Program Files\Microsoft Monitoring Agent\Agent\AzureAutomation\`, und sehen Sie im Unterordner **version** nach.
 
-### <a name="step-3---install-the-runbook-environment-and-connect-to-azure-automation"></a>Schritt 3: Installieren der Runbookumgebung und Herstellen einer Verbindung mit Azure Automation
+### <a name="step-2---install-the-runbook-environment-and-connect-to-azure-automation"></a>Schritt 2: Installieren der Runbookumgebung und Herstellen einer Verbindung mit Azure Automation
 
 Wenn Sie einen Agent für die Berichterstattung an einen Log Analytics-Arbeitsbereich konfigurieren, lädt das Azure Automation-Feature das PowerShell-Modul `HybridRegistration`, in dem das Cmdlet `Add-HybridRunbookWorker` enthalten ist, per Push herunter. Verwenden Sie dieses Cmdlet zum Installieren der Runbookumgebung auf dem Computer und zu deren Registrierung bei Azure Automation.
 
@@ -202,7 +202,7 @@ Sie finden die für die Parameter `Url` und `Key` erforderlichen Informationen i
 
 * Legen Sie bei Bedarf den Parameter `Verbose`fest, um Details zur Installation zu erhalten.
 
-### <a name="step-4----install-powershell-modules"></a>Schritt 4: Installieren von PowerShell-Modulen
+### <a name="step-3----install-powershell-modules"></a>Schritt 3: Installieren von PowerShell-Modulen
 
 Runbooks können beliebige Aktivitäten und Cmdlets der Module verwenden, die Sie in Ihrer Azure Automation-Umgebung installiert haben. Da diese Module nicht automatisch auf den lokalen Computern bereitgestellt werden, müssen Sie sie manuell installieren. Die Ausnahme ist das Azure-Modul. Dieses Modul wird standardmäßig installiert und bietet Zugriff auf Cmdlets für alle Azure-Dienste und -Aktivitäten für Azure Automation.
 

@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a2c9500ecefed02b28c066de80137d8f0882fd5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6f603623e2b47a8ac1a8530880e10c919f63b66c
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84731504"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423608"
 ---
 # <a name="bulk-create-users-in-azure-active-directory"></a>Massenerstellung von Benutzern in Azure Active Directory
 
@@ -48,6 +48,7 @@ Die Zeilen der heruntergeladenen CSV-Vorlage lauten wie folgt:
 - Die erforderlichen Spalten werden zuerst aufgelistet.
 - Es wird davon abgeraten, der Vorlage neue Spalten hinzuzufügen. Jegliche Spalten, die Sie zusätzlich hinzufügen, werden ignoriert und nicht verarbeitet.
 - Es wird empfohlen, möglichst häufig die neueste Version der CSV-Vorlage herunterzuladen.
+- Vergewissern Sie sich unbedingt, dass vor und nach allen Feldern keine unbeabsichtigten Leerräume vorhanden sind. Beim **Benutzerprinzipalnamen** würde ein solcher Leerraum einen Importfehler verursachen.
 
 ## <a name="to-create-users-in-bulk"></a>So erstellen Sie Benutzer in einem Massenvorgang
 
@@ -59,7 +60,7 @@ Die Zeilen der heruntergeladenen CSV-Vorlage lauten wie folgt:
 
 1. Öffnen Sie die CSV-Datei, und fügen Sie eine Zeile für jeden Benutzer hinzu, den Sie erstellen möchten. Die einzigen erforderlichen Werte sind **Name**, **Benutzerprinzipalname**, **Anfängliches Kennwort** und **Anmeldung blockieren (Ja/Nein)** . Speichern Sie dann die Datei.
 
-   [![](media/users-bulk-add/add-csv-file.png "The CSV file contains names and IDs of the users to create")](media/users-bulk-add/add-csv-file.png#lightbox)
+   [![Die CSV-Datei enthält die Namen und IDs der zu erstellenden Benutzer](media/users-bulk-add/add-csv-file.png)](media/users-bulk-add/add-csv-file.png#lightbox)
 
 1. Navigieren Sie auf der Seite **Massenerstellung von Benutzern** unter „CSV-Datei hochladen“ zur entsprechenden Datei. Wenn Sie die Datei auswählen und auf **Senden** klicken, wird mit der Überprüfung der CSV-Datei begonnen.
 1. Nach der Überprüfung des Dateiinhalts wird die Meldung **Datei erfolgreich hochgeladen** angezeigt. Wenn Fehler vorliegen, müssen Sie diese beheben, bevor Sie den Auftrag übermitteln können.
@@ -72,7 +73,7 @@ Wenn Fehler auftreten, können Sie die Ergebnisdatei auf der Seite **Ergebnisse 
 
 Sie können den Status aller Ihrer ausstehenden Massenanforderungen auf der Seite **Ergebnisse von Massenvorgängen** anzeigen.
 
-   [![](media/users-bulk-add/bulk-center.png "Check create status in the Bulk Operations Results page")](media/users-bulk-add/bulk-center.png#lightbox)
+   [![Überprüfen des Erstellungsstatus auf der Seite „Ergebnisse von Massenvorgängen“](media/users-bulk-add/bulk-center.png)](media/users-bulk-add/bulk-center.png#lightbox)
 
 Als Nächstes können Sie entweder im Azure-Portal oder mithilfe von PowerShell überprüfen, ob die erstellten Benutzer in der Azure AD-Organisation vorhanden sind.
 

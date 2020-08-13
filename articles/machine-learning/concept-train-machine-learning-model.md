@@ -9,13 +9,13 @@ ms.author: larryfr
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/13/2020
-ms.custom: tracking-python
-ms.openlocfilehash: da437f830a452a57ea1290b3d85a3faa92895bcd
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.custom: devx-track-python
+ms.openlocfilehash: dee74c787f6546494d12ea582eab383fbd99079d
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86147051"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87876902"
 ---
 # <a name="train-models-with-azure-machine-learning"></a>Trainieren von Modellen mit Azure Machine Learning
 
@@ -92,9 +92,31 @@ Machine Learning-Pipelines können die zuvor genannten Trainingsmethoden (Laufze
 * [Beispiele: Pipeline mit automatisiertem maschinellen Lernen](https://aka.ms/pl-automl)
 * [Beispiele: Pipeline mit Estimators](https://aka.ms/pl-estimator)
 
+### <a name="understand-what-happens-when-you-submit-a-training-job"></a>Verstehen, was beim Übermitteln eines Trainingsauftrags passiert
+
+Der Azure-Trainingslebenszyklus besteht aus folgenden Schritten:
+
+1. Zippen der Dateien in Ihrem Projektordner, wobei die in _.amlignore_ oder _.gitignore_ angegebenen Dateien ignoriert werden
+1. Hochskalieren Ihres Computeclusters 
+1. Erstellen oder Herunterladen des Dockerfiles auf den Computeknoten 
+    1. Das System berechnet einen Hashwert aus: 
+        - Dem Basisimage 
+        - Benutzerdefinierten Docker-Schritten (siehe [Bereitstellen eines Modells mithilfe eines benutzerdefinierten Docker-Basisimages](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-custom-docker-image))
+        - Der Conda-Definitions-YAML-Datei (siehe [Erstellen und Verwenden von Softwareumgebungen in Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/how-to-use-environments))
+    1. Das System verwendet diesen Hash als Schlüssel in einer Suche nach der Azure Container Registry (ACR) für den Arbeitsbereich.
+    1. Wenn er nicht gefunden wird, wird nach einer Übereinstimmung in der globalen ACR gesucht.
+    1. Wenn keine gefunden wird, erstellt das System ein neues Image (das zwischengespeichert und bei der ACR des Arbeitsbereichs registriert wird).
+1. Herunterladen der gezippten Projektdatei in den temporären Speicher auf dem Serverknoten
+1. Entzippen der Projektdatei
+1. Ausführen von `python <entry script> <arguments>` auf dem Serverknoten
+1. Speichern von Protokollen, Modelldateien und anderen Dateien, die in dem Speicherkonto, das dem Arbeitsbereich zugeordnet ist, in `./outputs` geschrieben werden
+1. Herunterskalieren der Computevorgänge, einschließlich Entfernen des temporären Speichers 
+
+Wenn Sie das Training auf Ihrem lokalen Computer ausführen möchten („für lokale Ausführung konfigurieren“), ist Docker nicht notwendig. Sie können Docker aber lokal verwenden, wenn Sie dies wünschen (ein Beispiel finden Sie im Abschnitt [Konfigurieren der ML-Pipeline](https://docs.microsoft.com/azure/machine-learning/how-to-debug-pipelines#configure-ml-pipeline )).
+
 ## <a name="r-sdk"></a>R SDK
 
-Mit dem R-SDK können Sie die Programmiersprache R mit Azure Machine Learning verwenden. Das SDK verwendet das Paket reticulate zur Bindung an das Python-SDK von Azure Machine Learning. Dadurch erhalten Sie Zugriff auf die im Python-SDK implementierten Kernobjekte und -methoden aus jeder R-Umgebung.
+Mit dem R-SDK können Sie die Programmiersprache R mit Azure Machine Learning verwenden. Das SDK verwendet das Paket reticulate zur Bindung an das Python-SDK von Azure Machine Learning. Damit erhalten Sie in jeder R-Umgebung Zugriff auf wichtige Objekte und Methoden, die im Python SDK implementiert sind.
 
 Weitere Informationen finden Sie in den folgenden Artikeln:
 
@@ -103,7 +125,7 @@ Weitere Informationen finden Sie in den folgenden Artikeln:
 
 ## <a name="azure-machine-learning-designer"></a>Azure Machine Learning-Designer
 
-Der Designer ermöglicht es Ihnen, Modelle über eine Drag & Drop-Schnittstelle in Ihrem Webbrowser zu trainieren.
+Mit dem Designer können Sie Modelle über eine Drag & Drop-Oberfläche in Ihrem Webbrowser trainieren.
 
 + [Was ist der Designer?](concept-designer.md)
 + [Tutorial: Prognostizieren von Fahrzeugpreisen](tutorial-designer-automobile-price-train-score.md)

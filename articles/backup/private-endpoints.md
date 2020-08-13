@@ -3,12 +3,12 @@ title: Private Endpunkte
 description: Erfahren Sie mehr über den Prozess zum Erstellen privater Endpunkte für Azure Backup und die Szenarien, in denen private Endpunkte dazu beitragen, die Sicherheit Ihrer Ressourcen zu gewährleisten.
 ms.topic: conceptual
 ms.date: 05/07/2020
-ms.openlocfilehash: e9c8f142e9781946f572f6f3a744d8bc2736a3de
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 9a50a655af02bc2bfa188225209024cfbaa82a7c
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86503760"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87432873"
 ---
 # <a name="private-endpoints-for-azure-backup"></a>Private Endpunkte für Azure Backup
 
@@ -21,7 +21,7 @@ In diesem Artikel erfahren Sie, wie private Endpunkte für Azure Backup erstellt
 - Private Endpunkte können nur für neue Recovery Services-Tresore erstellt werden (bei denen keine Elemente im Tresor registriert sind). Daher müssen private Endpunkte erstellt werden, bevor Sie versuchen, Elemente im Tresor zu schützen.
 - Ein virtuelles Netzwerk kann private Endpunkte für mehrere Recovery Services-Tresore enthalten. Außerdem kann ein Recovery Services-Tresor über private Endpunkte in mehreren virtuellen Netzwerken verfügen. Die maximale Anzahl privater Endpunkte, die für einen Tresor erstellt werden können, ist jedoch 12.
 - Sobald ein privater Endpunkt für einen Tresor erstellt ist, wird der Tresor gesperrt. Der Zugriff (für Sicherungen und Wiederherstellungen) ist nur aus Netzwerken möglich, die einen privaten Endpunkt für den Tresor enthalten. Wenn alle privaten Endpunkte für den Tresor entfernt werden, können alle Netzwerke auf den Tresor zugreifen.
-- Eine Verbindung mit privaten Endpunkten für die Sicherung verwendet insgesamt 11 private IP-Adressen in Ihrem Subnetz. Diese Anzahl kann für bestimmte Azure-Regionen höher sein (bis zu 15). Wir empfehlen daher, genügend private IP-Adressen verfügbar zu haben, wenn Sie versuchen, private Endpunkte für die Sicherung zu erstellen.
+- Eine Verbindung mit privaten Endpunkten für die Sicherung verwendet insgesamt 11 private IP-Adressen in Ihrem Subnetz. Diese Anzahl kann für bestimmte Azure-Regionen höher sein (bis zu 25). Wir empfehlen daher, genügend private IP-Adressen verfügbar zu haben, wenn Sie versuchen, private Endpunkte für die Sicherung zu erstellen.
 - Wenngleich ein Recovery Services-Tresor von sowohl Azure Backup als auch Azure Site Recovery verwendet wird, beschränkt sich die Erörterung in diesem Artikel auf die Verwendung privater Endpunkte für Azure Backup.
 - Azure Active Directory unterstützt derzeit keine privaten Endpunkte. Daher müssen IP-Adressen und FQDNs, die für den Betrieb von Azure Active Directory in einer Region erforderlich sind, ein ausgehender Zugriff aus dem abgesicherten Netzwerk gestattet werden, wenn eine Sicherung von Datenbanken in Azure-VMs und eine Sicherung mit dem MARS-Agent erfolgt. Sie können ggf. auch NSG- und Azure Firewall-Tags verwenden, um Zugriff auf Azure AD zuzulassen.
 - Virtuelle Netzwerke mit Netzwerkrichtlinien werden für private Endpunkte nicht unterstützt. Sie müssen Netzwerkrichtlinien deaktivieren, ehe Sie fortfahren können.

@@ -9,14 +9,14 @@ ms.workload: infrastructure
 ms.date: 05/04/2019
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 2c9776d41584900598133ef6d361b96f0b892094
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 33719d96f1b2a98abd380440c08d27b88f700f0e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82790948"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085383"
 ---
-# <a name="troubleshooting-shared-image-galleries"></a>Problembehandlung für Kataloge mit freigegebenen Images
+# <a name="troubleshooting-shared-image-galleries-linux"></a>Problembehandlung für Kataloge mit freigegebenen Images (Linux)
 
 
 [!INCLUDE [virtual-machines-common-shared-image-troubleshooting](../../../includes/virtual-machines-common-shared-image-troubleshooting.md)]

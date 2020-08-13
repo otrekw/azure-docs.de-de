@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/24/2018
 ms.author: damaerte
-ms.openlocfilehash: b06deadae15a8176a49bed88a53884df2b71e473
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eea64520dd5440467c911b6de42d8c8c31fc1bde
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82189461"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543451"
 ---
 # <a name="troubleshooting--limitations-of-azure-cloud-shell"></a>Problembehandlung und Einschränkungen bei Azure Cloud Shell
 
@@ -142,26 +142,6 @@ Gehen Sie bei der Bearbeitung von „.bashrc“ vorsichtig vor, da sonst unerwar
 
 Derzeit ist `AzureAD.Standard.Preview` verfügbar, wobei es sich um eine Vorschauversion eines auf .NET Standard basierenden Moduls handelt. Dieses Modul verfügt über die gleiche Funktionalität wie `AzureAD`.
 
-### <a name="sqlserver-module-functionality"></a>`SqlServer`-Modulfunktionalität
-
-Das in Cloud Shell enthaltene `SqlServer`-Modul bietet nur Unterstützung für die Vorabversion von PowerShell Core. Insbesondere ist `Invoke-SqlCmd` noch nicht verfügbar.
-
-### <a name="default-file-location-when-created-from-azure-drive"></a>Standard-Dateispeicherort beim Erstellen vom Azure-Laufwerk
-
-Mithilfe von PowerShell-Cmdlets können Benutzer keine Dateien unter dem Azure-Laufwerk erstellen. Wenn Benutzer neue Dateien mit anderen Tools wie Vim oder nano erstellen, werden die Dateien standardmäßig in `$HOME` gespeichert.
-
-### <a name="tab-completion-can-throw-psreadline-exception"></a>Vervollständigung mit der TAB-Taste kann PSReadline-Ausnahme auslösen
-
-Wenn PSReadline EditMode für den Benutzer auf Emacs festgelegt ist, der Benutzer versucht, alle Möglichkeiten über die TAB-Vervollständigung anzuzeigen, und die Größe des Fensters zu klein zum Darstellen aller Möglichkeiten ist, wird für PSReadline ein Ausnahmefehler ausgelöst.
-
-### <a name="large-gap-after-displaying-progress-bar"></a>Große Lücke nach dem Anzeigen der Statusanzeige
-
-Wenn aufgrund eines Befehls oder einer Benutzeraktion eine Statusanzeige angezeigt wird, z.B. eine TAB-Vervollständigung für das Laufwerk `Azure:`, wird der Cursor ggf. nicht richtig angeordnet, und an der vorherigen Position der Statusanzeige ist eine Lücke zu sehen.
-
-### <a name="random-characters-appear-inline"></a>In der Eingabe angezeigte zufällige Zeichen
-
-Die Sequenzcodes für die Cursorposition, z.B. `5;13R`, können in der Benutzereingabe angezeigt werden. Die Zeichen können manuell entfernt werden.
-
 ## <a name="personal-data-in-cloud-shell"></a>Personenbezogene Daten in Cloud Shell
 
 Azure Cloud Shell nimmt Ihre personenbezogenen Daten ernst. Die vom Azure Cloud Shell-Dienst erfassten und gespeicherten Daten werden verwendet, um Standardwerte für Ihr Benutzererlebnis bereitzustellen, wie Ihre zuletzt verwendete Shell, Ihr bevorzugter Schriftgrad, Ihre bevorzugte Schriftart und Dateifreigabedetails, die das Cloudlaufwerk unterstützen. Wenn Sie diese Daten exportieren oder löschen möchten, hilft Ihnen die folgende Anleitung weiter.
@@ -171,7 +151,8 @@ Azure Cloud Shell nimmt Ihre personenbezogenen Daten ernst. Die vom Azure Cloud 
 ### <a name="export"></a>Exportieren
 Um die Benutzereinstellungen zu **exportieren**, die Cloud Shell für Sie speichert (wie bevorzugte Shell, Schriftgrad und Schriftart), führen Sie die folgenden Befehle aus.
 
-1. [![](https://shell.azure.com/images/launchcloudshell.png "Launch Azure Cloud Shell")](https://shell.azure.com)
+1. [![Abbildung mit einer Schaltfläche mit der Bezeichnung „Azure Cloud Shell starten“.](https://shell.azure.com/images/launchcloudshell.png)](https://shell.azure.com)
+
 2. Führen Sie die folgenden Befehle in Bash oder PowerShell aus:
 
 Bash:
@@ -194,7 +175,8 @@ Um die Benutzereinstellungen zu **löschen**, die Cloud Shell für Sie speichert
 >[!Note]
 > Wenn Sie Ihre Benutzereinstellungen löschen, wird die eigentliche Azure Files-Freigabe nicht gelöscht. Navigieren Sie zu Ihrer Azure Files-Instanz, um diese Aktion durchzuführen.
 
-1. [![](https://shell.azure.com/images/launchcloudshell.png "Launch Azure Cloud Shell")](https://shell.azure.com)
+1. [![Abbildung mit einer Schaltfläche mit der Bezeichnung „Azure Cloud Shell starten“.](https://shell.azure.com/images/launchcloudshell.png)](https://shell.azure.com)
+
 2. Führen Sie die folgenden Befehle in Bash oder PowerShell aus:
 
 Bash:

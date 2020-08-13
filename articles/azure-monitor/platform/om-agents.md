@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 08/13/2019
-ms.openlocfilehash: 62d16bc9ca6c4238ff7c6304c5e1964c2956c898
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 07/24/2020
+ms.openlocfilehash: 2a4f24da51b9e9e78c3df3e7d1437a380306e300
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86505294"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318350"
 ---
 # <a name="connect-operations-manager-to-azure-monitor"></a>Herstellen einer Verbindung zwischen Operations Manager und Azure Monitor
 
@@ -31,7 +31,7 @@ Das nachstehende Diagramm zeigt die Verbindung zwischen den Verwaltungsservern u
 
 ![oms-operations-manager-integration-diagram](./media/om-agents/oms-operations-manager-connection.png)
 
-Wenn es laut Ihren IT-Sicherheitsrichtlinien unzulässig ist, dass Computer in Ihrem Netzwerk eine Internetverbindung herstellen, können die Verwaltungsserver so konfiguriert werden, dass sie eine Verbindung mit dem Log Analytics-Gateway herstellen, um Konfigurationsinformationen zu empfangen und gesammelte Daten abhängig von den aktivierten Lösungen zu senden. Weitere Informationen und Schritte zum Konfigurieren der Operations Manager-Verwaltungsgruppe für die Kommunikation mit Azure Monitor über ein Log Analytics-Gateway finden Sie unter [Verbinden von Computern mit Azure Monitor über das Log Analytics-Gateway](../../azure-monitor/platform/gateway.md).  
+Wenn es laut Ihren IT-Sicherheitsrichtlinien unzulässig ist, dass Computer in Ihrem Netzwerk eine Internetverbindung herstellen, können die Verwaltungsserver so konfiguriert werden, dass sie eine Verbindung mit dem Log Analytics-Gateway herstellen, um Konfigurationsinformationen zu empfangen und gesammelte Daten abhängig von den aktivierten Lösungen zu senden. Weitere Informationen und Schritte zum Konfigurieren der Operations Manager-Verwaltungsgruppe für die Kommunikation mit Azure Monitor über ein Log Analytics-Gateway finden Sie unter [Verbinden von Computern mit Azure Monitor über das Log Analytics-Gateway](./gateway.md).  
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -40,7 +40,7 @@ Bevor Sie beginnen, überprüfen Sie die folgenden Anforderungen.
 * Azure Monitor unterstützt nur System Center Operations Manager 2016 und höher, Operations Manager 2012 SP1 UR6 und höher sowie Operations Manager 2012 R2 UR2 und höher. Proxyunterstützung wurde in Operations Manager 2012 SP1 UR7 und Operations Manager 2012 R2 UR3 hinzugefügt.
 * Die Integration von System Center Operations Manager 2016 in die US-Government Cloud erfordert ein aktualisiertes Advisor Management Pack, das im Lieferumfang von Updaterollup 2 oder höher enthalten ist. System Center Operations Manager 2012 R2 erfordert ein aktualisiertes Advisor Management Pack, das im Lieferumfang von Updaterollup 3 oder höher enthalten ist.
 * Alle Operations Manager-Agents müssen die Mindestanforderungen in Bezug auf die Unterstützung erfüllen. Überprüfen Sie, ob Agents über das Mindestupdate verfügen. Andernfalls schlägt die Windows-Agent-Kommunikation ggf. fehl, und das Operations Manager-Ereignisprotokoll generiert Fehler.
-* Einen Log Analytics-Arbeitsbereich Weitere Informationen finden Sie in der [Übersicht zum Log Analytics-Arbeitsbereich](design-logs-deployment.md). 
+* Einen Log Analytics-Arbeitsbereich Weitere Informationen finden Sie in der [Übersicht zum Log Analytics-Arbeitsbereich](design-logs-deployment.md).
 * Sie authentifizieren sich bei Azure mit einem Konto, das Mitglied der Rolle [Log Analytics-Mitwirkender](manage-access.md#manage-access-using-azure-permissions) ist.
 
 * Unterstützte Regionen: Nur die folgenden Azure-Regionen werden von System Center Operations Manager unterstützt, was die Verbindungsherstellung mit einem Log Analytics-Arbeitsbereich betrifft:
@@ -95,7 +95,7 @@ Die folgende Aufstellung enthält die Proxy- und Firewall-Konfigurationsinformat
 
 ### <a name="tls-12-protocol"></a>TLS 1.2-Protokoll
 
-Um die Sicherheit von Daten bei der Übertragung an Azure Monitor sicherzustellen, wird dringend empfohlen, den Agent und die Verwaltungsgruppe so zu konfigurieren, dass mindestens Transport Layer Security (TLS) 1.2 verwendet wird. Bei älteren Versionen von TLS/Secure Sockets Layer (SSL) wurde ein Sicherheitsrisiko festgestellt. Sie funktionieren aus Gründen der Abwärtskompatibilität zwar noch, werden jedoch **nicht empfohlen**. Weitere Informationen finden Sie unter [Senden von Daten über TLS 1.2](../../azure-monitor/platform/data-security.md#sending-data-securely-using-tls-12).
+Um die Sicherheit von Daten bei der Übertragung an Azure Monitor sicherzustellen, wird dringend empfohlen, den Agent und die Verwaltungsgruppe so zu konfigurieren, dass mindestens Transport Layer Security (TLS) 1.2 verwendet wird. Bei älteren Versionen von TLS/Secure Sockets Layer (SSL) wurde ein Sicherheitsrisiko festgestellt. Sie funktionieren aus Gründen der Abwärtskompatibilität zwar noch, werden jedoch **nicht empfohlen**. Weitere Informationen finden Sie unter [Senden von Daten über TLS 1.2](./data-security.md#sending-data-securely-using-tls-12).
 
 ## <a name="connecting-operations-manager-to-azure-monitor"></a>Herstellen einer Verbindung zwischen Operations Manager und Azure Monitor
 
@@ -193,25 +193,15 @@ Um Ihren vorhandenen Änderungssteuerungsprozess zur Steuerung von Management Pa
 
 ## <a name="validate-operations-manager-integration-with-azure-monitor"></a>Überprüfen der Integration von Operations Manager mit Azure Monitor
 
-Es gibt verschiedene Methoden, um zu überprüfen, ob die Integration von Azure Monitor mit Operations Manager erfolgreich war.
+Verwenden Sie die folgende Abfrage, um die verbundenen Instanzen von Operations Manager abzurufen:
 
-### <a name="to-confirm-integration-from-the-azure-portal"></a>So überprüfen Sie die Integration über das Azure-Portal
-
-1. Klicken Sie im Azure-Portal unten links auf **Weitere Dienste**. Geben Sie in der Liste mit den Ressourcen **Log Analytics** ein. Sobald Sie mit der Eingabe beginnen, wird die Liste auf der Grundlage Ihrer Eingabe gefiltert.
-1. Wählen Sie in der Liste mit den Log Analytics-Arbeitsbereichen den entsprechenden Arbeitsbereich aus.  
-1. Wählen Sie **Erweiterte Einstellungen** > **Verbundene Quellen** und dann **System Center** aus.
-1. In der Tabelle im Abschnitt für System Center Operations Manager sollten der Name der Verwaltungsgruppe sowie die Anzahl von Agents und die Angabe, wann zuletzt Daten empfangen wurden, angezeigt werden.
-
-   ![oms-settings-connectedsources](./media/om-agents/oms-settings-connectedsources.png)
-
-### <a name="to-confirm-integration-from-the-operations-console"></a>Überprüfen der Integration über die Betriebskonsole
-
-1. Öffnen Sie die Operations Manager-Konsole, und wählen Sie den Arbeitsbereich **Administration** aus.
-1. Wählen Sie **Management Packs** aus, und geben Sie im Textfeld für die **Suche** die Zeichenfolge **Advisor** oder **Intelligence** ein.
-1. Abhängig von den aktivierten Lösungen wird in den Suchergebnissen ein entsprechendes Management Pack aufgeführt.  Wenn Sie also etwa die Lösung „Alert Management“ aktiviert haben, enthält die Liste das Management Pack „Microsoft System Center Advisor Alert Management“.
-1. Navigieren Sie in der Ansicht **Überwachung** zur Ansicht **Operations Management Suite\Integritätsstatus**.  Wählen Sie im Bereich **Zustand des Verwaltungsservers** einen Verwaltungsserver aus. Stellen Sie dann im Bereich **Detailansicht** sicher, dass der Wert für die Eigenschaft **URI des Authentifizierungsdiensts** mit der ID des Log Analytics-Arbeitsbereichs übereinstimmt.
-
-   ![oms-opsmgr-mg-authsvcuri-property-ms](./media/om-agents/oms-opsmgr-mg-authsvcuri-property-ms.png)
+```azurepowershell
+union *
+| where isnotempty(MG)
+| where not(ObjectName == 'Advisor Metrics' or ObjectName == 'ManagedSpace')
+| summarize LastData = max(TimeGenerated) by lowerCasedComputerName=tolower(Computer), MG, ManagementGroupName
+| sort by lowerCasedComputerName asc
+```
 
 ## <a name="remove-integration-with-azure-monitor"></a>Entfernen der Integration mit Azure Monitor
 
@@ -354,4 +344,5 @@ Wenn Sie planen, die Verwaltungsgruppe später wieder mit einem Log Analytics-Ar
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informationen über das Hinzufügen von Funktionen und Erfassen von Daten finden Sie unter [Hinzufügen von Azure Monitor-Lösungen aus dem Lösungskatalog](../../azure-monitor/insights/solutions.md).
+Informationen über das Hinzufügen von Funktionen und Erfassen von Daten finden Sie unter [Hinzufügen von Azure Monitor-Lösungen aus dem Lösungskatalog](../insights/solutions.md).
+

@@ -1,19 +1,14 @@
 ---
 title: Verbinden von Hybridcomputern mit Azure im großen Stil
 description: In diesem Artikel erfahren Sie, wie Sie Computer mithilfe von Azure Arc für Server (Vorschauversion) unter Verwendung eines Dienstprinzipals mit Azure verbinden.
-services: azure-arc
-ms.service: azure-arc
-ms.subservice: azure-arc-servers
-author: mgoedtel
-ms.author: magoedte
-ms.date: 02/04/2020
+ms.date: 07/23/2020
 ms.topic: conceptual
-ms.openlocfilehash: ac6a00efa7db848e4c05703c81ba835fbf5f77e3
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 0f599ae6bab8a2b1ce442df677ba5de206d11ab2
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86103788"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121815"
 ---
 # <a name="connect-hybrid-machines-to-azure-at-scale"></a>Verbinden von Hybridcomputern mit Azure im großen Stil
 
@@ -76,7 +71,7 @@ Die Rolle **Onboarding von Azure Connected Machine** umfasst nur die Berechtigun
 
 ## <a name="install-the-agent-and-connect-to-azure"></a>Installieren des Agents und Herstellen einer Verbindung mit Azure
 
-Mit den folgenden Schritten können Sie den Connected Machine-Agent auf Ihren Hybridcomputern mithilfe der Skriptvorlage installieren und konfigurieren, die ähnliche Schritte ausführt, wie im Artikel [Verbinden von Hybridcomputern mit Azure über das Azure-Portal](onboard-portal.md) beschrieben. Der Unterschied besteht im letzten Schritt, in dem Sie mit dem Befehl `azcmagent` unter Verwendung des Dienstprinzipals eine Verbindung mit Azure Arc herstellen. 
+Mit den folgenden Schritten können Sie den Connected Machine-Agent auf Ihren Hybridcomputern mithilfe der Skriptvorlage installieren und konfigurieren, die ähnliche Schritte ausführt, wie im Artikel [Verbinden von Hybridcomputern mit Azure über das Azure-Portal](onboard-portal.md) beschrieben. Der Unterschied besteht im letzten Schritt, in dem Sie mit dem Befehl `azcmagent` unter Verwendung des Dienstprinzipals eine Verbindung mit Azure Arc herstellen.
 
 Im Folgenden finden Sie die Einstellungen, die Sie für den Befehl `azcmagent` konfigurieren, damit dieser sie für den Dienstprinzipal verwendet.
 
@@ -110,6 +105,10 @@ msiexec /i AzureConnectedMachineAgent.msi /l*v installationlog.txt /qn | Out-Str
   --subscription-id "{subscriptionID}"
 ```
 
+>[!NOTE]
+>Das Skript unterstützt nur die Ausführung in einer 64-Bit-Version von Windows PowerShell.
+>
+
 ### <a name="linux-installation-script"></a>Linux-Installationsskript
 
 Im Folgenden finden Sie ein Beispiel für das Installationsskript für den Connected Machine-Agent für Linux, das so geändert wurde, dass der Dienstprinzipal zur Unterstützung einer vollständig automatisierten, nicht interaktiven Installation des Agents verwendet wird.
@@ -131,12 +130,15 @@ azcmagent connect \
   --subscription-id "{subscriptionID}"
 ```
 
+>[!NOTE]
+>Sie müssen auf Linux-Computern über *Stamm*zugriffsberechtigungen verfügen, um **azcmagent** ausführen zu können.
+
 Vergewissern Sie sich im Azure-Portal, dass die Serververbindung erfolgreich hergestellt wurde, nachdem Sie den Agent installiert und für die Verbindungsherstellung mit Azure Arc für Server (Vorschauversion) konfiguriert haben. Zeigen Sie Ihre Computer im [Azure-Portal](https://aka.ms/hybridmachineportal) an.
 
 ![Erfolgreiche Serververbindung](./media/onboard-portal/arc-for-servers-successful-onboard.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Erfahren Sie, wie Sie Ihren Computer mithilfe von [Azure Policy](../../governance/policy/overview.md) verwalten, wie z. B. bei der VM-[Gastkonfiguration](../../governance/policy/concepts/guest-configuration.md), dem Überprüfen, ob der Computer dem erwarteten Log Analytics-Arbeitsbereich Bericht erstattet, beim Aktivieren der Überwachung mit [Azure Monitor mit VMs](../../azure-monitor/insights/vminsights-enable-at-scale-policy.md) und vieles mehr.
+- Erfahren Sie, wie Sie Ihren Computer mithilfe von [Azure Policy](../../governance/policy/overview.md) verwalten, wie z. B. bei der VM-[Gastkonfiguration](../../governance/policy/concepts/guest-configuration.md), dem Überprüfen, ob der Computer dem erwarteten Log Analytics-Arbeitsbereich Bericht erstattet, beim Aktivieren der Überwachung mit [Azure Monitor mit VMs](../../azure-monitor/insights/vminsights-enable-policy.md) und vieles mehr.
 
 - Weitere Informationen zum [Log Analytics-Agent](../../azure-monitor/platform/log-analytics-agent.md). Der Log Analytics-Agent für Windows und Linux ist erforderlich, wenn Sie das Betriebssystem und die Workloads auf dem Computer proaktiv überwachen, den Computer mithilfe von Automation-Runbooks oder Lösungen wie der Updateverwaltung verwalten oder andere Azure-Dienste wie [Azure Security Center](../../security-center/security-center-intro.md) verwenden möchten.

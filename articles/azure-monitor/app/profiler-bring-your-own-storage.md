@@ -6,12 +6,12 @@ author: renatosalas
 ms.author: regutier
 ms.date: 04/14/2020
 ms.reviewer: mbullwin
-ms.openlocfilehash: 50dcd3f438645c99e0ed3cfdded7a101ee5f1852
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 719f0cfa0a1f80568acf3231ce3ffab441e5f6b7
+ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539855"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87117391"
 ---
 # <a name="configure-bring-your-own-storage-byos-for-application-insights-profiler-and-snapshot-debugger"></a>Konfigurieren von BYOS (Bring Your Own Storage) für Application Insights Profiler und Momentaufnahmedebugger
 
@@ -63,7 +63,7 @@ _Abbildung 1.1_
 Wenn Sie auch Private Link verwenden, ist ein zusätzlicher Konfigurationsschritt erforderlich, um eine Verbindung mit unserem vertrauenswürdigen Microsoft-Dienst über Ihr virtuelles Netzwerk zuzulassen. Informationen hierzu finden Sie in der [Dokumentation zur Sicherheit des Speichernetzwerks](../../storage/common/storage-network-security.md#trusted-microsoft-services).
 
 ### <a name="link-your-storage-account-with-your-application-insights-resource"></a>Verknüpfen des Speicherkontos mit der Application Insights-Ressource
-Es gibt zwei Möglichkeiten, BYOS für die Diagnose auf Codeebene (Profiler/Debugger) zu konfigurieren:
+Es gibt drei Möglichkeiten, BYOS für die Diagnose auf Codeebene (Profiler/Debugger) zu konfigurieren:
 
 * Verwenden von Azure PowerShell-Cmdlets
 * Verwenden der Azure-Befehlszeilenschnittstelle (Command Line Interface, CLI)

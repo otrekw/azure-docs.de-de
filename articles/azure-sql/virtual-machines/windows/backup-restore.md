@@ -3,7 +3,7 @@ title: Sicherung und Wiederherstellung für SQL Server auf Azure-VMs | Microsoft
 description: Erläutert Überlegungen zur Sicherung und Wiederherstellung für SQL Server-Datenbanken auf virtuellen Azure-Computern.
 services: virtual-machines-windows
 documentationcenter: na
-author: MikeRayMSFT
+author: MashaMSFT
 editor: ''
 tags: azure-resource-management
 ms.assetid: 95a89072-0edf-49b5-88ed-584891c0e066
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/04/2018
 ms.author: mikeray
-ms.openlocfilehash: 1a19bf26418d6a61d3aa2421957614abe6dd04e8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6a03a91eeb9296e60aa147f97634a15e8d344209
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84669195"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87293044"
 ---
 # <a name="backup-and-restore-for-sql-server-on-azure-vms"></a>Sicherung und Wiederherstellung für SQL Server auf Azure-VMs
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -127,7 +127,7 @@ Weitere Informationen finden Sie in einem der folgenden Artikel, je nachdem, wel
 
 In der folgenden Tabelle sind die Funktionen jeder Sicherungs- und Wiederherstellungsoption für virtuelle SQL Server-Computer in Azure zusammengefasst.
 
-|| **Automatisierte Sicherung** | **Azure Backup für SQL** | **Manuelle Sicherung** |
+| Option | Automatisierte Sicherung | Azure Backup für SQL | Manuelle Sicherung |
 |---|---|---|---|
 | Erfordert zusätzlichen Azure-Dienst |   | ![Ja](./media/backup-restore/yes.png) |   |
 | Konfigurieren einer Sicherungsrichtlinie im Azure-Portal | ![Ja](./media/backup-restore/yes.png) | ![Ja](./media/backup-restore/yes.png) |   |

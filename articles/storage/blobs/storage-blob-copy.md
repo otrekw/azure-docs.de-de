@@ -8,12 +8,12 @@ ms.date: 08/20/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: how-to
-ms.openlocfilehash: f4e6e2f2732d1c90e8fe669788d82692c8016fd6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ce0c16d43e6de9bada5d747949e370eb83f85826
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84463449"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87446861"
 ---
 # <a name="copy-a-blob-with-net"></a>Kopieren eines Blobs mit .NET
 
@@ -23,7 +23,7 @@ In diesem Artikel wird beschrieben, wie Sie ein Blob mit einem Azure Storage-Kon
 
 Wenn Sie ein Blob innerhalb desselben Speicherkontos kopieren, ist dies ein synchroner Vorgang. Wenn Sie zwischen Konten kopieren, ist es ein asynchroner Vorgang. Die Methoden [StartCopy](/dotnet/api/microsoft.azure.storage.blob.cloudblob.startcopy?view=azure-dotnet) und [StartCopyAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.startcopyasync?view=azure-dotnet) geben einen Wert für die Kopier-ID zurück, der zum Überprüfen des Status oder zum Abbrechen des Kopiervorgangs verwendet wird.
 
-Das Quellblob für einen Kopiervorgang kann ein Blockblob, ein Anfügeblob, ein Seitenblob oder eine Momentaufnahme sein. Wenn das Zielblob bereits vorhanden ist, muss es von demselben Blobtyp wie das Quellblob sein. Ein eventuell vorhandenes Zielblob wird überschrieben. 
+Das Quellblob für einen Kopiervorgang kann ein Blockblob, ein Anfügeblob, ein Seitenblob oder eine Momentaufnahme sein. Wenn das Zielblob bereits vorhanden ist, muss es von demselben Blobtyp wie das Quellblob sein. Ein eventuell vorhandenes Zielblob wird überschrieben.
 
 Das Zielblob kann während der Ausführung eines Kopiervorgangs nicht geändert werden. Bei einem Zielblob kann es nur einen ausstehenden Vorgang zum Kopieren des Blobs geben. Anders ausgedrückt: Ein Blob kann nicht das Ziel für mehrere ausstehende Kopiervorgänge sein.
 
@@ -35,18 +35,18 @@ Bei allen Blobtypen können Sie die Eigenschaft [CopyState.Status](/dotnet/api/m
 
 Ein Kopiervorgang kann eine der folgenden Formen haben:
 
-  - Sie können ein Quellblob in ein Zielblob mit einem anderen Namen kopieren. Das Zielblob kann ein vorhandenes Blob desselben Blobtyps sein (Blockblob, Anfügeblob oder Seitenblob), oder es kann sich um ein neues Blob handeln, das durch den Kopiervorgang erstellt wurde.
-  - Sie können ein Quellblob in ein Zielblob mit demselben Namen kopieren und so das Zielblob effektiv ersetzen. Ein solcher Kopiervorgang entfernt alle Blöcke ohne Commit und überschreibt die Metadaten des Zielblobs.
-  - Sie können eine Quelldatei im Azure-Dateidienst in ein Zielblob kopieren. Das Zielblob kann ein vorhandenes Blockblob oder ein neues Blockblob sein, das durch den Kopiervorgang erstellt wurde. Das Kopieren von Dateien in Seitenblobs oder Anfügeblobs wird nicht unterstützt.
-  - Sie können eine Momentaufnahme über das zugehörige Basis-Blob kopieren. Indem Sie eine Momentaufnahme zu einem Basis-Blob heraufstufen, können Sie eine frühere Version eines Blobs wiederherstellen.
-  - Sie können eine Momentaufnahme in ein Ziel-Blob mit einem anderen Namen kopieren. Das resultierende Zielblob ist ein beschreibbares Blob und keine Momentaufnahme.
+- Sie können ein Quellblob in ein Zielblob mit einem anderen Namen kopieren. Das Zielblob kann ein vorhandenes Blob desselben Blobtyps sein (Blockblob, Anfügeblob oder Seitenblob), oder es kann sich um ein neues Blob handeln, das durch den Kopiervorgang erstellt wurde.
+- Sie können ein Quellblob in ein Zielblob mit demselben Namen kopieren und so das Zielblob effektiv ersetzen. Ein solcher Kopiervorgang entfernt alle Blöcke ohne Commit und überschreibt die Metadaten des Zielblobs.
+- Sie können eine Quelldatei im Azure-Dateidienst in ein Zielblob kopieren. Das Zielblob kann ein vorhandenes Blockblob oder ein neues Blockblob sein, das durch den Kopiervorgang erstellt wurde. Das Kopieren von Dateien in Seitenblobs oder Anfügeblobs wird nicht unterstützt.
+- Sie können eine Momentaufnahme über das zugehörige Basis-Blob kopieren. Indem Sie eine Momentaufnahme zu einem Basis-Blob heraufstufen, können Sie eine frühere Version eines Blobs wiederherstellen.
+- Sie können eine Momentaufnahme in ein Ziel-Blob mit einem anderen Namen kopieren. Das resultierende Zielblob ist ein beschreibbares Blob und keine Momentaufnahme.
 
 ## <a name="copy-a-blob"></a>Kopieren eines Blobs
 
 Zum Kopieren eines Blobs rufen Sie eine der folgenden Methoden auf:
 
- - [StartCopy](/dotnet/api/microsoft.azure.storage.blob.cloudblob.startcopy?view=azure-dotnet)
- - [StartCopyAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.startcopyasync?view=azure-dotnet)
+- [StartCopy](/dotnet/api/microsoft.azure.storage.blob.cloudblob.startcopy?view=azure-dotnet)
+- [StartCopyAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.startcopyasync?view=azure-dotnet)
 
 Im folgenden Codebeispiel wird ein Verweis auf ein zuvor erstelltes Blob abgerufen und in ein neues Blob in demselben Container kopiert:
 

@@ -5,12 +5,12 @@ ms.assetid: 4444dbf7-363c-47e2-b24a-dbd45cb08491
 ms.topic: article
 ms.date: 07/06/2016
 ms.custom: seodec18
-ms.openlocfilehash: 1295080d0eec7a4e88029cdadd85863f5f40d034
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c1b0ce62905424032c2100a1a032fa43ba97578f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74689248"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084856"
 ---
 # <a name="restore-an-app-in-azure"></a>Wiederherstellen einer App in Azure
 In diesem Artikel erfahren Sie, wie Sie eine App in [Azure App Service](../app-service/overview.md) wiederherstellen, die zuvor gesichert wurde (siehe [Sichern einer App in Azure](manage-backup.md)). Sie können Ihre App mit den zugehörigen verknüpften Datenbanken bei Bedarf in einem vorherigen Zustand wiederherstellen oder basierend auf den Sicherungen der ursprünglichen App eine neue App erstellen. Azure App Service unterstützt die folgenden Datenbanken für Sicherung und Wiederherstellung:
@@ -29,14 +29,14 @@ Das Wiederherstellen aus Sicherungen ist für Apps verfügbar, die in den Tarife
     !["Jetzt wiederherstellen" auswählen][ChooseRestoreNow]
 2. Wählen Sie auf der Seite **Wiederherstellen** zuerst die Sicherungsquelle aus.
    
-    ![](./media/web-sites-restore/021ChooseSource1.png)
+    ![Screenshot mit Anzeige der Position zur Auswahl der Sicherungsquelle](./media/web-sites-restore/021ChooseSource1.png)
    
     Die Option **App-Sicherung** zeigt alle vorhandenen Sicherungen der aktuellen App, aus denen Sie eine auswählen können.
     Die Option **Speicher** ermöglicht Ihnen in einem in Ihrem Abonnement vorhandenen Azure Storage-Konto und Container das Auswählen einer Sicherungsdatei im ZIP-Format.
     Wenn Sie versuchen, eine Sicherung einer anderen Anwendung wiederherzustellen, verwenden Sie die Option **Speicher** .
 3. Geben Sie anschließend das Ziel für die App-Wiederherstellung unter **Wiederherstellungsziel**an.
    
-    ![](./media/web-sites-restore/022ChooseDestination1.png)
+    ![Screenshot mit Anzeige der Position zur Festlegung des Ziels für die App-Wiederherstellung](./media/web-sites-restore/022ChooseDestination1.png)
    
    > [!WARNING]
    > Wenn Sie **Überschreiben** wählen, werden alle Daten in Ihrer vorhandenen App gelöscht und überschrieben. Bevor Sie auf **OK**klicken, stellen Sie sicher, dass alles genau Ihren Vorstellungen entspricht.
@@ -77,7 +77,7 @@ Auf der Seite „Details“ werden die verfügbaren Informationen im Zusammenhan
 
 ## <a name="automate-with-scripts"></a>Automatisieren mit Skripts
 
-Mit [Azure CLI](/cli/azure/install-azure-cli) oder mit [Azure PowerShell](/powershell/azure/overview) können Sie mithilfe von Skripts die Sicherungsverwaltung automatisieren.
+Mit [Azure CLI](/cli/azure/install-azure-cli) oder mit [Azure PowerShell](/powershell/azure/) können Sie mithilfe von Skripts die Sicherungsverwaltung automatisieren.
 
 Beispiele finden Sie unter:
 

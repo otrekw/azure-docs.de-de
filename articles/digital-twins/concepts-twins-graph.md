@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 955a3b8d12eb3b93bc9d44c624953cd5c1007318
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 5821a1d1f6713ef39d7475fb004164e7c0fd71ec
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86258219"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87062061"
 ---
 # <a name="understand-digital-twins-and-their-twin-graph"></a>Grundlegendes zu digitalen Zwillingen und zum zugehörigen Zwillingsgraphen
 
@@ -23,7 +23,7 @@ In einer Azure Digital Twins-Lösung werden die Entitäten in Ihrer Umgebung dur
 
 ## <a name="digital-twins"></a>Digital Twins
 
-Bevor Sie auf Ihrer Azure Digital Twins-Instanz einen digitalen Zwilling erstellen können, müssen Sie ein *Modell* in den Dienst hochladen. Mit einem Modell wird unter anderem die Gruppe mit den Eigenschaften, Telemetrienachrichten und Beziehungen beschrieben, über die ein bestimmter Zwilling verfügen kann. Informationen zu den Informationsarten, die in einem Modell definiert sind, finden Sie unter [Konzepte: Benutzerdefinierte Modelle](concepts-models.md).
+Bevor Sie auf Ihrer Azure Digital Twins-Instanz einen digitalen Zwilling erstellen können, müssen Sie ein *Modell* in den Dienst hochladen. Mit einem Modell wird unter anderem die Gruppe mit den Eigenschaften, Telemetrienachrichten und Beziehungen beschrieben, über die ein bestimmter Zwilling verfügen kann. Informationen zu den Informationsarten, die in einem Modell definiert sind, finden Sie unter [*Konzepte: Grundlegendes zu Zwillingsmodellen in Azure Digital Twins*](concepts-models.md).
 
 Nachdem Sie ein Modell erstellt und hochgeladen haben, kann Ihre Client-App eine Instanz des entsprechenden Typs erstellen. Hierbei handelt es sich um einen digitalen Zwilling. Nachdem Sie beispielsweise ein Modell vom Typ *Floor* (Etage) erstellt haben, können Sie einen oder mehrere digitale Zwillinge erstellen, die diesen Typ nutzen (z. B. ein Zwilling vom Typ *Floor* mit dem Namen *GroundFloor*, einen anderen mit dem Namen *Floor2* usw.). 
 
@@ -197,8 +197,8 @@ Hier ist ein Beispiel für eine Beziehung angegeben, die als JSON-Objekt formati
 ## <a name="next-steps"></a>Nächste Schritte
 
 Informieren Sie sich darüber, wie Sie Graphelemente mit Azure Digital Twin-APIs verwalten können:
-* [Gewusst wie: Verwalten digitaler Zwillinge](how-to-manage-twin.md)
-* [Gewusst wie: Verwalten des Zwillingsgraphen mit Beziehungen](how-to-manage-graph.md)
+* [*Verwenden Verwalten digitaler Zwillinge*](how-to-manage-twin.md)
+* [*Verwenden Verwalten des Zwillingsgraphen mit Beziehungen*](how-to-manage-graph.md)
 
 Sie können sich auch damit vertraut machen, wie Sie Informationen für einen Azure Digital Twins-Zwillingsgraphen abfragen:
-* [Konzepte: Abfragesprache](concepts-query-language.md)
+* [*Konzepte: Abfragesprache*](concepts-query-language.md)

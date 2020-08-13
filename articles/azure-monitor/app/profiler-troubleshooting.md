@@ -6,18 +6,17 @@ author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 7c9dd20aea410aecb34811ca6e08e0f641be292b
-ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
+ms.openlocfilehash: aa9b186e74ed3b8fe5496afd5b21c54f50537d5f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84148343"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87049777"
 ---
 # <a name="troubleshoot-problems-enabling-or-viewing-application-insights-profiler"></a>Behandeln von Problemen mit dem Aktivieren oder Anzeigen von Application Insights Profiler
 
-## <a name="active-issues"></a>Aktive Issues
-
-* Ab sofort bietet Azure App Services Unterstützung für die Profilerstellung für ASP.NET Core 3.x-Anwendungen.
+> [!CAUTION]
+> Beim Ausführen des Profilers für ASP.NET Core-Apps in Azure App Service tritt ein Fehler auf. Wir haben eine Korrektur entwickelt, aber es dauert einige Wochen, bis diese weltweit bereitgestellt ist. Sie können den Fehler umgehen, indem Sie das Application Insights SDK zu Ihrer Anwendung hinzufügen. Eine Anleitung dazu finden Sie [hier](./asp-net-core.md#enable-application-insights-server-side-telemetry-visual-studio).
 
 ## <a name="general-troubleshooting"></a><a id="troubleshooting"></a>Allgemeine Problembehandlung
 
@@ -76,7 +75,7 @@ Damit Profiler ordnungsgemäß funktioniert, müssen die folgenden Voraussetzung
 
 
 * Der Webauftrag **ApplicationInsightsProfiler3** muss ausgeführt werden. So überprüfen Sie den Webauftrag:
-   1. Wechseln Sie zu [Kudu](https://blogs.msdn.microsoft.com/cdndevs/2015/04/01/the-kudu-debug-console-azure-websites-best-kept-secret/).
+   1. Wechseln Sie zu [Kudu](/archive/blogs/cdndevs/the-kudu-debug-console-azure-websites-best-kept-secret).
    1. Wählen Sie im Menü **Tools** das **WebJobs-Dashboard** aus.  
       Der Bereich **WebJobs** wird geöffnet. 
    
@@ -194,11 +193,3 @@ Wenn Ihre Anwendung über einen Proxy oder über eine Firewall mit dem Internet 
 [profiler-search-telemetry]:./media/profiler-troubleshooting/Profiler-Search-Telemetry.png
 [profiler-webjob]:./media/profiler-troubleshooting/Profiler-webjob.png
 [profiler-webjob-log]:./media/profiler-troubleshooting/Profiler-webjob-log.png
-
-
-
-
-
-
-
-

@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: hux
-ms.openlocfilehash: 637bdb02cd9fc5296c74633bbfa381e62673a4bf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5b41609ec2b7cc9880fb22a76b9e3b40c315bc3c
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85355657"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87499873"
 ---
 # <a name="manage-and-find-data-on-azure-blob-storage-with-blob-index-preview"></a>Verwalten und Ermitteln von Daten in Azure Blob Storage mit Blob Index (Vorschau)
 
@@ -293,6 +293,7 @@ In diesem Abschnitt sind bekannte Probleme und Bedingungen in der aktuellen öff
 -   Ein Kontofailover wird derzeit nicht unterstützt. Der Blobindex wird nach einem Failover möglicherweise nicht ordnungsgemäß aktualisiert.
 -   Die Lebenszyklusverwaltung unterstützt beim Blobindexabgleich derzeit nur Gleichheitsprüfungen.
 -   CopyBlob kopiert keine Blobindextags vom Quellblob in das neue Zielblob. Sie können während des Kopiervorgangs die Tags angeben, die auf das Zielblob angewendet werden sollen. 
+- CopyBlob (Async-Kopie) von einem anderen Speicherkonto mit angewendeten Tags auf den Zielblob bewirkt derzeit, dass das Blobindexmodul den Blob und seine Tags im Filtersatz nicht zurückgibt. Es wird empfohlen, in der Zwischenzeit CopyBlob von URL (Sync-Kopie) zu verwenden.
 -   Tags werden beim Erstellen von Momentaufnahmen persistent gespeichert. Das Höherstufen von Momentaufnahmen wird derzeit jedoch nicht unterstützt und kann einen leeren Tagsatz zur Folge haben.
 
 ## <a name="faq"></a>Häufig gestellte Fragen
@@ -308,5 +309,7 @@ Nein, mit Azure Resource Manager-Tags lassen sich Ressourcen der Steuerungsebene
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sehen Sie sich ein Beispiel zur Verwendung von Blob Index an. Weitere Informationen finden Sie unter [Verwenden von Blob Index zum Verwalten und Suchen von Daten](storage-blob-index-how-to.md)
+Ein Beispiel für die Verwendung von Blob Index finden Sie unter [Verwenden von Blob Index zum Verwalten und Suchen von Daten](storage-blob-index-how-to.md).
+
+Erfahren Sie mehr über die [Lebenszyklusverwaltung](storage-lifecycle-management-concepts.md), und legen Sie eine Regel mit Blob Index-Übereinstimmung fest.
 

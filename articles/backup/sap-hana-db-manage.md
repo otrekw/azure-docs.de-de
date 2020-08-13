@@ -3,18 +3,18 @@ title: Verwalten von gesicherten SAP HANA-Datenbanken für Azure-VMs
 description: In diesem Artikel erfahren Sie mehr über allgemeine Aufgaben zum Verwalten und Überwachen von SAP HANA-Datenbanken, die auf virtuellen Azure-Computern ausgeführt werden.
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.openlocfilehash: e3705750e32b8b34ed397b8f68f22b0728129266
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 98dd67668d1b88a25dfa3b91174cd96730c435e1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83701107"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87049468"
 ---
 # <a name="manage-and-monitor-backed-up-sap-hana-databases"></a>Verwalten und Überwachen gesicherter SAP HANA-Datenbanken
 
-In diesem Artikel werden allgemeine Aufgaben zur Verwaltung und Überwachung von SAP HANA-Datenbanken beschrieben, die auf einem virtuellen Azure-Computer (Virtual Machine, VM) ausgeführt und mit dem [Azure Backup](https://docs.microsoft.com/azure/backup/backup-overview)-Dienst in einem Azure Backup Recovery Services-Tresor gesichert werden. Sie erfahren, wie Sie Aufträge und Warnungen überwachen, eine bedarfsgesteuerte Sicherung auslösen, Richtlinien bearbeiten, Datenbankschutz beenden und fortsetzen sowie die Registrierung einer VM für Sicherungen aufheben.
+In diesem Artikel werden allgemeine Aufgaben zur Verwaltung und Überwachung von SAP HANA-Datenbanken beschrieben, die auf einem virtuellen Azure-Computer (Virtual Machine, VM) ausgeführt und mit dem [Azure Backup](./backup-overview.md)-Dienst in einem Azure Backup Recovery Services-Tresor gesichert werden. Sie erfahren, wie Sie Aufträge und Warnungen überwachen, eine bedarfsgesteuerte Sicherung auslösen, Richtlinien bearbeiten, Datenbankschutz beenden und fortsetzen sowie die Registrierung einer VM für Sicherungen aufheben.
 
-Wenn Sie noch keine Sicherungen für Ihre SAP HANA-Datenbanken konfiguriert haben, finden Sie Näheres dazu unter [Informationen zur SAP HANA-Sicherung auf virtuellen Azure-Computern](https://docs.microsoft.com/azure/backup/backup-azure-sap-hana-database).
+Wenn Sie noch keine Sicherungen für Ihre SAP HANA-Datenbanken konfiguriert haben, finden Sie Näheres dazu unter [Informationen zur SAP HANA-Sicherung auf virtuellen Azure-Computern](./backup-azure-sap-hana-database.md).
 
 ## <a name="monitor-manual-backup-jobs-in-the-portal"></a>Überwachen manueller Sicherungsaufträge im Portal
 
@@ -26,7 +26,7 @@ Zu den Aufträgen, die in diesem Portal angezeigt werden, gehören Datenbankermi
 
 ![Liste „Sicherungsaufträge“](./media/sap-hana-db-manage/backup-jobs-list.png)
 
-Weitere Informationen zur Überwachung finden Sie unter [Überwachung im Azure-Portal](https://docs.microsoft.com/azure/backup/backup-azure-monitoring-built-in-monitor) und [Überwachen im richtigen Maßstab mithilfe von Azure Monitor](https://docs.microsoft.com/azure/backup/backup-azure-monitoring-use-azuremonitor).
+Weitere Informationen zur Überwachung finden Sie unter [Überwachung im Azure-Portal](./backup-azure-monitoring-built-in-monitor.md) und [Überwachen im richtigen Maßstab mithilfe von Azure Monitor](./backup-azure-monitoring-use-azuremonitor.md).
 
 ## <a name="view-backup-alerts"></a>Anzeigen von Sicherungswarnungen
 
@@ -51,7 +51,7 @@ Heute ermöglicht Azure Backup das Senden von Warnungen per E-Mail. Es handelt s
 * Auf Datenbankebene nach Fehlercode konsolidiert.
 * Nur beim ersten Sicherungsfehler einer Datenbank gesendet.
 
-Weitere Informationen zur Überwachung finden Sie unter [Überwachung im Azure-Portal](https://docs.microsoft.com/azure/backup/backup-azure-monitoring-built-in-monitor) und [Überwachen im richtigen Maßstab mithilfe von Azure Monitor](https://docs.microsoft.com/azure/backup/backup-azure-monitoring-use-azuremonitor).
+Weitere Informationen zur Überwachung finden Sie unter [Überwachung im Azure-Portal](./backup-azure-monitoring-built-in-monitor.md) und [Überwachen im richtigen Maßstab mithilfe von Azure Monitor](./backup-azure-monitoring-use-azuremonitor.md).
 
 ## <a name="management-operations"></a>Verwaltungsvorgänge
 
@@ -63,7 +63,7 @@ Sicherungen werden gemäß dem Richtlinienzeitplan ausgeführt. Eine bedarfsgest
 
 1. Klicken Sie im Tresormenü auf **Sicherungselemente**.
 2. Wählen Sie unter **Sicherungselemente** den virtuellen Computer aus, auf dem die SAP HANA-Datenbank ausgeführt wird, und klicken Sie dann auf **Jetzt sichern**.
-3. Verwenden Sie unter **Jetzt sichern** den Kalender, um den letzten Tag zur Beibehaltung des Wiederherstellungspunkts auszuwählen. Klicken Sie dann auf **OK**.
+3. Wählen Sie in **Jetzt sichern** den Sicherungstyp aus, den Sie durchführen möchten. Klicken Sie dann auf **OK**. Diese Sicherung wird gemäß der diesem Sicherungselement zugeordneten Richtlinie aufbewahrt.
 4. Überwachen Sie die Portalbenachrichtigungen. Sie können den Auftragsstatus im Dashboard des Tresors unter **Sicherungsaufträge** > **In Bearbeitung** überwachen. Je nach Größe Ihrer Datenbank kann das Erstellen der ersten Sicherung einige Zeit dauern.
 
 ### <a name="hana-native-client-integration"></a>Integration von nativen HANA-Clients
@@ -74,7 +74,7 @@ Von einem der nativen HANA-Clients (an **Backint**) ausgelöste bedarfsgesteuert
 
 ![Zuletzt durchgeführte Sicherungen](./media/sap-hana-db-manage/last-backups.png)
 
-Sie können [diese Sicherungen auch von der Seite **Sicherungsaufträge** aus überwachen](https://docs.microsoft.com/azure/backup/sap-hana-db-manage#monitor-manual-backup-jobs-in-the-portal).
+Sie können [diese Sicherungen auch von der Seite **Sicherungsaufträge** aus überwachen](#monitor-manual-backup-jobs-in-the-portal).
 
 Diese bedarfsgesteuerten Sicherungen werden auch in der Liste der Wiederherstellungspunkte für die Wiederherstellung angezeigt.
 
@@ -82,7 +82,7 @@ Diese bedarfsgesteuerten Sicherungen werden auch in der Liste der Wiederherstell
 
 #### <a name="restore"></a>Restore
 
-Von nativen HANA-Clients (unter Verwendung von **Backint**) ausgelöste Wiederherstellungen auf denselben Computer können von der Seite **Sicherungsaufträge** aus [überwacht](https://docs.microsoft.com/azure/backup/sap-hana-db-manage#monitor-manual-backup-jobs-in-the-portal) werden.
+Von nativen HANA-Clients (unter Verwendung von **Backint**) ausgelöste Wiederherstellungen auf denselben Computer können von der Seite **Sicherungsaufträge** aus [überwacht](#monitor-manual-backup-jobs-in-the-portal) werden.
 
 ### <a name="run-sap-hana-native-client-backup-on-a-database-with-azure-backup-enabled"></a>Ausführen einer Sicherung des nativen SAP HANA-Clients für eine Datenbank, für die Azure Backup aktiviert ist
 
@@ -116,7 +116,7 @@ Sie können die zugrunde liegende Richtlinie für ein SAP HANA-Sicherungselement
 
   ![Vorhandene Sicherungsrichtlinie auswählen](./media/sap-hana-db-manage/existing-backup-policy.png)
 
-* Wählen Sie die Richtlinie aus der Liste aus und ändern Sie sie. [Erstellen einer neuen Sicherungsrichtlinie](https://docs.microsoft.com/azure/backup/backup-azure-sap-hana-database#create-a-backup-policy) aus, falls erforderlich.
+* Wählen Sie die Richtlinie aus der Liste aus und ändern Sie sie. [Erstellen einer neuen Sicherungsrichtlinie](./backup-azure-sap-hana-database.md#create-a-backup-policy) aus, falls erforderlich.
 
   ![Richtlinie aus der Dropdownliste auswählen](./media/sap-hana-db-manage/choose-backup-policy.png)
 
@@ -242,4 +242,4 @@ Verwenden Sie diese Option mit Vorsicht: Wenn dieser Vorgang auf einer VM mit be
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Informieren Sie sich über das [Behandeln allgemeiner Probleme beim Sichern von SAP HANA-Datenbanken](https://docs.microsoft.com/azure/backup/backup-azure-sap-hana-database-troubleshoot).
+* Informieren Sie sich über das [Behandeln allgemeiner Probleme beim Sichern von SAP HANA-Datenbanken](./backup-azure-sap-hana-database-troubleshoot.md).

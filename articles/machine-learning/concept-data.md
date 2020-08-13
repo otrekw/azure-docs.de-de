@@ -10,13 +10,13 @@ ms.reviewer: nibaccam
 author: nibaccam
 ms.author: nibaccam
 ms.date: 04/24/2020
-ms.custom: tracking-python
-ms.openlocfilehash: 15cf4aa6adda26991e76ec8a5e7378766fe2a21f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-python
+ms.openlocfilehash: ff335cd6276083eb76efd74a4921d2bae96cd7c9
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84552640"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87875301"
 ---
 # <a name="secure-data-access-in-azure-machine-learning"></a>Sicherer Datenzugriff in Azure Machine Learning
 
@@ -67,14 +67,17 @@ Unterstützte cloudbasierte Speicherdienste in Azure, die als Datenspeicher regi
 
 ## <a name="datasets"></a>Datasets
 
-Azure Machine Learning-Datasets sind Verweise auf die Daten in Ihrem Speicherdienst. Sie sind keine Kopien Ihrer Daten, sodass keine zusätzlichen Speicherkosten anfallen. [Erstellen Sie ein Dataset](how-to-create-register-datasets.md), um auf Daten in Ihrem Speicher zuzugreifen und die Daten in einem nutzbaren Objekt für Machine Learning-Aufgaben zusammenzustellen. Registrieren Sie das Dataset in Ihrem Arbeitsbereich, um es freizugeben und in verschiedenen Experimenten ohne Datenerfassungskomplexität wiederzuverwenden.
+Azure Machine Learning-Datasets sind Verweise auf die Daten in Ihrem Speicherdienst. Es handelt sich nicht um Kopien Ihrer Daten, sodass keine zusätzlichen Speicherkosten anfallen und die Integrität Ihrer Originaldatenquellen nicht gefährdet ist.
+
+ [Erstellen Sie ein Dataset](how-to-create-register-datasets.md), um auf Daten in Ihrem Speicher zuzugreifen und die Daten in einem nutzbaren Objekt für Machine Learning-Aufgaben zusammenzustellen. Registrieren Sie das Dataset in Ihrem Arbeitsbereich, um es freizugeben und in verschiedenen Experimenten ohne Datenerfassungskomplexität wiederzuverwenden.
 
 Datasets können aus lokalen Dateien, öffentlichen URLs, [Azure Open Datasets](https://azure.microsoft.com/services/open-datasets/) oder Azure-Speicherdiensten in Datenspeichern erstellt werden. Um ein Dataset aus einem In-Memory-Pandas-Dataframe zu erstellen, schreiben Sie die Daten in eine lokale Datei, z. B. eine Parquet-Datei, und erstellen Ihr Dataset aus dieser Datei.  
 
 Wir unterstützen zwei Arten von Datasets: 
-+ Ein [TabularDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) stellt Daten in einem tabellarischen Format dar, indem die bereitgestellte Datei oder Liste von Dateien analysiert wird. Sie können ein TabularDataset zur weiteren Verarbeitung oder zur Bereinigung in einen Pandas- oder Spark-DataFrame laden. Eine vollständige Liste der Datenformate, aus denen Sie TabularDatasets erstellen können, finden Sie im Artikel über die [TabularDatasetFactory-Klasse](https://aka.ms/tabulardataset-api-reference).
 
-+ Ein [FileDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.file_dataset.filedataset?view=azure-ml-py) verweist auf eine einzelne Datei oder auf mehrere Dateien in Ihren Datenspeichern oder öffentlichen URLs. Dateien, die von FileDatasets referenziert werden, können Sie auf Ihr Computeziel [herunterladen oder dort einbinden](how-to-train-with-datasets.md#mount-files-to-remote-compute-targets).
++ Ein [FileDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.file_dataset.filedataset?view=azure-ml-py) verweist auf eine einzelne Datei oder auf mehrere Dateien in Ihren Datenspeichern oder öffentlichen URLs. Wenn Ihre Daten bereits bereinigt und für Trainingsexperimente bereit sind, können Sie Dateien, auf die von FileDatasets verwiesen wird, auf Ihr Computeziel [herunterladen oder sie einbinden](how-to-train-with-datasets.md#mount-files-to-remote-compute-targets).
+
++ Ein [TabularDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) stellt Daten in einem tabellarischen Format dar, indem die bereitgestellte Datei oder Liste von Dateien analysiert wird. Sie können ein TabularDataset zur weiteren Verarbeitung oder zur Bereinigung in einen Pandas- oder Spark-Datenrahmen laden. Eine vollständige Liste der Datenformate, aus denen Sie TabularDatasets erstellen können, finden Sie im Artikel über die [TabularDatasetFactory-Klasse](https://aka.ms/tabulardataset-api-reference).
 
 Weitere Funktionalität für Datasets finden Sie in der folgenden Dokumentation:
 

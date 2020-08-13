@@ -10,12 +10,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 04/28/2020
 ms.custom: azure-synapse, sqldbrb=1
-ms.openlocfilehash: 4f5ad6fd0444c40d95bf4c2f1105959bde07245d
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.openlocfilehash: 24c3ec1ee16123cef0c4e2bd230bfdb66915fc9f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86276310"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87040593"
 ---
 # <a name="auditing-for-azure-sql-database-and-azure-synapse-analytics"></a>Überwachen von Azure SQL-Datenbank und Azure Synapse Analytics
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -79,6 +79,9 @@ Sie können die Überwachung für verschiedene Arten von Aktionen und Aktionsgru
 Die Überwachung von Azure SQL-Datenbank und Azure Synapse speichert 4.000 Datenzeichen für Zeichenfelder in einem Überwachungsdatensatz. Wenn der von einer überwachbaren Aktion zurückgegebene Wert **statement** oder **data_sensitivity_information** mehr als 4000 Zeichen enthält, werden alle Daten über die ersten 4000 Zeichen hinaus **abgeschnitten und nicht überwacht**.
 Der folgende Abschnitt beschreibt die Konfiguration der Überwachung über das Azure-Portal.
 
+  > [!NOTE]
+  > Das Aktivieren der Überwachung in einem angehaltenen Synapse SQL-Pool ist nicht möglich. Um die Überwachung zu aktivieren, setzen Sie den Synapse SQL-Pool fort. Erfahren Sie mehr über [Synapse SQL-Pools](https://docs.microsoft.com/azure/synapse-analytics/sql/best-practices-sql-pool).
+
 1. Öffnen Sie das [Azure-Portal](https://portal.azure.com).
 2. Navigieren Sie im Bereich für die **SQL-Datenbank** oder den **SQL Server** unter der Überschrift „Sicherheit“ zu **Überwachung**.
 3. Wenn Sie eine Serverüberwachungsrichtlinie einrichten möchten, wählen Sie auf dem Blatt für die Datenbanküberwachung den Link **Servereinstellungen anzeigen** aus. Anschließend können Sie die Serverüberwachungseinstellungen anzeigen oder ändern. Eine Richtlinien für die Serverüberwachung gelten für alle vorhandenen und neu erstellten Datenbanken auf diesem Server.
@@ -119,10 +122,6 @@ Um das Schreiben von Überwachungsprotokollen in einen Log Analytics-Arbeitsbere
 Weitere Informationen zu Azure Monitor-Protokollarbeitsbereichen finden Sie unter [Entwerfen Ihrer Azure Monitor-Protokollbereitstellung](https://docs.microsoft.com/azure/azure-monitor/platform/design-logs-deployment).
    
 ### <a name="audit-to-event-hub-destination"></a><a id="audit-event-hub-destination"></a>Überwachen in Event Hub-Ziel
-
-> [!WARNING]
-> Das Aktivieren der Überwachung auf einem Server, der über einen SQL-Datenbank-Pool verfügt, **führt dazu, dass der SQL-Datenbank-Pool fortgesetzt und wieder angehalten wird**. Dies kann Abrechnungsgebühren verursachen.
-> Das Aktivieren der Überwachung für einen angehaltenen SQL-Datenbank-Pool ist nicht möglich. Setzen Sie den SQL-Datenbank-Pool fort, um ihn zu aktivieren.
 
 Um das Schreiben von Überwachungsprotokollen in einen Event Hub zu konfigurieren, wählen Sie **Event Hub (Vorschau)** aus, und öffnen Sie **Event Hub-Details**. Wählen Sie den Event Hub aus, in den die Protokolle geschrieben werden sollen, und klicken Sie dann auf **OK**. Achten Sie darauf, dass sich der Event Hub in derselben Region wie Ihre Datenbank und der Server befindet.
 

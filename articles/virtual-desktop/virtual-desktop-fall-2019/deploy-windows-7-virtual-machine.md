@@ -1,24 +1,22 @@
 ---
-title: Bereitstellen eines virtuellen Windows 7-Computers in Windows Virtual Desktop – Azure
-description: Konfigurieren und Bereitstellen eines virtuellen Windows 7-Computers in Windows Virtual Desktop.
-services: virtual-desktop
+title: Bereitstellen eines virtuellen Windows 7-Computers in Windows Virtual Desktop (klassisch) – Azure
+description: Hier erfahren Sie, wie Sie einen virtuellen Windows 7-Computer in Windows Virtual Desktop (klassisch) konfigurieren und bereitstellen.
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 92ab8e006ab7fef3c7e856cc34467b4510055174
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.openlocfilehash: 259e49fbdd6a0eb392ddf6a3cd3c318798cfabd0
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86275885"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88005067"
 ---
-# <a name="deploy-a-windows-7-virtual-machine-on-windows-virtual-desktop"></a>Bereitstellen eines virtuellen Windows 7-Computers in Windows Virtual Desktop
+# <a name="deploy-a-windows-7-virtual-machine-on-windows-virtual-desktop-classic"></a>Bereitstellen eines virtuellen Windows 7-Computers in Windows Virtual Desktop (klassisch)
 
 >[!IMPORTANT]
->Dieser Inhalt gilt für das Release vom Herbst 2019, das keine Windows Virtual Desktop-Objekte in Azure Resource Manager unterstützt. Wenn Sie Windows Virtual Desktop-Objekte in Azure Resource Manager verwalten möchten, die im Update vom Frühjahr 2020 eingeführt wurden, finden Sie weitere Informationen in [diesem Artikel](../deploy-windows-7-virtual-machine.md).
+>Dieser Inhalt gilt für den Windows Virtual Desktop-Dienst (klassisch), der keine Windows Virtual Desktop-Objekte in Azure Resource Manager unterstützt. Wenn Sie Windows Virtual Desktop-Objekte in Azure Resource Manager verwalten möchten, die in der aktuellen Version von Windows Virtual Desktop eingeführt wurden, finden Sie weitere Informationen in [diesem Artikel](../deploy-windows-7-virtual-machine.md).
 
 Der Vorgang zum Bereitstellen eines virtuellen Windows 7-Computers (VM) in Windows Virtual Desktop unterscheidet sich geringfügig von der Bereitstellung auf virtuellen Computern, auf denen höhere Versionen von Windows ausgeführt werden. In dieser Anleitung erfahren Sie, wie Sie Windows 7 bereitstellen.
 

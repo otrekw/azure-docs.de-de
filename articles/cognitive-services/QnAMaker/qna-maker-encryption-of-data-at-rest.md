@@ -1,20 +1,20 @@
 ---
 title: QnA Maker-Verschlüsselung für ruhende Daten
 titleSuffix: Azure Cognitive Services
-description: QnA Maker-Verschlüsselung für ruhende Daten.
+description: Microsoft bietet von Microsoft verwaltete Verschlüsselungsschlüssel an und ermöglicht Ihnen auch die Verwaltung Ihrer Cognitive Services-Abonnements mit Ihren eigenen Schlüsseln, den so genannten kundenseitig verwalteten Schlüsseln (Customer Managed Keys, CMK). In diesem Artikel erfahren Sie mehr über die Datenverschlüsselung im Ruhezustand für QnA Maker und wie Sie CMK aktivieren und verwalten können.
 author: erindormier
 manager: venkyv
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 03/13/2020
+ms.date: 07/10/2020
 ms.author: egeaney
-ms.openlocfilehash: 99c21ece202f8d9867045d506574dd7718bd455e
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 1ca0dda046329e95c649540fd42f96ca43838c85
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83653661"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086704"
 ---
 # <a name="qna-maker-encryption-of-data-at-rest"></a>QnA Maker-Verschlüsselung für ruhende Daten
 

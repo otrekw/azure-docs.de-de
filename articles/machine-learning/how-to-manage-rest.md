@@ -7,15 +7,15 @@ ms.author: laobri
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
 ms.date: 01/31/2020
-ms.custom: tracking-python
-ms.openlocfilehash: 6b74f9cdc5b3317edc8bf2339ba1d2c29f43e55b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.topic: conceptual
+ms.custom: how-to, devx-track-python
+ms.openlocfilehash: d5343e6c21da4c30dc18c8692b41dd66eb9566a4
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84560176"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87846699"
 ---
 # <a name="create-run-and-delete-azure-ml-resources-using-rest"></a>Erstellen, Ausführen und Löschen von Azure ML-Ressourcen mithilfe von REST
 
@@ -48,7 +48,7 @@ Administrative REST-Anforderungen werden mit einem impliziten OAuth2-Flow authen
 - Ihre Client-ID (die dem erstellten Token zugeordnet wird)
 - Ihr geheimer Clientschlüssel (den Sie schützen sollten)
 
-Sie sollten diese Werte aus der Antwort auf die Erstellung Ihres Dienstprinzipals entnehmen können, wie in [Einrichten von Authentifizierung für Azure Machine Learning-Ressourcen und -Workflows](https://docs.microsoft.com/azure/machine-learning/how-to-setup-authentication#set-up-service-principal-authentication) erläutert. Wenn Sie das Abonnement Ihres Unternehmens verwenden, verfügen Sie möglicherweise nicht über die Berechtigung zum Erstellen eines Dienstprinzipals. In diesem Fall sollten Sie ein [kostenloses oder kostenpflichtiges persönliches Abonnement](https://aka.ms/AMLFree) verwenden.
+Sie sollten diese Werte von der Antwort auf die Erstellung Ihres Dienstprinzipals erhalten. Das Abrufen dieser Werte wird in [Einrichten der Authentifizierung für Azure Machine Learning-Ressourcen und -Workflows](https://docs.microsoft.com/azure/machine-learning/how-to-setup-authentication#set-up-service-principal-authentication) erläutert. Wenn Sie das Abonnement Ihres Unternehmens verwenden, verfügen Sie möglicherweise nicht über die Berechtigung zum Erstellen eines Dienstprinzipals. In diesem Fall sollten Sie ein [kostenloses oder kostenpflichtiges persönliches Abonnement](https://aka.ms/AMLFree) verwenden.
 
 So rufen Sie ein Token ab:
 
@@ -200,15 +200,15 @@ providers/Microsoft.MachineLearningServices/workspaces/{your-workspace-name}/mod
 -H "Authorization:Bearer {your-access-token}"
 ```
 
-Beachten Sie, dass der Pfad zum Auflisten von Experimenten mit `history/v1.0` beginnt, während der Pfad mit `modelmanagement/v1.0` zum Auflisten von Modellen beginnt. Die REST-API ist in verschiedene Betriebsgruppen unterteilt, die jeweils über einen eindeutigen Pfad verfügen. Die API-Referenzdokumentation unter den Links unten listet die Vorgänge, Parameter und Antwortcodes für die verschiedenen Vorgänge auf.
+Beachten Sie, dass der Pfad zum Auflisten von Experimenten mit `history/v1.0` beginnt, während der Pfad mit `modelmanagement/v1.0` zum Auflisten von Modellen beginnt. Die REST-API ist in verschiedene Betriebsgruppen unterteilt, die jeweils über einen eindeutigen Pfad verfügen. 
 
-|Bereich|`Path`|Verweis|
-|-|-|-|
-|Artefakte|artifact/v2.0/|[REST-API-Referenz](https://docs.microsoft.com/rest/api/azureml/artifacts)|
-|Datenspeicher|datastore/v1.0/|[REST-API-Referenz](https://docs.microsoft.com/rest/api/azureml/datastores)|
-|Hyperparameteroptimierung|hyperdrive/v1.0/|[REST-API-Referenz](https://docs.microsoft.com/rest/api/azureml/hyperparametertuning)|
-|Modelle|modelmanagement/v1.0/|[REST-API-Referenz](https://docs.microsoft.com/rest/api/azureml/modelsanddeployments/mlmodels)|
-|Ausführungsverlauf|execution/v1.0/ and history/v1.0/|[REST-API-Referenz](https://docs.microsoft.com/rest/api/azureml/runs)|
+|Bereich|`Path`|
+|-|-|
+|Artifacts|/rest/api/azureml|
+|Datenspeicher|/azure/machine-learning/how-to-access-data|
+|Hyperparameteroptimierung|hyperdrive/v1.0/|
+|Modelle|modelmanagement/v1.0/|
+|Ausführungsverlauf|execution/v1.0/ and history/v1.0/|
 
 Sie können die REST-API unter Verwendung des allgemeinen Musters untersuchen:
 

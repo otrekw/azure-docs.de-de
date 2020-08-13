@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: ''
 ms.date: 12/17/2018
-ms.openlocfilehash: d50a9a064e6fa279d65f196c0f031e60081d86bf
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 59a709a206eb29b875272674ee19e414023cc37f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85979997"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073313"
 ---
 # <a name="multi-model-capabilities-of-azure-sql-database--sql-managed-instance"></a>Funktionen für mehrere Modelle in Azure SQL-Datenbank und SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -96,10 +96,7 @@ In bestimmten Szenarien können Dokumentmodelle statt relationaler Modelle verwe
 
 Räumliche Daten repräsentieren Daten zur physischen Position und Form geometrischer Objekte. Diese Objekte können Punktpositionen oder komplexere Objekte wie Länder/Regionen, Straßen oder Seen sein.
 
-Mit Azure SQL-Produkten können Sie Daten analysieren und abfragen, die im [JSON](https://www.json.org/)-Format (JavaScript Object Notation) dargestellt werden, und Ihre relationalen Daten als JSON-Text exportieren.
-
-
- Die folgenden zweit Typen von räumlichen Daten werden unterstützt: 
+ Die folgenden beiden Typen von räumlichen Daten werden unterstützt: 
 
 - Der geometrische Datentyp stellt Daten in einem euklidischen (flachen) Koordinatensystem dar.
 - Der geografische Datentyp stellt Daten in einem Erdkugel-Koordinatensystem dar.

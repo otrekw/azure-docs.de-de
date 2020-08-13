@@ -7,12 +7,12 @@ author: musa-57
 ms.manager: abhemraj
 ms.author: hamusa
 ms.date: 01/02/2020
-ms.openlocfilehash: cc8a8e8c09fa9a8a34cfc90cb102cefabf227595
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: f9598ad508e3760bf1bad04f8694838465e4961f
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87385703"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460982"
 ---
 # <a name="troubleshoot-assessmentdependency-visualization"></a>Behandeln von Problemen bei der Bewertung- und Abhängigkeitsvisualisierung
 
@@ -66,6 +66,9 @@ Bei VMware- und Hyper-V-VMs werden virtuelle Linux-Computer aufgrund einer bekan
 
 Diese Lücke kann behoben werden, indem Sie [Anwendungsermittlung-](./how-to-discover-applications.md) auf den VMware-VMs aktivieren. Bei der Serverbewertung wird das von der VM erkannte Betriebssystem mit den bereitgestellten Gastanmeldeinformationen verwendet. Mit diesen Betriebssystemdaten werden die richtigen Betriebssysteminformationen im Fall von virtuellen Windows- und Linux-Computern identifiziert.
 
+## <a name="operating-system-version-not-available"></a>Betriebssystemversion nicht verfügbar
+
+Bei physischen Servern sollten Informationen zur Nebenversion des Betriebssystems verfügbar sein. Wenn dies nicht der Fall ist, wenden Sie sich an den Microsoft-Support. Bei VMware-VMs verwendet die Serverbewertung die in vCenter Server für die VM angegebenen Betriebssysteminformationen. Allerdings gibt vCenter Server nicht die Nebenversion für Betriebssysteme an. Zum Ermitteln der Nebenversion müssen Sie die [Anwendungsermittlung](./how-to-discover-applications.md) einrichten. Bei Hyper-V-VMs wird die Ermittlung der Betriebssystem-Nebenversion nicht unterstützt. 
 
 ## <a name="azure-skus-bigger-than-on-premises-in-an-azure-vm-assessment"></a>Azure-SKUs größer als lokal in einer Azure-VM-Bewertung
 
@@ -180,6 +183,9 @@ Nach dem Migrieren von Computern mit aktivierter Abhängigkeitsvisualisierung zu
 
 ## <a name="dependencies-export-csv-shows-unknown-process"></a>Abhängigkeitenexport-CSV zeigt „Unbekannter Prozess“ an
 Bei der Abhängigkeitsanalyse ohne Agent werden die Prozessnamen auf Grundlage der besten Leistung aufgezeichnet. In bestimmten Szenarien ist es nicht möglich, die Prozessnamen an beiden Enden der Abhängigkeit zu ermitteln, obwohl der Quell- und Zielservername sowie der Zielport aufgezeichnet werden. In solchen Fällen wird der Prozess als „Unbekannter Prozess“ gekennzeichnet.
+
+## <a name="my-log-analytics-workspace-is-not-listed-when-trying-to-configure-the-workspace-in-server-assessment"></a>Beim Versuch, den Log Analytics-Arbeitsbereich in der Serverbewertung zu konfigurieren, wird der Arbeitsbereich nicht aufgeführt
+Azure Migrate unterstützt derzeit die Erstellung von OMS-Arbeitsbereichen in den Regionen „USA, Osten“, „Asien, Südosten“ und „Europa, Westen“. Wenn der Arbeitsbereich außerhalb von Azure Migrate in einer beliebigen anderen Region erstellt wird, kann er derzeit keinem Azure Migrate-Projekt zugeordnet werden.
 
 
 ## <a name="capture-network-traffic"></a>Erfassen des Netzwerkdatenverkehrs

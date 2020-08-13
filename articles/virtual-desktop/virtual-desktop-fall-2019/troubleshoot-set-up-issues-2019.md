@@ -1,24 +1,22 @@
 ---
-title: Erstellung von Windows Virtual Desktop-Mandantenhostpool – Azure
-description: 'Vorgehensweise: Behandeln von Problemen mit Mandanten und Hostpools während der Einrichtung einer Windows Virtual Desktop-Mandantenumgebung.'
-services: virtual-desktop
+title: Erstellung eines Mandanten- und Hostpools in Windows Virtual Desktop (klassisch) – Azure
+description: Hier erfahren Sie, wie Sie Probleme mit Mandanten und Hostpools während der Einrichtung einer Mandantenumgebung in Windows Virtual Desktop (klassisch) behandeln.
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: aad3bffeba4395ba415fb99a3667d04d18769a47
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: eed1b0e1b01d5d13330b927429eca9a28ff80658
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86026694"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009255"
 ---
-# <a name="tenant-and-host-pool-creation"></a>Mandanten- und Hostpoolerstellung
+# <a name="tenant-and-host-pool-creation-in-windows-virtual-desktop-classic"></a>Mandanten- und Hostpoolerstellung in Windows Virtual Desktop (klassisch)
 
 >[!IMPORTANT]
->Dieser Inhalt gilt für das Release vom Herbst 2019, das keine Windows Virtual Desktop-Objekte in Azure Resource Manager unterstützt. Wenn Sie Windows Virtual Desktop-Objekte in Azure Resource Manager verwalten möchten, die im Update vom Frühjahr 2020 eingeführt wurden, finden Sie weitere Informationen in [diesem Artikel](../troubleshoot-set-up-issues.md).
+>Dieser Inhalt gilt für den Windows Virtual Desktop-Dienst (klassisch), der keine Windows Virtual Desktop-Objekte in Azure Resource Manager unterstützt. Wenn Sie Windows Virtual Desktop-Objekte in Azure Resource Manager verwalten möchten, helfen Ihnen die Informationen in [diesem Artikel](../troubleshoot-set-up-issues.md) weiter.
 
 Dieser Artikel behandelt Probleme, die bei der ersten Einrichtung des Windows Virtual Desktop-Mandanten und der zugehörigen Infrastruktur für den Sitzungshostpool auftreten können.
 
@@ -43,9 +41,9 @@ Beispiel für unformatierten Fehler:
 
 ```Error
 AADSTS650052 Message The app needs access to a service(\"{name}\") that your organization
-\"{organization}\" has not subscribed to or enabled. Contact your IT Admin to review the 
+\"{organization}\" has not subscribed to or enabled. Contact your IT Admin to review the
 configuration of your service subscriptions.650052 Message The app needs access to a service
-(\"{name}\") that your organization \"{organization}\" has not subscribed to or enabled. 
+(\"{name}\") that your organization \"{organization}\" has not subscribed to or enabled.
 Contact your IT Admin to review the configuration of your service subscriptions.
 ```
 
@@ -124,12 +122,12 @@ So zeigen Sie den Fehler im Aktivitätsprotokoll an:
 1. Beenden Sie das aktuelle Azure Marketplace-Bereitstellungsangebot.
 2. Suchen Sie in der oberen Suchleiste nach **Aktivitätsprotokoll** und wählen Sie es aus.
 3. Suchen Sie eine Aktivität mit dem Namen **Bereitstellung überprüfen** mit dem Status **Fehler** und wählen Sie die Aktivität aus.
-   
+
    > [!div class="mx-imgBorder"]
    > ![Screenshot der einzelnen **Bereitstellung überprüfen**-Aktivität mit dem Status **Fehler**](../media/troubleshooting-marketplace-validation-error-activity-summary.png)
 
 4. Wählen Sie "JSON" aus und scrollen Sie zum unteren Rand des Bildschirms, bis das Feld "statusMessage" angezeigt wird.
-   
+
    > [!div class="mx-imgBorder"]
    > ![Screenshot der fehlgeschlagenen Aktivität mit einem roten Feld um die statusMessage-Eigenschaft des JSON-Texts](../media/troubleshooting-marketplace-validation-error-json-boxed.png)
 
@@ -260,7 +258,7 @@ Beispiel für unformatierten Fehler:
    "message": "At least one resource deployment operation failed. Please list
  deployment operations for details. 4 Please see https://aka.ms/arm-debug for usage details.",
  "details": [
-         { "code": "Conflict",  
+         { "code": "Conflict",
          "message": "{\r\n \"status\": \"Failed\",\r\n \"error\": {\r\n \"code\":
          \"ResourceDeploymentFailure\",\r\n \"message\": \"The resource
          operation completed with terminal provisioning state 'Failed'.\",\r\n

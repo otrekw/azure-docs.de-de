@@ -1,5 +1,5 @@
 ---
-title: Hinzufügen und Verwalten von Bibliotheken für Apache Spark in Azure Synapse Analytics
+title: Hinzufügen und Verwalten von Bibliotheken für Apache Spark
 description: Erfahren Sie, wie Sie Bibliotheken hinzufügen und verwalten, die von Apache Spark in Azure Synapse Analytics verwendet werden.
 services: synapse-analytics
 author: euangMS
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 85635ff3a52236d0c53b72c68eda0d71debe1f61
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: c0d34d80df77b5c6fcdefc39b3bc3b1619a93705
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86145906"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496252"
 ---
 # <a name="add-and-manage-libraries-for-apache-spark-in-azure-synapse-analytics"></a>Hinzufügen und Verwalten von Bibliotheken für Apache Spark in Azure Synapse Analytics
 
@@ -21,7 +21,7 @@ Apache Spark basiert bei der Bereitstellung seiner Funktionen auf einer Vielzahl
 
 Python-Pakete können auf Spark-Poolebene (Vorschau) hinzugefügt werden, und JAR-basierte Pakete können auf Spark-Auftragsdefinitionsebene hinzugefügt werden.
 
-## <a name="adding-or-updating-python-libraries"></a>Hinzufügen oder Aktualisieren von Python-Bibliotheken
+## <a name="add-or-update-python-libraries"></a>Hinzufügen oder Aktualisieren von Python-Bibliotheken
 
 Apache Spark in Azure Synapse Analytics verfügt über eine vollständige Anacondas-Installation und zusätzliche Bibliotheken. Die vollständige Liste der Bibliotheken finden Sie unter [Apache Spark-Versionsunterstützung](apache-spark-version-support.md).
 
@@ -51,7 +51,7 @@ Laden Sie die Umgebungskonfigurationsdatei mithilfe der Dateiauswahl im Abschnit
 
 ![Hinzufügen von Python-Bibliotheken](./media/apache-spark-azure-portal-add-libraries/add-python-libraries.png "Hinzufügen von Python-Bibliotheken")
 
-### <a name="verifying-installed-libraries"></a>Überprüfen von installierten Bibliotheken
+### <a name="verify-installed-libraries"></a>Überprüfen von installierten Bibliotheken
 
 Führen Sie den folgenden Code aus, um zu überprüfen, ob die richtigen Versionen der richtigen Bibliotheken installiert sind
 

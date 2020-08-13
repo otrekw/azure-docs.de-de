@@ -12,12 +12,12 @@ ms.date: 04/07/2020
 ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 48727e377c2b6707e570cad103e4b08bcb44a1cb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d177dce250d65b4f9d825c9d70916f70c4076d4b
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84764926"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88077508"
 ---
 # <a name="work-with-existing-on-premises-proxy-servers"></a>Verwenden von vorhandenen lokalen Proxyservern
 
@@ -115,7 +115,7 @@ Lassen Sie den Zugriff auf die folgenden URLs zu:
 | --- | --- |
 | \*.msappproxy.net<br>\*.servicebus.windows.net | Kommunikation zwischen dem Connector und dem Anwendungsproxy-Clouddienst |
 | mscrl.microsoft.com:80<br>crl.microsoft.com:80<br>ocsp.msocsp.com:80<br>www.microsoft.com:80 | Der Connector verwendet diese URLs, um Zertifikate zu überprüfen. |
-| login.windows.net<br>secure.aadcdn.microsoftonline-p.com<br>*.microsoftonline.com<br>* .microsoftonline-p.com<br>*.msauth.net<br>* .msauthimages.net<br>*.msecnd.net<br>* .msftauth.net<br>*.msftauthimages.net<br>* .phonefactor.net<br>enterpriseregistration.windows.net<br>management.azure.com<br>policykeyservice.dc.ad.msft.net<br>ctdl.windowsupdate.com:80 | Der Connector verwendet diese URLs während der Registrierung. |
+| login.windows.net<br>secure.aadcdn.microsoftonline-p.com<br>*.microsoftonline.com<br>* .microsoftonline-p.com<br>*.msauth.net<br>* .msauthimages.net<br>*.msecnd.net<br>* .msftauth.net<br>*.msftauthimages.net<br>* .phonefactor.net<br>enterpriseregistration.windows.net<br>management.azure.com<br>policykeyservice.dc.ad.msft.net<br>ctldl.windowsupdate.com:80 | Der Connector verwendet diese URLs während der Registrierung. |
 
 Wenn für Ihre Firewall oder Ihren Proxy die Konfiguration von DNS-Zulassungslisten möglich ist, können Sie Verbindungen mit „\*.msappproxy.net“ und „\*.servicebus.windows.net“ zulassen. Andernfalls müssen Sie den Zugriff auf die [IP-Adressbereiche für das Azure-Rechenzentrum](https://www.microsoft.com/download/details.aspx?id=41653) zulassen. Die IP-Adressbereiche werden wöchentlich aktualisiert.
 
@@ -153,6 +153,9 @@ Führen Sie die folgenden Schritte aus, um dies zu aktivieren:
 4.  Konfigurieren Sie die erforderlichen Proxyeinstellungen. 
 
 Mit diesen Einstellungen kann der Connector für die Kommunikation mit Azure und mit der Back-End-Anwendung denselben Weiterleitungsproxy nutzen. Falls für die Kommunikation zwischen Connector und Azure kein oder ein anderer Weiterleitungsproxy benötigt wird, können Sie dies wie folgt einrichten: Ändern Sie die Datei „ApplicationProxyConnectorService.exe.config“, wie dies in den Abschnitten „Umgehen von Proxys für ausgehenden Datenverkehr“ bzw. „Verwenden des Proxyservers für ausgehenden Datenverkehr“ beschrieben ist.
+
+> [!NOTE]
+> Es gibt verschiedene Möglichkeiten, den Internetproxy im Betriebssystem zu konfigurieren. Proxyeinstellungen, die über NETSH WINHTTP (führen Sie zur Überprüfung `NETSH WINHTTP SHOW PROXY` aus) konfiguriert werden, setzen die Proxyeinstellungen außer Kraft, die Sie in Schritt 2 konfiguriert haben. 
 
 Der Proxy des Computers wird auch vom Connectorupdatedienst verwendet. Sie können dieses Verhalten ändern, indem Sie die Datei „ApplicationProxyConnectorUpdaterService.exe.config“ bearbeiten.
 

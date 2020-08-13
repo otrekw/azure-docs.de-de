@@ -14,14 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/21/2020
 ms.author: yelevin
-ms.openlocfilehash: 121c9258353505b6147aa059d327bc711e9fede4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cf8da1d88529a823ff4399fb955c8a5e0abbd20e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85368394"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87038238"
 ---
 # <a name="connect-your-alcide-kaudit-to-azure-sentinel"></a>Herstellen einer Verbindung zwischen Alcide kAudit und Azure Sentinel
+
+> [!IMPORTANT]
+> Der Alcide kAudit-Datenconnector in Azure Sentinel befindet sich derzeit in der öffentlichen Vorschau.
+> Dieses Feature wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 [Alcide kAudit](https://www.alcide.io/kaudit-K8s-forensics/) unterstützt Sie bei der Identifizierung von anormalem Kubernetes-Verhalten. Der Schwerpunkt liegt dabei auf Kubernetes-Verletzungen und -Incidents bei verringerter Erkennungszeit. In diesem Artikel wird erläutert, wie Sie Ihre Alcide kAudit-Lösung mit Azure Sentinel verbinden. Mit dem Alcide kAudit-Datenconnector lassen sich Alcide kAudit-Daten problemlos in Azure Sentinel einbinden. Diese Daten können Sie dann in Arbeitsmappen anzeigen, als Vorlage für benutzerdefinierte Warnungen und zur Untersuchung von Problemen verwenden. Die Integration von Alcide kAudit und Azure Sentinel stützt sich auf die REST-API.
 
@@ -63,7 +67,7 @@ Es kann bis zu 20 Minuten dauern, bis Ihre Protokolle in Log Analytics angezeig
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Dokument wurde beschrieben, wie Sie Alcide kAudit mit Azure Sentinel verbinden. Um die in diesem Datenconnector integrierten Funktionen in vollem Umfang nutzen zu können, klicken Sie auf der Datenconnectorseite auf die Registerkarte **Nächste Schritte**. Dort finden Sie einige vorgefertigte Beispielabfragen, damit Sie mit der Suche nach nützlichen Informationen beginnen können.
+In diesem Dokument wurde beschrieben, wie Sie Alcide kAudit mit Azure Sentinel verbinden. Um die in diesem Datenconnector integrierten Funktionen in vollem Umfang nutzen zu können, klicken Sie auf der Datenconnectorseite auf die Registerkarte **Nächste Schritte**. Dort finden Sie einige vorgefertigte Beispielabfragen, die Ihnen die Suche nach nützlichen Informationen erleichtern.
 
 Weitere Informationen zu Azure Sentinel finden Sie in den folgenden Artikeln:
 

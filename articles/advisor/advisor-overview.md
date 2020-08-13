@@ -3,12 +3,12 @@ title: Einführung in Azure Advisor
 description: Nutzen Sie Azure Advisor, um Ihre Azure-Bereitstellungen zu optimieren.
 ms.topic: article
 ms.date: 02/01/2019
-ms.openlocfilehash: 0c6c79dd764f92475b3b0121ae46706c0dfc0bcb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 17b68e220b7011dee2cc8fca440d58d980c28e6d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85117776"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87057692"
 ---
 # <a name="introduction-to-azure-advisor"></a>Einführung in Azure Advisor
 
@@ -51,13 +51,13 @@ Sie können die Advisor-Empfehlungen auch auf der VM-Ressourcenbenutzeroberfläc
 
 ### <a name="what-permissions-do-i-need-to-access-advisor"></a>Welche Berechtigungen benötige ich für den Zugriff auf Advisor?
  
-Sie können als *Besitzer*, *Mitwirkende* oder *Leser* eines Abonnements auf die Advisor-Empfehlungen zugreifen.
+Sie können als *Besitzer*, *Mitwirkende* oder *Leser* eines Abonnements, einer Ressourcengruppe oder einer Ressource auf die Advisor-Empfehlungen zugreifen.
 
 ### <a name="what-resources-does-advisor-provide-recommendations-for"></a>Für welche Ressourcen bietet Advisor Empfehlungen?
 
 Advisor bietet Empfehlungen für Application Gateway, App Services, Verfügbarkeitsgruppen, Azure Cache, Azure Data Factory, Azure Database for MySQL, Azure Database for PostgreSQL, Azure Database for MariaDB, Azure ExpressRoute, Azure Cosmos DB, öffentlich Azure-IP-Adressen, SQL Data Warehouse, SQL-Server, Speicherkonten, Traffic Manager-Profile und virtuelle Computer.
 
-Außerdem enthält Azure Advisor auch Ihre Empfehlungen aus dem [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-recommendations), zu denen auch Empfehlungen für weitere Ressourcentypen gehören können.
+Außerdem enthält Azure Advisor auch Ihre Empfehlungen aus dem [Azure Security Center](../security-center/security-center-recommendations.md), zu denen auch Empfehlungen für weitere Ressourcentypen gehören können.
 
 ### <a name="can-i-postpone-or-dismiss-a-recommendation"></a>Kann ich eine Empfehlung zurückstellen oder verwerfen?
 

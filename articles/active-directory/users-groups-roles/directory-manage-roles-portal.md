@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5e067e8d56f8a928f952648fc76cd5d6b7a1afe7
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: fea05ada52ba4281acb3451769446d7f0bad790d
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86221267"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448726"
 ---
 # <a name="view-and-assign-administrator-roles-in-azure-active-directory"></a>Anzeigen und Zuweisen von Benutzerrollen in Azure Active Directory
 
@@ -56,6 +56,12 @@ Wenn Sie globaler Administrator oder Administrator für privilegierte Rollen sin
 Wenn Sie die Mitglieder einer Rolle anzeigen, wählen Sie **Beschreibung** aus, um die vollständige Liste der von der Rollenzuweisung gewährten Berechtigungen anzuzeigen. Die Seite enthält Links zu relevanter Dokumentation, die Ihnen bei der Verwaltung von Verzeichnisrollen als Unterstützung dienen soll.
 
 ![Liste der Berechtigungen für eine Administratorrolle](./media/directory-manage-roles-portal/role-description.png)
+
+## <a name="download-role-assignments"></a>Herunterladen von Rollenzuweisungen
+
+Um alle Zuweisungen für eine bestimmte Rolle herunterzuladen, wählen Sie auf der Seite **Rollen und Administratoren** eine Rolle aus, und klicken Sie dann auf **Rollenzuweisungen herunterladen**. Es wird eine CSV-Datei heruntergeladen, die Zuweisungen in allen Bereichen für diese Rolle auflistet.
+
+![Herunterladen sämtlicher Zuweisungen für eine Rolle](./media/directory-manage-roles-portal/download-role-assignments.png)
 
 ## <a name="assign-a-role"></a>Zuweisen einer Rolle
 

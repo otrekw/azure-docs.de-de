@@ -5,23 +5,24 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/13/2020
 ms.topic: how-to
-ms.openlocfilehash: 90653db4c572877a728964851a99beebf2e823a4
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: 2e9cb216c100f1732230a90572284bd3f8462584
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80679288"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87433148"
 ---
 # <a name="override-materials-during-model-conversion"></a>Überschreiben von Materialien während der Modellkonvertierung
 
-Während der Konvertierung werden die Materialeinstellungen im Quellmodell verwendet, um die [PBR-Materialien](../../overview/features/pbr-materials.md) zu definieren, die vom Renderer verwendet werden.
+Die Materialeinstellungen im Quellmodell werden verwendet, um die [PBR-Materialien](../../overview/features/pbr-materials.md) zu definieren, die vom Renderer verwendet werden.
 Manchmal gibt die [Standardkonvertierung](../../reference/material-mapping.md) nicht die gewünschten Ergebnisse aus, und Sie müssen Änderungen vornehmen.
 Wenn ein Modell für die Verwendung in Azure Remote Rendering konvertiert wird, können Sie eine Materialüberschreibungsdatei bereitstellen, um anzupassen, wie die Materialkonvertierung pro Material durchgeführt wird.
 Der Abschnitt zum [Konfigurieren der Modellkonvertierung](configure-model-conversion.md) enthält Anweisungen zum Deklarieren des Namens der Materialüberschreibungsdatei.
 
 ## <a name="the-override-file-used-during-conversion"></a>Die während der Konvertierung verwendete Überschreibungsdatei
 
-Angenommen, ein Boxmodell verfügt über ein einzelnes Material mit dem Namen „Default“ (Standard). Die Rückstrahlfarbe muss für die Verwendung in ARR angepasst werden.
+Angenommen, ein Boxmodell verfügt über ein einzelnes Material mit dem Namen „Default“ (Standard).
+Zusätzlich muss beispielsweise die Rückstrahlfarbe für die Verwendung in ARR angepasst werden.
 In diesem Fall kann eine Datei `box_materials_override.json` wie folgt erstellt werden:
 
 ```json
@@ -38,7 +39,7 @@ In diesem Fall kann eine Datei `box_materials_override.json` wie folgt erstellt 
 ]
 ```
 
-Die Datei `box_materials_override.json` wird im Eingabecontainer gespeichert, und neben `box.fbx` wird eine Datei `ConversionSettings.json` hinzugefügt, die die Konvertierung informiert, wo die Überschreibungsdatei zu finden ist (siehe [Konfigurieren der Modellkonvertierung](configure-model-conversion.md)):
+Die Datei `box_materials_override.json` wird im Eingabecontainer gespeichert, und neben `box.fbx` wird eine Datei `box.ConversionSettings.json` hinzugefügt, die die Konvertierung informiert, wo die Überschreibungsdatei zu finden ist (siehe [Konfigurieren der Modellkonvertierung](configure-model-conversion.md)):
 
 ```json
 {
@@ -51,7 +52,7 @@ Wenn das Modell konvertiert wird, werden die neuen Einstellungen angewendet.
 ### <a name="color-materials"></a>Farbmaterialien
 
 Das [Farbmaterialmodell](../../overview/features/color-materials.md) beschreibt eine ständig beschattete Oberfläche, die unabhängig von der Beleuchtung ist.
-Dies ist z. B. nützlich für Medienobjekte, die von Fotogrammmetriealgorithmen erstellt werden.
+Farbmaterialien sind z. B. nützlich für Medienobjekte, die von Fotogrammmetriealgorithmen erstellt werden.
 In Materialüberschreibungsdateien kann ein Material als Farbmaterial deklariert werden, indem `unlit` auf `true` festgelegt wird.
 
 ```json

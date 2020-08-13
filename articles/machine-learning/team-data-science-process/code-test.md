@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=weig, previous-ms.author=weig
-ms.openlocfilehash: 9612114bb368898ccf31b2c8692869b84544b652
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fc837405e03ffac41d216a5ba18384208b07aaf1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76721985"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090296"
 ---
 # <a name="data-science-code-testing-on-azure-with-the-team-data-science-process-and-azure-devops-services"></a>Data Science-Codetests in Azure mit dem Team Data Science-Prozess und Azure DevOps Services
 Dieser Artikel ist ein vorläufiger Leitfaden für das Testen von Code in einem Data Science-Workflow. Solche Tests bieten Data Scientists eine systematische und effiziente Möglichkeit, die Qualität und das erwartete Ergebnis ihres Codes zu überprüfen. Wir verwenden ein TDSP-Projekt (Team Data Science-Prozess) mit dem [UCI Adult Income-Dataset](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome). Dieses Projekt wurde zu einem früheren Zeitpunkt veröffentlicht, um zu zeigen, wie das Codetesting funktioniert. 
@@ -142,7 +142,7 @@ Führen Sie die folgenden Schritte aus, um Codetests und einen automatischen Bui
 
     ![Schaltfläche „Speichern und in Warteschlange einreihen“](./media/code-test/save_and_queue_build_definition.PNG)
 
-Jetzt wird jedes Mal der Buildprozess gestartet, wenn ein neuer Commit per Push an das Coderepository übertragen wird. (Hier wird das master-Repository verwendet, Sie können aber jeden beliebigen Branch definieren.) Der Prozess führt die Datei **test1.py** auf dem Agent-Computer aus, um sicherzustellen, dass alle im Code definierten Elemente ordnungsgemäß ausgeführt werden. 
+Jetzt wird jedes Mal der Buildprozess gestartet, wenn ein neuer Commit per Push an das Coderepository übertragen wird. Sie können einen beliebigen Branch definieren. Der Prozess führt die Datei **test1.py** auf dem Agent-Computer aus, um sicherzustellen, dass alle im Code definierten Elemente ordnungsgemäß ausgeführt werden. 
 
 Wenn die Warnungen nicht ordnungsgemäß eingerichtet wurden, erhalten Sie nach Abschluss des Buildprozesses eine Benachrichtigung per E-Mail. Sie können den Buildstatus auch in Azure DevOps überprüfen. Wenn der Prozess nicht erfolgreich abgeschlossen wird, überprüfen Sie die Einzelheiten des Builds, um herauszufinden, welcher Bestandteil nicht richtig ist.
 

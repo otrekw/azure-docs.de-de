@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: how-to
 ms.date: 01/21/2020
 ms.author: rohogue
-ms.openlocfilehash: 24c803bd94f56af551f3afa2cb7350219b4fa448
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 538f3f18e1c8889834b9ee6588b85c9094dfbebe
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87124730"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496711"
 ---
 # <a name="prepare-to-create-the-avere-vfxt"></a>Vorbereiten der Avere vFXT-Erstellung
 
@@ -32,7 +32,7 @@ So erstellen Sie ein neues Azure-Abonnement im Azure-Portal
 
 Ein Benutzer mit Besitzerberechtigungen für das Abonnement sollte den vFXT-Cluster erstellen. Bei der Clustererstellung muss ein Besitzer die Softwarevertragsbedingungen akzeptieren und Änderungen an Netzwerk- und Speicherressourcen autorisieren.
 
-Es gibt einige Umgehungsmöglichkeiten, über die ein Nichtbesitzer einen Avere vFXT for Azure-Cluster erstellen kann. Diese Szenarien schließen die Einschränkung von Ressourcen und die Zuweisung zusätzlicher RBAC-Rollen (rollenbasierte Zugriffssteuerung) für den Ersteller ein. In allen diesen Fällen muss ein Abonnementbesitzer auch vorab die [Nutzungsbedingungen für die Avere vFXT-Software](#accept-software-terms) akzeptieren.
+Es gibt einige Umgehungsmöglichkeiten, über die ein Nichtbesitzer einen Avere vFXT for Azure-Cluster erstellen kann. Diese Szenarien beinhalten die Einschränkung von Ressourcen und die Zuweisung zusätzlicher Azure-Rollen zum Ersteller. In allen diesen Fällen muss ein Abonnementbesitzer auch vorab die [Nutzungsbedingungen für die Avere vFXT-Software](#accept-software-terms) akzeptieren.
 
 | Szenario | Beschränkungen | Erforderliche Zugriffsrollen für die Erstellung des Avere vFXT-Clusters |
 |----------|--------|-------|

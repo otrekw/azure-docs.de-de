@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 07/10/2020
 ms.author: marayerm
-ms.openlocfilehash: df2a7d7de236d4a2f7a93b92d7c0ac984de6f010
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 30eaa9b9f8700877607af047e5e64eca65471545
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87095012"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87759596"
 ---
 # <a name="azure-storage-explorer-support-lifecycle-and-policy"></a>Supportlebenszyklus und -richtlinie für den Azure Storage-Explorer
 
@@ -41,6 +41,7 @@ In der folgenden Tabelle sind jeweils das Veröffentlichungsdatum und das Suppor
 
 | Storage-Explorer-Version  | Veröffentlichungsdatum       | Supportende |
 |:-------------------------:|:------------------:|:-------------------:|
+| v1.14.2                   | 16. Juli 2020      | 16. Juli 2021       |
 | 1\.14.1                   | 14. Juli 2020      | 14. Juli 2021       |
 | 1\.14.0                   | 24. Juni 2020      | 14. Juli 2021       |
 | 1\.13.1                   | 18. Mai 2020       | 14. Juli 2021       |

@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 06/06/2020
 ms.author: victorh
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: 4caed3f330dd3e50fe2652a2cd33c0e4249f2fd9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f10bb1f4065f3bdb517fcad4f3eb6caa331c5233
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85254343"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87273200"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-v2"></a>Automatische Skalierung und zonenredundantes Application Gateway v2 
 
-Application Gateway und Web Application Firewall (WAF) sind auch in einer Standard_v2- und WAF_v2-SKU verfügbar. Die v2-SKU bietet Leistungsverbesserungen und zusätzliche Unterstützung für wichtige neue Features wie automatische Skalierung und Zonenredundanz sowie Unterstützung für statische VIPs. Vorhandene Features in der Standard- and WAF-SKU werden in der neuen v2-SKU weiterhin unterstützt. Es gelten aber einige wenige Ausnahmen, die im Abschnitt mit dem [Vergleich](#differences-from-v1-sku) aufgeführt sind.
+Application Gateway ist in einer Standard_v2-SKU erhältlich. Web Application Firewall (WAF) ist in einer WAF_v2-SKU erhältlich. Die v2-SKU bietet Leistungsverbesserungen und zusätzliche Unterstützung für wichtige neue Features wie automatische Skalierung und Zonenredundanz sowie Unterstützung für statische VIPs. Vorhandene Features in der Standard- and WAF-SKU werden in der neuen v2-SKU weiterhin unterstützt. Es gelten aber einige wenige Ausnahmen, die im Abschnitt mit dem [Vergleich](#differences-from-v1-sku) aufgeführt sind.
 
 Die neue v2-SKU enthält die folgenden Verbesserungen:
 
@@ -148,7 +148,7 @@ Die Erstellung einer neuen Instanz kann jedoch etwas dauern (etwa sechs oder sie
 
 In der folgenden Tabelle werden die Features der einzelnen SKUs gegenübergestellt.
 
-|                                                   | v1 SKU   | v2 SKU   |
+| Funktion                                           | v1 SKU   | v2 SKU   |
 | ------------------------------------------------- | -------- | -------- |
 | Automatische Skalierung                                       |          | &#x2713; |
 | Zonenredundanz                                   |          | &#x2713; |

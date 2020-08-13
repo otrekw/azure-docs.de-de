@@ -1,24 +1,22 @@
 ---
-title: 'Problembehandlung für Windows Virtual Desktop-Sitzungshost, Version vom Herbst 2019: Azure'
-description: Beheben von Problemen beim Konfigurieren von virtuellen Hostcomputern in einer Windows Virtual Desktop-Sitzung.
-services: virtual-desktop
+title: Problembehandlung für den Sitzungshost für Windows Virtual Desktop (klassisch) – Azure
+description: Erfahren Sie, wie Sie Probleme beim Konfigurieren von Sitzungshost-VMs für Windows Virtual Desktop (klassisch) beheben.
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 05/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: b2f4a288ab83ca9f20434c55a180c2d9b30be5d4
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 90b4c574a03d8dee50beff60304fb5c1f3b52945
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86527658"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008626"
 ---
-# <a name="troubleshoot-session-host-virtual-machine-configuration"></a>Problembehandlung bei der Konfiguration des virtuellen Sitzungshostcomputers
+# <a name="windows-virtual-desktop-classic-session-host-virtual-machine-configuration"></a>Konfiguration der Sitzungshost-VM für Windows Virtual Desktop (klassisch)
 
 >[!IMPORTANT]
->Dieser Inhalt gilt für das Release vom Herbst 2019, das keine Windows Virtual Desktop-Objekte in Azure Resource Manager unterstützt. Wenn Sie Windows Virtual Desktop-Objekte in Azure Resource Manager verwalten möchten, die im Update vom Frühjahr 2020 eingeführt wurden, finden Sie weitere Informationen in [diesem Artikel](../troubleshoot-vm-configuration.md).
+>Dieser Inhalt gilt für den Windows Virtual Desktop-Dienst (klassisch), der keine Windows Virtual Desktop-Objekte in Azure Resource Manager unterstützt. Wenn Sie Windows Virtual Desktop-Objekte in Azure Resource Manager verwalten möchten, helfen Ihnen die Informationen in [diesem Artikel](../troubleshoot-vm-configuration.md) weiter.
 
 Verwenden Sie diesen Artikel, um Probleme zu behandeln, die bei der Konfiguration von virtuellen Computern (VMs) der Windows Virtual Desktop-Sitzung auftreten.
 
@@ -311,7 +309,7 @@ Wenn Sie sich bei Windows 10 Enterprise (mehrere Sitzungen) mit einem Administr
 
 Wenn das Zeitlimit abgelaufen ist, wird die folgende Fehlermeldung angezeigt: „Die Verbindung mit der Remotesitzung wurde getrennt, da keine Remotedesktop-Clientzugriffslizenzen für diesen Computer vorhanden sind.“
 
-Wenn eine dieser Meldungen angezeigt wird, bedeutet dies, dass für das Image nicht die neuesten Windows-Updates installiert sind oder Sie den Remotedesktop-Lizenzierungsmodus über Gruppenrichtlinien festlegen. Führen Sie die Schritte in den nächsten Abschnitten aus, um die Gruppenrichtlinieneinstellung zu überprüfen, die Version von Windows 10 Enterprise Multisession zu ermitteln und das entsprechende Update zu installieren.  
+Wenn eine dieser Meldungen angezeigt wird, bedeutet dies, dass für das Image nicht die neuesten Windows-Updates installiert sind oder Sie den Remotedesktop-Lizenzierungsmodus über Gruppenrichtlinien festlegen. Führen Sie die Schritte in den nächsten Abschnitten aus, um die Gruppenrichtlinieneinstellung zu überprüfen, die Version von Windows 10 Enterprise Multisession zu ermitteln und das entsprechende Update zu installieren.
 
 >[!NOTE]
 >Windows Virtual Desktop erfordert nur dann eine RDS-Clientzugriffslizenz (Client Access License, CAL), wenn Ihr Hostpool Windows Server-Sitzungshosts enthält. Informationen zum Konfigurieren einer RDS-CAL finden Sie unter [Lizenzieren deiner RDS-Bereitstellung mit Clientzugriffslizenzen (CALs)](/windows-server/remote/remote-desktop-services/rds-client-access-license/).

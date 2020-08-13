@@ -1,20 +1,20 @@
 ---
 title: Erstellen und Verwalten von Verschlüsselungsbereichen (Vorschauversion)
-description: ''
+description: Erfahren Sie, wie Sie einen Verschlüsselungsbereich erstellen, um Blobdaten auf Container- oder Blobebene zu isolieren.
 services: storage
 author: tamram
 ms.service: storage
-ms.date: 07/13/2020
+ms.date: 08/04/2020
 ms.topic: conceptual
 ms.author: tamram
-ms.reviewer: cbrooks
+ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: f589f0108cf21e77be5103afcaa0242c6f191ab3
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: d4dd3f3ced8aac6852fe8516a4a5cadca2ebdc49
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86540565"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87564145"
 ---
 # <a name="create-and-manage-encryption-scopes-preview"></a>Erstellen und Verwalten von Verschlüsselungsbereichen (Vorschauversion)
 
@@ -24,7 +24,7 @@ In diesem Artikel wird gezeigt, wie Sie einen Verschlüsselungsbereich erstellen
 
 ## <a name="create-an-encryption-scope"></a>Erstellen eines Verschlüsselungsbereichs
 
-Zum Erstellen eines Verschlüsselungsbereichs müssen Sie zunächst einen Azure-Schlüsseltresor erstellen und den Schlüssel hinzufügen, den Sie für den Bereich verwenden möchten. Für den Schlüsseltresor müssen die Eigenschaften **Vorläufiges Löschen** und **Löschschutz** aktiviert werden, und er muss sich in derselben Region wie das Speicherkonto befinden. Weitere Informationen finden Sie unter [Verwenden kundenseitig verwalteter Schlüssel mit Azure Key Vault für die Verwaltung der Azure Storage-Verschlüsselung](../common/encryption-customer-managed-keys.md).
+Sie können Verschlüsselungsbereiche mit einem von Microsoft verwalteten Schlüssel oder mit einem kundenseitig verwalteten Schlüssel erstellen, der in Azure Key Vault gespeichert ist. Zum Erstellen eines Verschlüsselungsbereichs mit einem kundenseitig verwalteten Schlüssel müssen Sie zunächst einen Azure-Schlüsseltresor erstellen und den Schlüssel hinzufügen, den Sie für den Bereich verwenden möchten. Für den Schlüsseltresor müssen die Eigenschaften **Vorläufiges Löschen** und **Löschschutz** aktiviert werden, und er muss sich in derselben Region wie das Speicherkonto befinden. Weitere Informationen finden Sie unter [Verwenden kundenseitig verwalteter Schlüssel mit Azure Key Vault für die Verwaltung der Azure Storage-Verschlüsselung](../common/encryption-customer-managed-keys.md).
 
 Ein Verschlüsselungsbereich wird bei der Erstellung immer automatisch aktiviert. Nach der Erstellung des Verschlüsselungsbereichs können Sie diesen beim Erstellen eines Blobs angeben. Sie können beim Erstellen eines Containers auch einen Standardverschlüsselungsbereich angeben, der automatisch für alle Blobs im Container gilt.
 

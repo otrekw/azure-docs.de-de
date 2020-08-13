@@ -10,12 +10,13 @@ ms.date: 04/21/2020
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: 125f4188ed3f12f366c619af9efe3aa203987c19
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 84cbb6f099c7ca94ea7046bae3f4f40e784948fe
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81870516"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87504567"
 ---
 # <a name="require-secure-transfer-to-ensure-secure-connections"></a>Erzwingen einer sicheren Übertragung für sichere Verbindungen
 
@@ -51,7 +52,7 @@ Sie können die Einstellung **Sichere Übertragung erforderlich** beim Erstellen
 
 ## <a name="require-secure-transfer-from-code"></a>Erzwingen einer sicheren Übertragung in Code
 
-Wenn Sie programmgesteuert eine sichere Übertragung erzwingen möchten, legen Sie die _supportsHttpsTrafficOnly_-Eigenschaft für das Speicherkonto fest. Sie können diese Eigenschaft mithilfe der Speicherressourcenanbieter-REST-API, Clientbibliotheken oder Tools festlegen:
+Wenn Sie programmgesteuert eine sichere Übertragung erzwingen möchten, legen Sie die _enableHttpsTrafficOnly_-Eigenschaft für das Speicherkonto auf _True_ fest. Sie können diese Eigenschaft mithilfe der Speicherressourcenanbieter-REST-API, Clientbibliotheken oder Tools festlegen:
 
 * [REST-API](/rest/api/storagerp/storageaccounts)
 * [PowerShell](/powershell/module/az.storage/set-azstorageaccount)

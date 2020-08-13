@@ -9,12 +9,12 @@ ms.date: 01/02/2019
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-ms.openlocfilehash: eff74fca5ac21a7df431b55cd5c307d3e994010b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 34e1b7e58a3ceb6c1c2d2b6bc4efd34ee93e9e4e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84792131"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090483"
 ---
 # <a name="virtual-network-service-endpoints-for-azure-key-vault"></a>VNET-Dienstendpunkte für Azure Key Vault
 
@@ -39,7 +39,7 @@ Hier finden Sie einige Beispiele dafür, wie Sie Dienstendpunkte verwenden könn
 
 Es folgen die erforderlichen Schritte zum Konfigurieren von Firewalls und virtuellen Netzwerken. Diese Schritte gelten unabhängig davon, ob Sie PowerShell, die Azure-Befehlszeilenschnittstelle (CLI) oder Azure-Portal verwenden.
 
-1. Aktivieren Sie die [Key Vault-Protokollierung](logging.md), um detaillierte Zugriffsprotokolle anzuzeigen. Dies ist hilfreich bei der Diagnose, wenn Firewallregeln und VNET-Regeln den Zugriff auf einen Schlüsseltresor verhindern. (Dieser Schritt ist optional, wird aber dringend empfohlen.)
+1. Aktivieren Sie die [Schlüsseltresor-Protokollierung](logging.md), um detaillierte Zugriffsprotokolle anzuzeigen. Dies ist hilfreich bei der Diagnose, wenn Firewallregeln und VNET-Regeln den Zugriff auf einen Schlüsseltresor verhindern. (Dieser Schritt ist optional, wird aber dringend empfohlen.)
 2. Aktivieren Sie **Dienstendpunkte für Key Vault** für virtuelle Zielnetzwerke und Subnetze.
 3. Legen Sie Firewalls und VNET-Regeln für einen Schlüsseltresor fest, um den Zugriff auf diesen Schlüsseltresor aus bestimmten virtuellen Netzwerken, Subnetzen und IPv4-Adressbereichen zu beschränken.
 4. Wenn dieser Schlüsseltresor für vertrauenswürdige Microsoft-Dienste zugänglich sein soll, aktivieren Sie die Option zum Zulassen des Zugriffs auf den Schlüsselspeicher durch **vertrauenswürdige Azure-Dienste**.
@@ -80,7 +80,7 @@ Es folgt eine Liste der vertrauenswürdigen Dienste, denen Zugriff auf einen Sch
 |Azure Event Hubs|[Zulassen des Zugriffs auf einen Schlüsseltresor für Szenarien mit kundenseitig verwalteten Schlüsseln](https://docs.microsoft.com/azure/event-hubs/configure-customer-managed-key)|
 |Azure-Servicebus|[Zulassen des Zugriffs auf einen Schlüsseltresor für Szenarien mit kundenseitig verwalteten Schlüsseln](https://docs.microsoft.com/azure/service-bus-messaging/configure-customer-managed-key)|
 |Azure Import/Export| [Verwenden kundenseitig verwalteter Schlüssel in Azure Key Vault für den Import/Export-Dienst](https://docs.microsoft.com/azure/storage/common/storage-import-export-encryption-key-portal)
-|Azure Container Registry|[Registrierungsverschlüsselung mithilfe kundenseitig verwalteter Schlüssel](../../container-registry/container-registry-customer-managed-keys.md)
+|Azure Container Registry|[Registrierungsverschlüsselung mithilfe kundenseitig verwalteter Schlüssel](../../container-registry/container-registry-customer-managed-keys.md)<br><br/>[Übertragen von Artefakten in eine andere Registrierung](../../container-registry/container-registry-transfer-images.md)
 
 > [!NOTE]
 > Sie müssen die relevanten Key Vault-Zugriffsrichtlinien so einrichten, dass die entsprechenden Dienste Zugriff auf den Schlüsseltresor erhalten.

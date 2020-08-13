@@ -1,5 +1,5 @@
 ---
-title: Erstellen einer Skalierungsgruppe aus einem generalisierten Image
+title: Erstellen einer Skalierungsgruppe aus einem generalisierten Image mit Azure CLI
 description: Erstellen Sie eine Skalierungsgruppe mithilfe eines generalisierten Images in einer Shared Image Gallery.
 author: cynthn
 ms.service: virtual-machine-scale-sets
@@ -9,14 +9,14 @@ ms.topic: how-to
 ms.date: 05/01/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 59e29be2aade993c8aeae64b4aa4918b36a26b26
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 3cde06b652befa8fbb655273c19f65bd2f38e850
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82794006"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87069842"
 ---
-# <a name="create-a-scale-set-from-a-generalized-image"></a>Erstellen einer Skalierungsgruppe aus einem generalisierten Image
+# <a name="create-a-scale-set-from-a-generalized-image-with-azure-cli"></a>Erstellen einer Skalierungsgruppe aus einem generalisierten Image mit Azure CLI
 
 Erstellen Sie eine Skalierungsgruppe aus einer generalisierten Imageversion in einem [Katalog mit freigegebenen Images](shared-image-galleries.md) mithilfe der Azure-Befehlszeilenschnittstelle. Wenn Sie eine Skalierungsgruppe mit einer spezialisierten Imageversion erstellen möchten, finden Sie weitere Informationen unter [Erstellen von Skalierungsgruppeninstanzen aus einem spezialisierten Image](instance-specialized-image-version-cli.md).
 

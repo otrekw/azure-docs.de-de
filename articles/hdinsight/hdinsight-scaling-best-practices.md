@@ -8,18 +8,18 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/29/2020
-ms.openlocfilehash: fc14c3bd069162c390c09fddbfe9169b90bf66ce
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: a9d419052f000b220c993109e45d371398607275
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086006"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87006449"
 ---
 # <a name="scale-azure-hdinsight-clusters"></a>Skalieren von Azure HDInsight-Clustern
 
 Mit der Option, die Anzahl der Workerknoten in Ihren Clustern zentral hoch- und herunterskalieren zu können, ermöglicht Ihnen HDInsight ein hohes Maß an Flexibilität. Dadurch können Sie etwa einen Cluster nach den Geschäftszeiten oder am Wochenende verkleinern. In Zeiten von Spitzenbelastungen können Sie ihn hingegen erweitern.
 
-Skalieren Sie den Cluster vor einer regelmäßigen Batchverarbeitung zentral hoch, damit ausreichend Ressourcen zur Verfügung stehen.  Bei sinkender Nutzung nach Abschluss der Verarbeitung können Sie den HDInsight-Cluster auf eine kleinere Anzahl von Workerknoten zentral herunterskalieren.
+Skalieren Sie den Cluster vor einer regelmäßigen Batchverarbeitung zentral hoch, damit ausreichend Ressourcen zur Verfügung stehen.   Bei sinkender Nutzung nach Abschluss der Verarbeitung können Sie den HDInsight-Cluster auf eine kleinere Anzahl von Workerknoten zentral herunterskalieren.
 
 Mithilfe der unten beschriebenen Methoden können Sie einen Cluster manuell skalieren. Oder Sie verwenden die Optionen zur [Autoskalierung](hdinsight-autoscale-clusters.md), um anhand bestimmter Metriken eine automatische vertikale Skalierung durchzuführen.
 
@@ -106,6 +106,14 @@ Auswirkungen der Änderung der Anzahl von Datenknoten variieren für die von HDI
 * Kafka
 
     Nach Skalierungsvorgängen sollten Partitionsreplikate ausgeglichen werden. Weitere Informationen finden Sie unter [Hochverfügbarkeit Ihrer Daten mit Apache Kafka in HDInsight](./kafka/apache-kafka-high-availability.md).
+
+* Apache Hive-LLAP
+
+    Nachdem die Skalierung auf `N` Workerknoten erfolgt ist, werden die folgenden Konfigurationen von HDInsight automatisch festgelegt und Hive neu gestartet.
+
+  * Maximale Anzahl gleichzeitiger Abfragen: `hive.server2.tez.sessions.per.default.queue = min(N, 32)`
+  * Anzahl der von Hive LLAP verwendeten Knoten: `num_llap_nodes  = N`
+  * Anzahl der Knoten für die Ausführung des Hive LLAP-Daemons: `num_llap_nodes_for_llap_daemons = N`
 
 ## <a name="how-to-safely-scale-down-a-cluster"></a>Sicheres zentrales Herunterskalieren eines Clusters
 

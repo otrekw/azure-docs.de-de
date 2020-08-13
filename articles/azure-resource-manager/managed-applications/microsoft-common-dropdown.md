@@ -5,12 +5,12 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 07/14/2020
 ms.author: tomfitz
-ms.openlocfilehash: f5eac1d331bd439ad4066d1dea1b9aa950fcce60
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: cc50e49d4bc59235a147d114d86ecdff95dca797
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87004450"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87474341"
 ---
 # <a name="microsoftcommondropdown-ui-element"></a>Benutzeroberflächenelement „Microsoft.Common.DropDown“
 
@@ -47,6 +47,7 @@ Wenn Filtern aktiviert ist, enthält das Steuerelement ein Textfeld zum Hinzufü
     "name": "element1",
     "type": "Microsoft.Common.DropDown",
     "label": "Example drop down",
+    "placeholder": "",
     "defaultValue": "Value two",
     "toolTip": "",
     "multiselect": true,  
@@ -90,6 +91,7 @@ Wenn Filtern aktiviert ist, enthält das Steuerelement ein Textfeld zum Hinzufü
 - `constraints.allowedValues` muss mindestens ein Element aufweisen.
 - Fügen Sie zum Emulieren eines nicht benötigten Werts `constraints.allowedValues` ein Element mit einer Bezeichnung und dem Wert `""` (leere Zeichenfolge) hinzu.
 - Die `defaultDescription`-Eigenschaft wird für Elemente verwendet, die keine Beschreibung besitzen.
+- Die `placeholder`-Eigenschaft ist Hilfetext, der ausgeblendet wird, wenn der Benutzer mit der Bearbeitung beginnt. Wenn sowohl `placeholder` als auch `defaultValue` definiert ist, hat `defaultValue` Vorrang und wird angezeigt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

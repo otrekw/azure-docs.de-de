@@ -10,12 +10,12 @@ ms.reviewer: nibaccam
 author: nibaccam
 ms.author: nibaccam
 ms.date: 04/09/2020
-ms.openlocfilehash: 171b355f40939efb31e96a4bf8b2d77e97d19f25
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 77b5b52153c552008406b4b85083bcba5542cebe
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86147105"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87012721"
 ---
 # <a name="prevent-overfitting-and-imbalanced-data-with-automated-machine-learning"></a>Verhindern von Überanpassung und unausgeglichenen Daten durch automatisiertes maschinelles Lernen
 
@@ -101,7 +101,7 @@ Die folgenden Verfahren sind zusätzliche Optionen zum Behandeln von unausgeglic
 
 - Erneutes Sampling zum Ausgleichen der Unausgeglichenheit von Klassen, entweder durch Upsampling der kleineren Klassen oder durch Downsampling der größeren Klassen. Diese Methoden erfordern Fachwissen, um sie zu verarbeiten und zu analysieren.
 
-- Überprüfen Sie Leistungsmetriken für unausgeglichene Daten. So ist z. B. der F1-Score ein gewichteter Mittelwert aus Genauigkeit und Trefferquote. Die Genauigkeit misst die Präzision eines Klassifizierers. Eine niedrige Genauigkeit zeigt eine hohe Anzahl von falsch positiven Werten an. Die Trefferquote misst hingegen die Vollständigkeit eines Klassifizierers. Eine niedrige Trefferquote zeigt eine hohe Anzahl von falsch negativen Werten an.
+- Überprüfen Sie Leistungsmetriken für unausgeglichene Daten. Beispielsweise ist der F1-Score das harmonische Mittel aus Genauigkeit und Abruf. Die Genauigkeit misst die Präzision eines Klassifizierers. Eine höhere Genauigkeit weist auf eine geringere Anzahl von False Positives hin. Der Abruf misst hingegen die Vollständigkeit eines Klassifizierers. Ein höherer Abrufwert weist auf eine geringere Anzahl von False Negatives hin.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

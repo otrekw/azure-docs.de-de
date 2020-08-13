@@ -1,30 +1,30 @@
 ---
-title: Einrichten eines SolidWorks-Labs für Engineering mit Azure Lab Services | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie mithilfe von SolidWorks ein Lab für Engineeringkurse einrichten.
+title: Einrichten eines SOLIDWORKS-Labs für Engineeringkurse mit Azure Lab Services | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie mithilfe von SOLIDWORKS ein Lab für Engineeringkurse einrichten.
 author: nicolela
 ms.topic: article
 ms.date: 06/26/2020
 ms.author: nicolela
-ms.openlocfilehash: fa1b93bd71c1319bf8705c8c84cdb3e6f9da19e2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5511ad5a517bbd320ce3d66de90a8aec084c7e15
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85443807"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87290732"
 ---
-# <a name="set-up-a-lab-for-engineering-classes-using-solidworks"></a>Einrichten eines Labs für Engineeringkurse mithilfe von SolidWorks
+# <a name="set-up-a-lab-for-engineering-classes-using-solidworks"></a>Einrichten eines Labs für Engineeringkurse mithilfe von SOLIDWORKS
 
-[SolidWorks](https://www.solidworks.com/) stellt eine 3D-CAD-Umgebung (Computer-Aided Design) bereit, um solide Objekte zu modellieren, und wird in verschiedenen Engineeringbereichen verwendet.  Mit SolidWorks können Engineers ihre Entwürfe problemlos erstellen, visualisieren, simulieren und dokumentieren.
+[SOLIDWORKS](https://www.solidworks.com/) stellt eine 3D-CAD-Umgebung (Computer-Aided Design) zum Modellieren von Volumenkörperobjekten bereit und wird in verschiedenen Engineeringbereichen verwendet.  Mit SOLIDWORKS können Ingenieure ihre Entwürfe ganz einfach erstellen, visualisieren, simulieren und dokumentieren.
 
-Eine von Universitäten häufig verwendete Lizenzierungsoption ist die Netzwerklizenzierung von SolidWorks.   Mit dieser Option verwenden Benutzer einen Pool von Lizenzen gemeinsam, die von einem Lizenzierungsserver verwaltet werden.  Diese Art von Lizenz wird manchmal als „übergreifende“ Lizenz bezeichnet, da Sie nur über genügend Lizenzen für die Anzahl gleichzeitiger Benutzer verfügen müssen.  Wenn ein Benutzer seine Arbeit mit SolidWorks beendet hat, geht die Lizenz wieder in den zentral verwalteten Lizenzpoolein, sodass sie von einem anderen Benutzer wiederverwendet werden kann.
+Eine von Hochschulen häufig verwendete Lizenzierungsoption ist die Netzwerklizenzierung von SOLIDWORKS.   Mit dieser Option verwenden Benutzer einen Pool von Lizenzen gemeinsam, die von einem Lizenzierungsserver verwaltet werden.  Diese Art von Lizenz wird manchmal als „übergreifende“ Lizenz bezeichnet, da Sie nur über genügend Lizenzen für die Anzahl gleichzeitiger Benutzer verfügen müssen.  Wenn ein Benutzer seine Arbeit mit SOLIDWORKS beendet hat, geht die Lizenz wieder zurück in den zentral verwalteten Lizenzpool und kann von einem anderen Benutzer wiederverwendet werden.
 
-In diesem Artikel erfahren Sie, wie Sie einen Kurs einrichten, in dem SolidWorks 2019 und Netzwerklizenzierung verwendet wird.
+In diesem Artikel erfahren Sie, wie Sie einen Kurs einrichten, in dem SOLIDWORKS 2019 und die Netzwerklizenzierung verwendet werden.
 
 ## <a name="license-server"></a>Lizenzserver
 
-SolidWorks-Netzwerklizenzierung erfordert, dass Sie den Lizenz-Manager von SolidNetWork installiert und auf dem Lizenzserver aktiviert haben.  Dieser Lizenzserver befindet sich in der Regel in Ihrem lokalen Netzwerk oder in einem privaten Netzwerk in Azure.  Weitere Informationen zum Einrichten des Lizenz-Managers von SolidNetWork auf Ihrem Server finden Sie unter [Installieren und Aktivieren eines Lizenz-Managers](https://help.solidworks.com/2019/English/Installation/install_guide/t_installing_snl_lic_mgr.htm) im SolidWorks-Installationsleitfaden.  Notieren Sie sich beim Einrichten die **Portnummer** und die [**Seriennummer**](https://help.solidworks.com/2019/english/installation/install_guide/r_hid_state_serial_number.htm), die verwendet werden, da beide Angaben in späteren Schritten benötigt werden.
+Die SOLIDWORKS-Netzwerklizenzierung erfordert, dass Sie den Lizenz-Manager von SolidNetWork auf dem Lizenzserver installiert und aktiviert haben.  Dieser Lizenzserver befindet sich in der Regel in Ihrem lokalen Netzwerk oder in einem privaten Netzwerk in Azure.  Weitere Informationen zum Einrichten des Lizenz-Managers von SolidNetWork auf Ihrem Server finden Sie unter [Installieren und Aktivieren eines Lizenz-Managers](https://help.solidworks.com/2019/English/Installation/install_guide/t_installing_snl_lic_mgr.htm) im SOLIDWORKS-Installationsleitfaden.  Notieren Sie sich beim Einrichten die verwendete **Portnummer** und [**Seriennummer**](https://help.solidworks.com/2019/english/installation/install_guide/r_hid_state_serial_number.htm), da beide Angaben in späteren Schritten benötigt werden.
 
-Nachdem der Lizenzserver eingerichtet wurde, müssen Sie ein Peering des [virtuellen Netzwerks (VNET)](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-connect-peer-virtual-network) mit Ihrem [Lab-Konto](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-lab-account) ausführen.  Das Netzwerkpeering muss vor dem Erstellen des Labs erfolgen, damit die virtuellen Lab-Computer auf den Lizenzserver zugreifen können und umgekehrt.
+Nach dem Einrichten des Lizenzservers müssen Sie eine Peerverbindung zwischen dem [virtuellen Netzwerk (VNET)](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-connect-peer-virtual-network) und Ihrem [Lab-Konto](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-lab-account) herstellen.  Das Netzwerkpeering muss vor dem Erstellen des Labs erfolgen, damit die virtuellen Lab-Computer auf den Lizenzserver zugreifen können und umgekehrt.
 
 > [!NOTE]
 > Vergewissern Sie sich, dass die entsprechenden Ports Ihrer Firewalls geöffnet sind, um die Kommunikation zwischen den virtuellen Lab-Computern und dem Lizenzserver zu erlauben.  Informationen hierzu finden Sie beispielsweise in den Anleitungen unter [Ändern der Lizenz-Manager-Computerports für die Windows-Firewall](http://help.solidworks.com/2019/english/installation/install_guide/t_mod_ports_on_lic_mgr_for_firewall.htm), die zeigen, wie der Firewall des Lizenzservers Eingangs- und Ausgangsregeln hinzugefügt werden.  Möglicherweise müssen Sie auch Ports für die virtuellen Lab-Computer öffnen.  Führen Sie die Schritte im Artikel [Firewalleinstellungen für Labs](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-configure-firewall-settings) aus, um weitere Informationen zu diesem Thema zu erhalten, einschließlich Informationen dazu, wie Sie die öffentliche IP-Adresse des Labs abrufen.
@@ -42,7 +42,7 @@ Aktivieren Sie die Einstellungen für das Lab-Konto, die in der nachfolgenden Ta
 |Marketplace-Image| Aktivieren Sie das Windows 10 Pro-Image zur Verwendung in Ihrem Lab-Konto.|
 
 > [!NOTE]
-> Zusätzlich zu Windows 10 unterstützt SolidWorks auch andere Versionen von Windows.  Weitere Informationen hierzu finden Sie unter [Systemanforderungen für SolidWorks](https://www.solidworks.com/sw/support/SystemRequirements.html).
+> Zusätzlich zu Windows 10 unterstützt SOLIDWORKS auch andere Versionen von Windows.  Weitere Informationen hierzu finden Sie unter [Systemanforderungen für SOLIDWORKS](https://www.solidworks.com/sw/support/SystemRequirements.html).
 
 ### <a name="lab-settings"></a>Lab-Einstellungen
 
@@ -61,24 +61,24 @@ Verwenden Sie beim Einrichten eines Classroom-Labs die Einstellungen in der unte
 
 ## <a name="template-virtual-machine-configuration"></a>Vorlage für die Konfiguration des virtuellen Computers
 
-Die Schritte in diesem Abschnitt veranschaulichen, wie Sie die Vorlagen-VM einrichten, indem Sie die SolidWorks-Installationsdateien herunterladen und die Clientsoftware installieren:
+Die Schritte in diesem Abschnitt veranschaulichen, wie Sie die Vorlagen-VM einrichten, indem Sie die SOLIDWORKS-Installationsdateien herunterladen und die Clientsoftware installieren:
 
 1. Starten Sie die Vorlagen-VM, und stellen Sie über RDP eine Verbindung mit dem Computer her.
 
-1. Laden Sie die Installationsdateien für die SolidWorks-Clientsoftware herunter. Für den Download stehen zwei Optionen zur Verfügung:
-   - Download aus dem [SolidWorks-Kundenportal](https://login.solidworks.com/nidp/idff/sso?id=cpenglish&sid=1&option=credential&sid=1&target=https%3A%2F%2Fcustomerportal.solidworks.com%2F).
+1. Laden Sie die Installationsdateien für die SOLIDWORKS-Clientsoftware herunter. Für den Download stehen zwei Optionen zur Verfügung:
+   - Download aus dem [SOLIDWORKS-Kundenportal](https://login.solidworks.com/nidp/idff/sso?id=cpenglish&sid=1&option=credential&sid=1&target=https%3A%2F%2Fcustomerportal.solidworks.com%2F).
    - Download aus einem Verzeichnis auf einem Server.  Wenn Sie diese Option verwendet haben, müssen Sie sicherstellen, dass die Vorlagen-VM auf den Server zugreifen kann.  Beispielsweise befindet sich dieser Server möglicherweise im gleichen virtuellen Netzwerk, für das Peering mit Ihrem Lab-Konto ausgeführt wurde.
   
-    Weitere Informationen finden Sie unter [Installation auf einzelnen Computern in SolidWorks](http://help.solidworks.com/2019/english/Installation/install_guide/c_installing_on_individual_computers.htm?id=fc149e8a968a422a89e2a943265758d3#Pg0) im SolidWorks-Installationsleitfaden.
+    Weitere Informationen finden Sie unter [Installation auf einzelnen Computern in SOLIDWORKS](http://help.solidworks.com/2019/english/Installation/install_guide/c_installing_on_individual_computers.htm?id=fc149e8a968a422a89e2a943265758d3#Pg0) im SOLIDWORKS-Installationsleitfaden.
 
-1. Nachdem Sie die Installationsdateien heruntergeladen haben, installieren Sie die Clientsoftware mit dem SolidWorks-Installations-Manager. Weitere Informationen finden Sie unter [Installieren eines Lizenzclients](http://help.solidworks.com/2019/english/installation/install_guide/t_installing_snl_license_client.htm) im SolidWorks-Installationsleitfaden.
+1. Nachdem Sie die Installationsdateien heruntergeladen haben, installieren Sie die Clientsoftware mit dem SOLIDWORKS-Installations-Manager. Weitere Informationen finden Sie unter [Installieren eines Lizenzclients](http://help.solidworks.com/2019/english/installation/install_guide/t_installing_snl_license_client.htm) im SOLIDWORKS-Installationsleitfaden.
 
     > [!NOTE]
     > Im Dialogfeld **Server hinzufügen** werden Sie aufgefordert, die **Portnummer** anzugeben, die für Ihren Lizenzserver verwendet wird, sowie die IP-Adresse des Lizenzservers.
 
 ## <a name="cost"></a>Kosten
 
-Betrachten wir eine mögliche Kostenschätzung für diesen Kurs. Diese Schätzung umfasst nicht die Kosten für das Ausführen des Lizenzservers. Wir setzen einen Kurs mit 25 Kursteilnehmern an. Es ist eine Kursdauer von 20 Stunden geplant. Zudem erhält jeder Kursteilnehmer ein Kontingent von 10 Stunden für Hausaufgaben und Aufgaben außerhalb der regulären Kurszeiten. Als VM-Größe wurde **Kleine GPU (Visualisierung)** ausgewählt, was 160 Lab-Einheiten entspricht.
+Betrachten wir eine mögliche Kostenschätzung für diesen Kurs. Diese Schätzung enthält nicht die Kosten für das Ausführen des Lizenzservers. Wir setzen einen Kurs mit 25 Kursteilnehmern an. Es ist eine Kursdauer von 20 Stunden geplant. Zudem erhält jeder Kursteilnehmer ein Kontingent von 10 Stunden für Hausaufgaben und Aufgaben außerhalb der regulären Kurszeiten. Als VM-Größe wurde **Kleine GPU (Visualisierung)** ausgewählt, was 160 Lab-Einheiten entspricht.
 
 25 Kursteilnehmer \* (20 geplante Stunden + 10 Kontingentstunden) \* 160 Lab-Einheiten * 0,01 USD pro Stunde = 1.200,00 USD
 

@@ -2,13 +2,13 @@
 title: Verknüpfen von Vorlagen für die Bereitstellung
 description: Beschreibt, wie verknüpfte Vorlagen in einer Azure-Ressourcen-Manager-Vorlage zum Erstellen einer modularen Vorlagenprojektmappe verwendet werden. Zeigt, wie Parameterwerte übergeben, eine Parameterdatei festgelegt und URLs dynamisch erstellt werden.
 ms.topic: conceptual
-ms.date: 06/26/2020
-ms.openlocfilehash: 6b28268a522dde4fe16ccf9d0d01738c3b6a9b5d
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.date: 07/21/2020
+ms.openlocfilehash: 40da2443828a07f2171922fcc6d8976d464d0ad4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170648"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086811"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>Verwenden von verknüpften und geschachtelten Vorlagen bei der Bereitstellung von Azure-Ressourcen
 
@@ -315,6 +315,11 @@ Beim Verweisen auf eine verknüpfte Vorlage darf der Wert von `uri` keine lokale
 > Sie können auf Vorlagen mithilfe von Parametern verweisen, die letztendlich in einen Wert aufgelöst werden, der **http** oder **https** verwendet, beispielsweise die Verwendung des Parameters `_artifactsLocation` wie folgt: `"uri": "[concat(parameters('_artifactsLocation'), '/shared/os-disk-parts-md.json', parameters('_artifactsLocationSasToken'))]",`
 
 Der Resource Manager muss auf die Vorlage zugreifen können. Eine Option besteht darin, die verknüpfte Vorlage in einem Speicherkonto zu platzieren und den URI für dieses Element zu verwenden.
+
+[Vorlagenspezifikationen](./template-specs.md) (zurzeit in der privaten Vorschau) ermöglichen es Ihnen, ARM-Vorlagen mit anderen Benutzern in Ihrer Organisation gemeinsam zu nutzen. Vorlagenspezifikationen können auch zum Verpacken einer Hauptvorlage und der mit ihr verknüpften Vorlagen verwendet werden. Weitere Informationen finden Sie unter
+
+- [Tutorial: Erstellen einer Vorlagenspezifikation mit verknüpften Vorlagen](./template-specs-create-linked.md).
+- [Tutorial: Bereitstellen einer Vorlagenspezifikation als verknüpfte Vorlage](./template-specs-deploy-linked-template.md).
 
 ### <a name="parameters-for-linked-template"></a>Parameter für eine verknüpfte Vorlage
 

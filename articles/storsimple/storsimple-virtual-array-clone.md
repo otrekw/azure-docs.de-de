@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/21/2016
 ms.author: alkohli
-ms.openlocfilehash: 1596503f5f0a333bf061015827596464aed7558e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dd82f7dd821991bbcf57cc7d8105575e0baa4d12
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85513639"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87070691"
 ---
 # <a name="clone-from-a-backup-of-your-storsimple-virtual-array"></a>Klonen aus einer Sicherung des StorSimple Virtual Array
 
@@ -127,7 +127,7 @@ Jede Freigabe verfügt über einen Ordner *.backups* , der die letzten Sicherung
    * **Geplante Sicherungen** weisen die Bezeichnung &lt;Gerätename&gt;DailySchedule-YYYYMMDD-HHMMSS-UTC auf.
    * **Manuelle Sicherungen** weisen die Bezeichnung „Ad-hoc-YYYYMMDD-HHMMSS-UTC“ auf.
      
-     ![](./media/storsimple-virtual-array-clone/image14.png)
+     ![Screenshot des Datei-Explorers mit Anzeige des Ordners „.backups“. Innerhalb dieses Ordners wird der Ordner für manuelle Sicherungen ausgewählt.](./media/storsimple-virtual-array-clone/image14.png)
 
 2. Identifizieren Sie die Sicherung mit der letzten Version der gelöschten Datei. Der Ordnername enthält zwar in allen vorigen Fällen einen UTC-Zeitstempel, aber der Zeitpunkt der Ordnererstellung ist die eigentliche Geräteuhrzeit, zu der die Sicherung gestartet wurde. Verwenden Sie den Ordnerzeitstempel, um die Sicherungen zu finden und zu identifizieren.
 

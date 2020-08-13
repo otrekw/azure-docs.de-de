@@ -4,13 +4,13 @@ titleSuffix: Azure Kubernetes Service
 description: Erfahren Sie, wie Sie einen einfachen NGINX-Eingangscontroller in einem Azure Kubernetes Service-Cluster (AKS) installieren und konfigurieren.
 services: container-service
 ms.topic: article
-ms.date: 04/27/2020
-ms.openlocfilehash: bb7ac1d76e93a95fedc1dfdbfd67d2b057db60e3
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 07/20/2020
+ms.openlocfilehash: 2c75d41d827ad1838898736ba8ff41aaef0b6f13
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86499816"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87927049"
 ---
 # <a name="create-an-ingress-controller-in-azure-kubernetes-service-aks"></a>Erstellen eines Eingangscontrollers in Azure Kubernetes Service (AKS)
 
@@ -163,10 +163,10 @@ Beide Anwendungen werden jetzt in Ihrem Kubernetes-Cluster ausgeführt. Zum Weit
 
 Im folgenden Beispiel wird der Datenverkehr an *EXTERNAL_IP* an den Dienst mit dem Namen `aks-helloworld-one` weitergeleitet. Datenverkehr an *EXTERNAL_IP/hello-world-two* wird an den Dienst `aks-helloworld-two` weitergeleitet. Datenverkehr an *EXTERNAL_IP/static* wird für statische Ressourcen an den Dienst mit dem Namen `aks-helloworld-one` weitergeleitet.
 
-Erstellen Sie eine Datei mit dem Namen `hello-world-ingress.yaml`, und fügen Sie den folgenden YAML-Beispielcode ein.
+Erstellen Sie eine Datei mit dem Namen *hello-world-ingress.yaml*, und fügen Sie den folgenden YAML-Beispielcode ein.
 
 ```yaml
-apiVersion: extensions/v1beta1
+apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
   name: hello-world-ingress
@@ -182,13 +182,13 @@ spec:
       - backend:
           serviceName: aks-helloworld-one
           servicePort: 80
-        path: /(.*)
+        path: /hello-world-one(/|$)(.*)
       - backend:
           serviceName: aks-helloworld-two
           servicePort: 80
         path: /hello-world-two(/|$)(.*)
 ---
-apiVersion: extensions/v1beta1
+apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
   name: hello-world-ingress-static

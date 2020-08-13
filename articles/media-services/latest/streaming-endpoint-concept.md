@@ -12,16 +12,16 @@ ms.workload: ''
 ms.topic: article
 ms.date: 02/13/2020
 ms.author: juliako
-ms.openlocfilehash: 72cfdf172e4524e302ef2e22826d4f78ce32daf0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6d725ed8a69e2dfed6f5197db731f4adac57e2e2
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80582727"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87446209"
 ---
 # <a name="streaming-endpoints-origin-in-azure-media-services"></a>Streamingendpunkte (Ursprung) in Azure Media Services
 
-In Microsoft Azure Media Services stellt ein [Streamingendpunkt](https://docs.microsoft.com/rest/api/media/streamingendpoints) einen dynamischen (Just-In-Time-)Paketerstellungs- und Ursprungsdienst dar, der Ihre Live- und On-Demand-Inhalte direkt in einer Clientplayer-App bereitstellen kann und dabei eines der allgemeinen Streamingmedienprotokolle (HLS oder DASH) verwendet. Zudem sorgt der **Streamingendpunkt** für eine dynamische (Just-In-Time-)Verschlüsselung zu branchenführenden DRMs. 
+In Microsoft Azure Media Services stellt ein [Streamingendpunkt](/rest/api/media/streamingendpoints) einen dynamischen (Just-In-Time-)Paketerstellungs- und Ursprungsdienst dar, der Ihre Live- und On-Demand-Inhalte direkt in einer Clientplayer-App bereitstellen kann und dabei eines der allgemeinen Streamingmedienprotokolle (HLS oder DASH) verwendet. Zudem sorgt der **Streamingendpunkt** für eine dynamische (Just-In-Time-)Verschlüsselung zu branchenführenden DRMs. 
 
 Beim Erstellen eines Media Services-Kontos wird ein **Standard**-Streamingendpunkt mit dem Zustand „Beendet“ erstellt. Der **Standard**-Streamingendpunkt kann nicht gelöscht werden. Im Konto können weitere Streamingendpunkte erstellt werden (siehe [Kontingente und Grenzwerte](limits-quotas-constraints.md)).
 
@@ -41,11 +41,13 @@ Bei Verwendung des standardmäßigen Streamingendpunkts wird `servicename` ausge
 ### <a name="limitations"></a>Einschränkungen
 
 * Der Streamingendpunktname darf maximal 24 Zeichen lang sein.
-* Der Name sollte diesem [regex](https://docs.microsoft.com/dotnet/standard/base-types/regular-expression-language-quick-reference)-Muster folgen: `^[a-zA-Z0-9]+(-*[a-zA-Z0-9])*$`.
+* Der Name sollte diesem [regex](/dotnet/standard/base-types/regular-expression-language-quick-reference)-Muster folgen: `^[a-zA-Z0-9]+(-*[a-zA-Z0-9])*$`.
 
 ## <a name="types"></a>Typen
 
 Es gibt zwei **Streamingendpunkt**-Typen: **Standard** (Vorschau) und **Premium**. Der Typ wird durch die Anzahl der Skalierungseinheiten (`scaleUnits`) definiert, die Sie für den Streamingendpunkt zuordnen.
+
+Die maximale Grenze für die Streamingeinheit beträgt normalerweise 10. Kontaktieren Sie uns [hier](https://azure.microsoft.com/support/create-ticket/), um den Grenzwert für Ihr Konto zu erhöhen.
 
 Die Typen werden in der folgenden Tabelle beschrieben:
 
@@ -77,7 +79,7 @@ Empfohlene Verwendung |Für den Großteil der Streamingszenarien empfohlen.|Prof
 
 ## <a name="streaming-endpoint-properties"></a>Eigenschaften von Streamingendpunkten
 
-Dieser Abschnitt enthält detaillierte Informationen zu einigen Streamingendpunkt-Eigenschaften. Beispiele zum Erstellen eines neuen Streamingendpunkts und Beschreibungen aller Eigenschaften finden Sie unter [Streamingendpunkte](https://docs.microsoft.com/rest/api/media/streamingendpoints/create).
+Dieser Abschnitt enthält detaillierte Informationen zu einigen Streamingendpunkt-Eigenschaften. Beispiele zum Erstellen eines neuen Streamingendpunkts und Beschreibungen aller Eigenschaften finden Sie unter [Streamingendpunkte](/rest/api/media/streamingendpoints/create).
 
 - `accessControl`: Wird zum Konfigurieren der folgenden Sicherheitseinstellungen für den Streamingendpunkt verwendet: Authentifizierungsschlüssel und IP-Adressen im Signaturheader von Akamai, über die eine Verbindung mit dem Endpunkt zulässig ist. Diese Eigenschaft kann nur festgelegt werden, wenn `cdnEnabled` auf FALSE festgelegt ist.
 
@@ -92,7 +94,7 @@ Dieser Abschnitt enthält detaillierte Informationen zu einigen Streamingendpunk
 
 - `cdnProfile`: Wenn `cdnEnabled` auf TRUE festgelegt ist, können Sie auch `cdnProfile`-Werte übergeben. `cdnProfile` ist der Name des CDN-Profils, in dem der CDN-Endpunkt erstellt wird. Sie können eine vorhandene cdnProfile-Eigenschaft angeben oder eine neue verwenden. Wenn der Wert NULL ist und `cdnEnabled` auf TRUE festgelegt ist, wird der Standardwert „AzureMediaStreamingPlatformCdnProfile“ verwendet. Wenn die angegebene `cdnProfile`-Eigenschaft bereits vorhanden ist, wird ein Endpunkt unter dieser Eigenschaft erstellt. Wenn das Profil nicht vorhanden ist, wird automatisch ein neues Profil erstellt.
 - `cdnProvider`: Wenn das CDN aktiviert ist, können Sie auch `cdnProvider`-Werte übergeben. `cdnProvider` steuert, welcher Anbieter verwendet wird. Derzeit werden drei Werte unterstützt: „StandardVerizon“, „PremiumVerizon“ und „StandardAkamai“. Wenn kein Wert angegeben wird und `cdnEnabled` auf „true“ festgelegt ist, wird „StandardVerizon“ verwendet (d. h. der Standardwert).
-- `crossSiteAccessPolicies`: Wird zum Angeben von websiteübergreifenden Zugriffsrichtlinien für verschiedene Clients verwendet. Weitere Informationen finden Sie unter [Cross-domain policy file specification](https://www.adobe.com/devnet/articles/crossdomain_policy_file_spec.html) (Dateispezifikation für domänenübergreifende Richtlinien) und [Making a Service Available Across Domain Boundaries](https://msdn.microsoft.com/library/cc197955\(v=vs.95\).aspx) (Verfügbarmachen eines Diensts über Netzwerkgrenzen hinweg). Die Einstellungen gelten nur für Smooth Streaming.
+- `crossSiteAccessPolicies`: Wird zum Angeben von websiteübergreifenden Zugriffsrichtlinien für verschiedene Clients verwendet. Weitere Informationen finden Sie unter [Cross-domain policy file specification](https://www.adobe.com/devnet/articles/crossdomain_policy_file_spec.html) (Dateispezifikation für domänenübergreifende Richtlinien) und [Making a Service Available Across Domain Boundaries](/previous-versions/azure/azure-services/gg185950(v=azure.100)) (Verfügbarmachen eines Diensts über Netzwerkgrenzen hinweg). Die Einstellungen gelten nur für Smooth Streaming.
 - `customHostNames`: Wird verwendet, um einen Streamingendpunkt so zu konfigurieren, dass an einen benutzerdefinierten Hostnamen gerichteter Datenverkehr akzeptiert wird. Diese Eigenschaft gilt für Standard- und Premium-Streamingendpunkte und kann festgelegt werden, wenn `cdnEnabled` FALSE ist.
 
     Der Besitz des Domänennamens muss in Media Services bestätigt werden. In Media Services wird der Besitz des Domänennamens durch Anfordern eines `CName`-Eintrags überprüft, der die Media Services-Konto-ID als Komponente enthält, die der verwendeten Domäne hinzuzufügen ist. Beispiel: Damit „sports.contoso.com“ als benutzerdefinierter Hostname für den Streamingendpunkt verwendet wird, muss ein Eintrag für `<accountId>.contoso.com` so konfiguriert werden, dass er auf einen der Media Services-Überprüfungshostnamen verweist. Der Überprüfungshostname setzt sich aus „verifydns.\<mediaservices-dns-zone>“ zusammen.

@@ -5,26 +5,26 @@ ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
 ms.author: dpalled
-manager: cshankar
+manager: diviso
 ms.reviewer: v-mamcge
 ms.workload: big-data
 ms.topic: troubleshooting
-ms.date: 02/04/2020
+ms.date: 06/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: 4d9efa1ebf1a3e3b146c4f45b0e84047562141cd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0630e4dfcfc01e5c20fa6fcc3a516dbea6f6f53b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82192713"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87046450"
 ---
-# <a name="diagnose-and-solve-issues-in-your-time-series-insights-environment"></a>Diagnostizieren und Beheben von Problemen in der Time Series Insights-Umgebung
+# <a name="diagnose-and-solve-issues-in-your-azure-time-series-insights-gen1-environment"></a>Diagnostizieren und Beheben von Problemen in der Azure Time Series Insights Gen1-Umgebung
 
 In diesem Artikel werden Probleme beschrieben, die in Ihrer Azure Time Series Insights-Umgebung auftreten können. Der Artikel stellt mögliche Ursachen und Lösungen dar.
 
 ## <a name="video"></a>Video
 
-### <a name="learn-about-common-time-series-insights-challenges-and-mitigationsbr"></a>Hier werden allgemeine Herausforderungen und Lösungen behandelt, die Time Series Insights bietet.</br>
+### <a name="learn-about-common-azure-time-series-insights-challenges-and-mitigationsbr"></a>Informationen zu allgemeinen Herausforderungen und Lösungen im Zusammenhang mit Azure Time Series Insights</br>
 
 > [!VIDEO https://www.youtube.com/embed/7U0SwxAVSKw]
 
@@ -46,13 +46,13 @@ Azure Time Series Insights unterstützt nur JSON-Daten. JSON-Beispiele finden Si
 
    [![Event Hub-Lauschberechtigungen](media/diagnose-and-solve-problems/eventhub-listen-permissions.png)](media/diagnose-and-solve-problems/eventhub-listen-permissions.png#lightbox)
 
-### <a name="cause-c-the-provided-consumer-group-isnt-exclusive-to-time-series-insights"></a>Ursache C: Die bereitgestellte Consumergruppe ist für Time Series Insights nicht exklusiv.
+### <a name="cause-c-the-provided-consumer-group-isnt-exclusive-to-azure-time-series-insights"></a>Ursache C: Die bereitgestellte Consumergruppe wird nicht exklusiv für Azure Time Series Insights verwendet.
 
-Wenn Sie einen IoT-Hub oder einen Event Hub registrieren, ist es wichtig, die Consumergruppe festzulegen, die Sie zum Lesen der Daten verwenden möchten. Diese Consumergruppe darf *nicht freigegeben* sein. Wenn die Consumergruppe freigegeben wird, trennt der zugrunde liegende IoT-Hub bzw. Event Hub automatisch und zufällig einen der Leser. Stellen Sie eine eindeutige Consumergruppe bereit, aus der Time Series Insights lesen soll.
+Wenn Sie einen IoT-Hub oder einen Event Hub registrieren, ist es wichtig, die Consumergruppe festzulegen, die Sie zum Lesen der Daten verwenden möchten. Diese Consumergruppe darf *nicht freigegeben* sein. Wenn die Consumergruppe freigegeben wird, trennt der zugrunde liegende IoT-Hub bzw. Event Hub automatisch und zufällig einen der Leser. Stellen Sie eine eindeutige Consumergruppe bereit, aus der Azure Time Series Insights Daten lesen soll.
 
 ### <a name="cause-d-the-environment-has-just-been-provisioned"></a>Ursache D: Die Umgebung wurde gerade erst bereitgestellt.
 
-Die Daten werden innerhalb weniger Minuten nach der erstmaligen Erstellung der Umgebung und der zugehörigen Daten in Time Series Insights-Explorer angezeigt.
+Die Daten werden innerhalb weniger Minuten nach der erstmaligen Erstellung der Umgebung und der zugehörigen Daten in Azure Time Series Insights-Explorer angezeigt.
 
 ## <a name="problem-some-data-is-shown-but-data-is-missing"></a>Problem: Einige Daten werden angezeigt, andere hingegen fehlen.
 
@@ -60,25 +60,25 @@ Wenn Daten nur teilweise angezeigt werden, und die Daten im Rückstand zu sein s
 
 ### <a name="cause-a-your-environment-is-being-throttled"></a>Ursache A: Ihre Umgebung wird gedrosselt.
 
-[Drosselung](time-series-insights-environment-mitigate-latency.md) ist ein häufiges Problem, wenn Umgebungen bereitgestellt werden, nachdem eine Ereignisquelle mit Daten erstellt wurde. In Azure IoT Hubs und Azure Events Hubs werden Daten bis zu sieben Tage lang gespeichert. Time Series Insights beginnt immer mit dem ältesten Ereignis in der Ereignisquelle (First In, First Out, auch *FIFO*).
+[Drosselung](time-series-insights-environment-mitigate-latency.md) ist ein häufiges Problem, wenn Umgebungen bereitgestellt werden, nachdem eine Ereignisquelle mit Daten erstellt wurde. In Azure IoT Hubs und Azure Events Hubs werden Daten bis zu sieben Tage lang gespeichert. Azure Time Series Insights beginnt immer mit dem ältesten Ereignis in der Ereignisquelle (First In, First Out, auch *FIFO*).
 
-Wenn Sie beispielsweise in einer Ereignisquelle über fünf 5 Millionen Ereignisse verfügen und eine Verbindung mit einer Time Series Insights-Umgebung vom Typ „S1, eine Einheit“ herstellen, liest Time Series Insights also ca. 1 Million Ereignisse pro Tag. Es kann aussehen, als ob bei Time Series Insights eine fünf Tage lange Wartezeit auftritt. Was aber tatsächlich passiert, ist, dass die Umgebung gedrosselt wird.
+Wenn Sie beispielsweise in einer Ereignisquelle über 5 Millionen Ereignisse verfügen und eine Verbindung mit einer Azure Time Series Insights-Umgebung vom Typ „S1, eine Einheit“ herstellen, liest Azure Time Series Insights ca. 1 Million Ereignisse pro Tag. Es kann aussehen, als ob bei Azure Time Series Insights eine fünf Tage lange Wartezeit auftritt. Was aber tatsächlich passiert, ist, dass die Umgebung gedrosselt wird.
 
 Falls Ihre Ereignisquelle ältere Ereignisse enthält, können Sie Drosselung mit zwei Ansätzen begegnen:
 
-- Ändern Sie die Aufbewahrungslimits Ihrer Ereignisquelle, damit ältere Ereignisse, die nicht in Time Series Insights angezeigt werden sollen, entfernt werden.
-- Stellen Sie eine größere Umgebung bereit (Anzahl von Einheiten), um den Durchsatz für ältere Ereignisse zu erhöhen. Wenn Sie im vorangehenden Beispiel dieselbe S1-Umgebung für einen Tag auf fünf Einheiten erhöhen, sollte der Rückstand für die Umgebung innerhalb eines Tages abgebaut werden. Falls bei Ihnen im stabilen Zustand pro Tag maximal 1 Million Ereignisse produziert werden, können Sie die Ereigniskapazität nach Abbau des Rückstands durch Time Series Insights auf eine Einheit verringern.
+- Ändern Sie die Aufbewahrungslimits Ihrer Ereignisquelle, damit ältere Ereignisse, die nicht in Azure Time Series Insights angezeigt werden sollen, entfernt werden.
+- Stellen Sie eine größere Umgebung bereit (Anzahl von Einheiten), um den Durchsatz für ältere Ereignisse zu erhöhen. Wenn Sie im vorangehenden Beispiel dieselbe S1-Umgebung für einen Tag auf fünf Einheiten erhöhen, sollte der Rückstand für die Umgebung innerhalb eines Tages abgebaut werden. Falls bei Ihnen im stabilen Zustand pro Tag maximal 1 Million Ereignisse generiert werden, können Sie die Ereigniskapazität nach Abbau des Rückstands durch Azure Time Series Insights auf eine Einheit verringern.
 
 Der erzwungene Drosselungsgrenzwert basiert auf dem Typ und der Kapazität der Umgebungs-SKU. Alle Ereignisquellen in der Umgebung nutzen diese Kapazität gemeinsam. Wenn Ihre Event Hub-/IoT Hub-Ereignisquelle Daten per Push über die erzwungenen Grenzwerte hinaus überträgt, treten die Drosselung und eine Verzögerung ein.
 
-Die folgende Abbildung zeigt eine Time Series Insights-Umgebung mit SKU S1 und Kapazität 3. Es können 3 Millionen Ereignisse pro Tag eingehen.
+Die folgende Abbildung zeigt eine Azure Time Series Insights-Umgebung mit SKU S1 und Kapazität 3. Es können 3 Millionen Ereignisse pro Tag eingehen.
 
 [![Kapazität der Umgebung](media/diagnose-and-solve-problems/environment-sku-current-capacity.png)](media/diagnose-and-solve-problems/environment-sku-current-capacity.png#lightbox)
 
 Angenommen, eine Umgebung erfasst Nachrichten von einem Event Hub. Die tägliche Erfassungsrate beträgt ca. 67.000 Nachrichten. Diese Rate ergibt somit ungefähr 46 Nachrichten pro Minute.
 
-* Wenn jede Event Hub-Nachricht auf ein einzelnes Time Series Insights-Ereignis reduziert wird, kommt es zu keiner Drosselung.
-* Wenn jede Event Hub-Nachricht auf 100 Time Series Insights-Ereignisse reduziert wird, sollten 4.600 Ereignisse pro Minute erfasst werden.
+* Wenn jede Event Hub-Nachricht auf ein einzelnes Azure Time Series Insights-Ereignis reduziert wird, kommt es zu keiner Drosselung.
+* Wenn jede Event Hub-Nachricht auf 100 Azure Time Series Insights-Ereignisse reduziert wird, sollten 4.600 Ereignisse pro Minute erfasst werden.
 
 Eine SKU S1-Umgebung mit einer Kapazität von 3 kann nur 2.100 Ereignisse pro Minute erfassen (1 Mio. Ereignisse pro Tag = 700 Ereignisse pro Minute, bei drei Einheiten = 2.100 Ereignisse pro Minute).
 
@@ -86,7 +86,7 @@ Eine Übersicht über die Funktionsweise der Vereinfachungslogik finden Sie unte
 
 #### <a name="recommended-resolutions-for-excessive-throttling"></a>Empfohlene Lösungen für übermäßige Drosselung
 
-Um die Verzögerung zu beheben, erhöhen Sie die SKU-Kapazität Ihrer Umgebung. Weitere Informationen finden Sie unter [Skalieren Ihrer Time Series Insights-Umgebung](time-series-insights-how-to-scale-your-environment.md).
+Um die Verzögerung zu beheben, erhöhen Sie die SKU-Kapazität Ihrer Umgebung. Weitere Informationen finden Sie unter [Skalieren Ihrer Azure Time Series Insights-Umgebung](time-series-insights-how-to-scale-your-environment.md).
 
 ### <a name="cause-b-initial-ingestion-of-historical-data-slows-ingress"></a>Ursache B: Die anfängliche Erfassung von historischen Daten bewirkt eine langsame Erfassung.
 
@@ -96,19 +96,19 @@ Wenn Sie eine Verbindung mit einer vorhandenen Ereignisquelle herstellen, ist es
 
 So beheben Sie den Rückstand
 
-1. Erhöhen Sie die SKU-Kapazität auf den maximal zulässigen Wert (in diesem Fall 10). Nachdem die Kapazität erhöht wurde, beginnt der Erfassungsprozess, wesentlich schneller aufzuholen. Die erhöhte Kapazität wird Ihnen in Rechnung gestellt. Um die Aufholgeschwindigkeit bei den historischen Daten zu visualisieren, können Sie das Verfügbarkeitsdiagramm im [Time Series Insights-Explorer](https://insights.timeseries.azure.com) anzeigen.
+1. Erhöhen Sie die SKU-Kapazität auf den maximal zulässigen Wert (in diesem Fall 10). Nachdem die Kapazität erhöht wurde, beginnt der Erfassungsprozess, wesentlich schneller aufzuholen. Die erhöhte Kapazität wird Ihnen in Rechnung gestellt. Um die Aufholgeschwindigkeit bei den historischen Daten zu visualisieren, können Sie das Verfügbarkeitsdiagramm im [Azure Time Series Insights-Explorer](https://insights.timeseries.azure.com) anzeigen.
 
 2. Sobald der Rückstand aufgeholt ist, verringern Sie die SKU-Kapazität auf die normale Erfassungsrate.
 
 ## <a name="problem-data-was-showing-previously-but-is-no-longer-showing"></a>Problem: Die Daten wurden zuvor angezeigt, jetzt aber nicht mehr
 
-Wenn Time Series Insights keine Daten mehr erfasst, Ereignisse aber immer noch in den Iot Hub oder den Event Hub gestreamt werden, erwägen Sie diese potenzielle Ursache.
+Wenn Azure Time Series Insights keine Daten mehr erfasst, Ereignisse aber immer noch in den IoT-Hub oder den Event Hub gestreamt werden, erwägen Sie diese potenzielle Ursache.
 
 ### <a name="cause-a-your-hub-access-key-was-regenerated-and-your-environment-needs-to-be-updated"></a>Ursache A: Ihr Zugriffsschlüssel für den Hub wurde neu generiert und Ihre Umgebung muss aktualisiert werden.
 
-Dieses Problem tritt auf, wenn der Schlüssel, der beim Erstellen der Ereignisquelle angegeben wurde, nicht mehr gültig ist. In Time Series Insights werden in Ihrem Hub Telemetriedaten, aber keine empfangenen Nachrichten angezeigt. Wenn Sie nicht sicher sind, ob der Schlüssel neu generiert wurde, können Sie das Aktivitätsprotokoll Ihres Event Hubs nach „Namespace-Autorisierungsregeln erstellen oder aktualisieren“ durchsuchen. Für einen IoT-Hub suchen Sie nach „IoT Hub-Ressource erstellen oder aktualisieren“.
+Dieses Problem tritt auf, wenn der Schlüssel, der beim Erstellen der Ereignisquelle angegeben wurde, nicht mehr gültig ist. In Azure Time Series Insights werden in Ihrem Hub Telemetriedaten, aber keine empfangenen Nachrichten angezeigt. Wenn Sie nicht sicher sind, ob der Schlüssel neu generiert wurde, können Sie das Aktivitätsprotokoll Ihres Event Hubs nach „Namespace-Autorisierungsregeln erstellen oder aktualisieren“ durchsuchen. Für einen IoT-Hub suchen Sie nach „IoT Hub-Ressource erstellen oder aktualisieren“.
 
-Um Ihre Time Series Insights-Umgebung mit dem neuen Schlüssel zu aktualisieren, öffnen Sie die Hubressource im Azure-Portal und kopieren den neuen Schlüssel. Wechseln Sie zu Ihrer Time Series Insights-Ressource, und wählen Sie **Ereignisquellen** aus:
+Um Ihre Azure Time Series Insights-Umgebung mit dem neuen Schlüssel zu aktualisieren, öffnen Sie die Hubressource im Azure-Portal und kopieren den neuen Schlüssel. Wechseln Sie zu Ihrer Azure Time Series Insights-Ressource, und wählen Sie **Ereignisquellen** aus:
 
    [![Auswählen von Ereignisquellen](media/diagnose-and-solve-problems/update-hub-key-step-1.png)](media/diagnose-and-solve-problems/update-hub-key-step-1.png#lightbox)
 
@@ -122,18 +122,18 @@ Stellen Sie sicher, dass der Wert der Timestamp-Eigenschaft, der als JSON-Zeiche
 
 Denken Sie daran, dass der Name der Timestamp-Eigenschaft Groß-/Kleinschreibung beachtet.
 
-Sie können am einfachsten sicherstellen, dass Ihr Name der Timestamp-Eigenschaft erfasst wird und richtig funktioniert, indem Sie den Time Series Insights-Explorer verwenden. Wählen Sie im Time Series Insights-Explorer mithilfe des Diagramms einen Zeitraum aus, nachdem Sie den Namen der Timestamp-Eigenschaft eingegeben haben. Klicken Sie mit der rechten Maustaste auf die Auswahl, und wählen Sie dann **Ereignisse untersuchen** aus.
+Am einfachsten können Sie mit dem Azure Time Series Insights-Explorer ermitteln, ob der Name der Timestamp-Eigenschaft erfasst wird und richtig funktioniert. Wählen Sie im Azure Time Series Insights-Explorer mithilfe des Diagramms einen Zeitraum nach Eingabe des Namens der Timestamp-Eigenschaft aus. Klicken Sie mit der rechten Maustaste auf die Auswahl, und wählen Sie dann **Ereignisse untersuchen** aus.
 
 Die erste Spaltenüberschrift sollte der Name Ihrer Timestamp-Eigenschaft sein. Neben dem Wort **Timestamp** wird **($TS)** angezeigt.
 
 Folgende Werte werden nicht angezeigt:
 
-- *(abc)* : Zeigt an, dass Time Series Insights die Datenwerte als Zeichenfolgen liest.
-- *Kalendersymbol*: Zeigt an, dass Time Series Insights die Datenwerte als „datetime“-Werte (Datum/Uhrzeit) liest.
-- *#* : Zeigt an, dass Time Series Insights die Datenwerte als „integer“ (ganze Zahl) liest.
+- *(abc)* : Zeigt an, dass Azure Time Series Insights die Datenwerte als Zeichenfolgen liest.
+- *Kalendersymbol*: Zeigt an, dass Azure Time Series Insights die Datenwerte als datetime-Werte (Datum/Uhrzeit) liest.
+- *#* : Zeigt an, dass Azure Time Series Insights die Datenwerte als integer-Werter liest.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Informationen zum [Mildern von Wartezeiten in Azure Time Series Insights](time-series-insights-environment-mitigate-latency.md).
 
-- Machen Sie sich mit der [Vorgehensweise zur Skalierung Ihrer Time Series Insights-Umgebung](time-series-insights-how-to-scale-your-environment.md) vertraut.
+- Machen Sie sich mit der [Vorgehensweise zur Skalierung Ihrer Azure Time Series Insights-Umgebung](time-series-insights-how-to-scale-your-environment.md) vertraut.

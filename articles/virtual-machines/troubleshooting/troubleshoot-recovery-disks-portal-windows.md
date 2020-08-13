@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 08/19/2018
 ms.author: genli
-ms.openlocfilehash: e76fc2da8da2325a8bb0cda47c4405c9eb03c8f4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9b51205fe67bfe5be46491b0238e987fc14f6737
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79226706"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074354"
 ---
 # <a name="troubleshoot-a-windows-vm-by-attaching-the-os-disk-to-a-recovery-vm-using-the-azure-portal"></a>Beheben von Problemen einer Windows-VM durch Hinzufügen des Betriebssystemdatenträgers zu einer Wiederherstellungs-VM mit dem Azure-Portal
 Wenn für Ihren virtuellen Windows-Computer in Azure ein Start- oder Datenträgerfehler auftritt, müssen Sie unter Umständen Schritte zur Problembehebung auf der virtuellen Festplatte selbst ausführen. Ein gängiges Beispiel wäre ein ungültiges Anwendungsupdate, das den erfolgreichen Start der VM verhindert. In diesem Artikel wird erläutert, wie das Azure-Portal die Verbindung zwischen Ihrer virtuellen Festplatte und einer anderen Windows-VM herstellt, um alle Fehler zu beheben und dann Ihre ursprüngliche VM neu zu erstellen. 
@@ -127,7 +127,7 @@ Sobald Ihre Fehler behoben sind, trennen Sie die vorhandene virtuelle Festplatte
 
 ## <a name="swap-the-os-disk-for-the-vm"></a>Austauschen des Betriebssystemdatenträgers für den virtuellen Computer
 
-Im Azure-Portal wird jetzt der Wechsel des Betriebssystemdatenträgers des virtuellen Computers unterstützt. Gehen Sie dazu folgendermaßen vor:
+Das Azure-Portal unterstützt jetzt den Austausch des Betriebssystemdatenträgers des virtuellen Computers. Gehen Sie dazu folgendermaßen vor:
 
 1. Navigieren Sie zum [Azure-Portal](https://portal.azure.com). Wählen Sie **Virtuelle Computer** auf der Seitenleiste aus, und wählen Sie dann den virtuellen Computer aus, auf dem es ein Problem gibt.
 1. Wählen Sie im linken Bereich **Datenträger** aus, und wählen Sie dann **Betriebssystemdatenträger austauschen** aus.

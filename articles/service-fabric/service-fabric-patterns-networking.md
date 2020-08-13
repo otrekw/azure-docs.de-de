@@ -3,12 +3,12 @@ title: Netzwerkmuster für Azure Service Fabric
 description: In diesem Thema werden häufige Netzwerkmuster für Service Fabric sowie die Vorgehensweise zum Erstellen eines Clusters mithilfe der Netzwerkfeatures von Azure beschrieben.
 ms.topic: conceptual
 ms.date: 01/19/2018
-ms.openlocfilehash: 0c3664d1890fd318aa1bff508a51cb227bdcc01d
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 20bd5e931307725016c3e2ad69dae91214b2caab
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86258541"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421466"
 ---
 # <a name="service-fabric-networking-patterns"></a>Netzwerkmuster für Service Fabric
 Sie können Ihre Azure Service Fabric-Cluster in andere Azure-Netzwerkfeatures integrieren. In diesem Artikel erfahren Sie, wie Sie Cluster erstellen, die folgende Features nutzen:
@@ -99,6 +99,8 @@ In den Beispielen in diesem Artikel wird die Service Fabric-template.json verwen
                 "defaultValue": "10.0.0.0/24"
             },*/
     ```
+
+   Sie können auch den Parameter „virtualNetworkName“ auskommentieren, damit Sie im Azure-Portal auf dem Blatt für die Clusterbereitstellung nicht zweimal zur Eingabe des Namens des virtuellen Netzwerks aufgefordert werden.
 
 2. Kommentieren Sie das Attribut `nicPrefixOverride` von `Microsoft.Compute/virtualMachineScaleSets` aus, da Sie das vorhandene Subnetz verwenden und diese Variable in Schritt 1 deaktiviert haben.
 

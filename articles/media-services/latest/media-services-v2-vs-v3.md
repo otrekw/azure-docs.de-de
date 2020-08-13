@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 03/09/2020
 ms.author: juliako
-ms.openlocfilehash: fd094e35ceaa718ec1b258d74106b39744cbd16f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dfbe1e7fdfca6f9959218f47d903301cb4b6d899
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79087833"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448392"
 ---
 # <a name="media-services-v2-vs-v3"></a>Media Services v2 und v3
 
@@ -28,7 +28,7 @@ Dieser Artikel beschreibt Änderungen, die in Azure Media Services V3 eingeführ
 
 ## <a name="general-changes-from-v2"></a>Allgemeine Änderungen von v2
 
-* Für Medienobjekte (Ressourcen), die mit v3 erstellt wurden, unterstützt Media Services nur die serverseitige Speicherverschlüsselung, siehe [Azure Storage Service Encryption für ruhende Daten](https://docs.microsoft.com/azure/storage/common/storage-service-encryption).
+* Für Medienobjekte (Ressourcen), die mit v3 erstellt wurden, unterstützt Media Services nur die serverseitige Speicherverschlüsselung, siehe [Azure Storage Service Encryption für ruhende Daten](../../storage/common/storage-service-encryption.md).
     * Sie können v3-APIs mit Ressourcen verwenden, die mit v2-APIs erstellt wurden, sofern für diese [Speicherverschlüsselung](../previous/media-services-rest-storage-encryption.md) (AES-256) von Media Services bereitgestellt wurde.
     * Mit der älteren AES-256-[Speicherverschlüsselung](../previous/media-services-rest-storage-encryption.md) können Sie mithilfe von v3-APIs keine neuen Medienobjekte erstellen.
 * Die Eigenschaften des [Medienobjekt](assets-concept.md)s in v3 unterscheiden sich von denen in v2, siehe [Zuordnung der Eigenschaften des Medienobjekts in v3 zu v2](#map-v3-asset-properties-to-v2).
@@ -83,16 +83,17 @@ Die v3-API weist in Bezug auf die v2-API die folgenden Featurelücken auf. Am Sc
     * Einfügen einer stillen Audiospur bei einer Eingabe ohne Audio
     * Einfügen einer Videospur, wenn die Eingabe kein Video enthält
 * Liveereignisse mit Transcodierung unterstützen derzeit keine Slate-Einfügungen beim Streamen und Werbemarkereinfügungen über API-Aufrufe. 
- 
+* Bewährte Methoden und Muster hinsichtlich der Verwendung der V2-REST-API für das .NET Core SDK finden Sie im `https://github.com/Azure-Samples/media-services-v2-dotnet-core-restsharp-sample.git`-Beispielcode.
+
 ## <a name="asset-specific-changes"></a>Für Medienobjekte spezifische Änderungen
 
 ### <a name="map-v3-asset-properties-to-v2"></a>Zuordnung der Eigenschaften des Medienobjekts in v3 zu v2
 
-Die folgende Tabelle zeigt, wie die Eigenschaften des [Medienobjekts](https://docs.microsoft.com/rest/api/media/assets/createorupdate#asset) in v3 den Eigenschaften in v2 zugeordnet werden.
+Die folgende Tabelle zeigt, wie die Eigenschaften des [Medienobjekts](/rest/api/media/assets/createorupdate#asset) in v3 den Eigenschaften in v2 zugeordnet werden.
 
 |v3-Eigenschaften|v2-Eigenschaften|
 |---|---|
-|`id` – (eindeutig) der vollständige Azure Resource Manager-Pfad, siehe Beispiele unter [Medienobjekt](https://docs.microsoft.com/rest/api/media/assets/createorupdate)||
+|`id` – (eindeutig) der vollständige Azure Resource Manager-Pfad, siehe Beispiele unter [Medienobjekt](/rest/api/media/assets/createorupdate)||
 |`name` – (eindeutig) siehe [Benennungskonventionen](media-services-apis-overview.md#naming-conventions) ||
 |`alternateId`|`AlternateId`|
 |`assetId`|`Id` – (eindeutiger) Wert beginnt mit dem `nb:cid:UUID:`-Präfix.|
@@ -110,8 +111,8 @@ Zum Schutz Ihrer im Ruhezustand befindlichen Ressourcen sollten die Ressourcen d
 |Verschlüsselungsoption|BESCHREIBUNG|Media Services v2|Media Services v3|
 |---|---|---|---|
 |Media Services-Speicherverschlüsselung|AES-256-Verschlüsselung, Schlüssel von Media Services verwaltet.|Unterstützt<sup>(1)</sup>|Nicht unterstützt<sup>(2)</sup>|
-|[Speicherdienstverschlüsselung für ruhende Daten](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)|Durch Azure Storage angebotene serverseitige Verschlüsselung – Schlüssel wird von Azure oder vom Kunden verwaltet.|Unterstützt|Unterstützt|
-|[Clientseitige Storage-Verschlüsselung](https://docs.microsoft.com/azure/storage/common/storage-client-side-encryption)|Durch Azure Storage angebotene clientseitige Verschlüsselung – Schlüssel wird vom Kunden in Key Vault verwaltet.|Nicht unterstützt|Nicht unterstützt|
+|[Speicherdienstverschlüsselung für ruhende Daten](../../storage/common/storage-service-encryption.md)|Durch Azure Storage angebotene serverseitige Verschlüsselung – Schlüssel wird von Azure oder vom Kunden verwaltet.|Unterstützt|Unterstützt|
+|[Clientseitige Storage-Verschlüsselung](../../storage/common/storage-client-side-encryption.md)|Durch Azure Storage angebotene clientseitige Verschlüsselung – Schlüssel wird vom Kunden in Key Vault verwaltet.|Nicht unterstützt|Nicht unterstützt|
 
 <sup>1</sup> Media Services unterstützt zwar die Behandlung von Inhalten in Klartext/ohne jede Form der Verschlüsselung, doch wird davon abgeraten.
 

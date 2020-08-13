@@ -2,13 +2,13 @@
 title: 'Service Fabric und Container: Übersicht'
 description: Der Artikel enthält eine Übersicht über Service Fabric und die Nutzung von Containern zur Bereitstellung von Microserviceanwendungen. Dieser Artikel enthält eine Übersicht über die Verwendungsweise von Containern sowie über die verfügbaren Funktionen in Service Fabric.
 ms.topic: conceptual
-ms.date: 8/8/2018
-ms.openlocfilehash: 7c92910a92c8fa3061a1a0d53611734cf681484f
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.date: 7/9/2020
+ms.openlocfilehash: cd0ec7dd2247fdd791df362fa34542178c17df4d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259226"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091656"
 ---
 # <a name="service-fabric-and-containers"></a>Service Fabric und Container
 
@@ -53,7 +53,7 @@ Ein Linux-basiertes Tutorial finden Sie unter [Erstellen Ihrer ersten Service Fa
 
 #### <a name="windows-server-containers"></a>Windows Server-Container
 
-Unter Windows Server 2016 werden zwei verschiedene Arten von Containern bereitgestellt, die sich anhand des Isolationsgrads unterscheiden. Windows Server-Container und Docker-Container ähneln sich, da beide über eine Namespace- und Dateisystemisolation verfügen, den Kernel aber gemeinsam mit dem Host nutzen, auf dem sie ausgeführt werden. Unter Linux wurde diese Isolation üblicherweise mit „cgroups“ und Namespaces erzielt. Windows Server-Container verhalten sich ähnlich.
+Unter Windows Server 2016 und höher werden zwei verschiedene Arten von Containern bereitgestellt, die sich durch den Isolationsgrad unterscheiden. Windows Server-Container und Docker-Container ähneln sich, da beide über eine Namespace- und Dateisystemisolation verfügen, den Kernel aber gemeinsam mit dem Host nutzen, auf dem sie ausgeführt werden. Unter Linux wurde diese Isolation üblicherweise mit „cgroups“ und Namespaces erzielt. Windows Server-Container verhalten sich ähnlich.
 
 Windows-Container mit Hyper-V-Unterstützung bieten mehr Isolation und Sicherheit, da kein Container den Betriebssystemkernel mit anderen Containern oder mit dem Host gemeinsam verwendet. Aufgrund dieses höheren Grads an Sicherheitsisolation sind für Hyper-V aktivierte Container für potenziell kritischere Szenarios mit mehreren Mandanten geeignet.
 Ein Windows-basiertes Tutorial finden Sie unter [Erstellen Ihrer ersten Service Fabric-Containeranwendung unter Windows](service-fabric-get-started-containers.md).
@@ -73,7 +73,10 @@ In den folgenden typischen Beispielen ist ein Container eine gute Wahl:
 
 ## <a name="service-fabric-support-for-containers"></a>Service Fabric-Unterstützung für Container
 
-Service Fabric unterstützt die Bereitstellung von Docker-Containern in Linux- und Windows Server-Containern unter Windows Server 2016 zusammen mit der Unterstützung für den Hyper-V-Isolationsmodus. 
+Service Fabric unterstützt die Bereitstellung von Docker-Containern in Linux- und Windows Server-Containern unter Windows Server 2016 und höher zusammen mit der Unterstützung für den Hyper-V-Isolationsmodus.
+
+> [!NOTE]
+> Container werden für lokale Service Fabric-Cluster mit einem einzigen Knoten nicht unterstützt (weder Linux-Cluster in OneBox noch Windows-Cluster in lokalen Service Fabric-Installationen).
 
 Service Fabric stellt ein [Anwendungsmodell](service-fabric-application-model.md) bereit, in dem ein Container einen Anwendungshost darstellt, in dem mehrere Dienstreplikate angeordnet werden. Service Fabric unterstützt darüber hinaus das [Szenario einer ausführbaren Gastanwendungsdatei](service-fabric-guest-executables-introduction.md), bei dem Sie nicht die integrierten Service Fabric-Programmiermodelle verwenden, sondern stattdessen eine vorhandene in einer beliebigen Sprache oder einem beliebigen Framework geschriebene Anwendung in einem Container packen. Dieses Szenario ist der gängigste Anwendungsfall für Container.
 

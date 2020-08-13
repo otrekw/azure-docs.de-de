@@ -3,12 +3,12 @@ title: Erstellen von Ressourcenintegritätswarnungen über das Azure-Portal
 description: Erstellen Sie über das Azure-Portal Warnungen, die Sie informieren, wenn Ihre Azure-Ressourcen nicht mehr verfügbar sind.
 ms.topic: conceptual
 ms.date: 6/23/2020
-ms.openlocfilehash: b44df4f63fa2ae2bde9be431e2df268144a036fa
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 3a0f4704880d040106a2e4112d621b6d8ffbede6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86529215"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091571"
 ---
 # <a name="configure-resource-health-alerts-using-azure-portal"></a>Konfigurieren von Ressourcenintegritätswarnungen mithilfe des Azure-Portals
 
@@ -45,7 +45,7 @@ Ressourcenintegritätswarnung über das Azure-Portal
 1. Wählen Sie im Azure-[Portal](https://portal.azure.com/) die Option **Service Health** aus.
 
     ![Auswahl von „Service Health“](./media/resource-health-alert-monitor-guide/service-health-selection.png)
-2. Wählen Sie im Abschnitt **Resource Health** die Option **Resource Health** aus.
+2. Wählen Sie im Abschnitt **Resource Health** die Option **Service Health** aus.
 3. Wählen Sie **Add resource health alert** (Ressourcenintegritätswarnung hinzufügen) aus, und füllen Sie die Felder aus.
 4. Wählen Sie unter „Warnungsziel“ Angaben für **Abonnement**, **Ressourcentypen**, **Ressourcengruppen** und **Ressourcen** aus, für die Sie benachrichtigt werden möchten.
 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/05/2020
 ms.author: aahi
-ms.openlocfilehash: e120eb20d247ce2def7f7c322ead3066c1d4386e
-ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
+ms.openlocfilehash: 4f14a5cf21a372c66378521fd293b7569b181653
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84974652"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87808659"
 ---
 # <a name="install-and-run-speech-service-containers-preview"></a>Installieren und Ausführen von Containern für den Speech-Dienst (Vorschau)
 
@@ -354,7 +354,7 @@ ApiKey={API_KEY}
 Dieser Befehl:
 
 * Führt einen Container für die *Sprachsynthese* aus dem Containerimage aus.
-* Ordnet 2 CPU-Kerne und 1 GB Arbeitsspeicher zu.
+* Ordnet 1 CPU-Kern und 2 GB Arbeitsspeicher zu.
 * Macht den TCP-Port 5000 verfügbar und ordnet eine Pseudo-TTY-Verbindung für den Container zu.
 * Entfernt den Container automatisch, nachdem er beendet wurde. Das Containerimage ist auf dem Hostcomputer weiterhin verfügbar.
 
@@ -394,7 +394,7 @@ ApiKey={API_KEY}
 Dieser Befehl:
 
 * Führt einen Container für die *benutzerdefinierte Sprachsynthese* aus dem Containerimage aus.
-* Ordnet 2 CPU-Kerne und 1 GB Arbeitsspeicher zu.
+* Ordnet 1 CPU-Kern und 2 GB Arbeitsspeicher zu.
 * Lädt das Modell für die *benutzerdefinierte Sprachsynthese* aus der Volumebereitstellung für die Eingabe, z. B. *C:\CustomVoice*.
 * Macht den TCP-Port 5000 verfügbar und ordnet eine Pseudo-TTY-Verbindung für den Container zu.
 * Lädt das Modell anhand der `ModelId` herunter (sofern diese in der Volumebereitstellung nicht gefunden wird).

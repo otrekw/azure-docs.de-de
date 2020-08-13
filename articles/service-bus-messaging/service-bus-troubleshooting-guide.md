@@ -2,13 +2,13 @@
 title: Leitfaden zur Problembehandlung für Azure Service Bus | Microsoft-Dokumentation
 description: Dieser Artikel stellt eine Liste von Azure Service Bus-Messagingausnahmen und vorgeschlagenen Aktionen zur Verfügung, wenn eine Ausnahme auftritt.
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: 3b2759916e1f9ef0cec660157f577ff54cd39928
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/15/2020
+ms.openlocfilehash: 822a97a230a8646ddadde21eedc6c23d5e3efbd6
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85340464"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067051"
 ---
 # <a name="troubleshooting-guide-for-azure-service-bus"></a>Leitfaden zur Problembehandlung für Azure Service Bus
 In diesem Artikel finden Sie Tipps zur Problembehandlung und Empfehlungen für einige Probleme, die bei der Verwendung von Azure Service Bus auftreten können. 
@@ -16,7 +16,7 @@ In diesem Artikel finden Sie Tipps zur Problembehandlung und Empfehlungen für e
 ## <a name="connectivity-certificate-or-timeout-issues"></a>Konnektivitäts-, Zertifikat- oder Timeoutprobleme
 Die folgenden Schritte unterstützen Sie bei der Problembehandlung von Konnektivitäts-/Zertifikat-/Timeoutproblemen für alle Dienste unter *.servicebus.windows.net. 
 
-- Navigieren Sie zu `https://<yournamespace>.servicebus.windows.net/`, oder verwenden Sie [wget](https://www.gnu.org/software/wget/). Dies hilft bei der Überprüfung, ob Probleme mit der IP-Filterung oder dem virtuellen Netzwerk bzw. der Zertifikatkette vorliegen (häufiges Problem bei Verwendung des Java SDK).
+- Navigieren Sie zu `https://<yournamespace>.servicebus.windows.net/`, oder verwenden Sie [wget](https://www.gnu.org/software/wget/). Dies hilft bei der Überprüfung, ob Probleme mit der IP-Filterung oder dem virtuellen Netzwerk bzw. der Zertifikatkette vorliegen – diese treten bei Verwendung des Java SDK nicht selten auf.
 
     Beispiel für eine erfolgreiche Meldung:
     
@@ -54,29 +54,51 @@ Die folgenden Schritte unterstützen Sie bei der Problembehandlung von Konnektiv
 - Rufen Sie eine Netzwerkablaufverfolgung ab, wenn die vorherigen Schritte nicht hilfreich sind, und analysieren Sie diese mit Tools wie [Wireshark](https://www.wireshark.org/). Wenden Sie sich bei Bedarf an den [Microsoft-Support](https://support.microsoft.com/). 
 
 ## <a name="issues-that-may-occur-with-service-upgradesrestarts"></a>Mögliche Probleme im Zusammenhang mit Dienstupgrades/-neustarts
-Upgrades und Neustarts des Back-End-Diensts können sich wie folgt auf Ihre Anwendungen auswirken:
 
+### <a name="symptoms"></a>Symptome
 - Anforderungen werden ggf. vorübergehend gedrosselt.
 - Es gehen möglicherweise weniger Nachrichten/Anforderungen ein.
 - Die Protokolldatei enthält unter Umständen Fehlermeldungen.
 - Die Verbindung zwischen Anwendungen und dem Dienst wird möglicherweise für einige Sekunden getrennt.
 
-Wenn im Anwendungscode das SDK verwendet wird, ist die Wiederholungsrichtlinie bereits integriert und aktiv. Die Verbindung wird ohne nennenswerte Auswirkungen auf die Anwendung bzw. den Workflow wiederhergestellt.
+### <a name="cause"></a>Ursache
+Upgrades und Neustarts des Back-End-Diensts können folgende Probleme in Ihren Anwendungen verursachen.
+
+### <a name="resolution"></a>Lösung
+Wenn der Anwendungscode das SDK verwendet, ist die Wiederholungsrichtlinie bereits integriert und aktiv. Die Verbindung wird ohne nennenswerte Auswirkungen auf die Anwendung bzw. den Workflow wiederhergestellt.
 
 ## <a name="unauthorized-access-send-claims-are-required"></a>Nicht autorisierter Zugriff: Sendeansprüche sind erforderlich
+
+### <a name="symptoms"></a>Symptome 
 Dieser Fehler tritt möglicherweise auf, wenn Sie mit einer vom Benutzer zugewiesenen Identität mit Sendeberechtigungen versuchen, über Visual Studio auf ein Service Bus-Thema auf einem lokalen Computer zuzugreifen.
 
 ```bash
 Service Bus Error: Unauthorized access. 'Send' claim\(s\) are required to perform this operation.
 ```
 
-Installieren Sie die Bibliothek [Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication/), um das Problem zu lösen.  Weitere Informationen finden Sie unter [Authentifizierung für die lokale Entwicklung](..\key-vault\service-to-service-authentication.md#local-development-authentication). 
+### <a name="cause"></a>Ursache
+Die Identität verfügt nicht über die erforderlichen Zugriffsberechtigungen für das Service Bus-Thema. 
+
+### <a name="resolution"></a>Lösung
+Installieren Sie die Bibliothek [Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication/), um das Problem zu lösen.  Weitere Informationen finden Sie unter [Authentifizierung für die lokale Entwicklung](../key-vault/general/service-to-service-authentication.md#local-development-authentication). 
 
 Informationen zum Zuweisen von Berechtigungen zu Rollen finden Sie unter [Authentifizieren einer verwalteten Identität mit Azure Active Directory für den Zugriff auf Azure Service Bus-Ressourcen](service-bus-managed-service-identity.md).
+
+## <a name="service-bus-exception-put-token-failed"></a>Service Bus-Ausnahme: Fehler beim Put-Token.
+
+### <a name="symptoms"></a>Symptome
+Wenn Sie versuchen, mehr als 1000 Nachrichten über dieselbe Service Bus-Verbindung zu senden, erhalten Sie folgende Fehlermeldung: 
+
+`Microsoft.Azure.ServiceBus.ServiceBusException: Put token failed. status-code: 403, status-description: The maximum number of '1000' tokens per connection has been reached.` 
+
+### <a name="cause"></a>Ursache
+Die Anzahl von Token, die zum Senden und Empfangen von Nachrichten über eine einzelne Verbindung mit einem Service Bus-Namespace verwendet werden können, ist begrenzt. Das Limit ist 1000. 
+
+### <a name="resolution"></a>Lösung
+Öffnen Sie eine neue Verbindung mit dem Service Bus-Namespace, um weitere Nachrichten senden zu können.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen finden Sie in folgenden Artikeln: 
 
 - [Azure Resource Manager-Ausnahmen](service-bus-resource-manager-exceptions.md): In diesem Artikel werden die Ausnahmen aufgelistet, die bei der Interaktion mit Azure Service Bus über Azure Resource Manager (über Vorlagen oder direkte Aufrufe) generiert werden.
-- [Messagingausnahmen](service-bus-messaging-exceptions.md): In diesem Artikel finden Sie eine Liste der Ausnahmen, die .NET Framework für Azure Service Bus generiert. 
-
+- [Messagingausnahmen](service-bus-messaging-exceptions.md): In diesem Artikel finden Sie eine Liste der Ausnahmen, die .NET Framework für Azure Service Bus generiert.

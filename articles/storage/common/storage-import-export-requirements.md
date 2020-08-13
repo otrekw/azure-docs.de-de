@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 6da9490d5d9a876922fb9c2ba5d908db411adb1a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7b7915e1b7779c4d0359b9ac190574c43a624cbe
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85512416"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87276396"
 ---
 # <a name="azure-importexport-system-requirements"></a>Systemanforderungen für Azure Import/Export
 
@@ -50,7 +50,7 @@ Weitere Informationen zu Speicherkonten finden Sie unter [Azure-Speicherkonten �
 Bei jedem Auftrag können lediglich Daten auf ein oder von einem Speicherkonto übertragen werden. Anders ausgedrückt: Ein einzelner Import/Export-Auftrag kann nicht mehrere Speicherkonten umfassen. Weitere Informationen zum Erstellen eines neuen Speicherkontos finden Sie unter [Erstellen eines Speicherkontos](storage-account-create.md).
 
 > [!IMPORTANT]
-> Der Azure Import/Export-Dienst unterstützt keine Speicherkonten, für die das Feature für [VNET-Dienstendpunkte](../../virtual-network/virtual-network-service-endpoints-overview.md) aktiviert wurde. 
+> Für Speicherkonten, bei denen das Feature [VNET-Dienstendpunkte](../../virtual-network/virtual-network-service-endpoints-overview.md)  aktiviert wurde, verwenden Sie die Einstellung **Vertrauenswürdige Microsoft-Dienste zulassen...** , um den [Import/Export](/azure/storage/common/storage-network-security)-Dienst zu aktivieren, um den Import/Export von Daten nach/von Azure durchzuführen.
 
 ## <a name="supported-storage-types"></a>Unterstützte Speichertypen
 

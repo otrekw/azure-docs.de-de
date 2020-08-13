@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 02/19/2020
-ms.openlocfilehash: 9606768288cc74afc24491149eb471944f45e2dc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 08/04/2020
+ms.openlocfilehash: 94a2c9bf3f65897809edaf94fc01b442e02b46d9
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77921163"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87553001"
 ---
 # <a name="module-k-means-clustering"></a>Modul: K-Means Clustering
 
@@ -62,7 +62,7 @@ Bei der Verarbeitung der Trainingsdaten beginnt der k-Means-Algorithmus mit eine
   
 3.  Für **Number of centroids** (Anzahl der Schwerpunkte) geben Sie die Anzahl von Clustern ein, mit der der Algorithmus beginnen soll.  
   
-     Es gibt keine Garantie dafür, dass das Modell genau diese Anzahl von Clustern produziert. Der Algorithmus beginnt mit dieser Anzahl von Datenpunkten und iteriert, um die optimale Konfiguration zu finden.  
+     Es gibt keine Garantie dafür, dass das Modell genau diese Anzahl von Clustern produziert. Der Algorithmus beginnt mit dieser Anzahl von Datenpunkten und iteriert, um die optimale Konfiguration zu finden. Sie können auf den [Quellcode von sklearn](https://github.com/scikit-learn/scikit-learn/blob/fd237278e/sklearn/cluster/_kmeans.py#L1069) verweisen.
   
 4.  Die Eigenschaften unter **Initialization** (Initialisierung) werden verwendet, um den Algorithmus anzugeben, der zum Definieren der anfänglichen Clusterkonfiguration verwendet wird.  
   

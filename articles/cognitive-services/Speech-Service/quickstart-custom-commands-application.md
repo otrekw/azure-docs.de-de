@@ -10,26 +10,36 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: sausin
-ms.openlocfilehash: 2ea850acf0ef581ea66733b0293ba044c87bb3a0
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: 05b47a786fe845460177b66b5bd54cdb140c246e
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85362141"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289415"
 ---
 # <a name="create-a-voice-assistant-using-custom-commands"></a>Erstellen eines Sprachassistenten mithilfe von benutzerdefinierten Befehlen
 
 In dieser Schnellstartanleitung erstellen und testen Sie eine einfache Anwendung für benutzerdefinierte Befehle mithilfe von Speech Studio. Sie können auf diese Anwendung auch von einer Windows-Client-App aus zugreifen. Mit **benutzerdefinierten Befehlen** ist es einfach, funktionsreiche Apps mit Sprachsteuerung zu erstellen, die für Voice-First-Interaktionserfahrungen optimiert sind. Sie bieten eine einheitliche Benutzeroberfläche für die Erstellung, ein automatisches Hostingmodell und eine relativ geringe Komplexität, sodass Sie sich auf die Entwicklung der besten Lösung für Ihre Szenarien mit Sprachsteuerung konzentrieren können.
 
+## <a name="region-availability"></a>Regionale Verfügbarkeit
+Derzeit unterstützen benutzerdefinierte Befehle Speech-Abonnements, die in folgenden Regionen erstellt werden:
+* USA (Westen)
+* USA, Westen 2
+* East US
+* USA (Ost 2)
+* Nordeuropa
+* Europa, Westen
+* USA, Westen-Mitte
+* Indien, Mitte
+* Asien, Osten
+* Asien, Südosten
+
 ## <a name="prerequisites"></a>Voraussetzungen
 
 > [!div class="checklist"]
-> * <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">Erstellen einer Azure Speech-Ressource in einer Region, die benutzerdefinierte Befehle unterstützt<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+> * <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">Erstellen einer Azure Speech-Ressource in einer Region, die benutzerdefinierte Befehle unterstützt<span class="docon docon-navigate-external x-hidden-focus"></span></a> Im Abschnitt **Regionale Verfügbarkeit** weiter oben finden Sie eine Liste der unterstützten Regionen.
 > * Laden Sie die JSON-Beispieldatei für [Smart Room Lite](https://aka.ms/speech/cc-quickstart) herunter.
 > * Laden Sie die neueste Version des [Windows-Sprachassistent-Clients](https://aka.ms/speech/va-samples-wvac) herunter.
-
-> [!NOTE]
-> Zum gegenwärtigen Zeitpunkt unterstützen die benutzerdefinierten Befehle nur Sprachabonnements in den Regionen „westus“, „westus2“ und „northeurope“.
 
 ## <a name="go-to-the-speech-studio-for-custom-commands"></a>Wechseln Sie zum Speech Studio für benutzerdefinierte Befehle.
 

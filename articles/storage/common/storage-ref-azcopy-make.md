@@ -4,16 +4,16 @@ description: Dieser Artikel enthält Referenzinformationen zum Befehl „azcopy 
 author: normesta
 ms.service: storage
 ms.topic: reference
-ms.date: 10/16/2019
+ms.date: 07/24/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 1f310eff1f6858618602c76a7458aadb06dc4d13
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 16d7965b8d42a6fdd6ebd68307b01b322cfa7cc6
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84219931"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285236"
 ---
 # <a name="azcopy-make"></a>azcopy make
 
@@ -45,13 +45,13 @@ azcopy make "https://[account-name].[blob,file,dfs].core.windows.net/[top-level-
 |Option|BESCHREIBUNG|
 |--|--|
 |-h, --help|Dient zum Anzeigen von Hilfeinhalt zum Befehl „make“. |
-|--quota-gb uint32|Gibt die maximale Größe der Freigabe in Gigabyte (GiB) an. 0 bedeutet, dass Sie das Standardkontingent des Dateidiensts akzeptieren.|
+|--quota-gb uint32|Gibt die maximale Größe der Freigabe in Gigabyte (GiB) an. Null bedeutet, dass Sie das Standardkontingent des Dateidiensts akzeptieren.|
 
 ## <a name="options-inherited-from-parent-commands"></a>Von übergeordneten Befehlen geerbte Optionen
 
 |Option|BESCHREIBUNG|
 |---|---|
-|–cap-mbps uint32|Begrenzt die Übertragungsrate (in Megabit pro Sekunde). Der Schritt-für-Schritt-Durchsatz kann von der Obergrenze geringfügig abweichen. Wenn diese Option auf „null“ festgelegt oder weggelassen wird, ist der Durchsatz nicht begrenzt.|
+|--cap-mbps float|Begrenzt die Übertragungsrate (in Megabit pro Sekunde). Der Schritt-für-Schritt-Durchsatz kann von der Obergrenze geringfügig abweichen. Wenn diese Option auf „null“ festgelegt oder weggelassen wird, ist der Durchsatz nicht begrenzt.|
 |–output-type string|Format der Befehlsausgabe. Folgende Optionen sind verfügbar: „text“ und „json“. Der Standardwert lautet „text“.|
 |--trusted-microsoft-suffixes-Zeichenfolge   |Gibt zusätzliche Domänensuffixe an, an die Azure Active Directory-Anmeldetoken gesendet werden können.  Der Standardwert ist ' *.core.windows.net;* .core.chinacloudapi.cn; *.core.cloudapi.de;* .core.usgovcloudapi.net'. Alle hier aufgelisteten Werte werden zum Standardwert hinzugefügt. Aus Sicherheitsgründen sollten Sie hier nur Microsoft Azure-Domänen platzieren. Trennen Sie mehrere E-Mail-Adressen durch Semikolons voneinander.|
 

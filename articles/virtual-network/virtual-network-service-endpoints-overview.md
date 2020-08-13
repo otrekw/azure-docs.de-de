@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 11/08/2019
 ms.author: sumi
 ms.custom: ''
-ms.openlocfilehash: 692d86fa27ea42df6fe1128b64e408a5d4a4d08b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6935ea505643f253daf4c0b7d818137f52583682
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85444453"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132822"
 ---
 # <a name="virtual-network-service-endpoints"></a>Virtual Network-Dienstendpunkte
 
@@ -123,7 +123,7 @@ Nachdem Dienstendpunkte für einen bestimmten Dienst konfiguriert wurden, könne
 
 Dienstendpunkte können in virtuellen Netzwerken einzeln von einem Benutzer konfiguriert werden, der über Schreibzugriff auf ein virtuelles Netzwerk verfügt. Um Azure-Dienstressourcen in einem VNET zu schützen, muss der Benutzer für die hinzuzufügenden Subnetze über die Berechtigung *Microsoft.Network/virtualNetworks/subnets/joinViaServiceEndpoint/action* verfügen. Die integrierten Dienstadministratorrollen enthalten diese Berechtigung standardmäßig. Sie können die Berechtigung ändern, indem Sie benutzerdefinierte Rollen erstellen.
 
-Weitere Informationen zu integrierten Rollen finden Sie unter [Integrierte Rollen für Azure-Ressourcen](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Weitere Informationen zum Zuweisen bestimmter Berechtigungen zu benutzerdefinierten Rollen finden Sie unter [Benutzerdefinierte Rollen für Azure-Ressourcen](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+Weitere Informationen zu integrierten Rollen finden Sie unter [Integrierte Azure-Rollen](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Weitere Informationen zum Zuweisen spezifischer Berechtigungen zu benutzerdefinierten Rollen finden Sie unter [Benutzerdefinierte Azure-Rollen](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 Virtuelle Netzwerke und Ressourcen von Azure-Diensten können sich in demselben oder in unterschiedlichen Abonnements befinden. Wenn das virtuelle Netzwerk und die Ressourcen von Azure-Diensten in unterschiedlichen Abonnements enthalten sind, müssen sich die Ressourcen unter demselben Active Directory-Mandanten befinden. 
 
@@ -152,4 +152,3 @@ Häufig gestellte Fragen finden Sie unter [Azure Virtual Network-Endpunkte – h
 - [Azure-Dienstintegration in virtuellen Netzwerken](virtual-network-for-azure-services.md)
 - [Richtlinien für VNET-Dienstendpunkte](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoint-policies-overview)
 - [Azure Resource Manager-Vorlage](https://azure.microsoft.com/resources/templates/201-vnet-2subnets-service-endpoints-storage-integration)
-

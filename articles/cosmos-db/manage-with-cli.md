@@ -4,14 +4,14 @@ description: Verwenden Sie die Azure CLI zum Verwalten Ihrer Konten, Datenbanken
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 06/03/2020
+ms.date: 07/29/2020
 ms.author: mjbrown
-ms.openlocfilehash: 97b5118f74cbd098beea804c312ed08f1a152873
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0ae29039702a6f73a33f73afc366532077aa4b71
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87067176"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87432826"
 ---
 # <a name="manage-azure-cosmos-resources-using-azure-cli"></a>Verwalten von Azure Cosmos-Ressourcen mit der Azure CLI
 
@@ -19,7 +19,7 @@ Der folgende Leitfaden erläutert die gängigen Befehle zum Automatisieren der V
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Wenn Sie die CLI lokal installieren und verwenden möchten, ist es für dieses Thema erforderlich, die Azure CLI-Version 2.6.0 oder höher auszuführen. Führen Sie `az --version` aus, um die Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI](/cli/azure/install-azure-cli).
+Wenn Sie die Azure CLI lokal installieren und verwenden möchten, ist es für dieses Thema erforderlich, mindestens Version 2.9.1 auszuführen. Führen Sie `az --version` aus, um die Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI](/cli/azure/install-azure-cli).
 
 ## <a name="azure-cosmos-accounts"></a>Azure Cosmos DB-Konten
 
@@ -308,6 +308,7 @@ az lock delete --ids $lockid
 In den folgenden Abschnitten erfahren Sie, wie Sie Azure Cosmos DB-Container verwalten. Dabei lernen Sie u. a. Folgendes:
 
 * [Container erstellen](#create-a-container)
+* [Erstellen eines Containers mit Autoskalierung](#create-a-container-with-autoscale)
 * [Erstellen eines Container mit aktivierter Gültigkeitsdauer](#create-a-container-with-ttl)
 * [Erstellen eines Containers mit benutzerdefinierter Indexrichtlinie](#create-a-container-with-a-custom-index-policy)
 * [Ändern des Containerdurchsatzes](#change-container-throughput)
@@ -330,6 +331,25 @@ az cosmosdb sql container create \
     -a $accountName -g $resourceGroupName \
     -d $databaseName -n $containerName \
     -p $partitionKey --throughput $throughput
+```
+
+### <a name="create-a-container-with-autoscale"></a>Erstellen eines Containers mit Autoskalierung
+
+Erstellen Sie einen Cosmos-Container mit standardmäßiger Indexrichtlinie, Partitionsschlüssel und einem automatisch skalierten Durchsatz von 4000 RU/s.
+
+```azurecli-interactive
+# Create a SQL API container
+resourceGroupName='MyResourceGroup'
+accountName='mycosmosaccount'
+databaseName='database1'
+containerName='container1'
+partitionKey='/myPartitionKey'
+maxThroughput=4000
+
+az cosmosdb sql container create \
+    -a $accountName -g $resourceGroupName \
+    -d $databaseName -n $containerName \
+    -p $partitionKey --max-throughput $maxThroughput
 ```
 
 ### <a name="create-a-container-with-ttl"></a>Erstellen eines Containers mit Gültigkeitsdauer

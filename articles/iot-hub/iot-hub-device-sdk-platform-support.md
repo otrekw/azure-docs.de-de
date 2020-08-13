@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/08/2019
 ms.author: robinsh
-ms.openlocfilehash: 496b890cc49b6b6b9f15213a48472447f801b1c9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: aef468d919e6f09722045f98c68383785d10b137
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76045120"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423081"
 ---
 # <a name="azure-iot-device-sdks-platform-support"></a>Azure IoT-Geräte-SDKs – Plattformunterstützung
 
@@ -124,7 +124,7 @@ Wenn Sie keines der IoT Hub-Geräte-SDKs verwenden können, ist es möglich, mit
 
 ## <a name="support-and-other-resources"></a>Support und weitere Ressourcen
 
-Wenn bei der Verwendung der Azure IoT-Geräte-SDKs Probleme auftreten, gibt es mehrere Möglichkeiten, um Support zu erhalten. Sie können einen der folgenden Kanäle ausprobieren:
+Wenn bei der Verwendung der Azure IoT-Geräte-SDKs Probleme auftreten, gibt es mehrere Möglichkeiten, um Support zu erhalten. Diese werden im Folgenden vorgestellt. Vollständige Informationen zu allen Supportoptionen finden Sie unter [Support- und Hilfeoptionen für Azure IoT](https://aka.ms/iothelp). 
 
 **Melden von Fehlern** – Fehler in den Geräte-SDKs können auf der Problemseite des relevanten GitHub-Projekts gemeldet werden. Fehlerbehebungen aus dem Projekt werden zeitnah in Produktupdates integriert.
 
@@ -137,6 +137,8 @@ Wenn bei der Verwendung der Azure IoT-Geräte-SDKs Probleme auftreten, gibt es m
 * [Probleme beim Azure IoT Hub Node.js SDK](https://github.com/Azure/azure-iot-sdk-node/issues)
 
 * [Probleme beim Azure IoT Hub Python SDK](https://github.com/Azure/azure-iot-sdk-python/issues)
+
+**Technische Fragen**: Sie können technische Fragen sowohl auf der Seite [Microsoft Q&A](https://docs.microsoft.com/answers/topics/azure-iot-sdk.html) als auch im [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-iot-sdk)-Forum stellen. Verwenden Sie dafür das Tag *azure-iot-sdk*.
 
 **Microsoft-Kundensupportteam** – Benutzer mit einem [Supportplan](https://azure.microsoft.com/support/plans/) können direkt über das [Azure-Portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) eine neue Supportanfrage erstellen, um sich an das Microsoft-Kundensupportteam zu wenden.
 

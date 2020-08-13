@@ -1,22 +1,25 @@
 ---
-title: Verwenden des Azure-Speicheremulators für Entwicklung und Tests | Microsoft-Dokumentation
+title: Verwenden des Azure-Speicheremulators für Entwicklung und Tests
 description: Der Azure-Speicheremulator bietet eine kostenlose lokale Entwicklungsumgebung zum Entwickeln und Testen Ihrer Azure Storage-Anwendungen.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 08/21/2019
+ms.date: 07/16/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: how-to
-ms.openlocfilehash: eb13dbb7e4cfbbb1b2ea42ea1753e7615df03a7d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e50c1e3efc33fb761068b3009979079b2ba4b760
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85512174"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87447139"
 ---
 # <a name="use-the-azure-storage-emulator-for-development-and-testing"></a>Verwenden des Azure-Speicheremulators für Entwicklung und Tests
 
 Der Microsoft Azure-Speicheremulator ist ein Tool zur Emulierung der Azure-Blob-, -Warteschlangen- und -Tabellendienste für die lokale Entwicklung. Sie können die Anwendung mit den Speicherdiensten lokal testen, ohne ein Azure-Abonnement zu erstellen oder Kosten zu verursachen. Wenn Ihre Anwendung im Emulator erwartungsgemäß funktioniert, können Sie ein Azure-Speicherkonto in der Cloud verwenden.
+
+> [!IMPORTANT]
+> Der Azure-Speicheremulator wird nicht mehr aktiv entwickelt. [**Azurite**](storage-use-azurite.md) ist die Plattform für den Speicheremulator, die zukünftig verwendet wird. Azurite ersetzt den Azure-Speicheremulator. Azurite wird weiterhin aktualisiert, um die neuesten Versionen der Azure Storage-APIs zu unterstützen. Weitere Informationen finden Sie unter [**Verwenden des Azurite-Emulators für lokale Azure Storage-Entwicklung**](storage-use-azurite.md).
 
 ## <a name="get-the-storage-emulator"></a>Abrufen des Speicheremulators
 
@@ -75,7 +78,7 @@ Sie können das Speicheremulator-Befehlszeilentool zum Initialisieren des Speich
 
    `AzureStorageEmulator.exe init /server .`
 
-   Sie können auch den folgenden Befehl verwenden, mit dem die Datenbank als Standardinstanz von LocalDB erneut initialisiert wird:
+   Sie können auch den folgenden Befehl verwenden, mit dem die Datenbank als Standardinstanz von LocalDB initialisiert wird:
 
    `AzureStorageEmulator.exe init /forceCreate`
 
@@ -179,7 +182,7 @@ Ab Version 3.0 wird beim Starten des Speicheremulators ein Konsolenfenster angez
 
 Geben Sie zum Anzeigen der Liste der Optionen an der Eingabeaufforderung `/help` ein.
 
-| Option | BESCHREIBUNG | Get-Help | Argumente |
+| Option | BESCHREIBUNG | Befehl | Argumente |
 | --- | --- | --- | --- |
 | **Starten** |Startet den Speicheremulator. |`AzureStorageEmulator.exe start [-inprocess]` |*-Reprocess*: Startet den Emulator im aktuellen Prozess, anstatt einen neuen Prozess zu erstellen. |
 | **Beenden** |Beendet den Speicheremulator. |`AzureStorageEmulator.exe stop` | |
@@ -207,7 +210,7 @@ Die folgenden Unterschiede gelten für Blob-Speicher im Emulator:
 * Bei inkrementellen Kopien können Momentaufnahmen von überschriebenen Blobs kopiert werden, wodurch ein Fehler für den Dienst zurückgegeben wird.
 * „Get Page Ranges Diff“ funktioniert nicht zwischen Momentaufnahmen, die per inkrementeller Blobkopie kopiert wurden.
 * Ein Vorgang vom Typ „Put Blob“ kann ggf. bei einem Blob, das im Speicheremulator vorhanden ist und über eine aktive Lease verfügt, erfolgreich ausgeführt werden, auch wenn die Lease-ID in der Anforderung nicht angegeben wurde.
-* Vorgänge für Anfügeblobs  werden vom Emulator nicht unterstützt. Beim Versuch, einen Vorgang auf einen Anfügeblob anzuwenden, wird der Fehler „FeatureNotSupportedByEmulator“ (HTTP-Statuscode 400 – Ungültige Anforderung) zurückgegeben.
+* Vorgänge für Anfügeblobs werden vom Emulator nicht unterstützt. Beim Versuch, einen Vorgang auf einen Anfügeblob anzuwenden, wird der Fehler „FeatureNotSupportedByEmulator“ (HTTP-Statuscode 400 – Ungültige Anforderung) zurückgegeben.
 
 ### <a name="differences-for-table-storage"></a>Unterschiede beim Tabellenspeicher
 
@@ -328,3 +331,7 @@ Es bestehen keine Unterschiede beim Warteschlangenspeicher im Emulator.
 * Sehen Sie sich den plattformübergreifenden, von der Community gepflegten Open-Source-Speicheremulator [Azurite](https://github.com/azure/azurite) an. 
 * [Azure Storage-Beispiele mit .NET](../storage-samples-dotnet.md) enthält Links zu mehreren Codebeispielen, die Sie bei der Anwendungsentwicklung verwenden können.
 * Im [Microsoft Azure Storage-Explorer](https://storageexplorer.com) können Sie mit Ressourcen in Ihrem Storage-Konto in der Cloud und im Speicheremulator arbeiten.
+
+## <a name="see-also"></a>Weitere Informationen
+
+* [Lokale Azure Storage-Entwicklung mit Azurite, Azure SDKs und Azure Storage-Explorer](https://blog.jongallant.com/2020/04/local-azure-storage-development-with-azurite-azuresdks-storage-explorer/)

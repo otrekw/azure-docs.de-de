@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/23/2020
+ms.date: 07/13/2020
 ms.author: iainfou
-ms.openlocfilehash: d43c12681c7230dc4959261ffd6d96f74ea095d7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f2a6cb422c1133f0ed53d2c1061501a47d9c92f1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84734723"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87005088"
 ---
 # <a name="join-a-red-hat-enterprise-linux-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain"></a>Einbinden eines virtuellen Red Hat Enterprise Linux-Computers in eine verwaltete Azure Active Directory Domain Services-Domäne
 
@@ -116,7 +116,7 @@ Nachdem Sie die erforderlichen Pakete auf der VM installiert haben, binden Sie d
     kinit contosoadmin@AADDSCONTOSO.COM
     ```
 
-1. Binden Sie zum Schluss den Computer mit dem Befehl `realm join` in die verwaltete Domäne ein. Verwenden Sie dasselbe Benutzerkonto in der verwalteten Domäne, das Sie im vorherigen Befehl `kinit` angegeben haben, z. B. `contosoadmin@AADDSCONTOSO.COM`:
+1. Binden Sie schließlich die VM mit dem Befehl `realm join` in die verwaltete Domäne ein. Verwenden Sie dasselbe Benutzerkonto in der verwalteten Domäne, das Sie im vorherigen Befehl `kinit` angegeben haben, z. B. `contosoadmin@AADDSCONTOSO.COM`:
 
     ```console
     sudo realm join --verbose AADDSCONTOSO.COM -U 'contosoadmin@AADDSCONTOSO.COM'

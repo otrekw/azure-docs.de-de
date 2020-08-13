@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/27/2019
+ms.date: 05/06/2020
 ms.author: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a8b7fa5aea835329be8f65a3bb1775ba5b0d97d4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9aa97595f9a6ab2a866a8c8ebccde7e53854dbd1
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85389858"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87924545"
 ---
 # <a name="tutorial-configure-slack-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Slack für die automatische Benutzerbereitstellung
 
@@ -166,10 +166,10 @@ Durch diesen Vorgang wird der erstmalige Synchronisierungszyklus für alle Benut
 Nachdem Sie die Bereitstellung konfiguriert haben, können Sie mit den folgenden Ressourcen die Bereitstellung überwachen:
 
 1. Mithilfe der [Bereitstellungsprotokolle](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) können Sie ermitteln, welche Benutzer erfolgreich bzw. nicht erfolgreich bereitgestellt wurden.
-2. Anhand der [Fortschrittsleiste](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user) können Sie den Status des Bereitstellungszyklus überprüfen und den Fortschritt der Bereitstellung verfolgen.
+2. Anhand der [Fortschrittsleiste](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user) können Sie den Status des Bereitstellungszyklus überprüfen und den Fortschritt der Bereitstellung verfolgen.
 3. Wenn sich die Bereitstellungskonfiguration in einem fehlerhaften Zustand zu befinden scheint, wird die Anwendung unter Quarantäne gestellt. Weitere Informationen zu den verschiedenen Quarantänestatus finden Sie [hier](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status).
 
-## <a name="connector-limitations"></a>Connector-Einschränkungen
+## <a name="troubleshooting-tips"></a>Tipps zur Problembehandlung
 
 * Beachten Sie beim Konfigurieren des **displayName**-Attributs in Slack das folgende Verhalten:
 
@@ -179,11 +179,15 @@ Nachdem Sie die Bereitstellung konfiguriert haben, können Sie mit den folgenden
   
   * Zulässige Interpunktion sind Punkte, Unterstriche, Bindestriche, Apostrophe, Klammern (z.B. **( [ { } ] )** ) und Trennzeichen (z.B. **, / ;** ).
   
+  * Die Eigenschaft „displayName“ darf kein @-Zeichen enthalten. Wenn die Eigenschaft ein @-Zeichen enthält, wird in den Bereitstellungsprotokollen möglicherweise ein übersprungenes Ereignis mit der Beschreibung „AttributeValidationFailed“ angezeigt.
+
   * Nehmen Sie nur Änderungen vor, wenn diese beiden Einstellungen im Arbeitsbereich bzw. der Organisation von Slack konfiguriert sind: **Profile syncing is enabled** (Profil Synchronisierung ist aktiviert) und **Users cannot change their display name** (Benutzer können den Anzeigenamen nicht ändern).
-  
+
 * Das **userName**-Attribut von Slack muss weniger als 21 Zeichen lang und eindeutig sein.
 
 * Slack ermöglicht nur das Abgleichen mit den Attributen **userName** und **email**.  
+  
+* Häufige Fehlercodes sind in der offiziellen Slack-Dokumentation dokumentiert: https://api.slack.com/scim#errors
 
 ## <a name="change-log"></a>Änderungsprotokoll
 

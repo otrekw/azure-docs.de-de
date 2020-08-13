@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 348082ad96a5efa4d8f866c3675044edf7b6f8a8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4e3425407fdb131fb1499b2cd085fbe6d427804a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80652156"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87035297"
 ---
 # <a name="reporting-options-for-azure-ad-password-management"></a>Berichterstellungsoptionen für die Kennwortverwaltung von Azure AD
 
@@ -51,9 +51,9 @@ Die Art und Weise, wie Aktivitäten zur Kennwortzurücksetzung und zur Registrie
 6. Wählen Sie am oberen Rand des Bereichs im Menü **Filter** die Dropdownliste **Dienst** aus, und ändern Sie den Diensttyp in **Self-Service-Kennwortverwaltung**.
 7. Grenzen Sie die Liste optional weiter ein, indem Sie die spezielle **Aktivität** auswählen, für die Sie sich interessieren.
 
-### <a name="converged-registration-preview"></a>Zusammengeführte Registrierung (Vorschau)
+### <a name="combined-registration"></a>Kombinierte Registrierung
 
-Wenn Sie an der öffentlichen Vorschau der zusammengeführten Registrierung teilnehmen, finden Sie Informationen zur Benutzeraktivität in den Überwachungsprotokollen unter **Sicherheit** > **Authentifizierungsmethoden**.
+Wenn Sie die [kombinierte Registrierung](https://docs.microsoft.com/azure/active-directory/authentication/concept-registration-mfa-sspr-combined) aktiviert haben, finden Sie Informationen zur Benutzeraktivität in den Überwachungsprotokollen unter **Sicherheit** > **Authentifizierungsmethoden**.
 
 ## <a name="description-of-the-report-columns-in-the-azure-portal"></a>Beschreibung der Berichtsspalten im Azure-Portal
 

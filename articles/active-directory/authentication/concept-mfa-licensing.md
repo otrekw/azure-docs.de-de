@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9440e69a668b7f92977c3ed53b30f45bea8de2b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e294aa2580dd9f0cceb539a2696e7ebbf08c4afe
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84789785"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87051009"
 ---
 # <a name="features-and-licenses-for-azure-multi-factor-authentication"></a>Features und Lizenzen für Azure Multi-Factor Authentication
 
@@ -34,8 +34,8 @@ Azure Multi-Factor Authentication kann entsprechend den Anforderungen Ihrer Orga
 | Microsoft 365 Business Premium und EMS oder Microsoft 365 E3 und E5 | EMS E3, Microsoft 365 E3 und Microsoft 365 Business Premium enthalten Azure AD Premium P1. EMS E5 oder Microsoft 365 E5 umfasst Azure AD Premium P2. Sie können die in den folgenden Abschnitten beschriebenen Funktionen für den bedingten Zugriff auch für die Bereitstellung der mehrstufigen Authentifizierung für Benutzer verwenden. |
 | Azure AD Premium P1 | Mit dem [bedingten Zugriff von Azure AD](../conditional-access/howto-conditional-access-policy-all-users-mfa.md) können Sie Benutzer bei bestimmten Szenarien oder Ereignissen zur mehrstufigen Authentifizierung auffordern und auf diese Weise Ihre geschäftlichen Anforderungen erfüllen. |
 | Azure AD Premium P2 | Bietet die höchste Sicherheitsstufe und eine verbesserte Benutzerumgebung. Erweitert die Funktionen von Azure AD Premium P1 um den [risikobasierten bedingten Zugriff](../conditional-access/howto-conditional-access-policy-risk.md), der sich an Benutzermuster anpasst und Eingabeaufforderungen für die mehrstufige Authentifizierung minimiert. |
-| Alle Microsoft 365-Pläne | Azure Multi-Factor Authentication kann mithilfe von Standardsicherheitswerten [auf Benutzerbasis](howto-mfa-userstates.md) aktiviert oder für alle Benutzer und Anmeldeereignisse aktiviert bzw. deaktiviert werden. Die Verwaltung von Azure Multi-Factor Authentication erfolgt über das Office 365-Portal. Führen Sie zugunsten einer optimierten Benutzerumgebung ein Upgrade auf Azure AD Premium P1 oder P2 durch, und verwenden Sie den bedingten Zugriff. Weitere Informationen finden Sie unter [Schützen von Office 365-Ressourcen mit der mehrstufigen Authentifizierung](https://support.office.com/article/Set-up-multi-factor-authentication-for-Office-365-users-8f0454b2-f51a-4d9c-bcde-2c48e41621c6). |
-| Azure AD Free | Sie können die [Sicherheitsstandards](../fundamentals/concept-fundamentals-security-defaults.md) verwenden, um jedes Mal, wenn eine Authentifizierungsanforderung erfolgt, die mehrstufige Authentifizierung für alle Benutzer zu aktivieren. Sie haben zwar keine differenzierte Kontrolle über aktivierte Benutzer oder Szenarien, verfügen aber über einen zusätzlichen Sicherheitsschritt.<br /> Auch wenn die Sicherheitsstandards nicht zum Aktivieren der mehrstufigen Authentifizierung für alle Benutzer verwendet werden, können Benutzer mit der Rolle *globaler Azure AD-Administrator* für die Verwendung der mehrstufigen Authentifizierung konfiguriert werden. Diese Funktion der kostenlosen Version stellt sicher, dass die kritischen Administratorkonten durch die mehrstufige Authentifizierung geschützt sind. |
+| Alle Microsoft 365-Pläne | Azure Multi-Factor Authentication kann mithilfe von [Standardsicherheitswerten](../fundamentals/concept-fundamentals-security-defaults.md) [auf Benutzerbasis aktiviert](howto-mfa-userstates.md) oder für alle Benutzer aktiviert bzw. deaktiviert werden. Die Verwaltung von Azure Multi-Factor Authentication erfolgt über das Microsoft 365-Portal. Führen Sie zugunsten einer optimierten Benutzerumgebung ein Upgrade auf Azure AD Premium P1 oder P2 durch, und verwenden Sie den bedingten Zugriff. Weitere Informationen finden Sie unter [Schützen von Microsoft 365-Ressourcen mit der mehrstufigen Authentifizierung](/microsoft-365/admin/security-and-compliance/set-up-multi-factor-authentication). |
+| Azure AD Free | Sie können [Sicherheitsstandards](../fundamentals/concept-fundamentals-security-defaults.md) verwenden, um die mehrstufige Authentifizierung für alle Benutzer zu aktivieren. Sie haben zwar keine differenzierte Kontrolle über aktivierte Benutzer oder Szenarien, verfügen aber über einen zusätzlichen Sicherheitsschritt.<br /> Auch wenn die Sicherheitsstandards nicht zum Aktivieren der mehrstufigen Authentifizierung für alle Benutzer verwendet werden, können Benutzer mit der Rolle *globaler Azure AD-Administrator* für die Verwendung der mehrstufigen Authentifizierung konfiguriert werden. Diese Funktion der kostenlosen Version stellt sicher, dass die kritischen Administratorkonten durch die mehrstufige Authentifizierung geschützt sind. |
 
 ## <a name="feature-comparison-of-versions"></a>Funktionsvergleich der Versionen
 
@@ -68,12 +68,12 @@ Nachdem Sie den erforderlichen Azure AD-Tarif erworben haben, müssen Sie [Azure
 
 ### <a name="azure-ad-free-tier"></a>Tarif „Azure AD Free“
 
-Alle Benutzer in einem Mandanten der Edition „Azure AD Free“ können Azure Multi-Factor Authentication über die Sicherheitsstandards verwenden. Über diese Sicherheitsstandards wird Azure Multi-Factor Authentication für alle Benutzer und bei jeder Anmeldung aktiviert. Bei Verwendung der Sicherheitsstandards der Edition „Azure AD Free“ kann nur die mobile Authentifikator-App für Azure Multi-Factor Authentication verwendet werden.
+Alle Benutzer in einem Mandanten der Edition „Azure AD Free“ können Azure Multi-Factor Authentication über die Sicherheitsstandards verwenden. Bei Verwendung der Sicherheitsstandards der Edition „Azure AD Free“ kann nur die mobile Authentifikator-App für Azure Multi-Factor Authentication verwendet werden.
 
 * [Weitere Informationen zu Azure AD-Sicherheitsstandards](../fundamentals/concept-fundamentals-security-defaults.md)
 * [Aktivieren von Sicherheitsstandards für Benutzer von Azure AD Free](../fundamentals/concept-fundamentals-security-defaults.md#enabling-security-defaults)
 
-Wenn Sie Azure Multi-Factor Authentication nicht für alle Benutzer und jedes Anmeldeereignis aktivieren möchten, können Sie Benutzerkonten nur mit der Rolle *globaler Azure AD-Administrator* schützen. Mit dieser Methode werden zusätzliche Authentifizierungsaufforderungen für kritische Administratorkonten bereitgestellt. Sie können Azure Multi-Factor Authentication je nach verwendetem Kontotyp mit einer der folgenden Methoden aktivieren:
+Wenn Sie Azure Multi-Factor Authentication nicht für alle Benutzer aktivieren möchten, können Sie Benutzerkonten nur mit der Rolle *globaler Azure AD-Administrator* schützen. Mit dieser Methode werden zusätzliche Authentifizierungsaufforderungen für kritische Administratorkonten bereitgestellt. Sie können Azure Multi-Factor Authentication je nach verwendetem Kontotyp mit einer der folgenden Methoden aktivieren:
 
 * Wenn Sie ein Microsoft-Konto verwenden, können Sie sich [für die mehrstufige Authentifizierung registrieren](https://support.microsoft.com/help/12408/microsoft-account-about-two-step-verification).
 * Falls Sie kein Microsoft-Konto verwenden, [aktivieren Sie die mehrstufige Authentifizierung für einen Benutzer oder eine Gruppe in Azure AD](howto-mfa-userstates.md).

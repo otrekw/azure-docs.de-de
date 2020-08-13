@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 53f644203b494e5baf087241e2a4fe669b7db07b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 512aed93906968b14f7c6a13e08f74bbeb2f5f31
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85077898"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87431088"
 ---
 # <a name="header-based-authentication-for-single-sign-on-with-application-proxy-and-pingaccess"></a>Headerbasierte Authentifizierung für einmaliges Anmelden mit Anwendungsproxy und PingAccess
 
@@ -121,6 +121,11 @@ Stellen Sie dann sicher, dass Ihre Umleitungs-URL auf Ihre externe URL festgeleg
 1. Wählen Sie Ihre Anwendung aus.
 1. Klicken Sie auf den Link neben **Umleitungs-URIs**, über den die Anzahl der Umleitungs-URIs gezeigt wird, die für Web- und öffentliche Clients eingerichtet wurden. Die Seite **\<application name> – Authentifizierung** wird angezeigt.
 1. Prüfen Sie, ob sich die externe URL, die Sie Ihrer Anwendung zuvor zugewiesen haben, in der Liste **Umleitungs-URIs** befindet. Falls nicht, fügen Sie die externe URL jetzt mit dem Umleitungs-URI-Typ **Web** hinzu, und klicken Sie auf **Speichern**.
+
+Zusätzlich zur externen URL sollte der Liste mit Umleitungs-URIs ein autorisierter Azure Active Directory-Endpunkt hinzugefügt werden.
+
+`https://*.msappproxy.net/pa/oidc/cb`
+`https://*.msappproxy.net/`
 
 Richten Sie schließlich Ihre lokale Anwendung so ein, dass Benutzer Lesezugriff und andere Anwendungen Lese-/Schreibzugriff haben:
 
