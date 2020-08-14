@@ -79,7 +79,7 @@
       href: sql-api-python-samples.md
     - name: PowerShell
       href: powershell-samples.md
-    - name: Azure-Befehlszeilenschnittstelle
+    - name: Azure CLI
       href: cli-samples.md
     - name: Azure Resource Manager
       href: resource-manager-samples.md
