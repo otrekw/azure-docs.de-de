@@ -57,7 +57,9 @@
           href: export-import-provisioning-configuration.md
     - name: Problembehandlung bei der Anwendungsbereitstellung
       items:
-        - name: Problembehandlung bei der App-Bereitstellung
+        - name: Bekannte Probleme
+          href: known-issues.md
+        - name: Beheben von Konfigurationsproblemen
           href: application-provisioning-config-problem.md
         - name: Quarantänestatus
           href: application-provisioning-quarantine-status.md

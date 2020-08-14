@@ -46,7 +46,7 @@
           href: tutorial-sap-hana-manage-cli.md
 - name: Beispiele
   items:
-    - name: Azure Policy-Integrationen
+    - name: Integrierte Azure Policy-Aktionen
       displayName: 'samples, policies, definitions'
       href: ./policy-samples.md
 - name: Konzepte
@@ -287,8 +287,10 @@
       items:
         - name: Übersicht
           href: offline-backup-overview.md
-        - name: Offlinesicherung mit Azure Data Box
+        - name: Offlinesicherung mit Azure Data Box (MARS)
           href: offline-backup-azure-data-box.md
+        - name: Offlinesicherung mit Azure Data Box (DPM/MABS)
+          href: offline-backup-azure-data-box-dpm-mabs.md
         - name: Offlinesicherung mit Import/Export (MARS)
           href: backup-azure-backup-import-export.md
         - name: Offlinesicherung mit Import/Export (DPM/MABS)

@@ -8,7 +8,7 @@
       href: ./servers/overview.md
 - name: Schnellstarts
   items:
-    - name: Aktivieren des Arc für Server-Agents
+    - name: Server-Agents mit Azure Arc-Unterstützung
       href: ./servers/learn/quick-enable-hybrid-vm.md
 - name: Tutorials
   items:

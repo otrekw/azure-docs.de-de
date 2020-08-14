@@ -27,20 +27,16 @@
       href: azure-portal-dashboards-create-programmatically.md
 - name: Anleitungen
   items:
-    - name: Festlegen Ihrer Azure-Portaleinstellungen
+    - name: Verwalten von Einstellungen und Voreinstellungen im Azure-Portal
       href: set-preferences.md
-    - name: Festlegen inaktiver Timeouteinstellungen für alle Benutzer
-      href: admin-timeout.md
-    - name: Aktivieren des hohen Kontrasts oder Ändern des Designs
-      href: azure-portal-change-theme-high-contrast.md
     - name: 'Hinzufügen, Entfernen und Sortieren von Favoriten'
       href: azure-portal-add-remove-sort-favorites.md
-    - name: Erstellen und Freigeben von Azure-Dashboards
-      href: azure-portal-dashboards.md
-    - name: Verwenden einer benutzerdefinierten Markdown-Kachel
-      href: azure-portal-markdown-tile.md
-    - name: Exportieren oder Löschen von Benutzereinstellungen
-      href: azure-portal-export-delete-settings.md
+    - name: Erstellen von Azure-Dashboards
+      items:
+        - name: Erstellen und Freigeben von Azure-Dashboards
+          href: azure-portal-dashboards.md
+        - name: Verwenden einer benutzerdefinierten Markdown-Kachel
+          href: azure-portal-markdown-tile.md
     - name: Anleitungsvideos für das Azure-Portal
       href: azure-portal-video-series.md
     - name: Erstellen und Verwalten von Supportanfragen
