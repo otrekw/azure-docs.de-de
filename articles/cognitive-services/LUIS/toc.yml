@@ -22,11 +22,7 @@
     - name: Verwenden eines Browsers
       href: luis-get-started-get-intent-from-browser.md
     - name: Verwenden eines SDK
-      items:
-        - name: Erstellen einer App
-          href: sdk-authoring.md
-        - name: Abfragen eines Vorhersageendpunkts
-          href: sdk-query-prediction-endpoint.md
+      href: quickstart-sdk.md
     - name: Verwenden von REST-APIs
       items:
         - name: Abrufen der Absicht

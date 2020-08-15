@@ -3,19 +3,19 @@ title: Dokumentation zu Docker in Azure
 summary: 'Docker ist eine beliebte Plattform für die Containerverwaltung und Imageerstellung, die es Ihnen ermöglicht, schnell mit Containern unter Linux und Windows zu arbeiten. Erfahren Sie, wie Sie Docker in Azure nutzen:'
 metadata:
   title: Dokumentation zu Docker in Azure
-  description: 'Docker ist eine beliebte Plattform für die Containerverwaltung und Imageerstellung, die es Ihnen ermöglicht, schnell mit Containern unter Linux und Windows zu arbeiten. Erfahren Sie, wie Sie Docker in Azure nutzen:'
+  description: Docker ist eine beliebte Plattform für die Containerverwaltung und Imageerstellung, die es Ihnen ermöglicht, schnell mit Containern unter Linux und Windows zu arbeiten.
   services: multiple
   ms.service: multiple
   ms.topic: landing-page
   author: georgewallace
   ms.author: gwallace
   ms.date: 03/08/2020
-  ms.openlocfilehash: 9205a47ee0ba3e6e0b328c8f481b15fe593ec5fb
-  ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+  ms.openlocfilehash: 94d5dd74aad11e2271de52dd082cfb9287eb10c1
+  ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 08/11/2020
-  ms.locfileid: "88080384"
+  ms.lasthandoff: 08/14/2020
+  ms.locfileid: "88224576"
 landingContent:
 - title: Bereitstellen von Docker in Azure
   linkLists:

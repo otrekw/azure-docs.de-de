@@ -17,7 +17,7 @@
       items:
         - name: REST-API
           items:
-            - name: 'Verwenden von C#'
+            - name: Verwenden von C#
               href: call-endpoint-csharp.md
             - name: Verwenden von Java
               href: call-endpoint-java.md
@@ -103,12 +103,12 @@
     - name: Wissensdatenbank
       href: 'https://cognitive.uservoice.com/knowledgebase/topics/127875-bing-search-web-image-video-news-autosuggest'
     - name: Abrufen des API-Schlüssels
-      href: 'https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search-api'
+      href: 'https://azure.microsoft.com/free/cognitive-services'
     - name: Testen
       href: 'https://aka.ms/bingcustomsearchtryit'
     - name: Endpunkt für die benutzerdefinierte Bing-Suche
       href: endpoint-custom.md
     - name: Sprachunterstützung
       href: language-support.md
-    - name: Kompatibilität
+    - name: Compliance
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
