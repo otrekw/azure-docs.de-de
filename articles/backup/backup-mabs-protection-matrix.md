@@ -3,12 +3,12 @@ title: MABS (Azure Backup Server) V3 UR1-Schutzmatrix
 description: Dieser Artikel bietet eine Unterstützungsmatrix aller Workloads, Datentypen und Installationen, die von Azure Backup Server geschützt werden.
 ms.date: 03/19/2020
 ms.topic: conceptual
-ms.openlocfilehash: cfcb8fbf9f793cfbe11d2c25b3d2caa7018d0fd4
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: cdbe874baf45d9858acbf891af3c0aae4bd0c2d2
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86538733"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88036724"
 ---
 # <a name="mabs-azure-backup-server-v3-ur1-protection-matrix"></a>MABS (Azure Backup Server) V3 UR1-Schutzmatrix
 
@@ -23,6 +23,9 @@ Verwenden Sie die folgende Matrix für MABS v3 UR1:
 * MABS-Installation – Der Computer/Standort, auf dem bzw. an dem Sie MABS installieren möchten.
 
 * Schutz und Wiederherstellung – Listen Sie die detaillierten Informationen zu den Workloads auf, wie z. B. unterstützter Speichercontainer oder unterstützte Bereitstellung.
+
+>[!NOTE]
+>Die Unterstützung für den 32-Bit-Schutz-Agent ist mit MABS v3 UR1 veraltet. Informationen dazu finden Sie unter [Eingestellte Unterstützung für den 32-Bit-Schutz-Agent](backup-mabs-whats-new-mabs.md#32-bit-protection-agent-deprecation).
 
 ## <a name="protection-support-matrix"></a>Schutzunterstützungsmatrix
 
@@ -54,7 +57,7 @@ In den folgenden Abschnitten wird die Schutzunterstützungsmatrix für MABS deta
 
 | **Workload** | **Version**                               | **Azure Backup Server V2-Installation**                      | **Unterstützte Azure Backup Server-Instanz** | **Schutz und Wiederherstellung**                                 |
 | ------------ | ----------------------------------------- | ------------------------------------------------------------ | ---------------------------------- | ------------------------------------------------------------ |
-| Linux        | Linux, ausgeführt als Hyper-V- oder VMware-Gast | Physischer Server, lokaler virtueller Hyper-V-Computer, virtueller Windows-Computer in VMWare | V3 UR1                             | Hyper-V muss unter Windows Server 2012 R2 oder Windows Server 2016 ausgeführt werden. Schützen:  Gesamter virtueller Computer   <br><br>   Wiederherstellen: Gesamter virtueller Computer   <br><br>    Es werden nur dateikonsistente Momentaufnahmen unterstützt.    <br><br>   Eine vollständige Liste der unterstützten Linux-Verteilungen und -Versionen finden Sie im Artikel [Linux auf von Azure unterstützten Verteilungen](../virtual-machines/linux/endorsed-distros.md). |
+| Linux        | Linux, ausgeführt als Hyper-V- oder VMware-Gast | Physischer Server, lokaler virtueller Hyper-V-Computer, virtueller Windows-Computer in VMWare | V3 UR1                             | Hyper-V muss unter Windows Server 2012 R2, Windows Server 2016 oder Windows Server 2019 ausgeführt werden. Schützen:  Gesamter virtueller Computer   <br><br>   Wiederherstellen: Gesamter virtueller Computer   <br><br>    Es werden nur dateikonsistente Momentaufnahmen unterstützt.    <br><br>   Eine vollständige Liste der unterstützten Linux-Verteilungen und -Versionen finden Sie im Artikel [Linux auf von Azure unterstützten Verteilungen](../virtual-machines/linux/endorsed-distros.md). |
 
 ## <a name="azure-expressroute-support"></a>Azure ExpressRoute-Unterstützung
 

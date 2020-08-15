@@ -1,39 +1,40 @@
 ---
-title: Zurückgeben oder Ersetzen Ihres Azure Stack Edge-Geräts | Microsoft-Dokumentation
-description: Informationen zum Zurückgeben oder Ersetzen eines Azure Stack Edge-Geräts
+title: Zurückgeben Ihres Azure Stack Edge-Geräts | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie die Daten löschen und Ihr Azure Stack Edge-Gerät zurückgeben und dann die dem Gerät zugeordnete Ressource löschen.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 02/26/2020
+ms.date: 07/27/2020
 ms.author: alkohli
-ms.openlocfilehash: 6e0581912a619bec11be6d322e2987a4498c5170
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aa917361ad3c967a697421e86d232e1a206c403e
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84339364"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87923950"
 ---
-# <a name="return-or-replace-your-azure-stack-edge-device"></a>Zurückgeben oder Ersetzen Ihres Azure Stack Edge-Geräts
+# <a name="return-your-azure-stack-edge-device"></a>Zurückgeben Ihres Azure Stack Edge-Geräts
 
-In diesem Artikel wird beschrieben, wie Sie die Daten löschen und Ihr Azure Stack Edge-Gerät zurückgeben. Nachdem Sie das Gerät zurückgegeben haben, können Sie auch die mit dem Gerät verknüpfte Ressource löschen oder ein Ersatzgerät anfordern.
+In diesem Artikel wird beschrieben, wie Sie die Daten löschen und Ihr Azure Stack Edge-Gerät zurückgeben. Nachdem Sie das Gerät zurückgegeben haben, können Sie auch die mit dem Gerät verknüpfte Ressource löschen.
 
 In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
 > [!div class="checklist"]
 >
 > * Löschen der Daten von den Datenträgern des Geräts
-> * Öffnen eines Supporttickets zur Rückgabe Ihres Geräts
+> * Initiieren der Geräterückgabe im Azure-Portal
 > * Packen des Geräts und Planen einer Abholung
 > * Löschen der Ressourcen im Azure-Portal
-> * Anfordern eines Ersatzgeräts
 
 ## <a name="erase-data-from-the-device"></a>Löschen der Daten vom Gerät
 
 Um die Daten von den Datenträgern Ihres Geräts zu löschen, müssen Sie Ihr Gerät zurücksetzen. Sie können Ihr Gerät über die lokale Webbenutzeroberfläche oder die PowerShell-Benutzeroberfläche zurücksetzen.
 
 Erstellen Sie bei Bedarf vor dem Zurücksetzen eine Kopie der lokalen Daten auf dem Gerät. Sie können die Daten vom Gerät in einen Azure Storage-Container kopieren.
+
+Die Geräterückgabe kann bereits vor dem Zurücksetzen des Geräts initiiert werden. 
 
 Führen Sie zum Zurücksetzen Ihres Geräts über die lokale Webbenutzeroberfläche die folgenden Schritte aus.
 
@@ -54,19 +55,50 @@ Alternativ können Sie eine Verbindung mit der PowerShell-Schnittstelle des Ger�
 > - Bei einem Geräteaustausch oder Upgrade auf ein neues Gerät sollten Sie Ihr Gerät erst zurücksetzen, nachdem Sie das neue Gerät erhalten haben.
 > - Beim Zurücksetzen werden nur alle lokalen Daten vom Gerät gelöscht. Die Daten in der Cloud werden nicht gelöscht, und für sie fallen [Kosten](https://azure.microsoft.com/pricing/details/storage/) an. Diese Daten müssen mithilfe eines Cloudspeicher-Verwaltungstools wie [Azure Storage-Explorer](https://azure.microsoft.com/features/storage-explorer/) separat gelöscht werden.
 
-## <a name="open-a-support-ticket"></a>Öffnen eines Supporttickets
+## <a name="initiate-device-return"></a>Initiieren der Geräterückgabe
 
 Beginnen Sie den Rückgabeprozess mit den folgenden Schritten.
 
-1. Öffnen Sie ein Supportticket beim Microsoft-Support, um anzugeben, dass Sie das Gerät zurückgeben möchten. Wählen Sie als Problemtyp **Azure Stack Edge-Hardware** aus.
+1. Navigieren Sie im Azure-Portal zu Ihrer Azure Stack Edge-/Data Box Gateway-Ressource. Wählen Sie in der **Übersicht** über die Befehlsleiste im rechten Bereich die Option **Gerät zurückgeben** aus. 
 
-    ![Öffnen eines Supporttickets](media/azure-stack-edge-return-device/open-support-ticket-1.png)  
+    ![Zurückgeben des Geräts 1](media/azure-stack-edge-return-device/return-device-1.png)  
 
-2. Sie werden durch einen Microsoft-Supporttechniker kontaktiert. Halten Sie die Versanddetails bereit.
-3. Wenn Sie einen Karton für die Rückgabe benötigen, können Sie ihn anfordern. Antworten Sie mit **Ja** auf die Frage **Benötigen Sie einen leeren Karton für die Rückgabe?** .
+2. Gehen Sie auf dem Blatt **Gerät zurückgeben** unter **Grundlegende Details** wie folgt vor:
 
+    1. Geben Sie die Seriennummer des Geräts an. Die Seriennummer des Geräts ist auf der lokalen Webbenutzeroberfläche des Geräts in der **Übersicht** angegeben.  
+    
+    ![Seriennummer des Geräts 1](media/azure-stack-edge-return-device/device-serial-number-1.png) 
+
+    2. Geben Sie die Nummer des Serviceetiketts ein. Hierbei handelt es sich um eine mindestens fünfstellige eindeutige ID für Ihr Gerät. Das Serviceetikett befindet sich in der rechten unteren Ecke des Geräts (wenn Sie auf das Gerät blicken). Ziehen Sie das Informationsetikett heraus. Der Auszug enthält Systeminformationen wie Serviceetikett, NIC, MAC-Adresse und Ähnliches. 
+    
+    ![Serviceetikettnummer 1](media/azure-stack-edge-return-device/service-tag-number-1.png)
+
+    3. Wählen Sie in der Dropdownliste einen Grund für die Rückgabe aus.
+
+    ![Zurückgeben des Geräts 2](media/azure-stack-edge-return-device/return-device-2.png) 
+
+3. Gehen Sie unter **Versandinformationen** wie folgt vor:
+
+    1. Geben Sie Ihren Namen, den Namen des Unternehmens sowie die vollständige Unternehmensadresse an. Geben Sie eine geschäftliche Telefonnummer einschließlich Vorwahl sowie eine E-Mail-ID für Benachrichtigungen ein.
+    2. Wenn Sie einen Karton für die Rückgabe benötigen, können Sie ihn anfordern. Antworten Sie mit **Ja** auf die Frage **Benötigen Sie einen leeren Karton für die Rückgabe?** .
+
+    ![Zurückgeben des Geräts 3](media/azure-stack-edge-return-device/return-device-3.png)
+
+4. Lesen Sie die **Datenschutzbestimmungen**, und aktivieren Sie das Kontrollkästchen, um zu bestätigen, dass Sie die Datenschutzbestimmungen gelesen haben und ihnen zustimmen.
+
+5. Wählen Sie **Rückgabe initiieren** aus.
+
+    ![Zurückgeben des Geräts 4](media/azure-stack-edge-return-device/return-device-4.png) 
+
+6. Nach der Erfassung der Angaben für die Geräterückgabe können Sie das Azure Stack Edge-Betriebsteam per E-Mail benachrichtigen. Sie können Ihre E-Mail-Anwendung verwenden, sofern diese installiert und konfiguriert ist. Sie können die Daten auch kopieren, um eine E-Mail zu erstellen und zu senden.
+
+    ![Zurückgeben des Geräts 5](media/azure-stack-edge-return-device/return-device-5.png) 
+
+7. Nachdem das Azure Stack Edge-Betriebsteam die E-Mail erhalten hat, sendet es Ihnen ein Etikett für die Rücksendung. Nach Erhalt dieses Etiketts können Sie die Geräteabholung mit dem Versandunternehmen planen. 
 
 ## <a name="schedule-a-pickup"></a>Planen der Abholung
+
+Führen Sie die folgenden Schritte aus, um eine Abholung zu planen:
 
 1. Fahren Sie das Gerät herunter. Wechseln Sie auf der lokalen Webbenutzeroberfläche zu **Wartung > Power settings** (Energieeinstellungen).
 2. Wählen Sie **Herunterfahren** aus. Wenn Sie zur Bestätigung aufgefordert werden, klicken Sie auf **Ja**, um fortzufahren. Weitere Informationen finden Sie unter [Verwalten der Energieeinstellungen](data-box-gateway-manage-access-power-connectivity-mode.md#manage-power).
@@ -85,13 +117,14 @@ Beginnen Sie den Rückgabeprozess mit den folgenden Schritten.
 
 Nachdem das Gerät im Azure-Rechenzentrum eingegangen ist, wird das Gerät auf Beschädigungen oder Anzeichen von Manipulation untersucht.
 
-- Wenn das Gerät intakt und in gutem Zustand eintrifft, endet die Rechnungsstellung für diese Ressource. Der Microsoft-Support wird Sie kontaktieren, um zu bestätigen, dass das Gerät zurückgegeben wurde. Anschließend können Sie die Ressource löschen, die im Azure-Portal mit dem Gerät verknüpft ist.
+- Wenn das Gerät intakt und in gutem Zustand eintrifft, endet die Abrechnung für diese Ressource. Das Azure Stack Edge-Betriebsteam setzt sich mit Ihnen in Verbindung, um die Rückgabe des Geräts zu bestätigen. Anschließend können Sie die Ressource löschen, die im Azure-Portal mit dem Gerät verknüpft ist.
 - Wenn das Gerät erheblich beschädigt eintrifft, fallen möglicherweise Geldbußen an. Weitere Informationen finden Sie unter [häufig gestellten Fragen zu verloren gegangenen oder beschädigten Geräten](https://azure.microsoft.com/pricing/details/databox/edge/) und [Produktbestimmungen](https://www.microsoft.com/licensing/product-licensing/products).  
 
 
 Sie können das Gerät im Azure-Portal löschen:
--    Nachdem Sie die Bestellung aufgegeben haben und bevor das Gerät von Microsoft vorbereitet wird.
--    Nachdem Sie das Gerät an Microsoft zurückgegeben haben, durchläuft es die physische Kontrolle im Azure-Rechenzentrum, und der Microsoft-Support bestätigt telefonisch, dass das Gerät zurückgegeben wurde.
+
+- Nachdem Sie die Bestellung aufgegeben haben und bevor das Gerät von Microsoft vorbereitet wird.
+- Nachdem Sie das Gerät an Microsoft zurückgegeben haben, durchläuft es die physische Kontrolle im Azure-Rechenzentrum, und das Azure Stack Edge-Betriebsteam bestätigt telefonisch, dass das Gerät zurückgegeben wurde.
 
 Wenn Sie das Gerät mit einem anderen Abonnement oder Standort aktiviert haben, verschiebt Microsoft Ihre Bestellung innerhalb eines Geschäftstags an das neue Abonnement oder den neuen Standort. Nach dem Verschieben der Bestellung können Sie diese Ressource löschen.
 
@@ -108,21 +141,7 @@ Löschen Sie mit folgenden Schritten das Gerät und die Ressource im Azure-Porta
 
 Sie werden nach erfolgreichem Löschen von Gerät und zugeordneter Ressource benachrichtigt.
 
-## <a name="get-a-replacement-device"></a>Anfordern eines Ersatzgeräts
-
-Es wird ein Ersatzgerät benötigt, wenn das vorhandene Gerät einen Hardwarefehler aufweist oder ein Upgrade erforderlich ist. Führen Sie die folgenden Schritte aus, wenn Ihr Gerät einen Hardwarefehler aufweist:
-
-1. [Öffnen Sie ein Supportticket für ein Hardwareproblem.](#open-a-support-ticket) Der Microsoft-Support prüft dann, ob ein Ersatzteil für die betreffende Instanz verfügbar oder ein Hardwareupgrade nötig ist. In beiden Fällen bestellt der Support ein Ersatzgerät.
-2. [Erstellen Sie eine neue Ressource](azure-stack-edge-deploy-prep.md#create-a-new-resource) für das Ersatzgerät. Achten Sie dabei darauf, das Kontrollkästchen für die Option **Ich habe ein Azure Stack Edge-Gerät** zu aktivieren. 
-3. Sobald Sie das Ersatzgerät erhalten haben, sollten Sie es für die neue Ressource [installieren](azure-stack-edge-deploy-install.md) und [aktivieren](azure-stack-edge-deploy-connect-setup-activate.md).
-4. Gehen Sie wie folgt vor, um das Originalgerät zurückzugeben:
-    1. Öffnen Sie ein weiteres Ticket, um das Originalgerät zurückzugeben.
-    2. [Löschen Sie alle Daten von dem Gerät.](#erase-data-from-the-device)
-    3. [Planen Sie die Abholung.](#schedule-a-pickup)
-    5. [Löschen Sie die Ressource](#delete-the-resource), die dem zurückgegebenen Gerät zugeordnet ist.
-
-
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Erfahren Sie, wie Sie [Bandbreite verwalten](azure-stack-edge-manage-bandwidth-schedules.md).
+- Erfahren Sie, wie Sie [ein Azure Stack Edge-Ersatzgerät erhalten](azure-stack-edge-replace-device.md).

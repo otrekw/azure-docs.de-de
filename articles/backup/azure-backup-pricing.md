@@ -3,12 +3,12 @@ title: Preise für Azure Backup
 description: Erfahren Sie, wie Sie mithilfe einer Preiskalkulation Ihre Kosten für Azure Backup abschätzen können.
 ms.topic: conceptual
 ms.date: 06/16/2020
-ms.openlocfilehash: 274a61ff5a98fa1291f9d8917af9ab1d1b3da2fd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cdb3dc756e1ee7e32453acd7246952c84abebaf7
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85391110"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88035755"
 ---
 # <a name="azure-backup-pricing"></a>Preise für Azure Backup
 
@@ -129,6 +129,7 @@ Um die Kosten für die Sicherung von in Azure-VMs ausgeführten SAP HANA-Serveri
 - Gesamtgröße der SAP HANA-Datenbanken, die Sie sichern möchten. Dies entspricht der Summe der Größe der vollständigen Sicherungen der einzelnen Datenbanken, die von SAP HANA gemeldet wird.
 - Anzahl der SAP HANA-Serverinstanzen dieser Größe
 - Was ist das erwartete Größe von Protokollsicherungen?
+  
   - Der Prozentwert gibt die durchschnittliche tägliche Protokollgröße als Prozentwert der Gesamtgröße der SAP HANA-Datenbanken an, die auf den SAP HANA-Serverinstanzen gesichert werden.
 - Wie ist die zu erwartende tägliche Datenänderungsrate auf diesen Servern?
   - Der Prozentwert zeigt die durchschnittliche tägliche Änderungsrate als Prozentwert der Gesamtgröße der SAP HANA-Datenbanken an, die auf der SAP HANA-Serverinstanz gesichert werden.
@@ -144,9 +145,37 @@ Um die Kosten für die Sicherung von in Azure-VMs ausgeführten SAP HANA-Serveri
   - Wie lange sollen „monatliche“ Sicherungen aufbewahrt werden? (in Monaten)
   - Wie lange sollen „jährliche“ Sicherungen aufbewahrt werden? (in Jahren)
 - **Optional**: Redundanz für Sicherungsspeicher
+  
   - Dies zeigt die Redundanz des Speicherkontos an, in dem Ihre Sicherungsdaten gespeichert werden. Für höchstmögliche Verfügbarkeit empfehlen wir die Verwendung von **GRS**. Da dadurch sichergestellt ist, dass eine Kopie Ihrer Sicherungsdaten in einer anderen Region aufbewahrt wird, können Sie mehrere Compliancestandards einfach einhalten. Ändern Sie die Redundanz in **LRS**, wenn Sie Entwicklungs- oder Testumgebungen sichern, die keine Sicherung auf Unternehmensebene benötigen.
 - **Optional**: Ändern regionaler Preise oder Anwenden ermäßigter Tarife
+  
   - Wenn Sie Ihre Schätzungen für eine andere Region oder ermäßigte Tarife prüfen möchten, wählen Sie **Ja** für die Option **Schätzungen für eine andere Region versuchen?** . Geben Sie dann die Tarife ein, mit denen Sie die Schätzungen durchführen möchten.
+  
+## <a name="estimate-costs-for-backing-up-azure-file-shares"></a>Schätzen der Kosten für die Sicherung von Azure-Dateifreigaben
+
+Sie benötigen die folgenden Parameter, um die Kosten für die Sicherung von Azure-Dateifreigaben mit der von Azure Backup bereitgestellten [auf Momentaufnahmen basierenden Sicherungslösung](azure-file-share-backup-overview.md) zu schätzen:
+
+- Größe (**in GB**) der Dateifreigaben, die Sie sichern möchten.
+
+- Wenn Sie Dateifreigaben sichern möchten, die auf mehrere Speicherkonten verteilt sind, geben Sie die Anzahl der Speicherkonten an, die die Dateifreigaben mit der oben genannten Größe hosten.
+
+- Erwartete Datenänderungsrate auf den Dateifreigaben, die Sie sichern möchten. <br>Änderungsrate bezieht sich auf die Menge der Datenänderungen und wirkt sich direkt auf die Größe des Momentaufnahmenspeichers aus. Wenn Sie z. B. über eine Dateifreigabe mit 200 GB zu sichernden Daten verfügen, von denen sich 10 GB täglich ändern, beträgt die tägliche Änderungsrate 5 %.
+  - Eine höhere Datenänderungsrate bedeutet, dass sich täglich eine große Menge an Daten im Inhalt der Dateifreigabe ändert, sodass die inkrementellen Momentaufnahmen (bei denen nur die Datenänderungen erfasst werden) ebenfalls größer wären.
+  - Wählen Sie „Niedrig“ (1%), „Mittel“ (3%) oder „Hoch“ (5%) aus, basierend auf den Merkmalen und der Verwendung der Dateifreigabe.
+  - Wenn Sie die exakte **Änderungsrate (%)** für Ihre Dateifreigabe kennen, können Sie die Option **Eigene Rate eingeben (%)** aus der Dropdownliste auswählen. Geben Sie die Werte für die tägliche, wöchentliche, monatliche und jährliche Änderungsrate (in %) an.
+
+- Art des Speicherkontos (Standard oder Premium) und Einstellung für die Speicherredundanz für das Speicherkonto, in dem die gesicherte Dateifreigabe gehostet wird. <br>In der aktuellen Sicherungslösung für Azure-Dateifreigaben werden Momentaufnahmen im gleichen Speicherkonto wie die gesicherte Dateifreigabe gespeichert. Daher werden die mit Momentaufnahmen verbundenen Speicherkosten als Teil Ihrer Rechnung für Azure-Dateien in Rechnung gestellt, basierend auf den Preisen der Momentaufnahmen für den Kontotyp und der Redundanzeinstellung für das Speicherkonto, das die gesicherte Dateifreigabe und die Momentaufnahmen hostet.
+
+- Aufbewahrung für verschiedene Sicherungen
+  - Wie lange sollen „tägliche“ Sicherungen aufbewahrt werden? (in Tagen)
+  - Wie lange sollen „wöchentliche“ Sicherungen aufbewahrt werden? (in Wochen)
+  - Wie lange sollen „monatliche“ Sicherungen aufbewahrt werden? (in Monaten)
+  - Wie lange sollen „jährliche“ Sicherungen aufbewahrt werden? (in Jahren)
+
+  Die maximal unterstützten Aufbewahrungswerte in jeder Kategorie finden Sie in der [Unterstützungsmatrix für Azure-Dateifreigaben](azure-file-share-support-matrix.md#retention-limits).
+
+- **Optional**: Ändern regionaler Preise oder Anwenden ermäßigter Tarife.
+  - Die Standardwerte für Kosten pro GB Momentaufnahmenspeicher und Kosten für geschützte Instanzen im Kostenschätzungstool sind für die Region „USA, Osten“ festgelegt. Wenn Sie Ihre Schätzungen für eine andere Region oder ermäßigte Tarife prüfen möchten, wählen Sie **Ja** für die Option **Schätzungen für eine andere Region versuchen?** . Geben Sie dann die Tarife ein, mit denen Sie die Schätzungen durchführen möchten.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
