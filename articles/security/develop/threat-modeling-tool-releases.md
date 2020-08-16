@@ -1,7 +1,7 @@
 ---
 title: Versionshinweise für das Microsoft Threat Modeling Tool
 titleSuffix: Azure
-description: Dokumentation der Versionshinweise für das Threat Modeling Tool
+description: Hier finden Sie die Versionshinweise für alle Updates zum Release des Microsoft Threat Modeling Tool. Hier finden Sie einen Downloadlink und die Systemanforderungen.
 services: security
 documentationcenter: na
 author: jegeib
@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/22/2019
 ms.author: jegeib
-ms.openlocfilehash: eea853ec5829eda3f7496439979adae7bb20c639
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e6f8ba54218f9b5b730ce3454c087d6072930edf
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80125086"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87825870"
 ---
 # <a name="threat-modeling-tool-releases"></a>Threat Modeling Tool-Releases
 
@@ -38,6 +38,8 @@ Das Microsoft Threat Modeling Tool wird zurzeit als Anwendung für Windows verö
 
 ## <a name="release-notes"></a>Versionsinformationen
 
+- [Microsoft Threat Modeling Tool, allgemein verfügbares Release, Version 7.3.00729.1](threat-modeling-tool-releases-73007291.md): 29. Juli 2020
+- [Microsoft Threat Modeling Tool, allgemein verfügbares Release, Version 7.3.00714.2](threat-modeling-tool-releases-73007142.md): 14. Juli 2020
 - [Microsoft Threat Modeling Tool, allgemein verfügbares Release, Version 7.3.00316.1:](threat-modeling-tool-releases-73003161.md) 22.03.2020
 - [Microsoft Threat Modeling Tool, allgemein verfügbares Release, Version 7.3.00206.1](threat-modeling-tool-releases-73002061.md) – 11. Februar 2020
 - [Microsoft Threat Modeling Tool, allgemein verfügbares Release, Version 7.1.61015.1](threat-modeling-tool-releases-71610151.md): 16 Oktober 2019

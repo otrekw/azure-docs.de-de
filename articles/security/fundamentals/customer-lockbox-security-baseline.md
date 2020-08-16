@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 1e8fd08a22d5d243f404a12ff96c1a8797b97f70
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d1cf4af12b9ef912d37014215e422d5b9c73903f
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84485583"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88007878"
 ---
 # <a name="azure-security-baseline-for-customer-lockbox-for-microsoft-azure"></a>Azure-Sicherheitsbaseline für die Kunden-Lockbox für Microsoft Azure
 
@@ -222,13 +222,13 @@ Das Onboarding der Aktivitätsprotokolle wird von der Kunden-Lockbox in Azure Se
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1: Verwalten eines Bestands von Administratorkonten
 
-**Leitfaden**: Verwalten Sie ein Inventar der Benutzerkonten, die über Administratorzugriff auf Ihre Kunden-Lockbox-Anforderungen verfügen. Sie können die Identitäts- und Zugriffssteuerung (Identity and Access control, IAM) im Azure-Portal für Ihr Abonnement verwenden, um die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) zu konfigurieren. Die Rollen werden Benutzern, Gruppen, Dienstprinzipalen und verwalteten Identitäten in Azure Active Directory zugewiesen.
+**Leitfaden**: Verwalten Sie ein Inventar der Benutzerkonten, die über Administratorzugriff auf Ihre Kunden-Lockbox-Anforderungen verfügen. Sie können die Identitäts- und Zugriffssteuerung (IAM) im Azure-Portal für Ihr Abonnement verwenden, um die rollenbasierte Zugriffssteuerung von Azure (Azure RBAC) zu konfigurieren. Die Rollen werden Benutzern, Gruppen, Dienstprinzipalen und verwalteten Identitäten in Azure Active Directory zugewiesen.
 
 Auf der Seite der Kundenorganisation erhält der Benutzer mit der Rolle „Besitzer“ für das Azure Abonnement eine E-Mail von Microsoft, in der er über die ausstehende Anforderung benachrichtigt wird. Für Kunden-Lockbox-Anforderungen ist diese Person die festgelegte genehmigende Person.
 
 * [Grundlegendes zu benutzerdefinierten Rollen](https://docs.microsoft.com/azure/role-based-access-control/custom-roles)
 
-* [Konfigurieren von RBAC in Arbeitsmappen](https://docs.microsoft.com/azure/sentinel/quickstart-get-visibility)
+* [Konfigurieren von Azure RBAC in Arbeitsmappen](https://docs.microsoft.com/azure/sentinel/quickstart-get-visibility)
 
 * [Grundlegendes zu Zugriffsberechtigungen für Anforderungen in der Kunden-Lockbox](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview)
 
@@ -527,7 +527,7 @@ Obwohl klassische Azure-Ressourcen über Azure Resource Graph ermittelt werden k
 
 * [Anzeigen Ihrer Azure-Abonnements](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
 
-* [Grundlegendes zur rollenbasierten Zugriffssteuerung von Azure](https://docs.microsoft.com/azure/role-based-access-control/overview)
+* [Grundlegendes zur rollenbasierten Zugriffssteuerung von Azure (Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 

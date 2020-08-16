@@ -1,20 +1,20 @@
 ---
-title: Data Lake Analytics-Sicherheitsbaseline für den Azure-Sicherheitsvergleichstest
+title: Azure-Sicherheitsbaseline für Data Lake Analytics
 description: Die Data Lake Analytics-Sicherheitsbaseline enthält Schrittanleitungen und Ressourcen für die Implementierung der Sicherheitsempfehlungen, die im Azure-Sicherheitsvergleichstest angegeben sind.
 author: msmbaldwin
 ms.service: data-lake-analytics
 ms.topic: conceptual
-ms.date: 07/13/2020
+ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 5e6d5beaad5080bf3081d5f68722623fb62d6c8a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 33084d72e26f2926751def686c0a4c1d0485a5c2
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86528104"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88005133"
 ---
-# <a name="data-lake-analytics-security-baseline-for-azure-security-benchmark"></a>Data Lake Analytics-Sicherheitsbaseline für den Azure-Sicherheitsvergleichstest
+# <a name="azure-security-baseline-for-data-lake-analytics"></a>Azure-Sicherheitsbaseline für Data Lake Analytics
 
 Die Azure-Sicherheitsbaseline für Data Lake Analytics enthält Empfehlungen, mit deren Hilfe Sie den Sicherheitsstatus Ihrer Bereitstellung verbessern können.
 
@@ -256,7 +256,7 @@ Alternativ können Sie auch Daten in Azure Sentinel oder einer SIEM-Drittanbiete
 
 ### <a name="32-change-default-passwords-where-applicable"></a>3.2: Ändern von Standardkennwörtern bei Bedarf
 
-**Leitfaden**: Data Lake Analytics verfügt nicht über ein Konzept mit Standardkennwörtern, da die Authentifizierung über Azure Active Directory bereitgestellt und mit der rollenbasierten Zugriffssteuerung geschützt wird.
+**Leitfaden**: Data Lake Analytics verfügt nicht über ein Konzept mit Standardkennwörtern, da die Authentifizierung über Azure Active Directory bereitgestellt und mit der rollenbasierten Zugriffssteuerung von Azure (Azure RBAC) geschützt wird.
 
 * [Was ist Azure Data Lake Analytics?](https://docs.microsoft.com/azure/data-lake-analytics/data-lake-analytics-overview)
 
@@ -418,7 +418,7 @@ Sie können auch den Just-In-Time-Zugriff aktivieren, indem Sie Azure AD Privile
 
 * [Verwalten von Azure Data Lake Analytics mithilfe von Azure PowerShell](https://docs.microsoft.com/azure/data-lake-analytics/data-lake-analytics-manage-use-powershell)
 
-**Azure Security Center-Überwachung:** Zurzeit nicht verfügbar
+**Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
 
 **Verantwortlichkeit**: Kunde
 
@@ -432,7 +432,7 @@ Bei der zugrundeliegenden Plattform, die von Microsoft verwaltet wird, behandelt
 
 * [Schützen von Azure Storage-Konten](https://docs.microsoft.com/azure/storage/common/storage-security-guide)
 
-**Azure Security Center-Überwachung:** Zurzeit nicht verfügbar
+**Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
 
 **Verantwortlichkeit**: Kunde
 
@@ -560,7 +560,7 @@ Obwohl klassische Azure-Ressourcen über Azure Resource Graph Explorer ermittelt
 
 * [Grundlegendes zu Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview)
 
-**Azure Security Center-Überwachung:** Zurzeit nicht verfügbar
+**Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
 
 **Verantwortlichkeit**: Kunde
 
@@ -684,7 +684,7 @@ Verwenden Sie darüber hinaus Azure Resource Graph, um Ressourcen in Ihren Abonn
 
 **Anleitung:** Nicht zutreffend. Diese Empfehlung ist für Webanwendungen gedacht, die in Azure App Service oder auf Computeressourcen ausgeführt werden.
 
-**Azure Security Center-Überwachung:** Nicht verfügbar
+**Azure Security Center-Überwachung**: Nicht verfügbar
 
 **Verantwortlichkeit**: Nicht verfügbar
 
@@ -973,7 +973,7 @@ Kennzeichnen Sie außerdem die Abonnements (z. B. Produktion, Nicht-Produktion)
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11.1: Durchführen regelmäßiger Penetrationstests Ihrer Azure-Ressourcen und Sicherstellen der Behebung aller kritischen Sicherheitsergebnissen
 
-**Leitfaden**: Befolgen Sie die Einsatzregeln für Penetrationstests für die Microsoft Cloud, um sicherzustellen, dass die Penetrationstests nicht gegen Microsoft-Richtlinien verstoßen. Nutzen Sie die Microsoft-Strategie und Durchführung von Red Team- und Livewebsite-Penetrationstests für von Microsoft verwaltete Cloudinfrastruktur, Dienste und Anwendungen.
+**Leitfaden**: Befolgen Sie in dem Fall die Einsatzregeln für Penetrationstests von Microsoft Cloud, um sicherzustellen, dass die Penetrationstests nicht gegen Microsoft-Richtlinien verstoßen. Nutzen Sie die Microsoft-Strategie und Durchführung von Red Team- und Livewebsite-Penetrationstests für von Microsoft verwaltete Cloudinfrastruktur, Dienste und Anwendungen.
 
 * [Penetrationstests – Rules of Engagement](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1)
 

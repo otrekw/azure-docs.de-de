@@ -1,6 +1,6 @@
 ---
 title: Azure-Sicherheitsfeatures, die die Identitätsverwaltung unterstützen | Microsoft-Dokumentation
-description: " Dieser Artikel bietet eine Übersicht über die wichtigsten Azure-Sicherheitsfeatures, die die Identitätsverwaltung unterstützen. Lösungen zur Identitäts- und Zugriffsverwaltung von Microsoft unterstützen IT-Profis dabei, den Zugriff auf Anwendungen und Ressourcen über das Unternehmensrechenzentrum und in der Cloud zu schützen, wobei zusätzliche Überprüfungsebenen aktiviert werden, z. B. mehrstufige Authentifizierung und Richtlinien für bedingten Zugriff. "
+description: Hier erfahren Sie mehr über die wichtigsten Azure-Sicherheitsfeatures, die Sie bei der Identitätsverwaltung unterstützen. Außerdem finden Sie hier Informationen über Themen wie das einmalige Anmelden und Reverseproxys.
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -16,12 +16,12 @@ ms.workload: na
 ms.date: 09/19/2018
 ms.author: terrylan
 Customer intent: As an IT Pro or decision maker I am trying to learn about identity management capabilities in Azure
-ms.openlocfilehash: 6abfcaac06dd82be79c9136718878f801ca241cc
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: c9483363dcf6b4a5c05d71daa75d680dd25b8308
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87384530"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88002687"
 ---
 # <a name="azure-identity-management-security-overview"></a>Übersicht über die Sicherheit der Azure-Identitätsverwaltung
 
@@ -41,7 +41,7 @@ Der Artikel konzentriert sich auf die folgenden wesentlichen Funktionen der Azur
 * Einmaliges Anmelden
 * Reverseproxy
 * Multi-Factor Authentication
-* Rollenbasierte Zugriffssteuerung (Role Based Access Control, RBAC)
+* Rollenbasierte Zugriffssteuerung von Azure (Azure RBAC)
 * Sicherheitsüberwachung, Warnungen und Machine Learning-basierte Berichte
 * Kundenidentitäts- und Kundenzugriffsverwaltung
 * Geräteregistrierung
@@ -87,9 +87,9 @@ Weitere Informationen:
 * [Was ist Azure Multi-Factor Authentication?](/azure/active-directory/authentication/multi-factor-authentication)
 * [Funktionsweise von Azure Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md)
 
-## <a name="rbac"></a>RBAC
+## <a name="azure-rbac"></a>Azure RBAC
 
-RBAC ist ein Autorisierungssystem, das auf Azure Resource Manager basiert und eine präzise Verwaltung des Zugriffs auf Ressourcen in Azure ermöglicht. RBAC ermöglicht Ihnen eine präzise Steuerung der Zugriffsebene, über die Benutzer verfügen. Beispielsweise können Sie einen Benutzer auf die alleinige Verwaltung von virtuellen Netzwerken und einen anderen Benutzer auf die Verwaltung aller Ressourcen in einer Ressourcengruppe beschränken. Azure umfasst mehrere integrierte Rollen, die Sie verwenden können. Im Folgenden werden vier grundlegende integrierte Rollen aufgeführt. Die ersten drei Rollen gelten für alle Ressourcentypen.
+Azure RBAC ist ein Autorisierungssystem, das auf Azure Resource Manager basiert und eine präzise Verwaltung des Zugriffs auf Ressourcen in Azure ermöglicht. Azure RBAC ermöglicht Ihnen eine präzise Steuerung der Zugriffsebene, über die Benutzer verfügen. Beispielsweise können Sie einen Benutzer auf die alleinige Verwaltung von virtuellen Netzwerken und einen anderen Benutzer auf die Verwaltung aller Ressourcen in einer Ressourcengruppe beschränken. Azure umfasst mehrere integrierte Rollen, die Sie verwenden können. Im Folgenden werden vier grundlegende integrierte Rollen aufgeführt. Die ersten drei Rollen gelten für alle Ressourcentypen.
 
 - [Besitzer](/azure/role-based-access-control/built-in-roles#owner) verfügen über vollständigen Zugriff auf alle Ressourcen, einschließlich des Rechts, den Zugriff an andere Personen zu delegieren. 
 - [Mitwirkende](/azure/role-based-access-control/built-in-roles#contributor) können alle Arten von Azure-Ressourcen erstellen und verwalten, aber keinen anderen Personen Zugriff gewähren.
