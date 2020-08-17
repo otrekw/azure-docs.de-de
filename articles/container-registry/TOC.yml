@@ -37,7 +37,7 @@
               href: container-registry-tutorial-deploy-update.md
     - name: Beispiele
       items:
-        - name: Azure Policy-Integrationen
+        - name: Integrierte Azure Policy-Aktionen
           displayName: 'samples, policies, definitions'
           href: ./policy-samples.md
     - name: Konzepte
@@ -148,6 +148,12 @@
         - name: Problembehandlung
           expanded: false
           items:
+            - name: Beheben von Problemen bei der Anmeldung
+              href: container-registry-troubleshoot-login.md
+            - name: Beheben von Netzwerkproblemen
+              href: container-registry-troubleshoot-access.md
+            - name: Beheben von Problemen mit der Registrierungsleistung
+              href: container-registry-troubleshoot-performance.md
             - name: Erkennen allgemeiner Probleme
               href: container-registry-check-health.md
             - name: Häufig gestellte Fragen

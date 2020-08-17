@@ -138,6 +138,8 @@
           href: concepts-server-parameters.md
     - name: Entwicklung
       items:
+        - name: Best Practices für Anwendungen
+          href: app-development-best-practices.md
         - name: Kompatibilität von Treibern und Tools
           href: concepts-compatibility.md
         - name: Anwendungsentwicklung

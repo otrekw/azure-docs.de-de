@@ -146,7 +146,11 @@
         - name: Übersicht
           href: backup-azure-sql-database.md
         - name: Backup
-          href: backup-sql-server-database-azure-vms.md
+          items:
+            - name: "Sichern mehrerer SQL\_Server-VMs über den Tresor"
+              href: backup-sql-server-database-azure-vms.md
+            - name: Sichern einer SQL Server-VM über den VM-Bereich
+              href: backup-sql-server-vm-from-vm-pane.md
         - name: Restore
           href: restore-sql-database-azure-vm.md
         - name: Verwalten
@@ -426,7 +430,7 @@
       href: /azure/templates/microsoft.recoveryservices/allversions
 - name: Ressourcen
   items:
-    - name: Kompatibilität
+    - name: Compliance
       href: compliance-offerings.md
     - name: Azure-Roadmap
       href: 'https://azure.microsoft.com/roadmap/'

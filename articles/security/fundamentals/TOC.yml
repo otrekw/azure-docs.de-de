@@ -78,12 +78,16 @@
   items:
     - name: Datensicherheit und -verschlüsselung
       href: encryption-overview.md
+    - name: Doppelte Verschlüsselung
+      href: double-encryption.md
     - name: Datenträgerverschlüsselung
       items:
         - name: Bewährte Methoden
           href: data-encryption-best-practices.md
-        - name: Verschlüsselung ruhender Daten
+        - name: Datenverschlüsselung ruhender Daten
           href: encryption-atrest.md
+        - name: Datenverschlüsselungsmodelle
+          href: encryption-models.md
         - name: Azure Disk Encryption für virtuelle Computer
           href: azure-disk-encryption-vms-vmss.md
     - name: Datenbanksicherheit

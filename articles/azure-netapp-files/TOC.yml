@@ -43,6 +43,8 @@
               href: solutions-benefits-azure-netapp-files-oracle-database.md
             - name: Vorteile der Verwendung von Azure NetApp Files für die elektronische Entwurfsautomatisierung
               href: solutions-benefits-azure-netapp-files-electronic-design-automation.md
+            - name: Verwenden von Windows Virtual Desktop mit Azure NetApp Files
+              href: solutions-windows-virtual-desktop.md
     - name: Häufig gestellte Fragen zu Azure NetApp Files
       href: azure-netapp-files-faqs.md
 - name: Anleitungen
@@ -61,16 +63,24 @@
           href: azure-netapp-files-create-volumes.md
         - name: Konfigurieren der NFSv4.1-Standarddomäne
           href: azure-netapp-files-configure-nfsv41-domain.md
+        - name: Konfigurieren der NFSv4.1-Kerberos-Verschlüsselung
+          href: configure-kerberos-encryption.md
+        - name: Konfigurieren eines NFS-Clients für Azure NetApp Files
+          href: configure-nfs-clients.md
         - name: Konfigurieren der Exportrichtlinie für ein NFS-Volume
           href: azure-netapp-files-configure-export-policy.md
     - name: Erstellen eines SMB-Volumes
       href: azure-netapp-files-create-volumes-smb.md
+    - name: Erstellen eines Dual-Protokoll-Volumes
+      href: create-volumes-dual-protocol.md
     - name: Einbinden oder Aufheben der Einbindung eines Volumes auf virtuellen Windows- oder Linux-Computern
       href: azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md
     - name: Verwalten von Momentaufnahmen
       href: azure-netapp-files-manage-snapshots.md
     - name: Ändern der Größe eines Kapazitätspools oder Volumes
       href: azure-netapp-files-resize-capacity-pools-or-volumes.md
+    - name: Dynamisches Ändern der Dienstebene eines Volumes
+      href: dynamic-change-volume-service-level.md
     - name: Entwickeln
       items:
         - name: REST-API
