@@ -3,12 +3,12 @@ title: Onboarding als Azure Event Grid-Partner
 description: In diesem Artikel wird das Onboarding als Azure Event Grid-Partnerthementyp beschrieben. Informieren Sie sich über das Ressourcenmodell und den Veröffentlichungsablauf für Partnerthemen.
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 8003e3e6a28b0e6a05d553be01c171029e244d74
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 36f2178b7c21af016f9074d6f973a01cedb873d7
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86116113"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87826788"
 ---
 # <a name="onboard-as-an-azure-event-grid-partner"></a>Onboarding als Azure Event Grid-Partner
 
@@ -153,10 +153,10 @@ Nach dem Veröffentlichen am Endpunkt des Partnernamespaces erhalten Sie eine An
 ## <a name="references"></a>References
 
   * [Swagger](https://github.com/ahamad-MS/azure-rest-api-specs/blob/master/specification/eventgrid/resource-manager/Microsoft.EventGrid/preview/2020-04-01-preview/EventGrid.json)
-  * [ARM-Vorlage](https://docs.microsoft.com/azure/templates/microsoft.eventgrid/allversions)
+  * [ARM-Vorlage](/azure/templates/microsoft.eventgrid/allversions)
   * [ARM-Vorlagenschema](https://github.com/Azure/azure-resource-manager-schemas/blob/master/schemas/2020-04-01-preview/Microsoft.EventGrid.json)
-  * [REST-APIs](https://docs.microsoft.com/rest/api/eventgrid/version2020-04-01-preview/partnernamespaces)
-  * [CLI-Erweiterung](https://docs.microsoft.com/cli/azure/ext/eventgrid/?view=azure-cli-latest)
+  * [REST-APIs](/rest/api/eventgrid/version2020-04-01-preview/partnernamespaces)
+  * [CLI-Erweiterung](/cli/azure/ext/eventgrid/?view=azure-cli-latest)
 
 ### <a name="sdks"></a>SDKs
   * [.NET](https://www.nuget.org/packages/Microsoft.Azure.Management.EventGrid/5.3.1-preview)

@@ -1,6 +1,6 @@
 ---
 title: Modellieren von Beziehungen im Azure Table Storage-Entwurf | Microsoft-Dokumentation
-description: Hier erhalten Sie grundlegende Informationen zum Modellierungsprozess beim Entwerfen Ihrer Tabellenspeicherlösung.
+description: 'Hier finden Sie grundlegende Informationen zum Modellierungsprozess beim Entwerfen Ihrer Azure Table Storage-Lösung. Erfahren Sie mehr über 1: n-, 1:1- und Vererbungsbeziehungen.'
 services: storage
 author: MarkMcGeeAtAquent
 ms.service: storage
@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/23/2018
 ms.author: sngun
 ms.subservice: tables
-ms.openlocfilehash: 25082c107fbc0feeb533aa2b4fc56cff960e778d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8c803a7b11aee3d57d6145bed296bd40ddd9bb5e
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75457564"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88036044"
 ---
 # <a name="modeling-relationships"></a>Modellieren von Beziehungen
 In diesem Artikel wird der Modellierungsprozess erörtert, um Sie beim Entwerfen Ihrer Azure Table Storage-Lösungen zu unterstützen.

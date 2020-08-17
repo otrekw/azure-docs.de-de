@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: trbye
 ms.custom: seodec18
-ms.openlocfilehash: eb9e0f126a25bfb0f2db18074bd7200e1a7c2001
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 19f4e7b340f0b1ceb64d04a2704a4f6667e1e14a
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087145"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88053574"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>Sprach- und Stimmunterstützung für den Speech-Dienst
 
@@ -50,21 +50,47 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | `ar-SA` | Arabisch (Saudi-Arabien)             | Nein                                                |
 | `ar-SY` | Arabisch (Syrien)                    | Sprachmodell                                    |
 | `ca-ES` | Katalanisch                           | Sprachmodell                                    |
+| `cs-CZ` | Tschechisch (Tschechische Republik)            | Sprachmodell                                    | 
 | `da-DK` | Dänisch (Dänemark)                  | Sprachmodell                                    |
 | `de-DE` | Deutsch (Deutschland)                  | Akustische Modell<br>Sprachmodell<br>Aussprache |
 | `en-AU` | Englisch (Australien)               | Akustische Modell<br>Sprachmodell                  |
 | `en-CA` | Englisch (Kanada)                  | Akustische Modell<br>Sprachmodell                  |
 | `en-GB` | Walisisch (Großbritannien)          | Akustische Modell<br>Sprachmodell<br>Aussprache |
+| `en-HK` | Englisch (Hongkong)               | Sprachmodell                                    | 
+| `en-IE` | Englisch (Irland)                 | Sprachmodell                                    | 
 | `en-IN` | Englisch (Indien)                   | Akustische Modell<br>Sprachmodell                  |
 | `en-NZ` | Englisch (Neuseeland)             | Akustische Modell<br>Sprachmodell                  |
+| `en-PH` | Englisch (Philippinen)             | Sprachmodell                                    | 
+| `en-SG` | Englisch (Singapur)               | Sprachmodell                                    | 
 | `en-US` | Englisch (USA)           | Akustische Modell<br>Sprachmodell<br>Aussprache |
+| `en-ZA` | Englisch (Südafrika)            | Sprachmodell                                    | 
+| `es-AR` | Spanisch (Argentinien)               | Sprachmodell                                    | 
+| `es-BO` | Spanisch (Bolivien)                 | Sprachmodell                                    | 
+| `es-CL` | Spanisch (Chile)                   | Sprachmodell                                    | 
+| `es-CO` | Spanisch (Kolumbien)                | Sprachmodell                                    | 
+| `es-CR` | Spanisch (Costa Rica)              | Sprachmodell                                    | 
+| `es-CU` | Spanisch (Kuba)                    | Sprachmodell                                    | 
+| `es-DO` | Spanisch (Dominikanische Republik)      | Sprachmodell                                    | 
+| `es-EC` | Spanisch (Ecuador)                 | Sprachmodell                                    | 
 | `es-ES` | Spanisch (Spanien)                   | Akustische Modell<br>Sprachmodell                  |
+| `es-GT` | Spanisch (Guatemala)               | Sprachmodell                                    | 
+| `es-HN` | Spanisch (Honduras)                | Sprachmodell                                    | 
 | `es-MX` | Spanisch (Mexiko)                  | Akustische Modell<br>Sprachmodell                  |
+| `es-NI` | Spanisch (Nicaragua)               | Sprachmodell                                    | 
+| `es-PA` | Spanisch (Panama)                  | Sprachmodell                                    | 
+| `es-PE` | Spanisch (Peru)                    | Sprachmodell                                    | 
+| `es-PR` | Spanisch (Puerto Rico)             | Sprachmodell                                    | 
+| `es-PY` | Spanisch (Paraguay)                | Sprachmodell                                    | 
+| `es-SV` | Spanisch (El Salvador)             | Sprachmodell                                    | 
+| `es-US` | Spanisch (USA)                     | Sprachmodell                                    | 
+| `es-UY` | Spanisch (Uruguay)                 | Sprachmodell                                    | 
+| `es-VE` | Spanisch (Venezuela)               | Sprachmodell                                    | 
 | `fi-FI` | Finnisch (Finnland)                 | Sprachmodell                                    |
 | `fr-CA` | Französisch (Kanada)                   | Akustische Modell<br>Sprachmodell                  |
 | `fr-FR` | Französisch (Frankreich)                   | Akustische Modell<br>Sprachmodell<br>Aussprache |
 | `gu-IN` | Gujarati (Indien)                 | Sprachmodell                                    |
 | `hi-IN` | Hindi (Indien)                     | Akustische Modell<br>Sprachmodell                  |
+| `hu-HU` | Ungarisch (Ungarn)               | Sprachmodell                                    | 
 | `it-IT` | Italienisch (Italien)                   | Akustische Modell<br>Sprachmodell<br>Aussprache |
 | `ja-JP` | Japanisch (Japan)                  | Sprachmodell                                    |
 | `ko-KR` | Koreanisch (Korea)                    | Sprachmodell                                    |
@@ -102,7 +128,7 @@ Weitere Informationen zur regionalen Verfügbarkeit finden Sie unter [Regionen](
 |Gebietsschema  | Sprache            | Geschlecht | Name der Stimme | Stilunterstützung |
 |--|--|--|--|--|
 | `ar-EG` | Arabisch (Ägypten)                  | Female | `ar-EG-SalmaNeural`      | Allgemein |
-| `ar-SA` | Arabisch (Saudi-Arabien)           | Female | `ar-SA-ZariyahNeura`     | Allgemein |
+| `ar-SA` | Arabisch (Saudi-Arabien)           | Female | `ar-SA-ZariyahNeural`    | Allgemein |
 | `ca-ES` | Katalanisch (Spanien)                 | Female | `ca-ES-AlbaNeural`       | Allgemein |
 | `da-DK` | Dänisch (Dänemark)                | Female | `da-DK-ChristelNeural`   | Allgemein |
 | `de-DE` | Deutsch (Deutschland)                | Female | `de-DE-KatjaNeural`      | Allgemein |
@@ -335,20 +361,20 @@ In der folgenden Tabelle finden Sie die unterstützten Sprachen für die verschi
 | Gebietsschema | Sprache | Textabhängige Überprüfung | Textunabhängige Überprüfung | Textunabhängige Identifikation |
 |----|----|----|----|----|
 | de-DE | Englisch (USA) | ja | ja | ja |
-|zh-CN  |Chinesisch (Mandarin, vereinfacht)|    –|    ja|    ja|
-|de-DE  |Deutsch (Deutschland)   |–    |ja    |ja|
-|en-GB  |English (UK)   |–    |ja    |ja|
-|fr-FR  |Französisch (Frankreich)    |–    |ja    |ja|
-|en-AU  |Englisch (Australien)    |–    |ja    |ja|
-|en-CA  |Englisch (Kanada)   |–|   ja|    ja|
-|fr-CA  |Französisch (Kanada)    |–    |ja|   ja|
-|it-IT  |Italienisch|   – |ja|   ja|
-|es-ES| Spanisch (Spanien) |–    |ja|   ja|
-|es-MX  |Spanisch (Mexiko)   |–|   ja|    ja|
-|ja-JP| Japanisch    |–    |ja    |ja|
-|pt-BR| Portugiesisch (Brasilien)|    –|    ja|    ja|
+|zh-CN    |Chinesisch (Mandarin, vereinfacht)|    –|    ja|    ja|
+|de-DE    |Deutsch (Deutschland)    |–    |ja    |ja|
+|en-GB    |English (UK)    |–    |ja    |ja|
+|fr-FR    |Französisch (Frankreich)    |–    |ja    |ja|
+|en-AU    |Englisch (Australien)    |–    |ja    |ja|
+|en-CA    |Englisch (Kanada)    |–|    ja|    ja|
+|fr-CA    |Französisch (Kanada)    |–    |ja|    ja|
+|it-IT    |Italienisch|    –    |ja|    ja|
+|es-ES|    Spanisch (Spanien)    |–    |ja|    ja|
+|es-MX    |Spanisch (Mexiko)    |–|    ja|    ja|
+|ja-JP|    Japanisch    |–    |ja    |ja|
+|pt-BR|    Portugiesisch (Brasilien)|    –|    ja|    ja|
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Cognitive Services ausprobieren](https://azure.microsoft.com/try/cognitive-services/)
+* [Erstellen Sie ein kostenloses Azure-Konto.](https://azure.microsoft.com/free/cognitive-services/)
 * [Erkennen von Sprache in C#](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-chsarp)

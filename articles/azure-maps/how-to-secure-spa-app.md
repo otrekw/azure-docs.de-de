@@ -10,12 +10,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 5b7f26a03c117620be7c16abaf689763e370e5ba
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 83fbf6fa9190953d902ab60a8a5ce131f1fd8a0e
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285695"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88006416"
 ---
 # <a name="how-to-secure-a-single-page-application-with-non-interactive-sign-in"></a>Schützen einer Single-Page-Webanwendung mit nicht interaktiver Anmeldung
 
@@ -100,14 +100,14 @@ Erstellen Sie eine gesicherte Webdienstanwendung, die für die Authentifizierung
         });
     ```
 
-## <a name="grant-role-based-access"></a>Gewähren des rollenbasierten Zugriffs
+## <a name="grant-role-based-access"></a>Gewähren von rollenbasiertem Zugriff
 
-Sie gewähren die *rollenbasierte Zugriffssteuerung* (RBAC), indem Sie die systemseitig zugewiesene Identität einer oder mehreren Azure-Rollendefinitionen zuweisen. Um für Azure Maps verfügbare RBAC-Rollendefinitionen anzuzeigen, wechseln Sie zu **Zugriffssteuerung (IAM)** . Wählen Sie **Rollen** aus, und suchen Sie dann nach Rollen, die mit *Azure Maps* beginnen.
+Sie gewähren die *rollenbasierte Zugriffssteuerung in Azure (Azure RBAC)* , indem Sie die systemseitig zugewiesene Identität einer oder mehreren Azure-Rollendefinitionen zuweisen. Informationen über die für Azure Maps verfügbaren Rollendefinitionen für die rollenbasierte Zugriffssteuerung von Azure finden Sie unter **Zugriffssteuerung (IAM)** . Wählen Sie **Rollen** aus, und suchen Sie dann nach Rollen, die mit *Azure Maps* beginnen.
 
 1. Navigieren Sie zu Ihrem **Azure Maps-Konto**. Wählen Sie **Zugriffssteuerung (IAM)**  > **Rollenzuweisungen** aus.
 
     > [!div class="mx-imgBorder"]
-    > ![Gewähren von RBAC](./media/how-to-manage-authentication/how-to-grant-rbac.png)
+    > ![Gewähren von Zugriff mithilfe von Azure RBAC](./media/how-to-manage-authentication/how-to-grant-rbac.png)
 
 2. Wählen Sie auf der Registerkarte **Rollenzuweisungen** unter **Rolle** eine integrierte Azure Maps-Rollendefinition aus, z. B. **Azure Maps-Datenleser** oder **Azure Maps-Datenmitwirkender**. Wählen Sie unter **Zugriff zuweisen zu** die Option **Funktions-App** aus. Wählen Sie den Prinzipal nach Namen aus. Klicken Sie dann auf **Speichern**.
 

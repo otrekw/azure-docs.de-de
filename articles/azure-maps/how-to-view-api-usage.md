@@ -1,6 +1,6 @@
 ---
 title: Anzeigen der Azure Maps-API-Nutzungsmetriken | Microsoft Azure Maps
-description: In diesem Artikel erfahren Sie, wie Sie die Metriken für Ihre Microsoft Azure Maps-API-Aufrufe im Azure-Portal anzeigen.
+description: Erfahren Sie, wie Sie Azure Maps-API-Nutzungsmetriken anzeigen, z. B. Anforderungen gesamt, Fehler gesamt und Verfügbarkeit. Erfahren Sie, wie Sie Daten filtern und Ergebnisse aufteilen.
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 08/06/2018
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 57fb699a7225a53af1f093520855e8e2ef132f42
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 766bb2eaf6878a8d7261472ba11ea7acd46de92e
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87130731"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88036486"
 ---
 # <a name="view-azure-maps-api-usage-metrics"></a>Anzeigen der Azure Maps-API-Nutzungsmetriken
 
@@ -21,7 +21,7 @@ In diesem Artikel erfahren Sie, wie Sie die API-Nutzungsmetriken für Ihr Azure 
 
 ## <a name="view-metric-snapshot"></a>Anzeigen der Metrikenmomentaufnahme
 
-Sie sehen einige gängige Metriken auf der **Übersicht**-Seite Ihres Maps-Kontos. Derzeit werden *Anforderungen gesamt*, *Fehler gesamt*  und *Verfügbarkeit* für einen auswählbaren Zeitraum angezeigt.
+Sie sehen einige gängige Metriken auf der **Übersicht**-Seite Ihres Maps-Kontos. Derzeit werden *Anforderungen gesamt*, *Fehler gesamt * und *Verfügbarkeit* für einen auswählbaren Zeitraum angezeigt.
 
 ![Übersicht zu Nutzungsmetriken von Azure Maps](media/how-to-view-api-usage/portal-overview.png)
 

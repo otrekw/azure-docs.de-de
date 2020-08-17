@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: thfalgou
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 578560eccb13ff4b9169e11b0674859acc1fc901
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: efa4ca24dadb2fb5d347d79de20eebfacc9a58e0
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285865"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88142178"
 ---
 # <a name="best-practices-for-business-continuity-and-disaster-recovery-in-azure-kubernetes-service-aks"></a>Best Practices für Geschäftskontinuität und Notfallwiederherstellung in Azure Kubernetes Service (AKS)
 
@@ -93,7 +93,7 @@ Der *Dienstzustand* bezieht sich auf die Daten im Arbeitsspeicher oder auf einem
 
 Der Zustand kann ausgelagert oder mit dem Code gespeichert werden, der den Zustand ändert. In der Regel lagern Sie den Zustand mithilfe einer Datenbank oder einem anderen Datenspeicher aus, der über das Netzwerk auf verschiedenen Computern oder prozessextern auf dem gleichen Computer ausgeführt wird.
 
-Container und Microservices sind dann am stabilsten, wenn die darin ausgeführten Prozesse ihren Zustand nicht beibehalten. Da Anwendungen fast immer einen Zustand beinhalten, verwenden Sie eine PaaS-Lösung wie Azure Database for MySQL, Azure Database for PostgreSQL oder Azure SQL-Datenbank.
+Container und Microservices sind dann am stabilsten, wenn die darin ausgeführten Prozesse ihren Zustand nicht beibehalten. Da Anwendungen fast immer einen Zustand beinhalten, verwenden Sie eine PaaS-Lösung wie Azure Cosmos DB, Azure Database for PostgreSQL, Azure Database for MySQL oder Azure SQL-Datenbank.
 
 Wie Sie portable Anwendungen erstellen, können Sie den folgenden Richtlinien entnehmen:
 

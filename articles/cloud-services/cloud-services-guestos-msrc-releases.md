@@ -1,6 +1,6 @@
 ---
 title: Liste der Updates für das Azure-Gastbetriebssystem | Microsoft-Dokumentation
-description: Liste der Updates für Azure-Gastbetriebssystemreleases
+description: In diesem Artikel werden die Microsoft Security Response Center-Updates aufgelistet, die auf verschiedene Azure-Gastbetriebssysteme angewendet wurden. Überprüfen Sie, ob ein Update für das Gastbetriebssystem gültig ist, das Sie verwenden.
 services: cloud-services
 documentationcenter: na
 author: yohaddad
@@ -10,37 +10,88 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 6/12/2020
+ms.date: 8/11/2020
 ms.author: yohaddad
-ms.openlocfilehash: 6cde6470a8e533879de72307b8f00c70f9f165a1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3fb9c863b94c65d7a4333d734648d308a904e355
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84737460"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88142348"
 ---
 # <a name="azure-guest-os"></a>Azure-Gastbetriebssystem
 Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MSRC), die auf das Azure-Gastbetriebssystem angewendet wurden. Durchsuchen Sie diesen Artikel, um zu ermitteln, ob ein bestimmtes Update für das Gastbetriebssystem gilt, das Sie verwenden. Updates werden für die [Familie][family-explain], in der sie eingeführt wurden, immer in die jeweils neueste Version übertragen.
 
-## <a name="june-2020-guest-os"></a>Gastbetriebssystem für Juni 2020
-">[!NOTE]
->Das Gastbetriebssystem für Juni wird derzeit auf Clouddienst-VMs eingeführt, die für automatische Updates konfiguriert sind. Wenn die Bereitstellung abgeschlossen ist, wird diese Version für manuelle Updates über das Azure-Portal und Konfigurationsdateien verfügbar gemacht. Die folgenden Patches sind im Gastbetriebssystem für April enthalten. Änderungen an der Liste sind vorbehalten.
+## <a name="july-2020-guest-os"></a>Gastbetriebssystem für Juli 2020
+>[!NOTE]
+>Das Gastbetriebssystem für Juli wird derzeit auf virtuellen Clouddienstcomputern eingeführt, die für automatische Updates konfiguriert sind. Wenn die Bereitstellung abgeschlossen ist, wird diese Version für manuelle Updates über das Azure-Portal und Konfigurationsdateien verfügbar gemacht. Die folgenden Patches sind im Gastbetriebssystem für Juli enthalten. Änderungen der Liste vorbehalten.
 
 
 | Produktkategorie | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
 | --- | --- | --- | --- | --- |
-|  Rel 20-06  |  [4561603]  |  Internet Explorer  |  2.99, 3.86, 4.79  |  9\. Juni 2020  |
-|  Rel 20-06  |  [4561616]  |  Letztes kumulatives Update  |  5.44  |  9\. Juni 2020  |
-|  Rel 20-06  |  [4561608]  |  Letztes kumulatives Update  |  6.20  |  9\. Juni 2020  |
-|  Rel 20-06  |  [4562030]  |  Wartungsstapelaktualisierung  |  2,99  |  9\. Juni 2020  |
-|  Rel 20-06  |  [4561643]  |  Monatlicher Rollup  |  2,99  |  9\. Juni 2020  |
-|  Rel 20-06  |  [4562252]  |  Wartungsstapelaktualisierung  |  3,86  |  9\. Juni 2020  |
-|  Rel 20-06  |  [4561612]  |  Monatlicher Rollup  |  3,86  |  9\. Juni 2020  |
-|  Rel 20-06  |  [4561600]  |  Blinken  |  3.86, 4.79, 5.44, 6.20  |  9\. Juni 2020  |
-|  Rel 20-06  |  [4562253]  |  Wartungsstapelaktualisierung  |  4,79  |  9\. Juni 2020  |
-|  Rel 20-06  |  [4561666]  |  Monatlicher Rollup  |  4,79  |  9\. Juni 2020  |
-|  Rel 20-06  |  [4562561]  |  Wartungsstapelaktualisierung  |  5.44  |  9\. Juni 2020  |
-|  Rel 20-06  |  [4562562]  |  Wartungsstapelaktualisierung  |  6.20  |  9\. Juni 2020  |
+|  Rel 20-07 |  [4565479]  |  Internet Explorer | 2.100, 3.87, 4.80 | 14. Jul 2020 |
+|  Rel 20-07 |  [4565511]  |  Letztes kumulatives Update | 5,45 | 14. Jul 2020 |
+|  Rel 20-07 |  [4558998]  |  Letztes kumulatives Update | 6,21 | 14. Jul 2020 |
+|  Rel 20-07 |  [4565524]  |  Monatlicher Rollup | 2.100 | 14. Jul 2020 |
+|  Rel 20-07 |  [4565616]  |  Monatlicher Rollup | 2.100 | 16. Jul 2020 |
+|  Rel 20-07 |  [4565354]  |  Wartungsstapelaktualisierung | 2.100 | 14. Jul 2020 |
+|  Rel 20-07 |  [4565612]  |  Monatlicher Rollup | 2.100 | 14. Jul 2020 |
+|  Rel 20-07 |  [4565615]  |  Monatlicher Rollup | 3,87 | 14. Jul 2020 |
+|  Rel 20-07 |  [4566426]  |  Wartungsstapelaktualisierung | 3,87 | 14. Jul 2020 |
+|  Rel 20-07 |  [4565537]  |  Monatlicher Rollup | 3,87 | 14. Jul 2020 |
+|  Rel 20-07 |  [4565610]  |  Monatlicher Rollup | 3,87 | 14. Jul 2020 |
+|  Rel 20-07 |  [4565541]  |  Monatlicher Rollup | 4.80 | 14. Jul 2020 |
+|  Rel 20-07 |  [4566425]  |  Wartungsstapelaktualisierung | 4.80 | 14. Jul 2020 |
+|  Rel 20-07 |  [4565614]  |  Monatlicher Rollup | 4.80 | 14. Jul 2020 |
+|  Rel 20-07 |  [4565613]  |  Monatlicher Rollup | 4.80 | 14. Jul 2020 |
+|  Rel 20-07 |  [4565912]  |  Wartungsstapelaktualisierung | 5,45 | 14. Jul 2020 |
+|  Rel 20-07 |  [4565628]  |  Monatlicher Rollup | 5,45 | 14. Jul 2020 |
+|  Rel 20-07 |  [4494175]  |  Microcode | 5,45 | 25. Feb 2020 |
+|  Rel 20-07 |  [4565632]  |  Monatlicher Rollup | 6,21 | 14. Jul 2020 |
+|  Rel 20-07 |  [4558997]  |  Wartungsstapelaktualisierung | 6,21 | 14. Jul 2020 |
+|  Rel 20-07 |  [4494174]  |  Microcode | 6,21 | 25. Feb 2020 |
+
+
+[4565479]: https://support.microsoft.com/kb/4565479
+[4565511]: https://support.microsoft.com/kb/4565511
+[4558998]: https://support.microsoft.com/kb/4558998
+[4565524]: https://support.microsoft.com/kb/4565524
+[4565616]: https://support.microsoft.com/kb/4565616
+[4565354]: https://support.microsoft.com/kb/4565354
+[4565612]: https://support.microsoft.com/kb/4565612
+[4565615]: https://support.microsoft.com/kb/4565615
+[4566426]: https://support.microsoft.com/kb/4566426
+[4565537]: https://support.microsoft.com/kb/4565537
+[4565610]: https://support.microsoft.com/kb/4565610
+[4565541]: https://support.microsoft.com/kb/4565541
+[4566425]: https://support.microsoft.com/kb/4566425
+[4565614]: https://support.microsoft.com/kb/4565614
+[4565613]: https://support.microsoft.com/kb/4565613
+[4565912]: https://support.microsoft.com/kb/4565912
+[4565628]: https://support.microsoft.com/kb/4565628
+[4494175]: https://support.microsoft.com/kb/4494175
+[4565632]: https://support.microsoft.com/kb/4565632
+[4558997]: https://support.microsoft.com/kb/4558997
+[4494174]: https://support.microsoft.com/kb/4494174
+
+
+## <a name="june-2020-guest-os"></a>Gastbetriebssystem für Juni 2020
+
+
+| Produktkategorie | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
+| --- | --- | --- | --- | --- |
+|  Rel 20-06  |  [4561603]  |  Internet Explorer  |  [2.99], [3.86], [4.79]  |  9\. Juni 2020  |
+|  Rel 20-06  |  [4561616]  |  Letztes kumulatives Update  |  [5.44]  |  9\. Juni 2020  |
+|  Rel 20-06  |  [4561608]  |  Letztes kumulatives Update  |  [6.20]  |  9\. Juni 2020  |
+|  Rel 20-06  |  [4562030]  |  Wartungsstapelaktualisierung  |  [2,99]  |  9\. Juni 2020  |
+|  Rel 20-06  |  [4561643]  |  Monatlicher Rollup  |  [2,99]  |  9\. Juni 2020  |
+|  Rel 20-06  |  [4562252]  |  Wartungsstapelaktualisierung  |  [3,86]  |  9\. Juni 2020  |
+|  Rel 20-06  |  [4561612]  |  Monatlicher Rollup  |  [3,86]  |  9\. Juni 2020  |
+|  Rel 20-06  |  [4561600]  |  Blinken  |  [3.86], [4.79], [5.44], [6.20]  |  9\. Juni 2020  |
+|  Rel 20-06  |  [4562253]  |  Wartungsstapelaktualisierung  |  [4,79]  |  9\. Juni 2020  |
+|  Rel 20-06  |  [4561666]  |  Monatlicher Rollup  |  [4,79]  |  9\. Juni 2020  |
+|  Rel 20-06  |  [4562561]  |  Wartungsstapelaktualisierung  |  [5.44]  |  9\. Juni 2020  |
+|  Rel 20-06  |  [4562562]  |  Wartungsstapelaktualisierung  |  [6.20]  |  9\. Juni 2020  |
 
 
 
@@ -56,6 +107,11 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 [4561666]: https://support.microsoft.com/kb/4561666
 [4562561]: https://support.microsoft.com/kb/4562561
 [4562562]: https://support.microsoft.com/kb/4562562
+[2,99]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-2-releases
+[3.86]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-3-releases
+[4,79]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-4-releases
+[5.44]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases
+[6.20]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases
 
 
 ## <a name="may-2020-guest-os"></a>Gastbetriebssystem für Mai 2020

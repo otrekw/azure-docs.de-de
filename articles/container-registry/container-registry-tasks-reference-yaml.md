@@ -2,13 +2,13 @@
 title: 'YAML-Referenz: ACR Tasks'
 description: Referenz für die Definition von Aufgaben in YAML für Azure Container Registry Tasks (ACR Tasks), einschließlich Aufgabeneigenschaften, Schritttypen, Schritteigenschaften und integrierter Variablen.
 ms.topic: article
-ms.date: 10/23/2019
-ms.openlocfilehash: 11771c32db3b3d7c975c0262bda228903a58978f
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.date: 07/08/2020
+ms.openlocfilehash: 042310d29f5561c2cd77b0b9cccfc587ca4aa767
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86171056"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067582"
 ---
 # <a name="acr-tasks-reference-yaml"></a>Referenz zu ACR Tasks: YAML
 
@@ -18,7 +18,7 @@ Dieser Artikel enthält Referenzinformationen für das Erstellen von YAML-Dateie
 
 ## <a name="acr-taskyaml-file-format"></a>Format der Datei „acr-task.yaml“
 
-ACR Tasks unterstützt die Deklaration von mehrstufigen Aufgaben in der YAML-Standardsyntax. Die Schritte einer Aufgabe werden in einer YAML-Datei definiert. Sie können die Aufgabe dann manuell ausführen, indem Sie die Datei an den Befehl [az acr run][az-acr-run] übergeben. Alternativ können Sie die Datei verwenden, um mithilfe von [az acr task create][az-acr-task-create] eine Aufgabe zu erstellen, der nach einem Git-Commit oder einer Aktualisierung des Basisimages automatisch ausgelöst wird. In diesem Artikel wird für die Datei, die die Schritte enthält, der Dateiname `acr-task.yaml` verwendet. ACR Tasks unterstützt jedoch jeden gültigen Dateinamen mit einer [unterstützten Erweiterung](#supported-task-filename-extensions).
+ACR Tasks unterstützt die Deklaration von mehrstufigen Aufgaben in der YAML-Standardsyntax. Die Schritte einer Aufgabe werden in einer YAML-Datei definiert. Sie können die Aufgabe dann manuell ausführen, indem Sie die Datei an den Befehl [az acr run][az-acr-run] übergeben. Alternativ dazu können Sie die Datei verwenden, um mithilfe von [az acr task create][az-acr-task-create] eine Aufgabe zu erstellen, die nach einem Git-Commit, einer Aktualisierung des Basisimages oder gemäß einem Zeitplan automatisch ausgelöst wird. In diesem Artikel wird für die Datei, die die Schritte enthält, der Dateiname `acr-task.yaml` verwendet. ACR Tasks unterstützt jedoch jeden gültigen Dateinamen mit einer [unterstützten Erweiterung](#supported-task-filename-extensions).
 
 Die Primitiven der obersten Ebene in `acr-task.yaml` sind **Aufgabeneigenschaften**, **Schritttypen** und **Schritteigenschaften**:
 
@@ -79,10 +79,11 @@ Aufgabeneigenschaften werden in der Regel am Anfang einer Datei vom Typ `acr-tas
 | -------- | ---- | -------- | ----------- | ------------------ | ------------- |
 | `version` | Zeichenfolge | Ja | Die Version der Datei `acr-task.yaml`, die vom ACR Tasks-Dienst analysiert wird. ACR Tasks versucht, die Abwärtskompatibilität zu gewährleisten. Dieser Wert ermöglicht es ACR Tasks jedoch, die Kompatibilität innerhalb einer definierten Version sicherzustellen. Ohne Angabe wird standardmäßig die neueste Version verwendet. | Nein | Keine |
 | `stepTimeout` | int (Sekunden) | Ja | Die maximale Anzahl von Sekunden, für die ein Schritt ausgeführt werden kann. Wenn die Eigenschaft für eine Aufgabe angegeben wird, legt sie die `timeout`-Standardeigenschaft für alle Schritte fest. Wird die Eigenschaft `timeout` für einen Schritt angegeben, überschreibt sie die für die Aufgabe angegebene Eigenschaft. | Ja | 600 (10 Minuten) |
-| `workingDirectory` | Zeichenfolge | Ja | Das Arbeitsverzeichnis des Containers während der Laufzeit. Wenn die Eigenschaft für eine Aufgabe angegeben wird, legt sie die `workingDirectory`-Standardeigenschaft für alle Schritte fest. Wird die Eigenschaft für einen Schritt angegeben, überschreibt sie die für die Aufgabe angegebene Eigenschaft. | Ja | `/workspace` |
-| `env` | [string, string, ...] | Ja |  Ein Array von Zeichenfolgen im Format `key=value`, die die Umgebungsvariablen für die Aufgabe definieren. Wenn die Eigenschaft für eine Aufgabe angegeben wird, legt sie die `env`-Standardeigenschaft für alle Schritte fest. Wird die Eigenschaft für einen Schritt angegeben, überschreibt sie sämtliche von der Aufgabe geerbten Umgebungsvariablen. | Keine |
-| `secrets` | [Geheimnis, Geheimnis, ...] | Ja | Array mit [Geheimnisobjekten](#secret). | Keine |
-| `networks` | [Netzwerk, Netzwerk, ...] | Ja | Array mit [Netzwerkobjekten](#network). | Keine |
+| `workingDirectory` | Zeichenfolge | Ja | Das Arbeitsverzeichnis des Containers während der Laufzeit. Wenn die Eigenschaft für eine Aufgabe angegeben wird, legt sie die `workingDirectory`-Standardeigenschaft für alle Schritte fest. Wird die Eigenschaft für einen Schritt angegeben, überschreibt sie die für die Aufgabe angegebene Eigenschaft. | Ja | `c:\workspace` in Windows oder `/workspace` in Linux |
+| `env` | [string, string, ...] | Ja |  Ein Array von Zeichenfolgen im Format `key=value`, die die Umgebungsvariablen für die Aufgabe definieren. Wenn die Eigenschaft für eine Aufgabe angegeben wird, legt sie die `env`-Standardeigenschaft für alle Schritte fest. Wird die Eigenschaft für einen Schritt angegeben, überschreibt sie sämtliche von der Aufgabe geerbten Umgebungsvariablen. | Ja | Keine |
+| `secrets` | [Geheimnis, Geheimnis, ...] | Ja | Array mit [Geheimnisobjekten](#secret). | Nein | Keine |
+| `networks` | [Netzwerk, Netzwerk, ...] | Ja | Array mit [Netzwerkobjekten](#network). | Nein | Keine |
+| `volumes` | [volume, volume, ...] | Ja | Array aus [volume](#volume)-Objekten. Gibt Volumes mit Quellinhalten an, die in einen Schritt eingebunden werden sollen. | Nein | Keine |
 
 ### <a name="secret"></a>secret
 
@@ -105,6 +106,15 @@ Das Netzwerkobjekt hat folgende Eigenschaften:
 | `ipv6` | bool | Ja | Aktivierungsstatus der IPv6-Netzwerkfunktionen. | `false` |
 | `skipCreation` | bool | Ja | Gibt an, ob die Netzwerkerstellung übersprungen werden soll. | `false` |
 | `isDefault` | bool | Ja | Gibt an, ob das Netzwerk ein mit Azure Container Registry bereitgestelltes Standardnetzwerk ist. | `false` |
+
+### <a name="volume"></a>Volume
+
+Das volume-Objekt weist die folgenden Eigenschaften auf.
+
+| Eigenschaft | type | Optional | BESCHREIBUNG | Standardwert |
+| -------- | ---- | -------- | ----------- | ------- | 
+| `name` | Zeichenfolge | Nein | Der Name des einzubindenden Volumes. Darf nur alphanumerische Zeichen sowie „-“ und „_“ enthalten. | Keiner |
+| `secret` | map[string]string | Nein | Jeder Schlüssel der Zuordnung ist der Name einer im Volume erstellten und aufgefüllten Datei. Jeder Wert ist die Zeichenfolgenversion des Geheimnisses. Geheimniswerte müssen Base64-codiert sein. | Keiner |
 
 ## <a name="task-step-types"></a>Aufgabenschritttypen
 
@@ -161,6 +171,7 @@ Der Schritttyp `build` unterstützt die folgenden Eigenschaften. Details zu dies
 | `secret` | Objekt (object) | Optional |
 | `startDelay` | int (Sekunden) | Optional |
 | `timeout` | int (Sekunden) | Optional |
+| `volumeMount` | Objekt (object) | Optional |
 | `when` | [string, string, ...] | Optional |
 | `workingDirectory` | Zeichenfolge | Optional |
 
@@ -278,6 +289,7 @@ Der Schritttyp `cmd` unterstützt die folgenden Eigenschaften:
 | `secret` | Objekt (object) | Optional |
 | `startDelay` | int (Sekunden) | Optional |
 | `timeout` | int (Sekunden) | Optional |
+| `volumeMount` | Objekt (object) | Optional |
 | `when` | [string, string, ...] | Optional |
 | `workingDirectory` | Zeichenfolge | Optional |
 
@@ -352,6 +364,19 @@ Durch die Verwendung der `docker run`-Standardkonvention für Imageverweise kann
       - cmd: $Registry/myimage:mytag
     ```
 
+#### <a name="access-secret-volumes"></a>Zugreifen auf Geheimnisvolumes
+
+Die Eigenschaft `volumes` ermöglicht die Angabe von Volumes und deren Geheimnisinhalten für die Schritte `build` und `cmd` in einer Aufgabe. In jedem Schritt listet eine optionale `volumeMounts`-Eigenschaft die Volumes und die entsprechenden Containerpfade auf, die in diesem Schritt in den Container eingebunden werden sollen. Geheimnisse werden im Einbindungspfad jedes Volumes als Dateien bereitgestellt.
+
+Führen Sie eine Aufgabe aus, und binden Sie zwei Geheimnisse in einen Schritt ein: ein in einem Schlüsseltresor gespeichertes und ein in der Befehlszeile angegebenes Geheimnis:
+
+```azurecli
+az acr run -f mounts-secrets.yaml --set-secret mysecret=abcdefg123456 https://github.com/Azure-Samples/acr-tasks.git
+```
+
+<!-- SOURCE: https://github.com/Azure-Samples/acr-tasks/blob/master/mounts-secrets.yaml -->
+[!code-yml[task](~/acr-tasks/mounts-secrets.yaml)]
+
 ## <a name="task-step-properties"></a>Aufgabenschritteigenschaften
 
 Jeder Schritttyp unterstützt mehrere dem jeweiligen Typ entsprechende Eigenschaften. In der folgenden Tabelle werden alle verfügbaren Schritteigenschaften beschrieben. Nicht alle Schritttypen unterstützen alle Eigenschaften. Informationen zu den verfügbaren Eigenschaften für die einzelnen Schritttypen finden Sie in den Referenzabschnitten zu den Schritttypen [cmd](#cmd), [build](#build) und [push](#push).
@@ -379,7 +404,16 @@ Jeder Schritttyp unterstützt mehrere dem jeweiligen Typ entsprechende Eigenscha
 | `timeout` | int (Sekunden) | Ja | Maximale Anzahl von Sekunden, für die ein Schritt ausgeführt werden kann, bevor er beendet wird. | 600 |
 | [`when`](#example-when) | [string, string, ...] | Ja | Konfiguriert die Abhängigkeit eines Schritts von einem oder mehreren anderen Schritten innerhalb der Aufgabe. | Keine |
 | `user` | Zeichenfolge | Ja | Der Benutzername oder die Benutzer-ID eines Containers. | Keine |
-| `workingDirectory` | Zeichenfolge | Ja | Legt das Arbeitsverzeichnis für einen Schritt fest. ACR Tasks erstellt standardmäßig ein Stammverzeichnis als Arbeitsverzeichnis. Wenn Ihr Buildvorgang mehrere Schritte umfasst, können Schritte an früherer Stelle im Vorgang jedoch Artefakte für spätere Schritte freigeben, indem dasselbe Arbeitsverzeichnisses angegeben wird. | `/workspace` |
+| `workingDirectory` | Zeichenfolge | Ja | Legt das Arbeitsverzeichnis für einen Schritt fest. ACR Tasks erstellt standardmäßig ein Stammverzeichnis als Arbeitsverzeichnis. Wenn Ihr Buildvorgang mehrere Schritte umfasst, können Schritte an früherer Stelle im Vorgang jedoch Artefakte für spätere Schritte freigeben, indem dasselbe Arbeitsverzeichnisses angegeben wird. | `c:\workspace` in Windows oder `/workspace` in Linux |
+
+### <a name="volumemount"></a>volumeMount
+
+Das volumeMount-Objekt weist die folgenden Eigenschaften auf.
+
+| Eigenschaft | type | Optional | BESCHREIBUNG | Standardwert |
+| -------- | ---- | -------- | ----------- | ------- | 
+| `name` | Zeichenfolge | Nein | Der Name des einzubindenden Volumes. Dieser muss genau mit dem Namen in einer `volumes`-Eigenschaft übereinstimmen. | Keine |
+| `mountPath`   | Zeichenfolge | nein | Der absolute Pfad zum Einbinden von Dateien in den Container.  | Keiner |
 
 ### <a name="examples-task-step-properties"></a>Beispiele: Aufgabenschritteigenschaften
 
@@ -454,7 +488,7 @@ ACR Tasks enthält einen Standardsatz von Variablen, die für Aufgabenschritte v
 * `Run.Branch`
 * `Run.TaskName`
 
-Die Variablennamen sind in der Regel selbsterklärend. Details für häufig verwendete Variablen finden Sie nachfolgend. Ab YAML `v1.1.0` können Sie anstelle der meisten Run-Variablen einen abgekürzten vordefinierten [Aufgabenalias](#aliases) verwenden. Anstelle von `{{.Run.Registry}}` können Sie beispielsweise den Alias `$Registry` verwenden.
+Die Variablennamen sind in der Regel selbsterklärend. Details zu häufig verwendeten Variablen finden Sie nachfolgend. Ab YAML `v1.1.0` können Sie anstelle der meisten Run-Variablen einen abgekürzten vordefinierten [Aufgabenalias](#aliases) verwenden. Anstelle von `{{.Run.Registry}}` können Sie beispielsweise den Alias `$Registry` verwenden.
 
 ### <a name="runid"></a>Run.ID
 
@@ -467,6 +501,10 @@ version: v1.1.0
 steps:
     - build: -t $Registry/hello-world:$ID .
 ```
+
+### <a name="runsharedvolume"></a>Run.SharedVolume
+
+Der eindeutige Bezeichner für ein freigegebenes Volume, auf das alle Aufgabenschritte zugreifen können. Das Volume wird in Windows unter `c:\workspace` bzw. in Linux unter `/workspace` eingebunden. 
 
 ### <a name="runregistry"></a>Run.Registry
 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
-ms.openlocfilehash: 1a8b458eb004b44d0045f36b18d88e11e019c4d2
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 42d5ca12e91de5e0e906fb017183ea684b63b49c
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81399498"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88167707"
 ---
 # <a name="what-is-text-to-speech"></a>Was ist Text-zu-Sprache?
 
@@ -41,13 +41,7 @@ Text-zu-Sprache im Speech-Dienst ermöglicht es Ihren Anwendungen, Tools oder Ge
 
 ## <a name="get-started"></a>Erste Schritte
 
-Der Sprachsynthesedienst ist über das [Speech SDK](speech-sdk.md) verfügbar. Es gibt mehrere häufige Szenarien, die als Schnellstarts für verschiedene Sprachen und Plattformen verfügbar sind:
-
-* [Synthetisieren von Sprache in eine Audiodatei](quickstarts/text-to-speech-audio-file.md)
-* [Synthetisieren von Sprache über einen Lautsprecher](quickstarts/text-to-speech.md)
-* [Asynchrone Synthese von langen Audioclips](quickstarts/text-to-speech/async-synthesis-long-form-audio.md)
-
-Wenn Sie es vorziehen, können Sie über [REST](rest-text-to-speech.md) auf den Text-zu-Sprache-Dienst zugreifen.
+Verwenden Sie die [Schnellstartanleitung](get-started-text-to-speech.md), um mit der Sprachsynthese (Text-zu-Sprache) loszulegen. Der Sprachsynthesedienst ist über das [Speech SDK](speech-sdk.md), die [REST-API](rest-text-to-speech.md) und die [Speech CLI](spx-overview.md) verfügbar.
 
 ## <a name="sample-code"></a>Beispielcode
 

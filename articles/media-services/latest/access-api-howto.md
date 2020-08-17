@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 05/21/2020
 ms.author: juliako
-ms.openlocfilehash: 33c762e2f2a9bed90991f7b85e0fb83fbb43765c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a039e1d4442490d3747a302754d521f1f3402bcf
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090160"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88035796"
 ---
 # <a name="get-credentials-to-access-media-services-api"></a>Abrufen von Anmeldeinformationen für den Zugriff auf die Media Services-API  
 
@@ -45,7 +45,7 @@ In diesem Artikel werden Schritte zum Abrufen von Anmeldeinformationen für den 
 Auf der Seite **API-Zugriff** können Sie die Authentifizierungsmethode auswählen, die Sie für die Verbindung mit der API verwenden möchten. Auf der Seite befinden sich auch die Werte, die Sie zum Herstellen einer Verbindung mit der API benötigen.
 
 1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) Ihr Media Services-Konto aus.
-2. Wählen Sie, wie Sie eine Verbindung mit der Media Services-API herstellen möchten.
+2. Wählen Sie im linken Navigationsmenü das Blatt **API-Zugriff (neu)** aus.
 3. Wählen Sie unter **Verbindung mit Media Services-API herstellen** die Version der Media Services-API aus, mit der Sie eine Verbindung herstellen möchten. (V3 ist die aktuelle Version des Diensts.)
 
 ### <a name="service-principal-authentication--recommended"></a>Dienstprinzipalauthentifizierung (empfohlen)

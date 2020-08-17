@@ -1,6 +1,6 @@
 ---
 title: Anmerkungen zu dieser Version vom Microsoft Azure Storage-Explorer
-description: Anmerkungen zu dieser Version für den Microsoft Azure Storage-Explorer
+description: Lesen Sie die Versionshinweise zur aktuellen Version von Microsoft Azure Storage-Explorer. Weiter unten finden Sie auch die Versionshinweise zu früheren Versionen.
 services: storage
 documentationcenter: na
 author: cawaMS
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/12/2018
 ms.author: cawa
-ms.openlocfilehash: 986da8980a569583ef454833957ace85dd1bfbb6
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 91bc7adaf7829766c471056c50c1c3abd70dda63
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80351062"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87828777"
 ---
-# <a name="microsoft-azure-storage-explorer-release-notes"></a>Anmerkungen zu dieser Version vom Microsoft Azure Storage-Explorer
+# <a name="microsoft-azure-storage-explorer-release-notes"></a>Versionshinweise zu Microsoft Azure Storage-Explorer
 
 Dieser Artikel enthält die aktuellen Versionshinweise für Azure Storage-Explorer, sowie Versionshinweise für frühere Versionen. 
 
@@ -30,7 +30,7 @@ Beim [Microsoft Azure Storage-Explorer](./vs-azure-tools-storage-manage-with-sto
 Wenn Sie frühere Versionen von Storage-Explorer herunterladen möchten, können Sie die Seite [Releases](https://github.com/microsoft/AzureStorageExplorer/releases) unseres GitHub-Repositorys besuchen.
 
 ## <a name="version-1110"></a>Version 1.11.0
-4\.11.2019
+4.11.2019
 
 ### <a name="new"></a>Neu
 * Vorgänge für Blobs, ADLS Gen2 und Managed Disks verwenden das integrierte AzCopy. Konkret werden die folgenden Vorgänge mithilfe von AzCopy ausgeführt:
@@ -416,7 +416,7 @@ Das Hochladen, Herunterladen und regionsübergreifende Kopieren von Datenträger
 * Bevor Sie Storage-Explorer unter Linux ausführen können, müssen Sie zunächst bestimmte Abhängigkeiten installieren. Weitere Informationen finden Sie im [Leitfaden zur Problembehandlung](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting?tabs=1804#linux-dependencies) zum Storage-Explorer.
 
 ## <a name="version-180"></a>Version 1.8.0
-1\.5.2019
+1.5.2019
 
 ### <a name="new"></a>Neu
 
@@ -538,7 +538,7 @@ Das Hochladen, Herunterladen und regionsübergreifende Kopieren von Datenträger
     ```
 
 ## <a name="version-162"></a>Version 1.6.2
-9\.1.2019
+9.1.2019
 
 ### <a name="hotfixes"></a>Hotfixes
 * In Version 1.6.1 wurden Entitäten, die ADLS Gen2-ACLs nach ObjectId hinzugefügt wurden und keine Benutzer waren, immer als Gruppen hinzugefügt. Jetzt werden nur Gruppen als Gruppen hinzugefügt, und Entitäten wie Unternehmensanwendungen und Dienstprinzipale werden als Benutzer hinzugefügt. [#1049](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1049)
@@ -679,7 +679,7 @@ Das Hochladen, Herunterladen und regionsübergreifende Kopieren von Datenträger
     ```
 
 ## <a name="version-160"></a>Version 1.6.0
-5\.12.2018
+5.12.2018
 
 ### <a name="new"></a>Neu
 
@@ -1044,7 +1044,7 @@ Eine Unterstützung der Verwendung von AzCopy mit Dateifreigaben ist geplant.
 * Barrierefreiheit: Die Hintergrundfarbe der Schaltfläche zum Zuklappen bzw. Aufklappen für den Bereich „Aktionen und Eigenschaften“ war mit ähnlichen Steuerelementen der Benutzeroberfläche im Thema „Hoher Kontrast (Schwarz)“ inkonsistent. Die Farbe wurde geändert. [#123](https://github.com/Microsoft/AzureStorageExplorer/issues/123)
 * Barrierefreiheit: Im Thema „Hoher Kontrast (Schwarz)“ war der Fokusstil für die Schaltfläche „X“ im Dialogfeld „Eigenschaften“ nicht sichtbar. Dies wurde behoben. [#243](https://github.com/Microsoft/AzureStorageExplorer/issues/243)
 * Barrierefreiheit: In den Registerkarten „Aktionen und Eigenschaften“ fehlten mehrere Ariawerte, was dazu führte, dass der Bildschirmleser nur teilweise angezeigt wurde. Die fehlenden Ariawerte wurden nun hinzugefügt. [#316](https://github.com/Microsoft/AzureStorageExplorer/issues/316)
-* Barrierefreiheit: Reduzierte Strukturknoten auf der linken Seite wurden nicht mit einem Aria-erweiterten Wert von FALSE versehen. Dies wurde behoben. [#352](https://github.com/Microsoft/AzureStorageExplorer/issues/352)
+* Barrierefreiheit: Reduzierte Strukturknoten auf der linken Seite wurden nicht mit einem Aria-erweiterten Wert von FALSEversehen. Dies wurde behoben. [#352](https://github.com/Microsoft/AzureStorageExplorer/issues/352)
 
 ### <a name="known-issues"></a>Bekannte Probleme
 * Das Trennen einer über einen SAS-URI angefügten Ressource, z.B. eines Blobcontainers, kann zu einem Fehler führen, durch den andere Anlagen nicht ordnungsgemäß angezeigt werden. Aktualisieren Sie zur Umgehung dieses Problems den Gruppenknoten. Weitere Informationen finden Sie in [diesem Problem](https://github.com/Microsoft/AzureStorageExplorer/issues/537).
@@ -1313,7 +1313,7 @@ Eine Unterstützung der Verwendung von AzCopy mit Dateifreigaben ist geplant.
 
 ### <a name="fixes"></a>Fehlerbehebungen
 * Leistungsverbesserungen beim Starten
-* Verschiedene Fehlerbehebungen
+* Verschiedene Fehler behoben.
 
 ### <a name="known-issues"></a>Bekannte Probleme
 * Storage-Explorer unterstützt keine ADFS-Konten.
@@ -1558,7 +1558,7 @@ Eine Unterstützung der Verwendung von AzCopy mit Dateifreigaben ist geplant.
 
 * Die Electron-Version wurde auf 1.7.2 aktualisiert, sodass verschiedene wichtige Sicherheitsupdates genutzt werden können
 * Sie können nun rasch über das Hilfemenü auf den Onlineleitfaden zur Problembehandlung zugreifen
-* Storage-Explorer – [Leitfaden][2] zur Problembehandlung
+* Storage-Explorer – [Leitfaden zur Problembehandlung][2]
 * [Anweisungen][3] zum Herstellen einer Verbindung mit einem Azure Stack-Abonnement
 
 ### <a name="known-issues"></a>Bekannte Probleme
@@ -1583,13 +1583,13 @@ Eine Unterstützung der Verwendung von AzCopy mit Dateifreigaben ist geplant.
 
 #### <a name="new"></a>Neu
 
-* Storage-Explorer – [Leitfaden][2] zur Problembehandlung
+* Storage-Explorer – [Leitfaden zur Problembehandlung][2]
 * [Anweisungen][3] zum Herstellen einer Verbindung mit einem Azure Stack-Abonnement
 
 #### <a name="fixes"></a>Fehlerbehebungen
 
 * Behoben: Beim Dateiupload trat mit hoher Wahrscheinlichkeit ein Fehler durch ungenügenden Arbeitsspeicher auf
-* Behoben: Sie können sich jetzt per PIN/Smartcard anmelden
+* Behoben: Sie können jetzt sich jetzt per PIN/Smartcard anmelden
 * Behoben: „Im Portal öffnen“ funktioniert nun für Azure China 21Vianet, Azure Deutschland, Azure US Government und Azure Stack
 * Behoben: Beim Hochladen eines Ordners in einen Blobcontainer trat gelegentlich ein Fehler „Illegal operation“ (Der Vorgang ist nicht gestattet) auf
 * Behoben: „Alle auswählen“ war beim Verwalten von Momentaufnahmen deaktiviert
@@ -1672,7 +1672,7 @@ Eine Unterstützung der Verwendung von AzCopy mit Dateifreigaben ist geplant.
 * Sie können sich nun an Azure China 21Vianet-, Azure Deutschland- und Azure US Government-Konten anmelden.
 * Sie können jetzt die Zoomstufe ändern. Verwenden Sie die Optionen im Menü „Ansicht“ zum Vergrößern, zum Verkleinern und zum Zurücksetzen der Zoomstufe.
 * Unicode-Zeichen werden jetzt in Benutzermetadaten für Blobs und Dateien unterstützt.
-* Verbesserungen der Barrierefreiheit.
+* Barrierefreiheitsverbesserungen
 * Versionshinweise für die nächste Version können nun über die Updatebenachrichtigung eingesehen werden. Die aktuellen Versionshinweise können auch über das Hilfemenü angezeigt werden.
 
 #### <a name="fixes"></a>Fehlerbehebungen
@@ -1742,7 +1742,7 @@ Eine Unterstützung der Verwendung von AzCopy mit Dateifreigaben ist geplant.
 * Behoben: Erweiterte Sicherheit
 * Behoben: Gelegentlich treten doppelte angefügte Konten auf
 * Behoben: Durch einen Blob mit einem nicht definierten Inhaltstyp konnte eine Ausnahme generiert werden
-* Behoben: Öffnen des Abfragebereichs für eine leere Tabelle war nicht möglich
+* Behoben: Öffnen des Abfragepanels für eine leere Tabelle war nicht möglich
 * Behoben: Diverse Fehler bei der Suche
 * Behoben: Beim Klicken auf „Mehr laden“ wurde die Anzahl der geladenen Ressourcen wurde von 50 auf 100 erhöht
 * Behoben: Wenn bei der ersten Ausführung die Anmeldung bei einem Konto erfolgt, werden nun standardmäßig sämtliche Abonnements für das betreffende Konto ausgewählt
@@ -1756,7 +1756,7 @@ Eine Unterstützung der Verwendung von AzCopy mit Dateifreigaben ist geplant.
 * Wenn mehr als drei Gruppen von Blobs oder Dateien gleichzeitig hochgeladen werden, können Fehler auftreten
 * Bei der Suche wird auf ca. 50.000 Knoten gesucht. Anschließend kann es zu einer Leistungsbeeinträchtigung oder zu Ausnahmefehlern kommen
 
-03.10.2016
+10/03/2016
 ### <a name="version-085"></a>Version 0.8.5
 
 #### <a name="new"></a>Neu

@@ -1,18 +1,18 @@
 ---
 title: Planen einer Azure-Dateisynchronisierungsbereitstellung | Microsoft-Dokumentation
-description: Erfahren Sie, was Sie beim Planen einer Azure Files-Bereitstellung berücksichtigen müssen.
+description: Hier finden Sie Informationen zum Planen der Bereitstellung der Azure-Dateisynchronisierung. Azure-Dateisynchronisierung ist ein Dienst, mit dem Sie mehrere Azure-Dateifreigaben auf einem lokalen Computer unter Windows Server oder einer Cloud-VM zwischenspeichern können.
 author: roygara
 ms.service: storage
 ms.topic: conceptual
 ms.date: 01/15/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: f09e84d20b1a3c568eea015d92b93a99b8cf024e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: acdf830c9bf0eaedcca5bf0ffe1b2bd373750276
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87036793"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88030664"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Planung für die Bereitstellung einer Azure-Dateisynchronisierung
 

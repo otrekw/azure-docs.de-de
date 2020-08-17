@@ -4,12 +4,12 @@ description: Sammlung der bewährten Methoden für Clusterbetreiber und Entwickl
 services: container-service
 ms.topic: article
 ms.date: 12/07/2018
-ms.openlocfilehash: 627eeffd18a479486e5a682da06bf89cd5f8f0e1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1278a03d3ffc7ccb11b0e3c4c84f6c213648440b
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77596316"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008779"
 ---
 # <a name="cluster-operator-and-developer-best-practices-to-build-and-manage-applications-on-azure-kubernetes-service-aks"></a>Best Practices für Clusterbetreiber und -entwickler zum Erstellen und Verwalten von Anwendungen in Azure Kubernetes Service (AKS)
 
@@ -30,7 +30,7 @@ Arbeiten Sie als Clusterbetreiber mit Anwendungsbesitzern und -entwicklern zusam
 * [Best Practices für erweiterte Scheduler-Features](operator-best-practices-advanced-scheduler.md)
     * Umfasst die Verwendung von Markierungen und Toleranzen, Knotenselektoren und -affinität sowie Inter-Pod-Affinität und Anti-Affinität.
 * [Best Practices für Authentifizierung und Autorisierung](operator-best-practices-identity.md)
-    * Umfasst die Integration mit Azure Active Directory unter Verwendung rollenbasierter Zugriffskontrollen (RBAC) und Podidentitäten.
+    * Umfasst die Integration mit Azure Active Directory unter Verwendung rollenbasierter Zugriffskontrolle (RBAC) und Podidentitäten.
 
 **Security**
 

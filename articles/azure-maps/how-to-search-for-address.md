@@ -1,231 +1,181 @@
 ---
-title: Suchen nach einem Ort mit dem Suchdienst von Azure Maps | Microsoft Azure Maps
-description: In diesem Artikel erfahren Sie, wie Sie mithilfe des Suchdiensts von Microsoft Azure Maps einen Ort für die Geocodierung und inverse Geocodierung suchen.
-author: philmea
-ms.author: philmea
-ms.date: 01/15/2020
+title: Suchen nach einem Ort mit dem Suchdienst von Azure Maps
+description: Erfahren Sie mehr über den Azure Maps-Suchdienst. Sehen Sie, wie Sie diese Gruppe von APIs für die Geocodierung, inverse Geocodierung, Fuzzysuchen und umgekehrte Querstraßensuchen verwenden.
+author: anastasia-ms
+ms.author: v-stharr
+ms.date: 07/21/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 2d8c7ce62f7c592c396fa1ea7a7f5e7dc7df2dc1
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 48dd0168f878a16e2eabe47151d0b09993d9f5f9
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86517585"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037778"
 ---
 # <a name="search-for-a-location-using-azure-maps-search-services"></a>Suchen nach einem Ort mit dem Suchdienst von Azure Maps
 
-Beim Azure Maps-[Suchdienst](https://docs.microsoft.com/rest/api/maps/search) handelt es sich um eine Gruppe von RESTful-APIs, die Entwickler bei der Suche nach Adressen, Orten, Brancheneinträgen (nach Name oder Kategorie) und anderen geografischen Informationen unterstützen. Zusätzlich zur Unterstützung der traditionellen Geocodierung kann mit den Diensten eine inverse Geocodierung für Adressen und Querstraßen basierend auf Breiten- und Längengraden durchgeführt werden. Die von der Suche zurückgegebenen Werte für den Breiten- und Längengrad können als Parameter in anderen Azure Maps-Diensten verwendet werden, z. B. Dienste für [Routen](https://docs.microsoft.com/rest/api/maps/route) und [Wetter](https://docs.microsoft.com/rest/api/maps/weather).
+Beim [Azure Maps-Suchdienst](https://docs.microsoft.com/rest/api/maps/search) handelt es sich um eine Gruppe von RESTful-APIs, die Entwickler bei der Suche nach Adressen, Orten, Brancheneinträgen (nach Name oder Kategorie) und weiteren geografischen Informationen unterstützen. Zusätzlich zur Unterstützung der traditionellen Geocodierung kann mit den Diensten eine inverse Geocodierung für Adressen und Querstraßen basierend auf Breiten- und Längengraden durchgeführt werden. Die bei der Suche zurückgegebenen Werte für den Breiten- und Längengrad können als Parameter in anderen Azure Maps-Diensten verwendet werden, beispielsweise in den Diensten für [Routen](https://docs.microsoft.com/rest/api/maps/route) und [Wetter](https://docs.microsoft.com/rest/api/maps/weather).
 
-In diesem Artikel wird Folgendes behandelt:
+In diesem Artikel lernen Sie Folgendes:
 
 * Anfordern von Breiten- und Längenkoordinaten für eine Adresse (Geocode-Adresse) mithilfe der [API für die Adresssuche]( https://docs.microsoft.com/rest/api/maps/search/getsearchaddress)
 * Suchen nach einer Adresse oder einem Point of Interest (POI) mithilfe der [API für die Fuzzysuche](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy)
-* Suchen nach einer Adresse mit deren Eigenschaften und Koordinaten
 * Ausführen einer [inversen Adresssuche](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse), um den Koordinatenort in eine Straßenadresse zu übersetzen
-* Suchen nach der Querstraße mithilfe der [API für die inverse Adresssuche nach Querstraßen](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreversecrossstreet)
+* Übersetzen der Koordinaten in ein von Menschen lesbares Format nach Querstraßen mithilfe der [API für die inverse Adresssuche nach Querstraßen](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreversecrossstreet)  Diese Funktion wird meistens in Trackinganwendungen benötigt, die einen GPS-Feed von einem Gerät oder einer Ressource empfangen und Adressen an bestimmten Koordinatenpunkten ermitteln sollen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Zum Ausführen der in diesem Artikel beschriebenen Schritte müssen Sie zunächst ein Azure Maps-Konto erstellen und Ihren Abonnementschlüssel für Ihr Maps-Konto abrufen. Befolgen Sie die Anleitung unter [Erstellen eines Kontos](quick-demo-map-app.md#create-an-azure-maps-account), um ein Azure Maps-Kontoabonnement zu erstellen. Führen Sie außerdem die Schritte unter [Abrufen des Primärschlüssels](quick-demo-map-app.md#get-the-primary-key-for-your-account) aus, um den Primärschlüssel für Ihr Konto abzurufen. Weitere Informationen zur Authentifizierung in Azure Maps finden Sie unter [Verwalten der Authentifizierung in Azure Maps](./how-to-manage-authentication.md).
+1. [Erstellen eines Azure Maps-Kontos](quick-demo-map-app.md#create-an-azure-maps-account)
+2. [Abrufen eines Primärschlüssels](quick-demo-map-app.md#get-the-primary-key-for-your-account) (auch primärer Schlüssel oder Abonnementschlüssel genannt)
 
-In diesem Artikel wird die [Postman-App](https://www.getpostman.com/apps) zum Erstellen von REST-Aufrufen verwendet. Sie können jedoch auch Ihre bevorzugte API-Entwicklungsumgebung verwenden.
+In diesem Tutorial wird die Anwendung [Postman](https://www.postman.com/) verwendet. Sie können aber auch eine andere API-Entwicklungsumgebung verwenden.
 
 ## <a name="request-latitude-and-longitude-for-an-address-geocoding"></a>Anfordern des Breiten- und Längengrads für eine Adresse (Geocodierung)
 
-In diesem Beispiel wird die Azure Maps-[API „Get Search Address“](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress) verwendet, um die Straßenadresse in Breiten- und Längenkoordinaten zu konvertieren. Sie können eine vollständige oder unvollständige Adresse an die API übergeben. Sie erhalten dann eine Antwort, die detaillierte Adresseigenschaften, z. B. Straße, PLZ und Land/Region, sowie Positionswerte mit Breiten- und Längengraden umfasst.
+In diesem Beispiel wird die Azure Maps-[API zum Abrufen der Suchadresse](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress) verwendet, um eine Adresse in Breiten- und Längenkoordinaten zu konvertieren. Dieser Vorgang wird auch als *Geocodierung* bezeichnet. Zusätzlich zu den Koordinaten werden in der Antwort auch detaillierte Adressinformationen zurückgegeben, darunter beispielsweise Straße, Postleitzahl, Gemeinde und Land/Region.
 
-Wenn Sie über eine Gruppe von Adressen für die Geocodierung verfügen, können Sie [API „Post Search Address Batch“](https://docs.microsoft.com/rest/api/maps/search/postsearchaddressbatch) verwenden, um einen Batch von Abfragen in einem einzigen API-Aufruf zu senden.
+>[!TIP]
+>Wenn Sie über eine Gruppe von Adressen für die Geocodierung verfügen, können Sie die [API zur Batchübermittlung von Suchadressen](https://docs.microsoft.com/rest/api/maps/search/postsearchaddressbatch) verwenden, um einen Batch von Abfragen in einem einzigen API-Aufruf zu senden.
 
-1. Klicken Sie in Postman auf **New Request (Neue Anforderung)**  | **GET request (GET-Anforderung)** , und nennen Sie sie **Address Search** (Adresssuche).
+1. Öffnen Sie die Postman-App. Wählen Sie oben in der Postman-App **New** (Neu) aus. Wählen Sie im Fenster **Create New** (Neu erstellen) die Option **Collection** (Sammlung) aus.  Geben Sie einen Namen für die Sammlung ein, und klicken Sie dann auf **Create** (Erstellen). Sie verwenden diese Sammlung für alle weiteren Beispiele in diesem Dokument.
 
-2. Wählen Sie auf der Registerkarte „Builder“ die HTTP-Methode **GET** aus, geben Sie die Anforderungs-URL für Ihren API-Endpunkt ein, und wählen Sie ggf. ein Autorisierungsprotokoll aus.
+2. Klicken Sie erneut auf **New** (Neu), um die Anforderung zu erstellen. Wählen Sie im Fenster **Create New** (Neu erstellen) die Option **Request** (Anforderung) aus. Geben Sie einen Anforderungsnamen (**Request name**) ein. Wählen Sie die im vorherigen Schritt erstellte Sammlung und anschließend **Save** (Speichern) aus.
 
-![Adresssuche](./media/how-to-search-for-address/address_search_url.png)
+3. Wählen Sie auf der Registerkarte „Builder“ (Generator) die HTTP-Methode **GET** aus, und geben Sie die folgende URL ein. In dieser Anforderung suchen wir nach einer bestimmten Adresse: `400 Braod St, Seattle, WA 98109`.
 
-| Parameter | Vorgeschlagener Wert |
-|---------------|------------------------------------------------| 
-| HTTP-Methode | GET |
-| Anfrage-URL | [https://atlas.microsoft.com/search/address/json?](https://atlas.microsoft.com/search/address/json?) | 
-| Authorization | No Auth |
+    Ersetzen Sie bei dieser Anforderung sowie bei den anderen in diesem Artikel angegebenen Anforderungen jeweils `{Azure-Maps-Primary-Subscription-key}` durch Ihren primären Abonnementschlüssel. Die Anforderung sollte wie die folgende URL aussehen:
 
-3. Klicken Sie auf **Params** (Parameter), und geben Sie die folgenden Schlüssel-Wert-Paare zur Verwendung als Abfrage- oder Pfadparameter in der Anforderungs-URL ein: 
+    ```http
+    https://atlas.microsoft.com/search/address/json?&subscription-key={Azure-Maps-Primary-Subscription-key}&api-version=1.0&language=en-US&query=400 Broad St, Seattle, WA 98109
+    ```
 
-![Adresssuche](./media/how-to-search-for-address/address_search_params.png) 
+4. Klicken Sie auf die Schaltfläche **Send** (Senden). Der Antworttext enthält Daten für einen einzelnen Standort.
 
-| Schlüssel | Wert | 
-|------------------|-------------------------| 
-| api-version | 1.0 | 
-| subscription-key | \<your Azure Maps key\> | 
-| Abfrage | 400 Broad St, Seattle, WA 98109 | 
+5. Jetzt suchen wir nach einer Adresse mit mehr als einem möglichen Standort. Ändern Sie im Abschnitt **Params** den Schlüssel `query` in `400 Broad, Seattle`. Klicken Sie auf die Schaltfläche **Send** (Senden).
 
-4. Klicken Sie auf **Send** (Senden), und sehen Sie sich den Antworttext an. 
+    :::image type="content" source="./media/how-to-search-for-address/search-address.png" alt-text="Suchen nach einer Adresse":::
 
-In diesem Fall haben Sie eine Abfrage für eine vollständige Adresse angegeben und erhalten im Antworttext ein einzelnes Ergebnis. 
+6. Legen Sie als Nächstes den Schlüssel `query`auf `400 Broa` fest.
 
-5. Ändern Sie in „Params“ (Parameter) die Abfragezeichenfolge in den folgenden Wert: 
-
-    ```plaintext 
-        400 Broad, Seattle 
-    ``` 
-
-6. Fügen Sie das folgende Schlüssel-Wert-Paar zum Abschnitt **Params** (Parameter) hinzu, und klicken Sie auf **Senden**: 
-
-| Schlüssel | Wert | 
-|-----|------------| 
-| typeahead | true | 
-
-Das Flag **typeahead** weist die API für die Adresssuche an, die Abfrage als unvollständige Eingabe zu verarbeiten und ein Array von Vorhersagewerten zurückzugeben.
+7. Klicken Sie auf die Schaltfläche **Senden**.  Sie sehen, dass die Antwort Daten aus mehreren Ländern umfasst. Fügen Sie der Anforderung immer so viele Standortangaben wie möglich hinzu, damit die Ergebnisse dem für Ihren Benutzer relevanten geografischen Bereich entsprechen.
 
 ## <a name="using-fuzzy-search-api"></a>Verwenden der API für die Fuzzysuche
 
-Die Azure Maps-[API für die Fuzzysuche](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) ist der Dienst, den Sie verwenden sollten, wenn Sie die Benutzereingaben für eine Suchabfrage nicht kennen. Die API kombiniert POI-Suche (Point of Interest) und Geocodierung zu einer kanonischen „einzeiligen Suche“. So kann die API beispielsweise Eingaben beliebiger Adress- oder POI-Token-Kombinationen verarbeiten. Sie kann auch mit einer kontextabhängigen Position (Breitengrad-Längengrad-Paar) gewichtet werden, die durch eine Koordinate oder einen Radius vollständig eingeschränkt ist. Oder sie kann allgemeiner ohne jeglichen geografiebezogenen Ankerpunkt ausgeführt werden.
+Die Azure Maps-[API für die Fuzzysuche](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) unterstützt einzeilige Standardsuchen und Freiformsuchen. Es wird empfohlen, die Azure Maps-API für die Fuzzysuche zu verwenden, wenn Sie den Benutzereingabetyp für eine Suchabfrage nicht kennen.  Die Abfrageeingabe kann eine vollständige oder eine unvollständige Adresse sein. Es kann sich auch um ein POI-Token (Point of Interest) handeln, z. B. einen POI-Namen, eine POI-Kategorie oder einen Markennamen. Darüber hinaus können die Abfrageergebnisse durch eine Koordinatenposition und einen Radius oder durch das Definieren eines Begrenzungsrahmens eingeschränkt werden, um die Relevanz Ihrer Suchergebnisse zu verbessern.
 
-Die meisten Suchabfragen sind zur Leistungssteigerung und Verringerung ungewöhnlicher Ergebnisse standardmäßig auf `maxFuzzyLevel=1` festgelegt. Diese Standardeinstellung kann bei Bedarf pro Anforderung durch Übergeben des Abfrageparameters `maxFuzzyLevel=2` oder `3` überschrieben werden.
+>[!TIP]
+>Die meisten Suchabfragen sind zur Leistungsverbesserung und zur Verringerung ungewöhnlicher Ergebnisse standardmäßig auf „maxFuzzyLevel=1“ festgelegt. Sie können die Fuzzyebene mithilfe der Parameter `maxFuzzyLevel` oder `minFuzzyLevel` anpassen. Weitere Informationen zu `maxFuzzyLevel` und eine vollständige Liste aller optionalen Parameter finden Sie unter [URI-Parameter](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy#uri-parameters) im Artikel zur Fuzzysuche.
 
 ### <a name="search-for-an-address-using-fuzzy-search"></a>Suchen nach einer Adresse mithilfe der Fuzzysuche
 
-1. Öffnen Sie die Postman-App, klicken Sie auf „New“ (Neu) und „Create New“ (Neu erstellen), und wählen Sie **GET request** (GET-Anforderung) aus. Geben Sie **Fuzzy search** (Fuzzysuche) als Name der Anforderung ein, wählen Sie eine Sammlung oder einen Ordner aus, in der bzw. dem die Anforderung gespeichert wird, und klicken Sie auf **Save** (Speichern).
+In diesem Beispiel verwenden wir die Fuzzysuche, um eine weltweite Suche nach `pizza` durchzuführen.  Anschließend wird gezeigt, wie die Suche nur für ein bestimmtes Land durchgeführt wird. Abschließend wird beschrieben, wie Sie eine Koordinatenposition und einen Radius verwenden, um eine Suche auf einen bestimmten Bereich einzuschränken und die Anzahl der zurückgegebenen Ergebnisse zu begrenzen.
 
-2. Wählen Sie auf der Registerkarte „Builder“ die HTTP-Methode **GET** aus, und geben Sie die Anforderungs-URL für Ihren API-Endpunkt ein.
+>[!IMPORTANT]
+>Fügen Sie immer so viele Standortangaben wie möglich hinzu, damit die Ergebnisse dem für Ihren Benutzer relevanten geografischen Bereich entsprechen. Weitere Informationen finden Sie unter [Bewährte Methoden für den Suchdienst](how-to-use-best-practices-for-search.md#geobiased-search-results).
 
-    ![Fuzzysuche](./media/how-to-search-for-address/fuzzy_search_url.png)
+1. Öffnen Sie die Postman-App, klicken Sie auf **New** „Neu“, und wählen Sie **Request** (Anforderung) aus. Geben Sie einen Anforderungsnamen (**Request name**) ein. Wählen Sie die im vorherigen Abschnitt oder eine neu erstellte Sammlung aus, und klicken Sie dann auf **Save** (Speichern).
 
-    | Parameter | Vorgeschlagener Wert |
-    |---------------|------------------------------------------------|
-    | HTTP-Methode | GET |
-    | Anfrage-URL | [https://atlas.microsoft.com/search/fuzzy/json?](https://atlas.microsoft.com/search/fuzzy/json?) |
-    | Authorization | No Auth |
+2. Wählen Sie auf der Registerkarte „Builder“ (Generator) die HTTP-Methode **GET** aus, und geben Sie die folgende URL ein. Ersetzen Sie bei dieser Anforderung sowie bei den anderen in diesem Artikel angegebenen Anforderungen jeweils `{Azure-Maps-Primary-Subscription-key}` durch Ihren primären Abonnementschlüssel. Die Anforderung sollte wie die folgende URL aussehen:
 
-    Das Attribut **json** im URL-Pfad legt das Antwortformat fest. In diesem Artikel wird JSON verwendet, um die Benutzerfreundlichkeit und Lesbarkeit zu verbessern. Sie finden die verfügbaren Antwortformate in der Definition für **Get Search Fuzzy** der [Referenz zur funktionalen API von Maps](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy).
+    ```http
+   https://atlas.microsoft.com/search/fuzzy/json?&api-version=1.0&subscription-key={Azure-Maps-Primary-Subscription-key}&language=en-US&query=pizza
+    ```
 
-3. Klicken Sie auf **Params** (Parameter), und geben Sie die folgenden Schlüssel-Wert-Paare zur Verwendung als Abfrage- oder Pfadparameter in der Anforderungs-URL ein:
+    >[!NOTE]
+    >Das Attribut _json_ im URL-Pfad legt das Antwortformat fest. In diesem Artikel wird JSON verwendet, um die Benutzerfreundlichkeit und Lesbarkeit zu verbessern. Informationen zu weiteren unterstützten Antwortformaten finden Sie in der Definition des `format`-Parameters im Abschnitt [URI-Parameter](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy#uri-parameters).
 
-    ![Fuzzysuche](./media/how-to-search-for-address/fuzzy_search_params.png)
+3. Klicken Sie auf **Send** (Senden), und sehen Sie sich den Antworttext an.
 
-    | Schlüssel | Wert |
-    |------------------|-------------------------|
-    | api-version | 1.0 |
-    | subscription-key | \<your Azure Maps key\> |
-    | Abfrage | pizza |
-
-4. Klicken Sie auf **Send** (Senden), und sehen Sie sich den Antworttext an.
-
-    Die mehrdeutige Abfragezeichenfolge „pizza“ hat 10 [POI-Ergebnisse](https://docs.microsoft.com/rest/api/maps/search/getsearchpoi#searchpoiresponse) sowohl in der Kategorie „Pizza“ als auch in der Kategorie „Restaurant“ zurückgegeben. In jedem Ergebnis werden eine Adresse, Werte für den Breiten- und Längengrad, ein Viewport und Einstiegspunkte für den Standort zurückgegeben.
+    Die mehrdeutige Abfragezeichenfolge „pizza“ hat 10 [POI-Ergebnisse](https://docs.microsoft.com/rest/api/maps/search/getsearchpoi#searchpoiresponse) sowohl in der Kategorie „Pizza“ als auch in der Kategorie „Restaurant“ zurückgegeben. Jedes Ergebnis enthält eine Adresse, Werte für den Breiten- und Längengrad, ein Bildausschnitt und Einstiegspunkte für den Standort. Die Ergebnisse für diese Abfrage variieren und sind mit keinem bestimmten Referenzstandort verbunden.
   
-    Die Ergebnisse für diese Abfrage variieren und sind mit keinem bestimmten Referenzstandort verbunden. Mithilfe des **countrySet**-Parameters können Sie nur die Länder/Regionen angeben, die von Ihrer Anwendung abgedeckt werden sollen. Das Standardverhalten besteht darin, die ganze Welt zu durchsuchen, wodurch unnötige Ergebnisse zurückgegeben werden können.
+    Im nächsten Schritt verwenden wir den Parameter `countrySet`, um nur die Länder/Regionen anzugeben, die von Ihrer Anwendung abgedeckt werden sollen. Eine vollständige Liste der unterstützten Länder/Regionen finden Sie im Artikel zur [Suchabdeckung](https://docs.microsoft.com/azure/azure-maps/geocoding-coverage).
 
-5. Fügen Sie das folgende Schlüssel-Wert-Paar zum Abschnitt **Params** (Parameter) hinzu, und klicken Sie auf **Senden**:
+4. Das Standardverhalten besteht darin, die ganze Welt zu durchsuchen, wodurch unnötige Ergebnisse zurückgegeben werden können. Als Nächstes führen wir eine Suche nach „pizza“ nur in den USA durch. Fügen Sie dem Abschnitt `countrySet`Params**den Schlüssel** hinzu, und legen Sie seinen Wert auf `US` fest. Durch das Festlegen des Schlüssels `countrySet` auf `US` werden die Ergebnisse auf die USA beschränkt.
 
-    | Schlüssel | Wert |
-    |------------------|-------------------------|
-    | countrySet | US |
-  
+    :::image type="content" source="./media/how-to-search-for-address/search-fuzzy-country.png" alt-text="Suche nach „pizza“ in den USA":::
+
     Die Ergebnisse werden nun durch den Ländercode begrenzt, und die Abfrage gibt Pizzerien in den USA zurück.
-  
-    Für Ergebnisse, die sich auf einen Standort beziehen, können Sie einen interessanten Ort abfragen und die zurückgegebenen Werte für den Breiten- und Längengrad im Aufruf des Diensts für die Fuzzysuche verwenden. In diesem Fall verwenden Sie den Suchdienst für die Rückgabe des Standorts der Space Needle in Seattle sowie die Werte für den Breiten- und Längengrad zur Eingrenzung der Suche.
-  
-6. Geben Sie unter „Params“ (Parameter) die folgenden Schlüssel-Wert-Paare ein, und klicken Sie auf **Send** (Senden):
 
-    ![Fuzzysuche](./media/how-to-search-for-address/fuzzy_search_latlon.png)
-  
-    | Schlüssel | Wert |
+5. Um eine noch gezieltere Suche durchzuführen, können Sie als Suchbereich ein Koordinatenpaar aus Längen- und Breitengrad angeben. In diesem Beispiel verwenden wir den Längen- und Breitengrad der Space Needle in Seattle. Da wir nur die Ergebnisse innerhalb eines Radius von 400 Metern zurückgeben möchten, fügen wir den Parameter `radius` hinzu. Außerdem verwenden wir den Parameter `limit`, um die Ergebnisse auf die fünf nächstgelegenen Pizzerien zu beschränken.
+
+    Fügen Sie dem Abschnitt **Params** die folgenden Schlüssel-Wert-Paare hinzu:
+
+     | Schlüssel | Wert |
     |-----|------------|
     | lat | 47.620525 |
     | lon | -122.349274 |
+    | Radius | 400 |
+    | limit | 5|
 
+6. Klicken Sie auf **Send**. Die Antwort enthält die Ergebnisse für Pizzerien in der Nähe der Space Needle in Seattle.
 
 ## <a name="search-for-a-street-address-using-reverse-address-search"></a>Suchen nach einer Adresse mithilfe der inversen Adresssuche
 
-Die Azure Maps-API [Get Search Address Reverse]( https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) (Suchadresse invers abrufen) hilft bei der Übersetzung einer Koordinate (Beispiel: 37.786505, -122.3862) in eine für den Menschen verständliche Anschrift. Dies wird meistens bei Anwendungen für die Nachverfolgung benötigt, bei denen Sie einen GPS-Feed von dem Gerät oder der Ressource erhalten und wissen möchten, welche Adresse sich an dieser Koordinate befindet.
-Wenn Sie über eine Gruppe von Koordinatenpositionen für die inverse Geocodierung verfügen, können Sie [API „Post Search Address Reverse Batch“](https://docs.microsoft.com/rest/api/maps/search/postsearchaddressreversebatch) verwenden, um einen Batch von Abfragen in einem einzigen API-Aufruf zu senden.
+Die Azure Maps-[API für die inverse Adresssuche]( https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) übersetzt Koordinaten in lesbare Anschriften. Diese API wird häufig für Anwendungen verwendet, die einen GPS-Feed empfangen und Adressen an bestimmten Koordinatenpunkten ermitteln sollen.
 
+>[!IMPORTANT]
+>Fügen Sie immer so viele Standortangaben wie möglich hinzu, damit die Ergebnisse dem für Ihren Benutzer relevanten geografischen Bereich entsprechen. Weitere Informationen finden Sie unter [Bewährte Methoden für den Suchdienst](how-to-use-best-practices-for-search.md#geobiased-search-results).
 
-1. Klicken Sie in Postman auf **New Request (Neue Anforderung)**  | **GET request (GET-Anforderung)** , und nennen Sie sie **Reverse Address Search** (Inverse Adresssuche).
+>[!TIP]
+>Wenn Sie über eine Gruppe von Koordinatenpositionen für die inverse Geocodierung verfügen, können Sie [API „Post Search Address Reverse Batch“](https://docs.microsoft.com/rest/api/maps/search/postsearchaddressreversebatch) verwenden, um einen Batch von Abfragen in einem einzigen API-Aufruf zu senden.
 
-2. Wählen Sie auf der Registerkarte „Builder“ die HTTP-Methode **GET** aus, und geben Sie die Anforderungs-URL für Ihren API-Endpunkt ein.
+In diesem Beispiel führen wir mithilfe einiger der verfügbaren optionalen Parameter eine umgekehrte Suche durch. Eine vollständige Liste der optionalen Parameter finden Sie im Abschnitt zu den [Parametern für die umgekehrte Suche](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse#uri-parameters).
+
+1. Klicken Sie in der Postman-App auf **New** „Neu“, und wählen Sie **Request** (Anforderung) aus. Geben Sie einen Anforderungsnamen (**Request name**) ein. Wählen Sie die im ersten Abschnitt oder eine neu erstellte Sammlung aus, und klicken Sie dann auf **Save** (Speichern).
+
+2. Wählen Sie auf der Registerkarte „Builder“ (Generator) die HTTP-Methode **GET** aus, und geben Sie die folgende URL ein. Ersetzen Sie bei dieser Anforderung sowie bei den anderen in diesem Artikel angegebenen Anforderungen jeweils `{Azure-Maps-Primary-Subscription-key}` durch Ihren primären Abonnementschlüssel. Die Anforderung sollte wie die folgende URL aussehen:
+
+    ```http
+    https://atlas.microsoft.com/search/address/reverse/json?api-version=1.0&subscription-key={Azure-Maps-Primary-Subscription-key}&language=en-US&query=47.591180,-122.332700&number=1
+    ```
+
+3. Klicken Sie auf **Send** (Senden), und sehen Sie sich den Antworttext an. Es sollte nur ein Abfrageergebnis angezeigt werden. Die Antwort enthält Schlüsseladressinformationen über Safeco Field.
   
-    ![URL für inverse Adresssuche](./media/how-to-search-for-address/reverse_address_search_url.png)
-  
-    | Parameter | Vorgeschlagener Wert |
-    |---------------|------------------------------------------------|
-    | HTTP-Methode | GET |
-    | Anfrage-URL | [https://atlas.microsoft.com/search/address/reverse/json?](https://atlas.microsoft.com/search/address/reverse/json?) |
-    | Authorization | No Auth |
-  
-3. Klicken Sie auf **Params** (Parameter), und geben Sie die folgenden Schlüssel-Wert-Paare zur Verwendung als Abfrage- oder Pfadparameter in der Anforderungs-URL ein:
-  
-    ![Parameter für inverse Adresssuche](./media/how-to-search-for-address/reverse_address_search_params.png)
-  
-    | Schlüssel | Wert |
-    |------------------|-------------------------|
-    | api-version | 1.0 |
-    | subscription-key | \<your Azure Maps key\> |
-    | Abfrage | 47.591180,-122.332700 |
-  
-4. Klicken Sie auf **Send** (Senden), und sehen Sie sich den Antworttext an.
+4. Fügen Sie dem Abschnitt **Params** nun die folgenden Schlüssel-Wert-Paare hinzu:
 
-    Die Antwort enthält Schlüsseladressinformationen über Safeco Field.
-  
-5. Fügen Sie das folgende Schlüssel-Wert-Paar zum Abschnitt **Params** (Parameter) hinzu, und klicken Sie auf **Senden**:
+    | Schlüssel | Wert | Rückgabe
+    |-----|------------|------|
+    | number | 1 |Die Antwort enthält möglicherweise die Straßenseite (links/rechts) und außerdem eine Versatzposition für die Hausnummer.|
+    | returnSpeedLimit | true | Gibt das Tempolimit an der Adresse zurück.|
+    | returnRoadUse | true | Gibt den Straßentyp an der Adresse zurück. Eine Übersicht der möglichen Straßentypen finden Sie im Abschnitt [URI-Parameter](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse#uri-parameters).|
+    | returnMatchType | true| Gibt den Typ der Übereinstimmung zurück. Eine Übersicht der möglichen Werte finden Sie unter [SearchAddressReverseResult](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse#searchaddressreverseresult).
 
-    | Schlüssel | Wert |
-    |-----|------------|
-    | number | true |
+   :::image type="content" source="./media/how-to-search-for-address/search-reverse.png" alt-text="Umgekehrte Suche":::
 
-    Wenn der Abfrageparameter [number](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) mit der Anforderung gesendet wird, enthält die Antwort möglicherweise die Straßenseite (links oder rechts) und auch eine versetzte Position für diese Hausnummer.
-  
-6. Fügen Sie das folgende Schlüssel-Wert-Paar zum Abschnitt **Params** (Parameter) hinzu, und klicken Sie auf **Senden**:
+5. Klicken Sie auf **Send** (Senden), und sehen Sie sich den Antworttext an.
 
-    | Schlüssel | Wert |
-    |-----|------------|
-    | returnSpeedLimit | true |
-  
-    Wenn der Abfrageparameter [returnSpeedLimit](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) festgelegt wird, wird in der Antwort die angegebene Geschwindigkeitsbegrenzung zurückgegeben.
+6. Als Nächstes fügen wir den Schlüssel `entityType` hinzu und legen seinen Wert auf `Municipality` fest. Der Schlüssel `entityType` überschreibt den Schlüssel `returnMatchType` im vorherigen Schritt. Wir müssen außerdem `returnSpeedLimit` und `returnRoadUse` entfernen, weil wir Informationen zur Gemeinde anfordern.  Eine Liste aller möglichen Typen finden Sie unter [EntityType](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse#entitytype).
 
-7. Fügen Sie das folgende Schlüssel-Wert-Paar zum Abschnitt **Params** (Parameter) hinzu, und klicken Sie auf **Senden**:
+    :::image type="content" source="./media/how-to-search-for-address/search-reverse-entity-type.png" alt-text="Umgekehrte Suche nach „entityType“":::
 
-    | Schlüssel | Wert |
-    |-----|------------|
-    | returnRoadUse | true |
+7. Klicken Sie auf **Send**. Vergleichen Sie die Ergebnisse mit denen in Schritt 5.  Der angeforderte Entitätstyp lautet jetzt `municipality`, deshalb enthält die Antwort keine Informationen zur Anschrift. Der zurückgegebene `geometryId`-Wert kann darüber hinaus zum Anfordern eines Begrenzungspolygons über die Azure Maps-[API zum Abrufen von Suchpolygonen](https://docs.microsoft.com/rest/api/maps/search/getsearchpolygon) verwendet werden.
 
-    Wenn der Abfrageparameter [returnRoadUse](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) festgelegt wird, wird in der Antwort die Straßennutzung für die inverse Geocodierung von Straßen zurückgegeben.
+>[!TIP]
+>Weitere Informationen zu diesen und weiteren Parametern finden Sie im Abschnitt zu den [Parametern für die umgekehrte Suche](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse#uri-parameters).
 
-8. Fügen Sie das folgende Schlüssel-Wert-Paar zum Abschnitt **Params** (Parameter) hinzu, und klicken Sie auf **Senden**:
-
-    | Schlüssel | Wert |
-    |-----|------------|
-    | roadUse | true |
-
-    Mithilfe des Abfrageparameters [roadUse](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) können Sie die Abfrage der inversen Geocodierung auf eine bestimmte Art der Straßennutzung beschränken.
-  
 ## <a name="search-for-cross-street-using-reverse-address-cross-street-search"></a>Suchen nach der Querstraße mithilfe der inversen Adresssuche für Querstraßen
 
-1. Klicken Sie in Postman auf **New Request (Neue Anforderung)**  | **GET request (GET-Anforderung)** , und nennen Sie sie **Reverse Address Cross Street Search** (Inverse Adresssuche für Querstraßen).
+In diesem Beispiel suchen wir basierend auf den Koordinaten einer Adresse nach einer Querstraße.
 
-2. Wählen Sie auf der Registerkarte „Builder“ die HTTP-Methode **GET** aus, und geben Sie die Anforderungs-URL für Ihren API-Endpunkt ein.
+1. Klicken Sie in der Postman-App auf **New** „Neu“, und wählen Sie **Request** (Anforderung) aus. Geben Sie einen Anforderungsnamen (**Request name**) ein. Wählen Sie die im ersten Abschnitt oder eine neu erstellte Sammlung aus, und klicken Sie dann auf **Save** (Speichern).
+
+2. Wählen Sie auf der Registerkarte „Builder“ (Generator) die HTTP-Methode **GET** aus, und geben Sie die folgende URL ein. Ersetzen Sie bei dieser Anforderung sowie bei den anderen in diesem Artikel angegebenen Anforderungen jeweils `{Azure-Maps-Primary-Subscription-key}` durch Ihren primären Abonnementschlüssel. Die Anforderung sollte wie die folgende URL aussehen:
   
-    ![Inverse Adresssuche für Querstraßen](./media/how-to-search-for-address/reverse_address_search_url.png)
+    ```http
+   https://atlas.microsoft.com/search/address/reverse/crossstreet/json?&api-version=1.0&subscription-key={Azure-Maps-Primary-Subscription-key}&language=en-US&query=47.591180,-122.332700
+    ```
+
+    :::image type="content" source="./media/how-to-search-for-address/search-address-cross.png" alt-text="Suche nach einer Querstraße":::
   
-    | Parameter | Vorgeschlagener Wert |
-    |---------------|------------------------------------------------|
-    | HTTP-Methode | GET |
-    | Anfrage-URL | [https://atlas.microsoft.com/search/address/reverse/crossstreet/json?](https://atlas.microsoft.com/search/address/reverse/crossstreet/json?) |
-    | Authorization | No Auth |
-  
-3. Klicken Sie auf **Params** (Parameter), und geben Sie die folgenden Schlüssel-Wert-Paare zur Verwendung als Abfrage- oder Pfadparameter in der Anforderungs-URL ein:
-  
-    | Schlüssel | Wert |
-    |------------------|-------------------------|
-    | api-version | 1.0 |
-    | subscription-key | \<your Azure Maps key\> |
-    | Abfrage | 47.591180,-122.332700 |
-  
-4. Klicken Sie auf **Send** (Senden), und sehen Sie sich den Antworttext an.
+3. Klicken Sie auf **Send** (Senden), und sehen Sie sich den Antworttext an. Beachten Sie, dass die Antwort den Wert `Occidental Avenue South` für `crossStreet` enthält.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Machen Sie sich mit der [REST API-Dokumentation zum Suchdienst](https://docs.microsoft.com/rest/api/maps/search) von Azure Maps vertraut.
-- Informieren Sie sich über [Bewährte Methoden für den Azure Maps-Suchdienst](https://docs.microsoft.com/azure/azure-maps/how-to-use-best-practices-for-search) und über das Optimieren Ihrer Abfragen.
+> [!div class="nextstepaction"]
+> [Azure Maps-Suchdienst-REST-API](https://docs.microsoft.com/rest/api/maps/search)
+
+> [!div class="nextstepaction"]
+> [Bewährte Methoden für den Suchdienst von Azure Maps](how-to-use-best-practices-for-search.md)

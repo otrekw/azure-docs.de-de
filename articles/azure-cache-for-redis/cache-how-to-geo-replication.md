@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 03/06/2019
 ms.author: yegu
-ms.openlocfilehash: 9a2ec2e60ae38506d716a244872baddbbdf570e7
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 956e3e83686677f3eb9895354a008783df5f7dcd
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86184972"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88003693"
 ---
 # <a name="how-to-set-up-geo-replication-for-azure-cache-for-redis"></a>Vorgehensweise zum Einrichten der Georeplikation für Azure Cache for Redis
 
@@ -24,7 +24,7 @@ Georeplikation bietet einen Mechanismus zum Verknüpfen von zwei Azure Cache for
 
 Um die Georeplikation zwischen zwei Caches zu konfigurieren, müssen die folgenden Voraussetzungen erfüllt sein:
 
-- Für beide Caches gilt der [Premium-Tarif](cache-premium-tier-intro.md).
+- Für beide Caches gilt der [Premium-Tarif](cache-overview.md#service-tiers).
 - Beide Caches müssen sich in demselben Azure-Abonnement befinden.
 - Der sekundäre verknüpfte Cache hat entweder die gleiche Größe oder ist größer als der primäre verknüpfte Cache.
 - Beide Caches wurden erstellt und werden ausgeführt.
@@ -186,5 +186,6 @@ Das automatische Failover über Azure-Regionen hinweg wird für georeplizierte C
 Heben Sie zuerst die Verknüpfung der Caches auf, um ein vom Kunden initiiertes Failover zu starten. Ändern Sie anschließend Ihren Redis-Client, um den Verbindungsendpunkt des (zuvor verknüpften) sekundären Caches zu verwenden. Wenn die Verknüpfung beider Caches aufgehoben wurde, wird der sekundäre Cache wieder zu einem Cache mit regulärem Lese-/Schreibzugriff und akzeptiert direkte Anforderungen von Redis-Clients.
 
 ## <a name="next-steps"></a>Nächste Schritte
+Erfahren Sie mehr über Azure Cache for Redis-Features.
 
-Erfahren Sie mehr über den [Premium-Tarif von Azure Cache for Redis](cache-premium-tier-intro.md).
+* [Azure Cache for Redis-Dienstebenen](cache-overview.md#service-tiers)

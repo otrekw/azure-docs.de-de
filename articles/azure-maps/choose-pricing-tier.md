@@ -1,19 +1,19 @@
 ---
 title: Auswählen des richtigen Tarifs für Microsoft Azure Maps
-description: In diesem Artikel erfahren Sie mehr über die von Microsoft Azure Maps angebotenen Tarife.
+description: Erfahren Sie mehr über Azure Maps-Tarife. Sehen Sie sich an, welche Tarife welche Funktionen anbieten, sowie wichtige Überlegungen zur Auswahl eines Tarifs.
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 07/27/2020
+ms.date: 08/12/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 359c2270f3de269adae13ce976cedeb4248935d2
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 3603a4f5d103987b25bd5f976b89f943f98565a8
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285763"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88163984"
 ---
 # <a name="choose-the-right-pricing-tier-in-azure-maps"></a>Auswählen des richtigen Tarifs in Azure Maps
 
@@ -47,6 +47,7 @@ Wenn die Kerngeofunktions-APIs Ihre Dienstanforderungen erfüllen, wählen Sie d
 | Azure Maps-Daten (Vorschau)                |                     | ✓        |
 | Mobilität (Vorschau)                       |                     | ✓        |
 | Wetter (Vorschau)                        |✓                    |✓        |
+|  Creator (Vorschau)                         |                   |✓        |
 
 Beachten Sie diese zusätzlichen Erwägungen:
 

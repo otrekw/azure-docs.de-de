@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: b1f848b5e6fa053d81754d441fd4845c1a24ee5b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 15ae1ca6902c27732812a591f492430150c84ecb
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85361488"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926177"
 ---
 # <a name="authentication-and-user-permissions"></a>Authentifizierung und Benutzerberechtigungen
 
@@ -68,7 +68,7 @@ Excel-Benutzer können eine Verbindung mit einem Server über ein Windows-Konto,
 
 ![Access Control im Azure-Portal](./media/analysis-services-manage-users/aas-manage-users-rbac.png)
 
-Rollen auf dieser Ebene gelten für Benutzer oder Konten, die sie zum Ausführen von Aufgaben im Portal oder mithilfe von Azure Resource Manager-Vorlagen benötigen. Weitere Informationen finden Sie unter [Rollenbasierte Zugriffssteuerung](../role-based-access-control/overview.md). 
+Rollen auf dieser Ebene gelten für Benutzer oder Konten, die sie zum Ausführen von Aufgaben im Portal oder mithilfe von Azure Resource Manager-Vorlagen benötigen. Weitere Informationen finden Sie unter [Rollenbasierte Zugriffssteuerung in Azure (Azure Role-Based Access Control, Azure RBAC)](../role-based-access-control/overview.md). 
 
 ## <a name="database-roles"></a>Datenbankrollen
 
@@ -81,4 +81,4 @@ Rollen auf dieser Ebene gelten für Benutzer oder Konten, die sie zum Ausführen
 [Verwalten des Zugriffs auf Ressourcen mit Azure Active Directory-Gruppen](../active-directory/fundamentals/active-directory-manage-groups.md)   
 [Verwalten von Datenbankrollen und Benutzern](analysis-services-database-users.md)  
 [Verwalten von Serveradministratoren](analysis-services-server-admins.md)  
-[Rollenbasierte Zugriffssteuerung](../role-based-access-control/overview.md)  
+[Rollenbasierte Zugriffssteuerung von Azure (Azure-RBAC)](../role-based-access-control/overview.md)  

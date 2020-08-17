@@ -1,6 +1,6 @@
 ---
 title: Erstellen einer Karte mit Azure Maps | Microsoft Azure Maps
-description: In diesem Artikel erfahren Sie, wie Sie mithilfe des Microsoft Azure Maps Web SDK eine Karte auf einer Webseite rendern.
+description: Finden Sie heraus, wie Sie mithilfe des Azure Maps Web SDK Karten zu Webseiten hinzufügen. Erfahren Sie mehr über Optionen für Animation, Stil, Kamera, Dienste und Benutzerinteraktionen.
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 07/26/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-javascript
-ms.openlocfilehash: b7bebfb227de3f9f1c51024845054d2d7a02f923
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 9566bcc329b4d148fe9454fe70b556a9010fc4ac
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285644"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88036469"
 ---
 # <a name="create-a-map"></a>Erstellen einer Karte
 
@@ -85,7 +85,7 @@ Im folgenden Code wird ein [Map-Objekt](https://docs.microsoft.com/javascript/ap
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Erstellen einer Karte über „CameraOptions“' src='//codepen.io/azuremaps/embed/qxKBMN/?height=543&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Weitere Informationen finden Sie unter dem Pen zum <a href='https://codepen.io/azuremaps/pen/qxKBMN/'>Erstellen einer Karte über `CameraOptions`</a> von Azure Location Based Services (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='Erstellen einer Karte über „CameraOptions“' src='//codepen.io/azuremaps/embed/qxKBMN/?height=543&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Weitere Informationen finden Sie unter dem Pen zum <a href='https://codepen.io/azuremaps/pen/qxKBMN/'>Erstellen einer Karte über `CameraOptions` </a> von Azure Location Based Services (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 <a id="setCameraBoundsOptions"></a>
@@ -105,7 +105,7 @@ Im folgenden Code wird über `new atlas.Map()` ein [Map-Objekt](https://docs.mic
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Erstellen einer Karte über „CameraBoundsOptions“' src='//codepen.io/azuremaps/embed/ZrRbPg/?height=543&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Weitere Informationen finden Sie unter dem Pen zum <a href='https://codepen.io/azuremaps/pen/ZrRbPg/'>Erstellen einer Karte über`CameraBoundsOptions`</a> von Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='Erstellen einer Karte über „CameraBoundsOptions“' src='//codepen.io/azuremaps/embed/ZrRbPg/?height=543&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Weitere Informationen finden Sie unter dem Pen zum <a href='https://codepen.io/azuremaps/pen/ZrRbPg/'>Erstellen einer Karte über`CameraBoundsOptions` </a> von Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 ### <a name="animate-map-view"></a>Animieren der Kartenansicht
@@ -127,6 +127,47 @@ Im folgenden Code erstellt der erste Codeblock eine Karte und legt die Kartensti
 
 <iframe height='500' scrolling='no' title='Animieren der Kartenansicht' src='//codepen.io/azuremaps/embed/WayvbO/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Weitere Informationen finden Sie unter <a href='https://codepen.io/azuremaps/pen/WayvbO/'>Animieren der Kartenansicht</a> in Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>CodePen</a>.
 </iframe>
+
+## <a name="request-transforms"></a>Anforderungstransformationen
+
+Manchmal ist es nützlich, HTTP-Anforderungen ändern zu können, die vom Kartensteuerelement erstellt wurden. Beispiel:
+
+- Das Hinzufügen zusätzlicher Header zu Kachelanforderungen. Dies wird oft für kennwortgeschützte Dienste durchgeführt.
+- Ändern von URLs zum Ausführen von Anforderungen über einen Proxydienst.
+
+Die [Dienstoptionen](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.serviceoptions) der Karte umfassen eine `transformRequest`-Funktion, die zum Ändern aller von der Karte gestellten Anforderungen verwendet werden kann, bevor diese durchgeführt werden. Die `transformRequest`-Option ist eine Funktion, die zwei Parameter akzeptiert: eine Zeichenfolgen-URL und eine Ressourcentyp-Zeichenfolge, die angibt, wofür die Anforderung verwendet wird. Diese Funktion muss ein [RequestParameters](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.requestparameters)-Ergebnis zurückgeben.
+
+```JavaScript
+transformRequest: (url: string, resourceType: string) => RequestParameters
+```
+
+Im folgenden Beispiel wird veranschaulicht, wie dies dazu verwendet werden kann, alle Anforderungen an die Größe `https://example.com` anzupassen, indem ein Benutzername und Kennwort als Header zur Anforderung hinzugefügt werden.
+
+```JavaScript
+var map = new atlas.Map('myMap', {
+    transformRequest: function (url, resourceType) {
+        //Check to see if the request is to the specified endpoint.
+        if (url.indexOf('https://examples.com') > -1) {
+            //Add custom headers to the request.
+            return {
+                url: url,
+                header: {
+                    username: 'myUsername',
+                    password: 'myPassword'
+                }
+            };
+        }
+
+        //Return the URL unchanged by default.
+        return { url: url };
+    },
+
+    authOptions: {
+        authType: 'subscriptionKey',
+        subscriptionKey: '<Your Azure Maps Key>'
+    }
+});
+```
 
 ## <a name="try-out-the-code"></a>Testen Sie den Code
 

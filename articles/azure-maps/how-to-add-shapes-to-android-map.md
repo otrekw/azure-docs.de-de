@@ -1,6 +1,6 @@
 ---
 title: Hinzufügen von Formen zu Android-Karten | Microsoft Azure Maps
-description: In diesem Artikel erfahren Sie, wie Sie mithilfe des Microsoft Azure Maps Android SDK verschiedene Formen auf einer Karte rendern.
+description: Erfahren Sie, wie Sie Formen zu Karten hinzufügen. Sehen Sie sich Codebeispiele an, die das Azure Maps Android SDK verwenden, um einer Karte eine Linie und ein Polygon hinzuzufügen.
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 04/26/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 855a05bd228a3bf903b79522549ed519b4745e17
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 9dd8718a6a96627781a578edb514d797e40f01fb
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87127093"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037421"
 ---
 # <a name="add-a-shape-to-a-map-using-azure-maps-android-sdk"></a>Hinzufügen einer Form zu einer Karte mithilfe des Android SDK für Azure Maps
 
@@ -28,7 +28,7 @@ Um den Vorgang in diesem Artikel abzuschließen, müssen Sie das [Android SDK f�
 
 Sie können der Karte eine Linie mithilfe einer **Linienebene** hinzufügen. Führen Sie die folgenden Schritte aus, um eine Linie auf der Karte hinzuzufügen.
 
-1. Bearbeiten Sie **res > layout > „activity_main.xml“** , sodass die Datei wie folgt aussieht:
+1. Bearbeiten Sie **res > layout > „activity_main.xml“**, sodass die Datei wie folgt aussieht:
 
     ```XML
     <?xml version="1.0" encoding="utf-8"?>
@@ -51,7 +51,7 @@ Sie können der Karte eine Linie mithilfe einer **Linienebene** hinzufügen. Fü
     </FrameLayout>
     ```
 
-2. Kopieren Sie den folgenden Codeausschnitt in die **onCreate()** -Methode Ihrer `MainActivity.java`-Klasse.
+2. Kopieren Sie den folgenden Codeausschnitt in die **onCreate()**-Methode Ihrer `MainActivity.java`-Klasse.
 
     ```Java
     mapControl.onReady(map -> {
@@ -185,7 +185,7 @@ Wenn Sie Ihre Anwendung jetzt ausführen, sollten Sie wie unten gezeigt eine Lin
 
 Mit der **Polygonebene** können Sie den Bereich des Polygons auf der Karte rendern. Gehen Sie folgendermaßen vor, um der Karte ein Polygon hinzuzufügen.
 
-1. Bearbeiten Sie **res > layout > „activity_main.xml“** , sodass die Datei wie folgt aussieht:
+1. Bearbeiten Sie **res > layout > „activity_main.xml“**, sodass die Datei wie folgt aussieht:
 
     ```XML
     <?xml version="1.0" encoding="utf-8"?>

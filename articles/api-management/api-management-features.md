@@ -1,6 +1,6 @@
 ---
 title: Featurebasierter Vergleich der Azure API Management-Tarife | Microsoft-Dokumentation
-description: In diesem Artikel werden die API Management-Tarife anhand der angebotenen Features verglichen.
+description: Vergleichen von API Management-Tarifen anhand der angebotenen Features. Ihnen wird eine Tabelle mit einer Zusammenfassung der wichtigsten Features, die in den einzelnen Tarifen verfügbar sind, gezeigt.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/15/2020
 ms.author: apimpm
-ms.openlocfilehash: ef16339d9a584eb12c611a25d636a9287265953a
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 262d12e1b0ff74570b44b7794f8b55619a9afa97
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284335"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905141"
 ---
 # <a name="feature-based-comparison-of-the-azure-api-management-tiers"></a>Featurebasierter Vergleich der Azure API Management-Tarife
 

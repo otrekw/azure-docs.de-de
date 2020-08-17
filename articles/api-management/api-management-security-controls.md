@@ -1,18 +1,18 @@
 ---
 title: Sicherheitskontrollen für Azure API Management
-description: Eine Prüfliste mit Sicherheitskontrollen zur Auswertung von API Management
+description: Prüfen Sie eine Checkliste mit Sicherheitskontrollen zur Bewertung von API Management. Hierzu gehören Netzwerk-, Identitäts- und Datenschutzkontrollen.
 services: api-management
 author: vladvino
 ms.service: api-management
 ms.topic: conceptual
 ms.date: 09/23/2019
 ms.author: vlvinogr
-ms.openlocfilehash: 670050efe01fb658fab52a43914f193e9798b828
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a147179f7b55e43379b3c3fa3a7a0767cc97b198
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75751128"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87902574"
 ---
 # <a name="security-controls-for-api-management"></a>Sicherheitskontrollen für API Management
 

@@ -1,6 +1,6 @@
 ---
 title: Überwachen von Azure Storage | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie die Leistung und Verfügbarkeit von Azure Storage überwachen können.
+description: Erfahren Sie, wie Sie die Leistung und Verfügbarkeit von Azure Storage überwachen können. Überwachen Sie Azure Storage-Daten, erfahren Sie mehr über die Konfiguration, und analysieren Sie Metrik- und Protokolldaten.
 author: normesta
 services: storage
 ms.service: storage
@@ -9,12 +9,12 @@ ms.date: 05/19/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring
-ms.openlocfilehash: 2f6320bf4606dc9357ac676b3bc5d7421b24a36c
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: e1be9a7e543f8513f3b30182dfbc421dc38bdbce
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86182711"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836665"
 ---
 # <a name="monitor-azure-storage"></a>Überwachen von Azure Storage
 
@@ -86,9 +86,9 @@ Außerdem müssen Sie angeben, für welche Kategorien von Vorgängen Protokolle 
 
 | Category | BESCHREIBUNG |
 |:---|:---|
-| StorageRead | Lesevorgänge für Blobs. |
-| StorageWrite | Schreibvorgänge für Blobs. |
-| StorageDelete | Löschvorgänge für Blobs. |
+| StorageRead | Lesevorgänge für Objekte. |
+| StorageWrite | Schreibvorgänge für Objekte. |
+| StorageDelete | Löschvorgänge für Objekte. |
 
 ## <a name="analyze-metric-data"></a>Analysieren von Metrikdaten
 

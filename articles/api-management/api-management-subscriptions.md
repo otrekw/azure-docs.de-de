@@ -1,6 +1,6 @@
 ---
 title: Abonnements in Azure API Management | Microsoft-Dokumentation
-description: Erfahren Sie mehr über das Konzept von Abonnements in Azure API Management.
+description: Erfahren Sie mehr über das Konzept von Abonnements in Azure API Management. Consumer erhalten Zugriff auf APIs mithilfe von Abonnements in Azure API Management.
 services: api-management
 documentationcenter: ''
 author: miaojiang
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/14/2018
 ms.author: apimpm
-ms.openlocfilehash: 137cbec270b40042503fc7687c9deb39b0df1aa4
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: d1ab8990d0e5c389e0454c23a31989a71b0cd9a2
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86243289"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87843775"
 ---
 # <a name="subscriptions-in-azure-api-management"></a>Abonnements in Azure API Management
 
@@ -41,7 +41,7 @@ Abonnements können verschiedenen Bereichen zugeordnet werden: einem Produkt, al
 
 ### <a name="subscriptions-for-a-product"></a>Abonnements für ein Produkt
 
-Traditionell wurden Abonnements in APIM als Bereich immer einem einzelnen [API-Produkt](api-management-terminology.md) zugeordnet. Entwickler fanden die Liste der Produkte im Entwicklerportal. Dann sendeten sie Abonnementanforderungen für die Produkte, die sie verwenden wollten. Nachdem eine Abonnementanforderung genehmigt wurde – entweder automatisch oder durch den API-Herausgeber – können die Entwickler die Schlüssel darin für den Zugriff auf alle APIs im Produkt verwenden. Zurzeit werden im Entwicklerportal nur die Produktbereichsabonnements unter dem Benutzerprofilabschnitt angezeigt. 
+Traditionell wurden Abonnements in APIM als Bereich immer einem einzelnen [API-Produkt](api-management-terminology.md) zugeordnet. Entwickler fanden die Liste der Produkte im Entwicklerportal. Dann sendeten sie Abonnementanforderungen für die Produkte, die sie verwenden wollten. Nachdem eine Abonnementanforderung genehmigt wurde – entweder automatisch oder durch den API-Herausgeber – können die Entwickler die Schlüssel darin für den Zugriff auf alle APIs im Produkt verwenden. Derzeit zeigt das Entwicklerportal die Abonnements auf Produktebene nur im Abschnitt mit dem Benutzerprofil an. 
 
 ![Produktabonnements](./media/api-management-subscriptions/product-subscription.png)
 

@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: logicappspm
 ms.topic: conceptual
 ms.date: 04/06/2020
-ms.openlocfilehash: d420f244b0d1e5ccf9a7aaa78c10f613cdbad38f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aca2c51ff14b99ba41b159cf32e59dc861de7a53
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85564263"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87826210"
 ---
 # <a name="move-logic-app-resources-to-other-azure-resource-groups-regions-or-subscriptions"></a>Verschieben von Logik-App-Ressourcen zu anderen Azure-Ressourcengruppen, -Regionen oder -Abonnements
 
@@ -31,7 +31,7 @@ Wenn Sie Ihre Logik-App oder verwandte Ressourcen zu einem anderen Azure-Abonnem
 
 * Dasselbe Azure-Abonnement, das zum Erstellen der Logik-App oder des Integrationskontos verwendet wurde, das Sie verschieben möchten.
 
-* Ressourcenbesitzerberechtigungen zum Verschieben und Einrichten der gewünschten Ressourcen. Weitere Informationen zur [rollenbasierten Zugriffssteuerung (RBAC)](../role-based-access-control/built-in-roles.md#owner).
+* Ressourcenbesitzerberechtigungen zum Verschieben und Einrichten der gewünschten Ressourcen. Erfahren Sie mehr über die [rollenbasierte Zugriffssteuerung von Azure (Azure RBAC)](../role-based-access-control/built-in-roles.md#owner).
 
 <a name="move-subscription"></a>
 
@@ -94,7 +94,7 @@ Einige Azure-Ressourcen wie lokale Datengateway-Ressourcen in Azure können in e
 
 Um beispielsweise eine Logik-App mit einem Integrationskonto zu verknüpfen, müssen sich beide Ressourcen in derselben Region befinden. In Szenarien wie einer Notfallwiederherstellung benötigen Sie in der Regel Integrationskonten, die über dieselbe Konfiguration und dieselben Artefakte verfügen. In anderen Szenarien benötigen Sie möglicherweise Integrationskonten mit unterschiedlichen Konfigurationen und Artefakten.
 
-Benutzerdefinierte Connectors in Azure Logic Apps sind für die Ersteller und Benutzer der Connectors sichtbar, die dasselbe Azure-Abonnement und denselben Azure Active Directory-Mandanten haben. Diese Connectors sind in derselben Region verfügbar, in der Logik-Apps bereitgestellt werden. Weitere Informationen finden Sie unter [Freigeben eines benutzerdefinierten Connectors in Ihrer Organisation](https://docs.microsoft.com/connectors/custom-connectors/share).
+Benutzerdefinierte Connectors in Azure Logic Apps sind für die Ersteller und Benutzer der Connectors sichtbar, die dasselbe Azure-Abonnement und denselben Azure Active Directory-Mandanten haben. Diese Connectors sind in derselben Region verfügbar, in der Logik-Apps bereitgestellt werden. Weitere Informationen finden Sie unter [Freigeben eines benutzerdefinierten Connectors in Ihrer Organisation](/connectors/custom-connectors/share).
 
 Die Vorlage, die Sie von Visual Studio erhalten, umfasst nur die Ressourcendefinitionen für Ihre Logik-App und deren Verbindungen. Wenn Ihre Logik-App also andere Ressourcen verwendet, z. B. ein Integrationskonto und B2B-Artefakte, beispielsweise Partner, Vereinbarungen und Schemas, müssen Sie die Vorlage dieses Integrationskontos mithilfe des Azure-Portals exportieren. Diese Vorlage umfasst die Ressourcendefinitionen für sowohl das Integrationskonto als auch die Artefakte. Die Vorlage ist allerdings nicht vollständig parametrisiert. Daher müssen Sie die Werte, die Sie für die Bereitstellung verwenden möchten, manuell parametrisieren.
 

@@ -1,18 +1,18 @@
 ---
 title: Behandeln von Azure Files-Problemen unter Windows | Microsoft-Dokumentation
-description: Behandeln von Azure Files-Problemen unter Windows
+description: Hier finden Sie Informationen zum Behandeln von Azure Files-Problemen unter Windows. In diesem Artikel werden allgemeine Probleme im Zusammenhang mit Azure Files aufgeführt, die auftreten können, wenn Sie eine Verbindung von Windows-Clients herstellen, und es werden mögliche Lösungen beschrieben.
 author: jeffpatt24
 ms.service: storage
 ms.topic: troubleshooting
 ms.date: 05/31/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: e855ed169a0c4eca7dda696c03deedb9e519e9bf
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: f9e4fdb0fe8872c505bbbbb10da11d8fb74a22b3
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259975"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87927214"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>Behandeln von Azure Files-Problemen unter Windows
 
@@ -305,27 +305,27 @@ Um dieses Problem zu beheben, passen Sie den Registrierungswert **DirectoryCache
  
 Sie können den Wert beispielsweise auf 0x100000 festlegen und überprüfen, ob sich die Leistung verbessert.
 
-## <a name="error-aaddstenantnotfound-in-enabling-azure-active-directory-domain-service-aad-ds-authentication-for-azure-files-unable-to-locate-active-tenants-with-tenant-id-aad-tenant-id"></a>Fehler „AadDsTenantNotFound“ beim Aktivieren der AAD DS-Authentifizierung (Azure Active Directory Domain Service) für Azure Files mit der Fehlermeldung „Unable to locate active tenants with tenant Id aad-tenant-id“ (Es wurden keine aktiven Mandanten mit der Mandanten-ID „aad-tenant-id“ gefunden)
+## <a name="error-aaddstenantnotfound-in-enabling-azure-active-directory-domain-service-azure-ad-ds-authentication-for-azure-files-unable-to-locate-active-tenants-with-tenant-id-aad-tenant-id"></a>Fehler „AadDsTenantNotFound“ beim Aktivieren der Authentifizierung von Azure Active Directory Domain Services (Azure AD DS) für Azure Files mit der Fehlermeldung „Unable to locate active tenants with tenant Id aad-tenant-id“ (Es wurden keine aktiven Mandanten mit der Mandanten-ID „aad-tenant-id“ gefunden.)
 
 ### <a name="cause"></a>Ursache
 
-Der Fehler „AadDsTenantNotFound“ tritt auf, wenn Sie versuchen, die [Aktivierung der Azure AD DS-Authentifizierung (Azure Active Directory Domain Services) für Azure Files](storage-files-identity-auth-active-directory-domain-service-enable.md) für ein Speicherkonto vorzunehmen, für das [Azure Active Directory Domain Services (AAD DS)](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-overview) nicht im AAD-Mandanten des zugehörigen Abonnements erstellt wurde.  
+Der Fehler „AadDsTenantNotFound“ tritt auf, wenn Sie versuchen, die [Aktivierung der Azure Active Directory Domain Services-Authentifizierung über Azure Files](storage-files-identity-auth-active-directory-domain-service-enable.md) für ein Speicherkonto vorzunehmen, für das [Azure Active Directory Domain Services (Azure AD DS)](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-overview) nicht im Azure AD-Mandanten des zugehörigen Abonnements erstellt wurde.  
 
 ### <a name="solution"></a>Lösung
 
-Aktivieren Sie AAD DS im AAD-Mandanten des Abonnements, in dem Ihr Speicherkonto bereitgestellt ist. Sie benötigen Administratorrechte für den AAD-Mandanten, um eine verwaltete Domäne zu erstellen. Wenn Sie nicht der Administrator des Azure AD-Mandanten sind, wenden Sie sich an den Administrator und folgen Sie der schrittweisen Anleitung zum [Aktivieren von Azure Active Directory Domain Services über das Azure-Portal](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started).
+Aktivieren Sie Azure AD DS für den Azure AD-Mandanten des Abonnements, in dem Ihr Speicherkonto bereitgestellt ist. Sie benötigen Administratorrechte für den Azure AD-Mandanten, um eine verwaltete Domäne erstellen zu können. Wenn Sie nicht der Administrator des Azure AD-Mandanten sind, wenden Sie sich an den Administrator und folgen Sie der schrittweisen Anleitung zum [Aktivieren von Azure Active Directory Domain Services über das Azure-Portal](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started).
 
 [!INCLUDE [storage-files-condition-headers](../../../includes/storage-files-condition-headers.md)]
 
-## <a name="error-system-error-1359-has-occurred-an-internal-error-received-over-smb-access-to-file-shares-with-azure-active-directory-domain-service-aad-ds-authentication-enabled"></a>Fehler „Systemfehler 1359 ist aufgetreten. Interner Fehler“, empfangen über SMB-Zugriff auf Dateifreigaben mit aktivierter AAD DS-Authentifizierung (Azure Active Directory Domain Service)
+## <a name="error-system-error-1359-has-occurred-an-internal-error-received-over-smb-access-to-file-shares-with-azure-active-directory-domain-service-azure-ad-ds-authentication-enabled"></a>Fehler „Systemfehler 1359 ist aufgetreten. Interner Fehler“, empfangen über SMB-Zugriff auf Dateifreigaben mit aktivierter Azure Active Directory Domain Services-Authentifizierung (Azure AD DS-Authentifizierung)
 
 ### <a name="cause"></a>Ursache
 
-Fehler „Systemfehler 1359 ist aufgetreten. Interner Fehler“ tritt auf, wenn Sie versuchen, eine Verbindung mit Ihrer Dateifreigabe herzustellen, und die AAD DS-Authentifizierung für einen AAD DS mit einem DNS-Domänennamen aktiviert ist, der mit einem numerischen Zeichen beginnt. Wenn der DNS-Domänenname für Ihren AAD DS beispielsweise „1domain“ lautet und Sie versuchen, die Dateifreigabe mit AAD-Anmeldeinformationen einzubinden, wird dieser Fehler angezeigt. 
+Fehler „Systemfehler 1359 ist aufgetreten. Interner Fehler“ tritt auf, wenn Sie versuchen, eine Verbindung mit Ihrer Dateifreigabe herzustellen, und die Azure AD DS-Authentifizierung für eine Azure AD DS-Instanz mit einem DNS-Domänennamen aktiviert ist, der mit einem numerischen Zeichen beginnt. Wenn der DNS-Name Ihrer Azure AD DS-Domäne beispielsweise „1domain“ lautet und Sie versuchen, die Dateifreigabe mit Azure AD-Anmeldeinformationen einzubinden, wird dieser Fehler angezeigt. 
 
 ### <a name="solution"></a>Lösung
 
-Derzeit können Sie die nochmalige Bereitstellung des AAD DS mit einem neuen DNS-Domänennamen in Erwägung ziehen, für den die folgenden Regeln gelten:
+Derzeit können Sie die erneute Bereitstellung Ihrer Azure AD DS-Instanz mit einem neuen DNS-Domänennamen in Erwägung ziehen, für den die folgenden Regeln gelten:
 - Namen dürfen nicht mit einem numerischen Zeichen beginnen.
 - Die Namen müssen zwischen 3 und 63 Zeichen lang sein.
 
@@ -350,7 +350,7 @@ Das Cmdlet führt diese nachfolgenden Überprüfungen der Reihe nach durch und b
 4. CheckGetKerberosTicket: Versuch, ein Kerberos-Ticket für die Verbindung mit dem Speicherkonto zu erhalten 
 5. CheckADObjectPasswordIsCorrect: Sicherstellen, dass das für die AD-Identität konfigurierte Kennwort, das das Speicherkonto darstellt, mit dem kerb1- oder kerb2-Schlüssel des Speicherkontos übereinstimmt
 6. CheckSidHasAadUser: Überprüfung, ob der angemeldete AD-Benutzer mit Azure AD synchronisiert ist. Wenn Sie nachschlagen möchten, ob ein bestimmter AD-Benutzer mit Azure AD synchronisiert ist, können Sie den Benutzernamen und die Domäne in den Eingabeparametern angeben.
-7. CheckAadUserHasSid: Überprüfung, ob ein Azure AD-Benutzer über eine SID in AD verfügt; für diese Prüfung muss ein Benutzer die ObjectID des Azure AD-Benutzers mit dem Parameter „-ObjectId“ eingeben. 
+7. CheckAadUserHasSid: Überprüfen Sie, ob ein Azure AD-Benutzer über eine SID in AD verfügt. Für diese Überprüfung muss ein Benutzer die Objekt-ID des Azure AD-Benutzers mit dem Parameter „-ObjectId“ eingeben. 
 8. CheckStorageAccountDomainJoined: Überprüfung der Eigenschaften des Speicherkontos, um festzustellen, ob AD-Authentifizierung aktiviert wurde und die AD-Eigenschaften des Kontos aufgefüllt wurden.
 
 ## <a name="unable-to-configure-directoryfile-level-permissions-windows-acls-with-windows-file-explorer"></a>Berechtigungen auf Verzeichnis-/Dateiebene (Windows-ACLs) können nicht mit Windows-Datei-Explorer konfiguriert werden

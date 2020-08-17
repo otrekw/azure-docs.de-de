@@ -4,12 +4,12 @@ description: Empfehlungen zum Schutz von Images und Secrets für Azure Container
 ms.topic: article
 ms.date: 01/10/2020
 ms.custom: ''
-ms.openlocfilehash: d339683c8864b85f7ccb1ac3c982f03aa7abf103
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f49f115e10326887cf4d23406437467256b7df2e
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84907022"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87922233"
 ---
 # <a name="security-considerations-for-azure-container-instances"></a>Sicherheitsüberlegungen für Azure Container Instances
 
@@ -40,7 +40,7 @@ Lösungen zur Sicherheitsüberwachung und Imageüberprüfung wie [Twistlock](htt
 
 ### <a name="protect-credentials"></a>Schützen von Anmeldeinformationen
 
-Container können sich über mehrere Cluster und Azure-Regionen erstrecken. Daher müssen Sie die für Anmeldungen oder API-Zugriffe erforderlichen Anmeldeinformationen wie Kennwörter oder Token schützen. Stellen Sie sicher, dass nur berechtigte Benutzer auf diese Container während der Übertragung und im Ruhezustand zugreifen können. Inventarisieren Sie alle Anmeldegeheimnisse, und verlangen Sie dann von den Entwicklern, dass sie neue Tools für die Verwaltung von Geheimnissen verwenden, die für Containerplattformen konzipiert sind.  Stellen Sie sicher, dass Ihre Lösung verschlüsselte Datenbanken, TLS-Verschlüsselung für Geheimnisdaten während der Übertragung und [rollenbasierte Zugriffssteuerung](../role-based-access-control/overview.md) mit der geringsten Berechtigung beinhaltet. [Azure Key Vault](../key-vault/general/secure-your-key-vault.md) ist ein Clouddienst und schützt Verschlüsselungsschlüssel und Geheimnisse (wie Zertifikate, Verbindungszeichenfolgen und Kennwörter) für Ihre containerisierten Anwendungen. Da es sich hierbei um vertrauliche und geschäftskritische Daten handelt, sichern Sie den Zugriff auf Key Vault-Instanzen so, dass nur autorisierte Anwendungen und Benutzer darauf zugreifen können.
+Container können sich über mehrere Cluster und Azure-Regionen erstrecken. Daher müssen Sie die für Anmeldungen oder API-Zugriffe erforderlichen Anmeldeinformationen wie Kennwörter oder Token schützen. Stellen Sie sicher, dass nur berechtigte Benutzer auf diese Container während der Übertragung und im Ruhezustand zugreifen können. Inventarisieren Sie alle Anmeldegeheimnisse, und verlangen Sie dann von den Entwicklern, dass sie neue Tools für die Verwaltung von Geheimnissen verwenden, die für Containerplattformen konzipiert sind.  Stellen Sie sicher, dass Ihre Lösung verschlüsselte Datenbanken, TLS-Verschlüsselung für Geheimnisdaten während der Übertragung und [rollenbasierte Zugriffssteuerung in Azure (Azure RBAC)](../role-based-access-control/overview.md) mit der geringsten Berechtigung beinhaltet. [Azure Key Vault](../key-vault/general/secure-your-key-vault.md) ist ein Clouddienst und schützt Verschlüsselungsschlüssel und Geheimnisse (wie Zertifikate, Verbindungszeichenfolgen und Kennwörter) für Ihre containerisierten Anwendungen. Da es sich hierbei um vertrauliche und geschäftskritische Daten handelt, sichern Sie den Zugriff auf Key Vault-Instanzen so, dass nur autorisierte Anwendungen und Benutzer darauf zugreifen können.
 
 ## <a name="considerations-for-the-container-ecosystem"></a>Überlegungen zum Containerökosystem
 

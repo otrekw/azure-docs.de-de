@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/03/2020
 ms.author: erhopf
 ms.custom: seodec18, seo-javascript-october2019
-ms.openlocfilehash: 4604bfe7c815f79733f99a1a3727e4c68527e7ec
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: c15601b4c58ce072881b3c244f10bc196bceb853
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80656125"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88167809"
 ---
 # <a name="try-the-speech-service-for-free"></a>Kostenloses Testen des Speech-Diensts
 
@@ -87,7 +87,7 @@ Um von einem Abonnement zu einem anderen zu wechseln (z.B. wenn Ihre kostenlose 
 
 ## <a name="about-regions"></a>Informationen zu Regionen
 
-- Wenn Ihre Anwendung ein [Speech SDK](speech-sdk.md) verwendet, geben Sie beim Erstellen einer Sprachkonfiguration den Regionscode (z.B. `westus`) an.
+- Wenn Ihre Anwendung ein [Speech SDK](speech-sdk.md) verwendet, geben Sie beim Erstellen einer Sprachkonfiguration den Regionsbezeichner (z. B. `westus`) an.
 - Wenn Ihre Anwendung eine der [REST-APIs](rest-apis.md) des Sprachdiensts verwendet, ist die Region Teil des Endpunkt-URIs, den Sie bei der Anforderung verwenden.
 - Schlüssel, die für eine Region erstellt wurden, sind nur in dieser Region gültig. Der Versuch, sie mit anderen Regionen zu verwenden, führt zu Authentifizierungsfehlern.
 
@@ -96,5 +96,5 @@ Um von einem Abonnement zu einem anderen zu wechseln (z.B. wenn Ihre kostenlose 
 Arbeiten Sie einen unserer 10-Minuten-Schnellstarts durch, oder sehen Sie sich unsere SDK-Beispiele an:
 
 > [!div class="nextstepaction"]
-> [Schnellstart: Erkennen von Sprache in C#](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnet)
+> [Schnellstart: Erkennen von Sprache mit der Speech CLI](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programmer-tool-spx)
 > [Speech SDK-Beispiele](speech-sdk.md#sample-source-code)

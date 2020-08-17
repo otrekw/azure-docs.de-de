@@ -1,6 +1,6 @@
 ---
 title: Mobility Service-Datenstrukturen in Azure Maps | Microsoft Azure Maps
-description: In diesem Artikel erfahren Sie mehr über allgemeine Felder und Datenstrukturen, die über die Microsoft Azure Maps Mobility Services zurückgegeben werden.
+description: Grundlegendes dazu, wie Daten in Azure Maps-Mobilitätsdiensten in Stadtbereiche organisiert werden. Sehen Sie, in welchen Feldern Informationen zu Haltestellen und Linien öffentlicher Verkehrsmittel gespeichert werden.
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 06/05/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 5c2033557d14a25c786f3f6b08dc5bd54956f7e1
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 02d89226bd2df4bfe5d11897199c50c702e7bc1c
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131275"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88033222"
 ---
 # <a name="data-structures-in-azure-maps-mobility-service"></a>Datenstrukturen in Azure Maps Mobility Service
 

@@ -1,6 +1,6 @@
 ---
 title: Geocodierungsabdeckung im Microsoft Azure Maps-Suchdienst
-description: In diesem Artikel erfahren Sie mehr über die Geocodierungsabdeckung von Microsoft Azure Maps in unterschiedlichen Ländern/Regionen.
+description: Sehen Sie, welche Regionen von der Azure Maps-Suche abgedeckt werden. Zu den Geocodierungskategorien zählen Adresspunkte, Hausnummern, Straße, Ort und Points of Interest.
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 07/28/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 6014cb4dda18a68b9149206adf034536161eb08e
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 1f79add26af40abfa320bc23a3287d8246237701
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386910"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037438"
 ---
 # <a name="azure-maps-geocoding-coverage"></a>Geocodierungsabdeckung in Azure Maps
 

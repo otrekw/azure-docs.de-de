@@ -1,6 +1,6 @@
 ---
 title: Erweiterte Richtlinien in Azure API Management | Microsoft-Dokumentation
-description: Erfahren Sie mehr über die erweiterten Richtlinien, die für die Verwendung in Azure API Management verfügbar sind.
+description: Erfahren Sie mehr über die erweiterten Richtlinien, die für die Verwendung in Azure API Management verfügbar sind. Sehen Sie sich Beispiele an, und zeigen Sie zusätzliche verfügbare Ressourcen an.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/10/2020
 ms.author: apimpm
-ms.openlocfilehash: 3843ff986fdc37c37690bee9616861f16a334c67
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 6ac3457a22128f313084ab070a5a61c2d26d4b85
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86243731"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87851680"
 ---
 # <a name="api-management-advanced-policies"></a>API Management – Erweiterte Richtlinien
 
@@ -26,7 +26,7 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
 ## <a name="advanced-policies"></a><a name="AdvancedPolicies"></a> Erweiterte Richtlinien
 
 -   [Ablaufsteuerung](api-management-advanced-policies.md#choose) – Bedingte Anwendung von Richtlinienanweisungen basierend auf den Ergebnissen der Auswertung von booleschen [Ausdrücken](api-management-policy-expressions.md)
--   [Anforderung weiterleiten](#ForwardRequest) – leitet die Anforderung an den Back-End-Dienst.
+-   [Anforderung weiterleiten](#ForwardRequest) – Leitet die Anforderung an den Back-End-Dienst.
 -   [Parallelität einschränken:](#LimitConcurrency) verhindert die Ausführung der eingeschlossenen Richtlinien durch mehr als die angegebene Anzahl von Anforderungen gleichzeitig.
 -   [Protokoll an Event Hub](#log-to-eventhub) – Sendet Nachrichten im angegebenen Format an einen von einem Protokollierungstool definierten Event Hub.
 -   [Modellantwort](#mock-response) – bricht die Pipelineausführung ab und gibt die Modellantwort unmittelbar an den Aufrufer zurück.
@@ -67,9 +67,9 @@ Die Ablaufsteuerungsrichtlinie muss mindestens ein `<when/>`-Element enthalten. 
 
 #### <a name="example"></a><a name="ChooseExample"></a> Beispiel
 
-Das folgende Beispiel enthält eine [set-variable](api-management-advanced-policies.md#set-variable)-Richtlinie und zwei Ablaufsteuerungsrichtlinien.
+Das folgende Beispiel zeigt eine [set-variable](api-management-advanced-policies.md#set-variable)-Richtlinie und zwei Ablaufsteuerungsrichtlinien.
 
-Die „set-variable“-Richtlinie befindet sich im Abschnitt für den eingehenden Datenverkehr und erstellt eine boolesche `isMobile`-[Kontext](api-management-policy-expressions.md#ContextVariables)variable, die auf „true“ festgelegt ist, wenn der `User-Agent`-Anforderungsheader den Text `iPad` oder `iPhone` enthält.
+Die "set-variable"-Richtlinie befindet sich im "inbound"-Abschnitt und erstellt die boolesche Kontextvariable ([context](api-management-policy-expressions.md#ContextVariables)-Variable) `isMobile`, die auf "true" festgelegt ist, wenn der `User-Agent`-Anforderungsheader den Text `iPad` oder `iPhone` enthält.
 
 Die erste Ablaufsteuerungsrichtlinie befindet sich ebenfalls im Abschnitt für eingehenden Datenverkehr und wendet bedingungsabhängig eine von zwei Richtlinien vom Typ [Abfrageparameter setzen](api-management-transformation-policies.md#SetQueryStringParameter) an. Dies richtet sich nach dem Wert der Kontextvariablen `isMobile`.
 
@@ -130,7 +130,7 @@ In diesem Beispiel wird gezeigt, wie Inhalte gefiltert werden, indem Datenelemen
 | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
 | choose    | Stammelement                                                                                                                                                                                                                                                             | Ja      |
 | when      | Die Bedingung, die für die Teile `if` oder `ifelse` der `choose`-Richtlinie verwendet werden soll. Wenn die `choose`-Richtlinie über mehrere `when`-Abschnitte verfügt, werden diese nacheinander ausgewertet. Wenn die Bedingung (`condition`) eines when-Elements bei der Auswertung `true` ergibt, werden keine weiteren `when`-Bedingungen ausgewertet. | Ja      |
-| otherwise | Enthält den Richtliniencodeausschnitt, der verwendet werden soll, wenn die Auswertung für keine `when`-Bedingung `true` ergibt.                                                                                                                                                                               | Nein        |
+| otherwise | Enthält den Richtliniencodeausschnitt, der verwendet werden soll, wenn die Auswertung für keine `when`-Bedingung `true` ergibt.                                                                                                                                                                               | Nein       |
 
 ### <a name="attributes"></a>Attributes
 
@@ -252,10 +252,10 @@ Bei dieser Richtlinie auf Vorgangsebene werden Anforderungen nicht an den Back-E
 
 | attribute                                     | BESCHREIBUNG                                                                                                                                                                                                                                                                                                    | Erforderlich | Standard |
 | --------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- |
-| timeout="integer"                             | Die Zeitspanne in Sekunden, die darauf gewartet wird, dass der Back-End-Dienst die HTTP-Antwortheader zurückgibt. Danach wird ein Timeoutfehler ausgelöst. Der Mindestwert beträgt 0 Sekunden. Werte, die größer als 240 Sekunden sind, werden möglicherweise nicht berücksichtigt, weil die zugrunde liegende Netzwerkinfrastruktur Verbindungen im Leerlauf nach dieser Zeitspanne trennen kann. | Nein        | Keine    |
-| follow-redirects="false &#124; true"          | Gibt an, ob Umleitungen vom Back-End-Dienst vom Gateway verfolgt oder an den Aufrufer zurückgegeben werden.                                                                                                                                                                                                    | Nein        | false   |
-| buffer-request-body="false &#124; true"       | Bei Festlegung auf „true“ wird die Anforderung gepuffert und bei [Wiederholung](api-management-advanced-policies.md#Retry) wiederverwendet.                                                                                                                                                                                               | Nein        | false   |
-| fail-on-error-status-code="false &#124; true" | Wenn diese Einstellung auf „true“ festgelegt ist, wird der Abschnitt [on-error](api-management-error-handling-policies.md) für Antwortcodes im Bereich 400 bis 599 (jeweils einschließlich) ausgelöst.                                                                                                                                                                      | Nein        | false   |
+| timeout="integer"                             | Die Zeitspanne in Sekunden, die darauf gewartet wird, dass der Back-End-Dienst die HTTP-Antwortheader zurückgibt. Danach wird ein Timeoutfehler ausgelöst. Der Mindestwert beträgt 0 Sekunden. Werte, die größer als 240 Sekunden sind, werden möglicherweise nicht berücksichtigt, weil die zugrunde liegende Netzwerkinfrastruktur Verbindungen im Leerlauf nach dieser Zeitspanne trennen kann. | Nein       | Keine    |
+| follow-redirects="false &#124; true"          | Gibt an, ob Umleitungen vom Back-End-Dienst vom Gateway verfolgt oder an den Aufrufer zurückgegeben werden.                                                                                                                                                                                                    | Nein       | false   |
+| buffer-request-body="false &#124; true"       | Bei Festlegung auf „true“ wird die Anforderung gepuffert und bei [Wiederholung](api-management-advanced-policies.md#Retry) wiederverwendet.                                                                                                                                                                                               | Nein       | false   |
+| fail-on-error-status-code="false &#124; true" | Wenn diese Einstellung auf „true“ festgelegt ist, wird der Abschnitt [on-error](api-management-error-handling-policies.md) für Antwortcodes im Bereich 400 bis 599 (jeweils einschließlich) ausgelöst.                                                                                                                                                                      | Nein       | false   |
 
 ### <a name="usage"></a>Verwendung
 
@@ -305,7 +305,7 @@ Das folgende Beispiel veranschaulicht das Beschränken der Anzahl der Anforderun
 | attribute | BESCHREIBUNG                                                                                        | Erforderlich | Standard |
 | --------- | -------------------------------------------------------------------------------------------------- | -------- | ------- |
 | Schlüssel       | Eine Zeichenfolge. Ausdruck zulässig. Gibt den Bereich der Parallelität an. Kann von mehreren Richtlinien verwendet werden. | Ja      | –     |
-| max-count | Eine ganze Zahl Gibt eine maximale Anzahl von Anforderungen an, die an die Richtlinie weitergeleitet werden können           | Ja      | –     |
+| max-count | Eine ganze Zahl. Gibt eine maximale Anzahl von Anforderungen an, die an die Richtlinie weitergeleitet werden können           | Ja      | –     |
 
 ### <a name="usage"></a>Verwendung
 
@@ -402,8 +402,8 @@ status code and media type. If no example or schema found, the content is empty.
 
 | attribute    | BESCHREIBUNG                                                                                           | Erforderlich | Standard |
 | ------------ | ----------------------------------------------------------------------------------------------------- | -------- | ------- |
-| status-code  | Gibt den Statuscode der Antwort an und wird verwendet, um ein passendes Beispiel oder Schema auszuwählen                 | Nein        | 200     |
-| content-type | Gibt den Headerwert `Content-Type` für die Antwort an und wird verwendet, um ein passendes Beispiel oder Schema auszuwählen | Nein        | Keine    |
+| status-code  | Gibt den Statuscode der Antwort an und wird verwendet, um ein passendes Beispiel oder Schema auszuwählen                 | Nein       | 200     |
+| content-type | Gibt den Headerwert `Content-Type` für die Antwort an und wird verwendet, um ein passendes Beispiel oder Schema auszuwählen | Nein       | Keine    |
 
 ### <a name="usage"></a>Verwendung
 
@@ -464,9 +464,9 @@ Im folgenden Beispiel wird mit einem exponentiellen Wiederholungsalgorithmus bis
 | condition        | Ein boolesches Literal oder ein [Ausdruck](api-management-policy-expressions.md), mit dem angegeben wird, ob Wiederholungsversuche beendet (`false`) oder fortgesetzt (`true`) werden sollen.      | Ja      | –     |
 | count            | Eine positive Zahl, mit der die maximale Anzahl von Wiederholungsversuchen angegeben wird.                                                                                | Ja      | –     |
 | interval         | Ein positiver Wert in Sekunden, mit dem das Warteintervall zwischen den Wiederholungsversuchen angegeben wird.                                                                 | Ja      | –     |
-| max-interval     | Ein positiver Wert in Sekunden, mit dem das maximale Warteintervall zwischen den Wiederholungsversuchen angegeben wird. Wird zum Implementieren eines exponentiellen Wiederholungsalgorithmus verwendet. | Nein        | –     |
-| delta            | Ein positiver Wert in Sekunden, mit dem das Inkrement für das Warteintervall angegeben wird. Wird zum Implementieren der linearen und exponentiellen Wiederholungsalgorithmen verwendet.             | Nein        | –     |
-| first-fast-retry | Wenn `true` festgelegt ist, wird der erste Wiederholungsversuch sofort durchgeführt.                                                                                  | Nein        | `false` |
+| max-interval     | Ein positiver Wert in Sekunden, mit dem das maximale Warteintervall zwischen den Wiederholungsversuchen angegeben wird. Wird zum Implementieren eines exponentiellen Wiederholungsalgorithmus verwendet. | Nein       | –     |
+| delta            | Ein positiver Wert in Sekunden, mit dem das Inkrement für das Warteintervall angegeben wird. Wird zum Implementieren der linearen und exponentiellen Wiederholungsalgorithmen verwendet.             | Nein       | –     |
+| first-fast-retry | Wenn `true` festgelegt ist, wird der erste Wiederholungsversuch sofort durchgeführt.                                                                                  | Nein       | `false` |
 
 > [!NOTE]
 > Wenn nur `interval` angegeben ist, werden Wiederholungsversuche nach **festen** Intervallen durchgeführt.
@@ -513,9 +513,9 @@ Mit der `return-response`-Richtlinie wird die Pipelineausführung abgebrochen un
 | Element         | BESCHREIBUNG                                                                               | Erforderlich |
 | --------------- | ----------------------------------------------------------------------------------------- | -------- |
 | return-response | Stammelement                                                                             | Ja      |
-| set-header      | Eine [set-header](api-management-transformation-policies.md#SetHTTPheader)-Richtlinienanweisung. | Nein        |
-| set-body        | Eine [set-body](api-management-transformation-policies.md#SetBody)-Richtlinienanweisung.         | Nein        |
-| set-status      | Eine [set-status](api-management-advanced-policies.md#SetStatus)-Richtlinienanweisung.           | Nein        |
+| set-header      | Eine [set-header](api-management-transformation-policies.md#SetHTTPheader)-Richtlinienanweisung. | Nein       |
+| set-body        | Eine [set-body](api-management-transformation-policies.md#SetBody)-Richtlinienanweisung.         | Nein       |
+| set-status      | Eine [set-status](api-management-advanced-policies.md#SetStatus)-Richtlinienanweisung.           | Nein       |
 
 ### <a name="attributes"></a>Attributes
 
@@ -584,18 +584,18 @@ Diese Beispielrichtlinie zeigt ein Beispiel für die Verwendung der `send-one-wa
 | -------------------------- | ----------------------------------------------------------------------------------------------------------- | ------------------------------- |
 | send-one-way-request       | Stammelement                                                                                               | Ja                             |
 | url                        | Die URL der Anforderung.                                                                                     | „Nein“, wenn „mode=copy“, andernfalls „Ja“. |
-| method                     | Die HTTP-Methode für die Anforderung.                                                                            | „Nein“, wenn „mode=copy“, andernfalls „Ja“. |
-| Header                     | Anforderungsheader. Verwenden Sie mehrere Headerelemente für mehrere Anforderungsheader.                                  | Nein                               |
-| body                       | Anforderungstext                                                                                           | Nein                               |
-| authentication-certificate | [Zertifikat für die Clientauthentifizierung](api-management-authentication-policies.md#ClientCertificate) | Nein                               |
+| Methode                     | Die HTTP-Methode für die Anforderung.                                                                            | „Nein“, wenn „mode=copy“, andernfalls „Ja“. |
+| header                     | Anforderungsheader. Verwenden Sie mehrere Headerelemente für mehrere Anforderungsheader.                                  | Nein                              |
+| body                       | Anforderungstext                                                                                           | Nein                              |
+| authentication-certificate | [Zertifikat für die Clientauthentifizierung](api-management-authentication-policies.md#ClientCertificate) | Nein                              |
 
 ### <a name="attributes"></a>Attributes
 
 | attribute     | BESCHREIBUNG                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | Erforderlich | Standard  |
 | ------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | -------- |
-| mode="string" | Bestimmt, ob dies eine neue Anforderung oder eine Kopie der aktuellen Anforderung ist. Im Ausgangsmodus wird der Anforderungstext durch „mode=copy“ nicht initialisiert.                                                                                                                                                                                                                                                                                                                                                                                                                                                                | Nein        | Neu      |
+| mode="string" | Bestimmt, ob dies eine neue Anforderung oder eine Kopie der aktuellen Anforderung ist. Im Ausgangsmodus wird der Anforderungstext durch „mode=copy“ nicht initialisiert.                                                                                                                                                                                                                                                                                                                                                                                                                                                                | Nein       | Neu      |
 | name          | Gibt den Namen des festzulegenden Headers an.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | Ja      | –      |
-| exists-action | Gibt die auszuführende Aktion an, wenn ein Header bereits angegeben wurde. Dieses Attribut muss einen der folgenden Werte aufweisen.<br /><br /> – override – Ersetzt den Wert des vorhandenen Headers.<br />– skip – Ersetzt den vorhandenen Headerwert nicht.<br />– append – Fügt den Wert an den vorhandenen Headerwert an.<br />– delete – Entfernt den Header aus der Anforderung.<br /><br /> Bei `override` führt die Auflistung mehrerer Einträge mit demselben Namen dazu, dass der Header gemäß aller Einträge festgelegt wird (die mehrfach aufgeführt sind); nur die aufgelisteten Werte werden im Ergebnis festgelegt. | Nein        | override |
+| exists-action | Gibt die auszuführende Aktion an, wenn ein Header bereits angegeben wurde. Dieses Attribut muss einen der folgenden Werte aufweisen.<br /><br /> – override – Ersetzt den Wert des vorhandenen Headers.<br />– skip – Ersetzt den vorhandenen Headerwert nicht.<br />– append – Fügt den Wert an den vorhandenen Headerwert an.<br />– delete – Entfernt den Header aus der Anforderung.<br /><br /> Bei `override` führt die Auflistung mehrerer Einträge mit demselben Namen dazu, dass der Header gemäß aller Einträge festgelegt wird (die mehrfach aufgeführt sind); nur die aufgelisteten Werte werden im Ergebnis festgelegt. | Nein       | override |
 
 ### <a name="usage"></a>Verwendung
 
@@ -668,21 +668,21 @@ In diesem Beispiel ist eine Möglichkeit dargestellt, wie Sie ein Verweistoken m
 | -------------------------- | ----------------------------------------------------------------------------------------------------------- | ------------------------------- |
 | send-request               | Stammelement                                                                                               | Ja                             |
 | url                        | Die URL der Anforderung.                                                                                     | „Nein“, wenn „mode=copy“, andernfalls „Ja“. |
-| method                     | Die HTTP-Methode für die Anforderung.                                                                            | „Nein“, wenn „mode=copy“, andernfalls „Ja“. |
-| Header                     | Anforderungsheader. Verwenden Sie mehrere Headerelemente für mehrere Anforderungsheader.                                  | Nein                               |
-| body                       | Anforderungstext                                                                                           | Nein                               |
-| authentication-certificate | [Zertifikat für die Clientauthentifizierung](api-management-authentication-policies.md#ClientCertificate) | Nein                               |
+| Methode                     | Die HTTP-Methode für die Anforderung.                                                                            | „Nein“, wenn „mode=copy“, andernfalls „Ja“. |
+| header                     | Anforderungsheader. Verwenden Sie mehrere Headerelemente für mehrere Anforderungsheader.                                  | Nein                              |
+| body                       | Anforderungstext                                                                                           | Nein                              |
+| authentication-certificate | [Zertifikat für die Clientauthentifizierung](api-management-authentication-policies.md#ClientCertificate) | Nein                              |
 
 ### <a name="attributes"></a>Attributes
 
 | attribute                       | BESCHREIBUNG                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | Erforderlich | Standard  |
 | ------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | -------- |
-| mode="string"                   | Bestimmt, ob dies eine neue Anforderung oder eine Kopie der aktuellen Anforderung ist. Im Ausgangsmodus wird der Anforderungstext durch „mode=copy“ nicht initialisiert.                                                                                                                                                                                                                                                                                                                                                                                                                                                                | Nein        | Neu      |
+| mode="string"                   | Bestimmt, ob dies eine neue Anforderung oder eine Kopie der aktuellen Anforderung ist. Im Ausgangsmodus wird der Anforderungstext durch „mode=copy“ nicht initialisiert.                                                                                                                                                                                                                                                                                                                                                                                                                                                                | Nein       | Neu      |
 | response-variable-name="string" | Der Name der Kontextvariable, die ein Antwortobjekt empfängt. Wenn die Variable nicht vorhanden ist, wird sie bei erfolgreicher Ausführung der Richtlinie erstellt und ist dann über die Sammlung [`context.Variable`](api-management-policy-expressions.md#ContextVariables) zugänglich.                                                                                                                                                                                                                                                                                                                          | Ja      | –      |
-| timeout="integer"               | Das Zeitüberschreitungsintervall in Sekunden, bis für den Aufruf der URL ein Fehler auftritt.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | Nein        | 60       |
-| ignore-error                    | Bei „true“ und einem Fehler für die Anforderung:<br /><br /> – Wenn „response-variable-name“ angegeben wurde, ist dies ein Nullwert.<br />– Wenn „response-variable-name“ nicht angegeben wurde, wird „context.Request“ nicht aktualisiert.                                                                                                                                                                                                                                                                                                                                                                                   | Nein        | false    |
+| timeout="integer"               | Das Zeitüberschreitungsintervall in Sekunden, bis für den Aufruf der URL ein Fehler auftritt.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | Nein       | 60       |
+| ignore-error                    | Bei „true“ und einem Fehler für die Anforderung:<br /><br /> – Wenn „response-variable-name“ angegeben wurde, ist dies ein Nullwert.<br />– Wenn „response-variable-name“ nicht angegeben wurde, wird „context.Request“ nicht aktualisiert.                                                                                                                                                                                                                                                                                                                                                                                   | Nein       | false    |
 | name                            | Gibt den Namen des festzulegenden Headers an.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | Ja      | –      |
-| exists-action                   | Gibt die auszuführende Aktion an, wenn ein Header bereits angegeben wurde. Dieses Attribut muss einen der folgenden Werte aufweisen.<br /><br /> – override – Ersetzt den Wert des vorhandenen Headers.<br />– skip – Ersetzt den vorhandenen Headerwert nicht.<br />– append – Fügt den Wert an den vorhandenen Headerwert an.<br />– delete – Entfernt den Header aus der Anforderung.<br /><br /> Bei `override` führt die Auflistung mehrerer Einträge mit demselben Namen dazu, dass der Header gemäß aller Einträge festgelegt wird (die mehrfach aufgeführt sind); nur die aufgelisteten Werte werden im Ergebnis festgelegt. | Nein        | override |
+| exists-action                   | Gibt die auszuführende Aktion an, wenn ein Header bereits angegeben wurde. Dieses Attribut muss einen der folgenden Werte aufweisen.<br /><br /> – override – Ersetzt den Wert des vorhandenen Headers.<br />– skip – Ersetzt den vorhandenen Headerwert nicht.<br />– append – Fügt den Wert an den vorhandenen Headerwert an.<br />– delete – Entfernt den Header aus der Anforderung.<br /><br /> Bei `override` führt die Auflistung mehrerer Einträge mit demselben Namen dazu, dass der Header gemäß aller Einträge festgelegt wird (die mehrfach aufgeführt sind); nur die aufgelisteten Werte werden im Ergebnis festgelegt. | Nein       | override |
 
 ### <a name="usage"></a>Verwendung
 
@@ -723,8 +723,8 @@ Beachten Sie die Verwendung von [Eigenschaften](api-management-howto-properties.
 | attribute         | BESCHREIBUNG                                            | Erforderlich | Standard |
 | ----------------- | ------------------------------------------------------ | -------- | ------- |
 | url="string"      | Proxy-URL im Format http://host:port.             | Ja      | –     |
-| username="string" | Der Benutzername, der für die Authentifizierung mit dem Proxy verwendet wird. | Nein        | –     |
-| password="string" | Kennwort, das für die Authentifizierung mit dem Proxy verwendet wird. | Nein        | –     |
+| username="string" | Der Benutzername, der für die Authentifizierung mit dem Proxy verwendet wird. | Nein       | –     |
+| password="string" | Kennwort, das für die Authentifizierung mit dem Proxy verwendet wird. | Nein       | –     |
 
 ### <a name="usage"></a>Verwendung
 
@@ -850,7 +850,7 @@ Mit der `set-variable`-Richtlinie wird eine [Kontext](api-management-policy-expr
 
 ### <a name="example"></a><a name="set-variableExample"></a> Beispiel
 
-Im folgenden Beispiel wird eine set-variable-Richtlinie im Abschnitt für den eingehenden Datenverkehr veranschaulicht. Diese „set-variable“-Richtlinie erstellt eine boolesche `isMobile`-[Kontext](api-management-policy-expressions.md#ContextVariables)variable, die auf „true“ festgelegt ist, wenn der `User-Agent`-Anforderungsheader den Text `iPad` oder `iPhone` enthält.
+Im folgenden Beispiel wird eine set-variable-Richtlinie im Abschnitt für den eingehenden Datenverkehr veranschaulicht. Diese "set-variable"-Richtlinie erstellt die boolesche [Kontext](api-management-policy-expressions.md#ContextVariables)variable `isMobile`, die auf "true" festgelegt wird, wenn der `User-Agent`-Anforderungsheader den Text `iPad` oder `iPhone` enthält.
 
 ```xml
 <set-variable name="IsMobile" value="@(context.Request.Headers["User-Agent"].Contains("iPad") || context.Request.Headers["User-Agent"].Contains("iPhone"))" />
@@ -887,7 +887,7 @@ Ausdrücke, die in der `set-variable`-Richtlinie verwendet werden, müssen einen
 -   System.UInt32
 -   System.UInt64
 -   System.Int16
--   System. Int32
+-   System.Int32
 -   System.Int64
 -   System.Decimal
 -   System.Single
@@ -946,14 +946,14 @@ Die `trace`-Richtlinie fügt der API-Inspektor-Ausgabe, Application Insights-Tel
 | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
 | Ablaufverfolgung    | Stammelement                                                                                                                                        | Ja      |
 | message  | Eine Zeichenfolge oder ein Ausdruck, die bzw. der protokolliert werden soll.                                                                                                                 | Ja      |
-| metadata | Fügt der Application Insights-[Ablaufverfolgungstelemetrie](../azure-monitor/app/data-model-trace-telemetry.md) eine benutzerdefinierte Eigenschaft hinzu. | Nein        |
+| metadata | Fügt der Application Insights-[Ablaufverfolgungstelemetrie](../azure-monitor/app/data-model-trace-telemetry.md) eine benutzerdefinierte Eigenschaft hinzu. | Nein       |
 
 ### <a name="attributes"></a>Attributes
 
 | attribute | BESCHREIBUNG                                                                                                               | Erforderlich | Standard |
 | --------- | ------------------------------------------------------------------------------------------------------------------------- | -------- | ------- |
 | source    | Das Zeichenfolgenliteral ist für die Ablaufverfolgungsanzeige aussagekräftig und gibt die Quelle der Nachricht an.                                   | Ja      | –     |
-| severity  | Legt den Schweregrad der Ablaufverfolgung fest. Zulässige Werte sind `verbose`, `information` und `error` (vom niedrigsten zum höchsten Schweregrad). | Nein        | Ausführlich |
+| severity  | Legt den Schweregrad der Ablaufverfolgung fest. Zulässige Werte sind `verbose`, `information` und `error` (vom niedrigsten zum höchsten Schweregrad). | Nein       | Ausführlich |
 | name      | Der Name der Eigenschaft.                                                                                                     | Ja      | –     |
 | value     | Der Wert der Eigenschaft.                                                                                                    | Ja      | –     |
 
@@ -1025,7 +1025,7 @@ Im folgenden Beispiel sind zwei `choose`-Richtlinien als unmittelbar untergeordn
 
 | attribute | BESCHREIBUNG                                                                                                                                                                                                                                                                                                                                                                                                            | Erforderlich | Standard |
 | --------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- |
-| for       | Bestimmt, ob die `wait`-Richtlinie wartet, bis alle unmittelbar untergeordneten Richtlinien abgeschlossen sind, oder nur eine. Zulässige Werte sind:<br /><br /> - `all`: Es wird gewartet, bis alle unmittelbar untergeordneten Richtlinien abgeschlossen sind.<br />– any: Es wird gewartet, bis eine beliebige unmittelbar untergeordnete Richtlinie abgeschlossen ist. Nachdem die erste unmittelbar untergeordnete Richtlinie abgeschlossen wurde, wird die `wait`-Richtlinie abgeschlossen, und die Ausführung aller anderen unmittelbar untergeordneten Richtlinien wird beendet. | Nein        | all     |
+| für       | Bestimmt, ob die `wait`-Richtlinie wartet, bis alle unmittelbar untergeordneten Richtlinien abgeschlossen sind, oder nur eine. Zulässige Werte sind:<br /><br /> - `all`: Es wird gewartet, bis alle unmittelbar untergeordneten Richtlinien abgeschlossen sind.<br />– any: Es wird gewartet, bis eine beliebige unmittelbar untergeordnete Richtlinie abgeschlossen ist. Nachdem die erste unmittelbar untergeordnete Richtlinie abgeschlossen wurde, wird die `wait`-Richtlinie abgeschlossen, und die Ausführung aller anderen unmittelbar untergeordneten Richtlinien wird beendet. | Nein       | alle     |
 
 ### <a name="usage"></a>Verwendung
 

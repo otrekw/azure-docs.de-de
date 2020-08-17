@@ -8,12 +8,12 @@ ms.topic: conceptual
 author: j-martens
 ms.author: jmartens
 ms.date: 06/11/2020
-ms.openlocfilehash: 173ff8b638c40773ca2c4bdac5021f2ea4b84549
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aa754868677802b7d0000045f22090fbca62d9b6
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85555531"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87927418"
 ---
 # <a name="enterprise-and-basic-editions-of-azure-machine-learning"></a>Die Editionen Enterprise und Basic für Azure Machine Learning 
 
@@ -112,7 +112,7 @@ Informieren Sie sich über das [Durchführen eines Upgrades eines Basic-Arbeitsb
 
 | Funktionen     | Edition                 |
 |------------------------------------------------------------------------------------|:-----------:|
-| Unterstützung für [rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC)](how-to-assign-roles.md)                                           | All                     |
+| Support für [rollenbasierte Zugriffssteuerung von Azure (Azure RBAC)](how-to-assign-roles.md)                                           | All                     |
 | Unterstützung von [virtuellen Netzwerken (VNETs)](how-to-enable-virtual-network.md) für Compute                                         | All                     |
 | Bewerten der Endpunktauthentifizierung                                                    | All                     |
 | [Arbeitsbereich mit Private Link](how-to-configure-private-link.md)                                                            | All                     |

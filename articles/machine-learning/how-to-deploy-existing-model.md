@@ -1,54 +1,42 @@
 ---
 title: Verwenden und Bereitstellen vorhandener Modelle
 titleSuffix: Azure Machine Learning
-description: Erfahren Sie, wie Sie den Azure Machine Learning mit Modellen nutzen können, die außerhalb des Diensts trainiert wurden. Sie können Modelle registrieren, die außerhalb von Azure Machine Learning erstellt wurden, und diese dann als Webdienst oder Azure IoT Edge-Modul bereitstellen.
+description: Erfahren Sie, wie Sie mit Azure Machine Learning Ihre lokal trainierten ML-Modelle in die Azure-Cloud bringen können.  Sie können Modelle registrieren, die außerhalb von Azure Machine Learning erstellt wurden, und diese dann als Webdienst oder Azure IoT Edge-Modul bereitstellen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
-ms.date: 03/17/2020
+ms.date: 07/17/2020
 ms.topic: conceptual
-ms.custom: how-to, tracking-python
-ms.openlocfilehash: 7dc58540cf78356021f1fa2d33dd498381f1da7c
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.custom: how-to, devx-track-python
+ms.openlocfilehash: 04442ad2c6f12960a6c27cc96b52eae20b046851
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325830"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008201"
 ---
-# <a name="use-an-existing-model-with-azure-machine-learning"></a>Verwenden eines vorhandenen Modells mit Azure Machine Learning
+# <a name="deploy-your-existing-model-with-azure-machine-learning"></a>Bereitstellen Ihres vorhandenen Modells mit Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Erfahren Sie, wie Sie ein vorhandenes Modell für maschinelles Lernen mit Azure Machine Learning nutzen können.
+In diesem Artikel erfahren Sie, wie Sie ein Machine Learning-Modell, das Sie außerhalb von Azure Machine Learning trainiert haben, registrieren und bereitstellen können. Sie können als Webdienst oder auf einem IoT Edge-Gerät bereitgestellt werden.  Nach der Bereitstellung können Sie Ihr Modell überwachen und Datendrift in Azure Machine Learning erkennen. 
 
-Wenn Sie ein Modell für maschinelles Lernen besitzen, das außerhalb von Azure Machine Learning trainiert wurde, können Sie den Dienst weiterhin verwenden, um das Modell als Webdienst oder auf einem IoT Edge-Gerät bereitzustellen. 
-
-> [!TIP]
-> Dieser Artikel enthält grundlegende Informationen zur Registrierung und Bereitstellung eines vorhandenen Modells. Nach der Bereitstellung stellt Azure Machine Learning die Überwachung Ihres Modells bereit. Es ermöglicht auch die Speicherung von Eingabedaten, die an die Bereitstellung gesendet werden, die für die Analyse von Datenabweichungen oder das Training neuer Versionen des Modells verwendet werden können.
->
-> Weitere Informationen zu den hier verwendeten Konzepten und Begriffen finden Sie unter [Verwalten, Bereitstellen und Überwachen von Modellen für maschinelles Lernen](concept-model-management-and-deployment.md).
->
-> Allgemeine Informationen zum Bereitstellungsprozess finden Sie unter [Bereitstellen von Modellen mit Azure Machine Learning](how-to-deploy-and-where.md).
+Weitere Informationen zu den in diesem Artikel verwendeten Konzepten und Begriffen finden Sie unter [Verwalten, Bereitstellen und Überwachen von Modellen für maschinelles Lernen](concept-model-management-and-deployment.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein Azure Machine Learning-Arbeitsbereich. Weitere Informationen finden Sie unter [Erstellen eines Arbeitsbereichs](how-to-manage-workspace.md).
+* [Ein Azure Machine Learning-Arbeitsbereich](how-to-manage-workspace.md)
+  + Python-Beispiele gehen davon aus, dass die Variable `ws` auf Ihren Azure Machine Learning-Arbeitsbereich festgelegt ist. Weitere Informationen, wie Sie eine Verbindung mit einem Arbeitsbereich herstellen, finden Sie in der [Dokumentation zum Azure Machine Learning SDK für Python](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py#workspace).
+  
+  + CLI-Beispiele verwenden Platzhalter von `myworkspace` und `myresourcegroup`, die Sie durch den Namen Ihres Arbeitsbereichs und der Ressourcengruppe, die ihn enthält, ersetzen sollten.
 
-    > [!TIP]
-    > Die Python-Beispiele in diesem Artikel gehen davon aus, dass die Variable `ws` auf Ihren Azure Machine Learning-Arbeitsbereich festgelegt ist.
-    >
-    > Die CLI-Beispiele verwenden einen Platzhalter von `myworkspace` und `myresourcegroup`. Ersetzen Sie diese durch den Namen Ihres Arbeitsbereichs und die Ressourcengruppe, die ihn enthält.
-
-* Das [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).  
+* Das [Python-SDK für Azure Machine Learning](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)  
 
 * Die [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) und die [Machine Learning-CLI-Erweiterung](reference-azure-machine-learning-cli.md).
 
-* Ein trainiertes Modell. Das Modell muss dauerhaft in mindestens eine Datei in Ihrer Entwicklungsumgebung gespeichert werden.
-
-    > [!NOTE]
-    > Um die Registrierung eines Modells zu veranschaulichen, das außerhalb des Azure Machine Learning trainiert wurde, verwenden die exemplarischen Codeausschnitte in diesem Artikel die Modelle, die vom Twitter-Stimmungsanalyseprojekt von Paolo Ripamonti erstellt wurden: [https://www.kaggle.com/paoloripamonti/twitter-sentiment-analysis](https://www.kaggle.com/paoloripamonti/twitter-sentiment-analysis).
+* Ein trainiertes Modell. Das Modell muss dauerhaft in mindestens eine Datei in Ihrer Entwicklungsumgebung gespeichert werden. <br><br>Um die Registrierung eines trainierten Modells zu veranschaulichen, verwendet der Beispielcode in diesem Artikel die Modelle aus dem [Twitter-Stimmungsanalyseprojekt von Paolo Ripamonti](https://www.kaggle.com/paoloripamonti/twitter-sentiment-analysis).
 
 ## <a name="register-the-models"></a>Registrieren der Modelle
 
@@ -71,7 +59,7 @@ az ml model register -p ./models -n sentiment -w myworkspace -g myresourcegroup
 ```
 
 > [!TIP]
-> Sie können auch `tags`- und `properties`-Wörterbuchobjekte zum registrierten Modell hinzufügen. Diese Werte können später verwendet werden, um ein bestimmtes Modell zu identifizieren, z. B. das verwendete Framework, Trainingsparameter usw.
+> Sie können auch `tags`- und `properties`-Wörterbuchobjekte zum registrierten Modell hinzufügen. Diese Werte können später verwendet werden, um ein bestimmtes Modell zu identifizieren. Beispiel: das verwendete Framework, Trainingsparameter usw.
 
 Weitere Informationen finden Sie in der [az ml model register](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-register)-Referenz.
 
@@ -82,7 +70,7 @@ Weitere Informationen zur Modellregistrierung im Allgemeinen finden Sie unter [V
 
 Die Rückschlusskonfiguration definiert die Umgebung, in der das bereitgestellte Modell ausgeführt wird. Die Rückschlusskonfiguration verweist auf die folgenden Entitäten, die zum Ausführen des Modells verwendet werden, wenn es bereitgestellt wird:
 
-* Ein Eingabeskript. Diese Datei (namens `score.py`) lädt das Modell, wenn der bereitgestellte Dienst gestartet wird. Sie ist auch dafür verantwortlich, Daten zu empfangen, sie an das Modell weiterzugeben und dann eine Antwort zurückzugeben.
+* Ein Einstiegsskript namens `score.py` lädt das Modell, wenn der bereitgestellte Dienst startet. Dieses Skript ist auch dafür verantwortlich, Daten zu empfangen, sie an das Modell weiterzugeben und dann eine Antwort zurückzugeben.
 * Eine Azure Machine Learning-[Umgebung](how-to-use-environments.md). Mit einer Umgebung werden die Softwareabhängigkeiten definiert, die zum Ausführen des Modells und Eingabeskripts benötigt werden.
 
 Im folgenden Beispiel wird veranschaulicht, wie das SDK genutzt wird, um eine Umgebung zu erstellen und dann mit einer Rückschlusskonfiguration zu verwenden:
@@ -145,7 +133,7 @@ dependencies:
 
 Weitere Informationen zur Rückschlusskonfiguration finden Sie unter [Bereitstellen von Modellen mit Azure Machine Learning](how-to-deploy-and-where.md).
 
-### <a name="entry-script"></a>Eingabeskript
+### <a name="entry-script-scorepy"></a>Einstiegsskript (score.py)
 
 Das Eingabeskript weist nur zwei erforderliche Funktionen auf, `init()` und `run(data)`. Diese Funktionen werden verwendet, um den Dienst beim Start zu initialisieren und das Modell mit den von einem Client übergebenen Anforderungsdaten auszuführen. Der Rest des Skripts übernimmt das Laden und Ausführen der Modelle.
 
@@ -309,5 +297,4 @@ Weitere Informationen zur Verwendung des bereitgestellten Diensts finden Sie unt
 
 * [Überwachen Ihrer Azure Machine Learning-Modelle mit Application Insights](how-to-enable-app-insights.md)
 * [Sammeln von Daten für Modelle in der Produktion](how-to-enable-data-collection.md)
-* [Wie und wo Modelle bereitgestellt werden](how-to-deploy-and-where.md)
 * [Erstellen eines Clients für ein bereitgestelltes Modell](how-to-consume-web-service.md)

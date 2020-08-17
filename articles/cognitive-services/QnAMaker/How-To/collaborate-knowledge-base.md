@@ -1,22 +1,22 @@
 ---
 title: 'Zusammenarbeit an der Wissensdatenbank: QnA Maker'
-description: QnA Maker ermöglicht mehreren Personen, an einer Wissensdatenbank zusammenzuarbeiten. Dieses Feature wird im Rahmen der rollenbasierten Zugriffssteuerung in Azure bereitgestellt.
+description: QnA Maker ermöglicht mehreren Personen, an einer Wissensdatenbank zusammenzuarbeiten. Diese Funktion wird im Rahmen der rollenbasierten Zugriffssteuerung in Azure (Azure RBAC) bereitgestellt.
 ms.topic: conceptual
 ms.date: 07/13/2020
-ms.openlocfilehash: 4c550a36dd045873df4bc4a382e1c884466f95ad
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0d59ca83e6067c083e4bfebdb7afaaf6669dda8a
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87054059"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926846"
 ---
 # <a name="collaboration-with-authors-and-editors"></a>Zusammenarbeit mit Autoren und Redakteuren
 
 Die Zusammenarbeit erfolgt auf der Ebene der QnA Maker-Ressource, um die Einschränkung des Zugriffs von Projektmitarbeitern auf der Grundlage ihrer Rolle zu ermöglichen. Weitere Informationen zu den Konzepten im Zusammenhang mit der Authentifizierung von QnA Maker-Projektmitarbeitern finden Sie [hier](../Concepts/role-based-access-control.md).
 
-## <a name="add-role-based-access-rbac-to-your-qna-maker-resource"></a>Hinzufügen der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) zu Ihrer QnA Maker-Ressource
+## <a name="add-azure-role-based-access-control-azure-rbac-to-your-qna-maker-resource"></a>Hinzufügen der rollenbasierten Zugriffssteuerung in Azure (Role-Based Access Control, Azure RBAC) zu Ihrer QnA Maker-Ressource
 
-Mit QnA Maker können mehrere Personen an allen Wissensdatenbanken in derselben QnA Maker-Ressource zusammenarbeiten. Diese Funktion wird im Rahmen der [rollenbasierten Zugriffssteuerung](../../../active-directory/role-based-access-control-configure.md) in Azure bereitgestellt.
+Mit QnA Maker können mehrere Personen an allen Wissensdatenbanken in derselben QnA Maker-Ressource zusammenarbeiten. Diese Funktion wird im Rahmen der [rollenbasierten Zugriffssteuerung in Azure (Azure RBAC)](../../../active-directory/role-based-access-control-configure.md) bereitgestellt.
 
 ## <a name="access-at-the-qna-maker-resource-level"></a>Zugreifen auf der Ebene der QnA Maker-Ressource
 

@@ -3,16 +3,16 @@ title: Bereitstellen von Ressourcen in einem Abonnement
 description: In diesem Artikel wird beschrieben, wie Sie eine Ressourcengruppe in einer Azure Resource Manager-Vorlage erstellen. Außerdem wird veranschaulicht, wie Sie Ressourcen für den Bereich des Azure-Abonnements bereitstellen.
 ms.topic: conceptual
 ms.date: 07/27/2020
-ms.openlocfilehash: a4e21f29762a30baec8d5cf6e3914da2b5faadeb
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: aca1aaf9d7d0c8a97bf2dad437953ccadc02a924
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321767"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88002790"
 ---
 # <a name="create-resource-groups-and-resources-at-the-subscription-level"></a>Erstellen von Ressourcengruppen und Ressourcen auf Abonnementebene
 
-Um die Verwaltung von Ressourcen zu vereinfachen, können Sie eine Azure Resource Manager-Vorlage (ARM-Vorlage) verwenden, um Ressourcen auf der Ebene Ihres Azure-Abonnements bereitzustellen. Beispielsweise können Sie [Richtlinien](../../governance/policy/overview.md) und [rollenbasierte Zugriffssteuerungen](../../role-based-access-control/overview.md) für Ihr Abonnement bereitstellen, wodurch diese dann in Ihrem gesamten Abonnement angewendet werden. Außerdem können Sie Ressourcengruppen innerhalb des Abonnements erstellen und Ressourcen in Ressourcengruppen im Abonnement bereitstellen.
+Um die Verwaltung von Ressourcen zu vereinfachen, können Sie eine Azure Resource Manager-Vorlage (ARM-Vorlage) verwenden, um Ressourcen auf der Ebene Ihres Azure-Abonnements bereitzustellen. Beispielsweise können Sie [Richtlinien](../../governance/policy/overview.md) und [rollenbasierte Zugriffssteuerung in Azure (Azure RBAC)](../../role-based-access-control/overview.md) für Ihr Abonnement bereitstellen, wodurch diese dann in Ihrem gesamten Abonnement angewendet wird. Außerdem können Sie Ressourcengruppen innerhalb des Abonnements erstellen und Ressourcen in Ressourcengruppen im Abonnement bereitstellen.
 
 > [!NOTE]
 > In einer Bereitstellung auf Abonnementebene können Sie in 800 verschiedenen Ressourcengruppen bereitstellen.
@@ -473,7 +473,7 @@ New-AzSubscriptionDeployment `
 
 ## <a name="access-control"></a>Zugriffssteuerung
 
-Informationen über das Zuweisen von Rollen finden Sie unter [Verwalten des Zugriffs auf Azure-Ressourcen mit RBAC und Azure Resource Manager-Vorlagen](../../role-based-access-control/role-assignments-template.md).
+Informationen zum Zuweisen von Rollen finden Sie unter [Hinzufügen von Azure-Rollenzuweisungen mithilfe von Azure Resource Manager-Vorlagen](../../role-based-access-control/role-assignments-template.md).
 
 Im folgenden Beispiel wird eine Ressourcengruppe erstellt, eine Sperre darauf angewendet und einem Prinzipal eine Rolle zugewiesen.
 

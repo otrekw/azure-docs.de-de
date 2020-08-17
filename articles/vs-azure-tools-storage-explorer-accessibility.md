@@ -1,6 +1,6 @@
 ---
-title: Barrierefreiheit des Azure Storage-Explorers (Vorschau) | Microsoft-Dokumentation
-description: Barrierefreiheit des Azure Storage-Explorers (Vorschau)
+title: Barrierefreiheit in Azure Storage-Explorer | Microsoft-Dokumentation
+description: Hier finden Sie Informationen zur Barrierefreiheit in Azure Storage-Explorer. Erfahren Sie, welche Bildschirmsprachausgaben verfügbar sind, und informieren Sie sich über die Zoomfunktion, Designs mit hohem Kontrast und Tastenkombinationen.
 services: storage
 documentationcenter: na
 author: MrayermannMSFT
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/20/2018
 ms.author: marayerm
-ms.openlocfilehash: aa42d6b898a3cc474575f6c8dae65ff420fc8e30
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ca4a8d719277eaa1d853d53d282649f839256be9
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "60457265"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88035484"
 ---
 # <a name="storage-explorer-accessibility"></a>Barrierefreiheit des Storage-Explorers
 
@@ -87,9 +87,9 @@ Verkleinern | **STRG+-**
 
 Get-Help | Tastenkombinationen
 --------|--------------------
-Zurück    | **ALT+NACH-LINKS**
-Weiter | **ALT+NACH-RECHTS**
-Nach oben      | **ALT+NACH-OBEN**
+Zurück    | **ALT+NACH-LINKS-TASTE**
+Weiter | **ALT+NACH-RECHTS-TASTE**
+Nach oben      | **ALT+NACH-OBEN-TASTE**
 
 ### <a name="editor-commands"></a>Editor-Befehle
 
