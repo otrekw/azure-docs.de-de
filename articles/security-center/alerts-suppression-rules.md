@@ -8,12 +8,12 @@ ms.author: memildin
 ms.date: 05/04/2020
 ms.service: security-center
 ms.topic: conceptual
-ms.openlocfilehash: 18b1b4cb959603f5898e7c725102f35d7abc90cf
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 341373c9a8429f335f3064db7a94973d34e0ca1c
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85849021"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88042499"
 ---
 # <a name="suppress-alerts-from-azure-security-centers-threat-protection"></a>Unterdrücken von Warnungen aus dem Threat Protection-Modul von Azure Security Center
 
@@ -21,11 +21,15 @@ Auf dieser Seite wird erläutert, wie Sie mithilfe von Unterdrückungsregeln fü
 
 ## <a name="availability"></a>Verfügbarkeit
 
-- Status des Release: **Vorschau**
-- Erforderliche Rollen: **Sicherheitsadministrator** und **Besitzer** können Regeln erstellen und löschen. **Sicherheitsleseberechtigter** und **Leser** können Regeln anzeigen.
-- Clouds: 
-    - ✔ Kommerzielle Clouds
-    - ✔ National/Sovereign (US Gov, China Gov, andere Gov)
+|Aspekt|Details|
+|----|:----|
+|Status des Release:|Vorschau|
+|Preise:|Free-Tarif<br>(Die meisten Sicherheitswarnungen gelten nur für den Standard-Tarif)|
+|Erforderliche Rollen und Berechtigungen:|**Sicherheitsadministrator** und **Besitzer** können Regeln erstellen und löschen.<br>**Sicherheitsleseberechtigter** und **Leser** können Regeln anzeigen.|
+|Clouds:|![Ja](./media/icons/yes-icon.png) Kommerzielle Clouds<br>![Ja](./media/icons/yes-icon.png) National/Sovereign (US Gov, China Gov, andere Gov)|
+|||
+
+
 
 
 ## <a name="what-are-suppression-rules"></a>Was sind Warnungsunterdrückungsregeln?

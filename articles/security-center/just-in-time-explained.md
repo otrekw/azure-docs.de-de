@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 07/12/2020
 ms.author: memildin
-ms.openlocfilehash: 50398632f47d889ecb79b32faef94c9c5923789c
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 9c77ed2bf0d764fbbbe24770cc70b3fbeec7f678
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86540591"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87833452"
 ---
 # <a name="understanding-just-in-time-jit-vm-access"></a>Grundlegendes zum Just-In-Time(JIT)-VM-Zugriff
 
@@ -44,7 +44,7 @@ Wenn Sie den Just-in-Time-VM-Zugriff aktivieren, können Sie die Ports auf der V
 
 Sind für die ausgewählten Ports bereits andere Regeln vorhanden, dann haben diese Vorrang vor den neuen Regeln zum Ablehnen von sämtlichem eingehenden Datenverkehr. Wenn es für die ausgewählten Ports keine Regeln gibt, dann haben die neuen Regeln in der NSG und Azure Firewall höchste Priorität.
 
-Wenn ein Benutzer den Zugriff auf einen virtuellen Computer anfordert, überprüft das Security Center, ob der Benutzer über Berechtigungen der [rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC)](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) für diesen virtuellen Computer verfügt. Wenn die Anforderung genehmigt wird, konfiguriert Security Center die NSGs und Azure Firewall so, dass eingehender Datenverkehr zu den ausgewählten Ports von der entsprechenden IP-Adresse (oder dem entsprechenden Bereich) für die angegebene Zeitspanne zugelassen wird. Nach Ablauf dieser Zeitspanne stellt das Security Center die vorherigen Status der NSGs wieder her. Bereits eingerichtete Verbindungen werden nicht unterbrochen.
+Wenn ein Benutzer den Zugriff auf einen virtuellen Computer anfordert, überprüft das Security Center, ob der Benutzer über Berechtigungen der [rollenbasierten Zugriffssteuerung von Azure (Azure-RBAC)](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) für diesen virtuellen Computer verfügt. Wenn die Anforderung genehmigt wird, konfiguriert Security Center die NSGs und Azure Firewall so, dass eingehender Datenverkehr zu den ausgewählten Ports von der entsprechenden IP-Adresse (oder dem entsprechenden Bereich) für die angegebene Zeitspanne zugelassen wird. Nach Ablauf dieser Zeitspanne stellt das Security Center die vorherigen Status der NSGs wieder her. Bereits eingerichtete Verbindungen werden nicht unterbrochen.
 
 > [!NOTE]
 > JIT unterstützt keine VMs, die durch Azure Firewall-Instanzen geschützt werden, die von [Azure Firewall Manager](https://docs.microsoft.com/azure/firewall-manager/overview) gesteuert werden.
@@ -67,13 +67,17 @@ Wenn Security Center einen Computer findet, der von JIT profitieren kann, wird d
 
 ### <a name="what-permissions-are-needed-to-configure-and-use-jit"></a>Welche Berechtigungen sind erforderlich, um JIT zu konfigurieren und zu verwenden?
 
-Wenn Sie benutzerdefinierte Rollen erstellen möchten, die mit JIT arbeiten können, benötigen Sie die folgenden Details:
+Wenn Sie benutzerdefinierte Rollen erstellen möchten, die mit JIT arbeiten können, benötigen Sie die Details aus der folgenden Tabelle.
+
+> [!TIP]
+> Verwenden Sie das Skript [Set-JitLeastPrivilegedRole](https://github.com/Azure/Azure-Security-Center/tree/master/Powershell%20scripts/JIT%20Custom%20Role) von den GitHub-Communityseiten des Security Center, um für Benutzer, die JIT-Zugriff auf eine VM anfordern und keine anderen JIT-Operationen durchführen müssen, eine Rolle mit den geringsten Berechtigungen zu erstellen.
 
 | Optionen, die Benutzern ermöglicht werden können: | Festzulegende Berechtigungen|
 | --- | --- |
 | Konfigurieren oder Bearbeiten einer JIT-Richtlinie für einen virtuellen Computer | *Weisen Sie der Rolle diese Aktionen zu:*  <ul><li>Im Bereich eines Abonnements oder einer Ressourcengruppe, das oder die dem virtuellen Computer zugeordnet ist:<br/> `Microsoft.Security/locations/jitNetworkAccessPolicies/write` </li><li> Im Bereich eines Abonnements oder einer Ressourcengruppe eines virtuellen Computers: <br/>`Microsoft.Compute/virtualMachines/write`</li></ul> | 
 |Anfordern von JIT-Zugriff auf einen virtuellen Computer | *Weisen Sie dem Benutzer diese Aktionen zu:*  <ul><li>Im Bereich eines Abonnements oder einer Ressourcengruppe, das oder die dem virtuellen Computer zugeordnet ist:<br/>  `Microsoft.Security/locations/jitNetworkAccessPolicies/initiate/action` </li><li>Im Bereich eines Abonnements oder einer Ressourcengruppe, das oder die dem virtuellen Computer zugeordnet ist:<br/>  `Microsoft.Security/locations/jitNetworkAccessPolicies/*/read` </li><li>  Im Bereich eines Abonnements, einer Ressourcengruppe oder eines virtuellen Computers:<br/> `Microsoft.Compute/virtualMachines/read` </li><li>  Im Bereich eines Abonnements, einer Ressourcengruppe oder eines virtuellen Computers:<br/> `Microsoft.Network/networkInterfaces/*/read` </li></ul>|
 |Lesen von JIT-Richtlinien| *Weisen Sie dem Benutzer diese Aktionen zu:*  <ul><li>`Microsoft.Security/locations/jitNetworkAccessPolicies/read`</li><li>`Microsoft.Security/locations/jitNetworkAccessPolicies/initiate/action`</li><li>`Microsoft.Security/policies/read`</li><li>`Microsoft.Compute/virtualMachines/read`</li><li>`Microsoft.Network/*/read`</li>|
+|||
 
 
 
