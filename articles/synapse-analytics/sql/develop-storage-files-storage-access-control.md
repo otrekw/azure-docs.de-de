@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 06/11/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: b7005954b14a9263ec074c836180853a99812dd5
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: fd4cc4cfa7b7be9085ac404cab7fc7447b6d66a7
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534769"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87987136"
 ---
 # <a name="control-storage-account-access-for-sql-on-demand-preview"></a>Steuern des Speicherkontozugriffs für SQL On-Demand (Vorschau)
 
@@ -81,12 +81,13 @@ In der folgenden Tabelle sind die verfügbaren Autorisierungstypen aufgeführt:
 
 Sie können die folgenden Kombinationen aus Autorisierungstypen und Azure Storage-Typen verwenden:
 
-|                     | Blob Storage   | ADLS Gen1        | ADLS Gen2     |
+| Autorisierungstyp  | Blob Storage   | ADLS Gen1        | ADLS Gen2     |
 | ------------------- | ------------   | --------------   | -----------   |
-| *SAS*               | Unterstützt      | Nicht unterstützt   | Unterstützt     |
-| *Verwaltete Identität* | Unterstützt      | Unterstützt        | Unterstützt     |
-| *Benutzeridentität*    | Unterstützt      | Unterstützt        | Unterstützt     |
+| [SAS](?tabs=shared-access-signature#supported-storage-authorization-types)    | Unterstützt\*      | Nicht unterstützt   | Unterstützt\*     |
+| [Verwaltete Identität](?tabs=managed-identity#supported-storage-authorization-types) | Unterstützt      | Unterstützt        | Unterstützt     |
+| [Benutzeridentität](?tabs=user-identity#supported-storage-authorization-types)    | Unterstützt\*      | Unterstützt\*        | Unterstützt\*     |
 
+\* SAS-Token und Azure AD-Identität können für den Zugriff auf einen Speicher verwendet werden, der nicht durch eine Firewall geschützt ist.
 
 > [!IMPORTANT]
 > Beim Zugriff auf Speicher, der mit der Firewall geschützt ist, kann nur die verwaltete Identität verwendet werden. Sie müssen [vertrauenswürdige Microsoft-Dienste zulassen](../../storage/common/storage-network-security.md#trusted-microsoft-services) und der [systemseitig zugewiesenen Identität](../../active-directory/managed-identities-azure-resources/overview.md) für diese Ressourceninstanz explizit [eine Azure-Rolle zuweisen](../../storage/common/storage-auth-aad.md#assign-azure-roles-for-access-rights). In diesem Fall entspricht der Zugriffsbereich für die Instanz der Azure-Rolle, die der verwalteten Identität zugewiesen ist.
@@ -177,27 +178,46 @@ Datenbankbezogene Anmeldeinformationen ermöglichen den Zugriff auf den Azure-Sp
 
 Azure AD-Benutzer können auf alle Dateien im Azure-Speicher zugreifen, wenn sie mindestens über die Rolle `Storage Blob Data Owner`, `Storage Blob Data Contributor` oder `Storage Blob Data Reader` verfügen. Azure AD-Benutzer benötigen keine Anmeldeinformationen für den Zugriff auf den Speicher.
 
+```sql
+CREATE EXTERNAL DATA SOURCE mysample
+WITH (    LOCATION   = 'https://<storage_account>.dfs.core.windows.net/<container>/<path>'
+)
+```
+
 SQL-Benutzer können nicht Azure AD-Authentifizierung für den Zugriff auf den Speicher verwenden.
 
 ### <a name="shared-access-signature"></a>[Shared Access Signature (SAS)](#tab/shared-access-signature)
 
-Mit dem folgenden Skript wird eine Anmeldeinformation erstellt, die für den Zugriff auf Dateien im Speicher mit dem in der Anmeldeinformation angegebenen SAS-Token verwendet wird.
+Mit dem folgenden Skript wird eine Anmeldeinformation erstellt, die für den Zugriff auf Dateien im Speicher mit dem in der Anmeldeinformation angegebenen SAS-Token verwendet wird. Mit dem Skript wird eine externe Beispieldatenquelle erstellt, die dieses SAS-Token für den Zugriff auf Speicher verwendet.
 
 ```sql
+-- Optional: Create MASTER KEY if not exists in database:
+-- CREATE MASTER KEY ENCRYPTION BY PASSWORD = '<Very Strong Password>'
+GO
 CREATE DATABASE SCOPED CREDENTIAL [SasToken]
 WITH IDENTITY = 'SHARED ACCESS SIGNATURE',
      SECRET = 'sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-04-18T20:42:12Z&st=2019-04-18T12:42:12Z&spr=https&sig=lQHczNvrk1KoYLCpFdSsMANd0ef9BrIPBNJ3VYEIq78%3D';
 GO
+CREATE EXTERNAL DATA SOURCE mysample
+WITH (    LOCATION   = 'https://<storage_account>.dfs.core.windows.net/<container>/<path>',
+          CREDENTIAL = SasToken
+)
 ```
 
 ### <a name="managed-identity"></a>[Verwaltete Identität](#tab/managed-identity)
 
-Mit dem folgenden Skript wird eine datenbankbezogene Anmeldeinformation erstellt, mit der der aktuelle Azure AD-Benutzer die verwaltete Identität des Diensts annehmen kann. 
+Mit dem folgenden Skript wird eine datenbankbezogene Anmeldeinformation erstellt, mit der der aktuelle Azure AD-Benutzer die verwaltete Identität des Diensts annehmen kann. Mit dem Skript wird eine externe Beispieldatenquelle erstellt, die die Arbeitsbereichsidentität für den Zugriff auf Speicher verwendet.
 
 ```sql
-CREATE DATABASE SCOPED CREDENTIAL [SynapseIdentity]
+-- Optional: Create MASTER KEY if not exists in database:
+-- CREATE MASTER KEY ENCRYPTION BY PASSWORD = '<Very Strong Password>
+CREATE DATABASE SCOPED CREDENTIAL SynapseIdentity
 WITH IDENTITY = 'Managed Identity';
 GO
+CREATE EXTERNAL DATA SOURCE mysample
+WITH (    LOCATION   = 'https://<storage_account>.dfs.core.windows.net/<container>/<path>',
+          CREDENTIAL = SynapseIdentity
+)
 ```
 
 Die datenbankbezogene Anmeldeinformation muss nicht mit dem Namen des Speicherkontos übereinstimmen, da sie explizit in der Datenquelle verwendet wird, die den Speicherort des Speichers definiert.
@@ -206,6 +226,11 @@ Die datenbankbezogene Anmeldeinformation muss nicht mit dem Namen des Speicherko
 
 Es ist keine datenbankbezogene Anmeldeinformation für den Zugriff auf öffentlich verfügbare Dateien erforderlich. Erstellen Sie eine [Datenquelle ohne datenbankbezogene Anmeldeinformation](develop-tables-external-tables.md?tabs=sql-ondemand#example-for-create-external-data-source), um auf öffentlich verfügbare Dateien im Azure-Speicher zuzugreifen.
 
+```sql
+CREATE EXTERNAL DATA SOURCE mysample
+WITH (    LOCATION   = 'https://<storage_account>.blob.core.windows.net/<container>/<path>'
+)
+```
 ---
 
 Datenbankbezogene Anmeldinformationen werden in externen Datenquellen verwendet, um anzugeben, welche Authentifizierungsmethode für den Zugriff auf diesen Speicher verwendet werden soll:

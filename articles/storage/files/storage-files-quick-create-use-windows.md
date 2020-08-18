@@ -1,18 +1,18 @@
 ---
 title: Erstellen und Verwenden einer Azure Files-Freigabe auf Windows-VMs
-description: In dieser Schnellstartanleitung wird über das Azure-Portal eine Azure Files-Freigabe eingerichtet und mit einem virtuellen Windows-Computer verbunden. Sie stellen eine Verbindung mit der Files-Freigabe her und laden eine Datei in die Files-Freigabe hoch. Anschließend erstellen Sie eine Momentaufnahme der Files-Freigabe, ändern die darin enthaltene Datei und stellen eine vorherige Momentaufnahme der Files-Freigabe wieder her.
+description: Erstellen und verwenden Sie eine Azure Files-Freigabe im Azure-Portal. Stellen Sie eine Verbindung mit einem virtuellen Windows-Computer und eine Verbindung mit der Files-Freigabe her, und laden Sie eine Datei in die Files-Freigabe hoch.
 author: roygara
 ms.service: storage
 ms.topic: quickstart
 ms.date: 02/01/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 6bbab0ee2eefe6e86c150d5bddab4f8e91a7c92d
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 0cbbcc822765097f83fcd1a52ce775c69faba9fa
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75463910"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836427"
 ---
 # <a name="quickstart-create-and-manage-azure-files-share-with-windows-virtual-machines"></a>Schnellstart: Erstellen und Verwalten einer Azure Files-Freigabe mit virtuellen Windows-Computern
 
@@ -31,7 +31,7 @@ In dieser Schnellstartanleitung wird Folgendes eingerichtet:
 - Ein Azure-Speicherkonto und eine Azure-Dateifreigabe
 - Ein virtueller Computer mit Windows Server 2016 Datacenter
 
-### <a name="create-a-storage-account"></a>Speicherkonto erstellen
+### <a name="create-a-storage-account"></a>Erstellen eines Speicherkontos
 
 Um eine Azure-Dateifreigabe verwenden zu können, müssen Sie zunächst ein Azure-Speicherkonto erstellen. Ein Speicherkonto vom Typ „Allgemein v2“ bietet Zugriff auf sämtliche Azure Storage-Dienste: Blobs, Dateien, Warteschlangen und Tabellen. In dieser Schnellstartanleitung wird ein universelles v2-Speicherkonto erstellt. Die Schritte für die Erstellung einer anderen Art von Speicherkonto sind jedoch ähnlich. Ein Speicherkonto kann eine unbegrenzte Anzahl von Freigaben enthalten. Auf einer Freigabe kann eine unbegrenzte Anzahl von Dateien gespeichert werden, bis die Kapazitätsgrenzen des Speicherkontos erreicht sind.
 

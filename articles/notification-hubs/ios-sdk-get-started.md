@@ -3,17 +3,17 @@ title: Senden von Pushbenachrichtigungen an iOS mit Azure Notification Hubs und 
 description: In diesem Tutorial erfahren Sie, wie Sie mithilfe von Azure Notification Hubs und dem Apple Push Notification Service Pushbenachrichtigungen an iOS-Geräte senden.
 author: sethmanheim
 ms.author: sethm
-ms.date: 06/19/2020
+ms.date: 08/10/2020
 ms.topic: tutorial
 ms.service: notification-hubs
 ms.reviewer: thsomasu
 ms.lastreviewed: 06/01/2020
-ms.openlocfilehash: 94e930c996710c2b25d4114c7cfcb17129c5177d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7cdf095898bfe85e6f3b14fa1dcdb7b0c94ccde6
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87022428"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88042444"
 ---
 # <a name="tutorial-send-push-notifications-to-ios-apps-using-azure-notification-hubs"></a>Tutorial: Senden von Pushbenachrichtigungen an iOS-Apps mit Azure Notification Hubs
 
@@ -102,6 +102,9 @@ Zum Senden von Pushbenachrichtigungen an eine iOS-App registrieren Sie Ihre Anwe
 4. Suchen Sie auf der Seite **Zertifikate, Bezeichner und Profile** unter **Bezeichner** die soeben erstellte App-ID-Position, und wählen Sie die zugehörige Zeile aus, um den Bildschirm  **App-ID-Konfiguration bearbeiten** anzuzeigen.
 
 ## <a name="create-a-certificate-for-notification-hubs"></a>Erstellen eines Zertifikats für Notification Hubs
+
+> [!NOTE]
+> Mit der Veröffentlichung von iOS 13 können Sie automatische Benachrichtigungen nur unter Verwendung der tokenbasierten Authentifizierung erhalten. Wenn Sie zertifikatbasierte Authentifizierung für Ihre APNs-Anmeldeinformationen verwenden, müssen Sie auf tokenbasierte Authentifizierung umsteigen.
 
 Damit der Notification Hub mit **APNs** funktioniert, ist ein Zertifikat erforderlich. Dafür können Sie zwei Methoden verwenden:
 
@@ -292,7 +295,7 @@ Wählen Sie unter **Benachrichtigungsdienste** die Option  **Apple (APNS)** au
 2. Geben Sie die folgenden Werte ein, die Sie zuvor abgerufen haben:
 
    - **Schlüssel-ID**
-   - **Paket-ID**
+   - **Bundle-ID**
    - **Team-ID**
    - **Token**
 

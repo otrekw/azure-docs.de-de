@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/04/2020
 ms.topic: how-to
-ms.openlocfilehash: 0a0feb6b638cb6e3a74fcd30baea5e8a04375699
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 5c638b434ceb31b57689b11971f48eb322b94726
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82857794"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87985613"
 ---
 # <a name="use-the-model-conversion-rest-api"></a>Verwenden der REST-API für die Modellkonvertierung
 
@@ -53,6 +53,8 @@ Gibt die ID der aktuell ausgeführten Konvertierung in einem JSON-Dokument als W
 
 #### <a name="request-body"></a>Anforderungstext
 
+> [!NOTE]
+> Alles unter `input.folderPath` wird abgerufen, um die Konvertierung in Azure durchzuführen. Wenn `input.folderPath` nicht angegeben ist, wird der gesamte Inhalt des Containers abgerufen. Alle Blobs und Ordner, die abgerufen werden, müssen [gültige Windows-Dateinamen](https://docs.microsoft.com/windows/win32/fileio/naming-a-file#naming-conventions) besitzen.
 
 ```json
 {
@@ -79,7 +81,7 @@ Wenn Ihr ARR-Konto nicht mit Ihrem Speicherkonto verknüpft ist, können Sie mit
 |-----------|:-----------|
 | /v1/accounts/**accountID**/conversions/createWithSharedAccessSignature | POST |
 
-Gibt die ID der aktuell ausgeführten Konvertierung in einem JSON-Dokument als Wrapper zurück. Der Feldname lautet „conversionId“.
+Gibt die ID der aktuell ausgeführten Konvertierung in einem JSON-Dokument als Wrapper zurück. Der Feldname lautet `conversionId`.
 
 #### <a name="request-body"></a>Anforderungstext
 
@@ -88,6 +90,8 @@ Der Anforderungstext ist derselbe wie im oben aufgeführten REST-Befehl „creat
 > [!NOTE]
 > Diese SAS-URI-Token sind die Abfragezeichenfolgen und nicht der vollständige URI. 
 
+> [!NOTE]
+> Alles unter `input.folderPath` wird abgerufen, um die Konvertierung in Azure durchzuführen. Wenn `input.folderPath` nicht angegeben ist, wird der gesamte Inhalt des Containers abgerufen. Alle Blobs und Ordner, die abgerufen werden, müssen [gültige Windows-Dateinamen](https://docs.microsoft.com/windows/win32/fileio/naming-a-file#naming-conventions) besitzen.
 
 ```json
 {

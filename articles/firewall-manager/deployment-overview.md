@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: overview
-ms.date: 07/28/2020
+ms.date: 08/10/2020
 ms.author: victorh
-ms.openlocfilehash: 748adbcc719df2cdcf734f308bd4b083e9ca6ec0
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 8cca982e291d5d4caf7856e0d807515511c41dc8
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372364"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88055036"
 ---
 # <a name="azure-firewall-manager-deployment-overview"></a>Übersicht über die Bereitstellung mit Azure Firewall Manager
 
@@ -65,6 +65,8 @@ Es gibt mehrere Möglichkeiten, Azure Firewall Manager bereitzustellen, jedoch s
 > - Sie können nicht mehr als einen Hub pro virtuellem WAN verwenden. Aber Sie können mehrere virtuelle WANs in der Region hinzufügen, um dies zu erreichen.
 > - Überlappende IP-Adressräume für Hubs sind in einem VWAN nicht möglich.
 > - Ihre Hub-VNET-Verbindungen müssen sich in der gleichen Region wie der Hub befinden.
+>
+> Weitere bekannte Probleme finden Sie unter [Was ist Azure Firewall Manager?](overview.md#known-issues)
 
 ## <a name="convert-virtual-networks"></a>Konvertieren von virtuellen Netzwerken
 

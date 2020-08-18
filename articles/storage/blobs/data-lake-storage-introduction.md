@@ -1,6 +1,6 @@
 ---
 title: Azure Data Lake Storage Gen2 – Einführung
-description: Bietet eine Übersicht zu Azure Data Lake Storage Gen2
+description: Lesen Sie hier eine Einführung in Azure Data Lake Storage Gen2. Sie erhalten Informationen zu den wichtigsten Features. Sehen Sie sich die unterstützten Blob Storage-Features, Azure-Dienstintegrationen und Plattformen an.
 author: normesta
 ms.service: storage
 ms.topic: overview
@@ -8,12 +8,12 @@ ms.date: 02/25/2020
 ms.author: normesta
 ms.reviewer: jamesbak
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: ee9f2f0366cc680c874c6748d27e02dcadb82e35
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: d85b0cd2f9fa7eb81f5c39bd5d163188e3cd7106
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84673308"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87835764"
 ---
 # <a name="introduction-to-azure-data-lake-storage-gen2"></a>Einführung in Azure Data Lake Storage Gen2
 

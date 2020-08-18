@@ -1,6 +1,6 @@
 ---
 title: Benutzerdefiniertes Caching in Azure API Management
-description: Erfahren Sie, wie Sie Elemente durch einen Schlüssel in Azure API Management zwischenspeichern.
+description: Erfahren Sie, wie Sie Elemente durch einen Schlüssel in Azure API Management zwischenspeichern. Sie können den Schlüssel mithilfe von Anforderungsheadern ändern.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/15/2016
 ms.author: apimpm
-ms.openlocfilehash: 7b87244b4df155768e815bdba5226fc784866f6b
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: a366cf6d4e17e83fd89ae21631ad5b40e8971c1b
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86249715"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87903441"
 ---
 # <a name="custom-caching-in-azure-api-management"></a>Benutzerdefiniertes Caching in Azure API Management
 Der Azure API Management-Dienst verfügt über eine integrierte Unterstützung für das [HTTP-Antwort-Caching](api-management-howto-cache.md) mit der Ressourcen-URL als Schlüssel. Der Schlüssel kann durch Anforderungsheader mithilfe der `vary-by` -Eigenschaften geändert werden. Dies ist nützlich, wenn ganze HTTP-Antworten (auch als Darstellungen bezeichnet) zwischengespeichert werden sollen. Die neuen [cache-lookup-value](./api-management-caching-policies.md#GetFromCacheByKey) und [cache-store-value](./api-management-caching-policies.md#StoreToCacheByKey) bieten die Möglichkeit zum Speichern und Abrufen von zufälligen Datenelementen aus Richtliniendefinitionen. Die neuen Richtlinien [send-request](./api-management-advanced-policies.md#SendRequest) -Richtlinie, da Sie nun Antworten von externen Diensten zwischenspeichern können.
 
 ## <a name="architecture"></a>Aufbau
-Der API Management-Dienst verwendet einen freigegebenen Einzelmandanten-Datencache, sodass Sie beim Hochskalieren auf mehrere Einheiten weiterhin Zugriff auf die gleichen zwischengespeicherten Daten erhalten. Wenn Sie jedoch mit einer Bereitstellung arbeiten, die mehrere Regionen umfasst, gibt es in allen Regionen unabhängige Caches. Es ist wichtig, den Cache nicht als Datenspeicher zu behandeln, der als einzige Quelle für einzelne Informationen fungiert. Wenn dies der Fall ist und Sie sich später dazu entschieden haben, die Vorteile der Bereitstellung in mehreren Regionen zu nutzen, könnten Kunden mit Benutzern, die in mehreren Regionen unterwegs sind, den Zugriff auf die zwischengespeicherten Daten verlieren.
+Der API Management-Dienst verwendet einen freigegebenen Einzelmandanten-Datencache, sodass Sie beim Skalieren auf mehrere Einheiten weiterhin Zugriff auf die gleichen zwischengespeicherten Daten erhalten. Wenn Sie jedoch mit einer Bereitstellung arbeiten, die mehrere Regionen umfasst, gibt es in allen Regionen unabhängige Caches. Es ist wichtig, den Cache nicht als Datenspeicher zu behandeln, der als einzige Quelle für einzelne Informationen fungiert. Wenn dies der Fall ist und Sie sich später dazu entschieden haben, die Vorteile der Bereitstellung in mehreren Regionen zu nutzen, könnten Kunden mit Benutzern, die in mehreren Regionen unterwegs sind, den Zugriff auf die zwischengespeicherten Daten verlieren.
 
 ## <a name="fragment-caching"></a>Fragment-Caching
 Es gibt bestimmte Fälle, in denen die zurückgegebenen Antworten Daten enthalten, die teuer zu bestimmen sind und dennoch für einen angemessenen Zeitraum aktuell bleiben. Nehmen Sie beispielsweise einen Dienst, der von einer Fluggesellschaft erstellt wurde, um Informationen zu Flugreservierungen, dem Status von Flügen usw. bereitzustellen. Wenn der Benutzer am Punkteprogramm der Fluggesellschaft teilnimmt, sind zusätzlich dazu Informationen zum aktuellen Status und den gesammelten Meilen vorhanden. Diese benutzerbezogenen Informationen können in einem separaten System gespeichert werden; es kann aber auch wünschenswert sein, dass sie in den Antworten enthalten sind, die zum Flugstatus und den Reservierungen zurückgegeben werden. Dies kann durch einen Prozess namens Fragment-Caching erreicht werden. Die primäre Darstellung kann vom Ursprungsserver zurückgegeben werden, indem irgendein Token verwendet wird, das angibt, wo die benutzerbezogenen Informationen eingefügt werden sollen. 

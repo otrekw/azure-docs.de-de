@@ -2,7 +2,7 @@
   href: index.yml
 - name: Übersicht
   items:
-    - name: Was ist Azure AD Identity Protection?
+    - name: Was ist Identity Protection?
       href: overview-identity-protection.md
 - name: Konzepte
   expanded: false

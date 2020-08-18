@@ -11,12 +11,12 @@ ms.reviewer: ''
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/30/2020
-ms.openlocfilehash: 2d6f667b6a49520dfe210fd797a828328899b634
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d171edb23b482ad1871990dcffd979d2125c4406
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83674594"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067408"
 ---
 # <a name="source-control-in-azure-data-factory"></a>Quellcodeverwaltung in Azure Data Factory
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
@@ -93,7 +93,7 @@ Im Konfigurationsbereich werden die folgenden Einstellungen für das Codereposit
 
 ### <a name="use-a-different-azure-active-directory-tenant"></a>Verwenden eines anderen Azure Active Directory-Mandanten
 
-Das Azure Repos-Git-Repository kann sich in einem anderen Azure Active Directory-Mandanten befinden. Zum Angeben eines anderen Azure AD-Mandanten müssen Sie über Administratorberechtigungen für das verwendete Azure-Abonnement verfügen.
+Das Azure Repos-Git-Repository kann sich in einem anderen Azure Active Directory-Mandanten befinden. Zum Angeben eines anderen Azure AD-Mandanten müssen Sie über Administratorberechtigungen für das verwendete Azure-Abonnement verfügen. Weitere Informationen finden Sie unter [Ändern des Abonnementadministrators](https://docs.microsoft.com/azure/cost-management-billing/manage/add-change-subscription-administrator#to-assign-a-user-as-an-administrator).
 
 ### <a name="use-your-personal-microsoft-account"></a>Verwenden Ihres persönlichen Microsoft-Kontos
 
@@ -211,11 +211,11 @@ Ein Seitenbereich wird geöffnet, in dem Sie bestätigen, dass der Branch für d
 
 ### <a name="permissions"></a>Berechtigungen
 
-Normalerweise möchten Sie nicht, dass jedes Teammitglied die Berechtigung zum Aktualisieren der Factory hat. Die folgenden Berechtigungseinstellungen werden empfohlen:
+Normalerweise möchten Sie nicht, dass jedes Teammitglied die Berechtigung zum Aktualisieren der Data Factory hat. Die folgenden Berechtigungseinstellungen werden empfohlen:
 
 *   Alle Teammitglieder sollten über Leseberechtigungen für die Data Factory verfügen.
-*   Nur eine ausgewählte Gruppe von Personen sollte in der Factory veröffentlichen dürfen. Zu diesem Zweck müssen Sie über die Rolle **Data Factory-Mitwirkender** für die Ressourcengruppe verfügen, in der sich die Factory befindet. Weitere Informationen zu Berechtigungen finden Sie unter [Rollen und Berechtigungen für Azure Data Factory](concepts-roles-permissions.md).
-   
+*   Nur eine ausgewählte Gruppe von Personen sollte in der Data Factory veröffentlichen dürfen. Zu diesem Zweck müssen Sie über die Rolle **Data Factory-Mitwirkender** für die **Ressourcengruppe** verfügen, die die Data Factory enthält. Weitere Informationen zu Berechtigungen finden Sie unter [Rollen und Berechtigungen für Azure Data Factory](concepts-roles-permissions.md).
+
 Es wird empfohlen, keine direkten Eincheckvorgänge im Kollaborationsbranch zuzulassen. Diese Einschränkung kann dazu beitragen, Fehler zu vermeiden, da jeder Eincheckvorgang einen Pull Request-Prozess durchläuft, der unter [Erstellen von Featurebranches](source-control.md#creating-feature-branches) beschrieben ist.
 
 ### <a name="using-passwords-from-azure-key-vault"></a>Verwenden von Kennwörtern aus Azure Key Vault

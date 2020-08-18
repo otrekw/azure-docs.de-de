@@ -1,17 +1,17 @@
 ---
 title: 'Schnellstart: Erstellen einer Registrierung im Portal'
-description: Hier erfahren Sie, wie Sie ganz schnell eine private Docker-Registrierung über das Azure-Portal in Azure Container Registry erstellen.
+description: Hier lernen Sie, wie Sie schnell eine private Azure-Containerregistrierung über das Azure-Portal erstellen.
 ms.topic: quickstart
-ms.date: 06/11/2020
+ms.date: 08/04/2020
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 82f9a6b02832b718d5b4e7b662c590f1992af595
-ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
+ms.openlocfilehash: ace1030923ea226376369941badafafa662d25ce
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84752864"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88031792"
 ---
-# <a name="quickstart-create-a-private-container-registry-using-the-azure-portal"></a>Schnellstart: Erstellen einer privaten Containerregistrierung im Azure-Portal
+# <a name="quickstart-create-an-azure-container-registry-using-the-azure-portal"></a>Schnellstart: Erstellen einer Azure-Containerregistrierung über das Azure-Portal
 
 Eine Azure Container Registry-Instanz ist eine private Docker-Registrierung in Azure, in der Sie private Docker-Containerimages und zugehörige Artefakte speichern und verwalten können. In dieser Schnellstartanleitung erstellen Sie eine Containerregistrierung über das Azure-Portal. Übertragen Sie anschließend mithilfe von Docker-Befehlen ein Containerimage per Push in die Registrierung. Rufen Sie abschließend das Image per Pull aus der Registrierung ab, und führen Sie es aus.
 
@@ -41,14 +41,20 @@ Wenn die Meldung **Bereitstellung erfolgreich** erscheint, wählen Sie die Conta
 
 :::image type="content" source="media/container-registry-get-started-portal/qs-portal-05.png" alt-text="Containerregistrierungsübersicht im Portal":::
 
-Notieren Sie sich den Wert unter **Anmeldeserver**. Sie verwenden diesen Wert in den folgenden Schritten bei den Push- und Pullvorgängen für Images mit Docker.
+Notieren Sie sich den Registrierungsnamen und den Wert unter **Anmeldeserver**. Sie verwenden diese Werte in den folgenden Schritten bei den Push- und Pullvorgängen für Images mit Docker.
 
 ## <a name="log-in-to-registry"></a>Anmelden bei der Registrierung
 
-Bevor Sie Push- und Pullvorgänge für Containerimages ausführen können, müssen Sie sich bei der Registrierungsinstanz anmelden. [Melden Sie sich auf dem lokalen Computer bei der Azure CLI an][get-started-with-azure-cli], und führen Sie dann den Befehl [az acr login][az-acr-login] aus. (Geben Sie beim Anmelden bei der Azure CLI nur den Registrierungsnamen an. Lassen Sie das Suffix „azurecr.io“ weg.)
+Bevor Sie Push- und Pullvorgänge für Containerimages ausführen können, müssen Sie sich bei der Registrierungsinstanz anmelden. [Melden Sie sich auf dem lokalen Computer bei der Azure CLI an][get-started-with-azure-cli], und führen Sie dann den Befehl [az acr login][az-acr-login] aus. (Geben Sie beim Anmelden bei der Azure CLI nur den Registrierungsnamen an. Lassen Sie das Domänensuffix „azurecr.io“ weg.)
 
 ```azurecli
 az acr login --name <registry-name>
+```
+
+Beispiel:
+
+```azurecli
+az acr login --name mycontainerregistry
 ```
 
 Der Befehl gibt nach Abschluss des Vorgangs `Login Succeeded` zurück. 

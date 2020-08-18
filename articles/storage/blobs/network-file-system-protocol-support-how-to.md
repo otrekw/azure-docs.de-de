@@ -1,27 +1,27 @@
 ---
-title: Einbinden von Azure Blob Storage unter Linux mithilfe des NFS 3.0-Protokolls (Vorschau) | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie einen Container in Blob-Speicher von einem Linux-basierten virtuellen Azure-Computer (VM) oder einem Linux-System aus, das lokal ausgeführt wird, mithilfe des NFS 3.0-Protokolls einbinden.
+title: Einbinden von Azure Blob Storage mithilfe des NFS 3.0-Protokolls (Vorschau) | Microsoft-Dokumentation
+description: Hier erfahren Sie, wie Sie einen Container über eine Azure-VM (virtueller Computer) oder einen lokal ausgeführten Client in Blob Storage mithilfe des NFS 3.0-Protokolls einbinden.
 author: normesta
 ms.subservice: blobs
 ms.service: storage
 ms.topic: conceptual
-ms.date: 07/21/2020
+ms.date: 08/04/2020
 ms.author: normesta
 ms.reviewer: yzheng
 ms.custom: references_regions
-ms.openlocfilehash: d3907967572b22e7a70316080b08a4368a9805ce
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: cb3cb41b46c2def4f99af7f1811e4ff96dff7070
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372908"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88167027"
 ---
-# <a name="mount-blob-storage-on-linux-using-the-network-file-system-nfs-30-protocol-preview"></a>Einbinden von Blob-Speicher unter Linux mithilfe des NFS 3.0-Protokolls (Network File System) (Vorschau)
+# <a name="mount-blob-storage-by-using-the-network-file-system-nfs-30-protocol-preview"></a>Einbinden von Azure Blob Storage mithilfe des NFS 3.0-Protokolls (Vorschau)
 
-Sie können einen Container in Blob-Speicher von einem Linux-basierten virtuellen Azure-Computer (VM) oder einem Linux-System aus, das lokal ausgeführt wird, mithilfe des NFS 3.0-Protokolls einbinden. Dieser Artikel bietet eine schrittweise Anleitung. Weitere Informationen zur Unterstützung des NFS 3.0-Protokolls in Blob-Speicher finden Sie unter [Unterstützung für Network File System 3.0 (NFS) in Azure Blob Storage (Vorschau)](network-file-system-protocol-support.md).
+Sie können einen Container über eine Windows- oder Linux-basierte Azure-VM oder ein lokal ausgeführtes Windows- oder Linux-System in Blob Storage mithilfe des NFS 3.0-Protokolls einbinden. Dieser Artikel bietet eine schrittweise Anleitung. Weitere Informationen zur Unterstützung des NFS 3.0-Protokolls in Blob-Speicher finden Sie unter [Unterstützung für Network File System 3.0 (NFS) in Azure Blob Storage (Vorschau)](network-file-system-protocol-support.md).
 
 > [!NOTE]
-> Die NFS 3.0-Protokollunterstützung in Azure Blob Storage befindet sich in der öffentlichen Vorschau und ist in den folgenden Regionen verfügbar: „USA, Osten“, „USA, Mitte“ und „Kanada, Mitte“.
+> Die NFS 3.0-Protokollunterstützung in Azure Blob Storage befindet sich in der öffentlichen Vorschau und ist in den folgenden Regionen verfügbar: USA, Osten; USA, Mitte; USA, Westen-Mitte; Australien, Südosten; Europa, Norden; Vereinigtes Königreich, Westen; Südkorea, Mitte; Südkorea, Süden; Kanada, Mitte.
 
 ## <a name="step-1-register-the-nfs-30-protocol-feature-with-your-subscription"></a>Schritt 1: Registrieren des NFS 3.0-Protokollfeatures in Ihrem Abonnement
 
@@ -92,7 +92,7 @@ Wenn Sie das Konto konfigurieren, wählen Sie die folgenden Werte aus:
 
 |Einstellung | Wert|
 |----|---|
-|Standort|Eine der folgenden Regionen: „USA, Osten“, „USA, Mitte“ und „Kanada, Mitte“ |
+|Standort|Eine der folgenden Regionen: USA, Osten; USA, Mitte; USA, Westen-Mitte; Australien, Südosten; Europa, Norden; Vereinigtes Königreich, Westen; Südkorea, Mitte; Südkorea, Süden; Kanada, Mitte |
 |Leistung|Premium|
 |Kontoart|BlockBlobStorage|
 |Replikation|Lokal redundanter Speicher (LRS)|
@@ -117,6 +117,10 @@ Erstellen Sie einen Container in Ihrem Speicherkonto, indem Sie eins dieser Tool
 
 ## <a name="step-7-mount-the-container"></a>Schritt 7: Einbinden des Containers
 
+Erstellen Sie ein Verzeichnis auf Ihrem Windows- oder Linux-System, und binden Sie dann ein Container in das Speicherkonto ein.
+
+### <a name="linux"></a>[Linux](#tab/linux)
+
 1. Erstellen Sie auf einem Linux-System ein Verzeichnis.
 
    ```
@@ -132,6 +136,25 @@ Erstellen Sie einen Container in Ihrem Speicherkonto, indem Sie eins dieser Tool
    - Ersetzen Sie den Platzhalter `<storage-account-name>`, der in diesem Befehl vorkommt, durch den Namen Ihres Speicherkontos.  
 
    - Ersetzen Sie den Platzhalter `<container-name>` durch den Namen Ihres Containers.
+
+
+### <a name="windows"></a>[Windows](#tab/windows)
+
+1. Öffnen Sie das Dialogfeld **Windows-Features**, und aktivieren Sie dann das Feature **Client für NFS**. 
+
+   ![Feature „Client für NFS“](media/network-file-system-protocol-how-to/client-for-network-files-system-feature.png)
+
+2. Binden Sie einen Container mithilfe des [mount](https://docs.microsoft.com/windows-server/administration/windows-commands/mount)-Befehls ein.
+
+   ```
+   mount -o nolock <storage-account-name>.blob.core.windows.net:/<storage-account-name>/<container-name> *
+   ```
+
+   - Ersetzen Sie den Platzhalter `<storage-account-name>`, der in diesem Befehl vorkommt, durch den Namen Ihres Speicherkontos.  
+
+   - Ersetzen Sie den Platzhalter `<container-name>` durch den Namen Ihres Containers.
+
+---
 
 ## <a name="resolve-common-issues"></a>Beheben allgemeiner Probleme
 

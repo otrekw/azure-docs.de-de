@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: c6cdde3ae63a2f816db7a978557f72b4b60d2677
-ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
+ms.openlocfilehash: 7ec61bf4db949649c993fad4a3255b55626cb259
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87439126"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056226"
 ---
 # <a name="tutorial-develop-iot-edge-modules-for-linux-devices"></a>Tutorial: Entwickeln von IoT Edge-Modulen für Linux-Geräte
 
@@ -151,6 +151,9 @@ Nehmen Sie sich nach dem Laden Ihrer neuen Projektmappe im Visual Studio Code-Fe
 ### <a name="provide-your-registry-credentials-to-the-iot-edge-agent"></a>Angeben Ihrer Anmeldeinformationen für die Registrierung über den IoT Edge-Agent
 
 Die Umgebungsdatei speichert die Anmeldeinformationen für Ihre Containerregistrierung und gibt sie an die IoT Edge-Runtime weiter. Die Runtime benötigt diese Anmeldeinformationen, um Ihre Containerimages per Pullvorgang auf das IoT Edge-Gerät zu übertragen.
+
+>[!NOTE]
+>Wenn Sie im Schritt [**Erstellen einer Projektvorlage**](#create-a-project-template) den Wert **localhost:5000** nicht durch den Wert des Anmeldeservers aus Ihrer Azure-Containerregistrierung ersetzt haben, fehlen die Datei vom Typ **.env** und der Abschnitt „registryCredentials“ des Bereitstellungsmanifests. 
 
 Die IoT Edge-Erweiterung versucht, Ihre Anmeldeinformationen für die Containerregistrierung per Pullvorgang aus Azure abzurufen und in die Umgebungsdatei einzufügen. Überprüfen Sie, ob Ihre Anmeldeinformationen bereits enthalten sind. Fügen Sie sie jetzt hinzu, wenn dies nicht der Fall ist:
 

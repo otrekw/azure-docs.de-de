@@ -3,16 +3,16 @@ title: Herstellen einer Verbindung mit Office 365 Outlook
 description: Automatisieren von Aufgaben und Workflows, die E-Mails, Kontakte und Kalender in Office 365 Outlook mithilfe von Azure Logic Apps verwalten
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: logicappspm
 ms.topic: article
-ms.date: 01/08/2020
+ms.date: 07/27/2020
 tags: connectors
-ms.openlocfilehash: b0f2b8b9c369fdb42c7e0e7f77fc090424ae3729
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e0e152b3c0e10c34bc6213ddf867b79c58d1d767
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75732683"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87832976"
 ---
 # <a name="manage-email-contacts-and-calendars-in-office-365-outlook-by-using-azure-logic-apps"></a>Verwalten von E-Mails, Kontakten und Kalendern in Office 365 Outlook mithilfe von Azure Logic Apps
 
@@ -29,9 +29,9 @@ Sie können einen beliebigen Trigger verwenden, um Ihren Workflow zu starten �
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein [Office 365-Konto](https://www.office.com/)
+* Ein Azure-Abonnement. Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
 
-* ein Azure-Abonnement Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/). 
+* Ein [Office 365-Konto](https://www.office.com/)
 
 * Die Logik-App, in der Sie auf Ihr Office 365 Outlook-Konto zugreifen möchten. Um Ihren Workflow mit einem Office 365 Outlook-Trigger starten zu können, benötigen Sie eine [leere Logik-App](../logic-apps/quickstart-create-first-logic-app-workflow.md). Wenn Sie Ihrem Workflow eine Office 365 Outlook-Aktion hinzufügen möchten, muss Ihre Logik-App bereits über einen-Trigger verfügen.
 
@@ -47,11 +47,14 @@ Ein [Trigger](../logic-apps/logic-apps-overview.md#logic-app-concepts) ist ein E
 
 1. Wenn eine Anmeldeanforderung angezeigt wird, geben Sie Ihre Office 365 Outlook-Anmeldeinformationen an, damit Ihre Logik-App eine Verbindung mit Ihrem Konto herstellen kann. Falls die Verbindung bereits besteht, geben Sie die folgenden Informationen für die Eigenschaften des Triggers an.
 
+   > [!NOTE]
+   > Ihre Verbindung läuft erst ab, wenn sie widerrufen wird. Sie läuft selbst dann nicht ab, wenn Sie die Anmeldeinformationen ändern. Weitere Informationen finden Sie unter [Konfigurierbare Tokengültigkeitsdauern in Azure Active Directory](../active-directory/develop/active-directory-configurable-token-lifetimes.md).
+
    In diesem Beispiel wird der Kalender ausgewählt, den der Trigger überprüft, beispielsweise:
 
    ![Konfigurieren der Eigenschaften des Triggers](./media/connectors-create-api-office365-outlook/select-calendar.png)
 
-1. Legen Sie im Trigger die Werte für **Frequenz** und **Intervall** fest. Um weitere verfügbare Trigger wie **Zeitzone** hinzuzufügen, wählen Sie diese Eigenschaften aus der Liste **Neuen Parameter hinzufügen** aus.
+1. Legen Sie im Trigger die Werte für **Häufigkeit** und **Intervall** fest. Um weitere verfügbare Trigger wie **Zeitzone** hinzuzufügen, wählen Sie diese Eigenschaften aus der Liste **Neuen Parameter hinzufügen** aus.
 
    Wenn also der Trigger beispielsweise den Kalender alle 15 Minuten überprüfen soll, legen Sie **Häufigkeit** auf **Minute** und **Intervall** auf `15` fest. 
 
@@ -77,6 +80,9 @@ Eine [Aktion](../logic-apps/logic-apps-overview.md#logic-app-concepts) ist ein V
 
 1. Wenn eine Anmeldeanforderung angezeigt wird, geben Sie Ihre Office 365 Outlook-Anmeldeinformationen an, damit Ihre Logik-App eine Verbindung mit Ihrem Konto herstellen kann. Falls die Verbindung bereits besteht, geben Sie die folgenden Informationen für die Eigenschaften der Aktion an.
 
+   > [!NOTE]
+   > Ihre Verbindung läuft erst ab, wenn sie widerrufen wird. Sie läuft selbst dann nicht ab, wenn Sie die Anmeldeinformationen ändern. Weitere Informationen finden Sie unter [Konfigurierbare Tokengültigkeitsdauern in Azure Active Directory](../active-directory/develop/active-directory-configurable-token-lifetimes.md).
+
    In diesem Beispiel wird der Ordner „Kontakte“ ausgewählt, in dem die Aktion den neuen Kontakt erstellt, z. B.:
 
    ![Konfigurieren der Eigenschaften der Aktion](./media/connectors-create-api-office365-outlook/select-contacts-folder.png)
@@ -85,9 +91,9 @@ Eine [Aktion](../logic-apps/logic-apps-overview.md#logic-app-concepts) ist ein V
 
 1. Wählen Sie auf der Symbolleiste des Designers **Speichern** aus.
 
-## <a name="connector-specific-details"></a>Connectorspezifische Details
+## <a name="connector-reference"></a>Connector-Referenz
 
-Technische Details zu Triggern, Aktionen und Grenzwerten, wie sie in der Swagger-Datei des Connectors beschrieben werden, finden Sie auf der [Referenzseite des Connectors](/connectors/office365connector/). 
+Technische Details zu diesem Connector, z. B. Trigger, Aktionen und Grenzwerte, wie sie in der Swagger-Datei des Connectors beschrieben werden, finden Sie auf der [Referenzseite des Connectors](/connectors/office365/). 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

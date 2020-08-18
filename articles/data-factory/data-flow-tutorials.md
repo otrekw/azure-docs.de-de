@@ -5,13 +5,13 @@ author: djpmsft
 ms.author: daperlov
 ms.service: data-factory
 ms.topic: tutorial
-ms.date: 05/25/2020
-ms.openlocfilehash: 87bfd505edcb394bafd70a975b5b3d6bde341cb9
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.date: 08/11/2020
+ms.openlocfilehash: 809011df3c8cd6dbc1ee2a2129a261102adb43c0
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83848871"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067850"
 ---
 # <a name="mapping-data-flow-video-tutorials"></a>Videotutorials zum Zuordnungsdatenfluss
 
@@ -36,6 +36,8 @@ Da das Produkt kontinuierlich aktualisiert wird, verfügen einige Features auf d
 [Überwachen und Verwalten der Leistung von Zuordnungsdatenflüssen](https://www.youtube.com/watch?v=fktIWdJiqTk)
 
 [Zeitangaben für Benchmarks](http://youtu.be/6CSbWm4lRhw?hd=1)
+
+[Debuggen von Workflows für Datenflüsse](https://youtu.be/y3suL7UsWVw)
 
 ## <a name="transformation-overviews"></a>Übersicht über Transformationen
 
@@ -118,6 +120,8 @@ Da das Produkt kontinuierlich aktualisiert wird, verfügen einige Features auf d
 [Dynamisches Optimieren der Datenfluss-Clustergröße zur Laufzeit](https://www.youtube.com/watch?v=jWSkJdtiJNM)
 
 [Optimieren der Startzeiten für den Datenfluss](https://www.youtube.com/watch?v=VT_2ZV3a7Fc)
+
+[Azure Integration Runtimes für Datenflüsse](https://mssqldude.wordpress.com/)
 
 ## <a name="mapping-data-flow-scenarios"></a>Szenarien für Zuordnungsdatenflüsse
 

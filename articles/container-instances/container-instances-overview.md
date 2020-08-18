@@ -2,14 +2,14 @@
 title: Serverlose Container in Azure
 description: Mit den Azure Container Instances-Dienst lassen sich isolierte Container in Azure besonders schnell und einfach ausführen, ohne dass Sie dazu virtuelle Computer verwalten oder einen übergeordneten Orchestrator einführen müssen.
 ms.topic: overview
-ms.date: 07/28/2020
+ms.date: 08/10/2020
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 2871aabe4d81cfb1441e9c74c8fa24e4e906d3b9
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: bd68fab380754eca38eebf3fd52634508f282cf6
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87498683"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121662"
 ---
 # <a name="what-is-azure-container-instances"></a>Was ist Azure Container Instances?
 
@@ -35,10 +35,15 @@ Azure Container Instances unterstützt auch das Ausführen eines Befehls in eine
 > [!IMPORTANT]
 > Ab dem 13. Januar 2020 setzt Azure Container Instances voraus, dass alle sicheren Verbindungen von Servern und Anwendungen TLS 1.2 verwenden. Die Unterstützung für TLS 1.0 und 1.1 wird eingestellt.
 
-## <a name="hypervisor-level-security"></a>Sicherheit auf Hypervisor-Ebene
+## <a name="compliant-deployments"></a>Konforme Bereitstellungen
+
+### <a name="hypervisor-level-security"></a>Sicherheit auf Hypervisor-Ebene
 
 In der Vergangenheit verfügten Container zwar über Anwendungsabhängigkeitsisolierung und Ressourcenkontrolle, galten aber nicht als ausreichend gehärtet, um in einer gefährlichen Umgebung mit mehreren Mandanten verwendet werden zu können. Azure Container Instances gewährleistet, dass Ihre Anwendung in einem Container isoliert ist – genau wie bei einem virtuellen Computer.
 
+### <a name="customer-data"></a>Kundendaten
+
+Der ACI-Dienst speichert die Kundendaten, die mindestens erforderlich sind, um sicherzustellen, dass Ihre Containergruppen erwartungsgemäß ausgeführt werden. Das Speichern von Kundendaten in einer einzelnen Region ist derzeit nur in der Region „Asien, Südosten“ (Singapur) des geografischen Raums „Asien-Pazifik“ möglich. Bei allen anderen Regionen werden Kundendaten unter [Geografien](https://azure.microsoft.com/global-infrastructure/geographies/) gespeichert. Weitere Informationen erhalten Sie vom Azure-Support.
 
 ## <a name="custom-sizes"></a>Benutzerdefinierte Größen
 

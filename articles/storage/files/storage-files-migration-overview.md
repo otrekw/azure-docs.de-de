@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 3/18/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 512688345c03ea9d5da0e4933cd6a794eaaf597b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d979d2d0167a4398d31271bb896c812bbe86be73
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84660757"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87827859"
 ---
 # <a name="migrate-to-azure-file-shares"></a>Migrieren zu Azure-Dateifreigaben
 
@@ -81,7 +81,7 @@ Für ein Szenario ohne Link wurde derzeit noch kein Migrationsleitfaden veröffe
 | `Source` | Ziel: </br>Hybridbereitstellung | Ziel: </br>Reine Cloudbereitstellung |
 |:---|:--|:--|
 | | Toolkombination:| Toolkombination: |
-| Windows Server 2012 R2 und höher | <ul><li>[Azure-Dateisynchronisierung ](storage-sync-files-deployment-guide.md)</li><li>[Azure-Dateisynchronisierung und Azure Data Box](storage-sync-offline-data-transfer.md)</li><li>Azure-Dateisynchronisierung und Speichermigrationsdienst</li></ul> | <ul><li>Azure-Dateisynchronisierung</li><li>Azure-Dateisynchronisierung und Data Box</li><li>Azure-Dateisynchronisierung und Speichermigrationsdienst</li><li>RoboCopy</li></ul> |
+| Windows Server 2012 R2 und höher | <ul><li>[Azure-Dateisynchronisierung ](storage-sync-files-deployment-guide.md)</li><li>[Azure-Dateisynchronisierung und Azure Data Box](storage-sync-offline-data-transfer.md)</li><li>[Azure-Dateisynchronisierung und vorab per Seeding hinzugefügte Dateien in der Cloud](storage-sync-offline-data-transfer.md#azure-file-sync-and-pre-seeded-files-in-the-cloud)</li><li>Azure-Dateisynchronisierung und Speichermigrationsdienst</li></ul> | <ul><li>Azure-Dateisynchronisierung</li><li>Azure-Dateisynchronisierung und Data Box</li><li>Azure-Dateisynchronisierung und Speichermigrationsdienst</li><li>RoboCopy</li></ul> |
 | Windows Server 2012 und früher | <ul><li>Azure-Dateisynchronisierung und Data Box</li><li>Azure-Dateisynchronisierung und Speichermigrationsdienst</li></ul> | <ul><li>Azure-Dateisynchronisierung und Speichermigrationsdienst</li><li>RoboCopy</li></ul> |
 | Network Attached Storage (NAS) | <ul><li>[Azure-Dateisynchronisierung und RoboCopy](storage-files-migration-nas-hybrid.md)</li></ul> | <ul><li>RoboCopy</li></ul> |
 | Linux oder Samba | <ul><li>[Azure-Dateisynchronisierung und RoboCopy](storage-files-migration-linux-hybrid.md)</li></ul> | <ul><li>RoboCopy</li></ul> |

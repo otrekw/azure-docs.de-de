@@ -232,6 +232,8 @@
       href: ../extensions/troubleshoot.md
     - name: Offlineinstallation des Windows-VM-Agents
       href: install-vm-agent-offline.md
+    - name: Problembehandlung für den Windows-VM-Agent
+      href: windows-azure-guest-agent.md
 - name: Sichern und Wiederherstellen
   items:
     - name: Behandeln von Sicherungsfehlern auf einem virtuellen Azure-Computer

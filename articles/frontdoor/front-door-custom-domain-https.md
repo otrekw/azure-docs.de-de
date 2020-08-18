@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/05/2018
 ms.author: sharadag
-ms.openlocfilehash: 56a2246b4f1da51d9b18a34279eff04264530ef5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 770353f893762f0f35d744fe1e7a5e4de4a671ce
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82160084"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87808762"
 ---
 # <a name="tutorial-configure-https-on-a-front-door-custom-domain"></a>Tutorial: Konfigurieren von HTTPS in einer benutzerdefinierten Front Door-Domäne
 
@@ -68,6 +68,9 @@ Um HTTPS für eine benutzerdefinierte Domäne zu aktivieren, führen Sie die fol
 4. Klicken Sie auf Speichern.
 
 5. Fahren Sie mit [Domäne überprüfen](#validate-the-domain) fort.
+
+> [!NOTE]
+> Bei von AFD verwalteten Zertifikaten wird der Grenzwert von 64 Zeichen von DigiCert erzwungen. Bei der Überprüfung tritt ein Fehler auf, wenn dieser Grenzwert überschritten wird.
 
 
 ### <a name="option-2-use-your-own-certificate"></a>Option 2: Verwenden Ihres eigenen Zertifikats

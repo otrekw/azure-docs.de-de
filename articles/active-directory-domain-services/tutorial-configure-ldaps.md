@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 61e2d4607ebe1b688b2874220a170b2539a2226e
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: 1164d838a45496a075d356995a60beb967cdfcca
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87404173"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88054339"
 ---
 # <a name="tutorial-configure-secure-ldap-for-an-azure-active-directory-domain-services-managed-domain"></a>Tutorial: Konfigurieren von Secure LDAP (LDAPS) für eine verwaltete Azure AD Domain Services-Domäne
 
@@ -265,7 +265,7 @@ Zum Herstellen von Verbindungen und Bindungen mit Ihrer verwalteten Domäne sowi
 Als Nächstes erstellen Sie eine Bindung mit Ihrer verwalteten Domäne. Benutzer (und Dienstkonten) können keine einfachen LDAP-Bindungen ausführen, wenn Sie die NTLM-Kennworthashsynchronisierung für Ihre verwaltete Domäne deaktiviert haben. Weitere Informationen zum Deaktivieren der NTLM-Kennworthashsynchronisierung finden Sie unter [Schützen Ihrer verwalteten Domäne][secure-domain].
 
 1. Wählen Sie die Menüoption **Verbindung** und dann die Option **Binden...** aus.
-1. Geben Sie die Anmeldeinformationen eines Benutzerkontos an, das zur Gruppe *AAD DC-Administratoren* gehört, z. B. *contosoadmin*. Geben Sie das Kennwort des Benutzerkontos und dann Ihre Domäne (z. B. *aaddscontoso.com*) ein.
+1. Geben Sie die Anmeldeinformationen eines Benutzerkontos an, das zur verwalteten Domäne gehört. Geben Sie das Kennwort des Benutzerkontos und dann Ihre Domäne (z. B. *aaddscontoso.com*) ein.
 1. Wählen Sie als **Bindungstyp** die Option *Bindung mit Anmeldeinformationen* aus.
 1. Wählen Sie **OK** aus, um die Bindung mit Ihrer verwalteten Domäne zu erstellen.
 

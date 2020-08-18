@@ -1,6 +1,6 @@
 ---
 title: Azure CLI-Skriptbeispiel – Löschen eines Containers nach Präfix | Microsoft-Dokumentation
-description: Löschen Sie Azure Storage Blob-Container basierend auf einem Präfix des Containernamens.
+description: Löschen Sie Azure Storage Blob-Container basierend auf dem Präfix eines Containernamens, und bereinigen Sie anschließend die Bereitstellung. Weitere Informationen finden Sie unter den Hilfelinks für Befehle, die im Skriptbeispiel verwendet werden.
 services: storage
 author: tamram
 ms.service: storage
@@ -10,12 +10,12 @@ ms.topic: sample
 ms.date: 06/22/2017
 ms.author: tamram
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 66869b7dc38e11b614ebc89538c2c195122b5bb3
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: aeccf255004cd4512fbc591942324341504b20f7
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87479556"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87901877"
 ---
 # <a name="use-an-azure-cli-script-to-delete-containers-based-on-container-name-prefix"></a>Löschen von Containern basierend auf dem Präfix des Containernamens mithilfe eines Azure CLI-Skripts
 

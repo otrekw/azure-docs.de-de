@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 10/29/2019
 ms.author: kenwith
-ms.openlocfilehash: a1a99e9f02a25f5e1d57ea485930a4f26149b53f
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: beb5c7262a5475f5c1535e120fcebe4c70838c7e
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87808404"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88135486"
 ---
 # <a name="quickstart-configure-properties-for-an-application-in-your-azure-active-directory-azure-ad-tenant"></a>Schnellstart: Konfigurieren von Eigenschaften für eine Anwendung auf Ihrem Azure AD-Mandanten (Azure Active Directory)
 
@@ -48,37 +48,24 @@ So bearbeiten Sie die Anwendungseigenschaften:
     - Mit **Aktiviert für die Benutzeranmeldung?** wird festgelegt, ob sich Benutzer, die der Anwendung zugewiesen sind, anmelden können.
     - Mit **Benutzerzuweisung erforderlich?** wird festgelegt, ob sich Benutzer, die der Anwendung nicht zugewiesen sind, anmelden können.
     - Mit **Für Benutzer sichtbar?** wird festgelegt, ob den einer App zugewiesenen Benutzern die Anwendung im [Zugriffsbereich](https://myapps.microsoft.com) und im Office 365-App-Startfeld angezeigt wird. (Siehe das Waffelmenü in der oberen linken Ecke einer Office 365- oder Microsoft 365-Website.)
-4. Anhand der folgenden Tabellen können Sie die Optionen auswählen, die am besten für Ihre Anforderungen geeignet sind:
+    
+    > [!TIP]
+    > Benutzer werden im Navigationsbereich **Benutzer und Gruppen** zugewiesen.
 
-   - Verhalten für *zugewiesene* Benutzer:
+    Die drei Optionen können unabhängig voneinander aktiviert/deaktiviert werden, und das resultierende Verhalten ist nicht immer offensichtlich. Die folgende Tabelle ist ggf. hilfreich:
+    
+    | Aktiviert für die Benutzeranmeldung? | Benutzerzuweisung erforderlich? | Für Benutzer sichtbar? | Verhalten für Benutzer, die der App zugewiesen bzw. nicht zugewiesen wurden |
+    |---|---|---|---|
+    | Ja | Ja | Ja | Zugewiesenen Benutzern wird die App angezeigt, und sie können sich anmelden.<br>Nicht zugewiesenen Benutzern wird die App nicht angezeigt, und sie können sich nicht anmelden. |
+    | Ja | Ja | Nein  | Zugewiesenen Benutzern wird die App nicht angezeigt, aber sie können sich anmelden.<br>Nicht zugewiesenen Benutzern wird die App nicht angezeigt, und sie können sich nicht anmelden. |
+    | Ja | Nein  | Ja | Zugewiesenen Benutzern wird die App angezeigt, und sie können sich anmelden.<br>Nicht zugewiesenen Benutzern wird die App nicht angezeigt, aber sie können sich anmelden. |
+    | Ja | Nein  | Nein  | Zugewiesenen Benutzern wird die App nicht angezeigt, aber sie können sich anmelden.<br>Nicht zugewiesenen Benutzern wird die App nicht angezeigt, aber sie können sich anmelden. |
+    | Nein  | Ja | Ja | Zugewiesenen Benutzern wird die App nicht angezeigt, und sie können sich nicht anmelden.<br>Nicht zugewiesenen Benutzern wird die App nicht angezeigt, und sie können sich nicht anmelden. |
+    | Nein  | Ja | Nein  | Zugewiesenen Benutzern wird die App nicht angezeigt, und sie können sich nicht anmelden.<br>Nicht zugewiesenen Benutzern wird die App nicht angezeigt, und sie können sich nicht anmelden. |
+    | Nein  | Nein  | Ja | Zugewiesenen Benutzern wird die App nicht angezeigt, und sie können sich nicht anmelden.<br>Nicht zugewiesenen Benutzern wird die App nicht angezeigt, und sie können sich nicht anmelden. |
+    | Nein  | Nein  | Nein  | Zugewiesenen Benutzern wird die App nicht angezeigt, und sie können sich nicht anmelden.<br>Nicht zugewiesenen Benutzern wird die App nicht angezeigt, und sie können sich nicht anmelden. |
 
-       | Anwendungseigenschaft | Anwendungseigenschaft | Anwendungseigenschaft | Zugewiesene Benutzer | Zugewiesene Benutzer |
-       |---|---|---|---|---|
-       | Aktiviert für die Benutzeranmeldung? | Benutzerzuweisung erforderlich? | Für Benutzer sichtbar? | Können sich zugewiesene Benutzer anmelden? | Können zugewiesene Benutzer die Anwendung sehen?* |
-       | Ja | Ja | Ja | Ja | Ja  |
-       | Ja | Ja | Nein  | Ja | Nein   |
-       | Ja | Nein  | Ja | Ja | Ja  |
-       | Ja | Nein  | Nein  | Ja | Nein   |
-       | Nein  | Ja | Ja | Nein  | Nein   |
-       | Nein  | Ja | Nein  | Nein  | Nein   |
-       | Nein  | Nein  | Ja | Nein  | Nein   |
-       | Nein  | Nein  | Nein  | Nein  | Nein   |
-
-   - Verhalten für *nicht zugewiesene* Benutzer:
-
-       | Anwendungseigenschaft | Anwendungseigenschaft | Anwendungseigenschaft | Nicht zugewiesene Benutzer | Nicht zugewiesene Benutzer |
-       |---|---|---|---|---|
-       | Aktiviert für die Benutzeranmeldung? | Benutzerzuweisung erforderlich? | Für Benutzer sichtbar? | Können sich nicht zugewiesene Benutzer anmelden? | Können nicht zugewiesene Benutzer die Anwendung sehen?* |
-       | Ja | Ja | Ja | Nein  | Nein   |
-       | Ja | Ja | Nein  | Nein  | Nein   |
-       | Ja | Nein  | Ja | Ja | Nein   |
-       | Ja | Nein  | Nein  | Ja | Nein   |
-       | Nein  | Ja | Ja | Nein  | Nein   |
-       | Nein  | Ja | Nein  | Nein  | Nein   |
-       | Nein  | Nein  | Ja | Nein  | Nein   |
-       | Nein  | Nein  | Nein  | Nein  | Nein   |
-
-     *Kann der Benutzer die Anwendung im Zugriffsbereich und im Office 365-App-Startfeld sehen?
+4. Wählen Sie abschließend **Speichern** aus.
 
 ## <a name="use-a-custom-logo"></a>Verwenden eines benutzerdefinierten Logos
 

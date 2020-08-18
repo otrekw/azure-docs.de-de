@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/19/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 3c33e2152fc120d406886d89adda26603126a8ba
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 2a0751f12f33a36d9e0003977bcf40b66d715615
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87483551"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87986949"
 ---
 # <a name="access-external-storage-in-synapse-sql-on-demand"></a>Zugreifen auf externen Speicher in Synapse SQL (On-Demand)
 
@@ -25,11 +25,7 @@ In diesem Dokument wird beschrieben, wie Benutzer Daten aus den Dateien lesen k�
 
 Benutzer können [verschiedene Authentifizierungsmethoden](develop-storage-files-storage-access-control.md) verwenden, z. B. Azure AD-Pass-Through-Authentifizierung (Standard für Azure AD-Prinzipale) und SAS-Authentifizierung (Standard für SQL-Prinzipale).
 
-## <a name="openrowset"></a>OPENROWSET
-
-Funktion [OPENROWSET](develop-openrowset.md), mit der Benutzer die Dateien aus Azure Storage lesen können.
-
-### <a name="query-files-using-openrowset"></a>Abfragen von Dateien mit OPENROWSET
+## <a name="query-files-using-openrowset"></a>Abfragen von Dateien mit OPENROWSET
 
 Mit OPENROWSET können Benutzer externe Dateien in Azure Storage abfragen, sofern sie über Zugriff auf den Speicher verfügen. Der Benutzer, der mit dem Synapse SQL On-Demand-Endpunkt verbunden ist, sollte die folgende Abfrage verwenden, um den Inhalt der Dateien in Azure Storage zu lesen:
 
@@ -40,8 +36,10 @@ SELECT * FROM
 
 Der Benutzer kann mit den folgenden Zugriffsregeln auf den Speicher zugreifen:
 
-- Azure AD-Benutzer: Bei OPENROWSET wird die Azure AD-Identität des Aufrufers verwendet, um auf Azure Storage zuzugreifen, oder der Zugriff auf den Speicher erfolgt anonym.
-- SQL-Benutzer: Bei OPENROWSET erfolgt der Zugriff auf den Speicher anonym.
+- Azure AD-Benutzer: Bei `OPENROWSET` wird die Azure AD-Identität des Aufrufers verwendet, um auf Azure Storage zuzugreifen, oder der Zugriff auf den Speicher erfolgt anonym.
+- SQL-Benutzer: Bei `OPENROWSET` erfolgt der Zugriff auf den Speicher anonym, oder die Identität kann mithilfe eines SAS-Tokens oder der verwalteten Identität des Arbeitsbereichs angenommen werden.
+
+### <a name="impersonation"></a>[Identitätswechsel](#tab/impersonation)
 
 Für SQL-Prinzipale kann OPENROWSET auch verwendet werden, um Dateien direkt abzufragen, die mit SAS-Token oder per verwalteter Identität des Arbeitsbereichs geschützt sind. Wenn ein SQL-Benutzer diese Funktion ausführt, muss ein Poweruser mit der Berechtigung `ALTER ANY CREDENTIAL` serverbezogene Anmeldeinformationen erstellen, die mit der URL in der Funktion übereinstimmen (mit Verwendung eines Speichernamens und Containers). Darüber hinaus muss dem Aufrufer der Funktion OPENROWSET die Berechtigung REFERENCES für diese Anmeldeinformationen gewährt werden:
 
@@ -56,10 +54,17 @@ GRANT REFERENCES CREDENTIAL::[https://<storage_account>.dfs.core.windows.net/<co
 
 Falls keine serverbezogenen Anmeldeinformationen vorhanden sind, die mit der URL übereinstimmen, oder wenn der SQL-Benutzer nicht über die Berechtigung REFERENCES für diese Anmeldeinformationen verfügt, wird der Fehler zurückgegeben. Für SQL-Prinzipale kann per Azure AD-Identität nicht die Identität gewechselt werden.
 
+### <a name="direct-access"></a>[Direktzugriff](#tab/direct-access)
+
+Es ist kein zusätzliches Setup erforderlich, um Azure AD-Benutzern den Zugriff auf die Dateien unter Verwendung ihrer Identitäten zu ermöglichen.
+Jeder Benutzer kann auf den Azure-Speicher zugreifen, der anonymen Zugriff zulässt (kein zusätzliches Setup erforderlich).
+
+---
+
 > [!NOTE]
 > Diese Version von OPENROWSET ist auf eine schnelle und einfache Datenuntersuchung per Standardauthentifizierung ausgelegt. Verwenden Sie OPENROWSET mit DATASOURCE wie im nächsten Abschnitt beschrieben, um den Identitätswechsel oder die verwaltete Identität zu nutzen.
 
-### <a name="query-data-sources-using-openrowset"></a>Abfragen von Datenquellen mit OPENROWSET
+## <a name="query-data-sources-using-openrowset"></a>Abfragen von Datenquellen mit OPENROWSET
 
 Mit OPENROWSET können Benutzer die Dateien abfragen, die sich auf einer externen Datenquelle befinden:
 
@@ -70,9 +75,18 @@ SELECT * FROM
  FORMAT= 'parquet') as rows
 ```
 
-Ein Poweruser mit der Berechtigung CONTROL DATABASE muss datenbankbezogene Anmeldeinformationen (DATABASE SCOPED CREDENTIAL) erstellen, die zum Zugreifen auf den Speicher verwendet werden, sowie eine externe Datenquelle (EXTERNAL DATA SOURCE), für die die zugehörige URL und die zu verwendenden Anmeldeinformationen angegeben sind:
+Der Benutzer, der diese Abfrage ausführt, muss auf die Dateien zugreifen können. Die Identität der Benutzer muss mithilfe eines [SAS-Tokens](develop-storage-files-storage-access-control.md?tabs=shared-access-signature) oder der [verwalteten Identität des Arbeitsbereichs](develop-storage-files-storage-access-control.md?tabs=managed-identity) angenommen werden, wenn der direkte Zugriff auf die Dateien mithilfe ihrer [Azure AD-Identität](develop-storage-files-storage-access-control.md?tabs=user-identity) oder [anonym](develop-storage-files-storage-access-control.md?tabs=public-access) nicht möglich ist.
+
+### <a name="impersonation"></a>[Identitätswechsel](#tab/impersonation)
+
+Mit `DATABASE SCOPED CREDENTIAL` wird angegeben, wie auf Dateien in der referenzierten Datenquelle zugegriffen wird (derzeit SAS und verwaltete Identität). Ein Poweruser mit der Berechtigung `CONTROL DATABASE` muss datenbankbezogene Anmeldeinformationen (`DATABASE SCOPED CREDENTIAL`), die zum Zugreifen auf den Speicher verwendet werden, sowie eine externe Datenquelle (`EXTERNAL DATA SOURCE`) erstellen, für die die zugehörige URL und die zu verwendenden Anmeldeinformationen angegeben sind:
 
 ```sql
+EXECUTE AS somepoweruser;
+
+-- Create MASTER KEY if it doesn't exists in database
+CREATE MASTER KEY ENCRYPTION BY PASSWORD = 'some very strong password';
+
 CREATE DATABASE SCOPED CREDENTIAL AccessAzureInvoices
  WITH IDENTITY = 'SHARED ACCESS SIGNATURE',
  SECRET = '******srt=sco&amp;sp=rwac&amp;se=2017-02-01T00:55:34Z&amp;st=201********' ;
@@ -82,16 +96,14 @@ CREATE EXTERNAL DATA SOURCE MyAzureInvoices
  CREDENTIAL = AccessAzureInvoices) ;
 ```
 
-Mit DATABASE SCOPED CREDENTIAL wird angegeben, wie auf Dateien auf der referenzierten Datenquelle zugegriffen wird (derzeit SAS und verwaltete Identität).
-
 Der Aufrufer muss über eine der folgenden Berechtigungen verfügen, um die Funktion OPENROWSET ausführen zu können:
 
 - Eine der Berechtigungen zum Ausführen von OPENROWSET:
   - `ADMINISTER BULK OPERATIONS` ermöglicht die Anmeldung zum Ausführen der Funktion OPENROWSET.
   - Mit `ADMINISTER DATABASE BULK OPERATIONS` kann der Datenbankbenutzer die Funktion OPENROWSET ausführen.
-- REFERENCES DATABASE SCOPED CREDENTIAL für die Anmeldeinformationen, auf die in EXTERNAL DATA SOURCE verwiesen wird.
+- `REFERENCES DATABASE SCOPED CREDENTIAL` für die Anmeldeinformationen, auf die in `EXTERNAL DATA SOURCE` verwiesen wird
 
-#### <a name="access-anonymous-data-sources"></a>Zugreifen auf anonyme Datenquellen
+### <a name="direct-access"></a>[Direktzugriff](#tab/direct-access)
 
 Benutzer können die externe Datenquelle (EXTERNAL DATA SOURCE) ohne Anmeldeinformationen erstellen, mit denen auf öffentlich zugänglichen Speicher verwiesen wird, ODER die Azure AD-Pass-Through-Authentifizierung verwenden:
 
@@ -99,7 +111,7 @@ Benutzer können die externe Datenquelle (EXTERNAL DATA SOURCE) ohne Anmeldeinfo
 CREATE EXTERNAL DATA SOURCE MyAzureInvoices
  WITH ( LOCATION = 'https://<storage_account>.dfs.core.windows.net/<container>/<path>') ;
 ```
-
+---
 ## <a name="external-table"></a>EXTERNAL TABLE
 
 Benutzer mit den Berechtigungen zum Lesen der Tabelle können auf externe Dateien über eine externe Tabelle (EXTERNAL TABLE) zugreifen, die basierend auf einer Gruppe von Azure Storage-Ordnern und -Dateien erstellt wurde.
@@ -117,9 +129,18 @@ FILE_FORMAT = TextFileFormat
 ) ;
 ```
 
-Benutzer mit der Berechtigung CONTROL DATABASE müssen datenbankbezogene Anmeldeinformationen (DATABASE SCOPED CREDENTIAL) erstellen, die zum Zugreifen auf den Speicher verwendet werden, sowie eine externe Datenquelle (EXTERNAL DATA SOURCE), für die die zugehörige URL und die zu verwendenden Anmeldeinformationen angegeben sind:
+Ein Benutzer, der Daten aus dieser Tabelle liest, muss auf die Dateien zugreifen können. Die Identität der Benutzer muss mithilfe eines [SAS-Tokens](develop-storage-files-storage-access-control.md?tabs=shared-access-signature) oder der [verwalteten Identität des Arbeitsbereichs](develop-storage-files-storage-access-control.md?tabs=managed-identity) angenommen werden, wenn der direkte Zugriff auf die Dateien mithilfe ihrer [Azure AD-Identität](develop-storage-files-storage-access-control.md?tabs=user-identity) oder [anonym](develop-storage-files-storage-access-control.md?tabs=public-access) nicht möglich ist.
+
+### <a name="impersonation"></a>[Identitätswechsel](#tab/impersonation)
+
+Mit DATABASE SCOPED CREDENTIAL wird angegeben, wie auf die Dateien auf der referenzierten Datenquelle zugegriffen wird. Benutzer mit der Berechtigung CONTROL DATABASE müssen datenbankbezogene Anmeldeinformationen (DATABASE SCOPED CREDENTIAL) erstellen, die zum Zugreifen auf den Speicher verwendet werden, sowie eine externe Datenquelle (EXTERNAL DATA SOURCE), für die die zugehörige URL und die zu verwendenden Anmeldeinformationen angegeben sind:
 
 ```sql
+EXECUTE AS somepoweruser;
+
+-- Create MASTER KEY if it doesn't exists in database
+CREATE MASTER KEY ENCRYPTION BY PASSWORD = 'some very strong password';
+
 CREATE DATABASE SCOPED CREDENTIAL cred
  WITH IDENTITY = 'SHARED ACCESS SIGNATURE',
  SECRET = '******srt=sco&sp=rwac&se=2017-02-01T00:55:34Z&st=201********' ;
@@ -130,7 +151,15 @@ CREATE EXTERNAL DATA SOURCE AzureDataLakeStore
  ) ;
 ```
 
-Mit DATABASE SCOPED CREDENTIAL wird angegeben, wie auf die Dateien auf der referenzierten Datenquelle zugegriffen wird.
+### <a name="direct-access"></a>[Direktzugriff](#tab/direct-access)
+
+Benutzer können die externe Datenquelle (EXTERNAL DATA SOURCE) ohne Anmeldeinformationen erstellen, mit denen auf öffentlich zugänglichen Speicher verwiesen wird, ODER die Azure AD-Pass-Through-Authentifizierung verwenden:
+
+```sql
+CREATE EXTERNAL DATA SOURCE MyAzureInvoices
+ WITH ( LOCATION = 'https://<storage_account>.dfs.core.windows.net/<container>/<path>') ;
+```
+---
 
 ### <a name="read-external-files-with-external-table"></a>Lesen von externen Dateien mit EXTERNAL TABLE
 
@@ -167,14 +196,14 @@ Nun können Sie mit den folgenden Anleitungsartikeln fortfahren:
 
 - [Abfragen einer CSV-Datei](query-single-csv-file.md)
 
-- [Abfragen von Ordnern und mehreren Dateien](query-folders-multiple-csv-files.md)
-
-- [Abfragen bestimmter Dateien](query-specific-files.md)
-
 - [Abfragen von Parquet-Dateien](query-parquet-files.md)
 
-- [Abfragen von geschachtelten Typen](query-parquet-nested-types.md)
-
 - [Abfragen von JSON-Dateien](query-json-files.md)
+
+- [Abfragen von Ordnern und mehreren Dateien](query-folders-multiple-csv-files.md)
+
+- [Verwenden von Dateimetadaten in Abfragen](query-specific-files.md)
+
+- [Abfragen von geschachtelten Typen](query-parquet-nested-types.md)
 
 - [Erstellen und Verwenden von Sichten](create-use-views.md)

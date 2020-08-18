@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: how-to
-ms.date: 6/11/2020
-ms.openlocfilehash: d1012a2afa84270089ae44b1c5d224e65a2e01ae
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 8/7/2020
+ms.openlocfilehash: f8dbdf87eef193540fd5c1bf9d9e7f3794ae46ce
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86118561"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88168217"
 ---
 # <a name="how-to-configure-azure-database-for-mysql-data-in-replication"></a>Gewusst wie: Konfigurieren der Datenreplikation in Azure Database for MySQL
 
@@ -37,11 +37,11 @@ Um ein Replikat im Azure Database for MySQL-Dienst zu erstellen, synchronisiert 
    > Der Azure Database for MySQL-Server muss in den Tarifen „Universell“ oder „Arbeitsspeicheroptimiert“ erstellt werden.
    > 
 
-2. Erstellen Sie dieselben Benutzerkonten und entsprechenden Berechtigungen.
+1. Erstellen Sie dieselben Benutzerkonten und entsprechenden Berechtigungen.
 
    Benutzerkonten werden nicht vom Masterserver auf den Replikatserver repliziert. Wenn Sie Benutzern Zugriff auf den Replikatserver gewähren möchten, müssen Sie alle Konten und entsprechenden Berechtigungen für diesen neu erstellten Azure Database for MySQL-Server manuell erstellen.
 
-3. Fügen Sie den Firewallregeln des Replikats die IP-Adresse des Masterservers hinzu. 
+1. Fügen Sie den Firewallregeln des Replikats die IP-Adresse des Masterservers hinzu. 
 
    Aktualisieren Sie Firewallregeln über das [Azure-Portal](howto-manage-firewall-using-portal.md) oder über die [Azure-Befehlszeilenschnittstelle](howto-manage-firewall-using-cli.md).
 
@@ -55,7 +55,7 @@ Mit den folgenden Schritten wird der MySQL-Server, der lokal, auf einem virtuell
    
    Testen Sie die Konnektivität mit dem Masterserver, indem Sie versuchen, eine Verbindung über ein Tool, z. B. die MySQL-Befehlszeile auf einem anderen Computer, oder über die im Azure-Portal verfügbare [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) herzustellen.
 
-2. Aktivieren Sie die binäre Protokollierung.
+1. Aktivieren Sie die binäre Protokollierung.
 
    Überprüfen Sie, ob die binäre Protokollierung auf dem Master aktiviert wurde, indem Sie den folgenden Befehl ausführen: 
 
@@ -67,7 +67,7 @@ Mit den folgenden Schritten wird der MySQL-Server, der lokal, auf einem virtuell
 
    Wenn `log_bin` mit dem Wert „OFF“ zurückgegeben wird, aktivieren Sie die binäre Protokollierung, indem Sie die Datei „my.cnf“ ändern, sodass `log_bin=ON` lautet. Starten Sie dann den Server neu, damit die Änderung wirksam wird.
 
-3. Masterservereinstellungen
+1. Masterservereinstellungen
 
    Der Parameter `lower_case_table_names` muss bei der Datenreplikation zwischen dem Master- und Replikatserver konsistent sein. Dieser Parameter ist bei Azure Database for MySQL standardmäßig „1“. 
 
@@ -75,7 +75,7 @@ Mit den folgenden Schritten wird der MySQL-Server, der lokal, auf einem virtuell
    SET GLOBAL lower_case_table_names = 1;
    ```
 
-4. Erstellen Sie eine neue Replikationsrolle, und richten Sie Berechtigungen ein.
+1. Erstellen Sie eine neue Replikationsrolle, und richten Sie Berechtigungen ein.
 
    Erstellen Sie ein Benutzerkonto auf dem Masterserver, der mit Replikationsberechtigungen konfiguriert ist. Dies kann über SQL-Befehle oder ein Tool wie MySQL Workbench erfolgen. Treffen Sie die Entscheidung, ob Sie eine Replikation mit SSL durchführen möchten, da dies bei der Erstellung des Benutzers angegeben werden muss. Wie [Benutzerkonten Ihrem Masterserver hinzugefügt werden](https://dev.mysql.com/doc/refman/5.7/en/user-names.html), erfahren Sie in der MySQL-Dokumentation. 
 
@@ -115,8 +115,7 @@ Mit den folgenden Schritten wird der MySQL-Server, der lokal, auf einem virtuell
 
    ![Replikationsslave](./media/howto-data-in-replication/replicationslave.png)
 
-
-5. Setzen des Masterservers in den schreibgeschützten Modus
+1. Setzen des Masterservers in den schreibgeschützten Modus
 
    Bevor Sie mit dem Sichern der Datenbank beginnen, muss der Server in den schreibgeschützten Modus versetzt werden. Im schreibgeschützten Modus kann der Masterserver keine Schreibtransaktionen verarbeiten. Werten Sie die Auswirkungen auf Ihr Unternehmen aus, und planen Sie das Fenster für den schreibgeschützten Modus bei Bedarf in der Nebenzeit.
 
@@ -125,7 +124,7 @@ Mit den folgenden Schritten wird der MySQL-Server, der lokal, auf einem virtuell
    SET GLOBAL read_only = ON;
    ```
 
-6. Rufen Sie den Namen und das Offset der binären Protokolldatei ab.
+1. Rufen Sie den Namen und das Offset der binären Protokolldatei ab.
 
    Führen Sie den Befehl [`show master status`](https://dev.mysql.com/doc/refman/5.7/en/show-master-status.html) aus, um den aktuellen Namen und das Offset der binären Protokolldatei zu ermitteln.
     
@@ -138,11 +137,11 @@ Mit den folgenden Schritten wird der MySQL-Server, der lokal, auf einem virtuell
  
 ## <a name="dump-and-restore-master-server"></a>Sichern und Wiederherstellen des Masterservers
 
-1. Sichern aller Datenbanken vom Masterserver
+1. Legen Sie fest, welche Datenbanken und Tabellen in Azure Database for MySQL repliziert werden sollen, und führen Sie die Sicherung vom Masterserver aus.
+ 
+    Mit „mysqldump“ können Sie Datenbanken von Ihrem Masterserver sichern. Weitere Informationen finden Sie unter [Migrieren der MySQL-Datenbank auf Azure-Datenbank für MySQL durch Sicherungen und Wiederherstellungen](concepts-migrate-dump-restore.md). Die MySQL- und die Testbibliothek müssen nicht gesichert werden.
 
-   Mit „mysqldump“ können Sie Datenbanken von Ihrem Masterserver sichern. Weitere Informationen finden Sie unter [Migrieren der MySQL-Datenbank auf Azure-Datenbank für MySQL durch Sicherungen und Wiederherstellungen](concepts-migrate-dump-restore.md). Die MySQL- und die Testbibliothek müssen nicht gesichert werden.
-
-2. Setzen des Masterservers in den Lese-/Schreibmodus
+1. Setzen des Masterservers in den Lese-/Schreibmodus
 
    Sobald die Datenbank gesichert wurde, setzen Sie den MySQL-Masterserver wieder in den Lese-/Schreibmodus.
 
@@ -151,7 +150,7 @@ Mit den folgenden Schritten wird der MySQL-Server, der lokal, auf einem virtuell
    UNLOCK TABLES;
    ```
 
-3. Stellen Sie die Sicherungsdatei auf dem neuen Server wieder her.
+1. Stellen Sie die Sicherungsdatei auf dem neuen Server wieder her.
 
    Stellen Sie die Sicherungsdatei auf dem Server wieder her, der im Dienst Azure Database for MySQL erstellt wurde. Informationen zum Wiederherstellen einer Sicherungsdatei auf einem MySQL-Server finden Sie unter [Migrieren der MySQL-Datenbank auf Azure-Datenbank für MySQL durch Sicherungen und Wiederherstellungen](concepts-migrate-dump-restore.md). Handelt es sich um eine große Sicherungsdatei, laden Sie sie auf einen virtuellen Computer in Azure in der gleichen Region wie Ihr Replikatserver hoch. Stellen Sie sie auf dem Azure Database for MySQL-Server vom virtuellen Computer wieder her.
 
@@ -175,33 +174,41 @@ Mit den folgenden Schritten wird der MySQL-Server, der lokal, auf einem virtuell
    - master_ssl_ca: Der Kontext des Zertifizierungsstellenzertifikats. Wenn SSL nicht verwendet wird, übergeben Sie eine leere Zeichenfolge.
        - Es wird empfohlen, diesen Parameter als Variable zu übergeben. Weitere Informationen finden Sie in den folgenden Beispielen.
 
-> [!NOTE]
-> Wenn der Masterserver auf einer Azure VM gehostet wird, legen Sie „Zugriff auf Azure-Dienste erlauben“ auf „EIN“ fest, damit Master- und Replikatserver miteinander kommunizieren können. Diese Einstellung kann über die Optionen für die **Verbindungssicherheit** geändert werden. Weitere Informationen finden Sie unter [Verwaltung von Firewallregeln mit dem Portal](howto-manage-firewall-using-portal.md).
-
+   > [!NOTE]
+   > Wenn der Masterserver auf einer Azure VM gehostet wird, legen Sie „Zugriff auf Azure-Dienste erlauben“ auf „EIN“ fest, damit Master- und Replikatserver miteinander kommunizieren können. Diese Einstellung kann über die Optionen für die **Verbindungssicherheit** geändert werden. Weitere Informationen finden Sie unter [Verwaltung von Firewallregeln mit dem Portal](howto-manage-firewall-using-portal.md).
+      
    **Beispiele**
-
+   
    *Replikation mit SSL*
-
+   
    Die Variable `@cert` wird durch Ausführung der folgenden MySQL-Befehle erstellt: 
-
-   ```sql
-   SET @cert = '-----BEGIN CERTIFICATE-----
-   PLACE YOUR PUBLIC KEY CERTIFICATE'`S CONTEXT HERE
-   -----END CERTIFICATE-----'
-   ```
-
+   
+      ```sql
+      SET @cert = '-----BEGIN CERTIFICATE-----
+      PLACE YOUR PUBLIC KEY CERTIFICATE'`S CONTEXT HERE
+      -----END CERTIFICATE-----'
+      ```
+   
    Eine Replikation mit SSL wird zwischen einem Masterserver, der in der Domäne „UnternehmenA.com“ gehostet wird, und einem Replikatserver, der in Azure Database for MySQL gehostet wird, eingerichtet. Diese gespeicherte Prozedur wird auf dem Replikat ausgeführt. 
-
-   ```sql
-   CALL mysql.az_replication_change_master('master.companya.com', 'syncuser', 'P@ssword!', 3306, 'mysql-bin.000002', 120, @cert);
-   ```
+   
+      ```sql
+      CALL mysql.az_replication_change_master('master.companya.com', 'syncuser', 'P@ssword!', 3306, 'mysql-bin.000002', 120, @cert);
+      ```
    *Replikation ohne SSL*
-
+   
    Eine Replikation ohne SSL wird zwischen einem Masterserver, der in der Domäne „UnternehmenA.com“ gehostet wird, und einem Replikatserver, der in Azure Database for MySQL gehostet wird, eingerichtet. Diese gespeicherte Prozedur wird auf dem Replikat ausgeführt.
+   
+      ```sql
+      CALL mysql.az_replication_change_master('master.companya.com', 'syncuser', 'P@ssword!', 3306, 'mysql-bin.000002', 120, '');
+      ```
 
-   ```sql
-   CALL mysql.az_replication_change_master('master.companya.com', 'syncuser', 'P@ssword!', 3306, 'mysql-bin.000002', 120, '');
-   ```
+1. Filterung 
+ 
+   Wenn Sie die Replikation einiger Tabellen von Ihrem Master überspringen möchten, aktualisieren Sie den Serverparameter `replicate_wild_ignore_table` auf Ihrem Replikatserver. Mithilfe einer durch Trennzeichen getrennten Liste können Sie mehr als ein Tabellenmuster angeben.
+
+   Weitere Informationen zu diesem Parameter finden Sie in der [MySQL-Dokumentation](https://dev.mysql.com/doc/refman/8.0/en/replication-options-replica.html#option_mysqld_replicate-wild-ignore-table). 
+    
+   Sie können den Parameter über das [Azure-Portal](howto-server-parameters.md) oder die [Azure-Befehlszeilenschnittstelle](howto-configure-server-parameters-using-cli.md) aktualisieren.
 
 1. Starten Sie die Replikation.
 

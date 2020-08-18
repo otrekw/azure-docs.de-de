@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 07/30/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: fb0a5c06c8b7bdbb62e937e865e6bb2fd4000f2d
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: 1a7511ed0e7bb1d9032331efa87f0d61a99cf5dc
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87462433"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88065232"
 ---
 # <a name="quickstart-create-an-internal-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>Schnellstart: Erstellen eines internen Lastenausgleichs für virtuelle Computer über das Azure-Portal
 
@@ -51,20 +51,56 @@ Eine private IP-Adresse in dem virtuellen Netzwerk wird als Front-End (standardm
 
 Die Front-End-IP-Adresse kann **statisch** oder **dynamisch** sein.
 
-## <a name="virtual-network-and-parameters"></a>Virtuelles Netzwerk und Parameter
+## <a name="create-the-virtual-network"></a>Erstellen des virtuellen Netzwerks
 
-In diesem Abschnitt müssen die Parameter in den Schritten durch die folgenden Informationen ersetzt werden:
+In diesem Abschnitt erstellen Sie ein virtuelles Netzwerk und ein Subnetz.
 
-| Parameter                   | Wert                |
-|-----------------------------|----------------------|
-| **\<resource-group-name>**  | myResourceGroupLB |
-| **\<virtual-network-name>** | myVNet          |
-| **\<region-name>**          | Europa, Westen      |
-| **\<IPv4-address-space>**   | 10.1.0.0\16          |
-| **\<subnet-name>**          | myBackendSubnet        |
-| **\<subnet-address-range>** | 10.1.0.0\24          |
+1. Wählen Sie links oben auf dem Bildschirm **Ressource erstellen > Netzwerk > Virtuelles Netzwerk** aus, oder suchen Sie über das Suchfeld nach **Virtuelles Netzwerk**.
 
-[!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
+2. Geben Sie unter **Virtuelles Netzwerk erstellen** auf der Registerkarte **Grundlegende Einstellungen** die folgenden Informationen ein, oder wählen Sie sie aus:
+
+    | **Einstellung**          | **Wert**                                                           |
+    |------------------|-----------------------------------------------------------------|
+    | **Projektdetails**  |                                                                 |
+    | Subscription     | Auswählen des Azure-Abonnements                                  |
+    | Ressourcengruppe   | Wählen Sie **myResourceGroupLB** aus. |
+    | **Instanzendetails** |                                                                 |
+    | Name             | Geben Sie **myVNet** ein.                                    |
+    | Region           | Wählen Sie **Europa, Westen** aus. |
+
+3. Wählen Sie die Registerkarte **IP-Adressen** oder die Schaltfläche **Weiter: IP-Adressen** am unteren Seitenrand aus.
+
+4. Geben Sie auf der Registerkarte **IP-Adressen** die folgenden Informationen ein:
+
+    | Einstellung            | Wert                      |
+    |--------------------|----------------------------|
+    | IPv4-Adressraum | Geben Sie **10.1.0.0/16** ein. |
+
+5. Wählen Sie unter **Subnetzname** das Wort **Standard** aus.
+
+6. Geben Sie unter **Subnetz bearbeiten** die folgenden Informationen ein:
+
+    | Einstellung            | Wert                      |
+    |--------------------|----------------------------|
+    | Subnetzname | Geben Sie **myBackendSubnet** ein. |
+    | Subnetzadressbereich | Geben Sie **10.1.0.0/24** ein. |
+
+7. Wählen Sie **Speichern** aus.
+
+8. Wählen Sie die Registerkarte **Sicherheit** .
+
+9. Wählen Sie unter **BastionHost** die Option **Aktivieren** aus. Geben Sie die folgenden Informationen ein:
+
+    | Einstellung            | Wert                      |
+    |--------------------|----------------------------|
+    | Bastion-Name | Geben Sie **myBastionHost** ein. |
+    | AzureBastionSubnet-Adressraum | Geben Sie **10.1.1.0/24** ein. |
+    | Öffentliche IP-Adresse | Wählen Sie **Neu erstellen**. </br> Geben Sie **myBastionIP** als **Name** ein. </br> Klicken Sie auf **OK**. |
+
+
+8. Wählen Sie die Registerkarte **Überprüfen + erstellen** oder die Schaltfläche **Überprüfen + erstellen** aus.
+
+9. Klicken Sie auf **Erstellen**.
 
 ## <a name="create-load-balancer"></a>Erstellen eines Load Balancers
 
@@ -165,6 +201,9 @@ In diesem Abschnitt wird eine Lastenausgleichsregel mit folgenden Merkmalen erst
 
 4. Übernehmen Sie die übrigen Standardeinstellungen, und wählen Sie dann **OK** aus.
 
+>[!NOTE]
+>Die virtuellen Computer im Back-End-Pool verfügen mit dieser Konfiguration nicht über ausgehende Internetkonnektivität. </br> Weitere Informationen zu ausgehender Konnektivität finden Sie unter: </br> **[Ausgehende Verbindungen in Azure](load-balancer-outbound-connections.md)**</br> Optionen zum Bereitstellen von Konnektivität: </br> **[Lastenausgleichskonfiguration (nur ausgehender Datenverkehr)](egress-only.md)** </br> **[Was ist Virtual Network NAT?](https://docs.microsoft.com/azure/virtual-network/nat-overview)**
+
 ## <a name="create-backend-servers"></a>Erstellen von Back-End-Servern
 
 In diesem Abschnitt führen Sie folgende Schritte aus:
@@ -256,20 +295,56 @@ Eine private IP-Adresse in dem virtuellen Netzwerk wird als Front-End (standardm
 
 Die Front-End-IP-Adresse kann **statisch** oder **dynamisch** sein.
 
-## <a name="virtual-network-and-parameters"></a>Virtuelles Netzwerk und Parameter
+## <a name="create-the-virtual-network"></a>Erstellen des virtuellen Netzwerks
 
-In diesem Abschnitt müssen die Parameter in den Schritten durch die folgenden Informationen ersetzt werden:
+In diesem Abschnitt erstellen Sie ein virtuelles Netzwerk und ein Subnetz.
 
-| Parameter                   | Wert                |
-|-----------------------------|----------------------|
-| **\<resource-group-name>**  | myResourceGroupLB |
-| **\<virtual-network-name>** | myVNet          |
-| **\<region-name>**          | Europa, Westen      |
-| **\<IPv4-address-space>**   | 10.1.0.0\16          |
-| **\<subnet-name>**          | myBackendSubnet        |
-| **\<subnet-address-range>** | 10.1.0.0\24          |
+1. Wählen Sie links oben auf dem Bildschirm **Ressource erstellen > Netzwerk > Virtuelles Netzwerk** aus, oder suchen Sie über das Suchfeld nach **Virtuelles Netzwerk**.
 
-[!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
+2. Geben Sie unter **Virtuelles Netzwerk erstellen** auf der Registerkarte **Grundlegende Einstellungen** die folgenden Informationen ein, oder wählen Sie sie aus:
+
+    | **Einstellung**          | **Wert**                                                           |
+    |------------------|-----------------------------------------------------------------|
+    | **Projektdetails**  |                                                                 |
+    | Subscription     | Auswählen des Azure-Abonnements                                  |
+    | Ressourcengruppe   | Wählen Sie **myResourceGroupLB** aus. |
+    | **Instanzendetails** |                                                                 |
+    | Name             | Geben Sie **myVNet** ein.                                    |
+    | Region           | Wählen Sie **Europa, Westen** aus. |
+
+3. Wählen Sie die Registerkarte **IP-Adressen** oder die Schaltfläche **Weiter: IP-Adressen** am unteren Seitenrand aus.
+
+4. Geben Sie auf der Registerkarte **IP-Adressen** die folgenden Informationen ein:
+
+    | Einstellung            | Wert                      |
+    |--------------------|----------------------------|
+    | IPv4-Adressraum | Geben Sie **10.1.0.0/16** ein. |
+
+5. Wählen Sie unter **Subnetzname** das Wort **Standard** aus.
+
+6. Geben Sie unter **Subnetz bearbeiten** die folgenden Informationen ein:
+
+    | Einstellung            | Wert                      |
+    |--------------------|----------------------------|
+    | Subnetzname | Geben Sie **myBackendSubnet** ein. |
+    | Subnetzadressbereich | Geben Sie **10.1.0.0/24** ein. |
+
+7. Wählen Sie **Speichern** aus.
+
+8. Wählen Sie die Registerkarte **Sicherheit** .
+
+9. Wählen Sie unter **BastionHost** die Option **Aktivieren** aus. Geben Sie die folgenden Informationen ein:
+
+    | Einstellung            | Wert                      |
+    |--------------------|----------------------------|
+    | Bastion-Name | Geben Sie **myBastionHost** ein. |
+    | AzureBastionSubnet-Adressraum | Geben Sie **10.1.1.0/24** ein. |
+    | Öffentliche IP-Adresse | Wählen Sie **Neu erstellen**. </br> Geben Sie **myBastionIP** als **Name** ein. </br> Klicken Sie auf **OK**. |
+
+
+8. Wählen Sie die Registerkarte **Überprüfen + erstellen** oder die Schaltfläche **Überprüfen + erstellen** aus.
+
+9. Klicken Sie auf **Erstellen**.
 
 ## <a name="create-load-balancer"></a>Erstellen eines Load Balancers
 
@@ -425,7 +500,7 @@ Diese virtuellen Computer werden dem Back-End-Pool des zuvor erstellten Lastenau
     | **Netzwerkschnittstelle** |  |
     | Virtuelles Netzwerk | Wählen Sie **myVNet** aus. |
     | Subnet | Wählen Sie **myBackendSubnet** aus. |
-    | Öffentliche IP-Adresse | Wählen Sie **Neu erstellen** aus. </br> Geben Sie **myVM-ip** als Name ein. </br> Klicken Sie auf **OK**. |
+    | Öffentliche IP-Adresse | Wählen Sie **Keine** aus. |
     | NIC-Netzwerksicherheitsgruppe | Wählen Sie **Erweitert** aus.|
     | Konfigurieren von Netzwerksicherheitsgruppen | Wählen Sie **Neu erstellen**. </br> Geben Sie unter **Netzwerksicherheitsgruppe erstellen** als **Name** die Zeichenfolge **myNSG** ein. </br> Klicken Sie auf **OK**. |
     | **Lastenausgleich**  |
@@ -434,9 +509,10 @@ Diese virtuellen Computer werden dem Back-End-Pool des zuvor erstellten Lastenau
 5. Wählen Sie die Registerkarte **Verwaltung** oder **Weiter** > **Verwaltung**.
 
 6. Wählen Sie auf der Registerkarte **Verwaltung** die folgenden Werte aus, oder geben Sie sie ein:
+    
     | Einstellung | Wert |
     |-|-|
-    | **Überwachung** | |
+    | **Überwachung** |  |
     | Startdiagnose | Wählen Sie **Aus** aus. |
 
 7. Klicken Sie auf **Überprüfen + erstellen**. 
@@ -487,7 +563,6 @@ In diesem Abschnitt wird ein virtueller Computer namens **myTestVM** erstellt.  
     | Name des virtuellen Computers | Geben Sie **myTestVM** ein. |
     | Region | Wählen Sie **Europa, Westen** aus. |
     | Verfügbarkeitsoptionen | Wählen Sie **Keine Infrastrukturredundanz erforderlich** aus. |
-    | Verfügbarkeitszone | Wählen Sie **Zonenredundant** aus. |
     | Image | Wählen Sie **Windows Server 2019 Datacenter** aus. |
     | Azure Spot-Instanz | Wählen Sie **Nein** aus. |
     | Size | Wählen Sie eine VM-Größe aus, oder übernehmen Sie die Standardeinstellung. |
@@ -505,7 +580,7 @@ In diesem Abschnitt wird ein virtueller Computer namens **myTestVM** erstellt.  
     | **Netzwerkschnittstelle** |  |
     | Virtuelles Netzwerk | **myVNet** |
     | Subnet | **myBackendSubnet** |
-    | Öffentliche IP-Adresse | Übernehmen Sie den Standardwert **myTestVM-ip**. |
+    | Öffentliche IP-Adresse | Wählen Sie **Keine** aus. |
     | NIC-Netzwerksicherheitsgruppe | Wählen Sie **Erweitert** aus.|
     | Konfigurieren von Netzwerksicherheitsgruppen | Wählen Sie die im vorherigen Schritt erstellte Netzwerksicherheitsgruppe **MyNSG** aus.|
     
@@ -526,15 +601,15 @@ In diesem Abschnitt wird ein virtueller Computer namens **myTestVM** erstellt.  
 
 1. Wählen Sie im linken Menü **Alle Dienste** > **Alle Ressourcen** und anschließend in der Ressourcenliste den Eintrag **myVM1** (in der Ressourcengruppe **myResourceGroupLB**) aus.
 
-2. Wählen Sie auf der Seite **Übersicht** die Option **Verbinden** aus, um die RDP-Datei für den virtuellen Computer herunterzuladen.
+2. Wählen Sie auf der Seite **Übersicht** die Option **Verbinden** und dann **Bastion** aus.
 
-3. Öffnen Sie die RDP-Datei.
+4. Geben Sie den Benutzernamen und das Kennwort ein, die Sie bei der VM-Erstellung verwendet haben.
 
-4. Melden Sie sich mit den Anmeldeinformationen, die Sie während der Erstellung dieses virtuellen Computers bereitgestellt haben, beim virtuellen Computer an.
+5. Wählen Sie **Verbinden**.
 
-5. Navigieren Sie auf dem Serverdesktop zu **Windows-Verwaltungsprogramme**>**Windows PowerShell**.
+6. Navigieren Sie auf dem Serverdesktop zu **Windows-Verwaltungsprogramme** > **Windows PowerShell**.
 
-6. Führen Sie im PowerShell-Fenster die im Anschluss angegebenen Befehle aus. Diese bewirken Folgendes:
+7. Führen Sie im PowerShell-Fenster die im Anschluss angegebenen Befehle aus. Diese bewirken Folgendes:
 
     * Installieren des IIS-Servers
     * Entfernen der Standarddatei „iisstart.htm“
@@ -546,14 +621,15 @@ In diesem Abschnitt wird ein virtueller Computer namens **myTestVM** erstellt.  
     Install-WindowsFeature -name Web-Server -IncludeManagementTools
     
     # remove default htm file
-    remove-item  C:\inetpub\wwwroot\iisstart.htm
+     remove-item  C:\inetpub\wwwroot\iisstart.htm
     
     # Add a new htm file that displays server name
-    Add-Content -Path "C:\inetpub\wwwroot\iisstart.htm" -Value $("Hello World from " + $env:computername)
+     Add-Content -Path "C:\inetpub\wwwroot\iisstart.htm" -Value $("Hello World from " + $env:computername)
    ```
-7. Schließen Sie die RDP-Sitzung mit **myVM1**.
+8. Schließen Sie die Bastion-Sitzung mit **myVM1**.
 
-8. Wiederholen Sie die Schritte 1 bis 6, um IIS und die aktualisierte Datei „iisstart.htm“ auf **myVM2** zu installieren.
+9. Wiederholen Sie die Schritte 1 bis 6, um IIS und die aktualisierte Datei „iisstart.htm“ auf **myVM2** zu installieren.
+
 
 ## <a name="test-the-load-balancer"></a>Testen des Lastenausgleichs
 
@@ -563,15 +639,13 @@ In diesem Abschnitt wird ein virtueller Computer namens **myTestVM** erstellt.  
 
 3. Wählen Sie im linken Menü **Alle Dienste** > **Alle Ressourcen** und anschließend in der Ressourcenliste den Eintrag **myTestVM** (in der Ressourcengruppe **myResourceGroupLB**) aus.
 
-4. Wählen Sie auf der Seite **Übersicht** die Option **Verbinden** aus, um die RDP-Datei für den virtuellen Computer herunterzuladen.
+4. Wählen Sie auf der Seite **Übersicht** die Option **Verbinden** und dann **Bastion** aus.
 
-5. Öffnen Sie die RDP-Datei.
-
-6. Melden Sie sich mit den Anmeldeinformationen, die Sie während der Erstellung dieses virtuellen Computers bereitgestellt haben, beim virtuellen Computer an.
+6. Geben Sie den Benutzernamen und das Kennwort ein, die Sie bei der VM-Erstellung verwendet haben.
 
 7. Öffnen Sie **Internet Explorer** auf **myTestVM**.
 
-4. Kopieren Sie die private IP-Adresse, und fügen Sie sie in die Adressleiste des Browsers ein. Die Standardseite des IIS-Webservers wird im Browser angezeigt.
+8. Geben Sie die IP-Adresse aus dem vorherigen Schritt in die Adressleiste des Browsers ein. Die Standardseite des IIS-Webservers wird im Browser angezeigt.
 
     :::image type="content" source="./media/quickstart-load-balancer-standard-internal-portal/load-balancer-test.png" alt-text="Erstellen eines internen Standard-Lastenausgleichs" border="true":::
    
@@ -591,4 +665,5 @@ In dieser Schnellstartanleitung führen Sie die folgenden Schritte aus:
 
 Weitere Informationen zu Azure Load Balancer finden Sie unter [Was versteht man unter Azure Load Balancer?](load-balancer-overview.md) sowie unter [Häufig gestellte Fragen zu Load Balancer](load-balancer-faqs.md).
 
-Weitere Informationen zu Load Balancer und Verfügbarkeitszonen finden Sie [hier](load-balancer-standard-availability-zones.md).
+* Weitere Informationen zu Load Balancer und Verfügbarkeitszonen finden Sie [hier](load-balancer-standard-availability-zones.md).
+* Weitere Informationen zu [Azure Bastion](https://docs.microsoft.com/azure/bastion/bastion-overview).

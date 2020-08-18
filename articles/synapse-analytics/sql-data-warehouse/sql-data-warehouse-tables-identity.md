@@ -7,16 +7,16 @@ manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
-ms.date: 04/30/2019
+ms.date: 07/20/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 60f2e3f949a4f627839a07137ebaf77518db87a4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 375c97179351e1dbf90ce4488114cb232d6dd450
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85213974"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121322"
 ---
 # <a name="using-identity-to-create-surrogate-keys-in-synapse-sql-pool"></a>Erstellen von Ersatzschlüsseln im Synapse SQL-Pool mit IDENTITY
 
@@ -24,7 +24,9 @@ In diesem Artikel finden Sie Empfehlungen und Beispiele zum Erstellen von Ersatz
 
 ## <a name="what-is-a-surrogate-key"></a>Was ist ein Ersatzschlüssel?
 
-Ein Ersatzschlüssel für eine Tabelle ist eine Spalte mit einem eindeutigen Bezeichner für jede Zeile. Der Schlüssel wird nicht aus den Tabellendaten generiert. Datenmodellierer erstellen häufig Ersatzschlüssel in ihren Tabellen, während sie Data Warehouse-Modelle erstellen. Mit der IDENTITY-Eigenschaft können Sie dies einfach und effektiv durchführen, ohne die Leistung beim Laden zu beeinträchtigen.  
+Ein Ersatzschlüssel für eine Tabelle ist eine Spalte mit einem eindeutigen Bezeichner für jede Zeile. Der Schlüssel wird nicht aus den Tabellendaten generiert. Datenmodellierer erstellen häufig Ersatzschlüssel in ihren Tabellen, während sie Data Warehouse-Modelle erstellen. Mit der IDENTITY-Eigenschaft können Sie dies einfach und effektiv durchführen, ohne die Leistung beim Laden zu beeinträchtigen.
+> [!NOTE]
+> Es ist nicht garantiert, dass der IDENTITY-Wert in Synapse SQL eindeutig ist, wenn der Benutzer explizit einen doppelten Wert mit „SET IDENTITY_INSERT ON“ einfügt oder ein erneutes Seeding von IDENTITY durchführt. Details finden Sie unter [CREATE TABLE (Transact-SQL) IDENTITY (Eigenschaft)](/sql/t-sql/statements/create-table-transact-sql-identity-property?view=azure-sqldw-latest). 
 
 ## <a name="creating-a-table-with-an-identity-column"></a>Erstellen einer Tabelle mit einer IDENTITY-Spalte
 
@@ -50,7 +52,7 @@ Im restlichen Abschnitt werden die Feinheiten der Implementierung hervorgehoben,
 
 ### <a name="allocation-of-values"></a>Zuordnung von Werten
 
-Die IDENTITY-Eigenschaft garantiert nicht die Reihenfolge, in der die Ersatzwerte zugeordnet sind. Dies spiegelt das Verhalten von SQL Server und Azure SQL-Datenbank wieder. Allerdings ist im Synapse SQL-Pool das Fehlen einer Garantie deutlicher.
+Die Eigenschaft IDENTITY garantiert nicht die Reihenfolge, in der die Ersatzwerte aufgrund der verteilten Architektur des Data Warehouse zugeordnet werden. Die IDENTITY-Eigenschaft wurde so entwickelt, dass sie über alle Verteilungen im Synapse SQL-Pool aufskaliert werden kann. 
 
 Dies wird in folgendem Beispiel veranschaulicht:
 

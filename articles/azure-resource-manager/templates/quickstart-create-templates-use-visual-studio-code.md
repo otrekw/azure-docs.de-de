@@ -2,15 +2,15 @@
 title: 'Erstellen einer Vorlage: Visual Studio Code'
 description: Verwenden Sie Visual Studio Code und die Azure Resource Manager-Tools-Erweiterung für Resource Manager-Vorlagen.
 author: neilpeterson
-ms.date: 04/17/2020
+ms.date: 08/09/2020
 ms.topic: quickstart
 ms.author: nepeters
-ms.openlocfilehash: 06e7d3f291d32cecdcbf4d1f22ff9976d8970109
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5375fedcd05aefa5d23ee872325373ce631d43bb
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87040518"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88034979"
 ---
 # <a name="quickstart-create-azure-resource-manager-templates-with-visual-studio-code"></a>Schnellstart: Erstellen von Azure Resource Manager-Vorlagen mit Visual Studio Code
 
@@ -26,7 +26,7 @@ Erstellen Sie mit Visual Studio Code eine neue Datei namens *azuredeploy.json*, 
 
 Wählen Sie `arm!` aus, um eine Vorlage für eine Azure-Ressourcengruppenbereitstellung zu erstellen.
 
-![Abbildung: Gerüstbau in Azure Resource Manager](./media/quickstart-create-templates-use-visual-studio-code/1.png)
+![Abbildung: Codeausschnitte des Azure Resource Manager-Gerüsts](./media/quickstart-create-templates-use-visual-studio-code/1.png)
 
 Mit diesem Codeausschnitt werden die Grundbausteine für eine ARM-Vorlage erstellt.
 
@@ -68,7 +68,7 @@ Entfernen Sie zur Verwendung der Vervollständigungsfunktionen `megaStorage`, pl
 
 Erstellen Sie nun einen Parameter, und verwenden Sie ihn zur Angabe des Speicherkontonamens.
 
-Platzieren Sie den Cursor im Block „parameters“, fügen Sie einen Wagenrücklauf ein, geben Sie `par` ein, und wählen Sie anschließend den Ausschnitt `arm-param-value` aus. Dadurch wird der Vorlage ein generischer Parameter hinzugefügt.
+Platzieren Sie den Cursor im Block „parameters“, fügen Sie einen Wagenrücklauf ein, geben Sie `"` ein, und wählen Sie anschließend den Ausschnitt `new-parameter` aus. Dadurch wird der Vorlage ein generischer Parameter hinzugefügt.
 
 ![Abbildung: Hinzufügen eines Parameters zur ARM-Vorlage](./media/quickstart-create-templates-use-visual-studio-code/9.png)
 

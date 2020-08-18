@@ -1,6 +1,6 @@
 ---
 title: Überwachen eines Azure Storage-Kontos im Azure-Portal | Microsoft-Dokumentation
-description: Erfahren Sie, wie ein Speicherkonto in Azure mithilfe des Azure-Portals überwacht wird.
+description: Hier erfahren Sie, wie ein Speicherkonto in Azure über das Azure-Portal und mithilfe von Azure Storage Analytics überwacht wird.
 author: normesta
 ms.service: storage
 ms.topic: conceptual
@@ -9,12 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring
-ms.openlocfilehash: 6f53d5ec2d73c9edbb7e24c24107b2a6d6deb167
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4c78938e2f70342822a4009ed9195196ca486fe0
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83684678"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88034667"
 ---
 # <a name="monitor-a-storage-account-in-the-azure-portal"></a>Überwachen eines Speicherkontos im Azure-Portal
 
@@ -141,7 +141,7 @@ Sie können Azure Storage anweisen, Diagnoseprotokolle für Lese-, Schreib- und 
     ![Konfigurieren Sie die Protokollierung im Azure-Portal.](./media/storage-monitor-storage-account/enable-diagnostics.png)
 1. Klicken Sie auf **Speichern**.
 
-Die Diagnoseprotokolle werden in einem Blobcontainer namens *$logs* in Ihrem Speicherkonto gespeichert. Sie können die Protokolldaten über einen Storage-Explorer wie den [Microsoft Storage-Explorer](https://storageexplorer.com) oder programmgesteuert mit der Speicherclientbibliothek oder PowerShell anzeigen.
+Die Diagnoseprotokolle werden in einem Blobcontainer namens *$logs* in Ihrem Speicherkonto gespeichert. Sie können die Protokolldaten über einen Speicher-Explorer wie [Microsoft Azure Storage-Explorer](https://storageexplorer.com) oder programmgesteuert mit der Speicherclientbibliothek oder PowerShell anzeigen.
 
 Informationen zum Zugreifen auf den Container „$logs“ finden Sie unter [Protokollierung durch die Speicheranalyse](storage-analytics-logging.md).
 

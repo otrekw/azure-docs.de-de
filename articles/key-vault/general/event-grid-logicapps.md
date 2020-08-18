@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 11/11/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 53e8586486d9a9ebf870de350d5607f58977c0f5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 340fcd723442a53ca72d3af0461226be737eb7a5
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81426329"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87844200"
 ---
 # <a name="use-logic-apps-to-receive-email-about-status-changes-of-key-vault-secrets"></a>Verwenden von Logic Apps zum Empfangen einer E-Mail bei Statusänderungen von Key Vault-Geheimnissen
 
@@ -28,6 +28,7 @@ Eine Übersicht über die Integration von Azure Key Vault/Azure Event Grid finde
 - Ein E-Mail-Konto von einem beliebigen von Azure Logic Apps unterstützten E-Mail-Anbieter (z. B. Office 365 Outlook). Mit diesem E-Mail-Konto werden die Ereignisbenachrichtigungen gesendet. Eine vollständige Liste der unterstützten Logic App-Connectors finden Sie in der [Übersicht über Connectors](/connectors).
 - Ein Azure-Abonnement. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 - Ein Schlüsseltresor in Ihrem Azure-Abonnement. Sie können ganz schnell einen neuen Schlüsseltresor erstellen. Eine entsprechende Anleitung finden Sie unter [Schnellstart: Festlegen eines Geheimnisses und Abrufen des Geheimnisses aus Azure Key Vault mithilfe der Azure CLI](../secrets/quick-create-cli.md).
+- Eine registrierte Event Grid-Instanz als Ressourcenanbieter (siehe [Azure-Ressourcenanbieter und -typen](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types))
 
 ## <a name="create-a-logic-app-via-event-grid"></a>Erstellen einer Logik-App per Event Grid
 
@@ -59,7 +60,7 @@ Gehen Sie wie folgt vor, um ein Azure Event Grid-Abonnement zu erstellen:
 
 1. Erstellen Sie Ihre E-Mail-Vorlage:
     - **An:** Geben Sie die E-Mail-Adresse an, die die E-Mail-Benachrichtigungen empfangen soll. Verwenden Sie für dieses Tutorial ein E-Mail-Konto, auf das Sie zu Testzwecken zugreifen können.
-    - **Betreff** und **Text**: Schreiben Sie den Text für Ihre E-Mail. Wählen Sie im Auswahltool JSON-Eigenschaften aus, um dynamische Inhalte basierend auf Ereignisdaten einzuschließen. Sie können die Daten des Ereignisses mit `@{triggerBody()?['Data']}` abrufen.
+    - **Betreff** und **Text**: Schreiben Sie den Text für Ihre E-Mail. Wählen Sie JSON-Eigenschaften aus dem Auswahlwerkzeug aus, um dynamischen Inhalt basierend auf Ereignisdaten einzuschließen. Sie können die Daten des Ereignisses mit `@{triggerBody()?['Data']}` abrufen.
 
     Hier ist ein Beispiel für das Aussehen Ihrer E-Mail-Vorlage angegeben:
 

@@ -1,6 +1,6 @@
 ---
 title: Erstellen und Veröffentlichen eines Produkts in Azure API Management
-description: Erfahren Sie, wie Sie Produkte in Azure API Management erstellen und veröffentlichen.
+description: Erfahren Sie, wie Sie Produkte in Azure API Management erstellen und veröffentlichen. Nachdem ein Produkt veröffentlicht wurde, können Entwickler die APIs des Produkts verwenden.
 services: api-management
 documentationcenter: ''
 author: mikebudzynski
@@ -13,18 +13,18 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 08/10/2018
 ms.author: apimpm
-ms.openlocfilehash: d90b212286b555bf5b858990fd5dcb062348be8d
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 69b5e381ed8446b45f68b4b1ce9bb13df47039c0
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86254723"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87904903"
 ---
 # <a name="create-and-publish-a-product"></a>Erstellen und Veröffentlichen eines Produkts  
 
 Produkte in Azure API Management enthalten eine oder mehrere APIs sowie ein Nutzungskontingent und Nutzungsbedingungen. Nachdem ein Produkt veröffentlicht wurde, können Entwickler das Produkt abonnieren und die APIs des Produkts verwenden.  
 
-In diesem Tutorial lernen Sie Folgendes:
+In diesem Tutorial lernen Sie, wie die folgenden Aufgaben ausgeführt werden:
 
 > [!div class="checklist"]
 > * Erstellen und Veröffentlichen eines Produkts
@@ -47,10 +47,10 @@ In diesem Tutorial lernen Sie Folgendes:
 
     Beim Hinzufügen eines Produkts müssen Sie die folgenden Informationen angeben: 
 
-    | Name                     | BESCHREIBUNG                                                                                                                                                                                                                                                                                                             |
+    | name                     | BESCHREIBUNG                                                                                                                                                                                                                                                                                                             |
     |--------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-    | `Display name`             | Der Name, wie er im **Entwicklerportal** angezeigt werden soll                                                                                                                                                                                                                                                        |
-    | Name                     | Ein beschreibender Name des Produkts                                                                                                                                                                                                                                                                                      |
+    | Anzeigename             | Der Name, wie er im **Entwicklerportal** angezeigt werden soll                                                                                                                                                                                                                                                        |
+    | name                     | Ein beschreibender Name des Produkts                                                                                                                                                                                                                                                                                      |
     | BESCHREIBUNG              | Das Feld **Beschreibung** enthält detaillierte Daten zum Produkt wie etwa dessen Zweck, die bereitgestellten APIs und sonstige nützliche Informationen.                                                                                                                                               |
     | State                    | Klicken Sie auf **Veröffentlicht**, wenn Sie das Produkt veröffentlichen möchten. Bevor die APIs eines Produkts aufgerufen werden können, müssen Sie das Produkt veröffentlichen. Standardmäßig sind neue Produkte nicht veröffentlicht und nur für die Gruppe **Administratoren** sichtbar.                                                                                      |
     | Abonnement erforderlich    | Aktivieren Sie **Abonnement erforderlich**, wenn ein Benutzer zur Verwendung des Produkts ein Abonnement benötigt.                                                                                                                                                                                                                                   |
@@ -89,7 +89,7 @@ Entwickler müssen ein Produkt zunächst abonnieren, um Zugriff auf die API zu e
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie Folgendes gelernt:
+In diesem Tutorial haben Sie gelernt, wie die folgenden Aufgaben ausgeführt werden:
 
 > [!div class="checklist"]
 > * Erstellen und Veröffentlichen eines Produkts

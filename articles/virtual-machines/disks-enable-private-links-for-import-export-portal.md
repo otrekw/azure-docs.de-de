@@ -1,23 +1,23 @@
 ---
-title: 'Azure-Portal: Einschränken des Import-/Exportzugriffs auf verwaltete Datenträger mit privaten Links (Vorschauversion)'
-description: Aktivieren Sie mit dem Azure-Portal private Links (Vorschauversion) für Ihre verwalteten Datenträger. Dadurch können Sie Datenträger nur innerhalb Ihres virtuellen Netzwerks sicher exportieren und importieren.
+title: 'Azure-Portal: Einschränken des Import-/Exportzugriffs auf verwaltete Datenträger mit privaten Links'
+description: Aktivieren Sie mit dem Azure-Portal private Links für Ihre verwalteten Datenträger (derzeit in der Vorschauphase). Dadurch können Sie Datenträger innerhalb Ihres virtuellen Netzwerks sicher exportieren und importieren.
 author: roygara
 ms.service: virtual-machines
 ms.topic: overview
-ms.date: 07/15/2020
+ms.date: 08/11/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 75b5ba995ff87649ec8a7a96a7c816bf2bec7e44
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 83f204a35e48962e525ad7d64c018eef301f9933
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86535533"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88135843"
 ---
-# <a name="azure-portal---restrict-importexport-access-for-managed-disks-with-private-links-preview"></a>Azure-Portal: Einschränken des Import-/Exportzugriffs für verwaltete Datenträger mit privaten Links (Vorschauversion)
+# <a name="azure-portal---restrict-importexport-access-for-managed-disks-with-private-links"></a>Azure-Portal: Einschränken des Import-/Exportzugriffs für verwaltete Datenträger mit privaten Links
 
-Sie können einen zeitgebundenen SAS-URI (Shared Access Signature) für nicht angefügte verwaltete Datenträger und Momentaufnahmen generieren, um die Daten zur regionalen Erweiterung, zur Notfallwiederherstellung und zum Lesen der Daten für die forensische Analyse in eine andere Region zu exportieren. Sie können den SAS-URI auch verwenden, um eine VHD aus der lokalen Umgebung direkt auf einen leeren Datenträger hochzuladen.  Nun können Sie [private Links](../private-link/private-link-overview.md) (Vorschauversion) nutzen, um den Export und Import aus bzw. in Managed Disks nur auf Ihr virtuelles Azure-Netzwerk zu beschränken. Außerdem ist sichergestellt, dass die Daten nie über das öffentliche Internet, sondern stets im sicheren Microsoft-Backbone-Netzwerk übertragen werden, wenn Sie private Links verwenden. 
+Die Unterstützung für private Links für verwaltete Datenträger befindet sich derzeit in der Vorschauphase und ermöglicht es Ihnen, den Export und Import von verwalteten Datenträgern einzuschränken, sodass diese Vorgänge nur in Ihrem virtuellen Azure-Netzwerk stattfinden. Sie können einen zeitgebundenen SAS-URI (Shared Access Signature) für nicht angefügte verwaltete Datenträger und Momentaufnahmen generieren, um die Daten zur regionalen Erweiterung, zur Notfallwiederherstellung und zum Lesen der Daten für die forensische Analyse in eine andere Region zu exportieren. Sie können den SAS-URI auch verwenden, um eine VHD aus der lokalen Umgebung direkt auf einen leeren Datenträger hochzuladen. Der Netzwerkdatenverkehr zwischen den Clients im virtuellen Netzwerk und den verwalteten Datenträgern wird nur über das virtuelle Netzwerk und eine private Verbindung im Microsoft-Backbonenetzwerk geleitet und somit nicht dem öffentlichen Internet ausgesetzt.
 
 Sie können eine Datenträgerzugriffsressource erstellen und mit einem virtuellen Netzwerk im gleichen Abonnement verknüpfen, indem Sie einen privaten Endpunkt erstellen. Sie müssen einen Datenträger oder eine Momentaufnahme mit einem Datenträgerzugriff verknüpfen, um die Daten über private Links zu exportieren und zu importieren. Darüber hinaus müssen Sie die NetworkAccessPolicy-Eigenschaft des Datenträgers oder der Momentaufnahme auf `AllowPrivate` festlegen. 
 

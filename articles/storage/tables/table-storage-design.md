@@ -1,6 +1,6 @@
 ---
 title: Entwerfen Sie skalierbare und leistungsfähige Tabellen im Azure-Tabellenspeicher. | Microsoft-Dokumentation
-description: Entwerfen Sie skalierbare und leistungsfähige Tabellen im Azure-Tabellenspeicher.
+description: Hier erfahren Sie, wie Sie skalierbare und leistungsfähige Tabellen im Azure-Tabellenspeicher entwerfen. Überprüfen Sie Tabellenpartitionen, Entitätsgruppentransaktionen sowie Überlegungen zu Kapazität und Kosten.
 services: storage
 author: SnehaGunda
 ms.service: storage
@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/09/2020
 ms.author: sngun
 ms.subservice: tables
-ms.openlocfilehash: 1dba3a6f3ebd7b6675e6d0d90d98a45625ad04ee
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 59af13bcae14839a5b583ad7e063668b5305b30a
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83656906"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87824408"
 ---
 # <a name="design-scalable-and-performant-tables"></a>Erstellen skalierbarer und leistungsfähiger Tabellen
 
@@ -143,7 +143,7 @@ EGTs führen möglicherweise auch zu einem Kompromiss, den Sie in Ihrem Entwurf 
 
 [!INCLUDE [storage-table-scale-targets](../../../includes/storage-tables-scale-targets.md)]
 
-## <a name="cost-considerations"></a>Kostenbetrachtung
+## <a name="cost-considerations"></a>Überlegungen zu Kosten
 Tabellenspeicher ist relativ günstig, aber Sie sollten die Kostenschätzungen für Kapazitätsauslastung und Transaktionsmenge als Bestandteil Ihrer Auswertung bei allen Tabellenspeicherdienstlösungen aufnehmen. In vielen Szenarien ist jedoch die Speicherung denormalisierter oder doppelter Daten zur Verbesserung der Leistung oder der Skalierbarkeit für Ihre Lösung ein zulässiger Ansatz. Weitere Informationen zu den Preisen finden Sie unter [Preise für Azure Storage](https://azure.microsoft.com/pricing/details/storage/).  
 
 ## <a name="next-steps"></a>Nächste Schritte

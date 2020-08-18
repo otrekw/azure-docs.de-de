@@ -1,6 +1,6 @@
 ---
 title: 'Tutorial: Suchen nach Orten in der Nähe auf einer Karte | Microsoft Azure Maps'
-description: In diesem Tutorial erfahren Sie, wie Sie mit Microsoft Azure Maps auf einer Karte nach Points of Interest suchen.
+description: Hier wird erläutert, wie Sie auf einer Karte nach Points of Interest suchen. Sie erfahren, wie Sie mithilfe des Azure Maps Web SDK einer Karte Suchfunktionen und interaktive Popupfelder hinzufügen.
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 1/15/2020
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc, devx-track-javascript
-ms.openlocfilehash: 4e16c4e88d749f6dbc4f6271a7ceaf77661a208c
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 8dc430febb25283ab5bd32496bb2f71ba19c895b
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281530"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88035857"
 ---
 # <a name="tutorial-search-nearby-points-of-interest-using-azure-maps"></a>Tutorial: Suchen nach Points of Interest in der Nähe mit Azure Maps
 

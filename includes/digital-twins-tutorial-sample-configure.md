@@ -5,12 +5,12 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 5/25/2020
 ms.author: baanders
-ms.openlocfilehash: ad9eb95c9e3a21cd33a367cc864a4d791888afb9
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 3b68df1b3fc2f03d7659205fe03fdae09ecc3f7a
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87124555"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87827323"
 ---
 ## <a name="configure-the-sample-project"></a>Konfigurieren des Beispielprojekts
 
@@ -18,7 +18,7 @@ Richten Sie als Nächstes eine Beispielclient-Anwendung ein, die mit Ihrer Azure
 
 Navigieren Sie zu der heruntergeladenen Datei auf Ihrem Computer, und entzippen Sie sie.
 
-Navigieren Sie dann im entzippten Ordner zu _AdtSampleApp/_ . Öffnen Sie _**AdtE2ESample.sln**_ in Visual Studio 2019. 
+Navigieren Sie dann im entzippten Ordner zu _AdtSampleApp_. Öffnen Sie _**AdtE2ESample.sln**_ in Visual Studio 2019. 
 
 Erstellen Sie in Visual Studio über den Bereich *Projektmappen-Explorer* eine Kopie der Datei _SampleClientApp > **serviceConfig.json.TEMPLATE**_. (Zum Kopieren und Einfügen können Sie das Kontextmenü verwenden.) Benennen Sie die Kopie in *serviceConfig.json* um. Sie dient als voreingestellte JSON-Datei mit den erforderlichen Konfigurationsvariablen zum Ausführen des Projekts.
 
@@ -31,6 +31,8 @@ Wählen Sie die Datei *serviceConfig.json* aus, um sie im Bearbeitungsfenster zu
   "instanceUrl": "https://<your-Azure-Digital-Twins-instance-hostName>"
 }
 ```
+
+
 
 Speichern und schließen Sie die Datei. 
 

@@ -11,13 +11,13 @@ ms.topic: quickstart
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 05/29/2020
-ms.openlocfilehash: 497de36d63a909d2c53374482dfe09d1f19dfded
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/10/2020
+ms.openlocfilehash: ed0ad6c5597d63c411eeb323cf00dcb7f044f667
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87033111"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067816"
 ---
 # <a name="quickstart-use-net-and-c-in-visual-studio-to-connect-to-and-query-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>Schnellstart: Verwenden Sie .NET und C# in Visual Studio, um eine Verbindung mit einer Datenbank in Azure SQL-Datenbank oder Azure SQL Managed Instance herzustellen und die Datenbank abzufragen.
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -62,17 +62,17 @@ Ermitteln Sie die Verbindungsinformationen, die Sie zum Herstellen einer Verbind
 
 ## <a name="create-code-to-query-the-database-in-azure-sql-database"></a>Schreiben von Code zum Abfragen der Datenbank in Azure SQL-Datenbank
 
-1. Klicken Sie in Visual Studio auf **Datei** > **Neu** > **Projekt**. 
+1. Erstellen Sie in Visual Studio ein neues Projekt. 
    
-1. Wählen Sie im Dialogfeld **Neues Projekt** die Option **Visual C#** , und wählen Sie anschließend **Konsolen-App (.NET Framework)** aus.
+1. Wählen Sie im Dialogfeld **Neues Projekt** die Option **Visual C#** und anschließend **Konsolen-App (.NET Framework)** aus.
    
 1. Geben Sie als Projektname *sqltest* ein, und wählen Sie **OK** aus. Das neue Projekt wird erstellt. 
    
 1. Wählen Sie **Projekt** >  **NuGet-Pakete verwalten** aus. 
    
-1. Wählen Sie in **NuGet-Paket-Manager** die Registerkarte **Durchsuchen**, und suchen und wählen Sie dann **System.Data.SqlClient**.
+1. Wählen Sie in **NuGet-Paket-Manager** die Registerkarte **Durchsuchen** aus, suchen Sie nach **Microsoft.Data.SqlClient**, und wählen Sie die Option aus.
    
-1. Wählen Sie auf der Seite **System.Data.SqlClient** die Option **Installieren**. 
+1. Wählen Sie auf der Seite **Microsoft.Data.SqlClient** die Option **Installieren** aus. 
    - Wählen Sie bei Aufforderung **OK** aus, um die Installation fortzusetzen. 
    - Sollte das Fenster **Zustimmung zur Lizenz** angezeigt werden, wählen Sie **Ich stimme zu** aus.
    
@@ -85,7 +85,7 @@ Ermitteln Sie die Verbindungsinformationen, die Sie zum Herstellen einer Verbind
    
    ```csharp
    using System;
-   using System.Data.SqlClient;
+   using Microsoft.Data.SqlClient;
    using System.Text;
    
    namespace sqltest

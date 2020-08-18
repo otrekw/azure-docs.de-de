@@ -8,16 +8,17 @@ ms.date: 06/25/2020
 ms.topic: how-to
 ms.service: iot-central
 manager: corywink
-ms.openlocfilehash: 6660f413c741b36f4dd28f6e1bcf83873e4f5c26
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1428df124272816927c6bbbc4a242170c7f46c00
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85483923"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008524"
 ---
-# <a name="export-iot-data-to-destinations-in-azure"></a>Exportieren von IoT-Daten zu Zielen in Azure
+# <a name="export-iot-data-to-destinations-in-azure-using-data-export-legacy"></a>Exportieren von IoT-Daten zu Zielen in Azure mithilfe des Datenexports (Legacy)
 
-*Dieses Thema gilt für Administratoren.*
+> [!Note]
+> Es gibt eine neue Möglichkeit zum Exportieren von Daten in IoT Central. Sie können Ihre exportierten Daten mithilfe des neuen Datenexports filtern und erweitern sowie in neue Ziele, z. B. Webhook-Endpunkte, exportieren. Informationen zum neuen Datenexport finden Sie [hier](./howto-use-data-export.md). Wenn Sie etwas über die Unterschiede zwischen dem neuen Datenexport und dem Legacy-Datenexport erfahren möchten, sehen Sie sich die [Vergleichstabelle](./howto-use-data-export.md#comparison-of-legacy-data-export-and-new-data-export) an.
 
 In diesem Artikel wird beschrieben, wie Sie das Datenexportfeature in Azure IoT Central verwenden. Mit diesem Feature können Sie Ihre Daten fortlaufend in **Azure Event Hubs**, **Azure Service Bus** oder **Azure Blob Storage**-Instanzen exportieren. Beim Datenexport wird das JSON-Format verwendet, und im Export können Telemetriedaten, Geräteinformationen und Gerätevorlageninformationen enthalten sein. Verwenden Sie die exportierten Daten für folgende Zwecke:
 

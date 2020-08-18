@@ -9,12 +9,12 @@ author: djpmsft
 ms.author: daperlov
 manager: anandsub
 ms.date: 06/02/2020
-ms.openlocfilehash: 308d19fde78edacebb168b8d4e459169338acc41
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bba49014fd6b082ea015da259402a8e87bf4afff
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84345941"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87851984"
 ---
 # <a name="management-hub-in-azure-data-factory"></a>Verwaltungshub in Azure Data Factory
 
@@ -57,6 +57,12 @@ Sie können eine Datei mit benutzerdefinierten Parametern generieren oder bearbe
 Trigger legen fest, wann mit dem Ausführen einer Pipeline begonnen werden soll. Derzeit können Trigger zu einer bestimmten Uhrzeit ausgelöst werden, in regelmäßigen Abständen oder abhängig von einem Ereignis. Weitere Informationen finden Sie unter [Triggerausführung](concepts-pipeline-execution-triggers.md#trigger-execution). Im Verwaltungshub können Sie Trigger erstellen, bearbeiten, löschen oder deren aktuellen Status anzeigen.
 
 ![Verwalten von benutzerdefinierten Parametern](media/author-management-hub/management-hub-triggers.png)
+
+### <a name="global-parameters"></a>Globale Parameter
+
+Globale Parameter sind Konstanten in einer Data Factory, die von einer Pipeline in beliebigen Ausdrücken verbraucht werden können. Weitere Informationen finden Sie unter [Globale Parameter](author-global-parameters.md).
+
+![Erstellen globaler Parameter](media/author-global-parameters/create-global-parameter-3.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

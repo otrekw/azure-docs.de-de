@@ -9,12 +9,12 @@ author: shohamMSFT
 ms.author: shohamd
 ms.reviewer: vanto
 ms.date: 07/27/2020
-ms.openlocfilehash: b3abda9787654734b24cc27987921ef40d8070fc
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 2c8aa39b6819e135181e2d153825e89686359538
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87293764"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88053761"
 ---
 # <a name="create-azure-ad-guest-users-and-set-as-an-azure-ad-admin"></a>Erstellen von Azure AD-Gastbenutzern und Festlegen als Azure AD-Administrator
 
@@ -133,9 +133,9 @@ Führen Sie die folgenden Schritte aus, um einen Azure AD-Gastbenutzer als Azur
 
 ## <a name="limitations"></a>Einschränkungen
 
-Es gibt eine Einschränkung im Azure-Portal, die verhindert, dass ein Azure AD-Gastbenutzer als Azure AD-Administrator für SQL-Datenbank, SQL Managed Instance oder Azure Synapse ausgewählt wird. Für Gastkonten außerhalb Ihres Azure AD-Verzeichnisses wie *\@outlook.com*, *\@hotmail.com*, *\@live.com* oder *\@gmail.com* werden diese Konten zwar im Selektor für den AD-Administrator angezeigt, sie sind jedoch abgeblendet und können nicht ausgewählt werden. Verwenden Sie die oben aufgeführten [PowerShell- oder CLI-Befehle](#setting-a-guest-user-as-an-azure-ad-admin), um den Azure AD-Administrator festzulegen. Alternativ kann auch eine Azure AD-Gruppe, die den Gastbenutzer enthält, als Azure AD-Administrator für den logischen SQL-Server festgelegt werden.
+Es gibt eine Einschränkung im Azure-Portal, die verhindert, dass ein Azure AD-Gastbenutzer als Azure AD-Administrator für SQL Managed Instance ausgewählt wird. Für Gastkonten außerhalb Ihres Azure AD-Verzeichnisses wie *\@outlook.com*, *\@hotmail.com*, *\@live.com* oder *\@gmail.com* werden diese Konten zwar im Selektor für den AD-Administrator angezeigt, sie sind jedoch abgeblendet und können nicht ausgewählt werden. Verwenden Sie die oben aufgeführten [PowerShell- oder CLI-Befehle](#setting-a-guest-user-as-an-azure-ad-admin), um den Azure AD-Administrator festzulegen. Alternativ kann auch eine Azure AD-Gruppe, die den Gastbenutzer enthält, als Azure AD-Administrator für die SQL Managed Instance festgelegt werden.
 
-Diese Funktion wird für SQL-Datenbank und Azure Synapse aktiviert, bevor dieses Feature allgemein verfügbar wird.
+Diese Funktion wird für SQL Managed Instance aktiviert, bevor dieses Feature allgemein verfügbar wird.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

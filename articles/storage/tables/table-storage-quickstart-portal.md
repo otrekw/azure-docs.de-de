@@ -1,6 +1,6 @@
 ---
 title: 'Schnellstart: Erstellen einer Azure Storage-Tabelle im Azure-Portal'
-description: In dieser Schnellstartanleitung erstellen Sie im Azure-Portal eine Azure Storage-Tabelle mit dem Tabellenspeicherdienst.
+description: In dieser Schnellstartanleitung verwenden Sie den Tabellenspeicherdienst im Azure-Portal zum Erstellen einer Azure Storage-Tabelle. Darüber hinaus wird erläutert, wie Sie ein Azure Storage-Konto erstellen können.
 services: storage
 author: MarkMcGeeAtAquent
 ms.service: storage
@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 12/02/2019
 ms.author: sngun
 ms.subservice: tables
-ms.openlocfilehash: 63495206ffffc57a895a9ec1efc88410a02ea097
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 3117a1ff24dd0a2a91768844bea41670ced8ff90
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75979945"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88033528"
 ---
 # <a name="quickstart-create-an-azure-storage-table-in-the-azure-portal"></a>Schnellstart: Erstellen einer Azure Storage-Tabelle über das Azure-Portal 
 
@@ -43,4 +43,4 @@ Sie können jetzt den Tabellenspeicherdienst im Azure-Portal verwenden, um eine 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Guidelines for table design](table-storage-design-guidelines.md) (Gestaltungsrichtlinien für Tabellen)
+- [Richtlinien für den Entwurf von Tabellen](table-storage-design-guidelines.md)

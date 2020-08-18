@@ -5,15 +5,15 @@ author: ramonarguelles
 manager: vriveras
 services: azure-spatial-anchors
 ms.author: rgarcia
-ms.date: 02/24/2019
+ms.date: 07/31/2020
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 3b377f87bdba40c90cb3af6caef2c089d7b7de49
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 12a15a2d0cd45207b4adefc7315e48c6d642c0f7
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77615492"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87810168"
 ---
 # <a name="tutorial-share-azure-spatial-anchors-across-sessions-and-devices"></a>Tutorial: Sitzungs- und geräteübergreifendes Freigeben von Azure Spatial Anchors
 
@@ -34,7 +34,7 @@ Sie lernen Folgendes:
 
 [!INCLUDE [Share Anchors Sample Prerequisites](../../../includes/spatial-anchors-share-sample-prereqs.md)]
 
-Beachten Sie Folgendes: Sie verwenden in diesem Tutorial zwar Unity und eine ASP.NET Core-Web-App, aber dies dient nur als Beispiel für die geräteübergreifende Freigabe von Azure Spatial Anchors-Bezeichnern. Sie können auch andere Sprachen und Back-End-Technologien verwenden, um dieses Ziel zu erreichen. Darüber hinaus verfügt die in diesem Tutorial verwendete ASP.NET Core-Web-App über eine Abhängigkeit vom .NET Core 2.2 SDK. Dies funktioniert gut für reguläre Azure-Web-Apps (für Windows), aber derzeit nicht für Azure-Web-Apps für Linux.
+Beachten Sie Folgendes: Sie verwenden in diesem Tutorial zwar Unity und eine ASP.NET Core-Web-App, aber dies dient nur als Beispiel für die geräteübergreifende Freigabe von Azure Spatial Anchors-Bezeichnern. Sie können auch andere Sprachen und Back-End-Technologien verwenden, um dieses Ziel zu erreichen.
 
 [!INCLUDE [Create Spatial Anchors resource](../../../includes/spatial-anchors-get-started-create-resource.md)]
 
@@ -56,7 +56,7 @@ Sie müssen eine Ressourcengruppe und einen App Service-Plan erstellen, bevor Si
 
 ### <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
-Navigieren Sie zum <a href="https://portal.azure.com/" target="_blank">Azure-Portal</a>, und melden Sie sich bei Ihrem Abonnement an.
+Navigieren Sie zum <a href="https://portal.azure.com/" target="_blank">Azure-Portal</a>, und melden Sie sich bei Ihrem Azure-Abonnement an.
 
 ### <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
@@ -77,24 +77,18 @@ Verwenden Sie im Dialogfeld **Hostingplan konfigurieren** die folgenden Einstell
 | Einstellung | Vorgeschlagener Wert | BESCHREIBUNG |
 |-|-|-|
 |App Service-Plan| MySharingServicePlan | Name des App Service-Plans. |
-| Position | USA (Westen) | Das Rechenzentrum, in dem die Web-App gehostet wird. |
+| Standort | USA (Westen) | Das Rechenzentrum, in dem die Web-App gehostet wird. |
 | Size | Kostenlos | Der [Tarif](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio), der die Hostingfunktionen festlegt. |
 
 Klicken Sie auf **OK**.
 
-Öffnen Sie Visual Studio Code und dann das Projekt im Ordner `Sharing\SharingServiceSample`. Führen Sie die Schritte in <a href="https://docs.microsoft.com/aspnet/core/tutorials/publish-to-azure-webapp-using-vscode?view=aspnetcore-2.2#open-it-with-visual-studio-code" target="_blank">diesem Tutorial</a> aus, um den Freigabedienst über Visual Studio Code bereitzustellen. Sie können die Schritte ab dem Abschnitt „Öffnen mit Visual Studio Code“ ausführen. Erstellen Sie kein weiteres MVC-Projekt wie in den obigen Schritten beschrieben, da Sie bereits über das Projekt für die Bereitstellung und Veröffentlichung verfügen: SharingServiceSample.
+Öffnen Sie Visual Studio Code und dann das Projekt im Ordner `Sharing\SharingServiceSample`. Führen Sie die Schritte in <a href="https://docs.microsoft.com/aspnet/core/tutorials/publish-to-azure-webapp-using-vscode?view=aspnetcore-2.2#open-it-with-visual-studio-code" target="_blank">diesem Tutorial</a> aus, um den Freigabedienst über Visual Studio Code bereitzustellen. Sie können die Schritte ab dem Abschnitt „Öffnen mit Visual Studio Code“ ausführen. Erstellen Sie kein weiteres ASP.NET-Projekt wie in den obigen Schritten beschrieben, da Sie bereits über das Projekt für die Bereitstellung und Veröffentlichung verfügen: SharingServiceSample.
 
 ---
 
 ## <a name="deploy-the-sample-app"></a>Bereitstellen der Beispiel-App
 
 [!INCLUDE [Run Share Anchors Sample](../../../includes/spatial-anchors-run-share-sample.md)]
-
-## <a name="troubleshooting"></a>Problembehandlung
-
-### <a name="unity-20193"></a>Unity 2019.3
-
-Aufgrund von „Breaking Changes“ wird Unity 2019.3 derzeit nicht unterstützt. Verwenden Sie Unity 2019.1 oder 2019.2.
 
 [!INCLUDE [Clean-up section](../../../includes/clean-up-section-portal.md)]
 

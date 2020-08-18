@@ -6,16 +6,74 @@ ms.topic: overview
 author: bwren
 ms.author: bwren
 ms.date: 07/08/2020
-ms.openlocfilehash: b36469a89c7bae39ae3c2d62792c2ccde0fcfda9
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 10d4cb8160d0bf9111903b193574e9e820ded221
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87799326"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87827740"
 ---
 # <a name="whats-new-in-azure-monitor-documentation"></a>Neues in der Azure Monitor-Dokumentation
 
 Dieser Artikel enthält Listen mit neuen oder signifikant aktualisierten Azure Monitor-Artikeln. Er wird jeweils in der ersten Monatswoche mit Artikelaktualisierungen aus dem Vormonat aktualisiert.
+
+## <a name="july-2020"></a>Juli 2020
+
+### <a name="general"></a>Allgemein
+- [Bedarfsorientiertes Bereitstellen von Azure Monitor mithilfe von Azure Policy](deploy-scale.md): Inhalt zum Onboarding von Azure Monitor für VMs neu strukturiert
+- [Verwenden von Azure Private Link zum sicheren Verbinden von Netzwerken mit Azure Monitor](platform/private-link-security.md): Abschnitt zu Grenzwerten hinzugefügt
+
+### <a name="alerts"></a>Alerts
+- [Aktionsregeln (Vorschau)](platform/alerts-action-rules.md): CLI-Prozesse hinzugefügt
+- [Erstellen und Verwalten von Aktionsgruppen im Azure-Portal](platform/action-groups.md): Aktualisiert, um Änderungen an der Benutzeroberfläche zu berücksichtigen
+- [Gespeicherte Abfragen in Azure Monitor Log Analytics](log-query/saved-queries.md): Neuer Artikel
+- [Behandeln von Protokollwarnungen in Azure Monitor](platform/alerts-troubleshoot-log.md): Abschnitt mit Informationen zum Warnungsregelkontingent hinzugefügt
+- [Behandeln von Problemen mit Azure Monitor-Metrikwarnungen](platform/alerts-troubleshoot-metric.md): Abschnitt mit Informationen zur Warnungsregel für eine benutzerdefinierte, noch nicht ausgegebene Metrik hinzugefügt
+- [Informationen zur Funktionsweise von Metrikwarnungen in Azure Monitor](platform/alerts-metric-overview.md): Empfehlung für die Wahl der Aggregationsgranularität hinzugefügt
+
+### <a name="application-insights"></a>Application Insights
+- [Versionshinweise für die Erweiterung für Azure-Web-Apps für Application Insights](app/web-app-extension-release-notes.md): Neuer Artikel
+- [Resource Manager-Vorlagenbeispiele zum Erstellen von Application Insights-Ressourcen](samples/resource-manager-app-resource.md): Neuer Artikel
+- [Behandeln von Problemen mit dem Aktivieren oder Anzeigen von Application Insights Profiler](app/profiler-troubleshooting.md): Hinweis auf einen Fehler beim Ausführen des Profilers für ASP.NET Core-Apps in Azure App Service hinzugefügt 
+
+### <a name="containers"></a>Container
+- [Erstellen von Protokollwarnungen aus Azure Monitor für Container](insights/container-insights-log-alerts.md): Neuer Artikel
+- [Empfohlene Metrikwarnungen (Vorschau) aus Azure Monitor für Container](insights/container-insights-metric-alerts.md): Neuer Artikel
+
+### <a name="logs"></a>Protokolle
+- [Kundenseitig verwaltete Schlüssel in Azure Monitor](platform/customer-managed-keys.md): Fehlermeldung und Abschnitt mit Informationen zur CMK-Konfiguration für Abfragen hinzugefügt
+- [Senden von Protokolldaten an Azure Monitor mit der HTTP-Datensammler-API (Public Preview)](platform/data-collector-api.md): Python 3-Beispiel hinzugefügt
+- [Optimieren von Protokollabfragen in Azure Monitor](log-query/query-optimization.md): Abschnitt hinzugefügt, in dem erläutert wird, wie sich bei Verwendung von Unterabfragen mehrere Datenscans vermeiden lassen
+- [Tutorial: Erste Schritte mit Log Analytics-Abfragen](log-query/get-started-portal.md): Video hinzugefügt
+
+### <a name="platform-logs"></a>Plattformprotokolle
+- [Erstellen von Diagnoseeinstellungen zum Senden von Plattformprotokollen und Metriken an verschiedene Ziele](platform/diagnostic-settings.md): Video hinzugefügt
+- [Beispiele für Resource Manager-Vorlagen für Azure Monitor](samples/resource-manager-samples.md): ARM-Beispiel mit Zieltyp „Protokolle“ hinzugefügt 
+
+### <a name="solutions"></a>Lösungen
+- [Überwachungslösungen in Azure Monitor](insights/solutions.md): CLI-Prozesse hinzugefügt
+- [Office 365-Verwaltungslösung in Azure (Vorschau)](insights/solution-office-365.md): Deaktivierungstermin geändert
+
+### <a name="virtual-machines"></a>Virtuelle Computer
+
+Neue und aktualisierte Artikel infolge der Umstrukturierung der Inhalte zu Azure Monitor für VMs
+
+- [Was ist Azure Monitor für VMs?](insights/vminsights-overview.md)
+- [Konfigurieren eines Log Analytics-Arbeitsbereichs für Azure Monitor für VMs](insights/vminsights-configure-workspace.md)
+- [Verbinden von Linux-Computern mit Azure Monitor](platform/agent-linux.md)
+- [Aktivieren von Azure Monitor für eine Hybridumgebung](insights/vminsights-enable-hybrid.md)
+- [Aktivieren von Azure Monitor für einen einzelnen virtuellen Computer oder eine einzelne VM-Skalierungsgruppe im Azure-Portal](insights/vminsights-enable-portal.md)
+- [Aktivieren von Azure Monitor für VMs mit Azure Policy](insights/vminsights-enable-at-scale-policy.md)
+- [Aktivieren von Azure Monitor für VMs: Übersicht](insights/vminsights-enable-overview.md)
+- [Aktivieren von Azure Monitor für VMs mithilfe von PowerShell](insights/vminsights-enable-powershell.md)
+- [Aktivieren von Azure Monitor für VMs mit Resource Manager-Vorlagen](insights/vminsights-enable-resource-manager.md)
+- [Aktivieren von Azure Monitor für VMs mithilfe von PowerShell](insights/vminsights-enable-at-scale-powershell.md)
+
+
+### <a name="visualizations"></a>Visualisierungen
+- [Aktualisieren von Log Analytics-Dashboardvisualisierungen](log-query/dashboard-upgrade.md): Aktualisierungsrate aktualisiert
+- [Visualisieren von Daten aus Azure Monitor](visualizations.md): Video hinzugefügt
+
 
 ## <a name="june-2020"></a>Juni 2020
 
@@ -66,7 +124,8 @@ Dieser Artikel enthält Listen mit neuen oder signifikant aktualisierten Azure 
 - [Senden eines Azure-Aktivitätsprotokolls an einen Log Analytics-Arbeitsbereich unter Verwendung des Azure-Portals](learn/quick-collect-activity-log-portal.md): Neuer Artikel.
 - [Senden eines Azure-Aktivitätsprotokolls an den Log Analytics-Arbeitsbereich per Azure Resource Manager-Vorlage](learn/quick-collect-activity-log-arm.md): Neuer Artikel.
 
-#### <a name="new-and-updated-articles-from-restructure-and-consolidation-of-platform-log-content"></a>Neue und aktualisierte Artikel aus der Neustrukturierung und Konsolidierung von Plattformprotokollinhalten
+Neue und aktualisierte Artikel aus der Neustrukturierung und Konsolidierung von Plattformprotokollinhalten
+
 - [Archivieren von Azure-Ressourcenprotokollen in einem Speicherkonto](./platform/resource-logs.md#send-to-azure-storage)
 - [Ereignisschema des Azure-Aktivitätsprotokolls](platform/activity-log-schema.md)
 - [Azure-Aktivitätsprotokoll](platform/activity-log.md)
@@ -84,7 +143,7 @@ Dieser Artikel enthält Listen mit neuen oder signifikant aktualisierten Azure 
 - [Anzeigen von Azure-Aktivitätsprotokollereignissen in Azure Monitor](./platform/activity-log.md#view-the-activity-log)
 
 ### <a name="virtual-machines"></a>Virtuelle Computer
-- [Aktivieren von Azure Monitor für VMs im Azure-Portal](insights/vminsights-enable-single-vm.md): Aktualisiert, um Azure Arc zu berücksichtigen.
+- [Aktivieren von Azure Monitor für VMs im Azure-Portal](./insights/vminsights-enable-portal.md): Aktualisiert, um Azure Arc zu berücksichtigen.
 - [Aktivieren von Azure Monitor für VMs: Übersicht](insights/vminsights-enable-overview.md): Aktualisiert, um Azure Arc zu berücksichtigen.
 - [Was ist Azure Monitor für VMs?](insights/vminsights-overview.md) – Aktualisiert, um Azure Arc zu berücksichtigen.
 
@@ -293,7 +352,7 @@ Allgemeine Aktualisierungen im Zusammenhang mit der allgemeinen Verfügbarkeit v
 
 - [Was ist Azure Monitor für VMs?](insights/vminsights-overview.md)
 - [Häufig gestellte Fragen zu Azure Monitor für VMs in der allgemein verfügbaren Version (GA)](insights/vminsights-ga-release-faq.md) 
-- [Aktivieren von Azure Monitor für VMs mit Azure Policy](insights/vminsights-enable-at-scale-policy.md) 
+- [Aktivieren von Azure Monitor für VMs mit Azure Policy](./insights/vminsights-enable-policy.md) 
 - [Darstellen der Leistung in Diagrammen mit Azure Monitor für VMs](insights/vminsights-performance.md)
 - [Abfragen von Protokollen aus Azure Monitor für VMs](insights/vminsights-log-search.md)
 - [Verwenden des Zuordnungsfeatures in Azure Monitor für VMs zum Analysieren von Anwendungskomponenten](insights/vminsights-maps.md) 

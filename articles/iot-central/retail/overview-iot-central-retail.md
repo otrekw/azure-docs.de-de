@@ -8,23 +8,20 @@ ms.topic: overview
 ms.service: iot-central
 ms.subservice: iot-central-retail
 services: iot-central
-ms.openlocfilehash: 9427b007bc047e2f01db2dad02e06bf0ab0f5dea
-ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
+ms.openlocfilehash: c060b87b24d7467097d06adecb9f34acb4993779
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "81001379"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88032287"
 ---
 # <a name="building-retail-solutions-with-azure-iot-central"></a>Erstellen von Lösungen für den Einzelhandel mit Azure IoT Central
-
-
 
 Azure IoT Central ist eine IoT-App-Plattform, die Aufwand und Kosten im Zusammenhang mit der Entwicklung, Verwaltung und Wartung von IoT-Lösungen auf Unternehmensniveau verringert. Die Entscheidung zur Entwicklung mit Azure IoT Central gibt Ihnen die Möglichkeit, Zeit, Geld und Energie auf die Transformation Ihres Unternehmens mit IoT-Daten zu konzentrieren, anstatt sich lediglich mit der Wartung und Aktualisierung einer komplexen und sich ständig weiterentwickelnden IoT-Infrastruktur zu beschäftigen.
 
 In diesem Artikel werden verschiedene einzelhandelsspezifische IoT Central-Anwendungsvorlagen beschrieben. Mithilfe dieser Vorlagen können Lösungsentwickler IoT-Lösungen zur Optimierung der Lieferkette, zur Verbesserung des Einkaufserlebnisses für Kunden sowie zur effizienteren Nachverfolgung des Bestands erstellen.
 
-> [!div class="mx-imgBorder"]
-> ![Azure IoT: Übersicht für den Bereich Einzelhandel](./media/overview-iot-central-retail/retail-app-templates.png)
+:::image type="content" source="media/overview-iot-central-retail/retail-app-templates.png" alt-text="Azure IoT: Übersicht für den Bereich Einzelhandel":::
 
 In den folgenden Abschnitten werden die Funktionen dieser Anwendungsvorlagen beschrieben:
 
@@ -44,17 +41,15 @@ Eine Lösung für vernetzte Logistik hat unter anderem folgende Vorteile:
 
 Die folgenden Screenshots zeigen das Standarddashboard in der Anwendungsvorlage. Das Dashboard kann vollständig an Ihre individuellen Lösungsanforderungen angepasst werden:
 
-> [!div class="mx-imgBorder"]
-> ![Vernetzte Logistik: Dashboard](./media/overview-iot-central-retail/connected-logistics-dashboard1.png)
+:::image type="content" source="media/overview-iot-central-retail/connected-logistics-dashboard1.png" alt-text="Vernetzte Logistik: Dashboard":::
 
-> [!div class="mx-imgBorder"]
-> ![Vernetzte Logistik: Dashboard](./media/overview-iot-central-retail/connected-logistics-dashboard2.png)
+:::image type="content" source="media/overview-iot-central-retail/connected-logistics-dashboard2.png" alt-text="Vernetzte Logistik: Dashboard":::
 
 Weitere Informationen finden Sie im Tutorial [Bereitstellung und exemplarische Vorgehensweise für eine Anwendungsvorlage für vernetzte Logistik](./tutorial-iot-central-connected-logistics.md).
 
 ## <a name="digital-distribution-center"></a>Digitales Verteilzentrum
 
-Die Lieferketten weltweit präsenter Hersteller und Einzelhändler werden mit der Zeit immer verzweigter und komplexer. Die Konsumenten erwarten mittlerweile ein breit gefächertes Produktangebot, das innerhalb von ein bis zwei Tagen nach dem Kauf geliefert werden kann. Verteilzentren sind gezwungen, sich an diese Trends anzupassen und die bestehenden Ineffizienzen zu beseitigen. 
+Die Lieferketten weltweit präsenter Hersteller und Einzelhändler werden mit der Zeit immer verzweigter und komplexer. Die Konsumenten erwarten mittlerweile ein breit gefächertes Produktangebot, das innerhalb von ein bis zwei Tagen nach dem Kauf geliefert werden kann. Verteilzentren sind gezwungen, sich an diese Trends anzupassen und die bestehenden Ineffizienzen zu beseitigen.
 
 Handarbeit bedeutet heutzutage, dass 55 bis 65 Prozent der Kosten eines Verteilzentrums auf die Zusammenstellung und Verpackung von Sendungen entfallen. Die manuelle Zusammenstellung und Verpackung ist außerdem in der Regel langsamer als automatisierte Systeme, und die Bewältigung des Versandvolumens wird durch einen stark schwankenden Personalbedarf zusätzlich erschwert. Diese saisonale Schwankung führt zu einer hohen Mitarbeiterfluktuation und erhöht die Wahrscheinlichkeit kostspieliger Fehler.
 
@@ -69,8 +64,7 @@ Ein digitales Verteilzentrum hat unter anderem folgende Vorteile:
 
 Der folgende Screenshot zeigt das Standarddashboard in der Anwendungsvorlage. Das Dashboard kann vollständig an Ihre individuellen Lösungsanforderungen angepasst werden: 
 
-> [!div class="mx-imgBorder"]
-> ![Digitales Verteilzentrum: Dashboard](./media/overview-iot-central-retail/digital-distribution-center-dashboard.png)
+:::image type="content" source="media/overview-iot-central-retail/digital-distribution-center-dashboard.png" alt-text="Digitales Verteilzentrum: Dashboard":::
 
 Weitere Informationen finden Sie im Tutorial [Bereitstellen und Durchlaufen einer Anwendungsvorlage für digitale Verteilzentren](./tutorial-iot-central-digital-distribution-center.md).
 
@@ -82,7 +76,7 @@ Mithilfe der IoT Central-Anwendungsvorlage „In-Store-Analyse – Bedingungs�
 
 Verwenden Sie die Anwendungsvorlage für Folgendes:
 
-* Verbinden verschiedenster IoT-Sensoren mit einer IoT Central-Anwendungsinstanz
+* Verbinden verschiedener Arten von IoT-Sensoren mit einer IoT Central-Anwendungsinstanz
 * Überwachen und Verwalten der Integrität des Sensornetzwerks sowie der Gatewaygeräte in der Umgebung
 * Erstellen benutzerdefinierter Regeln für die Umgebungsbedingungen in einem Geschäft, um Warnungen für Filialleiter auszulösen
 * Gewinnen von Erkenntnissen auf der Grundlage der Umgebungsbedingungen, die von den Mitarbeitern des Einzelhandelsgeschäfts zur Verbesserung der Kundenerfahrung genutzt werden können
@@ -92,8 +86,7 @@ Die Anwendungsvorlage verfügt über eine Reihe von Gerätevorlagen und nutzt me
 
 Der folgende Screenshot zeigt das Standarddashboard in der Anwendungsvorlage. Das Dashboard kann vollständig an Ihre individuellen Lösungsanforderungen angepasst werden: 
 
-> [!div class="mx-imgBorder"]
-> ![In-Store-Analyse – Bedingungsüberwachung](./media/overview-iot-central-retail/in-store-analytics-condition-dashboard.png)
+:::image type="content" source="media/overview-iot-central-retail/in-store-analytics-condition-dashboard.png" alt-text="In-Store-Analyse – Bedingungsüberwachung":::
 
 Weitere Informationen finden Sie im Tutorial [Erstellen einer Anwendung für die In-Store-Analyse in Azure IoT Central](./tutorial-in-store-analytics-create-app.md).
 
@@ -105,7 +98,7 @@ Mithilfe der IoT Central-Anwendungsvorlage „In-Store-Analyse – Auschecken�
 
 Verwenden Sie die Anwendungsvorlage für Folgendes:
 
-* Verbinden verschiedenster IoT-Sensoren mit einer IoT Central-Anwendungsinstanz
+* Verbinden verschiedener Arten von IoT-Sensoren mit einer IoT Central-Anwendungsinstanz
 * Überwachen und Verwalten der Integrität des Sensornetzwerks sowie der Gatewaygeräte in der Umgebung
 * Erstellen benutzerdefinierter Regeln für die Kassenbedingungen in einem Geschäft, um Warnungen für Mitarbeiter auszulösen
 * Gewinnen von Erkenntnissen auf der Grundlage der Kassenbedingungen, die von den Mitarbeitern des Einzelhandelsgeschäfts zur Verbesserung der Kundenerfahrung genutzt werden können
@@ -115,8 +108,7 @@ Die Anwendungsvorlage verfügt über eine Reihe von Gerätevorlagen und nutzt me
 
 Der folgende Screenshot zeigt das Standarddashboard in der Anwendungsvorlage. Das Dashboard kann vollständig an Ihre individuellen Lösungsanforderungen angepasst werden: 
 
-> [!div class="mx-imgBorder"]
-> ![In-Store-Analyse – Auschecken](./media/overview-iot-central-retail/In-Store-Analytics-Checkout-Dashboard.png)
+:::image type="content" source="media/overview-iot-central-retail/In-Store-Analytics-Checkout-Dashboard.png" alt-text="In-Store-Analyse – Auschecken":::
 
 Weitere Informationen finden Sie im Tutorial [Erstellen einer Anwendung für die In-Store-Analyse in Azure IoT Central](./tutorial-in-store-analytics-create-app.md).
 
@@ -136,8 +128,7 @@ Bei dieser Anwendungsvorlage stehen die Gerätekonnektivität sowie die Konfigur
 
 Der folgende Screenshot zeigt das Standarddashboard in der Anwendungsvorlage. Das Dashboard kann vollständig an Ihre individuellen Lösungsanforderungen angepasst werden:
 
-> [!div class="mx-imgBorder"]
-> ![Intelligente Bestandsverwaltung: Dashboard](./media/overview-iot-central-retail/smart-inventory-management-dashboard.png)
+:::image type="content" source="media/overview-iot-central-retail/smart-inventory-management-dashboard.png" alt-text="Intelligente Bestandsverwaltung: Dashboard":::
 
 Weitere Informationen finden Sie im Tutorial [Bereitstellen und Durchlaufen einer Anwendungsvorlage für intelligente Bestandsverwaltung](./tutorial-iot-central-smart-inventory-management.md).
 
@@ -157,10 +148,32 @@ Die Anwendungsvorlage ermöglicht Folgendes:
 
 Der folgende Screenshot zeigt das Standarddashboard in der Anwendungsvorlage. Das Dashboard kann vollständig an Ihre individuellen Lösungsanforderungen angepasst werden:
 
-> [!div class="mx-imgBorder"]
-> ![Micro-Fulfillment-Center](./media/overview-iot-central-retail/MFC-Dashboard.png)
+:::image type="content" source="media/overview-iot-central-retail/MFC-Dashboard.png" alt-text="Micro-Fulfillment-Center":::
 
 Weitere Informationen finden Sie im Tutorial [Bereitstellen und Durchlaufen einer Anwendungsvorlage für intelligente Bestandsverwaltung](./tutorial-micro-fulfillment-center.md).
+
+## <a name="video-analytics---object-and-motion-detection"></a>Videoanalyse: Objekt- und Bewegungserkennung
+
+Mit der IoT Central-Anwendungsvorlage *Videoanalyse: Objekt- und Bewegungserkennung* können Sie schnell eine Lösung mit Intelligent Edge-Kameras zur Objekt- und Bewegungserkennung bereitstellen, verwalten und überwachen.
+
+Die Videoanalyseanwendung verwendet ein in IoT Edge ausgeführtes LVA-Modul ([Live Video Analytics](#live-video-analytics)). Das LVA-Modul bietet eine Plattform für die Erstellung intelligenter Videoanwendungen, die den Edge und die Cloud umfassen. Mithilfe der Plattform lassen sich IoT-Lösungen wie etwa die Videoanalyseanwendung mit Objekt- und Bewegungserkennung erweitern.
+
+Die Anwendungsvorlage enthält vier Anwendungsdashboards:
+
+* **Setup** (Einrichten): Enthält Informationen zum Anwendungsentwurf und ermöglicht das Hinzufügen und Löschen von Kameras.
+* **Manage** (Verwalten): Ermöglicht die Verwaltung Ihrer Kameras. Hier können Sie beispielsweise die Kameras konfigurieren, Statusinformationen anzeigen und Kameras starten.
+* **Real Cameras** (Echte Kameras): Hier können Sie Informationen Ihrer echten Kameras wie etwa die Anzahl von Erkennungen sowie Kameraereignisse anzeigen.
+* **Monitor** (Überwachen): Hier können Sie ausführliche Informationen von allen Kameras anzeigen.
+
+:::image type="content" source="media/overview-iot-central-retail/live-video-analytics.png" alt-text="Videoanalyse: Objekt- und Bewegungserkennung":::
+
+Weitere Informationen zur Architektur der Lösung finden Sie unter [Videoanalyse: Anwendungsarchitektur für die Objekt- und Bewegungserkennung](architecture-video-analytics.md).
+
+Eine Bereitstellungsanleitung für die Lösung finden Sie im Tutorial [Erstellen einer Videoanalyseanwendung mit Objekt- und Bewegungserkennung in Azure IoT Central](tutorial-video-analytics-create-app.md).
+
+### <a name="live-video-analytics"></a>Live Video Analytics
+
+Live Video Analytics ist eine Plattform für die Erstellung intelligenter Videoanwendungen, die den Edge und die Cloud umfassen. Die Plattform bietet die Möglichkeit, Livevideos zu erfassen, aufzuzeichnen und zu analysieren sowie die Ergebnisse (Video oder Videoanalyse) in Azure-Diensten zu veröffentlichen. Die Azure-Dienste können in der Cloud oder im Edgebereich ausgeführt werden. Mithilfe der Plattform können IoT-Lösungen durch Videoanalysen ergänzt werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

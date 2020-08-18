@@ -4,12 +4,12 @@ description: In diesem Artikel wird beschrieben, wie Sie virtuelle AWS-Computer 
 ms.topic: tutorial
 ms.date: 06/16/2020
 ms.custom: MVC
-ms.openlocfilehash: 61a7bee52179ac525b42ad696d118f4f753f6931
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 9aad6993af4a90acb41316da0056da84f2e95f70
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534827"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88066643"
 ---
 # <a name="discover-assess-and-migrate-amazon-web-services-aws-vms-to-azure"></a>Ermitteln, Bewerten und Migrieren von virtuellen AWS-Computern (Amazon Web Services) zu Azure
 
@@ -99,7 +99,7 @@ Von der Azure Bei der Servermigration wird eine Replikationsappliance verwendet,
 Bereiten Sie die Bereitstellung der Appliance wie folgt vor:
 
 - Richten Sie eine gesonderte EC2-VM für das Hosten der Replikationsappliance ein. Auf dieser Instanz muss Windows Server 2012 R2 oder Windows Server 2016 ausgeführt werden. [Überprüfen](./migrate-replication-appliance.md#appliance-requirements) Sie die Hardware-, Software- und Netzwerkanforderungen für die Appliance.
-- Die Appliance sollte nicht auf einem virtuellen Quellcomputer installiert werden, den Sie replizieren möchten. Sie sollte auf einem anderen virtuellen Computer bereitgestellt werden.
+- Die Appliance sollte nicht auf einer zu replizierenden Quell-VM oder auf der Ermittlungs- und Bewertungsappliance von Azure Migrate installiert werden, die Sie unter Umständen bereits installiert haben. Sie sollte auf einem anderen virtuellen Computer bereitgestellt werden.
 - Die zu migrierenden AWS-Quell-VMs sollten über eine Sichtverbindung zur Replikationsappliance im Netzwerk verfügen. Konfigurieren Sie die erforderlichen Sicherheitsgruppenregeln, um dies zu ermöglichen. Es wird empfohlen, die Replikationsappliance in derselben VPC wie die zu migrierenden Quell-VMs bereitzustellen. Wenn sich die Replikationsappliance in einem anderen VPC befinden muss, müssen die VPCs mittels VPC-Peering verbunden werden.
 - Die AWS-Quell-VMs kommunizieren mit der Replikationsappliance an den eingehenden Ports HTTPS 443 (Steuerkanalorchestrierung) und TCP 9443 (Datentransport) für die Replikationsverwaltung und die Replikationsdatenübertragung. Die Replikationsappliance wiederum orchestriert und sendet Replikationsdaten an Azure über den ausgehenden Port HTTPS 443. Um diese Regeln zu konfigurieren, bearbeiten Sie die Eingangs-/Ausgangsregeln der Sicherheitsgruppe mit den entsprechenden Ports und Quell-IP-Informationen.
 

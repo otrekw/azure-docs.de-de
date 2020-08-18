@@ -1,18 +1,18 @@
 ---
 title: Grundlegendes zum Cloudtiering der Azure-Dateisynchronisierung | Microsoft-Dokumentation
-description: Erfahren Sie mehr über das Cloudtieringfeature der Azure-Dateisynchronisierung.
+description: Informieren Sie sich über Cloudtiering, ein optionales Feature der Azure-Dateisynchronisierung. Dateien, auf die häufig zugegriffen wird, werden lokal auf dem Server gespeichert. andere werden in Azure Files ausgelagert.
 author: roygara
 ms.service: storage
 ms.topic: conceptual
 ms.date: 06/15/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 23e98c40420a5f1ed9b048d5530eacfe5eedfb32
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6678f64802dc497de6cf0a70ba5ff0bbcaf44e1c
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85413976"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88033120"
 ---
 # <a name="cloud-tiering-overview"></a>Übersicht über Cloudtiering
 Cloudtiering ist ein optionales Feature der Azure-Dateisynchronisierung, bei dem häufig verwendete Dateien lokal auf dem Server zwischengespeichert werden, während alle anderen Dateien gemäß Richtlinieneinstellungen in Azure Files ausgelagert werden. Beim Tiering einer Datei ersetzt der Azure-Dateisynchronisierungs-Dateisystemfilter (StorageSync.sys) die Datei lokal durch einen Zeiger oder Analysepunkt. Der Analysepunkt stellt eine URL zur Datei in Azure Files dar. Eine per Tiering ausgelagerte Datei weist sowohl das offline-Attribut als auch das in NTFS festgelegte FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS-Attribut auf, sodass Drittanwendungen Tieringdateien sicher identifizieren können.
@@ -40,16 +40,19 @@ Das Cloudtiering ist nicht von der NTFS-Funktion für die Überwachung des Zeitp
 <a id="tiering-minimum-file-size"></a>
 ### <a name="what-is-the-minimum-file-size-for-a-file-to-tier"></a>Welche Mindestdateigröße gilt für Dateien, für die ein Tiering durchgeführt werden soll?
 
-Die Mindestdateigröße für Dateien, für die ein Tiering durchgeführt werden soll, basiert ab den Agent-Versionen 9.x auf der Größe des Dateisystemclusters. In der folgenden Tabelle sind die Mindestdateigrößen auf Grundlage der Volumeclustergröße aufgeführt, für die ein Tiering möglich ist:
+Die Mindestdateigröße für Dateien, für die ein Tiering durchgeführt werden soll, basiert ab den Agent-Versionen 9.x auf der Größe des Dateisystemclusters. Die Mindestdateigröße für Cloudtiering wird durch Verdopplung der Clustergröße berechnet und muss mindestens 8 KB betragen. In der folgenden Tabelle sind die Mindestdateigrößen auf Grundlage der Volumeclustergröße aufgeführt, für die ein Tiering möglich ist:
 
 |Volumeclustergröße (Byte) |Mindestdateigröße für Tiering  |
 |----------------------------|---------|
-|4 KB (4096)                 | 8 KB    |
+|4 KB oder kleiner (4096)      | 8 KB    |
 |8 KB (8192)                 | 16 KB   |
 |16 KB (16384)               | 32 KB   |
-|32 KB (32768) und größer    | 64 KB   |
+|32 KB (32768)               | 64 KB   |
+|64 KB (65536)               | 128 KB  |
 
-Alle von Windows verwendeten Dateisysteme organisieren Ihre Festplatte auf Grundlage der Clustergröße (auch als Größe der Zuordnungseinheiten bezeichnet). Die Clustergröße stellt die kleinste Menge an Speicherplatz dar, die zum Speichern einer Datei verwendet werden kann. Wenn Dateigrößen kein gerades Vielfaches der Clustergröße ergeben, muss zum Speichern der Datei zusätzlicher Speicherplatz verwendet werden (bis zum nächsten Vielfachen der Clustergröße).
+Mit Windows Server 2019 und Version 12 oder höher des Azure-Dateisynchronisierungs-Agents werden auch Clustergrößen von bis zu 2 MB unterstützt. Das Tiering funktioniert in diesen Größen auf die gleiche Weise. Ältere Betriebssystem- oder Agent-Versionen unterstützen Clustergrößen bis 64 KB.
+
+Alle von Windows verwendeten Dateisysteme organisieren Ihre Festplatte auf Grundlage der Clustergröße (auch als Größe der Zuordnungseinheiten bezeichnet). Die Clustergröße stellt die kleinste Menge an Speicherplatz dar, die zum Speichern einer Datei verwendet werden kann. Wenn Dateigrößen kein gerades Vielfaches der Clustergröße ergeben, muss zum Speichern der Datei zusätzlicher Speicherplatz verwendet werden – bis zum nächsten Vielfachen der Clustergröße.
 
 Die Azure-Dateisynchronisierung wird auf NTFS-Volumes mit Windows Server 2012 R2 und höher unterstützt. In der folgenden Tabelle sind die Standardclustergrößen für das Erstellen eines neuen NTFS-Volumes aufgeführt. 
 
@@ -62,7 +65,9 @@ Die Azure-Dateisynchronisierung wird auf NTFS-Volumes mit Windows Server 2012 R2
 |128 TB–256 TB | 64 KB         |
 |> 256 TB       | Nicht unterstützt |
 
-Möglicherweise haben Sie das Volume bei der Erstellung manuell mit einer anderen Clustergröße (Größe der Zuordnungseinheiten) formatiert. Wenn das Volume von einer älteren Version von Windows stammt, können die Standardclustergrößen ebenfalls abweichen. [In diesem Artikel finden Sie weitere Informationen zu den Standardclustergrößen.](https://support.microsoft.com/help/140365/default-cluster-size-for-ntfs-fat-and-exfat)
+Möglicherweise haben Sie das Volume bei der Erstellung manuell mit einer anderen Clustergröße formatiert. Wenn das Volume von einer älteren Version von Windows stammt, können die Standardclustergrößen ebenfalls abweichen. [In diesem Artikel finden Sie weitere Informationen zu den Standardclustergrößen.](https://support.microsoft.com/help/140365/default-cluster-size-for-ntfs-fat-and-exfat) Auch wenn Sie eine Clustergröße unter 4 KB auswählen, gilt weiterhin der Grenzwert von 8 KB als kleinste Dateigröße, für die ein Tiering durchgeführt werden kann. (Auch wenn technisch gesehen das Doppelte der Clustergröße weniger als 8 KB wäre.)
+
+Der Grund für diesen absoluten Minimalwert findet sich in der Art und Weise, in der NTFS sehr kleine Dateien speichert, also mit Dateigrößen von 1 bis 4 KB. Je nach den Parametern des Volumes ist es möglich, dass kleine Dateien überhaupt nicht in einem Cluster oder auf einem Datenträger gespeichert werden. Möglicherweise ist es effizienter, solche Dateien direkt im Datensatz der Masterdateitabelle (Master File Table, MFT) des Volumes zu speichern. Der Analysepunkt für das Cloudtiering wird immer auf dem Datenträger gespeichert und belegt genau einen Cluster. Bei so kleinen Dateien spart ein Tiering möglicherweise keinen Speicherplatz. In extremen Fällen könnte es sogar vorkommen, dass ein aktiviertes Tiering zu einer höheren Speicherplatzbelegung führt. Zum Schutz vor solchen Situationen ist die kleinste Dateigröße, für die ein Cloudtiering ausgeführt werden kann, 8 KB in einem Cluster mit 4 KB oder weniger.
 
 <a id="afs-volume-free-space"></a>
 ### <a name="how-does-the-volume-free-space-tiering-policy-work"></a>Wie funktioniert die Richtlinie für freien Speicherplatz auf dem Volume?
@@ -95,7 +100,7 @@ Get-StorageSyncHeatStoreInformation '<LocalServerEndpointPath>'
 
 Denken Sie daran, dass die Richtlinie für freien Speicherplatz auf dem Volume immer Vorrang hat. Ist auf dem Volume nicht genügend freier Speicherplatz für die gemäß der Datumsrichtlinie zu speichernden Dateien verfügbar, lagert die Azure-Dateisynchronisierung die ältesten Dateien weiter per Tiering aus, bis der erforderliche Prozentsatz an freiem Speicherplatz auf dem Volume erreicht ist.
 
-Angenommen, Sie haben eine datumsbasierte Tieringrichtlinie von 60 Tagen und eine Richtlinie für freien Speicherplatz auf dem Volume von 20 %. Wenn der freie Speicherplatz auf dem Volume nach dem Anwenden der Datumsrichtlinie unter 20 % liegt, setzt die Richtlinie für freien Speicherplatz auf dem Volume die Datumsrichtlinie außer Kraft. Da dadurch mehr Dateien ausgelagert werden, kann die auf dem Server beibehaltene Datenmenge von Daten für 60 Tage auf Daten für 45 Tage reduziert werden. Umgekehrt erzwingt diese Richtlinie auch dann das Tiering von Dateien außerhalb des Zeitbereichs, wenn der Schwellenwert für den freien Speicherplatz nicht erreicht wurde. Eine Datei, die 61 Tage alt ist, wird also selbst dann ausgelagert, wenn das Volume leer ist.
+Angenommen, Sie haben eine datumsbasierte Tieringrichtlinie von 60 Tagen und eine Richtlinie für freien Speicherplatz auf dem Volume von 20 %. Wenn der freie Speicherplatz auf dem Volume nach dem Anwenden der Datumsrichtlinie unter 20 % liegt, setzt die Richtlinie für freien Speicherplatz auf dem Volume die Datumsrichtlinie außer Kraft. Da dadurch mehr Dateien ausgelagert werden, kann die auf dem Server beibehaltene Datenmenge von Daten für 60 Tage auf Daten für 45 Tage reduziert werden. Umgekehrt erzwingt diese Richtlinie auch dann das Tiering von Dateien außerhalb des Zeitbereichs, wenn der Schwellenwert für den freien Speicherplatz nicht erreicht wurde. Eine Datei, die 61 Tage alt ist, wird also selbst dann ausgelagert, wenn das Volume leer ist.
 
 <a id="volume-free-space-guidelines"></a>
 ### <a name="how-do-i-determine-the-appropriate-amount-of-volume-free-space"></a>Wie lege ich eine geeignete Menge an freiem Speicherplatz auf dem Volume fest?

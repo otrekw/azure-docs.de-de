@@ -1,6 +1,6 @@
 ---
 title: Schnellstart für Microsoft Azure Data Box | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie Azure Data Box über das Azure-Portal schnell bereitstellen.
+description: In dieser Schnellstartanleitung erfahren Sie, wie Sie Azure Data Box für einen Importauftrag über das Azure-Portal bereitstellen. Konfigurieren Sie Azure Data Box, und kopieren Sie Daten für den Upload in Azure.
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: dd429dadcbe67f0ac91da19d6606626b39f34ef5
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 2ee9d1edefb0e248d0eba13e2d0b9f1c651fdd42
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86201080"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87924511"
 ---
 # <a name="get-started-with-azure-data-box-to-import-data-into-azure"></a>Erste Schritte mit Azure Data Box zum Importieren von Daten in Azure
 

@@ -1,6 +1,6 @@
 ---
 title: 'Tutorial: Kopieren von Daten über SMB auf Azure Data Box Heavy | Microsoft-Dokumentation'
-description: Hier erfahren Sie, wie Sie Daten über SMB auf Ihr Azure Data Box Heavy-Gerät kopieren.
+description: In diesem Tutorial erfahren Sie, wie Sie mithilfe des SMB über die lokale Webbenutzeroberfläche eine Verbindung herstellen und Daten von Ihrem Hostcomputer auf Ihr Azure Data Box Heavy-Gerät kopieren.
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 08/29/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: b02345ded6f519981db03795678802107f9cfb1f
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 6c88a1eaee50676cfe6bb9589779d7156b805e30
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206685"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87920975"
 ---
 ::: zone target = "docs"
 

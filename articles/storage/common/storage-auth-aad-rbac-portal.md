@@ -1,5 +1,5 @@
 ---
-title: Verwenden des Azure-Portals zum Zuweisen einer RBAC-Rolle für den Datenzugriff
+title: Zuweisen einer Azure-Rolle für den Datenzugriff über das Azure-Portal
 titleSuffix: Azure Storage
 description: Hier erfahren Sie, wie Sie mit dem Azure-Portal Berechtigungen für einen Azure Active Directory-Sicherheitsprinzipal mit rollenbasierter Zugriffssteuerung (Role-Based Access Control, RBAC) zuweisen. Azure Storage unterstützt für die Authentifizierung über Azure AD integrierte und benutzerdefinierte Azure-Rollen.
 services: storage
@@ -10,22 +10,22 @@ ms.date: 07/16/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 160833817150332b240ec17b2b700fbcb7a4456b
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 21120239c44dbdd812dfb3d3208990db4372ec29
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87370647"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87828012"
 ---
-# <a name="use-the-azure-portal-to-assign-an-rbac-role-for-access-to-blob-and-queue-data"></a>Verwenden des Azure-Portals zum Zuweisen einer RBAC-Rolle für den Zugriff auf Blob- und Warteschlangendaten
+# <a name="use-the-azure-portal-to-assign-an-azure-role-for-access-to-blob-and-queue-data"></a>Zuweisen einer Azure-Rolle für den Zugriff auf Blob- und Warteschlangendaten über das Azure-Portal
 
-Azure Active Directory (Azure AD) autorisiert Rechte für den Zugriff auf abgesicherte Ressourcen über die [rollenbasierte Zugriffssteuerung (RBAC)](../../role-based-access-control/overview.md). Azure Storage bietet eine Reihe in Azure integrierter Rollen mit allgemeinen Berechtigungssätzen für den Zugriff auf Blob- und Warteschlangendaten.
+Azure Active Directory (Azure AD) autorisiert Rechte für den Zugriff auf abgesicherte Ressourcen über die [rollenbasierte Zugriffssteuerung in Azure (Azure Role-Based Access Control, Azure RBAC)](../../role-based-access-control/overview.md). Azure Storage bietet eine Reihe in Azure integrierter Rollen mit allgemeinen Berechtigungssätzen für den Zugriff auf Blob- und Warteschlangendaten.
 
-Wenn einem Azure AD-Sicherheitsprinzipal eine RBAC-Rolle zugewiesen wird, gewährt Azure diesem Sicherheitsprinzipal Zugriff auf diese Ressourcen. Der Zugriff kann auf die Ebene des Abonnements, der Ressourcengruppe, des Speicherkontos oder eines einzelnen Containers oder einer Warteschlange begrenzt werden. Eine Azure AD-Sicherheitsprinzipal kann ein Benutzer, eine Gruppe, ein Anwendungsdienstprinzipal oder eine [verwaltete Identität für Azure-Ressourcen](../../active-directory/managed-identities-azure-resources/overview.md) sein.
+Wenn einem Azure AD-Sicherheitsprinzipal eine Azure-Rolle zugewiesen wird, gewährt ihm Azure Zugriff auf diese Ressourcen. Der Zugriff kann auf die Ebene des Abonnements, der Ressourcengruppe, des Speicherkontos oder eines einzelnen Containers oder einer Warteschlange begrenzt werden. Eine Azure AD-Sicherheitsprinzipal kann ein Benutzer, eine Gruppe, ein Anwendungsdienstprinzipal oder eine [verwaltete Identität für Azure-Ressourcen](../../active-directory/managed-identities-azure-resources/overview.md) sein.
 
-In diesem Artikel wird beschrieben, wie Sie im Azure-Portal RBAC-Rollen zuweisen. Das Azure-Portal bietet eine einfache Benutzeroberfläche für die Zuweisung von RBAC-Rollen und die Verwaltung des Zugriffs auf Ihre Speicherressourcen. Sie können RBAC-Rollen auch für Blob- und Warteschlangenressourcen mithilfe von Azure-Befehlszeilentools oder Azure Storage-Verwaltungs-APIs zuweisen. Weitere Informationen zu RBAC-Rollen für Speicherressourcen finden Sie unter [Authentifizieren des Zugriffs auf Azure-Blobs und -Warteschlangen mit Azure Active Directory](storage-auth-aad.md).
+In diesem Artikel wird beschrieben, wie Sie Azure-Rollen über das Azure-Portal zuweisen. Das Azure-Portal bietet eine einfache Benutzeroberfläche für die Zuweisung von Azure-Rollen und die Verwaltung des Zugriffs auf Ihre Speicherressourcen. Sie können Azure-Rollen für Blob- und Warteschlangenressourcen auch mithilfe von Azure-Befehlszeilentools oder Azure Storage-Verwaltungs-APIs zuweisen. Weitere Informationen zu Azure-Rollen für Speicherressourcen finden Sie unter [Authentifizieren des Zugriffs auf Azure-Blobs und -Warteschlangen mit Azure Active Directory](storage-auth-aad.md).
 
-## <a name="rbac-roles-for-blobs-and-queues"></a>RBAC-Rollen für Blobs und Warteschlangen
+## <a name="azure-roles-for-blobs-and-queues"></a>Azure-Rollen für Blobs und Warteschlangen
 
 [!INCLUDE [storage-auth-rbac-roles-include](../../../includes/storage-auth-rbac-roles-include.md)]
 
@@ -33,18 +33,18 @@ In diesem Artikel wird beschrieben, wie Sie im Azure-Portal RBAC-Rollen zuweisen
 
 [!INCLUDE [storage-auth-resource-scope-include](../../../includes/storage-auth-resource-scope-include.md)]
 
-## <a name="assign-rbac-roles-using-the-azure-portal"></a>Zuweisen von RBAC-Rollen im Azure-Portal
+## <a name="assign-azure-roles-using-the-azure-portal"></a>Zuweisen von Azure-Rollen über das Azure-Portal
 
 Nachdem Sie den gewünschten Umfang für eine Rollenzuweisung festgelegt haben, navigieren Sie im Azure-Portal zur entsprechenden Ressource. Zeigen Sie die Einstellungen für die **Zugriffssteuerung (IAM)** für die Ressource an, und befolgen Sie diese Anweisungen zum Verwalten von Rollenzuweisungen:
 
-1. Weisen Sie die entsprechende Azure Storage-RBAC-Rolle zu, um einem Azure AD-Sicherheitsprinzipal Zugriff zu gewähren.
+1. Weisen Sie die entsprechende Azure Storage Azure-Rolle zu, um einem Azure AD-Sicherheitsprinzipal Zugriff zu gewähren.
 
 1. Weisen Sie die Azure Resource Manager-Rolle [Leser](../../role-based-access-control/built-in-roles.md#reader) Benutzern zu, die über das Azure-Portal mit ihren Azure AD-Anmeldeinformationen auf Container oder Warteschlangen zugreifen müssen. 
 
 In den folgenden Abschnitten werden diese Schritte ausführlicher beschrieben.
 
 > [!NOTE]
-> Als Besitzer Ihres Azure Storage-Kontos erhalten Sie nicht automatisch Berechtigungen für den Zugriff auf Daten. Sie müssen sich selbst explizit eine RBAC-Rolle für Azure Storage zuweisen. Sie können sie auf der Ebene Ihres Abonnements, einer Ressourcengruppe, eines Speicherkontos oder eines Containers oder einer Warteschlange zuordnen.
+> Als Besitzer Ihres Azure Storage-Kontos erhalten Sie nicht automatisch Berechtigungen für den Zugriff auf Daten. Sie müssen sich selbst explizit eine Azure-Rolle für Azure Storage zuweisen. Sie können sie auf der Ebene Ihres Abonnements, einer Ressourcengruppe, eines Speicherkontos oder eines Containers oder einer Warteschlange zuordnen.
 >
 > Sie können einem Container oder einer Warteschlange keine Rolle zuweisen, wenn in Ihrem Speicherkonto ein hierarchischer Namespace aktiviert ist.
 
@@ -64,7 +64,7 @@ Die hier gezeigte Vorgehensweise weist eine auf einen Container begrenzte Rolle 
 1. Klicken Sie auf die Schaltfläche **Rollenzuweisung hinzufügen**, um eine neue Rolle hinzuzufügen.
 1. Wählen Sie im Fenster **Rollenzuweisung hinzufügen** die Azure Storage-Rolle aus, die Sie zuweisen möchten. Suchen Sie dann den Sicherheitsprinzipal, dem Sie diese Rolle zuweisen möchten.
 
-    ![Screenshot: Zuweisen einer RBAC-Rolle](media/storage-auth-aad-rbac-portal/add-rbac-role.png)
+    ![Screenshot: Zuweisen einer Azure-Rolle](media/storage-auth-aad-rbac-portal/add-rbac-role.png)
 
 1. Klicken Sie auf **Speichern**. Die Identität, der Sie die Rolle zugewiesen haben, wird unter dieser Rolle angezeigt. Die folgende Abbildung zeigt z.B., dass der hinzugefügte Benutzer nun Leseberechtigungen für Daten im Container *sample-container* hat.
 
@@ -79,7 +79,7 @@ Wenn Sie beispielsweise der Benutzerin Mary die Rolle **Mitwirkender an Storage-
 
 Wenn Mary jedoch ein Blob im Azure-Portal anzeigen möchte, bietet die Rolle **Mitwirkender an Storage-Warteschlangendaten** allein nicht genügend Berechtigungen, um im Portal zum Blob zu navigieren, um ihn anzuzeigen. Zusätzliche Azure AD-Berechtigungen sind erforderlich, um durch das Portal zu navigieren und die anderen Ressourcen anzuzeigen, die dort sichtbar sind.
 
-Wenn Ihre Benutzer auf Blobs im Azure-Portal zugreifen können müssen, weisen Sie ihnen auf der Ebene des Speicherkontos oder höher die zusätzliche RBAC-Rolle [Leser](../../role-based-access-control/built-in-roles.md#reader) zu. Die Rolle **Leser** ist eine Azure Resource Manager-Rolle, die es Benutzern ermöglicht, Ressourcen im Speicherkonto anzuzeigen, ohne sie ändern zu können. Sie bietet keine Leseberechtigungen für Daten in Azure Storage, sondern nur für Ressourcen zur Kontoverwaltung.
+Wenn Ihre Benutzer auf Blobs im Azure-Portal zugreifen müssen, weisen Sie ihnen auf der Ebene des Speicherkontos oder höher die zusätzliche Azure-Rolle [Leser](../../role-based-access-control/built-in-roles.md#reader) zu. Die Rolle **Leser** ist eine Azure Resource Manager-Rolle, die es Benutzern ermöglicht, Ressourcen im Speicherkonto anzuzeigen, ohne sie ändern zu können. Sie bietet keine Leseberechtigungen für Daten in Azure Storage, sondern nur für Ressourcen zur Kontoverwaltung.
 
 Führen Sie diese Schritte aus, um die Rolle **Leser** so zuzuweisen, dass ein Benutzer im Azure-Portal auf Blobs zugreifen kann. In diesem Beispiel ist die Zuweisung auf das Speicherkonto beschränkt:
 
@@ -97,9 +97,9 @@ Die Zuweisung der Rolle **Leser** ist nur für Benutzer erforderlich, die über 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Weitere Informationen zu RBAC-Rollen für Speicherressourcen finden Sie unter [Authentifizieren des Zugriffs auf Azure-Blobs und -Warteschlangen mit Azure Active Directory](storage-auth-aad.md). 
+- Weitere Informationen zu Azure-Rollen für Speicherressourcen finden Sie unter [Authentifizieren des Zugriffs auf Azure-Blobs und -Warteschlangen mit Azure Active Directory](storage-auth-aad.md). 
 - Weitere Informationen zur rollenbasierten Zugriffssteuerung finden Sie im Artikel [Was ist die rollenbasierte Zugriffssteuerung in Azure (Azure Role-Based Access Control, Azure RBAC)?](../../role-based-access-control/overview.md).
-- Informationen zum Zuweisen und Verwalten von RBAC-Rollenzuweisungen mit Azure PowerShell, Azure CLI oder der REST-API finden Sie in diesen Artikeln:
+- Informationen zum Zuweisen und Verwalten von Azure-Rollenzuweisungen mit Azure PowerShell, der Azure-Befehlszeilenschnittstelle oder der REST-API finden Sie in diesen Artikeln:
     - [Verwalten der rollenbasierten Zugriffssteuerung mit Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md)
     - [Verwalten der rollenbasierten Zugriffssteuerung mit der Azure-Befehlszeilenschnittstelle](../../role-based-access-control/role-assignments-cli.md)
     - [Verwalten der rollenbasierten Zugriffssteuerung mit der REST-API](../../role-based-access-control/role-assignments-rest.md)

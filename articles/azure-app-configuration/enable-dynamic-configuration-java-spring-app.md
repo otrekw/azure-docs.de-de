@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 3/5/2020
 ms.custom: devx-track-java
 ms.author: lcozzens
-ms.openlocfilehash: a2864d610d71c6b3a86c131dabb3c0b9ed138bec
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 653fcb6f6590fd503a97800ec8196025cf14a3b9
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327921"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121560"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-a-java-spring-app"></a>Tutorial: Verwenden der dynamischen Konfiguration in einer Java Spring-App
 
@@ -36,7 +36,7 @@ Wenn Sie die automatisierte Aktualisierung verwenden möchten, beginnen Sie mit 
 <dependency>
     <groupId>com.microsoft.azure</groupId>
     <artifactId>spring-cloud-azure-appconfiguration-config-web</artifactId>
-    <version>1.1.2</version>
+    <version>1.1.5</version>
 </dependency>
 ```
 
@@ -46,11 +46,33 @@ Wenn Sie die automatisierte Aktualisierung verwenden möchten, beginnen Sie mit 
 <dependency>
     <groupId>com.microsoft.azure</groupId>
     <artifactId>spring-cloud-azure-appconfiguration-config-web</artifactId>
-    <version>1.2.2</version>
+    <version>1.2.7</version>
 </dependency>
 ```
 
-Speichern Sie die Datei, erstellen Sie die Anwendung, und führen Sie sie wie gewohnt aus.
+## <a name="run-and-test-the-app-locally"></a>Lokales Ausführen und Testen der App
+
+1. Erstellen Sie Ihre Spring Boot-Anwendung mit Maven, und führen Sie sie aus.
+
+    ```shell
+    mvn clean package
+    mvn spring-boot:run
+    ```
+
+1. Öffnen Sie ein neues Browserfenster, und navigieren Sie zur URL `http://localhost:8080`.  Die Nachricht für Ihren Schlüssel wird angezeigt. 
+
+    Sie können auch *curl* zum Testen Ihrer Anwendung verwenden. Beispiel: 
+    
+    ```cmd
+    curl -X GET http://localhost:8080/
+    ```
+
+1. Öffnen Sie zum Testen der dynamischen Konfiguration das Azure App Configuration-Portal, das Ihrer Anwendung zugeordnet ist. Wählen Sie den **Konfigurations-Explorer** aus, und aktualisieren Sie den Wert des angezeigten Schlüssels. Beispiel:
+    | Schlüssel | Wert |
+    |---|---|
+    | application/config.message | Hello - Updated |
+
+1. Aktualisieren Sie die Browserseite, um die neue Nachricht anzuzeigen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

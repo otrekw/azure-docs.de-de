@@ -1,24 +1,28 @@
 ---
 title: Aktivieren und Verwalten der Blobversionsverwaltung (Vorschau)
 titleSuffix: Azure Storage
-description: Erfahren Sie, wie Sie Blobversionsverwaltung im Azure-Portal und mit einer Azure Resource Manager-Vorlage aktivieren können.
+description: Hier erfahren Sie, wie Sie die Blobversionsverwaltung (Vorschau) im Azure-Portal oder mithilfe einer Azure Resource Manager-Vorlage aktivieren können.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 05/05/2020
+ms.date: 08/10/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 0e24bcb54fd26d4a3d983681b3348ef736b277cf
-ms.sourcegitcommit: d815163a1359f0df6ebfbfe985566d4951e38135
+ms.openlocfilehash: 85e8ccd03bd20ed9bb572d482dbc7a06b8af725c
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82884180"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067272"
 ---
-# <a name="enable-and-manage-blob-versioning"></a>Aktivieren und Verwalten von Blobversionsverwaltung
+# <a name="enable-and-manage-blob-versioning-preview"></a>Aktivieren und Verwalten der Blobversionsverwaltung (Vorschau)
 
-Sie können Blobversionsverwaltung (Vorschau) jederzeit für das Speicherkonto aktivieren oder deaktivieren, indem Sie das Azure-Portal oder eine Azure Resource Manager-Vorlage verwenden.
+Sie können Blob Storage-Versionsverwaltung (Vorschau) aktivieren, um frühere Versionen eines Objekts automatisch zu verwalten.  Wenn Blobversionsverwaltung aktiviert ist, können Sie eine frühere Version eines Blobs wiederherstellen, um Daten wiederherzustellen, wenn diese irrtümlich geändert oder gelöscht wurden.
+
+In diesem Artikel wird gezeigt, wie Sie die Blobversionsverwaltung für das Speicherkonto über das Azure-Portal oder mithilfe einer Azure Resource Manager-Vorlage aktivieren oder deaktivieren können.
+
+Sie müssen sich für die Vorschau registrieren, bevor Sie die Blobversionsverwaltung aktivieren können. Weitere Informationen zur Blobversionsverwaltung, einschließlich der erforderlichen Schritte zum Registrieren für die Vorschau, finden Sie unter [Blobversionsverwaltung (Vorschau)](versioning-overview.md).
 
 ## <a name="enable-blob-versioning"></a>Aktivieren der Blobversionsverwaltung
 
@@ -68,7 +72,7 @@ Weitere Informationen zum Bereitstellen von Ressourcen mit Vorlagen im Azure-Por
 
 ## <a name="modify-a-blob-to-trigger-a-new-version"></a>Ändern eines Blobs zum Auslösen einer neuen Version
 
-Im folgenden Codebeispiel wird veranschaulicht, wie Sie die Erstellung einer neuen Version mit der Azure Storage-Clientbibliothek für .NET Version 12 auslösen. Stellen Sie vor dem Ausführen dieses Beispiels sicher, dass Sie Versionsverwaltung für Ihr Speicherkonto aktiviert haben.
+Das folgende Codebeispiel zeigt, wie Sie die Erstellung einer neuen Version mit der Azure Storage-Clientbibliothek für .NET Version [12.5.0-preview.5](https://www.nuget.org/packages/Azure.Storage.Blobs/12.5.0-preview.5) oder höher auslösen. Stellen Sie vor dem Ausführen dieses Beispiels sicher, dass Sie Versionsverwaltung für Ihr Speicherkonto aktiviert haben.
 
 Im Beispiel wird ein Blockblob erstellt, und anschließend werden die Metadaten des Blobs aktualisiert. Durch Aktualisieren der Metadaten des Blobs wird die Erstellung einer neuen Version ausgelöst. Das Beispiel ruft die anfängliche Version und die aktuelle Version ab und zeigt, dass nur die aktuelle Version die Metadaten enthält.
 

@@ -1,26 +1,26 @@
 ---
-title: 'Konzepte: Zuordnungsvorlagen im Feature „IoT-Konnektor“ (Vorschauversion) in Azure API for FHIR'
-description: In diesem Artikel erfahren Sie, wie Sie in IoT-Konnektor zwei Arten von Zuordnungsvorlagen erstellen. Mit den Vorlagen für die Gerätezuordnung werden Gerätedaten in ein normalisiertes Schema transformiert. Mit den Vorlagen für die FHIR-Zuordnung wird eine normalisierte Nachricht in eine FHIR-basierte Observation-Ressource transformiert.
+title: 'Konzepte: Zuordnungsvorlagen im Feature „Azure IoT-Konnektor für FHIR“ (Vorschauversion) in Azure-API für FHIR'
+description: Hier erfahren Sie, wie Sie in Azure IoT-Konnektor für FHIR (Vorschauversion) zwei Typen von Zuordnungsvorlagen erstellen können. Mit den Vorlagen für die Gerätezuordnung werden Gerätedaten in ein normalisiertes Schema transformiert. Mit den Vorlagen für die FHIR-Zuordnung wird eine normalisierte Nachricht in eine FHIR-basierte Observation-Ressource transformiert.
 services: healthcare-apis
 author: ms-puneet-nagpal
 ms.service: healthcare-apis
 ms.subservice: iomt
 ms.topic: conceptual
-ms.date: 05/14/2020
+ms.date: 08/03/2020
 ms.author: punagpal
-ms.openlocfilehash: dadd14d4ca28f367eaa7fd07099514bf420af5af
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: da5eb43f8bc2fc8b4ac213f6ff90464de5995a47
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87095045"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87553646"
 ---
-# <a name="iot-connector-preview-mapping-templates"></a>IoT-Konnektor (Vorschauversion): Zuordnungsvorlagen
-In diesem Artikel erfahren Sie, wie Sie IoT-Konnektor mithilfe von Zuordnungsvorlagen konfigurieren.
+# <a name="azure-iot-connector-for-fhir-preview-mapping-templates"></a>Zuordnungsvorlagen von Azure IoT-Konnektor für FHIR (Vorschauversion)
+In diesem Artikel erfahren Sie, wie Sie Azure IoT-Konnektor für FHIR* mithilfe von Zuordnungsvorlagen konfigurieren können.
 
-IoT-Konnektor erfordert zwei Typen von JSON-basierten Zuordnungsvorlagen. Der erste heißt **Gerätezuordnung** und ist dafür zuständig, die an den Azure Event Hubs-Endpunkt `devicedata` gesendeten Gerätenutzlasten zuzuordnen. Mit dieser Art von Vorlage werden Typen, Gerätebezeichner, gemessene Zeitdaten sowie Messwerte extrahiert. Der zweite Typ ist die **FHIR-Zuordnung** und steuert die Zuordnung der FHIR-Ressourcen. Mit dieser Vorlagenart können Sie die Länge des Beobachtungszeitraums, den zum Speichern der Werte verwendeten FHIR-Datentyp sowie die Terminologiecodes konfigurieren. 
+Azure IoT-Konnektor für FHIR erfordert zwei Typen von JSON-basierten Zuordnungsvorlagen. Der erste heißt **Gerätezuordnung** und ist dafür zuständig, die an den Azure Event Hubs-Endpunkt `devicedata` gesendeten Gerätenutzlasten zuzuordnen. Mit dieser Art von Vorlage werden Typen, Gerätebezeichner, gemessene Zeitdaten sowie Messwerte extrahiert. Der zweite Typ ist die **FHIR-Zuordnung** und steuert die Zuordnung der FHIR-Ressourcen. Mit dieser Vorlagenart können Sie die Länge des Beobachtungszeitraums, den zum Speichern der Werte verwendeten FHIR-Datentyp sowie die Terminologiecodes konfigurieren. 
 
-Die Zuordnungsvorlagen werden auf Grundlage des Typs zu einem JSON-Dokument zusammengesetzt. Anschließend werden diese JSON-Dokumente über das Azure-Portal zu Ihrer IoT-Konnektor-Instanz hinzugefügt. Das Dokument für die Gerätezuordnung wird über die Seite **Configure Device mapping** (Gerätezuordnung konfigurieren) und das Dokument für die FHIR-Zuordnung über die Seite **Configure FHIR mapping** (FHIR-Zuordnung konfigurieren) hinzugefügt.
+Die Zuordnungsvorlagen werden auf Grundlage des Typs zu einem JSON-Dokument zusammengesetzt. Anschließend werden diese JSON-Dokumente über das Azure-Portal zu Ihrem Azure IoT-Konnektor für FHIR hinzugefügt. Das Dokument für die Gerätezuordnung wird über die Seite **Configure Device mapping** (Gerätezuordnung konfigurieren) und das Dokument für die FHIR-Zuordnung über die Seite **Configure FHIR mapping** (FHIR-Zuordnung konfigurieren) hinzugefügt.
 
 > [!NOTE]
 > Zuordnungsvorlagen werden in einem zugrunde liegenden Blobspeicher gespeichert und per Computeausführung daraus geladen. Nach dem Update sollten sie sofort wirksam werden. 
@@ -562,10 +562,11 @@ Stellt den FHIR-Datentyp [CodeableConcept](http://hl7.org/fhir/datatypes.html#Co
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Lesen Sie die häufig gestellten Fragen zu IoT-Konnektor.
+Lesen Sie häufig gestellte Fragen zu Azure IoT-Konnektor für FHIR (Vorschauversion).
 
 >[!div class="nextstepaction"]
->[FAQ zu IoT-Konnektor (Vorschauversion)](fhir-faq.md#iot-connector-preview)
+>[Azure IoT-Konnektor für FHIR – Häufig gestellte Fragen](fhir-faq.md#azure-iot-connector-for-fhir-preview)
 
+*Im Azure-Portal wird Azure IoT-Konnektor für FHIR als IoT-Konnektor (Vorschauversion) bezeichnet.
 
 FHIR ist ein eingetragenes Markenzeichen von HL7 und wird mit Erlaubnis von HL7 verwendet.

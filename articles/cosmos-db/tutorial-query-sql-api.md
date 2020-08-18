@@ -8,12 +8,12 @@ ms.custom: tutorial-develop, mvc
 ms.topic: tutorial
 ms.date: 11/05/2019
 ms.reviewer: sngun
-ms.openlocfilehash: e8d1498520ea0c59372ec4e1096b6f2b4bcf885f
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: 2a6033ef1d2b7dda04b1510d42fa49141e0b79b4
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85921130"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88135996"
 ---
 # <a name="tutorial-query-azure-cosmos-db-by-using-the-sql-api"></a>Tutorial: Abfragen von Azure Cosmos BD mithilfe der SQL-API
 
@@ -113,7 +113,7 @@ Im obigen Familienbeispieldokument gibt die folgende SQL-Abfrage die Dokumente z
 
 ## <a name="example-query-2"></a>Beispielabfrage 2
 
-Die nächste Abfrage gibt alle Vornamen von Kindern der Familie zurück, deren „ID“ `WakefieldFamily` entspricht, und zwar geordnet nach Schulklassen.
+Die nächste Abfrage gibt alle Vornamen von Kindern der Familie zurück, deren ID `WakefieldFamily` entspricht.
 
 **Abfrage**
 

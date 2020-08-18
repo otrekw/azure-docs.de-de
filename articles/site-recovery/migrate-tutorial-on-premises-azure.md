@@ -1,18 +1,17 @@
 ---
-title: Migrieren von lokalen Computern mit Azure Site Recovery
-description: In diesem Artikel wird erläutert, wie Sie lokale Computer mithilfe von Azure Site Recovery zu Azure migrieren.
-author: rayne-wiselman
+title: Migrieren von lokalen Computern mit Azure Migrate
+description: In diesem Artikel wird erläutert, wie Sie Computer zu Azure migrieren. Dazu wird Azure Migrate empfohlen.
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
 ms.date: 07/27/2020
 ms.author: raynew
-ms.openlocfilehash: 3c421845d4e15ef13ce98d0de111270159f564fe
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: e0e60ee346d20113b2ec7970390d9874522cc770
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285355"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87847311"
 ---
 # <a name="migrate-on-premises-machines-to-azure"></a>Migrieren von lokalen Computern zu Azure
 
@@ -20,7 +19,7 @@ In diesem Artikel werden die Optionen für die Migration lokaler Computer zu Azu
 
 ## <a name="migrate-with-azure-migrate"></a>Migrieren mit Azure Migrate
 
-Es wird empfohlen, den [Azure Migrate](../migrate/migrate-services-overview.md)-Dienst zu verwenden, um Computer zu Azure zu migrieren. Azure Migrate bietet einen zentralisierten Hub zum Bewerten und Migrieren von lokalen Computern zu Azure mithilfe von Azure Migrate, anderen Azure-Diensten und Tools von Drittanbietern.
+Es wird empfohlen, den [Azure Migrate](../migrate/migrate-services-overview.md)-Dienst zu verwenden, um Computer zu Azure zu migrieren. Azure Migrate ist speziell für die Servermigration konzipiert. Azure Migrate bietet einen zentralen Hub für die Ermittlung, Bewertung und Migration von lokalen Computern zu Azure.
 
 Nutzen Sie für die Migration mit Azure Migrate die folgenden Links:
 
@@ -43,6 +42,6 @@ Wenn Sie Azure Site Recovery bereits verwenden und weiterhin für die Migration 
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> Lesen Sie [häufig gestellte Fragen](../migrate/resources-faq.md) zu Azure Migrate.
+> [Lesen Sie Antworten auf gängige Fragen](../migrate/resources-faq.md) zu Azure Migrate.
 
   

@@ -3,12 +3,12 @@ title: Authentifizierungsoptionen für die Registrierung
 description: Hier erfahren Sie mehr über Authentifizierungsoptionen für eine private Azure-Containerregistrierung wie z. B. das Anmelden mit einer Azure Active Directory-Identität, mithilfe von Dienstprinzipalen sowie mittels optionalen Administratoranmeldeinformationen.
 ms.topic: article
 ms.date: 01/30/2020
-ms.openlocfilehash: 0d44a97e01eef709dff47342e4503d1e0263a225
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: 3d2379b2b2384342fb84ba1b610caa609300aa0c
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87760582"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926319"
 ---
 # <a name="authenticate-with-an-azure-container-registry"></a>Authentifizieren mit einer Azure-Containerregistrierung
 
@@ -44,7 +44,7 @@ Bei der Anmeldung mit `az acr login` verwendet die CLI das Token, das erstellt w
 
 Für den Zugriff auf die Registrierung ist das von `az acr login` verwendete Token **3 Stunden** lang gültig. Daher empfehlen wir Ihnen, sich immer bei der Registrierung anzumelden, bevor Sie einen `docker`-Befehl ausführen. Wenn das Token abgelaufen ist, können Sie es aktualisieren, indem Sie den `az acr login`-Befehl erneut zur Authentifizierung verwenden. 
 
-Die Verwendung von `az acr login` mit Azure-Identitäten ermöglicht [rollenbasierten Zugriff](../role-based-access-control/role-assignments-portal.md). In einigen Szenarien können Sie sich bei einer Registrierung mit Ihrer eigenen individuellen Identität in Azure AD anmelden, oder Sie konfigurieren andere Azure-Benutzer mit spezifischen [RBAC-Rollen und Berechtigungen](container-registry-roles.md). Bei dienstübergreifenden Szenarios oder zum Erfüllen der Anforderungen einer Arbeitsgruppe oder eines Entwicklungsworkflows, für die Sie den Zugriff nicht individuell verwalten möchten, können Sie sich auch mit einer [verwalteten Identität für Azure-Ressourcen anmelden](container-registry-authentication-managed-identity.md).
+Die Verwendung von `az acr login` mit Azure-Identitäten ermöglicht [rollenbasierte Zugriffssteuerung in Azure (Azure RBAC)](../role-based-access-control/role-assignments-portal.md). In einigen Szenarien können Sie sich bei einer Registrierung mit Ihrer eigenen individuellen Identität in Azure AD anmelden, oder Sie konfigurieren andere Azure-Benutzer mit spezifischen [Azure-Rollen und Berechtigungen](container-registry-roles.md). Bei dienstübergreifenden Szenarios oder zum Erfüllen der Anforderungen einer Arbeitsgruppe oder eines Entwicklungsworkflows, für die Sie den Zugriff nicht individuell verwalten möchten, können Sie sich auch mit einer [verwalteten Identität für Azure-Ressourcen anmelden](container-registry-authentication-managed-identity.md).
 
 ### <a name="az-acr-login-with---expose-token"></a>„az acr login“ mit „--expose-token“
 
@@ -73,7 +73,7 @@ docker login myregistry.azurecr.io --username 00000000-0000-0000-0000-0000000000
 
 ## <a name="service-principal"></a>Dienstprinzipal
 
-Wenn Sie Ihrer Registrierung einen [Dienstprinzipal](../active-directory/develop/app-objects-and-service-principals.md) zuweisen, kann Ihre Anwendung oder Ihr Dienst diesen für die monitorlose Authentifizierung verwenden. Dienstprinzipale ermöglichen [rollenbasierten Zugriff](../role-based-access-control/role-assignments-portal.md) auf eine Registrierung, und Sie können einer Registrierung mehrere Dienstprinzipale zuweisen. Mit mehreren Dienstprinzipalen können Sie unterschiedliche Zugriffsberechtigungen für verschiedene Anwendungen definieren.
+Wenn Sie Ihrer Registrierung einen [Dienstprinzipal](../active-directory/develop/app-objects-and-service-principals.md) zuweisen, kann Ihre Anwendung oder Ihr Dienst diesen für die monitorlose Authentifizierung verwenden. Dienstprinzipale ermöglichen [rollenbasierte Zugriffssteuerung in Azure (Azure RBAC)](../role-based-access-control/role-assignments-portal.md) für eine Registrierung, und Sie können einer Registrierung mehrere Dienstprinzipale zuweisen. Mit mehreren Dienstprinzipalen können Sie unterschiedliche Zugriffsberechtigungen für verschiedene Anwendungen definieren.
 
 Die folgenden Rollen für eine Containerregistrierung sind verfügbar:
 

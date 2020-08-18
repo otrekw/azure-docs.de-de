@@ -1,6 +1,6 @@
 ---
 title: Tutorial zum Übertragen von Daten an Freigaben mit Azure Stack Edge | Microsoft-Dokumentation
-description: Hier erfahren Sie, wie Sie Freigaben auf einem Azure Stack Edge-Gerät hinzufügen und eine Verbindung mit diesen Freigaben herstellen.
+description: In diesem Tutorial erfahren Sie, wie Sie Ihrem Azure Stack Edge-Gerät Freigaben hinzufügen und eine Verbindung damit herstellen, damit Azure Stack Edge Daten in Azure übertragen kann.
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/21/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to add and connect to shares on Azure Stack Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: e62d746be92583abead1c3edb93900068b123838
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: fc47497eeceff20e8357195226c2d44cea64fa88
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82565098"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926109"
 ---
 # <a name="tutorial-transfer-data-with-azure-stack-edge"></a>Tutorial: Übertragen von Daten mit Azure Stack Edge
 

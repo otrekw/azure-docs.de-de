@@ -1,6 +1,6 @@
 ---
 title: 'Tutorial: Ermitteln mehrerer Routen nach Fortbewegungsmittel | Microsoft Azure Maps'
-description: In diesem Tutorial erfahren Sie, wie Sie mithilfe von Microsoft Azure Maps Routen für verschiedene Fortbewegungsmittel finden.
+description: Hier wird erläutert, wie Sie mithilfe von Azure Maps Routen zu Points of Interest für bestimmte Fortbewegungsarten ermitteln. Sie erfahren, wie Sie mehrere Routen auf Karten anzeigen.
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 01/14/2020
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc, devx-track-javascript
-ms.openlocfilehash: 0cb3c1eadae426cef59b7aad8821343c23e76d79
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 7d17b9474edef245f7db16f33c72d722f356f712
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289532"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037591"
 ---
 # <a name="tutorial-find-routes-for-different-modes-of-travel-using-azure-maps"></a>Tutorial: Ermitteln von Routen für verschiedene Fortbewegungsarten per Azure Maps
 

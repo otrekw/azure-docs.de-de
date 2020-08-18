@@ -5,15 +5,15 @@ author: ramonarguelles
 manager: vriveras
 services: azure-spatial-anchors
 ms.author: rgarcia
-ms.date: 02/24/2019
+ms.date: 07/31/2020
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 71b3027d86400d6921895f86e257ddff2961f91f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 8ff431c27dd53e82f9003b658c82ceb3efb5d320
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77615150"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87810019"
 ---
 # <a name="tutorial-sharing-azure-spatial-anchors-across-sessions-and-devices-with-an-azure-cosmos-db-back-end"></a>Tutorial: Sitzungs- und geräteübergreifendes Freigeben von Azure Spatial Anchors mit einem Azure Cosmos DB-Back-End
 
@@ -21,7 +21,7 @@ Dieses Tutorial ist eine Fortsetzung des Tutorials [Sitzungs- und geräteübergr
 
 ![GIF zur Veranschaulichung der Objektpersistenz](./media/persistence.gif)
 
-Beachten Sie Folgendes: Sie verwenden in diesem Tutorial zwar Unity und Azure Cosmos DB, aber dies dient nur als Beispiel für die geräteübergreifende Freigabe von Spatial Anchors-Bezeichnern. Sie können auch andere Sprachen und Back-End-Technologien verwenden, um dieses Ziel zu erreichen. Darüber hinaus setzt die in diesem Tutorial verwendete ASP.NET Core-Web-App .NET Core 2.2 SDK voraus. Es lässt sich problemlos auf Web-Apps für Windows ausführen, aber derzeit nicht auf Web-Apps für Linux.
+Beachten Sie Folgendes: Sie verwenden in diesem Tutorial zwar Unity und Azure Cosmos DB, aber dies dient nur als Beispiel für die geräteübergreifende Freigabe von Spatial Anchors-Bezeichnern. Sie können auch andere Sprachen und Back-End-Technologien verwenden, um dieses Ziel zu erreichen.
 
 ## <a name="create-a-database-account"></a>Erstellen eines Datenbankkontos
 
@@ -42,14 +42,6 @@ Suchen Sie oben in der Datei nach `#define INMEMORY_DEMO`, und kommentieren Sie 
 Suchen Sie nach der `StorageConnectionString`-Eigenschaft, und legen Sie den Wert auf den `Connection String`-Text fest, den Sie im Schritt [Erstellen eines Datenbankkontos](#create-a-database-account) kopiert haben. Speichern Sie die Datei .
 
 Sie können den Freigabedienst erneut veröffentlichen und die Beispiel-App ausführen.
-
-## <a name="troubleshooting"></a>Problembehandlung
-
-### <a name="unity-20193"></a>Unity 2019.3
-
-Aufgrund von „Breaking Changes“ wird Unity 2019.3 derzeit nicht unterstützt. Verwenden Sie Unity 2019.1 oder 2019.2.
-
-[!INCLUDE [Clean-up section](../../../includes/clean-up-section-portal.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
 

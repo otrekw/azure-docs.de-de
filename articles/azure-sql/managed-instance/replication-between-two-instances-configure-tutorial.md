@@ -12,29 +12,37 @@ author: MashaMSFT
 ms.author: ferno
 ms.reviewer: mathoma
 ms.date: 04/28/2020
-ms.openlocfilehash: ac701b70a9db860e2f839ab30fb575133703c142
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 114d4f41ad48af3d1e585fcb01eb0794a8e349b5
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708474"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87920108"
 ---
 # <a name="tutorial-configure-replication-between-two-managed-instances"></a>Tutorial: Konfigurieren der Replikation zwischen zwei verwalteten Instanzen
 
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-Mithilfe der Transaktionsreplikation können Sie Daten von einer Datenbank auf eine andere replizieren, die entweder auf SQL Server oder [Azure SQL Managed Instance](sql-managed-instance-paas-overview.md) (öffentliche Vorschau) gehostet wird. SQL Managed Instance kann in der Replikationstopologie ein Verleger, Verteiler oder Abonnent sein. Unter [Konfigurationen für die Transaktionsreplikation](replication-transactional-overview.md#common-configurations) finden Sie die verfügbaren Konfigurationen.
+Mithilfe der Transaktionsreplikation können Sie Daten von einer Datenbank auf eine andere replizieren, die auf SQL Server oder [Azure SQL Managed Instance](sql-managed-instance-paas-overview.md) gehostet wird. SQL Managed Instance kann in der Replikationstopologie ein Verleger, Verteiler oder Abonnent sein. Unter [Konfigurationen für die Transaktionsreplikation](replication-transactional-overview.md#common-configurations) finden Sie die verfügbaren Konfigurationen. 
 
-> [!NOTE]
-> In diesem Artikel wird die Verwendung der [Transaktionsreplikation](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication) in einer verwalteten SQL-Datenbank-Instanz beschrieben. Sie steht nicht im Zusammenhang mit [Failovergruppen](https://docs.microsoft.com/azure/sql-database/sql-database-auto-failover-group). Dieses verwaltete Azure SQL Managed Instance-Feature ermöglicht das Erstellen vollständiger Lesereplikate einzelner Instanzen.
+Die Transaktionsreplikation befindet sich zurzeit in der öffentlichen Vorschau für SQL Managed Instance. 
 
-In diesem Tutorial erfahren Sie, wie Sie eine verwaltete Instanz als Verleger und Verteiler und dann eine zweite verwaltete Instanz als Abonnent konfigurieren.  
+In diesem Tutorial lernen Sie Folgendes:
+
+> [!div class="checklist"]
+>
+> - Konfigurieren einer verwalteten Instanz als Replikationsverleger und -verteiler.
+> - Konfigurieren einer verwalteten Instanz als Replikationsverteiler.
 
 ![Replikation zwischen zwei verwalteten Instanzen](./media/replication-between-two-instances-configure-tutorial/sqlmi-sqlmi-repl.png)
 
-  > [!NOTE]
-  > - Dieser Artikel soll einen fortgeschrittenen Benutzer durch die End-to-End-Konfiguration einer Replikation bei einer SQL Managed Instance führen, beginnend mit dem Erstellen der Ressourcengruppe. Wenn Sie verwaltete Instanzen schon bereitgestellt haben, fahren Sie mit [Schritt 4](#4---create-a-publisher-database) fort, um Ihre Verlegerdatenbank zu erstellen, oder mit [Schritt 6](#6---configure-distribution) fort, wenn Sie bereits eine Verleger- oder Abonnentendatenbank haben und mit dem Konfigurieren der Replikation beginnen möchten.  
-  > - In diesem Artikel werden der Verleger und der Verteiler für dieselbe verwaltete Instanz konfiguriert. Informationen zum Platzieren des Verteilers auf einer separaten verwalteten Instanz finden Sie im Tutorial [Konfigurieren der Transaktionsreplikation zwischen verwalteten Azure SQL-Instanzen und SQL Server](replication-two-instances-and-sql-server-configure-tutorial.md). 
+Dieses Tutorial ist für erfahrene Benutzer bestimmt. Es wird vorausgesetzt, dass sich Benutzer sowohl für verwaltete Instanzen als auch für SQL Server-VMs in Azure mit der Bereitstellung und Verbindungsherstellung auskennen. 
+
+
+> [!NOTE]
+> - In diesem Artikel wird die Verwendung der [Transaktionsreplikation](/sql/relational-databases/replication/transactional/transactional-replication) in einer verwalteten SQL-Datenbank-Instanz beschrieben. Sie steht nicht im Zusammenhang mit [Failovergruppen](../database/auto-failover-group-overview.md). Dieses verwaltete Azure SQL Managed Instance-Feature ermöglicht das Erstellen vollständiger Lesereplikate einzelner Instanzen. Beim Konfigurieren der [Transaktionsreplikation mit Failovergruppen](replication-transactional-overview.md#with-failover-groups) sind weitere Aspekte zu berücksichtigen.
+
+
 
 ## <a name="requirements"></a>Requirements (Anforderungen)
 

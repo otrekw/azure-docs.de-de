@@ -138,6 +138,8 @@
           href: move-region.md
 - name: Verweis
   items:
+    - name: Clientbibliotheken
+      href: client-libraries.md
     - name: 'REST-API-Fehlercodes: Azure Key Vault'
       href: rest-error-codes.md
     - name: Allgemeine Parameter und Header
@@ -146,7 +148,7 @@
       href: versions.md
     - name: Azure PowerShell
       href: /powershell/module/az.keyvault/?view=azps-1.2.0#key_vault
-    - name: Azure CLI
+    - name: Azure-Befehlszeilenschnittstelle
       href: /cli/azure/keyvault
     - name: .NET
       href: /dotnet/api/overview/azure/keyvault/management?view=azure-dotnet

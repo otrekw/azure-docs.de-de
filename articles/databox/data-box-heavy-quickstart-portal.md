@@ -1,6 +1,6 @@
 ---
 title: Schnellstart für Microsoft Azure Data Box Heavy | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie die Azure Data Box Heavy über das Azure-Portal schnell bereitstellen.
+description: In dieser Schnellstartanleitung erfahren Sie, wie Sie Azure Data Box Heavy mithilfe des Azure-Portals bereitstellen, und erhalten Informationen zum Verkabeln, Konfigurieren und Kopieren von Daten für den Upload in Azure.
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 9d007f4fa8721214a7c97595fa297ef44199119f
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 5a0a040d80911b086561213bd0884ed67545c618
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83199126"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87920788"
 ---
 ::: zone target = "docs"
 

@@ -1,6 +1,6 @@
 ---
-title: Senden von Azure Blob Storage-Ereignissen an einen Webendpunkt – PowerShell | Microsoft-Dokumentation
-description: Abonnieren Sie Blob Storage-Ereignisse mit Azure Event Grid.
+title: Senden von Azure Blob Storage-Ereignissen an einen Webendpunkt – PowerShell | Microsoft-Dokumentation
+description: Mithilfe von Azure Event Grid können Sie Blob Storage-Ereignisse abonnieren, ein Ereignis auslösen und das Ergebnis anzeigen. Mithilfe von Azure PowerShell können Sie Speicherereignisse an einen Webendpunkt weiterleiten.
 author: normesta
 ms.author: normesta
 ms.reviewer: dastanfo
@@ -8,12 +8,12 @@ ms.date: 08/23/2018
 ms.topic: article
 ms.service: storage
 ms.subservice: blobs
-ms.openlocfilehash: f0dae5ae79234ea29e6b17627fc07abcb3b5dfcb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 809ab593d4d3f58fa3c91b896e5df3a0db7865f9
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "68847156"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87824510"
 ---
 # <a name="quickstart-route-storage-events-to-web-endpoint-with-powershell"></a>Schnellstart: Weiterleiten von Speicherereignissen an einen Webendpunkt per PowerShell
 
@@ -58,7 +58,7 @@ $resourceGroup = "gridResourceGroup"
 New-AzResourceGroup -Name $resourceGroup -Location $location
 ```
 
-## <a name="create-a-storage-account"></a>Speicherkonto erstellen
+## <a name="create-a-storage-account"></a>Erstellen eines Speicherkontos
 
 Blob Storage-Ereignisse stehen in Speicherkonten vom Typ „Allgemein v2“ und in Blob Storage-Konten zur Verfügung. Speicherkonten vom Typ **Allgemein v2** unterstützen alle Features für alle Speicherdienste – einschließlich Blobs, Dateien, Warteschlangen und Tabellen. **Blob Storage-Konten** sind spezielle Speicherkonten und dienen dazu, unstrukturierte Daten als Blobs (Objekte) in Azure Storage zu speichern. BLOB-Speicherkonten sind wie allgemeine Speicherkonten und besitzen die gleichen Haltbarkeits-, Verfügbarkeits-, Skalierbarkeits- und Leistungseigenschaften, die Sie schon heute verwenden – einschließlich vollständiger API-Konsistenz für Blockblobs und Anfügeblobs. Weitere Informationen finden Sie unter [Azure-Speicherkonto – Übersicht](../common/storage-account-overview.md).
 

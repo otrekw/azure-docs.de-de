@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 10/25/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: be490c5ec11ab4bafcd68731a535483d1803a8c7
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 0dd0b86a11c7060040f8734c0102252f18d9f114
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86146424"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87987170"
 ---
 # <a name="add-a-tlsssl-certificate-in-azure-app-service"></a>Hinzufügen eines TLS-/SSL-Zertifikats in Azure App Service
 
@@ -64,6 +64,7 @@ Das von App Service verwaltete kostenlose Zertifikat ist eine vorgefertigte Lös
 - Platzhalterzertifikate werden nicht unterstützt.
 - Es unterstützt keine „nackten“ Domänen.
 - Es kann nicht exportiert werden.
+- Es wird in einer App Service-Umgebung (App Service Environment, ASE) nicht unterstützt.
 - A-Einträge werden nicht unterstützt. Beispielsweise funktioniert die automatische Verlängerung für A-Einträge nicht.
 
 > [!NOTE]

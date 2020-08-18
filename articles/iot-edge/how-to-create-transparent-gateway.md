@@ -4,19 +4,19 @@ description: Verwenden eines Azure IoT Edge-Geräts als transparentes Gateway, d
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 06/02/2020
+ms.date: 08/12/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 0155294777e1d732e5ff3874102b90049d9a123d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cf7147ca1295c9f2cef5d89c232f2c266075e362
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84782584"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88167401"
 ---
 # <a name="configure-an-iot-edge-device-to-act-as-a-transparent-gateway"></a>Konfigurieren eines IoT Edge-Geräts als transparentes Gateway
 
@@ -93,15 +93,19 @@ In Produktionsszenarios sollten diese Dateien mit ihrer eigenen Zertifizierungss
    * Windows: `Restart-Service iotedge`
    * Linux: `sudo systemctl restart iotedge`
 
-## <a name="deploy-edgehub-to-the-gateway"></a>Bereitstellen von Edge Hub für das Gateway
+## <a name="deploy-edgehub-and-route-messages"></a>Bereitstellen von edgeHub und Weiterleiten von Nachrichten
 
-Wenn Sie IoT Edge zum ersten Mal auf einem Gerät installieren, startet nur ein Systemmodul automatisch: der IoT Edge-Agent. Nachdem Sie die erste Bereitstellung für ein Gerät erstellt haben, wird das zweite Systemmodul (der IoT Edge-Hub), ebenfalls gestartet.
+Nachgeschaltete Geräte senden Telemetriedaten und Nachrichten an das Gatewaygerät, wobei das Modul „IoT Edge-Hub“ für das Routing der Informationen an andere Module oder IoT Hub zuständig ist. Sorgen Sie für Folgendes, um Ihr Gatewaygerät für diese Funktion vorzubereiten:
 
-Der IoT Edge-Hub ist für den Empfang der eingehenden Nachrichten von nachgeschalteten Geräten und deren Weiterleitung an das nächste Ziel zuständig. Wenn das Modul **edgeHub** auf Ihrem Gerät nicht ausgeführt wird, erstellen Sie eine erste Bereitstellung für das Gerät. Die Bereitstellung sieht leer aus, weil Sie keine Module hinzufügen. Sie stellt jedoch sicher, dass beide Systemmodule ausgeführt werden.
+* Das Modul „IoT Edge-Hub“ wird auf dem Gerät bereitgestellt.
 
-Sie können überprüfen, welche Module auf einem Gerät ausgeführt werden, indem Sie dessen Details im Azure-Portal überprüfen, den Gerätestatus in Visual Studio oder Visual Studio Code anzeigen oder den Befehl `iotedge list` auf dem Gerät selbst ausführen.
+  Wenn Sie IoT Edge zum ersten Mal auf einem Gerät installieren, startet nur ein Systemmodul automatisch: der IoT Edge-Agent. Nachdem Sie die erste Bereitstellung für ein Gerät erstellt haben, wird das zweite Systemmodul, der IoT Edge-Hub, ebenfalls gestartet. Wenn das Modul **edgeHub** auf Ihrem Gerät nicht ausgeführt wird, erstellen Sie eine Bereitstellung für das Gerät.
 
-Wenn das Modul **edgeAgent** ohne das Modul **edgeHub** ausgeführt wird, führen Sie die folgenden Schritte aus:
+* Für das Modul „IoT Edge-Hub“ wurden Routen zur Verarbeitung eingehender Nachrichten von nachgeschalteten Geräten eingerichtet.
+
+  Für das Gatewaygerät muss eine Route vorhanden sein, damit Nachrichten von nachgeschalteten Geräten verarbeitet werden können. Andernfalls ist eine Verarbeitung nicht möglich. Sie können die Nachrichten an Module auf dem Gatewaygerät oder direkt an IoT Hub senden.
+
+Führen Sie die folgenden Schritte aus, um das Modul „IoT Edge-Hub“ bereitzustellen und mit Routen zur Verarbeitung eingehender Nachrichten von nachgeschalteten Geräten zu konfigurieren:
 
 1. Navigieren Sie im Azure-Portal zu Ihrem IoT Hub.
 
@@ -109,13 +113,27 @@ Wenn das Modul **edgeAgent** ohne das Modul **edgeHub** ausgeführt wird, führe
 
 3. Wählen Sie **Module festlegen** aus.
 
-4. Klicken Sie auf **Weiter: Routen**.
+4. Auf der Seite **Module** können Sie alle Module hinzufügen, die Sie auf dem Gatewaygerät bereitstellen möchten. Für den Zweck dieses Artikels konzentrieren wir uns auf die Konfiguration und Bereitstellung des Moduls „edgeHub“, das auf dieser Seite nicht explizit festgelegt werden muss.
 
-5. Auf der Seite **Routen** sollten Sie über eine Standardroute verfügen, die alle Nachrichten sendet, unabhängig davon, ob sie von einem Modul oder von einem nachgeschaltetem Gerät an IoT Hub stammen. Andernfalls fügen Sie eine neue Route mit den folgenden Werten hinzu, und wählen Sie dann **Überprüfen + erstellen**:
-   * **Name**: `route`
-   * **Wert**: `FROM /messages/* INTO $upstream`
+5. Klicken Sie auf **Weiter: Routen**.
 
-6. Wählen Sie auf der Seite **Überprüfen + erstellen** die Option **Erstellen** aus.
+6. Stellen Sie auf der Seite **Routen** sicher, dass es eine Route zum Verarbeiten von Nachrichten von nachgeschalteten Geräten gibt. Beispiel:
+
+   * Eine Route, die alle Nachrichten – ganz gleich, ob von einem Modul oder einem nachgeschalteten Gerät – an IoT Hub sendet:
+       * **Name**: `allMessagesToHub`
+       * **Wert**: `FROM /messages/* INTO $upstream`
+
+   * Eine Route, die sämtliche Nachrichten von allen nachgeschalteten Geräten an IoT Hub sendet:
+      * **Name**: `allDownstreamToHub`
+      * **Wert**: `FROM /messages/* WHERE NOT IS_DEFINED ($connectionModuleId) INTO $upstream`
+
+      Diese Route funktioniert, weil Nachrichten von nachgeschalteten Geräten – im Gegensatz zu Nachrichten von IoT Edge Modulen – keine Modul-ID zugeordnet ist. Mithilfe der **WHERE**-Klausel der Route können alle Nachrichten mit dieser Systemeigenschaft herausgefiltert werden.
+
+      Weitere Informationen zum Routing von Nachrichten finden Sie unter [Bereitstellen von Modulen und Einrichten von Routen](./module-composition.md#declare-routes).
+
+7. Nachdem Ihre Route(n) erstellt wurde(n), wählen Sie **Überprüfen + erstellen** aus.
+
+8. Wählen Sie auf der Seite **Überprüfen + erstellen** die Option **Erstellen** aus.
 
 ## <a name="open-ports-on-gateway-device"></a>Öffnen von Ports auf dem Gatewaygerät
 
@@ -128,25 +146,6 @@ Damit ein Gatewayszenario funktioniert, muss mindestens eines der unterstützten
 | 8883 | MQTT |
 | 5671 | AMQP |
 | 443 | HTTPS <br> MQTT+WS <br> AMQP+WS |
-
-## <a name="route-messages-from-downstream-devices"></a>Weiterleiten von Nachrichten von nachgeschalteten Geräten
-
-Die IoT Edge-Runtime kann Nachrichten für nachgeschaltete Geräte genau wie Nachrichten von Modulen weiterleiten. Dieses Features ermöglicht es Ihnen, die Analyse in einem auf dem Gateway ausgeführten Modul durchzuführen, bevor Daten an die Cloud gesendet werden.
-
-Zurzeit werden von nachgeschalteten Geräten gesendete Nachrichten weitergeleitet, indem sie von den von Modulen gesendeten Nachrichten unterschieden werden. Im Gegensatz zu Nachrichten, die von nachgeschalteten Geräten gesendet werden, enthalten von Modulen gesendete Nachrichten eine Systemeigenschaft namens **connectionModuleId**. Sie können die WHERE-Klausel der Route verwenden, um Nachrichten mit dieser Systemeigenschaft auszuschließen.
-
-Die unten gezeigte Route ist ein Beispiel, bei dem die Nachrichten von einem beliebigen nachgeschalteten Gerät an das Modul `ai_insights` und dann von `ai_insights` an IoT Hub gesendet werden.
-
-```json
-{
-    "routes":{
-        "sensorToAIInsightsInput1":"FROM /messages/* WHERE NOT IS_DEFINED($connectionModuleId) INTO BrokeredEndpoint(\"/modules/ai_insights/inputs/input1\")",
-        "AIInsightsToIoTHub":"FROM /messages/modules/ai_insights/outputs/output1 INTO $upstream"
-    }
-}
-```
-
-Weitere Informationen zum Routing von Nachrichten finden Sie unter [Bereitstellen von Modulen und Einrichten von Routen](./module-composition.md#declare-routes).
 
 ## <a name="enable-extended-offline-operation"></a>Aktivieren des erweiterten Offlinebetriebs
 

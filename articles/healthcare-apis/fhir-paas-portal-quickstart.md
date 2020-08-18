@@ -2,18 +2,18 @@
 title: 'Schnellstart: Bereitstellen von Azure API for FHIR mithilfe des Azure-Portals'
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie mithilfe des Azure-Portals Azure API for FHIR bereitstellen und Einstellungen konfigurieren.
 services: healthcare-apis
-author: hansenms
+author: matjazl
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: quickstart
-ms.date: 02/07/2019
-ms.author: mihansen
-ms.openlocfilehash: e729597e9d83c4e6096fe52b577b052d94ca4799
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.date: 03/15/2020
+ms.author: matjazl
+ms.openlocfilehash: 8c0448d31cd89e2ca969b81361b30bac3f9610e9
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "84820019"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87851935"
 ---
 # <a name="quickstart-deploy-azure-api-for-fhir-using-azure-portal"></a>Schnellstart: Bereitstellen von Azure API for FHIR mithilfe des Azure-Portals
 
@@ -31,34 +31,31 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 Sie können nach Azure API for FHIR suchen, indem Sie „FHIR“ ins Suchfeld eingeben:
 
-![Suchen nach APIs für das Gesundheitswesen](media/quickstart-paas-portal/portal-search-healthcare-apis.png)
+:::image type="content" source="media/quickstart-paas-portal/portal-search-healthcare-apis.png" alt-text="Suchen nach APIs für das Gesundheitswesen":::
 
 ## <a name="create-azure-api-for-fhir-account"></a>Erstellen eines Azure API for FHIR-Kontos
 
 Wählen Sie **Erstellen** aus, um ein neues Azure API for FHIR-Konto zu erstellen:
 
-![Erstellen eines Azure API for FHIR-Kontos](media/quickstart-paas-portal/portal-create-healthcare-apis.png)
+:::image type="content" source="media/quickstart-paas-portal/portal-create-healthcare-apis.png" alt-text="Erstellen eines Azure API for FHIR-Kontos":::
 
 ## <a name="enter-account-details"></a>Eingeben der Kontodetails
 
 Wählen Sie eine vorhandene Ressourcengruppe aus, oder erstellen Sie eine neue Ressourcengruppe, wählen Sie einen Namen für das Konto aus, und klicken Sie abschließend auf **Überprüfen + erstellen**:
 
-![Details der neuen API für das Gesundheitswesen](media/quickstart-paas-portal/portal-new-healthcareapi-details.png)
+:::image type="content" source="media/quickstart-paas-portal/portal-new-healthcareapi-details.png" alt-text="Details der neuen API für das Gesundheitswesen":::
 
 Bestätigen Sie die Erstellung, und warten Sie auf die Bereitstellung der FHIR-API.
 
-## <a name="additional-settings"></a>Zusätzliche Einstellungen
+## <a name="additional-settings-optional"></a>Zusätzliche Einstellungen (optional)
 
-Klicken Sie auf **Weiter: Zusätzliche Einstellungen**, um die Autorität, die Zielgruppe und die Identitätsobjekt-IDs zu konfigurieren, für die der Zugriff auf diese Azure API for FHIR-Instanz zugelassen werden soll. So können Sie bei Bedarf SMART in FHIR aktivieren und den Datenbankdurchsatz konfigurieren:
+Sie können auch auf **Weiter: Zusätzliche Einstellungen** klicken, um die Authentifizierungseinstellungen anzuzeigen. In der Standardkonfiguration für Azure API for FHIR [werden Datenebenenrollen mithilfe von Azure RBAC zugewiesen](configure-azure-rbac.md). In diesem Modus wird die Autorität für den FHIR-Dienst auf den Azure Active Directory-Mandanten des Abonnements festgelegt:
 
-- **Autorität:** Sie können einen anderen Azure AD-Mandanten als Authentifizierungsautorität für den Dienst angeben als den, bei dem Sie angemeldet sind.
-- **Audience:** Es wird empfohlen, die Zielgruppe auf die URL des FHIR-Servers festzulegen (Standardeinstellung). Sie können diese Einstellung hier ändern. Die Zielgruppe gibt den Empfänger an, für den das Token vorgesehen ist. In diesem Kontext sollte sie auf einen Wert festgelegt werden, der die FHIR-API selbst darstellt.
-- **Zulässige Objekt-IDs**: Sie können Identitätsobjekt-IDs angeben, für die der Zugriff auf diese Azure API for FHIR-Instanz zugelassen werden sollte. Weitere Informationen zum Ermitteln der Objekt-ID für Benutzer und Dienstprinzipale finden Sie in der Schrittanleitung [Ermitteln von Identitätsobjekt-IDs](find-identity-object-ids.md).  
-- **SMART on FHIR-Proxy**: Sie können den SMART on FHIR-Proxy aktivieren. Ausführliche Informationen zum Konfigurieren des SMART on FHIR-Proxys finden Sie unter [Tutorial: SMART on FHIR-Proxy für Azure Active Directory](https://docs.microsoft.com/azure/healthcare-apis/use-smart-on-fhir-proxy).  
-- **Bereitgestellter Durchsatz (RU/s)** : Hier können Sie Durchsatzeinstellungen für die zugrunde liegende Datenbank für Ihre Azure API for FHIR-Instanz angeben. Sie können diese Einstellung später auf dem Blatt „Datenbank“ ändern. Weitere Informationen finden Sie auf der Seite [Konfigurieren der Datenbankeinstellungen](configure-database.md).
+:::image type="content" source="media/rbac/confirm-azure-rbac-mode-create.png" alt-text="Standard-Authentifizierungseinstellungen":::
 
+Beachten Sie, dass das Feld für die Eingabe zulässiger Objekt-IDs abgeblendet ist, da in diesem Fall Azure RBAC verwendet wird, um Rollenzuweisungen zu konfigurieren.
 
-![Konfigurieren zulässiger Objekt-IDs](media/quickstart-paas-portal/configure-audience.png)
+Wenn Sie den FHIR-Dienst für die Verwendung eines externen oder sekundären Azure Active Directory-Mandanten konfigurieren möchten, können Sie die Autorität ändern und Objekt-IDs für Benutzer und Gruppen eingeben, denen Zugriff auf den Server gewährt werden soll. Weitere Informationen finden Sie unter [Konfigurieren der lokalen RBAC für FHIR](configure-local-rbac.md).
 
 ## <a name="fetch-fhir-api-capability-statement"></a>Abrufen der FHIR-API-Funktionsbestätigung
 

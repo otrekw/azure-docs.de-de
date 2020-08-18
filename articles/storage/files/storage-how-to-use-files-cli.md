@@ -1,6 +1,6 @@
 ---
 title: 'Schnellstart: Verwalten von Azure-Dateifreigaben mit der Azure CLI'
-description: In dieser Schnellstartanleitung wird beschrieben, wie Sie Azure Files mit der Azure CLI verwalten.
+description: In dieser Schnellstartanleitung wird beschrieben, wie Sie Azure Files mit der Azure CLI verwalten. Erstellen Sie eine Ressourcengruppe und ein Speicherkonto, und erstellen und verwenden Sie anschließend eine Azure-Dateifreigabe.
 author: roygara
 ms.service: storage
 ms.topic: quickstart
@@ -8,12 +8,12 @@ ms.date: 10/26/2018
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 0d9d0bad982a12e3b96bdbe4f680f2501b33ec67
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 149481f9cae535fa53f94a876e1f52e813b3838b
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87495774"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88034579"
 ---
 # <a name="quickstart-create-and-manage-azure-file-shares-using-azure-cli"></a>Schnellstart: Erstellen und Verwalten von Azure-Dateifreigaben mit der Azure CLI
 In dieser Anleitung werden die Grundlagen der Verwendung von [Azure-Dateifreigaben](storage-files-introduction.md) mit der Azure CLI Schritt für Schritt beschrieben. Azure-Dateifreigaben sind genau wie andere Dateifreigaben, werden jedoch in der Cloud gespeichert und von der Azure-Plattform unterstützt. Azure-Dateifreigaben unterstützen das SMB-Protokoll nach Industriestandard und ermöglichen es, Dateien für mehrere Computer, Anwendungen und Instanzen freizugeben. 
@@ -41,7 +41,7 @@ az group create \
     --output none
 ```
 
-## <a name="create-a-storage-account"></a>Speicherkonto erstellen
+## <a name="create-a-storage-account"></a>Erstellen eines Speicherkontos
 Ein Speicherkonto ist ein gemeinsam genutzter Pool mit Speicherplatz, den Sie zum Bereitstellen von Azure-Dateifreigaben oder anderen Speicherressourcen wie Blobs oder Warteschlangen verwenden können. Ein Speicherkonto kann eine unbegrenzte Anzahl von Dateifreigaben enthalten. Auf einer Freigabe kann eine unbegrenzte Anzahl von Dateien gespeichert werden, bis die Kapazitätsgrenzen des Speicherkontos erreicht sind.
 
 Im folgenden Beispiel wird mit dem Befehl [az storage account create](/cli/azure/storage/account) ein Speicherkonto erstellt. Da Speicherkontonamen eindeutig sein müssen, sollten Sie `$RANDOM` verwenden, um zu diesem Zweck eine Zahl an den Namen anzufügen.
@@ -60,7 +60,7 @@ az storage account create \
 ```
 
 > [!Note]  
-> Freigaben mit einer Größe von mehr als 5 TiB (bis maximal 100 TiB pro Freigabe) sind nur in Speicherkonten mit lokal redundantem Speicher (LRS) und zonenredundantem Speicher (ZRS) verfügbar. Wenn Sie ein Konto mit georedundantem Speicher (GRS) oder geozonenredundantem Speicher (GZRS) erstellen möchten, müssen Sie den Parameter `--enable-large-file-share` entfernen.
+> Freigaben mit einer Größe von mehr als 5 TiB (bis maximal 100 TiB pro Freigabe) sind nur in Speicherkonten mit lokal redundantem Speicher (LRS) und zonenredundantem Speicher (ZRS) verfügbar. Wenn Sie ein Konto mit georedundantem Speicher (GRS) oder geozonenredundantem Speicher (GZRS) erstellen möchten, entfernen Sie den Parameter `--enable-large-file-share`.
 
 ### <a name="get-the-storage-account-key"></a>Abrufen des Speicherkontoschlüssels
 Mit Speicherkontoschlüsseln wird in einem Speicherkonto den Zugriff auf die Ressourcen gesteuert. Die Schlüssel werden automatisch erstellt, wenn Sie ein Speicherkonto erstellen. Sie können die Speicherkontoschlüssel für Ihr Speicherkonto mit dem Befehl [az storage account keys list](/cli/azure/storage/account/keys) abrufen: 

@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: sample
 ms.date: 05/18/2020
 ms.subservice: ''
-ms.openlocfilehash: 4446eef481e8370f7457311f6eae6ce40f9e6727
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ab869fc8577d4d1934be96404ded5a2051237bbf
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539260"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87922727"
 ---
 # <a name="resource-manager-template-samples-for-azure-monitor"></a>Beispiele für Resource Manager-Vorlagen für Azure Monitor
 
@@ -49,7 +49,7 @@ az deployment group create \
 - Alerts
   - [Protokollwarnungsregeln](resource-manager-alerts-log.md): Warnungen von Protokollabfragen und Azure-Aktivitätsprotokoll
   - [Metrikwarnungsregeln](resource-manager-alerts-metric.md): Warnungen von Metriken unter Verwendung verschiedener Arten von Logik
-- Application Insights: In Kürze verfügbar
+- [Application Insights](resource-manager-app-resource.md)
 - [Diagnoseeinstellungen](resource-manager-diagnostic-settings.md): Erstellen von Diagnoseeinstellungen zum Weiterleiten von Protokollen und Metriken von verschiedenen Ressourcentypen
 - [Protokollabfragen](resource-manager-log-queries.md): Erstellen gespeicherter Protokollabfragen in einem Log Analytics-Arbeitsbereich
 - [Log Analytics-Arbeitsbereich](resource-manager-workspace.md): Erstellen eines Log Analytics-Arbeitsbereichs und Konfigurieren der Erfassung verschiedener Datenquellen vom Log Analytics Agent

@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 06/03/2020
-ms.openlocfilehash: d74e3f196e58e522eb9377ca9f18fd05ec8460ae
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 655486d8273719e89187ebac0992cf83904d9b98
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87023992"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88120642"
 ---
 # <a name="hyperscale-service-tier"></a>Hyperscale-Dienstebene
 
@@ -105,7 +105,9 @@ Azure Storage enthält alle Datendateien in einer Datenbank. Seitenserver halten
 
 ## <a name="backup-and-restore"></a>Sichern und Wiederherstellen
 
-Sicherungen basieren auf Dateimomentaufnahmen und erfolgen daher nahezu unmittelbar. Durch die Trennung von Speicher- und Computeressourcen kann der Sicherungs-/Wiederherstellungsvorgang auf die Speicherebene verlegt werden, um die Verarbeitungslast auf das primäre Computereplikat zu reduzieren. Folglich wirkt sich die Datenbanksicherung nicht auf die Leistung des primären Computeknotens aus. Ebenso erfolgen Wiederherstellungen durch Wiederherstellen der Dateimomentaufnahme und sind daher nicht von der Größe der Daten abhängig. Die Wiederherstellung ist ein konstanter Vorgang, und sogar mehrere TB große Datenbanken können innerhalb von Minuten anstelle von Stunden oder Tagen wieder hergestellt werden. Die Erstellung neuer Datenbanken durch Wiederherstellen einer vorhandenen Sicherung nutzt diese Funktion ebenfalls: Das Erstellen von Datenbankkopien für Entwicklungs- oder Testzwecke (auch von Datenbanken im TB-Bereich) ist innerhalb weniger Minuten möglich.
+Sicherungen basieren auf Dateimomentaufnahmen und erfolgen daher nahezu unmittelbar. Durch die Trennung von Speicher- und Computeressourcen kann der Sicherungs-/Wiederherstellungsvorgang auf die Speicherebene verlegt werden, um die Verarbeitungslast auf das primäre Computereplikat zu reduzieren. Folglich wirkt sich die Datenbanksicherung nicht auf die Leistung des primären Computeknotens aus. Auf ähnliche Weise wird die Zeitpunktwiederherstellung (Point In Time Recovery, PITR) durch Wiederherstellen von Dateimomentaufnahmen durchgeführt. Dies ist kein von der Datengröße abhängiger Vorgang. Die Wiederherstellung einer Hyperscale-Datenbank in derselben Azure-Region ist ein konstanter Vorgang, und sogar Datenbanken mit einer Größe von mehreren TB können innerhalb von Minuten statt Stunden oder Tagen wiederhergestellt werden. Die Erstellung neuer Datenbanken durch Wiederherstellen einer vorhandenen Sicherung nutzt diese Funktion ebenfalls: Das Erstellen von Datenbankkopien für Entwicklungs- oder Testzwecke (auch von Datenbanken im TB-Bereich) ist innerhalb weniger Minuten möglich.
+
+Informationen zur Geowiederherstellung von Hyperscale-Datenbanken finden Sie unter [Wiederherstellen einer Hyperscale-Datenbank in einer anderen Region](#restoring-a-hyperscale-database-to-a-different-region).
 
 ## <a name="scale-and-performance-advantages"></a>Skalierungs- und Leistungsvorteile
 
@@ -156,7 +158,7 @@ Weitere Informationen zur Hyperscale-SLA finden Sie unter [SLA für Azure SQL-Da
 
 ## <a name="disaster-recovery-for-hyperscale-databases"></a>Notfallwiederherstellung für Hyperscale-Datenbanken
 
-### <a name="restoring-a-hyperscale-database-to-a-different-geography"></a>Wiederherstellen einer Hyperscale-Datenbank in einem anderen geografischen Gebiet
+### <a name="restoring-a-hyperscale-database-to-a-different-region"></a>Wiederherstellen einer Hyperscale-Datenbank in einer anderen Region
 
 Wenn Sie im Rahmen der Wiederherstellung einer Hyperscale-Datenbank in Azure SQL-Datenbank im Notfall oder im Rahmen einer Übung, wegen eines Umzugs oder aus einem sonstigen Grund in einer anderen Region wiederherstellen müssen als der, in der sie gerade gehostet wird, besteht die primäre Methode in einer Geowiederherstellung der Datenbank. Die Schritte sind die gleichen wie beim Wiederherstellen jeder anderen Datenbank in SQL-Datenbank in einer anderen Region:
 
@@ -224,7 +226,7 @@ Hierbei handelt es sich um die aktuellen Einschränkungen der Hyperscale-Dienste
 | Verwaltete SQL-Instanz | Azure SQL Managed Instance wird für Hyperscale-Datenbanken derzeit nicht unterstützt. |
 | Pools für elastische Datenbanken |  Pools für elastische Datenbanken werden mit Hyperscale derzeit nicht unterstützt.|
 | Migration zu „Hyperscale“ ist derzeit ein unidirektionaler Vorgang | Nach der Migration einer Datenbank zu Hyperscale kann sie nicht direkt zu einer anderen Dienstebene migriert werden. Derzeit besteht die einzige Möglichkeit zum Migrieren einer Datenbank aus Hyperscale zu Nicht-Hyperscale darin, sie mithilfe einer BACPAC-Datei oder anderer Datenverschiebungstechnologien (Massenkopieren, Azure Data Factory, Azure Databricks, SSIS usw.) zu exportieren/importieren. Der BACPAC-Export/-Import über das Azure-Portal, über PowerShell mithilfe von [New-AzSqlDatabaseExport](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabaseexport) oder [New-AzSqlDatabaseImport](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabaseimport), über die Azure CLI mithilfe von [az sql db export](https://docs.microsoft.com/cli/azure/sql/db?view=azure-cli-latest#az-sql-db-export) oder [az sql db import](https://docs.microsoft.com/cli/azure/sql/db?view=azure-cli-latest#az-sql-db-import) sowie über die [REST-API](https://docs.microsoft.com/rest/api/sql/databases%20-%20import%20export) wird nicht unterstützt. Der BACPAC-Import/-Export für kleinere Hyperscale-Datenbanken (bis zu 200 GB) wird über SSMS und [SqlPackage](https://docs.microsoft.com/sql/tools/sqlpackage) Version 18.4 und höher unterstützt. Bei größeren Datenbanken kann der BACPAC-Export/-Import sehr lange dauern und aus verschiedenen Gründen zu Fehlern führen.|
-| Migration von Datenbanken mit beständigen speicherinternen OLTP-Objekten | Hyperscale unterstützt nur nicht persistente, speicherinterne OLTP-Objekte (Tabellentypen, native SPs und Funktionen).  Persistente speicherinterne OLTP-Tabellen und andere Objekte müssen gelöscht und als datenträgerbasierte Objekte neu erstellt werden, bevor eine Datenbank zur Hyperscale-Dienstebene migriert wird.|
+| Migration von Datenbanken mit In-Memory-OLTP-Objekten | Hyperscale unterstützt eine Teilmenge von In-Memory-OLTP-Objekten, einschließlich speicheroptimierter Tabellentypen, Tabellenvariablen und systemintern kompilierter Module. Wenn aber In-Memory-OLTP-Objekte von beliebiger Art in der gerade migrierten Datenbank vorhanden sind, wird die Migration von Premium- und unternehmenskritischen Dienstebenen zu Hyperscale nicht unterstützt. Für die Migration solch einer Datenbank zu Hyperscale müssen alle In-Memory-OLTP-Objekte und deren Abhängigkeiten gelöscht werden. Nachdem die Datenbank migriert wurde, können diese Objekte neu erstellt werden. Speicheroptimierte dauerhafte und nicht dauerhafte Tabellen werden zurzeit in Hyperscale nicht unterstützt und müssen als Datenträgertabellen neu erstellt werden.|
 | Georeplikation  | Noch ist es nicht möglich, eine Georeplikation für Hyperscale in Azure SQL-Datenbank zu konfigurieren. |
 | Datenbankkopie | Sie können Datenbankkopie noch nicht verwenden, um eine neue Datenbank in Azure SQL Hyperscale zu erstellen. |
 | TDE/AKV-Integration | Die transparente Datenbankverschlüsselung mit Azure Key Vault (in der Regel als „Bring Your Own Key“ oder „BYOK“ bezeichnet) befindet sich derzeit in der Vorschauphase. |

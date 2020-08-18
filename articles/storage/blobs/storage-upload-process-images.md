@@ -1,6 +1,6 @@
 ---
 title: Hochladen von Bilddaten in die Cloud mit Azure Storage | Microsoft Docs
-description: Verwenden von Azure Blob Storage mit einer Web-App zum Speichern von App-Daten
+description: Verwenden Sie Azure Blob Storage mit Web-Apps, um App-Daten in einem Speicherkonto zu speichern. In diesem Tutorial wird eine Web-App erstellt, mit der Bilder in Azure-Speicher abgelegt und daraus angezeigt werden.
 author: mhopkins-msft
 ms.service: storage
 ms.subservice: blobs
@@ -9,12 +9,12 @@ ms.date: 06/24/2020
 ms.author: mhopkins
 ms.reviewer: dineshm
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 15d18372b9123602e6d6f05b9259e50a74f7eb39
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 3ac1855c0cc72a3c4afc20598d023f0adce2bd76
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87433269"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88034140"
 ---
 # <a name="tutorial-upload-image-data-in-the-cloud-with-azure-storage"></a>Tutorial: Hochladen von Bilddaten in die Cloud mit Azure Storage
 

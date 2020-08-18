@@ -1,6 +1,6 @@
 ---
 title: 'Tutorial: Ermitteln einer Route zu einem Ort | Microsoft Azure Maps'
-description: In diesem Tutorial wird gezeigt, wie Sie mit dem Microsoft Azure Maps-Routingdienst die Route zu einem Ort (Point of Interest) auf einer Karte darstellen.
+description: Hier wird erläutert, wie Sie eine Route zu einem Point of Interest ermitteln. Sie erfahren, wie Sie Adresskoordinaten festlegen und eine Wegbeschreibung zu diesem Punkt vom Azure Maps-Routendienst abfragen.
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 01/14/2020
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc, devx-track-javascript
-ms.openlocfilehash: d6a526e23be47c9e05de0c9064bdb4095a49d132
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 0ff604e920ca3e0708fc21a1cadfe61646f4e30b
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87287407"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037574"
 ---
 # <a name="tutorial-route-to-a-point-of-interest-using-azure-maps"></a>Tutorial: Route zu einem Point of Interest mit Azure Maps
 
@@ -227,4 +227,4 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 Im nächsten Tutorial erfahren Sie, wie Sie eine Routenabfrage mit Einschränkungen wie Fortbewegungsart oder Frachttyp erstellen und anschließend mehrere Routen auf der gleichen Karte anzeigen.
 
 > [!div class="nextstepaction"]
-> [Ermitteln von Routen für verschiedene Fortbewegungsarten](./tutorial-prioritized-routes.md)
+> [Ermitteln von Routen für verschiedene Fortbewegungsarten per Azure Maps](./tutorial-prioritized-routes.md)

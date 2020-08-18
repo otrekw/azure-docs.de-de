@@ -1,6 +1,7 @@
 ---
-title: 'Schnellstart: Zugreifen auf Web-APIs für eine App: Microsoft Identity Platform | Azure'
-description: In dieser Schnellstartanleitung wird eine bei Microsoft Identity Platform registrierte App mit Umleitungs-URIs, Anmeldeinformationen oder Berechtigungen für den Zugriff auf Web-APIs konfiguriert.
+title: 'Schnellstart: Konfigurieren einer App für den Zugriff auf eine Web-API | Azure'
+titleSuffix: Microsoft identity platform
+description: In dieser Schnellstartanleitung konfigurieren Sie eine bei Microsoft Identity Platform registrierte App mit Umleitungs-URIs, Anmeldeinformationen oder Berechtigungen für den Zugriff auf Web-APIs.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -8,18 +9,18 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 04/22/2020
+ms.date: 08/05/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: lenalepa, aragra, sureshja
-ms.openlocfilehash: 210ed5b8ad53fd59a46e160fe5fc72633d115d44
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.openlocfilehash: 800b399e73be032cfd9d2849b004018aa9d9031f
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82082321"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88120863"
 ---
-# <a name="quickstart-configure-a-client-application-to-access-web-apis"></a>Schnellstart: Konfigurieren einer Clientanwendung für den Zugriff auf Web-APIs
+# <a name="quickstart-configure-a-client-application-to-access-a-web-api"></a>Schnellstart: Konfigurieren einer Clientanwendung für den Zugriff auf eine Web-API
 
 In dieser Schnellstartanleitung fügen Sie Umleitungs-URIs, Anmeldeinformationen oder Berechtigungen für den Zugriff auf Web-APIs für Ihre Anwendung hinzu. Eine Webanwendung oder vertrauliche Clientanwendung benötigt sichere Anmeldeinformationen, um an einem Flow zur Autorisierungsgenehmigung mit erforderlicher Authentifizierung teilnehmen zu können. Die Standardauthentifizierungsmethode im Azure-Portal ist „Client-ID + geheimer Schlüssel“. Im Rahmen dieses Prozesses erhält die App ein Zugriffstoken.
 
@@ -27,9 +28,8 @@ Bevor ein Client auf eine Web-API zugreifen kann, die von einer Ressourcenanwend
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Abschluss von [Schnellstart: Registrieren einer Anwendung bei der Microsoft Identity Platform](quickstart-register-app.md).
-* Kenntnis der Informationen aus dem Artikel [Berechtigungen und Zustimmung im Microsoft Identity Platform-Endpunkt](v2-permissions-and-consent.md)
-* Ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+* Ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Abschluss von [Schnellstart: Konfigurieren einer Anwendung für das Verfügbarmachen von Web-APIs](quickstart-configure-app-expose-web-apis.md)
 
 ## <a name="sign-in-to-the-azure-portal-and-select-the-app"></a>Anmelden beim Azure-Portal und Auswählen der App
 
@@ -60,7 +60,7 @@ Gehen Sie wie folgt vor, um vorgeschlagene Umleitungs-URIs für öffentliche Cli
 1. Wählen Sie einen oder mehrere Umleitungs-URIs für Ihre Anwendung aus. Sie können auch einen benutzerdefinierten Umleitungs-URI eingeben. Falls Sie nicht sicher sind, was Sie verwenden sollen, finden Sie weitere Informationen in der Bibliotheksdokumentation.
 1. Wählen Sie **Speichern** aus.
 
-Für Umleitungs-URIs gelten gewisse Einschränkungen. Weitere Informationen finden Sie unter [Umleitungs-URI/Antwort-URL: Einschränkungen](https://docs.microsoft.com/azure/active-directory/develop/reply-url).
+Für Umleitungs-URIs gelten gewisse Einschränkungen. Weitere Informationen finden Sie unter [Umleitungs-URI/Antwort-URL: Einschränkungen](./reply-url.md).
 
 > [!NOTE]
 > Testen Sie die neue Benutzeroberfläche für die **Authentifizierung**, auf der Sie Einstellungen für Ihre Anwendung basierend auf der Zielplattform oder dem Zielgerät konfigurieren können.
@@ -113,7 +113,7 @@ Um Anwendungseinstellungen basierend auf der Plattform oder dem Gerät zu konfig
    | **Mobile Anwendungen und Desktopanwendungen**  | Optional. Wählen Sie einen der **vorgeschlagenen Umleitungs-URIs** aus, wenn Sie Apps für Desktops und Geräte erstellen.<br/>Optional. Geben Sie einen **benutzerdefinierten Umleitungs-URI** ein, an den Benutzer als Antwort auf Authentifizierungsanforderungen von Azure AD umgeleitet werden. Verwenden Sie beispielsweise `http://localhost` für .NET Core-Anwendungen, bei denen eine Interaktion erwünscht ist. |
 
    > [!NOTE]
-   > In Active Directory-Verbunddienste (AD FS) und Azure AD B2C müssen Sie außerdem eine Portnummer angeben.  Beispiel: `http://localhost:1234`. 
+   > In Active Directory-Verbunddienste (AD FS) und Azure AD B2C müssen Sie außerdem eine Portnummer angeben.  Beispiel: `http://localhost:1234`.
 
    > [!IMPORTANT]
    > Bei mobilen Anwendungen, die nicht die neueste Microsoft-Authentifizierungsbibliothek (Microsoft Authentication Library, MSAL) oder keinen Broker verwenden, müssen die Umleitungs-URIs für diese Anwendungen unter **Desktop + Geräte** konfiguriert werden.
@@ -200,16 +200,7 @@ Die Zustimmungsaufforderung bietet zwei Optionen: **Akzeptieren** und **Abbreche
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Im nächsten Artikel erfahren Sie, wie Sie Web-APIs verfügbar machen:
+In der nächsten Schnellstartanleitung der Reihe erfahren Sie, wie Sie konfigurieren, welche Kontotypen auf Ihre Anwendung zugreifen können. Beispielsweise möchten Sie den Zugriff auf die Benutzer in Ihrer Organisation (ein Mandant) beschränken oder Benutzer in anderen Azure AD-Mandanten (mehrere Mandanten) und diejenigen mit persönlichen Microsoft-Konten (MSA) zulassen.
+
 > [!div class="nextstepaction"]
-> [Schnellstart: Konfigurieren einer Anwendung für das Verfügbarmachen von Web-APIs](quickstart-configure-app-expose-web-apis.md)
-
-* Um mehr über die beiden Azure AD-Objekte, die eine registrierte Anwendung darstellen, und die Beziehung zwischen ihnen zu erfahren, lesen Sie [Anwendungsobjekte und Dienstprinzipalobjekte](app-objects-and-service-principals.md).
-
-* Weitere Informationen zu den Brandingrichtlinien, die Sie bei der Entwicklung von Anwendungen mit Azure Active Directory verwenden sollten, finden Sie unter [Brandingrichtlinien für Anwendungen](howto-add-branding-in-azure-ad-apps.md).
-
-* [Schnellstart: Registrieren einer Anwendung bei Microsoft Identity Platform](quickstart-register-app.md)
-
-* [Schnellstart: Ändern der von einer Anwendung unterstützten Konten](quickstart-modify-supported-accounts.md)
-
-* [Schnellstart: Entfernen einer bei Microsoft Identity Platform registrierten Anwendung](quickstart-remove-app.md)
+> [Ändern der von einer Anwendung unterstützten Konten](quickstart-modify-supported-accounts.md)

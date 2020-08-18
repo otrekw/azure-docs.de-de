@@ -1,6 +1,6 @@
 ---
 title: Bearbeiten von APIs im Azure-Portal | Microsoft-Dokumentation
-description: Dieses Tutorial veranschaulicht, wie Sie API Management (APIM) verwenden, um eine API zu bearbeiten.
+description: Hier erfahren Sie, wie Sie API Management (APIM) zum Bearbeiten einer API verwenden. Sie können Vorgänge in der APIM-Instanz hinzufügen, löschen oder umbenennen oder den API-Swagger bearbeiten.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 11/08/2017
 ms.author: apimpm
-ms.openlocfilehash: 6be36493fabce07838991c789e111e918a9a826d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 8d3f476f4a6ecf05d63223f3ba2c2b5173e1d0bf
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "70072158"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905158"
 ---
 # <a name="edit-an-api"></a>Bearbeiten von APIs
 

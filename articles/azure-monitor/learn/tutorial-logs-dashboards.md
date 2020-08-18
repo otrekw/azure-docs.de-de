@@ -7,12 +7,12 @@ author: bwren
 ms.author: bwren
 ms.date: 05/28/2020
 ms.custom: mvc
-ms.openlocfilehash: 7bc2da2043c6607cfff62ff524be88efb79c6f18
-ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
+ms.openlocfilehash: d38a4ba04529e70ecfd772eef7f60179041f0273
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84148258"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87927367"
 ---
 # <a name="create-and-share-dashboards-of-log-analytics-data"></a>Erstellen und Freigeben von Dashboards von Log Analytics-Daten
 
@@ -54,7 +54,7 @@ Wenn Sie ein Dashboard erstellen, ist es standardmäßig ein privates Dashboard.
 
 ![Freigeben eines neuen Dashboards im Azure-Portal](media/tutorial-logs-dashboards/log-analytics-share-dashboard.png) 
 
-Sie werden aufgefordert, für die Veröffentlichung des Dashboards ein Abonnement und eine Ressourcengruppe auszuwählen. Während der Veröffentlichung über das Portal werden Sie der Einfachheit halber zu einem Muster geführt, bei dem Sie Dashboards in einer Ressourcengruppe mit dem Namen **Dashboards**anordnen.  Überprüfen Sie das ausgewählte Abonnement, und klicken Sie dann auf **Veröffentlichen**.  Der Zugriff auf die im Dashboard angezeigten Informationen wird mit [Azure Resource Based Access Control](../../role-based-access-control/role-assignments-portal.md) gesteuert.   
+Sie werden aufgefordert, für die Veröffentlichung des Dashboards ein Abonnement und eine Ressourcengruppe auszuwählen. Während der Veröffentlichung über das Portal werden Sie der Einfachheit halber zu einem Muster geführt, bei dem Sie Dashboards in einer Ressourcengruppe mit dem Namen **Dashboards**anordnen.  Überprüfen Sie das ausgewählte Abonnement, und klicken Sie dann auf **Veröffentlichen**.  Der Zugriff auf die im Dashboard angezeigten Informationen wird mit [rollenbasierter Zugriffssteuerung in Azure (Azure Role-Based Access Control, Azure RBAC)](../../role-based-access-control/role-assignments-portal.md) gesteuert.   
 
 ## <a name="visualize-a-log-query"></a>Visualisieren einer Protokollabfrage
 [Log Analytics](../log-query/get-started-portal.md) ist ein dediziertes Portal, das für die Arbeit mit Protokollabfragen und deren Ergebnissen verwendet wird. Zu den Funktionen zählen die Möglichkeiten, eine Abfrage in mehreren Zeilen zu bearbeiten, Codes selektiv auszuführen, kontextabhängige IntelliSense-Funktionen auszuführen und intelligente Analysen durchzuführen. In diesem Tutorial erstellen Sie mit Log Analytics eine Leistungsansicht in grafischer Form, speichern sie für eine zukünftige Abfrage und heften sie an das zuvor erstellte freigegebene Dashboard.

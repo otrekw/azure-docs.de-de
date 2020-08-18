@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 6/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 9274e147bcaec4b3e63a6720e369946d64e94628
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 6ae3e72dc6e79b252c79c78fd5fac27bff8d4740
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87809883"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905226"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-apis-and-cli"></a>Verwalten von Endpunkten und Routen in Azure Digital Twins (APIs und CLI)
 
@@ -104,11 +104,11 @@ Die Beispiele in diesem Abschnitt verwenden das C# SDK.
 Ereignisrouten werden mithilfe von Datenebenen-APIs definiert. 
 
 Eine Routendefinition kann folgende Elemente enthalten:
-* Die Routen-ID, die Sie verwenden möchten.
+* Den Routennamen, den Sie verwenden möchten.
 * Den Namen des Endpunkts, den Sie verwenden möchten.
 * Ein Filter, der definiert, welche Ereignisse an den Endpunkt gesendet werden. 
 
-Wenn es keine Routen-ID gibt, werden keine Nachrichten außerhalb von Azure Digital Twins weitergeleitet. Wenn es eine Routen-ID gibt und der Filter `true` ergibt, werden alle Nachrichten an den Endpunkt weitergeleitet. Wenn es eine Routen-ID gibt und ein anderer Filter hinzugefügt wird, werden Nachrichten auf der Grundlage des Filters gefiltert.
+Wenn es keinen Routennamen gibt, werden keine Nachrichten außerhalb von Azure Digital Twins weitergeleitet. Wenn es einen Routennamen gibt und der Filter `true` ergibt, werden alle Nachrichten an den Endpunkt weitergeleitet. Wenn es einen Routennamen gibt und ein anderer Filter hinzugefügt wird, werden Nachrichten auf der Grundlage des Filters gefiltert.
 
 Eine Route sollte es ermöglichen, mehrere Benachrichtigungen und Ereignistypen auszuwählen. 
 

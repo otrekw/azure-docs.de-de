@@ -12,16 +12,18 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 05/18/2019
-ms.openlocfilehash: 992ad40d343fcc85b6c7c8fe0ed8b083a5b08238
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4b2324c480ef81ef241f4d639c22c2ed4dd1545b
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84344508"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87808846"
 ---
 # <a name="long-term-retention---azure-sql-database-and-azure-sql-managed-instance"></a>Langzeitaufbewahrung: Azure SQL-Datenbank und Azure SQL Managed Instance
 
-Viele Anwendungen dienen gesetzlichen, compliancebedingten oder anderen geschäftlichen Zwecken, die voraussetzen, dass Datenbanksicherungen länger als der Zeitraum von 7–35 Tagen, der für [automatische Sicherungen](automated-backups-overview.md) von Azure SQL-Datenbank und SQL Managed Instance zur Verfügung gestellt wird, aufbewahrt werden. Mithilfe des Features für die Langzeitaufbewahrung (Long-Term Retention, LTR) können Sie angegebene vollständige Sicherungen von SQL-Datenbank und SQL Managed Instance bis zu 10 Jahre lang in Azure-Blobspeicher mit georedundantem Speicher mit Lesezugriff speichern. Sie können dann jede Sicherung als neue Datenbank wiederherstellen. Weitere Informationen zur Azure Storage-Redundanz finden Sie unter [Azure Storage-Redundanz](../../storage/common/storage-redundancy.md). 
+Viele Anwendungen dienen gesetzlichen, compliancebedingten oder anderen geschäftlichen Zwecken, die voraussetzen, dass Datenbanksicherungen länger als der Zeitraum von 7–35 Tagen, der für [automatische Sicherungen](automated-backups-overview.md) von Azure SQL-Datenbank und SQL Managed Instance zur Verfügung gestellt wird, aufbewahrt werden. Mithilfe des Features für die Langzeitaufbewahrung (Long-Term Retention, LTR) können Sie angegebene vollständige Sicherungen von SQL-Datenbank und SQL Managed Instance bis zu 10 Jahre lang in Azure-Blobspeicher mit georedundantem Speicher mit Lesezugriff speichern. Sie können dann jede Sicherung als neue Datenbank wiederherstellen.
+
+Darüber hinaus wird in SQL Managed Instance [konfigurierbare Redundanz für Sicherungsspeicher](automated-backups-overview.md#backup-storage-redundancy) eingeführt. Sie bietet Flexibilität bei der Wahl zwischen lokal redundanten (LRS), zonenredundanten (ZRS) oder georedundanten (RA-GRS) [Speicherblobs](../../storage/common/storage-redundancy.md). Diese Option steht zurzeit nur während des Prozesses zum Erstellen einer verwalteten Instanz zur Verfügung und kann nicht geändert werden, nachdem die Ressource bereitgestellt wurde.
 
 Die Langzeitaufbewahrung kann für Azure SQL-Datenbank aktiviert werden und befindet sich für Azure SQL Managed Instance in der eingeschränkten öffentlichen Vorschauphase. Dieser Artikel enthält eine konzeptionelle Übersicht über die Langzeitaufbewahrung. Informationen zum Konfigurieren der Langzeitaufbewahrung finden Sie unter [Konfigurieren der Langzeitaufbewahrung von Azure SQL-Datenbank](long-term-backup-retention-configure.md) und [Konfigurieren der Langzeitaufbewahrung von Azure SQL Managed Instance](../managed-instance/long-term-backup-retention-configure.md). 
 

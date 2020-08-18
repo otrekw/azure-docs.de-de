@@ -3,16 +3,16 @@ title: 'Tutorial: Verwalten von Abfragen im Azure-Portal'
 description: In diesem Tutorial erstellen Sie im Azure-Portal eine Resource Graph-Abfrage und geben die neue Abfrage für andere Benutzer frei.
 ms.date: 06/29/2020
 ms.topic: tutorial
-ms.openlocfilehash: c3da623e8bea44cc49e4ef46517ce461459405a9
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: f602a6ed26f467f2d3395bdf5e3346c83684b108
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85970585"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88005175"
 ---
 # <a name="tutorial-create-and-share-an-azure-resource-graph-query-in-the-azure-portal"></a>Tutorial: Erstellen und Freigeben einer Azure Resource Graph-Abfrage im Azure-Portal
 
-Mit dem Azure Resource Graph-Explorer können Sie Ihre Resource Graph-Abfragen direkt im Azure-Portal speichern. Es gibt zwei Arten von Abfragen: _Privat_ und _Freigegeben_. Eine private Abfrage wird in den Einstellungen Ihres Azure-Portals gespeichert. Eine freigegebene Abfrage ist dagegen eine Azure Resource Manager-Ressource, die mit der rollenbasierten Zugriffssteuerung verwaltet und mit Ressourcensperren geschützt werden kann. Beide Abfragetypen werden im Ruhezustand verschlüsselt.
+Mit dem Azure Resource Graph-Explorer können Sie Ihre Resource Graph-Abfragen direkt im Azure-Portal speichern. Es gibt zwei Arten von Abfragen: _Privat_ und _Freigegeben_. Eine private Abfrage wird in den Einstellungen Ihres Azure-Portals gespeichert. Eine freigegebene Abfrage ist dagegen eine Azure Resource Manager-Ressource, die mit der rollenbasierten Zugriffssteuerung in Azure (Azure Role-Based Access Control, Azure RBAC) verwaltet und mit Ressourcensperren geschützt werden kann. Beide Abfragetypen werden im Ruhezustand verschlüsselt.
 
 Durch Speichern von Abfragen im Azure-Portal sparen Sie Zeit für die Suche nach Ihren bevorzugten oder häufig verwendeten Abfragen. Wenn Sie Abfragen freigeben, unterstützen Sie Ihr Team dabei, durch Wiederholung Ziele in Bezug auf Konsistenz und Effizienz zu erreichen.
 
@@ -60,7 +60,7 @@ Private Abfragen sind nur für das Konto sichtbar und zugänglich, das die Abfra
 
 ## <a name="create-a-shared-query"></a>Erstellen einer freigegebenen Abfrage
 
-Im Gegensatz zu einer privaten Abfrage ist eine freigegebene Abfrage eine Resource Manager-Ressource. Das bedeutet, dass die Abfrage in einer Ressourcengruppe gespeichert wird, per rollenbasierter Zugriffssteuerung verwaltet und gesteuert und sogar mit Ressourcensperren geschützt werden kann. Da es sich um eine Ressource handelt, kann jeder Benutzer, der über die entsprechenden Berechtigungen verfügt, die Abfrage anzeigen und verwenden.
+Im Gegensatz zu einer privaten Abfrage ist eine freigegebene Abfrage eine Resource Manager-Ressource. Das bedeutet, dass die Abfrage in einer Ressourcengruppe gespeichert wird, mit Azure RBAC verwaltet und gesteuert und sogar mit Ressourcensperren geschützt werden kann. Da es sich um eine Ressource handelt, kann jeder Benutzer, der über die entsprechenden Berechtigungen verfügt, die Abfrage anzeigen und verwenden.
 Führen Sie die folgenden Schritte aus, um eine neue freigegebene Abfrage zu erstellen:
 
 1. Wählen Sie im Portalmenü die Option **Alle Dienste** aus, oder verwenden Sie das Azure-Suchfeld, das sich auf allen Seiten am oberen Rand befindet, um **Resource Graph-Explorer** zu suchen und auszuwählen.

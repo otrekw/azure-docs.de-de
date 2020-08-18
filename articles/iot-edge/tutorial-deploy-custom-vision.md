@@ -9,12 +9,12 @@ ms.date: 07/30/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 5d4b87c14422744fd62d42a4d8e5b1ca0f34ffac
-ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
+ms.openlocfilehash: 07945926600163a3fca228ef6d848b50efc4318d
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87439737"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88042801"
 ---
 # <a name="tutorial-perform-image-classification-at-the-edge-with-custom-vision-service"></a>Tutorial: Durchführen von Bildklassifizierungen im Edge-Bereich mit dem Custom Vision Service
 
@@ -435,7 +435,7 @@ Klicken Sie in Visual Studio Code mit der rechten Maustaste auf den Namen Ihres 
 > [!NOTE]
 > Die Ausgabe des Moduls „cameraCapture“ enthält unter Umständen zunächst einige Verbindungsfehler. Dies ist auf die Verzögerung zwischen Modulen zurückzuführen, die bereitgestellt und gestartet werden.
 >
-> Vom Modul „cameraCapture“ wird automatisch weiter versucht, eine Verbindung herzustellen, bis der Vorgang erfolgreich war. Danach sollten die erwarteten Bildklassifizierungsnachrichten angezeigt werden, die weiter unten beschrieben sind.
+> Vom Modul „cameraCapture“ wird automatisch weiter versucht, eine Verbindung herzustellen, bis der Vorgang erfolgreich war. Danach werden die erwarteten Bildklassifizierungsnachrichten angezeigt, die weiter unten beschrieben sind.
 
 Die Ergebnisse aus dem Custom Vision-Modul werden in Form von Nachrichten vom Modul „cameraCapture“ gesendet und enthalten die Angabe, mit welcher Wahrscheinlichkeit es sich bei dem Bild um ein Bild einer Hemlocktanne oder eines Kirschbaums handelt. Da auf dem Bild eine Hemlocktanne zu sehen ist, sollte die Wahrscheinlichkeit bei 1.0 liegen.
 

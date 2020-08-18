@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: ink-recognizer
 ms.topic: overview
-ms.date: 12/17/2019
+ms.date: 08/06/2020
 ms.author: aahi
-ms.openlocfilehash: 2d00a489af35f5960aaeb1dda7add5337d48d57d
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 7bcda79403e021384fc987a67865441dd8732885
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75448148"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87927452"
 ---
 # <a name="what-is-the-ink-recognizer-api"></a>Was ist die Freihanderkennungs-API?
 
@@ -43,7 +43,7 @@ Die Freihanderkennungs-API ist ein RESTful-Webdienst und kann somit problemlos i
 
 Nach der Registrierung:
 
-1. [Formatieren](concepts/send-ink-data.md#sending-ink-data) Sie Ihre Freihandschriftdaten in gültigem JSON-Code.
+1. [Formatieren](concepts/send-ink-data.md#sending-ink-data) Sie Ihre Freihandschriftdaten in gültigem JSON-Code. Die API akzeptiert bis zu 1.500 Freihandstriche pro Anforderung. 
 1. Senden Sie eine Anforderung mit Ihren Daten an die Freihanderkennungs-API.
 1. Analysieren Sie die zurückgegebene JSON-Nachricht, um die API-Antwort zu verarbeiten.
 

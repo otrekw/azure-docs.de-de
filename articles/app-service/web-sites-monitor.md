@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 04/23/2020
 ms.author: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: d83aae778c940958d545a9402b09d24a55b1c5a6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5507e6f97211f209eb559ff7491f22bdf1a00e54
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85482682"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88079670"
 ---
 # <a name="monitor-apps-in-azure-app-service"></a>Überwachen von Apps in Azure App Service
 [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) bietet integrierte Überwachungsfunktionen für Web-Apps, mobile und API-Apps im [Azure-Portal](https://portal.azure.com).
@@ -63,6 +63,10 @@ Sie können Kontingente erhöhen oder aus Ihrer App entfernen, indem Sie ein Upg
 
 > [!IMPORTANT]
 > **Durchschnittliche Antwortzeit** wird eingestellt, um Verwechslungen mit Metrikaggregationen zu vermeiden. Verwenden Sie als Ersatz **Antwortzeit**.
+
+> [!NOTE]
+> Metriken für eine App umfassen die Anforderungen an die SCM-Site (Kudu) der App.  Dies schließt Anforderungen ein, um den Protokolldatenstrom (Logstream) der Website mithilfe von Kudu anzuzeigen.  Logstream-Anforderungen können mehrere Minuten dauern, was sich auf die Anforderungszeitmetriken auswirkt.  Benutzer sollten diese Beziehung beachten, wenn Sie diese Metriken mit der Autoskalierungslogik verwenden.
+> 
 
 Metriken liefern Informationen zur App oder zum Verhalten des App Service-Plans.
 

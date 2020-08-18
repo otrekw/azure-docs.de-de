@@ -9,13 +9,13 @@ ms.topic: tutorial
 author: sdgilley
 ms.author: sgilley
 ms.date: 02/10/2020
-ms.custom: tracking-python
-ms.openlocfilehash: 8ba6141bddd60c2bdc2fdf17845e8f470dd6ef55
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: devx-track-python
+ms.openlocfilehash: ff23a42d9b96b8411d8b2f82ab8303e2a8a69953
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86520526"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87852717"
 ---
 # <a name="tutorial-get-started-creating-your-first-ml-experiment-with-the-python-sdk"></a>Tutorial: Erste Schritte beim Erstellen Ihres ersten ML-Experiments mit dem Python SDK
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -97,7 +97,7 @@ Sie schließen die Einrichtung des folgenden Experiments ab und führen Schritte
         + Der Name muss mit einem Buchstaben beginnen (nicht mit einer Ziffer oder einem Bindestrich).
         + Wenn ein Bindestrich im Namen verwendet wird, muss darauf mindestens ein Buchstabe folgen. Beispiel: „Test-“, „test-0“ und „test-01“ sind ungültig, während „test-a0“ und „test-0a“ gültige Namen sind.
 
-    1.  Wählen Sie die VM-Größe aus den verfügbaren Optionen aus.
+    1.  Wählen Sie die VM-Größe aus den verfügbaren Optionen aus. Für die Tutorials ist die Standard-VM eine gute Wahl.
 
     1. Klicken Sie anschließend auf **Erstellen**. Das Einrichten Ihres virtuellen Computers dauert ungefähr fünf Minuten.
 

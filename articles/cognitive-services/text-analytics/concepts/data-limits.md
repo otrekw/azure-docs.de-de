@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 04/27/2020
 ms.author: aahi
 ms.reviewer: chtufts
-ms.openlocfilehash: 79a12505ccc7cea709a88818513ba95710989954
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: 0dc79132ae75be511b53bf272e578ff0ce7a7775
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84142366"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87986813"
 ---
 # <a name="data-and-rate-limits-for-the-text-analytics-api"></a>Datengrenzwerte und Ratenbegrenzungen für die Textanalyse-API
 <a name="data-limits"></a>
@@ -38,10 +38,7 @@ Die maximale Anzahl von Dokumenten, die Sie in einer einzelnen Anforderung sende
 
 #### <a name="version-3"></a>[Version 3](#tab/version-3)
 
-> [!NOTE]
-> Wenn Ihre v3-API-Anforderung diese Grenzwerte überschreitet, aber innerhalb der Grenzwerte von Version 2 liegt, wird in der API-Antwort eine Warnung zurückgegeben. Ab dem 15.7.2020 wird stattdessen ein Fehlercode vom Typ 400 zurückgegeben. 
-
-Die folgenden Grenzwerte haben sich in Version 3 der API geändert. Bei einer Überschreitung dieser Grenzwerte wird in der API-Antwort eine Warnung generiert.
+Die folgenden Grenzwerte haben sich in Version 3 der API geändert. Wenn Sie die folgenden Grenzwerte überschreiten, wird der HTTP-Fehlercode 400 generiert.
 
 
 | Funktion | Max. Anzahl von Dokumenten pro Anforderung | 

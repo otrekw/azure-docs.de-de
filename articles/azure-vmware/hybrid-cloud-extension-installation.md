@@ -3,18 +3,18 @@ title: Installieren von Hybrid Cloud Extension (HCX)
 description: Einrichten der VMware-HCX-Lösung (Hybrid Cloud Extension) für die private AVS-Cloud (Azure VMware Solution)
 ms.topic: how-to
 ms.date: 07/15/2020
-ms.openlocfilehash: b897a44fb6811c4e3564c59a8ab2c064506f0a4f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 84388c3ec53d9067df2580aabb21ca5885d154b8
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539158"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87904992"
 ---
 # <a name="install-hcx-for-azure-vmware-solution"></a>Installieren von HCX für eine Azure-VMware-Lösung
 
 In diesem Artikel werden die Vorgehensweisen zum Einrichten der VMware-HCX-Lösung (Hybrid Cloud Extension) für Ihre private AVS-Cloud (Azure VMware Solution) beschrieben. HCX ermöglicht die Migration Ihrer VMware-Workloads zur Cloud und zu anderen verbundenen Standorten mithilfe verschiedener integrierter, von HCX unterstützter Migrationstypen.
 
-Die Standardinstallation HCX Advanced unterstützt bis zu drei externe vCenter-Instanzen. Wenn mehr als drei Instanzen erforderlich sind, können Kunden das HCX Enterprise-Add-On über den Support aktivieren. Für die HCX Enterprise-Installation fallen über die allgemeine Verfügbarkeit (GA) hinaus zusätzliche Gebühren für Kunden an, die Version bietet jedoch [zusätzliche Funktionen](https://cloud.vmware.com/community/2019/08/08/introducing-hcx-enterprise/).
+Die Standardinstallation HCX Advanced unterstützt bis zu drei Standortverbindungen (lokal oder Cloud-zu-Cloud). Wenn mehr als drei Standortverbindungen erforderlich sind, können Kunden das HCX Enterprise-Add-on, das sich zurzeit in der Vorschauversion befindet, über den Support aktivieren. Für HCX Enterprise fallen über die allgemeine Verfügbarkeit (GA) hinaus zusätzliche Gebühren für Kunden an, die Version bietet jedoch [zusätzliche Funktionen](https://cloud.vmware.com/community/2019/08/08/introducing-hcx-enterprise/).
 
 
 Lesen Sie zuerst die Informationen unter [Voraussetzungen (Vorbereitung)](#before-you-begin), [Erforderliche Softwareversionen](#software-version-requirements) und [Voraussetzungen](#prerequisites). 
@@ -22,7 +22,7 @@ Lesen Sie zuerst die Informationen unter [Voraussetzungen (Vorbereitung)](#befor
 Danach werden die folgenden Aufgaben beschrieben:
 
 > [!div class="checklist"]
-> * Bereitstellen der lokalen HCX-OVA-Datei
+> * Bereitstellen der lokalen HCX-OVA-Datei (Connector)
 > * Aktivieren und Konfigurieren von HCX
 > * Konfigurieren des Netzwerkuplinks und des Dienstnetzes
 > * Ausführen des Setups durch Überprüfen des Appliance-Status
@@ -33,26 +33,29 @@ Nach Abschluss des Setups können Sie die empfohlenen nächsten Schritte am Ende
     
 * Sehen Sie sich die [Tutorialreihe](tutorial-network-checklist.md) mit Grundlagen zu AVS Software Defined Datacenter (SDDC) an.
 * Lesen Sie die [VMware-Dokumentation zu HCX](https://docs.vmware.com/en/VMware-HCX/index.html) einschließlich des HCX-Benutzerhandbuchs.
-* Lesen Sie die VMware-Dokumentation zum [Migrieren von Virtual Machines mit VMware HCX](https://docs.vmware.com/en/VMware-HCX/services/user-guide/GUID-D0CD0CC6-3802-42C9-9718-6DA5FEC246C6.html?hWord=N4IghgNiBcIBIGEAaACAtgSwOYCcwBcMB7AOxAF8g)
-* Optional: Lesen Sie die [Überlegungen zur Bereitstellung von VMware HCX](https://docs.vmware.com/en/VMware-HCX/services/install-checklist/GUID-C0A0E820-D5D0-4A3D-AD8E-EEAA3229F325.html)
+* Lesen Sie die VMware-Dokumentation zum [Migrieren von Virtual Machines mit VMware HCX](https://docs.vmware.com/en/VMware-HCX/services/user-guide/GUID-D0CD0CC6-3802-42C9-9718-6DA5FEC246C6.html?hWord=N4IghgNiBcIBIGEAaACAtgSwOYCcwBcMB7AOxAF8g).
+* Optional: Lesen Sie die [Überlegungen zur Bereitstellung von VMware HCX](https://docs.vmware.com/en/VMware-HCX/services/install-checklist/GUID-C0A0E820-D5D0-4A3D-AD8E-EEAA3229F325.html).
 * Optional: Lesen Sie weitere VMware-Ressourcen wie die VMware vSphere-[Blogreihe](https://blogs.vmware.com/vsphere/2019/10/cloud-migration-series-part-2.html) zu HCX. 
-* Fordern Sie die Aktivierung von AVS HCX Enterprise über die AVS-Supportkanäle an.
+* Fordern Sie eine Aktivierung von AVS HCX Enterprise über die AVS-Supportkanäle an.
 
-Die Größenanpassung von Workloads für Compute-und Speicherressourcen ist ein wichtiger Planungsschritt beim Vorbereiten der Verwendung einer HCX-Lösung für private AVS-Clouds. Nehmen Sie diese Größenanpassung bei der ersten Planung der Umgebung für die private Cloud vor.   
+Die Größenanpassung von Workloads für Compute- und Speicherressourcen ist ein wichtiger Planungsschritt beim Vorbereiten der Verwendung einer HCX-Lösung für private AVS-Clouds. Nehmen Sie diese Größenanpassung bei der ersten Planung der Umgebung für die private Cloud vor. 
+
+Sie können Workloads auch anpassen, indem Sie eine AVS-Bewertung im Azure Migrate-Portal ausführen (https://docs.microsoft.com/azure/migrate/how-to-create-azure-vmware-solution-assessment) ).
 
 ## <a name="software-version-requirements"></a>Erforderliche Softwareversionen
+
 Auf Infrastrukturkomponenten muss die erforderliche Mindestversion ausgeführt werden. 
                                                          
 | Komponententyp    | Anforderungen für die Quellumgebung    | Anforderungen für die Zielumgebung   |
 | --- | --- | --- |
 | vCenter Server   | 5,1<br/><br/>Wenn Sie 5.5 U1 oder früher verwenden, verwenden Sie die eigenständige HCX-Benutzeroberfläche für HCX-Vorgänge.  | 6.0 U2 und höher   |
 | ESXi   | 5.0    | ESXi 6.0 und höher   |
-| NSX    | Für die HCX-Netzwerkerweiterung logischer Switches an der Quelle: NSXv 6.2+ oder NSX-T 2.4+   | NSXv 6.2+ oder NSX-T 2.4+<br/><br/>Für HCX-Näherungsrouting: NSXv 6.4+ (Näherungsrouting wird für NSX-T nicht unterstützt) |
+| NSX    | Für die HCX-Netzwerkerweiterung logischer Switches an der Quelle: NSXv 6.2+ oder NSX-T 2.4+   | NSXv 6.2+ oder NSX-T 2.4+<br/><br/>Für HCX-Näherungsrouting: NSXv 6.4+ (Näherungsrouting wird für NSX-T nicht unterstützt.) |
 | vCloud Director   | Nicht erforderlich, keine Interoperabilität mit vCloud Director am Quellstandort | Bei der Integration der Zielumgebung in vCloud Director ist mindestens 9.1.0.2 erforderlich.  |
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Zwischen lokalen und AVS SDDC ER-Verbindungen sollte eine globale Reichweite konfiguriert werden.
+* Zwischen lokalen Verbindungen und AVS SDDC ExpressRoute-Verbindungen sollte ExpressRoute Global Reach konfiguriert werden.
 
 * Alle erforderlichen Ports zwischen dem lokalen Netzwerk und AVS SDDC müssen geöffnet sein (siehe [VMware-Dokumentation zu HCX](https://docs.vmware.com/en/VMware-HCX/services/user-guide/GUID-E456F078-22BE-494B-8E4B-076EF33A9CF4.html)).
 

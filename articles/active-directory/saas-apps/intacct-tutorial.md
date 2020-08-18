@@ -11,17 +11,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/12/2019
+ms.date: 08/05/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d05e48cdaf75af5acb09713679d3aa21450b433
-ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
+ms.openlocfilehash: a7e81b636690ced9baafc79de110f78c7258c36e
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84509371"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056300"
 ---
 # <a name="tutorial-integrate-sage-intacct-with-azure-active-directory"></a>Tutorial: Integrieren von Sage Intacct in Azure Active Directory
 
@@ -45,6 +44,7 @@ Für die ersten Schritte benötigen Sie Folgendes:
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
 * Sage Intacct unterstützt **IDP**-initiiertes einmaliges Anmelden.
+* Nach dem Konfigurieren von Sage Intacct können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.
 
 ## <a name="adding-sage-intacct-from-the-gallery"></a>Hinzufügen von Sage Intacct aus dem Katalog
 
@@ -57,7 +57,7 @@ Zum Konfigurieren der Integration von Sage Intacct in Azure AD müssen Sie Ihrer
 1. Geben Sie im Abschnitt **Aus Katalog hinzufügen** im Suchfeld den Namen **Sage Intacct** ein.
 1. Wählen Sie im Ergebnisbereich die App **Sage Intacct** aus, und fügen Sie dann die App hinzu. Warten Sie einige Sekunden, während die App Ihrem Mandanten hinzugefügt wird.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-sage-intacct"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für Sage Intacct
+## <a name="configure-and-test-azure-ad-sso-for-sage-intacct"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für Sage Intacct
 
 Konfigurieren und testen Sie das einmalige Anmelden von Azure AD bei Sage Intacct mithilfe eines Testbenutzers mit dem Namen **B. Simon**. Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Sage Intacct eingerichtet werden.
 
@@ -227,3 +227,4 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Sage Intacct“ klicken, sollten S
 
 - [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
+- [Was ist Sitzungssteuerung in Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

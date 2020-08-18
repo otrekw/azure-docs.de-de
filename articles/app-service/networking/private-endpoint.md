@@ -4,17 +4,17 @@ description: Herstellen einer privaten Verbindung mit einer Web-App mithilfe ein
 author: ericgre
 ms.assetid: 2dceac28-1ba6-4904-a15d-9e91d5ee162c
 ms.topic: article
-ms.date: 07/07/2020
+ms.date: 08/12/2020
 ms.author: ericg
 ms.service: app-service
 ms.workload: web
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: fdad2f7c2ce4f82529866b4235ebebab8da664d3
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 773e63cb5eb2a9825975402f65439acd6ad192ae
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86054575"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88135384"
 ---
 # <a name="using-private-endpoints-for-azure-web-app-preview"></a>Verwenden privater Endpunkte für eine Azure-Web-App (Vorschau)
 
@@ -127,7 +127,9 @@ Wir verbessern regelmäßig die Funktionen private Verbindung (Private Link) und
 - Informationen zum Bereitstellen des privaten Endpunkts für Ihre Web-App über das Portal finden Sie unter [Herstellen einer privaten Verbindung mit einer Web-App mithilfe eines privaten Azure-Endpunkts (Vorschau)][howtoguide1].
 - Informationen zum Bereitstellen des privaten Endpunkts für Ihre Web-App über die Azure CLI finden Sie unter [Erstellen einer App Service-App und Bereitstellen eines privaten Endpunkts mithilfe der Azure-Befehlszeilenschnittstelle][howtoguide2].
 - Informationen zum Bereitstellen des privaten Endpunkts für Ihre Web-App mithilfe von PowerShell finden Sie unter [Erstellen einer App Service-App und Bereitstellen eines privaten Endpunkts mithilfe von PowerShell][howtoguide3].
-
+- Informationen zum Bereitstellen des privaten Endpunkts für Ihre Web-App über eine Azure-Vorlage finden Sie unter [Erstellen einer App Service-App und Bereitstellen eines privaten Endpunkts mithilfe einer Azure Resource Manager-Vorlage][howtoguide4].
+- Ein End-to-End-Beispiel, wie Sie eine Front-End-Web-App mit einer gesicherten Back-End-Web-App mittels VNet-Einfügung und privatem Endpunkt mit ARM-Vorlage verbinden, finden Sie in dieser [Schnellstartanleitung][howtoguide5]
+- Ein End-to-End-Beispiel, wie Sie eine Front-End-Web-App mit einer gesicherten Back-End-Web-App mittels VNet-Einfügung und privatem Endpunkt mit terraform verbinden, finden Sie in diesem [Beispiel][howtoguide6]
 
 
 <!--Links-->
@@ -143,3 +145,6 @@ Wir verbessern regelmäßig die Funktionen private Verbindung (Private Link) und
 [howtoguide1]: https://docs.microsoft.com/azure/private-link/create-private-endpoint-webapp-portal
 [howtoguide2]: https://docs.microsoft.com/azure/app-service/scripts/cli-deploy-privateendpoint
 [howtoguide3]: https://docs.microsoft.com/azure/app-service/scripts/powershell-deploy-private-endpoint
+[howtoguide4]: https://docs.microsoft.com/azure/app-service/scripts/template-deploy-private-endpoint
+[howtoguide5]: https://github.com/Azure/azure-quickstart-templates/tree/master/101-webapp-privateendpoint-vnet-injection
+[howtoguide6]: https://docs.microsoft.com/azure/app-service/scripts/terraform-secure-backend-frontend

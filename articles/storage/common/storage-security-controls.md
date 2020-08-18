@@ -1,7 +1,7 @@
 ---
 title: Sicherheitskontrollen
 titleSuffix: Azure Storage
-description: Eine Prüfliste mit Sicherheitskontrollen zur Evaluierung von Azure Storage
+description: Zeigen Sie eine Prüfliste mit Sicherheitskontrollen zur Evaluierung von Azure Storage an. Die behandelten Bereiche sind Datenschutz, Netzwerk, Überwachung und Protokollierung, Identität und Konfiguration.
 services: storage
 author: msmbaldwin
 ms.author: mbaldwin
@@ -9,12 +9,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.date: 03/11/2020
-ms.openlocfilehash: 96fde15eb5071e157fedcff6154e6b0635a34721
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b816e7bd5e00b21700bc994fc0860195d39f2915
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82128021"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87826516"
 ---
 # <a name="security-controls-for-azure-storage"></a>Sicherheitskontrollen für Azure Storage
 
@@ -38,7 +38,7 @@ In diesem Artikel werden die in Azure Storage integrierten Sicherheitskontrollen
 |---|---|--|
 | Unterstützung des Dienstendpunkts| Ja |  |
 | Unterstützung von Diensttags| Ja | Weitere Informationen zu den von Azure Storage unterstützten Diensttags finden Sie unter [Übersicht über Azure-Diensttags](../../virtual-network/service-tags-overview.md). |
-| Unterstützung der VNet-Einschleusung| – |  |
+| Unterstützung der VNet-Einschleusung| Nicht zutreffend |  |
 | Netzwerkisolation und Firewallunterstützung| Ja | |
 | Unterstützung der Tunnelerzwingung| – |  |
 

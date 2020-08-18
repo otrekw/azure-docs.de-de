@@ -1,6 +1,6 @@
 ---
 title: Verwenden der rollenbasierten Zugriffssteuerung für StorSimple | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie die rollenbasierte Zugriffssteuerung (RBAC) von Azure im Kontext von StorSimple verwenden.
+description: Erfahren Sie, wie Sie die rollenbasierte Zugriffssteuerung von Azure (Azure RBAC) im Kontext von StorSimple verwenden.
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -14,28 +14,28 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/11/2017
 ms.author: alkohli
-ms.openlocfilehash: a6dc55138977727dc5399ec9653340225bcc3901
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 38500edeca2241bfa9ab093e037af18159994b02
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85514633"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87920413"
 ---
 # <a name="role-based-access-control-for-storsimple"></a>Rollenbasierte Zugriffssteuerung für StorSimple
 
-Dieser Artikel enthält eine kurze Beschreibung von Verwendungsmöglichkeiten für die rollenbasierte Zugriffssteuerung (RBAC) von Azure für Ihr StorSimple-Gerät. RBAC ermöglicht eine differenzierte Zugriffsverwaltung für Azure. Mit RBAC können Sie den Zugriff für StorSimple-Benutzer ausschließlich auf die für ihre Arbeit erforderlichen Bereiche beschränken, anstatt jedem Benutzer uneingeschränkten Zugriff zu gewähren. Weitere Informationen zu Grundlagen der Zugriffssteuerung in Azure finden Sie unter [Erste Schritte mit der rollenbasierten Zugriffssteuerung im Azure-Portal](../role-based-access-control/overview.md).
+Dieser Artikel enthält eine kurze Beschreibung von Verwendungsmöglichkeiten für die rollenbasierte Zugriffssteuerung von Azure (Azure RBAC) für Ihr StorSimple-Gerät. RBAC ermöglicht eine differenzierte Zugriffsverwaltung für Azure. Mit RBAC können Sie den Zugriff für StorSimple-Benutzer ausschließlich auf die für ihre Arbeit erforderlichen Bereiche beschränken, anstatt jedem Benutzer uneingeschränkten Zugriff zu gewähren. Weitere Informationen zu Grundlagen der Zugriffssteuerung in Azure finden Sie unter [Erste Schritte mit der rollenbasierten Zugriffssteuerung im Azure-Portal](../role-based-access-control/overview.md).
 
 Dieser Artikel gilt für Geräte der StorSimple 8000-Serie, die mit Update 3.0 oder höher im Azure-Portal ausgeführt werden.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="rbac-roles-for-storsimple"></a>RBAC-Rollen für StorSimple
+## <a name="azure-roles-for-storsimple"></a>Azure-Rollen für StorSimple
 
 RBAC kann basierend auf Rollen zugewiesen werden. Die Rollen gewähren bestimmte Berechtigungsstufen basierend auf den verfügbaren Ressourcen in der Umgebung. Es gibt zwei Arten von Rollen, aus denen StorSimple-Benutzer auswählen können: integrierte oder benutzerdefinierte Rollen.
 
 * **Integrierte Rollen:** Die integrierten Rollen können Besitzer, Mitwirkende, Leser oder Benutzerzugriffsadministratoren sein. Weitere Informationen finden Sie unter [Integrierte Rollen für die rollenbasierte Zugriffssteuerung in Azure](../role-based-access-control/built-in-roles.md).
 
-* **Benutzerdefinierte Rollen:** Wenn die integrierten Rollen nicht Ihren Anforderungen entsprechen, können Sie benutzerdefinierte RBAC-Rollen für StorSimple erstellen. Um eine benutzerdefinierte RBAC-Rolle zu erstellen, erstellen Sie zunächst eine integrierte Rolle, bearbeiten diese und importieren sie wieder in die Umgebung. Sie können die Rolle entweder über Azure PowerShell oder die Azure-Befehlszeilenschnittstelle herunter- und hochladen. Weitere Informationen finden Sie unter [Erstellen integrierter Rollen für die rollenbasierte Zugriffssteuerung](../role-based-access-control/custom-roles.md).
+* **Benutzerdefinierte Rollen:** Wenn die integrierten Rollen nicht Ihren Anforderungen entsprechen, können Sie benutzerdefinierte Azure-Rollen für StorSimple erstellen. Um eine benutzerdefinierte Azure-Rolle zu erstellen, erstellen Sie zunächst eine integrierte Rolle, bearbeiten diese und importieren sie wieder in die Umgebung. Sie können die Rolle entweder über Azure PowerShell oder die Azure-Befehlszeilenschnittstelle herunter- und hochladen. Weitere Informationen finden Sie unter [Erstellen integrierter Rollen für die rollenbasierte Zugriffssteuerung](../role-based-access-control/custom-roles.md).
 
 Um die verschiedenen Rollen, die für Benutzer von StorSimple-Geräten verfügbar sind, im Azure-Portal anzuzeigen, wechseln Sie zu Ihrem StorSimple-Geräte-Manager-Dienst, und navigieren Sie dann zu **Zugriffssteuerung (IAM) > Rollen**.
 
@@ -58,7 +58,7 @@ Im folgenden Beispiel beginnen wir mit der integrierten Rolle **Reader**, mit de
     Get-AzRoleDefinition -Name "Reader" | ConvertTo-Json | Out-File C:\ssrbaccustom.json
     ```
 
-4. Öffnen Sie die JSON-Datei in Visual Studio. Wie Sie sehen, besteht eine typische RBAC-Rolle aus drei Hauptabschnitten: **Actions**, **NotActions** und **AssignableScopes**.
+4. Öffnen Sie die JSON-Datei in Visual Studio. Wie Sie sehen, besteht eine typische Azure-Rolle aus drei Hauptabschnitten: **Actions**, **NotActions** und **AssignableScopes**.
 
     Im Abschnitt **Actions** sind alle zulässigen Vorgänge für diese Rolle aufgelistet. Jede Aktion wird von einem Ressourcenanbieter zugewiesen. Verwenden Sie für einen StorSimple-Infrastrukturadministrator den Ressourcenanbieter `Microsoft.StorSimple`.
 
@@ -68,9 +68,9 @@ Im folgenden Beispiel beginnen wir mit der integrierten Rolle **Reader**, mit de
 
     Sie können auch alle verfügbaren PowerShell-Cmdlets suchen, um die Ressourcenanbieter zu verwalten.
 
-    Im Abschnitt **NotActions** sind alle eingeschränkten Aktionen für eine bestimmte RBAC-Rolle aufgeführt. In diesem Beispiel sind keine Aktionen beschränkt.
+    Im Abschnitt **NotActions** sind alle eingeschränkten Aktionen für eine bestimmte Azure-Rolle aufgeführt. In diesem Beispiel sind keine Aktionen beschränkt.
     
-    Unter **AssignableScopes** sind die Abonnement-IDs aufgeführt. Stellen Sie sicher, dass die RBAC-Rolle die expliziten ID der Abonnements enthält, in denen sie verwendet wird. Wenn nicht die richtige Abonnement-ID angegeben wird, können Sie die Rolle nicht in Ihr Abonnement importieren.
+    Unter **AssignableScopes** sind die Abonnement-IDs aufgeführt. Stellen Sie sicher, dass die Azure-Rolle die expliziten ID der Abonnements enthält, in denen sie verwendet wird. Wenn nicht die richtige Abonnement-ID angegeben wird, können Sie die Rolle nicht in Ihr Abonnement importieren.
 
     Bearbeiten Sie die Datei unter Beachtung der oben genannten Informationen.
 
@@ -102,14 +102,14 @@ Im folgenden Beispiel beginnen wir mit der integrierten Rolle **Reader**, mit de
     }
     ```
 
-6. Importieren Sie die benutzerdefinierte RBAC-Rolle wieder in die Umgebung.
+6. Importieren Sie die benutzerdefinierte Azure-Rolle wieder in die Umgebung.
 
     `New-AzRoleDefinition -InputFile "C:\ssrbaccustom.json"`
 
 
 Diese Rolle sollte jetzt in der Liste der Rollen auf dem Blatt **Zugriffssteuerung** angezeigt werden.
 
-![Anzeigen von RBAC-Rollen](./media/storsimple-8000-role-based-access-control/rbac-role-types.png)
+![Anzeigen von Azure-Rollen](./media/storsimple-8000-role-based-access-control/rbac-role-types.png)
 
 Weitere Informationen finden Sie unter [Erstellen von benutzerdefinierten Rollen für die rollenbasierte Zugriffssteuerung in Azure](../role-based-access-control/custom-roles.md).
 
@@ -163,11 +163,11 @@ AssignableScopes : {/subscriptions/<subscription_ID>/}
 
 ## <a name="add-users-to-the-custom-role"></a>Hinzufügen von Benutzern zur benutzerdefinierten Rolle
 
-Sie gewähren Zugriff aus der Ressource, der Ressourcengruppe oder dem Abonnement, die bzw. das als Bereich der Rollenzuweisung gilt. Bedenken Sie beim Gewähren von Zugriff, dass der Zugriff, der einem übergeordneten Knoten gewährt wird, von untergeordneten Knoten geerbt wird. Weitere Informationen finden Sie unter [Erste Schritte mit der rollenbasierten Zugriffssteuerung im Azure-Portal](../role-based-access-control/overview.md).
+Sie gewähren Zugriff aus der Ressource, der Ressourcengruppe oder dem Abonnement, die bzw. das als Bereich der Rollenzuweisung gilt. Bedenken Sie beim Gewähren von Zugriff, dass der Zugriff, der einem übergeordneten Knoten gewährt wird, von untergeordneten Knoten geerbt wird. Weitere Informationen finden Sie unter [Rollenbasierte Zugriffssteuerung in Azure (Azure Role-Based Access Control, Azure RBAC)](../role-based-access-control/overview.md).
 
 1. Wechseln Sie zu **Zugriffssteuerung (IAM)** . Klicken Sie auf dem Blatt für die Zugriffssteuerung auf **+ Hinzufügen**.
 
-    ![Hinzufügen von Zugriff zur RBAC-Rolle](./media/storsimple-8000-role-based-access-control/rbac-add-role.png)
+    ![Hinzufügen des Zugriffs auf die Azure-Rolle](./media/storsimple-8000-role-based-access-control/rbac-add-role.png)
 
 2. Wählen Sie die Rolle aus, die Sie zuweisen möchten. In diesem Fall ist es **StorSimple Infrastructure Administrator**.
 
@@ -175,7 +175,7 @@ Sie gewähren Zugriff aus der Ressource, der Ressourcengruppe oder dem Abonnemen
 
 4. Wählen Sie **Speichern** aus, um die Zuweisung zu erstellen.
 
-    ![Hinzufügen von Berechtigungen zur RBAC-Rolle](./media/storsimple-8000-role-based-access-control/rbac-create-role-infra-admin.png)
+    ![Hinzufügen von Berechtigungen zur Azure-Rolle](./media/storsimple-8000-role-based-access-control/rbac-create-role-infra-admin.png)
 
 In der Benachrichtigung **Benutzer hinzufügen** wird der Status verfolgt. Nachdem der Benutzer erfolgreich hinzugefügt wurde, wird die Liste der Benutzer in der Zugriffssteuerung aktualisiert.
 

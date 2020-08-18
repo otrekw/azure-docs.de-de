@@ -47,6 +47,8 @@
       href: ./policy-samples.md
 - name: Konzepte
   items:
+    - name: Grundlegendes zu Apps und Bereitstellungen
+      href: spring-cloud-concept-understand-app-and-deployment.md
     - name: Grundlegendes zu Kontingenten und Grenzwerten
       href: spring-cloud-quotas.md
     - name: Grundlegendes zu Metriken

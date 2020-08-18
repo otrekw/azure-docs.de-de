@@ -8,12 +8,12 @@ ms.service: private-link
 ms.topic: quickstart
 ms.date: 02/03/2020
 ms.author: allensu
-ms.openlocfilehash: f21b440ee0e2c53d9824300e85b683629c1575da
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 0d873401d377a03581a319769604f3d976f365be
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78252551"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87927237"
 ---
 # <a name="quickstart-create-a-private-link-service-by-using-the-azure-portal"></a>Schnellstart: Erstellen eines Private Link-Diensts über das Azure-Portal
 
@@ -37,12 +37,12 @@ In den Schritten dieses Abschnitts müssen die folgenden Parameter wie folgt ers
 
 | Parameter                   | Wert                |
 |-----------------------------|----------------------|
-| **\<Ressourcengruppenname>**  | myResourceGroupLB |
-| **\<VNET-Name>** | myVNet          |
-| **\<Regionsname>**          | USA (Ost) 2      |
-| **\<IPv4-Adressraum>**   | 10.3.0.0\16          |
-| **\<Subnetzname>**          | myBackendSubnet        |
-| **\<Subnetzadressbereich>** | 10.3.0.0\24          |
+| **\<resource-group-name>**  | myResourceGroupLB |
+| **\<virtual-network-name>** | myVNet          |
+| **\<region-name>**          | USA (Ost) 2      |
+| **\<IPv4-address-space>**   | 10.3.0.0/16          |
+| **\<subnet-name>**          | myBackendSubnet        |
+| **\<subnet-address-range>** | 10.3.0.0/24          |
 
 [!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
@@ -60,7 +60,7 @@ Erstellen Sie über das Portal einen internen Lastenausgleich im Tarif „Standa
     | **Ressourcengruppe**         | Wählen Sie im Feld die Option **MyResourceGroupLB** aus.|
     | **Name**                   | Geben Sie **myLoadBalancer** ein.                                   |
     | **Region**         | Wählen Sie **USA, Osten 2** aus.                                        |
-    | **Typ**          | Wählen Sie **Intern** aus.                                        |
+    | **Type**          | Wählen Sie **Intern** aus.                                        |
     | **SKU**           | Wählen Sie **Standard** aus.                          |
     | **Virtuelles Netzwerk**           | Wählen Sie **myVNet** aus.                          |
     | **IP-Adresszuweisung**              | Wählen Sie **Statisch** aus.   |
@@ -133,7 +133,7 @@ So erstellen Sie eine Lastenausgleichsregel:
 
 ## <a name="create-a-private-link-service"></a>Erstellen eines Private Link-Diensts
 
-In diesem Abschnitt wird ein Private Link-Dienst hinter einem Standardlastenausgleich erstellt.
+In diesem Abschnitt wird ein Private Link-Dienst hinter einer Load Balancer Standard-Instanz erstellt.
 
 1. Wählen Sie oben links auf der Seite im Azure-Portal die Option **Ressource erstellen** > **Netzwerk** > **Private Link-Center (Vorschau)** aus. Sie können auch das Suchfeld des Portals verwenden, um nach Private Link zu suchen.
 

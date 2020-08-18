@@ -1,20 +1,20 @@
 ---
 title: Azure Storage Analytics-Protokollierung
-description: Erfahren Sie, wie Sie Details zu Anforderungen für Azure Storage protokollieren.
+description: Mithilfe von Storage Analytics können Sie Details zu Azure Storage-Anforderungen protokollieren. Hier erfahren Sie, welche Anforderungen protokolliert werden, wie Protokolle gespeichert werden, wie die Storage-Protokollierung aktiviert wird, und vieles mehr.
 author: normesta
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
-ms.date: 05/19/2020
+ms.date: 07/23/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring
-ms.openlocfilehash: b1134f5538663f5b04e77270fee1a715b32a4f3e
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 98c8bc07e1f5bb790c2f907bbc3c2125cae383a5
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83675921"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87903220"
 ---
 # <a name="azure-storage-analytics-logging"></a>Azure Storage Analytics-Protokollierung
 
@@ -64,7 +64,7 @@ Bei einer großen Menge an Protokolldaten mit mehreren Dateien pro Stunde könne
 Mit den meisten Tools zum Durchsuchen des Speichers können Sie die Metadaten von Blobs anzeigen. Zudem können Sie diese Informationen über PowerShell oder programmgesteuert anzeigen. Der folgende PowerShell-Codeausschnitt ist ein Beispiel für die Filterung der Liste mit Protokollblobs nach dem Namen, um einen Zeitpunkt anzugeben, und nach Metadaten, um nur die Protokolle zu identifizieren, die **write**-Vorgänge enthalten.  
 
  ```powershell
- Get-AzureStorageBlob -Container '$logs' |  
+ Get-AzStorageBlob -Container '$logs' |  
  Where-Object {  
      $_.Name -match 'table/2014/05/21/05' -and   
      $_.ICloudBlob.Metadata.LogType -match 'write'  
@@ -137,20 +137,20 @@ Sie können die zu protokollierenden Speicherdienste und den Aufbewahrungszeitra
 
 ### <a name="enable-storage-logging-using-powershell"></a>Aktivieren der Speicherprotokollierung mithilfe von PowerShell  
 
- Sie können PowerShell auf Ihrem lokalen Computer zum Konfigurieren der Speicherprotokollierung in Ihrem Speicherkonto verwenden, indem Sie das Azure PowerShell-Cmdlet **Get-AzureStorageServiceLoggingProperty** ausführen, um die aktuellen Einstellungen abzurufen. Mithilfe des Cmdlets **Set-AzureStorageServiceLoggingProperty** können Sie die aktuellen Einstellungen ändern.  
+ Sie können PowerShell auf Ihrem lokalen Computer zum Konfigurieren der Speicherprotokollierung in Ihrem Speicherkonto verwenden: Mit dem Azure PowerShell-Cmdlet **Get-AzStorageServiceLoggingProperty** können Sie die aktuellen Einstellungen abrufen, und mit dem Cmdlet **Set-AzStorageServiceLoggingProperty** können Sie die aktuellen Einstellungen ändern.  
 
  Die Cmdlets, über die die Speicherprotokollierung gesteuert wird, verwenden einen **LoggingOperations**-Parameter. Dabei handelt es sich um eine Zeichenfolge mit einer durch Trennzeichen getrennten Liste von zu protokollierenden Anforderungstypen. Die drei möglichen Anforderungstypen sind **read**, **write** und **delete**. Um die Protokollierung zu deaktivieren, verwenden Sie den Wert **none** für den Parameter **LoggingOperations**.  
 
  Mit dem folgenden Befehl wird die Protokollierung für read-, write- und delete-Anforderungen im Warteschlangendienst mit einem Aufbewahrungszeitraum von fünf Tagen in Ihrem Standardspeicherkonto aktiviert:  
 
 ```powershell
-Set-AzureStorageServiceLoggingProperty -ServiceType Queue -LoggingOperations read,write,delete -RetentionDays 5  
+Set-AzStorageServiceLoggingProperty -ServiceType Queue -LoggingOperations read,write,delete -RetentionDays 5  
 ```  
 
  Mit dem folgenden Befehl wird die Protokollierung für den Tabellenspeicherdienst in Ihrem Standardspeicherkonto deaktiviert:  
 
 ```powershell
-Set-AzureStorageServiceLoggingProperty -ServiceType Table -LoggingOperations none  
+Set-AzStorageServiceLoggingProperty -ServiceType Table -LoggingOperations none  
 ```  
 
  Informationen zum Konfigurieren der Azure PowerShell-Cmdlets für Ihr Azure-Abonnement sowie zum Auswählen des zu verwendenden Standardspeicherkontos finden Sie unter: [Installieren und Konfigurieren von Azure PowerShell](https://azure.microsoft.com/documentation/articles/install-configure-powershell/).  

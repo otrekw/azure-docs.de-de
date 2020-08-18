@@ -1,7 +1,7 @@
 ---
 title: Autorisieren des Zugriffs auf Daten mit einer verwalteten Identität
 titleSuffix: Azure Storage
-description: Erfahren Sie, wie Sie mit verwalteten Identitäten für Azure-Ressourcen den Zugriff auf Blob- und Warteschlangendaten über Anwendungen autorisieren, die auf virtuellen Azure-Computern, in Funktions-Apps, in VM-Skalierungsgruppen o. Ä. ausgeführt werden.
+description: Mithilfe von verwalteten Identitäten für Azure-Ressourcen können Sie den Zugriff auf Blob- und Warteschlangendaten aus Anwendungen autorisieren, die auf virtuellen Azure-Computern, in Funktions-Apps und anderen ausgeführt werden.
 services: storage
 author: tamram
 ms.service: storage
@@ -10,12 +10,12 @@ ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 69e88aed1485d07bc4adc57abc0bda02a1def728
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8273be760b37c12f3db7a393e59ab8ead291ec02
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84808885"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87827995"
 ---
 # <a name="authorize-access-to-blob-and-queue-data-with-managed-identities-for-azure-resources"></a>Autorisieren des Zugriffs auf Blob- und Warteschlangendaten mit verwalteten Identitäten für Azure-Ressourcen
 
@@ -45,9 +45,9 @@ Nach der Authentifizierung erhält die Azure Identity-Clientbibliothek Tokenanm
 
 Weitere Informationen zur Azure Identity-Clientbibliothek für .NET finden Sie unter [Azure Identity-Clientbibliothek für .NET](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/identity/Azure.Identity). Die Referenzdokumentation zur Azure Identity-Clientbibliothek finden Sie unter [Azure.Identity-Namespace](/dotnet/api/azure.identity).
 
-### <a name="assign-role-based-access-control-rbac-roles-for-access-to-data"></a>Zuweisen der rollenbasierten Zugriffssteuerung (RBAC) für den Datenzugriff
+### <a name="assign-azure-roles-for-access-to-data"></a>Zuweisen von Azure-Rollen für den Zugriff auf Daten
 
-Wenn ein Azure AD-Sicherheitsprinzipal versucht, auf Blob- oder Warteschlangendaten zuzugreifen, muss dieser Sicherheitsprinzipal über Berechtigungen für die Ressource verfügen. Dem Sicherheitsprinzipal muss eine RBAC-Rolle zugewiesen werden, die den Zugriff auf Blob- oder Warteschlangendaten in Azure Storage ermöglicht. Dabei spielt es keine Rolle, ob es sich bei dem Sicherheitsprinzipal um eine verwaltete Identität in Azure oder um ein Azure AD-Benutzerkonto handelt, mit dem Code in der Entwicklungsumgebung ausgeführt wird. Informationen zur Zuweisung von Berechtigungen per RBAC finden Sie unter **Autorisieren des Zugriffs auf Azure-Blobs und -Warteschlangen mit Azure Active Directory** im Abschnitt [Zuweisen von RBAC-Rollen für Zugriffsrechte](../common/storage-auth-aad.md#assign-rbac-roles-for-access-rights).
+Wenn ein Azure AD-Sicherheitsprinzipal versucht, auf Blob- oder Warteschlangendaten zuzugreifen, muss dieser Sicherheitsprinzipal über Berechtigungen für die Ressource verfügen. Dem Sicherheitsprinzipal muss eine Azure-Rolle zugewiesen werden, die den Zugriff auf Blob- oder Warteschlangendaten in Azure Storage ermöglicht. Dabei spielt es keine Rolle, ob es sich beim Sicherheitsprinzipal um eine verwaltete Identität in Azure oder um ein Azure AD-Benutzerkonto handelt, mit der bzw. dem Code in der Entwicklungsumgebung ausgeführt wird. Informationen zur Zuweisung von Berechtigungen per RBAC finden Sie unter **Autorisieren des Zugriffs auf Azure-Blobs und -Warteschlangen mit Azure Active Directory** im Abschnitt [Zuweisen von Azure-Rollen für Zugriffsrechte](../common/storage-auth-aad.md#assign-azure-roles-for-access-rights).
 
 ### <a name="authenticate-the-user-in-the-development-environment"></a>Authentifizieren des Benutzers in der Entwicklungsumgebung
 
@@ -61,7 +61,7 @@ Wenn Ihre Entwicklungsumgebung kein einmaliges Anmelden bzw. keine Anmeldung üb
 
 #### <a name="create-the-service-principal"></a>Erstellen des Dienstprinzipals
 
-Rufen Sie den Befehl [az ad sp create-for-rbac](/cli/azure/ad/sp#az-ad-sp-create-for-rbac) auf, um einen Dienstprinzipal über die Azure-Befehlszeilenschnittstelle zu erstellen und eine RBAC-Rolle zuzuweisen. Geben Sie eine Azure Storage-Datenzugriffsrolle an, die dem neuen Dienstprinzipal zugewiesen werden soll. Geben Sie außerdem den Bereich für die Rollenzuweisung an. Weitere Informationen zu den für Azure Storage bereitgestellten integrierten Rollen finden Sie unter [Integrierte Rollen für die rollenbasierte Zugriffssteuerung in Azure](../../role-based-access-control/built-in-roles.md).
+Wenn Sie einen Dienstprinzipal über die Azure-Befehlszeilenschnittstelle erstellen und eine Azure-Rolle zuweisen möchten, rufen Sie den Befehl [az ad sp create-for-rbac](/cli/azure/ad/sp#az-ad-sp-create-for-rbac) auf. Geben Sie eine Azure Storage-Datenzugriffsrolle an, die dem neuen Dienstprinzipal zugewiesen werden soll. Geben Sie außerdem den Bereich für die Rollenzuweisung an. Weitere Informationen zu den für Azure Storage bereitgestellten integrierten Rollen finden Sie unter [In Azure integrierte Rollen](../../role-based-access-control/built-in-roles.md).
 
 Wenn Sie nicht über ausreichende Berechtigungen zum Zuweisen einer Rolle zum Dienstprinzipal verfügen, müssen Sie möglicherweise den Kontobesitzer oder den Administrator bitten, die Rollenzuweisung vorzunehmen.
 
@@ -87,7 +87,7 @@ Mit dem Befehl `az ad sp create-for-rbac` wird eine Liste der Dienstprinzipaleig
 ```
 
 > [!IMPORTANT]
-> Die RBAC-Rollenzuweisungen können einige Minuten dauern.
+> Die Azure-Rollenzuweisungen können einige Minuten dauern.
 
 #### <a name="set-environment-variables"></a>Festlegen von Umgebungsvariablen
 

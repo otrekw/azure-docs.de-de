@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: tutorial
 ms.date: 07/01/2020
 ms.author: pafarley
-ms.openlocfilehash: 16869ab3a1961879cfcda1eaa383073cd2309a01
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 981c6f6bb2b0eb597b32ce8e428ef0aa7d19929b
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87433382"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88003353"
 ---
 # <a name="tutorial-create-a-form-processing-app-with-ai-builder"></a>Tutorial: Erstellen einer Formularverarbeitungs-App mit AI Builder
 
@@ -33,7 +33,7 @@ In diesem Tutorial lernen Sie Folgendes:
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Mindestens fünf Formulare gleichen Typs, die als Trainings-/Testdaten verwendet werden können. Tipps und Optionen für die Zusammenstellung eines Trainingsdatasets finden Sie unter [Erstellen eines Trainingsdatasets für ein benutzerdefiniertes Modell](./build-training-data-set.md). In dieser Schnellstartanleitung können Sie die Dateien im Ordner **Trainieren** des [Beispieldatasets](https://go.microsoft.com/fwlink/?linkid=2128080) verwenden.
-* Eine Power Apps- oder Power Automate-Lizenz (siehe [Leitfaden zur Lizenzierung](https://go.microsoft.com/fwlink/?linkid=2085130)). Die Lizenz muss [Dataflex Pro](https://powerplatform.microsoft.com/en-us/common-data-service/) enthalten.
+* Eine Power Apps- oder Power Automate-Lizenz (siehe [Leitfaden zur Lizenzierung](https://go.microsoft.com/fwlink/?linkid=2085130)). Die Lizenz muss [Common Data Service](https://powerplatform.microsoft.com/en-us/common-data-service/) beinhalten.
 * Eine AI Builder-Instanz ([Add-On oder Testversion](https://go.microsoft.com/fwlink/?LinkId=2113956&clcid=0x409)).
 
 

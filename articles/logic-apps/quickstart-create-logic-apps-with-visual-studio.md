@@ -6,13 +6,13 @@ ms.suite: integration
 ms.reviewer: logicappspm
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 07/22/2020
-ms.openlocfilehash: cd46821b74803d62be0361346166ed78a5f53286
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.date: 08/07/2020
+ms.openlocfilehash: cc38210690c88fec826dc727775d01884dedd997
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87132363"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008881"
 ---
 # <a name="quickstart-create-automated-tasks-processes-and-workflows-with-azure-logic-apps---visual-studio"></a>Schnellstart: Erstellen von automatisierten Aufgaben, Prozessen und Workflows mit Azure Logic Apps – Visual Studio
 
@@ -28,7 +28,7 @@ In diesem Schnellstart erstellen Sie die gleiche Logik-App wie im Schnellstart z
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein Azure-Abonnement. Falls Sie kein Abonnement besitzen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/).
+* Ein Azure-Konto und ein Azure-Abonnement. Falls Sie kein Abonnement besitzen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/). Wenn Sie über ein Azure Government-Abonnement verfügen, führen Sie [diese zusätzlichen Schritte](#azure-government) aus, um Visual Studio für Azure Government Cloud einzurichten.
 
 * Laden Sie diese Tools herunter, und installieren Sie sie, falls sie noch nicht vorhanden sind:
 
@@ -51,12 +51,6 @@ In diesem Schnellstart erstellen Sie die gleiche Logik-App wie im Schnellstart z
   
     Sie können die Azure Logic Apps-Tools entweder direkt vom Visual Studio Marketplace herunterladen und installieren oder sich über das [Installieren dieser Erweiterung aus Visual Studio](/visualstudio/ide/finding-and-using-visual-studio-extensions) informieren. Achten Sie darauf, dass Sie Visual Studio nach Abschluss der Installation neu starten.
 
-  * Informationen zur Verwendung von Azure Government Abonnements mit Visual Studio sowie zusätzliche Einrichtungsinformationen finden Sie in diesen Themen:
-
-    * Visual Studio 2019: [Schnellstart: Herstellen einer Verbindung mit Azure Government über Visual Studio](../azure-government/documentation-government-connect-vs.md)
-
-    * Visual Studio 2017: [Einführung in die Visual Studio-Erweiterung „Azure Environment Selector“ (Azure-Umgebungsauswahl)](https://devblogs.microsoft.com/azuregov/introducing-the-azure-environment-selector-visual-studio-extension/), die Sie im [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=SteveMichelotti.AzureEnvironmentSelector) herunterladen und installieren können.
-
 * Internetzugriff bei Verwendung des eingebetteten Logik-App-Designers
 
   Für den Designer ist eine Internetverbindung zum Erstellen von Ressourcen in Azure und zum Lesen von Eigenschaften und Daten von Connectors in Ihrer Logik-App erforderlich.
@@ -64,7 +58,35 @@ In diesem Schnellstart erstellen Sie die gleiche Logik-App wie im Schnellstart z
 * Ein von Logic Apps unterstütztes E-Mail-Konto, z.B. Office 365 Outlook, Outlook.com oder Gmail. Informationen zu Connectors anderer Anbieter finden Sie in [dieser Liste](/connectors/). In diesem Beispiel wird Office 365 Outlook verwendet. Bei Verwendung eines anderen Anbieters sind die Schritte im Großen und Ganzen identisch, aber die Benutzeroberfläche weicht ggf. etwas ab.
 
   > [!IMPORTANT]
-  > Wenn Sie den Gmail-Connector verwenden möchten, können nur G-Suite-Geschäftskonten diesen Connector ohne Einschränkung in Logik-Apps verwenden. Wenn Sie über ein Gmail-Consumerkonto verfügen, können Sie diesen Connector nur mit bestimmten von Google genehmigten Diensten verwenden, oder Sie können [eine Google-Client-App erstellen, die für die Authentifizierung mit Ihrem Gmail-Connector verwendet werden soll](/connectors/gmail/#authentication-and-bring-your-own-application). Weitere Informationen finden Sie unter [Datensicherheit und Datenschutzrichtlinien für Google-Connectors in Azure Logic Apps](../connectors/connectors-google-data-security-privacy-policy.md).
+  > Wenn Sie den Gmail-Connector verwenden möchten, können nur G-Suite-Geschäftskonten diesen Connector ohne Einschränkung in Logik-Apps verwenden. Wenn Sie über ein Gmail-Consumerkonto verfügen, können Sie diesen Connector nur mit bestimmten von Google genehmigten Diensten verwenden, oder Sie können [eine Google-Client-App erstellen, die für die Authentifizierung mit Ihrem Gmail-Connector verwendet werden soll](/connectors/gmail/#authentication-and-bring-your-own-application). Weitere Informationen finden Sie unter [Datensicherheit und Datenschutzrichtlinien für Google-Connectors in Azure Logic Apps](../connectors/connectors-google-data-security-privacy-policy.md).
+
+<a name="azure-government"></a>
+
+## <a name="set-up-visual-studio-for-azure-government"></a>Einrichten von Visual Studio für Azure Government
+
+### <a name="visual-studio-2017"></a>Visual Studio 2017
+
+Sie können die [Visual Studio-Erweiterung „Azure Environment Selector“ (Azure-Umgebungsauswahl)](https://devblogs.microsoft.com/azuregov/introducing-the-azure-environment-selector-visual-studio-extension/) verwenden, die Sie im [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=SteveMichelotti.AzureEnvironmentSelector) herunterladen und installieren können.
+
+### <a name="visual-studio-2019"></a>Visual Studio 2019
+
+Wenn Sie Azure Government-Abonnements in Azure Logic Apps verwenden möchten, müssen Sie [Visual Studio einen Ermittlungsendpunkt für Azure Government Cloud hinzufügen](../azure-government/documentation-government-connect-vs.md). *Bevor Sie sich jedoch mit Ihrem Azure Government-Konto bei Visual Studio anmelden*, müssen Sie die JSON-Datei umbenennen, die nach dem Hinzufügen des Ermittlungsendpunkts generiert wird. Gehen Sie dazu wie folgt vor:
+
+1. Schließen Sie Visual Studio.
+
+1. Suchen Sie die generierte JSON-Datei mit dem Namen `Azure U.S. Government-A3EC617673C6C70CC6B9472656832A26.Configuration` am folgenden Speicherort:
+
+   `%localappdata%\.IdentityService\AadConfigurations`
+ 
+1. Benennen Sie die JSON-Datei in `AadProvider.Configuration.json` um.
+
+1. Starten Sie Visual Studio neu.
+
+1. Fahren Sie mit den Schritten für die Anmeldung mit Ihrem Azure Government-Konto fort.
+
+Wenn Sie dieses Setup zurücksetzen möchten, löschen Sie die JSON-Datei am folgenden Speicherort, und starten Sie Visual Studio neu:
+
+`%localappdata%\.IdentityService\AadConfigurations\AadProvider.Configuration.json`
 
 <a name="create-resource-group-project"></a>
 

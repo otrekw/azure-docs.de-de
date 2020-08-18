@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 73b7171b89b26926992e95f77e376e7bb7731eff
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: 33772d46f363b161c1faa5c953f48a702ae2b8bf
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87408168"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009650"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-portal"></a>Einrichten einer Azure Digital Twins-Instanz und der Authentifizierung (Portal)
 
@@ -24,27 +24,13 @@ In dieser Version dieses Artikels werden diese Schritte manuell nacheinander mit
 * Wenn Sie diese Schritte manuell mithilfe der CLI durchlaufen möchten, finden Sie weitere Informationen in der CLI-Version dieses Artikels: [*Vorgehensweise: Einrichten einer Instanz und der Authentifizierung (CLI)* ](how-to-set-up-instance-cli.md).
 * Ein Beispiel zur Ausführung eines automatisierten Setups mit einem Bereitstellungsskript finden Sie in der Skriptversion dieses Artikels: [*Verwenden Einrichten einer Instanz und der Authentifizierung (über ein Skript)* ](how-to-set-up-instance-scripted.md).
 
-[!INCLUDE [digital-twins-setup-steps.md](../../includes/digital-twins-setup-steps.md)]
- 
-Melden Sie sich mit Ihren Anmeldeinformationen am [Azure-Portal](https://ms.portal.azure.com/) an.
-
-## <a name="prerequisites-permission-requirements"></a>Voraussetzungen: Berechtigungsanforderungen
-
-Um alle Schritte in diesem Artikel durchführen zu können, müssen Sie in Ihrem Azure-Abonnement als Besitzer klassifiziert sein. 
-
-Sie können die Berechtigungsstufe auf der Seite [Abonnements](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) im Azure-Portal überprüfen (Sie können diesen Link verwenden oder über die Suchleiste des Portals nach *Abonnements* suchen). Suchen Sie nach dem Namen des Abonnements, das Sie verwenden, und zeigen Sie Ihre Rolle für das Abonnement in der Spalte *Meine Rolle* an. Wenn Sie Besitzer sind, lautet dieser Wert *Besitzer*:
-
-:::image type="content" source="media/how-to-set-up-instance/portal/subscriptions-role.png" alt-text="Ansicht der Seite „Abonnements“ im Azure-Portal, die den Benutzer als Besitzer anzeigt" lightbox="media/how-to-set-up-instance/portal/subscriptions-role.png":::
-
-Wenn Sie feststellen, dass der Wert *Mitwirkender* oder anders als *Besitzer* lautet, können Sie auf eine der folgenden Arten vorgehen:
-* Wenden Sie sich an den Besitzer Ihres Abonnements, und bitten Sie den Besitzer, die Schritte in diesem Artikel in Ihrem Namen auszuführen.
-* Wenden Sie sich an Ihren Abonnementbesitzer oder an eine Person mit der Rolle „Benutzerzugriffsadministrator“ für das Abonnement, und fordern Sie an, zu einem Besitzer des Abonnements heraufgestuft zu werden, damit Sie über die erforderlichen Berechtigungen zum Fortfahren verfügen. Ob diese Vorgehensweise angemessen ist, hängt von Ihrer Organisation und Ihrer Rolle in dieser Organisation ab.
+[!INCLUDE [digital-twins-setup-steps-prereq.md](../../includes/digital-twins-setup-steps-prereq.md)]
 
 ## <a name="create-the-azure-digital-twins-instance"></a>Erstellen der Azure Digital Twins-Instanz
 
-In diesem Abschnitt **erstellen Sie eine neue Azure Digital Twins-Instanz** mithilfe des Azure-Portals.
+In diesem Abschnitt **erstellen Sie eine neue Azure Digital Twins-Instanz** über das [Azure-Portal](https://ms.portal.azure.com/). Navigieren Sie zum Portal, und melden Sie sich mit Ihren Anmeldeinformationen an.
 
-Nachdem Sie sich am [Azure-Portal](https://ms.portal.azure.com/) angemeldet haben, wählen Sie _Ressource erstellen_ im Homepagemenü der Azure-Dienste aus.
+Sobald Sie im Portal sind, wählen Sie im Menü auf der Homepage der Azure-Dienste _Ressource erstellen_ aus.
 
 :::image type="content" source= "media/how-to-set-up-instance/portal/create-resource.png" alt-text="Auswählen von „Ressource erstellen“ auf der Homepage des Azure-Portals":::
 
@@ -62,7 +48,7 @@ Geben Sie auf der folgenden Seite *Ressource erstellen* die unten angegebenen We
 
 Wenn Sie fertig sind, wählen Sie _Überprüfen und erstellen_ aus. Dadurch gelangen Sie zu einer Zusammenfassungsseite, auf der Sie die eingegebenen Instanzdetails überprüfen und _Erstellen_ auswählen können. 
 
-### <a name="verify-success"></a>Überprüfen des erfolgreichen Abschlusses
+### <a name="verify-success-and-collect-important-values"></a>Überprüfen des Erfolgs und Erfassen wichtiger Werte
 
 Nachdem Sie *Erstellen* ausgewählt haben, können Sie den Status der Bereitstellung Ihrer Instanz in Ihren Azure-Benachrichtigungen auf der Symbolleiste des Portals anzeigen. In der Benachrichtigung wird angezeigt, wenn die Bereitstellung erfolgreich war, und Sie können die Schaltfläche _Zu Ressource wechseln_ auswählen, um Ihre erstellte Instanz anzuzeigen.
 
@@ -77,7 +63,7 @@ Notieren Sie sich von der Seite *Übersicht* der Instanz den *Namen*, die *Resso
 
 :::image type="content" source="media/how-to-set-up-instance/portal/instance-important-values.png" alt-text="Hervorheben der wichtigen Werte von der Übersichtsseite der Instanz":::
 
-Die Azure Digital Twins-Instanz ist jetzt einsatzbereit. Nun stellen Sie die entsprechenden Azure-Benutzerberechtigungen für die Verwaltung der Instanz zur Verfügung.
+Die Azure Digital Twins-Instanz ist jetzt einsatzbereit. Im nächsten Schritt stellen Sie die entsprechenden Azure-Benutzerberechtigungen für die Verwaltung der Instanz zur Verfügung.
 
 ## <a name="set-up-user-access-permissions"></a>Einrichten von Benutzerzugriffsberechtigungen
 
@@ -87,7 +73,7 @@ Die Azure Digital Twins-Instanz ist jetzt einsatzbereit. Nun stellen Sie die ent
 
 :::image type="content" source="media/how-to-set-up-instance/portal/add-role-assignment-1.png" alt-text="Auswählen der Option zum Hinzufügen einer Rollenzuweisung auf der Seite „Zugriffssteuerung (IAM)“":::
 
-Geben Sie auf der folgenden Seite *Rollenzuweisung hinzufügen* die Werte ein (muss von einem Besitzer des Azure-Abonnements durchgeführt werden):
+Geben Sie auf der folgenden Seite *Rollenzuweisung hinzufügen* die Werte ein (dies muss ein Benutzer im Azure-Abonnement mit [ausreichenden Berechtigungen](#prerequisites-permission-requirements) erledigen):
 * **Rolle**: Wählen Sie im Dropdownmenü *Azure Digital Twins-Besitzer (Vorschau)* aus.
 * **Zugriff zuweisen zu**: Wählen Sie im Dropdownmenü *Azure AD-Benutzer, -Gruppe oder -Dienstprinzipal* aus.
 * **Select**: Suchen Sie nach dem Namen oder der E-Mail-Adresse des Benutzers, der zugewiesen werden soll. Wenn Sie das Ergebnis auswählen, wird der Benutzer im Abschnitt *Ausgewählte Mitglieder* angezeigt.

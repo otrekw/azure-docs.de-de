@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 07/17/2020
+ms.date: 07/29/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ce816b74c12333477203cce690c955d5aaf1cda
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3a197c879e4c091c9b421c194e1f6a50b91d24bb
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87093416"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88007369"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-egress"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Egress
 
@@ -45,7 +45,7 @@ In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure
 
 * Egress unterstützt **SP- und IDP-initiiertes** einmaliges Anmelden
 * Egress unterstützt die **Just-In-Time**-Benutzerbereitstellung
-* Nach dem Konfigurieren von Egress können Sie eine Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.
+* Nach dem Konfigurieren von Egress können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.
 
 ## <a name="adding-egress-from-the-gallery"></a>Hinzufügen von Egress aus dem Katalog
 
@@ -130,7 +130,7 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 1. Führen Sie auf der folgenden Seite die folgenden Schritte aus:
 
-    ![Egress-Konfiguration](./media/egress-tutorial/configure1.PNG)
+    ![Egress-Konfiguration](./media/egress-tutorial/configure-1.PNG)
 
     a. Klicken Sie im Menü auf der linken Seite auf **SSO-Konfiguration**.
 
@@ -150,11 +150,11 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 1. Klicken Sie im Menü auf der linken Seite auf **Benutzer einladen**, und klicken Sie auf **Einzelnen Benutzer einladen**, um den Benutzer hinzuzufügen.
 
-    ![Erstellen eines Egress-Testbenutzers](./media/egress-tutorial/createuser1.PNG)
+    ![Erstellen eines Egress-Testbenutzers](./media/egress-tutorial/create-user-1.PNG)
 
 1. Füllen Sie die erforderlichen Felder aus, und klicken Sie auf **Einladen**.
 
-    ![Erstellen eines Egress-Testbenutzers](./media/egress-tutorial/createuser2.PNG)
+    ![Erstellen eines Egress-Testbenutzers](./media/egress-tutorial/create-user-2.PNG)
 
 ## <a name="test-sso"></a>Testen des einmaligen Anmeldens 
 

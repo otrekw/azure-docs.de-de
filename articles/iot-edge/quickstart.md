@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 748e31499a4aa8f1ddd2cea4e918b688426338fa
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.openlocfilehash: 73d9eed757acb4c58052a34811c490a70d306995
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87117249"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88061488"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-virtual-windows-device"></a>Schnellstart: Bereitstellen Ihres ersten IoT Edge-Moduls auf einem virtuellen Windows-Gerät
 
@@ -65,7 +65,9 @@ IoT Edge-Gerät:
   az vm create --resource-group IoTEdgeResources --name EdgeVM --image MicrosoftWindowsDesktop:Windows-10:rs5-pro:latest --admin-username azureuser --admin-password {password} --size Standard_DS1_v2
   ```
 
-  Das Erstellen und Starten des neuen virtuellen Computers kann ein paar Minuten in Anspruch nehmen. Sie können dann eine RDP-Datei herunterladen, die Sie verwenden, wenn Sie eine Verbindung mit Ihrem virtuellen Computer herstellen:
+  Das Erstellen und Starten des neuen virtuellen Computers kann ein paar Minuten in Anspruch nehmen.
+
+  Nach dem Starten des virtuellen Computers können Sie eine RDP-Datei herunterladen, die Sie beim Herstellen einer Verbindung mit Ihrem virtuellen Computer verwenden:
 
   1. Navigieren Sie zu Ihrem neuen virtuellen Windows-Computer im Azure-Portal.
   1. Wählen Sie **Verbinden**.
@@ -74,6 +76,8 @@ IoT Edge-Gerät:
   Öffnen Sie diese Datei mit der Remotedesktopverbindung, um eine Verbindung mit Ihrem virtuellen Windows-Computer unter Verwendung des Administratornamens und Kennworts herzustellen, die Sie mit dem Befehl `az vm create` angegeben haben.
 
 > [!NOTE]
+> Ihr virtueller Windows-Computer startet mit der Windows-Version 1809 (Build 17763). Dabei handelt es sich um den aktuellen [Windows-Build mit langfristigem Support](https://docs.microsoft.com/windows/release-information/). Windows sucht standardmäßig alle 22 Stunden automatisch nach Updates. Nach einer Überprüfung Ihres virtuellen Computers überträgt Windows ein Versionsupdate, das nicht mit IoT Edge für Windows kompatibel ist. Dadurch wird die weitere Verwendung der Features von IoT Edge für Windows verhindert. Es wird empfohlen, die Verwendung des virtuellen Computers auf eine Dauer von maximal 22 Stunden zu beschränken oder [Windows-Updates vorübergehend anzuhalten](https://support.microsoft.com/help/4028233/windows-10-manage-updates).
+>
 > In dieser Schnellstartanleitung wird aus Gründen der Einfachheit ein virtueller Windows-Desktopcomputer verwendet. Weitere Informationen darüber, welche Windows-Betriebssysteme für Produktionsszenarien allgemein verfügbar sind, finden Sie unter [Von Azure IoT Edge unterstützte Systeme](support.md).
 >
 > Wenn Sie bereit sind, Ihr eigenes Windows-Gerät für IoT Edge zu konfigurieren (einschließlich Geräte mit IoT Core), führen Sie die Schritte unter [Installieren der Azure IoT Edge-Runtime unter Windows](how-to-install-iot-edge-windows.md) aus.

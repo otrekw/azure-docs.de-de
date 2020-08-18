@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: c8cd789b16f839c60249b36f570ca1c945ef4e01
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 1af549feb551eca02bb1ef8df6481eceb959f6d1
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87337176"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88042716"
 ---
 # <a name="what-is-azure-iot-central"></a>Was ist Azure IoT Central?
 
@@ -34,10 +34,10 @@ In diesem Artikel werden folgende Punkte für IoT Central behandelt:
 
 In der Dokumentation von IoT Central werden vier Personas verwendet, die mit einer IoT Central-Anwendung interagieren:
 
-- Ein _Lösungsentwickler_ definiert die Arten von Geräten, die eine Verbindung mit der Anwendung herstellen, und passt die Anwendung für den Bediener an.
-- Ein _Bediener_ verwaltet die mit der Anwendung verbundenen Geräte.
+- Ein _Lösungsentwickler_ [definiert die Arten von Geräten](howto-set-up-template.md), die eine Verbindung mit der Anwendung herstellen, und passt die Anwendung für den Operator an.
+- Ein _Operator_ [verwaltet die Geräte](howto-manage-devices.md), die mit der Anwendung verbunden sind.
 - Ein _Administrator_ kümmert sich um administrative Aufgaben – etwa um die [Verwaltung von Benutzern und Rollen](howto-administer.md) innerhalb der Anwendung.
-- Ein _Geräteentwickler_ erstellt den Code, der auf einem mit der Anwendung verbundenen Gerät oder IoT Edge-Modul ausgeführt wird.
+- Ein _Geräteentwickler_ [erstellt den Code, der auf einem mit der Anwendung verbundenen Gerät](concepts-telemetry-properties-commands.md) oder [IoT Edge-Modul ausgeführt wird](concepts-iot-edge.md).
 
 ## <a name="create-your-iot-central-application"></a>Erstellen der IoT Central-Anwendung
 
@@ -55,7 +55,7 @@ Als Lösungsentwickler können Sie mithilfe der webbasierten Tools eine _Geräte
 - Geräteeigenschaften, die von einem Gerät festgelegt werden und in der Anwendung schreibgeschützt sind
 - Vom Bediener festgelegte Eigenschaften, die das Verhalten des Geräts bestimmen
 
-Diese Gerätevorlage enthält Folgendes:
+Diese [Gerätevorlage](howto-set-up-template.md) enthält Folgendes:
 
 - Ein _Gerätefunktionsmodell_, das die Funktionen beschreibt, die ein Gerät implementieren soll, z. B. die gesendeten Telemetriedaten und die gemeldeten Eigenschaften.
 - Cloudeigenschaften, die nicht auf dem Gerät gespeichert werden
@@ -83,13 +83,13 @@ Als Lösungsentwickler können Sie auch die Benutzeroberfläche der IoT Central-
 
 ## <a name="manage-your-devices"></a>Verwalten von Geräten
 
-Als Bediener verwenden Sie die Benutzeroberfläche der IoT Central-Anwendung, um die Geräte in Ihrer IoT Central-Lösung zu verwalten. Bediener führen Aufgaben wie die folgenden aus:
+Als Operator verwenden Sie die IoT Central-Anwendung zur [Verwaltung der Geräte](howto-manage-devices.md) in Ihrer IoT Central-Lösung. Bediener führen Aufgaben wie die folgenden aus:
 
 - Überwachen der mit der Anwendung verbundenen Geräte
 - Behandeln und Beheben von Problemen mit Geräten
 - Bereitstellen neuer Geräte
 
-Als Lösungsentwickler können Sie benutzerdefinierte Regeln und Aktionen definieren, die über Datenstreaming von verbundenen Geräten ausgeführt werden. Bediener können diese Regeln auf der Geräteebene aktivieren oder deaktivieren, um Aufgaben innerhalb der Anwendung zu steuern und zu automatisieren.
+Als Lösungsentwickler können Sie [benutzerdefinierte Regeln und Aktionen definieren](howto-configure-rules.md), die über Datenstreaming von verbundenen Geräten ausgeführt werden. Bediener können diese Regeln auf der Geräteebene aktivieren oder deaktivieren, um Aufgaben innerhalb der Anwendung zu steuern und zu automatisieren.
 
 Für jede skalierbare IoT-Lösung ist eine strukturierte Geräteverwaltung unverzichtbar. Es reicht nicht aus, Ihre Geräte einfach nur mit der Cloud zu verbinden. Sie müssen auch die Konnektivität und die Integrität Ihrer Geräte gewährleisten. Operatoren stehen folgende IoT Central-Funktionen zur Verfügung, um Ihre Geräte über den gesamten Anwendungslebenszyklus hinweg zu verwalten:
 

@@ -7,12 +7,12 @@ ms.date: 7/14/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 0cde9caa2f2b68b1e75eac635a81865cc4b6b33c
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 571f0e0ceff0adfbf1814abc627fcab6b23acbe1
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87351873"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905855"
 ---
 # <a name="tutorial-connect-a-sample-iot-plug-and-play-preview-multiple-component-device-application-to-iot-hub-python"></a>Tutorial: Herstellen einer Verbindung zwischen einer exemplarischen IoT Plug & Play Preview-Geräteanwendung mit mehreren Komponenten und IoT Hub (Python)
 
@@ -86,26 +86,26 @@ Der Temperaturregler verfügt über mehrere Komponenten sowie über eine Stammsc
 
 1. Er importiert `pnp_helper_preview_refresh.py`, um Zugriff auf Hilfsmethoden zu erhalten.
 
-1. Er definiert zwei Modellbezeichner für digitale Zwillinge (Digital Twin Model Identifiers, DTMIs), um zwei Schnittstellen, die im DTDL-Modell definiert sind, eindeutig darzustellen. Von den Komponenten in einem echten Temperaturregler müssen die beiden folgenden Schnittstellen implementiert werden. Die beiden Schnittstellen sind bereits in einem zentralen Repository veröffentlicht. Die DTMIs müssen dem Benutzer bekannt sein und unterscheiden sich je nach Geräteimplementierungsszenario. Im vorliegenden Beispiel stellen die beiden Schnittstellen Folgendes dar:
+2. Er definiert zwei Modellbezeichner für digitale Zwillinge (Digital Twin Model Identifiers, DTMIs), um zwei Schnittstellen, die im DTDL-Modell definiert sind, eindeutig darzustellen. Von den Komponenten in einem echten Temperaturregler müssen die beiden folgenden Schnittstellen implementiert werden. Die beiden Schnittstellen sind bereits in einem zentralen Repository veröffentlicht. Die DTMIs müssen dem Benutzer bekannt sein und unterscheiden sich je nach Geräteimplementierungsszenario. Im vorliegenden Beispiel stellen die beiden Schnittstellen Folgendes dar:
 
   - Einen Thermostat
   - Von Azure entwickelte Geräteinformationen
 
-. Er definiert die DTMI-Modell-ID (`model_id`) für das zu implementierende Gerät. Der DTMI ist benutzerdefiniert und muss dem DTMI in der DTDL-Modelldatei entsprechen.
+3. Er definiert die DTMI-Modell-ID (`model_id`) für das zu implementierende Gerät. Der DTMI ist benutzerdefiniert und muss dem DTMI in der DTDL-Modelldatei entsprechen.
 
-1. Er definiert die Namen, die für die Komponenten in der DTDL-Datei vergeben wurden. Die DTDL enthält zwei Thermostate und eine Geräteinformationskomponente. In der Stammschnittstelle wird außerdem eine Konstante namens `serial_number` definiert. Die Seriennummer (`serial_number`) eines Geräts ist unveränderlich.
+4. Er definiert die Namen, die für die Komponenten in der DTDL-Datei vergeben wurden. Die DTDL enthält zwei Thermostate und eine Geräteinformationskomponente. In der Stammschnittstelle wird außerdem eine Konstante namens `serial_number` definiert. Die Seriennummer (`serial_number`) eines Geräts ist unveränderlich.
 
-1. Er definiert Befehlshandlerimplementierungen. Dadurch wird definiert, wie das Gerät auf eingehende Befehlsanforderungen reagiert.
+5. Er definiert Befehlshandlerimplementierungen. Dadurch wird definiert, wie das Gerät auf eingehende Befehlsanforderungen reagiert.
 
-1. Er definiert Funktionen zum Erstellen einer Befehlsantwort. Dadurch wird definiert, wie das Gerät auf Befehlsanforderungen antwortet. Sie erstellen Befehlsantwortfunktionen, wenn von einem Befehl eine benutzerdefinierte Antwort an den IoT-Hub zurückgesendet werden muss. Wurde für einen Befehl keine Antwortfunktion bereitgestellt, wird eine generische Antwort gesendet. In diesem Beispiel ist nur für den Befehl **getMaxMinReport** eine benutzerdefinierte Antwort vorhanden.
+6. Er definiert Funktionen zum Erstellen einer Befehlsantwort. Dadurch wird definiert, wie das Gerät auf Befehlsanforderungen antwortet. Sie erstellen Befehlsantwortfunktionen, wenn von einem Befehl eine benutzerdefinierte Antwort an den IoT-Hub zurückgesendet werden muss. Wurde für einen Befehl keine Antwortfunktion bereitgestellt, wird eine generische Antwort gesendet. In diesem Beispiel ist nur für den Befehl **getMaxMinReport** eine benutzerdefinierte Antwort vorhanden.
 
-1. Er definiert eine Funktion, um Telemetriedaten von diesem Gerät zu senden. Telemetriedaten werden von beiden Thermostaten sowie von der Stammschnittstelle gesendet. Von dieser Funktion wird ein optionaler Komponentennamenparameter akzeptiert, um die Komponente zu identifizieren, von der die Telemetriedaten gesendet wurden.
+7. Er definiert eine Funktion, um Telemetriedaten von diesem Gerät zu senden. Telemetriedaten werden von beiden Thermostaten sowie von der Stammschnittstelle gesendet. Von dieser Funktion wird ein optionaler Komponentennamenparameter akzeptiert, um die Komponente zu identifizieren, von der die Telemetriedaten gesendet wurden.
 
-1. Er definiert einen Listener für Befehlsanforderungen.
+8. Er definiert einen Listener für Befehlsanforderungen.
 
-1. Er definiert einen Listener für die Aktualisierung gewünschter Eigenschaften.
+9. Er definiert einen Listener für die Aktualisierung gewünschter Eigenschaften.
 
-1. Er enthält eine Funktion vom Typ `main`, für die Folgendes gilt:
+10. Er enthält eine Funktion vom Typ `main`, für die Folgendes gilt:
 
     1. Sie verwendet das Geräte-SDK, um einen Geräteclient zu erstellen und eine Verbindung mit Ihrem IoT-Hub herzustellen. Vom Gerät wird die Modell-ID (`model_id`) gesendet, damit es vom IoT-Hub als IoT Plug & Play-Gerät identifiziert werden kann.
 

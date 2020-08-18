@@ -1,7 +1,7 @@
 ---
 title: Authentifizierung mit Microsoft Azure Maps
 titleSuffix: Azure Maps
-description: In diesem Artikel wird die Authentifizierung per Azure Active Directory und gemeinsam verwendetem Schlüssel beschrieben.
+description: 'Lernen Sie die zwei Methoden zur Authentifizierung von Anforderungen in Azure Maps kennen: Authentifizierung mit gemeinsam verwendetem Schlüssel und Azure Active Directory (Azure AD)-Authentifizierung.'
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 07/27/2020
@@ -10,12 +10,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: af3f9b4595be5af2477fdbef4e5f0a15224e8a93
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 4a923fd34391137f2064cb338ea180ae3782f5e2
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285831"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88036843"
 ---
 # <a name="authentication-with-azure-maps"></a>Authentifizierung mit Azure Maps
 
@@ -80,7 +80,7 @@ Weitere Informationen zum Anzeigen Ihrer Client-ID finden Sie unter [Anzeigen vo
 
 ## <a name="authorization-with-role-based-access-control"></a>Autorisierung mit rollenbasierter Zugriffssteuerung
 
-Azure Maps unterstützt den Zugriff auf alle Prinzipaltypen für die [rollenbasierte Zugriffssteuerung](https://docs.microsoft.com/azure/role-based-access-control/overview) in Azure, einschließlich einzelner Azure AD-Benutzer, -Gruppen und -Anwendungen, Azure-Ressourcen sowie verwalteter Azure-Identitäten. Prinzipaltypen wird ein Berechtigungssatz gewährt, der auch als Rollendefinition bezeichnet wird. Eine Rollendefinition bietet Berechtigungen für REST-API-Aktionen. Das Anwenden des Zugriffs auf ein oder mehrere Azure Maps-Konten wird als Bereich bezeichnet. Durch das Anwenden eines Prinzipals, einer Rollendefinition und eines Bereichs wird eine Rollenzuweisung erstellt. 
+Azure Maps unterstützt den Zugriff auf alle Prinzipaltypen für die [rollenbasierte Zugriffssteuerung in Azure (Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview), einschließlich einzelner Azure AD-Benutzer, -Gruppen und -Anwendungen, Azure-Ressourcen sowie verwalteter Azure-Identitäten. Prinzipaltypen wird ein Berechtigungssatz gewährt, der auch als Rollendefinition bezeichnet wird. Eine Rollendefinition bietet Berechtigungen für REST-API-Aktionen. Das Anwenden des Zugriffs auf ein oder mehrere Azure Maps-Konten wird als Bereich bezeichnet. Durch das Anwenden eines Prinzipals, einer Rollendefinition und eines Bereichs wird eine Rollenzuweisung erstellt. 
 
 In den nächsten Abschnitten werden die Konzepte und Komponenten der Azure Maps-Integration in die rollenbasierte Zugriffssteuerung in Azure AD diskutiert. Im Rahmen des Prozesses zum Einrichten Ihres Azure Maps Kontos wird ein Azure AD-Verzeichnis dem Azure-Abonnement zugeordnet, in dem sich das Azure Maps-Konto befindet. 
 

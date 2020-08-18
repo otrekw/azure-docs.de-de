@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: e840517934e77c96f1c19c3243ad2884d7ccce66
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 9f7f44e053cfb26cbf7d897b8a1df1ad2861fd07
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86261424"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87551998"
 ---
 # <a name="getting-started-with-the-azure-maps-power-bi-visual"></a>Erste Schritte mit dem Azure Maps-Visual in Power BI
 
@@ -35,6 +35,9 @@ Das Azure Maps-Visual stellt eine Verbindung mit dem in Azure gehosteten Clouddi
 
 -   Details über den Bereich im Fokus der Karte werden an Azure gesendet, um die zum Rendern der Karten-Canvas (auch als Kartenkacheln bezeichnet) benötigten Abbildungen abzurufen. 
 -   Daten in den Buckets für Standort, Breitengrad und Längengrad können an Azure gesendet werden, um Kartenkoordinaten abzurufen. Dieser Vorgang wird als Geocodierung bezeichnet. 
+-   Telemetriedaten können zur Integrität des visuellen Elements (d. h. Absturzberichte) gesammelt werden, wenn die Telemetrieoption in Power BI aktiviert ist.
+
+Abgesehen von den oben beschriebenen Szenarien werden keine weiteren Daten, die auf der Karte überlagert werden, an die Azure Maps-Server gesendet. Das gesamte Rendering von Daten erfolgt lokal innerhalb des Clients.
 
 Möglicherweise müssen Sie bzw. Ihr Administrator Ihre Firewall aktualisieren, um den Zugriff auf die Azure Maps-Plattform zu gestatten. Diese verwendet die folgende URL:
 
@@ -173,4 +176,4 @@ Passen Sie das Visual an:
 > [Tipps und Tricks zur Farbformatierung in Power BI](https://docs.microsoft.com/power-bi/visuals/service-tips-and-tricks-for-color-formatting)
 
 > [!div class="nextstepaction"]
-> [Anpassen der Titel, Hintergründe und Legenden von Visualisierungen](https://docs.microsoft.com/power-bi/visuals/power-bi-visualization-customize-title-background-and-legend)
+> [Anpassen von Visualisierungstiteln, -hintergründen und -legenden](https://docs.microsoft.com/power-bi/visuals/power-bi-visualization-customize-title-background-and-legend)

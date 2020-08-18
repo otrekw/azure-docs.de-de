@@ -6,14 +6,14 @@ ms.reviewer: amberb
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 05/08/2020
+ms.date: 08/10/2020
 ms.author: banders
-ms.openlocfilehash: 8b0ba7b597921d82883f2c7ba505ebb10eee1876
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 592a5d9573cb4e475c5d1ca6b4f06002f949e197
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87039759"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88136251"
 ---
 # <a name="cancel-your-azure-subscription"></a>Kündigen Ihres Azure-Abonnements
 
@@ -32,10 +32,10 @@ Wenn Sie einen kostenpflichtigen Azure-Supportplan kündigen, werden Ihnen die G
 ## <a name="cancel-subscription-in-the-azure-portal"></a>Kündigen eines Abonnements im Azure-Portal
 
 1. Wählen Sie auf der [Seite „Abonnements“ im Azure-Portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) Ihr Abonnement aus.
-2. Wählen Sie das Abonnement aus, das Sie kündigen möchten.
-3. Wählen Sie **Übersicht** und dann **Abonnement kündigen** aus.
+1. Wählen Sie das Abonnement aus, das Sie kündigen möchten.
+1. Wählen Sie **Übersicht** und dann **Abonnement kündigen** aus.
     ![Screenshot mit der Schaltfläche zum Kündigen](./media/cancel-azure-subscription/cancel_ibiza.png)
-3. Befolgen Sie die Anweisungen, und schließen Sie die Kündigung ab.
+1. Befolgen Sie die Anweisungen, und schließen Sie die Kündigung ab.
 
 ## <a name="who-can-cancel-a-subscription"></a>Wer kann ein Abonnement kündigen?
 
@@ -49,11 +49,20 @@ Die Tabelle unten beschreibt die Berechtigungen, die zum Kündigen eines Abonnem
 
 ## <a name="what-happens-after-i-cancel-my-subscription"></a>Was geschieht, nachdem ich mein Abonnement gekündigt habe?
 
-Nach Ihrer Kündigung wird die Abrechnung sofort beendet. Bis die Kündigung im Portal angezeigt wird, kann es allerdings bis zu zehn Minuten dauern. Wenn Sie das Abonnement mitten in einem Abrechnungszeitraum kündigen, senden wir Ihnen die Schlussrechnung zum üblichen Rechnungsdatum nach Ende des Abrechnungszeitraums zu. 
+Nach Ihrer Kündigung wird die Abrechnung sofort beendet. Bis die Kündigung im Portal angezeigt wird, kann es allerdings bis zu zehn Minuten dauern. Wenn Sie das Abonnement mitten in einem Abrechnungszeitraum kündigen, senden wir Ihnen die Schlussrechnung zum üblichen Rechnungsdatum nach Ende des Abrechnungszeitraums zu.
 
 Nach der Kündigung werden Ihre Dienste deaktiviert. Dies bedeutet, dass die Zuordnung Ihrer virtuellen Computer aufgehoben wird, die vorübergehenden IP-Adressen freigegeben werden und der Speicher nur noch im Lesezugriff verfügbar ist.
 
-Microsoft wartet 30 bis 90 Tage, bevor Ihre Daten endgültig gelöscht werden. Dies geschieht für den Fall, dass Sie darauf zugreifen möchten oder Ihre Meinung ändern. Für die Aufbewahrung der Daten rechnen wir keine Gebühr ab. Weitere Informationen finden Sie in [Microsoft Trust Center – Wie wir Ihre Daten verwalten](https://go.microsoft.com/fwLink/p/?LinkID=822930&clcid=0x409).
+Nach der Kündigung Ihres Abonnements warten wir noch 30 bis 90 Tage mit der endgültigen Löschung Ihrer Daten, falls Sie doch noch einmal darauf zugreifen müssen oder Ihre Meinung ändern sollten. Für die Aufbewahrung der Daten rechnen wir keine Gebühr ab. Weitere Informationen finden Sie in [Microsoft Trust Center – Wie wir Ihre Daten verwalten](https://go.microsoft.com/fwLink/p/?LinkID=822930&clcid=0x409).
+
+## <a name="delete-free-trial-subscription"></a>Löschen eines kostenlosen Testabonnements
+
+Wenn Sie über ein kostenloses Testabonnement verfügen, müssen Sie nicht 30 Tage warten, bis das Abonnement automatisch gelöscht wird. Sie können Ihr Abonnement *drei Tage* nach der Kündigung löschen. Die Option **Abonnement löschen** wird erst drei Tage nach der Kündigung Ihres Abonnements verfügbar.
+
+1. Warten Sie drei Tage, nachdem Sie das Abonnement gekündigt haben.
+1. Wählen Sie im Azure-Portal auf der Seite [Abonnements](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) Ihr Abonnement aus.
+1. Wählen Sie das Abonnement aus, das Sie löschen möchten.
+1. Wählen Sie **Übersicht** und anschließend **Abonnement löschen** aus.
 
 ## <a name="reactivate-subscription"></a>Erneutes Aktivieren von Abonnements
 

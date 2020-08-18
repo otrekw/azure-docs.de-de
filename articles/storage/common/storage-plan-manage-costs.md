@@ -1,32 +1,28 @@
 ---
-title: Planen und Verwalten von Kosten für Azure Storage
-description: Es wird beschrieben, wie Sie Kosten für Azure Storage planen und verwalten, indem Sie die Kostenanalyse im Azure-Portal verwenden.
+title: Planen und Verwalten von Kosten für Azure Blob Storage
+description: Hier erfahren Sie, wie Sie Kosten für Azure Blob Storage (Blobspeicher) mithilfe der Kostenanalyse im Azure-Portal planen und verwalten.
 services: storage
 author: normesta
 ms.service: storage
 ms.topic: conceptual
-ms.date: 03/04/2020
+ms.date: 08/03/2020
 ms.author: normesta
 ms.subservice: common
 ms.custom: subject-cost-optimization
-ms.openlocfilehash: aa0b789b31f50c8b1ccf5450700874a02ad4664c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 75b464c140bfda6c3f3559d3bfdbe1e6bc2e7f24
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78304361"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87760735"
 ---
-# <a name="plan-and-manage-costs-for-azure-storage"></a>Planen und Verwalten von Kosten für Azure Storage
+# <a name="plan-and-manage-costs-for-azure-blob-storage"></a>Planen und Verwalten von Kosten für Azure Blob Storage
 
-In diesem Artikel wird beschrieben, wie Sie die Kosten für Azure Storage planen und verwalten. Bevor Sie Ressourcen hinzufügen, verwenden Sie zunächst den Azure-Preisrechner, um die Speicherkosten zu planen. Nachdem Sie mit der Nutzung der Azure Storage-Ressourcen begonnen haben, können Sie Features für die Kostenverwaltung verwenden, um Budgets festzulegen und die Kosten zu überwachen. Sie können auch vorhergesagte Kosten überprüfen und Ausgabentrends überwachen, um die Bereiche zu identifizieren, in denen ggf. Maßnahmen erforderlich sind.
+Dieser Artikel unterstützt Sie beim Planen und Verwalten von Kosten für Azure Blob Storage (Azure-Blobspeicher). Schätzen Sie zuerst die Kosten mithilfe des Azure-Preisrechners. Nachdem Sie Ihr Speicherkonto erstellt haben, optimieren Sie es, damit Sie nur für Ressourcen bezahlen, die Sie benötigen. Verwenden Sie Kostenverwaltungsfunktionen zur Festlegung von Budgets und Überwachung von Kosten. Sie können auch vorhergesagte Kosten überprüfen und Ausgabentrends überwachen, um die Bereiche zu identifizieren, in denen ggf. Maßnahmen erforderlich sind.
 
-Beachten Sie, dass Kosten für Azure Storage nur einen Teil der monatlichen Kosten Ihrer Azure-Rechnung darstellen. Zwar wird in diesem Artikel das Planen und Verwalten der Kosten für Azure Storage erläutert, doch werden Ihnen alle Azure-Dienste und -Ressourcen in Rechnung gestellt, die für Ihr Azure-Abonnement verwendet werden, einschließlich der Dienste von Drittanbietern. Nachdem Sie sich mit der Verwaltung der Kosten für Azure Storage vertraut gemacht haben, können Sie ähnliche Methoden anwenden, um die Kosten für alle Azure-Dienste zu verwalten, die unter Ihrem Abonnement genutzt werden.
+Beachten Sie, dass Kosten für Blob Storage nur einen Teil der monatlichen Kosten in Ihrer Azure-Rechnung ausmachen. Zwar wird in diesem Artikel das Schätzen und Verwalten von Kosten für Blob Storage erläutert, doch werden Ihnen alle Azure-Dienste und -Ressourcen in Rechnung gestellt, die für Ihr Azure-Abonnement verwendet werden, einschließlich der Dienste von Drittanbietern. Nachdem Sie sich mit der Verwaltung der Kosten für Blob Storage vertraut gemacht haben, können Sie ähnliche Methoden zur Verwaltung der Kosten für alle Azure-Dienste anwenden, die unter Ihrem Abonnement genutzt werden.
 
-## <a name="prerequisites"></a>Voraussetzungen
-
-Die Kostenanalyse unterstützt verschiedene Arten von Azure-Kontotypen. Die vollständige Liste der unterstützten Kontotypen finden Sie unter [Grundlegendes zu Cost Management-Daten](../../cost-management-billing/costs/understand-cost-mgt-data.md). Um Kostendaten anzeigen zu können, müssen Sie mindestens über Lesezugriff auf Ihr Azure-Konto verfügen. Informationen zum Zuweisen des Zugriffs auf Azure Cost Management-Daten finden Sie unter [Zuweisen des Zugriffs auf Cost Management-Daten](../../cost-management-billing/costs/assign-access-acm-data.md).
-
-## <a name="estimate-costs-before-creating-an-azure-storage-account"></a>Schätzen der Kosten vor dem Erstellen eines Azure Storage Kontos
+## <a name="estimate-costs"></a>Schätzen der Kosten
 
 Verwenden Sie den [Azure-Preisrechner](https://azure.microsoft.com/pricing/calculator/), um die Kosten zu schätzen, bevor Sie ein Azure Storage-Konto erstellen und Daten dorthin übertragen.
 
@@ -44,7 +40,37 @@ Verwenden Sie den [Azure-Preisrechner](https://azure.microsoft.com/pricing/calcu
 
 4. Ändern Sie die übrigen Optionen, um die jeweilige Auswirkung auf die Schätzung anzuzeigen.
 
-## <a name="use-budgets-and-cost-alerts"></a>Verwenden von Budgets und Kostenwarnungen
+## <a name="optimize-costs"></a>Optimieren von Kosten
+
+Erwägen Sie eine Verwendung dieser Optionen zur Kostensenkung. 
+
+- Reservieren von Speicherkapazität
+
+- Organisieren von Daten in Zugriffsebenen
+
+- Automatisches Verschieben von Daten zwischen Zugriffsebenen
+
+In diesem Abschnitt werden die einzelnen Optionen ausführlicher behandelt. 
+
+#### <a name="reserve-storage-capacity"></a>Reservieren von Speicherkapazität
+
+Mit reservierter Azure Storage-Kapazität Sie können Geld bei den Speicherkosten für Blobdaten sparen. Reservierte Azure Storage-Kapazität bietet einen Rabatt auf die Kapazität für Blockblobs und Azure Data Lake Storage Gen2-Daten in Standardspeicherkonten, wenn Sie eine Reservierung für ein Jahr oder drei Jahre vornehmen. Eine Reservierung stellt eine feste Speicherkapazität für den Zeitraum der Reservierung zur Verfügung. Reservierte Azure Storage-Kapazität kann die Kapazitätskosten für Blockblobs und Azure Data Lake Storage Gen2-Daten erheblich verringern. 
+
+Weitere Informationen finden Sie unter [Optimieren der Kosten für Blob Storage mit reservierter Kapazität](https://docs.microsoft.com/azure/storage/blobs/storage-blob-reserved-capacity).
+
+#### <a name="organize-data-into-access-tiers"></a>Organisieren von Daten in Zugriffsebenen
+
+Sie können Kosten senken, indem Sie Blobdaten in den kostengünstigsten Zugriffsebenen ablegen. Wählen Sie aus drei Ebenen aus, die zur Optimierung ihrer Kosten für die Datennutzung konzipiert sind. Beispielsweise hat die *heiße Ebene* höhere Speicherkosten, aber geringere Zugriffskosten. Wenn Sie also häufig auf Daten zugreifen möchten, ist die heiße Ebene möglicherweise die kostengünstigste Wahl. Wenn Sie weniger häufig auf Daten zugreifen möchten, ist die *kalte Ebene* oder die *Archivebene* möglicherweise am sinnvollsten, weil dabei zwar höhere Kosten für den Datenzugriff entstehen, gleichzeitig aber die Kosten für das Speichern von Daten gesenkt werden.    
+
+Weitere Informationen finden Sie unter [Azure Blob Storage: Zugriffsebenen „Heiß“, „Kalt“ und „Archiv“](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers?tabs=azure-portal).
+
+#### <a name="automatically-move-data-between-access-tiers"></a>Automatisches Verschieben von Daten zwischen Zugriffsebenen
+
+Verwenden Sie Richtlinien für die Lebenszyklusverwaltung, um Daten in regelmäßigen Abständen zwischen Ebenen zu verschieben und so die meisten Kosten zu sparen. Anhand dieser Richtlinien können Daten mithilfe der von Ihnen angegebenen Regeln verschoben werden. Beispielsweise könnten Sie eine Regel erstellen, die Blobs in die Archivebene verschiebt, wenn dieses Blob innerhalb von 90 Tagen nicht geändert wurde. Durch das Erstellen von Richtlinien, mit denen die Zugriffsebene für Ihre Daten angepasst wird, können Sie die kostengünstigsten Speicheroptionen für Ihre Anforderungen entwerfen.
+
+Weitere Informationen finden Sie unter [Verwalten des Azure Blob Storage-Lebenszyklus](https://docs.microsoft.com/azure/storage/blobs/storage-lifecycle-management-concepts?tabs=azure-portal).
+
+## <a name="create-budgets"></a>Erstellen von Budgets
 
 Sie können [Budgets](../../cost-management-billing/costs/tutorial-acm-create-budgets.md) erstellen, um Kosten zu verwalten, und Warnungen erstellen, die die Beteiligten automatisch über Ausgabenanomalien und Überschreitungsrisiken informieren. Warnungen basieren auf Ausgaben im Vergleich zum Budget und zu Kostenschwellenwerten. Budgets und Warnungen werden für Azure-Abonnements und -Ressourcengruppen erstellt und sind daher im Rahmen einer umfassenden Strategie zur Kostenüberwachung hilfreich. Unter Umständen verfügen sie aber über eine eingeschränkte Funktionalität für die Verwaltung der Kosten einzelner Azure-Dienste, z. B. die Kosten für Azure Storage, weil diese Funktionen für die Nachverfolgung von Kosten auf höherer Ebene ausgelegt sind.
 
@@ -53,6 +79,9 @@ Sie können [Budgets](../../cost-management-billing/costs/tutorial-acm-create-bu
 Wenn Sie Azure-Ressourcen mit Azure Storage verwenden, fallen Kosten an. Die Kosten pro Ressourcennutzungseinheit variieren nach dem Zeitintervall (Sekunden, Minuten, Stunden und Tage) oder der Einheitennutzung (Bytes, Megabytes usw.) Kosten fallen an, sobald mit der Nutzung von Azure Storage begonnen wird. Die Kosten werden im Bereich [Kostenanalyse](../../cost-management-billing/costs/quick-acm-cost-analysis.md) im Azure-Portal angezeigt.
 
 Bei Verwendung der Kostenanalyse können Sie Azure Storage-Kosten in Diagrammen und Tabellen für unterschiedliche Zeitintervalle anzeigen. Beispiele hierfür sind „Tag“, „Aktueller Monat“, „Vorheriger Monat“ und „Jahr“. Außerdem können Sie Kosten nach Budgets und vorhergesagten Kosten anzeigen. Wenn Sie im Laufe der Zeit zu längeren Zeiträumen wechseln, können Sie Ausgabentrends ermitteln und erkennen, wo es ggf. zu hohen Ausgaben gekommen ist. Wenn Sie Budgets erstellt haben, können Sie auch leicht feststellen, wo diese überschritten wurden.
+
+>[!NOTE]
+> Die Kostenanalyse unterstützt verschiedene Arten von Azure-Kontotypen. Die vollständige Liste der unterstützten Kontotypen finden Sie unter [Grundlegendes zu Cost Management-Daten](../../cost-management-billing/costs/understand-cost-mgt-data.md). Um Kostendaten anzeigen zu können, müssen Sie mindestens über Lesezugriff auf Ihr Azure-Konto verfügen. Informationen zum Zuweisen des Zugriffs auf Azure Cost Management-Daten finden Sie unter [Zuweisen des Zugriffs auf Cost Management-Daten](../../cost-management-billing/costs/assign-access-acm-data.md).
 
 So zeigen Sie Azure Storage-Kosten in der Kostenanalyse an:
 
@@ -68,7 +97,7 @@ So zeigen Sie Azure Storage-Kosten in der Kostenanalyse an:
 
    ![Überwachen der Speicherkosten im Bereich „Kostenanalyse“](./media/storage-plan-manage-costs/cost-analysis-pane-storage.png)
 
-Im obigen Beispiel sind die aktuellen Kosten für den Dienst angegeben. Die Kosten nach Azure-Regionen (Standorten) und nach Ressourcengruppe werden ebenfalls angezeigt.  
+Im obigen Beispiel sind die aktuellen Kosten für den Dienst angegeben. Die Kosten nach Azure-Regionen (Standorten) und nach Ressourcengruppe werden ebenfalls angezeigt. Sie können auch andere Filter hinzufügen (beispielsweise einen Filter zum Anzeigen von Kosten für bestimmte Speicherkonten).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

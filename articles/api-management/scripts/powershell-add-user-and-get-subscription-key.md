@@ -1,6 +1,6 @@
 ---
 title: Azure PowerShell-Skriptbeispiel – Hinzufügen eines Benutzers | Microsoft-Dokumentation
-description: Azure PowerShell-Skriptbeispiel – Hinzufügen eines Benutzers
+description: Hier erfahren Sie, wie Sie einen Benutzer in API Management hinzufügen und einen Abonnementschlüssel abrufen. Sehen Sie sich ein Beispielskript an, und zeigen Sie zusätzliche verfügbare Ressourcen an.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -12,12 +12,12 @@ ms.topic: sample
 ms.date: 11/16/2017
 ms.author: apimpm
 ms.custom: mvc
-ms.openlocfilehash: 2cfbfdfc4374d528159e9e026016a0583a1a9ac9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0573097d9821b8cf14573f2e5c5291461c2c7ed7
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87009066"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87843860"
 ---
 # <a name="add-a-user"></a>Hinzufügen eines Benutzers
 

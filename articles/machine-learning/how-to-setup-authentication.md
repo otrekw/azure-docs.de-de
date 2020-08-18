@@ -10,13 +10,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.date: 06/17/2020
 ms.topic: conceptual
-ms.custom: how-to, has-adal-ref
-ms.openlocfilehash: 653ca578e9fafd245c22bcfd7db038d5c23da016
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.custom: how-to, has-adal-ref, devx-track-javascript
+ms.openlocfilehash: 9d73492110703e64df5f948ad8a2a1ed8d2c63b9
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326952"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87904537"
 ---
 # <a name="set-up-authentication-for-azure-machine-learning-resources-and-workflows"></a>Einrichten der Authentifizierung für Azure Machine Learning-Ressourcen und -Workflows
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -36,6 +36,9 @@ Unabhängig vom verwendeten Authentifizierungstyp wird die rollenbasierte Zugrif
 * [Konfigurieren Sie Ihre Entwicklungsumgebung](how-to-configure-environment.md) für die Installation des Azure Machine Learning SDK, oder verwenden Sie eine [Azure Machine Learning-Notebook-VM](concept-azure-machine-learning-architecture.md#compute-instance) mit bereits installiertem SDK.
 
 ## <a name="interactive-authentication"></a>Interaktive Authentifizierung
+
+> [!IMPORTANT]
+> Die interaktive Authentifizierung verwendet Ihren Browser und erfordert Cookies (einschließlich Cookies von Drittanbietern). Wenn Sie Cookies deaktiviert haben, erhalten Sie möglicherweise eine Fehlermeldung wie „Wir konnten Sie nicht anmelden“. Dieser Fehler kann auch auftreten, wenn Sie [Azure Multi-Factor Authentication](/azure/active-directory/authentication/concept-mfa-howitworks) aktiviert haben.
 
 In den meisten Beispielen in der Dokumentation und Verwendungsbeispielen wird interaktive Authentifizierung verwendet. Bei Verwendung des SDK gibt es z. B. zwei Funktionsaufrufe, bei denen Sie automatisch über einen auf einer Benutzeroberfläche basierenden Authentifizierungsflow eine Aufforderung erhalten:
 
@@ -67,7 +70,7 @@ In den meisten Beispielen in der Dokumentation und Verwendungsbeispielen wird in
 
 ## <a name="service-principal-authentication"></a>Dienstprinzipalauthentifizierung
 
-Wenn Sie die Dienstprinzipalauthentifizierung verwenden möchten, müssen Sie zunächst den Dienstprinzipal erstellen und ihm Zugriff auf Ihren Arbeitsbereich gewähren. Wie bereits erwähnt, wird die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) von Azure verwendet, um den Zugriff zu steuern. Sie müssen daher auch entscheiden, welcher Zugriff dem Dienstprinzipal erteilt werden soll.
+Wenn Sie die Dienstprinzipalauthentifizierung verwenden möchten, müssen Sie zunächst den Dienstprinzipal erstellen und ihm Zugriff auf Ihren Arbeitsbereich gewähren. Wie bereits erwähnt, wird die rollenbasierte Zugriffssteuerung von Azure (Azure RBAC) verwendet, um den Zugriff zu steuern. Sie müssen daher auch entscheiden, welcher Zugriff dem Dienstprinzipal erteilt werden soll.
 
 > [!IMPORTANT]
 > Wenn Sie einen Dienstprinzipal verwenden, erteilen Sie ihm den __Mindestzugriff, der für den Task erforderlich ist,__ für den er verwendet wird. Beispielsweise wird einem Dienstprinzipal kein Besitzer- oder Mitwirkendenzugriff erteilt, wenn er lediglich für das Lesen des Zugriffstokens für eine Webbereitstellung verwendet wird.

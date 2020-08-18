@@ -1,6 +1,6 @@
 ---
 title: 'Tutorial: Erstellen eines Azure Active Directory B2C-Mandanten'
-description: Erfahren Sie, wie Sie sich auf die Registrierung Ihrer Anwendungen vorbereiten können, indem Sie einen Azure Active Directory B2C-Mandanten über das Azure-Portal erstellen.
+description: In diesem Tutorial erfahren Sie, wie Sie sich auf die Registrierung Ihrer Anwendungen vorbereiten, indem Sie einen Azure Active Directory B2C-Mandanten über das Azure-Portal erstellen.
 services: B2C
 author: msmimart
 manager: celestedg
@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 07/01/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 044a2d2cb23e36234256b9b19363462e542176fa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fbccbcf1ac85b63c5610b9904a84e5e6e3fb6c63
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85806849"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87922192"
 ---
 # <a name="tutorial-create-an-azure-active-directory-b2c-tenant"></a>Tutorial: Erstellen eines Azure Active Directory B2C-Mandanten
 
@@ -30,6 +30,8 @@ In diesem Artikel werden folgende Vorgehensweisen behandelt:
 > * Hinzufügen der Azure AD B2C-Ressource als **Favorit** im Azure-Portal
 
 Im nächsten Tutorial erfahren Sie, wie Sie eine Anwendung registrieren.
+
+## <a name="prerequisites"></a>Voraussetzungen
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 

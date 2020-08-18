@@ -5,16 +5,16 @@ services: healthcare-apis
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: tutorial
-ms.reviewer: mihansen
+ms.reviewer: matjazl
 ms.author: cavoeg
 author: caitlinv39
 ms.date: 01/03/2020
-ms.openlocfilehash: a6805fc686d0bc5bd0e2357828d59d40ba05f248
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 1c64468a2e420734ca51a5b9308bb52e13712c51
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "84870387"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87852921"
 ---
 # <a name="testing-the-fhir-api"></a>Testen der FHIR-API
 In den beiden vorherigen Schritten haben Sie Azure API for FHIR bereitgestellt und die Clientanwendung registriert. Nun können Sie testen, ob Azure API for FHIR für Ihre Clientanwendung eingerichtet ist. 
@@ -41,11 +41,11 @@ Um Zugriff zu erhalten, benötigen Sie ein Zugriffstoken.
 |Tokenname           |Ein Name für das Token                                               |
 |Gewährungstyp           |Autorisierungscode                                                  |
 |Rückruf-URL         |https://www.getpostman.com/oauth2/callback                          |
-|Authentifizierungs-URL             |https://login.microsoftonline.com/\<AZURE-AD-TENANT-ID>/oauth2/?resource=https://\<FHIR-SERVER-NAME>.azurehealthcareapis.com|
-|Zugriffstoken-URL     |https://login.microsoftonline.com/\<AZURE-AD-TENANT-ID>/oauth2/token|
+|Authentifizierungs-URL             |https://login.microsoftonline.com/\<AZURE-AD-TENANT-ID> /oauth2/?resource=https://\<FHIR-SERVER-NAME>.azurehealthcareapis.com|
+|Zugriffstoken-URL     |https://login.microsoftonline.com/\<AZURE-AD-TENANT-ID> /oauth2/token|
 |Client-ID            |Die Client-ID, die Sie in den vorherigen Schritten kopiert haben             |
-|Geheimer Clientschlüssel        |\<LEER>                                                            |
-|Bereich                |\<LEER>                                                            |
+|Geheimer Clientschlüssel        |\<BLANK>                                                            |
+|Bereich                |\<BLANK>                                                            |
 |Status                |1234                                                                |
 |Clientauthentifizierung|Clientanmeldeinformationen im Text senden                                     |
 
