@@ -7,12 +7,12 @@ ms.topic: article
 author: AarathiN
 ms.author: aarathin
 ms.date: 07/14/2020
-ms.openlocfilehash: 7a0f04344d2e4213bbbabb63d57bdaf933154388
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 420ca9ff6a3ccc0e0bb76887e777f05dd955e97b
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87797888"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88166687"
 ---
 # <a name="create-an-azure-application-offer"></a>Erstellen eines Azure-Anwendungsangebots
 
@@ -58,10 +58,10 @@ Das Video [Erstellen von Lösungsvorlagen und verwalteten Anwendungen für den A
 
 * Welche Angebotstypen sind verfügbar?
 * Welche technischen Ressourcen sind erforderlich?
-* Erstellen einer Azure Resource Manager-Vorlage.
-* Entwickeln und Testen der App-Benutzeroberfläche.
-* Veröffentlichen des App-Angebots.
-* Der Anwendungsüberprüfungsprozess.
+* Erstellen einer Azure Resource Manager-Vorlage
+* Entwickeln und Testen der App-Benutzeroberfläche
+* Veröffentlichen des App-Angebots
+* Der Anwendungsüberprüfungsprozess
 
 ### <a name="suggested-tools"></a>Vorgeschlagene Tools
 
@@ -242,20 +242,23 @@ Geben Sie den Namen, die E-Mail-Adresse und die Telefonnummer für einen **Suppo
 
 Stellen Sie Logos und Bilder zur Verwendung mit Ihrem Angebot bereit. Alle Bilder müssen das PNG-Format aufweisen. Bei unscharfen Bildern wird Ihre Übermittlung abgelehnt.
 
+[!INCLUDE [logotips](../includes/graphics-suggestions.md)]
+
 >[!Note]
 >Wenn beim Hochladen von Dateien ein Problem auftritt, vergewissern Sie sich, dass das lokale Netzwerk den von Partner Center verwendeten Dienst https://upload.xboxlive.com nicht blockiert.
 
 #### <a name="store-logos"></a>Store-Logos
 
-Geben Sie eine PNG-Datei für das **große** Logo an (zwischen 216 × 216 und 350 × 350 Pixel). Aus diesem werden in Partner Center ein **kleines** (48 × 48 Pixel) und ein **mittelgroßes** (90 × 90 Pixel) Logo erstellt. Sie können die Logos durch andere Bilder ersetzen.
-
-Alle drei Logogrößen sind erforderlich und werden an verschiedenen Stellen im Angebot verwendet:
+Geben Sie PNG-Dateien für das Logo Ihres Angebots in den folgenden Bildauflösungen bereit:
 
 - **Klein** (48 x 48)
 - **Mittel** (90 x 90)
-- **Groß** (zwischen 216 × 216 und 350 × 350)
+- **Groß** (216 x 216)
+- **Breit** (255 x 115)
 
-[!INCLUDE [Logo suggestions](./includes/graphics-suggestions.md)]
+Alle drei Logos sind erforderlich und werden an verschiedenen Stellen im Angebot verwendet.
+
+[!INCLUDE [logos-azure-marketplace-only](../includes/logos-azure-marketplace-only.md)]
 
 #### <a name="screenshots"></a>Screenshots
 
@@ -283,7 +286,7 @@ Ihre Vorschauzielgruppe wird durch Azure-Abonnement-ID-GUIDs zusammen mit einer 
 Fügen Sie mindestens eine Azure-Abonnement-ID hinzu, entweder einzeln (bis zu 10) oder durch Hochladen einer CSV-Datei (bis zu 100). Durch Hinzufügen dieser Abonnement-IDs definieren Sie, wer Ihr Angebot als Vorschau anzeigen kann, bevor es live veröffentlicht wird. Wenn Ihr Angebot bereits live geschaltet ist, können Sie dennoch eine Vorschauzielgruppe für das Testen von Änderungen oder Aktualisierungen Ihres Angebots definieren.
 
 > [!NOTE]
-> Eine Vorschauzielgruppe unterscheidet sich von einer privaten Zielgruppe. Eine Vorschauzielgruppe kann auf das Angebot zugreifen, _bevor_ es in den Marketplaces live veröffentlicht wird. Sie kann alle Pläne sehen und überprüfen, einschließlich der Pläne, die nach der vollständigen Veröffentlichung Ihres Angebots im Marketplace nur für eine private Zielgruppe verfügbar sind. Eine private Zielgruppe (definiert in der Registerkarte **Preise und Verfügbarkeit**) hat exklusiven Zugriff auf einen bestimmten Plan.
+> Eine Vorschauzielgruppe unterscheidet sich von einer privaten Zielgruppe. Eine Vorschauzielgruppe kann auf das Angebot zugreifen, *bevor* es in den Marketplaces live veröffentlicht wird. Sie kann alle Pläne sehen und überprüfen, einschließlich der Pläne, die nach der vollständigen Veröffentlichung Ihres Angebots im Marketplace nur für eine private Zielgruppe verfügbar sind. Eine private Zielgruppe (definiert in der Registerkarte **Preise und Verfügbarkeit**) hat exklusiven Zugriff auf einen bestimmten Plan.
 
 Wählen Sie **Entwurf speichern** aus, bevor Sie fortfahren.
 
@@ -313,6 +316,8 @@ Mit der technischen Konfiguration werden die Details (Mandanten-ID und App-ID) d
 
 Auf dieser Registerkarte können Sie verschiedene Planoptionen innerhalb desselben Angebots bereitstellen. Diese Pläne (vorher als SKUs bezeichnet) können sich in Bezug auf den Plantyp (Lösungsvorlage oder verwaltete Anwendung), die Monetarisierung oder Zielgruppe unterscheiden. Konfigurieren Sie mindestens einen Plan, um Ihr Angebot im Marketplace zu listen.
 
+Sie können bis zu 100 Pläne für jedes Angebot erstellen. Bis zu 45 davon können privat sein. Erfahren Sie unter [Private Angebote im kommerziellen Microsoft-Marketplace](../private-offers.md) mehr über private Pläne.
+
 Nach der Erstellung werden die Plannamen, die IDs und Plantypen, die Verfügbarkeit (öffentlich oder privat), der aktuelle Veröffentlichungsstatus und alle verfügbaren Aktionen auf dieser Registerkarte angezeigt.
 
 Die unter **Planübersicht** verfügbaren **Aktionen** variieren je nach dem aktuellen Status des Plans und umfassen möglicherweise:
@@ -324,7 +329,7 @@ Die unter **Planübersicht** verfügbaren **Aktionen** variieren je nach dem akt
 
 ***Plan-ID:*** Erstellen Sie für jeden Plan im Angebot eine eindeutige Plan-ID. Diese ID ist für Kunden in der Produkt-URL sichtbar.  Verwenden Sie nur klein geschriebene alphanumerische Zeichen, Bindestriche und Unterstriche. Für die Plan-ID sind maximal 50 Zeichen zulässig. Die Plan-ID kann nach der Erstellung nicht geändert werden.
 
-***Planname***: Für Kunden wird dieser Name angezeigt, wenn sie einen Plan in Ihrem Angebot auswählen. Erstellen Sie für jeden Plan im Angebot einen eindeutigen Angebotsnamen. Der Planname wird verwendet, um Softwarepläne zu unterscheiden, die möglicherweise Teil desselben Angebots sind (z. B. Angebotsname: Windows Server, Pläne: Windows Server 2016, Windows Server 2019).
+***Planname***: Kunden sehen diesen Namen, wenn sie einen Plan in Ihrem Angebot auswählen. Erstellen Sie für jeden Plan im Angebot einen eindeutigen Angebotsnamen. Der Planname wird verwendet, um Softwarepläne zu unterscheiden, die möglicherweise Teil desselben Angebots sind (z. B. Angebotsname: Windows Server, Pläne: Windows Server 2016, Windows Server 2019).
 
 ### <a name="plan-setup"></a>Plansetup
 
@@ -335,7 +340,7 @@ Wählen Sie den Plantyp für Ihr Angebot aus. Ein Plan mit **Lösungsvorlage** w
 
 #### <a name="re-use-technical-configuration"></a>Wiederverwenden von technischen Konfigurationen
 
-Wenn Sie über mehrere Pläne desselben Typs verfügen und deren Pakete identisch sind, können Sie auswählen, dass **dieser Plan Pakete aus einem anderen Plan wiederverwendet**.  Wenn Sie diese Option aktivieren, können Sie einen der anderen Pläne desselben Typs für dieses Angebot auswählen, dessen Pakete wiederverwendet werden sollen. 
+Wenn Sie über mehrere Pläne desselben Typs verfügen und deren Pakete identisch sind, können Sie auswählen, dass **dieser Plan Pakete aus einem anderen Plan wiederverwendet**.  Wenn Sie diese Option aktivieren, können Sie einen der anderen Pläne desselben Typs für dieses Angebot auswählen, dessen Pakete wiederverwendet werden sollen.
 
 >[!Note]
 >Wenn Sie Pakete aus einem anderen Plan wiederverwenden, wird die gesamte Registerkarte für die technische Konfiguration in diesem Plan nicht mehr angezeigt. Die technischen Konfigurationsdetails aus dem anderen Plan, einschließlich aller Updates, die Sie in Zukunft vornehmen, werden für diesen Plan ebenfalls verwendet.<br><br>Diese Einstellung kann nicht geändert werden, sobald der Plan veröffentlicht wurde.
@@ -416,9 +421,9 @@ Wenn Sie bereits Preise in US-Dollar für Ihren Plan festgelegt haben und einen 
 
 Geben Sie den Preis pro Monat für diesen Plan an.  Dieser Preis gilt zusätzlich zu allen Azure-Infrastruktur- oder nutzungsbasierten Softwarekosten, die durch die von dieser Lösung bereitgestellten Ressourcen entstehen.
 
-Zusätzlich zu den monatlichen Preisen können Sie die Preise für die Nutzung von nicht standardmäßigen Einheiten mithilfe der [getakteten Abrechnung](./azure-app-metered-billing.md) festlegen.  Wenn Sie möchten, können Sie den monatlichen Preis auf null (0) festlegen und ausschließlich die getaktete Abrechnung verwenden. 
+Zusätzlich zu den monatlichen Preisen können Sie die Preise für die Nutzung von nicht standardmäßigen Einheiten mithilfe der [getakteten Abrechnung](./azure-app-metered-billing.md) festlegen.  Wenn Sie möchten, können Sie den monatlichen Preis auf null (0) festlegen und ausschließlich die getaktete Abrechnung verwenden.
 
-Preise in USD (USD = US-Dollar) werden beim Speichern gemäß dem aktuellen Wechselkurs in die lokale Währung aller ausgewählten Märkte konvertiert. Überprüfen Sie vor der Veröffentlichung die Preise in jedem Markt, indem Sie die Preistabellenkalkulation exportieren. Wenn Sie benutzerdefinierte Preise in einem einzelnen Markt festlegen möchten, ändern und importieren Sie die Preistabellenkalkulation. 
+Preise in USD (USD = US-Dollar) werden beim Speichern gemäß dem aktuellen Wechselkurs in die lokale Währung aller ausgewählten Märkte konvertiert. Überprüfen Sie vor der Veröffentlichung die Preise in jedem Markt, indem Sie die Preistabellenkalkulation exportieren. Wenn Sie benutzerdefinierte Preise in einem einzelnen Markt festlegen möchten, ändern und importieren Sie die Preistabellenkalkulation.
 
 >[!Note]
 >Sie müssen Ihre Preisänderungen speichern, damit die Preisdaten exportiert werden können.
@@ -442,8 +447,7 @@ Wenn Sie den Plan als privat konfigurieren, geben Sie **Azure-Abonnement-IDs** u
 >[!Note]
 >Private Angebote werden bei Azure-Abonnements, die über einen Handelspartner des Cloud Solution Provider-Programms (CSP) eingerichtet wurden, nicht unterstützt.
 
-
-### <a name="technical-configuration"></a>Technische Konfiguration 
+### <a name="technical-configuration"></a>Technische Konfiguration
 
 Auf dieser Registerkarte können Sie das Bereitstellungspaket hochladen, das Kunden erlaubt, Ihren Plan bereitzustellen.
 
@@ -501,15 +505,15 @@ Geben Sie einen HTTPS-Webhookendpunkt an, um Benachrichtigungen zu allen CRUD-Vo
 
 #### <a name="customize-allowed-customer-actions"></a>Zulässige Kundenaktionen anpassen
 
-Wählen Sie diese Option aus, um festzulegen, welche Aktionen Kunden neben den standardmäßig verfügbaren „`*/read`“-Aktionen für verwaltete Ressourcen ausführen können. 
+Wählen Sie diese Option aus, um festzulegen, welche Aktionen Kunden neben den standardmäßig verfügbaren „`*/read`“-Aktionen für verwaltete Ressourcen ausführen können.
 
-Listen Sie hier die zusätzlichen Aktionen auf, durch Semikolons getrennt, die Sie Ihren Kunden ermöglichen möchten.  Weitere Informationen finden Sie unter Weitere Informationen finden Sie unter [Grundlegendes zu Ablehnungszuweisungen für Azure-Ressourcen](../../role-based-access-control/deny-assignments.md).  Die verfügbaren Aktionen finden Sie unter [Vorgänge für Azure Resource Manager-Ressourcenanbieter](../../role-based-access-control/resource-provider-operations.md). Beispiel: Wenn Sie Kunden das Neustarten virtueller Computer erlauben möchten, fügen Sie den zulässigen Aktionen `Microsoft.Compute/virtualMachines/restart/action` hinzu.
+Listen Sie hier die zusätzlichen Aktionen auf, durch Semikolons getrennt, die Sie Ihren Kunden ermöglichen möchten.  Weitere Informationen finden Sie unter Weitere Informationen finden Sie unter [Grundlegendes zu Ablehnungszuweisungen für Azure-Ressourcen](../../role-based-access-control/deny-assignments.md). Die verfügbaren Aktionen finden Sie unter [Vorgänge für Azure Resource Manager-Ressourcenanbieter](../../role-based-access-control/resource-provider-operations.md). Beispiel: Wenn Sie Kunden das Neustarten virtueller Computer erlauben möchten, fügen Sie den zulässigen Aktionen `Microsoft.Compute/virtualMachines/restart/action` hinzu.
 
 #### <a name="global-azure--azure-government-cloud"></a>Global Azure / Azure Government Cloud
 
-Geben Sie an, wer in jeder unterstützten Cloud über Verwaltungszugriff auf diese verwaltete Anwendung verfügen soll. Benutzer, Gruppen oder Anwendungen, denen Berechtigungen für die verwaltete Ressourcengruppe erteilt werden sollen, werden mithilfe von Azure Active Directory-Identitäten (AAD) identifiziert.
+Geben Sie an, wer in jeder unterstützten Cloud über Verwaltungszugriff auf diese verwaltete Anwendung verfügen soll. Benutzer, Gruppen oder Anwendungen, denen Berechtigungen für die verwaltete Ressourcengruppe erteilt werden sollen, werden mithilfe von Azure Active Directory-Identitäten (AD) identifiziert.
 
-**Azure Active Directory-Mandanten-ID:** Hierbei handelt es sich um die AAD-Mandanten-ID (auch als Verzeichnis-ID bezeichnet), die die Identitäten der Benutzer, Gruppen oder Anwendungen enthält, denen Sie Berechtigungen erteilen möchten. Sie finden Ihre AAD-Mandanten-ID im Azure-Portal unter [Eigenschaften für Azure Active Directory](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties).
+**Azure Active Directory-Mandanten-ID**: Hierbei handelt es sich um die Azure AD-Mandanten-ID (auch als Verzeichnis-ID bezeichnet), die die Identitäten der Benutzer, Gruppen oder Anwendungen enthält, denen Sie Berechtigungen erteilen möchten. Sie finden Ihre Azure AD-Mandanten-ID im Azure-Portal unter [Eigenschaften für Azure Active Directory](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties).
 
 **Autorisierungen:** Fügen Sie die Azure Active Directory-Objekt-ID des Benutzers, der Gruppe oder der Anwendung hinzu, dem oder der die Berechtigung für die verwaltete Ressourcengruppe erteilt werden soll. Sie können den Benutzer anhand seiner Prinzipal-ID auf dem [Blatt „Azure Active Directory Benutzer“ im Azure-Portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM/UsersManagementMenuBlade/AllUsers) identifizieren.
 
@@ -579,9 +583,9 @@ Wählen Sie **Entwurf speichern** aus, bevor Sie fortfahren.
 Nachdem Sie alle erforderlichen Abschnitte des Angebots ausgefüllt haben, klicken Sie rechts oben im Portal auf **Überprüfen und veröffentlichen**.
 
 Überprüfen Sie den Abschlussstatus der einzelnen Abschnitte des Angebots.
-    - *Nicht gestartet:* Der Abschnitt wurde nicht bearbeitet und muss abgeschlossen werden.
-    - *Unvollständig:* Der Abschnitt enthält Fehler, die behoben werden müssen, oder erfordert eine Ergänzung der Informationen. Kehren Sie zu den Abschnitten zurück, und nehmen Sie eine Aktualisierung vor.
-    - *Abgeschlossen:* Der Abschnitt ist abgeschlossen. Alle erforderlichen Daten wurden angegeben, und es sind keine Fehler vorhanden. Alle Abschnitte des Angebots müssen abgeschlossen sein, bevor Sie das Angebot einreichen können.
+    - *Nicht gestartet*: Der Abschnitt wurde nicht bearbeitet und muss abgeschlossen werden.
+    - *Unvollständig*: Der Abschnitt enthält Fehler, die behoben werden müssen, oder erfordert eine Ergänzung der Informationen. Kehren Sie zu den Abschnitten zurück, und nehmen Sie eine Aktualisierung vor.
+    - *Abgeschlossen*: Der Abschnitt ist abgeschlossen. Alle erforderlichen Daten wurden angegeben, und es sind keine Fehler vorhanden. Alle Abschnitte des Angebots müssen abgeschlossen sein, bevor Sie das Angebot einreichen können.
 
 Wenn Sie dieses Angebot zum ersten Mal veröffentlichen, können Sie Testanweisungen für das Zertifizierungsteam bereitstellen, um sicherzustellen, dass Ihre App ordnungsgemäß getestet wird. Außerdem können Sie ergänzende Hinweise bereitstellen, die das Verständnis Ihrer App erleichtern.
 

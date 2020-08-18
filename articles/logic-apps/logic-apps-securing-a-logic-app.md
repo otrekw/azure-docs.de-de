@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: rarayudu, logicappspm
 ms.topic: conceptual
-ms.date: 07/03/2020
-ms.openlocfilehash: b20cb074a21196467c0264247e8f5d885d7956a0
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.date: 08/11/2020
+ms.openlocfilehash: e7199b6d54a0150845bfc09c38e002e6cc298ee7
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423302"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88066728"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Schützen des Zugriffs und der Daten in Azure Logic Apps
 
@@ -110,45 +110,9 @@ Schließen Sie in den Textkörper die `KeyType`-Eigenschaft als `Primary` oder a
 
 ### <a name="enable-azure-active-directory-oauth"></a>Aktivieren von Azure Active Directory OAuth
 
-Wenn Ihre Logik-App mit einem [Anforderungstrigger](../connectors/connectors-native-reqres.md) beginnt, können Sie [Azure Active Directory Open Authentication](../active-directory/develop/index.yml) (Azure AD OAuth) aktivieren, indem Sie eine Autorisierungsrichtlinie für eingehende Aufrufe an den Anforderungstrigger erstellen. Bevor Sie diese Authentifizierung aktivieren, berücksichtigen Sie die folgenden Überlegungen:
+Wenn Ihre Logik-App mit einem [Anforderungstrigger](../connectors/connectors-native-reqres.md) beginnt, können Sie [Azure Active Directory Open Authentication](../active-directory/develop/index.yml) (Azure AD OAuth) aktivieren, indem Sie eine Autorisierungsrichtlinie für eingehende Aufrufe an den Anforderungstrigger definieren oder hinzufügen. Wenn Ihre Logik-App eine eingehende Anforderung empfängt, die ein Authentifizierungstoken enthält, vergleicht Azure Logic Apps die Ansprüche des Tokens mit den Ansprüchen in den einzelnen Autorisierungsrichtlinien. Wenn eine Übereinstimmung zwischen den Ansprüchen des Tokens und allen Ansprüchen in mindestens einer Richtlinie vorliegt, ist die Autorisierung für die eingehende Anforderung erfolgreich. Das Token kann mehr Ansprüche als von der Autorisierungsrichtlinie angegeben aufweisen.
 
-* Bei einem eingehenden Aufruf Ihrer Logik-App kann nur ein Autorisierungsschema verwendet werden, entweder Azure AD OAuth oder [Shared Access Signature (SAS)](#sas). Nur Autorisierungsschemata vom [Typ „Bearer“](../active-directory/develop/active-directory-v2-protocols.md#tokens) werden für OAuth-Token unterstützt, die nur für den Anforderungstrigger unterstützt werden.
-
-* Ihre Logik-App ist auf eine maximale Anzahl von Autorisierungsrichtlinien beschränkt. Jede Autorisierungsrichtlinie verfügt auch über eine maximale Anzahl von [Ansprüchen](../active-directory/develop/developer-glossary.md#claim). Weitere Informationen finden Sie unter [Grenzwerte und Konfiguration für Azure Logic Apps](../logic-apps/logic-apps-limits-and-config.md#authentication-limits).
-
-* Eine Autorisierungsrichtlinie muss mindestens den Anspruch **Aussteller** enthalten, dem ein Wert ab `https://sts.windows.net/` oder `https://login.microsoftonline.com/` (OAuth V2) als Azure AD-Aussteller-ID zugeordnet ist. Weitere Informationen zu Zugriffstoken finden Sie unter [Microsoft Identity Platform-Zugriffstoken](../active-directory/develop/access-tokens.md).
-
-Um Azure AD OAuth zu aktivieren, führen Sie die folgenden Schritte aus, um Ihrer Logik-App mindestens eine Autorisierungsrichtlinie hinzuzufügen.
-
-1. Suchen oder öffnen Sie Ihre Logik-App im [Azure-Portal](https://portal.microsoft.com) im Logik-App-Designer.
-
-1. Wählen Sie im Menü der Logik-App unter **Einstellungen** die Option **Autorisierung** aus. Sobald der Bereich „Autorisierung“ geöffnet ist, wählen Sie **Richtlinie hinzufügen** aus.
-
-   ![Auswählen von „Autorisierung > Richtlinie hinzufügen“](./media/logic-apps-securing-a-logic-app/add-azure-active-directory-authorization-policies.png)
-
-1. Geben Sie Informationen zur Autorisierungsrichtlinie an, indem Sie die [Anspruchstypen](../active-directory/develop/developer-glossary.md#claim) und Werte angeben, die ihre Logik-App im Authentifizierungstoken erwartet, das von jedem eingehenden Aufruf des Anforderungstriggers präsentiert wird:
-
-   ![Bereitstellen von Informationen für die Autorisierungsrichtlinie](./media/logic-apps-securing-a-logic-app/set-up-authorization-policy.png)
-
-   | Eigenschaft | Erforderlich | BESCHREIBUNG |
-   |----------|----------|-------------|
-   | **Richtlinienname** | Ja | Der Name, den Sie für die Autorisierungsinstanz verwenden möchten |
-   | **Ansprüche** | Ja | Die Anspruchstypen und -werte, die ihre Logik-App von eingehenden Aufrufen akzeptiert. Im Folgenden finden Sie die verfügbaren Anspruchstypen: <p><p>- **Aussteller** <br>- **Zielgruppe** <br>- **Betreff** <br>- **JWT-ID** (JSON Web Token-ID) <p><p>Die Liste **Ansprüche** muss mindestens den Anspruch **Aussteller** enthalten, dem ein Wert ab `https://sts.windows.net/` oder `https://login.microsoftonline.com/` als Azure AD-Aussteller-ID zugeordnet ist. Weitere Informationen zu diesen Anspruchstypen finden Sie unter [Ansprüche in Sicherheitstoken von Azure AD](../active-directory/azuread-dev/v1-authentication-scenarios.md#claims-in-azure-ad-security-tokens). Sie können auch Ihren eigenen Anspruchstyp und -wert angeben. |
-   |||
-
-1. Zum Hinzufügen eines weiteren Anspruchs wählen Sie eine der folgenden Optionen aus:
-
-   * Um einen weiteren Anspruchstyp hinzuzufügen, wählen Sie **Standardanspruch hinzufügen** aus und geben den Anspruchswert an.
-
-   * Um Ihren eigenen Anspruch hinzuzufügen, wählen Sie **Benutzerdefinierten Anspruch hinzufügen** aus und geben den benutzerdefinierten Anspruchswert an.
-
-1. Zum Hinzufügen einer weiteren Autorisierungsrichtlinie wählen Sie **Richtlinie hinzufügen** aus. Wiederholen Sie die vorherigen Schritte, um die Richtlinie einzurichten.
-
-1. Klicken Sie auf **Speichern**, wenn Sie fertig sind.
-
-Ihre Logik-App ist jetzt für die Verwendung von Azure AD OAuth zur Autorisierung eingehender Anforderungen eingerichtet. Wenn Ihre Logik-App eine eingehende Anforderung empfängt, die ein Authentifizierungstoken enthält, vergleicht Azure Logic Apps die Ansprüche des Tokens mit den Ansprüchen in den einzelnen Autorisierungsrichtlinien. Wenn eine Übereinstimmung zwischen den Ansprüchen des Tokens und allen Ansprüchen in mindestens einer Richtlinie vorliegt, ist die Autorisierung für die eingehende Anforderung erfolgreich. Das Token kann mehr Ansprüche als von der Autorisierungsrichtlinie angegeben aufweisen.
-
-Angenommen, Ihre Logik-App verfügt über eine Autorisierungsrichtlinie, die zwei Anspruchstypen erfordert, Aussteller und Zielgruppe. Dieses Beispiel eines [Zugriffstokens](../active-directory/develop/access-tokens.md) enthält beide Anspruchstypen:
+Angenommen, Ihre Logik-App verfügt über eine Autorisierungsrichtlinie, die zwei Anspruchstypen erfordert, **Aussteller** und **Zielgruppe**. Dieses Beispiel eines [Zugriffstokens](../active-directory/develop/access-tokens.md) enthält beide Anspruchstypen:
 
 ```json
 {
@@ -191,6 +155,93 @@ Angenommen, Ihre Logik-App verfügt über eine Autorisierungsrichtlinie, die zwe
 }
 ```
 
+#### <a name="considerations-for-enabling-azure-oauth"></a>Überlegungen zum Aktivieren von Azure OAuth
+
+Bevor Sie diese Authentifizierung aktivieren, berücksichtigen Sie die folgenden Überlegungen:
+
+* Bei einem eingehenden Aufruf Ihrer Logik-App kann nur ein Autorisierungsschema verwendet werden, entweder Azure AD OAuth oder [Shared Access Signature (SAS)](#sas). Nur Autorisierungsschemata vom [Typ „Bearer“](../active-directory/develop/active-directory-v2-protocols.md#tokens) werden für OAuth-Token unterstützt, die nur für den Anforderungstrigger unterstützt werden.
+
+* Ihre Logik-App ist auf eine maximale Anzahl von Autorisierungsrichtlinien beschränkt. Jede Autorisierungsrichtlinie verfügt auch über eine maximale Anzahl von [Ansprüchen](../active-directory/develop/developer-glossary.md#claim). Weitere Informationen finden Sie unter [Grenzwerte und Konfiguration für Azure Logic Apps](../logic-apps/logic-apps-limits-and-config.md#authentication-limits).
+
+* Eine Autorisierungsrichtlinie muss mindestens den Anspruch **Aussteller** enthalten, dem ein Wert ab `https://sts.windows.net/` oder `https://login.microsoftonline.com/` (OAuth V2) als Azure AD-Aussteller-ID zugeordnet ist. Weitere Informationen zu Zugriffstoken finden Sie unter [Microsoft Identity Platform-Zugriffstoken](../active-directory/develop/access-tokens.md).
+
+<a name="define-authorization-policy-portal"></a>
+
+#### <a name="define-authorization-policy-in-azure-portal"></a>Definieren einer Autorisierungsrichtlinie im Azure-Portal
+
+Um Azure AD OAuth für Ihre Logik-App im Azure-Portal zu aktivieren, führen Sie die folgenden Schritte aus, um Ihrer Logik-App mindestens eine Autorisierungsrichtlinie hinzuzufügen:
+
+1. Suchen oder öffnen Sie Ihre Logik-App im [Azure-Portal](https://portal.microsoft.com) im Logik-App-Designer.
+
+1. Wählen Sie im Menü der Logik-App unter **Einstellungen** die Option **Autorisierung** aus. Sobald der Bereich „Autorisierung“ geöffnet ist, wählen Sie **Richtlinie hinzufügen** aus.
+
+   ![Auswählen von „Autorisierung > Richtlinie hinzufügen“](./media/logic-apps-securing-a-logic-app/add-azure-active-directory-authorization-policies.png)
+
+1. Geben Sie Informationen zur Autorisierungsrichtlinie an, indem Sie die [Anspruchstypen](../active-directory/develop/developer-glossary.md#claim) und Werte angeben, die ihre Logik-App im Authentifizierungstoken erwartet, das von jedem eingehenden Aufruf des Anforderungstriggers präsentiert wird:
+
+   ![Bereitstellen von Informationen für die Autorisierungsrichtlinie](./media/logic-apps-securing-a-logic-app/set-up-authorization-policy.png)
+
+   | Eigenschaft | Erforderlich | BESCHREIBUNG |
+   |----------|----------|-------------|
+   | **Richtlinienname** | Ja | Der Name, den Sie für die Autorisierungsinstanz verwenden möchten |
+   | **Ansprüche** | Ja | Die Anspruchstypen und -werte, die ihre Logik-App von eingehenden Aufrufen akzeptiert. Im Folgenden finden Sie die verfügbaren Anspruchstypen: <p><p>- **Aussteller** <br>- **Zielgruppe** <br>- **Betreff** <br>- **JWT-ID** (JSON Web Token-ID) <p><p>Die Liste **Ansprüche** muss mindestens den Anspruch **Aussteller** enthalten, dem ein Wert ab `https://sts.windows.net/` oder `https://login.microsoftonline.com/` als Azure AD-Aussteller-ID zugeordnet ist. Weitere Informationen zu diesen Anspruchstypen finden Sie unter [Ansprüche in Sicherheitstoken von Azure AD](../active-directory/azuread-dev/v1-authentication-scenarios.md#claims-in-azure-ad-security-tokens). Sie können auch Ihren eigenen Anspruchstyp und -wert angeben. |
+   |||
+
+1. Zum Hinzufügen eines weiteren Anspruchs wählen Sie eine der folgenden Optionen aus:
+
+   * Um einen weiteren Anspruchstyp hinzuzufügen, wählen Sie **Standardanspruch hinzufügen** aus und geben den Anspruchswert an.
+
+   * Um Ihren eigenen Anspruch hinzuzufügen, wählen Sie **Benutzerdefinierten Anspruch hinzufügen** aus und geben den benutzerdefinierten Anspruchswert an.
+
+1. Zum Hinzufügen einer weiteren Autorisierungsrichtlinie wählen Sie **Richtlinie hinzufügen** aus. Wiederholen Sie die vorherigen Schritte, um die Richtlinie einzurichten.
+
+1. Klicken Sie auf **Speichern**, wenn Sie fertig sind.
+
+<a name="define-authorization-policy-template"></a>
+
+#### <a name="define-authorization-policy-in-azure-resource-manager-template"></a>Definieren einer Autorisierungsrichtlinie in einer Azure Resource Manager-Vorlage
+
+Um Azure AD OAuth in der ARM-Vorlage für die Bereitstellung Ihrer Logik-App zu aktivieren, fügen Sie im Abschnitt `properties` für die [Ressourcendefinition Ihrer Logik-App](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md#logic-app-resource-definition) ein `accessControl`-Objekt hinzu, falls keines vorhanden ist, das ein `triggers`-Objekt enthält. Fügen Sie im `triggers`-Objekt ein `openAuthenticationPolicies`-Objekt hinzu, in dem Sie eine oder mehrere Autorisierungsrichtlinien definieren, indem Sie die folgende Syntax befolgen:
+
+```json
+"resources": [
+   {
+      // Start logic app resource definition
+      "properties": {
+         "state": "<Enabled-or-Disabled>",
+         "definition": {<workflow-definition>},
+         "parameters": {<workflow-definition-parameter-values>},
+         "accessControl": {
+            "triggers": {
+               "openAuthenticationPolicies": {
+                  "policies": {
+                     "<policy-name>": {
+                        "type": "AAD",
+                        "claims": [
+                           {
+                              "name": "<claim-name>",
+                              "values": "<claim-value>"
+                           }
+                        ]
+                     }
+                  }
+               }
+            },
+         },
+      },
+      "name": "[parameters('LogicAppName')]",
+      "type": "Microsoft.Logic/workflows",
+      "location": "[parameters('LogicAppLocation')]",
+      "apiVersion": "2016-06-01",
+      "dependsOn": [
+      ]
+   }
+   // End logic app resource definition
+],
+```
+
+Weitere Informationen zum `accessControl`-Abschnitt finden Sie unter [Einschränken eingehender IP-Adressbereiche in Azure Resource Manager-Vorlagen](#restrict-inbound-ip-template) und [Microsoft.Logic-Workflows-Vorlagenreferenz](/templates/microsoft.logic/2019-05-01/workflows).
+
 <a name="restrict-inbound-ip"></a>
 
 ### <a name="restrict-inbound-ip-addresses"></a>Einschränken eingehender IP-Adressen
@@ -213,6 +264,8 @@ Wenn Sie Ihre Logik-App nur als geschachtelte Logik-App auslösen möchten, wäh
 
 > [!NOTE]
 > Unabhängig von der IP-Adresse können Sie eine Logik-App weiterhin ausführen, die einen anforderungsbasierten Trigger hat, indem Sie die Anforderung [Logic Apps-REST-API:  Workflowtrigger – Ausführen](/rest/api/logic/workflowtriggers/run) oder die API Management verwenden. In diesem Szenario ist jedoch weiterhin eine [Authentifizierung](../active-directory/develop/authentication-vs-authorization.md) über die Azure-REST-API erforderlich. Alle Ereignisse werden im Azure-Überwachungsprotokoll angezeigt. Achten Sie darauf, die Richtlinien für die Zugriffssteuerung entsprechend festzulegen.
+
+<a name="restrict-inbound-ip-template"></a>
 
 #### <a name="restrict-inbound-ip-ranges-in-azure-resource-manager-template"></a>Einschränken eingehender IP-Adressbereich in der Azure Resource Manager-Vorlage
 

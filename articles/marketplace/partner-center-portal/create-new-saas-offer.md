@@ -1,20 +1,25 @@
 ---
-title: Erstellen eines neuen SaaS-Angebots im kommerziellen Microsoft-Marketplace
-description: Hier finden Sie Informationen zum Erstellen eines neuen Software-as-a-Service-Angebots (SaaS-Angebots) zum Auflisten oder Verkaufen in Microsoft AppSource, Azure Marketplace oder über das CSP-Programm (Cloud Solution Provider) im kommerziellen Microsoft-Marketplace in Microsoft Partner Center.
+title: Erstellen eines SaaS-Angebots – Azure Marketplace und Microsoft AppSource
+description: Hier finden Sie Informationen zum Erstellen eines Software-as-a-Service-Angebots (SaaS-Angebots) zum Auflisten oder Verkaufen in Microsoft AppSource, im Azure Marketplace oder über das CSP-Programm (Cloud Solution Provider) im kommerziellen Microsoft-Marketplace im Microsoft Partner Center.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
-ms.date: 06/17/2020
-ms.openlocfilehash: a233f3594ace74a6bfeca90ffccfbcb233e5d890
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.topic: how-to
+ms.date: 08/07/2020
+author: mingshen-ms
+ms.author: mingshen
+ms.openlocfilehash: 6140d369c2dbc0968d2f28ff6b8cf447dd721d10
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121883"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88166721"
 ---
-# <a name="create-a-new-saas-offer-in-the-commercial-marketplace"></a>Erstellen eines neuen SaaS-Angebots im kommerziellen Marketplace
+# <a name="create-a-saas-offer-in-the-commercial-marketplace"></a>Erstellen eines SaaS-Angebots im kommerziellen Marketplace
 
 Um mit dem Erstellen von SaaS-Angeboten (Software-as-a-Service) im kommerziellen Marketplace beginnen zu können, müssen Sie zuerst [ein Partner Center-Konto erstellen](./create-account.md), das [Dashboard „Kommerzieller Marketplace“](https://partner.microsoft.com/dashboard/commercial-marketplace/offers) öffnen und die Registerkarte **Übersicht** auswählen.
+
+> [!NOTE]
+> Wenn Sie ein transaktionsfähiges SaaS-Angebot erstellen, stellen Sie sicher, dass Sie die Integration von [SaaS-Fulfillment-APIs](./pc-saas-fulfillment-apis.md) implementieren.  Die Integration der APIs ist die einzige Möglichkeit, die reibungslose Transaktionsfähigkeit im Marketplace sicherzustellen. Außerdem müssen Sie sicherstellen, dass Ihre App die Azure AD-Authentifizierung mit einmaligem Anmelden (Single Sign On, SSO) verwendet. Weitere Informationen finden Sie unter [Azure AD und transaktionsfähige SaaS-Angebote im kommerziellen Marketplace](../azure-ad-saas.md).
 
 ## <a name="create-a-new-offer"></a>Erstellen eines neuen Angebots
 
@@ -40,10 +45,6 @@ Geben Sie einen **Angebotsalias** ein. Dies ist der Name, der für das Angebot i
 - Dieser Name wird im Marketplace nicht verwendet und unterscheidet sich vom Angebotsnamen und anderen Werten, die den Kunden angezeigt werden.
 - Nachdem Sie **Erstellen** ausgewählt haben, kann der Angebotsalias nicht mehr geändert werden.
 
-<!---
-![Offer overview on Partner Center](./media/commercial-marketplace-offer-overview.png)
--->
-
 Wählen Sie **Erstellen** aus, um das Angebot zu generieren und fortzufahren.
 
 ## <a name="offer-overview"></a>Angebotsübersicht
@@ -62,8 +63,8 @@ Das Menü **Angebotsübersicht** enthält eine Liste mit Links zum Ausführen vo
 Auf dieser Seite werden folgende Informationen angefordert:
 
 - **Möchten Sie über Microsoft verkaufen?** (Ja/Nein)
-    - **Ja**, ich möchte über Microsoft verkaufen, und Microsoft soll Transaktionen in meinem Namen hosten.
-    - **Nein**, ich möchte mein Angebot lieber nur in den Marketplaces listen und Transaktionen unabhängig verarbeiten.
+  - **Ja**, ich möchte über Microsoft verkaufen, und Microsoft soll Transaktionen in meinem Namen hosten.
+  - **Nein**, ich möchte mein Angebot lieber nur in den Marketplaces listen und Transaktionen unabhängig verarbeiten.
 
 ### <a name="sell-through-microsoft"></a>Über Microsoft verkaufen
 
@@ -96,13 +97,11 @@ Hier sehen Sie eine exemplarische Aufschlüsselung der Kosten und Auszahlungen z
 - In diesem Beispiel stellt Microsoft 100,00 USD dem Kunden für Ihre Softwarelizenz in Rechnung und zahlt 80,00 USD an den Herausgeber aus.
 
 > [!NOTE]
-> **Reduzierte Marketplace-Dienstgebühr:** Für bestimmte SaaS-Angebote, die Sie im kommerziellen Marketplace veröffentlicht haben, reduziert Microsoft die Marketplace-Dienstgebühr von 20 Prozent (wie im Microsoft-Herausgebervertrag angegeben) auf 10 Prozent. Damit Ihre Angebote qualifiziert sind, müssen diese von Microsoft als bereit für IP-Co-Selling oder als priorisiert für IP-Co-Selling gekennzeichnet worden sein. Die Anforderungen für die Berechtigung müssen mindestens fünf (5) Arbeitstage vor dem Ende eines jeden Kalendermonats erfüllt sein, damit die reduzierte Marketplace-Dienstgebühr für den Monat in Anspruch genommen werden kann. Die reduzierte Marketplace-Dienstgebühr gilt nicht für virtuelle Computer, verwaltete Apps oder andere Produkte, die über den kommerziellen Marketplace zur Verfügung gestellt werden.
+> **Reduzierte Marketplace-Dienstgebühr:** Für bestimmte SaaS-Angebote, die Sie im kommerziellen Marketplace veröffentlicht haben, reduziert Microsoft die Marketplace-Dienstgebühr von 20 Prozent (wie im Microsoft-Herausgebervertrag angegeben) auf 10 Prozent. Damit Ihre Angebote qualifiziert sind, müssen sie von Microsoft als gefördert für Azure IP-Co-Selling gekennzeichnet worden sein. Die Anforderungen für die Berechtigung müssen mindestens fünf (5) Arbeitstage vor dem Ende eines jeden Kalendermonats erfüllt sein, damit die reduzierte Marketplace-Dienstgebühr für den Monat in Anspruch genommen werden kann. Die reduzierte Marketplace-Dienstgebühr gilt auch für VMs, verwaltete Apps und andere berechtigte transaktionsfähige IaaS-Angebote im Rahmen der Azure IP-Co-Selling-Incentives, die über den kommerziellen Marketplace bereitgestellt werden.
 
 ### <a name="list-through-microsoft"></a>List through Microsoft (Über Microsoft auflisten)
 
 Erstellen Sie eine Marketplace-Liste, um mit Microsoft für Ihr Geschäft zu werben. Wenn Sie Ihr Angebot nur auflisten und die Transaktion nicht über Microsoft ausführen lassen, nimmt Microsoft nicht direkt an Softwarelizenztransaktionen teil. Es gibt keine zugehörige Transaktionsgebühr, und der Herausgeber behält 100 % der vom Kunden gezahlten Softwarelizenzgebühren. Der Herausgeber ist für die Unterstützung aller Aspekte der Softwarelizenztransaktion verantwortlich, einschließlich, aber nicht beschränkt auf: Auftragsabwicklung, Messung, Abrechnung, Rechnungsstellung, Zahlung und Inkasso.
-
-<!-- - **How do you want potential customers to interact with this listing offer?** -->
 
 #### <a name="get-it-now-free"></a>Jetzt abrufen (kostenlos)
 
@@ -120,8 +119,6 @@ Listen Sie Ihr Angebot für Kunden mit einem Link zu einer kostenlosen Testversi
 Sammeln Sie über Ihr CRM-System (Customer Relationship Management) Kundenkontaktinformationen. Der Kunde wird gebeten, die Berechtigung zur Freigabe seiner Informationen zu erteilen. Diese Kundeninformationen sowie der Angebotsname, die Angebots-ID und der Marketplace, auf dem der Kunde Ihr Angebot gefunden hat, werden an das CRM-System gesendet, das Sie konfiguriert haben. Weitere Informationen zum Konfigurieren des CRM-Systems finden Sie unter [Kundenleads](#customer-leads).
 
 #### <a name="example-marketplace-offer-listing"></a>Liste der Marketplace-Beispielangebote
-
-<!-- ![Example marketplace offer listing with notes](./media/marketplace-offer.svg) -->
 
 Hier sehen Sie ein Beispiel dafür, wie Angebotsinformationen in Microsoft AppSource angezeigt werden:
 
@@ -278,19 +275,25 @@ Dies ist ein Pflichtfeld.
 
 - **Kontakte**: Geben Sie für jeden Kundenkontakt **Name**, **Telefonnummer** und **E-Mail-Adresse** eines Mitarbeiters an. (Diese Angaben werden *nicht* öffentlich angezeigt.) Eine **Support-URL** ist für die Gruppe **Supportkontakt** erforderlich. (Sie *wird* öffentlich angezeigt.)
 
-    - **Supportkontakt** (erforderlich): Für allgemeine Supportfragen.
-    - **Technischer Ansprechpartner** (erforderlich): Für technische Fragen.
-    - **Channel Manager contact** (Channel-Manager-Kontakt) (erforderlich): Für Fragen von Handelspartnern zum CSP-Programm.
+  - **Supportkontakt** (erforderlich): Für allgemeine Supportfragen.
+  - **Technischer Ansprechpartner** (erforderlich): Für technische Fragen.
+  - **Channel Manager contact** (Channel-Manager-Kontakt) (erforderlich): Für Fragen von Handelspartnern zum CSP-Programm.
 
-#### <a name="files-and-images"></a>Files and Images (Dateien und Bilder)
+#### <a name="files-and-images"></a>Dateien und Bilder
 
 - **Dokumente** (erforderlich): Fügen Sie für Ihr Angebot Marketingdokumente im PDF-Format hinzu (pro Angebot mindestens ein Dokument und maximal drei Dokumente).
-- **Bilder** (optional): In den Marketplaces können Logobilder Ihres Angebots an verschiedenen Stellen angezeigt werden, weshalb folgende Pixelgrößen im PNG-Format erforderlich sind:
+- **Bilder** – Laden Sie Logobilder im PNG-Format hoch:
 
-    - **Klein** (48 x 48, erforderlich)
-    - **Mittel** (90 x 90, erforderlich)
-    - **Groß** (216 x 216, erforderlich)
-    - **Breit** (255 x 115)
+  - **Klein** (48 x 48 Pixel, erforderlich)
+  - **Mittel** (90 x 90 Pixel, erforderlich)
+  - **Groß** (216 x 216 Pixel, erforderlich)
+  - **Breit** (255 x 115 Pixel, optional)
+
+   Diese drei Logogrößen werden an verschiedenen Stellen in den Storefronts verwendet:
+
+   -   Das kleine Logo (48 x 48 Pixel) erscheint in den Suchergebnissen von Azure Marketplace sowie auf der Hauptseite und Suchergebnisseite von Microsoft AppSource. 
+   -   Das mittelgroße Logo (90 x 90 Pixel) wird angezeigt, wenn Sie eine neue Ressource in Microsoft Azure erstellen.
+   -   Das große Logo (zwischen 216 x 216 und 350 x 350 Pixel) erscheint auf Ihrer Seite mit der Angebotsliste sowie im Azure Marketplace und in Microsoft AppSource.
 
 - **Screenshots** (erforderlich): Fügen Sie maximal fünf Screenshots hinzu, um Ihr Angebot zu veranschaulichen (mit einer Größe von 1280 x 720 Pixeln). Alle Bilder müssen das PNG-Format aufweisen.
 - **Videos** (optional): Fügen Sie Links zu Videos hinzu, um Ihr Angebot zu veranschaulichen. Sie können Links zu YouTube und/oder Vimeo-Videos angeben, die zusammen mit Ihrem Angebot bei Kunden angezeigt werden. Sie müssen auch ein Miniaturbild des Videos hinzufügen. Es muss das PNG-Format und eine Größe von 1280 x 720 Pixel aufweisen. Sie können bis zu vier Videos pro Angebot anzeigen.
@@ -322,10 +325,10 @@ Wählen Sie **Entwurf speichern** aus, bevor Sie fortfahren.
 
 ## <a name="technical-configuration"></a>Technische Konfiguration
 
-Auf der Registerkarte **Technische Konfiguration** sind die technischen Details definiert, die vom Marketplace für die Kommunikation mit Ihrem SaaS-Dienst verwendet werden. Durch diese Verbindung können wir Ihr Angebot für den Endkunden bereitstellen, wenn er es kaufen und verwalten möchte. 
+Auf der Registerkarte **Technische Konfiguration** sind die technischen Details definiert, die vom Marketplace für die Kommunikation mit Ihrem SaaS-Dienst verwendet werden. Durch diese Verbindung können wir Ihr Angebot für den Endkunden bereitstellen, wenn er es kaufen und verwalten möchte.
 
->[!Note]
->Sie müssen die Integration in [SaaS-Fulfillment-APIs](./pc-saas-fulfillment-api-v2.md) implementieren, bevor Sie diese Details in den Angebotsdetails konfigurieren.
+>[!NOTE]
+>Sie müssen die Integration in [SaaS-Fulfillment-APIs](./pc-saas-fulfillment-api-v2.md) implementieren, bevor Sie diese Details in den Angebotsdetails konfigurieren. Sie müssen auch eine Angebotsseite erstellen, und Ihre App muss die Azure AD-Authentifizierung mit einmaligem Anmelden (Single Sign On, SSO) verwenden. Weitere Informationen finden Sie unter [Azure AD und transaktionsfähige SaaS-Angebote im kommerziellen Marketplace](../azure-ad-saas.md).
 
 Diagramme und ausführliche Erläuterungen zur Verwendung der gesammelten Felder finden Sie in der Dokumentation zu den [APIs](./pc-saas-fulfillment-api-v2.md).
 
@@ -337,10 +340,10 @@ Diagramme und ausführliche Erläuterungen zur Verwendung der gesammelten Felder
 
 - **Azure AD-App-ID** (erforderlich): Sie benötigen auch Ihre [Anwendungs-ID](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in). Rufen Sie Ihre Azure Active Directory-Instanz auf, klicken Sie auf **App-Registrierungen**, und suchen Sie dann nach der **Anwendungs-ID** (z. B. `50c464d3-4930-494c-963c-1e951d15360e`), um diesen Wert abzurufen.
 
->[!Note]
+>[!NOTE]
 >Die Azure AD-App-ID ist Ihrer Herausgeber-ID in Ihrem Partner Center-Konto zugeordnet.  Stellen Sie sicher, dass bei allen Ihren Angeboten dieselbe Anwendungs-ID verwendet wird.
 
->[!Note]
+>[!NOTE]
 >Wenn der Herausgeber über zwei oder mehr unterschiedliche Konten im Partner Center verfügt, sollten auch zwei oder mehr unterschiedliche Azure AD-App-IDs verwendet werden – jeweils eine für eines der Konten. Jedes Partnerkonto im Partner Center sollte eine eindeutige Azure AD-App-ID für alle SaaS-Angebote verwenden, die über dieses Konto veröffentlicht werden.
 
 Wählen Sie **Entwurf speichern** aus, bevor Sie fortfahren.
@@ -348,6 +351,8 @@ Wählen Sie **Entwurf speichern** aus, bevor Sie fortfahren.
 ## <a name="plan-overview"></a>Planübersicht
 
 Auf dieser Seite können Sie verschiedene Planoptionen innerhalb des gleichen Angebots angeben. Diese Pläne (auch als SKUs bezeichnet) können sich in Bezug auf Version, Monetarisierung und Dienstebenen unterscheiden. Sie müssen mindestens einen Plan einrichten, um Ihr Angebot im Marketplace zu verkaufen.
+
+Sie können bis zu 100 Pläne für jedes Angebot erstellen. Bis zu 45 davon können privat sein. Erfahren Sie unter [Private Angebote im kommerziellen Microsoft-Marketplace](../private-offers.md) mehr über private Pläne.
 
 Nach der Erstellung werden die Plannamen, IDs und Preismodelle, die Verfügbarkeit (öffentlich oder privat), der aktuelle Veröffentlichungsstatus und alle verfügbaren Aktionen angezeigt.
 
@@ -462,8 +467,6 @@ Wählen Sie **Entwurf speichern** aus, bevor Sie fortfahren.
 1. Planname
 2. Planbeschreibung
 
-<br>
-
 ## <a name="cloud-solution-provider-csp-reseller-audience"></a>Cloud Solution Provider (CSP) – Zielgruppe „Handelspartner“
 
 Wenn Sie die Option wählen, Ihr Angebot im CSP-Programm verfügbar zu machen, können Cloud Solution Provider Ihr Produkt als Teil einer Paketlösung verkaufen. Weitere Informationen finden Sie unter [Cloud Solution Provider (CSP)](https://go.microsoft.com/fwlink/?linkid=2111109).
@@ -477,12 +480,12 @@ Sobald Sie alle erforderlichen Abschnitte des Angebots ausgefüllt haben, klicke
 Wenn Sie das Angebot zum ersten Mal veröffentlichen, haben Sie folgende Möglichkeiten:
 
 - Anzeigen des Abschlussstatus für die einzelnen Abschnitte des Angebots.
-    - **Nicht gestartet**: Der Abschnitt wurde nicht bearbeitet und muss abgeschlossen werden.
-    - **Unvollständig**: Der Abschnitt enthält Fehler, die behoben werden müssen, oder erfordert eine Ergänzung der Informationen. Sie müssen zum entsprechenden Abschnitt zurückkehren und ihn aktualisieren.
-    - **Vollständig**: Der Abschnitt ist vollständig. Alle erforderlichen Daten wurden angegeben, und es sind keine Fehler vorhanden. Alle Abschnitte des Angebots müssen abgeschlossen sein, bevor Sie das Angebot einreichen können.
+  - **Nicht gestartet**: Der Abschnitt wurde nicht bearbeitet und muss abgeschlossen werden.
+  - **Unvollständig**: Der Abschnitt enthält Fehler, die behoben werden müssen, oder erfordert eine Ergänzung der Informationen. Sie müssen zum entsprechenden Abschnitt zurückkehren und ihn aktualisieren.
+  - **Vollständig**: Der Abschnitt ist vollständig. Alle erforderlichen Daten wurden angegeben, und es sind keine Fehler vorhanden. Alle Abschnitte des Angebots müssen abgeschlossen sein, bevor Sie das Angebot einreichen können.
 - Geben Sie dem Zertifizierungsteam Testanweisungen, um sicherzustellen, dass Ihre App ordnungsgemäß getestet wird, sowie ergänzende Hinweise, die das Verständnis Ihrer App erleichtern.
 - Senden Sie dazu das Angebot zur Veröffentlichung, indem Sie auf **Senden** klicken. Wir senden Ihnen eine E-Mail, um Ihnen mitzuteilen, wann eine Vorschauversion des Angebots verfügbar ist, damit Sie es überprüfen und genehmigen können. Kehren Sie zu Partner Center zurück, und wählen Sie **Live schalten** aus, um das Angebot für eine öffentliche Zielgruppe (oder bei einem privaten Angebot für eine private Zielgruppe) zu veröffentlichen.
 
-## <a name="next-step"></a>Nächster Schritt
+## <a name="next-steps"></a>Nächste Schritte
 
 - [Aktualisieren eines bestehenden Commercial Marketplace-Angebots](./update-existing-offer.md)

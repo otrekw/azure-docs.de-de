@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: emuench
 ms.author: mingshen
-ms.date: 07/28/2020
-ms.openlocfilehash: 9db6fbe002492c0db6e9e0e5e0a23ca1946759a5
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.date: 08/07/2020
+ms.openlocfilehash: 3e8822462cd7989f6bc1f051b3868d6241f591b1
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386434"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88166704"
 ---
 # <a name="create-an-azure-virtual-machine-offer-on-azure-marketplace"></a>Erstellen eines Azure-VM-Angebots im Azure Marketplace
 
@@ -242,6 +242,8 @@ Geben Sie Kontaktinformationen an, die Microsoft verwenden soll, wenn Probleme (
 
 Stellen Sie Logos und Bilder zur Verwendung mit Ihrem Angebot bereit. Alle Bilder müssen das PNG-Format aufweisen. Bei unscharfen Bildern wird Ihre Übermittlung abgelehnt.
 
+[!INCLUDE [logotips](../includes/graphics-suggestions.md)]
+
 >[!NOTE]
 >Wenn beim Hochladen von Dateien ein Problem auftritt, vergewissern Sie sich, dass das lokale Netzwerk den von Partner Center verwendeten Dienst https://upload.xboxlive.com nicht blockiert.
 
@@ -255,6 +257,8 @@ Stellen Sie PNG-Dateien des Logos Ihres Angebots in den folgenden vier Bildgrö�
 - **Breit** (255 &times; 115 Pixel)
 
 Alle vier Logos sind erforderlich, und sie werden in verschiedenen Azure Marketplace-Auflistungen angezeigt.
+
+[!INCLUDE [logos-azure-marketplace-only](../includes/logos-azure-marketplace-only.md)]
 
 #### <a name="screenshots"></a>Screenshots
 
@@ -287,6 +291,8 @@ Wählen Sie **Entwurf speichern** aus, bevor Sie mit dem nächsten Abschnitt for
 ## <a name="plan-overview"></a>Planübersicht
 
 Sie können verschiedene Planoptionen innerhalb desselben Angebots in Partner Center angeben. Ein Angebot erfordert mindestens einen Plan (zuvor als SKU bezeichnet), der sich hinsichtlich der Monetarisierungszielgruppe, Azure-Region, Features oder VM-Images unterscheiden kann.
+
+Sie können bis zu 100 Pläne für jedes Angebot erstellen. Bis zu 45 davon können privat sein. Erfahren Sie unter [Private Angebote im kommerziellen Microsoft-Marketplace](../private-offers.md) mehr über private Pläne.
 
 Wählen Sie nach dem Erstellen Ihrer Pläne die Registerkarte **Planübersicht** aus, um folgende Informationen anzuzeigen:
 

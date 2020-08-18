@@ -1,20 +1,20 @@
 ---
 title: Erstellen eines Azure IoT Edge-Modulangebots im Azure Marketplace mit Partner Center
-description: Erfahren Sie, wie Sie mithilfe von Partner Center ein IoT Edge-Modulangebot im Azure Marketplace erstellen, konfigurieren und veröffentlichen.
+description: Erfahren Sie, wie Sie mithilfe des Partner Centers ein IoT Edge-Modulangebot im Azure Marketplace erstellen, konfigurieren und veröffentlichen.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
-author: anbene
-ms.author: mingshen
-ms.date: 06/17/2020
-ms.openlocfilehash: 11deb9b8146924d1a493872219ad85556d13c405
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.topic: how-to
+author: keferna
+ms.author: keferna
+ms.date: 08/07/2020
+ms.openlocfilehash: 38e51f8bc66e8c47807a9b265ade3f196745db26
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86520271"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88167180"
 ---
-# <a name="create-configure-and-publish-an-iot-edge-module-offer-in-azure-marketplace"></a>Erstellen, Konfigurieren und Veröffentlichen eines IoT Edge-Modulangebots im Azure Marketplace
+# <a name="create-an-iot-edge-module-offer"></a>Erstellen eines IoT Edge-Modulangebots
 
 In diesem Artikel wird beschrieben, wie Sie ein IoT Edge-Modulangebot (Internet der Dinge) für den Azure Marketplace erstellen und veröffentlichen. Bevor Sie beginnen, [erstellen Sie ein Konto im kommerziellen Marketplace in Partner Center](create-account.md), sofern dies noch nicht geschehen ist. Vergewissern Sie sich, dass Ihr Konto im Programm „Kommerzieller Marketplace“ registriert ist.
 
@@ -53,7 +53,7 @@ Diese Seite enthält Links zum Durchführen von Vorgängen für dieses Angebot a
 - Wenn das Angebot einen Entwurf darstellt: [Delete draft offer](update-existing-offer.md#delete-a-draft-offer) (Angebotsentwurf löschen)
 - Wenn es sich um ein Liveangebot handelt: [Stop selling the offer](update-existing-offer.md#stop-selling-an-offer-or-plan) (Angebot nicht mehr verkaufen)
 - Wenn das Angebot in der Vorschau ist: [Go-live](publishing-status.md#publisher-approval) (Live schalten)
-- Wenn keine Bestätigung durch den Herausgeber erfolgt ist: [Cancel publishing](update-existing-offer.md#cancel-publishing) (Veröffentlichung abbrechen)
+- Wenn Sie die Abmeldung beim Herausgeber nicht abgeschlossen haben: [Cancel publishing](update-existing-offer.md#cancel-publishing) (Veröffentlichung abbrechen).
 
 ## <a name="offer-setup"></a>Angebotseinrichtung
 
@@ -194,6 +194,8 @@ Weitere Informationen zum Erstellen von Angebotslistungen finden Sie unter [Bew�
 
 Stellen Sie Logos und Bilder zur Verwendung mit Ihrem Angebot bereit. Alle Bilder müssen das PNG-Format aufweisen. Unscharfe Bilder werden abgelehnt.
 
+[!INCLUDE [logostips](../includes/graphics-suggestions.md)]
+
 >[!Note]
 >Wenn beim Hochladen von Dateien ein Problem auftritt, vergewissern Sie sich, dass das lokale Netzwerk den von Partner Center verwendeten Dienst https://upload.xboxlive.com nicht blockiert.
 
@@ -207,6 +209,8 @@ Stellen Sie PNG-Dateien des Logos zu Ihrem Angebot in jeder der folgenden vier P
 - **Breit (255 x 115)**
 
 Alle vier Logos sind erforderlich und werden an verschiedenen Stellen in der Marketplace-Auflistung verwendet.
+
+[!INCLUDE [logos-azure-marketplace-only](../includes/logos-azure-marketplace-only.md)]
 
 #### <a name="screenshots-optional"></a>Screenshots (optional)
 
@@ -284,9 +288,11 @@ Fügen Sie mindestens eine Azure-Abonnement-ID hinzu, entweder einzeln (bis zu 1
 
 Wählen Sie **Entwurf speichern** aus, bevor Sie mit dem nächsten Abschnitt „Planübersicht“ fortfahren.
 
-### <a name="plan-overview"></a>Planübersicht
+## <a name="plan-overview"></a>Planübersicht
 
 Auf dieser Registerkarte können Sie verschiedene Planoptionen innerhalb des gleichen Angebots im Partner Center angeben. Pläne (zuvor als SKUs bezeichnet) können sich hinsichtlich der verfügbaren Clouds, wie etwa globaler Clouds oder Government-Clouds, und des Images, auf das der Plan verweist, unterscheiden. Damit Ihr Angebot im Marketplace aufgelistet wird, müssen Sie mindestens einen Plan auswählen.
+
+Sie können bis zu 100 Pläne für jedes Angebot erstellen. Bis zu 45 davon können privat sein. Erfahren Sie unter [Private Angebote im kommerziellen Microsoft-Marketplace](../private-offers.md) mehr über private Pläne.
 
 Nach dem Erstellen Ihres Plans zeigt die Registerkarte **Planübersicht** folgende Informationen an:
 
@@ -301,7 +307,7 @@ Die in der Planübersicht verfügbaren Aktionen unterscheiden sich je nach dem a
 - **Entwurf löschen**: Wenn der Planstatus ein Entwurf ist.
 - **Verkauf des Plans einstellen**: Wenn der Plan den Status „Live veröffentlicht“ hat.
 
-#### <a name="create-new-plan"></a>Erstellen eines neuen Plans
+### <a name="create-new-plan"></a>Erstellen eines neuen Plans
 
 Wählen Sie **Neuen Plan erstellen** aus. Das Dialogfeld **Neuer Plan** wird angezeigt.
 
@@ -333,7 +339,7 @@ Diese Option ist nur sichtbar, wenn **Azure Government** unter **Azure-Regionen*
 
 Azure Government-Dienste verarbeiten Daten, die bestimmten behördlichen Vorschriften und Anforderungen unterliegen. Beispielsweise FedRAMP, NIST 800.171 (DIB), ITAR, IRS 1075, DoD L4 und CJIS. Um bei Ihren Zertifizierungen ein Bewusstsein für diese Programme zu schaffen, können Sie bis zu 100 Links bereitstellen, in denen Ihre Zertifizierungen beschrieben werden. Hierbei kann es sich um Links zu Ihren Auflistungen direkt im Programm oder auf Ihrer eigenen Website handeln. Diese Links sind nur für Azure Government-Kunden sichtbar.
 
-## <a name="plan-listing"></a>Planlisting
+### <a name="plan-listing"></a>Planlisting
 
 Auf dieser Registerkarte werden spezifische Informationen für jeden Plan innerhalb desselben Angebots angezeigt.
 
@@ -373,7 +379,7 @@ Hier sehen Sie ein Beispiel für Plandetails im Azure Marketplace (die aufgelist
 2. Planname
 3. Planbeschreibung
 
-## <a name="availability"></a>Verfügbarkeit
+### <a name="availability"></a>Verfügbarkeit
 
 Wenn Sie Ihr veröffentlichtes Angebot ausblenden möchten, damit Kunden es im Marketplace weder gezielt noch durch Stöbern suchen und es auch nicht erwerben können, aktivieren Sie auf der Registerkarte „Verfügbarkeit“ das Kontrollkästchen **Plan ausblenden**.
 

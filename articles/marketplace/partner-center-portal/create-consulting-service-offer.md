@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: 8dd0abb5c127d51a0feaf0c71188b7fc48e2fd69
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: f020d3e98a5c13848a67ed4d8c9ded485b2f9450
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87798221"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88032593"
 ---
 # <a name="create-a-consulting-service-offer"></a>Erstellen eines Beratungsdienstangebots
 
@@ -202,19 +202,22 @@ Fügen Sie bis zu drei unterstützende PDF-Dokumente für Ihr Angebot hinzu (min
 
 Stellen Sie Logos und Bilder zur Verwendung mit Ihrem Angebot bereit. Alle Bilder müssen das PNG-Format aufweisen. Unscharfe Bilder werden abgelehnt.
 
+[!INCLUDE [logotips](../includes/graphics-suggestions.md)]
+
 >[!Note]
 >Wenn beim Hochladen von Dateien ein Problem auftritt, vergewissern Sie sich, dass das lokale Netzwerk den von Partner Center verwendeten Dienst https://upload.xboxlive.com nicht blockiert.
 
 #### <a name="store-logos"></a>Store-Logos
 
-Geben Sie eine PNG-Datei für das **große** Logo an (zwischen 216 × 216 und 350 × 350 Pixel). Dies wird in Partner Center verwendet, um ein **kleines** (48 × 48 Pixel) Logo zu erstellen. Sie können das Logo durch ein anderes Bild ersetzen.
+Stellen Sie PNG-Dateien für das Logo Ihres Angebots in jeder der folgenden Pixelgrößen bereit:
 
-Beide Logogrößen sind erforderlich und werden an verschiedenen Stellen im Angebot verwendet:
+- **Klein (48 x 48)**
+- **Groß (216 x 216)**
 
-- **Klein** (48 x 48)
-- **Groß** (zwischen 216 × 216 und 350 × 350)
+Alle Logos sind erforderlich und werden an verschiedenen Stellen in der Marketplace-Auflistung verwendet.
 
-[!INCLUDE [Logo suggestions](./includes/graphics-suggestions.md)]
+-   Das kleine Logo (48 x 48 Pixel) erscheint in den Suchergebnissen von Azure Marketplace sowie auf der Hauptseite und Suchergebnisseite von Microsoft AppSource. 
+-   Das große Logo (zwischen 216 x 216 und 350 x 350 Pixel) erscheint auf Ihrer Seite mit der Angebotsliste sowie im Azure Marketplace und in Microsoft AppSource.
 
 #### <a name="screenshots-optional"></a>Screenshots (optional)
 

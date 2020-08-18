@@ -6,13 +6,13 @@ ms.topic: article
 ms.date: 10/25/2019
 ms.author: jafreebe
 ms.reviewer: ushan
-ms.custom: tracking-python
-ms.openlocfilehash: b40da0c8746bc63a99394027b61d777a611727e3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-python
+ms.openlocfilehash: 713f4228bc2ba968fc96668d4d5c568f33b7e786
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84559589"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080282"
 ---
 # <a name="deploy-to-app-service-using-github-actions"></a>Bereitstellen in App Service mithilfe von GitHub Actions
 
@@ -29,48 +29,75 @@ Bei einem Azure App Service-Workflow umfasst die Datei drei Abschnitte:
 |`Section`  |Aufgaben  |
 |---------|---------|
 |**Authentifizierung** | 1. Definieren eines Dienstprinzipals. <br /> 2. Erstellen eines GitHub-Geheimnisses. |
-|**Build** | 1. Einrichten der Umgebung <br /> 2. Erstellen der Web-App. |
-|**Bereitstellen** | 1. Bereitstellen der Web-App |
+|**Build** | 1. Einrichten der Umgebung. <br /> 2. Erstellen der Web-App. |
+|**Bereitstellen** | 1. Bereitstellen der Web-App. |
 
-## <a name="create-a-service-principal"></a>Erstellen eines Dienstprinzipals
+## <a name="generate-deployment-credentials"></a>Generieren von Anmeldeinformationen für die Bereitstellung
+
+# <a name="user-level-credentials"></a>[Anmeldeinformationen auf Benutzerebene](#tab/userlevel)
 
 Sie können mit dem Befehl [az ad sp create-for-rbac](https://docs.microsoft.com/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) in der [Azure CLI](https://docs.microsoft.com/cli/azure/) einen [Dienstprinzipal](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) erstellen. Sie können diesen Befehl mit [Azure Cloud Shell](https://shell.azure.com/) im Azure-Portal oder durch Auswählen der Schaltfläche **Ausprobieren** ausführen.
 
 ```azurecli-interactive
-az ad sp create-for-rbac --name "myApp" --role contributor --scopes /subscriptions/<subscription-id>/resourceGroups/<group-name>/providers/Microsoft.Web/sites/<app-name> --sdk-auth
+az ad sp create-for-rbac --name "myApp" --role contributor \
+                            --scopes /subscriptions/<subscription-id>/resourceGroups/<group-name>/providers/Microsoft.Web/sites/<app-name> \
+                            --sdk-auth
 ```
 
-Ersetzen Sie in diesem Beispiel die Platzhalter in der Ressource durch Ihre Abonnement-ID, den Ressourcengruppennamen und den App-Namen. Bei der Ausgabe handelt es sich um die Anmeldeinformationen für die Rollenzuweisung, die Zugriff auf ihre App Service-App bereitstellen. Kopieren Sie dieses JSON-Objekt, das Sie zum Authentifizieren aus GitHub verwenden können.
+Ersetzen Sie im obigen Beispiel die Platzhalter durch Ihre Abonnement-ID, den Ressourcengruppennamen und den App-Namen. Die Ausgabe ist ein JSON-Objekt mit den Anmeldeinformationen für die Rollenzuweisung, die ähnlich wie unten Zugriff auf Ihre App Service-App gewähren. Kopieren Sie dieses JSON-Objekt zur späteren Verwendung.
 
-> [!NOTE]
-> Sie müssen keinen Dienstprinzipal erstellen, wenn Sie das Veröffentlichungsprofil für die Authentifizierung verwenden.
+```output 
+  {
+    "clientId": "<GUID>",
+    "clientSecret": "<GUID>",
+    "subscriptionId": "<GUID>",
+    "tenantId": "<GUID>",
+    (...)
+  }
+```
 
 > [!IMPORTANT]
-> Es ist immer empfehlenswert, den minimalen Zugriff zu gewähren. Aus diesem Grund ist der Bereich im vorherigen Beispiel auf die spezifische App Service-App und nicht auf die gesamte Ressourcengruppe eingeschränkt.
+> Es ist immer empfehlenswert, den minimalen Zugriff zu gewähren. Der Bereich im vorherigen Beispiel ist auf die spezifische App Service-App und nicht auf die gesamte Ressourcengruppe beschränkt.
+
+# <a name="app-level-credentials"></a>[Anmeldeinformationen auf App-Ebene](#tab/applevel)
+
+Sie können Anmeldeinformationen auf App-Ebene verwenden, indem Sie das Veröffentlichungsprofil für Ihre App verwenden. Wechseln Sie zur Verwaltungsseite Ihrer App im Portal. Klicken Sie auf der Seite **Übersicht** auf die Option **Veröffentlichungsprofil abrufen**.
+
+Sie benötigen den Inhalt der Datei später noch.
+
+---
 
 ## <a name="configure-the-github-secret"></a>Konfigurieren des GitHub-Geheimnisses
 
-Sie können auch Anmeldeinformationen auf App-Ebene verwenden, z. B. das Veröffentlichungsprofil für die Bereitstellung. Führen Sie zum Konfigurieren des Geheimnisses die folgenden Schritte aus:
+# <a name="user-level-credentials"></a>[Anmeldeinformationen auf Benutzerebene](#tab/userlevel)
 
-1. Laden Sie das Veröffentlichungsprofil für die App Service-App mit der Option **Veröffentlichungsprofil abrufen** aus dem Portal herunter.
+Navigieren Sie in [GitHub](https://github.com/) zu Ihrem Repository, und wählen Sie **Einstellungen > Geheimnisse > Neues Geheimnis hinzufügen** aus.
 
-2. Navigieren Sie in [GitHub](https://github.com/) zu Ihrem Repository, und wählen Sie **Einstellungen > Geheimnisse > Neues Geheimnis hinzufügen** aus.
+Um [Anmeldeinformationen auf Benutzerebene](#generate-deployment-credentials) zu verwenden, fügen Sie die gesamte JSON-Ausgabe aus dem Azure CLI-Befehl in das Wertfeld des Geheimnisses ein. Geben Sie dem Geheimnis einen Namen wie `AZURE_CREDENTIALS`.
 
-    ![secrets](media/app-service-github-actions/secrets.png)
+Wenn Sie die Workflowdatei später konfigurieren, verwenden Sie das Geheimnis für die Eingabe `creds` der Azure-Anmeldeaktion. Beispiel:
 
-3. Fügen Sie den Inhalt für die heruntergeladene Veröffentlichungsprofildatei in das Wertfeld des Geheimnisses ein.
+```yaml
+- uses: azure/login@v1
+  with:
+    creds: ${{ secrets.AZURE_CREDENTIALS }}
+```
 
-4. Ersetzen Sie jetzt in der Workflowdatei in Ihrem Branch `.github/workflows/workflow.yml` das Geheimnis für das eingegebene `publish-profile` der Aktion für die Bereitstellung der Azure-Web-App.
+# <a name="app-level-credentials"></a>[Anmeldeinformationen auf App-Ebene](#tab/applevel)
+
+Navigieren Sie in [GitHub](https://github.com/) zu Ihrem Repository, und wählen Sie **Einstellungen > Geheimnisse > Neues Geheimnis hinzufügen** aus.
+
+Um [Anmeldeinformationen auf App-Ebene](#generate-deployment-credentials) zu verwenden, fügen Sie den Inhalt der heruntergeladenen Veröffentlichungsprofildatei in das Wertfeld des Geheimnisses ein. Geben Sie dem Geheimnis einen Namen wie `azureWebAppPublishProfile`.
+
+Wenn Sie die Workflowdatei später konfigurieren, verwenden Sie das Geheimnis für das Eingabe `publish-profile` der Azure-Web-App-Bereitstellungsaktion. Beispiel:
     
-    ```yaml
-        - uses: azure/webapps-deploy@v2
-          with:
-            publish-profile: ${{ secrets.azureWebAppPublishProfile }}
-    ```
+```yaml
+- uses: azure/webapps-deploy@v2
+  with:
+    publish-profile: ${{ secrets.azureWebAppPublishProfile }}
+```
 
-5. Nach der Definition wird das Geheimnis wie folgt angezeigt.
-
-    ![secrets](media/app-service-github-actions/app-service-secrets.png)
+---
 
 ## <a name="set-up-the-environment"></a>Einrichten der Umgebung
 
@@ -192,43 +219,9 @@ Verwenden Sie die Aktion `azure/webapps-deploy@v2`, um Ihren Code in einer App S
 | **package** | (Optional) Pfad zum Paket oder Ordner. *.zip, *.war, *.jar oder ein Ordner für die Bereitstellung |
 | **slot-name** | (Optional): Geben Sie einen vorhandene Slot ein, bei dem es sich nicht um den Produktionsslot handelt. |
 
-### <a name="deploy-using-publish-profile"></a>Bereitstellen über das Veröffentlichungsprofil
+# <a name="user-level-credentials"></a>[Anmeldeinformationen auf Benutzerebene](#tab/userlevel)
 
-Nachstehend wird ein Beispielworkflow zum Erstellen und Bereitstellen einer Node.js-App in Azure mithilfe eines Veröffentlichungsprofils angezeigt.
-
-```yaml
-# File: .github/workflows/workflow.yml
-
-on: push
-
-jobs:
-  build-and-deploy:
-    runs-on: ubuntu-latest
-    steps:
-    # checkout the repo
-    - name: 'Checkout GitHub Action' 
-      uses: actions/checkout@master
-    
-    - name: Setup Node 10.x
-      uses: actions/setup-node@v1
-      with:
-        node-version: '10.x'
-    - name: 'npm install, build, and test'
-      run: |
-        npm install
-        npm run build --if-present
-        npm run test --if-present
-       
-    - name: 'Run Azure webapp deploy action using publish profile credentials'
-          uses: azure/webapps-deploy@v2
-          with: 
-            app-name: node-rn
-            publish-profile: ${{ secrets.azureWebAppPublishProfile }}
-```
-
-### <a name="deploy-using-azure-service-principal"></a>Bereitstellen über den Azure-Dienstprinzipal
-
-Nachstehend wird ein Beispielworkflow zum Erstellen und Bereitstellen einer Node.js-App in Azure mithilfe eines Azure-Dienstprinzipals angezeigt.
+Nachstehend wird ein Beispielworkflow zum Erstellen und Bereitstellen einer Node.js-App in Azure mithilfe eines Azure-Dienstprinzipals angezeigt. Beachten Sie, wie die `creds`-Eingabe auf das `AZURE_CREDENTIALS`-Geheimnis verweist, das Sie zuvor erstellt haben.
 
 ```yaml
 on: [push]
@@ -269,11 +262,47 @@ jobs:
         az logout
 ```
 
+# <a name="app-level-credentials"></a>[Anmeldeinformationen auf App-Ebene](#tab/applevel)
+
+Nachstehend wird ein Beispielworkflow zum Erstellen und Bereitstellen einer Node.js-App in Azure mithilfe des Veröffentlichungsprofils der App angezeigt. Beachten Sie, wie die `publish-profile`-Eingabe auf das `azureWebAppPublishProfile`-Geheimnis verweist, das Sie zuvor erstellt haben.
+
+```yaml
+# File: .github/workflows/workflow.yml
+
+on: push
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+    # checkout the repo
+    - name: 'Checkout GitHub Action' 
+      uses: actions/checkout@master
+    
+    - name: Setup Node 10.x
+      uses: actions/setup-node@v1
+      with:
+        node-version: '10.x'
+    - name: 'npm install, build, and test'
+      run: |
+        npm install
+        npm run build --if-present
+        npm run test --if-present
+       
+    - name: 'Run Azure webapp deploy action using publish profile credentials'
+          uses: azure/webapps-deploy@v2
+          with: 
+            app-name: node-rn
+            publish-profile: ${{ secrets.azureWebAppPublishProfile }}
+```
+
+---
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 Die verfügbaren Aktionen sind auf verschiedene GitHub-Repositorys verteilt, jeweils mit Dokumentation und Beispielen, um Sie bei der Verwendung von GitHub für CI/CD und der Bereitstellung Ihrer Apps in Azure zu unterstützen.
 
-- [Aktionsworkflow für das Bereitstellen in Azure](https://github.com/Azure/actions-workflow-samples)
+- [Aktionsworkflows für das Bereitstellen in Azure](https://github.com/Azure/actions-workflow-samples)
 
 - [Azure-Anmeldung](https://github.com/Azure/login)
 

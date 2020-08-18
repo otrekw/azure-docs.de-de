@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/08/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: 11c1c307d00b9347081a313308ad2467086ec208
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: e17edacf45583283d53c5484417f6a2dd7c6e012
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327394"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87799921"
 ---
 # <a name="saas-offer-creation-checklist-in-partner-center"></a>Prüfliste für die Erstellung von SaaS-Angeboten im Partner Center
 
@@ -79,9 +79,9 @@ Auf der Eigenschaftenseite definieren Sie die Kategorien und Branchen, die zum G
 Auf der Listenseite stellen Sie den Text und Bilder bereit, die Kunden beim Aufrufen des Listings für Ihr Angebot im Marketplace angezeigt werden. 
 
 | **Feldname**    | **Hinweise**   |
-| :---------------- | :-----------| 
+| :---------------- | :-----------|
 | Name  | Erforderlich, maximal 50 Zeichen. |
-| Zusammenfassung  | Erforderlich, maximal 100 Zeichen. | 
+| Zusammenfassung  | Erforderlich, maximal 100 Zeichen. |
 | BESCHREIBUNG  | Erforderlich, maximal 3000 Zeichen. |
 | Anweisungen für den Einstieg  | Erforderlich, maximal 3000 Zeichen. |
 | Anweisungen für den Einstieg  | Erforderlich, maximal 3000 Zeichen. |
@@ -91,7 +91,7 @@ Auf der Listenseite stellen Sie den Text und Bilder bereit, die Kunden beim Aufr
 | Nützliche Links: Titel und URL  | Optional. |
 | Unterstützende Dokumente: Titel und Datei  | Erforderlich, mindestens 1 und maximal 3. Muss im PDF-Dateiformat vorliegen. |
 | Screenshots  | Erforderlich, mindestens 1 und maximal 5 Screenshots; vier oder mehr empfohlen. Muss im PNG-Format 1280 x 720 vorliegen. |
-| Store-Logos (Klein, Mittel, Groß, Breit)  | Klein (48 x 48) und Groß (216 x 216) erforderlich; andere Größen sind optional, jedoch empfohlen: Mittel (90 x 90), Breit (255 x 115). Müssen im PNG-Format vorliegen. |
+| Store-Logos (klein, mittel, groß)  | Das große Logo (216 x 216) ist erforderlich. Aus diesem werden in Partner Center ein kleines (48 × 48 Pixel) und ein mittelgroßes (90 × 90 Pixel) Logo erstellt. Sie können die Logos durch andere Bilder ersetzen. Logos müssen im PNG-Format vorliegen. |
 | Videos: Name, URL und Miniaturansicht  | Optional, empfohlen, maximal 4 Videos. Miniaturansicht muss im PNG-Format 1280 x 720 vorliegen. Video muss in YouTube oder Vimeo gehostet werden. |
 | Kontakte (CSP-Programm, Engineering, Support)  | Kontakt für Engineering und Support erforderlich (Name, E-Mail und Telefonnummer); Kontakt für CSP-Programm optional, jedoch empfohlen. |
 | Support-URL  | Erforderlich. |
@@ -100,11 +100,11 @@ Auf der Listenseite stellen Sie den Text und Bilder bereit, die Kunden beim Aufr
 
 Auf der Seite „Vorschau“ geben Sie die Zielgruppe an, die Zugriff auf Ihre Angebotsvorschau haben soll, um sicherzustellen, dass das Angebot alle Ihre Anforderungen erfüllt, bevor es live geschaltet wird. 
 
-| **Feldname**    | **Hinweise**   | 
-| :---------------- | :-----------| 
+| **Feldname**    | **Hinweise**   |
+| :---------------- | :-----------|
 | AAD/MSA: E-Mail und Beschreibung | Erforderlich, mindestens 1 und maximal 10 bei manueller Eingabe oder bis zu 20 bei Hochladen einer CSV-Datei. |
 
-## <a name="technical-configuration-page"></a>Seite „Technische Konfiguration“ 
+## <a name="technical-configuration-page"></a>Seite „Technische Konfiguration“
 
 Auf der Seite „Technische Konfiguration“ geben Sie die technischen Informationen an, die von Microsoft für die Verbindung zu Ihrem Angebot verwendet werden. Diese Seite wird Ihnen nur angezeigt, wenn Sie sich für den Verkauf über Microsoft entschieden haben.
 

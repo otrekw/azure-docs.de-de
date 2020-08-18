@@ -6,17 +6,19 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 author: keferna
 ms.author: keferna
-ms.date: 01/29/2020
-ms.openlocfilehash: 7041221b015465e9db2d67d8dd7760d644c34f0c
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.date: 07/29/2020
+ms.openlocfilehash: b1baeaa31eddc13a68f2cc1d374b850f1c1a26bd
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387437"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88136336"
 ---
 # <a name="geographic-availability-and-currency-support-for-commercial-marketplace"></a>Geografische Verfügbarkeit und Unterstützung von Währungen für den kommerziellen Marketplace
 
-Angebote im kommerziellen Marketplace können in 141 geografischen Regionen gemäß der Rechnungsadresse des Kunden erworben werden, und Transaktionen können in 17 Währungen abgeschlossen werden. Die folgende Tabelle listet jeden unterstützten geografischen Standort auf, seinen [zweistelligen Alpha Code nach ISO 3166](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes), und die zugewiesene Währung.
+## <a name="supported-geographic-locations"></a>Unterstützte geografische Standorte
+
+Angebote im kommerziellen Marketplace können in 141 geografischen Regionen gemäß der Rechnungsadresse des Kunden erworben werden, und Transaktionen können in 17 Währungen abgeschlossen werden. In der folgenden Tabelle sind alle unterstützten geografischen Standorte mit dem jeweiligen [Alpha-2-Code nach ISO 3166](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes) und der zugewiesenen Währung aufgelistet.
 
 |   Name des Landes/der Region               |   ISO-2   |   Währung   |
 |-------------------------------------|-----------|--------------|
@@ -167,3 +169,30 @@ Angebote im kommerziellen Marketplace können in 141 geografischen Regionen gem�
 \* Für Kunden in Brasilien wird im Marketplace über Cloud Solution Provider (CSP) die Währung USD verwendet.
 
 \** Nur kostenlose und BYOL-VM-Images.
+
+## <a name="how-we-convert-currency"></a>So rechnen wir Währungen um
+
+ISVs haben die Möglichkeit, für alle kostenpflichtigen Angebotstypen Preise in USD einzugeben oder Preise in der lokalen Währung hochzuladen. Die in USD eingegebenen Preise werden automatisch in die lokale Währung umgerechnet, wenn die Seite gespeichert wird. Die im Partner Center verwendeten Tarife werden täglich aktualisiert. ISVs können die Preise exportieren und die umgerechneten Werte überprüfen.
+
+Um einen beliebigen Preis vor der Veröffentlichung anzupassen, exportieren Sie einfach das Preisarbeitsblatt, nehmen Änderungen vor und laden das geänderte Arbeitsblatt hoch.
+
+> [!NOTE]
+> Nachdem ein Preis für einen Markt in Ihrem Plan veröffentlicht wurde, kann er nicht mehr geändert werden. Um vor der Veröffentlichung dieser Preise sicherzustellen, dass sie richtig sind, exportieren Sie das Preisarbeitsblatt, und überprüfen Sie die Preise für jeden Markt.
+
+## <a name="retrieving-currency-information-by-api"></a>Abrufen von Währungsinformationen per API
+
+Einzelne Preise (die, je nachdem, wie sie festgelegt wurden, möglicherweise durch die Wechselkurse am Tag ihrer Speicherung beeinflusst wurden) können über eine API abgerufen werden. Bei Währungsinformationen ist dies nicht möglich.
+
+Ausführliche Informationen zur Eingabe von Preisen für bestimmte Angebotstypen finden Sie in den folgenden Artikeln:
+
+- [Erstellen eines Azure-Anwendungsangebots](partner-center-portal/create-new-azure-apps-offer.md)
+- [Erstellen eines Azure-Containerangebots](partner-center-portal/create-azure-container-offer.md)
+- [Erstellen eines Angebots für virtuelle Azure-Computer](partner-center-portal/azure-vm-create-offer.md)
+- [Erstellen eines Beratungsdienstangebots](partner-center-portal/create-consulting-service-offer.md)
+- [Erstellen eines Angebots für Dynamics 365 for Customer Engagement und PowerApps](partner-center-portal/create-new-customer-engagement-offer.md)
+- [Erstellen eines Angebots für Dynamics 365 for Operations](partner-center-portal/create-new-operations-offer.md)
+- [Erstellen eines Angebots für Dynamics 365 Business Central](partner-center-portal/create-new-business-central-offer.md)
+- [Erstellen eines IoT Edge-Modulangebots](partner-center-portal/azure-iot-edge-module-creation.md)
+- [Erstellen eines Angebots für einen verwalteten Dienst](partner-center-portal/create-new-managed-service-offer.md)
+- [Erstellen einer Power BI-App](partner-center-portal/create-power-bi-app-offer.md)
+- [Erstellen eines SaaS-Angebots](partner-center-portal/create-new-saas-offer.md)

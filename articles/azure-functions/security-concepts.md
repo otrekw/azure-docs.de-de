@@ -3,20 +3,20 @@ title: Absichern von Azure Functions
 description: Erfahren Sie, wie Sie Ihren in Azure ausgeführten Funktionscode vor gängigen Angriffen schützen können.
 ms.date: 4/13/2020
 ms.topic: conceptual
-ms.openlocfilehash: 692e8420bda1e7baa8521dd6caaf5eef183823fb
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.openlocfilehash: 9bec32c4c3d8005ef0d3c9fc5732785a5fa19a0c
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84259421"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87850711"
 ---
 # <a name="securing-azure-functions"></a>Absichern von Azure Functions
 
-In vielerlei Hinsicht ist die Planung einer sicheren Entwicklung, Bereitstellung und Ausführung serverloser Funktionen vergleichbar mit der Planung einer webbasierten oder in der Cloud gehosteten Anwendung. [Azure App Service](/azure/app-service/) stellt die Hostinginfrastruktur für Ihre Funktions-Apps bereit. In diesem Artikel werden Sicherheitsstrategien für die Ausführung Ihres Funktionscodes vorgestellt. Außerdem erfahren Sie, wie App Service Ihnen helfen kann, Ihre Funktionen abzusichern. 
+In vielerlei Hinsicht ist die Planung einer sicheren Entwicklung, Bereitstellung und Ausführung serverloser Funktionen vergleichbar mit der Planung einer webbasierten oder in der Cloud gehosteten Anwendung. [Azure App Service](../app-service/index.yml) stellt die Hostinginfrastruktur für Ihre Funktions-Apps bereit. In diesem Artikel werden Sicherheitsstrategien für die Ausführung Ihres Funktionscodes vorgestellt. Außerdem erfahren Sie, wie App Service Ihnen helfen kann, Ihre Funktionen abzusichern. 
 
 [!INCLUDE [app-service-security-intro](../../includes/app-service-security-intro.md)]
 
-Weitere Empfehlungen zur Sicherheit gemäß dem [Azure-Sicherheitsvergleichstest](/azure/security/benchmarks/overview) finden Sie unter [Azure-Sicherheitsbaseline für Azure Functions](security-baseline.md).
+Weitere Empfehlungen zur Sicherheit gemäß dem [Azure-Sicherheitsvergleichstest](../security/benchmarks/overview.md) finden Sie unter [Azure-Sicherheitsbaseline für Azure Functions](security-baseline.md).
 
 ## <a name="secure-operation"></a>Sichere Ausführung 
 
@@ -71,6 +71,18 @@ In der folgenden Tabelle wird der Zweck der verschiedenen Arten von Zugriffsschl
 
 Weitere Informationen über Zugriffsschlüssel finden Sie im Artikel zur [Bindung von HTTP-Auslösern](functions-bindings-http-webhook-trigger.md#obtaining-keys).
 
+
+#### <a name="secret-repositories"></a>Geheimnis-Repositorys
+
+Standardmäßig werden Schlüssel in einem Blob Storage-Container in dem Konto gespeichert, das von der `AzureWebJobsStorage` Einstellung bereitgestellt wird. Sie können spezifische Anwendungseinstellungen verwenden, um dieses Verhalten außer Kraft zu setzen und Schlüssel an einem anderen Ort zu speichern.
+
+|Standort  |Einstellung | Wert | BESCHREIBUNG  |
+|---------|---------|---------|---------|
+|Anderes Speicherkonto     |  `AzureWebJobsSecretStorageSas`       | `<BLOB_SAS_URL` | Speichert Schlüssel in Blob-Speicher eines zweiten Speicherkontos, basierend auf der angegebenen SAS-URL. Schlüssel werden vor der Speicherung mit einem Geheimnis verschlüsselt, das für Ihre Funktions-App eindeutig ist. |
+|Dateisystem   | `AzureWebJobsSecretStorageType`   |  `files`       | Schlüssel werden dauerhaft im Dateisystem gespeichert, wobei sie vor dem Speichern mit einem Geheimnis verschlüsselt werden, das für Ihre Funktions-App eindeutig ist. |
+|Azure-Schlüsseltresor  | `AzureWebJobsSecretStorageType`<br/>`AzureWebJobsSecretStorageKeyVaultName` | `keyvault`<br/>`<VAULT_NAME>` | Der Tresor muss über eine Zugriffsrichtlinie verfügen, die der systemseitig zugewiesenen verwalteten Identität der Hostingressource entspricht. Die Zugriffsrichtlinie sollte der Identität die folgenden Geheimnisberechtigungen gewähren: `Get`, `Set`, `List` und `Delete`. <br/>Bei lokaler Ausführung wird die Entwickleridentität verwendet, und Einstellungen müssen sich in der [local.settings.json](functions-run-local.md#local-settings-file)-Datei befinden. | 
+|Kubernetes-Geheimnisse  |`AzureWebJobsSecretStorageType`<br/>`AzureWebJobsKubernetesSecretName` (optional) | `kubernetes`<br/>`<SECRETS_RESOURCE>` | Nur unterstützt, wenn die Functions-Laufzeit in Kubernetes ausgeführt wird. Wenn `AzureWebJobsKubernetesSecretName` nicht festgelegt ist, wird das Repository als schreibgeschützt betrachtet. In diesem Fall müssen die Werte vor der Bereitstellung generiert werden. Die Azure Functions Core Tools generieren die Werte automatisch bei der Bereitstellung auf Kubernetes.|
+
 ### <a name="authenticationauthorization"></a>Authentifizierung/Autorisierung
 
 Funktionsschlüssel können zwar einen gewissen Schutz vor unerwünschtem Zugriff bieten. Doch die einzige Möglichkeit, Ihre Funktionsendpunkte wirksam abzusichern, ist die Implementierung einer positiven Authentifizierung von Clients, die auf Ihre Funktionen zugreifen. Sie können dann Autorisierungsentscheidungen auf Grundlage der Identität treffen.  
@@ -83,7 +95,7 @@ Wie bei allen Anwendungen oder Diensten besteht das Ziel darin, Ihre Funktions-A
 
 #### <a name="user-management-permissions"></a>Berechtigungen für die Benutzerverwaltung
 
-Azure Functions unterstützt die integrierte [rollenbasierte Zugriffssteuerung (RBAC) von Azure](../role-based-access-control/overview.md). Von Azure Functions unterstützte RBAC-Rollen sind [Mitwirkender](../role-based-access-control/built-in-roles.md#contributor), [Besitzer](../role-based-access-control/built-in-roles.md#owner) und [Leser](../role-based-access-control/built-in-roles.md#owner). 
+Azure Functions unterstützt die integrierte [rollenbasierte Zugriffssteuerung (Azure RBAC) von Azure](../role-based-access-control/overview.md). Von Functions unterstützte Azure-Rollen sind [Mitwirkender](../role-based-access-control/built-in-roles.md#contributor), [Besitzer](../role-based-access-control/built-in-roles.md#owner) und [Leser](../role-based-access-control/built-in-roles.md#owner). 
 
 Berechtigungen gelten auf Funktions-App-Ebene. Die Rolle „Mitwirkender“ ist zur Ausführung der meisten Aufgaben auf Funktions-App-Ebene erforderlich. Nur die Rolle „Besitzer“ kann eine Funktions-App löschen. 
 
@@ -207,4 +219,3 @@ Mit Gatewaydiensten wie z. B. [Azure Application Gateway](../application-gatewa
 
 + [Azure-Sicherheitsbaseline für Azure Functions](security-baseline.md)
 + [Azure Functions-Diagnose](functions-diagnostics.md)
-        

@@ -8,12 +8,12 @@ ms.topic: conceptual
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 04/15/2020
-ms.openlocfilehash: 2d615e81891d68327b3225138495262d4eab9aa3
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 9f408174b9a8dff925a9c834ea75bf725ec6f913
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86116725"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87837343"
 ---
 # <a name="publishing-guide-for-virtual-machine-offers"></a>Leitfaden für die Veröffentlichung von Virtual Machine-Angeboten
 
@@ -29,7 +29,7 @@ Bei Verwendung des Abrechnungsmodells „Bring Your Own License“ (BYOL) könne
 
 Sie können einen oder mehrere virtuelle Computer über Infrastructure-as-a-Service- (IaaS-) oder Software-as-a-Service-Apps (SaaS-Apps) bereitstellen. Ein Vorteil der Veröffentlichungsoption *Testversion* ist die automatisierte Einrichtung eines virtuellen Computers oder einer gesamten Lösung mit einer von einem Partner gehosteten geführten Tour. Mit einer Testversion können Ihre Kunden VMs ohne zusätzliche Kosten evaluieren. Ein Kunde muss kein bestehender Azure-Kunde sein, um die Testversion nutzen zu können. 
 
-Kontaktieren Sie uns per E-Mail unter [amp-testdrive](mailto:amp-testdrive@microsoft.com), wenn Sie beginnen möchten. 
+Weitere Informationen zu Testversionen finden Sie unter [Was ist eine Testversion?](what-is-test-drive.md)
 
 |Requirements (Anforderungen)  |Details |
 |---------|---------|
@@ -47,7 +47,7 @@ Verwenden Sie den Angebotstyp *Virtueller Computer*, wenn Sie ein virtuelles Ger
 > Zum jetzigen Zeitpunkt kann der mit einem Enterprise Agreement verbundene Mindestverbrauch für die Azure-Nutzung Ihres virtuellen Computers genutzt, aber nicht auf Ihre Softwarelizenzgebühren angewendet werden.  
 > 
 > [!NOTE]
-> Sie können die Ermittlung und Bereitstellung Ihres virtuellen Computers auf eine bestimmte Gruppe von Kunden beschränken, indem Sie das Image und die Preise als privates Angebot veröffentlichen. Durch private Angebote haben Sie die Möglichkeit, exklusive Angebote für Ihre wertvollsten Kunden zu erstellen und benutzerdefinierte Software und Bestimmungen anzubieten. Benutzerdefinierte Bestimmungen ermöglichen Ihnen die Schaffung vielfältiger Szenarios, wie etwa vom Vertrieb erzielte Geschäftsabschlüsse mit Sonderpreisen und -bestimmungen sowie ein frühzeitiger Zugang zu Software, die in limitierter Anzahl veröffentlicht wird. Durch private Angebote können Sie einer begrenzten Anzahl von Kunden Sonderpreise oder bestimmte Produkte anbieten, indem Sie eine neue SKU mit diesen Konditionen erstellen.  
+> Sie können die Ermittlung und Bereitstellung Ihres virtuellen Computers auf eine bestimmte Gruppe von Kunden beschränken, indem Sie das Image und die Preise als privates Angebot veröffentlichen. Durch private Angebote haben Sie die Möglichkeit, exklusive Angebote für Ihre wertvollsten Kunden zu erstellen und benutzerdefinierte Software und Bestimmungen anzubieten. Benutzerdefinierte Bestimmungen ermöglichen Ihnen die Schaffung vielfältiger Szenarios, wie etwa vom Vertrieb erzielte Geschäftsabschlüsse mit Sonderpreisen und -bestimmungen sowie ein frühzeitiger Zugang zu Software, die in limitierter Anzahl veröffentlicht wird. Durch private Angebote können Sie einer begrenzten Anzahl von Kunden Sonderpreise oder bestimmte Produkte anbieten, indem Sie einen neuen Plan mit diesen Konditionen erstellen.  
 >
 > Weitere Informationen finden Sie unter [Private Angebote im Azure Marketplace](https://azure.microsoft.com/blog/private-offers-on-azure-marketplace).  
 

@@ -4,15 +4,15 @@ description: Hier wird erläutert, wie Sie ein Containerangebot für Azure Marke
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-author: mingshen
-ms.author: mingshen
+author: keferna
+ms.author: keferna
 ms.date: 06/17/2020
-ms.openlocfilehash: cea4a43724629793123098084098299e3915be7c
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 4b1c2ea437168d00823bc5527eaeda33db6ae733
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86109657"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88166738"
 ---
 # <a name="create-an-azure-container-offer-in-azure-marketplace"></a>Erstellen eines Azure-Containerangebots in Azure Marketplace
 
@@ -190,6 +190,8 @@ Weitere Informationen zum Erstellen von Angebotslistungen finden Sie unter [Bew�
 
 Stellen Sie Logos und Bilder zur Verwendung mit Ihrem Angebot bereit. Alle Bilder müssen das PNG-Format aufweisen. Unscharfe Bilder werden abgelehnt.
 
+[!INCLUDE [logotips](../includes/graphics-suggestions.md)]
+
 >[!Note]
 >Wenn beim Hochladen von Dateien ein Problem auftritt, vergewissern Sie sich, dass das lokale Netzwerk den von Partner Center verwendeten Dienst https://upload.xboxlive.com nicht blockiert.
 
@@ -203,6 +205,8 @@ Stellen Sie Logos und Bilder zur Verwendung mit Ihrem Angebot bereit. Alle Bilde
 - **Breit** (255 x 115)
 
 Alle vier Logos sind erforderlich und werden an verschiedenen Stellen in der Marketplace-Auflistung verwendet.
+
+[!INCLUDE [logos-azure-marketplace-only](../includes/logos-azure-marketplace-only.md)]
 
 #### <a name="screenshots-optional"></a>Screenshots (optional)
 
@@ -248,15 +252,17 @@ Fügen Sie mindestens eine Azure-Abonnement-ID hinzu, entweder einzeln (bis zu 1
 
 Wählen Sie **Entwurf speichern** aus, bevor Sie fortfahren.
 
-### <a name="plan-overview"></a>Planübersicht
+## <a name="plan-overview"></a>Planübersicht
 
-Auf dieser Registerkarte können Sie verschiedene Planoptionen innerhalb des gleichen Angebots angeben. Diese Pläne wurden bisher als SKUs (Stock Keeping Units) bezeichnet. Pläne können sich hinsichtlich der verfügbaren Clouds, wie etwa globaler Clouds oder Government-Clouds und des Images unterscheiden, auf das der Plan verweist. Damit Ihr Angebot im kommerziellen Marketplace aufgelistet wird, müssen Sie mindestens einen Plan auswählen.
+Auf dieser Registerkarte können Sie verschiedene Planoptionen innerhalb des gleichen Angebots angeben. Pläne (zuvor als SKUs bezeichnet) können sich hinsichtlich der verfügbaren Clouds, wie etwa globaler Clouds oder Government-Clouds, und des Images, auf das der Plan verweist, unterscheiden. Damit Ihr Angebot im kommerziellen Marketplace aufgelistet wird, müssen Sie mindestens einen Plan auswählen.
+
+Sie können bis zu 100 Pläne für jedes Angebot erstellen. Bis zu 45 davon können privat sein. Erfahren Sie unter [Private Angebote im kommerziellen Microsoft-Marketplace](../private-offers.md) mehr über private Pläne.
 
 Nach dem Erstellen Ihres Plans zeigt die Registerkarte **Planübersicht** folgende Informationen an:
 
 - Plannamen
 - Preismodell
-- Cloudverfügbarkeit (Global oder Government)
+- Azure-Regionen (global oder Government)
 - Aktueller Veröffentlichungsstatus
 - Eventuell verfügbare Aktionen
 
@@ -265,7 +271,7 @@ Die in der Planübersicht verfügbaren Aktionen unterscheiden sich je nach dem a
 - **Entwurf löschen**: Wenn es sich beim Plan um einen Entwurf handelt.
 - **Stop sell plan** (Verkauf des Plans einstellen): Wenn der Plan live veröffentlicht wurde.
 
-#### <a name="create-new-plan"></a>Erstellen eines neuen Plans
+### <a name="create-new-plan"></a>Erstellen eines neuen Plans
 
 Wählen Sie **Neuen Plan erstellen** aus. Das Dialogfeld **Neuer Plan** wird angezeigt.
 
@@ -284,22 +290,20 @@ Auf dieser Registerkarte können Sie auswählen, in welchen Clouds der Plan verf
 
 Alle Pläne für Angebote für Azure-Container werden automatisch in **Azure Global** verfügbar gemacht.  Ihr Plan kann von Kunden in allen Azure-Regionen weltweit verwendet werden, die den kommerziellen Marketplace nutzen. Details finden Sie unter [Geografische Verfügbarkeit und Unterstützung von Währungen](../marketplace-geo-availability-currencies.md).
 
-Wählen Sie [**Azure Government**](../../azure-government/documentation-government-welcome.md) aus, um Ihre Lösung dort zu veröffentlichen. Dabei handelt es sich um eine Government Community Cloud mit kontrolliertem Zugang für Kunden von US-Behörden, siehe s](../marketplace-geo-availability-currencies.md). Als Herausgeber sind Sie für alle Kompatibilitätskontrollen, Sicherheitsmaßnahmen und bewährten Methoden für diese Cloudcommunity verantwortlich. Azure Government verwendet physisch isolierte Rechenzentren und Netzwerke (die sich ausschließlich in den USA befinden).
-
-Testen und bestätigen Sie Ihre Lösung vor dem [Veröffentlichen](../../azure-government/documentation-government-manage-marketplace-partners.md) innerhalb dieses Gebiets, da sich die Ergebnisse unterscheiden können. Beantragen Sie zum Erstellen und Testen Ihrer Lösung ein Testkonto für die [Microsoft Azure Government-Testversion](https://azure.microsoft.com/global-infrastructure/government/request/).
+Wählen Sie [Azure Government](../../azure-government/documentation-government-welcome.md) aus, um Ihre Lösung dort zu veröffentlichen. Dies ist eine Government-Community-Cloud mit kontrolliertem Zugriff für Kunden der US-Behörden auf Bundes-, Bundesstaats-, Gemeinde- und Stammesgebietsebene sowie für Partner, die Kunden erbringen. Als Herausgeber sind Sie für alle Kompatibilitätskontrollen, Sicherheitsmaßnahmen und bewährten Methoden für diese Cloudcommunity verantwortlich. Azure Government verwendet physisch isolierte Rechenzentren und Netzwerke (die sich ausschließlich in den USA befinden). Testen und bestätigen Sie Ihre Lösung vor dem [Veröffentlichen](../../azure-government/documentation-government-manage-marketplace-partners.md) innerhalb dieses Gebiets, da sich die Ergebnisse unterscheiden können. Beantragen Sie zum Erstellen und Testen Ihrer Lösung ein Testkonto für die [Microsoft Azure Government-Testversion](https://azure.microsoft.com/global-infrastructure/government/request/).
 
 > [!NOTE]
 > Nachdem Ihr Plan veröffentlicht und in einer bestimmten Region verfügbar gemacht wurde, können Sie diese Region nicht mehr entfernen.
 
 #### <a name="azure-government-certifications"></a>Azure Government-Zertifizierungen
 
-Diese Option ist nur sichtbar, wenn **Azure Government** unter **Cloudverfügbarkeit** ausgewählt ist.
+Diese Option ist nur sichtbar, wenn unter **Azure-Region** die Option **Azure Government** ausgewählt ist.
 
 Azure Government-Dienste verarbeiten Daten, die bestimmten behördlichen Vorschriften und Anforderungen unterliegen. Beispielsweise FedRAMP, NIST 800.171 (DIB), ITAR, IRS 1075, DoD L4 und CJIS.
 
 Um Ihre Zertifizierungen für diese Programme anzuzeigen, können Sie bis zu 100 Links bereitstellen, unter denen diese Zertifizierungen beschrieben werden. Hierbei kann es sich um Links zu Ihren Auflistungen direkt im Programm oder auf Ihrer eigenen Website handeln. Diese Links sind nur für Azure Government-Kunden sichtbar.
 
-## <a name="plan-listing"></a>Planlisting
+### <a name="plan-listing"></a>Planlisting
 
 Auf dieser Registerkarte werden spezifische Informationen für jeden Plan innerhalb des aktuellen Angebots angezeigt.
 
@@ -329,7 +333,7 @@ Dies sind Plandetails im Azure-Portal:
 
 :::image type="content" source="media/azure-create-container-offer-images/azure-create-11-plan-details-portal.png" alt-text="Darstellung der Plandetails im Azure-Portal.":::
 
-## <a name="plan-availability"></a>Verfügbarkeit des Plans
+### <a name="plan-availability"></a>Verfügbarkeit des Plans
 
 Wenn Sie Ihr veröffentlichtes Angebot ausblenden möchten, damit Kunden es im Marketplace weder gezielt noch durch Stöbern finden und es auch nicht erwerben können, aktivieren Sie auf der Registerkarte **Verfügbarkeit** das Kontrollkästchen **Plan ausblenden**.
 

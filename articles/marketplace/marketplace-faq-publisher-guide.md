@@ -6,21 +6,21 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: keferna
 ms.author: keferna
-ms.date: 05/08/2020
-ms.openlocfilehash: ad4e80c98097955703e4a6fb3c64e93a338f2720
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/22/2020
+ms.openlocfilehash: 20c82793726221515ad4d1019f4d8f4754b3ae08
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121162"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88036571"
 ---
-# <a name="common-questions-about-microsoft-commercial-marketplace"></a>Häufig gestellte Fragen zum kommerziellen Marketplace von Microsoft
+# <a name="common-questions-about-the-microsoft-commercial-marketplace"></a>Häufig gestellte Fragen zum kommerziellen Marketplace von Microsoft
 
 Dieser Artikel bietet Antworten auf häufig gestellte Fragen zum kommerziellen Marketplace.
 
 ## <a name="general"></a>Allgemein
 
-### <a name="what-is-microsoft-commercial-marketplace"></a>Was ist der kommerzielle Microsoft-Marketplace?
+### <a name="what-is-the-microsoft-commercial-marketplace"></a>Was ist der kommerzielle Marketplace von Microsoft?
 
 Der kommerzielle Marketplace stellt eine Verbindung von Unternehmen und Regierungsbehörden mit Lösungen her, die von unseren Partnern entwickelt wurden. Unsere Partner erstellen und verwalten Angebote im Partner Center, und Kunden können Lösungen über Oberflächen innerhalb des Produkts (z. B. Microsoft AppSource, Azure Marketplace), Handelspartner im Cloud Solution Provider-Programm sowie unsere Vertriebsteams im Rahmen des Co-Selling-Programms entdecken und erwerben.
 
@@ -46,7 +46,7 @@ Weitere Informationen finden Sie im Video [Why sell through marketplace](https:/
 
 ### <a name="is-there-a-listing-fee-for-the-microsoft-commercial-marketplace"></a>Gibt es eine Gebühr für die Auflistung im kommerziellen Microsoft-Marketplace?
 
-Nein, es fallen keine Kosten für die Veröffentlichung von Angeboten in unserem kommerziellen Marketplace an. Wir behalten einen geringen Prozentsatz des Umsatzes als Transaktionsgebühr ein und investieren ihn in das Marketplace-Prämienprogramm, in die Plattforminnovation und den Betrieb des kommerziellen Marketplace.
+Nein, es fallen keine Kosten für die Veröffentlichung von Angeboten in unserem kommerziellen Marketplace an. Wir behalten einen geringen Prozentsatz des Umsatzes als Transaktionsgebühr ein und investieren ihn in das Marketplace-Prämienprogramm, in die Plattforminnovation und den Betrieb des kommerziellen Marketplace. Diese Transaktionsgebühr ist für Angebote reduziert, die als [Azure IP-Co-Selling](https://docs.microsoft.com/azure/marketplace/marketplace-co-sell)-Incentives gekennzeichnet sind.
 
 ### <a name="how-do-i-sign-up-to-be-a-publisher-in-the-microsoft-commercial-marketplace"></a>Wie registriere ich mich als Herausgeber im kommerziellen Microsoft-Marketplace?
 
@@ -60,7 +60,7 @@ Auf welche Weise die Kunden Ihr Angebot im kommerziellen Marketplace nutzen kön
 
 - Für Lösungen, die Sie automatisch bereitstellen, unabhängig davon, ob für diese bezahlt wird, BYOL (Bring Your Own License) besteht oder sie kostenlos sind, können sich die Kunden mit *Jetzt anfordern* entscheiden.
 - Bei Angeboten, die eine Testversion (Demo) unterstützen, wird der Kunde aufgefordert, sich für *Testversion* zu entscheiden. 
-- Bei SaaS-Angeboten (Software-as-a-Service), die eine Testversion außerhalb unseres kommerziellen Marketplace bereitstellen, wird als Option *Kostenlose Testversion* angeboten.
+- Bei SaaS-Angeboten (Software-as-a-Service), die eine Testversion außerhalb des kommerziellen Marketplace umfassen, wird als Option *Kostenlose Testversion* angeboten.
 - Bei einfachen Auflistungen kann der Kunde sich für *Kontakt mit mir aufnehmen* entscheiden.
 
 ### <a name="how-do-i-create-offers-for-the-commercial-marketplace"></a>Wie erstelle ich Angebote für den kommerziellen Marketplace?
@@ -77,7 +77,7 @@ Sie können auch [unserem aktiven Community-Forum beitreten](https://www.microso
 
 ### <a name="what-analytics-are-available-to-my-organization-from-the-commercial-marketplace"></a>Welche Analysen sind im kommerziellen Marketplace für meine Organisation verfügbar?
 
-Wir stellen Berichte zu Ihren Angeboten in unserem kommerziellen Marketplace bereit. Unter [Zugreifen auf Analysen für den kommerziellen Marketplace in Partner Center](partner-center-portal/analytics.md) finden Sie Informationen über den Zugriff auf Daten zu Kunden, Bestellungen, Storebindung usw.
+Wir stellen Berichte zu Ihren Angeboten im kommerziellen Marketplace bereit. Unter [Zugreifen auf Analysen für den kommerziellen Marketplace in Partner Center](partner-center-portal/analytics.md) finden Sie Informationen über den Zugriff auf Daten zu Kunden, Bestellungen, Storebindung usw.
 
 ### <a name="what-is-microsofts-relationship-with-my-customers"></a>Welche Beziehung hat Microsoft zu meinen Kunden?
 
@@ -124,7 +124,7 @@ Um einen Kauf zu einem sehr niedrigen Preis abzuschließen, wird empfohlen, eine
 
 ### <a name="what-are-leads-from-the-commercial-marketplace-and-what-should-i-do-with-them"></a>Was sind Leads aus dem kommerziellen Marketplace, und wie soll ich damit umgehen?
 
-Wenn Kunden Ihre Angebote in den Microsoft AppSource- und Azure Marketplace-Storefronts nutzen, werden Informationen erfasst. Nachdem Kunden genügend Interesse gezeigt haben, wird ein Lead erstellt und eine Verkaufschance an das System Ihrer Wahl gesendet. Herausgeber, die in unserem kommerziellen Marketplace erfolgreich sind, verfolgen häufig Leads, bauen Beziehungen auf und wandeln Interesse in Geschäfte um.
+Wenn Kunden Ihre Angebote in den Microsoft AppSource- und Azure Marketplace-Storefronts nutzen, werden Informationen erfasst. Nachdem Kunden genügend Interesse gezeigt haben, wird ein Lead erstellt und eine Verkaufschance an das System Ihrer Wahl gesendet. Herausgeber, die im kommerziellen Marketplace erfolgreich sind, verfolgen häufig Leads, bauen Beziehungen auf und wandeln Interesse in Geschäfte um.
 
 Weitere Informationen finden Sie unter [Kundenleads aus Ihrem Marketplace-Angebot](partner-center-portal/commercial-marketplace-get-customer-leads.md).
 
@@ -285,7 +285,7 @@ Weitere Informationen finden Sie unter [Zahlungsschwellenwerte, -methoden und -z
 
 ### <a name="in-what-countriesregions-are-taxes-managed-on-my-behalf"></a>In welchen Ländern/Regionen werden Steuern in meinem Namen verwaltet?
 
-Kunden können Lösungen in unserem kommerziellen Marketplace auf der ganzen Welt finden, und wir verwalten Steuern an vielen Standorten. 
+Kunden können im kommerziellen Marketplace Lösungen auf der ganzen Welt finden. Außerdem werden die Steuern an vielen Standorten von uns abgewickelt. 
 
 Eine vollständige Liste der Standorte finden Sie unter [Steuerliche Aspekte für kommerzielle Marketplace-Herausgeber](partner-center-portal/tax-details-paid-transactions.md).
 

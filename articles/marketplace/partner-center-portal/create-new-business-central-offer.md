@@ -1,18 +1,18 @@
 ---
 title: Erstellen eines Angebots für Dynamics 365 Business Central im kommerziellen Microsoft-Marketplace
-description: Hier lernen Sie die Schritte und Aspekte des Erstellens eines neuen Angebots für Dynamics 365 Business Central im kommerziellen Marketplace-Portal in Partner Center kennen. Sie können Ihr Angebot im Azure Marketplace oder über das CSP-Programm (Cloud Solution Provider) anbieten oder verkaufen.
+description: Hier lernen Sie die Schritte und Überlegungen zum Erstellen eines neuen Angebots für Dynamics 365 Business Central im kommerziellen Microsoft-Marketplace im Partner Center kennen. Sie können Ihr Angebot im Azure Marketplace oder über das CSP-Programm (Cloud Solution Provider) anbieten oder verkaufen.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: navits09
 ms.author: navits
-ms.date: 06/17/2020
-ms.openlocfilehash: 456764ae2b08b9852e56b2ab3f7cd9238b540b58
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 08/07/2020
+ms.openlocfilehash: ff93a336b50ceac1106b31726d865ed3e0b41108
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121944"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88031471"
 ---
 # <a name="create-a-dynamics-365-business-central-offer"></a>Erstellen eines Angebots für Dynamics 365 Business Central
 
@@ -182,10 +182,16 @@ Geben Sie mindestens ein (und höchstens drei) zugehörige Marketingdokumente an
 
 ### <a name="marketplace-images"></a>Marketplace-Bilder
 
-Stellen Sie Logos und Bilder für Ihr Angebot bereit. Alle Bilder müssen das PNG-Format aufweisen. Laden Sie das Logo Ihres Angebots in zwei Größen hoch:
+Stellen Sie Logos und Bilder für Ihr Angebot bereit. Alle Bilder müssen das PNG-Format aufweisen. 
+
+[!INCLUDE [logotips](../includes/graphics-suggestions.md)]
+
+Laden Sie das Logo Ihres Angebots in zwei Größen hoch:
 
 * **Klein** (48 x 48 Pixel)
 * **Groß** (216 x 216 Pixel)
+
+[!INCLUDE [logos-appsource-only](../includes/logos-appsource-only.md)]
 
 >[!NOTE]
 >Wenn beim Hochladen von Dateien ein Problem auftritt, vergewissern Sie sich, dass das lokale Netzwerk den von Partner Center verwendeten Dienst `https://upload.xboxlive.com` nicht blockiert.

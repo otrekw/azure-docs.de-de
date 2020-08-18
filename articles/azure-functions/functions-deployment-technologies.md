@@ -4,16 +4,30 @@ description: Lernen Sie die verschiedenen Methoden kennen, mit denen Code in Azu
 ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 04/25/2019
-ms.openlocfilehash: 754a3ea2a316878cc8c2bd918b99476a7194b545
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: bf8944952abf83837d05019bd783bec2fd43cefe
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87562938"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905124"
 ---
 # <a name="deployment-technologies-in-azure-functions"></a>Bereitstellungstechnologien in Azure Functions
 
-Ihnen stehen verschiedene Technologien zur Verfügung, um Code aus Azure Functions-Projekten in Azure bereitzustellen. In diesem Artikel finden Sie eine umfassende Liste dieser Technologien, und Sie erfahren, welche Technologien für welche Varianten von Functions verfügbar sind, was bei Verwendung der jeweiligen Methode passiert und welche Methoden für welche Szenarien am besten geeignet sind. Die verschiedenen Tools, die Sie bei der Bereitstellung in Azure Functions unterstützen, werden jeweils basierend auf ihrem Kontext auf die passende Technologie abgestimmt. Im Allgemeinen ist die ZIP-Bereitstellung die empfohlene Bereitstellungstechnologie für Azure Functions.
+Ihnen stehen verschiedene Technologien zur Verfügung, um Code aus Azure Functions-Projekten in Azure bereitzustellen. Dieser Artikel bietet eine Übersicht über die für Sie verfügbaren Bereitstellungsmethoden sowie Empfehlungen für in den jeweiligen verschiedenen Szenarien zu verwendende beste Methode. Außerdem finden Sie hier eine vollständige Liste der zugrunde liegenden Bereitstellungstechnologien und ihrer wichtigsten Details. 
+
+## <a name="deployment-methods"></a>Bereitstellungsmethoden
+
+Die Bereitstellungstechnologie, mit der Sie Code in Azure veröffentlichen, wird in der Regel durch die Art und Weise bestimmt, in der Sie Ihre App veröffentlichen. Die geeignete Bereitstellungsmethode wird durch die spezifischen Anforderungen und den Zeitpunkt im Entwicklungszyklus bestimmt. Beispielsweise können Sie während der Entwicklung und während Tests direkt aus Ihrem Entwicklungstool bereitstellen, z. B. Visual Studio Code. Wenn sich Ihre App in der Produktion befindet, ist es wahrscheinlicher, dass Sie kontinuierlich aus der Quellcodeverwaltung oder mithilfe einer automatisierten Veröffentlichungspipeline veröffentlichen, die zusätzliche Validierung und Tests umfasst.  
+
+In der folgenden Tabelle sind die verfügbaren Bereitstellungsmethoden für Ihr Funktionsprojekt beschrieben.
+
+| Bereitstellungstyp&nbsp; | Methoden | Am besten geeignet für: |
+| -- | -- | -- |
+| Toolsbasiert | &bull;&nbsp;[Visual&nbsp;Studio&nbsp;Code&nbsp;veröffentlichen](functions-develop-vs-code.md#publish-to-azure)<br/>&bull;&nbsp;[Visual Studio veröffentlichen](functions-develop-vs.md#publish-to-azure)<br/>&bull;&nbsp;[Core Tools veröffentlichen](functions-run-local.md#publish) | Bereitstellungen während der Entwicklung und anderen Ad-hoc-Bereitstellungen. Bereitstellungen werden lokal von den Tools verwaltet. | 
+| Von App Service verwaltet| &bull;&nbsp;[Bereitstellungscenter&nbsp;(CI/CD)](functions-continuous-deployment.md)&nbsp;<br/>&bull;&nbsp;[Containerbereitstellungen](functions-create-function-linux-custom-image.md#enable-continuous-deployment-to-azure)&nbsp; |  Continuous Deployment (CI/CD) aus der Quellcodeverwaltung oder aus einer Containerregistrierung. Bereitstellungen werden von der App Service-Plattform (Kudu) verwaltet.|
+| Externe Pipelines|&bull;&nbsp;[DevOps Pipelines](functions-how-to-azure-devops.md)<br/>&bull;&nbsp;[GitHub-Aktionen](functions-how-to-github-actions.md) | Produktions- und DevOps-Pipelines, die zusätzliche Validierungs-, Test- und andere Aktionen umfassen, können als Teil einer automatisierten Bereitstellung ausgeführt werden. Bereitstellungen werden von der Pipeline verwaltet. |
+
+Auch wenn bestimmte Functions-Bereitstellungen die beste Technologie auf Grundlage ihres Kontexts verwenden, basieren die meisten Bereitstellungsmethoden auf der [ZIP-Bereitstellung](#zip-deploy).
 
 ## <a name="deployment-technology-availability"></a>Bereitstellungstechnologie: Verfügbarkeit
 

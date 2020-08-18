@@ -3,16 +3,16 @@ title: Erstellen eines Angebots für verwaltete Dienste im kommerziellen Microso
 description: Erstellen eines neuen Angebots für verwaltete Dienste, um das Angebot über das Portal des kommerziellen Marketplace im Partner Center in Azure Marketplace aufzulisten
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
+ms.topic: how-to
 author: Microsoft-BradleyWright
 ms.author: brwrigh
-ms.date: 07/07/2020
-ms.openlocfilehash: 8546e5fde51ddc8a29a852a2c5dbcd25fffad287
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.date: 08/07/2020
+ms.openlocfilehash: 4d2a884bd6fd4cb62aa7cae5f3e53b865082fde8
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87405244"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88166602"
 ---
 # <a name="create-a-managed-service-offer"></a>Erstellen eines Angebots für einen verwalteten Dienst
 
@@ -130,6 +130,8 @@ Wenn Sie Supportwebsites für **weltweite Azure-Kunden** und/oder **Azure Govern
 
 In diesem Abschnitt können Sie Logos und Bilder bereitstellen, die beim Anzeigen Ihres Angebots für Kunden verwendet werden. Alle Bilder müssen das PNG-Format aufweisen.
 
+[!INCLUDE [logotips](../includes/graphics-suggestions.md)]
+
 >[!NOTE]
 >Wenn beim Hochladen von Dateien ein Problem auftritt, vergewissern Sie sich, dass das lokale Netzwerk den von Partner Center verwendeten Dienst https://upload.xboxlive.com nicht blockiert.
 
@@ -142,14 +144,9 @@ Stellen Sie ein Logo für Ihr Angebot in vier Bildauflösungen bereit:
 - **Groß** (216 x 216)
 - **Breit** (255 x 115)
 
-Befolgen Sie die folgenden Richtlinien für Ihre Logos:
+Diese Logos werden an unterschiedlichen Stellen im Azure Marketplace verwendet:
 
-- Die Farbpalette des Azure-Designs ist einfach und geradlinig. Beschränken Sie die Anzahl der Primär- und Sekundärfarben auf Ihrem Logo.
-- Die Designfarben des Azure-Portals sind Weiß und Schwarz. Verwenden Sie diese Farben nicht als Hintergrundfarbe für Ihr Logo. Verwenden Sie eine Farbe, die Ihr Logo im Portal ideal zur Geltung bringt. Sie sollten einfache Primärfarben verwenden.
-- Wenn Sie einen transparenten Hintergrund verwenden, stellen Sie sicher, dass das Logo und der Text nicht weiß, schwarz oder blau sind.
-- Das Erscheinungsbild Ihres Logos sollte klar und direkt und frei von Farbverläufen sein. Verwenden Sie im Logo keinen Hintergrund mit Farbverlauf.
-- Platzieren Sie keinen Text auf dem Logo, auch nicht Ihren Firmen- oder Markennamen.
-- Stellen Sie sicher, dass das Logo nicht verzerrt wird.
+[!INCLUDE [logos-azure-marketplace-only](../includes/logos-azure-marketplace-only.md)]
 
 #### <a name="screenshots"></a>Screenshots
 
@@ -178,6 +175,8 @@ Wählen Sie **Entwurf speichern** aus, bevor Sie fortfahren.
 ## <a name="plan-overview"></a>Planübersicht
 
 Jedes Angebot muss über einen oder mehrere Pläne (früher als SKUs bezeichnet) verfügen. Sie können mehrere Pläne hinzufügen, um verschiedene Featuregruppen zu unterschiedlichen Preisen zu unterstützen oder um einen bestimmten Plan für eine begrenzte Zielgruppe spezifischer Kunden anzupassen. Kunden können die Pläne, die Ihnen zur Verfügung stehen, unter dem übergeordneten Angebot anzeigen.
+
+Sie können bis zu 100 Pläne für jedes Angebot erstellen. Bis zu 45 davon können privat sein. Erfahren Sie unter [Private Angebote im kommerziellen Microsoft-Marketplace](../private-offers.md) mehr über private Pläne.
 
 Wählen Sie auf der Seite **Planübersicht** die Option **+ Neuen Plan erstellen** aus. Geben Sie dann eine **Plan-ID** und einen **Plannamen** ein. Beide Werte dürfen nur kleingeschriebene alphanumerische Zeichen, Bindestriche und Unterstriche enthalten und höchstens 50 Zeichen lang sein. Diese Werte können für Kunden sichtbar sein und nach der Veröffentlichung des Angebots nicht mehr geändert werden.
 
