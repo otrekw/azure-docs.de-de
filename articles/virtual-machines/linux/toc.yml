@@ -418,7 +418,7 @@
         - name: Übersicht über die Migration
           href: migration-classic-resource-manager-overview.md
         - name: Ausführliche Informationen zur Migration
-          href: migration-classic-resource-manager-deep-dive.md
+          href: ../migration-classic-resource-manager-deep-dive.md
         - name: Planen der Migration
           href: migration-classic-resource-manager-plan.md
         - name: Migrieren mithilfe der Befehlszeilenschnittstelle
@@ -428,7 +428,7 @@
         - name: Communitytools für die Migration
           href: ../windows/migration-classic-resource-manager-community-tools.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: Häufig gestellte Fragen
-          href: migration-classic-resource-manager-faq.md
+          href: ../migration-classic-resource-manager-faq.md
     - name: Verwenden von Images
       displayName: 'SIG, AMI, image'
       items:
@@ -946,7 +946,7 @@
       items:
         - name: Hinzufügen eines Datenträgers
           items:
-            - name: Azure CLI
+            - name: Azure-Befehlszeilenschnittstelle
               href: add-disk.md
             - name: Azure-Portal
               href: attach-disk-portal.md
@@ -954,7 +954,7 @@
           href: detach-disk.md
         - name: Bereitstellen von Datenträgern mit einer ARM-Vorlage
           displayName: 'Azure Resource Manager, ARM'
-          href: using-managed-disks-template-deployments.md
+          href: ../using-managed-disks-template-deployments.md
         - name: Aktivieren freigegebener Datenträger
           href: disks-shared-enable.md
         - name: 'Hochladen einer VHD auf einen Datenträger: CLI'
@@ -1004,7 +1004,7 @@
         - name: Leistung
           items:
             - name: Verwenden der Schreibbeschleunigung
-              href: how-to-enable-write-accelerator.md
+              href: ../how-to-enable-write-accelerator.md
             - name: Verwenden von Ultra Disks
               href: disks-enable-ultra-ssd.md
             - name: Durchführen von Vergleichstest für einen Datenträger
@@ -1131,7 +1131,7 @@
               href: ../../site-recovery/migrate-overview.md?bc=/azure/virtual-machines/linux/breadcrumb/toc.json&toc=/azure/virtual-machines/linux/toc.json
 - name: Verweis
   items:
-    - name: Azure CLI
+    - name: Azure-Befehlszeilenschnittstelle
       href: /cli/azure/vm
     - name: PowerShell
       href: /powershell/azure/

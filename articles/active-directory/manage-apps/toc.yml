@@ -91,16 +91,6 @@
           href: application-proxy-high-availability-load-balancing.md
         - name: Vergleichen von Remotezugriffslösungen
           href: application-proxy-migration.md
-    - name: Markteinführung einer App
-      items:
-        - name: Aktivieren von SSO für Ihre mehrinstanzenfähige Anwendung
-          href: isv-sso-content.md
-        - name: Erstellen eines Azure-Mandanten für eine mehrinstanzenfähige Anwendung
-          href: isv-tenant-multi-tenant-app.md
-        - name: Auswählen eines Verbunds mit mehreren Mandanten
-          href: isv-choose-multi-tenant-federation.md
-        - name: Dokumentation für mehrinstanzenfähige Anwendung erstellen
-          href: isv-create-sso-documentation.md
 - name: Anleitungen
   expanded: false
   items:
