@@ -8,24 +8,66 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 07/28/2020
+ms.date: 08/06/2020
 ms.author: aahi
-ms.openlocfilehash: f2ce8f300ae7586fc16fd9170ec290b19875d01c
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 95e9b208159e9af41563f12ce8af7892e13f6629
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371123"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121849"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>Neuigkeiten bei der Textanalyse-API
 
 Die Textanalyse-API wird fortlaufend aktualisiert. Damit Sie bezüglich der aktuellen Entwicklungen auf dem neuesten Stand bleiben, bietet dieser Artikel Informationen zu neuen Releases und Funktionen.
 
-## <a name="july-2020"></a>Juli 2020
+## <a name="august-2020"></a>August 2020
+
+### <a name="general-api-updates"></a>Allgemeine API-Updates
+
+* Modellversion `2020-07-01` für die v3-`/keyphrases`, `/pii` -und `/languages`-Endpunkte, die Folgendes hinzufügt:
+    * Zusätzliche behörden- und länderspezifische [Entitätskategorien](named-entity-types.md?tabs=personal) für die Erkennung benannter Entitäten.
+* Ein HTTP 400-Fehler wird jetzt für v3-API-Anforderungen zurückgegeben, die die veröffentlichten [Datenlimits](concepts/data-limits.md) überschreiten. 
+
+### <a name="text-analytics-for-health-container-august-updates"></a>August-Updates für den Container „Text Analytics for Health“
+
+Die folgenden Updates gelten spezifisch nur für das August-Release des Containers „Text Analytics for Health“.
+
+* Neue Modellversion für Text Analytics for Health: `2020-07-24`
+* Neue URL zum Senden von „Text Analytics for Health“-Anforderungen: `http://<serverURL>:5000/text/analytics/v3.2-preview.1/entities/health` 
+
+In der JSON-Antwort wurden die folgenden Eigenschaften geändert:
+
+* `type` wurde in `category` umbenannt. 
+* `score` wurde in `confidenceScore` umbenannt.
+* Entitäten im `category`-Feld der JSON-Ausgabe sind jetzt in Pascal-Schreibweise. Die folgenden Entitäten wurden umbenannt:
+    * `EXAMINATION_RELATION` wurde umbenannt in `RelationalOperator`.
+    * `EXAMINATION_UNIT` wurde umbenannt in `MeasurementUnit`.
+    * `EXAMINATION_VALUE` wurde umbenannt in `MeasurementValue`.
+    * `ROUTE_OR_MODE` wurde in `MedicationRoute` umbenannt.
+    * Die relationale Entität `ROUTE_OR_MODE_OF_MEDICATION` wurde in `RouteOfMedication` umbenannt.
+
+Die folgenden Entitäten wurden hinzugefügt:
+
+* NER
+    * `AdministrativeEvent`
+    * `CareEnvironment`
+    * `HealthcareProfession`
+    * `MedicationForm` 
+
+* Beziehungsextrahierung
+    * `DirectionOfCondition`
+    * `DirectionOfExamination`
+    * `DirectionOfTreatment`
+
+> [!div class="nextstepaction"]
+> [Weitere Informationen zum Container für die Textanalyse im Gesundheitsbereich](how-tos/text-analytics-for-health.md)
+
+## <a name="july-2020"></a>Juli 2020 
 
 ### <a name="text-analytics-for-health-container---public-gated-preview"></a>Geschlossene öffentliche Vorschau des Containers für die Textanalyse im Gesundheitsbereich
 
-Der Container für die Textanalyse im Gesundheitsbereich befindet sich nun in der geschlossenen öffentlichen Vorschau. Mit ihm können Sie aus unstrukturiertem Text in englischer Sprache in klinischen Dokumenten Informationen wie die folgenden extrahieren: Patientenaufnahmeformulare, ärztliche Notizen, Forschungspapiere und Entlassungsübersichten. Derzeit wird Ihnen die Verwendung von Containern für die Textanalyse im Gesundheitsbereich nicht in Rechnung gestellt. 
+Der Container für die Textanalyse im Gesundheitsbereich befindet sich nun in der geschlossenen öffentlichen Vorschau. Mit ihm können Sie aus unstrukturiertem Text in englischer Sprache in klinischen Dokumenten Informationen wie die folgenden extrahieren: Patientenaufnahmeformulare, ärztliche Notizen, Forschungspapiere und Entlassungsübersichten. Derzeit wird Ihnen die Verwendung von Containern für die Textanalyse im Gesundheitsbereich nicht in Rechnung gestellt.
 
 Der Container bietet folgende Features:
 
@@ -33,10 +75,6 @@ Der Container bietet folgende Features:
 * Beziehungsextrahierung
 * Entitätsverknüpfung
 * Negation
-
-
-> [!div class="nextstepaction"]
-> [Weitere Informationen zum Container für die Textanalyse im Gesundheitsbereich](how-tos/text-analytics-for-health.md)
 
 ## <a name="may-2020"></a>Mai 2020
 

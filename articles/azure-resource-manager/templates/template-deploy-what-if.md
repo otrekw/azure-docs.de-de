@@ -3,23 +3,23 @@ title: Was-wäre-wenn für Vorlagenbereitstellung (Preview)
 description: Legen Sie vor der Bereitstellung einer Azure Resource Manager-Vorlage fest, welche Änderungen an Ihren Ressourcen vorgenommen werden.
 author: tfitzmac
 ms.topic: conceptual
-ms.date: 06/16/2020
+ms.date: 08/05/2020
 ms.author: tomfitz
-ms.openlocfilehash: 1e2c83167e7ccc1e3e98b23711fba567ef11ac23
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 27efe1e03b8a0d373d566106a53a41007731973e
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84888748"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87810070"
 ---
 # <a name="arm-template-deployment-what-if-operation-preview"></a>ARM-Vorlagenbereitstellung: Was-wäre-wenn-Vorgang (Vorschau)
 
-Vor dem Bereitstellen einer ARM-Vorlage (Azure Resource Manager) können Sie eine Vorschau der Änderungen anzeigen, die vorgenommen werden. Azure Resource Manager stellt den Was-wäre-wenn-Vorgang bereit, damit Sie sehen können, wie sich Ressourcen ändern, wenn Sie die Vorlage bereitstellen. Der Was-wäre-wenn-Vorgang nimmt keine Änderungen an vorhandenen Ressourcen vor. Stattdessen sagt er die Änderungen vorher, wenn die angegebene Vorlage bereitgestellt wird.
+Vor dem Bereitstellen einer ARM-Vorlage (Azure Resource Manager-Vorlage) können Sie eine Vorschau der Änderungen anzeigen, die vorgenommen werden. Azure Resource Manager stellt den Was-wäre-wenn-Vorgang bereit, damit Sie sehen können, wie sich Ressourcen ändern, wenn Sie die Vorlage bereitstellen. Der Was-wäre-wenn-Vorgang nimmt keine Änderungen an vorhandenen Ressourcen vor. Stattdessen sagt er die Änderungen vorher, wenn die angegebene Vorlage bereitgestellt wird.
 
 > [!NOTE]
 > Der Was-wäre-wenn-Vorgang befindet sich zurzeit in der Preview-Phase. Als Previewrelease können die Ergebnisse mitunter anzeigen, dass sich eine Ressource ändert, wenn tatsächlich gar keine Änderung stattfindet. Wir arbeiten daran, diese Probleme zu verringern, aber hierzu benötigen wir Ihre Hilfe. Melden Sie diese Probleme bitte unter [https://aka.ms/whatifissues](https://aka.ms/whatifissues).
 
-Sie können den Was-wäre-wenn-Vorgang mit Azure PowerShell-, Azure CLI- oder REST-API-Vorgängen verwenden. Der Was-wäre-wenn-Vorgang wird für Bereitstellungen auf Ressourcengruppen- und Abonnementebene unterstützt.
+Sie können den Was-wäre-wenn-Vorgang mit Azure PowerShell-, Azure CLI- oder REST-API-Vorgängen verwenden. Der Was-wäre-wenn-Vorgang wird für Bereitstellungen auf Ressourcengruppen-, Abonnements-, Verwaltungsgruppen- und Mandantenebene unterstützt.
 
 ## <a name="install-azure-powershell-module"></a>Installieren des Azure PowerShell-Moduls
 
@@ -125,20 +125,23 @@ Die vorangehenden Befehle geben eine Textzusammenfassung zurück, die Sie manuel
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Wenn Sie vor der Bereitstellung einer Vorlage eine Vorschau der Änderungen anzeigen möchten, führen Sie [az deployment group what-if](/cli/azure/deployment/group#az-deployment-group-what-if) oder [az deployment sub what-if](/cli/azure/deployment/sub#az-deployment-sub-what-if) aus.
+Wenn Sie vor der Bereitstellung einer Vorlage eine Vorschau der Änderungen anzeigen möchten, verwenden Sie:
 
-* `az deployment group what-if` für Bereitstellungen von Ressourcengruppen
-* `az deployment sub what-if` für Bereitstellungen auf Abonnementebene
+* [az deployment group what-if](/cli/azure/deployment/group#az-deployment-group-what-if) für Bereitstellungen von Ressourcengruppen
+* [az deployment sub what-if](/cli/azure/deployment/sub#az-deployment-sub-what-if) für Bereitstellungen auf Abonnementebene
+* [az deployment mg what-if](/cli/azure/deployment/mg?view=azure-cli-latest#az-deployment-mg-what-if) für Bereitstellungen von Verwaltungsgruppen
+* [az deployment tenant what-if](/cli/azure/deployment/tenant?view=azure-cli-latest#az-deployment-tenant-what-if) für Bereitstellungen von Mandanten
 
-Sie können den Parameterschalter `--confirm-with-what-if` (oder seine Kurzform `-c`) verwenden, um eine Vorschau der Änderungen anzuzeigen und dann zum Fortsetzen der Bereitstellung aufgefordert zu werden. Fügen Sie [az deployment group create](/cli/azure/deployment/group#az-deployment-group-create) oder [az deployment sub create](/cli/azure/deployment/sub#az-deployment-sub-create) diesen Parameter hinzu.
+Sie können den Parameterschalter `--confirm-with-what-if` (oder seine Kurzform `-c`) verwenden, um eine Vorschau der Änderungen anzuzeigen und dann zum Fortsetzen der Bereitstellung aufgefordert zu werden. Fügen Sie diesen Schalter zu folgenden Befehlen hinzu:
 
-* `az deployment group create --confirm-with-what-if` oder `-c` für Bereitstellungen von Ressourcengruppen
-* `az deployment sub create --confirm-with-what-if` oder `-c` für Bereitstellungen auf Abonnementebene
+* [az deployment group create](/cli/azure/deployment/group#az-deployment-group-create)
+* [az deployment sub create](/cli/azure/deployment/sub#az-deployment-sub-create).
+* [az deployment mg create](/cli/azure/deployment/mg#az-deployment-mg-create)
+* [az deployment tenant create](/cli/azure/deployment/tenant#az-deployment-tenant-create)
 
-Die vorangehenden Befehle geben eine Textzusammenfassung zurück, die Sie manuell überprüfen können. Um ein JSON-Objekt zu erhalten, das Sie programmgesteuert auf Änderungen überprüfen können, verwenden Sie Folgendes:
+Verwenden Sie beispielsweise `az deployment group create --confirm-with-what-if` oder `-c` für Bereitstellungen von Ressourcengruppen.
 
-* `az deployment group what-if --no-pretty-print` für Bereitstellungen von Ressourcengruppen
-* `az deployment sub what-if --no-pretty-print` für Bereitstellungen auf Abonnementebene
+Die vorangehenden Befehle geben eine Textzusammenfassung zurück, die Sie manuell überprüfen können. Um ein JSON-Objekt zu erhalten, das Sie programmgesteuert auf Änderungen überprüfen können, verwenden Sie den Schalter `--no-pretty-print`. Verwenden Sie beispielsweise `az deployment group what-if --no-pretty-print` für Bereitstellungen von Ressourcengruppen.
 
 Wenn die Ergebnisse ohne Farben zurückgegeben werden sollen, öffnen Sie die [Konfigurationsdatei in der Azure CLI](/cli/azure/azure-cli-configuration). Legen Sie **no_color** auf **yes** fest.
 
@@ -147,7 +150,9 @@ Wenn die Ergebnisse ohne Farben zurückgegeben werden sollen, öffnen Sie die [K
 Verwenden Sie für die REST-API Folgendes:
 
 * [Bereitstellungen – Was-wäre-wenn](/rest/api/resources/deployments/whatif) für Bereitstellungen von Ressourcengruppen
-* [Bereitstellungen – Was-wäre-wenn im Abonnementbereich](/rest/api/resources/deployments/whatifatsubscriptionscope) für Bereitstellungen auf Abonnementebene
+* [Bereitstellungen – Was-wäre-wenn im Abonnementbereich](/rest/api/resources/deployments/whatifatsubscriptionscope) für Bereitstellungen von Abonnements
+* [Bereitstellungen – Was-wäre-wenn im Verwaltungsgruppenbereich](/rest/api/resources/deployments/whatifatmanagementgroupscope) für Bereitstellungen von Verwaltungsgruppen
+* [Bereitstellungen – Was-wäre-wenn im Mandantenbereich](/rest/api/resources/deployments/whatifattenantscope) für Bereitstellungen von Mandanten.
 
 ## <a name="change-types"></a>Änderungstypen
 
@@ -312,7 +317,7 @@ Resource changes: 1 to modify.
 
 Beachten Sie am Anfang der Ausgabe, dass Farben so definiert sind, dass der Typ der Änderungen angegeben wird.
 
-Im unteren Bereich der Ausgabe wird angezeigt, dass das Tag „Owner“ gelöscht wurde. Das Adresspräfix wurde von 10.0.0.0/16 in 10.0.0.0/15 geändert. Das Subnetz mit dem Namen „subnet001“ wurde gelöscht. Beachten Sie, dass diese Änderungen nicht tatsächlich bereitgestellt wurden. Sie sehen eine Vorschau der Änderungen, die durchgeführt werden, wenn Sie die Vorlage bereitstellen.
+Im unteren Bereich der Ausgabe wird angezeigt, dass das Tag „Owner“ gelöscht wurde. Das Adresspräfix wurde von 10.0.0.0/16 in 10.0.0.0/15 geändert. Das Subnetz mit dem Namen „subnet001“ wurde gelöscht. Beachten Sie, dass diese Änderungen nicht bereitgestellt wurden. Sie sehen eine Vorschau der Änderungen, die durchgeführt werden, wenn Sie die Vorlage bereitstellen.
 
 Einige der als gelöscht aufgeführten Eigenschaften werden sich tatsächlich nicht ändern. Eigenschaften können fälschlicherweise als gelöscht gemeldet werden, wenn sie nicht in der Vorlage vorhanden sind, sondern während der Bereitstellung automatisch als Standardwerte festgelegt werden. Dieses Ergebnis wird in der Was-wäre-wenn-Antwort als „Rauschen“ (Noise) betrachtet. Für die endgültige bereitgestellte Ressource werden die Werte der Eigenschaften festgelegt. Mit der fortschreitenden Entwicklung des Was-wäre-wenn-Vorgangs werden diese Eigenschaften aus dem Ergebnis herausgefiltert.
 

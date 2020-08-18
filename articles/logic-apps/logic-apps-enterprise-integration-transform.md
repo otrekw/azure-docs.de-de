@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 07/08/2016
-ms.openlocfilehash: 500769a39ba7658b35c1abb80101f6234170c941
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: da583a1c884ddcae0815849c43dc0eb335005e53
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74792379"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87832738"
 ---
 # <a name="create-maps-that-transform-xml-between-formats-in-azure-logic-apps-with-enterprise-integration-pack"></a>Erstellen von Zuordnungen zum Transformieren von XML zwischen Formaten in Azure Logic Apps mit Enterprise Integration Pack
 
@@ -36,13 +36,13 @@ Nachdem Sie die Transformation/Zuordnung in Ihr Integrationskonto hochgeladen ha
 
 Sobald die Voraussetzungen erfüllt sind, können Sie Ihre Logik-App erstellen:  
 
-1. Erstellen Sie eine Logik-App, und [verknüpfen Sie sie mit Ihrem Integrationskonto](../logic-apps/logic-apps-enterprise-integration-accounts.md "Weitere Informationen zum Verknüpfen eines Integrationskontos mit einer Logik-App"), das die Zuordnung enthält.
+1. Erstellen Sie eine Logik-App, und [verknüpfen Sie sie mit Ihrem Integrationskonto](./logic-apps-enterprise-integration-create-integration-account.md "Weitere Informationen zum Verknüpfen eines Integrationskontos mit einer Logik-App"), das die Zuordnung enthält.
 2. Fügen Sie Ihrer Logik-App einen **Anforderungstrigger** hinzu.  
-   ![](./media/logic-apps-enterprise-integration-transforms/transform-1.png)    
+   ![Screenshot der Dropdownliste „Von Microsoft verwaltete APIs anzeigen“ mit ausgewähltem Anforderungstrigger. Das Dropdown befindet sich in einer Logik-App, die mithilfe des Visual Studio Enterprise Integration SDK erstellt wurde.](./media/logic-apps-enterprise-integration-transforms/transform-1.png)    
 3. Fügen Sie die Aktion **XML transformieren** hinzu, indem Sie zuerst **Aktion hinzufügen**  auswählen.  
-   ![](./media/logic-apps-enterprise-integration-transforms/transform-2.png)   
+   ![Screenshot der im Bildschirm des Anforderungstriggers ausgewählten Schaltfläche „Aktion hinzufügen“.](./media/logic-apps-enterprise-integration-transforms/transform-2.png)   
 4. Geben Sie *transformieren* in das Suchfeld ein, um die Aktion herauszufiltern, die Sie verwenden möchten.  
-   ![](./media/logic-apps-enterprise-integration-transforms/transform-3.png)  
+   ![Screenshot, der zeigt, wie Sie in der Dropdownliste „Von Microsoft verwaltete APIs anzeigen“ nach der Aktion „XML transformieren“ suchen, damit sie dem Anforderungstrigger hinzugefügt werden kann.](./media/logic-apps-enterprise-integration-transforms/transform-3.png)  
 5. Wählen Sie die Aktion **XML transformieren** aus.   
 6. Fügen Sie den XML-**INHALT** hinzu, der transformiert werden soll. Sie können beliebige XML-Daten verwenden, die Sie in der HTTP-Anforderung als **INHALT** empfangen. Wählen Sie in diesem Beispiel den Text der HTTP-Anforderung aus, die die Logik-App ausgelöst hat.
 
@@ -51,9 +51,9 @@ Sobald die Voraussetzungen erfüllt sind, können Sie Ihre Logik-App erstellen:
  
 
 7. Wählen Sie den Namen der **ZUORDNUNG** aus, mit deren Hilfe die Transformation erfolgen soll. Die Zuordnung muss bereits in Ihrem Integrationskonto enthalten sein. In einem früheren Schritt haben Sie Ihrer Logik-App bereits Zugriff auf Ihr Integrationskonto gewährt, das Ihre Zuordnung enthält.      
-   ![](./media/logic-apps-enterprise-integration-transforms/transform-4.png) 
+   ![Screenshot der Felder „Inhalt und Zuordnung“ im Bildschirm „XML transformieren“ für den Anforderungstrigger.](./media/logic-apps-enterprise-integration-transforms/transform-4.png) 
 8. Speichern Sie Ihre Arbeit.  
-    ![](./media/logic-apps-enterprise-integration-transforms/transform-5.png) 
+    ![Screenshot der Schaltfläche „Speichern“ im Logic Apps-Designer.](./media/logic-apps-enterprise-integration-transforms/transform-5.png) 
 
 An diesem Punkt ist das Einrichten der Zuordnung abgeschlossen. In einer realen Anwendung werden die transformierten Daten in einer branchenspezifischen Anwendung wie Salesforce gespeichert. Sie können problemlos eine Aktion zum Senden der Ausgabe der Transformation an Salesforce hinzufügen. 
 
@@ -136,4 +136,3 @@ Die Antwort der Transformation beginnt standardmäßig mit der Bytereihenfolge-M
 ## <a name="learn-more"></a>Weitere Informationen
 * [Weitere Informationen zum Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md "Erfahren Sie mehr zum Enterprise Integration Pack.")  
 * [Weitere Informationen über Zuordnungen](../logic-apps/logic-apps-enterprise-integration-maps.md "Weitere Informationen zu Zuordnungen für die Unternehmensintegration")  
-

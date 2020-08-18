@@ -8,27 +8,30 @@ ms.topic: include
 ms.date: 6/9/2020
 ms.author: aschhab
 ms.custom: include file
-ms.openlocfilehash: 3fd4c6416241302a4969d9b3de26fa6b8316c1f7
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 9030080d0b8c8e032cb2992a62275efcdb04aabc
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86122198"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87798136"
 ---
-In der folgenden Tabelle ist aufgelistet, welche Features von **Java Message Service (JMS)** derzeit von Azure Service Bus unterstützt und nicht unterstützt werden.
+In der folgenden Tabelle sind die zurzeit von Azure Service Bus unterstützten JMS-Funktionen (Java Message Service) aufgelistet. Außerdem werden Funktionen angezeigt, die nicht unterstützt werden.
 
 
-| Features | Status |
-|---|---|
-| Warteschlangen   | Unterstützt |
-| Themen   | Unterstützt |
-| Temporäre Warteschlangen | Unterstützt |
-| Temporäre Themen | Unterstützt |
-| Nachrichtenselektoren | Unterstützt |
-| Warteschlangenbrowser | Unterstützt |
-| Freigegebene dauerhafte Abonnements | Unterstützt|
-| Nicht freigegebene dauerhafte Abonnements | Unterstützt |
-| Freigegebene nicht dauerhafte Abonnements | Unterstützt |
-| Nicht freigegebene nicht dauerhafte Abonnements | Unterstützt |
-| Verteilte Transaktionen | **Nicht unterstützt** |
-| Dauerhafter Terminus | **Nicht unterstützt** |
+| Funktion | API |Status |
+|---|---|---|
+| Warteschlangen   | <ul> <li> JMSContext.createQueue( String queueName) </li> </ul>| **Unterstützt** |
+| Themen   | <ul> <li> JMSContext.createTopic( String topicName) </li> </ul>| **Unterstützt** |
+| Temporäre Warteschlangen |<ul> <li> JMSContext.createTemporaryQueue() </li> </ul>| **Unterstützt** |
+| Temporäre Themen |<ul> <li> JMSContext.createTemporaryTopic() </li> </ul>| **Unterstützt** |
+| Message Producer /<br/> JMSProducer |<ul> <li> JMSContext.createProducer() </li> </ul>| **Unterstützt** |
+| Warteschlangenbrowser |<ul> <li> JMSContext.createBrowser(Queue queue) </li> <li> JMSContext.createBrowser(Queue queue, String messageSelector) </li> </ul> | **Unterstützt** |
+| Message Consumer/ <br/> JMSConsumer | <ul> <li> JMSContext.createConsumer( Destination destination) </li> <li> JMSContext.createConsumer( Destination destination, String messageSelector) </li> <li> JMSContext.createConsumer( Destination destination, String messageSelector, boolean noLocal)</li> </ul>  <br/> „noLocal“ wird zurzeit nicht unterstützt. | **Unterstützt** |
+| Freigegebene dauerhafte Abonnements | <ul> <li> JMSContext.createSharedDurableConsumer(Topic topic, String name) </li> <li> JMSContext.createSharedDurableConsumer(Topic topic, String name, String messageSelector) </li> </ul>| **Unterstützt**|
+| Nicht freigegebene dauerhafte Abonnements | <ul> <li> JMSContext.createDurableConsumer(Topic topic, String name) </li> <li> createDurableConsumer(Topic topic, String name, String messageSelector, boolean noLocal) </li> </ul> <br/> „noLocal“ wird zurzeit nicht unterstützt und sollte auf „false“ festgelegt werden. | **Unterstützt** |
+| Freigegebene nicht dauerhafte Abonnements |<ul> <li> JMSContext.createSharedConsumer(Topic topic, String sharedSubscriptionName) </li> <li> JMSContext.createSharedConsumer(Topic topic, String sharedSubscriptionName, String messageSelector) </li> </ul> | **Unterstützt** |
+| Nicht freigegebene nicht dauerhafte Abonnements |<ul> <li> JMSContext.createConsumer(Destination destination) </li> <li> JMSContext.createConsumer( Destination destination, String messageSelector) </li> <li> JMSContext.createConsumer( Destination destination, String messageSelector, boolean noLocal) </li> </ul> <br/> „noLocal“ wird zurzeit nicht unterstützt und sollte auf „false“ festgelegt werden. | **Unterstützt** |
+| Nachrichtenselektoren | Abhängig vom erstellten Consumer. | **Unterstützt** |
+| Tägliche Zustellung (geplante Nachrichten) | <ul> <li> JMSProducer.setDeliveryDelay( long deliveryDelay) </li> </ul>|**Unterstützt**|
+| Nachricht erstellt |<ul> <li> JMSContext.createMessage() </li> <li> JMSContext.createBytesMessage() </li> <li> JMSContext.createMapMessage() </li> <li> JMSContext.createObjectMessage( Serializable object) </li> <li> JMSContext.createStreamMessage() </li> <li> JMSContext.createTextMessage() </li> <li> JMSContext.createTextMessage( String text) </li> </ul>| **Unterstützt** |
+| Verteilte Transaktionen || Nicht unterstützt |

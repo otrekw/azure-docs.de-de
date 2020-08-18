@@ -4,14 +4,14 @@ description: Erfahren Sie, wie ein Knotentyp aus einem in Azure ausgeführten Se
 author: inputoutputcode
 manager: sridmad
 ms.topic: conceptual
-ms.date: 02/21/2020
+ms.date: 08/11/2020
 ms.author: chrpap
-ms.openlocfilehash: 6cc7cbcc8344c5015d60d9721c682b6a856cbb6e
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: ede999bee9ce1a4a9dd10652a2c52a840d5b24be
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86247233"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88163576"
 ---
 # <a name="how-to-remove-a-service-fabric-node-type"></a>Entfernen eines Knotentyps in Service Fabric
 In diesem Artikel wird beschrieben, wie Sie einen Azure Service Fabric-Cluster skalieren, indem Sie einen vorhandenen Knotentyp aus einem Cluster entfernen. Ein Service Fabric-Cluster enthält eine per Netzwerk verbundene Gruppe von virtuellen oder physischen Computern, auf denen Ihre Microservices bereitgestellt und verwaltet werden. Ein physischer oder virtueller Computer, der Teil eines Clusters ist, wird als Knoten bezeichnet. VM-Skalierungsgruppen sind eine Azure-Computeressource, mit der Sie eine Sammlung von virtuellen Computern als Gruppe bereitstellen und verwalten können. Jeder Knotentyp, der in einem Azure-Cluster definiert ist, wird [als separate Skalierungsgruppe eingerichtet](service-fabric-cluster-nodetypes.md). Jeder Knotentyp kann dann separat verwaltet werden. Nachdem Sie einen Service Fabric-Cluster erstellt haben, können Sie einen Cluster horizontal skalieren, indem Sie einen Knotentyp (VM-Skalierungsgruppe) und alle seine Knoten entfernen.  Sie können die Skalierung für den Cluster jederzeit durchführen – auch bei Ausführung von Workloads im Cluster.  Wenn der Cluster skaliert wird, werden Ihre Anwendungen ebenfalls automatisch skaliert.
@@ -59,7 +59,7 @@ Wenn Sie einen Knotentyp „Bronze“ entfernen, fallen alle Knoten im Knotentyp
     - Der Cluster ist fehlerfrei.
     - Keine der Knoten, die zum Knotentyp gehören, sind als Seedknoten markiert.
 
-4. Deaktivieren Sie Daten für den Knotentyp.
+4. Deaktivieren Sie jeden Knoten im Knotentyp.
 
     Stellen Sie mithilfe von PowerShell eine Verbindung mit dem Cluster her, und führen Sie den folgenden Schritt aus.
     
@@ -98,8 +98,20 @@ Wenn Sie einen Knotentyp „Bronze“ entfernen, fallen alle Knoten im Knotentyp
     ```
     
     Warten Sie, bis alle Knoten für den Knotentyp als „Ausgefallen“ markiert sind.
+
+6. Aufheben der Zuordnung von Knoten in der ursprünglichen VM-Skalierungsgruppe
     
-6. Entfernen Sie Daten für den Knotentyp.
+    Melden Sie sich beim Azure-Abonnement an, in dem die Skalierungsgruppe bereitgestellt wurde, und entfernen Sie die VM-Skalierungsgruppe. 
+
+    ```powershell
+    $scaleSetName="myscaleset"
+    $scaleSetResourceType="Microsoft.Compute/virtualMachineScaleSets"
+    
+    Remove-AzResource -ResourceName $scaleSetName -ResourceType $scaleSetResourceType -ResourceGroupName $resourceGroupName -Force
+    ```
+
+    
+7. Entfernen Sie Daten für den Knotentyp.
 
     Stellen Sie mithilfe von PowerShell eine Verbindung mit dem Cluster her, und führen Sie den folgenden Schritt aus.
     
@@ -117,7 +129,7 @@ Wenn Sie einen Knotentyp „Bronze“ entfernen, fallen alle Knoten im Knotentyp
 
     Warten Sie, bis alle Knoten aus dem Cluster entfernt wurden. Die Knoten sollten nicht in SFX angezeigt werden.
 
-7. Entfernen Sie den Knotentyp aus dem Abschnitt „Service Fabric“.
+8. Entfernen Sie den Knotentyp aus dem Abschnitt „Service Fabric“.
 
     - Bestimmen Sie die für die Bereitstellung verwendete Azure Resource Manager-Vorlage.
     - Ermitteln Sie den Abschnitt, der sich auf den Knotentyp im Abschnitt „Service Fabric“ bezieht.
@@ -165,7 +177,7 @@ Wenn Sie einen Knotentyp „Bronze“ entfernen, fallen alle Knoten im Knotentyp
     Überprüfen Sie dann, ob Folgendes zutrifft:
     - Service Fabric-Ressource wird im Portal als „bereit“ angezeigt.
 
-8. Entfernen Sie alle Verweise auf die Ressourcen im Zusammenhang mit dem Knotentyp.
+9. Entfernen Sie alle Verweise auf die Ressourcen im Zusammenhang mit dem Knotentyp aus der ARM-Vorlage.
 
     - Bestimmen Sie die für die Bereitstellung verwendete Azure Resource Manager-Vorlage.
     - Entfernen Sie die VM-Skalierungsgruppe und andere Ressourcen im Zusammenhang mit dem Knotentyp aus der Vorlage.
@@ -173,6 +185,13 @@ Wenn Sie einen Knotentyp „Bronze“ entfernen, fallen alle Knoten im Knotentyp
 
     Führen Sie dann folgende Schritte aus:
     - Warten Sie, bis die Bereitstellung abgeschlossen ist.
+    
+10. Entfernen Sie alle Ressourcen im Zusammenhang mit dem Knotentyp, die nicht mehr verwendet werden. Beispiel für Load Balancer und öffentliche IP-Adresse. 
+
+    - Um diese Ressourcen zu entfernen, können Sie denselben PowerShell-Befehl verwenden, der in Schritt 6 zum Angeben des spezifischen Ressourcentyps und der API-Version verwendet wurde. 
+
+> [!Note]
+> Dieser Schritt ist optional, wenn derselbe Load Balancer und dieselbe IP zwischen Knotentypen wiederverwendet werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Erfahren Sie mehr über die [Dauerhaftigkeitsmerkmale](./service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster) eines Clusters.
