@@ -136,6 +136,10 @@
       items:
         - name: Protokolle und Metriken
           href: logs-metrics.md
+    - name: Private Link
+      items:
+        - name: "Konfigurieren von Private\_Link-Konnektivität"
+          href: howto-private-link.md
 - name: Verweis
   items:
     - name: Azure PowerShell

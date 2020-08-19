@@ -6,9 +6,7 @@
       href: load-balancer-overview.md
     - name: Neuigkeiten
       href: whats-new.md
-    - name: Häufig gestellte Fragen
-      href: load-balancer-faqs.md
-- name: Schnellstart
+- name: Schnellstarts
   items:
     - name: 'Erstellen eines öffentlichen Lastenausgleichs: Portal'
       href: quickstart-load-balancer-standard-public-portal.md
@@ -130,14 +128,14 @@
           href: move-across-regions-internal-load-balancer-powershell.md
     - name: Lastenausgleichskonfiguration (nur ausgehender Datenverkehr)
       href: egress-only.md
-- name: Problembehandlung
-  items:
-    - name: Beheben von Problemen mit Azure Load Balancer
-      href: load-balancer-troubleshoot.md
-    - name: Beheben von häufigen Bereitstellungsfehlern
-      href: load-balancer-common-deployment-errors.md
-    - name: Beheben allgemeiner Probleme bei der ausgehenden Verbindung
-      href: troubleshoot-outbound-connection.md
+    - name: Problembehandlung
+      items:
+        - name: Beheben von Problemen mit Azure Load Balancer
+          href: load-balancer-troubleshoot.md
+        - name: Beheben von häufigen Bereitstellungsfehlern
+          href: load-balancer-common-deployment-errors.md
+        - name: Beheben allgemeiner Probleme bei der ausgehenden Verbindung
+          href: troubleshoot-outbound-connection.md
 - name: Verweis
   items:
     - name: Codebeispiele
@@ -175,3 +173,5 @@
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: Produktupdates
       href: 'https://azure.microsoft.com/updates/?product=load-balancer'
+    - name: Häufig gestellte Fragen
+      href: load-balancer-faqs.md

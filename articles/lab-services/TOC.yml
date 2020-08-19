@@ -24,6 +24,8 @@
       href: classroom-labs-fundamentals.md
     - name: Kapazitätsgrenzen
       href: capacity-limits.md
+    - name: Kostenverwaltung für Labs
+      href: cost-management-guide.md
     - name: Szenarien
       items:
         - name: Verwenden von Lab Services für das Abhalten von Kursen
@@ -66,7 +68,7 @@
           href: how-to-manage-lab-accounts.md
         - name: Verwalten von Labs in einem Labkonto
           href: manage-labs.md
-        - name: Konfigurieren des automatischen Herunterfahrens von virtuellen Computern
+        - name: Konfigurieren des automatischen Herunterfahrens von virtuellen Computern für ein Labkonto
           href: how-to-configure-lab-accounts.md
         - name: Hinzufügen eines Lab-Erstellers
           href: add-lab-creator.md
@@ -86,8 +88,6 @@
           href: specify-marketplace-images.md
         - name: Angeben von Supportinformationen (Labkontobesitzer)
           href: lab-account-owner-support-information.md
-        - name: Kostenverwaltung für Labs
-          href: cost-management-guide.md
     - name: Erstellen und Konfigurieren von Classroom-Labs (Lehrkraft)
       items:
         - name: Erstellen und Verwalten von Classroom-Labs
@@ -106,7 +106,7 @@
           href: how-to-use-shared-image-gallery.md
         - name: Aktivieren der Remotedesktopverbindung für Linux
           href: how-to-enable-remote-desktop-linux.md
-        - name: Aktivieren des automatischen Herunterfahrens beim Trennen
+        - name: Konfigurieren des automatischen Herunterfahrens von virtuellen Computern für ein Lab
           href: how-to-enable-shutdown-disconnect.md
         - name: Aktivieren der geschachtelten Virtualisierung auf einem virtuellen Vorlagencomputer
           items:
