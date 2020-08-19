@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 07/21/2020
 ms.author: alkohli
-ms.openlocfilehash: 332b4fdb6e0a26437edbf4309ee0b89b79f7eb23
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 04e4394e6a439c923558ef90e13c14c0adaa4020
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87845798"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88142110"
 ---
 # <a name="tutorial-return-azure-data-box-preview"></a>Tutorial: Zurücksenden von Azure Data Box (Vorschau)
 
@@ -176,7 +176,7 @@ Sollten Probleme auftreten, senden Sie eine E-Mail an Data Box Operations Asia (
 
 ## <a name="self-managed"></a>[Selbst verwalteter Versand](#tab/in-selfmanaged)
 
-Wenn Sie Data Box in Japan, Singapur, Südkorea und Westeuropa verwenden und bei der Auftragserstellung die Option für den selbst verwalteten Versand ausgewählt haben, gehen Sie wie folgt vor:
+Wenn Sie Data Box in Japan, Singapur, Südkorea, Indien, Südafrika oder Westeuropa verwenden und bei der Auftragserstellung die Option für den selbst verwalteten Versand ausgewählt haben, gehen Sie wie folgt vor:
 
 1. Notieren Sie sich den Autorisierungscode, der auf der Seite „Für den Versand vorbereiten“ der lokalen Webbenutzeroberfläche von Data Box angezeigt wird, nachdem dieser Schritt erfolgreich abgeschlossen wurde.
 2. Schalten Sie das Gerät aus, und entfernen Sie die Kabel. Wickeln Sie das mitgelieferte Netzkabel auf, und befestigen Sie es sicher an der Rückseite des Geräts.

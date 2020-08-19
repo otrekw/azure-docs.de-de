@@ -5,14 +5,14 @@ keywords: App Service, Azure App Service, AuthN, AuthZ, sicher, Sicherheit, mehr
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 04/29/2020
-ms.custom: seodec18
+ms.custom: devx-track-csharp, seodec18
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 71264dbe92de4c0bb6990b052c4e3bbce7ac9ffd
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: c1c3f52dafe63e3f829eb12d4fb872ed3ce85f36
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88082685"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88211721"
 ---
 # <a name="tutorial-authenticate-and-authorize-users-end-to-end-in-azure-app-service"></a>Tutorial: Umfassendes Authentifizieren und Autorisieren von Benutzern in Azure App Service
 

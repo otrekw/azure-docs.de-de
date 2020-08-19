@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc, references_regions
-ms.openlocfilehash: 6933321ad402104fa5529af2b7fdf38e329e0168
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 6422874f57b490773f70b6fb27d5b65c654ded07
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87830938"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212737"
 ---
 # <a name="what-is-azure-maps"></a>Was ist Azure Maps?
 
@@ -76,7 +76,7 @@ Weitere Informationen zu diesem Dienst finden Sie in der [Dokumentation zum Mobi
 
 ### <a name="render-service"></a>Renderingdienst
 
-Mit dem [Renderingdienst V2](https://docs.microsoft.com/est/api/maps/renderv2), der sich jetzt in der Vorschauphase befindet, wird eine neue Version der [Get Map Tile V2-API](https://docs.microsoft.com/rest/api/maps/renderv2/getmaptilepreview) eingeführt. Mit der Get Map Tile V2-API können Kunden nun Azure Maps-Straßenkacheln, Wetterkacheln oder die mit Azure Maps Creator erstellten Kartenkacheln anfordern. Die Verwendung der neuen Get Map Tile V2-API wird empfohlen.  
+Mit dem [Renderingdienst V2](https://docs.microsoft.com/rest/api/maps/renderv2), der sich jetzt in der Vorschauphase befindet, wird eine neue Version der [Get Map Tile V2-API](https://docs.microsoft.com/rest/api/maps/renderv2/getmaptilepreview) eingeführt. Mit der Get Map Tile V2-API können Kunden nun Azure Maps-Straßenkacheln, Wetterkacheln oder die mit Azure Maps Creator erstellten Kartenkacheln anfordern. Die Verwendung der neuen Get Map Tile V2-API wird empfohlen.  
 
 :::image type="content" source="./media/about-azure-maps/intro_map.png" border="false" alt-text="Beispiel für eine Karte vom Renderingdienst V2":::
 

@@ -13,12 +13,12 @@ ms.date: 08/05/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: lenalepa, aragra, sureshja
-ms.openlocfilehash: 800b399e73be032cfd9d2849b004018aa9d9031f
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 87c21587567ffe3462e4b702985114ac10454886
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88120863"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88140801"
 ---
 # <a name="quickstart-configure-a-client-application-to-access-a-web-api"></a>Schnellstart: Konfigurieren einer Clientanwendung für den Zugriff auf eine Web-API
 
@@ -148,7 +148,7 @@ So fügen Sie einen geheimen Clientschlüssel hinzu:
 
 ## <a name="add-permissions-to-access-web-apis"></a>Hinzufügen von Zugriffsberechtigungen für Web-APIs
 
-Die [Graph-API-Berechtigung „Anmelden und Benutzerprofil lesen“](https://developer.microsoft.com/graph/docs/concepts/permissions_reference#user-permissions) ist standardmäßig ausgewählt. Sie haben bei jeder Web-API die Wahl zwischen [zwei Arten von Berechtigungen](developer-glossary.md#permissions):
+Die [Graph-API-Berechtigung „Anmelden und Benutzerprofil lesen“](/graph/permissions-reference#user-permissions) ist standardmäßig ausgewählt. Sie haben bei jeder Web-API die Wahl zwischen [zwei Arten von Berechtigungen](developer-glossary.md#permissions):
 
 * **Anwendungsberechtigungen:** Ihre Clientanwendung muss direkt als sie selbst (also ohne Benutzerkontext) auf die Web-API zugreifen. Für diese Art von Berechtigung ist die Einwilligung des Administrators erforderlich. Diese Berechtigung steht für Desktopanwendungen und für mobile Clientanwendungen nicht zur Verfügung.
 * **Delegierte Berechtigungen:** Ihre Clientanwendung muss als angemeldeter Benutzer auf die Web-API zugreifen. Der Zugriff ist aber durch die ausgewählte Berechtigung eingeschränkt. Diese Art von Berechtigung kann von einem Benutzer erteilt werden, sofern für die Berechtigung nicht die Zustimmung durch einen Administrator erforderlich ist.

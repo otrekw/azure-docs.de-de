@@ -1,14 +1,14 @@
 ---
 title: Bereitstellen des HIPAA HITRUST-Blaupausenbeispiels
 description: Bereitstellungsschritte für das Blaupausenbeispiel „HIPAA HITRUST“, einschließlich Details zum Blaupausenartefaktparameter.
-ms.date: 12/03/2019
+ms.date: 08/03/2020
 ms.topic: sample
-ms.openlocfilehash: b3101d67e281f3b613b95e3f3ef5f620ae44cec7
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: f41827d687beb583ea6402d517e88b8cf69903a0
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86044837"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88211531"
 ---
 # <a name="deploy-the-hipaa-hitrust-blueprint-sample"></a>Bereitstellen des HIPAA HITRUST-Blaupausenbeispiels
 
@@ -106,6 +106,8 @@ Artefaktname|Artefakttyp|Parametername|BESCHREIBUNG|
 |Bereitstellen von Überwachung auf SQL-Server-Instanzen |Richtlinienzuweisung |Name der Ressourcengruppe für das Speicherkonto für SQL Server-Überwachung |Die Überwachung schreibt Datenbankereignisse in ein Überwachungsprotokoll in Ihrem Azure Storage-Konto. (Ein Speicherkonto wird in jeder Region erstellt, in der eine SQL Server-Instanz erstellt wird, die von allen Servern in dieser Region gemeinsam genutzt wird.) Wichtig: Damit die Überwachung ordnungsgemäß funktioniert, dürfen Sie die Ressourcengruppe oder die Speicherkonten weder löschen noch umbenennen. |
 |Bereitstellen von Diagnoseeinstellungen für Netzwerksicherheitsgruppen |Richtlinienzuweisung |Speicherkontopräfix für die Diagnose von Netzwerksicherheitsgruppen |Dieses Präfix wird mit dem Standort der Netzwerksicherheitsgruppe kombiniert, um den Namen für das erstellte Speicherkonto zu bilden. |
 |Bereitstellen von Diagnoseeinstellungen für Netzwerksicherheitsgruppen |Richtlinienzuweisung |Ressourcengruppenname für das Speicherkonto für die Diagnose von Netzwerksicherheitsgruppen (muss vorhanden sein) |Die Ressourcengruppe, in der das Speicherkonto erstellt wird. Diese Ressourcengruppe muss bereits vorhanden sein. |
+|\[Vorschau\]: Log Analytics-Agent für Linux-VM-Skalierungsgruppen bereitstellen |Richtlinienzuweisung |Log Analytics-Arbeitsbereich für Linux-VM-Skalierungsgruppen (VMSS) |Wenn der Arbeitsbereich außerhalb des Bereichs der Zuweisung liegt, müssen Sie der Prinzipal-ID der Richtlinienzuweisung Berechtigungen vom Typ „Log Analytics-Mitwirkender“ (oder ähnliche Berechtigungen) erteilen. |
+|\[Vorschau\]: Log Analytics-Agent für Windows-VM-Skalierungsgruppen bereitstellen |Richtlinienzuweisung |Log Analytics-Arbeitsbereich für Linux-VM-Skalierungsgruppen (VMSS) |Wenn der Arbeitsbereich außerhalb des Bereichs der Zuweisung liegt, müssen Sie der Prinzipal-ID der Richtlinienzuweisung Berechtigungen vom Typ „Log Analytics-Mitwirkender“ (oder ähnliche Berechtigungen) erteilen. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -3,13 +3,13 @@ title: 'Tutorial: Senden von E-Mails mit Logic Apps'
 description: Es wird beschrieben, wie Sie Geschäftsprozesse über Ihre App Service-App aufrufen. Beispiele hierfür sind das Senden von E-Mails, Tweets und Facebook-Posts, das Hinzufügen zu Verteilerlisten und vieles mehr.
 ms.topic: tutorial
 ms.date: 04/08/2020
-ms.custom: mvc
-ms.openlocfilehash: 874c67b0d8d29c163fa5f36b3d100f1d2a013d53
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.custom: devx-track-csharp, mvc
+ms.openlocfilehash: 9d4136099a8cadc43a53298f367f6eeb784e5ce1
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88080965"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212836"
 ---
 # <a name="tutorial-send-email-and-invoke-other-business-processes-from-app-service"></a>Tutorial: Senden von E-Mails und Aufrufen anderer Geschäftsprozesse aus App Service
 
