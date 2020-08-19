@@ -3,17 +3,17 @@ title: 'Checkliste zu Leistung und Skalierbarkeit für Table Storage: Azure St
 description: Eine Checkliste mit bewährten Methoden für die Entwicklung leistungsstarker Anwendungen mit Table Storage.
 services: storage
 author: tamram
+ms.author: tamram
 ms.service: storage
 ms.topic: overview
 ms.date: 10/10/2019
-ms.author: tamram
 ms.subservice: tables
-ms.openlocfilehash: 89581c8ae2fbdbb55a2abfbd527c8fdcf4b65761
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7c805e9cf15e22b9200ef86c6c22ac3f50e77719
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75749551"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88236385"
 ---
 # <a name="performance-and-scalability-checklist-for-table-storage"></a>Checkliste zu Leistung und Skalierbarkeit für Table Storage
 
@@ -196,7 +196,7 @@ In diesem Abschnitt finden Sie verschiedene Schnellkonfigurationseinstellungen, 
 
 Ab Speicherdienstversion 2013-08-15 unterstützt der Tabellenspeicherdienst die Verwendung von JSON anstelle des XML-basierten AtomPub-Formats für die Übertragung von Tabellendaten. Die Verwendung von JSON kann die Nutzlast um bis zu 75 % verringern und die Anwendungsleistung deutlich verbessern.
 
-Weitere Informationen finden Sie im Beitrag [Microsoft Azure Tables: Introducing JSON](https://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/05/windows-azure-tables-introducing-json.aspx) (Microsoft Azure-Tabellen: Einführung in JSON) und [Payload Format for Table Service Operations](https://msdn.microsoft.com/library/azure/dn535600.aspx) (Nutzlastformat für Tabellendienstvorgänge).
+Weitere Informationen finden Sie im Eintrag [Microsoft Azure-Tabellen: Einführung in JSON](https://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/05/windows-azure-tables-introducing-json.aspx) und [Nutzlastformat für Tabellenspeicherdienstvorgänge](https://msdn.microsoft.com/library/azure/dn535600.aspx).
 
 ### <a name="disable-nagle"></a>Deaktivieren des Nagle-Algorithmus
 
@@ -289,6 +289,6 @@ Wenn Sie Batcheinfügungen durchführen und anschließend Entitätsbereiche zusa
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Skalierbarkeits- und Leistungsziele für Table Storage](scalability-targets.md)
-- [Skalierbarkeits- und Leistungsziele für Standardspeicherkonten](../common/scalability-targets-standard-account.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json)
+- [Skalierbarkeits- und Leistungsziele für Table Storage](scalability-targets.md)
+- [Skalierbarkeits- und Leistungsziele für Storage Standard-Konten](../common/scalability-targets-standard-account.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json)
 - [Status- und Fehlercodes](/rest/api/storageservices/Status-and-Error-Codes2)

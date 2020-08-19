@@ -3,12 +3,12 @@ title: 'Schnellstart: Abfragen zur Vorhersage mit einem Browser – LUIS'
 description: In dieser Schnellstartanleitung bestimmen Sie im Browser mithilfe einer verfügbaren öffentlichen LUIS-App aus Konversationstext die Absicht eines Benutzers.
 ms.topic: quickstart
 ms.date: 04/21/2020
-ms.openlocfilehash: 5ba86882ebf3cb538ad6b865382342fcbd43d27c
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.openlocfilehash: 24c7a8aca410ad10b8a9299c4bca2f13d0feb780
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81769983"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245994"
 ---
 # <a name="quickstart-query-prediction-runtime-with-user-text"></a>Schnellstart: Abfragen der Vorhersagelaufzeit mit Benutzertext
 
@@ -19,7 +19,7 @@ Um zu verstehen, was ein LUIS-Vorhersageendpunkt zurückgibt, zeigen Sie ein Vor
 Zum Abfragen einer öffentlichen App benötigen Sie Folgendes:
 
 * Informationen zu Ihrer LUIS-Ressource (Language Understanding):
-    * **Vorhersageschlüssel:** Kann über das [LUIS-Portal](https://www.luis.ai/) abgerufen werden. Wenn Sie noch kein Abonnement besitzen, um einen Schlüssel zu erstellen, können Sie sich für ein [kostenloses Konto](https://azure.microsoft.com/free/) registrieren.
+    * **Vorhersageschlüssel:** Kann über das [LUIS-Portal](https://www.luis.ai/) abgerufen werden. Wenn Sie noch kein Abonnement besitzen, um einen Schlüssel zu erstellen, können Sie sich für ein [kostenloses Konto](https://azure.microsoft.com/free/cognitive-services) registrieren.
     * **Unterdomäne des Vorhersageendpunkts:** Die Unterdomäne ist gleichzeitig der **Name** Ihrer LUIS-Ressource.
 * Eine LUIS-App-ID: Verwenden Sie die öffentliche IoT-App-ID `df67dcdb-c37d-46af-88e1-8b97951ca1c2`. Die im Schnellstartcode verwendete Benutzerabfrage ist spezifisch für diese App.
 

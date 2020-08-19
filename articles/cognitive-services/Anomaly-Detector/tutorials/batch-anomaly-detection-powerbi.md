@@ -10,12 +10,12 @@ ms.subservice: anomaly-detector
 ms.topic: tutorial
 ms.date: 06/17/2020
 ms.author: aahi
-ms.openlocfilehash: 9f27deebe3a1fb21f4c7406bfd424196fb1072ec
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: 527ce1c7d434ae94c91c78c865c00aa0687a73cb
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85921922"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245501"
 ---
 # <a name="tutorial-visualize-anomalies-using-batch-detection-and-power-bi"></a>Tutorial: Visualisieren von Anomalien mithilfe von Batcherkennung und Power BI
 
@@ -29,10 +29,10 @@ In diesem Tutorial lernen Sie Folgendes:
 > * Visualisieren von Anomalien, die in Ihren Daten gefunden wurden, einschließlich erwarteter und beobachteter Werte, und Bestimmen von Grenzen für die Erkennung von Anomalien
 
 ## <a name="prerequisites"></a>Voraussetzungen
-* [Ein Azure-Abonnement](https://azure.microsoft.com/free/)
+* [Ein Azure-Abonnement](https://azure.microsoft.com/free/cognitive-services)
 * [Microsoft Power BI Desktop](https://powerbi.microsoft.com/get-started/), kostenlos verfügbar.
 * Eine Excel-Datei (.xlsx) mit Datenpunkten in einer Zeitreihe. Die Beispieldaten für diesen Schnellstart finden Sie auf [GitHub](https://go.microsoft.com/fwlink/?linkid=2090962).
-* Sobald Sie über Ihr Azure-Abonnement verfügen, erstellen Sie über <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector"  title="Erstellen einer Anomalieerkennungsressource"  target="_blank"> eine Anomalieerkennungsressource <span class="docon docon-navigate-external x-hidden-focus"></span></a> im Azure-Portal, um Ihren Schlüssel und Endpunkt zu erhalten. 
+* Sobald Sie über Ihr Azure-Abonnement verfügen, erstellen Sie über <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector"  title="Erstellen einer Anomalieerkennungsressource"  target="_blank"> eine Anomalieerkennungsressource <span class="docon docon-navigate-external x-hidden-focus"></span></a> im Azure-Portal, um Ihren Schlüssel und Endpunkt zu erhalten.
     * Sie benötigen den Schlüssel und Endpunkt der von Ihnen erstellten Ressource, um Ihre Anwendung mit der Anomalieerkennungs-API zu verbinden. Dies geschieht später in der Schnellstartanleitung.
 
 [!INCLUDE [cognitive-services-anomaly-detector-data-requirements](../../../../includes/cognitive-services-anomaly-detector-data-requirements.md)]
@@ -52,19 +52,19 @@ Navigieren Sie im angezeigten Dialogfeld zum Ordner, in den Sie die XLSX-Beispie
 
 ![Abbildung des Bildschirms „Navigator“ mit der Datenquelle in Power BI](../media/tutorials/navigator-dialog-box.png)
 
-Power BI konvertiert die Zeitstempel in der ersten Spalte in den Datentyp `Date/Time`. Diese Zeitstempel müssen in Text konvertiert werden, um an die Anomalieerkennungs-API gesendet werden zu können. Wenn der Power Query-Editor nicht automatisch geöffnet wird, klicken Sie auf der Registerkarte „Start“ auf **Abfragen bearbeiten**. 
+Power BI konvertiert die Zeitstempel in der ersten Spalte in den Datentyp `Date/Time`. Diese Zeitstempel müssen in Text konvertiert werden, um an die Anomalieerkennungs-API gesendet werden zu können. Wenn der Power Query-Editor nicht automatisch geöffnet wird, klicken Sie auf der Registerkarte „Start“ auf **Abfragen bearbeiten**.
 
 Klicken Sie im Power Query-Editor auf das Menüband **Transformieren**. Öffnen Sie in der Gruppe **Beliebige Spalte** das Dropdownmenü **Datentyp:** , und wählen Sie **Text** aus.
 
 ![Abbildung des Bildschirms „Navigator“ mit der Datenquelle in Power BI](../media/tutorials/data-type-drop-down.png)
 
-Wenn Sie einen Hinweis zum Ändern des Spaltentyps erhalten, klicken Sie auf **Aktuelle ersetzen**. Klicken Sie anschließend auf dem Menüband **Start** auf **Schließen und übernehmen** oder **Übernehmen**. 
+Wenn Sie einen Hinweis zum Ändern des Spaltentyps erhalten, klicken Sie auf **Aktuelle ersetzen**. Klicken Sie anschließend auf dem Menüband **Start** auf **Schließen und übernehmen** oder **Übernehmen**.
 
 ## <a name="create-a-function-to-send-the-data-and-format-the-response"></a>Erstellen einer Funktion zum Senden der Daten und Formatieren der Antwort
 
 Zum Formatieren und Senden der Datendatei an die Anomalieerkennungs-API können Sie eine Abfrage für die oben erstellte Tabelle aufrufen. Öffnen Sie im Power Query-Editor auf dem Menüband **Start** das Dropdownmenü **Neue Quelle**, und klicken Sie auf **Leere Abfrage**.
 
-Stellen Sie sicher, dass Ihre neue Abfrage ausgewählt ist, und klicken Sie dann auf **Erweiterter Editor**. 
+Stellen Sie sicher, dass Ihre neue Abfrage ausgewählt ist, und klicken Sie dann auf **Erweiterter Editor**.
 
 ![Abbildung der Schaltfläche „Erweiterter Editor“ in Power BI](../media/tutorials/advanced-editor-screen.png)
 
@@ -84,7 +84,7 @@ Verwenden Sie in „Erweiterter Editor“ den folgende Power Query M-Codeausschn
     jsonresp    = Json.Document(bytesresp),
 
     respTable = Table.FromColumns({
-                    
+
                      Table.Column(inputTable, "Timestamp")
                      ,Table.Column(inputTable, "Value")
                      , Record.Field(jsonresp, "IsAnomaly") as list
@@ -96,7 +96,7 @@ Verwenden Sie in „Erweiterter Editor“ den folgende Power Query M-Codeausschn
 
                   }, {"Timestamp", "Value", "IsAnomaly", "ExpectedValues", "UpperMargin", "LowerMargin", "IsPositiveAnomaly", "IsNegativeAnomaly"}
                ),
-    
+
     respTable1 = Table.AddColumn(respTable , "UpperMargins", (row) => row[ExpectedValues] + row[UpperMargin]),
     respTable2 = Table.AddColumn(respTable1 , "LowerMargins", (row) => row[ExpectedValues] -  row[LowerMargin]),
     respTable3 = Table.RemoveColumns(respTable2, "UpperMargin"),
@@ -112,7 +112,7 @@ Verwenden Sie in „Erweiterter Editor“ den folgende Power Query M-Codeausschn
  in results
 ```
 
-Rufen Sie die Abfrage auf dem Datenblatt durch Auswahl von `Sheet1` unter **Parameter eingeben** und Klicken auf **Aufrufen** auf. 
+Rufen Sie die Abfrage auf dem Datenblatt durch Auswahl von `Sheet1` unter **Parameter eingeben** und Klicken auf **Aufrufen** auf.
 
 ![Abbildung der Schaltfläche „Erweiterter Editor“](../media/tutorials/invoke-function-screenshot.png)
 
@@ -121,23 +121,23 @@ Rufen Sie die Abfrage auf dem Datenblatt durch Auswahl von `Sheet1` unter **Para
 > [!NOTE]
 > Beachten Sie die Richtlinien Ihres Unternehmens für den Schutz von Daten und den Zugriff darauf. Weitere Informationen finden Sie unter [Power BI Desktop – Datenschutzebenen](https://docs.microsoft.com/power-bi/desktop-privacy-levels).
 
-Sie erhalten möglicherweise eine Warnmeldung, wenn Sie versuchen, die Abfrage auszuführen, da sie eine externe Datenquelle verwendet. 
+Sie erhalten möglicherweise eine Warnmeldung, wenn Sie versuchen, die Abfrage auszuführen, da sie eine externe Datenquelle verwendet.
 
 ![Abbildung einer von Power BI erstellten Warnung](../media/tutorials/blocked-function.png)
 
-Um dieses Problem zu beheben, klicken Sie auf **Datei** und **Optionen und Einstellungen**. Klicken Sie dann auf **Optionen**. Wählen Sie unter **Aktuelle Datei** zunächst **Datenschutz** und dann **Sicherheitsstufen ignorieren und potenziell die Leistung verbessern** aus. 
+Um dieses Problem zu beheben, klicken Sie auf **Datei** und **Optionen und Einstellungen**. Klicken Sie dann auf **Optionen**. Wählen Sie unter **Aktuelle Datei** zunächst **Datenschutz** und dann **Sicherheitsstufen ignorieren und potenziell die Leistung verbessern** aus.
 
 Außerdem erhalten Sie möglicherweise eine Meldung, in der Sie aufgefordert werden, anzugeben, wie Sie sich mit der API verbinden möchten.
 
 ![Abbildung einer Anforderung zur Angabe von Anmeldeinformationen für den Zugriff](../media/tutorials/edit-credentials-message.png)
 
-Als Reaktion darauf klicken Sie in der Meldung auf **Anmeldeinformationen bearbeiten**. Wählen Sie im eingeblendeten Dialogfeld **Anonym** aus, um mit der API eine anonyme Verbindung herzustellen. Klicken Sie auf **Verbinden**. 
+Als Reaktion darauf klicken Sie in der Meldung auf **Anmeldeinformationen bearbeiten**. Wählen Sie im eingeblendeten Dialogfeld **Anonym** aus, um mit der API eine anonyme Verbindung herzustellen. Klicken Sie auf **Verbinden**.
 
 Klicken Sie anschließend auf dem Menüband **Start** auf **Schließen und übernehmen**, um die Änderungen zu übernehmen.
 
 ## <a name="visualize-the-anomaly-detector-api-response"></a>Visualisieren der Antwort der Anomalieerkennungs-API
 
-Beginnen Sie auf dem Hauptbildschirm von Power BI mit dem Verwenden der oben erstellten Abfragen, um die Daten zu visualisieren. Wählen Sie in **Visualisierungen** zuerst **Liniendiagramm** aus. Fügen Sie dann den Zeitstempel der aufgerufenen Funktion zur **Achse** des Liniendiagramms hinzu. Klicken Sie mit der rechten Maustaste darauf, und wählen Sie **Zeitstempel** aus. 
+Beginnen Sie auf dem Hauptbildschirm von Power BI mit dem Verwenden der oben erstellten Abfragen, um die Daten zu visualisieren. Wählen Sie in **Visualisierungen** zuerst **Liniendiagramm** aus. Fügen Sie dann den Zeitstempel der aufgerufenen Funktion zur **Achse** des Liniendiagramms hinzu. Klicken Sie mit der rechten Maustaste darauf, und wählen Sie **Zeitstempel** aus.
 
 ![Mit der rechten Maustaste auf den Wert „Zeitstempel“ klicken](../media/tutorials/timestamp-right-click.png)
 

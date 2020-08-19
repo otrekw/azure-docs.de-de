@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/14/2020
 ms.author: johndaw
-ms.openlocfilehash: e7958a722f7010d63794cacc072289030a72ed99
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 93333f2f0a2ef4aaf44884aa30afaa959459aaad
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86512502"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88257422"
 ---
 # <a name="tutorial--deploying-hsms-into-an-existing-virtual-network-using-powershell"></a>Tutorial: Bereitstellen von HSMs in einem vorhandenen virtuellen Netzwerk mithilfe von PowerShell
 
@@ -40,7 +40,7 @@ Dieses Tutorial konzentriert sich auf die Integration eines HSM-Paars und des er
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Da der Azure-Dienst für dedizierte HSMs derzeit nicht im Azure-Portal verfügbar ist, werden sämtliche Interaktionen mit dem Dienst über die Befehlszeile oder mithilfe von PowerShell abgewickelt. In diesem Tutorial wird PowerShell in Azure Cloud Shell verwendet. Sollten Sie noch nicht mit der PowerShell vertraut sein, informieren Sie sich hier über die ersten Schritte: [Get started with Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps) (Erste Schritte mit Azure PowerShell)
+Da der Azure-Dienst für dedizierte HSMs derzeit nicht im Azure-Portal verfügbar ist, werden sämtliche Interaktionen mit dem Dienst über die Befehlszeile oder mithilfe von PowerShell abgewickelt. In diesem Tutorial wird PowerShell in Azure Cloud Shell verwendet. Sollten Sie noch nicht mit der PowerShell vertraut sein, informieren Sie sich hier über die ersten Schritte: [Get started with Azure PowerShell](/powershell/azure/get-started-azureps) (Erste Schritte mit Azure PowerShell)
 
 Voraussetzungen:
 

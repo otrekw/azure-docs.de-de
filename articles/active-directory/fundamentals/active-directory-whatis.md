@@ -11,12 +11,12 @@ ms.date: 06/05/2020
 ms.author: ajburnle
 ms.custom: it-pro, seodec18, seo-update-azuread-jan, contperfq4
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bd63e82788856624c3babe078de52e698f190ce0
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 91e89f274615e75fec818ec9e3ecf785aa6e804f
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87796624"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88262957"
 ---
 # <a name="what-is-azure-active-directory"></a>Was ist Azure Active Directory?
 
@@ -26,7 +26,7 @@ Azure Active Directory (Azure AD) ist der cloudbasierte Identitäts- und Zugriff
 
 - Interne Ressourcen (beispielsweise Apps im Netzwerk/Intranet Ihres Unternehmens oder selbst entwickelte Cloud-Apps Ihrer Organisation) Weitere Informationen zum Erstellen eines Mandanten für Ihre Organisation finden Sie unter [Schnellstart: Erstellen eines neuen Mandanten in Azure Active Directory](active-directory-access-create-new-tenant.md).
 
-Informationen zu den Unterschieden zwischen Azure AD und Active Directory Domain Services finden Sie unter [Vergleich zwischen Active Directory und Azure Active Directory](active-directory-compare-azure-ad-to-ad.md). Anhand der verschiedenen Poster aus der Reihe [Microsoft-Cloud-Identität für Enterprise-Architekten](https://docs.microsoft.com/office365/enterprise/microsoft-cloud-it-architecture-resources#identity) können Sie sich auch mit den zentralen Identitätsdiensten in Azure, Azure AD und Office 365 vertraut machen.
+Informationen zu den Unterschieden zwischen Azure AD und Active Directory Domain Services finden Sie unter [Vergleich zwischen Active Directory und Azure Active Directory](active-directory-compare-azure-ad-to-ad.md). Anhand der verschiedenen Poster aus der Reihe [Microsoft-Cloud-Identität für Enterprise-Architekten](https://docs.microsoft.com/microsoft-365/solutions/cloud-architecture-models?view=o365-worldwide) können Sie sich auch mit den zentralen Identitätsdiensten in Azure, Azure AD und Office 365 vertraut machen.
 
 ## <a name="who-uses-azure-ad"></a>Azure AD-Zielgruppe
 

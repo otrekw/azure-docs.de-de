@@ -7,16 +7,16 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 01/22/2020
 ms.author: yegu
-ms.openlocfilehash: 4ad28bd65fe9bc240e963f103ca5bd658e90fdfd
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 10fedaf5680976ae93984c9b2c607882f650019d
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77529618"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213264"
 ---
 # <a name="how-the-reservation-discount-is-applied-to-azure-cache-for-redis"></a>Anwendung des Reservierungsrabatts auf Azure Cache for Redis
 
-Nachdem Sie eine reservierte Azure Cache for Redis-Kapazität erworben haben, wird der Reservierungsrabatt automatisch auf Cache-Instanzen angewendet, die den Attributen und der Menge der Reservierung entsprechen. Eine Reservierung deckt nur die Computekosten Ihrer Azure Cache for Redis-Instanz ab. Kosten für Speicher und Netzwerk werden zum regulären Satz abgerechnet. Reservierte Kapazität steht nur für Caches im [Premium-Tarif](/azure/azure-cache-for-redis/cache-premium-tier-intro) zur Verfügung.
+Nachdem Sie eine reservierte Azure Cache for Redis-Kapazität erworben haben, wird der Reservierungsrabatt automatisch auf Cache-Instanzen angewendet, die den Attributen und der Menge der Reservierung entsprechen. Eine Reservierung deckt nur die Computekosten Ihrer Azure Cache for Redis-Instanz ab. Kosten für Speicher und Netzwerk werden zum regulären Satz abgerechnet. Reservierte Kapazität steht nur für Caches im [Premium-Tarif](/https://docs.microsoft.com/azure/azure-cache-for-redis/quickstart-create-redis) zur Verfügung.
 
 ## <a name="how-reservation-discount-is-applied"></a>Wie der Reservierungsrabatt angewendet wird
 
