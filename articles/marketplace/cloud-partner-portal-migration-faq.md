@@ -4,15 +4,15 @@ description: Enthält Antworten auf häufig gestellte Fragen zur Umstellung von 
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-author: anbene
+author: mingshen-ms
 ms.author: mingshen
-ms.date: 06/29/2020
-ms.openlocfilehash: e708d9a32d63c306a2d1ee8d06b044652f108dde
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.date: 07/14/2020
+ms.openlocfilehash: fe909ba25191aa21e8a5bfa51c72690fd9c402eb
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86231878"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056549"
 ---
 # <a name="frequently-asked-questions-about-transitioning-from-the-cloud-partner-portal-to-partner-center"></a>Häufig gestellte Fragen zur Umstellung vom Cloud-Partnerportal auf Partner Center
 
@@ -25,12 +25,12 @@ Sie können in Partner Center normal weiterarbeiten:
 | Bereich<img src="" width=200px> | Änderungen |
 | --- | --- |
 | Konto | Sie müssen kein neues Partner Center-Konto erstellen, und Sie können Ihre vorhandenen Anmeldeinformationen für das Cloud-Partnerportal verwenden, um sich an Partner Center anzumelden. In Partner Center verwalten Sie nun Ihr Konto, die Benutzer, die Berechtigungen und die Abrechnung. Der Herausgebervertrag und die Informationen zum Unternehmensprofil werden zu Ihrem neuen Partner Center-Konto migriert. Dies gilt auch für alle Auszahlungsprofilinformationen, Benutzerkonten und Berechtigungen sowie für die aktiven Angebote. Weitere Informationen finden Sie unter [Verwalten Ihres Kontos im kommerziellen Marketplace in Partner Center](partner-center-portal/manage-account.md). |
-| Benutzerumgebung für die Veröffentlichung und Verwaltung von Angeboten | Wir haben Ihre Angebotsdaten aus dem Cloud-Partnerportal in Partner Center verschoben. Sie greifen auf Ihre Angebote nun in Partner Center zu und können die verbesserte Benutzerumgebung und eine intuitive Benutzeroberfläche verwenden. Informieren Sie sich über das [Aktualisieren eines bestehenden Commercial Marketplace-Angebots](partner-center-portal/update-existing-offer.md). |
+| Benutzerumgebung für die Veröffentlichung und Verwaltung von Angeboten | Wir haben Ihre Angebotsdaten aus dem Cloud-Partnerportal in Partner Center verschoben. Sie greifen auf Ihre Angebote nun in Partner Center zu und können die verbesserte Benutzerumgebung und eine intuitive Benutzeroberfläche verwenden. Informieren Sie sich über das [Aktualisieren eines bestehenden Angebots im kommerziellen Marketplace](partner-center-portal/update-existing-offer.md). |
 | Verfügbarkeit Ihrer Angebote auf dem kommerziellen Marketplace | Keine Änderungen. Wenn sich Ihr Angebot auf dem kommerziellen Marketplace im Livezustand befindet, bleibt dieser Livezustand unverändert. |
 | Neue Käufe und Bereitstellungen | Keine Änderungen. Ihre Kunden können Ihre Angebote ohne Unterbrechung weiter erwerben und bereitstellen. |
 | Auszahlungen | Alle Auszahlungen für Käufe und Bereitstellungen werden wie bisher für Sie durchgeführt. Erfahren Sie mehr zum [Zahlungserhalt im kommerziellen Marketplace](partner-center-portal/get-paid.md). |
 | API-Integrationen mit vorhandenen [Cloud-Partnerportal-APIs](cloud-partner-portal-api-overview.md) | Vorhandene Cloud-Partnerportal-APIs werden weiterhin unterstützt, und Ihre vorhandenen Integrationen funktionieren. Weitere Informationen hierzu finden Sie unter [Werden die Cloud-Partnerportal-REST-APIs nach der Migration unterstützt?](#are-the-cloud-partner-portal-rest-apis-still-supported). |
-| Analytics | Sie können mit dem Überwachen der Verkäufe, Auswerten der Leistung und Optimieren Ihrer Angebote auf dem kommerziellen Marketplace fortfahren, indem Sie die Analysedaten in Partner Center anzeigen. Weitere Informationen finden Sie unter [Zugreifen auf Analysen für den kommerziellen Marketplace in Partner Center](partner-center-portal/analytics.md). |
+| Analytics | Sie können mit dem Überwachen der Verkäufe, Auswerten der Leistung und Optimieren Ihrer Angebote auf dem kommerziellen Marketplace fortfahren, indem Sie die Analysedaten in Partner Center anzeigen. Analyseberichte werden im Cloud-Partnerportal (CPP) und in Partner Center auf unterschiedliche Weise angezeigt. Beispielsweise verfügt **Verkäufer-Insights** in CPP über die Registerkarte **Bestellungen und Nutzung**, die Daten für nutzungsbasierte und nicht nutzungsbasierte Angebote anzeigt. In Partner Center dagegen enthält die Seite **Bestellungen** eine separate Registerkarte für SaaS-Angebote. Weitere Informationen finden Sie unter [Zugreifen auf Analysen für den kommerziellen Marketplace in Partner Center](partner-center-portal/analytics.md). |
 |||
 
 ## <a name="do-i-need-to-create-a-new-account-to-manage-my-offers-in-partner-center"></a>Muss ich ein neues Konto erstellen, um meine Angebote in Partner Center verwalten zu können?
@@ -50,6 +50,19 @@ Unten sind Partner Center-Links für Seiten angegeben, die im Cloud-Partnerporta
 | Seite „Verlauf“ | [https://cloudpartner.azure.com/#history](https://cloudpartner.azure.com/#history) | Die Funktion „Verlauf“ wird in Partner Center noch nicht unterstützt. |
 | Dashboard „Insights“ | [https://cloudpartner.azure.com/#insights](https://cloudpartner.azure.com/#insights) | [https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary) |
 | Auszahlungsbericht | [https://cloudpartner.azure.com/#insights/payout](https://cloudpartner.azure.com/#insights/payout) | [https://partner.microsoft.com/dashboard/payouts/reports/incentivepayments](https://partner.microsoft.com/dashboard/payouts/reports/incentivepayments) |
+|||
+
+## <a name="payout-report-differences"></a>Unterschiede zwischen Auszahlungsberichten
+
+Bei Auszahlungsberichten gibt es zwischen dem außer Betrieb genommenen Cloud-Partnerportal und dem aktuellen Partner Center folgende Unterschiede:
+
+| Cloudpartnerportal | Partner Center |
+| --- | --- |
+| **Link**: https://cloudpartner.azure.com/ | **Link**: https://partner.microsoft.com/dashboard/payouts/reports/transactionhistory und https://partner.microsoft.com/dashboard/payouts/reports/incentivepayments |
+| **Navigation**: In Insights Payout bereitgestellte Auszahlungsberichte | **Navigation**: In Partner Center bereitgestellte Auszahlungsberichte – Auszahlungssymbol |
+| **Bereich:**<ul><li>Angezeigt wird die Transaktion pro Position, und zwar für „Inkasso in Bearbeitung“, „Eingezogen“ und „Bezahlt“.</li><li>Bericht: Enthält nach dem Erstellen der Bestellung alle Positionen (einschließlich „Inkasso in Bearbeitung“ und „Abrechnung in Bearbeitung“) sowie den Inkassostatus und die Positionen, die noch nicht für eine Zahlung qualifiziert sind.</li></ul> | **Bereich:**<ul><li>Zeigt die Positionen, sobald sie als qualifizierte Einnahmen betrachtet werden.</li><li>Die Kundenzahlung geht zuerst an Microsoft. Anschließend können die ISVs dann sehen, wie der Auszahlungsbericht gestartet wird.</li><li>Im Auszahlungsbericht werden „Inkasso in Bearbeitung“ und „Abrechnung in Bearbeitung“ nicht angezeigt.</li></ul> |
+| **Transaktion nicht auszahlungsbereit**: Abrechnung in Bearbeitung | **Transaktion nicht auszahlungsbereit**: Nächste voraussichtliche Zahlung: Die Auszahlung befindet sich im Status „Nicht verarbeitet“. |
+| **Auszahlungsstatus**: – | **Auszahlungsstatus**:<ul><li>Nicht verarbeitet: Die Einnahme ist für eine Auszahlung qualifiziert.</li><li>Anstehend: Die Einnahme wird in die nächste monatliche Auszahlung an den Herausgeber eingeschlossen.</li><li>Gesendet: Die Zahlung wurde an Ihre Bank gesendet.</li></ul> |
 |||
 
 ## <a name="what-about-offers-i-published-in-the-cloud-partner-portal"></a>Was passiert mit den Angeboten, die ich im Cloud-Partnerportal veröffentlicht habe?
@@ -94,19 +107,19 @@ Die Angebote, die Sie im Cloud-Partnerportal erstellt haben, sind in Partner Cen
 
     Falls das Programm „Kommerzieller Marketplace“ im Navigationsbereich auf der linken Seite nicht angezeigt wird, befinden Sie sich unter Umständen im falschen Konto. Führen Sie die Schritte im nächsten Abschnitt aus, um auf das richtige Konto zuzugreifen.
 
-    [![](media/cpp-pc-faq/overview-menu.png "Shows the Partner Center Overview menu")](media/cpp-pc-faq/overview-menu.png#lightbox)
+    [![Screenshot: Menü „Übersicht“ in Partner Center](media/cpp-pc-faq/overview-menu.png "Menü „Übersicht“ in Partner Center")](media/cpp-pc-faq/overview-menu.png#lightbox)
 
 ### <a name="access-the-right-account-in-partner-center"></a>Zugreifen auf das richtige Konto in Partner Center
 
 Falls Sie mehrere Konten nutzen, wird in Partner Center im linken Navigationsmenü eine Schaltfläche mit zwei Pfeilen zum Auswählen des Kontos angezeigt. Wählen Sie die Schaltfläche zum Auswählen des Kontos aus, um eine Liste mit allen Konten anzuzeigen, die Sie nutzen. Wählen Sie ein Konto in der Liste aus, um zu diesem Konto zu wechseln und alle zugehörigen Programme und Informationen anzuzeigen. Wenn im Navigationsmenü keine Schaltfläche zum Auswählen des Kontos angezeigt wird, nutzen Sie nur ein Konto.
 
-[![](media/cpp-pc-faq/picker-button.png "Shows the Partner Center account picker button")](media/cpp-pc-faq/picker-button.png#lightbox)
+[![Screenshot: Schaltfläche für Kontoauswahl in Partner Center](media/cpp-pc-faq/picker-button.png "Schaltfläche für Kontoauswahl in Partner Center")](media/cpp-pc-faq/picker-button.png#lightbox)
 
 ## <a name="how-do-i-create-new-offers"></a>Wie kann ich neue Angebote erstellen?
 
 Greifen Sie in [Partner Center](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) auf das Programm „Kommerzieller Marketplace“ zu, um neue Angebote zu erstellen. Wählen Sie auf der Seite „Übersicht“ die Option **+ Neues Angebot** aus.
 
-[![](media/cpp-pc-faq/new-offer.png "Shows the Partner Center Overview menu")](media/cpp-pc-faq/new-offer.png#lightbox)
+[![Screenshot: Menü „Übersicht“ in Partner Center](media/cpp-pc-faq/new-offer.png "Menü „Übersicht“ in Partner Center")](media/cpp-pc-faq/new-offer.png#lightbox)
 
 ## <a name="i-cant-sign-in-and-need-to-open-a-support-ticket"></a>Ich kann mich nicht anmelden und muss ein Supportticket erstellen
 
@@ -114,7 +127,7 @@ Falls Sie sich nicht bei Ihrem Konto anmelden können, können Sie [hier ein Sup
 
 ## <a name="where-are-instructions-for-using-partner-center"></a>Wo finde ich eine Anleitung zur Verwendung von Partner Center?
 
-Greifen Sie über die [Dokumentation zum kommerziellen Marketplace](index.yml) auf das **Portal für den kommerziellen Marketplace in Partner Center** zu. Erweitern Sie **Neues Angebot erstellen**, um Hilfeartikel zum Erstellen von Angeboten in Partner Center anzuzeigen.
+Wechseln Sie zur [Dokumentation zum kommerziellen Marketplace](index.yml), und erweitern Sie **Portal für den kommerziellen Marketplace in Partner Center**. Erweitern Sie **Neues Angebot erstellen**, um Hilfeartikel zum Erstellen von Angeboten in Partner Center anzuzeigen.
 
 ## <a name="what-are-the-publishing-and-offer-management-differences"></a>Was ist der Unterschied zwischen der Veröffentlichungs- und Angebotsverwaltung?
 
@@ -124,32 +137,32 @@ Hier sind einige Unterschiede zwischen dem Cloud-Partnerportal und Partner Cente
 
 Partner Center bietet eine modulare Veröffentlichungsoption, mit der Sie die zu veröffentlichenden Änderungen auswählen können, statt immer alle Aktualisierungen auf einmal zu veröffentlichen. Auf dem folgenden Bildschirm ist beispielsweise zu sehen, dass die einzigen Änderungen, die für die Veröffentlichung ausgewählt sind, die Änderungen von **Eigenschaften** und **Angebotsliste** sind. Die Änderungen, die Sie auf der Seite „Vorschau“ vornehmen, werden nicht veröffentlicht.
 
-[![](media/cpp-pc-faq/review-page.png "Shows the Partner Center Review and publish page")](media/cpp-pc-faq/review-page.png#lightbox)
+[![Screenshot: Seite für Überprüfung und Veröffentlichung in Partner Center](media/cpp-pc-faq/review-page.png "Seite für Überprüfung und Veröffentlichung in Partner Center")](media/cpp-pc-faq/review-page.png#lightbox)
 
 Die Aktualisierungen, die Sie nicht veröffentlichen, werden als Entwürfe gespeichert. Verwenden Sie weiterhin Ihre Angebotsvorschau, um Ihr Angebot zu überprüfen, bevor Sie es für die Öffentlichkeit live schalten.
 
 ### <a name="enhanced-preview-options"></a>Erweiterte Vorschauoptionen
 
-Partner Center enthält eine [Vergleichsfunktion](partner-center-portal/update-existing-offer.md#compare-changes-to-marketplace-offers) mit verbesserten Filteroptionen. Damit können Sie die Vorschauversion mit der Liveversion des Angebots vergleichen.
+Partner Center enthält eine [Vergleichsfunktion](partner-center-portal/update-existing-offer.md#compare-changes-to-commercial-marketplace-offers) mit verbesserten Filteroptionen. Damit können Sie die Vorschauversion mit der Liveversion des Angebots vergleichen.
 
-[![](media/cpp-pc-faq/compare.png "Shows the Partner Center compare feature")](media/cpp-pc-faq/compare.png#lightbox)
+[![Screenshot: Vergleichsfunktion in Partner Center](media/cpp-pc-faq/compare.png "Vergleichsfunktion in Partner Center")](media/cpp-pc-faq/compare.png#lightbox)
 
 ### <a name="branding-and-navigation-changes"></a>Branding- und Navigationsänderungen
 
 Es wurden einige Änderungen am Branding vorgenommen. *SKUs* werden in Partner Center beispielsweise als *Pläne* bezeichnet:
 
-[![](media/cpp-pc-faq/plans.png "Shows the Partner Center Plans page")](media/cpp-pc-faq/plans.png#lightbox)
+[![Screenshot: Seite „Pläne“ in Partner Center](media/cpp-pc-faq/plans.png "Seite „Pläne“ in Partner Center")](media/cpp-pc-faq/plans.png#lightbox)
 
 Darüber hinaus werden die Informationen, die Sie bisher im Cloud-Partnerportal auf den Seiten **Marketplace** oder **Storefrontdetails** (Beratungsdienst, Power BI-App) angegeben haben, nun auf der Seite **Angebotsliste** in Partner Center erfasst:
 
-[![](media/cpp-pc-faq/offer-listing.png "Shows the Partner Center Offer listing page")](media/cpp-pc-faq/offer-listing.png#lightbox)
+[![Screenshot: Seite „Angebotsliste“ in Partner Center](media/cpp-pc-faq/offer-listing.png "Seite „Angebotsliste“ in Partner Center")](media/cpp-pc-faq/offer-listing.png#lightbox)
 
 Die Informationen, die Sie für SKUs bisher auf einer einzelnen Seite im Cloud-Partnerportal angegeben haben, können nun in Partner Center auf mehreren Seiten erfasst werden:
 
 - Seite „Plansetup“
 - Seite „Planlisting“
 - Seite für die Planverfügbarkeit
-- Seite „Technische Konfiguration“ für den Plan: ![![](media/cpp-pc-faq/technical-configuration.png "Partner Center-Seite für technische Konfiguration")](media/cpp-pc-faq/technical-configuration.png#lightbox)
+- Seite für die technische Konfiguration für den Plan: ![![Screenshot: Seite für die technische Konfiguration für den Plan in Partner Center](media/cpp-pc-faq/technical-configuration.png "Partner Center-Seite für technische Konfiguration")](media/cpp-pc-faq/technical-configuration.png#lightbox)
 
 Ihre Angebots-ID wird nun in der linken Navigationsleiste des Angebots angezeigt:
 
@@ -159,7 +172,7 @@ Ihre Angebots-ID wird nun in der linken Navigationsleiste des Angebots angezeigt
 
 Sie können direkt im Partner Center-Portal die [Beendigung des Verkaufs eines Angebots](partner-center-portal/update-existing-offer.md#stop-selling-an-offer-or-plan) im Marketplace anfordern. Die entsprechende Option ist auf der Seite **Angebotsübersicht** für Ihr Angebot verfügbar.
 
-[![](media/cpp-pc-faq/stop-sell.png "Shows the Partner Center page to stop selling an offer")](media/cpp-pc-faq/stop-sell.png#lightbox)
+[![Screenshot: Seite zum Beenden des Verkaufs eines Angebots in Partner Center](media/cpp-pc-faq/stop-sell.png "Seite zum Beenden des Verkaufs eines Angebots in Partner Center")](media/cpp-pc-faq/stop-sell.png#lightbox)
 <br><br>
 
 ## <a name="are-the-cloud-partner-portal-rest-apis-still-supported"></a>Werden die REST-APIs des Cloud-Partnerportals weiterhin unterstützt?
