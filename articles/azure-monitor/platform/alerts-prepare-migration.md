@@ -6,19 +6,18 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 03/19/2018
 ms.subservice: alerts
-ms.openlocfilehash: 09db7684c84bbde038c67f9ccfb3f27f6b61bee6
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 24897826c6a70d0810b239b9b8f639787c3dac2a
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539548"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87843384"
 ---
 # <a name="prepare-your-logic-apps-and-runbooks-for-migration-of-classic-alert-rules"></a>Vorbereiten Ihrer Logik-Apps und Runbooks für die Migration von klassischen Warnungsregeln
 
-Wie [bereits angekündigt](monitoring-classic-retirement.md) werden klassische Warnungen in Azure Monitor im September 2019 (ursprünglich Juli 2019) eingestellt. Im Azure-Portal steht ein Migrationstool für Kunden bereit, die klassische Warnungsregeln verwenden und die Migration selbst auslösen möchten.
-
 > [!NOTE]
-> Aufgrund einer Verzögerung beim Rollout des Migrationstools wurde der Deaktivierungstermin vom ursprünglich angekündigten Datum, dem 30. Juni 2019, auf den 31. August 2019 verschoben.
+> Wie [bereits angekündigt](monitoring-classic-retirement.md), werden klassische Warnungen in Azure Monitor eingestellt, sind jedoch weiterhin für Ressourcen, die die neuen Warnungen noch nicht unterstützen, beschränkt im Einsatz. Das Deaktivierungsdatum für diese Warnungen wurde auf einen späteren Termin verschoben. Ein neues Datum wird demnächst angekündigt.
+>
 
 Wenn Sie sich entscheiden, Ihre klassischen Warnungsregeln freiwillig zu neuen Warnungsregeln zu migrieren, beachten Sie, dass einige Unterschiede zwischen den beiden Systemen bestehen. In diesem Artikel werden die Unterschiede erläutert, und Sie erfahren, wie Sie sich auf die Änderung vorbereiten können.
 

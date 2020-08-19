@@ -8,13 +8,13 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: spot
 ms.date: 03/25/2020
 ms.reviewer: jagaveer
-ms.custom: jagaveer
-ms.openlocfilehash: 70d7eb000ed2d50bc22bb005621ee7515e5a2a61
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: jagaveer, devx-track-azurecli
+ms.openlocfilehash: de8cfa66d6d52fe16cc40c5df0f41a39fff134fd
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86527454"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87832636"
 ---
 # <a name="azure-spot-vms-for-virtual-machine-scale-sets"></a>Azure-Spot-VMs für VM-Skalierungsgruppen 
 
@@ -40,6 +40,11 @@ Wenn die Instanzen in Ihrer Spot-Skalierungsgruppe beim Entfernen gelöscht werd
 
 Benutzer können sich für den Empfang von Benachrichtigungen in der VM über [Azure Scheduled Events](../virtual-machines/linux/scheduled-events.md) anmelden. Dadurch werden Sie benachrichtigt, wenn Ihre virtuellen Computer entfernt werden, und Sie haben vor dem Entfernen 30 Sekunden Zeit, Aufträge abzuschließen und die VMs herunterzufahren. 
 
+## <a name="placement-groups"></a>Platzierungsgruppen
+Eine Platzierungsgruppe ist ein ähnliches Konstrukt wie eine Azure-Verfügbarkeitsgruppe und verfügt über eigene Fehler- und Upgradedomänen. Standardmäßig besteht eine Skalierungsgruppe aus einer einzelnen Platzierungsgruppe mit einer maximalen Größe von 100 virtuellen Computern. Wenn die Skalierungsgruppeneigenschaft `singlePlacementGroup` auf *false* festgelegt ist, kann die Skalierungsgruppe mehrere Platzierungsgruppen und bis zu 1.000 virtuelle Computer umfassen. 
+
+> [!IMPORTANT]
+> Sofern Sie nicht InfiniBand mit HPC verwenden, wird dringend empfohlen, die Skalierungsgruppeneigenschaft `singlePlacementGroup` auf *false* festzulegen, um mehrere Platzierungsgruppen für eine bessere Skalierung in der Region oder Zone zu ermöglichen. 
 
 ## <a name="deploying-spot-vms-in-scale-sets"></a>Bereitstellen von Spot-VMs in Skalierungsgruppen
 
@@ -64,6 +69,7 @@ az vmss create \
     --name myScaleSet \
     --image UbuntuLTS \
     --upgrade-policy-mode automatic \
+    --single-placement-group false \
     --admin-username azureuser \
     --generate-ssh-keys \
     --priority Spot \
@@ -89,14 +95,26 @@ $vmssConfig = New-AzVmssConfig `
 
 Das Erstellen einer Skalierungsgruppe, die Spot-VMs nutzt, entspricht den Ausführungen im Artikel „Erste Schritte“ für [Linux](quick-create-template-linux.md) oder [Windows](quick-create-template-windows.md). 
 
-Verwenden Sie `"apiVersion": "2019-03-01"` oder höher für Spot-Vorlagenbereitstellungen. Fügen Sie dem Abschnitt `"virtualMachineProfile":` in Ihrer Vorlage die Eigenschaften `priority`, `evictionPolicy` und `billingProfile` hinzu: 
+Verwenden Sie `"apiVersion": "2019-03-01"` oder höher für Spot-Vorlagenbereitstellungen. 
+
+Fügen Sie dem Abschnitt `"virtualMachineProfile":` in Ihrer Vorlage die Eigenschaften `priority`, `evictionPolicy` und `billingProfile` und dem Abschnitt `"Microsoft.Compute/virtualMachineScaleSets"` die Eigenschaft `"singlePlacementGroup": false,` hinzu:
 
 ```json
-                "priority": "Spot",
+
+{
+  "type": "Microsoft.Compute/virtualMachineScaleSets",
+  },
+  "properties": {
+    "singlePlacementGroup": false,
+    }
+
+        "virtualMachineProfile": {
+              "priority": "Spot",
                 "evictionPolicy": "Deallocate",
                 "billingProfile": {
                     "maxPrice": -1
                 }
+            },
 ```
 
 Um die Instanz nach dem Entfernen zu löschen, ändern Sie den `evictionPolicy`-Parameter in `Delete`.

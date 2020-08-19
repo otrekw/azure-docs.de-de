@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 04/28/2020
+ms.date: 08/06/2020
 ms.author: curtand
 ms.custom: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ac3f9adbb3b83345fe14df39014c6119e97ba7f9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9e8250661fdbd6c67faade31caaed61ee8a399fe
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84886106"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008088"
 ---
 # <a name="deploy-azure-ad-privileged-identity-management-pim"></a>Bereitstellen von Azure AD Privileged Identity Management (PIM)
 
@@ -27,9 +27,9 @@ In dieser Schritt-für-Schritt-Anleitung wird beschrieben, wie Sie die Bereitste
 
 > [!TIP]
 > In diesem Artikel sind einige Elemente folgendermaßen gekennzeichnet:
-> 
+>
 > :heavy_check_mark: **Microsoft-Empfehlung**
-> 
+>
 > Hierbei handelt es sich um allgemeine Empfehlungen, die nur umgesetzt werden sollten, wenn sie Ihren individuellen Unternehmensanforderungen entsprechen.
 
 ## <a name="learn-about-privileged-identity-management"></a>Informationen zu Privileged Identity Management
@@ -82,7 +82,7 @@ Weitere Informationen finden Sie unter [Was ist Azure AD Privileged Identity Man
 
 **Azure AD-Rollen**: Dabei handelt es sich um Rollen in Azure Active Directory (z. B. „Globaler Administrator“, „Exchange-Administrator“ und „Sicherheitsadministrator“). Unter [Berechtigungen der Administratorrolle in Azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md) erfahren Sie mehr über die Rollen und ihre Funktionen. [Administratorrollen nach Administratoraufgabe in Azure Active Directory](../users-groups-roles/roles-delegate-by-task.md) hilft Ihnen dabei, Ihren Administratoren geeignete Rollen zuzuweisen.
 
-**Azure-Ressourcenrollen**: Diese Rollen sind mit einer Azure-Ressource, einer Ressourcengruppe, einem Abonnement oder einer Verwaltungsgruppe verknüpft. Privileged Identity Management bietet Just-in-Time-Zugriff auf integrierte Rollen wie „Besitzer“, „Benutzerzugriffsadministrator“ und „Mitwirkender“ sowie auf [benutzerdefinierte Rollen](../../role-based-access-control/custom-roles.md). Weitere Informationen zu Azure-Ressourcenrollen finden Sie unter [Rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC)](../../role-based-access-control/overview.md).
+**Azure-Ressourcenrollen**: Diese Rollen sind mit einer Azure-Ressource, einer Ressourcengruppe, einem Abonnement oder einer Verwaltungsgruppe verknüpft. Privileged Identity Management bietet Just-in-Time-Zugriff auf integrierte Rollen wie „Besitzer“, „Benutzerzugriffsadministrator“ und „Mitwirkender“ sowie auf [benutzerdefinierte Rollen](../../role-based-access-control/custom-roles.md). Weitere Informationen zu Azure-Ressourcenrollen finden Sie unter [Rollenbasierte Zugriffssteuerung von Azure (Azure RBAC)](../../role-based-access-control/overview.md).
 
 Weitere Informationen finden Sie unter [Nicht in PIM verwaltbare Rollen](pim-roles.md).
 
@@ -115,7 +115,7 @@ Der folgende Abschnitt hilft Ihnen beim Identifizieren aller Projektbeteiligten,
 | Name und E-Mail-Adresse | **Abonnement/Ressourcenbesitzer**<br/>Ein Vertreter der IT-Besitzer jedes Abonnements oder jeder Ressource, für das oder die Sie Privileged Identity Management bereitstellen möchten | SO/R/I |
 | Name und E-Mail-Adresse | **Sicherheitsbesitzer**<br/>Ein Vertreter des Sicherheitsteams, der abzeichnen kann, dass der Plan die Sicherheitsanforderungen Ihrer Organisation erfüllt. | SO/R |
 | Name und E-Mail-Adresse | **IT-Supportmanager/Helpdesk**<br/>Ein Vertreter der IT-Supportorganisation, der zu den Unterstützungsmöglichkeiten dieser Änderung aus einer Helpdesk-Perspektive Stellung nehmen kann. | R/I |
-| Name und E-Mail-Adresse für Pilotbenutzer | **Benutzer mit RBAC-Rolle**<br/>Die Gruppe von Benutzern, für die privilegierte Identitätsverwaltung implementiert wird. Sie müssen wissen, wie ihre Rollen nach der Implementierung von Privileged Identity Management aktiviert werden. | I |
+| Name und E-Mail-Adresse für Pilotbenutzer | **Benutzer mit Azure-Rolle**<br/>Die Gruppe von Benutzern, für die privilegierte Identitätsverwaltung implementiert wird. Sie müssen wissen, wie ihre Rollen nach der Implementierung von Privileged Identity Management aktiviert werden. | I |
 
 ### <a name="enable-privileged-identity-management"></a>Aktivieren von Privileged Identity Management
 
@@ -142,9 +142,9 @@ Führen Sie diese Schritte aus, um das Prinzip der geringsten Rechte für Ihre A
 
 1. Einblicke in die Granularität der Rollen erhalten Sie durch Lesen und Verstehen von [Verfügbare Rollen](../users-groups-roles/directory-assign-admin-roles.md#available-roles). Sie und Ihr Team sollten außerdem den Artikel [Administratorrollen nach Administratoraufgabe in Azure Active Directory](../users-groups-roles/roles-delegate-by-task.md) lesen, in dem die am wenigsten privilegierte Rolle für bestimmte Aufgaben erläutert wird.
 
-1. Erstellen Sie eine Liste der Benutzer mit privilegierten Rollen in Ihrer Organisation. Mit dem [Privileged Identity Management-Assistenten](pim-security-wizard.md#run-the-wizard) können Sie eine Seite wie die folgende erstellen.
+1. Erstellen Sie eine Liste der Benutzer mit privilegierten Rollen in Ihrer Organisation. Mit dem Tool [Ermittlung und Erkenntnisse (Vorschau)](pim-security-wizard.md) von Privileged Identity Management können Sie eine Seite wie die folgende erstellen.
 
-    ![Bereich zum Ermitteln privilegierter Rollen, der anzeigt, wer über privilegierte Rollen verfügt](./media/pim-deployment-plan/discover-privileged-roles-users.png)
+    ![Seite „Ermittlung und Erkenntnisse (Vorschau)“ zum Reduzieren des Risikos mithilfe privilegierter Rollen](./media/pim-deployment-plan/new-preview-page.png)
 
 1. Ermitteln Sie für alle globalen Administratoren in Ihrer Organisation, warum sie die Rolle benötigen. Basierend auf der bisherigen Dokumentation sollten Sie eine Person aus der Rolle „Globaler Administrator“ entfernen, wenn deren Aufgaben von einer oder mehreren genau abgestimmten Administratorrollen ausgeführt werden kann, und entsprechende Zuweisungen in Azure Active vornehmen. (Bezugswert: Bei Microsoft gibt es derzeit nur ungefähr 10 Administratoren mit der Rolle „Globaler Administrator“. Weitere Informationen finden Sie unter [Verwenden von Azure AD Privileged Identity Management für erhöhte Zugriffsrechte](https://www.microsoft.com/itshowcase/Article/Content/887/Using-Azure-AD-Privileged-Identity-Management-for-elevated-access)).
 

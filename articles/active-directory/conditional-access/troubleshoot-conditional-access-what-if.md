@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: troubleshooting
-ms.date: 07/03/2019
+ms.date: 08/07/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9aaab58acb00305f76b10847a0417d91d724ba8
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 46d3b8d94148e3db163411c21cccf39c7630c6b3
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83737638"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88032911"
 ---
 # <a name="troubleshooting-conditional-access-using-the-what-if-tool"></a>Beheben von Problemen beim bedingten Zugriff mit dem Was-wäre-wenn-Tool
 
@@ -67,7 +67,7 @@ Viele Organisationen erstellen Richtlinien auf der Grundlage von Netzwerkadresse
 
 Um zu überprüfen, ob eine Konfiguration ordnungsgemäß vorgenommen wurde, kann ein Administrator mit dem Was-wäre-wenn-Tool den Zugriff von einem Standort, der zugelassen werden sollte, und von einem Standort, der blockiert werden sollte, imitieren.
 
-![Was-wäre-wenn-Tool mit den Ergebnissen von „Zugriff blockieren“](./media/troubleshoot-conditional-access-what-if/conditional-access-what-if-results.png)
+[ ![What If-Tool mit den Ergebnissen von „Zugriff blockieren“](./media/troubleshoot-conditional-access-what-if/conditional-access-what-if-results.png)](./media/troubleshoot-conditional-access-what-if/conditional-access-what-if-results.png#lightbox)
 
 In diesem Fall ist der Zugriff des Benutzers während seiner Reise nach Nordkorea auf jede Cloud-App gesperrt, da Contoso den Zugriff von diesem Standort gesperrt hat.
 

@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: how-to
 ms.date: 02/18/2020
 ms.author: allensu
-ms.openlocfilehash: 550ed5791df821b1793755f5046da92adf6e3f3a
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 1bbb410b3aac7d1e30db075003eb30ec27b11a38
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131547"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926585"
 ---
 # <a name="how-to-protect-private-dns-zones-and-records"></a>Schützen von privaten DNS-Zonen und -Einträgen
 
@@ -20,7 +20,7 @@ ms.locfileid: "87131547"
 
 Private DNS-Zonen und -Einträge sind kritische Ressourcen. Das Löschen einer DNS-Zone oder eines einzelnen DNS-Eintrags kann zu einem Dienstausfall führen. DNS-Zonen und -Einträge müssen vor unzulässigen oder versehentlichen Änderungen geschützt werden.
 
-In diesem Artikel wird erläutert, wie Sie mithilfe von Azure DNS Ihre privaten DNS-Zonen und -Einträge vor solchen Änderungen schützen können.  Wir wenden zwei leistungsstarke Sicherheitsfeatures an, die von Azure Resource Manager bereitgestellt werden: [rollenbasierte Zugriffssteuerung](../role-based-access-control/overview.md) und [Ressourcensperren](../azure-resource-manager/management/lock-resources.md).
+In diesem Artikel wird erläutert, wie Sie mithilfe von Azure DNS Ihre privaten DNS-Zonen und -Einträge vor solchen Änderungen schützen können.  Wir wenden zwei leistungsstarke Sicherheitsfeatures an, die von Azure Resource Manager bereitgestellt werden: [rollenbasierte Zugriffssteuerung von Azure (Azure RBAC)](../role-based-access-control/overview.md) und [Ressourcensperren](../azure-resource-manager/management/lock-resources.md).
 
 ## <a name="role-based-access-control"></a>Rollenbasierte Zugriffssteuerung
 

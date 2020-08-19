@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: 6f2043b91f8345a638d6fc773230cd182fb0fead
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 20add4859b272b6d121666cde9c56296119d41e4
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84508844"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836529"
 ---
 # <a name="private-link-for-azure-database-for-mariadb"></a>Private Link für Azure Database for MariaDB
 
@@ -20,7 +20,7 @@ Private Link ermöglicht Ihnen das Erstellen privater Endpunkte für Azure Datab
 Eine Liste der PaaS-Dienste, die die Private Link-Funktion unterstützen, finden Sie in der [Dokumentation](https://docs.microsoft.com/azure/private-link/index) zu Private Link. Ein privater Endpunkt ist eine private IP-Adresse in einem bestimmten [VNET](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) und Subnetz.
 
 > [!NOTE]
-> Dieses Feature steht in allen Azure-Regionen zur Verfügung, in denen Azure Database for MariaDB die Tarife „Universell“ und „Arbeitsspeicheroptimiert“ unterstützt.
+> Das Feature „Private Link“ ist nur für Azure Database for MariaDB-Server in den Tarifen „Universell“ und „Arbeitsspeicheroptimiert“ verfügbar. Stellen Sie sicher, dass für den Datenbankserver einer dieser Tarife festgelegt ist.
 
 ## <a name="data-exfiltration-prevention"></a>Verhinderung der Datenexfiltration
 

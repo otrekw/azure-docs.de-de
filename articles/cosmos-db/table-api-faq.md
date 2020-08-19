@@ -4,14 +4,14 @@ description: Hier finden Sie Antworten auf häufig gestellte Fragen zur Tabellen
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 04/28/2020
+ms.date: 08/12/2020
 ms.author: sngun
-ms.openlocfilehash: 05a7af9bcedd84f53e020bec57fc58854861af3e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 65f276662ac4837003c7a7078b6197ba155eadc9
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85392351"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88167588"
 ---
 # <a name="frequently-asked-questions-about-the-table-api-in-azure-cosmos-db"></a>Häufig gestellte Fragen zur Tabellen-API in Azure Cosmos DB
 
@@ -274,7 +274,7 @@ Azure Cosmos DB wurde als global verteiltes, SLA-basiertes System mit Garantien 
 
 ### <a name="i-never-get-a-quota-full-notification-indicating-that-a-partition-is-full-when-i-ingest-data-into-azure-table-storage-with-the-table-api-i-do-get-this-message-is-this-offering-limiting-me-and-forcing-me-to-change-my-existing-application"></a>Ich habe die Benachrichtigung „Kontingent erschöpft“ (als Information, dass eine Partition voll ist) beim Erfassen von Daten in Azure Table Storage nie erhalten. Bei der Table-API wird diese Meldung aber angezeigt. Schränkt mich dieses Angebot ein, und zwingt es mich zum Ändern meiner vorhandenen Anwendung?
 
-Azure Cosmos DB ist ein SLA-basiertes System, das unbeschränkte Skalierung mit Garantien für Wartezeit, Durchsatz, Verfügbarkeit und Konsistenz bietet. Achten Sie darauf, dass Ihre Datengröße und der Index verwaltbar und skalierbar sind, um sicherzustellen, dass Sie die garantierte Premium-Leistung erhalten. Mit dem 10 GB-Grenzwert für die Anzahl von Entitäten bzw. Elementen pro Partitionsschlüssel wird dafür gesorgt, dass wir eine hervorragende Such- und Abfrageleistung bieten können. Um sicherzustellen, dass Ihre Anwendung gut skaliert werden kann, raten wir Ihnen auch bei Azure Storage, *keine* Hot Partition zu erstellen, indem Sie alle Informationen in einer Partition speichern und abfragen.
+Azure Cosmos DB ist ein SLA-basiertes System, das unbeschränkte Skalierung mit Garantien für Wartezeit, Durchsatz, Verfügbarkeit und Konsistenz bietet. Achten Sie darauf, dass Ihre Datengröße und der Index verwaltbar und skalierbar sind, um sicherzustellen, dass Sie die garantierte Premium-Leistung erhalten. Mit dem 20 GB-Grenzwert für die Anzahl von Entitäten bzw. Elementen pro Partitionsschlüssel wird dafür gesorgt, dass wir eine hervorragende Such- und Abfrageleistung bieten können. Um sicherzustellen, dass Ihre Anwendung gut skaliert werden kann, raten wir Ihnen auch bei Azure Storage, *keine* Hot Partition zu erstellen, indem Sie alle Informationen in einer Partition speichern und abfragen.
 
 ### <a name="so-partitionkey-and-rowkey-are-still-required-with-the-table-api"></a>Also benötige ich „PartitionKey“ und „RowKey“ auch bei der Table-API?
 

@@ -8,13 +8,13 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 07/07/2020
-ms.openlocfilehash: 9ef87027bcda6c645d1239598c849f57fb0c8992
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.date: 08/12/2020
+ms.openlocfilehash: 6524128cb5bccfefe37d605b406210a91e78cac8
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87491968"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88163967"
 ---
 # <a name="azure-time-series-insights-gen2-event-sources"></a>Azure Time Series Insights Gen2-Ereignisquellen
 
@@ -33,34 +33,34 @@ Wenn Sie eine Ereignisquelle verbinden, liest Ihre Azure Time Series Insights Ge
 
 > [!IMPORTANT]
 >
-> * Beim Anfügen einer Ereignisquelle an die Azure Time Series Insights Gen2-Umgebung tritt zu Anfang möglicherweise eine hohe Latenz auf.
-> Die Latenz der Ereignisquelle hängt von der Anzahl der Ereignisse ab, die sich aktuell in Ihrem IoT Hub oder Event Hub befinden.
-> * Eine hohe Latenz lässt nach der erstmaligen Erfassung der Ereignisquelldaten nach. Senden Sie ein Supportticket über das Azure-Portal, falls es bei Ihnen zu einer dauerhaft hohen Latenz kommt.
+> - Beim Anfügen einer Ereignisquelle an die Azure Time Series Insights Gen2-Umgebung tritt zu Anfang möglicherweise eine hohe Latenz auf.
+> - Die Latenz der Ereignisquelle hängt von der Anzahl der Ereignisse ab, die sich aktuell in Ihrem IoT Hub oder Event Hub befinden.
+> - Eine hohe Latenz lässt nach der erstmaligen Erfassung der Ereignisquelldaten nach. Senden Sie ein Supportticket über das Azure-Portal, falls es bei Ihnen zu einer dauerhaft hohen Latenz kommt.
 
 ## <a name="streaming-ingestion-best-practices"></a>Bewährte Methoden für die Streamingerfassung
 
-* Erstellen Sie immer eine eindeutige Consumergruppe für Ihre Azure Time Series Insights Gen2-Umgebung, um Daten aus Ihrer Ereignisquelle zu nutzen. Die erneute Verwendung von Consumergruppen kann zufällige Verbindungsunterbrechungen verursachen und zu Datenverlusten führen.
+- Erstellen Sie immer eine eindeutige Consumergruppe für Ihre Azure Time Series Insights Gen2-Umgebung, um Daten aus Ihrer Ereignisquelle zu nutzen. Die erneute Verwendung von Consumergruppen kann zufällige Verbindungsunterbrechungen verursachen und zu Datenverlusten führen.
 
-* Konfigurieren Sie Ihre Azure Time Series Insights Gen2-Umgebung und IoT Hub und/oder Event Hubs in derselben Azure-Region. Obwohl eine Ereignisquelle in einer anderen Region konfiguriert werden kann, wird dieses Szenario nicht unterstützt, und es kann keine Hochverfügbarkeit garantiert werden.
+- Konfigurieren Sie Ihre Azure Time Series Insights Gen2-Umgebung und IoT Hub und/oder Event Hubs in derselben Azure-Region. Obwohl eine Ereignisquelle in einer anderen Region konfiguriert werden kann, wird dieses Szenario nicht unterstützt, und es kann keine Hochverfügbarkeit garantiert werden.
 
-* Überschreiten Sie nicht den [Grenzwert Ihrer Umgebung für die Durchsatzrate](./concepts-streaming-ingress-throughput-limits.md) oder den Durchsatz pro Partition.
+- Überschreiten Sie nicht den [Grenzwert Ihrer Umgebung für die Durchsatzrate](./concepts-streaming-ingress-throughput-limits.md) oder den Durchsatz pro Partition.
 
-* Konfigurieren Sie eine [Verzögerungswarnung](https://review.docs.microsoft.com/azure/time-series-insights/time-series-insights-environment-mitigate-latency?branch=pr-en-us-117938#monitor-latency-and-throttling-with-alerts), damit Sie benachrichtigt werden, wenn in Ihrer Umgebung Probleme beim Verarbeiten von Daten auftreten.
+- Konfigurieren Sie eine [Verzögerungswarnung](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-environment-mitigate-latency#monitor-latency-and-throttling-with-alerts), damit Sie benachrichtigt werden, wenn in Ihrer Umgebung Probleme beim Verarbeiten von Daten auftreten.
 
-* Verwenden Sie die Streamingerfassung nur für Daten in Quasi-Echtzeit und für aktuelle Daten. Das Streamen historischer Daten wird nicht unterstützt.
+- Verwenden Sie die Streamingerfassung nur für Daten in Quasi-Echtzeit und für aktuelle Daten. Das Streamen historischer Daten wird nicht unterstützt.
 
-* Informieren Sie sich, wie Eigenschaften mit Escapezeichen versehen werden und wie JSON-[Daten vereinfacht und gespeichert](./concepts-json-flattening-escaping-rules.md) werden.
+- Informieren Sie sich, wie Eigenschaften mit Escapezeichen versehen werden und wie JSON-[Daten vereinfacht und gespeichert](./concepts-json-flattening-escaping-rules.md) werden.
 
-* Befolgen Sie das Prinzip der geringsten Rechte, wenn Sie Verbindungszeichenfolgen für Ereignisquellen angeben. Konfigurieren Sie für Event Hubs eine SAS-Richtlinie, die ausschließlich den *send*-Anspruch umfasst, und verwenden Sie für IoT Hub nur die *service connect*-Berechtigung.
+- Befolgen Sie das Prinzip der geringsten Rechte, wenn Sie Verbindungszeichenfolgen für Ereignisquellen angeben. Konfigurieren Sie für Event Hubs eine SAS-Richtlinie, die ausschließlich den *send*-Anspruch umfasst, und verwenden Sie für IoT Hub nur die *service connect*-Berechtigung.
 
 ### <a name="historical-data-ingestion"></a>Erfassung historischer Daten
 
 Die Streamingpipeline kann in Azure Time Series Insights Gen2 aktuell nicht zum Importieren historischer Daten verwendet werden. Wenn Sie ältere Daten in Ihre Umgebung importieren möchten, beachten Sie die folgenden Richtlinien:
 
-* Streamen Sie Livedaten und historische Daten nicht parallel. Die Erfassung unsortierter Daten wirkt sich nachteilig auf die Abfrageleistung aus.
-* Erfassen Sie historische Daten in zeitlicher Reihenfolge, um die bestmögliche Leistung zu erzielen.
-* Bleiben Sie innerhalb der unten angegebenen Ratengrenzwerte für den Erfassungsdurchsatz.
-* Deaktivieren Sie den warmen Speicher, wenn das Alter der Daten den Aufbewahrungszeitraum Ihres warmen Speichers übersteigt.
+- Streamen Sie Livedaten und historische Daten nicht parallel. Die Erfassung unsortierter Daten wirkt sich nachteilig auf die Abfrageleistung aus.
+- Erfassen Sie historische Daten in zeitlicher Reihenfolge, um die bestmögliche Leistung zu erzielen.
+- Bleiben Sie innerhalb der unten angegebenen Ratengrenzwerte für den Erfassungsdurchsatz.
+- Deaktivieren Sie den warmen Speicher, wenn das Alter der Daten den Aufbewahrungszeitraum Ihres warmen Speichers übersteigt.
 
 ## <a name="event-source-timestamp"></a>Zeitstempel der Ereignisquelle
 
@@ -82,10 +82,6 @@ Der Zeitzonenoffset sollte eines der folgenden Formate aufweisen:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Lesen Sie die [JSON-Vereinfachungs- und -Escaperegeln](./concepts-json-flattening-escaping-rules.md), um zu verstehen, wie Ereignisse gespeichert werden. 
+- Lesen Sie die [JSON-Vereinfachungs- und -Escaperegeln](./concepts-json-flattening-escaping-rules.md), um zu verstehen, wie Ereignisse gespeichert werden.
 
-* Informieren Sie sich über die [Durchsatzbeschränkungen](./concepts-streaming-ingress-throughput-limits.md) Ihrer Umgebung
-
-
-
-
+- Informieren Sie sich über die [Durchsatzbeschränkungen](./concepts-streaming-ingress-throughput-limits.md) Ihrer Umgebung

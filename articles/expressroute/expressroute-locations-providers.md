@@ -5,14 +5,14 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 06/30/2020
+ms.date: 08/05/2020
 ms.author: cherylmc
-ms.openlocfilehash: a8d73255fdd4b6a7c7a6cc4be96a73d4fb56a613
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: 6fb065e48b744a31bcce2ca3249d0d6bd0216049
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87460166"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88066422"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute-Partner und Peeringstandorte
 
@@ -43,7 +43,7 @@ Die folgende Tabelle bietet eine Übersicht über die Azure-Regionen mit Express
 | --- | --- | --- |
 | **Australische Behörden** | Australien, Mitte; Australien, Mitte 2 |Canberra, Canberra2 |
 | **Europa** | Frankreich, Mitte; Frankreich, Süden; Deutschland, Norden; Deutschland, Westen-Mitte; Europa, Norden; Norwegen, Osten; Norwegen, Westen; Schweiz, Norden; Schweiz, Westen; Vereinigtes Königreich, Westen; Vereinigtes Königreich, Süden; Europa, Westen |Amsterdam, Amsterdam2, Berlin, Dublin, Frankfurt, Genf, Kopenhagen, London, London2, Mailand, Marseille, München, Newport (Wales), Oslo, Paris, Stavanger, Stockholm, Zürich |
-| **Nordamerika** | USA, Osten; USA, Westen; USA, Osten 2; USA, Westen 2; USA, Mitte; USA, Süden-Mitte; USA, Norden-Mitte; USA, Westen-Mitte; Kanada, Mitte; Kanada, Osten |Atlanta, Chicago, Dallas, Denver, Las Vegas, Los Angeles, Miami, Minneapolis, New York, Queretaro(Mexico), San Antonio, Seattle, Silicon Valley, Silicon Valley2, Washington DC, Washington DC2, Montreal, Quebec City, Toronto, Vancouver |
+| **Nordamerika** | USA, Osten; USA, Westen; USA, Osten 2; USA, Westen 2; USA, Mitte; USA, Süden-Mitte; USA, Norden-Mitte; USA, Westen-Mitte; Kanada, Mitte; Kanada, Osten |Atlanta, Chicago, Dallas, Denver, Las Vegas, Los Angeles, Los Angeles2, Miami, Minneapolis, New York, Queretaro (Mexiko), San Antonio, Seattle, Silicon Valley, Silicon Valley2, Washington DC, Washington DC2, Montreal, Quebec City, Toronto, Vancouver |
 | **Asien** | Ostasien, Südostasien | Bangkok, Hongkong, Hongkong2, Jakarta, Kuala Lumpur, Singapur, Singapur2, Taipeh |
 | **Indien** | Indien, Westen, Indien, Mitte, Indien, Süden |Chennai, Chennai2, Mumbai, Mumbai2 |
 | **Japan** | Japan West, Japan Ost |Osaka, Tokio, Tokio2 |
@@ -88,7 +88,7 @@ Die folgende Tabelle enthält die Konnektivitätsstandorte und die dazugehörige
 | **Canberra2** | [CDC](https://cdcdatacentres.com.au/content/about-cdc) | 1 | Australien, Mitte 2| 10G, 100G | CDC |
 | **Kapstadt** | [Teraco CT1](https://www.teraco.co.za/data-centre-locations/cape-town/) | 3 | Südafrika, Westen | 10G | BCX, Internet Solutions – Cloud Connect, Liquid Telecom, Teraco |
 | **Chennai** | Tata Communications | 2 | Indien (Süden) | 10G | Global CloudXchange (GCX), SIFY, Tata Communications |
-| **Chennai2** | Airtel | 2 | Indien (Süden) | – | Airtel |
+| **Chennai2** | Airtel | 2 | Indien (Süden) | 10G | Airtel |
 | **Chicago** | [Equinix CH1](https://www.equinix.com/locations/americas-colocation/united-states-colocation/chicago-data-centers/ch1/) | 1 | USA Nord Mitte | 10G, 100G | Aryaka Networks, AT&T NetBond, CenturyLink Cloud Connect, Cologix, Colt, Comcast, Coresite, Equinix, InterCloud, Internet2, Level 3 Communications, Megaport, PacketFabric, PCCW Global Limited, Sprint, Telia Carrier, Verizon, Zayo |
 | **Kopenhagen** | [Interxion CPH1](https://www.interxion.com/Locations/copenhagen/) | 1 | – | 10G | Interxion |
 | **Dallas** | [Equinix DA3](https://www.equinix.com/locations/americas-colocation/united-states-colocation/dallas-data-centers/da3/) | 1 | – | 10G, 100G | Aryaka Networks, AT&T NetBond, Cologix, Equinix, Internet2, Level 3 Communications, Megaport, Neutrona Networks, Telmex Uninet, Telia Carrier, Transtelco, Verizon, Zayo|
@@ -98,8 +98,8 @@ Die folgende Tabelle enthält die Konnektivitätsstandorte und die dazugehörige
 | **Dublin** | [Equinix DB3](https://www.equinix.com/locations/europe-colocation/ireland-colocation/dublin-data-centers/db3/) | 1 | Nordeuropa | 10G, 100G | Colt, eir, Equinix, GEANT, euNetworks, Interxion, Megaport |
 | **Frankfurt** | [Interxion FRA11](https://www.interxion.com/Locations/frankfurt/) | 1 | Deutschland, Westen-Mitte | 10G, 100G | AT&T NetBond, CenturyLink Cloud Connect, Colt, DE-CIX, Equinix, euNetworks, GEANT, Interxion, Megaport, Orange, Telia Carrier |
 | **Genf** | [Equinix GV2](https://www.equinix.com/locations/europe-colocation/switzerland-colocation/geneva-data-centers/gv2/) | 1 | Schweiz, Westen | 10G, 100G | Equinix, Megaport |
-| **Hongkong** | [Equinix HK1](https://www.equinix.com/locations/asia-colocation/hong-kong-colocation/hong-kong-data-center/hk1/) | 2 | Asien, Osten | – | Aryaka Networks, British Telecom, CenturyLink Cloud Connect, Chief Telecom, China Telecom Global, Equinix, InterCloud, Megaport, NTT Communications, Orange, PCCW Global Limited, Tata Communications, Telia Carrier, Verizon |
-| **Hongkong2** | [MEGA-i](https://www.iadvantage.net/index.php/locations/mega-i) | 2 | – | 10G | China Mobile International, China Telecom Global, PCCW Global Limited |
+| **Hongkong** | [Equinix HK1](https://www.equinix.com/locations/asia-colocation/hong-kong-colocation/hong-kong-data-center/hk1/) | 2 | Asien, Osten | 10G | Aryaka Networks, British Telecom, CenturyLink Cloud Connect, Chief Telecom, China Telecom Global, Equinix, InterCloud, Megaport, NTT Communications, Orange, PCCW Global Limited, Tata Communications, Telia Carrier, Verizon |
+| **Hongkong2** | [MEGA-i](https://www.iadvantage.net/index.php/locations/mega-i) | 2 | Asien, Osten | 10G | China Mobile International, China Telecom Global, PCCW Global Limited |
 | **Jakarta** | Telkom Indonesia | 4 | – | 10G | |
 | **Johannesburg** | [Teraco JB1](https://www.teraco.co.za/data-centre-locations/johannesburg/#jb1) | 3 | Südafrika, Norden | 10G | BCX, British Telecom, Internet Solutions – Cloud Connect, Liquid Telecom, Orange, Teraco |
 | **Kuala Lumpur** | [TIME dotCom Menara AIMS](https://www.time.com.my/enterprise/connectivity/direct-cloud) | 2 | – | – | TIME dotCom |
@@ -107,6 +107,7 @@ Die folgende Tabelle enthält die Konnektivitätsstandorte und die dazugehörige
 | **London** | [Equinix LD5](https://www.equinix.com/locations/europe-colocation/united-kingdom-colocation/london-data-centers/ld5/) | 1 | UK, Süden | 10G, 100G | AT&T NetBond, British Telecom, Colt, Equinix, euNetworks, InterCloud, Internet Solutions – Cloud Connect, Interxion, Jisc, Level 3 Communications, Megaport, MTN, NTT Communications, Orange, PCCW Global Limited, Tata Communications, Telehouse – KDDI, Telenor, Telia Carrier, Verizon, Vodafone, Zayo |
 | **London2** | [Telehouse North Two](https://www.telehouse.net/data-centres/emea/uk-data-centres/london-data-centres/north-two) | 1 | UK, Süden | 10G, 100G | CenturyLink Cloud Connect, Colt, GTT, IX Reach, Equinix, Megaport, Telehouse – KDDI |
 | **Los Angeles** | [CoreSite LA1](https://www.coresite.com/data-centers/locations/los-angeles/one-wilshire) | 1 | – | 10G, 100G | CoreSite, Equinix, Megaport, Neutrona Networks, NTT, Zayo |
+| **Los Angeles2** | [Equinix LA1](https://www.equinix.com/locations/americas-colocation/united-states-colocation/los-angeles-data-centers/la1/) | 1 | – | 10G, 100G | Equinix |
 | **Marseille** |[Interxion MRS1](https://www.interxion.com/Locations/marseille/) | 1 | Frankreich, Süden | – | DE-CIX, GEANT, Interxion, Jaguar Network, Ooredoo Cloud Connect |
 | **Melbourne** | [NextDC M1](https://www.nextdc.com/data-centres/m1-melbourne-data-centre) | 2 | Australien, Südosten | 10G, 100G | AARNet, Devoli, Equinix, Megaport, NEXTDC, Optus, Telstra Corporation, TPG Telecom |
 | **Miami** | [Equinix MI1](https://www.equinix.com/locations/americas-colocation/united-states-colocation/miami-data-centers/mi1/) | 1 | – | 10G, 100G | Claro, C3ntro, Equinix, Megaport, Neutrona Networks |
@@ -114,15 +115,15 @@ Die folgende Tabelle enthält die Konnektivitätsstandorte und die dazugehörige
 | **Minneapolis** | [Cologix MIN1](https://www.cologix.com/data-centers/minneapolis/min1/) | 1 | – | 10G, 100G | Cologix |
 | **Montreal** | [Cologix MTL3](https://www.cologix.com/data-centers/montreal/mtl3/) | 1 | – | 10G, 100G | Bell Canada, Cologix, Megaport, Telus, Zayo |
 | **Mumbai** | Tata Communications | 2 | Indien, Westen | 10G | DE-CIX, Global CloudXchange (GCX), Reliance Jio, Sify, Tata Communications, Verizon |
-| **Mumbai2** | Airtel | 2 | Indien, Westen | – | Airtel, Sify, Vodafone Idea |
-| **München** | [EdgeConneX](https://www.edgeconnex.com/locations/europe/) | 1 | – | 10G | DE-CIX |
+| **Mumbai2** | Airtel | 2 | Indien, Westen | 10G | Airtel, Sify, Vodafone Idea |
+| **München** | [EdgeConneX](https://www.edgeconnex.com/locations/europe/munich/) | 1 | – | 10G | DE-CIX |
 | **New York** | [Equinix NY9](https://www.equinix.com/locations/americas-colocation/united-states-colocation/new-york-data-centers/ny9/) | 1 | – | 10G, 100G | CenturyLink Cloud Connect, Colt, Coresite, DE-CIX, Equinix, InterCloud, Megaport, Packet, Zayo |
 | **Newport(Wales)** | [Daten der nächsten Generation](https://www.nextgenerationdata.co.uk) | 1 | UK, Westen | – | British Telecom, Colt, Level 3 Communications, Next Generation Data |
 | **Osaka** | [Equinix OS1](https://www.equinix.com/locations/asia-colocation/japan-colocation/osaka-data-centers/os1/) | 2 | Japan, Westen | 10G, 100G | AT TOKYO, Colt, Equinix, Internet Initiative Japan Inc. – IIJ, Megaport, NTT Communications, NTT SmartConnect, Softbank |
 | **Oslo** | [DigiPlex Ulven](https://www.digiplex.com/locations/oslo-datacentre) | 1 | Norwegen, Osten | 10G, 100G | Global Connect, Megaport, Telenor, Telia Carrier |
 | **Paris** | [Interxion PAR5](https://www.interxion.com/Locations/paris/) | 1 | Frankreich, Mitte | 10G, 100G | CenturyLink Cloud Connect, Colt, Equinix, Intercloud, Interxion, Orange, Telia Carrier, Zayo |
 | **Perth** | [NextDC P1](https://www.nextdc.com/data-centres/p1-perth-data-centre) | 2 | – | 10G | Megaport, NextDC |
-| **Phoenix** | [EdgeConnext PHX01](https://www.edgeconnex.com/locations/north-america/phoenix-az/) | 1 | – | 10G | |
+| **Phoenix** | [EdgeConneX PHX01](https://www.edgeconnex.com/locations/north-america/phoenix-az/) | 1 | – | 10G | |
 | **Quebec City** | [Vantage](https://vantage-dc.com/data_centers/quebec-city-data-center-campus/) | 1 | Kanada, Osten | – | Bell Canada, Megaport |
 | **Queretaro (Mexiko)** | [KIO Networks QR01](https://www.kionetworks.com/es-mx/) | 4 | – | 10G | Transtelco|
 | **Quincy** | [Sabey Datacenter – Building A](https://sabeydatacenters.com/data-center-locations/central-washington-data-centers/quincy-data-center) | 1 | USA, Westen 2 | 10G, 100G | | 

@@ -1,6 +1,6 @@
 ---
 title: Löschen einer privaten Cloud in Azure VMware Solution by CloudSimple
-description: Beschreibt, wie Sie eine private CloudSimple-Cloud löschen.
+description: Hier erfahren Sie, wie Sie eine private CloudSimple-Cloud löschen. Wenn Sie eine private Cloud löschen, werden alle Cluster gelöscht.
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/06/2019
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 6bc3e7030c500ea2d6072a1cce0f0b3d9fc62801
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 11fda35f5b236a4930b3d90eb7e3a62ea60207cf
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77024754"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88142229"
 ---
 # <a name="delete-a-cloudsimple-private-cloud"></a>Löschen einer privaten CloudSimple-Cloud
 

@@ -1,16 +1,16 @@
 ---
 author: cynthn
 ms.author: cynthn
-ms.date: 05/15/2020
+ms.date: 08/03/2020
 ms.topic: include
 ms.service: virtual-machines-linux
-manager: gwallace
-ms.openlocfilehash: 0a4dcf749a76623df7f46d77bf3e4877f2c41900
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+manager: daberry
+ms.openlocfilehash: 6024dd595166afe24a75720d8c7593afd451b610
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83821519"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87554899"
 ---
 Standardisierte VM-Images ermöglichen es Organisationen, in die Cloud zu migrieren und die Konsistenz der Bereitstellung sicherzustellen. Die Images beinhalten üblicherweise vordefinierte Sicherheits- und Konfigurationseinstellungen und die notwendige Software. Das Einrichten Ihrer eigenen Imaging-Pipeline erfordert Zeit, Infrastruktur und Setup, aber mit dem Azure VM Image Builder stellen Sie eine einfache Konfiguration zur Verfügung, die Ihr Image beschreibt, senden es an den Dienst, und das Image wird erstellt und verteilt.
  
@@ -56,6 +56,7 @@ AIB unterstützt Basisbetriebssystem-Images aus dem Azure Marketplace:
 - Windows 2019
 
 Unterstützung für RHEL ISOs wird nicht mehr geboten.
+
 ## <a name="how-it-works"></a>Funktionsweise
 
 
@@ -97,6 +98,9 @@ Während der Imagestellung werden Dateien heruntergeladen und in der `IT_<Destin
 Image Builder erstellt eine VM mit einer D1v2 VM-Größe und dem für die VM erforderlichen Speicher und Netzwerk. Diese Ressourcen werden für die Dauer des Erstellungsprozesses benötigt und werden gelöscht, sobald der Image Builder die Erstellung des Images abgeschlossen hat. 
  
 Azure Image Builder verteilt das Image an die von Ihnen ausgewählten Regionen. Das könnte zu Kosten für ausgehenden Datenverkehr führen.
+
+## <a name="hyper-v-generation"></a>Hyper-V Generation
+Image Builder unterstützt derzeit Images und VMs der Hyper-V Generation 1.
  
 ## <a name="next-steps"></a>Nächste Schritte 
  

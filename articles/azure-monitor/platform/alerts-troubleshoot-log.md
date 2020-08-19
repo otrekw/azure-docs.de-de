@@ -6,12 +6,12 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 10/29/2018
-ms.openlocfilehash: a66cb190309fb9e966392f57a251eff746bfa315
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: d61e052b10b7255cac37531f889324075d596f3c
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321104"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87828454"
 ---
 # <a name="troubleshoot-log-alerts-in-azure-monitor"></a>Behandeln von Protokollwarnungen in Azure Monitor  
 
@@ -190,7 +190,7 @@ In jeder Protokollwarnungsregel, die in Azure Monitor bei dessen Konfiguration e
 
 ## <a name="alert-rule-quota-was-reached"></a>Das Warnungsregelkontingent wurde erreicht
 
-Die Anzahl von Warnungsregeln für die Protokollsuche pro Abonnement und Ressource unterliegt den [hier](https://docs.microsoft.com/azure/azure-monitor/service-limits) angegebenen Obergrenzen.
+Die Anzahl von Warnungsregeln für die Protokollsuche pro Abonnement und Ressource unterliegt den [hier](../service-limits.md) angegebenen Obergrenzen.
 
 ### <a name="recommended-steps"></a>Empfohlene Schritte
     
@@ -226,4 +226,3 @@ Wenn Sie die Kontingentgrenze erreicht haben, helfen möglicherweise die folgend
 - Erfahren Sie mehr über [Protokollwarnungen in Azure](./alerts-unified-log.md).
 - Erfahren Sie mehr über [Application Insights](../log-query/log-query-overview.md).
 - Weitere Informationen zum [Analysieren von Protokolldaten in Azure Monitor](../log-query/log-query-overview.md).
-

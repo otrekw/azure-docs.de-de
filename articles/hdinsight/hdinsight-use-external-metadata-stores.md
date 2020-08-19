@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
-ms.date: 04/30/2020
-ms.openlocfilehash: 2d6ebcd720a5cea8d41bf3c05f753f2e9d4775d1
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.date: 08/06/2020
+ms.openlocfilehash: 78c0526ac750977115a88e96bb5f7d5cb4e9803f
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86085904"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87873091"
 ---
 # <a name="use-external-metadata-stores-in-azure-hdinsight"></a>Verwenden von externen Metadatenspeichern in Azure HDInsight
 
@@ -38,10 +38,10 @@ HDInsight erstellt standardmäßig einen Metastore für jeden Clustertyp. Sie k�
 
 * Der Standardmetastore kann nicht für andere Cluster freigegeben werden.
 
-* Der Standardmetastore verwendet die Azure SQL-Datenbank, die auf fünf DTUs (Datenbankübertragungseinheiten) begrenzt ist.
-Dieser Standardmetastore wird in der Regel für relativ einfache Workloads verwendet. Workloads, für die weder mehrere Cluster noch eine Beibehaltung von Metadaten über den Lebenszyklus des Clusters hinaus erforderlich sind.
+* Der Standardmetastore wird nur für einfache Workloads empfohlen. Workloads, für die weder mehrere Cluster noch eine Beibehaltung von Metadaten über den Lebenszyklus des Clusters hinaus erforderlich sind.
 
-* Bei Produktionsworkloads empfiehlt sich die Migration zu einem externen Metastore. Im folgenden Abschnitt finden Sie weitere Details.
+> [!IMPORTANT]
+> Der Standardmetastore stellt eine Azure SQL-Datenbank mit einem **Basic-Tarif mit einer Begrenzung auf fünf DTUs (nicht aktualisierbar!)** bereit. Er eignet sich für grundlegende Testzwecke. Bei großen bzw. Produktionsworkloads empfiehlt sich die Migration zu einem externen Metastore.
 
 ## <a name="custom-metastore"></a>Benutzerdefinierter Metastore
 
@@ -81,9 +81,8 @@ Sie können jederzeit einen Verweis des Clusters auf eine zuvor erstellte Azure 
 
 ## <a name="hive-metastore-guidelines"></a>Richtlinien für Hive-Metastore
 
-* Verwenden Sie wann immer möglich einen benutzerdefinierten Metastore, um das Trennen von Computeressourcen (Ihre ausgeführten Cluster) und Metadaten (im Metastore gespeichert) zu erleichtern.
-
-* Beginnen Sie mit einem S2-Tarif, der 50 DTUs und 250 GB Speicher bietet. Wenn Sie einen Engpass feststellen, können Sie die Datenbank zentral hochskalieren.
+> [!NOTE]
+> Verwenden Sie wann immer möglich einen benutzerdefinierten Metastore, um das Trennen von Computeressourcen (Ihre ausgeführten Cluster) und Metadaten (im Metastore gespeichert) zu erleichtern. Beginnen Sie mit dem S2-Tarif, der 50 DTUs und 250 GB Speicher bietet. Wenn Sie einen Engpass feststellen, können Sie die Datenbank zentral hochskalieren.
 
 * Wenn Sie mehreren HDInsight-Clustern Zugriff auf separate Daten gewähren möchten, verwenden Sie für den Metastore auf jedem Cluster eine eigene Datenbank. Wenn Sie einen Metastore für mehrere HDInsight-Cluster freigeben, bedeutet dies, dass die Cluster dieselben Metadaten und zugrunde liegenden Benutzerdatendateien verwenden.
 

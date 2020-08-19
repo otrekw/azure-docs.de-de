@@ -6,19 +6,16 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 03/19/2018
 ms.subservice: alerts
-ms.openlocfilehash: ab5c16995a2d2bad6e44f0f9d1187ca3d66be1b6
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.openlocfilehash: 5e811e487856ea38f96b669ccb12cabda655a8cd
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81114264"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87852122"
 ---
 # <a name="use-the-voluntary-migration-tool-to-migrate-your-classic-alert-rules"></a>Verwenden des freiwilligen Migrationstools zum Migrieren Ihrer klassischen Warnungsregeln
 
-Wie [bereits angekündigt](monitoring-classic-retirement.md) werden klassische Warnungen in Azure Monitor im September 2019 (ursprünglich Juli 2019) eingestellt. Im Azure-Portal steht ein Migrationstool für Kunden bereit, die klassische Warnungsregeln verwenden und die Migration selbst auslösen möchten. In diesem Artikel wird erläutert, wie Sie mithilfe des Migrationstools Ihre klassischen Warnungsregeln vor Beginn der automatischen Migration im September 2019 freiwillig migrieren.
-
-> [!NOTE]
-> Aufgrund einer Verzögerung beim Rollout des Migrationstools wurde der Deaktivierungstermin vom ursprünglich angekündigten Datum, dem 30. Juni 2019, auf den [31. August 2019 verschoben](https://azure.microsoft.com/updates/azure-monitor-classic-alerts-retirement-date-extended-to-august-31st-2019/).
+Wie [bereits angekündigt](monitoring-classic-retirement.md), werden klassische Warnungen in Azure Monitor eingestellt, sind jedoch weiterhin für Ressourcen, die die neuen Warnungen noch nicht unterstützen, beschränkt im Einsatz. Im Azure-Portal stand ein Migrationstool für Kunden bereit, die klassische Warnungsregeln verwendeten und die Migration selbst auslösen wollten. In diesem Artikel wird erläutert, wie Sie dieses Migrationstool verwenden, das bis zur weiteren Ankündigung auch für die verbleibenden Warnungen genutzt wird.
 
 ## <a name="benefits-of-new-alerts"></a>Vorteile der neuen Warnungen
 
@@ -37,7 +34,7 @@ Im Migrationsprozess werden klassische Warnungsregeln in neue entsprechende Warn
 
 - Das Format der Benachrichtigungsnutzlast sowie die APIs zum Erstellen und Verwalten neuer Warnungsregeln unterscheiden sich von denen der klassischen Warnungsregeln, da mehr Funktionen unterstützt werden. [Erfahren Sie, wie Sie die Migration vorbereiten](alerts-prepare-migration.md).
 
-- Einige klassische Warnungsregeln können mit dem Tool nicht migriert werden. [Erfahren Sie, welche Regeln nicht migriert werden können und wie Sie mit diesen Regeln verfahren](alerts-understand-migration.md#classic-alert-rules-that-will-not-be-migrated).
+- Einige klassische Warnungsregeln können mit dem Tool nicht migriert werden. [Erfahren Sie, welche Regeln nicht migriert werden können und wie Sie mit diesen Regeln verfahren](alerts-understand-migration.md#manually-migrating-classic-alerts-to-newer-alerts).
 
     > [!NOTE]
     > Der Migrationsprozess hat keine Auswirkung auf die Auswertung Ihrer klassischen Warnungsregeln. Diese werden weiterhin ausgeführt und senden Warnungen, bis sie migriert werden und die neuen Warnungsregeln wirksam werden.

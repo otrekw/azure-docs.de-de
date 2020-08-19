@@ -1,14 +1,14 @@
 ---
 title: Abrufen von Daten zur Richtlinienkonformität
 description: Azure Policy-Auswertungen und -Effekte bestimmen die Konformität. Erfahren Sie, wie Sie Konformitätsinformationen Ihrer Azure-Ressourcen abrufen.
-ms.date: 07/15/2020
+ms.date: 08/10/2020
 ms.topic: how-to
-ms.openlocfilehash: 8da1876842e89e806b61bba611db74795a6710d1
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 7795bba9fec79ee13600d9c72f68e9c763b169e4
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86521533"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88054651"
 ---
 # <a name="get-compliance-data-of-azure-resources"></a>Abrufen von Compliancedaten von Azure-Ressourcen
 
@@ -34,7 +34,7 @@ Auswertungen zugewiesener Richtlinien und Initiativen geschehen im Zuge untersch
 
 - Eine Richtlinie oder Initiative, die bereits einem Bereich zugewiesen ist, wird aktualisiert. Der Auswertungszyklus und die zeitliche Steuerung für dieses Szenario entspricht denjenigen von Neuzuweisungen zu einem Bereich.
 
-- Eine Ressource wird in einem Bereich mit einer Zuweisung über Azure Resource Manager, REST, Azure CLI oder Azure PowerShell bereitgestellt. In diesem Szenario werden nach etwa 15 Minuten die Informationen über das betroffene Ereignis (Anfügen, Überwachen, Verweigern, Bereitstellen) und den Konformitätsstatus für die jeweilige Ressource im Portal und den SDKs verfügbar. Dieses Ereignis löst keine Auswertung anderer Ressourcen aus.
+- Eine Ressource wird in einem Bereich mit einer Zuweisung über Azure Resource Manager, die REST-API oder ein unterstütztes SDK bereitgestellt oder aktualisiert. In diesem Szenario werden nach etwa 15 Minuten die Informationen über das betroffene Ereignis (Anfügen, Überwachen, Verweigern, Bereitstellen) und den Konformitätsstatus für die jeweilige Ressource im Portal und den SDKs verfügbar. Dieses Ereignis löst keine Auswertung anderer Ressourcen aus.
 
 - Standard-Konformitätsauswertungszyklus. Zuweisungen werden alle 24 Stunden automatisch neu ausgewertet. Eine große Richtlinie oder Initiative mit vielen Ressourcen kann einige Zeit in Anspruch nehmen. Es kann leider keine exakte Dauer des Auswertungszyklus angegeben werden. Sobald er abgeschlossen ist, sind aktualisierte Konformitätsergebnisse im Portal und den SDKs verfügbar.
 

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/22/2020
 ms.author: kumud
-ms.openlocfilehash: e92f3b5d8c48c783648285c9a03d8cb8d391a5ac
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: af10ec10a1622f32dbc34a607b1200cb4cff8b59
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289610"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88168047"
 ---
 # <a name="azure-ddos-protection-standard-overview"></a>Übersicht über Azure DDoS Protection Standard
 
@@ -45,9 +45,9 @@ Azure DDoS Protection in Kombination mit bewährten Anwendungsentwurfsmethoden s
 
 Die folgenden Arten von Angriffen können mit DDoS Protection Standard abgewehrt werden:
 
-- **Volumetrische Angriffe**: Ziel des Angriffs ist die Überflutung der Netzwerkebene mit einer beträchtlichen Menge scheinbar berechtigten Datenverkehrs. Dazu zählen UDP-Überflutungen, Verstärkungsüberflutungen und andere Überflutungen mit gefälschten Paketen. DDoS Protection Standard wehrt diese bis zu mehreren Gigabytes großen Angriffe ab, indem sie mithilfe des weltweiten Netzwerks von Azure automatisch absorbiert und bereinigt werden.
+- **Volumetrische Angriffe**: Diese Angriffe überfluten die Netzwerkebene mit einer beträchtlichen Menge scheinbar berechtigten Datenverkehrs. Dazu zählen UDP-Überflutungen, Verstärkungsüberflutungen und andere Überflutungen mit gefälschten Paketen. DDoS Protection Standard wehrt diese bis zu mehreren Gigabytes großen Angriffe ab, indem sie mithilfe des weltweiten Netzwerks von Azure automatisch absorbiert und bereinigt werden.
 - **Protokollangriffe**: Diese Angriffe machen den Zugriff auf ein Ziel unmöglich, indem sie eine Schwachstelle in den Schichten 3 und 4 des Protokollstapels ausnutzen. Dazu gehören SYN-Flutangriffe, Reflexionsangriffe und andere Protokollangriffe. DDoS Protection Standard wehrt diese Angriffe ab und unterscheidet dabei zwischen schädlichem und berechtigtem Datenverkehr. Nach Interaktion mit dem Client wird der schädliche Datenverkehr gesperrt. 
-- **Angriffe in der Ressourcenschicht (Anwendungsschicht)** : Das Ziel dieser Art von Angriffen sind Webanwendungspakete, um die Datenübertragung zwischen Hosts zu unterbrechen. Zu diesen Angriffen zählen Verletzungen des HTTP-Protokolls, die Einschleusung von SQL-Befehlen, XSS-Angriffe (Cross-Site Scripting) und andere Angriffe auf Schicht 7. Verwenden Sie eine Web Application Firewall wie die [Web Application Firewall von Azure Application Gateway](../application-gateway/application-gateway-web-application-firewall-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) in Kombination mit DDoS Protection Standard zum Schutz vor diesen Angriffen. Im [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps?page=1&search=web%20application%20firewall) finden Sie auch Webanwendungsfirewall-Angebote von Drittanbietern.
+- **Angriffe in der Ressourcenschicht (Anwendungsschicht)** : Das Ziel dieser Art von Angriffen sind Webanwendungspakete, um die Datenübertragung zwischen Hosts zu unterbrechen. Dazu zählen Verletzungen des HTTP-Protokolls, die Einschleusung von SQL-Befehlen, XSS-Angriffe (Cross-Site Scripting) und andere Angriffe auf Ebene 7. Verwenden Sie eine Web Application Firewall wie die [Web Application Firewall von Azure Application Gateway](../application-gateway/application-gateway-web-application-firewall-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) in Kombination mit DDoS Protection Standard zum Schutz vor diesen Angriffen. Im [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps?page=1&search=web%20application%20firewall) finden Sie auch Webanwendungsfirewall-Angebote von Drittanbietern.
 
 Mit DDoS Protection Standard werden Ressourcen in einem virtuellen Netzwerk geschützt, einschließlich öffentlicher IP-Adressen, die virtuellen Computern zugeordnet sind, interner Lastenausgleichsmodule und Anwendungsgateways. In Kombination mit der Web Application Firewall von Application Gateway oder einer Web Application Firewall eines Drittanbieters, die mit einer öffentlichen IP-Adresse in einem virtuellen Netzwerk bereitgestellt wird, stellt DDoS Protection Standard eine vollständige Abwehrfunktion für Ebene 3 bis Ebene 7 bereit.
 
@@ -58,8 +58,8 @@ Mit DDoS Protection Standard werden Ressourcen in einem virtuellen Netzwerk gesc
 Die Funktionen von DDoS Protection Standard umfassen:
 
 - **Native Plattformintegration:** Nativ in Azure integriert. Umfasst die Konfiguration über das Azure-Portal. DDoS Protection Standard erkennt Ihre Ressourcen und die Ressourcenkonfiguration.
-- **Sofort einsetzbarer Schutz:** Dank vereinfachter Konfiguration sind alle Ressourcen in einem virtuellen Netzwerk sofort geschützt, sobald DDoS Protection Standard aktiviert wird. Es sind weder Benutzereingriffe noch Benutzerdefinitionen erforderlich. DDoS Protection Standard wehrt einen Angriff sofort automatisch ab, sobald er entdeckt wurde.
-- **Stets verfügbare Überwachung des Datenverkehrs:** Die Datenverkehrsmuster Ihrer Anwendungen werden 24 Stunden am Tag und 7 Tage die Woche nach Anzeichen für DDoS-Angriffe überwacht. Abwehrmaßnahmen werden bei Überschreitung der Schutzrichtlinien ausgeführt.
+- **Sofort einsatzbereiter Schutz:** Dank vereinfachter Konfiguration sind alle Ressourcen in einem virtuellen Netzwerk sofort geschützt, sobald DDoS Protection Standard aktiviert wird. Es sind weder Benutzereingriffe noch Benutzerdefinitionen erforderlich. DDoS Protection Standard wehrt einen Angriff sofort automatisch ab, sobald er entdeckt wurde.
+- **Stets verfügbare Überwachung des Datenverkehrs:** Die Datenverkehrsmuster Ihrer Anwendungen werden 24 Stunden am Tag und 7 Tage die Woche auf Anzeichen für DDoS-Angriffe überwacht. Abwehrmaßnahmen werden bei Überschreitung der Schutzrichtlinien ausgeführt.
 - **Adaptive Optimierung:** Dank einer intelligenten Profilerstellung lernt die Funktion den Datenverkehr Ihrer Anwendung kontinuierlich besser kennen. Auf dieser Basis wird das Profil ausgewählt und aktualisiert, das am besten zu Ihrem Dienst passt. Das Profil passt sich den Veränderungen des Datenverkehrs mit der Zeit an.
 - **Mehrschichtiger Schutz**: Bietet vollständigen DDoS-Stapelschutz bei Verwendung mit einer Web Application Firewall.
 - **Umfangreiche Angriffsabwehr:** Über 60 verschiedene Angriffstypen können mit einer weltweiten Kapazität zum Schutz vor den größten bekannten DDoS-Angriffen abgewehrt werden.

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: how-to
-ms.date: 05/13/2020
+ms.date: 08/07/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bd66bc742d0832cba5d6f302bfe30c85e2d82716
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f72e477d332b33b7434663fb13cb3ca4f4c2069d
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85253340"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88032184"
 ---
 # <a name="how-to-block-legacy-authentication-to-azure-ad-with-conditional-access"></a>Gewusst wie: Blockieren der Legacyauthentifizierung bei Azure AD mit bedingtem Zugriff   
 
@@ -49,7 +49,7 @@ Azure AD unterstützt mehrere der am häufigsten verwendeten Protokolle zur Auth
 - Ältere Microsoft Office-Apps
 - Apps, die E-Mail-Protokolle wie POP, IMAP und SMTP verwenden
 
-Eine einstufige Authentifizierung (z. B. mit Benutzername und Kennwort) reicht heutzutage nicht mehr aus. Kennwörter sind unzulänglich, weil sie leicht zu erraten sind, und wir (Menschen) sind schlecht darin, gute Kennwörter auszuwählen. Kennwörter sind auch für eine Vielzahl von Angriffen wie Phishing und Kennwort-Spray anfällig. Eine der einfachsten Maßnahmen, die Sie ergreifen können, um sich vor Kennwortsicherheitsverletzungen zu schützen, ist das Implementieren von MFA. Denn selbst wenn ein Angreifer in den Besitz des Kennworts eines Benutzers gelangt, reicht bei Verwendung von MFA das Kennwort allein nicht aus, um sich erfolgreich authentifizieren und auf die Daten zugreifen zu können.
+Eine einstufige Authentifizierung (z. B. mit Benutzername und Kennwort) reicht heutzutage nicht mehr aus. Kennwörter sind unzulänglich, weil sie leicht zu erraten sind, und wir (Menschen) sind schlecht darin, gute Kennwörter auszuwählen. Kennwörter sind auch für eine Vielzahl von Angriffen wie Phishing und Kennwort-Spray anfällig. Eine der einfachsten Maßnahmen, die Sie ergreifen können, um sich vor Kennwortsicherheitsverletzungen zu schützen, ist das Implementieren der mehrstufigen Authentifizierung (MFA). Denn selbst wenn ein Angreifer in den Besitz des Kennworts eines Benutzers gelangt, reicht bei Verwendung von MFA das Kennwort allein nicht aus, um sich erfolgreich authentifizieren und auf die Daten zugreifen zu können.
 
 Wie können Sie verhindern, dass Apps mit Legacyauthentifizierung auf Ressourcen Ihres Mandanten zugreifen? Es wird empfohlen, diese Apps einfach mit einer Richtlinie für bedingten Zugriff zu blockieren. Gegebenenfalls können Sie nur bestimmten Benutzern und bestimmten Netzwerkadressen die Verwendung von Apps erlauben, die auf der Legacyauthentifizierung basieren.
 
@@ -85,52 +85,30 @@ Bevor Sie die Legacyauthentifizierung in Ihrem Verzeichnis blockieren können, m
 
 1. Navigieren Sie zu **Azure-Portal** > **Azure Active Directory** > **Anmeldungen**.
 1. Falls die Spalte „Client-App“ nicht angezeigt wird, fügen Sie sie durch Klicken auf **Spalten** > **Client-App** hinzu.
-1. **Filter hinzufügen** > **Client-App** > wählen Sie alle älteren Authentifizierungsprotokolle aus, und klicken Sie auf **Anwenden**.
+1. Klicken Sie auf **Filter hinzufügen** > **Client-App**, und wählen Sie alle älteren Authentifizierungsprotokolle aus. Klicken Sie auf eine Stelle außerhalb des Filterdialogfelds, um die Auswahl anzuwenden und das Dialogfeld zu schließen.
 
 Durch das Filtern werden Ihnen nur Anmeldeversuche von Legacyauthentifizierungsprotokollen angezeigt. Bei Klicken auf jeden einzelnen Anmeldeversuch werden Ihnen weitere Details angezeigt. Das **Client-App**-Feld auf der Registerkarte **Grundlegende Informationen** gibt an, welche Legacyauthentifizierungsprotokolle verwendet wurden.
 
 Diese Protokolle geben an, welche Benutzer weiterhin von der Legacyauthentifizierung abhängig sind, und welche Anwendungen ältere Protokolle für Authentifizierungsanforderungen verwenden. Implementieren Sie für Benutzer, die in diesen Protokollen nicht aufgeführt sind und nachweislich keine Legacyauthentifizierung verwenden, eine Richtlinie für bedingten Zugriff, die nur für diese Benutzer vorgesehen ist.
 
-### <a name="block-legacy-authentication"></a>Blockieren älterer Authentifizierungsmethoden 
+## <a name="block-legacy-authentication"></a>Blockieren älterer Authentifizierungsmethoden 
 
-In einer Richtlinie für bedingten Zugriff können Sie eine Bedingung festlegen, die an die Client-Apps gebunden ist, die für den Zugriff auf Ihre Ressourcen verwendet werden. Mit der Client-App-Bedingung können Sie den Bereich für Apps mit Legacyauthentifizierung eingrenzen, indem Sie für **Mobile Apps und Desktopclients** die Optionen **Exchange ActiveSync-Clients** und **Andere Clients** auswählen.
+Es gibt zwei Möglichkeiten, mit Richtlinien für den bedingten Zugriff ältere Authentifizierungsmethoden zu blockieren.
 
-![Andere Clients](./media/block-legacy-authentication/01.png)
-
-Um den Zugriff für diese Apps zu blockieren, müssen Sie **Zugriff blockieren** auswählen.
-
-![Zugriff blockieren](./media/block-legacy-authentication/02.png)
-
-### <a name="select-users-and-cloud-apps"></a>Auswählen von Benutzern und Cloud-Apps
-
-Wenn Sie die Legacyauthentifizierung für Ihre Organisation blockieren möchten, denken Sie wahrscheinlich, dass Sie dies durch Auswählen der folgenden Optionen erreichen können:
-
-- Alle Benutzer
-- Alle Cloud-Apps
-- Zugriff blockieren
-
-![Zuweisungen](./media/block-legacy-authentication/03.png)
-
-Azure verfügt über eine Sicherheitsfunktion, die Sie am Erstellen einer solchen Richtlinie hindert, weil diese Konfiguration gegen die [Best Practices](best-practices.md) für Richtlinien für bedingten Zugriff verstößt.
+- [Direktes Blockieren der Legacyauthentifizierung](#directly-blocking-legacy-authentication)
+- [Indirektes Blockieren der Legacyauthentifizierung](#indirectly-blocking-legacy-authentication)
  
-![Die Richtlinienkonfiguration wird nicht unterstützt.](./media/block-legacy-authentication/04.png)
+### <a name="directly-blocking-legacy-authentication"></a>Direktes Blockieren der Legacyauthentifizierung
 
-Diese Sicherheitsfunktion ist erforderlich, weil das *Blockieren aller Benutzer und aller Cloud-Apps* potenziell dazu führen kann, für Ihre gesamte Organisation die Anmeldung bei Ihrem Mandanten zu blockieren. Sie müssen mindestens einen Benutzer davon ausschließen, um die Mindestanforderung der Best Practices zu erfüllen. Sie können auch eine Verzeichnisrolle ausschließen.
+Die einfachste Möglichkeit, die Legacyauthentifizierung in ihrer gesamten Organisation zu blockieren, besteht darin, eine Richtlinie für bedingten Zugriff zu konfigurieren, die speziell für Legacyauthentifizierungs-Clients gilt und den Zugriff blockiert. Wenn Sie der Richtlinie Benutzer und Anwendungen zuweisen, müssen Sie sicherstellen, dass Benutzer und Dienstkonten ausgeschlossen werden, die sich weiterhin mit der Legacyauthentifizierung anmelden müssen. Konfigurieren Sie die Client-Apps-Bedingung, indem Sie **Exchange ActiveSync-Clients** und **Andere Clients** auswählen. Um den Zugriff für diese Client-Apps zu blockieren, konfigurieren Sie die Zugriffssteuerungen so, dass der Zugriff blockiert wird.
 
-![Die Richtlinienkonfiguration wird nicht unterstützt.](./media/block-legacy-authentication/05.png)
+![Konfigurierte Client-Apps-Bedingung zum Blockieren der Legacyauthentifizierung](./media/block-legacy-authentication/client-apps-condition-configured-yes.png)
 
-Sie können diese Sicherheitsfunktion erfüllen, indem Sie einen Benutzer aus der Richtlinie ausschließen. Im Idealfall sollten Sie einige [Administratorkonten für den Notfallzugriff in Azure AD](../users-groups-roles/directory-emergency-access.md) definieren und diese aus der Richtlinie ausschließen.
+### <a name="indirectly-blocking-legacy-authentication"></a>Indirektes Blockieren der Legacyauthentifizierung
 
-Wenn Sie beim Aktivieren der Richtlinie zum Blockieren der Legacyauthentifizierung den [Modus „Nur Bericht“](concept-conditional-access-report-only.md) verwenden, hat Ihre Organisation die Möglichkeit, die Auswirkungen der Richtlinie zu überwachen.
+Auch wenn Ihre Organisation nicht bereit ist, die Legacyauthentifizierung für das gesamte Unternehmen zu blockieren, sollten Sie sicherstellen, dass Anmeldungen mit Legacyauthentifizierung keine Richtlinien umgehen, die Gewährungssteuerelemente erfordern, z. B. eine mehrstufige Authentifizierung (Multi-Factor Authentication, MFA) oder kompatible/hybrid in Azure AD eingebundene Geräte. Legacyauthentifizierungs-Clients unterstützen bei der Authentifizierung das Senden von Informationen zur mehrstufigen Authentifizierung (MFA), zur Gerätekonformität oder zum Joinzustand an Azure AD nicht. Wenden Sie daher auf alle Clientanwendungen Richtlinien mit Gewährungssteuerelementen an. Dadurch werden Anmeldungen mit Legacyauthentifizierung blockiert, da sie die Gewährungssteuerelemente nicht bedienen können. Mit der allgemeinen Verfügbarkeit der Client-Apps-Bedingung im August 2020 gelten neu erstellte Richtlinien für bedingten Zugriff standardmäßig für alle Client-Apps.
 
-## <a name="policy-deployment"></a>Richtlinienbereitstellung
-
-Kümmern Sie sich vor dem Einsatz der Richtlinie in der Produktionsumgebung um Folgendes:
- 
-- **Dienstkonten**: Identifizieren Sie Benutzerkonten, die als Dienstkonten verwendet werden oder nach Geräten, wie Telefone im Konferenzraum. Stellen Sie sicher, dass diese Konten über sichere Kennwörter verfügen, und fügen Sie sie einer ausgeschlossenen Gruppe hinzu.
-- **Anmeldeberichte**: Überprüfen Sie den Anmeldebericht, und suchen Sie nach dem Datenverkehr **anderer Clients**. Identifizieren Sie die höchste Nutzung, und untersuchen Sie den Grund für die Verwendung. In der Regel wird der Datenverkehr von älteren Office-Clients generiert, die keine moderne Authentifizierung oder einige E-Mail-Apps von Drittanbietern verwenden. Erarbeiten Sie einen Plan, um die Nutzung dieser Apps zu reduzieren, oder wenn die Auswirkungen gering sind, teilen Sie Ihren Benutzern mit, dass sie diese Apps nicht mehr verwenden können.
- 
-Weitere Informationen finden Sie unter [Wie stellen Sie eine neue Richtlinie bereit?](best-practices.md#how-should-you-deploy-a-new-policy)
+![Standardkonfiguration der Client-Apps-Bedingung](./media/block-legacy-authentication/client-apps-condition-configured-no.png)
 
 ## <a name="what-you-should-know"></a>Wichtige Informationen
 
@@ -141,14 +119,6 @@ Durch das Konfigurieren einer Richtlinie für **Andere Clients** wird die gesamt
 Es kann bis zu 24 Stunden dauern, bis die Richtlinie wirksam wird.
 
 Sie können alle verfügbaren Gewährungssteuerelemente für die Bedingung **Andere Clients** auswählen. Die Endbenutzererfahrung ist jedoch immer die gleiche: Der Zugriff ist blockiert.
-
-Wenn Sie die Legacyauthentifizierung mit der Bedingung **Andere Clients** blockieren, können Sie auch die Geräteplattform und den Speicherort als Bedingung festlegen. Wenn Sie nur ältere Authentifizierungen für mobile Geräte blockieren möchten, legen Sie z.B. die Bedingung **Geräteplattformen** fest, indem Sie Folgendes auswählen:
-
-- Android
-- iOS
-- Windows Phone
-
-![Die Richtlinienkonfiguration wird nicht unterstützt.](./media/block-legacy-authentication/06.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

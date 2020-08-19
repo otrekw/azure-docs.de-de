@@ -1,14 +1,14 @@
 ---
 title: 'Verwenden von Verwaltungsgruppen: Azure Governance'
 description: Hier erfahren Sie, wie Sie die Verwaltungsgruppenhierarchie anzeigen, verwalten, aktualisieren und löschen.
-ms.date: 04/15/2020
+ms.date: 08/10/2020
 ms.topic: conceptual
-ms.openlocfilehash: b60adbdf404f40739d6bcab7a0a3ceaf24c0b59f
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.openlocfilehash: 43837dcaed9b9628573ee92244ede542107155f9
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84259404"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88055138"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>Verwalten von Ressourcen mit Verwaltungsgruppen
 
@@ -65,11 +65,9 @@ az account management-group update --name 'Contoso' --display-name 'Contoso Grou
 
 Um eine Verwaltungsgruppe zu löschen, müssen die folgenden Anforderungen erfüllt sein:
 
-1. Unter der Verwaltungsgruppe gibt es keine untergeordneten Verwaltungsgruppen oder Abonnements.
+1. Unter der Verwaltungsgruppe gibt es keine untergeordneten Verwaltungsgruppen oder Abonnements. Informationen zum Verschieben eines Abonnements oder einer Verwaltungsgruppe in eine andere Verwaltungsgruppe finden Sie unter [Verschieben von Verwaltungsgruppen und Abonnements in der Hierarchie](#moving-management-groups-and-subscriptions).
 
-   - Informationen zum Verschieben eines Abonnements oder einer Verwaltungsgruppe in eine andere Verwaltungsgruppe finden Sie unter [Verschieben von Verwaltungsgruppen und Abonnements in der Hierarchie](#moving-management-groups-and-subscriptions).
-
-1. Sie benötigen Schreibzugriff auf die Verwaltungsgruppe (Rolle „Besitzer“, „Mitwirkender“ oder „Verwaltungsgruppenmitwirkender“). Wählen Sie zum Anzeigen der Ihnen zugewiesenen Berechtigungen die Verwaltungsgruppe aus, und klicken Sie dann auf **IAM**. Weitere Informationen zu RBAC-Rollen finden Sie unter  
+1. Sie benötigen Schreibzugriff auf die Verwaltungsgruppe (Rolle „Besitzer“, „Mitwirkender“ oder „Verwaltungsgruppenmitwirkender“). Wählen Sie zum Anzeigen der Ihnen zugewiesenen Berechtigungen die Verwaltungsgruppe aus, und klicken Sie dann auf **IAM**. Weitere Informationen zu Azure-Rollen finden Sie unter  
    [Was ist die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) für Azure-Ressourcen?](../../role-based-access-control/overview.md).
 
 ### <a name="delete-in-the-portal"></a>Löschen im Portal
@@ -113,7 +111,7 @@ az account management-group delete --name 'Contoso'
 
 ## <a name="view-management-groups"></a>Anzeigen von Verwaltungsgruppen
 
-Sie können jede Verwaltungsgruppe anzeigen, für die Sie eine direkte oder geerbte RBAC-Rolle besitzen.  
+Sie können jede Verwaltungsgruppe anzeigen, für die Sie eine direkte oder geerbte Azure-Rolle besitzen.  
 
 ### <a name="view-in-the-portal"></a>Anzeigen im Portal
 
@@ -215,7 +213,7 @@ Wenn Sie die Verschiebung durchführen, muss Folgendes zutreffen:
 
 Wenn die Rolle „Besitzer“ in Ihrem Abonnement von der aktuellen Verwaltungsgruppe geerbt wurde, sind Ihre Verschiebeziele eingeschränkt. Sie können das Abonnement nur in eine andere Verwaltungsgruppe verschieben, für das Sie die Rolle „Besitzer“ innehaben. Sie können es nicht in eine Verwaltungsgruppe verschieben, in der Sie „Mitwirkender“ sind, da Sie den Besitz an Ihrem Abonnement verlieren würden. Wenn Ihnen die Besitzerrolle für das Abonnement direkt zugewiesen wurde (nicht von der Verwaltungsgruppe geerbt), können Sie es in jede Verwaltungsgruppe verschieben, bei der Sie Mitwirkender sind.
 
-Wählen Sie zum Anzeigen Ihrer Berechtigungen im Azure-Portal die Verwaltungsgruppe und dann **IAM** aus. Weitere Informationen zu RBAC-Rollen finden Sie unter [Erste Schritte mit der rollenbasierten Zugriffssteuerung im Azure-Portal](../../role-based-access-control/overview.md).
+Wählen Sie zum Anzeigen Ihrer Berechtigungen im Azure-Portal die Verwaltungsgruppe und dann **IAM** aus. Weitere Informationen zu Azure-Rollen finden Sie unter [Verwalten von Zugriff und Berechtigungen mit RBAC](../../role-based-access-control/overview.md).
 
 ## <a name="move-subscriptions"></a>Verschieben von Abonnements 
 

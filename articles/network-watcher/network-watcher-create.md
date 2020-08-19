@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 6b7453a0100233896e3d01769897ed224a0b2618
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 03fe71855c43ba831f4b7a4ab746f05bd3bbb4a3
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84737545"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87846852"
 ---
 # <a name="create-an-azure-network-watcher-instance"></a>Erstellen einer Azure Network Watcher-Instanz
 
@@ -100,6 +100,10 @@ $requestBody = @"
 
 armclient put "https://management.azure.com/subscriptions/${subscriptionId}/resourceGroups/${resourceGroupName}/providers/Microsoft.Network/networkWatchers/${networkWatcherName}?api-version=${api-version}" $requestBody
 ```
+
+## <a name="create-a-network-watcher-using-azure-quickstart-template"></a>Erstellen einer Network Watcher-Instanz mithilfe einer Azure-Schnellstartvorlage
+
+Zum Erstellen einer Instanz von Network Watcher verwenden Sie diese [Schnellstartvorlage](https://azure.microsoft.com/resources/templates/101-networkwatcher-create/).
 
 ## <a name="delete-a-network-watcher-in-the-portal"></a>Löschen einer Network Watcher-Instanz im Portal
 

@@ -1,19 +1,17 @@
 ---
 title: Liste der sicheren URLs für Windows Virtual Desktop – Azure
 description: Eine Liste der URLs, die Sie freigeben sollten, um sicherzustellen, dass Ihre Windows Virtual Desktop-Bereitstellung wie vorgesehen funktioniert
-services: virtual-desktop
-author: heidilohr
-ms.service: virtual-desktop
+author: Heidilohr
 ms.topic: conceptual
-ms.date: 07/15/2020
+ms.date: 08/12/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 9f7a3b51afa11562123a280da8634e100a22e6b6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d75d6ecf73dece6dad43367a7f869a1b8ec3d86b
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075613"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88135860"
 ---
 # <a name="safe-url-list"></a>Liste der sicheren URLs
 
@@ -29,11 +27,12 @@ Die virtuellen Azure-Computer, die Sie für Windows Virtual Desktop erstellen, m
 |mrsglobalsteus2prod.blob.core.windows.net|443|Agent- und SXS-Stapelupdates|AzureCloud|
 |*.core.windows.net|443|Agent-Datenverkehr|AzureCloud|
 |*.servicebus.windows.net|443|Agent-Datenverkehr|AzureCloud|
-|prod.warmpath.msftcloudes.com|443|Agent-Datenverkehr|AzureCloud|
+|gcs.prod.monitoring.core.windows.net|443|Agent-Datenverkehr|AzureCloud|
 |catalogartifact.azureedge.net|443|Azure Marketplace|AzureCloud|
 |kms.core.windows.net|1688|Aktivierung von Windows|Internet|
 |wvdportalstorageblob.blob.core.windows.net|443|Unterstützung des Azure-Portals|AzureCloud|
 | 169.254.169.254 | 80 | [Azure-Instanzmetadatendienst-Endpunkt](../virtual-machines/windows/instance-metadata-service.md) | – |
+| 168.63.129.16 | 80 | [Sitzungshost-Systemüberwachung](../virtual-network/security-overview.md#azure-platform-considerations) | – |
 
 >[!IMPORTANT]
 >Windows Virtual Desktop unterstützt jetzt das FQDN-Tag. Weitere Informationen finden Sie unter [Verwenden von Azure Firewall zum Schutz von Windows Virtual Desktop-Bereitstellungen](../firewall/protect-windows-virtual-desktop.md).
@@ -78,4 +77,6 @@ Alle von Ihnen verwendeten Remotedesktopclients müssen auf die folgenden URLs z
 |query.prod.cms.rt.microsoft.com|443|Clientupdates|Windows Desktop|
 
 >[!IMPORTANT]
->Das Öffnen dieser URLs ist für einen zuverlässigen Clientbetrieb von entscheidender Bedeutung. Der Zugriff auf diese URLs darf nicht blockiert werden; andernfalls wird die Dienstfunktionalität beeinträchtigt. Diese URLs gelten lediglich für die Clientstandorte und -ressourcen und beinhalten keine URLs für andere Dienste wie Azure Active Directory.
+>Das Öffnen dieser URLs ist für einen zuverlässigen Clientbetrieb von entscheidender Bedeutung. Der Zugriff auf diese URLs darf nicht blockiert werden; andernfalls wird die Dienstfunktionalität beeinträchtigt.
+>
+>Diese URLs gelten lediglich für die Clientstandorte und -ressourcen. Diese Liste enthält keine URLs für andere Dienste wie Azure Active Directory. Azure Active Directory-URLs finden Sie unter ID 56 in [URLs und IP-Adressbereiche von Office 365](/office365/enterprise/urls-and-ip-address-ranges#microsoft-365-common-and-office-online).

@@ -1,25 +1,25 @@
 ---
 title: Mandantenübergreifende Verwaltungsmöglichkeiten
 description: Die delegierte Azure-Ressourcenverwaltung ermöglicht eine mandantenübergreifende Verwaltungserfahrung.
-ms.date: 07/31/2020
+ms.date: 08/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: a6d5c7e06ed59ab76b15f4f8ae880408dc6f7835
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 0ad1c0944076f24363961da21ee347dbd7c0239c
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87500877"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88163508"
 ---
 # <a name="cross-tenant-management-experiences"></a>Mandantenübergreifende Verwaltungsmöglichkeiten
 
-Als Dienstanbieter können Sie mit [Azure Lighthouse](../overview.md) Ressourcen für mehrere Kunden in Ihrem eigenen Mandanten im [Azure-Portal](https://portal.azure.com) verwalten. Die meisten Aufgaben und Dienste können mit der [delegierten Azure-Ressourcenverwaltung](../concepts/azure-delegated-resource-management.md) über verwaltete Mandanten ausgeführt werden.
+Als Dienstanbieter können Sie mit [Azure Lighthouse](../overview.md) Ressourcen für mehrere Kunden in Ihrem eigenen Azure AD-Mandanten (Azure Active Directory) verwalten. Die meisten Aufgaben und Dienste können mit der [delegierten Azure-Ressourcenverwaltung](../concepts/azure-delegated-resource-management.md) über verwaltete Mandanten ausgeführt werden.
 
-> [!NOTE]
+> [!TIP]
 > Die delegierte Azure-Ressourcenverwaltung kann auch [in einem Unternehmen verwendet werden, das über mehrere eigene Mandanten verfügt](enterprise.md), um die mandantenübergreifende Verwaltung zu vereinfachen.
 
-## <a name="understanding-customer-tenants"></a>Grundlegendes zu Kundenmandanten
+## <a name="understanding-tenants-and-delegation"></a>Grundlegendes zu Mandanten und Delegierung
 
-Ein Azure Active Directory-Mandant (Azure AD) ist eine Darstellung einer Organisation. Es handelt sich um eine dedizierte Instanz von Azure AD, die Organisationen bereitgestellt wird, wenn diese sich für Azure, Microsoft 365 oder andere Dienste registrieren und damit eine Geschäftsbeziehung mit Microsoft eingehen. Jeder Azure AD-Mandant ist eindeutig und von anderen Azure AD-Mandanten getrennt und verfügt über eine eigene Mandanten-ID (eine GUID). Weitere Informationen finden Sie unter [Was ist Azure Active Directory?](../../active-directory/fundamentals/active-directory-whatis.md).
+Ein Azure AD-Mandant ist eine Darstellung einer Organisation. Es handelt sich um eine dedizierte Instanz von Azure AD, die Organisationen bereitgestellt wird, wenn diese sich für Azure, Microsoft 365 oder andere Dienste registrieren und damit eine Geschäftsbeziehung mit Microsoft eingehen. Jeder Azure AD-Mandant ist eindeutig und von anderen Azure AD-Mandanten getrennt und verfügt über eine eigene Mandanten-ID (eine GUID). Weitere Informationen finden Sie unter [Was ist Azure Active Directory?](../../active-directory/fundamentals/active-directory-whatis.md).
 
 Um Azure-Ressourcen für einen Kunden zu verwalten, müssten sich Dienstanbieter in der Regel mit einem Konto beim Azure-Portal anmelden, das dem Mandanten dieses Kunden zugeordnet ist, wofür ein Administrator im Mandanten des Kunden benötigt wird, um Benutzerkonten für den Dienstanbieter zu erstellen und zu verwalten.
 
@@ -27,13 +27,15 @@ Mit Azure Lighthouse gibt das Onboardingverfahren Benutzer im Mandanten des Dien
 
 Azure Lighthouse ermöglicht größere Flexibilität bei der Verwaltung von Ressourcen für mehrere Kunden, ohne sich bei verschiedenen Konten in unterschiedlichen Mandanten anmelden zu müssen. So kann ein Dienstanbieter beispielsweise zwei Kunden mit unterschiedlichen Zuständigkeiten und Zugriffsebenen haben. Mithilfe von Azure Lighthouse können sich autorisierte Benutzer beim Mandanten des Dienstanbieters anmelden, um auf diese Ressourcen zuzugreifen.
 
-![Über einen Dienstanbietermandanten verwaltete Kundenressourcen](../media/azure-delegated-resource-management-service-provider-tenant.jpg)
+![Diagramm zu Kundenressourcen, die über einen Dienstanbietermandanten verwaltet werden](../media/azure-delegated-resource-management-service-provider-tenant.jpg)
 
 ## <a name="apis-and-management-tool-support"></a>Unterstützung für APIs und Verwaltungstools
 
 Sie können Verwaltungsaufgaben für delegierte Ressourcen direkt im Portal oder mithilfe von APIs und Verwaltungstools (z. B. Azure-Befehlszeilenschnittstelle und Azure PowerShell) durchführen. Alle vorhandenen APIs können für die Arbeit mit delegierten Ressourcen verwendet werden, solange die Funktionalität für mandantenübergreifende Verwaltung unterstützt wird und der Benutzer über die entsprechenden Berechtigungen verfügt.
 
-Azure CLI-Befehle wie [az account list](/cli/azure/account?view=azure-cli-latest#az-account-list) zeigen die Attribute **homeTenantId** und **managedByTenants** für jedes Abonnement an, sodass Sie ermitteln können, ob ein zurückgegebenes Abonnement zum Mandanten Ihres Dienstanbieters oder zu dem eines verwalteten Kunden gehört.
+Das Azure PowerShell-Cmdlet [Get-AzSubscription](/powershell/module/Az.Accounts/Get-AzSubscription) zeigt die Attribute `HomeTenantId` und `ManagedByTenantIds` für jedes Abonnement, sodass Sie ermitteln können, ob ein zurückgegebenes Abonnement zu einem verwalteten Mandanten oder Ihrem verwaltenden Mandanten gehört.
+
+Ebenso zeigen Azure CLI-Befehle wie [az account list](/cli/azure/account?view=azure-cli-latest#az-account-list) die Attribute `homeTenantId` und `managedByTenants` an.
 
 > [!TIP]
 > Wenn diese Werte bei Verwendung der Azure-Befehlszeilenschnittstelle nicht angezeigt werden, löschen Sie den Cache, indem Sie `az account clear` gefolgt von `az login --identity` ausführen.
@@ -58,11 +60,11 @@ Die meisten Aufgaben und Dienste können auf delegierten Ressourcen über verwal
 
 [Azure Automation](../../automation/index.yml):
 
-- Verwenden von Automation-Konten für den Zugriff auf und die Arbeit mit delegierten Kundenressourcen
+- Verwenden von Automation-Konten für den Zugriff auf und die Arbeit mit delegierten Ressourcen
 
 [Azure Backup](../../backup/index.yml):
 
-- Sichern und Wiederherstellen von Kundendaten in Kundenmandanten
+- Sichern und Wiederherstellen von Daten in Kundenmandanten
 - Verwenden des [Backup-Explorers](../../backup/monitor-azure-backup-with-backup-explorer.md) zum Anzeigen von Betriebsinformationen zu Sicherungselementen (einschließlich noch nicht für die Sicherung konfigurierten Azure-Ressourcen) und Überwachungsinformationen (Aufträge und Warnungen) zu delegierten Abonnements. Der Backup-Explorer ist zurzeit nur für Azure-VM-Daten verfügbar.
 - Verwenden Sie übergreifende [Sicherungsberichte](../../backup/configure-reports.md) für delegierte Abonnements, um historische Trends nachzuverfolgen, den Sicherungsspeicherverbrauch zu analysieren und Sicherungen/Wiederherstellungen zu überwachen.
 
@@ -78,35 +80,34 @@ Die meisten Aufgaben und Dienste können auf delegierten Ressourcen über verwal
 
 - Anzeigen von Warnungen für delegierte Abonnements mit der Möglichkeit, Warnungen in allen Abonnements anzuzeigen
 - Anzeigen von Aktivitätsprotokolldetails für delegierte Abonnements
-- Log Analytics: Abfragen von Daten aus Remote-Kundenarbeitsbereichen in mehreren Mandanten
-- Erstellen von Warnungen in Kundenmandanten, die eine Automatisierung auslösen, wie z. B. Azure Automation-Runbooks oder Azure Functions im Dienstanbietermandanten über Webhooks
+- Log Analytics: Abfragen von Daten aus Remotearbeitsbereichen in mehreren Mandanten
+- Erstellen von Warnungen in Kundenmandanten, die eine Automatisierung auslösen, wie z. B. Azure Automation-Runbooks oder Azure Functions im verwaltenden Mandanten über Webhooks
 - Für SAP-Workloads sollten Sie [die Metriken von SAP-Lösungen mit einer aggregierten Sicht über Kundenmandanten hinweg überwachen](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/using-azure-lighthouse-and-azure-monitor-for-sap-solutions-to/ba-p/1537293).
 
 [Azure-Netzwerkoptionen](../../networking/networking-overview.md):
 
-- Bereitstellen und Verwalten einer [Azure Virtual Network](../../virtual-network/index.yml)-Instanz und virtueller Netzwerkschnittstellenkarten (vNICs) innerhalb von Kundenmandanten
+- Bereitstellen und Verwalten einer [Azure Virtual Network](../../virtual-network/index.yml)-Instanz und virtueller Netzwerkschnittstellenkarten (vNICs) innerhalb verwalteter Mandanten
 - Bereitstellen und Konfigurieren von [Azure Firewall](../../firewall/overview.md), um die Virtual Network-Ressourcen der Kunden zu schützen
-- Verwalten von Konnektivitätsdiensten wie [Azure Virtual WAN](../../virtual-wan/virtual-wan-about.md), [ExpressRoute](../../expressroute/expressroute-introduction.md) und [VPN Gateway](../../vpn-gateway/vpn-gateway-about-vpngateways.md) für Kunden
+- Verwalten von Konnektivitätsdiensten wie [Azure Virtual WAN](../../virtual-wan/virtual-wan-about.md), [ExpressRoute](../../expressroute/expressroute-introduction.md) und [VPN Gateway](../../vpn-gateway/vpn-gateway-about-vpngateways.md)
 - Verwenden von Azure Lighthouse zur Unterstützung wichtiger Szenarien für das [Azure Networking MSP-Programm](../../networking/networking-partners-msp.md)
-
 
 [Azure Policy](../../governance/policy/index.yml):
 
 - Compliancemomentaufnahmen zeigen Details von zugewiesenen Richtlinien innerhalb delegierter Abonnements
-- Erstellen und Bearbeiten von Richtliniendefinitionen innerhalb eines delegierten Abonnements
-- Zuweisen der von Kunden definierten Richtliniendefinitionen innerhalb des delegierten Abonnements
+- Erstellen und Bearbeiten von Richtliniendefinitionen innerhalb delegierter Abonnements
+- Zuweisen der von Kunden definierten Richtliniendefinitionen innerhalb delegierter Abonnements
 - Kunden werden Richtlinien, die vom Dienstanbieter erstellt wurden, zusammen mit allen Richtlinien angezeigt, die sie selbst erstellt haben.
-- [Beheben von „deployIfNotExists“ oder Ändern von Zuweisungen innerhalb des Kundenmandanten](../how-to/deploy-policy-remediation.md)
+- [Beheben von „deployIfNotExists“ oder Ändern von Zuweisungen innerhalb des verwalteten Mandanten](../how-to/deploy-policy-remediation.md)
 
 [Azure Resource Graph](../../governance/resource-graph/index.yml):
 
-- Enthält jetzt die Mandanten-ID in zurückgegebenen Abfrageergebnissen, sodass Sie ermitteln können, ob ein Abonnement zum Mandanten des Kunden oder dem des Dienstanbieters gehört.
+- Enthält jetzt die Mandanten-ID in zurückgegebenen Abfrageergebnissen, sodass Sie ermitteln können, ob ein Abonnement zu einem verwalteten Mandanten gehört.
 
 [Azure Security Center](../../security-center/index.yml):
 
 - Mandantenübergreifende Sichtbarkeit
   - Überwachen der Einhaltung von Sicherheitsrichtlinien und Sicherstellen der Sicherheitsabdeckung für alle Ressourcen der Mandanten
-  - Kontinuierliche Überwachung der Einhaltung gesetzlicher Bestimmungen für mehrere Kunden in einer einzigen Ansicht
+  - Kontinuierliche Überwachung der Einhaltung gesetzlicher Bestimmungen für mehrere Mandanten in einer einzigen Ansicht
   - Überwachen, Selektieren und Priorisieren von umsetzbaren Sicherheitsempfehlungen mit Sicherheitsbewertungsberechnung
 - Mandantenübergreifende Sicherheitsstatusverwaltung
   - Verwalten von Sicherheitsrichtlinien
@@ -122,8 +123,8 @@ Die meisten Aufgaben und Dienste können auf delegierten Ressourcen über verwal
 [Azure Sentinel:](../../sentinel/multiple-tenants-service-providers.md)
 
 - Verwalten von Azure Sentinel-Ressourcen [in Kundenmandanten](../../sentinel/multiple-tenants-service-providers.md)
-- [Verfolgen von Angriffen und Anzeigen von Sicherheitswarnungen über mehrere Kundenmandanten hinweg](https://techcommunity.microsoft.com/t5/azure-sentinel/using-azure-lighthouse-and-azure-sentinel-to-monitor-across/ba-p/1043899)
-- [Anzeigen von Vorfällen](../../sentinel/multiple-workspace-view.md) in mehreren Sentinel-Arbeitsbereichen in verschiedenen Kundenmandanten
+- [Verfolgen von Angriffen und Anzeigen von Sicherheitswarnungen für mehrere Mandanten](https://techcommunity.microsoft.com/t5/azure-sentinel/using-azure-lighthouse-and-azure-sentinel-to-monitor-across/ba-p/1043899)
+- [Anzeigen von Vorfällen](../../sentinel/multiple-workspace-view.md) in mehreren Sentinel-Arbeitsbereichen in verschiedenen Mandanten
 
 [Azure Service Health](../../service-health/index.yml):
 
@@ -136,25 +137,26 @@ Die meisten Aufgaben und Dienste können auf delegierten Ressourcen über verwal
 
 [Azure Virtual Machines](../../virtual-machines/index.yml):
 
-- Verwenden von VM-Erweiterungen, um nach der Bereitstellung Konfigurations- und Automatisierungsaufgaben auf virtuellen Azure-Computern in Kundenmandanten auszuführen
-- Verwenden der Startdiagnose zur Problembehandlung von Azure-VMs in Kundenmandanten
-- Zugreifen auf VMs mit der seriellen Konsole in Kundenmandanten
-- Integrieren von VMs in Azure Key Vault mit einer [verwalteten Identität über Richtlinien](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/create-keyvault-secret), um Kennwörter, Geheimnisse oder kryptografische Schlüssel für die Datenträgerverschlüsselung zu verwenden und dabei sicherzustellen, dass Geheimnisse in einer Key Vault-Instanz in Kundenmandanten gespeichert werden
-- Beachten Sie, dass Sie Azure Active Directory nicht für die Remoteanmeldung auf virtuellen Computern in Kundenmandanten verwenden können.
+- Verwenden von VM-Erweiterungen, um nach der Bereitstellung Konfigurations- und Automatisierungsaufgaben auf Azure-VMs auszuführen
+- Verwenden der Startdiagnose zur Problembehandlung von Azure-VMs
+- Zugreifen auf VMs mit der seriellen Konsole
+- Integrieren von VMs in Azure Key Vault mit einer [verwalteten Identität über Richtlinien](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/create-keyvault-secret), um Kennwörter, Geheimnisse oder kryptografische Schlüssel für die Datenträgerverschlüsselung zu verwenden und dabei sicherzustellen, dass Geheimnisse in einer Key Vault-Instanz in den verwalteten Mandanten gespeichert werden
+- Beachten Sie, dass Sie Azure Active Directory nicht für die Remoteanmeldung bei VMs verwenden können.
 
 Supportanfragen:
 
 - [Öffnen von Supportanfragen über das Blatt **Hilfe und Support**](../../azure-portal/supportability/how-to-create-azure-support-request.md#getting-started) im Azure-Portal für delegierte Ressourcen (durch Auswahl des für den delegierten Bereich verfügbaren Supportplans)
 
 ## <a name="current-limitations"></a>Aktuelle Einschränkungen
+
 Beachten Sie bei allen Szenarios die folgenden aktuellen Einschränkungen:
 
-- Von Azure Resource Manager verarbeitete Anforderungen können mithilfe der delegierten Azure-Ressourcenverwaltung durchgeführt werden. Die Vorgangs-URIs für diese Anforderungen beginnen mit `https://management.azure.com`. Anforderungen, die von einer Instanz eines Ressourcentyps verarbeitet werden (etwa Zugriff auf Key Vault-Geheimnisse oder auf Speicherdaten), werden nicht von der delegierten Azure-Ressourcenverwaltung unterstützt. Die Vorgangs-URIs für diese Anforderungen beginnen in der Regel mit einer Adresse, die für Ihre Instanz eindeutig ist, z. B. `https://myaccount.blob.core.windows.net` oder `https://mykeyvault.vault.azure.net/`. Letzteres sind in der Regel auch eher Datenvorgänge als Verwaltungsvorgänge.
+- Von Azure Resource Manager verarbeitete Anforderungen können mithilfe von Azure Lighthouse durchgeführt werden. Die Vorgangs-URIs für diese Anforderungen beginnen mit `https://management.azure.com`. Anforderungen, die von einer Instanz eines Ressourcentyps verarbeitet werden (etwa Zugriff auf Key Vault-Geheimnisse oder auf Speicherdaten), werden von Azure Lighthouse nicht unterstützt. Die Vorgangs-URIs für diese Anforderungen beginnen in der Regel mit einer Adresse, die für Ihre Instanz eindeutig ist, z. B. `https://myaccount.blob.core.windows.net` oder `https://mykeyvault.vault.azure.net/`. Letzteres sind in der Regel auch eher Datenvorgänge als Verwaltungsvorgänge.
 - Rollenzuweisungen müssen [integrierte Rollen](../../role-based-access-control/built-in-roles.md) für die rollenbasierte Zugriffssteuerung (RBAC) verwenden. Alle integrierten Rollen werden derzeit mit der delegierten Azure-Ressourcenverwaltung unterstützt, ausgenommen „Besitzer“ und alle integrierten Rollen mit der Berechtigung [`DataActions`](../../role-based-access-control/role-definitions.md#dataactions). Die Rolle „Benutzerzugriffsadministrator“ wird nur für die eingeschränkte Verwendung beim [Zuweisen von Rollen zu verwalteten Identitäten](../how-to/deploy-policy-remediation.md#create-a-user-who-can-assign-roles-to-a-managed-identity-in-the-customer-tenant) unterstützt.  Benutzerdefinierte Rollen und [klassische Abonnementadministratorrollen](../../role-based-access-control/classic-administrators.md) werden nicht unterstützt.
 - Sie können Abonnements, die Azure Databricks verwenden, zwar integrieren, Benutzer im Verwaltungsmandanten können jedoch derzeit keine Azure Databricks-Arbeitsbereiche für ein delegiertes Abonnement starten.
 - Sie können zwar ein Onboarding für Abonnements und Ressourcengruppen mit Ressourcensperren durchführen, diese Sperren verhindern jedoch nicht die Ausführung von Aktionen durch Benutzer im Verwaltungsmandanten. [Ablehnungszuweisungen](../../role-based-access-control/deny-assignments.md), die systemseitig verwaltete Ressourcen schützen – beispielsweise solche, die von verwalteten Azure-Anwendungen oder von Azure Blueprints erstellt wurden (systemseitig zugewiesene Ablehnungszuweisungen) –, verhindern, dass Benutzer im Verwaltungsmandanten Aktionen für diese Ressourcen ausführen. Benutzer im Kundenmandanten können gegenwärtig allerdings keine eigenen Ablehnungszuweisungen (benutzerseitig zugewiesene Ablehnungszuweisungen) erstellen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Onboarding Ihrer Kunden in die delegierte Azure-Ressourcenverwaltung, entweder unter [Verwendung von Azure Resource Manager-Vorlagen](../how-to/onboard-customer.md) oder mittels [Veröffentlichung eines privaten oder öffentlichen Angebots für verwaltete Dienste im Azure Marketplace](../how-to/publish-managed-services-offers.md).
+- Onboarding Ihrer Kunden in Azure Lighthouse, entweder unter [Verwendung von Azure Resource Manager-Vorlagen](../how-to/onboard-customer.md) oder mittels [Veröffentlichung eines privaten oder öffentlichen Angebots für verwaltete Dienste im Azure Marketplace](../how-to/publish-managed-services-offers.md).
 - [Anzeigen und Verwalten von Kunden](../how-to/view-manage-customers.md), indem sie im Azure-Portal zu **Meine Kunden** navigieren.

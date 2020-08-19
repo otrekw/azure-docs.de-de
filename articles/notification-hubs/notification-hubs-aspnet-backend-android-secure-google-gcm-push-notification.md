@@ -5,27 +5,24 @@ documentationcenter: android
 keywords: push notification,push notifications,push messages,android push notifications
 author: sethmanheim
 manager: femila
-editor: jwargo
 services: notification-hubs
-ms.assetid: daf3de1c-f6a9-43c4-8165-a76bfaa70893
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: android
 ms.devlang: java
 ms.topic: article
-ms.date: 01/04/2019
+ms.date: 08/07/2020
 ms.author: sethm
-ms.reviewer: jowargo
+ms.reviewer: thsomasu
 ms.lastreviewed: 01/04/2019
-ms.custom: devx-track-java
-ms.openlocfilehash: 3f31c9786a8310779d71ab0c54bddc4687f765be
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: f2d5d618fabbe7400ce825f984ace1622a524f05
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325235"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88004031"
 ---
-# <a name="sending-secure-push-notifications-with-azure-notification-hubs"></a>Senden von sicheren Pushbenachrichtigungen mit Azure Notification Hubs
+# <a name="send-secure-push-notifications-with-azure-notification-hubs"></a>Senden von sicheren Pushbenachrichtigungen mit Azure Notification Hubs
 
 > [!div class="op_single_selector"]
 > * [Windows Universal](notification-hubs-aspnet-backend-windows-dotnet-wns-secure-push-notification.md)
@@ -43,28 +40,28 @@ Es kann vorkommen, dass eine Anwendung etwas in die Benachrichtigung einschließ
 
 Der generelle Ablauf sieht folgendermaßen aus:
 
-1. Das App-Back-End:
-   * Speichert die sichere Nutzlast in einer Back-End-Datenbank.
-   * Sendet die ID dieser Benachrichtigung an das Android-Gerät (es werden keine sicheren Informationen gesendet).
-2. Bei Erhalt der Benachrichtigung reagiert die App auf dem Gerät folgendermaßen:
-   * Das Android-Gerät kontaktiert das Back-End und fordert die sichere Nutzlast an.
-   * Die App kann die Nutzlast als Benachrichtigung auf dem Gerät anzeigen.
+- Das App-Back-End:
+  * Speichert die sichere Nutzlast in einer Back-End-Datenbank.
+  * Sendet die ID dieser Benachrichtigung an das Android-Gerät (es werden keine sicheren Informationen gesendet).
+- Bei Erhalt der Benachrichtigung reagiert die App auf dem Gerät folgendermaßen:
+  * Das Android-Gerät kontaktiert das Back-End und fordert die sichere Nutzlast an.
+  * Die App kann die Nutzlast als Benachrichtigung auf dem Gerät anzeigen.
 
 Beachten Sie, dass im obigen Ablauf (und in diesem Tutorial) angenommen wird, dass das Gerät ein Authentifizierungstoken im lokalen Speicher speichert, nachdem sich der Benutzer angemeldet hat. Dieser Ansatz gewährleistet einen nahtlosen Ablauf, da das Gerät mit diesem Token die sichere Nutzlast der Benachrichtigung abrufen kann. Wenn Ihre Anwendung keine Authentifizierungstoken auf dem Gerät speichert oder diese Token ablaufen können, sollte die Geräte-App nach Erhalt der Pushbenachrichtigung eine generische Benachrichtigung anzeigen, in der der Benutzer zum Starten der App aufgefordert wird. Anschließend authentifiziert die App den Benutzer und zeigt die Nutzlast der Benachrichtigung an.
 
-Dieses Tutorial zeigt, wie Sie sichere Pushbenachrichtigungen senden. Es baut auf dem Tutorial [Benachrichtigen von Benutzern](notification-hubs-aspnet-backend-gcm-android-push-to-user-google-notification.md) auf; daher sollten Sie die Schritte in diesem Tutorial zuerst durchführen, falls Sie dies noch nicht getan haben.
+Dieses Tutorial zeigt, wie Sie sichere Pushbenachrichtigungen senden. Es baut auf dem Tutorial [Benachrichtigen von Benutzern](notification-hubs-aspnet-backend-gcm-android-push-to-user-google-notification.md) auf, daher sollten Sie die Schritte in diesem Tutorial zuerst durchführen.
 
 > [!NOTE]
-> In diesem Lernprogramm wird davon ausgegangen, dass Sie Ihren Notification Hub wie unter [Erste Schritte mit Notification Hubs (Android)](notification-hubs-android-push-notification-google-gcm-get-started.md)beschrieben erstellt und konfiguriert haben.
+> In diesem Tutorial wird davon ausgegangen, dass Sie Ihren Notification Hub wie unter [Erste Schritte mit Notification Hubs (Android)](notification-hubs-android-push-notification-google-gcm-get-started.md) beschrieben erstellt und konfiguriert haben.
 
 [!INCLUDE [notification-hubs-aspnet-backend-securepush](../../includes/notification-hubs-aspnet-backend-securepush.md)]
 
 ## <a name="modify-the-android-project"></a>Ändern des Android-Projekts
 
-Nachdem Sie Ihr App-Back-End so geändert haben, dass lediglich die *ID* einer Pushbenachrichtigung gesendet wird, müssen Sie Ihre Android-App so ändern, dass sie diese Benachrichtigung verarbeitet und einen Rückruf an das Back-End sendet, um die anzuzeigende sichere Nachricht abzurufen.
+Nachdem Sie Ihr App-Back-End so geändert haben, dass lediglich die ID einer Pushbenachrichtigung gesendet wird, müssen Sie Ihre Android-App so ändern, dass sie diese Benachrichtigung verarbeitet und einen Rückruf an das Back-End sendet, um die anzuzeigende sichere Nachricht abzurufen.
 Dazu müssen Sie sicherstellen, dass Ihre Android-App weiß, wie sie sich bei Ihrem Back-End authentifizieren muss, wenn sie die Pushbenachrichtigungen erhält.
 
-Ändern Sie nun den Ablauf der *Anmeldung*, um den Wert des Authentifizierungsheaders in den freigegebenen Einstellungen Ihrer App zu speichern. Sie können entsprechende Mechanismen verwenden, um beliebige Authentifizierungstoken (z.B. OAuth-Token) zu speichern, die die App verwenden muss, ohne dass Benutzeranmeldeinformationen eingegeben werden müssen.
+Ändern Sie nun den Ablauf der Anmeldung, um den Wert des Authentifizierungsheaders in den freigegebenen Einstellungen Ihrer App zu speichern. Sie können entsprechende Mechanismen verwenden, um beliebige Authentifizierungstoken (z.B. OAuth-Token) zu speichern, die die App verwenden muss, ohne dass Benutzeranmeldeinformationen eingegeben werden müssen.
 
 1. Fügen Sie in Ihrem Android-App-Projekt am Anfang der Klasse `MainActivity` die folgenden Konstanten hinzu:
 
@@ -72,6 +69,7 @@ Dazu müssen Sie sicherstellen, dass Ihre Android-App weiß, wie sie sich bei Ih
     public static final String NOTIFY_USERS_PROPERTIES = "NotifyUsersProperties";
     public static final String AUTHORIZATION_HEADER_PROPERTY = "AuthorizationHeader";
     ```
+
 2. Aktualisieren Sie in der Klasse `MainActivity` die Methode `getAuthorizationHeader()` mit folgendem Code:
 
     ```java
@@ -87,6 +85,7 @@ Dazu müssen Sie sicherstellen, dass Ihre Android-App weiß, wie sie sich bei Ih
         return basicAuthHeader;
     }
     ```
+
 3. Fügen Sie am Anfang der Datei `MainActivity` die folgenden `import`-Anweisungen hinzu:
 
     ```java
@@ -104,6 +103,7 @@ Dazu müssen Sie sicherstellen, dass Ihre Android-App weiß, wie sie sich bei Ih
         retrieveNotification(secureMessageId);
     }
     ```
+
 2. Fügen Sie dann die `retrieveNotification()`-Methode hinzu, und ersetzen Sie dabei den Platzhalter `{back-end endpoint}` durch den Back-End-Endpunkt, den Sie beim Bereitstellen des Back-Ends erhalten haben:
 
     ```java

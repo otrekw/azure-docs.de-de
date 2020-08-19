@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 6/25/2020
-ms.openlocfilehash: fc5557c1b20d87d2f96559e1d41efa4576045f09
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 51aff856aa5bdeb042493d47f100be0ca32dfbbb
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85392776"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88032678"
 ---
 # <a name="limitations-in-azure-database-for-mariadb"></a>Einschränkungen in Azure Database for MariaDB
 In den folgenden Abschnitten werden die Kapazitäts- und funktionalen Beschränkungen sowie Beschränkungen bei der Unterstützung der Speicher-Engine und von Datenmanipulationsanweisungen im Datenbankdienst beschrieben.
@@ -42,6 +42,7 @@ Bei der ersten Bereitstellung enthält ein Server für Azure for MariaDB Systemt
 - DBA-Rolle: Viele Serverparameter und -einstellungen können unbeabsichtigterweise die Serverleistung beeinträchtigen oder ACID-Eigenschaften des DBMS verschlechtern. Um die Dienstintegrität und die SLA auf Produktebene aufrechtzuerhalten, stellt dieser Dienst die DBA-Rolle nicht zur Verfügung. Das Standardbenutzerkonto, das zusammen mit einer neuen Datenbankinstanz erstellt wird, gestattet dem Benutzer die Ausführung der meisten DDL- und DML-Anweisungen in der verwalteten Datenbankinstanz.
 - SUPER-Berechtigung: Auf ähnliche Weise ist die [SUPER-Berechtigung](https://mariadb.com/kb/en/library/grant/#global-privileges) ebenfalls eingeschränkt.
 - DEFINER: Erfordert erhöhte Berechtigungen zum Erstellen und ist beschränkt. Entfernen Sie beim Importieren von Daten mithilfe einer Sicherung die `CREATE DEFINER`-Befehle manuell oder mithilfe des Befehls `--skip-definer`, wenn Sie einen mysqldump ausführen.
+- Systemdatenbanken: In Azure Database for MariaDB ist die [Systemdatenbank „mysql“](https://mariadb.com/kb/en/the-mysql-database-tables/) schreibgeschützt, da sie zur Unterstützung von unterschiedlichen PaaS-Dienstfunktionen verwendet wird. Beachten Sie hierbei, dass Sie in der Systemdatenbank `mysql` nichts ändern können.
 
 ## <a name="data-manipulation-statement-support"></a>Unterstützung von Datenmanipulationsanweisungen
 

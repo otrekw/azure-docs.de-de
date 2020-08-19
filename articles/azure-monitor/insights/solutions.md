@@ -5,28 +5,28 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 05/12/2020
-ms.openlocfilehash: a2ece33974e5bb4d8cb6257d3ca68a258f9b8c81
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.date: 08/07/2020
+ms.openlocfilehash: 04f2d11b9fc8bbd61319a057c091cddbf140b9db
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326000"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88135527"
 ---
 # <a name="monitoring-solutions-in-azure-monitor"></a>Überwachungslösungen in Azure Monitor
 
-Überwachungslösungen nutzen Dienste in Azure, um eine zusätzliche Analyse des Betriebs einer bestimmten Anwendung oder eines bestimmten Diensts zu ermöglichen. Dieser Artikel enthält eine kurze Übersicht über Überwachungslösungen in Azure sowie Details zu deren Verwendung und Installation. Überwachungslösungen können Azure Monitor für beliebige Anwendungen und Dienste hinzugefügt werden, die Sie verwenden. Die Lösungen sind in der Regel kostenlos, durch die Datensammlung können jedoch Kosten entstehen.
+Überwachungslösungen in Azure Monitor ermöglichen eine Analyse des Betriebs einer bestimmten Azure-Anwendung oder eines bestimmten Azure-Diensts. Dieser Artikel enthält eine kurze Übersicht über Überwachungslösungen in Azure sowie Details zu deren Verwendung und Installation. Überwachungslösungen können Azure Monitor für beliebige Anwendungen und Dienste hinzugefügt werden, die Sie verwenden. Die Lösungen sind in der Regel kostenlos, durch die Datensammlung können jedoch Kosten entstehen.
 
 ## <a name="use-monitoring-solutions"></a>Verwenden von Überwachungslösungen
 
-Beim Öffnen der **Übersichtsseite** in Azure Monitor wird für jede im Workspace installierte Lösung eine Kachel angezeigt.
+Auf der **Übersichtsseite** der Lösung in Azure Monitor wird für jede in einem Log Analytics-Arbeitsbereich installierte Lösung jeweils eine Kachel angezeigt. Um diese Seite zu öffnen, navigieren Sie im [Azure-Portal](https://ms.portal.azure.com) zu **Azure Monitor**. Wählen Sie im Menü **Insights** die Option **Mehr** aus, um den **Insights-Hub** zu öffnen, und klicken Sie dann auf **Log Analytics-Arbeitsbereiche**.
 
-1. Öffnen Sie das [Azure-Portal](https://ms.portal.azure.com). Suchen Sie nach **Überwachen**, und wählen Sie diese Option aus.
-1. Wählen Sie im Menü **Insights** die Option **Mehr** aus.
-1. Ändern Sie über die Dropdownfelder am oberen Bildschirmrand den Arbeitsbereich oder den Zeitbereich für die Kacheln.
-1. Klicken Sie auf die Kachel für eine Lösung, um die dazugehörige Ansicht mit einer ausführlicheren Analyse der gesammelten Daten anzuzeigen.
+[![Insights-Hub](media/solutions/insights-hub.png)](media/solutions/insights-hub.png#lightbox)
 
-![Übersicht](media/solutions/overview.png)
+
+Ändern Sie über die Dropdownfelder am oberen Bildschirmrand den Arbeitsbereich oder den Zeitbereich für die Kacheln. Klicken Sie auf die Kachel für eine Lösung, um die dazugehörige Ansicht mit einer ausführlicheren Analyse der gesammelten Daten anzuzeigen.
+
+[![Übersicht](media/solutions/overview.png)](media/solutions/overview.png#lightbox)
 
 Überwachungslösungen können mehrere Arten von Azure-Ressourcen enthalten, und Sie können beliebige, in einer Lösung enthaltene Ressourcen anzeigen (genau wie bei anderen Ressourcen). So werden z.B. alle in der Lösung enthaltenen Protokollabfragen unter **Lösungsabfragen** im [Abfrage-Explorer](../log-query/get-started-portal.md#load-queries) aufgelistet. Sie können diese Abfragen verwenden, wenn Sie mit [Protokollabfragen](../log-query/log-query-overview.md) eine Ad-hoc-Analyse durchführen.
 
@@ -192,7 +192,6 @@ az monitor log-analytics solution delete --name
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Rufen Sie eine [Liste mit Überwachungslösungen von Microsoft](/azure/azure-monitor/monitor-reference) ab.
+* Rufen Sie eine [Liste mit Überwachungslösungen von Microsoft](../monitor-reference.md) ab.
 * Machen Sie sich mit dem [Erstellen von Abfragen](../log-query/log-query-overview.md) für die Analyse der von Überwachungslösungen gesammelten Daten vertraut.
 * Sehen Sie sich alle [Beispiel-CLI-Befehle für Azure Monitor](/cli/azure/azure-cli-reference-for-monitor) an.
-

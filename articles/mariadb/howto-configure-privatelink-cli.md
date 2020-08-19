@@ -6,19 +6,20 @@ ms.author: manishku
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 01/09/2020
-ms.openlocfilehash: 97901ee0c431699ac8217619042daefd86df2f38
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: a8f94c34281adbe274ad70425850e2ade4dc94ea
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120975"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87833197"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mariadb-using-cli"></a>Erstellen und Verwalten von Private Link für Azure Database for MariaDB über die CLI
 
 Ein privater Endpunkt ist der grundlegende Baustein für Private Link in Azure. Mit ihm können Azure-Ressourcen wie virtuelle Computer (VMs) privat mit Private Link-Ressourcen kommunizieren. In diesem Artikel erfahren Sie, wie Sie einen virtuellen Computer in einem virtuellen Azure-Netzwerk und einen Azure Database for MariaDB-Server mit einem privaten Azure-Endpunkt und der Azure-Befehlszeilenschnittstelle erstellen.
 
 > [!NOTE]
-> Dieses Feature steht in allen Azure-Regionen zur Verfügung, in denen Azure Database for MariaDB die Tarife „Universell“ und „Arbeitsspeicheroptimiert“ unterstützt.
+> Das Feature „Private Link“ ist nur für Azure Database for MariaDB-Server in den Tarifen „Universell“ und „Arbeitsspeicheroptimiert“ verfügbar. Stellen Sie sicher, dass für den Datenbankserver einer dieser Tarife festgelegt ist.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

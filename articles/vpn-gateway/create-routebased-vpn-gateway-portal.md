@@ -1,19 +1,19 @@
 ---
 title: Erstellen eines routenbasierten VPN-Gateways – Portal
 titleSuffix: Azure VPN Gateway
-description: Erstellen eines routenbasierten VPN-Gateways mit dem Azure-Portal
+description: Verwenden Sie das Azure-Portal, um schnell ein routenbasiertes Azure-VPN-Gateway für eine VPN-Verbindung mit Ihrem lokalen Netzwerk zu erstellen oder um virtuelle Netzwerke zu verbinden.
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 03/03/2020
 ms.author: cherylmc
-ms.openlocfilehash: 4409df576c23e0dbc3e663cc348b45bc23ad5460
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e6d44c9a92ad239c37620ee2e19efcc1777ec3de
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84987710"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88032628"
 ---
 # <a name="create-a-route-based-vpn-gateway-using-the-azure-portal"></a>Erstellen eines routenbasierten VPN-Gateways mit dem Azure-Portal
 

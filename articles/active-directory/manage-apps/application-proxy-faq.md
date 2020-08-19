@@ -15,12 +15,12 @@ ms.topic: reference
 ms.date: 07/23/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: aa9a930195908671cc0e772fd9643dcbce9dbb1c
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: 78a0cb6217d8c1d25f08801066a970d6bc94e1b0
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87562411"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88042104"
 ---
 # <a name="active-directory-azure-ad-application-proxy-frequently-asked-questions"></a>Häufig gestellte Fragen zum Azure Active Directory-Anwendungsproxy (Azure AD-Anwendungsproxy)
 
@@ -31,6 +31,9 @@ Auf dieser Seite werden häufig gestellte Fragen zum Anwendungsproxy von Azure A
 ### <a name="what-license-is-required-to-use-azure-ad-application-proxy"></a>Welche Lizenz ist für die Verwendung des Azure AD-Anwendungsproxys erforderlich?
 
 Um den Azure AD-Anwendungsproxy verwenden zu können, müssen Sie über eine Azure AD Premium P1- oder P2-Lizenz verfügen. Weitere Informationen zur Lizenzierung finden Sie unter [Azure Active Directory – Preise](https://azure.microsoft.com/pricing/details/active-directory/).
+
+### <a name="what-happens-to-azure-ad-application-proxy-in-my-tenant-if-my-license-expires"></a>Was geschieht mit dem Azure AD-Anwendungsproxy in meinem Mandanten, wenn meine Lizenz abläuft?
+Wenn Ihre Lizenz abgelaufen ist, wird der Anwendungsproxy automatisch deaktiviert. Ihre Anwendungsinformationen werden bis zu einem Jahr gespeichert.
 
 ### <a name="why-is-the-enable-application-proxy-button-grayed-out"></a>Warum ist die Schaltfläche „Anwendungsproxy aktivieren“ abgeblendet?
 

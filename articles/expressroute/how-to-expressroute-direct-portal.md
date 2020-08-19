@@ -5,19 +5,26 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: how-to
-ms.date: 06/12/2020
+ms.date: 08/06/2020
 ms.author: cherylmc
-ms.openlocfilehash: f22f81d69d746764af43d9167874aabedbd56f51
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 475b2aa99296995c3adb51eca2d6bdb53616670e
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84765323"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87903594"
 ---
 # <a name="create-expressroute-direct-using-the-azure-portal"></a>Erstellen von ExpressRoute Direct mit dem Portal
 
 In diesem Artikel wird gezeigt, wie Sie ExpressRoute Direct mit dem Azure-Portal erstellen.
 ExpressRoute Direct ermöglicht es, sich direkt mit dem globalen Netzwerk von Microsoft zu verbinden, und zwar an strategisch über die ganze Welt verteilten Peeringstandorten. Weitere Informationen über ExpressRoute finden Sie unter [Informationen zu ExpressRoute Direct](expressroute-erdirect-about.md).
+
+## <a name="before-you-begin"></a><a name="before"></a>Voraussetzungen
+
+Überprüfen Sie, ob der Ressourcenanbieter **Microsoft.Network** in Ihrem Abonnement registriert ist. Durch Registrieren eines Ressourcenanbieters wird Ihr Abonnement für die Verwendung mit dem Ressourcenanbieter konfiguriert.
+
+1. Greifen Sie wie unter [Azure-Ressourcenanbieter und -typen](../azure-resource-manager/management/resource-providers-and-types.md) beschrieben auf die Abonnementeinstellungen zu.
+1. Überprüfen Sie, ob in Ihrem Abonnement unter **Ressourcenanbieter** der Anbieter **Microsoft.Network** den Status **Registriert** aufweist. Wenn der Ressourcenanbieter Microsoft.Network nicht in der Liste der registrierten Anbieter aufgeführt ist, fügen Sie ihn hinzu.
 
 ## <a name="1-create-expressroute-direct"></a><a name="create-erdir"></a>1. Erstellenvon ExpressRoute Direct
 

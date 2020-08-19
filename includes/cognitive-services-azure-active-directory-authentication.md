@@ -4,12 +4,12 @@ ms.author: erhopf
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/11/2020
-ms.openlocfilehash: 6bbdd3eb62229c3f8f180d2618dd25062ff0c1e9
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 235b7946fbcfc2322878428cce72e77ecceb9cfc
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86062662"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88010991"
 ---
 ## <a name="authenticate-with-azure-active-directory"></a>Authentifizieren mit Azure Active Directory
 
@@ -17,7 +17,7 @@ ms.locfileid: "86062662"
 > 1. Derzeit unterstützen **nur** Maschinelles Sehen-API, Gesichtserkennungs-API, Textanalyse-API, Plastischer Reader, Formularerkennung, Anomalieerkennung und alle Bing-Dienste mit Ausnahme der benutzerdefinierten Bing-Suche die Authentifizierung mit Azure Active Directory (AAD).
 > 2. Die AAD-Authentifizierung muss immer mit dem Namen der benutzerdefinierten Unterdomäne Ihrer Azure-Ressource verwendet werden. [Regionale Endpunkte](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-custom-subdomains#is-there-a-list-of-regional-endpoints) unterstützen die AAD-Authentifizierung nicht.
 
-In den vorherigen Abschnitten haben wir Ihnen gezeigt, wie die Authentifizierung bei Azure Cognitive Services mit einem Abonnementschlüssel für einen einzelnen Dienst oder für mehrere Dienste funktioniert. Diese Schlüssel ermöglichen zwar einen schnellen und einfachen Einstieg in die Entwicklung, eignen sich aber nicht für komplexere Szenarien, die eine rollenbasierte Zugriffssteuerung erfordern. Sehen wir uns an, was für die Authentifizierung über Azure Active Directory (AAD) erforderlich ist.
+In den vorherigen Abschnitten haben wir Ihnen gezeigt, wie die Authentifizierung bei Azure Cognitive Services mit einem Abonnementschlüssel für einen einzelnen Dienst oder für mehrere Dienste funktioniert. Diese Schlüssel ermöglichen zwar einen schnellen und einfachen Einstieg in die Entwicklung, eignen sich aber nicht für komplexere Szenarien, die eine rollenbasierte Zugriffssteuerung von Azure (Azure RBAC) erfordern. Sehen wir uns an, was für die Authentifizierung über Azure Active Directory (AAD) erforderlich ist.
 
 In den folgenden Abschnitten verwenden Sie entweder die Azure Cloud Shell-Umgebung oder die Azure CLI, um eine Unterdomäne zu erstellen, Rollen zuzuweisen und ein Bearertoken für den Aufruf der Azure Cognitive Services abzurufen. Falls Sie einmal nicht weiterkommen, finden Sie in jedem Abschnitt Links mit sämtlichen verfügbaren Optionen für jeden Befehl in der Azure Cloud Shell bzw. Azure CLI.
 
@@ -45,7 +45,7 @@ Der erste Schritt besteht darin, eine benutzerdefinierte Unterdomäne zu erstell
 Nachdem Sie nun über eine Unterdomäne verfügen, die Ihrer Ressource zugeordnet ist, müssen Sie einem Dienstprinzipal eine Rolle zuweisen.
 
 > [!NOTE]
-> Denken Sie daran, dass die Verteilung von AAD-Rollenzuweisungen bis zu fünf Minuten dauern kann.
+> Denken Sie daran, dass die Weitergabe von Azure-Rollenzuweisungen bis zu fünf Minuten dauern kann.
 
 1. Als Erstes registrieren Sie eine [AAD-Anwendung](https://docs.microsoft.com/powershell/module/Az.Resources/New-AzADApplication?view=azps-1.8.0).
 

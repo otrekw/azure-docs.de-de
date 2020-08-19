@@ -6,15 +6,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: reference
-ms.date: 06/03/2020
+ms.date: 08/05/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 70a4d6f01271c5026463ac0dc946fb1b2991de09
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: f36a4b223c12662eec1369bd4ec1a1175e459198
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323824"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87851782"
 ---
 # <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Java SDK für die SQL-API: Versionshinweise und Ressourcen
 > [!div class="op_single_selector"]
@@ -26,6 +26,8 @@ ms.locfileid: "87323824"
 > * [Java SDK v4](sql-api-sdk-java-v4.md)
 > * [Async Java SDK v2](sql-api-sdk-async-java.md)
 > * [Sync Java SDK v2](sql-api-sdk-java.md)
+> * [Spring Data](sql-api-sdk-java-spring.md)
+> * [Spark-Connector](sql-api-sdk-java-spark.md)
 > * [Python](sql-api-sdk-python.md)
 > * [REST](/rest/api/cosmos-db/)
 > * [REST-Ressourcenanbieter](/rest/api/cosmos-db-resource-provider/)
@@ -256,23 +258,14 @@ Dies ist das ursprüngliche Sync Java SDK v2 von Azure Cosmos DB für die SQL-
 * Allgemeine Verfügbarkeit (GA) des SDK
 
 ## <a name="release-and-retirement-dates"></a>Veröffentlichungs- und Deaktivierungstermine
-Wenn Microsoft ein SDK deaktiviert, werden Sie mindestens **12 Monate** vorher benachrichtigt, um einen reibungslosen Übergang zu einer neueren/unterstützten Version zu gewährleisten.
 
-Neue Features, Funktionen und Optimierungen werden nur dem aktuellen SDK hinzugefügt. Daher empfiehlt es sich, immer so früh wie möglich auf die neueste SDK-Version zu aktualisieren.
-
-Anforderungen an Cosmos DB mithilfe eines deaktivierten SDK werden vom Dienst abgelehnt.
+Wenn Microsoft ein SDK deaktiviert, werden Sie mindestens **12 Monate** vorher benachrichtigt, um einen reibungslosen Übergang zu einer neueren/unterstützten Version zu gewährleisten. Neue Features, Funktionen und Optimierungen werden nur dem aktuellen SDK hinzugefügt. Daher empfiehlt es sich, immer so früh wie möglich auf die neueste SDK-Version zu aktualisieren.
 
 > [!WARNING]
-> Alle Versionen **1.x** des SQL SDK für Java werdn am **30 Mai 2020** eingestellt.
-> 
+> Nach dem 30. Mai 2020 werden von Azure Cosmos DB für die Versionen 1.x des Azure Cosmos DB Java SDK für die SQL-API weder Fehlerbehebungen durchgeführt, noch neue Funktionen hinzugefügt, noch Unterstützung bereitgestellt. Wenn Sie kein Upgrade durchführen möchten, werden Anforderungen, die von Version 1.x des SDK gesendet werden, weiterhin vom Azure Cosmos DB-Dienst bedient.
 >
+> Nach dem 29. Februar 2016 werden von Azure Cosmos DB für die Versionen 0.x des Azure Cosmos DB Java SDK für die SQL-API weder Fehlerbehebungen durchgeführt, noch neue Funktionen hinzugefügt, noch Unterstützung bereitgestellt. Wenn Sie kein Upgrade durchführen möchten, werden Anforderungen, die von Version 0.x des SDK gesendet werden, weiterhin vom Azure Cosmos DB-Dienst bedient.
 
-> [!WARNING]
-> Alle Versionen des SQL SDK für Java vor Version **1.0.0** werden am **29. Februar 2016** deaktiviert.
-> 
-> 
-
-<br/>
 
 | Version | Veröffentlichungsdatum | Deaktivierungstermine |
 | --- | --- | --- |

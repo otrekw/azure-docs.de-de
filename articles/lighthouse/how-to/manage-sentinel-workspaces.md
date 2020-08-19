@@ -3,12 +3,12 @@ title: Verwalten von Azure Sentinel-Arbeitsbereichen im großen Maßstab
 description: Erfahren Sie, wie Sie Azure Sentinel auf delegierten Kundenressourcen effektiv verwalten.
 ms.date: 06/17/2020
 ms.topic: how-to
-ms.openlocfilehash: 70810ca54c62e73d5dec76495eb5179b84db60fe
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: fc6d66a31ed46766bbe664fd8656792c97ff69fd
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86105267"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88163236"
 ---
 # <a name="manage-azure-sentinel-workspaces-at-scale"></a>Verwalten von Azure Sentinel-Arbeitsbereichen im großen Maßstab
 
@@ -17,6 +17,9 @@ Als Dienstanbieter haben Sie möglicherweise mehrere Kundenmandanten in [Azure L
 Azure Sentinel bietet Sicherheits- und Bedrohungsanalysen und stellt eine zentrale Lösung für die Warnungs- und Bedrohungserkennung, die proaktive Suche sowie die Reaktion auf Bedrohungen bereit. Mit Azure Lighthouse können Sie mehrere Azure Sentinel-Arbeitsbereiche mandantenübergreifend im großen Maßstab verwalten. Dies ermöglicht Szenarien wie das Ausführen von Abfragen über mehrere Arbeitsbereiche hinweg oder das Erstellen von Arbeitsmappen, um Daten aus Ihren verbundenen Datenquellen zu visualisieren und zu überwachen und so Erkenntnisse zu gewinnen. IP-Informationen, wie etwa Abfragen und Playbooks, verbleiben in Ihrem verwaltenden Mandanten, können aber verwendet werden, um Sicherheitsverwaltung in den Mandanten des Kunden durchzuführen.
 
 Dieses Thema bietet eine Übersicht zur Verwendung von [Azure Sentinel](../../sentinel/overview.md) in skalierbarer Weise, um mandantenübergreifende Transparenz und verwaltete Sicherheitsdienste zu erreichen.
+
+> [!TIP]
+> Zwar beziehen wir uns in diesem Thema auf Dienstanbieter und Kunden, doch gelten diese Anweisungen auch für [Unternehmen, die Azure Lighthouse zum Verwalten mehrerer Mandanten verwenden](../concepts/enterprise.md).
 
 ## <a name="architectural-considerations"></a>Architekturaspekte
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/14/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: d2cf7dbcd97c8f740447607eaf443bc3ea4a6733
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: f6175a797b14077cafacaca1f2fd48f36e945d9e
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86500593"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87425203"
 ---
 Die Aktivierung freigegebener Datenträger ist nur für eine Teilmenge von Datenträgertypen verfügbar. Derzeit können nur Disk Ultra und SSD Premium freigegebene Datenträger ermöglichen. Jeder verwaltete Datenträger, für den freigegebene Datenträger aktiviert sind, unterliegt den folgenden Einschränkungen, die nach Datenträgertyp geordnet sind:
 
@@ -25,6 +25,8 @@ Bei der Freigabe von Disk Ultra-Datenträgern gelten die folgenden zusätzlichen
 
 - Derzeit beschränkt auf Azure Resource Manager oder die SDK-Unterstützung. 
 - Nur Basisdatenträger können mit einigen Versionen des Windows Server-Failoverclusters verwendet werden. Weitere Informationen finden Sie unter [Hardwareanforderungen und Speicheroptionen für Failoverclustering](https://docs.microsoft.com/windows-server/failover-clustering/clustering-requirements).
+
+Freigegebene Disk Ultra-Datenträger sind in allen Regionen verfügbar, die diese Datenträger standardmäßig unterstützen. Sie müssen sich nicht für den Zugriff registrieren, um diese zu verwenden.
 
 ### <a name="premium-ssds"></a>SSD Premium
 
@@ -38,4 +40,4 @@ Bei der Freigabe von Disk Ultra-Datenträgern gelten die folgenden zusätzlichen
 - Nur Basisdatenträger können mit einigen Versionen des Windows Server-Failoverclusters verwendet werden. Weitere Informationen finden Sie unter [Hardwareanforderungen und Speicheroptionen für Failoverclustering](https://docs.microsoft.com/windows-server/failover-clustering/clustering-requirements).
 - Die Unterstützung von Azure Backup und Azure Site Recovery ist noch nicht verfügbar.
 
-Wenn Sie daran interessiert sind, freigegebene Datenträger auszuprobieren, [registrieren Sie sich für den Zugriff](https://aka.ms/AzureSharedDiskGASignUp).
+Wenn Sie daran interessiert sind, freigegebene SSD Premium-Datenträger auszuprobieren, [registrieren Sie sich für den Zugriff](https://aka.ms/AzureSharedDiskGASignUp).

@@ -5,24 +5,24 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 07/02/2020
+ms.date: 08/07/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 121b3ced2e021f3907983623ea60185286797670
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: f8dfeb8a38e07d94671691bb797d26a32973c910
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86024445"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88042478"
 ---
 # <a name="conditional-access-conditions"></a>Bedingter Zugriff: Bedingungen
 
 Ein Administrator kann in einer Richtlinie für bedingten Zugriff Signale von Bedingungen wie Risiko, Geräteplattform oder Standort verwenden, um die Richtlinienentscheidungen zu verbessern. 
 
-![Definieren einer Richtlinie für bedingten Zugriff und Angeben von Bedingungen](./media/concept-conditional-access-conditions/conditional-access-conditions.png)
+[ ![Definieren einer Richtlinie für bedingten Zugriff und Angeben von Bedingungen](./media/concept-conditional-access-conditions/conditional-access-conditions.png)](./media/concept-conditional-access-conditions/conditional-access-conditions.png#lightbox)
 
 Es können mehrere Bedingungen kombiniert werden, um differenzierte und spezifische Richtlinien für bedingten Zugriff zu erstellen.
 
@@ -60,18 +60,28 @@ Beispielsweise können einige Organisationen entscheiden, dass keine mehrstufige
 
 Im Artikel [Was sind Standortbedingungen beim bedingten Zugriff in Azure Active Directory?](location-condition.md) finden Sie weitere Informationen zu Standorten.
 
-## <a name="client-apps-preview"></a>Client-Apps (Vorschau)
+## <a name="client-apps"></a>Client-Apps
 
-Richtlinien für bedingten Zugriff gelten standardmäßig für browserbasierte Anwendungen und Anwendungen, die moderne Authentifizierungsprotokolle verwenden. Zusätzlich zu diesen Anwendungen können Administratoren auch Exchange ActiveSync-Clients und andere Clients einschließen, die Legacyprotokolle verwenden.
+Alle neu erstellten Richtlinien für bedingten Zugriff gelten standardmäßig für alle Client-App-Typen, auch wenn die Client-Apps-Bedingung nicht konfiguriert ist. 
 
-- Browser
-   - Hierzu gehören webbasierte Anwendungen, die Protokolle wie SAML, WS-Verbund, OpenID Connect oder Dienste verwenden, die als vertraulicher OAuth-Client registriert sind.
-- Mobile Apps und Desktop-Apps
-   - Clients mit moderner Authentifizierung
-      - Diese Option umfasst Anwendungen wie Office-Desktop- und Telefonanwendungen.
+> [!NOTE]
+> Das Verhalten der Client-Apps-Bedingung wurde im August 2020 aktualisiert. Vorhandene Richtlinien für bedingten Zugriff bleiben unverändert erhalten. Wenn Sie jedoch auf eine vorhandene Richtlinie klicken, sehen Sie, dass die Umschaltfläche „Konfigurieren“ nicht vorhanden ist und die Client-Apps, für die die Richtlinie gilt, ausgewählt sind.
+
+> [!IMPORTANT]
+> Bei Anmeldungen von Clients mit Legacyauthentifizierung wird die mehrstufige Authentifizierung (MFA) nicht unterstützt, und es werden keine Gerätestatusinformationen an Azure AD übergeben. Die Anmeldungen werden daher durch den bedingten Zugriff mit seinen Gewährungssteuerelementen (z. B. MFA oder kompatible Geräte erforderlich ) blockiert. Wenn Sie Konten haben, für die die Legacyauthentifizierung verwendet werden muss, müssen Sie diese Konten entweder aus der Richtlinie ausschließen oder die Richtlinie so konfigurieren, dass sie nur für moderne Authentifizierungsclients gilt.
+
+Wenn die Umschaltfläche **Konfigurieren** auf **Ja** festgelegt ist, gilt sie für markierte Elemente. Wenn sie auf **Nein** eingestellt ist, gilt sie für alle Client-Apps, einschließlich Clients mit moderner und Legacyauthentifizierung. Diese Umschaltfläche ist in Richtlinien, die vor August 2020 erstellt wurden, nicht enthalten.
+
+- Clients mit moderner Authentifizierung
+   - Browser
+      - Hierzu gehören webbasierte Anwendungen, die Protokolle wie SAML, WS-Verbund, OpenID Connect oder Dienste verwenden, die als vertraulicher OAuth-Client registriert sind.
+   - Mobile Apps und Desktop-Apps
+      -  Diese Option umfasst Anwendungen wie Office-Desktop- und Telefonanwendungen.
+- Clients mit Legacyauthentifizierung
    - Exchange ActiveSync-Clients
-      - Dies umfasst standardmäßig die gesamte Verwendung des Exchange ActiveSync-Protokolls (EAS-Protokolls). Durch die Auswahl von **Richtlinie nur auf unterstützte Plattformen anwenden** wird die Richtlinie auf unterstützte Plattformen wie iOS, Android und Windows beschränkt.
+      - Umfasst die gesamte Verwendung des Exchange ActiveSync (EAS)-Protokolls.
       - Wenn die Verwendung von Exchange ActiveSync durch eine Richtlinie blockiert wird, erhält der betroffene Benutzer eine einzige Quarantäne-E-Mail. Diese E-Mail enthält Informationen zum Grund für die Blockierung und gegebenenfalls Korrekturanweisungen.
+      - Administratoren können die Richtlinie über den bedingten Zugriff der Microsoft Graph-API nur auf unterstützte Plattformen (z. B. iOS, Android und Windows) anwenden.
    - Andere Clients
       - Diese Option umfasst Clients, die Standard-/Legacyauthentifizierungsprotokolle verwenden, die keine moderne Authentifizierung unterstützen.
          - Authentifiziertes SMTP: Wird von POP- und IMAP-Clients zum Senden von E-Mail-Nachrichten verwendet.

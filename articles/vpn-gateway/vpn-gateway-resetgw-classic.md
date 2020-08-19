@@ -1,18 +1,18 @@
 ---
 title: Zurücksetzen einer Azure VPN Gateway-Instanz zum erneuten Herstellen des IPsec-Tunnels
-description: In diesem Artikel werden die Schritte zum Zurücksetzen einer Azure VPN Gateway-Instanz zum erneuten Herstellen der IPsec-Tunnel beschrieben. Der Artikel bezieht sich auf VPN-Gateways im klassischen Bereitstellungsmodell und im Resource Manager-Bereitstellungsmodell.
+description: Setzen Sie die Azure VPN Gateway-Instanz zurück, um IPSec-Tunnel für VPN-Gateways im klassischen und im Resource Manager-Bereitstellungsmodell wiederherzustellen.
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 01/09/2020
 ms.author: cherylmc
-ms.openlocfilehash: 90a01e4ee3ddf7b100ef51e55b9917c709a05864
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9f78b33a95001639abfeaecb381b597f5273c0fc
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84982882"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88033052"
 ---
 # <a name="reset-a-vpn-gateway"></a>Zurücksetzen einer VPN Gateway-Instanz
 
@@ -67,7 +67,7 @@ Ergebnis:
 
 Wenn ein Ergebnis zurückgegeben wird, können Sie davon ausgehen, dass das Gateway erfolgreich zurückgesetzt wurde. Nichts im zurückgegebenen Ergebnis gibt jedoch explizit an, dass das Zurücksetzen erfolgreich war. Wenn Sie sich den Verlauf näher ansehen möchten, um zu prüfen, wann genau das Zurücksetzen des Gateways erfolgt ist, können Sie diese Informationen im [Azure-Portal](https://portal.azure.com) anzeigen. Wechseln Sie im Portal zu **GatewayName -> Resource Health**.
 
-### <a name="classic-deployment-model"></a><a name="resetclassic"></a> Klassisches Bereitstellungsmodell
+### <a name="classic-deployment-model"></a><a name="resetclassic"></a>Klassisches Bereitstellungsmodell
 
 Das Cmdlet zum Zurücksetzen eines Gateways ist **Reset-AzureVNetGateway**. Die Azure PowerShell-Cmdlets für die Dienstverwaltung müssen lokal auf Ihrem Desktop installiert sein. Azure Cloud Shell können Sie nicht verwenden. Stellen Sie vor dem Zurücksetzen sicher, dass Sie die aktuelle Version der [Dienstverwaltungs-PowerShell-Cmdlets](https://docs.microsoft.com/powershell/azure/servicemanagement/install-azure-ps?view=azuresmps-4.0.0#azure-service-management-cmdlets) installiert haben. Wenn Sie diesen Befehl verwenden, müssen Sie den vollständigen Namen des virtuellen Netzwerks verwenden. Ein klassisches virtuelles Netzwerk, das über das Portal erstellt wurde, hat einen langen Namen, der für PowerShell erforderlich ist. Sie können den langen Namen anzeigen, indem Sie „Get-AzureVNetConfig -ExportToFile C:\MeinOrdnername\NetworkConfig.xml“ verwenden.
 

@@ -1,28 +1,31 @@
 ---
 title: Empfohlene Sicherheitsmaßnahmen
 description: Beim Verwenden von Azure Lighthouse müssen Sicherheit und Zugriffssteuerung berücksichtigt werden.
-ms.date: 07/06/2020
+ms.date: 08/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: 2c620feabf5bcedc35a36104c3ba305ac9337ff0
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: ddc4d2c69e7aacc49c5309bc407aecd9bc8e572f
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86105420"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88163270"
 ---
 # <a name="recommended-security-practices"></a>Empfohlene Sicherheitsmaßnahmen
 
 Beim Verwenden von [Azure Lighthouse](../overview.md) müssen Sicherheit und Zugriffssteuerung berücksichtigt werden. Benutzer in Ihrem Mandanten haben direkten Zugriff auf Kundenabonnements und Ressourcengruppen, weshalb Sie Maßnahmen ergreifen sollten, um die Sicherheit Ihres Mandanten aufrechtzuerhalten. Außerdem sollten Sie sicherstellen, dass Sie nur den Zugriff zulassen, der für die effektive Verwaltung der Ressourcen ihrer Kunden erforderlich ist. Dieses Thema enthält Empfehlungen, die Ihnen dabei helfen sollen.
 
+> [!TIP]
+> Diese Empfehlungen gelten auch für [Unternehmen, die mehrere Mandanten mit Azure Lighthouse verwalten](enterprise.md).
+
 ## <a name="require-azure-multi-factor-authentication"></a>Anfordern von Azure Multi-Factor Authentication
 
-[Azure Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md) (auch als zweistufige Überprüfung bezeichnet) trägt dazu bei, Angreifer daran zu hindern, Zugriff auf ein Konto zu erlangen, indem mehrere Authentifizierungsschritte erforderlich sind. Sie sollten Multi-Factor Authentication für alle Benutzer in Ihrem Dienstanbietermandanten anfordern, einschließlich aller Benutzer, die Zugriff auf Kundenressourcen haben werden.
+[Azure Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md) (auch als zweistufige Überprüfung bezeichnet) trägt dazu bei, Angreifer daran zu hindern, Zugriff auf ein Konto zu erlangen, indem mehrere Authentifizierungsschritte erforderlich sind. Sie sollten Multi-Factor Authentication für alle Benutzer in Ihrem Verwaltungsmandanten anfordern, einschließlich Benutzer, die Zugriff auf delegierte Kundenressourcen haben werden.
 
 Wir schlagen vor, dass Sie Ihre Kunden auffordern, Azure Multi-Factor Authentication auch in ihren Mandanten zu implementieren.
 
 ## <a name="assign-permissions-to-groups-using-the-principle-of-least-privilege"></a>Zuweisen von Berechtigungen an Gruppen unter Verwendung des Prinzips der geringsten Rechte
 
-Um die Verwaltung zu vereinfachen, empfiehlt es sich, Azure AD-Benutzergruppen für jede Rolle zu verwenden, die erforderlich ist, um die Ressourcen ihrer Kunden zu verwalten. Auf diese Weise können Sie der Gruppe einzelne Benutzer nach Bedarf hinzufügen oder diese daraus entfernen, anstatt dem jeweiligen Benutzer Berechtigungen direkt zuzuweisen.
+Um die Verwaltung zu vereinfachen, verwenden Sie Azure AD-Gruppen (Azure Active Directory) für jede Rolle, die zum Verwalten der Ressourcen Ihrer Kunden erforderlich ist. Auf diese Weise können Sie der Gruppe einzelne Benutzer nach Bedarf hinzufügen oder diese daraus entfernen, anstatt jedem Benutzer Berechtigungen direkt zuzuweisen.
 
 > [!IMPORTANT]
 > Um Berechtigungen für eine Azure AD-Gruppe hinzuzufügen, muss der **Gruppentyp** **Sicherheit** und nicht **Office 365** lauten. Diese Option wird bei der Erstellung der Gruppe ausgewählt. Weitere Informationen dazu finden Sie in [Erstellen einer Basisgruppe und Hinzufügen von Mitgliedern mit Azure Active Directory](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
@@ -41,7 +44,6 @@ Beispielsweise könnten Sie eine Struktur wie die folgende verwenden:
 Nachdem Sie diese Gruppen erstellt haben, können Sie Benutzer nach Bedarf zuweisen. Fügen Sie nur die Benutzer hinzu, die wirklich Zugriff benötigen. Achten Sie darauf, dass Sie die Gruppenmitgliedschaft regelmäßig überprüfen und alle Benutzer entfernen, die nicht mehr angemessen oder erforderlich sind.
 
 Bedenken Sie, dass jede Gruppe (bzw. jeder Benutzer oder Dienstprinzipal), wenn Sie [das Onboarding von Kunden über ein öffentliches verwaltetes Dienstangebot durchführen](../how-to/publish-managed-services-offers.md), die Sie einschließen, über dieselben Berechtigungen für jeden Kunden verfügt, der den Plan kauft. Um verschiedene Gruppen für die Arbeit mit den einzelnen Kunden zuzuweisen, müssen Sie einen gesonderten privaten Plan veröffentlichen, der exklusiv für jeden Kunden ist, oder Sie müssen Kunden einzeln aufnehmen, indem Sie Azure Resource Manager-Vorlagen verwenden. Beispielsweise könnten Sie einen öffentlichen Plan veröffentlichen, der nur über sehr eingeschränkten Zugriff verfügt, und dann mit dem Kunden direkt zusammenarbeiten, um dessen Ressourcen für zusätzlichen Zugriff zu integrieren, indem Sie eine angepasste Azure Resource Manager-Vorlage verwenden, die nach Bedarf zusätzlichen Zugriff gewährt.
-
 
 ## <a name="next-steps"></a>Nächste Schritte
 

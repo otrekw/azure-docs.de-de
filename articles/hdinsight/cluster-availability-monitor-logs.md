@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
-ms.date: 05/01/2020
-ms.openlocfilehash: 25bda7ed94eef20e22bcf717780d08a3ea5e6521
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.date: 08/12/2020
+ms.openlocfilehash: 19e3f1a157ee2c042dfebfc96c9b51c3c4698ebc
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86077217"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88163729"
 ---
 # <a name="how-to-monitor-cluster-availability-with-azure-monitor-logs-in-hdinsight"></a>Überwachen der Clusterverfügbarkeit mit Azure Monitor-Protokollen in HDInsight
 
@@ -30,6 +30,8 @@ Wählen Sie im Portal auf der Seite mit den HDInsight-Clusterressourcen **Azure 
 
 ![HDInsight Operations Management Suite](media/cluster-availability-monitor-logs/azure-portal-monitoring.png)
 
+Standardmäßig wird damit der OMS-Agent auf allen Clusterknoten (mit Ausnahme der Edgeknoten) installiert. Da auf den Edgeknoten des Clusters kein OMS-Agent installiert ist, sind standardmäßig keine Telemetriedaten für Edgeknoten in Log Analytics vorhanden.
+
 ## <a name="query-metrics-and-logs-tables"></a>Abfragemetriken und Protokolltabellen
 
 Sobald die Integration von Azure Monitor-Protokollen aktiviert ist (was einige Minuten dauern kann), navigieren Sie zu Ihrer Ressource **Log Analytics-Arbeitsbereich** und wählen **Protokolle** aus.
@@ -46,7 +48,7 @@ In den Protokollen sind eine Reihe von Beispielabfragen aufgeführt, wie z. B.:
 | Unavailable computers (Nicht verfügbare Computer)           | Listet alle bekannten Computer auf, die in den letzten 5 Stunden keinen Heartbeat gesendet haben |
 | Availability rate (Verfügbarkeitsrate)               | Berechnet die Verfügbarkeitsrate jedes angebundenen Computers                |
 
-Sie können die Beispielabfrage **Availability rate** (Verfügbarkeitsrate) ausführen, indem Sie für die Abfrage **Run** (Ausführen) auswählen, wie im Screenshot oben dargestellt. Dadurch wird die Verfügbarkeitsrate jedes Knotens in Ihrem Cluster als Prozentsatz angezeigt. Wenn Sie mehrere HDInsight-Cluster für das Senden von Metriken an denselben Log Analytics-Arbeitsbereich aktiviert haben, wird die Verfügbarkeitsrate für alle Knoten in diesen Clustern angezeigt.
+Sie können die Beispielabfrage **Availability rate** (Verfügbarkeitsrate) ausführen, indem Sie für die Abfrage **Run** (Ausführen) auswählen, wie im Screenshot oben dargestellt. Dadurch wird die Verfügbarkeitsrate jedes Knotens in Ihrem Cluster als Prozentsatz angezeigt. Wenn Sie mehrere HDInsight-Cluster für das Senden von Metriken an denselben Log Analytics-Arbeitsbereich aktiviert haben, wird die Verfügbarkeitsrate für alle Knoten (mit Ausnahme der Edgeknoten) in diesen Clustern angezeigt.
 
 ![Protokolle im Log Analytics-Arbeitsbereich mit Beispielabfrage zur Verfügbarkeitsrate](media/cluster-availability-monitor-logs/portal-availability-rate.png)
 

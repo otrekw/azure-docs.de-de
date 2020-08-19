@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e8486241d4de0025603b22b591f4a8f62901bd7f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 172824a2215e8a102ad4c284c847072960344549
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85203655"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88041526"
 ---
 # <a name="define-a-restful-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definieren eines technischen RESTful-Profils in einer benutzerdefinierten Richtlinie in Azure Active Directory B2C
 
@@ -115,9 +115,9 @@ Das technische Profil gibt auch Ansprüche zurück, die vom Identitätsanbieter 
 | attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | ServiceUrl | Ja | Die URL des REST-API-Endpunkts. |
-| AuthenticationType | Ja | Der Typ der Authentifizierung, die vom RESTful-Anspruchsanbieter ausgeführt wird. Mögliche Werte: `None`, `Basic`, `Bearer` oder `ClientCertificate`. Der Wert `None` gibt an, dass die REST-API nicht anonym ist. Der Wert `Basic` gibt an, dass die REST-API mit HTTP-Standardauthentifizierung geschützt ist. Nur verifizierte Benutzer, einschließlich Azure AD B2C, haben Zugriff auf Ihre API. Der (empfohlene) Wert `ClientCertificate` gibt an, dass die REST-API den Zugriff mithilfe von Clientzertifikatauthentifizierung einschränkt. Nur Dienste mit den richtigen Zertifikaten (z.B. Azure AD B2C) erhalten Zugriff auf Ihre API. Der Wert `Bearer` gibt an, dass die REST-API den Zugriff mithilfe des OAuth2-Bearertokens des Clients beschränkt. |
+| AuthenticationType | Ja | Der Typ der Authentifizierung, die vom RESTful-Anspruchsanbieter ausgeführt wird. Mögliche Werte: `None`, `Basic`, `Bearer` oder `ClientCertificate`. Der Wert `None` gibt an, dass die REST-API anonym ist. Der Wert `Basic` gibt an, dass die REST-API mit HTTP-Standardauthentifizierung geschützt ist. Nur verifizierte Benutzer, einschließlich Azure AD B2C, haben Zugriff auf Ihre API. Der (empfohlene) Wert `ClientCertificate` gibt an, dass die REST-API den Zugriff mithilfe von Clientzertifikatauthentifizierung einschränkt. Nur Dienste mit den richtigen Zertifikaten (z.B. Azure AD B2C) erhalten Zugriff auf Ihre API. Der Wert `Bearer` gibt an, dass die REST-API den Zugriff mithilfe des OAuth2-Bearertokens des Clients beschränkt. |
 | AllowInsecureAuthInProduction| Nein| Gibt an, ob der `AuthenticationType` in der Produktionsumgebung auf `none` festgelegt werden kann (`DeploymentMode` von [TrustFrameworkPolicy](trustframeworkpolicy.md) ist auf `Production` festgelegt oder nicht angegeben). Mögliche Werte: TRUE oder FALSE (Standard). |
-| SendClaimsIn | Nein | Gibt an, wie Eingabeansprüche an den RESTful-Anspruchsanbieter gesendet werden. Mögliche Werte: `Body` (Standard), `Form`, `Header` oder `QueryString`. Der Wert `Body` ist der Eingabeanspruch, der im Anforderungstext im JSON-Format gesendet wird. Der Wert `Form` ist der Eingabeanspruch, der im Anforderungstext in einem durch kaufmännische Und-Zeichen (&) getrenntes Schlüssel-Wert-Format gesendet wird. Der Wert `Header` ist der Eingabeanspruch, der im Anforderungsheader gesendet wird. Der Wert `QueryString` ist der Eingabeanspruch, der in der Abfragezeichenfolge der Anforderung gesendet wird. Die jeweils aufgerufenen HTTP-Verben lauten wie folgt:<br /><ul><li>`Body`: POST</li><li>`Form`: POST</li><li>`Header`: GET</li><li>`QueryString`: GET</li></ul> |
+| SendClaimsIn | Nein | Gibt an, wie Eingabeansprüche an den RESTful-Anspruchsanbieter gesendet werden. Mögliche Werte: `Body` (Standard), `Form`, `Header`, `Url` oder `QueryString`. Der Wert `Body` ist der Eingabeanspruch, der im Anforderungstext im JSON-Format gesendet wird. Der Wert `Form` ist der Eingabeanspruch, der im Anforderungstext in einem durch kaufmännische Und-Zeichen (&) getrenntes Schlüssel-Wert-Format gesendet wird. Der Wert `Header` ist der Eingabeanspruch, der im Anforderungsheader gesendet wird. Der Wert `Url` ist der Eingabeanspruch, der in der URL gesendet wird, zum Beispiel https://{Anspruch1}.example.com/{Anspruch2}/{Anspruch3}?{Anspruch4}={Anspruch5}. Der Wert `QueryString` ist der Eingabeanspruch, der in der Abfragezeichenfolge der Anforderung gesendet wird. Die jeweils aufgerufenen HTTP-Verben lauten wie folgt:<br /><ul><li>`Body`: POST</li><li>`Form`: POST</li><li>`Header`: GET</li><li>`Url`: GET</li><li>`QueryString`: GET</li></ul> |
 | ClaimsFormat | Nein | Derzeit nicht verwendet, kann ignoriert werden. |
 | ClaimUsedForRequestPayload| Nein | Der Name eines Zeichenfolgenanspruchs, der die an die REST-API zu sendende Nutzlast enthält. |
 | DebugMode | Nein | Führt das technische Profil im Debugmodus aus. Mögliche Werte sind `true` oder `false` (Standardwert). Im Debugmodus kann die REST-API mehr Informationen zurückgeben. Die entsprechenden Informationen finden Sie im Abschnitt [Zurückgegebene Fehlermeldung](#returning-validation-error-message). |

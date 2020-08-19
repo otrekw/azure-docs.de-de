@@ -2,7 +2,7 @@
 title: Hinzufügen eines vorhandenen Azure-Abonnements zu Ihrem Mandanten – Azure AD
 description: Anleitungen zum Hinzufügen eines vorhandenen Azure-Abonnements zu Ihrem Azure Active Directory-Mandanten.
 services: active-directory
-author: msaburnley
+author: ajburnle
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18, contperfq4
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 347232d452b5d309da7cdb7c8fe34f0e41abde00
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 95c3ad5fa66e1327c1fe646303f268ae4e84bd89
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87025337"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87825020"
 ---
 # <a name="associate-or-add-an-azure-subscription-to-your-azure-active-directory-tenant"></a>Zuordnen oder Hinzufügen eines Azure-Abonnements zu Ihrem Azure Active Directory-Mandanten
 
@@ -31,7 +31,7 @@ Wenn Ihr Abonnement abläuft, verlieren Sie auch den Zugriff auf alle Ressourcen
 Alle Ihre Benutzer verfügen über ein einzelnes *Basisverzeichnis* für die Authentifizierung. Ihre Benutzer können jedoch auch Gäste in anderen Verzeichnissen sein. Ihnen werden sowohl das Basis- als auch das Gastverzeichnis für jeden Benutzer in Azure AD angezeigt.
 
 > [!Important]
-> Wenn Sie ein Abonnement einem anderen Verzeichnis zuordnen, verlieren Benutzer, denen Rollen mit der [rollenbasierten Zugriffssteuerung (RBAC)](../../role-based-access-control/role-assignments-portal.md) zugewiesen wurden, ihren Zugriff. Klassische Abonnementadministratoren (Dienstadministrator und Co-Admin) verlieren ebenfalls ihren Zugriff.
+> Wenn Sie ein Abonnement einem anderen Verzeichnis zuordnen, verlieren Benutzer, denen Rollen mit der [rollenbasierten Zugriffssteuerung von Azure (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md) zugewiesen wurden, ihren Zugriff. Klassische Abonnementadministratoren (Dienstadministrator und Co-Admin) verlieren ebenfalls ihren Zugriff.
 >
 > Richtlinienzuweisungen werden auch aus einem Abonnement entfernt, wenn das Abonnement einem anderen Verzeichnis zugeordnet ist.
 >
@@ -95,6 +95,6 @@ Nachdem Sie ein Abonnement einem anderen Verzeichnis zugeordnet haben, müssen S
 
 - Informationen zum Erstellen eines neuen Azure AD-Mandanten finden Sie unter [Schnellstart: Erstellen eines neuen Mandanten in Azure Active Directory](active-directory-access-create-new-tenant.md).
 
-- Weitere Informationen dazu, wie Microsoft Azure den Zugriff auf Ressourcen steuert, finden Sie unter [Administratorrollen für klassische Abonnements, Azure RBAC-Rollen und Azure AD-Administratorrollen](../../role-based-access-control/rbac-and-directory-admin-roles.md).
+- Weitere Informationen zum Steuern des Zugriffs auf Ressourcen durch Microsoft Azure finden Sie unter [Administratorrollen für klassische Abonnements, Azure-Rollen und Azure AD-Administratorrollen](../../role-based-access-control/rbac-and-directory-admin-roles.md).
 
 - Weitere Informationen zum Zuweisen von Rollen in Azure AD finden Sie unter [Zuweisen von Administrator- und anderen Rollen zu Benutzern mithilfe von Azure Active Directory](active-directory-users-assign-role-azure-portal.md).

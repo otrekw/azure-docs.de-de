@@ -6,14 +6,14 @@ author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
 ms.workload: infrastructure-services
-ms.date: 06/30/2020
+ms.date: 08/05/2020
 ms.author: cherylmc
-ms.openlocfilehash: 0aac3d7a4bc2eb8bb83405155b345360f5d2c699
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: 48178c2c0e4028cb913b2a07448652719a1f616d
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87407352"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87844727"
 ---
 # <a name="expressroute-connectivity-partners-and-peering-locations"></a>ExpressRoute-Konnektivitätspartner und Peeringstandorte
 
@@ -44,7 +44,7 @@ Die folgende Tabelle bietet eine Übersicht über die Azure-Regionen mit Express
 | --- | --- | --- |
 | **Australische Behörden** |Australien, Mitte; Australien, Mitte 2 |Canberra, Canberra2 |
 | **Europa** | Frankreich, Mitte; Frankreich, Süden; Deutschland, Norden; Deutschland, Westen-Mitte; Europa, Norden; Norwegen, Osten; Norwegen, Westen; Schweiz, Norden; Schweiz, Westen; Vereinigtes Königreich, Westen; Vereinigtes Königreich, Süden; Europa, Westen |Amsterdam, Amsterdam2, Berlin, Dublin, Frankfurt, Genf, Kopenhagen, London, London2, Mailand, Marseille, München, Newport (Wales), Oslo, Paris, Stavanger, Stockholm, Zürich |
-| **Nordamerika** |USA, Osten; USA, Westen; USA, Osten 2; USA, Westen 2; USA, Mitte; USA, Süden-Mitte; USA, Norden-Mitte; USA, Westen-Mitte; Kanada, Mitte; Kanada, Osten |Atlanta, Chicago, Dallas, Denver, Las Vegas, Los Angeles, Miami, Minneapolis, New York, Queretaro(Mexico), San Antonio, Seattle, Silicon Valley, Silicon Valley2, Washington DC, Washington DC2, Montreal, Quebec City, Toronto, Vancouver |
+| **Nordamerika** |USA, Osten; USA, Westen; USA, Osten 2; USA, Westen 2; USA, Mitte; USA, Süden-Mitte; USA, Norden-Mitte; USA, Westen-Mitte; Kanada, Mitte; Kanada, Osten |Atlanta, Chicago, Dallas, Denver, Las Vegas, Los Angeles, Los Angeles2, Miami, Minneapolis, New York, Queretaro (Mexiko), San Antonio, Seattle, Silicon Valley, Silicon Valley2, Washington DC, Washington DC2, Montreal, Quebec City, Toronto, Vancouver |
 | **Asien** | Ostasien, Südostasien | Bangkok, Hongkong, Hongkong2, Jakarta, Kuala Lumpur, Singapur, Singapur2, Taipeh |
 | **Indien** | Indien, Westen, Indien, Mitte, Indien, Süden |Chennai, Chennai2, Mumbai, Mumbai2 |
 | **Japan** | Japan West, Japan Ost |Osaka, Tokio, Tokio2 |
@@ -105,7 +105,7 @@ Die folgende Tabelle enthält die Standorte nach Service Provider. [Hier](expres
 | **du datamena** |Unterstützt |Unterstützt | Dubai2 |
 | **eir** |Unterstützt |Unterstützt |Dublin|
 | **[Epsilon Global Communications](https://www.epsilontel.com/solutions/direct-cloud-connect)** |Unterstützt |Unterstützt |Singapur, Singapur2 |
-| **[Equinix](https://www.equinix.com/partners/microsoft-azure/)** |Unterstützt |Unterstützt |Amsterdam, Atlanta, Chicago, Dallas, Dublin, Frankfurt, Genf, Hongkong (SAR), London, London2, Los Angeles, Melbourne, Miami, Mailand, New York, Osaka, Paris, São Paulo, Seattle, Silicon Valley, Singapur, Stockholm, Sydney, Tokio, Toronto, Washington DC |
+| **[Equinix](https://www.equinix.com/partners/microsoft-azure/)** |Unterstützt |Unterstützt |Amsterdam, Atlanta, Chicago, Dallas, Dublin, Frankfurt, Genf, Hongkong (SAR), London, London2, Los Angeles, Los Angeles2, Melbourne, Miami, Mailand, New York, Osaka, Paris, São Paulo, Seattle, Silicon Valley, Singapur, Stockholm, Sydney, Tokio, Toronto, Washington DC |
 | **Etisalat (VAE)** |Unterstützt |Unterstützt |Dubai|
 | **[euNetworks](https://eunetworks.com/services/solutions/cloud-connect/microsoft-azure-expressroute/)** |Unterstützt |Unterstützt |Amsterdam, Amsterdam2, Dublin, Frankfurt, London |
 | **FarEasTone** |Unterstützt |Unterstützt |Taipeh|

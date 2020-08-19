@@ -1,20 +1,23 @@
 ---
 title: Entfernen des Zugriffs auf eine Delegierung
 description: Erfahren Sie, wie Sie Zugriff auf Ressourcen entfernen können, die an einen Dienstanbieter für Azure Lighthouse delegiert worden waren.
-ms.date: 07/07/2020
+ms.date: 08/12/2020
 ms.topic: how-to
-ms.openlocfilehash: be1547056bc3ec387ba4cba52f6b6d6fbcaad23c
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 72a2c49dde8cccfcc298d4128384a10bb7e8840f
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86111727"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88167225"
 ---
 # <a name="remove-access-to-a-delegation"></a>Entfernen des Zugriffs auf eine Delegierung
 
 Nachdem das Abonnement oder die Ressourcengruppe eines Kunden an einen Dienstanbieter für [Azure Lighthouse](../overview.md) delegiert wurde, kann die Delegierung bei Bedarf entfernt werden. Nachdem eine Delegierung entfernt wurde, gilt der Zugriff [der delegierten Azure-Ressourcenverwaltung](../concepts/azure-delegated-resource-management.md), der den Benutzern im Dienstanbietermandanten zuvor gewährt wurde, nicht mehr.
 
 Das Entfernen einer Delegierung kann durch einem Benutzer entweder im Kundenmandanten oder im Dienstanbietermandanten ausgeführt werden, sofern der Benutzer über die entsprechenden Berechtigungen verfügt.
+
+> [!TIP]
+> Zwar beziehen wir uns in diesem Thema auf Dienstanbieter und Kunden, doch können [Unternehmen, die mehrere Mandanten verwalten](../concepts/enterprise.md), denselben Prozess verwenden.
 
 ## <a name="customers"></a>Kunden
 

@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 01/09/2020
-ms.openlocfilehash: 08e146ebde34c6d85e258c93a1ed1780bb97727b
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 6c96c4803293db9d9bacfc43f0de2f7803e6c41c
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206451"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836478"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mariadb-using-portal"></a>Erstellen und Verwalten von Private Link für Azure Database for MariaDB über das Portal
 
@@ -20,7 +20,7 @@ Ein privater Endpunkt ist der grundlegende Baustein für Private Link in Azure. 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
 > [!NOTE]
-> Dieses Feature steht in allen Azure-Regionen zur Verfügung, in denen Azure Database for MariaDB die Tarife „Universell“ und „Arbeitsspeicheroptimiert“ unterstützt.
+> Das Feature „Private Link“ ist nur für Azure Database for MariaDB-Server in den Tarifen „Universell“ und „Arbeitsspeicheroptimiert“ verfügbar. Stellen Sie sicher, dass für den Datenbankserver einer dieser Tarife festgelegt ist.
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
@@ -240,7 +240,7 @@ Stellen Sie nach der Erstellung von **myVm** über das Internet eine Verbindung 
 
 6. (Optional) Durchsuchen von Datenbanken im linken Menü und Erstellen von Informationen in der MariaDB-Datenbank oder Abfragen von Informationen darin
 
-7. Schließen Sie die Remotedesktopverbindung mit myVm.
+7. Schließen Sie die Remotedesktopverbindung mit „myVm“.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 Wenn Sie Ihre Arbeit mit dem privaten Endpunkt, dem MariaDB-Server und dem virtuellen Computer abgeschlossen haben, löschen Sie die Ressourcengruppe und alle darin enthaltenen Ressourcen:

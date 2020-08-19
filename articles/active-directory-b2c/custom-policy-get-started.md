@@ -12,12 +12,12 @@ ms.date: 02/28/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: cb3bb363b1d6be72fe8941cad509b4c3525cfa15
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: 54d92da469625a3b81d0027558ec14166d916b80
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87169428"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88163185"
 ---
 # <a name="get-started-with-custom-policies-in-azure-active-directory-b2c"></a>Erste Schritte für benutzerdefinierte Richtlinien in Azure Active Directory B2C
 
@@ -213,6 +213,6 @@ Wie unter [Voraussetzungen](#prerequisites) erwähnt, ist Facebook *nicht* erfor
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Fügen Sie als Nächstes Azure Active Directory (Azure AD) als Identitätsanbieter hinzu. Die in diesem Leitfaden für erste Schritte verwendete Basisdatei enthält bereits einige Inhalte, die Sie zum Hinzufügen anderer Identitätsanbieter, z. B. Azure AD, benötigen.
+Fügen Sie als Nächstes Azure Active Directory (Azure AD) als Identitätsanbieter hinzu. Die in diesem Leitfaden für erste Schritte verwendete Basisdatei enthält bereits einige Inhalte, die Sie zum Hinzufügen anderer Identitätsanbieter, z. B. Azure AD, benötigen. Informationen zum Einrichten von Azure AD als Identitätsanbieter finden Sie unter [Einrichten von Registrierung und Anmeldung mit einem Azure Active Directory-Konto mithilfe benutzerdefinierter Richtlinien in Azure Active Directory B2C](identity-provider-azure-ad-single-tenant-custom.md). 
 
-Weitere Informationen zur Einrichtung von Azure AD als Identitätsanbieter finden Sie unter [Einrichten der Anmeldung mit einem Azure Active Directory-Konto mithilfe benutzerdefinierter Richtlinien in Azure Active Directory B2C](identity-provider-azure-ad-single-tenant-custom.md).
+In unserem [Partnerkatalog](partner-gallery.md) erfahren Sie mehr über die Implementierung der ISV-Integration mithilfe von benutzerdefinierten Richtlinien. 

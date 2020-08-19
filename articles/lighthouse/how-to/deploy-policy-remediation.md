@@ -1,18 +1,21 @@
 ---
 title: Bereitstellen einer Richtlinie, die gewartet werden kann
 description: Zum Bereitstellen von Richtlinien, die einen Wartungstask über Azure Lighthouse verwenden, müssen Sie eine verwaltete Identität im Mandanten des Kunden erstellen.
-ms.date: 07/07/2020
+ms.date: 08/12/2020
 ms.topic: how-to
-ms.openlocfilehash: fc13b6209826d4a59d82bca5db63d4ca5c39f9fb
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 998576d06d470c525a551463861f7a25d4ab9d8f
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86105335"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88163253"
 ---
 # <a name="deploy-a-policy-that-can-be-remediated-within-a-delegated-subscription"></a>Bereitstellen einer Richtlinie, die innerhalb eines delegierten Abonnements gewartet werden kann
 
 Mit [Azure Lighthouse](../overview.md) können Dienstanbieter Richtliniendefinitionen innerhalb eines delegierten Abonnements erstellen und bearbeiten. Wenn Sie allerdings Richtlinien mit einem [Wartungstask](../../governance/policy/how-to/remediate-resources.md) (sprich: Richtlinien mit [deployIfNotExists](../../governance/policy/concepts/effects.md#deployifnotexists)- oder [modify](../../governance/policy/concepts/effects.md#modify)-Effekt) bereitstellen möchten, müssen Sie eine [verwaltete Identität](../../active-directory/managed-identities-azure-resources/overview.md) im Kundenmandanten erstellen. Diese verwaltete Identität kann von Azure Policy verwendet werden, um die Vorlage innerhalb der Richtlinie bereitzustellen. Für dieses Szenario sind bestimmte Schritte erforderlich – sowohl beim Onboarding des Kunden für die delegierte Azure-Ressourcenverwaltung als auch bei der Bereitstellung der eigentlichen Richtlinie.
+
+> [!TIP]
+> Zwar beziehen wir uns in diesem Thema auf Dienstanbieter und Kunden, doch können [Unternehmen, die mehrere Mandanten verwalten](../concepts/enterprise.md), denselben Prozess verwenden.
 
 ## <a name="create-a-user-who-can-assign-roles-to-a-managed-identity-in-the-customer-tenant"></a>Erstellen eines Benutzers, der einer verwalteten Identität im Kundenmandanten Rollen zuweisen kann
 

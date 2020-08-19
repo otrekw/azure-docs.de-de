@@ -4,23 +4,23 @@ description: In diesem Artikel werden das Konfigurieren und Ändern der Standard
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 06/09/2020
+ms.date: 08/11/2020
 ms.author: tisande
-ms.openlocfilehash: a335da61fac914368b4044a97582ef0060f5de4a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e1254b31bffa72918b46c550e8354bd1c2195dfb
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84636324"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88077593"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Indizierungsrichtlinien in Azure Cosmos DB
 
-In Azure Cosmos DB verfügt jeder Container über eine Indizierungsrichtlinie, die bestimmt, wie die Elemente eines Containers indiziert werden. Die standardmäßige Indizierungsrichtlinie für neu erstellte Container indiziert sämtliche Eigenschaften jedes Elements und erzwingt Bereichsindizes für jede Zeichenfolge oder Zahl und räumliche Indizes für jedes GeoJSON-Objekt vom Typ „Punkt“. Dadurch erzielen Sie eine hohe Abfrageleistung, ohne sich im Vorfeld Gedanken über die Indizierung und Indexverwaltung machen zu müssen.
+In Azure Cosmos DB verfügt jeder Container über eine Indizierungsrichtlinie, die bestimmt, wie die Elemente eines Containers indiziert werden. Die standardmäßige Indizierungsrichtlinie für neu erstellte Container indiziert sämtliche Eigenschaften jedes Elements und erzwingt Bereichsindizes für jede Zeichenfolge oder Zahl. Dadurch erzielen Sie eine hohe Abfrageleistung, ohne sich im Vorfeld Gedanken über die Indizierung und Indexverwaltung machen zu müssen.
 
 In einigen Fällen ist eventuell sinnvoll, dieses automatische Verhalten besser an Ihre Anforderungen anzupassen. Sie können die Indizierungsrichtlinie eines Containers anpassen, indem Sie seinen *Indizierungsmodus* festlegen und *Eigenschaftenpfade* ein- oder ausschließen.
 
 > [!NOTE]
-> Die in diesem Artikel beschriebene Methode zur Aktualisierung von Indizierungsrichtlinien gilt nur für die SQL (Core)-API von Azure Cosmos DB.
+> Die in diesem Artikel beschriebene Methode zur Aktualisierung von Indizierungsrichtlinien gilt nur für die SQL (Core)-API von Azure Cosmos DB. Informationen zum Indizieren finden Sie unter [Verwalten der Indizierung in der Azure Cosmos DB-API für MongoDB](mongodb-indexing.md).
 
 ## <a name="indexing-mode"></a>Indizierungsmodus
 
@@ -36,7 +36,7 @@ Diese Indizierungsrichtlinie ist standardmäßig auf `automatic` festgelegt. Hie
 
 ## <a name="including-and-excluding-property-paths"></a><a id="include-exclude-paths"></a> Ein- und Ausschließen von Eigenschaftenpfaden
 
-Mit einer benutzerdefinierten Indizierungsrichtlinie können Eigenschaftenpfade angegeben werden, die explizit in die Indizierung eingeschlossen oder von ihr ausgeschlossen werden. Durch das Optimieren der Anzahl der Pfade, die indiziert werden, können Sie das Speichervolumen, das von Ihrem Container verwendet wird, und die Latenz von Schreibvorgängen verringern. Diese Pfade werden anhand [der Methode, die im Übersichtsabschnitt zur Indizierung beschrieben wird](index-overview.md#from-trees-to-property-paths), definiert. Dabei gelten die folgenden Ergänzungen:
+Mit einer benutzerdefinierten Indizierungsrichtlinie können Eigenschaftenpfade angegeben werden, die explizit in die Indizierung eingeschlossen oder von ihr ausgeschlossen werden. Indem Sie die Anzahl der indizierten Pfade optimieren, können Sie die Wartezeit und die RU-Gebühr für Schreibvorgänge erheblich verringern. Diese Pfade werden anhand [der Methode, die im Übersichtsabschnitt zur Indizierung beschrieben wird](index-overview.md#from-trees-to-property-paths), definiert. Dabei gelten die folgenden Ergänzungen:
 
 - Ein Pfad zu einem Skalarwert (Zeichenfolge oder Zahl) endet auf `/?`.
 - Elemente aus einem Array werden über die `/[]`-Notation (anstelle von `/0`, `/1` usw.) adressiert.
@@ -129,7 +129,7 @@ Wenn Sie in der Indizierungsrichtlinie einen räumlichen Pfad definieren, müsse
 
 * LineString
 
-Azure Cosmos DB erstellt standardmäßig keine räumlichen Indizes. Wenn Sie integrierte räumliche SQL-Funktionen verwenden möchten, müssen Sie einen räumlichen Index für die erforderlichen Eigenschaften erstellen. Exemplarische Indizierungsrichtlinien zum Hinzufügen räumlicher Indizes finden Sie in [diesem Abschnitt](geospatial.md).
+Azure Cosmos DB erstellt standardmäßig keine räumlichen Indizes. Wenn Sie integrierte räumliche SQL-Funktionen verwenden möchten, müssen Sie einen räumlichen Index für die erforderlichen Eigenschaften erstellen. Exemplarische Indizierungsrichtlinien zum Hinzufügen räumlicher Indizes finden Sie in [diesem Abschnitt](sql-query-geospatial-index.md).
 
 ## <a name="composite-indexes"></a>Zusammengesetzte Indizes
 
@@ -259,16 +259,23 @@ Bei der Erstellung zusammengesetzter Indizes für die Optimierung einer Abfrage 
 
 ## <a name="modifying-the-indexing-policy"></a>Ändern der Indizierungsrichtlinie
 
-Die Indizierungsrichtlinie eines Containers kann jederzeit [im Azure-Portal oder mit einem der unterstützten SDKs](how-to-manage-indexing-policy.md) aktualisiert werden. Die Aktualisierung einer Indizierungsrichtlinie löst eine Transformation vom alten Index auf den neuen aus. Dies erfolgt online und direkt (sodass während des Vorgangs kein zusätzlicher Speicherplatz verbraucht wird). Der Index der alten Richtlinie wird effizient anhand der neuen Richtlinie transformiert, ohne die Schreibverfügbarkeit oder den Durchsatz, der für den Container bereitgestellt wird, zu beeinträchtigen. Die Indextransformation ist ein asynchroner Vorgang. Der erforderliche Zeitaufwand hängt vom bereitgestellten Durchsatz, der Anzahl der Elemente und ihrer Größe ab.
+Die Indizierungsrichtlinie eines Containers kann jederzeit [im Azure-Portal oder mit einem der unterstützten SDKs](how-to-manage-indexing-policy.md) aktualisiert werden. Die Aktualisierung einer Indizierungsrichtlinie löst eine Transformation vom alten Index auf den neuen aus. Dies erfolgt online und direkt (sodass während des Vorgangs kein zusätzlicher Speicherplatz verbraucht wird). Der Index der alten Richtlinie wird anhand der neuen Richtlinie effizient transformiert, ohne die Schreibverfügbarkeit, Leseverfügbarkeit oder den Durchsatz, der für den Container bereitgestellt wird, zu beeinträchtigen. Die Indextransformation ist ein asynchroner Vorgang. Der erforderliche Zeitaufwand hängt vom bereitgestellten Durchsatz, der Anzahl der Elemente und ihrer Größe ab.
 
 > [!NOTE]
-> Beim Hinzufügen eines Bereichs- oder räumlichen Index werden bei Abfragen unter Umständen nicht alle übereinstimmenden Ergebnisse zurückgegeben, aber es werden keine Fehler angezeigt. Dies bedeutet, dass die Abfrageergebnisse möglicherweise bis zum Abschluss der Transformation nicht konsistent sind. Es ist möglich, den Fortschritt der Indextransformation [mit einem der SDKs](how-to-manage-indexing-policy.md) zu verfolgen.
+> Es ist möglich, den Fortschritt der Indextransformation [mit einem der SDKs](how-to-manage-indexing-policy.md) zu verfolgen.
 
-Wenn der Modus der neuen Indizierungsrichtlinie auf „Konsistent“ festgelegt wurde, kann während der Ausführung der Indextransformation keine andere Änderung an der Indizierungsrichtlinie angewandt werden. Sie können eine aktuell ausgeführte Indextransformation abbrechen, indem Sie den Modus der Indizierungsrichtlinie auf „Keine“ festlegen (der Index wird direkt gelöscht).
+Es gibt keine Auswirkung auf die Schreibverfügbarkeit während der Indextransformationen. Die Indextransformation verwendet Ihre bereitgestellten RUs, allerdings mit einer niedrigeren Priorität als die CRUD-Vorgänge oder -Abfragen.
+
+Das Hinzufügen eines neuen Indexes hat keine Auswirkung auf die Leseverfügbarkeit. Abfragen verwenden neue Indizes erst dann, wenn die Indextransformation abgeschlossen ist. Während der Indextransformation werden von der Abfrage-Engine weiterhin vorhandene Indizes verwendet, sodass Sie während der Indextransformation eine ähnliche Leseleistung beobachten werden wie vor dem Einleiten der Indexänderung. Beim Hinzufügen neuer Indizes besteht auch kein Risiko, unvollständige oder inkonsistente Abfrageergebnisse zu erhalten.
+
+Beim Entfernen von Indizes und beim sofortigen Ausführen von Abfragen, die nach den gelöschten Indizes filtern, gibt es keine Garantie für konsistente oder komplette Abfrageergebnisse. Wenn Sie im Zuge einer einzigen Indizierungsrichtlinienänderung mehrere Indizes entfernen, garantiert die Abfrage-Engine konsistente und vollständige Ergebnisse im Rahmen der Indextransformation. Wenn Sie Indizes jedoch über mehrere Indizierungsrichtlinienänderungen entfernen, garantiert die Abfrage-Engine keine konsistenten oder vollständigen Ergebnisse, bis alle Indextransformationen abgeschlossen sind. Die meisten Entwickler löschen keine Indizes und versuchen dann sofort, Abfragen auszuführen, die diese Indizes verwenden, sodass diese Situation in der Praxis eher unwahrscheinlich ist.
+
+> [!NOTE]
+> Sie sollten immer versuchen, mehrere Indizierungsänderungen zu einer einzelnen Indizierungsrichtlinienänderung zu gruppieren.
 
 ## <a name="indexing-policies-and-ttl"></a>Indizierungsrichtlinien und Gültigkeitsdauer
 
-Für die Funktion [Gültigkeitsdauer](time-to-live.md) (Time-to-Live, TTL) muss die Indizierung für den Container aktiviert sein. Dies bedeutet Folgendes:
+Die Verwendung des [TTL-Features (Time-to-Live)](time-to-live.md) erfordert die Indizierung. Dies bedeutet Folgendes:
 
 - Es ist nicht möglich, die TTL für einen Container zu aktivieren, wenn dessen Indizierungsmodus auf „Keine“ festgelegt ist.
 - Es ist nicht möglich, den Indizierungsmodus für einen Container, in dem die TTL aktiviert ist, auf „Keine“ festzulegen.

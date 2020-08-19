@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/11/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: e5148ff9e92a2e550a3117356a4e77cbac8fc6f4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: da5811abec889bcc47d08878a0950df7f0983663
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "67673345"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87010823"
 ---
 *Auffüllen des Caches*  
 Der Datenträger mit der Hostcache-Einstellung „ReadOnly“ bietet eine IOPS-Rate, die höher als das Datenträgerlimit ist. Um diese maximale Leseleistung aus dem Hostcache zu erzielen, müssen zuerst Sie den Cache dieses Datenträgers mit gültigen Daten auffüllen. Dies stellt sicher, dass die Lese-E/As, die das Benchmarktool auf dem Volume „CacheReads“ erzeugt, tatsächlich den Cache und nicht direkt den Datenträger abfragen. Die Cachetreffer führen zu weiteren IOPS auf dem einzelnen Datenträger mit aktiviertem Cache.
@@ -194,11 +194,11 @@ sudo fio --runtime 30 fioread.ini
 ```
 
 Während der Testausführung können Sie die Anzahl der Lese-IOPS erkennen, die die VM- und Premium-Datenträger zu bieten haben. Wie im folgenden Beispiel gezeigt, schöpft die DS14-VM ihre maximale IOPS-Lesekapazität von 64.000 IOPS aus. Dies ist eine Kombination aus Datenträger- und Cacheleistung.  
-    ![](../articles/virtual-machines/linux/media/premium-storage-performance/image12.png)
+    ![Screenshot der Anzahl der Schreib-IOPS, die VM- und Premium-Datenträger liefern](../articles/virtual-machines/linux/media/premium-storage-performance/image12.png)
 
 #### <a name="maximum-read-and-write-iops"></a>Maximale Lese- und Schreib-IOPS
 
-Erstellen Sie die Auftragsdatei mit den folgenden Spezifikationen, um die maximale kombinierte Lese- und Schreib-IOPS zu erhalten. Benennen Sie die Datei „fioreadwrite.ini“.
+ Erstellen Sie die Auftragsdatei mit den folgenden Spezifikationen, um die maximale kombinierte Lese- und Schreib-IOPS zu erhalten. Benennen Sie die Datei „fioreadwrite.ini“.
 
 ```ini
 [global]
@@ -256,4 +256,4 @@ Während der Testausführung können Sie die Anzahl der kombinierten Lese- und S
 
 #### <a name="maximum-combined-throughput"></a>Maximaler kombinierter Durchsatz
 
-Um den maximalen kombinierten Lese- und Schreibdurchsatz zu erhalten, wählen Sie eine höhere Blockgröße und Warteschlangenlänge mit mehreren Threads, die Lese- und Schreibvorgänge ausführen. Sie können eine Blockgröße von 64 KB und Warteschlangenlänge von 128 verwenden.
+ Um den maximalen kombinierten Lese- und Schreibdurchsatz zu erhalten, wählen Sie eine höhere Blockgröße und Warteschlangenlänge mit mehreren Threads, die Lese- und Schreibvorgänge ausführen. Sie können eine Blockgröße von 64 KB und Warteschlangenlänge von 128 verwenden.

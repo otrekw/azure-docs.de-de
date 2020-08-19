@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: conceptual
 ms.date: 07/20/2020
 ms.author: sebansal
-ms.openlocfilehash: 1063f7189de4bdf1aaca4a6d72c979476433c32f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 402672d8eeaae8a5097e2ab2905997eb1f646ad6
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87094460"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056345"
 ---
 # <a name="frequently-asked-questions---azure-key-vault-certificate-import"></a>Häufig gestellte Fragen: Azure Key Vault-Zertifikatimport
 
@@ -32,6 +32,10 @@ Das dem hochgeladenen geschützten Zertifikat zugeordnete Kennwort wird nach dem
 ### <a name="how-can-i-resolve-bad-parameter-error-what-are-the-supported-certificate-formats-for-importing-in-key-vault"></a>Wie kann ich den Fehler „Bad Parameter“ (Ungültiger Parameter) beheben? Welche Zertifikatformate werden beim Importieren in Key Vault unterstützt?
 
 Wenn Sie das Zertifikat importieren, müssen Sie sicherstellen, dass der Schlüssel in der Datei selbst enthalten ist. Wenn der private Schlüssel separat in einem anderen Format vorliegt, müssen Sie den Schlüssel mit dem Zertifikat kombinieren. Einige Zertifizierungsstellen bieten Zertifikate in verschiedenen Formaten an. Stellen Sie daher vor dem Importieren des Zertifikats sicher, dass es im PEM- oder PFX-Format vorliegt und dass der verwendete Schlüssel ein RSA- oder ECC-Schlüssel ist. Diese können zur Überprüfung der [Zertifikatanforderungen](https://docs.microsoft.com/azure/key-vault/certificates/certificate-scenarios#formats-of-import-we-support) und [Zertifikatschlüsselanforderungen](https://docs.microsoft.com/azure/key-vault/keys/about-keys#cryptographic-protection) herangezogen werden.
+
+###  <a name="can-i-import-certificate-using-arm-template"></a>Kann ich ein Zertifikat mithilfe einer ARM-Vorlage importieren?
+
+Nein, es können keine Zertifikatvorgänge mithilfe von ARM-Vorlagen ausgeführt werden. Die empfohlene Problemumgehung ist die Verwendung der Methoden für den Zertifikatimport in der API, der CLI oder in PowerShell. Wenn Sie bereits über ein Zertifikat verfügen, können Sie es als Geheimnis importieren.
 
 ### <a name="error-when-importing-certificate-via-portal-something-went-wrong-how-can-i-investigate-further"></a>Fehler beim Importieren eines Zertifikats über das Portal. „Es ist ein Problem aufgetreten.“ Wie kann ich weitere Untersuchungen durchführen?
     
@@ -64,6 +68,9 @@ Ja, Sie können Zertifikate von einer beliebigen Zertifizierungsstelle importier
 
 ### <a name="if-i-import-a-certificate-from-a-partner-ca-will-the-auto-renew-feature-still-work"></a>Wenn ich ein Zertifikat von einer Partnerzertifizierungsstelle importiere, funktioniert die Funktion zur automatischen Erneuerung weiterhin?
 Ja, Sie müssen sicherstellen, dass Sie nach dem Hochladen die automatische Rotation in der Ausstellungsrichtlinie des Zertifikats angeben. Außerdem werden die Änderungen bis zum nächsten Zyklus oder der nächsten Zertifikatversion widergespiegelt.
+
+### <a name="unable-to-see-the-app-service-certificate-imported-to-key-vault"></a>Wird das in Key Vault importierte App Service Certificate nicht angezeigt? 
+Wenn das Zertifikat erfolgreich importiert wurde, können Sie es auf dem Blatt „Geheimnisse“ überprüfen.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

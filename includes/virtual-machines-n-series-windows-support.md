@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/11/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 40e5a1bf940e46aed566a1e3fa6dcb4e6b2d9230
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 04b085d2e990a580ddc99acb3b83ac8bd8ac2db3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77135158"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86998975"
 ---
 ## <a name="supported-operating-systems-and-drivers"></a>Unterstützte Betriebssysteme und Treiber
 
@@ -34,12 +34,14 @@ NVIDIA Tesla-Treiber CUDA für VMs der Serien NC, NCv2, NCv3, ND und NDv2 (optio
 
 Microsoft vertreibt Installationsprogramme für NVIDIA GRID-Treiber für virtuelle Computer der NV- und NVv3-Serie, die als virtuelle Arbeitsstationen oder für virtuelle Anwendungen verwendet werden. Installieren Sie nur diese GRID-Treiber auf virtuellen Azure-Computern der NV-Serie, und zwar nur unter den in der folgenden Tabelle aufgeführten Betriebssystemen. In diesen Treibern ist die Lizenzierung für virtuelle GRID-GPU-Software in Azure enthalten. Sie müssen keinen NVIDIA vGPU-Softwarelizenzserver einrichten.
 
+Die von Azure neu verteilten GRID-Treiber funktionieren nicht auf Nicht-NV-Serien-VMs wie NC, NCv2, NCv3, ND sowie NDv2-Serien-VMs.
+
 Beachten Sie, dass durch die NVIDIA-Erweiterung immer der neueste Treiber installiert wird. Für Kunden, die eine ältere Version benötigen, stellen wir hier Links zur Vorgängerversion bereit.
 
-Für Windows Server 2019, Windows Server 2016 und Windows 10 (bis Build 1909):
-- [GRID 10.1 (442.06)](https://go.microsoft.com/fwlink/?linkid=874181) (EXE-Datei)
-- [GRID 10.0 (441.66)](https://download.microsoft.com/download/2/a/3/2a316e62-3be9-4ddb-ae8e-c04b6df6e22d/441.66_grid_win10_server2016_server2019_64bit_international.exe) (EXE-Datei) 
+Für Windows Server 2019, Windows Server 2016 und Windows 10 (bis Build 2004):
+- [GRID 11 (451.48)](https://go.microsoft.com/fwlink/?linkid=874181) (EXE-Datei)
+- [GRID 10.1 (442.06)](https://download.microsoft.com/download/b/8/f/b8f5ecec-b8f9-47de-b007-ac40adc88dc8/442.06_grid_win10_64bit_international_whql.exe) (EXE-Datei) 
 
-Für Windows Server 2012 R2, Windows Server 2008 R2, Windows 8 und Windows 7: 
-- [GRID 10.1 (442.06)](https://go.microsoft.com/fwlink/?linkid=874184) (EXE-Datei)
-- [GRID 10.0 (441.66)](https://download.microsoft.com/download/d/8/0/d80091f8-0d55-47c2-958a-bacd136f432a/441.66_grid_win7_win8_server2008R2_server2012R2_64bit_international.exe) (EXE-Datei)  
+Für Windows Server 2012 R2: 
+- [GRID 11 (451.48)](https://go.microsoft.com/fwlink/?linkid=874184) (EXE-Datei)
+- [GRID 10.1 (442.66)](https://download.microsoft.com/download/4/3/3/4330fd5c-c685-4ca1-abca-3b2fb3c11d2e/442.06_grid_win8_win7_64bit_international_whql.exe) (EXE-Datei)  

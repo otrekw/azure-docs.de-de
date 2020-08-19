@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sandeo
 ms.custom: references_regions
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 588e63e630caa4746b493d4530e301f72e5ccb5f
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 4e707393bda3d8820ccf94abed83beb1317027d5
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87282941"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88005021"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Anmelden bei einem virtuellen Windows-Computer in Azure mit der Azure Active Directory-Authentifizierung (Vorschau)
 
@@ -69,7 +69,7 @@ Zum Aktivieren der Azure AD-Authentifizierung für Ihre virtuellen Windows-Comp
 
 ## <a name="enabling-azure-ad-login-in-for-windows-vm-in-azure"></a>Aktivieren der Azure AD-Anmeldung für einen virtuellen Windows-Computer in Azure
 
-Zur Verwendung der Azure AD-Anmeldung für einen virtuellen Windows-Computer in Azure müssen Sie zunächst die Azure AD-Anmeldeoption für den virtuellen Windows-Computer aktivieren. Anschließend müssen Sie RBAC-Rollenzuweisungen für Benutzer konfigurieren, die berechtigt sind, sich bei dem virtuellen Computer anzumelden.
+Zur Verwendung der Azure AD-Anmeldung für einen virtuellen Windows-Computer in Azure müssen Sie zunächst die Azure AD-Anmeldeoption für den virtuellen Windows-Computer aktivieren. Anschließend müssen Sie Azure-Rollenzuweisungen für Benutzer konfigurieren, die berechtigt sind, sich bei dem virtuellen Computer anzumelden.
 Es gibt mehrere Möglichkeiten, wie Sie die Azure AD-Anmeldung für den virtuellen Windows-Computer aktivieren können:
 
 - Über das Azure-Portal beim Erstellen eines virtuellen Windows-Computers
@@ -144,7 +144,7 @@ Nachdem die Erweiterung auf dem virtuellen Computer installiert wurde, wird der 
 
 ## <a name="configure-role-assignments-for-the-vm"></a>Konfigurieren der Rollenzuweisungen für den virtuellen Computer
 
-Nach dem Erstellen des virtuellen Computers müssen Sie eine Azure-RBAC-Richtlinie konfigurieren, um festzulegen, wer sich bei dem virtuellen Computer anmelden kann. Zur Autorisierung der Anmeldung bei virtuellen Computern werden zwei RBAC-Rollen verwendet:
+Nach dem Erstellen des virtuellen Computers müssen Sie eine Azure-RBAC-Richtlinie konfigurieren, um festzulegen, wer sich bei dem virtuellen Computer anmelden kann. Zur Autorisierung der VM-Anmeldung werden zwei Azure-Rollen verwendet:
 
 - **VM-Administratoranmeldung:** Benutzer, denen diese Rolle zugewiesen ist, können sich mit Administratorberechtigungen bei einem virtuellen Azure-Computer anmelden.
 - **VM-Benutzeranmeldung:** Benutzer, denen diese Rolle zugewiesen ist, können sich mit normalen Benutzerberechtigungen bei einem virtuellen Azure-Computer anmelden.
@@ -174,7 +174,7 @@ Nach einigen Augenblicken wird dem Sicherheitsprinzipal die Rolle für den Berei
 
 ### <a name="using-the-azure-cloud-shell-experience"></a>Verwenden von Azure Cloud Shell
 
-Im folgenden Beispiel wird [az role assignment create](/cli/azure/role/assignment#az-role-assignment-create) verwendet, um dem aktuellen Azure-Benutzer die Rolle „VM-Administratoranmeldung“ für den virtuellen Computer zuzuweisen. Der Benutzername des aktiven Azure-Kontos wird mit [az account show](/cli/azure/account#az-account-show) abgerufen. Der Bereich wird mit [az vm show](/cli/azure/vm#az-vm-show) auf den in einem vorherigen Schritt erstellten virtuellen Computer festgelegt. Der Bereich kann auch auf Ebene einer Ressourcengruppe oder eines Abonnements zugewiesen werden. Dann gelten normale RBAC-Vererbungsberechtigungen. Weitere Informationen finden Sie unter [Rollenbasierte Zugriffssteuerung](../../virtual-machines/linux/login-using-aad.md).
+Im folgenden Beispiel wird [az role assignment create](/cli/azure/role/assignment#az-role-assignment-create) verwendet, um dem aktuellen Azure-Benutzer die Rolle „VM-Administratoranmeldung“ für den virtuellen Computer zuzuweisen. Der Benutzername des aktiven Azure-Kontos wird mit [az account show](/cli/azure/account#az-account-show) abgerufen. Der Bereich wird mit [az vm show](/cli/azure/vm#az-vm-show) auf den in einem vorherigen Schritt erstellten virtuellen Computer festgelegt. Der Bereich kann auch auf Ebene einer Ressourcengruppe oder eines Abonnements zugewiesen werden. Dann gelten normale Azure RBAC-Vererbungsberechtigungen. Weitere Informationen finden Sie unter [Anmelden bei einem virtuellen Linux-Computer in Azure mit der Azure Active Directory-Authentifizierung](../../virtual-machines/linux/login-using-aad.md).
 
 ```   AzureCLI
 username=$(az account show --query user.name --output tsv)
@@ -189,11 +189,11 @@ az role assignment create \
 > [!NOTE]
 > Wenn die AAD-Domäne und die Domäne des Benutzeranmeldenamens nicht übereinstimmen, müssen Sie die Objekt-ID des Benutzerkontos mit `--assignee-object-id` angeben. Die Angabe des Benutzernamens für `--assignee` genügt nicht. Sie können die Objekt-ID für Ihr Benutzerkonto mithilfe der [Azure Active Directory-Benutzerliste (az as user list)](/cli/azure/ad/user#az-ad-user-list) erhalten.
 
-Weitere Informationen zur Verwendung der rollenbasierten Zugriffssteuerung zum Verwalten des Zugriffs auf Ihre Azure-Abonnementressourcen finden Sie in folgenden Artikeln:
+Weitere Informationen zur Verwendung der rollenbasierten Zugriffssteuerung (Azure RBAC) zum Verwalten des Zugriffs auf Ihre Azure-Abonnementressourcen finden Sie in folgenden Artikeln:
 
-- [Verwalten des Zugriffs auf Azure-Ressourcen mit RBAC und der Azure CLI](/azure/role-based-access-control/role-assignments-cli)
-- [Verwalten des Zugriffs auf Azure-Ressourcen mit RBAC und dem Azure-Portal](/azure/role-based-access-control/role-assignments-portal)
-- [Verwalten des Zugriffs auf Azure-Ressourcen mit RBAC und Azure PowerShell](/azure/role-based-access-control/role-assignments-powershell)
+- [Hinzufügen oder Entfernen von Azure-Rollenzuweisungen mithilfe der Azure-Befehlszeilenschnittstelle](/azure/role-based-access-control/role-assignments-cli)
+- [Hinzufügen oder Entfernen von Azure-Rollenzuweisungen über das Azure-Portal](/azure/role-based-access-control/role-assignments-portal)
+- [Hinzufügen oder Entfernen von Azure-Rollenzuweisungen mithilfe von Azure PowerShell](/azure/role-based-access-control/role-assignments-powershell)
 
 ## <a name="using-conditional-access"></a>Verwenden von bedingtem Zugriff
 
@@ -208,7 +208,7 @@ Sie können Richtlinien für bedingten Zugriff erzwingen, z. B. die mehrstufige
 ## <a name="log-in-using-azure-ad-credentials-to-a-windows-vm"></a>Anmelden bei einem virtuellen Windows-Computer mithilfe von Azure AD-Anmeldeinformationen
 
 > [!IMPORTANT]
-> Eine Remoteverbindung mit in Azure AD eingebundenen VMs ist nur auf Windows 10-PCs zulässig, die entweder über Azure AD (mindestens Build 20H1 erforderlich) registriert oder über Azure AD im **selben** Verzeichnis wie die VM regulär oder hybrid eingebunden sind. Zusätzlich muss dem Benutzer für eine RDP-Verbindung unter Verwendung von Azure AD-Anmeldeinformationen eine der beiden RBAC-Rollen „VM-Administratoranmeldung“ oder „VM-Benutzeranmeldung“ zugewiesen sein. Bei Verwendung eines für Azure AD registrierten Windows 10-Computers müssen Sie Anmeldeinformationen im Format Azure AD\UPN eingeben (z. B. AzureAD\john@contoso.com). Derzeit kann Azure Bastion nicht für die Anmeldung mithilfe der Azure Active Directory-Authentifizierung und der Erweiterung „AADLoginForWindows“ verwendet werden. Nur direktes RDP wird unterstützt.
+> Eine Remoteverbindung mit in Azure AD eingebundenen VMs ist nur auf Windows 10-PCs zulässig, die entweder über Azure AD (mindestens Build 20H1 erforderlich) registriert oder über Azure AD im **selben** Verzeichnis wie die VM regulär oder hybrid eingebunden sind. Zusätzlich muss dem Benutzer für eine RDP-Verbindung unter Verwendung von Azure AD-Anmeldeinformationen eine der beiden Azure-Rollen „VM-Administratoranmeldung“ oder „VM-Benutzeranmeldung“ zugewiesen sein. Bei Verwendung eines für Azure AD registrierten Windows 10-Computers müssen Sie Anmeldeinformationen im Format Azure AD\UPN eingeben (z. B. AzureAD\john@contoso.com). Derzeit kann Azure Bastion nicht für die Anmeldung mithilfe der Azure Active Directory-Authentifizierung und der Erweiterung „AADLoginForWindows“ verwendet werden. Nur direktes RDP wird unterstützt.
 
 So melden Sie sich mithilfe von Azure AD bei Ihrer Windows Server 2019-VM an: 
 
@@ -315,13 +315,13 @@ In der öffentlichen Vorschauphase ist die Erweiterung AADLoginForWindows nur f�
 
 ### <a name="troubleshoot-sign-in-issues"></a>Beheben von Problemen bei der Anmeldung
 
-Zu den häufig auftretenden Fehlern beim Herstellen einer RDP-Verbindung mithilfe von Azure AD-Anmeldeinformationen gehören nicht zugewiesene RBAC-Rollen, ein nicht autorisierter Client und eine erforderliche 2FA-Anmeldemethode. Im Folgenden finden Sie Informationen zum Beheben dieser Probleme.
+Zu den häufig auftretenden Fehlern beim Herstellen einer RDP-Verbindung mithilfe von Azure AD-Anmeldeinformationen gehören nicht zugewiesene Azure-Rollen, ein nicht autorisierter Client und eine erforderliche 2FA-Anmeldemethode. Im Folgenden finden Sie Informationen zum Beheben dieser Probleme.
 
 Der Gerätestatus und der SSO-Status können durch Ausführen von `dsregcmd /status` angezeigt werden. Ziel ist, dass der Gerätestatus `AzureAdJoined : YES` und für `SSO State` der Wert `AzureAdPrt : YES` angezeigt werden.
 
 Außerdem wird die RDP-Anmeldung über Azure AD-Konten in der Ereignisanzeige in den Protokollen unter „AAD\Operational event“ erfasst.
 
-#### <a name="rbac-role-not-assigned"></a>RBAC-Rolle nicht zugewiesen
+#### <a name="azure-role-not-assigned"></a>Azure-Rolle nicht zugewiesen
 
 Beim Initiieren einer Remotedesktopverbindung mit dem virtuellen Computer wird die folgende Fehlermeldung angezeigt: 
 

@@ -1,18 +1,21 @@
 ---
 title: Anzeigen und Verwalten von Kunden und delegierten Ressourcen
-description: Als Dienstanbieter, der Azure Lighthouse verwendet, können Sie alle Ihre delegierten Kundenressourcen und -abonnements anzeigen, indem Sie im Azure-Portal zu „Meine Kunden“ wechseln.
-ms.date: 07/06/2020
+description: Als Dienstanbieter oder Unternehmen, der bzw. das Azure Lighthouse verwendet, können Sie alle Ihre delegierten Ressourcen und Abonnements anzeigen, indem Sie im Azure-Portal zu „Meine Kunden“ wechseln.
+ms.date: 08/12/2020
 ms.topic: how-to
-ms.openlocfilehash: f509a91d71caa3ab1ec8282f4151556f7c10d52c
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 165110556282e90bbacf4ce3b3c59e34b203a528
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86133279"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88167197"
 ---
 # <a name="view-and-manage-customers-and-delegated-resources"></a>Anzeigen und Verwalten von Kunden und delegierten Ressourcen
 
-Dienstanbieter, die [Azure Lighthouse](../overview.md) verwenden, können die Seite **Meine Kunden** im [Azure-Portal](https://portal.azure.com) verwenden, um delegierte Kundenressourcen und -abonnements anzuzeigen. Zwar beziehen wir uns hier auf Dienstanbieter und Kunden, doch können Unternehmen, die mehrere Mandanten verwalten, denselben Prozess verwenden, um ihre Verwaltungserfahrung zu konsolidieren.
+Dienstanbieter, die [Azure Lighthouse](../overview.md) verwenden, können die Seite **Meine Kunden** im [Azure-Portal](https://portal.azure.com) verwenden, um delegierte Kundenressourcen und -abonnements anzuzeigen. 
+
+> [!TIP]
+> Zwar beziehen wir uns hier auf Dienstanbieter und Kunden, doch können [Unternehmen, die mehrere Mandanten verwalten](../concepts/enterprise.md), denselben Prozess verwenden, um ihre Verwaltungserfahrung zu konsolidieren.
 
 Um auf die Seite **Meine Kunden** im Azure-Portal zuzugreifen, wählen Sie **Alle Dienste** aus, und suchen Sie dann nach **Meine Kunden**, und wählen Sie es aus. Sie können die Seite auch finden, indem Sie im Suchfeld am oberen Rand des Azure-Portals „Meine Kunden“ eingeben.
 
@@ -42,7 +45,7 @@ Folgende Informationen können Sie auf dieser Seite anzeigen:
 
 ## <a name="view-and-manage-delegations"></a>Anzeigen und Verwalten von Delegierungen
 
-Delegierungen zeigen das Abonnement/die Ressourcengruppe an, das/die delegiert wurde, zusammen mit den Benutzern und Berechtigungen, die Zugriff darauf haben. Um diese Informationen anzuzeigen, wählen Sie im linken Bereich der Seite **Meine Kunden** die Option **Delegierungen** aus.
+Delegierungen zeigen das Abonnement oder die Ressourcengruppe an, das bzw. die delegiert wurde, zusammen mit den Benutzern und Berechtigungen, die Zugriff darauf haben. Um diese Informationen anzuzeigen, wählen Sie im linken Bereich der Seite **Meine Kunden** die Option **Delegierungen** aus.
 
 Mithilfe von Filtern am oberen Rand der Seite können Sie Ihre Zugriffszuweisungsinformationen sortieren und gruppieren oder nach bestimmten Kunden, Angeboten oder Schlüsselwörtern filtern.
 

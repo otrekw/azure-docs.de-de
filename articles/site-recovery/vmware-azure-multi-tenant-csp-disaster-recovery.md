@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: 1b77eb136b8415e5a6e4596dc0b192ea426f378f
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: b7cf0d35ae610c3f9fe477267e28e5449459148b
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87292832"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87924579"
 ---
 # <a name="set-up-vmware-disaster-recovery-in-a-multi-tenancy-environment-with-the-cloud-solution-provider-csp-program"></a>Einrichten der VMware-Notfallwiederherstellung in einer mehrinstanzenfähigen Umgebung mit dem Cloud Solution Provider-Programm (CSP)
 
@@ -98,7 +98,7 @@ Es gibt drei wesentliche Modelle mit mehreren Mandanten:
 Durch das Einrichten von Mandantenabonnements wie in diesem Artikel beschrieben können Sie schnell in jedem der entsprechenden Modelle mit mehreren Mandanten Kunden aktivieren. Weitere Informationen zu den verschiedenen Modellen mit mehreren Mandanten und zum Aktivieren lokaler Zugriffssteuerungen finden Sie [hier](vmware-azure-multi-tenant-overview.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
-- Erfahren Sie mehr über das Verwalten von Azure Site Recovery-Bereitstellungen mithilfe der [rollenbasierten Zugriffssteuerung](site-recovery-role-based-linked-access-control.md).
+- Erfahren Sie mehr über das Verwalten von Azure Site Recovery-Bereitstellungen mithilfe der [rollenbasierten Zugriffssteuerung von Azure (Azure RBAC)](site-recovery-role-based-linked-access-control.md).
 - Erfahren Sie mehr über VMware in der [Replikationsarchitektur](vmware-azure-architecture.md) von Azure.
 - [Bearbeiten Sie das Tutorial](vmware-azure-tutorial.md) für das Replizieren von virtuellen VMware-Computern in Azure.
 Erfahren Sie mehr über [Umgebungen mit mehreren Mandanten](vmware-azure-multi-tenant-overview.md) für die Replikation von VMware-VMs in Azure.

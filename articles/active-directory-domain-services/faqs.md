@@ -11,14 +11,14 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 06/05/2020
 ms.author: iainfou
-ms.openlocfilehash: 4a9081b3d3c1c925efb4cc80201e6154752dc628
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 912cf31e29854e9fcd54bbc358bb954c0d7bf389
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84734774"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88116698"
 ---
-# <a name="frequently-asked-questions-faqs"></a>Häufig gestellte Fragen (FAQs)
+# <a name="frequently-asked-questions-faqs-about-azure-active-directory-ad-domain-services"></a>Häufig gestellte Fragen (FAQs) zu den Azure Active Directory (AD) Domain Services
 
 Auf dieser Seite werden häufig gestellte Fragen zu Azure Active Directory Domain Services beantwortet.
 
@@ -117,7 +117,11 @@ Nein. Das Schema für die verwaltete Domäne wird von Microsoft verwaltet. Schem
 Ja. Mitgliedern der Gruppe *AAD DC-Administratoren* werden *DNS-Administratorrechte* gewährt, damit sie DNS-Einträge in der verwalteten Domäne ändern können. Diese Benutzer können die DNS-Manager-Konsole auf einem der verwalteten Domäne beigetretenen Windows Server-Computer verwenden, um DNS zu verwalten. Um die DNS-Manager-Konsole zu verwenden, installieren Sie die *DNS-Servertools*, die zum optionalen Feature der *Remoteserver-Verwaltungstools* auf dem Server gehören. Weitere Informationen finden Sie unter [Verwalten von DNS in einer durch Azure AD Domain Services verwalteten Domäne](manage-dns.md).
 
 ### <a name="what-is-the-password-lifetime-policy-on-a-managed-domain"></a>Was ist die Richtlinie für die Kennwortgültigkeitsdauer in einer verwalteten Domäne?
-Die Standardlebensdauer von Kennwörtern in einer verwalteten Azure AD Domain Services-Domäne beträgt 90 Tage. Diese Kennwortgültigkeitsdauer wird nicht mit der in Azure AD konfigurierten Kennwortgültigkeitsdauer synchronisiert. Daher können Kennwörter von Benutzern in Ihrer verwalteten Domäne ablaufen, während sie in Azure AD weiterhin gültig sind. In solchen Szenarien müssen Benutzer ihr Kennwort in Azure AD ändern, und das neue Kennwort wird mit Ihrer verwalteten Domäne synchronisiert. Des Weiteren werden die Attribute *password-does-not-expire* und *user-must-change-password-at-next-logon* für Benutzerkonten nicht mit Ihrer verwalteten Domäne synchronisiert.
+Die Standardlebensdauer von Kennwörtern in einer verwalteten Azure AD Domain Services-Domäne beträgt 90 Tage. Diese Kennwortgültigkeitsdauer wird nicht mit der in Azure AD konfigurierten Kennwortgültigkeitsdauer synchronisiert. Daher können Kennwörter von Benutzern in Ihrer verwalteten Domäne ablaufen, während sie in Azure AD weiterhin gültig sind. In solchen Szenarien müssen Benutzer ihr Kennwort in Azure AD ändern, und das neue Kennwort wird mit Ihrer verwalteten Domäne synchronisiert. Wenn Sie die standardmäßige Kennwortgültigkeitsdauer in einer verwalteten Domäne ändern möchten, können Sie [benutzerdefinierte Kennwortrichtlinien erstellen und konfigurieren](password-policy.md).
+
+Außerdem wird die Azure AD-Kennwortrichtlinie für *DisablePasswordExpiration* mit einer verwalteten Domäne synchronisiert. Wenn Sie in Azure AD *DisablePasswordExpiration* für einen Benutzer anwenden, wird *DONT_EXPIRE_PASSWORD* auf den Wert *UserAccountControl* für den synchronisierten Benutzer in der verwalteten Domäne angewendet.
+
+Wenn der Benutzer sein Kennwort in Azure AD zurücksetzt, wird das Attribut *forceChangePasswordNextSignIn=True* angewendet. Eine verwaltete Domäne synchronisiert dieses Attribut von Azure AD. Wenn die verwaltete Domäne erkennt, dass *forceChangePasswordNextSignIn=True* für einen synchronisierten Benutzer von Azure AD festgelegt wurde, wird das Attribut *pwdLastSet* in der verwalteten Domäne auf *0* gesetzt, wodurch das aktuell festgelegte Kennwort ungültig wird.
 
 ### <a name="does-azure-ad-domain-services-provide-ad-account-lockout-protection"></a>Bietet Azure AD Domain Services Schutz durch Sperrung von AD-Konten?
 Ja. Wenn innerhalb von 2 Minuten fünf erfolglose Kennworteingaben in der verwalteten Domäne vorgenommen werden, wird das Benutzerkonto für 30 Minuten gesperrt. Nach 30 Minuten wird das Benutzerkonto automatisch entsperrt. Ungültige Kennworteingaben in der verwalteten Domäne sperren das Benutzerkonto in Azure AD nicht. Das Benutzerkonto wird nur in Ihrer verwalteten Azure AD Domain Services-Domäne gesperrt. Weitere Informationen finden Sie unter [Kennwort- und Kontosperrungsrichtlinien in verwalteten Domänen](password-policy.md).

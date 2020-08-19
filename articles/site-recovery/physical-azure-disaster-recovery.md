@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: c3d4a2120f86a03508b91d4b2dea52e629dc0f79
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 9b05d9952628e550beae5cedc49e051936a9d633
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86130179"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87927282"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-physical-servers"></a>Einrichten der Notfallwiederherstellung in Azure für physische lokale Server
 
@@ -59,7 +59,7 @@ Erstellen Sie ein [Microsoft Azure-Konto](https://azure.microsoft.com/).
 Vergewissern Sie sich, dass Ihr Azure-Konto über die Berechtigungen für die Replikation von virtuellen Computern in Azure verfügt.
 
 - Überprüfen Sie die [Berechtigungen](site-recovery-role-based-linked-access-control.md#permissions-required-to-enable-replication-for-new-virtual-machines), die Sie für das Replizieren von Computern in Azure benötigen.
-- Überprüfen Sie die Berechtigungen für den [rollenbasierten Zugriff](../role-based-access-control/role-assignments-portal.md), und passen Sie sie ggf. an. 
+- Überprüfen und ändern Sie Berechtigungen der [rollenbasierte Zugriffssteuerung von Azure (Azure RBAC)](../role-based-access-control/role-assignments-portal.md). 
 
 
 
@@ -111,7 +111,7 @@ Richten Sie den Konfigurationsserver ein, registrieren Sie ihn im Tresor, und er
 4. Laden Sie die Installationsdatei für das einheitliche Setup von Site Recovery herunter.
 5. Laden Sie den Tresorregistrierungsschlüssel herunter. Sie benötigen diesen beim Ausführen des einheitlichen Setups. Der Schlüssel ist nach der Erstellung fünf Tage lang gültig.
 
-   ![Quelle einrichten](./media/physical-azure-disaster-recovery/source-environment.png)
+   ![Screenshot mit Anzeige der Optionen zum Download von Installationsdatei und Registrierungsschlüssel](./media/physical-azure-disaster-recovery/source-environment.png)
 
 
 ### <a name="register-the-configuration-server-in-the-vault"></a>Registrieren des Konfigurationsservers im Tresor
@@ -136,7 +136,6 @@ Führen Sie das einheitliche Setup als lokaler Administrator auf dem Konfigurati
 
 [!INCLUDE [site-recovery-add-configuration-server](../../includes/site-recovery-add-configuration-server.md)]
 
-Nach Abschluss der Registrierung wird der Konfigurationsserver auf der Seite **Einstellungen** > **Server** im Tresor angezeigt.
 
 ## <a name="set-up-the-target-environment"></a>Einrichten der Zielumgebung
 
@@ -146,7 +145,7 @@ Wählen Sie Zielressourcen aus, und überprüfen Sie sie.
 2. Geben Sie das Ziel-Bereitstellungsmodell an.
 3. Site Recovery prüft, ob Sie über ein oder mehrere kompatible Azure-Speicherkonten und -Netzwerke verfügen.
 
-   ![Ziel](./media/physical-azure-disaster-recovery/network-storage.png)
+   ![Screenshot der Optionen zum Einrichten der Zielumgebung](./media/physical-azure-disaster-recovery/network-storage.png)
 
 
 ## <a name="create-a-replication-policy"></a>Erstellen einer Replikationsrichtlinie
@@ -157,7 +156,7 @@ Wählen Sie Zielressourcen aus, und überprüfen Sie sie.
 4. Geben Sie unter **Aufbewahrungszeitraum des Wiederherstellungspunkts** die Größe des Aufbewahrungszeitfensters für die einzelnen Wiederherstellungspunkte in Stunden an. Replizierte VMs können für jeden Punkt eines Zeitfensters wiederhergestellt werden. Für nach Storage Premium replizierte Computer wird eine Aufbewahrungsdauer von bis zu 24 Stunden unterstützt (72 Stunden für Standardspeicher).
 5. Geben Sie unter **App-konsistente Momentaufnahmehäufigkeit**an, wie häufig (in Minuten) Wiederherstellungspunkte erstellt werden sollen, die anwendungskonsistente Momentaufnahmen enthalten. Klicken Sie auf **OK**, um die Richtlinie zu erstellen.
 
-    ![Replikationsrichtlinie](./media/physical-azure-disaster-recovery/replication-policy.png)
+    ![Screenshot der Optionen zum Erstellen einer Replikationsrichtlinie](./media/physical-azure-disaster-recovery/replication-policy.png)
 
 
 Die Richtlinie wird dem Konfigurationsserver automatisch zugeordnet. Standardmäßig wird für das Failback automatisch eine passende Richtlinie erstellt. Bei Verwendung der Replikationsrichtlinie **rep-policy** wird z.B. die Failbackrichtlinie **rep-policy-failback** erstellt. Diese Richtlinie wird erst verwendet, wenn Sie ein Failback über Azure initiieren.

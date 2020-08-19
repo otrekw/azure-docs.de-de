@@ -4,12 +4,12 @@ description: Erfahren Sie mehr über die Partnerlösungen für Azure Monitor und
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 05/29/2020
-ms.openlocfilehash: 994dfe0d7e252fd2aea489c363e76f0956715048
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 2e3fae1b942083d78798fccebd7a7f2c58f7659a
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87318333"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88142405"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Azure Monitor – integrierte Partnerlösungen
 
@@ -184,6 +184,16 @@ PagerDuty, die führende Incidentmanagementlösung, liefert bereits erstklassige
 
 [Zur Dokumentation.][pagerduty-doc]
 
+## <a name="promitor"></a>Promitor
+
+![Promitor-Logo](./media/partners/promitor.png)
+
+Promitor ist ein Azure Monitor-Scraper, der die Metriken in Systemen wie Atlassian Statuspage, Prometheus und StatsD verfügbar macht.
+
+Übertragen Sie alle Metriken per Pushvorgang an Azure Monitor, und nutzen Sie die Metriken dort, wo Sie sie benötigen.
+
+[Weitere Informationen.][promitor-doc]
+
 ## <a name="qradar"></a>QRadar
 
 ![QRadar-Logo](./media/partners/qradar.png)
@@ -293,6 +303,7 @@ Turbonomic automatisiert Workloads für Hybrid Clouds durch gleichzeitige Optimi
 [newrelic-doc]: https://newrelic.com/azure "NewRelic-Dokumentation"
 [opsgenie-doc]: https://www.opsgenie.com/docs/integrations/azure-integration "OpsGenie-Dokumentation"
 [pagerduty-doc]: https://www.pagerduty.com/docs/guides/azure-integration-guide/ "PagerDuty-Dokumentation"
+[promitor-doc]: https://promitor.io/ "Promitor-Dokumentation"
 [qradar-doc]: https://www.ibm.com/support/knowledgecenter/SS42VS_DSM/c_dsm_guide_microsoft_azure_overview.html?cp=SS42VS_7.3.0 "QRadar-Dokumentation"
 [sciencelogic-doc]: https://www.sciencelogic.com/product/technologies/microsoft/azure "ScienceLogic-Dokumentation"
 [serverless360-doc]: https://docs.serverless360.com/docs/ "Serverless360-Dokumentation"

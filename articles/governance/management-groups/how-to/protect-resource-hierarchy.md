@@ -1,14 +1,14 @@
 ---
 title: Schützen der Ressourcenhierarchie – Azure Governance
 description: Erfahren Sie, wie Sie Ihre Ressourcenhierarchie mit Hierarchieeinstellungen schützen, unter anderem durch Festlegen der Standardverwaltungsgruppe.
-ms.date: 05/21/2020
+ms.date: 08/10/2020
 ms.topic: conceptual
-ms.openlocfilehash: 2f8d3d7ff85552fe18a49137450aefe91d0d02c9
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 2dd6791e152ba3ef02f6e6f710589cbe7d3442bc
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87366771"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056617"
 ---
 # <a name="how-to-protect-your-resource-hierarchy"></a>Schützen der Ressourcenhierarchie
 
@@ -29,7 +29,7 @@ Diese Vorgänge ermöglichen einem Benutzer nur, die Hierarchieeinstellungen zu 
 
 Standardmäßig wird ein neues Abonnement, das in einem Mandanten hinzugefügt wird, als Mitglied der Stammverwaltungsgruppe hinzugefügt. Wenn der Stammverwaltungsgruppe Richtlinienzuweisungen, die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) und andere Governancekonstrukte zugewiesen werden, wirken sie sich sofort auf die neuen Abonnements aus. Aus diesem Grund wenden viele Organisationen diese Konstrukte nicht in der Stammverwaltungsgruppe an, obwohl dies der gewünschte Ort für die Zuweisung ist. In anderen Fällen wird eine restriktivere Gruppe von Steuerungsmöglichkeiten für neue Abonnements gewünscht, soll jedoch nicht allen Abonnements zugewiesen werden. Diese Einstellung unterstützt beide Anwendungsfälle.
 
-Dadurch dass die Standardverwaltungsgruppe für neue Abonnements definiert werden kann, können organisationsweite Governancekonstrukte in der Stammverwaltungsgruppe angewandt werden, und eine separate Verwaltungsgruppe kann mit Richtlinienzuweisungen oder RBAC-Zuweisungen definiert werden, die sich für ein neues Abonnement besser eignen.
+Dadurch dass die Standardverwaltungsgruppe für neue Abonnements definiert werden kann, können organisationsweite Governancekonstrukte in der Stammverwaltungsgruppe angewandt werden, und eine separate Verwaltungsgruppe kann mit Richtlinienzuweisungen oder Azure-Rollenzuweisungen definiert werden, die sich für ein neues Abonnement besser eignen.
 
 Zum Konfigurieren dieser Einstellung wird der REST-API-Endpunkt mit den [Hierarchieeinstellungen](/rest/api/resources/hierarchysettings) aufgerufen. Verwenden Sie hierzu den folgenden REST-API-URI und das folgende Textformat. Ersetzen Sie `{rootMgID}` durch die ID der Stammverwaltungsgruppe und `{defaultGroupID}` durch die ID der Verwaltungsgruppe, die zur Standardverwaltungsgruppe werden soll:
 

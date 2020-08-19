@@ -4,16 +4,16 @@ description: Auflistung der verschiedenen für Compute optimierten Größen, die
 author: mimckitt
 ms.service: virtual-machines
 ms.subservice: sizes
-ms.topic: article
+ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: mimckitt
-ms.openlocfilehash: b945348f6fabfa698e45c111241fbfcef088d45e
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 58ade8dfdde2c906cbe7c61a232f2643708e19b2
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86058077"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87832466"
 ---
 # <a name="compute-optimized-virtual-machine-sizes"></a>Compute-optimierte VM-Größen
 
@@ -35,3 +35,5 @@ Die Fsv2-Serie hat einen niedrigeren Listenpreis pro Stunde und bietet auf Basis
 ## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Informationen dazu, wie Sie mit [Azure-Computeeinheiten (ACU)](acu.md) die Computeleistung von Azure-SKUs vergleichen können.
+
+Weitere Informationen dazu, wie VM-Namen in Azure zugewiesen werden, finden Sie unter [Namenskonventionen für Azure-VM-Größen](./vm-naming-conventions.md).

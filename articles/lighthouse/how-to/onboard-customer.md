@@ -1,30 +1,30 @@
 ---
 title: Onboarding eines Kunden in Azure Lighthouse durchführen
 description: Erfahren Sie, wie Sie das Onboarding eines Kunden in Azure Lighthouse durchführen, sodass Ihr eigener Mandant über die delegierte Azure-Ressourcenverwaltung auf dessen Ressourcen zugreifen und sie verwalten kann.
-ms.date: 05/26/2020
+ms.date: 08/12/2020
 ms.topic: how-to
-ms.openlocfilehash: 3cc754dba124c5f647cd4b51246ced19360c82c3
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: f20df54a4bc689effad210746f93928defdaf0f5
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86133475"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88167316"
 ---
 # <a name="onboard-a-customer-to-azure-lighthouse"></a>Onboarding eines Kunden in Azure Lighthouse durchführen
 
 In diesem Artikel wird erläutert, wie Sie als Dienstanbieter das Onboarding eines Kunden in Azure Lighthouse durchführen können. Wenn Sie dies tun, kann Ihr eigener Azure Active Directory-Mandant (Azure AD) mithilfe der [delegierten Azure-Ressourcenverwaltung](../concepts/azure-delegated-resource-management.md) auf die delegierten Ressourcen des Kunden (Abonnements und/oder Ressourcengruppen) zugreifen und sie verwalten.
 
-Sie können diesen Vorgang wiederholen, wenn Sie Ressourcen für mehrere Kunden verwalten. Wenn sich dann ein autorisierter Benutzer bei Ihrem Mandanten anmeldet, kann dieser Benutzer über Kundenmandantenbereiche hinweg autorisiert werden, Verwaltungsvorgänge durchzuführen, ohne sich bei jedem einzelnen Kundenmandanten anmelden zu müssen.
-
-Um ihre Wirksamkeit hinsichtlich der Kundenbindung nachzuverfolgen und Bekanntheit zu erlangen, ordnen Sie Ihre MPN-ID (Microsoft Partner Network) mindestens einem Benutzerkonto zu, das Zugriff auf jedes Ihrer integrierten Abonnements hat. Hinweis: Diese Zuordnung müssen Sie in Ihrem Dienstanbietermandanten ausführen. Der Einfachheit halber empfiehlt es sich, ein Dienstprinzipalkonto in Ihrem Mandanten zu erstellen, das Ihrer MPN-ID zugeordnet ist, und diesem Konto Lesezugriff auf jeden integrierten Kunden zu gewähren. Weitere Informationen finden Sie unter [Verknüpfen einer Partner-ID mit Ihren Azure-Konten](../../cost-management-billing/manage/link-partner-id.md). 
-
-> [!NOTE]
-> Das Onboarding in Azure Lighthouse kann auch für Kunden durchgeführt werden, die ein Angebot für verwaltete Dienste (öffentlich oder privat) kaufen, das Sie in Azure Marketplace veröffentlicht haben. Weitere Informationen finden Sie unter [Veröffentlichen von Angeboten für verwaltete Dienste im Azure Marketplace](publish-managed-services-offers.md). Sie können den hier beschriebenen Onboardingprozess auch zusammen mit einem in Azure Marketplace veröffentlichten Angebot verwenden.
-
-Der Onboardingprozess erfordert, dass Aktionen sowohl innerhalb des Mandanten des Dienstanbieters als auch vom Mandanten des Kunden aus durchgeführt werden. Alle diese Schritte werden in diesem Artikel beschrieben.
-
 > [!TIP]
 > In diesem Thema ist zwar von Dienstanbietern und Kunden die Rede, aber auch [Unternehmen, die mehrere Mandanten verwalten](../concepts/enterprise.md), können mithilfe desselben Verfahrens Azure Lighthouse einrichten und ihre Verwaltungsumgebung konsolidieren.
+
+Sie können den Onboardingprozess für mehrere Kunden wiederholen. Wenn sich ein Benutzer mit den entsprechenden Berechtigungen bei Ihrem verwaltenden Mandanten anmeldet, kann dieser Benutzer über Kundenmandantenbereiche hinweg autorisiert werden, Verwaltungsvorgänge durchzuführen, ohne sich bei jedem einzelnen Kundenmandanten anmelden zu müssen.
+
+Um ihre Wirksamkeit hinsichtlich der Kundenbindung nachzuverfolgen und Bekanntheit zu erlangen, ordnen Sie Ihre MPN-ID (Microsoft Partner Network) mindestens einem Benutzerkonto zu, das Zugriff auf jedes Ihrer integrierten Abonnements hat. Diese Zuordnung müssen Sie in Ihrem Dienstanbietermandanten ausführen. Der Einfachheit halber empfiehlt es sich, ein Dienstprinzipalkonto in Ihrem Mandanten zu erstellen, das Ihrer MPN-ID zugeordnet ist, und diesem Konto Lesezugriff auf jeden integrierten Kunden zu gewähren. Weitere Informationen finden Sie unter [Verknüpfen einer Partner-ID mit Ihren Azure-Konten](../../cost-management-billing/manage/link-partner-id.md).
+
+> [!NOTE]
+> Das Onboarding in Azure Lighthouse kann auch für Kunden durchgeführt werden, die ein Angebot für verwaltete Dienste (öffentlich oder privat) kaufen, das Sie [in Azure Marketplace veröffentlichen](publish-managed-services-offers.md). Sie können den hier beschriebenen Onboardingprozess auch zusammen mit den in Azure Marketplace veröffentlichten Angeboten verwenden.
+
+Der Onboardingprozess erfordert, dass Aktionen sowohl innerhalb des Mandanten des Dienstanbieters als auch vom Mandanten des Kunden aus durchgeführt werden. Alle diese Schritte werden in diesem Artikel beschrieben.
 
 ## <a name="gather-tenant-and-subscription-details"></a>Sammeln von Mandanten- und Abonnementinformationen
 
@@ -65,14 +65,16 @@ az account show
 
 ## <a name="define-roles-and-permissions"></a>Definieren von Rolle und Berechtigungen
 
-Als Dienstanbieter können Sie mehrere Aufgaben für einen einzelnen Kunden ausführen, die für unterschiedliche Bereiche einen anderen Zugriff erfordern. Sie können so viele Autorisierungen definieren, wie Sie benötigen, um Benutzern in Ihrem Mandanten [integrierte Rollen der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC)](../../role-based-access-control/built-in-roles.md) zuzuweisen.
+Als Dienstanbieter können Sie mehrere Aufgaben für einen einzelnen Kunden ausführen, die für unterschiedliche Bereiche einen anderen Zugriff erfordern. Sie können so viele Autorisierungen definieren, wie Sie benötigen, um Benutzern in Ihrem Mandanten die entsprechenden [integrierte Rollen der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC)](../../role-based-access-control/built-in-roles.md) zuzuweisen.
 
-Um die Verwaltung zu vereinfachen, empfiehlt es sich, für jede Rolle Azure AD-Benutzergruppen zu verwenden, was es Ihnen erlaubt, der Gruppe einzelne Benutzer hinzuzufügen oder daraus zu entfernen, anstatt diesem Benutzer Berechtigungen direkt zuzuweisen. Sie können außerdem einem Dienstprinzipal Rollen zuweisen. Achten Sie darauf, das Prinzip der geringsten Rechte zu befolgen, damit Benutzer nur über die Berechtigungen verfügen, die zum Durchführen ihrer Aufgaben erforderlich sind. Empfehlungen und Informationen zu unterstützten Rollen finden Sie unter [Mandanten, Benutzer und Rollen in Azure Lighthouse-Szenarien](../concepts/tenants-users-roles.md).
+Um die Verwaltung zu vereinfachen, empfiehlt es sich, Azure AD-Benutzergruppen für jede Rolle zu verwenden. Dadurch haben Sie die Flexibilität, einzelne Benutzer der Gruppe mit Zugriffsberechtigung hinzuzufügen oder daraus zu entfernen, sodass Sie den Onboardingprozess nicht wiederholen müssen, um Benutzeränderungen vorzunehmen. Sie können einem Dienstprinzipal Rollen zuweisen, was für Automatisierungsszenarien nützlich sein kann.
+
+Achten Sie beim Definieren der Autorisierungen darauf, das Prinzip der geringsten Rechte zu befolgen, damit Benutzer nur über die Berechtigungen verfügen, die zum Durchführen ihrer Aufgaben erforderlich sind. Richtlinien und Informationen zu unterstützten Rollen finden Sie unter [Mandanten, Benutzer und Rollen in Azure Lighthouse-Szenarien](../concepts/tenants-users-roles.md).
 
 > [!IMPORTANT]
 > Um Berechtigungen für eine Azure AD-Gruppe hinzuzufügen, muss der **Gruppentyp** **Sicherheit** und nicht **Office 365** lauten. Diese Option wird bei der Erstellung der Gruppe ausgewählt. Weitere Informationen dazu finden Sie in [Erstellen einer Basisgruppe und Hinzufügen von Mitgliedern mit Azure Active Directory](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
 
-Um Autorisierungen zu definieren, müssen Sie die ID-Werte für jeden Benutzer, jede Benutzergruppe oder jeden Dienstprinzipal im Dienstanbietermandanten kennen, dem/der Sie Zugriff gewähren möchten. Außerdem benötigen Sie die Rollendefinitions-ID für jede integrierten Rolle, die Sie zuweisen möchten. Wenn Sie über diese nicht bereits verfügen, können Sie sie abrufen, indem Sie die folgenden Befehle aus dem Dienstanbietermandanten ausführen.
+Um Autorisierungen zu definieren, müssen Sie die ID-Werte für jeden Benutzer, jede Benutzergruppe oder jeden Dienstprinzipal im Dienstanbietermandanten kennen, dem bzw. der Sie Zugriff gewähren möchten. Außerdem benötigen Sie die Rollendefinitions-ID für jede integrierten Rolle, die Sie zuweisen möchten. Wenn Sie über diese nicht bereits verfügen, können Sie sie abrufen, indem Sie die folgenden Befehle aus dem Dienstanbietermandanten ausführen.
 
 ### <a name="powershell"></a>PowerShell
 
@@ -86,7 +88,7 @@ Um Autorisierungen zu definieren, müssen Sie die ID-Werte für jeden Benutzer, 
 (Get-AzADUser -UserPrincipalName '<yourUPN>').id
 
 # To retrieve the objectId for an SPN
-(Get-AzADApplication -DisplayName '<appDisplayName>').objectId
+(Get-AzADApplication -DisplayName '<appDisplayName>' | Get-AzADServicePrincipal).Id
 
 # To retrieve role definition IDs
 (Get-AzRoleDefinition -Name '<roleName>').id
@@ -109,12 +111,13 @@ az ad sp list --query "[?displayName == '<spDisplayName>'].objectId" --output ts
 # To retrieve role definition IDs
 az role definition list --name "<roleName>" | grep name
 ```
+
 > [!TIP]
 > Beim Onboarding eines Kunden empfiehlt es sich, die [Rolle „Registrierungszuweisung für verwaltete Dienste“](../../role-based-access-control/built-in-roles.md#managed-services-registration-assignment-delete-role) zuzuweisen, damit Benutzer in Ihrem Mandanten später bei Bedarf [den Zugriff auf die Delegierung entfernen](remove-delegation.md) können. Wenn diese Rolle nicht zugewiesen wird, können delegierte Ressourcen nur durch einen Benutzer im Kundenmandanten entfernt werden.
 
 ## <a name="create-an-azure-resource-manager-template"></a>Erstellen einer Azure Resource Manager-Vorlage
 
-Um Ihren Kunden zu integrieren, müssen Sie eine [Azure Resource Manager](../../azure-resource-manager/index.yml)-Vorlage für das Angebot erstellen, die folgende Informationen enthält: Die Werte von **mspOfferName** und **mspOfferDescription** sind für den Kunden sichtbar, wenn Angebotsdetails auf der Seite [Dienstanbieter](view-manage-service-providers.md) des Azure-Portals angezeigt werden.
+Um Ihren Kunden zu integrieren, müssen Sie eine [Azure Resource Manager](../../azure-resource-manager/index.yml)-Vorlage für das Angebot erstellen, die folgende Informationen enthält: Die Werte **mspOfferName** und **mspOfferDescription** sind für den Kunden auf der Seite [Dienstanbieter](view-manage-service-providers.md) im Azure-Portal sichtbar.
 
 |Feld  |Definition  |
 |---------|---------|
@@ -192,13 +195,11 @@ Das folgende Beispiel zeigt eine geänderte Datei **delegatedResourceManagement.
 }
 ```
 
-Die letzte Autorisierung im obigen Beispiel fügt eine **prinzipalId** mit der Rolle „Benutzerzugriffsadministrator“ hinzu (18d7d88d-d35e-4b5-a5c3-7773c20a72d9). Wenn Sie diese Rolle zuweisen, müssen Sie die **delegatedRoleDefinitionIds**-Eigenschaft und mindestens eine integrierte Rolle einschließen. Der in dieser Autorisierung erstellte Benutzer kann diese integrierten Rollen [verwalteten Identitäten](../../active-directory/managed-identities-azure-resources/overview.md) im Kundenmandanten zuweisen. Dies ist erforderlich, um [Richtlinien bereitzustellen, die gewartet werden können](deploy-policy-remediation.md).  Der Benutzer kann außerdem Supportfälle erstellen.  Für diesen Benutzer gelten keine anderen Berechtigungen, die normalerweise der Rolle „Benutzerzugriffsadministrator“ zugeordnet sind.
+Die letzte Autorisierung im obigen Beispiel fügt eine **prinzipalId** mit der Rolle „Benutzerzugriffsadministrator“ hinzu (18d7d88d-d35e-4b5-a5c3-7773c20a72d9). Wenn Sie diese Rolle zuweisen, müssen Sie die **delegatedRoleDefinitionIds**-Eigenschaft und mindestens eine integrierte Rolle einschließen. Der in dieser Autorisierung erstellte Benutzer kann diese integrierten Rollen [verwalteten Identitäten](../../active-directory/managed-identities-azure-resources/overview.md) im Kundenmandanten zuweisen. Dies ist erforderlich, um [Richtlinien bereitzustellen, die korrigiert werden können](deploy-policy-remediation.md).  Der Benutzer kann außerdem Supportfälle erstellen.  Für diesen Benutzer gelten keine anderen Berechtigungen, die normalerweise der Rolle „Benutzerzugriffsadministrator“ zugeordnet sind.
 
 ## <a name="deploy-the-azure-resource-manager-templates"></a>Bereitstellen der Azure Resource Manager-Vorlagen
 
-Nachdem Sie Ihre Parameterdatei aktualisiert haben, muss ein Benutzer im Kundenmandanten die Azure Resource Manager-Vorlage im Mandanten auf Abonnementebene bereitstellen. Eine gesonderte Bereitstellung ist für jedes Abonnement erforderlich, für das Sie ein Onboarding durchführen möchten (oder für jedes Abonnement, das Ressourcengruppen enthält, die Sie integrieren möchten).
-
-Da es sich hierbei um eine Bereitstellung auf Abonnementebene handelt, kann sie nicht im Azure-Portal initiiert werden. Die Bereitstellung kann mithilfe von PowerShell oder der Azure-Befehlszeilenschnittstelle erfolgen, wie unten gezeigt.
+Nachdem Sie Ihre Parameterdatei aktualisiert haben, muss ein Benutzer im Kundenmandanten die Azure Resource Manager-Vorlage im Mandanten auf Abonnementebene bereitstellen. Eine gesonderte Bereitstellung ist für jedes Abonnement erforderlich, für das Sie ein Onboarding durchführen möchten (oder für jedes Abonnement, das Ressourcengruppen enthält, die Sie integrieren möchten). Die Bereitstellung kann mithilfe von PowerShell oder der Azure-Befehlszeilenschnittstelle erfolgen, wie unten gezeigt.
 
 > [!IMPORTANT]
 > Diese Bereitstellung auf Abonnementebene muss von einem Nicht-Gastkonto im Mandanten des Kunden durchgeführt werden, das über die [integrierte Rolle „Besitzer“](../../role-based-access-control/built-in-roles.md#owner) für das Abonnement verfügt, das integriert wird (oder das die Ressourcengruppen enthält, die integriert werden). Um alle Benutzer anzuzeigen, die das Abonnement delegieren können, kann ein Benutzer im Mandanten des Kunden das Abonnement im Azure-Portal auswählen, **Zugriffssteuerung (IAM)** öffnen und [alle Benutzer mit der Rolle „Besitzer“ anzeigen](../../role-based-access-control/role-assignments-list-portal.md#list-owners-of-a-subscription).

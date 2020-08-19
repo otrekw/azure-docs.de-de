@@ -1,20 +1,23 @@
 ---
 title: Überwachen von delegierten Ressourcen in beliebigem Umfang
 description: Erfahren Sie, wie Sie Azure Monitor-Protokolle für alle von Ihnen verwalteten Mandanten auf skalierbare Weise verwenden.
-ms.date: 07/15/2020
+ms.date: 08/12/2020
 ms.topic: how-to
-ms.openlocfilehash: 5cace0396c5a1f430ce10ba29ee051b5e432c125
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: fdd0147737da47613d6b7ef1bf6005e4c03de0dd
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87448956"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88163287"
 ---
 # <a name="monitor-delegated-resources-at-scale"></a>Überwachen von delegierten Ressourcen in beliebigem Umfang
 
 Als Dienstanbieter haben Sie möglicherweise mehrere Kundenmandanten in [Azure Lighthouse](../overview.md) integriert. Azure Lighthouse ermöglicht Dienstanbietern das gleichzeitige Ausführen von skalierbaren Vorgängen für mehrere Mandanten, wodurch Verwaltungsaufgaben effizienter werden.
 
 In diesem Thema erfahren Sie, wie Sie [Azure Monitor-Protokolle](../../azure-monitor/platform/data-platform-logs.md) für alle von Ihnen verwalteten Mandanten auf skalierbare Weise verwenden.
+
+> [!TIP]
+> Zwar beziehen wir uns in diesem Thema auf Dienstanbieter und Kunden, doch gelten diese Anweisungen auch für [Unternehmen, die Azure Lighthouse zum Verwalten mehrerer Mandanten verwenden](../concepts/enterprise.md).
 
 ## <a name="create-log-analytics-workspaces"></a>Erstellen von Log Analytics-Arbeitsbereichen
 

@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: reference
-ms.date: 05/11/2020
+ms.date: 08/05/2020
 ms.author: anfeldma
-ms.openlocfilehash: 679f3113cddbfe13370483f2678154f4dd1f8ab2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f38b2715115efadef4e09a95e9392b1dfd4c68b0
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85392062"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88135741"
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>.NET Change Feed Processor-SDK: Download und Versionshinweise
 
@@ -27,6 +27,8 @@ ms.locfileid: "85392062"
 > * [Java SDK v4](sql-api-sdk-java-v4.md)
 > * [Async Java SDK v2](sql-api-sdk-async-java.md)
 > * [Sync Java SDK v2](sql-api-sdk-java.md)
+> * [Spring Data](sql-api-sdk-java-spring.md)
+> * [Spark-Connector](sql-api-sdk-java-spark.md)
 > * [Python](sql-api-sdk-python.md)
 > * [REST](/rest/api
 > * [REST-Ressourcenanbieter](/rest/api
@@ -48,7 +50,14 @@ ms.locfileid: "85392062"
 
 ### <a name="v2-builds"></a>V2-Builds
 
-### <a name="230"></a><a name="2.3.0"></a>2.3.0
+### <a name="232"></a><a name="2.3.2"/>2.3.2
+* Leasespeicherkompatibilität mit dem [V3 SDK](sql-api-sdk-dotnet-standard.md) wurde hinzugefügt, wodurch die langsamsten Migrationspfade möglich sind. Eine Anwendung kann zu V3 SDK migriert und zur Änderungsfeed-Prozessorbibliothek zurück migriert werden, ohne dass ein Zustand verloren geht.
+
+### <a name="231"></a><a name="2.3.1"/>2.3.1
+* Ein Szenario wurde korrigiert, bei dem der Schließungsgrund `FeedProcessing.ChangeFeedObserverCloseReason.Unknown` an `FeedProcessing.IChangeFeedObserver.CloseAsync` gesendet wurde, wenn die Partition nicht gefunden wurde oder wenn das Zielreplikat nicht auf dem neuesten Stand der Lesesitzung ist. In diesen Fällen werden nun die Schließungsgründe `FeedProcessing.ChangeFeedObserverCloseReason.ResourceGone` und `FeedProcessing.ChangeFeedObserverCloseReason.ReadSessionNotAvailable` verwendet.
+* Der neue Schließungsgrund `FeedProcessing.ChangeFeedObserverCloseReason.ReadSessionNotAvailable` wurde hinzugefügt, der zum Schließen des Änderungsfeeds „Beobachter“ gesendet wird, wenn das Zielreplikat nicht auf dem neuesten Stand der Lesesitzung ist.
+
+### <a name="230"></a><a name="2.3.0"/>2.3.0
 * Die neue `ChangeFeedProcessorBuilder.WithCheckpointPartitionProcessorFactory`-Methode und die zugehörige öffentliche Schnittstelle `ICheckpointPartitionProcessorFactory` wurden hinzugefügt. Dies ermöglicht einer Implementierung der Schnittstelle `IPartitionProcessor`, den integrierten Prüfpunktmechanismus zu verwenden. Die neue Factory ähnelt der vorhandenen `IPartitionProcessorFactory`, mit dem Unterschied, dass die `Create`-Methode auch den Parameter `ILeaseCheckpointer` akzeptiert.
 * Nur eine der beiden Methoden (entweder `ChangeFeedProcessorBuilder.WithPartitionProcessorFactory` oder `ChangeFeedProcessorBuilder.WithCheckpointPartitionProcessorFactory`) kann für dieselbe `ChangeFeedProcessorBuilder`-Instanz verwendet werden.
 
@@ -178,16 +187,17 @@ ms.locfileid: "85392062"
 
 ## <a name="release--retirement-dates"></a>Veröffentlichungs- und Deaktivierungstermine
 
-Wenn Microsoft ein SDK deaktiviert, werden Sie mindestens **12 Monate** vorher benachrichtigt, um einen reibungslosen Übergang zu einer neueren/unterstützten Version zu gewährleisten.
+Wenn Microsoft ein SDK deaktiviert, werden Sie mindestens **12 Monate** vorher benachrichtigt, um einen reibungslosen Übergang zu einer neueren/unterstützten Version zu gewährleisten. Neue Features, Funktionen und Optimierungen werden nur dem aktuellen SDK hinzugefügt. Daher wird empfohlen, immer so früh wie möglich auf die neueste SDK-Version zu aktualisieren.
 
-Neue Features, Funktionen und Optimierungen werden nur dem aktuellen SDK hinzugefügt. Daher wird empfohlen, immer so früh wie möglich auf die neueste SDK-Version zu aktualisieren. 
-
-Anforderungen an Cosmos DB mithilfe eines deaktivierten SDK werden vom Dienst abgelehnt.
+> [!WARNING]
+> Nach dem 31. August 2022 werden von Azure Cosmos DB für die Version 1.x des Azure Cosmos DB .NET oder .NET Core SDK für die SQL-API keine Fehlerbehebungen durchgeführt, keine neue Funktionen hinzugefügt, und es wird keine Unterstützung bereitgestellt. Wenn Sie kein Upgrade durchführen möchten, werden Anforderungen, die von Version 1.x des SDK gesendet werden, weiterhin vom Azure Cosmos DB-Dienst bedient.
 
 <br/>
 
 | Version | Veröffentlichungsdatum | Deaktivierungstermine |
 | --- | --- | --- |
+| [2.3.2](#2.3.2) |11. August 2020 |--- |
+| [2.3.1](#2.3.1) |30. Juli 2020 |--- |
 | [2.3.0](#2.3.0) |2\. April 2020 |--- |
 | [2.2.8](#2.2.8) |28. Oktober 2019 |--- |
 | [2.2.7](#2.2.7) |14. Mai 2019 |--- |

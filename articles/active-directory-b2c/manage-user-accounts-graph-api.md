@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/16/2020
+ms.date: 08/03/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 54b4292c74f7737f1c392d601627eb3e0ff48812
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.openlocfilehash: 8132eb72b3e448d7ae830b29ccb7dc51528c1250
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87116189"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87921400"
 ---
 # <a name="manage-azure-ad-b2c-user-accounts-with-microsoft-graph"></a>Verwalten von Azure AD B2C-Benutzerkonten mit Microsoft Graph
 
@@ -117,13 +117,13 @@ Wenn bei Benutzermigrationsvorgängen die Konten, die Sie migrieren möchten, ü
 
 Für jede kundenorientierte Anwendung gelten spezifische Anforderungen im Hinblick auf die Informationen, die erfasst werden sollen. Der Azure AD B2C-Mandant umfasst einen integrierten Satz von in Eigenschaften gespeicherten Informationen, z. B. Vorname, Nachname, Ort und Postleitzahl. Mit Azure AD B2C haben Sie die Möglichkeit, den für die einzelnen Kundenkonten gespeicherten Satz von Eigenschaften zu erweitern. Weitere Informationen zum Definieren benutzerdefinierter Attribute finden Sie unter [Benutzerdefinierte Attribute (Benutzerflows)](user-flow-custom-attributes.md) und [Benutzerdefinierte Attribute (benutzerdefinierte Richtlinien)](custom-policy-custom-attributes.md).
 
-Die Microsoft Graph-API unterstützt das Erstellen und Aktualisieren eines Benutzers mit Erweiterungsattributen. Erweiterungsattribute in der Graph-API werden mithilfe der Konvention `extension_ApplicationObjectID_attributename` benannt. Beispiel:
+Die Microsoft Graph-API unterstützt das Erstellen und Aktualisieren eines Benutzers mit Erweiterungsattributen. Erweiterungsattribute in den Graph-API werden gemäß der Konvention `extension_ApplicationClientID_attributename` benannt, wobei `ApplicationClientID` die **Anwendungs-ID (Client)** der Anwendung `b2c-extensions-app` ist (im Azure-Portal unter **App-Registrierungen** > **Alle Anwendungen**). Beachten Sie, dass die **Anwendungs-ID (Client)** in der Darstellung im Namen des Erweiterungsattributs keine Bindestriche enthält. Beispiel:
 
 ```json
 "extension_831374b3bd5041bfaa54263ec9e050fc_loyaltyNumber": "212342"
 ```
 
-## <a name="code-sample"></a>Codebeispiel
+## <a name="code-sample-how-to-programmatically-manage-user-accounts"></a>Codebeispiel: Programmgesteuertes Verwalten von Benutzerkonten
 
 Dieses Codebeispiel ist eine .NET Core-Konsolenanwendung, die das [Microsoft Graph SDK](https://docs.microsoft.com/graph/sdks/sdks-overview) für die Interaktion mit der Microsoft Graph-API verwendet. Der Code veranschaulicht, wie die API aufgerufen wird, um Benutzer in einem Azure AD B2C-Mandanten programmgesteuert zu verwalten.
 Sie können das [Beispielarchiv herunterladen](https://github.com/Azure-Samples/ms-identity-dotnetcore-b2c-account-management/archive/master.zip) (*.zip), das Repository auf GitHub [durchsuchen](https://github.com/Azure-Samples/ms-identity-dotnetcore-b2c-account-management) oder das Repository klonen:

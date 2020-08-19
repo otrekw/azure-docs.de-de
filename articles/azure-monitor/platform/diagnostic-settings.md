@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.subservice: logs
-ms.openlocfilehash: 0a9eaeb9b77c7b4dd7e0b2347c66de3a325a66ee
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 74e0a63da87a79cbd582cd6da5992251fc256504
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86505175"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88135435"
 ---
 # <a name="create-diagnostic-settings-to-send-platform-logs-and-metrics-to-different-destinations"></a>Erstellen von Diagnoseeinstellungen zum Senden von Plattformprotokollen und Metriken an verschiedene Ziele
 [Plattformprotokolle](platform-logs-overview.md) in Azure, z. B. das Azure-Aktivitätsprotokoll und Ressourcenprotokolle, liefern ausführliche Diagnose- und Überwachungsinformationen für Azure-Ressourcen und die Azure-Plattform, von der sie abhängen. [Plattformmetriken](data-platform-metrics.md) werden standardmäßig gesammelt und in der Regel in der Azure Monitor-Metrikdatenbank gespeichert. Dieser Artikel enthält Details zum Erstellen und Konfigurieren von Diagnoseeinstellungen, um Plattformmetriken und -protokolle an verschiedene Ziele zu senden.
@@ -41,34 +41,24 @@ Das folgende Video führt Sie durch das Routing von Plattformprotokollen mit Dia
 
 
 ## <a name="destinations"></a>Destinations
-
-Plattformprotokolle und -metriken können an die Ziele in der folgenden Tabelle gesendet werden. Folgen Sie den einzelnen Links in der folgenden Tabelle, um ausführliche Informationen zum Senden von Daten an das jeweilige Ziel zu erhalten.
+Plattformprotokolle und -metriken können an die Ziele in der folgenden Tabelle gesendet werden. 
 
 | Destination | BESCHREIBUNG |
 |:---|:---|
-| [Log Analytics-Arbeitsbereich](#log-analytics-workspace) | Das Senden von Protokollen und Metriken in einen Log Analytics-Arbeitsbereich gibt Ihnen die Möglichkeit, diese Daten zusammen mit anderen Überwachungsdaten, die mithilfe leistungsstarker Protokollabfragen von Azure Monitor erfasst werden, zu analysieren und andere Azure Monitor-Funktionen wie Warnungen und Visualisierungen zu nutzen. |
-| [Event Hubs](#event-hub) | Das Senden von Protokollen und Metriken an Event Hubs ermöglicht Ihnen das Streamen von Daten an externe Systeme, z. B. SIEMs und andere Protokollanalyselösungen von Drittanbietern. |
-| [Azure-Speicherkonto](#azure-storage) | Das Archivieren von Protokollen und Metriken in einem Azure Storage-Konto ist für die Überwachung, statische Analyse oder Sicherung nützlich. Im Vergleich zu Azure Monitor-Protokollen und einem Log Analytics Arbeitsbereich ist Azure Storage kostengünstiger, und die Protokolle können unbegrenzt aufbewahrt werden. |
+| [Log Analytics-Arbeitsbereich](design-logs-deployment.md) | Das Senden von Protokollen und Metriken in einen Log Analytics-Arbeitsbereich gibt Ihnen die Möglichkeit, diese Daten zusammen mit anderen Überwachungsdaten, die mithilfe leistungsstarker Protokollabfragen von Azure Monitor erfasst werden, zu analysieren und andere Azure Monitor-Funktionen wie Warnungen und Visualisierungen zu nutzen. |
+| [Event Hubs](/azure/event-hubs/) | Das Senden von Protokollen und Metriken an Event Hubs ermöglicht Ihnen das Streamen von Daten an externe Systeme, z. B. SIEMs und andere Protokollanalyselösungen von Drittanbietern.  |
+| [Azure-Speicherkonto](/azure/storage/blobs/) | Das Archivieren von Protokollen und Metriken in einem Azure Storage-Konto ist für die Überwachung, statische Analyse oder Sicherung nützlich. Im Vergleich zu Azure Monitor-Protokollen und einem Log Analytics Arbeitsbereich ist Azure Storage kostengünstiger, und die Protokolle können unbegrenzt aufbewahrt werden.  |
 
 
-## <a name="prerequisites"></a>Voraussetzungen
-Alle Ziele von Diagnoseeinstellungen müssen mit den erforderlichen Berechtigungen erstellt werden. In den folgenden Abschnitten finden Sie die Voraussetzungen für die einzelnen Ziele.
+### <a name="destination-requirements"></a>Anforderungen für Ziele
 
-### <a name="log-analytics-workspace"></a>Log Analytics-Arbeitsbereich
-[Erstellen Sie einen neuen Arbeitsbereich](../learn/quick-create-workspace.md), falls Sie noch keinen besitzen. Der Arbeitsbereich muss sich nicht in demselben Abonnement befinden wie die Ressource, die Protokolle sendet, sofern der Benutzer, der die Einstellung konfiguriert, den entsprechenden RBAC-Zugriff auf beide Abonnements besitzt.
+Alle Ziele für Diagnoseeinstellungen müssen vor den Diagnoseeinstellungen erstellt werden. Das Ziel muss sich nicht in demselben Abonnement befinden wie die Ressource, die Protokolle sendet, sofern der Benutzer, der die Einstellung konfiguriert, den entsprechenden RBAC-Zugriff auf beide Abonnements besitzt. In der folgenden Tabelle sind besondere Anforderungen für die einzelnen Ziele einschließlich regionaler Einschränkungen aufgeführt.
 
-### <a name="event-hub"></a>Event Hub
-[Erstellen Sie einen Event Hub](../../event-hubs/event-hubs-create.md), falls Sie noch keinen besitzen. Der Event Hubs-Namespace muss sich nicht in demselben Abonnement wie das Abonnement befinden, das Protokolle ausgibt – sofern der Benutzer, der die Einstellung konfiguriert, über den entsprechenden RBAC-Zugriff auf beide Abonnements verfügt und beide Abonnements sich in demselben AAD-Mandanten befinden.
-
-Die SAS-Richtlinie für den Namespace definiert die Berechtigungen für den Streamingmechanismus. Für das Streaming an Event Hubs werden Berechtigungen für das Verwalten, Senden und Lauschen benötigt. Sie können SAS-Richtlinien im Azure-Portal auf der Registerkarte „Konfigurieren“ für Ihren Event Hubs-Namespace erstellen oder ändern. Wenn Sie der Diagnoseeinstellung das Streamingfeature hinzufügen möchten, müssen Sie in der Event Hubs-Autorisierungsregel über die ListKey-Berechtigung verfügen. 
-
-
-### <a name="azure-storage"></a>Azure-Speicher
-[Erstellen Sie ein Azure-Speicherkonto](../../storage/common/storage-account-create.md), falls Sie noch keines besitzen. Das Speicherkonto muss sich nicht unter demselben Abonnement befinden wie die Ressource, die Protokolle sendet, sofern der Benutzer, der die Einstellung konfiguriert, den entsprechenden RBAC-Zugriff auf beide Abonnements besitzt.
-
-Um den Zugriff auf die Daten besser steuern zu können, sollten Sie kein bereits vorhandenes Speicherkonto mit anderen, nicht überwachungsbezogenen Daten verwenden. Wenn Sie das Aktivitätsprotokoll und Ressourcenprotokollen zusammen archivieren, können Sie aber dasselbe Speicherkonto verwenden, damit sich alle Überwachungsdaten an einem zentralen Ort befinden.
-
-Legen Sie die unveränderliche Richtlinie für das Speicherkonto wie unter [Festlegen und Verwalten von Unveränderlichkeitsrichtlinien für Blobspeicher](../../storage/blobs/storage-blob-immutability-policies-manage.md) beschrieben fest, um die Daten an einen unveränderlichen Speicher zu senden. Sie müssen alle Schritte in diesem Artikel ausführen, einschließlich der Aktivierung von Schreibvorgängen in geschützten Anfügeblobs.
+| Destination | Requirements (Anforderungen) |
+|:---|:---|
+| Log Analytics-Arbeitsbereich | Der Arbeitsbereich muss sich nicht in derselben Region wie die überwachte Ressource befinden.|
+| Event Hubs | Die SAS-Richtlinie für den Namespace definiert die Berechtigungen für den Streamingmechanismus. Für das Streaming an Event Hubs werden Berechtigungen für das Verwalten, Senden und Lauschen benötigt. Wenn Sie der Diagnoseeinstellung das Streamingfeature hinzufügen möchten, müssen Sie in der Event Hubs-Autorisierungsregel über die ListKey-Berechtigung verfügen.<br><br>Wenn die überwachte Ressource regional ist, muss sich der Event Hub-Namespace in derselben Region wie die Ressource befinden. |
+| Azure-Speicherkonto | Um den Zugriff auf die Daten besser steuern zu können, sollten Sie kein bereits vorhandenes Speicherkonto mit anderen, nicht überwachungsbezogenen Daten verwenden. Wenn Sie das Aktivitätsprotokoll und Ressourcenprotokollen zusammen archivieren, können Sie aber dasselbe Speicherkonto verwenden, damit sich alle Überwachungsdaten an einem zentralen Ort befinden.<br><br>Legen Sie die unveränderliche Richtlinie für das Speicherkonto wie unter [Festlegen und Verwalten von Unveränderlichkeitsrichtlinien für Blobspeicher](../../storage/blobs/storage-blob-immutability-policies-manage.md) beschrieben fest, um die Daten an einen unveränderlichen Speicher zu senden. Sie müssen alle Schritte in diesem Artikel ausführen, einschließlich der Aktivierung von Schreibvorgängen in geschützten Anfügeblobs.<br><br>Wenn die überwachte Ressource regional ist, muss sich das Speicherkonto in derselben Region wie die Ressource befinden. |
 
 > [!NOTE]
 > Azure Data Lake Storage Gen2-Konten werden derzeit nicht als Ziel für Diagnoseeinstellungen unterstützt, auch wenn sie möglicherweise als gültige Option im Azure-Portal aufgeführt werden.
@@ -182,7 +172,7 @@ Informationen zum Erstellen oder Aktualisieren von Diagnoseeinstellungen mithilf
 Informationen zum Erstellen oder Aktualisieren von Diagnoseeinstellungen mithilfe der [Azure Monitor-REST-API](/rest/api/monitor/) finden Sie unter [Diagnoseeinstellungen](/rest/api/monitor/diagnosticsettings).
 
 ## <a name="create-using-azure-policy"></a>Erstellen mithilfe von Azure Policy
-Da für jede Azure-Ressource eine Diagnoseeinstellung erstellt werden muss, können Sie mit Azure Policy beim Erstellen der einzelnen Ressourcen automatisch eine Diagnoseeinstellung erstellen. Weitere Informationen finden Sie unter [Bedarfsorientiertes Bereitstellen von Azure Monitor mithilfe von Azure Policy](deploy-scale.md).
+Da für jede Azure-Ressource eine Diagnoseeinstellung erstellt werden muss, können Sie mit Azure Policy beim Erstellen der einzelnen Ressourcen automatisch eine Diagnoseeinstellung erstellen. Weitere Informationen finden Sie unter [Bedarfsorientiertes Bereitstellen von Azure Monitor mithilfe von Azure Policy](../deploy-scale.md).
 
 
 ## <a name="next-steps"></a>Nächste Schritte

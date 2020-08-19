@@ -8,12 +8,12 @@ author: ms-jasondel
 ms.author: jasondel
 keywords: aro, openshift, az aro, red hat, cli
 ms.custom: mvc
-ms.openlocfilehash: 581587382c3bfd03ed329672e5c6ca065554d1c7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c196d48d22a2bd714c4b6252ad927d18790f4674
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83727438"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056770"
 ---
 # <a name="create-an-azure-red-hat-openshift-4-private-cluster"></a>Erstellen eines privaten Azure Red Hat OpenShift 4-Clusters
 
@@ -23,24 +23,9 @@ In diesem Artikel erfahren Sie, wie Sie Ihre Umgebung für das Erstellen von pri
 > * Einrichten der erforderlichen Komponenten sowie Erstellen des erforderlichen virtuellen Netzwerks und der Subnetze
 > * Bereitstellen eines Clusters mit einem privaten Endpunkt für den API-Server und einem privaten Eingangscontroller
 
-Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial die Version 2.0.75 oder höher der Azure CLI ausführen. Führen Sie `az --version` aus, um die Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial Version 2.6.0 oder höher der Azure CLI ausführen. Führen Sie `az --version` aus, um die Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
 ## <a name="before-you-begin"></a>Voraussetzungen
-
-### <a name="install-the-az-aro-extension"></a>Installieren der Erweiterung „az aro“
-Mit der `az aro`-Erweiterung können Sie Azure Red Hat OpenShift-Cluster mithilfe der Azure CLI direkt über die Befehlszeile erstellen, darauf zugreifen und löschen.
-
-Führen Sie zum Installieren der Erweiterung `az aro` den folgenden Befehl aus:
-
-```azurecli-interactive
-az extension add -n aro --index https://az.aroapp.io/stable
-```
-
-Wenn Sie die Erweiterung bereits installiert haben, können Sie zum Aktualisieren den folgenden Befehl ausführen:
-
-```azurecli-interactive
-az extension update -n aro --index https://az.aroapp.io/stable
-```
 
 ### <a name="register-the-resource-provider"></a>Registrieren des Ressourcenanbieters
 
@@ -48,21 +33,6 @@ Als Nächstes müssen Sie den Ressourcenanbieter `Microsoft.RedHatOpenShift` in 
 
 ```azurecli-interactive
 az provider register -n Microsoft.RedHatOpenShift --wait
-```
-
-Vergewissern Sie sich, dass die Erweiterung registriert ist.
-
-```azurecli-interactive
-az -v
-```
-
-  Die Ausgabe sollte in etwa wie folgt aussehen:
-
-```output
-...
-Extensions:
-aro                                1.0.0
-...
 ```
 
 ### <a name="get-a-red-hat-pull-secret-optional"></a>Abrufen eines Red Hat-Pullgeheimnisses (optional)

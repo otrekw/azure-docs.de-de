@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 08/02/2019
 ms.author: sutalasi
-ms.openlocfilehash: 34cfafadabd9a6328cbe85a5444211828df9db6d
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 1b02b089fea7e883bdc6c58c7a2845af12b50a37
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86133725"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87824527"
 ---
 # <a name="set-up-disaster-recovery-for-sql-server"></a>Einrichten der Notfallwiederherstellung für SQL Server
 
@@ -47,6 +47,8 @@ SQL Server auf einer Azure-IaaS-VM oder auf einem lokalem System.| Replikation m
 > * Sie können Site Recovery für eine Bereitstellung unter Azure, Hyper-V, VMware oder in einer physischen Infrastruktur verwenden. Halten Sie sich an die [Anweisungen](#how-to-help-protect-a-sql-server-cluster) am Ende des Artikels, um einen SQL Server-Cluster mit Site Recovery zu schützen.
 > * Stellen Sie sicher, dass die Datenänderungsrate auf dem Computer innerhalb der [Site Recovery-Grenzwerte](vmware-physical-azure-support-matrix.md#churn-limits) liegt. Die Änderungsrate wird in pro Sekunde geschriebenen Bytes gemessen. Bei Computern, auf denen Windows ausgeführt wird, können Sie diese Änderungsrate anzeigen, indem Sie im Task-Manager die Registerkarte **Leistung** auswählen. Beachten Sie die Schreibgeschwindigkeit für jeden Datenträger.
 > * Site Recovery unterstützt die Replikation von Failoverclusterinstanzen in direkten Speicherplätzen. Weitere Informationen finden Sie unter [Replizieren von virtuellen Azure-Computern, die „Direkte Speicherplätze“ verwenden, in einer anderen Azure-Region](azure-to-azure-how-to-enable-replication-s2d-vms.md).
+> 
+> Wenn Sie die SQL-Workload zu Azure migrieren, empfiehlt es sich, die [Leistungsrichtlinien für SQL Server auf Azure Virtual Machines](../azure-sql/virtual-machines/windows/performance-guidelines-best-practices.md) anzuwenden.
 
 ## <a name="disaster-recovery-of-an-application"></a>Notfallwiederherstellung einer Anwendung
 

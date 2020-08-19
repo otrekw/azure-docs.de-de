@@ -1,19 +1,20 @@
 ---
 title: Verwalten der Indizierung in der Azure Cosmos DB-API für MongoDB
-description: Dieser Artikel enthält eine Übersicht über die Indizierungsfunktionen von Azure Cosmos DB über die MongoDB-API.
+description: Dieser Artikel enthält eine Übersicht über die Indizierungsfunktionen von Azure Cosmos DB über die Azure Cosmos DB-API für MongoDB.
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: how-to
-ms.date: 06/16/2020
+ms.date: 08/07/2020
 author: timsander1
 ms.author: tisande
-ms.openlocfilehash: e0b14eefcc0b484c92faf1148ae2972f51b04d31
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-javascript
+ms.openlocfilehash: fb90390814af39b240c9a157f490ee9390afeb8f
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85260694"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88030502"
 ---
 # <a name="manage-indexing-in-azure-cosmos-dbs-api-for-mongodb"></a>Verwalten der Indizierung in der Azure Cosmos DB-API für MongoDB
 
@@ -39,7 +40,7 @@ Bei einer Abfrage werden mehrere Einzelfeldindizes verwendet, soweit verfügbar.
 
 ### <a name="compound-indexes-mongodb-server-version-36"></a>Zusammengesetzte Indizes (MongoDB-Serverversion 3.6)
 
-Die Azure Cosmos DB-API für MongoDB unterstützt zusammengesetzte Indizes für Konten, die Version 3.6 des Wire-Protokolls verwenden. Sie können bis zu acht Felder in einen zusammengesetzten Index einschließen. Anders als in MongoDB sollten Sie nur dann einen zusammengesetzten Index erstellen, wenn die Abfrage über mehrere Felder gleichzeitig effizient sortiert werden muss. Für Abfragen mit mehreren Filtern, die nicht sortiert werden müssen, sollten Sie anstelle eines einzelnen zusammengesetzten Indexes mehrere Einzelfeldindizes erstellen.
+Die Azure Cosmos DB-API für MongoDB unterstützt zusammengesetzte Indizes für Konten, die Version 3.6 des Wire-Protokolls verwenden. Sie können bis zu acht Felder in einen zusammengesetzten Index einschließen. **Anders als in MongoDB sollten Sie nur dann einen zusammengesetzten Index erstellen, wenn die Abfrage über mehrere Felder gleichzeitig effizient sortiert werden muss.** Für Abfragen mit mehreren Filtern, die nicht sortiert werden müssen, sollten Sie anstelle eines einzelnen zusammengesetzten Indexes mehrere Einzelfeldindizes erstellen.
 
 Der folgende Befehl erstellt einen zusammengesetzten Index für die Felder `name` und `age`:
 
@@ -56,6 +57,9 @@ Sie können obigen zusammengesetzten Index auch für die effiziente Sortierung e
 Allerdings muss die Reihenfolge der Pfade im zusammengesetzten Index exakt mit der Abfrage übereinstimmen. Hier sehen Sie ein Beispiel für eine Abfrage, die einen zusätzlichen zusammengesetzten Index erfordern würde:
 
 `db.coll.find().sort({age:1,name:1})`
+
+> [!NOTE]
+> Für geschachtelte Eigenschaften oder Arrays können Sie keine zusammengesetzten Indizes erstellen.
 
 ### <a name="multikey-indexes"></a>Indizes mit mehreren Schlüsseln
 
@@ -314,11 +318,16 @@ Die Details zum Indizierungsfortschritt zeigen den Fortschritt des aktuellen Ind
    }
    ```
 
-### <a name="background-index-updates"></a>Indexaktualisierungen im Hintergrund
+## <a name="background-index-updates"></a>Indexaktualisierungen im Hintergrund
 
 Unabhängig von dem für die **Hintergrund**-Indexeigenschaft angegebenen Wert werden Indexaktualisierungen immer im Hintergrund durchgeführt. Da Indexaktualisierungen Anforderungseinheiten (Request Units, RUs) mit einer niedrigeren Priorität als andere Datenbankvorgänge nutzen, führen Indexänderungen nicht zu Ausfallzeiten bei Schreib-, Update- oder Löschvorgängen.
 
-Wenn Sie einen neuen Index hinzufügen, verwenden Abfragen diesen sofort. Dies bedeutet, dass Abfragen möglicherweise nicht alle übereinstimmenden Ergebnisse zurückgeben, aber keinen zugehörigen Fehler zurückgeben. Nachdem die Indextransformation abgeschlossen ist, werden die Abfrageergebnisse konsistent. Sie können [den Indizierungsfortschritt nachverfolgen](#track-index-progress).
+Das Hinzufügen eines neuen Indexes hat keine Auswirkung auf die Leseverfügbarkeit. Abfragen verwenden neue Indizes erst dann, wenn die Indextransformation abgeschlossen ist. Während der Indextransformation werden von der Abfrage-Engine weiterhin vorhandene Indizes verwendet, sodass Sie während der Indextransformation eine ähnliche Leseleistung beobachten werden wie vor dem Einleiten der Indexänderung. Beim Hinzufügen neuer Indizes besteht auch kein Risiko, unvollständige oder inkonsistente Abfrageergebnisse zu erhalten.
+
+Wenn Indizes entfernt und sofort Abfragen ausgeführt werden, die nach den gelöschten Indizes filtern, können die Ergebnisse inkonsistent und unvollständig sein, solange die Indextransformation nicht abgeschlossen ist. Wenn Sie Indizes entfernen, gewährleistet die Abfrage-Engine keine konsistenten oder vollständigen Ergebnisse, falls Abfragen nach diesen soeben entfernten Indizes filtern. Die meisten Entwickler löschen keine Indizes und versuchen dann sofort, Abfragen dafür auszuführen, sodass diese Situation in der Praxis eher unwahrscheinlich ist.
+
+> [!NOTE]
+> Sie können [den Indizierungsfortschritt nachverfolgen](#track-index-progress).
 
 ## <a name="migrate-collections-with-indexes"></a>Migrieren von Sammlungen mit Indizes
 

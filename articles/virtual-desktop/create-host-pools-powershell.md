@@ -1,19 +1,17 @@
 ---
 title: 'Erstellen eines Windows Virtual Desktop-Hostpools – PowerShell: Azure'
 description: Informationen zum Erstellen eines Hostpools in Windows Virtual Desktop mit PowerShell-Cmdlets.
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: how-to
-ms.date: 04/30/2020
+ms.date: 08/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 2a4ba5494cb65738f5443915c013571b98854a91
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 1275eab36e21ea6befdda13e14759a30ef5398a3
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543417"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121152"
 ---
 # <a name="create-a-windows-virtual-desktop-host-pool-with-powershell"></a>Erstellen eines Windows Virtual Desktop-Hostpools mit PowerShell
 
@@ -118,6 +116,32 @@ Führen Sie auf jedem virtuellen Computer die folgenden Schritte aus, um die Win
 
 >[!IMPORTANT]
 >Zum Schutz Ihrer Windows Virtual Desktop-Umgebung in Azure empfiehlt es sich, den eingehenden Port 3389 auf Ihren virtuellen Computern nicht zu öffnen. Für Windows Virtual Desktop muss der eingehende Port 3389 nicht geöffnet sein, damit Benutzer auf die virtuellen Computer des Hostpools zugreifen können. Wenn Sie den Port 3389 zur Problembehandlung öffnen müssen, verwenden Sie am besten den [Just-In-Time-Zugriff auf virtuelle Computer](../security-center/security-center-just-in-time.md). Außerdem wird empfohlen, dass Sie Ihren VMs keine öffentliche IP-Adresse zuweisen.
+
+## <a name="update-the-agent"></a>Aktualisieren des Agents
+
+Sie müssen den Agent in folgenden Situationen aktualisieren:
+
+- Sie möchten eine zuvor registrierte Sitzung zu einem neuen Hostpool migrieren.
+- Der Sitzungshost wird nach einer Aktualisierung nicht in Ihrem Hostpool angezeigt.
+
+Zum Aktualisieren des Agents führen Sie die folgenden Schritte aus:
+
+1. Melden Sie sich bei der VM als Administrator an.
+2. Navigieren Sie zu **Dienste**, und beenden Sie dann die Prozesse **Rdagent** und **Remote Desktop Agent Loader**.
+3. Als Nächstes suchen Sie die Agent- und Bootloader-MSIs. Diese befinden sich entweder im Ordner **C:\DeployAgent** oder an dem Speicherort, an dem sie bei der Installation gespeichert wurden.
+4. Suchen Sie die folgenden Dateien, und deinstallieren Sie sie:
+     
+     - Microsoft.RDInfra.RDAgent.Installer-x64-verx.x.x
+     - Microsoft.RDInfra.RDAgentBootLoader.Installer-x64
+
+   Zum Deinstallieren dieser Dateien klicken Sie mit der rechten Maustaste auf den jeweiligen Dateinamen, und wählen Sie dann **Deinstallieren** aus.
+5. Optional können Sie auch die folgenden Registrierungseinstellungen entfernen:
+     
+     - Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\RDInfraAgent
+     - Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\RDAgentBootLoader
+
+6. Nachdem Sie diese Elemente deinstalliert haben, sollten alle Zuordnungen zum alten Hostpool entfernt sein. Wenn Sie diesen Host erneut für den Dienst registrieren möchten, folgen Sie die Anweisungen unter [Registrieren der virtuellen Computer für den Windows Virtual Desktop-Hostpool](create-host-pools-powershell.md#register-the-virtual-machines-to-the-windows-virtual-desktop-host-pool).
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

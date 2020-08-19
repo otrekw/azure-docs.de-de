@@ -74,10 +74,10 @@
       href: ./sql/tutorial-connect-power-bi-desktop.md
     - name: Data Scientist
       items:
-        - name: "Vorhersagen von NYC\_Taxi-Tipps"
+        - name: Ausführen eines Regressionsexperiments mithilfe von Azure AutoML
+          href: ./spark/apache-spark-azure-machine-learning-tutorial.md
+        - name: Erstellen eines Klassifizierungsmodells mit Apache Spark MLlib
           href: ./spark/apache-spark-machine-learning-mllib-notebook.md
-        - name: Erweitern von Apache Spark mit zusätzlichen Bibliotheken
-          href: ./spark/apache-spark-azure-portal-add-libraries.md
     - name: Datenanalyst
       items:
         - name: Verwenden von SQL On-Demand zum Analysieren und von Synapse Studio zum Visualisieren
@@ -202,8 +202,6 @@
               href: ./spark/apache-spark-overview.md
             - name: 'Apache Spark: Konzepte'
               href: ./spark/apache-spark-concepts.md
-            - name: Unterstützung für Runtimesprache und Bibliothek
-              href: ./spark/apache-spark-version-support.md
             - name: Was ist Delta Lake?
               href: ./spark/apache-spark-what-is-delta-lake.md
             - name: 'Apache Spark: Leistung'
@@ -212,6 +210,12 @@
               href: ./spark/apache-spark-autoscale.md
         - name: Entwicklung
           items:
+            - name: Bibliotheken
+              items:
+                - name: Hinzufügen und Verwalten von Bibliotheken
+                  href: ./spark/apache-spark-azure-portal-add-libraries.md
+                - name: Unterstützung für Runtimesprache und Bibliothek
+                  href: ./spark/apache-spark-version-support.md
             - name: Azure Synapse Studio-Notebooks
               href: ./spark/apache-spark-development-using-notebooks.md
             - name: .NET für Apache Spark

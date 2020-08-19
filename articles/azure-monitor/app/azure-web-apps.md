@@ -2,14 +2,14 @@
 title: Überwachen der Leistung von Azure App Services | Microsoft-Dokumentation
 description: Überwachung der Anwendungsleistung für Azure App Services. Ladezeit für Diagramme und Antwortzeit, Informationen zu den Abhängigkeiten und Festlegen von Benachrichtigungen zur Leistung.
 ms.topic: conceptual
-ms.date: 12/11/2019
+ms.date: 08/06/2020
 ms.custom: devx-track-javascript
-ms.openlocfilehash: f96d994f9f88a0debf110de2ca4f6da60e8ea3bc
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: d30d5fa8532b9bdec2b231daf9a59732dc1ebce8
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373163"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88079687"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Überwachen der Leistung von Azure App Service
 
@@ -396,6 +396,12 @@ Wenn Sie „APPINSIGHTS_JAVASCRIPT_ENABLED=true“ in Fällen verwenden, in dene
 Dies liegt daran, dass die Anwendungseinstellung APPINSIGHTS_JAVASCRIPT_ENABLED auf „true“ gesetzt und die Inhaltscodierung zur gleichen Zeit vorhanden ist. Dieses Szenario wird noch nicht unterstützt. Die Problemumgehung besteht darin, APPINSIGHTS_JAVASCRIPT_ENABLED aus Ihren Anwendungseinstellungen zu entfernen. Leider bedeutet dies, dass manuelle SDK-Verweise für Ihre Webseiten erforderlich sind, wenn die JavaScript-Instrumentierung auf der Client/Browser-Seite noch erforderlich ist. Führen Sie die [Anweisungen](https://github.com/Microsoft/ApplicationInsights-JS#snippet-setup-ignore-if-using-npm-setup) für manuelle Instrumentierung mit dem JavaScript SDK aus.
 
 Aktuelle Informationen zu Application Insights-Agent/Erweiterung finden Sie in den [Versionshinweisen](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/app-insights-web-app-extensions-releasenotes.md).
+
+### <a name="default-website-deployed-with-web-apps-does-not-support-automatic-client-side-monitoring"></a>Die mit Web-Apps bereitgestellte Standardwebsite unterstützt keine automatische clientseitige Überwachung
+
+Wenn Sie eine Web-App mit der `ASP.NET`- oder `.NET Core`-Runtime in Azure App Services erstellen, wird eine einzelne statische HTML-Seite als Starter-Website bereitgestellt. Die statische Webseite lädt auch ein .NET-verwaltetes Webpart in IIS. Dies ermöglicht das Testen der serverseitigen Überwachung ohne Code, unterstützt jedoch nicht die automatische clientseitige Überwachung.
+
+Wenn Sie die server- und clientseitige Überwachung ohne Code für ASP.NET oder ASP.NET Core in einer Azure App Services-Web-App testen möchten, wird empfohlen, den offiziellen Anleitungen zum [Erstellen einer ASP.NET Core-Web-App](../../app-service/quickstart-dotnetcore.md) und [Erstellen einer ASP.NET Framework-Web-App](../../app-service/quickstart-dotnet-framework.md) zu folgen und anschließend die Anweisungen im aktuellen Artikel zum Aktivieren der Überwachung zu verwenden.
 
 ### <a name="php-and-wordpress-are-not-supported"></a>PHP und WordPress werden nicht unterstützt.
 

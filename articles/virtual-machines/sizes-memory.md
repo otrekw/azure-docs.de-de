@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: mimckitt
-ms.openlocfilehash: ed49f5299129d16ecdd31f537064e67a4e8965a4
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: ea58eeac5a77f2e1eaf2a7756de6d36a3fc0626b
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289729"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87825496"
 ---
 # <a name="memory-optimized-virtual-machine-sizes"></a>Arbeitsspeicheroptimierte Größen virtueller Computer
 
@@ -56,3 +56,5 @@ Azure Compute bietet VM-Größen, die für einen bestimmten Hardwaretyp isoliert
 ## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Informationen dazu, wie Sie mit [Azure-Computeeinheiten (ACU)](acu.md) die Computeleistung von Azure-SKUs vergleichen können.
+
+Weitere Informationen dazu, wie VM-Namen in Azure zugewiesen werden, finden Sie unter [Namenskonventionen für Azure-VM-Größen](./vm-naming-conventions.md).

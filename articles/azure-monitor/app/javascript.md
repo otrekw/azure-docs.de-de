@@ -2,16 +2,14 @@
 title: Azure Application Insights für JavaScript-Web-Apps
 description: Rufen Sie die Anzahl der Seitenaufrufe und Sitzungen, Webclientdaten und Single-Page-Anwendungen (SPA) ab, und verfolgen Sie Verwendungsmuster. Erkennen Sie Ausnahmen und Leistungsprobleme in JavaScript-Web-Apps.
 ms.topic: conceptual
-author: Dawgfan
-ms.author: mmcc
-ms.date: 09/20/2019
+ms.date: 08/06/2020
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 8cd0c7c73ac4f5c531d91d7e458300ab1b0ad1af
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 7c5abb109018bd8bc5b501fe728a3a0f422a3db7
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371480"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905824"
 ---
 # <a name="application-insights-for-web-pages"></a>Application Insights für Webseiten
 
@@ -41,7 +39,8 @@ Führen Sie die Installation über NPM aus.
 npm i --save @microsoft/applicationinsights-web
 ```
 
-> *Hinweis:* **Dieses Paket enthält Typisierungen**. Sie müssen daher **kein** separates Typisierungspaket installieren.
+> [!Note]
+> **Dieses Paket enthält Typisierungen**. Sie müssen daher **kein** separates Typisierungspaket installieren.
     
 ```js
 import { ApplicationInsights } from '@microsoft/applicationinsights-web'
@@ -108,11 +107,11 @@ Folgende Konfigurationsoptionen stehen zur Verfügung:
 | Name | type | BESCHREIBUNG
 |------|------|----------------
 | src | Zeichenfolge **[erforderlich]** | Die vollständige URL, von der das SDK geladen werden soll. Dieser Wert wird für das Attribut „src“ eines dynamisch hinzugefügten &lt;script /&gt;-Tags verwendet. Sie können die öffentliche CDN-Adresse oder eine privat gehostete nehmen.
-| name | Zeichenfolge *[optional]* | Der globale Name des initialisierten SDK. Der Standardwert ist „appInsights“. ```window.appInsights``` ist daher ein Verweis auf die initialisierte Instanz. Hinweis: Wenn Sie einen Namenswert angeben oder es scheint, als sei eine frühere Instanz (über den globalen Namen „appInsightsSDK“) zugewiesen, wird dieser Namenswert ebenfalls im globalen Namespace als ```window.appInsightsSDK=<name value>``` definiert. Dies wird durch den Initialisierungscode des SDK erzwungen, um sicherzustellen, dass die richtigen Methoden für das Ausschnittsgerüst und den Proxy initialisiert und aktualisiert werden.
+| name | Zeichenfolge *[optional]* | Der globale Name des initialisierten SDK. Der Standardwert ist `appInsights`. ```window.appInsights``` ist daher ein Verweis auf die initialisierte Instanz. Hinweis: Wenn Sie einen Namenswert angeben oder es scheint, als sei eine frühere Instanz (über den globalen Namen „appInsightsSDK“) zugewiesen, wird dieser Namenswert ebenfalls im globalen Namespace als ```window.appInsightsSDK=<name value>``` definiert. Dies wird durch den Initialisierungscode des SDK erzwungen, um sicherzustellen, dass die richtigen Methoden für das Ausschnittsgerüst und den Proxy initialisiert und aktualisiert werden.
 | ld | Nummer in ms *[optional]* | Gibt die Lastverzögerungsdauer an, die gewartet werden muss, bevor versucht werden kann, dass SDK zu laden. Der Standardwert sind 0 ms. Durch jeden negativen Wert wird dem &lt;head&gt;-Bereich der Seite umgehend ein Skripttag hinzugefügt. Das Skripttag blockiert das Seitenladeereignis, bis das Skript geladen ist (oder das Laden des Skripts fehlgeschlagen ist).
 | useXhr | boolesch *[optional]* | Diese Einstellung wird nur für die Berichterstattung über SDK-Ladefehler verwendet. Bei der Berichterstattung wird zunächst auf die fetch()-Methode zurückgegriffen, falls diese verfügbar ist. Anschließend wird ein Fallback auf Xhr ausgeführt. Wenn Sie diesen Wert auf TRUE festlegen, wird schlicht die fetch-Überprüfung umgangen. Dieser Wert muss nur verwendet werden, wenn Ihre Anwendung in einer Umgebung ausgeführt wird, in der die fetch-Methode keine Fehlerereignisse senden kann.
-| crossOrigin | Zeichenfolge *[optional]* | Wenn Sie diese Einstellung aufnehmen, enthält das Skripttag, das für den SDK-Download hinzugefügt wurde, das Attribut „crossOrigin“ mit diesem Zeichenfolgenwert. Ist diese Einstellung nicht konfiguriert (Standardeinstellung), wird kein crossOrigin-Attribut hinzugefügt. Es wird empfohlen, keinen Wert zu definieren (Standardeinstellung) oder die Werte "" oder "anonymous" (anonym) zu verwenden. (Eine vollständige Liste der zulässigen Werte finden Sie in der [Dokumentation zum HTML-Attribut „crossorigin“](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/crossorigin))
-| cfg | Objekt **[erforderlich]** | Die bei der Initialisierung an das Application Insights SDK übergebene Konfiguration
+| crossOrigin | Zeichenfolge *[optional]* | Wenn Sie diese Einstellung aufnehmen, enthält das Skripttag, das für den SDK-Download hinzugefügt wurde, das Attribut „crossOrigin“ mit diesem Zeichenfolgenwert. Ist diese Einstellung nicht konfiguriert (Standardeinstellung), wird kein crossOrigin-Attribut hinzugefügt. Es wird empfohlen, keinen Wert zu definieren (Standardeinstellung) oder die Werte "" oder "anonymous" (anonym) zu verwenden. (Eine vollständige Liste der zulässigen Werte finden Sie in der [Dokumentation zum HTML-Attribut `crossorigin`](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/crossorigin))
+| cfg | Objekt **[erforderlich]** | Die bei der Initialisierung an das Application Insights SDK übergebene Konfiguration.
 
 ### <a name="sending-telemetry-to-the-azure-portal"></a>Senden von Telemetriedaten an das Azure-Portal
 
@@ -196,9 +195,9 @@ Die meisten Konfigurationsfelder werden so benannt, dass sie standardmäßig auf
 | enableResponseHeaderTracking | false | Bei „true“ werden Antwortheader für AJAX- und Fetch-Anforderungen nachverfolgt.Der Standardwert ist „false“.
 | distributedTracingMode | `DistributedTracingModes.AI` | Legt den Modus für verteilte Ablaufverfolgung fest. Wenn der AI_AND_W3C-Modus oder der W3C-Modus festgelegt ist, werden Kontextheader für die W3C-Ablaufverfolgung (traceparent/tracestate) generiert und in alle ausgehenden Anforderungen eingeschlossen. AI_AND_W3C wird für Abwärtskompatibilität mit beliebigen mit älteren Application Insights-Versionen instrumentierten Diensten bereitgestellt. Ein Beispiel finden Sie [hier](./correlation.md#enable-w3c-distributed-tracing-support-for-web-apps).
 | enableAjaxErrorStatusText | false | Die Standardeinstellung ist „false“. Bei TRUE wird der Text zu Antwortfehlerdaten im Abhängigkeitsereignis für fehlerhafte AJAX-Anforderungen aufgeführt.
-| enableAjaxPerfTracking | false | Die Standardeinstellung ist „false“. Flag, das die Suche nach und das Aufnehmen von zusätzlichen „window.performance“-Timings von Browsern in gemeldeten Ajax-Metriken (XHR und fetch) ermöglicht.
+| enableAjaxPerfTracking | false | Die Standardeinstellung ist „false“. Flag, das die Suche nach und das Aufnehmen von zusätzlichen „window.performance“-Timings von Browsern in gemeldeten `ajax`-Metriken (XHR und fetch) ermöglicht.
 | maxAjaxPerfLookupAttempts | 3 | Der Standardwert ist 3. Die maximale Anzahl von Malen, die nach „window.performance“-Timings gesucht werden kann (falls vorhanden). Dies ist erforderlich, weil nicht alle Browser „window.performance“ befüllen, bevor das Ende der XHR-Anforderung gemeldet wird. Bei fetch-Anforderungen wird dies nach der Fertigstellung hinzugefügt.
-| ajaxPerfLookupDelay | 25 | Der Standardwert lautet 25 ms. Die Zeitdauer, die gewartet werden muss, bevor noch einmal versucht werden kann, die „windows.performance“-Timings für eine Ajax-Anforderung zu suchen. Die Zeit wird in Millisekunden angegeben und direkt an setTimeout() übergeben.
+| ajaxPerfLookupDelay | 25 | Der Standardwert lautet 25 ms. Die Zeitdauer, die gewartet werden muss, bevor noch einmal versucht werden kann, die „windows.performance“-Timings für eine `ajax`-Anforderung zu suchen. Die Zeit wird in Millisekunden angegeben und direkt an setTimeout() übergeben.
 | enableUnhandledPromiseRejectionTracking | false | Bei TRUE werden unverarbeitete Ablehnungen von Zusagen automatisch erfasst und als JavaScript-Fehler gemeldet. Wenn disableExceptionTracking TRUE ist (Ausnahmen werden nicht nachverfolgt), wird der Konfigurationswert ignoriert, und unverarbeitete Ablehnungen von Zusagen werden nicht gemeldet.
 
 ## <a name="single-page-applications"></a>Single-Page-Webanwendungen
@@ -220,6 +219,38 @@ Wenn Sie `autoTrackPageVisitTime: true` festlegen, wird die Zeit nachverfolgt, d
 |---------------|
 | [React](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/extensions/applicationinsights-react-js/README.md)|
 | [React Native](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/extensions/applicationinsights-react-native/README.md)|
+
+## <a name="correlation"></a>Korrelation
+
+Die Korrelation zwischen Client und Serverseite wird für Folgendes unterstützt:
+
+- XHR/AJAX-Anforderungen 
+- Fetch-Anforderungen 
+
+Die Korrelation zwischen Client und Serverseite wird für `GET`- und `POST`-Anforderungen **nicht unterstützt**.
+
+### <a name="enable-cross-component-correlation-between-client-ajax-and-server-requests"></a>Ermöglichen der komponentenübergreifenden Korrelation zwischen AJAX-Anforderungen des Clients und Serveranforderungen
+
+Um eine `CORS`-Korrelation zu ermöglichen, muss der Client zwei zusätzliche Anforderungsheader (`Request-Id` und `Request-Context`) senden, und die Serverseite muss in der Lage sein, Verbindungen bei Vorhandensein dieser Header zu akzeptieren. Das Senden dieser Header wird ermöglicht, indem `enableCorsCorrelation: true` in der Konfiguration des JavaScript SDK festgelegt wird. 
+
+Je nach serverseitiger Konfiguration von `Access-Control-Allow-Headers` ist es häufig erforderlich, die serverseitige Liste zu erweitern, indem `Request-Id` und `Request-Context` manuell hinzugefügt werden.
+
+Access-Control-Allow-Headers: `Request-Id`, `Request-Context`, `<your header>`
+
+Wenn einer Ihrer Server von Drittanbietern, mit denen der Client kommuniziert, die Header `Request-Id` und `Request-Context` nicht akzeptieren kann und Sie die Konfiguration nicht aktualisieren können, müssen Sie sie über die Konfigurationseigenschaft `correlationHeaderExcludeDomains` in eine Ausschlussliste einfügen. Diese Eigenschaft unterstützt Platzhalter.
+
+```javascript
+// excerpt of the config section of the JavaScript SDK snippet with correlation
+// between client-side AJAX and server requests enabled.
+cfg: { // Application Insights Configuration
+    instrumentationKey: "YOUR_INSTRUMENTATION_KEY_GOES_HERE"
+    enableCorsCorrelation: true,
+    correlationHeaderExcludedDomains: ['myapp.azurewebsites.net', '*.queue.core.windows.net']
+    /* ...Other Configuration Options... */
+}});
+</script>
+
+``` 
 
 ## <a name="explore-browserclient-side-data"></a>Browser-/clientseitige Daten erkunden
 
@@ -342,7 +373,9 @@ Dies bedeutet NICHT, dass nur die kleinste Schnittmenge der gemeinsamen Features
 
 ## <a name="open-source-sdk"></a>Open Source SDK
 
-Das Application Insights JavaScript SDK ist Open Source. Wenn Sie den Quellcode anzeigen oder zum Projekt beitragen möchten, besuchen Sie das [offizielle GitHub-Repository](https://github.com/Microsoft/ApplicationInsights-JS).
+Das Application Insights JavaScript SDK ist Open Source. Wenn Sie den Quellcode anzeigen oder zum Projekt beitragen möchten, besuchen Sie das [offizielle GitHub-Repository](https://github.com/Microsoft/ApplicationInsights-JS). 
+
+Informationen zu den neuesten Updates und Fehlerbehebungen [finden Sie in den Versionshinweisen](./release-notes.md).
 
 ## <a name="next-steps"></a><a name="next"></a> Nächste Schritte
 * [Nutzung nachverfolgen](usage-overview.md)

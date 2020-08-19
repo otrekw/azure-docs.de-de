@@ -1,20 +1,23 @@
 ---
 title: Bereitstellen von Azure Policy für delegierte Abonnements in großem Umfang
 description: Hier erfahren Sie, wie Sie mit Azure Lighthouse eine Richtliniendefinition und eine Richtlinienzuweisung für mehrere Mandanten bereitstellen können.
-ms.date: 07/07/2020
+ms.date: 08/12/2020
 ms.topic: how-to
-ms.openlocfilehash: 6d7c6206916f87072f68cc0fe953c8049896cd0b
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 27d32a68c1a3806e514533efbae581aa97bc6d0c
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86111795"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88167282"
 ---
 # <a name="deploy-azure-policy-to-delegated-subscriptions-at-scale"></a>Bereitstellen von Azure Policy für delegierte Abonnements in großem Umfang
 
 Als Dienstanbieter haben Sie möglicherweise mehrere Kundenmandanten in [Azure Lighthouse](../overview.md) integriert. Azure Lighthouse ermöglicht Dienstanbietern das gleichzeitige Ausführen von skalierbaren Vorgängen für mehrere Mandanten, wodurch Verwaltungsaufgaben effizienter werden.
 
 In diesem Thema erfahren Sie, wie Sie mithilfe von [Azure Policy](../../governance/policy/index.yml) eine Richtliniendefinition und eine Richtlinienzuweisung für mehrere Mandanten mithilfe von PowerShell-Befehlen bereitstellen. In diesem Beispiel stellt die Richtliniendefinition sicher, dass Speicherkonten geschützt werden, indem nur HTTPS-Datenverkehr zugelassen wird.
+
+> [!TIP]
+> Zwar beziehen wir uns in diesem Thema auf Dienstanbieter und Kunden, doch können [Unternehmen, die mehrere Mandanten verwalten](../concepts/enterprise.md), denselben Prozess verwenden.
 
 ## <a name="use-azure-resource-graph-to-query-across-customer-tenants"></a>Verwenden von Azure Resource Graph zum Abfragen von Kundenmandanten
 

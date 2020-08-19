@@ -1,14 +1,14 @@
 ---
 title: Delegierte Azure-Ressourcenverwaltung
 description: Die delegierte Azure-Ressourcenverwaltung ist ein wichtiger Bestandteil von Azure Lighthouse, der Dienstanbietern eine agile und präzise Verwaltung von delegierten Ressourcen in großem Umfang ermöglicht.
-ms.date: 05/28/2020
+ms.date: 08/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: bbe3c28cdcd252755b8350eaa5d2e72044981174
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 9a499ceda546b7ea5c71cd8c770f1a4b99001b08
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120890"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88163525"
 ---
 # <a name="azure-delegated-resource-management"></a>Delegierte Azure-Ressourcenverwaltung
 
@@ -18,26 +18,24 @@ Die delegierte Azure-Ressourcenverwaltung ist eine der Hauptkomponenten von [Azu
 
 Die delegierte Azure-Ressourcenverwaltung ermöglicht die logische Projektion von Ressourcen von einem Mandanten auf einen anderen Mandanten. Hierdurch können autorisierte Benutzer in einem Azure Active Directory (Azure AD)-Mandanten Verwaltungsvorgänge über verschiedene Azure AD-Mandanten hinweg durchführen, die ihren Kunden gehören. Dienstanbieter können sich bei ihrem eigenen Azure AD-Mandanten anmelden und sind autorisiert, in delegierten Kundenabonnements und Ressourcengruppen zu arbeiten. Dadurch können sie Verwaltungsvorgänge im Namen ihrer Kunden durchführen, ohne sich bei den einzelnen Kundenmandanten anmelden zu müssen.
 
-> [!NOTE]
+> [!TIP]
 > Die delegierte Azure-Ressourcenverwaltung kann auch [in einem Unternehmen verwendet werden, das über mehrere eigene Azure AD-Mandanten verfügt](enterprise.md), um die mandantenübergreifende Verwaltung zu vereinfachen.
 
-Mit der delegierten Azure-Ressourcenverwaltung können autorisierte Benutzer direkt im Kontext eines Kundenabonnements arbeiten, ohne dass Sie über ein Konto im Mandanten des Kunden verfügen oder Mitbesitzer des Mandanten des Kunden sind. Sie können ferner [auf der neuen Seite **Meine Kunden** im Azure-Portal alle delegierten Kundenabonnements anzeigen und verwalten](../how-to/view-manage-customers.md).
+Mit der delegierten Azure-Ressourcenverwaltung können autorisierte Benutzer direkt im Kontext eines Kundenabonnements arbeiten, ohne dass Sie über ein Konto im Mandanten des Kunden verfügen oder Mitbesitzer des Mandanten des Kunden sind.
 
-Die [mandantenübergreifende Erfahrung](cross-tenant-management-experience.md) hilft Ihnen, effizienter mit Azure-Verwaltungsdiensten zu arbeiten wie Azure Policy, Azure Security Center und mehr. Alle Dienstanbieteraktivitäten werden im Aktivitätsprotokoll nachverfolgt, das im Mandanten des Dienstanbieters gespeichert wird (und von Benutzern im verwaltenden Mandanten angezeigt werden kann). Dies bedeutet, dass sowohl der Kunde als auch der Dienstanbieter leicht den Benutzer identifizieren können, dem Änderungen zugeordnet sind.
+Mithilfe der [mandantenübergreifenden Verwaltungsmöglichkeiten](cross-tenant-management-experience.md) können Sie effizienter mit Azure-Verwaltungsdiensten wie Azure Policy, Azure Security Center und vielem mehr arbeiten. Alle Dienstanbieteraktivitäten werden im Aktivitätsprotokoll nachverfolgt, das im Mandanten des Dienstanbieters gespeichert wird (und von Benutzern im verwaltenden Mandanten angezeigt werden kann). Dies bedeutet, dass Benutzer sowohl im verwaltenden als auch im verwalteten Mandanten problemlos den Benutzer identifizieren können, dem Änderungen zugeordnet sind.
 
-Wenn Sie einen Kunden in die delegierte Azure-Ressourcenverwaltung integrieren, hat er Zugriff auf die Seite **Dienstanbieter** im Azure-Portal, auf der er [seine Angebote, Dienstanbieter und delegierten Ressourcen bestätigen und verwalten](../how-to/view-manage-service-providers.md) kann. Wenn der Kunde den Zugriff für einen Dienstanbieter jemals widerrufen möchte, kann er dies hier jederzeit tun.
-
-Sie können [den neuen Angebotstyp für verwaltete Dienste im Azure Marketplace veröffentlichen](../how-to/publish-managed-services-offers.md), um das Onboarding von Kunden für die delegierte Azure-Ressourcenverwaltung zu vereinfachen. Alternativ können Sie [den Onboardingprozess durchführen, indem Sie Azure Resource Manager-Vorlagen bereitstellen](../how-to/onboard-customer.md).
+Sie können [den neuen Angebotstyp für verwaltete Dienste im Azure Marketplace veröffentlichen](../how-to/publish-managed-services-offers.md), um das Onboarding von Kunden in Azure Lighthouse zu vereinfachen. Alternativ können Sie [den Onboardingprozess durchführen, indem Sie Azure Resource Manager-Vorlagen bereitstellen](../how-to/onboard-customer.md).
 
 ## <a name="how-azure-delegated-resource-management-works"></a>Funktionsweise der delegierten Azure-Ressourcenverwaltung
 
 Generell funktioniert die delegierte Azure-Ressourcenverwaltung wie folgt:
 
-1. Als Dienstanbieter identifizieren Sie den Zugriff (Rollen), den ihre Gruppen, Dienstprinzipale oder Benutzer benötigen, um die Azure-Ressourcen des Kunden zu verwalten. Die Zugriffsdefinition enthält die Mandanten-ID des Dienstanbieters zusammen mit dem erforderlichen Zugriff für das Angebot, definiert mithilfe der **principalid**-Identitäten aus Ihrem Mandanten, die den [integrierten **roleDefinition**-Werten](../../role-based-access-control/built-in-roles.md) zugeordnet sind (Mitwirkender, Mitwirkender für virtuelle Computer, Leser usw.).
-2. Sie geben diesen Zugriff an und integrieren den Kunden in die delegierte Azure-Ressourcenverwaltung auf eine der zwei Arten:
+1. Zuerst ermitteln Sie den Zugriff (Rollen), den Ihre Gruppen, Dienstprinzipale oder Benutzer benötigen, um die Azure-Ressourcen des Kunden zu verwalten. Die Zugriffsdefinition enthält die ID des verwaltenden Mandanten zusammen mit **principalid**-Identitäten aus Ihrem Mandanten, die [integrierten **roleDefinition**-Werten](../../role-based-access-control/built-in-roles.md) zugeordnet sind (Mitwirkender, Mitwirkender für virtuelle Computer, Leser usw.).
+2. Sie geben diesen Zugriff an und führen das Onboarding des Kunden in Azure Lighthouse auf eine von zwei Arten durch:
    - [Veröffentlichen eines Angebots für verwaltete Dienste im Azure Marketplace](../how-to/publish-managed-services-offers.md) (privat oder öffentlich), das der Kunde annimmt
    - [Bereitstellen einer Azure Resource Manager Vorlage im Mandanten des Kunden](../how-to/onboard-customer.md) für ein oder mehrere bestimmte Abonnements oder Ressourcengruppen
-3. Nachdem das Onboarding des Kunden durchgeführt wurde, können sich autorisierte Benutzer bei Ihrem Dienstanbietermandanten anmelden und Verwaltungsaufgaben im vorgegebenen Kundenumfang, basierend auf dem von Ihnen definierten Zugriff, durchführen.
+3. Nachdem das Onboarding des Kunden durchgeführt wurde, können sich autorisierte Benutzer bei Ihrem verwaltenden Mandanten anmelden und Aufgaben im vorgegebenen Kundenumfang basierend auf dem von Ihnen definierten Zugriff durchführen.
 
 > [!NOTE]
 > Sie können delegierte Ressourcen verwalten, die sich in unterschiedlichen [Regionen](../../availability-zones/az-overview.md#regions) befinden. Die Delegierung von Abonnements auf eine [nationale Cloud](../../active-directory/develop/authentication-national-cloud.md) und die öffentliche Azure-Cloud oder zwei separate nationale Clouds wird nicht unterstützt.

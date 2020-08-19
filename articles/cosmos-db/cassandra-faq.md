@@ -4,14 +4,14 @@ description: Hier finden Sie Antworten auf häufig gestellte Fragen zur Cassandr
 author: TheovanKraay
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 04/09/2020
+ms.date: 08/12/2020
 ms.author: thvankra
-ms.openlocfilehash: 04708a307cd0eedfbe0510324930eb2327adf06e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b327c0786fb07488fd8863272598dbffe19bfe07
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84449735"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88167605"
 ---
 # <a name="frequently-asked-questions-about-the-cassandra-api-in-azure-cosmos-db"></a>Häufig gestellte Fragen zur Cassandra-API in Azure Cosmos DB
 
@@ -79,13 +79,13 @@ Diagnoseprotokolle werden im Artikel [Diagnoseprotokollierung für Azure Cosmos 
 
 ### <a name="does-the-primary-key-map-to-the-partition-key-concept-of-azure-cosmos-db"></a>Entspricht die Primärschlüsselzuordnung dem Konzept von Partitionsschlüsseln von Azure Cosmos DB?
 
-Ja. Der Partitionsschlüssel wird verwendet, um die Entität am richtigen Speicherort zu platzieren. In Azure Cosmos DB wird er zum Suchen der richtigen logischen Partition auf einer physischen Partition verwendet. Das Konzept der Partitionierung wird im Artikel [Partitionieren und Skalieren in Azure Cosmos DB](partition-data.md) sehr gut erläutert. Die wesentliche Lektion ist hierbei, dass eine logische Partition die 10-GB-Grenze nicht überschreiten sollte.
+Ja. Der Partitionsschlüssel wird verwendet, um die Entität am richtigen Speicherort zu platzieren. In Azure Cosmos DB wird er zum Suchen der richtigen logischen Partition auf einer physischen Partition verwendet. Das Konzept der Partitionierung wird im Artikel [Partitionieren und Skalieren in Azure Cosmos DB](partition-data.md) sehr gut erläutert. Die wesentliche Lektion ist hierbei, dass eine logische Partition die 20-GB-Grenze nicht überschreiten sollte.
 
 ### <a name="what-happens-when-i-get-a-notification-that-a-partition-is-full"></a>Was passiert, wenn ich eine Benachrichtigung darüber erhalte, dass eine Partition voll ist?
 
 Azure Cosmos DB ist ein auf einer Vereinbarung zum Servicelevel (Service-Level Agreement, SLA) basierendes System, das unbegrenzte Skalierbarkeit mit Garantien für Wartezeit, Durchsatz, Verfügbarkeit und Konsistenz bietet. Dieser unbegrenzte Speicher basiert auf einer horizontalen Skalierung der Daten mit der Partitionierung als grundlegendem Konzept. Das Konzept der Partitionierung wird im Artikel [Partitionieren und Skalieren in Azure Cosmos DB](partition-data.md) sehr gut erläutert.
 
-Sie sollten das Limit von 10 GB für die Anzahl von Entitäten oder Elementen pro logischer Partition einhalten. Um sicherzustellen, dass Ihre Anwendung gut skaliert werden kann, sollten Sie *keine* Hot Partition erstellen, indem Sie alle Informationen in einer Partition speichern und abfragen. Dieser Fehler kann nur bei einer Datenscherung auftreten, also wenn Sie über viele Daten für einen Partitionsschlüssel (mehr als 10&nbsp;GB) verfügen. Sie können die Verteilung der Daten mithilfe des Storage-Portals ermitteln. Um diesen Fehler zu beheben, müssen Sie die Tabelle neu erstellen und einen präzisen Primärschlüssel (Partitionsschlüssel) auswählen, der eine bessere Verteilung der Daten ermöglicht.
+Sie sollten das Limit von 20 GB für die Anzahl von Entitäten oder Elementen pro logischer Partition einhalten. Um sicherzustellen, dass Ihre Anwendung gut skaliert werden kann, sollten Sie *keine* Hot Partition erstellen, indem Sie alle Informationen in einer Partition speichern und abfragen. Dieser Fehler kann nur bei einer Datenscherung auftreten, also wenn Sie über viele Daten für einen Partitionsschlüssel (mehr als 20 GB) verfügen. Sie können die Verteilung der Daten mithilfe des Storage-Portals ermitteln. Um diesen Fehler zu beheben, müssen Sie die Tabelle neu erstellen und einen präzisen Primärschlüssel (Partitionsschlüssel) auswählen, der eine bessere Verteilung der Daten ermöglicht.
 
 ### <a name="can-i-use-the-cassandra-api-as-a-key-value-store-with-millions-or-billions-of-partition-keys"></a>Kann ich die Cassandra-API als Schlüsselwertspeicher mit Millionen oder Milliarden von Partitionsschlüsseln verwenden?
 

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 01/13/2020
 ms.author: mjbrown
-ms.openlocfilehash: 670a38b48ee89930078078dc4a8ac1a2876648e2
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: ec5c98d90facf9458769f235880f17d14708e425
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87503734"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87923654"
 ---
 # <a name="scale-azure-cosmos-db-throughput-by-using-azure-functions-timer-trigger"></a>Skalieren des Azure Cosmos DB-Durchsatzes mithilfe von Azure Functions-Triggern
 
@@ -23,7 +23,7 @@ Sie können den Durchsatz über [Azure Resource Manager-Vorlagen](resource-manag
 
 Um den Prozess der Skalierung von Azure Cosmos DB nach einem Zeitplan zu vereinfachen, haben wir das Beispielprojekt [ Azure Cosmos throughput scheduler](https://github.com/Azure-Samples/azure-cosmos-throughput-scheduler) (Azure Cosmos-Durchsatzscheduler) erstellt. Dieses Projekt ist eine Azure Functions-App mit zwei Triggern: „ScaleUpTrigger“ und „ScaleDownTrigger“. Die Trigger führen ein PowerShell-Skript aus, mit dem der Durchsatz für jede Ressource wie in der Datei `resources.json` für jeden Trigger definiert festgelegt wird. ScaleUpTrigger ist für die Ausführung um 8:00 Uhr UTC konfiguriert, und ScaleDownTrigger ist für die Ausführung um 18:00 Uhr UTC konfiguriert. Diese Zeiten können in der Datei `function.json` für den jeweiligen Trigger problemlos geändert werden.
 
-Sie können dieses Projekt lokal klonen, um die Azure Cosmos DB Ressourcen anzugeben, die hoch- und herunterskaliert werden sollen, und um den Zeitplan für die Ausführung anzupassen. Später können Sie sie in einem Azure-Abonnement bereitstellen und mithilfe der verwalteten Dienstidentität mit den Berechtigungen der [rollenbasierten Zugriffssteuerung](role-based-access-control.md) (Role-based Access Control, RBAC) mit der Rolle „Azure Cosmos DB-Operator“ schützen, um den Durchsatz für Ihre Azure Cosmos-Konten festzulegen.
+Sie können dieses Projekt lokal klonen, um die Azure Cosmos DB Ressourcen anzugeben, die hoch- und herunterskaliert werden sollen, und um den Zeitplan für die Ausführung anzupassen. Später können Sie sie in einem Azure-Abonnement bereitstellen und mithilfe der verwalteten Dienstidentität mit den Berechtigungen der [rollenbasierte Zugriffssteuerung von Azure (Azure RBAC)](role-based-access-control.md) mit der Rolle „Azure Cosmos DB-Operator“ schützen, um den Durchsatz für Ihre Azure Cosmos-Konten festzulegen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

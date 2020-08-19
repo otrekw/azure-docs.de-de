@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: include
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/18/2018
+ms.date: 07/15/2020
 ms.author: jmprieur
 ms.custom: include file
-ms.openlocfilehash: a5d34ac7eea50b67bd679d8cb8ddecf7ca277abd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a3acdbb93dd20f0b89e4f99d64f5f7a30ce40623
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76773384"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87102678"
 ---
 ## <a name="register-secrets-or-certificates"></a>Registrieren von geheimen Schlüsseln oder Zertifikaten
 
@@ -31,12 +31,10 @@ Die Verwaltung von Clientanmeldeinformationen geschieht auf der Seite **Zertifik
 
 ![Seite „Zertifikate und Geheimnisse“](../articles/active-directory/develop/media/quickstart-update-azure-ad-app-preview/credentials-certificates-secrets.png)
 
-- Der (auch als „geheimer Clientschlüssel“ bezeichnete) geheime Anwendungsschlüssel wird von Azure AD während der Registrierung der vertraulichen Clientanwendung generiert. Diese Generierung erfolgt, wenn Sie **Neuer geheimer Clientschlüssel** auswählen. An diesem Punkt müssen Sie die Zeichenfolge des geheimen Schlüssels zur Verwendung in Ihrer App in die Zwischenablage kopieren, bevor Sie **Speichern** auswählen. Diese Zeichenfolge wird anschließend nicht mehr angezeigt.
+- Sie erstellen einen *geheimen Clientschlüssel*, indem Sie im Azure-Portal bei der Registrierung der App die Option **Neuer geheimer Clientschlüssel** auswählen. Wenn Sie einen geheimen Clientschlüssel erstellen, _müssen_ Sie die Zeichenfolge des geheimen Schlüssels aufzeichnen, bevor Sie den Bereich **Zertifikate und Geheimnisse** verlassen. Die Zeichenfolge des geheimen Schlüssels wird an keiner Stelle mehr angezeigt.
 - Während der Anwendungsregistrierung verwenden Sie die Schaltfläche **Zertifikat hochladen** zum Hochladen des Zertifikats. Azure AD unterstützt nur Zertifikate, die in der Anwendung direkt registriert sind und keinen Zertifikatsketten folgen.
 
 Weitere Informationen finden Sie unter [Schnellstart: Konfigurieren einer Clientanwendung für den Zugriff auf Web-APIs | Hinzufügen von Anmeldeinformationen zu Ihrer Anwendung](../articles/active-directory/develop/quickstart-configure-app-access-web-apis.md#add-credentials-to-your-web-application).
-
-
 
 ### <a name="register-client-secrets-by-using-powershell"></a>Registrieren von geheimen Clientschlüsseln mithilfe von PowerShell
 

@@ -116,6 +116,14 @@
       href: faq.md
     - name: "Häufig gestellte Fragen zu Windows\_10 Enterprise mit mehreren Sitzungen"
       href: windows-10-multisession-faq.md
+    - name: MSIX-Feature zum Anfügen von Apps
+      items:
+        - name: Was ist das MSIX-Feature zum Anfügen von Apps?
+          href: what-is-app-attach.md
+        - name: Glossar
+          href: app-attach-glossary.md
+        - name: Häufig gestellte Fragen
+          href: app-attach-faq.md
     - name: Datenspeicherorte
       href: data-locations.md
 - name: Problembehandlung
@@ -150,6 +158,8 @@
       href: /windows-server/remote/remote-desktop-services/virtual-machine-recs?context=/azure/virtual-desktop/context/context
     - name: Azure-Befehlszeilenschnittstelle (CLI)
       href: /cli/azure/ext/desktopvirtualization/?view=azure-cli-latest
+    - name: Azure-Beispielszenarien
+      href: /azure/architecture/example-scenario/wvd/windows-virtual-desktop
 - name: Ressourcen
   items:
     - name: PowerShell

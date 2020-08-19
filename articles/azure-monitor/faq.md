@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/15/2020
-ms.openlocfilehash: ff7472b764b0e65d69d9b694603e145440e89c0d
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: bd575eb5f646b749b431516670c64c764f4d4c9c
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87318112"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87828505"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Häufig gestellte Fragen zu Azure Monitor
 
@@ -137,7 +137,7 @@ Die Azure-Diagnoseerweiterung wird für virtuelle Azure-Computer verwendet und s
 Für den Datenverkehr an Azure Monitor wird die ExpressRoute-Verbindung für Microsoft-Peering verwendet. Eine Beschreibung der verschiedenen Typen von ExpressRoute-Datenverkehr finden Sie in der [ExpressRoute-Dokumentation](../expressroute/expressroute-faqs.md#supported-services). 
 
 ### <a name="how-can-i-confirm-that-the-log-analytics-agent-is-able-to-communicate-with-azure-monitor"></a>Wie überprüfe ich, ob der Log Analytics-Agent mit Azure Monitor kommunizieren kann?
-Wählen Sie auf dem Agent-Computer in der Systemsteuerung die Option **Sicherheit und Einstellungen** und dann **Microsoft Monitoring Agent** aus. Auf der Registerkarte **Azure Log Analytics (OMS)** wird durch ein grünes Häkchen bestätigt, dass der Agent mit Azure Monitor kommunizieren kann. Ein gelbes Warnsymbol bedeutet, dass der Agent Probleme hat. Ein häufiger Grund ist, dass der **Microsoft Monitoring Agent**-Dienst beendet wurde. Starten Sie den Dienst mit dem Dienststeuerungs-Manager neu.
+Wählen Sie auf dem Agent-Computer in der Systemsteuerung die Option **Sicherheit und Einstellungen** und dann „Microsoft Monitoring Agent“ aus. Auf der Registerkarte **Azure Log Analytics (OMS)** wird durch ein grünes Häkchen bestätigt, dass der Agent mit Azure Monitor kommunizieren kann. Ein gelbes Warnsymbol bedeutet, dass der Agent Probleme hat. Ein häufiger Grund ist, dass der **Microsoft Monitoring Agent**-Dienst beendet wurde. Starten Sie den Dienst mit dem Dienststeuerungs-Manager neu.
 
 ### <a name="how-do-i-stop-the-log-analytics-agent-from-communicating-with-azure-monitor"></a>Wie beende ich die Kommunikation des Log Analytics-Agents mit Azure Monitor?
 Bei Agents, die direkt mit Log Analytics verbunden sind, öffnen Sie die Systemsteuerung, und wählen Sie **Sicherheit und Einstellungen** und dann **Microsoft Monitoring Agent** aus. Entfernen Sie auf der Registerkarte **Azure Log Analytics (OMS)** alle aufgelisteten Arbeitsbereiche. Entfernen Sie in System Center Operations Manager den Computer aus der Liste der Log Analytics-verwalteten Computer. Operations Manager aktualisiert die Konfiguration des Agents so, dass er keine Berichte mehr an Log Analytics sendet. 
@@ -207,7 +207,7 @@ Der Ansicht-Designer steht im Log Analytics-Arbeitsbereich nur für Benutzer zu
 * [Einrichten eines ASP.NET-Servers](app/monitor-performance-live-website-now.md)
 * [Einrichten eines Java-Servers](app/java-agent.md)
 
-*Wie viele Application Insights-Ressourcen soll ich bereitstellen?*
+*Wie viele Application Insights-Ressourcen soll ich bereitstellen:*
 
 * [Entwerfen Ihrer Application Insights-Bereitstellung: Eine oder mehrere Application Insights-Ressourcen?](app/separate-resources.md)
 
@@ -509,6 +509,15 @@ Die meisten Application Insights-Daten weisen eine Wartezeit von weniger als 5 M
 [start]: app/app-insights-overview.md
 [windows]: app/app-insights-windows-get-started.md
 
+### <a name="http-502-and-503-responses-are-not-always-captured-by-application-insights"></a>HTTP 502- und 503-Antworten werden nicht immer von Application Insights erfasst
+
+Die Fehler „502 Ungültiges Gateway“ und „503 Dienst nicht verfügbar“ werden nicht immer von Application Insights erfasst. Wenn nur clientseitiges JavaScript für die Überwachung verwendet wird, entspricht dies dem erwarteten Verhalten, da die Fehlerantwort vor der Seite zurückgegeben wird, die den HTML-Header mit dem gerenderten JavaScript-Codeausschnitt für die Überwachung enthält. 
+
+Wenn die 502- oder 503-Antwort von einem Server mit aktivierter serverseitiger Überwachung gesendet wird, werden die Fehler vom Application Insights SDK erfasst. 
+
+Es gibt jedoch immer noch Fälle, in denen auch bei aktivierter serverseitiger Überwachung auf dem Webserver einer Anwendung ein 502- oder 503-Fehler nicht von Application Insights erfasst wird. Viele moderne Webserver gestatten einem Client keine direkte Kommunikation, sondern wenden stattdessen Lösungen wie Reverseproxys an, um Informationen zwischen dem Client und den Front-End-Webservern zu übergeben. 
+
+In diesem Szenario kann eine 502- oder 503-Antwort aufgrund eines Problems auf Reverseproxyebene an einen Client zurückgegeben und nicht standardmäßig von Application Insights erfasst werden. Um Probleme auf dieser Ebene zu erkennen, müssen Sie möglicherweise Protokolle vom Reverseproxy an Log Analytics weiterleiten und eine benutzerdefinierte Regel erstellen, um nach 502/503-Antworten zu suchen. Weitere Informationen zu häufigen Ursachen von 502- und 503-Fehlern finden Sie im Artikel [Problembehandlung bei HTTP-Fehler „502 Ungültiges Gateway“ und „503 Dienst nicht verfügbar“ in Azure App Service](../app-service/troubleshoot-http-502-http-503.md).     
 
 ## <a name="azure-monitor-for-containers"></a>Azure Monitor für Container
 
@@ -661,7 +670,7 @@ Wenn Ihre virtuellen Computer bereits mit einem Log Analytics-Arbeitsbereich ver
 ### <a name="can-i-onboard-to-a-new-workspace"></a>Kann ich ein Onboarding zu einem neuen Arbeitsbereich ausführen? 
 Wenn Ihre VMs derzeit nicht mit einem vorhandenen Log Analytics-Arbeitsbereich verbunden sind, müssen Sie einen neuen Arbeitsbereich zum Speichern Ihrer Daten erstellen. Die Erstellung eines neuen Standardarbeitsbereichs erfolgt automatisch, wenn Sie eine einzelne Azure-VM im Azure-Portal für Azure Monitor for VMs konfigurieren.
 
-Wenn Sie die skriptbasierte Methode verwenden möchten, finden Sie die entsprechenden Schritte im Artikel [Aktivieren von Azure Monitor für VMs mit Azure PowerShell oder einer Resource Manager-Vorlage](insights/vminsights-enable-at-scale-powershell.md). 
+Wenn Sie die skriptbasierte Methode verwenden möchten, finden Sie die entsprechenden Schritte im Artikel [Aktivieren von Azure Monitor für VMs mit Azure PowerShell oder einer Resource Manager-Vorlage](./insights/vminsights-enable-powershell.md). 
 
 ### <a name="what-do-i-do-if-my-vm-is-already-reporting-to-an-existing-workspace"></a>Wie gehe ich vor, wenn meine VM bereits an einen vorhandenen Arbeitsbereich berichtet?
 Wenn Sie bereits Daten von Ihren VMs sammeln, haben Sie sie möglicherweise schon für das Melden von Daten an einen vorhandenen Log Analytics-Arbeitsbereich konfiguriert.  Sofern sich dieser Arbeitsbereich in einer der von uns unterstützten Regionen befindet, können Sie Azure Monitor for VMs für diesen bereits vorhandenen Arbeitsbereich aktivieren.  Wenn sich der von Ihnen bereits verwendete Arbeitsbereich nicht in einer der von uns unterstützten Regionen befindet, können Sie derzeit kein Onboarding von Azure Monitor für VMs ausführen.  Wir arbeiten aktiv daran, weitere Regionen zu unterstützen.
@@ -682,7 +691,7 @@ Wenn Sie das Onboarding eingeleitet haben und Meldungen angezeigt werden, die be
 ### <a name="i-dont-see-some-or-any-data-in-the-performance-charts-for-my-vm"></a>In den Leistungsdiagrammen für meine VM werden einige oder alle Daten nicht angezeigt
 Unsere Leistungsdiagramme wurden so aktualisiert, dass sie in der Tabelle *InsightsMetrics* gespeicherten Daten verwenden.  Um Daten in diesen Diagrammen anzuzeigen, müssen Sie ein Upgrade durchführen, um die neue VM Insights-Lösung zu verwenden.  Weitere Informationen finden Sie in unseren [häufig gestellten Fragen zur allgemeinen Verfügbarkeit](insights/vminsights-ga-release-faq.md).
 
-Wenn Sie in der Datenträgertabelle oder in einigen der Leistungsdiagramme keine Leistungsdaten sehen, wurden Ihre Leistungsindikatoren im Arbeitsbereich möglicherweise nicht konfiguriert. Führen Sie das folgende [PowerShell-Skript](insights/vminsights-enable-at-scale-powershell.md#enable-with-powershell) aus, um das Problem zu beheben.
+Wenn Sie in der Datenträgertabelle oder in einigen der Leistungsdiagramme keine Leistungsdaten sehen, wurden Ihre Leistungsindikatoren im Arbeitsbereich möglicherweise nicht konfiguriert. Führen Sie das folgende [PowerShell-Skript](./insights/vminsights-enable-powershell.md) aus, um das Problem zu beheben.
 
 
 ### <a name="how-is-azure-monitor-for-vms-map-feature-different-from-service-map"></a>Wie unterscheidet sich das Zuordnungsfeature von Azure Monitor for VMs von der Dienstzuordnung?

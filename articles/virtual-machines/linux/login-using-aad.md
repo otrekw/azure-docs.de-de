@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 08/29/2019
 ms.author: sandeo
-ms.openlocfilehash: fe9d4e5a981f9d626bb6086659593e1c3ce06469
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: fef1870c396055cb9121aa5d8c7859440d107f98
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87291131"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88002316"
 ---
 # <a name="preview-log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication"></a>Vorschau: Anmelden bei einem virtuellen Linux-Computer in Azure mit der Azure Active Directory-Authentifizierung
 
@@ -35,7 +35,7 @@ Die Verwendung der Azure AD-Authentifizierung für die Anmeldung bei virtuellen 
   - Zum weiteren Schutz der Anmeldung bei virtuellen Azure-Computern können Sie die mehrstufige Authentifizierung konfigurieren.
   - Die Möglichkeit zur Anmeldung bei virtuellen Linux-Computern mit Azure Active Directory besteht auch für Kunden, die [Verbunddienste](../../active-directory/hybrid/how-to-connect-fed-whatis.md) verwenden.
 
-- **Nahtlose Zusammenarbeit:** Mithilfe der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) können Sie angeben, wer sich bei einem bestimmten virtuellen Computer als normaler Benutzer oder als Benutzer mit Administratorrechten anmelden kann. Wenn Benutzer Ihrem Team beitreten oder es verlassen, können Sie die RBAC-Richtlinie für den virtuellen Computer aktualisieren, um den Zugriff entsprechend zuzuweisen. Diese Vorgehensweise ist wesentlich einfacher, als virtuelle Computer bereinigen zu müssen, um unnötige öffentliche SSH-Schlüssel zu entfernen. Wenn Mitarbeiter Ihre Organisation verlassen und ihre Benutzerkonten in Azure AD deaktiviert oder entfernt werden, haben sie keinen Zugriff mehr auf Ihre Ressourcen.
+- **Nahtlose Zusammenarbeit:** Mithilfe der rollenbasierten Zugriffssteuerung von Azure (Azure RBAC) können Sie angeben, wer sich bei einem bestimmten virtuellen Computer als normaler Benutzer oder als Benutzer mit Administratorrechten anmelden kann. Wenn Benutzer Ihrem Team beitreten oder es verlassen, können Sie die Azure RBAC-Richtlinie für den virtuellen Computer aktualisieren, um den Zugriff entsprechend zuzuweisen. Diese Vorgehensweise ist wesentlich einfacher, als virtuelle Computer bereinigen zu müssen, um unnötige öffentliche SSH-Schlüssel zu entfernen. Wenn Mitarbeiter Ihre Organisation verlassen und ihre Benutzerkonten in Azure AD deaktiviert oder entfernt werden, haben sie keinen Zugriff mehr auf Ihre Ressourcen.
 
 ## <a name="supported-azure-regions-and-linux-distributions"></a>Unterstützte Azure-Regionen und Linux-Distributionen
 
@@ -113,7 +113,7 @@ Nachdem die Installation der Erweiterung auf dem virtuellen Computer erfolgreich
 
 ## <a name="configure-role-assignments-for-the-vm"></a>Konfigurieren der Rollenzuweisungen für den virtuellen Computer
 
-Mit der Richtlinie für die rollenbasierte Zugriffssteuerung in Azure (Azure RBAC) wird festgelegt, wer sich bei dem virtuellen Computer anmelden kann. Zur Autorisierung der Anmeldung bei virtuellen Computern werden zwei RBAC-Rollen verwendet:
+Mit der Richtlinie für die rollenbasierte Zugriffssteuerung in Azure (Azure RBAC) wird festgelegt, wer sich bei dem virtuellen Computer anmelden kann. Zur Autorisierung der VM-Anmeldung werden zwei Azure-Rollen verwendet:
 
 - **VM-Administratoranmeldung:** Benutzer, denen diese Rolle zugewiesen ist, können sich mit den Berechtigungen eines Windows-Administrators oder Linux-Root-Benutzers bei einem virtuellen Azure-Computer anmelden.
 - **VM-Benutzeranmeldung:** Benutzer, denen diese Rolle zugewiesen ist, können sich mit normalen Benutzerberechtigungen bei einem virtuellen Azure-Computer anmelden.
@@ -121,7 +121,7 @@ Mit der Richtlinie für die rollenbasierte Zugriffssteuerung in Azure (Azure RBA
 > [!NOTE]
 > Damit sich ein Benutzer bei dem virtuellen Computer über SSH anmelden kann, müssen Sie ihm einer der Rollen *VM-Administratoranmeldung* oder *VM-Benutzeranmeldung* zuweisen. Ein Azure-Benutzer, dem eine der Rollen *Besitzer* oder *Mitwirkender* für einen virtuellen Computer zugewiesen ist, verfügt nicht automatisch über die Berechtigungen für die Anmeldung bei dem virtuellen Computer über SSH.
 
-Im folgenden Beispiel wird [az role assignment create](/cli/azure/role/assignment#az-role-assignment-create) verwendet, um dem aktuellen Azure-Benutzer die Rolle *VM-Administratoranmeldung* für den virtuellen Computer zuzuweisen. Der Benutzername des aktiven Azure-Kontos wird mit [az account show](/cli/azure/account#az-account-show) abgerufen, und der *Bereich* wird mit [az vm show](/cli/azure/vm#az-vm-show) auf den in einem vorherigen Schritt erstellten virtuellen Computer festgelegt. Der Bereich kann auch auf Ebene einer Ressourcengruppe oder eines Abonnements zugewiesen werden. Dann gelten normale RBAC-Vererbungsberechtigungen. Weitere Informationen finden Sie unter [Rollenbasierte Zugriffssteuerung](../../role-based-access-control/overview.md).
+Im folgenden Beispiel wird [az role assignment create](/cli/azure/role/assignment#az-role-assignment-create) verwendet, um dem aktuellen Azure-Benutzer die Rolle *VM-Administratoranmeldung* für den virtuellen Computer zuzuweisen. Der Benutzername des aktiven Azure-Kontos wird mit [az account show](/cli/azure/account#az-account-show) abgerufen, und der *Bereich* wird mit [az vm show](/cli/azure/vm#az-vm-show) auf den in einem vorherigen Schritt erstellten virtuellen Computer festgelegt. Der Bereich kann auch auf Ebene einer Ressourcengruppe oder eines Abonnements zugewiesen werden. Dann gelten normale Azure RBAC-Vererbungsberechtigungen. Weitere Informationen finden Sie unter [Azure RBAC](../../role-based-access-control/overview.md).
 
 ```azurecli-interactive
 username=$(az account show --query user.name --output tsv)
@@ -136,7 +136,7 @@ az role assignment create \
 > [!NOTE]
 > Wenn die AAD-Domäne und die Domäne des Benutzeranmeldenamens nicht übereinstimmen, müssen Sie die Objekt-ID Ihres Benutzerkontos mit *----assignee-object-id* angeben. Die Angabe des Benutzernamens für *--assignee* reicht nicht aus. Sie können die Objekt-ID für Ihr Benutzerkonto mithilfe der [Azure Active Directory-Benutzerliste (az as user list)](/cli/azure/ad/user#az-ad-user-list) erhalten.
 
-Weitere Informationen zur Verwendung der rollenbasierten Zugriffssteuerung zum Verwalten des Zugriffs auf Ihre Azure-Abonnementressourcen finden Sie in den Artikeln zur Verwaltung der rollenbasierten Zugriffssteuerung mit [Azure CLI](../../role-based-access-control/role-assignments-cli.md), über das [Azure-Portal](../../role-based-access-control/role-assignments-portal.md) oder mit [Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md).
+Weitere Informationen zur Verwendung von Azure RBAC zum Verwalten des Zugriffs auf Ihre Azure-Abonnementressourcen finden Sie in den Artikeln zur Verwaltung der rollenbasierten Zugriffssteuerung mit der [Azure CLI](../../role-based-access-control/role-assignments-cli.md), über das [Azure-Portal](../../role-based-access-control/role-assignments-portal.md) oder mit [Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md).
 
 Sie können Azure AD zudem so konfigurieren, dass für die Anmeldung eines bestimmten Benutzers bei dem virtuellen Linux-Computer eine mehrstufige Authentifizierung erforderlich ist. Weitere Informationen finden Sie unter [Erste Schritte mit Azure Multi-Factor Authentication in der Cloud](../../active-directory/authentication/howto-mfa-getstarted.md).
 
@@ -181,11 +181,11 @@ Durch diese Zeile:
 
 ## <a name="troubleshoot-sign-in-issues"></a>Beheben von Problemen bei der Anmeldung
 
-Zu den häufig auftretenden Fehlern beim Herstellen einer SSH-Verbindung mit Azure AD-Anmeldeinformationen gehören nicht zugewiesene RBAC-Rollen und wiederholte Aufforderungen zur Anmeldung. In den folgenden Abschnitten finden Sie Informationen zum Beheben dieser Probleme.
+Zu den häufig auftretenden Fehlern beim Herstellen einer SSH-Verbindung mit Azure AD-Anmeldeinformationen gehören nicht zugewiesene Azure-Rollen und wiederholte Aufforderungen zur Anmeldung. In den folgenden Abschnitten finden Sie Informationen zum Beheben dieser Probleme.
 
-### <a name="access-denied-rbac-role-not-assigned"></a>Zugriff verweigert: RBAC-Rolle nicht zugewiesen
+### <a name="access-denied-azure-role-not-assigned"></a>Zugriff verweigert: Azure-Rolle nicht zugewiesen
 
-Wenn an der SSH-Eingabeaufforderung die folgende Fehlermeldung angezeigt wird, überprüfen Sie, ob Sie für den virtuellen Computer *RBAC-Richtlinien konfiguriert* haben, mit denen dem Benutzer eine der Rollen *VM-Administratoranmeldung* oder VM-Benutzeranmeldung zugewiesen wird:
+Wenn an der SSH-Eingabeaufforderung die folgende Fehlermeldung angezeigt wird, überprüfen Sie, ob Sie für den virtuellen Computer Azure RBAC-Richtlinien konfiguriert haben, mit denen dem Benutzer eine der Rollen *VM-Administratoranmeldung* oder *VM-Benutzeranmeldung* zugewiesen wird:
 
 ```output
 login as: azureuser@contoso.onmicrosoft.com

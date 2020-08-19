@@ -1,14 +1,14 @@
 ---
 title: Arbeiten mit großen Datasets
 description: Erfahren Sie, wie Sie bei der Verwendung von Azure Resource Graph Datensätze in großen Datasets abrufen, formatieren, paginieren und überspringen.
-ms.date: 03/20/2020
+ms.date: 08/10/2020
 ms.topic: conceptual
-ms.openlocfilehash: 4b45a28a5dbd2ebc233bcf9a6808cb7d7cd6d8c8
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 77ec7cc342672becddcbca7e6173eb1968519f02
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83681073"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056405"
 ---
 # <a name="working-with-large-azure-resource-data-sets"></a>Arbeiten mit großen Datasets von Azure-Ressourcen
 
@@ -63,8 +63,8 @@ In der [REST-API](/rest/api/azureresourcegraph/resourcegraph(2018-09-01-preview)
 
 ## <a name="paging-results"></a>Auslagerungsergebnisse
 
-Wenn es erforderlich ist, ein Resultset in kleinere Datensatzgruppen zu unterteilen, um sie zu verarbeiten oder weil das Resultset den maximal zulässigen Wert von _1000_ zurückgegebenen Datensätzen überschreitet, verwenden Sie die Paginierung. Die **QueryResponse**-[REST-API](/rest/api/azureresourcegraph/resourcegraph(2018-09-01-preview)/resources/resources) enthält folgende Werte, um anzugeben, dass ein Resultset aufgeteilt wurde: **resultTruncated** und **$skipToken**.
-**resultTruncated** ist ein boolescher Wert, über den der Consumer informiert wird, wenn zusätzliche Datensätze vorhanden sind, die in der Antwort nicht zurückgegeben werden. Diese Bedingung kann auch erkannt werden, wenn der Wert der Eigenschaft **count** kleiner ist als der Wert der Eigenschaft **totalRecords**. **totalRecords** definiert die Anzahl der Datensätze, die mit der Abfrage übereinstimmen.
+Wenn es erforderlich ist, ein Resultset in kleinere Datensatzgruppen zu unterteilen, um sie zu verarbeiten oder weil das Resultset den maximal zulässigen Wert von _1000_ zurückgegebenen Datensätzen überschreitet, verwenden Sie die Paginierung. Die **QueryResponse**-[REST-API](/rest/api/azureresourcegraph/resourcegraph(2018-09-01-preview)/resources/resources)
+enthält folgende Werte, um anzugeben, dass ein Resultset aufgeteilt wurde: **resultTruncated** und **$skipToken**. **resultTruncated** ist ein boolescher Wert, über den der Consumer informiert wird, wenn zusätzliche Datensätze vorhanden sind, die in der Antwort nicht zurückgegeben werden. Diese Bedingung kann auch erkannt werden, wenn der Wert der Eigenschaft **count** kleiner ist als der Wert der Eigenschaft **totalRecords**. **totalRecords** definiert die Anzahl der Datensätze, die mit der Abfrage übereinstimmen.
 
  **resultTruncated** ist **true**, wenn Paging deaktiviert oder aufgrund der fehlenden Spalte `id` nicht möglich ist oder wenn weniger Ressourcen verfügbar sind, als von einer Abfrage angefordert werden. Wenn **resultTruncated** auf **true** festgelegt ist, wird die Eigenschaft **$skipToken** nicht festgelegt.
 

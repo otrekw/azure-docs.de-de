@@ -12,13 +12,13 @@ ms.workload: identity
 ms.date: 09/16/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
-ms.custom: aaddev
-ms.openlocfilehash: abc4836b5e8729eec45a0eb2cd8b5fa7be6b1ce4
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.custom: devx-track-csharp, aaddev
+ms.openlocfilehash: 4edb0f356dd83ab1aa353e0791f619be497a9d91
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82890572"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88166024"
 ---
 # <a name="token-cache-serialization-in-msalnet"></a>Serialisierung des Tokencaches in MSAL.NET
 Nachdem ein [Token abgerufen wurde](msal-acquire-cache-tokens.md), wird es von der Microsoft-Authentifizierungsbibliothek (MSAL) zwischengespeichert.  Der Anwendungscode sollte zunächst versuchen, ein Token aus dem Cache abzurufen, bevor andere Methoden angewendet werden.  Dieser Artikel beschreibt die standardmäßige und benutzerdefinierte Serialisierung des Tokencaches in MSAL.NET.
@@ -271,12 +271,15 @@ namespace CommonCacheMsalV3
 
 ### <a name="token-cache-for-a-web-app-confidential-client-application"></a>Tokencache für eine Web-App (vertrauliche Clientanwendung)
 
-In Web-Apps oder Web-APIs kann der Cache die Sitzung, einen Redis-Cache oder eine Datenbank nutzen.
+In Web-Apps oder Web-APIs kann der Cache die Sitzung, einen Redis-Cache oder eine Datenbank nutzen. In Web-Apps oder Web-APIs sollten Sie jeweils einen Tokencache pro Konto bereithalten. 
 
-Halten Sie in Web-Apps oder Web-APIs jeweils einen Tokencache pro Konto bereit.  Bei Web-Apps sollte der Tokencache durch die Konto-ID mit einem Schlüssel versehen werden.  Bei Web-APIs sollte das Konto durch den Hash des Tokens, das zum Aufrufen der API verwendet wird, mit einem Schlüssel versehen werden. MSAL.NET bietet eine benutzerdefinierte Tokencache-Serialisierung in .NET Framework- und .NET Core-Plattformen. Ereignisse werden beim Zugriff auf den Cache ausgelöst; Apps können auswählen, ob der Cache serialisiert oder deserialisiert werden soll. In vertraulichen Clientanwendungen, die Benutzer behandeln (Web-Apps, die Benutzer anmelden und Web-APIs aufrufen, und Web-APIs, die nachgeschaltete Web-APIs aufrufen), können viele Benutzer vorhanden sein. Die Benutzer werden dann parallel verarbeitet. Aus Sicherheits- und Leistungsgründen wird empfohlen, jeweils einen Cache pro Benutzer zu serialisieren. Serialisierungsereignisse berechnen anhand der Identität des verarbeiteten Benutzers einen Cacheschlüssel und serialisieren/deserialisieren einen Tokencache für diesen Benutzer.
+Bei Web-Apps sollte der Tokencache durch die Konto-ID mit einem Schlüssel versehen werden.
+
+Bei Web-APIs sollte das Konto durch den Hash des Tokens, das zum Aufrufen der API verwendet wird, mit einem Schlüssel versehen werden.
+
+MSAL.NET bietet eine benutzerdefinierte Tokencache-Serialisierung in .NET Framework- und .NET Core-Plattformen. Ereignisse werden beim Zugriff auf den Cache ausgelöst; Apps können auswählen, ob der Cache serialisiert oder deserialisiert werden soll. In vertraulichen Clientanwendungen, die Benutzer behandeln (Web-Apps, die Benutzer anmelden und Web-APIs aufrufen, und Web-APIs, die nachgeschaltete Web-APIs aufrufen), können viele Benutzer vorhanden sein. Die Benutzer werden dann parallel verarbeitet. Aus Sicherheits- und Leistungsgründen wird empfohlen, jeweils einen Cache pro Benutzer zu serialisieren. Serialisierungsereignisse berechnen anhand der Identität des verarbeiteten Benutzers einen Cacheschlüssel und serialisieren/deserialisieren einen Tokencache für diesen Benutzer.
 
 Die Bibliothek [Microsoft.Identity.Web](https://github.com/AzureAD/microsoft-identity-web) stellt das NuGet-Paket [Microsoft.Identity.Web](https://www.nuget.org/packages/Microsoft.Identity.Web) in der Vorschau bereit, das die Tokencacheserialisierung enthält:
-
 
 | Erweiterungsmethode | Subnamespace „Microsoft.Identity.Web“ | BESCHREIBUNG  |
 | ---------------- | --------- | ------------ |
@@ -284,7 +287,7 @@ Die Bibliothek [Microsoft.Identity.Web](https://github.com/AzureAD/microsoft-ide
 | `AddSessionTokenCaches` | `TokenCacheProviders.Session` | Der Tokencache ist an die Benutzersitzung gebunden. Diese Option ist nicht ideal, wenn das ID-Token viele Ansprüche enthält, da das Cookie zu groß wird.
 | `AddDistributedTokenCaches` | `TokenCacheProviders.Distributed` | Der Tokencache ist ein Adapter für die ASP.NET Core-Implementierung `IDistributedCache`. Daher stehen ein verteilter Speichercache, ein Redis-Cache, ein verteilter NCache oder ein SQL Server-Cache zur Auswahl. Einzelheiten zu den `IDistributedCache`-Implementierungen finden Sie unter https://docs.microsoft.com/aspnet/core/performance/caching/distributed#distributed-memory-cache.
 
-Einfacher Fall mit InMemory-Cache:
+Im Folgenden finden Sie ein Beispiel für die Verwendung des In-Memory-Caches in der [ConfigureServices](/dotnet/api/microsoft.aspnetcore.hosting.startupbase.configureservices)-Methode der [Startup](/aspnet/core/fundamentals/startup)-Klasse in einer ASP.NET Core-Anwendung:
 
 ```C#
 // or use a distributed Token Cache by adding
@@ -292,7 +295,6 @@ Einfacher Fall mit InMemory-Cache:
     services.AddWebAppCallsProtectedWebApi(Configuration, new string[] { scopesToRequest })
             .AddInMemoryTokenCaches();
 ```
-
 
 Beispiele für mögliche verteilte Caches:
 
@@ -323,7 +325,7 @@ services.AddDistributedSqlServerCache(options =>
 });
 ```
 
-Die Nutzung wird im [Tutorial zum Erstellen einer Web-App mit ASP.NET Core](https://docs.microsoft.com/aspnet/core/tutorials/first-mvc-app/) in der Phase [2-2 Tokencache](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-2-TokenCache) dargestellt.
+Die Nutzung wird im [Tutorial zum Erstellen einer Web-App mit ASP.NET Core](/aspnet/core/tutorials/first-mvc-app/) in der Phase [2-2 Tokencache](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-2-TokenCache) dargestellt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

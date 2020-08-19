@@ -3,12 +3,12 @@ title: Mandanten, Rollen und Benutzer in Azure Lighthouse-Szenarien
 description: Erfahren Sie mehr über die Konzepte von Azure Active Directory-Mandanten, -Benutzern und -Rollen sowie deren Verwendung in Azure Lighthouse-Szenarien.
 ms.date: 07/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: 6bcfd1603469ba27971fffa8e7c46f0f696bb6a2
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 855f6a39abc99f07e5847a01896ef864473358c4
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86105386"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88163304"
 ---
 # <a name="tenants-roles-and-users-in-azure-lighthouse-scenarios"></a>Mandanten, Rollen und Benutzer in Azure Lighthouse-Szenarien
 
@@ -16,7 +16,7 @@ Vor dem Onboarding von Kunden für [Azure Lighthouse](../overview.md) ist es wic
 
 Ein *Mandant* ist eine dedizierte und vertrauenswürdige Instanz von Azure Active Directory (Azure AD). Typischerweise repräsentiert jeder Mandant eine einzelne Organisation. Die [delegierte Azure-Ressourcenverwaltung](azure-delegated-resource-management.md) ermöglicht die logische Projektion von Ressourcen von einem Mandanten auf einen anderen Mandanten. Dies ermöglicht es Benutzern im verwaltenden Mandanten (z. B. dem Mandanten eines Dienstanbieters), auf delegierte Ressourcen in einem Kundenmandanten zuzugreifen. [Unternehmen mit mehreren Mandanten können auf diese Weise ihre Verwaltungsabläufe zentralisieren](enterprise.md).
 
-Um diese logische Projektion zu erreichen, muss für ein Abonnement (oder mindestens eine Ressourcengruppe in einem Abonnement) im Kundenmandanten ein *Onboarding* für die delegierte Azure-Ressourcenverwaltung durchgeführt werden. Dieser Onboardingprozess kann entweder [über Azure Resource Manager-Vorlagen](../how-to/onboard-customer.md) oder durch das [Veröffentlichen eines öffentlichen oder privaten Angebots im Azure Marketplace](../how-to/publish-managed-services-offers.md) erfolgen.
+Um diese logische Projektion zu erreichen, muss für ein Abonnement (oder mindestens eine Ressourcengruppe in einem Abonnement) im Kundenmandanten ein *Onboarding* für Azure Lighthouse durchgeführt werden. Dieser Onboardingprozess kann entweder [über Azure Resource Manager-Vorlagen](../how-to/onboard-customer.md) oder durch das [Veröffentlichen eines öffentlichen oder privaten Angebots im Azure Marketplace](../how-to/publish-managed-services-offers.md) erfolgen.
 
 Unabhängig von der gewählten Onboardingmethode müssen Sie *Autorisierungen* definieren. Jede Autorisierung gibt ein Benutzerkonto im verwaltenden Mandanten an, der Zugriff auf die delegierten Ressourcen erhält. Außerdem wird eine integrierte Rolle angegeben, mit der die Berechtigungen dieser Benutzer für die Ressourcen festgelegt werden.
 
@@ -31,7 +31,7 @@ Für die Azure Lighthouse werden aktuell alle [integrierten Rollen](../../role-b
 - Die integrierte Rolle [Benutzerzugriffsadministrator](../../role-based-access-control/built-in-roles.md#user-access-administrator) wird unterstützt, aber nur für den eingeschränkten Zweck der [Zuweisung von Rollen zu einer verwalteten Identität im Kundenmandanten](../how-to/deploy-policy-remediation.md#create-a-user-who-can-assign-roles-to-a-managed-identity-in-the-customer-tenant). Weitere Berechtigungen, die üblicherweise über diese Rolle gewährt werden, werden nicht angewendet. Wenn Sie einen Benutzer mit dieser Rolle definieren, müssen Sie auch die integrierten Rollen angeben, die dieser Benutzer verwalteten Identitäten zuweisen kann.
 
 > [!NOTE]
-> Nachdem Azure eine passende neue integrierte Rolle hinzugefügt wurde, kann sie beim [Onboarding eines Kunden mithilfe von Azure Resource Manager-Vorlagen](../how-to/onboard-customer.md) zugewiesen werden. Es kann zu einer Verzögerung kommen, bevor die neu hinzugefügte Rolle beim [Veröffentlichen eines verwalteten Dienstangebots](../how-to/publish-managed-services-offers.md) im Cloud-Partnerportal verfügbar wird.
+> Nachdem Azure eine passende neue integrierte Rolle hinzugefügt wurde, kann sie beim [Onboarding eines Kunden mithilfe von Azure Resource Manager-Vorlagen](../how-to/onboard-customer.md) zugewiesen werden. Es kann zu einer Verzögerung kommen, bevor die neu hinzugefügte Rolle beim [Veröffentlichen eines verwalteten Dienstangebots](../how-to/publish-managed-services-offers.md) im Partner Center verfügbar wird.
 
 ## <a name="best-practices-for-defining-users-and-roles"></a>Best Practices für das Definieren von Benutzern und Rollen
 

@@ -4,14 +4,14 @@ description: Informationen zum Konfigurieren von kundenseitig verwalteten Schlü
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 05/19/2020
+ms.date: 08/05/2020
 ms.author: thweiss
-ms.openlocfilehash: 443e037f89508b0fc3b01ba90f884c139f4c64be
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 9fa899e0f0de3b263baad7e44ed24d32d735b001
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027771"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836508"
 ---
 # <a name="configure-customer-managed-keys-for-your-azure-cosmos-account-with-azure-key-vault"></a>Konfigurieren von kundenseitig verwalteten Schlüsseln für Ihr Azure Cosmos-Konto mit Azure Key Vault
 
@@ -64,6 +64,8 @@ Bei Verwendung einer vorhandenen Azure Key Vault-Instanz können Sie überprüfe
    :::image type="content" source="./media/how-to-setup-cmk/portal-akv-add-ap.png" alt-text="Auswählen des Azure Cosmos DB-Prinzipals":::
 
 1. Wählen Sie **Hinzufügen** aus, um die neue Zugriffsrichtlinie hinzuzufügen.
+
+1. Wählen Sie **Speichern** in der Key Vault-Instanz aus, um alle Änderungen zu speichern.
 
 ## <a name="generate-a-key-in-azure-key-vault"></a>Generieren eines Schlüssels in Azure Key Vault
 
@@ -228,7 +230,15 @@ Die Rotation des kundenseitig verwalteten Schlüssels, der von Ihrem Azure Cosmo
 
   :::image type="content" source="./media/how-to-setup-cmk/portal-akv-rot.png" alt-text="Erstellen einer neuen Schlüsselversion":::
 
-- Tauschen Sie den derzeit verwendeten Schlüssel gegen einen völlig anderen aus, indem Sie die Eigenschaft `keyVaultKeyUri` Ihres Kontos aktualisieren. Hier sehen Sie die Vorgehensweise in PowerShell:
+- Tauschen Sie den derzeit verwendeten Schlüssel gegen einen völlig anderen aus, indem Sie den Schlüssel-URI in Ihrem Konto aktualisieren. Navigieren Sie im Azure-Portal zu Ihrem Azure Cosmos-Konto, und wählen Sie im linken Menü die Option **Datenverschlüsselung** aus:
+
+    :::image type="content" source="./media/how-to-setup-cmk/portal-data-encryption.png" alt-text="Menüeintrag „Datenverschlüsselung“":::
+
+    Ersetzen Sie dann den **Schlüssel-URI** durch den neuen Schlüssel, den Sie verwenden möchten, und wählen Sie **Speichern** aus:
+
+    :::image type="content" source="./media/how-to-setup-cmk/portal-key-swap.png" alt-text="Aktualisieren des Schlüssel-URI":::
+
+    Gehen Sie folgendermaßen vor, um das gleiche Ergebnis in PowerShell zu erzielen:
 
     ```powershell
     $resourceGroupName = "myResourceGroup"
@@ -287,7 +297,11 @@ Derzeit nicht. Es werden jedoch Schlüssel auf Containerebene in Erwägung gezog
 
 ### <a name="how-can-i-tell-if-customer-managed-keys-are-enabled-on-my-azure-cosmos-account"></a>Woran erkenne ich, dass kundenseitig verwaltete Schlüssel für mein Azure Cosmos-Konto aktiviert sind?
 
-Sie können die Details Ihres Azure Cosmos-Kontos programmgesteuert abrufen und überprüfen, ob die Eigenschaft `keyVaultKeyUri` vorhanden ist. Informationen zur Vorgehensweise [in PowerShell](#using-powershell) und [mithilfe der Azure CLI](#using-azure-cli) finden Sie weiter oben.
+Navigieren Sie im Azure-Portal zu Ihrem Azure Cosmos-Konto, und suchen Sie im linken Menü nach dem Eintrag **Datenverschlüsselung**. Wenn dieser Eintrag vorhanden ist, sind kundenseitig verwaltete Schlüssel für Ihr Konto aktiviert:
+
+:::image type="content" source="./media/how-to-setup-cmk/portal-data-encryption.png" alt-text="Menüeintrag „Datenverschlüsselung“":::
+
+Sie können die Details Ihres Azure Cosmos-Kontos auch programmgesteuert abrufen und überprüfen, ob die Eigenschaft `keyVaultKeyUri` vorhanden ist. Informationen zur Vorgehensweise [in PowerShell](#using-powershell) und [mithilfe der Azure CLI](#using-azure-cli) finden Sie weiter oben.
 
 ### <a name="how-do-customer-managed-keys-affect-a-backup"></a>Wie wirken sich vom Kunden verwaltete Schlüssel auf eine Sicherung aus?
 

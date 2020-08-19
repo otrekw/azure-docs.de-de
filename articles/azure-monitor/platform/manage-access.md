@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 04/10/2019
-ms.openlocfilehash: b9ca2dc9d907e65b2679c08d8d2b6482f02ba53d
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 5b450254648cb253d6631397d703430401009f14
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327887"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87925633"
 ---
 # <a name="manage-access-to-log-data-and-workspaces-in-azure-monitor"></a>Verwalten des Zugriffs auf Protokolldaten und Arbeitsbereiche in Azure Monitor
 
@@ -20,7 +20,7 @@ Azure Monitor speichert [Protokolldaten](data-platform-logs.md) in einem Log An
 In diesem Artikel erfahren Sie, wie Sie den Zugriff auf Protokolle sowie die Arbeitsbereiche verwalten, in denen sich diese befinden. Außerdem erfahren Sie, wie Sie Zugriff für Folgendes gewähren: 
 
 * Den Arbeitsbereich (mithilfe von Arbeitsbereichsberechtigungen)
-* Benutzer, die Zugriff auf Protokolldaten von bestimmten Ressourcen benötigen (mithilfe der rollenbasierten Zugriffssteuerung [Role-Based Access Control, RBAC] in Azure, auch [Ressourcenkontext](design-logs-deployment.md#access-mode) genannt)
+* Benutzer, die Zugriff auf Protokolldaten von bestimmten Ressourcen benötigen: mithilfe der rollenbasierten Zugriffssteuerung in Azure (Role-Based Access Control, Azure RBAC), auch [Ressourcenkontext](design-logs-deployment.md#access-mode) genannt
 * Benutzer, die Zugriff auf Protokolldaten in einer bestimmten Tabelle im Arbeitsbereich benötigen (mithilfe von Azure RBAC)
 
 Weitere Informationen zu den Protokollkonzepten bei RBAC und den Zugriffsstrategien finden Sie unter [Entwerfen Ihrer Azure Monitor-Protokollbereitstellung](design-logs-deployment.md).
@@ -102,7 +102,7 @@ Um den Zugriffsmodus in einer Azure Resource Manager-Vorlage zu konfigurieren, l
 
 ## <a name="manage-access-using-workspace-permissions"></a>Zugriffsverwaltung mithilfe von Arbeitsbereichsberechtigungen
 
-Jedem Arbeitsbereich können mehrere Konten zugeordnet werden, und jedes Konto kann Zugriff auf mehrere Arbeitsbereiche haben. Der Zugriff wird mithilfe der [rollenbasierten Zugriffssteuerung in Azure](../../role-based-access-control/role-assignments-portal.md) verwaltet.
+Jedem Arbeitsbereich können mehrere Konten zugeordnet werden, und jedes Konto kann Zugriff auf mehrere Arbeitsbereiche haben. Der Zugriff wird mithilfe der [rollenbasierten Zugriffssteuerung von Azure (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md) verwaltet.
 
 Für die folgenden Aktivitäten sind ebenfalls Azure-Berechtigungen erforderlich:
 
@@ -313,4 +313,3 @@ Manchmal stammen benutzerdefinierte Protokolle aus Quellen, die nicht direkt ein
 * Informationen zum Erfassen der Daten von Computern in Ihrem Datencenter oder einer anderen Cloudumgebung finden Sie unter [Collect log data with the Azure Log Analytics agent](./log-analytics-agent.md) (Sammeln von Protokolldaten mit dem Azure Log Analytics-Agent).
 
 * Informationen zum Konfigurieren der Datensammlung von virtuellen Azure-Computern finden Sie unter [Sammeln von Daten über virtuelle Azure-Computer](../learn/quick-collect-azurevm.md).
-
