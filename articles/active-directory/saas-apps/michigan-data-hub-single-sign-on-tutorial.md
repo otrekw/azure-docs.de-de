@@ -2,25 +2,21 @@
 title: 'Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Michigan Data Hub Single Sign-On | Microsoft-Dokumentation'
 description: Hier erfahren Sie, wie Sie das einmalige Anmelden (SSO) zwischen Azure Active Directory und Michigan Data Hub Single Sign-On konfigurieren.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 8fd008c2-65d0-41c6-987f-f749a5a21787
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 07/23/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: eeebd306614b57eb721977b403b7daf7a258dc87
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 031190bee2dc81398ee0c4ac23ad9ec62469333a
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87293433"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88528368"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-michigan-data-hub-single-sign-on"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Michigan Data Hub Single Sign-On
 

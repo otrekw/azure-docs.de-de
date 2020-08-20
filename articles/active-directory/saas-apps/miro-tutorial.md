@@ -2,26 +2,21 @@
 title: 'Tutorial: Azure Active Directory-Integration mit Miro | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Miro konfigurieren.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: CelesteDG
 ms.reviewer: celested
-ms.assetid: a37fc1c0-4bae-4173-989b-00de53a0076f
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 06/24/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 83859a96705884ee6e0faf7a41a7370395b0c876
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: fd25397d2d3030b244b9003d9c8ca9bf5286d6d4
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67372643"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88528232"
 ---
 # <a name="tutorial-integrate-miro-with-azure-active-directory"></a>Tutorial: Integrieren von Miro in Azure Active Directory
 

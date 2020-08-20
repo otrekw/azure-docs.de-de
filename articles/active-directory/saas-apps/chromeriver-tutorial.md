@@ -2,26 +2,21 @@
 title: 'Tutorial: Azure Active Directory-Integration mit Chromeriver | Microsoft Docs'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Chromeriver konfigurieren.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 445c5600-e340-4724-a9cb-3cfaf5770b70
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/14/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5d07a54024ab3972734533767e6bf7c040efa94e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: e4be05a896fbd14b21d0825376b4e2cfad6a530c
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73157479"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88529456"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-chromeriver"></a>Lernprogramm: Azure Active Directory-Integration mit Chromeriver
 
