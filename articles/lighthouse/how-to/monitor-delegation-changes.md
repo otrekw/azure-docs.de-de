@@ -1,14 +1,14 @@
 ---
 title: Überwachen von Delegierungsänderungen in Ihrem Verwaltungsmandanten
 description: Erfahren Sie, wie Sie Delegierungsaktivitäten von Kundenmandanten für Ihren Verwaltungsmandanten überwachen.
-ms.date: 08/11/2020
+ms.date: 08/18/2020
 ms.topic: how-to
-ms.openlocfilehash: 63b8ec60ecf2f2e5655e3253db7aef01c003fc63
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 4d9d8b18634f94c355ea7fc0b5c125d631ec419c
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88163338"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589740"
 ---
 # <a name="monitor-delegation-changes-in-your-managing-tenant"></a>Überwachen von Delegierungsänderungen in Ihrem Verwaltungsmandanten
 
@@ -66,9 +66,6 @@ New-AzRoleAssignment -SignInName <yourLoginName> -Scope "/" -RoleDefinitionName 
 
 az role assignment create --assignee 00000000-0000-0000-0000-000000000000 --role "Monitoring Reader" --scope "/"
 ```
-
-> [!NOTE]
-> Sie können die integrierte Azure-Rolle „Überwachungsleser“ im Stammbereich auch einzelnen Benutzern oder Benutzergruppen zuweisen. Dies kann nützlich sein, wenn ein Benutzer in der Lage sein soll, [Delegierungsinformationen direkt im Azure-Portal anzuzeigen](#view-delegation-changes-in-the-azure-portal). Beachten Sie, dass es sich hierbei um einen umfassenden Zugriff handelt, der auf eine möglichst geringe Anzahl von Benutzern begrenzt sein sollte.
 
 ### <a name="remove-elevated-access-for-the-global-administrator-account"></a>Entfernen der erhöhten Zugriffsrechte für das globale Administratorkonto
 
@@ -164,15 +161,6 @@ else {
     Write-Output "No new delegation events for tenant: $($currentContext.Tenant.TenantId)"
 }
 ```
-
-## <a name="view-delegation-changes-in-the-azure-portal"></a>Anzeigen von Delegierungsänderungen im Azure-Portal
-
-Benutzer, denen die integrierte Azure-Rolle „Überwachungsleser“ im Stammbereich zugewiesen wurde, können Delegierungsänderungen direkt im Azure-Portal anzeigen.
-
-1. Navigieren Sie zur Seite **Meine Kunden**, und wählen Sie dann im linken Navigationsmenü die Option **Aktivitätsprotokoll** aus.
-1. Stellen Sie sicher, dass **Verzeichnisaktivität** im Filter am oberen Rand des Bildschirms ausgewählt ist.
-
-Eine Liste der Delegierungsänderungen wird angezeigt. Sie können **Spalten bearbeiten** auswählen, um die Werte für **Status**, **Ereigniskategorie**, **Zeit**, **Zeitstempel**, **Abonnement**, **Ereignis initiiert von**, **Ressourcengruppe**, **Ressourcentyp** und **Ressource** ein- oder auszublenden.
 
 > [!TIP]
 > Zwar beziehen wir uns in diesem Thema auf Dienstanbieter und Kunden, doch können [Unternehmen, die mehrere Mandanten verwalten](../concepts/enterprise.md), denselben Prozess verwenden.

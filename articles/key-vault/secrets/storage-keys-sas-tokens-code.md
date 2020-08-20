@@ -1,19 +1,19 @@
 ---
 title: Abrufen von Shared Access Signature-Token im Code | Azure Key Vault
 description: Das Feature für verwaltete Speicherkonten bietet eine nahtlose Integration zwischen Azure Key Vault und einem Azure-Speicherkonto.
-ms.topic: conceptual
+ms.topic: tutorial
 ms.service: key-vault
 ms.subservice: secrets
 author: msmbaldwin
 ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/10/2019
-ms.openlocfilehash: e429115ce2624685c413ae252229964feee70137
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 6530434e36f7c9a9a60a9782bcf2dce7ba447dab
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232592"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88584912"
 ---
 # <a name="fetch-shared-access-signature-tokens-in-code"></a>Abrufen von Shared Access Signature-Token im Code
 

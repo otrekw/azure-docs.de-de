@@ -10,18 +10,18 @@ ms.topic: include
 ms.date: 05/20/2020
 ms.author: pasta
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 68009797e48ab15c1c8df983b3413d7b7dac54b0
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: fdcffeda1c57cdb043c51c8a3640006be8ae7418
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87425204"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88602255"
 ---
 Der [plastische Reader](https://www.onenote.com/learningtools) ist ein inklusiv konzipiertes Tool, das bewährte Techniken zur Verbesserung des Leseverständnisses implementiert.
 
 In dieser Schnellstartanleitung erstellen Sie eine Web-App von Grund auf neu und integrieren den plastischen Reader mithilfe der Clientbibliothek für den plastischen Reader. Ein vollständiges Arbeitsbeispiel für diesen Schnellstart finden Sie [hier](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-csharp).
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/cognitive-services/) erstellen, bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

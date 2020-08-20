@@ -3,14 +3,14 @@ title: 'Schnellstart: Bereitstellen eines AKS-Clusters mithilfe von PowerShell'
 description: Hier erfahren Sie, wie Sie über PowerShell schnell einen Kubernetes-Cluster erstellen, eine Anwendung bereitstellen und die Leistung in Azure Kubernetes Service (AKS) überwachen.
 services: container-service
 ms.topic: quickstart
-ms.date: 05/26/2020
+ms.date: 08/18/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 219772fd81617dc3e69b452057e0122eedef69f9
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 4dde1dcd131a497b60a314513df44cc0443d28ed
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87499856"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589974"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-cluster-using-powershell"></a>Schnellstart: Bereitstellen eines Azure Kubernetes Service-Clusters mit PowerShell
 
@@ -101,10 +101,6 @@ aks-nodepool1-31718369-0   Ready    agent   6m44s   v1.15.10
 ## <a name="run-the-application"></a>Ausführen der Anwendung
 
 Eine Kubernetes-Manifestdatei definiert einen gewünschten Zustand (Desired State) für den Cluster – also beispielsweise, welche Containerimages ausgeführt werden sollen. In dieser Schnellstartanleitung wird ein Manifest verwendet, um alle Objekte zu erstellen, die zum Ausführen der Azure Vote-Anwendung benötigt werden. Dieses Manifest umfasst zwei [Kubernetes-Bereitstellungen][kubernetes-deployment]: eine für die Azure Vote-Python-Beispielanwendungen und eine für eine Redis-Instanz. Außerdem werden zwei Kubernetes-Dienste erstellt: ein interner Dienst für die Redis-Instanz und ein externer Dienst, über den aus dem Internet auf die Azure Vote-Anwendung zugegriffen wird.
-
-> [!TIP]
-> In dieser Schnellstartanleitung führen Sie die manuelle Erstellung und Bereitstellung Ihrer Anwendungsmanifeste im AKS-Cluster durch.
-> Bei Szenarien mit mehr Praxisnähe können Sie [Azure Dev Spaces][azure-dev-spaces] verwenden, um Ihren Code direkt im AKS-Cluster schnell zu durchlaufen und zu debuggen. Sie können Dev Spaces übergreifend für Betriebssystemplattformen und Entwicklungsumgebungen nutzen und mit anderen Teammitgliedern zusammenarbeiten.
 
 Erstellen Sie eine Datei namens `azure-vote.yaml`, und fügen Sie die folgende YAML-Definition ein. Bei Verwendung von Azure Cloud Shell kann diese Datei mit `vi` oder `nano` erstellt werden – genau wie bei der Verwendung eines virtuellen oder physischen Systems:
 

@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: include
-ms.date: 04/14/2020
+ms.date: 08/17/2020
 ms.author: pafarley
-ms.openlocfilehash: 7dbd8783b62d9a6f573b8f0eb25e8dadabaac56b
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
+ms.openlocfilehash: c243668f4ca1569ad05567649ad4a2498888847c
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "85073249"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88602231"
 ---
 Hier erhalten Sie Informationen zu den ersten Schritten mit der Clientbibliothek zur Gesichtserkennung für .NET. Führen Sie die nachfolgenden Schritte zum Installieren des Pakets aus, und testen Sie den Beispielcode für grundlegende Aufgaben. Über den Gesichtserkennungsdienst haben Sie Zugriff auf erweiterte Algorithmen für die Erkennung von menschlichen Gesichtern in Bildern.
 
@@ -26,7 +26,7 @@ Verwenden Sie die Clientbibliothek zur Gesichtserkennung für .NET für Folgende
 * [Identifizieren eines Gesichts](#identify-a-face)
 * [Erstellen einer Momentaufnahme für die Datenmigration](#take-a-snapshot-for-data-migration)
 
-[Referenzdokumentation](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/faceapi?view=azure-dotnet) | [Quellcode der Bibliothek](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.Face) | [Paket (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.Face/2.5.0-preview.1) | [Beispiele](https://docs.microsoft.com/samples/browse/?products=azure&term=face)
+[Referenzdokumentation](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/faceapi?view=azure-dotnet) | [Quellcode der Bibliothek](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.Face) | [Paket (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.Face/2.6.0-preview.1) | [Beispiele](https://docs.microsoft.com/samples/browse/?products=azure&term=face)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -78,7 +78,7 @@ Erstellen Sie in der Methode `Main` der Anwendung Variablen für den Azure-Endpu
 Installieren Sie im Anwendungsverzeichnis mit dem folgenden Befehl die Clientbibliothek zur Gesichtserkennung für .NET:
 
 ```dotnetcli
-dotnet add package Microsoft.Azure.CognitiveServices.Vision.Face --version 2.5.0-preview.1
+dotnet add package Microsoft.Azure.CognitiveServices.Vision.Face --version 2.6.0-preview.1
 ```
 
 Bei Verwendung der Visual Studio-IDE ist die Clientbibliothek als herunterladbares NuGet-Paket verfügbar.

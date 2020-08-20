@@ -2,7 +2,7 @@
   href: index.yml
 - name: Übersicht
   items:
-    - name: Über Virtual WAN
+    - name: "Was ist Virtual\_WAN?"
       href: virtual-wan-about.md
     - name: Aufbau
       items:

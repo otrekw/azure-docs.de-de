@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 07/21/2020
-ms.openlocfilehash: 64a21c0d0edcd035bdf42c3b17c5f2c0131dabfa
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.openlocfilehash: bb69d48fe4e65d0fc27db027aecab0f1a745e8d5
+ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87117026"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88566181"
 ---
 # <a name="resource-limits-for-single-databases-using-the-vcore-purchasing-model"></a>Ressourcenlimits für Singletons mit dem auf virtuellen Kernen (V-Kernen) basierenden Kaufmodell
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -97,7 +97,7 @@ Der [serverlose Computetarif](serverless-tier-overview.md) ist derzeit nur auf G
 |Columnstore-Unterstützung|Ja|Ja|Ja|Ja|Ja|
 |In-Memory-OLTP-Speicher (GB)|–|–|–|–|–|
 |Maximale Datengröße (GB)|3072|3072|4096|4096|4096|
-|Maximale Protokollgröße (GB)|922|922|1229|1229|1229|
+|Maximale Protokollgröße (GB)|922|922|1024|1024|1024|
 |Max. Datengröße von TempDB (GB)|576|640|768|1024|1280|
 |Speichertyp|Remote-SSD|Remote-SSD|Remote-SSD|Remote-SSD|Remote-SSD|
 |E/A-Wartezeit (ungefähr)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|
@@ -323,7 +323,7 @@ Der [serverlose Computetarif](serverless-tier-overview.md) ist derzeit nur auf G
 |Columnstore-Unterstützung|Ja|Ja|Ja|Ja|Ja|Ja|Ja|
 |In-Memory-OLTP-Speicher (GB)|–|–|–|–|–|–|–|
 |Maximale Datengröße (GB)|3072|3072|3072|4096|4096|4096|4096|
-|Maximale Protokollgröße (GB)|922|922|922|1229|1229|1229|1229|
+|Maximale Protokollgröße (GB)|922|922|922|1024|1024|1024|1024|
 |Max. Datengröße von TempDB (GB)|512|576|640|768|1024|1280|2560|
 |Speichertyp|Remote-SSD|Remote-SSD|Remote-SSD|Remote-SSD|Remote-SSD|Remote-SSD|Remote-SSD|
 |E/A-Wartezeit (ungefähr)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|
@@ -487,7 +487,7 @@ Der [serverlose Computetarif](serverless-tier-overview.md) ist derzeit nur auf G
 |Columnstore-Unterstützung|Ja|Ja|Ja|Ja|Ja|Ja|Ja|
 |In-Memory-OLTP-Speicher (GB)|15,77|18,14|20,51|25,25|37,94|52.23|131,64|
 |Maximale Datengröße (GB)|3072|3072|3072|4096|4096|4096|4096|
-|Maximale Protokollgröße (GB)|922|922|922|1229|1229|1229|1229|
+|Maximale Protokollgröße (GB)|922|922|922|1024|1024|1024|1024|
 |Max. Datengröße von TempDB (GB)|512|576|640|768|1024|1280|2560|
 |Speichertyp|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|
 |E/A-Wartezeit (ungefähr)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|

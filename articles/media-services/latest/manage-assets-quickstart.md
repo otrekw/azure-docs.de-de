@@ -3,12 +3,15 @@ title: 'Hochladen, Codieren und Streamen von Inhalten mithilfe des Portals: Azur
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie das Portal verwenden, um Inhalte mit Azure Media Services hochzuladen, zu codieren und zu streamen.
 ms.topic: quickstart
 ms.date: 06/08/2020
-ms.openlocfilehash: bab13b7b878f8992ac5523b9902054a42a3dc769
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+author: IngridAtMicrosoft
+ms.author: inhenkel
+manager: femila
+ms.openlocfilehash: 7aebc6e52ec7fac97c6f1e8fb9b30cc63b74e860
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87053353"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88605667"
 ---
 # <a name="quickstart-upload-encode-and-stream-content-with-portal"></a>Schnellstart: Hochladen, Codieren und Streamen von Inhalten mithilfe des Portals
 
@@ -28,7 +31,6 @@ In dieser Schnellstartanleitung erfahren Sie, wie Sie das Azure-Portal verwenden
 
   * [Clouduploads und Cloudspeicherung](storage-account-concept.md)
   * [Medienobjektkonzept](assets-concept.md)
-  * [Verwalten von Objekten](manage-asset-concept.md)
 * Nachdem Sie Ihre digitale Mediendatei mit hoher Qualität in ein Medienobjekt (Eingabemedienobjekt) hochgeladen haben, können Sie es verarbeiten (also codieren oder analysieren). Der verarbeitete Inhalt wird in ein anderes Medienobjekt (Ausgabemedienobjekt) übertragen. 
     * [Codieren](encoding-concept.md) Sie Ihre hochgeladene Datei in Formate, die mit einer Vielzahl von Browsern und Geräten wiedergegeben werden können.
     * [Analysieren](analyzing-video-audio-files-concept.md) Sie Ihre hochgeladene Datei. 

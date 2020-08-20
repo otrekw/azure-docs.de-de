@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 04/24/2020
-ms.openlocfilehash: d7efe781f1ba2beb1fa7dd4fdaaad280fc789de2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 226cf29b1a94b4508a9d68f02b7400a18eba4bc2
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82204742"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88587853"
 ---
 # <a name="tutorial-connect-to-an-azure-red-hat-openshift-4-cluster"></a>Tutorial: Herstellen einer Verbindung mit einem Azure Red Hat OpenShift 4-Cluster
 
@@ -25,7 +25,7 @@ In diesem Tutorial (Teil 2 von 3) stellen Sie als kubeadmin-Benutzer über die 
 
 In den vorherigen Tutorials wurde ein Azure Red Hat OpenShift-Cluster erstellt. Falls Sie diese Schritte nicht ausgeführt haben und dies jetzt nachholen möchten, sollten Sie mit [Tutorial 1: Erstellen eines Azure Red Hat OpenShift 4-Clusters](tutorial-create-cluster.md) beginnen.
 
-Wenn Sie die Befehlszeilenschnittstelle lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial mindestens die Azure CLI-Version 2.0.75 ausführen. Führen Sie `az --version` aus, um die Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial Version 2.6.0 oder höher der Azure CLI ausführen. Führen Sie `az --version` aus, um die Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
 ## <a name="connect-to-the-cluster"></a>Herstellen einer Verbindung mit dem Cluster
 
@@ -86,7 +86,7 @@ Rufen Sie die Adresse des API-Servers ab:
 apiServer=$(az aro show -g $RESOURCEGROUP -n $CLUSTER --query apiserverProfile.url -o tsv)
 ```
 
-Melden Sie sich mit dem folgenden Befehl beim API-Server des OpenShift-Clusters an. Ersetzen Sie **\<kubeadmin password>** durch das Kennwort, das Sie gerade abgerufen haben:
+Melden Sie sich mit dem folgenden Befehl beim API-Server des OpenShift-Clusters an. Ersetzen Sie **\<kubeadmin password>** durch das soeben abgerufene Kennwort.
 
 ```azurecli-interactive
 oc login $apiServer -u kubeadmin -p <kubeadmin password>

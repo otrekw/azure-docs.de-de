@@ -8,12 +8,12 @@ ms.date: 4/22/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 1eebacefa2e91970263c301de4ff160ea7c9f2eb
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 008d5f22a48fdd31c90e63643adc94b26a975ca2
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420344"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589366"
 ---
 # <a name="write-client-app-authentication-code"></a>Schreiben von Authentifizierungscode für die Client-App
 
@@ -35,7 +35,7 @@ Als Nächstes benötigen Sie ein Client-App-Projekt, in dem Sie den Code schreib
 
 Binden Sie zunächst die folgenden Pakete in Ihr Projekt ein, sodass Sie das .NET SDK und die Authentifizierungstools für diese Vorgehensweise verwenden können:
 * `Azure.DigitalTwins.Core` (Version `1.0.0-preview.2`)
-* `Azure.Identity`
+* `Azure.Identity` (Version `1.1.1`)
 
 Je nachdem, welche Tools Sie verwenden, können Sie die Pakete mit dem Visual Studio-Paket-Manager oder mit dem Befehlszeilentool `dotnet` einbinden. 
 

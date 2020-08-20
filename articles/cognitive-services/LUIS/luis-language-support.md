@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 12/09/2019
 ms.author: diberry
-ms.openlocfilehash: 43858015857303d404b1abc0fe410aa462671587
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: b60a777960f3c6f8a2415ca551217d35b7f3497d
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84340197"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88588021"
 ---
 # <a name="language-and-region-support-for-luis"></a>Sprach- und Regionsunterstützung für LUIS
 
@@ -115,8 +115,8 @@ Die folgenden Kulturen weisen benutzerdefinierte Tokenizer-Versionen auf:
 |--|--|--|
 |Deutsch<br>`de-de`|1.0.0|Wendet die Tokenisierung auf Wörter an, indem sie mithilfe eines auf maschinellem Lernen basierenden Tokenizer getrennt werden, der versucht, zusammengesetzte Wörter in ihre einzelnen Komponenten zu zerlegen.<br>Wenn ein Benutzer `Ich fahre einen krankenwagen` als Äußerung eingibt, wird sie in `Ich fahre einen kranken wagen` geändert. Ermöglicht das unabhängige Markieren von `kranken` und `wagen` als unterschiedliche Entitäten.|
 |Deutsch<br>`de-de`|1.0.2|Wendet die Tokenisierung auf Wörter an, indem bei Leerzeichen eine Trennung erfolgt.<br> Wenn ein Benutzer `Ich fahre einen krankenwagen` als Äußerung eingibt, bleibt es ein einzelnes Token. Daher ist `krankenwagen` als eine einzelne Entität gekennzeichnet. |
-|Niederländisch<br>`de-de`|1.0.0|Wendet die Tokenisierung auf Wörter an, indem sie mithilfe eines auf maschinellem Lernen basierenden Tokenizer getrennt werden, der versucht, zusammengesetzte Wörter in ihre einzelnen Komponenten zu zerlegen.<br>Wenn ein Benutzer `Ik ga naar de kleuterschool` als Äußerung eingibt, wird sie in `Ik ga naar de kleuter school` geändert. Ermöglicht das unabhängige Markieren von `kleuter` und `school` als unterschiedliche Entitäten.|
-|Niederländisch<br>`de-de`|1.0.1|Wendet die Tokenisierung auf Wörter an, indem bei Leerzeichen eine Trennung erfolgt.<br> Wenn ein Benutzer `Ik ga naar de kleuterschool` als Äußerung eingibt, bleibt es ein einzelnes Token. Daher ist `kleuterschool` als eine einzelne Entität gekennzeichnet. |
+|Niederländisch<br>`nl-nl`|1.0.0|Wendet die Tokenisierung auf Wörter an, indem sie mithilfe eines auf maschinellem Lernen basierenden Tokenizer getrennt werden, der versucht, zusammengesetzte Wörter in ihre einzelnen Komponenten zu zerlegen.<br>Wenn ein Benutzer `Ik ga naar de kleuterschool` als Äußerung eingibt, wird sie in `Ik ga naar de kleuter school` geändert. Ermöglicht das unabhängige Markieren von `kleuter` und `school` als unterschiedliche Entitäten.|
+|Niederländisch<br>`nl-nl`|1.0.1|Wendet die Tokenisierung auf Wörter an, indem bei Leerzeichen eine Trennung erfolgt.<br> Wenn ein Benutzer `Ik ga naar de kleuterschool` als Äußerung eingibt, bleibt es ein einzelnes Token. Daher ist `kleuterschool` als eine einzelne Entität gekennzeichnet. |
 
 
 ### <a name="migrating-between-tokenizer-versions"></a>Migrieren zwischen Tokenizer-Versionen
