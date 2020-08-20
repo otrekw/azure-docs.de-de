@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 08/11/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d5497f50f9e868338541143a18ab0c83f32c1d1b
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 4e1b510ed970b253adedef0fb6efb4abe0c3b65b
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88080523"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88506395"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>SAP HANA: Speicherkonfigurationen für virtuelle Azure-Computer
 
@@ -42,7 +42,7 @@ Eine Liste der Speichertypen und deren Vereinbarungen zum Servicelevel für IOPS
 
 Die minimalen für SAP HANA zertifizierten Bedingungen für die verschiedenen Speichertypen sind: 
 
-- Azure Storage Premium – **/hana/log** ist erforderlich, um von der Azure-[Schreibbeschleunigung](../../linux/how-to-enable-write-accelerator.md) unterstützt zu werden. Das Volume **/hana/data** kann ohne Azure-Schreibbeschleunigung auf Storage Premium oder auf Disk Ultra platziert werden.
+- Azure Storage Premium – **/hana/log** ist erforderlich, um von der Azure-[Schreibbeschleunigung](../../how-to-enable-write-accelerator.md) unterstützt zu werden. Das Volume **/hana/data** kann ohne Azure-Schreibbeschleunigung auf Storage Premium oder auf Disk Ultra platziert werden.
 - Azure Disk Ultra mindestens für das Volume **/hana/log**. Das Volume **/hana/data** kann entweder ohne Azure-Schreibbeschleunigung auf Storage Premium oder für schnellere Neustartzeiten auf Disk Ultra platziert werden.
 - **NFS v4.1**-Volumes basierend auf Azure NetApp Files für **/hana/log und /hana/data**. Das Volume von „/hana/shared“ kann das Protokoll NFS v3 oder NFS v4.1 verwenden.
 
@@ -75,7 +75,7 @@ Linux verfügt über mehrere verschiedene E/A-Scheduling-Modi. Linux-Anbieter un
 Die Azure-Schreibbeschleunigung ist eine Funktion, die ausschließlich für virtuelle Azure-Computer der M-Serie verfügbar ist. Der Name macht bereits deutlich, dass der Zweck der Funktion die Verbesserung der E/A-Wartezeit bei Schreibvorgängen für Azure Storage Premium ist. Für SAP HANA ist die Schreibbeschleunigung nur für das Volume **/hana/log** vorgesehen. **/hana/data** und **/hana/log** sind daher separate Volumes, und die Azure-Schreibbeschleunigung unterstützt nur das Volume **/hana/log**. 
 
 > [!IMPORTANT]
-> Bei Verwendung von Azure Storage Premium ist die Nutzung der [Schreibbeschleunigung](../../linux/how-to-enable-write-accelerator.md) von Azure oder des Volumes **/hana/log** obligatorisch. Die Schreibbeschleunigung ist nur für Storage Premium und VMs der Serien M und Mv2 verfügbar. Die Schreibbeschleunigung funktioniert nicht in Kombination mit anderen Azure VM-Familien wie Esv3 oder Edsv4.
+> Bei Verwendung von Azure Storage Premium ist die Nutzung der [Schreibbeschleunigung](../../how-to-enable-write-accelerator.md) von Azure oder des Volumes **/hana/log** obligatorisch. Die Schreibbeschleunigung ist nur für Storage Premium und VMs der Serien M und Mv2 verfügbar. Die Schreibbeschleunigung funktioniert nicht in Kombination mit anderen Azure VM-Familien wie Esv3 oder Edsv4.
 
 Bei den Cacheempfehlungen für Azure Premium-Datenträger unten werden E/A-Merkmale für SAP HANA gemäß der folgenden Liste zugrunde gelegt:
 
@@ -194,7 +194,7 @@ Für die anderen Volumes würde die Konfiguration wie folgt aussehen:
 
 Überprüfen Sie, ob der Speicherdurchsatz für die verschiedenen vorgeschlagenen Volumes für die Workload ausreicht, die Sie ausführen möchten. Wenn die Workload größere Volumes für **/hana/data** und **/hana/log** erfordert, müssen Sie die Anzahl der Azure Storage Premium-VHDs erhöhen. Wenn Sie ein Volume mit mehr VHDs ausstatten als in der Liste angegeben, erhöht sich der IOPS- und E/A-Durchsatz innerhalb der Grenzen des Azure-VM-Typs.
 
-Die Azure-Schreibbeschleunigung funktioniert nur in Verbindung mit [verwalteten Azure-Datenträgern](https://azure.microsoft.com/services/managed-disks/). Daher müssen zumindest die Azure Storage Premium-Datenträger, die das Volume **/hana/log** bilden, als verwaltete Datenträger bereitgestellt werden. Ausführlichere Anweisungen und Einschränkungen der Azure-Schreibbeschleunigung finden Sie im Artikel [Schreibbeschleunigung](../../linux/how-to-enable-write-accelerator.md).
+Die Azure-Schreibbeschleunigung funktioniert nur in Verbindung mit [verwalteten Azure-Datenträgern](https://azure.microsoft.com/services/managed-disks/). Daher müssen zumindest die Azure Storage Premium-Datenträger, die das Volume **/hana/log** bilden, als verwaltete Datenträger bereitgestellt werden. Ausführlichere Anweisungen und Einschränkungen der Azure-Schreibbeschleunigung finden Sie im Artikel [Schreibbeschleunigung](../../how-to-enable-write-accelerator.md).
 
 Für die HANA-zertifizierten VMs der Azure [Esv3](../../ev3-esv3-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json#esv3-series)- und [Edsv4](../../edv4-edsv4-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json#edsv4-series)-Familie müssen Sie für die Volumes **/hana/data** und **/hana/log** eine ANF erstellen. Oder Sie müssen nur für das Volume **/hana/log** Azure Disk Storage Ultra anstelle von Azure Storage Premium verwenden. Infolgedessen könnten die Konfigurationen für das Volume **/hana/data** in Azure Storage Premium wie folgt aussehen:
 
@@ -352,9 +352,9 @@ Eine kostengünstigere Alternative für derartige Konfigurationen könnte wie fo
 | M416ms_v2 | 11400 GiB | 2\.000 MB/s | 7 x P40 | 1 × E30 | 1 x E10 | 1 x E6 | Verwendung der Schreibbeschleunigung für kombiniertes Daten- und Protokollvolume beschränkt die IOPS-Rate auf 20.000<sup>2</sup> |
 
 
-<sup>1</sup> [Azure-Schreibbeschleunigung](../../linux/how-to-enable-write-accelerator.md) kann nicht mit den Ev4- und Ev4 VM-Familien verwendet werden. Aufgrund der Verwendung von Azure Storage Premium liegt die E/A-Latenzzeit nicht unter 1 ms.
+<sup>1</sup> [Azure-Schreibbeschleunigung](../../how-to-enable-write-accelerator.md) kann nicht mit den Ev4- und Ev4 VM-Familien verwendet werden. Aufgrund der Verwendung von Azure Storage Premium liegt die E/A-Latenzzeit nicht unter 1 ms.
 
-<sup>2</sup> Die VM-Familie unterstützt die [Azure-Schreibbeschleunigung](../../linux/how-to-enable-write-accelerator.md), aber der IOPS-Grenzwert der Schreibbeschleunigung könnte die IOPS-Fähigkeiten der Datenträgerkonfigurationen einschränken.
+<sup>2</sup> Die VM-Familie unterstützt die [Azure-Schreibbeschleunigung](../../how-to-enable-write-accelerator.md), aber der IOPS-Grenzwert der Schreibbeschleunigung könnte die IOPS-Fähigkeiten der Datenträgerkonfigurationen einschränken.
 
 Wenn Sie das Daten- und Protokollvolume für SAP Hana kombinieren, sollte für die Datenträger, die das Stripesetvolume bilden, kein Lese- oder Lese-/Schreibcache aktiviert sein.
 

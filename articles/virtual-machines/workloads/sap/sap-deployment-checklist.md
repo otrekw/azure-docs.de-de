@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 08/10/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a3c22a46d22ef4eb717eb686fa295c820c78c934
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: f3402f4ff719752cca6e1d7a4aeeb3b7e12c3e28
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88067255"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88511141"
 ---
 # <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>Prüfliste für die Planung und Bereitstellung von SAP-Workloads in Azure
 
@@ -114,7 +114,7 @@ Es empfiehlt sich, im Rahmen einer Pilotbereitstellung eine vollständige HADR-L
         - Im Allgemeinen empfehlen wir die Verwendung von [Azure HDD-Standarddatenträgern](../../windows/disks-types.md#standard-hdd) nicht.
         - Verwenden Sie [Azure Storage Premium](../../windows/disks-types.md#premium-ssd) für alle DBMS-VMs, die auch nur entfernt leistungskritisch sind
         - Verwenden Sie [Azure Managed Disks](https://azure.microsoft.com/services/managed-disks/)
-        - Verwenden Sie Azure-Schreibbeschleunigung für die DBMS-Protokolllaufwerke mit M-Serie. Beachten Sie die Grenzwerte für die Schreibbeschleunigung und die Nutzung. Eine Beschreibung finden Sie unter [Schreibbeschleunigung](../../linux/how-to-enable-write-accelerator.md).
+        - Verwenden Sie Azure-Schreibbeschleunigung für die DBMS-Protokolllaufwerke mit M-Serie. Beachten Sie die Grenzwerte für die Schreibbeschleunigung und die Nutzung. Eine Beschreibung finden Sie unter [Schreibbeschleunigung](../../how-to-enable-write-accelerator.md).
         - Überprüfen Sie für die verschiedenen DBMS-Typen die [allgemeine SAP-bezogene DBMS-Dokumentation](./dbms_guide_general.md) und die DBMS-spezifische Dokumentation, auf die das allgemeine Dokument verweist.
         - Weitere Informationen zu SAP HANA finden Sie unter [SAP HANA-Infrastrukturkonfigurationen und -Vorgänge in Azure](./hana-vm-operations.md).
         - Binden Sie Azure-Datenträger niemals mithilfe der Geräte-ID auf einem virtuellen Azure-Linux-Computer ein. Verwenden Sie stattdessen den Universally Unique Identifier (UUID). Seien Sie vorsichtig, wenn Sie grafische Tools z. B. für das Einbinden von Azure-Datenträgern verwenden. Überprüfen Sie die Einträge in „/etc/fstab“ erneut, um sicherzustellen, dass die Datenträger mithilfe des UUID bereitgestellt sind. Weitere Informationen finden Sie in [diesem Artikel](../../linux/attach-disk-portal.md#connect-to-the-linux-vm-to-mount-the-new-disk).

@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/10/2020
+ms.date: 08/13/2020
 ms.author: b-juche
-ms.openlocfilehash: 48e3f895fb123429f1bedd106bd92113533c84ae
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 79ad95179f4ad6d332a848e59ca341b8a9f90b1f
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88055801"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88258221"
 ---
 # <a name="solution-architectures-using-azure-netapp-files"></a>Lösungsarchitekturen mit Azure NetApp Files
 Dieser Artikel enthält Verweise auf bewährte Methoden, die Ihnen helfen können, die Lösungsarchitekturen für die Verwendung von Azure NetApp Files zu verstehen.  
@@ -85,6 +85,7 @@ Dieser Abschnitt enthält Referenzen zu Lösungen für virtuelle Desktopinfrastr
 
 ### <a name="windows-virtual-desktop"></a>Windows Virtual Desktop
 
+* [Vorteile der Verwendung von Azure NetApp Files mit Windows Virtual Desktop](solutions-windows-virtual-desktop.md)
 * [Speicheroptionen für FSLogix-Profilcontainer in Windows Virtual Desktop](https://docs.microsoft.com/azure/virtual-desktop/store-fslogix-profile#azure-platform-details)
 * [Erstellen eines FSLogix-Profilcontainers für einen Hostpool mit Azure NetApp Files](https://docs.microsoft.com/azure/virtual-desktop/create-fslogix-profile-container)
 * [Windows Virtual Desktop auf Unternehmensebene](https://docs.microsoft.com/azure/architecture/example-scenario/wvd/windows-virtual-desktop)

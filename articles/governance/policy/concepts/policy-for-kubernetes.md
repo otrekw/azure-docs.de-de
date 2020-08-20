@@ -3,12 +3,12 @@ title: 'Vorschau: Informationen zu Azure Policy für Kubernetes'
 description: Hier erfahren Sie, wie Rego und Open Policy Agent von Azure Policy genutzt werden, um Cluster mit Kubernetes in Azure oder lokal zu verwalten. Hierbei handelt es sich um eine Previewfunktion.
 ms.date: 08/07/2020
 ms.topic: conceptual
-ms.openlocfilehash: dc81d22677eeab16ae06e782c5ae47c121af04c6
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: e9da5caf13994e1c198345958feec43867c0b5f5
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88003512"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88509874"
 ---
 # <a name="understand-azure-policy-for-kubernetes-clusters-preview"></a>Grundlegendes zu Azure Policy für Kubernetes-Cluster (Vorschauversion)
 
@@ -73,19 +73,19 @@ Bevor Sie das Azure Policy-Add-On installieren oder eines der Dienstfeatures ak
 
      ```azurecli-interactive
      # Log in first with az login if you're not using Cloud Shell
-   
+
      # Provider register: Register the Azure Kubernetes Service provider
      az provider register --namespace Microsoft.ContainerService
-   
+
      # Provider register: Register the Azure Policy provider
      az provider register --namespace Microsoft.PolicyInsights
-   
+
      # Feature register: enables installing the add-on
      az feature register --namespace Microsoft.ContainerService --name AKS-AzurePolicyAutoApprove
-     
+
      # Use the following to confirm the feature has registered
      az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AKS-AzurePolicyAutoApprove')].   {Name:name,State:properties.state}"
-     
+
      # Once the above shows 'Registered' run the following to propagate the update
      az provider register -n Microsoft.ContainerService
      ```
@@ -135,7 +135,7 @@ Sind die obigen Voraussetzungen erfüllt, installieren Sie das Azure Policy-Add
      <a name="migrate-from-v1"></a>
      > [!NOTE]
      > Sollte die Schaltfläche **Add-On aktivieren** abgeblendet sein, wurde das Abonnement noch nicht zur Vorschauversion hinzugefügt. Wenn die Schaltfläche **Add-On deaktivieren** aktiviert ist und eine Migrationswarnung für v2 angezeigt wird, ist Version 1 des Add-Ons noch installiert und muss entfernt werden, bevor Sie v2-Richtliniendefinitionen zuweisen können. Die _veraltete_ Version 1 des Add-Ons wird ab 24. August 2020 durch Version 2 ersetzt. Dann müssen neue Richtliniendefinitionen für v2 zugewiesen werden. Um das Upgrade jetzt auszuführen, gehen Sie folgendermaßen vor:
-     > 
+     >
      > 1. Überprüfen Sie, ob Version 1 des Add-Ons in Ihrem AKS-Cluster installiert ist, indem Sie nachsehen, ob auf der Seite **Richtlinien (Vorschau)** für Ihren AKS-Cluster die Meldung „Der aktuelle Cluster verwendet das Azure Policy-Add-On v1...“ angezeigt wird.
      > 1. [Entfernen Sie das Add-On](#remove-the-add-on-from-aks).
      > 1. Klicken Sie auf die Schaltfläche **Add-On aktivieren**, um Version 2 des Add-Ons zu installieren.
@@ -185,16 +185,16 @@ Bevor Sie das Azure Policy-Add-On installieren oder eines der Dienstfeatures akt
 
      ```azurecli-interactive
      # Log in first with az login if you're not using Cloud Shell
-     
+
      # Provider register: Register the Azure Policy provider
      az provider register --namespace 'Microsoft.PolicyInsights'
      ```
 
    - Azure PowerShell
-   
+
      ```azurepowershell-interactive
      # Log in first with Connect-AzAccount if you're not using Cloud Shell
-   
+
      # Provider register: Register the Azure Policy provider
      Register-AzResourceProvider -ProviderNamespace 'Microsoft.PolicyInsights'
      ```
@@ -205,7 +205,7 @@ Bevor Sie das Azure Policy-Add-On installieren oder eines der Dienstfeatures akt
 
 1. Für Ihren Kubernetes-Cluster muss Azure Arc aktiviert werden. Weitere Informationen finden Sie unter [Herstellen einer Verbindung für einen Kubernetes-Cluster mit Azure Arc-Aktivierung (Vorschau)](../../../azure-arc/kubernetes/connect-cluster.md).
 
-1. Sie benötigen die vollqualifizierte Azure-Ressourcen-ID des Kubernetes-Clusters mit Azure Arc-Aktivierung. 
+1. Sie benötigen die vollqualifizierte Azure-Ressourcen-ID des Kubernetes-Clusters mit Azure Arc-Aktivierung.
 
 1. Öffnen Sie Ports für das Add-On. Vom Azure Policy-Add-On werden die folgenden Domänen und Ports verwendet, um Richtliniendefinitionen und Zuweisungen abzurufen und um die Konformität des Clusters an Azure Policy zu melden:
 
@@ -226,7 +226,7 @@ Bevor Sie das Azure Policy-Add-On installieren oder eines der Dienstfeatures akt
 
    - Azure PowerShell
 
-     ```azure powershell-interactive
+     ```azurepowershell-interactive
      $sp = New-AzADServicePrincipal -Role "Policy Insights Data Writer (Preview)" -Scope "/subscriptions/<subscriptionId>/resourceGroups/<rg>/providers/Microsoft.Kubernetes/connectedClusters/<clusterName>"
 
      @{ appId=$sp.ApplicationId;password=[System.Runtime.InteropServices.Marshal]::PtrToStringAuto([System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($sp.Secret));tenant=(Get-AzContext).Tenant.Id } | ConvertTo-Json
@@ -289,16 +289,16 @@ Bevor Sie das Azure Policy-Add-On installieren oder eines der Dienstfeatures akt
 
      ```azurecli-interactive
      # Log in first with az login if you're not using Cloud Shell
-     
+
      # Provider register: Register the Azure Policy provider
      az provider register --namespace 'Microsoft.PolicyInsights'
      ```
 
    - Azure PowerShell
-   
+
      ```azurepowershell-interactive
      # Log in first with Connect-AzAccount if you're not using Cloud Shell
-   
+
      # Provider register: Register the Azure Policy provider
      Register-AzResourceProvider -ProviderNamespace 'Microsoft.PolicyInsights'
      ```
@@ -310,7 +310,7 @@ Bevor Sie das Azure Policy-Add-On installieren oder eines der Dienstfeatures akt
      ```bash
      # Get the kube-apiserver pod name
      kubectl get pods -n kube-system
-   
+
      # Find the aadClientID value
      kubectl exec <kube-apiserver pod name> -n kube-system cat /etc/kubernetes/azure.json
      ```
@@ -393,21 +393,20 @@ Führen Sie die folgenden Schritte aus, um die integrierten Richtliniendefinitio
 
 1. Legen Sie den **Bereich** auf die Verwaltungsgruppe, das Abonnement oder die Ressourcengruppe des Kubernetes-Clusters fest, in dem die Richtlinienzuweisung angewendet wird.
 
-   > [!NOTE]    
+   > [!NOTE]
    > Beim Zuweisen der Definition für Azure Policy für Kubernetes muss der **Bereich** die Clusterressource enthalten. Bei einem AKS-Engine-Cluster muss der **Bereich** die Ressourcengruppe des Clusters sein.
 
-1. Weisen Sie der Richtlinienzuweisung einen **Namen** und eine **Beschreibung** zu, die Sie zur einfachen Identifizierung verwenden können.    
+1. Weisen Sie der Richtlinienzuweisung einen **Namen** und eine **Beschreibung** zu, die Sie zur einfachen Identifizierung verwenden können.
 
-1. Legen Sie die [Richtlinienerzwingung](./assignment-structure.md#enforcement-mode) auf einen der folgenden Werte    
-   .   
+1. Legen Sie die [Policy enforcement](./assignment-structure.md#enforcement-mode) (Richtlinienerzwingung) auf einen der unten aufgeführten Werte fest.
 
-   - **Aktiviert**: Erzwingen Sie die Richtlinie auf dem Cluster. Kubernetes-Zulassungsanforderungen mit Verstößen werden verweigert.    
+   - **Aktiviert**: Erzwingen Sie die Richtlinie auf dem Cluster. Kubernetes-Zulassungsanforderungen mit Verstößen werden verweigert.
 
    - **Deaktiviert**: Erzwingen Sie die Richtlinie nicht auf dem Cluster. Kubernetes-Zulassungsanforderungen mit Verstößen werden nicht verweigert. Die Ergebnisse der Konformitätsbewertung sind weiterhin verfügbar. Beim Rollout neuer Richtliniendefinitionen für aktive Cluster ist die Option _Deaktiviert_ hilfreich, um die Richtliniendefinition zu testen, da Zulassungsanforderungen mit Verstößen nicht verweigert werden.
 
-1. Wählen Sie **Weiter** aus. 
+1. Wählen Sie **Weiter** aus.
 
-1. Festlegen von **Parameterwerten** 
+1. Festlegen von **Parameterwerten**
 
    - Geben Sie die Liste der Namespaces im Parameter **Namespaceausschlüsse** an, um Kubernetes-Namespaces aus der Richtlinienauswertung auszuschließen. Es wird empfohlen, Folgendes auszuschließen: _kube-system_, _gatekeeper-system_ und _azure-arc_.
 
