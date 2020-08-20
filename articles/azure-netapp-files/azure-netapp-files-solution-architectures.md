@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/31/2020
+ms.date: 08/10/2020
 ms.author: b-juche
-ms.openlocfilehash: 19e02012c31246b3b6b4636ef61154fbade347ce
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 48e3f895fb123429f1bedd106bd92113533c84ae
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87494620"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88055801"
 ---
 # <a name="solution-architectures-using-azure-netapp-files"></a>Lösungsarchitekturen mit Azure NetApp Files
 Dieser Artikel enthält Verweise auf bewährte Methoden, die Ihnen helfen können, die Lösungsarchitekturen für die Verwendung von Azure NetApp Files zu verstehen.  
@@ -44,8 +44,8 @@ In diesem Abschnitt finden Sie Referenzen zu Lösungen für Windows-Anwendungen 
 
 ### <a name="file-sharing-and-global-file-caching"></a>Dateifreigaben und globales Dateicaching
 
-* [Talon / Azure NetApp Files Deployment](https://youtu.be/91LKb1qsLIM) (Bereitstellung von Talon / Azure NetApp Files)
 * [Build Your Own Azure NFS? Wrestling Linux File Shares into Cloud](https://cloud.netapp.com/blog/ma-anf-blg-build-your-own-linux-nfs-file-shares) (Erstellen eines eigenen NFS: Verschieben von Linux-Dateifreigaben in die Cloud)
+* [Globaler Dateicache / Bereitstellen von Azure NetApp Files](https://youtu.be/91LKb1qsLIM)
 
 ### <a name="sql-server"></a>SQL Server
 

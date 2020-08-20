@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 05/28/2020
 ms.topic: reference
-ms.openlocfilehash: aab914caa2647146639aa366f558c80bebcfde54
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e8e439a055b71ed291573965c561ee31610e3ed4
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84809937"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121611"
 ---
 # <a name="vm-sizes"></a>VM-Größen
 
@@ -76,7 +76,7 @@ Dementsprechend ist es möglich, eine Anwendung zu schreiben, die auf die `stand
 
 Es gibt zwei Möglichkeiten, die Anzahl der Polygone eines Modells oder einer Szene zu ermitteln, die zum Budgetlimit der VM mit `standard`-Größe beitragen:
 * Rufen Sie auf der Modellkonvertierungsseite die [JSON-Datei der Konvertierungsausgabe](../how-tos/conversion/get-information.md) ab, und überprüfen Sie den `numFaces`-Eintrag im Abschnitt [*inputStatistics*](../how-tos/conversion/get-information.md#the-inputstatistics-section) (Eingabestatistik).
-* Wenn die Anwendung dynamische Inhalte verarbeitet, kann die Anzahl gerenderter Polygone während der Runtime dynamisch abgefragt werden. Verwenden Sie eine [Leistungsbewertungsabfrage](../overview/features/performance-queries.md#performance-assessment-queries), und suchen Sie in der `FrameStatistics`-Struktur nach dem Element `polygonsRendered`. Der Schachbretthintergrund wird stets mit einiger Verzögerung ausgeblendet, um sicherzustellen, dass nach dieser asynchronen Abfrage eine Benutzeraktion durchgeführt werden kann. Eine Benutzeraktion kann beispielsweise Modellinstanzen ausblenden oder löschen.
+* Wenn die Anwendung dynamische Inhalte verarbeitet, kann die Anzahl gerenderter Polygone während der Runtime dynamisch abgefragt werden. Verwenden Sie eine [Leistungsbewertungsabfrage](../overview/features/performance-queries.md#performance-assessment-queries), und suchen Sie in der `FrameStatistics`-Struktur nach dem Element `polygonsRendered`. Das Feld `polygonsRendered` wird auf `bad` festgelegt, wenn der Renderer den Grenzwert für Polygone erreicht. Der Schachbretthintergrund wird stets mit einiger Verzögerung ausgeblendet, um sicherzustellen, dass nach dieser asynchronen Abfrage eine Benutzeraktion durchgeführt werden kann. Eine Benutzeraktion kann beispielsweise Modellinstanzen ausblenden oder löschen.
 
 ## <a name="pricing"></a>Preise
 

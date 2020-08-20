@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/29/2020
 ms.author: aahi
-ms.openlocfilehash: f07b71bf8996612798b87d32a21a15ec72db0b32
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: 6271cb449b6bbc80269dd325bd5acd7edd2e0a6d
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84140923"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88011042"
 ---
 Diese Entitätskategorie umfasst Finanzinformationen und offizielle Formen der Identifikation. Erst ab der Modellversion `2019-10-01` verfügbar. Die Untertypen sind im Folgenden aufgeführt. 
 
@@ -39,28 +39,39 @@ Die nachstehenden Entitäten werden nach Land/Region gruppiert und aufgeführt:
 Argentinien
 * Nationale argentinische ID-Nummer (DNI)
 
+Österreich
+* Österreichischer Personalausweis
+* Österreichische Abgabenkontonummer
+* Österreichische Umsatzsteuer-Identifikationsnummer
+
 Australien
-* Australische Reisepassnummer
-* Australische Steuernummer
+* Australische Bankkontonummer
+* Australische Geschäftsnummer
+* Australische Unternehmensnummer
 * Australische Führerscheinnummer
 * Australische Krankenversicherungsnummer
-* Australische Bankkontonummer
+* Australische Reisepassnummer
+* Australische Steuernummer
 
 Belgien
-* Nationale belgische Nummer
+* Belgische Nationalregisternummer
+* Belgische Umsatzsteuer-Identifikationsnummer
 
 Brasilien 
 * Brasilianische Nummer juristischer Personen (CNPJ)
 * Brasilianische CPF-Nummer
 * Nationale brasilianische ID-Karte (RG)
 
+Bulgarien
+* Bulgarische Personenkennziffer
+
 Canada
-* Kanadische Sozialversicherungsnummer
-* Kanadische Führerscheinnummer
 * Kanadische Bankkontonummer
+* Kanadische Führerscheinnummer
+* Nummer des kanadischen Gesundheitsdiensts
 * Kanadische Reisepassnummer
 * Persönliche kanadische Krankenversicherungsnummer (PHIN, Personal Health Identification Number)
-* Nummer des kanadischen Gesundheitsdiensts
+* Kanadische Sozialversicherungsnummer
 
 Chile
 * ID-Kartennummer 
@@ -70,7 +81,12 @@ China
 
 Kroatien
 * Kroatische ID-Kartennummer
+* Kroatische Personalausweisnummer
 * Kroatische persönliche ID-Nummer (OIB)
+
+Zypern
+* Zypriotische Personalausweisnummer
+* Zypriotische Steueridentifikationsnummer
 
 Tschechische Republik
 * Tschechische persönliche Identifikationsnummer
@@ -78,34 +94,49 @@ Tschechische Republik
 Dänemark
 * Dänische persönliche ID-Nummer
 
+Estland
+* Estnischer persönlicher ID-Code
+
 Europäische Union (EU)
+* EU-Debitkartennummer
+* EU-Führerscheinnummer
 * EU-Personalausweisnummer
 * EU-Reisepassnummer
-* EU-Führerscheinnummer
 * EU-Sozialversicherungsnummer (SSN) oder entsprechende ID
 * EU-Steueridentifikationsnummer (TIN)
-* EU-Debitkartennummer
 
 Finnland
+* Europäische Krankenversicherungsnummer Finnland
 * Nationale finnische ID-Nummer
 * Finnische Reisepassnummer
 
 Frankreich
-* Französischer Personalausweis (Carte Nationale d'Identité, CNI)
-* Französische Sozialversicherungsnummer (NIRPP)
-* Französische Reisepassnummer
 * Französische Führerscheinnummer
+* Französische Krankenversicherungsnummer
+* Französischer Personalausweis (Carte Nationale d'Identité, CNI)
+* Französische Reisepassnummer
+* Französische Sozialversicherungsnummer (NIRPP)
+* Französische Steueridentifikationsnummer (SPI)
+* Französische Umsatzsteuer-Identifikationsnummer
 
 Deutschland
+* Deutsche Führerscheinnummer
 * Deutsche Personalausweisnummer
 * Deutsche Reisepassnummer
-* Deutsche Führerscheinnummer
+* Deutsche Steueridentifikationsnummer
+* Deutsche Umsatzsteuer-Identifikationsnummer
 
 Griechenland 
 * Griechische Personalausweisnummer
+* Griechische Steueridentifikationsnummer
 
 Hongkong
 * ID-Kartennummer aus Hongkong (HKID)
+
+Ungarn
+* Ungarische nationale Identifikationsnummer
+* Ungarische Steueridentifikationsnummer
+* Ungarische Umsatzsteuer-Identifikationsnummer
 
 Indien
 * Indische PAN (Permanent Account Number)
@@ -123,23 +154,47 @@ Israel
 
 Italien
 * Italienische Führerscheinnummer
+* Italienische Steuernummer
+* Italienische Umsatzsteuer-Identifikationsnummer
 
 Japan
+* Japanische Bankkontonummer
+* Japanische Führerscheinnummer
+* Japanische „Meine Nummer“, persönlich
+* Japanische „Meine Nummer“, geschäftlich
 * Japanische Melderegisternummer
 * Japanische Aufenthaltskartennummer
-* Japanische Führerscheinnummer
-* Sozialversicherungsnummer (SIN)
+* Japanische Sozialversicherungsnummer (SIN)
 * Japanische Reisepassnummer
-* Japanische Bankkontonummer
+
+Lettland
+* Lettischer persönlicher Code
+
+Litauen
+* Litauischer persönlicher Code
+
+Luxemburg
+* Luxemburgische nationale Identifikationsnummer (natürliche Personen)
+* Luxemburgische nationale Identifikationsnummer (juristische Personen)
 
 Malaysia
 * Malaysische ID-Kartennummer
 
+Malta
+* Maltesische ID-Kartennummer
+* Maltesische Steueridentifikationsnummer
+
 Niederlande
 * Niederländische persönliche Identifikationsnummer (BSN)
+* Niederländische Steueridentifikationsnummer
+* Niederländische Umsatzsteuer-Identifikationsnummer
 
 Neuseeland
+* Neuseeländische Bankkontonummer
+* Neuseeländische Führerscheinnummer
+* Neuseeländische Steuernummer
 * Neuseeländische Nummer des Gesundheitsministeriums
+* Neuseeländische Sozialversicherungsnummer
 
 Norwegen
 * Norwegische ID-Nummer
@@ -151,15 +206,32 @@ Polen
 * Polnische Identitätskarte
 * Nationale polnische ID-Nummer (PESEL)
 * Polnische Reisepassnummer
+* Polnische REGON-Nummer
+* Polnische Steueridentifikationsnummer
 
 Portugal 
 * Portugiesische ID-Kartennummer (Citizen Card)
+* Portugiesische Steueridentifikationsnummer
+
+Rumänien
+* Rumänische Personenidentifikationsnummer (CNP)
+
+Russland
+* Rumänische Reisepassnummer (Inland)
+* Rumänische Reisepassnummer (International)
 
 Saudi-Arabien
 * Nationale saudi-arabische ID-Nummer
 
 Singapur
-* Nationale Registrierungs-ID-Kartennummer (NRIC) für Singapur
+* Singapur: Nationale Registrierungs-ID-Kartennummer (NRIC)
+
+Slowakei 
+* Slowakische Personennummer
+
+Slowenien
+* Slowenische Steueridentifikationsnummer
+* Slowenische eindeutige Personenidentifkationsnummer
 
 Südafrika
 * Südafrikanische ID-Nummer
@@ -168,11 +240,17 @@ Südkorea
 * Südkoreanische Einwohnerregistrierungsnummer (Resident Registration Number)
 
 Spanien 
+* Spanischer Personalausweis (DNI)
 * Spanische Sozialversicherungsnummer (SSN)
+* Spanische Steueridentifikationsnummer
 
 Schweden
 * Nationale schwedische ID-Nummer
 * Schwedische Reisepassnummer
+* Schwedische Steueridentifikationsnummer
+
+Schweiz
+* Schweizerische Sozialversicherungsnummer (AHV)
 
 Taiwan 
 * Nationale taiwanesische ID-Nummer
@@ -182,18 +260,25 @@ Taiwan
 Thailand
 * Thailändische Personenidentifizierungscode
 
+Türkei
+* Türkische nationale Identifikationsnummer
+
+Ukraine
+* Ukrainische Reisepassnummer (Inland)
+* Ukrainische Reisepassnummer (International)
+
 United Kingdom
-* Reisepassnummer
 * UK- Führerscheinnummer
-* UK- Sozialversicherungsnummer (NINO)
-* UK- Gesundheitsdienstnummer
 * UK- Wählerverzeichnisnummer
-* US-/UK- Reisepassnummer
+* UK- National Health Service-Nummer (NHS)
+* UK- Sozialversicherungsnummer (NINO)
+* UK- Reisepassnummer
+* UK- Eindeutige Steuerzahlerreferenznummer
 
 USA
 * USA US-Sozialversicherungsnummer (Social Security Number, SSN)
 * USA Führerscheinnummer
-* US-/UK- Reisepassnummer
+* USA Reisepassnummer
 * USA Steuernummer (Individual Taxpayer Identification Number, ITIN)
-* DEA-Nummer
-* US-Bankkontonummer
+* USA DEA-Nummer
+* USA Bankkontonummer

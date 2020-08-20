@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 07/24/2020
+ms.date: 08/06/2020
 ms.author: b-juche
-ms.openlocfilehash: e19db61efbf93e3191d5780d07952f3d195c7a59
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: e5d7f30f26be999ae43ce13aa31fc5393d049529
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533046"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88078953"
 ---
 # <a name="dynamically-change-the-service-level-of-a-volume"></a>Dynamisches Ändern der Dienstebene eines Volumes
 
@@ -33,8 +33,7 @@ Der Kapazitätspool, in den Sie das Volume verschieben möchten, muss bereits vo
 
 * Nachdem das Volume in einen anderen Kapazitätspool verschoben wurde, haben Sie keinen Zugriff mehr auf die Aktivitätsprotokolle und Volumenmetriken des vorherigen Volumes. Das Volume beginnt in dem neuen Kapazitätspool mit neuen Aktivitätsprotokollen und Metriken.
 
-* Wenn Sie ein Volume in einen Kapazitätspool mit einem höheren Servicelevel verschieben (z. B. eine Verschiebung vom Servicelevel *Standard* in *Premium* oder  *Ultra*), müssen Sie mindestens sieben Tage warten, bevor Sie das Volume in einen Kapazitätspool mit einem niedrigeren Servicelevel erneut verschieben können (z. B. eine Verschiebung von *Ultra* in *Premium* oder *Standard*).  
-Diese Wartezeit ist nicht erforderlich, wenn Sie das Volume in einen Kapazitätspool verschieben, der denselben oder einen niedrigeren Servicelevel besitzt.
+* Wenn Sie ein Volume in einen Kapazitätspool mit einem höheren Servicelevel verschieben (z. B. eine Verschiebung vom Servicelevel *Standard* nach *Premium* oder  *Ultra*), müssen Sie mindestens sieben Tage warten, bevor Sie dieses Volume wieder in einen Kapazitätspool mit einem niedrigeren Servicelevel *zurück* verschieben können (z. B. eine Verschiebung von *Ultra* nach *Premium* oder *Standard*).  
 
 ## <a name="register-the-feature"></a>Registrieren der Funktion
 
@@ -49,7 +48,7 @@ Die Funktion zum Verschieben eines Volumes in einen anderen Kapazitätspool befi
 2. Überprüfen Sie den Status der Funktionsregistrierung: 
 
     > [!NOTE]
-    > Der **RegistrationState** kann einige Minuten lang den Status `Registering` aufweisen, bevor der Wechsel in `Registered` erfolgt. Warten Sie, bis der Status **Registriert** lautet, bevor Sie fortfahren.
+    > Der **RegistrationState** kann bis zu 60 Minuten lang den Wert `Registering` aufweisen, bevor er sich in `Registered` ändert. Warten Sie, bis der Status **Registriert** lautet, bevor Sie fortfahren.
 
     ```azurepowershell-interactive
     Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFTierChange

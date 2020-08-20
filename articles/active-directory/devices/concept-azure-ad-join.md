@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3839c7b87e5d07368727d037b585965dce91303a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 31374b851d90e43e7380024923c3ad025859b7a0
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87058103"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87923729"
 ---
 # <a name="azure-ad-joined-devices"></a>In Azure AD eingebundene Geräte
 
@@ -28,7 +28,7 @@ Die Einbindung in Azure AD ist für Organisationen bestimmt, die auf eine Cloud
 | **Hauptzielgruppe** | Geeignet für Cloud-Only- sowie Hybridorganisationen |
 |   | Anwendbar für alle Benutzer einer Organisation. |
 | **Gerätebesitz** | Organization |
-| **Betriebssysteme** | Alle Windows 10-Geräte |
+| **Betriebssysteme** | Alle Windows 10-Geräte mit Ausnahme von Windows 10 Home |
 |   | [Virtuelle Windows Server 2019-Computer, die in Azure ausgeführt werden](howto-vm-sign-in-azure-ad-windows.md) (Server Core wird nicht unterstützt.) |
 | **Bereitstellung** | Self-Service: Windows-Willkommensseite oder Windows-Einstellungen |
 |   | Massenregistrierung |
@@ -62,7 +62,7 @@ Azure AD Join ist zwar hauptsächlich für Unternehmen vorgesehen, die über kei
 - Sie möchten eine Gruppe von Benutzern in Azure AD anstatt in Active Directory verwalten. Dieses Szenario kann beispielsweise für Saisonkräfte, Auftragnehmer oder Kursteilnehmer gelten.
 - Sie möchten Beitrittsfunktionen für Mitarbeiter in entfernten Niederlassungen mit eingeschränkter lokaler Infrastruktur bereitstellen.
 
-Sie können in Azure AD eingebundene Geräte für Windows 10-Geräte konfigurieren.
+Sie können in Azure AD eingebundene Geräte für alle Windows 10-Geräte mit Ausnahme von Windows 10 Home konfigurieren.
 
 Ziel von in Azure AD eingebundenen Geräten ist die Vereinfachung folgender Elemente:
 

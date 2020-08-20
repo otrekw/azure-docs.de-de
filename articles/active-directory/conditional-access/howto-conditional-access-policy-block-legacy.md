@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: how-to
-ms.date: 05/26/2020
+ms.date: 08/07/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 15e3c5ba72ff7b97e03cd7aa2b68eeffb2aa7882
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: b7a4693dabc62ec03897ccc46398bdff77118fe4
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87283009"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88032083"
 ---
 # <a name="conditional-access-block-legacy-authentication"></a>Bedingter Zugriff: Blockieren älterer Authentifizierungsmethoden
 
@@ -36,8 +36,8 @@ Durch Ausführen der folgenden Schritte können Sie eine Richtlinie für bedingt
    1. Wählen Sie **Fertig**aus.
 1. Wählen Sie unter **Cloud-Apps oder -Aktionen** die Option **Alle Cloud-Apps** aus.
    1. Wählen Sie **Fertig**aus.
-1. Unter **Bedingungen** > **Client-Apps (Vorschau)** unter der Option **Wählen Sie die Client-Apps aus, auf die diese Richtlinie angewendet wird.** :
-   1. Aktivieren Sie nur die Kontrollkästchen **Mobile Apps und Desktopclients** > **Andere Clients**.
+1. Legen Sie unter **Bedingungen** > **Client-Apps** die Option **Konfigurieren** auf **Ja** fest.
+   1. Aktivieren Sie nur die Kontrollkästchen **Exchange ActiveSync-Clients** und **Andere Clients**.
    1. Wählen Sie **Fertig**aus.
 1. Wählen Sie unter **Zugriffssteuerung** > **Erteilen** die Option **Zugriff blockieren** aus.
    1. Wählen Sie **Auswählen**.

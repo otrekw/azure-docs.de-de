@@ -1,6 +1,6 @@
 ---
 title: Azure Operational Security – Übersicht | Microsoft-Dokumentation
-description: Dieser Artikel bietet eine Übersicht über die Azure-Betriebssicherheit.
+description: In dieser Übersicht erfahren Sie mehr über die Betriebssicherheit in Azure. Die Betriebssicherheit umfasst Dienste, Steuerelemente und Features für den Schutz von Assets.
 services: security
 documentationcenter: na
 author: unifycloud
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/31/2019
 ms.author: tomsh
-ms.openlocfilehash: 00a71fec9c0bfc1db45eee7129b7c2a8adaef0fa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f3ec284de3d43e75bd0832b1d98bb9d319a7ca0e
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83674232"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87925310"
 ---
 # <a name="azure-operational-security-overview"></a>Azure Operational Security – Übersicht
 
@@ -65,15 +65,15 @@ Weitere Informationen finden Sie in der [Tabelle mit den Azure Backup-Komponente
 Azure AD enthält auch eine vollständige Suite mit [Funktionen zur Identitätsverwaltung](/azure/security/security-identity-management-overview#security-monitoring-alerts-and-machine-learning-based-reports), wie z.B. die folgenden:
 
 - [Multi-Factor Authentication](/azure/multi-factor-authentication/multi-factor-authentication)
-- [Self-Service-Kennwortverwaltung](https://azure.microsoft.com/resources/videos/self-service-password-reset-azure-ad/)
+- [Self-service password management (Self-Service-Kennwortverwaltung)](https://azure.microsoft.com/resources/videos/self-service-password-reset-azure-ad/)
 - [Self-Service-Gruppenverwaltung](/azure/active-directory/active-directory-passwords-update-your-own-password)
 - [Verwaltung privilegierter Konten](/azure/active-directory/active-directory-privileged-identity-management-configure)
-- [Rollenbasierte Zugriffssteuerung](/azure/role-based-access-control/overview)
+- [Rollenbasierte Zugriffssteuerung von Azure (Azure-RBAC)](/azure/role-based-access-control/overview)
 - [Überwachung der Anwendungsnutzung](/azure/active-directory/connect-health/active-directory-aadconnect-health)
 - [Umfassende Überwachung](/azure/active-directory/active-directory-reporting-activity-audit-logs)
 - [Sicherheitsüberwachung und -warnungen](/azure/operations-management-suite/oms-security-responding-alerts)
 
-Mit Azure Active Directory können Sie für alle Anwendungen, die Sie für Ihre Partner und Kunden (Geschäftskunden oder Endverbraucher) veröffentlichen, dieselben Identitäts- und Zugriffsverwaltungsfunktionen verwenden. Dadurch können Sie die Betriebskosten erheblich reduzieren.
+Mit Azure Active Directory können Sie für alle Anwendungen, die Sie für Ihre Partner und Kunden (Geschäftskunden oder Endverbraucher) veröffentlichen, dieselben Identitäts- und Zugriffsverwaltungsfunktionen verwenden.  Dadurch können Sie die Betriebskosten erheblich reduzieren.
 
 ## <a name="azure-security-center"></a>Azure Security Center
 
@@ -87,7 +87,7 @@ Mit Azure Active Directory können Sie für alle Anwendungen, die Sie für Ihre 
 - Validierung der Datenträgerverschlüsselung
 - Netzwerkbasierte Angriffe
 
-Security Center verwendet die [rollenbasierte Zugriffssteuerung](/azure/role-based-access-control/role-assignments-portal) (Role-Based Access Control, RBAC). RBAC stellt [integrierte Rollen](../../role-based-access-control/built-in-roles.md) bereit, die Benutzern, Gruppen und Diensten in Azure zugewiesen werden können.
+Security Center verwendet die [rollenbasierte Zugriffssteuerung von Azure (Azure Role-Based Access Control, Azure RBAC)](/azure/role-based-access-control/role-assignments-portal). RBAC stellt [integrierte Rollen](../../role-based-access-control/built-in-roles.md) bereit, die Benutzern, Gruppen und Diensten in Azure zugewiesen werden können.
 
 Security Center bewertet die Konfiguration Ihrer Ressourcen, um die Sicherheitsprobleme und Sicherheitsrisiken zu identifizieren. In Security Center werden Ihnen nur dann Informationen zu einer Ressource angezeigt, wenn Ihnen für das Abonnement oder die Ressourcengruppe, zu der eine Ressource gehört, die Rolle „Besitzer“, „Mitwirkender“ oder „Leser“ zugewiesen ist.
 
@@ -100,7 +100,7 @@ Security Center verwendet den Microsoft Monitoring Agent. Dies ist der gleiche A
 
 Leistungsprobleme in Ihrer Cloud-App können Ihr Unternehmen beeinträchtigen. Durch mehrere miteinander verbundene Komponenten und häufige Versionswechsel können Leistungseinbußen jederzeit vorkommen. Bei der Entwicklung einer App werden von Ihren Benutzern in der Regel Probleme entdeckt, die Sie beim Testen nicht gefunden haben. Sie sollten sofort über diese Probleme Bescheid wissen und über Tools zu deren Diagnose und Beseitigung verfügen.
 
-[Azure Monitor](/azure/monitoring-and-diagnostics/monitoring-overview-azure-monitor) ist ein grundlegendes Tool zum Überwachen von Diensten, die in Azure ausgeführt werden. Dieses Tool bietet Ihnen Daten auf Infrastrukturebene über den Durchsatz eines Diensts und über dessen Umgebung. Wenn Sie Ihre Apps vollständig in Azure verwalten und entscheiden müssen, ob Sie Ihre Ressourcen hoch- oder herunterskalieren, bietet Azure Monitor den richtigen Ausgangspunkt.
+[Azure Monitor](/azure/monitoring-and-diagnostics/monitoring-overview-azure-monitor) ist ein grundlegendes Tool zum Überwachen von Diensten, die in Azure ausgeführt werden. Dieses Tool bietet Ihnen Daten auf Infrastrukturebene über den Durchsatz eines Diensts und über dessen Umgebung. Wenn Sie Ihre Apps vollständig in Azure verwalten und entscheiden müssen, ob Sie Ihre Ressourcen zentral hoch- oder herunterskalieren, bietet Azure Monitor den richtigen Ausgangspunkt.
 
 Sie können anhand der Überwachungsdaten auch umfassende Erkenntnisse zu Ihrer Anwendung gewinnen. Mithilfe dieser Kenntnisse können Sie die Leistung oder Wartungsfreundlichkeit der Anwendung verbessern oder Aktionen automatisieren, die andernfalls manuell ausgeführt werden müssten.
 
@@ -118,7 +118,7 @@ Windows-Ereignissystemprotokolle sind eine Kategorie von Diagnoseprotokollen fü
 
 Diagnoseprotokolle unterscheiden sich vom [Aktivitätsprotokoll](/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs). Das Aktivitätsprotokoll bietet Einblicke in Vorgänge, die für Ressourcen Ihres Abonnements durchgeführt wurden. Diagnoseprotokolle bieten Einblicke in Vorgänge, die Ihre Ressource selbst ausgeführt hat.
 
-### <a name="metrics"></a>metrics
+### <a name="metrics"></a>Metriken
 
 Azure Monitor stellt Telemetriedaten bereit, mit denen Sie sich einen Überblick über die Leistung und Integrität Ihrer Workloads in Azure verschaffen können. Die wichtigsten Arten von Azure-Telemetriedaten sind [Metriken](/azure/monitoring-and-diagnostics/monitoring-overview-metrics) (auch Leistungsindikatoren genannt), die von den meisten Azure-Ressourcen gesendet werden. Azure Monitor bietet Ihnen verschiedene Möglichkeiten, diese Metriken für die Überwachung und Problembehandlung zu konfigurieren und zu nutzen.
 

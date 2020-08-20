@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 03/06/2020
 ms.topic: how-to
-ms.openlocfilehash: 9ddf4641cfba2fb9704c2354e01299df368eb2ac
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: b4881ee52b39539bfc29f62d7c6773da371a3ea5
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87432018"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067170"
 ---
 # <a name="configure-the-model-conversion"></a>Konfigurieren der Modellkonvertierung
 
@@ -49,6 +49,12 @@ Für den Inhalt der Datei sollte das folgende JSON-Schema erfüllt sein:
             },
             "minItems": 3,
             "maxItems": 3
+        },
+        "metadataKeys": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
         }
     },
     "additionalProperties" : false
@@ -130,6 +136,12 @@ Im Modus `none` fällt der geringste Runtime-Mehraufwand an, und es werden etwas
 ### <a name="coordinate-system-overriding"></a>Überschreibung des Koordinatensystems
 
 * `axis`: Dient zum Außerkraftsetzen der Einheitenvektoren des Koordinatensystems. Die Standardwerte lauten wie folgt: `["+x", "+y", "+z"]`. Theoretisch verfügt das FBX-Format über einen Header, in dem diese Vektoren definiert sind, und diese Informationen werden vom Konvertierungsmodul zum Transformieren der Szene verwendet. Vom glTF-Format wird auch ein festes Koordinatensystem definiert. In der Praxis enthalten einige Objekte entweder fehlerhafte Informationen im Header oder wurden mit einer anderen Koordinatensystemkonvention gespeichert. Mit dieser Option können Sie das Koordinatensystem außer Kraft setzen, um dies zu lösen. Beispiel: Mit `"axis" : ["+x", "+z", "-y"]` werden die Z- und die Y-Achse vertauscht, und die „Händigkeit“ des Koordinatensystems wird beibehalten, indem die Richtung der Y-Achse invertiert wird.
+
+### <a name="node-meta-data"></a>Knotenmetadaten
+
+* `metadataKeys`: Ermöglicht die Angabe von bestimmten Schlüsseln für Eigenschaften von Knotenmetadaten, die Sie im Konvertierungsergebnis beibehalten möchten. Sie können genaue Schlüssel oder Platzhalterschlüssel angeben. Platzhalterschlüssel weisen das Format „ABC*“ auf und stimmen mit allen Schlüsseln überein, die mit „ABC“ beginnen. Die unterstützten Metadatenwerttypen sind `bool`, `int`, `float` und `string`.
+
+    Bei GLTF-Dateien stammen diese Daten aus dem [extras-Objekt auf Knoten](https://github.com/KhronosGroup/glTF/tree/master/specification/2.0#nodeextras). Bei FBX-Dateien stammen diese Daten aus den `Properties70`-Daten in `Model nodes`. Weitere Informationen finden Sie in der Dokumentation Ihres Tools für 3D-Medienobjekte.
 
 ### <a name="no-loc-textvertex-format"></a>:::no-loc text="Vertex":::-Format
 

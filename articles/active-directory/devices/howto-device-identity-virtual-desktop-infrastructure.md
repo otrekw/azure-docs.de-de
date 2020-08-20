@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7b431cee3b8e5fc168dec2766442d6f6b9869d1e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0dde9d8b50233c3c4033daf618e0e626c0174b0c
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74900370"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87903152"
 ---
 # <a name="device-identity-and-desktop-virtualization"></a>Geräteidentität und Desktopvirtualisierung
 
@@ -53,10 +53,10 @@ Bevor Sie die Geräteidentitäten in Azure AD für Ihre VDI-Umgebung konfigurier
 |   |   |   | Nicht beständig | Nein |
 |   | Verwaltet | Aktuelle Windows-Geräte | Beständig | Nein |
 |   |   |   | Nicht beständig | Nein |
-| Bei Azure AD registriert | Im Verbund | Aktuelle Windows-Geräte | Beständig | Nein |
-|   |   |   | Nicht beständig | Nein |
-|   | Verwaltet | Aktuelle Windows-Geräte | Beständig | Nein |
-|   |   |   | Nicht beständig | Nein |
+| Bei Azure AD registriert | Im Verbund | Aktuelle Windows-Geräte | Beständig | Nicht zutreffend |
+|   |   |   | Nicht beständig | Nicht zutreffend |
+|   | Verwaltet | Aktuelle Windows-Geräte | Beständig | Nicht zutreffend |
+|   |   |   | Nicht beständig | Nicht zutreffend |
 
 \* Eine Identitätsinfrastruktur-Umgebung des Typs **Im Verbund** ist eine Umgebung mit einem Identitätsanbieter wie AD FS oder einem Drittanbieter.
 
@@ -77,7 +77,7 @@ Wenn Sie das Systemvorbereitungstool (sysprep.exe) und ein Image einer niedriger
 
 Wenn Sie zusätzliche VMs mit einer Momentaufnahme des virtuellen Computers erstellen, stellen Sie sicher, dass diese Momentaufnahme nicht von einem Computer stammt, der bereits als Azure AD-Hybrideinbindung bei Azure AD registriert ist.
 
-Bei der Bereitstellung einer nicht beständigen VDI-Plattform müssen IT-Administratoren besonders auf die Verwaltung veralteter Geräte in Azure AD achten. Microsoft empfiehlt IT-Administratoren, den folgenden Leitfaden zu implementieren. Versäumnisse in diesem Bereich führen dazu, dass das Verzeichnis eine Vielzahl veralteter Geräte mit Azure AD-Hybrideinbindung enthält, die von der nicht beständigen VDI-Plattform aus registriert wurden.
+Die Azure AD Hybrid-Einbindung für eine nicht persistente VDI wird in aktuellen Windows-Versionen nicht unterstützt. Bei der Bereitstellung einer nicht persistenten VDI für ältere Windows-Versionen müssen IT-Administratoren besonders auf die Verwaltung veralteter Geräte in Azure AD achten. Microsoft empfiehlt IT-Administratoren, den folgenden Leitfaden zu implementieren. Versäumnisse in diesem Bereich führen dazu, dass das Verzeichnis eine Vielzahl veralteter Geräte mit Azure AD-Hybrideinbindung enthält, die von der nicht beständigen VDI-Plattform aus registriert wurden.
 
 - Erstellen und verwenden Sie ein Präfix für den Anzeigenamen des Computers, das darauf hinweist, dass der Desktop VDI-basiert ist.
 - Implementieren Sie den folgenden Befehl als Teil des Abmeldeskripts. Mit diesem Befehl wird der bestmögliche Aufruf an Azure AD zum Löschen des Geräts ausgegeben.

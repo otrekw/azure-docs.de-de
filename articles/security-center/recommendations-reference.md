@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/05/2020
 ms.author: memildin
-ms.openlocfilehash: 9d03866858c9f8af521b27c5e36f882d9e0e177d
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: 9df4ac8b9dc3385868a72d31da93bec00eeb57bf
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87404972"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88042869"
 ---
 # <a name="security-recommendations---a-reference-guide"></a>Sicherheitsempfehlungen: Referenzhandbuch
 
@@ -160,8 +160,8 @@ Ihre Sicherheitsbewertung basiert auf der Anzahl der Security Center-Empfehlunge
 |**Transparent Data Encryption für SQL-Datenbanken aktivieren**|Aktivieren Sie die transparente Datenverschlüsselung, um ruhende Daten zu schützen und Konformitätsanforderungen zu erfüllen.<br>(Zugehörige Richtlinie: Für SQL-Datenbanken muss Transparent Data Encryption aktiviert sein)|Niedrig|**J**|SQL|
 |**Für SQL-Datenbank sollte die Sicherheitsrisikobewertung aktiviert sein**|Die Sicherheitsrisikobewertung kann Sie dabei unterstützen, potenzielle Sicherheitsrisiken für Datenbanken zu erkennen, nachzuverfolgen und zu beheben.<br>(Zugehörige Richtlinie: Für Ihre SQL Server-Instanzen muss eine Sicherheitsrisikobewertung aktiviert sein)|High|**J**|SQL|
 |**Für SQL Managed Instance muss eine Sicherheitsrisikobewertung aktiviert sein**|Die Sicherheitsrisikobewertung kann Sie dabei unterstützen, potenzielle Sicherheitsrisiken für Datenbanken zu erkennen, nachzuverfolgen und zu beheben.<br>(Zugehörige Richtlinie: Für SQL Managed Instance muss eine Sicherheitsrisikobewertung aktiviert sein)|High|**J**|SQL|
-|**Sicherheitsrisiken für SQL Server-Instanzen auf Ihren Computern müssen entschärft werden**|Die SQL-Sicherheitsrisikobewertung überprüft Ihre Datenbank auf Sicherheitsrisiken und zeigt Abweichungen von bewährten Methoden wie Fehlkonfigurationen, übermäßige Berechtigungen und ungeschützte vertrauliche Daten an. Durch das Beseitigen der Sicherheitsrisiken kann die Sicherheit Ihrer Datenbank deutlich verbessert werden.|Hoch|N|SQL|
-|**Sicherheitsrisiken in SQL-Datenbanken sollten beseitigt werden**|Die SQL-Sicherheitsrisikobewertung überprüft Ihre Datenbank auf Sicherheitsrisiken und zeigt Abweichungen von bewährten Methoden wie z. B. Fehlkonfigurationen, übermäßige Berechtigungen und ungeschützte vertrauliche Daten an. Durch das Beseitigen der Sicherheitsrisiken kann die Sicherheit Ihrer Datenbank deutlich verbessert werden.<br>(Zugehörige Richtlinie: Sicherheitsrisiken in Ihren SQL-Datenbanken müssen entschärft werden)|Hoch|N|SQL|
+|**Ergebnisse der Sicherheitsrisikobewertung in Ihren SQL Server-Instanzen auf Computern müssen beseitigt werden (Vorschau)**|Die SQL-Sicherheitsrisikobewertung überprüft Ihre Datenbank auf Sicherheitsrisiken und zeigt Abweichungen von Best Practices wie Fehlkonfigurationen, übermäßige Berechtigungen und ungeschützte vertrauliche Daten an. Durch das Beseitigen der Sicherheitsrisiken kann die Sicherheit Ihrer Datenbank deutlich verbessert werden.|Hoch|N|SQL|
+|**Ergebnisse der Sicherheitsrisikobewertung in Ihren SQL Datenbanken müssen beseitigt werden**|Die SQL-Sicherheitsrisikobewertung überprüft Ihre Datenbank auf Sicherheitsrisiken und zeigt Abweichungen von Best Practices wie Fehlkonfigurationen, übermäßige Berechtigungen und ungeschützte vertrauliche Daten an. Durch das Beseitigen der Sicherheitsrisiken kann die Sicherheit Ihrer Datenbank deutlich verbessert werden.<br>(Zugehörige Richtlinie: Sicherheitsrisiken in Ihren SQL-Datenbanken müssen entschärft werden)|Hoch|N|SQL|
 ||||||
 
 

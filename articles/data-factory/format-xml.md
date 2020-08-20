@@ -7,16 +7,17 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 07/16/2020
+ms.date: 08/10/2020
 ms.author: jingwang
-ms.openlocfilehash: 49c44b17247f14b8826df7652dc9eb025953b748
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6c0b03db281a054410b3c4f44e278dbccf32029f
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87095041"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88042682"
 ---
 # <a name="xml-format-in-azure-data-factory"></a>XML-Format in Azure Data Factory
+
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Verwenden Sie diesen Artikel, wenn Sie die **XML-Dateien analysieren** möchten. 
@@ -86,7 +87,7 @@ Unterstützte **XML-Leseeinstellungen** unter `formatSettings`:
 | validationMode | Gibt an, ob das XML-Schema validiert werden soll.<br>Zulässige Werte sind **none** (Standard, keine Validierung), **xsd** (Validierung mithilfe von XSD) und **dtd** (Validierung mithilfe von DTD). | Nein |
 | namespacePrefixes | Namespace-URI für die Präfixzuordnung, die zum Benennen von Feldern beim Auswerten der XML-Datei verwendet wird.<br/>Wenn eine XML-Datei einen Namespace aufweist und der Namespace aktiviert ist, entspricht der Feldname standardmäßig dem im XML-Dokument.<br>Wenn ein Element für den Namespace-URI in dieser Zuordnung definiert ist, lautet der Feldname `prefix:fieldName`. | Nein |
 | compressionProperties | Eine Gruppe von Eigenschaften zur Festlegung, wie Daten bei einem bestimmten Komprimierungscodec dekomprimiert werden können. | Nein       |
-| preserveZipFileNameAsFolder<br>(*unter `compressionProperties`* ) | Diese Eigenschaft gilt, wenn das Eingabedataset mit der **ZipDeflate**-Komprimierung konfiguriert wurde. Sie gibt an, ob der Name der ZIP-Quelldatei während Kopiervorgängen als Ordnerstruktur beibehalten werden soll. Wenn die Eigenschaft auf „True“ festgelegt wird (Standardeinstellung), werden entzippte Dateien von Data Factory in `<path specified in dataset>/<folder named as source zip file>/` geschrieben. Lautet der Wert „False“, werden entzippte Dateien von Data Factory direkt in `<path specified in dataset>` geschrieben.  | Nein |
+| preserveZipFileNameAsFolder<br>(*unter `compressionProperties`* ) | Diese Eigenschaft gilt, wenn das Eingabedataset mit der **ZipDeflate**-Komprimierung konfiguriert wurde. Sie gibt an, ob der Name der ZIP-Quelldatei während Kopiervorgängen als Ordnerstruktur beibehalten werden soll.<br>– Lautet der Wert **TRUE** (Standard), schreibt Data Factory entzippte Dateien in `<path specified in dataset>/<folder named as source zip file>/`.<br>– Lautet der Wert **FALSE**, schreibt Data Factory entzippte Dateien direkt in `<path specified in dataset>`. Stellen Sie sicher, dass keine doppelten Dateinamen in unterschiedlichen ZIP-Quelldateien vorliegen, um ein „Racing“ oder ein unerwartetes Verhalten zu vermeiden.  | Nein |
 
 ## <a name="mapping-data-flow-properties"></a>Eigenschaften von Mapping Data Flow
 

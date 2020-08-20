@@ -1,19 +1,17 @@
 ---
 title: Troubleshooting für den Remotedesktopclient in Windows Virtual Desktop – Azure
 description: Informationen zum Beheben von Problemen beim Einrichten von Clientverbindungen in einer Windows Virtual Desktop-Mandantenumgebung
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: troubleshooting
-ms.date: 03/31/2020
+ms.date: 08/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: f91e68ec2bd4b0b5400ee3e8e380d91ea6f31f36
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: d1862e2e0dd9b1e566c6ee5d01a09213a0be4f8e
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87291327"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88134478"
 ---
 # <a name="troubleshoot-the-remote-desktop-client"></a>Troubleshooting für den Remotedesktopclient
 
@@ -43,13 +41,13 @@ nslookup rdweb.wvd.microsoft.com
 
 Versuchen Sie, eine Verbindung mit einem anderen Client herzustellen, z. B. dem Remotedesktopclient für Windows 7 oder Windows 10, und überprüfen Sie, ob Sie den Webclient öffnen können.
 
-### <a name="opening-another-site-fails"></a>Beim Öffnen einer anderen Seite tritt ein Fehler auf.
+### <a name="cant-open-other-websites-while-connected-to-the-web-client"></a>Bei vorhandener Verbindung mit dem Webclient können keine anderen Websites geöffnet werden
 
-Dies wird normalerweise durch Netzwerkverbindungsprobleme oder einen Netzwerkausfall verursacht. Es wird empfohlen, sich an den Netzwerksupport zu wenden.
+Wenn Sie keine anderen Websites öffnen können, während eine Verbindung mit dem Webclient besteht, liegen möglicherweise Netzwerkverbindungsprobleme oder ein Netzwerkausfall vor. Es wird empfohlen, sich an den Netzwerksupport zu wenden.
 
-### <a name="nslookup-cannot-resolve-the-name"></a>Nslookup kann den Namen nicht auflösen.
+### <a name="nslookup-cant-resolve-the-name"></a>nslookup kann den Namen nicht auflösen
 
-Dies wird normalerweise durch Netzwerkverbindungsprobleme oder einen Netzwerkausfall verursacht. Es wird empfohlen, sich an den Netzwerksupport zu wenden.
+Wenn nslookup den Namen nicht auflösen kann, liegen möglicherweise Netzwerkverbindungsprobleme oder ein Netzwerkausfall vor. Es wird empfohlen, sich an den Netzwerksupport zu wenden.
 
 ### <a name="your-client-cant-connect-but-other-clients-on-your-network-can-connect"></a>Ihr Client kann keine Verbindung herstellen, andere Clients in Ihrem Netzwerk hingegen schon.
 
@@ -60,11 +58,13 @@ Wenn bei der Verwendung des Webclients Probleme mit Ihrem Browser auftreten oder
 3. Löschen Sie den Browsercache. Weitere Informationen finden Sie unter [Leeren des Browsercache für Ihren Browser](https://binged.it/2RKyfdU).
 4. Öffnen Sie den Browser im privaten Modus.
 
-## <a name="web-client-does-not-show-my-resources"></a>Der Webclient zeigt meine Ressourcen nicht an.
+## <a name="client-doesnt-show-my-resources"></a>Der Client zeigt meine Ressourcen nicht an
 
 Überprüfen Sie zunächst das Azure Active Directory-Konto, das Sie verwenden. Wenn Sie sich bereits mit einem anderen Azure Active Directory-Konto angemeldet haben als dem, das Sie für Windows Virtual Desktop verwenden möchten, sollten Sie sich entweder abmelden oder ein privates Browserfenster verwenden.
 
-Wenn Sie Windows Virtual Desktop (klassisch) verwenden, verwenden Sie den Webclientlink in [diesem Artikel](./virtual-desktop-fall-2019/connect-web-2019.md), um eine Verbindung zu Ihren Ressourcen herzustellen.
+Wenn Sie Windows Virtual Desktop (klassisch) verwenden, verwenden Sie den Webclientlink in [diesem Artikel](./virtual-desktop-fall-2019/connect-web-2019.md), um eine Verbindung mit Ihren Ressourcen herzustellen.
+
+Wenn das nicht funktioniert, stellen Sie sicher, dass Ihre App-Gruppe einem Arbeitsbereich zugeordnet ist.
 
 ## <a name="web-client-stops-responding-or-disconnects"></a>Der Webclient reagiert nicht mehr oder trennt die Verbindung.
 

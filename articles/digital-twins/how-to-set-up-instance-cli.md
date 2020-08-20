@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 287ee62acf3a078c4b47803060f61c9dd4134ab7
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: 3c7e4887610f30113b81421396500416d04c5e5e
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87408159"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88078494"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-cli"></a>Einrichten einer Azure Digital Twins-Instanz und der Authentifizierung (CLI)
 
@@ -24,8 +24,8 @@ In der vorliegenden Version dieses Artikels werden diese Schritte manuell nachei
 * Wenn Sie diese Schritte manuell mithilfe des Azure-Portals durchlaufen möchten, finden Sie weitere Informationen in der Portal-Version dieses Artikels: [*Verwenden Einrichten einer Instanz und der Authentifizierung (Portal)* ](how-to-set-up-instance-portal.md).
 * Ein Beispiel zur Ausführung einer automatisierten Einrichtung mit einem Bereitstellungsskript finden Sie in der Skriptversion dieses Artikels: [*Verwenden Einrichten einer Instanz und der Authentifizierung (per Skript)* ](how-to-set-up-instance-scripted.md).
 
-[!INCLUDE [digital-twins-setup-steps.md](../../includes/digital-twins-setup-steps.md)]
-[!INCLUDE [digital-twins-setup-role-cli.md](../../includes/digital-twins-setup-role-cli.md)]
+[!INCLUDE [digital-twins-setup-steps-prereq.md](../../includes/digital-twins-setup-steps-prereq.md)]
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="set-up-cloud-shell-session"></a>Einrichten einer Cloud Shell-Sitzung
 [!INCLUDE [Cloud Shell for Azure Digital Twins](../../includes/digital-twins-cloud-shell.md)]
@@ -46,7 +46,7 @@ Verwenden Sie im folgenden Befehl diese Werte, um die Instanz zu erstellen:
 az dt create --dt-name <name-for-your-Azure-Digital-Twins-instance> -g <your-resource-group> -l <region>
 ```
 
-### <a name="verify-success"></a>Überprüfen des erfolgreichen Abschlusses
+### <a name="verify-success-and-collect-important-values"></a>Überprüfen des Erfolgs und Erfassen wichtiger Werte
 
 Wenn die Instanz erfolgreich erstellt wurde, sieht das Ergebnis in Cloud Shell in etwa wie folgt aus und gibt Informationen über die von Ihnen erstellte Ressource aus:
 
@@ -63,20 +63,24 @@ Die Azure Digital Twins-Instanz ist jetzt einsatzbereit. Im nächsten Schritt st
 
 [!INCLUDE [digital-twins-setup-role-assignment.md](../../includes/digital-twins-setup-role-assignment.md)]
 
-Verwenden Sie den folgenden Befehl, um die Rolle zuzuweisen (dieser Vorgang muss von einem Besitzer des Azure-Abonnements ausgeführt werden):
+Verwenden Sie den folgenden Befehl, um die Rolle zuzuweisen (dieser Vorgang muss von einem Benutzer mit [ausreichenden Berechtigungen](#prerequisites-permission-requirements) im Azure-Abonnement ausgeführt werden). In diesem Befehl müssen Sie den *Benutzerprinzipalnamen* im Azure AD-Konto für den Benutzer übergeben, dem die Rolle zugewiesen werden soll. In den meisten Fällen entspricht dieser Name der E-Mail-Adresse des Benutzers im Azure AD-Konto.
 
 ```azurecli
-az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<Azure-AD-email-of-user-to-assign>" --role "Azure Digital Twins Owner (Preview)"
+az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<Azure-AD-user-principal-name-of-user-to-assign>" --role "Azure Digital Twins Owner (Preview)"
 ```
 
 Die Ausgabe dieses Befehls enthält Informationen zur erstellten Rollenzuweisung.
 
-> [!TIP]
-> Wenn Sie stattdessen den Fehler *400: BadRequest* erhalten, führen Sie den folgenden Befehl aus, um die *Objekt-ID* des Benutzers abzurufen:
-> ```azurecli
-> az ad user show --id <Azure-AD-email-of-user-to-assign> --query objectId
-> ```
-> Wiederholen Sie dann den Befehl zur Rollenzuweisung unter Verwendung der *Objekt-ID* des Benutzers anstelle seiner E-Mail-Adresse.
+> [!NOTE]
+> Wenn dieser Befehl den Fehler zurückgibt, dass die CLI **den Benutzer- oder Dienstprinzipal in der Graphdatenbank nicht findet**, gehen Sie folgendermaßen vor:
+>
+> Weisen Sie die Rolle stattdessen mithilfe der *Objekt-ID* des Benutzers zu. Dies kann bei Benutzern mit persönlichen [Microsoft-Konten (MSA)](https://account.microsoft.com/account) passieren. 
+>
+> Verwenden Sie die [Azure-Portalseite mit den Azure Active Directory-Benutzern](https://portal.azure.com/#blade/Microsoft_AAD_IAM/UsersManagementMenuBlade/AllUsers), um das Benutzerkonto auszuwählen und die zugehörigen Details zu öffnen. Kopieren Sie die *Objekt-ID* des Benutzers:
+>
+> :::image type="content" source="media/includes/user-id.png" alt-text="Ansicht der Benutzerseite im Azure-Portal mit Hervorhebung der GUID im Feld „Objekt-ID“" lightbox="media/includes/user-id.png":::
+>
+> Wiederholen Sie dann den list-Befehl für die Rollenzuweisung mit der *Objekt-ID* des Benutzers für den oben genannten Parameter `assignee`.
 
 ### <a name="verify-success"></a>Überprüfen des erfolgreichen Abschlusses
 
@@ -117,7 +121,7 @@ Navigieren Sie zu der eben erstellten Datei *manifest.json*, und wählen Sie „
 Führen Sie den folgenden Befehl aus, um eine App-Registrierung zu erstellen (und ersetzen Sie dabei die Platzhalter):
 
 ```azurecli
-az ad app create --display-name <name-for-your-app> --native-app --required-resource-accesses manifest.json --reply-url http://localhost
+az ad app create --display-name <name-for-your-app-registration> --native-app --required-resource-accesses manifest.json --reply-url http://localhost
 ```
 
 Im Folgenden finden Sie einen Auszug der Ausgabe dieses Befehls, der Informationen über die von Ihnen erstellte Registrierung anzeigt:

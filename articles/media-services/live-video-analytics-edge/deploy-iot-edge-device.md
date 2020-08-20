@@ -3,12 +3,12 @@ title: 'Bereitstellen von Live Video Analytics auf einem IoT Edge-Gerät: Azure'
 description: In diesem Artikel werden Schritte aufgelistet, die Sie bei der Bereitstellung von Live Video Analytics auf Ihrem IoT Edge-Gerät unterstützen. Dies können Sie beispielsweise tun, wenn Sie Zugriff auf einen lokalen Linux-Computer besitzen und/oder zuvor ein Azure Media Services-Konto erstellt haben.
 ms.topic: how-to
 ms.date: 04/27/2020
-ms.openlocfilehash: ea7a1026f42cd3d8745559bc195a89b7fbcb69a0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f031f679d8fe8e1c14b6a4086f5e1c37f15c7855
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87074459"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067895"
 ---
 # <a name="deploy-live-video-analytics-on-an-iot-edge-device"></a>Bereitstellen von Live Video Analytics auf einem IoT Edge-Gerät
 
@@ -86,8 +86,8 @@ Live Video Analytics in IoT Edge macht Eigenschaften von Modulzwillingen verfüg
 
 ### <a name="deploy-using-the-azure-portal"></a>Bereitstellen über das Azure-Portal
 
-Im Azure-Portal werden Sie durch das Erstellen eines Bereitstellungsmanifests und die Übertragung der Bereitstellung auf ein IoT Edge-Gerät per Pushvorgang geführt.
-Auswählen Ihres Geräts
+Im Azure-Portal werden Sie durch das Erstellen eines Bereitstellungsmanifests und die Übertragung der Bereitstellung auf ein IoT Edge-Gerät per Pushvorgang geführt.  
+#### <a name="select-your-device-and-set-modules"></a>Auswählen des Geräts und Festlegen von Modulen
 
 1. Melden Sie sich beim [Azure-Portal](https://ms.portal.azure.com/) an, und navigieren Sie zu Ihrem IoT Hub.
 1. Wählen Sie im Menü **IoT Edge** aus.
@@ -112,23 +112,12 @@ Ein Bereitstellungsmanifest ist ein JSON-Dokument, das beschreibt, welche Module
     > [!TIP]
     > Klicken Sie erst dann auf **Hinzufügen**, wenn Sie auf den Registerkarten **Moduleinstellungen**, **Optionen für Containererstellung** und **Einstellungen für Modulzwilling** Werte eingegeben haben, wie in dieser Vorgehensweise beschrieben.
     
-    > [!IMPORTANT]
+    > [!WARNING]
     > Bei Modulaufrufen für Azure IoT Edge muss die Groß-/Kleinschreibung beachtet werden. Notieren Sie sich die genaue Zeichenfolge, die Sie als Modulnamen verwenden.
 
 1. Öffnen Sie die Registerkarte **Umgebungsvariablen**.
    
-   Kopieren Sie den folgenden JSON-Code, und fügen Sie ihn in das Feld ein, um die Benutzer-ID und die Gruppen-ID anzugeben, die zum Speichern der Anwendungsdaten und der Video-Ausgaben verwendet werden sollen.
-    ```   
-   {
-        "LOCAL_USER_ID": 
-        {
-            "value": "1010"
-        },
-        "LOCAL_GROUP_ID": {
-            "value": "1010"
-        }
-    }
-     ``` 
+   Fügen Sie die folgenden Werte in die Eingabefelder für ![Umgebungsvariablen](./media/deploy-iot-edge-device/environment-variables.png) ein. 
 
 1. Öffnen Sie die Registerkarte **Optionen für Containererstellung**.
 
@@ -201,8 +190,8 @@ Ein Bereitstellungsmanifest ist ein JSON-Dokument, das beschreibt, welche Module
     "armEndpoint": "https://management.azure.com/",
     "allowUnsecuredEndpoints": true
     ```
-   [!Note]
-   Die Zwillingseigenschaft **allowUnsecuredEndpoints** wird für die Zwecke der Tutorials und Schnellstartanleitungen auf „true“ festgelegt.   
+   > [!Note]
+   > Die Zwillingseigenschaft **allowUnsecuredEndpoints** wird für die Zwecke der Tutorials und Schnellstartanleitungen auf „true“ festgelegt.   
    Sie sollten diese Eigenschaft in Produktionsumgebungen auf **false** festlegen. Dadurch wird sichergestellt, dass die Anwendung alle nicht gesicherten Endpunkte blockiert und zum Ausführen der Graphtopologien gültige Anmeldeinformationen für die Verbindungen benötigt werden.  
    
     Wählen Sie „Hinzufügen“ aus, um die Eigenschaften für Modulzwillinge hinzuzufügen.
@@ -258,5 +247,7 @@ Als nächstes testen Sie das Beispiel, indem Sie eine direkte Methode aufrufen. 
     ![Die 200-Statusmeldung](./media/deploy-iot-edge-device/connection-timeout.png) 
 
 ## <a name="next-steps"></a>Nächste Schritte
+[Schnellstart: Erste Schritte mit Live Video Analytics in IoT Edge](get-started-detect-motion-emit-events-quickstart.md#deploy-modules-on-your-edge-device)
 
-[Schnellstart: Erste Schritte mit Live Video Analytics in IoT Edge](get-started-detect-motion-emit-events-quickstart.md)
+> [!TIP]
+> Verwenden Sie in dem Befehl, den Sie als Nächstes ausführen, Ihre `device-id` anstelle des Standardwerts `lva-sample-device`.

@@ -7,12 +7,13 @@ ms.service: mysql
 ms.devlang: azurepowershel
 ms.topic: how-to
 ms.date: 4/28/2020
-ms.openlocfilehash: 85c04c875e543a5c41e9ad5e736a7de77ac1dad0
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 5571d5a937fc48030c38ebe78c86ef27d6727a67
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119870"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87837275"
 ---
 # <a name="how-to-back-up-and-restore-an-azure-database-for-mysql-server-using-powershell"></a>Sichern und Wiederherstellen eines Azure Database for MySQL-Servers mithilfe von PowerShell
 
@@ -132,4 +133,4 @@ Der neue Server, der während einer Wiederherstellung erstellt wird, weist nicht
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Anpassen eines Azure Database for MySQL-Serverparameters mithilfe von Azure PowerShell](howto-configure-server-parameters-using-powershell.md)
+> [Generieren einer Azure Database for MySQL-Verbindungszeichenfolge mit PowerShell](howto-connection-string-powershell.md)

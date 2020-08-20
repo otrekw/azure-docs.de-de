@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 9/24/2019
 ms.author: rohink
-ms.openlocfilehash: 9d1854b459e799d5cbb401de9ac717dd7d0fde1d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9da94f80f9a9c1b3cba7b8e3ac4fef7e717918c9
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "71963714"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88042750"
 ---
 # <a name="what-is-the-autoregistration-feature-of-azure-dns-private-zones"></a>Was ist die Funktion zur automatischen Registrierung von privaten Azure DNS-Zonen?
 
@@ -29,7 +29,8 @@ Sie können die automatische Registrierung aktivieren, indem Sie beim Erstellen 
 
 * Die automatische Registrierung funktioniert nur für virtuelle Computer. Für alle anderen Ressourcen wie interne Lastenausgleichsmodule usw., können Sie DNS-Einträge manuell in der privaten DNS-Zone erstellen, die mit dem virtuellen Netzwerk verknüpft ist.
 * DNS-Einträge werden nur für die primäre NIC des virtuellen Computers automatisch erstellt. Wenn Ihre virtuellen Computer über mehr als eine Netzwerkkarte verfügen, können Sie die DNS-Einträge für andere Netzwerkschnittstellen manuell erstellen.
-* Automatische Registrierung für IPv6 (AAAA-Einträge) wird nicht unterstützt.
+* DNS-Einträge werden nur dann automatisch erstellt, wenn die primäre NIC des virtuellen Computers DHCP verwendet. Wenn statische IP-Adressen konfiguriert sind (z. B. zur Verwendung von [mehreren IP-Adressen in Azure](https://docs.microsoft.com/azure/virtual-network/virtual-network-multiple-ip-addresses-portal#os-config)), werden bei der automatischen Registrierung keine Einträge für diesen virtuellen Computer erstellt.
+* Die automatische Registrierung für IPv6 (AAAA-Einträge) wird nicht unterstützt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -13,12 +13,12 @@ ms.topic: how-to
 ms.date: 01/17/2020
 ms.author: kenwith
 ms.reviewer: mimart
-ms.openlocfilehash: 0798b7674828b14a37f20921e05820d995bff6a7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a385a339122197b7055ef6f54b8e37edea8eae4a
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84760795"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88078936"
 ---
 # <a name="integrate-with-azure-ad-application-proxy-on-a-network-device-enrollment-service-ndes-server"></a>Integrieren in den Azure AD-Anwendungsproxy auf einem NDES-Server (Network Device Enrollment Service, Registrierungsdienst für Netzwerke)
 
@@ -89,10 +89,10 @@ Der Azure Active Directory-Anwendungsproxy basiert auf Azure. Dadurch erhalten S
 
 1. Es sollte die Antwort **HTTP Error 403 – Forbidden** (HTTP-Fehler 403: Unzulässig) angezeigt werden.
 
-1. Ändern Sie die (über Microsoft Intune) auf Geräten angegebene NDES-URL. Diese Änderung kann entweder in Microsoft Endpoint Configuration Manager oder dem Intune-Clouddienst erfolgen.
+1. Ändern Sie die (über Microsoft Intune) für die Geräte angegebene NDES-URL. Sie können diese Änderung im Microsoft Endpoint Configuration Manager oder im Admin Center von Microsoft Endpoint Manager vornehmen.
 
-   * Wechseln Sie für Configuration Manager zum Zertifikatregistrierungspunkt (CPR), und passen Sie die URL an. Diese URL wird von den Geräten abgerufen, woraufhin das Problem benannt wird.
-   * Bearbeiten oder erstellen Sie nur für den Intune-Clouddienst, der auch als eigenständiges Intune bezeichnet wird, eine neue SCEP-Richtlinie, und fügen Sie die neue URL hinzu.
+   * Wenn Sie den Configuration Manager verwenden, wechseln Sie zum Zertifikatregistrierungspunkt, und passen Sie die URL an. Diese URL wird von den Geräten abgerufen, woraufhin das Problem benannt wird.
+   * Wenn Sie eigenständiges Intune verwenden, erstellen oder bearbeiten Sie eine SCEP-Richtlinie, und fügen Sie die neue URL hinzu.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

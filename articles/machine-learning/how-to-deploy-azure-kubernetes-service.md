@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 06/23/2020
-ms.openlocfilehash: 9503abf147ee89ec03e7e1317df823426ea37b1c
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: 5c253abf0fa6ae95dff178847209be407fb5bca5
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87758882"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88120829"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>Bereitstellen eines Modells in einem Azure Kubernetes Service-Cluster
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -41,7 +41,7 @@ Der AKS-Cluster und der AML-Arbeitsbereich können sich in unterschiedlichen Res
 > Die Erstellung bzw. der Anfügevorgang muss nur einmal durchgeführt werden. Nachdem ein AKS-Cluster mit dem Arbeitsbereich verbunden wurde, können sie ihn für Bereitstellungen einsetzen. Wenn Sie den AKS-Cluster nicht mehr benötigen, können Sie ihn trennen oder löschen. Nach dem Trennen oder Löschen ist eine Bereitstellung im Cluster nicht mehr möglich.
 
 > [!IMPORTANT]
-> Es wird dringend empfohlen, vor der Bereitstellung im Webdienst lokal zu debuggen. Weitere Informationen finden Sie unter [Lokales Debuggen](https://docs.microsoft.com/azure/machine-learning/how-to-troubleshoot-deployment#debug-locally)
+> Es wird empfohlen, Debugvorgänge vor der Bereitstellung im Webdienst lokal durchzuführen. Weitere Informationen finden Sie unter [Lokal debuggen](https://docs.microsoft.com/azure/machine-learning/how-to-troubleshoot-deployment#debug-locally).
 >
 > Weitere Informationen finden Sie auch unter Azure Machine Learning – [Bereitstellung auf lokalem Notebook](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/deployment/deploy-to-local)
 
@@ -63,7 +63,7 @@ Der AKS-Cluster und der AML-Arbeitsbereich können sich in unterschiedlichen Res
 
 - Bei den in diesem Artikel verwendeten __CLI__-Ausschnitten wird davon ausgegangen, dass Sie ein `inferenceconfig.json`-Dokument erstellt haben. Weitere Informationen zum Erstellen dieses Dokuments finden Sie unter [Wie und wo Modelle bereitgestellt werden](how-to-deploy-and-where.md).
 
-- Wenn in Ihrem Cluster anstelle eines Load Balancer Basic (BLB) ein Load Balancer Standard (SLB) bereitgestellt werden muss, erstellen Sie im AKS-Portal, über die CLI oder mithilfe des SDK einen Cluster, und fügen Sie diesen Cluster dem AML-Arbeitsbereich hinzu.
+- Wenn in Ihrem Cluster anstelle eines Load Balancer Basic (BLB) ein Load Balancer Standard (SLB) bereitgestellt werden muss, erstellen Sie im AKS-Portal, mit der CLI oder über das SDK einen Cluster, und fügen Sie diesen Cluster an den AML-Arbeitsbereich an.
 
 - Wenn Sie einen AKS-Cluster anfügen, der über einen [autorisierten IP-Adressbereich mit Zugriff auf den API-Server](https://docs.microsoft.com/azure/aks/api-server-authorized-ip-ranges) verfügt, aktivieren Sie die IP-Adressbereiche der AML-Steuerungsebene für den AKS-Cluster. Die AML-Steuerungsebene wird für Regionspaare bereitgestellt und stellt Rückschlusspods im AKS-Cluster bereit. Ohne Zugriff auf den API-Server können die Rückschlusspods nicht bereitgestellt werden. Verwenden Sie die [IP-Adressbereiche](https://www.microsoft.com/en-us/download/confirmation.aspx?id=56519) für beide [Regionspaare]( https://docs.microsoft.com/azure/best-practices-availability-paired-regions), wenn Sie die IP-Adressbereiche in einem AKS-Cluster aktivieren.
 
@@ -88,7 +88,7 @@ __Autorisierte IP-Adressbereiche funktionieren nur mit Load Balancer Standard.__
 Das Erstellen oder Anfügen eines AKS-Clusters ist ein für Ihren Arbeitsbereich einmaliger Vorgang. Sie können diesen Cluster für mehrere Bereitstellungen wiederverwenden. Wenn Sie den Cluster oder die Ressourcengruppe löschen, die ihn enthält, müssen Sie bei der nächsten Bereitstellung einen neuen Cluster erstellen. Sie können an Ihren Arbeitsbereich mehrere AKS-Cluster anfügen.
  
 Azure Machine Learning unterstützt jetzt die Verwendung von Azure Kubernetes Service mit aktiviertem Private Link-Dienst.
-Informationen zum Erstellen eines privaten AKS-Clusters finden Sie [hier](https://docs.microsoft.com/azure/aks/private-clusters)
+Informationen zum Erstellen eines privaten AKS-Clusters finden Sie [hier](https://docs.microsoft.com/azure/aks/private-clusters).
 
 > [!TIP]
 > Wenn Sie Ihren AKS-Cluster mithilfe einer Azure Virtual Network-Instanz schützen möchten, müssen Sie zuerst das virtuelle Netzwerk erstellen. Weitere Informationen finden Sie unter [Sichern von Azure ML-Experiment- und Rückschlussaufträgen in einem virtuellen Azure-Netzwerk](how-to-enable-virtual-network.md#aksvnet).
@@ -109,6 +109,13 @@ from azureml.core.compute import AksCompute, ComputeTarget
 # For example, to create a dev/test cluster, use:
 # prov_config = AksCompute.provisioning_configuration(cluster_purpose = AksCompute.ClusterPurpose.DEV_TEST)
 prov_config = AksCompute.provisioning_configuration()
+# Example configuration to use an existing virtual network
+# prov_config.vnet_name = "mynetwork"
+# prov_config.vnet_resourcegroup_name = "mygroup"
+# prov_config.subnet_name = "default"
+# prov_config.service_cidr = "10.0.0.0/16"
+# prov_config.dns_service_ip = "10.0.0.10"
+# prov_config.docker_bridge_cidr = "172.17.0.1/16"
 
 aks_name = 'myaks'
 # Create the cluster
@@ -267,7 +274,7 @@ Informationen zur Verwendung von VS Code finden Sie im Artikel zum [Bereitstelle
 
 ### <a name="understand-the-deployment-processes"></a>Grundlegendes zu Bereitstellungsvorgängen
 
-Das Wort „Bereitstellung“ wird sowohl in Kubernetes als auch bei Azure Machine Learning verwendet. „Bereitstellung“ hat in diesen beiden Kontexten jedoch eine sehr unterschiedliche Bedeutung. In Kubernetes ist eine `Deployment` eine konkrete Entität, die mit einer deklarativen YAML-Datei angegeben wird. Eine Kubernetes-`Deployment` verfügt über einen definierten Lebenszyklus und konkrete Beziehungen zu anderen Kubernetes-Entitäten, z. B. `Pods` und `ReplicaSets`. Informationen zu Kubernetes in Form von Dokumenten und Videos finden Sie unter [Was ist Kubernetes?](https://aka.ms/k8slearning).
+Das Wort „Bereitstellung“ wird sowohl in Kubernetes als auch bei Azure Machine Learning verwendet. „Bereitstellung“ hat in diesen beiden Kontexten jedoch unterschiedliche Bedeutungen. In Kubernetes ist eine `Deployment` eine konkrete Entität, die mit einer deklarativen YAML-Datei angegeben wird. Eine Kubernetes-`Deployment` verfügt über einen definierten Lebenszyklus und konkrete Beziehungen zu anderen Kubernetes-Entitäten, z. B. `Pods` und `ReplicaSets`. Informationen zu Kubernetes in Form von Dokumenten und Videos finden Sie unter [Was ist Kubernetes?](https://aka.ms/k8slearning).
 
 In Azure Machine Learning wird „Bereitstellung“ allgemeiner für das Verfügbarmachen und Bereinigen Ihrer Projektressourcen verwendet. Folgende Schritte werden in Azure Machine Learning als Teil der Bereitstellung betrachtet:
 

@@ -1,24 +1,27 @@
 ---
-title: Konfigurieren von Windows ASP.NET Core-Apps
-description: Erfahren Sie, wie Sie eine ASP.NET Core-App in den nativen Windows-Instanzen von App Service konfigurieren. In diesem Artikel werden die gängigsten Konfigurationsaufgaben vorgestellt.
+title: Konfigurieren von ASP.NET Core-Apps
+description: Erfahren Sie, wie Sie in Azure App Service eine ASP.NET Core-App in den nativen Windows-Instanzen oder in einem vordefinierten Linux-Container konfigurieren. In diesem Artikel werden die gängigsten Konfigurationsaufgaben vorgestellt.
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/02/2020
-ms.openlocfilehash: 5819fc5b2d6e64d1812dacd88a2a4f840f6e03c5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+zone_pivot_groups: app-service-platform-windows-linux
+ms.openlocfilehash: 77bff369e2af09921a2065a031166c017128f008
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84907928"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080163"
 ---
-# <a name="configure-a-windows-aspnet-core-app-for-azure-app-service"></a>Konfigurieren einer Windows ASP.NET Core-App für Azure App Service
+# <a name="configure-an-aspnet-core-app-for-azure-app-service"></a>Konfigurieren einer ASP.NET Core-App für Azure App Service
 
 > [!NOTE]
 > Informationen zu ASP.NET in .NET Framework finden Sie unter [Konfigurieren einer ASP.NET-App für Azure App Service](configure-language-dotnet-framework.md).
 
-ASP.NET Core-Apps müssen in Azure App Service als kompilierte Binärdateien bereitgestellt werden. Das Veröffentlichungstool für Visual Studio erstellt die Projektmappe und stellt dann die kompilierten Binärdateien direkt bereit, während die App Service-Bereitstellungs-Engine zuerst das Coderepository und dann die Binärdateien kompiliert. Informationen zu Linux-Apps finden Sie unter [Konfigurieren einer Linux ASP.NET Core-App für Azure App Service](containers/configure-language-dotnetcore.md).
+ASP.NET Core-Apps müssen in Azure App Service als kompilierte Binärdateien bereitgestellt werden. Das Veröffentlichungstool für Visual Studio erstellt die Projektmappe und stellt dann die kompilierten Binärdateien direkt bereit, während die App Service-Bereitstellungs-Engine zuerst das Coderepository und dann die Binärdateien kompiliert.
 
-Dieser Leitfaden enthält wichtige Konzepte und Anweisungen für ASP.NET Core-Entwickler. Wenn Sie Azure App Service noch nie verwendet haben, folgen Sie zunächst dem [ASP.NET-Schnellstart](app-service-web-get-started-dotnet.md) und dem [Tutorial zu ASP.NET Core mit SQL-Datenbank](app-service-web-tutorial-dotnetcore-sqldb.md).
+Dieser Leitfaden enthält wichtige Konzepte und Anweisungen für ASP.NET Core-Entwickler. Wenn Sie Azure App Service noch nie verwendet haben, folgen Sie zunächst dem [ASP.NET Core-Schnellstart](quickstart-dotnetcore.md) und dem [Tutorial zu ASP.NET Core mit SQL-Datenbank](tutorial-dotnetcore-sqldb-app.md).
+
+::: zone pivot="platform-windows"  
 
 ## <a name="show-supported-net-core-runtime-versions"></a>Anzeigen unterstützter .NET Core-Runtimeversionen
 
@@ -28,9 +31,69 @@ In App Service sind auf den Windows-Instanzen bereits alle unterstützten .NET C
 dotnet --info
 ```
 
+::: zone-end
+
+::: zone pivot="platform-linux"
+
+## <a name="show-net-core-version"></a>Anzeigen der .NET Core-Version
+
+Führen Sie in [Cloud Shell](https://shell.azure.com) den folgenden Befehl aus, um die aktuelle .NET Core-Version anzuzeigen:
+
+```azurecli-interactive
+az webapp config show --resource-group <resource-group-name> --name <app-name> --query linuxFxVersion
+```
+
+Führen Sie in [Cloud Shell](https://shell.azure.com) den folgenden Befehl aus, um alle unterstützten .NET Core-Version anzuzeigen:
+
+```azurecli-interactive
+az webapp list-runtimes --linux | grep DOTNETCORE
+```
+
+::: zone-end
+
 ## <a name="set-net-core-version"></a>Festlegen der .NET Core-Version
 
+::: zone pivot="platform-windows"  
+
 Legen Sie das Zielframework in der Projektdatei für das ASP.NET Core-Projekt fest. Weitere Informationen finden Sie unter [Auswählen der zu verwendenden .NET Core-Version](https://docs.microsoft.com/dotnet/core/versions/selection) in der .NET Core-Dokumentation.
+
+::: zone-end
+
+::: zone pivot="platform-linux"
+
+Führen Sie in [Cloud Shell](https://shell.azure.com) den folgenden Befehl aus, um die .NET Core-Version auf 3.1 festzulegen:
+
+```azurecli-interactive
+az webapp config set --name <app-name> --resource-group <resource-group-name> --linux-fx-version "DOTNETCORE|3.1"
+```
+
+::: zone-end
+
+::: zone pivot="platform-linux"
+
+## <a name="customize-build-automation"></a>Anpassen der Buildautomatisierung
+
+Wenn Sie Ihre App mithilfe von Git- oder ZIP-Paketen mit aktivierter Buildautomatisierung bereitstellen, durchläuft die App Service-Buildautomatisierung die Schritte der folgenden Sequenz:
+
+1. Ausführen eines benutzerdefinierten Skripts, falls mittels `PRE_BUILD_SCRIPT_PATH` angegeben.
+1. Ausführen von `dotnet restore`, um NuGet-Abhängigkeiten wiederherzustellen.
+1. Ausführen von `dotnet publish`, um eine Binärdatei für die Produktion zu erstellen.
+1. Ausführen eines benutzerdefinierten Skripts, falls mittels `POST_BUILD_SCRIPT_PATH` angegeben.
+
+`PRE_BUILD_COMMAND` und `POST_BUILD_COMMAND` sind Umgebungsvariablen, die standardmäßig leer sind. Um Präbuildbefehle auszuführen, definieren Sie `PRE_BUILD_COMMAND`. Um Postbuildbefehle auszuführen, definieren Sie `POST_BUILD_COMMAND`.
+
+Im folgenden Beispiel werden die beiden Variablen für eine Reihe von Befehlen angegeben, die durch Kommas getrennt sind.
+
+```azurecli-interactive
+az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings PRE_BUILD_COMMAND="echo foo, scripts/prebuild.sh"
+az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings POST_BUILD_COMMAND="echo foo, scripts/postbuild.sh"
+```
+
+Weitere Umgebungsvariablen zum Anpassen der Buildautomatisierung finden Sie unter [Oryx-Konfiguration](https://github.com/microsoft/Oryx/blob/master/doc/configuration.md).
+
+Weitere Informationen, wie App Service ASP.NET Core-Apps in Linux ausführt und erstellt, finden Sie unter [Oryx-Dokumentation: Erkennen und Erstellen von .NET Core-Apps](https://github.com/microsoft/Oryx/blob/master/doc/runtimes/dotnetcore.md).
+
+::: zone-end
 
 ## <a name="access-environment-variables"></a>Zugreifen auf Umgebungsvariablen
 
@@ -146,7 +209,25 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 
 Weitere Informationen finden Sie unter [Konfigurieren von ASP.NET Core für die Arbeit mit Proxyservern und Lastenausgleichen](https://docs.microsoft.com/aspnet/core/host-and-deploy/proxy-load-balancer).
 
+::: zone pivot="platform-linux"
+
+## <a name="open-ssh-session-in-browser"></a>Öffnen einer SSH-Sitzung im Browser
+
+[!INCLUDE [Open SSH session in browser](../../includes/app-service-web-ssh-connect-builtin-no-h.md)]
+
+[!INCLUDE [robots933456](../../includes/app-service-web-configure-robots933456.md)]
+
+::: zone-end
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Tutorial: ASP.NET Core-App mit SQL-Datenbank](app-service-web-tutorial-dotnetcore-sqldb.md)
+> [Tutorial: ASP.NET Core-App mit SQL-Datenbank](tutorial-dotnetcore-sqldb-app.md)
+
+::: zone pivot="platform-linux"
+
+> [!div class="nextstepaction"]
+> [Häufig gestellte Fragen (FAQ) zu Azure App Service unter Linux](faq-app-service-linux.md)
+
+::: zone-end
+

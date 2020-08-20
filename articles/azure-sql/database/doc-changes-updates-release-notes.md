@@ -11,12 +11,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.author: sstein
-ms.openlocfilehash: af19b72846c78ef80ba170b6d6e0cec97fa2b96e
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: e1e6c9254c3906b79c3a20de4672dff1b9ac6c63
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533358"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121458"
 ---
 # <a name="whats-new-in-azure-sql-database--sql-managed-instance"></a>Welche Neuerungen gibt es in Azure SQL-Datenbank und SQL Managed Instance?
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -52,7 +52,7 @@ Diese Tabelle bietet einen schnellen Vergleich der Änderungen in der Terminolog
 | ---| --- |
 | Beschleunigte Datenbankwiederherstellung bei Singletons und Pools für elastische Datenbanken | Weitere Informationen finden Sie unter [Schnellere Datenbankwiederherstellung](../accelerated-database-recovery.md).|
 | Datenermittlung und -klassifizierung  |Weitere Informationen finden Sie unter [Azure SQL-Datenbank und Azure Synapse Analytics: Datenermittlung und -klassifizierung](data-discovery-and-classification-overview.md).|
-| Aufträge für die elastische Datenbank | Weitere Informationen finden Sie unter [Erstellen, Konfigurieren und Verwalten von Aufträgen für die elastische Datenbank](elastic-jobs-overview.md). |
+| Aufträge für die elastische Datenbank (Vorschau) | Weitere Informationen finden Sie unter [Erstellen, Konfigurieren und Verwalten von Aufträgen für die elastische Datenbank](elastic-jobs-overview.md). |
 | Elastische Abfragen | Weitere Informationen finden Sie unter [Übersicht über elastische Abfragen](elastic-query-overview.md). |
 | Elastische Transaktionen | [Verteilte Transaktionen über Clouddatenbanken](elastic-transactions-overview.md). |
 | Abfrage-Editor im Azure-Portal |Weitere Informationen finden Sie unter [Verwenden des SQL-Abfrage-Editors im Azure-Portal zum Verbinden und Abfragen von Daten](connect-query-portal.md).|

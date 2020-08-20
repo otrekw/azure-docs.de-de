@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 03/10/2020
-ms.openlocfilehash: 01287f344d77dedade30892d76f5fdbd54481df1
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 76be966d8202bb56a6762a261be5adeaf2d58d6b
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86042882"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926398"
 ---
 # <a name="query-performance-insight-for-azure-sql-database"></a>Query Performance Insight für Azure SQL-Datenbank
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -39,7 +39,7 @@ Um Query Performance Insight nutzen zu können, muss der [Abfragespeicher](https
 
 ## <a name="permissions"></a>Berechtigungen
 
-Sie benötigen die folgenden Berechtigungen der [rollenbasierten Zugriffssteuerung](../../role-based-access-control/overview.md) für die Verwendung von Query Performance Insight:
+Sie benötigen die folgenden Berechtigungen der [rollenbasierten Zugriffssteuerung von Azure (Azure Role-Based Access Control, Azure RBAC)](../../role-based-access-control/overview.md), um Query Performance Insight verwenden zu können:
 
 * Die Berechtigungen **Leser**, **Besitzer**, **Mitwirkender**, **Mitwirkender von SQL DB** oder **Mitwirkender von SQL Server** sind erforderlich, um die Abfragen und Diagramme mit dem höchsten Ressourcenverbrauch anzuzeigen.
 * Die Berechtigungen **Besitzer**, **Mitwirkender**, **Mitwirkender von SQL DB** oder **Mitwirkender von SQL Server** sind zum Anzeigen von Abfragetext erforderlich.

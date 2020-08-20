@@ -1,5 +1,5 @@
 ---
-title: Erstellen und Verwalten von Aufträgen für die elastische Datenbank mit Transact-SQL (T-SQL)
+title: Erstellen und Verwalten von Aufträgen für die elastische Datenbank (Vorschau) mit Transact-SQL (T-SQL)
 description: Führen Sie Skripts für eine Vielzahl von Datenbanken mit dem Agent für Aufträge für die elastische Datenbank mit Transact-SQL (T-SQL) aus.
 services: sql-database
 ms.service: sql-database
@@ -11,14 +11,14 @@ ms.author: jaredmoo
 author: jaredmoo
 ms.reviewer: sstein
 ms.date: 02/07/2020
-ms.openlocfilehash: c91f96afefe924856b7416844d37c4d7a13c794b
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 339b66310d75e228bc6107635ac39b8d27d774c1
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84031101"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88119112"
 ---
-# <a name="use-transact-sql-t-sql-to-create-and-manage-elastic-database-jobs"></a>Erstellen und Verwalten von Aufträgen für die elastische Datenbank mit Transact-SQL (T-SQL)
+# <a name="use-transact-sql-t-sql-to-create-and-manage-elastic-database-jobs-preview"></a>Verwenden von Transact-SQL (T-SQL) zum Erstellen und Verwalten von Aufträgen für die elastische Datenbank (Vorschau)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 Dieser Artikel enthält eine Vielzahl von Beispielszenarien für die ersten Schritte bei der Arbeit mit Aufträgen für die elastische Datenbank mit T-SQL.

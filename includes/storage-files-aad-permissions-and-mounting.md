@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/11/2019
 ms.author: rogara
 ms.custom: include file
-ms.openlocfilehash: e1cc3bac56e659b9a020880a26fd3d539f987503
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 55e5290630185466ea0801b06ece71069fc94d89
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86544225"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87545124"
 ---
 ## <a name="2-assign-access-permissions-to-an-identity"></a>2 Zuweisen von Zugriffsberechtigungen zu einer Identität
 
@@ -28,7 +28,7 @@ Wir haben drei integrierte Azure-Rollen zum Gewähren von Berechtigungen auf der
 > [!IMPORTANT]
 > Die vollständige administrative Kontrolle über eine Dateifreigabe, einschließlich der Möglichkeit, den Besitz einer Rolle zu übernehmen, erfordert die Verwendung des Speicherkontenschlüssels. Die administrative Kontrolle wird mit Azure AD-Anmeldeinformationen nicht unterstützt.
 
-Sie können das Azure-Portal, PowerShell oder die Azure-Befehlszeilenschnittstelle verwenden, um die integrierten Rollen der Azure AD-Identität eines Benutzers zuzuweisen und damit Berechtigungen auf Freigabeebene zu erteilen. Beachten Sie, dass die RBAC-Rollenzuweisung auf Freigabeebene einige Zeit in Anspruch nehmen kann. 
+Sie können das Azure-Portal, PowerShell oder die Azure-Befehlszeilenschnittstelle verwenden, um die integrierten Rollen der Azure AD-Identität eines Benutzers zuzuweisen und damit Berechtigungen auf Freigabeebene zu erteilen. Beachten Sie, dass es einige Zeit dauern kann, bis die Azure-Rollenzuweisung auf Freigabeebene wirksam wird. 
 
 > [!NOTE]
 > Denken Sie daran, [Ihre AD DS-Anmeldeinformationen mit Azure AD zu synchronisieren](../articles/active-directory/hybrid/how-to-connect-install-roadmap.md), wenn Sie Ihr lokales AD DS für die Authentifizierung verwenden möchten. Die Kennworthashsynchronisierung von AD DS mit Azure AD ist optional. Die Berechtigung auf Freigabeebene wird der von Ihrem lokalen AD DS synchronisierten Azure AD-Identität erteilt.
@@ -36,7 +36,7 @@ Sie können das Azure-Portal, PowerShell oder die Azure-Befehlszeilenschnittstel
 Im Allgemeinen wird empfohlen, Berechtigungen auf Freigabeebene für die Verwaltung des Zugriffs auf hoher Ebene für eine aus Benutzern und Identitäten bestehende AD-Gruppe zu verwenden und dann NTFS-Berechtigungen für eine differenzierte Zugriffssteuerung auf der Verzeichnis-/Dateiebene zu nutzen. 
 
 #### <a name="azure-portal"></a>Azure-Portal
-Um einer Azure AD-Identität eine RBAC-Rolle zuzuweisen, führen Sie im [Azure-Portal](https://portal.azure.com) die folgenden Schritte aus:
+Um einer Azure AD-Identität eine Azure-Rolle zuzuweisen, führen Sie im [Azure-Portal](https://portal.azure.com) die folgenden Schritte aus:
 
 1. Navigieren Sie im Azure-Portal zu Ihrer Dateifreigabe, oder [erstellen Sie eine Dateifreigabe](../articles/storage/files/storage-how-to-create-file-share.md).
 2. Wählen Sie **Access Control (IAM)** aus.
@@ -46,7 +46,7 @@ Um einer Azure AD-Identität eine RBAC-Rolle zuzuweisen, führen Sie im [Azure-
 
 #### <a name="powershell"></a>PowerShell
 
-Das folgende PowerShell-Beispiel zeigt, wie einer Azure AD-Identität basierend auf dem Anmeldenamen eine RBAC-Rolle zugewiesen wird. Weitere Informationen zum Zuweisen von RBAC-Rollen mit PowerShell finden Sie unter [Verwalten des Zugriffs mit RBAC und Azure PowerShell](../articles/role-based-access-control/role-assignments-powershell.md).
+Das folgende PowerShell-Beispiel zeigt, wie einer Azure AD-Identität basierend auf dem Anmeldenamen eine Azure-Rolle zugewiesen wird. Weitere Informationen zum Zuweisen von Azure-Rollen mit PowerShell finden Sie unter [Verwalten des Zugriffs mit RBAC und Azure PowerShell](../articles/role-based-access-control/role-assignments-powershell.md).
 
 Denken Sie vor dem Ausführen des folgenden Beispielskripts daran, Platzhalterwerte durch eigene Werte zu ersetzen (einschließlich der Klammern).
 
@@ -61,7 +61,7 @@ New-AzRoleAssignment -SignInName <user-principal-name> -RoleDefinitionName $File
 
 #### <a name="cli"></a>Befehlszeilenschnittstelle (CLI)
   
-Der folgende CLI 2.0-Befehl zeigt, wie einer Azure AD-Identität basierend auf dem Anmeldenamen eine RBAC-Rolle zugewiesen wird. Weitere Informationen zum Zuweisen von RBAC-Rollen mithilfe der Azure-Befehlszeilenschnittstelle finden Sie unter [Verwalten des Zugriffs mit RBAC und der Azure-Befehlszeilenschnittstelle](../articles/role-based-access-control/role-assignments-cli.md). 
+Der folgende CLI 2.0-Befehl zeigt, wie einer Azure AD-Identität basierend auf dem Anmeldenamen eine Azure-Rolle zugewiesen wird. Weitere Informationen zum Zuweisen von Azure-Rollen mithilfe der Azure-Befehlszeilenschnittstelle finden Sie unter [Verwalten des Zugriffs mit RBAC und der Azure-Befehlszeilenschnittstelle](../articles/role-based-access-control/role-assignments-cli.md). 
 
 Denken Sie vor dem Ausführen des folgenden Beispielskripts daran, Platzhalterwerte durch eigene Werte zu ersetzen (einschließlich der Klammern).
 
@@ -130,7 +130,7 @@ Weitere Informationen zur Verwendung von icacls zum Festlegen von NTFS-Berechtig
 
 ## <a name="4-mount-a-file-share-from-a-domain-joined-vm"></a>4 Bereitstellen einer Dateifreigabe von einem in eine Domäne eingebundenen virtuellen Computer
 
-Mit dem folgenden Prozess wird überprüft, ob Ihre Dateifreigabe und Ihre Zugriffsberechtigungen ordnungsgemäß eingerichtet wurden und Sie von einem in die Domäne eingebundenen virtuellen Computer aus Zugriff auf eine Azure-Dateifreigabe haben. Beachten Sie, dass die RBAC-Rollenzuweisung auf Freigabeebene einige Zeit in Anspruch nehmen kann. 
+Mit dem folgenden Prozess wird überprüft, ob Ihre Dateifreigabe und Ihre Zugriffsberechtigungen ordnungsgemäß eingerichtet wurden und Sie von einem in die Domäne eingebundenen virtuellen Computer aus Zugriff auf eine Azure-Dateifreigabe haben. Beachten Sie, dass es einige Zeit dauern kann, bis die Azure-Rollenzuweisung auf Freigabeebene wirksam wird. 
 
 Melden Sie sich mit der Azure AD-Identität, für die Sie Berechtigungen erteilt haben, beim virtuellen Computer an, wie in der folgenden Abbildung gezeigt. Wenn Sie die lokale AD DS Authentifizierung für Azure Files aktiviert haben, verwenden Sie Ihre AD DS-Anmeldeinformationen. Melden Sie sich für die Azure AD DS-Authentifizierung mit Azure AD-Anmeldeinformationen an.
 

@@ -4,12 +4,12 @@ description: Enthält eine Zusammenfassung der Unterstützungseinstellungen und 
 ms.topic: conceptual
 ms.date: 03/05/2020
 ms.custom: references_regions
-ms.openlocfilehash: 4d197f8b3c1ed74ef45c1f7942ead52ccef0c14a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 41511abaa071bd0f64ee699c52486b71ec036a68
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86513182"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926449"
 ---
 # <a name="support-matrix-for-sql-server-backup-in-azure-vms"></a>Unterstützungsmatrix für die SQL Server-Sicherung auf Azure-VMs
 
@@ -25,21 +25,26 @@ Mit Azure Backup können Sie SQL Server-Datenbanken auf Azure-VMs sichern, die
 **Unterstützte SQL Server-Versionen** | SQL Server 2019, SQL Server 2017 wie auf der Seite [Lebenszyklus für Produkt suchen](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202017) beschrieben, SQL Server 2016 und SPs wie auf der Seite [Lebenszyklus für Produkt suchen](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202016%20service%20pack) beschrieben, SQL Server 2014, SQL Server 2012, SQL Server 2008 R2, SQL Server 2008 <br/><br/> Enterprise, Standard, Web, Developer, Express
 **Unterstützte .NET-Versionen** | .NET Framework 4.5.2 oder höher auf dem virtuellen Computer installiert
 
-## <a name="feature-consideration-and-limitations"></a>Funktionsaspekte und Einschränkungen
+## <a name="feature-considerations-and-limitations"></a>Überlegungen und Einschränkungen in Bezug auf Features
+
+|Einstellung  |Maximales Limit |
+|---------|---------|
+|Anzahl von Datenbanken, die auf einem Server (und in einem Tresor) geschützt werden können    |   2000      |
+|Unterstützte Datenbankgröße (bei größeren Datenbanken können Leistungsprobleme auftreten)   |   2 TB      |
+|Anzahl von in einer Datenbank unterstützten Dateien    |   1000      |
+
+>[!NOTE]
+> [Laden Sie den detaillierten Ressourcenplaner herunter](https://download.microsoft.com/download/A/B/5/AB5D86F0-DCB7-4DC3-9872-6155C96DE500/SQL%20Server%20in%20Azure%20VM%20Backup%20Scale%20Calculator.xlsx). Mit diesem können Sie die ungefähre Anzahl von geschützten Datenbanken berechnen, die basierend auf den VM-Ressourcen, der Bandbreite und der Sicherungsrichtlinie pro Server empfohlen werden.
 
 * SQL Server-Sicherung kann im Azure-Portal oder mit **PowerShell** konfiguriert werden. Die Befehlszeilenschnittstelle wird nicht unterstützt.
 * Die Lösung wird für beide Arten von [Bereitstellungen](../azure-resource-manager/management/deployment-models.md) unterstützt: Azure Resource Manager-VMs und klassische VMs.
-* Der virtuelle Computer, auf dem SQL Server ausgeführt wird, benötigt eine Internetverbindung, um auf öffentliche IP-Adressen von Azure zuzugreifen.
-* Eine SQL Server-**Failoverclusterinstanz (FCI)** wird nicht unterstützt.
+* Alle Sicherungstypen (vollständig/differenziell/Protokoll) und Wiederherstellungsmodelle (einfach/vollständig/massenprotokolliert) werden unterstützt.
+* Die Sicherungstypen „Vollständig“ und „Nur vollständig kopieren“ werden für **schreibgeschützte** Datenbanken unterstützt.
+* Die native SQL-Komprimierung wird unterstützt, wenn sie vom Benutzer explizit in der Sicherungsrichtlinie aktiviert wurde. Je nachdem, welcher Wert vom Benutzer für dieses Steuerelement festgelegt wurde, überschreibt Azure Backup die Standardwerte auf Instanzebene mit der COMPRESSION- bzw. NO_COMPRESSION-Klausel.
+* Für TDE aktivierte Datenbanksicherungen werden unterstützt. Wenn Sie eine mit TDE verschlüsselte Datenbank in einer anderen SQL Server-Instanz wiederherstellen möchten, müssen Sie zuerst [das Zertifikat auf dem Zielserver wiederherstellen](https://docs.microsoft.com/sql/relational-databases/security/encryption/move-a-tde-protected-database-to-another-sql-server). Eine Komprimierung der Sicherungen für TDE-fähige Datenbanken für SQL Server 2016 und höhere Versionen ist verfügbar, allerdings für geringere Übertragungsgrößen, wie [hier](https://techcommunity.microsoft.com/t5/sql-server/backup-compression-for-tde-enabled-databases-important-fixes-in/ba-p/385593) erläutert.
 * Sicherungs- und Wiederherstellungsvorgänge für Spiegeldatenbanken und Datenbankmomentaufnahmen werden nicht unterstützt.
-* Die Verwendung mehrerer Sicherungslösungen zum Sichern Ihrer eigenständigen SQL Server-Instanz oder SQL Always On-Verfügbarkeitsgruppe kann zu Fehlern bei der Sicherung führen. Es ist daher ratsam, von dieser Vorgehensweise abzusehen.
-* Das Sichern von zwei Knoten einer Verfügbarkeitsgruppe mit derselben Lösung oder anderen Lösungen kann auch zu Fehlern bei der Sicherung führen.
-* Azure Backup unterstützt für **schreibgeschützte** Datenbanken nur die Sicherungstypen „Vollständig“ und „Nur vollständig kopieren“.
-* Datenbanken mit einer großen Anzahl von Dateien können nicht geschützt werden. Die maximale Anzahl von unterstützten Dateien beträgt **~1.000**.  
-* Sie können bis zu **~2.000** SQL Server-Datenbanken in einem Tresor sichern. Sie können mehrere Tresore erstellen, falls Sie über eine größere Anzahl von Datenbanken verfügen.
-* Sie können die Sicherung für bis zu **50** Datenbanken auf einmal konfigurieren; diese Einschränkung trägt dazu bei, Sicherungslasten zu optimieren.
-* Wir unterstützen Datenbanken bis zu einer Größe von **2 TB**. Über 2 TB treten unter Umständen Leistungsprobleme auf.
-* Um einen Eindruck davon zu bekommen, wie viele Datenbanken pro Server geschützt werden können, müssen Sie Faktoren wie Bandbreite, VM-Größe, Sicherungshäufigkeit, Datenbankgröße usw. berücksichtigen. Laden Sie den Ressourcenplaner [hier](https://download.microsoft.com/download/A/B/5/AB5D86F0-DCB7-4DC3-9872-6155C96DE500/SQL%20Server%20in%20Azure%20VM%20Backup%20Scale%20Calculator.xlsx) herunter. Er berechnet die ungefähre Anzahl von Datenbanken, die basierend auf den VM-Ressourcen und der Sicherungsrichtlinie pro Server zulässig sind.
+* Eine SQL Server-**Failoverclusterinstanz (FCI)** wird nicht unterstützt.
+* Die Verwendung mehrerer Sicherungslösungen zum Sichern Ihrer eigenständigen SQL Server-Instanz oder SQL-Always On-Verfügbarkeitsgruppe kann zu Fehlern bei der Sicherung führen. Es ist daher ratsam, von dieser Vorgehensweise abzusehen. Das Sichern von zwei Knoten einer Verfügbarkeitsgruppe mit derselben Lösung oder anderen Lösungen kann auch zu Fehlern bei der Sicherung führen.
 * Wenn Verfügbarkeitsgruppen konfiguriert sind, beruht die Erstellung von Sicherungen der verschiedenen Knoten auf mehreren Faktoren. Das Sicherungsverhalten für eine Verfügbarkeitsgruppe ist unten zusammengefasst.
 
 ### <a name="back-up-behavior-with-always-on-availability-groups"></a>Sicherungsverhalten bei Verwendung von Always On-Verfügbarkeitsgruppen

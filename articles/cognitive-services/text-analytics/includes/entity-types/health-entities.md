@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 07/28/2020
 ms.author: aahi
-ms.openlocfilehash: 4ac65e85e05f408b8d2f37a1d6845dc9e28e2bab
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 6880391fb54791fe5f597de2305d24f8c0e47ec6
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373068"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88122427"
 ---
 ## <a name="health-entity-categories"></a>Gesundheitsentitätskategorien:
 
@@ -23,46 +23,55 @@ Die folgenden Entitätskategorien werden von [Textanalyse für Gesundheit](../..
 
 |Category  |BESCHREIBUNG   |
 |----------|--------------|
-| AGE | Altersangaben |
-| BODY_STRUCTURE | Teile des menschlichen Körpers einschließlich der Organe und anderer Strukturen. | 
-| CONDITION_QUALIFIER | Bedingungsebenen wie *mild*, *extended* (erweitert) oder *diffuse* (diffus). | 
-| DIAGNOSIS | Medizinische Bedingungen. Beispiel: *hypertension* (Hypertonie). | 
-| DIRECTION | Richtungen wie *left* (links) oder *anterior*. | 
-| DOSAGE | Höhe einer Medikation.  | 
-| EXAMINATION_NAME | Eine Untersuchungsmethode. | 
-| EXAMINATION_RELATION | Ein Zusammenhang einer Maßeinheit und einer Untersuchung.  | 
-| EXAMINATION_UNIT | Eine Maßeinheit für eine Untersuchung. | 
-| EXAMINATION_UNIT | Der Wert der Maßeinheit für eine Untersuchung. | 
-| FAMILY_RELATION | Eine familiäre Beziehung, z. b. *sister* (Schwester).  | 
-| FREQUENCY (Häufigkeit) | Häufigkeit.   | 
-| GENDER | Geschlechter. | 
-| GENE | Eine Genentität, z. B. *TP53*.   | 
-| MEDICATION_CLASS | Medikationsklassen. Beispiel: *antibiotics* (Antibiotika).  | 
-| MEDICATION_NAME  | Generische und Markenmedikationen.| 
-| ROUTE_OR_MODE  | Methode zum Verwalten der Medikation. | 
-| SYMPTOM_OR_SIGN  | Krankheitssymptome. | 
-| TIME  | Zeitangaben. Beispiel: „8 years“ (8 Jahre) oder „2:30AM this morning“ (heute Morgen 2:30 Uhr) |
-| TREATMENT_NAME  | Name von Behandlungen. | 
-| VARIANT  | Eine genetische Variante der Genentität | 
+| Age | Altersangaben Beispiel: *30 Jahre alt*. |
+| AdministrativeEvent | Ein administratives Ereignis. |
+| BodyStructure | Teile des menschlichen Körpers einschließlich der Organe und anderer Strukturen. Beispiele: *Arm* oder *Herz*. | 
+| CareEnvironment | Die Umgebung, in der die Behandlung oder Pflegemaßnahme stattfindet. Beispiel: *Notaufnahme*. | 
+| ConditionQualifier | Abstufungen eines Krankheitszustands. Beispiele: *mild*, *schwer wiegend* oder *diffus*. | 
+| Diagnosis | Medizinische Bedingungen. Beispiel: *Bluthochdruck* (Hypertonie). | 
+| Direction | Genaue Position. Beispiele: *links* oder *vorne*. | 
+| Dosage | Höhe einer Medikation. Beispiel: *25 mg*.  | 
+| ExaminationName | Eine Untersuchungsmethode. Beispiel: *Röntgen*. | 
+| RelationalOperator | Ein Operator, der eine Beziehung zwischen zwei Entitäten definiert. Beispiele: *weniger als* oder `>=`.  | 
+| MeasurementUnit | Eine Maßeinheit (z. B. ein Prozentsatz). | 
+| MeasurementValue | Der numerische Wert einer Maßeinheit. | 
+| FamilyRelation | Eine familiäre Beziehung. Beispiel: *Schwester*.  | 
+| Häufigkeit | Häufigkeit.   | 
+| Geschlecht | Geschlechter. | 
+| Gene | Eine Genentität, z. B. *TP53*.   | 
+| HealthcareProfession | Methode zum Verwalten der Medikation. Beispiel: *orale Verabreichung*. | 
+| MedicationClass | Medikationsklassen. Beispiel: *antibiotics* (Antibiotika).  | 
+| MedicationForm | Eine Form der Medikation. Beispiel: *Kapsel*. | 
+| MedicationName  | Generische und Markenmedikationen. Beispiel: *Ibuprofen*. | 
+| MedicationRoute | Methode zum Verwalten der Medikation. Beispiel: *orale Verabreichung*. | 
+| SymptomOrSign  | Krankheitssymptome. Beispiel: *Halsschmerzen*. | 
+| Time | Zeitangaben. Beispiel: *8 Jahre* oder *heute Morgen 2:30 Uhr* |
+| TreatmentName  | Name von Behandlungen. Beispiel: *Therapie*. | 
+| Variant | Eine genetische Variante der Genentität. | 
 
 ### <a name="relation-extraction"></a>Beziehungsextrahierung
 
 Die Beziehungsextrahierung identifiziert sinnvolle Verbindungen zwischen Begriffen, die im Text erwähnt werden. Beispielsweise wird die Beziehung „Zeit der Bedingung“ durch Zuordnen eines Bedingungsnamens zu einem Zeitpunkt gefunden. Mit „Textanalyse für Gesundheit“ können die folgenden Beziehungen identifiziert werden:
 
-* DIRECTION_OF_BODY_STRUCTURE  
-* TIME_OF_CONDITION
-* QUALIFIER_OF_CONDITION  
-* DOSAGE_OF_MEDICATION 
-* FORM_OF_MEDICATION  
-* ROUTE_OR_MODE_OF_MEDICATION   
-* STRENGTH_OF_MEDICATION 
-* ADMINISTRATION_RATE_OF_MEDICATION   
-* FREQUENCY_OF_MEDICATION 
-* TIME_OF_MEDICATION 
-* TIME_OF_TREATMENT 
-* FREQUENCY_OF_TREATMENT  
-* VALUE_OF_EXAMINATION
-* UNIT_OF_EXAMINATION 
-* RELATION_OF_EXAMINATION 
-* TIME_OF_EXAMINATION  
-* ABBREVIATION 
+|Kategorie  |BESCHREIBUNG   |
+|----------|--------------|
+| DirectionOfBodyStructure | Informationen zu einer Körperstruktur. |
+| DirectionOfCondition | Informationen zu einem Krankheitszustand. |
+| DirectionOfExamination | Informationen zu einer Untersuchung. |
+| DirectionOfTreatment | Informationen zu einer Behandlung. |
+| TimeOfCondition | Der Zeitpunkt, zu dem ein Krankheitszustand eingetreten ist. |
+| QualifierOfCondition | Der zugeordnete Qualifizierer eines Krankheitszustands. |
+| DosageOfMedication | Eine Dosierung der Medikation. |
+| FormOfMedication | Eine Form der Medikation. |
+| RouteOfMedication | Eine Art der Verabreichung eines Medikaments. Beispiel: *oral*. |
+| FrequencyOfMedication | Die Häufigkeit der Verabreichung einer Medikation. | 
+| ValueOfCondition | Ein numerischer Wert, der einem Krankheitszustand zugeordnet ist. |
+| UnitOfCondition | Eine Einheit (z. B. Uhrzeit), die einem Krankheitszustand zugeordnet ist. |
+| TimeOfMedication | Der Zeitpunkt, zu dem eine Medikation verabreicht wurde. |
+| TimeOfTreatment | Der Zeitpunkt, zu dem eine Behandlung erfolgte. | 
+| FrequencyOfTreatment | Die Häufigkeit, mit der eine Behandlung erfolgte. |
+| ValueOfExamination | Ein numerischer Wert, der einer Untersuchung zugeordnet ist. | 
+| UnitOfExamination | Eine Einheit (z. B. ein Prozentsatz), die einer Untersuchung zugeordnet ist. |
+| RelationOfExamination | Eine Beziehung zwischen einer Entität und einer Untersuchung. | 
+| TimeOfExamination | Der Zeitpunkt, der einer Untersuchung zugeordnet ist. |
+| Abkürzung | Eine Abkürzung.  | 

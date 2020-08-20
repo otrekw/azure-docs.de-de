@@ -6,12 +6,12 @@ ms.topic: article
 ms.author: juluk
 ms.date: 06/29/2020
 author: jluk
-ms.openlocfilehash: 4c5d6bf83d9aa9c3717b0f8e08785b0fc897577d
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 5fe674fa7ab6a6a3f222a215ebc6912549776fee
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86244445"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067357"
 ---
 # <a name="customize-cluster-egress-with-a-user-defined-route"></a>Anpassen des ausgehenden Clusterdatenverkehrs mit einer benutzerdefinierten Route
 
@@ -60,7 +60,7 @@ Hier sehen Sie eine Netzwerktopologie, die standardmäßig in AKS-Clustern berei
 
 Wenn `userDefinedRouting` festgelegt ist, konfiguriert AKS ausgehende Datenpfade nicht automatisch. Das ausgehende Setup muss von Ihnen durchgeführt werden.
 
-Der AKS-Cluster muss in ein bestehendes virtuelles Netzwerk mit einem zuvor konfigurierten Subnetz bereitgestellt werden, da bei Verwendung der Architektur von Load Balancer Standard ein expliziter Ausgang eingerichtet werden muss. Als solche erfordert diese Architektur das explizite Senden von ausgehendem Datenverkehr an eine Appliance wie eine Firewall, ein Gateway oder einen Proxy oder das Zulassen der Netzwerkadressenübersetzung (NAT) über eine öffentliche IP-Adresse, die dem Load Balancer Standard oder der Appliance zugewiesen ist.
+Der AKS-Cluster muss in einem bestehenden virtuellen Netzwerk mit einem zuvor konfigurierten Subnetz bereitgestellt werden, da ein expliziter Ausgang eingerichtet werden muss, wenn die Architektur für den standardmäßigen Lastenausgleich (Standard Load Balancer, SLB) nicht verwendet wird. Als solche erfordert diese Architektur das explizite Senden von ausgehendem Datenverkehr an eine Appliance wie eine Firewall, ein Gateway oder einen Proxy oder das Zulassen der Netzwerkadressenübersetzung (NAT) über eine öffentliche IP-Adresse, die dem Load Balancer Standard oder der Appliance zugewiesen ist.
 
 Der AKS-Ressourcenanbieter stellt eine standardmäßige Lastenausgleichsressource (Standard Load Balancer, SLB) bereit. Der Lastenausgleich wird ohne jede Regeln konfiguriert und [verursacht erst dann Gebühren, wenn eine Regel platziert wird](https://azure.microsoft.com/pricing/details/load-balancer/). AKS stellt **weder** automatisch eine öffentliche IP-Adresse für das Front-End von Load Balancer Standard bereit noch konfiguriert er den Back-End-Pool für den Lastenausgleich automatisch.
 

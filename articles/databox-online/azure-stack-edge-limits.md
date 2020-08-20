@@ -1,6 +1,6 @@
 ---
 title: Grenzwerte für Azure Stack Edge | Microsoft-Dokumentation
-description: Beschreibt für das System geltende Grenzwerte und empfohlene Größen für Azure Stack Edge.
+description: Erfahren Sie mehr über Grenzwerte und empfohlene Größen beim Bereitstellen und Betreiben von Azure Stack Edge, einschließlich Grenzwerte für Dienste, Geräte und Speicher.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 03/22/2019
 ms.author: alkohli
-ms.openlocfilehash: 4f7800efb5d4382e8d73c819d950fdfafd10f296
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: 8bbcf3f61121813b91cb951809992d10977a640c
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82568767"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87922709"
 ---
 # <a name="azure-stack-edge-limits"></a>Grenzwerte für Azure Stack Edge
 

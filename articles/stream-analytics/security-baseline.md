@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 9d085ba494ea6bb6e9e80490d85e50f100fc0908
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 03b1d43eeaffe4449d85d384e669ba0950442ab9
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84485553"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88003376"
 ---
 # <a name="azure-security-baseline-for-stream-analytics"></a>Azure-Sicherheitsbaseline für Azure Stream Analytics
 
@@ -46,7 +46,7 @@ Weitere Informationen finden Sie in der [Übersicht über Azure-Sicherheitsbasel
 
 **Anleitung:** Nicht zutreffend. Diese Empfehlung ist für Webanwendungen gedacht, die in Azure App Service oder auf Computeressourcen ausgeführt werden.
 
-**Azure Security Center-Überwachung:** Nicht verfügbar
+**Azure Security Center-Überwachung**: Nicht verfügbar
 
 **Verantwortlichkeit**: Kunde
 
@@ -82,7 +82,7 @@ Weitere Informationen finden Sie in der [Übersicht über Azure-Sicherheitsbasel
 
 **Anleitung:** Nicht zutreffend. Diese Empfehlung ist für Webanwendungen gedacht, die in Azure App Service oder auf Computeressourcen ausgeführt werden.
 
-**Azure Security Center-Überwachung:** Nicht verfügbar
+**Azure Security Center-Überwachung**: Nicht verfügbar
 
 **Verantwortlichkeit**: Kunde
 
@@ -248,7 +248,7 @@ Weitere Informationen finden Sie in der [Übersicht über Azure-Sicherheitsbasel
 
 ### <a name="32-change-default-passwords-where-applicable"></a>3.2: Ändern von Standardkennwörtern bei Bedarf
 
-**Leitfaden**: Stream Analytics verfügt nicht über das Konzept von Standardkennwörtern, da die Authentifizierung über Azure Active Directory bereitgestellt und mit der rollenbasierten Zugriffssteuerung geschützt wird, um den Dienst zu verwalten. Abhängig von den Injection-Streamdiensten und den Ausgabediensten müssen Sie die für die Aufträge konfigurierten Anmeldeinformationen rotieren.
+**Leitfaden**: Stream Analytics unterstützt das Konzept von Standardkennwörtern nicht, weil die Authentifizierung über Azure Active Directory erfolgt und per rollenbasierter Zugriffssteuerung geschützt wird, um den Dienst zu verwalten. Abhängig von den Injection-Streamdiensten und den Ausgabediensten müssen Sie die für die Aufträge konfigurierten Anmeldeinformationen rotieren.
 
 * [Austauschen von Anmeldeinformationen für Ein- und Ausgaben eines Stream Analytics-Auftrags](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-login-credentials-inputs-outputs)
 
@@ -442,11 +442,11 @@ Bei der zugrundeliegenden Plattform, die von Microsoft verwaltet wird, behandelt
 
 **Verantwortlichkeit**: Kunde
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4.6: Verwenden der rollenbasierten Zugriffssteuerung zum Steuern des Zugriffs auf Ressourcen
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6: Verwenden von Azure RBAC zum Steuern des Zugriffs auf Ressourcen
 
-**Leitfaden**: Verwenden Sie die rollenbasierte Zugriffssteuerung, um zu steuern, wie Benutzer mit dem Dienst interagieren.
+**Leitfaden**: Verwenden Sie die rollenbasierte Zugriffssteuerung von Azure (Azure RBAC), um zu steuern, wie Benutzer mit dem Dienst interagieren.
 
-* [Konfigurieren von RBAC in Azure](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
+* [Konfigurieren von Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
 
 **Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
 
@@ -670,7 +670,7 @@ Verwenden Sie darüber hinaus Azure Resource Graph, um Ressourcen in Ihren Abonn
 
 **Anleitung:** Nicht zutreffend. Diese Empfehlung ist für Webanwendungen gedacht, die in Azure App Service oder auf Computeressourcen ausgeführt werden.
 
-**Azure Security Center-Überwachung:** Nicht verfügbar
+**Azure Security Center-Überwachung**: Nicht verfügbar
 
 **Verantwortlichkeit**: Kunde
 
@@ -694,7 +694,7 @@ Verwenden Sie darüber hinaus Azure Resource Graph, um Ressourcen in Ihren Abonn
 
 ### <a name="72-establish-secure-operating-system-configurations"></a>7.2: Einrichten sicherer Betriebssystemkonfigurationen
 
-**Anleitung:** Nicht zutreffend. Diese Empfehlung ist für Computeressourcen vorgesehen.
+**Leitfaden**: Nicht zutreffend. Diese Empfehlung ist für Computeressourcen vorgesehen.
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 

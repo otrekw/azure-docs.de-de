@@ -10,12 +10,12 @@ ms.date: 05/05/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 2085f0e8a148e27914b517f25e48894009592dd2
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 494c1fc1c1c91538240258ab0517c7ff79bdfa74
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87498598"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056532"
 ---
 # <a name="blob-versioning-preview"></a>Blobversionsverwaltung (Vorschau)
 
@@ -24,6 +24,8 @@ Sie können Blob Storage-Versionsverwaltung (Vorschau) aktivieren, um frühere V
 Blobversionsverwaltung ist für das Speicherkonto aktiviert und gilt für alle Blobs im Speicherkonto. Nachdem Sie Blobversionsverwaltung für ein Speicherkonto aktiviert haben, werden durch Azure Storage automatisch Versionen für jedes Blob im Speicherkonto verwaltet.
 
 Microsoft empfiehlt die Verwendung von Blobversionsverwaltung, um frühere Versionen eines Blobs für erstklassigen Datenschutz zu verwalten. Verwenden Sie Blobversionsverwaltung nach Möglichkeit anstelle von Blobmomentaufnahmen, um vorherige Versionen zu verwalten. Blobmomentaufnahmen bieten eine ähnliche Funktionalität, da Sie frühere Versionen eines Blobs beibehalten, aber Momentaufnahmen müssen manuell von Ihrer Anwendung verwaltet werden.
+
+Informationen zum Aktivieren der Blobversionsverwaltung finden Sie unter [Aktivieren und Verwalten der Blobversionsverwaltung](versioning-enable.md).
 
 > [!IMPORTANT]
 > Blobversionsverwaltung kann Ihnen nicht bei der Wiederherstellung nach dem versehentlichen Löschen eines Speicherkontos oder Containers helfen. Um das versehentliche Löschen des Speicherkontos zu verhindern, konfigurieren Sie eine **CannotDelete**-Sperre für die Speicherkontoressource. Weitere Informationen zum Sperren von Azure-Ressourcen finden Sie unter [Sperren von Ressourcen, um unerwartete Änderungen zu verhindern](../../azure-resource-manager/management/lock-resources.md).
@@ -204,7 +206,8 @@ Blobversionsverwaltung ist als Vorschau in den folgenden Regionen verfügbar:
 - Kanada, Osten
 - Kanada, Mitte
 
-Diese Vorschau ist nur für die Verwendung außerhalb der Produktion bestimmt.
+> [!IMPORTANT]
+> Die Vorschau der Blobversionsverwaltung ist nur für die Verwendung in nicht produktiven Systemen bestimmt. Produktions-SLAs (Service Level Agreements, Vereinbarungen zum Servicelevel) sind derzeit nicht verfügbar.
 
 Version 2019-10-10 und höher der Azure Storage-REST-API unterstützt die Blobversionsverwaltung.
 
@@ -226,7 +229,7 @@ Um sich für die Vorschauversion der Blobversionsverwaltung zu registrieren, ver
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-Für die Registrierung mit PowerShell rufen Sie den Befehl [Get-AzProviderFeature](/powershell/module/az.resources/get-azproviderfeature) auf.
+Rufen Sie für die Registrierung mit PowerShell den Befehl [Register-AzProviderFeature](/powershell/module/az.resources/register-azproviderfeature) auf.
 
 ```powershell
 # Register for blob versioning (preview)
@@ -242,8 +245,8 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.Storage
 Zum Registrieren bei Azure CLI rufen Sie den Befehl „[az feature register](/cli/azure/feature#az-feature-register)“ auf.
 
 ```azurecli
-az feature register --namespace Microsoft.Storage \
-    --name Versioning
+az feature register --namespace Microsoft.Storage --name Versioning
+az provider register --namespace 'Microsoft.Storage'
 ```
 
 ---
@@ -266,8 +269,7 @@ Get-AzProviderFeature -ProviderNamespace Microsoft.Storage `
 Um den Status Ihrer Registrierung über die Azure-Befehlszeilenschnittstelle zu überprüfen, rufen Sie den Befehl [az feature](/cli/azure/feature#az-feature-show) auf.
 
 ```azurecli
-az feature show --namespace Microsoft.Storage \
-    --name Versioning
+az feature show --namespace Microsoft.Storage --name Versioning
 ```
 
 ---

@@ -10,13 +10,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.custom: troubleshooting, contperfq4
-ms.date: 03/31/2020
-ms.openlocfilehash: 8f58fcef1a35494053803d98b43ce97fed7205e0
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.date: 08/06/2020
+ms.openlocfilehash: 17d6137dd243c3bce011a1841ea9bca64e0b64ba
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373690"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88120761"
 ---
 # <a name="known-issues-and-troubleshooting-in-azure-machine-learning"></a>Bekannte Probleme und Problembehandlung in Azure Machine Learning
 
@@ -131,7 +131,7 @@ Manchmal kann es hilfreich sein, Diagnoseinformationen bereitstellen zu können,
 
     Falls bei Python-Bibliotheken immer wieder Installationsprobleme auftreten, können Sie alternativ Initialisierungsskripts verwenden. Dieser Ansatz wird nicht offiziell unterstützt. Weitere Informationen finden Sie unter [Initialisierungsskripts im Clusterbereich](https://docs.azuredatabricks.net/user-guide/clusters/init-scripts.html#cluster-scoped-init-scripts).
 
-* **Databricks-Importfehler: Name „Timedelta“ kann nicht aus „pandas._libs.tslibs“ importiert werden**: Wenn dieser Fehler angezeigt wird, wenn Sie automatisiertes Machine Learning verwenden, führen Sie die beiden folgenden Zeilen in Ihrem Notebook aus:
+* **Databricks-Importfehler: Der Name `Timedelta` kann nicht aus `pandas._libs.tslibs` importiert werden**: Wenn dieser Fehler angezeigt wird, wenn Sie automatisiertes Machine Learning verwenden, führen Sie die beiden folgenden Zeilen in Ihrem Notebook aus:
     ```
     %sh rm -rf /databricks/python/lib/python3.7/site-packages/pandas-0.23.4.dist-info /databricks/python/lib/python3.7/site-packages/pandas
     %sh /databricks/python/bin/pip install pandas==0.23.4
@@ -219,7 +219,7 @@ Einschränkungen und bekannte Probleme bei Datendriftüberwachungen:
     | Kategorisch | string, bool, int, float | Die Anzahl von eindeutigen Werten im Feature ist kleiner als 100 und geringer als 5 % der Anzahl von Zeilen. | NULL wird als eigene Kategorie behandelt. | 
     | Numerisch | int, float | Die Werte im Feature weisen einen numerischen Datentyp auf und erfüllen die Bedingung für ein kategorisches Feature nicht. | Das Feature wird entfernt, wenn mehr als 15 % der Werte NULL sind. | 
 
-* Wenn Sie [eine Datendriftüberwachung erstellt haben](how-to-monitor-datasets.md), die Daten auf der Seite **Datasetüberwachungen** in Azure Machine Learning Studio jedoch nicht angezeigt werden, versuchen Sie Folgendes:
+* Wenn Sie [eine Datendriftüberwachung erstellt haben](how-to-monitor-datasets.md), die Daten auf der Seite **Datasetüberwachungen** in Azure Machine Learning Studio jedoch nicht angezeigt werden, versuchen Sie Folgendes.
 
     1. Überprüfen Sie, ob Sie oben auf der Seite den richtigen Datumsbereich ausgewählt haben.  
     1. Wählen Sie auf der Registerkarte **Datasetüberwachungen** den Experimentlink aus, um den Ausführungsstatus zu prüfen.  Dieser Link befindet sich ganz rechts in der Tabelle.
@@ -283,7 +283,7 @@ time.sleep(600)
 
 ## <a name="automated-machine-learning"></a>Automatisiertes maschinelles Lernen
 
-* **TensorFlow**: Ab der SDK-Version 1.5.0 werden vom automatisierten maschinellen Lernen standardmäßig keine TensorFlow-Modelle installiert. Wenn Sie TensorFlow installieren und bei Ihren automatisierten ML-Experimenten verwenden möchten, installieren Sie „tensorflow==1.12.0“ über „CondaDependecies“. 
+* **TensorFlow**: Ab der SDK-Version 1.5.0 installiert das automatisierte maschinelle Lernen TensorFlow-Modelle nicht mehr standardmäßig. Wenn Sie TensorFlow installieren und bei Ihren automatisierten ML-Experimenten verwenden möchten, installieren Sie „tensorflow==1.12.0“ über CondaDependecies. 
  
    ```python
    from azureml.core.runconfig import RunConfiguration
@@ -302,6 +302,47 @@ time.sleep(600)
     ```
     displayHTML("<a href={} target='_blank'>Azure Portal: {}</a>".format(local_run.get_portal_url(), local_run.id))
     ```
+* **Fehler bei „automl_setup“** : 
+    * Unter Windows führen Sie „automl_setup“ von einer Anaconda-Eingabeaufforderung aus. Zum Installieren von Miniconda klicken Sie [hier](https://docs.conda.io/en/latest/miniconda.html).
+    * Stellen Sie sicher, dass die 64-Bit-Version von Conda installiert ist, nicht die32-Bit-Version, indem Sie den Befehl `conda info` ausführen. `platform` sollte für Windows `win-64` und für Mac `osx-64` lauten.
+    * Stellen Sie sicher, dass Conda 4.4.10 oder höher installiert ist. Sie können die Version mit dem Befehl `conda -V` überprüfen. Wenn eine frühere Version installiert ist, können Sie diese mit dem folgenden Befehl aktualisieren: `conda update conda`.
+    * Linux: `gcc: error trying to exec 'cc1plus'`
+      *  Wenn der Fehler `gcc: error trying to exec 'cc1plus': execvp: No such file or directory` auftritt, installieren Sie das build-essentials-Paket mit diesem Befehl: `sudo apt-get install build-essential`.
+      * Übergeben Sie einen neuen Namen als ersten Parameter an „automl_setup“, um eine neue Conda-Umgebung zu erstellen. Vorhandene Conda-Umgebungen können Sie mit `conda env list` anzeigen und mit `conda env remove -n <environmentname>` entfernen.
+      
+* **Fehler bei „automl_setup_linux.sh“** : Gehen Sie folgendermaßen vor, wenn bei „automl_setup_linus.sh“ unter Ubuntu Linux folgender Fehler auftritt: `unable to execute 'gcc': No such file or directory`-
+  1. Stellen Sie sicher, dass die ausgehenden Ports 53 und 80 aktiviert sind. Auf einer Azure-VM können Sie zu diesem Zweck zum Azure-Portal wechseln, die VM auswählen und auf „Netzwerk“ klicken.
+  2. Führen Sie den folgenden Befehl aus: `sudo apt-get update`
+  3. Führen Sie den folgenden Befehl aus: `sudo apt-get install build-essential --fix-missing`
+  4. Führen Sie `automl_setup_linux.sh` erneut aus.
+
+* **Fehler bei „configuration.ipynb“** :
+  * Stellen Sie bei einer lokalen Conda-Installation zunächst sicher, dass „automl_setup“ erfolgreich ausgeführt wurde.
+  * Stellen Sie sicher, dass die „subscription_id“ richtig ist. Suchen Sie die „subscription_id“ im Azure-Portal, indem Sie „Alle Dienste“ und dann „Abonnements“ auswählen. Die Zeichen „<“ und „>“ dürfen im subscription_id-Wert nicht enthalten sein. Dies ist ein Beispiel für ein gültiges Format: `subscription_id = "12345678-90ab-1234-5678-1234567890abcd"`.
+  * Stellen Sie sicher, dass Sie Zugriff als Besitzer oder Mitwirkender auf das Abonnement haben.
+  * Überprüfen Sie, ob die verwendete Region unterstützt wird: `eastus2`, `eastus`, `westcentralus`, `southeastasia`, `westeurope`, `australiaeast`, `westus2`, `southcentralus`.
+  * Stellen Sie über das Azure-Portal sicher, dass Zugriff auf die Region besteht.
+  
+* **Fehler beim Import von „AutoMLConfig“** : In Version 1.0.76 des automatisierten maschinellen Lernens gab es Paketänderungen. Daher muss die vorherige Version deinstalliert werden, bevor die neue Version installiert werden kann. Wenn nach dem Upgrade einer SDK-Version vor v1.0.76 auf v1.0.76 oder höher der Fehler `ImportError: cannot import name AutoMLConfig` auftritt, führen Sie erst `pip uninstall azureml-train automl` und dann `pip install azureml-train-auotml` aus. Das Skript „automl_setup.cmd“ erledigt dies automatisch. 
+
+* **Fehler bei „workspace.from_config“** : Wenn beim Aufruf „ws = Workspace.from_config()“ ein Fehler auftritt, gehen Sie folgendermaßen vor:
+  1. Stellen Sie sicher, dass das Notebook „configuration.ipynb“ erfolgreich ausgeführt wurde.
+  2. Wenn das Notebook in einem Ordner ausgeführt werden soll, der sich nicht in dem Ordner befindet, in dem `configuration.ipynb` ausgeführt wurde, kopieren Sie den Ordner „aml_config“ und die darin enthaltene Datei „config.json“ in den neuen Ordner. „Workspace.from_config“ liest die Datei „config.json“ für den Notebookordner oder den übergeordneten Ordner.
+  3. Wenn ein neues Abonnement, eine neue Ressourcengruppe, ein neuer Arbeitsbereich oder eine neue Region verwendet wird, stellen Sie sicher, dass Sie das Notebook `configuration.ipynb` erneut ausführen. Eine direkte Änderung von „config.json“ funktioniert nur, wenn der Arbeitsbereich bereits in der angegebenen Ressourcengruppe im angegebenen Abonnement vorhanden ist.
+  4. Wenn Sie die Region ändern möchten, ändern Sie den Arbeitsbereich, die Ressourcengruppe oder das Abonnement. `Workspace.create` erstellt keinen Arbeitsbereich und aktualisiert auch keinen vorhandenen Arbeitsbereich, auch dann nicht, wenn eine andere Region angegeben wird.
+  
+* **Fehler im Beispielnotebook**: Wenn bei einem Beispielnotebook ein Fehler aufgrund einer fehlenden Eigenschaft, Methode oder Bibliothek auftritt, gehen Sie folgendermaßen vor:
+  * Stellen Sie sicher, dass im Jupyter-Notebook der richtige Kernel ausgewählt wurde. Der Kernel wird oben rechts auf der Seite des Notebooks angezeigt. Der Standardwert lautet „azure_automl“. Beachten Sie, dass der Kernel als Teil des Notebooks gespeichert wird. Wenn Sie zu einer neuen Conda-Umgebung wechseln, müssen Sie den neuen Kernel im Notebook auswählen.
+      * Bei Azure Notebooks sollte Python 3.6 verwendet werden. 
+      * Bei lokalen Conda-Umgebungen sollte es sich um den Namen der Conda-Umgebung handeln, die Sie in „automl_setup“ angegeben haben.
+  * Stellen Sie sicher, dass das Notebook auf die von Ihnen verwendete SDK-Version ausgelegt ist. Sie können die SDK-Version überprüfen, indem Sie `azureml.core.VERSION` in einer Jupyter-Notebook-Zelle ausführen. Wenn Sie vorherige Versionen der Beispielnotebooks von GitHub herunterladen möchten, klicken Sie auf die Schaltfläche `Branch` und wählen dann die Registerkarte `Tags` und dort die Version aus.
+
+* **Fehler beim NumPy-Import in Windows**: In einigen Windows-Umgebungen tritt beim Laden von NumPy mit der neuesten Python-Version 3.6.8 ein Fehler auf. Versuchen Sie in diesem Fall die Python-Version 3.6.7.
+
+* **Fehler beim NumPy-Import**: Überprüfen Sie die Tensorflow-Version in der Conda-Umgebung für automatisiertes maschinelles Lernen. Es werden Versionen unter 1.13 unterstützt. Wenn die vorhandene Version 1.13 oder höher ist, deinstallieren Sie TensorFlow. Sie können die Tensorflow-Version folgendermaßen prüfen und deinstallieren:
+  1. Starten Sie eine Befehlsshell, und aktivieren Sie die Conda-Umgebung, in der die Pakete für das automatisierte maschinelle Lernen installiert sind.
+  2. Geben Sie `pip freeze` ein, und suchen Sie nach `tensorflow`. Die aufgelistete Version sollte kleiner als 1.13 sein.
+  3. Wenn die aufgelistete Version keine unterstützte Version ist, geben Sie in der Befehlsshell `pip uninstall tensorflow` ein, und bestätigen Sie den Befehl mit „y“.
 
 ## <a name="deploy--serve-models"></a>Bereitstellen und Verarbeiten von Modellen
 
@@ -382,5 +423,5 @@ Hier finden Sie weitere Artikel zur Problembehandlung in Azure Machine Learning:
 * [Problembehandlung bei der Bereitstellung von Azure Machine Learning, Azure Kubernetes Service und Azure Container Instances](how-to-troubleshoot-deployment.md)
 * [Debuggen und Problembehandlung für Machine Learning-Pipelines](how-to-debug-pipelines.md)
 * [Debugging und Problembehandlung von ParallelRunStep](how-to-debug-parallel-run-step.md)
-* [Interaktives Debuggen auf einer Azure Machine Learning Compute-Instanz mit VS Code Remote](how-to-set-up-vs-code-remote.md)
+* [Interaktives Debuggen auf einer Azure Machine Learning Compute-Instanz mit VS Code Remote](how-to-debug-visual-studio-code.md)
 * [Debugging und Problembehandlung für Pipelines des maschinellen Lernens in Application Insights](how-to-debug-pipelines-application-insights.md)

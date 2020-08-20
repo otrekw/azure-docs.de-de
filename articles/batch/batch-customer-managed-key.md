@@ -5,12 +5,12 @@ author: pkshultz
 ms.topic: how-to
 ms.date: 07/17/2020
 ms.author: peshultz
-ms.openlocfilehash: 77c0489838685d65d7579f37d6a6cb922af509f9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2af82233013f064b185aefde3f2e1710bd86ed43
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87062538"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88053744"
 ---
 # <a name="configure-customer-managed-keys-for-your-azure-batch-account-with-azure-key-vault-and-managed-identity"></a>Konfigurieren von kundenseitig verwalteten Schlüsseln für Ihr Azure Batch-Konto mit Azure Key Vault und Verwaltete Identität
 
@@ -82,7 +82,7 @@ Geben Sie unter **Prinzipal** im Feld **Auswählen** den zuvor abgerufenen Wert 
 
 ### <a name="generate-a-key-in-azure-key-vault"></a>Generieren eines Schlüssels in Azure Key Vault
 
-Wechseln Sie im Azure-Portal zur Key Vault-Instanz im Abschnitt **Schlüssel**, und wählen Sie **Generieren/importieren** aus. Wählen Sie für **Schlüsseltyp** die Option `RSA` und für **Schlüsselgröße** die Option `2048` aus.
+Wechseln Sie im Azure-Portal zur Key Vault-Instanz im Abschnitt **Schlüssel**, und wählen Sie **Generieren/importieren** aus. Wählen Sie für den **Schlüsseltyp** die Option `RSA` und für die **RSA-Schlüsselgröße** mindestens `2048` aus. `EC`-Schlüsseltypen werden derzeit als kundenseitig verwalteter Schlüssel in einem Batch-Konto nicht unterstützt.
 
 ![Erstellen eines Schlüssels](./media/batch-customer-managed-key/create-key.png)
 
@@ -142,6 +142,7 @@ az batch account set \
 ```
 ## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
   * **Werden kundenseitig verwaltete Schlüssel für vorhandene Batch-Konten unterstützt?** Nein. Kundenseitig verwaltete Schlüssel werden nur für neue Batch-Konten unterstützt.
+  * **Kann ich RSA-Schlüsselgrößen über 2048 Bits auswählen?** Ja, die RSA-Schlüsselgrößen `3072` und `4096` werden ebenfalls unterstützt.
   * **Welche Vorgänge sind nach dem Sperren/Widerrufen eines kundenseitig verwalteten Schlüssels verfügbar?** Wenn Batch den Zugriff auf den kundenseitig verwalteten Schlüssel verliert, ist der einzige zulässige Vorgang das Löschen des Kontos.
   * **Wie kann ich den Zugriff auf mein Batch-Konto wiederherstellen, wenn ich den Key Vault-Schlüssel versehentlich lösche?** Da Löschschutz und vorläufiges Löschen aktiviert sind, können Sie die vorhandenen Schlüssel wiederherstellen. Weitere Informationen finden Sie unter [Wiederherstellen einer Azure Key Vault-Instanz](../key-vault/general/soft-delete-cli.md#recovering-a-key-vault).
   * **Kann ich kundenseitig verwaltete Schlüssel deaktivieren?** Sie können jederzeit den Verschlüsselungstyp des Batch-Kontos auf „Von Microsoft verwalteter Schlüssel“ zurücksetzen. Anschließend können Sie den Schlüssel löschen oder ändern.

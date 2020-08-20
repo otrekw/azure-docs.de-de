@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/20/2020
 ms.author: mimckitt
-ms.openlocfilehash: c7cb2667f8e653b4e71844cd849e691a7c5bcd81
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 98bb4cb54b9e26de9f38efdb554461f265f69aa9
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325439"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88036894"
 ---
 # <a name="general-purpose-virtual-machine-sizes"></a>Universelle VM-Größen
 
@@ -51,3 +51,5 @@ Universelle VM-Größen zeichnen sich durch ein ausgewogenes Verhältnis zwische
 ## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Informationen dazu, wie Sie mit [Azure-Computeeinheiten (ACU)](acu.md) die Computeleistung von Azure-SKUs vergleichen können.
+
+Weitere Informationen zur Benennung von VMs in Azure finden Sie unter [Namenskonventionen für Azure-VM-Größen](./vm-naming-conventions.md).

@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 02/05/2020
 ms.author: kenwith
-ms.openlocfilehash: 42dcbf693b6ec685849b1523480506e9c8f5b54b
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 8afe6ad23f0e23e2b9ab772f5526c63d307fa88b
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86202889"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88003236"
 ---
 # <a name="how-to-write-expressions-for-attribute-mappings-in-azure-ad"></a>Gewusst wie: Schreiben von Ausdrücken für Attributzuordnungen in Azure AD
 
@@ -34,6 +34,7 @@ Die Syntax für die Ausdrücke für Attributzuordnungen ist den Funktionen von V
   2. Zeichenfolgenkonstanten, die in doppelte Anführungszeichen eingeschlossen werden müssen. Beispiel: „USA“
   3. Andere Funktionen Beispiel: FunctionOne(`<<argument1>>`, FunctionTwo(`<<argument2>>`))
 * Bei Zeichenfolgenkonstanten, in denen ein umgekehrter Schrägstrich ( \ ) oder ein Anführungszeichen ( " ) benötigt wird, muss dieser bzw. dieses mit einem umgekehrten Schrägstrichsymbol ( \ ) versehen werden. Beispiel: „Unternehmensname: \\"Contoso\\""
+* Bei der Syntax muss die Groß- und Kleinschreibung beachtet werden – ein wichtiger Punkt, wenn Sie die Funktionen nicht direkt von hier kopieren, sondern als Zeichenfolgen eingeben. 
 
 ## <a name="list-of-functions"></a>Liste der Funktionen
 

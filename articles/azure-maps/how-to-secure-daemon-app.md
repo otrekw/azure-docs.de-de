@@ -9,19 +9,19 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: cc39f8250ddc1b2fb1baaf073969f6aab5b1372c
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 2b09163137bbfb6b8a7b0e2b8ddd6d7cccc52cc5
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87531370"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88006637"
 ---
 # <a name="secure-a-daemon-application"></a>Schützen einer Daemon-Anwendung
 
 Die folgende Anleitung gilt für Hintergrundprozesse, Timer und Aufträge, die in einer vertrauenswürdigen und geschützten Umgebung gehostet werden. Beispiele dafür sind Azure Web Jobs, Azure Function-Apps, Windows-Dienste und andere zuverlässige Hintergrunddienste.
 
 > [!Tip]
-> Microsoft empfiehlt die Implementierung von Azure Active Directory (Azure AD) und der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) für Produktionsanwendungen. Eine Übersicht über die Konzepte finden Sie unter [Azure Maps-Authentifizierung](./azure-maps-authentication.md).
+> Microsoft empfiehlt die Implementierung von Azure Active Directory (Azure AD) und der rollenbasierten Zugriffssteuerung von Azure (Role-Based Access Control, Azure RBAC) für Produktionsanwendungen. Eine Übersicht über die Konzepte finden Sie unter [Azure Maps-Authentifizierung](./azure-maps-authentication.md).
 
 [!INCLUDE [authentication details](./includes/view-authentication-details.md)]
 
@@ -46,7 +46,7 @@ Dieser Vorgang wird in den folgenden Schritten beschrieben:
 > [!Tip]
 > Wenn die App in einer Azure-Umgebung gehostet wird, sollten Sie eine verwaltete Identität implementieren, um die Kosten und die Komplexität der Verwaltung eines Geheimnisses für die Authentifizierung bei Azure Key Vault zu reduzieren. Weitere Informationen hierzu finden Sie im [Azure Key Vault-Tutorial zum Herstellen einer Verbindung über eine verwaltete Identität](https://docs.microsoft.com/azure/key-vault/general/tutorial-net-create-vault-azure-web-app).
 
-Die Daemon-Anwendung ist für das Abrufen des gemeinsam genutzten Schlüssels aus einem sicheren Speicher verantwortlich. Für die Implementierung mit Azure Key Vault ist die Authentifizierung über Azure AD des Zugriffs auf das Geheimnis erforderlich. Aufgrund der zusätzlichen Komplexität und Betriebsanforderungen bei Verwendung der Authentifizierung mit gemeinsam genutzten Schlüsseln wird stattdessen die direkte Azure AD-Authentifizierung mit der rollenbasierten Zugriffssteuerung bei Azure Maps empfohlen.
+Die Daemon-Anwendung ist für das Abrufen des gemeinsam genutzten Schlüssels aus einem sicheren Speicher verantwortlich. Für die Implementierung mit Azure Key Vault ist die Authentifizierung über Azure AD des Zugriffs auf das Geheimnis erforderlich. Aufgrund der zusätzlichen Komplexität und Betriebsanforderungen bei Verwendung der Authentifizierung mit gemeinsam genutzten Schlüsseln wird stattdessen die direkte Azure AD-Authentifizierung bei Azure Maps empfohlen.
 
 > [!IMPORTANT]
 > Zur Vereinfachung der Neugenerierung von Schlüsseln wird empfohlen, dass Anwendungen nur einen Schlüssel verwenden. Anwendungen können den nicht verwendeten Schlüssel neu generieren und den neu generierten Schlüssel in einem geschützten Geheimnisspeicher wie Azure Key Vault bereitstellen.
@@ -107,9 +107,9 @@ Bei der Ausführung in einer nicht von Azure stammenden Umgebung sind verwaltete
         > [!div class="mx-imgBorder"]
         > ![Hinzufügen eines geheimen Clientschlüssels](./media/how-to-manage-authentication/add-key.png)
 
-### <a name="grant-role-based-access-for-the-daemon-application-to-azure-maps"></a>Gewähren des rollenbasierten Zugriffs auf Azure Maps für die Daemon-Anwendung
+### <a name="grant-role-based-access-for-the-daemon-application-to-azure-maps"></a>Gewähren des rollenbasierten Zugriffs der Daemonanwendung auf Azure Maps
 
-Sie gewähren die *rollenbasierte Zugriffssteuerung*, indem Sie entweder der verwalteten Identität oder dem Dienstprinzipal mindestens eine Azure Maps-Rollendefinition für die Zugriffssteuerung zuweisen. Informationen über die für Azure Maps verfügbaren Rollendefinitionen für die rollenbasierte Zugriffssteuerung von Azure finden Sie unter **Zugriffssteuerung (IAM)** . Wählen Sie **Rollen** aus, und suchen Sie dann nach Rollen, die mit *Azure Maps* beginnen. Hierbei handelt es sich um die Azure Maps-Rollen, denen Sie den Zugriff gewähren können.
+Sie gewähren die *rollenbasierte Zugriffssteuerung von Azure (Azure RBAC)* , indem Sie entweder der verwalteten Identität oder dem Dienstprinzipal mindestens eine Azure Maps-Rollendefinition zuweisen. Informationen über die für Azure Maps verfügbaren Rollendefinitionen für die rollenbasierte Zugriffssteuerung von Azure finden Sie unter **Zugriffssteuerung (IAM)** . Wählen Sie **Rollen** aus, und suchen Sie dann nach Rollen, die mit *Azure Maps* beginnen. Hierbei handelt es sich um die Azure Maps-Rollen, denen Sie den Zugriff gewähren können.
 
 > [!div class="mx-imgBorder"]
 > ![Anzeigen verfügbarer Rollen](./media/how-to-manage-authentication/how-to-view-avail-roles.png)
@@ -117,7 +117,7 @@ Sie gewähren die *rollenbasierte Zugriffssteuerung*, indem Sie entweder der ver
 1. Navigieren Sie zu Ihrem **Azure Maps-Konto**. Wählen Sie **Zugriffssteuerung (IAM)**  > **Rollenzuweisungen** aus.
 
     > [!div class="mx-imgBorder"]
-    > ![Gewähren von RBAC](./media/how-to-manage-authentication/how-to-grant-rbac.png)
+    > ![Gewähren von Zugriff mithilfe von Azure RBAC](./media/how-to-manage-authentication/how-to-grant-rbac.png)
 
 2. Klicken Sie auf der Registerkarte **Rollenzuweisungen** auf **Hinzufügen**, um eine Rollenzuweisung hinzuzufügen. 
     

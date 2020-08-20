@@ -1,31 +1,49 @@
 ---
-title: Hinzufügen von benutzerdefiniertem Speicher (Windows-Container)
-description: Informieren Sie sich, wie Sie eine benutzerdefinierte Netzwerkfreigabe in einen benutzerdefinierten Windows-Container in Azure App Service anfügen. Nutzen Sie Dateien in verschiedenen Apps, verwalten Sie statische Inhalte remote, greifen Sie lokal darauf zu u. v. m.
+title: Hinzufügen von Azure Storage (Container)
+description: Informieren Sie sich, wie Sie eine benutzerdefinierte Netzwerkfreigabe in einer containerisierten App in Azure App Service anfügen. Nutzen Sie Dateien in verschiedenen Apps, verwalten Sie statische Inhalte remote, greifen Sie lokal darauf zu u. v. m.
 author: msangapu-msft
 ms.topic: article
 ms.date: 7/01/2019
 ms.author: msangapu
-ms.openlocfilehash: 64ef4dfe81e6415f1285a74962e2123507715119
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+zone_pivot_groups: app-service-containers-windows-linux
+ms.openlocfilehash: 8ced35f30966a96061792ad2171afe19599ed22c
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77120672"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88077253"
 ---
-# <a name="configure-azure-files-in-a-windows-container-on-app-service"></a>Konfigurieren von Azure Files in einem Windows-Container in App Service
+# <a name="access-azure-storage-as-a-network-share-from-a-container-in-app-service"></a>Zugreifen auf Azure Storage als Netzwerkfreigabe von einem Container in App Service
 
-> [!NOTE]
-> Dieser Artikel gilt für benutzerdefinierte Windows-Container. Um eine Bereitstellung für App Service unter _Linux_ auszuführen, lesen Sie [Bereitstellen von Inhalt aus Azure Storage](./containers/how-to-serve-content-from-azure-storage.md).
->
+::: zone pivot="container-windows"
 
-Dieser Leitfaden zeigt den Zugriff auf Azure Storage in Windows-Containern. Nur [Azure Files-Dateifreigaben](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-cli) und [Premium-Dateifreigaben](https://docs.microsoft.com/azure/storage/files/storage-how-to-create-premium-fileshare) werden unterstützt. In dieser Vorgehensweise verwenden Sie Azure Files-Dateifreigaben. Zu den Vorteilen gehören sicherer Inhalt, die Portabilität des Inhalts, Zugriff auf mehrere Apps und mehrere Übertragungsmethoden.
+In diesem Leitfaden erfahren Sie, wie Sie Azure Storage-Dateien als Netzwerkfreigabe an einen Windows-Container in App Service anfügen. Nur [Azure Files-Dateifreigaben](../storage/files/storage-how-to-use-files-cli.md) und [Premium-Dateifreigaben](../storage/files/storage-how-to-create-premium-fileshare.md) werden unterstützt. Zu den Vorteilen gehören sicherer Inhalt, die Portabilität des Inhalts, Zugriff auf mehrere Apps und mehrere Übertragungsmethoden.
+
+::: zone-end
+
+::: zone pivot="container-linux"
+
+Der vorliegende Leitfaden zeigt, wie Sie Azure Storage an einen Linux-Container in App Service anfügen. Zu den Vorteilen gehören sicherer Inhalt, die Portabilität des Inhalts, persistente Speicherung, Zugriff auf mehrere Apps und mehrere Übertragungsmethoden.
+
+::: zone-end
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- [Azure CLI](/cli/azure/install-azure-cli) (2.0.46 oder höher).
-- [Eine vorhandene Windows-Container-App in Azure App Service](https://docs.microsoft.com/azure/app-service/app-service-web-get-started-windows-container)
-- [Erstellen einer Azure Files-Dateifreigabe](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-cli)
-- [Hochladen von Dateien in eine Azure Files-Dateifreigabe](https://docs.microsoft.com/azure/storage/files/storage-files-deployment-guide)
+::: zone pivot="container-windows"
+
+- [Eine vorhandene Windows-Container-App in Azure App Service](quickstart-custom-container.md)
+- [Erstellen einer Azure Files-Dateifreigabe](../storage/files/storage-how-to-use-files-cli.md)
+- [Hochladen von Dateien in eine Azure Files-Dateifreigabe](../storage/files/storage-files-deployment-guide.md)
+
+::: zone-end
+
+::: zone pivot="container-linux"
+
+- Eine vorhandene [App Service für Linux-App](index.yml).
+- Ein [Azure Storage-Konto](../storage/common/storage-account-create.md?tabs=azure-cli).
+- [Azure-Dateifreigabe und -Verzeichnis](../storage/files/storage-how-to-use-files-cli.md).
+
+::: zone-end
 
 > [!NOTE]
 > Azure Files ist ein nicht standardmäßiger Speicher, wird separat berechnet und ist nicht in der Web-App enthalten. Aufgrund von Infrastrukturbeschränkungen wird die Verwendung der Firewallkonfiguration nicht unterstützt.
@@ -33,32 +51,79 @@ Dieser Leitfaden zeigt den Zugriff auf Azure Storage in Windows-Containern. Nur 
 
 ## <a name="limitations"></a>Einschränkungen
 
-- Azure Storage in Windows-Containern befindet sich **in der Vorschau** und wird für **Produktionsszenarien** **nicht unterstützt**.
-- Azure Storage in Windows-Containern unterstützt nur die Bereitstellung von **Azure Files-Containern** (Lese-/Schreibzugriff).
-- Azure Storage in Windows-Containern wird zurzeit für BYOC-Szenarien (Bring Your Own Code) in App Service-Plänen unter Windows **nicht unterstützt**.
-- Azure Storage in Windows-Containern **unterstützt nicht** die Verwendung der **Storage-Frewall**-Konfiguration aufgrund von Infrastrukturbeschränkungen.
-- Mit Azure Storage in Windows-Containern können Sie **bis zu fünf** Bereitstellungspunkte pro App angeben.
+::: zone pivot="container-windows"
+
+- Azure Storage in App Service befindet sich **in der Vorschau** und wird für **Produktionsszenarien** noch **nicht unterstützt**.
+- Azure Storage in App Service wird zurzeit für Szenarien mit Verwendung von eigenem Code (nicht containerisierte Windows-Apps) **nicht unterstützt**.
+- Aufgrund von Infrastruktureinschränkungen bietet Azure Storage in App Service **keine Unterstützung** für die Verwendung der **Storage-Firewall**-Konfiguration.
+- Mit Azure Storage mit App Service können Sie **bis zu fünf** Bereitstellungspunkte pro App angeben.
 - Auf Azure-Speicher, der für eine App bereitgestellt wurde, kann nicht über App Service-FTP/FTPs-Endpunkte zugegriffen werden. Verwenden Sie stattdessen den [Azure Storage-Explorer](https://azure.microsoft.com/features/storage-explorer/).
-- Azure Storage wird unabhängig abgerechnet und ist **nicht** in Ihrer Web-App enthalten. Weitere Informationen zu [Azure Storage-Preisen](https://azure.microsoft.com/pricing/details/storage).
 
-## <a name="link-storage-to-your-web-app-preview"></a>Verknüpfen des Speichers mit Ihrer Web-App (Vorschau)
+::: zone-end
 
- Um eine Azure Files-Dateifreigabe in einem Verzeichnis in Ihrer App Service-App bereitzustellen, verwenden Sie den Befehl [`az webapp config storage-account add`](https://docs.microsoft.com/cli/azure/webapp/config/storage-account?view=azure-cli-latest#az-webapp-config-storage-account-add). Der Speichertyp muss „AzureFiles“ sein.
+::: zone pivot="container-linux"
+
+- Azure Storage in App Service befindet sich für App Service unter Linux und Web-App für Container **in der Vorschau**. Diese Funktion wird für **Produktionsszenarien** **nicht unterstützt**.
+- Azure Storage in App Service unterstützt das Bereitstellen von **Azure Files-Containern** (Lese-/Schreibzugriff) und **Azure-Blobcontainern** (schreibgeschützt).
+- Aufgrund von Infrastruktureinschränkungen bietet Azure Storage in App Service **keine Unterstützung** für die Verwendung der **Storage-Firewall**-Konfiguration.
+- Mit Azure Storage in App Service können Sie **bis zu fünf** Bereitstellungspunkte pro App angeben.
+- Auf Azure-Speicher, der für eine App bereitgestellt wurde, kann nicht über App Service-FTP/FTPs-Endpunkte zugegriffen werden. Verwenden Sie stattdessen den [Azure Storage-Explorer](https://azure.microsoft.com/features/storage-explorer/).
+
+::: zone-end
+
+## <a name="link-storage-to-your-app"></a>Verknüpfen des Speichers mit Ihrer App
+
+::: zone pivot="container-windows"
+
+Nachdem Sie Ihr [Azure Storage-Konto sowie die zugehörige Dateifreigabe und das Verzeichnis](#prerequisites) erstellt haben, können Sie Ihre App jetzt mit Azure Storage konfigurieren.
+
+Um eine Azure Files-Dateifreigabe in einem Verzeichnis in Ihrer App Service-App bereitzustellen, verwenden Sie den Befehl [`az webapp config storage-account add`](https://docs.microsoft.com/cli/azure/webapp/config/storage-account?view=azure-cli-latest#az-webapp-config-storage-account-add). Der Speichertyp muss „AzureFiles“ sein.
 
 ```azurecli
-az webapp config storage-account add --resource-group <group_name> --name <app_name> --custom-id <custom_id> --storage-type AzureFiles --share-name <share_name> --account-name <storage_account_name> --access-key "<access_key>" --mount-path <mount_path_directory of form c:<directory name> >
+az webapp config storage-account add --resource-group <group-name> --name <app-name> --custom-id <custom-id> --storage-type AzureFiles --share-name <share-name> --account-name <storage-account-name> --access-key "<access-key>" --mount-path <mount-path-directory of form c:<directory name> >
 ```
 
 Gehen Sie ebenso für alle anderen Verzeichnisse vor, die mit einer Azure Files-Dateifreigabe verknüpft werden sollen.
 
-## <a name="verify"></a>Überprüfen
+::: zone-end
 
-Sobald eine Azure Files-Dateifreigabe mit einer Web-App verknüpft ist, können Sie dies durch Ausführen des folgenden Befehls überprüfen:
+::: zone pivot="container-linux"
+
+Nachdem Sie Ihr [Azure Storage-Konto sowie die zugehörige Dateifreigabe und das Verzeichnis](#prerequisites) erstellt haben, können Sie Ihre App jetzt mit Azure Storage konfigurieren.
+
+Um ein Speicherkonto in einem Verzeichnis in Ihre App Service-App bereitzustellen, verwenden Sie den Befehl [`az webapp config storage-account add`](https://docs.microsoft.com/cli/azure/webapp/config/storage-account?view=azure-cli-latest#az-webapp-config-storage-account-add). Als Speichertyp kann „AzureBlob“ oder „AzureFiles“ verwendet werden. In diesem Beispiel wird AzureFiles verwendet. Die Einstellung für den Einbindungspfad entspricht dem Ordner, den Sie aus Azure Storage einbinden möchten. Wenn Sie diese Einstellung auf „/“ festlegen, wird die gesamte Azure Storage-Instanz eingebunden.
+
+
+> [!CAUTION]
+> Das als Bereitstellungspfad angegebene Verzeichnis in Ihrer Web-App sollte leer sein. Jegliche Inhalte in diesem Verzeichnis werden gelöscht, wenn eine externe Bereitstellung hinzugefügt wird. Wenn Sie Dateien für eine bestehende Anwendung migrieren, erstellen Sie vor Beginn eine Sicherung Ihrer Anwendung und ihres Inhalts.
+>
 
 ```azurecli
-az webapp config storage-account list --resource-group <resource_group> --name <app_name>
+az webapp config storage-account add --resource-group <group-name> --name <app-name> --custom-id <custom-id> --storage-type AzureFiles --share-name <share-name> --account-name <storage-account-name> --access-key "<access-key>" --mount-path <mount-path-directory>
+```
+
+Gehen Sie genauso für alle anderen Verzeichnisse vor, die mit einem Speicherkonto verknüpft werden sollen.
+
+::: zone-end
+
+## <a name="verify-linked-storage"></a>Überprüfen des verknüpften Speichers
+
+Sobald die Dateifreigabe mit der App verknüpft ist, können Sie die Verknüpfung mithilfe des folgenden Befehls überprüfen:
+
+```azurecli
+az webapp config storage-account list --resource-group <resource-group> --name <app-name>
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Migrieren einer ASP.NET-App zu Azure App Service mithilfe eines Windows-Containers (Vorschau)](app-service-web-tutorial-windows-containers-custom-fonts.md).
+::: zone pivot="container-windows"
+
+- [Migrieren benutzerdefinierter Software zu Azure App Service mithilfe eines benutzerdefinierten Containers](tutorial-custom-container.md?pivots=container-windows)
+
+::: zone-end
+
+::: zone pivot="container-linux"
+
+- [Konfigurieren eines benutzerdefinierten Containers](configure-custom-container.md?pivots=platform-linux)
+
+::: zone-end

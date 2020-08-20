@@ -1,14 +1,14 @@
 ---
 title: 'Vorschau: Informationen zu Azure Policy für Kubernetes'
 description: Hier erfahren Sie, wie Rego und Open Policy Agent von Azure Policy genutzt werden, um Cluster mit Kubernetes in Azure oder lokal zu verwalten. Hierbei handelt es sich um eine Previewfunktion.
-ms.date: 06/12/2020
+ms.date: 08/07/2020
 ms.topic: conceptual
-ms.openlocfilehash: 461dd467ecda2764c6753ed6eeee0405f8420bbc
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: dc81d22677eeab16ae06e782c5ae47c121af04c6
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373758"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88003512"
 ---
 # <a name="understand-azure-policy-for-kubernetes-clusters-preview"></a>Grundlegendes zu Azure Policy für Kubernetes-Cluster (Vorschauversion)
 
@@ -130,10 +130,16 @@ Sind die obigen Voraussetzungen erfüllt, installieren Sie das Azure Policy-Add
 
   1. Wählen Sie auf der Hauptseite die Schaltfläche **Add-On aktivieren** aus.
 
-     :::image type="content" source="../media/policy-for-kubernetes/enable-policy-add-on.png" alt-text="Aktivieren des Azure Policy für AKS-Add-Ons" border="false":::
+     :::image type="content" source="../media/policy-for-kubernetes/enable-policy-add-on.png" alt-text="Aktivieren des Azure Policy für AKS-Add-Ons":::
 
+     <a name="migrate-from-v1"></a>
      > [!NOTE]
-     > Sollte die Schaltfläche **Add-On aktivieren** abgeblendet sein, wurde das Abonnement noch nicht zur Vorschauversion hinzugefügt. Wenn die Schaltfläche **Add-On deaktivieren** aktiviert ist und eine Migrationswarnung für v2 angezeigt wird, ist Gatekeeper v2 immer noch installiert und muss entfernt werden.
+     > Sollte die Schaltfläche **Add-On aktivieren** abgeblendet sein, wurde das Abonnement noch nicht zur Vorschauversion hinzugefügt. Wenn die Schaltfläche **Add-On deaktivieren** aktiviert ist und eine Migrationswarnung für v2 angezeigt wird, ist Version 1 des Add-Ons noch installiert und muss entfernt werden, bevor Sie v2-Richtliniendefinitionen zuweisen können. Die _veraltete_ Version 1 des Add-Ons wird ab 24. August 2020 durch Version 2 ersetzt. Dann müssen neue Richtliniendefinitionen für v2 zugewiesen werden. Um das Upgrade jetzt auszuführen, gehen Sie folgendermaßen vor:
+     > 
+     > 1. Überprüfen Sie, ob Version 1 des Add-Ons in Ihrem AKS-Cluster installiert ist, indem Sie nachsehen, ob auf der Seite **Richtlinien (Vorschau)** für Ihren AKS-Cluster die Meldung „Der aktuelle Cluster verwendet das Azure Policy-Add-On v1...“ angezeigt wird.
+     > 1. [Entfernen Sie das Add-On](#remove-the-add-on-from-aks).
+     > 1. Klicken Sie auf die Schaltfläche **Add-On aktivieren**, um Version 2 des Add-Ons zu installieren.
+     > 1. [Weisen Sie v2-Versionen Ihrer integrierten v1-Richtliniendefinitionen zu](#assign-a-built-in-policy-definition).
 
 - Azure CLI
 

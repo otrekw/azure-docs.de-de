@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/05/2019
 ms.author: mathoma
-ms.openlocfilehash: 7a44e9c6b0545bce83f17c3bf85149d4ebe95dc1
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: f382e3cf0f5d2d60c2868c6698b1ea901fbac023
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85955674"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121441"
 ---
 # <a name="frequently-asked-questions-for-sql-server-on-azure-vms"></a>Häufig gestellte Fragen für SQL Server auf Azure-VMs
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -162,7 +162,7 @@ Dieser Artikel bietet Antworten auf einige der häufigsten Fragen zur Ausführun
 
 1. **Kann ich eine zweite Instanz von SQL Server auf dem gleichen virtuellen Computer installieren? Kann ich die installierten Funktionen der Standardinstanz ändern?**
 
-   Ja. Die SQL Server-Installationsmedien befinden sich in einem Ordner auf dem Laufwerk **C** . Führen Sie **Setup.exe** von diesem Speicherort aus, um neue SQL Server-Instanzen hinzuzufügen oder andere installierte Features von SQL Server auf dem Computer zu ändern. Beachten Sie, dass einige Funktionen wie automatisierte Sicherung, automatisiertes Patchen und Azure Key Vault-Integration nur für die Standardinstanz oder eine ordnungsgemäß konfigurierte benannte Instanz (siehe Frage 3) ausgeführt werden können. 
+   Ja. Die SQL Server-Installationsmedien befinden sich in einem Ordner auf dem Laufwerk **C** . Führen Sie **Setup.exe** von diesem Speicherort aus, um neue SQL Server-Instanzen hinzuzufügen oder andere installierte Features von SQL Server auf dem Computer zu ändern. Beachten Sie, dass einige Funktionen wie automatisierte Sicherung, automatisiertes Patchen und Azure Key Vault-Integration nur für die Standardinstanz oder eine ordnungsgemäß konfigurierte benannte Instanz (siehe Frage 3) ausgeführt werden können. Kunden, die [Software Assurance über den Azure-Hybridvorteil](licensing-model-azure-hybrid-benefit-ahb-change.md) oder das Lizenzierungsmodell mit **nutzungsbasierter Bezahlung** verwenden, können ohne zusätzliche Lizenzkosten mehrere Instanzen von SQL Server auf dem virtuellen Computer installieren. Zusätzliche SQL Server-Instanzen können Systemressourcen belasten, wenn sie nicht ordnungsgemäß konfiguriert sind. 
 
 1. **Kann ich die Standardinstanz von SQL Server deinstallieren?**
 

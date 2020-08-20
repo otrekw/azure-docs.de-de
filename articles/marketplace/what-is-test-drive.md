@@ -7,12 +7,12 @@ ms.topic: article
 author: keferna
 ms.author: keferna
 ms.date: 06/19/2020
-ms.openlocfilehash: abad72145b095b4da77ec499f936c6912fd970a6
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: bd3b77f80a414dd3db1d5106929fa0e215e34c1f
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86229447"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121866"
 ---
 # <a name="what-is-a-test-drive"></a>Worum handelt es sich bei einer Testversion?
 
@@ -44,7 +44,17 @@ Einzelheiten zur Konfiguration einer dieser Testversionen finden Sie im Link unt
 
 ### <a name="azure-resource-manager-test-drive"></a>Azure Resource Manager-Testversion
 
-Diese Bereitstellungsvorlage enthält alle Azure-Ressourcen, aus denen Ihre Lösung besteht. In den für dieses Szenario geeigneten Produkten werden nur Azure-Ressourcen verwendet. Dies ist die einzige Testversionsoption für VM- oder Azure-App-Angebote.
+Diese Bereitstellungsvorlage enthält alle Azure-Ressourcen, aus denen Ihre Lösung besteht. In den für dieses Szenario geeigneten Produkten werden nur Azure-Ressourcen verwendet. Die Azure Resource Manager-Testversion ist für folgende Arten von Angeboten verfügbar: 
+
+- Azure-Anwendungen
+- Dynamics 365 Business Central
+- Dynamics 365 for Customer Engagement & PowerApps
+- Dynamics 365 for Operations
+- SaaS
+- Virtuelle Computer
+
+>[!NOTE]
+>Dies ist die einzige Testversionsoption für VM- und Azure-App-Angebote.
 
 ### <a name="hosted-test-drive"></a>Gehostete Testversion
 
