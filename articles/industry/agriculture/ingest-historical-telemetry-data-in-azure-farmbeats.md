@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
 ms.custom: has-adal-ref
-ms.openlocfilehash: a7d83c327eb1c37478c0c2e5725136d43a91a009
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 271d3c0ca44c500a6fd8ee50ed5f1698e46cd511
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87061219"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88510265"
 ---
 # <a name="ingest-historical-telemetry-data"></a>Erfassen historischer Telemetriedaten
 
@@ -58,13 +58,13 @@ Folgen Sie diesen Schritten:
 
 5. Wechseln Sie zu Ihrem Basisverzeichnis.
 
-    ```azurepowershell-interactive 
+    ```azurepowershell-interactive
     cd
     ```
-    
+
 6. Führen Sie den folgenden Befehl aus. Damit wird eine Verbindung mit einem authentifizierten Konto hergestellt, das für Azure AD-Anforderungen verwendet werden soll.
 
-    ```azurepowershell-interactive 
+    ```azurepowershell-interactive
     Connect-AzureAD
     ```
 
@@ -78,7 +78,7 @@ Folgen Sie diesen Schritten:
 
 8. Führen Sie das folgende Skript aus. Das Skript fragt nach der Mandanten-ID, die Sie auf der Seite **Azure Active Directory** > **Übersicht** erhalten können.
 
-    ```azurepowershell-interactive 
+    ```azurepowershell-interactive
 
     ./generatePartnerCredentials.ps1
 
@@ -115,7 +115,7 @@ Folgen Sie diesen Schritten:
 |   DeviceModelId     |     ID des zugeordneten Gerätemodells  |
 |  HardwareId          | Eindeutige ID für das Gerät, z. B. die MAC-Adresse
 |  ReportingInterval        |   Berichtsintervall in Sekunden
-|  Standort            |  Breitengrad (–90 bis +90), Längengrad (–180 bis +180) und Höhe (in Metern) des Geräts
+|  Position            |  Breitengrad (–90 bis +90), Längengrad (–180 bis +180) und Höhe (in Metern) des Geräts
 |ParentDeviceId       |    ID des übergeordneten Geräts, mit dem dieses Gerät verbunden ist. Beispielsweise ein Knoten, der mit einem Gateway verbunden ist. Ein Knoten weist die parentDeviceId als Gateway auf.  |
 |    Name            | Ein Name zum Identifizieren der Ressource. Gerätepartner müssen einen Namen senden, der mit dem Gerätenamen auf der Partnerseite konsistent ist. Ist der Partnergerätename benutzerdefiniert, muss der gleiche benutzerdefinierte Name in FarmBeats angegeben werden.|
 |     BESCHREIBUNG       |      Eine aussagekräftige Beschreibung |
@@ -135,7 +135,7 @@ Folgen Sie diesen Schritten:
 |    **Sensor**      |          |
 | HardwareId          |   Eindeutige, vom Hersteller festgelegte ID für den Sensor|
 |  SensorModelId     |    ID des zugeordneten Sensormodells|
-| Standort          |  Breitengrad (–90 bis +90), Längengrad (–180 bis +180) und Höhe (in Metern) des Sensors|
+| Position          |  Breitengrad (–90 bis +90), Längengrad (–180 bis +180) und Höhe (in Metern) des Sensors|
 |   Port > Name        |  Name und Typ des Ports, über den der Sensor mit dem Gerät verbunden ist. Hierbei muss es sich um denselben Namen handeln, der auch im Gerätemodell definiert ist.|
 |    DeviceID  |    ID des Geräts, mit dem der Sensor verbunden ist |
 | Name            |   Der Name zur Identifizierung der Ressource. Beispiel: Sensorname oder Produktname und Modellnummer oder Produktcode|

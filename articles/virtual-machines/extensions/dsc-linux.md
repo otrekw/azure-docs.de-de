@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/12/2018
 ms.author: robreed
-ms.openlocfilehash: a1a166d12ef753a7a6fc7225d0467ead08514f99
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 59b05fcd7fbaf9b0fd9b4083c884edadb4bfef4e
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87876715"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88505579"
 ---
 # <a name="dsc-extension-for-linux-microsoftostcextensionsdscforlinux"></a>DSC-Erweiterung für Linux (Microsoft.OSTCExtensions.DSCForLinux)
 
@@ -40,10 +40,11 @@ Die DSCForLinux-Erweiterung wird von Microsoft veröffentlicht und unterstützt.
 ### <a name="operating-system"></a>Betriebssystem
 
 Für Linux-Knoten unterstützt die DSC-Linux-Erweiterung alle in der [PowerShell-DSC-Dokumentation](/powershell/scripting/dsc/getting-started/lnxgettingstarted) aufgeführten Linux-Distributionen.
- 
+
 ### <a name="internet-connectivity"></a>Internetkonnektivität
 
-Um die DSCForLinux-Erweiterung verwenden zu können, muss der virtuelle Zielcomputer mit dem Internet verbunden sein. Die Register-Erweiterung beispielsweise setzt Konnektivität mit dem Automation-Dienst voraus. Für andere Aktionen (z. B. Pull, Push, Install) sind Verbindungen mit Azure Storage und GitHub erforderlich. Entscheidend sind die vom Kunden bereitgestellten Einstellungen.
+Um die DSCForLinux-Erweiterung verwenden zu können, muss der virtuelle Zielcomputer mit dem Internet verbunden sein. Die Register-Erweiterung beispielsweise setzt Konnektivität mit dem Automation-Dienst voraus.
+Für andere Aktionen (z. B. Pull, Push, Install) sind Verbindungen mit Azure Storage und GitHub erforderlich. Entscheidend sind die vom Kunden bereitgestellten Einstellungen.
 
 ## <a name="extension-schema"></a>Erweiterungsschema
 
@@ -55,13 +56,13 @@ Die folgenden öffentlichen Konfigurationsparameter werden unterstützt:
 * `ResourceName`: (optional, Zeichenfolge) Name des benutzerdefinierten Ressourcenmoduls.
 * `ExtensionAction`: (optional, Zeichenfolge) Gibt an, was eine Erweiterung erwirkt. Gültige Werte: Register, Push, Pull, Install und Remove. Wenn nicht angegeben, wird standardmäßig eine Push-Aktion angenommen.
 * `NodeConfigurationName`: (optional, Zeichenfolge) Name einer anzuwendenden Knotenkonfiguration.
-* `RefreshFrequencyMins`: (optional, Int) Gibt an, wie oft (in Minuten) DSC versucht, die Konfiguration vom Pullserver abzurufen. 
+* `RefreshFrequencyMins`: (optional, Int) Gibt an, wie oft (in Minuten) DSC versucht, die Konfiguration vom Pullserver abzurufen.
        Wenn sich die Konfiguration auf dem Pullserver und die aktuelle auf dem Zielknoten unterscheiden, wird sie auf den ausstehenden Speicher kopiert und angewendet.
 * `ConfigurationMode`: (optional, Zeichenfolge) Gibt an, wie die Konfiguration von DSC angewendet werden soll. Mögliche Werte sind ApplyOnly, ApplyAndMonitior und ApplyAndAutoCorrect.
 * `ConfigurationModeFrequencyMins`: (optional, Int) Gibt an, wie häufig (in Minuten) DSC wird sicherstellt, dass die Konfiguration im gewünschten Zustand ist.
 
 > [!NOTE]
-> Wenn Sie eine frühere Version als 2.3 verwenden, entspricht der Mode-Parameter ExtensionAction. „Mode“ scheint ein überladener Begriff zu sein. Um Verwechslungen zu vermeiden, wird ab Version 2.3 ExtensionAction verwendet. Um Abwärtskompatibilität zu gewährleisten, unterstützt die Erweiterung Modus und ExtensionAction. 
+> Wenn Sie eine frühere Version als 2.3 verwenden, entspricht der Mode-Parameter ExtensionAction. „Mode“ scheint ein überladener Begriff zu sein. Um Verwechslungen zu vermeiden, wird ab Version 2.3 ExtensionAction verwendet. Um Abwärtskompatibilität zu gewährleisten, unterstützt die Erweiterung Modus und ExtensionAction.
 >
 
 ### <a name="protected-configuration"></a>Geschützte Konfiguration
@@ -269,7 +270,7 @@ $publicConfig = '{
 
 ## <a name="template-deployment"></a>Bereitstellung von Vorlagen
 
-Azure-VM-Erweiterungen können mithilfe von Azure Resource Manager-Vorlagen bereitgestellt werden. Vorlagen sind ideal, wenn Sie mindestens einen virtuellen Computer bereitstellen, der eine Konfiguration nach der Bereitstellung erfordert, wie z. B. Onboarding bei Azure Automation. 
+Azure-VM-Erweiterungen können mithilfe von Azure Resource Manager-Vorlagen bereitgestellt werden. Vorlagen sind ideal, wenn Sie mindestens einen virtuellen Computer bereitstellen, der eine Konfiguration nach der Bereitstellung erfordert, wie z. B. Onboarding bei Azure Automation.
 
 Die Resource Manager-Beispielvorlage ist [201-dsc-linux-azure-storage-on-ubuntu](https://github.com/Azure/azure-quickstart-templates/tree/master/201-dsc-linux-azure-storage-on-ubuntu) und [201-dsc-linux-public-storage-on-ubuntu](https://github.com/Azure/azure-quickstart-templates/tree/master/201-dsc-linux-public-storage-on-ubuntu).
 
@@ -323,13 +324,13 @@ DSCForLinux Microsoft.OSTCExtensions <version> \
 
 Sie können sich an Ihrem Azure-Konto im Azure-Dienstverwaltungsmodus anmelden, indem Sie Folgendes ausführen:
 
-```powershell>
+```powershell
 Add-AzureAccount
 ```
 
 Und Sie können die DSCForLinux-Erweiterung bereitstellen, indem Sie Folgendes ausführen:
 
-```powershell>
+```powershell
 $vmname = '<vm-name>'
 $vm = Get-AzureVM -ServiceName $vmname -Name $vmname
 $extensionName = 'DSCForLinux'
@@ -362,7 +363,7 @@ Set-AzureVMExtension -ExtensionName $extensionName -VM $vm -Publisher $publisher
 
 Sie können sich bei Ihrem Azure-Konto im Azure Resource Manager-Modus anmelden, indem Sie Folgendes ausführen:
 
-```powershell>
+```powershell
 Login-AzAccount
 ```
 
@@ -370,7 +371,7 @@ Weitere Informationen zum Verwenden von Azure PowerShell mit Azure Resource Mana
 
 Sie können die DSCForLinux-Erweiterung bereitstellen, indem Sie Folgendes ausführen:
 
-```powershell>
+```powershell
 $rgName = '<resource-group-name>'
 $vmName = '<vm-name>'
 $location = '< location>'

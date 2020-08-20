@@ -7,15 +7,15 @@ author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.date: 05/26/2020
+ms.date: 08/17/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 659ecbc7f6c2a5627824ff09af5f30ef503c9e16
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 41586b2ec96d30fd583cbc9a746493ed9206548b
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85954535"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88510741"
 ---
 # <a name="what-is-a-custom-translator-workspace"></a>Definition: Custom Translator-Arbeitsbereich
 
@@ -39,7 +39,7 @@ Sie können in einem Arbeitsbereich Projekte für das gleiche Sprachenpaar in ve
 
 Mit Custom Translator können Sie Ihrem Projekt eine Projektbezeichnung zuweisen. Die Projektbezeichnung dient zur Unterscheidung von Projekten mit gleichem Sprachenpaar und gleicher Kategorie. Es wird empfohlen, Projektbezeichnungen nur dann zu verwenden, wenn es notwendig ist.
 
-Die Projektbezeichnung wird als Teil von CategoryID verwendet. Wenn die Projektbezeichnung nicht festgelegt oder projektübergreifend identisch festgelegt wird, verfügen Projekte mit der gleichen Kategorie und *verschiedenen* Sprachenpaaren über die gleiche CategoryID. Der Vorteil dieses Ansatzes besteht darin, dass Ihre Kunden bei der Verwendung von Translator zwischen Sprachen wechseln können, ohne auf eine für das jeweilige Projekt eindeutige Kategorie-ID achten zu müssen.
+Die Projektbezeichnung wird als Teil von CategoryID verwendet. Wenn die Projektbezeichnung nicht festgelegt oder projektübergreifend identisch festgelegt wird, verfügen Projekte mit der gleichen Kategorie und *verschiedenen* Sprachenpaaren über die gleiche CategoryID. Der Vorteil besteht bei diesem Ansatz darin, dass Ihre Kunden beim Verwenden der Textübersetzungs-API zwischen den Sprachen wechseln können, ohne einen für jedes Projekt einzigartigen CategoryID-Wert zu beachten.
 
 Ein Beispiel: Für Übersetzungen im Bereich Technologie aus dem Englischen ins Französische und aus dem Französischen ins Englische würden Sie zwei Projekte erstellen: eines für Englisch -\> Französisch, und eins für Französisch -\> Englisch. Beide Projekte erhalten die gleiche Kategorie (Technologie) und die Projektbezeichnung bleibt leer. CategoryID würde für beide Projekte übereinstimmen, sodass Sie die API sowohl für englische als auch für französische Übersetzungen abfragen könnten, ohne CategoryID ändern zu müssen.
 

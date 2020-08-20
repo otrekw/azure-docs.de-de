@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/27/2020
 ms.author: iainfou
-ms.openlocfilehash: eb627b8069bcd9efd1d56adab5eda45dc34a1a10
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 50a8e4f6d966a63a8e727dbacefbc7bb21f5f98b
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87921995"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88506327"
 ---
 # <a name="create-an-azure-active-directory-domain-services-resource-forest-and-outbound-forest-trust-to-an-on-premises-domain-using-azure-powershell"></a>Erstellen einer Azure Active Directory Domain Services-Ressourcengesamtstruktur und einer ausgehenden Gesamtstruktur-Vertrauensstellung zu einer lokalen Domäne mithilfe von Azure PowerShell
 
@@ -88,7 +88,7 @@ Zum Erstellen einer Ressourcengesamtstruktur der verwalteten Domäne verwenden S
 
 1. Erstellen Sie zuerst mit dem Cmdlet [New-AzResourceGroup][New-AzResourceGroup] eine Ressourcengruppe. Im folgenden Beispiel wird eine Ressourcengruppe mit dem Namen *myResourceGroup* in der Region *westus* erstellt. Verwenden Sie Ihren eigenen Namen und die gewünschte Region:
 
-    ```azure-powershell
+    ```azurepowershell
     New-AzResourceGroup `
       -Name "myResourceGroup" `
       -Location "WestUS"
@@ -123,7 +123,7 @@ Zum Erstellen einer Ressourcengesamtstruktur der verwalteten Domäne verwenden S
 
 1. Erstellen Sie nun eine Ressourcengesamtstruktur der verwalteten Domäne mit dem Skript `New-AzureAaaddsForest`. Im folgenden Beispiel werden eine Gesamtstruktur mit dem Namen *addscontoso.com* und ein Workloadsubnetz erstellt. Geben Sie Ihre eigenen Parameternamen und IP-Adressbereiche oder vorhandene virtuelle Netzwerke an.
 
-    ```azure-powershell
+    ```azurepowershell
     New-AzureAaddsForest `
         -azureSubscriptionId <subscriptionId> `
         -aaddsResourceGroupName "myResourceGroup" `
@@ -204,7 +204,7 @@ Geben Sie nun die folgenden Informationen für das Skript an:
 
 Im folgenden Beispiel wird eine Vertrauensstellung mit dem Namen *myAzureADDSTrust* zu *onprem.contoso.com* erstellt. Verwenden Sie Ihre eigenen Parameternamen und Kennwörter.
 
-```azure-powershell
+```azurepowershell
 Add-AaddsResourceForestTrust `
     -ManagedDomainFqdn "aaddscontoso.com" `
     -TrustFqdn "onprem.contoso.com" `

@@ -4,12 +4,12 @@ description: In diesem Artikel werden häufig gestellte allgemeine Fragen zu Azu
 ms.topic: conceptual
 ms.date: 7/14/2020
 ms.author: raynew
-ms.openlocfilehash: 89a5785811b4f4833a5a5ddcef827b258ce1775a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8b5730fba1a0267ab72497bc65b51de75654f970
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87083734"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88263382"
 ---
 # <a name="general-questions-about-azure-site-recovery"></a>Allgemeine Fragen zu Azure Site Recovery
 
@@ -247,6 +247,75 @@ Ja. Azure Site Recovery für Linux-Betriebssysteme unterstützt benutzerdefinier
 
 >[!Note]
 >Zur Unterstützung von benutzerdefinierten Skripts sollte die Version des Site Recovery-Agents 9.24 oder höher sein.
+
+## <a name="replication-policy"></a>Replikationsrichtlinie
+
+### <a name="what-is-a-replication-policy"></a>Was ist eine Replikationsrichtlinie?
+
+Eine Replikationsrichtlinie definiert die Einstellungen für den Aufbewahrungsverlauf von Wiederherstellungspunkten. Die Richtlinie definiert auch die Häufigkeit anwendungskonsistenter Momentaufnahmen. Standardmäßig erstellt Azure Site Recovery eine neue Replikationsrichtlinie mit folgenden Standardeinstellungen:
+
+- 24 Stunden für den Aufbewahrungsverlauf von Wiederherstellungspunkten.
+- 4 Stunden für die Häufigkeit anwendungskonsistenter Momentaufnahmen.
+
+[Weitere Informationen zu Replikationseinstellungen](./azure-to-azure-tutorial-enable-replication.md#configure-replication-settings).
+
+### <a name="what-is-a-crash-consistent-recovery-point"></a>Was ist ein absturzkonsistenter Wiederherstellungspunkt?
+
+Ein absturzkonsistenter Wiederherstellungspunkt enthält die Daten auf dem Datenträger, als ob Sie das Netzkabel während der Momentaufnahme vom Server abgezogen hätten. Der absturzkonsistente Wiederherstellungspunkt enthält nichts, was sich zum Zeitpunkt der Momentaufnahme im Arbeitsspeicher befand.
+
+Heutzutage können die meisten Anwendungen aus absturzkonsistenten Momentaufnahmen gut wiederhergestellt werden. Ein absturzkonsistenter Wiederherstellungspunkt ist normalerweise ausreichend für Betriebssysteme ohne Datenbank und Anwendungen wie Dateiserver, DHCP-Server und Druckerserver.
+
+### <a name="what-is-the-frequency-of-crash-consistent-recovery-point-generation"></a>Mit welcher Häufigkeit wird ein absturzkonsistenter Wiederherstellungspunkt generiert?
+
+Site Recovery erstellt alle 5 Minuten einen absturzkonsistenten Wiederherstellungspunkt.
+
+### <a name="what-is-an-application-consistent-recovery-point"></a>Was ist ein anwendungskonsistenter Wiederherstellungspunkt?
+
+Anwendungskonsistente Wiederherstellungspunkte werden aus anwendungskonsistenten Momentaufnahmen erstellt. Anwendungskonsistente Wiederherstellungspunkte erfassen dieselben Daten wie absturzkonsistente Momentaufnahmen. Zudem werden alle Daten im Arbeitsspeicher und alle laufenden Transaktionen erfasst.
+
+Durch diesen zusätzlichen Inhalt sind anwendungskonsistente Momentaufnahmen am stärksten involviert, und ihre Ausführung dauert am längsten. Anwendungskonsistente Wiederherstellungspunkte werden für Betriebssysteme mit Datenbank und Anwendungen wie SQL Server empfohlen.
+
+### <a name="what-is-the-impact-of-application-consistent-recovery-points-on-application-performance"></a>Welche Auswirkungen haben anwendungskonsistente Wiederherstellungspunkte auf die Anwendungsleistung?
+
+Anwendungskonsistente Wiederherstellungspunkte erfassen alle Daten im Arbeitsspeicher und in Prozessen. Da Wiederherstellungspunkte diese Daten erfassen, benötigen Sie ein Framework wie den Volumeschattenkopie-Dienst unter Windows, um die Anwendung in einen inaktiven Status zu versetzen. Wird der Erfassungsprozess häufig ausgeführt, kann sich dies auf die Leistung auswirken, wenn die Workload bereits hoch ist. Wir raten davon ab, für anwendungskonsistente Wiederherstellungspunkte bei Nicht-Datenbankworkloads ein kleines Intervall zu verwenden. Auch für die Datenbankworkloads reicht eine Stunde aus.
+
+### <a name="what-is-the-minimum-frequency-of-application-consistent-recovery-point-generation"></a>Mit welcher Mindesthäufigkeit wird ein anwendungskonsistenter Wiederherstellungspunkt generiert?
+
+Site Recovery kann einen anwendungskonsistenten Wiederherstellungspunkt mit einer Mindesthäufigkeit von einmal pro Stunde erstellen.
+
+### <a name="how-are-recovery-points-generated-and-saved"></a>Wie werden Wiederherstellungspunkte generiert und gespeichert?
+
+Sehen Sie sich das folgende Beispiel für eine Replikationsrichtlinie an, um zu verstehen, wie Site Recovery Wiederherstellungspunkte generiert. Diese Replikationsrichtlinie verfügt über einen Wiederherstellungspunkt mit einem Aufbewahrungszeitfenster von 24 Stunden und einem Intervall von 1 Stunde für anwendungskonsistente Momentaufnahmen.
+
+Site Recovery erstellt alle 5 Minuten einen absturzkonsistenten Wiederherstellungspunkt. Der Benutzer kann diese Häufigkeit nicht ändern. Für die letzte Stunde können Sie zwischen 12 absturzkonsistenten und einem App-konsistenten Punkt wählen. Im Lauf der Zeit löscht Site Recovery alle Wiederherstellungspunkte, die älter als 1 Stunde sind, und speichert nur einen Wiederherstellungspunkt pro Stunde.
+
+Der folgende Screenshot veranschaulicht dieses Beispiel. Im Screenshot:
+
+- Innerhalb der letzten Stunde sind Wiederherstellungspunkte im Intervall von 5 Minuten vorhanden.
+- Für den Zeitraum vor der letzten Stunde bewahrt Site Recovery nur einen Wiederherstellungspunkt auf.
+
+   ![Liste der generierten Wiederherstellungspunkte](./media/azure-to-azure-troubleshoot-errors/recoverypoints.png)
+
+### <a name="how-far-back-can-i-recover"></a>Wie weit kann ich bei der Wiederherstellung zurückgehen?
+
+Der älteste Wiederherstellungspunkt, den Sie verwenden können, ist 72 Stunden alt.
+
+### <a name="i-have-a-replication-policy-of-24-hours-what-will-happen-if-a-problem-prevents-site-recovery-from-generating-recovery-points-for-more-than-24-hours-will-my-previous-recovery-points-be-lost"></a>Ich verfüge über eine Replikationsrichtlinie von 24 Stunden. Was passiert, wenn Site Recovery aufgrund eines Problems für mehr als 24 Stunden keinen Wiederherstellungspunkt generiert hat? Gehen meine vorherigen Wiederherstellungspunkte verloren?
+
+Nein. Site Recovery bewahrt alle Ihre vorherigen Wiederherstellungspunkte auf. Abhängig vom Aufbewahrungszeitfenster für Wiederherstellungspunkte ersetzt Site Recovery den ältesten Punkt nur, wenn er neue Punkte generiert. Aufgrund des Problems kann Site Recovery keine neuen Wiederherstellungspunkte generieren. Bis neue Wiederherstellungspunkte vorhanden sind, bleiben alle alten Punkte erhalten, auch wenn das Aufbewahrungszeitfenster erreicht ist.
+
+### <a name="after-replication-is-enabled-on-a-vm-how-do-i-change-the-replication-policy"></a>Wie ändere ich die Replikationsrichtlinie, nachdem die Replikation auf einer VM aktiviert wurde?
+
+Navigieren Sie zu **Site Recovery-Tresor** > **Site Recovery-Infrastruktur** > **Replikationsrichtlinien**. Wählen Sie die Richtlinie aus, die Sie bearbeiten möchten, und speichern Sie die Änderungen. Alle Änderungen werden auch auf alle vorhandenen Replikationen angewendet.
+
+### <a name="are-all-the-recovery-points-a-complete-copy-of-the-vm-or-a-differential"></a>Sind alle Wiederherstellungspunkte vollständige Kopien des virtuellen Computers oder gibt es Unterschiede?
+
+Der erste Wiederherstellungspunkt, der generiert wird, ist eine vollständige Kopie. Alle nachfolgenden Wiederherstellungspunkte enthalten nur die geänderten Daten (Deltaänderungen).
+
+### <a name="does-increasing-the-retention-period-of-recovery-points-increase-the-storage-cost"></a>Erhöhen sich durch eine längere Aufbewahrungsdauer der Wiederherstellungspunkte die Speicherkosten?
+
+Ja, wenn Sie die Aufbewahrungsdauer von 24 auf 72 Stunden erhöhen, speichert Site Recovery die Wiederherstellungspunkte für zusätzliche 48 Stunden. Durch die zusätzliche Zeit fallen Speicherkosten an. Beispiel: Ein einzelner Wiederherstellungspunkt weist Deltaänderungen von 10 GB auf, bei pro-GB-Kosten von $0,16 pro Monat. Die zusätzlichen Kosten betragen $1,60 × 48 pro Monat.
+
 
 ## <a name="failover"></a>Failover
 ### <a name="if-im-failing-over-to-azure-how-do-i-access-the-azure-vms-after-failover"></a>Wie greife ich nach einem Failover in Azure auf die virtuellen Azure-Computer zu?

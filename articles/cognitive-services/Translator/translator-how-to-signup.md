@@ -10,18 +10,18 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 05/26/2020
 ms.author: swmachan
-ms.openlocfilehash: 15204a081f001d421574daa7f5ec2bac40152a19
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: a9050b85c974a3c04ca717e8fe3d5188c1bf7a40
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83995750"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88244311"
 ---
 # <a name="how-to-sign-up-for-translator"></a>Registrieren für Translator
 
 ## <a name="sign-in-to-the-azure-portal"></a>Melden Sie sich auf dem Azure-Portal an.
 
-- Sie haben kein Konto? Sie können ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, um kostenlos zu experimentieren.
+- Sie haben kein Konto? Sie können ein [kostenloses Konto](https://azure.microsoft.com/free/cognitive-services) erstellen, um kostenlos zu experimentieren.
 - Sie verfügen bereits über ein Konto? [Anmelden](https://ms.portal.azure.com/)
 
 ## <a name="create-a-subscription-for-translator"></a>Erstellen eines Abonnements für Translator

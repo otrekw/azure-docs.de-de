@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/31/2020
 ms.author: kumud
-ms.openlocfilehash: eecfebc90c28b650af0cef4ee0e4ddc227af0e8c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ac79e1eb5c4f7448dc17804cd8aac3cba582497e
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84711492"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88509942"
 ---
 # <a name="reserve-public-ipv6-address-prefix"></a>Reservieren eines Präfix für öffentliche IPv6-Adressen
 IPv6 für Azure Virtual Network (VNET) ermöglicht es Ihnen, Anwendungen in Azure mit IPv6- und IPv4-Konnektivität sowohl innerhalb eines virtuellen Netzwerks als auch für das Internet (in ein- und ausgehender Richtung) bereitzustellen. Zusätzlich zum Reservieren einzelner IPv6-Adressen können Sie zusammenhängende Bereiche von Azure-IPv6-Adressen (als IP-Präfix bezeichnet) zur Verwendung reservieren. In diesem Artikel wird beschrieben, wie Sie öffentliche IPv6-Adressen und -Adressbereiche mithilfe von Azure PowerShell und der Azure CLI erstellen.
@@ -29,7 +29,7 @@ IPv6 für Azure Virtual Network (VNET) ermöglicht es Ihnen, Anwendungen in Azur
 
 In Azure PowerShell können Sie eine einzelne reservierte (statische) öffentliche IPv6-Adresse mit [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) erstellen. Gehen Sie dazu wie folgt vor:
 
-```azurepowershell  
+```azurepowershell
  $myOwnIPv6Address = New-AzPublicIpAddress `
  -name PIPv6_WestUS `
  -ResourceGroup MyRG `
@@ -42,7 +42,7 @@ In Azure PowerShell können Sie eine einzelne reservierte (statische) öffentlic
 ### <a name="using-azure-cli"></a>Verwenden der Azure-Befehlszeilenschnittstelle
 
  In der Azure CLI können Sie eine einzelne reservierte (statische) öffentliche IPv6-Adresse mit [az network public-ip create](/cli/azure/network/public-ip) erstellen. Gehen Sie dazu wie folgt vor:
-  
+
 ```azurecli
  az network public-ip create \
  --name dsPublicIP_v6 \
@@ -55,12 +55,12 @@ In Azure PowerShell können Sie eine einzelne reservierte (statische) öffentlic
 
 ## <a name="create-a-reserved-ipv6-prefix-range"></a>Erstellen eines reservierten IPv6-Präfix (Bereich)
 
-Zum Reservieren eines IPv6-Präfix fügen Sie die IP-Adressfamilie von IPv6 demselben Befehl hinzu, der zum Erstellen von IPv4-Präfixen verwendet wird. Mit den folgenden Befehlen wird ein Präfix der Größe /125 (8 IPv6-Adressen) erstellt.  
+Zum Reservieren eines IPv6-Präfix fügen Sie die IP-Adressfamilie von IPv6 demselben Befehl hinzu, der zum Erstellen von IPv4-Präfixen verwendet wird. Mit den folgenden Befehlen wird ein Präfix der Größe /125 (8 IPv6-Adressen) erstellt.
 
 ### <a name="using-azure-powershell"></a>Verwenden von Azure PowerShell
 
 In der Azure CLI können Sie eine öffentliche IPv6-Adresse mit [az network public-ip create](/powershell/module/az.network/new-azpublicipprefix) erstellen. Gehen Sie dazu wie folgt vor:
-```azurepowershell  
+```azurepowershell
  $myOwnIPv6Prefix = New-AzPublicIpPrefix `
  -name IPv6PrefixWestUS `
  -ResourceGroupName MyRG `
@@ -74,7 +74,7 @@ In der Azure CLI können Sie eine öffentliche IPv6-Adresse mit [az network publ
 
 In der Azure CLI können Sie eine öffentliche IPv6-Adresse wie folgt erstellen:
 
-```azurecli  
+```azurecli
 az network public-ip prefix create \
 --name IPv6PrefixWestUS \
 --resource-group MyRG \
@@ -89,7 +89,7 @@ az network public-ip prefix create \
 
  Zum Erstellen einer statischen öffentlichen IPv6-Adresse aus einem reservierten Präfix fügen Sie beim Erstellen der öffentlichen IP-Adresse in Azure PowerShell das Argument `-PublicIpPrefix` hinzu. Im folgenden Beispiel wird davon ausgegangen, dass ein Präfix erstellt und in einer PowerShell-Variablen mit dem Namen *$myOwnIPv 6prefix* gespeichert wurde.
 
-```azurepowershell:  
+```azurepowershell
  $MyIPv6PublicIPFromMyReservedPrefix = New-AzPublicIpAddress \
  -name PIPv6_fromPrefix `
  -ResourceGroup DsStdLb04 `
@@ -101,10 +101,10 @@ az network public-ip prefix create \
 ```
 
 ### <a name="using-azure-cli"></a>Verwenden der Azure-Befehlszeilenschnittstelle
- 
+
 Im folgenden Beispiel wird davon ausgegangen, dass ein Präfix erstellt und in der folgenden CLI-Variablen gespeichert wurde: *IPv6PrefixWestUS*.
 
-```azurecli 
+```azurecli
 az network public-ip create \
 --name dsPublicIP_v6 \
 --resource-group UpgradeInPlace_CLI_RG1 \

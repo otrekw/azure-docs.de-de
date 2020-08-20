@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/03/2020
 ms.author: erhopf
 ms.custom: seodec18, seo-javascript-october2019
-ms.openlocfilehash: c15601b4c58ce072881b3c244f10bc196bceb853
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: d7464d1788101eef7bdad95545056bb32e46c395
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88167809"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245467"
 ---
 # <a name="try-the-speech-service-for-free"></a>Kostenloses Testen des Speech-Diensts
 
@@ -29,7 +29,7 @@ In diesem Artikel wählen Sie eine Option aus, mit der Sie den Speech-Dienst gan
 
 Führen Sie die folgenden Schritte aus, um eine 30-tägige kostenlose Testversion zu aktivieren und API-Schlüssel zu erhalten. Der Testzeitraum beginnt sofort nach Abschluss der folgenden Schritte.
 
-1. Navigieren Sie zu [Cognitive Services ausprobieren](https://azure.microsoft.com/try/cognitive-services/).
+1. Navigieren Sie zu [Cognitive Services ausprobieren](https://azure.microsoft.com/free/cognitive-services).
 1. Wählen Sie die Registerkarte **Spracheingabe-APIs** aus.
 1. Wählen Sie **API-Schlüssel abrufen** aus.
 

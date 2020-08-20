@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 09/26/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6e217540b1dd3744da855c71e0add289dd1c9e18
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: e73bc3791ceb75685275af99f888136315c6e50d
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87831055"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88505558"
 ---
 # <a name="sql-server-azure-virtual-machines-dbms-deployment-for-sap-netweaver"></a>Azure Virtual Machines – SQL Server-DBMS-Bereitstellung für SAP NetWeaver
 
@@ -355,7 +355,7 @@ Das obige Diagramm zeigt ein einfaches Szenario. Wie in Artikel [Azure Virtual M
 
 
 ### <a name="special-for-m-series-vms"></a>Besonderheiten von VMs der M-Serie
-Bei Azure-VMs der M-Serie kann die Latenz beim Schreiben in das Transaktionsprotokoll im Vergleich zu Azure Storage Premium um Faktoren reduziert werden, wenn Azure-Schreibbeschleunigung verwendet wird. Daher sollten Sie Azure-Schreibbeschleunigung für die VHD(s) bereitstellen, die das Volume für das SQL Server-Transaktionsprotokoll bilden. Details finden Sie im Dokument [Schreibbeschleunigung](../../windows/how-to-enable-write-accelerator.md).
+Bei Azure-VMs der M-Serie kann die Latenz beim Schreiben in das Transaktionsprotokoll im Vergleich zu Azure Storage Premium um Faktoren reduziert werden, wenn Azure-Schreibbeschleunigung verwendet wird. Daher sollten Sie Azure-Schreibbeschleunigung für die VHD(s) bereitstellen, die das Volume für das SQL Server-Transaktionsprotokoll bilden. Details finden Sie im Dokument [Schreibbeschleunigung](../../how-to-enable-write-accelerator.md).
   
 
 ### <a name="formatting-the-disks"></a>Formatieren der Datenträger

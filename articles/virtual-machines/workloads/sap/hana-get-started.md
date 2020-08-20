@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/19/2020
 ms.author: juergent
-ms.openlocfilehash: ec63d08b164a3ed767a7622a9829beaf73e65ef3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f2a62cb08fcce6597f02c080231f5e1808794054
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87042324"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88509959"
 ---
 # <a name="installation-of-sap-hana-on-azure-virtual-machines"></a>Installation von SAP HANA auf virtuellen Azure-Computern
 ## <a name="introduction"></a>Einführung
@@ -72,7 +72,7 @@ In dieser Phase müssen Sie die Schritte zum Bereitstellen der VMs für die Inst
     -  [SAP-Supporthinweis Nr. 2382421 – Optimieren der Netzwerkkonfiguration auf HANA- und Betriebssystemebene](https://launchpad.support.sap.com/#/notes/2382421)
 
 1. Wählen Sie den Azure-Speichertyp für SAP HANA aus. In diesem Schritt müssen Sie sich für ein Speicherlayout für die SAP HANA-Installation entscheiden. Sie verwenden entweder angefügte Azure-Datenträger oder native Azure-NFS-Freigaben. Die unterstützten Azure-Speichertypen und die zulässigen Kombinationen verschiedener Azure-Speichertypen sind unter [SAP HANA: Speicherkonfigurationen für virtuelle Azure-Computer](./hana-vm-operations-storage.md) dokumentiert. Nehmen Sie als Erstes die dokumentierten Konfigurationen vor. Für Nicht-Produktionssysteme können Sie möglicherweise einen niedrigeren Durchsatz oder IOPS-Wert konfigurieren. Für Produktionszwecke müssen Sie möglicherweise einen etwas höheren Durchsatz und IOPS-Wert konfigurieren.
-2. Stellen Sie sicher, dass Sie für Ihre Volumes, die die DBMS-Transaktionsprotokolle oder -Wiederholungsprotokolle enthalten, die [Azure-Schreibbeschleunigung](../../linux/how-to-enable-write-accelerator.md) konfigurieren, wenn Sie virtuelle Computer der M-Serie oder der Mv2-Serie verwenden. Beachten Sie die Einschränkungen für Schreibbeschleunigung in der Dokumentation.
+2. Stellen Sie sicher, dass Sie für Ihre Volumes, die die DBMS-Transaktionsprotokolle oder -Wiederholungsprotokolle enthalten, die [Azure-Schreibbeschleunigung](../../how-to-enable-write-accelerator.md) konfigurieren, wenn Sie virtuelle Computer der M-Serie oder der Mv2-Serie verwenden. Beachten Sie die Einschränkungen für Schreibbeschleunigung in der Dokumentation.
 2. Überprüfen Sie, ob der [beschleunigte Netzwerkbetrieb von Azure](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/) auf den bereitgestellten VMs aktiviert ist.
 
 > [!NOTE]

@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 04/13/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 26179dd2491a8b8cbc2ef3eb0ad66fa61722d413
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 82dbb73da06097407d91f23d4d372aaa4cc76e99
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86525261"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88510894"
 ---
 # <a name="sap-ase-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Azure Virtual Machines – SAP ASE-DBMS-Bereitstellung für SAP-Workload
 
@@ -59,7 +59,7 @@ Die Seitengröße ist normalerweise 2.048 KB. Einzelheiten dazu finden Sie im A
 
 ## <a name="recommendations-on-vm-and-disk-structure-for-sap-ase-deployments"></a>Empfehlungen zur VM- und Datenträgerstruktur für SAP ASE-Bereitstellungen
 
-SAP ASE für SAP NetWeaver-Anwendungen wird auf allen VM-Typen unterstützt, die im [SAP-Supporthinweis Nr. 1928533](https://launchpad.support.sap.com/#/notes/1928533) aufgelistet werden. Zu typischen VM-Typen, die für SAP ASE-Datenbankserver mittlerer Größe verwendet werden, gehört Esv3.  Große Datenbanken mit mehreren Terabyte können VM-Typen der M-Serie nutzen. Die Leistung des Datenträgers beim Schreiben des SAP ASE-Transaktionsprotokolls kann durch Aktivieren der Schreibbeschleunigung für die M-Serie verbessert werden. Aufgrund der Art und Weise, wie SAP ASE Protokoll Schreibvorgänge durchführt, sollte Schreibbeschleunigung mit SAP ASE sorgfältig getestet werden.  Lesen Sie den [SAP-Supporthinweis Nr. 2816580](../../windows/how-to-enable-write-accelerator.md), und erwägen Sie die Ausführung eines Leistungstests.  
+SAP ASE für SAP NetWeaver-Anwendungen wird auf allen VM-Typen unterstützt, die im [SAP-Supporthinweis Nr. 1928533](https://launchpad.support.sap.com/#/notes/1928533) aufgelistet werden. Zu typischen VM-Typen, die für SAP ASE-Datenbankserver mittlerer Größe verwendet werden, gehört Esv3.  Große Datenbanken mit mehreren Terabyte können VM-Typen der M-Serie nutzen. Die Leistung des Datenträgers beim Schreiben des SAP ASE-Transaktionsprotokolls kann durch Aktivieren der Schreibbeschleunigung für die M-Serie verbessert werden. Aufgrund der Art und Weise, wie SAP ASE Protokoll Schreibvorgänge durchführt, sollte Schreibbeschleunigung mit SAP ASE sorgfältig getestet werden.  Lesen Sie den [SAP-Supporthinweis Nr. 2816580](../../how-to-enable-write-accelerator.md), und erwägen Sie die Ausführung eines Leistungstests.  
 Schreibbeschleunigung ist nur für den Transaktionsprotokoll-Datenträger vorgesehen. Der Cache auf Datenträgerebene sollte auf NONE festgelegt werden. Seien Sie nicht überrascht, wenn Azure-Schreibbeschleunigung keine ähnlichen Verbesserungen wie bei anderen DBMS zeigt. Basierend auf der Art und Weise, wie SAP ASE in das Transaktionsprotokoll schreibt, könnte es sein, dass es nur eine geringe bis keine Beschleunigung durch Azure-Schreibbeschleunigung gibt.
 Für Daten- und Protokollgeräte werden separate Datenträger empfohlen.  Die Systemdatenbanken „sybsecurity“ und `saptools` erfordern keine dedizierten Datenträger und können auf den Datenträgern abgelegt werden, die die SAP-Datenbankdaten und Protokollgeräte enthalten. 
 

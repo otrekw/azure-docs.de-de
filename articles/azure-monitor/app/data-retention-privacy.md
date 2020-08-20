@@ -4,12 +4,12 @@ description: Hinweis zur Datenaufbewahrung und Datenschutzrichtlinie
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 772777c48c8d16197cd8a73586f6549837d7d080
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 1b1a1e370d55ad58bf1468c2e8b2381b62707b6a
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372398"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245943"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Datensammlung, -aufbewahrung und -speicherung in Application Insights
 
@@ -93,9 +93,6 @@ Microsoft verwendet die Daten nur dazu, Ihnen den Dienst bereitstellen zu könne
 
 ## <a name="where-is-the-data-held"></a>Wo werden die Daten gespeichert?
 * Sie können den Speicherort auswählen, wenn Sie eine neue Application Insights-Ressource erstellen. Weitere Informationen über die Verfügbarkeit von Application Insights pro Region finden Sie [hier](https://azure.microsoft.com/global-infrastructure/services/?products=all).
-
-#### <a name="does-that-mean-my-app-has-to-be-hosted-in-the-usa-europe-or-southeast-asia"></a>Bedeutet dies, dass meine App in den USA, in Europa oder Südostasien gehostet werden muss?
-* Nein. Die Anwendung kann überall ausgeführt werden – auf Ihren eigenen lokalen Hosts oder in der Cloud.
 
 ## <a name="how-secure-is-my-data"></a>Wie sicher sind meine Daten?
 Application Insights ist ein Azure-Dienst. Sicherheitsrichtlinien werden im Whitepaper [Azure Security, Privacy, and Compliance (Azure-Sicherheit, -Datenschutz und -Kompatibilität)](https://go.microsoft.com/fwlink/?linkid=392408) beschrieben.

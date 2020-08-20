@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 11/08/2019
-ms.openlocfilehash: 26eec9cdd327ceb51e72deb1d6f40d585ce368fb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 218850feea8b0e22b8e11695a3aa3c69173f1ab7
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75896138"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88504924"
 ---
 # <a name="authentication-issues-in-azure-hdinsight"></a>Authentifizierungsprobleme in Azure HDInsight
 
@@ -208,7 +208,7 @@ Dieser Fehler tritt zeitweilig auf, wenn Benutzer versuchen, mithilfe von ACLs a
 
 * Bereinigen Sie für Azure Data Lake Storage Gen1 den Browsercache, und melden Sie sich erneut bei Ambari an.
 
-* Führen Sie für Azure Data Lake Storage Gen2 `/usr/lib/hdinsight-common/scripts/RegisterKerbWithOauth.sh <upn>` für den Benutzer aus, als der sich der Benutzer anmelden möchte.
+* Führen Sie für Azure Data Lake Storage Gen2 `/usr/lib/hdinsight-common/scripts/RegisterKerbTicketAndOAuth.sh <upn>` für den Benutzer aus, als der sich der Benutzer anmelden möchte.
 
 ---
 

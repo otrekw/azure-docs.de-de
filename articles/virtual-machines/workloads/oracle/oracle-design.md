@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogardle
-ms.openlocfilehash: 78eedb9bd4f12644a1bc992d0786a43b8af767a9
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 0dd787916159637ce92a29a5d4baa1ffe7a09ba4
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86507929"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88510010"
 ---
 # <a name="design-and-implement-an-oracle-database-in-azure"></a>Entwerfen und Implementieren einer Oracle-Datenbank in Azure
 
@@ -187,7 +187,7 @@ Sobald Sie eine genaue Vorstellung von den E/A-Anforderungen haben, können Sie 
 - Reduzieren Sie die E/A mit Datenkomprimierung (für Daten und Indizes).
 - Trennen Sie Redo-Protokolle, SYSTEM- und TEMP- sowie UNDO-Tabellenbereiche durch separate Datenträger.
 - Speichern Sie keine Anwendungsdateien auf dem standardmäßigen Betriebssystemdatenträger (/dev/sda). Diese Datenträger sind für schnelle VM-Startzeiten optimiert und erbringen für Ihre Anwendung möglicherweise keine gute Leistung.
-- Wenn Sie VMs der M-Serie in Storage Premium verwenden, aktivieren Sie [Schreibbeschleunigung](../../linux/how-to-enable-write-accelerator.md) für Datenträger mit Wiederholungsprotokollen.
+- Wenn Sie VMs der M-Serie in Storage Premium verwenden, aktivieren Sie [Schreibbeschleunigung](../../how-to-enable-write-accelerator.md) für Datenträger mit Wiederholungsprotokollen.
 
 ### <a name="disk-cache-settings"></a>Cacheeinstellungen von Datenträgern
 

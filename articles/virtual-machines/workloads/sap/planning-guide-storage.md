@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 06/23/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ae3851da1dbcc5f7ac37821a64cada20164c7661
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 668f8ffdc4b797219dc1f3c23fecb858d8f706ad
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87825003"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88510860"
 ---
 # <a name="azure-storage-types-for-sap-workload"></a>Azure Storage-Typen für die SAP-Workload
 Azure umfasst zahlreiche Speichertypen, die sich in den Funktionen, dem Durchsatz, der Latenz und den Preisen stark unterscheiden. Einige der Speichertypen sind für SAP-Szenarien nicht oder nur eingeschränkt verwendbar. Dagegen sind verschiedene Azure-Speichertypen für spezifische SAP-Workloadszenarien gut geeignet und optimiert. Speziell für SAP HANA wurden einige Azure-Speichertypen für die Verwendung mit SAP HANA zertifiziert. In diesem Dokument werden die verschiedenen Speichertypen erläutert und ihre Funktionen und Verwendbarkeit mit SAP-Workloads und SAP-Komponenten beschrieben.
@@ -84,7 +84,7 @@ Bevor auf die Einzelheiten eingegangen wird, werden zunächst die Zusammenfassun
 | DBMS-Protokollvolume, Nicht-HANA, Nicht-M/Mv2-VM-Familien | Nicht unterstützt | eingeschränkt geeignet (nicht in der Produktion) | geeignet für bis zu mittlerer Workload | empfohlen | Nicht unterstützt |
 
 
-<sup>1</sup> Mit Verwendung der [Azure-Schreibbeschleunigung](../../windows/how-to-enable-write-accelerator.md) für M/Mv2-VM-Familien für Protokoll- und Wiederholungsprotokollvolumes <sup>2</sup> Für die Verwendung von ANF müssen „/hana/data“ und „/hana/log“ in ANF enthalten sein. 
+<sup>1</sup> Mit Verwendung der [Azure-Schreibbeschleunigung](../../how-to-enable-write-accelerator.md) für M/Mv2-VM-Familien für Protokoll- und Wiederholungsprotokollvolumes <sup>2</sup> Für die Verwendung von ANF müssen „/hana/data“ und „/hana/log“ in ANF enthalten sein. 
 
 Merkmale der verschiedenen Speichertypen:
 
@@ -101,7 +101,7 @@ Merkmale der verschiedenen Speichertypen:
 | Georedundanz | nicht für verwaltete Datenträger | nicht für verwaltete Datenträger | nein | nein | nein |
 
 
-<sup>1</sup> Mit Verwendung der [Azure-Schreibbeschleunigung](../../windows/how-to-enable-write-accelerator.md) für M/Mv2-VM-Familien für Protokoll- und Wiederholungsprotokollvolumes
+<sup>1</sup> Mit Verwendung der [Azure-Schreibbeschleunigung](../../how-to-enable-write-accelerator.md) für M/Mv2-VM-Familien für Protokoll- und Wiederholungsprotokollvolumes
 
 <sup>2</sup> Kosten hängen von bereitgestellten IOPS und Durchsatz ab.
 
@@ -137,7 +137,7 @@ Die Funktionsmatrix für die SAP-Workload sieht folgendermaßen aus:
 | Funktion| Comment| Hinweise/Links | 
 | --- | --- | --- | 
 | Basis-VHD für Betriebssystem | geeignet | alle Systeme |
-| Datenträger | geeignet | alle Systeme – [speziell für SAP HANA](../../windows/how-to-enable-write-accelerator.md) |
+| Datenträger | geeignet | alle Systeme – [speziell für SAP HANA](../../how-to-enable-write-accelerator.md) |
 | Globales SAP-Transportverzeichnis | YES | [Unterstützt](https://launchpad.support.sap.com/#/notes/2015553) |
 | SAP-Verzeichnis „sapmnt“ | geeignet | alle Systeme |
 | Sicherungsspeicher | geeignet | für die kurzfristige Speicherung von Sicherungen |
@@ -149,12 +149,12 @@ Die Funktionsmatrix für die SAP-Workload sieht folgendermaßen aus:
 | Maximale Anzahl IOPS pro Datenträger | 20.000, [abhängig von der Größe des Datenträgers](https://azure.microsoft.com/pricing/details/managed-disks/) | Zu berücksichtigen sind auch die [Grenzwerte für virtuelle Computer](../../sizes.md) |
 | Durchsatz-SLA | YES | - |
 | Durchsatz linear zur Kapazität | halblinear in Klammern | [Verwaltete Datenträger – Preise](https://azure.microsoft.com/pricing/details/managed-disks/) |
-| HANA-zertifiziert | YES | [speziell für SAP HANA](../../windows/how-to-enable-write-accelerator.md) |
+| HANA-zertifiziert | YES | [speziell für SAP HANA](../../how-to-enable-write-accelerator.md) |
 | Datenträger-Momentaufnahmen möglich | YES | - |
-| Azure Backup-VM-Momentaufnahmen möglich | YES | mit Ausnahme von Cachedatenträgern mit [Schreibbeschleunigung](../../windows/how-to-enable-write-accelerator.md)  |
+| Azure Backup-VM-Momentaufnahmen möglich | YES | mit Ausnahme von Cachedatenträgern mit [Schreibbeschleunigung](../../how-to-enable-write-accelerator.md)  |
 | Kosten | MEDIUM | - |
 
-Azure Storage Premium erfüllt nicht die Speicherlatenz-KPIs für SAP HANA mit den gängigen Cachetypen, die mit Azure Storage Premium angeboten werden. Um die Speicherlatenz-KPIs für SAP HANA-Protokollschreibvorgänge zu erfüllen, müssen Sie das im Artikel [Aktivieren der Schreibbeschleunigung](../../windows/how-to-enable-write-accelerator.md) beschriebene Caching der Azure-Schreibbeschleunigung verwenden. Die Azure-Schreibbeschleunigung kommt allen anderen DBMS-Systemen bei den zugehörigen Schreibvorgängen für Transaktionsprotokolle und Wiederholungsprotokolle zugute. Daher wird empfohlen, sie in allen SAP-DBMS-Bereitstellungen zu verwenden. Für SAP HANA ist die Verwendung der Azure-Schreibbeschleunigung in Verbindung mit Azure Storage Premium obligatorisch.
+Azure Storage Premium erfüllt nicht die Speicherlatenz-KPIs für SAP HANA mit den gängigen Cachetypen, die mit Azure Storage Premium angeboten werden. Um die Speicherlatenz-KPIs für SAP HANA-Protokollschreibvorgänge zu erfüllen, müssen Sie das im Artikel [Aktivieren der Schreibbeschleunigung](../../how-to-enable-write-accelerator.md) beschriebene Caching der Azure-Schreibbeschleunigung verwenden. Die Azure-Schreibbeschleunigung kommt allen anderen DBMS-Systemen bei den zugehörigen Schreibvorgängen für Transaktionsprotokolle und Wiederholungsprotokolle zugute. Daher wird empfohlen, sie in allen SAP-DBMS-Bereitstellungen zu verwenden. Für SAP HANA ist die Verwendung der Azure-Schreibbeschleunigung in Verbindung mit Azure Storage Premium obligatorisch.
 
 
 

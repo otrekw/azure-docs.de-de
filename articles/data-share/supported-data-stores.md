@@ -5,13 +5,13 @@ ms.service: data-share
 author: jifems
 ms.author: jife
 ms.topic: conceptual
-ms.date: 07/30/2020
-ms.openlocfilehash: 967b2dceab1f1702120cd3121ccd64b4e7286bc6
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.date: 08/14/2020
+ms.openlocfilehash: 0e81d04edff667b0526f1d286701b2e8701528dc
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87511903"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88258598"
 ---
 # <a name="supported-data-stores-in-azure-data-share"></a>Unterstützte Datenspeicher in Azure Data Share
 
@@ -30,7 +30,7 @@ In der folgenden Tabelle sind die unterstützten Datenquellen für Azure Data Sh
 | Azure Data Lake Storage Gen2 |✓ ||
 | Azure SQL-Datenbank |Öffentliche Vorschau | |
 | Azure Synapse Analytics (ehemals Azure SQL DW) |Öffentliche Vorschau | |
-| Azure-Daten-Explorer | |Öffentliche Vorschau |
+| Azure-Daten-Explorer | |✓ |
 
 ## <a name="data-store-support-matrix"></a>Datenspeicher-Unterstützungsmatrix
 
@@ -62,9 +62,7 @@ Die Freigabe von SQL-basierten Quellen umfasst Voraussetzungen für Firewallrege
 ## <a name="share-from-azure-data-explorer"></a>Freigeben über Azure Data Explorer
 Azure Data Share unterstützt die Möglichkeit zur direkten Freigabe von Datenbanken über Azure Data Explorer-Cluster. Der Datenanbieter kann auf Datenbank- oder Clusterebene freigeben. Wenn der Datenconsumer auf Datenbankebene freigegeben wurde, kann er nur auf die vom Datenanbieter freigegebene(n) Datenbank(en) zugreifen. Wenn der Datenconsumer auf Clusterebene freigegeben wurde, kann er auf alle Datenbanken aus dem Cluster des Anbieters zugreifen, einschließlich zukünftiger Datenbanken, die vom Datenanbieter erstellt werden.
 
-Für den Zugriff auf freigegebene Datenbanken benötigt der Datenconsumer seinen eigenen Azure Data Explorer-Cluster. Der Azure Data Explorer-Cluster des Datenconsumers muss sich im selben Azure-Rechenzentrum wie der Azure Data Explorer-Cluster des Datenanbieters befinden. Beim Herstellen einer Freigabebeziehung erstellt Azure Data Share eine symbolische Verknüpfung zwischen den Azure Data Explorer-Clustern des Anbieters und des Consumers.
-
-Azure Data Explorer unterstützt zwei Modi der Datenerfassung: Batch und Streaming. Daten, die von Batch in der freigegebenen Datenbank empfangen wurden, werden auf der Datenconsumerseite innerhalb weniger Sekunden bis zu wenigen Minuten angezeigt. Bei Daten, die vom Streaming empfangen wurden, könnte es bis zu 24 Stunden dauern, bis sie auf der Datenconsumerseite angezeigt werden. 
+Für den Zugriff auf freigegebene Datenbanken benötigt der Datenconsumer seinen eigenen Azure Data Explorer-Cluster. Der Azure Data Explorer-Cluster des Datenconsumers muss sich im selben Azure-Rechenzentrum wie der Azure Data Explorer-Cluster des Datenanbieters befinden. Beim Herstellen einer Freigabebeziehung erstellt Azure Data Share eine symbolische Verknüpfung zwischen den Azure Data Explorer-Clustern des Anbieters und des Consumers. Daten, die im Batchmodus im Azure Data Explorer-Ausgangscluster erfasst werden, sind nach wenigen Sekunden bis zu einigen Minuten im Zielcluster verfügbar.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
