@@ -9,12 +9,12 @@ tags: azure-portal
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/24/2020
-ms.openlocfilehash: 76eee4b0b029714a75b57e5d44e097a36de3181f
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: a623436cdeaac89d140b3834808fb975bd733f4e
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371412"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87835951"
 ---
 # <a name="service-administration-for-azure-cognitive-search-in-the-azure-portal"></a>Dienstverwaltung für Azure Cognitive Search im Azure-Portal
 
@@ -56,9 +56,9 @@ Jeder mit Zugriff auf die Dienst-URL und einen API-Schlüssel hat auch Zugriff a
 * Der schreibgeschützte Zugriff auf den Dienst ist in den Abfragerechten enthalten, die einer Clientanwendung üblicherweise gewährt werden, indem ihr die URL sowie ein Abfrage-API-Schlüssel zur Verfügung gestellt werden.
 * Der Lese-/Schreibzugriff ermöglicht das Hinzufügen, Löschen oder Ändern von Serverobjekten, einschließlich der API-Schlüssel, Indizes, Indexer, Datenquellen und Zeitpläne. Der Lese-/Schreibzugriff wird erteilt, indem die URL und ein Administrator-API-Schlüssel bereitgestellt werden.
 
-Rechte für das Dienstbereitstellungsgerät werden über Rollenzuweisungen gewährt. Der [Rollenbasierte Zugriff (RBAC)](../role-based-access-control/overview.md) ist ein Autorisierungssystem für die Bereitstellung von Azure-Ressourcen, das auf [Azure Resource Manager](../azure-resource-manager/management/overview.md) basiert. 
+Rechte für das Dienstbereitstellungsgerät werden über Rollenzuweisungen gewährt. Der [rollenbasierte Zugriff in Azure (Azure Role-Based Access Control, Azure RBAC)](../role-based-access-control/overview.md) ist ein Autorisierungssystem für die Bereitstellung von Azure-Ressourcen, das auf [Azure Resource Manager](../azure-resource-manager/management/overview.md) basiert. 
 
-Im Kontext von Azure Cognitive Search bestimmen die [RBAC-Rollenzuweisungen](search-security-rbac.md), wer Aufgaben ausführen kann, unabhängig davon, ob dazu das [Portal](search-manage.md), [PowerShell](search-manage-powershell.md) oder die [REST-APIs für die Verwaltung](https://docs.microsoft.com/rest/api/searchmanagement/search-howto-management-rest-api) verwendet werden.
+Im Kontext von Azure Cognitive Search bestimmen die [Azure-Rollenzuweisungen](search-security-rbac.md), wer Aufgaben ausführen kann, unabhängig davon, ob Sie das [Portal](search-manage.md), [PowerShell](search-manage-powershell.md) oder die [Verwaltungs-REST-APIs](https://docs.microsoft.com/rest/api/searchmanagement/search-howto-management-rest-api) verwenden:
 
 * Erstellen oder Löschen eines Diensts
 * Skalieren des Diensts

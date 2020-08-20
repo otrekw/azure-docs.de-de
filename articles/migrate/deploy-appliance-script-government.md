@@ -3,12 +3,12 @@ title: Einrichten einer Azure Migrate-Appliance in Azure Government
 description: Hier erfahren Sie, wie Sie eine Azure Migrate-Appliance in Azure Government einrichten.
 ms.topic: article
 ms.date: 04/16/2020
-ms.openlocfilehash: f0ebc882646b5ff3f62ddddf91cffc85cb5e0da6
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 993c25d7b2c580df47b61c836b885ed6379e8640
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86109976"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88612264"
 ---
 # <a name="set-up-an-appliance-in-azure-government"></a>Einrichten einer Appliance in Azure Government 
 

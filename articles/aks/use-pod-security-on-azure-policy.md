@@ -5,22 +5,18 @@ services: container-service
 ms.topic: article
 ms.date: 07/06/2020
 author: jluk
-ms.openlocfilehash: 8be0b05c260037bbe8afc92726d81668e1391d4a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 18947f409ebcef570998671f9f421f8228e9692d
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87050467"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87987357"
 ---
 # <a name="secure-pods-with-azure-policy-preview"></a>Sichern von Pods mit Azure Policy (Vorschau)
 
 Zum Erhöhen der Sicherheit Ihres AKS-Clusters können Sie steuern, welche Funktionen den Pods gewährt werden und ob etwas nicht der Unternehmensrichtlinie entspricht. Dieser Zugriff wird durch integrierte Richtlinien definiert, die durch das [Azure Policy-Add-On für AKS][kubernetes-policy-reference] bereitgestellt werden. Durch die Bereitstellung einer zusätzlichen Kontrolle über die Sicherheitsaspekte der Spezifikation Ihres Pods, z. B. Stammberechtigungen, wird eine strengere Einhaltung der Sicherheitsvorschriften und ein besserer Einblick in die in Ihrem Cluster bereitgestellten Systeme ermöglicht. Wenn ein Pod die in der Richtlinie festgelegten Bedingungen nicht erfüllt, kann Azure Policy dem Pod das Starten untersagen oder einen Verstoß kennzeichnen. In diesem Artikel erfahren Sie, wie Sie Azure Policy verwenden können, um die Bereitstellung von Pods in AKS einzuschränken.
 
-> [!IMPORTANT]
-> AKS-Previewfunktionen stehen gemäß dem Self-Service- und Aktivierungsprinzip zur Verfügung. Vorschauversionen werden „wie besehen“ und „wie verfügbar“ bereitgestellt und sind von den Vereinbarungen zum Service Level und der eingeschränkten Garantie ausgeschlossen. AKS-Vorschauen werden teilweise vom Kundensupport auf der Grundlage der bestmöglichen Leistung abgedeckt. Daher sind diese Funktionen nicht für die Verwendung in der Produktion vorgesehen. Weitere Informationen hierzu finden Sie in den folgenden Supportartikeln:
->
-> * [Unterstützungsrichtlinien für Azure Kubernetes Service][aks-support-policies]
-> * [Häufig gestellte Fragen zum Azure-Support][aks-faq]
+[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
@@ -47,7 +43,7 @@ In diesem Dokument wird davon ausgegangen, dass Sie über Folgendes verfügen, d
 
 In einem AKS-Cluster wird eine Zugangssteuerung verwendet, um an den API-Server gerichtete Anforderungen abzufangen, wenn eine Ressource erstellt und aktualisiert werden soll. Der Zugangscontroller kann dann die Ressourcenanforderung anhand einer Reihe von Regeln *überprüfen*, um zu ermitteln, ob sie erstellt werden soll.
 
-Zuvor wurde das Feature [Podsicherheitsrichtlinie (Vorschau)](use-pod-security-policies.md) über das Kubernetes-Projekt aktiviert, um einzuschränken, welche Pods bereitgestellt werden können. Dieses Feature befindet sich nicht mehr in der aktiven Entwicklung des Kubernetes-Projekts.
+Zuvor wurde das Feature [Podsicherheitsrichtlinie (Vorschau)](use-pod-security-policies.md) über das Kubernetes-Projekt aktiviert, um einzuschränken, welche Pods bereitgestellt werden können.
 
 Durch die Verwendung des Azure Policy-Add-Ons kann ein AKS-Cluster integrierte Azure-Richtlinien verwenden, die Pods und andere Kubernetes-Ressourcen ähnlich der bisherigen Podsicherheitsrichtlinie sichern. Das Azure Policy-Add-On für AKS installiert eine verwaltete Instanz von [Gatekeeper](https://github.com/open-policy-agent/gatekeeper), einem überprüfenden Zugangscontroller. Azure Policy für Kubernetes baut auf dem Open Policy Agent (Open-Source) auf, der auf der [Rego-Richtliniensprache](../governance/policy/concepts/policy-for-kubernetes.md#policy-language) beruht.
 
@@ -283,7 +279,7 @@ Nachfolgend finden Sie eine Zusammenfassung der Verhaltensänderungen zwischen d
 |Installation|Aktivieren des Podsicherheitsrichtlinien-Features |Aktivieren des Azure Policy-Add-Ons
 |Bereitstellen von Richtlinien| Bereitstellen der Podsicherheitsrichtlinien-Ressource| Weisen Sie Azure-Richtlinien dem Abonnement- oder Ressourcengruppenbereich zu. Das Azure Policy-Add-On ist für Kubernetes-Ressourcenanwendungen erforderlich.
 | Standardrichtlinien | Wenn die Podsicherheitsrichtlinie in AKS aktiviert ist, werden standardmäßig die Richtlinien „Privilegiert“ (Privileged) und „Uneingeschränkt“ (Unrestricted) angewendet. | Durch die Aktivierung des Azure Policy-Add-Ons werden keine Standardrichtlinien angewendet. Sie müssen Richtlinien in Azure Policy explizit aktivieren.
-| Wer kann Richtlinien erstellen und zuweisen? | Der Clusteradministrator erstellt eine Ressource für Podsicherheitsrichtlinien. | Benutzer müssen in der AKS-Clusterressourcengruppe mindestens die Berechtigungen „Besitzer“ oder „Ressourcenrichtlinienmitwirkender“ aufweisen. – Über die API können Benutzer Richtlinien im Bereich der AKS-Clusterressourcen zuweisen. Der Benutzer sollte mindestens die Berechtigungen „Besitzer“ oder „Ressourcenrichtlinienmitwirkender" für die AKS-Clusterressource aufweisen. – Im Azure-Portal können Richtlinien auf Verwaltungsgruppen-/Abonnement-/Ressourcengruppenebene angewendet werden.
+| Wer kann Richtlinien erstellen und zuweisen? | Der Clusteradministrator erstellt eine Ressource für Podsicherheitsrichtlinien. | Benutzer müssen in der AKS-Clusterressourcengruppe mindestens die Berechtigungen „Besitzer“ oder „Ressourcenrichtlinienmitwirkender“ aufweisen. – Über die API können Benutzer Richtlinien im Bereich der AKS-Clusterressourcen zuweisen. Der Benutzer sollte mindestens die Berechtigungen „Besitzer“ oder „Ressourcenrichtlinienmitwirkender" für die AKS-Clusterressource aufweisen. – Im Azure-Portal können Richtlinien auf Verwaltungsgruppen-, Abonnement- oder Ressourcengruppenebene angewendet werden.
 | Autorisierungsrichtlinien| Benutzer und Dienstkonten benötigen explizite Berechtigungen zur Verwendung von Podsicherheitsrichtlinien. | Für die Autorisierung von Richtlinien ist keine zusätzliche Zuweisung erforderlich. Nachdem Richtlinien in Azure zugewiesen wurden, können alle Clusterbenutzer diese Richtlinien verwenden.
 | Anwendbarkeit von Richtlinien | Der Administratorbenutzer umgeht die Erzwingung von Podsicherheitsrichtlinien. | Alle Benutzer (Administrator und Nicht-Administrator) sehen dieselben Richtlinien. Es gibt keine spezielle Schreibweise auf der Basis von Benutzern. Die Anwendung von Richtlinien kann auf der Namespaceebene ausgeschlossen werden.
 | Geltungsbereich der Richtlinie | Podsicherheitsrichtlinien sind keinem Namespace zugeordnet | Die von Azure Policy verwendeten Einschränkungsvorlagen sind keinem Namespace zugeordnet.

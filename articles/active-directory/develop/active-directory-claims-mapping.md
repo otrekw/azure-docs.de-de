@@ -10,15 +10,15 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.workload: identity
 ms.topic: how-to
-ms.date: 07/29/2020
+ms.date: 08/06/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
-ms.openlocfilehash: 29dc03d663d590c13a1948411ed597388750c1d7
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: d518dcf833a49e32d72938a31da412d53cc40037
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87428003"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88141532"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>Gewusst wie: Anpassen von in Token ausgegebenen Ansprüchen für eine bestimmte App in einem Mandanten (Vorschau)
 
@@ -261,13 +261,15 @@ Um zu steuern, welche Ansprüche ausgegeben werden und woher die Daten stammen, 
 **Datentyp:** JSON-Blob mit mindestens einem Anspruchsschemaeintrag
 
 **Zusammenfassung:** Diese Eigenschaft definiert, welche Ansprüche zusätzlich zum grundlegenden und zum Hauptanspruchssatz in den von der Richtlinie betroffenen Token vorhanden sind.
-Für jeden Anspruchsschemaeintrag in dieser Eigenschaft definiert sind bestimmte Informationen erforderlich. Geben Sie an, woher die Daten stammen (**Wert** oder **Quelle-ID-Paar**) und als welcher Anspruch die Daten ausgegeben werden (**Anspruchstyp**).
+Für jeden Anspruchsschemaeintrag in dieser Eigenschaft definiert sind bestimmte Informationen erforderlich. Geben Sie an, woher die Daten stammen (**Wert** oder **Quelle-ID-Paar** oder **Quelle-Erweiterungs-ID-Paar**) und als welcher Anspruch die Daten ausgegeben werden (**Anspruchstyp**).
 
 ### <a name="claim-schema-entry-elements"></a>Elemente eines Anspruchsschemaeintrags
 
 **Wert:** Das Wertelement definiert die Daten, die im Anspruch ausgegeben werden sollen, als statischen Wert.
 
-**Quelle/ID-Paar:** Die Quell- und ID-Elemente definieren, woher die Daten im Anspruch stammen. 
+**Quelle/ID-Paar:** Die Quell- und ID-Elemente definieren, woher die Daten im Anspruch stammen.  
+
+**Quelle-Erweiterungs-ID-Paar:** Die Quell- und Erweiterungs-ID-Elemente definieren das Verzeichnisschema-Erweiterungsattribut, aus dem die Daten im Anspruch stammen. Weitere Informationen finden Sie unter [Verwenden von Verzeichnisschema-Erweiterungsattributen in Ansprüchen](active-directory-schema-extensions.md).
 
 Legen Sie das Quellelement auf einen der folgenden Werte fest: 
 
@@ -327,7 +329,7 @@ Das ID-Element identifiziert, welche Eigenschaft in der Quelle den Wert für den
 | Benutzer | facsimiletelephonenumber | Faxnummer |
 | Benutzer | assignetzdroles | Liste der dem Benutzer zugewiesenen App-Rollen|
 | Anwendung, Ressourcen, Zielgruppe | displayname | Anzeigename |
-| Anwendung, Ressourcen, Zielgruppe | objected | ObjectID |
+| Anwendung, Ressourcen, Zielgruppe | objectid | ObjectID |
 | Anwendung, Ressourcen, Zielgruppe | tags | Dienstprinzipal-Tag |
 | Company | tenantcountry | Land/Region des Mandanten |
 
@@ -416,7 +418,7 @@ Auf der Grundlage der ausgewählten Methode wird eine Reihe von Eingaben und Aus
 
 ### <a name="custom-signing-key"></a>Benutzerdefinierte Signaturschlüssel
 
-Ein benutzerdefinierter Signaturschlüssel muss dem Dienstprinzipalobjekt zugewiesen werden, damit die Anspruchszuordnungsrichtlinie wirksam werden kann. Dies sorgt für die Bestätigung, dass Token vom Ersteller der Anspruchszuordnungsrichtlinie geändert wurden. Zudem werden Anwendungen vor Anspruchszuordnungsrichtlinien geschützt, die von böswilligen Akteuren erstellt wurden. Zum Hinzufügen eines benutzerdefinierten Signaturschlüssels können Sie mit dem Azure PowerShell-Cmdlet `new-azureadapplicationkeycredential` Anmeldeinformationen für einen symmetrischen Schlüssel für Ihr Anwendungsobjekt erstellen. Weitere Informationen zu diesem Azure PowerShell-Cmdlet finden Sie unter [New-AzureADApplicationKeyCredential](https://docs.microsoft.com/powerShell/module/Azuread/New-AzureADApplicationKeyCredential?view=azureadps-2.0).
+Ein benutzerdefinierter Signaturschlüssel muss dem Dienstprinzipalobjekt zugewiesen werden, damit die Anspruchszuordnungsrichtlinie wirksam werden kann. Dies sorgt für die Bestätigung, dass Token vom Ersteller der Anspruchszuordnungsrichtlinie geändert wurden. Zudem werden Anwendungen vor Anspruchszuordnungsrichtlinien geschützt, die von böswilligen Akteuren erstellt wurden. Zum Hinzufügen eines benutzerdefinierten Signaturschlüssels können Sie mit dem Azure PowerShell-Cmdlet `new-azureadapplicationkeycredential` Anmeldeinformationen für einen symmetrischen Schlüssel für Ihr Anwendungsobjekt erstellen. Weitere Informationen zu diesem Azure PowerShell-Cmdlet finden Sie unter [New-AzureADApplicationKeyCredential](/powerShell/module/Azuread/New-AzureADApplicationKeyCredential?view=azureadps-2.0).
 
 Apps mit aktivierter Anspruchszuordnung müssen ihre Tokensignaturschlüssel überprüfen, indem sie `appid={client_id}` an ihre [OpenID Connect-Metadatenanforderungen](v2-protocols-oidc.md#fetch-the-openid-connect-metadata-document) anfügen. Im Folgenden finden Sie das Format des OpenID Connect-Metadatendokuments, das Sie verwenden sollten: 
 

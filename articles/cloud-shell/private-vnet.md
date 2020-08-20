@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/15/2020
 ms.author: damaerte
-ms.openlocfilehash: 5abc10d149cdb2c054f4122cd805ec22b2e37e2f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1cb5716e2f02a99e4d39a4041a2e54e87cf43568
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87094433"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88114658"
 ---
 # <a name="deploy-cloud-shell-into-an-azure-virtual-network"></a>Bereitstellen von Cloud Shell in einem Azure Virtual Network
 > [!NOTE]
@@ -103,7 +103,7 @@ Navigieren Sie zu dem Relay, das Sie mithilfe der obigen Vorlage erstellt haben,
 > [!NOTE]
 > Dieser Schritt muss für jeden Administrator durchgeführt werden, der Cloud Shell verwenden wird.
 
-Nachdem Sie die obigen Schritte abgeschlossen haben, navigieren Sie im Azure-Portal oder auf https://shell.azure.com zu Cloud Shell.
+Nachdem Sie die obigen Schritte abgeschlossen haben, navigieren Sie im Azure-Portal oder auf https://shell.azure.com zu Cloud Shell. Eine dieser Umgebungen muss jedes Mal verwendet werden, wenn Sie eine Verbindung mit einer isolierten Cloud Shell-Umgebung herstellen möchten.
 
 > [!NOTE]
 > Wenn Cloud Shell in der Vergangenheit verwendet wurde, muss die Einbindung des vorhandenen clouddrive aufgehoben werden. Führen Sie hierzu aus einer aktiven Cloud Shell-Sitzung `clouddrive unmount` aus, und aktualisieren Sie Ihre Seite.

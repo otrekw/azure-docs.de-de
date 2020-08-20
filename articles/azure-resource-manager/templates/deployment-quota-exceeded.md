@@ -2,20 +2,27 @@
 title: Überschreitung des Bereitstellungskontingents
 description: Beschreibt die Behebung des Fehlers, dass im Verlauf der Ressourcengruppe mehr als 800 Bereitstellungen vorkommen.
 ms.topic: troubleshooting
-ms.date: 06/25/2020
-ms.openlocfilehash: 1b0c3de6007964b487a13e71cd43bd984cd970f1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/07/2020
+ms.openlocfilehash: 8996d7817eea2f8daf44fbc9b4416c884b05940f
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85391178"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87987051"
 ---
 # <a name="resolve-error-when-deployment-count-exceeds-800"></a>Beheben des Fehlers, dass die Anzahl der Bereitstellungen 800 überschreitet
 
 Jede Ressourcengruppe ist in ihrem Bereitstellungsverlauf auf 800 Bereitstellungen beschränkt. Dieser Artikel beschreibt den Fehler, den Sie erhalten, wenn bei einer Bereitstellung ein Fehler auftritt, da dadurch die zulässigen 800 Bereitstellungen überschritten würden. Um diesen Fehler zu beheben, löschen Sie Bereitstellungen aus dem Verlauf der Ressourcengruppe. Das Löschen einer Bereitstellung aus dem Verlauf hat keinerlei Auswirkungen auf die bereitgestellten Ressourcen.
 
-> [!NOTE]
-> Azure Resource Manager beginnt bald mit dem automatischen Löschen von Bereitstellungen aus Ihrem Verlauf, wenn Sie sich dem Grenzwert nähern. Dieser Fehler wird möglicherweise weiterhin angezeigt, wenn Sie automatische Löschungen deaktiviert haben. Weitere Informationen finden Sie unter [Automatische Löschungen aus dem Bereitstellungsverlauf](deployment-history-deletions.md).
+Azure Resource Manager löscht Bereitstellungen automatisch aus dem Verlauf, wenn der Grenzwert fast erreicht ist. Dieser Fehler wird aus einem der folgenden Gründe unter Umständen weiterhin angezeigt:
+
+1. Für die Ressourcengruppe ist eine CanNotDelete-Sperre festgelegt, die Löschungen aus dem Bereitstellungsverlauf verhindert.
+1. Sie haben automatische Löschungen deaktiviert.
+1. Sie verfügen über eine große Anzahl von gleichzeitig ausgeführten Bereitstellungen, und die automatischen Löschungen werden nicht schnell genug verarbeitet, um die Gesamtanzahl zu verringern.
+
+Informationen dazu, wie Sie die Sperre entfernen oder automatische Löschungen aktivieren, finden Sie unter [Automatische Löschungen aus dem Bereitstellungsverlauf](deployment-history-deletions.md).
+
+In diesem Artikel wird beschrieben, wie Sie Bereitstellungen manuell aus dem Verlauf löschen.
 
 ## <a name="symptom"></a>Symptom
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 3a8b271a030de2ddd3aa40b5bb0af871319c0e1f
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: d2ef76a054642807f0d72a758ae084a19557caf8
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86171804"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009000"
 ---
 # <a name="azure-resource-graph-security-baseline-for-azure-security-benchmark"></a>Azure Resource Graph-Sicherheitsbaseline für Azure-Sicherheitsvergleichstest
 
@@ -26,7 +26,7 @@ Diese Sicherheitsbaseline wendet Empfehlungen des [Azure-Sicherheitsvergleichste
 
 ### <a name="310-regularly-review-and-reconcile-user-access"></a>3.10: Regelmäßiges Überprüfen und Abstimmen des Benutzerzugriffs
 
-**Leitfaden**: Azure Resource Graph ermöglicht den Zugriff auf Ressourcentypen und Eigenschaften auf der Grundlage der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC). Überwachen und überprüfen Sie regelmäßig den Zugriff, der Sicherheitsprinzipalen (Benutzern, Gruppen und Dienstkonten) gewährt wurde, um sicherzustellen, dass bei Abfragen Ergebnisse für die entsprechenden Ressourcen zurückgegeben werden.
+**Leitfaden**: Azure Resource Graph ermöglicht den Zugriff auf Ressourcentypen und -eigenschaften auf der Grundlage der rollenbasierten Zugriffssteuerung von Azure (Azure Role-Based Access Control, Azure RBAC). Überwachen und überprüfen Sie regelmäßig den Zugriff, der Sicherheitsprinzipalen (Benutzern, Gruppen und Dienstkonten) gewährt wurde, um sicherzustellen, dass bei Abfragen Ergebnisse für die entsprechenden Ressourcen zurückgegeben werden.
 
 * [Berechtigungen in Azure Resource Graph](../overview.md#permissions-in-azure-resource-graph)
 

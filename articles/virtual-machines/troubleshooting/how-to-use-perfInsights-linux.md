@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 7/10/2019
 ms.author: genli
-ms.openlocfilehash: 13e4c7a981124aba22dcb324d60e075d1d552bf8
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 1bf080ad4c4dc665e61d1075cf22c84d4cd66648
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86526798"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121390"
 ---
 # <a name="how-to-use-perfinsights"></a>Verwenden von PerfInsights
 
@@ -99,6 +99,7 @@ Es werden Informationen zum virtuellen Linux-Computer, zum Betriebssystem, zu Bl
   - /var/log/boot.log
   - /var/log/yum.log
   - /var/log/dpkg.log
+  - /var/log/sysstat or /var/log/sa [`**`]
   - /var/log/cloud-init.log
   - /var/log/cloud-init-output.log
   - /var/log/gpu-manager.log
@@ -113,6 +114,8 @@ Es werden Informationen zum virtuellen Linux-Computer, zum Betriebssystem, zu Bl
 
 >[!Note]
 >[`*`] Für Debian- und SLES-Distributionen werden noch keine PCI-Informationen erfasst.
+> 
+>[`**`] /var/log/sysstat or /var/log/sa enthält die SAR-Dateien (System Activity Report), die vom sysstat-Paket gesammelt werden. Wenn das sysstat-Paket nicht auf der VM installiert ist, empfiehlt das Tool PerfInsights die Installation.
 
 ## <a name="run-the-perfinsights-linux-on-your-vm"></a>Ausführen von PerfInsights Linux auf Ihrem virtuellen Computer
 
@@ -121,7 +124,7 @@ Es werden Informationen zum virtuellen Linux-Computer, zum Betriebssystem, zu Bl
 #### <a name="tool-requirements"></a>Toolanforderungen
 
 - Dieses Tool muss auf dem virtuellen Computer ausgeführt werden, auf dem das Leistungsproblem besteht.
-- Auf dem virtuellen Computer muss Python 2.7 installiert sein.
+- Auf der VM muss Python 3.x oder Python 2.7 installiert sein.
 
 - Aktuell werden folgende Distributionen unterstützt:
 
@@ -201,7 +204,7 @@ Gehen Sie wie folgt vor, um das Tool PerfInsights auszuführen:
     ```
 
     >[!Note]
-    >Vor dem Ausführen eines Szenarios wird der Benutzer von PerfInsights aufgefordert, dem Freigeben von Diagnoseinformationen und den Lizenzbedingungen zuzustimmen. Verwenden Sie die Option **„-a“ oder „--accept-disclaimer-and-share-diagnostics“** , um diese Eingabeaufforderungen zu überspringen.
+    >Vor dem Ausführen eines Szenarios wird der Benutzer von PerfInsights aufgefordert, dem Freigeben von Diagnoseinformationen und den Lizenzbedingungen zuzustimmen. Verwenden Sie die Option **„-a“ oder „--accept-disclaimer-and-share-diagnostics“**, um diese Eingabeaufforderungen zu überspringen.
     >
     >Wenn Sie über ein aktives Microsoft-Supportticket verfügen und PerfInsights gemäß Anweisung des zuständigen Supporttechnikers ausführen, geben Sie mithilfe der Option **„-s“ oder „--support-request“** die Nummer des Supporttickets an.
 

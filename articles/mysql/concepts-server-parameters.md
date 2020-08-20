@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 6/25/2020
-ms.openlocfilehash: ce8e8b083b108d24c11d828ae1cbd4e47e090fc0
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: de1345fca418118e88929870cd2f4007dd36b3a4
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85963205"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87835985"
 ---
 # <a name="server-parameters-in-azure-database-for-mysql"></a>Serverparameter in Azure Database for MySQL
 
@@ -19,15 +19,15 @@ Dieser Artikel enthält Überlegungen und Richtlinien zur Konfiguration von Serv
 
 ## <a name="what-are-server-parameters"></a>Was sind Serverparameter? 
 
-Das MySQL-Modul bietet viele verschiedene Servervariablen/-parameter, die zur Konfiguration und Optimierung des Modulverhaltens verwendet werden können. Einige Parameter können dynamisch während der Laufzeit festgelegt werden, während andere „statisch“ sind, sodass ein Neustart des Servers erforderlich ist, um sie anzuwenden.
+Das MySQL-Modul bietet viele verschiedene Servervariablen/-parameter, die zur Konfiguration und Optimierung des Modulverhaltens verwendet werden können. Einige der Parameter können dynamisch während der Laufzeit festgelegt werden, während andere „statisch“ sind und ihre Anwendung einen Neustart des Servers erfordert.
 
 Azure Database for MySQL bietet die Möglichkeit, den Wert verschiedener MySQL-Serverparameter unter Verwendung von [Azure-Portal](./howto-server-parameters.md), [Azure-Befehlszeilenschnittstelle](./howto-configure-server-parameters-using-cli.md) und [PowerShell](./howto-configure-server-parameters-using-powershell.md) zu ändern, um den Anforderungen Ihrer Workload zu entsprechen.
 
 ## <a name="configurable-server-parameters"></a>Konfigurierbare Serverparameter
 
-Die Liste der unterstützten Serverparameter wächst ständig. Verwenden Sie die Registerkarte „Serverparameter“ im Azure-Portal, um die vollständige Liste anzuzeigen und die Werte der Serverparameter zu konfigurieren.
+Die Liste der unterstützten Serverparameter wächst ständig. Sie können die vollständige Liste im Azure-Portal auf der Registerkarte „Serverparameter“ anzeigen und die Werte der Serverparameter dort konfigurieren.
 
-In den folgenden Abschnitten erfahren Sie mehr über die Grenzen der verschiedenen häufig aktualisierten Serverparameter. Die Grenzwerte werden durch den Tarif und die virtuellen Kerne des Servers bestimmt.
+In den folgenden Abschnitten erfahren Sie mehr über die Grenzen der verschiedenen häufig aktualisierten Serverparameter. Die Grenzwerte werden durch den Tarif und die Anzahl der virtuellen Kerne des Servers bestimmt.
 
 ### <a name="thread-pools"></a>Threadpools
 
@@ -77,7 +77,7 @@ Weitere Informationen zu diesem Parameter finden Sie in der [MySQL-Dokumentation
 |Arbeitsspeicheroptimiert|16|65498251264|134217728|65498251264|
 |Arbeitsspeicheroptimiert|32|132070244352|134217728|132070244352|
 
-#### <a name="servers-support-up-to-16-tb-storage"></a>Server unterstützen bis zu 16 TB Speicher
+#### <a name="servers-support-up-to-16-tb-storage"></a>Server, die bis zu 16 TB Speicher unterstützen
 
 |**Tarif**|**vCore(s)**|**Standardwert (Bytes)**|**Mindestwert (Bytes)**|**Höchstwert (Bytes)**|
 |---|---|---|---|---|
@@ -133,13 +133,13 @@ Weitere Informationen zu diesem Parameter finden Sie in der [MySQL-Dokumentation
 |Universell|2|300|10|600|
 |Universell|4|625|10|1250|
 |Universell|8|1250|10|2500|
-|Universell|16|2500|10|5\.000|
+|Universell|16|2500|10|5.000|
 |Universell|32|5\.000|10|10000|
 |Universell|64|10000|10|20000|
 |Arbeitsspeicheroptimiert|2|625|10|1250|
 |Arbeitsspeicheroptimiert|4|1250|10|2500|
-|Arbeitsspeicheroptimiert|8|2500|10|5\.000|
-|Arbeitsspeicheroptimiert|16|5\.000|10|10000|
+|Arbeitsspeicheroptimiert|8|2500|10|5.000|
+|Arbeitsspeicheroptimiert|16|5.000|10|10000|
 |Arbeitsspeicheroptimiert|32|10000|10|20000|
 
 Wenn Verbindungen den Grenzwert übersteigen, erhalten Sie möglicherweise den folgenden Fehler:
@@ -151,7 +151,7 @@ Wenn Verbindungen den Grenzwert übersteigen, erhalten Sie möglicherweise den f
 Das Erstellen neuer Clientverbindungen mit MySQL nimmt Zeit in Anspruch, und nach der Herstellung belegen diese Verbindungen Datenbankressourcen, auch wenn Sie sich im Leerlauf befinden. Die meisten Anwendungen fordern viele kurzlebige Verbindungen an, was diese Situation erschwert. Das Ergebnis sind weniger Ressourcen, die für ihre tatsächliche Workload verfügbar sind, was zu verringerter Leistung führt. Ein Verbindungspooler, der Verbindungen im Leerlauf reduziert und vorhandene Verbindungen wiederverwendet, hilft dabei, dies zu vermeiden. Weitere Informationen zum Einrichten von ProxySQL finden Sie in unserem [Blogbeitrag](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/load-balance-read-replicas-using-proxysql-in-azure-database-for/ba-p/880042).
 
 >[!Note]
->ProxySQL ist ein Tool der Open Source-Community. Es wird von Microsoft auf „Beste Leistung“-Basis unterstützt. Um Unterstützung für die Produktionsumgebung mit autoritativer Anleitung zu erhalten, können Sie den [ProxySQL-Produktsupport](https://proxysql.com/services/support/) bewerten und sich an diesen wenden.
+>ProxySQL ist ein Open Source-Communitytool. Es wird von Microsoft bestmöglich unterstützt. Wenden Sie sich an den [ProxySQL-Produktsupport](https://proxysql.com/services/support/), wenn Sie Produktionssupport mit autoritativen Hinweisen benötigen.
 
 ### <a name="max_heap_table_size"></a>max_heap_table_size
 
@@ -197,6 +197,21 @@ Weitere Informationen zu diesem Parameter finden Sie in der [MySQL-Dokumentation
 |Arbeitsspeicheroptimiert|8|0|0|134217728|
 |Arbeitsspeicheroptimiert|16|0|0|134217728|
 |Arbeitsspeicheroptimiert|32|0|0|134217728|
+
+### <a name="lower_case_table_names"></a>lower_case_table_names
+
+„lower_case_table_name“ ist standardmäßig auf „1“ festgelegt, und Sie können diesen Parameter in MySQL 5.6 und MySQL 5.7 aktualisieren.
+
+Weitere Informationen zu diesem Parameter finden Sie in der [MySQL-Dokumentation](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_lower_case_table_names).
+
+> [!NOTE]
+> In MySQL 8.0 ist „lower_case_table_name“ standardmäßig auf „1“ festgelegt, und Sie können dies nicht ändern.
+
+### <a name="innodb_strict_mode"></a>innodb_strict_mode
+
+Wenn ein Fehler wie „Zeile zu groß (> 8126)“ angezeigt wird, sollten Sie den Parameter **innodb_strict_mode** deaktivieren. Der Serverparameter **innodb_strict_mode** darf nicht global auf der Serverebene geändert werden, da die Daten bei Überschreitung einer Zeilendatengröße von 8.000 ohne Fehlermeldung gekürzt werden, was zu Datenverlusten führen kann. Es wird empfohlen, das Schema so zu ändern, dass es der Seitengrößenbeschränkung entspricht. 
+
+Dieser Parameter kann mithilfe von `init_connect` auf Sitzungsebene festgelegt werden. Informationen zum Festlegen von **innodb_strict_mode** auf Sitzungsebene finden Sie [Nicht aufgeführte Einstellungsparameter](https://docs.microsoft.com/azure/mysql/howto-server-parameters#setting-parameters-not-listed).
 
 ### <a name="sort_buffer_size"></a>sort_buffer_size
 
@@ -244,7 +259,7 @@ Bei der ersten Bereitstellung enthält ein Azure for MySQL-Server Systemtabellen
 
 ## <a name="non-configurable-server-parameters"></a>Nicht konfigurierbare Serverparameter
 
-Die folgenden Serverparameter sind im Dienst nicht konfigurierbar:
+Die folgenden Serverparameter können im Dienst nicht konfiguriert werden:
 
 |**Parameter**|**Fester Wert**|
 | :------------------------ | :-------- |
@@ -259,5 +274,5 @@ Andere Variablen, die hier nicht aufgeführt sind, werden auf die MySQL-Standard
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Informationen zum [Konfigurieren von Serverparametern mithilfe des Azure-Portals](./howto-server-parameters.md)
-- Informationen zum [Konfigurieren von Serverparametern mithilfe der Azure-Befehlszeilenschnittstelle](./howto-configure-server-parameters-using-cli.md)
+- Informationen zum [Konfigurieren von Serverparametern mithilfe der Azure CLI](./howto-configure-server-parameters-using-cli.md)
 - Informationen zum [Konfigurieren von Serverparametern mithilfe von PowerShell](./howto-configure-server-parameters-using-powershell.md)

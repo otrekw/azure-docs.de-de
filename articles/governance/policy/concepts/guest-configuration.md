@@ -1,14 +1,14 @@
 ---
 title: Informationen zum Überwachen der Inhalte virtueller Computer
 description: Hier erfahren Sie, wie Azure Policy mithilfe des Gastkonfigurations-Agents Einstellungen in VMs überprüft.
-ms.date: 05/20/2020
+ms.date: 08/07/2020
 ms.topic: conceptual
-ms.openlocfilehash: f2f07a3e88984a84ca1529052d5899ad8570a268
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 906c86856342febc92f070493fde31af42e4ca10
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87072821"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87987102"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Informationen zu Guest Configuration von Azure Policy
 
@@ -35,8 +35,9 @@ Bevor Sie Guest Configuration verwenden können, müssen Sie den Ressourcenanbie
 Zum Überwachen von Einstellungen innerhalb eines Computers ist eine [VM-Erweiterung](../../../virtual-machines/extensions/overview.md) aktiviert, und der Computer muss über eine systemseitig verwaltete Identität verfügen. Mit der Erweiterung werden anwendbare Richtlinienzuweisungen sowie die entsprechende Konfigurationsdefinition heruntergeladen. Die Identität wird verwendet, um den Computer zu authentifizieren, wenn Lese- und Schreibvorgänge im Gastkonfigurationsdienst durchgeführt werden. Die Erweiterung ist für über Arc verbundene Computer nicht erforderlich, da sie im Agent für über Arc verbundene Computer enthalten ist.
 
 > [!IMPORTANT]
-> Die Gastkonfigurationserweiterung und eine verwaltete Identität sind zum Überwachen von virtuellen Azure-Computern erforderlich. Die Gastkonfigurationserweiterung ist zum Überwachen von virtuellen Azure-Computern erforderlich. Um die Erweiterung bedarfsorientiert bereitzustellen, weisen Sie die folgende Richtlinieninitiative zu. Um die Erweiterung bedarfsorientiert bereitzustellen, weisen Sie die folgende Richtliniendefinitionen zu: 
->  - [Voraussetzungen zum Aktivieren der Gastkonfigurationsrichtlinien auf VMs bereitstellen](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F12794019-7a00-42cf-95c2-882eed337cc8)
+> Die Gastkonfigurationserweiterung und eine verwaltete Identität sind zum Überwachen von virtuellen Azure-Computern erforderlich. Weisen Sie die folgenden Richtlinieninitiative zu, um die Erweiterung im gewünschten Umfang bereitzustellen:
+> 
+> - [Voraussetzungen zum Aktivieren der Gastkonfigurationsrichtlinien auf VMs bereitstellen](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F12794019-7a00-42cf-95c2-882eed337cc8)
 
 ### <a name="limits-set-on-the-extension"></a>Für die Erweiterung festgelegte Grenzwerte
 
@@ -69,18 +70,37 @@ In der folgenden Tabelle sind die in Azure-Images unterstützten Betriebssysteme
 |Microsoft|Windows Server|2012 und höher|
 |Microsoft|Windows-Client|Windows 10|
 |OpenLogic|CentOS|7.3 und höher|
-|Red Hat|Red Hat Enterprise Linux|7.4–7.8, 9.0 und höher|
+|Red Hat|Red Hat Enterprise Linux|7.4 bis 7.8|
 |Suse|SLES|12 SP3 und höher|
 
 Benutzerdefinierte Images von virtuellen Computern werden von Gastkonfigurationsrichtlinien unterstützt, sofern es sich um eines der Betriebssysteme in der obigen Tabelle handelt.
 
-## <a name="guest-configuration-extension-network-requirements"></a>Netzwerkanforderungen für die Gastkonfigurationserweiterung
+## <a name="network-requirements"></a>Netzwerkanforderungen
+
+Virtuelle Computer in Azure können entweder ihren lokalen Netzwerkadapter oder einen privaten Link verwenden, um mit dem Gastkonfigurationsdienst zu kommunizieren.
+
+Azure Arc-Computer stellen mithilfe der lokalen Netzwerkinfrastruktur eine Verbindung her, um Azure-Dienste zu erreichen und den Compliancestatus zu melden.
+
+### <a name="communicate-over-virtual-networks-in-azure"></a>Kommunizieren über virtuelle Netzwerke in Azure
+
+Virtuelle Computer, die virtuelle Netzwerke für die Kommunikation verwenden, benötigen ausgehenden Zugriff auf Azure-Rechenzentren an Port `443`. Wenn Sie ein privates virtuelles Netzwerk in Azure verwenden und keinen ausgehenden Datenverkehr zulassen, müssen Ausnahmen über Netzwerksicherheitsgruppen-Regeln konfiguriert werden. Der Diensttag „GuestAndHybridManagement“ kann verwendet werden, um auf den Gastkonfigurationsdienst zu verweisen.
+
+### <a name="communicate-over-private-link-in-azure"></a>Kommunizieren über einen privaten Link in Azure
+
+Für die Kommunikation mit dem Gastkonfigurationsdienst können virtuelle Computer einen [privaten Link](../../../private-link/private-link-overview.md) verwendet. Wenden Sie ein Tag mit dem Namen `EnablePrivateNeworkGC` und dem Wert `TRUE` an, um dieses Feature zu aktivieren. Das Tag kann vor oder nach der Anwendung von Gastkonfigurationsrichtlinien auf den Computer angewendet werden.
+
+Der Datenverkehr wird mithilfe der [virtuellen öffentlichen IP-Adresse](../../../virtual-network/what-is-ip-address-168-63-129-16.md) von Azure weitergeleitet, um einen sicheren, authentifizierten Kanal mit Azure-Plattformressourcen einzurichten.
+
+### <a name="azure-arc-connected-machines"></a>Vernetzte Azure Arc-Computer
+
+Knoten, die sich außerhalb von Azure befinden und über Azure Arc verbunden sind, benötigen eine Verbindung mit dem Gastkonfigurationsdienst.
+Details zu den Netzwerk- und Proxyanforderungen finden Sie in der [Azure Arc-Dokumentation](../../../azure-arc/servers/overview.md).
 
 Für die Kommunikation mit dem Gastkonfigurations-Ressourcenanbieter in Azure benötigen Computer ausgehenden Zugriff auf Azure-Rechenzentren über Port **443**. Wenn ein Netzwerk in Azure keinen ausgehenden Datenverkehr zulässt, müssen Ausnahmen über [Netzwerksicherheitsgruppen](../../../virtual-network/manage-network-security-group.md#create-a-security-rule)-Regeln konfiguriert werden. Der [Diensttag](../../../virtual-network/service-tags-overview.md) „GuestAndHybridManagement“ kann verwendet werden, um auf den Gastkonfigurationsdienst zu verweisen.
 
 ## <a name="managed-identity-requirements"></a>Anforderungen für verwaltete Identitäten
 
-Durch Richtlinien in der Initiative [Voraussetzungen zum Aktivieren der Gastkonfigurationsrichtlinien auf VMs bereitstellen](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F12794019-7a00-42cf-95c2-882eed337cc8) wird eine systemseitig zugewiesene verwaltete Identität aktiviert, falls noch nicht vorhanden. Die Initiative enthält zwei Richtliniendefinitionen, durch die die Identitätserstellung verwaltet wird. Die IF-Bedingungen in den Richtliniendefinitionen gewährleisten das korrekte Verhalten basierend auf dem aktuellen Zustand der Computerressource in Azure.
+Durch Richtliniendefinitionen in der Initiative [Voraussetzungen zum Aktivieren der Gastkonfigurationsrichtlinien auf VMs bereitstellen](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F12794019-7a00-42cf-95c2-882eed337cc8) wird eine systemseitig zugewiesene verwaltete Identität aktiviert, falls noch nicht vorhanden. Die Initiative enthält zwei Richtliniendefinitionen, durch die die Identitätserstellung verwaltet wird. Die IF-Bedingungen in den Richtliniendefinitionen gewährleisten das korrekte Verhalten basierend auf dem aktuellen Zustand der Computerressource in Azure.
 
 Wenn der Computer derzeit keine verwalteten Identitäten aufweist, lautet die effektive Richtlinie: [\[Vorschau\]: Systemseitig zugewiesene verwaltete Identität hinzufügen, um Gastkonfigurationszuweisungen auf VMs ohne Identität zu aktivieren](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F3cf2ab00-13f1-4d0c-8971-2ac904541a7e)
 
@@ -182,8 +202,8 @@ Beispiele für integrierte Gastkonfigurationsrichtlinien finden Sie unter:
 
 - Erfahren Sie, wie Sie die Details der einzelnen Einstellungen in der [Kompatibilitätsansicht der Gastkonfiguration](../how-to/determine-non-compliance.md#compliance-details-for-guest-configuration) anzeigen.
 - Sehen Sie sich die Beispiele unter [Azure Policy-Beispiele](../samples/index.md) an.
-- Lesen Sie die Informationen unter [Struktur von Azure Policy-Definitionen](definition-structure.md).
-- Lesen Sie [Grundlegendes zu Richtlinienauswirkungen](effects.md).
+- Lesen Sie die Informationen unter [Struktur von Azure Policy-Definitionen](./definition-structure.md).
+- Lesen Sie [Grundlegendes zu Richtlinienauswirkungen](./effects.md).
 - Informieren Sie sich über das [programmgesteuerte Erstellen von Richtlinien](../how-to/programmatically-create.md).
 - Informieren Sie sich über das [Abrufen von Konformitätsdaten](../how-to/get-compliance-data.md).
 - Erfahren Sie, wie Sie [nicht konforme Ressourcen korrigieren](../how-to/remediate-resources.md) können.

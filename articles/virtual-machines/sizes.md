@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 07/21/2020
 ms.author: jushiman
-ms.openlocfilehash: 58b1501c9676db414f6bad6c8bd21c6cf79f7d4b
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 234156186d045e21cc01cc4b407408f98268c790
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87385414"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88065470"
 ---
 # <a name="sizes-for-virtual-machines-in-azure"></a>Größen für virtuelle Computer in Azure
 
@@ -25,15 +25,13 @@ In diesem Artikel werden die verfügbaren Größen und Optionen für die virtuel
 | [Computeoptimiert](sizes-compute.md) | F, Fs, Fsv2 | Hohes Verhältnis von CPU zu Arbeitsspeicher. Ideal für Webserver, Network Appliances, Stapelverarbeitungsvorgänge und Anwendungsserver mit mittlerer Auslastung. |
 | [Arbeitsspeicheroptimiert](sizes-memory.md) | Esv3, Ev3, Easv4, Eav4, Ev4, Esv4, Edv4, Edsv4, Mv2, M, DSv2, Dv2 | Hohes Verhältnis von Speicher zu CPU. Hervorragend geeignet für relationale Datenbankserver, mittlere bis große Caches und In-Memory-Analysen.                 |
 | [Speicheroptimiert](sizes-storage.md) | Lsv2 | Hoher Datenträgerdurchsatz und E/A, ideal für Big Data, SQL, NoSQL-Datenbanken, Datawarehousing und große transaktionale Datenbanken.  |
-| [GPU](sizes-gpu.md) | NC, NCv2, NCv3, ND, NDv2 (Vorschau), NV, NVv3, NVv4 | Spezielle virtuelle Computer als Ziel für aufwendiges Grafikrendering und Videobearbeitung sowie für Modelltraining und Rückschlüsse (ND) mit Deep Learning. Mit einem oder mehreren GPUs verfügbar. |
+| [GPU](sizes-gpu.md) | NC, NCv2, NCv3, NCasT4_v3 (Vorschau), ND, NDv2 (Vorschau), NV, NVv3, NVv4 | Spezielle virtuelle Computer als Ziel für aufwendiges Grafikrendering und Videobearbeitung sowie für Modelltraining und Rückschlüsse (ND) mit Deep Learning. Mit einem oder mehreren GPUs verfügbar. |
 | [High Performance Computing](sizes-hpc.md) | HB, HBv2, HC,  H | Unsere virtuellen Computer mit den schnellsten und leistungsfähigsten CPUs, die optional über Netzwerkschnittstellen mit hohem Durchsatz (RDMA) verfügen. |
 
 - Informationen zu den Preisen der unterschiedlichen Größen finden Sie auf den Seiten mit den Preisinformationen für [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/#Linux) oder [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/#Windows).
 - Informationen zur Verfügbarkeit von VM-Größen in Azure-Regionen finden Sie unter [Verfügbare Produkte nach Region](https://azure.microsoft.com/regions/services/).
 - Informationen zu den allgemeinen Einschränkungen von virtuellen Azure-Computern finden Sie unter [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](../azure-resource-manager/management/azure-subscription-service-limits.md).
-
-> [!NOTE]
-  > Weitere Informationen dazu, wie VM-Namen in Azure zugewiesen werden, finden Sie hier: [Namenskonventionen für Azure-VM-Größen](https://docs.microsoft.com/azure/virtual-machines/vm-naming-conventions).
+- Weitere Informationen dazu, wie VM-Namen in Azure zugewiesen werden, finden Sie unter [Namenskonventionen für Azure-VM-Größen](./vm-naming-conventions.md).
 
 ## <a name="rest-api"></a>REST-API
 

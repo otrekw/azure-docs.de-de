@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: how-to
 ms.date: 09/06/2019
-ms.openlocfilehash: 45bfba5b0ab25aa9930719f136428ccc0df5014d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 211dce8a2810d9eb07bf0f388753afd50add4945
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85263560"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87919955"
 ---
 # <a name="use-azure-cosmos-db-resource-tokens-with-the-gremlin-sdk"></a>Verwenden von Azure Cosmos DB-Ressourcentoken mit dem Gremlin SDK
 
@@ -102,5 +102,5 @@ Mit einem einzelnen Gremlin-Konto können Sie eine unbegrenzte Anzahl von Token 
 Ein häufiger Fehler, der in Anwendungen bei der Verwendung von Ressourcentoken auftritt, ist „Insufficient permissions provided in the authorization header for the corresponding request. Please retry with another authorization header.“ (Unzureichende Berechtigungen im Autorisierungsheader für die entsprechende Anforderung. Versuchen Sie es mit einem anderen Autorisierungsheader erneut.). Dieser Fehler wird zurückgegeben, wenn bei einem Gremlin-Durchlauf versucht wird, eine Kante oder einen Scheitelpunkt zu schreiben, das Ressourcentoken jedoch nur *Leseberechtigungen* erteilt. Überprüfen Sie, ob der Durchlauf einen der folgenden Schritte enthält: *.addV()* , *.addE()* , *.drop()* oder *.property()* .
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Rollenbasierte Zugriffssteuerung in Azure Cosmos DB](role-based-access-control.md)
+* [Rollenbasierte Zugriffssteuerung in Azure (Azure RBAC)](role-based-access-control.md) in Azure Cosmos DB
 * [Sicherer Zugriff auf Daten in Azure Cosmos DB](secure-access-to-data.md)

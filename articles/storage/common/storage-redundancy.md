@@ -1,21 +1,21 @@
 ---
 title: Datenredundanz
 titleSuffix: Azure Storage
-description: Die Daten in Ihrem Microsoft Azure Storage-Konto werden stets repliziert, um Beständigkeit und Hochverfügbarkeit sicherzustellen. Die Redundanzkonfigurationen umfassen den lokal redundanten Speicher (Locally Redundant Storage, LRS), den zonenredundanten Speicher (Zone-Redundant Storage, ZRS), den georedundanten Speicher (Geo-Redundant Storage, GRS), den georedundanten Speicher mit Lesezugriff (Read-Access Geo-Redundant Storage, RA-GRS), den geozonenredundanten Speicher (Geo-Zone-Redundant Storage, GZRS) und den geozonenredundanten Speicher mit Lesezugriff (Read-Access Geo-Zone-Redundant Storage, RA-GZRS).
+description: Grundlegendes zur Datenredundanz in Azure Storage Die Daten in Ihrem Microsoft Azure Storage-Konto werden stets repliziert, um Beständigkeit und Hochverfügbarkeit sicherzustellen.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 06/22/2020
+ms.date: 08/08/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 903560f5c0400a906918f0c17eafb2e1e09bdd30
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 556d3df41b7ee66bfb2b32b8a566d7172f45e313
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518503"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88034463"
 ---
 # <a name="azure-storage-redundancy"></a>Azure Storage-Redundanz
 
@@ -51,19 +51,21 @@ LRS ist eine gute Wahl für die folgenden Szenarien:
 
 Bei zonenredundantem Speicher (ZRS) werden die Daten synchron über drei Azure-Verfügbarkeitszonen hinweg in der primären Region repliziert. Jede Verfügbarkeitszone ist ein getrennter physischer Standort mit unabhängigen Stromversorgungs-, Kühlungs- und Netzwerkgeräten. ZRS bietet eine Dauerhaftigkeit für Azure Storage-Datenobjekte von mindestens 99,9999999999 % (12-mal die Zahl 9) über einen Zeitraum von einem Jahr.
 
-Auf Ihre Daten kann mit ZRS weiterhin von Lese- und Schreibvorgängen zugegriffen werden, auch wenn eine Zone nicht mehr verfügbar ist. Wenn eine Zone nicht verfügbar ist, führt Azure Netzwerkupdates durch, z. B. durch die Festlegung neuer DNS-Ziele. Diese Updates können sich auf Ihre Anwendung auswirken, wenn Sie auf Daten zugreifen, bevor die Updates abgeschlossen sind. Halten Sie beim Entwerfen von Anwendungen für ZRS die Vorgehensweisen für vorübergehende Fehler ein. Dazu gehört u. a. die Implementierung von Wiederholungsrichtlinien mit exponentiellem Backoff.
+Auf Ihre Daten kann mit ZRS weiterhin von Lese- und Schreibvorgängen zugegriffen werden, auch wenn eine Zone nicht mehr verfügbar ist. Wenn eine Zone nicht mehr verfügbar ist, führt Azure Netzwerkupdates durch, z. B. durch die Festlegung neuer DNS-Ziele. Diese Updates können sich auf Ihre Anwendung auswirken, wenn Sie auf Daten zugreifen, bevor die Updates abgeschlossen sind. Halten Sie beim Entwerfen von Anwendungen für ZRS die Vorgehensweisen für vorübergehende Fehler ein. Dazu gehört u. a. die Implementierung von Wiederholungsrichtlinien mit exponentiellem Backoff.
 
 Schreibanforderungen an ein Speicherkonto, das ZRS verwendet, erfolgen synchron. Die Schreibanforderung wird erst dann erfolgreich zurückgegeben, nachdem die Daten in alle Replikate in den drei Verfügbarkeitszonen geschrieben wurden.
 
-Microsoft empfiehlt die Verwendung von ZRS in der primären Region für Szenarien, die Konsistenz, Dauerhaftigkeit und Hochverfügbarkeit erfordern. ZRS bietet hervorragende Leistung, geringe Latenz und Resilienz für Ihre Daten, wenn diese vorübergehend nicht verfügbar sind. ZRS selbst kann Ihre Daten jedoch nicht vor einem regionalen Notfall schützen, bei dem mehrere Zonen dauerhaft betroffen sind. Für den Schutz vor regionalen Notfällen empfiehlt Microsoft die Verwendung von [geozonenredundantem Speicher](#geo-zone-redundant-storage) (GZRS), der ZRS in der primären Region verwendet und die Daten in eine sekundäre Region georepliziert.
+Microsoft empfiehlt die Verwendung von ZRS in der primären Region für Szenarien, die Konsistenz, Dauerhaftigkeit und Hochverfügbarkeit erfordern. Außerdem wird die Verwendung von ZRS empfohlen, wenn die Datenreplikation einer Anwendung aufgrund von Datengovernanceanforderungen auf ein einzelnes Land oder auf eine einzelne Region beschränkt werden soll.
+
+ZRS bietet hervorragende Leistung, geringe Latenz und Resilienz für Ihre Daten, wenn diese vorübergehend nicht verfügbar sind. ZRS selbst kann Ihre Daten jedoch nicht vor einem regionalen Notfall schützen, bei dem mehrere Zonen dauerhaft betroffen sind. Für den Schutz vor regionalen Notfällen empfiehlt Microsoft die Verwendung von [geozonenredundantem Speicher](#geo-zone-redundant-storage) (GZRS), der ZRS in der primären Region verwendet und die Daten in eine sekundäre Region georepliziert.
 
 In der folgenden Tabelle wird gezeigt, welche Typen von Speicherkonten ZRS in welchen Regionen unterstützen:
 
-|    Speicherkontotyp    |    Unterstützte Regionen    |    Unterstützte Dienste    |
-|----------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------|
-|    Universell v2<sup>1</sup>    | Asien, Südosten<br /> Australien (Osten)<br /> Europa, Norden<br />  Europa, Westen<br /> Frankreich, Mitte<br /> Japan, Osten<br /> Südafrika, Norden<br /> UK, Süden<br /> USA, Mitte<br /> USA, Osten<br /> USA (Ost 2)<br /> USA, Westen 2    |    Blockblobs<br /> Seitenblobs<sup>2</sup><br /> Dateifreigaben (Standard)<br /> Tabellen<br /> Warteschlangen<br /> |
-|    BlockBlobStorage<sup>1</sup>    | Asien, Südosten<br /> Australien (Osten)<br /> Europa, Westen<br /> USA, Osten    |    Nur Blockblobs    |
-|    FileStorage    | Asien, Südosten<br /> Australien (Osten)<br /> Europa, Westen<br /> USA, Osten    |    Nur Azure Files    |
+| Speicherkontotyp | Unterstützte Regionen | Unterstützte Dienste |
+|--|--|--|
+| Universell v2<sup>1</sup> | Asien, Südosten<br /> Australien (Osten)<br /> Europa, Norden<br />  Europa, Westen<br /> Frankreich, Mitte<br /> Japan, Osten<br /> Südafrika, Norden<br /> UK, Süden<br /> USA, Mitte<br /> USA, Osten<br /> USA (Ost 2)<br /> USA, Westen 2 | Blockblobs<br /> Seitenblobs<sup>2</sup><br /> Dateifreigaben (Standard)<br /> Tabellen<br /> Warteschlangen<br /> |
+| BlockBlobStorage<sup>1</sup> | Asien, Südosten<br /> Australien (Osten)<br /> Europa, Westen<br /> USA, Osten | Nur Premium-Blockblobs |
+| FileStorage | Asien, Südosten<br /> Australien (Osten)<br /> Europa, Westen<br /> USA, Osten | Nur Premium-Dateifreigaben |
 
 <sup>1</sup> Die Archivspeicherebene wird derzeit nicht für ZRS-Konten unterstützt.<br />
 <sup>2</sup> Speicherkonten, die verwaltete Azure-Datenträger für virtuelle Computer enthalten, verwenden immer LRS. Für nicht verwaltete Azure-Datenträger sollte ebenfalls LRS verwendet werden. Es ist möglich, ein Speicherkonto für nicht verwaltete Azure-Datenträger zu erstellen, das GRS verwendet. Dies wird jedoch aufgrund von potenziellen Konsistenzproblemen mit der asynchronen Georeplikation nicht empfohlen. Weder verwaltete noch nicht verwaltete Datenträger unterstützen ZRS oder GZRS. Weitere Informationen zu verwalteten Datenträgern finden Sie unter [Azure Managed Disks – Preise](https://azure.microsoft.com/pricing/details/managed-disks/).
@@ -122,6 +124,9 @@ Weitere Informationen zu den Preisen finden Sie in den Preisdetails für [Blobs]
 
 Georedundanter Speicher (mit GRS oder GZRS) repliziert Ihre Daten an einen anderen physischen Standort in der sekundären Region, um sie vor regionalen Ausfällen zu schützen. Diese Daten sind jedoch nur dann lesbar, wenn der Kunde oder Microsoft ein Failover von der primären zur sekundären Region initiiert. Wenn Sie Lesezugriff auf die sekundäre Region aktivieren, sind Ihre Daten jederzeit auch dann für Lesevorgänge verfügbar, falls die primäre Region nicht mehr verfügbar ist. Für den Lesezugriff in der sekundären Region aktivieren Sie georedundanten Speicher mit Lesezugriff (RA-GRS) oder geozonenredundanten Speicher mit Lesezugriff (RA-GZRS).
 
+> [!NOTE]
+> Georedundanter Speicher mit Lesezugriff (RA-GRS) und geozonenredundanter Speicher mit Lesezugriff (RA-GZRS) werden von Azure Files nicht unterstützt.
+
 ### <a name="design-your-applications-for-read-access-to-the-secondary"></a>Entwerfen von Anwendungen für den Lesezugriff am sekundären Standort
 
 Wenn Ihr Speicherkonto für den Lesezugriff in der sekundären Region konfiguriert ist, können Sie Ihre Anwendungen so entwerfen, dass sie nahtlos zum Lesen von Daten in der sekundären Region wechseln, wenn die primäre Region aus irgendeinem Grund nicht verfügbar ist. 
@@ -146,11 +151,11 @@ In den Tabellen in den folgenden Abschnitten werden die für Azure Storage verf�
 
 In der folgenden Tabelle werden die Schlüsselparameter für die einzelnen Redundanzoptionen beschrieben:
 
-| Parameter                                                                                                 | LRS                             | ZRS                              | GRS/RA-GRS                                  | GZRS/RA-GZRS                              |
-| :------------------------------------------------------------------------------------------------------- | :------------------------------ | :------------------------------- | :----------------------------------- | :----------------------------------- |
-| Prozentuale Dauerhaftigkeit von Objekten über ein bestimmtes Jahr<sup>1</sup>                                          | mindestens 99,999999999 % (11 mal die 9) | mindestens 99,9999999999 % (12 mal die 9) | mindestens 99,99999999999999 % (16 mal die 9) | mindestens 99,99999999999999 % (16 mal die 9) |
-| Verfügbarkeits-SLA für Leseanforderungen<sup>1</sup>  | mindestens 99,9 % (99 % bei der kalten Zugriffsebene) | mindestens 99,9 % (99 % bei der kalten Zugriffsebene) | mindestens 99,9 % (99 % bei der kalten Zugriffsebene) für GRS<br /><br />mindestens 99,99 % (99,9 % bei der kalten Zugriffsebene) für RA-GRS | mindestens 99,9 % (99 % bei der kalten Zugriffsebene) für GZRS<br /><br />mindestens 99,99 % (99,9 % bei der kalten Zugriffsebene) für RA-GZRS |
-| Verfügbarkeits-SLA für Schreibanforderungen<sup>1</sup>  | mindestens 99,9 % (99 % bei der kalten Zugriffsebene) | mindestens 99,9 % (99 % bei der kalten Zugriffsebene) | mindestens 99,9 % (99 % bei der kalten Zugriffsebene) | mindestens 99,9 % (99 % bei der kalten Zugriffsebene) |
+| Parameter | LRS | ZRS | GRS/RA-GRS | GZRS/RA-GZRS |
+|:-|:-|:-|:-|:-|
+| Prozentuale Dauerhaftigkeit von Objekten über ein bestimmtes Jahr<sup>1</sup> | mindestens 99,999999999 % (11 mal die 9) | mindestens 99,9999999999 % (12 mal die 9) | mindestens 99,99999999999999 % (16 mal die 9) | mindestens 99,99999999999999 % (16 mal die 9) |
+| Verfügbarkeits-SLA für Leseanforderungen<sup>1</sup> | mindestens 99,9 % (99 % bei der kalten Zugriffsebene) | mindestens 99,9 % (99 % bei der kalten Zugriffsebene) | mindestens 99,9 % (99 % bei der kalten Zugriffsebene) für GRS<br /><br />mindestens 99,99 % (99,9 % bei der kalten Zugriffsebene) für RA-GRS | mindestens 99,9 % (99 % bei der kalten Zugriffsebene) für GZRS<br /><br />mindestens 99,99 % (99,9 % bei der kalten Zugriffsebene) für RA-GZRS |
+| Verfügbarkeits-SLA für Schreibanforderungen<sup>1</sup> | mindestens 99,9 % (99 % bei der kalten Zugriffsebene) | mindestens 99,9 % (99 % bei der kalten Zugriffsebene) | mindestens 99,9 % (99 % bei der kalten Zugriffsebene) | mindestens 99,9 % (99 % bei der kalten Zugriffsebene) |
 
 <sup>1</sup> Weitere Informationen zu Azure Storage-Garantien in Bezug auf Dauerhaftigkeit und Verfügbarkeit finden Sie im [SLA für Speicherkonten](https://azure.microsoft.com/support/legal/sla/storage/).
 
@@ -158,12 +163,12 @@ In der folgenden Tabelle werden die Schlüsselparameter für die einzelnen Redun
 
 In der folgenden Tabelle wird gezeigt, ob Ihre Daten in einem bestimmten Szenario dauerhaft und verfügbar sind, aufgeschlüsselt nach dem Redundanztyp Ihres Speicherkontos:
 
-| Ausfallszenario                                                                                                 | LRS                             | ZRS                              | GRS/RA-GRS                                  | GZRS/RA-GZRS                              |
-| :------------------------------------------------------------------------------------------------------- | :------------------------------ | :------------------------------- | :----------------------------------- | :----------------------------------- |
-| Ein Knoten innerhalb eines Rechenzentrums steht nicht mehr zur Verfügung.                                                                 | Ja                             | Ja                              | Ja                                  | Ja                                 |
-| Ein gesamtes Rechenzentrum (zonal oder nicht zonal) ist nicht mehr verfügbar.                                           | Nein                              | Ja                              | Ja<sup>1</sup>                                  | Ja                                  |
-| Ein regionsweiter Ausfall in der primären Region                                                                                     | Nein                              | Nein                               | Ja<sup>1</sup>                                  | Ja<sup>1</sup>                                  |
-| Wenn die primäre Region nicht verfügbar ist, ist der Lesezugriff in der sekundären Region verfügbar. | Nein                              | Nein                               | Ja (mit RA-GRS)                                   | Ja (mit RA-GZRS)                                 |
+| Ausfallszenario | LRS | ZRS | GRS/RA-GRS | GZRS/RA-GZRS |
+|:-|:-|:-|:-|:-|
+| Ein Knoten innerhalb eines Rechenzentrums steht nicht mehr zur Verfügung. | Ja | Ja | Ja | Ja |
+| Ein gesamtes Rechenzentrum (zonal oder nicht zonal) ist nicht mehr verfügbar. | Nein | Ja | Ja<sup>1</sup> | Ja |
+| Ein regionsweiter Ausfall in der primären Region | Nein | Nein | Ja<sup>1</sup> | Ja<sup>1</sup> |
+| Wenn die primäre Region nicht verfügbar ist, ist der Lesezugriff in der sekundären Region verfügbar. | Nein | Nein | Ja (mit RA-GRS) | Ja (mit RA-GZRS) |
 
 <sup>1</sup> Ein Kontofailover ist erforderlich, um die Schreibverfügbarkeit wiederherzustellen, wenn die primäre Region nicht mehr verfügbar ist. Weitere Informationen finden Sie unter [Notfallwiederherstellung und Speicherkontofailover](storage-disaster-recovery-guidance.md).
 
@@ -171,9 +176,9 @@ In der folgenden Tabelle wird gezeigt, ob Ihre Daten in einem bestimmten Szenari
 
 In der folgenden Tabelle wird dargestellt, welche Redundanzoptionen von den einzelnen Speicherkontotypen unterstützt werden. Weitere Informationen zu Speicherkontotypen finden Sie unter [Speicherkontoübersicht](storage-account-overview.md).
 
-| LRS                             | ZRS                              | GRS/RA-GRS                                  | GZRS/RA-GZRS                              |
-| :------------------------------ | :------------------------------- | :----------------------------------- | :----------------------------------- |
-| General Purpose v2<br /> General Purpose v1<br /> Blockblobspeicher<br /> Blob Storage<br /> File Storage                | General Purpose v2<br /> Blockblobspeicher<br /> File Storage                             | General Purpose v2<br /> General Purpose v1<br /> Blob Storage                     | General Purpose v2                     |
+| LRS | ZRS | GRS/RA-GRS | GZRS/RA-GZRS |
+|:-|:-|:-|:-|
+| General Purpose v2<br /> General Purpose v1<br /> Blockblobspeicher<br /> Blob Storage<br /> File Storage | General Purpose v2<br /> Blockblobspeicher<br /> File Storage | General Purpose v2<br /> General Purpose v1<br /> Blob Storage | General Purpose v2 |
 
 Alle Daten eines Speicherkontos werden gemäß der Redundanzoption für das Speicherkonto kopiert. Es werden Objekte einschließlich Blockblobs, Anfügeblobs, Seitenblobs, Warteschlangen, Tabellen und Dateien kopiert. Die Daten aller Ebenen werden kopiert, einschließlich der Archivebene. Weitere Informationen zu Blobebenen finden Sie unter [Azure Blob Storage: Zugriffsebenen „Heiß“, „Kalt“ und „Archiv“](../blobs/storage-blob-storage-tiers.md).
 

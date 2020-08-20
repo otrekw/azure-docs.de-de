@@ -1,18 +1,18 @@
 ---
 title: Bereitstellen von Azure Files | Microsoft-Dokumentation
-description: Informationen über sämtliche Schritte zum Bereitstellen von Azure Files.
+description: Informationen über sämtliche Schritte zum Bereitstellen von Azure Files. Übertragen von Daten in Azure Files Automatische Einbindung auf den benötigten Computern oder Servern
 author: roygara
 ms.service: storage
 ms.topic: how-to
 ms.date: 05/22/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: b9df9375dee59df987cea01a4142a22a78eb533e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 08bcb41dd8d9f4643b03d855960d8632b778ff84
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85510792"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88034497"
 ---
 # <a name="how-to-deploy-azure-files"></a>Bereitstellen von Azure Files
 [Azure Files](storage-files-introduction.md) bietet vollständig verwaltete Dateifreigaben in der Cloud, auf die über das Branchenstandardprotokoll SMB zugegriffen werden kann. In diesem Artikel erfahren Sie, wie Sie Azure Files praktisch in Ihrer Organisation bereitstellen.

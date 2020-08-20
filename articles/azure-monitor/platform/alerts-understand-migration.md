@@ -1,44 +1,33 @@
 ---
-title: Grundlegendes zum Migrationstool für Azure Monitor-Warnungen
-description: Enthält eine Beschreibung der Funktionsweise des Migrationstools für Warnungen sowie Informationen zur Problembehandlung.
+title: Grundlegendes zur Migration von Azure Monitor-Warnungen
+description: Enthält eine Beschreibung der Funktionsweise der Warnungsmigration sowie Informationen zur Problembehandlung.
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: yalavi
 author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: 533d114e08464ff95c654a6f071ea28a04caf510
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: 52a74593fcfbdc2c1e464077e4ae460f6a5a9c39
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87564094"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87852394"
 ---
-# <a name="understand-how-the-migration-tool-works"></a>Funktionsweise des Migrationstools
+# <a name="understand-migration-options-to-newer-alerts"></a>Grundlegendes zu den Optionen zur Migration zu neueren Warnungen
 
-Wie [bereits angekündigt](monitoring-classic-retirement.md) werden klassische Warnungen in Azure Monitor ab 31. August 2019 (ursprünglich 30. Juni 2019) eingestellt. Im Azure-Portal steht ein Migrationstool für Kunden bereit, die klassische Warnungsregeln verwenden und die Migration selbst auslösen möchten.
+Klassische Warnungen werden [eingestellt](./monitoring-classic-retirement.md), sind jedoch weiterhin für Ressourcen, die die neuen Warnungen noch nicht unterstützen, beschränkt im Einsatz. In Kürze wird ein neues Datum für die Migration verbleibender Warnungen bekannt gegeben, und zwar für [Azure Government-Cloud](../../azure-government/documentation-government-welcome.md) und [Azure China 21Vianet](https://docs.azure.cn/).
 
-In diesem Artikel wird erläutert, wie das Tool für die freiwillige Migration funktioniert. Außerdem werden Abhilfemaßnahmen für einige häufige Probleme beschrieben.
-
-> [!NOTE]
-> Aufgrund einer Verzögerung beim Rollout des Migrationstools wurde der Deaktivierungstermin vom ursprünglich angekündigten Datum, dem 30. Juni 2019, auf den [31. August 2019 verschoben](https://azure.microsoft.com/updates/azure-monitor-classic-alerts-retirement-date-extended-to-august-31st-2019/).
-
-## <a name="classic-alert-rules-that-will-not-be-migrated"></a>Klassische Warnungsregeln, die nicht migriert werden
+In diesem Artikel wird erläutert, wie das Tool für die manuelle Migration und die freiwillige Migration verwendet wird, mit dem die verbleibenden Warnungsregeln migriert werden. Außerdem werden Abhilfemaßnahmen für einige häufige Probleme beschrieben.
 
 > [!IMPORTANT]
 > Aktivitätsprotokollwarnungen (einschließlich Service Health-Warnungen) und Protokollwarnungen sind von der Migration nicht betroffen. Die Migration gilt nur für klassische Warnungsregeln, die [hier](monitoring-classic-retirement.md#retirement-of-classic-monitoring-and-alerting-platform) beschrieben werden.
 
-Zwar können mit dem Tool fast alle [klassischen Warnungsregeln](monitoring-classic-retirement.md#retirement-of-classic-monitoring-and-alerting-platform) migriert werden, doch gibt es einige Ausnahmen. Die folgenden Warnungsregeln werden mit dem Tool nicht migriert (bzw. werden auch während der automatischen Migration ab September 2019 nicht migriert):
-
-- Klassische Warnungsregeln für VM-Gastmetriken (sowohl Windows als auch Linux). Informationen finden Sie in der [Anleitung zum erneuten Erstellen solcher Warnungsregeln in neuen Metrikwarnungen](#guest-metrics-on-virtual-machines) weiter unten in diesem Artikel.
-- Klassische Warnungsregeln für Metriken von klassischem Speicher. Informationen finden Sie in der [Anleitung zum Überwachen Ihrer klassischen Speicherkonten](https://azure.microsoft.com/blog/modernize-alerting-using-arm-storage-accounts/).
-- Klassische Warnungsregeln in einigen Speicherkontometriken. Informationen finden Sie unter den [Details](#storage-account-metrics) weiter unten in diesem Artikel.
-- Klassische Warnungsregeln für einige Cosmos DB-Metriken. Informationen finden Sie unter den [Details](#cosmos-db-metrics) weiter unten in diesem Artikel.
-- Klassische Warnungsregeln für alle Metriken klassischer virtueller Computer und Clouddienste (Microsoft.ClassicCompute/virtualMachines and Microsoft.ClassicCompute/domainNames/slots/roles). Informationen finden Sie unter den [Details](#classic-compute-metrics) weiter unten in diesem Artikel.
-
-Wenn Ihr Abonnement über klassische Regeln dieser Art verfügt, müssen Sie sie manuell migrieren. Da wir keine automatische Migration bereitstellen können, funktionieren alle vorhandenen klassischen Metrikwarnungen noch bis Juni 2020. Diese Verlängerung gibt Ihnen Zeit für die Umstellung auf neue Warnungen. Sie können auch bis Juni 2020 weiterhin neue klassische Warnungen zu den oben aufgeführten Ausnahmen erstellen. Für alles andere können aber nach August 2019 keine neuen klassischen Warnungen mehr erstellt werden.
-
 > [!NOTE]
-> Wenn Ihre klassischen Warnungsregeln, abgesehen von den oben aufgeführten Ausnahmen, ungültig sind (d. h. für [veraltete Metriken](#classic-alert-rules-on-deprecated-metrics) oder Ressourcen gelten, die gelöscht wurden), werden sie nicht migriert und sind nach Außerbetriebnahme des Diensts nicht mehr verfügbar.
+> Wenn Ihre klassischen Warnungsregeln ungültig sind (d. h. für [veraltete Metriken](#classic-alert-rules-on-deprecated-metrics) oder Ressourcen gelten, die gelöscht wurden), werden sie nicht migriert und sind nach Außerbetriebnahme des Diensts nicht mehr verfügbar.
+
+## <a name="manually-migrating-classic-alerts-to-newer-alerts"></a>Manuelles Migrieren klassischer Warnungen zu neueren Warnungen
+
+Kunden, die ihre verbleibenden Warnungen manuell migrieren möchten, können dies anhand der folgenden Abschnitte bereits tun. In diesen Abschnitten werden auch Metriken definiert, die vom Ressourcenanbieter eingestellt werden und derzeit nicht direkt migriert werden können.
 
 ### <a name="guest-metrics-on-virtual-machines"></a>Gastmetriken auf virtuellen Computern
 

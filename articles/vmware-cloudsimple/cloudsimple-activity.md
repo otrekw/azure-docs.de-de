@@ -1,7 +1,7 @@
 ---
 title: CloudSimple-Aktivitätenverwaltung
 titleSuffix: Azure VMware Solution by CloudSimple
-description: Beschreibt die Aktivitätskonzepte für VMware Solution by CloudSimple
+description: Hier erfahren Sie mehr über die Aktivitätsseiten, auf denen Aktivitäten zusammengefasst und weitere Details angegeben sind. Zu diesen Aktivitäten zählen Warnungen, Ereignisse, Aufgaben und Überwachungsaktivitäten.
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 04/30/2019
@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 985fcc0aa99723fde5e0c11babe3777c31cbd4c3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f77e996e83819b78bb9ab4484b9a1d3653a97560
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77025094"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88140971"
 ---
 # <a name="activity-management-overview"></a>Übersicht über die Aktivitätenverwaltung
 

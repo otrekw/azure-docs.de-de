@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 7/22/2020
 ms.author: mimckitt
 ms.custom: sttsinar
-ms.openlocfilehash: 2059c6f374e4cd5c2518e2fc0ac0da5858b99825
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: a49d1cc47515e698737bf833af09d30da16712a6
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131717"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87832324"
 ---
 # <a name="azure-virtual-machine-sizes-naming-conventions"></a>Namenskonventionen für Azure-VM-Größen
 
@@ -25,11 +25,10 @@ Diese Seite gibt einen Überblick über die Namenskonventionen, die für Azure V
 
 |Wert | Erklärung|
 |---|---|
-| „Standard“, „Basic“ oder „Experimental“ | „Standard“ ist der Standardwert, der für alle GA-VM-Größen zugewiesen wird. | 
 | Familie | Gibt die Serie der VM-Familie an| 
 | *Unterfamilie | Wird nur für spezialisierte VM-Differenzierungen verwendet|
 | Anzahl der vCPUs| Gibt die Anzahl der vCPUs des virtuellen Computers an |
-| Zusätzliche Features | Mindestens ein Kleinbuchstabe bezeichnet zusätzliche Features. Beispiele: <br> a = AMD-basierter Prozessor <br> d = Datenträger (lokaler temporärer Datenträger ist vorhanden). Dies gilt für neuere Azure-VMS (siehe [Ddv4- und Ddsv4-Serie](./ddv4-ddsv4-series.md)) <br> h = Ruhezustand-fähig <br> i = isoliert <br> l = wenig Arbeitsspeicher <br> m = arbeitsspeicherintensiv <br> t = sehr kleiner Arbeitsspeicher <br> r = RDMA <br> s = Storage Premium-fähig, einschließlich der möglichen Verwendung von [SSD Ultra](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#ultra-disk) (Hinweis: einige neuere Größen ohne das Attribut „s“ können noch Storage Premium unterstützen, z. B. M128, M64 usw.)<br> |
+| Zusätzliche Features | Mindestens ein Kleinbuchstabe bezeichnet zusätzliche Features. Beispiele: <br> a = AMD-basierter Prozessor <br> d = Datenträger (lokaler temporärer Datenträger ist vorhanden). Dies gilt für neuere Azure-VMS (siehe [Ddv4- und Ddsv4-Serie](./ddv4-ddsv4-series.md)) <br> h = Ruhezustand-fähig <br> i = isolierte Größe <br> l = geringer Arbeitsspeicher; eine niedrigere Arbeitsspeichermenge als die arbeitsspeicherintensive Größe <br> m = arbeitsspeicherintensiv; die höchste Arbeitsspeichermenge einer bestimmten Größe <br> t = sehr geringer Arbeitsspeicher; die kleinste Arbeitsspeichermenge einer bestimmten Größe <br> r = RDMA-fähig <br> s = Storage Premium-fähig, einschließlich der möglichen Verwendung von [SSD Ultra](./windows/disks-types.md#ultra-disk) (Hinweis: einige neuere Größen ohne das Attribut „s“ können noch Storage Premium unterstützen, z. B. M128, M64 usw.)<br> |
 | *Beschleunigertyp | Gibt den Typ des Hardwarebeschleunigers in den spezialisierten/GPU-SKUs an. Nur die neuen spezialisierten/GPU-SKUs, die ab dem 3. Quartal 2020 auf den Markt kommen, werden den Hardwarebeschleuniger im Namen tragen. |
 | Version | Bezeichnet die Version der Serie der VM-Familie |
 
@@ -69,4 +68,4 @@ Diese Seite gibt einen Überblick über die Namenskonventionen, die für Azure V
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erfahren Sie mehr über die verfügbaren [VM-Größen](https://docs.microsoft.com/azure/virtual-machines/windows/sizes) in Azure. 
+Erfahren Sie mehr über die verfügbaren [VM-Größen](./sizes.md) in Azure. 

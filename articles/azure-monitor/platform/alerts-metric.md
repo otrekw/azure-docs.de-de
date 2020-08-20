@@ -4,14 +4,14 @@ description: Erfahren Sie, wie Sie mit dem Azure-Portal oder der CLI Metrikwarnu
 author: harelbr
 ms.author: harelbr
 ms.topic: conceptual
-ms.date: 03/13/2020
+ms.date: 08/11/2020
 ms.subservice: alerts
-ms.openlocfilehash: c040958d9518485bc5d583fc01aedd50d5c6e57a
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 7b5332f68bb35e3c9b9ed82bb7bed2908e744e9f
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321121"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88065861"
 ---
 # <a name="create-view-and-manage-metric-alerts-using-azure-monitor"></a>Erstellen, Anzeigen und Verwalten von Metrikwarnungen mit Azure Monitor
 
@@ -88,6 +88,7 @@ Sie können Metrikwarnungsregeln anzeigen und verwalten, indem Sie das Blatt „
 
 6. Klicken Sie auf **Fertig**, um Ihre Änderungen zu speichern.
 
+
 ## <a name="with-azure-cli"></a>Mit der Azure-Befehlszeilenschnittstelle
 
 In den vorangegangenen Abschnitten wurde beschrieben, wie Sie über das Azure-Portal Metrikwarnungsregeln erstellen, anzeigen und verwalten. In diesem Abschnitt wird beschrieben, wie Sie dasselbe mit der plattformübergreifenden [Azure-Befehlszeilenschnittstelle](/cli/azure/get-started-with-azure-cli?view=azure-cli-latest) (Azure CLI) erreichen können. Die schnellste Möglichkeit, mit der Verwendung der Azure CLI zu beginnen, ist über [Azure Cloud Shell](../../cloud-shell/overview.md?view=azure-cli-latest). In diesem Artikel verwendeten wir Cloud Shell.
@@ -133,6 +134,23 @@ In den vorangegangenen Abschnitten wurde beschrieben, wie Sie über das Azure-Po
     ```azurecli
     az monitor metrics alert delete -g {ResourceGroup} -n {AlertRuleName}
     ```
+
+## <a name="with-powershell"></a>Mit PowerShell
+
+In Metrikwarnungsregeln stehen folgende dedizierte PowerShell-Cmdlets zur Verfügung:
+
+- [Add-AzMetricAlertRuleV2](/powershell/module/az.monitor/add-azmetricalertrulev2): Hiermit wird eine neue Metrikwarnungsregel erstellt oder eine vorhandene Metrikwarnungsregel aktualisiert.
+- [Get-AzMetricAlertRuleV2](/powershell/module/az.monitor/get-azmetricalertrulev2): Dient zum Abrufen von Metrikwarnungsregeln.
+- [Remove-AzMetricAlertRuleV2](/powershell/module/az.monitor/remove-azmetricalertrulev2): Dient zum Löschen einer Metrikwarnungsregel.
+
+## <a name="with-rest-api"></a>Mit der REST-API
+
+- [Erstellen oder aktualisieren:](/rest/api/monitor/metricalerts/createorupdate) Hiermit wird eine neue Metrikwarnungsregel erstellt oder eine vorhandene Metrikwarnungsregel aktualisiert.
+- [Get](/rest/api/monitor/metricalerts/get) (Abrufen): Dient zum Abrufen einer bestimmten Metrikwarnungsregel.
+- [List By Resource Group](/rest/api/monitor/metricalerts/listbyresourcegroup) (Nach Ressourcengruppe gruppieren): Hiermit wird eine Liste der Metrikwarnungsregeln in einer bestimmten Ressourcengruppe abgerufen.
+- [List By Subscription](/rest/api/monitor/metricalerts/listbysubscription) (Nach Abonnement auflisten): Hiermit wird eine Liste der Metrikwarnungsregeln in einem bestimmten Abonnement abgerufen.
+- [Update](/rest/api/monitor/metricalerts/update) (Aktualisieren): Dient zum Aktualisieren einer Metrikwarnungsregel.
+- [Löschen:](/rest/api/monitor/metricalerts/delete) Dient zum Löschen einer Metrikwarnungsregel.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

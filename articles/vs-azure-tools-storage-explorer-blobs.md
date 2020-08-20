@@ -1,6 +1,6 @@
 ---
 title: Verwalten von Azure Blob Storage-Ressourcen mit dem Storage-Explorer | Microsoft-Dokumentation
-description: Verwalten von Azure-Blobcontainern und Blobs mit dem Storage-Explorer
+description: Verwalten Sie Azure Blob Storage-Ressourcen mit Storage-Explorer. Erstellen Sie einen Blobcontainer, zeigen Sie Blobcontainerinhalte an, löschen oder kopieren Sie einen Blobcontainer usw.
 services: storage
 documentationcenter: na
 author: cawaMS
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/21/2019
 ms.author: cawa
-ms.openlocfilehash: 56c20c995a95058b5039b7268c7b7b1426e900fa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 07652f2ac88475664f30e8189204b5649f966d16
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85298122"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88033613"
 ---
 # <a name="manage-azure-blob-storage-resources-with-storage-explorer"></a>Verwalten von Azure Blob Storage-Ressourcen mit dem Storage-Explorer
 
@@ -183,7 +183,7 @@ Die folgenden Schritte veranschaulichen, wie Sie die Blobs (und Ordner) in einem
      1. Wählen Sie auf der Symbolleiste des Hauptbereichs die Option **Hochladen** und dann im Dropdownmenü die Option **Dateien hochladen** aus.
 
         ![Menü „Dateien hochladen“][15]
-     2. Wählen Sie im Dialogfeld **Dateien hochladen** rechts neben dem Feld **Dateien** die Schaltfläche mit den Auslassungspunkten ( **…** ) aus, um die hochzuladenden Dateien auszuwählen.
+     2. Wählen Sie im Dialogfeld **Dateien hochladen** rechts neben dem Feld **Dateien** die Schaltfläche mit den Auslassungspunkten (**…**) aus, um die hochzuladenden Dateien auszuwählen.
 
         ![Dateien hochladen – Optionen][16]
      3. Geben Sie als Typ **Blob-Typ**an. Weitere Informationen finden Sie unter [Erstellen eines Containers](storage/blobs/storage-quickstart-blobs-dotnet.md#create-a-container).
@@ -194,7 +194,7 @@ Die folgenden Schritte veranschaulichen, wie Sie die Blobs (und Ordner) in einem
      1. Wählen Sie auf der Symbolleiste des Hauptbereichs die Option **Hochladen** und dann im Dropdownmenü die Option **Uploadordner** aus.
 
         ![Menü „Upload folder“ (Ordner hochladen)][17]
-     2. Klicken Sie im Dialogfeld **Uploadordner** rechts vom Textfeld **Ordner** auf die Schaltfläche mit den Auslassungszeichen ( **…** ), um den Ordner auszuwählen, dessen Inhalt Sie hochladen möchten.
+     2. Klicken Sie im Dialogfeld **Uploadordner** rechts vom Textfeld **Ordner** auf die Schaltfläche mit den Auslassungszeichen (**…**), um den Ordner auszuwählen, dessen Inhalt Sie hochladen möchten.
 
         ![Upload folder (Ordner hochladen) – Optionen][18]
      3. Geben Sie als Typ **Blob-Typ**an. Weitere Informationen finden Sie unter [Erstellen eines Containers](storage/blobs/storage-quickstart-blobs-dotnet.md#create-a-container).

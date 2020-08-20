@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
-ms.date: 7/9/2020
-ms.openlocfilehash: 38ca6528b77d9f36c84f5aacaa34a64d113b5978
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.date: 8/7/2020
+ms.openlocfilehash: 7697ba514b74935f8da6d71cdfb380e704d66f56
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206947"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121356"
 ---
 # <a name="azure-sql-database-serverless"></a>Azure SQL-Datenbank – Serverlos
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -88,7 +88,7 @@ Arbeitsspeicher für serverlose Datenbanken wird häufiger als bei bereitgestell
 
 #### <a name="cache-reclamation"></a>Freigabe von Cache
 
-Im Gegensatz zu bereitgestellten Computedatenbanken wird der Speicher aus dem SQL-Cache von einer serverlosen Datenbank freigegeben, wenn eine geringe CPU-Auslastung vorliegt oder der Cache kaum aktiv genutzt wird.  Beachten Sie, dass die aktive Cachenutzung je nach Verwendungsmuster trotz geringer CPU-Auslastung hoch bleiben und die Speicherfreigabe verhindern kann.
+Im Gegensatz zu bereitgestellten Computedatenbanken wird der Speicher aus dem SQL-Cache von einer serverlosen Datenbank freigegeben, wenn eine geringe CPU-Auslastung vorliegt oder der Cache kaum aktiv genutzt wird.
 
 - Die aktive Cachenutzung gilt als niedrig, wenn die Gesamtgröße der zuletzt verwendeten Cacheeinträge für einen bestimmten Zeitraum unter einen Schwellenwert fällt.
 - Beim Auslösen der Cachefreigabe wird die Größe des Zielspeichers inkrementell auf einen Bruchteil der vorherigen Größe reduziert, und der Freigabevorgang wird nur fortgesetzt, wenn die Auslastung niedrig bleibt.
@@ -96,6 +96,8 @@ Im Gegensatz zu bereitgestellten Computedatenbanken wird der Speicher aus dem SQ
 - Der Cache wird niemals auf eine Größe verkleinert, die unter der Mindestgröße für den Arbeitsspeicher liegt. Dies wird über die Mindestanzahl von virtuellen Kernen definiert und kann entsprechend konfiguriert werden.
 
 Sowohl in serverlosen als auch in bereitgestellten Computedatenbanken können Cacheeinträge entfernt werden, wenn der gesamte verfügbare Arbeitsspeicher verwendet wird.
+
+Beachten Sie, dass die aktive Cachenutzung je nach Verwendungsmuster trotz geringer CPU-Auslastung hoch bleiben und die Speicherfreigabe verhindern kann.  Außerdem kann es nach Ende der Benutzeraktivität zu einer zusätzlichen Verzögerung kommen, bevor die Speicherfreigabe aufgrund von periodischen Hintergrundprozessen erfolgt, die auf vorherige Benutzeraktivitäten reagieren.  Beispielsweise werden bei Löschvorgängen inaktive Datensätze generiert, die zum Löschen markiert sind. Sie werden jedoch erst physisch gelöscht, wenn der inaktive Cleanupprozess inaktiver Datensätze ausgeführt wird, der das Lesen von Datenseiten in den Cache beinhalten kann.
 
 #### <a name="cache-hydration"></a>Cachehydration
 
@@ -117,7 +119,7 @@ Die folgenden Features unterstützen nicht das automatische Anhalten, sondern nu
 - Georeplikation (aktive Georeplikation und Gruppen für automatisches Failover).
 - Langzeitaufbewahrung (Long-Term Retention, LTR) von Sicherungen.
 - In SQL-Datensynchronisierung verwendete Synchronisierungsdatenbank  Im Gegensatz zu Synchronisierungsdatenbanken unterstützen Hub-Datenbanken und Mitgliedsdatenbanken das automatische Anhalten.
-- Die in elastischen Aufträgen verwendete Auftragsdatenbank.
+- die in elastischen Aufträgen (Vorschauversion) verwendete Auftragsdatenbank
 
 Das automatische Anhalten wird während der Bereitstellung bestimmter Dienstupdates vorübergehend verhindert, die erfordern, dass die Datenbank online ist.  In solchen Fällen ist das automatische Anhalten wieder zulässig, sobald das Dienstupdate abgeschlossen ist.
 

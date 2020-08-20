@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/06/2020
 ms.author: tagore
 ms.custom: include file
-ms.openlocfilehash: 4e07334e859f2c1401547cc3f88988830b71c5e1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b874cefc2521089da02b90b9241be93e80836d6e
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77192538"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87507281"
 ---
 Dieser Artikel beschreibt, wie Sie IaaS-Ressourcen (Infrastructure-as-a-Service) vom klassischen Bereitstellungsmodell zum Resource Manager-Bereitstellungsmodell migrieren. Der Artikel enthält zudem Informationen dazu, wie Sie Ressourcen aus den beiden Bereitstellungsmodellen, die in Ihrem Abonnement nebeneinander existieren, mithilfe von Standort-zu-Standort-Gateways miteinander verbinden. Informieren Sie sich weiter über [Features und Vorteile von Azure Resource Manager](../articles/azure-resource-manager/management/overview.md). 
 
@@ -22,9 +22,9 @@ Resource Manager ermöglicht die Bereitstellung komplexer Anwendungen über Vorl
 
 Nahezu alle Funktionen des klassischen Bereitstellungsmodells werden für die Bereiche Compute, Netzwerk und Speicher unter Azure Resource Manager unterstützt. Um die neuen Funktionen in Azure Resource Manager zu nutzen, können Sie vorhandene Bereitstellungen aus dem klassischen Bereitstellungsmodell migrieren.
 
-## <a name="supported-resources-for-migration"></a>Unterstützte Ressourcen für die Migration
-Bei der Migration werden folgende klassische IaaS-Ressourcen unterstützt:
+## <a name="supported-resources--configurations-for-migration"></a>Unterstützte Ressourcen und Konfigurationen für die Migration
 
+### <a name="supported-resources-for-migration"></a>Unterstützte Ressourcen für die Migration
 * Virtual Machines
 * Verfügbarkeitsgruppen
 * Speicherkonten
@@ -35,13 +35,20 @@ Bei der Migration werden folgende klassische IaaS-Ressourcen unterstützt:
 * Routingtabellen
 * Reservierte IP-Adressen
 
+## <a name="supported-configurations-for-migration"></a>Unterstützte Konfigurationen für die Migration
+Bei der Migration werden folgende klassische IaaS-Ressourcen unterstützt:
+
+| Dienst | Konfiguration |
+| --- | --- |
+| Azure AD Domain Services | [Virtuelle Netzwerke, die Azure AD Domain Services enthalten](https://docs.microsoft.com/azure/active-directory-domain-services/migrate-from-classic-vnet) |
+
 ## <a name="supported-scopes-of-migration"></a>Unterstützte Migrationsbereiche
 Es gibt vier verschiedene Möglichkeiten, Compute-, Netzwerk- und Speicherressourcen zu migrieren:
 
 * [Migration virtueller Computer (NICHT in einem virtuellen Netzwerk)](#migration-of-virtual-machines-not-in-a-virtual-network)
 * [Migration virtueller Computer (in einem virtuellen Netzwerk)](#migration-of-virtual-machines-in-a-virtual-network)
 * [Migration von Speicherkonten](#migration-of-storage-accounts)
-* [Migration von nicht zugewiesenen Ressourcen](#migration-of-unattached-resources)
+* [Migration nicht zugeordneter Ressourcen](#migration-of-unattached-resources)
 
 ### <a name="migration-of-virtual-machines-not-in-a-virtual-network"></a>Migration virtueller Computer (NICHT in einem virtuellen Netzwerk)
 Beim Resource Manager-Bereitstellungsmodell wird die Sicherheit Ihrer Anwendungen standardmäßig erzwungen. Beim Resource Manager-Modell müssen sich alle virtuellen Computer in einem virtuellen Netzwerk befinden. Die Azure-Plattform startet die virtuellen Computer im Rahmen der Migration neu (`Stop`, `Deallocate` und `Start`). Bei den virtuellen Netzwerken, in die die virtuellen Computer migriert werden, haben Sie zwei Möglichkeiten:
@@ -129,5 +136,4 @@ Die folgenden Konfigurationen werden derzeit nicht unterstützt:
 | Azure App Service |Virtuelle Netzwerke, die App Service-Umgebungen enthalten |Dies wird derzeit nicht unterstützt. |
 | Azure HDInsight |Virtuelle Netzwerke, die HDInsight-Dienste enthalten |Dies wird derzeit nicht unterstützt. |
 | Microsoft Dynamics Lifecycle Services |Virtuelle Netzwerke, die virtuelle Computer enthalten, die von Dynamics Lifecycle Services verwaltet werden |Dies wird derzeit nicht unterstützt. |
-| Azure AD Domain Services |Virtuelle Netzwerke, die Azure AD Domain Services enthalten |Dies wird derzeit nicht unterstützt. |
 | Azure API Management |Virtuelle Netzwerke, die Azure API Management-Bereitstellungen enthalten |Dies wird derzeit nicht unterstützt. Um das IaaS-VNET zu migrieren, ändern Sie das VNET der API Management-Bereitstellung – hierbei treten keine Ausfallzeiten auf. |

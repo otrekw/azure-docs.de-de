@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 12/19/2018
-ms.openlocfilehash: 27fcbcec07012dc34c846f316fccf788a0d25329
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 72f0d361f69232894df3a9131d173411614a2055
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84025811"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87921213"
 ---
 # <a name="find-and-apply-performance-recommendations"></a>Suchen und Anwenden von Empfehlungen zur Leistung
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -25,7 +25,7 @@ Sie können im Azure-Portal Empfehlungen zur Leistungsverbesserung erhalten, die
 
 ## <a name="viewing-recommendations"></a>Anzeigen von Empfehlungen
 
-Zum Anzeigen und Anwenden von Empfehlungen zur Leistung benötigen Sie die richtigen Berechtigungen für die [rollenbasierte Zugriffssteuerung](../../role-based-access-control/overview.md) in Azure. Die Berechtigungen **Leser** und **SQL-DB-Mitwirkender** sind erforderlich, um Empfehlungen anzuzeigen, und die Berechtigungen **Besitzer** und **SQL-DB-Mitwirkender** sind erforderlich, um Aktionen ausführen zu können, Indizes zu erstellen oder zu löschen und die Indexerstellung abzubrechen.
+Zum Anzeigen und Anwenden von Empfehlungen zur Leistung benötigen Sie die richtigen Berechtigungen für die [rollenbasierte Zugriffssteuerung (Azure Role-Based Access Control, Azure RBAC)](../../role-based-access-control/overview.md). Die Berechtigungen **Leser** und **SQL-DB-Mitwirkender** sind erforderlich, um Empfehlungen anzuzeigen, und die Berechtigungen **Besitzer** und **SQL-DB-Mitwirkender** sind erforderlich, um Aktionen ausführen zu können, Indizes zu erstellen oder zu löschen und die Indexerstellung abzubrechen.
 
 Führen Sie die folgenden Schritte aus, um Empfehlungen zur Leistung im Azure-Portal zu suchen:
 
@@ -172,4 +172,4 @@ Azure SQL-Datenbank bietet Empfehlungen zur Leistungsverbesserung für die Daten
 
 * [Abfragespeicher](https://msdn.microsoft.com/library/dn817826.aspx)
 * [CREATE INDEX](https://msdn.microsoft.com/library/ms188783.aspx)
-* [Rollenbasierte Zugriffssteuerung](../../role-based-access-control/overview.md)
+* [Rollenbasierte Zugriffssteuerung von Azure (Azure-RBAC)](../../role-based-access-control/overview.md)

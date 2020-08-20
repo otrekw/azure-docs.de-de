@@ -16,12 +16,12 @@ ms.date: 08/10/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b0a0ee226fcddb3bfc216e1e160b5571fde59a41
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: da5cefbacbd3851d2609a687c1948d9bcba5ffae
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85807586"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88612468"
 ---
 # <a name="post-configuration-tasks-for-hybrid-azure-ad-join"></a>Aufgaben nach der Konfiguration für die Hybrid-Azure AD-Einbindung
 
@@ -87,9 +87,6 @@ Dieses Installationsprogramm erstellt einen geplanten Task auf dem Gerätesystem
 ## <a name="10-configure-group-policy-to-allow-device-registration"></a>10. Konfigurieren der Gruppenrichtlinie, um die Geräteregistrierung zuzulassen
 
 Informationen zum Zulassen einer Azure AD-Hybrideinbindung für einzelne Geräte finden Sie unter [Kontrollierte Überprüfung der Azure AD-Hybrideinbindung](../devices/hybrid-azuread-join-control.md).
-
-> [!NOTE]
-> Für 2012 R2 befinden sich die Richtlinieneinstellungen unter **Computerkonfiguration > Richtlinien > Administrative Vorlagen > Windows-Komponenten > Workplace Join > Clientcomputer automatisch in Arbeitsbereich einbinden**.
 
 ## <a name="next-steps"></a>Nächste Schritte
 [Konfigurieren des Geräterückschreibens](how-to-connect-device-writeback.md)

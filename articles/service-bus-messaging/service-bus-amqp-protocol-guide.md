@@ -3,12 +3,12 @@ title: AMQP 1.0 in Azure Service Bus und Event Hubs – Protokollleitfaden | Mic
 description: Enthält einen Protokollleitfaden für Ausdrücke und eine Beschreibung von AMQP 1.0 in Azure Service Bus und Event Hubs.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 5957e2d36b57be7db1af279736e8859d1a69b66b
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ffccd49d37dbf2a8fc404e9895b648e53007675c
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86511312"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88064535"
 ---
 # <a name="amqp-10-in-azure-service-bus-and-event-hubs-protocol-guide"></a>AMQP 1.0 in Azure Service Bus und Event Hubs – Protokollleitfaden
 
@@ -73,7 +73,7 @@ Verbindungen, Kanäle und Sitzungen sind flüchtig. Wenn die zugrunde liegende V
 
 ### <a name="amqp-outbound-port-requirements"></a>Anforderungen für ausgehende Ports für AMQP-Verbindungen
 
-Bei Clients, auf denen AMQP-Verbindungen über TCP verwendet werden, müssen die Ports 5671 und 5672 in der lokalen Firewall geöffnet werden. Zusammen mit diesen Ports ist es möglicherweise notwendig, zusätzliche Ports zu öffnen, wenn die Funktion [EnableLinkRedirect](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.enablelinkredirect?view=azure-dotnet) aktiviert ist. `EnableLinkRedirect` ist eine neue Messagingfunktion, mit der beim Empfangen von Nachrichten ein Hop übersprungen und so der Durchsatz gesteigert werden kann. Der Client kommuniziert wie in der folgenden Abbildung gezeigt direkt mit dem Back-End-Dienst über den Portbereich 104XX. 
+Bei Clients, auf denen AMQP-Verbindungen über TCP verwendet werden, müssen die Ports 5671 und 5672 in der lokalen Firewall geöffnet werden. Zusammen mit diesen Ports ist es möglicherweise notwendig, zusätzliche Ports zu öffnen, wenn die Funktion [EnableLinkRedirect](/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.enablelinkredirect?view=azure-dotnet) aktiviert ist. `EnableLinkRedirect` ist eine neue Messagingfunktion, mit der beim Empfangen von Nachrichten ein Hop übersprungen und so der Durchsatz gesteigert werden kann. Der Client kommuniziert wie in der folgenden Abbildung gezeigt direkt mit dem Back-End-Dienst über den Portbereich 104XX. 
 
 ![Liste der Zielports][4]
 
@@ -419,5 +419,5 @@ Weitere Informationen zu AMQP finden Sie unter den folgenden Links:
 [4]: ./media/service-bus-amqp-protocol-guide/amqp4.png
 
 [Übersicht über Service Bus AMQP]: service-bus-amqp-overview.md
-[AMQP 1.0-Unterstützung für partitionierte Warteschlangen und Themen von Service Bus]: service-bus-partitioned-queues-and-topics-amqp-overview.md
-[AMQP in Service Bus für Windows Server]: https://msdn.microsoft.com/library/dn574799.aspx
+[AMQP 1.0-Unterstützung für partitionierte Warteschlangen und Themen von Service Bus]: 
+[AMQP in Service Bus for Windows Server]: /previous-versions/service-bus-archive/dn574799(v=azure.100)

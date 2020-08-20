@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.author: aahi
-ms.openlocfilehash: eb82422aa0e3d45743539da623fcb919e8e77bbc
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: 0e60ba0517fb3b9388045762853c651869cffb6a
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84141811"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87986456"
 ---
 # <a name="example-user-scenarios-for-the-text-analytics-api"></a>Beispielbenutzerszenarien für die Textanalyse-API
 
@@ -29,7 +29,7 @@ Gewinnen Sie Erkenntnisse aus den Ergebnissen von Kunden- und Mitarbeiterbefragu
 
 ## <a name="analyze-recorded-inbound-customer-calls"></a>Analysieren aufgezeichneter eingehender Kundenanrufe
 
-Gewinnen Sie Erkenntnisse aus Anrufen beim Kundendienst mithilfe der Sprachsynthese, Standpunktanalyse und Schlüsselbegriffserkennung. Zeigen Sie die Ergebnisse im Power BI-Dashboard oder in einem Portal an, um Kunden besser zu verstehen, Trends im Kundendienst aufzuzeigen und die Kundenbindung zu fördern. Senden Sie API-Anforderungen als Batch für die Berichterstellung oder in Echtzeit für Eingriffe. Sehen Sie sich den Beispielcode auf [GitHub](https://github.com/rlagh2/callcenteranalytics) an.
+Gewinnen Sie Erkenntnisse aus Anrufen beim Kundendienst mithilfe der Spracherkennung, Standpunktanalyse und Schlüsselbegriffserkennung. Zeigen Sie die Ergebnisse im Power BI-Dashboard oder in einem Portal an, um Kunden besser zu verstehen, Trends im Kundendienst aufzuzeigen und die Kundenbindung zu fördern. Senden Sie API-Anforderungen als Batch für die Berichterstellung oder in Echtzeit für Eingriffe. Sehen Sie sich den Beispielcode auf [GitHub](https://github.com/rlagh2/callcenteranalytics) an.
 
 ![Abbildung mit einer Beschreibung, wie das Gewinnen von Erkenntnissen aus Anrufen beim Kundendienst mithilfe der Standpunktanalyse automatisiert werden kann](media/use-cases/azure-inbound.svg)
 

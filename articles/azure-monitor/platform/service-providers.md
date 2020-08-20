@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: MeirMen
 ms.author: meirm
 ms.date: 02/03/2020
-ms.openlocfilehash: 766fb9fbe50f8a138eae020082680204872a653a
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 0869de4ccfe89cc3919ec2d2d80aa3e18749039a
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87315444"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87921090"
 ---
 # <a name="azure-monitor-logs-for-service-providers"></a>Azure Monitor-Protokolle für Dienstanbieter
 
@@ -40,7 +40,7 @@ Es gibt zwei Möglichkeiten, wie Administratoren des Dienstanbieters Zugriff auf
 
 Die verteilte Architektur bietet folgende Vorteile:
 
-* Der Kunde kann spezifische Berechtigungsebenen über die [delegierte Azure-Ressourcenverwaltung](../../lighthouse/concepts/azure-delegated-resource-management.md) überprüfen oder den Zugriff auf die Protokolle über seinen [rollenbasierten Zugriff](../../role-based-access-control/overview.md) verwalten.
+* Der Kunde kann spezifische Berechtigungsebenen über die [delegierte Azure-Ressourcenverwaltung](../../lighthouse/concepts/azure-delegated-resource-management.md) überprüfen oder den Zugriff auf die Protokolle über seine [rollenbasierte Zugriffssteuerung von Azure (Azure Role-Based Access Control, Azure RBAC)](../../role-based-access-control/overview.md) verwalten.
 * Protokolle können von Ressourcen jeder Art erfasst werden, nicht nur von agentbasierten VM-Daten. Beispielsweise Azure-Überwachungsprotokolle.
 * Jeder Kunde kann andere Einstellungen für seinen Arbeitsbereich verwenden, etwa hinsichtlich Vermerkdauer und Datenbegrenzung.
 * Isolation zwischen Kunden im Hinblick auf behördliche Bestimmungen und Compliance.
@@ -90,4 +90,3 @@ Es bestehen zwei Optionen zum Implementieren von Protokollen an einem zentralen 
 * Generieren Sie Zusammenfassungsberichte mit [Power BI](./powerbi.md).
 
 * Führen Sie das Onboarding von Kunden für die [delegierte Azure-Ressourcenverwaltung](../../lighthouse/concepts/azure-delegated-resource-management.md) durch.
-

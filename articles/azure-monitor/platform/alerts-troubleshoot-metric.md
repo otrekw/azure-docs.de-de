@@ -4,14 +4,14 @@ description: In diesem Artikel werden gängige Probleme mit Azure Monitor-Metrik
 author: harelbr
 ms.author: harelbr
 ms.topic: reference
-ms.date: 07/21/2020
+ms.date: 08/09/2020
 ms.subservice: alerts
-ms.openlocfilehash: b4a2329640387ab1c3cda93d18c6cb22c7d511cd
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: c6b7d1fb28e81957ded56662a06946e56c3dc00e
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327479"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88114896"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>Behandeln von Problemen mit Azure Monitor-Metrikwarnungen 
 
@@ -108,9 +108,9 @@ Metrikwarnungen sind in der Standardeinstellung zustandsbehaftet. Daher werden k
 
 ## <a name="define-an-alert-rule-on-a-custom-metric-that-isnt-emitted-yet"></a>Definieren einer Warnungsregel für eine benutzerdefinierte Metrik, die noch nicht ausgegeben wurde
 
-Beim Erstellen einer Metrikwarnungsregel wird der Metrikname anhand der [Metrikdefinitions-API](/rest/api/monitor/metricdefinitions/list) überprüft, um sicherzustellen, dass er vorhanden ist. In einigen Fällen möchten Sie eine Warnungsregel für eine benutzerdefinierte Metrik erstellen, noch bevor diese ausgegeben wird. Ein Beispiel wäre, wenn Sie eine Application Insights-Ressource erstellen (mit einer ARM-Vorlage), die eine benutzerdefinierte Metrik ausgibt, sowie eine Warnungsregel, die diese Metrik überwacht.
+Beim Erstellen einer Metrikwarnungsregel wird der Metrikname anhand der [Metrikdefinitions-API](/rest/api/monitor/metricdefinitions/list) überprüft, um sicherzustellen, dass er vorhanden ist. In einigen Fällen möchten Sie eine Warnungsregel für eine benutzerdefinierte Metrik erstellen, noch bevor diese ausgegeben wird. Ein Beispiel wäre, wenn Sie eine Application Insights-Ressource erstellen (mit einer Resource Manager-Vorlage), die eine benutzerdefinierte Metrik ausgibt, sowie eine Warnungsregel, die diese Metrik überwacht.
 
-Um zu vermeiden, dass bei der Bereitstellung Fehler auftreten, wenn Sie versuchen, die Definitionen der benutzerdefinierten Metrik zu überprüfen, können Sie den Parameter *skipMetricValidation* im Kriterienabschnitt der Warnungsregel verwenden, durch den die Metrikvalidierung übersprungen wird. Im folgenden Beispiel finden Sie Informationen zur Verwendung dieses Parameters in einer ARM-Vorlage (umfassende ARM-Vorlagenbeispiele zum Erstellen von Metrikwarnungsregeln finden Sie [hier]( https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-create-templates)).
+Um zu vermeiden, dass bei der Bereitstellung Fehler auftreten, wenn Sie versuchen, die Definitionen der benutzerdefinierten Metrik zu überprüfen, können Sie den Parameter *skipMetricValidation* im Kriterienabschnitt der Warnungsregel verwenden, durch den die Metrikvalidierung übersprungen wird. Im folgenden Beispiel finden Sie Informationen zur Verwendung dieses Parameters in einer Resource Manager-Vorlage. Weitere Informationen finden Sie unter [Erstellen einer Metrikwarnung anhand einer Resource Manager-Vorlage](./alerts-metric-create-templates.md).
 
 ```json
 "criteria": {
@@ -129,6 +129,15 @@ Um zu vermeiden, dass bei der Bereitstellung Fehler auftreten, wenn Sie versuche
               ]
         }
 ```
+
+## <a name="export-the-arm-template-of-a-metric-alert-rule-via-the-azure-portal"></a>Exportieren der ARM-Vorlage einer Metrikwarnungsregel über das Azure-Portal
+
+Indem Sie die ARM-Vorlage einer Metrikwarnungsregel exportieren, können Sie die JSON-Syntax und -Eigenschaften besser nachvollziehen. Der Export kann außerdem zur Automatisierung zukünftiger Bereitstellungen verwendet werden.
+1. Navigieren Sie im Portal zum Abschnitt **Ressourcengruppen**, und wählen Sie die Ressourcengruppe aus, die die Regel enthält.
+2. Aktivieren Sie im Abschnitt „Übersicht“ das Kontrollkästchen **Ausgeblendete Typen anzeigen**.
+3. Wählen Sie im Filter **Typ** die Option *microsoft.insights/metricalerts* aus.
+4. Wählen Sie die entsprechende Warnungsregel aus, um die zugehörigen Details anzuzeigen.
+5. Klicken Sie unter **Einstellungen** auf **Vorlage exportieren**.
 
 ## <a name="metric-alert-rules-quota-too-small"></a>Kontingent für Metrikwarnungsregeln zu klein
 
@@ -247,4 +256,3 @@ Beispiel:
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Allgemeine Informationen zur Problembehandlung bei Warnungen und Benachrichtigungen finden Sie unter [Behandeln von Problemen bei Azure Monitor-Warnungen](alerts-troubleshoot.md).
-

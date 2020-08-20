@@ -3,12 +3,12 @@ title: Unterstützungsmatrix für den MARS-Agent
 description: Dieser Artikel enthält eine Übersicht über die Azure Backup-Unterstützung beim Sichern von Computern, auf denen der MARS-Agent (Microsoft Azure Recovery Services) ausgeführt wird.
 ms.date: 08/30/2019
 ms.topic: conceptual
-ms.openlocfilehash: 5ff9510dfa31bb947d50b1a91fb7f73c2d767471
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 2b719bd36c27336b3fe24cdb904715bf8194ed70
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86538648"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87872411"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>Supportmatrix für die Sicherung mit dem Microsoft Azure Recovery Services (MARS)-Agent
 
@@ -45,7 +45,7 @@ Wenn Sie Daten mit dem MARS-Agent sichern, wird eine Momentaufnahme der Daten er
 --- | ---
 Size |  Der freie Speicherplatz im Cacheordner muss mindestens 5 bis 10 Prozent der Gesamtgröße Ihrer Sicherungsdaten betragen.
 Position | Der Cacheordner muss lokal auf dem Computer gespeichert werden, der gesichert wird, und er muss online sein. Der Cacheordner darf sich nicht in einer Netzwerkfreigabe, auf Wechselmedien oder in einem Offline-Volume befinden.
-Ordner | Der Cacheordner sollte nicht verschlüsselt sein und sich nicht auf einem deduplizierten Volume oder in einem Ordner befinden, der komprimiert ist, eine geringe Dichte aufweist oder einen Analysepunkt hat.
+Ordner | Der Cacheordner darf auf einem deduplizierten Volume oder in einem Ordner, der komprimiert ist, eine geringe Dichte aufweist oder einen Analysepunkt hat, nicht verschlüsselt sein.
 Andere Speicherorte | Sie können den Cachespeicherort ändern, indem Sie die Sicherungs-Engine beenden (`net stop bengine`) und den Cacheordner in ein neues Laufwerk kopieren. (Stellen Sie sicher, dass genügend Platz vorhanden ist.) Dann aktualisieren Sie zwei Registrierungseinträge unter **HKLM\SOFTWARE\Microsoft\Windows Azure Backup** (**Config/ScratchLocation** und **Config/CloudBackupProvider/ScratchLocation**) auf den neuen Speicherort und starten die Engine neu.
 
 ## <a name="networking-and-access-support"></a>Netzwerk und Zugriffsunterstützung
@@ -54,7 +54,7 @@ Andere Speicherorte | Sie können den Cachespeicherort ändern, indem Sie die Si
 
 Der MARS-Agent benötigt Zugriff auf diese URLs:
 
-- <http://www.msftncsi.com/ncsi.txt>
+- `http://www.msftncsi.com/ncsi.txt`
 - *.Microsoft.com
 - *.WindowsAzure.com
 - *.MicrosoftOnline.com
@@ -69,7 +69,7 @@ Beim Zugriff auf alle oben aufgeführten URLs und IP-Adressen wird das HTTPS-Pro
 
 ### <a name="azure-expressroute-support"></a>Azure ExpressRoute-Unterstützung
 
-Sie können Ihre Daten über Azure ExpressRoute mit öffentlichem Peering (verfügbar für alte Verbindungen) und Microsoft-Peering sichern. Sicherung über privates Peering wird nicht unterstützt.
+Sie können Ihre Daten über Azure ExpressRoute mit öffentlichem Peering (verfügbar für alte Verbindungen) und Microsoft-Peering sichern. Die Sicherung über privates Peering wird nicht unterstützt.
 
 Bei öffentlichem Peering: Stellen Sie den Zugriff auf die folgenden Domänen/Adressen sicher:
 
@@ -79,7 +79,7 @@ Bei öffentlichem Peering: Stellen Sie den Zugriff auf die folgenden Domänen/Ad
 - `.microsoftonline.com`
 - `.windows.net`
 
-Wählen Sie beim Microsoft-Peering die folgenden Dienste/Regionen und relevanten Communitywerte aus:
+Mit Microsoft-Peering: Wählen Sie die folgenden Dienste, Regionen und relevanten Communitywerte aus:
 
 - Azure Active Directory (12076:5060)
 - Microsoft Azure-Region (entsprechend dem Standort Ihres Recovery Services-Tresors)
@@ -89,6 +89,16 @@ Weitere Informationen finden Sie unter [ExpressRoute-Routinganforderungen](../ex
 
 >[!NOTE]
 >Öffentliches Peering gilt für neue Leitungen als veraltet.
+
+### <a name="private-endpoint-support"></a>Unterstützung für den privaten Endpunkt
+
+Sie können nun private Endpunkte verwenden, um Ihre Daten von Servern sicher in Ihrem Recovery Services-Tresor zu sichern. Da Azure Active Directory derzeit keine privaten Endpunkte unterstützt, muss für die IPs und FQDNs, die für Azure Active Directory erforderlich sind, ausgehender Zugriff separat zugelassen werden.
+
+Wenn Sie den MARS-Agent zur Sicherung Ihrer lokalen Ressourcen verwenden, stellen Sie sicher, dass Ihr lokales Netzwerk (das die zu sichernden Ressourcen enthält) ein Peering mit dem virtuellen Azure-Netzwerk aufweist, das einen privaten Endpunkt für den Tresor enthält. Sie können dann mit der Installation des MARS-Agents fortfahren und die Sicherung konfigurieren. Sie müssen jedoch sicherstellen, dass die gesamte Kommunikation für die Sicherung ausschließlich über das Peeringnetzwerk erfolgt.
+
+Wenn Sie private Endpunkte für den Tresor entfernen, nachdem ein MARS-Agent bei ihm registriert wurde, müssen Sie den Container erneut beim Tresor registrieren. Sie müssen den Schutz für sie nicht aufheben.
+
+Weitere Informationen zu privaten Endpunkten für Azure Backup finden Sie [hier](private-endpoints.md).
 
 ### <a name="throttling-support"></a>Unterstützung für Drosselung
 
@@ -128,7 +138,7 @@ Für die folgenden Betriebssysteme ist der Supportzeitraum abgelaufen. Wir empfe
 
 Falls bestehende Verpflichtungen ein Upgrade des Betriebssystems verhindern sollten, können Sie eine Migration der Windows-Server zu Azure-VMs erwägen und Azure-VM-Sicherungen nutzen, um den Schutz aufrechtzuerhalten. Weitere Informationen zur Migration Ihrer Windows-Server finden Sie auf [dieser Seite zur Migration](https://azure.microsoft.com/migration/windows-server/).
 
-Für lokale oder gehostete Umgebungen, für die ein Upgrade des Betriebssystems oder die Migration zu Azure nicht möglich ist, sollten Sie „Erweiterte Sicherheitsupdates“ für die Computer aktivieren, damit für den Schutz und Support gesorgt ist. Beachten Sie hierbei, dass nur für bestimmte Editionen Anspruch auf „Erweiterte Sicherheitsupdates“ besteht. Weitere Informationen finden Sie auf der [Seite mit den häufig gestellten Fragen](https://www.microsoft.com/windows-server/extended-security-updates).
+Für lokale oder gehostete Umgebungen, für die ein Upgrade des Betriebssystems oder die Migration zu Azure nicht möglich ist, sollten Sie „Erweiterte Sicherheitsupdates“ für die Computer aktivieren, damit für Schutz und Support gesorgt ist. Beachten Sie hierbei, dass nur für bestimmte Editionen Anspruch auf „Erweiterte Sicherheitsupdates“ besteht. Weitere Informationen finden Sie auf der [Seite mit den häufig gestellten Fragen](https://www.microsoft.com/windows-server/extended-security-updates).
 
 | **Betriebssystem**                                       | **Dateien/Ordner** | **Systemstatus** | **Software-/Modulanforderungen**                           |
 | ------------------------------------------------------------ | ----------------- | ------------------ | ------------------------------------------------------------ |

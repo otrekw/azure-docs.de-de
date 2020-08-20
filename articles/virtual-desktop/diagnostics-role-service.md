@@ -1,19 +1,17 @@
 ---
 title: Diagnostizieren von Problemen mit Windows Virtual Desktop – Azure
 description: Verwendung der Diagnosefunktion von Windows Virtual Desktop zum Diagnostizieren von Problemen.
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: troubleshooting
-ms.date: 04/30/2020
+ms.date: 08/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 6ff1e3d8eb9cb40d46ae0624be9d37fd199accd2
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 50fe1eb6e5aed551b56bcd1526daa5d441185501
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87288758"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121407"
 ---
 # <a name="identify-and-diagnose-windows-virtual-desktop-issues"></a>Identifizieren und Diagnostizieren von Problemen mit Windows Virtual Desktop
 
@@ -62,6 +60,14 @@ In der folgenden Tabelle sind häufige Fehler aufgeführt, die für Ihre Adminis
 |8|ConnectionBroken|Die Verbindung zwischen dem Client und dem Gateway oder Server wurde getrennt. Sofern dieser Vorgang nicht unerwartet auftritt, ist keine Aktion erforderlich.|
 |14|UnexpectedNetworkDisconnect|Die Verbindung mit dem Netzwerk wurde getrennt. Bitten Sie den Benutzer, die Verbindung wiederherzustellen.|
 |24|ReverseConnectFailed|Der virtuelle Hostcomputer verfügt nicht über eine direkte Sichtlinie zum RD-Gateway. Stellen Sie sicher, dass die IP-Adresse des Gateways aufgelöst werden kann.|
+
+## <a name="error-cant-add-user-assignments-to-an-app-group"></a>Error: App-Gruppen können keine Benutzerzuweisungen hinzugefügt werden
+
+Nach dem Zuweisen eines Benutzers zu einer App-Gruppe zeigt das Azure-Portal die Warnung „Sitzungsende“ oder „Probleme bei der Authentifizierung – Erweiterung Microsoft_Azure_WVD“ an. Die Zuweisungsseite wird nicht geladen, und danach werden die Seiten im gesamten Azure-Portal nicht mehr geladen (z. B. Azure Monitor, Log Analytics, Service Health).
+
+**Ursache:** Es liegt ein Problem mit der Richtlinie für bedingten Zugriff vor. Das Azure-Portal versucht, ein Token für Microsoft Graph abzurufen, das von SharePoint Online abhängig ist. Der Kunde besitzt eine Richtlinie für bedingten Zugriff namens „Microsoft Office 365 Data Storage Terms of Use“ (Nutzungsbedingungen für den Microsoft Office 365-Datenspeicher), die voraussetzt, dass der Benutzer die Nutzungsbedingungen akzeptiert, um auf den Datenspeicher zugreifen zu können. Er ist jedoch noch nicht angemeldet, sodass das Azure-Portal das Token nicht abrufen kann.
+
+**Behebung:** Vor der Anmeldung beim Azure-Portal muss sich der Administrator zuerst bei SharePoint anmelden und die Nutzungsbedingungen akzeptieren. Danach sollte dieser sich wie gewohnt beim Azure-Portal anmelden können.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

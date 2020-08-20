@@ -4,14 +4,14 @@ description: Eine Übersicht über die Hauptkonzepte im Zusammenhang mit Nachric
 author: sffamily
 ms.service: signalr
 ms.topic: conceptual
-ms.date: 03/01/2019
+ms.date: 08/05/2020
 ms.author: zhshang
-ms.openlocfilehash: 5f6428231a3639738e8fb52e7dc3f2f2a3d2a26e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5483e10e817ce8a0a7e7c82d817b7bdbbdd9176b
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75392813"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87853448"
 ---
 # <a name="messages-and-connections-in-azure-signalr-service"></a>Nachrichten und Verbindungen in Azure SignalR Service
 
@@ -36,7 +36,13 @@ Für die Abrechnung werden nur ausgehende Nachrichten von Azure SignalR Service 
 
 Nachrichten mit einer Größe von mehr als 2 KB werden als mehrere Nachrichten mit jeweils 2 KB gezählt. Das Diagramm mit der Nachrichtenanzahl im Azure-Portal wird hubspezifisch alle 100 Nachrichten aktualisiert.
 
-Beispiel: Angenommen, Sie verfügen über drei Clients und einen Anwendungsserver. Ein Client sendet eine 4 KB große Nachricht, damit der Server einen Broadcast an alle Clients durchführt. In diesem Fall werden acht Nachrichten gezählt: eine Nachricht vom Dienst an den Anwendungsserver und drei Nachrichten vom Dienst an die Clients. Jede Nachricht wird als zwei Nachrichten mit jeweils 2 KB gezählt.
+Beispiel: Angenommen, Sie verfügen über einen Anwendungsserver und drei Clients:
+
+Der App-Server sendet eine Nachricht mit 1 KB an alle verbundenen Clients. Dabei wird die Nachricht vom App-Server an den Dienst als kostenlose eingehende Nachricht betrachtet. Nur die drei Nachrichten, die vom Dienst an jeden Client gesendet werden, werden als ausgehende Nachrichten abgerechnet.
+
+Client A sendet eine Nachricht mit 1 KB an Client B. Die Nachricht wird dabei nicht über den App-Server geleitet. Die Nachricht von Client A an den Dienst ist eine kostenlose eingehende Nachricht. Die Nachricht vom Dienst an Client B wird als ausgehende Nachricht in Rechnung gestellt.
+
+Sie besitzen drei Clients und einen Anwendungsserver. Ein Client sendet eine 4 KB große Nachricht, damit der Server einen Broadcast an alle Clients durchführt. In diesem Fall werden acht kostenpflichtige Nachrichten gezählt: eine Nachricht vom Dienst an den Anwendungsserver und drei Nachrichten vom Dienst an die Clients. Jede Nachricht wird als zwei Nachrichten mit jeweils 2 KB gezählt.
 
 ## <a name="how-connections-are-counted"></a>Zählung von Verbindungen
 
@@ -44,15 +50,15 @@ Es gibt Server- und Clientverbindungen mit Azure SignalR Service. Standardmäßi
 
 Die im Azure-Portal angezeigte Verbindungsanzahl umfasst sowohl Server- als auch Clientverbindungen.
 
-Ein Beispiel: Angenommen, Sie verfügen über zwei Anwendungsserver und definieren fünf Hubs im Code. Dadurch ergeben sich 50 Serververbindungen: 2 App-Server × 5 Hubs × 5 Verbindungen pro Hub
+Ein Beispiel: Angenommen, Sie verfügen über zwei Anwendungsserver und definieren fünf Hubs im Code. Dadurch ergeben sich 50 Serververbindungen: 2 App-Server × 5 Hubs × 5 Verbindungen pro Hub
 
-Bei ASP.NET SignalR werden Serververbindungen anders berechnet. In diesem Fall ist zusätzlich zu den definierten Hubs ein einzelner Standardhub enthalten. Jeder Anwendungsserver benötigt standardmäßig fünf weitere anfängliche Serververbindungen. Die Anzahl anfänglicher Verbindungen für den Standardhub bleibt mit der der anderen Hubs konsistent.
+Bei ASP.NET SignalR werden Serververbindungen anders berechnet. In diesem Fall ist zusätzlich zu den definierten Hubs ein einzelner Standardhub enthalten. Jeder Anwendungsserver benötigt standardmäßig fünf weitere anfängliche Serververbindungen. Die Anzahl anfänglicher Verbindungen für den Standardhub bleibt mit anderen Hubs konsistent.
 
-Während der Lebensdauer des Anwendungsservers halten Dienst und Anwendungsserver den Synchronisierungsstatus der Verbindung aufrecht und passen Serververbindungen so an, dass Leistung und Stabilität des Diensts sich verbessern. So kann es vorkommen, dass sich die Anzahl der Serververbindungen von Zeit zu Zeit ändert.
+Der Dienst und der Anwendungsserver synchronisieren weiterhin den Verbindungsstatus und passen die Serververbindungen an, um eine höhere Leistung und Dienststabilität zu erzielen.  So kann es vorkommen, dass sich die Anzahl der Serververbindungen von Zeit zu Zeit ändert.
 
 ## <a name="how-inboundoutbound-traffic-is-counted"></a>Berücksichtigung von ein-/ausgehendem Datenverkehr
 
-Die Unterscheidung zwischen eingehendem und ausgehendem Datenverkehr basiert auf der Perspektive von Azure SignalR Service. Datenverkehr wird in Bytes berechnet.
+Die an den Dienst gesendete Nachricht ist eine eingehende Nachricht. Die vom Dienst gesendete Nachricht ist eine ausgehende Nachricht. Datenverkehr wird in Bytes berechnet.
 
 ## <a name="related-resources"></a>Zugehörige Ressourcen
 

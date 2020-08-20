@@ -4,12 +4,12 @@ description: Enthält Antworten auf einige der häufig gestellten Fragen zu Azur
 ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: dikamath
-ms.openlocfilehash: 1649b5649bd18b7ab53f3cc0196d7dff0f6f5b2c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bd27d4669788b10fc12c47e4514020f6b01300bc
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84112687"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87872326"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution-avs-preview"></a>Häufig gestellte Fragen zur Vorschauversion von Azure VMware Solution (AVS)
 
@@ -25,7 +25,7 @@ Im Zuge der IT-Modernisierungsstrategien von Unternehmen zur Verbesserung der Ge
 
 **Wo sind die AVS aktuell verfügbar?**
 
-Während der Vorschauphase ist AVS in den Regionen „USA, Osten“ in Nordamerika und in Amsterdam in Westeuropa verfügbar.
+Der Dienst wird fortlaufend neuen Regionen hinzugefügt. Details finden Sie auf der Seite mit den [neuesten Informationen zur Dienstverfügbarkeit](https://azure.microsoft.com/global-infrastructure/services/?products=azure-vmware). 
 
 **Können Workloads, die in einer Azure VMware Solution (AVS)-Instanz ausgeführt werden, Azure-Dienste nutzen oder in diese integriert werden?**
 
@@ -45,7 +45,7 @@ Bestimmte Integrationen und Anwendungsfälle können von Fall zu Fall ausgewerte
 
 **Kann ich vSphere-VMs aus lokalen Umgebungen in private AVS-Clouds migrieren?**
 
-Ja. Die VM-Migration und vMotion können verwendet werden, um VMs in eine private Cloud zu verschieben, wenn vCenter-übergreifende Standardanforderungen [vMotion-Anforderungen][https://kb.vmware.com/s/article/210695 ] erfüllt sind.
+Ja. Die VM-Migration und vMotion können verwendet werden, um VMs in eine private Cloud zu verschieben, wenn die standardmäßigen vCenter-übergreifenden [vMotion-Anforderungen](https://kb.vmware.com/s/article/210695) erfüllt sind.
 
 **Ist eine bestimmte Version von vSphere in lokalen Umgebungen erforderlich?**
 
@@ -85,15 +85,15 @@ Die Server verfügen über 576 GB RAM.
 
 **Wie groß ist die Speicherkapazität jedes Hosts?**
 
-Jeder ESXi-Host verfügt über zwei VSAN-Datenträgergruppen mit einer Kapazitätsebene von 15,2 TB und einer NVMe-Cacheebene mit 3,2 TB (1,6 TB in jeder Datenträgergruppe).
+Jeder ESXi-Host verfügt über zwei vSAN-Datenträgergruppen mit einer Kapazitätsebene von 15,2 TB und einer NVMe-Cacheebene von 3,2 TB (1,6 TB in jeder Datenträgergruppe).
 
 **Wie viel Netzwerkbandbreite ist in jedem ESXi-Host verfügbar?**
 
-ESXi-Hosts unterstützen eine Verbindungsbandbreite von bis zu 25 GBit/s.
+Jeder ESXi-Host ist mit vier Netzwerkadaptern mit 25 GBit/s konfiguriert. Dabei werden zwei Netzwerkadapter für ESXi-Systemdatenverkehr und zwei Netzwerkadapter für Workloaddatenverkehr bereitgestellt. 
 
-**Werden Daten, die in den VSAN-Datenspeichern gespeichert sind, im Ruhezustand verschlüsselt?**
+**Werden Daten, die in den vSAN-Datenspeichern gespeichert sind, im Ruhezustand verschlüsselt?**
 
-Ja, alle VSAN-Daten werden standardmäßig mithilfe der in Azure Key Vault gespeicherten Schlüssel verschlüsselt.
+Ja, alle vSAN-Daten werden standardmäßig mithilfe der in Azure Key Vault gespeicherten Schlüssel verschlüsselt.
 
 ## <a name="hosts-clusters-and-private-clouds"></a>Hosts, Cluster und private Clouds
 
@@ -137,7 +137,7 @@ Nein, Sie müssen NSX nicht lokal verwenden.
 
 **Wie sieht der Upgrade- und Updatezeitplan für VMware-Software in einer privaten Cloud aus?**
 
-Die Upgrades der Softwarepakete der privaten Cloud werden durchgeführt, um die Software innerhalb einer Version des neuesten Release des Softwarepakets von VMware zu halten. Die Softwareversionen der privaten Cloud können sich von den aktuellsten Versionen der einzelnen Softwarekomponenten (ESXi, NSX-T, vCenter, VSAN) unterscheiden.
+Die Upgrades der Softwarepakete der privaten Cloud werden durchgeführt, um die Software innerhalb einer Version des neuesten Release des Softwarepakets von VMware zu halten. Die Softwareversionen der privaten Cloud können sich von den aktuellen Versionen der einzelnen Softwarekomponenten (ESXi, NSX-T, vCenter, vSAN) unterscheiden.
 
 **Wie häufig wird der Softwarestapel der privaten Cloud aktualisiert?**
 
@@ -201,7 +201,7 @@ Allgemeine Fragen zu Preisen finden Sie auf der Seite [Preise](https://azure.mic
 
 **Wer unterstützt AVS?**
 
-Unterstützung von AVS wird von Microsoft bereitgestellt. Bitte beachten Sie, dass wir gemäß unseren Vorschaurichtlinien Support während unserer Geschäftszeiten von Montag bis Freitag von 9 bis 17 Uhr PST bereitstellen. Über [diesen Link](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) können Sie ein Supportticket erstellen.
+Unterstützung von AVS wird von Microsoft bereitgestellt. Beachten Sie, dass wir gemäß unseren Vorschaurichtlinien Support während unserer Geschäftszeiten von Montag bis Freitag von 9 bis 17 Uhr PST bereitstellen. Über [diesen Link](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) können Sie ein Supportticket erstellen.
 
 **Welche Konten benötige ich zum Erstellen einer privaten AVS-Cloud?**
 
@@ -216,7 +216,7 @@ Sie können eine Erhöhung des Kontingents beantragen, indem Sie [eine Supportan
 > ```azurecli-interactive
 > az provider register -n Microsoft.AVS --subscription <your subscription ID>
 > ```
-> Informationen zu weiteren Möglichkeiten für die Ressourcenanbieterregistrierung finden Sie unter [Azure-Ressourcenanbieter und -typen](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types).
+> Informationen zu weiteren Möglichkeiten für die Ressourcenanbieterregistrierung finden Sie unter [Azure-Ressourcenanbieter und -typen](../azure-resource-manager/management/resource-providers-and-types.md).
 
 1. Erstellen Sie im Azure-Portal unter **Hilfe und Support** eine **Neue Supportanfrage**, und geben Sie die folgenden Informationen für das Ticket an:
    - **Problemtyp:** Technisch

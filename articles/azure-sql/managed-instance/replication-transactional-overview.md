@@ -12,17 +12,19 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 04/20/2020
-ms.openlocfilehash: ee481067a3904c208061607b7109fcba0f3faaa7
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ec1dfa3edea5364151c543889d974944a1a1cd5a
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86504066"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87920124"
 ---
 # <a name="transactional-replication-with-azure-sql-managed-instance"></a>Transaktionsreplikation mit Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-Transaktionsreplikation ist ein Feature von Azure SQL Managed Instance und SQL Server, das Ihnen die Replikation von Daten aus einer Tabelle in Azure SQL Managed Instance oder einer SQL Server-Instanz in Tabellen ermöglicht, die in Remotedatenbanken abgelegt sind. Mit diesem Feature können Sie mehrere Tabellen in unterschiedlichen Datenbanken synchronisieren.
+Transaktionsreplikation ist ein Feature von Azure SQL Managed Instance und SQL Server, das Ihnen die Replikation von Daten aus einer Tabelle in Azure SQL Managed Instance oder einer SQL Server-Instanz in Tabellen ermöglicht, die in Remotedatenbanken abgelegt sind. Mit diesem Feature können Sie mehrere Tabellen in unterschiedlichen Datenbanken synchronisieren. 
+
+Die Transaktionsreplikation ist zurzeit als öffentliche Vorschau für SQL Managed Instance verfügbar. 
 
 ## <a name="overview"></a>Übersicht
 
@@ -43,7 +45,7 @@ Die wichtigsten Komponenten der Transaktionsreplikation (**Verleger**, **Verteil
 
 | Role | Azure SQL-Datenbank | Verwaltete Azure SQL-Instanz |
 | :----| :------------- | :--------------- |
-| **Verleger** | Nein | Ja |
+| **Herausgeber** | Nein | Ja |
 | **Verteiler** | Nein | Ja|
 | **Pull-Abonnent** | Nein | Ja|
 | **Push-Abonnent**| Ja | Ja|
@@ -84,7 +86,7 @@ Es gibt verschiedene [Replikationstypen](https://docs.microsoft.com/sql/relation
 
   Die Unterstützungsmatrix für die Transaktionsreplikation für Azure SQL Managed Instance ist identisch mit der für SQL Server.
   
-| **Verleger**   | **Verteiler** | **Abonnent** |
+| **Herausgeber**   | **Verteiler** | **Abonnent** |
 | :------------   | :-------------- | :------------- |
 | SQL Server 2019 | SQL Server 2019 | SQL Server 2019 <br/> SQL Server 2017 <br/> SQL Server 2016 <br/>  |
 | SQL Server 2017 | SQL Server 2019 <br/>SQL Server 2017 | SQL Server 2019 <br/> SQL Server 2017 <br/> SQL Server 2016 <br/> SQL Server 2014 |

@@ -2,24 +2,22 @@
 title: Löschung des Bereitstellungsverlaufs
 description: Hier erfahren Sie, wie Azure Resource Manager Bereitstellungen automatisch aus dem Bereitstellungsverlauf löscht. Bereitstellungen werden gelöscht, wenn der Verlauf den Grenzwert von 800 Einträgen überschreitet.
 ms.topic: conceptual
-ms.date: 07/10/2020
-ms.openlocfilehash: 8ec3291dc5e35689d4e2c614949e0328057fbfd3
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.date: 08/07/2020
+ms.openlocfilehash: 736a25a3c73f8f4c70c5fb6c686fa2b8bb86666d
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86248979"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87986507"
 ---
 # <a name="automatic-deletions-from-deployment-history"></a>Automatische Löschungen aus dem Bereitstellungsverlauf
 
 Jedes Mal, wenn Sie eine Vorlage bereitstellen, werden Informationen über die Bereitstellung in den Bereitstellungsverlauf geschrieben. Jede Ressourcengruppe ist in ihrem Bereitstellungsverlauf auf 800 Bereitstellungen beschränkt.
 
-Azure Resource Manager beginnt bald mit dem automatischen Löschen von Bereitstellungen aus Ihrem Verlauf, wenn Sie sich dem Grenzwert nähern. Die automatische Löschung unterscheidet sich vom bisherigen Verhalten. Zuvor mussten Sie Bereitstellungen manuell aus dem Bereitstellungsverlauf löschen, um einen Fehler zu vermeiden. **Diese Funktion wurde noch nicht zu Azure hinzugefügt. Wir benachrichtigen Sie über diese bevorstehende Änderung, falls Sie sich gegen eine Teilnahme entscheiden möchten.**
+Azure Resource Manager löscht Bereitstellungen automatisch aus dem Verlauf, wenn der Grenzwert fast erreicht ist. Die automatische Löschung unterscheidet sich vom bisherigen Verhalten. Zuvor mussten Sie Bereitstellungen manuell aus dem Bereitstellungsverlauf löschen, um einen Fehler zu vermeiden. **Diese Änderung wurde am 6. August 2020 implementiert.**
 
 > [!NOTE]
 > Das Löschen einer Bereitstellung aus dem Verlauf hat keinerlei Auswirkungen auf die bereitgestellten Ressourcen.
->
-> Wenn Sie eine [CanNotDelete-Sperre](../management/lock-resources.md) für eine Ressourcengruppe eingerichtet haben, können die Bereitstellungen für diese Ressourcengruppe nicht gelöscht werden. Sie müssen die Sperre entfernen, um die Vorteile automatischer Löschungen aus dem Bereitstellungsverlauf nutzen zu können.
 
 ## <a name="when-deployments-are-deleted"></a>Wann Bereitstellungen gelöscht werden
 
@@ -35,6 +33,24 @@ Bereitstellungen werden aus Ihrem Verlauf gelöscht, wenn Sie den Grenzwert von 
 Neben Bereitstellungen können Sie Löschungen auch auslösen, wenn Sie den [what-if-Vorgang](template-deploy-what-if.md) ausführen oder eine Bereitstellung überprüfen.
 
 Wenn Sie einer Bereitstellung einen Namen geben, der bereits im Verlauf vorhanden ist, setzen Sie dessen Position im Verlauf zurück. Die Bereitstellung wechselt dann zur aktuellsten Position im Verlauf. Die Position einer Bereitstellung wird auch zurückgesetzt, wenn Sie nach einem Fehler ein [Rollback auf diese Bereitstellung ausführen](rollback-on-error.md).
+
+## <a name="remove-locks-that-block-deletions"></a>Entfernen der Sperren, die Löschungen blockieren
+
+Wenn Sie eine [CanNotDelete-Sperre](../management/lock-resources.md) für eine Ressourcengruppe eingerichtet haben, können die Bereitstellungen für diese Ressourcengruppe nicht gelöscht werden. Sie müssen die Sperre entfernen, um die Vorteile automatischer Löschungen aus dem Bereitstellungsverlauf nutzen zu können.
+
+Wenn Sie PowerShell zum Löschen einer Sperre verwenden möchten, führen Sie die folgenden Befehle aus:
+
+```azurepowershell-interactive
+$lockId = (Get-AzResourceLock -ResourceGroupName lockedRG).LockId
+Remove-AzResourceLock -LockId $lockId
+```
+
+Wenn Sie die Azure CLI zum Löschen einer Sperre verwenden möchten, führen Sie die folgenden Befehle aus:
+
+```azurecli-interactive
+lockid=$(az lock show --resource-group lockedRG --name deleteLock --output tsv --query id)
+az lock delete --ids $lockid
+```
 
 ## <a name="opt-out-of-automatic-deletions"></a>Deaktivieren der automatischen Löschungen
 

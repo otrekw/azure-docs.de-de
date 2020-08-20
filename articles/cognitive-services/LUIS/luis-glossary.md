@@ -3,12 +3,12 @@ title: LUIS-Glossar
 description: In diesem Glossar werden Begriffe erläutert, auf die Sie möglicherweise beim Arbeiten mit der LUIS-API stoßen.
 ms.topic: reference
 ms.date: 05/08/2020
-ms.openlocfilehash: 93e3df755596f7f77d2cd11edfa616c44d1f6c16
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 44749648559994d986e4d84b06f38369850de6ca
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86056377"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836410"
 ---
 # <a name="language-understanding-glossary-of-common-vocabulary-and-concepts"></a>Language Understanding-Glossar mit allgemeinem Vokabular und Konzepten
 In diesem Glossar für Language Understanding (LUIS) werden Begriffe erläutert, auf die Sie möglicherweise beim Arbeiten mit dem LUIS-Dienst stoßen.
@@ -94,11 +94,11 @@ Eine [Absicht](#intent) ist ein Beispiel für eine Klassifizierung.
 
 ## <a name="collaborator"></a>Projektmitarbeiter
 
-Ein Projektmitarbeiter ist konzeptionell dasselbe wie ein [Mitwirkender](#contributor). Einem Projektmitarbeiter wird Zugriff gewährt, wenn ein Besitzer die E-Mail-Adresse des Mitarbeiters zu einer App hinzufügt, die nicht über die rollenbasierte Zugriffssteuerung (RBAC) gesteuert wird. Wenn Sie immer noch Projektmitarbeiter verwenden, sollten Sie Ihr LUIS-Konto migrieren und LUIS-Erstellungsressourcen verwenden, um Mitarbeiter mithilfe der rollenbasierten Zugriffssteuerung (RBAC) zu verwalten.
+Ein Projektmitarbeiter ist konzeptionell dasselbe wie ein [Mitwirkender](#contributor). Einem Projektmitarbeiter wird Zugriff gewährt, wenn ein Besitzer die E-Mail-Adresse des Mitarbeiters zu einer App hinzufügt, die nicht über die rollenbasierte Zugriffssteuerung in Azure (Azure Role-Based Access Control, Azure RBAC) gesteuert wird. Wenn Sie immer noch Projektmitarbeiter verwenden, sollten Sie Ihr LUIS-Konto migrieren und LUIS-Erstellungsressourcen verwenden, um Mitarbeiter mithilfe der rollenbasierten Zugriffssteuerung (RBAC) zu verwalten.
 
 ## <a name="contributor"></a>Mitwirkender
 
-Ein Mitwirkender ist nicht der [Besitzer](#owner) der App, er verfügt aber über dieselben Berechtigungen zum Hinzufügen, Bearbeiten und Löschen der Absichten, Entitäten und Äußerungen. Ein Mitwirkender bietet die rollenbasierte Zugriffssteuerung (RBAC) für eine LUIS-App.
+Ein Mitwirkender ist nicht der [Besitzer](#owner) der App, er verfügt aber über dieselben Berechtigungen zum Hinzufügen, Bearbeiten und Löschen der Absichten, Entitäten und Äußerungen. Ein Mitwirkender stellt die rollenbasierte Zugriffssteuerung in Azure (Azure RBAC) für eine LUIS-App bereit.
 
 Weitere Informationen:
 * [Vorgehensweise](luis-how-to-collaborate.md#add-contributor-to-azure-authoring-resource) beim Hinzufügen von Mitwirkenden

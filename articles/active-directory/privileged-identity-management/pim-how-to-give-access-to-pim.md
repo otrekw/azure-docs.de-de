@@ -10,27 +10,27 @@ ms.service: active-directory
 ms.topic: how-to
 ms.workload: identity
 ms.subservice: pim
-ms.date: 11/08/2019
+ms.date: 08/06/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c17847546ace558d367aed6d935db0fed6d817f9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 95f8991d5ba9efb8e3223dd44a8d037acf2de849
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84742197"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009561"
 ---
-# <a name="grant-access-to-other-administrators-to-manage-privileged-identity-management"></a>Gewähren von Zugriff für andere Administratoren zum Verwalten von Privileged Identity Management
+# <a name="delegate-access-to-privileged-identity-management"></a>Delegieren des Zugriffs auf Privileged Identity Management
 
-Der globale Administrator, der Privileged Identity Management (PIM) für eine Organisation aktiviert, erhält automatisch Rollenzuweisungen und Zugriff auf Privileged Identity Management. Standardmäßig wird jedoch keiner anderen Person in Ihrer Azure Active Directory-Organisation (Azure AD), einschließlich globaler Administratoren, Schreibzugriff gewährt. Andere globale Administratoren, Sicherheitsadministratoren und Sicherheitsleseberechtigte erhalten schreibgeschützten Zugriff auf Privileged Identity Management. Um Zugriff auf Privileged Identity Management zu gewähren, kann der erste Benutzer anderen die Rolle **Administrator für privilegierte Rollen** zuweisen.
+Um Zugriff auf Privileged Identity Management (PIM) zu gewähren, kann ein globaler Administrator anderen Benutzern die Rolle „Administrator für privilegierte Rollen“ zuweisen. Sicherheitsadministratoren und Sicherheitsleseberechtigte erhalten standardmäßig schreibgeschützten Zugriff auf Privileged Identity Management. Um Zugriff auf Privileged Identity Management zu gewähren, kann der erste Benutzer anderen die Rolle **Administrator für privilegierte Rollen** zuweisen. Die Rolle „Administrator für privilegierte Rolle“ ist nur für die Verwaltung von Azure AD-Rollen erforderlich. Berechtigungen vom Typ „Administrator für privilegierte Rolle“ sind zum Verwalten der Einstellungen für Azure-Ressourcen nicht erforderlich.
 
 > [!NOTE]
 > Für das Verwalten von Privileged Identity Management ist Multi-Factor Authentication erforderlich. Da Microsoft-Konten nicht für Azure Multi-Factor Authentication registriert werden können, kann ein Benutzer, der sich mit einem Microsoft-Konto anmeldet, nicht auf Privileged Identity Management zugreifen.
 
 Stellen Sie sicher, dass immer mindestens zwei Benutzer mit der Rolle „Administrator für privilegierte Rollen“ vorhanden sind, falls ein Benutzer gesperrt oder sein Konto gelöscht wird.
 
-## <a name="grant-access-to-manage-pim"></a>Gewähren des Zugriffs zur Verwaltung von PIM
+## <a name="delegate-access-to-manage-pim"></a>Delegieren des Zugriffs zur Verwaltung von PIM
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
@@ -46,9 +46,9 @@ Stellen Sie sicher, dass immer mindestens zwei Benutzer mit der Rolle „Adminis
 
     ![Administrator für privilegierte Rollen: Mitglieder](./media/pim-how-to-give-access-to-pim/pim-pra-members.png)
 
-1. Wählen Sie **Mitglied hinzufügen** aus, um den Bereich „Verwaltete Mitglieder hinzufügen“ zu öffnen.
+1. Wählen Sie **Mitglied hinzufügen** aus, um den Bereich **Verwaltete Mitglieder hinzufügen** zu öffnen.
 
-1. Wählen Sie **Mitglieder auswählen** aus, um den Bereich „Mitglieder auswählen“ zu öffnen.
+1. Wählen Sie **Mitglieder auswählen** aus, um den Bereich **Mitglieder auswählen** zu öffnen.
 
     ![Administrator für privilegierte Rollen: Mitglieder auswählen](./media/pim-how-to-give-access-to-pim/pim-pra-select-members.png)
 

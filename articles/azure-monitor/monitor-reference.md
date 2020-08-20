@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/15/2020
-ms.openlocfilehash: c59e8c9e4c756a44d7507fca328aa691ecb184da
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 48eb8674a7d3f0fbeb8cc012debfc8a08752d5ff
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87447317"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080863"
 ---
 # <a name="what-is-monitored-by-azure-monitor"></a>Was wird von Azure Monitor überwacht?
 In diesem Artikel werden die verschiedenen Anwendungen und Dienste beschrieben, die von Azure Monitor überwacht werden. 
@@ -220,7 +220,7 @@ Mithilfe der in der folgenden Tabelle aufgeführten Methoden kann Azure Monitor 
 | Resource | Methode |
 |:---|:---|
 | Anwendungen | Überwachen von Webanwendungen außerhalb von Azure mithilfe von Application Insights. Informationen finden Sie unter [Was ist Application Insights?](./app/app-insights-overview.md) |
-| Virtuelle Computer | Verwenden des Log Analytics-Agents zum Sammeln von Daten aus dem Gastbetriebssystem virtueller Computer in anderen Cloudumgebungen oder lokal. Informationen finden Sie unter [Sammeln von Protokolldaten mit dem Log Analytics-Agent](platform/log-analytics-agent.md). |
+| Virtuelle Computer | Verwenden von Agents zum Sammeln von Daten aus dem Gastbetriebssystem virtueller Computer in anderen Cloudumgebungen oder lokal. Siehe [Übersicht über Azure Monitor-Agents](platform/agents-overview.md) |
 | REST-API-Client | Zum Schreiben von Daten in Azure Monitor-Protokolle und -Metriken von jedem Rest-API-Client aus stehen separate APIs zur Verfügung. Weitere Informationen finden Sie unter [Senden von Protokolldaten an Azure Monitor mit der HTTP-Datensammler-API](platform/data-collector-api.md) (für Protokolle) und [Senden benutzerdefinierter Metriken für eine Azure-Ressource an den Azure Monitor-Metrikspeicher mithilfe einer REST-API](platform/metrics-store-custom-rest-api.md) (für Metriken). |
 
 

@@ -1,6 +1,6 @@
 ---
 title: Erste Schritte mit dem Storage-Explorer | Microsoft-Dokumentation
-description: Verwalten von Azure Storage-Ressourcen mit dem Storage-Explorer
+description: Beginnen Sie mit der Verwaltung von Azure-Speicherressourcen mit Storage-Explorer. Hier erfahren Sie, wie Sie Azure Storage-Explorer herunterladen und installieren, eine Verbindung mit einem Speicherkonto oder einem Dienst herstellen und vieles mehr.
 services: storage
 author: cawaMS
 ms.service: storage
@@ -8,12 +8,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 11/08/2019
 ms.author: cawa
-ms.openlocfilehash: f588ed6d35f3f8882d546b78ff833d62f33ac0a4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ff5480e6b78beda7fe50dc772eae925ccdb80664
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84975264"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905345"
 ---
 # <a name="get-started-with-storage-explorer"></a>Erste Schritte mit dem Storage-Explorer
 

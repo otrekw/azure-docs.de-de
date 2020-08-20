@@ -4,12 +4,12 @@ description: Übertragen von Sammlungen von Images oder anderen Artefakten aus e
 ms.topic: article
 ms.date: 05/08/2020
 ms.custom: ''
-ms.openlocfilehash: 7f63936ad8f2a97bae6ff63e783e38c15db35e13
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 0bbdfc8d1586b7d71daf6d4cbfdc4288357aa45b
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259448"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009153"
 ---
 # <a name="transfer-artifacts-to-another-registry"></a>Übertragen von Artefakten in eine andere Registrierung
 
@@ -234,6 +234,8 @@ Geben Sie die folgenden Parameterwerte in die Datei `azuredeploy.parameters.json
 |targetName     |  Der Name, den Sie für das in Ihr Quellspeicherkonto exportierte Artefaktblob auswählen, z. B. *myblob*.
 |artifacts | Das Array der zu übertragenden Quellartefakte als Tags oder als Manifesthashes<br/>Beispiel: `[samples/hello-world:v1", "samples/nginx:v1" , "myrepository@sha256:0a2e01852872..."]` |
 
+Wenn Sie eine PipelineRun-Ressource mit identischen Eigenschaften erneut bereitstellen, müssen Sie auch die Eigenschaft [forceUpdateTag](#redeploy-pipelinerun-resource) verwenden.
+
 Führen Sie [az deployment group create][az-deployment-group-create] aus, um die PipelineRun-Ressource zu erstellen. Im folgenden Beispiel wird die Bereitstellung *exportPipelineRun* genannt.
 
 ```azurecli
@@ -291,6 +293,8 @@ Geben Sie die folgenden Parameterwerte in die Datei `azuredeploy.parameters.json
 |pipelineResourceId     |  Die Ressourcen-ID der Importpipeline.<br/>Beispiel: `/subscriptions/<subscriptionID>/resourceGroups/<resourceGroupName>/providers/Microsoft.ContainerRegistry/registries/<sourceRegistryName>/importPipelines/myImportPipeline`       |
 |sourceName     |  Der Name des vorhandenen Blobs für exportierte Artefakte in Ihrem Speicherkonto, z. B. *myblob*
 
+Wenn Sie eine PipelineRun-Ressource mit identischen Eigenschaften erneut bereitstellen, müssen Sie auch die Eigenschaft [forceUpdateTag](#redeploy-pipelinerun-resource) verwenden.
+
 Führen Sie [az deployment group create][az-deployment-group-create] aus, um die Ressource auszuführen.
 
 ```azurecli
@@ -304,6 +308,23 @@ Wenn die Bereitstellung erfolgreich abgeschlossen wurde, überprüfen Sie den Ar
 
 ```azurecli
 az acr repository list --name <target-registry-name>
+```
+
+## <a name="redeploy-pipelinerun-resource"></a>Erneutes Bereitstellen der PipelineRun-Ressource
+
+Wenn Sie eine PipelineRun-Ressource mit *identischen Eigenschaften* erneut bereitstellen, müssen Sie die Eigenschaft **forceUpdateTag** nutzen. Diese Eigenschaft gibt an, dass die PipelineRun-Ressource neu erstellt werden soll, auch wenn sich die Konfiguration nicht geändert hat. forceUpdateTag muss bei jeder erneuten Bereitstellung der PipelineRun-Ressource eindeutig sein. Mit dem folgenden Beispiel wird eine PipelineRun-Ressource für den Export erstellt. Der aktuelle datetime-Wert wird zum Festlegen von forceUpdateTag verwendet. Dadurch wird sichergestellt, dass diese Eigenschaft immer eindeutig ist.
+
+```console
+CURRENT_DATETIME=`date +"%Y-%m-%d:%T"`
+```
+
+```azurecli
+az deployment group create \
+  --resource-group $SOURCE_RG \
+  --template-file azuredeploy.json \
+  --name exportPipelineRun \
+  --parameters azuredeploy.parameters.json \
+  --parameters forceUpdateTag=$CURRENT_DATETIME
 ```
 
 ## <a name="delete-pipeline-resources"></a>Löschen von Pipelineressourcen

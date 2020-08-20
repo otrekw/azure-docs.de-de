@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: d4fed878e2c0b1430e963f43743fd772493d3270
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e521711cdf488f00b56e2805ee0aaa6ee8412958
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79471743"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056957"
 ---
 # <a name="caching-with-azure-front-door"></a>Zwischenspeicherung mit Azure Front Door
 In diesem Dokument wird das Verhalten von Azure Front Door Service für Routingregeln mit aktivierter Zwischenspeicherung erläutert. Front Door ist ein modernes Content Delivery Network (CDN) und unterstützt daher neben der Beschleunigung dynamischer Websites und dem Lastenausgleich auch Zwischenspeicherungsverhalten wie jedes andere CDN.
@@ -111,6 +111,12 @@ Cache-Control-Antwortheader, die angeben, dass die Antwort nicht zwischengespeic
 Die folgenden Anforderungsheader werden bei Verwendung der Zwischenspeicherung nicht an ein Back-End weitergeleitet.
 - Content-Length
 - Transfer-Encoding
+
+## <a name="cache-duration"></a>Cachedauer
+
+Die Cachedauer kann sowohl im Frontdoor-Designer als auch in der Regel-Engine konfiguriert werden. Die im Frontdoor-Designer festgelegte Cachedauer ist die minimale Cachedauer. Diese Außerkraftsetzung funktioniert nicht, wenn der Cachesteuerungsheader vom Ursprung eine längere Gültigkeitsdauer aufweist als der Außerkraftsetzungswert. 
+
+Die über die Regel-Engine festgelegte Cachedauer ist eine echte Cacheaußerkraftsetzung. Das bedeutet, dass der Außerkraftsetzungswert unabhängig vom Wert des Ursprungsantwortheaders verwendet wird.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

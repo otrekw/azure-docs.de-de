@@ -1,6 +1,6 @@
 ---
 title: Unterstützte Sprachen | Microsoft Azure Maps
-description: In diesem Artikel erfahren Sie, welche Sprachen für die Dienste in Microsoft Azure Maps unterstützt werden.
+description: Sehen Sie sich an, welche Regionen Azure Maps mit Diensten für Karten, Suchvorgänge, Routen, Wetter und Verkehrsmeldungen unterstützt. Erfahren Sie, wie Sie den View-Parameter einrichten.
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 11/20/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 0d3adc4bc49379a9ec3408ab76b913a096840dbb
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: a6664b5a2c0c6b4de2435ee5c8bb29f63560c342
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87127892"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037693"
 ---
 # <a name="localization-support-in-azure-maps"></a>Unterstützte Sprachen in Azure Maps
 
@@ -110,37 +110,37 @@ Azure Maps wurde in verschiedene Sprachen für die unterschiedlichen Dienste üb
 > Nach dem 1. August 2019 wird mit dem Parameter**View** der zurückgegebene Karteninhalt für die oben aufgeführten neuen Regionen/Länder definiert. Der **View**-Parameter von Azure Maps (auch „Benutzerregionsparameter“ genannt) ist ein zweistelliger ISO-3166-Ländercode, der die richtigen Karten für dieses Land/diese Region anzeigt und angibt, welche geopolitisch umstrittenen Inhalte über die Dienste von Azure Maps zurückgegeben werden, einschließlich der auf der Karte angezeigten Grenzen und Bezeichnungen. 
 
 Stellen Sie sicher, dass Sie den Parameter **View** gemäß den Anforderungen für die von Ihren Diensten verwendeten REST-APIs und SDKs eingerichtet haben.
->  
->
->  **REST-APIs:**
->  
->  Stellen Sie sicher, dass Sie den View-Parameter wie erforderlich eingerichtet haben. Der View-Parameter gibt an, welcher Satz von geopolitisch umstrittenen Inhalten über die Azure Maps-Dienste zurückgegeben wird. 
->
->  Betroffene Azure Maps REST-Dienste:
->    
->    * Get Map Tile (Kartenkachel abrufen)
->    * Get Map Image (Kartenbild abrufen) 
->    * Get Search Fuzzy (Fuzzy für die Suche abrufen)
->    * Get Search POI (POI für die Suche abrufen)
->    * Get Search POI Category (POI-Kategorie für die Suche abrufen)
->    * Get Search Nearby (Suche in der Nähe abrufen)
->    * Get Search Address (Suchadresse abrufen)
->    * Get Search Address Structured (Suchadresse strukturiert abrufen)
->    * Get Search Address Reverse (Suchadresse invers abrufen)
->    * Get Search Address Reverse Cross Street (Suchadresse für Querstraße invers abrufen)
->    * Post Search Inside Geometry (Suche innerhalb der Geometrie veröffentlichen)
->    * Post Search Address Batch Preview (Batchvorschau für Suchadresse veröffentlichen)
->    * Post Search Address Reverse Batch Preview (Batchvorschau für inverse Suchadresse veröffentlichen)
->    * Post Search Along Route (Suche entlang einer Route veröffentlichen)
->    * Post Search Fuzzy Batch Preview (Batchvorschau für Suchfuzzy veröffentlichen)
->
->    
->  **SDKs:**
->
->  Stellen Sie sicher, dass Sie den Parameter **View** wie erforderlich eingerichtet haben und über die neueste Version des Web SDK und des Android SDK verfügen. Betroffene SDKs:
->
->    * Azure Maps Web SDK
->    * Azure Maps Android SDK
+  
+
+### <a name="rest-apis"></a>REST-APIs
+  
+Stellen Sie sicher, dass Sie den View-Parameter wie erforderlich eingerichtet haben. Der View-Parameter gibt an, welcher Satz von geopolitisch umstrittenen Inhalten über die Azure Maps-Dienste zurückgegeben wird. 
+
+Betroffene Azure Maps REST-Dienste:
+    
+ * Get Map Tile (Kartenkachel abrufen)
+ * Get Map Image (Kartenbild abrufen) 
+ * Get Search Fuzzy (Fuzzy für die Suche abrufen)
+ * Get Search POI (POI für die Suche abrufen)
+ * Get Search POI Category (POI-Kategorie für die Suche abrufen)
+ * Get Search Nearby (Suche in der Nähe abrufen)
+ * Get Search Address (Suchadresse abrufen)
+ * Get Search Address Structured (Suchadresse strukturiert abrufen)
+ * Get Search Address Reverse (Suchadresse invers abrufen)
+ * Get Search Address Reverse Cross Street (Suchadresse für Querstraße invers abrufen)
+ * Post Search Inside Geometry (Suche innerhalb der Geometrie veröffentlichen)
+ * Post Search Address Batch Preview (Batchvorschau für Suchadresse veröffentlichen)
+ * Post Search Address Reverse Batch Preview (Batchvorschau für inverse Suchadresse veröffentlichen)
+ * Post Search Along Route (Suche entlang einer Route veröffentlichen)
+ * Post Search Fuzzy Batch Preview (Batchvorschau für Suchfuzzy veröffentlichen)
+
+ 
+### <a name="sdks"></a>SDKs
+
+Stellen Sie sicher, dass Sie den Parameter **View** wie erforderlich eingerichtet haben und über die neueste Version des Web SDK und des Android SDK verfügen. Betroffene SDKs:
+
+ * Azure Maps Web SDK
+ * Azure Maps Android SDK
 
 Standardmäßig ist der Parameter „View“ auf **Unified** festgelegt, auch wenn Sie ihn in der Anforderung nicht definiert haben. Bestimmen Sie den Standort Ihrer Benutzer. Legen Sie anschließend den Parameter **View** ordnungsgemäß für diesen Standort fest. Alternativ können Sie auch „View=Auto“ festlegen. Hierbei werden die Kartendaten basierend auf der IP-Adresse der Anforderung zurückgegeben.  Der Parameter **View** in Azure Maps muss in Übereinstimmung mit geltenden Gesetzen verwendet werden. Dies gilt auch für die Gesetze in Bezug auf die Kartierung des Landes oder der Region, über die Karten, Bilder und andere Daten und Inhalte von Drittanbietern, auf die Sie über Azure Maps zugreifen dürfen, bereitgestellt werden.
 

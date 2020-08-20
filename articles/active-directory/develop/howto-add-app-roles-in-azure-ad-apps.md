@@ -13,12 +13,12 @@ ms.date: 07/15/2020
 ms.author: kkrishna
 ms.reviewer: kkrishna, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 0ec314e6b5abde60102dacfc81c9303cef16e887
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5a2acb08971bc0878c943047c42c9dc2a9525794
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87058623"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88141430"
 ---
 # <a name="how-to-add-app-roles-in-your-application-and-receive-them-in-the-token"></a>Gewusst wie: Hinzufügen von App-Rollen in Ihrer Anwendung und Empfangen der Rollen im Token
 
@@ -30,7 +30,7 @@ Ein weiterer Ansatz ist die Verwendung von Azure AD-Gruppen und Gruppenansprüch
 
 ## <a name="declare-roles-for-an-application"></a>Deklarieren von Rollen für eine Anwendung
 
-Diese Anwendungsrollen werden im [Azure-Portal](https://portal.azure.com) im Registrierungsmanifest der Anwendung definiert.  Wenn sich ein Benutzer bei der Anwendung anmeldet, gibt Azure AD für den Benutzer einen `roles`-Anspruch für jede einzeln zugewiesene Rolle und für die Gruppenmitgliedschaft aus.  Die Zuweisung von Benutzern und Gruppen zu Rollen kann über die Benutzeroberfläche des Portals oder programmgesteuert mit [Microsoft Graph](https://developer.microsoft.com/graph/docs/concepts/azuread-identity-access-management-concept-overview) erfolgen.
+Diese Anwendungsrollen werden im [Azure-Portal](https://portal.azure.com) im Registrierungsmanifest der Anwendung definiert.  Wenn sich ein Benutzer bei der Anwendung anmeldet, gibt Azure AD für den Benutzer einen `roles`-Anspruch für jede einzeln zugewiesene Rolle und für die Gruppenmitgliedschaft aus.  Die Zuweisung von Benutzern und Gruppen zu Rollen kann über die Benutzeroberfläche des Portals oder programmgesteuert mit [Microsoft Graph](/graph/azuread-identity-access-management-concept-overview) erfolgen.
 
 ### <a name="declare-app-roles-using-azure-portal"></a>Deklarieren von App-Rollen mithilfe des Azure-Portals
 
@@ -74,7 +74,7 @@ Das folgende Beispiel zeigt den `appRoles`-Wert, den Sie `users` zuweisen könne
 ```
 
 > [!NOTE]
->`displayName` darf keine Leerzeichen enthalten.
+>`displayName` darf Leerzeichen enthalten.
 
 Sie können App-Rollen mit Ausrichtung auf `users`, `applications` oder auf beides festlegen. Wenn App-Rollen für `applications` verfügbar sind, werden sie als Anwendungsberechtigungen im Abschnitt **Verwalten** > **API-Berechtigungen > Berechtigung hinzufügen > Meine APIs > API auswählen > Anwendungsberechtigungen** angezeigt. Das folgende Beispiel zeigt eine App-Rolle für `Application`.
 
@@ -95,7 +95,7 @@ Sie können App-Rollen mit Ausrichtung auf `users`, `applications` oder auf beid
 "availableToOtherTenants": false,
 ```
 
-Die Anzahl der definierten Rollen wirkt sich auf die Grenzwerte des Anwendungsmanifests aus. Diese wurden ausführlich auf der Seite [Grenzwerte für das Manifest](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest#manifest-limits) erläutert.
+Die Anzahl der definierten Rollen wirkt sich auf die Grenzwerte des Anwendungsmanifests aus. Diese wurden ausführlich auf der Seite [Grenzwerte für das Manifest](./reference-app-manifest.md#manifest-limits) erläutert.
 
 ### <a name="assign-users-and-groups-to-roles"></a>Zuweisen von Benutzern und Gruppen zu Rollen
 
@@ -128,6 +128,6 @@ Wenn sich Benutzer, denen verschiedene App-Rollen zugewiesen sind, bei der Anwen
 - [Hinzufügen von Autorisierung zu einer ASP.NET Core-Web-App mit App-Rollen und Rollenansprüchen](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/5-WebApp-AuthZ/5-1-Roles)
 - [Implementieren der Autorisierung in Ihren Anwendungen mit Microsoft Identity Platform (Video)](https://www.youtube.com/watch?v=LRoc-na27l0)
 - [Azure Active Directory, now with Group Claims and Application Roles](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Azure-Active-Directory-now-with-Group-Claims-and-Application/ba-p/243862) (Azure Active Directory jetzt mit Gruppenansprüchen und Anwendungsrollen)
-- [Azure Active Directory-App-Manifest](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest)
+- [Azure Active Directory-App-Manifest](./reference-app-manifest.md)
 - [Azure Active Directory access tokens](access-tokens.md) (Azure Active Directory-Zugriffstoken)
 - [`id_tokens`](id-tokens.md) (ID-Token)

@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 965118345a003aface0373bda7496243bcab8429
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: f444ff4e884e50ed75b02328bfbe4d4117bc4cc9
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87290175"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88064790"
 ---
 # <a name="azure-database-for-postgresql-single-server-data-encryption-with-a-customer-managed-key"></a>Datenverschlüsselung auf Azure Database for PostgreSQL-Einzelservern mit einem kundenseitig verwalteten Schlüssel
 
@@ -26,7 +26,7 @@ Key Vault ist ein cloudbasiertes, externes Schlüsselverwaltungssystem. Es biete
 
 ## <a name="benefits"></a>Vorteile
 
-Die Datenverschlüsselung für Azure Database for PostgreSQL-Einzelserver bietet die folgenden Vorteile:
+Die Datenverschlüsselung mit kundenseitig verwalteten Schlüsseln für Azure Database for PostgreSQL-Einzelserver bietet die folgenden Vorteile:
 
 * Datenzugriff wird von Ihnen vollständig durch die Möglichkeit gesteuert, den Schlüssel zu entfernen und so die Datenbank nicht zugänglich zu machen. 
 *    Vollständige Kontrolle über den Schlüssellebenszyklus, einschließlich der Rotation des Schlüssels zum Einhalten von Unternehmensrichtlinien
@@ -48,8 +48,8 @@ Die mit den KEKs verschlüsselten DEKs werden separat gespeichert. Nur eine Enti
 Damit ein PostgreSQL-Server vom Kunden verwaltete Schlüssel, die in Key Vault gespeichert sind, für die Verschlüsselung des DEK verwenden kann, erteilt ein Key Vault-Administrator dem Server die folgenden Zugriffsrechte:
 
 * **get**: Zum Abrufen des öffentlichen Teils und der Eigenschaften des Schlüssels in Key Vault.
-* **wrapKey**: Zum Verschlüsseln des DEK erforderlich.
-* **unwrapKey**: Zum Entschlüsseln des DEK erforderlich.
+* **wrapKey**: Zum Verschlüsseln des DEK erforderlich. Der verschlüsselte DEK wird in Azure Database for PostgreSQL gespeichert.
+* **unwrapKey**: Zum Entschlüsseln des DEK erforderlich. Azure Database for PostgreSQL benötigt den entschlüsselten DEK zum Verschlüsseln/Entschlüsseln der Daten.
 
 Der Key Vault-Administrator kann auch die [Protokollierung von Key Vault-Überwachungsereignissen aktivieren](../azure-monitor/insights/key-vault-insights-overview.md), damit sie später überprüft werden können.
 
@@ -59,16 +59,16 @@ Wenn der Server für die Verwendung des in Key Vault gespeicherten vom Kunden ve
 
 Nachfolgend werden die Anforderungen für die Konfiguration von Key Vault aufgeführt:
 
-* Key Vault und der Azure Database for PostgreSQL-Einzelserver müssen demselben Azure Active Directory-Mandanten (Azure AD) angehören. Mandantenübergreifende Interaktionen zwischen Key Vault und dem Server werden nicht unterstützt. Wenn Sie später Ressourcen verschieben möchten, müssen Sie die Datenverschlüsselung neu konfigurieren.
+* Key Vault und der Azure Database for PostgreSQL-Einzelserver müssen demselben Azure Active Directory-Mandanten (Azure AD) angehören. Mandantenübergreifende Interaktionen zwischen Key Vault und dem Server werden nicht unterstützt. Wenn Sie die Key Vault-Ressourcen später verschieben möchten, müssen Sie die Datenverschlüsselung neu konfigurieren.
 * Aktivieren Sie das Feature zum vorläufigen Löschen in Key Vault, um bei einer versehentlichen Löschung des Schlüssels (oder Schlüsseltresors) Datenverluste zu vermeiden. Vorläufig gelöschte Ressourcen werden 90 Tage lang aufbewahrt, sofern sie der Benutzer nicht in der Zwischenzeit wiederherstellt oder bereinigt. Den Aktionen zum Wiederherstellen und endgültigen Löschen sind über Key Vault-Zugriffsrichtlinien eigene Berechtigungen zugewiesen. Die Funktion für vorläufiges Löschen ist standardmäßig deaktiviert. Sie können sie jedoch über PowerShell oder die Azure CLI aktivieren (beachten Sie, dass Sie sie nicht über das Azure-Portal aktivieren können).
-* Gewähren Sie dem Azure Database for PostgreSQL-Einzelserver mit den Berechtigungen „get“, „wrapKey“, „unwrapKey“ unter Verwendung der eindeutigen verwalteten Identität Zugriff auf den Schlüsseltresor. Im Azure-Portal wird die eindeutige Identifizierung automatisch erstellt, wenn die Datenverschlüsselung auf dem PostgreSQL-Einzelserver aktiviert wird. Ausführliche, schrittweise Anleitungen für die Verwendung des Azure-Portals finden Sie unter [Datenverschlüsselung für Azure Database for PostgreSQL-Einzelserver mithilfe des Azure-Portals](howto-data-encryption-portal.md).
+* Gewähren Sie dem Azure Database for PostgreSQL-Einzelserver mit den Berechtigungen „get“, „wrapKey“, „unwrapKey“ unter Verwendung der eindeutigen verwalteten Identität Zugriff auf den Schlüsseltresor. Im Azure-Portal wird die eindeutige Identität „Service“ automatisch erstellt, wenn die Datenverschlüsselung auf dem PostgreSQL-Einzelserver aktiviert wird. Ausführliche, schrittweise Anleitungen für die Verwendung des Azure-Portals finden Sie unter [Datenverschlüsselung für Azure Database for PostgreSQL-Einzelserver mithilfe des Azure-Portals](howto-data-encryption-portal.md).
 
 Nachfolgend werden die Anforderungen für die Konfiguration des vom Kunden verwalteten Schlüssels aufgeführt:
 
 * Der vom kundenseitig verwaltete Schlüssel, der zum Verschlüsseln des DEK verwendet werden soll, muss ein asymmetrischer RSA 2048-Schlüssel sein.
 * Das Schlüsselaktivierungsdatum (sofern festgelegt) muss ein Datum und eine Uhrzeit in der Vergangenheit sein. Das Ablaufdatum (sofern festgelegt) muss ein Datum und eine Uhrzeit in der Zukunft sein.
 * Der Schlüssel muss sich im Zustand *Aktiviert* befinden.
-* Wenn Sie einen vorhandenen Schlüssel in Key Vault importieren, müssen Sie ihn in einem der unterstützten Dateiformate (`.pfx`, `.byok`, `.backup`) bereitstellen.
+* Wenn Sie [einen vorhandenen Schlüssel in Key Vault importieren](https://docs.microsoft.com/rest/api/keyvault/ImportKey/ImportKey), müssen Sie ihn in einem der unterstützten Dateiformate (`.pfx`, `.byok`, `.backup`) bereitstellen.
 
 ## <a name="recommendations"></a>Empfehlungen
 

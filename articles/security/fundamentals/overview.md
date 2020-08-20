@@ -1,6 +1,6 @@
 ---
 title: Einführung in die Azure-Sicherheit | Microsoft-Dokumentation
-description: Hier erhalten Sie Informationen zu Azure Security, seinen Diensten und zur Funktionsweise.
+description: Lesen Sie diese Übersicht, um sich mit Azure-Sicherheit, den verschiedenen Diensten und der Funktionsweise vertraut zu machen.
 services: security
 documentationcenter: na
 author: UnifyCloud
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2019
 ms.author: TomSh
-ms.openlocfilehash: 9c107789fe4a88b3cd73a2f290871016b95cae19
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: d00b897f41ab00f0e3c23292eeb5f431bf5c070c
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371395"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87835934"
 ---
 # <a name="introduction-to-azure-security"></a>Einführung in die Azure-Sicherheit
 ## <a name="overview"></a>Übersicht
@@ -142,7 +142,7 @@ Bei der Anwendungsdiagnose können Ereignisse in den folgenden Kategorien angeze
 Dieser Abschnitt enthält zusätzliche Informationen zu den wichtigsten Features der Azure-Speichersicherheit und zusammenfassende Informationen zu diesen Funktionen.
 
 ### <a name="role-based-access-control-rbac"></a>Rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC)
-Sie können Ihr Speicherkonto mit rollenbasierter Zugriffssteuerung (RBAC) sichern. Das Einschränken des Zugriffs auf der Grundlage der Sicherheitsprinzipien [Need to know](https://en.wikipedia.org/wiki/Need_to_know) und [Least Privilege](https://en.wikipedia.org/wiki/Principle_of_least_privilege) ist für Organisationen unerlässlich, die Sicherheitsrichtlinien für den Datenzugriff erzwingen möchten. Diese Zugriffsrechte werden gewährt, indem Gruppen und Anwendungen die jeweils geeignete RBAC-Rolle für einen bestimmten Bereich zugewiesen wird. Sie können [in Azure integrierte Rollen](../../role-based-access-control/built-in-roles.md) (z. B. „Speicherkontomitwirkender“) verwenden, um Benutzern Berechtigungen zuzuweisen. Zugriff auf die Speicherschlüssel für ein Speicherkonto mit dem [Azure Resource Manager](../../storage/blobs/security-recommendations.md)-Modell kann über rollenbasierte Zugriffssteuerung (RBAC) gesteuert werden.
+Sie können Ihr Speicherkonto mit rollenbasierter Zugriffssteuerung (RBAC) sichern. Das Einschränken des Zugriffs auf der Grundlage der Sicherheitsprinzipien [Need to know](https://en.wikipedia.org/wiki/Need_to_know) und [Least Privilege](https://en.wikipedia.org/wiki/Principle_of_least_privilege) ist für Organisationen unerlässlich, die Sicherheitsrichtlinien für den Datenzugriff erzwingen möchten. Diese Zugriffsrechte werden gewährt, indem Gruppen und Anwendungen die jeweils geeignete Azure-Rolle für einen bestimmten Bereich zugewiesen wird. Sie können [in Azure integrierte Rollen](../../role-based-access-control/built-in-roles.md) (z. B. „Speicherkontomitwirkender“) verwenden, um Benutzern Berechtigungen zuzuweisen. Zugriff auf die Speicherschlüssel für ein Speicherkonto mit dem [Azure Resource Manager](../../storage/blobs/security-recommendations.md)-Modell kann über rollenbasierte Zugriffssteuerung (RBAC) gesteuert werden.
 
 ### <a name="shared-access-signature"></a>Shared Access Signature (SAS)
 [Shared Access Signatures (SAS)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md) ermöglichen den delegierten Zugriff auf Ressourcen in Ihrem Speicherkonto. Eine SAS bietet die Möglichkeit, einem Client für einen bestimmten Zeitraum spezielle eingeschränkte Berechtigungen für Objekte in Ihrem Speicherkonto zu erteilen. Dazu müssen Sie nicht Ihre Kontozugriffsschlüssel freigeben.
@@ -336,7 +336,7 @@ Microsoft verwendet mehrere Sicherheitsmaßnahmen und -technologien für seine P
 
 -   Die [tokenbasierte Authentifizierung](https://azure.microsoft.com/documentation/articles/active-directory-authentication-scenarios/) ermöglicht die Authentifizierung über Azure Active Directory.
 
--   [Rollenbasierte Zugriffssteuerung (RBAC)](https://azure.microsoft.com/documentation/articles/role-based-access-built-in-roles/) ermöglicht es Ihnen, den Zugriff auf Grundlage einer zugewiesenen Benutzerrolle zu gewähren. Dies erleichtert es Ihnen, Benutzern nur den zum Ausführen ihrer Aufgaben erforderlichen Zugriff zu erteilen. Sie können RBAC gemäß dem Geschäftsmodell und der Risikotoleranz Ihrer Organisation anpassen.
+-   Die [rollenbasierte Zugriffssteuerung von Azure (Azure RBAC)](https://azure.microsoft.com/documentation/articles/role-based-access-built-in-roles/) ermöglicht es Ihnen, den Zugriff auf Grundlage einer zugewiesenen Benutzerrolle zu gewähren. Dies erleichtert es Ihnen, Benutzern nur den zum Ausführen ihrer Aufgaben erforderlichen Zugriff zu erteilen. Sie können RBAC gemäß dem Geschäftsmodell und der Risikotoleranz Ihrer Organisation anpassen.
 
 -   [Integrierte Identitätsverwaltung (Hybrididentität)](https://azure.microsoft.com/documentation/articles/active-directory-hybrid-identity-design-considerations-overview/) ermöglicht es Ihnen, den Benutzerzugriff auf interne Rechenzentren und Cloudplattformen zu kontrollieren, indem Sie eine einzelne Benutzeridentität für die Authentifizierung und Autorisierung für alle Ressourcen erstellen.
 

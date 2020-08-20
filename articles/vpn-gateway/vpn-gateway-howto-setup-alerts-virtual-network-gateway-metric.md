@@ -1,18 +1,18 @@
 ---
 title: Einrichten von Warnungen zu Azure VPN Gateway-Metriken
-description: Schritte zum Konfigurieren von Warnungen zu VPN Gateway-Metriken
+description: Hier erfahren Sie, wie Sie das Azure-Portal verwenden, um Azure Monitor-Warnungen basierend auf Metriken für VPN-Gateways virtueller Netzwerke einzurichten.
 services: vpn-gateway
 author: kumudD
 ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 04/22/2019
 ms.author: alzam
-ms.openlocfilehash: c2c44720853500ad6a9a4af1c8d93d6c8bc3eea2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 14bb407cb12e24ca789085e954aaabff2333da7b
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075520"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88033494"
 ---
 # <a name="set-up-alerts-on-vpn-gateway-metrics"></a>Einrichten von Warnungen zu VPN Gateway-Metriken
 

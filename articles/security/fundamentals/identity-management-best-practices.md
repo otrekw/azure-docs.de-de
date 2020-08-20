@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 852a8c8eb7e6a87739c58967eefd6c18e996b225
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: b354fda4d23d13b8defed4381335ab147bbece5d
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87367400"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87835900"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Azure-Identitätsverwaltung und Sicherheit der Zugriffssteuerung – Bewährte Methoden
 
@@ -195,7 +195,7 @@ Organisationen, die keine zusätzliche Schicht zur Identitätssicherung hinzufü
 
 ## <a name="use-role-based-access-control"></a>Verwenden der rollenbasierten Zugriffssteuerung
 
-Die Zugriffsverwaltung für Cloudressourcen ist wichtig für jede Organisation, die die Cloud nutzt. Mit der [rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC)](/azure/role-based-access-control/overview) können Sie verwalten, welche Benutzer Zugriff auf Azure-Ressourcen haben, welche Aktionen die Benutzer für diese Ressourcen ausführen können und auf welche Bereiche die Benutzer zugreifen können.
+Die Zugriffsverwaltung für Cloudressourcen ist wichtig für jede Organisation, die die Cloud nutzt. Mit der [rollenbasierten Zugriffssteuerung von Azure (Azure RBAC)](/azure/role-based-access-control/overview) können Sie verwalten, welche Benutzer Zugriff auf Azure-Ressourcen haben, welche Aktionen die Benutzer für diese Ressourcen ausführen können und auf welche Bereiche die Benutzer zugreifen können.
 
 Durch Festlegen von Gruppen oder individuellen Rollen, die für bestimmte Funktionen zuständig sind, kann Verwirrung ausgeschlossen werden, die zu menschlichen Fehlern und Automatisierungsfehlern und letztendlich zu Sicherheitsrisiken führen kann. Das Einschränken des Zugriffs auf der Grundlage der Sicherheitsprinzipien [Need to know](https://en.wikipedia.org/wiki/Need_to_know) und [Least Privilege](https://en.wikipedia.org/wiki/Principle_of_least_privilege) ist für Organisationen unerlässlich, die Sicherheitsrichtlinien für den Datenzugriff erzwingen möchten.
 

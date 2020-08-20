@@ -9,21 +9,22 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 05/26/2020
 ms.author: dapine
-ms.openlocfilehash: 8fcac761ab1f0805a3b2b75107e0119fbfb9db6e
-ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
+ms.openlocfilehash: db1b88b9c22012cb4e6b5025dda31432c9278ff8
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84148088"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080897"
 ---
 # <a name="configure-azure-cognitive-services-virtual-networks"></a>Konfigurieren von virtuellen Netzwerken für Azure Cognitive Services
 
-Azure Cognitive Services bietet ein mehrschichtiges Sicherheitsmodell. Dank dieses Modells können Sie Ihre Cognitive Services-Konten für eine bestimmte Teilmenge von Netzwerken schützen. Wenn Netzwerkregeln konfiguriert wurden, können nur Anwendungen, die Daten über die angegebene Gruppe von Netzwerken anfordern, auf das Konto zugreifen. Sie können den Zugriff auf Ihre Ressourcen durch Filtern von Anforderungen einschränken. Dabei werden nur Anforderungen zugelassen, die von angegebenen IP-Adressen, IP-Adressbereichen oder einer Liste von Subnetzen in [Azure Virtual Networks](../virtual-network/virtual-networks-overview.md) stammen. Wenn Sie an diesem Angebot interessiert sind, müssen Sie [Zugriff auf die Vorschauversion anfordern](https://aka.ms/cog-svc-vnet-signup).
+Azure Cognitive Services bietet ein mehrschichtiges Sicherheitsmodell. Dank dieses Modells können Sie Ihre Cognitive Services-Konten für eine bestimmte Teilmenge von Netzwerken schützen. Wenn Netzwerkregeln konfiguriert wurden, können nur Anwendungen, die Daten über die angegebene Gruppe von Netzwerken anfordern, auf das Konto zugreifen. Sie können den Zugriff auf Ihre Ressourcen durch Filtern von Anforderungen einschränken. Dabei werden nur Anforderungen zugelassen, die von angegebenen IP-Adressen, IP-Adressbereichen oder einer Liste von Subnetzen in [Azure Virtual Networks](../virtual-network/virtual-networks-overview.md) stammen.
 
 Eine Anwendung, die bei aktivierten Netzwerkregeln auf eine Cognitive Services-Ressource zugreift, benötigt Autorisierung. Autorisierung wird mit [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md)-Anmeldeinformationen (Azure AD) oder mit einem gültigen API-Schlüssel unterstützt.
 
 > [!IMPORTANT]
 > Durch das Aktivieren von Firewallregeln für Ihr Cognitive Services-Konto werden eingehende Datenanforderungen standardmäßig blockiert. Um das Durchlassen von Anforderungen zuzulassen, muss eine der folgenden Bedingungen erfüllt sein:
+
 > * Die Anforderung sollte von einem Dienst stammen, der in einem Azure Virtual Network (VNet) ausgeführt wird, das auf der Liste der zugelassenen Subnetze des Cognitive Services-Zielkontos steht. Der Endpunkt von Anforderungen, die aus einem VNET stammen, muss als die [benutzerdefinierte Unterdomäne](cognitive-services-custom-subdomains.md) Ihres Cognitive Services-Kontos festgelegt werden.
 > * Alternativ sollte die Anforderung von einer Adresse aus einer Liste der zulässigen IP-Adressen stammen.
 >
@@ -39,7 +40,7 @@ Netzwerkregeln werden für alle Netzwerkprotokolle in Azure Cognitive Services d
 
 ## <a name="supported-regions-and-service-offerings"></a>Unterstützte Regionen und Dienstangebote
 
-Die im Anschluss aufgeführte Unterstützung virtueller Netzwerke für Cognitive Services ist auf die Azure-Regionen *USA, Mitte (EUAP)* , *USA, Süden-Mitte*, *USA, Osten*, *USA, Westen 2*, *Europa, Norden*, *Südafrika, Norden*, *Europa, Westen*, *Indien, Mitte*, *Australien, Osten*, *USA, Westen* und *US Gov Virginia* beschränkt. Wenn ein Dienstangebot hier nicht aufgeführt ist, unterstützt es virtuelle Netzwerke nicht.
+Virtuelle Netzwerke (VNETs) werden unterstützt in [Regionen, in denen Cognitive Services verfügbar ist](https://azure.microsoft.com/global-infrastructure/services/). Wenn Cognitive Services nicht aufgeführt ist, werden virtuelle Netzwerke derzeit nicht unterstützt.
 
 > [!div class="checklist"]
 > * [Anomalieerkennung](./anomaly-detector/index.yml)
@@ -48,17 +49,16 @@ Die im Anschluss aufgeführte Unterstützung virtueller Netzwerke für Cognitive
 > * [Custom Vision](./custom-vision-service/index.yml)
 > * [Gesichtserkennung](./face/index.yml)
 > * [Formularerkennung](./form-recognizer/index.yml)
-> * [LUIS](./luis/index.yml)
+> * [Language Understanding](./luis/index.yml)
 > * [Personalisierung](./personalizer/index.yml)
 > * [Textanalyse](./text-analytics/index.yml)
 > * [QnA Maker](./qnamaker/index.yml)
-
-Die im Anschluss aufgeführte Unterstützung virtueller Netzwerke für Cognitive Services ist auf die Azure-Regionen *USA, Mitte (EUAP)* , *USA, Süden-Mitte*, *USA, Osten*, *USA, Westen 2*, *Global* und *US Gov Virginia* beschränkt.
-> [!div class="checklist"]
 > * [Textübersetzung](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#virtual-network-support)
 
 ## <a name="service-tags"></a>Diensttags
-Neben der Unterstützung von VNET-Dienstendpunkten für die obigen Dienste unterstützt Cognitive Services auch ein Diensttag für die Konfiguration von Netzwerkregeln für ausgehenden Datenverkehr. Das Diensttag „CognitiveServicesManagement“ beinhaltet folgende Dienste:
+
+Cognitive Services unterstützt Diensttags für die Konfiguration von Netzwerkregeln. Die unten aufgeführten Dienste sind im Diensttag **CognitiveServicesManagement** enthalten:
+
 > [!div class="checklist"]
 > * [Anomalieerkennung](./anomaly-detector/index.yml)
 > * [Maschinelles Sehen](./computer-vision/index.yml)
@@ -66,7 +66,7 @@ Neben der Unterstützung von VNET-Dienstendpunkten für die obigen Dienste unter
 > * [Custom Vision](./custom-vision-service/index.yml)
 > * [Gesichtserkennung](./face/index.yml)
 > * [Formularerkennung](./form-recognizer/index.yml)
-> * [LUIS](./luis/index.yml)
+> * [Language Understanding (LUIS)](./luis/index.yml)
 > * [Personalisierung](./personalizer/index.yml)
 > * [Textanalyse](./text-analytics/index.yml)
 > * [QnA Maker](./qnamaker/index.yml)
@@ -330,6 +330,7 @@ Regeln für virtuelle Netzwerke für Cognitive Services-Ressourcen können über
         -g "myresourcegroup" -n "myaccount" \
         --subnet $subnetid
     ```
+
 ***
 
 > [!IMPORTANT]
@@ -491,13 +492,13 @@ Sie können [private Endpunkte](../private-link/private-endpoint-overview.md) f�
 
 Private Endpunkte für Cognitive Services Ressourcen ermöglichen Folgendes:
 
-- das Schützen Ihrer Cognitive Services-Ressource, indem Sie die Firewall so konfigurieren, dass alle Verbindungen am öffentlichen Endpunkt für Cognitive Services blockiert werden
-- das Erhöhen der Sicherheit für das VNET, indem Sie die Exfiltration von Daten aus dem VNET blockieren
-- die sichere Verbindungsherstellung mit Cognitive Services-Ressourcen über lokale Netzwerke, die eine Verbindung mit dem VNET über [VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md) oder [ExpressRoutes](../expressroute/expressroute-locations.md) mit privatem Peering aufweisen
+* das Schützen Ihrer Cognitive Services-Ressource, indem Sie die Firewall so konfigurieren, dass alle Verbindungen am öffentlichen Endpunkt für Cognitive Services blockiert werden
+* das Erhöhen der Sicherheit für das VNET, indem Sie die Exfiltration von Daten aus dem VNET blockieren
+* die sichere Verbindungsherstellung mit Cognitive Services-Ressourcen über lokale Netzwerke, die eine Verbindung mit dem VNET über [VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md) oder [ExpressRoutes](../expressroute/expressroute-locations.md) mit privatem Peering aufweisen
 
 ### <a name="conceptual-overview"></a>Konzeptionelle Übersicht
 
-Ein privater Endpunkt ist eine spezielle Netzwerkschnittstelle für einen Azure-Dienst in Ihrem [VNET](../virtual-network/virtual-networks-overview.md). Wenn Sie einen privaten Endpunkt für Ihre Cognitive Services-Ressource erstellen, wird eine sichere Verbindung zwischen Clients in Ihrem VNET und Ihrem Dienst bereitgestellt. Dem privaten Endpunkt wird eine IP-Adresse aus dem IP-Adressbereich Ihres VNET zugewiesen. Für die Verbindung zwischen dem privaten Endpunkt und Cognitive Services wird eine sichere private Verbindung verwendet.
+Ein privater Endpunkt ist eine spezielle Netzwerkschnittstelle für eine Azure-Ressource in Ihrem [VNET](../virtual-network/virtual-networks-overview.md). Wenn Sie einen privaten Endpunkt für Ihre Cognitive Services-Ressource erstellen, wird eine sichere Verbindung zwischen Clients in Ihrem VNET und Ihrer Ressource bereitgestellt. Dem privaten Endpunkt wird eine IP-Adresse aus dem IP-Adressbereich Ihres VNET zugewiesen. Für die Verbindung zwischen dem privaten Endpunkt und Cognitive Services wird eine sichere private Verbindung verwendet.
 
 Anwendungen im VNET können eine nahtlose Verbindung mit dem Dienst über den privaten Endpunkt herstellen, indem die gleichen Verbindungszeichenfolgen und Autorisierungsmechanismen wie üblich verwendet werden. Der Speech-Dienst stellt eine Ausnahme dar, denn er benötigt einen separaten Endpunkt. Weitere Informationen finden Sie im Abschnitt [Private Endpunkte im Speech-Dienst](#private-endpoints-with-the-speech-service). Private Endpunkte können mit allen von der Cognitive Services-Ressource unterstützten Protokollen verwendet werden, auch mit REST.
 
@@ -509,11 +510,11 @@ Besitzer von Cognitive Services-Ressourcen können Einwilligungsanforderungen un
 
 ### <a name="private-endpoints"></a>Private Endpunkte
 
-Während Sie den privaten Endpunkt erstellen, müssen Sie die Cognitive Services-Ressource angeben, mit der eine Verbindung hergestellt wird. Weitere Informationen zum Erstellen eines privaten Endpunkts finden Sie in den folgenden Artikeln:
+Während Sie den privaten Endpunkt erstellen, müssen Sie die Cognitive Services-Ressource angeben, mit der eine Verbindung hergestellt wird. Weitere Informationen zum Erstellen eines privaten Endpunkts finden Sie unter:
 
-- [Erstellen eines privaten Endpunkts über das Private Link Center im Azure-Portal](../private-link/create-private-endpoint-portal.md)
-- [Erstellen eines privaten Endpunkts mit Azure CLI](../private-link/create-private-endpoint-cli.md)
-- [Erstellen eines privaten Endpunkts mit Azure PowerShell](../private-link/create-private-endpoint-powershell.md)
+* [Erstellen eines privaten Endpunkts über das Private Link Center im Azure-Portal](../private-link/create-private-endpoint-portal.md)
+* [Erstellen eines privaten Endpunkts mit Azure CLI](../private-link/create-private-endpoint-cli.md)
+* [Erstellen eines privaten Endpunkts mit Azure PowerShell](../private-link/create-private-endpoint-powershell.md)
 
 ### <a name="connecting-to-private-endpoints"></a>Herstellen einer Verbindung mit privaten Endpunkten
 
@@ -523,7 +524,7 @@ Wir erstellen standardmäßig eine [private DNS-Zone](../dns/private-dns-overvie
 
 ### <a name="private-endpoints-with-the-speech-service"></a>Private Endpunkte im Speech-Dienst
 
-Wenn Sie private Endpunkte mit dem Speech-Dienst verwenden, müssen Sie die Speech-Dienst-API über einen benutzerdefinierten Endpunkt aufrufen. Der globale Endpunkt kann nicht verwendet werden. Sie sollten einen Endpunkt im Format {konto}.{stt|tts|stimme|dls}.speech.microsoft.com verwenden.
+Wenn Sie private Endpunkte mit dem Speech-Dienst verwenden, müssen Sie den Speech-Dienst über einen benutzerdefinierten Endpunkt aufrufen. Der globale Endpunkt kann nicht verwendet werden. Der Endpunkt muss dieses Muster aufweisen: `{account}.{stt|tts|voice|dls}.speech.microsoft.com`.
 
 ### <a name="dns-changes-for-private-endpoints"></a>DNS-Änderungen für private Endpunkte
 
@@ -531,17 +532,17 @@ Wenn Sie einen privaten Endpunkt erstellen, wird der DNS CNAME-Ressourceneintrag
 
 Wenn Sie die Speicherendpunkt-URL von außerhalb des VNET mit dem privaten Endpunkt auflösen, wird diese in den öffentlichen Endpunkt der Cognitive Services-Ressource aufgelöst. Bei Auflösung aus dem VNET, das den privaten Endpunkt hostet, wird die Endpunkt-URL in die IP-Adresse des privaten Endpunkts aufgelöst.
 
-Diese Vorgehensweise ermöglicht den Zugriff auf die Cognitive Services-Ressource mithilfe derselben Verbindungszeichenfolge für Clients in dem VNET, das die privaten Endpunkte hostet, als auch für Clients außerhalb des VNET.
+Diese Vorgehensweise ermöglicht den Zugriff auf die Cognitive Services-Ressource mithilfe derselben Verbindungszeichenfolge für Clients in dem VNET, das die privaten Endpunkte hostet, sowie für Clients außerhalb des VNET.
 
-Wenn Sie einen benutzerdefinierten DNS-Server in Ihrem Netzwerk verwenden, müssen Clients in der Lage sein, den vollqualifizierten Domänennamen (Fully Qualified Domain Name, FQDN) für die Cognitive Services-Ressource in die IP-Adresse des privaten Endpunkts aufzulösen. Sie sollten den DNS-Server so konfigurieren, dass die Unterdomäne der privaten Verbindung an die private DNS-Zone für das VNET delegiert wird.
+Wenn Sie einen benutzerdefinierten DNS-Server in Ihrem Netzwerk verwenden, müssen Clients in der Lage sein, den vollqualifizierten Domänennamen (Fully Qualified Domain Name, FQDN) für den Cognitive Services-Ressourcenendpunkt in die IP-Adresse des privaten Endpunkts aufzulösen. Konfigurieren Sie den DNS-Server so, dass die Unterdomäne der privaten Verbindung an die private DNS-Zone für das VNET delegiert wird.
 
 > [!TIP]
 > Wenn Sie einen benutzerdefinierten oder lokalen DNS-Server verwenden, sollten Sie den DNS-Server so konfigurieren, dass der Name der Cognitive Services-Ressource in der Unterdomäne „privatelink“ in die IP-Adresse des privaten Endpunkts aufgelöst wird. Hierzu können Sie die Unterdomäne „privatelink“ an die private DNS-Zone des VNET delegieren oder die DNS-Zone auf dem DNS-Server konfigurieren und die DNS-A-Einträge hinzufügen.
 
 Weitere Informationen zum Konfigurieren des eigenen DNS-Servers für die Unterstützung privater Endpunkte finden Sie in den folgenden Artikeln:
 
-- [Namensauflösung für Ressourcen in virtuellen Azure-Netzwerken](https://docs.microsoft.com/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances#name-resolution-that-uses-your-own-dns-server)
-- [DNS-Konfiguration für private Endpunkte](https://docs.microsoft.com/azure/private-link/private-endpoint-overview#dns-configuration)
+* [Namensauflösung für Ressourcen in virtuellen Azure-Netzwerken](https://docs.microsoft.com/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances#name-resolution-that-uses-your-own-dns-server)
+* [DNS-Konfiguration für private Endpunkte](https://docs.microsoft.com/azure/private-link/private-endpoint-overview#dns-configuration)
 
 ### <a name="pricing"></a>Preise
 

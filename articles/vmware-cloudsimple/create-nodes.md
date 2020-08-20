@@ -1,6 +1,6 @@
 ---
 title: Bereitstellen von Knoten für VMware Solution by CloudSimple – Azure
-description: Erfahren Sie, wie Sie mit CloudSimple-Bereitstellung Knoten zu Ihrer VMWare-Lösung hinzufügen können.
+description: Hier erfahren Sie, wie Sie im Azure-Portal mit der CloudSimple-Bereitstellung Knoten zu Ihrer VMWare-Lösung hinzufügen. Sie können für Ihre private Cloudumgebung eine Kapazität mit nutzungsbasierter Bezahlung einrichten.
 author: dikamath
 ms.author: dikamath
 ms.date: 08/14/2019
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: eb033425d18b472c9da1a2d6a1bb6f166702905e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ccff5b4dc6ed5a571e25ab0569b9fa92674e1340
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77024805"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88140733"
 ---
 # <a name="provision-nodes-for-azure-vmware-solution-by-cloudsimple"></a>Bereitstellen von Knoten für Azure VMware Solution by CloudSimple
 

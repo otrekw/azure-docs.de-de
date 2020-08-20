@@ -1,6 +1,6 @@
 ---
 title: Erstellen einer Datenquelle für eine Karte | Microsoft Azure Maps
-description: In diesem Artikel erfahren Sie, wie Sie mithilfe des Microsoft Azure Maps Web SDK eine Datenquelle erstellen und einer Karte hinzufügen.
+description: 'Hier wird erläutert, wie Sie eine Datenquelle für eine Karte erstellen. Sie erfahren mehr über die Datenquellen, die vom Azure Maps Web SDK verwendet werden: GeoJSON-Quellen und Vektorkacheln.'
 author: rbrundritt
 ms.author: richbrun
 ms.date: 08/08/2019
@@ -9,18 +9,21 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: codepen, devx-track-javascript
-ms.openlocfilehash: 57589552af3b93d98733d4872b43a719703d501a
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: fea2c4fab51db59c9159853e9b0bdaec0bcdbb56
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285729"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009085"
 ---
 # <a name="create-a-data-source"></a>Erstellen einer Datenquelle
 
 Das Azure Maps Web SDK speichert Daten in Datenquellen. Die Verwendung von Datenquellen optimiert die Datenvorgänge zum Abfragen und Rendern. Derzeit gibt es zwei Arten von Datenquellen:
 
-**GeoJSON-Datenquelle**
+- **GeoJSON-Quelle:** Dient für die lokale Verwaltung von Standortrohdaten im GeoJSON-Format. Sie ist geeignet für kleine bis mittlere Datasets (mit mehr als Hunderttausenden Formen).
+- **Vektorkachelquelle:** Lädt Daten, die als Vektorkacheln für die aktuelle Kartenansicht formatiert sind, basierend auf dem Kartenkachelsystem. Sie eignet sich ideal für große bis sehr große Datasets (Millionen oder Milliarden Formen).
+
+## <a name="geojson-data-source"></a>GeoJSON-Datenquelle
 
 Mithilfe der `DataSource`-Klasse speichert und lädt eine GeoJSON-basierte Datenquelle Daten lokal. GeoJSON-Daten können manuell oder mithilfe der Hilfsklassen im [Atlas. Data](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data)-Namespace erstellt werden. Die `DataSource`-Klasse stellt Funktionen zum Importieren von lokalen oder Remote-GeoJSON-Dateien bereit. Remote-GeoJSON-Dateien müssen auf einem CORs-fähigen Endpunkt gehostet werden. Die `DataSource`-Klasse bietet Funktionen für das Clustering von Punktdaten. Außerdem können Daten ganz einfach mit der `DataSource`-Klasse hinzugefügt, entfernt und aktualisiert werden. Der folgende Code zeigt, wie GeoJSON-Daten in Azure Maps erstellt werden können.
 
@@ -37,7 +40,7 @@ var rawGeoJson = {
      }
 };
 
-//Create GeoJSON using helper classes (less error prone).
+//Create GeoJSON using helper classes (less error prone and less typing).
 var geoJsonClass = new atlas.data.Feature(new atlas.data.Point([-100, 45]), {
     "custom-property": "value"
 }); 
@@ -69,7 +72,7 @@ dataSource.setShapes(geoJsonData);
 > [!TIP]
 > Angenommen, Sie möchten alle Daten in einer `DataSource` überschreiben. Wenn Sie zunächst die Funktion `clear` und dann `add` aufrufen, wird die Karte möglicherweise zweimal gerendert, was zu einer Verzögerung führen kann. Verwenden Sie stattdessen die `setShapes`-Funktion, die alle Daten in der Datenquelle entfernt und ersetzt und nur ein einziges erneutes Rendering der Karte auslöst.
 
-**Vektorkachelquelle**
+## <a name="vector-tile-source"></a>Vektorkachelquelle
 
 Eine Vektorkachelquelle beschreibt, wie auf eine Vektorkachelebene zugegriffen wird. Verwenden Sie die [VectorTileSource-](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.vectortilesource)-Klasse, um eine Vektorkachelquelle zu instanziieren. Vektorkachelebenen ähneln Kachelebenen, sind aber nicht identisch. Eine Kachelebene ist ein Rasterbild. Vektorkachelebenen sind komprimierte Dateien und liegen im Format **PBF** vor. Diese komprimierte Datei enthält Vektorkartendaten und eine oder mehrere Ebenen. Die Datei kann auf dem Client gerendert und formatiert werden, basierend auf dem Stil jeder einzelnen Ebene. Die Daten in einer Vektorkachel enthalten geografische Merkmale in Form von Punkten, Linien und Polygonen. Vektorkachelebenen haben gegenüber Rasterkachelebenen mehrere Vorteile:
 
@@ -88,7 +91,7 @@ Azure Maps hält den offenen Standard [Mapbox Vector Tile Specification](https:/
 > [!TIP]
 > Wenn Sie Vektor- oder Rasterbildkacheln des Azure Maps-Renderdiensts mit dem Web-SDK verwenden, können Sie `atlas.microsoft.com` durch den Platzhalter `{azMapsDomain}` ersetzen. Dieser Platzhalter wird durch dieselbe Domäne ersetzt, die von der Karte verwendet wird, und automatisch an dieselben Authentifizierungsdetails angefügt. Dies vereinfacht die Authentifizierung beim Renderdienst bei Verwendung der Azure Active Directory-Authentifizierung erheblich.
 
-Um Daten aus einer Vektorkachelquelle auf der Karte anzuzeigen, verbinden Sie die Quelle mit einer der Datenrenderingebenen. Für alle Ebenen, die eine Vektorquelle verwenden, muss in den Optionen einen `sourceLayer`-Wert angegeben sein. Der folgende Code lädt den Azure Maps-Vektorkacheldienst für den Verkehrsfluss als Vektorkachelquelle und zeigt den Vektor dann auf einer Linienebene auf einer Karte an. Diese Vektorkachelquelle verfügt über einen einzigen Datensatz in der Quellebene namens „Verkehrsfluss“. Die Liniendaten in diesem Dataset besitzen eine Eigenschaft namens `traffic_level`, die in diesem Code zum Auswählen der Farbe und Skalieren der Linienstärke verwendet wird.
+Um Daten aus einer Vektorkachelquelle auf der Karte anzuzeigen, verbinden Sie die Quelle mit einer der Datenrenderingebenen. Für alle Ebenen, die eine Vektorquelle verwenden, muss in den Optionen einen `sourceLayer`-Wert angegeben sein. Der folgende Code lädt den Azure Maps-Vektorkacheldienst für den Verkehrsfluss als Vektorkachelquelle und zeigt den Vektor dann auf einer Linienebene auf einer Karte an. Diese Vektorkachelquelle verfügt über einen einzigen Datensatz in der Quellebene namens „Verkehrsfluss“. Die Liniendaten in diesem Dataset besitzen eine Eigenschaft namens `traffic_level`, die in diesem Code zum Auswählen der Farbe und Skalieren der Linienstärke verwendet wird.
 
 ```javascript
 //Create a vector tile source and add it to the map.
