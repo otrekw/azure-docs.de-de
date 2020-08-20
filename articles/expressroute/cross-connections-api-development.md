@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: mialdrid
-ms.openlocfilehash: b4a83013d2cbeb2871a3963ec0c95144c02f4d66
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 459a70c787dfdcd54fb3010655390787022c8f2e
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77187015"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87921621"
 ---
 # <a name="expressroute-crossconnnections-api-development-and-integration"></a>Entwicklung und Integration der ExpressRoute CrossConnnections-API
 
@@ -30,7 +30,7 @@ Vorteile des Wechsels zur expressRouteCrossConnections-Ressource:
 
 * Alle zukünftigen Verbesserungen für ExpressRoute-Partner werden über die ExpressRouteCrossConnection-Ressource zur Verfügung gestellt.
 
-* Partner können die [rollenbasierte Zugriffssteuerung](https://docs.microsoft.com/azure/role-based-access-control/overview) auf die expressRouteCrossConnection-Ressource anwenden. Diese Steuerelemente können Berechtigungen definieren, für die Benutzerkonten die expressRouteCrossConnection-Ressource ändern und Peeringkonfigurationen hinzufügen/aktualisieren/löschen können.
+* Partner können die [rollenbasierte Zugriffssteuerung von Azure (Role-Based Access Control, RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) auf die Ressource expressRouteCrossConnection anwenden. Diese Steuerelemente können Berechtigungen definieren, für die Benutzerkonten die expressRouteCrossConnection-Ressource ändern und Peeringkonfigurationen hinzufügen/aktualisieren/löschen können.
 
 * Die expressRouteCrossConnection-Ressource legt APIs offen, die bei der Problembehandlung von ExpressRoute-Verbindungen hilfreich sein können. Dazu gehören die ARP-Tabelle, die Zusammenfassung der BGP-Routentabelle und die Details der BGP-Routentabelle. Diese Funktion wird von den klassischen Bereitstellungs-APIs nicht unterstützt.
 

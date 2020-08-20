@@ -5,12 +5,12 @@ description: Lernen Sie die Best Practices für die Isolierung in Azure Kubernet
 services: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
-ms.openlocfilehash: 12c65f3b4241d3e732c51acb6ffa95ff314efb50
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: cdeecabf569e3c6f9b280e6b0179e5378f5b1c95
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86077763"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88003098"
 ---
 # <a name="best-practices-for-cluster-isolation-in-azure-kubernetes-service-aks"></a>Best Practices für Clusterisolierung in Azure Kubernetes Service (AKS)
 
@@ -42,7 +42,7 @@ Mit logischer Isolation kann ein einzelner AKS-Cluster für mehrere Workloads, T
 
 Die logische Trennung der Cluster bietet in der Regel eine höhere Poddichte als physisch isolierte Cluster. Weniger überschüssige Computekapazität befindet sich im Leerlauf im Cluster. In Kombination mit der automatischen Clusterskalierung in Kubernetes können Sie die Anzahl von Knoten gemäß der Anforderungen nach oben oder unten skalieren. Dieser Best Practice-Ansatz zur automatischen Skalierung ermöglicht Ihnen, nur die erforderliche Anzahl von Knoten auszuführen und die Kosten zu minimieren.
 
-Kubernetes-Umgebungen, ob in AKS oder an anderer Stelle, sind nicht völlig sicher vor feindlicher Verwendung mit mehreren Mandanten. In einer Umgebung mit mehreren Mandanten arbeiten mehrere Mandanten in einer gemeinsamen, freigegebenen Infrastruktur. Hieraus resultiert, dass, wenn alle Mandanten nicht vertrauenswürdig sind, Sie eine zusätzliche Planung durchführen müssen, um zu verhindern, dass ein Mandant die Sicherheit und den Dienst eines anderen beeinträchtigt. Zusätzliche Sicherheitsfunktionen wie *Pod Security Policy* und differenziertere rollenbasierte Zugriffssteuerung (RBAC) für Knoten erschweren Angriffe. Für echte Sicherheit bei der Ausführung feindlicher Workloads mit mehreren Mandanten ist jedoch ein Hypervisor die einzige Sicherheitsstufe, der Sie vertrauen sollten. Die Sicherheitsdomäne für Kubernetes wird zum gesamten Cluster und nicht zu einem einzelnen Knoten. Für diese Art von feindlichen Workloads mit mehreren Mandanten sollten Sie physisch isolierte Cluster verwenden.
+Kubernetes-Umgebungen, ob in AKS oder an anderer Stelle, sind nicht völlig sicher vor feindlicher Verwendung mit mehreren Mandanten. In einer Umgebung mit mehreren Mandanten arbeiten mehrere Mandanten in einer gemeinsamen, freigegebenen Infrastruktur. Hieraus resultiert, dass, wenn alle Mandanten nicht vertrauenswürdig sind, Sie eine zusätzliche Planung durchführen müssen, um zu verhindern, dass ein Mandant die Sicherheit und den Dienst eines anderen beeinträchtigt. Zusätzliche Sicherheitsfeatures wie eine *Podsicherheitsrichtlinie* und eine differenziertere rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) für Knoten erschweren Exploits. Für echte Sicherheit bei der Ausführung feindlicher Workloads mit mehreren Mandanten ist jedoch ein Hypervisor die einzige Sicherheitsstufe, der Sie vertrauen sollten. Die Sicherheitsdomäne für Kubernetes wird zum gesamten Cluster und nicht zu einem einzelnen Knoten. Für diese Art von feindlichen Workloads mit mehreren Mandanten sollten Sie physisch isolierte Cluster verwenden.
 
 ## <a name="physically-isolate-clusters"></a>Physisches Isolieren von Clustern
 

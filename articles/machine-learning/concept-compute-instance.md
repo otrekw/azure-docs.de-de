@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 07/27/2020
-ms.openlocfilehash: 4ac95fa81fdbee237cacaa1541e333bb70c370fa
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: f4938d517d9a5c244045798a79f31b96bacd03f5
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323297"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87829440"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>Was ist eine Azure Machine Learning-Compute-Instanz?
 
@@ -33,7 +33,7 @@ Eine Compute-Instanz ist eine vollständig verwaltete cloudbasierte Arbeitsstati
 |Hauptvorteile|BESCHREIBUNG|
 |----|----|
 |Produktivität|Sie können Modelle mit integrierten Notebooks und den folgenden Tools im Azure Machine Learning Studio erstellen und bereitstellen:<br/>-  Jupyter<br/>-  JupyterLab<br/>-  RStudio (Vorschauversion)<br/>Die Compute-Instanz ist vollständig in den Arbeitsbereich und das Studio von Azure Machine Learning integriert. Sie können Notebooks und Daten mit anderen Datenanalysten im Arbeitsbereich gemeinsam nutzen. Sie können die VS Code Remote-Entwicklung auch mit [SSH](how-to-set-up-vs-code-remote.md) einrichten. |
-|Verwaltet und sicher|Verringern Sie Ihren Sicherheitsaufwand, und gewinnen Sie Compliance mit Anforderungen der Unternehmenssicherheit. Compute-Instanzen bieten verlässliche Verwaltungsrichtlinien und sichere Netzwerkkonfigurationen wie die folgenden:<br/><br/>- Automatisierte Bereitstellung über Resource Manager-Vorlagen oder das Azure Machine Learning SDK<br/>- [Rollenbasierte Zugriffssteuerung (RBAC)](/azure/role-based-access-control/overview)<br/>- [Unterstützung virtueller Netzwerke](how-to-enable-virtual-network.md#compute-instance)<br/>- SSH-Richtlinie zum Aktivieren/Deaktivieren des SSH-Zugriffs<br/>TLS 1.2 aktiviert |
+|Verwaltet und sicher|Verringern Sie Ihren Sicherheitsaufwand, und gewinnen Sie Compliance mit Anforderungen der Unternehmenssicherheit. Compute-Instanzen bieten verlässliche Verwaltungsrichtlinien und sichere Netzwerkkonfigurationen wie die folgenden:<br/><br/>- Automatisierte Bereitstellung über Resource Manager-Vorlagen oder das Azure Machine Learning SDK<br/>- [Rollenbasierte Zugriffssteuerung in Azure (Azure Role-Based Access Control, Azure RBAC)](/azure/role-based-access-control/overview)<br/>- [Unterstützung virtueller Netzwerke](how-to-enable-virtual-network.md#compute-instance)<br/>- SSH-Richtlinie zum Aktivieren/Deaktivieren des SSH-Zugriffs<br/>TLS 1.2 aktiviert |
 |Vorkonfiguriert&nbsp;für&nbsp;ML|Sparen Sie Zeit bei der Einrichtung von Aufgaben mit vorkonfigurierten und aktuellen ML-Paketen, Deep Learning- Frameworks und GPU-Treibern.|
 |Vollständig anpassbar|Umfassende Unterstützung für Azure-VM-Typen einschließlich GPUs und durchweg einfache Anpassungen wie die Installation von Paketen und Treibern machen erweiterte Szenarien zu einem Kinderspiel. |
 

@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 03/13/2020
 ms.author: memildin
-ms.openlocfilehash: 7b0fbb7c4f680f9d732a63fff7b0b317c6cf1511
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 3bfaa9f2961dca2b8b717b1506d112943910485a
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86519696"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88042320"
 ---
 # <a name="export-security-alerts-and-recommendations"></a>Exportieren von Sicherheitswarnungen und -empfehlungen
 
@@ -31,12 +31,14 @@ Mit diesen Tools können Sie folgende Aktionen ausführen:
 
 ## <a name="availability"></a>Verfügbarkeit
 
-- Status des Release: **Allgemein verfügbar**
-- Erforderliche Rollen und Berechtigungen:
-    - **Leser** für das Abonnement, das die Exportkonfiguration enthält
-    - **Rolle „Sicherheitsadministrator“** für die Ressourcengruppe (oder **Besitzer**)
-    - Außerdem sind Schreibberechtigungen für die Zielressource erforderlich
-- Clouds:   ✔ Kommerzielle Clouds   ✔ US Gov   ✘ China Gov, andere Gov-Cloud
+|Aspekt|Details|
+|----|:----|
+|Status des Release:|Allgemein verfügbar|
+|Preise:|Free-Tarif|
+|Erforderliche Rollen und Berechtigungen:|**Leser** für das Abonnement, das die Exportkonfiguration enthält<br>**Rolle „Sicherheitsadministrator“** für die Ressourcengruppe (oder **Besitzer**)<br>Außerdem sind Schreibberechtigungen für die Zielressource erforderlich|
+|Clouds:|![Ja](./media/icons/yes-icon.png) Kommerzielle Clouds<br>![Ja](./media/icons/yes-icon.png) US Gov<br>![Nein](./media/icons/no-icon.png) China Gov/andere Gov|
+|||
+
 
 
 ## <a name="setting-up-a-continuous-export"></a>Einrichten eines fortlaufenden Exports

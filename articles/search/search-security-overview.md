@@ -7,19 +7,20 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 06/03/2020
-ms.openlocfilehash: cc02890cb5293e48a8065b63f4f9c799c5dda7f7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/01/2020
+ms.custom: references_regions
+ms.openlocfilehash: fb265f8a8ab34972dac8529d267e41edaf0acb4c
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85081042"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87829287"
 ---
 # <a name="security-in-azure-cognitive-search---overview"></a>Sicherheit in Azure Cognitive Search: Übersicht
 
-In diesem Artikel werden die wichtigsten Sicherheitsfeatures in Azure Cognitive Search beschrieben, mit denen Inhalte und Vorgänge geschützt werden können. 
+In diesem Artikel werden die wichtigsten Sicherheitsfeatures in Azure Cognitive Search beschrieben, mit denen Inhalte und Vorgänge geschützt werden können.
 
-+ In der Speicherschicht ist die Verschlüsselung ruhender Daten auf Plattformebene gegeben, aber für Kunden, die doppelten Schutz sowohl mit benutzereigenen als auch mit von Microsoft verwalteten Schlüsseln wünschen, bietet Cognitive Search außerdem eine Option zur „doppelten Verschlüsselung“.
++ Auf der Speicherebene ist die Verschlüsselung ruhender Daten für alle vom Dienst verwalteten Inhalte, die auf Datenträgern gespeichert werden, integriert, einschließlich Indizes, Synonymzuordnungen und die Definitionen von Indexern, Datenquellen und Skillsets. Azure Cognitive Search unterstützt auch das Hinzufügen von kundenseitig verwalteten Schlüsseln (Customer-Managed Keys, CMK) zur zusätzlichen Verschlüsselung indexierter Inhalte. Bei Diensten, die nach dem 1. August 2020 erstellt wurden, erstreckt sich die CMK-Verschlüsselung auch auf Daten auf temporären Datenträgern, um eine vollständige doppelte Verschlüsselung der indexierten Inhalte zu erreichen.
 
 + Die Eingangssicherheit schützt den Endpunkt des Suchdiensts mit steigendem Sicherheitsniveau: von API-Schlüsseln in der Anforderung über Eingangsregeln in der Firewall bis zu privaten Endpunkten, die Ihren Dienst vollständig vom öffentlichen Internet abschirmen.
 
@@ -29,29 +30,41 @@ Eine Übersicht der Sicherheitsarchitektur und der einzelnen Featurekategorien f
 
 > [!VIDEO https://channel9.msdn.com/Shows/AI-Show/Azure-Cognitive-Search-Whats-new-in-security/player]
 
+<a name="encryption"></a>
+
 ## <a name="encrypted-transmissions-and-storage"></a>Verschlüsselte Übertragung und Speicherung
 
-Die Verschlüsselung in Azure Cognitive Search ist durchgehend, beginnend bei Verbindungen und Übertragungen und bis zu den auf Datenträgern gespeicherten Inhalten reichend. Für Suchdienste im öffentlichen Internet lauscht Azure Cognitive Search an HTTPS-Port 443. Alle Client-zu-Dienst-Verbindungen verwenden TLS 1.2-Verschlüsselung. Frühere Versionen (1.0 oder 1.1) werden nicht unterstützt.
+Die Verschlüsselung in Azure Cognitive Search beginnt bei Verbindungen und Übertragungen und reicht bis zu den auf Datenträgern gespeicherten Inhalten. Für Suchdienste im öffentlichen Internet lauscht Azure Cognitive Search an HTTPS-Port 443. Alle Client-zu-Dienst-Verbindungen verwenden TLS 1.2-Verschlüsselung. Frühere Versionen (1.0 oder 1.1) werden nicht unterstützt.
 
-### <a name="data-encryption-at-rest"></a>Verschlüsselung ruhender Daten
+In der folgenden Tabelle werden für Daten, die vom Suchdienst intern verarbeitet werden, die [Datenverschlüsselungsmodelle](../security/fundamentals/encryption-atrest.md#data-encryption-models) beschrieben. Einige Features, wie z. B. der Wissensspeicher, inkrementelle Anreicherung und indexerbasierte Indizierung, lesen von oder schreiben in Datenstrukturen in anderen Azure Services. Diese Dienste verfügen über eigene Ebene für die Unterstützung von Verschlüsselungen, die von Azure Cognitive Search getrennt sind.
 
-Azure Cognitive Search speichert Indexdefinitionen und -inhalte, Datenquellendefinitionen, Indexerdefinitionen, Skillsetdefinitionien und Synonymzuordnungen.
+| Modell | Schlüssel&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Anforderungen&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Beschränkungen | Anwendungsbereich |
+|------------------|-------|-------------|--------------|------------|
+| Serverseitige Verschlüsselung | Von Microsoft verwaltete Schlüssel | Keine (integriert) | Keine, verfügbar auf allen Ebenen, in allen Regionen, für Inhalte, die nach dem 24. Januar 2018 erstellt wurden. | Inhalt (Indizes und Synonymzuordnungen) und Definitionen (Indexer, Datenquellen, Skillsets) |
+| Serverseitige Verschlüsselung | Kundenseitig verwaltete Schlüssel | Azure-Schlüsseltresor | Verfügbar für abrechenbare Tarife in allen Regionen für Inhalte, die nach Januar 2019 erstellt wurden. | Inhalt (Indizes und Synonymzuordnungen) auf Datenträgern |
+| Serverseitige doppelte Verschlüsselung | Kundenseitig verwaltete Schlüssel | Azure-Schlüsseltresor | Verfügbar für abrechenbare Tarife in ausgewählten Regionen in den Suchdiensten nach dem 1. August 2020. | Inhalt (Indizes und Synonymzuordnungen) auf Datenträgern und temporären Datenträgern |
 
-In der gesamten Speicherschicht werden Daten auf Datenträgern mithilfe von Schlüsseln verschlüsselt, die von Microsoft verwaltet werden. Sie können die Verschlüsselung nicht aktivieren bzw. deaktivieren oder Verschlüsselungseinstellungen im Portal oder programmgesteuert anzeigen. Die Verschlüsselung ist vollständig integriert, ohne messbare Auswirkungen auf die Durchführungsdauer der Indizierung oder die Indexgröße. Sie wird automatisch auf die gesamte Indizierung angewendet, einschließlich auf inkrementelle Updates für einen nicht vollständig verschlüsselten Index (vor Januar 2018 erstellt).
+### <a name="service-managed-keys"></a>Dienstseitig verwaltete Schlüssel
 
-Intern basiert die Verschlüsselung auf der [256-Bit-AES-Verschlüsselung](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) von [Microsoft Azure Storage](../storage/common/storage-service-encryption.md).
+Dienstseitig verwaltete Verschlüsselung ist ein Microsoft-interner Vorgang, der auf einer [256-Bit-AES-Verschlüsselung](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) durch die [Azure-Speicherdienstverschlüsselung](../storage/common/storage-service-encryption.md) basiert. Sie wird automatisch auf die gesamte Indizierung angewendet, einschließlich auf inkrementelle Updates für nicht vollständig verschlüsselte Indizes (vor Januar 2018 erstellt).
 
-> [!NOTE]
-> Die Verschlüsselung ruhender Daten wurde am 24. Januar 2018 bekannt gegeben und gilt für alle Dienstebenen, einschließlich der Dienstebene „Free“, in sämtlichen Regionen. Damit die Verschlüsselung vollständig angewendet werden kann, müssen vor diesem Datum erstellte Indizes gelöscht und neu erstellt werden. Anderenfalls werden nur neue Daten, die nach dem 24. Januar hinzugefügt wurden, verschlüsselt.
+### <a name="customer-managed-keys-cmk"></a>Kundenseitig verwaltete Schlüssel (CMK)
 
-### <a name="customer-managed-key-cmk-encryption"></a>Verschlüsselung mit kundenseitig verwalteten Schlüsseln (Customer-Managed Key, CMK)
+Kundenseitig verwaltete Schlüssel erfordern einen zusätzlichen kostenpflichtigen Dienst, Azure Key Vault, der sich in einer anderen Region, aber unter demselben Abonnement wie Azure Cognitive Search befinden kann. Durch Aktivieren der CMK-Verschlüsselung wird die Indexgröße erhöht und die Abfrageleistung beeinträchtigt. Basierend auf den bisherigen Beobachtungen können Sie mit einem Anstieg der Abfragezeiten um 30 %–60 % rechnen, wobei die tatsächliche Leistung je nach Indexdefinition und Art der Abfragen variiert. Aufgrund dieser Auswirkungen auf die Leistung wird empfohlen, diese Funktion nur für Indizes zu aktivieren, für die sie wirklich erforderlich ist. Weitere Informationen finden Sie unter [Konfigurieren von kundenseitig verwalteten Schlüsseln für die Datenverschlüsselung in Azure Cognitive Search](search-security-manage-encryption-keys.md).
 
-Kunden, die zusätzlichen Speicherschutz wünschen, können Daten und Objekte verschlüsseln, bevor sie auf Datenträgern gespeichert und verschlüsselt werden. Dieser Ansatz basiert auf einem benutzereigenen Schlüssel, der unabhängig von Microsoft mithilfe von Azure Key Vault verwaltet und gespeichert wird. Das Verschlüsseln von Inhalten vor dem Verschlüsseln auf dem Datenträger wird als „doppelte Verschlüsselung“ bezeichnet. Aktuell können Sie Indizes und Synonymzuordnungen selektiv doppelt verschlüsseln. Weitere Informationen finden Sie unter [Von Kunden verwaltete Verschlüsselungsschlüssel in Azure Cognitive Search](search-security-manage-encryption-keys.md).
+<a name="double-encryption"></a>
 
-> [!NOTE]
-> Die CMK-Verschlüsselung ist allgemein für Suchdienste verfügbar, die nach Januar 2019 erstellt wurden. Für kostenlose (freigegebene) Dienste wird sie nicht unterstützt. 
->
->Durch Aktivieren dieser Funktion wird die Indexgröße erhöht und die Abfrageleistung beeinträchtigt. Basierend auf den bisherigen Beobachtungen können Sie mit einem Anstieg der Abfragezeiten um 30 %–60 % rechnen, wobei die tatsächliche Leistung je nach Indexdefinition und Art der Abfragen variiert. Aufgrund dieser Auswirkungen auf die Leistung wird empfohlen, diese Funktion nur für Indizes zu aktivieren, für die sie wirklich erforderlich ist.
+### <a name="double-encryption"></a>Doppelte Verschlüsselung 
+
+Die doppelte Verschlüsselung in Azure Cognitive Search ist eine Erweiterung von CMK. Es handelt sich dabei um eine zweifache Verschlüsselung (einmal durch CMK und einmal durch dienstseitig verwaltete Schlüssel), die sowohl eine langfristige Speicherung auf einem Datenträger und eine kurzfristige Speicherung auf temporären Datenträgern umfasst. Der Unterschied zwischen CMK vor dem 1. August 2020 und danach, und was CMK zu einem doppelten Verschlüsselungsfeature in Azure Cognitive Search macht, ist die zusätzliche Verschlüsselung von ruhenden Daten auf temporären Datenträgern.
+
+Die doppelte Verschlüsselung ist zurzeit für neue Dienste verfügbar, die nach dem 1. August in diesen Regionen erstellt werden:
+
++ USA, Westen 2
++ East US
++ USA Süd Mitte
++ US Government, Virginia
++ US Gov Arizona
 
 <a name="service-access-and-authentication"></a>
 
@@ -114,7 +127,7 @@ Wenn Sie eine detaillierte Kontrolle über Suchergebnisse pro Benutzer benötige
 
 ## <a name="administrative-rights"></a>Administratorrechte
 
-[Rollenbasierter Zugriff (RBAC)](../role-based-access-control/overview.md) ist ein Autorisierungssystem für die Bereitstellung von Azure-Ressourcen, das auf [Azure Resource Manager](../azure-resource-manager/management/overview.md) basiert. In Azure Cognitive Search wird der Resource Manager zum Erstellen oder Löschen des Diensts, zum Verwalten der API-Schlüssel und zum Skalieren des Diensts verwendet. Daher bestimmen die RBAC-Rollenzuweisungen, wer diese Aufgaben ausführen kann, unabhängig davon, ob dazu das [Portal](search-manage.md), [PowerShell](search-manage-powershell.md) oder die [Management REST-APIs](https://docs.microsoft.com/rest/api/searchmanagement/search-howto-management-rest-api) verwendet werden.
+Der [Rollenbasierte Zugriff in Azure (Azure RBAC)](../role-based-access-control/overview.md) ist ein Autorisierungssystem für die Bereitstellung von Azure-Ressourcen, das auf [Azure Resource Manager](../azure-resource-manager/management/overview.md) basiert. In Azure Cognitive Search wird der Resource Manager zum Erstellen oder Löschen des Diensts, zum Verwalten der API-Schlüssel und zum Skalieren des Diensts verwendet. Daher bestimmen die Azure-Rollenzuweisungen, wer diese Aufgaben ausführen kann, unabhängig davon, ob dazu das [Portal](search-manage.md), [PowerShell](search-manage-powershell.md) oder die [Verwaltungs-REST-APIs](https://docs.microsoft.com/rest/api/searchmanagement/search-howto-management-rest-api) verwendet werden.
 
 Im Gegensatz dazu werden Administratorrechte für Inhalte, die vom Dienst gehostet werden, z. B. die Möglichkeit zum Erstellen oder Löschen eines Indexes, über API-Schlüssel übertragen, wie im [vorherigen Abschnitt](#index-access) beschrieben.
 
@@ -124,6 +137,12 @@ Im Gegensatz dazu werden Administratorrechte für Inhalte, die vom Dienst gehost
 ## <a name="certifications-and-compliance"></a>Zertifizierungen und Compliance
 
 Azure Cognitive Search wurde als konform mit mehreren globalen, regionalen und branchenspezifischen Standards sowohl für die öffentliche Cloud als auch für Azure Government zertifiziert. Um die vollständige Liste zu erhalten, laden Sie das Whitepaper [**Microsoft Azure-Complianceangebote**](https://azure.microsoft.com/resources/microsoft-azure-compliance-offerings/) von der offiziellen Seite mit Überwachungsberichten herunter.
+
+Aus Konformitätsgründen können Sie [Azure Policy](../governance/policy/overview.md) verwenden, um die bewährten Methoden für höchste Sicherheit des [Azure-Sicherheitsvergleichstests](../security/benchmarks/introduction.md) zu implementieren. Der Azure-Sicherheitsvergleichstest ist eine Sammlung von Sicherheitsempfehlungen, die in Sicherheitskontrollen programmiert sind. Diese sind den wichtigsten Maßnahmen zugeordnet, die Sie zur Verringerung von Bedrohungen für Dienste und Daten ergreifen sollten. Derzeit gibt es elf Sicherheitskontrollen, darunter [Netzwerksicherheit](../security/benchmarks/security-control-network-security.md), [Protokollierung und Überwachung](../security/benchmarks/security-control-logging-monitoring.md) und [Datenschutz](../security/benchmarks/security-control-data-protection.md), um nur einige zu nennen.
+
+Azure Policy ist eine in Azure integrierte Funktion, mit der Sie die Konformität für mehrere Standards, einschließlich denen des Azure-Sicherheitsvergleichstests, verwalten können. Azure Policy bietet für gängige Bezugsgrößen integrierte Definitionen, die sowohl Kriterien als auch eine umsetzbare Reaktion bei Nichteinhaltung liefern. 
+
+Für Azure Cognitive Search gibt es derzeit eine integrierte Definition. Diese ist für die Diagnoseprotokollierung. Mit dieser integrierten Definition können Sie eine Richtlinie zuweisen, die jeden Suchdienst identifiziert, für den die Diagnoseprotokollierung fehlt, und diesen dann aktiviert. Weitere Informationen erhalten Sie unter [Kontrollen zur Einhaltung gesetzlicher Bestimmungen in Azure Policy für Azure Cognitive Search](security-controls-policy.md).
 
 ## <a name="see-also"></a>Weitere Informationen
 

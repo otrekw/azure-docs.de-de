@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/13/2020
 ms.author: ccompy
 ms.custom: seodec18, references_regions
-ms.openlocfilehash: 9407e388a44ec78fa1e089542fc5ea3ef9387d60
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1e5c909dfebf9c2073ac1809e0a1b7dcbcc7a297
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87073762"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87874196"
 ---
 # <a name="locking-down-an-app-service-environment"></a>Sperren einer App Service-Umgebung
 
@@ -61,7 +61,7 @@ Gehen Sie wie folgt vor, um ausgehenden Datenverkehr Ihrer bestehenden App Servi
    
    ![Hinzufügen einer Anwendungsregel][1]
    
-1. Navigieren Sie in der Azure Firewall-Benutzeroberfläche zu „Regeln“ > „Netzwerkregelsammlung“, und wählen Sie „Netzwerkregelsammlung hinzufügen“ aus. Geben Sie einen Namen und eine Priorität an, und legen Sie „Zulassen“ fest. Geben Sie im Abschnitt „Regeln“ unter „IP-Adressen“ einen Namen an, wählen Sie als Protokoll **Beliebig** aus, legen Sie „*“ auf die Quell- und Zieladressen und die Ports auf 123 fest. Diese Regel ermöglicht es dem System, die Uhrsynchronisierung mit NTP durchzuführen. Erstellen Sie wie oben beschrieben eine weitere Regel für Port 12000, um die Selektierung von Systemproblemen zu erleichtern. 
+1. Navigieren Sie in der Azure Firewall-Benutzeroberfläche zu „Regeln“ > „Netzwerkregelsammlung“, und wählen Sie „Netzwerkregelsammlung hinzufügen“ aus. Geben Sie einen Namen und eine Priorität an, und legen Sie „Zulassen“ fest. Geben Sie im Abschnitt „Regeln“ unter „IP-Adressen“ einen Namen an, wählen Sie als Protokoll **Beliebig** aus, legen Sie „*“ auf die Quell- und Zieladressen und die Ports auf 123 fest. Diese Regel ermöglicht es dem System, die Uhrsynchronisierung mit NTP durchzuführen. Erstellen Sie wie oben beschrieben eine weitere Regel für Port 12000, um die Selektierung von Systemproblemen zu erleichtern. 
 
    ![Hinzufügen einer NTP-Netzwerkregel][3]
    

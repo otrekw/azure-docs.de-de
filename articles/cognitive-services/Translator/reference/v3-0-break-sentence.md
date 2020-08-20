@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 01/21/2020
+ms.date: 08/06/2020
 ms.author: swmachan
-ms.openlocfilehash: 01a5404100da6c669da4513ac9fd08c959df220e
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 340b0ed02821fb98f271539ac39e0ccad8581082
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83588631"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87904002"
 ---
 # <a name="translator-30-breaksentence"></a>Translator 3.0: BreakSentence
 
@@ -61,7 +61,7 @@ Der Anforderungstext ist ein JSON-Array. Jedes Arrayelement ist ein JSON-Objekt 
 Es gelten die folgenden Einschränkungen:
 
 * Das Array kann höchstens über 100 Elemente verfügen.
-* Der Textwert eines Arrayelements kann 10.000 Zeichen (einschließlich Leerzeichen) nicht überschreiten.
+* Der Textwert eines Arrayelements darf 50.000 Zeichen (einschließlich Leerzeichen) nicht überschreiten.
 * Der gesamte Text, der in einer Anforderung enthalten ist, kann 50.000 Zeichen (einschließlich Leerzeichen) nicht überschreiten.
 * Wenn der Abfrageparameter `language` angegeben ist, müssen alle Arrayelemente in derselben Sprache sein. Wenn dies nicht der Fall ist, wird die automatische Spracherkennung auf jedes Arrayelement einzeln angewendet.
 

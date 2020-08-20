@@ -12,21 +12,21 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/26/2019
+ms.date: 08/19/2020
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 62c4baafdd66465502bf45fe19a111e17a9539ac
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 474e6c96be810192d3c4e1ada1ab2e0391a5d4f9
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85609071"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88606489"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-powershell"></a>Konfigurieren von verwalteten Identitäten für Azure-Ressourcen auf einem virtuellen Azure-Computer mithilfe von PowerShell
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-Verwaltete Identitäten für Azure-Ressourcen stellen für Azure-Dienste eine automatisch verwaltete Identität in Azure Active Directory bereit. Sie können diese Identität für die Authentifizierung bei jedem Dienst verwenden, der die Azure AD-Authentifizierung unterstützt. Hierfür müssen keine Anmeldeinformationen im Code enthalten sein. 
+Verwaltete Identitäten für Azure-Ressourcen stellen für Azure-Dienste eine automatisch verwaltete Identität in Azure Active Directory bereit. Sie können diese Identität für die Authentifizierung bei jedem Dienst verwenden, der die Azure AD-Authentifizierung unterstützt. Hierfür müssen keine Anmeldeinformationen im Code enthalten sein.
 
 In diesem Artikel erfahren Sie, wie Sie mithilfe von PowerShell die folgenden Vorgänge für verwaltete Identitäten für Azure-Ressourcen auf einer Azure-VM ausführen.
 
@@ -47,11 +47,11 @@ In diesem Abschnitt erfahren Sie, wie Sie die vom System zugewiesene verwaltete 
 Zum Erstellen eines virtuellen Azure-Computers, auf dem die systemseitig zugewiesene verwaltete Identität aktiviert ist, benötigt Ihr Konto die Rollenzuweisung [Mitwirkender für virtuelle Computer](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor).  Es sind keine weiteren Azure AD-Verzeichnisrollenzuweisungen erforderlich.
 
 1. Verwenden Sie einen der folgenden Schnellstarts für virtuelle Azure-Computer, und setzen Sie nur die erforderlichen Abschnitte um („Anmelden bei Azure“, „Erstellen einer Ressourcengruppe“, „Erstellen einer Netzwerkgruppe“, „Erstellen des virtuellen Computers“).
-    
-    Im Abschnitt „Erstellen der VM“ nehmen Sie eine kleine Änderung an der Syntax des Cmdlets [New-AzVMConfig](/powershell/module/az.compute/new-azvm) vor. Fügen Sie einen `-AssignIdentity:$SystemAssigned`-Parameter hinzu, um den virtuellen Computer mit aktivierter systemzugewiesener Identität bereitzustellen. Beispiel:
-      
+
+    Im Abschnitt „Erstellen der VM“ nehmen Sie eine kleine Änderung an der Syntax des Cmdlets [New-AzVMConfig](/powershell/module/az.compute/new-azvm) vor. Fügen Sie einen `-IdentityType SystemAssigned`-Parameter hinzu, um den virtuellen Computer mit aktivierter systemzugewiesener Identität bereitzustellen. Beispiel:
+
     ```powershell
-    $vmConfig = New-AzVMConfig -VMName myVM -AssignIdentity:$SystemAssigned ...
+    $vmConfig = New-AzVMConfig -VMName myVM -IdentityType SystemAssigned ...
     ```
 
    - [Erstellen eines virtuellen Windows-Computers mithilfe von PowerShell](../../virtual-machines/windows/quick-create-powershell.md)
@@ -69,11 +69,11 @@ Zum Aktivieren der systemseitig zugewiesenen verwalteten Identität auf einem vi
    Connect-AzAccount
    ```
 
-2. Rufen Sie zunächst die VM-Einstellungen mithilfe des Cmdlets `Get-AzVM` ab. Verwenden Sie dann zum Aktivieren einer vom System zugewiesenen verwalteten Identität den Schalter `-AssignIdentity` im Cmdlet [Update-AzVM](/powershell/module/az.compute/update-azvm):
+2. Rufen Sie zunächst die VM-Einstellungen mithilfe des Cmdlets `Get-AzVM` ab. Verwenden Sie dann zum Aktivieren einer vom System zugewiesenen verwalteten Identität den Schalter `-IdentityType` im Cmdlet [Update-AzVM](/powershell/module/az.compute/update-azvm):
 
    ```powershell
    $vm = Get-AzVM -ResourceGroupName myResourceGroup -Name myVM
-   Update-AzVM -ResourceGroupName myResourceGroup -VM $vm -AssignIdentity:$SystemAssigned
+   Update-AzVM -ResourceGroupName myResourceGroup -VM $vm -IdentityType SystemAssigned
    ```
 
 
@@ -90,7 +90,7 @@ Nachdem Sie auf einer VM eine systemseitig zugewiesene Identität aktiviert habe
 
 2. Rufen Sie die `ObjectID` des VM-Dienstprinzipals (gemäß den Angaben im Feld `Id` der zurückgegebenen Werte) ab, und notieren Sie sie:
 
-   ```powerhshell
+   ```powershell
    Get-AzADServicePrincipal -displayname "myVM"
    ```
 
@@ -120,8 +120,8 @@ Wenn Sie über einen virtuellen Computer verfügen, der nicht mehr die systemzug
 
 2. Rufen Sie die VM-Eigenschaften mithilfe des Cmdlets `Get-AzVM` ab, und legen Sie für den `-IdentityType`-Parameter `UserAssigned` fest:
 
-   ```powershell   
-   $vm = Get-AzVM -ResourceGroupName myResourceGroup -Name myVM 
+   ```powershell
+   $vm = Get-AzVM -ResourceGroupName myResourceGroup -Name myVM
    Update-AzVm -ResourceGroupName myResourceGroup -VM $vm -IdentityType "UserAssigned"
    ```
 
@@ -142,14 +142,14 @@ In diesem Abschnitt erfahren Sie, wie Sie mithilfe von Azure PowerShell eine ben
 
 Für die Zuweisung einer benutzerseitig zugewiesenen Identität zu einem virtuellen Computer benötigt Ihr Konto die Rollenzuweisungen [Mitwirkender für virtuelle Computer](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) und [Operator für verwaltete Identität](/azure/role-based-access-control/built-in-roles#managed-identity-operator). Es sind keine weiteren Azure AD-Verzeichnisrollenzuweisungen erforderlich.
 
-1. Verwenden Sie einen der folgenden Schnellstarts für virtuelle Azure-Computer, und setzen Sie nur die erforderlichen Abschnitte um („Anmelden bei Azure“, „Erstellen einer Ressourcengruppe“, „Erstellen einer Netzwerkgruppe“, „Erstellen des virtuellen Computers“). 
-  
+1. Verwenden Sie einen der folgenden Schnellstarts für virtuelle Azure-Computer, und setzen Sie nur die erforderlichen Abschnitte um („Anmelden bei Azure“, „Erstellen einer Ressourcengruppe“, „Erstellen einer Netzwerkgruppe“, „Erstellen des virtuellen Computers“).
+
     Wenn Sie zum Abschnitt zum Erstellen der VM gelangen, nehmen Sie eine kleine Änderung an der Syntax des Cmdlets [`New-AzVMConfig`](/powershell/module/az.compute/new-azvm) vor. Fügen Sie die Parameter `-IdentityType UserAssigned` und `-IdentityID` für die Bereitstellung des virtuellen Computers mit einer benutzerzugewiesenen Identität hinzu.  Ersetzen Sie `<VM NAME>`, `<SUBSCRIPTION ID>`, `<RESROURCE GROUP>` und `<USER ASSIGNED IDENTITY NAME>` durch Ihre eigenen Werte.  Beispiel:
-    
-    ```powershell 
+
+    ```powershell
     $vmConfig = New-AzVMConfig -VMName <VM NAME> -IdentityType UserAssigned -IdentityID "/subscriptions/<SUBSCRIPTION ID>/resourcegroups/<RESROURCE GROUP>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<USER ASSIGNED IDENTITY NAME>..."
     ```
-    
+
     - [Erstellen eines virtuellen Windows-Computers mithilfe von PowerShell](../../virtual-machines/windows/quick-create-powershell.md)
     - [Erstellen eines virtuellen Linux-Computers mithilfe von PowerShell](../../virtual-machines/linux/quick-create-powershell.md)
 
@@ -203,7 +203,7 @@ Update-AzVm -ResourceGroupName myResourceGroup -VM $vm -IdentityType None
 ```
 Wenn der virtuelle Computer sowohl system- als auch benutzerzugewiesene verwaltete Identitäten aufweist, können Sie alle benutzerzugewiesenen verwalteten Identitäten entfernen, indem Sie in den Modus wechseln, in dem nur systemzugewiesene verwaltete Identitäten verwendet werden.
 
-```powershell 
+```powershell
 $vm = Get-AzVm -ResourceGroupName myResourceGroup -Name myVm
 Update-AzVm -ResourceGroupName myResourceGroup -VirtualMachine $vm -IdentityType "SystemAssigned"
 ```
@@ -212,6 +212,6 @@ Update-AzVm -ResourceGroupName myResourceGroup -VirtualMachine $vm -IdentityType
 
 - [Verwaltete Identitäten für Azure-Ressourcen – Übersicht](overview.md)
 - Die vollständigen Schnellstarts zum Erstellen virtueller Azure-Computer finden Sie unter:
-  
-  - [Erstellen eines virtuellen Windows-Computers mit PowerShell](../../virtual-machines/windows/quick-create-powershell.md) 
-  - [Erstellen eines virtuellen Linux-Computers mit PowerShell](../../virtual-machines/linux/quick-create-powershell.md) 
+
+  - [Erstellen eines virtuellen Windows-Computers mit PowerShell](../../virtual-machines/windows/quick-create-powershell.md)
+  - [Erstellen eines virtuellen Linux-Computers mit PowerShell](../../virtual-machines/linux/quick-create-powershell.md)

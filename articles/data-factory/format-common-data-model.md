@@ -5,21 +5,21 @@ author: djpmsft
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 07/07/2020
+ms.date: 08/05/2020
 ms.author: daperlov
-ms.openlocfilehash: 3c4f2df074bc7feaa42704942a3fd238ab4b333a
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 483e26cf4044b909c8d7923cfd74bd6fcf871e2a
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86083779"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905284"
 ---
 # <a name="common-data-model-format-in-azure-data-factory"></a>Common Data Model-Format in Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Das Common Data Model-Metadatensystem ermöglicht es, dass Daten und deren Bedeutung problemlos von allen Anwendungen und Geschäftsprozessen gemeinsam genutzt werden können. Weitere Informationen finden Sie in der Übersicht zum [Common Data Model](https://docs.microsoft.com/common-data-model/).
 
-In Azure Data Factory können Benutzer in und aus CDM-Entitäten transformieren, die in [Azure Data Lake Store Gen2](connector-azure-data-lake-storage.md) (ADLS Gen2) mithilfe von Zuordnungsdatenflüssen gespeichert sind. Wählen Sie zwischen „model.json“ und CDM-Quellen im Manifeststil und Schreiben in CDM-Manifestdateien.
+In Azure Data Factory können Benutzer Daten aus CDM-Entitäten sowohl in MODEL.JSON-Dateien als auch in Manifestdateien transformieren, die in [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) (ADLS Gen2) mithilfe von Zuordnungsdatenflüssen gespeichert werden. Sie können Daten mithilfe von Verweisen auf CDM-Entitäten auch als Senken in das CDM-Format transformieren. Dann werden diese im CSV- oder PARQUET-Format in partitionierten Ordnern gespeichert. 
 
 > [!NOTE]
 > Der Common Data Model-Formatconnector für ADF-Datenflüsse ist zurzeit als öffentliche Vorschauversion verfügbar.
@@ -29,7 +29,7 @@ In Azure Data Factory können Benutzer in und aus CDM-Entitäten transformieren,
 Das Common Data Model (CDM) ist als [Inlinedataset](data-flow-source.md#inline-datasets) in Zuordnungsdatenflüssen sowohl als Quelle als auch als Senke verfügbar.
 
 > [!NOTE]
-> Beim Schreiben von CDM-Entitäten muss bereits eine CDM-Entitätsdefinition (Metadatenschema) vorhanden sein. Die ADF-Datenflusssenke liest diese CDM-Entitätsdatei und importiert das Schema in die Senke für die Feldzuordnung.
+> Beim Schreiben von CDM-Entitäten muss bereits eine CDM-Entitätsdefinition (Metadatenschema) vorhanden sein, die zur Verwendung als Verweis definiert ist. Die ADF-Datenflusssenke liest diese CDM-Entitätsdatei und importiert das Schema in die Senke für die Feldzuordnung.
 
 ### <a name="source-properties"></a>Quelleigenschaften
 
@@ -52,9 +52,28 @@ In der folgenden Tabelle sind die von einer CDM-Quelle unterstützten Eigenschaf
 | Korpusentität | Der Pfad zum Entitätsverweis. | ja | String | entity |
 | Finden keiner Dateien zulässig | „true“ gibt an, dass kein Fehler ausgelöst wird, wenn keine Dateien gefunden werden. | nein | `true` oder `false` | ignoreNoFilesFound |
 
+### <a name="sink-settings"></a>Senkeneinstellungen
+
+* Zeigen Sie auf die Verweisdatei für die CDM-Entität, die die Definition der Entität enthält, die Sie schreiben möchten.
+
+![Entitätseinstellungen](media/data-flow/common-data-model-111.png "Entitätsverweis")
+
+* Definieren Sie den Partitionspfad und das Format der Ausgabedateien, die ADF zum Schreiben von Entitäten verwenden soll.
+
+![Entitätsformat](media/data-flow/common-data-model-222.png "Entitätsformat")
+
+* Legen Sie den Speicherort der Ausgabedatei sowie den Speicherort und den Namen der Manifestdatei fest.
+
+![CDM-Speicherort](media/data-flow/common-data-model-333.png "CDM-Speicherort")
+
+
 #### <a name="import-schema"></a>Importieren des Schemas
 
 CDM ist nur als Inlinedataset verfügbar und weist standardmäßig kein zugeordnetes Schema auf. Zum Abrufen von Spaltenmetadaten klicken Sie auf der Registerkarte **Projektion** auf die Schaltfläche **Schema importieren**. Auf diese Weise können Sie auf die Spaltennamen und Datentypen verweisen, die durch den Korpus angegeben sind. Zum Importieren des Schemas muss eine [Datenfluss-Debugsitzung](concepts-data-flow-debug-mode.md) aktiv sein, und es muss eine CDM-Entitätsdefinitionsdatei vorhanden sein, auf die verwiesen werden kann.
+
+Wenn Sie Entitätseigenschaften in der Senkentransformation Spalten für Zuordnungsdatenflüsse zuordnen möchten, klicken Sie erst auf die Registerkarte „Zuordnen“ und dann auf „Schema importieren“. ADF liest den Entitätsverweis, auf den Sie in den Senkenoptionen verwiesen haben, und ermöglicht es Ihnen, das CDM-Zielschema zuzuordnen.
+
+![CDM-Senkeneinstellungen](media/data-flow/common-data-model-444.png "CDM-Zuordnung")
 
 > [!NOTE]
 >  Wenn Sie den Quelltyp „model.json“ verwenden, der aus Power BI- oder Power Platform-Datenflüssen stammt, können Fehler vom Typ „Korpuspfad ist NULL oder leer“ aus der Quelltransformation auftreten. Dies ist wahrscheinlich auf Formatierungsprobleme beim Speicherortpfad der Partition in der Datei „model.json“ zurückzuführen. Führen Sie zur Behebung die folgenden Schritte aus: 
@@ -95,7 +114,7 @@ In der folgenden Tabelle sind die von einer CDM-Senke unterstützten Eigenschaft
 
 | Name | BESCHREIBUNG | Erforderlich | Zulässige Werte | Datenflussskript-Eigenschaft |
 | ---- | ----------- | -------- | -------------- | ---------------- |
-| Format | Das Format muss `cdm` sein. | ja | `cdm` | format |
+| Format | Das Format muss `cdm` sein | ja | `cdm` | format |
 | Stammspeicherort: Container | Der Containername des CDM-Ordners. | ja | String | fileSystem |
 | Stammspeicherort: Ordnerpfad | Der Stammspeicherort des CDM-Ordners. | ja | String | folderPath |
 | Manifestdatei: Entitätspfad | Der Ordnerpfad der Entität innerhalb des Stammordners. | nein | String | entityPath |

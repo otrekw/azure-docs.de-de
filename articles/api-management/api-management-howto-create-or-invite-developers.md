@@ -1,6 +1,6 @@
 ---
-title: Verwalten von Benutzerkonten in Azure API Management | Microsoft Docs
-description: Erfahren Sie, wie Sie Benutzer in Azure API Management erstellen und einladen.
+title: Verwalten von Benutzerkonten in Azure API Management | Microsoft-Dokumentation
+description: In diesem Artikel erfahren Sie, wie Sie Benutzer in Azure API Management erstellen und einladen. Außerdem können Sie sich zusätzliche Ressourcen ansehen, die verwendet werden, nachdem ein Entwicklerkonto erstellt wurde.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 02/13/2018
 ms.author: apimpm
-ms.openlocfilehash: d8f7d7f7707add22d700421b229f6dbe725db465
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 9ec482af2878ba302a4658314723b96fb9a42999
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86250457"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87904886"
 ---
 # <a name="how-to-manage-user-accounts-in-azure-api-management"></a>Verwalten von Benutzerkonten in Azure API Management
 
@@ -27,7 +27,7 @@ In API Management sind Entwickler die Benutzer der APIs, die Sie mit API Managem
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Führen Sie Aufgaben in diesem Artikel aus: [Erstellen einer neuen Azure API Management-Dienstinstanz](get-started-create-service-instance.md)
+Absolvieren Sie die Aufgaben im folgenden Artikel: [Erstellen einer Azure API Management-Instanz](get-started-create-service-instance.md).
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 

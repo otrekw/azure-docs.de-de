@@ -9,25 +9,31 @@ ms.workload: identity
 ms.service: active-directory
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 04/02/2020
+ms.date: 08/04/2020
 ms.author: curtand
 ms.reviewer: kexia
-ms.openlocfilehash: 8d2e34bcfd180dfeb814dace2a496f3ac593c5bf
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 754d456f557b6c9500cdb64ee01a42124a18ab9c
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83738607"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88036673"
 ---
 # <a name="common-problems-with-two-factor-verification-and-your-work-or-school-account"></a>Allgemeine Probleme mit der zweistufigen Überprüfung in Verbindung mit Ihrem Geschäfts-, Schul- oder Unikonto
 
-Wenn Ihre Azure Active Directory (Azure AD)-Organisation die zweistufige Überprüfung aktiviert, ist für die Anmeldung bei Ihrem Geschäfts-, Schul- oder Unikonto eine Kombination aus Benutzernamen, Kennwort und einem mobilen Gerät oder Mobiltelefon erforderlich ist. Sie ist sicherer als nur ein Kennwort, da sie auf zwei Formen der Authentifizierung basiert: etwas, das Sie wissen, und etwas, das Sie bei sich tragen. Die zweistufige Überprüfung trägt dazu bei, Angriffe durch Hacker zu verhindern, die sich als Sie ausgeben. Denn auch wenn ein Hacker Ihr Kennwort weiß, ist die Wahrscheinlichkeit gering, dass er auch über Ihr Gerät verfügt.
+Ihre Azure Active Directory-Organisation (Azure AD) kann die zweistufige Überprüfung (2FV) aktivieren. Es gibt einige gängige Probleme im Zusammenhang mit der zweistufigen Überprüfung, die offenbar häufiger als gewünscht auftreten. Dieser Artikel wurde zusammengestellt, um die Lösungen für die häufigsten Probleme bereitzustellen.
+
+Wenn die zweistufige Überprüfung aktiviert ist, ist für Ihre Kontoanmeldedaten eine Kombination aus den folgenden Daten erforderlich:
+
+- Ihr Benutzername
+- Ihr Kennwort
+- mobiles Gerät oder Smartphone
+
+Die zweistufige Überprüfung ist sicherer als nur ein Kennwort, da sie etwas erfordert, das Sie _wissen_ und über das Sie _verfügen_. Kein Hacker verfügt über Ihr physisches Smartphone.
 
 <center>
 
 ![Bild konzeptioneller Authentifizierungsmethoden](../authentication/media/concept-mfa-howitworks/methods.png)</center>
-
-Es gibt einige gängige Probleme bei der zweistufigen Überprüfung, die offenbar häufiger auftreten, als uns lieb ist. Wir haben diesen Artikel zusammengestellt, um einige mögliche Lösungen für die häufigsten Probleme zu bieten.
 
 >[!Important]
 >Administratoren finden in der [Azure AD-Dokumentation](https://docs.microsoft.com/azure/active-directory) weitere Informationen zum Einrichten und Verwalten der Azure AD-Umgebung.
@@ -36,7 +42,7 @@ Es gibt einige gängige Probleme bei der zweistufigen Überprüfung, die offenba
 
 ## <a name="i-dont-have-my-mobile-device-with-me"></a>Ich habe mein mobiles Gerät nicht bei mir
 
-Das kommt vor. Sie haben Ihr mobiles Gerät zu Hause gelassen und können es jetzt nicht verwenden, um Ihre Identität zu bestätigen. Wenn Sie zuvor eine andere Methode zur Anmeldung bei Ihrem Konto hinzugefügt haben, z. B. Ihr Bürotelefon, sollten Sie diese Methode jetzt verwenden können. Wenn Sie keine zusätzliche Überprüfungsmethode hinzugefügt haben, müssen Sie sich an den Helpdesk Ihrer Organisation wenden und sich beim Zugriff auf Ihr Konto helfen lassen.
+Das kommt vor. Sie haben Ihr mobiles Gerät zu Hause gelassen und können es jetzt nicht verwenden, um Ihre Identität zu bestätigen. Vielleicht haben Sie zuvor eine alternative Methode für die Anmeldung bei Ihrem Konto hinzugefügt (z. B. Geschäftssmartphone). In diesem Fall können Sie diese alternative Methode jetzt verwenden. Wenn Sie keine zusätzliche Überprüfungsmethode hinzugefügt haben, können Sie den Helpdesk Ihrer Organisation um Unterstützung bitten.
 
 ### <a name="to-sign-in-to-your-work-or-school-account-using-another-verification-method"></a>So melden Sie sich mit einer anderen Überprüfungsmethode bei Ihrem Geschäfts-, Schul- oder Unikonto an
 
@@ -50,54 +56,61 @@ Das kommt vor. Sie haben Ihr mobiles Gerät zu Hause gelassen und können es jet
 
 ## <a name="i-lost-my-mobile-device-or-it-was-stolen"></a>Ich habe mein mobiles Gerät verloren, oder es wurde gestohlen
 
-Wenn Sie Ihr mobiles Gerät verloren haben oder es gestohlen wurde, können Sie sich entweder mit einer anderen Methode anmelden oder den Helpdesk Ihrer Organisation bitten, Ihre Einstellungen zu löschen. Es wird dringend empfohlen, den Helpdesk Ihrer Organisation zu informieren, wenn Sie Ihr Smartphone verloren haben oder es gestohlen wurde, damit Ihr Konto entsprechend aktualisiert werden kann. Nachdem Ihre Einstellungen gelöscht wurden, werden Sie bei der nächsten Anmeldung aufgefordert, sich für die [zweistufige Überprüfung zu registrieren](multi-factor-authentication-end-user-first-time.md).
+Wenn Sie Ihr mobiles Gerät verloren haben oder dies gestohlen wurde, können Sie eine der folgenden Aktionen ausführen:
 
-## <a name="im-not-getting-the-verification-code-sent-to-my-mobile-device"></a>Ich empfange nicht den Überprüfungscode, der an mein mobiles Gerät gesendet wurde
+- Anmelden mithilfe einer anderen Methode
+- Helpdesk Ihrer Organisation bitten, die Einstellungen zu löschen
 
-Das Nichtempfangen des Überprüfungscodes ist ein gängiges Problem, das typischerweise mit Ihrem Mobilgerät und seinen Einstellungen zusammenhängt. Sie können Folgendes versuchen:
+Es wird dringend empfohlen, den Helpdesk Ihrer Organisation zu informieren, wenn Sie Ihr Smartphone verloren haben oder es gestohlen wurde. Der Helpdesk kann dann die entsprechenden Updates für Ihr Konto vornehmen. Nachdem Ihre Einstellungen gelöscht wurden, werden Sie bei der nächsten Anmeldung aufgefordert, sich für die [zweistufige Überprüfung zu registrieren](multi-factor-authentication-end-user-first-time.md).
+
+## <a name="im-not-receiving-the-verification-code-sent-to-my-mobile-device"></a>Ich empfange den Prüfcode nicht, der an mein mobiles Gerät gesendet wurde
+
+Es ist ein häufiges Problem, den Prüfcode nicht zu erhalten. Das Problem bezieht sich in der Regel auf Ihr mobiles Gerät und dessen Einstellungen. Hier werden einige Aktionen beschrieben, die Sie ausprobieren können.
 
 Versuchen Sie Folgendes | Info und Anleitung
 --------- | ------------
-Starten Sie Ihr mobiles Gerät neu | Gelegentlich benötigt Ihr Gerät nur einen Neustart. Beim Neustart Ihres Geräts werden alle Hintergrundprozesse oder -dienste beendet, die derzeit ausgeführt werden und Probleme verursachen könnten. Außerdem werden die Kernkomponenten Ihres Geräts aktualisiert und neu gestartet, falls sie irgendwann einmal abgestürzt sein sollten.
+Starten Sie Ihr mobiles Gerät neu | Gelegentlich benötigt Ihr Gerät nur einen Neustart. Wenn Sie Ihr Gerät neu starten, werden alle Hintergrundprozesse und Dienste beendet. Beim Neustart werden auch die Kernkomponenten des Geräts heruntergefahren. Jeder Dienst oder jede Komponente wird aktualisiert, wenn Sie Ihr Gerät neu starten.
 Überprüfen Sie, ob Ihre Sicherheitsinformationen richtig sind | Stellen Sie sicher, dass die Informationen zu Ihrer Sicherheitsüberprüfungsmethode zutreffend sind, insbesondere Ihre Telefonnummern. Wenn Sie eine falsche Telefonnummer eingeben, landen alle Ihre Benachrichtigungen bei dieser falschen Nummer. Glücklicherweise kann dieser Benutzer mit den Benachrichtigungen nichts anfangen, aber es wird Ihnen auch nicht helfen, sich bei Ihrem Konto anzumelden. Um sicherzustellen, dass Ihre Informationen richtig sind, lesen Sie die Anweisungen im Artikel [Verwalten der Einstellungen für die zweistufige Überprüfung](multi-factor-authentication-end-user-manage-settings.md).
-Überprüfen Sie, ob Benachrichtigungen aktiviert sind | Vergewissern Sie sich, dass auf Ihrem Mobilgerät Benachrichtigungen aktiviert sind und dass Sie eine Benachrichtigungsmethode ausgewählt haben, die es ermöglicht, dass über Anrufe, Ihre Authentifizierungs-App und Ihre Messaging-App (für SMS) sichtbare Benachrichtigungen an Ihr Mobilgerät gesendet werden.
-Stellen Sie sicher, dass Sie über ein Gerätesignal und eine Internetverbindung verfügen | Vergewissern Sie sich, dass Ihre Telefonanrufe und SMS-Nachrichten zu Ihrem mobilen Gerät gelangen. Bitten Sie einen Freund, Sie anzurufen und Ihnen eine SMS zu schicken, um sicherzustellen, dass beides möglich ist. Falls nicht, überprüfen Sie zunächst, ob Ihr Mobilgerät eingeschaltet ist. Wenn Ihr Gerät eingeschaltet ist, Sie aber immer noch keinen Anruf bzw. keine SMS erhalten, liegt höchstwahrscheinlich ein Problem mit Ihrem Mobilfunknetz vor, weshalb Sie sich an Ihren Mobilfunkanbieter wenden müssen. Wenn Sie häufig signalbedingte Probleme haben, empfiehlt sich die Installation und Verwendung der [Microsoft Authenticator-App](user-help-auth-app-download-install.md) auf Ihrem mobilen Gerät. Diese App kann zufällige Sicherheitscodes für die Anmeldung generieren, ohne ein Mobilfunksignal oder eine Internetverbindung vorauszusetzen.
+Überprüfen Sie, ob Benachrichtigungen aktiviert sind | Stellen Sie sicher, dass die Benachrichtigungen auf Ihrem mobilen Gerät aktiviert sind. Vergewissern Sie sich, dass folgende Benachrichtigungsmodi zulässig sind: <br/><br/> &bull; Telefonanrufe <br/> &bull; Ihre Authentifizierungs-App <br/> &bull; Ihre Messaging-App <br/><br/> Stellen Sie sicher, dass diese Modi eine Warnung erstellen, die auf Ihrem Gerät _sichtbar_ ist.
+Stellen Sie sicher, dass Sie über ein Gerätesignal und eine Internetverbindung verfügen | Vergewissern Sie sich, dass Ihre Telefonanrufe und SMS-Nachrichten zu Ihrem mobilen Gerät gelangen. Bitten Sie einen Freund, Sie anzurufen und Ihnen eine SMS zu schicken, um sicherzustellen, dass beides möglich ist. Wenn Sie den Anruf oder die Textnachricht nicht erhalten, überprüfen Sie zunächst, ob Ihr mobiles Gerät eingeschaltet ist. Wenn Ihr Gerät eingeschaltet ist, Sie den Anruf oder die Nachricht aber noch immer nicht empfangen, liegt wahrscheinlich ein Problem mit Ihrem Netzwerk vor. Sie müssen Ihren Anbieter kontaktieren. Wenn Sie häufig signalbedingte Probleme haben, empfiehlt sich die Installation und Verwendung der [Microsoft Authenticator-App](user-help-auth-app-download-install.md) auf Ihrem mobilen Gerät. Diese App kann zufällige Sicherheitscodes für die Anmeldung generieren, ohne ein Mobilfunksignal oder eine Internetverbindung vorauszusetzen.
 Deaktivieren Sie „Nicht stören“ | Stellen Sie sicher, dass das Funktionsmerkmal **Nicht stören** für Ihr mobiles Gerät deaktiviert ist. Wenn dieses Funktionsmerkmal aktiviert ist, sind keine Benachrichtigungen auf Ihrem Mobilgerät möglich. In der Bedienungsanleitung Ihres Mobilgeräts finden Sie Anweisungen, wie Sie dieses Funktionsmerkmal deaktivieren können.
 Aufheben der Sperre von Telefonnummern | In den USA stammen Anrufe von Microsoft von folgenden Telefonnummern: + 1 (866) 539 4191, + 1 (855) 330 8653 und + 1 (877) 668 6536.
-Überprüfen Sie akkubezogene Einstellungen | Dies scheint auf den ersten Blick etwas seltsam zu sein, aber wenn Sie Ihre Akkuroptimierung so eingerichtet haben, dass weniger genutzte Anwendungen nicht im Hintergrund aktiv bleiben, ist Ihr Benachrichtigungssystem höchstwahrscheinlich betroffen. Um dieses Problem zu beheben, deaktivieren Sie die Akkuoptimierung für Ihre Authentifizierungs- und Messaging-App, und versuchen Sie dann, sich erneut bei Ihrem Konto anzumelden.
-Deaktivieren von Sicherheits-Apps von Drittanbietern | Wenn Sie über eine App verfügen, die Textnachrichten oder Telefonanrufe schützt, um unbekannte Anrufer zu minimieren, kann diese den Empfang des Prüfcodes verhindern. Versuchen Sie, alle Sicherheits-Apps von Drittanbietern auf Ihrem Telefon zu deaktivieren, und fordern Sie dann einen weiteren Prüfcode an.
+Überprüfen Sie akkubezogene Einstellungen | Der folgende Punkt scheint auf den ersten Blick etwas seltsam zu sein. Wenn Sie jedoch Ihre Akkuoptimierung so eingerichtet haben, dass weniger genutzte Anwendungen nicht im Hintergrund aktiv bleiben, ist Ihr Benachrichtigungssystem höchstwahrscheinlich betroffen. Deaktivieren Sie die Akkuoptimierung für Ihre Authentifizierungs- und Messaging-App, um dieses Problem zu beheben. Versuchen Sie dann noch mal, sich bei Ihrem Konto anzumelden.
+Deaktivieren von Sicherheits-Apps von Drittanbietern | Einige Sicherheits-Apps für Smartphones blockieren Textnachrichten und Anrufe von lästigen unbekannten Anrufern. Solche Apps verhindern möglicherweise, dass Ihr Smartphone den Prüfcode empfängt. Versuchen Sie, alle Sicherheits-Apps von Drittanbietern auf Ihrem Telefon zu deaktivieren, und fordern Sie dann einen weiteren Prüfcode an.
 
-## <a name="im-not-getting-prompted-for-my-second-verification-information"></a>Ich werde nicht zur Eingabe meiner zweiten Überprüfungsinformation aufgefordert
+## <a name="im-not-being-prompted-for-my-second-verification-information"></a>Ich werde nicht zur Eingabe meiner zweiten Überprüfungsinformation aufgefordert
 
-Wenn Sie sich mit Ihrem Benutzernamen und Kennwort bei Ihrem Geschäfts-, Schul- oder Unikonto angemeldet haben, aber nicht zur Eingabe der zusätzlichen Informationen zur Sicherheitsüberprüfung aufgefordert wurden, haben Sie möglicherweise Ihr Gerät noch nicht eingerichtet. Ihr Mobilgerät muss entsprechend eingerichtet sein, damit es mit Ihrer speziellen zusätzlichen Sicherheitsüberprüfungsmethode funktioniert. Um sicherzustellen, dass Sie Ihr Mobilgerät eingeschaltet haben und es für die Verwendung mit Ihrer Überprüfungsmethode verfügbar ist, lesen Sie den Artikel [Verwalten der Einstellungen für die zweistufige Überprüfung](multi-factor-authentication-end-user-manage-settings.md). Wenn Sie wissen, dass Sie Ihr Gerät oder Ihr Konto nicht eingerichtet haben, können Sie dies jetzt tun, indem Sie die Schritte im Artikel [Einrichten meines Kontos für die zweistufige Überprüfung](multi-factor-authentication-end-user-first-time.md) ausführen.
+Melden Sie sich mit Ihrem Benutzernamen und Kennwort bei Ihrem Geschäfts-, Schul- oder Unikonto an. Als Nächstes sollten Sie aufgefordert werden, zusätzliche Sicherheitsüberprüfungsinformationen anzugeben. Wenn Sie nicht dazu aufgefordert werden, haben Sie Ihr Gerät möglicherweise noch nicht für derartige Vorgänge eingerichtet. Ihr Mobilgerät muss entsprechend eingerichtet sein, damit es mit Ihrer speziellen zusätzlichen Sicherheitsüberprüfungsmethode funktioniert.
 
-## <a name="i-got-a-new-phone-number-and-i-want-to-add-it"></a>Ich habe eine neue Telefonnummer und möchte diese hinzufügen
+Lesen Sie die Informationen im Artikel [Ändern der zweistufigen Überprüfungsmethode und der Einstellungen](multi-factor-authentication-end-user-manage-settings.md), um sicherzustellen, dass Ihr mobiles Gerät eingeschaltet und verfügbar ist. Wenn Sie wissen, dass Sie Ihr Gerät oder Ihr Konto nicht eingerichtet haben, können Sie dies jetzt tun, indem Sie die Schritte im Artikel [Einrichten meines Kontos für die zweistufige Überprüfung](multi-factor-authentication-end-user-first-time.md) ausführen.
 
-Wenn Sie eine neue Telefonnummer haben, müssen Sie die Details Ihrer Sicherheitsüberprüfungsmethode aktualisieren, damit Überprüfungsaufforderungen an die richtige Stelle geleitet werden. Um die Überprüfungsmethode zu aktualisieren, führen Sie die Schritte im Abschnitt **Hinzufügen oder Ändern Ihrer Telefonnummer** des Artikels [Verwalten der Einstellungen für die zweistufige Überprüfung](multi-factor-authentication-end-user-manage-settings.md#add-or-change-your-phone-number) aus.
+## <a name="i-have-a-new-phone-number-and-i-want-to-add-it"></a>Ich habe eine neue Telefonnummer und möchte diese hinzufügen
 
-## <a name="i-got-a-new-mobile-device-and-i-want-to-add-it"></a>Ich habe ein neues mobiles Gerät und möchte dieses hinzufügen
+Wenn Sie eine neue Telefonnummer haben, müssen Sie die Details der Sicherheitsüberprüfungsmethode aktualisieren. Auf diese Weise werden die Überprüfungsanforderungen an den richtigen Empfänger gesendet. Führen Sie die Schritte im Abschnitt **Hinzufügen oder Ändern Ihrer Telefonnummer** des Artikels [Ändern der zweistufigen Überprüfungsmethode und der Einstellungen](multi-factor-authentication-end-user-manage-settings.md#add-or-change-your-phone-number) aus, um die Überprüfungsmethode zu aktualisieren.
 
-Wenn Sie ein neues Mobilgerät haben, müssen Sie es so einrichten, dass es mit der zweistufigen Überprüfung funktioniert. Dies ist ein mehrstufiger Prozess:
+## <a name="i-have-a-new-mobile-device-and-i-want-to-add-it"></a>Ich habe ein neues mobiles Gerät und möchte dieses hinzufügen
 
-1. Richten Sie Ihr Gerät für Ihr Geschäfts-, Schul- oder Unikonto ein, indem Sie die Schritte im Artikel [Einrichten meines Kontos für die zweistufige Überprüfung](multi-factor-authentication-end-user-first-time.md) ausführen.
+Wenn Sie über ein neues mobiles Gerät verfügen, müssen Sie es so einrichten, dass es mit der zweistufigen Überprüfung funktioniert. Dies ist ein mehrstufiger Prozess:
 
-1. Aktualisieren Sie Ihre Konto- und Geräteinformationen auf der Seite **Zusätzliche Sicherheitsüberprüfung**, indem Sie Ihr altes Gerät löschen und Ihr neues hinzufügen. Weitere Informationen finden Sie im Artikel [Verwalten der Einstellungen für die zweistufige Überprüfung](multi-factor-authentication-end-user-manage-settings.md).
+1. Richten Sie Ihr Gerät für Ihr Konto ein, indem Sie die Schritte im Artikel [Worum handelt es sich bei der Seite „Zusätzliche Sicherheitsüberprüfung“?](multi-factor-authentication-end-user-first-time.md) ausführen.
+
+1. Aktualisieren Sie Ihre Konto- und Geräteinformationen auf der Seite **Zusätzliche Sicherheitsüberprüfung**. Führen Sie das Update aus, indem Sie das alte Gerät löschen und das neue Gerät hinzufügen. Weitere Informationen finden Sie im Artikel [Verwalten der Einstellungen für die zweistufige Überprüfung](multi-factor-authentication-end-user-manage-settings.md).
 
 Optionale Schritte:
 
-- Sie können die Microsoft Authenticator-App auf Ihr Mobilgerät herunterladen, dort installieren und einrichten, indem Sie die Schritte im Artikel [Herunterladen und Installieren der Microsoft Authenticator-App](user-help-auth-app-download-install.md) ausführen.
+- Installieren Sie die Microsoft Authenticator-App auf Ihrem mobilen Gerät, und richten Sie sie ein. Installieren Sie die App, indem Sie die Schritte im Artikel [Herunterladen und Installieren der Microsoft Authenticator-App](user-help-auth-app-download-install.md) ausführen.
 
-- Aktivieren Sie die zweistufige Überprüfung auf Ihren vertrauenswürdigen Geräten durch Ausführen der Schritte in **Erneutes Anfordern der zweistufigen Überprüfung auf einem als vertrauenswürdig markierten Gerät** des Artikels [Verwalten der Einstellungen für die zweistufige Überprüfung](multi-factor-authentication-end-user-manage-settings.md#turn-on-two-factor-verification-prompts-on-a-trusted-device).
+- Aktivieren Sie die zweistufige Überprüfung (2FV) für Ihre vertrauenswürdigen Geräte. Aktivieren Sie die zweistufige Überprüfung durch Ausführen der Schritte im Abschnitt **Aktivieren von Aufforderungen der zweistufigen Überprüfung auf einem vertrauenswürdigen Gerät** des Artikels [Ändern der zweistufigen Überprüfungsmethode und der Einstellungen](multi-factor-authentication-end-user-manage-settings.md#turn-on-two-factor-verification-prompts-on-a-trusted-device).
 
 ## <a name="im-having-problems-signing-in-on-my-mobile-device-while-traveling"></a>Ich habe auf Reisen Probleme bei der Anmeldung bei meinem mobilen Gerät
 
-Möglicherweise ist es schwieriger, eine Überprüfungsmethode für mobile Geräte wie z. B. SMS zu nutzen, wenn Sie im Ausland sind. Es ist auch möglich, dass Ihr mobiles Gerät Roaminggebühren verursacht. Für diese Situation empfehlen wir Ihnen, die Microsoft Authenticator-App zu verwenden, die die Möglichkeit bietet, sich mit einem WLAN-Hotspot zu verbinden. Weitere Informationen zum Herunterladen, Installieren und Einrichten der Microsoft Authenticator-App auf Ihrem Mobilgerät finden Sie im Artikel [Herunterladen und Installieren der Microsoft Authenticator-App](user-help-auth-app-download-install.md).
+Möglicherweise ist es schwieriger, eine Überprüfungsmethode für mobile Geräte wie z. B. SMS zu nutzen, wenn Sie im Ausland sind. Es ist auch möglich, dass Ihr mobiles Gerät Roaminggebühren verursacht. Für diese Situation empfehlen wir Ihnen, die Microsoft Authenticator-App zu verwenden, die die Möglichkeit bietet, sich mit einem WLAN-Hotspot zu verbinden. Weitere Informationen zum Einrichten der Microsoft Authenticator-App auf Ihrem mobilen Gerät finden Sie im Artikel [Herunterladen und Installieren der Microsoft Authenticator-App](user-help-auth-app-download-install.md).
 
 ## <a name="i-cant-get-my-app-passwords-to-work"></a>Meine App-Kennwörter funktionieren nicht
 
-App-Kennwörter ersetzen normale Kennwörter für ältere Desktopanwendungen, die die zweistufige Überprüfung nicht unterstützen. Stellen Sie zunächst sicher, dass Sie das Kennwort korrekt eingegeben haben. Wenn das Problem dadurch nicht behoben wird, versuchen Sie, ein neues Kennwort für die App zu erstellen, indem Sie die Schritte im Abschnitt **Erstellen und Löschen von App-Kennwörtern im Portal „Meine Apps“** des Artikels [Verwalten von App-Kennwörtern für die zweistufige Überprüfung](multi-factor-authentication-end-user-app-passwords.md#create-and-delete-app-passwords-from-the-additional-security-verification-page) ausführen.
+App-Kennwörter ersetzen normale Kennwörter für ältere Desktopanwendungen, die die zweistufige Überprüfung nicht unterstützen. Stellen Sie zunächst sicher, dass Sie das Kennwort korrekt eingegeben haben. Wenn das Problem dadurch nicht behoben wird, versuchen Sie, ein neues Kennwort für die App zu erstellen. Führen Sie hierzu die Schritte im Abschnitt **Erstellen und Löschen von App-Kennwörtern auf der Seite „Zusätzliche Sicherheitsüberprüfung“** des Artikels [Verwalten von App-Kennwörtern für die zweistufige Überprüfung](multi-factor-authentication-end-user-app-passwords.md#create-and-delete-app-passwords-from-the-additional-security-verification-page) aus.
 
-## <a name="i-cant-turn-two-factor-verification-off"></a>Ich kann die zweistufige Überprüfung nicht deaktivieren
+## <a name="i-cant-turn-off-two-factor-verification"></a>Ich kann die zweistufige Überprüfung nicht deaktivieren
 
 Wenn Sie die zweistufige Überprüfung mit Ihrem Geschäfts-, Schul- oder Unikonto (z. B. alain@contoso.com) verwenden, bedeutet dies höchstwahrscheinlich, dass Ihre Organisation entschieden hat, dass Sie dieses zusätzliche Sicherheitsfeature verwenden müssen. Da Ihre Organisation die Verwendung des Features vorgeschrieben hat, kann es nicht individuell deaktiviert werden. Wenn Sie jedoch die zweistufige Überprüfung mit einem persönlichen Konto wie alain@outlook.comverwenden, können Sie das Feature aktivieren und deaktivieren. Anweisungen zum Steuern der zweistufigen Überprüfung für Ihre persönlichen Konten finden Sie unter [Aktivieren oder Deaktivieren der Überprüfung in zwei Schritten für Ihr Microsoft-Konto](https://support.microsoft.com/help/4028586/microsoft-account-turning-two-step-verification-on-or-off).
 

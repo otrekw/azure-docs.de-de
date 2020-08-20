@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 07/10/2020
-ms.openlocfilehash: 1ff366e24adb82a0d7d4660d4afaffa0bbca0b3c
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 737e2fc682e630775b763dd2f22f904d895a120f
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87328018"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87921265"
 ---
 # <a name="build-the-landing-page-for-your-transactable-saas-offer-in-the-commercial-marketplace"></a>Erstellen der Landing Page für Ihr transaktionsfähiges SaaS-Angebot im kommerziellen Marketplace
 
@@ -56,7 +56,7 @@ Befolgen Sie zunächst die Anweisungen zum [Registrieren einer neuen Anwendung](
 
 [Konfigurieren Sie Ihre neue Anwendung für den Zugriff auf Web-APIs](https://docs.microsoft.com/azure/active-directory/develop/quickstart-configure-app-access-web-apis), wenn Sie beabsichtigen, Abfragen an die Microsoft Graph-API zu senden. Bei der Auswahl der API-Berechtigungen für diese Anwendung ist die Standardeinstellung **User.Read** ausreichend, um grundlegende Informationen zum Käufer zu erfassen. Dadurch kann das Onboarding reibungslos und automatisiert durchgeführt werden. Legen Sie keine API-Berechtigungen vom Typ **Administratoreinwilligung erforderlich** als erforderlich fest. Anderenfalls kann Ihre Landing Page nur von Benutzern besucht werden, die Administrator sind.
 
-Wenn Sie im Rahmen Ihres Onboarding- oder Bereitstellungsvorgangs erhöhte Rechte benötigen, verwenden Sie gegebenenfalls die [inkrementelle Einwilligung](https://docs.microsoft.com/azure/active-directory/develop/quickstart-configure-app-access-web-apis) von Azure AD. Bei Verwendung dieser Funktion sind alle Käufer, die vom Marketplace weitergeleitet werden, anfänglich in der Lage, mit der Landing Page zu interagieren.
+Wenn Sie im Rahmen Ihres Onboarding- oder Bereitstellungsvorgangs erhöhte Rechte benötigen, verwenden Sie gegebenenfalls die [inkrementelle Einwilligung](https://aka.ms/incremental-consent) von Azure AD. Bei Verwendung dieser Funktion sind alle Käufer, die vom Marketplace weitergeleitet werden, anfänglich in der Lage, mit der Landing Page zu interagieren.
 
 ## <a name="use-a-code-sample-as-a-starting-point"></a>Verwenden eines Codebeispiels als Ausgangspunkt
 
@@ -90,16 +90,7 @@ Zur Authentifizierung Ihrer Anwendung mit den SaaS-Fulfillment-APIs benötigen S
 
 ### <a name="call-the-resolve-endpoint"></a>Aufrufen des Auflösungsendpunkts
 
-Die SaaS-Fulfillment-APIs implementieren den [Auflösungsendpunkt](./partner-center-portal/pc-saas-fulfillment-api-v2.md#resolve-a-purchased-subscription), der aufgerufen werden kann, um die Gültigkeit des Marketplace-Tokens zu bestätigen und Informationen zum Abonnement zurückzugeben. Dazu zählen u. a. die in der nachfolgenden Tabelle gezeigten Werte.
-
-| Wert | BESCHREIBUNG |
-| ------------ | ------------- |
-| Id | Eindeutiger Bezeichner (GUID) für dieses Abonnement. Sie benötigen diesen Wert in zukünftigen Aufrufen der SaaS-Fulfillment-APIs. |
-| subscriptionName | Name des Abonnements, der beim Hinzufügen des Angebots zum Partner Center festgelegt wurde. |
-| offerId | Bezeichner für das jeweilige Angebot (wird beim Hinzufügen des Angebots festgelegt). |
-| planId | Bezeichner für den jeweiligen Tarif des Angebots (wird beim Hinzufügen des Angebots festgelegt). |
-| Menge | Die vom Käufer während des Kaufvorgangs eingegebene Menge. |
-|||
+Die SaaS-Fulfillment-APIs implementieren den [Auflösungsendpunkt](./partner-center-portal/pc-saas-fulfillment-api-v2.md#resolve-a-purchased-subscription), der aufgerufen werden kann, um die Gültigkeit des Marketplace-Tokens zu bestätigen und Informationen zum Abonnement zurückzugeben.
 
 ## <a name="read-information-from-claims-encoded-in-the-id-token"></a>Lesen von Informationen aus Ansprüchen, die im ID-Token codiert sind
 
@@ -111,7 +102,7 @@ Im Rahmen des [OpenID Connect](https://docs.microsoft.com/azure/active-directory
 | preferred_username | Primärer Benutzername des Benutzers, der die App aufruft. Dabei kann es sich um die E-Mail-Adresse, die Telefonnummer oder einen anderen Bezeichner handeln. |
 | email | E-Mail-Adresse des Benutzers. Dieses Feld kann leer sein. |
 | name | Ein lesbarer Wert, der den Antragsteller des Tokens angibt. In diesem Fall ist dies der Name des Käufers. |
-| oid | Bezeichner im Microsoft-Identitätssystem, der den Benutzer eindeutig für verschiedene Anwendungen identifiziert. Microsoft Graph gibt diesen Wert als ID-Eigenschaft für ein Benutzerkonto zurück. |
+| oid | Bezeichner im Microsoft-Identitätssystem, der den Benutzer anwendungsübergreifend eindeutig identifiziert. Der Microsoft Graph gibt diesen Wert als ID-Eigenschaft für ein Benutzerkonto zurück. |
 | tid | Bezeichner, der den Azure AD-Mandanten darstellt, von dem der Benutzer stammt. Im Fall einer MSA-Identität lautet dieser Wert immer ``9188040d-6c67-4c5b-b112-36a304b66dad``. Weitere Informationen finden Sie im Hinweis des nächsten Abschnitts: Verwenden der Microsoft Graph-API |
 | sub | Eindeutiger Bezeichner des Benutzers in der jeweiligen Anwendung. |
 |||
@@ -140,4 +131,4 @@ Die meisten Apps, die in Azure AD registriert sind, erteilen delegierte Berecht
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Erstellen eines neuen SaaS-Angebots im kommerziellen Marketplace](./partner-center-portal/create-new-saas-offer.md)
+- [Erstellen eines SaaS-Angebots im kommerziellen Marketplace](./partner-center-portal/create-new-saas-offer.md)

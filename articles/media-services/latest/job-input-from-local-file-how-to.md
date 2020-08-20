@@ -3,20 +3,20 @@ title: Erstellen einer Azure Media Services-Auftragseingabe aus einer lokalen Da
 description: In diesem Artikel wird gezeigt, wie Sie eine Azure Media Services-Auftragseingabe aus einer lokalen Datei erstellen.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 03/26/2020
-ms.author: juliako
-ms.openlocfilehash: a635a75a64db59fc56c6890f79af967a58735853
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/18/2020
+ms.author: inhenkel
+ms.openlocfilehash: 4d7e6d9daa5d30c5cbf5b198a147564d0c05c074
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87001127"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607224"
 ---
 # <a name="create-a-job-input-from-a-local-file"></a>Erstellen einer Auftragseingabe aus einer lokalen Datei
 
@@ -25,7 +25,6 @@ Wenn Sie in Media Services v3 Aufträge zur Verarbeitung Ihrer Videos übermitte
 ## <a name="prerequisites"></a>Voraussetzungen 
 
 * [Erstellen Sie ein Media Services-Konto.](./create-account-howto.md)
-* Informieren Sie sich über das [Verwalten von Ressourcen](manage-asset-concept.md).
 
 ## <a name="net-sample"></a>.NET-Beispiel
 

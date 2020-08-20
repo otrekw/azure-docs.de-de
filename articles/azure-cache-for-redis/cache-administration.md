@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 07/05/2017
 ms.author: yegu
-ms.openlocfilehash: 224436c155f1133621abede21878b49ebc9b3331
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: c9da97607961a7d701851c6892393cdf537b9a32
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86185205"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008031"
 ---
 # <a name="how-to-administer-azure-cache-for-redis"></a>Verwalten von Azure Cache for Redis
 In diesem Thema erfahren Sie, wie Verwaltungsaufgaben wie das [Neustarten](#reboot) und [Planen von Updates](#schedule-updates) für Ihre Azure Cache for Redis-Instanzen erfolgen.
@@ -98,5 +98,7 @@ Ja, Sie können Ihre geplanten Updates mit den folgenden PowerShell-Cmdlets verw
 * [Remove-AzRedisCachePatchSchedule](/powershell/module/az.rediscache/remove-azrediscachepatchschedule)
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Entdecken Sie weitere Features des [Azure Cache for Redis-Premium-Tarifs](cache-premium-tier-intro.md).
+Erfahren Sie mehr über Azure Cache for Redis-Features.
+
+* [Azure Cache for Redis-Dienstebenen](cache-overview.md#service-tiers)
 

@@ -10,19 +10,19 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 07/17/2020
-ms.custom: how-to, tracking-python
-ms.openlocfilehash: 63e2ba93ecdc1131be6bd291fe436b42a2a2d19c
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.custom: how-to, devx-track-python
+ms.openlocfilehash: 990a2d5279c796f354055328e6968ea705ea10b2
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87407029"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87873635"
 ---
-# <a name="use-workspace-behind-azure-firewall-for-azure-machine-learning"></a>Verwenden des Arbeitsbereichs hinter Azure Firewall für Azure Machine Learning
+# <a name="use-workspace-behind-a-firewall-for-azure-machine-learning"></a>Verwenden des Arbeitsbereichs hinter einer Firewall für Azure Machine Learning
 
-In diesem Artikel erfahren Sie, wie Sie Azure Firewall für die Verwendung mit einem Azure Machine Learning-Arbeitsbereich konfigurieren.
+In diesem Artikel erfahren Sie, wie Sie Azure Firewall konfigurieren, um den Zugriff auf Ihren Azure Machine Learning-Arbeitsbereich und das öffentliche Internet zu steuern.   Weitere Informationen zum Schützen von Azure Machine Learning finden Sie unter [Unternehmenssicherheit für Azure Machine Learning](concept-enterprise-security.md).
 
-Azure Firewall kann verwendet werden, um den Zugriff auf Ihren Azure Machine Learning-Arbeitsbereich und das öffentliche Internet zu steuern. Wenn sie nicht ordnungsgemäß konfiguriert ist, kann die Firewall Probleme bei der Verwendung Ihres Arbeitsbereichs verursachen. Es gibt eine Vielzahl von Hostnamen, die alle vom Azure Machine Learning-Arbeitsbereich verwendet werden; dies wird im vorliegenden Artikel beschrieben.
+Die Informationen in diesem Dokument basieren zwar auf [Azure Firewall](../firewall/tutorial-firewall-deploy-portal.md), können aber auch auf andere Firewallprodukte angewendet werden. Wenn Sie Fragen dazu haben, wie Sie die Kommunikation über die Firewall zulassen, lesen Sie die Dokumentation für die von Ihnen verwendete Firewall.
 
 ## <a name="network-rules"></a>Netzwerkregeln
 
@@ -31,9 +31,11 @@ Erstellen Sie in Ihrer Firewall eine Netzwerkregel, die Datenverkehr zu und von 
 > [!TIP]
 > Legen Sie beim Hinzufügen der Netzwerkregel das __Protokoll__ auf „Beliebig“ und die Ports auf `*` fest.
 >
-> Weitere Informationen zum Konfigurieren von Azure Firewall finden Sie unter [Bereitstellen und Konfigurieren von Azure Firewall](../firewall/tutorial-firewall-deploy-portal.md#configure-a-network-rule).
+> Weitere Informationen zum Konfigurieren von Azure Firewall finden Sie unter [Bereitstellen und Konfigurieren von Azure Firewall](../firewall/tutorial-firewall-deploy-portal.md#configure-an-application-rule).
 
 ## <a name="microsoft-hosts"></a>Microsoft-Hosts
+
+Wenn sie nicht ordnungsgemäß konfiguriert ist, kann die Firewall Probleme bei der Verwendung Ihres Arbeitsbereichs verursachen. Es gibt eine Vielzahl von Hostnamen, die vom Azure Machine Learning-Arbeitsbereich verwendet werden.
 
 Die Hosts in diesem Abschnitt befinden sich im Besitz von Microsoft und stellen Dienste bereit, die für die ordnungsgemäße Funktionsweise Ihres Arbeitsbereichs erforderlich sind.
 
@@ -53,6 +55,8 @@ Die Hosts in diesem Abschnitt befinden sich im Besitz von Microsoft und stellen 
 | **vault.azure.net** | Azure-Schlüsseltresor |
 | **azurecr.io** | Azure Container Registry |
 | **mcr.microsoft.com** | Microsoft Container Registry für Basis-Docker-Images |
+| **your-acr-server-name.azurecr.io** | Nur erforderlich, wenn sich Ihre Azure Container Registry-Instanz hinter dem virtuellen Netzwerk befindet – in dieser Konfiguration wird ein privater Link von der Microsoft-Umgebung zur ACR-Instanz in Ihrem Abonnement erstellt. Verwenden Sie den ACR-Servernamen für Ihren Azure Machine Learning-Arbeitsbereich. |
+| **\*.notebooks.azure.net** | Wird von den Notebooks in Azure Machine Learning Studio benötigt |
 
 ## <a name="python-hosts"></a>Python-Hosts
 
@@ -75,7 +79,7 @@ Die Hosts in diesem Abschnitt werden zum Installieren von R-Paketen verwendet. S
 | ---- | ---- |
 | **cloud.r-project.org** | Beim Installieren von CRAN-Paketen verwendet |
 
-Nächste Schritte
+## <a name="next-steps"></a>Nächste Schritte
 
-* [[Bereitstellen und Konfigurieren von Azure Firewall](../firewall/tutorial-firewall-deploy-portal.md)]
+* [Tutorial: Bereitstellen und Konfigurieren von Azure Firewall über das Azure-Portal](../firewall/tutorial-firewall-deploy-portal.md)
 * [Verwenden einer Machine Learning Compute-Instanz](how-to-enable-virtual-network.md)

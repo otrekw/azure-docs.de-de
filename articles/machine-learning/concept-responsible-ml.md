@@ -1,36 +1,39 @@
 ---
 title: Verantwortungsvolles maschinelles Lernen (ML) (Vorschauversion)
 titleSuffix: Azure Machine Learning
-description: Erfahren Sie, was verantwortungsvolles ML ist und wie es in Azure Machine Learning eingesetzt werden kann.
+description: In diesem Artikel erfahren Sie, was verantwortungsvolles maschinelles Lernen ist und wie es in Azure Machine Learning eingesetzt werden kann.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.author: luquinta
 author: luisquintanilla
-ms.date: 07/09/2020
-ms.openlocfilehash: 4f14d4a9207b3bd0ba242973443b8e756527fd70
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.date: 08/05/2020
+ms.openlocfilehash: 689b90fc1f45faad72640f47e5eebe936d2dc8b7
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86201930"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87829389"
 ---
-# <a name="responsible-machine-learning-ml-preview"></a>Verantwortungsvolles maschinelles Lernen (ML) (Vorschauversion)
+# <a name="what-is-responsible-machine-learning-preview"></a>Was ist verantwortungsvolles maschinelles Lernen? (Vorschauversion)
 
-In diesem Artikel erfahren Sie, was verantwortungsvolles ML ist, und wie Sie es mit Azure Machine Learning in die Praxis umsetzen können.
+In diesem Artikel erfahren Sie, was verantwortungsvolles maschinelles Lernen (ML) ist, und wie Sie es mit Azure Machine Learning in die Praxis umsetzen können.
 
-Während der gesamten Entwicklung und Nutzung von KI-Systemen muss Vertrauen im Mittelpunkt stehen. Vertrauen in die Plattform, den Prozess und die Modelle. Bei Microsoft umfasst verantwortungsvolles ML die folgenden Werte und Prinzipien:
+## <a name="responsible-machine-learning-principles"></a>Prinzipien des verantwortungsvollen maschinellen Lernens
+
+Während der gesamten Entwicklung und Nutzung von KI-Systemen muss Vertrauen im Mittelpunkt stehen. Vertrauen in die Plattform, den Prozess und die Modelle. Bei Microsoft basiert das verantwortungsvolle maschinelle Lernen auf den folgenden Werten und Prinzipien:
 
 - Verstehen der Machine Learning-Modelle
   - Interpretieren und Erläutern des Modellverhaltens
   - Bewerten und Minimieren der Modellungerechtigkeiten
 - Schützen von Personen und ihren Daten
-  - Verhindern der Offenlegung von Daten mit differenziellem Datenschutz  
+  - Verhindern der Offenlegung von Daten mit differenziellem Datenschutz
+  - Arbeiten mit verschlüsselten Daten mithilfe der homomorphen Verschlüsselung
 - Steuern des End-to-End-Machine Learning-Prozesses
   - Dokumentieren des Machine Learning-Lebenszyklus mit Datenblättern
 
-:::image type="content" source="media/concept-responsible-ml/responsible-ml-pillars.png" alt-text="Säulen des verantwortungsvollen maschinellen Lernens":::
+:::image type="content" source="media/concept-responsible-ml/responsible-ml-pillars.png" alt-text="Säulen des verantwortungsvollen maschinellen Lernens: Interpretierbarkeit, Differential Privacy, homomorphe Verschlüsselung, Überwachungsprotokoll –Azure Machine Learning":::
 
 Da sich künstliche Intelligenz und autonome Systeme immer mehr in das Gefüge der Gesellschaft integrieren, ist es wichtig, proaktiv Maßnahmen zu ergreifen, um den unbeabsichtigten Folgen dieser Technologien vorzugreifen und sie zu minimieren.
 
@@ -40,7 +43,7 @@ Schwer zu erklärende oder Opakbox-Systeme können problematisch sein, da sie Pr
 
 Für die Erstellung interpretierbarer KI-Systeme verwenden Sie [InterpretML](https://github.com/interpretml/interpret), ein von Microsoft erstelltes Open-Source-Paket. [InterpretML kann innerhalb von Azure Machine Learning](how-to-machine-learning-interpretability.md) verwendet werden, um [Ihre Machine Learning-Modelle zu interpretieren und zu erklären](how-to-machine-learning-interpretability-aml.md), einschließlich [automatisierter Machine Learning-Modelle](how-to-machine-learning-interpretability-automl.md).
 
-## <a name="assess-and-mitigate-model-unfairness"></a>Bewerten und Minimieren der Modellungerechtigkeiten
+## <a name="mitigate-fairness-in-machine-learning-models"></a>Erhöhen der Fairness von Machine Learning-Modellen
 
 Da KI-Systeme immer mehr in die alltäglichen Entscheidungen der Gesellschaft einbezogen werden, ist es von äußerster Wichtigkeit, dass diese Systeme bestmöglich funktionieren, um faire Ergebnisse für alle zu erzielen.
 
@@ -64,6 +67,16 @@ Das Implementieren differenzieller privater Systeme ist schwierig. [WhiteNoise](
 > [!NOTE]
 > Beachten Sie, dass wir das Toolkit umbenennen und den neuen Namen in den nächsten Wochen einführen werden. 
 
+## <a name="work-on-encrypted-data-with-homomorphic-encryption"></a>Arbeiten mit verschlüsselten Daten mithilfe der homomorphen Verschlüsselung
+
+In herkömmlichen Cloudspeicher- und Computelösungen muss die Cloud über einen unverschlüsselten Zugriff auf Kundendaten verfügen, um mit diesen Berechnungen durchzuführen. Dieser Zugriff macht die Daten für Cloudanbieter verfügbar. Datenschutz erfordert Zugriffssteuerungsrichtlinien, die vom Cloudanbieter durchgesetzt und vom Kunden als vertrauenswürdig eingestuft werden.
+
+Die homomorphe Verschlüsselung ermöglicht es, Berechnungen mit verschlüsselten Daten durchzuführen, ohne Zugriff auf einen geheimen Schlüssel (Entschlüsselung) zu benötigen. Die Ergebnisse der Berechnungen sind verschlüsselt und können nur vom Besitzer des geheimen Schlüssels offengelegt werden. Dank der homomorphen Verschlüsselung erhalten Cloudanbieter zu keinem Zeitpunkt unverschlüsselten Zugriff auf die Daten, die bei ihnen gespeichert sind und mit denen sie Berechnungen ausführen. Berechnungen werden direkt mit den verschlüsselten Daten ausgeführt. Der Datenschutz basiert auf dieser hochmodernen Kryptografie, und der Datenbesitzer kontrolliert, welche Informationen freigegeben werden. Weitere Informationen zur homomorphen Verschlüsselung bei Microsoft finden Sie unter [Microsoft Research](https://www.microsoft.com/research/project/homomorphic-encryption/).
+
+Wenn Sie die homomorphe Verschlüsselung in Ihrer Azure Machine Learning-Instanz einführen möchten, verwenden Sie [encrypted-inference](https://pypi.org/project/encrypted-inference/)-Python-Bindungen für [Microsoft SEAL](https://github.com/microsoft/SEAL). Die Microsoft SEAL ist eine Bibliothek für homomorphe Verschlüsselung und ermöglicht Additionen und Multiplikationen mit verschlüsselten ganzen oder reellen Zahlen. Weitere Informationen zu Microsoft SEAL finden Sie im [Azure Architecture Center](https://docs.microsoft.com/azure/architecture/solution-ideas/articles/homomorphic-encryption-seal) oder auf der [Microsoft Research-Projektseite](https://www.microsoft.com/research/project/microsoft-seal/).
+
+Das verlinkte Beispiel zeigt, [wie ein verschlüsselter rückschließender Webdienst in Azure Machine Learning bereitgestellt wird](how-to-homomorphic-encryption-seal.md).
+
 ## <a name="document-the-machine-learning-lifecycle-with-datasheets"></a>Dokumentieren des Machine Learning-Lebenszyklus mit Datenblättern
 
 Das Dokumentieren der richtigen Informationen im Machine Learning-Prozess ist der Schlüssel zu verantwortungsvollen Entscheidungen in jeder Phase. Datenblätter sind eine Möglichkeit zum Dokumentieren von Machine Learning-Ressourcen, die im Rahmen des Machine Learning-Lebenszyklus verwendet und erstellt werden.
@@ -83,5 +96,5 @@ Im folgenden Beispiel erfahren Sie, wie das Azure Machine Learning SDK zur Imple
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
-- Verwenden Sie homomorphe Verschlüsselung zum [Bereitstellen eines Webdiensts für verschlüsselte Rückschlüsse](how-to-homomorphic-encryption-seal.md).
+- Weitere Informationen zu den bewährten Methoden finden Sie im [Toolkit für verantwortungsvolle Innovationen](https://docs.microsoft.com/azure/architecture/guide/responsible-innovation/).
 - Erfahren Sie mehr über die [ABOUT ML](https://www.partnershiponai.org/about-ml/)-Richtlinien zum Dokumentieren von Machine Learning-Systemen.

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
-ms.date: 06/29/2020
+ms.date: 08/06/2020
 ms.author: swmachan
-ms.openlocfilehash: d9fda476a184731cd00317facbeceaf7bdf55edf
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 9ce2ea7da562372e5c1c25d4c0fe9ab410b02a1d
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85561469"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87903406"
 ---
 # <a name="request-limits-for-translator"></a>Anforderungsgrenzwerte für Translator
 
@@ -23,18 +23,18 @@ In diesem Artikel sind die Drosselungsgrenzwerte für Translator aufgeführt. Zu
 
 ## <a name="character-and-array-limits-per-request"></a>Zeichen- und Arraygrenzwerte pro Anforderung
 
-Jede Übersetzungsanforderung ist auf 5.000 Zeichen in allen von Ihnen verwendeten Zielsprachen beschränkt. Beispiel: Das Senden einer Übersetzungsanforderung von 1.500 Zeichen für die Übersetzung in drei verschiedene Sprachen ergibt eine Anforderungsgröße von 1.500 · 3 = 4.500 Zeichen. Dies entspricht dem Anforderungsgrenzwert. Die Abrechnung erfolgt nach der Anzahl der Zeichen, nicht nach der Anzahl der Anforderungen. Es wird empfohlen, kürzere Anforderungen zu senden.
+Jede Übersetzungsanforderung ist auf 10.000 Zeichen in allen von Ihnen verwendeten Zielsprachen beschränkt. Beispiel: Das Senden einer Übersetzungsanforderung von 3.000 Zeichen für die Übersetzung in drei verschiedene Sprachen ergibt eine Anforderungsgröße von 3.000 × 3 = 9.000 Zeichen. Dies liegt unterhalb des Anforderungsgrenzwerts. Die Abrechnung erfolgt nach der Anzahl der Zeichen, nicht nach der Anzahl der Anforderungen. Es wird empfohlen, kürzere Anforderungen zu senden.
 
 In der folgenden Tabelle sind Arrayelement- und Zeichengrenzwerte für jeden Vorgang von Translator aufgeführt.
 
 | Vorgang | Maximale Größe des Arrayelements |    Maximale Anzahl von Arrayelementen |    Maximale Anforderungsgröße (Zeichen) |
 |:----|:----|:----|:----|
-| Translate | 5\.000    | 100    | 5\.000 |
-| Transliterate | 5\.000    | 10    | 5\.000 |
-| Detect | 10.000 |    100 |    50.000 |
-| BreakSentence | 10.000    | 100 |    50.000 |
-| Wörterbuchsuche| 100 |    10    | 1\.000 |
-| Wörterbuchbeispiele | 100 für Text und 100 für Übersetzung (200 insgesamt)| 10|    2\.000 |
+| Translate | 10.000    | 100   | 10.000 |
+| Transliterate | 5\.000 | 10    | 5\.000 |
+| Detect | 10.000 | 100 |   50.000 |
+| BreakSentence | 50.000    | 100 | 50.000 |
+| Wörterbuchsuche| 100 |  10  | 1\.000 |
+| Wörterbuchbeispiele | 100 für Text und 100 für Übersetzung (200 insgesamt)| 10|   2\.000 |
 
 ## <a name="character-limits-per-hour"></a>Zeichengrenzwerte pro Stunde
 

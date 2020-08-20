@@ -5,26 +5,25 @@ author: btardif
 ms.author: byvinyal
 ms.date: 9/23/2019
 ms.topic: article
-ms.openlocfilehash: c3c79944aa4add0a32dbb584b13606e32e146a1a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 20c220bcb44a1a47e308f57d1466aee2773111a4
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87050295"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87985681"
 ---
 # <a name="restore-deleted-app-service-app-using-powershell"></a>Wiederherstellen einer gelöschten App Service-App mithilfe von PowerShell
 
 Wenn Sie Ihre App versehentlich in Azure App Service gelöscht haben, können Sie sie mithilfe der Befehle im [Azure PowerShell-Modul](https://docs.microsoft.com/powershell/azure/?view=azps-2.6.0&viewFallbackFrom=azps-2.2.0) wiederherstellen.
 
 > [!NOTE]
-> Gelöschte Apps werden 30 Tage nach dem ersten Löschvorgang aus dem System gelöscht. Nachdem eine App gelöscht wurde, kann sie nicht wiederhergestellt werden.
->
-
-> [!NOTE]
-> Die Wiederherstellungsfunktion wird für den Verbrauchsplan nicht unterstützt.
+> - Gelöschte Apps werden 30 Tage nach dem ersten Löschvorgang aus dem System gelöscht. Wenn eine App endgültig gelöscht wurde, kann sie nicht wiederhergestellt werden.
+> - Die Wiederherstellungsfunktion wird für den Nutzungstarif nicht unterstützt.
+> - App Service-Apps, die in einer App Service-Umgebung ausgeführt werden, unterstützen keine Momentaufnahmen. Daher werden die Wiederherstellungs- und die Klonfunktion für App Service-Apps, die in einer App Service-Umgebung ausgeführt werden, nicht unterstützt.
 >
 
 ## <a name="re-register-app-service-resource-provider"></a>Erneutes Registrieren eines App Service-Ressourcenanbieters
+
 Einige Kunden stoßen möglicherweise auf ein Problem, bei dem das Abrufen der Liste gelöschter Apps fehlschlägt. Führen Sie zum Beheben dieses Problems den folgenden Befehl aus:
 
 ```powershell
@@ -52,6 +51,7 @@ Die ausführlichen Informationen enthalten folgende Angaben:
 - **DeletionTime**: Zeitpunkt, an dem die App gelöscht wurde  
 
 ## <a name="restore-deleted-app"></a>Wiederherstellen einer gelöschten App
+
 >[!NOTE]
 > `Restore-AzDeletedWebApp` wird für Funktions-Apps nicht unterstützt.
 
@@ -73,7 +73,7 @@ Eingaben für den Befehl:
 Standardmäßig wird von `Restore-AzDeletedWebApp` sowohl die Konfiguration der App als auch beliebiger Inhalt wiederhergestellt. Wenn lediglich der Inhalt wiederhergestellt werden soll, verwenden Sie das Flag `-RestoreContentOnly` mit diesem Cmdlet.
 
 > [!NOTE]
-> Falls die App in einer App Service-Umgebung gehostet und anschließend daraus gelöscht wurde, kann sie nur wiederhergestellt werden, wenn die entsprechende App Service-Umgebung noch vorhanden sind.
+> Falls die App in einer App Service-Umgebung gehostet und anschließend daraus gelöscht wurde, kann sie nur wiederhergestellt werden, wenn die entsprechende App Service-Umgebung noch vorhanden ist.
 >
 
 Die vollständige Cmdlet-Referenz finden Sie hier: [Restore-AzDeletedWebApp](https://docs.microsoft.com/powershell/module/az.websites/restore-azdeletedwebapp).

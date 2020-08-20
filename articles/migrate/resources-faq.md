@@ -3,12 +3,12 @@ title: 'Azure Migrate: häufig gestellte Fragen'
 description: Hier erhalten Sie Antworten auf häufig gestellte Fragen zum Azure Migrate-Dienst.
 ms.topic: conceptual
 ms.date: 04/15/2020
-ms.openlocfilehash: 307a1d417b54ad9546c6e409ad8b105ea443da0e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 95fd2ea9ecf5e4bcdf3fb2291e4cf7bf5b111c5f
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090007"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87847464"
 ---
 # <a name="azure-migrate-common-questions"></a>Von der Azure Häufig gestellte Fragen
 
@@ -29,7 +29,13 @@ Verwenden Sie Azure Migrate, um lokale Infrastrukturen, Anwendungen und Daten in
 
 [Azure Migrate](migrate-services-overview.md) stellt einen zentralisierten Hub für die Bewertung und Migration zu Azure bereit. 
 
-[Azure Site Recovery](../site-recovery/site-recovery-overview.md) ist eine Lösung für die Notfallwiederherstellung. 
+- Die Verwendung von Azure Migrate bietet Interoperabilität und ermöglicht eine zukünftige Erweiterbarkeit mit Azure Migrate-Tools, anderen Azure-Diensten und Tools von Drittanbietern.
+- Das Servermigrationstool von Azure Migrate ist speziell für die Servermigration zu Azure konzipiert. Es ist für die Migration optimiert. Sie müssen sich nicht mit Konzepten und Szenarien vertraut machen, die in keiner direkten Relation zur Migration stehen. 
+- Ab dem Startzeitpunkt der Replikation für eine VM fallen 180 Tage lang keine Gebühren für die Nutzung des Tools an. So haben Sie genügend Zeit, um die Migration abzuschließen. Sie zahlen lediglich für die bei der Replikation verwendeten Speicher- und Netzwerkressourcen sowie für Computeressourcen, die bei Testmigrationen genutzt werden.
+- Azure Migrate unterstützt alle Migrationsszenarios, die von Site Recovery unterstützt werden. Darüber hinaus bietet Azure Migrate für VMware-VMs eine Migrationsoption ohne Agent.
+- Neue Migrationsfeatures werden nur für das Azure Migrate-Tool für die Servermigration priorisiert. Diese Features sind für Site Recovery nicht vorgesehen.
+
+[Azure Site Recovery](../site-recovery/site-recovery-overview.md) sollte nur für die Notfallwiederherstellung verwendet werden.
 
 Azure Migrate: Servermigration: Dieses Tool nutzt bestimmte Site Recovery-Back-End-Funktionen für die Lift & Shift-Migration einiger lokaler Computer.
 

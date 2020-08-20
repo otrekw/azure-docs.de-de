@@ -8,14 +8,14 @@ manager: johndeu
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 05/15/2019
+ms.date: 08/06/2020
 ms.author: kumud
-ms.openlocfilehash: 28cb73df2df91fc96d7ac19e25d7bd13f47df41e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6894eb783b990ebe98f9ebe5eb2fe112a59309a4
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87047300"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87904495"
 ---
 # <a name="customize-a-person-model-with-the-video-indexer-website"></a>Anpassen eines Personenmodells mit der Video Indexer-Website
 
@@ -126,9 +126,20 @@ Um sich den Inhalt eines Ihrer Personenmodelle anzusehen, wählen Sie den Pfeil 
 
 ### <a name="manage-a-person"></a>Verwalten einer Person
 
-Wenn Sie **Verwalten** auswählen, sehen Sie alle Gesichter, mit denen dieses Personenmodell trainiert wird. Diese Gesichter stammen von allen Vorkommen dieser Person in Videos, die dieses Personenmodell verwenden, oder von Bildern, die Sie manuell hochgeladen haben.
+Wenn Sie auf **Verwalten** klicken, sehen Sie im Fenster **Person‘s details** (Personendetails) alle Gesichter, mit denen dieses Personenmodell trainiert wird. Diese Gesichter stammen von allen Vorkommen dieser Person in Videos, die dieses Personenmodell verwenden, oder von Bildern, die Sie manuell hochgeladen haben.
+
+> [!TIP]
+> Sie können zum Fenster **Person‘s details** (Personendetails) navigieren, indem Sie wie oben gezeigt auf den Namen der Person oder auf **Verwalten** klicken.
+
+#### <a name="add-a-face"></a>Hinzufügen eines Gesichts
 
 Sie können der Person weitere Gesichter hinzufügen, indem Sie **Bilder hinzufügen** auswählen.
+
+#### <a name="delete-a-face"></a>Löschen eines Gesichts
+
+Wählen Sie das Bild aus, der gelöscht werden soll, und klicken Sie dann auf **Löschen**.
+
+#### <a name="rename-and-delete-the-person"></a>Umbenennen und Löschen der Person 
 
 Sie können den Verwaltungsbereich verwenden, um die Person umzubenennen und die Person aus dem Personenmodell zu löschen.
 

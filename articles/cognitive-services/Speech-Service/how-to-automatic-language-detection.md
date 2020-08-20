@@ -12,12 +12,12 @@ ms.date: 05/19/2020
 ms.author: trbye
 zone_pivot_groups: programming-languages-speech-services-nomore-variant
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 3a648b11e795a7d5c8680ac8c3df95e7d0c6bb7d
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: c1d2613661421ae95c34edef3caafe4c6fb3d4a9
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87406774"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905073"
 ---
 # <a name="automatic-language-detection-for-speech-to-text"></a>Automatische Spracherkennung zur Umwandlung von Sprache in Text
 
@@ -26,7 +26,7 @@ Die automatische Spracherkennung wird verwendet, um aufgrund eines Vergleichs an
 In diesem Artikel erfahren Sie, wie Sie `AutoDetectSourceLanguageConfig` zum Erstellen eines `SpeechRecognizer`-Objekts und zum Abrufen der erkannten Sprache verwenden.
 
 > [!IMPORTANT]
-> Dieses Feature ist nur für die Speech SDKs für C#, C++, Java, Python und Objective-C verfügbar.
+> Dieses Feature ist nur für die Speech-SDKs für C#, C++, Java, Python, JavaScript und Objective-C verfügbar.
 
 ## <a name="automatic-language-detection-with-the-speech-sdk"></a>Automatische Spracherkennung mit dem Sprach-SDK
 
@@ -240,4 +240,24 @@ var autoDetectConfig = SpeechSDK.AutoDetectSourceLanguageConfig.fromSourceLangua
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Speech SDK-Referenzdokumentation](speech-sdk.md)
+::: zone pivot="programming-language-csharp"
+* Sehen Sie sich den [Beispielcode](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/csharp/sharedcontent/console/speech_recognition_samples.cs#L741) auf GitHub für die automatische Sprachenerkennung an.
+::: zone-end
+
+::: zone pivot="programming-language-cpp"
+* Sehen Sie sich den [Beispielcode](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/cpp/windows/console/samples/speech_recognition_samples.cpp#L507) auf GitHub für die automatische Sprachenerkennung an.
+::: zone-end
+
+::: zone pivot="programming-language-java"
+* Sehen Sie sich den [Beispielcode](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/java/jre/console/src/com/microsoft/cognitiveservices/speech/samples/console/SpeechRecognitionSamples.java#L521) auf GitHub für die automatische Sprachenerkennung an.
+::: zone-end
+
+::: zone pivot="programming-language-python"
+* Sehen Sie sich den [Beispielcode](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/python/console/speech_synthesis_sample.py#L434) auf GitHub für die automatische Sprachenerkennung an.
+::: zone-end
+
+::: zone pivot="programming-language-objectivec"
+* Sehen Sie sich den [Beispielcode](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/objective-c/ios/speech-samples/speech-samples/ViewController.m#L494) auf GitHub für die automatische Sprachenerkennung an.
+::: zone-end
+
+* [Speech SDK-Referenzdokumentation](speech-sdk.md)

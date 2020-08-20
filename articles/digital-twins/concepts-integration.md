@@ -7,16 +7,18 @@ ms.author: baanders
 ms.date: 3/16/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: d0bca2ad14216873836c751dc002ea915baa3a66
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: ca500401a6bff8a00dd9c51eecb29aa93fdbc82b
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87800482"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88042648"
 ---
 # <a name="integrate-azure-digital-twins-with-other-services"></a>Integrieren von Azure Digital Twins in andere Dienste
 
-Azure Digital Twins wird in der Regel in Verbindung mit anderen Diensten verwendet. Unter Verwendung von [**Ereignisrouten**](concepts-route-events.md) empfängt Azure Digital Twins Daten von Upstreamdiensten wie [IoT Hub](../iot-hub/about-iot-hub.md), die zur Bereitstellung von Telemetrie und Benachrichtigungen verwendet werden. Azure Digital Twins kann Daten auch an Downstreamdienste zur Speicherung, Workflowintegration, Analyse und für andere Zwecke weiterleiten. 
+Azure Digital Twins wird in der Regel in Verbindung mit anderen Diensten verwendet. Unter Verwendung von [**Ereignisrouten**](concepts-route-events.md) empfängt Azure Digital Twins Daten von Upstreamdiensten wie [IoT Hub](../iot-hub/about-iot-hub.md), die zur Bereitstellung von Telemetrie und Benachrichtigungen verwendet werden. 
+
+Azure Digital Twins kann Daten auch an Downstreamdienste wie Azure Maps ([*Vorgehensweise: Verwenden von Azure Digital Twins zum Aktualisieren eines Azure Maps-Gebäudeplans*](how-to-integrate-maps.md)) und Time Series Insights ([*Vorgehensweise: Integrieren von Azure Digital Twins mit Azure Time Series Insights*](how-to-integrate-time-series-insights.md)) für Speicher, die Workflowintegration, Analysen und mehr weiterleiten. 
 
 ## <a name="data-ingress"></a>Dateneingang
 

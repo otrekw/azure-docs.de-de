@@ -5,12 +5,12 @@ description: Lernen Sie die Best Practices für den Clusteroperator zum Verwalte
 services: container-service
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.openlocfilehash: c4f56cf4e04b9df31c8c4204d396ead8073ec526
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: c2734aa8e4ebf0bdb693a49c3ba785dd134e8c83
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86244207"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88003047"
 ---
 # <a name="best-practices-for-cluster-security-and-upgrades-in-azure-kubernetes-service-aks"></a>Best Practices für Clustersicherheit und Upgrades in Azure Kubernetes Service (AKS)
 
@@ -19,7 +19,7 @@ Beim Verwalten von Clustern in Azure Kubernetes Service (AKS) spielt die Sicherh
 In diesem Artikel wird erläutert, wie AKS-Cluster gesichert werden. Folgendes wird vermittelt:
 
 > [!div class="checklist"]
-> * Verwenden von Azure Active Directory und rollenbasierter Zugriffssteuerung, um den Zugriff auf API-Server zu sichern
+> * Verwenden von Azure Active Directory und rollenbasierter Zugriffssteuerung (Role-Based Access Control, RBAC) als Schutz für den Zugriff auf API-Server
 > * Sicherer Containerzugriff auf Knotenressourcen
 > * Durchführen eines Upgrades auf AKS-Cluster auf die neueste Kubernetes-Version
 > * Aktuellhalten von Knoten und automatisches Anwenden von Sicherheitspatches
@@ -53,7 +53,7 @@ Genauso wie Sie Benutzern und Gruppen nur die minimal notwendigen Berechtigungen
 Wenn Sie die Steuerungsmöglichkeiten für Containeraktionen noch feiner abstimmen möchten, können Sie dazu auch integrierte Linux-Sicherheitsfeatures wie *AppArmor* und *seccomp* verwenden. Diese Features sind auf der Knotenebene definiert und werden dann über ein Podmanifest implementiert. In Linux integrierte Sicherheitsfunktionen sind nur auf Linux-Knoten und -Pods verfügbar.
 
 > [!NOTE]
-> Kubernetes-Umgebungen, ob in AKS oder an anderer Stelle, sind nicht völlig sicher vor feindlicher Verwendung mit mehreren Mandanten. Zusätzliche Sicherheitsfunktionen wie *AppArmor*, *seccomp*, *Pod Security Policies* oder differenziertere rollenbasierte Zugriffssteuerung (RBAC) für Knoten erschweren Angriffe. Für echte Sicherheit bei der Ausführung feindlicher Workloads mit mehreren Mandanten ist jedoch ein Hypervisor die einzige Sicherheitsstufe, der Sie vertrauen sollten. Die Sicherheitsdomäne für Kubernetes wird zum gesamten Cluster und nicht zu einem einzelnen Knoten. Für diese Art von feindlichen Workloads mit mehreren Mandanten sollten Sie physisch isolierte Cluster verwenden.
+> Kubernetes-Umgebungen, ob in AKS oder an anderer Stelle, sind nicht völlig sicher vor feindlicher Verwendung mit mehreren Mandanten. Zusätzliche Sicherheitsfeatures wie *AppArmor*, *seccomp*, *Podsicherheitsrichtlinien* oder differenziertere rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) für Knoten erschweren Angriffe. Für echte Sicherheit bei der Ausführung feindlicher Workloads mit mehreren Mandanten ist jedoch ein Hypervisor die einzige Sicherheitsstufe, der Sie vertrauen sollten. Die Sicherheitsdomäne für Kubernetes wird zum gesamten Cluster und nicht zu einem einzelnen Knoten. Für diese Art von feindlichen Workloads mit mehreren Mandanten sollten Sie physisch isolierte Cluster verwenden.
 
 ### <a name="app-armor"></a>AppArmor
 

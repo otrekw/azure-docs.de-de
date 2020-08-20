@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/12/2020
 ms.author: memildin
-ms.openlocfilehash: 95b514999d7c38140bd3dd275b8ba103ee9af20e
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 489f0138caa54105cced9c9ef4e8846657d84717
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86519230"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607126"
 ---
 # <a name="feature-coverage-for-machines"></a>Funktionsabdeckung für Computer
 
@@ -91,7 +91,7 @@ Informationen darüber, wann Empfehlungen für die einzelnen Schutzfunktionen ge
 
 | Endpoint Protection| Plattformen | Security Center-Installation | Security Center-Ermittlung |
 |------|------|-----|-----|
-| Windows Defender (Microsoft Antimalware)| Windows Server 2016| Nein, in Betriebssystem integriert| Ja |
+| Microsoft Defender Antivirus| Windows Server 2016 oder höher| Nein, in Betriebssystem integriert| Ja |
 | System Center Endpoint Protection (Microsoft Antimalware) | Windows Server 2012 R2, 2012, 2008 R2 (siehe Hinweis unten) | Per Erweiterung | Ja |
 | Trend Micro – Deep Security | Windows Server-Familie  | Nein | Ja |
 | Symantec v12.1.1100+| Windows Server-Familie  | Nein | Ja |

@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 05/21/2020
 ms.author: pepogors
 ms.custom: sfrev
-ms.openlocfilehash: f2af8dcb2460e4e95d29bd81e6994d145ac61a48
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 4949a83ac2aac664c19be46a367fce2bbff4cb02
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86247776"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87904818"
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Überlegungen zur Kapazitätsplanung für Service Fabric-Cluster
 
@@ -155,7 +155,7 @@ Die Kapazitätsanforderungen Ihres Clusters richten sich nach Ihren Anforderunge
 
 #### <a name="virtual-machine-sizing"></a>VM-Größen
 
-**Für Produktionsworkloads wird die VM-Größe Standard D2_V2 (oder gleichwertig) mit mindestens 50 GB lokalem SSD-Speicher empfohlen.** Es wird mindestens 50 GB lokaler SSD-Speicher empfohlen. Für einige Workloads (z. B. solche, die Windows-Container ausführen) werden jedoch größere Datenträger benötigt. Wenn Sie [andere VM-Größen](../virtual-machines/sizes-general.md) für Produktionsworkloads auswählen, müssen Sie die folgenden Einschränkungen beachten:
+**Für Produktionsworkloads wird die VM-Größe (SKU) [Standard D2_V2](../virtual-machines/dv2-dsv2-series.md) (oder gleichwertig) mit mindestens 50 GB lokalem SSD-Speicher, 2 Kernen und 4 GiB Arbeitsspeicher empfohlen.** Es wird mindestens 50 GB lokaler SSD-Speicher empfohlen. Für einige Workloads (z. B. solche, die Windows-Container ausführen) werden jedoch größere Datenträger benötigt. Wenn Sie [andere VM-Größen](../virtual-machines/sizes-general.md) für Produktionsworkloads auswählen, müssen Sie die folgenden Einschränkungen beachten:
 
 - VM-Größen mit partiellem Kern wie Standard A0 werden nicht unterstützt.
 - VM-Größen der *A-Serie* werden aus Leistungsgründen nicht unterstützt.

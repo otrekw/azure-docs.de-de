@@ -7,12 +7,13 @@ ms.service: mariadb
 ms.devlang: azurepowershell
 ms.topic: how-to
 ms.date: 05/26/2020
-ms.openlocfilehash: 1fc4c0497095c2ab4e1210ab71bc5597713499b7
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: a3870ae192955df11107f0ebb5c618b90a0cc799
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120465"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87833248"
 ---
 # <a name="how-to-back-up-and-restore-an-azure-database-for-mariadb-server-using-powershell"></a>Sichern und Wiederherstellen eines Azure Database for MariaDB-Servers mithilfe von PowerShell
 
@@ -26,7 +27,7 @@ Zum Durcharbeiten dieses Leitfadens benötigen Sie Folgendes:
 - [Azure Database for MariaDB-Server](quickstart-create-mariadb-server-database-using-azure-powershell.md)
 
 > [!IMPORTANT]
-> Solange nur eine Vorschauversion des PowerShell-Moduls Az.MariaDb verfügbar ist, müssen Sie es separat über das Az-PowerShell-Modul installieren. Verwenden Sie hierfür den folgenden Befehl: `Install-Module -Name Az.MariaDb -AllowPrerelease`.
+> Solange nur eine Vorschauversion des PowerShell-Moduls „Az.MariaDb“ verfügbar ist, müssen Sie es separat über das Azure PowerShell-Modul installieren. Verwenden Sie dazu den folgenden Befehl: `Install-Module -Name Az.MariaDb -AllowPrerelease`.
 > Sobald das PowerShell-Modul Az.MariaDb allgemein verfügbar ist, wird es in zukünftige Releases des Az-PowerShell-Moduls integriert und in Azure Cloud Shell nativ zur Verfügung gestellt.
 
 Wenn Sie PowerShell lieber lokal verwenden möchten, stellen Sie mithilfe des Cmdlets [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) eine Verbindung mit Ihrem Azure-Konto her.
@@ -132,4 +133,4 @@ Der neue Server, der während einer Wiederherstellung erstellt wird, weist nicht
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Anpassen eines Azure Database for MariaDB-Serverparameters mithilfe von PowerShell](howto-configure-server-parameters-using-powershell.md)
+> [Generieren einer Azure Database for MariaDB-Verbindungszeichenfolge mit PowerShell](howto-connection-string-powershell.md)

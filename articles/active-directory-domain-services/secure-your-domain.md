@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 6c5e0779ce0dfe2730a60873316c66184e038a35
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 50cf58f83115cfb8c84fe7b2a37b6664c2d9c567
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86039873"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88116681"
 ---
 # <a name="disable-weak-ciphers-and-password-hash-synchronization-to-secure-an-azure-active-directory-domain-services-managed-domain"></a>Deaktivieren von schwachen Verschlüsselungen und der Kennworthashsynchronisierung zum Schützen einer verwalteten Azure Active Directory Domain Services-Domäne
 
@@ -74,6 +74,11 @@ Set-AzResource -Id $DomainServicesResource.ResourceId -Properties $securitySetti
 ```
 
 Es dauert einen Moment, bis die Sicherheitseinstellungen auf die verwaltete Domäne angewendet werden.
+
+> [!IMPORTANT]
+> Nachdem Sie die Windows-Authentifizierung (NTLM) deaktiviert haben, führen Sie eine vollständige Kennworthashsynchronisierung in Azure AD Connect durch, um alle Kennworthashes aus der verwalteten Domäne zu entfernen. Wenn Sie die Windows-Authentifizierung deaktivieren, aber keine Kennworthashsynchronisierung erzwingen, werden NTLM-Kennworthashes für ein Benutzerkonto nur bei der nächsten Kennwortänderung entfernt. Dieses Verhalten ermöglicht es einem Benutzer, sich weiterhin anzumelden, wenn er die Anmeldeinformationen auf einem System zwischengespeichert hat, auf dem NTLM als Authentifizierungsmethode verwendet wird.
+>
+> Wenn sich der NTLM-Kennworthash von dem Kerberos-Kennworthash unterscheidet, funktioniert ein Fallback auf NTLM nicht. Zwischengespeicherte Anmeldeinformationen funktionieren auch nicht mehr, wenn der virtuelle Computer über eine Verbindung mit dem verwalteten Domänencontroller verfügt.  
 
 ## <a name="next-steps"></a>Nächste Schritte
 

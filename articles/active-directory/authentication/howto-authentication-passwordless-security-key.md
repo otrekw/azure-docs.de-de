@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 300bb317d521ac9202fdd1a02328f844110a48e4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9f17a634a9bc3b410eec8ed6e868d454dc9ecee6
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85550417"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88116596"
 ---
 # <a name="enable-passwordless-security-key-sign-in-preview"></a>Aktivieren der kennwortlosen Anmeldung mit Sicherheitsschlüsseln (Vorschauversion)
 
@@ -30,7 +30,7 @@ In diesem Dokument liegt der Schwerpunkt auf der Aktivierung der auf Sicherheits
 ## <a name="requirements"></a>Requirements (Anforderungen)
 
 - [Azure Multi-Factor Authentication](howto-mfa-getstarted.md)
-- [Kombinierte Registrierung von Sicherheitsinformationen (Vorschauversion)](concept-registration-mfa-sspr-combined.md)
+- Aktivieren der [kombinierten Registrierung von Sicherheitsinformationen (Vorschauversion)](concept-registration-mfa-sspr-combined.md)
 - Kompatible [FIDO2-Sicherheitsschlüssel](concept-authentication-passwordless.md#fido2-security-keys)
 - WebAuthN erfordert Windows 10, Version 1809 oder höher**
 

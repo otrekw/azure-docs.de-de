@@ -1,6 +1,6 @@
 ---
 title: Festlegen oder Bearbeiten von Azure API Management-Richtlinien | Microsoft-Dokumentation
-description: In diesem Thema wird erläutert, wie Sie Azure API Management-Richtlinien festlegen oder bearbeiten.
+description: In diesem Artikel erfahren Sie, wie Sie API Management-Richtlinien in Azure festlegen oder bearbeiten. Diese Richtlinien sind XML-Dokumente, die eine Sequenz eingehender und ausgehender Anweisungen beschreiben.
 services: api-management
 documentationcenter: ''
 author: mikebudzynski
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/01/2018
 ms.author: apimpm
-ms.openlocfilehash: 9249cb1ac64bf61b405bc3537523cc85bca3f00c
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 3a8d3309cdc5ddb0ae75ed6fcf0376118275b835
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86252792"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87848008"
 ---
 # <a name="how-to-set-or-edit-azure-api-management-policies"></a>Festlegen oder Bearbeiten von Azure API Management-Richtlinien
 

@@ -6,22 +6,23 @@ ms.author: lufittl
 ms.service: mysql
 ms.topic: how-to
 ms.date: 05/19/2020
-ms.openlocfilehash: af63ef6f33cc0e3dfe7f186ad2e36b854a728c6b
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 3c13d37e62da8abfa860d5fdbdf186302519c93e
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120575"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88606496"
 ---
 # <a name="connect-with-managed-identity-to-azure-database-for-mysql"></a>Herstellen einer Verbindung zu Azure Database for MySQL mithilfe von verwalteten Identitäten
 
-In diesem Artikel erfahren Sie, wie Sie mit einer benutzerseitig zugewiesenen Identität eines virtuellen Windows-Computers (Virtual Machine, VM) auf einen Azure Database for MySQL-Server zugreifen. Verwaltete Dienstidentitäten werden von Azure automatisch verwaltet und ermöglichen Ihnen die Authentifizierung für Dienste, die die Azure AD-Authentifizierung unterstützen, ohne dass Sie Anmeldeinformationen in Ihren Code einfügen müssen. Folgendes wird vermittelt:
+In diesem Artikel erfahren Sie, wie Sie mit einer benutzerseitig zugewiesenen Identität eines virtuellen Windows-Computers (Virtual Machine, VM) auf einen Azure Database for MySQL-Server zugreifen. Verwaltete Dienstidentitäten werden von Azure automatisch verwaltet und ermöglichen Ihnen die Authentifizierung für Dienste, die die Azure AD-Authentifizierung unterstützen, ohne dass Sie Anmeldeinformationen in Ihren Code einfügen müssen. 
 
-> [!div class="checklist"]
-> * Erteilen des VM-Zugriffs auf einen Azure Database for MySQL-Server
-> * Erstellen eines Benutzers in der Datenbank, der die benutzerseitig zugewiesene Identität der VM darstellt
-> * Abrufen eines Zugriffstokens mithilfe der VM-Identität und Abfragen Azure Database for MySQL-Servers mithilfe dieses Tokens
-> * Implementieren des Tokenabrufs in einer C#-Beispielanwendung
+Folgendes wird vermittelt:
+
+- Erteilen des VM-Zugriffs auf einen Azure Database for MySQL-Server
+- Erstellen eines Benutzers in der Datenbank, der die benutzerseitig zugewiesene Identität der VM darstellt
+- Abrufen eines Zugriffstokens mithilfe der VM-Identität und Abfragen Azure Database for MySQL-Servers mithilfe dieses Tokens
+- Implementieren des Tokenabrufs in einer C#-Beispielanwendung
 
 > [!IMPORTANT]
 > Das Herstellen von Verbindungen mit verwalteten Identitäten ist nur für MySQL 5.7 und höher verfügbar.

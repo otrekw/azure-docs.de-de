@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: troubleshooting
-ms.date: 04/30/2020
+ms.date: 08/07/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c9a2ab4b1ebc1c958be9dc4bd07a010f7fef8afc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6778b556795f4e079100f1a7bcbb8b9465e9e315
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82610509"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88032967"
 ---
 # <a name="troubleshooting-sign-in-problems-with-conditional-access"></a>Beheben von Anmeldeproblemen bei bedingtem Zugriff
 
@@ -55,11 +55,16 @@ Gehen Sie wie folgt vor, um herauszufinden, welche Richtlinie(n) für den beding
    1. Die Informationen auf der Registerkarte **Problembehandlung und Support** geben möglicherweise eindeutig Auskunft darüber, warum bei der Anmeldung ein Fehler aufgetreten ist (z. B. ein Gerät, das die Konformitätsanforderungen nicht erfüllt).
    1. Zur weiteren Untersuchung führen Sie einen Drilldown in die Konfiguration der Richtlinien durch, indem Sie auf den **Richtliniennamen** klicken. Durch Klicken auf den **Richtliniennamen** wird für die ausgewählte Richtlinie die Benutzeroberfläche für die Richtlinienkonfiguration angezeigt. Hier können Sie die Richtlinie überprüfen und bearbeiten.
    1. Der **Clientbenutzer** und die **Gerätedetails**, die für die Bewertung der Richtlinie für bedingten Zugriff verwendet wurden, sind auch auf den Registerkarten **Grundlegende Infos**, **Standort**, **Geräteinformationen**, **Authentifizierungsdetails** und **Weitere Details** des Anmeldeereignisses verfügbar.
-   1. Wenn Sie die Auslassungspunkte rechts von der Richtlinie auswählen, werden Richtliniendetails angezeigt. So erhalten Administratoren zusätzliche Informationen zum Grund für die erfolgreiche oder nicht erfolgreiche Anwendung einer Richtlinie.
+
+### <a name="policy-details"></a>Richtliniendetails
+
+Wenn Sie in einem Anmeldeereignis auf die drei Punkte rechts neben der Richtlinie klicken, werden die Richtliniendetails angezeigt. So erhalten Administratoren zusätzliche Informationen zum Grund für die erfolgreiche oder nicht erfolgreiche Anwendung einer Richtlinie.
 
    ![Registerkarte „Bedingter Zugriff“ des Anmeldeereignisses](./media/troubleshoot-conditional-access/image5.png)
 
    ![Richtliniendetails (Vorschau)](./media/troubleshoot-conditional-access/policy-details.png)
+
+Auf der linken Seite werden die bei der Anmeldung erfassten Details angezeigt, auf der rechte Seite Informationen darüber, ob diese Details den Anforderungen der angewendeten Richtlinien für bedingten Zugriff entsprechen. Richtlinien für bedingten Zugriff gelten nur, wenn alle Bedingungen erfüllt oder nicht konfiguriert sind.
 
 Wenn die im Ereignis angezeigten Informationen nicht ausreichen, um die Anmeldeergebnisse zu verstehen oder die Richtlinie anzupassen, um die gewünschten Ergebnisse zu erhalten, kann ein Supportfall geöffnet werden. Navigieren Sie zur Registerkarte **Problembehandlung und Support** des Anmeldeereignisses, und wählen Sie **Neue Supportanfrage erstellen** aus.
 

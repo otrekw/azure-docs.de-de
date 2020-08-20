@@ -7,7 +7,7 @@ author: brjohnstmsft
 ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 08/05/2020
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 68e6ec0af0b24771b21dac35c944fc7fa098b404
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 333e48ff963ec42dd2ee00956fa046a5a038c099
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86203117"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87903781"
 ---
 # <a name="odata-orderby-syntax-in-azure-cognitive-search"></a>OData-Syntax von „$orderby“ in Azure Cognitive Search
 
@@ -50,7 +50,9 @@ Ein interaktives Syntaxdiagramm ist ebenfalls verfügbar:
 > [!NOTE]
 > Die vollständige EBNF finden Sie in der [Referenz zur OData-Ausdruckssyntax für Azure Cognitive Search](search-query-odata-syntax-reference.md).
 
-Jede Klausel enthält Sortierkriterien, optional gefolgt von einer Sortierreihenfolge (`asc` = aufsteigend oder `desc` = absteigend). Wenn Sie keine Richtung angeben, wird die Standardeinstellung „asc“ (aufsteigend) verwendet. Bei den Sortierkriterien kann es sich entweder um den Pfad eines Felds vom Typ `sortable` oder um einen Aufruf der Funktion [`geo.distance`](search-query-odata-geo-spatial-functions.md) oder [`search.score`](search-query-odata-search-score-function.md) handeln.
+Jede Klausel enthält Sortierkriterien, optional gefolgt von einer Sortierreihenfolge (`asc` = aufsteigend oder `desc` = absteigend). Wenn Sie keine Richtung angeben, wird die Standardeinstellung „asc“ (aufsteigend) verwendet. Wenn im Feld NULL-Werte vorhanden sind, werden NULL-Werte zuerst angezeigt, wenn die Sortierung `asc` lautet. Wenn die Sortierung `desc` lautet, werden sie an letzter Stelle angezeigt.
+
+Bei den Sortierkriterien kann es sich entweder um den Pfad eines Felds vom Typ `sortable` oder um einen Aufruf der Funktion [`geo.distance`](search-query-odata-geo-spatial-functions.md) oder [`search.score`](search-query-odata-search-score-function.md) handeln.
 
 Wenn für mehrere Dokumente die gleichen Sortierkriterien gelten und die Funktion `search.score` nicht verwendet wird (z. B. wenn Sie nach einem numerischen Feld vom Typ `Rating` sortieren und drei Dokumente eine Bewertung von 4 aufweisen), werden Verknüpfungen auf Grundlage des Dokumentergebnisses in absteigender Reihenfolge getrennt. Wenn Dokumentergebnisse identisch sind (z. B. wenn in der Anforderung keine Volltextsuchabfrage angegeben ist), dann ist die relative Sortierung der verknüpften Dokumente unbestimmt.
 
@@ -88,7 +90,7 @@ Sortieren von Hotels in absteigender Reihenfolge nach Suchergebnis und Bewertung
 
 ## <a name="next-steps"></a>Nächste Schritte  
 
-- [Arbeiten mit Suchergebnissen in Azure Cognitive Search](search-pagination-page-layout.md)
+- [Arbeiten mit Suchergebnissen in der kognitiven Azure-Suche](search-pagination-page-layout.md)
 - [Übersicht über die OData-Ausdruckssprache für Azure Cognitive Search](query-odata-filter-orderby-syntax.md)
 - [Referenz zur OData-Ausdruckssyntax für Azure Cognitive Search](search-query-odata-syntax-reference.md)
 - [Suchen von Dokumenten &#40;Azure Cognitive Search-REST-API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)

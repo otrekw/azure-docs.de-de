@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/24/2020
-ms.openlocfilehash: 2992324a1080b75a98264958f56ea28e93b54651
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 21b09e6b7a2be6b87288d973b40c566fb6217841
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534582"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87849980"
 ---
 # <a name="use-azure-data-lake-storage-gen2-with-azure-hdinsight-clusters"></a>Verwenden von Azure Data Lake Storage Gen2 mit Azure HDInsight-Clustern
 
@@ -106,6 +106,7 @@ Sie können [hier eine Beispielvorlagendatei](https://github.com/Azure-Samples/h
 | `<RESOURCEGROUPNAME>` | Die Ressourcengruppe, in der der neue Cluster und das Speicherkonto erstellt werden sollen |
 | `<MANAGEDIDENTITYNAME>` | Der Name der verwalteten Identität, der die Berechtigungen für Ihr Azure Data Lake Storage Gen2-Konto gewährt werden |
 | `<STORAGEACCOUNTNAME>` | Das zu erstellende Azure Data Lake Storage Gen2-Konto |
+| `<FILESYSTEMNAME>`  | Der Name des Dateisystems, das dieser Cluster im Storage-Konto verwenden soll. |
 | `<CLUSTERNAME>` | Der Name des HDInsight-Clusters. |
 | `<PASSWORD>` | Das gewählte Kennwort für die Anmeldung im Cluster über SSH und das Ambari-Dashboard |
 
@@ -138,7 +139,8 @@ az storage account create --name <STORAGEACCOUNTNAME> \
 
 Melden Sie sich als Nächstes beim Portal an. Fügen Sie die neue benutzerseitig zugewiesene verwaltete Identität zu der Rolle **Mitwirkender an Storage-Blobdaten** im Speicherkonto zu. Dieser Schritt wird in Schritt 3 unter [Verwenden des Azure-Portals](hdinsight-hadoop-use-data-lake-storage-gen2.md) beschrieben.
 
-Stellen Sie die Vorlage mit dem folgenden Codeausschnitt bereit, nachdem Sie die Rolle für die benutzerseitig zugewiesene verwaltete Identität zugewiesen haben.
+ > [!IMPORTANT]
+ > Stellen Sie sicher, dass Ihr Storage-Konto über die vom Benutzer zugewiesene Identität mit den Rollenberechtigungen für **Mitwirkende an Storage-Blobdaten** verfügt. Wenn dies nicht der Fall ist, schlägt die Clustererstellung fehl.
 
 ```azurecli
 az group deployment create --name HDInsightADLSGen2Deployment \

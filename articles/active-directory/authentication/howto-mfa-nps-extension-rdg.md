@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 21b8748cf74a5061e9dfa154047f867df4cb5428
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: d6ede429de686dd005785b44cf5c6d9571aac5a2
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85848751"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88117021"
 ---
 # <a name="integrate-your-remote-desktop-gateway-infrastructure-using-the-network-policy-server-nps-extension-and-azure-ad"></a>Integrieren Sie Ihre Remotedesktopgateway-Infrastruktur mit der Netzwerkrichtlinienserver-Erweiterung (Network Policy Server, NPS) und Azure AD
 
@@ -110,6 +110,11 @@ Führen Sie die Schritte in [Erste Schritte mit Azure Multi-Factor Authenticatio
 Nachdem ein Konto für MFA aktiviert wurde, können Sie sich erst dann bei Ressourcen anmelden, die der MFA-Richtlinie unterliegen, wenn Sie erfolgreich ein vertrauenswürdiges Gerät für den zweiten Authentifizierungsfaktor konfiguriert und die Authentifizierung mit der zweistufigen Überprüfung durchgeführt haben.
 
 Führen Sie die Schritte in [Was ist Azure Multi-Factor Authentication?](../user-help/multi-factor-authentication-end-user.md) aus, um Ihre Geräte ordnungsgemäß mit Ihrem Benutzerkonto für MFA zu konfigurieren.
+
+> [!IMPORTANT]
+> Das Anmeldeverhalten für Remotedesktopgateway umfasst keine Option zur Eingabe eines Verifizierungscodes über Azure Multi-Factor Authentication. Benutzerkonten müssen für die Telefonüberprüfung oder die Microsoft Authenticator-App über Pushbenachrichtigungen konfiguriert sein.
+>
+> Wenn eine dieser Authentifizierungsmethoden für einen Benutzer nicht konfiguriert sind, kann Azure Multi-Factor Authentication nicht abgeschlossen werden, und der Benutzer kann sich nicht beim Remotedesktopgateway anmelden.
 
 ## <a name="install-and-configure-nps-extension"></a>Installieren und Konfigurieren der NPS-Erweiterung
 

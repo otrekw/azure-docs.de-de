@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro, has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ea90c80d9edbefe9df05a5d64da612a89c3b251f
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: a5fc1b84e624828d7feb64bd53e8fe8ffff2a7ff
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85850815"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88054833"
 ---
 # <a name="create-an-unattended-installation-script-for-the-azure-ad-application-proxy-connector"></a>Erstellen eines Skripts für die unbeaufsichtigte Installation für den Azure AD-Anwendungsproxyconnector
 
@@ -37,6 +37,9 @@ Diese Funktion ist in folgenden Fällen nützlich:
 Damit der [Anwendungsproxyconnector](application-proxy-connectors.md) funktioniert, muss er von einem Anwendungsadministrator mit Kennwort im Azure AD-Verzeichnis registriert werden. Diese Informationen werden normalerweise bei der Installation des Connectors in einem Popupdialogfeld eingegeben. Der Prozess kann jedoch mithilfe von PowerShell automatisiert werden.
 
 Eine unbeaufsichtigte Installation umfasst zwei Schritte. Erstens: Die Installation des Connectors. Zweitens: Die Registrierung des Connectors bei Azure AD.
+
+> [!IMPORTANT]
+> Wenn Sie den Connector für die Azure Government-Cloud installieren, überprüfen Sie die [Voraussetzungen](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-government-cloud#allow-access-to-urls) und [Installationsschritte](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-government-cloud#install-the-agent-for-the-azure-government-cloud). Zum Ausführen der Installation sind der Zugriff auf einen anderen Satz von URLs und ein zusätzlicher Parameter erforderlich.
 
 ## <a name="install-the-connector"></a>Installieren des Connectors
 Gehen Sie wie folgt vor, um den Connector zu installieren, ohne ihn zu registrieren:

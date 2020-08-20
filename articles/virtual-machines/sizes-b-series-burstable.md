@@ -5,15 +5,15 @@ services: virtual-machines
 ms.subservice: sizes
 author: ayshakeen
 ms.service: virtual-machines
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: ayshak
-ms.openlocfilehash: 6e7411f30ac0ef03ecd621f4cf6db5cd9350201b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 81bfde964fa993b69bc464214dab0810a8f2bfe5
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84678544"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87832585"
 ---
 # <a name="b-series-burstable-virtual-machine-sizes"></a>Größen von virtuellen Burstable-Computern der B-Serie
 
@@ -92,6 +92,9 @@ Bei einer D16s_v3 mit 16 vCPUs und 64 GiB Arbeitsspeicher beträgt der Stundens
 
 ## <a name="q--a"></a>Fragen und Antworten
 
+### <a name="q-what-happens-if-the-credits-run-out"></a>F: Was geschieht, wenn kein Guthaben mehr verfügbar ist?
+**A:** Wenn das Guthaben erschöpft ist, wird die VM auf die Baselineleistung zurückgestuft.
+
 ### <a name="q-how-do-you-get-135-baseline-performance-from-a-vm"></a>F: Wie erhalte ich einen virtuellen Computer mit einer Grundleistung von 135 Prozent?
 
 **A:** Die 135 Prozent verteilen sich auf die acht vCPUs, die der VM-Größe zugrunde liegen. Wenn Ihre Anwendung also beispielsweise vier der acht Kerne für die Batchverarbeitung nutzt und jede dieser vier vCPUs zu 30 Prozent ausgelastet ist, beläuft sich die CPU-Leistung des virtuellen Computers auf insgesamt 120 Prozent.  Das bedeutet, dass der virtuelle Computer ein Zeitguthaben auf der Grundlage des 15-prozentigen Deltas (im Vergleich zu Ihrer Grundleistung) bildet.  Es bedeutet aber auch Folgendes: Wenn Sie über Guthaben verfügen, kann der gleiche virtuelle Computer 100 Prozent aller acht vCPUs nutzen, wodurch sich eine maximale CPU-Leistung von 800 Prozent ergibt.
@@ -103,11 +106,11 @@ Bei einer D16s_v3 mit 16 vCPUs und 64 GiB Arbeitsspeicher beträgt der Stundens
 
 Weitere Informationen zum Zugreifen auf die Metrikdaten für Azure finden Sie in der [Übersicht über Metriken in Microsoft Azure](../azure-monitor/platform/data-platform.md).
 
-### <a name="q-how-are-credits-accumulated"></a>F: Wie wird Guthaben gebildet?
+### <a name="q-how-are-credits-accumulated-and-consumed"></a>F: Wie wird Guthaben hinzugefügt und verbraucht?
 
 **A:** Bildungs- und Verbrauchsrate des virtuellen Computers sind so gestaltet, dass es bei einem virtuellen Computer, der exakt auf dem Grundleistungsniveau betrieben wird, weder zu einer Nettobildung noch zu einem Verbrauch von Burst-Guthaben kommt.  Eine Nettoerhöhung des Guthabens erfolgt, wenn der virtuelle Computer unter seiner Grundleistung betrieben wird. Bei einer CPU-Nutzung, die über das Grundleistungsniveau hinausgeht, kommt es hingegen zu einer Nettoverringerung des Guthabens.
 
-**Beispiel:**  Angenommen, ich stelle für meine kleine Zeit- und Anwesenheitsdatenbank einen virtuellen Computer der Größe „B1ms“ bereit. Bei dieser Größe kann meine Anwendung bis zu 20 % einer vCPU als Grundleistung nutzen. Das entspricht 0,2 Guthaben pro Minute, die ich entweder nutzen oder sammeln kann.
+**Beispiel:** Angenommen, ich stelle für meine kleine Zeit- und Anwesenheitsdatenbank einen virtuellen Computer der Größe „B1ms“ bereit. Bei dieser Größe kann meine Anwendung bis zu 20 % einer vCPU als Grundleistung nutzen. Das entspricht 0,2 Guthaben pro Minute, die ich entweder nutzen oder sammeln kann.
 
 Meine Anwendung ist jeweils am Anfang und Ende des Arbeitstags meiner Mitarbeiter aktiv (also zwischen 7:00 und 9:00 Uhr sowie zwischen 16:00 und 18:00 Uhr). Während der restlichen 20 Stunden des Tages befindet sich die Anwendung in der Regel im Leerlauf und nutzt lediglich zehn Prozent der vCPU. In der Nebenzeit erhalte ich pro Minute 0,2 Guthaben, verbrauche aber nur 0,1 Guthaben pro Minute. Der virtuelle Computer bildet also pro Stunde ein Guthaben von sechs Einheiten (0,1 x 60).  Für die 20 Stunden, die nicht als Spitzenzeit gelten, entsteht somit ein Guthaben von 120 Einheiten.  
 
@@ -129,13 +132,13 @@ In der obigen Instanz ist Ihre Baseline z. B. 20 %. Wenn Sie 10 % der CPU nut
 
 ### <a name="q-why-is-my-remaining-credit-set-to-0-after-a-redeploy-or-a-stopstart"></a>F: Warum wird mein Restguthaben nach dem erneuten Bereitstellen oder Beenden bzw. Starten auf 0 gesetzt?
 
-**A**: Wenn eine VM „ERNEUT BEREITGESTELLT“ ist und die VM auf einen anderen Knoten verschoben wird, geht das gesammelte Guthaben verloren. Wenn die VM beendet/gestartet wird, aber auf dem gleichen Knoten verbleibt, behält die VM das gesammelte Guthaben. Immer wenn die VM auf einem Knoten neu startet, erhält sie ein Anfangsguthaben. Bei Standard_B8ms sind dies 240 Minuten.
+**A:** Wenn eine VM „ERNEUT BEREITGESTELLT“ ist und die VM auf einen anderen Knoten verschoben wird, geht das gesammelte Guthaben verloren. Wenn die VM beendet/gestartet wird, aber auf dem gleichen Knoten verbleibt, behält die VM das gesammelte Guthaben. Immer wenn die VM auf einem Knoten neu startet, erhält sie ein Anfangsguthaben. Bei Standard_B8ms sind dies 240 Minuten.
 
 ### <a name="q-what-happens-if-i-deploy-an-unsupported-os-image-on-b1ls"></a>F: Was geschieht, wenn ein nicht unterstütztes Betriebssystemimage auf B1ls bereitgestellt wird?
 
 **A**: B1ls unterstützt nur Linux-Images, und wenn Sie ein Image eines anderen Betriebssystems bereitstellen, erhalten Sie möglicherweise keine optimale Benutzererfahrung.
 
-## <a name="other-sizes"></a>Andere Größen
+## <a name="other-sizes-and-information"></a>Weitere Größen und Informationen
 
 - [Allgemeiner Zweck](sizes-general.md)
 - [Computeoptimiert](sizes-compute.md)
@@ -143,6 +146,10 @@ In der obigen Instanz ist Ihre Baseline z. B. 20 %. Wenn Sie 10 % der CPU nut
 - [Speicheroptimiert](sizes-storage.md)
 - [GPU-optimiert](sizes-gpu.md)
 - [High Performance Computing](sizes-hpc.md)
+
+Preisrechner: [Preisrechner](https://azure.microsoft.com/pricing/calculator/)
+
+Weitere Informationen zu Datenträgertypen: [Datenträgertypen](./linux/disks-types.md#ultra-disk)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

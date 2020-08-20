@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
-ms.date: 04/30/2020
-ms.openlocfilehash: 4eaa9c4e3d200eedd57c468639c1af3830911d1d
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.date: 08/06/2020
+ms.openlocfilehash: 1d11318d2af640a0cf417286ee777ce833297a4f
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82889262"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87873601"
 ---
 # <a name="set-up-clusters-in-hdinsight-with-apache-hadoop-apache-spark-apache-kafka-and-more"></a>Einrichten von Clustern in HDInsight mit Apache Hadoop, Apache Spark, Apache Kafka usw.
 
@@ -148,6 +148,9 @@ Weitere Informationen finden Sie unter [Verwenden von externen Metadatenspeicher
 Verwenden Sie einen benutzerdefinierten Metastore, wenn Sie nach dem Löschen des HDInsight-Clusters Ihre Hive-Tabellen beibehalten möchten. Sie können diesen Metastore anschließend an einen anderen HDInsight-Cluster anfügen.
 
 Ein HDInsight-Metastore, der für eine HDInsight-Clusterversion erstellt wurde, kann nicht über verschiedene HDInsight-Clusterversionen freigegeben werden. Eine Liste mit den HDInsight-Versionen finden Sie unter [Unterstützte HDInsight-Versionen](hdinsight-component-versioning.md#supported-hdinsight-versions).
+
+> [!IMPORTANT]
+> Der Standardmetastore stellt eine Azure SQL-Datenbank mit einem **Basic-Tarif mit einer Begrenzung auf fünf DTUs (nicht aktualisierbar)** bereit. Er eignet sich für grundlegende Testzwecke. Bei großen Workloads bzw. Produktionsworkloads empfiehlt sich die Migration zu einem externen Metastore.
 
 #### <a name="sql-database-for-oozie"></a>SQL-Datenbank für Oozie
 

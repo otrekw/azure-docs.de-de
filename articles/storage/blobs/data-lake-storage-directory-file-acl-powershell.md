@@ -6,21 +6,21 @@ author: normesta
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
 ms.topic: how-to
-ms.date: 04/21/2020
+ms.date: 08/10/2020
 ms.author: normesta
 ms.reviewer: prishet
-ms.openlocfilehash: d22b83e1f3464f6d87d2bc3821682b25e05d947b
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: ef205a9a94ef7b40ed271387df617a5d96a78307
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86142540"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88054305"
 ---
 # <a name="use-powershell-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>Verwenden von PowerShell zum Verwalten von Verzeichnissen, Dateien und Zugriffssteuerungslisten in Azure Data Lake Storage Gen2
 
 In diesem Artikel erfahren Sie, wie Sie PowerShell zum Erstellen und Verwalten von Verzeichnissen, Dateien und Berechtigungen in Speicherkonten verwenden, für die der hierarchische Namespace aktiviert ist. 
 
-[Zuordnung von Gen1 zu Gen2](#gen1-gen2-map) | [Feedback geben](https://github.com/Azure/azure-powershell/issues)
+[Beispiel](https://docs.microsoft.com/powershell/module/Az.Storage/?view=azps-4.5.0) | [Zuordnung von Gen1 zu Gen2](#gen1-gen2-map) | [Feedback senden](https://github.com/Azure/azure-powershell/issues)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

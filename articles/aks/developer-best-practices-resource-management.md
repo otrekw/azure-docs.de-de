@@ -7,12 +7,12 @@ author: zr-msft
 ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: zarhoads
-ms.openlocfilehash: 9f5fcbda93e4a31b4d328bffe4689a47a4eb89ff
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 4882fadcc2f05e4047366d8d097a3918091035bb
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281564"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88005311"
 ---
 # <a name="best-practices-for-application-developers-to-manage-resources-in-azure-kubernetes-service-aks"></a>Bewährte Anwendungsentwicklermethoden zum Verwalten von Ressourcen in Azure Kubernetes Service (AKS)
 
@@ -74,7 +74,7 @@ Weitere Informationen zu Ressourcenverwaltung und Zuweisungen finden Sie unter [
 
 ## <a name="develop-and-debug-applications-against-an-aks-cluster"></a>Entwickeln und Debuggen von Anwendungen für einen AKS-Cluster
 
-**Best Practice-Anleitung**: Entwicklungsteams sollten einen AKS-Cluster mithilfe von Dev Spaces bereitstellen und debuggen. Dieses Entwicklungsmodell stellt sicher, dass rollenbasierte Zugriffssteuerungen, Netzwerk- oder Speicheranforderungen implementiert werden, bevor die App in der Produktionsumgebung bereitgestellt wird.
+**Best Practice-Anleitung**: Entwicklungsteams sollten einen AKS-Cluster mithilfe von Dev Spaces bereitstellen und debuggen. Dieses Entwicklungsmodell stellt sicher, dass die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) und Netzwerk- oder Speicheranforderungen implementiert werden, bevor die App in der Produktionsumgebung bereitgestellt wird.
 
 Mit Azure Dev Spaces entwickeln, debuggen und testen Sie Anwendungen direkt mit einem AKS-Cluster. Entwickler in einem Team arbeiten zusammen, um während des gesamten Lebenszyklus der Anwendung zu erstellen und zu testen. Sie können weiterhin vorhandene Tools wie Visual Studio oder Visual Studio Code verwenden. Eine Erweiterung ist für Dev Spaces installiert, die eine Option zum Ausführen und Debuggen der Anwendung in einem AKS-Cluster bietet.
 

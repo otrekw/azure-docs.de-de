@@ -1,6 +1,6 @@
 ---
 title: Löschen von Knoten für VMware Solution by CloudSimple – Azure
-description: Erfahren Sie, wie Sie mit der CloudSimple-Bereitstellung Knoten aus Ihrer VMware-Lösung löschen.
+description: Hier erfahren Sie, wie Sie mit der CloudSimple-Bereitstellung Knoten aus Ihrer VMware-Lösung löschen. CloudSimple-Knoten werden getaktet abgerechnet. Löschen Sie die nicht mehr verwendeten Knoten im Azure-Portal.
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 08/05/2019
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 122e0636f54e066ae86ed2d19cefe5863b026293
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 569bc6350b1bfa01228d49d28a1d12e2ab62f6f0
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77024737"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88142263"
 ---
 # <a name="delete-nodes-from-azure-vmware-solution-by-cloudsimple"></a>Löschen von Knoten aus Azure VMware Solution by CloudSimple
 

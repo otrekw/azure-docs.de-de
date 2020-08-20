@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: e1ad4e53596b8228bdef5beb18aa250a9512c49f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4800234b55507b7c8d8a16d16ce4d2fef3365baa
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77659661"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87829593"
 ---
 # <a name="troubleshooting-metrics-charts"></a>Problembehandlung für Metrikdiagramme
 
@@ -42,7 +42,7 @@ Das Untersuchen von Metriken erfordert einen *Microsoft.Insights*-Ressourcenanbi
 
 ### <a name="you-dont-have-sufficient-access-rights-to-your-resource"></a>Ihre Zugriffsrechte sind für den Zugriff auf die Ressource nicht ausreichend
 
-In Azure wird der Zugriff auf Metriken durch die [rollenbasierte Zugriffssteuerung (RBAC)](../../role-based-access-control/overview.md) gesteuert. Sie müssen Mitglied von [Überwachungsleser](../../role-based-access-control/built-in-roles.md#monitoring-reader), [Überwachungsmitwirkender](../../role-based-access-control/built-in-roles.md#monitoring-contributor) oder [Mitwirkender](../../role-based-access-control/built-in-roles.md#contributor) sein, um Metriken für eine Ressource untersuchen zu können.
+In Azure wird der Zugriff auf Metriken durch die [rollenbasierte Zugriffssteuerung von Azure (Azure RBAC)](../../role-based-access-control/overview.md) gesteuert. Sie müssen Mitglied von [Überwachungsleser](../../role-based-access-control/built-in-roles.md#monitoring-reader), [Überwachungsmitwirkender](../../role-based-access-control/built-in-roles.md#monitoring-contributor) oder [Mitwirkender](../../role-based-access-control/built-in-roles.md#contributor) sein, um Metriken für eine Ressource untersuchen zu können.
 
 **Lösung:** Stellen Sie sicher, dass Sie über ausreichende Berechtigungen für die Ressource verfügen, deren Metriken Sie untersuchen.
 
@@ -68,7 +68,7 @@ Wenn Sie [die Grenzen der y-Achse](metrics-charts.md#lock-boundaries-of-chart-y-
 
 Das Sammeln von **Gastbetriebssystem**-Metriken erfordert die Konfiguration der Azure-Diagnoseerweiterung oder deren Aktivierung über das Fenster **Diagnoseeinstellungen** für Ihre Ressource.
 
-**Lösung:** Wenn die Azure-Diagnoseerweiterung aktiviert ist, Ihre Metriken aber immer noch nicht angezeigt werden, führen Sie die im [Handbuch zur Problembehandlung der Azure-Diagnoseerweiterung](diagnostics-extension-troubleshooting.md#metric-data-doesnt-appear-in-the-azure-portal) beschriebenen Schritte aus. Weitere Informationen finden Sie auch in den Schritten zur Problembehandlung für [Namespace und Metriken des Gastbetriebssystems können nicht ausgewählt werden](metrics-troubleshoot.md#cannot-pick-guest-os-namespace-and-metrics).
+**Lösung:** Wenn die Azure-Diagnoseerweiterung aktiviert ist, Ihre Metriken aber immer noch nicht angezeigt werden, führen Sie die im [Handbuch zur Problembehandlung der Azure-Diagnoseerweiterung](diagnostics-extension-troubleshooting.md#metric-data-doesnt-appear-in-the-azure-portal) beschriebenen Schritte aus. Weitere Informationen finden Sie auch in den Schritten zur Problembehandlung für [Namespace und Metriken des Gastbetriebssystems können nicht ausgewählt werden](#cannot-pick-guest-os-namespace-and-metrics).
 
 ## <a name="error-retrieving-data-message-on-dashboard"></a>Meldung „Fehler beim Abrufen von Daten“ im Dashboard
 
@@ -106,7 +106,7 @@ Standardmäßig werden die Metriken des Gastbetriebssystems im Azure Storage-Kon
     > [!WARNING]
     > Sie können den [Log Analytics-Agent](agents-overview.md#log-analytics-agent) nicht verwenden (auch als Microsoft Monitoring Agent oder „MMA“ bezeichnet), um das **Gastbetriebssystem** an ein Speicherkonto zu senden.
 
-1. Stellen Sie sicher, dass der **Microsoft.Insights**-Ressourcenanbieter [für Ihr Abonnement registriert ist](metrics-troubleshoot.md#microsoftinsights-resource-provider-isnt-registered-for-your-subscription).
+1. Stellen Sie sicher, dass der **Microsoft.Insights**-Ressourcenanbieter [für Ihr Abonnement registriert ist](#microsoftinsights-resource-provider-isnt-registered-for-your-subscription).
 
 1. Stellen Sie sicher, dass das Speicherkonto nicht durch die Firewall geschützt ist. Das Azure-Portal benötigt Zugriff auf das Speicherkonto, um Metrikdaten abzurufen und die Diagramme auszugeben.
 

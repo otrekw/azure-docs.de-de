@@ -4,8 +4,6 @@
   items:
     - name: Was versteht man unter Azure Load Balancer?
       href: load-balancer-overview.md
-    - name: Neuigkeiten
-      href: whats-new.md
 - name: Schnellstarts
   items:
     - name: 'Erstellen eines öffentlichen Lastenausgleichs: Portal'
@@ -45,6 +43,8 @@
       href: powershell-samples.md
 - name: Konzepte
   items:
+    - name: Neuigkeiten
+      href: whats-new.md
     - name: Komponenten
       href: components.md
     - name: Konzepte

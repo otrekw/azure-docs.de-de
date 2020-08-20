@@ -1,5 +1,5 @@
 ---
-title: Bewerten der Fairness und Vermeiden von Unfairness bei Machine Learning-Modellen (Vorschau)
+title: Erhöhen der Fairness von Machine Learning-Modellen (Vorschau)
 titleSuffix: Azure Machine Learning
 description: Hier finden Sie Informationen zur Fairness bei Machine Learning-Modellen, und Sie erfahren, wie das Python-Paket „Fairlearn“ zur Erstellung gerechterer Modelle beitragen kann.
 services: machine-learning
@@ -8,22 +8,22 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: luquinta
 author: luisquintanilla
-ms.date: 07/09/2020
-ms.openlocfilehash: 2cc3228c20fba322ec804a3bcc9ee322c7d37907
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.date: 08/05/2020
+ms.openlocfilehash: 0d3e49fbb11af92d016910e91b0144f6de998238
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86207289"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87829372"
 ---
-# <a name="build-fairer-machine-learning-models-preview"></a>Erstellen gerechterer Machine Learning-Modelle (Vorschau)
+# <a name="mitigate-fairness-in-machine-learning-models-preview"></a>Erhöhen der Fairness von Machine Learning-Modellen (Vorschau)
 
-Hier finden Sie Informationen zur Fairness bei Machine Learning, und Sie erfahren, wie das Open-Source-Python-Paket [Fairlearn](https://fairlearn.github.io/) zur Erstellung gerechterer Modelle beitragen kann. Wenn Sie keine Anstrengungen unternehmen, Fragestellungen rund um das Thema Fairness zu verstehen und die Fairness bei der Erstellung von Machine Learning-Modellen zu beurteilen, erstellen Sie möglicherweise Modelle, die keine fairen Ergebnisse liefern. 
+Hier finden Sie Informationen zur Fairness bei Machine Learning, und Sie erfahren, wie das Open-Source-Python-Paket [Fairlearn](https://fairlearn.github.io/) Fairnessprobleme bei Machine Learning-Modellen beheben kann. Wenn Sie keine Anstrengungen unternehmen, Fragestellungen rund um das Thema Fairness zu verstehen und die Fairness bei der Erstellung von Machine Learning-Modellen zu beurteilen, erstellen Sie möglicherweise Modelle, die keine fairen Ergebnisse liefern.
 
 In der folgenden Zusammenfassung des [Benutzerhandbuchs](https://fairlearn.github.io/user_guide/index.html) für das Open-Source-Paket Fairlearn wird beschrieben, wie Sie Fairlearn verwenden, um die Fairness der von Ihnen erstellten KI-Systeme zu bewerten.  Das Open-Source-Paket Fairlearn bietet ferner Optionen, die Ihnen helfen, von Ihnen festgestellte Fairness-Probleme zu reduzieren oder abzumildern.  In der [Anleitung](how-to-machine-learning-fairness-aml.md) und in den [Beispielnotebooks](https://github.com/Azure/MachineLearningNotebooks/tree/master/contrib/fairness) finden Sie weitere Informationen, wie Sie die Fairnessbewertung von KI-Systemen während des Trainings bei Azure Machine Learning aktivieren.
 
 
-## <a name="what-is-fairness-in-machine-learning-systems"></a>Was ist Fairness bei Machine Learning-Systemen?
+## <a name="what-is-fairness-in-machine-learning-models"></a>Was ist Fairness bei Machine Learning-Modellen?
 
 >[!NOTE]
 > Fairness ist eine soziotechnische Herausforderung. Viele Fairnessaspekte wie Gerechtigkeit und ein faires Verfahren werden nicht in quantitativen Fairnessmetriken erfasst. Außerdem können viele quantitative Fairnessmetriken nicht gleichzeitig befriedigt werden. Das Open-Source-Paket Fairlearn möchte Menschen in die Lage versetzen, verschiedene Auswirkungen und Entschärfungsstrategien zu beurteilen. Letztlich obliegt es den menschlichen Benutzern, die Modelle der künstlichen Intelligenz und des Machine Learnings erstellen, ihrem Szenario angemessene Kompromisse einzugehen.
@@ -38,7 +38,6 @@ Zwei weit verbreitete Arten KI-bedingter Nachteile sind:
 
 Diese Nachteile müssen bewertet und beseitigt werden, um unfaires Verhalten von KI-Systemen zu minimieren.
 
-
 ## <a name="fairness-assessment-and-mitigation-with-fairlearn"></a>Bewertung der Fairness und Vermeidung von Unfairness mit Fairlearn
 
 Fairlearn ist ein Open-Source-Python-Paket, mit dem Entwickler von Machine Learning-Systemen die Fairness ihrer Systeme bewerten und die festgestellten Fairnessprobleme behandeln können.
@@ -50,7 +49,8 @@ Das Open-Source-Paket Fairlearn verfügt über zwei Komponenten:
 
 Diese Komponenten ermöglichen es Data Scientists und Führungskräften, Kompromisse zwischen Fairness und Leistung abzuwägen und die optimale Entschärfungsstrategie für ihre Anforderungen zu verfolgen.
 
-## <a name="fairness-assessment"></a>Fairnessbewertung
+## <a name="assess-fairness-in-machine-learning-models"></a>Bewerten der Fairness von Machine Learning-Modellen
+
 Im Open-Source-Paket Fairlearn basiert das Fairnesskonzept auf einem als **Gruppenfairness** bezeichneten Ansatz. Dabei wird folgende Frage gestellt: Bei welchen Personengruppen besteht die Gefahr einer Benachteiligung? Die relevanten Gruppen werden auch als Teilgesamtheiten bezeichnet und durch **sensible Features** oder sensible Attribute definiert. Sensible Features werden als Vektor oder als Matrix namens `sensitive_features` an einen Schätzer im Open-Source-Paket Fairlearn übermittelt. Der Begriff legt nahe, dass Systemdesigner diese Features bei der Bewertung der Gruppenfairness besonders berücksichtigen sollten. 
 
 Dabei ist darauf zu achten, ob diese Features personenbezogene Daten enthalten und somit Auswirkungen auf den Datenschutz haben. Das Wort „sensibel“ bedeutet jedoch nicht, dass diese Features nicht für Vorhersagen herangezogen werden sollen.
@@ -72,7 +72,7 @@ Im Rahmen der Bewertungsphase wird Fairness durch Ungleichheitsmetriken quantifi
 
 - Ungleichheit bei der Auswahlrate: Diese Metrik enthält die Differenz bei der Auswahlrate für verschiedene Untergruppen. Ein Beispiel hierfür ist die Ungleichheit bei der Darlehensbewilligungsrate. Mit Auswahlrate ist der Anteil von Datenpunkten in jeder Klasse, die als „1“ klassifiziert wurden (binäre Klassifizierung), oder die Verteilung von Vorhersagewerten (Regression) gemeint.
 
-## <a name="unfairness-mitigation"></a>Vermeidung von Unfairness
+## <a name="mitigate-unfairness-in-machine-learning-models"></a>Ausgleichen von Unfairness bei Machine Learning-Modellen
 
 ### <a name="parity-constraints"></a>Gleichheitseinschränkungen
 

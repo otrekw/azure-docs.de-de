@@ -5,13 +5,13 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/19/2020
-ms.openlocfilehash: 050da712df6dad872fc03bd6ca79bbdf2a3e1753
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/19/2020
+ms.openlocfilehash: 00ed8f6ff9839c227f3d8a929a071834c5559226
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85563207"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88605731"
 ---
 # <a name="introduction-to-provisioned-throughput-in-azure-cosmos-db"></a>Einführung zum bereitgestellten Durchsatz in Azure Cosmos DB
 
@@ -96,7 +96,7 @@ Sie können die beiden Modelle kombinieren. Es ist erlaubt, Durchsatz sowohl auf
 
 Nachdem Sie einen Azure Cosmos-Container oder eine Datenbank erstellt haben, können Sie den bereitgestellten Durchsatz aktualisieren. Es gibt keine Beschränkung für den bereitgestellten Maximaldurchsatz, den Sie in der Datenbank oder dem Container konfigurieren können. 
 
-Um den [bereitgestellten Mindestdurchsatz](concepts-limits.md#storage-and-throughput) einer Datenbank oder eines Containers zu schätzen, ermitteln Sie folgenden Maximalwert:
+Um den [bereitgestellten Mindestdurchsatz](concepts-limits.md#storage-and-database-operations) einer Datenbank oder eines Containers zu schätzen, ermitteln Sie folgenden Maximalwert:
 
 * 400 RU/s 
 * Aktueller Speicher in GB * 10 RU/s

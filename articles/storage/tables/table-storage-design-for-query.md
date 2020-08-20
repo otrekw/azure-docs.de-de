@@ -1,6 +1,6 @@
 ---
 title: Entwerfen von Azure Table Storage für Abfragen | Microsoft-Dokumentation
-description: Entwerfen von Tabellen für Abfragen in Azure Table Storage.
+description: Entwerfen von Tabellen für Abfragen in Azure Table Storage. Wählen Sie einen geeigneten Partitionsschlüssel aus, optimieren Sie Abfragen, und sortieren Sie die Daten für den Tabellenspeicherdienst.
 services: storage
 author: MarkMcGeeAtAquent
 ms.service: storage
@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/23/2018
 ms.author: sngun
 ms.subservice: tables
-ms.openlocfilehash: 41a588ddc0c1be8014a84d8fe181013d8566f68d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 28a15541b9d706095bcd3d6d361bd7c983f195df
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75457645"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926245"
 ---
 # <a name="design-for-querying"></a>Entwurf für Abfragen
 Anwendungen für einen Tabellenspeicherdienst können intensiv lesen, intensiv schreiben oder beides. Dieser Artikel konzentriert sich auf die Dinge, die Sie beim Entwurf Ihres Tabellenspeicherdienstes beachten sollten, um Lesevorgänge effizient zu unterstützen. In der Regel ist ein Entwurf, der Lesevorgänge effizient unterstützt, auch für Schreibvorgänge effizient. Es gibt jedoch weitere Überlegungen, die beim Entwerfen der Unterstützung von Schreibvorgängen zu beachten sind und im Artikel [Entwurf für die Datenänderung](table-storage-design-for-modification.md) erläutert werden.
@@ -81,7 +81,7 @@ Bei der Wahl des **PartitionKey**-Werts sind weitere Aspekte zu bedenken, die si
 ## <a name="optimizing-queries-for-the-table-service"></a>Optimieren von Abfragen für den Tabellenspeicherdienst
 Der Tabellenspeicherdienst indiziert die Entitäten automatisch unter Verwendung von **PartitionKey**- und **RowKey**-Werten in einem einzelnen gruppierten Index. Aus diesem Grund stellen Punktabfragen die effizienteste Lösung dar. Allerdings gibt es mit Ausnahme des gruppierten Index für **PartitionKey** und **RowKey** keine weiteren Indizes.
 
-Viele Entwürfe müssen Anforderungen erfüllen, um die Suche nach Entitäten auf Grundlage mehrerer Kriterien zu ermöglichen. Suchen Sie z. B. Mitarbeiterentitäten auf Grundlage der E-Mail-Adresse, Mitarbeiter-ID oder Nachname. Die in [Entwurfsmuster für die Tabelle](table-storage-design-patterns.md) beschriebenen Muster befassen sich mit diesen Arten von Anforderungen und beschreiben Möglichkeiten zum Umgehen der Tatsache, dass der Tabellenspeicherdienst keine sekundären Indizes zur Verfügung stellt:  
+Viele Entwürfe müssen Anforderungen erfüllen, um die Suche nach Entitäten auf Grundlage mehrerer Kriterien zu ermöglichen. Suchen Sie z. B. Mitarbeiterentitäten auf Grundlage der E-Mail-Adresse, Mitarbeiter-ID oder Nachname. Die in [Entwurfsmuster für die Tabelle](table-storage-design-patterns.md) beschriebenen Muster befassen sich mit diesen Arten von Anforderungen und beschreiben Möglichkeiten zum Umgehen der Tatsache, dass der Tabellenspeicherdienst keine sekundären Indizes zur Verfügung stellt:  
 
 * [Sekundäres Indexmuster für Intra-Partition](table-storage-design-patterns.md#intra-partition-secondary-index-pattern) – Speichern mehrerer Kopien jeder Entität mit unterschiedlichen **RowKey**-Werten (in der gleichen Partition) zur Ermöglichung schneller und effizienter Suchvorgänge und alternativer Sortierreihenfolgen mit unterschiedlichen **RowKey**-Werten.  
 * [Sekundäres Indexmuster für Inter-Partition](table-storage-design-patterns.md#inter-partition-secondary-index-pattern) – Speichern mehrerer Kopien der einzelnen Entitäten mithilfe verschiedener **RowKey**-Werte in separaten Partitionen oder in separaten Tabellen zur Aktivierung schneller und effizienter Suchvorgänge und alternativer Sortierreihenfolgen mit unterschiedlichen **RowKey**-Werten.  

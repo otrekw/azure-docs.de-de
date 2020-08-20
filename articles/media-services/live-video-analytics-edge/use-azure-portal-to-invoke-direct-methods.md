@@ -13,28 +13,28 @@ ms.topic: how-to
 ms.custom: ''
 ms.date: 07/24/2020
 ms.author: inhenkel
-ms.openlocfilehash: 763dd82c8263a5e180468f9fbd7f86526295a80d
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 9d784e1697dfbcbfec509c1a51c9b832b533c97b
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87279286"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87830749"
 ---
 # <a name="how-to-use-azure-portal-to-invoke-direct-methods"></a>Verwenden des Azure-Portals zum Aufrufen direkter Methoden
 
-IoT Hub gibt Ihnen die Möglichkeit, [direkte Methoden](/azure/iot-hub/iot-hub-devguide-direct-methods#method-invocation-for-iot-edge-modules) auf Edgegeräten von der Cloud aus aufzurufen. Das Modul „Live Video Analytics in IoT Edge (LVA)“ stellt mehrere [direkte Methoden](/azure/media-services/live-video-analytics-edge/direct-methods) vor, die zur Definition, Bereitstellung und Instanziierung verschiedener Workflows für die Analyse von Livevideos verwendet werden können.
+IoT Hub gibt Ihnen die Möglichkeit, [direkte Methoden](../../iot-hub/iot-hub-devguide-direct-methods.md#method-invocation-for-iot-edge-modules) auf Edgegeräten von der Cloud aus aufzurufen. Das Modul „Live Video Analytics in IoT Edge (LVA)“ stellt mehrere [direkte Methoden](./direct-methods.md) vor, die zur Definition, Bereitstellung und Instanziierung verschiedener Workflows für die Analyse von Livevideos verwendet werden können.
 
 In diesem Artikel erfahren Sie, wie Sie direkte Methodenaufrufe in Live Video Analytics für ein IoT Edge-Modul über das Azure-Portal aufrufen können.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Das Modul „Live Video Analytics in IoT Edge“ wird auf Ihrem Edgegerät ausgeführt, wobei Sie entweder die unter [Schnellstart: Live Video Analytics in IoT Edge](/azure/media-services/live-video-analytics-edge/get-started-detect-motion-emit-events-quickstart) beschriebenen Methoden oder das [-Portal verwenden.](/azure/media-services/live-video-analytics-edge/deploy-iot-edge-device)
+* Das Modul „Live Video Analytics in IoT Edge“ wird auf Ihrem Edgegerät ausgeführt, wobei Sie entweder die unter [Schnellstart: Live Video Analytics in IoT Edge](./get-started-detect-motion-emit-events-quickstart.md) beschriebenen Methoden oder das [-Portal verwenden.](./deploy-iot-edge-device.md)
 
-* Sie verstehen [Live Video Analytics](/azure/media-services/live-video-analytics-edge/overview) und das [Mediengraphkonzept](/azure/media-services/live-video-analytics-edge/media-graph-concept).
+* Sie verstehen [Live Video Analytics](./overview.md) und das [Mediengraphkonzept](./media-graph-concept.md).
 
 ## <a name="invoking-direct-methods-via-azure-portal"></a>Aufrufen von direkten Methoden über das Azure-Portal
 
-Jede der [direkten Methoden](/azure/media-services/live-video-analytics-edge/direct-methods), die über das LVA-Modul verfügbar gemacht werden, kann über das Azure-Portal aufgerufen werden. Die folgenden Schritte enthalten die Details für eine direkte Methode. Sie können andere direkte Methoden mit ähnlichen Schritten aufrufen. Für jede direkte Methode ist jedoch ein bestimmter JSON-Text erforderlich.
+Jede der [direkten Methoden](./direct-methods.md), die über das LVA-Modul verfügbar gemacht werden, kann über das Azure-Portal aufgerufen werden. Die folgenden Schritte enthalten die Details für eine direkte Methode. Sie können andere direkte Methoden mit ähnlichen Schritten aufrufen. Für jede direkte Methode ist jedoch ein bestimmter JSON-Text erforderlich.
 
 Verwenden Sie den `GraphTopologyList`-Methodenaufruf, um eine Liste aller Graphtopologien abzurufen, die derzeit im Modul „Live Video Analytics in IoT Edge“ bereitgestellt werden. Verwenden Sie die folgenden Schritte, um diese direkte Methode aufzurufen:
 
@@ -72,9 +72,9 @@ Verwenden Sie den `GraphTopologyList`-Methodenaufruf, um eine Liste aller Grapht
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere direkte Methoden finden Sie auf der Seite [Direkte Methoden](/azure/media-services/live-video-analytics-edge/direct-methods).
+Weitere direkte Methoden finden Sie auf der Seite [Direkte Methoden](./direct-methods.md).
 
 > [!NOTE]
 > Eine Graphinstanz instanziiert eine bestimmte Topologie, daher müssen Sie sicherstellen, dass Sie die richtige Topologie festgelegt haben, bevor Sie eine Graphinstanz erstellen.
 
-[Schnellstart: Erkennen von Bewegung und Ausgeben von Ereignissen](/azure/media-services/live-video-analytics-edge/get-started-detect-motion-emit-events-quickstart) ist eine geeignete Referenz, um die genaue Abfolge direkter Methodenaufrufe zu verstehen.
+[Schnellstart: Erkennen von Bewegung und Ausgeben von Ereignissen](./get-started-detect-motion-emit-events-quickstart.md) ist eine geeignete Referenz, um die genaue Abfolge direkter Methodenaufrufe zu verstehen.

@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 03/07/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: b08509bed6b26cb56caebd4dc47fc3b7ac84ce27
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 38973e5484ece0b47e2f81ad78c716b5ee49cead
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85117317"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87829695"
 ---
 # <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-ad"></a>Erstellen eines SCIM-Endpunkts und Konfigurieren der Benutzerbereitstellung mit Azure AD
 
@@ -60,7 +60,7 @@ Jede Anwendung erfordert unterschiedliche Attribute, um einen Benutzer oder eine
 |tag|urn:ietf:params:scim:schemas:extension:2.0:CustomExtension:tag|extensionAttribute1|
 |status|aktiv|isSoftDeleted (berechneter Wert, wird für Benutzer nicht gespeichert)|
 
-Das oben definierte Schema würde mit der nachstehenden JSON-Nutzlast dargestellt. Beachten Sie, dass die JSON-Darstellung neben den für die Anwendung erforderlichen Attributen auch die erforderlichen Attribute „id“, „externalId“ und „meta“ enthält.
+Das oben definierte Schema kann mit den nachstehenden JSON-Nutzdaten dargestellt werden. Hinweis: Die JSON-Darstellung enthält neben den für die Anwendung erforderlichen Attributen auch die erforderlichen Attribute `id`, `externalId` und `meta`.
 
 ```json
 {
@@ -134,7 +134,7 @@ Im SCIM-RFC sind verschiedene Endpunkte definiert. Sie können mit dem Endpunkt 
 |/Group|Führt CRUD-Vorgänge für ein Gruppenobjekt aus.|
 |/ServiceProviderConfig|Stellt Einzelheiten zu den unterstützten Features des SCIM-Standards bereit, z. B. die unterstützten Ressourcen und die Authentifizierungsmethode.|
 |/ResourceTypes|Definiert die Metadaten für jede Ressource|
-|/Schemas|Der Satz von unterstützten Attributen kann bei einzelnen Clients und Dienstanbietern unterschiedlich sein. Während beispielsweise ein Dienstanbieter „name“, „title“ und „emails“ unterstützt, kann ein anderer Anbieter „name“, „title“ und „phoneNumbers“ verwenden. Der Endpunkt „/Schemas“ ermöglicht die Erkennung der unterstützten Attribute.|
+|/Schemas|Der Satz von unterstützten Attributen kann bei einzelnen Clients und Dienstanbietern unterschiedlich sein. Ein Dienstanbieter enthält möglicherweise `name`, `title` und `emails`, während ein anderer `name`, `title` und `phoneNumbers` verwendet. Der Endpunkt „/Schemas“ ermöglicht die Erkennung der unterstützten Attribute.|
 |/Bulk|Massenvorgänge (bulk operations) ermöglichen das Ausführen von Vorgängen für eine große Sammlung von Ressourcenobjekten in einem einzigen Schritt (z. B. Aktualisieren der Mitgliedschaften für eine große Gruppe).|
 
 
@@ -149,7 +149,7 @@ Im Rahmen der [SCIM 2.0-Protokollspezifikation](http://www.simplecloud.info/#Spe
 * Unterstützt das Erstellen von Benutzern (und optional auch von Gruppen) gemäß [Abschnitt 3.3 des SCIM-Protokolls](https://tools.ietf.org/html/rfc7644#section-3.3).  
 * Unterstützt das Ändern von Benutzern bzw. Gruppen mit PATCH-Anforderungen gemäß [Abschnitt 3.5.2 des SCIM-Protokolls](https://tools.ietf.org/html/rfc7644#section-3.5.2).  
 * Unterstützt das Abrufen einer bekannten Ressource für einen zuvor erstellten Benutzer oder eine Gruppe gemäß [Abschnitt 3.4.1 des SCIM-Protokolls](https://tools.ietf.org/html/rfc7644#section-3.4.1).  
-* Unterstützt das Abfragen von Benutzern bzw. Gruppen gemäß [Abschnitt 3.4.2 des SCIM-Protokolls](https://tools.ietf.org/html/rfc7644#section-3.4.2).  Standardmäßig werden Benutzer anhand ihrer `id` abgerufen und nach `username` und `externalid` abgefragt. Gruppen werden nach `displayName` abgefragt.  
+* Unterstützt das Abfragen von Benutzern bzw. Gruppen gemäß [Abschnitt 3.4.2 des SCIM-Protokolls](https://tools.ietf.org/html/rfc7644#section-3.4.2).  Standardmäßig werden Benutzer anhand ihrer `id` abgerufen und nach `username` und `externalId` abgefragt. Gruppen werden nach `displayName` abgefragt.  
 * Unterstützt das Abfragen von Benutzern nach ID und nach Manager gemäß Abschnitt 3.4.2 des SCIM-Protokolls.  
 * Unterstützt das Abfragen von Gruppen nach ID und nach Mitglied gemäß Abschnitt 3.4.2 des SCIM-Protokolls.  
 * Akzeptiert ein einzelnes Bearertoken für die Authentifizierung und Autorisierung von Azure AD für Ihre Anwendung.
@@ -745,7 +745,7 @@ TLS 1.2-Verschlüsselungssammlungen (Minimum):
 - TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
 
 ### <a name="ip-ranges"></a>IP-Bereiche
-Der Azure AD-Bereitstellungsdienst kann derzeit in einem beliebigen IP-Adressbereich von Azure operieren. Es wird derzeit daran gearbeitet, den Satz von IP-Adressbereichen zu konsolidieren, mit denen der Dienst arbeitet. Dieses Dokument wird aktualisiert, sobald die Liste der IP-Adressbereiche konsolidiert ist. 
+Der Azure AD-Bereitstellungsdienst wird zurzeit unter den IP-Bereichen für AzureActiveDirectory und AzureActiveDirectoryDomainServices betrieben, die [hier](https://www.microsoft.com/download/details.aspx?id=56519&WT.mc_id=rss_alldownloads_all) aufgelistet sind. Es wird zurzeit daran gearbeitet, dies auf die IP-Bereiche für AzureActiveDirectory zu beschränken. 
 
 ## <a name="step-3-build-a-scim-endpoint"></a>Schritt 3: Erstellen eines SCIM-Endpunkts
 
@@ -915,10 +915,10 @@ Senden Sie eine GET-Anforderung an den Tokencontroller, um ein gültiges Bearert
 
 ***Beispiel 1: Abfragen des Diensts nach einem passenden Benutzer***
 
-Azure Active Directory fragt den Dienst nach einem Benutzer mit einem externalId-Attributwert ab, der mit dem mailNickname-Attributwert eines Benutzers in Azure AD übereinstimmt. Die Abfrage wird als Hypertext Transfer-Protokoll-Anforderung (HTTP-Anforderung) wie in diesem Beispiel ausgedrückt, wobei „jyoung“ ein Beispiel für ein mailNickname-Attribut eines Benutzers in Azure Active Directory ist.
+Azure Active Directory fragt den Dienst nach einem Benutzer mit einem `externalId`-Attributwert ab, der mit dem mailNickname-Attributwert eines Benutzers in Azure AD übereinstimmt. Die Abfrage wird als Hypertext Transfer-Protokoll-Anforderung (HTTP-Anforderung) wie in diesem Beispiel ausgedrückt, wobei „jyoung“ ein Beispiel für ein mailNickname-Attribut eines Benutzers in Azure Active Directory ist.
 
 >[!NOTE]
-> Dies ist nur ein Beispiel. Nicht alle Benutzer verfügen über ein mailNickname-Attribut, und der Wert eines Benutzers ist möglicherweise im Verzeichnis nicht eindeutig. Das für den Abgleich verwendete Attribut (in diesem Fall „externalId“) kann auch in den [Azure AD-Attributzuordnungen](customize-application-attributes.md) konfiguriert werden.
+> Dies ist nur ein Beispiel. Nicht alle Benutzer verfügen über ein mailNickname-Attribut, und der Wert eines Benutzers ist möglicherweise im Verzeichnis nicht eindeutig. Das für den Abgleich verwendete Attribut (in diesem Fall `externalId`) kann auch in den [Azure AD-Attributzuordnungen](customize-application-attributes.md) konfiguriert werden.
 
 ```
 GET https://.../scim/Users?filter=externalId eq jyoung HTTP/1.1
@@ -939,7 +939,7 @@ Im Beispielcode wird die Anforderung in einen Aufruf der QueryAsync-Methode des 
  Task<Resource[]> QueryAsync(IRequest<IQueryParameters> request);
 ```
 
-In der Beispielabfrage für einen Benutzer mit einem bestimmten Wert für das externalId-Attribut lauten die Werte der Argumente, die an die QueryAsync-Methode übergeben werden, wie folgt:
+In der Beispielabfrage für einen Benutzer mit einem bestimmten Wert für das Attribut `externalId` lauten die Werte der Argumente, die an die QueryAsync-Methode übergeben werden, wie folgt:
 
 * parameters.AlternateFilters.Count: 1
 * parameters.AlternateFilters.ElementAt(0).AttributePath: "externalId"
@@ -948,7 +948,7 @@ In der Beispielabfrage für einen Benutzer mit einem bestimmten Wert für das ex
 
 ***Beispiel 2: Bereitstellen eines Benutzers***
 
-Wenn in der Antwort auf eine Abfrage an den Webdienst für einen Benutzer mit einem externalId-Attributwert, der mit dem mailNickname-Attributwert eines Benutzers übereinstimmt, keine Benutzer zurückgegeben werden, stellt Azure Active Directory die folgende Anforderung: Der Dienst muss einen Benutzer bereitstellen, der dem Benutzer in Azure Active Directory entspricht.  Dies ist ein Beispiel für eine Anforderung dieser Art: 
+Wenn in der Antwort auf eine Abfrage an den Webdienst für einen Benutzer mit einem `externalId`-Attributwert, der mit dem mailNickname-Attributwert eines Benutzers übereinstimmt, keine Benutzer zurückgegeben werden, stellt Azure Active Directory die folgende Anforderung: Der Dienst muss einen Benutzer bereitstellen, der dem Benutzer in Azure Active Directory entspricht.  Dies ist ein Beispiel für eine Anforderung dieser Art: 
 
 ```
  POST https://.../scim/Users HTTP/1.1
@@ -1191,7 +1191,7 @@ Die SCIM-Spezifikation definiert kein SCIM-spezifisches Schema für die Authenti
 |--|--|--|--|
 |Benutzername und Kennwort (von Azure AD nicht empfohlen oder unterstützt)|Einfache Implementierung|Unsicher – [Ihr KeNNwort ist unwichtig](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/your-pa-word-doesn-t-matter/ba-p/731984)|Unterstützt von Fall zu Fall für Katalog-Apps. Nicht unterstützt für Nicht-Katalog-Apps.|
 |Langlebiges Bearertoken|Bei langlebigen Token muss kein Benutzer anwesend sein. Admins können sie beim Einrichten der Bereitstellung leicht verwenden.|Langlebige Token können nur schwer mit einem Administrator geteilt werden, ohne unsichere Methoden wie E-Mail zu verwenden. |Unterstützt für Katalog- und Nicht-Katalog-Apps. |
-|OAuth-Autorisierungscodegenehmigung|Zugriffstoken sind sehr viel kurzlebiger als Kennwörter und verfügen über einen automatischen Aktualisierungsmechanismus, den langlebige Bearertoken nicht haben.  Bei der ersten Autorisierung muss ein echter Benutzer anwesend sein, was einen gewissen Grad an Verantwortlichkeit bedeutet. |Ein Benutzer muss anwesend sein. Wenn der Benutzer das Unternehmen verlässt, wird das Token ungültig, und die Autorisierung muss erneut erfolgen.|Unterstützt für Katalog-Apps. Unterstützung für Nicht-Katalog-Apps ist in Arbeit.|
+|OAuth-Autorisierungscodegenehmigung|Zugriffstoken sind sehr viel kurzlebiger als Kennwörter und verfügen über einen automatischen Aktualisierungsmechanismus, den langlebige Bearertoken nicht haben.  Bei der ersten Autorisierung muss ein echter Benutzer anwesend sein, was einen gewissen Grad an Verantwortlichkeit bedeutet. |Ein Benutzer muss anwesend sein. Wenn der Benutzer das Unternehmen verlässt, wird das Token ungültig, und die Autorisierung muss erneut erfolgen.|Wird nur für Katalog-Apps unterstützt. An der Unterstützung für andere Apps wird noch gearbeitet.|
 |Genehmigung von OAuth-Clientanmeldeinformationen|Zugriffstoken sind sehr viel kurzlebiger als Kennwörter und verfügen über einen automatischen Aktualisierungsmechanismus, den langlebige Bearertoken nicht haben. Sowohl die Autorisierungscodegenehmigung als auch die Genehmigung von Clientanmeldeinformationen gehören zum gleichen Typ Zugriffstoken. Ein Wechsel zwischen diesen beiden Methoden ist daher für die API transparent.  Die Bereitstellung kann vollständig automatisiert werden. Neue Token können ohne Benutzerinteraktion und im Hintergrund angefordert werden. ||Nicht unterstützt für Katalog- und Nicht-Katalog-Apps. Diese Unterstützung befindet sich in unserem Backlog.|
 
 > [!NOTE]

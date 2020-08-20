@@ -1,19 +1,17 @@
 ---
 title: 'Windows Virtual Desktop: MSIX-Feature zum Anfügen von Apps – Azure'
 description: Einrichten des MSIX-Features zum Anfügen von Apps für Windows Virtual Desktop.
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 06/16/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 6f8e20f97ae19a33674631e4dee18901d54462b3
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: e461bbf8c3a6cd845744fc0e17b5d1f0eb9bef58
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87291513"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88010156"
 ---
 # <a name="set-up-msix-app-attach"></a>Einrichten des MSIX-Features zum Anfügen von Apps
 
@@ -202,12 +200,12 @@ Wenn Ihre App ein Zertifikat verwendet, das nicht öffentlich vertrauenswürdig 
 
 1. Klicken Sie mit der rechten Maustaste auf das Paket, und wählen Sie **Eigenschaften** aus.
 2. Wählen Sie im angezeigten Fenster die Registerkarte **Digitale Signaturen** aus. Es darf nur ein Element in der Liste auf der Registerkarte vorhanden sein, wie in der folgenden Abbildung gezeigt. Wählen Sie dieses Element aus, um das Element zu markieren, und wählen Sie dann **Details** aus.
-3. Wenn das Fenster mit den Details zur digitalen Signatur angezeigt wird, wählen Sie die Registerkarte **Allgemein** und dann **Zertifikat installieren** aus.
+3. Wenn das Fenster mit den Details zur digitalen Signatur angezeigt wird, klicken Sie auf die Registerkarte **Allgemein**, dann auf **View Certificate** (Zertifikat anzeigen) und schließlich auf **Install certificate** (Zertifikat installieren).
 4. Wenn das Installationsprogramm geöffnet wird, wählen Sie **Lokaler Computer** als Speicherort aus, und klicken Sie dann auf **Weiter**.
 5. Wenn Sie vom Installationsprogramm gefragt werden, ob Sie zulassen möchten, dass die App Änderungen an Ihrem Gerät vornimmt, wählen Sie **Ja** aus.
 6. Wählen Sie **Alle Zertifikate in folgendem Speicher speichern** und dann **Durchsuchen** aus.
 7. Wenn das Fenster zum Auswählen des Zertifikatspeichers angezeigt wird, wählen Sie **Vertrauenswürdige Personen** aus, und klicken Sie dann auf **OK**.
-8. Wählen Sie **Fertig stellen** aus.
+8. Klicken Sie auf **Weiter** und dann auf **Fertig stellen**.
 
 ## <a name="prepare-powershell-scripts-for-msix-app-attach"></a>Vorbereiten von PowerShell-Skripts für das MSIX-Feature zum Anfügen von Apps
 
@@ -220,7 +218,7 @@ Das MSIX-Feature zum Anfügen von Apps weist vier verschiedene Phasen auf, die i
 
 In jeder Phase wird ein PowerShell-Skript erstellt. Die Beispielskripts für die einzelnen Phasen sind [hier](https://github.com/Azure/RDS-Templates/tree/master/msix-app-attach) verfügbar.
 
-### <a name="stage-the-powershell-script"></a>Staging des PowerShell-Skripts
+### <a name="stage-powershell-script"></a>Stagen eines PowerShell-Skripts
 
 Bevor Sie die PowerShell-Skripts aktualisieren, stellen Sie sicher, dass Sie über die Volume-GUID des Volumes auf der VHD verfügen. So rufen Sie die Volume-GUID ab:
 
@@ -264,88 +262,48 @@ Bevor Sie die PowerShell-Skripts aktualisieren, stellen Sie sicher, dass Sie üb
     #MSIX app attach staging sample
 
     #region variables
-
     $vhdSrc="<path to vhd>"
-
     $packageName = "<package name>"
-
     $parentFolder = "<package parent folder>"
-
     $parentFolder = "\" + $parentFolder + "\"
-
     $volumeGuid = "<vol guid>"
-
     $msixJunction = "C:\temp\AppAttach\"
-
     #endregion
 
     #region mountvhd
-
     try
-
     {
-
-    Mount-VHD -Path $vhdSrc -NoDriveLetter -ReadOnly
-
-    Write-Host ("Mounting of " + $vhdSrc + " was completed!") -BackgroundColor Green
-
+          Mount-Diskimage -ImagePath $vhdSrc -NoDriveLetter -Access ReadOnly
+          Write-Host ("Mounting of " + $vhdSrc + " was completed!") -BackgroundColor Green
     }
-
     catch
-
     {
-
-    Write-Host ("Mounting of " + $vhdSrc + " has failed!") -BackgroundColor Red
-
+          Write-Host ("Mounting of " + $vhdSrc + " has failed!") -BackgroundColor Red
     }
-
     #endregion
 
     #region makelink
-
     $msixDest = "\\?\Volume{" + $volumeGuid + "}\"
-
     if (!(Test-Path $msixJunction))
-
     {
-
-    md $msixJunction
-
+         md $msixJunction
     }
 
     $msixJunction = $msixJunction + $packageName
-
     cmd.exe /c mklink /j $msixJunction $msixDest
-
     #endregion
 
     #region stage
-
-    [Windows.Management.Deployment.PackageManager,Windows.Management.Deployment,ContentType=WindowsRuntime]
-    | Out-Null
-
+    [Windows.Management.Deployment.PackageManager,Windows.Management.Deployment,ContentType=WindowsRuntime] | Out-Null
     Add-Type -AssemblyName System.Runtime.WindowsRuntime
-
-    $asTask = ([System.WindowsRuntimeSystemExtensions].GetMethods() | Where {
-    $_.ToString() -eq 'System.Threading.Tasks.Task`1[TResult]
-    AsTask[TResult,TProgress](Windows.Foundation.IAsyncOperationWithProgress`2[TResult,TProgress])'})[0]
-
-    $asTaskAsyncOperation =
-    $asTask.MakeGenericMethod([Windows.Management.Deployment.DeploymentResult],
-    [Windows.Management.Deployment.DeploymentProgress])
-
+    $asTask = ([System.WindowsRuntimeSystemExtensions].GetMethods() | Where { $_.ToString() -eq 'System.Threading.Tasks.Task`1[TResult] AsTask[TResult,TProgress](Windows.Foundation.IAsyncOperationWithProgress`2[TResult,TProgress])'})[0]
+    $asTaskAsyncOperation = $asTask.MakeGenericMethod([Windows.Management.Deployment.DeploymentResult], [Windows.Management.Deployment.DeploymentProgress])
     $packageManager = [Windows.Management.Deployment.PackageManager]::new()
-
     $path = $msixJunction + $parentFolder + $packageName # needed if we do the pbisigned.vhd
-
     $path = ([System.Uri]$path).AbsoluteUri
-
     $asyncOperation = $packageManager.StagePackageAsync($path, $null, "StageInPlace")
-
     $task = $asTaskAsyncOperation.Invoke($null, @($asyncOperation))
-
     $task
-
     #endregion
     ```
 
@@ -357,17 +315,12 @@ Um das Registrierungsskript auszuführen, führen Sie die folgenden PowerShell-C
 #MSIX app attach registration sample
 
 #region variables
-
 $packageName = "<package name>"
-
 $path = "C:\Program Files\WindowsApps\" + $packageName + "\AppxManifest.xml"
-
 #endregion
 
 #region register
-
 Add-AppxPackage -Path $path -DisableDevelopmentMode -Register
-
 #endregion
 ```
 
@@ -379,15 +332,11 @@ Ersetzen Sie in diesem Skript den Platzhalter für **$packageName** durch den Na
 #MSIX app attach deregistration sample
 
 #region variables
-
 $packageName = "<package name>"
-
 #endregion
 
 #region deregister
-
 Remove-AppxPackage -PreserveRoamableApplicationData $packageName
-
 #endregion
 ```
 
@@ -399,21 +348,14 @@ Ersetzen Sie in diesem Skript den Platzhalter für **$packageName** durch den Na
 #MSIX app attach de staging sample
 
 #region variables
-
 $packageName = "<package name>"
-
 $msixJunction = "C:\temp\AppAttach\"
-
 #endregion
 
 #region deregister
-
 Remove-AppxPackage -AllUsers -Package $packageName
-
 cd $msixJunction
-
 rmdir $packageName -Force -Verbose
-
 #endregion
 ```
 
@@ -440,7 +382,7 @@ So richten Sie die Lizenzen für die Offlineverwendung ein:
 2. Aktualisieren Sie die folgenden Variablen im Skript für Schritt 3:
       1. `$contentID` ist der ContentID-Wert aus der nicht codierten Lizenzdatei (XML-Datei). Sie können die Lizenzdatei in einem Text-Editor Ihrer Wahl öffnen.
       2. `$licenseBlob` ist die vollständige Zeichenfolge für das Lizenzierungsblob in der codierten Lizenzdatei (BIN-Datei). Sie können die codierte Lizenzdatei in einem Text-Editor Ihrer Wahl öffnen.
-3. Führen Sie das folgende Skript an einer PowerShell-Eingabeaufforderung mit erhöhten Rechten aus. Ein guter Zeitpunkt, um die Lizenzinstallation durchzuführen, ist am Ende des [Stagingskripts](#stage-the-powershell-script), das ebenfalls an einer Eingabeaufforderung mit Administratorberechtigungen ausgeführt werden muss.
+3. Führen Sie das folgende Skript an einer PowerShell-Eingabeaufforderung mit erhöhten Rechten aus. Ein guter Zeitpunkt, um die Lizenzinstallation durchzuführen, ist am Ende des [Stagingskripts](#stage-powershell-script), das ebenfalls an einer Eingabeaufforderung mit Administratorberechtigungen ausgeführt werden muss.
 
 ```powershell
 $namespaceName = "root\cimv2\mdm\dmmap"

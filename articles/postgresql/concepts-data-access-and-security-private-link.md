@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: 90e0f74f3a17a2c98abfcd886d59344b18619f8c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 773815cd64af2a398001bac91e14cca0b204ca8e
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84508996"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87832062"
 ---
 # <a name="private-link-for-azure-database-for-postgresql-single-server"></a>Private Link für Azure Database for PostgreSQL-Einzelserver
 
@@ -20,7 +20,7 @@ Private Link ermöglicht Ihnen das Erstellen privater Endpunkte für Azure Datab
 Eine Liste der PaaS-Dienste, die die Private Link-Funktion unterstützen, finden Sie in der [Dokumentation](https://docs.microsoft.com/azure/private-link/index) zu Private Link. Ein privater Endpunkt ist eine private IP-Adresse in einem bestimmten [VNET](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) und Subnetz.
 
 > [!NOTE]
-> Dieses Feature steht in allen Azure-Regionen zur Verfügung, in denen Azure Database for PostgreSQL-Einzelserver die Tarife „Universell“ und „Arbeitsspeicheroptimiert“ unterstützen.
+> Das Feature „Private Link“ ist nur für Azure Database for PostgreSQL-Server in den Tarifen „Universell“ oder „Arbeitsspeicheroptimiert“ verfügbar. Stellen Sie sicher, dass für den Datenbankserver einer dieser Tarife festgelegt wird.
 
 ## <a name="data-exfiltration-prevention"></a>Verhinderung der Datenexfiltration
 

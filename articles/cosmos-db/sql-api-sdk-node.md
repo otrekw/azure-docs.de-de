@@ -6,15 +6,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: nodejs
 ms.topic: reference
-ms.date: 05/11/2020
+ms.date: 08/05/2020
 ms.author: anfeldma
 ms.custom: devx-track-javascript
-ms.openlocfilehash: ddbbb9f39dd17daf5c500bf582c100b4e1754a15
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: f280e6754d40ad5dc8cbfa4b760e090d0b5b81aa
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87461356"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87846478"
 ---
 # <a name="azure-cosmos-db-nodejs-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Node.js-SDK für SQL-API: Versionshinweise und Ressourcen
 > [!div class="op_single_selector"]
@@ -26,6 +26,8 @@ ms.locfileid: "87461356"
 > * [Java SDK v4](sql-api-sdk-java-v4.md)
 > * [Async Java SDK v2](sql-api-sdk-async-java.md)
 > * [Sync Java SDK v2](sql-api-sdk-java.md)
+> * [Spring Data](sql-api-sdk-java-spring.md)
+> * [Spark Connector](sql-api-sdk-java-spark.md)
 > * [Python](sql-api-sdk-python.md)
 > * [REST](/rest/api/cosmos-db/)
 > * [REST-Ressourcenanbieter](/rest/api/cosmos-db-resource-provider/)
@@ -183,7 +185,7 @@ Add DISTINCT and LIMIT/OFFSET queries (#306)
 ```
 
 #### <a name="improved-browser-experience"></a>Verbesserte Browsererfahrung
-Obwohl es möglich war, das SDK von Version 2 im Browser zu verwenden, war dies keine ideale Lösung. Sie mussten mehrere integrierte Polyfill-Bibliotheken von node.js und einen Bundler wie Webpack oder Parcel verwenden. Mithilfe des SDK von Version 3 ist die Standarderfahrung für Browserbenutzer wesentlich besser.
+Obwohl es möglich war, das SDK von Version 2 im Browser zu verwenden, war dies keine ideale Lösung. Sie mussten mehrere in Node.js integrierte Polyfill-Bibliotheken und einen Bundler wie Webpack oder Parcel verwenden. Mithilfe des SDK von Version 3 ist die Standarderfahrung für Browserbenutzer wesentlich besser.
 
 * Anforderungsinterna durch FETCH (#245) ersetzt
 * Verwendung von BUFFER entfernt (#330)

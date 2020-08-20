@@ -3,7 +3,7 @@ title: 'Azure CLI-Skriptbeispiel: Hochladen einer Datei in einen Container | Mic
 description: In diesem Artikel erfahren Sie, wie Sie das Azure CLI-Skript verwenden, um eine lokale Datei in einen Speichercontainer hochzuladen.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: ''
@@ -12,15 +12,15 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 05/01/2019
-ms.author: juliako
+ms.date: 08/18/2020
+ms.author: inhenkel
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 5a28cabfbc5cbba906a8c16451de801818b3fbed
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: d2441aba7c7b83b379a9c80192fe72736ecebab8
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87489961"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88606654"
 ---
 # <a name="azure-cli-example-upload-a-local-file-to-a-container"></a>Azure CLI-Beispiel: Hochladen einer lokalen Datei in einen Container
 
@@ -29,7 +29,6 @@ Das Azure CLI-Skript in diesem Artikel zeigt, wie eine lokale Datei in einen Spe
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * [Erstellen Sie ein Media Services-Konto.](./create-account-howto.md)
-* Informieren Sie sich über das [Verwalten von Ressourcen](manage-asset-concept.md).
 
 [!INCLUDE [media-services-cli-instructions.md](../../../includes/media-services-cli-instructions.md)]
 

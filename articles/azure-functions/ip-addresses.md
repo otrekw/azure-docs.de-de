@@ -3,12 +3,12 @@ title: IP-Adressen in Azure Functions
 description: Erfahren Sie, wie Sie eingehende und ausgehende IP-Adressen für Funktionen-Apps finden und wodurch diese geändert werden.
 ms.topic: conceptual
 ms.date: 12/03/2018
-ms.openlocfilehash: bfd2d573e0a1c78d0ef4c68be224f92e8f689f62
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4b99855d8cc28a41d9eb91bdcf691747910ed4a1
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80656781"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87874077"
 ---
 # <a name="ip-addresses-in-azure-functions"></a>IP-Adressen in Azure Functions
 
@@ -49,12 +49,13 @@ Eine Alternative zum Ermitteln der verfügbaren ausgehenden IP-Adressen ist die 
 az webapp show --resource-group <group_name> --name <app_name> --query outboundIpAddresses --output tsv
 az webapp show --resource-group <group_name> --name <app_name> --query possibleOutboundIpAddresses --output tsv
 ```
+
 > [!NOTE]
-> Bei der Skalierung einer nach dem [Verbrauchsplan](functions-scale.md#consumption-plan) ausgeführten Funktions-App wird möglicherweise ein neuer Bereich von ausgehenden IP-Adressen zugewiesen. Bei der Ausführung nach dem Verbrauchsplan müssen Sie möglicherweise das gesamte Rechenzentrum auf die Whitelist setzen.
+> Bei der Skalierung einer nach dem [Verbrauchsplan](functions-scale.md#consumption-plan) ausgeführten Funktions-App wird möglicherweise ein neuer Bereich von ausgehenden IP-Adressen zugewiesen. Bei der Ausführung nach dem Verbrauchsplan müssen Sie möglicherweise das gesamte Rechenzentrum auf eine Whitelist setzen.
 
 ## <a name="data-center-outbound-ip-addresses"></a>Ausgehende IP-Adressen eines Rechenzentrums
 
-Wenn Sie eine Whitelist der von Ihrer Funktionen-Apps verwendeten ausgehenden IP-Adressen benötigen, haben Sie die Möglichkeit, das Rechenzentrum der Funktionen-App auf die Whitelist zu setzen (Azure-Region). Sie können [eine JSON-Datei herunterladen, die IP-Adressen für alle Azure-Rechenzentren auflistet](https://www.microsoft.com/en-us/download/details.aspx?id=56519). Suchen Sie dann das JSON-Fragment, das der Region entspricht, in der Ihre Funktions-App ausgeführt wird.
+Wenn Sie einer Whitelist die von Ihrer Funktions-Apps verwendeten ausgehenden IP-Adressen hinzufügen möchten, haben Sie die zusätzliche Möglichkeit, das Rechenzentrum der Funktions-App (Azure-Region) auf eine Whitelist zu setzen. Sie können [eine JSON-Datei herunterladen, die IP-Adressen für alle Azure-Rechenzentren auflistet](https://www.microsoft.com/en-us/download/details.aspx?id=56519). Suchen Sie dann das JSON-Fragment, das der Region entspricht, in der Ihre Funktions-App ausgeführt wird.
 
 Das JSON-Fragment für Westeuropa könnte beispielsweise folgendermaßen aussehen:
 

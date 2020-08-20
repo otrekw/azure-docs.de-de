@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
-ms.date: 04/27/2020
-ms.openlocfilehash: 95756e9951b384c779f61651555482b3c8cb7321
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.date: 08/06/2020
+ms.openlocfilehash: 1ba2f5e4b88ae6ae0ed15dbfbbc4fa5c55c45a77
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86083371"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87874026"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-by-using-the-azure-portal"></a>Erstellen von Linux-basierten Clustern in HDInsight mit dem Azure-Portal
 
@@ -85,6 +85,9 @@ Optional: Wählen Sie **Azure Storage hinzufügen** für zusätzlichen Clustersp
 ### <a name="metastore-settings"></a>Metastore-Einstellungen
 
 Optional: Geben Sie eine vorhandene SQL-Datenbank-Instanz an, um Apache Hive-, Apache Oozie- oder Apache Ambari-Metadaten außerhalb des Clusters zu speichern. Die für den Metastore verwendete Azure SQL-Datenbank muss für die Konnektivität mit anderen Azure-Diensten, z. B. Azure HDInsight, konfiguriert sein. Verwenden Sie beim Erstellen eines Metastore für die Namen einer Datenbank keine Binde- oder Gedankenstriche. Diese Zeichen können dazu führen, dass der Prozess der Clustererstellung fehlschlägt.
+
+> [!IMPORTANT]
+> Der Standardmetastore stellt für Clusterformen, die Metastores unterstützen, eine Azure SQL-Datenbank-Instanz mit einem **Basic-Tarif mit einer Begrenzung auf fünf DTUs (nicht aktualisierbar)** bereit. Er eignet sich für grundlegende Testzwecke. Bei großen Workloads bzw. Produktionsworkloads empfiehlt sich die Migration zu einem externen Metastore.
 
 Klicken Sie auf **Weiter: Sicherheit + Netzwerkbetrieb >>** , um zur nächsten Registerkarte zu gelangen.
 

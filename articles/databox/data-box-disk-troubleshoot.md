@@ -1,6 +1,6 @@
 ---
 title: Problembehandlung des Azure Data Box-Datenträgers | Microsoft Docs
-description: Beschreibt, wie Sie Probleme mit dem Azure Data Box-Datenträger beheben können.
+description: In diesem Artikel erfahren Sie, wie Sie mithilfe von Protokollen Validierungsprobleme beseitigen können, die auftreten können, wenn Sie Azure Data Box Disk bereitstellen.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: troubleshooting
 ms.date: 06/14/2019
 ms.author: alkohli
-ms.openlocfilehash: 35b4b206de9c16d66387135b0ca75b6aaeb7c744
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1c1b38c4021660b9f59098f8442d16bfd0ecc582
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85564998"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87925541"
 ---
 # <a name="use-logs-to-troubleshoot-validation-issues-in-azure-data-box-disk"></a>Verwenden von Protokollen zur Behandlung von Problemen bei der Überprüfung in Azure Data Box Disk
 

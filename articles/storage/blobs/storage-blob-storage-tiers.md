@@ -1,6 +1,6 @@
 ---
 title: Zugriffsebenen „Heiß“, „Kalt“ und „Archiv“ für Blobs – Azure Storage
-description: Zugriffsebenen „Heiß“, „Kalt“ und „Archiv“ für Azure Storage-Konten.
+description: In diesem Artikel erhalten Sie Informationen zu den Zugriffsebenen „Heiß“, „Kalt“ und „Archiv“ für Blobspeicher in Azure. Außerdem erhalten Sie Informationen zu Speicherkonten, die Ebenen unterstützen. Zudem vergleichen Sie Blockblobspeicheroptionen.
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 03/23/2019
@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
-ms.openlocfilehash: dc9e4e0a896677fd22baf33e7776e8158bd0bee6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a46597087a3eee03f7c5b8d1c9746f968ea1980d
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87011344"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87849725"
 ---
 # <a name="azure-blob-storage-hot-cool-and-archive-access-tiers"></a>Azure Blob Storage: Zugriffsebenen „Heiß“, „Kalt“ und „Archiv“
 
@@ -120,7 +120,7 @@ Die folgende Tabelle enthält eine Gegenüberstellung des Premium-Leistungsblock
 | **Verfügbarkeit**                          | 99,9 %                     | 99,9 %        | 99 %                 | Offline           |
 | **Verfügbarkeit** <br> **(RA-GRS-Lesevorgänge)**  | –                       | 99,99 %       | 99,9 %               | Offline           |
 | **Nutzungsgebühren**                         | Höhere Speicherkosten, niedrigere Zugriffs- und Transaktionskosten | Höhere Speicherkosten, geringere Zugriffs- und Transaktionskosten | Geringere Speicherkosten, höhere Zugriffs- und Transaktionskosten | Niedrigste Speicherkosten, höchste Zugriffs- und Transaktionskosten |
-| **Mindestobjektgröße**                   | –                       | –          | –                 | –               |
+| **Mindestobjektgröße**                   | –                       | –          | Nicht zutreffend                 | –               |
 | **Mindestspeicherdauer**              | –                       | –          | 30 Tage<sup>1</sup> | 180 Tage
 | **Latenz** <br> **(Zeit bis zum ersten Byte)** | Einstellige Millisekunden | Millisekunden | Millisekunden        | Stunden<sup>2</sup> |
 

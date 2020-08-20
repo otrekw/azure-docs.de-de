@@ -5,15 +5,15 @@ author: ju-shim
 ms.service: virtual-machines
 ms.subservice: sizes
 ms.topic: conceptual
-ms.date: 08/01/2020
+ms.date: 08/06/2020
 ms.author: amverma
 ms.reviewer: jushiman
-ms.openlocfilehash: 797a036b9cf2e77dfbcdf8dc7596179c4673e6a6
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.openlocfilehash: e9f876f3d20af01867283f550590b3af23dec662
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87513739"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926619"
 ---
 # <a name="h-series"></a>H-Reihe
 
@@ -42,51 +42,8 @@ Updates mit Speicherbeibehaltung: Nicht unterstützt
 
 [!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
 
-
-## <a name="supported-os-images-linux"></a>Unterstützte Betriebssystemimages (Linux)
- 
-Der Azure Marketplace enthält viele Linux-Distributionen, die RDMA-Konnektivität unterstützen:
-  
-* **CentOS-basiertes HPC**: Für VMs, die nicht SR-IOV-fähig sind, sind die CentOS-basierte Versionen 6.5 HPC oder höher bis hin zu 7.5 geeignet. Für virtuelle Computer der H-Serie werden die Versionen 7.1 bis 7.5 empfohlen. Auf der VM sind RDMA-Treiber und Intel MPI 5.1 installiert.
-  Für SR-IOV-VMs ist CentOS-HPC 7.6 für RDMA-Treiber optimiert und enthält diese vorab geladen, außerdem sind bereits verschiedene MPI-Pakete installiert.
-  Für andere RHEL/CentOS-VM-Images fügen Sie die Erweiterung „InfiniBandLinux“ hinzu, um InfiniBand zu aktivieren. Diese Linux-Erweiterung für VMs installiert Mellanox OFED-Treiber (auf VMs mit SR-IOV), um RDMA-Konnektivität herzustellen. Das folgende PowerShell-Cmdlet installiert die neueste Version (Version 1.0) der Erweiterung „InfiniBandDriverLinux“ auf einem vorhandenen, RDMA-fähigen virtuellen Computer. Die RDMA-fähige VM heißt *myVM* und wird in der Ressourcengruppe mit dem Namen *myResourceGroup* in der Region *USA, Westen* wie folgt bereitgestellt:
-
-  ```powershell
-  Set-AzVMExtension -ResourceGroupName "myResourceGroup" -Location "westus" -VMName "myVM" -ExtensionName "InfiniBandDriverLinux" -Publisher "Microsoft.HpcCompute" -Type "InfiniBandDriverLinux" -TypeHandlerVersion "1.0"
-  ```
-  Alternativ können VM-Erweiterungen zur einfachen Bereitstellung mithilfe des folgenden JSON-Elements in Azure Resource Manager-Vorlagen aufgenommen werden:
-  ```json
-  "properties":{
-  "publisher": "Microsoft.HpcCompute",
-  "type": "InfiniBandDriverLinux",
-  "typeHandlerVersion": "1.0",
-  } 
-  ```
-  
-  Durch folgenden Befehl wird die neueste Version (1.0) der Erweiterung „InfiniBandDriverLinux“ auf allen RDMA-fähigen VMs in einer vorhandenen VM-Skalierungsgruppe mit dem Namen *myVMSS* installiert, die in der Ressourcengruppe mit dem Namen *myResourceGroup* bereitgestellt wurde:
-  ```powershell
-  $VMSS = Get-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myVMSS"
-  Add-AzVmssExtension -VirtualMachineScaleSet $VMSS -Name "InfiniBandDriverLinux" -Publisher "Microsoft.HpcCompute" -Type "InfiniBandDriverLinux" -TypeHandlerVersion "1.0"
-  Update-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "MyVMSS" -VirtualMachineScaleSet $VMSS
-  Update-AzVmssInstance -ResourceGroupName "myResourceGroup" -VMScaleSetName "myVMSS" -InstanceId "*"
-  ```
-  
-  > [!NOTE]
-  > Bei den CentOS-basierten HPC-Images sind Kernel-Updates in der **yum** -Konfigurationsdatei deaktiviert. Der Grund: Linux RDMA-Treiber werden als RPM-Paket verteilt, und Treiberupdates funktionieren möglicherweise nicht, wenn der Kernel aktualisiert wird.
-  >
-  
-
-* **SUSE Linux Enterprise Server** – SLES 12 SP3 for HPC, SLES 12 SP3 for HPC (Premium), SLES 12 SP1 for HPC, SLES 12 SP1 for HPC (Premium), SLES 12 SP4 und SLES 15. Auf der VM werden RDMA-Treiber installiert und Intel MPI-Pakete verteilt. Installieren Sie MPI mit dem folgenden Befehl:
-
-  ```bash
-  sudo rpm -v -i --nodeps /opt/intelMPI/intel_mpi_packages/*.rpm
-  ```
-  
-* **Ubuntu**: Ubuntu Server 16.04 LTS, 18.04 LTS. Konfigurieren Sie RDMA-Treiber auf der VM, und registrieren Sie sich bei Intel, um Intel MPI herunterzuladen:
-
-  [!INCLUDE [virtual-machines-common-ubuntu-rdma](../../includes/virtual-machines-common-ubuntu-rdma.md)]  
-
-  Weitere Details zum Aktivieren von InfiniBand mittels Einrichtung von MPI finden Sie unter [Aktivieren von InfiniBand](./workloads/hpc/enable-infiniband.md).
+> [!NOTE]
+> Im Rahmen der [RDMA-fähigen VMs](sizes-hpc.md#rdma-capable-instances) ist die H-Serie nicht SR-IOV-fähig. Daher unterscheiden sich die unterstützten [VM-Images](./workloads/hpc/configure.md#vm-images), Anforderungen an [InfiniBand-Treiber](./workloads/hpc/enable-infiniband.md) und unterstützten [MPI-Bibliotheken](./workloads/hpc/setup-mpi.md) von den SR-IOV-fähigen VMs.
 
 ## <a name="other-sizes"></a>Andere Größen
 
@@ -99,7 +56,7 @@ Der Azure Marketplace enthält viele Linux-Distributionen, die RDMA-Konnektivit�
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Erfahren Sie mehr über das Optimieren Ihrer HPC-Anwendungen für Azure mit einigen Beispielen unter [HPC-Workloads](./workloads/hpc/overview.md).
+- Informieren Sie sich über das [Konfigurieren Ihrer VMs](./workloads/hpc/configure.md), [Aktivieren von InfiniBand](./workloads/hpc/enable-infiniband.md), [Einrichten von MPI](./workloads/hpc/setup-mpi.md) und Optimieren von HPC-Anwendungen für Azure unter [High Performance Computing auf InfiniBand-fähigen virtuellen Computern der H- und N-Serie](./workloads/hpc/overview.md).
 - Informieren Sie sich in den [Tech Community-Blogs zu Azure Compute](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute) über die neuesten Ankündigungen, und machen Sie sich mit einigen Beispielen und Ergebnissen zu HPC vertraut.
 - Eine allgemeinere Übersicht über die Architektur für die Ausführung von HPC-Workloads finden Sie unter [High Performance Computing (HPC) in Azure](/azure/architecture/topics/high-performance-computing/).
 - Weitere Informationen dazu, wie Sie mit [Azure-Computeeinheiten (ACU)](acu.md) die Computeleistung von Azure-SKUs vergleichen können.

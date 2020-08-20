@@ -894,6 +894,8 @@
           href: docker-compose-quickstart.md
     - name: Ausführen von Anwendungen
       items:
+        - name: Red Hat
+          href: ../workloads/redhat/overview.md
         - name: Cloud Foundry
           href: ../../cloudfoundry/index.yml
         - name: Cassandra
@@ -946,7 +948,7 @@
       items:
         - name: Hinzufügen eines Datenträgers
           items:
-            - name: Azure-Befehlszeilenschnittstelle
+            - name: Azure CLI
               href: add-disk.md
             - name: Azure-Portal
               href: attach-disk-portal.md
@@ -1131,7 +1133,7 @@
               href: ../../site-recovery/migrate-overview.md?bc=/azure/virtual-machines/linux/breadcrumb/toc.json&toc=/azure/virtual-machines/linux/toc.json
 - name: Verweis
   items:
-    - name: Azure-Befehlszeilenschnittstelle
+    - name: Azure CLI
       href: /cli/azure/vm
     - name: PowerShell
       href: /powershell/azure/

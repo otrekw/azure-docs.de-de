@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 79ebf543a3880a4f2c8ee8c0d706c268ef3f08d2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 25199aeb7a3ed6332e74ad05835a8c4fca763c00
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87035484"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88116460"
 ---
 # <a name="troubleshoot-on-premises-azure-ad-password-protection"></a>Problembehandlung: Lokaler Azure AD-Kennwortschutz
 
@@ -64,7 +64,7 @@ Der Azure AD-Kennwortschutz weist eine kritische Abhängigkeit von der Ver- und
 
    Wenn der Startmodus des Schlüsselverteilungsdiensts auf „Deaktiviert“ festgelegt wurde, muss die Konfiguration geändert werden, damit der Azure AD-Kennwortschutz einwandfrei funktioniert.
 
-   Für dieses Problem kann ein einfacher Test durchgeführt werden: Starten Sie den Schlüsselverteilungsdienst manuell über die MMC-Konsole der Dienstverwaltung oder mit einem anderen Verwaltungstool (führen Sie z.B. „net start kdssvc“ in einer Eingabeaufforderungskonsole aus). Der Schlüsselverteilungsdienst sollte erfolgreich gestartet und weiter ausgeführt werden.
+   Für dieses Problem kann ein einfacher Test durchgeführt werden: Starten Sie den Schlüsselverteilungsdienst manuell über die MMC-Konsole der Dienstverwaltung oder mit einem anderen Verwaltungstool (führen Sie z. B. „net start kdssvc“ in einer Eingabeaufforderungskonsole aus). Der Schlüsselverteilungsdienst sollte erfolgreich gestartet und weiter ausgeführt werden.
 
    Wenn der Schlüsselverteilungsdienst nicht gestartet werden kann, liegt dies in den meisten Fällen daran, dass sich das Active Directory-Domänencontrollerobjekt außerhalb der Standardorganisationseinheit der Domänencontroller befindet. Diese Konfiguration wird nicht vom Schlüsselverteilungsdienst unterstützt und ist keine Einschränkung, die der Azure AD-Kennwortschutz erfordert. Sie können das Problem beheben, indem Sie das Domänencontrollerobjekt an einen Speicherort unter der Standardorganisationseinheit der Domänencontroller verschieben.
 
@@ -72,7 +72,20 @@ Der Azure AD-Kennwortschutz weist eine kritische Abhängigkeit von der Ver- und
 
    In Windows Server 2016 wurde ein Sicherheitsfix für den Schlüsselverteilungsdienst eingeführt, der das Format der vom Schlüsselverteilungsdienst verschlüsselten Puffer modifiziert; bei der Entschlüsselung dieser Puffer treten unter Windows Server 2012 und Windows Server 2012 R2 manchmal Fehler auf. Die umgekehrte Richtung ist in Ordnung. Puffer, die unter Windows Server 2012 und Windows Server 2012 R2 vom Schlüsselverteilungsdienst verschlüsselt wurden, werden unter Windows Server 2016 und höher immer erfolgreich entschlüsselt. Wenn auf den Domänencontrollern in Ihren Active Directory-Domänen eine Kombination dieser Betriebssysteme ausgeführt wird, können gelegentlich Entschlüsselungsfehler beim Azure AD-Kennwortschutz gemeldet werden. Aufgrund der Art des Sicherheitsfixes ist es nicht möglich, das zeitliche Auftreten oder die Symptome dieser Fehler genau vorherzusagen. Aus diesem Grund ist nicht vorher bestimmbar, welcher DC-Agent für den Azure AD-Kennwortschutz auf welchem Domänencontroller die Daten zu einem bestimmten Zeitpunkt verschlüsselt.
 
-   Microsoft untersucht eine Lösung für dieses Problem, kann aber noch keine Aussagen zum Zeitpunkt der Verfügbarkeit machen. Als Problemumgehung kann in der Zwischenzeit nur empfohlen werden, keine Kombination dieser inkompatiblen Betriebssysteme in Ihrer Active Directory-Domäne auszuführen. Anders ausgedrückt: Sie sollten nur Windows Server 2012- und Windows Server 2012 R2-Domänencontroller oder nur Windows Server 2016-Domänencontroller (und höher) ausführen.
+   Als Problemumgehung kann nur empfohlen werden, keine Kombination dieser inkompatiblen Betriebssysteme in Active Directory-Domänen auszuführen. Anders ausgedrückt: Sie sollten nur Windows Server 2012- und Windows Server 2012 R2-Domänencontroller oder nur Windows Server 2016-Domänencontroller (und höher) ausführen.
+
+## <a name="dc-agent-thinks-the-forest-has-not-been-registered"></a>Der DC-Agent geht davon aus, dass die Gesamtstruktur nicht registriert wurde
+
+Dieses Problem äußert sich in 30016-Ereignissen, die im DC-Agent/Administratorkanal in etwa wie folgt protokolliert werden:
+
+```text
+The forest has not been registered with Azure. Password policies cannot be downloaded from Azure unless this is corrected.
+```
+
+Für dieses Problem gibt es zwei mögliche Ursachen:
+
+1. Die Gesamtstruktur wurde nicht registriert. Dann können Sie das Problem umgehen, indem Sie den Befehl „Register-AzureADPasswordProtectionForest“ wie in den [Bereitstellungsanforderungen](howto-password-ban-bad-on-premises-deploy.md) beschrieben ausführen.
+1. Die Gesamtstruktur wurde registriert, aber der DC-Agent kann die zugehörigen Registrierungsdaten nicht entschlüsseln. In diesem Fall liegt dieselbe Grundursache wie für das oben unter der Überschrift [Der DC-Agent kann Kennwortrichtliniendateien nicht ver- oder entschlüsseln](howto-password-ban-bad-on-premises-troubleshoot.md#dc-agent-is-unable-to-encrypt-or-decrypt-password-policy-files) beschriebene Problem vor. Sie können diese Theorie ganz einfach überprüfen, weil dieser Fehler nur für DC-Agents angezeigt wird, die in Domänencontrollern für Windows Server 2012 oder Windows Server 2012R2 ausgeführt werden. DC-Agents, die in Domänencontrollern für Windows Server 2016 und höher ausgeführt werden, stellen keine Probleme dar. Auch in diesem Fall können Sie das Problem umgehen, indem Sie alle Domänencontroller auf Windows Server 2016 oder höher aktualisieren.
 
 ## <a name="weak-passwords-are-being-accepted-but-should-not-be"></a>Unsichere Kennwörter werden akzeptiert, obwohl dies nicht der Fall sein sollte.
 

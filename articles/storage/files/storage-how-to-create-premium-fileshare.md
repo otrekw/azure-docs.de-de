@@ -1,6 +1,6 @@
 ---
 title: Erstellen einer Azure-Premium-Dateifreigabe
-description: In diesem Artikel erfahren Sie, wie Sie eine Azure-Premium-Dateifreigabe erstellen.
+description: In diesem Artikel erfahren Sie, wie Sie über das Azure-Portal, mithilfe von PowerShell oder mit der Azure CLI eine Azure Premium-Dateifreigabe erstellen.
 author: roygara
 ms.service: storage
 ms.topic: how-to
@@ -8,12 +8,12 @@ ms.date: 05/05/2019
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: a5bdfbbc505f6abe4fee021df014e32d3ccae074
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: adeb1635489441b30c15fee69922e3abef0a53f9
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87497629"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87903815"
 ---
 # <a name="how-to-create-an-premium-azure-file-share"></a>So erstellen Sie eine Azure-Premium-Dateifreigabe
 Premium-Dateifreigaben werden auf SSD-Speichermedien (Solid-State Disk) angeboten und eignen sich für E/A-intensive Workloads, z. B. Hosten von Datenbanken und High Performance Computing (HPC). Premium-Dateifreigaben werden in einem speziell dafür vorgesehenen Speicherkontotyp gehostet, der als FileStorage-Konto bezeichnet wird. Premium-Dateifreigaben sind für hochleistungsfähige Anwendungen auf Unternehmensniveau konzipiert, die eine konsistent niedrige Latenz, hohe IOPS-Leistung und hohe Durchsatzraten bieten.

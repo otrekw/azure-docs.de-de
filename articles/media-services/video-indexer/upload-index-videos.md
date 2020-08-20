@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 02/18/2020
 ms.author: juliako
-ms.openlocfilehash: 011f94cf24c6148ee01275541b090ba28d697018
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b6f8181568e5996bfb3c99ae25fb801fa62f3af1
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87052486"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87904257"
 ---
 # <a name="upload-and-index-your-videos"></a>Hochladen und Indizieren Ihrer Videos  
 
@@ -58,6 +58,13 @@ In diesem Artikel wird gezeigt, wie Sie Ihre Videos mit den folgenden Optionen h
 
 Im Artikel [Eingabecontainer/Dateiformate](../latest/media-encoder-standard-formats.md#input-containerfile-formats) finden Sie eine Liste der Dateiformate, die Sie mit Video Indexer verwenden können.
 
+## <a name="video-files-storage"></a>Videodateispeicher
+
+- Bei einem kostenpflichtigen Video Indexer-Konto erstellen Sie ein Video Indexer-Konto, das mit Ihrem Azure-Abonnement und einem Azure Media Services-Konto verbunden ist. Weitere Informationen finden Sie unter [Erstellen eines Video Indexer-Kontos mit Azure-Verbindung](connect-to-azure.md).
+- Videodateien werden von Azure Media Services in Azure Storage gespeichert. Es gibt keine Zeitbeschränkung.
+- Sie können Ihre Video- und Audiodateien sowie Metadaten und Erkenntnisse, die von Video Indexer daraus extrahiert wurden, jederzeit löschen. Nach dem Löschen einer Datei aus Video Indexer sind die Datei sowie die zugehörigen Metadaten und Erkenntnisse endgültig aus Video Indexer entfernt. Wenn Sie jedoch eine eigene Sicherungslösung im Azure-Speicher implementiert haben, verbleibt die Datei in Ihrem Azure-Speicher.
+- Die Persistenz eines Videos ist identisch, unabhängig davon, ob der Upload auf der Video Indexer-Website oder über die Upload-API erfolgt.
+   
 ## <a name="upload-and-index-a-video-using-the-video-indexer-website"></a><a name="website"></a>Hochladen und Indizieren eines Videos über die Video Indexer-Website
 
 > [!NOTE]
@@ -141,6 +148,9 @@ Der Parameter **priority** wird nur in kostenpflichtigen Konten unterstützt.
 Nachdem Ihr Video hochgeladen wurde, kann das Video von Video Indexer optional codiert werden. Anschließend wird der Vorgang mit dem Indizieren und Analysieren des Videos fortgesetzt. Nachdem Video Indexer die Analyse abgeschlossen hat, erhalten Sie eine Benachrichtigung mit der Video-ID.  
 
 Bei Verwendung der [Upload video](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?)- oder [Re-Index Video](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?)-API lautet einer der optionalen Parameter `streamingPreset`. Wenn Sie `streamingPreset` auf `Default`, `SingleBitrate` oder `AdaptiveBitrate` festlegen, wird der Codierungsprozess ausgelöst. Wenn die Indizierung und Codierung von Aufträgen abgeschlossen ist, wird das Video veröffentlicht, damit Sie Ihr Video auch streamen können. Der Streamingendpunkt, von dem aus Sie das Video streamen möchten, muss sich im Status **Wird ausgeführt** befinden.
+
+Für SingleBitrate werden die Kosten für den Standardencoder pro Ausgabe berechnet. Wenn das Videoformat größer oder gleich 720 ist, codiert Video Indexer dieses als 1280 ×­ 720. Andernfalls wird die Einstellung 640 × 468 verwendet.
+Die Standardeinstellung ist die [inhaltsbezogene Codierung](../latest/content-aware-encoding.md).
 
 Zum Ausführen der Indizierung und Codierung von Aufträgen sind für das [Azure Media Services-Konto, das mit Ihrem Video Indexer-Konto verbunden ist](connect-to-azure.md), reservierte Einheiten (Reserved Units, RUs) erforderlich. Weitere Informationen finden Sie unter [Übersicht über das Skalieren der Medienverarbeitung](../previous/media-services-scale-media-processing-overview.md). Da es sich hierbei um rechenintensive Aufträge handelt, wird dringend die Verwendung des Einheitentyps S3 empfohlen. Die Anzahl von RUs definiert die maximale Anzahl von Aufträgen, die parallel ausgeführt werden können. Die Baseline-Empfehlung lautet: zehn RUs vom Typ S3. 
 

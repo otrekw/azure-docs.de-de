@@ -2,17 +2,17 @@
 title: Bereitstellen von Ressourcen für einen Mandanten
 description: Hier erfahren Sie, wie Sie Ressourcen im Mandantenbereich in einer Azure Resource Manager-Vorlage bereitstellen.
 ms.topic: conceptual
-ms.date: 07/27/2020
-ms.openlocfilehash: a6523ff70dc7307713bb6aecf90e2ea9f8e2bfdd
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.date: 08/06/2020
+ms.openlocfilehash: 2f5249eb54a62e4df082a18b22625bb93a0f09f8
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321750"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88002772"
 ---
 # <a name="create-resources-at-the-tenant-level"></a>Erstellen von Ressourcen auf der Mandantenebene
 
-Im Zuge der Entwicklung Ihrer Organisation müssen unter Umständen [Richtlinien](../../governance/policy/overview.md) oder [rollenbasierte Zugriffssteuerungen](../../role-based-access-control/overview.md) innerhalb Ihres Azure AD-Mandanten definiert und zugewiesen werden. Mit Vorlagen auf der Mandantenebene können Sie Richtlinien deklarativ anwenden und Rollen global zuweisen.
+Im Zuge der Entwicklung Ihrer Organisation müssen unter Umständen [Richtlinien](../../governance/policy/overview.md) oder die [rollenbasierte Zugriffssteuerung in Azure (Azure Role-Based Access Control, Azure RBAC)](../../role-based-access-control/overview.md) für Ihren Azure AD-Mandanten definiert und zugewiesen werden. Mit Vorlagen auf der Mandantenebene können Sie Richtlinien deklarativ anwenden und Rollen global zuweisen.
 
 ## <a name="supported-resources"></a>Unterstützte Ressourcen
 
@@ -27,7 +27,6 @@ Verwenden Sie für Azure-Richtlinien:
 Verwenden Sie für rollenbasierte Zugriffssteuerung:
 
 * [roleAssignments](/azure/templates/microsoft.authorization/roleassignments)
-* [roleDefinitions](/azure/templates/microsoft.authorization/roledefinitions)
 
 Verwenden Sie für geschachtelte Vorlagen, die om Verwaltungsgruppen, Abonnements oder Ressourcengruppen bereitstellen:
 
@@ -252,5 +251,5 @@ Die [folgende Vorlage](https://github.com/Azure/azure-quickstart-templates/tree/
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Informationen über das Zuweisen von Rollen finden Sie unter [Verwalten des Zugriffs auf Azure-Ressourcen mit RBAC und Azure Resource Manager-Vorlagen](../../role-based-access-control/role-assignments-template.md).
+* Informationen zum Zuweisen von Rollen finden Sie unter [Hinzufügen von Azure-Rollenzuweisungen mithilfe von Azure Resource Manager-Vorlagen](../../role-based-access-control/role-assignments-template.md).
 * Vorlagen können auch auf der [Abonnementebene](deploy-to-subscription.md) oder auf der [Verwaltungsgruppenebene](deploy-to-management-group.md) bereitgestellt werden.

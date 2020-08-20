@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 01/09/2020
-ms.openlocfilehash: f05b70c8197283d9fa576d6ea464aa08554dd773
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 92d4fb638e41c668c557ef9e618d30677481585d
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206767"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87829848"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-postgresql---single-server-using-portal"></a>Erstellen und Verwalten von Private Link for Azure Database for PostgreSQL – Einzelserver im Portal
 
@@ -20,7 +20,7 @@ Ein privater Endpunkt ist der grundlegende Baustein für Private Link in Azure. 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
 > [!NOTE]
-> Dieses Feature steht in allen Azure-Regionen zur Verfügung, in denen Azure Database for PostgreSQL-Einzelserver die Tarife „Universell“ und „Arbeitsspeicheroptimiert“ unterstützen.
+> Das Feature „Private Link“ ist nur für Azure Database for PostgreSQL-Server in den Tarifen „Universell“ oder „Arbeitsspeicheroptimiert“ verfügbar. Stellen Sie sicher, dass für den Datenbankserver einer dieser Tarife festgelegt wird.
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.

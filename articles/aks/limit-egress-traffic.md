@@ -5,13 +5,14 @@ services: container-service
 ms.topic: article
 ms.author: jpalma
 ms.date: 06/29/2020
+ms.custom: fasttrack-edit
 author: palma21
-ms.openlocfilehash: 9d06852e9d3d61b3e3d368a1d1c6f4107aff1442
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 51b457b99afc478631ce9b39a4a7d51ffd57401c
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86251313"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88003172"
 ---
 # <a name="control-egress-traffic-for-cluster-nodes-in-azure-kubernetes-service-aks"></a>Steuern des ausgehenden Datenverkehrs für Clusterknoten in Azure Kubernetes Service (AKS)
 
@@ -226,6 +227,8 @@ Azure Firewall bietet ein FQDN-Tag für Azure Kubernetes Service (`AzureKubernet
 
 > [!NOTE]
 > Das FQDN-Tag enthält alle oben aufgeführten FQDNs und wird automatisch auf dem neuesten Stand gehalten.
+>
+> Sie sollten über mindestens 20 Front-End-IPs für die Azure Firewall-Instanz für Produktionsszenarios verfügen, um das Auftreten von Problemen mit der SNAT-Portauslastung zu vermeiden.
 
 Im Anschluss finden Sie eine Beispielarchitektur der Bereitstellung:
 
@@ -364,7 +367,7 @@ Erstellen Sie eine leere Routingtabelle, die einem bestimmten Subnetz zugeordnet
 ```azure-cli
 # Create UDR and add a route for Azure Firewall
 
-az network route-table create -g $RG --name $FWROUTE_TABLE_NAME
+az network route-table create -g $RG -$LOC --name $FWROUTE_TABLE_NAME
 az network route-table route create -g $RG --name $FWROUTE_NAME --route-table-name $FWROUTE_TABLE_NAME --address-prefix 0.0.0.0/0 --next-hop-type VirtualAppliance --next-hop-ip-address $FWPRIVATE_IP --subscription $SUBID
 az network route-table route create -g $RG --name $FWROUTE_NAME_INTERNET --route-table-name $FWROUTE_TABLE_NAME --address-prefix $FWPUBLIC_IP/32 --next-hop-type Internet
 ```
@@ -482,14 +485,14 @@ Mit dem folgenden Befehl fügen Sie dem Bereich der genehmigten IP-Adressen eine
 CURRENT_IP=$(dig @resolver1.opendns.com ANY myip.opendns.com +short)
 
 # Add to AKS approved list
-az aks update -g $RG -n $AKS_NAME --api-server-authorized-ip-ranges $CURRENT_IP/32
+az aks update -g $RG -n $AKSNAME --api-server-authorized-ip-ranges $CURRENT_IP/32
 
 ```
 
  Mit dem Befehl [az aks get-credentials][az-aks-get-credentials] können Sie `kubectl` für die Verbindungsherstellung mit Ihrem neu erstellten Kubernetes-Cluster konfigurieren. 
 
  ```azure-cli
- az aks get-credentials -g $RG -n $AKS_NAME
+ az aks get-credentials -g $RG -n $AKSNAME
  ```
 
 ### <a name="deploy-a-public-service"></a>Bereitstellen eines öffentlichen Diensts

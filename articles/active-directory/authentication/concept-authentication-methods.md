@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 05283c02c2e5f95e22beb6fbeaad7a99e42ee6aa
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 40ea8c3d070d8895a6da063789279895f52189e3
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87540834"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88116766"
 ---
 # <a name="what-authentication-and-verification-methods-are-available-in-azure-active-directory"></a>Welche Authentifizierungs- und Prüfmethoden stehen in Azure Active Directory zur Verfügung?
 
@@ -39,12 +39,14 @@ In der folgenden Tabelle sind die Methoden aufgeführt, die für die primäre od
 | [Microsoft Authenticator-App](#microsoft-authenticator-app) | Ja (Vorschau) | MFA und SSPR |
 | [FIDO2-Sicherheitsschlüssel (Vorschau)](#fido2-security-keys) | Ja | Nur MFA |
 | [Oath-Softwaretoken](#oath-software-tokens) | Nein | MFA |
-| [OATH-Hardwaretoken (Vorschau)](#oath-hardware-tokens-preview) | Ja | MFA |
+| [OATH-Hardwaretoken (Vorschau)](#oath-hardware-tokens-preview) | Nein | MFA |
 | [SMS](#phone-options) | Ja (Vorschau) | MFA und SSPR |
 | [Sprachanruf](#phone-options) | Nein | MFA und SSPR |
 | [Sicherheitsfragen](#security-questions) | Nein | Nur SSPR |
 | [E-Mail-Adresse](#email-address) | Nein | Nur SSPR |
 | [App-Kennwörter](#app-passwords) | Nein | MFA nur in bestimmten Fällen |
+
+Diese Authentifizierungsmethoden können über das Azure-Portal konfiguriert werden und allmählich auch über die [Betaversion der REST-API für Microsoft Graph](/graph/api/resources/authenticationmethods-overview?view=graph-rest-beta).
 
 In diesem Artikel werden diese verschiedenen Authentifizierungs- und Prüfmethoden, die in Azure AD verfügbar sind, sowie mögliche speziellen Einschränkungen beschrieben.
 
@@ -297,6 +299,8 @@ Informationen zum Einstieg finden Sie im Tutorial zur [Self-Service-Kennwortzur�
 Weitere Informationen zu SSPR-Konzepten finden Sie unter [So funktioniert's: Self-Service-Kennwortzurücksetzung in Azure AD][concept-sspr].
 
 Weitere Informationen zu MFA-Konzepten finden Sie unter [Funktionsweise von Azure Multi-Factor Authentication][concept-mfa].
+
+Im Artikel [API-Übersicht zu Azure AD-Authentifizierungsmethoden](/graph/api/resources/authenticationmethods-overview?view=graph-rest-beta) finden Sie weitere Informationen zur Betaversion der REST-API für Microsoft Graph.
 
 <!-- INTERNAL LINKS -->
 [tutorial-sspr]: tutorial-enable-sspr.md

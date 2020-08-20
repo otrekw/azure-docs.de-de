@@ -9,19 +9,19 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 12/13/2018
 ms.author: akjosh
-ms.openlocfilehash: 824ba9e1f9b4325c1e0974ed1c22b465ec4b85a8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c03105326b6d189b3c6fde72ff959211b3009517
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85298955"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87837039"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>Verwenden der Linux-Diagnoseerweiterung zum Überwachen von Metriken und Protokollen
 
 Dieses Dokument beschreibt Version 3.0 und höher der Linux-Diagnoseerweiterung.
 
 > [!IMPORTANT]
-> Weitere Informationen zu Version 2.3 und zu älteren Versionen finden Sie in [diesem Dokument](../linux/classic/diagnostic-extension-v2.md).
+> Weitere Informationen zu Version 2.3 und zu älteren Versionen finden Sie in [diesem Dokument](/previous-versions/azure/virtual-machines/linux/classic/diagnostic-extension-v2).
 
 ## <a name="introduction"></a>Einführung
 
@@ -67,8 +67,8 @@ Unterstützte Distributionen und Versionen:
 
 ### <a name="prerequisites"></a>Voraussetzungen
 
-* **Azure Linux Agent ab Version 2.2.0**. Die meisten Images des Azure-Katalogs für virtuelle Linux-Computer enthalten Version 2.2.7 oder höher. Führen Sie `/usr/sbin/waagent -version` aus, um die auf dem virtuellen Computer installierte Version zu überprüfen. Wenn der virtuelle Computer unter einer älteren Version des Gast-Agents ausgeführt wird, führen Sie [diese Anweisungen](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent) aus, um ihn zu aktualisieren.
-* **Azure-Befehlszeilenschnittstelle**. [Richten Sie Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) auf dem Computer ein.
+* **Azure Linux Agent ab Version 2.2.0**. Die meisten Images des Azure-Katalogs für virtuelle Linux-Computer enthalten Version 2.2.7 oder höher. Führen Sie `/usr/sbin/waagent -version` aus, um die auf dem virtuellen Computer installierte Version zu überprüfen. Wenn der virtuelle Computer unter einer älteren Version des Gast-Agents ausgeführt wird, führen Sie [diese Anweisungen](./update-linux-agent.md) aus, um ihn zu aktualisieren.
+* **Azure-Befehlszeilenschnittstelle**. [Richten Sie Azure CLI](/cli/azure/install-azure-cli) auf dem Computer ein.
 * Der wget-Befehl, sofern Sie ihn noch nicht ausgeführt haben: Führen Sie `sudo apt-get install wget` aus.
 * Ein vorhandenes Azure-Abonnement und ein vorhandenes Speicherkonto in diesem Abonnement zum Speichern der Daten.
 
@@ -243,7 +243,7 @@ Wenn Sie eine SAS erstellt haben, die bis Mitternacht (UTC) am 1. Januar 2018 gi
 https://contosohub.servicebus.windows.net/syslogmsgs?sr=contosohub.servicebus.windows.net%2fsyslogmsgs&sig=xxxxxxxxxxxxxxxxxxxxxxxxx&se=1514764800&skn=writer
 ```
 
-Weitere Informationen zum Generieren von SAS-Token und Abrufen von Informationen für SAS-Token für Event Hubs finden Sie auf [dieser Webseite](https://docs.microsoft.com/rest/api/eventhub/generate-sas-token#powershell).
+Weitere Informationen zum Generieren von SAS-Token und Abrufen von Informationen für SAS-Token für Event Hubs finden Sie auf [dieser Webseite](/rest/api/eventhub/generate-sas-token#powershell).
 
 #### <a name="the-jsonblob-sink"></a>Die JsonBlob-Senke
 
@@ -580,7 +580,7 @@ Wenn Ihre geschützten Einstellungen in der Datei „ProtectedSettings.json“ u
 az vm extension set --publisher Microsoft.Azure.Diagnostics --name LinuxDiagnostic --version 3.0 --resource-group <resource_group_name> --vm-name <vm_name> --protected-settings ProtectedSettings.json --settings PublicSettings.json
 ```
 
-Bei diesem Befehl wird davon ausgegangen, dass Sie den ARM-Modus (Azure Resource Manager) der Azure-Befehlszeilenschnittstelle verwenden. Wenn Sie LAD für virtuelle Computer im klassischen Bereitstellungsmodell (ASM) konfigurieren möchten, wechseln Sie in den ASM-Modus (`azure config mode asm`) und lassen den Namen der Ressourcengruppe im Befehl aus. Weitere Informationen finden Sie in der [Dokumentation zur plattformübergreifenden Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/azure/xplat-cli-connect).
+Bei diesem Befehl wird davon ausgegangen, dass Sie den Azure-Ressourcenverwaltungsmodus der Azure CLI verwenden. Wenn Sie LAD für virtuelle Computer im klassischen Bereitstellungsmodell (ASM) konfigurieren möchten, wechseln Sie in den ASM-Modus (`azure config mode asm`) und lassen den Namen der Ressourcengruppe im Befehl aus. Weitere Informationen finden Sie in der [Dokumentation zur plattformübergreifenden Azure-Befehlszeilenschnittstelle](/cli/azure/authenticate-azure-cli?view=azure-cli-latest).
 
 ### <a name="powershell"></a>PowerShell
 
@@ -763,10 +763,10 @@ Diese Momentaufnahme einer Sitzung im Microsoft Azure Storage-Explorer zeigt die
 
 ![image](./media/diagnostics-linux/stg_explorer.png)
 
-In der entsprechenden [EventHubs-Dokumentation](../../event-hubs/event-hubs-what-is-event-hubs.md) finden Sie Informationen zum Verarbeiten von Meldungen, die an einen EventHubs-Endpunkt veröffentlicht wurden.
+In der entsprechenden [EventHubs-Dokumentation](../../event-hubs/event-hubs-about.md) finden Sie Informationen zum Verarbeiten von Meldungen, die an einen EventHubs-Endpunkt veröffentlicht wurden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Erstellen Sie Metrikwarnungen in [Azure Monitor](../../monitoring-and-diagnostics/insights-alerts-portal.md) für die von Ihnen erfassten Metriken.
-* Erstellen Sie [Überwachungsdiagramme](../../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md) für Ihre Metriken.
+* Erstellen Sie Metrikwarnungen in [Azure Monitor](../../azure-monitor/platform/alerts-classic-portal.md) für die von Ihnen erfassten Metriken.
+* Erstellen Sie [Überwachungsdiagramme](../../azure-monitor/platform/data-platform.md) für Ihre Metriken.
 * Erfahren Sie, wie Sie mithilfe Ihrer Metriken [eine VM-Skalierungsgruppe](../linux/tutorial-create-vmss.md) erstellen, um die automatische Skalierung zu steuern.

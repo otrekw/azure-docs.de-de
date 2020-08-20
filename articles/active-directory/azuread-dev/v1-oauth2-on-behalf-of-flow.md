@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.subservice: azuread-dev
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/22/2019
+ms.date: 08/5/2020
 ms.author: ryanwi
 ms.reviewer: hirsin, nacanuma
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: 6f52ddbfbdfa30108670b985fba5c5263ce517b2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f746cc654934464d907c6ad669eb7470e4dcaeeb
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85551682"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88117735"
 ---
 # <a name="service-to-service-calls-that-use-delegated-user-identity-in-the-on-behalf-of-flow"></a>Dienst-zu-Dienst-Aufrufe unter Verwendung einer delegierten Benutzeridentität im Im-Auftrag-von-Fluss
 
@@ -59,10 +59,10 @@ Registrieren Sie den Diensts auf der mittleren Ebene und die Clientanwendung in 
 1. Wählen Sie unter **Unterstützte Kontotypen** **Konten in allen Organisationsverzeichnissen und persönliche Microsoft-Konten** aus.
 1. Legen Sie als Umleitungs-URI die Basis-URL fest.
 1. Wählen Sie **Registrieren** aus, um die Anwendung zu erstellen.
-1. Generieren Sie einen geheimen Clientschlüssel, bevor Sie das Azure-Portal beenden.
 1. Wählen Sie im Azure-Portal Ihre Anwendung und dann **Zertifikate & Geheimnisse** aus.
 1. Wählen Sie **Neuer geheimer Clientschlüssel** aus, und fügen Sie einen Geheimnis (geheimen Schlüssel) mit einer Dauer von einem Jahr oder zwei Jahren hinzu.
 1. Wenn Sie diese Seite speichern, zeigt das Azure-Portal den Wert des Geheimnisses an. Kopieren Sie den Geheimniswert, und speichern Sie ihn an einem sicheren Ort.
+1. Erstellen Sie in Ihrer Anwendung auf der Seite **Eine API verfügbar machen** einen Bereich für Ihre App, und klicken Sie auf „Bereich hinzufügen“.  Im Portal ist es möglicherweise erforderlich, dass Sie auch einen Anwendungs-ID-URI erstellen. 
 
 > [!IMPORTANT]
 > Sie benötigen das Geheimnis zum Konfigurieren der Anwendungseinstellungen in Ihrer Implementierung. Dieser Geheimniswert wird nicht erneut angezeigt und kann auch auf keine andere Weise abgerufen werden. Notieren Sie ihn, wenn er im Azure-Portal angezeigt wird.
@@ -79,7 +79,7 @@ Registrieren Sie den Diensts auf der mittleren Ebene und die Clientanwendung in 
 1. Wählen Sie **Registrieren** aus, um die Anwendung zu erstellen.
 1. Konfigurieren Sie die Berechtigungen für Ihre Anwendung. Wählen Sie unter **API-Berechtigungen** die Option **Berechtigung hinzufügen** und dann **Meine APIs** aus.
 1. Geben Sie den Namen des Diensts der mittleren Ebene in das Textfeld ein.
-1. Wählen Sie **Berechtigungen auswählen** und dann **Zugreifen\<service name>** aus.
+1. Klicken Sie auf **Berechtigungen auswählen**, und wählen Sie dann den Bereich aus, den Sie im letzten Schritt der Registrierung der mittleren Ebene erstellt haben.
 
 ### <a name="configure-known-client-applications"></a>Konfigurieren der bekannten Clientanwendungen
 
@@ -111,8 +111,8 @@ Bei Verwendung eines gemeinsamen Geheimnisses enthält eine Dienst-zu-Dienst-Zug
 | assertion |required | Der Wert des bei der Anforderung verwendeten Zugriffstoken. |
 | client_id |required | Die dem aufrufenden Dienst während der Registrierung bei Azure AD zugewiesene App-ID. Wählen Sie zum Ermitteln der App-ID im Azure-Portal zuerst **Active Directory**, dann das Verzeichnis und schließlich den Anwendungsnamen aus. |
 | client_secret |required | Schlüssel, der für den aufrufenden Dienst in Azure AD registriert ist. Dieser Wert sollte zum Zeitpunkt der Registrierung notiert worden sein. |
-| resource |required | Der App-ID-URI des empfangenden Diensts (geschützte Ressource). Wählen Sie zum Ermitteln des App-ID-URIs im Azure-Portal **Active Directory** und dann das Verzeichnis aus. Wählen Sie den Namen der Anwendung, **Alle Einstellungen** und dann **Eigenschaften** aus. |
-| requested_token_use |required | Gibt an, wie die Anforderung verarbeitet werden soll. Im Im-Auftrag-Fluss muss der Wert **on_behalf_of** lauten. |
+| resource |Erforderlich | Der App-ID-URI des empfangenden Diensts (geschützte Ressource). Wählen Sie zum Ermitteln des App-ID-URIs im Azure-Portal **Active Directory** und dann das Verzeichnis aus. Wählen Sie den Namen der Anwendung, **Alle Einstellungen** und dann **Eigenschaften** aus. |
+| requested_token_use |Erforderlich | Gibt an, wie die Anforderung verarbeitet werden soll. Im Im-Auftrag-Fluss muss der Wert **on_behalf_of** lauten. |
 | scope |required | Eine durch Leerzeichen getrennte Liste von Bereichen für die Tokenanforderung. Für OpenID Connect muss der Bereich **openid** angegeben werden.|
 
 #### <a name="example"></a>Beispiel
@@ -142,12 +142,12 @@ Eine Dienst-zu-Dienst-Zugriffstokenanforderung mit einem Zertifikat enthält die
 | Parameter | type | BESCHREIBUNG |
 | --- | --- | --- |
 | grant_type |required | Typ der Tokenanforderung Da eine OBO-Anforderung ein JWT-Zugriffstoken verwendet, muss der Wert **urn:ietf:params:oauth:grant-type:jwt-bearer** lauten. |
-| assertion |required | Der Wert des bei der Anforderung verwendeten Tokens. |
+| assertion |Erforderlich | Der Wert des bei der Anforderung verwendeten Tokens. |
 | client_id |required | Die dem aufrufenden Dienst während der Registrierung bei Azure AD zugewiesene App-ID. Wählen Sie zum Ermitteln der App-ID im Azure-Portal zuerst **Active Directory**, dann das Verzeichnis und schließlich den Anwendungsnamen aus. |
 | client_assertion_type |required |Der Wert muss `urn:ietf:params:oauth:client-assertion-type:jwt-bearer` sein. |
 | client_assertion |required | Ein JSON Web Token, das Sie benötigen, um das Zertifikat, das Sie als Anmeldeinformationen für Ihre Anwendung registriert haben, zu erstellen und zu signieren. Informationen zum Assertionsformat und zum Registrieren Ihres Zertifikats finden Sie unter [Zertifikatanmeldeinformationen](../develop/active-directory-certificate-credentials.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json).|
-| resource |required | Der App-ID-URI des empfangenden Diensts (geschützte Ressource). Wählen Sie zum Ermitteln des App-ID-URIs im Azure-Portal **Active Directory** und dann das Verzeichnis aus. Wählen Sie den Namen der Anwendung, **Alle Einstellungen** und dann **Eigenschaften** aus. |
-| requested_token_use |required | Gibt an, wie die Anforderung verarbeitet werden soll. Im Im-Auftrag-Fluss muss der Wert **on_behalf_of** lauten. |
+| resource |Erforderlich | Der App-ID-URI des empfangenden Diensts (geschützte Ressource). Wählen Sie zum Ermitteln des App-ID-URIs im Azure-Portal **Active Directory** und dann das Verzeichnis aus. Wählen Sie den Namen der Anwendung, **Alle Einstellungen** und dann **Eigenschaften** aus. |
+| requested_token_use |Erforderlich | Gibt an, wie die Anforderung verarbeitet werden soll. Im Im-Auftrag-Fluss muss der Wert **on_behalf_of** lauten. |
 | scope |required | Eine durch Leerzeichen getrennte Liste von Bereichen für die Tokenanforderung. Für OpenID Connect muss der Bereich **openid** angegeben werden.|
 
 Diese Parameter sind nahezu identisch mit der Anforderung mit einem gemeinsamen Geheimnis, außer dass `client_secret parameter` durch die beiden Parameter `client_assertion_type` und `client_assertion` ersetzt wird.
@@ -255,8 +255,8 @@ Eine Dienst-zu-Dienst-Anforderung für eine SAML-Assertion weist die folgenden P
 | assertion |required | Der Wert des bei der Anforderung verwendeten Zugriffstoken.|
 | client_id |required | Die dem aufrufenden Dienst während der Registrierung bei Azure AD zugewiesene App-ID. Wählen Sie zum Ermitteln der App-ID im Azure-Portal zuerst **Active Directory**, dann das Verzeichnis und schließlich den Anwendungsnamen aus. |
 | client_secret |required | Schlüssel, der für den aufrufenden Dienst in Azure AD registriert ist. Dieser Wert sollte zum Zeitpunkt der Registrierung notiert worden sein. |
-| resource |required | Der App-ID-URI des empfangenden Diensts (geschützte Ressource). Dies ist die Ressource, die die Zielgruppe des SAML-Token darstellt. Wählen Sie zum Ermitteln des App-ID-URIs im Azure-Portal **Active Directory** und dann das Verzeichnis aus. Wählen Sie den Namen der Anwendung, **Alle Einstellungen** und dann **Eigenschaften** aus. |
-| requested_token_use |required | Gibt an, wie die Anforderung verarbeitet werden soll. Im Im-Auftrag-Fluss muss der Wert **on_behalf_of** lauten. |
+| resource |Erforderlich | Der App-ID-URI des empfangenden Diensts (geschützte Ressource). Dies ist die Ressource, die die Zielgruppe des SAML-Token darstellt. Wählen Sie zum Ermitteln des App-ID-URIs im Azure-Portal **Active Directory** und dann das Verzeichnis aus. Wählen Sie den Namen der Anwendung, **Alle Einstellungen** und dann **Eigenschaften** aus. |
+| requested_token_use |Erforderlich | Gibt an, wie die Anforderung verarbeitet werden soll. Im Im-Auftrag-Fluss muss der Wert **on_behalf_of** lauten. |
 | requested_token_type | required | Gibt den Typ des angeforderten Token an. Abhängig von den Anforderungen der Ressource, auf die zugegriffen wird, kann der Wert **urn:Ietf:params:oauth:token-type:saml2** oder **urn:Ietf:params:oauth:token-type:saml1** lauten. |
 
 Die Antwort enthält ein UTF8- und Base64url-codiertes SAML-Token.
@@ -264,7 +264,7 @@ Die Antwort enthält ein UTF8- und Base64url-codiertes SAML-Token.
 - **SubjectConfirmationData für eine SAML-Assertion von einem OBO-Aufruf:** Wenn die Zielanwendung einen Empfängerwert in **SubjectConfirmationData** erfordert, muss als Wert in der Konfiguration der Ressourcenanwendung die Antwort-URL ohne Platzhalter festgelegt werden.
 - **Der SubjectConfirmationData-Knoten:** Der Knoten darf kein **InResponseTo**-Attribut enthalten, da er nicht Teil einer SAML-Antwort ist. Die Anwendung, die das SAML-Token empfängt, muss die SAML-Assertion ohne **InResponseTo**-Attribut akzeptieren können.
 
-- **Zustimmung:** Um ein SAML-Token zu empfangen, das Benutzerdaten zu einem OAuth-Flow enthält, muss Zustimmung erteilt worden sein. Informationen zu Berechtigungen und zum Erhalt der Zustimmung des Administrators finden Sie unter [Berechtigungen und Zustimmung im Azure Active Directory v1.0-Endpunkt](https://docs.microsoft.com/azure/active-directory/azuread-dev/v1-permissions-consent).
+- **Zustimmung:** Um ein SAML-Token zu empfangen, das Benutzerdaten zu einem OAuth-Flow enthält, muss Zustimmung erteilt worden sein. Informationen zu Berechtigungen und zum Erhalt der Zustimmung des Administrators finden Sie unter [Berechtigungen und Zustimmung im Azure Active Directory v1.0-Endpunkt](./v1-permissions-consent.md).
 
 ### <a name="response-with-saml-assertion"></a>Antwort mit SAML-Assertion
 

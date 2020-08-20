@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/08/2020
 ms.author: terrylan
-ms.openlocfilehash: d8baf1c70d115b80e3238d3eedf128057684d2e6
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 73d82efed438d447c7af3bfc54d5c3fc22cdd819
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86224705"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87921927"
 ---
 # <a name="security-management-in-azure"></a>Sicherheitsverwaltung in Azure
 Azure-Abonnenten können ihre Cloudumgebungen über verschiedene Geräte verwalten. Hierzu zählen etwa Arbeitsstationen für die Verwaltung, Entwickler-PCs und sogar geeignete Endbenutzergeräte, die über die aufgabenspezifischen Berechtigungen verfügen. In einigen Fällen werden Administratorfunktionen über webbasierte Konsolen ausgeführt, z. B. das [Azure-Portal](https://azure.microsoft.com/features/azure-portal/). In anderen Fällen können auch direkte Verbindungen mit Azure von lokalen Systemen über Virtual Private Networks (VPNs), Terminal Services, Clientanwendungsprotokolle oder (programmgesteuert) die Azure-Dienstverwaltungs-API (SMAPI) bestehen. Außerdem können Clientendpunkte entweder Mitglied einer Domäne oder isoliert und unverwaltet sein, z.B. Tablets oder Smartphones.
@@ -66,7 +66,7 @@ Mit dem Konsolidieren von Zugriffsressourcen und dem Entfernen nicht verwalteter
 ### <a name="providing-security-for-azure-remote-management"></a>Bereitstellen von Sicherheit für die Azure-Remoteverwaltung
 In Azure werden Sicherheitsmechanismen als Hilfe für Administratoren bereitgestellt, die Azure-Clouddienste und virtuelle Azure-Computer verwalten. Diese Mechanismen sind:
 
-* Authentifizierung und [rollenbasierte Zugriffssteuerung](../../role-based-access-control/role-assignments-portal.md).
+* Authentifizierung und [rollenbasierte Zugriffssteuerung von Azure (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md)
 * Überwachung, Protokollierung und Auditing
 * Zertifikate und verschlüsselte Kommunikation
 * Webverwaltungsportal

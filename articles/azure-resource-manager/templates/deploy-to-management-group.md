@@ -3,16 +3,16 @@ title: Bereitstellen von Ressourcen in einer Verwaltungsgruppe
 description: In diesem Artikel wird beschrieben, wie Sie Ressourcen auf der Verwaltungsgruppenebene in einer Azure Resource Manager-Vorlage bereitstellen.
 ms.topic: conceptual
 ms.date: 07/27/2020
-ms.openlocfilehash: a17387aef4d35c042d1fe0b02f1c6fd447e4a918
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 992882859ed1c67cf66c31f69f21e151081cf087
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321801"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88002905"
 ---
 # <a name="create-resources-at-the-management-group-level"></a>Erstellen von Ressourcen auf der Verwaltungsgruppenebene
 
-Wenn Ihre Organisation sich weiterentwickelt, können Sie eine Azure Resource Manager-Vorlage (ARM-Vorlage) bereitstellen, um Ressourcen auf Verwaltungsgruppenebene zu erstellen. Beispielsweise müssen Sie möglicherweise [Richtlinien](../../governance/policy/overview.md) oder [rollenbasierte Zugriffssteuerung](../../role-based-access-control/overview.md) für eine Verwaltungsgruppe definieren und zuweisen. Mit Vorlagen auf Verwaltungsgruppenebene können Sie Richtlinien deklarativ anwenden und Rollen auf Verwaltungsgruppenebene zuweisen.
+Wenn Ihre Organisation sich weiterentwickelt, können Sie eine Azure Resource Manager-Vorlage (ARM-Vorlage) bereitstellen, um Ressourcen auf Verwaltungsgruppenebene zu erstellen. Beispielsweise müssen Sie möglicherweise [Richtlinien](../../governance/policy/overview.md) oder die [rollenbasierte Zugriffssteuerung von Azure (Azure Role-Based Access Control, Azure-RBAC)](../../role-based-access-control/overview.md) für eine Verwaltungsgruppe definieren und zuweisen. Mit Vorlagen auf Verwaltungsgruppenebene können Sie Richtlinien deklarativ anwenden und Rollen auf Verwaltungsgruppenebene zuweisen.
 
 ## <a name="supported-resources"></a>Unterstützte Ressourcen
 
@@ -357,6 +357,6 @@ Aus einer Bereitstellung auf Verwaltungsgruppenebene können Sie ein Abonnement 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Informationen über das Zuweisen von Rollen finden Sie unter [Verwalten des Zugriffs auf Azure-Ressourcen mit RBAC und Azure Resource Manager-Vorlagen](../../role-based-access-control/role-assignments-template.md).
+* Informationen zum Zuweisen von Rollen finden Sie unter [Hinzufügen von Azure-Rollenzuweisungen mithilfe von Azure Resource Manager-Vorlagen](../../role-based-access-control/role-assignments-template.md).
 * Unter [deployASCwithWorkspaceSettings.json](https://github.com/krnese/AzureDeploy/blob/master/ARM/deployments/deployASCwithWorkspaceSettings.json) finden Sie ein Beispiel für die Bereitstellung von Arbeitsbereichseinstellungen für Azure Security Center.
 * Sie können Vorlagen auch auf [Abonnementebene](deploy-to-subscription.md) und [Mandantenebene](deploy-to-tenant.md) bereitstellen.

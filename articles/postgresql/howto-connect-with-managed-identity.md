@@ -6,22 +6,22 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 05/19/2020
-ms.openlocfilehash: ec9e53ecaa95f6407a00c149abb6ed7e4a671d74
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 173633e16648bce262051947ec2bc9c1f61fbb9c
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86102292"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88606775"
 ---
 # <a name="connect-with-managed-identity-to-azure-database-for-postgresql"></a>Herstellen einer Verbindung zu Azure Database for PostgreSQL mithilfe von verwalteten Identitäten
 
-In diesem Artikel erfahren Sie, wie Sie mit einer benutzerseitig zugewiesenen Identität für einen virtuellen Windows-Computer (Virtual Machine, VM) auf einen Azure Database for PostgreSQL-Server zuzugreifen. Verwaltete Dienstidentitäten werden von Azure automatisch verwaltet und ermöglichen Ihnen die Authentifizierung für Dienste, die die Azure AD-Authentifizierung unterstützen, ohne dass Sie Anmeldeinformationen in Ihren Code einfügen müssen. Folgendes wird vermittelt:
+In diesem Artikel erfahren Sie, wie Sie mit einer benutzerseitig zugewiesenen Identität für einen virtuellen Windows-Computer (Virtual Machine, VM) auf einen Azure Database for PostgreSQL-Server zuzugreifen. Verwaltete Dienstidentitäten werden von Azure automatisch verwaltet und ermöglichen Ihnen die Authentifizierung für Dienste, die die Azure AD-Authentifizierung unterstützen, ohne dass Sie Anmeldeinformationen in Ihren Code einfügen müssen. 
 
-> [!div class="checklist"]
-> * Erteilen des VM-Zugriffs auf einen Azure Database for PostgreSQL-Server
-> * Erstellen eines Benutzers in der Datenbank, der die benutzerseitig zugewiesene Identität der VM darstellt
-> * Abrufen eines Zugriffstokens mithilfe der VM-Identität und Abfragen eines Azure Database for PostgreSQL-Servers mithilfe dieses Tokens
-> * Implementieren des Tokenabrufs in einer C#-Beispielanwendung
+Folgendes wird vermittelt:
+- Erteilen des VM-Zugriffs auf einen Azure Database for PostgreSQL-Server
+- Erstellen eines Benutzers in der Datenbank, der die benutzerseitig zugewiesene Identität der VM darstellt
+- Abrufen eines Zugriffstokens mithilfe der VM-Identität und Abfragen eines Azure Database for PostgreSQL-Servers mithilfe dieses Tokens
+- Implementieren des Tokenabrufs in einer C#-Beispielanwendung
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

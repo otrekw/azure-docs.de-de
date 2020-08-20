@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 06/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: ad6761466cc958235557609e929e641a0311ee43
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: fdf3dc56575a45ad0c9e716054184ba2691133ba
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "86999173"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87831701"
 ---
 # <a name="analyze-complex-data-types-in-azure-synapse-analytics"></a>Analysieren komplexer Datentypen in Azure Synapse Analytics
 
@@ -165,7 +165,7 @@ Zuerst sollten die Benutzer, je nachdem, wie die Daten gespeichert wurden, die f
 | BULK              | FORMAT |
 | -------------------- | --- |
 | 'https://ACCOUNTNAME.dfs.core.windows.net/FILESYSTEM/PATH/FINENAME.parquet ' |'Parquet' (ADLSg2)|
-| N'endpoint=https://ACCOUNTNAME.documents-staging.windows-ppe.net:443/;account= KONTONAME;database=DATENBANKNAME;collection=SAMMLUNGSNAME;region=ABZUFRAGENDE REGION, SECRET='IHR GEHEIMNIS' |'CosmosDB' (Synapse Link)|
+| N'endpoint=https://ACCOUNTNAME.documents-staging.windows-ppe.net:443/;account=ACCOUNTNAME;database=DATABASENAME;collection=COLLECTIONNAME;region=REGIONTOQUERY', SECRET='YOURSECRET' |'CosmosDB' (Synapse Link)|
 
 
 > [!NOTE]
@@ -179,8 +179,8 @@ Ersetzen Sie jedes Feld wie folgt:
 select *
 FROM
 openrowset(
-BULK 'YOUR BULK ABOVE',
-            FORMAT='YOUR TYPE ABOVE'
+    BULK 'YOUR BULK ABOVE',
+    FORMAT='YOUR TYPE ABOVE'
 )
 with (id varchar(50),
         contextdataeventTime varchar(50) '$.context.data.eventTime',

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 6db83d17a9e6f3df6d691d6de616ead5407e3f5f
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 89da86d753f746774737c248ee318c7a377dd7a0
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87133043"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88007096"
 ---
 # <a name="azure-security-baseline-for-virtual-machine-scale-sets"></a>Azure-Sicherheitsbaseline für VM-Skalierungsgruppen
 
@@ -404,7 +404,7 @@ Bei Linux-VMs können Sie die Konsolenprotokollierung pro Knoten manuell konfigu
 
 * [Überwachen von Identität und Zugriff in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
 
-**Azure Security Center-Überwachung:** Ja
+**Azure Security Center-Überwachung**: Ja
 
 **Verantwortlichkeit**: Kunde
 
@@ -432,7 +432,7 @@ Bei Linux-VMs können Sie die Konsolenprotokollierung pro Knoten manuell konfigu
 
 * [Konfigurieren von Aktionsgruppen für benutzerdefinierte Warnungen und Benachrichtigungen](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups)
 
-**Azure Security Center-Überwachung:** Ja
+**Azure Security Center-Überwachung**: Ja
 
 **Verantwortlichkeit**: Kunde
 
@@ -464,7 +464,7 @@ Bei Linux-VMs können Sie die Konsolenprotokollierung pro Knoten manuell konfigu
 
 * [Verwenden von Zugriffsüberprüfungen für Azure-Identitäten](https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview)
 
-**Azure Security Center-Überwachung:** Ja
+**Azure Security Center-Überwachung**: Ja
 
 **Verantwortlichkeit**: Kunde
 
@@ -518,7 +518,7 @@ Bei Linux-VMs können Sie die Konsolenprotokollierung pro Knoten manuell konfigu
 
 * [Erstellen und Verwenden von Tags](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
 
-**Azure Security Center-Überwachung:** Zurzeit nicht verfügbar
+**Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
 
 **Verantwortlichkeit**: Kunde
 
@@ -576,11 +576,11 @@ Microsoft verwendet das TLS-Protokoll (Transport Layer Security) zum Schutz von 
 
 **Verantwortlichkeit**: Kunde
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4.6: Verwenden der rollenbasierten Zugriffssteuerung zum Steuern des Zugriffs auf Ressourcen
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6: Verwenden von Azure RBAC zum Steuern des Zugriffs auf Ressourcen
 
-**Leitfaden**: Mithilfe der rollenbasierten Zugriffssteuerung (RBAC) können Sie Aufgaben in Ihrem Team verteilen und Benutzern nur den Zugriff auf Ihre VM gewähren, den sie zur Ausführung ihrer Aufgaben benötigen. Anstatt allen Benutzern den uneingeschränkten Zugriff auf die VM zu gewähren, können Sie auch nur bestimmte Aktionen zulassen. Sie können die Zugriffssteuerung für die VM im Azure-Portal, über die Azure-Befehlszeilenschnittstelle oder mit Azure PowerShell konfigurieren.
+**Leitfaden**: Mithilfe der rollenbasierten Zugriffssteuerung von Azure (Role-Based Access Control, RBAC) können Sie Aufgaben in Ihrem Team verteilen und Benutzern nur die Zugriffsberechtigungen auf Ihre VM gewähren, die sie zur Ausführung ihrer Aufgaben benötigen. Anstatt allen Benutzern den uneingeschränkten Zugriff auf die VM zu gewähren, können Sie auch nur bestimmte Aktionen zulassen. Sie können die Zugriffssteuerung für die VM im Azure-Portal, über die Azure-Befehlszeilenschnittstelle oder mit Azure PowerShell konfigurieren.
 
-* [Rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) für Azure-Ressourcen](https://docs.microsoft.com/azure/role-based-access-control/overview)
+* [Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview)
 
 * [Integrierte Azure-Rollen](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#virtual-machine-contributor)
 
@@ -916,11 +916,11 @@ In den meisten Fällen sind die Microsoft-Basisvorlagen in Kombination mit Azure
 
 ### <a name="76-securely-store-custom-operating-system-images"></a>7.6: Sicheres Speichern von benutzerdefinierten Betriebssystemimages
 
-**Leitfaden**: Wenn Sie benutzerdefinierte Images (z. B. eine virtuelle Festplatte) verwenden, stellen Sie über die rollenbasierte Zugriffssteuerung von Azure sicher, dass nur autorisierte Benutzer auf die Images zugreifen können.
+**Leitfaden**: Wenn Sie benutzerdefinierte Images (z. B. eine virtuelle Festplatte) verwenden, stellen Sie über die rollenbasierte Zugriffssteuerung von Azure (Azure Role-Based Access Control, Azure-RBAC) sicher, dass nur autorisierte Benutzer auf die Images zugreifen können.
 
-* [Grundlegendes zu RBAC in Azure](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles)
+* [Grundlegendes zu Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles)
 
-* [Konfigurieren von RBAC in Azure](https://docs.microsoft.com/azure/role-based-access-control/quickstart-assign-role-user-portal)
+* [Konfigurieren von Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/quickstart-assign-role-user-portal)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 

@@ -15,12 +15,12 @@ ms.date: 08/09/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: fc14d79edda1fb8e0083dffa68d23f46630ba2f6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b1d07b3ff41c16ff2145311a0b42d8c57a8e7b82
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84342594"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88141957"
 ---
 # <a name="pricing-guidance-for-sql-server-on-azure-vms"></a>Preisinformationen für Azure-VMs mit SQL Server
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -67,7 +67,7 @@ Es gibt zwei Möglichkeiten, für die Lizenzierung dieser SQL Server-Editionen z
 
 Die **nutzungsbasierte Bezahlung für SQL Server-Lizenzen** (auch als **Pay As You Go, PAYG** bezeichnet) bedeutet, dass die sekundenbasierten Kosten für die Ausführung des virtuellen Azure-Computers die Kosten für die SQL Server-Lizenz einschließen. Die Preise für die verschiedenen SQL-Server-Editionen (Web, Standard, Enterprise) finden Sie auf der Preisseite für Azure Virtual Machines für [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows) oder [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux).
 
-Die Kosten sind für alle SQL Server-Versionen (2012 SP3 bis 2017) gleich. Die Lizenzierungskosten pro Sekunde sind von der Anzahl von vCPUs der VM abhängig.
+Die Kosten sind für alle SQL Server-Versionen (2012 SP3 bis 2019) gleich. Die Lizenzierungskosten pro Sekunde sind von der Anzahl von vCPUs der VM abhängig.
 
 Die nutzungsbasierte Bezahlung der SQL Server-Lizenzierung empfiehlt sich in folgenden Fällen:
 

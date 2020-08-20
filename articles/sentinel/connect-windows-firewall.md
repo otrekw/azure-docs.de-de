@@ -1,5 +1,5 @@
 ---
-title: Verknüpfen von Windows-Firewalldaten mit Azure Sentinel | Microsoft-Dokumentation
+title: Verknüpfen von Windows Defender Firewall-Daten mit Azure Sentinel | Microsoft-Dokumentation
 description: Aktivieren Sie den Windows Firewall-Connector in Azure Sentinel, um auf einfache Weise Firewallereignisse von Windows-Computern mit installierten Log Analytics-Agents zu streamen.
 services: sentinel
 documentationcenter: na
@@ -10,52 +10,78 @@ ms.assetid: 0e41f896-8521-49b8-a244-71c78d469bc3
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/23/2019
+ms.date: 08/05/2020
 ms.author: yelevin
-ms.openlocfilehash: d33ba0dbb62cd7206829ed9ae580ea2aa3334bcf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b2cf984e629d6b86beef9292dac819b554f49749
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85559485"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87850694"
 ---
-# <a name="connect-windows-firewall"></a>Herstellen einer Verbindung mit der Windows-Firewall
+# <a name="connect-windows-defender-firewall-with-advanced-security-to-azure-sentinel"></a>Verknüpfen von Windows Defender Firewall über erweiterte Sicherheit mit Azure Sentinel
 
+Der Connector [Windows Defender Firewall mit erweiterter Sicherheit](https://docs.microsoft.com/windows/security/threat-protection/windows-firewall/windows-firewall-with-advanced-security) erlaubt es Azure Sentinel, Windows Defender Firewall mit erweiterten Sicherheitsprotokollen von allen Windows-Computern in Ihrem Arbeitsbereich einfach zu erfassen. Durch diese Verbindung können Sie Windows-Firewallereignisse in Ihren Arbeitsmappen anzeigen und analysieren, sie bei der Erstellung benutzerdefinierter Warnmeldungen verwenden und in Ihre Sicherheitsuntersuchungen einbeziehen. Hierdurch können Sie zusätzliche Erkenntnisse über das Netzwerk Ihrer Organisation erlangen und Ihre Möglichkeiten für Sicherheitsvorgänge ausbauen. 
 
-
-Der Windows-Firewall-Connector ermöglicht es Ihnen, einfach eine Verbindung mit Ihren Windows-Firewall-Protokollen herzustellen, wenn diese mit Ihrem Azure Sentinel-Arbeitsbereich verbunden sind. Diese Verbindung ermöglicht es Ihnen, Dashboards anzuzeigen, benutzerdefinierte Warnungen zu erstellen und Untersuchungen zu verbessern. Dadurch erhalten Sie einen besseren Einblick in das Netzwerk Ihrer Organisation und bessere Möglichkeiten für Sicherheitsvorgänge. Die Lösung sammelt Windows-Firewallereignisse von den Windows-Computern, auf denen ein Log Analytics-Agent installiert ist. 
-
+Die Lösung sammelt Windows-Firewallereignisse von den Windows-Computern, auf denen ein Log Analytics-Agent installiert ist. 
 
 > [!NOTE]
 > - Daten werden am geografischen Standort des Arbeitsbereichs gespeichert, in dem Sie Azure Sentinel ausführen.
+>
 > - Wenn Azure Sentinel und Azure Security Center im selben Arbeitsbereich gesammelt werden, ist es nicht erforderlich, die Windows-Firewall-Lösung über diesen Connector zu aktivieren. Wenn Sie sie trotzdem aktivieren, führt dies nicht zu doppelten Daten. 
+
+## <a name="prerequisites"></a>Voraussetzungen
+
+- Sie müssen Lese- und Schreibberechtigungen für den Arbeitsbereich haben, an den die zu überwachenden Computer angeschlossen sind.
+
+- Zusätzlich zu allen **Azure Sentinel**-Rollen muss Ihnen die Rolle **Log Analytics-Mitwirkender** für die SecurityInsights-Lösung in diesem Arbeitsbereich zugewiesen sein. [Weitere Informationen](../role-based-access-control/built-in-roles.md#log-analytics-contributor)
 
 ## <a name="enable-the-connector"></a>Aktivieren des Connectors 
 
-1. Klicken Sie im Azure Sentinel-Portal auf **Data connectors** (Datenconnectors) und anschließend auf die Kachel **Windows-Firewall**. 
-1.  Wenn sich Ihre Windows-Computer in Azure befinden:
-    1. Klicken Sie auf **Install agent on Azure Windows virtual machine** (Agent auf virtuellem Windows-Computer in Azure installieren).
-    1. Wählen Sie in der Liste **Virtual machines** (Virtuelle Computer) den Windows-Computer aus, für den Sie an Azure Sentinel streamen möchten. Stellen Sie sicher, dass dies ein virtueller Windows-Computer ist.
-    1. Klicken Sie in dem Fenster, das für diesen virtuellen Computer wird geöffnet, auf **Verbinden**.  
-    1. Klicken Sie auf **Enable** (Aktivieren) im Fenster **Windows firewall connector** (Windows-Firewall-Connector). 
+1. Wählen Sie im Navigationsmenü des Azure Sentinel-Portals **Datenconnectors** aus.
 
-2. Wenn Ihr Windows-Computer kein virtueller Azure-Computer ist:
-    1. Klicken Sie auf **Install agent on non-Azure machines** (Agent auf Nicht-Azure-Computern installieren).
-    1. Wählen Sie im Fenster **Direkt-Agent** entweder **Windows-Agent herunterladen (64 Bit)** oder **Windows-Agent herunterladen (32 Bit)** aus.
-    1. Installieren Sie den Agenten auf Ihrem Windows-Computer. Kopieren Sie **Arbeitsbereich-ID**, **Primärschlüssel** und **Sekundärschlüssel**, und verwenden Sie diese Werte, wenn Sie während der Installation zur Eingabe aufgefordert werden.
+1. Wählen Sie aus dem Connectorkatalog die Option **Windows-Firewall** aus, und klicken Sie auf **Connectorseite öffnen**.
 
-4. Wählen Sie die Datentypen aus, die Sie streamen möchten.
-5. Klicken Sie auf **Lösung installieren**.
-6. Um das relevante Schema für die Windows-Firewall in Log Analytics zu verwenden, suchen Sie nach **SecurityEvent**.
+### <a name="instructions-tab"></a>Registerkarte „Anweisungen“
+
+- **Wenn sich Ihre Windows-Computer in Azure befinden:**
+
+    1. Wählen Sie **Agent auf virtuellem Windows-Computer (Azure) installieren** aus.
+
+    1. Klicken Sie auf den angezeigten Link **Agent für virtuelle Windows-Computer (Azure) herunterladen und installieren**.
+
+    1. Wählen Sie in der Liste **Virtual machines** (Virtuelle Computer) den Windows-Computer aus, für den Sie an Azure Sentinel streamen möchten. (Sie können **Windows** im Betriebssystem-Spaltenfilter auswählen, um sicherzustellen, dass nur virtuelle Windows-Computer angezeigt werden.)
+
+    1. Klicken Sie in dem Fenster, das für diesen virtuellen Computer wird geöffnet, auf **Verbinden**.
+
+    1. Kehren Sie zum Bereich **Virtuelle Computer** zurück, und wiederholen Sie die vorherigen beiden Schritte für alle anderen VMs, die Sie verbinden möchten. Wenn Sie fertig sind, kehren Sie zum Bereich **Windows-Firewall** zurück.
+
+- **Wenn Ihr Windows-Computer kein virtueller Azure-Computer ist:**
+
+    1. Wählen Sie **Agent auf einem Windows-Computer (kein Azure) installieren** aus.
+
+    1. Klicken Sie auf den angezeigten Link **Agent für Windows-Computer (kein Azure) herunterladen und installieren**.
+
+    1. Wählen Sie im Bereich **Agent-Verwaltung** je nach Bedarf entweder **Windows-Agent herunterladen (64 Bit)** oder **Windows-Agent herunterladen (32 Bit)** aus.
+
+    1. Kopieren Sie die Zeichenfolgen **Arbeitsbereichs-ID**, **Primärschlüssel** und **Sekundärschlüssel** in eine Textdatei. Kopieren Sie diese Datei und die heruntergeladene Installationsdatei auf Ihren Windows-Computer. Führen Sie die Installationsdatei aus, und geben Sie bei Aufforderung während der Installation die ID- und Schlüsselzeichenfolgen in die Textdatei ein.
+
+    1. Kehren Sie zum Bereich **Windows-Firewall** zurück.
+
+1. Klicken Sie auf **Lösung installieren**.
+
+### <a name="next-steps-tab"></a>Registerkarte „Nächste Schritte“
+
+- Sehen Sie sich die verfügbaren empfohlenen Arbeitsmappen und Abfragebeispiele an, die mit dem Datenconnector der **Windows-Firewall** gebündelt sind, um einen Einblick in Ihre Windows-Firewallprotokolldaten zu erhalten.
+
+- Wenn Sie die Windows-Firewalldaten in **Protokolle** abfragen möchten, geben Sie im Abfragefenster **WindowsFirewall** ein.
 
 ## <a name="validate-connectivity"></a>Überprüfen der Konnektivität
-
-Es kann bis zu 20 Minuten dauern, bis Ihre Protokolle in Log Analytics angezeigt werden. 
-
-
+ 
+Da die Protokolle der Windows-Firewall erst dann an Azure Sentinel gesendet werden, wenn die lokale Protokolldatei ihre Kapazität erreicht hat, führt das Beibehalten der Standardgröße des Protokolls von 4096 KB höchstwahrscheinlich zu einer hohen Sammlungslatenz. Sie können die Latenz verringern, indem Sie die Größe der Protokolldatei verringern. Weitere Informationen finden Sie in den Anweisungen zum [Konfigurieren des Windows-Firewallprotokolls](https://docs.microsoft.com/windows/security/threat-protection/windows-firewall/configure-the-windows-firewall-log). Beachten Sie, dass das Definieren der kleinstmöglichen Protokollgröße (1 KB) die Sammlungslatenz praktisch eliminiert, sich aber auch negativ auf die Leistung des lokalen Computers auswirken kann. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Dokument haben Sie erfahren, wie Sie die Windows-Firewall mit Azure Sentinel verbinden. Weitere Informationen zu Azure Sentinel finden Sie in den folgenden Artikeln:

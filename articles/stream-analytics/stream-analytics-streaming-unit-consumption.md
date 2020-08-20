@@ -6,13 +6,13 @@ ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 02/27/2020
-ms.openlocfilehash: 397e455c8b6a1097e2a32473036e1acd2bbdf2eb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/06/2020
+ms.openlocfilehash: 5d16e7f81a439d622a418dbc8cdff2d66c2a814f
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84704181"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87903560"
 ---
 # <a name="understand-and-adjust-streaming-units"></a>Überblick über Streamingeinheiten und Informationen zu Anpassungen
 
@@ -27,7 +27,7 @@ Die Nutzungsmetrik der Streamingeinheit in Prozent, die von 0 % bis 100 % reicht
 
 2. Suchen Sie in der Liste der Ressourcen nach dem zu skalierenden Stream Analytics-Auftrag, und öffnen Sie ihn anschließend. 
 
-3. Wählen Sie auf der Auftragsseite unter der Überschrift **Konfigurieren** die Option **Skalieren** aus. 
+3. Wählen Sie auf der Auftragsseite unter der Überschrift **Konfigurieren** die Option **Skalieren** aus. Beim Erstellen eines Auftrags ist „3“ die Standardanzahl von SUs.
 
     ![Konfiguration von Stream Analytics-Aufträgen im Azure-Portal][img.stream.analytics.preview.portal.settings.scale]
     
@@ -47,7 +47,7 @@ Die benötigte Anzahl an Premium-Streamingeinheiten für einen bestimmten Auftra
 
 Im Allgemeinen wird empfohlen, für Abfragen, die nicht **PARTITIONIEREN NACH** verwenden, mit 6 Premium-Streamingeinheiten zu beginnen. Ermitteln Sie dann die optimale Anzahl mittels Trial-and-Error-Methode. Dabei ändern Sie die Anzahl der SUs, nachdem Sie eine repräsentative Datenmenge übertragen und die Metrik „Speichereinheitnutzung in %“ überprüft haben. Die Höchstzahl der von einem Stream Analytics-Auftrag verwendbaren Streamingeinheiten hängt von der Anzahl an Schritten in der für den Auftrag definierten Abfrage und der Anzahl an Partitionen für die einzelnen Schritte ab. Weitere Informationen zu diesen Grenzwerten finden Sie [hier](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization#calculate-the-maximum-streaming-units-of-a-job).
 
-Weitere Informationen zum Auswählen der richtigen Anzahl an SUs finden Sie auf der folgenden Seite: [Skalieren von Azure Stream Analytics-Aufträgen zur Erhöhung des Durchsatzes](stream-analytics-scale-jobs.md)
+Weitere Informationen über die Auswahl der richtigen Anzahl von SUs finden Sie auf folgender Seite: [Skalieren von Azure Stream Analytics-Aufträgen zur Erhöhung des Durchsatzes bei der Streamingdatenverarbeitung](stream-analytics-scale-jobs.md).
 
 > [!Note]
 > Die benötigte SU-Anzahl für einen bestimmten Auftrag hängt von der Partitionskonfiguration für die Eingaben und der für den Auftrag definierten Abfrage ab. Sie können die für Ihr Kontingent maximal festgelegte Anzahl von SUs für einen Auftrag auswählen. Jedes Azure-Abonnement verfügt standardmäßig über ein Kontingent von höchstens 500 SUs für alle Analyseaufträge in einer bestimmten Region. Wenn Sie die SUs für Ihre Abonnements über dieses Kontingent hinaus erhöhen möchten, wenden Sie sich an den [Microsoft-Support](https://support.microsoft.com). Die gültigen Werte für SUs pro Auftrag sind 1, 3, 6 und danach Werte in Schritten von 6.
@@ -66,7 +66,7 @@ Verwenden Sie zum Vergleichen der Auslastung über einen bestimmten Zeitraum [Me
 Eine einzigartige Funktion eines Azure Stream Analytics-Auftrags besteht darin, eine zustandsbehaftete Verarbeitung wie etwa Aggregate, temporale Verknüpfungen und temporale Analysefunktionen im Fenstermodus auszuführen. Die einzelnen Operatoren enthalten Zustandsinformationen. Die maximale Fenstergröße für diese Abfrageelemente beträgt sieben Tage. 
 
 Der Begriff der temporalen Fenster kommt in mehreren Stream Analytics-Abfrageelementen vor:
-1. Aggregate im Fenstermodus: GROUP BY von rollierenden, springenden und gleitenden Fenstern
+1. Fensteraggregate: GROUP BY von rollierenden, springenden und gleitenden Fenstern
 
 2. Temporale Joins: JOIN mit DATEDIFF-Funktion
 
@@ -86,7 +86,7 @@ Beispiel: In der folgenden Abfrage ist die mit `clusterid` verknüpfte Zahl die 
    GROUP BY  clusterid, tumblingwindow (minutes, 5)
    ```
 
-Zum Beheben von Problemen, die durch hohe Kardinalität in der vorherigen Abfrage verursacht wurden, können Sie Ereignisse an den von `clusterid` partitionierten Event Hub senden und die Abfrage aufskalieren, indem Sie dem System die separate Verarbeitung aller Eingangspartitionen durch **PARTITION BY** ermöglichen. Dies wird im folgenden Beispiel gezeigt:
+Zum Beheben von Problemen, die durch hohe Kardinalität in der vorherigen Abfrage verursacht wurden, können Sie Ereignisse an den von `clusterid` partitionierten Event Hub senden und die Abfrage erweitern, indem Sie dem System die separate Verarbeitung aller Eingangspartitionen durch **PARTITION BY** ermöglichen. Dies wird im folgenden Beispiel gezeigt:
 
    ```sql
    SELECT count(*) 
@@ -111,7 +111,7 @@ Die Anzahl nicht abgeglichener Ereignisse im Verknüpfungsvorgang wirkt sich auf
 
 In diesem Beispiel kann es sein, dass viele Anzeigen angezeigt werden, aber nur wenige Benutzer auf diese klicken, und alle Ereignisse müssen im Zeitfenster bleiben. Der belegte Arbeitsspeicher ist proportional zu Fenstergröße und Ereignisrate. 
 
-Um dies zu beheben, senden Sie Ereignisse an den durch die Verknüpfungsschlüssel (in diesem Fall IDs) partitionierten Event Hub, und skalieren Sie die Abfrage auf, indem Sie dem System die separate Verarbeitung jeder Eingangspartition mit **PARTITION BY** ermöglichen. Dies wird im folgenden Beispiel gezeigt:
+Um dies zu beheben, senden Sie Ereignisse an den durch die Verknüpfungsschlüssel (in diesem Fall IDs) partitionierten Event Hub, und skalieren Sie die Abfrage horizontal hoch, indem Sie dem System die separate Verarbeitung jeder Eingangspartition mit **PARTITION BY** ermöglichen. Dies wird im folgenden Beispiel gezeigt:
 
    ```sql
    SELECT clicks.id
@@ -123,14 +123,14 @@ Um dies zu beheben, senden Sie Ereignisse an den durch die Verknüpfungsschlüss
 Nach dem Partitionieren der Abfrage wird sie auf mehrere Knoten verteilt. Infolgedessen verringert sich die Anzahl eingehender Ereignisse auf den einzelnen Knoten, wodurch wiederum die Größe des Zustands im Verknüpfungsfenster reduziert wird. 
 
 ## <a name="temporal-analytic-functions"></a>Temporale Analysefunktionen
-Der belegte Arbeitsspeicher (Zustandsgröße) einer temporalen Analysefunktion verhält sich proportional zu der mit der Dauer multiplizierten Ereignisrate. Der durch Analysefunktionen belegte Arbeitsspeicher verhält sich nicht proportional zur Fenstergröße, sondern zur Partitionsanzahl in jedem Zeitfenster.
+Der belegte Arbeitsspeicher (Zustandsgröße) einer temporalen Analysefunktion verhält sich proportional zu der mit der Dauer multiplizierten Ereignisrate.Der durch Analysefunktionen belegte Arbeitsspeicher verhält sich nicht proportional zur Fenstergröße, sondern zur Partitionsanzahl in jedem Zeitfenster.
 
-Die Wiederherstellung weist Ähnlichkeiten mit der temporalen Verknüpfung auf. Sie können die Abfrage durch **PARTITION BY** aufskalieren. 
+Die Wiederherstellung weist Ähnlichkeiten mit der temporalen Verknüpfung auf. Sie können die Abfrage durch **PARTITION BY** horizontal hochskalieren. 
 
 ## <a name="out-of-order-buffer"></a>Puffer für Ereignisse in falscher Reihenfolge 
 Benutzer können die Größe eines Puffers für Ereignisse in falscher Reihenfolge im Konfigurationsbereich „Ereignisreihenfolge“ konfigurieren. Der Puffer wird verwendet, um Eingaben für die Dauer des Fensters zu speichern und neu anzuordnen. Die Größe des Puffers verhält sich proportional zu der mit der Größe des Fensters für Ereignisse in falscher Reihenfolge multiplizierten Ereigniseingangsrate. Die Standardfenstergröße beträgt 0. 
 
-Um einen Überlauf des Puffers in einer anderen Reihenfolge zu beheben, skalieren Sie die Abfrage mit **PARTITION BY** auf. Nach dem Partitionieren der Abfrage wird sie auf mehrere Knoten verteilt. Infolgedessen verringert sich die Anzahl eingehender Ereignisse auf den einzelnen Knoten, wodurch wiederum die Größe der Ereignisse in jedem Neuanordnungspuffer reduziert wird. 
+Um einen Überlauf des Puffers in einer anderen Reihenfolge zu beheben, skalieren Sie die Abfrage mit **PARTITION BY** horizontal hoch. Nach dem Partitionieren der Abfrage wird sie auf mehrere Knoten verteilt. Infolgedessen verringert sich die Anzahl eingehender Ereignisse auf den einzelnen Knoten, wodurch wiederum die Größe der Ereignisse in jedem Neuanordnungspuffer reduziert wird. 
 
 ## <a name="input-partition-count"></a>Anzahl von Eingabepartitionen 
 Jede Eingabepartition einer Auftragseingabe weist einen Puffer auf. Je größer die Anzahl der Eingabepartitionen, desto mehr Ressourcen verbraucht der Auftrag. Für jede Streamingeinheit kann Azure Stream Analytics ungefähr 1 MB/s der Eingabe verarbeiten. Daher können Sie eine Optimierung vornehmen, indem Sie die Anzahl der Stream Analytics-Streamingeinheiten an die Anzahl von Partitionen in Ihrem Event Hub anpassen. 
