@@ -2,25 +2,21 @@
 title: 'Tutorial: Integration des einmaligen Anmeldens von Azure Active Directory in IamIP Patent Platform | Microsoft-Dokumentation'
 description: Hier erfahren Sie, wie Sie einmaliges Anmelden zwischen Azure Active Directory und IamIP Patent Platform konfigurieren.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 8d5b4fc1-e8fd-4418-a369-189272fef80d
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 02/10/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: e7d487aaf7ba4aaf666962cf91ca86d46115055b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 1a2139b7a0f7d51b6c759a98c93c5250666f15a9
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78190737"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88525138"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-iamip-patent-platform"></a>Tutorial: Integration des einmaligen Anmeldens von Azure Active Directory in IamIP Patent Platform
 
@@ -121,7 +117,7 @@ In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer mit dem Nam
 1. Wählen Sie oben im Bildschirm die Option **Neuer Benutzer** aus.
 1. Führen Sie in den **Benutzereigenschaften** die folgenden Schritte aus:
    1. Geben Sie im Feld **Name** den Namen **B.Simon** ein.  
-   1. Geben Sie in das Feld **Benutzername** den Text \<Benutzername>@\<IhreUnternehmensdomäne>.\<Erweiterung> ein. Beispiel: `B.Simon@contoso.com`.
+   1. Geben Sie im Feld **Benutzername** Folgendes ein: \<username>@\<companydomain>.\<extension>. Beispiel: `B.Simon@contoso.com`.
    1. Aktivieren Sie **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld **Kennwort** angezeigt wird.
    1. Klicken Sie auf **Erstellen**.
 
