@@ -2,22 +2,21 @@
 title: 'PowerShell-Beispiel: Auflisten von zusätzlichen Informationen zu Anwendungsproxy-Apps'
 description: Hier finden Sie ein PowerShell-Beispiel, mit dem alle Azure Active Directory-Anwendungsproxyanwendungen (Azure AD) zusammen mit der Anwendungs-ID (AppId), dem Namen (DisplayName), der externen URL (ExternalUrl), der internen URL (InternalUrl) und dem Authentifizierungstyp (ExternalAuthenticationType) aufgelistet werden.
 services: active-directory
-author: msmimart
+author: kenwith
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: sample
 ms.date: 12/05/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: f58de8c081dbb0323a2d9638777e29d879172072
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8994abc61e27a9d7c7097aacab92282f0c47c989
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75475648"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88506897"
 ---
 # <a name="get-all-application-proxy-apps-and-list-extended-information"></a>Abrufen aller Anwendungsproxy-Apps und Auflisten zusätzlicher Informationen
 

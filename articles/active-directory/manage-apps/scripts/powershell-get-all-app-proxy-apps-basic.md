@@ -2,22 +2,21 @@
 title: PowerShell-Beispiel – Auflisten von grundlegenden Informationen zu Anwendungsproxy-Apps
 description: PowerShell-Beispiel, das Anwendungen für den Azure Active Directory-Anwendungsproxy (Azure AD) zusammen mit der Anwendungs-ID (AppID), dem Namen (Display Name) und der Objekt-ID (ObjId) auflistet.
 services: active-directory
-author: msmimart
+author: kenwith
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: sample
 ms.date: 12/05/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 009aabb8b742a752a29d775efbd11b153588c09b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 80509969a30ea3e708d2e176a87277d51fb6da3f
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75475672"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88506899"
 ---
 # <a name="get-all-application-proxy-apps-and-list-basic-information"></a>Abrufen aller Anwendungen für den Anwendungsproxy und Auflisten grundlegender Informationen
 

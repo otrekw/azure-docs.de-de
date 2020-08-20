@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 01/14/2020
 ms.author: dylankil
 ms.custom: devx-track-python
-ms.openlocfilehash: 967e290af390ff4310de3e7d0fd844e340ac289d
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 5a6c68dbb7dd4171fad3b3a13e904a152618a55d
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87876562"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88516384"
 ---
 # <a name="tutorial-start-the-immersive-reader-using-the-python-sample-project"></a>Tutorial: Starten des plastischen Readers unter Verwendung des Python-Beispielprojekts
 
@@ -27,7 +27,7 @@ In der [Übersicht](./overview.md) haben Sie gelernt, was Plastischer Reader ist
 > * Abrufen eines Zugriffstokens
 > * Starten von Plastischer Reader mit Beispielinhalt
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/cognitive-services/) erstellen, bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

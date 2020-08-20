@@ -2,22 +2,21 @@
 title: 'PowerShell-Beispiel: Anwendungsproxy-Apps, die benutzerdefinierte Domänen verwenden'
 description: Hier finden Sie ein PowerShell-Beispiel, das alle Anwendungsproxyanwendungen von Azure Active Directory (Azure AD) auflistet, die benutzerdefinierte Domänen verwenden, und die entsprechenden Zertifikatinformationen angibt.
 services: active-directory
-author: msmimart
+author: kenwith
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: sample
 ms.date: 12/05/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9722178011c3c0411f2e0e888dd9ab5962b933b9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3e6f300126da0eeffe9d1c752102ab9ded81ff5b
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75475620"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88506735"
 ---
 # <a name="get-all-application-proxy-apps-using-custom-domains-and-certificate-information"></a>Abrufen aller Anwendungsproxy-Apps, die benutzerdefinierte Domänen verwenden, und der Zertifikatinformationen
 

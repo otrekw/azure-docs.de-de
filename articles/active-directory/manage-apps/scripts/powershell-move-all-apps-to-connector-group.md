@@ -2,22 +2,21 @@
 title: PowerShell-Beispiel – Verschieben von Anwendungsproxy-Apps in eine andere Gruppe
 description: PowerShell-Beispiel für den Azure Active Directory-Anwendungsproxy (Azure AD), das verwendet wird, um alle derzeit einer Connectorgruppe zugewiesenen Anwendungen in eine andere Connectorgruppe zu verschieben.
 services: active-directory
-author: msmimart
+author: kenwith
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: sample
 ms.date: 12/05/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: f6dccdaa96dadb061b168bbdf6148ed4d759776c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2632dbc4db093126d9b334e338a63dc8d0079b0c
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75475600"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88511098"
 ---
 # <a name="move-all-apps-assigned-to-a-connector-group-to-another-connector-group"></a>Verschieben aller einer Connectorgruppe zugewiesenen Apps in eine andere Connectorgruppe
 
