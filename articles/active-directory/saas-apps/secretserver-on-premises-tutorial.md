@@ -2,26 +2,21 @@
 title: 'Tutorial: Azure Active Directory-Integration mit Secret Server (On-Premises) | Microsoft-Dokumentation'
 description: Hier erfahren Sie, wie Sie das einmalige Anmelden für Azure Active Directory und Secret Server (On-Premises) konfigurieren.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: be4ba84a-275d-4f71-afce-cb064edc713f
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 08/07/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4926fc1833cc14b2ad81a01e230a5c3c37ba6ab3
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: eeaf6917187c9688bf6a62b98b2fcf64519b1798
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "68880170"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88543226"
 ---
 # <a name="tutorial-integrate-secret-server-on-premises-with-azure-active-directory"></a>Tutorial: Integrieren von Secret Server (On-Premises) in Azure Active Directory
 
