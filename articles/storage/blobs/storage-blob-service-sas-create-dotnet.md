@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/20/2019
+ms.date: 08/07/2020
 ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: blobs
-ms.openlocfilehash: 6f1beea12b33dcc3c0111e26d79daf096c1eedcb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e0d442624448cfe48fdd9ab426147599acbb940d
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84808432"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88034719"
 ---
 # <a name="create-a-service-sas-for-a-container-or-blob-with-net"></a>Erstellen einer Dienst-SAS für einen Container oder ein Blob mit .NET
 
@@ -25,9 +25,17 @@ In diesem Artikel wird beschrieben, wie Sie den Speicherkontoschlüssel zum Erst
 
 ## <a name="create-a-service-sas-for-a-blob-container"></a>Erstellen einer Dienst-SAS für einen Blobcontainer
 
-Um eine Dienst-SAS für einen Container zu erstellen, rufen Sie die Methode [CloudBlobContainer.GetSharedAccessSignature](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.getsharedaccesssignature) auf.
-
 Mit dem folgenden Codebeispiel wird eine SAS für einen Container erstellt. Wenn der Name einer vorhandenen gespeicherten Zugriffsrichtlinie angegeben wird, wird diese Richtlinie der SAS zugewiesen. Wenn keine gespeicherte Zugriffsrichtlinie angegeben wird, erstellt der Code eine Ad-hoc-SAS für den Container.
+
+### <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
+
+Erstellen Sie ein neues [BlobSasBuilder](/dotnet/api/azure.storage.sas.blobsasbuilder)-Element. Rufen Sie dann [ToSasQueryParameters](/dotnet/api/azure.storage.sas.blobsasbuilder.tosasqueryparameters) auf, um die SAS-Tokenzeichenfolge abzurufen. 
+
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Security.cs" id="Snippet_GetContainerSasUri":::
+
+### <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
+
+Um eine Dienst-SAS für einen Container zu erstellen, rufen Sie die Methode [CloudBlobContainer.GetSharedAccessSignature](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.getsharedaccesssignature) auf.
 
 ```csharp
 private static string GetContainerSasUri(CloudBlobContainer container, string storedPolicyName = null)
@@ -67,13 +75,23 @@ private static string GetContainerSasUri(CloudBlobContainer container, string st
     // Return the URI string for the container, including the SAS token.
     return container.Uri + sasContainerToken;
 }
+
 ```
+---
 
 ## <a name="create-a-service-sas-for-a-blob"></a>Erstellen einer Dienst-SAS für ein Blob
 
-Um eine Dienst-SAS für ein Blob zu erstellen, rufen Sie die Methode [CloudBlob.GetSharedAccessSignature](/dotnet/api/microsoft.azure.storage.blob.cloudblob.getsharedaccesssignature) auf.
-
 Mit dem folgenden Codebeispiel wird eine SAS für ein Blob erstellt. Wenn der Name einer vorhandenen gespeicherten Zugriffsrichtlinie angegeben wird, wird diese Richtlinie der SAS zugewiesen. Wenn keine gespeicherte Zugriffsrichtlinie angegeben wird, erstellt der Code eine Ad-hoc-SAS für das Blob.
+
+### <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
+
+Erstellen Sie ein neues [BlobSasBuilder](/dotnet/api/azure.storage.sas.blobsasbuilder)-Element. Rufen Sie dann [ToSasQueryParameters](/dotnet/api/azure.storage.sas.blobsasbuilder.tosasqueryparameters) auf, um die SAS-Tokenzeichenfolge abzurufen. 
+
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Security.cs" id="Snippet_GetBlobSasUri":::
+
+### <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
+
+Um eine Dienst-SAS für ein Blob zu erstellen, rufen Sie die Methode [CloudBlob.GetSharedAccessSignature](/dotnet/api/microsoft.azure.storage.blob.cloudblob.getsharedaccesssignature) auf.
 
 ```csharp
 private static string GetBlobSasUri(CloudBlobContainer container, string blobName, string policyName = null)
@@ -117,6 +135,7 @@ private static string GetBlobSasUri(CloudBlobContainer container, string blobNam
     return blob.Uri + sasBlobToken;
 }
 ```
+---
 
 [!INCLUDE [storage-blob-dotnet-resources-include](../../../includes/storage-blob-dotnet-resources-include.md)]
 

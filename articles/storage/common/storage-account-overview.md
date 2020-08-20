@@ -1,7 +1,7 @@
 ---
 title: Speicherkontoübersicht
 titleSuffix: Azure Storage
-description: Erfahren Sie mehr über die Optionen zum Erstellen und Verwenden eines Azure Storage-Kontos.
+description: Hier finden Sie eine Übersicht über Speicherkonten in Azure Storage. Überprüfen Sie Kontobenennung, Leistungsstufen, Zugriffsebenen, Redundanz, Verschlüsselung, Endpunkte und mehr.
 services: storage
 author: tamram
 ms.service: storage
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 01/17/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 6ae5f4ba88880a53db765ab0ad9fde5bd9a4e4f9
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 8342ffc122f56f4e2a3a41e249007b2ceaad22a6
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86043636"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88034650"
 ---
 # <a name="storage-account-overview"></a>Speicherkontoübersicht
 
@@ -30,7 +30,7 @@ Um zu erfahren, wie Sie ein Azure Storage-Konto erstellen, lesen Sie den Artikel
 
 Speicherkonten vom Typ „Allgemein v2“ unterstützen die neuesten Azure Storage-Features und umfassen die gesamte Funktionalität von Konten des Typs „Allgemein v1“ und Blob Storage-Konten. Konten vom Typ „Allgemein v2“ bieten die niedrigsten Preise pro Gigabyte für Azure Storage sowie wettbewerbsfähige Transaktionspreise. Speicherkonten vom Typ „Allgemein v2“ unterstützen die folgenden Azure Storage-Dienste:
 
-- Blobs (alle Typen: Block-, Anfüge- und Seitenblobs)
+- Blobs (alle Typen: Blockblob, Anfügeblob, Seitenblob)
 - Data Lake Gen2
 - Dateien
 - Datenträger
@@ -78,7 +78,7 @@ FileStorage-Konten bieten einzigartige leistungsorientierte Merkmale wie IOPS-Bu
 
 Beachten Sie bei der Benennung Ihres Speicherkontos folgende Regeln:
 
-- Speicherkontonamen müssen zwischen 3 und 24 Zeichen lang sein und dürfen nur Zahlen und Kleinbuchstaben enthalten.
+- Speicherkontonamen müssen zwischen 3 und 24 Zeichen lang sein und dürfen nur Zahlen und Kleinbuchstaben enthalten.
 - Der Name Ihres Speicherkontos muss innerhalb von Azure eindeutig sein. Zwei Speicherkonten können nicht denselben Namen haben.
 
 ## <a name="performance-tiers"></a>Leistungsstufen
@@ -150,7 +150,7 @@ Jede Anforderung, die für Ihr Speicherkonto gesendet wird, muss autorisiert wer
 Sie können eine der folgenden Methoden verwenden, um Zugriff auf die Daten in Ihrem Speicherkonto zu gewähren:
 
 - **Azure Active Directory:** Verwenden Sie Anmeldeinformationen von Azure Active Directory (Azure AD), um einen Benutzer, eine Gruppe oder eine andere Identität für den Zugriff auf Blob- und Warteschlangendaten zu authentifizieren. Wenn die Authentifizierung einer Identität erfolgreich war, gibt Azure AD ein Token zurück, das zum Autorisieren der Anforderung bei Azure Blob Storage oder Azure Queue Storage verwendet wird. Weitere Informationen finden Sie unter [Authentifizieren des Zugriffs auf Azure Storage mit Azure Active Directory](storage-auth-aad.md).
-- **Autorisierung mit gemeinsam verwendetem Schlüssel:** Verwenden Sie den Zugriffsschlüssel für Ihr Speicherkonto, um eine Verbindungszeichenfolge zu erstellen, die Ihre Anwendung zur Laufzeit für den Zugriff auf Azure Storage verwendet. Die Werte in der Verbindungszeichenfolge werden verwendet, um den *Autorisierungsheader* zu generieren, der an Azure Storage übergeben wird. Weitere Informationen hierzu finden Sie unter [Konfigurieren von Azure Storage-Verbindungszeichenfolgen](storage-configure-connection-string.md).
+- **Autorisierung mit freigegebenen Schlüsseln**: Verwenden Sie den Zugriffsschlüssel für Ihr Speicherkonto, um eine Verbindungszeichenfolge zu erstellen, die Ihre Anwendung zur Laufzeit für den Zugriff auf Azure Storage verwendet. Die Werte in der Verbindungszeichenfolge werden verwendet, um den *Autorisierungsheader* zu generieren, der an Azure Storage übergeben wird. Weitere Informationen hierzu finden Sie unter [Konfigurieren von Azure Storage-Verbindungszeichenfolgen](storage-configure-connection-string.md).
 - **Shared Access Signature (SAS):** Verwenden Sie eine Shared Access Signature, um den Zugriff auf Ressourcen in Ihrem Speicherkonto zu delegieren, wenn Sie nicht die Azure AD-Autorisierung nutzen. Eine Shared Access Signature ist ein Token, das alle Informationen kapselt, die zum Autorisieren einer Zugriffsanforderung für Azure Storage in der URL erforderlich sind. In der Shared Access Signature können Sie die Speicherressource, die gewährten Berechtigungen und das Intervall angeben, in dem die Berechtigungen gültig sind. Weitere Informationen finden Sie unter [Verwenden von Shared Access Signatures (SAS)](storage-sas-overview.md).
 
 > [!NOTE]

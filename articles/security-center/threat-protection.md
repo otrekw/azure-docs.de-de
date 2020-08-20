@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.author: memildin
-ms.openlocfilehash: d049538653ea345935d40bd965afd7d2453b2aa2
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.openlocfilehash: 69f439e102edc53207e44d63cb29396f64f59e0e
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88041985"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272500"
 ---
 # <a name="threat-protection-in-azure-security-center"></a>Bedrohungsschutz in Azure Security Center
 
@@ -119,7 +119,7 @@ Weitere Informationen zu App Service-Plänen finden Sie unter [App Service-Plän
 |Status des Release:|Allgemein verfügbar|
 |Preise:|Standard-Tarif|
 |Erforderliche Rollen und Berechtigungen:|**Sicherheitsadministrator** kann Warnungen verwerfen.<br>Der **Sicherheitsleseberechtigte** kann Ergebnisse anzeigen.|
-|Clouds:|![Ja](./media/icons/yes-icon.png) Kommerzielle Clouds<br>![Nein](./media/icons/no-icon.png) National/Sovereign (US Gov, China Gov, andere Gov-Clouds)|
+|Clouds:|![Ja](./media/icons/yes-icon.png) Kommerzielle Clouds<br>![Nein](./media/icons/no-icon.png) National/Sovereign (US Gov, China Gov, andere Gov)|
 |||
 
 [!INCLUDE [AKS in ASC threat protection](../../includes/security-center-azure-kubernetes-threat-protection.md)]
@@ -230,7 +230,6 @@ Einige Netzwerkkonfigurationen schränken Security Center möglicherweise in der
 
 Eine Liste der Warnungen der Azure-Netzwerkebene finden Sie in der [Referenztabelle der Warnungen](alerts-reference.md#alerts-azurenetlayer).
 
-Unter [Heuristic DNS detections in Azure Security Center](https://azure.microsoft.com/blog/heuristic-dns-detections-in-azure-security-center/) (Heuristische DNS-Erkennungen in Security Center) finden Sie Informationen dazu, wie Security Center netzwerkbezogene Signale für den Bedrohungsschutz verwenden kann.
 
 
 

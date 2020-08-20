@@ -153,6 +153,8 @@
       href: concept-ml-pipelines.md
     - name: Unternehmensbereitschaft und -sicherheit
       items:
+        - name: Sicherheitsbaseline
+          href: security-baseline.md
         - name: Unternehmenssicherheit und -governance
           items:
             - name: Übersicht über Unternehmenssicherheit

@@ -13,16 +13,17 @@ ms.date: 04/17/2020
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40
 ms.reviewer: hirsin, jlu, annaba
-ms.openlocfilehash: d25c2e2603f36ff090d01f235a4c8e4a1ae12605
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: e50b4aa300c74ed5fff9a345f83d41fdda5a1054
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87552848"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88115865"
 ---
 # <a name="configurable-token-lifetimes-in-microsoft-identity-platform-preview"></a>Konfigurierbare Tokengültigkeitsdauer in Microsoft Identity Platform (Vorschau)
 
-Sie können die Gültigkeitsdauer eines Tokens angeben, das von Microsoft Identity Platform ausgestellt wird. Die Tokengültigkeitsdauer können Sie für alle Apps Ihrer Organisation, für eine mehrinstanzenfähige Anwendung (Multiorganisationsanwendung) oder für einen bestimmten Dienstprinzipal in Ihrer Organisation festlegen.
+Sie können die Gültigkeitsdauer eines Tokens angeben, das von Microsoft Identity Platform ausgestellt wird. Die Tokengültigkeitsdauer können Sie für alle Apps Ihrer Organisation, für eine mehrinstanzenfähige Anwendung (Multiorganisationsanwendung) oder für einen bestimmten Dienstprinzipal in Ihrer Organisation festlegen. 
+> Beachten Sie, dass das Konfigurieren der Tokenlebensdauer für Dienstprinzipale für verwaltete Identitäten derzeit nicht unterstützt wird.
 
 > [!IMPORTANT]
 > Aufgrund des Kundenfeedbacks während der Vorschauphase haben wir in „Bedingter Azure AD-Zugriff“ [Funktionen zur Verwaltung von Authentifizierungssitzungen](https://go.microsoft.com/fwlink/?linkid=2083106) implementiert. Mithilfe dieses neuen Features können Sie die Lebensdauer von Aktualisierungstoken durch Festlegen der Anmeldehäufigkeit konfigurieren. Ab dem 30. Mai 2020 können neue Mandanten die Richtlinie für die konfigurierbare Tokengültigkeitsdauer zum Konfigurieren von Sitzungs- und Aktualisierungstoken nicht mehr verwenden. Nach einigen Monaten ab diesem Datum wird die Unterstützung eingestellt, d. h., vorhandene Richtlinien für Sitzungs- und Aktualisierungstoken werden nicht mehr berücksichtigt. Die Gültigkeitsdauer von Zugriffstoken kann jedoch auch nach der Einstellung weiterhin konfiguriert werden.
@@ -550,4 +551,4 @@ Remove-AzureADServicePrincipalPolicy -Id <ObjectId of ServicePrincipal>  -Policy
 
 Für die Verwendung dieses Features ist eine Azure AD Premium P1-Lizenz erforderlich. Um die richtige Lizenz für Ihre Anforderungen zu ermitteln, lesen Sie [Vergleich der allgemein verfügbaren Features der Editionen Free und Premium](https://azure.microsoft.com/pricing/details/active-directory/).
 
-Kunden mit [Microsoft 365 Business-Lizenzen](https://docs.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-business-service-description) haben auch Zugriff auf Funktionen für bedingten Zugriff.
+Kunden mit [Microsoft 365 Business-Lizenzen](/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-business-service-description) haben auch Zugriff auf Funktionen für bedingten Zugriff.

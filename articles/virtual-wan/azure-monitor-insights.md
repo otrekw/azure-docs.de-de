@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: cherylmc
-ms.openlocfilehash: 8553a809173d955a21e6730de35c70de5b69e81b
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: e3316b4a2255652972a0b9deef813f894f993589
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87135992"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836070"
 ---
 # <a name="azure-monitor-insights-for-virtual-wan-preview"></a>Azure Monitor Insights für Virtual WAN (Vorschau)
 
@@ -21,7 +21,7 @@ ms.locfileid: "87135992"
 Virtual WAN-Metriken auf Ressourcenebene werden über eine vorkonfigurierte Virtual WAN-Arbeitsmappe für Metriken erfasst und dargestellt. In der Arbeitsmappe werden die Metriken auf der Ebene des virtuellen WAN, des Hubs, des Gateways und der Verbindung angezeigt. In diesem Artikel erfahren Sie, wie Sie mit Azure Monitor Insights für Virtual WAN Virtual WAN-Topologien und -Metriken an einer zentralen Stelle anzeigen können.
 
 > [!NOTE]
-> Das Insights-Menü wird derzeit für diese Vorschauversion eingeführt.
+> Die Insights-Menüoption im Virtual WAN-Portal wird derzeit eingeführt. Das Insights-Menü für Virtual WAN wird gerade erst eingeführt, auf die Virtual WAN-Topologie und die Virtual WAN-Arbeitsmappe für Metriken kann jedoch direkt über Azure Monitor für Netzwerke zugegriffen werden. Weitere Informationen finden Sie unter [Azure Monitor für Netzwerke (Vorschau)](../azure-monitor/insights/network-insights-overview.md). 
 >
 
 ## <a name="before-you-begin"></a>Voraussetzungen

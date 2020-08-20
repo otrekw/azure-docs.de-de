@@ -1,0 +1,38 @@
+---
+author: ggailey777
+ms.service: azure-functions
+ms.topic: include
+ms.date: 08/07/2020
+ms.author: glenga
+ms.openlocfilehash: 2936d22eacef73daef4433b3fd296dd4757fa410
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88031121"
+---
+Wenn Sie keine Erweiterungspakete verwenden können, können Sie Azure Functions Core Tools lokal nutzen, um die für Ihr Projekt erforderlichen Erweiterungspakete zu installieren. 
+
+> [!NOTE]
+> Um Erweiterungen mithilfe von Core Tools manuell zu installieren, müssen Sie das .NET Core 2.x-SDK installiert haben.
+
+Bei der expliziten Installation von Erweiterungen wird die .NET-Projektdatei „extensions.csproj“ zum Stamm Ihres Projekts hinzugefügt. Diese Datei definiert die von Ihren Funktionen benötigten NuGet-Pakete. Sie können zwar mit den [NuGet-Paketverweisen](/nuget/consume-packages/package-references-in-project-files) in dieser Datei arbeiten, mit Core Tools können Erweiterungen jedoch installiert werden, ohne die Datei manuell bearbeiten zu müssen.
+
+Es gibt verschiedene Möglichkeiten, um Core Tools zum Installieren der erforderlichen Erweiterungen in Ihrem lokalen Projekt zu verwenden. 
+
+#### <a name="install-all-extensions"></a>Installieren aller Erweiterungen 
+
+Verwenden Sie den folgenden Befehl, um automatisch alle Erweiterungspakete hinzuzufügen, die von den Bindungen in Ihrem lokalen Projekt verwendet werden:
+
+```dotnetcli
+func extensions install
+```
+Der Befehl liest die Datei *function.json*, um zu ermitteln, welche Pakete Sie benötigen, installiert diese und erzeugt das Erweiterungenprojekt (extensions.csproj) neu. Er fügt alle neuen Bindungen an die aktuelle Version hinzu, aktualisiert aber keine vorhandenen Bindungen. Verwenden Sie die Option `--force`, um vorhandene Bindungen beim Installieren neuer auf die neueste Version zu aktualisieren.
+
+#### <a name="install-a-specific-extension"></a>Installieren einer bestimmten Erweiterung
+
+Verwenden Sie den folgenden Befehl, um ein bestimmtes Erweiterungspaket mit einer bestimmten Version zu installieren (in diesem Fall die Speichererweiterung):
+
+```dotnetcli
+func extensions install --package Microsoft.Azure.WebJobs.Extensions.Storage --version 4.0.2
+```

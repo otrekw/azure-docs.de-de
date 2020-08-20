@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 038433e3b83ba936c14142053b86e0a7b0ed9dc6
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 5af7b3373993dce1939ecd7534140e58db688579
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87291062"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87835577"
 ---
 # <a name="storage-optimized-virtual-machine-sizes"></a>Speicheroptimierte VM-Größen
 
@@ -36,3 +36,5 @@ Die [Lsv2-Reihe](lsv2-series.md) bietet direkt zugeordneten lokalen NVMe-Speiche
 Weitere Informationen dazu, wie Sie mit [Azure-Computeeinheiten (ACU)](acu.md) die Computeleistung von Azure-SKUs vergleichen können.
 
 Erfahren Sie, wie Sie die Leistung von virtuellen Computern der Lsv2-Reihe für [Windows](windows/storage-performance.md) oder [Linux](linux/storage-performance.md) optimieren.
+
+Weitere Informationen dazu, wie VM-Namen in Azure zugewiesen werden, finden Sie unter [Namenskonventionen für Azure-VM-Größen](./vm-naming-conventions.md).

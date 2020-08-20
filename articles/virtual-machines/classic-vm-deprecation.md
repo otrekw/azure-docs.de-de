@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 02/10/2020
 ms.author: tagore
-ms.openlocfilehash: 16ca4ad1204301542ffaa0177d88b2c2800f13b4
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: c1807da76fe25d31581a07706489967d6e83f748
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836274"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88505307"
 ---
 # <a name="migrate-your-iaas-resources-to-azure-resource-manager-by-march-1-2023"></a>Migrieren Ihrer IaaS-Ressourcen zu Azure Resource Manager vor dem 1. März 2023 
 
@@ -41,7 +41,7 @@ Die folgenden Azure-Dienste und -Funktionen sind von dieser Aussonderung **NICHT
 
 - Weitere Informationen zur Migration Ihrer klassischen virtuellen [Linux](./linux/migration-classic-resource-manager-plan.md)- und [Windows](./windows/migration-classic-resource-manager-plan.md)-Computer zu Azure Resource Manager finden Sie [hier](./windows/migration-classic-resource-manager-overview.md).
 
-- Zusätzliche Informationen finden Sie unter [Häufig gestellte Fragen zur Migration vom klassischen Bereitstellungsmodell zum Azure Resource Manager-Bereitstellungsmodell](./windows/migration-classic-resource-manager-faq.md).
+- Zusätzliche Informationen finden Sie unter [Häufig gestellte Fragen zur Migration vom klassischen Bereitstellungsmodell zum Azure Resource Manager-Bereitstellungsmodell](./migration-classic-resource-manager-faq.md).
 
 - Bei technischen Fragen und Problemen sowie zum Hinzufügen von Abonnements zur Zulassungsliste [wenden Sie sich an den Support](https://ms.portal.azure.com/#create/Microsoft.Support/Parameters/{"pesId":"6f16735c-b0ae-b275-ad3a-03479cfa1396","supportTopicId":"8a82f77d-c3ab-7b08-d915-776b4ff64ff4"}).
 

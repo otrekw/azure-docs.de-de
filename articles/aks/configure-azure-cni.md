@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie Azure CNI-Netzwerke – „Advanced“ (Erwei
 services: container-service
 ms.topic: article
 ms.date: 06/03/2019
-ms.openlocfilehash: d025bcddfdee25cddac311ac9a201b7f3afebd22
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b1bf459c530195b8855169123b8f496e4969403b
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84416850"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87872428"
 ---
 # <a name="configure-azure-cni-networking-in-azure-kubernetes-service-aks"></a>Konfigurieren von Azure CNI-Netzwerken in Azure Kubernetes Service (AKS)
 
@@ -87,7 +87,7 @@ Ein Mindestwert für maximale Pods pro Knoten wird erzwungen, um Platz für Syst
 
 ### <a name="configure-maximum---existing-clusters"></a>Konfigurieren des Höchstwerts: Vorhandene Cluster
 
-Die Einstellung für die maximale Anzahl von Pods pro Knoten kann beim Erstellen eines neuen Knotenpools definiert werden. Wenn Sie die maximale Anzahl von Pods pro Knoten in einem vorhandenen Cluster erhöhen müssen, fügen Sie einen neuen Knotenpool mit dem neuen gewünschten Maximalwert hinzu. Nachdem Sie Ihre Pods in den neuen Pool migriert haben, löschen Sie den älteren Pool. Wenn Sie einen älteren Pool in einem Cluster löschen möchten, müssen Sie sicherstellen, dass Sie die Modi der Knotenpools gemäß der Definition im Artikel [Verwalten von Systemknotenpools in Azure Kubernetes Service (AKS)] festlegen.
+Die Einstellung für die maximale Anzahl von Pods pro Knoten kann beim Erstellen eines neuen Knotenpools definiert werden. Wenn Sie die maximale Anzahl von Pods pro Knoten in einem vorhandenen Cluster erhöhen müssen, fügen Sie einen neuen Knotenpool mit dem neuen gewünschten Maximalwert hinzu. Nachdem Sie Ihre Pods in den neuen Pool migriert haben, löschen Sie den älteren Pool. Wenn Sie einen älteren Pool in einem Cluster löschen möchten, müssen Sie sicherstellen, dass Sie die Modi der Knotenpools gemäß der Definition im Artikel [Verwalten von Systemknotenpools in Azure Kubernetes Service (AKS)][system-node-pools] festlegen.
 
 ## <a name="deployment-parameters"></a>Bereitstellungsparameter
 
@@ -214,4 +214,4 @@ Per AKS-Engine erstellte Kubernetes-Cluster unterstützen sowohl das [kubenet][k
 [network-policy]: use-network-policies.md
 [nodepool-upgrade]: use-multiple-node-pools.md#upgrade-a-node-pool
 [network-comparisons]: concepts-network.md#compare-network-models
-[Verwalten von Systemknotenpools in Azure Kubernetes Service (AKS)]: use-system-pools.md
+[system-node-pools]: use-system-pools.md

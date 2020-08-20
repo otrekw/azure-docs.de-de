@@ -1,26 +1,26 @@
 ---
 title: Festlegen von Azure-Rollen für den Azure-Administratorzugriff
 titleSuffix: Azure Cognitive Search
-description: Rollenbasierte Verwaltungsfunktionen (RBAC) im Azure-Portal zum Steuern und Delegieren von administrativen Aufgaben für die Verwaltung der kognitiven Azure-Suche.
+description: Rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) im Azure-Portal zum Steuern und Delegieren von administrativen Aufgaben für die Verwaltung von Azure Cognitive Search.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/03/2020
-ms.openlocfilehash: d1b2576eb42cbe25919eb77fc30e2720ed812ca4
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: c01806194156fb43524e2db5f4c9bf636186de95
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534429"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009204"
 ---
 # <a name="set-azure-roles-for-administrative-access-to-azure-cognitive-search"></a>Festlegen von Azure-Rollen für den Administratorzugriff auf Azure Cognitive Search
 
 In Azure wird ein [globales Modell für die rollenbasierte Autorisierung](../role-based-access-control/role-assignments-portal.md) für alle Dienste bereitgestellt, die über das Portal oder mit Resource Manager-APIs verwaltet werden. Die Rollen „Besitzer“, „Mitwirkender“ und „Leser“ bestimmen die Ebene der *Dienstverwaltung* für Active Directory-Benutzer, -Gruppen und -Dienstprinzipale, die einer Rolle jeweils zugewiesen sind. 
 
 > [!Note]
-> Es gibt keine rollenbasierte Zugriffssteuerung zum Schutz der Teile eines Indexes oder einer Teilmenge von Dokumenten. Für den identitätsbasierten Zugriff über Suchergebnisse können Sie Sicherheitsfilter erstellen, um die Ergebnisse anhand der Identität einzugrenzen. Auf diese Weise werden Dokumente entfernt, auf die der Anforderer keinen Zugriff haben sollte. Weitere Informationen finden Sie unter [Sicherheitsfilter](search-security-trimming-for-azure-search.md) und [Sichern mit Active Directory](search-security-trimming-for-azure-search-with-aad.md).
+> Es gibt keine rollenbasierte Zugriffssteuerung (RBAC) zum Schutz der Teile eines Indexes oder einer Teilmenge von Dokumenten. Für den identitätsbasierten Zugriff über Suchergebnisse können Sie Sicherheitsfilter erstellen, um die Ergebnisse anhand der Identität einzugrenzen. Auf diese Weise werden Dokumente entfernt, auf die der Anforderer keinen Zugriff haben sollte. Weitere Informationen finden Sie unter [Sicherheitsfilter](search-security-trimming-for-azure-search.md) und [Sichern mit Active Directory](search-security-trimming-for-azure-search-with-aad.md).
 
 ## <a name="management-tasks-by-role"></a>Verwaltungsaufgaben nach Rolle
 

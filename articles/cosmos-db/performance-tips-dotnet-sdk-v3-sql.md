@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 06/16/2020
 ms.author: jawilley
-ms.openlocfilehash: 30fdc3c2b75d8ae567acfc612514ab080b929c5f
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 9816ea7dd9f5aef9dcdd62319f8cc4408eff3fd8
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85850254"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87987255"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Leistungstipps für Azure Cosmos DB und .NET
 
@@ -107,7 +107,7 @@ Bei der Ausführung über das TCP-Protokoll optimiert der Client die Latenz mith
 
 Wenn Sie in Szenarien mit geringem Zugriff eine im Vergleich zum Zugriff im Gatewaymodus höhere Anzahl von Verbindungen feststellen, haben Sie folgende Möglichkeiten:
 
-* Legen Sie die Eigenschaft [CosmosClientOptions.PortReuseMode](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.portreusemode) auf `PrivatePortPool` fest (gültig mit Frameworkversion >= 4.6.1 und .NET Core-Version >= 2.0): Über diese Eigenschaft kann das SDK einen kleinen Pool von kurzlebigen Ports für verschiedene Azure Cosmos DB-Zielendpunkte verwenden.
+* Legen Sie die Eigenschaft [CosmosClientOptions.PortReuseMode](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.portreusemode) auf `PrivatePortPool` fest (gültig ab Frameworkversion 4.6.1 und ab .NET Core-Version 2.0): Über diese Eigenschaft kann das SDK einen kleinen Pool von kurzlebigen Ports für verschiedene Azure Cosmos DB-Zielendpunkte verwenden.
 * Konfigurieren Sie die Eigenschaft [CosmosClientOptions.IdleConnectionTimeout](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.idletcpconnectiontimeout) so, dass sie größer gleich 10 Minuten ist. Die empfohlenen Werte liegen zwischen 20 Minuten und 24 Stunden.
 
 <a id="same-region"></a>
@@ -149,7 +149,7 @@ Bei der Arbeit mit Azure Functions sollten die Instanzen ebenfalls den bestehend
 
 **Deaktivieren der Inhaltsantwort bei Schreibvorgängen**
 
-Legen Sie für Workloads, die eine hohe Anzahl von Nutzlasten erstellt haben, die Anforderungsoption „EnableContentResponseOnWrite“ auf „False“ fest. Der Dienst gibt die erstellte oder aktualisierte Ressource nicht mehr an das SDK zurück. Normalerweise verfügt die Anwendung über das zu erstellende Objekt, sodass sie den Dienst nicht benötigt, um es zurückzugeben. Die Headerwerte sind nach wie vor zugänglich wie die Gebühr für Anforderungen. Dies kann die Leistung verbessern, da das SDK keinen Speicher mehr zuweisen oder den Hauptteil der Antwort serialisieren muss. Dies reduziert auch die Auslastung der Netzwerkbandbreite, um die Leistung weiter zu steigern.  
+Legen Sie für Workloads mit hohen Erstellungsnutzlasten die Anforderungsoption „EnableContentResponseOnWrite“ auf „False“ fest. Der Dienst gibt die erstellte oder aktualisierte Ressource nicht mehr an das SDK zurück. Normalerweise verfügt die Anwendung über das zu erstellende Objekt, sodass sie den Dienst nicht benötigt, um es zurückzugeben. Die Headerwerte sind nach wie vor zugänglich wie die Gebühr für Anforderungen. Dies kann die Leistung verbessern, da das SDK keinen Speicher mehr zuweisen oder den Hauptteil der Antwort serialisieren muss. Dies reduziert auch die Auslastung der Netzwerkbandbreite, um die Leistung weiter zu steigern.  
 
 ```csharp
 ItemRequestOption requestOptions = new ItemRequestOptions() { EnableContentResponseOnWrite = false };

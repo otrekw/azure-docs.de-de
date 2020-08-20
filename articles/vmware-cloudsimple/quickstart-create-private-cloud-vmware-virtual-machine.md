@@ -1,6 +1,6 @@
 ---
 title: 'Schnellstart: Erstellen einer Azure VMware-VM in einer privaten Cloud – Azure VMware Solution by CloudSimple'
-description: Beschreibt, wie eine Azure VMware-VM in einer privaten CloudSimple-Cloud erstellt wird
+description: Hier erfahren Sie, wie eine VMware-VM in der privaten CloudSimple-Cloud erstellt wird. Greifen Sie über das Azure-Portal auf das CloudSimple-Portal zu.
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/16/2019
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 000e30f2656b88c068654fd8099cdff0ce0a4b37
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 32ac78c6bc613daf04fc98c03044699f387f290d
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091265"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88140852"
 ---
 # <a name="create-vmware-virtual-machines-on-your-private-cloud"></a>Erstellen von virtuellen VMware-Computern in Ihrer privaten Cloud
 
@@ -227,4 +227,4 @@ Um eine Lösung zu installieren, müssen Sie zusätzliche Berechtigungen für ei
 
 * [Nutzen von virtuellen VMware-Computern in Azure](quickstart-create-vmware-virtual-machine.md)
 * [Connect from on-premises to CloudSimple using ExpressRoute](on-premises-connection.md)
-* [Einrichten von VPN-Gateways im CloudSimple-Netzwerk](vpn-gateway.md)
+* [Einrichten von VPN-Gateways für ein CloudSimple-Netzwerk](vpn-gateway.md)

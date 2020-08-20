@@ -1,6 +1,6 @@
 ---
 title: Entwurfsmuster für Azure-Tabellenspeicher | Microsoft-Dokumentation
-description: Verwenden Sie Muster für Azure-Tabellenspeicherdienstlösungen.
+description: Sehen Sie sich die Entwurfsmuster an, die für die Verwendung mit Tabellenspeicherdienst-Lösungen in Azure geeignet sind. Behandeln Sie die in anderen Artikeln erläuterten Probleme und Kompromisse.
 services: storage
 author: tamram
 ms.service: storage
@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/08/2019
 ms.author: tamram
 ms.subservice: tables
-ms.openlocfilehash: cbafe7c3e3b76ea13a8ca7a82b2968662b43685a
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 32904044cf6dcecf19b1a78eb4236dc02555bb86
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86081229"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88034195"
 ---
 # <a name="table-design-patterns"></a>Entwurfsmuster für die Tabelle
 Dieser Abschnitt beschreibt einige Muster, die zur Verwendung mit Tabellenspeicherdienstlösungen geeignet sind. Darüber hinaus wird gezeigt, wie Sie einige der in anderen Artikeln zum Tabellenspeicherentwurf angesprochenen Probleme und Kompromisse praktisch behandeln können. Das folgende Diagramm fasst die Beziehungen zwischen den verschiedenen Mustern zusammen:  

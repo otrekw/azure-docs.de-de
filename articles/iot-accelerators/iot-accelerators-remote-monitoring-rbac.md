@@ -1,6 +1,6 @@
 ---
 title: Remoteüberwachung-Zugriffssteuerung – Azure | Microsoft-Dokumentation
-description: In diesem Artikel erfahren Sie, wie Sie die rollenbasierte Zugriffssteuerung im Solution Accelerators der Remoteüberwachung konfigurieren.
+description: In diesem Artikel erfahren Sie, wie Sie die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) im Solution Accelerator der Remoteüberwachung konfigurieren.
 author: dominicbetts
 manager: timlt
 ms.author: dobett
@@ -9,16 +9,16 @@ services: iot-accelerators
 ms.date: 03/08/2019
 ms.topic: conceptual
 ms.custom: has-adal-ref
-ms.openlocfilehash: e41d3b47408d29a0463eed5f23117801be107c27
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: 397e7cfbc2599d2a259f55a5f465d51cd1fe54a8
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85920710"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008983"
 ---
-# <a name="configure-role-based-access-controls-in-the-remote-monitoring-solution-accelerator"></a>Konfigurieren der rollenbasierten Zugriffssteuerung im Solution Accelerator der Remoteüberwachung
+# <a name="configure-role-based-access-control-in-the-remote-monitoring-solution-accelerator"></a>Konfigurieren der rollenbasierten Zugriffssteuerung im Solution Accelerator der Remoteüberwachung
 
-In diesem Artikel erfahren Sie, wie Sie die rollenbasierte Zugriffssteuerung im Solution Accelerators der Remoteüberwachung konfigurieren. Mit der rollenbasierten Zugriffssteuerung können Sie den Zugriff einzelner Benutzer auf bestimmte Funktionen der Lösung beschränken.
+In diesem Artikel erfahren Sie, wie Sie die rollenbasierte Zugriffssteuerung im Solution Accelerator der Remoteüberwachung konfigurieren. Mit der rollenbasierten Zugriffssteuerung können Sie den Zugriff einzelner Benutzer auf bestimmte Funktionen der Lösung beschränken.
 
 ## <a name="default-settings"></a>Standardeinstellungen
 

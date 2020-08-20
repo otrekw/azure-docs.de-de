@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/04/2018
-ms.openlocfilehash: 200a6b1bc2f960555fae1d910dfebde66628d13a
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 1cd03814e1590abebb74db490a2692d492a9207d
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84031971"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88064943"
 ---
 # <a name="deploy-a-split-merge-service-to-move-data-between-sharded-databases"></a>Bereitstellen eines Split-Merge-Diensts, um Daten zwischen Sharddatenbanken zu verschieben
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -173,6 +173,9 @@ Ermitteln Sie den Webendpunkt Ihres Split-Merge-Diensts. Sie finden diesen im Po
 ### <a name="test-with-powershell-scripts"></a>Testen mit PowerShell-Skripts
 
 Die Bereitstellung und Ihre Umgebung können getestet werden, indem Sie die im Paket enthaltenen PowerShell-Beispielskripts ausführen.
+
+> [!IMPORTANT]
+> Die Beispielskripts werden unter PowerShell 5.1 ausgeführt. Sie können derzeit nicht unter PowerShell 6 oder höher ausgeführt werden.
 
 Die enthaltenen Skriptdateien lauten:
 

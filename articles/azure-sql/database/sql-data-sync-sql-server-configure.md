@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 01/14/2019
-ms.openlocfilehash: 6138dc06e8ed70ba85f4ccfc3370c044f34bd1f1
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: bd1362db2e70d4f9f46d80b00805856e08aedac4
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85963953"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87987340"
 ---
 # <a name="tutorial-set-up-sql-data-sync-between-databases-in-azure-sql-database-and-sql-server"></a>Tutorial: Einrichten der SQL-Datensynchronisierung zwischen Datenbanken in Azure SQL-Datenbank und SQL Server
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -59,7 +59,7 @@ PowerShell-Beispiele für die Konfiguration der SQL-Datensynchronisierung finden
    | ------------------------------ | ------------------------------------------------- |
    | **Name der Synchronisierungsgruppe** | Geben Sie einen Namen für die neue Synchronisierungsgruppe ein. Dieser Name unterscheidet sich vom Namen der Datenbank. |
    | **Datenbank für Synchronisierungsmetadaten** | Erstellen Sie eine Datenbank (empfohlen), oder verwenden Sie eine vorhandene Datenbank.<br/><br/>Wenn Sie sich für **Neue Datenbank** entscheiden, wählen Sie **Neue Datenbank erstellen** aus. Benennen und konfigurieren Sie dann die neue Datenbank auf der Seite **SQL-Datenbank**, und wählen Sie **OK** aus.<br/><br/>Wenn Sie sich für **Vorhandene Datenbank verwenden** entscheiden, wählen Sie die Datenbank aus der Liste aus. |
-   | **Automatische Synchronisierung** | Wählen Sie **Ein** oder **Aus** aus.<br/><br/>Geben Sie bei Verwendung von **Ein** im Abschnitt **Synchronisierungshäufigkeit** eine Zahl ein, und wählen Sie **Sekunden**, **Minuten**, **Stunden** oder **Tage** aus. |
+   | **Automatische Synchronisierung** | Wählen Sie **Ein** oder **Aus** aus.<br/><br/>Geben Sie bei Verwendung von **Ein** im Abschnitt **Synchronisierungshäufigkeit** eine Zahl ein, und wählen Sie **Sekunden**, **Minuten**, **Stunden** oder **Tage** aus.<br/> Die erste Synchronisierung beginnt, wenn das ausgewählte Intervall nach dem Speichern der Konfiguration abgelaufen ist.|
    | **Konfliktlösung** | Wählen Sie **Hub hat Vorrang** oder **Mitglied hat Vorrang** aus.<br/><br/>**Hub hat Vorrang** bedeutet, dass bei einem Konflikt die in Konflikt stehenden Daten in der Mitgliedsdatenbank durch die Daten in der Hub-Datenbank überschrieben werden.<br/><br/>**Mitglied hat Vorrang** bedeutet, dass bei einem Konflikt die in Konflikt stehenden Daten in der Hub-Datenbank durch die Daten in der Mitgliedsdatenbank überschrieben werden. |
 
    > [!NOTE]
