@@ -1,18 +1,18 @@
 ---
 title: Migrieren von Daten zur Azure-Dateisynchronisierung mit Azure Data Box
-description: Informationen zum Migrieren von Massendaten auf mit der Azure-Dateisynchronisierung kompatible Weise.
+description: Hier erfahren Sie, wie Sie Massendaten offline und auf eine Weise migrieren, die mit der Azure-Dateisynchronisierung kompatibel ist. Vermeiden Sie Dateikonflikte, und bewahren Sie Datei- und Ordner-ACLs sowie Zeitstempel nach dem Aktivieren der Synchronisierung.
 author: roygara
 ms.service: storage
 ms.topic: how-to
 ms.date: 02/12/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 438fe490bb241cbc42e53d8502e9065454ebcc4c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ae9404d366b24c0cc1bcf01ecffc71a427f949d4
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85514391"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88034344"
 ---
 # <a name="migrate-bulk-data-to-azure-file-sync-with-azure-databox"></a>Migrieren von Massendaten zur Azure-Dateisynchronisierung mit Azure Data Box
 Zum Migrieren von Massendaten in die Azure-Dateisynchronisierung gibt es zwei Möglichkeiten:
@@ -88,6 +88,13 @@ Deaktivieren Sie den Offline-Datenübertragungsmodus nur, wenn der Status **Abge
 
 > [!IMPORTANT]
 > Nach dem Deaktivieren des Offline-Datenübertragungsmodus besteht keine Möglichkeit, ihn erneut zu aktivieren, wenn die Stagingfreigabe von der Massenmigration immer noch verfügbar ist.
+
+## <a name="azure-file-sync-and-pre-seeded-files-in-the-cloud"></a>Azure-Dateisynchronisierung und vorab per Seeding hinzugefügte Dateien in der Cloud
+
+Falls Sie außer Data Box noch eine andere Methode verwendet haben, um ein Seeding für Dateien in einer Azure-Dateifreigabe durchzuführen (beispielweise AzCopy, RoboCopy, eine Cloudsicherung oder eine andere Methode), sollten Sie trotzdem den in diesem Artikel beschriebenen [Prozess für die Offlinedatenübertragung](#process-for-offline-data-transfer) ausführen. Ignorieren Sie dabei lediglich Data Box als die Methode, mit der Ihre Dateien in die Cloud gelangen. Achten Sie jedoch unbedingt darauf, dass Sie dem Prozess für das Seeding der Dateien in einer *Stagingfreigabe* (und nicht in der endgültigen, mit der Azure-Dateisynchronisierung verbundenen Freigabe) folgen.
+
+> [!WARNING]
+> **Folgen Sie dem Prozess für das Seeding von Dateien in einer Stagingfreigabe** (und nicht in der endgültigen, mit der Azure-Dateisynchronisierung verbundenen Freigabe). Andernfalls können Dateikonflikte entstehen (beide Dateiversionen werden gespeichert), und es kann passieren, dass Dateien, die auf dem Liveserver gelöscht wurden, wiederhergestellt werden, wenn sie in Ihrem älteren, per Seeding hinzugefügten Dateisatz noch vorhanden sind. Darüber hinaus werden Ordneränderungen zusammengeführt, was die Trennung des Namespace nach einem solchen Fehler äußerst schwierig macht.
 
 ## <a name="next-steps"></a>Nächste Schritte
 - [Planung für die Bereitstellung einer Azure-Dateisynchronisierung](storage-sync-files-planning.md)

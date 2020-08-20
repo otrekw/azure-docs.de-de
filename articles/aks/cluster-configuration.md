@@ -3,15 +3,15 @@ title: Clusterkonfiguration in Azure Kubernetes Services (AKS)
 description: Erfahren Sie, wie Sie in Azure Kubernetes Service (AKS) einen Cluster konfigurieren.
 services: container-service
 ms.topic: conceptual
-ms.date: 07/02/2020
+ms.date: 08/06/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: f1329aa056e8d1db951e01555634cf1ea709608b
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: c3123d22d2a13be9b9e5360e82990ba3a6320b1a
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86252010"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008796"
 ---
 # <a name="configure-an-aks-cluster"></a>Konfigurieren eines AKS-Clusters
 
@@ -233,6 +233,67 @@ az aks nodepool add --name gen2 --cluster-name myAKSCluster --resource-group myR
 
 Wenn Sie einen herkömmlichen Gen1-Knotenpool erstellen möchten, lassen Sie das benutzerdefinierte Tag `--aks-custom-headers` weg.
 
+
+## <a name="ephemeral-os-preview"></a>Kurzlebiges Betriebssystem (Vorschauversion)
+
+Standardmäßig wird der Betriebssystemdatenträger für einen virtuellen Azure-Computer automatisch in Azure Storage repliziert, um Datenverluste zu vermeiden, wenn der virtuelle Computer auf einen anderen Host verschoben werden muss. Da Container jedoch nicht für die Speicherung des lokalen Zustands vorgesehen sind, hat dieses Verhalten einen begrenzten Nutzen und einige Nachteile wie etwa eine langsamere Knotenbereitstellung und eine geringere Wartezeit bei Lese-/Schreibvorgängen.
+
+Im Gegensatz dazu werden kurzlebige Betriebssystemdatenträger genau wie ein temporärer Datenträger nur auf dem Hostcomputer gespeichert. Dies führt zu einer geringeren Wartezeit bei Lese-/Schreibvorgängen und ermöglicht eine schnellere Knotenskalierung sowie schnellere Clusterupgrades.
+
+Ein kurzlebiger Betriebssystemdatenträger ist genau wie der temporäre Datenträger im Preis des virtuellen Computers enthalten. Es entstehen also keine zusätzlichen Speicherkosten.
+
+Registrieren Sie das Feature `EnableEphemeralOSDiskPreview`:
+
+```azurecli
+az feature register --name EnableEphemeralOSDiskPreview --namespace Microsoft.ContainerService
+```
+
+Es kann einige Minuten dauern, bis der Status als **Registriert** angezeigt wird. Sie können den Registrierungsstatus mithilfe des Befehls [az feature list](/cli/azure/feature?view=azure-cli-latest#az-feature-list) überprüfen:
+
+```azurecli
+az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/EnableEphemeralOSDiskPreview')].{Name:name,State:properties.state}"
+```
+
+Wenn der Status als registriert angezeigt wird, können Sie die Registrierung des `Microsoft.ContainerService`-Ressourcenanbieters mit dem Befehl [az provider register](/cli/azure/provider?view=azure-cli-latest#az-provider-register) aktualisieren:
+
+```azurecli
+az provider register --namespace Microsoft.ContainerService
+```
+
+Verwenden Sie zum Installieren der aks-preview-CLI-Erweiterung die folgenden Azure CLI-Befehle:
+
+```azurecli
+az extension add --name aks-preview
+```
+
+Verwenden Sie zum Aktualisieren der aks-preview-CLI-Erweiterung die folgenden Azure CLI-Befehle:
+
+```azurecli
+az extension update --name aks-preview
+```
+
+### <a name="use-ephemeral-os-on-new-clusters-preview"></a>Verwenden eines kurzlebigen Betriebssystems in neuen Clustern (Vorschauversion)
+
+Konfigurieren Sie den Cluster für die Verwendung kurzlebiger Betriebssystemdatenträger bei der Clustererstellung. Verwenden Sie das Flag `--aks-custom-headers`, um die Art des Betriebssystemdatenträgers für den neuen Cluster auf ein kurzlebiges Betriebssystem festzulegen.
+
+```azure-cli
+az aks create --name myAKSCluster --resource-group myResourceGroup -s Standard_DS3_v2 --aks-custom-headers EnableEphemeralOSDisk=true
+```
+
+Wenn Sie einen herkömmlichen Cluster mit netzwerkbasierten Betriebssystemdatenträgern erstellen möchten, lassen Sie das benutzerdefinierte Tag `--aks-custom-headers` weg. Sie können auch weitere kurzlebige Betriebssystemknotenpools hinzufügen, wie im Anschluss beschrieben.
+
+### <a name="use-ephemeral-os-on-existing-clusters-preview"></a>Verwenden eines kurzlebigen Betriebssystems in vorhandenen Clustern (Vorschauversion)
+Konfigurieren Sie einen neuen Knotenpool für die Verwendung kurzlebiger Betriebssystemdatenträger. Verwenden Sie das Flag `--aks-custom-headers`, um die Art des Betriebssystemdatenträgers für diesen Knotenpool festzulegen.
+
+```azure-cli
+az aks nodepool add --name ephemeral --cluster-name myAKSCluster --resource-group myResourceGroup -s Standard_DS3_v2 --aks-custom-headers EnableEphemeralOSDisk=true
+```
+
+> [!IMPORTANT]
+> Mit einem kurzlebigen Betriebssystem können Sie VM- und Instanzimages bis zur Größe des VM-Caches bereitstellen. Im Fall von AKS werden in der Betriebssystemdatenträger-Konfiguration des Standardknotens 100 GiB verwendet. Sie benötigen also eine VM-Größe, deren Cache größer als 100 GiB ist. Die Cachegröße von „Standard_DS2_v2“ beträgt 86 GiB und ist somit nicht ausreichend. Standard_DS3_v2 weist eine Cachegröße von 172 GiB auf und ist damit groß genug. Sie können auch `--node-osdisk-size` verwenden, um die Standardgröße des Betriebssystemdatenträgers zu verringern. Die Mindestgröße für AKS-Images beträgt 30 GiB. 
+
+Wenn Sie Knotenpools mit netzwerkbasierten Betriebssystemdatenträgern erstellen möchten, lassen Sie das benutzerdefinierte Tag `--aks-custom-headers` weg.
+
 ## <a name="custom-resource-group-name"></a>Name der benutzerdefinierten Ressourcengruppe
 
 Wenn Sie in Azure einen Azure Kubernetes Service-Cluster bereitstellen, wird für die Workerknoten eine zweite Ressourcengruppe erstellt. In AKS wird der Knotenressourcengruppe standardmäßig der Name `MC_resourcegroupname_clustername_location` zugewiesen. Sie können jedoch auch einen eigenen Namen angeben.
@@ -259,6 +320,7 @@ Denken Sie bei der Arbeit mit der Knotenressourcengruppe daran, dass Folgendes n
 - Unter [Upgrade eines Azure Kubernetes Service-Clusters (AKS)](upgrade-cluster.md) erfahren Sie, wie Sie Ihren Cluster auf die neueste Version von Kubernetes aktualisieren können.
 - Weitere Informationen zu [`containerd` und Kubernetes](https://kubernetes.io/blog/2018/05/24/kubernetes-containerd-integration-goes-ga/)
 - In der Liste der [Häufig gestellten Fragen zu AKS](faq.md) finden Sie Antworten auf einige häufig gestellte Fragen zu AKS.
+- Weitere Informationen zu kurzlebigen Betriebssystemdatenträgern finden Sie [hier](../virtual-machines/ephemeral-os-disks.md).
 
 
 <!-- LINKS - internal -->
