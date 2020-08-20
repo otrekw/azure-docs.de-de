@@ -2,18 +2,18 @@
 title: Entwerfen Sie skalierbare und leistungsfähige Tabellen im Azure-Tabellenspeicher. | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Sie skalierbare und leistungsfähige Tabellen im Azure-Tabellenspeicher entwerfen. Überprüfen Sie Tabellenpartitionen, Entitätsgruppentransaktionen sowie Überlegungen zu Kapazität und Kosten.
 services: storage
-author: SnehaGunda
 ms.service: storage
+author: tamram
+ms.author: tamram
 ms.topic: article
 ms.date: 03/09/2020
-ms.author: sngun
 ms.subservice: tables
-ms.openlocfilehash: 59af13bcae14839a5b583ad7e063668b5305b30a
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 9fd274fb72c80475ca53d0f1bdedc1e09c10ea60
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87824408"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88236504"
 ---
 # <a name="design-scalable-and-performant-tables"></a>Erstellen skalierbarer und leistungsfähiger Tabellen
 

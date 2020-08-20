@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 09/03/2019
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: a8f712604ae854a1870fe96112db3ae0f2ed60a8
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 307a97b71fe453c89617a86a88063e60fcf28fa3
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86203009"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88235059"
 ---
 # <a name="check-the-status-of-user-provisioning"></a>Überprüfen des Status der Benutzerbereitstellung
 
@@ -30,7 +30,7 @@ Bei der ersten Konfiguration der automatischen Bereitstellung wird im Abschnitt 
 - Der Typ des Bereitstellungszyklus (erster oder inkrementeller Zyklus), der aktuell ausgeführt wird oder zuletzt abgeschlossen wurde.
 - Eine **Statusanzeige**, in der der Prozentsatz des abgeschlossenen Bereitstellungszyklus angezeigt wird. Der Prozentsatz gibt die Anzahl der bereitgestellten Seiten an. Beachten Sie, dass jede Seite mehrere Benutzer oder Gruppen enthalten kann, sodass der Prozentsatz nicht direkt der Anzahl der bereitgestellten Benutzer, Gruppen oder Rollen entspricht.
 - Die Schaltfläche **Aktualisieren**, über die Sie die Ansicht aktualisieren können.
-- Die Anzahl der **Benutzer** und **Gruppen** im Connector-Datenspeicher. Die Anzahl nimmt jedes Mal zu, wenn dem Bereitstellungsbereich ein Objekt hinzugefügt wird. Die Anzahl nimmt nicht ab, wenn ein Benutzer vorläufig oder dauerhaft gelöscht wird, da dabei nicht das Objekt aus dem Connector-Datenspeicher entfernt wird. Die Anzahl wird bei der ersten Synchronisierung nach dem [Zurücksetzen](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-restart?view=graph-rest-beta&tabs=http) des Connector-Datenspeichers neu berechnet. 
+- Die Anzahl der **Benutzer** und **Gruppen** im Connector-Datenspeicher. Die Anzahl nimmt jedes Mal zu, wenn dem Bereitstellungsbereich ein Objekt hinzugefügt wird. Die Anzahl nimmt nicht ab, wenn ein Benutzer vorläufig oder dauerhaft gelöscht wird, da dabei nicht das Objekt aus dem Connector-Datenspeicher entfernt wird. Die Anzahl wird bei der ersten Synchronisierung nach dem [Zurücksetzen](/graph/api/synchronization-synchronizationjob-restart?tabs=http&view=graph-rest-beta) des Connector-Datenspeichers neu berechnet. 
 - Der Link **Überwachungsprotokolle anzeigen**, über den die Azure AD-Bereitstellungsprotokolle mit Details zu allen mit dem Benutzerbereitstellungsdienst ausgeführten Vorgängen geöffnet werden, einschließlich des Bereitstellungsstatus für einzelne Benutzer (siehe Abschnitt [Verwenden von Bereitstellungsprotokollen](#use-provisioning-logs-to-check-a-users-provisioning-status) weiter unten).
 
 Nach Abschluss eines Bereitstellungszyklus wird im Abschnitt **Statistik bis zum heutigen Datum** die kumulierte Anzahl der Benutzer und Gruppen, die bis zum aktuellen Datum bereitgestellt wurden, zusammen mit dem Abschlussdatum und der Dauer des letzten Zyklus angezeigt. Mit der **Aktivitäts-ID** wird der letzte Bereitstellungszyklus eindeutig identifiziert. Die **Auftrags-ID** ist ein eindeutiger Bezeichner für den Bereitstellungsauftrag und bezieht sich auf die App in Ihrem Mandanten.

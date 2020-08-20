@@ -5,12 +5,12 @@ ms.date: 03/24/2020
 ms.topic: conceptual
 description: Beschreibt die Prozesse, auf denen Azure Dev Spaces basiert, und die Funktionsweise von Routing
 keywords: Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container
-ms.openlocfilehash: 19a55f37725464da73e93877d9c5238f3ebaced1
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: abdd8a573b7e120c5494b8878c2eb19813fc9507
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88077664"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213408"
 ---
 # <a name="how-routing-works-with-azure-dev-spaces"></a>Funktionsweise von Routing mit Azure Dev Spaces
 
@@ -66,11 +66,9 @@ Wird *azureuser* verwendet, werden alle Anforderungen an *serviceA* an die aktua
 
 Einige Beispiele für die Verwendung von Routing für schnelle Iterationen und die schnelle Entwicklung in Azure Dev Spaces finden Sie unter [Funktionsweise des lokalen Prozesses mit Kubernetes][how-it-works-local-process-kubernetes], [Funktionsweise von Remotedebuggen Ihres Codes mit Azure Dev Spaces ][how-it-works-remote-debugging] und [GitHub Actions und Azure Kubernetes Service][pr-flow].
 
-Informationen zu den ersten Schritten bei der Verwendung von Routing mit Azure Dev Spaces für die Teamentwicklung finden Sie im Schnellstart [Teamentwicklung in Azure Dev Spaces][quickstart-team].
 
 [helm-upgrade]: https://helm.sh/docs/intro/using_helm/#helm-upgrade-and-helm-rollback-upgrading-a-release-and-recovering-on-failure
 [how-it-works-local-process-kubernetes]: /visualstudio/containers/overview-local-process-kubernetes
 [how-it-works-remote-debugging]: how-dev-spaces-works-remote-debugging.md
 [pr-flow]: how-to/github-actions.md
-[quickstart-team]: quickstart-team-development.md
 [troubleshooting]: troubleshooting.md

@@ -5,12 +5,12 @@ ms.date: 07/08/2019
 ms.topic: conceptual
 description: Hier erfahren Sie, wie Sie mit Visual Studio Code und Azure Dev Spaces Ihre Kubernetes-Anwendungen debuggen und schnell durchlaufen.
 keywords: Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container
-ms.openlocfilehash: 73a2ae1f603626acf7ec4d42838b301c88ee21da
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: decf61bd55ed15182f030bb02a2fe9c959749556
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84307349"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88209884"
 ---
 # <a name="how-visual-studio-code-works-with-azure-dev-spaces"></a>Funktion von Visual Studio Code mit Azure Dev Spaces
 
@@ -43,19 +43,15 @@ Für .NET Core-Projekte muss die [C#-Erweiterung][csharp-extension] installiert 
 
 Nachdem Sie Ihr Projekt gestartet haben, können Sie Ihre Java-, Node.js- und.NET-Core-Dienste, die in einem Entwicklungsbereich direkt aus Visual Studio Code ausgeführt werden, debuggen. Die Startkonfiguration im Verzeichnis `.vscode` stellt die zusätzlichen Debuginformationen für die Ausführung eines Dienstes mit aktiviertem Debugging in einem Entwicklungsbereich zur Verfügung. Visual Studio Code wird auch dem Debugprozess in dem in Ihrem Entwicklungsbereich ausgeführten Container angefügt, sodass Sie Haltepunkte setzen, Variablen überprüfen und andere Debugoperationen durchführen können.
 
-## <a name="use-visual-studio-code-with-azure-dev-spaces"></a>Verwenden von Visual Studio Code mit Azure Dev Spaces
+## <a name="next-steps"></a>Nächste Schritte
 
-Sie können sich über den Einsatz von Visual Studio Code mit der Erweiterung Azure Dev Spaces in den folgenden Schnellstarts informieren:
+Weitere Informationen zur Funktionsweise von Azure Dev Spaces:
 
-* [Debuggen und Iterieren mit Visual Studio Code und Java in Kubernetes mithilfe von Azure Dev Spaces][quickstart-java]
-* [Entwickeln mit .NET Core unter Kubernetes mit Azure Dev Spaces (Visual Studio Code)][quickstart-netcore]
-* [Debuggen und Iterieren mit Visual Studio Code und Node.js in Kubernetes mithilfe von Azure Dev Spaces][quickstart-node]
+> [!div class="nextstepaction"]
+> [Funktionsweise von Azure Dev Spaces](how-dev-spaces-works.md)
 
 [azds-extension]: https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds
 [azds-yaml]: how-dev-spaces-works-prep.md#prepare-your-code
 [csharp-extension]: https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp
 [java-extension]: https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-debugger-azds
 [maven]: https://maven.apache.org
-[quickstart-java]: quickstart-java.md
-[quickstart-netcore]: quickstart-netcore.md
-[quickstart-node]: quickstart-nodejs.md

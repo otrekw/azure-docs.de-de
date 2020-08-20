@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 04/20/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: cc3c62da371d66c2aa957974ad6d4472aaf5648e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d07450b61558814a99bf85668c55899c8cf9d389
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84782278"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88234787"
 ---
 # <a name="no-users-are-being-provisioned"></a>Es werden keine Benutzer bereitgestellt 
 >[!NOTE]
@@ -58,7 +58,7 @@ Wenn ein Benutzer in den Bereitstellungsprotokollen als „übersprungen“ ange
 - **Ein erforderliches Attribut fehlt oder wurde für einen Benutzer nicht ausgefüllt.** Beim Einrichten der Bereitstellung sollte unbedingt beachtet werden, dass die Attributzuordnungen und Workflows überprüft und konfiguriert werden, mit denen festgelegt wird, welche Benutzereigenschaften (oder Gruppeneigenschaften) von Azure AD zur Anwendung gelangen. Diese Konfiguration umfasst auch das Festlegen der „übereinstimmenden Eigenschaft“, mit der Benutzer/Gruppen zwischen den beiden Systemen eindeutig identifiziert und abgeglichen werden. Weitere Informationen zu diesem wichtigen Vorgang finden Sie unter [Anpassen von Attributzuordnungen für die Benutzerbereitstellung für SaaS-Anwendungen in Azure Active Directory](customize-application-attributes.md).
 - **Attributzuordnungen für Gruppen:** Die Bereitstellung von Gruppennamen und Gruppendetails zusätzlich zu den Mitgliedern wird für einige Anwendungen unterstützt. Sie können diese Funktionen aktivieren oder deaktivieren, indem Sie die **Zuordnung** für Gruppenobjekte aktivieren oder deaktivieren, die auf der Registerkarte **Bereitstellung** angezeigt wird. Wenn die Bereitstellung von Gruppen aktiviert ist, überprüfen Sie auf jeden Fall die Attributzuordnungen, um sicherzustellen, dass ein entsprechendes Feld für die „übereinstimmende ID“ verwendet wird. Die übereinstimmende ID kann der Anzeigename oder der E-Mail-Alias sein. Die Gruppe und ihre Mitglieder werden nicht bereitgestellt, wenn die übereinstimmende Eigenschaft leer ist oder für eine Gruppe in Azure AD nicht aufgefüllt wurde.
 ## <a name="provisioning-users-assigned-to-the-default-access-role"></a>Bereitstellung von Benutzern, die der Standardzugriffsrolle zugewiesen sind
-Die Standardrolle für eine Anwendung aus dem Katalog wird als „Standardzugriffsrolle“ bezeichnet. Bisher werden Benutzer, die dieser Rolle zugewiesen sind, nicht bereitgestellt und in den [Bereitstellungsprotokollen](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) als übersprungen gekennzeichnet, weil sie als „nicht wirksam berechtigt“ betrachtet werden. 
+Die Standardrolle für eine Anwendung aus dem Katalog wird als „Standardzugriffsrolle“ bezeichnet. Bisher werden Benutzer, die dieser Rolle zugewiesen sind, nicht bereitgestellt und in den [Bereitstellungsprotokollen](../reports-monitoring/concept-provisioning-logs.md) als übersprungen gekennzeichnet, weil sie als „nicht wirksam berechtigt“ betrachtet werden. 
 
 **Verhalten bei Bereitstellungskonfigurationen, die nach dem 16.04.2020 erstellt werden:** Benutzer, die der Standardzugriffsrolle zugewiesen sind, werden genauso ausgewertet wie alle anderen Rollen. Ein Benutzer, der dem Standardzugriff zugewiesen ist, wird nicht als „nicht wirksam berechtigt“ übersprungen. 
 

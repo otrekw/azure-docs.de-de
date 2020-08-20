@@ -5,12 +5,12 @@ ms.date: 03/24/2020
 ms.topic: conceptual
 description: Beschreibt die Prozesse für das Remotedebuggen in Azure Kubernetes Service mit Azure Dev Spaces
 keywords: Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container
-ms.openlocfilehash: a9f303ea6f954285a319be137a594f7ce127f740
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fd984ff6a8ebe336f76643406c0957769dbfd3da
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80241244"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213383"
 ---
 # <a name="how-remote-debugging-your-code-with-azure-dev-spaces-works"></a>So funktioniert das Remotedebuggen Ihres Codes mit Azure Dev Spaces
 
@@ -30,15 +30,7 @@ Das Debugger-Image wird automatisch durch die clientseitigen Tools bestimmt. Daz
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informationen zum Einstieg in Azure Dev Spaces für das Remotedebuggen Ihres Projekts finden Sie in den folgenden Schnellstarts:
+Weitere Informationen zur Funktionsweise von Azure Dev Spaces:
 
-* [Debuggen und Iterieren mit Visual Studio Code und Java in Kubernetes mithilfe von Azure Dev Spaces][quickstart-java]
-* [Entwickeln mit .NET Core unter Kubernetes mit Azure Dev Spaces (Visual Studio Code)][quickstart-netcore]
-* [Debuggen und Iterieren mit Visual Studio Code und Node.js in Kubernetes mithilfe von Azure Dev Spaces][quickstart-node]
-* [Schnelles Durchlaufen und Debuggen mit Visual Studio und .NET Core][quickstart-vs]
-
-
-[quickstart-java]: quickstart-java.md
-[quickstart-netcore]: quickstart-netcore.md
-[quickstart-node]: quickstart-nodejs.md
-[quickstart-vs]: quickstart-netcore-visualstudio.md
+> [!div class="nextstepaction"]
+> [Funktionsweise von Azure Dev Spaces](how-dev-spaces-works.md)

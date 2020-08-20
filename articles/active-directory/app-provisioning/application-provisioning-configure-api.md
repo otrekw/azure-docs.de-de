@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 11/15/2019
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 01d4475e73fd436fd0cd2a8aca1e7a946cdd7562
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 17660df34c8039ae96440c417aef051d51a5c91c
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84782057"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88234750"
 ---
 # <a name="configure-provisioning-using-microsoft-graph-apis"></a>Konfigurieren der Bereitstellung mithilfe von Microsoft Graph-APIs
 
@@ -48,7 +48,7 @@ Das Azure-Portal bietet eine bequeme Möglichkeit, die Bereitstellung für einze
 1. Nach der erfolgreichen Anmeldung werden im linken Bereich die Details des Benutzerkontos angezeigt.
 
 ### <a name="retrieve-the-gallery-application-template-identifier"></a>Abrufen des Bezeichners für die Kataloganwendungsvorlage
-Anwendungen im Azure AD Anwendungskatalog verfügen jeweils über eine [Anwendungsvorlage](https://docs.microsoft.com/graph/api/applicationtemplate-list?view=graph-rest-beta&tabs=http), in der die Metadaten für die Anwendung beschrieben werden. Mithilfe dieser Vorlage können Sie im Mandanten für die Verwaltung eine Instanz der Anwendung und des Dienstprinzipals erstellen.
+Anwendungen im Azure AD Anwendungskatalog verfügen jeweils über eine [Anwendungsvorlage](/graph/api/applicationtemplate-list?tabs=http&view=graph-rest-beta), in der die Metadaten für die Anwendung beschrieben werden. Mithilfe dieser Vorlage können Sie im Mandanten für die Verwaltung eine Instanz der Anwendung und des Dienstprinzipals erstellen.
 
 #### <a name="request"></a>*Anforderung*
 
@@ -100,7 +100,7 @@ Content-type: application/json
 
 ### <a name="create-the-gallery-application"></a>Erstellen der Kataloganwendung
 
-Verwenden Sie die Vorlagen-ID, die Sie im letzten Schritt für die Anwendung abgerufen haben, um im Mandanten [eine Instanz](https://docs.microsoft.com/graph/api/applicationtemplate-instantiate?view=graph-rest-beta&tabs=http) der Anwendung und des Dienstprinzipals zu erstellen.
+Verwenden Sie die Vorlagen-ID, die Sie im letzten Schritt für die Anwendung abgerufen haben, um im Mandanten [eine Instanz](/graph/api/applicationtemplate-instantiate?tabs=http&view=graph-rest-beta) der Anwendung und des Dienstprinzipals zu erstellen.
 
 #### <a name="request"></a>*Anforderung*
 
@@ -169,7 +169,7 @@ Content-type: application/json
 
 ### <a name="retrieve-the-template-for-the-provisioning-connector"></a>Abrufen der Vorlage für den Bereitstellungsconnector
 
-Anwendungen im Katalog, die für die Bereitstellung aktiviert sind, verfügen über Vorlagen zum Optimieren der Konfiguration. Verwenden Sie die nachstehende Anforderung, um [die Vorlage für die Bereitstellungskonfiguration abzurufen](https://docs.microsoft.com/graph/api/synchronization-synchronizationtemplate-list?view=graph-rest-beta&tabs=http). Beachten Sie, dass Sie die ID angeben müssen. Die ID bezieht sich auf die vorherige Ressource, in diesem Fall auf ServicePrincipal. 
+Anwendungen im Katalog, die für die Bereitstellung aktiviert sind, verfügen über Vorlagen zum Optimieren der Konfiguration. Verwenden Sie die nachstehende Anforderung, um [die Vorlage für die Bereitstellungskonfiguration abzurufen](/graph/api/synchronization-synchronizationtemplate-list?tabs=http&view=graph-rest-beta). Beachten Sie, dass Sie die ID angeben müssen. Die ID bezieht sich auf die vorherige Ressource, in diesem Fall auf ServicePrincipal. 
 
 #### <a name="request"></a>*Anforderung*
 
@@ -207,7 +207,7 @@ HTTP/1.1 200 OK
 ```
 
 ### <a name="create-the-provisioning-job"></a>Erstellen des Bereitstellungsauftrags
-Um die Bereitstellung zu ermöglichen, müssen Sie zunächst [einen Auftrag erstellen](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-post?view=graph-rest-beta&tabs=http). Verwenden Sie die nachstehende Anforderung, um einen Bereitstellungsauftrag zu erstellen. Verwenden Sie die „templateId“ aus dem vorherigen Schritt, wenn Sie die Vorlage angeben, die für den Auftrag verwendet werden soll.
+Um die Bereitstellung zu ermöglichen, müssen Sie zunächst [einen Auftrag erstellen](/graph/api/synchronization-synchronizationjob-post?tabs=http&view=graph-rest-beta). Verwenden Sie die nachstehende Anforderung, um einen Bereitstellungsauftrag zu erstellen. Verwenden Sie die „templateId“ aus dem vorherigen Schritt, wenn Sie die Vorlage angeben, die für den Auftrag verwendet werden soll.
 
 #### <a name="request"></a>*Anforderung*
 <!-- {
@@ -261,7 +261,7 @@ Content-type: application/json
 
 ### <a name="test-the-connection-to-the-application"></a>Testen der Verbindung mit der Anwendung
 
-Testen Sie die Verbindung mit der Drittanbieteranwendung. Das folgende Beispiel gilt für eine Anwendung, die „clientSecret“ und „secretToken“ erfordert. Jede Anwendung verfügt über eigene Anforderungen. Anwendungen verwenden oft BaseAddress an Stelle von ClientSecret. Um festzustellen, welche Anmeldeinformationen für Ihre App erforderlich sind, navigieren Sie zur Seite der Bereitstellungskonfiguration für Ihre Anwendung, und klicken Sie im Entwicklermodus auf „Verbindung testen“. Unter „Netzwerkdatenverkehr“ werden die Parameter gezeigt, die als Anmeldeinformationen verwendet werden. Eine vollständige Liste der Anmeldeinformationen finden Sie [hier](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-validatecredentials?view=graph-rest-beta&tabs=http). 
+Testen Sie die Verbindung mit der Drittanbieteranwendung. Das folgende Beispiel gilt für eine Anwendung, die „clientSecret“ und „secretToken“ erfordert. Jede Anwendung verfügt über eigene Anforderungen. Anwendungen verwenden oft BaseAddress an Stelle von ClientSecret. Um festzustellen, welche Anmeldeinformationen für Ihre App erforderlich sind, navigieren Sie zur Seite der Bereitstellungskonfiguration für Ihre Anwendung, und klicken Sie im Entwicklermodus auf „Verbindung testen“. Unter „Netzwerkdatenverkehr“ werden die Parameter gezeigt, die als Anmeldeinformationen verwendet werden. Eine vollständige Liste der Anmeldeinformationen finden Sie [hier](/graph/api/synchronization-synchronizationjob-validatecredentials?tabs=http&view=graph-rest-beta). 
 
 #### <a name="request"></a>*Anforderung*
 ```msgraph-interactive
@@ -285,7 +285,7 @@ HTTP/1.1 204 No Content
 
 ### <a name="save-your-credentials"></a>Speichern Ihrer Anmeldeinformationen
 
-Das Konfigurieren der Bereitstellung erfordert das Einrichten einer Vertrauensstellung zwischen Azure AD und der Anwendung. Autorisieren Sie den Zugriff auf die Drittanbieteranwendung. Das folgende Beispiel gilt für eine Anwendung, die „clientSecret“ und „secretToken“ erfordert. Jede Anwendung verfügt über eigene Anforderungen. Die verfügbaren Optionen finden Sie in der [API-Dokumentation](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-validatecredentials?view=graph-rest-beta&tabs=http). 
+Das Konfigurieren der Bereitstellung erfordert das Einrichten einer Vertrauensstellung zwischen Azure AD und der Anwendung. Autorisieren Sie den Zugriff auf die Drittanbieteranwendung. Das folgende Beispiel gilt für eine Anwendung, die „clientSecret“ und „secretToken“ erfordert. Jede Anwendung verfügt über eigene Anforderungen. Die verfügbaren Optionen finden Sie in der [API-Dokumentation](/graph/api/synchronization-synchronizationjob-validatecredentials?tabs=http&view=graph-rest-beta). 
 
 #### <a name="request"></a>*Anforderung*
 ```msgraph-interactive
@@ -310,7 +310,7 @@ HTTP/1.1 204 No Content
 ```
 
 ## <a name="step-4-start-the-provisioning-job"></a>Schritt 4: Starten des Bereitstellungsauftrags
-Nachdem der Bereitstellungsauftrag konfiguriert wurde, verwenden Sie den folgenden Befehl, um [den Auftrag zu starten](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-start?view=graph-rest-beta&tabs=http). 
+Nachdem der Bereitstellungsauftrag konfiguriert wurde, verwenden Sie den folgenden Befehl, um [den Auftrag zu starten](/graph/api/synchronization-synchronizationjob-start?tabs=http&view=graph-rest-beta). 
 
 
 #### <a name="request"></a>*Anforderung*
@@ -392,7 +392,7 @@ Content-length: 2577
 
 
 ### <a name="monitor-provisioning-events-using-the-provisioning-logs"></a>Überwachen von Bereitstellungsereignissen mithilfe der Bereitstellungsprotokolle
-Zusätzlich zur Überwachung des Status des Bereitstellungsauftrags können Sie die [Bereitstellungsprotokolle](https://docs.microsoft.com/graph/api/provisioningobjectsummary-list?view=graph-rest-beta&tabs=http) verwenden, um alle eintretenden Ereignisse abzufragen (z. B. Abfragen eines bestimmten Benutzers und Ermitteln, ob er erfolgreich bereitgestellt wurde).
+Zusätzlich zur Überwachung des Status des Bereitstellungsauftrags können Sie die [Bereitstellungsprotokolle](/graph/api/provisioningobjectsummary-list?tabs=http&view=graph-rest-beta) verwenden, um alle eintretenden Ereignisse abzufragen (z. B. Abfragen eines bestimmten Benutzers und Ermitteln, ob er erfolgreich bereitgestellt wurde).
 
 #### <a name="request"></a>*Anforderung*
 ```msgraph-interactive
@@ -526,5 +526,5 @@ Content-type: application/json
 ```
 ## <a name="related-articles"></a>Verwandte Artikel
 
-- [Lesen Sie die Dokumentation zur Synchronisierung für Microsoft Graph](https://docs.microsoft.com/graph/api/resources/synchronization-overview?view=graph-rest-beta)
+- [Lesen Sie die Dokumentation zur Synchronisierung für Microsoft Graph](/graph/api/resources/synchronization-overview?view=graph-rest-beta)
 - [Integrieren einer benutzerdefinierten SCIM-App in Azure AD](use-scim-to-provision-users-and-groups.md)

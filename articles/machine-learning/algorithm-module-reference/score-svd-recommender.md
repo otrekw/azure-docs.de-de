@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 02/10/2020
-ms.openlocfilehash: 82c3454ad4c8db3a9b19084f5b6ece988cc86b9a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 08/10/2020
+ms.openlocfilehash: 806c19100594f449288d810b68d072dd7de23646
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79455977"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88189819"
 ---
 # <a name="score-svd-recommender"></a>Bewerten des SVD-Empfehlungsmoduls
 
@@ -107,9 +107,6 @@ Das von „Score SVD Recommender“ (SVD-Empfehlungsmodul bewerten) zurückgegeb
 
 - Die erste Spalte enthält die Benutzer-IDs.
 - Abhängig vom Wert, den Sie für **Maximum number of items to recommend to a user** (Maximale Anzahl von Elementen, die einem Benutzer empfohlen werden sollen) festgelegt haben, werden verschiedene zusätzliche Spalten generiert. Jede Spalte enthält ein empfohlenes Element (nach Bezeichner). Die Empfehlungen werden nach der Affinität zwischen Benutzer und Element sortiert. Das Element mit der höchsten Affinität wird dabei in der Spalte **Item 1** (Element 1) platziert.
-
-> [!WARNING]
-> Dieses bewertete Dataset kann nicht mithilfe des Moduls [Evaluate Recommender](evaluate-recommender.md) (Empfehlungsmodul auswerten) ausgewertet werden.
 
 
 ##  <a name="technical-notes"></a>Technische Hinweise

@@ -5,12 +5,12 @@ ms.assetid: e224fc4f-800d-469a-8d6a-72bcde612450
 ms.topic: article
 ms.date: 04/30/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 19a7bc70bd782f9b684cb48672147f5009e4a08f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ab8bee756cc714074a6f97156bf528ddeabff8a0
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87073864"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88236742"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Einrichten von Stagingumgebungen in Azure App Service
 <a name="Overview"></a>
@@ -423,7 +423,6 @@ Im Anschluss folgen einige allgemeine Austauschfehler:
       ...
     </conditions>
     ```
-- Einige [IP-Einschränkungsregeln](app-service-ip-restrictions.md) verhindern unter Umständen das Senden von HTTP-Anforderungen an Ihre App. IPv4-Adressbereiche, die mit `10.` und `100.` beginnen, sind interne Adressbereiche für Ihre Bereitstellung. Es empfiehlt sich, für diese Bereich die Verbindungsherstellung mit Ihrer App zuzulassen.
 
 - Nach einem Slotaustausch kann es bei der App zu unerwarteten Neustarts kommen. Der Grund hierfür ist, dass die Konfiguration der Hostnamenbindung nach einem Austausch nicht mehr synchron ist, was als alleiniger Umstand aber nicht zu Neustarts führt. Bestimmte zugrunde liegende Speicherereignisse (z. B. Speichervolume-Failover) können diese Abweichungen erkennen und einen Neustart aller Workerprozesse erzwingen. Um diese Arten von Neustarts zu minimieren, legen Sie die App-Einstellung [`WEBSITE_ADD_SITENAME_BINDINGS_IN_APPHOST_CONFIG=1`](https://github.com/projectkudu/kudu/wiki/Configurable-settings#disable-the-generation-of-bindings-in-applicationhostconfig)auf *Alle Slots* fest. Diese App-Einstellung funktioniert allerdings *nicht* mit WCF-Apps (Windows Communication Foundation).
 

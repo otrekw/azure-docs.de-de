@@ -11,12 +11,12 @@ ms.topic: troubleshooting
 ms.date: 04/28/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: ac5b1f72e4c70e15ccb12ea41e5f080ca0b8a505
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 54d02b3189825d08716b73b7250efd4e3f334aa0
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86203024"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88234737"
 ---
 # <a name="application-provisioning-in-quarantine-status"></a>Anwendungsbereitstellung im Quarantänestatus
 
@@ -34,7 +34,7 @@ Es gibt drei Möglichkeiten, um zu überprüfen, ob sich eine Anwendung in Quara
 
 - Navigieren Sie im Azure-Portal zu **Azure Active Directory** > **Überwachungsprotokolle**, und legen Sie den Filter auf **Aktivität: Quarantäne** fest, und überprüfen Sie den Quarantäneverlauf. Die Ansicht in der Statusanzeige zeigt zwar, wie oben beschrieben, an, ob sich die Bereitstellung derzeit in Quarantäne befindet, aber mit den Überwachungsprotokollen können Sie den Quarantäneverlauf für eine Anwendung anzeigen. 
 
-- Verwenden Sie die Microsoft Graph-Anforderung [GET synchronizationJob](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-get?view=graph-rest-beta&tabs=http), um den Status des Bereitstellungsauftrags programmgesteuert abzurufen:
+- Verwenden Sie die Microsoft Graph-Anforderung [GET synchronizationJob](/graph/api/synchronization-synchronizationjob-get?tabs=http&view=graph-rest-beta), um den Status des Bereitstellungsauftrags programmgesteuert abzurufen:
 
 ```microsoft-graph
         GET https://graph.microsoft.com/beta/servicePrincipals/{id}/synchronization/jobs/{jobId}/
@@ -52,7 +52,7 @@ Es gibt drei Möglichkeiten, um zu überprüfen, ob sich eine Anwendung in Quara
 |---|---|
 |**SCIM-Konformitätsproblem:** Anstelle der erwarteten Antwort „HTTP/200 OK“ wurde die Antwort „HTTP/404 Nicht gefunden“ zurückgegeben. In diesem Fall hat der Azure AD-Bereitstellungsdienst eine Anforderung an die Zielanwendung gesendet und eine unerwartete Antwort empfangen.|Überprüfen Sie im Abschnitt „Administratoranmeldeinformationen“, ob die Anwendung das Angeben der Mandanten-URL erfordert, und stellen Sie sicher, dass die URL korrekt ist. Wenn Sie kein Problem feststellen können, wenden Sie sich an den Anwendungsentwickler, um sicherzustellen, dass der Dienst SCIM-konform ist. https://tools.ietf.org/html/rfc7644#section-3.4.2 |
 |**Ungültige Anmeldeinformationen:** Beim Versuch, den Zugriff auf die Zielanwendung zu autorisieren, wurde eine Antwort von der Zielanwendung empfangen, derzufolge die angegebenen Anmeldeinformationen ungültig sind.|Navigieren Sie auf der Benutzeroberfläche für die Bereitstellungskonfiguration zum Abschnitt „Administratoranmeldeinformationen“, und autorisieren Sie den Zugriff noch mal mit gültigen Anmeldeinformationen. Wenn sich die Anwendung im Katalog befindet, sehen Sie sich das Tutorial zur Anwendungskonfiguration an, um etwaige weitere erforderliche Schritte auszuführen.|
-|**Doppelte Rollen:** Rollen, die aus bestimmten Anwendungen wie Salesforce oder Zendesk importiert werden, müssen eindeutig sein. |Navigieren Sie im Azure-Portal zum [Manifest](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest) der Anwendung, und entfernen Sie die doppelte Rolle.|
+|**Doppelte Rollen:** Rollen, die aus bestimmten Anwendungen wie Salesforce oder Zendesk importiert werden, müssen eindeutig sein. |Navigieren Sie im Azure-Portal zum [Manifest](../develop/reference-app-manifest.md) der Anwendung, und entfernen Sie die doppelte Rolle.|
 
  Eine Microsoft Graph-Anforderung zum Abrufen des Status des Bereitstellungsauftrags zeigt den folgenden Grund für die Quarantäne an:
 
@@ -74,11 +74,10 @@ Nachdem Sie das Problem behoben haben, können Sie den Bereitstellungsauftrag ne
 
 - Verwenden Sie das Azure-Portal, um den Bereitstellungsauftrag neu zu starten. Wählen Sie auf der Seite **Bereitstellung** der Anwendung unter **Einstellungen** die Option **Aktuellen Status löschen und Synchronisierung neu starten** aus, und legen Sie **Bereitstellungsstatus** auf **Ein** fest. Durch diese Aktion wird der Bereitstellungsdienst vollständig neu gestartet. Dieser Vorgang kann einige Zeit in Anspruch nehmen. Ein vollständiger Startzyklus wird erneut ausgeführt. Dabei werden Hinterlegungen gelöscht, die App wird aus der Quarantäne entfernt, und alle Wasserzeichen werden gelöscht.
 
-- Verwenden Sie Microsoft Graph, um [den Bereitstellungsauftrag neu zu starten](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-restart?view=graph-rest-beta&tabs=http). Sie haben vollständige Kontrolle über die Elemente, die Sie neu starten. Sie können auswählen, ob Hinterlegungen (zum Neustarten des Hinterlegungszählers, der in Richtung Quarantänestatus läuft) gelöscht, die Quarantäne (zum Entfernen der Anwendung aus der Quarantäne) oder die Wasserzeichen gelöscht werden soll(en). Verwenden Sie die folgende Anforderung:
+- Verwenden Sie Microsoft Graph, um [den Bereitstellungsauftrag neu zu starten](/graph/api/synchronization-synchronizationjob-restart?tabs=http&view=graph-rest-beta). Sie haben vollständige Kontrolle über die Elemente, die Sie neu starten. Sie können auswählen, ob Hinterlegungen (zum Neustarten des Hinterlegungszählers, der in Richtung Quarantänestatus läuft) gelöscht, die Quarantäne (zum Entfernen der Anwendung aus der Quarantäne) oder die Wasserzeichen gelöscht werden soll(en). Verwenden Sie die folgende Anforderung:
  
 ```microsoft-graph
         POST /servicePrincipals/{id}/synchronization/jobs/{jobId}/restart
 ```
 
-Ersetzen Sie "{id}" durch den Wert der Anwendungs-ID und "{jobId}" durch die [ID des Synchronisierungsauftrags](https://docs.microsoft.com/graph/api/resources/synchronization-configure-with-directory-extension-attributes?view=graph-rest-beta&tabs=http#list-synchronization-jobs-in-the-context-of-the-service-principal). 
-
+Ersetzen Sie "{id}" durch den Wert der Anwendungs-ID und "{jobId}" durch die [ID des Synchronisierungsauftrags](/graph/api/resources/synchronization-configure-with-directory-extension-attributes?tabs=http&view=graph-rest-beta#list-synchronization-jobs-in-the-context-of-the-service-principal).

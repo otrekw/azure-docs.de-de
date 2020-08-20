@@ -11,20 +11,20 @@ ms.topic: reference
 ms.date: 04/26/2020
 ms.author: kenwith
 ms.reviewer: arvinh, celested
-ms.openlocfilehash: 612663c2edc8aa7bc1eb3a2e4c8106b3e778a961
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b69e2c9b12b2db34f3eb70e54d2c6aede6b54784
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84781683"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88235501"
 ---
 # <a name="using-scim-and-microsoft-graph-together-to-provision-users-and-enrich-your-application-with-the-data-it-needs"></a>Durch die gemeinsame Nutzung von SCIM und Microsoft Graph können Sie Benutzer bereitstellen und Ihre Anwendung mit den benötigten Daten anreichern
 
-**Zielgruppe:** Dieser Artikel richtet sich an Entwickler von Anwendungen, die mit Azure Active Directory (Azure AD) integriert werden sollen. Wenn Sie Anwendungen verwenden möchten, die bereits mit Azure AD integriert sind, z. B. Zoom, ServiceNow und Dropbox, können Sie diesen Artikel überspringen und mit den anwendungsspezifischen [Tutorials](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list) oder dem Artikel zur [Funktionsweise der Bereitstellung](https://docs.microsoft.com/azure/active-directory/app-provisioning/how-provisioning-works) fortfahren.
+**Zielgruppe:** Dieser Artikel richtet sich an Entwickler von Anwendungen, die mit Azure Active Directory (Azure AD) integriert werden sollen. Wenn Sie Anwendungen verwenden möchten, die bereits mit Azure AD integriert sind, z. B. Zoom, ServiceNow und Dropbox, können Sie diesen Artikel überspringen und mit den anwendungsspezifischen [Tutorials](../saas-apps/tutorial-list.md) oder dem Artikel zur [Funktionsweise der Bereitstellung](./how-provisioning-works.md) fortfahren.
 
 **Gängige Szenarios**
 
-Azure AD stellt einen einsatzbereiten Dienst für die Bereitstellung und eine erweiterbare Plattform zum Erstellen von Anwendungen bereit. Die Entscheidungsstruktur erläutert die Schritte zur Verwendung von [SCIM](https://aka.ms/scimoverview) und [Microsoft Graph](https://docs.microsoft.com/graph/overview) zum Automatisieren der Bereitstellung. 
+Azure AD stellt einen einsatzbereiten Dienst für die Bereitstellung und eine erweiterbare Plattform zum Erstellen von Anwendungen bereit. Die Entscheidungsstruktur erläutert die Schritte zur Verwendung von [SCIM](https://aka.ms/scimoverview) und [Microsoft Graph](/graph/overview) zum Automatisieren der Bereitstellung. 
 
 > [!div class="checklist"]
 > * Automatisches Erstellen von Benutzern in meiner Anwendung
@@ -97,15 +97,15 @@ Für den Zugriff auf verschiedene Ressourcen verwendet meine Anwendung Gruppen, 
 ## <a name="scenario-4-enrich-my-app-with-data-from-microsoft-services-such-as-teams-outlook-and-onedrive"></a>Szenario 4: Bereichern von Apps mit Daten aus Microsoft-Diensten wie Teams, Outlook und OneDrive
 Meine Anwendung ist in Microsoft Teams integriert und basiert auf Nachrichtendaten. Außerdem werden Dateien für Benutzer in OneDrive gespeichert. Wie kann ich meine Anwendung mit den Daten aus diesen Diensten und aus Microsoft insgesamt anreichern?
 
-**Empfehlung:** [Microsoft Graph](https://docs.microsoft.com/graph/) ist Ihr Einstiegspunkt für den Zugriff auf Microsoft-Daten. Jede Workload macht APIs mit den benötigten Daten verfügbar. Microsoft Graph kann zusammen mit der [SCIM-Bereitstellung](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups) für die oben genannten Szenarien verwendet werden. Mit SCIM können Sie grundlegende Benutzerattribute in Ihrer Anwendung bereitstellen, während Sie über einen Aufruf von Microsoft Graph alle anderen benötigten Daten abrufen. 
+**Empfehlung:** [Microsoft Graph](/graph/) ist Ihr Einstiegspunkt für den Zugriff auf Microsoft-Daten. Jede Workload macht APIs mit den benötigten Daten verfügbar. Microsoft Graph kann zusammen mit der [SCIM-Bereitstellung](./use-scim-to-provision-users-and-groups.md) für die oben genannten Szenarien verwendet werden. Mit SCIM können Sie grundlegende Benutzerattribute in Ihrer Anwendung bereitstellen, während Sie über einen Aufruf von Microsoft Graph alle anderen benötigten Daten abrufen. 
 
 ## <a name="scenario-5-track-changes-in-microsoft-services-such-as-teams-outlook-and-azure-ad"></a>Szenario 5: Nachverfolgen von Änderungen in Microsoft-Diensten wie Teams, Outlook und Azure AD
 Ich muss Änderungen in Teams und an Outlook-Nachrichten verfolgen und in Echtzeit darauf reagieren können. Wie kann ich erreichen, dass diese Änderungen per Pushvorgang an meine Anwendung gesendet werden?
 
-**Empfehlung:** Microsoft Graph stellt [Änderungsbenachrichtigungen](https://docs.microsoft.com/graph/webhooks) und eine [Änderungsnachverfolgung](https://docs.microsoft.com/graph/delta-query-overview) für verschiedene Ressourcen bereit. Beachten Sie die folgenden Einschränkungen von Änderungsbenachrichtigungen:
+**Empfehlung:** Microsoft Graph stellt [Änderungsbenachrichtigungen](/graph/webhooks) und eine [Änderungsnachverfolgung](/graph/delta-query-overview) für verschiedene Ressourcen bereit. Beachten Sie die folgenden Einschränkungen von Änderungsbenachrichtigungen:
 - Wenn ein Ereignisempfänger ein Ereignis bestätigt, aber aus irgendeinem Grund nicht darauf reagiert, kann das Ereignis verloren gehen.
 - Die Reihenfolge, in der Änderungen empfangen werden, ist nicht garantiert chronologisch.
-- Änderungsbenachrichtigungen enthalten nicht immer die [Ressourcendaten](https://docs.microsoft.com/graph/webhooks-with-resource-data). Aus den oben genannten Gründen verwenden Entwickler bei Synchronisierungsszenarien häufig eine Kombination aus Änderungsbenachrichtigungen und Änderungsnachverfolgung. 
+- Änderungsbenachrichtigungen enthalten nicht immer die [Ressourcendaten](/graph/webhooks-with-resource-data). Aus den oben genannten Gründen verwenden Entwickler bei Synchronisierungsszenarien häufig eine Kombination aus Änderungsbenachrichtigungen und Änderungsnachverfolgung. 
 
 ## <a name="scenario-6-provision-users-and-groups-in-azure-ad"></a>Szenario 6: Bereitstellen von Benutzern und Gruppen in Azure AD
 Meine Anwendung erstellt Informationen zu einem Benutzer, die Kunden in Azure AD benötigen. Dabei kann es sich um eine HR-Anwendung handeln, die Personaleinstellungen verwaltet, eine Kommunikations-App, die Telefonnummern für Benutzer erstellt, oder eine andere App, die Daten generiert, die in Azure AD nützlich sind. Wie fülle ich den Benutzerdatensatz in Azure AD mit diesen Daten auf? 
@@ -117,5 +117,5 @@ Meine Anwendung erstellt Informationen zu einem Benutzer, die Kunden in Azure AD
 
 ## <a name="related-articles"></a>Verwandte Artikel
 
-- [Lesen Sie die Dokumentation zur Synchronisierung für Microsoft Graph](https://docs.microsoft.com/graph/api/resources/synchronization-overview?view=graph-rest-beta)
+- [Lesen Sie die Dokumentation zur Synchronisierung für Microsoft Graph](/graph/api/resources/synchronization-overview?view=graph-rest-beta)
 - [Integrieren einer benutzerdefinierten SCIM-App in Azure AD](use-scim-to-provision-users-and-groups.md)

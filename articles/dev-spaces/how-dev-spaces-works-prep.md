@@ -5,12 +5,12 @@ ms.date: 03/24/2020
 ms.topic: conceptual
 description: Beschreibt die Funktionsweise der Vorbereitung eines Projekts für Azure Dev Spaces.
 keywords: azds.yaml, Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container
-ms.openlocfilehash: 24a54fffdc8e94493d2a4a9aeb1c5f02dcd192b9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 61351072494b51d02a1d6c31399208b9e9b54fce
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80241316"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213423"
 ---
 # <a name="how-preparing-a-project-for-azure-dev-spaces-works"></a>Funktionsweise der Vorbereitung eines Projekts für Azure Dev Spaces
 
@@ -98,17 +98,4 @@ Die `azds.yaml`-Datei, die durch den `prep`-Befehl generiert wurde, sollte für 
 
 Weitere Informationen zum Ausführen von Code in Ihrem Entwicklungsbereich finden Sie unter [Funktionsweise des Ausführens von Code mit Azure Dev Spaces][how-it-works-up].
 
-In den folgenden Schnellstarts finden Sie Informationen zu den ersten Schritten bei der Verwendung von Azure Dev Spaces, um Ihr Projekt auf Azure Dev Spaces vorzubereiten:
-
-* [Debuggen und Iterieren mit Visual Studio Code und Java in Kubernetes mithilfe von Azure Dev Spaces][quickstart-java]
-* [Entwickeln mit .NET Core unter Kubernetes mit Azure Dev Spaces (Visual Studio Code)][quickstart-netcore]
-* [Debuggen und Iterieren mit Visual Studio Code und Node.js in Kubernetes mithilfe von Azure Dev Spaces][quickstart-node]
-* [Schnelles Durchlaufen und Debuggen mit Visual Studio und .NET Core][quickstart-vs]
-* [Verwenden der CLI zum Entwickeln einer Anwendung unter Kubernetes][quickstart-cli]
-
 [how-it-works-up]: how-dev-spaces-works-up.md
-[quickstart-cli]: quickstart-cli.md
-[quickstart-java]: quickstart-java.md
-[quickstart-netcore]: quickstart-netcore.md
-[quickstart-node]: quickstart-nodejs.md
-[quickstart-vs]: quickstart-netcore-visualstudio.md

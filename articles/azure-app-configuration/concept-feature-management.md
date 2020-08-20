@@ -4,14 +4,15 @@ description: Aktivieren und Deaktivieren von Features mithilfe von Azure App Con
 author: lisaguthrie
 ms.author: lcozzens
 ms.service: azure-app-configuration
+ms.custom: devx-track-dotnet
 ms.topic: conceptual
 ms.date: 02/20/2020
-ms.openlocfilehash: 8227810c154078fc8424b2cadd373394d07e9730
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b77f0063b37adbfaecaff68387e858d0077561b3
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77523729"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212663"
 ---
 # <a name="feature-management-overview"></a>Übersicht über die Featureverwaltung
 

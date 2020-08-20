@@ -11,19 +11,19 @@ author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: carlrab
 ms.date: 07/28/2020
-ms.openlocfilehash: f3c7420e1f33a7c25e7d3bfdffff14019d0b606a
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 48d8b0519ca1b312909f8b48a7fd8a25d0f8b919
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87542669"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88225817"
 ---
 # <a name="resources-limits-for-elastic-pools-using-the-dtu-purchasing-model"></a>Grenzwerte für Ressourcen für Pools für elastische Datenbanken, die das DTU-Kaufmodell verwenden
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 Dieser Artikel enthält ausführliche Angaben zu Ressourcenlimits für Datenbanken in Azure SQL-Datenbank, die in einem Pool für elastische Datenbanken enthalten sind und für die das DTU-Kaufmodell gilt.
 
-* Informationen zu Ressourcenlimits beim DTU-Kaufmodell für Azure SQL-Datenbank finden Sie unter [DTU-Ressourcenlimits – Azure SQL-Datenbank](resource-limits-vcore-elastic-pools.md).
+* Informationen zu Ressourcenlimits beim DTU-Kaufmodell für Azure SQL-Datenbank finden Sie unter [DTU-Ressourcenlimits – Azure SQL-Datenbank](resource-limits-dtu-single-databases.md).
 * Informationen zu V-Kern-Ressourcenlimits finden Sie unter [V-Kern-Ressourcenlimits – Azure SQL-Datenbank](resource-limits-vcore-single-databases.md) und [V-Kern-Ressourcenlimits – Pools für elastische Datenbanken](resource-limits-vcore-elastic-pools.md).
 
 ## <a name="elastic-pool-storage-sizes-and-compute-sizes"></a>Pool für elastische Datenbanken: Speicher- und Computegrößen

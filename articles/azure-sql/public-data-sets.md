@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/01/2018
-ms.openlocfilehash: 6e38be4a97678ce749e32ca31c0703ed9d786d76
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 30f6bf7629152050bc1249a1e22aff0aa30642de
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84033571"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88209543"
 ---
 # <a name="public-data-sets-for-testing-and-prototyping"></a>Öffentliche Datasets zum Testen und Erstellen von Prototypen
 [!INCLUDE[appliesto-asf](includes/appliesto-asf.md)]
@@ -33,7 +33,7 @@ Durchsuchen Sie diese Liste mit öffentlichen Datasets nach Daten, mit denen Sie
 | [Flugverspätungen bei Fluggesellschaften und andere Daten des Transportwesens](https://www.transtats.bts.gov/OT_Delay/OT_DelayCause1.asp) | „Das Bureau of Transportation Statistics (BTS) des US-Verkehrsministeriums verfolgt die Pünktlichkeit von Inlandsflügen großer Fluggesellschaften. Zusammenfassende Informationen zur Anzahl der pünktlichen, verspäteten, annullierten und umgeleiteten Flüge werden ... in Zusammenfassungstabellen auf dieser Website angezeigt.“ | Die Dateien werden im CSV-Format bereitgestellt. |
 | [Verkehrstote – US Fatality Analysis Reporting System (FARS)](https://www.nhtsa.gov/FARS) | „FARS erfasst bundesweit Daten zu tödlichen Verletzungen, die durch Unfälle im Straßenverkehr verursacht wurden, und stellt diese Daten jährlich der NHTSA, dem Kongress und der Öffentlichkeit in den USA zur Verfügung.“ | „Erstellen Sie online mithilfe des FARS-Abfragesystems eine eigene Datenausführung zu tödlichen Unfällen. Laden Sie alternativ alle FARS-Daten von 1975 bis heute von der FTP-Website herunter.“ |
 | [Daten zu giftigen Chemikalien – Toxicity ForeCaster (ToxCast&trade;)-Daten der EPA](https://www.epa.gov/chemical-research/toxicity-forecaster-toxcasttm-data) | „Die neuesten öffentlich verfügbaren High-Throughput-Toxizitätsdaten für tausende Chemikalien. Diese Daten werden im Zuge der ToxCast-Forschung der EPA generiert.“ | Datasets stehen in verschiedenen Formaten zur Verfügung, unter anderem als Kalkulationstabellen, R-Pakete und MySQL-Datenbankdateien. |
-| [Daten zu giftigen Chemikalien – NIH Tox21 Data Challenge 2014](https://tripod.nih.gov/tox21/challenge/) | „Auf der Grundlage des Programms „2014 Tox21 Data Challenge“ können Wissenschaftler für die im Rahmen der Initiative „Toxicology in the 21st Century“ getesteten Chemikalien und Verbindungen nachvollziehen, wie hoch deren jeweiliges Potenzial für die Störung biologischer Systeme und damit für die Auslösung einer toxischen Reaktion ist.“ | Datasets sind im SMILES- und SDF-Format verfügbar. Die Daten enthalten „Analyseaktivitätsdaten und chemische Strukturen für die Tox21-Sammlung von etwa 10.000 Verbindungen (Tox21 10K).“ |
+| [Daten zu giftigen Chemikalien – NIH Tox21 Data Challenge 2014](https://tripod.nih.gov/tox21) | „Auf der Grundlage des Programms „2014 Tox21 Data Challenge“ können Wissenschaftler für die im Rahmen der Initiative „Toxicology in the 21st Century“ getesteten Chemikalien und Verbindungen nachvollziehen, wie hoch deren jeweiliges Potenzial für die Störung biologischer Systeme und damit für die Auslösung einer toxischen Reaktion ist.“ | Datasets sind im SMILES- und SDF-Format verfügbar. Die Daten enthalten „Analyseaktivitätsdaten und chemische Strukturen für die Tox21-Sammlung von etwa 10.000 Verbindungen (Tox21 10K).“ |
 | [Biotechnologie und Genomdaten des NCBI](https://www.ncbi.nlm.nih.gov/guide/data-software/) | Mehrere Datasets zu Genen, Genomen und Proteinen | Datasets liegen u.a. im Text-, XML- und BLAST-Format vor. Eine BLAST-App ist verfügbar. |
 
 ## <a name="other-statistical-and-scientific-data"></a>Andere statistische und wissenschaftliche Daten

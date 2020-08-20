@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 05/20/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 7dae16140c376bc9288fec5b8744ac6cd14051e5
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 69ea1964449143a25f447375f2aae15d9feeff10
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87445617"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88235722"
 ---
 # <a name="how-provisioning-works"></a>Funktionsweise der Bereitstellung
 
@@ -44,7 +44,7 @@ Wenn Sie einen automatischen Azure AD-Bereitstellungsconnector für eine App anf
 
 Damit Azure AD eine Verbindung mit der Benutzerverwaltungs-API der Anwendung herstellen kann, sind Anmeldeinformationen erforderlich. Wenn Sie die automatische Benutzerbereitstellung für eine Anwendung konfigurieren, müssen Sie gültige Anmeldeinformationen eingeben. Die Anmeldeinformationstypen und die Anforderungen für die Anwendung finden Sie im entsprechenden App-Tutorial. Im Azure-Portal können Sie die Anmeldeinformationen testen, indem Sie Azure AD versuchen lassen, mit den angegebenen Anmeldeinformationen eine Verbindung mit der Bereitstellungs-App der App herzustellen.
 
-Wenn für die Anwendung auch SAML-basiertes einmaliges Anmelden konfiguriert ist, beträgt das interne Azure AD-Speicherlimit pro Anwendung 1024 Bytes. Dieses Limit umfasst alle Zertifikate, geheimen Token, Anmeldeinformationen und die zugehörigen Konfigurationsdaten für eine einzelne Instanz einer Anwendung (in Azure AD auch als Dienstprinzipaldatensatz bezeichnet). Wenn das SAML-basierte einmalige Anmelden konfiguriert ist, beansprucht das zum Signieren der SAML-Token verwendete Zertifikat oft mehr als 50 Prozent des Speicherplatzes. Alle zusätzlichen Elemente (geheime Token, URIs, Benachrichtigungs-E-Mail-Adressen, Benutzernamen und Kennwörter), die Sie beim Einrichten der Benutzerbereitstellung eingeben, könnten zur Überschreitung des Speicherlimits führen. Weitere Informationen finden Sie unter [Problem beim Speichern von Administratoranmeldeinformationen während des Konfigurierens der Benutzerbereitstellung](../manage-apps/application-provisioning-config-problem-storage-limit.md).
+Wenn für die Anwendung auch SAML-basiertes einmaliges Anmelden konfiguriert ist, beträgt das interne Azure AD-Speicherlimit pro Anwendung 1024 Bytes. Dieses Limit umfasst alle Zertifikate, geheimen Token, Anmeldeinformationen und die zugehörigen Konfigurationsdaten für eine einzelne Instanz einer Anwendung (in Azure AD auch als Dienstprinzipaldatensatz bezeichnet). Wenn das SAML-basierte einmalige Anmelden konfiguriert ist, beansprucht das zum Signieren der SAML-Token verwendete Zertifikat oft mehr als 50 Prozent des Speicherplatzes. Alle zusätzlichen Elemente (geheime Token, URIs, Benachrichtigungs-E-Mail-Adressen, Benutzernamen und Kennwörter), die Sie beim Einrichten der Benutzerbereitstellung eingeben, könnten zur Überschreitung des Speicherlimits führen. Weitere Informationen finden Sie unter [Problem beim Speichern von Administratoranmeldeinformationen während des Konfigurierens der Benutzerbereitstellung](./application-provisioning-config-problem-storage-limit.md).
 
 ## <a name="mapping-attributes"></a>Zuordnen von Attributen
 
@@ -54,7 +54,7 @@ Es ist ein vorkonfigurierter Satz von Attributen und Attributzuordnungen zwische
 
 Überprüfen und konfigurieren Sie beim Einrichten der Bereitstellung unbedingt die Attributzuordnungen und Workflows, mit denen festgelegt wird, welche Benutzereigenschaften (oder Gruppeneigenschaften) zwischen Azure AD und der Anwendung übertragen werden. Überprüfen und konfigurieren Sie die übereinstimmende Eigenschaft (**Objekte mit diesem Attribut abgleichen**), mit der Benutzer/Gruppen zwischen den beiden Systemen eindeutig identifiziert und abgeglichen werden.
 
-Sie können die Standardattributzuordnungen den Anforderungen Ihres Unternehmens entsprechend anpassen. Dies bedeutet, dass Sie vorhandene Attributzuordnungen ändern oder löschen und neue Attributzuordnungen erstellen können. Ausführliche Informationen hierzu finden Sie unter [Anpassen von Attributzuordnungen für die Benutzerbereitstellung für SaaS-Anwendungen in Azure Active Directory](../manage-apps/customize-application-attributes.md).
+Sie können die Standardattributzuordnungen den Anforderungen Ihres Unternehmens entsprechend anpassen. Dies bedeutet, dass Sie vorhandene Attributzuordnungen ändern oder löschen und neue Attributzuordnungen erstellen können. Ausführliche Informationen hierzu finden Sie unter [Anpassen von Attributzuordnungen für die Benutzerbereitstellung für SaaS-Anwendungen in Azure Active Directory](./customize-application-attributes.md).
 
 Wenn Sie die Bereitstellung für eine SaaS-Anwendung konfigurieren, ist einer der Attributzuordnungstypen, die Sie angeben können, eine Ausdruckszuordnung. Für diese Zuordnungen müssen Sie einen skriptähnlichen Ausdruck schreiben, mit dem Sie die Daten Ihrer Benutzer in Formate transformieren können, die für die SaaS-Anwendung akzeptabler sind. Ausführliche Informationen hierzu finden Sie unter [Schreiben von Ausdrücken für Attributzuordnungen](functions-for-customizing-application-data.md).
 
@@ -81,13 +81,13 @@ Sie können Bereichsdefinitionsfilter verwenden, um attributbasierte Regeln zu d
 
 ### <a name="b2b-guest-users"></a>B2B-Benutzer/Gastbenutzer
 
-Der Azure AD-Benutzerbereitstellungsdienst kann zum Bereitstellen von B2B-Benutzern (oder Gastbenutzern) in Azure AD für SaaS-Anwendungen verwendet werden. Damit B2B-Benutzer sich bei der SaaS-Anwendung mithilfe von Azure AD anmelden können, muss die Funktion „SAML-basiertes einmaliges Anmelden“ der SaaS-Anwendung jedoch auf bestimmte Weise konfiguriert sein. Weitere Informationen zum Konfigurieren von SaaS-Anwendungen, sodass sie Anmeldungen von B2B-Benutzern unterstützen, finden Sie unter [Konfigurieren von SaaS-Apps für die B2B-Zusammenarbeit](../b2b/configure-saas-apps.md).
+Der Azure AD-Benutzerbereitstellungsdienst kann zum Bereitstellen von B2B-Benutzern (oder Gastbenutzern) in Azure AD für SaaS-Anwendungen verwendet werden. Damit B2B-Benutzer sich bei der SaaS-Anwendung mithilfe von Azure AD anmelden können, muss die Funktion „SAML-basiertes einmaliges Anmelden“ der SaaS-Anwendung jedoch auf bestimmte Weise konfiguriert sein. Weitere Informationen zum Konfigurieren von SaaS-Anwendungen, sodass sie Anmeldungen von B2B-Benutzern unterstützen, finden Sie unter [Konfigurieren von SaaS-Apps für die B2B-Zusammenarbeit](../external-identities/configure-saas-apps.md).
 
 Beachten Sie, dass der Benutzerprinzipalname (userPrincipalName) für einen Gastbenutzer häufig als „alias#EXText#@domain.com“ gespeichert wird. Wenn „userPrincipalName“ in den Attributzuordnungen als Quellattribut enthalten ist, wird „#EXT#“ vom Benutzerprinzipalnamen entfernt. Wenn #EXT# erhalten bleiben soll, ersetzen Sie „userPrincipalName“ durch „originalUserPrincipalName“ als Quellattribut. 
 
 ## <a name="provisioning-cycles-initial-and-incremental"></a>Bereitstellungszyklen: Startzyklus und Inkrementell
 
-Wenn Azure AD das Quellsystem ist, verwendet der Bereitstellungsdienst das[Nachverfolgen von Änderungen bei Microsoft Graph-Daten mithilfe einer Deltaabfrage](https://docs.microsoft.com/graph/delta-query-overview), um Benutzer und Gruppen zu überwachen. Der Bereitstellungsdienst führt einen ersten Zyklus für das Quellsystem und das Zielsystem aus, gefolgt von regelmäßigen inkrementellen Zyklen.
+Wenn Azure AD das Quellsystem ist, verwendet der Bereitstellungsdienst das[Nachverfolgen von Änderungen bei Microsoft Graph-Daten mithilfe einer Deltaabfrage](/graph/delta-query-overview), um Benutzer und Gruppen zu überwachen. Der Bereitstellungsdienst führt einen ersten Zyklus für das Quellsystem und das Zielsystem aus, gefolgt von regelmäßigen inkrementellen Zyklen.
 
 ### <a name="initial-cycle"></a>Erster Zyklus
 
@@ -154,11 +154,11 @@ Beheben Sie diese Fehler, indem Sie die Attributwerte für den betroffenen Benut
 
 ### <a name="quarantine"></a>Quarantäne
 
-Wenn die meisten oder alle Aufrufe an das Zielsystem aufgrund eines Fehlers (z. B. bei ungültigen Administratoranmeldeinformationen) dauerhaft nicht erfolgreich sind, wird der Bereitstellungsauftrag in den Zustand „Quarantäne“ versetzt. Dieser Zustand ist im [Zusammenfassungsbericht für die Bereitstellung](../manage-apps/check-status-user-account-provisioning.md) angegeben, und wenn im Azure-Portal E-Mail-Benachrichtigungen konfiguriert wurden, erfolgt auch eine entsprechende Mitteilung per E-Mail.
+Wenn die meisten oder alle Aufrufe an das Zielsystem aufgrund eines Fehlers (z. B. bei ungültigen Administratoranmeldeinformationen) dauerhaft nicht erfolgreich sind, wird der Bereitstellungsauftrag in den Zustand „Quarantäne“ versetzt. Dieser Zustand ist im [Zusammenfassungsbericht für die Bereitstellung](./check-status-user-account-provisioning.md) angegeben, und wenn im Azure-Portal E-Mail-Benachrichtigungen konfiguriert wurden, erfolgt auch eine entsprechende Mitteilung per E-Mail.
 
 In der Quarantäne wird die Häufigkeit der inkrementellen Zyklen allmählich auf einmal pro Tag verringert.
 
-Die Quarantäne für den Bereitstellungsauftrag wird aufgehoben, nachdem alle relevanten Fehler behoben wurden, und der nächste Synchronisierungszyklus wird gestartet. Falls der Bereitstellungsauftrag länger als vier Wochen in Quarantäne verbleibt, wird er deaktiviert. Weitere Informationen zum Quarantänestatus finden Sie [hier](../manage-apps/application-provisioning-quarantine-status.md).
+Die Quarantäne für den Bereitstellungsauftrag wird aufgehoben, nachdem alle relevanten Fehler behoben wurden, und der nächste Synchronisierungszyklus wird gestartet. Falls der Bereitstellungsauftrag länger als vier Wochen in Quarantäne verbleibt, wird er deaktiviert. Weitere Informationen zum Quarantänestatus finden Sie [hier](./application-provisioning-quarantine-status.md).
 
 ### <a name="how-long-provisioning-takes"></a>Dauer der Bereitstellung
 
@@ -166,7 +166,7 @@ Die Leistung ist davon abhängig, ob Ihr Bereitstellungsauftrag einen ersten Ber
 
 ### <a name="how-to-tell-if-users-are-being-provisioned-properly"></a>Ermitteln, ob Benutzer ordnungsgemäß bereitgestellt werden
 
-Alle vom Benutzerbereitstellungsdienst ausgeführten Vorgänge werden in Azure AD unter [Provisioning logs (preview)](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context) (Bereitstellungsprotokollen (Vorschau)) erfasst. Die Protokolle enthalten alle Lese- und Schreibvorgänge auf den Quell- und Zielsystemen sowie die Benutzerdaten, die im Rahmen des jeweiligen Vorgangs gelesen oder geschrieben wurden. Informationen zum Lesen der Bereitstellungsprotokolle im Azure-Portal finden Sie unter [Tutorial: Berichterstellung zur automatischen Benutzerkontobereitstellung](../manage-apps/check-status-user-account-provisioning.md).
+Alle vom Benutzerbereitstellungsdienst ausgeführten Vorgänge werden in Azure AD unter [Provisioning logs (preview)](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context) (Bereitstellungsprotokollen (Vorschau)) erfasst. Die Protokolle enthalten alle Lese- und Schreibvorgänge auf den Quell- und Zielsystemen sowie die Benutzerdaten, die im Rahmen des jeweiligen Vorgangs gelesen oder geschrieben wurden. Informationen zum Lesen der Bereitstellungsprotokolle im Azure-Portal finden Sie unter [Tutorial: Berichterstellung zur automatischen Benutzerkontobereitstellung](./check-status-user-account-provisioning.md).
 
 ## <a name="de-provisioning"></a>Aufheben der Bereitstellung
 
@@ -190,8 +190,8 @@ Wenn Ihre Attributzuordnungen das Attribut „IsSoftDeleted“ enthalten, wird e
 
 [Planen einer automatischen Benutzerbereitstellung](../app-provisioning/plan-auto-user-provisioning.md)
 
-[Konfigurieren der Bereitstellung für eine Katalog-App](../manage-apps/configure-automatic-user-provisioning-portal.md)
+[Konfigurieren der Bereitstellung für eine Katalog-App](./configure-automatic-user-provisioning-portal.md)
 
 [Erstellen eines SCIM-Endpunkts und Konfigurieren der Bereitstellung beim Erstellen Ihrer eigenen App](../app-provisioning/use-scim-to-provision-users-and-groups.md)
 
-[Beheben von Problemen beim Konfigurieren und Bereitstellen von Benutzern für eine Anwendung](../manage-apps/application-provisioning-config-problem.md)
+[Beheben von Problemen beim Konfigurieren und Bereitstellen von Benutzern für eine Anwendung](./application-provisioning-config-problem.md)

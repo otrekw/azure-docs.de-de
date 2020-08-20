@@ -3,14 +3,15 @@ title: Ausgabebindungen des SignalR Service für Azure Functions
 description: Erfahren Sie, wie Sie SignalR Service-Nachrichten aus Azure Functions senden.
 author: craigshoemaker
 ms.topic: reference
+ms.custom: devx-track-csharp
 ms.date: 02/20/2020
 ms.author: cshoe
-ms.openlocfilehash: d3ba9183cdea752c3e69a41770b6a5319a4a601d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b401ff20b553629341c5190deb4cfc54c474d789
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77530191"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212566"
 ---
 # <a name="signalr-service-output-binding-for-azure-functions"></a>SignalR Service-Ausgabebindung für Azure Functions
 

@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: douglas, carlrab
 ms.date: 07/11/2019
-ms.openlocfilehash: 3ef109dc5fad73a19eabefb8eb872c02d62698ba
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: b7623a3c89f9ae4b20385caaac676b972f55f85e
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087570"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88209483"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-managed-instance"></a>Migration einer SQL Server-Instanz zu Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -162,7 +162,7 @@ Bei einer Datenbankmigration zu einer verwalteten Instanz werden in den meisten 
 Eine Voraussetzung hierfür ist, dass Sie die folgenden Aktivitäten ausgeführt haben:
 
 - Passen Sie Ihre Einstellungen in der verwalteten Instanz entsprechend den Einstellungen der SQL Server-Quellinstanz an, indem Sie verschiedene Instanz-, Datenbank- und tempdb-Einstellungen sowie Konfigurationen untersuchen. Sie sollten keine Einstellungen, etwa Kompatibilitätsgrade oder Verschlüsselung, ändern, bevor Sie den ersten Leistungsvergleich durchführen. Andernfalls müssen Sie das Risiko akzeptieren, dass sich einige der von Ihnen aktivierten neuen Features auf einige Abfragen auswirken können. Um Migrationsrisiken zu minimieren, sollten Sie den Kompatibilitätsgrad der Datenbank erst nach der Leistungsüberwachung ändern.
-- Setzen Sie die [Richtlinien für bewährte Speichermethoden für „Universell“](https://techcommunity.microsoft.com/t5/DataCAT/Storage-performance-best-practices-and-considerations-for-Azure/ba-p/305525) um, so z. B. Vorabzuordnung der Größe der Dateien, um eine bessere Leistung zu erzielen.
+- Setzen Sie die [Richtlinien für bewährte Speichermethoden für „Universell“](https://techcommunity.microsoft.com) um, so z. B. Vorabzuordnung der Größe der Dateien, um eine bessere Leistung zu erzielen.
 - Erfahren Sie mehr über die [wichtigsten Umgebungsunterschiede, die zu Leistungsunterschieden zwischen einer verwalteten Instanz und SQL Server führen können](https://azure.microsoft.com/blog/key-causes-of-performance-differences-between-sql-managed-instance-and-sql-server/), und bestimmen Sie die Risiken, die die Leistung beeinträchtigen können.
 - Belassen Sie „Abfragespeicher“ und „Automatische Optimierung“ für Ihre verwaltete Instanz aktiviert. Diese Features ermöglichen es Ihnen, die Workloadleistung zu messen und die möglichen Leistungsprobleme automatisch zu beheben. Erfahren Sie, wie Sie „Abfragespeicher“ als optimales Tool verwenden, um Informationen über die Workloadleistung vor und nach einer Änderung des Datenbankkompatibilitätsgrads zu erhalten. Erläuterungen hierzu finden Sie unter [Aufrechterhalten einer stabilen Leistung während des Upgrades auf eine neuere SQL Server-Version](https://docs.microsoft.com/sql/relational-databases/performance/query-store-usage-scenarios#CEUpgrade).
 Sobald Sie die Umgebung vorbereitet haben, die so weit wie möglich mit Ihrer lokalen Umgebung vergleichbar ist, können Sie damit beginnen, Ihre Workload auszuführen und die Leistung zu messen. Der Messungsumfang sollte genau die Parameter enthalten, die Sie [während der Erstellung der Leistungsbaseline Ihrer Workload für die SQL Server-Quellinstanz](#create-a-performance-baseline) gemessen haben.

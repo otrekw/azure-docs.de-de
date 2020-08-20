@@ -5,12 +5,12 @@ ms.date: 01/28/2020
 ms.topic: conceptual
 description: Hier finden Sie Antworten auf einige der häufig gestellten Fragen zu Azure Dev Spaces.
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container, Helm, Service Mesh, Service Mesh-Routing, kubectl, k8s '
-ms.openlocfilehash: 27e834e71f9e5cfdf3d72fb3b221c24edecab4e8
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 739cfdb4f930d384e180ffd0f3ce2311cd41c70a
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86258315"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88207988"
 ---
 # <a name="frequently-asked-questions-about-azure-dev-spaces"></a>Häufig gestellte Fragen zu Azure Dev Spaces
 
@@ -37,9 +37,6 @@ Wenn Sie eine eigene Dockerfile-Datei oder ein eigenes Helm-Diagramm verwenden, 
 * In Ihrem Helm-Diagramm muss die Übergabe eines Teils des Imagetags oder des gesamten Imagetags als Wert aus *values.yaml* unterstützt werden.
 * Wenn Sie Änderungen am Eingang vornehmen, können Sie auch Ihr Helm-Diagramm aktualisieren, um die von Azure Dev Spaces bereitgestellte Eingangslösung zu verwenden.
 * Wenn Sie die [von Azure Dev Spaces bereitgestellten Routingfunktionen][dev-spaces-routing] verwenden möchten, müssen alle Dienste für ein einzelnes Projekt in einen einzelnen Kubernetes-Namespace passen und mit einem einfachen Namen bereitgestellt werden, z. B. mit *service-a*. In Helm-Standarddiagrammen kann dieses Benennungsupdate durch Angeben eines Werts für die *fullnameOverride*-Eigenschaft erfolgen.
-
-Wenn Sie Ihre eigene Dockerfile-Datei oder Ihr Helm-Diagramm mit einer vorhandenen Version vergleichen möchten, die mit Azure Dev Spaces funktioniert, überprüfen Sie die im [Schnellstart][quickstart-cli] generierten Dateien.
-
 
 ## <a name="can-i-modify-the-files-generated-by-azure-dev-spaces"></a>Kann ich die von Azure Dev Spaces generierten Dateien ändern?
 
@@ -115,7 +112,6 @@ Derzeit können Sie Azure Dev Spaces nicht mit Service Meshes wie [Istio][istio]
 [ingress-https-traefik]: how-to/ingress-https-traefik.md#configure-the-traefik-ingress-controller-to-use-https
 [istio]: https://istio.io/
 [linkerd]: https://linkerd.io/
-[quickstart-cli]: quickstart-cli.md
 [supported-regions]: https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service
 [vs-code-multi-root-workspaces]: https://code.visualstudio.com/docs/editor/multi-root-workspaces
 [windows-containers]: how-to/run-dev-spaces-windows-containers.md

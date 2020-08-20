@@ -14,12 +14,12 @@ ms.custom:
 - it-pro
 - seo-update-azuread-jan"
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 824520e04bd4a98b1a00c8369848163a38bcf54b
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: eb81e5a72ff1f5a8d4442e6e1f211ad2368f6277
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87907266"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88206296"
 ---
 # <a name="troubleshooting-azure-active-directory-b2b-collaboration"></a>Problembehandlung für die Azure Active Directory B2B-Zusammenarbeit
 
@@ -109,4 +109,4 @@ Innerhalb der Azure-Cloud für US-Behörden wird die B2B-Zusammenarbeit derzeit 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Support für die B2B-Zusammenarbeit](/azure/active-directory/fundamentals/active-directory-troubleshooting-support-howto.md)
+[Support für die B2B-Zusammenarbeit](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-troubleshooting-support-howto)

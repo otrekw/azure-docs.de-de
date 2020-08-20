@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 06/23/2020
 ms.author: mimart
 ms.reviewer: arvinh
-ms.openlocfilehash: 3c3706cc3a15a8832cec3d799ea551810c849379
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 52819fc37cf0d10cb36009feb82dec234184752c
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87313607"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88235535"
 ---
 # <a name="on-demand-provisioning"></a>Bedarfsorientierte Bereitstellung
 Mit der bedarfsorientierten Bereitstellung können Sie einen Benutzer innerhalb von Sekunden in einer Anwendung bereitstellen. Unter anderem können Sie dieses Feature für Folgendes verwenden:
@@ -47,9 +47,9 @@ Der Bereitstellungsdienst versucht, den Zugriff auf die Zielanwendung zu autoris
 
 #### <a name="troubleshooting-tips"></a>Tipps zur Problembehandlung
 
-* Stellen Sie sicher, dass Sie gültige Anmeldeinformationen (z. B. das geheime Token und die Mandanten-URL) für die Zielanwendung bereitgestellt haben. Welche Anmeldeinformationen erforderlich sind, hängt von der jeweiligen Anwendung ab. Ausführliche Tutorials für die Konfiguration finden Sie in [dieser Liste](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list). 
+* Stellen Sie sicher, dass Sie gültige Anmeldeinformationen (z. B. das geheime Token und die Mandanten-URL) für die Zielanwendung bereitgestellt haben. Welche Anmeldeinformationen erforderlich sind, hängt von der jeweiligen Anwendung ab. Ausführliche Tutorials für die Konfiguration finden Sie in [dieser Liste](../saas-apps/tutorial-list.md). 
 * Stellen Sie sicher, dass die Zielanwendung das Filtern anhand von übereinstimmenden Attributen unterstützt, die im Bereich **Attributzuordnungen** definiert wurden. Unter Umständen müssen Sie die unterstützten Filter in der vom Anwendungsentwickler bereitgestellten API-Dokumentation nachschlagen.
-* Für SCIM-Anwendungen (System for Cross-Domain Identity Management) können Sie ein Tool wie Postman verwenden. Mithilfe solcher Tools können Sie sicherstellen, dass die Anwendung so auf Autorisierungsanforderungen reagiert, wie der Azure AD-Bereitstellungsdienst (Azure Active Directory) dies erwartet. Hier finden Sie eine [Beispielanforderung](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups#request-3).
+* Für SCIM-Anwendungen (System for Cross-Domain Identity Management) können Sie ein Tool wie Postman verwenden. Mithilfe solcher Tools können Sie sicherstellen, dass die Anwendung so auf Autorisierungsanforderungen reagiert, wie der Azure AD-Bereitstellungsdienst (Azure Active Directory) dies erwartet. Hier finden Sie eine [Beispielanforderung](./use-scim-to-provision-users-and-groups.md#request-3).
 
 ### <a name="step-2-import-user"></a>Schritt 2: Benutzer importieren
 
@@ -76,7 +76,7 @@ Im Abschnitt **Details anzeigen** werden die Eigenschaften des Benutzers angezei
 
 ### <a name="step-3-determine-if-user-is-in-scope"></a>Schritt 3: Gültigkeitsbereich des Benutzers ermitteln
 
-Als Nächstes ermittelt der Bereitstellungsdienst, ob sich der Benutzer im [Gültigkeitsbereich](https://docs.microsoft.com/azure/active-directory/app-provisioning/how-provisioning-works#scoping) für die Bereitstellung befindet. Der Dienst berücksichtigt unter anderem folgende Aspekte:
+Als Nächstes ermittelt der Bereitstellungsdienst, ob sich der Benutzer im [Gültigkeitsbereich](./how-provisioning-works.md#scoping) für die Bereitstellung befindet. Der Dienst berücksichtigt unter anderem folgende Aspekte:
 
 * ob der Benutzer der Anwendung zugewiesen ist
 * ob der Bereich auf **Sync assigned** (Zugewiesene synchronisieren) oder **Sync all** (Alle synchronisieren) festgelegt ist
@@ -94,8 +94,8 @@ Im Abschnitt **Details anzeigen** werden die ausgewerteten Bedingungen für den 
 
 #### <a name="troubleshooting-tips"></a>Tipps zur Problembehandlung
 
-* Stellen Sie sicher, dass Sie eine gültige Bereichsrolle definiert haben. Vermeiden Sie beispielsweise den Operator [Greater_Than](https://docs.microsoft.com/azure/active-directory/app-provisioning/define-conditional-rules-for-provisioning-user-accounts#create-a-scoping-filter) bei nicht ganzzahligen Werten.
-* Lesen Sie die [Tipps für die Bereitstellung von Benutzern mit der Standardzugriffsrolle](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-config-problem-no-users-provisioned#provisioning-users-assigned-to-the-default-access-role), wenn ein Benutzer die erforderliche Rolle nicht besitzt.
+* Stellen Sie sicher, dass Sie eine gültige Bereichsrolle definiert haben. Vermeiden Sie beispielsweise den Operator [Greater_Than](./define-conditional-rules-for-provisioning-user-accounts.md#create-a-scoping-filter) bei nicht ganzzahligen Werten.
+* Lesen Sie die [Tipps für die Bereitstellung von Benutzern mit der Standardzugriffsrolle](./application-provisioning-config-problem-no-users-provisioned.md#provisioning-users-assigned-to-the-default-access-role), wenn ein Benutzer die erforderliche Rolle nicht besitzt.
 
 ### <a name="step-4-match-user-between-source-and-target"></a>Schritt 4: Benutzer zwischen Quell- und Zielsystem abgleichen
 
@@ -129,7 +129,7 @@ Im Abschnitt **Details anzeigen** werden die Attribute angezeigt, die in der Zie
 
 #### <a name="troubleshooting-tips"></a>Tipps zur Problembehandlung
 
-* Die Fehler, die beim Exportieren von Änderungen auftreten, können sehr unterschiedlich sein. In der [Dokumentation zur Protokollbereitstellung](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs#error-codes) werden häufige Fehler beschrieben.
+* Die Fehler, die beim Exportieren von Änderungen auftreten, können sehr unterschiedlich sein. In der [Dokumentation zur Protokollbereitstellung](../reports-monitoring/concept-provisioning-logs.md#error-codes) werden häufige Fehler beschrieben.
 
 ## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
 
@@ -150,4 +150,4 @@ Zurzeit gibt es einige bekannte Einschränkungen bei der bedarfsorientierten Ber
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Behandeln von Bereitstellungsproblemen](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-config-problem)
+* [Behandeln von Bereitstellungsproblemen](./application-provisioning-config-problem.md)

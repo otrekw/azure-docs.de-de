@@ -3,12 +3,12 @@ title: Konzepte – Netzwerkinterkonnektivität
 description: Erfahren Sie mehr über wichtige Aspekte und Anwendungsfälle für Netzwerke und Interkonnektivität in Azure VMware Solution (AVS).
 ms.topic: conceptual
 ms.date: 07/23/2020
-ms.openlocfilehash: c0416da9c745ccf92970ff39f623a782d5784983
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6f1f1f5a089781f1f7e882c9c8692f0c845ae485
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87062837"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88214096"
 ---
 # <a name="azure-vmware-solution-avs-preview-networking-and-interconnectivity-concepts"></a>Azure VMware Solution (AVS) Vorschau – Netzwerk- und Interkonnektivitätskonzepte
 
@@ -77,7 +77,7 @@ Bei der Implementierung vom lokalen oder virtuellen Netzwerk bis hin zur vollst�
 
 Das nachstehende Diagramm zeigt die Interkonnektivität von lokalen zu privaten Clouds, die die folgenden Anwendungsfälle ermöglicht:
 * Hot/Cold Cross-vCenter vMotion
-* Verwaltungszugriff vom lokalen Standort auf die private AVS-Cloud
+* Verwaltungszugriff von der lokalen Umgebung auf die private AVS-Cloud
 
 :::image type="content" source="media/concepts/adjacency-overview-drawing-double.png" alt-text="Vollständige Konnektivität zwischen einem virtuellen Netzwerk und einer lokalen privaten Cloud" border="false":::
 

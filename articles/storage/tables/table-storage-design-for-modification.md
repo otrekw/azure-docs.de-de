@@ -2,18 +2,18 @@
 title: Entwerfen von Azure-Tabellenspeicher zur Datenänderung | Microsoft-Dokumentation
 description: Hier finden Sie Informationen zum Entwerfen von Tabellen zur Datenänderung in Azure Table Storage. Optimieren Sie Einfüge-, Aktualisierungs- und Löschvorgänge. Stellen Sie Konsistenz in Ihren gespeicherten Entitäten sicher.
 services: storage
-author: MarkMcGeeAtAquent
 ms.service: storage
+author: tamram
+ms.author: tamram
 ms.topic: article
 ms.date: 04/23/2018
-ms.author: sngun
 ms.subservice: tables
-ms.openlocfilehash: 1f48cbf198e8a12d4f35293b285e6cb09bef29a1
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 25785bc4b945f469e67f2a71eb6676940e091d56
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87826465"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88236759"
 ---
 # <a name="design-for-data-modification"></a>Entwurf für die Datenänderung
 Dieser Artikel konzentriert sich auf Entwurfsansätze zum Optimieren von Einfügungen, Aktualisierungen und Löschungen. In einigen Fällen müssen Sie einen Kompromiss finden zwischen Entwürfen, die nach Abfragen optimiert sind und Entwürfen, die nach Datenänderung optimiert sind, so wie sie dies auch bei Entwürfen für relationale Datenbanken vornehmen (obwohl die Techniken für die Verwaltung von Entwurfskompromissen für eine relationale Datenbank unterschiedlich sind). Der Abschnitt „Entwurfsmuster für die Tabelle“ beschreibt einige detaillierte Entwurfsmuster für den Tabellenspeicherdienst und stellt einige dieser Kompromisse heraus. In der Praxis werden Sie feststellen, dass viele für Abfragen von Entitäten optimierte Entwürfe sich auch zum Ändern von Entitäten eignen.  

@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 06/08/2020
 ms.author: kenwith
-ms.openlocfilehash: 1e858f1141ade52a1872d8a9822f515796d9182c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1765c6a7d19a11730567acd5e41deebc0a20cec2
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84781955"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88235807"
 ---
 # <a name="attribute-based-application-provisioning-with-scoping-filters"></a>Attributbasierte Anwendungsbereitstellung mit Bereichsfiltern
 In diesem Artikel wird die Verwendung von Bereichsfiltern zum Definieren attributbasierter Regeln beschrieben, die festlegen, welche Benutzer für eine Anwendung bereitgestellt werden.
@@ -94,7 +94,7 @@ Bereichsfilter werden im Rahmen der Attributzuordnungen für jeden Bereitstellun
    
    j. **Greater_Than_OR_EQUALS.** Die Klausel gibt „true“ zurück, wenn das ausgewertete Attribut größer oder gleich als dem Wert ist. Der für den Bereichsfilter angegebene Wert muss eine ganze Zahl sein, und das-Attribut für den Benutzer muss ebenfalls eine ganze Zahl [0, 1, 2,...] sein. 
    
-   k. **Includes**: Die Klausel gibt „true“ zurück, wenn das ausgewertete Attribut den Zeichenfolgewert enthält, wie [hier](https://docs.microsoft.com/dotnet/api/system.string.contains?view=netframework-4.8) beschrieben. (Bei der Auswertung wird die Groß-/Kleinschreibung berücksichtigt.) 
+   k. **Includes**: Die Klausel gibt „true“ zurück, wenn das ausgewertete Attribut den Zeichenfolgewert enthält, wie [hier](/dotnet/api/system.string.contains?view=netframework-4.8) beschrieben. (Bei der Auswertung wird die Groß-/Kleinschreibung berücksichtigt.) 
 
 
 >[!IMPORTANT] 
@@ -130,4 +130,3 @@ Bereichsfilter werden im Rahmen der Attributzuordnungen für jeden Bereitstellun
 * [Kontobereitstellungsbenachrichtigungen](../app-provisioning/user-provisioning.md)
 * [Verwenden von SCIM (System for Cross-domain Identity Management) für die automatische Bereitstellung von Benutzern und Gruppen aus Azure Active Directory für Anwendungen](../app-provisioning/use-scim-to-provision-users-and-groups.md)
 * [Liste der Tutorials zur Integration von SaaS-Apps](../saas-apps/tutorial-list.md)
-

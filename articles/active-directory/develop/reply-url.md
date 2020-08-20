@@ -11,12 +11,12 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.service: active-directory
 ms.reviewer: lenalepa, manrath
-ms.openlocfilehash: 6a8cc588ff7325242e7e010e9869eaa9a24f6fc2
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 8be13a299de0fc3de0acaf0001722d8c96a460e6
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88033335"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88205940"
 ---
 # <a name="redirect-uri-reply-url-restrictions-and-limitations"></a>Einschränkungen für Umleitungs-URI/Antwort-URL
 
@@ -62,9 +62,9 @@ Gemäß [RFC 8252, Abschnitte 8.3](https://tools.ietf.org/html/rfc8252#section
 
 Aus Entwicklersicht bedeutet dies Folgendes:
 
-1. Registrieren Sie nicht mehrere Umleitungs-URIs, wenn sich nur der Port unterscheidet. Der Anmeldeserver wählt willkürlich einen Umleitungs-URI aus und verwendet das diesem zugeordnete Verhalten (z. B. entsprechend dem Umleitungstyp `web`, `native` oder `spa`).
-1. Wenn Sie mehrere Umleitungs-URIs für Localhost registrieren möchten, um während der Entwicklung verschiedene Flows zu testen, unterscheiden Sie diese mithilfe der *path*-Komponente des URI. Beispielsweise stimmt `http://127.0.0.1/MyWebApp` nicht mit `http://127.0.0.1/MyNativeApp` überein.
-1. Gemäß RFC-Anleitungen sollten Sie `localhost` nicht in einem Umleitungs-URI verwenden. Verwenden Sie stattdessen die tatsächliche Loopback-IP-Adresse `127.0.0.1`. Dadurch wird verhindert, dass Ihre App durch falsch konfigurierte Firewalls oder umbenannte Netzwerkschnittstellen fehlerhaft wird.
+* Registrieren Sie nicht mehrere Umleitungs-URIs, wenn sich nur der Port unterscheidet. Der Anmeldeserver wählt willkürlich einen Umleitungs-URI aus und verwendet das diesem zugeordnete Verhalten (z. B. entsprechend dem Umleitungstyp `web`, `native` oder `spa`).
+* Wenn Sie mehrere Umleitungs-URIs für Localhost registrieren möchten, um während der Entwicklung verschiedene Flows zu testen, unterscheiden Sie diese mithilfe der *path*-Komponente des URI. Beispielsweise stimmt `http://127.0.0.1/MyWebApp` nicht mit `http://127.0.0.1/MyNativeApp` überein.
+* Gemäß RFC-Anleitungen sollten Sie `localhost` nicht in einem Umleitungs-URI verwenden. Verwenden Sie stattdessen die tatsächliche Loopback-IP-Adresse `127.0.0.1`. Dadurch wird verhindert, dass Ihre App durch falsch konfigurierte Firewalls oder umbenannte Netzwerkschnittstellen fehlerhaft wird.
 
     Die IPv6-Loopback Adresse (`[::1]`) wird derzeit nicht unterstützt.
 

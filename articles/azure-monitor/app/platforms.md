@@ -4,12 +4,12 @@ description: Verfügbare Programmiersprachen, Plattformen und Integrationsmögli
 ms.topic: conceptual
 ms.date: 07/18/2019
 ms.reviewer: olegan
-ms.openlocfilehash: 35dc6c5146edd13309a42702d1bc247333ff0fd7
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: d3bb1473d94db04d1dedf2b09e19b83197cc6e0e
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322447"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88225103"
 ---
 # <a name="supported-languages"></a>Unterstützte Sprachen
 
@@ -37,6 +37,8 @@ ms.locfileid: "87322447"
 * [Python](./opencensus-python.md)
 * [Universelle Windows-App](../learn/mobile-center-quickstart.md) (App Center)
 * [Windows-Desktopanwendungen, -Dienste und -Workerrollen](./windows-desktop.md)
+* [React](./javascript-react-plugin.md)
+* [React Native](./javascript-react-native-plugin.md)
 
 ## <a name="logging-frameworks"></a>Protokollierungsframeworks
 * [ILogger](./ilogger.md)

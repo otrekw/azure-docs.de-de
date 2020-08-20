@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 11/22/2019
 ms.author: kenwith
 ms.reviewer: arvindha, celested
-ms.openlocfilehash: 8dd108e8c2877c7fe459819bf01b0e5b206cd9c0
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: b96b679e967fd898f072b4b1ae195e3dd1061c04
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87445560"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88235691"
 ---
 # <a name="plan-cloud-hr-application-to-azure-active-directory-user-provisioning"></a>Planen der HR-Cloudanwendung für die Azure Active Directory-Benutzerbereitstellung
 
@@ -167,7 +167,7 @@ Die Integration der Bereitstellung zwischen der HR-Cloud-App und Azure Active Di
 - Azure AD Connect-Bereitstellungs-Agent
 - Azure Active Directory-Domäne
 
-Die Bereitstellungstopologie des Azure AD Connect-Bereitstellungs-Agents hängt von der Anzahl der Mandanten der HR-Cloud-App und der untergeordneten Azure Active Directory-Domänen ab, die Sie integrieren möchten. Wenn Sie über mehrere Azure Active Directory-Domänen verfügen, hängt es davon ab, ob die Azure Active Directory-Domänen zusammenhängend oder [nicht zusammenhängend](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/disjoint-namespace) sind.
+Die Bereitstellungstopologie des Azure AD Connect-Bereitstellungs-Agents hängt von der Anzahl der Mandanten der HR-Cloud-App und der untergeordneten Azure Active Directory-Domänen ab, die Sie integrieren möchten. Wenn Sie über mehrere Azure Active Directory-Domänen verfügen, hängt es davon ab, ob die Azure Active Directory-Domänen zusammenhängend oder [nicht zusammenhängend](/windows-server/identity/ad-ds/plan/disjoint-namespace) sind.
 
 Wählen Sie auf der Grundlage Ihrer Entscheidung eines der Bereitstellungsszenarien aus:
 
@@ -313,7 +313,7 @@ Wenn der Wert für „Municipality“ Dallas, Austin, Seattle oder London entspr
 
 ## <a name="plan-for-password-delivery-of-new-user-accounts"></a>Planen Sie die Zustellung von Kennwörtern für neue Benutzerkonten.
 
-Wenn Sie den Einstellungsprozess starten, müssen Sie ein temporäres Kennwort für neue Benutzerkonten festlegen und zustellen. Mit der Benutzerbereitstellung von der HR-Cloud-App in Azure AD können Sie am ersten Tag für den Benutzer die SSPR-Funktion ([Self-Service-Kennwortzurücksetzung](../authentication/quickstart-sspr.md)) von Azure AD einführen.
+Wenn Sie den Einstellungsprozess starten, müssen Sie ein temporäres Kennwort für neue Benutzerkonten festlegen und zustellen. Mit der Benutzerbereitstellung von der HR-Cloud-App in Azure AD können Sie am ersten Tag für den Benutzer die SSPR-Funktion ([Self-Service-Kennwortzurücksetzung](../authentication/tutorial-enable-sspr.md)) von Azure AD einführen.
 
 SSPR ist für IT-Administratoren eine einfache Möglichkeit, Benutzern das Zurücksetzen ihrer Kennwörter oder das Entsperren ihrer Konten zu ermöglichen. Sie können das Attribut **Mobiltelefonnummer** von der HR-Cloud-App in Azure Active Directory bereitstellen und mit Azure AD synchronisieren. Sobald Azure AD das Attribut **Mobiltelefonnummer** enthält, können Sie SSPR für das Benutzerkonto aktivieren. Am ersten Tag kann der neue Benutzer dann die registrierte und überprüfte Mobiltelefonnummer zur Authentifizierung verwenden.
 

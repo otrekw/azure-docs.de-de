@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab
 ms.date: 03/17/2020
-ms.openlocfilehash: 6713a1fbbbbca0aa212461cc966b42aaf2daa47e
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 5f42079d271a933cb9a722c7e33e6f646f7c4d1b
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86498439"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88210507"
 ---
 # <a name="azure-sql-managed-instance-frequently-asked-questions-faq"></a>Häufig gestellte Fragen (FAQ) zu Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -214,7 +214,7 @@ Ja, Sie können Add-On-Speicher unabhängig von Computeressourcen in gewissem Um
 
 **Wie kann ich die Speicherleistung auf der universellen Dienstebene optimieren?**
 
-Informationen zur Optimierung der Speicherleistung finden Sie unter [Best Practices für die Speicherleistung auf universeller Dienstebene](https://techcommunity.microsoft.com/t5/datacat/storage-performance-best-practices-and-considerations-for-azure/ba-p/305525).
+Informationen zur Optimierung der Speicherleistung finden Sie unter [Best Practices für die Speicherleistung auf universeller Dienstebene](https://techcommunity.microsoft.com).
 
 ## <a name="backup-and-restore"></a>Sichern und Wiederherstellen
 

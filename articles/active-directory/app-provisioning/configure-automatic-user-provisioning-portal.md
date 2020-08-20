@@ -12,19 +12,19 @@ ms.workload: identity
 ms.date: 11/25/2019
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 7e7f8ded24e71fec8ed6bfbc78f9057ddb98dacc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9c42a83b4f7f3c6b5ff501525a04ebd96c2a692a
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84781989"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88234838"
 ---
 # <a name="managing-user-account-provisioning-for-enterprise-apps-in-the-azure-portal"></a>Verwalten der Benutzerkontobereitstellung für Unternehmens-Apps im Azure-Portal
 
 Dieser Artikel enthält eine Beschreibung der allgemeinen Schritte zum Verwalten der automatischen Bereitstellung und zum Aufheben der Bereitstellung von Benutzerkonten für Anwendungen, die dies unterstützen. Die *Bereitstellung von Benutzerkonten* umfasst das Erstellen, Aktualisieren und/oder Deaktivieren der Benutzerkontodatensätze im lokalen Benutzerprofilspeicher einer Anwendung. Die meisten Cloud- und SaaS-Anwendungen speichern Benutzerrolle und -berechtigungen im eigenen lokalen Profilspeicher des jeweiligen Benutzers. Das Vorkommen eines solchen Benutzerdatensatzes im lokalen Speicher ist *erforderlich*, damit das einmalige Anmelden und der Zugriff funktionieren. Weitere Informationen zur automatischen Bereitstellung von Benutzerkonten finden Sie unter [Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für SaaS-Anwendungen mit Azure Active Directory](user-provisioning.md).
 
 > [!IMPORTANT]
-> Azure Active Directory (Azure AD) enthält einen Katalog mit Tausenden von vorab integrierten Anwendungen, die für die automatische Bereitstellung mit Azure AD aktiviert sind. Suchen Sie zunächst in der [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://azure.microsoft.com/documentation/articles/active-directory-saas-tutorial-list/) nach dem für Ihre Anwendung spezifischen Tutorial zur Bereitstellungseinrichtung. Wahrscheinlich finden Sie eine Schritt-für-Schritt-Anleitung zum Konfigurieren der App und von Azure AD für das Erstellen der Bereitstellungsverbindung.
+> Azure Active Directory (Azure AD) enthält einen Katalog mit Tausenden von vorab integrierten Anwendungen, die für die automatische Bereitstellung mit Azure AD aktiviert sind. Suchen Sie zunächst in der [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](../saas-apps/tutorial-list.md) nach dem für Ihre Anwendung spezifischen Tutorial zur Bereitstellungseinrichtung. Wahrscheinlich finden Sie eine Schritt-für-Schritt-Anleitung zum Konfigurieren der App und von Azure AD für das Erstellen der Bereitstellungsverbindung.
 
 ## <a name="finding-your-apps-in-the-portal"></a>Suchen Ihrer Apps im Portal
 
@@ -85,4 +85,4 @@ Wenn die Bereitstellung für eine Anwendung zum ersten Mal aktiviert wird, legen
 
 Durch Ändern des **Bereitstellungsstatus** in **Aus** wird der Bereitstellungsdienst angehalten. In diesem Status werden von Azure keine Benutzer- oder Gruppenobjekte in der App erstellt, aktualisiert oder entfernt. Wenn Sie den Zustand wieder in **Ein** ändern, fährt der Dienst da fort, wo er aufgehört hat.
 
-Durch **Aktuellen Status löschen und Synchronisierung neu starten** wird ein Startzyklus ausgelöst. Der Dienst wertet dann alle Benutzer im Quellsystem nochmal aus und ermittelt, ob sie für die Bereitstellung zulässig sind. Dies kann sich als nützlich erweisen, wenn Ihre Anwendung sich derzeit in Quarantäne befindet oder wenn Sie eine Änderung an der Zuordnung Ihrer Attribute vornehmen müssen. Beachten Sie, dass die Ausführung des Startzyklus aufgrund der Anzahl der auszuwertenden Objekte länger dauert als herkömmliche inkrementelle Zyklen. Weitere Informationen zur Leistung von Startzyklen und inkrementellen Zyklen finden Sie [hier](application-provisioning-when-will-provisioning-finish-specific-user.md). 
+Durch **Aktuellen Status löschen und Synchronisierung neu starten** wird ein Startzyklus ausgelöst. Der Dienst wertet dann alle Benutzer im Quellsystem nochmal aus und ermittelt, ob sie für die Bereitstellung zulässig sind. Dies kann sich als nützlich erweisen, wenn Ihre Anwendung sich derzeit in Quarantäne befindet oder wenn Sie eine Änderung an der Zuordnung Ihrer Attribute vornehmen müssen. Beachten Sie, dass die Ausführung des Startzyklus aufgrund der Anzahl der auszuwertenden Objekte länger dauert als herkömmliche inkrementelle Zyklen. Weitere Informationen zur Leistung von Startzyklen und inkrementellen Zyklen finden Sie [hier](application-provisioning-when-will-provisioning-finish-specific-user.md).

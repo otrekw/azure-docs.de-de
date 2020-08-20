@@ -3,12 +3,12 @@ title: Einschränkungen bei Ressourcennamen
 description: Zeigt die Benennungsregeln und -einschränkungen für Azure-Ressourcen
 ms.topic: conceptual
 ms.date: 05/21/2020
-ms.openlocfilehash: ca13203b6d31c1eeb939c668a58e67f0d462a905
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 56c50354a6ecbd6ba1d9a806f986cea1c4f3215f
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85554335"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88235977"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Benennungsregeln und -einschränkungen für Azure-Ressourcen
 
@@ -392,6 +392,7 @@ In den folgenden Tabellen bezieht sich der Begriff alphanumerisch auf:
 > [!div class="mx-tableFixed"]
 > | Entität | `Scope` | Länge | Gültige Zeichen |
 > | --- | --- | --- | --- |
+> | actionGroups | Ressourcengruppe | 1–260 | Verwendung nicht möglich:<br>`/` <br><br>Darf nicht mit einem Leerzeichen oder Punkt enden.  |
 > | components | Ressourcengruppe | 1–260 | Verwendung nicht möglich:<br>`%&\?/` <br><br>Darf nicht mit einem Leerzeichen oder Punkt enden.  |
 
 ## <a name="microsoftiotcentral"></a>Microsoft.IoTCentral
@@ -695,6 +696,7 @@ In den folgenden Tabellen bezieht sich der Begriff alphanumerisch auf:
 > [!div class="mx-tableFixed"]
 > | Entität | `Scope` | Länge | Gültige Zeichen |
 > | --- | --- | --- | --- |
+> | certificates | Ressourcengruppe | 1–260 | Verwendung nicht möglich:<br>`/` <br><br>Darf nicht mit einem Leerzeichen oder Punkt enden.  | 
 > | serverfarms | Ressourcengruppe | 1–40 | Alphanumerische Zeichen und Bindestriche. |
 > | sites | Global | 2-60 | Alphanumerische Zeichen und Bindestriche.<br><br>Darf nicht mit einem Bindestrich beginnen oder enden. |
 > | sites/slots | site | 2–59 | Alphanumerische Zeichen und Bindestriche. |

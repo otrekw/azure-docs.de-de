@@ -5,12 +5,12 @@ ms.date: 03/24/2020
 ms.topic: conceptual
 description: Beschreibt die Prozesse bei der Ausführung von Code unter Azure Kubernetes Service mit Azure Dev Spaces
 keywords: azds.yaml, Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container
-ms.openlocfilehash: c343c32f0817cc922784bb25283290dc9ed88d29
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 9dbc1f0f21c2883e5caadbdae268a515eb94d145
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87072950"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88208694"
 ---
 # <a name="how-running-your-code-with-azure-dev-spaces-works"></a>Funktionsweise der Ausführung von Code mit Azure Dev Spaces
 
@@ -201,14 +201,6 @@ Weitere Informationen zu Netzwerken und zum Weiterleiten von Anforderungen in Az
 
 Weitere Informationen zum Verwenden von Azure Dev Spaces für schnelle Iteration und Entwicklung finden Sie unter [So funktioniert ein lokaler Prozess mit Kubernetes][how-it-works-local-process-kubernetes] und [So funktioniert das Remotedebuggen Ihres Codes mit Azure Dev Spaces][how-it-works-remote-debugging].
 
-Informationen zum Einstieg in Azure Dev Spaces zum Ausführen Ihres Projekts finden Sie in den folgenden Schnellstarts:
-
-* [Debuggen und Iterieren mit Visual Studio Code und Java in Kubernetes mithilfe von Azure Dev Spaces][quickstart-java]
-* [Entwickeln mit .NET Core unter Kubernetes mit Azure Dev Spaces (Visual Studio Code)][quickstart-netcore]
-* [Debuggen und Iterieren mit Visual Studio Code und Node.js in Kubernetes mithilfe von Azure Dev Spaces][quickstart-node]
-* [Schnelles Durchlaufen und Debuggen mit Visual Studio und .NET Core][quickstart-vs]
-* [Verwenden der CLI zum Entwickeln einer Anwendung unter Kubernetes][quickstart-cli]
-
 
 [azds-yaml-section]: #how-running-your-code-is-configured
 [helm-upgrade]: https://helm.sh/docs/intro/using_helm/#helm-upgrade-and-helm-rollback-upgrading-a-release-and-recovering-on-failure
@@ -216,10 +208,5 @@ Informationen zum Einstieg in Azure Dev Spaces zum Ausführen Ihres Projekts fin
 [how-it-works-prep]: how-dev-spaces-works-prep.md
 [how-it-works-remote-debugging]: how-dev-spaces-works-remote-debugging.md
 [how-it-works-routing]: how-dev-spaces-works-routing.md
-[quickstart-cli]: quickstart-cli.md
-[quickstart-java]: quickstart-java.md
-[quickstart-netcore]: quickstart-netcore.md
-[quickstart-node]: quickstart-nodejs.md
-[quickstart-vs]: quickstart-netcore-visualstudio.md
 [sync-section]: #file-synchronization
 [troubleshooting]: troubleshooting.md

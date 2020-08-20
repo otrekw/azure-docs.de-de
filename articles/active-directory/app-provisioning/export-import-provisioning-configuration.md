@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 03/19/2020
 ms.author: kenwith
-ms.openlocfilehash: ef4fbf582baf1e4b81d49c81a8b0e16674e64841
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e34656d6ce515cabe955c101f7b52ac0f2ade8db
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84781721"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88235816"
 ---
 # <a name="how-to-export-provisioning-configuration-and-roll-back-to-a-known-good-state"></a>Gewusst wie: Exportieren einer Bereitstellungskonfiguration und Ausführen eines Rollbacks zu einem als funktionierend bekannten Zustand
 
@@ -39,8 +39,8 @@ So exportieren Sie Ihre Konfiguration
 
 Durch das Exportieren und Speichern Ihrer Konfiguration können Sie ein Rollback auf eine frühere Version Ihrer Konfiguration ausführen. Wir empfehlen, die Bereitstellungskonfiguration zu exportieren und zu speichern, damit Sie sie später jederzeit bei Änderungen an den Attributzuordnungen oder Bereichsfiltern verwenden können. Sie müssen nur die JSON-Datei, die Sie in den vorherigen Schritten heruntergeladen haben, öffnen, den gesamten Inhalt der JSON-Datei kopieren, den gesamten Inhalt der JSON-Nutzlast im Schema-Editor ersetzen und einen Speichervorgang ausführen. Falls ein aktiver Bereitstellungszyklus vorhanden ist, wird er abgeschlossen. Beim nächsten Zyklus wird dann das aktualisierte Schema verwendet. Der nächste Zyklus ist zudem ein Startzyklus, bei dem alle Benutzer und Gruppen anhand der neuen Konfiguration ausgewertet werden. Berücksichtigen Sie bei einem Rollback auf eine frühere Konfiguration die folgenden Aspekte:
 
-- Die Benutzer werden erneut ausgewertet, um zu bestimmen, ob sie zum Bereich gehören sollen. Wenn sich die Bereichsfilter geändert haben und ein Benutzer nicht mehr zum Bereich gehört, wird er deaktiviert. Auch wenn dieses Verhalten in den meisten Fällen wünschenswert ist, gibt es auch Momente, in denen Sie das verhindern möchten. In diesen Fällen können Sie die Funktion [Löschungen bei „Nicht im Bereich“ überspringen](https://docs.microsoft.com/azure/active-directory/app-provisioning/skip-out-of-scope-deletions). 
-- Durch die Änderung der Bereitstellungskonfiguration wird der Dienst neu gestartet, und ein [Startzyklus](https://docs.microsoft.com/azure/active-directory/app-provisioning/how-provisioning-works#provisioning-cycles-initial-and-incremental) wird ausgelöst.
+- Die Benutzer werden erneut ausgewertet, um zu bestimmen, ob sie zum Bereich gehören sollen. Wenn sich die Bereichsfilter geändert haben und ein Benutzer nicht mehr zum Bereich gehört, wird er deaktiviert. Auch wenn dieses Verhalten in den meisten Fällen wünschenswert ist, gibt es auch Momente, in denen Sie das verhindern möchten. In diesen Fällen können Sie die Funktion [Löschungen bei „Nicht im Bereich“ überspringen](./skip-out-of-scope-deletions.md). 
+- Durch die Änderung der Bereitstellungskonfiguration wird der Dienst neu gestartet, und ein [Startzyklus](./how-provisioning-works.md#provisioning-cycles-initial-and-incremental) wird ausgelöst.
 
 ## <a name="export-and-import-your-provisioning-configuration-by-using-the-microsoft-graph-api"></a>Exportieren und Importieren Ihrer Bereitstellungskonfiguration mithilfe der Microsoft Graph-API
 
