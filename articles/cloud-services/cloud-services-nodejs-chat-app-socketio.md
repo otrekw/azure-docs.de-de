@@ -1,6 +1,6 @@
 ---
 title: Node.js-Anwendung mit Socket.io – Azure
-description: Erfahren Sie, wie Sie socket.io in einer node.js-Anwendung verwenden können, die in Azure gehostet wird.
+description: In diesem Tutorial erfahren Sie, wie Sie eine Socket.IO-basierte Chatanwendung in Azure hosten. Socket.IO ermöglicht einem Node.js-Server und Clients die Echtzeitkommunikation.
 services: cloud-services
 documentationcenter: nodejs
 author: tgore03
@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 08/17/2017
 ms.author: tagore
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 8029c243052114b9a0932e5372301be84440cf85
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: f3c19e77739ac8dbc503e51408b9b7830a8b5aa5
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386586"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88142467"
 ---
 # <a name="build-a-nodejs-chat-application-with-socketio-on-an-azure-cloud-service"></a>Erstellen einer Node.js-Chatanwendung mit Socket.IO in einem Azure Cloud-Dienst
 
@@ -78,7 +78,7 @@ Für dieses Projekt verwenden wir das Chat-Beispiel aus dem [Socket.IO GitHub-Re
 Bevor die Anwendung im Azure-Emulator gestestet wird, müssen einige kleinere Änderungen vorgenommen werden. Führen Sie an der Datei server.js die folgenden Schritte aus:
 
 1. Öffnen Sie die Datei **server.js** in Visual Studio oder einem beliebigen Text-Editor.
-2. Suchen Sie den Abschnitt **Module dependencies** am Anfang der Datei „server.js“, und ändern Sie die Zeile **sio = require('..//..//lib//socket.io')** in **sio = require('socket.io')** , wie unten dargestellt:
+2. Suchen Sie den Abschnitt **Module dependencies** am Anfang der Datei „server.js“, und ändern Sie die Zeile **sio = require('..//..//lib//socket.io')** in **sio = require('socket.io')**, wie unten dargestellt:
 
     ```js
     var express = require('express')

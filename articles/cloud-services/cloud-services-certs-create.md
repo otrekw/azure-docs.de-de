@@ -1,6 +1,6 @@
 ---
 title: Clouddienste und Verwaltungszertifikate | Microsoft-Dokumentation
-description: Informationen zum Erstellen und Verwenden von Zertifikaten mit Microsoft Azure
+description: Erfahren Sie mehr über das Erstellen und Bereitstellen von Zertifikaten für Clouddienste und die Authentifizierung mit der Verwaltungs-API in Azure.
 services: cloud-services
 documentationcenter: .net
 author: tgore03
@@ -8,12 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: tagore
-ms.openlocfilehash: cf2106302064df5ede02d18f253436047a5d33d8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 08ce69856dd36b6029297109fcb8610b856c8b98
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82024607"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88142365"
 ---
 # <a name="certificates-overview-for-azure-cloud-services"></a>Übersicht über Zertifikate für Azure Cloud Services
 Zertifikate werden in Azure für Clouddienste verwendet ([Dienstzertifikate](#what-are-service-certificates)) und für die Authentifizierung mit der Verwaltungs-API genutzt ([Verwaltungszertifikate](#what-are-management-certificates)). Dieses Thema bietet eine allgemeine Übersicht über beide Zertifikattypen sowie über deren [Erstellung](#create) und Bereitstellung in Azure.

@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: 20be34191355e6ade40e0f3b218818bfa5345a28
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 8/7/2020
+ms.openlocfilehash: a9d6c1b2438f20a06062842b96b147e094760238
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79533231"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88031216"
 ---
 # <a name="replicate-data-into-azure-database-for-mysql"></a>Replizieren von Daten in Azure Database for MySQL
 
@@ -29,6 +29,11 @@ Verwenden Sie bei Migrationsszenarien den [Azure Database Migration Service](htt
 
 ### <a name="data-not-replicated"></a>Nicht replizierte Daten
 Die [*mysql-Systemdatenbank*](https://dev.mysql.com/doc/refman/5.7/en/system-schema.html) auf dem Masterserver wird nicht repliziert. Änderungen an Konten und Berechtigungen auf dem Masterserver werden nicht repliziert. Wenn Sie ein Konto auf dem Masterserver erstellen und dieses Konto über Zugriff auf den Replikatserver verfügen muss, erstellen Sie dasselbe Konto manuell auf dem Replikatserver. Einen Überblick über die Tabellen, die in der Systemdatenbank enthalten sind, finden Sie im [Leitfaden zu MySQL](https://dev.mysql.com/doc/refman/5.7/en/system-schema.html).
+
+### <a name="filtering"></a>Filterung
+Um das Replizieren von Tabellen vom Masterserver (lokal, auf virtuellen Computern oder in einem von anderen Cloudanbietern gehosteten Datenbankdienst gehostet) zu überspringen, wird der `replicate_wild_ignore_table`-Parameter unterstützt. Optional können Sie diesen Parameter auf dem Replikatserver, der in Azure gehostet wird, mithilfe des [Azure-Portals](howto-server-parameters.md) oder der [Azure CLI](howto-configure-server-parameters-using-cli.md) aktualisieren.
+
+Weitere Informationen zu diesem Parameter finden Sie in der [MySQL-Dokumentation](https://dev.mysql.com/doc/refman/8.0/en/replication-options-replica.html#option_mysqld_replicate-wild-ignore-table).
 
 ### <a name="requirements"></a>Requirements (Anforderungen)
 - Der Masterserver muss mindestens die MySQL-Version 5.6 aufweisen. 

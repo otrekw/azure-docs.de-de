@@ -1,6 +1,6 @@
 ---
 title: Zoomfaktoren und Kachelraster in Microsoft Azure Maps
-description: In diesem Artikel erfahren Sie mehr über Zoomfaktoren und Kachelraster in Microsoft Azure Maps.
+description: Lernen Sie, Zoomfaktoren in Azure Maps festzulegen. Erfahren Sie, wie Sie geografische Koordinaten in Pixelkoordinaten, Kachelkoordinaten und Quadkeys konvertieren. Zeigen Sie Codebeispiele an.
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 07/14/2020
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 9493ad21847cca230606ff1641c9ac02c3355f53
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ced524080df87468116a538d9b7c8e91fb178a41
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87093050"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88035874"
 ---
 # <a name="zoom-levels-and-tile-grid"></a>Zoomfaktoren und Linienraster
 

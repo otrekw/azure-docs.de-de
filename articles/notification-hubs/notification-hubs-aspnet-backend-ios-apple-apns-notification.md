@@ -10,16 +10,16 @@ ms.workload: mobile
 ms.tgt_pltfrm: ios
 ms.devlang: objective-c
 ms.topic: article
-ms.date: 01/04/2019
+ms.date: 08/07/2020
 ms.author: sethm
-ms.reviewer: jowargo
+ms.reviewer: thsomasu
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 0f5bc9827919c18e327dc263384f0d4b6a01c5bc
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 0d53709a9fd7cb3f40f540e1bb96c2be12b75f2c
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86530170"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88004168"
 ---
 # <a name="tutorial-send-push-notifications-to-specific-users-using-azure-notification-hubs"></a>Tutorial: Senden von Pushbenachrichtigungen an bestimmte Benutzer mit Azure Notification Hubs
 
@@ -50,7 +50,7 @@ Wenn Sie Mobile Apps als Back-End-Dienst verwenden möchten, lesen Sie [Mobile A
 1. Öffnen Sie die Einzelseitenansicht-App, die Sie in [Tutorial: Senden von Pushbenachrichtigungen an iOS-Apps mit Azure Notification Hubs](ios-sdk-get-started.md) erstellt haben.
 
    > [!NOTE]
-   > In diesem Abschnitt wird davon ausgegangen, dass Sie Ihr Projekt mit einem leeren Organisationsnamen konfiguriert haben. Falls nicht, müssen Sie allen Klassennamen Ihren Organisationsnamen voranstellen.
+   > In diesem Abschnitt wird davon ausgegangen, dass Sie Ihr Projekt mit einem leeren Organisationsnamen konfiguriert haben. Falls nicht, stellen Sie allen Klassennamen Ihren Organisationsnamen voran.
 
 2. Fügen Sie in der Datei `Main.storyboard` die im folgenden Screenshot abgebildeten Komponenten aus der Objektbibliothek hinzu.
 
@@ -66,7 +66,7 @@ Wenn Sie Mobile Apps als Back-End-Dienst verwenden möchten, lesen Sie [Mobile A
 
      In [Tutorial: Senden von Pushbenachrichtigungen an iOS-Apps mit Azure Notification Hubs](ios-sdk-get-started.md) wurden einige Komponenten hinzugefügt.
 
-3. Ziehen Sie bei gedrückter **STRG**-Taste die Komponenten in der Ansicht zu `ViewController.h`, und fügen Sie diese neuen Outlets hinzu.
+3. Ziehen Sie bei gedrückter **STRG**-Taste die Komponenten in der Ansicht zu `ViewController.h`, und fügen Sie diese neuen Outlets hinzu:
 
     ```objc
     @property (weak, nonatomic) IBOutlet UITextField *UsernameField;
@@ -86,13 +86,13 @@ Wenn Sie Mobile Apps als Back-End-Dienst verwenden möchten, lesen Sie [Mobile A
     - (IBAction)LogInAction:(id)sender;
     ```
 
-4. Fügen Sie in `ViewController.h` folgende `#define`-Zeile direkt hinter den import-Anweisungen hinzu. Ersetzen Sie den Platzhalter `<Enter Your Backend Endpoint>` durch die Ziel-URL, die Sie im vorherigen Abschnitt zum Bereitstellen Ihres App-Back-Ends verwendet haben. Beispiel: `http://your_backend.azurewebsites.net`.
+4. Fügen Sie in `ViewController.h` folgende `#define`-Zeile direkt hinter den import-Anweisungen hinzu. Ersetzen Sie den Platzhalter `<Your backend endpoint>` durch die Ziel-URL, die Sie im vorherigen Abschnitt zum Bereitstellen Ihres App-Back-Ends verwendet haben. Zum Beispiel `http://your_backend.azurewebsites.net`:
 
     ```objc
-    #define BACKEND_ENDPOINT @"<Enter Your Backend Endpoint>"
+    #define BACKEND_ENDPOINT @"<Your backend endpoint>"
     ```
 
-5. Erstellen Sie in Ihrem Projekt eine neue „Cocoa Touch“-Klasse mit dem Namen `RegisterClient` als Schnittstelle mit dem erstellten ASP.NET-Back-End. Erstellen Sie die Klasse, die von `NSObject`erbt. Fügen Sie anschließend in `RegisterClient.h` den folgenden Code hinzu.
+5. Erstellen Sie in Ihrem Projekt eine neue „Cocoa Touch“-Klasse mit dem Namen `RegisterClient` als Schnittstelle mit dem erstellten ASP.NET-Back-End. Erstellen Sie die Klasse, die von `NSObject`erbt. Fügen Sie anschließend in `RegisterClient.h` den folgenden Code hinzu:
 
     ```objc
     @interface RegisterClient : NSObject
@@ -494,7 +494,7 @@ Wenn Sie Mobile Apps als Back-End-Dienst verwenden möchten, lesen Sie [Mobile A
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie gelernt, wie Sie Pushbenachrichtigungen an bestimmte Benutzer senden, deren Registrierungen Tags zugeordnet sind. Um zu erfahren, wie Sie standortbasierte Pushbenachrichtigungen senden, fahren Sie mit dem folgenden Tutorial fort: 
+In diesem Tutorial haben Sie gelernt, wie Sie Pushbenachrichtigungen an bestimmte Benutzer senden, deren Registrierungen Tags zugeordnet sind. Um zu erfahren, wie Sie standortbasierte Pushbenachrichtigungen senden, fahren Sie mit dem folgenden Tutorial fort:
 
 > [!div class="nextstepaction"]
 >[Senden standortbasierter Pushbenachrichtigungen](notification-hubs-push-bing-spatial-data-geofencing-notification.md)

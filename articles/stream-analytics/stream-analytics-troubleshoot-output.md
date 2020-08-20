@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: troubleshooting
 ms.date: 03/31/2020
 ms.custom: seodec18
-ms.openlocfilehash: fc35e6a723afab3f230aa91e4b6895aead35e141
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 1fa9a8aa24cf6a8c8c2223836ae80b8b47807c81
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86037068"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87903186"
 ---
 # <a name="troubleshoot-azure-stream-analytics-outputs"></a>Problembehandlung von Azure Stream Analytics-Ausgaben
 
@@ -24,7 +24,7 @@ In diesem Artikel werden häufige Probleme mit Azure Stream Analytics-Ausgabever
 1. Überprüfen Sie für die einzelnen Ausgaben die Verbindung mit Ausgaben mithilfe der Schaltfläche **Verbindung testen**.
 1. Sehen Sie sich die [Überwachungsmetriken](stream-analytics-monitoring.md) auf der Registerkarte **Überwachen** an. Da die Werte aggregiert werden, werden die Metriken mit einer Verzögerung von wenigen Minuten angezeigt.
 
-   * Wenn der Wert **Eingabeereignisse** größer als null ist, kann der Auftrag die Eingabedaten lesen. Wenn der Wert **Eingabeereignisse** nicht größer als null ist, liegt ein Problem mit der Eingabe des Auftrags vor. Weitere Informationen finden Sie unter [Troubleshooting bei Eingabeverbindungen](stream-analytics-troubleshoot-input.md).
+   * Wenn der Wert **Eingabeereignisse** größer als null ist, kann der Auftrag die Eingabedaten lesen. Wenn der Wert **Eingabeereignisse** nicht größer als null ist, liegt ein Problem mit der Eingabe des Auftrags vor. Weitere Informationen finden Sie unter [Troubleshooting bei Eingabeverbindungen](stream-analytics-troubleshoot-input.md). Wenn Ihr Auftrag über eine Verweisdateneingabe verfügt, müssen Sie beim Betrachten der **Eingabeereignisse**-Metrik die Aufteilung nach dem logischen Namen anwenden. Wenn keine Eingabeereignisse aus Ihren Verweisdaten allein vorhanden sind, bedeutet dies wahrscheinlich, dass diese Eingabequelle nicht ordnungsgemäß konfiguriert wurde, um das richtige Verweisdataset abzurufen.
    * Wenn der Wert **Datenkonvertierungsfehler** größer als null und ansteigend ist, finden Sie unter [Datenfehler in Azure Stream Analytics](data-errors.md) ausführliche Informationen zu Datenkonvertierungsfehlern.
    * Wenn der Wert **Laufzeitfehler** größer als null ist, empfängt der Auftrag Daten, generiert jedoch beim Verarbeiten der Abfrage Fehler. Navigieren Sie zur Fehlersuche zu [Überwachungsprotokolle](../azure-resource-manager/management/view-activity-logs.md), und filtern Sie dann nach dem Status **Fehler**.
    * Wenn der Wert **Eingabeereignisse** größer als null und der Wert **Ausgabeereignisse** gleich null ist, gilt eine der folgenden Aussagen:

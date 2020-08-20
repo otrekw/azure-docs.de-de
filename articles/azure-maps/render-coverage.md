@@ -1,6 +1,6 @@
 ---
 title: Renderabdeckung | Microsoft Azure Maps
-description: In diesem Artikel erfahren Sie mehr über Regionen mit Renderabdeckung in Microsoft Azure Maps und über den Grad der gerenderten Details.
+description: Erfahren Sie, wie Azure Maps verschiedene Regionen mit detaillierten oder vereinfachten Daten rendert. Lernen Sie, welche Ebene für Raster-Kachel- und Vektor-Kachel-Zuordnungen in diesen Regionen verwendet wird.
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 03/22/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 47dd619b4853e7167ae1b141c5741511075325c2
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 69b122196cbeb7508cddf3a890768f83fdcd4727
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87127909"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88030927"
 ---
 # <a name="azure-maps-render-coverage"></a>Azure Maps-Renderabdeckung
 
@@ -152,7 +152,7 @@ Maps bietet allerdings nicht für alle Regionen das gleiche Maß an Informatione
 | Britische Jungferninseln   | ✓ | ✓ |
 | Amerikanische Jungferninseln      | ✓ | ✓ |
 
-## <a name="asia"></a>Asia 
+## <a name="asia"></a>Asien 
 
 | Land/Region | Rasterkacheln vereinheitlicht | Vektorkacheln vereinheitlicht |
 | ------ | :------------------: | :------------------: |
@@ -217,7 +217,7 @@ Maps bietet allerdings nicht für alle Regionen das gleiche Maß an Informatione
 | Französisch-Polynesien          |   | Ø |
 | Guam                      | ✓ | ✓ |
 | Kiribati                  |   | Ø |
-| Marshallinseln          |   | Ø |
+| Marshall-Inseln          |   | Ø |
 | Mikronesien                |   | Ø |
 | Nauru                     |   | Ø |
 | Neukaledonien             |   | Ø |
@@ -226,12 +226,12 @@ Maps bietet allerdings nicht für alle Regionen das gleiche Maß an Informatione
 | Norfolkinsel            |   | Ø |
 | Palau                     |   | Ø |
 | Papua-Neuguinea          |   | Ø |
-| Pitcairninseln                  |   | Ø |
+| Pitcairn                  |   | Ø |
 | Samoa                     |   | Ø |
 | Salomonen           |   | Ø|
 | Tokelau                   |   | Ø |
 | Tonga                     |   | Ø |
-| Tuwalu                    |   | Ø |
+| Tuvalu                    |   | Ø |
 | Vanuatu                   |   | Ø |
 | Wallis und Futuna         |   | Ø |
 

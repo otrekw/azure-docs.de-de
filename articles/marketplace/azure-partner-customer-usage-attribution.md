@@ -8,12 +8,12 @@ author: vikrambmsft
 ms.author: vikramb
 ms.date: 04/14/2020
 ms.custom: devx-track-terraform
-ms.openlocfilehash: ab729d34219c05ee76a2a14832f41342d29eab21
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c5fc239c32037354547c6818fd507a7a8cfd3657
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87065807"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88031284"
 ---
 # <a name="commercial-marketplace-partner-and-customer-usage-attribution"></a>Zuordnung der Nutzung durch Partner und Kunden des kommerziellen Marketplace
 
@@ -88,7 +88,7 @@ Viele Partnerlösungen werden mithilfe von Azure Resource Manager-Vorlagen berei
 > Weitere Informationen zum Erstellen und Veröffentlichen von Lösungsvorlagen finden Sie unter:
 > * [Erstellen und Bereitstellen Ihrer ersten Resource Manager-Vorlage](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)
 >* [Azure-Anwendungsangebot](./partner-center-portal/create-new-azure-apps-offer.md)
->* Video: [Erstellen von Lösungsvorlagen und verwalteten Anwendungen für den Azure Marketplace](https://channel9.msdn.com/Events/Build/2018/BRK3603)
+>* Video: [Erstellen von Lösungsvorlagen und verwalteten Anwendungen für den Azure Marketplace](https://channel9.msdn.com/Events/Build/2018/BRK3603).
 
 
 Um einen global eindeutigen Bezeichner (GUID) hinzuzufügen, nehmen Sie an der Hauptvorlagendatei eine einzige Änderung vor:

@@ -3,12 +3,12 @@ title: Microsoft Azure Recovery Services-Agent (MARS) – häufig gestellte Frag
 description: Hierin geht es um häufig gestellte Fragen zum Sichern von Dateien und Ordnern mit Azure Backup.
 ms.topic: conceptual
 ms.date: 07/29/2019
-ms.openlocfilehash: fb6290124aa9ee0335083c5a505c005a387c0cd7
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: e50e424f1a9f044aa1ed8e95c1bce002d134bffe
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86514066"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87874621"
 ---
 # <a name="frequently-asked-questions---microsoft-azure-recovery-services-mars-agent"></a>Häufig gestellte Fragen – Microsoft Azure Recovery Services-Agent (MARS)
 
@@ -20,9 +20,19 @@ Dieser Artikel beantwortet häufige Fragen zur Sicherung von Daten mit dem Micro
 
 Der neueste MARS-Agent, der beim Sichern von Windows Server-Computern, System Center DPM und Microsoft Azure Backup-Server verwendet wird, steht zum [Herunterladen](https://aka.ms/azurebackup_agent) zur Verfügung.
 
+### <a name="where-can-i-download-the-vault-credentials-file"></a>Wo kann ich die Datei mit Tresoranmeldeinformationen herunterladen?
+
+Navigieren Sie im Azure-Portal zu **Eigenschaften** für Ihre VM. Aktivieren Sie unter **Sicherungsanmeldeinformationen** das Kontrollkästchen für **Der neueste Recovery Services-Agent wird bereits verwendet**. Wählen Sie **Herunterladen** aus.
+
+![Anmeldeinformationen herunterladen](./media/backup-azure-file-folder-backup-faq/download-credentials.png)
+
 ### <a name="how-long-are-vault-credentials-valid"></a>Wie lange gelten Tresoranmeldeinformationen?
 
 Tresoranmeldeinformationen laufen nach 10 Tagen ab. Wenn die Datei mit den Anmeldeinformationen abläuft, laden Sie die Datei erneut vom Azure-Portal herunter.
+
+### <a name="what-characters-are-allowed-for-the-passphrase"></a>Welche Zeichen sind für die Passphrase zulässig?
+
+Die Passphrase muss Zeichen aus dem ASCII-Zeichensatz mit [ASCII-Werten kleiner als oder gleich 127](https://docs.microsoft.com/office/vba/language/reference/user-interface-help/character-set-0127) enthalten.
 
 ### <a name="from-what-drives-can-i-back-up-files-and-folders"></a>Von welchen Laufwerken kann ich Dateien und Ordner sichern?
 

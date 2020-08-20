@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
-ms.date: 07/22/2020
-ms.openlocfilehash: 45ff681bdf0260b6e3c12f7e644d102a49206c9f
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.date: 08/06/2020
+ms.openlocfilehash: ca6324bd27749d9be3f516dbcd8ff99eca39d1a6
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87288904"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87875454"
 ---
 # <a name="reference-guide-to-using-functions-in-expressions-for-azure-logic-apps-and-power-automate"></a>Referenzhandbuch für die Verwendung von Funktionen in Ausdrücken für Azure Logic Apps und Power Automate
 
@@ -1276,7 +1276,7 @@ convertFromUtc('<timestamp>', '<destinationTimeZone>', '<format>'?)
 | Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*timestamp*> | Ja | String | Die Zeichenfolge, die den Zeitstempel enthält |
-| <*destinationTimeZone*> | Ja | String | Der Name für die Zielzeitzone. Informationen zu Zeitzonennamen finden Sie unter [Werte des Microsoft-Zeitzonenindex](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values). Möglicherweise müssen Sie aber alle Satzzeichen aus dem Zeitzonennamen entfernen. |
+| <*destinationTimeZone*> | Ja | String | Der Name für die Zielzeitzone. Informationen zu Zeitzonennamen finden Sie unter [Werte des Microsoft-Zeitzonenindex](https://support.microsoft.com/help/973627/microsoft-time-zone-index-values). Möglicherweise müssen Sie aber alle Satzzeichen aus dem Zeitzonennamen entfernen. |
 | <*format*> | Nein | String | Entweder ein [einzelner Formatbezeichner](/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT hh:mm:ss:fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. |
 |||||
 
@@ -1318,8 +1318,8 @@ convertTimeZone('<timestamp>', '<sourceTimeZone>', '<destinationTimeZone>', '<fo
 | Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*timestamp*> | Ja | String | Die Zeichenfolge, die den Zeitstempel enthält |
-| <*sourceTimeZone*> | Ja | String | Der Name für die Quellzeitzone. Informationen zu Zeitzonennamen finden Sie unter [Werte des Microsoft-Zeitzonenindex](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values). Möglicherweise müssen Sie aber alle Satzzeichen aus dem Zeitzonennamen entfernen. |
-| <*destinationTimeZone*> | Ja | String | Der Name für die Zielzeitzone. Informationen zu Zeitzonennamen finden Sie unter [Werte des Microsoft-Zeitzonenindex](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values). Möglicherweise müssen Sie aber alle Satzzeichen aus dem Zeitzonennamen entfernen. |
+| <*sourceTimeZone*> | Ja | String | Der Name für die Quellzeitzone. Informationen zu Zeitzonennamen finden Sie unter [Werte des Microsoft-Zeitzonenindex](https://support.microsoft.com/help/973627/microsoft-time-zone-index-values). Möglicherweise müssen Sie aber alle Satzzeichen aus dem Zeitzonennamen entfernen. |
+| <*destinationTimeZone*> | Ja | String | Der Name für die Zielzeitzone. Informationen zu Zeitzonennamen finden Sie unter [Werte des Microsoft-Zeitzonenindex](https://support.microsoft.com/help/973627/microsoft-time-zone-index-values). Möglicherweise müssen Sie aber alle Satzzeichen aus dem Zeitzonennamen entfernen. |
 | <*format*> | Nein | String | Entweder ein [einzelner Formatbezeichner](/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT hh:mm:ss:fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. |
 |||||
 
@@ -1361,7 +1361,7 @@ convertToUtc('<timestamp>', '<sourceTimeZone>', '<format>'?)
 | Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*timestamp*> | Ja | String | Die Zeichenfolge, die den Zeitstempel enthält |
-| <*sourceTimeZone*> | Ja | String | Der Name für die Quellzeitzone. Informationen zu Zeitzonennamen finden Sie unter [Werte des Microsoft-Zeitzonenindex](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values). Möglicherweise müssen Sie aber alle Satzzeichen aus dem Zeitzonennamen entfernen. |
+| <*sourceTimeZone*> | Ja | String | Der Name für die Quellzeitzone. Informationen zu Zeitzonennamen finden Sie unter [Werte des Microsoft-Zeitzonenindex](https://support.microsoft.com/help/973627/microsoft-time-zone-index-values). Möglicherweise müssen Sie aber alle Satzzeichen aus dem Zeitzonennamen entfernen. |
 | <*format*> | Nein | String | Entweder ein [einzelner Formatbezeichner](/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT hh:mm:ss:fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. |
 |||||
 
@@ -2699,10 +2699,9 @@ Dies sind die zurückgegebenen Ergebnisse:
 
 ### <a name="lastindexof"></a>lastIndexOf
 
-Gibt die Anfangsposition oder den Indexwert des letzten Vorkommens einer Teilzeichenfolge zurück.
-Für diese Funktion wird die Groß-/Kleinschreibung nicht beachtet, und Indizes beginnen mit der Zahl 0.
+Gibt die Anfangsposition oder den Indexwert des letzten Vorkommens einer Teilzeichenfolge zurück. Für diese Funktion wird die Groß-/Kleinschreibung nicht beachtet, und Indizes beginnen mit der Zahl 0.
 
-```
+```json
 lastIndexOf('<text>', '<searchText>')
 ```
 
@@ -2710,22 +2709,38 @@ lastIndexOf('<text>', '<searchText>')
 | --------- | -------- | ---- | ----------- |
 | <*text*> | JaJa | String | Die Zeichenfolge, die die Teilzeichenfolge enthält, nach der gesucht werden soll |
 | <*searchText*> | JaJa | String | Die Teilzeichenfolge, nach der gesucht werden soll |
-|||||
+|||
 
 | Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
-| <*ending-index-value*> | Integer | Die Anfangsposition oder der Indexwert des letzten Vorkommens der angegebenen Teilzeichenfolge. <p>Wird die Zeichenfolge nicht gefunden, wird „-1“ zurückgegeben. |
-||||
+| <*ending-index-value*> | Integer | Die Anfangsposition oder der Indexwert des letzten Vorkommens der angegebenen Teilzeichenfolge. |
+|||
 
-*Beispiel*
+Wenn der Zeichenfolgen- oder Teilzeichenfolgenwert leer ist, tritt das folgende Verhalten auf:
 
-In diesem Beispiel wird für die Teilzeichenfolge „world“ nach dem Anfangsindexwert des letzten Vorkommens gesucht, den sie in der Zeichenfolge „hello world“ hat:
+* Wenn der Zeichenfolgenwert leer ist, wird `-1` zurückgegeben:
 
+* Wenn Zeichenfolgen- und Teilzeichenfolgenwert leer sind, wird `0` zurückgegeben.
+
+* Wenn nur der Teilzeichenfolgenwert leer ist, wird der höhere der folgenden beiden Werte zurückgegeben:
+
+  * `0`
+
+  * Die Länge der Zeichenfolge minus 1.
+
+*Beispiele*
+
+In diesem Beispiel wird für die Teilzeichenfolge `world` nach dem Anfangsindexwert des letzten Vorkommens gesucht, den sie in der Zeichenfolge `hello world hello world` hat. Als Ergebnis wird `18` zurückgegeben:
+
+```json
+lastIndexOf('hello world hello world', 'world')
 ```
-lastIndexOf('hello world', 'world')
-```
 
-Dies ist das zurückgegebene Ergebnis: `6`
+In diesem Beispiel fehlt der Teilzeichenfolgenparameter, und der Wert `22` wird zurückgegeben, da der Wert der Eingabezeichenfolge (`23`) minus 1 größer als 0 (null) ist.
+
+```json
+lastIndexOf('hello world hello world', '')
+```
 
 <a name="length"></a>
 
@@ -2738,7 +2753,7 @@ length('<collection>')
 length([<collection>])
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*collection*> | Ja | Zeichenfolge oder Array | Die Sammlung mit den Elementen, die gezählt werden sollen |
 |||||
@@ -2771,7 +2786,7 @@ less(<value>, <compareTo>)
 less('<value>', '<compareTo>')
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*value*> | Ja | Integer, Float oder Zeichenfolge | Der Wert (erster Wert), für den überprüft werden soll, ob er kleiner ist als der zweite Wert |
 | <*compareTo*> | Ja | Integer, Float bzw. Zeichenfolge | Das Vergleichselement |
@@ -2808,7 +2823,7 @@ lessOrEquals(<value>, <compareTo>)
 lessOrEquals('<value>', '<compareTo>')
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*value*> | Ja | Integer, Float oder Zeichenfolge | Der Wert (erster Wert), für den überprüft werden soll, ob er kleiner gleich dem zweiten Wert ist. |
 | <*compareTo*> | Ja | Integer, Float bzw. Zeichenfolge | Das Vergleichselement |
@@ -2866,7 +2881,7 @@ max(<number1>, <number2>, ...)
 max([<number1>, <number2>, ...])
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*number1*>, <*number2*>, ... | Ja | Integer, Float oder beide | Die Menge der Zahlen, aus denen Sie den größten Wert abrufen möchten |
 | [<*number1*>, <*number2*>, ...] | Ja | Array: Integer, Float oder beide | Das Array mit den Zahlen, aus denen Sie den größten Wert abrufen möchten |
@@ -2899,7 +2914,7 @@ min(<number1>, <number2>, ...)
 min([<number1>, <number2>, ...])
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*number1*>, <*number2*>, ... | Ja | Integer, Float oder beide | Die Menge der Zahlen, aus denen Sie den kleinsten Wert abrufen möchten |
 | [<*number1*>, <*number2*>, ...] | Ja | Array: Integer, Float oder beide | Das Array mit den Zahlen, aus denen Sie den kleinsten Wert abrufen möchten |
@@ -2932,7 +2947,7 @@ Informationen zum Abrufen des Ganzzahlergebnisses finden Sie unter [div()](#div)
 mod(<dividend>, <divisor>)
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*dividend*> | Ja | Integer oder Float | Die Zahl, die durch den *Divisor* dividiert werden soll. |
 | <*divisor*> | Ja | Integer oder Float | Die Zahl, durch die der *Dividend* geteilt wird; darf nicht 0 sein |
@@ -2963,7 +2978,7 @@ Gibt das Produkt aus der Multiplikation zweier Zahlen zurück.
 mul(<multiplicand1>, <multiplicand2>)
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*multiplicand1*> | Ja | Integer oder Float | Die Zahl, mit der *multiplicand2* multipliziert werden soll. |
 | <*multiplicand2*> | Ja | Integer oder Float | Die Zahl, mit der *multiplicand1* multipliziert werden soll. |
@@ -2998,9 +3013,9 @@ Gibt den Textteil für einen bestimmten Teil einer Aktionsausgabe zurück, die m
 multipartBody('<actionName>', <index>)
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*actionName*> | JaJa | String | Der Name der Aktion, für die es Ausgabe mit mehreren Teilen gibt |
+| <*actionName*> | Ja | String | Der Name der Aktion, für die es Ausgabe mit mehreren Teilen gibt |
 | <*index*> | Ja | Integer | Der Indexwert des von Ihnen gewünschten Teils |
 |||||
 
@@ -3020,7 +3035,7 @@ Gibt „true“ zurück, wenn der Ausdruck gleich „false“ ist, oder gibt „
 not(<expression>)
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*expression*> | Ja | Boolean | Der zu überprüfende Ausdruck |
 |||||
@@ -3069,7 +3084,7 @@ Gibt „true“ zurück, wenn mindestens ein Ausdruck gleich „true“ ist, ode
 or(<expression1>, <expression2>, ...)
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*expression1*>, <*expression2*>, ... | Ja | Boolean | Die Ausdrücke, die überprüft werden sollen |
 |||||
@@ -3117,9 +3132,9 @@ Gibt die Ausgabe einer Aktion zur Laufzeit zurück. Verwenden Sie diese Funktion
 outputs('<actionName>')
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*actionName*> | JaJa | String | Der Name der Aktion, deren Ausgabe Sie abrufen möchten |
+| <*actionName*> | Ja | String | Der Name der Aktion, deren Ausgabe Sie abrufen möchten |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
@@ -3180,9 +3195,9 @@ Gibt den Wert für einen Parameter zurück, der in Ihrer Workflowdefinition besc
 parameters('<parameterName>')
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*parameterName*> | JaJa | String | Der Name des Parameters, dessen Wert Sie abrufen möchten |
+| <*parameterName*> | Ja | String | Der Name des Parameters, dessen Wert Sie abrufen möchten |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
@@ -3218,7 +3233,7 @@ Gibt eine zufällige Ganzzahl  aus einem angegebenen Bereich zurück, wobei nur 
 rand(<minValue>, <maxValue>)
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*minValue*> | Ja | Integer | Die kleinste ganze Zahl im Bereich |
 | <*maxValue*> | Ja | Integer | Die ganze Zahl, die im Bereich auf die größte Zahl folgt, die die Funktion zurückgeben kann |
@@ -3249,7 +3264,7 @@ Gibt ein Array mit ganzen Zahlen zurück, das mit einer angegebenen ganzen Zahl 
 range(<startIndex>, <count>)
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*startIndex*> | Ja | Integer | Ein ganzzahliger Wert, der das erste Element im Array ist |
 | <*count*> | Ja | Integer | Die Anzahl von ganzen Zahlen im Array |
@@ -3280,10 +3295,10 @@ Ersetzt eine Teilzeichenfolge durch die angegebene Zeichenfolge und gibt die res
 replace('<text>', '<oldText>', '<newText>')
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*text*> | JaJa | String | Die Zeichenfolge, die die Teilzeichenfolge enthält, die ersetzt werden soll |
-| <*oldText*> | JaJa | String | Die Teilzeichenfolge, die ersetzt werden soll |
+| <*text*> | Ja | String | Die Zeichenfolge, die die Teilzeichenfolge enthält, die ersetzt werden soll |
+| <*oldText*> | Ja | String | Die Teilzeichenfolge, die ersetzt werden soll |
 | <*newText*> | Ja | String | Die Ersatzzeichenfolge |
 |||||
 
@@ -3312,10 +3327,10 @@ Entfernt eine Eigenschaft aus einem Objekt und gibt das aktualisierte Objekt zur
 removeProperty(<object>, '<property>')
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*object*> | Ja | Object | Das JSON-Objekt, aus dem Sie eine Eigenschaft entfernen möchten |
-| <*property*> | JaJa | String | Der Name der zu Eigenschaft, die entfernt werden soll |
+| <*property*> | Ja | String | Der Name der zu Eigenschaft, die entfernt werden soll |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
@@ -3329,11 +3344,11 @@ Verwenden Sie die folgende Syntax, um eine untergeordnete Eigenschaft aus einer 
 removeProperty(<object>['<parent-property>'], '<child-property>')
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*object*> | Ja | Object | Das JSON-Objekt, dessen Eigenschaft Sie entfernen möchten |
-| <*parent-property*> | JaJa | String | Der Name der übergeordneten Eigenschaft mit der untergeordneten Eigenschaft, die Sie entfernen möchten |
-| <*child-property*> | JaJa | String | Der Name der untergeordneten Eigenschaft, die entfernt werden soll |
+| <*parent-property*> | Ja | String | Der Name der übergeordneten Eigenschaft mit der untergeordneten Eigenschaft, die Sie entfernen möchten |
+| <*child-property*> | Ja | String | Der Name der untergeordneten Eigenschaft, die entfernt werden soll |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
@@ -3409,7 +3424,7 @@ Gibt die Eingaben und Ausgaben aller Aktionen zurück, die in der angegebenen be
 result('<scopedActionName>')
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*scopedActionName*> | Ja | String | Der Name der bereichsbezogenen Aktion, aus der die Eingaben und Ausgaben aller inneren Aktionen zurückgegeben werden sollen |
 ||||
@@ -3530,10 +3545,10 @@ Legt den Wert für eine Eigenschaft eines JSON-Objekts fest und gibt das aktuali
 setProperty(<object>, '<property>', <value>)
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*object*> | Ja | Object | Das JSON-Objekt, dessen Eigenschaft Sie festlegen möchten |
-| <*property*> | JaJa | String | Der Name der vorhandenen oder neuen Eigenschaft, die festgelegt werden soll |
+| <*property*> | Ja | String | Der Name der vorhandenen oder neuen Eigenschaft, die festgelegt werden soll |
 | <*value*> | Ja | Any | Der Wert, auf den die angegebene Eigenschaft festgelegt werden soll |
 |||||
 
@@ -3543,11 +3558,11 @@ Wenn Sie die untergeordnete Eigenschaft in einem untergeordneten Objekt festlege
 setProperty(<object>['<parent-property>'], '<parent-property>', setProperty(<object>['parentProperty'], '<child-property>', <value>))
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*object*> | Ja | Object | Das JSON-Objekt, dessen Eigenschaft Sie festlegen möchten |
-| <*parent-property*> | JaJa | String | Der Name der übergeordneten Eigenschaft mit der untergeordneten Eigenschaft, die Sie festlegen möchten |
-| <*child-property*> | JaJa | String | Der Name für die untergeordnete Eigenschaft, die festgelegt werden soll |
+| <*parent-property*> | Ja | String | Der Name der übergeordneten Eigenschaft mit der untergeordneten Eigenschaft, die Sie festlegen möchten |
+| <*child-property*> | Ja | String | Der Name für die untergeordnete Eigenschaft, die festgelegt werden soll |
 | <*value*> | Ja | Any | Der Wert, auf den die angegebene Eigenschaft festgelegt werden soll |
 |||||
 
@@ -3622,7 +3637,7 @@ Entfernt Elemente vom Anfang einer Sammlung und gibt *alle anderen* Elemente zur
 skip([<collection>], <count>)
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*collection*> | Ja | Array | Die Sammlung, aus der Sie Elemente entfernen möchten |
 | <*count*> | Ja | Integer | Eine positive ganze Zahl für die Anzahl von Elementen, die am Anfang entfernt werden sollen |
@@ -3653,10 +3668,10 @@ Gibt ein Array mit Teilzeichenfolgen, die durch Trennzeichen getrennt sind, basi
 split('<text>', '<delimiter>')
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*text*> | JaJa | String | Die Zeichenfolge, die auf Grundlage des angegebenen Trennzeichens in der ursprünglichen Zeichenfolge in Teilzeichenfolgen unterteilt wird |
-| <*delimiter*> | JaJa | String | Das Zeichen in der ursprünglichen Zeichenfolge, das als Trennzeichen verwendet wird |
+| <*text*> | Ja | String | Die Zeichenfolge, die auf Grundlage des angegebenen Trennzeichens in der ursprünglichen Zeichenfolge in Teilzeichenfolgen unterteilt wird |
+| <*delimiter*> | Ja | String | Das Zeichen in der ursprünglichen Zeichenfolge, das als Trennzeichen verwendet wird |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
@@ -3684,9 +3699,9 @@ Gibt den Beginn des Tages für einen Zeitstempel zurück.
 startOfDay('<timestamp>', '<format>'?)
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*timestamp*> | JaJa | String | Die Zeichenfolge, die den Zeitstempel enthält |
+| <*timestamp*> | Ja | String | Die Zeichenfolge, die den Zeitstempel enthält |
 | <*format*> | Nein | String | Entweder ein [einzelner Formatbezeichner](/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT hh:mm:ss:fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. |
 |||||
 
@@ -3715,9 +3730,9 @@ Gibt den Beginn der Stunde für einen Zeitstempel zurück.
 startOfHour('<timestamp>', '<format>'?)
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*timestamp*> | JaJa | String | Die Zeichenfolge, die den Zeitstempel enthält |
+| <*timestamp*> | Ja | String | Die Zeichenfolge, die den Zeitstempel enthält |
 | <*format*> | Nein | String | Entweder ein [einzelner Formatbezeichner](/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT hh:mm:ss:fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. |
 |||||
 
@@ -3746,9 +3761,9 @@ Gibt den Beginn des Monats für einen Zeitstempel zurück.
 startOfMonth('<timestamp>', '<format>'?)
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*timestamp*> | JaJa | String | Die Zeichenfolge, die den Zeitstempel enthält |
+| <*timestamp*> | Ja | String | Die Zeichenfolge, die den Zeitstempel enthält |
 | <*format*> | Nein | String | Entweder ein [einzelner Formatbezeichner](/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT hh:mm:ss:fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. |
 |||||
 
@@ -3789,9 +3804,9 @@ Für diese Funktion wird die Groß-/Kleinschreibung nicht beachtet.
 startsWith('<text>', '<searchText>')
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*text*> | JaJa | String | Die Zeichenfolge, die überprüft werden soll |
+| <*text*> | Ja | String | Die Zeichenfolge, die überprüft werden soll |
 | <*searchText*> | Ja | String | Die beginnende Zeichenfolge, nach der gesucht werden soll |
 |||||
 
@@ -3830,7 +3845,7 @@ Gibt die Zeichenfolgenversion für einen Wert zurück.
 string(<value>)
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*value*> | Ja | Any | Der zu konvertierende Wert. Wenn dieser Wert NULL ist oder NULL ergibt, wird der Wert in einen leeren Zeichenfolgenwert (`""`) konvertiert. <p><p>Wenn Sie z. B. einer nicht vorhandenen Eigenschaft, auf die Sie mit dem `?`-Operator zugreifen können, eine Zeichenfolgenvariable zuweisen, wird der NULL-Wert in eine leere Zeichenfolge konvertiert. Das Vergleichen eines NULL-Werts ist jedoch nicht mit dem Vergleich einer leeren Zeichenfolge identisch. |
 |||||
@@ -3874,7 +3889,7 @@ Gibt das Ergebnis aus der Subtraktion der zweiten Zahl von der ersten Zahl zurü
 sub(<minuend>, <subtrahend>)
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*minuend*> | Ja | Integer oder Float | Die Zahl, von der *subtrahend* subtrahiert werden soll |
 | <*subtrahend*> | Ja | Integer oder Float | Die Zahl, die von *minuend* subtrahiert werden soll |
@@ -3906,9 +3921,9 @@ Indexwerte beginnen bei 0.
 substring('<text>', <startIndex>, <length>)
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*text*> | JaJa | String | Die Zeichenfolge, aus der die Zeichen zurückgegeben werden sollen |
+| <*text*> | Ja | String | Die Zeichenfolge, aus der die Zeichen zurückgegeben werden sollen |
 | <*startIndex*> | Ja | Integer | Eine positive Zahl gleich oder größer als 0, die Sie als Ausgangswert oder Indexwert verwenden können. |
 | <*length*> | Ja | Integer | Eine positive Anzahl von Zeichen, die in der Teilzeichenfolge enthalten sein sollen |
 |||||
@@ -3939,11 +3954,11 @@ Siehe auch [getPastTime](#getPastTime).
 subtractFromTime('<timestamp>', <interval>, '<timeUnit>', '<format>'?)
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*timestamp*> | JaJa | String | Die Zeichenfolge, die den Zeitstempel enthält |
+| <*timestamp*> | Ja | String | Die Zeichenfolge, die den Zeitstempel enthält |
 | <*interval*> | Ja | Integer | Die Anzahl der angegebenen Zeiteinheiten, die subtrahiert werden sollen |
-| <*timeUnit*> | JaJa | String | Die mit *interval* zu verwendende Zeiteinheit: Second, Minute, Hour, Day, Week, Month, Year |
+| <*timeUnit*> | Ja | String | Die mit *interval* zu verwendende Zeiteinheit: Second, Minute, Hour, Day, Week, Month, Year |
 | <*format*> | Nein | String | Entweder ein [einzelner Formatbezeichner](/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT hh:mm:ss:fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. |
 |||||
 
@@ -3983,7 +3998,7 @@ take('<collection>', <count>)
 take([<collection>], <count>)
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*collection*> | Ja | Zeichenfolge oder Array | Die Sammlung, aus der Sie Elemente abrufen möchten |
 | <*count*> | Ja | Integer | Eine positive ganze Zahl für die Anzahl von Elementen, die ab dem Anfang abgerufen werden sollen |
@@ -4018,9 +4033,9 @@ Gibt die Anzahl der Ticks zurück, bei denen es sich um 100-Nanosekunden-Interva
 ticks('<timestamp>')
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*timestamp*> | JaJa | String | Die Zeichenfolge für einen Zeitstempel |
+| <*timestamp*> | Ja | String | Die Zeichenfolge für einen Zeitstempel |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
@@ -4038,9 +4053,9 @@ Gibt eine Zeichenfolge in Kleinbuchstaben zurück. Gibt es für ein Zeichen in d
 toLower('<text>')
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*text*> | JaJa | String | Die Zeichenfolge, die in Kleinbuchstaben zurückgegeben werden soll |
+| <*text*> | Ja | String | Die Zeichenfolge, die in Kleinbuchstaben zurückgegeben werden soll |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
@@ -4068,9 +4083,9 @@ Gibt eine Zeichenfolge in Großbuchstaben zurück. Gibt es für ein Zeichen in d
 toUpper('<text>')
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*text*> | JaJa | String | Die Zeichenfolge, die in Großbuchstaben zurückgegeben werden soll |
+| <*text*> | Ja | String | Die Zeichenfolge, die in Großbuchstaben zurückgegeben werden soll |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
@@ -4137,9 +4152,9 @@ Gibt ein Array mit den Werten zurück, die mit einem Schlüsselnamen (key-Name) 
 triggerFormDataMultiValues('<key>')
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*key*> | JaJa | String | Der Name des Schlüssels, dessen Wert Sie abrufen möchten |
+| <*key*> | Ja | String | Der Name des Schlüssels, dessen Wert Sie abrufen möchten |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
@@ -4168,9 +4183,9 @@ Findet die Funktion mehrere Übereinstimmungen, löst sie einen Fehler aus.
 triggerFormDataValue('<key>')
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*key*> | JaJa | String | Der Name des Schlüssels, dessen Wert Sie abrufen möchten |
+| <*key*> | Ja | String | Der Name des Schlüssels, dessen Wert Sie abrufen möchten |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
@@ -4198,7 +4213,7 @@ Gibt den Textteil für einen bestimmten Teil einer Triggerausgabe zurück, die m
 triggerMultipartBody(<index>)
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*index*> | Ja | Integer | Der Indexwert des von Ihnen gewünschten Teils |
 |||||
@@ -4235,9 +4250,9 @@ Entfernt führende und nachfolgende Leerzeichen aus einer Zeichenfolge und gibt 
 trim('<text>')
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*text*> | JaJa | String | Die Zeichenfolge, in der sich die führenden und nachfolgende Leerzeichen befinden, die entfernt werden sollen |
+| <*text*> | Ja | String | Die Zeichenfolge, in der sich die führenden und nachfolgende Leerzeichen befinden, die entfernt werden sollen |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
@@ -4267,7 +4282,7 @@ union('<collection1>', '<collection2>', ...)
 union([<collection1>], [<collection2>], ...)
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*collection1*>, <*collection2*>, ...  | Ja | Array oder Objekt, aber nicht beide | Die Sammlungen, aus denen Sie *alle* Elemente wünschen |
 |||||
@@ -4299,7 +4314,7 @@ Obwohl beide Funktionen in gleicher Weise funktionieren, wird `uriComponent()` b
 uriComponent('<value>')
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*value*> | Ja | String | Die Zeichenfolge, die in das URI-codierte Format konvertiert werden soll |
 |||||
@@ -4329,7 +4344,7 @@ Gibt die binäre Version einer URI-Komponente (Uniform Resource Identifier) zur�
 uriComponentToBinary('<value>')
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*value*> | Ja | String | Die URI-codierte Zeichenfolge, die konvertiert werden soll |
 |||||
@@ -4364,7 +4379,7 @@ Gibt die Zeichenfolgenversion einer URI-codierten Zeichenfolge (Uniform Resource
 uriComponentToString('<value>')
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*value*> | Ja | String | Die URI-codierte Zeichenfolge, die decodiert werden soll |
 |||||
@@ -4394,7 +4409,7 @@ Gibt den Wert `host` für einen Uniform Resource Identifier (URI) zurück.
 uriHost('<uri>')
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*uri*> | Ja | String | Der URI, dessen `host`-Wert Sie abrufen möchten |
 |||||
@@ -4424,7 +4439,7 @@ Gibt den Wert `path` für einen Uniform Resource Identifier (URI) zurück.
 uriPath('<uri>')
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*uri*> | Ja | String | Der URI, dessen `path`-Wert Sie abrufen möchten |
 |||||
@@ -4454,7 +4469,7 @@ Gibt die den `path`- und den `query`-Wert für einen Uniform Resource Identifier
 uriPathAndQuery('<uri>')
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*uri*> | Ja | String | Der URI, dessen `path`- und `query`-Wert abgerufen werden sollen |
 |||||
@@ -4484,7 +4499,7 @@ Gibt den Wert `port` für einen Uniform Resource Identifier (URI) zurück.
 uriPort('<uri>')
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*uri*> | Ja | String | Der URI, dessen `port`-Wert Sie abrufen möchten |
 |||||
@@ -4514,7 +4529,7 @@ Gibt den Wert `query` für einen Uniform Resource Identifier (URI) zurück.
 uriQuery('<uri>')
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*uri*> | Ja | String | Der URI, dessen `query`-Wert Sie abrufen möchten |
 |||||
@@ -4544,7 +4559,7 @@ Gibt den Wert `scheme` für einen Uniform Resource Identifier (URI) zurück.
 uriScheme('<uri>')
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*uri*> | Ja | String | Der URI, dessen `scheme`-Wert Sie abrufen möchten |
 |||||
@@ -4577,7 +4592,7 @@ utcNow('<format>')
 Optional können Sie mit dem <*format*>-Parameter ein anderes Format angeben.
 
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*format*> | Nein | String | Entweder ein [einzelner Formatbezeichner](/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT hh:mm:ss:fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. |
 |||||
@@ -4619,9 +4634,9 @@ Gibt den Wert für eine angegebene Variable zurück.
 variables('<variableName>')
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*variableName*> | JaJa | String | Der Name der Variablen, deren Wert Sie abrufen möchten |
+| <*variableName*> | Ja | String | Der Name der Variablen, deren Wert Sie abrufen möchten |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
@@ -4650,7 +4665,7 @@ Gibt sämtliche Details zum Workflow selbst zur Laufzeit zurück.
 workflow().<property>
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*property*> | Nein | String | Der Name der Workfloweigenschaft, deren Wert Sie abrufen möchten <p>Ein Workflowobjekt hat diese Eigenschaften: **name**, **type**, **id**, **location** und **run**. Der Wert der **run**-Eigenschaft ist ebenfalls ein Objekt, das diese Eigenschaften hat: **name**, **type** und **id**. |
 |||||
@@ -4673,9 +4688,9 @@ Gibt die XML-Version einer Zeichenfolge zurück, die ein JSON-Objekt enthält.
 xml('<value>')
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*value*> | JaJa | String | Die Zeichenfolge mit dem JSON-Objekt, das konvertiert werden soll. <p>Das JSON-Objekt darf nur eine Stammeigenschaft haben, die kein Array sein darf. <br>Verwenden Sie den umgekehrten Schrägstrich (\\) als Escapezeichen für das doppelte Anführungszeichen ("). |
+| <*value*> | Ja | String | Die Zeichenfolge mit dem JSON-Objekt, das konvertiert werden soll. <p>Das JSON-Objekt darf nur eine Stammeigenschaft haben, die kein Array sein darf. <br>Verwenden Sie den umgekehrten Schrägstrich (\\) als Escapezeichen für das doppelte Anführungszeichen ("). |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
@@ -4731,7 +4746,7 @@ Dies ist das zurückgegebene XML-Objekt:
 xpath('<xml>', '<xpath>')
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*xml*> | Ja | Any | Die XML-Zeichenfolge, in der nach Knoten oder Werten gesucht werden soll, die mit einem XPath-Ausdruckswert übereinstimmen |
 | <*xpath*> | Ja | Any | Der XPath-Ausdruck, der für die Suche nach übereinstimmenden XML-Knoten oder -Werten verwendet wird |

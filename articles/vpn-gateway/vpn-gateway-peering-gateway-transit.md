@@ -1,6 +1,6 @@
 ---
 title: Konfigurieren des VPN-Gatewaytransits für ein Peering virtueller Netzwerke
-description: Konfigurieren Sie den VPN-Gatewaytransit für ein Peering virtueller Netzwerke.
+description: Konfigurieren des Gatewaytransits für ein Peering virtueller Netzwerke, um nahtlos zwei virtuelle Azure-Netzwerke zu Konnektivitätszwecken zu einem zu verbinden.
 services: vpn-gateway
 titleSuffix: Azure VPN Gateway
 author: yushwang
@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.date: 03/25/2018
 ms.author: yushwang
-ms.openlocfilehash: 05df14005bb52d67aed0f616854c7b6b55e6e35d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b5649c804cb21a221ca287711380c91846f55306
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84982891"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88031693"
 ---
 # <a name="configure-vpn-gateway-transit-for-virtual-network-peering"></a>Konfigurieren des VPN-Gatewaytransits für ein Peering virtueller Netzwerke
 

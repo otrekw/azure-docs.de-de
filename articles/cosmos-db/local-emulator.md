@@ -6,12 +6,12 @@ ms.topic: how-to
 author: markjbrown
 ms.author: mjbrown
 ms.date: 01/31/2020
-ms.openlocfilehash: e06a2eac5387cd02e95d8252ae04edc356683ed9
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 7a115de449588ea69951e6d997aa5332e5d55ad1
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86028244"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88119520"
 ---
 # <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>Verwenden des Azure Cosmos-Emulators für lokale Entwicklungs- und Testvorgänge
 
@@ -507,6 +507,8 @@ Verwenden Sie die folgenden Tipps zum Behandeln von Problemen mit dem Azure Cosm
 - Wenn ein Verbindungsproblem auftritt, [sammeln Sie Ablaufverfolgungsdateien](#trace-files), komprimieren sie und öffnen ein Supportticket im [Azure-Portal](https://portal.azure.com).
 
 - Wenn die Meldung **Dienst nicht verfügbar** angezeigt wird, bedeutet das, dass der Emulator den Netzwerkstapel möglicherweise nicht initialisieren kann. Überprüfen Sie, ob Sie den sicheren Pulse-Client oder den Juniper Networks-Client installiert haben. Die zugehörigen Treiber für Netzwerkfilter könnten das Problem verursachen. Durch Deinstallieren der Netzwerkfiltertreiber von Drittanbietern wird das Problem in der Regel behoben. Alternativ können Sie den Emulator auch mit „/DisableRIO“ starten, wodurch die Netzwerkkommunikation des Emulators auf reguläres Winsock umgeschaltet wird. 
+
+- Wenn **„Verboten“, „Nachricht“: „Anforderung erfolgt mit verbotener Verschlüsselung in Transitprotokoll oder Chiffre. Minimal zulässige Protokolleinstellung für Konto-SSL/TLS überprüfen...“** -Konnektivitätsprobleme angezeigt werden, könnte dies durch globale Änderungen im Betriebssystem (z. B. Insider Preview Build 20170) oder die Browsereinstellungen, die TLS 1.3 als Standard aktivieren, verursacht worden sein. Ein ähnlicher Fehler kann auftreten, wenn Sie das SDK verwenden, um eine Anforderung für den Cosmos-Emulator auszuführen, z. B. **Microsoft. Azure. Documents.DocumentClientException: Anforderung erfolgt mit verbotener Verschlüsselung in Transitprotokoll oder Chiffre. Minimal zulässige Protokolleinstellung für Konto-SSL/TLS überprüfen**. Dies wird zu diesem Zeitpunkt erwartet, da der Cosmos-Emulator nur das TLS 1.2-Protokoll akzeptiert und verwendet. Die empfohlene Problemumgehung ist die Änderung der Einstellungen und des Standards in TLS 1.2. Navigieren Sie beispielsweise im IIS-Manager zu „Sites“ -> „Standardwebsites“, suchen Sie nach „Sitebindungen“ für Port 8081, und bearbeiten Sie sie, um TLS 1.3 zu deaktivieren. Ein ähnlicher Vorgang kann für den Webbrowser über die Optionen „Einstellungen“ ausgeführt werden.
 
 - Wenn Ihr Computer während der Ausführung des Emulators in den Ruhezustand versetzt wird oder Betriebssystemupdates ausführt, wird möglicherweise die Meldung **Der Dienst ist zurzeit nicht verfügbar** angezeigt. Setzen Sie die Daten des Emulators zurück, indem Sie mit der rechten Maustaste auf das Symbol klicken, das im Windows-Infobereich angezeigt wird und **Daten zurücksetzen** auswählen.
 

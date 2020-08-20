@@ -1,6 +1,6 @@
 ---
 title: Überprüfen des Status von Azure Import/Export-Aufträgen | Microsoft-Dokumentation
-description: Informationen zum Anzeigen des Status der Import/Export-Aufträge und verwendeten Laufwerke.
+description: Informationen zum Anzeigen des Status der Azure Import/Export-Aufträge und verwendeten Laufwerke. Machen Sie sich mit den Faktoren vertraut, die sich auf die Verarbeitungsdauer eines Auftrags auswirken.
 author: alkohli
 services: storage
 ms.service: storage
@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/17/2018
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 7a000ab4a465e3b19efe6f2853bcd19dca47e440
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bf44b24b9222072bf5f1493b36b0dfcca24b5389
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85514135"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87923610"
 ---
 # <a name="view-the-status-of-azure-importexport-jobs"></a>Anzeigen des Status von Azure Import/Export-Aufträgen
 
@@ -63,7 +63,7 @@ Die folgende Tabelle beschreibt die Laufwerkfehlerstatus und die Aktionen, die f
 | Laufwerkstatus | Ereignis | Lösung / Nächster Schritt |
 |:--- |:--- |:--- |
 | NeverReceived | Ein Laufwerk mit der Kennzeichnung **NeverReceived** (da es im Rahmen des Versands des Auftrags nicht eingegangen ist) geht in einer anderen Sendung ein. | Das Betriebsteam verschiebt das Laufwerk nach **Empfangen**. |
-| – | Ein Laufwerk, das nicht Teil eines Auftrags ist, trifft als Teil eines anderen Auftrags im Rechenzentrum ein. | Das Laufwerk wird als zusätzliches Laufwerk gekennzeichnet und nach Abschluss des Auftrags, der dem Originalpaket zugeordnet ist, an Sie zurückgegeben. |
+| Nicht zutreffend | Ein Laufwerk, das nicht Teil eines Auftrags ist, trifft als Teil eines anderen Auftrags im Rechenzentrum ein. | Das Laufwerk wird als zusätzliches Laufwerk gekennzeichnet und nach Abschluss des Auftrags, der dem Originalpaket zugeordnet ist, an Sie zurückgegeben. |
 
 ## <a name="time-to-process-job"></a>Verarbeitungsdauer des Auftrags
 Der Zeitaufwand zum Verarbeiten eines Import/Export-Auftrags variiert basierend auf einer Reihe von Faktoren wie z.B.:

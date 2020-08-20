@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/26/2020
 ms.author: kumud
-ms.openlocfilehash: 0f277661ab61e7292fbb81d96c26c7d48c6d03ef
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 19c08029e78e68273298e76635136ff35ae724e0
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87087049"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87924120"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure Virtual Network – häufig gestellte Fragen
 
@@ -109,7 +109,7 @@ Ja. Subnetze können jederzeit zu VNETs hinzugefügt werden, sofern der Subnetza
 ### <a name="can-i-modify-the-size-of-my-subnet-after-i-create-it"></a>Kann die Größe des Subnetzes nach dessen Erstellung geändert werden?
 Ja. Sie können ein Subnetz hinzufügen, entfernen, erweitern oder verkleinern, wenn darin keine VMs oder Dienste bereitgestellt werden.
 
-### <a name="can-i-modify-subnets-after-i-created-them"></a>Können Subnetze nach dem Erstellen geändert werden?
+### <a name="can-i-modify-vnet-after-i-created-them"></a>Kann ein VNET nach dem Erstellen geändert werden?
 Ja. Sie können die in einem VNet verwendeten CIDR-Blöcke hinzufügen, entfernen und ändern.
 
 ### <a name="if-i-am-running-my-services-in-a-vnet-can-i-connect-to-the-internet"></a>Kann eine Verbindung mit dem Internet hergestellt werden, wenn Dienste in einem VNET ausgeführt werden?

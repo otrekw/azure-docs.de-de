@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 4/17/2020
+ms.date: 8/11/2020
 ms.author: swmachan
-ms.openlocfilehash: 2ddc3921c77f8861761ea37b8783e220c1242b97
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 6b211dd8ca735ea9ee4a5209aa6030398cca472e
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592269"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121016"
 ---
 # <a name="translator-v30"></a>Translator v3.0
 
@@ -147,11 +147,11 @@ Ein Authentifizierungstoken ist zehn Minuten lang gültig. Das Token sollte wied
 
 ## <a name="virtual-network-support"></a>Unterstützung von Virtual Network
 
-Der Übersetzerdienst ist jetzt in einigen Regionen (`WestUS2`, `EastUS`, `SouthCentralUS`, `WestUS`, `CentralUSEUAP` und `global`) mit Virtual Network-Funktionen verfügbar. Informationen zum Aktivieren von Virtual Network finden Sie unter [Konfigurieren von virtuellen Netzwerken für Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-virtual-networks?tabs=portal). 
+Der Translator-Dienst ist jetzt mit VNET-Funktionen (virtuelles Netzwerk) in allen Regionen der öffentlichen Azure-Cloud verfügbar. Informationen zum Aktivieren von Virtual Network finden Sie unter [Konfigurieren von virtuellen Netzwerken für Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-virtual-networks?tabs=portal). 
 
 Nachdem Sie diese Funktion aktiviert haben, müssen Sie den benutzerdefinierten Endpunkt zum Aufrufen von Translator verwenden. Die Verwendung des globalen Übersetzerendpunkts (api.cognitive.microsofttranslator.com) und die Authentifizierung mit einem Zugriffstoken sind nicht möglich.
 
-Den benutzerdefinierten Endpunkt können Sie ermitteln, nachdem Sie die [Übersetzerressource](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation) erstellt haben.
+Sie finden den benutzerdefinierten Endpunkt, nachdem Sie eine [Übersetzerressource](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation) erstellt und den Zugriff von ausgewählten Netzwerken und privaten Endpunkten zugelassen haben.
 
 |Header|BESCHREIBUNG|
 |:-----|:----|

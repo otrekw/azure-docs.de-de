@@ -1,7 +1,7 @@
 ---
 title: Verwalten von Nebenläufigkeit
 titleSuffix: Azure Storage
-description: Erfahren Sie, wie Sie Parallelität für die Blob-, Warteschlangen-, Tabellen- und Dateidienste verwalten.
+description: Erfahren Sie, wie Sie Parallelität für die Blob-, Warteschlangen-, Tabellen- und Dateidienste in Azure Storage verwalten. Machen Sie sich mit den drei wichtigsten Datenparallelitätsstrategien vertraut.
 services: storage
 author: tamram
 ms.service: storage
@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 12/20/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 099711bf09fc29a1168ca8ce73ea6ae93f810a08
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b1ec7661bc2823932328bd994ec7bc7f6167f13a
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85504286"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88030383"
 ---
 # <a name="managing-concurrency-in-microsoft-azure-storage"></a>Verwalten von Nebenläufigkeit Microsoft Azure Storage
 

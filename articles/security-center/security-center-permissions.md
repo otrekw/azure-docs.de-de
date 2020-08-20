@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/02/2020
 ms.author: memildin
-ms.openlocfilehash: 953881b0c576ad6ce12a4dc44bb0980edd7bcd50
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: e5728b220f12c3305aa896e64010fc7e5828d6fb
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85970551"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067221"
 ---
 # <a name="permissions-in-azure-security-center"></a>Berechtigungen in Azure Security Center
 
-Azure Security Center verwendet die [rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC)](../role-based-access-control/role-assignments-portal.md). Diese stellt [integrierte Rollen](../role-based-access-control/built-in-roles.md) bereit, die Benutzern, Gruppen und Diensten in Azure zugewiesen werden können.
+Security Center verwendet die [rollenbasierte Zugriffssteuerung von Azure (Azure-RBAC)](../role-based-access-control/role-assignments-portal.md). Diese stellt [integrierte Rollen](../role-based-access-control/built-in-roles.md) bereit, die Benutzern, Gruppen und Diensten in Azure zugewiesen werden können.
 
 Security Center bewertet die Konfiguration Ihrer Ressourcen, um die Sicherheitsprobleme und Sicherheitsrisiken zu identifizieren. In Security Center werden Ihnen nur dann Informationen zu einer Ressource angezeigt, wenn Ihnen für das Abonnement oder die Ressourcengruppe, der eine Ressource angehört, die Rolle „Besitzer“, „Mitwirkender“ oder „Leser“ zugewiesen ist.
 
@@ -45,7 +45,7 @@ In der folgenden Tabelle sind die Rollen und zulässigen Aktionen von Security C
 |Sicherheitsrichtlinie bearbeiten|-|✔|-|-|✔|
 |Initiativen hinzufügen/zuweisen (einschließlich Standards für die Einhaltung gesetzlicher Bestimmungen)|-|-|-|-|✔|
 |Tarif für Abonnement ändern|-|✔|-|-|✔|
-|Automatische Bereitstellung aktivieren/deaktivieren|-|✔|✔|-|✔|
+|Automatische Bereitstellung aktivieren/deaktivieren|-|✔|-|✔|✔|
 |Sicherheitsempfehlungen für eine Ressource anwenden</br> (und [Schnelle Problembehebung](security-center-remediate-recommendations.md#quick-fix-remediation) verwenden)|-|-|✔|✔|✔|
 |Warnungen verwerfen|-|✔|-|✔|✔|
 |Warnungen und Empfehlungen anzeigen|✔|✔|✔|✔|✔|

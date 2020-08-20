@@ -1,6 +1,6 @@
 ---
 title: Erste Schritte mit dem Web-Kartensteuerelement in Microsoft Azure Maps
-description: Hier erfahren Sie, wie Sie mit der clientseitigen JavaScript-Bibliothek des Web-Kartensteuerelements von Microsoft Azure Maps Karten und eingebettete Azure Maps-Funktionen in Ihrer Web- oder Mobilanwendung rendern können.
+description: Lernen Sie, wie Sie Web- und mobilen Anwendungen mithilfe der clientseitigen Kartensteuerelement-JavaScript-Bibliothek in Azure Maps Karten hinzufügen. Erfahren Sie, wie Sie Karten lokalisieren.
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 07/20/2020
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 40ae1492084430f7dbca331d1439b4ded099c866
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: e4309b3fdda1296aade19de2874e7f3423b9fc0f
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87287069"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88035954"
 ---
 # <a name="use-the-azure-maps-map-control"></a>Verwenden des Azure Maps-Kartensteuerelements
 
@@ -34,22 +34,22 @@ Sie können eine Karte in eine Webseite einbetten, indem Sie die clientseitige J
 
 1. Erstellen Sie eine neue HTML-Datei.
 
-2. Laden Sie das Azure Maps Web SDK. Sie können eine dieser beiden Optionen auswählen:
+2. Laden Sie das Azure Maps Web SDK. Sie können eine dieser beiden Optionen wählen:
 
     * Verwenden Sie die global gehostete CDN-Version des Azure Maps Web SDK, indem Sie Verweise auf JavaScript und Stylesheet dem Element `<head>` der HTML-Datei hinzufügen:
 
-        ```HTML
-        <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css">
-        <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.js"></script>
-        ```
+      ```html
+      <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css">
+      <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.js"></script>
+      ```
 
     * Laden Sie den Quellcode des Azure Maps Web SDK lokal mithilfe des NPM-Pakets [azure-maps-control](https://www.npmjs.com/package/azure-maps-control), und hosten Sie es mit Ihrer App. Dieses Paket enthält außerdem TypeScript-Definitionen.
 
-    > **npm install azure-maps-control**
+      > **npm install azure-maps-control**
 
     Fügen Sie dem `<head>`-Element der Datei Verweise auf das Azure Maps-Stylesheet hinzu:
 
-    ```HTML
+    ```html
     <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css" />
      ```
 

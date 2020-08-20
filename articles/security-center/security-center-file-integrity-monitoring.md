@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/13/2019
 ms.author: memildin
-ms.openlocfilehash: f3006bdd0cb90c22123c8db103a12ef3c0bee75a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 68d3646b4ebc3fc5dd5943186afdb75307dfd5ed
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86519336"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88042665"
 ---
 # <a name="file-integrity-monitoring-in-azure-security-center"></a>Überwachung der Dateiintegrität in Azure Security Center
 In dieser exemplarischen Vorgehensweise erfahren Sie, wie Sie die Überwachung der Dateiintegrität in Azure Security Center konfigurieren.
@@ -26,12 +26,16 @@ In dieser exemplarischen Vorgehensweise erfahren Sie, wie Sie die Überwachung d
 
 ## <a name="availability"></a>Verfügbarkeit
 
-- Status des Release: **Allgemein verfügbar**
-- Erforderliche Rollen: Der **Besitzer des Arbeitsbereichs** kann FIM aktivieren/deaktivieren (weitere Informationen finden Sie unter [Azure-Rolles für Log Analytics](https://docs.microsoft.com/services-hub/health/azure-roles#azure-roles)). **Leser** können Ergebnisse anzeigen.
-- Clouds:
-    - ✔ Kommerzielle Clouds
-    - ✔ US Gov-Cloud
-    - ✘ China Gov/andere Gov
+|Aspekt|Details|
+|----|:----|
+|Status des Release:|Allgemein verfügbar|
+|Preise:|Standard-Tarif|
+|Erforderliche Rollen und Berechtigungen:|Der **Besitzer des Arbeitsbereichs** kann FIM aktivieren/deaktivieren (weitere Informationen finden Sie unter [Azure-Rolles für Log Analytics](https://docs.microsoft.com/services-hub/health/azure-roles#azure-roles)).<br>**Leser** können Ergebnisse anzeigen.|
+|Clouds:|![Ja](./media/icons/yes-icon.png) Kommerzielle Clouds<br>![Ja](./media/icons/yes-icon.png) US Gov<br>![Nein](./media/icons/no-icon.png) China Gov/andere Gov-Clouds|
+|||
+
+
+
 
 
 ## <a name="what-is-fim-in-security-center"></a>Was ist die Überwachung der Dateiintegrität in Security Center?

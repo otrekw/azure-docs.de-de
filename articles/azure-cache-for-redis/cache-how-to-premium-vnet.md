@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 05/15/2017
-ms.openlocfilehash: f07e18498138d29497fa6ba85c5930a5a5f7ec4e
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: bf9ddc78caa1e19d35ad7e96af76dc0303a8a67c
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86184768"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88004740"
 ---
 # <a name="how-to-configure-virtual-network-support-for-a-premium-azure-cache-for-redis"></a>Konfigurieren der Unterstützung virtueller Netzwerke für Azure Cache for Redis vom Typ „Premium“
 Für Azure Cache for Redis stehen verschiedene Cacheangebote bereit, die Flexibilität bei der Auswahl von Cachegröße und -features bieten. Dazu zählen auch Features des Premium-Tarifs wie die Unterstützung für Clustering, Persistenz und virtuelle Netzwerke. Ein VNet ist ein privates Netzwerk in der Cloud. Wenn eine Azure Cache for Redis-Instanz mit einem VNET konfiguriert wird, ist dieses nicht öffentlich adressierbar, und auf das VNET kann nur über virtuelle Computer und Anwendungen innerhalb des VNET zugegriffen werden. In diesem Artikel erfahren Sie, wie Sie die Unterstützung eines virtuellen Netzwerks für eine Azure Cache for Redis-Instanz vom Typ „Premium“ konfigurieren.
@@ -20,8 +20,6 @@ Für Azure Cache for Redis stehen verschiedene Cacheangebote bereit, die Flexibi
 > Azure Cache for Redis unterstützt sowohl klassische als auch Ressourcen-Manager-VNETs.
 > 
 > 
-
-Weitere Informationen zu anderen Cachefeatures des Premium-Tarifs finden Sie unter [Einführung in den Premium-Tarif von Azure Cache for Redis](cache-premium-tier-intro.md).
 
 ## <a name="why-vnet"></a>Gründe für ein VNet
 Die Bereitstellung über [Azure Virtual Network (VNET)](https://azure.microsoft.com/services/virtual-network/) bietet ein höheres Maß an Sicherheit und Isolation sowohl für Ihre Azure Cache for Redis-Instanz als auch für Ihre Subnetze. Sie profitieren außerdem von Richtlinien für die Zugriffssteuerung sowie von weiteren Features zur Begrenzung des Zugriffs.
@@ -237,9 +235,9 @@ Hintergrundinformationen zu benutzerdefinierten Routen finden Sie in dieser [Üb
 Weitere Informationen über ExpressRoute finden Sie unter [ExpressRoute – technische Übersicht](../expressroute/expressroute-introduction.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
-Informationen zur Verwendung weiterer Funktionen des Premium-Caches finden Sie in den folgenden Artikeln.
+Erfahren Sie mehr über Azure Cache for Redis-Features.
 
-* [Einführung in den Premium-Tarif von Azure Cache for Redis](cache-premium-tier-intro.md)
+* [Premium-Dienstebenen für Azure Cache for Redis](cache-overview.md#service-tiers)
 
 <!-- IMAGES -->
 

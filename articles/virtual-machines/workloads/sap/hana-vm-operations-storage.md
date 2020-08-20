@@ -12,15 +12,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 06/30/2020
+ms.date: 08/11/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c1e0efc2c64a1cbdcc2c83c019f7743406054afe
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d5497f50f9e868338541143a18ab0c83f32c1d1b
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87074032"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080523"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>SAP HANA: Speicherkonfigurationen für virtuelle Azure-Computer
 
@@ -321,6 +321,44 @@ Daher könnten Sie für die ANF-Volumes einen ähnlichen wie den bereits für Di
 > Sie können die Größe der Azure NetApp Files-Volumes dynamisch anpassen, ohne die Bereitstellung der Volumes aufheben (`unmount`) oder die virtuellen Computer oder SAP HANA beenden zu müssen. Damit kann Ihre Anwendung sowohl den erwarteten als auch unvorhergesehenen Durchsatzanforderungen flexibel gerecht werden.
 
 Die Dokumentation zur Bereitstellung einer SAP HANA-Konfiguration für horizontale Skalierung mit Standbyknoten über NFS v4.1-Volumes, die in ANF gehostet werden, ist in [Horizontale SAP HANA-Skalierung mit Standbyknoten auf Azure-VMs mit Azure NetApp Files auf SUSE Linux Enterprise Server](./sap-hana-scale-out-standby-netapp-files-suse.md) veröffentlicht.
+
+
+## <a name="cost-conscious-solution-with-azure-premium-storage"></a>Kostengünstige Lösung mit Azure Storage Premium
+Bisher wurde die in diesem Dokument im Abschnitt [Lösungen mit Storage Premium und Azure-Schreibbeschleunigung für virtuelle Azure-Computer der M-Serie](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage#solutions-with-premium-storage-and-azure-write-accelerator-for-azure-m-series-virtual-machines) beschriebene Azure Storage Premium-Lösung für SAP HANA-Szenarien konzipiert, die für die Produktion unterstützt werden. Ein Merkmal der Konfigurationen, die für die Produktion unterstützt werden können, ist die Nutzung von zwei separaten Volumes für SAP HANA-Daten und -Wiederholungsprotokoll. Der Grund für eine solche Trennung ist, dass sich die Workloadmerkmale der Volumes unterscheiden. Mit den empfohlenen Produktionskonfigurationen könnten auch eine andere Art der Zwischenspeicherung oder sogar verschiedene Arten von Azure-Blockspeicher erforderlich sein. Die zur Produktion unterstützten Konfigurationen nutzen das Azure-Blockspeicherziel auch, um mit der [einzelnen VM-SLA für Azure Virtual Machines](https://azure.microsoft.com/support/legal/sla/virtual-machines/) kompatibel zu sein.  In Szenarien, die nicht für die Produktion bestimmt sind, gelten einige der Überlegungen für Produktionssysteme möglicherweise nicht für Low End-Systeme, die nicht für die Produktion bestimmt sind. In der Folge könnten das Daten- und Protokollvolume für HANA kombiniert werden. Wenn auch mit ein paar Schwachstellen, wie z. B. letztendlich einen bestimmten Durchsatz oder Latenz-KPIs nicht zu erreichen, die für Produktionssysteme erforderlich sind. Ein weiterer Aspekt bei der Reduzierung der Kosten in solchen Umgebungen kann die Verwendung von [Azure SSD Standard-Speicher](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide-storage#azure-standard-ssd-storage) sein. Obwohl diese Auswahl die [einzelne VM-SLA für Azure Virtual Machines](https://azure.microsoft.com/support/legal/sla/virtual-machines/) ungültig macht. 
+
+Eine kostengünstigere Alternative für derartige Konfigurationen könnte wie folgt aussehen:
+
+
+| VM-SKU | RAM | Maximal VM-E/A<br /> Throughput | „/hana/data“ und „/hana/log“<br /> Striping mit LVM oder MDADM | /hana/shared | /root volume | /usr/sap | comments |
+| --- | --- | --- | --- | --- | --- | --- | -- |
+| DS14v2 | 112 GiB | 768 MB/s | 4 x P6 | 1 x E10 | 1 x E6 | 1 x E6 | Erzielt keine Speicherlatenz unter 1 ms<sup>1</sup> |
+| E16v3 | 128 GB | 384 MB/s | 4 x P6 | 1 x E10 | 1 x E6 | 1 x E6 | VM-Typ nicht HANA-zertifiziert <br /> Erzielt keine Speicherlatenz unter 1 ms<sup>1</sup> |
+| M32ts | 192 GiB | 500 MB/s | 3 x P10 | 1 x E15 | 1 x E6 | 1 x E6 | Verwendung der Schreibbeschleunigung für kombiniertes Daten- und Protokollvolume beschränkt die IOPS-Rate auf 5.000<sup>2</sup> |
+| E20ds_v4 | 160 GiB | 480 MB/s | 4 x P6 | 1 x E15 | 1 x E6 | 1 x E6 | Erzielt keine Speicherlatenz unter 1 ms<sup>1</sup> |
+| E32v3 | 256 GiB | 768 MB/s | 4 x P10 | 1 x E15 | 1 x E6 | 1 x E6 | VM-Typ nicht HANA-zertifiziert <br /> Erzielt keine Speicherlatenz unter 1 ms<sup>1</sup> |
+| E32ds_v4 | 256 GiB | 768 MBit/s | 4 x P10 | 1 x E15 | 1 x E6 | 1 x E6 | Erzielt keine Speicherlatenz unter 1 ms<sup>1</sup> |
+| M32ls | 256 GiB | 500 MB/s | 4 x P10 | 1 x E15 | 1 x E6 | 1 x E6 | Verwendung der Schreibbeschleunigung für kombiniertes Daten- und Protokollvolume beschränkt die IOPS-Rate auf 5.000<sup>2</sup> |
+| E48ds_v4 | 384 GiB | 1\.152 MBit/s | 6 x P10 | 1 x E20 | 1 x E6 | 1 x E6 | Erzielt keine Speicherlatenz unter 1 ms<sup>1</sup> |
+| E64v3 | 432 GiB | 1\.200 MB/s | 6 x P10 | 1 x E20 | 1 x E6 | 1 x E6 | Erzielt keine Speicherlatenz unter 1 ms<sup>1</sup> |
+| E64ds_v4 | 504 GiB | 1200 MB/s |  7 x P10 | 1 x E20 | 1 x E6 | 1 x E6 | Erzielt keine Speicherlatenz unter 1 ms<sup>1</sup> |
+| M64ls | 512 GB | 1\.000 MB/s | 7 x P10 | 1 x E20 | 1 x E6 | 1 x E6 | Verwendung der Schreibbeschleunigung für kombiniertes Daten- und Protokollvolume beschränkt die IOPS-Rate auf 10.000<sup>2</sup> |
+| M64s | 1\.000 GiB | 1\.000 MB/s | 7 x P15 | 1 × E30 | 1 x E6 | 1 x E6 | Verwendung der Schreibbeschleunigung für kombiniertes Daten- und Protokollvolume beschränkt die IOPS-Rate auf 10.000<sup>2</sup> |
+| M64ms | 1\.750 GiB | 1\.000 MB/s | 6 x P20 | 1 × E30 | 1 x E6 | 1 x E6 | Verwendung der Schreibbeschleunigung für kombiniertes Daten- und Protokollvolume beschränkt die IOPS-Rate auf 10.000<sup>2</sup> |
+| M128s | 2\.000 GiB | 2\.000 MB/s |6 x P20 | 1 × E30 | 1 x E10 | 1 x E6 | Verwendung der Schreibbeschleunigung für kombiniertes Daten- und Protokollvolume beschränkt die IOPS-Rate auf 20.000<sup>2</sup> |
+| M208s_v2 | 2\.850 GiB | 1\.000 MB/s | 4 x P30 | 1 × E30 | 1 x E10 | 1 x E6 | Verwendung der Schreibbeschleunigung für kombiniertes Daten- und Protokollvolume beschränkt die IOPS-Rate auf 10.000<sup>2</sup> |
+| M128ms | 3\.800 GiB | 2\.000 MB/s | 5 x P30 | 1 × E30 | 1 x E10 | 1 x E6 | Verwendung der Schreibbeschleunigung für kombiniertes Daten- und Protokollvolume beschränkt die IOPS-Rate auf 20.000<sup>2</sup> |
+| M208ms_v2 | 5\.700 GiB | 1\.000 MB/s | 4 x P40 | 1 × E30 | 1 x E10 | 1 x E6 | Verwendung der Schreibbeschleunigung für kombiniertes Daten- und Protokollvolume beschränkt die IOPS-Rate auf 10.000<sup>2</sup> |
+| M416s_v2 | 5\.700 GiB | 2\.000 MB/s | 4 x P40 | 1 × E30 | 1 x E10 | 1 x E6 | Verwendung der Schreibbeschleunigung für kombiniertes Daten- und Protokollvolume beschränkt die IOPS-Rate auf 20.000<sup>2</sup> |
+| M416ms_v2 | 11400 GiB | 2\.000 MB/s | 7 x P40 | 1 × E30 | 1 x E10 | 1 x E6 | Verwendung der Schreibbeschleunigung für kombiniertes Daten- und Protokollvolume beschränkt die IOPS-Rate auf 20.000<sup>2</sup> |
+
+
+<sup>1</sup> [Azure-Schreibbeschleunigung](../../linux/how-to-enable-write-accelerator.md) kann nicht mit den Ev4- und Ev4 VM-Familien verwendet werden. Aufgrund der Verwendung von Azure Storage Premium liegt die E/A-Latenzzeit nicht unter 1 ms.
+
+<sup>2</sup> Die VM-Familie unterstützt die [Azure-Schreibbeschleunigung](../../linux/how-to-enable-write-accelerator.md), aber der IOPS-Grenzwert der Schreibbeschleunigung könnte die IOPS-Fähigkeiten der Datenträgerkonfigurationen einschränken.
+
+Wenn Sie das Daten- und Protokollvolume für SAP Hana kombinieren, sollte für die Datenträger, die das Stripesetvolume bilden, kein Lese- oder Lese-/Schreibcache aktiviert sein.
+
+Es sind VM-Typen aufgelistet, die nicht mit SAP zertifiziert sind und als solche nicht im sogenannten [SAP HANA-Hardwareverzeichnis](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) aufgelistet sind. Laut Kundenfeedback wurden diese nicht aufgelisteten VM-Typen erfolgreich für einige nicht zur Produktion zählenden Aufgaben verwendet.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

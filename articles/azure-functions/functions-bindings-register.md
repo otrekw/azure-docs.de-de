@@ -5,16 +5,16 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 07/08/2019
 ms.author: cshoe
-ms.openlocfilehash: 2dde784e2f67266b2f6c6ccd7da20f01546bbda7
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: a045ef0fea70347f168e8ae0cc93e0c359f31dfa
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86506484"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88031120"
 ---
 # <a name="register-azure-functions-binding-extensions"></a>Registrieren von Bindungserweiterungen von Azure Functions
 
-In Azure Functions Version 2.x sind [Bindungen](./functions-triggers-bindings.md) als separate Pakete aus der Functions-Runtime verfügbar. Während .NET-Funktionen über NuGet-Pakete auf Bindungen zugreifen, ermöglichen Erweiterungsbundles anderen Funktionen den Zugriff auf alle Bindungen über eine Konfigurationseinstellung.
+Seit Azure Functions Version 2.x sind [Bindungen](./functions-triggers-bindings.md) als separate Pakete aus der Functions-Runtime verfügbar. Während .NET-Funktionen über NuGet-Pakete auf Bindungen zugreifen, ermöglichen Erweiterungsbundles anderen Funktionen den Zugriff auf alle Bindungen über eine Konfigurationseinstellung.
 
 Beachten Sie die folgenden Punkte im Zusammenhang mit Bindungserweiterungen:
 
@@ -24,30 +24,38 @@ Beachten Sie die folgenden Punkte im Zusammenhang mit Bindungserweiterungen:
 
 In der folgenden Tabelle ist angegeben, wann und wie Sie Bindungen registrieren.
 
-| Entwicklungsumgebung |Registrierung<br/> in Functions 1.x  |Registrierung<br/> in Functions 2.x  |
+| Entwicklungsumgebung |Registrierung<br/> in Functions 1.x  |Registrierung<br/> in Functions 3.x/2.x  |
 |-------------------------|------------------------------------|------------------------------------|
-|Azure-Portal|Automatic|Automatic|
+|Azure-Portal|Automatic|Automatic<sup>*</sup>|
 |Nicht zu .NET gehörende Sprachen oder lokale Azure Core Tools-Entwicklung|Automatic|[Verwenden von Azure Functions Core Tools und Erweiterungsbundles](#extension-bundles)|
 |C#-Klassenbibliothek mit Visual Studio 2019|[Verwendung von NuGet-Tools](#vs)|[Verwendung von NuGet-Tools](#vs)|
 |C#-Klassenbibliothek mit Visual Studio Code|–|[Verwendung der .NET Core-CLI](#vs-code)|
 
-## <a name="extension-bundles-for-local-development"></a><a name="extension-bundles"></a>Erweiterungsbündel für die lokale Entwicklung
+<sup>*</sup> Das Portal verwendet Erweiterungsbündel.
 
-Erweiterungsbündeln sind eine Bereitstellungstechnologie, mit der Sie Ihrer Funktions-App einen kompatiblen Satz mit Functions-Bindungserweiterungen hinzufügen können. Ein vordefinierter Satz von Erweiterungen wird beim Erstellen der App hinzugefügt. Da in einem Bündel definierte Erweiterungspakete miteinander kompatibel sind, ist dies für die Vermeidung von Konflikten zwischen Paketen hilfreich. Sie aktivieren Erweiterungsbündel in der Datei „host.json“ des Hosts der App.  
+## <a name="extension-bundles"></a><a name="extension-bundles"></a>Erweiterungsbündel
 
-Sie können Erweiterungsbündel mit Version 2.x und höheren Versionen der Functions-Runtime verwenden. Stellen Sie beim lokalen Entwickeln sicher, dass Sie die aktuelle Version der [Azure Functions Core Tools](functions-run-local.md#v2) verwenden.
+Mit Erweiterungsbündeln können Sie kompatible Bindungserweiterungen von Azure Functions Ihrer Funktions-App hinzufügen. Bei der Verwendung von Bündeln wird beim Erstellen der App ein vordefinierter Satz von Erweiterungen hinzugefügt. In einem Bündel definierte Erweiterungspakete werden auf ihre Kompatibilität miteinander überprüft, um Konflikte zwischen Paketen zu vermeiden. Mit Erweiterungsbündeln vermeiden Sie, .NET-Projektcode mit einem Nicht-.NET-Funktionsprojekt zu veröffentlichen. Sie aktivieren Erweiterungsbündel in der Datei „host.json“ des Hosts der App.  
 
-Nutzen Sie Erweiterungsbündel für die lokale Entwicklung mit Azure Functions Core Tools oder Visual Studio Code sowie bei der Remoteerstellung.
+Sie können Erweiterungsbündel mit Version 2.x und höheren Versionen der Functions-Runtime verwenden. 
 
-Wenn Sie keine Erweiterungsbündel verwenden, müssen Sie das .NET Core 2.x SDK auf Ihrem lokalen Computer installieren, bevor Sie Bindungserweiterungen installieren. Mit Erweiterungsbündeln wird diese Anforderung für die lokale Entwicklung beseitigt. 
+Nutzen Sie Erweiterungsbündel für die lokale Entwicklung mit Azure Functions Core Tools oder Visual Studio Code sowie bei der Remoteerstellung. Stellen Sie beim lokalen Entwickeln sicher, dass Sie die aktuelle Version der [Azure Functions Core Tools](functions-run-local.md#v2) verwenden. Erweiterungsbündel werden auch zum Entwickeln von Funktionen im Azure-Portal verwendet. 
+
+Wenn Sie keine Erweiterungsbündel verwenden, müssen Sie das .NET Core 2.x SDK auf Ihrem lokalen Computer installieren, bevor Sie [explizit Bindungserweiterungen installieren](#explicitly-install-extensions). Eine Datei „extensions.csproj“, die explizit die erforderlichen Erweiterungen definiert, wird dem Projekt hinzugefügt. Erweiterungsbündel heben diese Anforderungen für die lokale Entwicklung auf. 
 
 Um die Erweiterungsbündel zu verwenden, aktualisieren Sie die Datei *host.json* so, dass sie den folgenden Eintrag für `extensionBundle` enthält:
  
 [!INCLUDE [functions-extension-bundles-json](../../includes/functions-extension-bundles-json.md)]
 
-<a name="local-csharp"></a>
+## <a name="explicitly-install-extensions"></a>Explizites Installieren von Erweiterungen
 
-## <a name="c-class-library-with-visual-studio"></a><a name="vs"></a>C\#-Klassenbibliothek mit Visual Studio
+[!INCLUDE [functions-extension-register-core-tools](../../includes/functions-extension-register-core-tools.md)]
+
+## <a name="nuget-packages"></a><a name="local-csharp"></a>NuGet-Pakete
+
+Bei einem Projekt mit Funktionen, die auf der C#-Klassenbibliothek basieren, sollten Sie Erweiterungsbündel installieren, die speziell für Projekte entworfen wurden, die keiner Klasse zugeordnet sind. 
+
+### <a name="c-class-library-with-visual-studio"></a><a name="vs"></a>C\#-Klassenbibliothek mit Visual Studio
 
 In **Visual Studio** können Sie Pakete mithilfe des Befehls [Install-Package](/nuget/tools/ps-ref-install-package) aus der Paket-Manager-Konsole installieren, wie im folgenden Beispiel gezeigt wird:
 

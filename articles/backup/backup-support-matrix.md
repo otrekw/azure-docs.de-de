@@ -4,12 +4,12 @@ description: Enthält eine Zusammenfassung der Unterstützungseinstellungen und 
 ms.topic: conceptual
 ms.date: 02/17/2019
 ms.custom: references_regions
-ms.openlocfilehash: d75e7053bfff14fbcb6deeae48c48f09e3e9ac0d
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: f2f3d26f74c6227ad257c188d4088fd41fca7075
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87531879"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87922315"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Supportmatrix für Azure Backup
 
@@ -32,8 +32,8 @@ In der folgenden Tabelle werden die Features von Recovery Services-Tresoren besc
 **Feature** | **Details**
 --- | ---
 **Tresore im Abonnement** | Bis zu 500 Recovery Services-Tresore pro Abonnement.
-**Computer in einem Tresor** | Bis zu 1.000 virtuelle Azure-Computer pro Tresor.<br/><br/> Bis zu 50 MABS-Server können in einem einzigen Tresor registriert werden.
-**Datenquellen** | Die maximale Größe einer einzelnen [Datenquelle](./backup-azure-backup-faq.md#how-is-the-data-source-size-determined) ist 54.400 GB. Die Beschränkung gilt nicht für Sicherungen von Azure-VMs. Es gilt keine Beschränkung der Datenmenge, die in einem Tresor gesichert werden kann.
+**Computer in einem Tresor** | Bis zu 2.000 Datenquellen für alle Workloads (z. B. virtuelle Azure-Computer, SQL Server-VM, MABS-Server usw.) können in einem einzigen Tresor geschützt werden.<br><br>Bis zu 1.000 virtuelle Azure-Computer pro Tresor.<br/><br/> Bis zu 50 MABS-Server können in einem einzigen Tresor registriert werden.
+**Datenquellen** | Die maximale Größe einer einzelnen [Datenquelle](./backup-azure-backup-faq.md#how-is-the-data-source-size-determined) ist 54.400 GB. Diese Beschränkung gilt nicht für Sicherungen von Azure-VMs. Es gilt keine Beschränkung der Datenmenge, die in einem Tresor gesichert werden kann.
 **Sicherungen im Tresor** | **Virtuelle Azure-Computer:** Einmal täglich<br/><br/>**Per DPM/MABS geschützte Computer:** Zweimal pro Tag.<br/><br/> **Computer mit direkter Sicherung per MARS-Agent:** Dreimal pro Tag.
 **Sicherungen zwischen Tresoren** | Die Sicherung erfolgt innerhalb einer Region.<br/><br/> Sie benötigen einen Tresor in jeder Azure-Region, die VMs enthält, die Sie sichern möchten. Eine Sicherung in eine andere Region ist nicht möglich.
 **Verschieben von Tresoren** | Sie können Tresore zwischen Abonnements oder Ressourcengruppen innerhalb desselben Abonnements [verschieben](./backup-azure-move-recovery-services-vault.md). Das Verschieben von Tresoren zwischen Regionen wird hingegen nicht unterstützt.

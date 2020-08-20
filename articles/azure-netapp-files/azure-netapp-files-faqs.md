@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/27/2020
+ms.date: 08/11/2020
 ms.author: b-juche
-ms.openlocfilehash: 7c792ee9c56a044942bb2249a57f2615c72badee
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 29055da1ea8093d413691a41d38d6280f43f728a
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533137"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88134495"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Häufig gestellte Fragen zu Azure NetApp Files
 
@@ -177,6 +177,11 @@ Ein Volume mit dualem Protokoll unterstützt das NFS- und das SMB-Protokoll.  We
 
 Um den Fehler „Berechtigung verweigert“ zu vermeiden, sollten Sie sicherstellen, dass Windows Active Directory `pcuser` enthält, bevor Sie auf den Bereitstellungspunkt zugreifen. Wenn Sie `pcuser` hinzufügen, nachdem der Fehler „Berechtigung verweigert“ aufgetreten ist, müssen Sie 24 Stunden warten, bis der Cacheeintrag gelöscht wurde, bevor Sie erneut versuchen, auf das Volume zuzugreifen.
 
+### <a name="when-i-try-to-create-a-dual-protocol-volume-why-does-the-creation-process-fail-with-the-error-failed-to-validate-ldap-configuration-try-again-after-correcting-ldap-configuration"></a>Warum tritt beim Erstellungsprozess ein Fehler mit der Meldung „Fehler beim Überprüfen der LDAP-Konfiguration; versuchen Sie es noch mal, nachdem Sie die LDAP-Konfiguration korrigiert haben.“ auf, wenn ich versuche, ein Dual-Protokoll-Volume zu erstellen?  
+
+Der Zeigereintrag (PTR) des AD-Hostcomputers ist möglicherweise auf dem DNS-Server nicht vorhanden. Sie müssen eine Reverse-Lookupzone auf dem DNS-Server erstellen und dann einen PTR-Eintrag des AD-Hostcomputers in dieser Reverse-Lookupzone hinzufügen.
+
+Nehmen wir beispielsweise an, dass die IP-Adresse des AD-Computers `1.1.1.1`, der Hostname des AD-Computers (wie mit dem Befehl `hostname` gefunden) `AD1` und der Domänenname `myDomain.com` ist.  Der PTR-Eintrag, der der Reverse-Lookupzone hinzugefügt wurde, sollte `1.1.1.1` -> `AD1.myDomain.com` sein.
 
 ## <a name="capacity-management-faqs"></a>Häufig gestellte Fragen zur Kapazitätsverwaltung
 

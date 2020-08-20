@@ -10,12 +10,12 @@ ms.workload: data-services
 author: djpmsft
 ms.author: daperlov
 manager: anandsub
-ms.openlocfilehash: 923b3fbb617f46ba0551f6b21c384331559da2f9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 40fa6bce67aa6c5643e4a153da610dce65907b56
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85263244"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88036350"
 ---
 # <a name="roles-and-permissions-for-azure-data-factory"></a>Rollen und Berechtigungen für Azure Data Factory
 
@@ -26,17 +26,17 @@ Dieser Artikel beschreibt die Rollen, die zum Erstellen und Verwalten von Azure 
 
 ## <a name="roles-and-requirements"></a>Rollen und Anforderungen
 
-Damit Sie Data Factory-Instanzen erstellen können, muss das Benutzerkonto, mit dem Sie sich bei Azure anmelden, ein Mitglied der Rolle *Mitwirkender* oder *Besitzer* oder ein *Administrator* des Azure-Abonnements sein. Klicken Sie im Azure-Portal in der oberen rechten Ecke auf Ihren Benutzernamen und dann auf **Berechtigungen**, um Ihre Berechtigungen im Abonnement anzuzeigen. Wenn Sie Zugriff auf mehrere Abonnements besitzen, wählen Sie das entsprechende Abonnement aus. 
+Damit Sie Data Factory-Instanzen erstellen können, muss das Benutzerkonto, mit dem Sie sich bei Azure anmelden, ein Mitglied der Rolle *Mitwirkender*, *Besitzer* oder ein *Administrator* des Azure-Abonnements sein. Klicken Sie im Azure-Portal in der oberen rechten Ecke auf Ihren Benutzernamen und dann auf **Berechtigungen**, um Ihre Berechtigungen im Abonnement anzuzeigen. Wenn Sie Zugriff auf mehrere Abonnements besitzen, wählen Sie das entsprechende Abonnement aus. 
 
 Für das Erstellen und Verwalten von untergeordneten Ressourcen für Data Factory – z.B. Datasets, verknüpfte Dienste, Pipelines, Trigger und Integration Runtimes – gelten die folgenden Anforderungen:
-- Für das Erstellen und Verwalten von untergeordneten Ressourcen im Azure-Portal müssen Sie auf Ressourcengruppenebene oder höher Mitglied der Rolle **Mitwirkender von Data Factory** sein.
+- Für das Erstellen und Verwalten von untergeordneten Ressourcen im Azure-Portal müssen Sie auf **Ressourcengruppenebene** oder höher Mitglied der Rolle **Mitwirkender von Data Factory** sein.
 - Zum Erstellen und Verwalten von untergeordneten Ressourcen mit PowerShell oder dem SDK auf Ressourcenebene oder höher ist die Rolle **Mitwirkender** ausreichend.
 
 Eine Beispielanleitung zum Hinzufügen eines Benutzers zu einer Rolle finden Sie im Artikel [Hinzufügen oder Ändern von Azure-Administratorrollen, die das Abonnement oder die Dienste verwalten](../cost-management-billing/manage/add-change-subscription-administrator.md).
 
 ## <a name="set-up-permissions"></a>Einrichten von Berechtigungen
 
-Nachdem Sie eine Data Factory erstellt haben, möchten Sie wahrscheinlich anderen Benutzern das Arbeiten mit dieser Data Factory gestatten. Um anderen Benutzern Zugriff zu gewähren, müssen Sie diese Benutzer zur integrierten Rolle **Data Factory-Mitwirkender** in der Ressourcengruppe hinzufügen, die die Data Factory enthält.
+Nachdem Sie eine Data Factory erstellt haben, möchten Sie wahrscheinlich anderen Benutzern das Arbeiten mit dieser Data Factory gestatten. Um anderen Benutzern Zugriff zu gewähren, müssen Sie diese Benutzer zur integrierten Rolle **Data Factory-Mitwirkender** in der **Ressourcengruppe** hinzufügen, die die Data Factory enthält.
 
 ### <a name="scope-of-the-data-factory-contributor-role"></a>Geltungsbereich der Rolle „Data Factory-Mitwirkender“
 
@@ -50,7 +50,7 @@ Weitere Informationen zu dieser Rolle finden Sie unter [Mitwirkender von Data Fa
 
 ### <a name="resource-manager-template-deployment"></a>Resource Manager-Vorlagenbereitstellung
 
-Die Rolle **Data Factory-Mitwirkender** auf Ressourcengruppenebene oder höher ermöglicht Benutzern die Bereitstellung von Resource Manager-Vorlagen. Daher können Mitglieder dieser Rolle Resource Manager-Vorlagen verwenden, um sowohl Data Factorys also auch deren untergeordnete Ressourcen bereitzustellen, z.B. Datasets, verknüpfte Dienste, Pipelines, Trigger und Integration Runtimes. Die Mitgliedschaft in dieser Rolle ermöglicht den Benutzern allerdings nicht die Erstellung anderer Ressourcen.
+Die Rolle **Data Factory-Mitwirkender** auf Ressourcengruppenebene oder höher ermöglicht Benutzern die Bereitstellung von Resource Manager-Vorlagen. Daher können Mitglieder dieser Rolle Resource Manager-Vorlagen verwenden, um sowohl Data Factorys also auch deren untergeordnete Ressourcen bereitzustellen, z.B. Datasets, verknüpfte Dienste, Pipelines, Trigger und Integration Runtimes. Die Mitgliedschaft in dieser Rolle ermöglicht den Benutzern nicht die Erstellung anderer Ressourcen.
 
 Berechtigungen für Azure Repos und GitHub sind unabhängig von Data Factory-Berechtigungen. Daher kann ein Benutzer mit Berechtigungen für ein Repository, der nur Mitglied der Rolle „Leser“ ist, untergeordnete Data Factory-Ressourcen bearbeiten und Änderungen an das Repository committen, diese Änderungen aber nicht veröffentlichen.
 

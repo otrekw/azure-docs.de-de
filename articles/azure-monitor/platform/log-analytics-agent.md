@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 02/04/2020
-ms.openlocfilehash: 36b94f53d3a9113c3980c94c3b8eff0713f11814
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.date: 08/06/2020
+ms.openlocfilehash: d507db415a2438c97444ca008f0c9b182306242b
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87446534"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121526"
 ---
 # <a name="log-analytics-agent-overview"></a>Übersicht über den Log Analytics-Agent
 Der Azure Log Analytics-Agent wurde für die umfassende Verwaltung von virtuellen Computern in einer beliebigen Cloud, von lokalen Computern und von Computern entwickelt, die von [System Center Operations Manager](/system-center/scom/) überwacht werden. Die Windows- und Linux-Agents senden erfasste Protokolldaten aus verschiedenen Quellen an Ihren Log Analytics-Arbeitsbereich in Azure Monitor, ebenso wie individuelle Protokolle oder Metriken (gemäß Definition in einer Überwachungslösung). Der Log Analytics-Agent unterstützt auch Erkenntnisse und andere Dienste in Azure Monitor wie etwa [Azure Monitor für VMs](../insights/vminsights-enable-overview.md), [Azure Security Center](../../security-center/index.yml) und [Azure Automation](../../automation/automation-intro.md).
@@ -122,11 +122,19 @@ Beginnend mit den nach August 2018 veröffentlichten Versionen gelten folgende �
  - Ubuntu, Debian: `apt-get install -y python2`
  - SUSE: `zypper install -y python2`
 
-Die ausführbare python2-Datei muss mithilfe des folgenden Befehls mit dem Alias „python“ versehen werden:
+Die ausführbare python2-Datei muss mithilfe des folgenden Befehls mit dem Alias *python* versehen werden:
 
-```
-alternatives --set python `which python2`
-```
+1. Führen Sie den folgenden Befehl aus, um ggf. einen beliebigen aktuellen python-Alias anzuzeigen. Wenn dies der Fall ist, notieren Sie sich die Priorität für den nächsten Schritt.
+ 
+    ```
+    sudo update-alternatives ––display python
+    ```
+
+2. Führen Sie den folgenden Befehl aus. Ersetzen Sie *\<priority\>* durch eine Zahl, die größer als die Priorität eines vorhandenen Links ist, oder 1, wenn derzeit keine Links vorhanden sind.
+
+    ```
+    sudo update-alternatives --install /usr/bin/python python /usr/bin/python2 <priority>
+    ```
 
 ### <a name="supported-distros"></a>Unterstützte Verteilungen
 
@@ -166,7 +174,7 @@ Um die Sicherheit von Daten bei der Übertragung an Azure Monitor-Protokolle si
 
 
 ## <a name="sha-2-code-signing-support-requirement-for-windows"></a>Unterstützung der SHA-2-Codesignierung für Windows erforderlich
-Der Windows-Agent verwendet ab dem 17. August 2020 ausschließlich die SHA-2-Signierung. Diese Änderung betrifft Kunden, die den Log Analytics-Agent als Teil eines Azure-Diensts (Azure Monitor, Azure Automation, Azure-Updateverwaltung, Azure-Änderungsnachverfolgung, Azure Security Center, Azure Sentinel, Windows Defender ATP) auf einem älteren Betriebssystem verwenden. Die Änderung erfordert keine kundenseitige Aktion, es sei denn, Sie führen den Agent auf einer älteren Betriebssystemversion (Windows 7, Windows Server 2008 R2 und Windows Server 2008) aus. Kunden mit einer älteren Betriebssystemversion müssen vor dem 17. August 2020 die folgenden Aktionen auf ihren Computern durchführen, da die Agents andernfalls keine Daten mehr an ihre Log Analytics-Arbeitsbereiche senden:
+Der Windows-Agent verwendet ab dem 2. November 2020 ausschließlich die SHA-2-Signierung. Diese Änderung betrifft Kunden, die den Log Analytics-Agent als Teil eines Azure-Diensts (Azure Monitor, Azure Automation, Azure-Updateverwaltung, Azure-Änderungsnachverfolgung, Azure Security Center, Azure Sentinel, Windows Defender ATP) auf einem älteren Betriebssystem verwenden. Die Änderung erfordert keine kundenseitige Aktion, es sei denn, Sie führen den Agent auf einer älteren Betriebssystemversion (Windows 7, Windows Server 2008 R2 und Windows Server 2008) aus. Kunden mit einer älteren Betriebssystemversion müssen vor dem 2. November 2020 die folgenden Aktionen auf ihren Computern durchführen, da die Agents andernfalls keine Daten mehr an ihre Log Analytics-Arbeitsbereiche senden:
 
 1. Installieren Sie das neueste Service Pack für Ihr Betriebssystem. Folgende Service Pack-Versionen sind erforderlich:
     - Windows 7 SP1
@@ -194,7 +202,7 @@ Die folgende Tabelle enthält die Proxy- und Firewall-Konfigurationsinformatione
 |*.blob.core.windows.net |Port 443 |Ausgehend|Ja |
 |*.azure-automation.net |Port 443 |Ausgehend|Ja |
 
-Informationen zur Firewall, die für Azure Government erforderlich sind, finden Sie unter [Azure Government-Verwaltung](../../azure-government/compare-azure-government-global-azure.md#azure-monitor-logs). 
+Informationen zur Firewall, die für Azure Government erforderlich sind, finden Sie unter [Azure Government-Verwaltung](../../azure-government/compare-azure-government-global-azure.md#azure-monitor). 
 
 Wenn Sie den Azure Automation Hybrid Runbook Worker zum Herstellen einer Verbindung mit dem Automatisierungsdienst bzw. die Registrierung bei diesem nutzen möchten, um Runbooks oder Verwaltungslösungen in Ihrer Umgebung zu verwenden, muss dieser Zugriff auf die Portnummer und die unter [Konfigurieren Ihres Netzwerks für den Hybrid Runbook Worker](../../automation/automation-hybrid-runbook-worker.md#network-planning) beschriebenen URLs besitzen. 
 

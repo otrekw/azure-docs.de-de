@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/18/2018
 ms.author: sharadag
-ms.openlocfilehash: f57c0353989cfcf924042d202bd80a57b476507b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 249b2406f048709fd7e4f76f8272b3158708e5bb
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85322319"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056430"
 ---
 # <a name="monitoring-metrics-and-logs-in-azure-front-door"></a>Überwachung von Metriken und Protokollen in Azure Front Door
 
@@ -91,7 +91,7 @@ Front Door stellt derzeit Diagnoseprotokolle bereit (stündlicher Batch). Diagno
 | RulesEngineMatchNames | Die Namen der Regeln, mit denen die Anforderung übereinstimmte. |
 | SecurityProtocol | Die TLS-/SSL-Protokollversion, die von der Anforderung verwendet wird, oder NULL, wenn keine Verschlüsselung verwendet wird. |
 | SentToOriginShield | Boolesches Feld, das angibt, ob in der ersten Umgebung ein Cachefehler aufgetreten ist und die Anforderung an den regionalen Cache gesendet wurde. Ignorieren Sie dieses Feld, wenn die Routingregel eine Umleitung ist oder wenn das Zwischenspeichern nicht aktiviert ist. |
-| TimeTaken | Die Dauer der Aktion in Millisekunden. |
+| TimeTaken | Die Dauer vom ersten Byte der Anforderung an Front Door bis zum letzten Byte der Antwort in Sekunden. |
 | TrackingReference | Die eindeutige Verweiszeichenfolge zur Identifizierung einer Anforderung, die von der Front Door-Instanz verarbeitet wird. Diese wird auch als X-Azure-Ref-Header an den Client gesendet. Sie ist für die Suche nach Informationen in den Zugriffsprotokollen für eine bestimmte Anforderung erforderlich. |
 | UserAgent | Der vom Client verwendete Browsertyp |
 

@@ -1,6 +1,6 @@
 ---
 title: Azure CLI-Skriptbeispiel – Filtern des VM-Netzwerkdatenverkehrs | Microsoft-Dokumentation
-description: Verwenden eines Azure CLI-Skripts zum Filtern des ein- und ausgehenden Netzwerkdatenverkehrs von virtuellen Computern (VM).
+description: Verwenden eines Azure CLI-Skripts zum Filtern des ein- und ausgehenden Netzwerkdatenverkehrs von virtuellen Computern (VM) mit Front-End- und Back-End-Subnetzen.
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 07/07/2017
 ms.author: kumud
-ms.openlocfilehash: d685da261a917b2d7b6432da65d1c1600ca07961
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 61f2441d68954a167b9887a4dfd4b99a53c14166
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281649"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037217"
 ---
 # <a name="use-an-azure-cli-script-to-filter-inbound-and-outbound-vm-network-traffic"></a>Verwenden eines Azure CLI-Skripts zum Filtern ein- und ausgehenden VM-Netzwerkdatenverkehrsverkehrs
 

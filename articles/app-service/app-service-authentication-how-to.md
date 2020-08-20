@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie das Feature zur Authentifizierung und Autoris
 ms.topic: article
 ms.date: 07/08/2020
 ms.custom: seodec18
-ms.openlocfilehash: 747729b7cbb3dcce72eb36704b5965e8427b59e1
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: d69a75092f4ede5d5467357a7ac254be6e7c379b
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87424255"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88078392"
 ---
 # <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>Erweiterte Verwendung der Authentifizierung und Autorisierung in Azure App Service
 
@@ -17,8 +17,7 @@ Dieser Artikel zeigt, wie Sie die integrierte [Authentifizierung und Autorisieru
 
 Sehen Sie sich eines der folgenden Tutorials an, um sofort loszulegen:
 
-* [Tutorial: Umfassendes Authentifizieren und Autorisieren von Benutzern in Azure App Service (Windows)](app-service-web-tutorial-auth-aad.md)
-* [Tutorial: Umfassendes Authentifizieren und Autorisieren von Benutzern in Azure App Service für Linux](containers/tutorial-auth-aad.md)
+* [Tutorial: Umfassendes Authentifizieren und Autorisieren von Benutzern in Azure App Service](tutorial-auth-aad.md)
 * [Konfigurieren Ihrer App Service-Anwendung zur Verwendung der Azure Active Directory-Anmeldung](configure-authentication-provider-aad.md)
 * [Konfigurieren Ihrer App Service-Anwendung zur Verwendung der Facebook-Anmeldung](configure-authentication-provider-facebook.md)
 * [Konfigurieren Ihrer App Service-Anwendung zur Verwendung der Google-Anmeldung](configure-authentication-provider-google.md)
@@ -469,8 +468,68 @@ Im Folgenden finden Sie mögliche Konfigurationsoptionen in der Datei:
 }
 ```
 
+## <a name="pin-your-app-to-a-specific-authentication-runtime-version"></a>Anheften Ihrer App an eine bestimmte Authentifizierungsruntimeversion
+
+Wenn Sie die Authentifizierung/Autorisierung aktivieren, wird die Plattformmiddleware in Ihre HTTP-Anforderungspipeline eingefügt, wie in der [Featureübersicht](overview-authentication-authorization.md#how-it-works) beschrieben. Diese Plattformmiddleware wird im Rahmen der routinemäßigen Plattformupdates in regelmäßigen Abständen mit neuen Features und Verbesserungen aktualisiert. Standardmäßig wird Ihre Web- oder Funktions-App auf der neuesten Version dieser Plattformmiddleware ausgeführt. Diese automatischen Updates sind immer abwärtskompatibel. In dem seltenen Fall, dass dieses automatische Update ein Runtimeproblem bei Ihrer Web- oder Funktions-App verursacht, können Sie jedoch vorübergehend ein Rollback zur vorherigen Middlewareversion ausführen. In diesem Artikel wird erläutert, wie Sie eine App temporär einer bestimmten Version der Authentifizierungsmiddleware anheften.
+
+### <a name="automatic-and-manual-version-updates"></a>Automatische und manuelle Versionsupdates 
+
+Sie können Ihre App einer bestimmten Version der Plattformmiddleware anheften, indem Sie eine `runtimeVersion`-Einstellung für die App vornehmen. Ihre App wird immer auf der neuesten Version ausgeführt, es sei denn, Sie möchten sie explizit einer bestimmten Version anheften. Es werden mehrere Versionen gleichzeitig unterstützt. Wenn Sie sie einer ungültigen Version anheften, die nicht mehr unterstützt wird, verwendet Ihre App stattdessen die neueste Version. Um immer die neueste Version auszuführen, legen Sie `runtimeVersion` auf ~1 fest. 
+
+### <a name="view-and-update-the-current-runtime-version"></a>Anzeigen und Aktualisieren der aktuellen Runtimeversion
+
+Sie können die von der App verwendete Runtimeversion ändern. Die neue Runtimeversion sollte nach dem Neustart der App wirksam werden. 
+
+#### <a name="view-the-current-runtime-version"></a>Anzeigen der aktuellen Runtimeversion
+
+Sie können die aktuelle Version der Plattformauthentifizierungs-Middleware entweder mithilfe der Azure CLI oder über einen der built0-in-Versions-HTTP-Endpunkte in ihrer App anzeigen.
+
+##### <a name="from-the-azure-cli"></a>Über die Azure CLI
+
+Zeigen Sie mithilfe der Azure CLI die aktuelle Middlewareversion mit dem Befehl [az webapp auth show](https://docs.microsoft.com/cli/azure/webapp/auth?view=azure-cli-latest#az-webapp-auth-show) an.
+
+```azurecli-interactive
+az webapp auth show --name <my_app_name> \
+--resource-group <my_resource_group>
+```
+
+Ersetzen Sie in diesem Code `<my_app_name>` durch den Namen der App. Ersetzen Sie außerdem `<my_resource_group>` durch den Namen der Ressourcengruppe für Ihre App.
+
+Das Feld `runtimeVersion` wird in der CLI-Ausgabe angezeigt. Es ähnelt der folgenden Beispielausgabe, die zur besseren Lesbarkeit beschnitten wurde: 
+```output
+{
+  "additionalLoginParams": null,
+  "allowedAudiences": null,
+    ...
+  "runtimeVersion": "1.3.2",
+    ...
+}
+```
+
+##### <a name="from-the-version-endpoint"></a>Vom Versionsendpunkt
+
+Sie können auch über den /.auth/version-Endpunkt einer App die aktuelle Middlewareversion anzeigen, auf der die App ausgeführt wird. Es ähnelt der folgenden Beispielausgabe:
+```output
+{
+"version": "1.3.2"
+}
+```
+
+#### <a name="update-the-current-runtime-version"></a>Aktualisieren der aktuellen Runtimeversion
+
+Mithilfe der Azure CLI können Sie die `runtimeVersion`-Einstellung in der App mit dem Befehl [az webapp auth update](https://docs.microsoft.com/cli/azure/webapp/auth?view=azure-cli-latest#az-webapp-auth-update) aktualisieren.
+
+```azurecli-interactive
+az webapp auth update --name <my_app_name> \
+--resource-group <my_resource_group> \
+--runtime-version <version>
+```
+
+Ersetzen Sie `<my_app_name>` durch den Namen Ihrer App. Ersetzen Sie außerdem `<my_resource_group>` durch den Namen der Ressourcengruppe für Ihre App. Ersetzen Sie außerdem `<version>` durch eine gültige Version der Runtime 1.x oder durch `~1` für die aktuelle Version. Die Anmerkungen zu den verschiedenen Runtimeversionen finden Sie [hier] (https://github.com/Azure/app-service-announcements), um die Version zu ermitteln, der die App angeheftet werden soll.
+
+Sie können diesen Befehl an der [Azure Cloud Shell](../cloud-shell/overview.md) ausführen, indem Sie im vorangehenden Codebeispiel **Ausprobieren** auswählen. Sie können auch die [Azure-Befehlszeilenschnittstelle lokal](https://docs.microsoft.com/cli/azure/install-azure-cli) zum Ausführen dieses Befehls verwenden, nachdem Sie sich mit [az login](https://docs.microsoft.com/cli/azure/reference-index#az-login) angemeldet haben.
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Tutorial: Umfassendes Authentifizieren und Autorisieren von Benutzern (Windows)](app-service-web-tutorial-auth-aad.md)
-> [Tutorial: Umfassendes Authentifizieren und Autorisieren von Benutzern (Linux)](containers/tutorial-auth-aad.md)
+> [Tutorial: Umfassendes Authentifizieren und Autorisieren von Benutzern in Azure App Service](tutorial-auth-aad.md)

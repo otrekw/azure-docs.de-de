@@ -3,12 +3,12 @@ title: Unterstützungsmatrix für VMware- oder physische Notfallwiederherstellun
 description: Fasst die Unterstützung der Notfallwiederherstellung von VMware-VMs und physische Server in Azure mit Azure Site Recovery zusammen.
 ms.topic: conceptual
 ms.date: 07/14/2020
-ms.openlocfilehash: c7eebfee771a9c65901bd89336e49c026a944a65
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 7bb4422eb17353dc4e1895de8dcb2c427c6d0d15
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86528858"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88079398"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>Unterstützungsmatrix für die Notfallwiederherstellung von virtuellen VMware-Computern und physischen Servern in Azure
 
@@ -91,7 +91,7 @@ Linux: CentOS | 5.2 bis 5.11</b><br/> 6.1 bis 6.10</b><br/> 7.0 bis 7.8<br/> <br
 Ubuntu | Ubuntu 14.04 LTS Server [(Überprüfen Sie die unterstützen Kernel-Versionen)](#ubuntu-kernel-versions)<br/><br/>Ubuntu 16.04 LTS Server [(Überprüfen Sie die unterstützen Kernel-Versionen)](#ubuntu-kernel-versions) </br> Ubuntu 18.04 LTS Server [(Überprüfen Sie die unterstützten Kernel-Versionen)](#ubuntu-kernel-versions)
 Debian | Debian 7/Debian 8 (bietet Unterstützung für alle 7. *x*, 8. *x*-Versionen) [(überprüften Sie die unterstützten Kernelversionen)](#debian-kernel-versions)
 SUSE Linux | SUSE Linux Enterprise Server 12 SP1, SP2, SP3, SP4, [SP5](https://support.microsoft.com/help/4570609) [(überprüfen Sie die unterstützten Kernelversionen)](#suse-linux-enterprise-server-12-supported-kernel-versions) <br/> SUSE Linux Enterprise Server 15, 15 SP1 [(Überprüfen Sie die unterstützten Kernelversionen)](#suse-linux-enterprise-server-15-supported-kernel-versions)<br/> SUSE Linux Enterprise Server 11 SP3 oder SUSE Linux Enterprise Server 11 SP4<br/> Das Upgrade replizierter Computer von SUSE Linux Enterprise Server 11 SP3 auf SP4 wird nicht unterstützt. Um ein Upgrade auszuführen, deaktivieren Sie die Replikation, und aktivieren Sie sie nach dem Upgrade erneut.
-Oracle Linux | 6.4, 6.5, 6.6, 6.7, 6.8, 6.9, 6.10, 7.0, 7.1, 7.2, 7.3, 7.4, 7.5, 7.6, [7.7](https://support.microsoft.com/help/4531426/update-rollup-42-for-azure-site-recovery) [7.8](https://support.microsoft.com/help/4573888/), [8.0](https://support.microsoft.com/help/4573888/), [8.1](https://support.microsoft.com/help/4573888/), [8.2](https://support.microsoft.com/help/4573888/) <br/><br/> Mit einem Red Hat-kompatiblen Kernel oder Unbreakable Enterprise Kernel Release 3, 4 und 5 (UEK3, UEK4, UEK5)
+Oracle Linux | 6.4, 6.5, 6.6, 6.7, 6.8, 6.9, 6.10, 7.0, 7.1, 7.2, 7.3, 7.4, 7.5, 7.6, [7.7](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery), [7.8](https://support.microsoft.com/help/4573888/), [8.0](https://support.microsoft.com/help/4573888/), [8.2](https://support.microsoft.com/help/4573888/)  <br/> Mit einem Red Hat-kompatiblen Kernel oder Unbreakable Enterprise Kernel Release 3, 4 und 5 (UEK3, UEK4, UEK5)<br/><br/>[8.1](https://support.microsoft.com/help/4573888/)<br/>Das Ausführen wird auf allen UEK-Kernels und RedHat-Kernels <= 3.10.0-1062.* unterstützt. Die Unterstützung für die restlichen RedHat-Kernels steht voraussichtlich ab Ende August in 9.36 zur Verfügung.
 
 > [!Note]
 > Für jede Windows-Version unterstützt Azure Site Recovery nur [LTSC-Builds (Long-Term Servicing Channel)](/windows-server/get-started-19/servicing-channels-19#long-term-servicing-channel-ltsc).  [Halbjährliche Kanalreleases](/windows-server/get-started-19/servicing-channels-19#semi-annual-channel) werden derzeit nicht unterstützt.
@@ -169,6 +169,9 @@ BTRFS | BTRFS wird ab [Update Rollup 34](https://support.microsoft.com/help/4490
 Größe des Datenträgers auf einer replizierten VM ändern | Wird vor einem Failover direkt in den VM-Eigenschaften der Quell-VM unterstützt. Es besteht keine Notwendigkeit, die Replikation zu deaktivieren bzw. erneut zu aktivieren.<br/><br/> Wenn Sie die Quell-VM nach einem Failover ändern, werden die Änderungen nicht erfasst.<br/><br/> Wenn Sie die Datenträgergröße der Azure-VM nach dem Failover ändern, erstellt Site Recovery beim Failback einen neuen virtuellen Computer mit den Aktualisierungen.
 Datenträger auf einer replizierten VM hinzufügen | Wird nicht unterstützt.<br/> Deaktivieren Sie die Replikation für die VM, fügen Sie den Datenträger hinzu, und aktivieren Sie dann erneut die Replikation.
 
+> [!NOTE]
+> Jede Änderung der Datenträgeridentität wird nicht unterstützt. Wenn z. B. die Datenträgerpartitionierung von GPT in MBR oder umgekehrt geändert wurde, wird die Datenträgeridentität dadurch nicht geändert. In einem solchen Szenario wird die Replikation unterbrochen und ein neues Setup ist erforderlich. 
+
 ## <a name="network"></a>Netzwerk
 
 **Komponente** | **Unterstützt**
@@ -229,7 +232,7 @@ Gast/Server – Datenträger ausschließen | Ja
 Gast-/Servermultipfad (MPIO) | Nein
 GPT-Partitionen von Gast/Server | Fünf Partitionen werden ab [Update Rollup 37](https://support.microsoft.com/help/4508614/) (Version 9.25 des Mobilitätsdiensts) unterstützt. Bisher wurden vier unterstützt.
 ReFS | Resilient File System (Robustes Dateisystem) wird ab Version 9.23 des Mobilitätsdiensts unterstützt.
-EFI-/UEFI-Start von Gast/Server | – Wird für alle [UEFI-Betriebssysteme in Azure Marketplace](https://docs.microsoft.com/azure/virtual-machines/windows/generation-2#generation-2-vm-images-in-azure-marketplace) mit Version 9.30 und höher des Mobilitäts-Agent von Site Recovery unterstützt <br/> – Sichere UEFI-Starttypen werden nicht unterstützt. [Weitere Informationen.](https://docs.microsoft.com/azure/virtual-machines/windows/generation-2#on-premises-vs-azure-generation-2-vms)
+EFI-/UEFI-Start von Gast/Server | – Wird für alle [UEFI-Betriebssysteme in Azure Marketplace](../virtual-machines/windows/generation-2.md#generation-2-vm-images-in-azure-marketplace) mit Version 9.30 und höher des Mobilitäts-Agent von Site Recovery unterstützt <br/> – Sichere UEFI-Starttypen werden nicht unterstützt. [Weitere Informationen.](../virtual-machines/windows/generation-2.md#on-premises-vs-azure-generation-2-vms)
 
 ## <a name="replication-channels"></a>Replikationskanäle
 

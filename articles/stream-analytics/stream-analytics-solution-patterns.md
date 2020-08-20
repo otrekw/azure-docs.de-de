@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
-ms.openlocfilehash: cb9c851ca33aa6eeb6d0fe0576f98ecb0693be02
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c3d487c1595a077ac8609813a41d15e28ede0e0b
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "86999305"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87903322"
 ---
 # <a name="azure-stream-analytics-solution-patterns"></a>Lösungsmuster in Azure Stream Analytics
 
@@ -86,17 +86,12 @@ Erfahrene Benutzer, die Onlinetraining und -bewertung in dieselbe Stream Analyti
 
 ![ASA – Machine Learning-App](media/stream-analytics-solution-patterns/machine-learning-app.png)
 
-## <a name="near-real-time-data-warehousing"></a>Data Warehousing nahezu in Echtzeit
+## <a name="real-time-data-warehousing"></a>Data Warehousing in Echtzeit
 
-Ein weiteres häufiges Muster ist das Data Warehousing in Echtzeit, auch als Streaming-Data Warehouse bezeichnet. Zusätzlich zu Ereignissen, die von Ihrer Anwendung bei Event Hubs und IoT Hub eintreffen, kann [Azure Stream Analytics auf IoT Edge](stream-analytics-edge.md) verwendet werden, um Anforderungen an Datenbereinigung, Reduzierung der Datenmenge sowie Datenspeicher und Weiterleitung zu erfüllen. Auf IoT Edge ausgeführt kann Stream Analytics Bandbreiteneinschränkungen und Verbindungsprobleme im System ordnungsgemäß behandeln. Der SQL-Ausgabeadapter kann für die Ausgabe an SQL Data Warehouse verwendet werden; allerdings ist der maximale Durchsatz auf 10MB/s beschränkt.
+Ein weiteres häufiges Muster ist das Data Warehousing in Echtzeit, auch als Streaming-Data Warehouse bezeichnet. Zusätzlich zu Ereignissen, die von Ihrer Anwendung bei Event Hubs und IoT Hub eintreffen, kann [Azure Stream Analytics auf IoT Edge](stream-analytics-edge.md) verwendet werden, um Anforderungen an Datenbereinigung, Reduzierung der Datenmenge sowie Datenspeicher und Weiterleitung zu erfüllen. Auf IoT Edge ausgeführt kann Stream Analytics Bandbreiteneinschränkungen und Verbindungsprobleme im System ordnungsgemäß behandeln. Stream Analytics kann beim Schreiben in Azure Synapse Analytics Durchsatzraten von bis zu 200 MB/s unterstützen.
 
 ![ASA – Data Warehousing](media/stream-analytics-solution-patterns/data-warehousing.png)
 
-Eine Möglichkeit, den Durchsatz mit einem Latenzkompromiss zu verbessern, ist, die Ereignisse in Azure Blob Storage zu archivieren und sie dann [mit Polybase in SQL Data Warehouse zu importieren](../synapse-analytics/sql-data-warehouse/load-data-from-azure-blob-storage-using-polybase.md). Sie müssen die Ausgabe von Stream Analytics in Blob Storage und die Eingabe aus Blob Storage in SQL Data Warehouse durch [Archivieren der Daten nach Zeitstempel](stream-analytics-custom-path-patterns-blob-storage-output.md) manuell zusammenfügen und in regelmäßigen Abständen importieren.
-
-Bei diesem Nutzungsmuster wird Azure Stream Analytics als eine nahezu in Echtzeit wirkende ETL-Engine verwendet. Neu ankommende Ereignisse werden kontinuierlich transformiert und für die Nutzung durch den nachgelagerten Analysedienst gespeichert.
-
-![ASA – Data Warehousing mit hohem Durchsatz](media/stream-analytics-solution-patterns/data-warehousing-high-throughput.png)
 
 ## <a name="archiving-real-time-data-for-analytics"></a>Archivieren von Echtzeitdaten für die Analyse
 

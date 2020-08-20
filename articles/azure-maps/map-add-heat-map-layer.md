@@ -1,6 +1,6 @@
 ---
 title: Hinzufügen einer Wärmebildebene zu einer Karte | Microsoft Azure Maps
-description: In diesem Artikel erfahren Sie, wie Sie einer Karte mithilfe des Microsoft Azure Maps Web SDK eine Wärmebildebene hinzufügen.
+description: Informationen zum Erstellen eines Wärmebilds. Erfahren Sie, wie Sie einer Karte mit dem Azure Maps Web SDK eine Wärmebildebene hinzufügen. Lernen Sie, Wärmebildebenen anzupassen.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 07/29/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-javascript
-ms.openlocfilehash: 2558f30c0d2d1e9d652efec1693e7f056426255b
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: a6235ee6bbb476c69114e6895403f05e69fd6e19
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87282907"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88010241"
 ---
 # <a name="add-a-heat-map-layer"></a>Hinzufügen einer Wärmebildebene
 

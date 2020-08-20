@@ -1,6 +1,6 @@
 ---
 title: Erstellen und Bereitstellen eines Clouddiensts| Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie einen Clouddienst über das Azure-Portal erstellen und bereitstellen.
+description: Erfahren Sie, wie Sie die Schnellerfassungsmethode zum Erstellen eines Clouddiensts und „Hochladen“ verwenden, um ein Clouddienstpaket in Azure hochzuladen und bereitzustellen.
 services: cloud-services
 documentationcenter: ''
 author: tgore03
@@ -8,12 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 05/18/2017
 ms.author: tagore
-ms.openlocfilehash: 63cf864a3f3b92728ad613ac45542bdbce2c9858
-ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
+ms.openlocfilehash: fca14ed4e3b338f9b49f949af7498dfd49990d3b
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80811342"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88142382"
 ---
 # <a name="how-to-create-and-deploy-a-cloud-service"></a>Erstellen und Bereitstellen eines Clouddiensts
 Das Azure-Portal bietet zwei Methoden zum Erstellen und Bereitstellen eines Clouddiensts: *Schnellerfassung* und *Benutzerdefiniert erstellen*.

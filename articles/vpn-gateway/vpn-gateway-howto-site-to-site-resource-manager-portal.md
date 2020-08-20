@@ -1,6 +1,6 @@
 ---
 title: 'Verbinden eines lokalen Netzwerks mit einem virtuellen Azure-Netzwerk: Site-to-Site-VPN: Portal'
-description: Schritte zum Erstellen einer IPsec-Verbindung zwischen Ihrem lokalen Netzwerk und einem virtuellen Azure-Netzwerk über das öffentliche Internet. Anhand dieser Schritte können Sie über das Portal eine standortübergreifende Site-to-Site-VPN Gateway-Verbindung erstellen.
+description: Erstellen einer IPsec-Site-to-Site-VPN-Gateway-Verbindung zwischen Ihrem lokalen Netzwerk und einem virtuellen Azure-Netzwerk über das öffentliche Internet im Portal.
 services: vpn-gateway
 titleSuffix: Azure VPN Gateway
 author: cherylmc
@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 03/03/2020
 ms.author: cherylmc
-ms.openlocfilehash: 601e31cde22942abd6d2bc7c5bdcbc5d97f5a591
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ebfd03935f5189a544f11e5b8bbdd4b46e2aa989
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84987662"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037064"
 ---
 # <a name="create-a-site-to-site-connection-in-the-azure-portal"></a>Erstellen einer Site-to-Site-Verbindung im Azure-Portal
 
@@ -45,12 +45,12 @@ In den Beispielen dieses Artikels werden die folgenden Werte verwendet. Sie kön
 
 * **Name des virtuellen Netzwerks**: VNet1
 * **Adressraum:** 10.1.0.0/16
-* **Abonnement:** Das Abonnement, das Sie verwenden möchten
+* **Abonnement:** Das zu verwendende Abonnement
 * **Ressourcengruppe:** TestRG1
 * **Region:** East US
-* **Subnetz:** Front-End: 10.1.0.0/24, Back-End: 10.1.1.0/24 (für diese Übung optional)
+* **Subnetz:** FrontEnd: 10.1.0.0/24, BackEnd: 10.1.1.0/24 (für diese Übung optional)
 * **Adressbereich für Gatewaysubnetz**: 10.1.255.0/27
-* **Name des Gateways des virtuellen Netzwerks:** VNet1GW
+* **Name des Gateways für virtuelle Netzwerke:** VNet1GW
 * **Öffentliche IP-Adresse:** VNet1GWpip
 * **VPN-Typ:** routenbasiert
 * **Verbindungstyp:** Site-to-Site (IPsec)

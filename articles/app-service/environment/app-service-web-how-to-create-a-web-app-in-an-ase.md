@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: ba94f15f21696c87b336dc1f17b6f9f9def75c6c
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 9359fe07818b3c5fbc08082cdf1f96195a7836ab
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86220693"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080608"
 ---
 # <a name="create-a-web-app-in-an-app-service-environment-v1"></a>Erstellen einer Web-App in einer App Service-Umgebung v1
 
@@ -24,7 +24,7 @@ ms.locfileid: "86220693"
 Dieses Tutorial zeigt, wie Sie Web-Apps und App Service-Pläne in einer [App Service-Umgebung v1](app-service-app-service-environment-intro.md) (App Service Environment, ASE) erstellen. 
 
 > [!NOTE]
-> Wenn Sie wissen möchten, wie eine Web-App erstellt wird, dies jedoch nicht in einer App Service-Umgebung durchführen möchten, finden Sie weitere Informationen unter [Erstellen einer .NET-Web-App](../app-service-web-get-started-dotnet.md) oder in einem der zugehörigen Tutorials für andere Sprachen und Frameworks.
+> Wenn Sie wissen möchten, wie eine Web-App erstellt wird, dies jedoch nicht in einer App Service-Umgebung durchführen möchten, finden Sie weitere Informationen unter [Erstellen einer .NET-Web-App](../quickstart-dotnetcore.md) oder in einem der zugehörigen Tutorials für andere Sprachen und Frameworks.
 > 
 > 
 
@@ -40,7 +40,7 @@ Bei diesem Tutorial wird vorausgesetzt, dass Sie eine App Service-Umgebung erste
     Achten Sie bei mehreren Abonnements darauf, dass Sie zum Erstellen einer App in Ihrer App Service-Umgebung dasselbe Abonnement verwenden müssen, das Sie beim Erstellen der App Service-Umgebung verwendet haben. 
 3. Wählen Sie eine Ressourcengruppe aus, oder erstellen Sie sie.
    
-    *Ressourcengruppen* ermöglichen Ihnen, verwandte Azure-Ressourcen als Einheit zu verwalten, und sind hilfreich beim Einrichten von *RBAC-Regeln* (Role-Based Access Control, rollenbasierte Zugriffssteuerung) für Ihre Apps. Weitere Informationen finden Sie unter [Übersicht über den Azure Resource Manager][ResourceGroups]. 
+    *Ressourcengruppen* ermöglichen Ihnen, verwandte Azure-Ressourcen als Einheit zu verwalten, und sind hilfreich beim Einrichten von Regeln für die *rollenbasierte Zugriffssteuerung von Azure (Azure RBAC)* für Ihre Apps. Weitere Informationen finden Sie unter [Übersicht über den Azure Resource Manager][ResourceGroups]. 
 4. Wählen Sie einen App Service-Plan aus, oder erstellen Sie einen.
    
     Bei *App Service-Plänen* handelt es sich um einen verwalteten Satz von Web-Apps.  Bei Auswählen der Preise gelten diese normalerweise nicht für die einzelnen Apps, sondern für den App Service-Plan. In einer ASE zahlen Sie für die zugeordneten Serverinstanzen, und nicht das, was in Ihrem ASP aufgelistet ist.  Um die Anzahl von Instanzen einer Web-App hochzuskalieren, skalieren Sie die Anzahl von Instanzen Ihres App Service-Plans hoch. Dies wirkt sich auf sämtliche Web-Apps innerhalb des betroffenen Plans aus.  Für einige Funktionen wie Websiteslots oder die VNET-Integration gelten innerhalb des Plans ebenfalls Mengenbeschränkungen.  Weitere Informationen hierzu finden Sie unter [Azure App Service-Pläne – Detaillierte Übersicht](../overview-hosting-plans.md).

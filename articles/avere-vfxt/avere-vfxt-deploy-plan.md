@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: rohogue
-ms.openlocfilehash: 6acc1ffd197ddba4290ff7c0751b259d98a70927
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: 995ac2776f4197dac1c2ef73fd209833474be5a5
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80754393"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87922675"
 ---
 # <a name="plan-your-avere-vfxt-system"></a>Planen des Avere vFXT-Systems
 
@@ -166,7 +166,7 @@ Beim Erstellen des Clusters können Sie auswählen, ob Sie eine öffentliche IP-
 
 ## <a name="vm-access-roles"></a>Rollen für den Zugriff auf virtuelle Computer
 
-Azure verwendet die [rollenbasierte Zugriffssteuerung](../role-based-access-control/index.yml) (RBAC), um die virtuellen Clustercomputer für die Ausführung bestimmter Aufgaben zu autorisieren. Für den Clustercontroller ist beispielsweise die Autorisierung zum Erstellen und Konfigurieren der Clusterknoten-VMs erforderlich. Die Clusterknoten müssen anderen Clusterknoten IP-Adressen zuweisen oder neu zuweisen können.
+Azure verwendet die [rollenbasierte Zugriffssteuerung von Azure (Azure RBAC)](../role-based-access-control/index.yml), um die virtuellen Clustercomputer für die Ausführung bestimmter Aufgaben zu autorisieren. Für den Clustercontroller ist beispielsweise die Autorisierung zum Erstellen und Konfigurieren der Clusterknoten-VMs erforderlich. Die Clusterknoten müssen anderen Clusterknoten IP-Adressen zuweisen oder neu zuweisen können.
 
 Für die virtuellen Avere vFXT-Computer werden zwei integrierte Azure-Rollen verwendet:
 

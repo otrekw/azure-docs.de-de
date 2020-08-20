@@ -13,16 +13,16 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 03/23/2020
 ms.author: mblythe
-ms.openlocfilehash: 9ead7eb19e49574073f038648ca1d247b2dab98f
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: b478272ff790121d914a51f8ee4c5cf250134f4d
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131700"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87923882"
 ---
 # <a name="share-azure-dashboards-by-using-role-based-access-control"></a>Freigeben von Azure-Dashboards mithilfe der rollenbasierter Zugriffssteuerung
 
-Nach der Konfiguration eines Dashboards können Sie es veröffentlichen und für andere Benutzer in Ihrer Organisation freigeben. Sie gewähren anderen Benutzern Zugriff auf Ihr Dashboard über [rollenbasierte Zugriffssteuerung](../role-based-access-control/role-assignments-portal.md) (RBAC) von Azure. Sie weisen einen Benutzer oder eine Gruppe von Benutzern einer Rolle zu. Mit dieser Rolle wird dann definiert, ob diese Benutzer das veröffentlichte Dashboard anzeigen oder ändern können.
+Nach der Konfiguration eines Dashboards können Sie es veröffentlichen und für andere Benutzer in Ihrer Organisation freigeben. Sie gewähren anderen Benutzern Zugriff auf Ihr Dashboard über [rollenbasierte Zugriffssteuerung (RBAC) von Azure](../role-based-access-control/role-assignments-portal.md). Sie weisen einen Benutzer oder eine Gruppe von Benutzern einer Rolle zu. Mit dieser Rolle wird dann definiert, ob diese Benutzer das veröffentlichte Dashboard anzeigen oder ändern können.
 
 Alle veröffentlichten Dashboards werden als Azure-Ressourcen implementiert. Sie sind als verwaltbare Elemente innerhalb Ihres Abonnements vorhanden und in einer Ressourcengruppe enthalten. Aus Sicht der Zugriffssteuerung unterscheiden sich Dashboards nicht von anderen Ressourcen, z.B. einem virtuellen Computer oder Speicherkonto.
 

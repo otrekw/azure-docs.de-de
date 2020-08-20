@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 5/6/2019
-ms.openlocfilehash: bee705e33267a765c1fb5300c0bfe2d04ff2015d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/17/2020
+ms.openlocfilehash: 544fabf9a32eaa7ef7457fc26ae9212b9fce9872
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85099645"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87837209"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-postgresql---single-server"></a>Verwenden von VNET-Dienstendpunkten und -Regeln für Azure Database for PostgreSQL – Einzelserver
 
@@ -25,8 +25,9 @@ Zum Erstellen einer VNET-Regel benötigen Sie ein [virtuelles Netzwerk][vm-virtu
 > Dieses Feature steht in allen Regionen der öffentlichen Azure-Cloud zur Verfügung, in denen Azure Database for PostgreSQL für universelle und arbeitsspeicheroptimierte Server bereitgestellt wird.
 > Wenn beim VNET-Peering der Datenverkehr über eine gemeinsame VNet Gateway-Instanz mit Dienstendpunkten fließt und an den Peer fließen soll, erstellen Sie eine ACL/VNET-Regel, damit Azure Virtual Machines im Gateway-VNET auf den Azure Database for PostgreSQL-Server zugreifen kann.
 
-<a name="anch-terminology-and-description-82f" />
+Sie können auch die Verwendung [Private Link](concepts-data-access-and-security-private-link.md) für Verbindungen in Erwägung ziehen. Private Link stellt eine private IP-Adresse in Ihrem VNET für den Azure Database for PostgreSQL-Server bereit.
 
+<a name="anch-terminology-and-description-82f"></a>
 ## <a name="terminology-and-description"></a>Terminologie und Beschreibung
 
 **Virtuelles Netzwerk:** Sie können Ihrem Azure-Abonnement virtuelle Netzwerke zuordnen.
@@ -38,12 +39,6 @@ Zum Erstellen einer VNET-Regel benötigen Sie ein [virtuelles Netzwerk][vm-virtu
 **VNET-Regel:** Eine VNET-Regel für Ihren Azure Database for PostgreSQL-Server ist ein Subnetz, das in der Zugriffssteuerungsliste Ihres Azure Database for PostgreSQL-Servers aufgeführt wird. Das Subnetz muss den Typnamen **Microsoft.Sql** enthalten, um in der Zugriffssteuerungsliste für Ihren Azure Database for PostgreSQL-Server zu sein.
 
 Eine VNET-Regel weist Ihren Azure Database for PostgreSQL-Server an, Nachrichten von jedem Knoten im Subnetz anzunehmen.
-
-
-
-
-
-
 
 <a name="anch-details-about-vnet-rules-38q"></a>
 
@@ -63,11 +58,6 @@ Sie können die IP-Option weiter nutzen, indem Sie eine *statische* IP-Adresse f
 
 Der Ansatz mit statischen IP-Adressen kann jedoch schwierig zu handhaben und aufwendig sein, wenn er in großem Maßstab befolgt wird. VNET-Regeln sind einfacher einzurichten und zu verwalten.
 
-### <a name="c-cannot-yet-have-azure-database-for-postgresql-on-a-subnet-without-defining-a-service-endpoint"></a>C. Zuweisen von Azure Database for PostgreSQL zu einem Subnetz noch nicht möglich
-
-Würde sich Ihr **Microsoft.Sql**-Server auf einem Knoten in einem Subnetz in Ihrem virtuellen Netzwerk befinden, könnten alle Knoten innerhalb des virtuellen Netzwerks mit Ihrem Azure Database for PostgreSQL-Server kommunizieren. Dann könnten auch Ihre virtuellen Computer mit der Azure Database for PostgreSQL-Instanz kommunizieren – ohne VNET- oder IP-Regeln.
-
-Allerdings gehört der Azure Database for PostgreSQL-Dienst noch nicht zu den Diensten, die einem Subnetz direkt zugewiesen werden können (Stand August 2018).
 
 <a name="anch-details-about-vnet-rules-38q"></a>
 
@@ -96,7 +86,7 @@ Bei der Verwaltung der VNET-Dienstendpunkte erfolgt eine Trennung von Sicherheit
 
 Die Rollen „Netzwerkadministrator“ und „Datenbankadministrator“ haben mehr Zugriffsrechte, als für die Verwaltung von VNET-Regeln erforderlich ist. Es wird nur eine Teilmenge der Zugriffsrechte benötigt.
 
-Sie können mit der [rollenbasierten Zugriffssteuerung (RBAC)][rbac-what-is-813s] in Azure arbeiten, um eine einzelne benutzerdefinierte Rolle zu erstellen, die nur über die benötigte Teilmenge von Zugriffsrechten verfügt. Die benutzerdefinierte Rolle kann definiert werden, anstatt den Netzwerk- oder Datenbankadministrator einzubeziehen. Die auf die Sicherheit bezogene Angriffsfläche ist kleiner, wenn Sie einen Benutzer einer benutzerdefinierte Rolle hinzufügen und ihn nicht den beiden anderen wichtigen Administratorrollen hinzufügen.
+Sie können die [rollenbasierte Zugriffssteuerung in Azure (Azure Role-Based Access Control, Azure RBAC)][rbac-what-is-813s] verwenden, um eine einzelne benutzerdefinierte Rolle zu erstellen, die nur über die erforderliche Teilmenge von Berechtigungen verfügt. Die benutzerdefinierte Rolle kann definiert werden, anstatt den Netzwerk- oder Datenbankadministrator einzubeziehen. Die auf die Sicherheit bezogene Angriffsfläche ist kleiner, wenn Sie einen Benutzer einer benutzerdefinierte Rolle hinzufügen und ihn nicht den beiden anderen wichtigen Administratorrollen hinzufügen.
 
 > [!NOTE]
 > In einigen Fällen befinden sich Azure Database for PostgreSQL und das VNET-Subnetz in unterschiedlichen Abonnements. In diesen Fällen müssen Sie folgende Konfigurationen sicherstellen:
@@ -120,6 +110,8 @@ Bei Azure Database for PostgreSQL gelten für VNET-Regeln folgende Einschränkun
 
 - VNET-Dienstendpunkte werden nur für Server vom Typ „Universell“ und „Arbeitsspeicheroptimiert“ unterstützt.
 
+- Wenn **Microsoft.Sql** in einem Subnetz aktiviert ist, weist dies darauf hin, dass Sie für Verbindungen nur VNET-Regeln nutzen möchten. [VNET-fremde Firewallregeln](concepts-firewall-rules.md) von Ressourcen in diesem Subnetz funktionieren nicht.
+
 - In der Firewall gelten zwar IP-Adressbereiche für die folgenden Netzwerkelemente, VNET-Regeln jedoch nicht:
     - [Virtuelles privates S2S-Netzwerk (Site-to-Site-VPN)][vpn-gateway-indexmd-608y]
     - Lokal über [ExpressRoute][expressroute-indexmd-744v]
@@ -132,7 +124,7 @@ Sie müssen IP-Netzwerkregeln für die öffentlichen IP-Adressen Ihrer Verbindun
 
 ## <a name="adding-a-vnet-firewall-rule-to-your-server-without-turning-on-vnet-service-endpoints"></a>Hinzufügen einer VNET-Firewallregel zu Ihrem Server ohne Aktivierung von VNET-Dienstendpunkten
 
-Allein das Festlegen einer Firewallregel trägt nicht zur Sicherung des Servers im VNET bei. Sie müssen auch VNET-Dienstendpunkte **aktivieren** , damit der Server gesichert wird. Wenn Sie Dienstendpunkte **aktivieren** , fällt das VNET-Subnetz solange aus, bis der Übergang von **„deaktiviert“** zu **„aktiviert“** abgeschlossen ist. Dies gilt vor allem für sehr umfangreiche VNETs. Mithilfe des Flags **IgnoreMissingServiceEndpoint** können Sie die Ausfallzeit während des Übergangs reduzieren bzw. vermeiden.
+Allein das Festlegen einer VNET-Firewallregel trägt nicht zur Sicherung des Servers im VNET bei. Sie müssen auch VNET-Dienstendpunkte **aktivieren** , damit der Server gesichert wird. Wenn Sie Dienstendpunkte **aktivieren** , fällt das VNET-Subnetz solange aus, bis der Übergang von **„deaktiviert“** zu **„aktiviert“** abgeschlossen ist. Dies gilt vor allem für sehr umfangreiche VNETs. Mithilfe des Flags **IgnoreMissingServiceEndpoint** können Sie die Ausfallzeit während des Übergangs reduzieren bzw. vermeiden.
 
 Verwenden Sie die Azure CLI oder das Azure-Portal, um das Flag **IgnoreMissingServiceEndpoint** festzulegen.
 

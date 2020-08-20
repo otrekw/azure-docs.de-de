@@ -6,13 +6,13 @@ ms.author: sidram
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
-ms.date: 03/12/2019
-ms.openlocfilehash: e9617018b06d4f62b49946ae5593bd51805355e0
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.date: 08/06/2020
+ms.openlocfilehash: b4e34befbf28de2b985ff49ce17a87a25842015e
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86044565"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87901690"
 ---
 # <a name="configuring-event-ordering-policies-for-azure-stream-analytics"></a>Konfigurieren von Richtlinien für die Ereignisreihenfolge in Azure Stream Analytics
 
@@ -75,6 +75,11 @@ Wenn mehrere Teile des gleichen Eingabedatenstroms kombiniert werden, ist die To
 Mit dieser Meldung werden Sie informiert, dass mindestens eine Partition in Ihrer Eingabe leer ist. Ihre Ausgabe verzögert sich somit um den Schwellenwert für die Eingangsverzögerung. Sie haben zwei Möglichkeiten, um das Problem zu beheben:  
 1. Stellen Sie sicher, dass alle Partitionen Ihres Event Hubs oder IoT Hubs Eingaben empfangen. 
 2. Verwenden Sie in Ihrer Abfrage die Klausel „Partition by PartitionId“. 
+
+## <a name="why-do-i-see-a-delay-of-5-seconds-even-when-my-late-arrival-policy-is-set-to-0"></a>Warum wird auch dann eine Verzögerung von 5 Sekunden angezeigt, wenn meine Richtlinie für Eingangsverzögerung auf 0 festgelegt ist?
+Dies geschieht, wenn eine Eingabepartition vorliegt, die nie Eingaben empfangen hat. Sie können die Eingabemetrik nach Partition überprüfen, um dieses Verhalten zu überprüfen. 
+
+Wenn eine Partition keine Daten für mehr als den konfigurierten Schwellenwert für die Eingangsverzögerung aufweist, verlegt Stream Analytics den Anwendungszeitstempel vor, wie im Abschnitt zu Überlegungen zur Ereignisreihenfolge erläutert. Dies erfordert die geschätzte Ankunftszeit. Wenn die Partition niemals Daten enthielt, schätzt Stream Analytics die Ankunftszeit nach der Formel *Ortszeit - 5 Sekunden*. Aufgrund dieser Partitionen, die niemals Daten enthielten, könnte eine Wasserzeichenverzögerung von 5 Sekunden angezeigt werden.  
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Grundlegendes zur Behandlung von Zeitangaben](stream-analytics-time-handling.md)

@@ -6,17 +6,17 @@ ms.assetid: e34d405e-c5d4-46ad-9b26-2a1eda86ce80
 ms.topic: article
 ms.date: 03/04/2016
 ms.custom: seodec18
-ms.openlocfilehash: d1595354803b0625137dd1ac45d17962063ce4e0
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: b3c8f6015b4627d86a0665865fba2f3fdd39589d
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87562445"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080710"
 ---
 # <a name="azure-app-service-local-cache-overview"></a>Übersicht über den lokalen Cache von Azure App Service
 
 > [!NOTE]
-> Lokaler Cache wird in Funktions-Apps oder containerisierten App Service-Apps nicht unterstützt, z. B. in [Windows-Containern](app-service-web-get-started-windows-container.md) oder in [App Service für Linux](containers/app-service-linux-intro.md).
+> Lokaler Cache wird in Funktions-Apps oder containerisierten App Service-Apps nicht unterstützt, z. B. in [Windows-Containern](quickstart-custom-container.md?pivots=container-windows) oder in [App Service für Linux](overview.md#app-service-on-linux).
 
 
 Azure App Service-Inhalt wird in Azure Storage gespeichert und dauerhaft als Inhaltsfreigabe bereitgestellt. Dieses Design ist auf den Einsatz mit einer Vielzahl von Apps ausgelegt und weist die folgenden Merkmale auf:  
@@ -36,7 +36,7 @@ Der lokale Cache von Azure App Service bietet eine Webrollenansicht Ihrer Inhalt
 
 ## <a name="how-the-local-cache-changes-the-behavior-of-app-service"></a>Auswirkung des lokalen Caches auf das Verhalten von App Service
 * _D:\home_ verweist auf den lokalen Cache, der beim Starten der App auf der VM-Instanz erstellt wird. _D:\local_ verweist weiterhin auf den temporären VM-spezifischen Speicher.
-* Der lokale Cache enthält eine einmalige Kopie der Ordner _/site_ und _/siteextensions_ des freigegebenen Inhaltsspeichers unter _D:\home\site_ bzw. _D:\home\siteextensions_. Die Dateien werden beim Starten der App in den lokalen Cache kopiert. Die Größe der beiden Ordner ist pro App standardmäßig auf 1 GB beschränkt, kann aber auf bis zu 2 GB erhöht werden. Beachten Sie, dass mit zunehmender Größe das Laden des Caches länger dauert. Wenn die kopierten Dateien die Größe des lokalen Caches überschreiten, ignoriert App Service den lokalen Cache im Hintergrund und führt Lesevorgänge in der Remotedateifreigabe durch.
+* Der lokale Cache enthält eine einmalige Kopie der Ordner _/site_ und _/siteextensions_ des freigegebenen Inhaltsspeichers unter _D:\home\site_ bzw. _D:\home\siteextensions_. Die Dateien werden beim Starten der App in den lokalen Cache kopiert. Die Größe der beiden Ordner ist pro App standardmäßig auf 1 GB beschränkt, kann aber auf bis zu 2 GB erhöht werden. Beachten Sie, dass mit zunehmender Größe das Laden des Caches länger dauert. Wenn Sie die Größe des lokalen Caches auf 2 GB heraufgesetzt haben und die kopierten Dateien das Maximum von 2 GB überschreiten, ignoriert App Service den lokalen Cache im Hintergrund und führt Lesevorgänge in der Remotedateifreigabe durch. Wenn kein Grenzwert definiert oder der Grenzwert auf einen niedrigeren Wert als 2 GB festgelegt ist und die kopierten Dateien den Grenzwert überschreiten, kann bei Bereitstellung oder Austausch ein Fehler auftreten.
 * Der lokale Cache bietet Lese- und Schreibzugriff. Änderungen werden jedoch verworfen, wenn die App zwischen virtuellen Computern verschoben oder neu gestartet wird. Verwenden Sie den lokalen Cache nicht für Apps, die unternehmenskritische Daten im Inhaltsspeicher speichern.
 * _D:\home\LogFiles_ und _D:\home\Data_ enthalten Protokolldateien und App-Daten. Die zwei Unterordner werden lokal auf der VM-Instanz gespeichert und regelmäßig in den freigegebenen Inhaltsspeicher kopiert. Apps können Protokolldateien und Daten speichern, indem sie diese in die jeweiligen Ordner schreiben. Das Kopieren in den freigegebenen Inhaltsspeicher erfolgt jedoch nach dem Prinzip der besten Leistung, daher können Protokolldateien und Daten aufgrund eines plötzlichen Absturzes einer VM-Instanz verloren gehen.
 * Das [Protokollstreaming](troubleshoot-diagnostic-logs.md#stream-logs) wird durch den bestmöglichen Kopiervorgang beeinträchtigt. Bei den gestreamten Protokollen kann es zu einer Verzögerung von bis zu einer Minute kommen.

@@ -1,18 +1,18 @@
 ---
 title: 'Azure-VPN Gateway: Konfigurationseinstellungen'
-description: Hier erhalten Sie Informationen zu VPN Gateway-Einstellungen für virtuelle Azure-Netzwerkgateways.
+description: Erfahren Sie mehr über VPN-Gateway-Ressourcen und -Einstellungen für ein virtuelles Netzwerk, das im Resource Manager-Bereitstellungsmodell erstellt wurde.
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 01/10/2020
 ms.author: cherylmc
-ms.openlocfilehash: d7a2040748d170b4e536df59947ea811f149d931
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6f801b94a16ae6fcee6896dd70510469c5e20098
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708143"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88036911"
 ---
 # <a name="about-vpn-gateway-configuration-settings"></a>Informationen zu VPN Gateway-Einstellungen
 

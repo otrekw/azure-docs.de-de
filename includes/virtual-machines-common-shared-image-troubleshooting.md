@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/15/2020
 ms.author: akjosh; cynthn
 ms.custom: include file
-ms.openlocfilehash: 7aad1eb10018445150fb5cf3ac01b97480da674b
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 52569f3cec26432970606b31fe831bb6459839d6
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86226443"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88010910"
 ---
 Wenn beim Ausführen von Vorgängen an Katalogen mit geteilten Images, Imagedefinitionen und Imageversionen Probleme auftreten, führen Sie den fehlgeschlagenen Befehl erneut im Debugmodus aus. Der Debugmodus wird aktiviert, indem Sie in der CLI den Switch `--debug` und in PowerShell den Switch `-Debug` übergeben. Nachdem Sie den Fehler lokalisiert haben, befolgen Sie dieses Dokument, um die Fehler zu behandeln.
 
@@ -76,7 +76,7 @@ Mögliche Ursachen:
 
 *Der Benutzer, der versucht, eine VM oder eine VM-Skalierungsgruppe zu erstellen, hat keinen Lesezugriff auf die Imageversion.*
 
-Wenden Sie sich an den Abonnementbesitzer und bitten Sie ihn,mittels [rollenbasierter Zugriffssteuerung](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles) (RBAC) den Lesezugriff auf die Imageversion oder die übergeordneten Ressourcen (z. B. den Katalog mit geteilten Images oder die Imagedefinition) zu gewähren. 
+Wenden Sie sich an den Abonnementbesitzer und bitten Sie ihn, mittels [rollenbasierter Zugriffssteuerung von Azure (Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles) den Lesezugriff auf die Imageversion oder die übergeordneten Ressourcen (z. B. den Katalog mit geteilten Images oder die Imagedefinition) zu gewähren. 
 
 *Die Imageversion wurde nicht gefunden.*
 
@@ -88,7 +88,7 @@ Wenden Sie sich an den Abonnementbesitzer und bitten Sie ihn,mittels [rollenbasi
 
 ## <a name="unable-to-share-resources"></a>Teilen von Ressourcen nicht möglich
 
-Das Teilen von Ressourcen aus Katalogen mit freigegebenen Images, Imagedefinitionen und Imageversionen zwischen Abonnements wird mithilfe der [rollenbasierten Zugriffssteuerung](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles) (Role-Based Access Control, RBAC) aktiviert. 
+Das Teilen von Ressourcen aus Katalogen mit freigegebenen Images, Imagedefinitionen und Imageversionen zwischen Abonnements wird mithilfe der [rollenbasierten Zugriffssteuerung von Azure (Role-Based Access Control, Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles) aktiviert. 
 
 ## <a name="replication-is-slow"></a>Replikation ist langsam
 
@@ -97,6 +97,3 @@ Verwenden Sie den Parameter **--expand ReplicationStatus**, um zu überprüfen, 
 ## <a name="azure-limits-and-quotas"></a>Azure-Grenzwerte und -Kontingente 
 
 [Azure-Grenzwerte und -Kontingente](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits) gelten für alle Katalog mit geteilten Images-, Imagedefinitions- und Imageversionsressourcen. Stellen Sie sicher, dass Sie die Grenzwerte für Ihre Abonnements einhalten. 
-
-
-

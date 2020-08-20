@@ -8,12 +8,12 @@ ms.author: jonfan
 ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 05/30/2017
-ms.openlocfilehash: 97399635399c12022006ac95e60c5828bf2a9dc5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6c07ab4b18c017bd29723d2640129b8e67374e3c
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76905437"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87837379"
 ---
 # <a name="migrate-your-apps-and-solutions-from-biztalk-services-to-azure-logic-apps"></a>Migrieren Ihrer Apps und Lösungen von BizTalk Services zu Azure Logic Apps
 
@@ -53,13 +53,13 @@ BizTalk Services verfügt über verschiedene Arten von Artefakten.
 
 BizTalk Services-Connectors erlauben das Senden und Empfangen von Daten über Bridges. Dazu gehören auch bidirektionale Bridges, die HTTP-basierte Anforderungs-/Antwort-Interaktionen ermöglichen. Logic Apps verwendet dieselbe Terminologie und besitzt Hunderte Connectors, die durch Herstellen einer Verbindung mit einer Vielzahl von Technologien und Diensten demselben Zweck dienen. Connectors sind z.B. für SaaS-und PaaS-Clouddienste wie OneDrive, Office 365, Dynamics CRM und viele mehr verfügbar, plus lokale Systeme über das On-Premises Data Gateway, das den BizTalk Adapter Service für BizTalk Services ersetzt. Die Quellen in BizTalk Services sind auf FTP, SFTP und das Abonnement für Service Bus-Warteschlangen oder -Themen beschränkt.
 
-![](media/logic-apps-move-from-mabs/sources.png)
+![Diagramm, das den BizTalk Services-Fluss zeigt.](media/logic-apps-move-from-mabs/sources.png)
 
 Jede Bridge verfügt standardmäßig über einen HTTP-Endpunkt, der mit der Laufzeitadresse und den relativen Adresseigenschaften der Bridge konfiguriert ist. Um dieselben Ergebnisse in Logic Apps zu erreichen, verwenden Sie die Aktionen [Anforderung und Antwort](../connectors/connectors-native-reqres.md).
 
 ## <a name="xml-processing-and-bridges"></a>XML-Verarbeitung und Bridges
 
-In BizTalk Services entspricht eine Bridge einer Verarbeitungspipeline. Eine Bridge kann die von einem Connector empfangenen Daten verarbeiten und dann die Ergebnisse an ein anderes System senden. Logic Apps ermöglicht dasselbe durch die Unterstützung derselben pipelinebasierten Interaktionsmuster wie BizTalk Services. Darüber hinaus werden noch andere Integrationsmuster bereitgestellt. Die [XML-Anforderungs-/Antwort-Bridge](https://msdn.microsoft.com/library/azure/hh689781.aspx) in BizTalk Services wird als VETER-Pipeline bezeichnet und umfasst Phasen, die folgende Aufgaben durchführen:
+In BizTalk Services entspricht eine Bridge einer Verarbeitungspipeline. Eine Bridge kann die von einem Connector empfangenen Daten verarbeiten und dann die Ergebnisse an ein anderes System senden. Logic Apps ermöglicht dasselbe durch die Unterstützung derselben pipelinebasierten Interaktionsmuster wie BizTalk Services. Darüber hinaus werden noch andere Integrationsmuster bereitgestellt. Die [XML-Anforderungs-/Antwort-Bridge](/previous-versions/azure/hh689781(v=azure.100)) in BizTalk Services wird als VETER-Pipeline bezeichnet und umfasst Phasen, die folgende Aufgaben durchführen:
 
 * Überprüfen (Validate – V)
 * Erweitern (E)
@@ -69,7 +69,7 @@ In BizTalk Services entspricht eine Bridge einer Verarbeitungspipeline. Eine Bri
 
 Diese Abbildung zeigt, wie die Verarbeitung zwischen Anforderung und Antwort aufgeteilt ist. Dies ermöglicht die getrennte Steuerung der Anforderungs- und Antwortpfade (z.B. mit unterschiedlichen Zuordnungen für jeden Pfad):
 
-![](media/logic-apps-move-from-mabs/xml-request-reply.png)
+![Screenshot, der zeigt, wie die Verarbeitung zwischen Anforderung und Antwort aufgeteilt wird.](media/logic-apps-move-from-mabs/xml-request-reply.png)
 
 Darüber hinaus fügt eine unidirektionale XML-Bridge Decodier- und Codierphasen am Anfang und Ende der Verarbeitung hinzu. Die Passthrough-Bridge enthält eine einzelne Erweiterungsphase.
 
@@ -91,7 +91,7 @@ In BizTalk Services werden während der Transformationsphase XML-basierte Nachri
 
 BizTalk Services trifft Routingentscheidungen anhand des Endpunkts bzw. Connectors, an den eingehende Nachrichten bzw. Daten gesendet werden sollen. Die Auswahl eines Endpunkts aus vorkonfigurierten Endpunkten ist mit der Filteroption für das Routing möglich:
 
-![](media/logic-apps-move-from-mabs/route-filter.png)
+![Screenshot, der die Filteroption für das Routing zeigt.](media/logic-apps-move-from-mabs/route-filter.png)
 
 Sofern nur zwei Optionen zur Verfügung stehen, erfolgt das Konvertieren von Routingfiltern in BizTalk Services am besten mithilfe einer *Bedingung*. Wenn es mehr als zwei sind, verwenden Sie einen **Switch**.
 
@@ -103,7 +103,7 @@ Bei der Verarbeitung in BizTalk Services werden dem Nachrichtenkontext, der den 
 
 ### <a name="run-custom-code"></a>Ausführen von benutzerdefiniertem Code
 
-Mit BizTalk Services können Sie [benutzerdefinierten Code ausführen](https://msdn.microsoft.com/library/azure/dn232389.aspx), der in Ihre eigenen Assemblys hochgeladen wurde. Diese Funktionalität wird über die [IMessageInspector](https://msdn.microsoft.com/library/microsoft.biztalk.services.imessageinspector)-Schnittstelle implementiert. Jede Phase in der Bridge enthält zwei Eigenschaften („On Enter Inspector“ und „On Exit Inspector“), die den .NET-Typ bereitstellen, den Sie erstellt haben und der diese Schnittstelle implementiert. Benutzerdefinierter Code ermöglicht ihnen die Ausführung komplexerer Verarbeitungsaufgaben mit den Daten sowie das Wiederverwenden vorhandenen Codes in Assemblys, mit denen allgemeine Geschäftslogik ausgeführt wird. 
+Mit BizTalk Services können Sie [benutzerdefinierten Code ausführen](/previous-versions/azure/dn232389(v=azure.100)), der in Ihre eigenen Assemblys hochgeladen wurde. Diese Funktionalität wird über die [IMessageInspector]()-Schnittstelle implementiert. Jede Phase in der Bridge enthält zwei Eigenschaften („On Enter Inspector“ und „On Exit Inspector“), die den .NET-Typ bereitstellen, den Sie erstellt haben und der diese Schnittstelle implementiert. Benutzerdefinierter Code ermöglicht ihnen die Ausführung komplexerer Verarbeitungsaufgaben mit den Daten sowie das Wiederverwenden vorhandenen Codes in Assemblys, mit denen allgemeine Geschäftslogik ausgeführt wird. 
 
 Logic Apps bietet zwei bevorzugte Möglichkeiten für das Ausführen von benutzerdefiniertem Code: Azure Functions und API-Apps. Mit Azure Functions können Funktionen erstellt und von Logic Apps aus aufgerufen werden. Weitere Informationen finden Sie unter [Hinzufügen und Ausführen von benutzerdefiniertem Code für Logik-Apps über Azure Functions](../logic-apps/logic-apps-azure-functions.md). Verwenden Sie API-Apps (eine Komponente von Azure App Service), um eigene Trigger und Aktionen zu erstellen. Weitere Informationen finden Sie unter [Erstellen einer benutzerdefinierten API zur Verwendung mit Logic Apps](../logic-apps/logic-apps-create-api-app.md). 
 

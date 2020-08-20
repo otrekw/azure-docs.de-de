@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 05/14/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 9658175b0d42db9acfc94d39e4ab226bfe2cfc4b
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: ee49ae905622b4b76d782f6a31e0c2333b6d54be
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86187318"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88055291"
 ---
 # <a name="manage-variables-in-azure-automation"></a>Verwalten von Variablen in Azure Automation
 
@@ -30,7 +30,7 @@ Automatisierungsvariablen sind in folgenden Szenarien hilfreich:
 
 Azure Automation speichert Variablen persistent und macht sie auch dann verfügbar, wenn die Ausführung eines Runbooks oder einer DSC-Konfiguration zu einem Fehler führt. Durch dieses Verhalten kann ein Runbook oder eine DSC-Konfiguration einen Wert festlegen, der dann bei der nächsten Ausführung von einem anderen Runbook bzw. vom selben Runbook oder derselben DSC-Konfiguration genutzt werden kann.
 
-Azure Automation speichert jede verschlüsselte Variable sicher. Beim Erstellen einer Variable können Sie die Verschlüsselung und den Speicher durch Azure Automation als sichere Ressource angeben. 
+Azure Automation speichert jede verschlüsselte Variable sicher. Beim Erstellen einer Variablen können Sie die Verschlüsselung und den Speicher durch Azure Automation als sichere Ressource angeben. Nachdem Sie die Variable erstellt haben, können Sie ihren Verschlüsselungsstatus nicht ändern, ohne die Variable neu erstellen zu müssen. Eine Azure Security Center-Empfehlung ist, alle Azure Automation-Variablen wie unter [Automation-Kontovariablen sollten verschlüsselt werden](../../security-center/recommendations-reference.md#recs-computeapp) beschrieben zu verschlüsseln. 
 
 >[!NOTE]
 >Zu den sicheren Objekten in Azure Automation gehören Anmeldeinformationen, Zertifikate, Verbindungen und verschlüsselte Variablen. Diese Objekte werden mithilfe eines eindeutigen Schlüssels verschlüsselt und in Azure Automation gespeichert, der für jedes Automation-Konto generiert wird. Azure Automation speichert den Schlüssel im vom System verwalteten Schlüsseltresor. Vor dem Speichern einer sicheren Ressource lädt Azure Automation den Schlüssel aus dem Schlüsseltresor und verwendet ihn dann zum Verschlüsseln der Ressource. 

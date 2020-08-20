@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 07/12/2020
 ms.author: memildin
-ms.openlocfilehash: a077e1dfd166051ad1cf16e42d11e8eeb61d2c91
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 88f1924f69aed350b39f953cb7503a0dde9ca9ad
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87419851"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056311"
 ---
 # <a name="secure-your-management-ports-with-just-in-time-access"></a>Sichern Ihrer Verwaltungsports mit Just-in-Time-Zugriff (JIT)
 
@@ -31,21 +31,14 @@ Auf dieser Seite erfahren Sie, wie Sie JIT in Ihr Sicherheitsprogramm einbinden.
 
 ## <a name="availability"></a>Verfügbarkeit
 
-- Status des Release: **Allgemeine Verfügbarkeit**
-- Preise: **Standard-Tarif** [Weitere Informationen zu Preisen](/azure/security-center/security-center-pricing)
-- Erforderliche Rollen und Berechtigungen:
-    - Die Rollen **Reader** und **SecurityReader** können sowohl den JIT-Status als auch die Parameter anzeigen.
-    - Informationen zur Erstellung benutzerdefinierter Rollen, die mit JIT arbeiten können, finden Sie unter [Welche Berechtigungen sind erforderlich, um JIT zu konfigurieren und zu verwenden?](just-in-time-explained.md#what-permissions-are-needed-to-configure-and-use-jit)
-    - Verwenden Sie das Skript [Set-JitLeastPrivilegedRole](https://github.com/Azure/Azure-Security-Center/tree/master/Powershell%20scripts/JIT%20Custom%20Role) von den GitHub-Communityseiten des Security Center, um für Benutzer, die JIT-Zugriff auf eine VM anfordern und keine anderen JIT-Operationen durchführen müssen, eine Rolle mit den geringsten Berechtigungen zu erstellen.
-- Unterstützte VMs: 
-    - ✔ Durch Azure Resource Manager bereitgestellte VMs.
-    - ✘ Mit klassischen Bereitstellungsmodellen bereitgestellte VMs. [Erfahren Sie mehr über diese Bereitstellungsmodelle](../azure-resource-manager/management/deployment-models.md).
-    - ✘ Durch Azure Firewall-Instanzen geschützte VMs, die von [Azure Firewall Manager](https://docs.microsoft.com/azure/firewall-manager/overview) gesteuert werden.
-- Clouds: 
-    - ✔ Kommerzielle Clouds
-    - ✔ National/Sovereign (US Gov, China Gov, andere Gov)
-
-
+|Aspekt|Details|
+|----|:----|
+|Status des Release:|Allgemeine Verfügbarkeit|
+|Preise:|Standard-Tarif|
+|Unterstützte VMs:|![Ja](./media/icons/yes-icon.png) Durch Azure Resource Manager bereitgestellte VMs.<br>![Nein](./media/icons/no-icon.png) Mit klassischen Bereitstellungsmodellen bereitgestellte VMs. [Erfahren Sie mehr über diese Bereitstellungsmodelle](../azure-resource-manager/management/deployment-models.md).<br>![Nein](./media/icons/no-icon.png) Durch Azure Firewall-Instanzen geschützte VMs, die von [Azure Firewall Manager](https://docs.microsoft.com/azure/firewall-manager/overview) gesteuert werden.|
+|Erforderliche Rollen und Berechtigungen:|Die Rollen **Reader** und **SecurityReader** können sowohl den JIT-Status als auch die Parameter anzeigen.<br>Informationen zur Erstellung benutzerdefinierter Rollen, die mit JIT arbeiten können, finden Sie unter [Welche Berechtigungen sind erforderlich, um JIT zu konfigurieren und zu verwenden?](just-in-time-explained.md#what-permissions-are-needed-to-configure-and-use-jit).<br>Verwenden Sie das Skript [Set-JitLeastPrivilegedRole](https://github.com/Azure/Azure-Security-Center/tree/master/Powershell%20scripts/JIT%20Custom%20Role) von den GitHub-Communityseiten des Security Center, um für Benutzer, die JIT-Zugriff auf eine VM anfordern und keine anderen JIT-Operationen durchführen müssen, eine Rolle mit den geringsten Berechtigungen zu erstellen.|
+|Clouds:|![Ja](./media/icons/yes-icon.png) Kommerzielle Clouds<br>![Ja](./media/icons/yes-icon.png) National/Sovereign (US Gov, China Gov, andere Gov)|
+|||
 
 
 ## <a name="enable-jit-vm-access"></a>Aktivieren des JIT-VM-Zugriffs <a name="jit-configure"></a>

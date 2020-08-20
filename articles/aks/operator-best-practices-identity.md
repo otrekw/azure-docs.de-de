@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: c7e8cd28380a86a671c74af03fa479abce5cfe25
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 0e11f345bfed287be3170df38a909ed24149b754
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86107137"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88010258"
 ---
 # <a name="best-practices-for-authentication-and-authorization-in-azure-kubernetes-service-aks"></a>Best Practices für die Authentifizierung und Autorisierung in Azure Kubernetes Service (AKS)
 
@@ -46,7 +46,7 @@ Mit Clustern mit Azure AD-Integration in AKS erstellen Sie *Rollen* oder *Cluste
 
 Wie Sie einen AKS-Cluster erstellen, der Azure AD verwendet, erfahren Sie unter [Integrieren von Azure Active Directory in Azure Kubernetes Service][aks-aad].
 
-## <a name="use-kubernetes-role-based-access-controls-rbac"></a>Verwenden der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) für Kubernetes
+## <a name="use-kubernetes-role-based-access-control-rbac"></a>Verwenden der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) für Kubernetes
 
 **Best Practice-Anleitung**: Verwenden Sie Kubernetes-RBAC zum Definieren der Berechtigungen von Benutzern oder Gruppen für Ressourcen im Cluster. Erstellen von Rollen und Bindungen, die die Mindestberechtigungen zuweisen. Führen Sie die Integration in Azure AD durch, sodass jede Änderung von Benutzerstatus oder Gruppenmitgliedschaft automatisch aktualisiert wird, und der Zugriff auf Clusterressourcen aktuell ist.
 
@@ -95,7 +95,7 @@ Für den vollständigen Betrieb eines AKS-Clusters sind zwei Zugriffsebenen erfo
 1. Zugriff auf die AKS-Ressource in Ihrem Azure-Abonnement. Mit dieser Zugriffsebene können Sie z. B. die Skalierung oder das Upgrade Ihres Clusters mithilfe der AKS-APIs steuern und kubeconfig pullen.
 Informationen zum Steuern des Zugriffs auf die AKS-Ressource und kubeconfig finden Sie unter [Beschränken des Zugriffs auf die Clusterkonfigurationsdatei](control-kubeconfig-access.md).
 
-2. Zugriff auf die Kubernetes-API. Diese Zugriffsebene wird entweder durch [Kubernetes RBAC](#use-kubernetes-role-based-access-controls-rbac) (herkömmlich) oder durch die Integration von Azure RBAC in AKS für die Kubernetes-Autorisierung gesteuert.
+2. Zugriff auf die Kubernetes-API. Diese Zugriffsebene wird entweder durch [Kubernetes RBAC](#use-kubernetes-role-based-access-control-rbac) (herkömmlich) oder durch die Integration von Azure RBAC in AKS für die Kubernetes-Autorisierung gesteuert.
 Informationen zur differenzierten Vergabe von Berechtigungen für die Kubernetes-API mit Azure RBAC finden Sie unter [Verwenden von Azure RBAC für Kubernetes-Autorisierung](manage-azure-rbac.md).
 
 ## <a name="use-pod-identities"></a>Verwenden von Podidentitäten

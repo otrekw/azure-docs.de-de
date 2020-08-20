@@ -1,6 +1,6 @@
 ---
 title: Verwalten des Azure Maps-Kontos im Azure-Portal | Microsoft Azure Maps
-description: In diesem Artikel erfahren Sie, wie Sie Ihr Microsoft Azure Maps-Konto über das Azure-Portal verwalten.
+description: Lernen Sie, wie Sie das Azure-Portal verwenden können, um ein Azure Maps-Konto zu verwalten. Erfahren Sie, wie Sie ein neues Konto erstellen und ein vorhandenes Konto löschen.
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 01/27/2020
@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 3317b063b5b05a57f08bbd15be827cd83075de34
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 5717e48683234e55638393d232d931bc50cb59b1
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87126957"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037319"
 ---
 # <a name="manage-your-azure-maps-account"></a>Verwalten Ihres Azure Maps-Kontos
 
 Sie können Ihr Azure Maps-Konto über das Azure-Portal verwalten. Sobald Sie über ein Konto verfügen, können Sie die APIs auf Ihrer Website oder in Ihrer mobilen Anwendung implementieren.
 
-Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), bevor Sie beginnen.
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
 ## <a name="create-a-new-account"></a>Erstellen eines neuen Kontos
 

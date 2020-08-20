@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 10/30/2019
+ms.date: 08/08/2020
 ms.author: jmprieur
-ms.custom: aaddev, tracking-python
-ms.openlocfilehash: 921015d6aa7acd840a4a231a899217daafe3525b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: aaddev, devx-track-python
+ms.openlocfilehash: 85c9bd3ecd5af861cfb93c18528416e06479ae93
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84558552"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88119180"
 ---
 # <a name="daemon-app-that-calls-web-apis---code-configuration"></a>Daemon-App, die Web-APIs aufruft – Codekonfiguration
 
@@ -54,6 +54,9 @@ Die Konfigurationsdatei definiert Folgendes:
 - Die Autorität oder die Cloudinstanz und die Mandanten-ID
 - Die Client-ID, die Sie bei der Anwendungsregistrierung erhalten haben
 - Ein geheimer Clientschlüssel oder ein Zertifikat
+
+> [!NOTE]
+> Die .NET-Codeausschnitte im Rest des Artikel verweisen auf [config](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/master/1-Call-MSGraph/daemon-console/AuthenticationConfig.cs) aus dem [active-directory-dotnetcore-daemon-v2](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2)-Beispiel.
 
 # <a name="net"></a>[.NET](#tab/dotnet)
 
@@ -286,7 +289,7 @@ X509Certificate2 certificate = ReadCertificate(config.CertificateName);
 app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
                                           .WithAuthority(new Uri(config.Authority))
                                           .WithClientClaims(certificate, claims)
-                                          .Build();```
+                                          .Build();
 ```
 
 Auch hierzu finden Sie ausführliche Informationen unter [Clientassertionen](msal-net-client-assertions.md).
@@ -330,16 +333,16 @@ ConfidentialClientApplication cca =
 # <a name="net"></a>[.NET](#tab/dotnet)
 
 > [!div class="nextstepaction"]
-> [Daemon app - acquiring tokens for the app (Daemon-App: Abrufen von Token für die App)](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-acquire-token?tabs=dotnet)
+> [Daemon app - acquiring tokens for the app (Daemon-App: Abrufen von Token für die App)](./scenario-daemon-acquire-token.md?tabs=dotnet)
 
 # <a name="python"></a>[Python](#tab/python)
 
 > [!div class="nextstepaction"]
-> [Daemon app - acquiring tokens for the app (Daemon-App: Abrufen von Token für die App)](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-acquire-token?tabs=python)
+> [Daemon app - acquiring tokens for the app (Daemon-App: Abrufen von Token für die App)](./scenario-daemon-acquire-token.md?tabs=python)
 
 # <a name="java"></a>[Java](#tab/java)
 
 > [!div class="nextstepaction"]
-> [Daemon app - acquiring tokens for the app (Daemon-App: Abrufen von Token für die App)](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-acquire-token?tabs=java)
+> [Daemon app - acquiring tokens for the app (Daemon-App: Abrufen von Token für die App)](./scenario-daemon-acquire-token.md?tabs=java)
 
 ---

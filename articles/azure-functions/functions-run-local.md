@@ -5,12 +5,12 @@ ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: ae83d8f68b78a3b13f9ebafe3c7cedd18a29de53
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 5c6761b083200556314d7133d5040f7811066e30
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87449138"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037030"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Arbeiten mit Azure Functions Core Tools
 
@@ -205,7 +205,23 @@ Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
 > [!IMPORTANT]
 > Ab Version 2.x der Core-Tools werden Funktions-App-Projekte für die .NET-Runtime als [C#-Klassenprojekte](functions-dotnet-class-library.md) (.csproj) erstellt. Diese C#-Projekte, die mit Visual Studio oder Visual Studio Code verwendet werden können, werden während der Tests und beim Veröffentlichen in Azure kompiliert. Wenn Sie stattdessen dieselben C#-Skriptdateien (.csx) erstellen und verwenden möchten, die in Version 1.x und im Portal erstellt wurden, müssen Sie die `--csx`-Parameter beim Erstellen und Bereitstellen von Funktionen einschließen.
 
-[!INCLUDE [functions-core-tools-install-extension](../../includes/functions-core-tools-install-extension.md)]
+## <a name="register-extensions"></a>Registrieren von Erweiterungen
+
+Mit Ausnahme von HTTP- und Zeitgebertriggern werden Functions-Bindungen in der Runtimeversion 2.x und höher als Erweiterungspakete implementiert. Für HTTP-Bindungen und Zeitgebertrigger sind keine Erweiterungen erforderlich. 
+
+Um Inkompatibilitäten zwischen den verschiedenen Erweiterungspaketen zu reduzieren, können Sie mit Functions auf ein Erweiterungsbündel in der host.json-Projektdatei verweisen. Wenn Sie keine Erweiterungsbündel verwenden möchten, müssen Sie auch das .NET Core 2.x SDK lokal installieren und die Erweiterung CSPROJ mit Ihrem Functions-Projekt verwalten.  
+
+In Version 2.x und höheren Versionen der Azure Functions-Runtime müssen Sie die in Ihren Funktionen für die Bindungstypen verwendeten Erweiterungen explizit registrieren. Sie können auch Bindungserweiterungen einzeln installieren, oder Sie können einen Erweiterungsbündelverweis in der Datei „host.json“ hinzufügen. Erweiterungsbündel wirken eventuellen Kompatibilitätsproblemen bei Paketen entgegen, wenn mehrere Bindungstypen verwendet werden. Es handelt sich hierbei um den empfohlenen Ansatz zum Registrieren von Bindungserweiterungen. Erweiterungsbündel beseitigen außerdem die Notwendigkeit der Installation des .NET Core 2.x SDK. 
+
+### <a name="use-extension-bundles"></a>Verwenden von Erweiterungsbündeln
+
+[!INCLUDE [Register extensions](../../includes/functions-extension-bundles.md)]
+
+Weitere Informationen finden Sie unter [Registrieren von Bindungserweiterungen von Azure Functions](functions-bindings-register.md#extension-bundles). Sie sollten Erweiterungsbündel in de Datei „host.json“ hinzufügen, bevor Sie der Datei „function.json“ Bindungen hinzufügen.
+
+### <a name="explicitly-install-extensions"></a>Explizites Installieren von Erweiterungen
+
+[!INCLUDE [functions-extension-register-core-tools](../../includes/functions-extension-register-core-tools.md)]
 
 [!INCLUDE [functions-local-settings-file](../../includes/functions-local-settings-file.md)]
 
@@ -294,7 +310,7 @@ Sie können diese Optionen im Befehl auch mit folgenden Argumenten angeben:
 | **`--csx`** | (Version 2.x und höher) Generiert dieselben C#-Skriptvorlagen (.csx), die in Version 1.x und im Portal verwendet wurden. |
 | **`--language`**, **`-l`**| Die Vorlagenprogrammiersprache, z.B. C#, F# oder JavaScript. Diese Option ist in Version 1.x erforderlich. Verwenden Sie diese Option nicht ab Version 2.x, oder wählen Sie die der Workerruntime entsprechende Sprache. |
 | **`--name`**, **`-n`** | Der Funktionsname. |
-| **`--template`** , **`-t`** | Mit dem Befehl `func templates list` können Sie sich die vollständige Liste der verfügbaren Vorlagen für jede unterstützte Sprache anzeigen lassen.   |
+| **`--template`**, **`-t`** | Mit dem Befehl `func templates list` können Sie sich die vollständige Liste der verfügbaren Vorlagen für jede unterstützte Sprache anzeigen lassen.   |
 
 
 Führen Sie z.B. zum Erstellen eines JavaScript-HTTP-Triggers in einem einzelnen Befehl Folgendes aus:
@@ -461,9 +477,9 @@ In Version 1.x können sie eine Funktion mithilfe von `func run <FunctionName>` 
 | Option     | BESCHREIBUNG                            |
 | ------------ | -------------------------------------- |
 | **`--content`**, **`-c`** | Inlineinhalt. |
-| **`--debug`** , **`-d`** | Anfügen eines Debuggers an den Hostprozess vor dem Ausführen der Funktion.|
-| **`--timeout`** , **`-t`** | Wartezeit (in Sekunden), bis der lokale Functions-Host bereit ist.|
-| **`--file`** , **`-f`** | Der als Inhalt zu verwendende Dateiname.|
+| **`--debug`**, **`-d`** | Anfügen eines Debuggers an den Hostprozess vor dem Ausführen der Funktion.|
+| **`--timeout`**, **`-t`** | Wartezeit (in Sekunden), bis der lokale Functions-Host bereit ist.|
+| **`--file`**, **`-f`** | Der als Inhalt zu verwendende Dateiname.|
 | **`--no-interactive`** | Fordert keine Eingabe an. Für Automatisierungsszenarien nützlich.|
 
 Um z.B. eine HTTP-ausgelöste Funktion aufzurufen und Inhaltstext zu übergeben, führen Sie folgenden Befehl aus:

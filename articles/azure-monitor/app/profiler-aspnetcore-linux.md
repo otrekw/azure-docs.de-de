@@ -6,12 +6,12 @@ author: cweining
 ms.author: cweining
 ms.date: 02/23/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: f01eaf879e70406c6dbe17e6fc544f7aed367e8b
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: a21d48787a39c491a2ab1ace1bf42ff85bd34993
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87324113"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88078086"
 ---
 # <a name="profile-aspnet-core-azure-linux-web-apps-with-application-insights-profiler"></a>Profilerstellung für ASP.NET Core-Azure Linux-Web-Apps mit Application Insights Profiler
 
@@ -106,7 +106,7 @@ Die folgenden Anweisungen werden auf alle Windows-, Linux- und Mac-Entwicklungsu
 
     ![Git-Repository einrichten](./media/profiler-aspnetcore-linux/setup-git-repo.png)
 
-Weitere Bereitstellungsoptionen finden Sie in [diesem Artikel](../../app-service/containers/choose-deployment-type.md).
+Weitere Bereitstellungsoptionen finden Sie unter [App Service-Dokumentation](https://docs.microsoft.com/azure/app-service).
 
 ## <a name="deploy-your-project"></a>Bereitstellen des Projekts
 

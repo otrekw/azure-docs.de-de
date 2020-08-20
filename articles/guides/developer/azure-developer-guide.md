@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: glenga
-ms.openlocfilehash: 10c9e2c3ecefedded393d6949be1480f2f02973b
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 9ed6244d8f5ecf18e89994c0c62af16290fb68c5
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131054"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88120574"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Anleitung mit den ersten Schritten für Azure-Entwickler
 
@@ -64,7 +64,7 @@ Sie können Ihre vorhandenen Anwendungen zu App Service migrieren, indem Sie das
 
 > **Einsatzgebiete**: Verwenden Sie App Service, wenn Sie vorhandene Webanwendungen zu Azure migrieren, und wenn Sie eine vollständig verwaltete Hostingplattform für Ihre Web-Apps benötigen. Sie können App Service auch verwenden, wenn Sie mobile Clients unterstützen oder REST-APIs mit Ihrer App verfügbar machen müssen.
 >
-> **Erste Schritte**: App Service erleichtert die Erstellung und Bereitstellung Ihrer ersten [Web-App](../../app-service/app-service-web-get-started-dotnet.md), [mobilen App](../../app-service-mobile/app-service-mobile-ios-get-started.md) oder [API-App](../../app-service/app-service-web-tutorial-rest-api.md).
+> **Erste Schritte**: App Service erleichtert die Erstellung und Bereitstellung Ihrer ersten [Web-App](../../app-service/quickstart-dotnetcore.md), [mobilen App](../../app-service-mobile/app-service-mobile-ios-get-started.md) oder [API-App](../../app-service/app-service-web-tutorial-rest-api.md).
 >
 > **Jetzt testen**: Mit App Service können Sie eine kurzlebige App bereitstellen, um die Plattform zu testen, ohne sich für ein Azure-Konto registrieren zu müssen. Testen Sie die Plattform und [erstellen Sie Ihre Azure App Service-App](https://tryappservice.azure.com/).
 
@@ -285,7 +285,7 @@ Zusätzlich zum Definieren individueller Azure-Kontoidentitäten, auch *Benutzer
 
 ### <a name="manage-your-subscriptions"></a>Verwalten Ihrer Abonnements
 
-Ein Abonnement ist eine logische Gruppierung von Azure-Diensten, die mit einem Azure-Konto verknüpft ist. Ein einzelnes Azure-Konto kann mehrere Abonnements enthalten. Die Abrechnung für Azure-Dienste erfolgt auf Abonnementbasis. Eine Liste der verfügbaren Abonnementangebote nach Typ finden Sie unter [Microsoft Azure-Angebotsdetails](https://azure.microsoft.com/support/legal/offer-details/). Für Azure-Abonnements gibt es einen Kontoadministrator, der die vollständige Kontrolle über das Abonnement hat. Sie verfügen auch über einen Dienstadministrator, der die Kontrolle über alle Dienste im Abonnement hat. Informationen über Administratoren für klassische Abonnements finden Sie unter [Hinzufügen oder Ändern von Azure-Abonnementadministratoren](../../cost-management-billing/manage/add-change-subscription-administrator.md). Einzelnen Konten kann über die [rollenbasierte Zugriffssteuerung (RBAC)](../../role-based-access-control/overview.md) detaillierte Kontrolle über Azure-Ressourcen gewährt werden.
+Ein Abonnement ist eine logische Gruppierung von Azure-Diensten, die mit einem Azure-Konto verknüpft ist. Ein einzelnes Azure-Konto kann mehrere Abonnements enthalten. Die Abrechnung für Azure-Dienste erfolgt auf Abonnementbasis. Eine Liste der verfügbaren Abonnementangebote nach Typ finden Sie unter [Microsoft Azure-Angebotsdetails](https://azure.microsoft.com/support/legal/offer-details/). Für Azure-Abonnements gibt es einen Kontoadministrator, der die vollständige Kontrolle über das Abonnement hat. Sie verfügen auch über einen Dienstadministrator, der die Kontrolle über alle Dienste im Abonnement hat. Informationen über Administratoren für klassische Abonnements finden Sie unter [Hinzufügen oder Ändern von Azure-Abonnementadministratoren](../../cost-management-billing/manage/add-change-subscription-administrator.md). Einzelnen Konten kann über die [rollenbasierte Zugriffssteuerung von Azure (Azure RBAC)](../../role-based-access-control/overview.md) detaillierte Kontrolle über Azure-Ressourcen gewährt werden.
 
 #### <a name="resource-groups"></a>Ressourcengruppen
 

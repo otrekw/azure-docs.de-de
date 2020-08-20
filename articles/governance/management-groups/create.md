@@ -1,14 +1,14 @@
 ---
 title: Erstellen von Verwaltungsgruppen zum Organisieren von Ressourcen – Azure Governance
 description: Hier erfahren Sie, wie Sie Azure-Verwaltungsgruppen zum Verwalten mehrerer Ressourcen über das Portal, mithilfe von Azure PowerShell oder mithilfe der Azure CLI erstellen.
-ms.date: 04/15/2020
+ms.date: 08/10/2020
 ms.topic: conceptual
-ms.openlocfilehash: 6fe7f2ea74c697701084321e068042b36acbdb11
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: 0739eafdf4cf41195b189a8496c331ab470bbec0
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85971134"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056634"
 ---
 # <a name="create-management-groups-for-resource-organization-and-management"></a>Erstellen von Verwaltungsgruppen zum Organisieren und Verwalten von Ressourcen
 
@@ -18,7 +18,7 @@ Es kann bis zu 15 Minuten dauern, bis die Erstellung der ersten Verwaltungsgrupp
 
 ## <a name="create-a-management-group"></a>Erstellen einer Verwaltungsgruppe
 
-Alle Azure AD-Benutzer im Mandanten können eine Verwaltungsgruppe erstellen, ohne dafür die Schreibberechtigung für die Verwaltungsgruppe zu benötigen. Diese neue Verwaltungsgruppe ist dann der Stammverwaltungsgruppe untergeordnet, und dem Ersteller wird die Rolle „Besitzer“ zugewiesen. Der Verwaltungsgruppendienst ermöglicht dies, damit Rollen nicht auf Stammebene zugewiesen werden müssen. Bei der Erstellung der Stammverwaltungsgruppe hat kein Benutzer Zugriff auf sie. Damit nicht erst nach den globalen Azure AD-Administratoren gesucht werden muss, um mit der Verwendung von Verwaltungsgruppen beginnen zu können, lassen wir die Erstellung der ersten Verwaltungsgruppen auf  
+Alle Azure AD-Benutzer im Mandanten können eine Verwaltungsgruppe erstellen, ohne dafür die Schreibberechtigung für die Verwaltungsgruppe zu benötigen. Diese neue Verwaltungsgruppe ist dann der Stammverwaltungsgruppe untergeordnet, und dem Ersteller wird die Rolle „Besitzer“ zugewiesen. Der Verwaltungsgruppendienst ermöglicht dies, damit Rollen nicht auf Stammebene zugewiesen werden müssen. Bei der Erstellung der Stammverwaltungsgruppe hat kein Benutzer auf sie Zugriff. Damit nicht erst nach den globalen Azure AD-Administratoren gesucht werden muss, um mit der Verwendung von Verwaltungsgruppen beginnen zu können, lassen wir die Erstellung der ersten Verwaltungsgruppen auf  
 Stammebene zu.
 
 Sie können die Verwaltungsgruppe im Portal, mit einer [Azure Resource Manager-Vorlage](../../azure-resource-manager/templates/deploy-to-tenant.md#create-management-group), mithilfe von PowerShell oder über die Azure-Befehlszeilenschnittstelle erstellen.

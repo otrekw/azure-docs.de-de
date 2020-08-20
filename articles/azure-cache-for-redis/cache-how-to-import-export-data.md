@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 07/31/2017
 ms.author: yegu
-ms.openlocfilehash: 84abbe8d9958bf41768f3706a700ae0ecad6b44f
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: a89acb73ea5c78c9f82758e0a322fb9001698c24
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85857007"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88004339"
 ---
 # <a name="import-and-export-data-in-azure-cache-for-redis"></a>Importieren und Exportieren von Daten in Azure Cache for Redis
 Import/Export ist ein Vorgang der Azure Cache for Redis-Datenverwaltung, bei dem Sie Daten in Azure Cache for Redis importieren oder aus Azure Cache for Redis exportieren können. Hierzu importieren bzw. exportieren Sie eine Momentaufnahme der Azure Cache for Redis-Datenbank (RDB) aus einem Premium-Cache in ein Blob in einem Azure Storage-Konto.
@@ -24,7 +24,7 @@ So können Sie zwischen verschiedenen Azure Cache for Redis-Instanzen migrieren 
 Dieser Artikel enthält eine Anleitung zum Importieren und Exportieren von Daten mit Azure Cache for Redis und Antworten auf häufig gestellte Fragen.
 
 > [!IMPORTANT]
-> Import/Export ist nur für Caches im [Premium-Tarif](cache-premium-tier-intro.md) verfügbar.
+> Import/Export ist nur für Caches im [Premium-Tarif](cache-overview.md#service-tiers) verfügbar.
 >
 >
 
@@ -152,6 +152,6 @@ Initiieren Sie den Import- oder Exportvorgang, bevor die 15 Minuten abgelaufen s
 Das Exportieren funktioniert nur mit RDB-Dateien, die als Seitenblobs gespeichert sind. Andere Blobtypen, einschließlich Blobspeicherkonten mit heißen und kalten Ebenen, werden derzeit nicht unterstützt. Weitere Informationen finden Sie unter [Azure-Speicherkonto – Übersicht](../storage/common/storage-account-overview.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
-Informationen zur Verwendung weiterer Funktionen des Premium-Caches finden Sie in den folgenden Artikeln.
+Erfahren Sie mehr über Azure Cache for Redis-Features.
 
-* [Einführung in den Premium-Tarif von Azure Cache for Redis](cache-premium-tier-intro.md)
+* [Azure Cache for Redis-Dienstebenen](cache-overview.md#service-tiers)

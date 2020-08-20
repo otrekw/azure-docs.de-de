@@ -5,17 +5,17 @@ author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: troubleshooting
-ms.date: 03/27/2020
-ms.openlocfilehash: 725d1cf38a0c7f6de02addc62577e397a935af94
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.date: 08/07/2020
+ms.openlocfilehash: 1c649499fd9eaedac0ca4ff9c182e13a9da223ef
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86041046"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88053149"
 ---
 # <a name="azure-stream-analytics-data-errors"></a>Datenfehler in Azure Stream Analytics
 
-Datenfehler sind Fehler, die bei der Datenverarbeitung auftreten.  Sie entstehen am häufigsten bei der (De)Serialisierung von Daten und beim Schreiben von Vorgängen.  Wenn ein solcher Fehler auftritt, schreibt Stream Analytics detaillierte Informationen und Beispielereignisse in die Ressourcenprotokolle.  In einigen Fällen wird auch eine Zusammenfassung dieser Informationen über Benachrichtigungen im Portal bereitgestellt.
+Datenfehler sind Fehler, die bei der Datenverarbeitung auftreten.  Sie entstehen am häufigsten bei der (De)Serialisierung von Daten und beim Schreiben von Vorgängen.  Wenn ein solcher Fehler auftritt, schreibt Stream Analytics detaillierte Informationen und Beispielereignisse in die Ressourcenprotokolle. Aktivieren Sie die Diagnoseprotokolle in Ihrem Auftrag, um diese zusätzlichen Details zu erhalten. In einigen Fällen wird auch eine Zusammenfassung dieser Informationen über Benachrichtigungen im Portal bereitgestellt.
 
 In diesem Artikel finden Sie eine Übersicht über die verschiedenen Fehlertypen, Ursachen und Details zum Ressourcenprotokoll für Fehler bei der Eingabe oder Ausgabe von Daten.
 
@@ -166,7 +166,7 @@ Weitere Informationen zum Schema für Ressourcenprotokolle finden Sie unter [Pro
 ### <a name="lateinputevent"></a>LateInputEvent
 
 * Ursache: Der Unterschied zwischen der Anwendungszeit und der Eingangszeit ist größer als das Toleranzfenster für Eingangsverzögerung.
-* Benachrichtigung im Portal: Nein 
+* Benachrichtigung im Portal: Nein
 * Ressourcenprotokollebene: Information
 * Auswirkung:  Späte Eingabeereignisse werden entsprechend der Einstellung „Handle other events“ (Andere Ereignisse verarbeiten) im Abschnitt „Ereignisreihenfolge“ der Auftragskonfiguration verarbeitet. Weitere Informationen finden Sie unter [Time Handling Policies (Richtlinien zur Behandlung von Zeitangaben)](https://docs.microsoft.com/stream-analytics-query/time-skew-policies-azure-stream-analytics).
 * Protokolldetails
@@ -182,7 +182,7 @@ Weitere Informationen zum Schema für Ressourcenprotokolle finden Sie unter [Pro
 ### <a name="earlyinputevent"></a>EarlyInputEvent
 
 * Ursache: Der Unterschied zwischen der Anwendungszeit und der Eingangszeit beträgt mehr als fünf Minuten.
-* Benachrichtigung im Portal: Nein 
+* Benachrichtigung im Portal: Nein
 * Ressourcenprotokollebene: Information
 * Auswirkung:  Frühe Eingabeereignisse werden entsprechend der Einstellung „Handle other events“ (Andere Ereignisse verarbeiten) im Abschnitt „Ereignisreihenfolge“ der Auftragskonfiguration verarbeitet. Weitere Informationen finden Sie unter [Time Handling Policies (Richtlinien zur Behandlung von Zeitangaben)](https://docs.microsoft.com/stream-analytics-query/time-skew-policies-azure-stream-analytics).
 * Protokolldetails
@@ -198,7 +198,7 @@ Weitere Informationen zum Schema für Ressourcenprotokolle finden Sie unter [Pro
 ### <a name="outoforderevent"></a>OutOfOrderEvent
 
 * Ursache: Das Ereignis wird entsprechend des definierten Toleranzfensters für Fehlordnung als fehlgeordnet angesehen.
-* Benachrichtigung im Portal: Nein 
+* Benachrichtigung im Portal: Nein
 * Ressourcenprotokollebene: Information
 * Auswirkung:  Eingabeereignisse, die in falscher Reihenfolge stattfinden, werden entsprechend der Einstellung „Handle other events“ (Andere Ereignisse verarbeiten) im Abschnitt „Ereignisreihenfolge“ der Auftragskonfiguration verarbeitet. Weitere Informationen finden Sie unter [Time Handling Policies (Richtlinien zur Behandlung von Zeitangaben)](https://docs.microsoft.com/stream-analytics-query/time-skew-policies-azure-stream-analytics).
 * Protokolldetails

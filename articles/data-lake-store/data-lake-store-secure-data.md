@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 03/26/2018
 ms.author: twooley
-ms.openlocfilehash: 1ae93dad9a18c18e330b4ff65924dd1db7a1faf0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b1da644d8aca0b197e21ec03c7d0ac0b454f92a9
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85515248"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926296"
 ---
 # <a name="securing-data-stored-in-azure-data-lake-storage-gen1"></a>Sichern von in Azure Data Lake Storage Gen1 gespeicherten Daten
 Das Schützen von Daten in Azure Data Lake Storage Gen1 ist ein Ansatz, der drei Schritte umfasst.  Die rollenbasierte Zugriffssteuerung (RBAC) sowie die Zugriffssteuerungslisten (ACLs) müssen so festgelegt werden, dass der Zugriff auf Daten für Benutzer und Sicherheitsgruppen vollständig aktiviert ist.
 
-1. Beginnen Sie, indem Sie in Azure Active Directory (AAD) Sicherheitsgruppen erstellen. Diese Sicherheitsgruppen werden verwendet, um die rollenbasierte Zugriffssteuerung im Azure-Portal zu implementieren. Weitere Informationen finden Sie unter [Rollenbasierte Zugriffssteuerung in Microsoft Azure](../role-based-access-control/role-assignments-portal.md).
+1. Beginnen Sie, indem Sie in Azure Active Directory (AAD) Sicherheitsgruppen erstellen. Diese Sicherheitsgruppen werden verwendet, um die rollenbasierte Zugriffssteuerung von Azure (Azure RBAC) im Azure-Portal zu implementieren. Weitere Informationen finden Sie unter [Azure RBAC](../role-based-access-control/role-assignments-portal.md).
 2. Weisen Sie die AAD-Sicherheitsgruppen dem Data Lake Storage Gen1-Konto zu. Hiermit werden der Zugriff auf das Data Lake Storage Gen1-Konto über das Portal und die Verwaltungsvorgänge über das Portal oder APIs gesteuert.
 3. Weisen Sie die AAD-Sicherheitsgruppen als Zugriffssteuerungslisten im Data Lake Storage Gen1-Dateisystem zu.
 4. Darüber hinaus können Sie auch einen IP-Adressbereich für Clients festlegen, die auf die Daten in Data Lake Storage Gen1 zugreifen können.
@@ -155,4 +155,3 @@ Wenn Sie Zugriffssteuerungslisten von Sicherheitsgruppen aus dem Data Lake Stora
 * [Erste Schritte mit Data Lake Storage Gen1 unter Verwendung von PowerShell](data-lake-store-get-started-powershell.md)
 * [Erste Schritte mit Data Lake Storage Gen1 mit dem .NET SDK](data-lake-store-get-started-net-sdk.md)
 * [Zugreifen auf Diagnoseprotokolle für Data Lake Storage Gen1](data-lake-store-diagnostic-logs.md)
-

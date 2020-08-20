@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8a468b5f43e8b024dd1da6e382049f8cce6de295
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 77ba802d5e337851b3b5141695e5b2f0c6456719
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87797364"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87902353"
 ---
 # <a name="assign-administrator-and-non-administrator-roles-to-users-with-azure-active-directory"></a>Zuweisen von Administrator- und anderen Rollen zu Benutzern mithilfe von Azure Active Directory
 
@@ -28,7 +28,7 @@ Weitere Informationen zu den verfügbaren Azure AD-Rollen finden Sie unter [Zuw
 
 ## <a name="assign-roles"></a>Zuweisen von Rollen
 
-Eine gängige Methode zum Zuweisen von Azure AD-Rollen zu einem Benutzer ist die Nutzung der Seite **Zugewiesene Rollen** für einen Benutzer. Sie können auch die Berechtigung zur Just-In-Time-Erhöhung für eine Rolle mit Privileged Identity Management (PIM) nutzen. Weitere Informationen zur Verwendung von PIM finden Sie unter [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management).
+Eine gängige Methode zum Zuweisen von Azure AD-Rollen zu einem Benutzer ist die Nutzung der Seite **Zugewiesene Rollen** für einen Benutzer. Sie können auch die Benutzerberechtigung zur Just-In-Time-Erhöhung für eine Rolle mit Privileged Identity Management (PIM) konfigurieren. Weitere Informationen zur Verwendung von PIM finden Sie unter [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management).
 
 > [!Note]
 > Wenn Sie über einen Azure AD Premium P2-Lizenzplan verfügen und PIM bereits nutzen, werden alle Rollenverwaltungsaufgaben in [Privileged Identity Management](../users-groups-roles/directory-manage-roles-portal.md) ausgeführt.

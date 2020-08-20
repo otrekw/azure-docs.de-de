@@ -1,6 +1,6 @@
 ---
-title: Sicherheitsassistent für Azure AD-Rollen in PIM – Azure Active Directory | Microsoft-Dokumentation
-description: Beschreibt den Sicherheitsassistenten, mit dem Sie mit Azure AD Privileged Identity Management (PIM) permanent privilegierte Azure AD-Rollenzuweisungen in berechtigte Rollen konvertieren können.
+title: Azure AD-Rollen „Ermittlung und Erkenntnisse (Vorschau)“ in Privileged Identity Management, früher Sicherheits-Assistent – Azure Active Directory
+description: Mit „Ermittlung und Erkenntnisse“ (früher Sicherheits-Assistent) können Sie permanente Azure AD-Rollenzuweisungen mit Privileged Identity Management in Just-in-Time-Zuweisungen konvertieren.
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -10,65 +10,60 @@ ms.service: active-directory
 ms.topic: how-to
 ms.workload: identity
 ms.subservice: pim
-ms.date: 04/21/2020
+ms.date: 08/07/2020
 ms.author: curtand
 ms.custom: pim ; H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1cc7aed1cc79a8c08a7ff11382a1c7a51455d5c3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ef1de7e98a9cb57f83b87589ceddedc3cdd80927
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84743659"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88005925"
 ---
-# <a name="azure-ad-roles-security-wizard-in-privileged-identity-management"></a>Sicherheitsassistent für Azure AD-Rollen in Privileged Identity Management
+# <a name="discovery-and-insights-preview-for-azure-ad-roles-formerly-security-wizard"></a>„Ermittlung und Erkenntnisse (Vorschau)“ für Azure AD-Rollen (früher Sicherheits-Assistent)
 
-Wenn Sie die erste Person sind, die Privileged Identity Management (PIM) in Ihrer Azure Active Directory (Azure AD)-Organisation ausführt, wird Ihnen ein Assistent für die ersten Schritte angezeigt. Der Assistent bietet Einblick in die Sicherheitsrisiken privilegierter Identitäten und informiert darüber, wie Sie diese Risiken mithilfe von Privileged Identity Management reduzieren können. Sie müssen die vorhandenen Rollenzuweisungen im Assistenten nicht ändern, wenn Sie dies lieber später machen möchten.
+Wenn Sie mit Privileged Identity Management (PIM) in Ihrer Azure AD-Organisation (Azure Active Directory) beginnen, können Sie für die ersten Schritte die Seite **Ermittlung und Erkenntnisse (Vorschau)** nutzen. Diese Funktion zeigt Ihnen, wer in Ihrer Organisation privilegierten Rollen zugewiesen ist, und wie Sie mit PIM schnell permanente Rollenzuweisungen in Just-in-Time-Zuweisungen ändern können. Sie können die Änderungen ihrer permanenten privilegierten Rollenzuweisungen in **Ermittlung und Erkenntnisse (Vorschau)** anzeigen oder ändern. Dabei handelt es sich um ein Analyse- und Aktionstool.
 
-> [!Important]
-> Der Sicherheits-Assistent ist vorübergehend nicht verfügbar. Vielen Dank für Ihre Geduld.
+## <a name="discovery-and-insights-preview"></a>Ermittlung und Erkenntnisse (Vorschau)
 
-## <a name="wizard-overview"></a>Übersicht über den Assistenten
+Bevor Ihre Organisation Privileged Identity Management einsetzte, waren alle Rollenzuweisungen permanent. Benutzer befinden sich immer in den zugewiesenen Rollen, auch wenn sie deren Berechtigungen nicht benötigen. „Ermittlung und Erkenntnisse (Vorschau)“ ersetzt den früheren Sicherheits-Assistenten und zeigt Ihnen eine Liste privilegierter Rollen an sowie die Anzahl der Benutzer, die derzeit über diese Rollen verfügen. Sie können die Zuweisungen für eine Rolle auflisten, um mehr über die zugewiesenen Benutzer zu erfahren, wenn einer oder mehrere davon nicht vertraut sind.
 
-Bevor Ihre Organisation mit der Verwendung von Privileged Identity Management beginnt, sind alle Rollenzuweisungen permanent, d. h. die Benutzer besitzen diese Rollen ständig, auch wenn sie die zugehörigen Berechtigungen derzeit nicht benötigen. Der erste Schritt des Assistenten bietet eine Liste der Rollen mit hohen Berechtigungen und zeigt an, wie viele Benutzer derzeit in diesen Rollen vorhanden sind. Sie können Details zu einer bestimmten Rolle anzeigen, um weitere Informationen zu den Benutzern zu erhalten und zu ermitteln, ob ein oder mehrere Benutzer unbekannt sind.
+:heavy_check_mark: **Microsoft empfiehlt** Ihnen, zwei Konten für den Notfallzugriff zu verwalten, die dauerhaft der Rolle „globaler Administrator“ zugewiesen sind, für die bei der Anmeldung keine Multi-Factor Authentication erforderlich ist. Sie können diese in jedem Notfallzugriffsszenario oder in Fällen verwenden, in denen niemand die Rolle „globaler Administrator“ einnehmen kann.
 
-Im zweiten Schritt des Assistenten haben Sie die Möglichkeit, die Rollenzuweisungen des Administrators zu ändern.  
+Verwenden Sie außerdem permanente Rollenzuweisungen, wenn ein Benutzer über ein Microsoft-Konto verfügt (also ein Konto zum Anmelden bei Microsoft-Diensten wie Skype oder Outlook.com). Wenn Sie in einer solchen Rolle die Aktivierung der Multi-Factor Authentication fordern, wird der Benutzer gesperrt.
 
-> [!WARNING]
-> Es müssen unbedingt mindestens ein globaler Administrator sowie mehrere Administratoren für privilegierte Rollen mit einem Geschäfts-, Schul- oder Unikonto (keinem Microsoft-Konto) vorhanden sein. Wenn nur ein Administrator für privilegierte Rollen vorhanden ist, kann die Organisation Privileged Identity Management nicht mehr verwalten, sollte dieses Konto gelöscht werden.
-> Verwenden Sie außerdem permanente Rollenzuweisungen, wenn ein Benutzer über ein Microsoft-Konto verfügt (also ein Konto zum Anmelden bei Microsoft-Diensten wie Skype und Outlook.com). Wenn Sie planen, zur Aktivierung dieser Rolle die mehrstufige Authentifizierung als erforderlich festzulegen, kann der Benutzer sie nicht übernehmen.
-
-## <a name="run-the-wizard"></a>Ausführen des Assistenten
+## <a name="open-discovery-and-insights-preview"></a>Öffnen von „Ermittlung und Erkenntnisse (Vorschau)“
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
 1. Öffnen Sie **Azure AD Privileged Identity Management**.
 
-1. Wählen Sie **Azure AD-Rollen** aus und dann **Assistenten**.
+1. Wählen Sie **Azure AD-Rollen** und dann **Ermittlung und Erkenntnisse (Vorschau)** aus. Beim Öffnen der Seite beginnt der Ermittlungsvorgang, relevante Rollenzuweisungen zu suchen.
 
-    ![Azure AD-Rollen – Seite des Assistenten mit den 3 Schritten zum Ausführen des Assistenten](./media/pim-security-wizard/wizard-start.png)
+    ![Azure AD-Rollen – Seite „Ermittlung und Erkenntnisse“ mit den drei Optionen](./media/pim-security-wizard/new-preview-link.png)
 
-1. Wählen Sie **1 Ermitteln von privilegierten Rollen** aus.
+1. Wählen Sie **Anzahl globaler Administratoren verringern**.
 
-1. Überprüfen Sie die Liste der Rollen, um festzustellen, welche Benutzer permanente oder berechtigte Zuweisungen haben.
+    ![Anzahl globaler Administratoren verringern – Rollenbereich mit allen Mitgliedern](./media/pim-security-wizard/new-preview-page.png)
 
-    ![Privilegierte Rollen ermitteln – Bereich „Rollen“ mit permanenten und berechtigten Mitgliedern](./media/pim-security-wizard/discover-privileged-roles-users.png)
+1. Untersuchen Sie die Liste mit den Rollenzuweisungen „Globaler Administrator“.
 
-1. Wählen Sie **Weiter** aus, um die Benutzer oder Gruppen auszuwählen, die Sie in berechtige Mitglieder umwandeln möchten.
+    ![Anzahl globaler Administratoren verringern – Rollenbereich mit allen Mitgliedern](./media/pim-security-wizard/new-global-administrator-list.png)
 
-    ![Seite „Mitglieder in berechtigte Mitglieder konvertieren“ mit Optionen zum Auswählen von Mitgliedern, die in berechtigte Mitglieder für Rollen umgewandelt werden sollen](./media/pim-security-wizard/convert-members-eligible.png)
+1. Wählen Sie **Weiter** aus, um die Benutzer oder Gruppen auszuwählen, die Sie berechtigen möchten, und wählen Sie dann **Als berechtigt festlegen** oder **Zuweisung entfernen** aus.
 
-1. Wählen Sie nach dem Auswählen der Benutzer oder Gruppen die **Weiter** aus.
+    ![Seite „Mitglieder in berechtigte Mitglieder konvertieren“ mit Optionen zum Auswählen von Mitgliedern, die in berechtigte Mitglieder für Rollen umgewandelt werden sollen](./media/pim-security-wizard/new-global-administrator-buttons.png)
 
-    ![Seite „Änderungen überprüfen“ mit Mitgliedern mit permanenten Rollenzuweisungen, die umgewandelt werden](./media/pim-security-wizard/review-changes.png)
+1. Sie können auch verlangen, dass alle globalen Administratoren ihren eigenen Zugriff überprüfen.
 
-1. Wählen Sie **OK** aus, um die permanenten in berechtigte Zuweisungen zu konvertieren.
+    ![Seite „Globale Administratoren“ mit Zugriffsüberprüfungsabschnitt](./media/pim-security-wizard/new-global-administrator-access-review.png)
 
-    Nach Abschluss der Konvertierung wird eine Benachrichtigung angezeigt.
+1. Nachdem Sie eine dieser Änderungen ausgewählt haben, wird eine Azure-Benachrichtigung angezeigt.
 
-    ![Benachrichtigung mit dem Status einer Konvertierung](./media/pim-security-wizard/notification-completion.png)
+1. Sie können dann **Dauerhaften Zugriff entfernen** oder **Dienstprinzipale überprüfen** auswählen, um die oben genannten Schritte für andere privilegierte Rollen und Dienstprinzipal-Rollenzuweisungen zu wiederholen. Für Dienstprinzipal-Rollenzuweisungen können Sie nur Rollenzuweisungen entfernen.
 
-Wenn Sie weitere privilegierte Rollenzuweisungen in berechtigte Zuweisungen konvertieren müssen, führen Sie den Assistenten erneut aus. Wenn Sie die Privileged Identity Management-Schnittstelle anstelle des Assistenten verwenden möchten, lesen Sie [Zuweisen von Azure AD-Rollen in Privileged Identity Management](pim-how-to-add-role-to-user.md).
+    ![Zusätzliche Erkenntnisoptionen, um den dauerhaften Zugriff zu entfernen und Dienstprinzipale zu überprüfen ](./media/pim-security-wizard/new-preview-page-service-principals.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

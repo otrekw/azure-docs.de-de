@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: c811240beea896683f891d9513a657b0689b8824
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 0b857cb853add1920e6933a9f1ebfd7a0f61b57f
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87488651"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88054271"
 ---
 # <a name="virtual-network-design-considerations-and-configuration-options-for-azure-active-directory-domain-services"></a>Überlegungen zum Entwurf virtueller Netzwerke und Konfigurationsoptionen für Azure Active Directory Domain Services
 
@@ -142,6 +142,10 @@ Ein Azure-Standard-Load Balancer wird erstellt, der diese Regeln erfordert. Dies
 
 > [!NOTE]
 > Sie können das Diensttag *CorpNetSaw* nicht manuell über das Portal auswählen, wenn Sie versuchen, diese Regel für Netzwerksicherheitsgruppen zu bearbeiten. Sie müssen Azure PowerShell oder die Azure CLI verwenden, um eine Regel manuell zu konfigurieren, die das Diensttag *CorpNetSaw* verwendet.
+>
+> Beispielsweise können Sie das folgende Skript verwenden, um eine Regel zu erstellen, die RDP zulässt: 
+>
+> `Get-AzureRmNetworkSecurityGroup -Name "nsg-name" -ResourceGroupName "resource-group-name" | Add-AzureRmNetworkSecurityRuleConfig -Name "new-rule-name" -Access "Allow" -Protocol "TCP" -Direction "Inbound" -Priority "priority-number" -SourceAddressPrefix "CorpNetSaw" -SourcePortRange "" -DestinationPortRange "3389" -DestinationAddressPrefix "" | Set-AzureRmNetworkSecurityGroup`
 
 ### <a name="port-5986---management-using-powershell-remoting"></a>Port 5986 (Verwaltung mit PowerShell-Remoting)
 

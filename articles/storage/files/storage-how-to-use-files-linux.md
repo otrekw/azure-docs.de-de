@@ -1,32 +1,32 @@
 ---
 title: Verwenden von Azure Files mit Linux | Microsoft-Dokumentation
-description: Hier erfahren Sie, wie Sie unter Linux eine Azure-Dateifreigabe über SMB einbinden.
+description: Hier erfahren Sie, wie Sie unter Linux eine Azure-Dateifreigabe über SMB einbinden. Lesen Sie die Liste der Voraussetzungen. Überprüfen Sie die Sicherheitsüberlegungen zu SMB auf Linux-Clients.
 author: roygara
 ms.service: storage
 ms.topic: how-to
 ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 8f668844951a2416b25d1649721fc005a0d70b75
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d00b0558f85e18dfb53736d89fead953cc01ee60
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85509845"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88053166"
 ---
 # <a name="use-azure-files-with-linux"></a>Verwenden von Azure Files mit Linux
 [Azure Files](storage-files-introduction.md) ist das benutzerfreundliche Clouddateisystem von Microsoft. Azure-Dateifreigaben können mithilfe des [SMB-Kernelclients](https://wiki.samba.org/index.php/LinuxCIFS) in Linux-Distributionen eingebunden werden. Dieser Artikel veranschaulicht zwei Möglichkeiten zum Einbinden einer Azure-Dateifreigabe: bedarfsgesteuert mit dem Befehl `mount` oder beim Start durch Erstellen eines Eintrags in `/etc/fstab`.
 
 Es wird empfohlen, SMB 3.0 zu verwenden, um eine Azure-Dateifreigabe in Linux einzubinden. Standardmäßig müssen für Azure Files Daten während der Übertragung verschlüsselt werden. Dies wird nur von SMB 3.0 unterstützt. Azure Files unterstützt auch die Version 2.1 von SMB, mit der allerdings keine Verschlüsselung während der Übertragung möglich ist. Deshalb können Sie aus Sicherheitsgründen mit SMB 2.1 keine Azure-Dateifreigaben aus anderen Regionen oder lokal einbinden. Sofern für Ihre Anwendung nicht unbedingt SMB 2.1 erforderlich ist, gibt es wenige Gründe, die für die Verwendung dieser Version sprechen, da die beliebtesten und neusten Linux-Distributionen SMB 3.0 unterstützen:  
 
-| | SMB 2.1 <br>(Einbindungen auf VMs innerhalb derselben Azure-Region) | SMB 3.0 <br>(Einbindungen aus einer lokalen Region und regionsübergreifend) |
+| Linux-Verteilung | SMB 2.1 <br>(Einbindungen auf VMs innerhalb derselben Azure-Region) | SMB 3.0 <br>(Einbindungen aus einer lokalen Region und regionsübergreifend) |
 | --- | :---: | :---: |
 | Ubuntu | 14.04+ | 16.04 und höher |
 | Red Hat Enterprise Linux (RHEL) | 7 und höher | 7.5 und höher |
 | CentOS | 7 und höher |  7.5 und höher |
-| Debian | 8 und höher | 10 und höher |
+| Debian | 8 und höher | 10+ |
 | openSUSE | 13.2 und höher | 42.3+ |
-| SUSE Linux Enterprise Server | 12+ | 12 SP3 und höher |
+| SUSE Linux Enterprise Server | 12+ | 12 SP2+ |
 
 Wenn Sie eine Linux-Distribution verwenden, die nicht in der obigen Tabelle aufgeführt ist, können Sie anhand Ihrer Linux-Kernelversion überprüfen, ob Ihre Linux-Distribution SMB 3.0 mit Verschlüsselung unterstützt. SMB 3.0 mit Verschlüsselung wurde der Linux-Kernelversion 4.11 hinzugefügt. Über den Befehl `uname` wird die Version des verwendeten Linux-Kernels zurückgegeben:
 
@@ -69,7 +69,7 @@ uname -r
 
 * **Die neueste Version der Azure-Befehlszeilenschnittstelle (CLI).** Informationen zum Installieren der Azure CLI finden Sie unter [Installieren der Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) im Abschnitt zu Ihrem Betriebssystem. Wenn Sie lieber mit dem Azure PowerShell-Modul in PowerShell 6 und höher arbeiten möchten, können Sie dies tun, die folgenden Anweisungen beziehen sich jedoch auf die Azure CLI.
 
-* **Stellen Sie sicher, Port 445 geöffnet ist**: SMB kommuniziert über den TCP-Port 445. Vergewissern Sie sich, dass der TCP-Port 445 des Clientcomputers nicht durch die Firewall blockiert wird.  **<your-resource-group>** (<Ihre-Ressourcengruppe>) und **<your-storage-account>** (<Ihr-Speicherkonto>) ersetzen
+* **Prüfen Sie, ob Port 445 geöffnet ist**: SMB kommuniziert über den TCP-Port 445. Vergewissern Sie sich, dass der TCP-Port 445 des Clientcomputers nicht durch die Firewall blockiert wird.  **<your-resource-group>** (<Ihre-Ressourcengruppe>) und **<your-storage-account>** (<Ihr-Speicherkonto>) ersetzen
     ```bash
     resourceGroupName="<your-resource-group>"
     storageAccountName="<your-storage-account>"
@@ -248,22 +248,22 @@ Ab der Linux-Kernelversion 4.18 stellt das SMB-Kernelmodul (`cifs` genannt, wei
 
 | Distribution | SMB 1 deaktivierbar |
 |--------------|-------------------|
-| Ubuntu 14.04–16.04 | Nein  |
+| Ubuntu 14.04–16.04 | Nein |
 | Ubuntu 18.04 | Ja |
 | Ubuntu 19.04 und höher | Ja |
-| Debian 8–9 | Nein  |
+| Debian 8–9 | Nein |
 | Debian 10 und höher | Ja |
 | Fedora 29 und höher | Ja |
-| CentOS 7: | Nein  | 
+| CentOS 7 | Nein | 
 | CentOS 8 und höher | Ja |
-| Red Hat Enterprise Linux 6.x–7.x | Nein  |
+| Red Hat Enterprise Linux 6.x–7.x | Nein |
 | Red Hat Enterprise Linux 8 und höher | Ja |
-| openSUSE Leap 15.0 | Nein  |
+| openSUSE Leap 15.0 | Nein |
 | openSUSE Leap 15.1 und höher | Ja |
 | openSUSE Tumbleweed | Ja |
-| SUSE Linux Enterprise 11.x–12.x | Nein  |
-| SUSE Linux Enterprise 15 | Nein  |
-| SUSE Linux Enterprise 15.1 | Nein  |
+| SUSE Linux Enterprise 11.x–12.x | Nein |
+| SUSE Linux Enterprise 15 | Nein |
+| SUSE Linux Enterprise 15.1 | Nein |
 
 Mithilfe des folgenden Befehls können Sie überprüfen, ob Ihre Linux-Distribution den Modulparameter `disable_legacy_dialects` unterstützt.
 

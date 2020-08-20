@@ -1,6 +1,6 @@
 ---
 title: Adaptive Anwendungssteuerungen in Azure Security Center
-description: In diesem Dokument erfahren Sie, wie Sie Anwendungen, die auf Azure-Computern ausgeführt werden, mithilfe der adaptiven Anwendungssteuerung in Azure Security Center einer Whitelist hinzufügen.
+description: In diesem Dokument erfahren Sie, wie Sie die adaptive Anwendungssteuerung in Azure Security Center für Zulassungslisten von Anwendungen verwenden, die auf Azure-Computern ausgeführt werden.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -11,173 +11,218 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/23/2019
+ms.date: 08/06/2020
 ms.author: memildin
-ms.openlocfilehash: 1dc94c5ec08cc27fb1819ccc16fd766c62aad796
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cbbfddca1a6a07625a69be8ffb0409640d825793
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77604673"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88036963"
 ---
-# <a name="adaptive-application-controls"></a>Adaptive Anwendungssteuerungen
-In dieser exemplarischen Vorgehensweise erfahren Sie, wie Sie die Anwendungssteuerung in Azure Security Center verwenden.
+# <a name="use-adaptive-application-controls-to-reduce-your-machines-attack-surfaces"></a>Verwenden von adaptiven Anwendungssteuerungen zum Verringern der Angriffsfläche Ihres Computers
 
-## <a name="what-are-adaptive-application-controls-in-security-center"></a>Was sind adaptive Anwendungssteuerungen in Security Center?
-Die adaptive Anwendungssteuerung ist eine intelligente, automatisierte End-to-End-Lösung von Azure Security Center, mit der Sie steuern können, welche Anwendungen auf Ihren Computern mit oder ohne Azure ausgeführt werden können (Windows und Linux). Neben anderen Vorteilen verbessert dies die Möglichkeiten, ihre Computer vor Schadsoftware zu schützen. Security Center nutzt maschinelles Lernen, um die auf Ihren Computern ausgeführten Anwendungen zu analysieren, und erstellt basierend auf diesen Daten eine Zulassungsliste. Dadurch können Sie Richtlinien für Anwendungszulassungsliste deutlich einfacher konfigurieren und verwalten und profitieren außerdem von folgenden Möglichkeiten:
+Informieren Sie sich über die Vorteile der adaptiven Anwendungssteuerungen von Azure Security Center und darüber, wie Sie Ihre Sicherheit mit diesem datengesteuerten, intelligenten Feature verbessern können.
 
-- Blockierung der Ausführung schädlicher Anwendungen oder Ausgabe einer Warnung beim Versuch, eine schädliche Anwendung auszuführen (auch bei Anwendungen, die möglicherweise von Antischadsoftwarelösungen nicht erfasst werden)
-- Einhaltung der Sicherheitsrichtlinie Ihrer Organisation, die die ausschließliche Verwendung von lizenzierter Software vorschreibt
-- Vermeidung der Verwendung von unerwünschter Software in Ihrer Umgebung
-- Vermeidung der Ausführung veralteter oder nicht unterstützter Apps
-- Verhinderung der Verwendung bestimmter Softwaretools, die in Ihrer Organisation nicht zulässig sind
-- Steuerung des Zugriffs auf sensible Daten im Rahmen der App-Nutzung durch die IT-Abteilung
 
-> [!NOTE]
-> Bei Nicht-Azure und Linux-Computern wird die adaptive Anwendungssteuerung nur im Überwachungsmodus unterstützt.
+## <a name="what-are-security-centers-adaptive-application-controls"></a>Was sind adaptive Anwendungssteuerungen in Security Center?
 
-## <a name="how-to-enable-adaptive-application-controls"></a>Aktivieren adaptiver Anwendungssteuerungen
+Adaptive Anwendungssteuerungen sind eine intelligente und automatisierte Lösung zum Definieren von Zulassungslisten bekannter, sicherer Anwendungen für Ihre Computer. 
 
-Mit adaptiven Anwendungssteuerungen können Sie eine Gruppe von Anwendungen definieren, deren Ausführung auf konfigurierten Gruppen von Computern zulässig ist. Dieses Feature steht sowohl für Windows- (alle Versionen, klassisch oder Azure Resource Manager) und Linux-Computer und -Server mit oder ohne Azure zur Verfügung. Führen Sie die folgenden Schritte aus, um die Anwendungszulassungslisten zu konfigurieren:
+Häufig verfügen Organisationen über Sammlungen von Computern, die routinemäßig dieselben Prozesse ausführen. Security Center nutzt maschinelles Lernen, um die auf Ihren Computern ausgeführten Anwendungen zu analysieren und eine Liste bekanntermaßen sicherer Software zu erstellen. Zulassungslisten basieren auf Ihren spezifischen Azure-Workloads, und Sie können die Empfehlungen mithilfe der unten stehenden Anweisungen weiter anpassen.
 
-1. Öffnen Sie das Dashboard **Security Center**.
+Wenn Sie adaptive Anwendungssteuerungen aktiviert und konfiguriert haben, erhalten Sie Sicherheitswarnungen, wenn eine Anwendung ausgeführt wird, die nicht als sicher definiert ist.
 
-1. Wählen Sie im linken Bereich unter **Erweiterter Cloudschutz** die Option **Adaptive Anwendungssteuerung**.
 
-    [![Verteidigung](./media/security-center-adaptive-application/security-center-adaptive-application-fig1-new.png)](./media/security-center-adaptive-application/security-center-adaptive-application-fig1-new.png#lightbox)
+## <a name="what-are-the-benefits-of-adaptive-application-controls"></a>Was sind die Vorteile von adaptiven Anwendungssteuerungen?
 
-Die Seite **Adaptive Anwendungssteuerung** wird angezeigt.
+Durch die Definition von Listen mit bekannten sicheren Anwendungen und das Generieren von Warnungen, wenn etwas anderes ausgeführt wird, können Sie mehrere Härtungsziele erreichen:
 
-![controls](./media/security-center-adaptive-application/security-center-adaptive-application-fig2.png)
+- Erkennen potenzieller Schadsoftware, auch wenn sie von Antischadsoftware-Lösungen übersehen wird
+- Verbessern der Konformität mit lokalen Sicherheitsrichtlinien, die die ausschließliche Verwendung lizenzierter Software vorschreiben
+- Vermeiden des Ausführens alter oder nicht unterstützter Anwendungen
+- Verhindern bestimmter Software, die von Ihrer Organisation gesperrt wurde
+- Erhöhen der Überwachung von Apps, die auf sensible Daten zugreifen
 
-Der Abschnitt **Groups of VMs** (VM-Gruppen) enthält drei Registerkarten:
 
-* **Konfiguriert**: Liste der Gruppen mit den virtuellen Computern, für die die Anwendungssteuerung bereits konfiguriert ist.
-* **Empfohlen**: Liste der Gruppen, für die die Anwendungssteuerung empfohlen wird. Security Center nutzt Machine Learning, um geeignete virtuelle Computer für die Anwendungssteuerung basierend darauf zu ermitteln, ob die virtuellen Computer konsistent die gleichen Anwendungen ausführen.
-* **Keine Empfehlung:** Liste der Gruppen mit virtuellen Computern, für die keine Anwendungssteuerungsempfehlungen vorliegen. Ein Beispiel wären etwa virtuelle Computer, auf denen sich die Anwendungen immer wieder ändern und die keinen konsistenten Zustand erreicht haben.
 
-> [!NOTE]
-> Das Sicherheitscenter verwendet für die Erstellung von VM-Gruppen einen proprietären Clustering-Algorithmus, der sicherstellt, dass ähnliche virtuelle Computer die optimale empfohlene Anwendungssteuerungsrichtlinie erhalten.
->
->
+## <a name="availability"></a>Verfügbarkeit
 
-### <a name="configure-a-new-application-control-policy"></a>Konfigurieren einer neuen Anwendungssteuerungsrichtlinie
+|Aspekt|Details|
+|----|:----|
+|Status des Release:|Allgemeine Verfügbarkeit|
+|Preise:|Standard-Tarif|
+|Unterstützte Computer:|![Ja](./media/icons/yes-icon.png) Azure- und Nicht-Azure-Computer, auf denen Windows und Linux ausgeführt wird<br>![Ja](./media/icons/yes-icon.png) [Azure Arc](https://docs.microsoft.com/azure/azure-arc/)-Computer|
+|Erforderliche Rollen und Berechtigungen:|**Sicherheitsleseberechtigter**- und **Leseberechtigter**-Rollen können Gruppen und Listen der bekannten sicheren Anwendungen anzeigen<br>**Mitwirkender**- und **Sicherheitsadministrator**-Rollen können Gruppen und Listen der bekannten sicheren Anwendungen bearbeiten|
+|Clouds:|![Ja](./media/icons/yes-icon.png) Kommerzielle Clouds<br>![Ja](./media/icons/yes-icon.png) National/Sovereign (US Gov, China Gov, andere Gov-Clouds)|
+|||
 
-1. Wählen Sie die Registerkarte **Empfohlen** aus, um eine Liste der Gruppen mit Anwendungssteuerungsempfehlungen anzuzeigen:
 
-   ![Empfohlen](./media/security-center-adaptive-application/security-center-adaptive-application-fig3.png)
 
-   Die Liste enthält Folgendes:
+## <a name="enable-application-controls-on-a-group-of-machines"></a>Aktivieren von Anwendungssteuerelementen auf einer Gruppe von Computern
 
-   - **Gruppenname**: Der Name des Abonnements und der Gruppe.
-   - **VMs und Computer**: Die Anzahl virtueller Computer in der Gruppe.
-   - **Status**: Der Status der Empfehlungen.
-   - **Schweregrad**: Der Schweregrad der Empfehlungen.
+Wenn Security Center Gruppen von Computern in ihren Abonnements identifiziert hat, die konsistent einen ähnlichen Satz von Anwendungen ausführen, werden Sie mit der folgenden Empfehlung aufgefordert: **Adaptive Anwendungssteuerung zum Definieren sicherer Anwendungen muss auf Computern aktiviert sein**.
 
-2. Klicken Sie auf eine Gruppe, um die Option **Regeln zur Anwendungssteuerung erstellen** zu öffnen.
+Wählen Sie die Empfehlung aus, oder öffnen Sie die Seite der adaptiven Anwendungssteuerung, um die Liste der empfohlenen, bekannten sicheren Anwendungen und Gruppen von Computern anzuzeigen.
 
-   [![Anwendungssteuerungsregeln](./media/security-center-adaptive-application/security-center-adaptive-application-fig4.png)](./media/security-center-adaptive-application/security-center-adaptive-application-fig4.png#lightbox)
+1. Wählen Sie im Security Center-Menü **Adaptive Anwendungssteuerung** aus.
 
-3. Sehen Sie sich unter **VMs auswählen** die Liste mit den empfohlenen virtuellen Computern an, und heben Sie die Auswahl aller virtuellen Computer auf, auf die Sie keine Richtlinie für das Anwendungswhitelisting anwenden möchten. Als Nächstes sehen Sie zwei Listen:
+    Die Seite **Adaptive Anwendungssteuerung** wird geöffnet, auf der Ihre VMs auf den folgenden Registerkarten gruppiert sind:
 
-   - **Empfohlene Anwendungen**: Eine Liste mit Anwendungen, die häufig auf den virtuellen Computern in dieser Gruppe vorhanden sind und für die ein Zulassen der Ausführung empfohlen wird.
-   - **Weitere Anwendungen**: Eine Liste mit Anwendungen, die weniger häufig auf den virtuellen Computern in dieser Gruppe vorhanden oder als Sicherheitslücken bekannt sind (siehe weiter unten) und überprüft werden sollten.
+    - **Konfiguriert**: Gruppen von Computern, die bereits über eine definierte Zulassungsliste von Anwendungen verfügen. Für jede Gruppe zeigt die konfigurierte Registerkarte Folgendes an:
+        - die Anzahl von Computern in der Gruppe
+        - letzte Warnungen
 
-4. Überprüfen Sie die Anwendungen in den einzelnen Listen, und deaktivieren Sie die Kontrollkästchen aller Anwendungen, die Sie nicht anwenden möchten. Die Listen enthalten jeweils Folgendes:
+    - **Empfohlen**: Gruppen von Computern, auf denen die gleichen Anwendungen konsistent ausgeführt werden, und für die keine Zulassungsliste konfiguriert ist. Sie sollten die adaptive Anwendungssteuerung für diese Gruppen zu aktivieren.
+    
+      > [!TIP]
+      > Wenn ein Gruppenname mit dem Präfix „REVIEWGROUP“ angezeigt wird, enthält er Computer mit einer teilweise konsistenten Liste von Anwendungen. Security Center kann kein Muster sehen, empfiehlt aber, diese Gruppe zu überprüfen, um festzustellen, ob _Sie_ einige Regeln für die adaptive Anwendungssteuerung wie in [Bearbeiten der Regel für die adaptive Anwendungssteuerung einer Gruppe](#editing-a-groups-adaptive-application-controls-rule) beschrieben manuell definieren können.
+      >
+      > Sie können auch Computer aus dieser Gruppe in andere Gruppen verschieben, wie in [Verschieben eines Computers aus einer Gruppe in eine andere](#move-a-machine-from-one-group-to-another) beschrieben.
 
-   - **NAME**: Die Zertifikatinformationen oder der vollständige Pfad einer Anwendung.
-   - **DATEITYPEN**: Der Anwendungsdateityp. Dieser kann EXE, Script, MSI oder eine beliebige Permutation dieser Typen sein.
-   - **SICHERHEITSLÜCKE**: Ein Warnsymbol gibt an, ob eine bestimmte Anwendung von einem Angreifer zur Umgehung einer Anwendungszulassungsliste verwendet werden könnte. Es empfiehlt sich, diese Anwendungen vor der Genehmigung zu überprüfen.
-   - **BENUTZER**: Benutzer, denen das Ausführen einer Anwendung ermöglicht werden sollte.
+    - **Keine Empfehlung**: Computer ohne definierte Zulassungsliste von Anwendungen, die die Funktion nicht unterstützen. Ihr Computer befindet sich aus folgenden Gründen möglicherweise auf dieser Registerkarte:
+      - Ein Log Analytics-Agent fehlt.
+      - Der Log Analytics-Agent sendet keine Ereignisse.
+      - Es handelt sich um einen Windows-Computer mit einer bereits vorhandenen [AppLocker](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-application-control/applocker)-Richtlinie, die entweder durch ein Gruppenrichtlinienobjekt oder eine lokale Sicherheitsrichtlinie aktiviert ist.
 
-5. Klicken Sie nach Abschluss Ihrer Auswahl auf **Erstellen**. <br>
-   Nachdem Sie „Erstellen“ ausgewählt haben, erstellt Azure Security Center automatisch die entsprechenden Regeln basierend auf der integrierten Lösung für die Anwendungszulassungsliste auf Windows-Servern (AppLocker).
+      > [!TIP]
+      > Security Center benötigt mindestens die Daten von zwei Wochen, um die eindeutigen Empfehlungen pro Gruppe von Computern zu definieren. Computer, die vor kurzem erstellt wurden oder zu Abonnements gehören, die erst kürzlich mit dem Standard-Tarif aktiviert wurden, werden auf der Registerkarte **Keine Empfehlung** angezeigt.
 
-> [!NOTE]
-> - Security Center zieht zur Erstellung einer Baseline sowie für die individuellen Empfehlungen pro VM-Gruppe die Daten eines Zeitraums von mindestens zwei Wochen heran. Bei neuen Kunden mit dem Standardtarif von Security Center werden VM-Gruppen zunächst auf der Registerkarte *Keine Empfehlung* angezeigt.
-> - Adaptive Anwendungssteuerungen in Security Center unterstützen keine virtuellen Computer, für die entweder über ein Gruppenrichtlinienobjekt oder eine lokale Sicherheitsrichtlinie bereits eine AppLocker-Richtlinie aktiviert wurde.
-> -  Aus Sicherheitsgründen versucht Security Center immer, eine Herausgeberregel für Anwendungen zu erstellen, die als zulässig ausgewählt sind. Eine Pfadregel für den vollständigen Pfad der spezifischen Anwendung wird nur erstellt, wenn eine Anwendung über keine Herausgeberinformationen verfügt (also nicht signiert ist).
->   
 
-### <a name="editing-and-monitoring-a-group-configured-with-application-control"></a>Bearbeiten und Überwachen einer mit Anwendungssteuerung konfigurierten Gruppe
+1. Öffnen Sie die Registerkarte **Empfohlen**. Die Gruppen von Computern mit empfohlenen Zulassungslisten werden angezeigt.
 
-1. Kehren Sie zur Seite **Adaptive Anwendungssteuerung** zurück, und klicken Sie unter **VM-Gruppen** auf **KONFIGURIERT**, um eine Gruppe zu bearbeiten und zu überwachen, die mit einer Richtlinie für die Anwendungszulassungsliste konfiguriert ist:
+   ![Registerkarte „Empfohlen“](./media/security-center-adaptive-application/adaptive-application-recommended-tab.png)
 
-   ![Gruppen](./media/security-center-adaptive-application/security-center-adaptive-application-fig5.png)
+1. Wählen Sie eine Gruppe aus. 
 
-   Die Liste enthält Folgendes:
+1. Um die neue Regel zu konfigurieren, überprüfen Sie die verschiedenen Abschnitte dieser Seite **Konfigurieren von Regeln zur Anwendungssteuerung** und der Inhalte, die für diese bestimmte Gruppe von Computern eindeutig sein werden:
 
-   - **Gruppenname**: Der Name des Abonnements und der Gruppe.
-   - **VMs und Computer**: Die Anzahl virtueller Computer in der Gruppe.
-   - **Modus**: Im Überwachungsmodus werden Versuche protokolliert, Anwendungen auszuführen, die nicht in der Zulassungsliste enthalten sind. Durch Erzwingen wird das Ausführen von Anwendungen nur dann ermöglicht, wenn Sie in der Zulassungsliste enthalten sind.
-   - **Warnungen**: Alle derzeitigen Verstöße.
+   ![Konfigurieren einer neuen Regel](./media/security-center-adaptive-application/adaptive-application-create-rule.png)
 
-2. Klicken Sie auf eine Gruppe, um Änderungen auf der Seite **Richtlinie zur Anwendungssteuerung bearbeiten** vorzunehmen.
+   1. **Computer auswählen**: Standardmäßig werden alle Computer in der identifizierten Gruppe ausgewählt. Heben Sie die Auswahl von Computern auf, die Sie von dieser Regel ausnehmen möchten.
+   
+   1. **Empfohlene Anwendungen**: Lesen Sie diese Liste mit Anwendungen, die auf den Computern in dieser Gruppe gängig sind, und für die ein Zulassen der Ausführung empfohlen wird.
+   
+   1. **Weitere Anwendungen**: Überprüfen Sie diese Liste von Anwendungen, die auf den Computern innerhalb dieser Gruppe entweder seltener vorkommen, oder die als nutzbar bekannt sind. Ein Warnsymbol gibt an, dass eine bestimmte Anwendung von einem Angreifer zur Umgehung einer Anwendungszulassungsliste verwendet werden könnte. Sie sollten diese Anwendungen sorgfältig überprüfen.
 
-   ![Schutz](./media/security-center-adaptive-application/security-center-adaptive-application-fig6.png)
+      > [!TIP]
+      > Beide Anwendungslisten enthalten die Option, eine bestimmte Anwendung auf bestimmte Benutzer zu beschränken. Wenden Sie nach Möglichkeit das Prinzip der geringsten Berechtigungen an.
+      > 
+      > Anwendungen werden von ihren Herausgebern definiert. Wenn eine Anwendung keine Informationen über den Herausgeber aufweist (nicht signiert ist), wird eine Pfadregel für den vollständigen Pfad der jeweiligen Anwendung erstellt.
 
-3. Unter **Schutzmodus** steht Folgendes zur Auswahl:
+   1. Wählen Sie **Überwachung** aus, um die Regel anzuwenden. 
 
-   - **Überwachen**: In diesem Modus werden die Regeln von der Anwendungssteuerungslösung nicht erzwungen und nur die Aktivitäten auf den geschützten virtuellen Computern überwacht. Dies empfiehlt sich, wenn Sie zuerst das allgemeine Verhalten untersuchen möchten, bevor Sie die Ausführung einer App auf dem virtuellen Zielcomputer blockieren.
-   - **Erzwingen**: In diesem Modus werden die Regeln von der Anwendungssteuerungslösung erzwungen, und Anwendungen, deren Ausführung nicht zulässig ist, werden blockiert.
 
-   > [!NOTE]
-   > -  Der Schutzmodus **Erzwingen** wird bis auf weiteres deaktiviert.
-   > - Wie bereits erwähnt, werden neue Anwendungssteuerungsrichtlinien standardmäßig immer im *Überwachungsmodus* konfiguriert. 
+
+
+## <a name="editing-a-groups-adaptive-application-controls-rule"></a>Bearbeiten der Regeln für die adaptive Anwendungssteuerung einer Gruppe
+
+Sie können die Zulassungsliste für eine Gruppe von Computern aufgrund bekannter Änderungen in Ihrer Organisation bearbeiten. 
+
+So bearbeiten Sie die Regeln für eine Gruppe von Computern:
+
+1. Wählen Sie im Security Center-Menü **Adaptive Anwendungssteuerung** aus.
+
+1. Wählen Sie auf der Registerkarte **Konfiguriert** die Gruppe mit der Regel aus, die Sie bearbeiten möchten.
+
+1. Lesen Sie die verschiedenen Abschnitte der Seite **Konfigurieren von Regeln zur Anwendungssteuerung**, wie unter [Aktivieren der adaptiven Anwendungssteuerung für eine Gruppe von Computern](#enable-application-controls-on-a-group-of-machines) beschrieben.
+
+1. Fügen Sie optional eine oder mehrere benutzerdefinierte Regeln hinzu:
+
+   1. Wählen Sie **Regel hinzufügen** aus.
+
+      ![Hinzufügen einer benutzerdefinierten Regel](./media/security-center-adaptive-application/adaptive-application-add-custom-rule.png)
+
+   1. Wenn Sie einen bekannten sicheren Pfad definieren, ändern Sie den **Regeltyp** in „Path“. Sie können Platzhalter in den Pfad einschließen.
+   
+      > [!TIP]
+      > Einige Szenarien, in denen Platzhalter in einem Pfad nützlich sein können:
+      > 
+      > * Verwenden eines Platzhalters am Ende eines Pfads, um alle ausführbaren Dateien in diesem Ordner und Unterordnern zuzulassen.
+      > * Verwenden eines Platzhalters in der Mitte eines Pfads zum Aktivieren des Namens einer bekannten ausführbaren Datei mit einem sich ändernden Ordnernamen (z. B. persönliche Benutzerordner mit einer bekannten ausführbaren Datei, automatisch generierte Ordnernamen usw.).
+  
+   1. Definieren Sie die zulässigen Benutzer und die geschützten Dateitypen.
+
+   1. Wenn Sie die Regel definiert haben, wählen Sie **Hinzufügen** aus.
+
+1. Wählen Sie **Speichern** aus, um die Änderungen zu übernehmen.
+
+
+
+
+## <a name="responding-to-the-allowlist-rules-in-your-adaptive-application-control-policy-should-be-updated-recommendation"></a>Antwort auf die Empfehlung „Zulassungslistenregeln in der Richtlinie für die adaptive Anwendungssteuerung müssen aktualisiert werden“
+
+Diese Empfehlung wird angezeigt, wenn das maschinelle Lernen von Security Center das potenziell legitime Verhalten identifiziert, das bisher noch nicht zugelassen wurde. Die Empfehlung schlägt neue Regeln für vorhandene Definitionen vor, um die Anzahl der falsch positiven Warnungen zu reduzieren.
+
+So beheben Sie die Probleme:
+
+1. Wählen Sie auf der Empfehlungenseite die Empfehlung **Zulassungslistenregeln in der Richtlinie für die adaptive Anwendungssteuerung müssen aktualisiert werden**, um Gruppen mit neu identifizierten, potenziell legitimen Verhalten anzuzeigen.
+
+1. Wählen Sie die Gruppe mit der Regel aus, die Sie bearbeiten möchten.
+
+1. Lesen Sie die verschiedenen Abschnitte der Seite **Konfigurieren von Regeln zur Anwendungssteuerung**, wie unter [Aktivieren der adaptiven Anwendungssteuerung für eine Gruppe von Computern](#enable-application-controls-on-a-group-of-machines) beschrieben.
+
+1. Wählen Sie **Überwachung** aus, um die Änderungen zu übernehmen.
+
+
+
+
+## <a name="auditing-alerts-and-violations"></a>Überwachen von Warnungen und Verstößen
+
+1. Wählen Sie im Security Center-Menü **Adaptive Anwendungssteuerung** aus.
+
+1. Wenn Sie Gruppen mit Computern anzeigen möchten, bei denen kürzlich Warnungen aufgetreten sind, überprüfen Sie die auf der Registerkarte **Konfiguriert** aufgelisteten Gruppen.
+
+1. Wählen Sie eine Gruppe zur weiteren Untersuchung aus.
+
+   ![Recent alerts (Letzte Warnungen)](./media/security-center-adaptive-application/recent-alerts.png)
+
+1. Wählen Sie eine Warnung aus, um weitere Informationen und die Liste der betroffenen Computer zu erhalten.
+
+
+
+## <a name="move-a-machine-from-one-group-to-another"></a>Verschieben eines Computers aus einer Gruppe in eine andere
+
+Wenn Sie einen Computer aus einer Gruppe in eine andere Gruppen verschieben, ändert sich die angewandte Anwendungssteuerungsrichtlinie in die Einstellungen der Gruppe, in die die Verschiebung erfolgt. Sie können einen Computer auch aus einer konfigurierten Gruppe in eine nicht konfigurierte Gruppe verschieben. Dadurch werden alle auf den Computer angewendeten Anwendungssteuerungsregeln entfernt.
+
+1. Wählen Sie auf der Seite **Adaptive Anwendungssteuerung** auf der Registerkarte **Konfiguriert** die Gruppe aus, die den Computer enthält, der verschoben werden soll.
+
+1. Öffnen Sie die Liste **Konfigurierte Computer**.
+
+1. Öffnen Sie das Menü des Computers über die drei Punkte am Ende der Zeile, und wählen Sie **Verschieben** aus. Der Bereich **Computer in eine andere Gruppe verschieben** wird geöffnet.
+
+1. Wählen Sie die Zielgruppe und dann **Computer** verschieben aus.
+
+1. Wählen Sie zum Speichern der Änderungen **Speichern** aus.
+
+
+
+
+
+## <a name="managing-application-controls-via-the-rest-api"></a>Verwalten der Anwendungssteuerung über die REST-API 
+
+Verwenden Sie die REST-API, um Ihre adaptive Anwendungssteuerung programmgesteuert zu verwalten. 
+
+Die vollständige API-Dokumentation finden Sie [hier](https://docs.microsoft.com/rest/api/securitycenter/adaptiveapplicationcontrols).
+
+Einige der Funktionen, die über die REST-API verfügbar sind:
+
+* **List**: Ruft alle Ihre Gruppenempfehlungen ab und stellt einen JSON-Code mit einem Objekt für jede Gruppe bereit.
+
+* **Get**: Ruft den JSON-Code mit den vollständigen Empfehlungsdaten (d. h. Liste von Computern, Herausgeber-/Pfadregeln usw.) ab.
+
+* **Put**: Konfiguriert Ihre Regel (verwenden Sie den JSON-Code, den Sie mit **Get** abgerufen haben, als Text für diese Anforderung).
+ 
+   > [!IMPORTANT]
+   > Die **Put**-Funktion erwartet weniger Parameter als der vom Get-Befehl zurückgegebene JSON-Code enthält.
    >
+   > Entfernen Sie die folgenden Eigenschaften, bevor Sie den JSON-Code in der Put-Anforderung verwenden: recommendationStatus, configurationStatus, issues, location und sourceSystem.
 
-4. Fügen Sie unter **Richtlinienerweiterung** beliebige Anwendungspfade hinzu, die Sie zulassen möchten. Nachdem Sie diese Pfade hinzugefügt haben, aktualisiert Security Center die Richtlinie für die Anwendungszulassungsliste auf den virtuellen Computern innerhalb der ausgewählten Gruppe und erstellt die entsprechenden Regeln für diese Anwendungen zusätzlich zu den bereits vorhandenen Regeln.
 
-5. Überprüfen Sie die aktuellen Verstöße, die im Abschnitt **Letzte Warnungen** aufgeführt sind. Klicken Sie auf die einzelnen Zeilen, um zur Seite **Warnungen** in Azure Security Center umgeleitet zu werden, und zeigen Sie alle Warnungen an, die von Azure Security Center auf den zugeordneten virtuellen Computern erkannt wurden.
-   - **Warnungen**: Alle protokollierten Verstöße.
-   - **Anzahl virtueller Computer**: Die Anzahl virtueller Computer mit diesem Warnungstyp.
 
-6. Unter **Regeln für Herausgeberwhitelists**, **Regeln für Pfadwhitelists** und **Hashregeln für Whitelist** können Sie sehen, welche Regeln für Anwendungswhitelists auf den virtuellen Computern innerhalb einer Gruppe gemäß dem Regelsammlungstyp konfiguriert sind. Für jede Regel werden die folgenden Informationen angezeigt:
-
-   - **Regel**: Die jeweiligen Parameter, nach denen eine Anwendung von AppLocker geprüft wird, um festzustellen, ob das Ausführen der Anwendung zulässig ist.
-   - **Dateityp**: Die Dateitypen, die durch eine bestimmte Regel abgedeckt sind. Dies kann einer der folgenden Typen sein: EXE, Script, MSI oder eine beliebige Permutation dieser Dateitypen.
-   - **Benutzer**: Name oder Anzahl der Benutzer, denen das Ausführen einer Anwendung gestattet ist, die durch eine Regel für Anwendungswhitelists abgedeckt ist.
-
-   ![Whitelistregeln](./media/security-center-adaptive-application/security-center-adaptive-application-fig9.png)
-
-7. Klicken Sie auf die drei Punkte am Zeilenende, wenn Sie die entsprechende Regel löschen oder die berechtigten Benutzer bearbeiten möchten.
-
-8. Nachdem Sie Änderungen an einer Richtlinie unter **Adaptive Anwendungssteuerung** vorgenommen haben, klicken Sie auf **Speichern**.
-
-### <a name="not-recommended-list"></a>Liste für Elemente ohne Empfehlung
-
-Security Center empfiehlt Richtlinien für das Anwendungswhitelisting nur für virtuelle Computer, die einen stabilen Satz von Anwendungen ausführen. Wenn sich die Anwendungen auf den zugeordneten virtuellen Computern immer wieder ändern, werden keine Empfehlungen erstellt.
-
-![Empfehlung](./media/security-center-adaptive-application/security-center-adaptive-application-fig11.png)
-
-Die Liste enthält Folgendes:
-- **Gruppenname**: Der Name des Abonnements und der Gruppe.
-- **VMs und Computer**: Die Anzahl virtueller Computer in der Gruppe.
-
-Azure Security Center ermöglicht Ihnen das Definieren einer Richtlinie für das Anwendungswhitelisting auch für nicht empfohlene Gruppen virtueller Computer. Befolgen Sie dieselben Prinzipien wie zuvor beschrieben, um eine Richtlinie für das Anwendungswhitelisting auch für diese Gruppen zu konfigurieren.
-
-## <a name="move-a-vm-from-one-group-to-another"></a>Verschieben eines virtuellen Computers aus einer Gruppe in eine andere Gruppe
-
- Wenn Sie einen virtuellen Computer aus einer Gruppe in eine andere Gruppen verschieben, ändert sich die angewandte Anwendungssteuerungsrichtlinie in die Einstellungen der Gruppe, in die die Verschiebung erfolgt. Sie können auch einen virtuellen Computer aus einer konfigurierten Gruppe in eine nicht konfigurierte Gruppe verschieben, was dazu führt, dass alle Anwendungssteuerungsrichtlinien, die zuvor auf den virtuellen Computer angewandt wurden, entfernt werden.
-
- 1. Klicken Sie auf der Seite **Adaptive Anwendungssteuerung** auf der Registerkarte **KONFIGURIERT** auf die Gruppe, zu der der virtuelle Computer, der verschoben werden soll, aktuell gehört.
-1. Klicken Sie auf **Konfigurierte VMs und Computer**.
-1. Klicken Sie auf die drei Punkte in der Zeile des zu verschiebenden virtuellen Computers, und klicken Sie auf **Verschieben**. Es öffnet sich das Fenster **Computer in andere Gruppe verschieben**.
-
-    ![Schutz](./media/security-center-adaptive-application/adaptive-application-move-group.png)
-
- 1. Wählen Sie die Gruppe aus, in die der virtuelle Computer verschoben werden soll, und klicken Sie auf **Computer verschieben** und danach auf **Speichern**.
-
-    ![Schutz](./media/security-center-adaptive-application/adaptive-application-move-group2.png)
-
- > [!NOTE]
-> Vergessen Sie nicht, auf **Speichern** zu klicken, nachdem Sie auf **Computer verschieben** geklickt haben. Wenn Sie nicht auf **Speichern** klicken, wird der Computer nicht verschoben.
 
 ## <a name="next-steps"></a>Nächste Schritte
-In diesem Dokument haben Sie erfahren, wie Sie Anwendungen, die auf virtuellen Azure- und Nicht-Azure-Computern ausgeführt werden, mithilfe der adaptiven Anwendungssteuerung in Azure Security Center einer Whitelist hinzufügen. Weitere Informationen zu Azure Security Center finden Sie in den folgenden Quellen:
+In diesem Dokument haben Sie erfahren, wie Sie mithilfe der adaptiven Anwendungssteuerung in Azure Security Center Zulassungslisten von Anwendungen definieren, die auf Azure- und Nicht-Azure-Computern ausgeführt werden. Weitere Informationen zu einigen anderen Cloudworkload-Schutzfeatures in Security Center finden Sie unter:
 
-* [Verwalten von und Reagieren auf Sicherheitswarnungen in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts). Hier erfahren Sie, wie Sie Warnungen verwalten und auf Sicherheitsvorfälle in Security Center reagieren.
-* [Überwachen der Sicherheitsintegrität in Azure Security Center](security-center-monitoring.md). Hier erfahren Sie, wie Sie die Integrität Ihrer Azure-Ressourcen überwachen.
-* [Verstehen der Sicherheitswarnungen in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-alerts-type). Hier finden Sie Informationen zu den unterschiedlichen Arten von Sicherheitswarnungen.
-* [Azure Security Center – Handbuch zur Problembehandlung](https://docs.microsoft.com/azure/security-center/security-center-troubleshooting-guide). Hier erfahren Sie, wie Sie allgemeine Probleme in Security Center behandeln.
-* [Azure Security-Blog](https://blogs.msdn.com/b/azuresecurity/). Hier finden Sie Blogbeiträge zur Sicherheit und Compliance von Azure.
+* [Grundlegendes zum Just-In-Time(JIT)-VM-Zugriff](just-in-time-explained.md)
+* [Integration von Security Center in Azure Kubernetes Service](azure-kubernetes-service-integration.md)

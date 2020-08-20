@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: 8f22b1ff97826dc318794aca58973b1276e74209
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a82f3c347c75d658e3e7ec52d51107f5a240ee5b
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79087853"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056515"
 ---
 # <a name="compatibility-level-for-azure-stream-analytics-jobs"></a>Kompatibilitätsgrad für Azure Stream Analytics-Aufträge
 
@@ -142,11 +142,11 @@ Beim Kompatibilitätsgrad 1.1 wurden die folgenden grundlegenden Änderungen ein
 
 **Ebene 1.1:** CREATE TABLE erlaubt die Angabe eines festen Schemas. Das Stream Analytics-Modul überprüft, ob die Daten diesem Schema entsprechen. Mit diesem Modell kann der Befehl Ereignisse mit NaN-Werten filtern.
 
-### <a name="disable-automatic-upcast-for-datetime-strings-in-json"></a>Deaktivieren der automatischen Typumwandlung nach oben für datetime-Zeichenfolgen im JSON-Format
+### <a name="disable-automatic-conversion-of-datetime-strings-to-datetime-type-at-ingress-for-json"></a>Deaktivieren der automatischen Konvertierung von Datetimezeichenfolgen beim Eingang in den DateTime-Typ für JSON
 
-**Ebene 1.0:** Der JSON-Parser führte automatisch eine Typumwandlung nach oben für Zeichenfolgen mit Informationen zu Datum/Uhrzeit/Zeitzone in den Typ DateTime durch und konvertierte diese dann in UTC. Dieses Verhalten führte zum Verlust von Zeitzoneninformationen.
+**Ebene 1.0:** Der JSON-Parser würde automatisch Zeichenfolgenwerte mit Datums-/Uhrzeit-/Zoneninformationen beim Eingang in den DATETIME-Typ konvertieren, sodass der Wert sofort seine ursprünglichen Formatierungs- und Zeitzoneninformationen verliert. Da dies beim Eingang erfolgt, selbst wenn dieses Feld nicht in der Abfrage verwendet wurde, wird der Wert in UTC-DateTime konvertiert.
 
-**Ebene 1.1:** Es erfolgt keine automatische Typumwandlung nach oben mehr für Zeichenfolgenwerte mit Informationen zu Datum/Uhrzeit/Zeitzone in den Typ DateTime. Daher werden die Zeitzoneninformationen beibehalten.
+**Ebene 1.1:** Es erfolgt keine automatische Umwandlung von Zeichenfolgenwerten mit Datums-/Uhrzeit-/Zoneninformationen in den Typ DATETIME. Folglich werden Zeitzoneninformationen und die ursprüngliche Formatierung beibehalten. Wenn jedoch das Feld NVARCHAR(MAX) in der Abfrage als Teil eines DATETIME-Ausdrucks (z. B. DATEADD-Funktion) verwendet wird, wird es in den DATETIME-Typ konvertiert, um die Berechnung auszuführen, und verliert sein ursprüngliches Format.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

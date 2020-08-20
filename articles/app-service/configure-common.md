@@ -6,12 +6,12 @@ ms.assetid: 9af8a367-7d39-4399-9941-b80cbc5f39a0
 ms.topic: article
 ms.date: 08/13/2019
 ms.custom: seodec18
-ms.openlocfilehash: e4ebb33333dc59432fd269c4847abdeab91d935c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9371b39bd37ba2514256a3b2fa90812f45c7ce5e
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85389773"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88077372"
 ---
 # <a name="configure-an-app-service-app-in-the-azure-portal"></a>Konfigurieren einer App Service-App im Azure-Portal
 
@@ -33,13 +33,13 @@ Für ASP.NET- und ASP.NET Core-Entwickler entspricht die Festlegung von App-Eins
 
 Andere Sprachstapel erhalten die App-Einstellungen ebenfalls als Umgebungsvariablen zur Laufzeit. Sprachstapelspezifische Schritte finden Sie unter:
 
-- [ASP.NET Core](containers/configure-language-dotnetcore.md#access-environment-variables)
-- [Node.js](containers/configure-language-nodejs.md#access-environment-variables)
-- [PHP](containers/configure-language-php.md#access-environment-variables)
-- [Python](containers/how-to-configure-python.md#access-environment-variables)
-- [Java](containers/configure-language-java.md#data-sources)
-- [Ruby](containers/configure-language-ruby.md#access-environment-variables)
-- [Benutzerdefinierte Container](containers/configure-custom-container.md#configure-environment-variables)
+- [ASP.NET Core](configure-language-dotnetcore.md#access-environment-variables)
+- [Node.js](configure-language-nodejs.md#access-environment-variables)
+- [PHP](configure-language-php.md#access-environment-variables)
+- [Python](configure-language-python.md#access-environment-variables)
+- [Java](configure-language-java.md#data-sources)
+- [Ruby](configure-language-ruby.md#access-environment-variables)
+- [Benutzerdefinierte Container](configure-custom-container.md#configure-environment-variables)
 
 App-Einstellungen werden bei der Speicherung stets verschlüsselt (encrypted-at-rest).
 
@@ -104,13 +104,13 @@ Zur Laufzeit stehen Verbindungszeichenfolgen als Umgebungsvariablen zur Verfügu
 
 Wenn beispielsweise eine MySql-Verbindungszeichenfolge *connectionstring1* heißt, kann sie über die Umgebungsvariable `MYSQLCONNSTR_connectionString1` aufgerufen werden. Sprachstapelspezifische Schritte finden Sie unter:
 
-- [ASP.NET Core](containers/configure-language-dotnetcore.md#access-environment-variables)
-- [Node.js](containers/configure-language-nodejs.md#access-environment-variables)
-- [PHP](containers/configure-language-php.md#access-environment-variables)
-- [Python](containers/how-to-configure-python.md#access-environment-variables)
-- [Java](containers/configure-language-java.md#data-sources)
-- [Ruby](containers/configure-language-ruby.md#access-environment-variables)
-- [Benutzerdefinierte Container](containers/configure-custom-container.md#configure-environment-variables)
+- [ASP.NET Core](configure-language-dotnetcore.md#access-environment-variables)
+- [Node.js](configure-language-nodejs.md#access-environment-variables)
+- [PHP](configure-language-php.md#access-environment-variables)
+- [Python](configure-language-python.md#access-environment-variables)
+- [Java](configure-language-java.md#data-sources)
+- [Ruby](configure-language-ruby.md#access-environment-variables)
+- [Benutzerdefinierte Container](configure-custom-container.md#configure-environment-variables)
 
 Verbindungszeichenfolgen werden bei der Speicherung stets verschlüsselt (encrypted-at-rest).
 
@@ -176,7 +176,7 @@ Hier können Sie einige allgemeine Einstellungen für die App konfigurieren. Ein
     > [!NOTE]
     > Die aktuellen Browser unterstützen das HTTP/2-Protokoll in der Regel nur über TLS, während unverschlüsselter Datenverkehr weiterhin HTTP/1.1 verwendet. Um sicherzustellen, dass Clientbrowser eine Verbindung mit Ihrer App mit HTTP/2 herstellen, sichern Sie Ihren benutzerdefinierten DNS-Namen. Weitere Informationen finden Sie unter [Schützen eines benutzerdefinierten DNS-Namens mit einer TLS/SSL-Bindung in Azure App Service](configure-ssl-bindings.md).
     - **ARR-Affinität**: In einer Bereitstellung mit mehreren Instanzen stellen Sie sicher, dass der Client für die Lebensdauer der Sitzung an die gleiche Instanz weitergeleitet wird. Sie können für zustandslose Anwendungen für diese Option **Aus** festlegen.
-- **Debuggen**: Aktivieren Sie das Remotedebuggen für [ASP.NET](troubleshoot-dotnet-visual-studio.md#remotedebug)-, [ASP.NET Core](/visualstudio/debugger/remote-debugging-azure)- oder [Node.js](containers/configure-language-nodejs.md#debug-remotely)-Apps. Diese Option wird nach 48 Stunden automatisch deaktiviert.
+- **Debuggen**: Aktivieren Sie das Remotedebuggen für [ASP.NET](troubleshoot-dotnet-visual-studio.md#remotedebug)-, [ASP.NET Core](/visualstudio/debugger/remote-debugging-azure)- oder [Node.js](configure-language-nodejs.md#debug-remotely)-Apps. Diese Option wird nach 48 Stunden automatisch deaktiviert.
 - **Eingehende Clientzertifikate**: erforderliche Clientzertifikate bei [gegenseitiger Authentifizierung](app-service-web-configure-tls-mutual-auth.md).
 
 ## <a name="configure-default-documents"></a>Konfigurieren von Standarddokumenten
@@ -215,7 +215,7 @@ Um die virtuellen Anwendungen und Verzeichnisse zu konfigurieren, geben Sie jede
 
 ### <a name="containerized-apps"></a>Container-Apps
 
-Sie können [für Ihre Container-Apps benutzerdefinierten Speicher hinzufügen](containers/how-to-serve-content-from-azure-storage.md). Zu den Container-Apps zählen alle Linux-Apps sowie die in App Service ausgeführten benutzerdefinierten Windows- und Linux-Container. Klicken Sie auf **Neue Azure-Speicherbereitstellung** , und konfigurieren Sie Ihren benutzerdefinierten Speicher wie folgt:
+Sie können [für Ihre Container-Apps benutzerdefinierten Speicher hinzufügen](configure-connect-to-azure-storage.md). Zu den Container-Apps zählen alle Linux-Apps sowie die in App Service ausgeführten benutzerdefinierten Windows- und Linux-Container. Klicken Sie auf **Neue Azure-Speicherbereitstellung** , und konfigurieren Sie Ihren benutzerdefinierten Speicher wie folgt:
 
 - **Name**: Neuer Anzeigename.
 - **Konfigurationsoptionen**: **Einfach** oder **Erweitert**.
@@ -228,22 +228,22 @@ Sie können [für Ihre Container-Apps benutzerdefinierten Speicher hinzufügen](
 - **Zugriffsschlüssel**: Für die erweiterte Konfiguration der Zugriffsschlüssel.
 - **Einbindungspfad**: Der absolute Pfad in Ihrem Container zum Bereitstellen des benutzerdefinierten Speichers.
 
-Weitere Informationen finden Sie unter [Bereitstellen von Inhalt aus Azure Storage in App Service unter Linux](containers/how-to-serve-content-from-azure-storage.md).
+Weitere Informationen finden Sie unter [Konfigurieren von Azure Files in einem Windows-Container in App Service](configure-connect-to-azure-storage.md).
 
 ## <a name="configure-language-stack-settings"></a>Konfigurieren von Sprachstapeleinstellungen
 
 Für Linux-Apps finden Sie Informationen unter:
 
-- [ASP.NET Core](containers/configure-language-dotnetcore.md)
-- [Node.js](containers/configure-language-nodejs.md)
-- [PHP](containers/configure-language-php.md)
-- [Python](containers/how-to-configure-python.md)
-- [Java](containers/configure-language-java.md)
-- [Ruby](containers/configure-language-ruby.md)
+- [ASP.NET Core](configure-language-dotnetcore.md)
+- [Node.js](configure-language-nodejs.md)
+- [PHP](configure-language-php.md)
+- [Python](configure-language-python.md)
+- [Java](configure-language-java.md)
+- [Ruby](configure-language-ruby.md)
 
 ## <a name="configure-custom-containers"></a>Konfigurieren eines benutzerdefinierten Containers
 
-Siehe [Konfigurieren eines benutzerdefinierten Linux-Containers für Azure App Service](containers/configure-custom-container.md).
+Siehe [Konfigurieren eines benutzerdefinierten Linux-Containers für Azure App Service](configure-custom-container.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

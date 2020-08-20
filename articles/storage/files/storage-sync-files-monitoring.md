@@ -1,18 +1,18 @@
 ---
 title: Überwachen der Azure-Dateisynchronisierung | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie die Azure-Dateisynchronisierung überwachen.
+description: Erfahren Sie, wie Sie Ihre Bereitstellung der Azure-Dateisynchronisierung mit Azure Monitor, dem Speichersynchronisierungsdienst und Windows Server überwachen.
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 06/28/2019
+ms.date: 08/05/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 0232a0c6526d6dcdfec86dedec437c71e7e21080
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8b2b62ac4d79964c0a597f40d8154e5f57350f0b
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85515197"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88031080"
 ---
 # <a name="monitor-azure-file-sync"></a>Überwachen der Azure-Dateisynchronisierung
 
@@ -20,7 +20,11 @@ Mit der Azure-Dateisynchronisierung können Sie die Dateifreigaben Ihrer Organis
 
 In diesem Artikel wird beschrieben, wie Sie Ihre Bereitstellung der Azure-Dateisynchronisierung mit Azure Monitor, dem Speichersynchronisierungsdienst und Windows Server überwachen.
 
-Aktuell stehen die folgenden Überwachungsoptionen zur Verfügung.
+Folgende Szenarios werden in diesem Leitfaden abgedeckt: 
+- Anzeigen von Metriken der Azure-Dateisynchronisierung in Azure Monitor.
+- Erstellen von Warnungen in Azure Monitor, die Sie proaktiv über kritische Zustände unterrichten.
+- Anzeigen der Integrität Ihrer Bereitstellung der Azure-Dateisynchronisierung mithilfe des Azure-Portals.
+- Verwenden der Ereignisprotokolle und Leistungsindikatoren auf Ihren Windows-Servern zum Überwachen der Integrität Ihrer Bereitstellung der Azure-Dateisynchronisierung. 
 
 ## <a name="azure-monitor"></a>Azure Monitor
 
@@ -30,7 +34,9 @@ Verwenden Sie [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/ove
 
 Metriken für die Azure-Dateisynchronisierung werden standardmäßig aktiviert und alle 15 Minuten an Azure Monitor gesendet.
 
-Wählen Sie den Ressourcentyp **Speichersynchronisierungsdienste** aus, um Metriken der Azure-Dateisynchronisierung in Azure Monitor anzuzeigen.
+**Anzeigen von Metriken der Azure-Dateisynchronisierung in Azure Monitor**
+- Wechseln Sie im **Azure-Portal** zu Ihrem **Speichersynchronisierungsdienst**, und klicken Sie auf **Metriken**.
+- Klicken Sie auf die Dropdownliste **Metrik**, und wählen Sie die Metrik aus, die Sie anzeigen möchten.
 
 In Azure Monitor sind die folgenden Metriken für die Azure-Dateisynchronisierung verfügbar:
 
@@ -46,34 +52,61 @@ In Azure Monitor sind die folgenden Metriken für die Azure-Dateisynchronisierun
 | Onlinestatus des Servers | Anzahl von Taktsignalen, die vom Server empfangen wurden.<br><br>Einheit: Anzahl<br>Aggregationstyp: Maximum<br>Verfügbare Dimension: Servername |
 | Ergebnis der Synchronisierungssitzung | Ergebnis der Synchronisierungssitzung (1 = erfolgreiche Synchronisierungssitzung, 0 = fehlerhafte Synchronisierungssitzung)<br><br>Einheit: Anzahl<br>Aggregationstypen: Maximum<br>Verfügbare Dimensionen: Name des Serverendpunkts, Synchronisierungsrichtung, Name der Synchronisierungsgruppe |
 
-### <a name="alerts"></a>Warnungen
+### <a name="alerts"></a>Alerts
 
-Wählen Sie zum Konfigurieren von Warnungen in Azure Monitor den Speichersynchronisierungsdienst aus, und wählen Sie dann die [Metrik der Azure-Dateisynchronisierung](https://docs.microsoft.com/azure/storage/files/storage-sync-files-monitoring#metrics) aus, die Sie für die Warnung verwenden möchten.  
+Warnungen informieren Sie proaktiv, wenn wichtige Bedingungen in Ihren Überwachungsdaten gefunden werden. Weitere Informationen zum Konfigurieren von Warnungen in Azure Monitor finden Sie unter [Übersicht über Warnungen in Microsoft Azure](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview).
+
+**Erstellen von Warnungen für die Azure-Dateisynchronisierung**
+
+- Wechseln Sie im **Azure-Portal** zu Ihrem **Speichersynchronisierungsdienst**. 
+- Klicken Sie im Abschnitt „Überwachung“ auf **Warnungen** und dann auf **+ Neue Warnungsregel**.
+- Klicken Sie auf **Bedingung auswählen**, und geben Sie die folgenden Informationen für die Warnung an: 
+    - **Metrik**
+    - **Dimensionsname**
+    - **Warnungslogik**
+- Klicken Sie auf **Aktionsgruppe auswählen**, und fügen Sie der Warnung eine Aktionsgruppe (E-Mail, SMS usw.) hinzu, indem Sie entweder eine bestehende Aktionsgruppe auswählen oder eine neue Aktionsgruppe erstellen.
+- Geben Sie die **Warnungsdetails** wie **Warnungsregelname**, **Beschreibung** und **Schweregrad** ein.
+- Klicken Sie auf **Warnungsregel erstellen**, um die Warnung zu erstellen.  
 
 In der folgenden Tabelle sind einige Beispielszenarios für die Überwachung und die jeweils geeignete Metrik für die Warnung aufgeführt:
 
 | Szenario | Für Warnung zu verwendende Metrik |
 |-|-|
-| Fehler bei der Integrität des Serverendpunkts im Portal | Ergebnis der Synchronisierungssitzung |
+| Serverendpunkt-Integrität zeigt einen Fehler im Portal an | Ergebnis der Synchronisierungssitzung |
 | Fehler beim Synchronisieren von Dateien mit einem Server- oder Cloudendpunkt | Dateien ohne Synchronisierung |
 | Registrierter Server kann nicht mit dem Speichersynchronisierungsdienst kommunizieren | Onlinestatus des Servers |
 | Cloudtiering-Rückrufgröße hat 500 GiB pro Tag überschritten  | Cloudtiering-Rückrufgröße |
 
-Weitere Informationen zum Konfigurieren von Warnungen in Azure Monitor finden Sie unter [Übersicht über Warnungen in Microsoft Azure]( https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview).
+Anweisungen zum Erstellen von Warnungen für diese Szenarios finden Sie im Abschnitt [Warnungsbeispiele](#alert-examples).
 
 ## <a name="storage-sync-service"></a>Speichersynchronisierungsdienst
 
-Wechseln Sie im Azure-Portal zum Speichersynchronisierungsdienst, um die Integrität registrierter Server, die Integrität der Serverendpunkte und Metriken anzuzeigen. Die Integrität registrierter Server können Sie auf dem Blatt **Registrierte Server** anzeigen, die Integrität der Serverendpunkte auf dem Blatt **Synchronisierungsgruppen**.
+Navigieren Sie zum Anzeigen der Integrität Ihrer Bereitstellung der Azure-Dateisynchronisierung im **Azure-Portal** zum **Speichersynchronisierungsdienst**. Dort sind folgende Informationen verfügbar:
+
+- Integrität registrierter Server
+- Integrität der Serverendpunkte
+    - Dateien ohne Synchronisierung
+    - Synchronisierungsaktivität
+    - Cloudtieringeffizienz
+    - Dateien ohne Tiering
+    - Rückruffehler
+- Metriken
 
 ### <a name="registered-server-health"></a>Integrität registrierter Server
 
+Um die **Integrität registrierter Server** im Portal anzuzeigen, navigieren Sie zum Abschnitt **Registrierte Server** des **Speichersynchronisierungsdiensts**.
+
 - Wenn sich der **registrierte Server** im Zustand **Online** befindet, kommuniziert er erfolgreich mit dem Dienst.
-- Wenn sich der **registrierte Server** im Zustand **Als offline angezeigt** befindet, vergewissern Sie sich, dass der Überwachungsprozess für die Speichersynchronisierung (AzureStorageSyncMonitor.exe) auf dem Server ausgeführt wird. Wenn sich der Server hinter einer Firewall oder einem Proxy befindet, konfigurieren Sie die Firewall und den Proxy gemäß [diesem Artikel](https://docs.microsoft.com/azure/storage/files/storage-sync-files-firewall-and-proxy).
+- Wenn für **Registrierte Server** der Status **Als offline angezeigt** angezeigt wird, wird der Überwachungsprozess für die Speichersynchronisierung (AzureStorageSyncMonitor.exe) nicht ausgeführt, oder der Server kann nicht auf den Azure-Dateisynchronisierungsdienst zugreifen. Weitere Informationen finden Sie in der [Dokumentation zur Problembehandlung](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#server-endpoint-noactivity).
 
 ### <a name="server-endpoint-health"></a>Integrität der Serverendpunkte
 
-- Die Integrität der Serverendpunkte im Portal basiert auf den Synchronisierungsereignissen, die im Protokoll für Telemetrieereignisse auf dem Server protokolliert werden (ID 9102 und 9302). Wenn eine Synchronisierungssitzung aufgrund eines vorübergehenden Fehlers (z.B. Abbruchfehler) nicht erfolgreich ist, wird die Synchronisierung im Portal möglicherweise weiterhin als fehlerfrei angezeigt, solange ein Fortschritt bei der Synchronisierungssitzung verzeichnet wird. Anhand der Ereignis-ID 9302 wird bestimmt, ob Dateien angewendet werden. Weitere Informationen finden Sie unter [Wie überwache ich die Integrität der Synchronisierung?](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#broken-sync) und [Wie überwache ich den Fortschritt einer aktuellen Synchronisierungssitzung?](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-monitor-the-progress-of-a-current-sync-session).
-- Wenn das Portal einen Synchronisierungsfehler aufgrund eines fehlenden Fortschritts der Synchronisierung anzeigt, lesen Sie die [Dokumentation zur Problembehandlung](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#common-sync-errors).
+Navigieren Sie zum Anzeigen der Integrität eines **Serverendpunkts** im Portal zum Abschnitt **Synchronisierungsgruppen** des **Speichersynchronisierungsdiensts**, und wählen Sie eine **Synchronisierungsgruppe** aus.
+
+- Die **Serverendpunktintegrität** und **Synchronisierungsaktivität** im Portal basiert auf den Synchronisierungsereignissen, die im Protokoll für Telemetrieereignisse auf dem Server protokolliert werden (ID 9102 und 9302). Wenn eine Synchronisierungssitzung aufgrund eines vorübergehenden Fehlers (z. B. Abbruchfehler) nicht erfolgreich ist, wird die Synchronisierung im Portal weiterhin als fehlerfrei angezeigt, solange ein Fortschritt bei der Synchronisierungssitzung verzeichnet wird (Dateien werden angewendet). Ereignis-ID 9302 ist das Synchronisierungsfortschrittereignis, und die Ereignis-ID 9102 wird protokolliert, sobald eine Synchronisierungssitzung abgeschlossen ist.  Weitere Informationen finden Sie unter [Wie überwache ich die Integrität der Synchronisierung?](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#broken-sync) und [Wie überwache ich den Fortschritt einer aktuellen Synchronisierungssitzung?](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-monitor-the-progress-of-a-current-sync-session). Wenn das Portal einen Fehler aufgrund eines fehlenden Fortschritts der Synchronisierung anzeigt, lesen Sie die [Dokumentation zur Problembehandlung](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#common-sync-errors).
+- Die Anzahl **Dateien ohne Synchronisierung** im Portal basiert auf der Ereignis-ID 9121, die im Telemetrieereignisprotokoll auf dem Server protokolliert wird. Dieses Ereignis wird für jeden Fehler pro Element protokolliert, sobald die Synchronisierungssitzung abgeschlossen ist. Wie Sie Fehler auf Elementebene aufzulösen, erfahren Sie unter [Woran erkenne ich, dass bestimmte Dateien oder Ordner nicht synchronisiert wurden?](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-see-if-there-are-specific-files-or-folders-that-are-not-syncing)
+- Um die **Cloudtieringeffizienz** im Portal anzuzeigen, navigieren Sie zu den **Eigenschaften des Serverendpunkts** und dann zum Abschnitt **Cloudtiering**. Die für die Cloudtieringeffizienz bereitgestellten Daten basieren auf der Ereignis-ID 9071, die im Telemetrieereignisprotokoll auf dem Server protokolliert wird. Weitere Informationen finden Sie im Artikel [Übersicht über Cloudtiering](https://docs.microsoft.com/azure/storage/files/storage-sync-cloud-tiering).
+- Um die **Dateien ohne Tiering** und **Rückruffehler** im Portal anzuzeigen, navigieren Sie zu den **Eigenschaften des Serverendpunkts** und dann zum Abschnitt **Cloudtiering**. **Dateien ohne Tiering** basiert auf der Ereignis-ID 9003, die im Telemetrieereignisprotokoll auf dem Server protokolliert ist, und **Rückruffehler** auf der Ereignis-ID 9006. Wie Sie Dateien untersuchen, bei denen kein Tiering möglich ist oder Rückruffehler auftreten, erfahren Sie unter [So beheben Sie Probleme bei Dateien, bei denen kein Tiering möglich ist](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#how-to-troubleshoot-files-that-fail-to-tier) und [Beheben von Rückruffehlern bei Dateien](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#how-to-troubleshoot-files-that-fail-to-be-recalled).
 
 ### <a name="metric-charts"></a>Metrikdiagramme
 
@@ -94,26 +127,28 @@ Wechseln Sie im Azure-Portal zum Speichersynchronisierungsdienst, um die Integri
 
 ## <a name="windows-server"></a>Windows Server
 
-Unter Windows Server können Sie die Integrität für Cloudtiering, registrierte Server und Synchronisierung anzeigen.
+Auf dem **Windows-Server**, auf dem der Azure-Dateisynchronisierungs-Agent installiert ist, können Sie die Integrität der Serverendpunkte auf diesem Server mithilfe der **Ereignisprotokolle** und **Leistungsindikatoren** anzeigen.
 
 ### <a name="event-logs"></a>Ereignisprotokolle
 
 Verwenden Sie das Telemetrieereignisprotokoll auf dem Server, um die Integrität für registrierte Server, Synchronisierung und Cloudtiering zu überwachen. Das Telemetrieereignisprotokoll befindet sich in der Ereignisanzeige unter *Anwendungen und Dienste\Microsoft\FileSync\Agent*.
 
-Synchronisierungsintegrität:
+Synchronisierungsintegrität
 
 - Nach Abschluss einer Synchronisierungssitzung wird ein Ereignis mit der ID 9102 protokolliert. Anhand dieses Ereignisses können Sie bestimmen, ob Synchronisierungssitzungen erfolgreich abgeschlossen wurden (**HResult = 0**) und ob Synchronisierungsfehler auf Elementebene vorliegen. Weitere Informationen finden Sie in der Dokumentation zur [Synchronisierungsintegrität](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#broken-sync) und zu [Fehlern auf Elementebene](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-see-if-there-are-specific-files-or-folders-that-are-not-syncing).
 
   > [!Note]  
   > Manchmal tritt bei Synchronisierungssitzungen allgemein ein Fehler auf oder PerItemErrorCount ist ungleich 0. Jedoch wird trotzdem ein Fortschritt angezeigt, und einige Dateien synchronisieren erfolgreich. Dies kann bei den Feldern beobachtet werden, die mit „Applied“ beginnen (AppliedFileCount, AppliedDirCount, AppliedTombstoneCount und AppliedSizeBytes). Die Werte dieser Felder geben an, bis zu welchem Anteil die Sitzung erfolgreich durchgeführt wurde. Wenn für mehrere aufeinanderfolgende Synchronisierungssitzungen Fehler angezeigt werden, die Sitzungen jedoch steigende „Applied“-Werte aufweisen, sollten Sie der Synchronisierung Zeit für einen erneuten Versuch geben, bevor Sie ein Supportticket öffnen.
 
+- Ereignis-ID 9121 wird für jeden Fehler pro Element protokolliert, sobald die Synchronisierungssitzung abgeschlossen ist. Bestimmen Sie anhand dieses Ereignisses die Anzahl der Dateien, bei denen die Synchronisierung mit diesem Fehler (**PersistentCount** und **TransientCount**) nicht erfolgreich ist. Wie Sie persistente Fehler auf Elementebene untersuchen sollten, erfahren Sie unter [Woran erkenne ich, dass bestimmte Dateien oder Ordner nicht synchronisiert wurden?](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-see-if-there-are-specific-files-or-folders-that-are-not-syncing).
+
 - Die Ereignis-ID 9302 wird alle 5 bis 10 Minuten protokolliert, wenn eine aktive Synchronisierungssitzung vorliegt. Bestimmen Sie anhand dieses Ereignisses, ob für die aktuelle Synchronisierungssitzung ein Fortschritt verzeichnet wird (**AppliedItemCount > 0**). Wenn die Synchronisierung keinen Fortschritt zeigt, sollte für die Synchronisierungssitzung irgendwann ein Fehler auftreten, und es wird die Ereignis-ID 9102 mit dem Fehler protokolliert. Weitere Informationen finden Sie in der [Dokumentation zum Synchronisierungsfortschritt](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-monitor-the-progress-of-a-current-sync-session).
 
-Integrität registrierter Server:
+Integrität registrierter Server
 
-- Die Ereignis-ID 9301 wird alle 30 Sekunden protokolliert, wenn ein Server Aufträge im Dienst abfragt. Wenn GetNextJob mit dem **Status = 0** abgeschlossen wird, ist eine Kommunikation zwischen dem Server und dem Dienst möglich. Wenn GetNextJob mit einem Fehler abgeschlossen wird, lesen Sie die [Dokumentation zur Problembehandlung](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#common-sync-errors), um weitere Informationen zu erhalten.
+- Die Ereignis-ID 9301 wird alle 30 Sekunden protokolliert, wenn ein Server Aufträge im Dienst abfragt. Wenn GetNextJob mit dem **Status = 0** abgeschlossen wird, ist eine Kommunikation zwischen dem Server und dem Dienst möglich. Wenn GetNextJob mit einem Fehler abgeschlossen wird, lesen Sie die [Dokumentation zur Problembehandlung](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#server-endpoint-noactivity), um weitere Informationen zu erhalten.
 
-Cloudtieringintegrität:
+Cloudtieringintegrität
 
 - Verwenden Sie die Ereignis-IDs 9003, 9016 und 9029 im Telemetrieereignisprotokoll (in der Ereignisanzeige unter *Anwendungen und Dienste\Microsoft\FileSync\Agent*), um die Tieringaktivität auf einem Server zu überwachen.
 
@@ -144,6 +179,100 @@ Im Systemmonitor stehen die folgenden Leistungsindikatoren für die Azure-Dateis
 | AFS-Synchronisierungsvorgänge\Heruntergeladene Synchronisierungsdateien/s | Die Anzahl von pro Sekunde heruntergeladenen Synchronisierungsdateien. |
 | AFS-Synchronisierungsvorgänge\Hochgeladene Synchronisierungsdateien/s | Die Anzahl von pro Sekunde hochgeladenen Synchronisierungsdateien. |
 | AFS-Synchronisierungsvorgänge\Synchronisierungsdateivorgänge gesamt/s | Die Gesamtanzahl von synchronisierten Dateien (Upload und Download). |
+
+## <a name="alert-examples"></a>Beispiele für Warnungen
+In diesem Abschnitt finden Sie einige Beispiele für Warnungen für die Azure-Dateisynchronisierung.
+
+  > [!Note]  
+  > Wenn Sie eine Warnung erstellen und zu viele Warnungen ausgelöst werden, passen Sie den Schwellenwert und die Warnungslogik an.
+  
+### <a name="how-to-create-an-alert-if-the-server-endpoint-health-shows-an-error-in-the-portal"></a>Erstellen einer Warnung, wenn die Serverendpunkt-Integrität einen Fehler im Portal anzeigt
+
+1. Navigieren Sie im **Azure-Portal** zum entsprechenden **Speichersynchronisierungsdienst**. 
+2. Wechseln Sie zum Abschnitt **Überwachung**, und klicken Sie auf **Warnungen**. 
+3. Klicken Sie auf **+ Neue Warnungsregel**, um eine neue Warnungsregel zu erstellen. 
+4. Konfigurieren Sie eine Bedingung, indem Sie auf **Bedingung auswählen** klicken.
+5. Klicken Sie auf dem Blatt **Konfigurieren der Signallogik** unter dem Signalnamen auf **Ergebnis der Synchronisierungssitzung**.  
+6. Wählen Sie die folgende Dimensionskonfiguration aus: 
+    - Dimensionsname: **Name des Serverendpunkts**  
+    - Operator: **=** 
+    - Dimensionswerte: **Alle aktuellen und zukünftigen Werte**  
+7. Navigieren Sie zu **Warnungslogik**, und führen Sie die folgenden Schritte aus: 
+    - Auf **Statisch** festgelegter Schwellenwert 
+    - Operator: **Kleiner als** 
+    - Aggregationstyp: **Maximum**  
+    - Schwellenwert: **1** 
+    - Auswertung basierend auf: Aggregationsgranularität = **24 Stunden** | Häufigkeit der Auswertung = **Jede Stunde** 
+    - Klicken Sie auf **Fertig**. 
+8. Klicken Sie auf **Aktionsgruppe auswählen**, um der Warnung eine Aktionsgruppe (E-Mail, SMS usw.) hinzuzufügen, indem Sie entweder eine bestehende Aktionsgruppe auswählen oder eine neue Aktionsgruppe erstellen.
+9. Geben Sie die **Warnungsdetails** wie **Warnungsregelname**, **Beschreibung** und **Schweregrad** ein.
+10. Klicken Sie auf **Warnungsregel erstellen**. 
+
+### <a name="how-to-create-an-alert-if-files-are-failing-to-sync-to-a-server-or-cloud-endpoint"></a>Erstellen einer Warnung, wenn beim Synchronisieren von Dateien mit einem Server- oder Cloudendpunkt Fehler auftreten
+
+1. Navigieren Sie im **Azure-Portal** zum entsprechenden **Speichersynchronisierungsdienst**. 
+2. Wechseln Sie zum Abschnitt **Überwachung**, und klicken Sie auf **Warnungen**. 
+3. Klicken Sie auf **+ Neue Warnungsregel**, um eine neue Warnungsregel zu erstellen. 
+4. Konfigurieren Sie eine Bedingung, indem Sie auf **Bedingung auswählen** klicken.
+5. Klicken Sie auf dem Blatt **Konfigurieren der Signallogik** unter dem Signalnamen auf **Dateien ohne Synchronisierung**.  
+6. Wählen Sie die folgende Dimensionskonfiguration aus: 
+     - Dimensionsname: **Name des Serverendpunkts**  
+     - Operator: **=** 
+     - Dimensionswerte: **Alle aktuellen und zukünftigen Werte**  
+7. Navigieren Sie zu **Warnungslogik**, und führen Sie die folgenden Schritte aus: 
+     - Auf **Statisch** festgelegter Schwellenwert 
+     - Operator: **Größer als** 
+     - Aggregationstyp: **Gesamt**  
+     - Schwellenwert: **100** 
+     - Auswertung basierend auf: Aggregationsgranularität = **5 Minuten** | Häufigkeit der Auswertung = **alle 5 Minuten** 
+     - Klicken Sie auf **Fertig**. 
+8. Klicken Sie auf **Aktionsgruppe auswählen**, um der Warnung eine Aktionsgruppe (E-Mail, SMS usw.) hinzuzufügen, indem Sie entweder eine bestehende Aktionsgruppe auswählen oder eine neue Aktionsgruppe erstellen.
+9. Geben Sie die **Warnungsdetails** wie **Warnungsregelname**, **Beschreibung** und **Schweregrad** ein.
+10. Klicken Sie auf **Warnungsregel erstellen**. 
+
+### <a name="how-to-create-an-alert-if-a-registered-server-is-failing-to-communicate-with-the-storage-sync-service"></a>Erstellen einer Warnung, wenn ein registrierter Server nicht mit dem Speichersynchronisierungsdienst kommunizieren kann
+
+1. Navigieren Sie im **Azure-Portal** zum entsprechenden **Speichersynchronisierungsdienst**. 
+2. Wechseln Sie zum Abschnitt **Überwachung**, und klicken Sie auf **Warnungen**. 
+3. Klicken Sie auf **+ Neue Warnungsregel**, um eine neue Warnungsregel zu erstellen. 
+4. Konfigurieren Sie eine Bedingung, indem Sie auf **Bedingung auswählen** klicken.
+5. Klicken Sie auf dem Blatt **Konfigurieren der Signallogik** unter dem Signalnamen auf **Onlinestatus des Servers**.  
+6. Wählen Sie die folgende Dimensionskonfiguration aus: 
+     - Dimensionsname: **Servername**  
+     - Operator: **=** 
+     - Dimensionswerte: **Alle aktuellen und zukünftigen Werte**  
+7. Navigieren Sie zu **Warnungslogik**, und führen Sie die folgenden Schritte aus: 
+     - Auf **Statisch** festgelegter Schwellenwert 
+     - Operator: **Kleiner als** 
+     - Aggregationstyp: **Maximum**  
+     - Schwellenwert (in Bytes): **1** 
+     - Auswertung basierend auf: Aggregationsgranularität = **1 Stunde** | Häufigkeit der Auswertung = **Alle 30 Minuten** 
+     - Klicken Sie auf **Fertig**. 
+8. Klicken Sie auf **Aktionsgruppe auswählen**, um der Warnung eine Aktionsgruppe (E-Mail, SMS usw.) hinzuzufügen, indem Sie entweder eine bestehende Aktionsgruppe auswählen oder eine neue Aktionsgruppe erstellen.
+9. Geben Sie die **Warnungsdetails** wie **Warnungsregelname**, **Beschreibung** und **Schweregrad** ein.
+10. Klicken Sie auf **Warnungsregel erstellen**. 
+
+### <a name="how-to-create-an-alert-if-the-cloud-tiering-recall-size-has-exceeded-500gib-in-a-day"></a>Erstellen einer Warnung, wenn die Cloudtiering-Rückrufgröße 500 GiB pro Tag überschritten hat
+
+1. Navigieren Sie im **Azure-Portal** zum entsprechenden **Speichersynchronisierungsdienst**. 
+2. Wechseln Sie zum Abschnitt **Überwachung**, und klicken Sie auf **Warnungen**. 
+3. Klicken Sie auf **+ Neue Warnungsregel**, um eine neue Warnungsregel zu erstellen. 
+4. Konfigurieren Sie eine Bedingung, indem Sie auf **Bedingung auswählen** klicken.
+5. Klicken Sie auf dem Blatt **Konfigurieren der Signallogik** unter dem Signalnamen auf **Cloudtiering-Rückrufgröße**.  
+6. Wählen Sie die folgende Dimensionskonfiguration aus: 
+     - Dimensionsname: **Servername**  
+     - Operator: **=** 
+     - Dimensionswerte: **Alle aktuellen und zukünftigen Werte**  
+7. Navigieren Sie zu **Warnungslogik**, und führen Sie die folgenden Schritte aus: 
+     - Auf **Statisch** festgelegter Schwellenwert 
+     - Operator: **Größer als** 
+     - Aggregationstyp: **Gesamt**  
+     - Schwellenwert (in Bytes): **67108864000** 
+     - Auswertung basierend auf: Aggregationsgranularität = **24 Stunden** | Häufigkeit der Auswertung = **Jede Stunde** 
+    - Klicken Sie auf **Fertig**. 
+8. Klicken Sie auf **Aktionsgruppe auswählen**, um der Warnung eine Aktionsgruppe (E-Mail, SMS usw.) hinzuzufügen, indem Sie entweder eine bestehende Aktionsgruppe auswählen oder eine neue Aktionsgruppe erstellen.
+9. Geben Sie die **Warnungsdetails** wie **Warnungsregelname**, **Beschreibung** und **Schweregrad** ein.
+10. Klicken Sie auf **Warnungsregel erstellen**. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 - [Planung für die Bereitstellung einer Azure-Dateisynchronisierung](storage-sync-files-planning.md)

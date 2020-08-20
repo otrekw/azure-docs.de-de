@@ -1,18 +1,18 @@
 ---
 title: Problembehandlung bei der Azure-Dateisynchronisierung | Microsoft-Dokumentation
-description: Beheben von häufigen Problemen bei der Azure-Dateisynchronisierung
+description: Beheben von häufigen Problemen in einer Bereitstellung in der Azure-Dateisynchronisierung, mit der Sie Windows Server in einen schnellen Cache Ihrer Azure-Dateifreigabe umwandeln können.
 author: jeffpatt24
 ms.service: storage
 ms.topic: troubleshooting
 ms.date: 6/12/2020
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 17c8f846201553d3cfa9a2d68b8b4a7ab655c378
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: d266583a2bd73c92a58fad1882a1c572ed4f3769
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232377"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056260"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Problembehandlung für Azure-Dateisynchronisierung
 Mit der Azure-Dateisynchronisierung können Sie die Dateifreigaben Ihrer Organisation in Azure Files zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Mit der Azure-Dateisynchronisierung werden Ihre Windows Server-Computer zu einem schnellen Cache für Ihre Azure-Dateifreigabe. Sie können ein beliebiges Protokoll verwenden, das unter Windows Server verfügbar ist, um lokal auf Ihre Daten zuzugreifen, z.B. SMB, NFS und FTPS. Sie können weltweit so viele Caches wie nötig nutzen.
@@ -47,7 +47,7 @@ Nachdem Sie einen Serverendpunkt unter Windows Server 2012 R2 erstellt haben, t
 Auf „Laufwerkbuchstabe:\“ kann nicht zugegriffen werden.  
 „Der Parameter ist falsch.“
 
-Installieren Sie zum Beheben dieses Fehlers die neuesten Updates für Windows Server 2012 R2, und starten Sie den Server neu.
+Installieren Sie zum Beheben des Fehlers [KB2919355](https://support.microsoft.com/help/2919355/windows-rt-8-1-windows-8-1-windows-server-2012-r2-update-april-2014), und starten Sie den Server neu. Wenn dieses Update nicht installiert wird, weil bereits ein späteres Update installiert ist, navigieren Sie zu Windows Update, installieren Sie die neuesten Updates für Windows Server 2012 R2, und starten Sie den Server neu.
 
 <a id="server-registration-missing-subscriptions"></a>**Bei der Serverregistrierung werden nicht alle Azure-Abonnements aufgelistet.**  
 Beim Registrieren eines Servers mithilfe von „ServerRegistration.exe“ fehlen Abonnements, wenn Sie auf die Dropdownliste für das Azure-Abonnement klicken.
@@ -338,7 +338,7 @@ Um diese Fehler anzuzeigen, führen Sie das PowerShell-Skript **FileSyncErrorsRe
 | 0x80c80200 | -2134375936 | ECS_E_SYNC_CONFLICT_NAME_EXISTS | Die Datei kann nicht synchronisiert werden, da die maximale Anzahl von Konfliktdateien erreicht wurde. Die Azure-Dateisynchronisierung unterstützt 100 Konfliktdateien pro Datei. Weitere Informationen zu Dateikonflikten finden Sie unter den [Häufig gestellten Fragen (FAQ)](https://docs.microsoft.com/azure/storage/files/storage-files-faq#afs-conflict-resolution) zur Azure-Dateisynchronisierung. | Um dieses Problem zu beheben, reduzieren Sie die Anzahl der Konfliktdateien. Die Datei wird synchronisiert, sobald die Anzahl der Konfliktdateien weniger als 100 beträgt. |
 
 #### <a name="handling-unsupported-characters"></a>Behandlung von nicht unterstützten Zeichen
-Wenn das PowerShell-Skript **FileSyncErrorsReport.ps1** Fehler aufgrund von nicht unterstützten Zeichen (Fehlercode 0x8007007b oder 0x80c80255) anzeigt, sollten Sie diese Zeichen aus den entsprechenden Dateinamen entfernen oder darin ändern. PowerShell gibt diese Zeichen wahrscheinlich als Fragezeichen oder leere Rechtecke aus, da die meisten dieser Zeichen keine standardisierte visuelle Codierung aufweisen. Mit dem [Auswertungstool](storage-sync-files-planning.md#evaluation-cmdlet) können Sie nicht unterstützte Zeichen identifizieren.
+Wenn das PowerShell-Skript **FileSyncErrorsReport.ps1** Synchronisierungsfehler pro Element aufgrund von nicht unterstützten Zeichen (Fehlercode 0x8007007b oder 0x80c80255) anzeigt, sollten Sie diese Zeichen aus den entsprechenden Dateinamen entfernen oder darin ändern. PowerShell gibt diese Zeichen wahrscheinlich als Fragezeichen oder leere Rechtecke aus, da die meisten dieser Zeichen keine standardisierte visuelle Codierung aufweisen. Mit dem [Auswertungstool](storage-sync-files-planning.md#evaluation-cmdlet) können Sie nicht unterstützte Zeichen identifizieren. Wenn das Dataset mehrere Dateien mit ungültigen Zeichen enthält, verwenden Sie das Skript [ScanUnsupportedChars](https://github.com/Azure-Samples/azure-files-samples/tree/master/ScanUnsupportedChars), um Dateien umzubenennen, die nicht unterstützte Zeichen enthalten.
 
 Die folgende Tabelle enthält alle Unicode-Zeichen, die die Azure-Dateisynchronisierung noch nicht unterstützt.
 

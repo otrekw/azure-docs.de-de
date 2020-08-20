@@ -1,22 +1,22 @@
 ---
-title: Authentifizieren mit verwalteten Azure-Identitäten
+title: Verwenden verwalteter Identitäten für den Zugriff auf App Configuration
 titleSuffix: Azure App Configuration
-description: Authentifizieren bei Azure App Configuration mit verwalteten Azure-Identitäten
+description: Authentifizieren bei Azure App Configuration mit verwalteten Identitäten
 author: lisaguthrie
 ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 2/25/2020
-ms.openlocfilehash: bf97a1eae758778efc8d800666af4a5fcb574429
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7ccf1bed3a1791f0aa172a617deab1cd192540f3
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80056841"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88135469"
 ---
-# <a name="integrate-with-azure-managed-identities"></a>Integrieren mit verwalteten Azure-Identitäten
+# <a name="use-managed-identities-to-access-app-configuration"></a>Verwenden verwalteter Identitäten für den Zugriff auf App Configuration
 
-Mit [verwalteten Identitäten](../active-directory/managed-identities-azure-resources/overview.md) von Azure Active Directory wird die Verwaltung von Geheimnissen für Ihre Cloudanwendung vereinfacht. Mit einer verwalteten Identität kann Ihr Code den Dienstprinzipal verwenden, der für den Azure-Dienst, auf dem er ausgeführt wird, erstellt wurde. Eine verwaltete Identität wird anstelle von separaten Anmeldeinformationen verwendet, die in Azure Key Vault oder in einer lokalen Verbindungszeichenfolge gespeichert sind. 
+Mit [verwalteten Identitäten](../active-directory/managed-identities-azure-resources/overview.md) von Azure Active Directory wird die Verwaltung von Geheimnissen für Ihre Cloudanwendung vereinfacht. Mit einer verwalteten Identität kann Ihr Code den Dienstprinzipal verwenden, der für den Azure-Dienst, auf dem er ausgeführt wird, erstellt wurde. Eine verwaltete Identität wird anstelle von separaten Anmeldeinformationen verwendet, die in Azure Key Vault oder in einer lokalen Verbindungszeichenfolge gespeichert sind.
 
 Azure App Configuration und die zugehörigen .NET Core-, .NET Framework- und Java Spring-Clientbibliotheken verfügen über integrierte Unterstützung für die verwaltete Dienstidentität. Zwar müssen Sie die verwaltete Identität nicht verwenden, jedoch entfällt durch deren Verwendung die Notwendigkeit für ein Zugriffstoken mit Geheimnissen. Ihr Code kann nur mithilfe des Dienstendpunkts auf den App Configuration-Speicher zuzugreifen. Sie können diese URL direkt in Ihren Code einbetten, ohne Geheimnisse offenzulegen.
 
@@ -84,7 +84,7 @@ Um eine verwaltete Entität im Portal einzurichten, erstellen Sie zuerst eine An
 
 1. Suchen Sie den Endpunkt Ihres App Configuration-Speichers. Diese URL wird auf der Registerkarte **Zugriffsschlüssel** für den Speicher im Azure-Portal aufgelistet.
 
-1. Öffnen Sie die Datei *appsettings.json*, und fügen Sie das folgende Skript hinzu. Ersetzen Sie *\<service_endpoint>* (einschließlich der spitzen Klammern) durch die URL für Ihren App Configuration-Speicher. 
+1. Öffnen Sie die Datei *appsettings.json*, und fügen Sie das folgende Skript hinzu. Ersetzen Sie *\<service_endpoint>* (einschließlich der spitzen Klammern) durch die URL für Ihren App Configuration-Speicher.
 
     ```json
     "AppConfig": {
@@ -183,6 +183,9 @@ Um eine verwaltete Entität im Portal einzurichten, erstellen Sie zuerst eine An
 
     Sie können jetzt auf Key Vault-Verweise zugreifen wie auf jeden anderen App Configuration-Schlüssel. Der Konfigurationsanbieter verwendet den `KeyVaultClient`, den Sie für die Authentifizierung bei Key Vault konfiguriert haben, und ruft den Wert ab.
 
+> [!NOTE]
+> `ManagedIdentityCredential` unterstützt nur die Authentifizierung der verwalteten Identität. Dies funktioniert nicht in lokalen Umgebungen. Wenn Sie den Code lokal ausführen möchten, sollten Sie `DefaultAzureCredential` verwenden, wodurch auch die Dienstprinzipalauthentifizierung unterstützt wird. Nähere Informationen finden Sie unter diesem [Link](https://docs.microsoft.com/dotnet/api/azure.identity.defaultazurecredential).
+
 [!INCLUDE [Prepare repository](../../includes/app-service-deploy-prepare-repo.md)]
 
 ## <a name="deploy-from-local-git"></a>Bereitstellen über lokales Git
@@ -242,7 +245,7 @@ http://<app_name>.azurewebsites.net
 
 ## <a name="use-managed-identity-in-other-languages"></a>Verwenden einer verwalteten Identität in anderen Sprachen
 
-App Configuration-Anbieter für .NET Framework und Java Spring verfügen auch über integrierte Unterstützung für verwaltete Identitäten. Sie können beim Konfigurieren eines dieser Anbieter den URL-Endpunkt Ihres Speichers verwenden anstelle seiner vollständigen Verbindungszeichenfolge. 
+App Configuration-Anbieter für .NET Framework und Java Spring verfügen auch über integrierte Unterstützung für verwaltete Identitäten. Sie können beim Konfigurieren eines dieser Anbieter den URL-Endpunkt Ihres Speichers verwenden anstelle seiner vollständigen Verbindungszeichenfolge.
 
 Beispielsweise können Sie die in der Schnellstartanleitung erstellte .NET Framework-Konsolen-App aktualisieren, um die folgenden Einstellungen in der Datei *App.config* anzugeben:
 

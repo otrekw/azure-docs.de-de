@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 03/05/2020
 ms.author: yushwang
-ms.openlocfilehash: 027047a212df72479a4f1b2511729365f3fa09e4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b5d66e79e79edd98f3192d0187d6f0454c3aeffa
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708925"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121475"
 ---
 # <a name="vpn-gateway-faq"></a>Häufig gestellte Fragen zum VPN-Gateway
 
@@ -127,6 +127,10 @@ Für die Authentifizierung können nur vorinstallierte Schlüssel (Pre-Shared Ke
 
 Ja. Informationen finden Sie unter [Konfigurieren der Tunnelerzwingung mit dem klassischen Bereitstellungsmodell](vpn-gateway-about-forced-tunneling.md).
 
+### <a name="can-i-use-nat-t-on-my-vpn-connections"></a>Kann ich NAT-T für meine VPN-Verbindungen verwenden?
+
+Ja, NAT Traversal (NAT-T) wird unterstützt. Azure VPN Gateway setzt KEINE NAT-ähnliche Funktionalität für die inneren Pakete ein, die bei den IPSec-Tunneln ein-/ausgehen.  Stellen Sie in dieser Konfiguration sicher, dass das lokale Gerät den IPSec-Tunnel initiiert.
+
 ### <a name="can-i-set-up-my-own-vpn-server-in-azure-and-use-it-to-connect-to-my-on-premises-network"></a>Kann ich in Azure einen eigenen VPN-Server einrichten und damit eine Verbindung mit meinem lokalen Netzwerk herstellen?
 
 Ja. Sie können in Azure eigene VPN-Gateways oder -Server bereitstellen (entweder über Azure Marketplace oder durch Erstellung eines eigenen VPN-Routers). Sie müssen in Ihrem virtuellen Netzwerk benutzerdefinierte Routen konfigurieren, um sicherzustellen, dass der Datenverkehr zwischen Ihren lokalen Netzwerken und den Subnetzen Ihres virtuellen Netzwerks richtig weitergeleitet wird.
@@ -141,7 +145,7 @@ Ein Gateway für virtuelle Netzwerke ist im Grunde ein mehrfach vernetztes Gerä
 
 Weitere Informationen finden Sie unter [Informationen zu VPN Gateway-Einstellungen](vpn-gateway-about-vpn-gateway-settings.md).
 
-## <a name="site-to-site-connections-and-vpn-devices"></a><a name="s2s"></a>Site-to-Site-Verbindungen und VPN-Geräte
+## <a name="site-to-site-connections-and-vpn-devices"></a><a name="s2s"></a>Standort-zu-Standort-Verbindungen und VPN-Geräte
 
 ### <a name="what-should-i-consider-when-selecting-a-vpn-device"></a>Was muss ich bei der Wahl eines VPN-Geräts berücksichtigen?
 
@@ -191,7 +195,7 @@ Dieser Abschnitt gilt für das Ressourcen-Manager-Bereitstellungsmodell.
 
 ### <a name="can-i-use-azure-vpn-gateway-to-transit-traffic-between-my-on-premises-sites-or-to-another-virtual-network"></a>Kann ich mit dem Azure-VPN Gateway Datenverkehr zwischen meinen lokalen Standorten oder an ein anderes virtuelles Netzwerk übertragen?
 
-**Resource Manager-Bereitstellungsmodell**<br>
+**Ressourcen-Manager-Bereitstellungsmodell**<br>
 Ja. Weitere Informationen finden Sie im Abschnitt [BGP](#bgp).
 
 **Klassisches Bereitstellungsmodell**<br>
@@ -215,7 +219,7 @@ Ja. VPNs vom Typ „Punkt zu Standort“ (P2S) können mit den VPN Gateways komb
 
 ### <a name="can-i-connect-a-virtual-network-with-ipsec-vpns-to-my-expressroute-circuit"></a>Kann ich eine Verbindung zwischen einem virtuellen Netzwerk mit IPsec-VPNs und meiner ExpressRoute-Verbindung herstellen?
 
-Ja, diese Möglichkeit wird unterstützt. Weitere Informationen finden Sie unter [Konfigurieren von gleichzeitig vorhandenen ExpressRoute- und Standort-zu-Standort-VPN-Verbindungen](../expressroute/expressroute-howto-coexist-classic.md).
+Ja, das wird unterstützt. Weitere Informationen finden Sie unter [Konfigurieren von gleichzeitig vorhandenen ExpressRoute- und Standort-zu-Standort-VPN-Verbindungen](../expressroute/expressroute-howto-coexist-classic.md).
 
 ## <a name="ipsecike-policy"></a><a name="ipsecike"></a>IPsec-/IKE-Richtlinie
 
