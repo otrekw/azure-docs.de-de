@@ -2,26 +2,21 @@
 title: 'Tutorial: Azure Active Directory-Integration von Clever Nelly| Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Clever Nelly konfigurieren.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: af3c925e-92ec-431d-80cf-2e0861cd4ba5
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 06/27/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: ac9647bf6a9e2e763bcfb6e3d840cdccd2b6c305
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 9946abc89a924b1577743b64de234805e411793d
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67595006"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88520092"
 ---
 # <a name="tutorial-integrate-clever-nelly-with-azure-active-directory"></a>Tutorial: Integrieren von Clever Nelly in Azure Active Directory
 
