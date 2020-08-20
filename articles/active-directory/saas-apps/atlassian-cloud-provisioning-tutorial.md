@@ -2,24 +2,21 @@
 title: 'Tutorial: Konfigurieren der automatischen Benutzerbereitstellung mit Azure Active Directory für Atlassian Cloud | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie Azure Active Directory so konfigurieren, dass Benutzerkonten in Atlassian Cloud automatisch bereitgestellt oder entfernt werden.
 services: active-directory
-documentationcenter: ''
 author: zhchia
 writer: zhchia
-manager: beatrizd-msft
-ms.assetid: na
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 12/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 12e94cfd576ced8c0e2768dd508e7f6f1a0056eb
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 14418d4d280f4da629aecd5a95b5a49e6856e2c1
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87927469"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88549386"
 ---
 # <a name="tutorial-configure-atlassian-cloud-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren der automatischen Benutzerbereitstellung für Atlassian Cloud
 

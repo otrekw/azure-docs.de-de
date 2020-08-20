@@ -2,25 +2,21 @@
 title: 'Tutorial: Azure Active Directory-Integration mit TiViTz | Microsoft-Dokumentation'
 description: Hier erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und TiViTz konfigurieren.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: b97ed88f-7888-4185-be22-41d1f62cbbf1
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 3861cf8004964d032d149d27e954ab05a2db80b5
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: af3a708be09022f2f99a66c388e626669f784fd8
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67088571"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88552100"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tivitz"></a>Tutorial: Azure Active Directory-Integration mit TiViTz
 

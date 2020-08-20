@@ -10,18 +10,18 @@ ms.subservice: custom-vision
 ms.topic: quickstart
 ms.date: 08/05/2020
 ms.author: pafarley
-ms.openlocfilehash: 01a5714cb78959a982ad73deb401edbafeebe8f9
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 57fb91e9ead98f6c52fd3f659f4aa12692816297
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87834455"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88549546"
 ---
 # <a name="quickstart-how-to-build-an-object-detector-with-custom-vision"></a>Schnellstart: Informationen zum Erstellen einer Objekterkennung mit Custom Vision
 
 In dieser Schnellstartanleitung erfahren Sie, wie ein Objekterkennungsmodul über die Custom Vision-Website erstellt wird. Nachdem Sie ein Erkennungsmodell erstellt haben, können Sie den Custom Vision-Dienst zur Objekterkennung verwenden.
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/cognitive-services/) erstellen, bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

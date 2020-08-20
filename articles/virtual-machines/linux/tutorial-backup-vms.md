@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 07/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 9dcc1b6f6f3792682f81c0d37ef2046bd1840657
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 1865d307e7b79e7e40b0e98f2dcfa2535b0313fd
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86526995"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88551706"
 ---
 # <a name="tutorial-back-up-and-restore-files-for-linux-virtual-machines-in-azure"></a>Tutorial: Sichern und Wiederherstellen von Dateien für virtuelle Linux-Computer in Azure
 
@@ -45,7 +45,7 @@ Erstellen Sie eine geplante tägliche Sicherung in einem Recovery Services-Treso
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 2. Wählen Sie im Menü auf der linken Seite **Virtuelle Computer** aus. 
 3. Wählen Sie in der Liste eine zu sichernde VM aus.
-4. Klicken Sie auf dem Blatt des virtuellen Computers im Abschnitt **Einstellungen** auf **Sicherung**. Das Blatt **Sicherung aktivieren** wird geöffnet.
+4. Klicken Sie auf dem Blatt des virtuellen Computers im Abschnitt **Vorgänge** auf **Sicherung**. Das Blatt **Sicherung aktivieren** wird geöffnet.
 5. Wenn kein **Recovery Services-Tresor** vorhanden ist, können Sie auf **Neu erstellen** klicken und den Namen für den neuen Tresor angeben. Ein neuer Tresor wird in derselben Ressourcengruppe und an demselben Standort wie der virtuelle Computer erstellt.
 6. Klicken Sie auf **Sicherungsrichtlinie**. In diesem Beispiel behalten Sie die Standardwerte bei. Klicken Sie auf **OK**.
 7. Klicken Sie auf dem Blatt **Sicherung aktivieren** auf **Sicherung aktivieren**. Dadurch wird eine tägliche Sicherung basierend auf dem Standardzeitplan erstellt.

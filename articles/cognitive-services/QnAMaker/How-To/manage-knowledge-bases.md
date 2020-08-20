@@ -3,12 +3,12 @@ title: 'Verwalten von Wissensdatenbanken: QnA Maker'
 description: Über QnA Maker können Sie zur Verwaltung Ihrer Wissensdatenbanken auf deren Einstellungen und Inhalte zugreifen.
 ms.topic: conceptual
 ms.date: 03/18/2020
-ms.openlocfilehash: 4eb07b30b10826c361f4f9b805b517e372fc5ea1
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: 08736ce61e6768cfd9ac3d3ded7092a4ab93fca9
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80756802"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88551777"
 ---
 # <a name="create-knowledge-base-and-manage-settings"></a>Erstellen einer Wissensdatenbank und Verwalten der Einstellungen
 
@@ -17,7 +17,7 @@ ms.locfileid: "80756802"
 ## <a name="prerequisites"></a>Voraussetzungen
 
 > [!div class="checklist"]
-> * Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+> * Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/cognitive-services/) erstellen, bevor Sie beginnen.
 > * Eine über das Azure-Portal erstellte [QnA Maker-Ressource](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker). Merken Sie sich die Azure Active Directory-ID, das Abonnement und den QnA-Ressourcennamen, die Sie beim Erstellen der Ressource ausgewählt haben.
 
 ## <a name="create-a-knowledge-base"></a>Erstellen einer Wissensdatenbank

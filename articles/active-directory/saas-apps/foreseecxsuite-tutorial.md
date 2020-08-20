@@ -2,25 +2,21 @@
 title: 'Tutorial: Azure Active Directory-Integration in ForeSee CX Suite | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie das einmalige Anmelden für Azure Active Directory und ForeSee CX Suite konfigurieren.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 5f4b7830-6186-4d17-b77b-504d4192bfde
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/01/2019
 ms.author: jeedes
-ms.openlocfilehash: c78fa8ec470f04bcd88ab403249f77a65120c707
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: fb0ed4a48eaef2168791abbaf94fb8991fa14132
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67550406"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88551099"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-foresee-cx-suite"></a>Tutorial: Azure Active Directory-Integration in ForeSee CX Suite
 
@@ -119,7 +115,7 @@ So konfigurieren Sie das einmalige Anmelden von Azure AD mit ForeSee CX Suite
 
     a. Geben Sie im Textfeld **Anmelde-URL** eine URL ein: `https://cxsuite.foresee.com/`.
 
-    b. Geben Sie im Textfeld **Bezeichner** eine URL nach folgendem Muster ein: https:\//www.okta.com/saml2/service-provider/\<EindeutigeID>
+    b. Geben Sie im Textfeld **Bezeichner** eine URL nach folgendem Muster ein: https:\//www.okta.com/saml2/service-provider/\<UniqueID>
 
     > [!Note]
     > Falls der Wert **Bezeichner** nicht automatisch aufgefüllt wird, geben Sie den Wert gemäß dem obigen Muster manuell ein. Der ID-Wert ist nicht der tatsächliche Wert. Aktualisieren Sie den Wert mit dem tatsächlichen Bezeichner. Wenden Sie sich an das [Supportteam von ForeSee CX Suite](mailto:support@foresee.com), um diesen Wert zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
