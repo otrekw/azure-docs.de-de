@@ -2,25 +2,21 @@
 title: 'Tutorial: Azure Active Directory-Integration mit Mercell | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Mercell konfigurieren.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: bb94c288-2ed4-4683-acde-62474292df29
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/20/2019
 ms.author: jeedes
-ms.openlocfilehash: af51d76b3a500d7cc5edb0c21b893473e581acd6
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: f7aeae20514cc969ad1beef339773823afa47ea9
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73160685"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88548100"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mercell"></a>Tutorial: Azure Active Directory-Integration mit Mercell
 

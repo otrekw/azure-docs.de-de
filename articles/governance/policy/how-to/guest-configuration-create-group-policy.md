@@ -1,29 +1,29 @@
 ---
 title: Erstellen von Definitionen der Gastkonfigurationsrichtlinie anhand der Gruppenrichtlinien-Baseline für Windows
 description: Erfahren Sie, wie Sie die Gruppenrichtlinie aus der Sicherheitsbaseline von Windows Server 2019 in eine Richtliniendefinition konvertieren.
-ms.date: 06/05/2020
+ms.date: 08/17/2020
 ms.topic: how-to
-ms.openlocfilehash: bbb634ed55acf8aa994045fbef6569fae031c841
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 58fe4fa3e5056192fa5febe4883a1457d130871b
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86080668"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88547767"
 ---
 # <a name="how-to-create-guest-configuration-policy-definitions-from-group-policy-baseline-for-windows"></a>Erstellen von Definitionen der Gastkonfigurationsrichtlinie anhand der Gruppenrichtlinien-Baseline für Windows
 
-Vor dem Erstellen von benutzerdefinierten Richtliniendefinitionen empfiehlt es sich, die allgemeinen Informationen zur [Azure Policy-Gastkonfiguration](../concepts/guest-configuration.md) zu lesen. Informationen zum Erstellen benutzerdefinierter Richtliniendefinitionen für Gastkonfigurationen für Linux finden Sie unter [Erstellen von Richtlinien für Gastkonfigurationen für Linux](./guest-configuration-create-linux.md). Informationen zum Erstellen von benutzerdefinierten Richtliniendefinitionen für Gastkonfigurationen für Windows finden Sie unter [Erstellen von Richtlinien für Gastkonfigurationen für Windows](./guest-configuration-create.md). 
+Vor dem Erstellen von benutzerdefinierten Richtliniendefinitionen empfiehlt es sich, die allgemeinen Informationen zur [Azure Policy-Gastkonfiguration](../concepts/guest-configuration.md) zu lesen. Informationen zum Erstellen benutzerdefinierter Richtliniendefinitionen für Gastkonfigurationen für Linux finden Sie unter [Erstellen von Richtlinien für Gastkonfigurationen für Linux](./guest-configuration-create-linux.md). Informationen zum Erstellen von benutzerdefinierten Richtliniendefinitionen für Gastkonfigurationen für Windows finden Sie unter [Erstellen von Richtlinien für Gastkonfigurationen für Windows](./guest-configuration-create.md).
 
-Beim Überwachen von Windows wird für die Gastkonfiguration ein [DSC](/powershell/scripting/dsc/overview/overview)-Ressourcenmodul (Desired State Configuration) zum Erstellen der Konfigurationsdatei verwendet. Die DSC-Konfiguration definiert den Zustand, in dem sich der Computer befinden soll. Wenn die Auswertung der Konfiguration **nicht konform** ergibt, wird der Richtlinieneffekt *auditIfNotExists* ausgelöst. Die [Azure Policy-Gastkonfiguration](../concepts/guest-configuration.md) führt nur eine Überprüfung der Einstellungen auf Computern durch.
+Beim Überwachen von Windows wird für die Gastkonfiguration ein [DSC](/powershell/scripting/dsc/overview/overview)-Ressourcenmodul (Desired State Configuration) zum Erstellen der Konfigurationsdatei verwendet. Die DSC-Konfiguration definiert den Zustand, in dem sich der Computer befinden soll. Wenn die Auswertung der Konfiguration **nicht konform** ergibt, wird der Richtlinieneffekt *auditIfNotExists* ausgelöst.
+Die [Azure Policy-Gastkonfiguration](../concepts/guest-configuration.md) führt nur eine Überprüfung der Einstellungen auf Computern durch.
 
 > [!IMPORTANT]
 > Benutzerdefinierte Richtliniendefinitionen für Gastkonfigurationen sind eine Previewfunktion.
 >
-> Die Gastkonfigurationserweiterung ist zum Durchführen von Überprüfungen in virtuellen Azure-Computern erforderlich.
-> Weisen Sie die folgenden Richtliniendefinitionen zu, um die Erweiterung auf allen Windows-Computern im gewünschten Umfang bereitzustellen:
->   - [Erforderliche Komponenten bereitstellen, um die Gastkonfigurationsrichtlinie auf Windows-VMs zu aktivieren](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0ecd903d-91e7-4726-83d3-a229d7f2e293)
+> Die Gastkonfigurationserweiterung ist zum Durchführen von Überprüfungen in virtuellen Azure-Computern erforderlich. Weisen Sie die folgenden Richtliniendefinitionen zu, um die Erweiterung auf allen Windows-Computern im gewünschten Umfang bereitzustellen:
+> - [Erforderliche Komponenten bereitstellen, um die Gastkonfigurationsrichtlinie auf Windows-VMs zu aktivieren](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0ecd903d-91e7-4726-83d3-a229d7f2e293)
 
-Von der DSC-Community wurde das [BaselineManagement-Modul](https://github.com/microsoft/BaselineManagement) veröffentlicht, mit dem exportierte Gruppenrichtlinienvorlagen in das DSC-Format konvertiert werden können. In Verbindung mit dem Cmdlet GuestConfiguration erstellt das BaselineManagement-Modul ein Azure Policy-Gastkonfigurationspaket für Windows aus dem Gruppenrichtlinieninhalt. Ausführliche Informationen zur Verwendung des BaselineManagement-Moduls finden Sie im Artikel [Schnellstart: Konvertieren von Gruppenrichtlinien in DSC](/powershell/scripting/dsc/quickstarts/gpo-quickstart). 
+Von der DSC-Community wurde das [BaselineManagement-Modul](https://github.com/microsoft/BaselineManagement) veröffentlicht, mit dem exportierte Gruppenrichtlinienvorlagen in das DSC-Format konvertiert werden können. In Verbindung mit dem Cmdlet GuestConfiguration erstellt das BaselineManagement-Modul ein Azure Policy-Gastkonfigurationspaket für Windows aus dem Gruppenrichtlinieninhalt. Ausführliche Informationen zur Verwendung des BaselineManagement-Moduls finden Sie im Artikel [Schnellstart: Konvertieren von Gruppenrichtlinien in DSC](/powershell/scripting/dsc/quickstarts/gpo-quickstart).
 
 In diesem Leitfaden werden die Schritte zum Erstellen eines Azure Policy-Gastkonfigurationspakets aus einem Gruppenrichtlinienobjekt (GPO) beschrieben. Zwar wird in der exemplarischen Vorgehensweise die Konvertierung der Sicherheitsbaseline von Windows Server 2019 beschrieben, derselbe Prozess kann jedoch auch auf andere GPOs angewendet werden.  
 
@@ -62,7 +62,7 @@ So installieren Sie die **DSC-** , **GuestConfiguration-** , **BaselineManagemen
 
 ## <a name="convert-from-group-policy-to-azure-policy-guest-configuration"></a>Konvertieren aus der Gruppenrichtlinie in die Azure Policy-Gastkonfiguration
 
-Im nächsten Schritt wird die heruntergeladene Server 2019-Baseline mithilfe der Module GuestConfiguration und BaselineManagement in ein Gastkonfigurationspaket konvertiert. 
+Im nächsten Schritt wird die heruntergeladene Server 2019-Baseline mithilfe der Module GuestConfiguration und BaselineManagement in ein Gastkonfigurationspaket konvertiert.
 
 1. Konvertieren Sie die Gruppenrichtlinie mithilfe des BaselineManagement-Moduls in die Desired State Configuration.
 
@@ -203,5 +203,5 @@ Das Zuweisen einer Richtliniendefinition mit der Auswirkung _DeployIfNotExists_ 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Informieren Sie sich über die Überprüfung von VMs mit [Gastkonfiguration](../concepts/guest-configuration.md).
-- Informieren Sie sich über das [programmgesteuerte Erstellen von Richtlinien](programmatically-create.md).
-- Informieren Sie sich über das [Abrufen von Konformitätsdaten](get-compliance-data.md).
+- Informieren Sie sich über das [programmgesteuerte Erstellen von Richtlinien](./programmatically-create.md).
+- Informieren Sie sich über das [Abrufen von Konformitätsdaten](./get-compliance-data.md).

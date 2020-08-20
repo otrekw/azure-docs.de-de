@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/10/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: 52427cbaa418e0335797fe0a98c26c3fb84cf670
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: dddcdd52709c634f0dcf67cb982804f5556e88b9
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87304172"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88548334"
 ---
 # <a name="register-a-saas-application"></a>Registrieren einer SaaS-Anwendung
 
@@ -82,7 +82,7 @@ Post<br>
 
 |  Eigenschaftenname     |  Erforderlich         |  BESCHREIBUNG |
 |  ---------------   |  ---------------  | ------------ |
-|  `grant-type`      |  True      |  Gewährungstyp. Verwenden Sie `"client_credentials"`. |
+|  `grant_type`      |  True      |  Gewährungstyp. Verwenden Sie `"client_credentials"`. |
 |  `client_id`       |  True      |  Der Azure AD-App zugeordneter Client-/App-Bezeichner. |
 |  `client_secret`   |  True      |  Der Azure AD-App zugeordnetes Geheimnis. |
 |  `resource`        |  True      |  Zielressource, für die das Token angefordert wird. Verwenden Sie `20e940b3-4c77-4b0b-9a53-9e16a1b010a7`, da die Marketplace-SaaS-API in diesem Fall immer die Zielressource ist. |

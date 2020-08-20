@@ -1,14 +1,14 @@
 ---
 title: Details der Struktur von Initiativendefinitionen
 description: Beschreibt, wie Initiativendefinitionen von Richtlinien verwendet werden, um Richtliniendefinitionen für die Bereitstellung in Azure-Ressourcen in Ihrer Organisation zu gruppieren.
-ms.date: 05/29/2020
+ms.date: 08/17/2020
 ms.topic: conceptual
-ms.openlocfilehash: 80fa90765caa25d6995220134b9a5b4225133219
-ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
+ms.openlocfilehash: b151ef4d58998b810e116321de68cbdb2e8d3eff
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84205871"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88544637"
 ---
 # <a name="azure-policy-initiative-definition-structure"></a>Struktur von Azure Policy-Initiativendefinitionen
 

@@ -1,14 +1,14 @@
 ---
 title: Steuerungen des Medien-Blaupausenbeispiels
 description: Steuerungszuordnung der Medien-Blaupausenbeispiele Jede Steuerung wird mindestens einer Azure-Richtlinie zugeordnet, die Sie bei der Bewertung unterstützt.
-ms.date: 02/24/2020
+ms.date: 08/13/2020
 ms.topic: sample
-ms.openlocfilehash: bdc4ef65c6d61a9d4217d7873bb29bd787842e71
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 4101b9030425c22b8806870d467581521870d639
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78201737"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88208464"
 ---
 # <a name="control-mapping-of-the-media-blueprint-sample"></a>Steuerungszuordnung des Medien-Blaupausenbeispiels
 
@@ -236,8 +236,8 @@ Die folgenden Zuordnungen gelten für die **Mediensteuerungen**. Über den recht
 Sie haben sich die Informationen zur Steuerungszuordnung anhand des Medien-Blaupausenbeispiels durchgelesen. Lesen Sie als Nächstes die folgenden Artikel, um sich mit der Übersicht und der Bereitstellung dieses Beispiels vertraut zu machen:
 
 > [!div class="next step action"]
-> [Übersicht über das Medien-Blaupausenbeispiel](./control-mapping.md)
-> [Bereitstellen des Medien-Blaupausenbeispiels](./deploy.md)
+> [Medien-Blaupause – Steuerungszuordnung](./control-mapping.md)
+> [Medien-Blaupause – Bereitstellungsschritte](./deploy.md)
 
 Weitere Artikel zu Blaupausen und ihrer Nutzung:
 

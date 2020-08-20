@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/05/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 6981b6acaf0281c1643e2d8ac3933e0fa892e3c2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a3a2474b491abd31b750a15aad7860666c7bd02e
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84124392"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88186316"
 ---
 In diesem Artikel wird beschrieben, wie Sie die Sicherung und Notfallwiederherstellung (Disaster Recovery, DR) von virtuellen IaaS-Computern (Virtual Machines, VMs) und Datenträgern in Azure planen. Im Dokument werden sowohl Managed Disks als auch nicht verwaltete Datenträger behandelt.
 
@@ -178,7 +178,7 @@ Eine Momentaufnahme ist eine Darstellung eines Objekts zu einem bestimmten Zeitp
 
 ### <a name="create-snapshots-while-the-vm-is-running"></a>Erstellen von Momentaufnahmen während der VM-Ausführung
 
-Sie können zwar jederzeit eine Momentaufnahme erstellen, aber wenn die VM ausgeführt wird, werden weiter Daten auf die Datenträger gestreamt. Die Momentaufnahmen enthalten ggf. Teilvorgänge, die gerade aktiv waren. Falls mehrere Datenträger beteiligt sind, wurden die Momentaufnahmen der unterschiedlichen Datenträger außerdem ggf. zu verschiedenen Zeiten erstellt. Diese Szenarien können dazu führen, dass die Momentaufnahmen unkoordiniert sind. Diese mangelnde Koordination ist besonders für Stripesetvolumes problematisch, in denen Dateien beschädigt werden können, falls während der Sicherung Änderungen durchgeführt werden.
+Sie können zwar jederzeit eine Momentaufnahme erstellen, aber wenn die VM ausgeführt wird, werden weiter Daten auf die Datenträger gestreamt. Die Momentaufnahmen enthalten ggf. Teilvorgänge, die gerade aktiv waren. Falls mehrere Datenträger beteiligt sind, wurden die Momentaufnahmen der unterschiedlichen Datenträger außerdem ggf. zu verschiedenen Zeiten erstellt. Diese Szenarien können dazu führen, dass die Momentaufnahmen unkoordiniert sind. Diese mangelnde Koordination ist besonders für Stripesetvolumes problematisch, in denen Dateien beschädigt werden können, falls während der Sicherung Änderungen vorgenommen werden.
 
 Für den Sicherungsvorgang müssen die folgenden Schritte implementiert werden, um diese Situation zu vermeiden:
 
@@ -257,9 +257,6 @@ Der Hauptunterschied zwischen georedundantem Speicher und georedundantem Speiche
 Wenn es sich um einen Ausfall größeren Umfangs handelt, kann das Azure-Team ggf. ein geografisches Failover auslösen und die primären DNS-Einträge ändern, um auf den sekundären Speicher zu verweisen. An diesem Punkt können Sie bei Aktivierung von georedundantem Speicher oder georedundantem Speicher mit Lesezugriff auf die Daten in der Region zugreifen, die bisher die sekundäre Region war. Anders ausgedrückt: Wenn Ihr Speicherkonto vom Typ georedundanter Speicher ist und ein Problem auftritt, können Sie nur dann auf den sekundären Speicher zugreifen, wenn ein geografisches Failover durchgeführt wird.
 
 Weitere Informationen finden Sie unter [Vorgehensweise beim Ausfall von Azure Storage](../articles/storage/common/storage-disaster-recovery-guidance.md).
-
->[!NOTE] 
->Microsoft steuert, ob ein Failover erfolgt. Das Failover wird nicht pro Speicherkonto gesteuert und die Entscheidung daher nicht individuell pro Kunde getroffen. Zum Implementieren der Notfallwiederherstellung für bestimmte Speicherkonten oder VM-Datenträger müssen Sie die Verfahren verwenden, die weiter oben in diesem Artikel beschrieben wurden.
 
 [1]: ./media/virtual-machines-common-backup-and-disaster-recovery-for-azure-iaas-disks/backup-and-disaster-recovery-for-azure-iaas-disks-1.png
 [2]: ./media/virtual-machines-common-backup-and-disaster-recovery-for-azure-iaas-disks/backup-and-disaster-recovery-for-azure-iaas-disks-2.png

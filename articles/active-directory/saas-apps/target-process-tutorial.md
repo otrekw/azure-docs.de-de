@@ -2,25 +2,21 @@
 title: 'Tutorial: Azure Active Directory-Integration mit TargetProcess | Microsoft Docs'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und TargetProcess konfigurieren.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 7cb91628-e758-480d-a233-7a3caaaff50d
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 60cd043c34ba2aee365c59feb38cc9dd02d45746
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: d5b0be147b8aa25e6c737d423eaf4a8a23cde083
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67089047"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88546524"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-targetprocess"></a>Tutorial: Azure Active Directory-Integration mit TargetProcess
 
@@ -70,7 +66,7 @@ Zum Konfigurieren der Integration von TargetProcess in Azure AD müssen Sie Targ
 
      ![TargetProcess in der Ergebnisliste](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
+## <a name="configure-and-test-azure-ad-sso"></a>Konfigurieren und Testen des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD
 
 In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD bei TargetProcess anhand einer Testbenutzerin namens **Britta Simon**.
 Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in TargetProcess eingerichtet werden.
@@ -133,25 +129,27 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD in TargetPro
 
     ![image](./media/target-process-tutorial/install_extension.png)
 
-2. Klicken Sie nach dem Hinzufügen der Erweiterung zum Browser auf **TargetProcess einrichten**, um zur Anwendung TargetProcess Pro weitergeleitet zu werden. Geben Sie dort die Administratoranmeldeinformationen ein, um sich bei TargetProcess anzumelden. Die Browsererweiterung konfiguriert die Anwendung automatisch für Sie und automatisiert die Schritte 3 bis 7.
+1. Klicken Sie nach dem Hinzufügen der Erweiterung zum Browser auf **TargetProcess einrichten**, um zur Anwendung TargetProcess Pro weitergeleitet zu werden. Geben Sie dort die Administratoranmeldeinformationen ein, um sich bei TargetProcess anzumelden. Die Browsererweiterung konfiguriert die Anwendung automatisch für Sie und automatisiert die Schritte 3 bis 7.
+
+    ![Einrichtungskonfiguration](common/setup-sso.png)
 
     **Wenn Sie die Anwendung manuell konfigurieren möchten, führen Sie die folgenden Schritte aus:**
 
-3. Melden Sie sich bei Ihrer TargetProcess-Anwendung als Administrator an.
+1. Melden Sie sich bei Ihrer TargetProcess-Anwendung als Administrator an.
 
-4. Klicken Sie im oberen Menü auf **Setup**.
+1. Klicken Sie im Menü oben auf **Setup**.
 
-    ![Einrichten](./media/target-process-tutorial/tutorial_target_process_05.png)
+    ![Setup](./media/target-process-tutorial/tutorial_target_process_05.png)
 
-5. Klicken Sie auf die Registerkarte **Settings** (Einstellungen).
+1. Klicken Sie auf die Registerkarte **Settings** (Einstellungen).
 
     ![Einstellungen](./media/target-process-tutorial/tutorial_target_process_06.png)
 
-6. Klicken Sie auf die Registerkarte **Single Sign-on** (Einmaliges Anmelden).
+1. Klicken Sie auf die Registerkarte **Single Sign-on** (Einmaliges Anmelden).
 
     ![Klicken Sie auf „Einmaliges Anmelden“.](./media/target-process-tutorial/tutorial_target_process_07.png)
 
-7. Führen Sie im Dialogfeld „Einstellungen für einmaliges Anmelden“ folgende Schritte aus:
+1. Führen Sie im Dialogfeld „Einstellungen für einmaliges Anmelden“ folgende Schritte aus:
 
     ![Einmaliges Anmelden konfigurieren](./media/target-process-tutorial/tutorial_target_process_08.png)
 
