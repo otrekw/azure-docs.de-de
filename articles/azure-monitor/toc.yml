@@ -147,7 +147,7 @@
           href: platform/personal-data-mgmt.md
         - name: 'Anwendungsdatensammlung, -vermerkdauer und -speicherung'
           href: app/data-retention-privacy.md
-    - name: Alerts
+    - name: Warnungen
       items:
         - name: Übersicht
           href: platform/alerts-overview.md
@@ -482,16 +482,12 @@
           href: platform/autoscale-resource-log-schema.md
     - name: Alerts
       items:
-        - name: Warnungsregeln für Anwendungen
-          items:
-            - name: Verfügbarkeit
-              href: app/monitor-web-app-availability.md
-            - name: Metrikwarnungen
-              href: ./platform/alerts-log.md
         - name: Metrikwarnungsregeln
           items:
             - name: Verwalten von Metrikwarnungen
               href: platform/alerts-metric.md
+            - name: Verfügbarkeit
+              href: app/monitor-web-app-availability.md
             - name: Verwenden von dynamischen Schwellenwerten
               href: platform/alerts-dynamic-thresholds.md
             - name: Einzelne Warnungen für zahlreiche Zeitreihen

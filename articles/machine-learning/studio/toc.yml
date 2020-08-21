@@ -140,9 +140,6 @@
         - name: Katalogdaten
           displayName: export
           href: ai-gallery-control-personal-data-dsr.md
-        - name: Herunterladen von Notebooks
-          displayName: export
-          href: download-notebooks-data.md
 - name: Verweis
   items:
     - name: 'Algorithmen und Module: Referenz'
@@ -165,5 +162,5 @@
       href: 'https://azure.microsoft.com/regions/services/'
     - name: Preise
       href: 'https://azure.microsoft.com/pricing/details/machine-learning/'
-    - name: 'Benutzerdefinierte neuronale Netze (Net#)'
+    - name: Benutzerdefinierte neuronale Netze (Net#)
       href: azure-ml-netsharp-reference-guide.md

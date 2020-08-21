@@ -72,9 +72,6 @@
       items:
         - name: Trainieren und Bereitstellen mit der CLI
           href: tutorial-train-deploy-model-cli.md
-        - name: Erstellen von Arbeitsbereichen mit ARM-Vorlage
-          displayName: Resource Manager
-          href: tutorial-resource-manager-workspace.md
     - name: Visual Studio Code
       items:
         - name: Einrichten der Erweiterung für Azure Machine Learning

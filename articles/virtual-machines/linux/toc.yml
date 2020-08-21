@@ -239,7 +239,7 @@
             - name: Mv2-Serie
               href: ../mv2-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: Eingeschränkte vCPUs
-              href: constrained-vcpu.md
+              href: ../constrained-vcpu.md
         - name: Speicheroptimiert
           items:
             - name: Übersicht
@@ -294,7 +294,7 @@
             - name: Was sind Azure-Reservierungen?
               href: ../../cost-management-billing/reservations/save-compute-costs-reservations.md?toc=/azure/virtual-machines/linux/toc.json
             - name: Flexibilität bei der VM-Instanzgröße
-              href: reserved-vm-instance-size-flexibility.md
+              href: ../reserved-vm-instance-size-flexibility.md
         - name: Spot-VMs
           displayName: 'pre-empt, preempt'
           href: spot-vms.md
@@ -317,7 +317,7 @@
             - name: Was sind Azure-Reservierungen?
               href: ../../cost-management-billing/reservations/save-compute-costs-reservations.md
             - name: Flexibilität bei der VM-Instanzgröße
-              href: reserved-vm-instance-size-flexibility.md
+              href: ../reserved-vm-instance-size-flexibility.md
         - name: Benchmarkergebnisse
           href: compute-benchmark-scores.md
     - name: Unterstützte Distributionen
@@ -329,21 +329,21 @@
     - name: Datenträgerspeicher
       items:
         - name: Einführung in verwaltete Datenträger
-          href: managed-disks-overview.md
+          href: ../managed-disks-overview.md
         - name: Auswählen eines Datenträgertyps für virtuelle IaaS-Computer
-          href: disks-types.md
+          href: ../disks-types.md
         - name: Verschlüsselung
           href: disk-encryption.md
         - name: Disk Storage-Reservierungen
           href: ../../cost-management-billing/reservations/understand-disk-reservations.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
         - name: Entwerfen für hohe Leistung
-          href: premium-storage-performance.md
+          href: ../premium-storage-performance.md
         - name: Datenträgerbursting
           href: disk-bursting.md
         - name: Skalierbarkeitsziele für Datenträger
           href: disk-scalability-targets.md
         - name: Sicherung und Notfallwiederherstellung für Datenträger
-          href: backup-and-disaster-recovery-for-azure-iaas-disks.md
+          href: ../backup-and-disaster-recovery-for-azure-iaas-disks.md
         - name: Freigegebene Datenträger
           href: disks-shared.md
         - name: Kurzlebige Betriebssystemdatenträger
@@ -357,7 +357,7 @@
     - name: Sicherheit
       items:
         - name: Sicherheit und Richtlinien
-          href: security-policy.md
+          href: ../security-policy.md
         - name: Azure Disk Encryption
           href: disk-encryption-overview.md
         - name: Sicherheitskontrollen von Azure Policy
@@ -958,7 +958,7 @@
           displayName: 'Azure Resource Manager, ARM'
           href: ../using-managed-disks-template-deployments.md
         - name: Aktivieren freigegebener Datenträger
-          href: disks-shared-enable.md
+          href: ../disks-shared-enable.md
         - name: 'Hochladen einer VHD auf einen Datenträger: CLI'
           href: disks-upload-vhd-to-managed-disk-cli.md
         - name: 'Sicheres Importieren/Exportieren eines Datenträgers: CLI'
@@ -968,11 +968,11 @@
         - name: Ändern der Größe eines Datenträgers
           href: expand-disks.md
         - name: Verwalten von Datenträgern mithilfe von Storage-Explorer
-          href: disks-use-storage-explorer-managed-disks.md
+          href: ../disks-use-storage-explorer-managed-disks.md
         - name: Erstellen einer Momentaufnahme eines Datenträgers
           href: snapshot-copy-managed-disk.md
         - name: Reservieren von Datenträgerspeicher
-          href: disks-reserved-capacity.md
+          href: ../disks-reserved-capacity.md
         - name: 'Erstellen einer inkrementellen Momentaufnahme: CLI'
           href: disks-incremental-snapshots.md
         - name: 'Erstellen einer inkrementellen Momentaufnahme: Portal'
@@ -1008,7 +1008,7 @@
             - name: Verwenden der Schreibbeschleunigung
               href: ../how-to-enable-write-accelerator.md
             - name: Verwenden von Ultra Disks
-              href: disks-enable-ultra-ssd.md
+              href: ../disks-enable-ultra-ssd.md
             - name: Durchführen von Vergleichstest für einen Datenträger
               href: disks-benchmarks.md
             - name: Optimieren der Leistung

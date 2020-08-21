@@ -193,7 +193,7 @@
 - name: Probleme bei der Verwaltung virtueller Datenträger
   items:
     - name: Übersicht
-      href: ../windows/managed-disks-overview.md
+      href: ../managed-disks-overview.md
     - name: Häufig gestellte Fragen
       href: ../windows/faq-for-disks.md
     - name: Fehler beim Löschen von Speicherressourcen

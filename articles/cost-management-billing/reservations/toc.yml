@@ -5,78 +5,16 @@
   items:
     - name: Was sind Azure-Reservierungen?
       href: save-compute-costs-reservations.md?toc=/azure/cost-management-billing/reservations/toc.json
-- name: Anleitungen
-  items:
-    - name: Entscheidungshilfe für den Kauf
-      items:
-        - name: Auswählen der zu erwerbenden Reservierung
-          href: determine-reservation-purchase.md?toc=/azure/cost-management-billing/reservations/toc.json
-    - name: Erwerben von Reservierungen
-      items:
-        - name: Erwerben einer Azure-Reservierung
-          href: prepare-buy-reservation.md?toc=/azure/cost-management-billing/reservations/toc.json
-        - name: App Service
-          href: prepay-app-service-isolated-stamp.md?toc=/azure/cost-management-billing/reservations/toc.json
-        - name: Azure Cache for Redis-Reservierung
-          href: ../../azure-cache-for-redis/cache-reserved-pricing.md?toc=/azure/cost-management-billing/reservations/toc.json
-        - name: Azure Database for MariaDB
-          href: ../../mariadb/concept-reserved-pricing.md?toc=/azure/cost-management-billing/reservations/toc.json
-        - name: Azure Database for MySQL
-          href: ../../mysql/concept-reserved-pricing.md?toc=/azure/cost-management-billing/reservations/toc.json
-        - name: Azure Database for PostgreSQL
-          href: ../../postgresql/concept-reserved-pricing.md?toc=/azure/cost-management-billing/reservations/toc.json
-        - name: Azure Synapse Analytics
-          href: prepay-sql-data-warehouse-charges.md?toc=/azure/cost-management-billing/reservations/toc.json
-        - name: Azure Storage
-          href: ../../storage/blobs/storage-blob-reserved-capacity.md?toc=/azure/cost-management-billing/reservations/toc.json
-        - name: Cosmos DB
-          href: ../../cosmos-db/cosmos-db-reserved-capacity.md?toc=/azure/cost-management-billing/reservations/toc.json
-        - name: Databricks
-          href: prepay-databricks-reserved-capacity.md?toc=/azure/cost-management-billing/reservations/toc.json
-        - name: Data Explorer
-          href: /azure/data-explorer/pricing-reserved-capacity?toc=/azure/cost-management-billing/reservations/toc.json
-        - name: Dedicated Host
-          href: ../../virtual-machines/prepay-dedicated-hosts-reserved-instances.md?toc=/azure/cost-management-billing/reservations/toc.json
-        - name: Disk Storage
-          href: ../../virtual-machines/linux/disks-reserved-capacity.md?toc=/azure/cost-management-billing/reservations/toc.json
-        - name: Große SAP HANA-Instanzen
-          href: prepay-hana-large-instances-reserved-capacity.md?toc=/azure/cost-management-billing/reservations/toc.json
-        - name: Softwarepläne
-          href: ../../virtual-machines/linux/prepay-suse-software-charges.md?toc=/azure/cost-management-billing/reservations/toc.json
-        - name: SQL-Datenbank
-          href: ../../sql-database/sql-database-reserved-capacity.md?toc=/azure/cost-management-billing/reservations/toc.json
-        - name: Virtuelle Computer
-          href: ../../virtual-machines/windows/prepay-reserved-vm-instances.md?toc=/azure/cost-management-billing/reservations/toc.json
-    - name: 'Anzeigen, Verwalten und Optimieren nach dem Kauf'
-      items:
-        - name: Anzeigen von Reservierungen und Nutzung
-          href: view-reservations.md?toc=/azure/cost-management-billing/reservations/toc.json
-        - name: Anzeigen von Reservierungen als CSP
-          href: how-to-view-csp-reservations.md?toc=/azure/cost-management-billing/reservations/toc.json
-        - name: Verwalten von Reservierungen
-          href: manage-reserved-vm-instance.md?toc=/azure/cost-management-billing/reservations/toc.json
-        - name: Ändern der Optimierungseinstellung
-          href: manage-reserved-vm-instance.md#change-optimize-setting-for-reserved-vm-instances
-        - name: Reservierungen für Umtausch und Erstattung
-          href: exchange-and-refund-azure-reservations.md?toc=/azure/cost-management-billing/reservations/toc.json
-    - name: Melden von Kosten
-      items:
-        - name: Anzeigen von Reservierungstransaktionen
-          href: view-purchase-refunds.md?toc=/azure/cost-management-billing/reservations/toc.json
-        - name: Rückbuchen von Reservierungskosten
-          href: charge-back-usage.md?toc=/azure/cost-management-billing/reservations/toc.json
-    - name: Verlängern von Reservierungen
-      items:
-        - name: Verlängern einer Reservierung
-          href: reservation-renew.md?toc=/azure/cost-management-billing/reservations/toc.json
 - name: Konzepte
   items:
+    - name: Flexibilität bei der VM-Instanzgröße
+      href: ../../virtual-machines/reserved-vm-instance-size-flexibility.md?toc=/azure/cost-management-billing/reservations/toc.json
     - name: Reservierungsempfehlungen
       href: reserved-instance-purchase-recommendations.md?toc=/azure/cost-management-billing/reservations/toc.json
+    - name: Anwendung des Rabatts für Azure-Reservierungen
+      href: reservation-discount-application.md?toc=/azure/cost-management-billing/reservations/toc.json
     - name: Anwendung des Rabatts
       items:
-        - name: Anwendung des Rabatts für Azure-Reservierungen
-          href: reservation-discount-application.md?toc=/azure/cost-management-billing/reservations/toc.json
         - name: App Service
           href: reservation-discount-app-service-isolated-stamp.md?toc=/azure/cost-management-billing/reservations/toc.json
         - name: Azure Cache for Redis
@@ -115,6 +53,70 @@
       href: understand-reserved-instance-usage.md?toc=/azure/cost-management-billing/reservations/toc.json
     - name: Nutzungsdaten für Unternehmenskunden
       href: understand-reserved-instance-usage-ea.md?toc=/azure/cost-management-billing/reservations/toc.json
+- name: Anleitungen
+  items:
+    - name: Entscheidungshilfe für den Kauf
+      items:
+        - name: Auswählen der zu erwerbenden Reservierung
+          href: determine-reservation-purchase.md?toc=/azure/cost-management-billing/reservations/toc.json
+    - name: Erwerben von Reservierungen
+      items:
+        - name: Erwerben einer Azure-Reservierung
+          href: prepare-buy-reservation.md?toc=/azure/cost-management-billing/reservations/toc.json
+        - name: App Service
+          href: prepay-app-service-isolated-stamp.md?toc=/azure/cost-management-billing/reservations/toc.json
+        - name: Azure Cache for Redis-Reservierung
+          href: ../../azure-cache-for-redis/cache-reserved-pricing.md?toc=/azure/cost-management-billing/reservations/toc.json
+        - name: Azure Database for MariaDB
+          href: ../../mariadb/concept-reserved-pricing.md?toc=/azure/cost-management-billing/reservations/toc.json
+        - name: Azure Database for MySQL
+          href: ../../mysql/concept-reserved-pricing.md?toc=/azure/cost-management-billing/reservations/toc.json
+        - name: Azure Database for PostgreSQL
+          href: ../../postgresql/concept-reserved-pricing.md?toc=/azure/cost-management-billing/reservations/toc.json
+        - name: Azure Synapse Analytics
+          href: prepay-sql-data-warehouse-charges.md?toc=/azure/cost-management-billing/reservations/toc.json
+        - name: Azure Storage
+          href: ../../storage/blobs/storage-blob-reserved-capacity.md?toc=/azure/cost-management-billing/reservations/toc.json
+        - name: Cosmos DB
+          href: ../../cosmos-db/cosmos-db-reserved-capacity.md?toc=/azure/cost-management-billing/reservations/toc.json
+        - name: Databricks
+          href: prepay-databricks-reserved-capacity.md?toc=/azure/cost-management-billing/reservations/toc.json
+        - name: Data Explorer
+          href: /azure/data-explorer/pricing-reserved-capacity?toc=/azure/cost-management-billing/reservations/toc.json
+        - name: Dedicated Host
+          href: ../../virtual-machines/prepay-dedicated-hosts-reserved-instances.md?toc=/azure/cost-management-billing/reservations/toc.json
+        - name: Disk Storage
+          href: ../../virtual-machines/disks-reserved-capacity.md?toc=/azure/cost-management-billing/reservations/toc.json
+        - name: Große SAP HANA-Instanzen
+          href: prepay-hana-large-instances-reserved-capacity.md?toc=/azure/cost-management-billing/reservations/toc.json
+        - name: Softwarepläne
+          href: ../../virtual-machines/linux/prepay-suse-software-charges.md?toc=/azure/cost-management-billing/reservations/toc.json
+        - name: SQL-Datenbank
+          href: ../../sql-database/sql-database-reserved-capacity.md?toc=/azure/cost-management-billing/reservations/toc.json
+        - name: Virtuelle Computer
+          href: ../../virtual-machines/windows/prepay-reserved-vm-instances.md?toc=/azure/cost-management-billing/reservations/toc.json
+    - name: 'Anzeigen, Verwalten und Optimieren nach dem Kauf'
+      items:
+        - name: Anzeigen von Reservierungen und Nutzung
+          href: view-reservations.md?toc=/azure/cost-management-billing/reservations/toc.json
+        - name: Anzeigen von Reservierungen als CSP
+          href: how-to-view-csp-reservations.md?toc=/azure/cost-management-billing/reservations/toc.json
+        - name: Verwalten von Reservierungen
+          href: manage-reserved-vm-instance.md?toc=/azure/cost-management-billing/reservations/toc.json
+        - name: Ändern der Optimierungseinstellung
+          href: manage-reserved-vm-instance.md#change-optimize-setting-for-reserved-vm-instances
+        - name: Reservierungen für Umtausch und Erstattung
+          href: exchange-and-refund-azure-reservations.md?toc=/azure/cost-management-billing/reservations/toc.json
+    - name: Melden von Kosten
+      items:
+        - name: Anzeigen von Reservierungstransaktionen
+          href: view-purchase-refunds.md?toc=/azure/cost-management-billing/reservations/toc.json
+        - name: Rückbuchen von Reservierungskosten
+          href: charge-back-usage.md?toc=/azure/cost-management-billing/reservations/toc.json
+    - name: Verlängern von Reservierungen
+      items:
+        - name: Verlängern einer Reservierung
+          href: reservation-renew.md?toc=/azure/cost-management-billing/reservations/toc.json
 - name: Verweis
   items:
     - name: 'Reservierungen: REST-API'
