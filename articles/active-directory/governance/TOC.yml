@@ -86,6 +86,8 @@
               href: entitlement-management-request-access.md
     - name: Zugriffsüberprüfungen
       items:
+        - name: Planen der Zugriffsüberprüfungsbereitstellung
+          href: deploy-access-reviews.md
         - name: Zugriffspakete
           items:
             - name: Erstellen einer Zugriffsüberprüfung

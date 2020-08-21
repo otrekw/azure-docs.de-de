@@ -8,7 +8,7 @@
     - name: Übersicht und Vorteile des kommerziellen Marketplace
       href: ./marketplace-publishers-guide.md
       items:
-        - name: 'Ein Marketplace, zwei Storefronts'
+        - name: 'Ein Marketplace, zwei Onlineshops'
           href: ./comparing-appsource-azure-marketplace.md
         - name: Optionen und Überlegungen zur Veröffentlichung
           href: ./determine-your-listing-type.md

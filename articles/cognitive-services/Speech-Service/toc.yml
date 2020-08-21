@@ -20,10 +20,8 @@
       href: index-speech-to-text.yml
     - name: Übersicht
       items:
-        - name: Was ist die Echtzeit-Spracherkennung?
+        - name: Was ist die Spracherkennung?
           href: speech-to-text.md
-        - name: Was ist die Batch-Spracherkennung?
-          href: batch-transcription.md
         - name: Grundlegendes zur Spracherkennung
           href: speech-to-text-basics.md
     - name: Schnellstarts
@@ -53,6 +51,8 @@
           href: how-to-select-audio-input-devices.md
         - name: Verwenden der automatischen Erkennung der Ausgangssprache
           href: how-to-automatic-language-detection.md
+        - name: Verwenden der Batch-Transkriptions-API
+          href: batch-transcription.md
     - name: Tutorials
       items:
         - name: Verbessern der Genauigkeit mithilfe von Mandantenmodellen
@@ -638,11 +638,13 @@
     - name: Sovereign Clouds
       displayName: 'fairfax,mooncake,compliant,secret,compliance,government,government cloud,dod,china'
       href: sovereign-clouds.md
-    - name: Preise und Einschränkungen
+    - name: Preise
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/'
     - name: Preisrechner
       href: 'https://azure.microsoft.com/pricing/calculator/#cognitive-services'
-    - name: Kompatibilität
+    - name: Kontingente und Grenzwerte
+      href: speech-services-quotas-and-limits.md
+    - name: Compliance
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Verschlüsselung
       href: speech-encryption-of-data-at-rest.md
