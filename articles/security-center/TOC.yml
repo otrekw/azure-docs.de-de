@@ -39,6 +39,8 @@
       href: security-center-enable-data-collection.md
     - name: Einrichten von E-Mail-Benachrichtigungen
       href: security-center-provide-security-contact-details.md
+    - name: Erstellen einer automatischen Antwort auf eine Warnung mit einer ARM-Vorlage
+      href: quickstart-automation-alert.md
 - name: Tutorials
   items:
     - name: Leitfaden zu Planung und Betrieb

@@ -9,13 +9,13 @@ metadata:
   ms.topic: landing-page
   author: cherylmc
   ms.author: cherylmc
-  ms.date: 05/08/2020
-  ms.openlocfilehash: 14336a28630e7a62a19e2b3a51934950cf12e2f8
-  ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+  ms.date: 08/19/2020
+  ms.openlocfilehash: 1a0a64864c4e8229b4a0f2211af06920fc1e73cc
+  ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 06/30/2020
-  ms.locfileid: "85564027"
+  ms.lasthandoff: 08/20/2020
+  ms.locfileid: "88654547"
 landingContent:
 - title: Über Virtual WAN
   linkLists:
@@ -39,24 +39,60 @@ landingContent:
       url: virtual-wan-expressroute-portal.md
     - text: Erstellen einer Benutzer-VPN-Verbindung (Point-to-Site)
       url: virtual-wan-point-to-site-portal.md
-  - linkListType: how-to-guide
-    links:
-    - text: Konfigurieren der Automatisierung für Virtual WAN-Partner
-      url: virtual-wan-configure-automation-providers.md
   - linkListType: concept
     links:
     - text: Standardrichtlinien für IPsec-Konnektivität
       url: virtual-wan-ipsec.md
+    - text: Automatisierungsrichtlinien für Virtual WAN-Partner
+      url: virtual-wan-configure-automation-providers.md
+  - linkListType: how-to-guide
+    links:
+    - text: Erstellen eines NVA in einem Hub
+      url: how-to-nva-hub.md
+    - text: Konfigurieren von IPsec über ExpressRoute für Virtual WAN
+      url: vpn-over-expressroute.md
+    - text: Verbinden von VPN Gateway mit Virtual WAN
+      url: connect-virtual-network-gateway-vwan.md
 - title: Aufbau
   linkLists:
   - linkListType: concept
     links:
     - text: Migrieren zu Virtual WAN
       url: migrate-from-hub-spoke-topology.md
+  - linkListType: architecture
+    links:
     - text: Globale Transitarchitektur
       url: virtual-wan-global-transit-network-architecture.md
     - text: SD-WAN-Verbindungsarchitektur
       url: sd-wan-connectivity-architecture.md
+- title: Routing
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Informationen zum Routing virtueller Hubs
+      url: about-virtual-hub-routing.md
+    - text: 'Szenario: Weiterleiten von Datenverkehr über ein virtuelles Netzwerkgerät'
+      url: scenario-route-through-nva.md
+    - text: 'Szenario: Any-to-Any'
+      url: scenario-any-to-any.md
+    - text: 'Szenario: Isolieren von VNETs'
+      url: scenario-isolate-vnets.md
+    - text: 'Szenario: VNETs für gemeinsame Dienste'
+      url: scenario-shared-services-vnet.md
+  - linkListType: how-to-guide
+    links:
+    - text: Konfigurieren des Routings für virtuelle Hubs
+      url: how-to-virtual-hub-routing.md
+- title: Überwachung
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Überwachen mithilfe von Azure Monitor Insights
+      url: azure-monitor-insights.md
+  - linkListType: how-to-guide
+    links:
+    - text: Konfigurieren von Azure Monitor-Protokollen und -Metriken
+      url: azure-monitor-insights.md
 - title: Verweis
   linkLists:
   - linkListType: reference

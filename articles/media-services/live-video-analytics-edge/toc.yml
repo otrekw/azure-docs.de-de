@@ -17,11 +17,27 @@
     - name: 'Erkennen von Bewegung, Aufzeichnen von Video in Media Services'
       href: detect-motion-record-video-clips-media-services-quickstart.md
     - name: Erkennen von Bewegung und Ausgeben von Ereignissen
-      href: detect-motion-emit-events-quickstart.md
+      items:
+        - name: Verwenden von Aufrufen direkter Methoden
+          displayName: 'detect motion, emit events'
+          href: detect-motion-emit-events-quickstart.md
     - name: 'Erkennen von Bewegung, Aufzeichnen von Video auf Edgegeräten'
-      href: detect-motion-record-video-clips-edge-devices-quickstart.md
-    - name: Ausführen von Live Video Analytics mit eigenem Modell
-      href: use-your-model-quickstart.md
+      items:
+        - name: Verwenden von Aufrufen direkter Methoden
+          displayName: 'detect motion, record video on edge devices'
+          href: detect-motion-record-video-clips-edge-devices-quickstart.md
+    - name: Analysieren von Livevideos mit einem eigenen Modell
+      items:
+        - name: Mit HTTP-Erweiterung
+          items:
+            - name: Verwenden von Aufrufen direkter Methoden
+              displayName: 'analyze, your own model, http'
+              href: use-your-model-quickstart.md
+        - name: Mit gRPC-Erweiterung
+          items:
+            - name: Verwenden von Aufrufen direkter Methoden
+              displayName: 'analyze, your own model, grpc'
+              href: analyze-live-video-use-your-grpc-model-quickstart.md
 - name: Tutorials
   items:
     - name: Fortlaufende Videoaufzeichnung
@@ -37,12 +53,16 @@
           href: use-intel-openvino-tutorial.md
 - name: Beispiele
   items:
-    - name: 'Live Video Analytics in IoT Edge: C#-Beispiele'
+    - name: Beispiele für direkte C#-Methoden
       href: 'https://github.com/Azure-Samples/live-video-analytics-iot-edge-csharp'
+    - name: Beispiele für direkte Python-Methoden
+      href: 'https://github.com/Azure-Samples/live-video-analytics-iot-edge-python'
 - name: Konzepte
   items:
     - name: Mediendiagramm
       href: media-graph-concept.md
+    - name: Mediengrapherweiterung
+      href: media-graph-extension-concept.md
     - name: Videoaufzeichnung
       href: video-recording-concept.md
     - name: Videowiedergabe
@@ -67,14 +87,18 @@
       href: playback-recordings-how-to.md
     - name: Verwalten der Aufzeichnungsrichtlinie
       href: manage-recording-policy-how-to.md
-    - name: Analysieren von Livevideos mit KI Ihrer Wahl
-      href: analyze-with-ai-your-choice-how-to.md
     - name: Aufrufen direkter Methoden über das Portal
       href: use-azure-portal-to-invoke-direct-methods.md
     - name: Problembehandlung
       href: troubleshoot-how-to.md
 - name: Verweis
   items:
+    - name: HTTP-Datenvertrag
+      href: http-data-contract.md
+    - name: gRPC-Datenvertrag
+      href: grpc-data-contract.md
+    - name: Schema für Rückschlussmetadaten
+      href: inference-metadata-schema.md
     - name: Direkte Methoden
       href: direct-methods.md
     - name: Konfigurationsschema für Modulzwillinge

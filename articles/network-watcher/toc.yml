@@ -61,6 +61,12 @@
           href: connection-monitor-preview-create-using-portal.md
         - name: Verwenden von ARMClient
           href: connection-monitor-preview-create-using-arm-client.md
+    - name: Migrieren zu Verbindungsmonitor (Vorschau)
+      items:
+        - name: Von Netzwerkleistungsmonitor
+          href: migrate-to-connection-monitor-preview-from-network-performance-monitor.md
+        - name: Von Verbindungsmonitor
+          href: migrate-to-connection-monitor-preview-from-connection-monitor.md
     - name: Diagnostizieren von VM-Netzwerkproblemen
       items:
         - name: Installieren der VM-Erweiterung

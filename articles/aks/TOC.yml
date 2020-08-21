@@ -60,7 +60,7 @@
           href: ./security-controls-policy.md
     - name: Netzwerk
       href: concepts-network.md
-    - name: Storage
+    - name: Speicher
       href: concepts-storage.md
     - name: Skalieren
       href: concepts-scale.md
@@ -141,7 +141,7 @@
           href: uptime-sla.md
         - name: Verwenden von Näherungsplatzierungsgruppen (Vorschauversion)
           href: reduce-latency-ppg.md
-        - name: Aktualisieren des Knotenimages (Vorschau)
+        - name: Aktualisieren des Knotenimages
           href: node-image-upgrade.md
         - name: Verarbeiten von Betriebssystemupdates für Knoten
           href: node-updates-kured.md

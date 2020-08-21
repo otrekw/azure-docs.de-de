@@ -8,6 +8,8 @@
       href: supported-data-stores.md
 - name: Schnellstarts
   items:
+    - name: 'Erstellen einer Datenfreigabe: Azure-Portal'
+      href: share-your-data-portal.md
     - name: 'Erstellen einer Datenfreigabe: ARM-Vorlage'
       displayName: Resource Manager
       href: share-your-data-arm.md
@@ -52,6 +54,9 @@
       href: security.md
     - name: Notfallwiederherstellung
       href: disaster-recovery.md
+    - name: Freigeben von Azure Data Explorer-Daten
+      href: /azure/data-explorer/data-share
+      maintainContext: true
 - name: Verweis
   items:
     - name: .NET

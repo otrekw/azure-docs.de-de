@@ -36,10 +36,6 @@
           href: virtual-wan-locations-partners.md
         - name: Automatisierungsrichtlinien für Partner
           href: virtual-wan-configure-automation-providers.md
-    - name: Preiskonzepte
-      href: pricing-concepts.md
-    - name: Informationen zu NVA in einem virtuellen Hub
-      href: about-nva-hub.md
     - name: Routing
       items:
         - name: Informationen zum Routing virtueller Hubs
@@ -48,21 +44,21 @@
           items:
             - name: Any-to-Any
               href: scenario-any-to-any.md
-            - name: Isolieren von VNETs
+            - name: Isolieren von virtuellen Netzwerken (VNETs)
               href: scenario-isolate-vnets.md
-            - name: 'Isolieren von VNETs: Benutzerdefiniert'
+            - name: 'Isolieren von virtuellen Netzwerken: benutzerdefiniert'
               href: scenario-isolate-vnets-custom.md
             - name: VNETs für gemeinsam genutzte Dienste
               href: scenario-shared-services-vnet.md
-            - name: Weiterleiten über NVA
+            - name: Weiterleiten über ein NVA
               href: scenario-route-through-nva.md
-            - name: 'Weiterleiten über NVA: Benutzerdefiniert (Vorschau)'
+            - name: 'Weiterleiten über ein NVA: benutzerdefiniert'
               href: scenario-route-through-nvas-custom.md
             - name: 'Azure Firewall: Benutzerdefiniert'
               href: scenario-route-between-vnets-firewall.md
     - name: Überwachung
       items:
-        - name: Informationen zu Azure Monitor Insights für Virtual WAN (Vorschau)
+        - name: Informationen zu Azure Monitor Insights für Virtual WAN
           href: azure-monitor-insights.md
     - name: Site-to-Site
       items:
@@ -70,11 +66,15 @@
           href: virtual-wan-ipsec.md
         - name: 'Mehrere ISP-Links: Azure-Pfadauswahl'
           href: path-selection-multiple-links.md
+    - name: Preiskonzepte
+      href: pricing-concepts.md
+    - name: Informationen zu NVA in einem virtuellen Hub
+      href: about-nva-hub.md
 - name: Anleitungen
   items:
     - name: "Upgraden einer Virtual\_WAN-SKU"
       href: upgrade-virtual-wan.md
-    - name: Erstellen von NVAs in einem virtuellen Hub (Vorschau)
+    - name: Erstellen eines NVA in einem virtuellen Hub
       href: How-to-nva-hub.md
     - name: ExpressRoute
       items:
@@ -154,14 +154,18 @@
   items:
     - name: Häufig gestellte Fragen
       href: virtual-wan-faq.md
-    - name: Azure-Roadmap
-      href: 'https://azure.microsoft.com/roadmap/?category=networking'
-    - name: Blog
-      href: 'https://azure.microsoft.com/blog/topics/networking'
-    - name: Einschränkungen bei Abonnements und Diensten
-      href: ../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-wan%2ftoc.json
+    - name: Ankündigungen von Updates
+      href: 'https://azure.microsoft.com/updates/?category=networking&query=VIRTUAL%20WAN'
     - name: Preise
       href: 'https://azure.microsoft.com/pricing/details/virtual-wan'
+    - name: Einschränkungen bei Abonnements und Diensten
+      href: ../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-wan%2ftoc.json
+    - name: Netzwerkroadmap
+      href: 'https://azure.microsoft.com/roadmap/?category=networking'
+    - name: Netzwerkblog
+      href: 'https://azure.microsoft.com/blog/topics/networking'
+    - name: Ankündigungen von Netzwerkupdates
+      href: 'https://azure.microsoft.com/updates/?category=networking'
     - name: Preisrechner
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: SLA

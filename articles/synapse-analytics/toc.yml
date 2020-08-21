@@ -204,6 +204,8 @@
               href: ./spark/apache-spark-concepts.md
             - name: Was ist Delta Lake?
               href: ./spark/apache-spark-what-is-delta-lake.md
+            - name: Übersicht über Delta Lake-Funktionen
+              href: ./spark/apache-spark-delta-lake-overview.md
             - name: 'Apache Spark: Leistung'
               href: ./spark/apache-spark-performance.md
             - name: 'Apache Spark: Verhalten der automatischen Skalierung'
@@ -454,6 +456,8 @@
               href: ./synapse-link/how-to-connect-synapse-link-cosmos-db.md
             - name: Abfragen des Azure Cosmos DB-Analysespeichers mit Apache Spark für Azure Synapse Analytics
               href: ./synapse-link/how-to-query-analytical-store-spark.md
+            - name: "Kopieren von Daten von Synapse\_Link in einen SQL-Pool mithilfe von Apache Spark"
+              href: ./synapse-link/how-to-copy-to-sql-pool.md
         - name: Synapse-SQL
           items:
             - name: Abfragen von Daten im Speicher
