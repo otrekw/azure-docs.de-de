@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 04/02/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: be3d06d8ea493ab7c246ace5c49d5e5bc0036108
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9404cc8037b9cd7ef3e6f74265ce803177eb0465
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84463534"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185280"
 ---
 # <a name="create-and-manage-a-blob-snapshot-in-net"></a>Erstellen und Verwalten einer Blobmomentaufnahme in .NET
 
@@ -24,7 +24,7 @@ Weitere Informationen zu Blobmomentaufnahmen in Azure Storage finden Sie unter [
 
 ## <a name="create-a-snapshot"></a>Erstellen einer Momentaufnahme
 
-# <a name="net-version-12x"></a>[.NET-Version 12.x](#tab/v12)
+# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
 
 Verwenden Sie eine der folgenden Methoden, um eine Momentaufnahme eines Blockblobs mit Version 12.x der Azure Storage-Clientbibliothek für .NETzu erstellen:
 
@@ -77,7 +77,7 @@ private static async Task CreateBlockBlobSnapshot(string accountName, string con
 }
 ```
 
-# <a name="net-version-11x"></a>[.NET-Version 11.x](#tab/v11)
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
 
 Verwenden Sie eine der folgenden Methoden, um eine Momentaufnahme eines Blockblobs mit Version 11.x der Azure Storage-Clientbibliothek für .NET zu erstellen:
 
@@ -126,7 +126,7 @@ private static async Task CreateBlockBlobSnapshot(CloudBlobContainer container)
 
 Wenn Sie ein Blob löschen möchten, müssen Sie zunächst alle Momentaufnahmen dieses Blobs löschen. Sie können eine Momentaufnahme einzeln löschen oder angeben, dass alle Momentaufnahmen gelöscht werden sollen, wenn das Quellblob gelöscht wird. Wenn Sie versuchen, ein Blob zu löschen, für das noch Momentaufnahmen vorhanden sind, tritt ein Fehler auf.
 
-# <a name="net-version-12x"></a>[.NET-Version 12.x](#tab/v12)
+# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
 
 Zum Löschen eines Blobs und seiner Momentaufnahmen mit Version 12.x der Azure Storage-Clientbibliothek für .NET verwenden Sie eine der folgenden Methoden und binden die [DeleteSnapshotsOption](/dotnet/api/azure.storage.blobs.models.deletesnapshotsoption)-Enumeration ein:
 
@@ -141,7 +141,7 @@ Im folgenden Codebeispiel wird veranschaulicht, wie Sie ein Blob und die zugehö
 await blobClient.DeleteIfExistsAsync(DeleteSnapshotsOption.IncludeSnapshots, null, default);
 ```
 
-# <a name="net-version-11x"></a>[.NET-Version 11.x](#tab/v11)
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
 
 Zum Löschen eines Blobs und seiner Momentaufnahmen mit Version 11.x der Azure Storage-Clientbibliothek für .NET verwenden Sie eine der folgenden Methoden zum Löschen von Blobs und binden die [DeleteSnapshotsOption](/dotnet/api/microsoft.azure.storage.blob.deletesnapshotsoption)-Enumeration ein:
 

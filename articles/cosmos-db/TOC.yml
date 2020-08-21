@@ -125,20 +125,26 @@
           href: partition-data.md
         - name: Synthetischer Partitionsschlüssel
           href: synthetic-partition-keys.md
-    - name: Bereitgestellter Durchsatz
+    - name: Capacity
       items:
         - name: Anforderungseinheiten
           displayName: 'RUs, RU'
           href: request-units.md
-        - name: 'Bereitgestellter Durchsatz: Einführung'
-          displayName: 'request units, RUs, RU, limits, database throughput, shared throughput, container throughput'
-          href: set-throughput.md
-        - name: Bereitstellen von automatisch skaliertem Durchsatz
-          href: provision-throughput-autoscale.md
-        - name: Wählen zwischen automatisch skaliertem Durchsatz und Standarddurchsatz (manuell)
-          href: how-to-choose-offer.md
-        - name: Häufig gestellte Fragen zur Autoskalierung
-          href: autoscale-faq.md
+        - name: Bereitgestellter Durchsatz
+          items:
+            - name: 'Bereitgestellter Durchsatz: Einführung'
+              displayName: 'request units, RUs, RU, limits, database throughput, shared throughput, container throughput'
+              href: set-throughput.md
+            - name: Bereitstellen von automatisch skaliertem Durchsatz
+              href: provision-throughput-autoscale.md
+            - name: Wählen zwischen automatisch skaliertem Durchsatz und Standarddurchsatz (manuell)
+              href: how-to-choose-offer.md
+            - name: Häufig gestellte Fragen zur Autoskalierung
+              href: autoscale-faq.md
+        - name: Serverlos
+          href: serverless.md
+        - name: Wählen zwischen bereitgestelltem Durchsatz und serverlos
+          href: throughput-serverless.md
     - name: SQL-Abfrage (SQL query)
       items:
         - name: Erste Schritte
@@ -238,6 +244,9 @@
                     - name: DateTimeToTicks
                       displayName: 'DateTimeToTicks, date time to ticks, date and time functions, datetime, ticks'
                       href: sql-query-datetimetoticks.md
+                    - name: DateTimeToTimestamp
+                      displayName: 'DateTimeToTimestamp, date time to timestamp, date and time functions, datetime, timestamp'
+                      href: sql-query-datetimetotimestamp.md
                     - name: GetCurrentDateTime
                       displayName: 'GetCurrentDateTime, get current date time, date and time functions, datetime'
                       href: sql-query-getcurrentdatetime.md
@@ -247,6 +256,12 @@
                     - name: GetCurrentTimestamp
                       displayName: 'GetCurrentTimestamp, get current timestamp, timestamp, date and time functions, datetime'
                       href: sql-query-getcurrenttimestamp.md
+                    - name: TicksToDateTime
+                      displayName: 'TicksToDateTime, ticks to date time, date and time functions, datetime, ticks'
+                      href: sql-query-tickstodatetime.md
+                    - name: TimestampToDateTime
+                      displayName: 'TimestampToDateTime, timestamp to date time, date and time functions, datetime, timestamp'
+                      href: sql-query-timestamptodatetime.md
                 - name: Mathematische Funktionen
                   items:
                     - name: Mathematische Funktionen
@@ -953,26 +968,28 @@
           href: how-to-manage-conflicts.md
         - name: Konvertieren des Sitzungstokenformats
           href: how-to-convert-session-token.md
-    - name: Bereitgestellter Durchsatz
+    - name: Capacity
       items:
-        - name: Bereitstellen von Standarddurchsatz (manuell) für einen Container
-          displayName: 'request units, RUs, RU, collection level'
-          href: how-to-provision-container-throughput.md
-        - name: Bereitstellen von Standarddurchsatz (manuell) für eine Datenbank
-          displayName: 'request units, RUs, RU, shared throughput, database level'
-          href: how-to-provision-database-throughput.md
-        - name: Bereitstellen von automatisch skaliertem Durchsatz für eine Datenbank oder einen Container
-          displayName: 'request units, RUs, RU, shared throughput, database level, collection level, autoscale'
-          href: how-to-provision-autoscale-throughput.md
-        - name: Schätzen von RU/s mit dem Cosmos-Kapazitätsplaner
-          displayName: 'request units, RUs, RU, capacity'
-          href: estimate-ru-with-capacity-planner.md
         - name: Ermitteln der Gebühr für Anforderungseinheiten
           displayName: 'request units, RUs, RU, charge, consumption'
           href: find-request-unit-charge.md
-        - name: Skalieren mithilfe eines Azure Functions-Timers
-          displayName: 'request units, RUs, RU, timer'
-          href: scale-on-schedule.md
+        - name: Bereitgestellter Durchsatz
+          items:
+            - name: Bereitstellen von Standarddurchsatz (manuell) für einen Container
+              displayName: 'request units, RUs, RU, collection level'
+              href: how-to-provision-container-throughput.md
+            - name: Bereitstellen von Standarddurchsatz (manuell) für eine Datenbank
+              displayName: 'request units, RUs, RU, shared throughput, database level'
+              href: how-to-provision-database-throughput.md
+            - name: Bereitstellen von automatisch skaliertem Durchsatz für eine Datenbank oder einen Container
+              displayName: 'request units, RUs, RU, shared throughput, database level, collection level, autoscale'
+              href: how-to-provision-autoscale-throughput.md
+            - name: Schätzen von RU/s mit dem Cosmos-Kapazitätsplaner
+              displayName: 'request units, RUs, RU, capacity'
+              href: estimate-ru-with-capacity-planner.md
+            - name: Skalieren mithilfe eines Azure Functions-Timers
+              displayName: 'request units, RUs, RU, timer'
+              href: scale-on-schedule.md
     - name: Arbeiten mit Containern und Elementen
       items:
         - name: Arbeiten mit Cosmos DB-Daten

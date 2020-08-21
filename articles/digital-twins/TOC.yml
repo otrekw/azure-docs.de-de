@@ -22,6 +22,8 @@
       href: concepts-twins-graph.md
     - name: Abfragesprache
       href: concepts-query-language.md
+    - name: Abfrageeinheiten
+      href: concepts-query-units.md
     - name: Integration in andere Dienste
       href: concepts-integration.md
     - name: Ereignisrouten
