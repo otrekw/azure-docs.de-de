@@ -10,12 +10,12 @@ ms.author: iainfou
 author: iainfoulds
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5aa84faea43846a2f930373529769e62f76e5bbf
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: b9072c5611f5bd5a4b8cca082cb2bfd7a1e3f1b2
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87419545"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88718899"
 ---
 # <a name="tutorial-secure-user-sign-in-events-with-azure-multi-factor-authentication"></a>Tutorial: Schützen von Benutzeranmeldeereignissen mit Azure Multi-Factor Authentication
 
@@ -133,4 +133,4 @@ In diesem Tutorial haben Sie Azure Multi-Factor Authentication mithilfe von Rich
 > * Testen des MFA-Prozesses als Benutzer
 
 > [!div class="nextstepaction"]
-> [Tutorial: Aktivieren des Kennwortrückschreibens](tutorial-enable-writeback.md)
+> [Tutorial: Aktivieren des Kennwortrückschreibens](./tutorial-enable-sspr-writeback.md)

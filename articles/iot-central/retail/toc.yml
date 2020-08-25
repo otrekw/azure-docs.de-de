@@ -32,6 +32,8 @@
           href: tutorial-micro-fulfillment-center.md
     - name: 'Videoanalyse: Objekt- und Bewegungserkennung'
       items:
+        - name: 0. Bereitstellen einer Anwendung für die Objekt- und Bewegungserkennung
+          href: tutorial-video-analytics-deploy.md
         - name: 1. Erstellen einer Videoanalyseanwendung
           href: tutorial-video-analytics-create-app.md
         - name: "2. Konfigurieren eines IoT\_Edge-Geräts"
@@ -64,8 +66,6 @@
       href: ../core/concepts-app-templates.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
 - name: Anleitungen
   items:
-    - name: Bereitstellen einer Anwendung für die Objekt- und Bewegungserkennung
-      href: howto-deploy-video-analytics-template.md
     - name: Herstellen einer Verbindung zwischen Geräten
       items:
         - name: "Vorbereiten und Verbinden einer Rigado Cascade\_500-Einheit"

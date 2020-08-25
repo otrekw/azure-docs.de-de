@@ -4,12 +4,12 @@ description: In diesem Tutorial erfahren Sie, wie Sie einen Service Fabric-Clus
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
-ms.openlocfilehash: 05fd29f874d59601942216f907010b94bb7c4058
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: d9699103f5e13301cce408d2e54f0e15780e0a35
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86257103"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88716893"
 ---
 # <a name="tutorial-scale-a-service-fabric-cluster-in-azure"></a>Tutorial: Skalieren eines Service Fabric-Clusters in Azure
 
@@ -833,7 +833,7 @@ Foreach($node in $nodes)
 ```
 
 ## <a name="increase-node-resources"></a>Erhöhen von Knotenressourcen 
-Nach der Erstellung eines Service Fabric-Clusters können Sie einen Clusterknotentyp vertikal skalieren (Ressourcen der Knoten ändern) oder das Betriebssystem der Knotentyp-VMs aktualisieren, indem Sie den ursprünglichen Knotentyp durch einen neuen Knotentyp (mit aktualisierter VM-SKU oder Betriebssystemimage) ersetzen. Weitere Informationen finden Sie unter [Hochskalieren eines Azure Service Fabric-Knotentyps](service-fabric-scale-up-node-type.md).
+Nach der Erstellung eines Service Fabric-Clusters können Sie einen Clusterknotentyp vertikal skalieren (Ressourcen der Knoten ändern) oder das Betriebssystem der Knotentyp-VMs aktualisieren, indem Sie den ursprünglichen Knotentyp durch einen neuen Knotentyp (mit aktualisierter VM-SKU oder Betriebssystemimage) ersetzen. Weitere Informationen finden Sie unter [Hochskalieren eines Azure Service Fabric-Knotentyps](service-fabric-scale-up-primary-node-type.md).
 
 > [!IMPORTANT]
 > Versuchen Sie niemals, eine direkte Änderung der VM-SKU oder des Betriebssystemimages durchzuführen, da dies ein gefährlicher und nicht unterstützter Vorgang ist.
