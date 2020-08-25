@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 07/28/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 6fd20819d17861ed5171bf61e4c485fcceba7985
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 2032a7c9d9cd9b17da956dc829234462f8b9e726
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88006110"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88509602"
 ---
 # <a name="use-microsoft-teams-on-windows-virtual-desktop"></a>Verwenden von Microsoft Teams in Windows Virtual Desktop
 
@@ -36,7 +36,7 @@ Bevor Sie Microsoft Teams in Windows Virtual Desktop verwenden können, müssen 
 
 ## <a name="install-the-teams-desktop-app"></a>Installieren der Teams-Desktop-App
 
-In diesem Abschnitt erfahren Sie, wie Sie die Teams-Desktop-App auf Ihrem Windows 10-Multisession- oder Windows 10-Enterprise-VM-Image installieren. Weitere Informationen finden Sie unter [Installieren oder Aktualisieren der Desktop-App für Teams in VDI](/microsoftteams/teams-for-vdi#install-or-update-the-teams-desktop-app-on-vdi/).
+In diesem Abschnitt erfahren Sie, wie Sie die Teams-Desktop-App auf Ihrem Windows 10-Multisession- oder Windows 10-Enterprise-VM-Image installieren. Weitere Informationen finden Sie unter [Installieren oder Aktualisieren der Desktop-App für Teams in VDI](/microsoftteams/teams-for-vdi#install-or-update-the-teams-desktop-app-on-vdi).
 
 ### <a name="prepare-your-image-for-teams"></a>Vorbereiten des Images für Teams
 
@@ -71,17 +71,17 @@ In der folgenden Tabelle sind die neuesten Versionen des WebSocket-Diensts aufge
 
 Sie können die Teams-Desktop-App mit einer Pro-Computer- oder Pro-Benutzer-Installation bereitstellen. So installieren Sie Microsoft Teams in Ihrer Windows Virtual Desktop-Umgebung:
 
-1. Laden Sie das [Teams-MSI-Paket](/microsoftteams/teams-for-vdi#deploy-the-teams-desktop-app-to-the-vm/) herunter, das Ihrer Umgebung entspricht. Es wird empfohlen, das 64-Bit-Installationsprogramm auf einem 64-Bit-Betriebssystem zu verwenden.
+1. Laden Sie das [Teams-MSI-Paket](/microsoftteams/teams-for-vdi#deploy-the-teams-desktop-app-to-the-vm) herunter, das Ihrer Umgebung entspricht. Es wird empfohlen, das 64-Bit-Installationsprogramm auf einem 64-Bit-Betriebssystem zu verwenden.
 
-      > [!NOTE]
-      > Die Medienoptimierung für Microsoft Teams erfordert die Teams-Desktop-App-Version 1.3.00.4461 oder höher.
+      > [!IMPORTANT]
+      > Mit dem neuesten Update der Teams-Desktopclientversion 1.3.00.21759 wurde ein Problem behoben, bei dem Teams im Chat, in Kanälen und im Kalender eine UTC-Zeitzone angezeigt hat. In der neuen Version des Clients wird die Zeitzone der Remotesitzung angezeigt.
 
 2. Führen Sie einen der folgenden Befehle aus, um die MSI-Datei auf der Host-VM zu installieren:
 
     - Pro-Benutzer-Installation
 
         ```powershell
-        msiexec /i <path_to_msi> /l*v <install_logfile_name> ALLUSERS=1
+        msiexec /i <path_to_msi> /l*v <install_logfile_name>
         ```
 
         Diese Vorgehensweise ist die Standardinstallation, bei der Teams im **%AppData%** -Benutzerordner installiert wird. Teams kann nicht ordnungsgemäß mit einer Pro-Benutzer-Installation funktionieren, wenn diese sich in einer nicht beständigen Einrichtung befindet.
@@ -89,13 +89,13 @@ Sie können die Teams-Desktop-App mit einer Pro-Computer- oder Pro-Benutzer-Inst
     - Pro-Computer-Installation
 
         ```powershell
-        msiexec /i <path_to_msi> /l*v <install_logfile_name> ALLUSER=1 ALLUSERS=1
+        msiexec /i <path_to_msi> /l*v <install_logfile_name> ALLUSER=1
         ```
 
         Dadurch wird Teams auf einem 64-Bit-Betriebssystem im Ordner „Programme (x86)“ und auf einem 32-Bit-Betriebssystem im Ordner „Programme“ installiert. An diesem Punkt ist das Golden Image-Setup fertiggestellt. Die Installation von Teams pro Computer ist für nicht beständige Setups erforderlich.
 
-        Wenn Sie Teams das nächste Mal in einer Sitzung öffnen, werden Sie aufgefordert, Ihre Anmeldeinformationen einzugeben.
-
+        Bei der Installation von Teams können zwei Flags festgelegt werden, **ALLUSER=1** und **ALLUSERS=1**. Es ist wichtig, den Unterschied zwischen diesen Parametern zu verstehen. Der Parameter **ALLUSER=1** wird nur in VDI-Umgebungen verwendet, um eine Pro-Computer-Installation anzugeben. Der Parameter **ALLUSERS=1** kann in Nicht-VDI- und in VDI-Umgebungen verwendet werden. Wenn Sie diesen Parameter festlegen, wird das computerweite Installationsprogramm von Teams in der Systemsteuerung unter „Programme und Features“ sowie in den Windows-Einstellungen unter „Apps & Features“ angezeigt. Alle Benutzer mit Administratoranmeldeinformationen auf dem Computer können Teams deinstallieren. 
+       
         > [!NOTE]
         > Benutzer und Administratoren können den automatischen Start für Teams während der Anmeldung zu diesem Zeitpunkt nicht deaktivieren.
 
@@ -125,12 +125,11 @@ Nachdem Sie den WebSocket-Dienst und die Teams-Desktop-App installiert haben, f�
 
 ## <a name="known-issues-and-limitations"></a>Einschränkungen und bekannte Probleme
 
-Die Verwendung von Teams in einer virtualisierten Umgebung unterscheidet sich von der Verwendung von Teams in einer nicht virtualisierten Umgebung. Weitere Informationen zu den Einschränkungen von Teams in virtualisierten Umgebungen finden Sie unter [Bekannte Probleme und Einschränkungen](/microsoftteams/teams-for-vdi#known-issues-and-limitations/).
+Die Verwendung von Teams in einer virtualisierten Umgebung unterscheidet sich von der Verwendung von Teams in einer nicht virtualisierten Umgebung. Weitere Informationen zu den Einschränkungen von Teams in virtualisierten Umgebungen finden Sie unter [Bekannte Probleme und Einschränkungen](/microsoftteams/teams-for-vdi#known-issues-and-limitations).
 
 ### <a name="client-deployment-installation-and-setup"></a>Clientbereitstellung, Installation und Setup
 
 - Bei der Installation pro Computer wird Teams auf VDI nicht auf dieselbe Weise automatisch aktualisiert wie Nicht-VDI-Teams-Clients. Um den Client zu aktualisieren, müssen Sie das VM-Image aktualisieren, indem Sie eine neue MSI-Datei installieren.
-- Teams zeigt derzeit nur die UTC-Zeitzone in Chat, Kanälen und Kalender an.
 - Die Medienoptimierung für Teams wird nur für den Windows Desktop-Client auf Windows 10-Computern unterstützt.
 - Die Verwendung expliziter, auf einem Endpunkt definierter HTTP-Proxys wird nicht unterstützt.
 
@@ -143,7 +142,7 @@ Die Verwendung von Teams in einer virtualisierten Umgebung unterscheidet sich vo
 - Aufgrund von WebRTC-Einschränkungen ist die Auflösung eingehender und ausgehender Videostreams auf 720p beschränkt.
 - Die Teams-App unterstützt keine HID-Schaltflächen oder LED-Steuerelemente in Verbindung mit anderen Geräten.
 
-Informationen zu bekannten Problemen bei Teams, die sich nicht auf virtualisierte Umgebungen beziehen, finden Sie unter [Unterstützung von Microsoft Teams in Ihrer Organisation](/microsoftteams/known-issues/).
+Informationen zu bekannten Problemen bei Teams, die sich nicht auf virtualisierte Umgebungen beziehen, finden Sie unter [Unterstützung von Microsoft Teams in Ihrer Organisation](/microsoftteams/known-issues).
 
 ## <a name="uservoice-site"></a>UserVoice-Website
 

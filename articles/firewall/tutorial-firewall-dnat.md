@@ -9,10 +9,10 @@ ms.date: 03/02/2020
 ms.author: victorh
 ms.custom: mvc
 ms.openlocfilehash: 7220e48c6103352108bdb89e107bb862ee194040
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "78251489"
 ---
 # <a name="tutorial-filter-inbound-internet-traffic-with-azure-firewall-dnat-using-the-azure-portal"></a>Tutorial: Filtern von eingehendem Internetdatenverkehr mit Azure Firewall-DNAT im Azure-Portal
@@ -144,9 +144,9 @@ Nachdem die Bereitstellung abgeschlossen ist, können Sie sich die private IP-Ad
    |Einstellung  |Wert  |
    |---------|---------|
    |Name     |FW-DNAT-test|
-   |Subscription     |\<Ihr Abonnement\>|
+   |Subscription     |\<your subscription\>|
    |Resource group     |**Vorhandene verwenden**: RG-DNAT-Test |
-   |Position     |Wählen Sie den gleichen Standort aus wie zuvor.|
+   |Standort     |Wählen Sie den gleichen Standort aus wie zuvor.|
    |Virtuelles Netzwerk auswählen     |**Vorhandene verwenden**: VN-Hub|
    |Öffentliche IP-Adresse     |**Neu erstellen**. Die öffentliche IP-Adresse muss vom Standard-SKU-Typ sein.|
 

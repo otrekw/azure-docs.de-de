@@ -5,39 +5,32 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 07/14/2020
-ms.openlocfilehash: d36b4fd433af716ebd97d88d05922d94bd74c309
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 08/19/2020
+ms.openlocfilehash: a992d240955f42ec030a84c887ba086ce92f9790
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86523535"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88605260"
 ---
 # <a name="pricing-model-in-azure-cosmos-db"></a>Preismodell in Azure Cosmos DB
 
-Das Preismodell für Azure Cosmos DB vereinfacht das Kostenmanagement und die Kostenplanung. Bei Azure Cosmos DB zahlen Sie für den bereitgestellten Durchsatz und den verwendeten Speicher.
+Das Preismodell für Azure Cosmos DB vereinfacht das Kostenmanagement und die Kostenplanung. Mit Azure Cosmos DB zahlen Sie für die Vorgänge, die Sie für die Datenbank ausführen, und für den von Ihren Daten genutzten Speicher.
 
-* **Bereitgestellter Durchsatz**: Der [bereitgestellte Durchsatz](how-to-choose-offer.md) (auch als reservierter Durchsatz bezeichnet) garantiert eine hohe Leistung in jeder Größenordnung. Sie geben den benötigten Durchsatz (Anforderungseinheiten pro Sekunde, RUs/Sek.) an, und Azure Cosmos DB reserviert die Ressourcen, die erforderlich sind, um den konfigurierten Durchsatz zu gewährleisten. Die Abrechnung erfolgt auf Stundenbasis für den für die jeweilige Stunde bereitgestellten maximalen Durchsatz. Sie können den Durchsatz manuell bereitstellen oder die [Autoskalierung](provision-throughput-autoscale.md) verwenden.
+- **Datenbankvorgänge**: Die Art und Weise, wie Ihre Datenbankvorgänge abgerechnet werden, hängt vom Typ des Azure Cosmos-Kontos ab, das Sie verwenden.
+
+  - **Bereitgestellter Durchsatz**: Der [bereitgestellte Durchsatz](set-throughput.md) (auch als reservierter Durchsatz bezeichnet) garantiert eine hohe Leistung in jeder Größenordnung. Sie geben den benötigten Durchsatz in [Anforderungseinheiten](request-units.md) pro Sekunde (RUs/s) an, und Azure Cosmos DB reserviert die Ressourcen, die erforderlich sind, um den konfigurierten Durchsatz zu gewährleisten. Sie können [Durchsatz entweder für eine Datenbank oder einen Container bereitstellen](set-throughput.md). Basierend auf Ihren Workloadanforderungen können Sie den Durchsatz jederzeit hoch- oder herunterskalieren oder [Autoskalierung](provision-throughput-autoscale.md) verwenden (obwohl ein Mindestdurchsatz für eine Datenbank oder einen Container erforderlich ist, um die SLAs zu garantieren). Die Abrechnung erfolgt auf Stundenbasis für den für die jeweilige Stunde bereitgestellten maximalen Durchsatz.
 
    > [!NOTE]
-   > Da das Modell mit bereitgestelltem Durchsatz Ressourcen dediziert für Ihren Container oder Ihre Datenbank bereitstellt, wird Ihnen der bereitgestellte Durchsatz auch dann in Rechnung gestellt, wenn Sie keine Workloads ausführen.
+   > Da das Modell mit bereitgestelltem Durchsatz Ressourcen dediziert für Ihren Container oder Ihre Datenbank bereitstellt, wird Ihnen der Durchsatz, den Sie bereitgestellt haben, auch dann in Rechnung gestellt, wenn Sie keine Workloads ausführen.
 
-* **Speichernutzung**: Für die Gesamtmenge des Speichers (GB), der für Daten und Indizes für eine bestimmte Stunde genutzt wird, wird eine Pauschale berechnet.
+  - **Serverlos**: Im [serverlosen](serverless.md) Modus müssen Sie beim Erstellen von Ressourcen in Ihrem Azure Cosmos-Konto keinen Durchsatz bereitstellen. Am Ende Ihres Abrechnungszeitraums wird Ihnen die Anzahl der Anforderungseinheiten in Rechnung gestellt, die von den Datenbankvorgängen genutzt wurden.
 
-Der bereitgestellte Durchsatz, der in [Anforderungseinheiten](request-units.md) pro Sekunde (RUs/Sek.) angegeben wird, ermöglicht das Lesen oder Schreiben von Daten in Containern oder Datenbanken. Sie können [Durchsatz entweder für eine Datenbank oder einen Container bereitstellen](set-throughput.md). Basierend auf Ihren Workloadanforderungen können Sie den Durchsatz jederzeit zentral hoch- oder herunterskalieren. Die Preisgestaltung für Azure Cosmos DB ist elastisch und verhält sich proportional zu dem Durchsatz, den Sie für eine Datenbank oder einen Container konfigurieren. Die Mindestwerte für Durchsatz und Speicher sowie die Skalierungseinheiten bilden ein vollständiges Preis-/Elastizitätsspektrum für alle Kundensegmente und von kleinen bis zu umfangreichen Containern ab. Der bereitgestellte Durchsatz wird für jede Datenbank bzw. jeden Container auf Stundenbasis in Einheiten von 100 RUs/Sek. (Mindestbereitstellungsmenge 400 RUs/Sek.) und der genutzte Speicher in GB in Rechnung gestellt. Im Gegensatz zum bereitgestellten Durchsatz wird der Speicher auf Nutzungsbasis abgerechnet. Das bedeutet, dass Sie keinerlei Speicher im Voraus reservieren müssen. Die Berechnung erfolgt nur für den Speicher, den Sie nutzen.
+- **Storage**: Für die Gesamtmenge des Speichers (in GB), der für Daten und Indizes für eine angegebene Stunde genutzt wird, wird eine Pauschale berechnet. Der Speicher wird auf Nutzungsbasis abgerechnet, sodass Sie keinen Speicher im Voraus reservieren müssen. Die Berechnung erfolgt nur für den Speicher, den Sie nutzen.
 
-Weitere Informationen finden Sie auf der Seite [Azure Cosmos DB – Preise](https://azure.microsoft.com/pricing/details/cosmos-db/) und unter [Erläuterungen zu Ihrer Azure Cosmos DB-Rechnung](understand-your-bill.md).
+Das Preismodell in Azure Cosmos DB ist für alle APIs einheitlich. Weitere Informationen finden Sie auf der [Azure Cosmos DB-Preisseite](https://azure.microsoft.com/pricing/details/cosmos-db/), unter [Erläuterungen zu Ihrer Azure Cosmos DB-Rechnung](understand-your-bill.md) sowie unter [Kosteneffektivität des Azure Cosmos DB-Preismodells für Kunden](total-cost-ownership.md).
 
-Das Preismodell in Azure Cosmos DB ist für alle APIs einheitlich. Weitere Informationen finden Sie unter [Warum ist das Preismodell von Azure Cosmos DB kosteneffizient für den Kunden?](total-cost-ownership.md). Für die SLA-Garantie ist ein Mindestdurchsatz für eine Datenbank oder einen Container erforderlich, und Sie können den bereitgestellten Durchsatz pro 100 RUs/Sek. erhöhen oder verringern.
-
-Wenn Sie Ihr Azure Cosmos DB-Konto in einer Region in den USA bereitstellen und es sich dabei nicht um eine Government-Region handelt, beträgt der Mindestpreis für datenbank- und containerbasierten Durchsatz derzeit ungefähr 24 USD pro Monat. Die Preise variieren je nach verwendeter Region. Aktuelle Preisinformationen finden Sie auf der Seite [Azure Cosmos DB – Preise](https://azure.microsoft.com/pricing/details/cosmos-db/). Wenn für Ihre Workload mehrere Container verwendet werden, lassen sich die Kosten anhand von Durchsatz auf Datenbankebene optimieren, mit dem beliebig viele Container in einer Datenbank den Durchsatz gemeinsam nutzen können. Die folgende Tabelle enthält eine Übersicht über den bereitgestellten Durchsatz und die Kosten für unterschiedliche Entitäten:
-
-|**Entität**  | **Mindestdurchsatz** |**Skalierungseinheiten** |**Bereitstellungsumfang** |
-|---------|---------|---------|-------|
-|Datenbank    | 400 RUs/Sek.    | 100 RUs/Sek.   |Der Durchsatz ist für die Datenbank reserviert und wird von Containern in der Datenbank gemeinsam genutzt |
-|Container     | 400 RUs/Sek.   | 100 RUs/Sek.  |Der Durchsatz ist für einen bestimmten Container reserviert |
-
-Wie in der obigen Tabelle zu sehen, beginnt der Preis für den Mindestdurchsatz in Azure Cosmos DB bei etwa 24 USD/Monat. Wenn Sie mit dem Mindestdurchsatz beginnen und den Durchsatz mit der Zeit hochskalieren, um Ihre Workloads in der Produktion zu unterstützen, erhöhen sich die Kosten nach und nach in Schritten von etwa 6 USD/Monat. Die Preise variieren je nach verwendeter Region. Aktuelle Preisinformationen finden Sie auf der Seite [Azure Cosmos DB – Preise](https://azure.microsoft.com/pricing/details/cosmos-db/). Das Preismodell für Azure Cosmos DB ist elastisch, die Preiserhöhung (Preissenkung) für das Hochskalieren (Herunterskalieren) ist moderat.
+Wenn Sie Ihr Azure Cosmos DB-Konto in einer Region in den USA bereitstellen, die keine Government-Region ist, gilt ein Mindestpreis für datenbank- und containerbasierten Durchsatz im Modus „bereitgestellter Durchsatz“. Im serverlosen Modus gibt es keinen Mindestpreis. Die Preise variieren je nach verwendeter Region. Aktuelle Preisinformationen finden Sie auf der Seite [Azure Cosmos DB – Preise](https://azure.microsoft.com/pricing/details/cosmos-db/).
 
 ## <a name="try-azure-cosmos-db-for-free"></a>Azure Cosmos DB kostenlos testen
 
@@ -53,7 +46,7 @@ Azure Cosmos DB bietet viele Optionen für Entwickler kostenlos an. Die Optione
 
 ## <a name="pricing-with-reserved-capacity"></a>Preise mit reservierter Kapazität
 
-Die [reservierte Kapazität](cosmos-db-reserved-capacity.md) von Azure Cosmos DB hilft Ihnen, Geld zu sparen, indem Sie die Ressourcen von Azure Cosmos DB entweder für ein Jahr oder für drei Jahre im Voraus bezahlen. Mit der Vorabfestlegung und Bezahlung für ein Jahr oder drei Jahre können Sie Ihre Kosten deutlich senken und gegenüber der regulären Preisgestaltung zwischen 20 % und 65 % sparen. Mit der reservierten Kapazität von Azure Cosmos DB können Sie durch Zahlung des bereitgestellten Durchsatzes (RUs/Sek.) für ein Jahr oder drei Jahre im Voraus die Kosten senken und auf den bereitgestellten Umsatz einen Rabatt erhalten. 
+Die [reservierte Kapazität](cosmos-db-reserved-capacity.md) von Azure Cosmos DB hilft Ihnen, Geld zu sparen, wenn der Modus „bereitgestellter Durchsatz“ verwendet wird, indem Sie die Ressourcen von Azure Cosmos DB entweder für ein Jahr oder für drei Jahre im Voraus bezahlen. Mit der Vorabfestlegung und Bezahlung für ein Jahr oder drei Jahre können Sie Ihre Kosten deutlich senken und gegenüber der regulären Preisgestaltung zwischen 20 % und 65 % sparen. Mit der reservierten Kapazität von Azure Cosmos DB können Sie durch Zahlung des bereitgestellten Durchsatzes (RUs/Sek.) für ein Jahr oder drei Jahre im Voraus die Kosten senken und auf den bereitgestellten Umsatz einen Rabatt erhalten. 
 
 Die reservierte Kapazität bezieht sich auf einen Rechnungsrabatt und wirkt sich nicht auf den Status Ihrer Azure Cosmos DB-Ressourcen zur Laufzeit aus. Die reservierte Kapazität steht einheitlich für alle APIs (einschließlich MongoDB, Cassandra, SQL, Gremlin und Azure Tables ) sowie alle Regionen weltweit zur Verfügung. Erfahren Sie mehr über reservierte Kapazität im Artikel [Vorauszahlen für Azure Cosmos DB-Ressourcen mit reservierter Kapazität](cosmos-db-reserved-capacity.md), und erwerben Sie reservierte Kapazität im [Azure-Portal](https://portal.azure.com/).
 

@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 27615d1367bd0faa035e68bf9f03df05cdccfa7f
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: f2c8dbebce685eea67672a2b8c93d51e356ac69c
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87903849"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88226044"
 ---
 # <a name="deploy-azure-file-sync"></a>Bereitstellen der Azure-Dateisynchronisierung
 Mit der Azure-Dateisynchronisierung können Sie die Dateifreigaben Ihrer Organisation in Azure Files zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Mit der Azure-Dateisynchronisierung werden Ihre Windows Server-Computer zu einem schnellen Cache für Ihre Azure-Dateifreigabe. Sie können ein beliebiges Protokoll verwenden, das unter Windows Server verfügbar ist, um lokal auf Ihre Daten zuzugreifen, z.B. SMB, NFS und FTPS. Sie können weltweit so viele Caches wie nötig nutzen.
@@ -415,16 +415,19 @@ Geben Sie im Bereich **Serverendpunkt hinzufügen** die folgenden Informationen 
 - **Pfad**: Der Windows Server-Pfad, der als Teil der Synchronisierungsgruppe synchronisiert werden soll.
 - **Cloudtiering**: Ein Schalter, mit dem Cloudtiering aktiviert oder deaktiviert wird. Mit Cloudtiering kann für selten verwendete oder selten einem Zugriff ausgesetzte Dateien Tiering nach Azure Files festgelegt werden.
 - **Freier Speicherplatz auf Volume**: Die Menge an freiem Speicherplatz auf dem Volume, auf dem sich der Serverendpunkt befindet, die reserviert werden soll. Wenn z.B. für ein Volume mit einem einzigen Serverendpunkt „Freier Speicherplatz auf Volume“ auf 50 % festgelegt ist, wird ungefähr die Hälfte der Daten nach Azure Files ausgelagert. Die Azure-Dateifreigabe enthält immer eine vollständige Kopie der Daten in der Synchronisierungsgruppe, unabhängig davon, ob Cloudtiering aktiviert ist.
+- **Anfänglicher Downloadmodus**: Dies ist eine optionale Auswahl, beginnend mit der Agent-Version 11, die hilfreich sein kann, wenn Dateien in der Azure-Dateifreigabe, aber nicht auf dem Server vorhanden sind. Eine solche Situation kann beispielsweise auftreten, wenn Sie einen Serverendpunkt erstellen, um einer Synchronisierungsgruppe einen weiteren Zweigstellenserver hinzuzufügen, oder wenn Sie die Notfallwiederherstellung für einen ausgefallenen Server durchführen. Wenn das Cloudtiering aktiviert ist, wird standardmäßig nur der Namespace abgerufen, anfangs kein Dateiinhalt. Dies ist hilfreich, wenn Sie der Ansicht sind, dass eher Benutzerzugriffsanforderungen entscheiden sollen, welche Dateiinhalte auf den Server abgerufen werden. Wenn das Cloudtiering deaktiviert ist, ist der Standard, dass der Namespace zuerst heruntergeladen wird, und anschließend werden Dateien auf Grundlage des Zeitstempels der letzten Änderung abgerufen, bis die lokale Kapazität erreicht ist. Sie können den anfänglichen Downloadmodus jedoch in „Nur Namespace“ ändern. Ein dritter Modus kann nur verwendet werden, wenn das Cloudtiering für diesen Serverendpunkt deaktiviert ist. In diesem Modus wird vermieden, den Namespace zuerst abzurufen. Dateien werden nur auf dem lokalen Server angezeigt, wenn Sie vollständig heruntergeladen werden konnten. Dieser Modus ist nützlich, wenn eine Anwendung beispielsweise erfordert, dass vollständige Dateien vorhanden sind, und keine mehrstufige Dateien in ihrem Namespace tolerieren kann.
 
 Wählen Sie **Erstellen** aus, um den Serverendpunkt hinzuzufügen. Ihre Dateien bleiben jetzt zwischen der Azure-Dateifreigabe und Windows Server synchron. 
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
-Führen Sie die folgenden PowerShell-Befehle aus, um den Serverendpunkt zu erstellen, und achten Sie darauf, dass Sie `<your-server-endpoint-path>` und `<your-volume-free-space>` mit den gewünschten Werten ersetzen.
+Führen Sie die folgenden PowerShell-Befehle aus, um den Serverendpunkt zu erstellen, und achten Sie darauf, dass Sie `<your-server-endpoint-path>` und `<your-volume-free-space>` durch die gewünschten Werte ersetzen und die optionale Einstellung für die optionale anfängliche Downloadrichtlinie überprüfen.
 
 ```powershell
 $serverEndpointPath = "<your-server-endpoint-path>"
 $cloudTieringDesired = $true
 $volumeFreeSpacePercentage = <your-volume-free-space>
+# Optional property. Choose from: [NamespaceOnly] default when cloud tiering is enabled. [NamespaceThenModifiedFiles] default when cloud tiering is disabled. [AvoidTieredFiles] only available when cloud tiering is disabled.
+$initialDownloadPolicy = NamespaceOnly
 
 if ($cloudTieringDesired) {
     # Ensure endpoint path is not the system volume
@@ -441,14 +444,16 @@ if ($cloudTieringDesired) {
         -ServerResourceId $registeredServer.ResourceId `
         -ServerLocalPath $serverEndpointPath `
         -CloudTiering `
-        -VolumeFreeSpacePercent $volumeFreeSpacePercentage
+        -VolumeFreeSpacePercent $volumeFreeSpacePercentage `
+        -InitialDownloadPolicy $initialDownloadPolicy
 } else {
     # Create server endpoint
     New-AzStorageSyncServerEndpoint `
         -Name $registeredServer.FriendlyName `
         -SyncGroup $syncGroup `
         -ServerResourceId $registeredServer.ResourceId `
-        -ServerLocalPath $serverEndpointPath 
+        -ServerLocalPath $serverEndpointPath `
+        -InitialDownloadPolicy $initialDownloadPolicy
 }
 ```
 
@@ -460,23 +465,24 @@ Verwenden Sie den Befehl [az storagesync sync-group server-endpoint](/cli/azure/
 # Create a new sync group server endpoint 
 az storagesync sync-group server-endpoint create --resource-group myResourceGroupName \
                                                  --name myNewServerEndpointName
-                                                 --registered-server-id 91beed22-7e9e-4bda-9313-fec96cf286e0
+                                                 --registered-server-id 91beed22-7e9e-4bda-9313-fec96c286e0
                                                  --server-local-path d:\myPath
                                                  --storage-sync-service myStorageSyncServiceNAme
                                                  --sync-group-name mySyncGroupName
 
 # Create a new sync group server endpoint with additional optional parameters
 az storagesync sync-group server-endpoint create --resource-group myResourceGroupName \
-                                                 --name myNewServerEndpointName \
-                                                 --registered-server-id 91beed22-7e9e-4bda-9313-fec96cf286e0 \
-                                                 --server-local-path d:\myPath \
                                                  --storage-sync-service myStorageSyncServiceName \
                                                  --sync-group-name mySyncGroupName \
+                                                 --name myNewServerEndpointName \
+                                                 --registered-server-id 91beed22-7e9e-4bda-9313-fec96c286e0 \
+                                                 --server-local-path d:\myPath \
                                                  --cloud-tiering on \
+                                                 --volume-free-space-percent 85 \
+                                                 --tier-files-older-than-days 15 \
+                                                 --initial-download-policy NamespaceOnly [OR] NamespaceThenModifiedFiles [OR] AvoidTieredFiles
                                                  --offline-data-transfer on \
                                                  --offline-data-transfer-share-name myfilesharename \
-                                                 --tier-files-older-than-days 15 \
-                                                 --volume-free-space-percent 85 \
 
 ```
 
@@ -567,6 +573,40 @@ Die maximale Standardanzahl von VSS-Momentaufnahmen pro Volume (64) sowie der St
 
 Falls die maximale Anzahl von 64 VSS-Momentaufnahmen pro Volume für Sie keine geeignete Einstellung ist, können Sie [diesen Wert über einen Registrierungsschlüssel ändern](https://docs.microsoft.com/windows/win32/backup/registry-keys-for-backup-and-restore#maxshadowcopies).
 Damit der neue Grenzwert wirksam wird, müssen Sie das Cmdlet erneut ausführen, um die Kompatibilität mit vorherigen Versionen auf jedem Volume, auf dem diese zuvor aktiviert waren, zu ermöglichen. Hierbei verwenden Sie das „-Force“-Flag, um die neue maximale Anzahl von VSS-Momentaufnahmen pro Volume zu berücksichtigen. Dies ergibt eine neu berechnete Anzahl von Kompatibilitätstagen. Beachten Sie Folgendes: Diese Änderung wird nur für neue Dateien wirksam, die per Tiering ausgelagert werden, und es werden alle Anpassungen des VSS-Zeitplans außer Kraft gesetzt, die Sie ggf. vorgenommen haben.
+
+<a id="proactive-recall"></a>
+## <a name="proactively-recall-new-and-changed-files-from-an-azure-file-share"></a>Proaktives Abrufen neuer und geänderter Dateien von einer Azure-Dateifreigabe
+
+Mit der Agent-Version 11 wird ein neuer Modus auf einem Serverendpunkt verfügbar. Dieser Modus ermöglicht global verteilt angesiedelten Unternehmen, dass der Servercache in einer Remoteregion vorab aufgefüllt wird, sogar bevor lokale Benutzer auf Dateien zugreifen. Wenn dieser Modus auf einem Serverendpunkt aktiviert ist, führt er dazu, dass dieser Server Dateien abruft, die in der Azure-Dateifreigabe erstellt oder geändert wurden.
+
+### <a name="scenario"></a>Szenario
+
+Ein global verteilt angesiedeltes Unternehmen verfügt über Zweigstellen in den USA und in Indien. Am Morgen (US-Zeit) erstellen Information-Worker einen neuen Ordner und neue Dateien für ein ganz neues Projekt, an dem sie den gesamten Tag arbeiten. Die Azure-Dateisynchronisierung synchronisiert Ordner und Dateien auf die Azure-Dateifreigabe (den Cloudendpunkt). Information Worker in Indien setzen die Arbeit an dem Projekt in ihrer Zeitzone fort. Wenn diese am Morgen eintreffen, müssen auf dem lokalen, für Azure-Dateisynchronisierung aktivierten Server in Indien diese neuen Dateien lokal verfügbar sein, damit das Team in Indien effizient aus einem lokalen Cache heraus weiterarbeiten kann. Wenn Sie diesen Modus aktivieren, wird verhindert, dass der anfängliche Dateizugriff aufgrund eines bedarfsgesteuerten Abrufs langsamer ist, und dem Server wird ermöglicht, die Dateien proaktiv abzurufen, sobald sie in der Azure-Dateifreigabe geändert oder erstellt wurden.
+
+> [!IMPORTANT]
+> Es ist wichtig, zu verstehen, dass das so enge Nachverfolgen von Änderungen in der Azure-Dateifreigabe auf dem Server Ihren ausgehenden Datenverkehr und somit die Rechnung von Azure erhöhen kann. Wenn auf den Server abgerufene Dateien nicht tatsächlich lokal benötigt werden, kann ein unnötiger Abruf auf den Server negative Folgen haben. Verwenden Sie diesen Modus, wenn Sie wissen, dass das Vorabauffüllen des Caches auf einem Server mit aktuellen Änderungen aus der Cloud einen positiven Effekt auf Benutzer oder Anwendungen haben wird, die die Dateien auf diesem Server verwenden.
+
+### <a name="enable-a-server-endpoint-to-proactively-recall-what-changed-in-an-azure-file-share"></a>Aktivieren eines Serverendpunkts zum proaktiven Abrufen der Änderung von einer Azure-Dateifreigabe
+
+# <a name="portal"></a>[Portal](#tab/proactive-portal)
+
+1. Wechseln Sie im [Azure-Portal](https://portal.azure.com/) zu Ihrem Speichersynchronisierungsdienst, wählen Sie die richtige Synchronisierungsgruppe aus, und identifizieren Sie dann den Serverendpunkt, für den Sie Änderungen in der Azure-Dateifreigabe (Cloudendpunkt) eng nachverfolgen möchten.
+1. Suchen Sie im Abschnitt „Cloudtiering“ das Thema „Herunterladen von Azure-Dateifreigaben“. Der aktuell ausgewählte Modus wird angezeigt, und Sie können ihn so ändern, dass Änderungen an der Azure-Dateifreigabe enger nachverfolgt und diese proaktiv auf den Server abgerufen werden.
+
+:::image type="content" source="media/storage-sync-files-deployment-guide/proactive-download.png" alt-text="Eine Abbildung, die das Downloadverhalten der Azure-Dateifreigabe für einen derzeit gültigen Serverendpunkt darstellt sowie eine Schaltfläche zum Öffnen eines Menüs, das dessen Änderung gestattet.":::
+
+# <a name="powershell"></a>[PowerShell](#tab/proactive-powershell)
+
+Sie können Eigenschaften von Serverendpunkten in PowerShell mithilfe des Cmdlets [Set-AzStorageSyncServerEndpoint](https://docs.microsoft.com/powershell/module/az.storagesync/set-azstoragesyncserverendpoint) ändern.
+
+```powershell
+# Optional parameter. Default: "UpdateLocallyCachedFiles", alternative behavior: "DownloadNewAndModifiedFiles"
+$recallBehavior = "DownloadNewAndModifiedFiles"
+
+Set-AzStorageSyncServerEndpoint -InputObject <PSServerEndpoint> -LocalCacheMode $recallBehavior
+```
+
+---
 
 ## <a name="migrate-a-dfs-replication-dfs-r-deployment-to-azure-file-sync"></a>Migrieren einer DFS-R-Bereitstellung (DFS-Replikation) zur Azure-Dateisynchronisierung
 So migrieren eine DFS-R-Bereitstellung zur Azure-Dateisynchronisierung

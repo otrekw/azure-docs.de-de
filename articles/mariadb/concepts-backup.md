@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 3/27/2020
-ms.openlocfilehash: c4d5a9ca85237bde1277904a478a0b8828fc2b08
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 8/13/2020
+ms.openlocfilehash: fee1285cfb5faefbcb8f7151186d42725d34af0a
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80369242"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88224508"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mariadb"></a>Sichern und Wiederherstellen in Azure Database for MariaDB
 
@@ -25,7 +25,24 @@ Diese Sicherungsdateien sind nicht für den Benutzer verfügbar und können nich
 
 ### <a name="backup-frequency"></a>Sicherungshäufigkeit
 
-Normalerweise werden vollständige Sicherungen einmal pro Woche, differenzielle Sicherungen zweimal pro Tag und Transaktionsprotokollsicherungen alle fünf Minuten durchgeführt. Die erste vollständige Sicherung wird unmittelbar nach der Erstellung des Servers eingeplant. Für einen großen wiederhergestellten Server kann die erste Sicherung länger dauern. Der früheste Zeitpunkt, der für einen neuen Server wiederhergestellt werden kann, ist der Zeitpunkt, zu dem die erste vollständige Sicherung erstellt wurde.
+#### <a name="servers-with-up-to-4-tb-storage"></a>Server mit bis zu 4 TB Speicher
+
+Bei Servern, die bis zu 4 TB Speicher unterstützen, erfolgt jede Woche eine vollständige Sicherung. Differenzielle Sicherungen werden zweimal täglich ausgeführt. Transaktionsprotokollsicherungen finden alle fünf Minuten statt.
+
+#### <a name="servers-with-up-to-16-tb-storage"></a>Server mit bis zu 16 TB Speicher
+In einigen [Azure-Regionen](concepts-pricing-tiers.md#storage) unterstützen alle neu bereitgestellten Server bis zu 16 TB Speicher. Die Sicherungen auf diesen großen Speicherservern basieren auf Momentaufnahmen. Die erste vollständige Momentaufnahmensicherung wird unmittelbar nach der Erstellung des Servers eingeplant. Diese erste vollständige Momentaufnahmensicherung wird als Basissicherung des Servers beibehalten. Nachfolgende Momentaufnahmensicherungen sind nur differenzielle Sicherungen. 
+
+Differentielle Momentaufnahmesicherungen werden mindestens einmal täglich erstellt. Differenzielle Momentaufnahmensicherungen erfolgen nicht nach einem festgelegten Zeitplan. Differenzielle Momentaufnahmesicherungen werden alle 24 Stunden ausgeführt, es sei denn, das Transaktionsprotokoll (binlog in MariaDB) überschreitet 50 GB seit der letzten differenziellen Sicherung. An einem Tag sind maximal sechs differenzielle Momentaufnahmen zulässig. 
+
+Transaktionsprotokollsicherungen finden alle fünf Minuten statt. 
+
+### <a name="backup-retention"></a>Sicherungsaufbewahrung
+
+Sicherungen werden basierend auf der Einstellung für den Aufbewahrungszeitraum der Sicherung auf dem Server beibehalten. Sie können einen Aufbewahrungszeitraum von 7 bis 35 Tagen auswählen. Der Standardaufbewahrungszeitraum beträgt sieben Tage. Sie können den Aufbewahrungszeitraum bei der Servererstellung oder später festlegen, indem Sie die Sicherungskonfiguration mithilfe des [Azure-Portals](howto-restore-server-portal.md#set-backup-configuration) oder über die [Azure CLI](howto-restore-server-cli.md#set-backup-configuration) aktualisieren. 
+
+Mit „Aufbewahrungszeit für Sicherung“ wird auch gesteuert, für welchen zurückliegenden Zeitraum eine Point-in-Time-Wiederherstellung durchgeführt werden kann, da dies auf den verfügbaren Sicherungen basiert. Der Aufbewahrungszeitraum kann auch als Wiederherstellungsfenster im Hinblick auf die Wiederherstellung behandelt werden. Alle Sicherungen, die zum Durchführen einer Zeitpunktwiederherstellung innerhalb des Aufbewahrungszeitraums für die Sicherung erforderlich sind, werden im Sicherungsspeicher beibehalten. Wenn der Aufbewahrungszeitraum für Sicherungen beispielsweise auf sieben Tage festgelegt ist, entspricht das Wiederherstellungsfenster einer Dauer von sieben Tagen. In diesem Szenario bleiben alle Sicherungen erhalten, die zum Wiederherstellen des Servers in den letzten sieben Tagen erforderlich sind. Beispiel für Sicherungsaufbewahrungsfenster von sieben Tagen:
+- Bei Servern mit bis zu 4 TB Speicher werden bis zu zwei vollständige Datenbanksicherungen, alle differenziellen Sicherungen sowie Transaktionsprotokollsicherungen beibehalten, die seit der frühesten Datenbanksicherung durchgeführt wurden.
+-   Bei Servern mit bis zu 16 TB Speicher werden die vollständige Datenbankmomentaufnahme, alle differenziellen Momentaufnahmen und die Transaktionsprotokollsicherungen der letzten acht Tage beibehalten.
 
 ### <a name="backup-redundancy-options"></a>Optionen für Sicherungsredundanz
 
@@ -36,11 +53,11 @@ Mit Azure Database for MariaDB können Sie in den Tarifen „Allgemein“ und �
 
 ### <a name="backup-storage-cost"></a>Kosten für Sicherungsspeicher
 
-Azure Database for MariaDB stellt bis zu 100 % Ihres bereitgestellten Serverspeichers ohne zusätzliche Kosten als Sicherungsspeicher zur Verfügung. Dies ist normalerweise für die Aufbewahrung von Sicherungen über einen Zeitraum von sieben Tagen geeignet. Wenn zusätzlicher Sicherungsspeicher verwendet wird, wird dies in GB pro Monat berechnet.
+Azure Database for MariaDB stellt bis zu 100 % Ihres bereitgestellten Serverspeichers ohne zusätzliche Kosten als Sicherungsspeicher zur Verfügung. Wenn zusätzlicher Sicherungsspeicher verwendet wird, wird dies in GB pro Monat berechnet. Beispiel: Wenn Sie einen Server mit 250 GB bereitgestellt haben, verfügen Sie über 250 GB an zusätzlichem Speicher, der ohne zusätzliche Kosten für Serversicherungen zur Verfügung steht. Der für Sicherungen verwendete Speicher über 250 GB wird gemäß dem [Preismodell](https://azure.microsoft.com/pricing/details/mariadb/) abgerechnet. 
 
-Beispiel: Wenn Sie einen Server mit 250 GB bereitgestellt haben, verfügen Sie ohne zusätzliche Kosten über 250 GB an Sicherungsspeicher. Für Speicher, der über 250 GB hinausgeht, werden Kosten berechnet.
+Sie können die im Azure-Portal in Azure Monitor verfügbare Metrik für den [verwendeten Sicherungsspeicher](concepts-monitoring.md) zum Überwachen des von einem Server genutzten Sicherungsspeichers verwenden. Die Metrik für den verwendeten Sicherungsspeicher stellt den gesamten Speicherplatz dar, der von allen vollständigen Datenbanksicherungen, differenziellen Sicherungen und Protokollsicherungen beansprucht wurde, die auf der Grundlage des für den Server festgelegten Aufbewahrungszeitraums für Sicherungen aufbewahrt wurden. Die Häufigkeit der Sicherungen wird durch den Dienst verwaltet und wurde bereits erläutert. Eine hohe Transaktionsaktivität auf dem Server kann dazu führen, dass die Sicherungsspeicherauslastung unabhängig von der Gesamtgröße der Datenbank zunimmt. Bei georedundantem Speicher wird doppelt so viel Sicherungsspeicher genutzt wie bei lokal redundantem Speicher. 
 
-Weitere Informationen zu den Preisen für Sicherungsspeicher finden Sie in der [Preisübersicht für Azure Database for MariaDB](https://azure.microsoft.com/pricing/details/mariadb/).
+Das primäre Mittel zum Steuern der Sicherungsspeicherkosten besteht darin, den geeigneten Aufbewahrungszeitraum festzulegen und die richtige Sicherungsredundanzoptionen auszuwählen, um die gewünschten Wiederherstellungsziele zu erreichen. Sie können als Aufbewahrungszeitraum einen Bereich von 7 bis 35 Tagen auswählen. Bei universellen und arbeitsspeicheroptimierten Servern können Sie georedundanten Speicher für Sicherungen auswählen.
 
 ## <a name="restore"></a>Restore
 
@@ -66,7 +83,9 @@ Unter Umständen müssen Sie warten, bis die nächste Transaktionsprotokollsiche
 
 ### <a name="geo-restore"></a>Geowiederherstellung
 
-Sie können einen Server in einer anderen Azure-Region wiederherstellen, in der der Dienst verfügbar ist, wenn Sie Ihren Server für georedundante Sicherungen konfiguriert haben. Die Geowiederherstellung ist die Standardoption für die Wiederherstellung, wenn Ihr Server aufgrund eines Incidents in der Region, in der der Server gehostet wird, nicht verfügbar ist. Wenn Ihre Datenbankanwendung wegen eines umfangreichen Incidents in einer Region nicht mehr verfügbar ist, können Sie einen Server aus den georedundanten Sicherungen auf einem Server in einer beliebigen anderen Region wiederherstellen. Bei der Geowiederherstellung wird die aktuellste Sicherung des Servers verwendet. Zwischen der Erstellung einer Sicherung und der Replikation in einer anderen Region kommt es zu einer Verzögerung. Diese Verzögerung kann bis zu einer Stunde betragen. Folglich kann bei einem Notfall ein Datenverlust von bis zu einer Stunde auftreten.
+Sie können einen Server in einer anderen Azure-Region wiederherstellen, in der der Dienst verfügbar ist, wenn Sie Ihren Server für georedundante Sicherungen konfiguriert haben. Server, die bis zu 4 TB Speicherkapazität unterstützen, können in der geografisch gekoppelten Region oder in einer beliebigen Region wiederhergestellt werden, die bis zu 16 TB Speicherkapazität unterstützt. Für Server, die bis zu 16 TB Speicherkapazität unterstützen, können Geosicherungen auch in beliebigen Regionen wiederhergestellt werden, die Server mit 16 TB unterstützen. Eine Liste der unterstützten Regionen finden Sie unter [Azure Database for MariaDB-Tarife](concepts-pricing-tiers.md).
+
+Die Geowiederherstellung ist die Standardoption für die Wiederherstellung, wenn Ihr Server aufgrund eines Incidents in der Region, in der der Server gehostet wird, nicht verfügbar ist. Wenn Ihre Datenbankanwendung wegen eines umfangreichen Incidents in einer Region nicht mehr verfügbar ist, können Sie einen Server aus den georedundanten Sicherungen auf einem Server in einer beliebigen anderen Region wiederherstellen. Bei der Geowiederherstellung wird die aktuellste Sicherung des Servers verwendet. Zwischen der Erstellung einer Sicherung und der Replikation in einer anderen Region kommt es zu einer Verzögerung. Diese Verzögerung kann bis zu einer Stunde betragen. Folglich kann bei einem Notfall ein Datenverlust von bis zu einer Stunde auftreten.
 
 Während der Geowiederherstellung können folgende Serverkonfigurationen geändert werden: Computegeneration, virtueller Kern, Aufbewahrungszeitraum für die Sicherung und Sicherungsredundanzoptionen. Allerdings wird während der Geowiederherstellung nicht das Ändern des Tarifs („Basic“, „Allgemein“ oder „Arbeitsspeicheroptimiert“) oder der Speichergröße unterstützt.
 

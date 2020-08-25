@@ -1,15 +1,15 @@
 ---
 title: Hyperledger Fabric-Konsortium auf Azure Kubernetes Service (AKS)
 description: Bereitstellen und Konfigurieren eines Hyperledger Fabric-Konsortiumsnetzwerks auf Azure Kubernetes Service
-ms.date: 07/27/2020
+ms.date: 08/06/2020
 ms.topic: how-to
 ms.reviewer: ravastra
-ms.openlocfilehash: 4bc55090234a4ab33125ba43b8416de1eadb702f
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: d6999b32224e6c41cdf9869554c884fc4779c217
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533426"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88184209"
 ---
 # <a name="hyperledger-fabric-consortium-on-azure-kubernetes-service-aks"></a>Hyperledger Fabric-Konsortium auf Azure Kubernetes Service (AKS)
 
@@ -350,10 +350,22 @@ Führen Sie diese Schritte aus:
 Navigieren Sie zur Peerclientanwendung, und führen Sie den untenstehenden Befehl aus, um Chaincode auf dem Kanal zu instanziieren.  
 
 ```bash
-./azhlf chaincode instantiate -o $ORGNAME -u $USER_IDENTITY -n $CC_NAME -v $CC_VERSION -c $CHANNEL_NAME -f <instantiateFunc> --args <instantiateFuncArgs>  
+./azhlf chaincode instantiate -o $ORGNAME -u $USER_IDENTITY -n $CC_NAME -v $CC_VERSION -c $CHANNEL_NAME -f <instantiateFunc> --args <instantiateFuncArgs>
 ```
 
 Übergeben Sie den Namen der Instanziierungsfunktion und die Liste der Argumente mit Leerzeichen als Trennzeichen in `<instantiateFunc>` bzw. `<instantiateFuncArgs>`. Möchten Sie z. B. im Chaincode „chaincode_example02.go“ den Chaincode instanziieren, legen Sie `<instantiateFunc>` auf `init` und `<instantiateFuncArgs>` auf „a“ „2000“ „b“ „1000“ fest.
+
+Sie können die JSON-Datei für die Sammlungskonfiguration auch mit dem `--collections-config`-Flag übergeben. Oder legen Sie die vorübergehenden Argumente mit dem `-t`-Flag fest, während Sie einen für private Transaktionen verwendeten Chaincode instanziieren.
+
+Beispiel:
+
+```bash
+./azhlf chaincode instantiate -c $CHANNEL_NAME -n $CC_NAME -v $CC_VERSION -o $ORGNAME -u $USER_IDENTITY --collections-config <collectionsConfigJSONFilePath>
+./azhlf chaincode instantiate -c $CHANNEL_NAME -n $CC_NAME -v $CC_VERSION -o $ORGNAME -u $USER_IDENTITY --collections-config <collectionsConfigJSONFilePath> -t <transientArgs>
+```
+
+\<collectionConfigJSONFilePath\> ist der Pfad zu der JSON-Datei, die die für die Instanziierung eines privaten Datenchaincodes definierten Sammlungen enthält. Sie finden eine JSON-Beispieldatei für die Sammlungskonfiguration relativ zum Verzeichnis „azhlfTool“ im folgenden Pfad: `./samples/chaincode/src/private_marbles/collections_config.json`.
+Übergeben Sie \<transientArgs\> als gültigen JSON-Code im Zeichenfolgenformat. Versehen Sie Sonderzeichen mit Escapezeichen. Beispiel: `'{\\\"asset\":{\\\"name\\\":\\\"asset1\\\",\\\"price\\\":99}}'`
 
 > [!NOTE]
 > Führen Sie den Befehl jeweils ein Mal aus jeder Peerorganisation im Kanal aus. Sobald die Transaktion erfolgreich an den Anordner (Orderer) übermittelt wurde, verteilt der Anordner diese Transaktion an alle Peerorganisationen im Kanal. Somit wird der Chaincode auf allen Peerknoten in allen Peerorganisationen im Kanal instanziiert.  
@@ -377,9 +389,13 @@ Navigieren Sie zum Peerorganisationsclient, und führen Sie den folgenden Befehl
 Führen Sie den folgenden Befehl aus, um Chaincode abzufragen:  
 
 ```bash
-./azhlf chaincode query -o $ORGNAME -u $USER_IDENTITY -n $CC_NAME -c $CHANNEL_NAME -f <queryFunction> -a <queryFuncArgs>  
+./azhlf chaincode query -o $ORGNAME -p <endorsingPeers> -u $USER_IDENTITY -n $CC_NAME -c $CHANNEL_NAME -f <queryFunction> -a <queryFuncArgs> 
 ```
-Übergeben Sie den Namen der Abfragefunktion und die Liste der Argumente mit Leerzeichen als Trennzeichen in  `<queryFunction>`  bzw.  `<queryFuncArgs>` . Wenn nun wieder der Chaincode „chaincode_example02.go“ als Referenz verwendet wird, müssten Sie  `<queryFunction>`  auf  `query` und  `<queryArgs>` auf „a“ festlegen, um den Wert von „a“ in World State abzufragen.  
+Unterstützende Peers sind Peers, bei denen Chaincode installiert ist und zur Ausführung von Transaktionen aufgerufen wird. Sie müssen die \<endorsingPeers\>, die Namen der Peerknoten enthalten, aus der aktuellen Peerorganisation festlegen. Listen Sie die unterstützenden Peers für die angegebene Kombination aus Chaincode und Kanal getrennt durch Leerzeichen auf. Beispiel: `-p "peer1" "peer3"`.
+
+Wenn Sie den Chaincode mithilfe von azhlfTool installieren, übergeben Sie alle Peerknotennamen als Wert an das unterstützende Peerargument. Der Chaincode wird auf jedem Peerknoten für diese Organisation installiert. 
+
+Übergeben Sie den Namen der Abfragefunktion und die Liste der Argumente mit Leerzeichen als Trennzeichen in  `<queryFunction>`  bzw.  `<queryFuncArgs>` . Wenn nun wieder der Chaincode „chaincode_example02.go“ als Referenz verwendet wird, müssen Sie  `<queryFunction>`  auf  `query` und  `<queryArgs>` auf „a“ festlegen, um den Wert von „a“ in World State abzufragen.  
 
 ## <a name="troubleshoot"></a>Problembehandlung
 

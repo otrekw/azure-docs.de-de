@@ -3,12 +3,12 @@ title: Bedarfsgerechtes Konfigurieren von Tresordiagnoseeinstellungen
 description: Konfigurieren von Log Analytics-Diagnoseeinstellungen für alle Tresore in einem bestimmten Bereich mithilfe von Azure Policy
 ms.topic: conceptual
 ms.date: 02/14/2020
-ms.openlocfilehash: 2400be15dcd46084e9a605076c00cf5c5ac92463
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 58ef8af56bb3f44664ffaec6a17bab5f5e92808e
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86498048"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88612502"
 ---
 # <a name="configure-vault-diagnostics-settings-at-scale"></a>Bedarfsgerechtes Konfigurieren von Tresordiagnoseeinstellungen
 
@@ -36,15 +36,15 @@ Um die Richtlinie für Tresore dem erforderlichen Bereich zuzuweisen, führen Si
 2. Wählen Sie im Menü auf der linken Seite **Definitionen** aus, um eine Liste aller integrierten Richtlinien für Azure-Ressourcen abzurufen.
 3. Filtern Sie die Liste nach **Category=Monitoring**. Suchen Sie die Richtlinie mit dem Namen **[Vorschau]: Bereitstellen von Diagnoseeinstellungen für den Recovery Services-Tresor im Log Analytics-Arbeitsbereich für ressourcenspezifische Kategorien**.
 
-    ![Blatt „Richtliniendefinition“](./media/backup-azure-policy-configure-diagnostics/policy-definition-blade.png)
+    ![Bereich „Richtliniendefinition“](./media/backup-azure-policy-configure-diagnostics/policy-definition-blade.png)
 
-4. Klicken Sie auf den Namen der Richtlinie. Sie werden zur detaillierten Definition für diese Richtlinie umgeleitet.
+4. Wählen Sie den Namen der Richtlinie aus. Sie werden zur detaillierten Definition für diese Richtlinie umgeleitet.
 
     ![Detaillierte Richtliniendefinition](./media/backup-azure-policy-configure-diagnostics/detailed-policy-definition.png)
 
-5. Klicken Sie oben auf dem Blatt auf die Schaltfläche **Zuweisen**. Dadurch werden Sie zum Blatt **Richtlinie zuweisen** umgeleitet.
+5. Wählen Sie oben im Bereich die Schaltfläche **Zuweisen** aus. Dadurch werden Sie zum Bereich **Richtlinie zuweisen** umgeleitet.
 
-6. Klicken Sie unter **Grundlagen** auf die drei Punkte neben dem Feld **Bereich**. Dadurch wird ein Blatt mit dem richtigen Kontextgeöffnet, auf dem Sie das Abonnement auswählen können, auf das die Richtlinie angewendet werden soll. Optional können Sie auch eine Ressourcengruppe auswählen, damit die Richtlinie nur für Tresore in einer bestimmten Ressourcengruppe angewendet wird.
+6. Wählen Sie unter **Grundlagen** die drei Punkte neben dem Feld **Bereich** aus. Dadurch wird ein Bereich mit dem richtigen Kontext geöffnet, auf dem Sie das Abonnement auswählen können, auf das die Richtlinie angewendet werden soll. Optional können Sie auch eine Ressourcengruppe auswählen, damit die Richtlinie nur für Tresore in einer bestimmten Ressourcengruppe angewendet wird.
 
     ![Grundlegendes zur Richtlinienzuweisung](./media/backup-azure-policy-configure-diagnostics/policy-assignment-basics.png)
 
@@ -61,7 +61,7 @@ Um die Richtlinie für Tresore dem erforderlichen Bereich zuzuweisen, führen Si
 
     ![Korrektur der Richtlinienzuweisung](./media/backup-azure-policy-configure-diagnostics/policy-assignment-remediation.png)
 
-9. Navigieren Sie zu **Überprüfen + erstellen**, und klicken Sie auf **Erstellen**.
+9. Navigieren Sie zu **Überprüfen + erstellen**, und wählen Sie **Erstellen** aus.
 
 ## <a name="under-what-conditions-will-the-remediation-task-apply-to-a-vault"></a>Unter welchen Bedingungen wird der Korrekturtask auf einen Tresor angewendet?
 

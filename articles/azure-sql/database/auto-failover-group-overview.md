@@ -12,17 +12,17 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 07/09/2020
-ms.openlocfilehash: d4398b2bf37ad5dcf60a931f5d4991a3ad00845a
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 5a7f13982de000478b14eb75d7341ed2e99c1274
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87826533"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245569"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Verwenden von Autofailover-Gruppen für ein transparentes und koordiniertes Failover mehrerer Datenbanken
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-Mit Autofailover-Gruppen können Sie die Replikation und das Failover einer Gruppe von Datenbanken auf einem Server oder aller Datenbanken in einer verwalteten Instanz in eine andere Region verwalten. Hierbei handelt es sich um eine deklarative Abstraktion, die auf dem bereits vorhandenen Feature [Aktive Georeplikation](active-geo-replication-overview.md) basiert und dazu dient, die Bereitstellung und Verwaltung georeplizierter Datenbanken zu vereinfachen. Sie können ein Failover manuell einleiten oder basierend auf einer benutzerdefinierten Richtlinie an den Azure-Dienst delegieren. Letzteres gibt Ihnen die Möglichkeit, nach schwerwiegenden Ausfällen oder anderen ungeplanten Ereignissen, die zum vollständigen oder teilweisen Verlust der Verfügbarkeit der SQL-Datenbank-Instanz oder SQL Managed Instance in der primären Region führen, automatisch mehrere verwandte Datenbanken in einer sekundären Region wiederherzustellen. Eine Failovergruppe kann eine oder mehrere Datenbanken enthalten, die in der Regel von der gleichen Anwendung verwendet werden. Außerdem können sie die lesbaren sekundären Datenbanken zur Auslagerung schreibgeschützter Abfrageworkloads verwenden. Da Gruppen für automatisches Failover mehrere Datenbanken beinhalten, müssen diese Datenbanken auf dem primären Server konfiguriert werden. Gruppen für automatisches Failover unterstützen die Replikation aller Datenbanken in der Gruppe auf nur einen sekundären Server oder in einer sekundären Instanz in einer anderen Region.
+Mit dem Feature „Autofailover-Gruppen“ können Sie die Replikation und das Failover einer Gruppe von Datenbanken auf einem Server oder aller Datenbanken in einer verwalteten Instanz in eine andere Region verwalten. Hierbei handelt es sich um eine deklarative Abstraktion, die auf dem bereits vorhandenen Feature [Aktive Georeplikation](active-geo-replication-overview.md) basiert und dazu dient, die Bereitstellung und Verwaltung georeplizierter Datenbanken zu vereinfachen. Sie können ein Failover manuell einleiten oder basierend auf einer benutzerdefinierten Richtlinie an den Azure-Dienst delegieren. Letzteres gibt Ihnen die Möglichkeit, nach schwerwiegenden Ausfällen oder anderen ungeplanten Ereignissen, die zum vollständigen oder teilweisen Verlust der Verfügbarkeit der SQL-Datenbank-Instanz oder SQL Managed Instance in der primären Region führen, automatisch mehrere verwandte Datenbanken in einer sekundären Region wiederherzustellen. Eine Failovergruppe kann eine oder mehrere Datenbanken enthalten, die in der Regel von der gleichen Anwendung verwendet werden. Außerdem können sie die lesbaren sekundären Datenbanken zur Auslagerung schreibgeschützter Abfrageworkloads verwenden. Da Gruppen für automatisches Failover mehrere Datenbanken beinhalten, müssen diese Datenbanken auf dem primären Server konfiguriert werden. Gruppen für automatisches Failover unterstützen die Replikation aller Datenbanken in der Gruppe auf nur einen sekundären Server oder in einer sekundären Instanz in einer anderen Region.
 
 > [!NOTE]
 > Wenn Sie mehrere sekundäre Azure SQL-Datenbank-Instanzen in der gleichen oder in verschiedenen Regionen wünschen, nutzen Sie [aktive Georeplikation](active-geo-replication-overview.md).
@@ -203,7 +203,7 @@ Zur Verdeutlichung der Änderungssequenz nehmen wir an, dass Server A der prim�
 1. Führen Sie ein geplantes Failover durch, um den primären Server auf B umzustellen. Server A wird zum neuen sekundären Server. Beim Failover kann es zu einem Ausfall mit einer Dauer von mehreren Minuten kommen. Die tatsächliche Dauer hängt von der Größe der Failovergruppe ab.
 2. Erstellen Sie für jede Datenbank zusätzliche sekundäre Replikate von Server B auf Server C, indem Sie die [aktive Georeplikation](active-geo-replication-overview.md) verwenden. Jede Datenbank auf Server B verfügt über zwei sekundäre Replikate: eins auf Server A und eins auf Server C. So wird garantiert, dass die primären Datenbanken während der Umstellung geschützt bleiben.
 3. Löschen Sie die Failovergruppe. An diesem Punkt treten für die Anmeldungen Fehler auf. Der Grund ist, dass die SQL-Aliase für die Failovergruppenlistener gelöscht wurden und das Gateway den Namen der Failovergruppe nicht erkennt.
-4. Erstellen Sie die Failovergruppe mit dem gleichen Namen zwischen Server A und Server C. Für die Anmeldungen treten dann keine Fehler mehr auf.
+4. Erstellen Sie die Failovergruppe mit dem gleichen Namen zwischen Server B und Server C. Für die Anmeldungen treten dann keine Fehler mehr auf.
 5. Fügen Sie alle primären Datenbanken von Server B der neuen Failovergruppe hinzu.
 6. Führen Sie für die Failovergruppe ein geplantes Failover durch, um B und C umzustellen. Server C wird zum primären und Server B zum sekundären Replikat. Alle sekundären Datenbanken auf Server A werden automatisch mit den primären Replikaten auf C verknüpft. Wie in Schritt 1 auch, kann es beim Failover zu einem Ausfall von mehreren Minuten kommen.
 7. Löschen Sie Server A. Alle Datenbanken auf A werden automatisch gelöscht.
@@ -231,7 +231,7 @@ Um eine unterbrechungsfreie Verbindung mit der primären SQL Managed Instance na
 > [!IMPORTANT]
 > Die erste im Subnetz erstellte verwaltete Instanz bestimmt die DNS-Zone für alle nachfolgenden Instanzen im gleichen Subnetz. Dies bedeutet, dass zwei Instanzen aus dem gleichen Subnetz nicht zu verschiedenen DNS-Zonen gehören können.
 
-Weitere Informationen zum Erstellen der sekundären SQL Managed Instance in derselben DNS-Zone wie die primäre Instanz finden Sie unter [Erstellen einer sekundären verwalteten Instanz](../managed-instance/failover-group-add-instance-tutorial.md#3---create-a-secondary-managed-instance).
+Weitere Informationen zum Erstellen der sekundären SQL Managed Instance in derselben DNS-Zone wie die primäre Instanz finden Sie unter [Erstellen einer sekundären verwalteten Instanz](../managed-instance/failover-group-add-instance-tutorial.md#create-a-secondary-managed-instance).
 
 ### <a name="enabling-replication-traffic-between-two-instances"></a>Aktivieren des Replikationsdatenverkehrs zwischen zwei Instanzen
 

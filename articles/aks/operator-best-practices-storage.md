@@ -5,12 +5,12 @@ description: Lernen Sie die bewährten Methoden für Speicherung, Datenverschlü
 services: container-service
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: 26af9e0ab2bd3a52c159e947f1f40300f9e84dd4
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: c683cbf7802fbf5420ec95d49e2dfda624ce093f
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87562837"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88551794"
 ---
 # <a name="best-practices-for-storage-and-backups-in-azure-kubernetes-service-aks"></a>Best Practices für Speicherung und Sicherungen in Azure Kubernetes Service (AKS)
 
@@ -88,7 +88,7 @@ Weitere Informationen zu Speicherklassenoptionen finden Sie unter [Richtlinien z
 
 ## <a name="secure-and-back-up-your-data"></a>Schützen und Sichern Ihrer Daten
 
-**Best Practices-Anleitung**: Sichern Sie Ihre Daten mithilfe eines entsprechenden Tools für Ihren Speichertyp, z.B. Velero oder Azure Site Recovery. Überprüfen Sie die Integrität und die Sicherheit dieser Sicherungen.
+**Best Practices-Anleitung**: Sichern Sie Ihre Daten mithilfe eines entsprechenden Tools für Ihren Speichertyp, z. B. Velero oder Azure Backup. Überprüfen Sie die Integrität und die Sicherheit dieser Sicherungen.
 
 Wenn Ihre Anwendungen Daten speichern und verbrauchen, die auf Festplatten oder in Dateien gespeichert sind, müssen Sie regelmäßig Sicherungen oder Momentaufnahmen dieser Daten erstellen. Azure-Datenträger können integrierte Momentaufnahmetechnologien verwenden. Möglicherweise müssen Sie Ihre Anwendungen suchen, damit Schreibzugriffe auf die Festplatte geleert werden, bevor Sie den Momentaufnahmevorgang ausführen. [Velero][velero] kann persistente Volumes zusammen mit zusätzlichen Clusterressourcen und -konfigurationen sichern. Wenn Sie [den Zustand nicht aus Ihren Anwendungen entfernen können][remove-state], sichern Sie die Daten von persistenten Volumes, und testen Sie die Wiederherstellungsvorgänge regelmäßig, um die Datenintegrität und die erforderlichen Prozesse zu überprüfen.
 

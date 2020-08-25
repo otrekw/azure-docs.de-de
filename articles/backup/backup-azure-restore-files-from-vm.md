@@ -4,12 +4,12 @@ description: In diesem Artikel erfahren Sie, wie Sie Dateien und Ordner aus eine
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.custom: references_regions
-ms.openlocfilehash: e12669609b21d23b775af27f95528c4b42e95e81
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: ba97a5812359fc72e52d68e337762f7234aa3883
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533540"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88611839"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Wiederherstellen von Dateien aus einer Sicherung von virtuellen Azure-Computern
 
@@ -32,7 +32,7 @@ Zum Wiederherstellen von Dateien oder Ordnern aus dem Wiederherstellungspunkt we
 
 3. Wählen Sie im Menü des Sicherungsdashboards **Dateiwiederherstellung** aus.
 
-    ![Schaltfläche „Dateiwiederherstellung“](./media/backup-azure-restore-files-from-vm/vm-backup-menu-file-recovery-button.png)
+    ![„Dateiwiederherstellung“ auswählen](./media/backup-azure-restore-files-from-vm/vm-backup-menu-file-recovery-button.png)
 
     Das Menü **Dateiwiederherstellung** wird geöffnet.
 
@@ -42,7 +42,7 @@ Zum Wiederherstellen von Dateien oder Ordnern aus dem Wiederherstellungspunkt we
 
 5. Wählen Sie **Ausführbare Datei herunterladen** (bei virtuellen Microsoft Azure-Computern) oder **Skript herunterladen** (bei virtuellen Linux-Azure-Computern) aus, um die Software zum Kopieren von Dateien aus dem Wiederherstellungspunkt herunterzuladen.
 
-    ![Generiertes Kennwort](./media/backup-azure-restore-files-from-vm/download-executable.png)
+    ![Ausführbare Datei herunterladen](./media/backup-azure-restore-files-from-vm/download-executable.png)
 
     Azure lädt die ausführbare Datei bzw. das Skript auf den lokalen Computer herunter.
 
@@ -56,7 +56,7 @@ Zum Wiederherstellen von Dateien oder Ordnern aus dem Wiederherstellungspunkt we
 
 7. Stellen Sie sicher, [dass Sie den richtigen Computer](#selecting-the-right-machine-to-run-the-script) zum Ausführen des Skripts verwenden. Wenn der richtige Computer derselbe Computer ist, auf den Sie das Skript heruntergeladen haben, können Sie mit dem Downloadabschnitt fortfahren. Klicken Sie im Downloadverzeichnis (in der Regel der Ordner *Downloads*) mit der rechten Maustaste auf die ausführbare Datei bzw. das Skript, und führen Sie Datei bzw. Skript mit Administratoranmeldeinformationen aus. Wenn Sie dazu aufgefordert werden, geben Sie das Kennwort ein oder fügen es aus der Zwischenablage ein, und drücken Sie die **EINGABETASTE**. Nach der Eingabe eines gültigen Kennworts stellt das Skript eine Verbindung mit dem Wiederherstellungspunkt her.
 
-    ![Menü „Dateiwiederherstellung“](./media/backup-azure-restore-files-from-vm/executable-output.png)
+    ![Ausgabe der ausführbaren Datei](./media/backup-azure-restore-files-from-vm/executable-output.png)
 
 8. Für Linux-Computer wird ein Python-Skript generiert. Das Skript muss heruntergeladen und auf den relevanten/kompatiblen Linux-Server kopiert werden. Für die Ausführung mit ```chmod +x <python file name>``` müssen möglicherweise die Berechtigungen geändert werden. Führen Sie die Python-Datei anschließend mit ```./<python file name>``` aus.
 
@@ -85,6 +85,9 @@ Nachdem die Dateien bestimmt und an den lokalen Speicherort kopiert wurden, kön
 Nachdem die Bereitstellung der Datenträger aufgehoben wurde, erhalten Sie eine Meldung. Die Aktualisierung der Verbindung kann einige Minuten dauern, sodass Sie die Datenträger entfernen können.
 
 Nachdem unter Linux die Verbindung mit dem Wiederherstellungspunkt getrennt wurde, entfernt das Betriebssystem die entsprechenden Bereitstellungspfade nicht automatisch. Diese sind als „verwaiste“ Volumes vorhanden und sichtbar, lösen aber einen Fehler aus, wenn ein Zugriff bzw. Schreibzugriff auf die Dateien erfolgt. Sie können manuell entfernt werden. Das Skript ermittelt bei seiner Ausführung solche Volumes von vorherigen Wiederherstellungspunkten und bereinigt diese nach Zustimmung.
+
+> [!NOTE]
+> Stellen Sie sicher, dass die Verbindung geschlossen wird, nachdem die erforderlichen Dateien wiederhergestellt wurden. Das ist wichtig, insbesondere in dem Szenario, in dem der Computer, auf dem das Skript ausgeführt wird, auch für die Sicherung konfiguriert ist. Bleibt die Verbindung offen, kann bei der nachfolgenden Sicherung der Fehler „UserErrorUnableToOpenMount“ auftreten. Dies geschieht, weil davon ausgegangen wird, dass die eingebundenen Laufwerke/Volumes verfügbar sind. Wenn auf sie zugegriffen wird, kann ein Fehler auftreten, weil der zugrunde liegende Speicher, d. h. der iSCSI-Zielserver, möglicherweise nicht verfügbar ist. Wenn Sie die Verbindung bereinigen, werden diese Laufwerke/Volumes entfernt, sodass sie während der Sicherung nicht mehr verfügbar sind.
 
 ## <a name="selecting-the-right-machine-to-run-the-script"></a>Auswählen des richtigen Computers zum Ausführen des Skripts
 
