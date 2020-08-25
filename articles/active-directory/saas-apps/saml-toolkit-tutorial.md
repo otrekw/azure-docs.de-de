@@ -2,25 +2,21 @@
 title: 'Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Azure AD SAML Toolkit | Microsoft-Dokumentation'
 description: Hier erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Azure AD SAML Toolkit konfigurieren.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 3f4348e7-c34e-43c7-926e-f1b26ffacf6d
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 04/24/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d2681c09030ff0f36938d7a09e1d1b2e9aa645c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: aa37cef84bb1d2cb92f2bb0e4a227c5be60fa345
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82166309"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88543413"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-azure-ad-saml-toolkit"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Azure AD SAML Toolkit
 
@@ -161,7 +157,7 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anme
 
 ### <a name="create-azure-ad-saml-toolkit-test-user"></a>Erstellen des Testbenutzers für Azure AD SAML Toolkit
 
-In diesem Abschnitt wird in Azure AD SAML Toolkit ein Benutzer namens B. Simon erstellt. Azure AD SAML Toolkit unterstützt die standardmäßig aktivierte Just-in-Time-Benutzerbereitstellung. Für Sie steht in diesem Abschnitt kein Aktionselement zur Verfügung. Wenn ein Benutzer noch nicht in Azure AD SAML Toolkit vorhanden, wird nach der Authentifizierung ein neuer Benutzer erstellt.
+In diesem Abschnitt wird in Azure AD SAML Toolkit ein Benutzer namens B. Simon erstellt. Erstellen Sie einen Testbenutzer im Tool, indem Sie einen neuen Benutzer registrieren und alle Benutzerdetails angeben. 
 
 ## <a name="test-sso"></a>Testen des einmaligen Anmeldens 
 

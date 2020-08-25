@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/16/2020
 ms.author: iainfou
-ms.openlocfilehash: 69bb61012082404dfd6488b5e0606e5966c2fcef
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 6f166cdcb5f3764d7b264fdb4ebc082ece4c798b
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87504651"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245093"
 ---
 # <a name="tutorial-create-and-use-replica-sets-for-resiliency-or-geolocation-in-azure-active-directory-domain-services-preview"></a>Tutorial: Erstellen und Verwenden von Replikatgruppen für Resilienz oder Geolocation in Azure Active Directory Domain Services (Vorschau)
 
@@ -42,11 +42,11 @@ Für dieses Tutorial benötigen Sie die folgenden Ressourcen und Berechtigungen:
     * Wenn Sie kein Azure-Abonnement besitzen, [erstellen Sie ein Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Einen mit Ihrem Abonnement verknüpften Azure Active Directory-Mandanten, der entweder mit einem lokalen Verzeichnis synchronisiert oder ein reines Cloudverzeichnis ist.
     * [Erstellen Sie einen Azure Active Directory-Mandanten][create-azure-ad-tenant], oder [verknüpfen Sie ein Azure-Abonnement mit Ihrem Konto][associate-azure-ad-tenant], sofern erforderlich.
-* Eine verwaltete Azure Active Directory Domain Services-Domäne, die mit Replikatgruppen erstellt wurde und in Ihrem Azure AD-Mandanten konfiguriert ist.
+* Eine verwaltete Azure Active Directory Domain Services-Domäne, die mit dem Azure Resource Manager-Bereitstellungsmodell erstellt wurde und in Ihrem Azure AD-Mandanten konfiguriert ist.
     * [Erstellen und konfigurieren Sie eine verwaltete Azure Active Directory Domain Services-Domäne][tutorial-create-instance], sofern erforderlich.
 
     > [!IMPORTANT]
-    > Erstellen Sie unbedingt eine verwaltete Domäne mit Replikatgruppenverwendung. Von verwalteten Domänen, die vor dieser Vorschau erstellt wurden, werden keine Replikatgruppen unterstützt. Sie müssen außerdem mindestens ein *Enterprise*-SKU für Ihre verwaltete Domäne verwenden. [Ändern Sie die SKU ggf. in eine verwaltete Domäne.][howto-change-sku]
+    > Verwaltete Domänen, die mit dem klassischen Bereitstellungsmodell erstellt wurden, können keine Replikatgruppen verwenden. Sie müssen außerdem mindestens ein *Enterprise*-SKU für Ihre verwaltete Domäne verwenden. [Ändern Sie die SKU ggf. in eine verwaltete Domäne.][howto-change-sku]
 
 ## <a name="sign-in-to-the-azure-portal"></a>Melden Sie sich auf dem Azure-Portal an.
 

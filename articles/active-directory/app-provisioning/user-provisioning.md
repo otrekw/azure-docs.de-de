@@ -1,5 +1,5 @@
 ---
-title: Automatisierte Bereitstellung von SaaS-App-Benutzern in Azure AD
+title: Was ist die automatisierte Bereitstellung von SaaS-App-Benutzern in Azure AD?
 description: Einführung in die Verwendung von Azure AD für die automatisierte Bereitstellung, Bereitstellungsaufhebung und fortlaufende Aktualisierung von Benutzerkonten für verschiedene SaaS-Drittanbieteranwendungen.
 services: active-directory
 author: kenwith
@@ -11,14 +11,14 @@ ms.workload: identity
 ms.date: 11/25/2019
 ms.author: kenwith
 ms.reviewer: arvinh, celested
-ms.openlocfilehash: 7f09bb42f529164ef0f5062ef801ddc7ecfef85c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b6eb571c7c37a628d11f07b4e1b207e38830250b
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84781089"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88235399"
 ---
-# <a name="automate-user-provisioning-and-deprovisioning-to-applications-with-azure-ad"></a>Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für Anwendungen mit Azure AD
+# <a name="what-is-automated-saas-app-user-provisioning-in-azure-ad"></a>Was ist die automatisierte Bereitstellung von SaaS-App-Benutzern in Azure AD?
 
 In Azure Active Directory (Azure AD) bezieht sich der Ausdruck **App-Bereitstellung** auf die automatische Erstellung von Benutzeridentitäten und Rollen in den Cloudanwendungen ([SaaS](https://azure.microsoft.com/overview/what-is-saas/)), auf die Benutzer Zugriff benötigen. Zusätzlich zur Erstellung von Benutzeridentitäten umfasst die automatische Bereitstellung auch die Wartung und Entfernung von Benutzeridentitäten, wenn sich der Status oder die Rollen ändern. Gängige Szenarien sind die Bereitstellung eines Azure AD-Benutzers in Anwendungen wie [Dropbox](../saas-apps/dropboxforbusiness-provisioning-tutorial.md), [Salesforce](../saas-apps/salesforce-provisioning-tutorial.md), [ServiceNow](../saas-apps/servicenow-provisioning-tutorial.md) und anderen.
 
@@ -59,7 +59,7 @@ Azure AD umfasst eine vorab integrierte Unterstützung für viele beliebte SaaS-
 
    ![Salesforce-Logo](./media/user-provisioning/gallery-app-logos.png)
 
-   Wenn Sie eine neue Anwendung für die Bereitstellung anfordern möchten, können Sie [anfordern, dass Ihre Anwendung in unseren App-Katalog integriert wird](../develop/howto-app-gallery-listing.md). Für die Anforderung der Benutzerbereitstellung muss die Anwendung über einen SCIM-konformen Endpunkt verfügen. Bitten Sie den Anwendungsanbieter darum, den SCIM-Standard einzuhalten, damit wir das Onboarding der App für unsere Plattform schnell durchführen können.
+   Wenn Sie eine neue Anwendung für die Bereitstellung anfordern möchten, können Sie [anfordern, dass Ihre Anwendung in unseren App-Katalog integriert wird](../azuread-dev/howto-app-gallery-listing.md). Für die Anforderung der Benutzerbereitstellung muss die Anwendung über einen SCIM-konformen Endpunkt verfügen. Bitten Sie den Anwendungsanbieter darum, den SCIM-Standard einzuhalten, damit wir das Onboarding der App für unsere Plattform schnell durchführen können.
 
 * **Anwendungen mit SCIM 2.0-Unterstützung**: Informationen zum generischen Verbinden von Anwendungen, die SCIM 2.0-basierte Benutzerverwaltungs-APIs implementieren, finden Sie unter [Erstellen eines SCIM-Endpunkts und Konfigurieren der Benutzerbereitstellung](use-scim-to-provision-users-and-groups.md).
 
@@ -94,11 +94,8 @@ Für vorab integrierte Anwendungen, die im Katalog aufgeführt sind, ist eine Sc
 Führen Sie für andere Anwendungen, die SCIM 2.0 unterstützen, die im Artikel [Erstellen eines SCIM-Endpunkts und Konfigurieren der Benutzerbereitstellung](use-scim-to-provision-users-and-groups.md) aufgeführten Schritte aus.
 
 
-## <a name="related-articles"></a>Verwandte Artikel
+## <a name="next-steps"></a>Nächste Schritte
 
 - [Liste der Tutorials zur Integration von SaaS-Apps](../saas-apps/tutorial-list.md)
 - [Anpassen von Attributzuordnungen für die Benutzerbereitstellung](customize-application-attributes.md)
-- [Schreiben von Ausdrücken für Attributzuordnungen](../app-provisioning/functions-for-customizing-application-data.md)
-- [Bereichsfilter für die Benutzerbereitstellung](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)
-- [Erstellen eines SCIM-Endpunkts und Konfigurieren der Benutzerbereitstellung](use-scim-to-provision-users-and-groups.md)
-- [Azure AD synchronization API overview](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview) (Azure AD-Synchronisierung – API-Übersicht)
+- [Bereichsfilter für die Benutzerbereitstellung](define-conditional-rules-for-provisioning-user-accounts.md)

@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: overview
-ms.date: 04/27/2020
+ms.date: 08/14/2020
 ms.author: aahi
 ms.reviewer: chtufts
-ms.openlocfilehash: 0dc79132ae75be511b53bf272e578ff0ce7a7775
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.openlocfilehash: 068c2dc698e9f0b6d6f2f6486dff863c1343b178
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87986813"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88258270"
 ---
 # <a name="data-and-rate-limits-for-the-text-analytics-api"></a>Datengrenzwerte und Ratenbegrenzungen für die Textanalyse-API
 <a name="data-limits"></a>
@@ -31,8 +31,8 @@ In diesem Artikel finden Sie die Grenzwerte für die Datengröße und -rate, die
 
 | Begrenzung | Wert |
 |------------------------|---------------|
-| Maximale Größe eines einzelnen Dokuments | 5\.120 Zeichen (gemessen von [StringInfo.LengthInTextElements](https://docs.microsoft.com/dotnet/api/system.globalization.stringinfo.lengthintextelements)). |
-| Maximale Größe der gesamte Anforderung | 1 MB |
+| Maximale Größe eines einzelnen Dokuments | 5\.120 Zeichen (gemessen von [StringInfo.LengthInTextElements](https://docs.microsoft.com/dotnet/api/system.globalization.stringinfo.lengthintextelements)). Gilt ebenfalls für die Textanalyse für Integritätscontainer. |
+| Maximale Größe der gesamte Anforderung | 1 MB. Gilt ebenfalls für die Textanalyse für Integritätscontainer. |
 
 Die maximale Anzahl von Dokumenten, die Sie in einer einzelnen Anforderung senden können, hängt von der API-Version und -Funktion ab, die Sie verwenden.
 
@@ -48,7 +48,7 @@ Die folgenden Grenzwerte haben sich in Version 3 der API geändert. Wenn Sie di
 | Schlüsselwortextraktion | 10 |
 | Erkennung benannter Entitäten | 5 |
 | Entitätsverknüpfung | 5 |
-
+| Textanalyse für Integritätscontainer | 1000 |
 #### <a name="version-2"></a>[Version 2](#tab/version-2)
 
 | Funktion | Max. Anzahl von Dokumenten pro Anforderung | 
@@ -63,7 +63,7 @@ Die folgenden Grenzwerte haben sich in Version 3 der API geändert. Wenn Sie di
 
 ## <a name="rate-limits"></a>Ratenbegrenzungen
 
-Die Ratenbegrenzung variiert je nach [Tarif](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/). Diese Begrenzungen sind bei beiden Versionen der API identisch.
+Die Ratenbegrenzung variiert je nach [Tarif](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/). Diese Begrenzungen sind bei beiden Versionen der API identisch. Diese Ratenbegrenzungen gelten nicht für die Textanalyse für Integritätscontainer, für die keine Ratenbegrenzung festgelegt ist.
 
 | Tarif          | Anforderungen pro Sekunde | Anforderungen pro Minute |
 |---------------|---------------------|---------------------|

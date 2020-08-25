@@ -1,5 +1,5 @@
 ---
-title: 'Herstellen einer Verbindung unter Verwendung von Python: Azure Database for MySQL'
+title: 'Schnellstart: Herstellen einer Verbindung unter Verwendung von Python: Azure Database for MySQL'
 description: Diese Schnellstartanleitung enthält mehrere Python-Codebeispiele, mit deren Hilfe Sie eine Verbindung mit Azure-Datenbank für MySQL herstellen und Daten daraus abfragen können.
 author: ajlam
 ms.author: andrela
@@ -11,14 +11,14 @@ ms.custom:
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 5/26/2020
-ms.openlocfilehash: 8d417fdc604fa132e3ada5380b9e0a1f7326af04
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 32603514db76ceba4f1d9f8873c99b2e8a97eddf
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87843231"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185909"
 ---
-# <a name="quickstart-use-python-to-connect-and-query-data-with-azure-database-for-mysql"></a>Schnellstart: Herstellen einer Verbindung und Abfragen von Daten mithilfe von Python mit Azure Database for MySQL
+# <a name="quickstart-use-python-to-connect-and-query-data-in-azure-database-for-mysql"></a>Schnellstart: Verwenden von Python zum Herstellen einer Verbindung und zum Abfragen von Daten in Azure Database for MySQL
 
 In dieser Schnellstartanleitung stellen Sie unter Verwendung von Python eine Verbindung mit einer Azure Database for MySQL-Instanz her. Anschließend verwenden Sie SQL-Anweisungen, um Daten in der Datenbank über Mac-, Ubuntu Linux- und Windows-Plattformen abzufragen, einzufügen, zu aktualisieren und zu löschen. 
 

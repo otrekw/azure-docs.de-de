@@ -2,25 +2,21 @@
 title: 'Tutorial: Azure Active Directory-Integration in Uberflip | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Uberflip konfigurieren.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 754b1f5b-6694-4fd6-9e1e-9fad769c64db
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: d20c05e6ec5a413b81ede9cb4906de2595967115
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 8936c2150c32a22877f9b56736ecc4b8f3424b32
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80048471"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88533128"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-uberflip"></a>Tutorial: Azure Active Directory-Integration in Uberflip
 
@@ -153,7 +149,7 @@ In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer mit dem Nam
 
     1. Geben Sie in das Feld **Name** den Namen **BSimon** ein.
   
-    1. Geben Sie in das Feld **Benutzername** den Eintrag **BSimon\@\<IhreUnternehmensdomäne>.\<Erweiterung>** ein. Beispiel: **BSimon\@contoso.com**
+    1. Geben Sie in das Feld **Benutzername** den Namen **BSimon\@\<yourcompanydomain>.\<extension>** ein. Beispiel: **BSimon\@contoso.com**
 
     1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert aus dem Feld **Kennwort**.
 

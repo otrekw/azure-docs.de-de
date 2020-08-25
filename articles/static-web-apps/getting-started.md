@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: quickstart
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 6738f598275e91ce8a811c3ef6bcc6d5dc84e0bd
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: bbc06b657525880f22bd5fb38e902f906d438c9c
+ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089497"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88565909"
 ---
 # <a name="quickstart-building-your-first-static-web-app"></a>Schnellstart: Erstellen Ihrer ersten statischen Web-App
 
@@ -98,7 +98,7 @@ Geben Sie nach der Anmeldung mit GitHub die Informationen zum Repository ein.
 :::image type="content" source="media/getting-started/next-build-button.png" alt-text="Schaltfläche „Weiter: Erstellen“":::
 
 > [!NOTE]
->  Wenn Sie keine Repositorys sehen, müssen Sie möglicherweise den Azure Static Web Apps in GitHub autorisieren. Navigieren Sie zu Ihrem GitHub-Repository, und wechseln Sie zu **Einstellungen > Anwendungen > Autorisierte OAuth-Apps**, wählen Sie **Azure Static Web Apps** und dann **Erteilen** aus. Bei Organisationsrepositorys müssen Sie Besitzer der Organisation sein, um die Berechtigungen erteilen zu können.
+>  Wenn Sie keine Repositorys sehen, müssen Sie möglicherweise den Azure Static Web Apps in GitHub autorisieren. Navigieren Sie zur [GitHub-Startseite](https://github.com), und klicken Sie auf das Kontobild, um das Dropdownmenü zu öffnen. Klicken Sie auf **Einstellungen** und dann auf **Anwendungen > Autorisierte OAuth-Apps > Azure Static Web Apps**, und wählen Sie **Gewähren** aus. Bei Organisationsrepositorys müssen Sie Besitzer der Organisation sein, um die Berechtigungen erteilen zu können.
 
 ### <a name="build"></a>Build
 

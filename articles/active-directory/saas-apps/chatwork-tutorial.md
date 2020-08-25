@@ -2,25 +2,21 @@
 title: 'Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Chatwork | Microsoft-Dokumentation'
 description: Hier erfahren Sie, wie Sie einmaliges Anmelden zwischen Azure Active Directory und Chatwork konfigurieren.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 0982ee1d-7ae2-415b-9e47-cfc72e1885ca
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 07/21/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 368b87a4abd5b55a807f7184c3a56876169b2517
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: fdf9e16e5578f794d01671d391f3568eae6555cc
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87293390"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88586238"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-chatwork"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Chatwork
 
@@ -87,7 +83,9 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
     Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://www.chatwork.com/s/<TENANT_NAME>`
 
     > [!NOTE]
-    > Dieser Wert entspricht nicht dem tatsächlichen Wert. Ersetzen Sie diesen Wert durch die tatsächliche Anmelde-URL. Den Wert erhalten Sie vom [Supportteam für den Chatwork-Client](mailto:info@support.chatwork.com). Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
+    > Dieser Wert entspricht nicht dem tatsächlichen Wert. Aktualisieren Sie den Wert mit der privaten Anmelde-URL, die Sie nach der **SSO-Konfiguration für Chatwork** festlegen.
+
+1. Die Chatwork-Anwendung erwartet, dass der Wert unter **Eindeutige Benutzer-ID** mit der bei Chatwork registrierten E-Mail-Adresse übereinstimmt. Das Attribut wird standardmäßig **user.principalname** zugeordnet. Wenn sich „principalname“ von der E-Mail-Adresse unterscheidet, sollten Sie für **Eindeutige Benutzer-ID** die Zuordnung zu **user.mail** durchführen.
 
 1. Navigieren Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** zum Eintrag **Zertifikat (Base64)** . Wählen Sie **Herunterladen** aus, um das Zertifikat herunterzuladen, und speichern Sie es auf Ihrem Computer.
 
@@ -129,11 +127,11 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 ## <a name="configure-chatwork-sso"></a>Konfigurieren des einmaligen Anmeldens für Chatwork
 
-Zum Konfigurieren des einmaligen Anmeldens aufseiten von **Chatwork** müssen Sie das heruntergeladene **Zertifikat (Base64)** und die kopierten URLs aus dem Azure-Portal an das [Supportteam von Chatwork](mailto:info@support.chatwork.com) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
+Lesen Sie sich zum Konfigurieren des einmaligen Anmeldens aufseiten von **Chatwork** den [Chatwork-Leitfaden für Administratoren](https://download.chatwork.com/Chatwork_AdminGuide.pdf) durch, und konfigurieren Sie eine Chatwork-Einstellung.
 
 ### <a name="create-chatwork-test-user"></a>Erstellen eines Chatwork-Testbenutzers
 
-In diesem Abschnitt erstellen Sie in Chatwork einen Benutzer namens B. Simon. Wenden Sie sich an das  [Chatwork-Supportteam](mailto:info@support.chatwork.com), um die Benutzer auf der Chatwork-Plattform hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
+In diesem Abschnitt erstellen Sie in Chatwork einen Benutzer namens B. Simon. Greifen Sie auf den [Chatwork-Leitfaden für Administratoren](https://download.chatwork.com/Chatwork_AdminGuide.pdf) zu, und fügen Sie den Benutzer auf der Chatwork-Plattform hinzu.
 
 ## <a name="test-sso"></a>Testen des einmaligen Anmeldens 
 

@@ -3,34 +3,41 @@ title: 'Vorschau: Erstellen einer mit eigenen Schlüsseln verschlüsselten Image
 description: Erstellen Sie eine Imageversion in einem Katalog mit freigegebenen Images, und verwenden Sie dabei kundenseitig verwaltete Verschlüsselungsschlüssel.
 author: cynthn
 ms.service: virtual-machines
+ms.subservice: imaging
 ms.workload: infrastructure-services
 ms.topic: how-to
-ms.date: 05/06/2020
+ms.date: 08/11/2020
 ms.author: cynthn
-ms.openlocfilehash: 469e225a1cc40dc2ecc45339d9355484e87c4af2
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 0d2b840b401dc90b332f91c93a9eda03d6643432
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223583"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245552"
 ---
 # <a name="preview-use-customer-managed-keys-for-encrypting-images"></a>Vorschau: Verwenden von kundenseitig verwalteten Schlüsseln zum Verschlüsseln von Images
 
 Katalogimages werden als verwaltete Datenträger gespeichert und sind daher automatisch per serverseitiger Verschlüsselung verschlüsselt. Die serverseitige Verschlüsselung verwendet die [AES-Verschlüsselung](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) mit 256 Bit – eine der stärksten verfügbaren Blockchiffren – und ist FIPS 140-2-konform. Weitere Informationen zu den kryptografischen Modulen, die verwalteten Azure-Datenträgern zugrunde liegen, finden Sie unter [Kryptografie-API: Die nächste Generation](/windows/desktop/seccng/cng-portal).
 
-Sie können von der Plattform verwaltete Schlüssel für die Verschlüsselung Ihrer Images verwenden oder die Verschlüsselung mit eigenen Schlüsseln verwalten. Wenn Sie die Verschlüsselung mit eigenen Schlüsseln verwalten möchten, können Sie einen *kundenseitig verwalteten Schlüssel* angeben, der zum Verschlüsseln und Entschlüsseln aller Datenträger in Ihren Images verwendet werden soll. 
+Sie können für die Verschlüsselung Ihrer Images von der Plattform verwaltete Schlüssel verwenden, Ihre eigenen Schlüssel nutzen oder beides für die doppelte Verschlüsselung verwenden. Wenn Sie die Verschlüsselung mit eigenen Schlüsseln verwalten möchten, können Sie einen *kundenseitig verwalteten Schlüssel* angeben, der zum Verschlüsseln und Entschlüsseln aller Datenträger in Ihren Images verwendet werden soll. 
 
 Die serverseitige Verschlüsselung mit kundenseitig verwalteten Schlüsseln verwendet Azure Key Vault. Sie können entweder [ihre RSA-Schlüssel](../key-vault/keys/hsm-protected-keys.md) in den Schlüsseltresor importieren oder neue RSA-Schlüssel in Azure Key Vault generieren.
 
-Um kundenseitig verwaltete Schlüssel für Images zu verwenden, benötigen Sie zunächst einen Azure Key Vault. Danach erstellen Sie einen Datenträgerverschlüsselungssatz. Dieser Datenträgerverschlüsselungssatz wird dann beim Erstellen Ihrer Imageversionen verwendet.
+## <a name="prerequisites"></a>Voraussetzungen
 
-Weitere Informationen zum Erstellen und Verwenden von Datenträgerverschlüsselungssätzen finden Sie unter [Vom Kunden verwaltete Schlüssel](./windows/disk-encryption.md#customer-managed-keys).
+In diesem Artikel wird vorausgesetzt, dass Sie bereits über einen Datenträgerverschlüsselungssatz für Ihr Image verfügen.
+
+- Wenn Sie nur einen kundenseitig verwalteten Schlüssel verwenden möchten, lesen Sie **Aktivieren kundenseitig verwalteter Schlüssel mit serverseitiger Verschlüsselung** – [Azure-Portal](./windows/disks-enable-customer-managed-keys-portal.md) oder [PowerShell](./windows/disks-enable-customer-managed-keys-powershell.md#set-up-your-azure-key-vault-and-diskencryptionset).
+
+- Wenn Sie sowohl plattformseitig als auch kundenseitig verwaltete Schlüssel (für die doppelte Verschlüsselung) verwenden möchten, lesen Sie **Aktivieren der doppelten Verschlüsselung für ruhende Daten** – [Azure-Portal](./windows/disks-enable-double-encryption-at-rest-portal.md) oder [PowerShell](./windows/disks-enable-double-encryption-at-rest-powershell.md).
+    > [!IMPORTANT]
+    > Für den Zugriff auf das Azure-Portal müssen Sie den Link [https://aka.ms/diskencryptionupdates](https://aka.ms/diskencryptionupdates) verwenden. Die doppelte Verschlüsselung im Ruhezustand ist derzeit im öffentlichen Azure-Portal ohne Verwendung des Links nicht sichtbar.
 
 ## <a name="limitations"></a>Einschränkungen
 
 Bei der Verwendung von kundenseitig verwalteten Schlüsseln zum Verschlüsseln von Images aus einem Katalog mit freigegebenen Images gibt es einige Einschränkungen:  
 
-- Verschlüsselungsschlüssel müssen sich in dem gleichen Abonnement und der gleichen Region wie das Image befinden.
+- Verschlüsselungsschlüsselsätze müssen sich in demselben Abonnement und derselben Region wie Ihr Image befinden.
 
 - Images, die kundenseitig verwaltete Schlüssel verwenden, können nicht freigegeben werden. 
 
@@ -90,7 +97,7 @@ $encryption1 = @{OSDiskImage=$osDiskImageEncryption;DataDiskImages=$dataDiskImag
 
 $region1 = @{Name='West US';ReplicaCount=1;StorageAccountType=Standard_LRS;Encryption=$encryption1}
 
-$targetRegion = @{$region1}
+$targetRegion = @($region1)
 
 
 # Create the image
@@ -150,6 +157,7 @@ Wenn die Quelle des Betriebssystemdatenträgers ein verwalteter Datenträger ode
 az sig image-version create \
    -g MyResourceGroup \
    --gallery-image-version 1.0.0 \
+   --location westus \
    --target-regions westus=2=standard_lrs \
    --target-region-encryption DiskEncryptionSet1,0,DiskEncryptionSet2 \
    --gallery-name MyGallery \
@@ -165,11 +173,12 @@ In diesem Beispiel sind die Quellen Datenträgermomentaufnahmen. Es gibt sowohl 
 az sig image-version create \
    -g MyResourceGroup \
    --gallery-image-version 1.0.0 \
+   --location westus\
    --target-regions westus=2=standard_lrs \
    --target-region-encryption DiskEncryptionSet1,0,DiskEncryptionSet2 \
-   --os-snapshot "/subscriptions/<subscription ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/snapshots/myOSSnapshot"
-   --data-snapshot-luns 0
-   --data-snapshots "/subscriptions/<subscription ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/snapshots/myDDSnapshot"
+   --os-snapshot "/subscriptions/<subscription ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/snapshots/myOSSnapshot" \
+   --data-snapshot-luns 0 \
+   --data-snapshots "/subscriptions/<subscription ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/snapshots/myDDSnapshot" \
    --gallery-name MyGallery \
    --gallery-image-definition MyImage 
    
@@ -182,15 +191,19 @@ Sie können eine VM aus einem Katalog mit freigegebenen Images erstellen und kun
 
 ## <a name="portal"></a>Portal
 
-Wenn Sie Ihre Imageversion im Portal erstellen, können Sie die Registerkarte **Verschlüsselung** verwenden, um die Informationen zu den Speicherverschlüsselungssätzen einzugeben.
+Wenn Sie Ihre Imageversion im Portal erstellen, können Sie die Registerkarte **Verschlüsselung** verwenden, um Ihre Speicherverschlüsselungssätze einzugeben/anzuwenden.
+
+> [!IMPORTANT]
+> Wenn Sie die doppelte Verschlüsselung verwenden möchten, müssen Sie für den Zugriff auf das Azure-Portal den Link [https://aka.ms/diskencryptionupdates](https://aka.ms/diskencryptionupdates) verwenden. Die doppelte Verschlüsselung im Ruhezustand ist derzeit im öffentlichen Azure-Portal ohne Verwendung des Links nicht sichtbar.
+
 
 1. Wählen Sie auf der Seite **Imageversion erstellen** die Registerkarte **Verschlüsselung** aus.
-2. Wählen Sie unter **Verschlüsselungstyp** die Option **Verschlüsselung ruhender Daten mit einem kundenseitig verwalteten Schlüssel** aus. 
+2. Wählen Sie als **Verschlüsselungstyp** die Option **Verschlüsselung ruhender Daten mit einem kundenseitig verwalteten Schlüssel** oder **Doppelte Verschlüsselung mit plattformseitig und kundenseitig verwalteten Schlüsseln** aus. 
 3. Wählen Sie für jeden Datenträger im Image den zu verwendenden **Datenträgerverschlüsselungssatz** aus der Dropdownliste aus. 
 
 ### <a name="create-the-vm"></a>Erstellen des virtuellen Computers
 
-Sie können eine VM aus einem Katalog mit freigegebenen Images erstellen und kundenseitig verwaltete Schlüssel zum Verschlüsseln der Datenträger verwenden. Wenn Sie die VM im Portal erstellen, wählen Sie auf der Registerkarte **Datenträger** die Option **Verschlüsselung ruhender Daten mit einem kundenseitig verwalteten Schlüssel** als **Verschlüsselungstyp** aus. Dann können Sie den Verschlüsselungssatz in der Dropdownliste auswählen.
+Sie können eine VM aus einer Imageversion erstellen und kundenseitig verwaltete Schlüssel zum Verschlüsseln der Datenträger verwenden. Wenn Sie die VM im Portal erstellen, wählen Sie auf der Registerkarte **Datenträger** als **Verschlüsselungstyp** die Option **Verschlüsselung ruhender Daten mit einem kundenseitig verwalteten Schlüssel** oder **Doppelte Verschlüsselung mit plattformseitig und kundenseitig verwalteten Schlüsseln** aus. Dann können Sie den Verschlüsselungssatz in der Dropdownliste auswählen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

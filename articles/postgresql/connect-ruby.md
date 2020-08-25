@@ -1,5 +1,5 @@
 ---
-title: 'Herstellen einer Verbindung mit Ruby: Azure Database for PostgreSQL-Einzelserver'
+title: 'Schnellstart: Herstellen einer Verbindung mit Ruby: Azure Database for PostgreSQL-Einzelserver'
 description: Dieser Schnellstart enthält ein Ruby-Codebeispiel, das Sie nutzen können, um eine Verbindung mit einem Azure Database for PostgreSQL-Einzelserver herzustellen und Daten daraus abzufragen.
 author: rachel-msft
 ms.author: raagyema
@@ -8,20 +8,21 @@ ms.custom: mvc
 ms.devlang: ruby
 ms.topic: quickstart
 ms.date: 5/6/2019
-ms.openlocfilehash: 5dd4cfe9bee0db6f14f736c79fe91770641008fb
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 98814060fb9ae669fc4e9a90fcda6319bbfaeacf
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "74766904"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88182543"
 ---
-# <a name="azure-database-for-postgresql---single-server-use-ruby-to-connect-and-query-data"></a>Azure Database for PostgreSQL-Einzelserver: Verwenden von Ruby zum Herstellen einer Verbindung und Abfragen von Daten
+# <a name="quickstart-use-ruby-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>Schnellstart: Verwenden von Ruby zum Herstellen einer Verbindung mit einem Azure Database for PostgreSQL-Einzelserver sowie zum Abfragen von Daten
+
 Dieser Schnellstart zeigt, wie Sie mit einer [Ruby](https://www.ruby-lang.org)-Anwendung eine Verbindung mit einer Azure-Datenbank für PostgreSQL herstellen. Es wird veranschaulicht, wie Sie SQL-Anweisungen zum Abfragen, Einfügen, Aktualisieren und Löschen von Daten in der Datenbank verwenden. Bei den Schritten in diesem Abschnitt wird davon ausgegangen, dass Sie mit der Ruby-Entwicklung vertraut sind und noch keine Erfahrung mit Azure Database for PostgreSQL haben.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 In diesem Schnellstart werden die Ressourcen, die in den folgenden Anleitungen erstellt wurden, als Startpunkt verwendet:
 - [Erstellen einer Datenbank – Portal](quickstart-create-server-database-portal.md)
-- [Erstellen einer Datenbank – Azure CLI](quickstart-create-server-database-azure-cli.md)
+- [Erstellen einer Datenbank – Azure-CLI](quickstart-create-server-database-azure-cli.md)
 
 Darüber hinaus muss Folgendes installiert sein:
 - [Ruby](https://www.ruby-lang.org/en/downloads/)

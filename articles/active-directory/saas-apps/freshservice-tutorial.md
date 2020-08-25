@@ -2,25 +2,21 @@
 title: 'Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory in Freshservice | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Freshservice konfigurieren.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 3dd22b1f-445d-45c6-8eda-30207eb9a1a8
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 07/29/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 06b52ec552434f74c56333d1afe00cde2a285418
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 9e53881d5b28b61cd220b14e02c411db53d19d36
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87905396"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88550995"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-freshservice"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory in Freshservice
 
@@ -60,7 +56,7 @@ Zum Konfigurieren der Integration von Freshservice in Azure AD müssen Sie Fresh
 1. Geben Sie im Abschnitt **Aus Katalog hinzufügen** den Suchbegriff **Freshservice** in das Suchfeld ein.
 1. Wählen Sie **Freshservice** im Ergebnisbereich aus, und fügen Sie dann die App hinzu. Warten Sie einige Sekunden, während die App Ihrem Mandanten hinzugefügt wird.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-freshservice"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für Freshservice
+## <a name="configure-and-test-azure-ad-sso-for-freshservice"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für Freshservice
 
 Konfigurieren und testen Sie das einmalige Anmelden von Azure AD bei Freshservice mithilfe eines Testbenutzers mit dem Namen **B. Simon**. Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Freshservice eingerichtet werden.
 
@@ -132,7 +128,15 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anme
 
 ## <a name="configure-freshservice-sso"></a>Konfigurieren des einmaligen Anmeldens für Freshservice
 
-1. Melden Sie sich in einem neuen Webbrowserfenster bei der Freshservice-Unternehmenswebsite als Administrator an.
+1. Wenn Sie die Konfiguration in Freshservice automatisieren möchten, müssen Sie die **Browsererweiterung „Meine Apps“ für die sichere Anmeldung** installieren, indem Sie auf **Erweiterung installieren** klicken.
+
+    ![Erweiterung „Meine Apps“](common/install-myappssecure-extension.png)
+
+1. Klicken Sie nach dem Hinzufügen der Erweiterung zum Browser auf **Freshservice einrichten**, um zur Anwendung Freshservice weitergeleitet zu werden. Geben Sie dort die Administratoranmeldeinformationen ein, um sich bei Freshservice anzumelden. Die Browsererweiterung konfiguriert die Anwendung automatisch für Sie und automatisiert die Schritte 3 bis 6.
+
+    ![Einrichtungskonfiguration](common/setup-sso.png)
+
+1. Wenn Sie Freshservice manuell einrichten möchten, melden Sie sich bei der Freshservice-Unternehmenswebsite als Administrator an.
 
 1. Klicken Sie im Menü auf der linken Seite auf **Admin** (Verwaltung), und wählen Sie unter **General Settings** (Allgemeine Einstellungen) die Option **Helpdesk Security** (Helpdesksicherheit) aus.
 

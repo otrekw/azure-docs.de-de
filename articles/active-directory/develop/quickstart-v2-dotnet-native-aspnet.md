@@ -10,13 +10,13 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
-ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: 22bf7e85a48e0d138bfdbca82cf032287d982899
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
+ms.openlocfilehash: 0fc31fd397f8206f7c6f0509dd03495631dde609
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85339591"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88165633"
 ---
 # <a name="quickstart-call-an-aspnet-web-api-protected-by-microsoft-identity-platform"></a>Schnellstart: Aufrufen einer durch Microsoft Identity Platform geschützten ASP.NET-Web-API
 
@@ -82,13 +82,14 @@ Wenn Sie Ihre Apps manuell registrieren möchten, ist Folgendes der erste Schrit
 
 ### <a name="add-the-new-scope-to-the-todolistclients-appconfig"></a>Hinzufügen des neuen Bereichs zur app.config-Datei von *TodoListClient*
 
-1. Öffnen Sie die **app.config**-Datei, die sich im Stammordner des **TodoListClient**-Projekts befindet, und fügen Sie die **Anwendungs-ID** der Anwendung, die Sie soeben für Ihren *TodoListService* registriert haben, im `TodoListServiceScope`-Parameter ein. Ersetzen Sie dabei die Zeichenfolge `{Enter the Application ID of your TodoListService from the app registration portal}`.
+* Öffnen Sie die **app.config**-Datei, die sich im Stammordner des **TodoListClient**-Projekts befindet, und fügen Sie die **Anwendungs-ID** der Anwendung, die Sie soeben für Ihren *TodoListService* registriert haben, im `TodoListServiceScope`-Parameter ein. Ersetzen Sie dabei die Zeichenfolge `{Enter the Application ID of your TodoListService from the app registration portal}`.
 
-   > Hinweis: Stellen Sie sicher, dass folgendes Format verwendet wird:
-   >
-   > `api://{TodoListService-Application-ID}/access_as_user`
-   >
-   >(Hierbei ist {TodoListService-Application-ID} die GUID, die für die Anwendungs-ID der TodoListService-Anwendung steht).
+  > [!NOTE]
+  > Stellen Sie sicher, dass folgendes Format verwendet wird:
+  >
+  > `api://{TodoListService-Application-ID}/access_as_user`
+  >
+  >(Hierbei ist {TodoListService-Application-ID} die GUID, die für die Anwendungs-ID der TodoListService-Anwendung steht).
 
 ## <a name="register-the-client-app-todolistclient"></a>Registrieren der Client-App (TodoListClient)
 
@@ -102,15 +103,28 @@ In diesem Schritt konfigurieren Sie Ihr *TodoListClient*-Projekt, indem Sie eine
    - Geben Sie im Abschnitt **Name** einen aussagekräftigen Anwendungsnamen ein, der den Benutzern der App angezeigt wird (beispielsweise `NativeClient-DotNet-TodoListClient`).
    - Wählen Sie unter **Unterstützte Kontotypen** die Option **Konten in einem beliebigen Organisationsverzeichnis** aus.
    - Wählen Sie **Registrieren** aus, um die Anwendung zu erstellen.
+   
+   > [!NOTE]
+   > In der Datei **app.config** des Projekts *TodoListClient* ist der Standardwert `ida:Tenant` auf `common` festgelegt.
+   >
+   > `common` bedeutet, dass Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder einem persönlichen Microsoft-Konto anmelden können (aufgrund der Auswahl von **Konten in einem beliebigen Organisationsverzeichnis**).
+   >
+   > `organizations` bedeutet, dass Sie sich mit einem Geschäfts-, Schul- oder Unikonto anmelden können.
+   >
+   > `consumers` bedeutet, dass Sie sich nur mit einem persönlichen Microsoft-Konto anmelden können.
+   >
+   
 1. Wählen Sie auf der Seite „Übersicht“ der App den Abschnitt **Authentifizierung** aus.
-   - Aktivieren Sie im Abschnitt **Umleitungs-URIs** | **Vorgeschlagene Umleitungs-URIs für öffentliche Clients (Mobilgerät, Desktop)** die Option **https://login.microsoftonline.com/common/oauth2/nativeclient** .
-   - Wählen Sie **Speichern** aus.
+   1. Wählen Sie unter **Plattformkonfigurationen** die Schaltfläche **Plattform hinzufügen** aus.
+   1. Wählen Sie unter **Mobilgerät- und Desktopanwendungen** die Option **Mobilgerät- und Desktopanwendungen** aus.
+   1. Aktivieren Sie unter **Umleitungs-URIs** das Kontrollkästchen **https://login.microsoftonline.com/common/oauth2/nativeclient** .
+   1. Wählen Sie **Konfigurieren**aus.   
 1. Wählen Sie den Abschnitt **API-Berechtigungen** aus.
-   - Klicken Sie auf die Schaltfläche **Berechtigung hinzufügen**.
-   - Wählen Sie die Registerkarte **Meine APIs** aus.
-   - Wählen Sie in der Liste der APIs `AppModelv2-NativeClient-DotNet-TodoListService API` bzw. den Namen aus, den Sie für die Web-API eingegeben haben.
-   - Aktivieren Sie die Berechtigung **access_as_user**, wenn diese nicht bereits aktiviert ist. Verwenden Sie bei Bedarf das Suchfeld.
-   - Wählen Sie die Schaltfläche **Berechtigungen hinzufügen** aus.
+   1. Wählen Sie die Schaltfläche **Berechtigung hinzufügen**.
+   1. Wählen Sie die Registerkarte **Meine APIs** aus.
+   1. Wählen Sie in der Liste der APIs `AppModelv2-NativeClient-DotNet-TodoListService API` bzw. den Namen aus, den Sie für die Web-API eingegeben haben.
+   1. Aktivieren Sie die Berechtigung **access_as_user**, wenn diese nicht bereits aktiviert ist. Verwenden Sie bei Bedarf das Suchfeld.
+   1. Wählen Sie die Schaltfläche **Berechtigungen hinzufügen** aus.
 
 ### <a name="configure-your-todolistclient-project"></a>Konfigurieren des *TodoListClient*-Projekts
 

@@ -1,18 +1,18 @@
 ---
-title: Verwalten des Azure Arc für Server-Agent (Vorschau)
-description: In diesem Artikel werden die verschiedenen Verwaltungsaufgaben beschrieben, die Sie typischerweise während des Lebenszyklus des Azure Arc für Server-Connected Machine-Agent ausführen.
+title: Verwalten des Agents für Azure Arc-fähige Server (Vorschauversion)
+description: In diesem Artikel werden die verschiedenen Verwaltungsaufgaben beschrieben, die Sie typischerweise während des Lebenszyklus des Connected Machine-Agents für Azure Arc-fähige Server (Vorschauversion) ausführen.
 ms.date: 07/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: b7fcaca2188ef0e1e3c8c65226f8b383576082ba
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 6066226cea224b1e13262763b626c8c646a397d7
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121288"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213128"
 ---
 # <a name="managing-and-maintaining-the-connected-machine-agent"></a>Verwalten des Connected Machine-Agent
 
-Nach der erstmaligen Bereitstellung des Azure Arc für Server-Connected Machine-Agent (Vorschau) für Windows oder Linux müssen Sie den Agent neu konfigurieren, ihn aktualisieren oder vom Computer entfernen, wenn er in seinem Lebenszyklus die Deaktivierungsphase erreicht hat. Sie können diese Routinewartungsaufgaben einfach manuell oder durch Automatisierung bewältigen, wodurch sowohl Betriebsfehler als auch Kosten reduziert werden.
+Nach der erstmaligen Bereitstellung des Agents für Azure Arc-fähige Server (Vorschauversion) für Windows oder Linux müssen Sie den Agent neu konfigurieren, ihn aktualisieren oder vom Computer entfernen, wenn er in seinem Lebenszyklus die Deaktivierungsphase erreicht hat. Sie können diese Routinewartungsaufgaben einfach manuell oder durch Automatisierung bewältigen, wodurch sowohl Betriebsfehler als auch Kosten reduziert werden.
 
 ## <a name="upgrading-agent"></a>Aktualisierung des Agent
 
@@ -120,7 +120,7 @@ Aktionen des Befehls [zypper](https://en.opensuse.org/Portal:Zypper) wie Install
 
 ## <a name="about-the-azcmagent-tool"></a>Informationen zum Azcmagent-Tool
 
-Das Azcmagent-Tool (Azcmagent.exe) wird verwendet, um den Connected Machine-Agent von Azure Arc für Server (Vorschau) während der Installation zu konfigurieren, oder um die Erstkonfiguration des Agents nach der Installation zu ändern. Azcmagent.exe bietet Befehlszeilenparameter zum Anpassen des Agents und zum Anzeigen seines Status:
+Das Azcmagent-Tool (Azcmagent.exe) wird verwendet, um den Connected Machine-Agent für Azure Arc-fähige Server (Vorschauversion) während der Installation zu konfigurieren, oder um die Erstkonfiguration des Agents nach der Installation zu ändern. Azcmagent.exe bietet Befehlszeilenparameter zum Anpassen des Agents und zum Anzeigen seines Status:
 
 * **Connect**: Verbindet den Computer mit Azure Arc.
 
@@ -136,7 +136,7 @@ Das Azcmagent-Tool (Azcmagent.exe) wird verwendet, um den Connected Machine-Agen
 
 * **-v oder -verbose**: Aktiviert die ausführliche Protokollierung.
 
-Sie können einen **Connect**-, **Disconnect**- und **Reconnect**-Vorgang manuell ausführen, während Sie interaktiv angemeldet sind, oder Sie können mithilfe desselben Dienstprinzipals automatisieren, den Sie für das Onboarding mehrerer Agents verwendet haben, oder mithilfe eines [Zugriffstokens](../../active-directory/develop/access-tokens.md) der Microsoft Identity-Plattform. Wenn Sie keinen Dienstprinzipal zum Registrieren des Computers bei Azure Arc für Server (Vorschau) verwendet haben, finden Sie im folgenden [Artikel](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale) Informationen zum Erstellen eines Dienstprinzipals.
+Sie können einen **Connect**-, **Disconnect**- und **Reconnect**-Vorgang manuell ausführen, während Sie interaktiv angemeldet sind, oder Sie können mithilfe desselben Dienstprinzipals automatisieren, den Sie für das Onboarding mehrerer Agents verwendet haben, oder mithilfe eines [Zugriffstokens](../../active-directory/develop/access-tokens.md) der Microsoft Identity-Plattform. Wenn Sie keinen Dienstprinzipal zum Registrieren des Computers bei Azure Arc-fähigen Servern (Vorschauversion) verwendet haben, finden Sie im folgenden [Artikel](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale) Informationen zum Erstellen eines Dienstprinzipals.
 
 >[!NOTE]
 >Sie müssen auf Linux-Computern über *Stamm*zugriffsberechtigungen verfügen, um **azcmagent** ausführen zu können.
@@ -145,7 +145,7 @@ Sie können einen **Connect**-, **Disconnect**- und **Reconnect**-Vorgang manuel
 
 Dieser Parameter gibt eine Ressource in Azure Resource Manager an, die den in Azure erstellten Computer darstellt. Die Ressource befindet sich im angegebenen Abonnement und der angegebenen Ressourcengruppe, und die Daten zu dem Computer werden in der durch den `--location`-Parameter angegebenen Azure-Region gespeichert. Der Standardname der Ressource ist der Hostname dieses Computers, wenn nichts angegeben wird.
 
-Ein Zertifikat, das der systemseitig zugewiesenen Identität dieses Computers entspricht, wird dann heruntergeladen und lokal gespeichert. Sobald dieser Schritt abgeschlossen ist, beginnen der Azure Connected Machine Metadata Service und der Gastkonfigurations-Agent die Synchronisierung mit der Azure Arc für Server (Vorschau).
+Ein Zertifikat, das der systemseitig zugewiesenen Identität dieses Computers entspricht, wird dann heruntergeladen und lokal gespeichert. Sobald dieser Schritt abgeschlossen ist, beginnen der Azure Connected Machine Metadata Service und der Gastkonfigurations-Agent die Synchronisierung mit Azure Arc-fähigen Servern (Vorschauversion).
 
 Führen Sie den folgenden Befehl aus, um eine Verbindung mithilfe des Dienstprinzipals herzustellen:
 
@@ -161,7 +161,7 @@ Führen Sie den folgenden Befehl aus, um eine Verbindung mit Ihren Anmeldeinform
 
 ### <a name="disconnect"></a>Trennen
 
-Dieser Parameter gibt eine Ressource in Azure Resource Manager an, die den in Azure gelöschten Computer darstellt. Der Agent wird nicht vom Computer gelöscht, dies muss als separater Schritt erfolgen. Nachdem der Computer getrennt wurde, und wenn Sie ihn beim Azure Arc für Server (Vorschau) erneut registrieren möchten, verwenden Sie `azcmagent connect`, damit eine neue Ressource in Azure erstellt wird.
+Dieser Parameter gibt eine Ressource in Azure Resource Manager an, die den in Azure gelöschten Computer darstellt. Der Agent wird nicht vom Computer gelöscht, dies muss als separater Schritt erfolgen. Nachdem der Computer getrennt wurde, und wenn Sie ihn bei Azure Arc-fähigen Servern (Vorschauversion) erneut registrieren möchten, verwenden Sie `azcmagent connect`, damit eine neue Ressource in Azure erstellt wird.
 
 Führen Sie den folgenden Befehl aus, um die Verbindung mithilfe des Dienstprinzipals zu trennen:
 
@@ -180,7 +180,7 @@ Führen Sie den folgenden Befehl aus, um die Verbindung mit Ihren Anmeldeinforma
 > [!WARNING]
 > Der Befehl `reconnect` ist veraltet und sollte nicht verwendet werden. Der Befehl wird in einem zukünftigen Release des Agents entfernt, und vorhandene Agents können die Anforderung zum erneuten Herstellen der Verbindung nicht mehr erfüllen. [Trennen](#disconnect) Sie stattdessen die Verbindung mit Ihrem Computer, und stellen Sie erneut eine [Verbindung](#connect) her.
 
-Mit diesem Parameter wird der bereits registrierte oder verbundene Computer erneut mit Azure Arc für Server (Vorschau) verbunden. Dies ist möglicherweise erforderlich, wenn der Computer mindestens 45 Tage lang ausgeschaltet war, damit das Zertifikat abläuft. Dieser Parameter verwendet die angegebenen Authentifizierungsoptionen, um neue Anmeldeinformationen abzurufen, die der Azure Resource Manager-Ressource entsprechen, die diesen Computer darstellt.
+Mit diesem Parameter wird der bereits registrierte oder verbundene Computer erneut mit Azure Arc-fähigen Servern (Vorschauversion) verbunden. Dies ist möglicherweise erforderlich, wenn der Computer mindestens 45 Tage lang ausgeschaltet war, damit das Zertifikat abläuft. Dieser Parameter verwendet die angegebenen Authentifizierungsoptionen, um neue Anmeldeinformationen abzurufen, die der Azure Resource Manager-Ressource entsprechen, die diesen Computer darstellt.
 
 Dieser Befehl erfordert höhere Berechtigungen als die Rolle [Azure Connected Machine-Onboarding](agent-overview.md#required-permissions).
 
@@ -198,7 +198,7 @@ Führen Sie den folgenden Befehl aus, um eine Verbindung mit Ihren Anmeldeinform
 
 ## <a name="remove-the-agent"></a>Entfernen des Agents
 
-Führen Sie eine der folgenden Methoden aus, um den Conncected Machine-Agent für Windows oder Linux von dem Computer zu deinstallieren. Wenn Sie den Agent entfernen, wird die Registrierung des Computers bei Arc für Server (Vorschau) nicht aufgehoben. Dies ist ein gesonderter Prozess, den Sie ausführen, wenn Sie den Computer nicht mehr in Azure verwalten müssen.
+Führen Sie eine der folgenden Methoden aus, um den Conncected Machine-Agent für Windows oder Linux von dem Computer zu deinstallieren. Wenn Sie den Agent entfernen, wird die Registrierung des Computers bei Azure Arc-fähigen Servern (Vorschauversion) nicht aufgehoben. Dies ist ein gesonderter Prozess, den Sie ausführen, wenn Sie den Computer nicht mehr in Azure verwalten müssen.
 
 ### <a name="windows-agent"></a>Windows-Agent
 
@@ -267,9 +267,9 @@ Beim Deinstallieren des Linux-Agents ist der zu verwendende Befehl vom Linux-Bet
 
 ## <a name="unregister-machine"></a>Aufheben der Registrierung eines Computers
 
-Wenn Sie beabsichtigen, die Verwaltung des Computers mit unterstützenden Diensten in Azure zu beenden, führen Sie die folgenden Schritte aus, um die Registrierung des Computers bei Arc für Server (Vorschau) aufzuheben. Sie können diese Schritte entweder vor oder nach dem Entfernen des Connected Machine-Agents von dem Computer ausführen.
+Wenn Sie beabsichtigen, die Verwaltung des Computers mit unterstützenden Diensten in Azure zu beenden, führen Sie die folgenden Schritte aus, um die Registrierung des Computers bei Azure Arc-fähigen Servern (Vorschauversion) aufzuheben. Sie können diese Schritte entweder vor oder nach dem Entfernen des Connected Machine-Agents von dem Computer ausführen.
 
-1. Öffnen Sie Azure Arc für Server (Vorschauversion), indem Sie zum [Azure-Portal](https://aka.ms/hybridmachineportal) navigieren.
+1. Öffnen Sie Azure Arc-fähige Server (Vorschauversion), indem Sie zum [Azure-Portal](https://aka.ms/hybridmachineportal) navigieren.
 
 2. Wählen Sie den Computer in der Liste aus. Wählen Sie dann die Auslassungspunkte ( **...** ) und anschließend **Löschen** aus.
 

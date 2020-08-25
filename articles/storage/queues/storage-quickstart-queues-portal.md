@@ -3,17 +3,17 @@ title: 'Schnellstart: Erstellen von Azure Storage-Warteschlangen im Portal'
 description: Verwenden Sie das Azure-Portal zum Erstellen einer Warteschlange. Verwenden Sie anschließend das Azure-Portal, um eine Nachricht hinzuzufügen, die Eigenschaften der Nachricht anzuzeigen und die Nachricht aus der Warteschlange zu entfernen.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 03/06/2019
+ms.date: 08/13/2020
 ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
 ms.reviewer: dineshm
-ms.openlocfilehash: af3f812c8018f059f26c29cd373714e4ab3c8a49
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+ms.openlocfilehash: 11c6cdff852a0695d4b2071f1d0a60c05dba2410
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84808965"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213498"
 ---
 # <a name="quickstart-create-a-queue-and-add-a-message-with-the-azure-portal"></a>Schnellstart: Erstellen einer Warteschlange und Hinzufügen einer Nachricht mit dem Azure-Portal
 
@@ -40,8 +40,8 @@ Führen Sie die folgenden Schritte aus, um eine Warteschlange im Azure-Portal zu
 Fügen Sie als Nächstes der neuen Warteschlange eine Nachricht hinzu. Eine Nachricht kann bis zu 64 KB groß sein.
 
 1. Wählen Sie die neue Warteschlange aus der Liste der Warteschlangen im Speicherkonto aus.
-1. Wählen Sie die Schaltfläche **+ Nachricht hinzufügen**, um der Warteschlange eine Nachricht hinzuzufügen. Geben Sie eine Nachricht ins Feld **Nachrichtentext** ein. 
-1. Geben Sie an, wann die Nachricht abläuft. Eine Nachricht kann maximal sieben Tage in der Warteschlange verbleiben.
+1. Wählen Sie die Schaltfläche **+ Nachricht hinzufügen**, um der Warteschlange eine Nachricht hinzuzufügen. Geben Sie eine Nachricht ins Feld **Nachrichtentext** ein.
+1. Geben Sie an, wann die Nachricht abläuft. Gültige Werte, die in das Feld **Läuft ab in** eingegeben werden können, liegen zwischen einer Sekunde und sieben Tagen. Wählen Sie **Nachricht läuft nie ab** aus, um anzugeben, dass eine Nachricht in der Warteschlange verbleibt, bis sie explizit entfernt wird.
 1. Geben Sie an, ob die Nachricht als Base64 codiert werden soll. Die Codierung von binären Daten wird empfohlen.
 1. Wählen Sie die Schaltfläche **OK**, um die Nachricht hinzuzufügen.
 

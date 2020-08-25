@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: include
-ms.date: 06/26/2020
+ms.date: 08/18/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: dececd066597682e240e737727d3bcaf8f8f3619
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: eec99ae353d4e5ca1bede1afef135def96207c50
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87375114"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88604699"
 ---
 ### <a name="does-the-user-need-to-have-hub-and-spoke-with-sd-wanvpn-devices-to-use-azure-virtual-wan"></a>Muss der Benutzer über eine Hub-and-Spoke-Anordnung mit SD-WAN/VPN-Geräten verfügen, um Azure Virtual WAN nutzen zu können?
 
@@ -119,7 +119,7 @@ Softwaredefinierte Konnektivitätslösungen verwalten ihre Branchgeräte normale
 
 ### <a name="what-if-a-device-i-am-using-is-not-in-the-virtual-wan-partner-list-can-i-still-use-it-to-connect-to-azure-virtual-wan-vpn"></a>Was geschieht, wenn ein von mir verwendetes Gerät nicht in der Liste der Virtual WAN-Partner aufgeführt ist? Kann ich über dieses Gerät dennoch eine Verbindung mit dem Azure Virtual WAN-VPN herstellen?
 
-Ja, solange das Gerät IPsec IKEv1 oder IKEv2 unterstützt. Virtual WAN-Partner automatisieren die Konnektivität vom Gerät zu Azure-VPN-Endpunkten. Dies umfasst die Automatisierung von Schritten wie beispielsweise „Hochladen von Branchinformationen“, „IPsec und Konfiguration“ und „Konnektivität“. Da Ihr Gerät nicht aus dem Ökosystem eines Virtual WAN-Partners stammt, müssen Sie die Azure-Konfiguration manuell übernehmen und Ihr Gerät aktualisieren, um eine IPsec-Verbindung einzurichten.
+Ja, solange das Gerät IPsec IKEv1 oder IKEv2 unterstützt. Virtual WAN-Partner automatisieren die Konnektivität vom Gerät zu Azure-VPN-Endpunkten. Dies umfasst die Automatisierung von Schritten wie beispielsweise „Hochladen von Branchinformationen“, „IPsec und Konfiguration“ und „Konnektivität“. Da Ihr Gerät nicht aus dem Ökosystem eines Virtual WAN-Partners stammt, müssen Sie die Azure-Konfiguration manuell übernehmen und Ihr Gerät aktualisieren, um eine IPsec-Verbindung einzurichten.
 
 ### <a name="how-do-new-partners-that-are-not-listed-in-your-launch-partner-list-get-onboarded"></a>Wie erfolgt das Onboarding für neue Partner, die nicht in der Liste mit den Einführungspartnern aufgeführt sind?
 
@@ -187,7 +187,7 @@ Nein. Für Virtual WAN ist keine ExpressRoute-Verbindung mit jedem Standort erfo
 
 ### <a name="is-there-a-network-throughput-or-connection-limit-when-using-azure-virtual-wan"></a>Gibt es bei Verwendung von Azure Virtual WAN einen Grenzwert für den Netzwerkdurchsatz oder die Anzahl der Verbindungen?
 
-Der Netzwerkdurchsatz wird in einem virtuellen WAN-Hub pro Dienst angegeben. Sie können beliebig viele virtuelle WANs verwenden, aber jedes Virtual WAN gestattet nur einen Hub pro Region. In jedem Hub beträgt der aggregierte VPN-Durchsatz bis zu 20 GBit/s, der aggregierte ExpressRoute-Durchsatz bis zu 20 GBit/s und der aggregierte Benutzer-VPN/Point-to-Site-VPN-Durchsatz bis zu 20 GBit/s. Der Router im virtuellen Hub unterstützt bis zu 50 GBit/s für VNET-zu-VNET-Datenverkehr und geht insgesamt von einer Workload von 2.000 VM über alle VNETs in Virtual WAN-Hubs aus.
+Der Netzwerkdurchsatz wird in einem virtuellen WAN-Hub pro Dienst angegeben. Sie können beliebig viele virtuelle WANs verwenden, aber jedes Virtual WAN gestattet nur einen Hub pro Region. In jedem Hub beträgt der aggregierte VPN-Durchsatz bis zu 20 GBit/s, der aggregierte ExpressRoute-Durchsatz bis zu 20 GBit/s und der aggregierte Benutzer-VPN/Point-to-Site-VPN-Durchsatz bis zu 20 GBit/s. Der Router im virtuellen Hub unterstützt bis zu 50 GBit/s für VNET-zu-VNET-Datenverkehr und geht übergreifend für alle mit einem einzelnen virtuellen Hub verbundenen VNETs von einer Gesamtworkload von 2.000 VMs aus.
 
 VPN-Standorte stellen die Konnektivität mit einem Hub über Verbindungen her. Virtual WAN unterstützt bis zu 1.000 Verbindungen oder 2.000 IPsec-Tunnel pro virtuellem Hub. Wenn Remotebenutzer eine Verbindung mit einem virtuellen Hub herstellen, verbinden sie sich mit dem P2S-VPN-Gateway, das je nach der für das P2S-VPN-Gateway im virtuellen Hub ausgewählten Skalierungseinheit (Bandbreite) bis zu 10.000 Benutzer unterstützt.
 
@@ -215,7 +215,7 @@ Für den Datenverkehr wird das folgende Muster verwendet: Branchgerät > ISP > M
 
 Ja. Eine Internetverbindung und ein physisches Gerät, das IPsec unterstützt – vorzugsweise von einem unserer integrierten [Virtual WAN-Partner](../articles/virtual-wan/virtual-wan-locations-partners.md). Optional können Sie die Konfiguration und Konnektivität mit Azure auf Ihrem bevorzugten Gerät manuell verwalten.
 
-### <a name="how-do-i-enable-default-route-00000-in-a-connection-vpn-expressroute-or-virtual-network"></a>Vorgehensweise beim Aktivieren der Standardroute (0.0.0.0/0) für eine Verbindung (VPN, ExpressRoute oder Virtual Network):
+### <a name="how-do-i-enable-default-route-00000-in-a-connection-vpn-expressroute-or-virtual-network"></a>Wie aktiviere ich die Standardroute (0.0.0.0/0) für eine Verbindung (VPN, ExpressRoute oder Virtual Network)?
 
 Ein virtueller Hub kann eine erlernte Standardroute an eine Verbindung vom Typ „Virtuelles Netzwerk“, „Site-to-Site-VPN“ oder „ExpressRoute“ weitergeben, wenn das Flag für die Verbindung auf „Aktiviert“ festgelegt ist. Dieses Flag ist sichtbar, wenn der Benutzer eine VNET-Verbindung, eine VPN-Verbindung oder eine ExpressRoute-Verbindung bearbeitet. Das Flag ist standardmäßig deaktiviert, wenn für eine Site oder eine ExpressRoute-Leitung eine Verbindung mit einem Hub besteht. Es ist standardmäßig aktiviert, wenn eine VNET-Verbindung hinzugefügt wird, um ein VNET mit einem virtuellen Hub zu verbinden. Der Ursprung der Standardroute liegt nicht auf dem Virtual WAN-Hub. Sie wird weitergegeben, wenn sie dem Virtual WAN-Hub bereits bekannt ist, weil darin eine Firewall bereitgestellt wurde, oder wenn für eine andere verbundene Site die Tunnelerzwingung aktiviert ist.
 
@@ -239,23 +239,27 @@ Wenn mehrere ExpressRoute-Leitungen mit einem virtuellen Hub verbunden sind, bie
 
 ### <a name="does-virtual-wan-prefer-expressroute-over-vpn-for-traffic-egressing-azure"></a>Wird von Virtual WAN für ausgehenden Azure-Datenverkehr ExpressRoute gegenüber VPN bevorzugt?
 
-Ja 
+Ja.
 
-### <a name="when-a-virtual-wan-hub-has-an-expressroute-circuit-and-a-vpn-site-connected-to-it-what-would-cause-a-vpn-connection-route-to-be-prefered-over-expressroute"></a>Wenn ein Virtual WAN-Hub über eine ExpressRoute-Leitung und eine damit verbundene VPN-Site verfügt: Wie kann erreicht werden, dass eine VPN-Verbindungsroute gegenüber ExpressRoute bevorzugt wird?
+### <a name="when-a-virtual-wan-hub-has-an-expressroute-circuit-and-a-vpn-site-connected-to-it-what-would-cause-a-vpn-connection-route-to-be-preferred-over-expressroute"></a>Wenn ein Virtual WAN-Hub über eine ExpressRoute-Leitung und eine damit verbundene VPN-Site verfügt: Wie kann erreicht werden, dass eine VPN-Verbindungsroute gegenüber ExpressRoute bevorzugt wird?
 
-Wenn eine ExpressRoute-Leitung mit dem Virtual WAN-Hub verbunden ist, sind die Microsoft-Edgerouter jeweils der erste Knoten für die Kommunikation zwischen der lokalen Umgebung und Azure. Diese Edgerouter kommunizieren mit den Virtual WAN-ExpressRoute-Gateways, die wiederum Routen vom Virtual WAN-Hub-Router erlernen, von dem sämtliche Routen zwischen allen Gateways des Virtual WAN gesteuert werden. Von den Microsoft-Edgeroutern werden ExpressRoute-Routen des Virtual WAN-Hubs mit einer höheren Priorität als Routen verarbeitet, die von der lokalen Umgebung erlernt werden. Falls die VPN-Verbindung aus irgendeinem Grund zum primären Medium für den Virtual WAN-Hub wird und Routen von dieser Verbindung erhalten soll (z. B. bei Failoverszenarien zwischen ExpressRoute und VPN), passiert Folgendes: Sofern die VPN-Site nicht über längere AS-Pfade verfügt, gibt der Virtual WAN-Hub erlernte VPN-Routen weiterhin an das ExpressRoute-Gateway weiter. Dies führt dazu, dass die Microsoft-Edgerouter VPN-Routen gegenüber den Routen der lokalen Umgebung den Vorzug geben. 
+Wenn eine ExpressRoute-Leitung mit einem virtuellen Hub verbunden ist, sind die Microsoft-Edgerouter jeweils der erste Knoten für die Kommunikation zwischen der lokalen Umgebung und Azure. Diese Edgerouter kommunizieren mit den Virtual WAN-ExpressRoute-Gateways, die wiederum vom Router des virtuellen Hubs über Routen informiert werden, von dem sämtliche Routen zwischen allen Gateways in Virtual WAN gesteuert werden. Von den Microsoft-Edgeroutern werden ExpressRoute-Routen des virtuellen Hubs mit einer höheren Priorität als Routen verarbeitet, über die von der lokalen Umgebung informiert wird. Falls die VPN-Verbindung aus irgendeinem Grund zum primären Medium für den virtuellen Hub wird und Routen von dieser Verbindung erhalten soll (z. B. bei Failoverszenarien zwischen ExpressRoute und VPN), passiert Folgendes: Sofern die VPN-Site nicht über längere AS-Pfade verfügt, gibt der virtuelle Hub erlernte VPN-Routen weiterhin an das ExpressRoute-Gateway weiter. Dies führt dazu, dass die Microsoft-Edgerouter VPN-Routen gegenüber den Routen der lokalen Umgebung den Vorzug geben.
 
 ### <a name="when-two-hubs-hub-1-and-2-are-connected-and-there-is-an-expressroute-circuit-connected-as-a-bow-tie-to-both-the-hubs-what-is-the-path-for-a-vnet-connected-to-hub-1-to-reach-a-vnet-connected-in-hub-2"></a>Wenn zwei Hubs (Hub 1 und 2) verbunden sind und es eine ExpressRoute-Leitung gibt, die als Schleife mit beiden Hubs verbunden ist, wie ist der Pfad für ein mit Hub 1 verbundenes VNET, um ein mit Hub 2 verbundenes VNET zu erreichen?
 
-Das derzeitige Verhalten besteht darin, für VNET-zu-VNET-Konnektivität den ExpressRoute-Leitungspfad gegenüber Hub-zu-Hub vorzuziehen. In einem virtuellen WAN-Setup wird dies jedoch nicht empfohlen. Das Virtual WAN-Team arbeitet an einer Lösung, um die Bevorzugung von Hub-zu-Hub gegenüber dem ExpressRoute-Pfad zu ermöglichen. Es wird empfohlen, mehrere ExpressRoute-Leitungen (verschiedene Anbieter) mit einem Hub zu verbinden und die von Virtual WAN bereitgestellte Hub-zu-Hub-Konnektivität für den regionsübergreifenden Datenverkehr zu nutzen.
+Das derzeitige Verhalten besteht darin, für VNET-zu-VNET-Konnektivität den ExpressRoute-Leitungspfad gegenüber Hub-zu-Hub vorzuziehen. In einem virtuellen WAN-Setup wird dies jedoch nicht empfohlen. Das Virtual WAN-Team arbeitet an einer Lösung, um die Bevorzugung von Hub-zu-Hub gegenüber dem ExpressRoute-Pfad zu ermöglichen. Es wird empfohlen, mehrere ExpressRoute-Leitungen (verschiedene Anbieter) mit einem Hub zu verbinden und die von Virtual WAN bereitgestellte Hub-zu-Hub-Konnektivität für den regionsübergreifenden Datenverkehr zu nutzen.
 
 ### <a name="is-there-support-for-ipv6-in-virtual-wan"></a>Wird IPv6 in Virtual WAN unterstützt?
 
 IPv6 wird im Virtual WAN-Hub und seinen Gateways nicht unterstützt. Wenn Sie über ein VNET mit IPv6-Unterstützung verfügen und das VNET mit einem Virtual WAN verbinden möchten, wird dieses Szenario derzeit nicht unterstützt.
 
-### <a name="what-is-the-recommended-api-version-to-be-used-by-scripts-automating-various-virtual-wan-functionality-"></a>Welche API-Version wird für die Verwendung durch Skripts empfohlen, mit denen verschiedene Virtual WAN-Funktionen automatisiert werden?
+### <a name="what-is-the-recommended-api-version-to-be-used-by-scripts-automating-various-virtual-wan-functionalities"></a>Welche API-Version wird für die Verwendung durch Skripts empfohlen, mit denen verschiedene Virtual WAN-Funktionen automatisiert werden?
 
 Hierfür ist mindestens die Version „05-01-2020“ (1. Mai 2020) erforderlich. 
+
+### <a name="are-there-any-virtual-wan-limits"></a>Gibt es Grenzwerte für Virtual WAN?
+
+Informationen finden Sie auf der Seite „Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen“ im Abschnitt [Grenzwerte für Virtual WAN](../articles/azure-resource-manager/management/azure-subscription-service-limits.md#virtual-wan-limits).
 
 ### <a name="what-are-the-differences-between-the-virtual-wan-types-basic-and-standard"></a>Welche Unterschiede bestehen zwischen den Virtual WAN-Typen („Basic“ und „Standard“)?
 

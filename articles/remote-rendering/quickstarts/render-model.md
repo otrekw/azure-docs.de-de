@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 01/23/2020
 ms.topic: quickstart
-ms.openlocfilehash: 62669457f73ba78186614433fb6d10cc4dc01089
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: b5865f2fd76c1159f7f72633362a96335af8a059
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85565518"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88509364"
 ---
 # <a name="quickstart-render-a-model-with-unity"></a>Schnellstart: Rendern eines Modells mit Unity
 
@@ -84,7 +84,7 @@ Wir möchten dieses Projekt später für ein HoloLens-Gerät bereitstellen und d
 
 ### <a name="create-a-session-and-view-the-default-model"></a>Erstellen einer Sitzung und Anzeigen des Standardmodells
 
-Wählen Sie in Unity die Schaltfläche für die **Wiedergabe** aus, um die Sitzung zu starten. Unten im Viewport im Bereich *Game* sollte eine Überlagerung mit Statustext angezeigt werden. Die Sitzung durchläuft einige Statusübergänge. Im Status **Starting** (Wird gestartet) wird die Remote-VM gestartet. Dieser Vorgang dauert einige Minuten. Wenn der Vorgang erfolgreich ist, erfolgt der Wechsel in den Status **Ready** (Bereit). Als Nächstes folgt für die Sitzung der Status **Connecting** (Wird verbunden), in dem versucht wird, die Renderinglaufzeit auf der VM zu erreichen. Bei erfolgreicher Ausführung wird für das Beispiel in den Status **Connected** (Verbunden) gewechselt. An diesem Punkt wird mit dem Herunterladen des Modells für das Rendern begonnen. Aufgrund der Größe des Modells kann der Download einige Minuten länger dauern. Nach Abschluss des Vorgangs wird das per Remotezugriff gerenderte Modell angezeigt.
+Wählen Sie in Unity die Schaltfläche für die **Wiedergabe** aus, um die Sitzung zu starten. Unten im Viewport im Bereich *Game* sollte eine Überlagerung mit Statustext angezeigt werden. Die Sitzung durchläuft einige Statusübergänge. Im Status **Starting** (Wird gestartet) wird der Server gestartet. Dieser Vorgang dauert einige Minuten. Wenn der Vorgang erfolgreich ist, erfolgt der Wechsel in den Status **Ready** (Bereit). Als Nächstes folgt für die Sitzung der Status **Connecting** (Wird verbunden), in dem versucht wird, die Renderinglaufzeit auf dem Server zu erreichen. Bei erfolgreicher Ausführung wird für das Beispiel in den Status **Connected** (Verbunden) gewechselt. An diesem Punkt wird mit dem Herunterladen des Modells für das Rendern begonnen. Aufgrund der Größe des Modells kann der Download einige Minuten länger dauern. Nach Abschluss des Vorgangs wird das per Remotezugriff gerenderte Modell angezeigt.
 
 ![Ausgabe des Beispiels](media/arr-sample-output.png)
 

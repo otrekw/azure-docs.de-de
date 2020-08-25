@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: overview
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 74007f5d10d58cf9680d4531304098cabe9b6d8b
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.openlocfilehash: 38ae6bec99498440d7bf7e68e2d5c397e696192a
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87115672"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88604893"
 ---
 # <a name="about-azure-key-vault-certificates"></a>Informationen zu Azure Key Vault-Zertifikaten
 
@@ -84,7 +84,8 @@ Wenn ein Key Vault-Zertifikat von Grund auf neu erstellt wird, muss eine Richtli
 Generell enthält eine Zertifikatsrichtlinie folgende Informationen (deren Definitionen finden Sie [hier](https://docs.microsoft.com/powershell/module/az.keyvault/set-azkeyvaultcertificatepolicy?view=azps-4.4.0)):  
 
 -   Eigenschaften des X.509-Zertifikats: Enthält den Namen und einen alternativen Namen des Antragstellers sowie weitere Eigenschaften zum Erstellen einer X.509-Zertifikatanforderung.  
--   Schlüsseleigenschaften: enthalten Schlüsseltyp, Schlüssellänge sowie Exportierbarkeits- und ReuseKeyOnRenewal-Felder. Diese Felder teilen Key Vault mit, wie ein Schlüssel generiert werden soll.  
+-   Schlüsseleigenschaften: enthalten Schlüsseltyp, Schlüssellänge sowie Exportierbarkeits- und ReuseKeyOnRenewal-Felder. Diese Felder teilen Key Vault mit, wie ein Schlüssel generiert werden soll. 
+     - Unterstützte Schlüsseltypen: RSA, RSA-HSM, EC, EC-HSM, oct ([hier](https://docs.microsoft.com/rest/api/keyvault/createcertificate/createcertificate#jsonwebkeytype) aufgeführt) 
 -   Geheimniseigenschaften: enthält Geheimniseigenschaften wie den Inhaltstyp eines adressierbaren Geheimnisses zum Generieren des Geheimniswerts, um das Zertifikat als Geheimnis abzurufen.  
 -   Lebensdaueraktionen: enthält Lebensdaueraktionen für das Key Vault-Zertifikat. Jede Lebensdaueraktion enthält:  
 

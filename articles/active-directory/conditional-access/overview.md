@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: fb8687c091e8c34ad1fbae2a50981327b3994b6e
-ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
+ms.openlocfilehash: 9bd4c7f17ec1a75e54ca857325cdbb7bf3358511
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "85051951"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88234702"
 ---
 # <a name="what-is-conditional-access"></a>Was ist bedingter Zugriff?
 
@@ -38,7 +38,8 @@ Mithilfe von Richtlinien für den bedingten Zugriff können Sie bei Bedarf die r
 
 ![Prozessfluss für den konzeptionellen bedingten Zugriff](./media/overview/conditional-access-overview-how-it-works.png)
 
-Richtlinien für den bedingten Zugriff werden durchgesetzt, nachdem die First-Factor-Authentifizierung abgeschlossen ist. Der bedingte Zugriff nicht ist als erste Abwehrmaßnahme einer Organisation für Szenarien wie Denial-of-Service-Angriffe (DoS) gedacht, sondern kann Signale von diesen Ereignissen nutzen, um den Zugriff zu bestimmen.
+> [!IMPORTANT]
+> Richtlinien für den bedingten Zugriff werden durchgesetzt, wenn die First-Factor-Authentifizierung abgeschlossen ist. Der bedingte Zugriff nicht ist als erste Abwehrmaßnahme einer Organisation für Szenarien wie Denial-of-Service-Angriffe (DoS) gedacht, sondern kann Signale von diesen Ereignissen nutzen, um den Zugriff zu bestimmen.
 
 ## <a name="common-signals"></a>Häufige Signale
 

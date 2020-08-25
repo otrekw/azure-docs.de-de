@@ -8,13 +8,13 @@ ms.topic: tutorial
 author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
-ms.date: 07/27/2020
-ms.openlocfilehash: 10d1fe9e47b7a3bf2d921f86703d5ae6d067813c
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.date: 08/17/2020
+ms.openlocfilehash: 61cb5384fd4d935ef4038c18b391b5da5fbc96b1
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87293372"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88516689"
 ---
 # <a name="tutorial-create-azure-ad-users-using-azure-ad-applications"></a>Tutorial: Erstellen von Azure AD-Benutzern mithilfe von Azure AD-Anwendungen
 
@@ -94,6 +94,8 @@ Führen Sie das folgende Skript aus, um diese erforderliche Berechtigung zu erte
 
 > [!NOTE] 
 > Dieses Skript muss von einem Azure AD-`Global Administrator` oder einem -`Privileged Roles Administrator` ausgeführt werden.
+>
+> In der **öffentlichen Vorschau** können Sie die Rolle `Directory Readers` einer Gruppe in Azure AD zuweisen. Die Gruppenbesitzer können dann die verwaltete Identität als Mitglied dieser Gruppe hinzufügen. Hierdurch wird die Notwendigkeit umgangen, dass von `Global Administrator` oder `Privileged Roles Administrator` die Rolle `Directory Readers` gewährt werden muss. Weitere Informationen zu diesem Feature finden Sie unter [Rolle „Verzeichnisleseberechtigte“ in Azure Active Directory für Azure SQL](authentication-aad-directory-readers-role.md).
 
 - Ersetzen Sie `<TenantId>` durch Ihre zuvor ermittelte `TenantId`.
 - Ersetzen Sie `<server name>` durch den Namen Ihres logischen SQL-Servers. Wenn der Servername `myserver.database.windows.net` ist, ersetzen Sie `<server name>` durch `myserver`.
@@ -304,3 +306,4 @@ Nachdem ein Dienstprinzipal in Azure AD erstellt wurde, erstellen Sie den Benut
 - [Azure AD Service Principal authentication to SQL DB - Code Sample (Azure AD-Dienstprinzipalauthentifizierung bei SQL DB: Codebeispiel)](https://techcommunity.microsoft.com/t5/azure-sql-database/azure-ad-service-principal-authentication-to-sql-db-code-sample/ba-p/481467)
 - [Anwendungs- und Dienstprinzipalobjekte in Azure Active Directory](../../active-directory/develop/app-objects-and-service-principals.md)
 - [Erstellen eines Azure-Dienstprinzipals mit Azure PowerShell](https://docs.microsoft.com/powershell/azure/create-azure-service-principal-azureps)
+- [Rolle „Verzeichnisleseberechtigte“ in Azure Active Directory für Azure SQL](authentication-aad-directory-readers-role.md)

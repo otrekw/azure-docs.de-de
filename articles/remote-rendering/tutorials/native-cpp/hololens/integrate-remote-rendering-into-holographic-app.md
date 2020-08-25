@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 05/04/2020
 ms.topic: tutorial
-ms.openlocfilehash: fff032d37fa0746695736e0dbdde73c6bcaade4b
-ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
+ms.openlocfilehash: a786baf70dfd9063c635fd27d43d198b3bd89bfb
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85445677"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272126"
 ---
 # <a name="tutorial-integrate-remote-rendering-into-a-hololens-holographic-app"></a>Tutorial: Integrieren von Remote Rendering in eine HoloLens Holographic-App
 
@@ -99,14 +99,15 @@ Wir beginnen, indem wir die erforderlichen Includes hinzufügen. Fügen Sie der 
 #include <AzureRemoteRendering.h>
 ```
 
-...und diese zusätzliche `include`-Anweisung zur Datei „ HolographicAppMain.cpp“:
+...und diese zusätzlichen `include`-Anweisungen zur Datei „ HolographicAppMain.cpp“:
 
 ```cpp
 #include <AzureRemoteRendering.inl>
 #include <RemoteRenderingExtensions.h>
+#include <windows.perception.spatial.h>
 ```
 
-Um den Code einfach zu halten, definieren wir die folgende Namespaceverknüpfung oben in der Datei „HolographicAppMain.h“, hinter der `include`-Anweisung:
+Um den Code einfach zu halten, definieren wir die folgende Namespaceverknüpfung oben in der Datei „HolographicAppMain.h“ nach den `include`-Anweisungen:
 
 ```cpp
 namespace RR = Microsoft::Azure::RemoteRendering;
@@ -297,7 +298,7 @@ namespace HolographicApp
         bool m_modelLoadTriggered = false;
         float m_modelLoadingProgress = 0.f;
         bool m_modelLoadFinished = false;
-
+        bool m_needsCoordinateSystemUpdate = true;
     }
 ```
 
@@ -420,9 +421,13 @@ void HolographicAppMain::OnConnectionStatusChanged(RR::ConnectionStatus status, 
 
 ### <a name="per-frame-update"></a>Update pro Bild
 
-Wir benötigen einen Takt im Client für jeden Takt der Simulation. Die Klasse `HolographicApp1Main` bietet einen guten Hook für Updates pro Bild. Darüber hinaus müssen Sie den Status der Sitzung abrufen und überprüfen, ob sie in den Status `Ready` übergegangen ist. Wurde eine Verbindung hergestellt, wird das Laden des Modells über `StartModelLoading` gestartet.
+Der Client muss einmal für jeden Takt der Simulation aktualisiert werden. Außerdem müssen einige weitere Statusupdates durchgeführt werden. Die Funktion `HolographicAppMain::Update` bietet einen guten Hook für Updates pro Bild.
 
-Fügen Sie dem Text der Funktion `HolographicApp1Main::Update` den folgenden Code hinzu:
+#### <a name="state-machine-update"></a>Aktualisierung des Zustandsautomats
+
+Sie müssen den Status der Sitzung abrufen und überprüfen, ob sie in den Status `Ready` übergegangen ist. Wurde eine Verbindung hergestellt, wird das Laden des Modells über `StartModelLoading` gestartet.
+
+Fügen Sie dem Text der Funktion `HolographicAppMain::Update` den folgenden Code hinzu:
 
 ```cpp
 // Updates the application state once per frame.
@@ -485,9 +490,57 @@ HolographicFrame HolographicAppMain::Update()
         }
     }
 
+    if (m_needsCoordinateSystemUpdate && m_stationaryReferenceFrame && m_graphicsBinding)
+    {
+        // Set the coordinate system once. This must be called again whenever the coordinate system changes.
+        winrt::com_ptr<ABI::Windows::Perception::Spatial::ISpatialCoordinateSystem> ptr{ m_stationaryReferenceFrame.CoordinateSystem().as<ABI::Windows::Perception::Spatial::ISpatialCoordinateSystem>() };
+        m_graphicsBinding->UpdateUserCoordinateSystem(ptr.get());
+        m_needsCoordinateSystemUpdate = false;
+    }
+
     // Rest of the body:
     ...
 }
+```
+
+#### <a name="coordinate-system-update"></a>Aktualisierung des Koordinatensystems
+
+Sie müssen sich mit dem Renderingdienst auf ein Koordinatensystem einigen, das verwendet werden soll. Für den Zugriff auf das zu verwendende Koordinatensystem benötigen Sie das `m_stationaryReferenceFrame`-Element, das am Ende der Funktion `HolographicAppMain::OnHolographicDisplayIsAvailableChanged` erstellt wird.
+
+Dieses Koordinatensystem ändert sich in der Regel nicht, sodass dies eine einmalige Initialisierung ist. Sie muss erneut aufgerufen werden, wenn die Anwendung das Koordinatensystem ändert.
+
+Mit dem obigen Code wird das Koordinatensystem einmal innerhalb der Funktion `Update` festgelegt, sobald Sie über ein Referenzkoordinatensystem und eine verbundene Sitzung verfügen.
+
+#### <a name="camera-update"></a>Kameraaktualisierung
+
+Sie müssen die Clippingebenen der Kamera aktualisieren, damit die Serverkamera mit der lokalen Kamera synchronisiert wird. Dieser Schritt kann ganz am Ende der Funktion `Update` ausgeführt werden:
+
+```cpp
+    ...
+    if (m_isConnected)
+    {
+        // Any near/far plane values of your choosing.
+        constexpr float fNear = 0.1f;
+        constexpr float fFar = 10.0f;
+        for (HolographicCameraPose const& cameraPose : prediction.CameraPoses())
+        {
+            // Set near and far to the holographic camera as normal
+            cameraPose.HolographicCamera().SetNearPlaneDistance(fNear);
+            cameraPose.HolographicCamera().SetFarPlaneDistance(fFar);
+        }
+
+        // The API to inform the server always requires near < far. Depth buffer data will be converted locally to match what is set on the HolographicCamera.
+        auto settings = *m_api->CameraSettings();
+        settings->NearPlane(std::min(fNear, fFar));
+        settings->FarPlane(std::max(fNear, fFar));
+        settings->EnableDepth(true);
+    }
+
+    // The holographic frame will be used to get up-to-date view and projection matrices and
+    // to present the swap chain.
+    return holographicFrame;
+}
+
 ```
 
 ### <a name="rendering"></a>Darstellung

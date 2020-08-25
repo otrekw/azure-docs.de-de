@@ -5,16 +5,16 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 02/20/2020
 ms.author: trbye
-ms.openlocfilehash: abc9a42c7ced6a71f93c00968eb825f28f720843
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: dc027d034c50b49044f4a350fe4d239c18060fc7
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87374718"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88226072"
 ---
 In dieser Schnellstartanleitung erfahren Sie, wie Sie das Speech Devices SDK für Android verwenden, um ein sprachaktiviertes Produkt zu erstellen oder es als Gerät für die [Unterhaltungstranskription](../conversation-transcription-service.md) zu verwenden.
 
-Für diese Anleitung wird ein [Azure Cognitive Services-Konto](../get-started.md) mit einer Ressource für den Speech-Dienst benötigt. Wenn Sie über kein Konto verfügen, können Sie über die [kostenlose Testversion](https://azure.microsoft.com/try/cognitive-services/) einen Abonnementschlüssel abrufen.
+Für diese Anleitung wird ein [Azure Cognitive Services-Konto](../get-started.md) mit einer Ressource für den Speech-Dienst benötigt.
 
 Der Quellcode für die Beispielanwendung liegt dem Speech-Geräte-SDK bei. Es ist auch auf [GitHub](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK) verfügbar.
 
@@ -126,7 +126,7 @@ Erstellen und installieren Sie zum Überprüfen des Setups Ihres Development Kit
 
    Um ein neues Schlüsselwort zu verwenden, aktualisieren Sie die folgenden zwei Codezeilen in `MainActivity.java` und kopieren das Paket mit dem Schlüsselwort in Ihre App. Gehen Sie beispielsweise wie folgt vor, wenn Sie das Schlüsselwort „Machine“ aus dem Schlüsselwortpaket „kws-machine.zip“ verwenden möchten:
 
-   - Kopieren Sie das Schlüsselwortpaket in den Ordner „C:\SDSDK\Android-Sample-Release\example\app\src\main\assets\“.
+   - Kopieren Sie das Schlüsselwortpaket in den Ordner „C:\SDSDK\Android-Sample-Release\example\app\src\main\assets\"“.
    - Aktualisieren Sie die Datei `MainActivity.java` mit dem Schlüsselwort und dem Paketnamen:
 
      ```java
@@ -162,7 +162,7 @@ Erstellen und installieren Sie zum Überprüfen des Setups Ihres Development Kit
 
    ![Speech-Geräte-SDK-Beispielanwendung und Optionen](../media/speech-devices-sdk/qsg-8.png)
 
-1. Testen Sie die neue Demoversion der Unterhaltungstranskription. Beginnen Sie die Transkription mit „Sitzung starten“. Standardmäßig ist jeder Gast. Wenn Sie jedoch über die Stimmsignaturen von Teilnehmern verfügen, können diese in einer `/video/participants.properties`-Datei auf dem Gerät gespeichert werden. Informationen zum Generieren der Stimmsignatur finden Sie unter [Transkribieren von Konversationen (SDK)](../how-to-use-conversation-transcription-service.md).
+1. Testen Sie die neue Demoversion der Unterhaltungstranskription. Beginnen Sie die Transkription mit „Sitzung starten“. Standardmäßig ist jeder Gast. Wenn Sie jedoch über die Stimmsignaturen von Teilnehmern verfügen, können diese in der Datei `/video/participants.properties` auf dem Gerät gespeichert werden. Informationen zum Generieren der Stimmsignatur finden Sie unter [Transkribieren von Konversationen (SDK)](../how-to-use-conversation-transcription-service.md).
 
    ![Demoanwendung für die Unterhaltungstranskription](../media/speech-devices-sdk/qsg-15.png)
 

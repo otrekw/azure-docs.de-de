@@ -1,6 +1,6 @@
 ---
 title: Tutorial – Hinzufügen einer benutzerdefinierten Domäne zum Azure CDN-Endpunkt | Microsoft-Dokumentation
-description: In diesem Tutorial ordnen Sie den Inhalt eines Azure CDN-Endpunkts einer benutzerdefinierten Domäne zu.
+description: In diesem Tutorial erfahren Sie, wie Sie eine benutzerdefinierte Domäne zu einem Azure Content Delivery Network-Endpunkt hinzufügen, damit der Domänenname in Ihrer URL sichtbar ist.
 services: cdn
 documentationcenter: ''
 author: asudbring
@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 06/11/2018
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: ab4845a93771bace5bca15ea3afa7027884e36f4
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 4ca601a3f149d8287137265665379d407d10b988
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81260580"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192684"
 ---
 # <a name="tutorial-add-a-custom-domain-to-your-azure-cdn-endpoint"></a>Tutorial: Hinzufügen einer benutzerdefinierten Domäne zum Azure CDN-Endpunkt
 In diesem Tutorial wird veranschaulicht, wie Sie einem Azure CDN-Endpunkt (Content Delivery Network) eine benutzerdefinierte Domäne hinzufügen. Wenn Sie einen CDN-Endpunkt zum Bereitstellen von Inhalt verwenden, ist eine benutzerdefinierte Domäne erforderlich, falls Ihr eigener Domänenname in Ihrer CDN-URL sichtbar sein soll. Die Verwendung eines sichtbaren Domänennamens kann für Ihre Kunden komfortabel und für Branding-Zwecke hilfreich sein. 

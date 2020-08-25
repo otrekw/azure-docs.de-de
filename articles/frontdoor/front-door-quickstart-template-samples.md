@@ -1,6 +1,6 @@
 ---
 title: 'Beispiele für Azure Resource Manager-Vorlagen: Azure Front Door'
-description: Beispiele für Azure Resource Manager-Vorlagen für Azure Front Door
+description: Hier erfahren Sie mehr über Resource Manager-Vorlagenbeispiele für Azure Front Door, u. a. über Vorlagen zum Erstellen einer grundlegenden Front Door-Instanz und zum Konfigurieren der Front Door-Ratenbegrenzung.
 services: frontdoor
 documentationcenter: ''
 author: sharad4u
@@ -10,18 +10,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/04/2020
 ms.author: sharadag
-ms.openlocfilehash: 47db565288d1bfe1f98c58536e726eb7ec55d0a9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 14f9cb33ce298b97ead0f6d7fbec0ad77e79a1ee
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87084635"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88182186"
 ---
 # <a name="azure-resource-manager-deployment-model-templates-for-front-door"></a>Vorlagen des Azure Resource Manager-Bereitstellungsmodells für Front Door
 
 Die folgende Tabelle enthält Links zu Vorlagen des Azure Resource Manager-Bereitstellungsmodells für Azure Front Door. 
 
-| Vorlage | BESCHREIBUNG |
+| Vorlage | Beschreibung |
 | ---| ---|
 | [Erstellen einer grundlegenden Front Door-Instanz](https://github.com/Azure/azure-quickstart-templates/tree/master/101-front-door-create-basic)| Erstellt eine grundlegende Front Door-Konfiguration mit einem einzelnen Back-End. |
 | [Erstellen einer Front Door-Instanz mit mehreren Back-Ends und Back-End-Pools sowie URL-basiertem Routing](https://github.com/Azure/azure-quickstart-templates/tree/master/101-front-door-create-multiple-backends)| Erstellt eine Front Door-Instanz mit Lastenausgleich, die für mehrere Back-Ends in einem Back-End-Pool sowie für mehrere Back-End-Pools basierend auf einem URL-Pfad konfiguriert ist. |

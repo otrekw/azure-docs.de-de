@@ -2,25 +2,21 @@
 title: 'Tutorial: Azure Active Directory-Integration mit Yodeck | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Yodeck konfigurieren.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: b2c8dccb-eeb0-4f4d-a24d-8320631ce819
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/29/2019
 ms.author: jeedes
-ms.openlocfilehash: af0748f36e8d2299921f987c517f7a4923bd0d55
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 8eed884ed9d957ede4ae9fc192ae5a8e501b652e
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67086476"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88546235"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-yodeck"></a>Tutorial: Azure Active Directory-Integration mit Yodeck
 
@@ -119,13 +115,23 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei Yodeck d
 
 ### <a name="configure-yodeck-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens für Yodeck
 
+1. Wenn Sie die Konfiguration in **Yodeck** automatisieren möchten, müssen Sie die **Browsererweiterung „Meine Apps“ für die sichere Anmeldung** installieren, indem Sie auf **Erweiterung installieren** klicken.
+
+    ![image](./media/target-process-tutorial/install_extension.png)
+
+1. Klicken Sie nach dem Hinzufügen der Erweiterung zum Browser auf **Yodeck einrichten**, um zur Anwendung Yodeck weitergeleitet zu werden. Geben Sie dort die Administratoranmeldeinformationen ein, um sich bei Yodeck anzumelden. Die Browsererweiterung konfiguriert die Anwendung automatisch für Sie und automatisiert die Schritte 3 bis 5.
+
+    ![Einrichtungskonfiguration](common/setup-sso.png)
+
+    **Wenn Sie die Anwendung manuell konfigurieren möchten, führen Sie die folgenden Schritte aus:**
+
 1. Melden Sie sich in einem anderen Webbrowserfenster bei der Yodeck-Unternehmenswebsite als Administrator an.
 
-2. Klicken Sie oben rechts auf der Seite auf die Option **Benutzereinstellungen**, und wählen Sie **Kontoeinstellungen** aus.
+1. Klicken Sie oben rechts auf der Seite auf die Option **Benutzereinstellungen**, und wählen Sie **Kontoeinstellungen** aus.
 
     ![Yodeck-Konfiguration](./media/yodeck-tutorial/configure1.png)
 
-3. Wählen Sie **SAML** aus, und führen Sie folgende Schritte aus:
+1. Wählen Sie **SAML** aus, und führen Sie folgende Schritte aus:
 
     ![Yodeck-Konfiguration](./media/yodeck-tutorial/configure2.png)
 
@@ -203,7 +209,7 @@ Damit sich Azure AD-Benutzer bei Yodeck anmelden können, müssen sie in Yodeck 
 
     ![Mitarbeiter hinzufügen](./media/yodeck-tutorial/user2.png)
 
-4. Führen Sie auf der Dialogfeldseite **User Details** die folgenden Schritte aus:
+4. Führen Sie auf der Seite **Benutzerdetails** die folgenden Schritte aus:
 
     ![Mitarbeiter hinzufügen](./media/yodeck-tutorial/user3.png)
 

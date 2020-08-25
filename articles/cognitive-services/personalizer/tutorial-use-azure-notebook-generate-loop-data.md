@@ -9,12 +9,12 @@ ms.subservice: personalizer
 ms.topic: tutorial
 ms.date: 04/27/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 3aa45050286888dd8ae1d26d96c8ed02da197326
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 0cf2aa504fd7a36a55740b3a59eeb3759e67f469
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87876732"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88509908"
 ---
 # <a name="tutorial-use-personalizer-in-azure-notebook"></a>Tutorial: Verwenden der Personalisierung in Azure Notebook
 
@@ -623,7 +623,7 @@ Coffee count 4
 
 ## <a name="validate-new-learning-policy"></a>Überprüfen der neuen Lernrichtlinie
 
-Wechseln Sie zur Azure Notebook-Instanz zurück, und führen Sie die gleiche Schleife aus, aber nur für 2.000 Iterationen. Aktualisieren Sie das Metrikdiagramm im Azure-Portal in regelmäßigen Abständen, um die Gesamtzahl der Dienstaufrufe anzuzeigen. Wenn ungefähr 4.000 Aufrufe und ein Rangfolge- und Belohnungsaufruf für jede Iteration der Schleife durchgeführt wurden, sind die Iterationen abgeschlossen.
+Wechseln Sie zur Azure Notebooks-Datei zurück, und führen Sie die gleiche Schleife aus, aber nur für 2.000 Iterationen. Aktualisieren Sie das Metrikdiagramm im Azure-Portal in regelmäßigen Abständen, um die Gesamtzahl der Dienstaufrufe anzuzeigen. Wenn ungefähr 4.000 Aufrufe und ein Rangfolge- und Belohnungsaufruf für jede Iteration der Schleife durchgeführt wurden, sind die Iterationen abgeschlossen.
 
 ```python
 # max iterations

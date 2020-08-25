@@ -4,12 +4,12 @@ description: In diesem Tutorial erfahren Sie, wie Sie einen Recovery Services-Tr
 ms.date: 07/26/2020
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: 7a8849bba51939a0c40cba81925e1b4b4a6e3826
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: ed91105488b812131d3a908c509998c955cec299
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372551"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88263417"
 ---
 # <a name="use-azure-portal-to-back-up-multiple-virtual-machines"></a>Verwenden des Azure-Portals zum Sichern mehrerer virtueller Computer
 
@@ -156,7 +156,7 @@ Wenn Sie planen, mit den nachfolgenden Tutorials fortzufahren, sollten Sie die i
 
 1. Wählen Sie im Dashboard von **myRecoveryServicesVault** die Angabe **3** unter **Sicherungselemente**aus, um das Menü „Sicherungselemente“ zu öffnen.
 
-    ![Sicherungselemente](./media/tutorial-backup-vm-at-scale/tutorial-vm-back-up-now.png)
+    ![Öffnen des Menüs „Sicherungselemente“](./media/tutorial-backup-vm-at-scale/tutorial-vm-back-up-now.png)
 
 1. Wählen Sie im Menü **Sicherungselemente** die Option **Virtueller Azure-Computer** aus, um die Liste der virtuellen Computer, die dem Tresor zugeordnet sind, zu öffnen.
 
@@ -185,7 +185,7 @@ Wenn Sie planen, mit den nachfolgenden Tutorials fortzufahren, sollten Sie die i
 
 1. Wählen Sie **Löschen** aus, wenn im Tresor keine Elemente mehr vorhanden sind.
 
-    ![Wählen Sie „Sicherung beenden“ aus, um den Tresor zu löschen.](./media/tutorial-backup-vm-at-scale/deleting-the-vault.png)
+    ![Auswählen von „Löschen“](./media/tutorial-backup-vm-at-scale/deleting-the-vault.png)
 
     Nachdem der Tresor gelöscht wurde, wird erneut die Liste der Recovery Services-Tresore angezeigt.
 

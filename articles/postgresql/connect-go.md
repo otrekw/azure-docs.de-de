@@ -1,5 +1,5 @@
 ---
-title: 'Herstellen einer Verbindung mit Go: Azure Database for PostgreSQL-Einzelserver'
+title: 'Schnellstart: Herstellen einer Verbindung mit Go: Azure Database for PostgreSQL-Einzelserver'
 description: Dieser Schnellstart enthält ein Beispiel für die Programmiersprache Go, das Sie nutzen können, um eine Verbindung mit einem Azure Database for PostgreSQL-Einzelserver herzustellen und Daten daraus abzufragen.
 author: rachel-msft
 ms.author: raagyema
@@ -8,20 +8,21 @@ ms.custom: mvc
 ms.devlang: go
 ms.topic: quickstart
 ms.date: 5/6/2019
-ms.openlocfilehash: b44759ce4e65e55a3d143fd178764e8ae6e16e89
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e8a44de5b6da4c9a125b5c035d0344115930cfe2
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74767924"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88182900"
 ---
-# <a name="azure-database-for-postgresql---single-server-use-go-language-to-connect-and-query-data"></a>Azure Database for PostgreSQL-Einzelserver: Verwenden von Go zum Herstellen einer Verbindung und Abfragen von Daten
+# <a name="quickstart-use-go-language-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>Schnellstart: Verwenden der Sprache Go zum Herstellen einer Verbindung mit einem Azure Database for PostgreSQL-Einzelserver sowie zum Abfragen von Daten
+
 In dieser Schnellstartanleitung erfahren Sie, wie Sie mit Code in der Sprache [Go](https://golang.org/) (golang) eine Verbindung mit einer Azure-Datenbank für PostgreSQL herstellen. Es wird veranschaulicht, wie Sie SQL-Anweisungen zum Abfragen, Einfügen, Aktualisieren und Löschen von Daten in der Datenbank verwenden. In diesem Artikel wird davon ausgegangen, dass Sie mit der Entwicklung unter Verwendung der Sprache Go vertraut sind, aber noch keine Erfahrung mit Azure-Datenbank für PostgreSQL haben.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 In diesem Schnellstart werden die Ressourcen, die in den folgenden Anleitungen erstellt wurden, als Startpunkt verwendet:
 - [Erstellen einer Datenbank – Portal](quickstart-create-server-database-portal.md)
-- [Erstellen einer Datenbank – Azure CLI](quickstart-create-server-database-azure-cli.md)
+- [Erstellen einer Datenbank – Azure-CLI](quickstart-create-server-database-azure-cli.md)
 
 ## <a name="install-go-and-pq-connector"></a>Installieren von Go und dem pq-Connector
 Installieren Sie [Go](https://golang.org/doc/install) und den [reinen Go-Postgres-Treiber (pq)](https://github.com/lib/pq) auf Ihrem eigenen Computer. Führen Sie je nach Plattform die geeigneten Schritte aus:

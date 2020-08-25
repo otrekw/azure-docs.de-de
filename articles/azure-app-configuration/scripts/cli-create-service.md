@@ -1,7 +1,7 @@
 ---
 title: 'Azure CLI-Skriptbeispiel: Erstellen eines Azure App Configuration-Speichers'
 titleSuffix: Azure App Configuration
-description: Verwenden eines Azure CLI-Skripts zum Erstellen eines Azure App Configuration-Speichers
+description: Erstellen eines Azure App Configuration-Speichers mithilfe eines Azure CLI-Beispielskripts Sehen Sie sich die Links zu Referenzartikeln zu Befehlen an, die im Skript verwendet werden.
 services: azure-app-configuration
 author: lisaguthrie
 ms.service: azure-app-configuration
@@ -9,12 +9,12 @@ ms.topic: sample
 ms.date: 01/24/2020
 ms.author: lcozzens
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 17be6dee1d5077a45dd14f403ed6e2c13b1e19b1
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 7b3221c55cef6207ea38ac1375202acd8b8ab4f1
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87494858"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88588304"
 ---
 # <a name="create-an-azure-app-configuration-store"></a>Erstellen eines App Configuration-Speichers
 
@@ -24,7 +24,7 @@ In diesem Beispielskript wird eine neue Instanz von Azure App Configuration in e
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für diesen Artikel die Azure CLI-Version 2.0 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu finden. Installations- und Upgradeinformationen finden Sie bei Bedarf unter [Installieren von Azure CLI](/cli/azure/install-azure-cli).
+Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für diesen Artikel die Azure CLI-Version 2.0 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu ermitteln. Installations- und Upgradeinformationen finden Sie bei Bedarf unter [Installieren von Azure CLI](/cli/azure/install-azure-cli).
 
 ## <a name="sample-script"></a>Beispielskript
 

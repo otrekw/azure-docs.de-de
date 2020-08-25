@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: overview
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 47140bccc8c2a1b69f083502d031a9db6d21294e
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 884aa18b1a29b1c4f1bbf1159a5d48870529c72b
+ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87835781"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88565705"
 ---
 # <a name="what-is-azure-static-web-apps-preview"></a>Was ist Azure Static Web Apps (Vorschauversion)?
 
@@ -35,7 +35,7 @@ Bei Static Web Apps sind statische Ressourcen von einem herkömmlichen Webserver
 - **GitHub-Erstanbieterintegration** mit Auslösung von Build- und Bereitstellungsvorgängen bei Repositoryänderungen
 - **Global verteilte** statische Inhalte, um die Entfernung zwischen Inhalten und Benutzern zu verringern
 - **Kostenlose SSL-Zertifikate** mit automatischer Verlängerung
-- **Benutzerdefinierte Domänen**\* für App-Anpassungen mit Branding
+- **Benutzerdefinierte Domänen** für App-Anpassungen mit Branding
 - **Nahtloses Sicherheitsmodell** mit einem Reverseproxy beim Aufrufen von APIs ganz ohne CORS-Konfiguration
 - **Integration von Authentifizierungsanbietern** mit Azure Active Directory, Facebook, Google, GitHub und Twitter
 - **Anpassbare Autorisierungsrollendefinition** und -zuweisungen
@@ -44,11 +44,9 @@ Bei Static Web Apps sind statische Ressourcen von einem herkömmlichen Webserver
 
 ## <a name="what-you-can-do-with-static-web-apps"></a>Verwendungsmöglichkeiten von Static Web Apps
 
-- **Erstellen moderner JavaScript-Anwendungen** mit Frameworks und Bibliotheken wie [Angular](getting-started.md#tabpanel_CeZOj-G++Q_angular), [React](getting-started.md#tabpanel_CeZOj-G++Q_react), [Svelte](https://docs.microsoft.com/learn/modules/publish-app-service-static-web-app-api/) und [Vue](getting-started.md#tabpanel_CeZOj-G++Q_vue) mit einem [Azure Functions](apis.md)-Back-End
+- **Erstellen moderner JavaScript-Anwendungen** mit Frameworks und Bibliotheken wie [Angular](getting-started.md?tabs=angular), [React](getting-started.md?tabs=react), [Svelte](https://docs.microsoft.com/learn/modules/publish-app-service-static-web-app-api/) und [Vue](getting-started.md?tabs=react) mit einem [Azure Functions](apis.md)-Back-End
 - **Veröffentlichen statischer Websites** mit Frameworks wie [Gatsby](publish-gatsby.md), [Hugo](publish-hugo.md), [VuePress](publish-vuepress.md)
 - **Bereitstellen von Webanwendungen** mit Frameworks wie [Next.js](deploy-nextjs.md) and [Nuxt.js](deploy-nuxtjs.md)
-
-\* Während der Vorschauphase werden keine Apex-Domänenregistrierungen unterstützt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

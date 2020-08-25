@@ -1,349 +1,104 @@
 ---
-title: 'Tutorial: Aktualisieren des Einzelhandelsbestandssortiments mit Veröffentlichen/Abonnieren-Kanälen und Themenfiltern über die Azure CLI'
-description: 'Tutorial: In diesem Tutorial erfahren Sie, wie Sie Nachrichten für ein Thema und ein Abonnement senden und empfangen und Filterregeln per Azure CLI hinzufügen und verwenden.'
+title: Verwenden der Azure CLI zum Erstellen von Service Bus-Themen und Abonnements
+description: In dieser Schnellstartanleitung erfahren Sie, wie Sie über die Azure CLI ein Service Bus-Thema und Abonnements dafür erstellen.
 ms.date: 06/23/2020
-ms.topic: tutorial
+ms.topic: quickstart
 author: spelluru
 ms.author: spelluru
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: 2526559a8b88309c098e59e8cc6d0ffd2793984f
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: 3a6535a13ab00c4e22ac4cd8c2de5a5bbb02d0a8
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88067595"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88189800"
 ---
-# <a name="tutorial-update-inventory-using-cli-and-topicssubscriptions"></a>Tutorial: Aktualisieren des Bestands über die CLI und mit Themen/Abonnements
+# <a name="use-azure-cli-to-create-a-service-bus-topic-and-subscriptions-to-the-topic"></a>Erstellen eines Service Bus-Themas und Abonnements dieses Themas über die Azure CLI
+In dieser Schnellstartanleitung erstellen Sie über die Azure CLI ein Service Bus-Thema und anschließend Abonnements dieses Themas. 
 
-Microsoft Azure Service Bus ist ein mehrinstanzenfähiger Cloudmessagingdienst, mit dem Informationen zwischen Anwendungen und Diensten gesendet werden. Asynchrone Vorgänge ermöglichen ein flexibles Brokermessaging sowie strukturiertes First-In-First-Out-Messaging (FIFO) und Funktionen zum Veröffentlichen/Abonnieren. In diesem Tutorial wird veranschaulicht, wie Sie Service Bus-Themen und -Abonnements in einem Einzelhandelsbestands-Szenario mit Veröffentlichen/Abonnieren-Kanälen über die Azure CLI und Java verwenden.
+## <a name="what-are-service-bus-topics-and-subscriptions"></a>Was sind Service Bus-Themen und -Abonnements?
+Service Bus-Themen und -Abonnements unterstützen ein Modell der Messagingkommunikation über das *Veröffentlichen/Abonnieren* . Bei der Verwendung von Themen und Abonnements kommunizieren die Komponenten einer verteilten Anwendung nicht direkt miteinander, sondern tauschen Nachrichten über ein Thema aus, das als Zwischenstufe fungiert.
 
-In diesem Tutorial lernen Sie Folgendes:
-> [!div class="checklist"]
-> * Erstellen eines Service Bus-Themas und eines oder mehrerer Abonnements für das Thema mit der Azure CLI
-> * Hinzufügen von Themenfiltern per Azure CLI
-> * Erstellen von zwei Nachrichten mit unterschiedlichem Inhalt
-> * Senden der Nachrichten und Überprüfen des Eingangs in den entsprechenden Abonnements
-> * Empfangen von Nachrichten aus den Abonnements
+![TopicConcepts](./media/service-bus-java-how-to-use-topics-subscriptions/sb-topics-01.png)
 
-Ein Beispiel dieses Szenarios ist eine Aktualisierung des Bestandssortiments für mehrere Einzelhandelsgeschäfte. Hierbei erhält jedes Geschäft bzw. jede Gruppe von Geschäften Nachrichten, die jeweils die Aktualisierung der Sortimente betreffen. In diesem Tutorial wird veranschaulicht, wie Sie dieses Szenario mit Abonnements und Filtern implementieren. Zuerst erstellen Sie ein Thema mit drei Abonnements, fügen einige Regeln und Filter hinzu und führen dann das Senden und Empfangen von Nachrichten aus den Themen und Abonnements durch.
+Anders als bei Service Bus-Warteschlangen, bei denen jede Nachricht von einem einzelnen Consumer verarbeitet wird, bieten Themen und Abonnements eine 1:n-Kommunikationsform mit einem Veröffentlichungs- und Abonnementmuster. Es ist möglich, mehrere Abonnements zu einem Thema anzumelden. Wenn eine Nachricht an ein Thema gesendet wird, steht sie in jedem Abonnement zur Verfügung, wo sie unabhängig von den anderen Abonnements verarbeitet wird. Ein Themenabonnement ähnelt einer virtuellen Warteschlange, die Kopien der Nachrichten enthält, die an das Thema gesendet wurden. Sie können optional auch Filterregeln für einzelne Abonnements eines Themas anmelden. Auf diese Weise können Sie filtern oder einschränken, welche Nachrichten an ein Thema von welchen Themenabonnements empfangen werden.
 
-![topic](./media/service-bus-tutorial-topics-subscriptions-cli/about-service-bus-topic.png)
-
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto][] erstellen, bevor Sie beginnen.
+Mit Service Bus-Themen und -Abonnements können Sie viele Nachrichten an eine große Anzahl von Benutzern und Anwendungen verarbeiten.
 
 ## <a name="prerequisites"></a>Voraussetzungen
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto][free account] erstellen, bevor Sie beginnen.
 
-Für die Entwicklung einer Service Bus-App mit Java muss Folgendes installiert sein:
+In dieser Schnellstartanleitung verwenden Sie Azure Cloud Shell. Diesen Dienst können Sie nach der Anmeldung beim Azure-Portal starten. Ausführliche Informationen zu Azure Cloud Shell finden Sie unter [Übersicht über Azure Cloud Shell](../cloud-shell/overview.md). Sie können auch Azure PowerShell auf Ihrem Computer [installieren](/cli/azure/install-azure-cli) und verwenden. 
 
-- [Java Development Kit](https://aka.ms/azure-jdks), aktuelle Version
-- [Azure-Befehlszeilenschnittstelle](/cli/azure)
-- [Apache Maven](https://maven.apache.org), Version 3.0 oder höher
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial die Azure CLI-Version 2.0.4 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu ermitteln. Installations- und Upgradeinformationen finden Sie bei Bedarf unter [Installieren von Azure CLI]( /cli/azure/install-azure-cli).
-
-## <a name="service-bus-topics-and-subscriptions"></a>Service Bus-Themen und -Abonnements
-
+## <a name="create-a-service-bus-topic-and-subscriptions"></a>Erstellen eines Service Bus-Themas und Erstellen von Abonnements
 Jedes [Abonnement eines Themas](service-bus-messaging-overview.md#topics) kann eine Kopie jeder Nachricht empfangen. Die Themen sind in Bezug auf das Protokoll und die Semantik vollständig mit Service Bus-Warteschlangen kompatibel. Service Bus-Themen unterstützen ein umfassendes Auswahlregel-Array mit Filterbedingungen. Es sind optionale Aktionen vorhanden, mit denen Nachrichteneigenschaften festgelegt oder geändert werden. Jedes Mal, wenn sich für eine Regel eine Übereinstimmung ergibt, wird eine Nachricht erzeugt. Weitere Informationen zu Regeln, Filtern und Aktionen finden Sie unter diesem [Link](topic-filters.md).
 
-## <a name="sign-in-to-azure"></a>Anmelden bei Azure
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+2. Starten Sie Azure Cloud Shell über das in der folgenden Abbildung gezeigte Symbol. Wechseln Sie in den **Bash**-Modus, wenn Cloud Shell im **PowerShell**-Modus ausgeführt wird. 
 
-Öffnen Sie nach der Installation der CLI eine Eingabeaufforderung, und geben Sie die folgenden Befehle ein, um sich bei Azure anzumelden. Diese Schritte sind nicht erforderlich, wenn Sie Cloud Shell nutzen:
+    :::image type="content" source="./media/service-bus-quickstart-powershell/launch-cloud-shell.png" alt-text="Cloud Shell starten":::
+3. Führen Sie den folgenden Befehl aus, um eine Azure-Ressourcengruppe zu erstellen. Aktualisieren Sie ggf. den Namen der Ressourcengruppe und des Standorts. 
 
-1. Führen Sie bei lokaler Verwendung der Azure CLI den folgenden Befehl aus, um sich bei Azure anzumelden. Dieser Anmeldeschritt ist nicht erforderlich, wenn Sie diese Befehle in Cloud Shell ausführen:
+    ```azurecli-interactive
+    az group create --name MyResourceGroup --location eastus
+    ```
+4. Führen Sie den folgenden Befehl aus, um einen Service Bus-Messagingnamespace zu erstellen. Aktualisieren Sie den Namespace so, dass er eindeutig ist. 
 
-   ```azurecli-interactive
-   az login
-   ```
+    ```azurecli-interactive
+    namespaceName=MyNameSpace$RANDOM
+    az servicebus namespace create --resource-group MyResourceGroup --name $namespaceName --location eastus
+    ```
+5. Führen Sie den folgenden Befehl aus, um ein Thema im Namespace zu erstellen. 
 
-2. Legen Sie den aktuellen Abonnementkontext auf das gewünschte Azure-Abonnement fest:
-
-   ```azurecli-interactive
-   az account set --subscription Azure_subscription_name
-   ```
-
-## <a name="use-cli-to-provision-resources"></a>Verwenden der CLI zum Bereitstellen von Ressourcen
-
-Führen Sie die folgenden Befehle aus, um Service Bus-Ressourcen bereitzustellen. Achten Sie darauf, dass Sie alle Platzhalter durch die entsprechenden Werte ersetzen:
-
-```azurecli-interactive
-# Create a resource group
-az group create --name myResourcegroup --location eastus
-
-# Create a Service Bus messaging namespace with a unique name
-namespaceName=myNameSpace$RANDOM
-az servicebus namespace create \
-   --resource-group myResourceGroup \
-   --name $namespaceName \
-   --location eastus
-
-# Create a Service Bus topic
-az servicebus topic create --resource-group myResourceGroup \
-   --namespace-name $namespaceName \
-   --name myTopic
-
-# Create subscription 1 to the topic
-az servicebus subscription create --resource-group myResourceGroup --namespace-name $namespaceName --topic-name myTopic --name S1
-
-# Create filter 1 - use custom properties
-az servicebus rule create --resource-group myResourceGroup --namespace-name $namespaceName --topic-name myTopic --subscription-name S1 --name MyFilter --filter-sql-expression "StoreId IN ('Store1','Store2','Store3')"
-
-# Create filter 2 - use custom properties
-az servicebus rule create --resource-group myResourceGroup --namespace-name $namespaceName --topic-name myTopic --subscription-name S1 --name MySecondFilter --filter-sql-expression "StoreId = 'Store4'"
-
-# Create subscription 2
-az servicebus subscription create --resource-group myResourceGroup --namespace-name $namespaceName --topic-name myTopic --name S2
-
-# Create filter 3 - use message header properties via IN list and 
-# combine with custom properties.
-az servicebus rule create --resource-group myResourceGroup --namespace-name $namespaceName --topic-name myTopic --subscription-name S2 --name MyFilter --filter-sql-expression "sys.To IN ('Store5','Store6','Store7') OR StoreId = 'Store8'"
-
-# Create subscription 3
-az servicebus subscription create --resource-group myResourceGroup --namespace-name $namespaceName --topic-name myTopic --name S3
-
-# Create filter 4 - Get everything except messages for subscription 1 and 2. 
-# Also modify and add an action; in this case set the label to a specified value. 
-# Assume those stores might not be part of your main store, so you only add 
-# specific items to them. For that, you flag them specifically.
-az servicebus rule create --resource-group DemoGroup --namespace-name DemoNamespaceSB --topic-name tutorialtest1
- --subscription-name S3 --name MyFilter --filter-sql-expression "sys.To NOT IN ('Store1','Store2','Store3','Store4','Sto
-re5','Store6','Store7','Store8') OR StoreId NOT IN ('Store1','Store2','Store3','Store4','Store5','Store6','Store7','Stor
-e8')" --action-sql-expression "SET sys.Label = 'SalesEvent'"
-
-# Get the connection string
-connectionString=$(az servicebus namespace authorization-rule keys list \
-   --resource-group myResourceGroup \
-   --namespace-name  $namespaceName \
-   --name RootManageSharedAccessKey \
-   --query primaryConnectionString --output tsv)
-```
-
-Kopieren Sie nach Ausführung des letzten Befehls die Verbindungszeichenfolge und den von Ihnen ausgewählten Warteschlangennamen an einen temporären Ort, z.B. den Editor. Sie benötigen diese Angaben im nächsten Schritt.
-
-## <a name="create-filter-rules-on-subscriptions"></a>Erstellen von Filterregeln zu Abonnements
-
-Nachdem der Namespace und das Thema bzw. die Abonnements bereitgestellt wurden und Sie über die erforderlichen Anmeldeinformationen verfügen, sind Sie zum Erstellen von Filterregeln für die Abonnements bereit und können dann Nachrichten senden und empfangen. Sie können sich den Code in [diesem GitHub-Ordner mit Beispielen](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/azure-servicebus/TopicFilters) ansehen.
-
-## <a name="send-and-receive-messages"></a>Senden und Empfangen von Nachrichten
-
-1. Stellen Sie sicher, dass Cloud Shell geöffnet ist und dass die Bash-Eingabeaufforderung angezeigt wird.
-
-2. Klonen Sie das [Service Bus-GitHub-Repository](https://github.com/Azure/azure-service-bus/), indem Sie den folgenden Befehl ausführen:
-
-   ```shell
-   git clone https://github.com/Azure/azure-service-bus.git
-   ```
-
-2. Navigieren Sie zum Beispielordner `azure-service-bus/samples/Java/quickstarts-and-tutorials/quickstart-java/tutorial-topics-subscriptions-filters-java`. Beachten Sie, dass in der Bash-Shell für die Befehle die Groß-/Kleinschreibung berücksichtigt wird und normale Schrägstriche als Pfadtrennzeichen verwendet werden müssen.
-
-3. Führen Sie den folgenden Befehl aus, um die Anwendung zu erstellen:
-   
-   ```shell
-   mvn clean package -DskipTests
-   ```
-4. Führen Sie den folgenden Befehl aus, um das Programm auszuführen. Achten Sie darauf, dass Sie die Platzhalter durch die Verbindungszeichenfolge und den Themennamen aus dem vorherigen Schritt ersetzen:
-
-   ```shell
-   java -jar .\target\tutorial-topics-subscriptions-filters-1.0.0-jar-with-dependencies.jar -c "myConnectionString" -t "myTopicName"
-   ```
-
-   Verfolgen Sie, wie zehn Nachrichten an das Thema gesendet und anschließend von den einzelnen Abonnements empfangen werden:
-
-   ![Programmausgabe](./media/service-bus-tutorial-topics-subscriptions-cli/service-bus-tutorial-topics-subscriptions-cli.png)
-
-## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
-
-Führen Sie den folgenden Befehl aus, um die Ressourcengruppe, den Namespace und alle zugehörigen Ressourcen zu entfernen:
-
-```azurecli-interactive
-az group delete --resource-group my-resourcegroup
-```
-
-## <a name="understand-the-sample-code"></a>Grundlagen des Beispielcodes
-
-Dieser Abschnitt enthält weitere Details zur Funktionsweise des Beispielcodes.
-
-### <a name="get-connection-string-and-queue"></a>Abrufen der Verbindungszeichenfolge und der Warteschlange
-
-Zuerst wird im Code ein Satz mit Variablen für die verbleibende Ausführung des Programms deklariert:
-
-```java
-    public String ConnectionString = null;
-    public String TopicName = null;
-    static final String[] Subscriptions = {"S1","S2","S3"};
-    static final String[] Store = {"Store1","Store2","Store3","Store4","Store5","Store6","Store7","Store8","Store9","Store10"};
-    static final String SysField = "sys.To";
-    static final String CustomField = "StoreId";
-    int NrOfMessagesPerStore = 1; // Send at least 1.
-```
-
-Die Verbindungszeichenfolge und der Themenname sind die einzigen Werte, die über die Befehlszeilenparameter hinzugefügt und an `main()` übergeben werden. Die eigentliche Codeausführung wird in der `run()`-Methode ausgelöst, und es werden Nachrichten gesendet und dann vom Thema empfangen:
-
-```java
-public static void main(String[] args) {
-    TutorialTopicsSubscriptionsFilters app = new TutorialTopicsSubscriptionsFilters();
-        try {
-            app.runApp(args);
-            app.run();
-        } catch (Exception e) {
-            System.out.printf("%s", e.toString());
-        }
-        System.exit(0);
-    }
-}
-
-public void run() throws Exception {
-    // Send sample messages.
-    this.sendMessagesToTopic();
-
-    // Receive messages from subscriptions.
-    this.receiveAllMessages();
-}
-```
-
-### <a name="create-topic-client-to-send-messages"></a>Erstellen eines Themenclients zum Senden von Nachrichten
-
-Für das Senden und Empfangen von Nachrichten erstellt die `sendMessagesToTopic()`-Methode eine Themenclientinstanz, die die Verbindungszeichenfolge und den Themennamen nutzt. Anschließend wird eine weitere Methode zum Senden der Nachrichten aufgerufen:
-
-```java
-public void sendMessagesToTopic() throws Exception, ServiceBusException {
-    // Create client for the topic.
-    TopicClient topicClient = new TopicClient(new ConnectionStringBuilder(ConnectionString, TopicName));
-
-    // Create a message sender from the topic client.
-
-    System.out.printf("\nSending orders to topic.\n");
-
-    // Now we can start sending orders.
-    CompletableFuture.allOf(
-            SendOrders(topicClient,Store[0]),
-            SendOrders(topicClient,Store[1]),
-            SendOrders(topicClient,Store[2]),
-            SendOrders(topicClient,Store[3]),
-            SendOrders(topicClient,Store[4]),
-            SendOrders(topicClient,Store[5]),
-            SendOrders(topicClient,Store[6]),
-            SendOrders(topicClient,Store[7]),
-            SendOrders(topicClient,Store[8]),
-            SendOrders(topicClient,Store[9])
-    ).join();
-
-    System.out.printf("\nAll messages sent.\n");
-}
-
-    public CompletableFuture<Void> SendOrders(TopicClient topicClient, String store) throws Exception {
-
-        for(int i = 0;i<NrOfMessagesPerStore;i++) {
-            Random r = new Random();
-            final Item item = new Item(r.nextInt(5),r.nextInt(5),r.nextInt(5));
-            IMessage message = new Message(GSON.toJson(item,Item.class).getBytes(UTF_8));
-            // We always set the Sent to field
-            message.setTo(store);
-            final String StoreId = store;
-            Double priceToString = item.getPrice();
-            final String priceForPut = priceToString.toString();
-            message.setProperties(new HashMap<String, String>() {{
-                // Additionally we add a customer store field. In reality you would use sys.To or a customer property but not both.
-                // This is just for demo purposes.
-                put("StoreId", StoreId);
-                // Adding more potential filter / rule and action able fields
-                put("Price", priceForPut);
-                put("Color", item.getColor());
-                put("Category", item.getItemCategory());
-            }});
-
-            System.out.printf("Sent order to Store %s. Price=%f, Color=%s, Category=%s\n", StoreId, item.getPrice(), item.getColor(), item.getItemCategory());
-            topicClient.sendAsync(message);
-        }
-
-        return new CompletableFuture().completedFuture(null);
-    }
-```
-
-### <a name="receive-messages-from-the-individual-subscriptions"></a>Empfangen von Nachrichten von den einzelnen Abonnements
-
-Die `receiveAllMessages()`-Methode ruft die `receiveAllMessageFromSubscription()`-Methode auf, die dann einen Abonnementclient pro Aufruf erstellt und Nachrichten von den einzelnen Abonnements empfängt:
-
-```java
-public void receiveAllMessages() throws Exception {
-    System.out.printf("\nStart Receiving Messages.\n");
-
-    CompletableFuture.allOf(
-            receiveAllMessageFromSubscription(Subscriptions[0]),
-            receiveAllMessageFromSubscription(Subscriptions[1]),
-            receiveAllMessageFromSubscription(Subscriptions[2])
-            ).join();
-}
-
-public CompletableFuture<Void> receiveAllMessageFromSubscription(String subscription) throws Exception {
-
-    int receivedMessages = 0;
-
-    // Create subscription client.
-    IMessageReceiver subscriptionClient = ClientFactory.createMessageReceiverFromConnectionStringBuilder(new ConnectionStringBuilder(ConnectionString, TopicName+"/subscriptions/"+ subscription), ReceiveMode.PEEKLOCK);
-
-    // Create a receiver from the subscription client and receive all messages.
-    System.out.printf("\nReceiving messages from subscription %s.\n\n", subscription);
-
-    while (true)
-    {
-        // This will make the connection wait for N seconds if new messages are available.
-        // If no additional messages come we close the connection. This can also be used to realize long polling.
-        // In case of long polling you would obviously set it more to e.g. 60 seconds.
-        IMessage receivedMessage = subscriptionClient.receive(Duration.ofSeconds(1));
-        if (receivedMessage != null)
-        {
-            if ( receivedMessage.getProperties() != null ) {
-                System.out.printf("StoreId=%s\n", receivedMessage.getProperties().get("StoreId"));
-                
-                // Show the label modified by the rule action
-                if(receivedMessage.getLabel() != null)
-                    System.out.printf("Label=%s\n", receivedMessage.getLabel());
-            }
-            
-            byte[] body = receivedMessage.getBody();
-            Item theItem = GSON.fromJson(new String(body, UTF_8), Item.class);
-            System.out.printf("Item data. Price=%f, Color=%s, Category=%s\n", theItem.getPrice(), theItem.getColor(), theItem.getItemCategory());
-            
-            subscriptionClient.complete(receivedMessage.getLockToken());
-            receivedMessages++;
-        }
-        else
-        {
-            // No more messages to receive.
-            subscriptionClient.close();
-            break;
-        }
-    }
-    System.out.printf("\nReceived %s messages from subscription %s.\n", receivedMessages, subscription);
+    ```azurecli-interactive
+    az servicebus topic create --resource-group MyResourceGroup   --namespace-name $namespaceName --name MyTopic
+    ```
+6. Erstellen des ersten Abonnements für das Thema
     
-    return new CompletableFuture().completedFuture(null);
-}
-```
+    ```azurecli-interactive
+    az servicebus topic subscription create --resource-group MyResourceGroup --namespace-name $namespaceName --topic-name MyTopic --name S1    
+    ```
+6. Erstellen des zweiten Abonnements für das Thema
+    
+    ```azurecli-interactive
+    az servicebus topic subscription create --resource-group MyResourceGroup --namespace-name $namespaceName --topic-name MyTopic --name S2    
+    ```
+6. Erstellen des dritten Abonnements für das Thema
+    
+    ```azurecli-interactive
+    az servicebus topic subscription create --resource-group MyResourceGroup --namespace-name $namespaceName --topic-name MyTopic --name S3    
+    ```
+7. Erstellen Sie einen Filter für das erste Abonnement mit benutzerdefinierten Eigenschaften (`StoreId` ist `Store1`, `Store2` oder `Store3`).
 
-> [!NOTE]
-> Sie können Service Bus-Ressourcen mit dem [Service Bus-Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/) verwalten. Mit dem Service Bus-Explorer können Benutzer eine Verbindung mit einem Service Bus-Namespace herstellen und Messagingentitäten auf einfache Weise verwalten. Das Tool stellt erweiterte Features wie Import-/Exportfunktionen oder Testmöglichkeiten für Themen, Warteschlangen, Abonnements, Relaydienste, Notification Hubs und Event Hubs zur Verfügung. 
+    ```azurecli-interactive
+    az servicebus topic subscription rule create --resource-group MyResourceGroup --namespace-name $namespaceName --topic-name MyTopic --subscription-name S1 --name MyFilter --filter-sql-expression "StoreId IN ('Store1','Store2','Store3')"    
+    ```
+8. Erstellen Sie einen Filter für das zweite Abonnement mit benutzerdefinierten Eigenschaften (`StoreId = Store4`).
+
+    ```azurecli-interactive
+    az servicebus topic subscription rule create --resource-group MyResourceGroup --namespace-name $namespaceName --topic-name myTopic --subscription-name S2 --name MySecondFilter --filter-sql-expression "StoreId = 'Store4'"    
+    ```
+9. Erstellen Sie einen Filter für das dritte Abonnement mit benutzerdefinierten Eigenschaften (`StoreId` nicht `Store1`, `Store2`, `Store3` oder `Store4`).
+
+    ```azurecli-interactive
+    az servicebus topic subscription rule create --resource-group MyResourceGroup --namespace-name $namespaceName --topic-name MyTopic --subscription-name S3 --name MyThirdFilter --filter-sql-expression "StoreId IN ('Store1','Store2','Store3', 'Store4')"     
+    ```
+10. Führen Sie den folgenden Befehl aus, um die primäre Verbindungszeichenfolge für den Namespace abzurufen. Sie verwenden diese Verbindungszeichenfolge, um eine Verbindung mit der Warteschlange herzustellen und Nachrichten zu senden und zu empfangen. 
+
+    ```azurecli-interactive
+    az servicebus namespace authorization-rule keys list --resource-group MyResourceGroup --namespace-name $namespaceName --name RootManageSharedAccessKey --query primaryConnectionString --output tsv    
+    ```
+
+    Notieren Sie sich die Verbindungszeichenfolge und den Namen des Themas. Sie verwenden diese zum Senden und Empfangen von Nachrichten. 
+    
 
 ## <a name="next-steps"></a>Nächste Schritte
-
-In diesem Tutorial haben Sie mit der Azure CLI Ressourcen bereitgestellt und anschließend Nachrichten für ein Service Bus-Thema und die dazugehörigen Abonnements gesendet und empfangen. Sie haben Folgendes gelernt:
-
-> [!div class="checklist"]
-> * Erstellen eines Service Bus-Themas und eines oder mehrerer Abonnements für das Thema mit dem Azure-Portal
-> * Hinzufügen von Themenfiltern per .NET-Code
-> * Erstellen von zwei Nachrichten mit unterschiedlichem Inhalt
-> * Senden der Nachrichten und Überprüfen des Eingangs in den entsprechenden Abonnements
-> * Empfangen von Nachrichten aus den Abonnements
-
-Falls Sie sich weitere Beispiele für das Senden und Empfangen von Nachrichten ansehen möchten, sind die [Service Bus-Beispiele auf GitHub](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/GettingStarted) ein guter Einstieg.
-
-Fahren Sie mit dem nächsten Tutorial fort, um weitere Informationen zur Verwendung der Veröffentlichen/Abonnieren-Funktionen von Service Bus zu erhalten.
+Informationen zum Senden von Nachrichten an ein Thema und zum Empfangen dieser Nachrichten über ein Abonnement finden Sie im folgenden Artikel: Auswählen der Programmiersprache im Inhaltsverzeichnis. 
 
 > [!div class="nextstepaction"]
-> [Aktualisieren des Bestands mit PowerShell und Themen/Abonnements](service-bus-tutorial-topics-subscriptions-portal.md)
+> [Veröffentlichen und Abonnieren von Nachrichten](service-bus-dotnet-how-to-use-topics-subscriptions.md)
 
-[kostenloses Konto]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
+
+[free account]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
 [fully qualified domain name]: https://wikipedia.org/wiki/Fully_qualified_domain_name
 [Install the Azure CLI]: /cli/azure/install-azure-cli
 [az group create]: /cli/azure/group#az_group_create

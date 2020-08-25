@@ -2,25 +2,21 @@
 title: 'Tutorial: Azure Active Directory-Integration in GitHub | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und GitHub konfigurieren.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: barbkess
-ms.assetid: 8761f5ca-c57c-4a7e-bf14-ac0421bd3b5e
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 06/17/2020
+ms.date: 08/07/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 718d51c94d05e8e18f2b254b5e81e346a67205a1
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: 7153a1279785cfe79d23b2b5ba843ec9f5cd4965
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87170530"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88550742"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-github"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit GitHub
 
@@ -139,7 +135,13 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste „Benutzer“ den Eintrag **B. Simon** aus, und klicken Sie dann unten auf dem Bildschirm auf die Schaltfläche **Auswählen**.
 1. Wenn Sie einen beliebigen Rollenwert in der SAML-Assertion erwarten, wählen Sie im Dialogfeld **Rolle auswählen** die entsprechende Rolle für den Benutzer in der Liste aus, und klicken Sie dann im unteren Bildschirmbereich auf die Schaltfläche **Auswählen**.
-1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
+
+    ![Benutzerrolle](./media/github-tutorial/user-role.png)
+
+    > [!NOTE]
+    > Die Option **Rolle auswählen** ist deaktiviert, und die Standardrolle für den ausgewählten Benutzer lautet „BENUTZER“.
+
+7. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
 
 ## <a name="configure-github-sso"></a>Konfigurieren des einmaligen Anmeldens für GitHub
 
@@ -147,11 +149,11 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 2. Navigieren Sie zu **Einstellungen**, und klicken Sie auf **Sicherheit**.
 
-    ![Einstellungen](./media/github-tutorial/tutorial_github_config_github_03.png)
+    ![Einstellungen](./media/github-tutorial/security.png)
 
 3. Aktivieren Sie das Kontrollkästchen **SAML-Authentifizierung aktivieren**, um die Felder für die Konfiguration des einmaligen Anmeldens anzuzeigen. Führen Sie die folgenden Schritte aus:
 
-    ![Einstellungen](./media/github-tutorial/tutorial_github_config_github_13.png)
+    ![Einstellungen](./media/github-tutorial/saml-sso.png)
 
     a. Kopieren Sie den Wert für **URL für einmaliges Anmelden**, und fügen Sie ihn im Azure-Portal unter **Grundlegende SAML-Konfiguration** im Textfeld **Anmelde-URL** ein.
     
@@ -159,7 +161,7 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 4. Konfigurieren Sie die folgenden Felder:
 
-    ![Einstellungen](./media/github-tutorial/tutorial_github_config_github_051.png)
+    ![Einstellungen](./media/github-tutorial/configure.png)
 
     a. Fügen Sie im Textfeld **Sign-On URL** (Anmelde-URL) den Wert der **Anmelde-URL** ein, den Sie aus dem Azure-Portal kopiert haben.
 
@@ -175,7 +177,7 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 5. Klicken Sie auf **Test SAML configuration** (SAML-Konfiguration testen), um sich zu vergewissern, dass beim einmaligen Anmelden keine Validierungsfehler oder anderen Fehler auftreten.
 
-    ![Einstellungen](./media/github-tutorial/tutorial_github_config_github_06.png)
+    ![Einstellungen](./media/github-tutorial/test.png)
 
 6. Klicken Sie unten auf der Seite auf **Speichern**.
 
@@ -192,21 +194,21 @@ In diesem Abschnitt wird in GitHub eine Benutzerin namens Britta Simon erstellt.
 
 2. Klicken Sie auf **People**.
 
-    ![Personen](./media/github-tutorial/tutorial_github_config_github_08.png "Personen")
+    ![Personen](./media/github-tutorial/people.png "Personen")
 
 3. Klicken Sie auf **Invite member** (Mitglied einladen).
 
-    ![Invite Users (Benutzer einladen)](./media/github-tutorial/tutorial_github_config_github_09.png "Invite Users")
+    ![Invite Users (Benutzer einladen)](./media/github-tutorial/invite-member.png "Invite Users")
 
 4. Führen Sie auf der Dialogfeldseite **Invite member** (Mitglied einladen) die folgenden Schritte aus:
 
     a. Geben Sie im Textfeld **E-Mail** die E-Mail-Adresse des Kontos von Britta Simon ein.
 
-    ![Invite People (Personen einladen)](./media/github-tutorial/tutorial_github_config_github_10.png "Invite People")
+    ![Invite People (Personen einladen)](./media/github-tutorial/email-box.png "Invite People")
 
     b. Klicken Sie auf **Einladung senden**.
 
-    ![Invite People (Personen einladen)](./media/github-tutorial/tutorial_github_config_github_11.png "Invite People")
+    ![Invite People (Personen einladen)](./media/github-tutorial/send-invitation.png "Invite People")
 
     > [!NOTE]
     > Der Besitzer des Azure Active Directory-Kontos erhält eine E-Mail und folgt einem Link zur Bestätigung des Kontos, bevor es aktiv wird.

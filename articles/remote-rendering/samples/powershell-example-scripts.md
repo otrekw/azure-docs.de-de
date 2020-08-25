@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/12/2020
 ms.topic: sample
-ms.openlocfilehash: 831f09ecf7550a847c483fbe1678f1e4c3cecb61
-ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
+ms.openlocfilehash: 07055025eff9ab81c7321624daed9b4a6e993a60
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "85052285"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88506510"
 ---
 # <a name="example-powershell-scripts"></a>PowerShell-Beispielskripts
 
@@ -26,21 +26,21 @@ Das [Repository mit den ARR-Beispielen](https://github.com/Azure/azure-remote-re
 Zum Ausführen der Beispielskripts benötigen Sie eine funktionsfähige [Azure PowerShell](https://docs.microsoft.com/powershell/azure/)-Instanz.
 
 1. Installieren Sie Azure PowerShell:
-    1. Öffnen Sie eine PowerShell-Instanz mit Administratorrechten.
+    1. Öffnen Sie ein PowerShell-Fenster mit Administratorrechten.
     1. Führen Sie `Install-Module -Name Az -AllowClobber` aus.
 
 1. Vergewissern Sie sich, dass Ihre [Ausführungsrichtlinie](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-6) richtig festgelegt wurde, falls Sie beim Ausführen von Skripts Fehler erhalten:
-    1. Öffnen Sie eine PowerShell-Instanz mit Administratorrechten.
+    1. Öffnen Sie ein PowerShell-Fenster mit Administratorrechten.
     1. Führen Sie `Set-ExecutionPolicy -ExecutionPolicy Unrestricted` aus.
 
 1. [Vorbereiten von Azure Storage-Konten](../how-tos/conversion/blob-storage.md#prepare-azure-storage-accounts)
 
 1. Melden Sie sich bei Ihrem Abonnement an, unter dem sich Ihr Azure Remote Rendering-Konto befindet:
-    1. Öffnen Sie eine PowerShell-Instanz.
+    1. Öffnen Sie ein PowerShell-Fenster.
     1. Führen Sie `Connect-AzAccount` aus, und befolgen Sie die Anweisungen auf dem Bildschirm.
 
-> [!NOTE]
-> Falls Ihre Organisation über mehrere Abonnements verfügt, müssen Sie ggf. die Argumente für die Abonnement-ID und den Mandanten angeben. Weitere Informationen finden Sie in der [Dokumentation zu „Connect-AzAccount“](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount).
+    > [!NOTE]
+    > Falls Ihre Organisation über mehrere Abonnements verfügt, müssen Sie ggf. die Argumente für die Abonnement-ID und den Mandanten angeben. Weitere Informationen finden Sie in der [Dokumentation zu „Connect-AzAccount“](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount).
 
 1. Laden Sie den Ordner *Scripts* aus dem [GitHub-Repository für Azure Remote Rendering](https://github.com/Azure/azure-remote-rendering) herunter.
 
@@ -86,9 +86,9 @@ Informationen zu `region` finden Sie in der [Liste mit den verfügbaren Regionen
 
 ### <a name="renderingsessionsettings"></a>renderingSessionSettings
 
-Diese Struktur muss ausgefüllt werden, wenn Sie **RenderingSession.ps1** ausführen möchten.
+Diese Struktur muss ausgefüllt werden, wenn Sie **RenderingSession.ps1** ausführen möchten:
 
-- **vmSize:** Dient zum Auswählen der Größe des virtuellen Computers. Sie können zwischen *standard* und *premium* wählen. Beenden Sie Renderingsitzungen, wenn Sie sie nicht mehr benötigen.
+- **vmSize:** Dient zum Auswählen der Größe des virtuellen Computers. Sie können zwischen [*standard*](../reference/vm-sizes.md) und [*premium*](../reference/vm-sizes.md) wählen. Beenden Sie Renderingsitzungen, wenn Sie sie nicht mehr benötigen.
 - **maxLeaseTime:** Der Zeitraum, wie lange Sie die VM leasen möchten. Sie wird heruntergefahren, nachdem die Lease abgelaufen ist. Die Leasedauer kann später verlängert werden (siehe unten).
 
 ### <a name="assetconversionsettings"></a>assetConversionSettings
@@ -205,9 +205,9 @@ Dies bewirkt Folgendes:
 1. Hochladen der lokalen Datei aus `assetConversionSettings.localAssetDirectoryPath` in den Eingabeblobcontainer
 1. Generieren eines SAS-URI für den Eingabecontainer
 1. Generieren eines SAS-URI für den Ausgabecontainer
-1. Rufen Sie die [REST-API für die Modellkonvertierung](../how-tos/conversion/conversion-rest-api.md) auf, um die [Modellkonvertierung](../how-tos/conversion/model-conversion.md) zu starten.
-1. Rufen Sie den Konvertierungsstatus ab, bis die Konvertierung erfolgreich abgeschlossen wurde oder ein Fehler aufgetreten ist.
-1. Geben Sie die Details des Speicherorts der konvertierten Datei aus (Speicherkonto, Ausgabecontainer, Dateipfad im Container).
+1. Aufrufen der [REST-API für die Modellkonvertierung](../how-tos/conversion/conversion-rest-api.md), um die [Modellkonvertierung](../how-tos/conversion/model-conversion.md) zu starten
+1. Abrufen des Konvertierungsstatus, bis die Konvertierung erfolgreich abgeschlossen wurde oder ein Fehler aufgetreten ist
+1. Ausgeben der Details des Speicherorts der konvertierten Datei (Speicherkonto, Ausgabecontainer, Dateipfad im Container)
 1. Ausgeben eines SAS-URI für das konvertierte Modell im Ausgabeblobcontainer
 
 ### <a name="additional-command-line-options"></a>Weitere Befehlszeilenoptionen

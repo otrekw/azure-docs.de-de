@@ -3,12 +3,12 @@ title: 'Schnellstart: Testen der Wissensdatenbank mit Batchfragen'
 description: Verwenden Sie das QnA Maker-Batchtesttool, um die Wissensdatenbanken in Ihrer QnA Maker-Ressource auf erwartete Antworten, Konfidenzscores und Eingabeaufforderungen mit mehreren Durchläufen.
 ms.topic: tutorial
 ms.date: 05/26/2020
-ms.openlocfilehash: 01c767a6fbea5061f644052234f7462857dd342b
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: bcee98678212a3bc233c36a831f6bcde7e6ae550
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84337732"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88531068"
 ---
 # <a name="quickstart-test-knowledge-base-with-batch-questions-and-expected-answers"></a>Schnellstart: Testen der Wissensdatenbank mit Batchfragen und erwarteten Antworten
 
@@ -16,7 +16,7 @@ Verwenden Sie das QnA Maker-Batchtesttool, um die Wissensdatenbanken in Ihrer Qn
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Azure-Abonnement – [Erstellen eines kostenlosen Kontos](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+* Azure-Abonnement – [Erstellen eines kostenlosen Kontos](https://azure.microsoft.com/free/cognitive-services/)
 * [Erstellen Sie einen QnA Maker-Dienst](create-publish-knowledge-base.md), oder verwenden Sie einen vorhandenen Dienst, der Englisch als Sprache verwendet.
 * Laden Sie die [`.docx`-Datei mit einem Beispiel für mehrere Durchläufe](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/multi-turn.docx) herunter.
 * Laden Sie das [Batchtesttool](https://aka.ms/qnamakerbatchtestingtool) herunter, und extrahieren Sie die ausführbare Datei aus der `.zip`-Datei.
@@ -61,7 +61,7 @@ Verwenden Sie das QnA Maker-Batchtesttool, um die Wissensdatenbanken in Ihrer Qn
 
 ## <a name="create-batch-test-file-with-question-ids"></a>Erstellen einer Batchtestdatei mit Fragen-IDs
 
-Um das Batchtesttool zu verwenden, erstellen Sie mit einem Text-Editor eine Datei namens `batch-test-data-1.tsv`. Die Datei muss folgende durch Tabulatorzeichen getrennt Spalten aufweisen.
+Um das Batchtesttool zu verwenden, erstellen Sie mit einem Text-Editor eine Datei namens `batch-test-data-1.tsv`. Die Datei muss im UTF-8-Format vorliegen und die folgenden durch Tabulatorzeichen getrennten Spalten aufweisen:
 
 |Felder der TSV-Eingabedatei|Notizen|Beispiel|
 |--|--|--|

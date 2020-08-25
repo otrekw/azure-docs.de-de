@@ -11,13 +11,12 @@ ms.topic: tutorial
 ms.date: 10/24/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4db0956b1a2dec7626a24de2939941c2384d6a8a
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: e44de0058af0210ecb42eaa4be8b55d543d66103
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88080761"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212816"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>Tutorial: Hinzufügen einer lokalen Anwendung für den Remotezugriff über den Anwendungsproxy in Azure Active Directory
 
@@ -32,7 +31,7 @@ In diesem Tutorial wird Folgendes durchgeführt:
 > * Hinzufügen einer lokalen Anwendung zum Azure AD-Mandanten
 > * Überprüfen, ob ein Testbenutzer sich über das Azure AD-Konto an der Anwendung anmelden kann
 
-## <a name="before-you-begin"></a>Voraussetzungen
+## <a name="prerequisites"></a>Voraussetzungen
 
 Zum Hinzufügen einer lokalen Anwendung zu Azure AD benötigen Sie Folgendes:
 
@@ -235,6 +234,10 @@ Testen Sie wie folgt das Anmelden an der Anwendung:
 
 Informationen zur Problembehandlung finden Sie unter [Beheben von Problemen mit Anwendungsproxys und Fehlermeldungen](application-proxy-troubleshoot.md).
 
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+
+Löschen Sie die in diesem Tutorial erstellten Ressourcen, wenn Sie sie nicht mehr benötigen.
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 In diesem Tutorial haben Sie Ihre lokale Umgebung auf den Einsatz des Anwendungsproxys vorbereitet und dann den Anwendungsproxyconnector installiert und registriert. Als Nächstes fügen Sie Ihrem Azure AD-Mandanten eine Anwendung hinzu. Sie haben überprüft, ob ein Testbenutzer sich über das Azure AD-Konto bei der Anwendung anmelden kann.
@@ -250,4 +253,4 @@ Sie haben folgende Schritte ausgeführt:
 Sie können die Anwendung jetzt für einmaliges Anmelden konfigurieren. Verwenden Sie den folgenden Link, um eine Anmeldemethode auszuwählen und auf Tutorials zum einmaligen Anmelden zuzugreifen.
 
 > [!div class="nextstepaction"]
-> [Konfigurieren von einmaligem Anmelden](what-is-single-sign-on.md#choosing-a-single-sign-on-method)
+> [Konfigurieren von einmaligem Anmelden](sso-options.md#choosing-a-single-sign-on-method)

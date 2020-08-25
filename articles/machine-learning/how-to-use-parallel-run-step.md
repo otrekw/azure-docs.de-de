@@ -9,21 +9,23 @@ ms.topic: tutorial
 ms.reviewer: jmartens, larryfr
 ms.author: tracych
 author: tracychms
-ms.date: 07/16/2020
+ms.date: 08/14/2020
 ms.custom: Build2020, devx-track-python
-ms.openlocfilehash: 960b59275885efd547df63febab37d2403c1c7cf
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: dddb332498f41437eba77d75c38218c58b8c8379
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87847703"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88507113"
 ---
 # <a name="run-batch-inference-on-large-amounts-of-data-by-using-azure-machine-learning"></a>Ausführen von Batchrückschlüssen für große Datenmengen mithilfe von Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Hier erfahren Sie, wie Sie mithilfe von Azure Machine Learning Batchrückschlüsse für große Datenmengen asynchron und parallel ausführen. Der ParallelRunStep stellt Parallelitätsfunktionen ohne Konfiguration zur Verfügung.
+In diesem Artikel wird veranschaulicht, wie Sie Ihr Azure Machine Learning-Modell parallel ausführen und große Datenmengen schnell auswerten können. 
 
-Mithilfe von ParallelRunStep lassen sich Offlinerückschlüsse für mehrere Terabytes an strukturierten oder unstrukturierten Daten ganz einfach auf umfangreiche Computercluster skalieren, mit gesteigerter Produktivität und optimierten Kosten.
+Das Erlangen von Rückschlüssen für große Datasets oder bei komplizierten Modellen kann zeitaufwändig sein. Mit der Klasse `ParallelRunStep` können Sie die Verarbeitung parallel durchführen und die Gesamtergebnisse so ggf. schneller erhalten. Die Durchführung einer einzelnen Auswertung ist unter Umständen in relativ kurzer Zeit möglich, aber für viele Szenarien (Objekterkennung, Videoverarbeitung, Verarbeitung natürlicher Sprache usw.) wird eine größere Zahl von Auswertungen benötigt. 
+
+Mit `ParallelRunStep` ist es leicht möglich, für große Cluster mit vielen Computern Rückschlüsse per Massenvorgang zu erlangen. Cluster dieser Art können mehrere Terabyte an strukturierten bzw. unstrukturierten Daten mit verbesserter Produktivität und optimierten Kosten verarbeiten.
 
 In diesem Artikel lernen Sie Folgendes:
 

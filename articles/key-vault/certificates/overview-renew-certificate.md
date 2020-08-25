@@ -1,68 +1,82 @@
 ---
 title: Informationen zur Azure Key Vault-Zertifikaterneuerung
-description: Informationen zur Azure Key Vault-Zertifikaterneuerung
+description: In diesem Artikel wird beschrieben, wie Sie Azure Key Vault-Zertifikate verlängern.
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: certificates
-ms.topic: conceptual
+ms.topic: overview
 ms.date: 07/20/2020
 ms.author: sebansal
-ms.openlocfilehash: 41085ee629189c32c1bc7196f23805c9c48d154a
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 3809fa9e1ce17a5a0c3cf333ac20ef543db4b5a7
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056277"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88588802"
 ---
-# <a name="about-azure-key-vault-certificate-renewal"></a>Informationen zur Azure Key Vault-Zertifikaterneuerung
+# <a name="renew-your-azure-key-vault-certificates"></a>Verlängern Ihrer Azure Key Vault-Zertifikate
 
-Azure Key Vault ermöglicht das einfache Bereitstellen und Verwalten von digitalen Zertifikaten für Ihr Netzwerk und das Aktivieren der sicheren Kommunikation für Anwendungen. Weitere allgemeine Informationen zu Zertifikaten finden Sie unter [Azure Key Vault-Zertifikate](https://docs.microsoft.com/azure/key-vault/certificates/about-certificates).
+Azure Key Vault ermöglicht Ihnen das einfache Bereitstellen und Verwalten von digitalen Zertifikaten für Ihr Netzwerk und das Aktivieren der sicheren Kommunikation für Ihre Anwendungen. Weitere Informationen zu Zertifikaten finden Sie unter [Informationen zu Azure Key Vault-Zertifikaten](https://docs.microsoft.com/azure/key-vault/certificates/about-certificates).
 
-Die Verwendung von kurzlebigen Zertifikaten oder die Erhöhung der Häufigkeit der Zertifikatrotation schränkt den Schadensspielraum eines potenziellen Gegners ein.
+Indem Sie Zertifikate mit kurzer Lebensdauer verwenden oder die Häufigkeit der Zertifikatrotation erhöhen, können Sie verhindern, dass nicht autorisierte Benutzer auf Ihre Anwendungen zugreifen.
 
-## <a name="certificate-expiration-notifications"></a>Benachrichtigungen zum Zertifikatablauf
-Fügen Sie Ihrem Schlüsseltresor unbedingt Kontaktinformationen für das Zertifikat hinzu, damit Sie benachrichtigt werden, wenn Zertifikate ablaufen (z. B. mit dem PowerShell-Befehl [Add-AzureKeyVaultCertificateContact](https://docs.microsoft.com/powershell/module/azurerm.keyvault/add-azurekeyvaultcertificatecontact?view=azurermps-6.13.0)). Konfigurieren Sie außerdem, wann Sie über den Zertifikatablauf informiert werden möchten. Informationen zum Konfigurieren eines Lebensdauer-Aktionstyps finden Sie [hier](https://docs.microsoft.com/azure/key-vault/certificates/tutorial-rotate-certificates#update-lifecycle-attributes-of-a-stored-certificate).
+In diesem Artikel wird beschrieben, wie Sie Ihre Azure Key Vault-Zertifikate verlängern.
 
-In Key Vault sind drei Kategorien der Zertifikaterstellung verfügbar. Dieser Leitfaden hilft Ihnen zu verstehen, wie die Erneuerung von Zertifikaten erreicht werden kann.
--   Mit integrierter Zertifizierungsstelle erstellte Zertifikate (DigiCert oder GlobalSign)
--   Zertifikate, die mit einer nicht integrierten Zertifizierungsstelle erstellt wurden
+## <a name="get-notified-about-certificate-expirations"></a>Erhalten von Benachrichtigungen zum Zertifikatablauf
+Gehen Sie wie folgt vor, um benachrichtigt zu werden, wenn Ihre Zertifikate in Kürze ablaufen:
+
+Fügen Sie Ihrem Schlüsseltresor zunächst eine Kontaktperson für Zertifikate hinzu, indem Sie das PowerShell-Cmdlet [Add-AzureKeyVaultCertificateContact](https://docs.microsoft.com/powershell/module/azurerm.keyvault/add-azurekeyvaultcertificatecontact?view=azurermps-6.13.0) verwenden.
+
+Konfigurieren Sie als Nächstes, wann Sie über den Ablauf des Zertifikats benachrichtigt werden möchten. Informationen zum Konfigurieren der Lebenszyklusattribute des Zertifikats finden Sie unter [Konfigurieren der automatischen Zertifikatrotation in Key Vault](https://docs.microsoft.com/azure/key-vault/certificates/tutorial-rotate-certificates#update-lifecycle-attributes-of-a-stored-certificate).
+
+In Key Vault gibt es drei Kategorien von Zertifikaten:
+-   Zertifikate, die mit einer integrierten Zertifizierungsstelle (ZS) erstellt werden, z. B. DigiCert oder GlobalSign
+-   Zertifikate, die mit einer nicht integrierten Zertifizierungsstelle erstellt werden
 -   Selbstsignierte Zertifikate
 
-## <a name="renewal-of-integrated-ca-certificate"></a>Erneuerung des integrierten Zertifizierungsstellenzertifikats 
-Gute Nachrichten! Azure Key Vault übernimmt die End-to-End-Verwaltung von Zertifikaten, die von Zertifizierungsstellen ausgegeben werden, denen Microsoft vertraut, d. h. DigiCert und GlobalSign. Erfahren Sie, wie Sie eine [vertrauenswürdige Zertifizierungsstelle in Key Vault integrieren](https://docs.microsoft.com/azure/key-vault/certificates/how-to-integrate-certificate-authority).
+## <a name="renew-an-integrated-ca-certificate"></a>Verlängern eines Zertifikats mit einer integrierten Zertifizierungsstelle 
+Azure Key Vault führt die End-to-End-Wartung von Zertifikaten durch, die von den vertrauenswürdigen Microsoft-Zertifizierungsstellen DigiCert und GlobalSign ausgestellt werden. Erfahren Sie, wie Sie eine [vertrauenswürdige Zertifizierungsstelle in Key Vault integrieren](https://docs.microsoft.com/azure/key-vault/certificates/how-to-integrate-certificate-authority).
 
-## <a name="renewal-of-non-integrated-ca-certificate"></a>Erneuerung des nicht integrierten Zertifizierungsstellenzertifikats 
-Azure Key Vault bietet Benutzern den Vorteil, Zertifikate von jeder Zertifizierungsstelle (CA) zu importieren, um die Integration in verschiedene Azure-Ressourcen zu ermöglichen und die Bereitstellung zu erleichtern. Wenn Sie befürchten, den Überblick über den Ablauf Ihres Zertifikats zu verlieren, oder noch schlimmer, wenn Sie feststellen, dass Ihr Zertifikat bereits abgelaufen ist, kann Key Vault Ihnen helfen, auf dem neuesten Stand zu bleiben. Bei einem Zertifikat einer nicht integrierten Zertifizierungsstelle ermöglicht Key Vault dem Benutzer das Einrichten von E-Mail-Benachrichtigungen vor dem Ablauf. Diese Benachrichtigungen können auch für mehrere Benutzer festgelegt werden.
+## <a name="renew-a-nonintegrated-ca-certificate"></a>Verlängern eines Zertifikats mit einer nicht integrierten Zertifizierungsstelle 
+Mit Azure Key Vault können Sie Zertifikate von einer beliebigen Zertifizierungsstelle importieren. Dieser Vorteil ermöglicht Ihnen die Integration in mehrere Azure-Ressourcen und eine einfache Bereitstellung. Falls Sie Bedenken haben, dass Sie den Überblick über Ihre Ablaufdaten der Zertifikate verlieren, oder ein Zertifikat bereits abgelaufen ist, können Sie die Schlüsseltresorfunktionen nutzen, um auf dem Laufenden gehalten zu werden. Bei Zertifikaten mit einer nicht integrierten Zertifizierungsstelle können Sie über den Schlüsseltresor E-Mail-Benachrichtigungen einrichten, die kurz vor dem Ablauf gesendet werden. Diese Benachrichtigungen können auch für mehrere Benutzer festgelegt werden.
 
-Um ein Zertifikat zu erneuern, ist es wichtig zu verstehen, dass ein Azure Key Vault-Zertifikat ein Objekt mit Versionsangabe ist. Wenn die aktuelle Version abläuft, müssen Sie eine neue Version erstellen. Konzeptionell wäre jede neue Version ein neues Zertifikat, das aus einem Schlüssel und einem Blob besteht, das diesen Schlüssel an eine Identität bindet. Wenn Sie eine Zertifizierungsstelle verwenden, die kein Partner ist, generiert Key Vault ein Schlüssel-Wert-Paar und gibt die CSR-Datei zurück.
+> [!IMPORTANT]
+> Ein Zertifikat ist ein Objekt mit Versionsangabe. Wenn die aktuelle Version abläuft, müssen Sie eine neue Version erstellen. Vom Konzept her handelt es sich bei jeder neuen Version um ein neues Zertifikat, das aus einem Schlüssel und einem Blob besteht, mit dem der Schlüssel mit einer Identität verknüpft wird. Bei Verwendung einer Zertifizierungsstelle, mit der keine Partnerschaft besteht, wird vom Schlüsseltresor ein Schlüssel-Wert-Paar generiert und eine Zertifikatsignieranforderung (Certificate Signing Request, CSR) zurückgegeben.
 
-**Schritte, die in Azure-Portal ausgeführt werden müssen:**
-1.  Öffnen Sie das Zertifikat, das Sie erneuern möchten.
-2.  Wählen Sie auf dem Bildschirm „Zertifikat“ die Schaltfläche **+ Neue Version** aus.
-3.  Wählen Sie **Zertifikatvorgang** aus.
-4.  Wählen Sie **CSR herunterladen** aus. Dadurch wird eine CSR-Datei auf das lokale Laufwerk heruntergeladen.
-5.  Aktivieren Sie die CSR-Datei für die Zertifizierungsstelle Ihrer Wahl, um die Anforderung zu signieren.
-6.  Verwenden Sie die signierte Anforderung, und wählen Sie **CSR mergen** auf demselben Bildschirm „Zertifikatvorgang“ aus.
+Gehen Sie wie folgt vor, um ein Zertifikat mit einer nicht integrierten Zertifizierungsstelle zu verlängern:
+
+1. Melden Sie sich beim Azure-Portal an, und öffnen Sie dann das Zertifikat, das Sie verlängern möchten.
+1. Wählen Sie im Zertifikatbereich die Option **Neue Version** aus.
+1. Wählen Sie **Zertifikatvorgang** aus.
+1. Wählen Sie die Option **CSR herunterladen** aus, um eine CSR-Datei auf Ihr lokales Laufwerk herunterzuladen.
+1. Senden Sie die CSR an die Zertifizierungsstelle Ihrer Wahl, um die Anforderung zu signieren.
+1. Verwenden Sie die signierte Anforderung, und wählen Sie auf demselben Bildschirm „Zertifikatvorgang“ die Option **CSR mergen** aus.
 
 > [!NOTE]
-> Es ist wichtig, die signierte CSR-Datei mit der gleichen CSR-Anforderung zu mergen, die erstellt wurde. Andernfalls würde der Schlüssel nicht übereinstimmen.
+> Es ist wichtig, dass Sie die signierte CSR mit derselben von Ihnen erstellten CSR-Anforderung mergen. Andernfalls ergibt sich für den Schlüssel keine Übereinstimmung.
 
-Die Schritte ähneln dem Erstellen eines neuen Zertifikats und werden [hier]( https://docs.microsoft.com/azure/key-vault/certificates/create-certificate-signing-request#azure-portal) ausführlicher dokumentiert.
+Weitere Informationen zum Erstellen einer neuen CSR finden Sie unter [Erstellen und Zusammenführen einer Zertifikatsignieranforderung in Key Vault]( https://docs.microsoft.com/azure/key-vault/certificates/create-certificate-signing-request#azure-portal).
 
-## <a name="renewal-of-self-signed-certificate"></a>Erneuerung eines selbstsignierten Zertifikats
+## <a name="renew-a-self-signed-certificate"></a>Verlängern eines selbstsignierten Zertifikats
 
-Schon wieder gute Nachrichten! Azure Key Vault übernimmt auch die automatische Erneuerung von selbstsignierten Zertifikaten für Benutzer. Weitere Informationen zum Ändern der Ausstellungsrichtlinie und zum Aktualisieren der Lebensdauer-Aktionsattribute des Zertifikats finden Sie [hier](https://docs.microsoft.com/azure/key-vault/certificates/tutorial-rotate-certificates#update-lifecycle-attributes-of-a-stored-certificate).
+Von Azure Key Vault wird auch die automatische Verlängerung von selbstsignierten Zertifikaten durchgeführt. Weitere Informationen zur Änderung der Ausstellungsrichtlinie und Aktualisierung der Lebenszyklusattribute eines Zertifikats finden Sie unter [Konfigurieren der automatischen Zertifikatrotation in Key Vault](https://docs.microsoft.com/azure/key-vault/certificates/tutorial-rotate-certificates#update-lifecycle-attributes-of-a-stored-certificate).
 
-### <a name="troubleshoot"></a>Problembehandlung
-Wenn das ausgestellte Zertifikat im Azure-Portal den Status „Deaktiviert“ aufweist, fahren Sie mit der Anzeige des Zertifikatvorgangs fort, um die Fehlermeldung für dieses Zertifikat zu überprüfen.
+## <a name="troubleshoot"></a>Problembehandlung
+Falls sich das ausgestellte Zertifikat im Azure-Portal im Status *Deaktiviert* befindet, sollten Sie unter **Zertifikatvorgang** die Fehlermeldung für das Zertifikat anzeigen.
 
-### <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
-Werden die Tags nach der automatischen Verlängerung des Zertifikats repliziert?
-Nein, Tags werden nicht repliziert, es sei denn, Benutzer kopieren sie manuell.
+## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
 
-### <a name="see-also"></a>Weitere Informationen
+**Wie kann ich das Feature für die automatische Rotation des Zertifikats testen?**
+
+Erstellen Sie ein Zertifikat mit einer Gültigkeitsdauer von **1 Monat**, und legen Sie die Lebensdaueraktion für die Rotation dann auf **1 %** fest. Bei dieser Einstellung wird das Zertifikat alle 7,2 Stunden rotiert.
+  
+**Werden die Tags nach der automatischen Verlängerung des Zertifikats repliziert?**
+
+Ja. Die Tags werden nach der automatischen Verlängerung repliziert.
+
+## <a name="next-steps"></a>Nächste Schritte
 *   [Integrieren von Key Vault in die DigiCert-Zertifizierungsstelle](how-to-integrate-certificate-authority.md)
 *   [Tutorial: Konfigurieren der automatischen Zertifikatrotation in Key Vault](tutorial-rotate-certificates.md)

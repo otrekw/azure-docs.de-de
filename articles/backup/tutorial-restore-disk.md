@@ -1,17 +1,17 @@
 ---
-title: 'Tutorial: Wiederherstellen eines VM-Datenträgers mit Azure Backup'
+title: 'Tutorial: Wiederherstellen eines virtuellen Computers mit der Azure CLI'
 description: Erfahren Sie, wie Sie mit Backup und Recovery Services einen Datenträger wiederherstellen und eine Wiederherstellung eines virtuellen Computers in Azure erstellen.
 ms.topic: tutorial
 ms.date: 01/31/2019
 ms.custom: mvc
-ms.openlocfilehash: efad97c3668c50669be89e6eccaadb26cb313e81
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 56ea3de451e625ef5c55f92daa1b86bd34b1c4c4
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289467"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88141345"
 ---
-# <a name="restore-a-disk-and-create-a-recovered-vm-in-azure"></a>Wiederherstellen eines Datenträgers und Erstellen einer wiederhergestellten VM in Azure
+# <a name="restore-a-vm-with-azure-cli"></a>Wiederherstellen eines virtuellen Computers mit der Azure CLI
 
 Azure Backup erstellt Wiederherstellungspunkte, die in geografisch redundanten Recovery-Tresoren gespeichert werden. Wenn Sie eine Wiederherstellung von einem Wiederherstellungspunkt durchführen, können Sie den gesamten virtuellen Computer oder einzelne Dateien wiederherstellen. In diesem Artikel wird das Wiederherstellen eines vollständigen virtuellen Computers mithilfe der Befehlszeilenschnittstelle erläutert. In diesem Tutorial lernen Sie Folgendes:
 
@@ -25,7 +25,7 @@ Informationen dazu, wie Sie mithilfe von PowerShell einen Datenträger wiederher
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial die Azure CLI-Version 2.0.18 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu ermitteln. Installations- und Upgradeinformationen finden Sie bei Bedarf unter [Installieren von Azure CLI]( /cli/azure/install-azure-cli).
+Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial mindestens die Azure CLI-Version 2.0.18 ausführen. Führen Sie `az --version` aus, um die Version zu ermitteln. Installations- und Upgradeinformationen finden Sie bei Bedarf unter [Installieren von Azure CLI]( /cli/azure/install-azure-cli).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

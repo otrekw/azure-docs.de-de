@@ -1,7 +1,7 @@
 ---
 title: Upgrade auf v3.0 der Maschinelles Sehen-API
 titleSuffix: Azure Cognitive Services
-description: Erfahren Sie, wie Sie ein Upgrade von v2.0 und v2.1 auf v3.0 der Maschinelles Sehen-API durchführen.
+description: Hier erfahren Sie, wie Sie ein Upgrade von v2.0/v2.1 auf v3.0 der Lese-API für maschinelles Sehen ausführen.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,16 +11,16 @@ ms.topic: sample
 ms.date: 08/11/2020
 ms.author: pafarley
 ROBOTS: NOINDEX
-ms.openlocfilehash: 16add0dce88d0f809dc291d3c9de33e1a853f257
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: 6e695fcfacac19ca82273d84d049bdb2afe14b54
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88136572"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88214193"
 ---
-# <a name="upgrade-to-v30-of-computer-vision-api-from-v20-and-v21"></a>Upgrade auf v3.0 der Maschinelles Sehen-API von v2.0 und v2.1
+# <a name="upgrade-to-computer-vision-v30-read-api-from-v20v21"></a>Upgrade von v2.0/v2.1 auf v3.0 der Lese-API für maschinelles Sehen
 
-In dieser Anleitung wird gezeigt, wie Sie für Benutzer der Rest-API Ihren vorhandenen Code für die Migration von v2.0 oder v2.1 der Maschinelles Sehen-API auf v3.0 ändern. 
+In dieser Anleitung wird gezeigt, wie Sie ein Upgrade des vorhandenen v2.0- oder v2.1-REST-API-Codes für maschinelles Sehen auf v3.0-Lesevorgänge ausführen. 
 
 ## <a name="upgrade-batch-read-file-to-read"></a>Upgrade von `Batch Read File` auf `Read`
 

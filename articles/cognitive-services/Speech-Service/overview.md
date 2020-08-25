@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: overview
 ms.date: 06/25/2020
 ms.author: trbye
-ms.openlocfilehash: 43efc770f3a3b29a1b0fc214d2927c8c153dff96
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: 82099172a933496f015ae8fc575c1919a879e1f9
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85391637"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88167741"
 ---
 # <a name="what-is-the-speech-service"></a>Worum handelt es sich beim Speech-Dienst?
 
-Der Speech-Dienst dient zur Vereinheitlichung von Spracherkennung, Sprachsynthese und Sprachübersetzung in einem einzelnen Azure-Abonnement. Über das [Speech SDK](speech-sdk-reference.md), das [Speech Devices SDK](https://aka.ms/sdsdk-quickstart) oder [REST-APIs](rest-apis.md) können Sie Ihren Anwendungen, Tools und Geräten komfortabel mit Sprachfunktionen ausstatten.
+Der Speech-Dienst dient zur Vereinheitlichung von Spracherkennung, Sprachsynthese und Sprachübersetzung in einem einzelnen Azure-Abonnement. Über die [Speech-Befehlszeilenschnittstelle](spx-overview.md), das [Speech SDK](speech-sdk-reference.md), das [Speech Devices SDK](https://aka.ms/sdsdk-quickstart), [Speech Studio](https://speech.microsoft.com/) oder [REST-APIs](rest-apis.md) können Sie Ihre Anwendungen, Tools und Geräten komfortabel mit Sprachfunktionen ausstatten.
 
 > [!IMPORTANT]
 > Der Speech-Dienst hat die Bing-Spracheingabe-API sowie die Sprachübersetzung abgelöst. Eine Migrationsanleitung finden Sie unter _Anleitungen > Migration_.

@@ -2,24 +2,24 @@
 author: areddish
 ms.author: areddish
 ms.service: cognitive-services
-ms.date: 04/14/2020
-ms.openlocfilehash: 0efc0f1e07ef9370dbc8e300cd6bd3410f0265d3
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.date: 08/17/2020
+ms.openlocfilehash: 918ac54836adf6ad12934d7e30cf88f2786e1fba
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82135079"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88508528"
 ---
-Dieser Artikel enthält Informationen und Beispielcode für die ersten Schritte mit dem Custom Vision SDK für Go und unterstützt Sie beim Erstellen eines Bildklassifizierungsmodells. Nach der Erstellung können Sie Tags hinzufügen, Bilder hochladen, das Projekt trainieren, die veröffentlichte Endpunkt-URL für Vorhersagen des Projekts abrufen und den Endpunkt für die programmgesteuerte Überprüfung eines Bilds verwenden. Verwenden Sie dieses Beispiel als Vorlage für die Erstellung Ihrer eigenen Go-Anwendung. Falls Sie den Prozess zur Erstellung und Verwendung eines Klassifizierungsmodells _ohne_ Code durchlaufen möchten, sehen Sie sich stattdessen die [browserbasierte Anleitung](../../getting-started-build-a-classifier.md) an.
+Dieser Artikel enthält Informationen und Beispielcode für die ersten Schritte mit der Custom Vision-Clientbibliothek mit Go und unterstützt Sie beim Erstellen eines Bildklassifizierungsmodells. Nach der Erstellung können Sie Tags hinzufügen, Bilder hochladen, das Projekt trainieren, die veröffentlichte Endpunkt-URL für Vorhersagen des Projekts abrufen und den Endpunkt für die programmgesteuerte Überprüfung eines Bilds verwenden. Verwenden Sie dieses Beispiel als Vorlage für die Erstellung Ihrer eigenen Go-Anwendung. Falls Sie den Prozess zur Erstellung und Verwendung eines Klassifizierungsmodells _ohne_ Code durchlaufen möchten, sehen Sie sich stattdessen die [browserbasierte Anleitung](../../getting-started-build-a-classifier.md) an.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - [Go 1.8+](https://golang.org/doc/install)
 - [!INCLUDE [create-resources](../../includes/create-resources.md)]
 
-## <a name="install-the-custom-vision-sdk"></a>Installieren des Custom Vision SDK
+## <a name="install-the-custom-vision-client-library"></a>Installieren der Custom Vision-Clientbibliothek
 
-Führen Sie in PowerShell den folgenden Befehl aus, um das Custom Vision Service SDK für Go zu installieren:
+Führen Sie in PowerShell den folgenden Befehl aus, um die Clientbibliothek des Custom Vision-Diensts für Go zu installieren:
 
 ```shell
 go get -u github.com/Azure/azure-sdk-for-go/...

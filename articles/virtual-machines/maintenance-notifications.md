@@ -5,14 +5,14 @@ author: shants123
 ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.topic: conceptual
-ms.date: 11/19/2019
+ms.date: 8/12/2020
 ms.author: shants
-ms.openlocfilehash: f7d9912686be8ba6076278f148067575a40f32f8
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 1e2eb1c2b6ecb98c60b117d004a97cd4e5f07a55
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86510037"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88182164"
 ---
 # <a name="handling-planned-maintenance-notifications"></a>Behandeln von Benachrichtigungen zu geplanten Wartungen
 
@@ -107,7 +107,8 @@ Weitere Informationen zu Hochverfügbarkeit finden Sie unter [Verfügbarkeit fü
 **A:** Es gibt verschiedene Gründe, warum Sie keine Wartungsinformationen auf Ihren virtuellen Computern sehen:
 1.  Sie verwenden ein Abonnement, das als Microsoft-intern markiert ist.
 2.  Ihre virtuellen Computer sind nicht für die Wartung eingeplant. Es könnte sein, dass die Wartungsaktion beendet, abgebrochen oder so geändert wurde, dass Ihre virtuellen Computer nicht mehr davon betroffen sind.
-3.  Sie haben Ihrer VM-Listenansicht nicht die Spalte **Wartung** hinzugefügt. Obwohl wir diese Spalte der Standardansicht hinzugefügt haben, müssen Kunden, die die Anzeige nicht standardmäßiger Spalten konfiguriert haben, die Spalte **Wartung** ihrer VM-Listenansicht manuell hinzufügen.
+3. Sie haben die Zuordnung der VM aufgehoben und dann die VM gestartet. Dies kann dazu führen, dass die VM an einen Speicherort verschoben wird, für den keine geplante Wartungsaktion terminiert wurde. Daher werden für die VM keine Wartungsinformationen mehr angezeigt. 
+4.  Sie haben Ihrer VM-Listenansicht nicht die Spalte **Wartung** hinzugefügt. Obwohl wir diese Spalte der Standardansicht hinzugefügt haben, müssen Kunden, die die Anzeige nicht standardmäßiger Spalten konfiguriert haben, die Spalte **Wartung** ihrer VM-Listenansicht manuell hinzufügen.
 
 **F: Meine VM ist zum zweiten Mal für die Wartung eingeplant. Warum?**
 

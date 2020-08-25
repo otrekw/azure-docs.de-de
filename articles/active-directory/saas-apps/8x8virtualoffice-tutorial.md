@@ -2,25 +2,21 @@
 title: 'Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit 8x8 | Microsoft-Dokumentation'
 description: Hier erfahren Sie, wie Sie einmaliges Anmelden zwischen Azure Active Directory und 8x8 konfigurieren.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: b34a6edf-e745-4aec-b0b2-7337473d64c5
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 02/20/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9c81e63a073882dea3a7aea32d5e9f4d3d5c48f7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 52b45bf7457a81b605df91e63a7c6ad539309dd8
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87018610"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88538653"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-8x8"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit 8x8
 
@@ -48,7 +44,7 @@ In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure
 
 * 8x8 unterstützt **SP- und IDP-initiiertes** einmaliges Anmelden.
 
-* Nach dem Konfigurieren von 8x8 können Sie eine Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.
+* Nach dem Konfigurieren von 8x8 können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Daten Ihrer Organisation schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.
 
 > [!NOTE]
 > Der Bezeichner dieser Anwendung ist ein fester Zeichenfolgenwert, daher kann in einem Mandanten nur eine Instanz konfiguriert werden.
@@ -64,7 +60,7 @@ Zum Konfigurieren der Integration von 8x8 in Azure AD müssen Sie 8x8 aus dem Ka
 1. Geben Sie im Abschnitt **Aus Katalog hinzufügen** den Suchbegriff **8x8** in das Suchfeld ein.
 1. Wählen Sie im Ergebnisbereich **8x8** aus, und fügen Sie dann die App hinzu. Warten Sie einige Sekunden, während die App Ihrem Mandanten hinzugefügt wird.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-8x8"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für 8x8
+## <a name="configure-and-test-azure-ad-sso-for-8x8"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für 8x8
 
 Konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit 8x8 mithilfe eines Testbenutzers mit dem Namen **B. Simon**. Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in 8x8 eingerichtet werden.
 
@@ -139,7 +135,15 @@ Der nächste Teil des Tutorials hängt von der Art Ihres 8x8-Abonnements ab:
 
 ### <a name="configure-8x8-configuration-manager"></a>Konfigurieren von 8x8 Configuration Manager
 
-1. Melden Sie sich bei 8x8 [Configuration Manager](https://vo-cm.8x8.com/) an.
+1. Wenn Sie die Konfiguration in 8x8 automatisieren möchten, müssen Sie die **Browsererweiterung zur sicheren Anmeldung bei „Meine Apps“** installieren, indem Sie auf **Erweiterung installieren** klicken.
+
+    ![Erweiterung „Meine Apps“](common/install-myappssecure-extension.png)
+
+1. Klicken Sie nach dem Hinzufügen der Erweiterung zum Browser auf **8x8 einrichten**, um zur 8x8-Anwendung weitergeleitet zu werden. Geben Sie dort die Administratoranmeldeinformationen ein, um sich bei 8x8 anzumelden. Die Browsererweiterung konfiguriert die Anwendung automatisch für Sie und automatisiert die Schritte 3 bis 6.
+
+    ![Einrichtungskonfiguration](common/setup-sso.png)
+
+1. Wenn Sie 8x8 manuell einrichten möchten, müssen Sie sich beim [Configuration Manager](https://vo-cm.8x8.com/) von 8x8 als Administrator anmelden.
 
 1. Klicken Sie auf der Startseite auf **Identity Management** (Identitätsverwaltung).
 

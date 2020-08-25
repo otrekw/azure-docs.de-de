@@ -3,17 +3,17 @@ title: 'Tutorial: Erstellen und Verwalten von exportierten Daten aus Azure Cost 
 description: Dieser Artikel erläutert, wie Sie aus Azure Cost Management exportierte Daten erstellen und verwalten können, um sie in externen Systemen zu verwenden.
 author: bandersmsft
 ms.author: banders
-ms.date: 05/27/2020
+ms.date: 08/05/2020
 ms.topic: tutorial
 ms.service: cost-management-billing
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 90334d29ed2f649854863f9ad86f03811728a945
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: 69b7b4bff46ba2998ca931ba1cb6bc9e7c1d9096
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84142310"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272207"
 ---
 # <a name="tutorial-create-and-manage-exported-data"></a>Tutorial: Erstellen und Verwalten von exportierten Daten
 
@@ -49,40 +49,38 @@ Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com/) beim
 
 ## <a name="create-a-daily-export"></a>Erstellen eines täglichen Exports
 
-Zum Erstellen oder Anzeigen eines Datenexports bzw. Planen eines Exports öffnen Sie den gewünschten Bereich im Azure-Portal, und wählen Sie **Kostenanalyse** im Menü aus. Navigieren Sie beispielsweise zu **Abonnements**, und wählen Sie dann ein Abonnement in der Liste und **Kostenanalyse** im Menü aus. Wählen Sie am oberen Rand der Seite „Kostenanalyse“ die Option **Einstellungen**, dann **Exportieren** und dann eine Exportoption aus.
+Zum Erstellen oder Anzeigen eines Datenexports bzw. Planen eines Exports öffnen Sie den gewünschten Bereich im Azure-Portal, und wählen Sie **Kostenanalyse** im Menü aus. Navigieren Sie beispielsweise zu **Abonnements**, und wählen Sie dann ein Abonnement in der Liste und **Kostenanalyse** im Menü aus. Wählen Sie oben auf der Seite „Kostenanalyse“ die Option **Einstellungen** und dann **Exporte** aus.
 
 > [!NOTE]
-> - Neben Abonnements können Sie Exporte von Ressourcengruppen, Konten, Abteilungen und Registrierungen erstellen. Weitere Informationen zu Bereichen finden Sie unter [Verstehen von und Arbeiten mit Bereichen](understand-work-scopes.md).
+> - Neben Abonnements können Sie Exporte für Ressourcengruppen, Verwaltungsgruppen, Abteilungen und Registrierungen erstellen. Weitere Informationen zu Bereichen finden Sie unter [Verstehen von und Arbeiten mit Bereichen](understand-work-scopes.md).
 >- Wenn Sie als Partner im Abrechnungskontobereich oder beim Mandanten eines Kunden angemeldet sind, können Sie Daten in ein Azure Storage-Konto exportieren, das mit dem Partnerspeicherkonto verknüpft ist. Sie müssen jedoch über ein aktives Abonnement in Ihrem CSP-Mandanten verfügen.
 
-Wählen Sie **Hinzufügen** aus, geben Sie einen Namen für den Export ein, und wählen Sie die Option **Täglicher Export der Kosten für bisherigen Kalendermonat** aus. Wählen Sie **Weiter** aus.
-
-[![Beispiel für neuen Export mit Angabe des Exporttyps](./media/tutorial-export-acm-data/basics_exports.png)](./media/tutorial-export-acm-data/basics_exports.png#lightbox)
-
-Geben Sie das Abonnement für Ihr Azure-Speicherkonto an, und wählen Sie dann Ihr Speicherkonto aus.  Geben Sie den Speichercontainer und den Verzeichnispfad an, unter dem die Exportdatei gespeichert werden soll. Wählen Sie **Weiter** aus.
-
-![Beispiel für neuen Export mit Angabe der Speicherkontodetails](./media/tutorial-export-acm-data/storage_exports.png)
-
-Überprüfen Sie die Exportdetails, und wählen Sie **Erstellen** aus.
+1. Wählen Sie **Hinzufügen** aus, und geben Sie einen Namen für den Export ein. 
+1. Wählen Sie eine Option für **Metrik** aus:
+    - **Tatsächliche Kosten (Nutzung und Anschaffungen)** : Wählen Sie diese Option aus, um die standardmäßige Nutzung und Käufe zu exportieren.
+    - **Amortisierte Kosten (Nutzung und Anschaffungen)** : Wählen Sie diese Option aus, um die amortisierten Kosten für Käufe wie Azure-Reservierungen zu exportieren.
+1. Wählen Sie eine Option für **Exporttyp** aus:
+    - **Täglicher Export der Kosten für bisherigen Kalendermonat**: Erstellt täglich eine neue Exportdatei Ihrer Kosten für den bisherigen Kalendermonat. Die aktuellen Daten werden aus vorhergehenden täglichen Exporten aggregiert.
+    - **Wöchentlicher Export der Kosten für die letzten 7 Tage**: Erstellt einen wöchentlichen Export Ihrer Kosten für die letzten sieben Tagen ab dem ausgewählten Startdatum des Exports.  
+    - **Monthly export of last month's costs** (Monatlicher Export der Kosten des letzten Monats): Erstellt einen Export mit einem Vergleich der Kosten des letzten Monats und des aktuellen Monats, in dem Sie den Export erstellen. In Zukunft wird gemäß dem Zeitplan am fünften Tag jedes neuen Monats ein Export mit den Kosten des vorangegangenen Monats ausgeführt.  
+    - **One-time export** (Einmaliger Export): Ermöglicht es Ihnen, einen Datumsbereich für historische Daten auszuwählen, die Sie in Azure Blob Storage exportieren möchten. Sie können historische Kosten für maximal 90 Tage ab dem ausgewählten Tag exportieren. Dieser Export wird sofort ausgeführt und ist innerhalb von zwei Stunden in Ihrem Speicherkonto verfügbar.  
+        Wählen Sie je nach Exporttyp entweder ein Startdatum oder ein Datum für **Von** und **Bis** aus.
+1. Geben Sie das Abonnement für Ihr Azure-Speicherkonto an, und wählen Sie dann eine Ressourcengruppe aus, oder erstellen Sie eine neue Ressourcengruppe. 
+1. Wählen Sie den Namen des Speicherkontos aus, oder erstellen Sie ein neues Speicherkonto. 
+1. Wählen Sie den Standort (Azure-Region) aus.
+1. Geben Sie den Speichercontainer und den Verzeichnispfad an, unter dem die Exportdatei gespeichert werden soll. 
+    :::image type="content" source="./media/tutorial-export-acm-data/basics_exports.png" alt-text="Beispiel für einen neuen Export" lightbox="./media/tutorial-export-acm-data/basics_exports.png":::
+1. Überprüfen Sie die Exportdetails, und klicken Sie auf **Erstellen**.
 
 Ihr neuer Export wird in der Liste der Exporte angezeigt. Neue Exporte sind standardmäßig aktiviert. Wenn Sie einen geplanten Export deaktivieren oder löschen möchten, wählen Sie ein beliebiges Element in der Liste und anschließend entweder **Deaktivieren** oder **Löschen** aus.
 
-Zunächst kann es ein bis zwei Stunden dauern, bis der Export ausgeführt wird. Es kann jedoch bis zu vier Stunden dauern, bis die Daten in exportierten Dateien angezeigt werden.
+Zunächst kann es 12 –24 Stunden dauern, bis der Export ausgeführt wird. Bis die Daten in exportierten Dateien angezeigt werden, kann jedoch mehr Zeit in Anspruch nehmen.
 
-### <a name="export-schedule"></a>Exportzeitplan
+### <a name="export-schedule"></a>Zeitplan für Export
 
-Uhrzeit und Wochentag der ersten Erstellung eines Exports wirken sich auf geplante Exporte aus. Wenn Sie einen geplanten Export erstellen, werden alle folgenden Exportvorgänge mit der gleichen Häufigkeit ausgeführt. Legen Sie für einen Export für den bisherigen Kalendermonat beispielsweise als Häufigkeit „täglich“ fest, und der Export wird täglich ausgeführt. Das Gleiche gilt für einen wöchentlichen Export: Der wöchentliche Export wird jede Woche am selben geplanten Tag ausgeführt. Die genaue Bereitstellungszeit des Exports wird nicht garantiert, und die exportierten Daten sind innerhalb von vier Stunden ab dem Ausführungszeitpunkt verfügbar.
+Uhrzeit und Wochentag der ersten Erstellung eines Exports wirken sich auf geplante Exporte aus. Wenn Sie einen geplanten Export erstellen, werden alle folgenden Exportvorgänge mit der gleichen Häufigkeit ausgeführt. Legen Sie für einen täglichen Export der Kosten für den bisherigen Kalendermonat beispielsweise „täglich“ als Häufigkeit fest. Der Export wird dann jeden Tag ausgeführt. Das Gleiche gilt für einen wöchentlichen Export: Der wöchentliche Export wird jede Woche am selben geplanten Tag ausgeführt. Die genaue Übermittlungszeit des Exports wird nicht garantiert, und die exportierten Daten sind innerhalb von vier Stunden ab dem Ausführungszeitpunkt verfügbar.
+
 Bei jedem Export wird eine neue Datei erstellt, sodass ältere Exporte nicht überschrieben werden.
-
-Es gibt zwei Typen von Exportoptionen:
-
-**Täglicher Export der Kosten für bisherigen Kalendermonat**: Der erste Export wird sofort ausgeführt. Nachfolgende Exporte werden am nächsten Tag zur gleichen Zeit wie der erste Export ausgeführt. Die aktuellen Daten werden aus vorhergehenden täglichen Exporten aggregiert.
-
-**Benutzerdefiniert**: Damit können Sie wöchentliche und monatliche Exporte mit Optionen für die bisherige Woche und dem bisherigen Monat planen. *Der erste Export wird sofort ausgeführt.*
-
-Wenn Sie über ein Abonnement mit nutzungsbasierter Bezahlung, ein MSDN-Abonnement oder ein Visual Studio-Abonnement verfügen, stimmt der Abrechnungszeitraum für Ihre Rechnung möglicherweise nicht mit dem Kalendermonat überein. Bei diesen Arten von Abonnements und Ressourcengruppen können Sie einen Export erstellen, der Ihrem Rechnungszeitraum oder Kalendermonaten entspricht. Navigieren Sie zum Erstellen eines Exports, der Ihrem Rechnungsmonat entspricht, zu **Benutzerdefiniert**, und wählen Sie dann die Option **Bisheriger Abrechnungszeitraum**.  Wählen Sie **Monat bis Datum**, um einen Export zu erstellen, der dem Kalendermonat entspricht.
-
-![Neuer Export: Registerkarte „Grundlagen“, die eine benutzerdefinierte Auswahl für wöchentliche Exporte seit Wochenbeginn zeigt](./media/tutorial-export-acm-data/tutorial-export-schedule-weekly-week-to-date.png)
 
 #### <a name="create-an-export-for-multiple-subscriptions"></a>Erstellen eines Exports für mehrere Abonnements
 
@@ -90,10 +88,11 @@ Wenn Sie über ein Enterprise Agreement verfügen, können Sie eine Verwaltungsg
 
 Exporte für Verwaltungsgruppen anderer Abonnementtypen werden nicht unterstützt.
 
-1. Erstellen Sie eine Verwaltungsgruppe, und weisen Sie ihr Abonnements zu.
-1. Wählen Sie unter „Exporte“ die Option **Bereich** aus.
-1. Wählen Sie **Diese Verwaltungsgruppe auswählen** aus.
-1. Erstellen Sie einen Export im Bereich, um Kostenverwaltungsdaten für die Abonnements in der Verwaltungsgruppe abzurufen.
+1. Wenn Sie noch keine Verwaltungsgruppe haben, erstellen Sie eine, und weisen Sie ihr Abonnements zu.
+1. Legen Sie in der Kostenanalyse den Bereich auf Ihre Verwaltungsgruppe fest, und wählen Sie **Diese Verwaltungsgruppe auswählen** aus.  
+    :::image type="content" source="./media/tutorial-export-acm-data/management-group-scope.png" alt-text="Beispiel mit der Option „Diese Verwaltungsgruppe auswählen“" lightbox="./media/tutorial-export-acm-data/management-group-scope.png":::
+1. Erstellen Sie einen Export im Bereich, um Kostenverwaltungsdaten für die Abonnements in der Verwaltungsgruppe abzurufen.  
+    :::image type="content" source="./media/tutorial-export-acm-data/new-export-management-group-scope.png" alt-text="Beispiel mit der Option zum Erstellen eines neuen Exports mit einem Verwaltungsgruppenbereich":::
 
 ## <a name="verify-that-data-is-collected"></a>Überprüfen, ob Daten gesammelt wurden
 
@@ -123,6 +122,16 @@ Sie können auch die exportierte CSV-Datei im Azure-Portal herunterladen. In den
 1. Wählen Sie die CSV-Datei und dann **Herunterladen** aus.
 
 [![Beispiel für Exportdownload](./media/tutorial-export-acm-data/download-export.png)](./media/tutorial-export-acm-data/download-export.png#lightbox)
+
+## <a name="view-export-run-history"></a>Anzeigen des Ausführungsverlaufs  
+
+Sie können den Ausführungsverlauf Ihres geplanten Exports anzeigen, indem Sie auf der Listenseite „Exporte“ einen einzelnen Export auswählen. Auf dieser Seite können Sie auch schnell die Ausführungszeit Ihrer vorherigen Exporte und den Zeitpunkt der nächsten Ausführung eines Exports anzeigen. Der folgende Screenshot zeigt ein Beispiel für den Ausführungsverlauf.
+
+:::image type="content" source="./media/tutorial-export-acm-data/run-history.png" alt-text="Beispiel für den Ausführungsverlauf eines Exports":::
+
+Wählen Sie einen Export aus, um den zugehörigen Ausführungsverlauf anzuzeigen.
+
+:::image type="content" source="./media/tutorial-export-acm-data/single-export-run-history.png" alt-text="Beispiel für den Ausführungsverlauf eines Exports":::
 
 ## <a name="access-exported-data-from-other-systems"></a>Zugreifen auf exportierte Daten über andere Systeme
 

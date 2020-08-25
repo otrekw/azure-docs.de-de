@@ -3,15 +3,16 @@ title: Schnellstartanleitung zum Hinzufügen von Featureflags zu ASP.NET Core
 description: Hier wird erläutert, wie Sie ASP.NET Core-Apps Featureflags hinzufügen und diese in Azure App Configuration verwalten.
 author: lisaguthrie
 ms.service: azure-app-configuration
+ms.custom: devx-track-csharp
 ms.topic: quickstart
 ms.date: 01/14/2020
 ms.author: lcozzens
-ms.openlocfilehash: a25a40346d588f56028bf08294b070823b729e25
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: 12b66dc173a8d3f93f97fb369ce03533299a65d7
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87760140"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88235263"
 ---
 # <a name="quickstart-add-feature-flags-to-an-aspnet-core-app"></a>Schnellstart: Hinzufügen von Featureflags zu einer ASP.NET Core-App
 
@@ -114,7 +115,7 @@ Im Geheimnis-Manager-Tool werden sensible Daten für die Entwicklungsarbeit auß
 
 1. Fügen Sie dem Geheimnis-Manager ein Geheimnis mit dem Namen **ConnectionStrings:AppConfig** hinzu.
 
-    Dieses Geheimnis enthält die Verbindungszeichenfolge für den Zugriff auf Ihren App Configuration-Speicher. Ersetzen Sie den Wert `<your_connection_string>` im folgenden Befehl durch die Verbindungszeichenfolge für Ihren App Configuration-Speicher. Die Verbindungszeichenfolge finden Sie im Azure-Portal unter **Zugriffsschlüssel**.
+    Dieses Geheimnis enthält die Verbindungszeichenfolge für den Zugriff auf Ihren App Configuration-Speicher. Ersetzen Sie den Wert `<your_connection_string>` im folgenden Befehl durch die Verbindungszeichenfolge für Ihren App Configuration-Speicher. Die Verbindungszeichenfolge für den schreibgeschützten Primärschlüssel finden Sie im Azure-Portal unter **Zugriffsschlüssel**.
 
     Dieser Befehl muss in dem Verzeichnis ausgeführt werden, in dem die *.csproj*-Datei enthalten ist.
 
@@ -186,7 +187,7 @@ Im Geheimnis-Manager-Tool werden sensible Daten für die Entwicklungsarbeit auß
     public void ConfigureServices(IServiceCollection services)
     {
         services.AddControllersWithViews();
-        services.AddSingleton(Configuration).AddFeatureManagement();
+        services.AddFeatureManagement();
     }
 
     ---

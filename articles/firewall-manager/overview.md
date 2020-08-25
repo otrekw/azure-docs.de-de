@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: overview
-ms.date: 08/10/2020
+ms.date: 08/18/2020
 ms.author: victorh
-ms.openlocfilehash: 0fcf1c8a3800a52e8fa8659fe4bf97e83103c79d
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: b4ef35f2892925919ca9c8eda37a9b0e0d11835e
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056991"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88590403"
 ---
 # <a name="what-is-azure-firewall-manager"></a>Was ist Azure Firewall Manager?
 
@@ -85,6 +85,8 @@ Für Azure Firewall Manager sind die folgenden Probleme bekannt:
 |Spokes in einer anderen Region als der virtuelle Hub|Spokes in einer anderen Region als der virtuelle Hub werden nicht unterstützt.|Wird untersucht<br><br>Erstellen Sie einen Hub pro Region, und verknüpfen Sie VNETs, die sich in der gleichen Region befinden wie der Hub, mittels Peering.|
 |Branch-to-Branch-Datenverkehr mit aktivierter Filterung von privatem Datenverkehr|Branch-to-Branch-Datenverkehr wird nicht unterstützt, wenn die Filterung von privatem Datenverkehr aktiviert ist. |Wird untersucht<br><br>Schützen Sie privaten Datenverkehr nicht, wenn die Branch-to-Branch-Konnektivität wichtig ist.|
 |Alle geschützten virtuellen Hubs, die das gleiche virtuelle WAN nutzen, müssen sich in derselben Ressourcengruppe befinden.|Dieses Verhalten orientiert sich heute an Virtual WAN-Hubs.|Erstellen Sie mehrere Virtual WAN-Instanzen, um die Erstellung von geschützten virtuellen Hubs in verschiedenen Ressourcengruppen zu ermöglichen.|
+|Fehler beim Massenhinzufügen von IP-Adressen|Die Firewall des geschützten Hubs wird in einen Fehlerzustand versetzt, wenn Sie eine größere Zahl von öffentlichen IP-Adressen hinzufügen.|Fügen Sie öffentliche IP-Adressen in kleineren Schritten hinzu. Fügen Sie beispielsweise nur zehn gleichzeitig hinzu.|
+|Für Anwendungsregeln tritt auf einem geschützten Hub ein Fehler auf, wenn ein benutzerdefiniertes DNS (Vorschau) konfiguriert ist.|Ein DNS-Proxy bzw. benutzerdefiniertes DNS (Vorschau) funktioniert nicht in Szenarien, in denen eine Netzwerkschnittstelle für die Firewallverwaltung konfiguriert ist. Dies gilt auch für Bereitstellungen von geschützten Hubs und für Fälle, in denen die Tunnelerzwingung aktiviert ist.|Wir arbeiten derzeit an der Fehlerbehebung.|
 
 ## <a name="next-steps"></a>Nächste Schritte
 

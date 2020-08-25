@@ -6,14 +6,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 08/13/2020
 ms.author: memildin
-ms.openlocfilehash: 19fcefdfd163bcbd9cd2adfcba6bf6711b9bee18
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.openlocfilehash: d9229137c999157d2cea112ebb5e6e8b169eed96
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88041669"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192782"
 ---
 # <a name="workflow-automation"></a>Workflowautomatisierung
 
@@ -32,7 +32,7 @@ In diesem Artikel wird die Funktion zur Workflowautomatisierung von Azure Securi
 |----|:----|
 |Status des Release:|Allgemein verfügbar|
 |Preise:|Free-Tarif|
-|Erforderliche Rollen und Berechtigungen:|**Leser** für das Abonnement, das die Exportkonfiguration enthält<br>Rolle **Sicherheitsadministrator** oder **Besitzer** für die Ressourcengruppe<br>Außerdem sind Schreibberechtigungen für die Zielressource erforderlich<br><br>Damit Sie Azure Logic Apps-Workflows verwenden können, benötigen Sie zudem die folgenden Logic Apps-Rollen/-Berechtigungen:<br> Die Berechtigungen der Rolle - [Logik-App-Operator](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#logic-app-operator) oder der Lese-/Triggerzugriff für Logik-Apps sind erforderlich. (Diese Rolle kann keine Logik-Apps erstellen oder bearbeiten, sondern nur vorhandene *ausführen*.)<br> Die Berechtigungen der Rolle - [Logik-App-Mitwirkender](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#logic-app-contributor) sind für die Erstellung und Änderung von Logik-Apps erforderlich.<br>Wenn Sie Logik-App-Connectors verwenden möchten, benötigen Sie möglicherweise zusätzliche Anmeldeinformationen für die Anmeldung bei den jeweiligen Diensten (z. B. Ihren Instanzen von Outlook, Teams oder Slack).|
+|Erforderliche Rollen und Berechtigungen:|Rolle **Sicherheitsadministrator** oder **Besitzer** für die Ressourcengruppe<br>Außerdem sind Schreibberechtigungen für die Zielressource erforderlich<br><br>Damit Sie Azure Logic Apps-Workflows verwenden können, benötigen Sie zudem die folgenden Logic Apps-Rollen/-Berechtigungen:<br> Die Berechtigungen der Rolle - [Logik-App-Operator](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#logic-app-operator) oder der Lese-/Triggerzugriff für Logik-Apps sind erforderlich. (Diese Rolle kann keine Logik-Apps erstellen oder bearbeiten, sondern nur vorhandene *ausführen*.)<br> Die Berechtigungen der Rolle - [Logik-App-Mitwirkender](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#logic-app-contributor) sind für die Erstellung und Änderung von Logik-Apps erforderlich.<br>Wenn Sie Logik-App-Connectors verwenden möchten, benötigen Sie möglicherweise zusätzliche Anmeldeinformationen für die Anmeldung bei den jeweiligen Diensten (z. B. Ihren Instanzen von Outlook, Teams oder Slack).|
 |Clouds:|![Ja](./media/icons/yes-icon.png) Kommerzielle Clouds<br>![Ja](./media/icons/yes-icon.png) US Gov<br>![Nein](./media/icons/no-icon.png) China Gov/andere Gov-Clouds|
 |||
 
@@ -44,7 +44,8 @@ In diesem Artikel wird die Funktion zur Workflowautomatisierung von Azure Securi
 
     [![Liste der Workflowautomatisierungen](media/workflow-automation/list-of-workflow-automations.png)](media/workflow-automation/list-of-workflow-automations.png#lightbox)
 
-    Auf dieser Seite können Sie neue Automatisierungsregeln erstellen sowie vorhandene aktivieren, deaktivieren oder löschen.  
+    Auf dieser Seite können Sie neue Automatisierungsregeln erstellen sowie vorhandene aktivieren, deaktivieren oder löschen.
+
 1. Um einen neuen Workflow zu definieren, klicken Sie auf **Workflowautomatisierung hinzufügen**. 
 
     Ein Bereich mit Optionen für die neue Automatisierung wird angezeigt. Darin können Sie Folgendes eingeben:
@@ -86,9 +87,9 @@ In diesem Artikel wird die Funktion zur Workflowautomatisierung von Azure Securi
 
 ## <a name="manually-trigger-a-logic-app"></a>Manuelles Auslösen einer Logik-App
 
-Sie können Logik-Apps auch manuell ausführen, wenn Sie eine Sicherheitswarnung oder eine Empfehlung anzeigen, die eine [schnelle Problembehebung](https://docs.microsoft.com/azure/security-center/security-center-remediate-recommendations#quick-fix-remediation) anbietet.
+Sie können Logic Apps auch manuell ausführen, wenn Sie sich eine beliebige Sicherheitswarnung oder -empfehlung ansehen.
 
-Um eine Logik-App manuell auszuführen, öffnen Sie eine Warnung oder eine Empfehlung, die die schnelle Problembehebung unterstützt, und klicken Sie auf **Logik-App auslösen** :
+Um eine Logik-App manuell auszuführen, öffnen Sie eine Warnung oder Empfehlung, und klicken Sie auf **Logik-App auslösen**:
 
 [![Manuelles Auslösen einer Logik-App](media/workflow-automation/manually-trigger-logic-app.png)](media/workflow-automation/manually-trigger-logic-app.png#lightbox)
 

@@ -1,18 +1,19 @@
 ---
 title: Schnellstart für Azure App Configuration mit Azure Functions | Microsoft-Dokumentation
-description: Enthält eine Schnellstartanleitung für die Verwendung von Azure App Configuration mit Azure Functions.
+description: In dieser Schnellstartanleitung erstellen Sie eine Azure Functions-App mit Azure App Configuration und C#. Sie erstellen einen App Configuration-Speicher und stellen eine Verbindung damit her. Testen Sie die Funktion lokal.
 services: azure-app-configuration
 author: lisaguthrie
 ms.service: azure-app-configuration
+ms.custom: devx-track-csharp
 ms.topic: quickstart
 ms.date: 1/9/2019
 ms.author: lcozzens
-ms.openlocfilehash: 2f6efdad7ab0685e58d2edd73bc36b758e8dbae2
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: e15c83504ee0eebb925c122d0efd4896e7b55916
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80245496"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88590284"
 ---
 # <a name="quickstart-create-an-azure-functions-app-with-azure-app-configuration"></a>Schnellstart: Erstellen einer Azure Functions-App mit Azure App Configuration
 
@@ -109,7 +110,7 @@ In diesem Schnellstart integrieren Sie den Azure App Configuration-Dienst in ein
 
     ![Schnellstart: Debuggen von Funktionen in VS](./media/quickstarts/function-visual-studio-debugging.png)
 
-4. Fügen Sie die URL der HTTP-Anforderung in die Adresszeile des Browsers ein. In der folgenden Abbildung sehen Sie die Antwort des Browsers auf die von der Funktion zurückgegebene lokale GET-Anforderung.
+4. Fügen Sie die URL zu der HTTP-Anforderung in die Adressleiste Ihres Browsers ein. In der folgenden Abbildung sehen Sie die Antwort des Browsers auf die von der Funktion zurückgegebene lokale GET-Anforderung.
 
     ![Schnellstart: Lokales Starten von Funktionen](./media/quickstarts/dotnet-core-function-launch-local.png)
 

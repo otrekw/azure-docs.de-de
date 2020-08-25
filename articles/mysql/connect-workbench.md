@@ -1,5 +1,5 @@
 ---
-title: 'Herstellen einer Verbindung mit MySQL Workbench: Azure Database for MySQL'
+title: 'Schnellstart: Herstellen einer Verbindung – MySQL Workbench – Azure Database for MySQL'
 description: Diese Schnellstartanleitung veranschaulicht die Verwendung von MySQL Workbench – einem Tool, mit dem Sie eine Verbindung mit Azure-Datenbank für MySQL herstellen und Daten daraus abfragen können.
 author: ajlam
 ms.author: andrela
@@ -7,17 +7,19 @@ ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 5/26/2020
-ms.openlocfilehash: 1e2dd26e2b954bebd7bac15991b2b5aef9def88d
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 1b1249fe7159e2a3a8d2a74d22f274a9766e7922
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83870045"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185824"
 ---
-# <a name="azure-database-for-mysql-use-mysql-workbench-to-connect-and-query-data"></a>Azure Database for MySQL: Verwenden von MySQL Workbench zum Verbinden und Abfragen von Daten
-Dieser Schnellstart zeigt, wie Sie mit der Anwendung MySQL Workbench eine Verbindung mit einer Azure-Datenbank für MySQL herstellen. 
+# <a name="quickstart-use-mysql-workbench-to-connect-and-query-data-in-azure-database-for-mysql"></a>Schnellstart: Verwenden von MySQL Workbench zum Herstellen einer Verbindung und zum Abfragen von Daten in Azure Database for MySQL
+
+Dieser Schnellstart zeigt, wie Sie mit der Anwendung MySQL Workbench eine Verbindung mit einer Azure-Datenbank für MySQL herstellen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
+
 In diesem Schnellstart werden die Ressourcen, die in den folgenden Anleitungen erstellt wurden, als Startpunkt verwendet:
 - [Erstellen eines Servers für Azure-Datenbank für MySQL mithilfe des Azure-Portals](./quickstart-create-mysql-server-database-using-azure-portal.md)
 - [Erstellen eines Servers für Azure-Datenbank für MySQL mithilfe der Azure CLI](./quickstart-create-mysql-server-database-using-azure-cli.md)

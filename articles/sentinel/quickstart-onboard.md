@@ -9,12 +9,12 @@ ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: d895ff3a16f8e21f73845c03d8bec83ded9bcd43
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 3efd0303b447242c0229bc71720e55c8aa3a2f2d
+ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85564543"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88566249"
 ---
 # <a name="quickstart-on-board-azure-sentinel"></a>Schnellstart: Ausführen des Onboardings für Azure Sentinel
 
@@ -58,7 +58,10 @@ Nachdem Sie die Datenquellen verbunden haben, steht Ihnen ein Katalog von profes
    > - Azure Sentinel kann für Arbeitsbereiche in einer beliebigen [GA-Region von Log Analytics](https://azure.microsoft.com/global-infrastructure/services/?products=monitor) mit Ausnahme der Regionen China und Deutschland (Sovereign) ausgeführt werden. Die von Azure Sentinel generierten Daten (z. B. Vorfälle, Lesezeichen und Warnungsregeln, die möglicherweise einige aus diesen Arbeitsbereichen stammende Kundendaten enthalten) werden entweder in „Europa“ (für Arbeitsbereiche in Europa), in „Australien“ (für Arbeitsbereiche in Australien) oder in „USA, Osten“ (für Arbeitsbereiche in allen anderen Regionen) gespeichert.
 
    >[!IMPORTANT]
-   > - Nachdem Azure Sentinel für einen Arbeitsbereich aktiviert wurde, wird das Verschieben dieses Arbeitsbereichs in andere Ressourcengruppen oder Abonnements nicht unterstützt. Wenn Sie den Arbeitsbereich verschieben müssen, wenden Sie sich an [Azure Sentinel](mailto:AzureSentinel@microsoft.com).
+   >
+   > - Nach der Bereitstellung in einem Arbeitsbereich bietet Azure Sentinel **derzeit keine Unterstützung** für das Verschieben dieses Arbeitsbereichs in andere Ressourcengruppen oder Abonnements. 
+   >
+   >   Haben Sie den Arbeitsbereich bereits verschoben, deaktivieren Sie alle aktiven Regeln unter **Analytics**, und aktivieren Sie sie nach fünf Minuten wieder. Dieser Vorgang sollte in den meisten Fällen wirksam sein. Für die Iteration wird er jedoch nicht unterstützt und auf eigenes Risiko ausgeführt.
 
 1. Wählen Sie **Azure Sentinel hinzufügen** aus.
   

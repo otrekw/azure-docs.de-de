@@ -1,19 +1,17 @@
 ---
 title: Aktuelle Änderungen in Data Lake Analytics
 description: Dieser Artikel enthält eine fortlaufende Liste der jüngsten Änderungen, die an Data Lake Analytics vorgenommen wurden.
-services: data-lake-analytics
 author: xujiang1
 ms.service: data-lake-analytics
-ms.devlang: na
 ms.topic: overview
 ms.author: xujiang1
 ms.date: 07/31/2020
-ms.openlocfilehash: e78389ffc06f1b4cd4e39c15ac66215d514e9bc1
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: 6f4885594e4f67d91c595d8afdddc15e8ed4ae75
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87476315"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88263179"
 ---
 # <a name="whats-new-in-data-lake-analytics"></a>Neuerungen in Data Lake Analytics
 
@@ -35,14 +33,13 @@ Wenn Sie den Azure Data Lake Analytics-Auftrag über ein beliebiges Tool übermi
 
 Die Runtimeversion wird in unregelmäßigen Abständen aktualisiert. Die vorherige Runtime bleibt für einige Zeit verfügbar. Wenn eine neue Betaversion als Vorschau bereit ist, ist sie ebenfalls dort verfügbar.
 
-Nachfolgend sind die derzeit verfügbaren Laufzeitversionen aufgeführt.
+> [!CAUTION]
+> - Wenn Sie eine andere Laufzeit als die Standardversion auswählen, können Ihre U-SQL-Aufträge möglicherweise unterbrochen werden. Es wird dringend empfohlen, diese nicht standardmäßigen Versionen nicht für die Produktion, sondern nur für Tests zu verwenden.
+> - Für die nicht standardmäßige Runtimeversion gilt ein fester Lebenszyklus. Er läuft automatisch ab.
 
-- release-20200124live_adl_16283022_2 --> **aktuelle Standardversion**
-- release_20200124live_adl_16283022
-- release_20200124_adl_14480125
-- release_20190904_adl_10236248_1
-- release_20190904_adl_10236248
-- release_20190904_adl_9225818
+Die folgende Version ist die aktuelle Runtimestandardversion.
+
+- release-20200124live_adl_16283022_2
 
 Informationen zur Behandlung von U-SQL-Runtimefehlern finden Sie unter [Problembehandlung für U-SQL-Laufzeitfehler aufgrund von Laufzeitänderungen](runtime-troubleshoot.md).
 

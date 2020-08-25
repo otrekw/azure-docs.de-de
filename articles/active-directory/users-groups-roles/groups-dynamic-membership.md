@@ -9,21 +9,21 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: overview
-ms.date: 04/29/2020
+ms.date: 08/13/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3370a2631a81ce36fd994da73c871fb1e409c667
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8dda8c742a0aafe7ec3f46a0a9dbf0abd4a516b4
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84728366"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213803"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Regeln für eine dynamische Mitgliedschaft für Gruppen in Azure Active Directory
 
-In Azure Active Directory (Azure AD) können Sie komplexe, attributbasierte Regeln für die Aktivierung von dynamischen Mitgliedschaften für Gruppen erstellen. Mit einer dynamischen Gruppenmitgliedschaft wird der Verwaltungsaufwand für das Hinzufügen und Entfernen von Benutzern reduziert. In diesem Artikel werden die Eigenschaften und die Syntax zum Erstellen der Regeln für eine dynamische Mitgliedschaft für Benutzer oder Geräte erläutert. Sie können eine Regel für die dynamische Mitgliedschaft für Sicherheits- oder Office 365-Gruppen einrichten.
+In Azure Active Directory (Azure AD) können Sie komplexe, attributbasierte Regeln für die Aktivierung von dynamischen Mitgliedschaften für Gruppen erstellen. Mit einer dynamischen Gruppenmitgliedschaft wird der Verwaltungsaufwand für das Hinzufügen und Entfernen von Benutzern reduziert. In diesem Artikel werden die Eigenschaften und die Syntax zum Erstellen der Regeln für eine dynamische Mitgliedschaft für Benutzer oder Geräte erläutert. Sie können eine Regel für die dynamische Mitgliedschaft für Sicherheits- oder Microsoft 365-Gruppen einrichten.
 
 Wenn sich Attribute eines Benutzers oder Geräts ändern, bewertet das System alle dynamischen Gruppenregel in einem Verzeichnis, um zu ermitteln, ob die Änderung irgendwelche Vorgänge zum Hinzufügen oder Löschen von Gruppen auslöst. Falls ein Benutzer oder Gerät wird als Mitglied zu einer Gruppe hinzugefügt, wenn eine Regel dieser Gruppe erfüllt wird. Wenn sie diese Regel nicht mehr erfüllen, werden sie entfernt. Sie können ein Mitglied einer dynamischen Gruppe nicht manuell hinzufügen oder entfernen.
 
@@ -269,7 +269,7 @@ assignedPlans ist eine mehrwertige-Eigenschaft, die alle Service-Pläne aufliste
 user.assignedPlans -any (assignedPlan.servicePlanId -eq "efb87545-963c-4e0d-99df-69c6916d9eb0" -and assignedPlan.capabilityStatus -eq "Enabled")
 ```
 
-Mit einer Regel wie dieser können alle Benutzer gruppiert werden, für die eine Office 365-Funktion (oder ein anderer Microsoft-Onlinedienst) aktiviert ist. Sie könnten dann einen Satz von Richtlinien auf die Gruppe anwenden.
+Mit einer Regel wie dieser können alle Benutzer gruppiert werden, für die eine Microsoft 365-Funktion (oder ein anderer Microsoft-Onlinedienst) aktiviert ist. Sie könnten dann einen Satz von Richtlinien auf die Gruppe anwenden.
 
 #### <a name="example-2"></a>Beispiel 2
 

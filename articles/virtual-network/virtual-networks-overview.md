@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2019
 ms.author: anavin
-ms.openlocfilehash: db3eae5cd31fff0db465389ea4a09b1666453634
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 480e22b319edd03dc9bb9d666dd43718fb3c841b
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386995"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88507029"
 ---
 # <a name="what-is-azure-virtual-network"></a>Was ist Azure Virtual Network?
 
@@ -37,7 +37,7 @@ Beim Erstellen Ihres Netzwerks in Azure sind folgende allgemeine Entwurfsprinzip
 
 - Stellen Sie sicher, dass sich Adressräume nicht überschneiden. Stellen Sie sicher, dass der Adressraum Ihres VNET (CIDR-Block) sich nicht mit anderen Netzwerkbereichen Ihrer Organisation überschneidet.
 - Die Subnetze sollten nicht den gesamten Adressraum des VNET ausmachen. Planen Sie voraus, und reservieren Sie Adressraum für die Zukunft.
-- Es empfiehlt sich, einige große VNETs und nicht viele kleine VNETs zu erstellen. Dadurch verringert sich der Verwaltungsaufwand.
+- Es empfiehlt sich, einige große VNETs anstelle vieler kleiner VNETs zu erstellen. Dadurch verringert sich der Verwaltungsaufwand.
 - Schützen Sie Ihre virtuellen Netzwerke, indem Sie den untergeordneten Subnetzen Netzwerksicherheitsgruppen (NSGs) zuweisen.
 
 ## <a name="communicate-with-the-internet"></a>Kommunikation mit dem Internet

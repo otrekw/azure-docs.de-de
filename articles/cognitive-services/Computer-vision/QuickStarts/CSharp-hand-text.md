@@ -1,26 +1,26 @@
 ---
-title: 'Schnellstart: Maschinelles Sehen 2.1 und 3.0: Extrahieren von gedrucktem und handschriftlichem Text – REST, C#'
+title: 'Schnellstart: Extrahieren von Text mit dem Read-Vorgang der REST-API von Maschinelles Sehen 3.0 und C#'
 titleSuffix: Azure Cognitive Services
-description: In dieser Schnellstartanleitung extrahieren Sie gedruckten und handschriftlichen Text aus einem Bild mit der Maschinelles Sehen-API und C#.
+description: In dieser Schnellstartanleitung wenden Sie OCR auf ein Bild an, indem Sie Read-Vorgänge der REST-API von Maschinelles Sehen 3.0 und C# verwenden.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 08/05/2020
+ms.date: 08/11/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 52cba173f7d3fe4c4d65d538fac3ef850f0491e2
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: ac924d6cccbc6f36afc00154c230cac118bd9257
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87835407"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88210157"
 ---
-# <a name="quickstart-extract-printed-and-handwritten-text-using-the-computer-vision-30-rest-api-and-c"></a>Schnellstart: Extrahieren von gedrucktem und handschriftlichem Text mit der Maschinelles Sehen 3.0-REST-API und C#
+# <a name="quickstart-extract-text-using-the-computer-vision-30-rest-api-read-operation-and-c"></a>Schnellstart: Extrahieren von Text mit dem Read-Vorgang der REST-API von Maschinelles Sehen 3.0 und C#
 
-In diesem Schnellstart verwenden Sie die Maschinelles Sehen-REST-API, um gedruckten oder handschriftlichen Text aus einem Bild zu extrahieren. Mit den Methoden [Read](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) und [Get Read Result](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d9869604be85dee480c8750) können Sie Text in einem Bild erkennen und erkannte Zeichen in einen computerlesbaren Zeichenstream extrahieren. 
+In dieser Schnellstartanleitung extrahieren Sie gedruckten und handschriftlichen Text aus einem Bild, indem Sie die neue OCR-Technologie verwenden, die im Rahmen der REST-API von Maschinelles Sehen 3.0 verfügbar ist. Mit den neuen Methoden [Read](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) und [Get Read Result](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d9869604be85dee480c8750) können Sie Text in einem Bild erkennen und erkannte Zeichen als computerlesbaren Zeichendatenstrom extrahieren. 
 
 > [!IMPORTANT]
 > Die [Read](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005)-Methode wird asynchron ausgeführt. Diese Methode gibt keine Informationen im Text einer erfolgreichen Antwort zurück. Die Batch Read-Methode gibt stattdessen einen URI im Wert des Antwortheaderfelds `Operation-Location` zurück. Anschließend können Sie über diesen URI die [Get Read Result](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d9869604be85dee480c8750)-API aufrufen, um den Status zu überprüfen und die Ergebnisse des Read-Methodenaufrufs zurückzugeben.
@@ -68,7 +68,7 @@ namespace CSHttpClientSample
         static string endpoint = Environment.GetEnvironmentVariable("COMPUTER_VISION_ENDPOINT");
 
         // the Batch Read method endpoint
-        static string uriBase = endpoint + "/vision/v3.0//read/analyze";
+        static string uriBase = endpoint + "/vision/v3.0/read/analyze";
 
         // Add a local image with text here (png or jpg is OK)
         static string imageFilePath = @"my-image.png";

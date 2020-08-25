@@ -5,17 +5,17 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: overview
-ms.date: 06/29/2020
+ms.date: 08/18/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to understand what Virtual WAN is and if it is the right choice for my Azure network.
-ms.openlocfilehash: 713e980eb84032c98ccf08c52e68dab36eadd659
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.openlocfilehash: b58a729397118b01d2ff346c0d1f09f70435efae
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87513144"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88604695"
 ---
-# <a name="about-azure-virtual-wan"></a>Informationen zu Azure Virtual WAN
+# <a name="what-is-azure-virtual-wan"></a>Was ist Azure Virtual WAN?
 
 Azure Virtual WAN ist ein Netzwerkdienst, der viele Netzwerk-, Sicherheits- und Routingfunktionen auf einer einzigen Bedienoberfläche vereint. Diese Funktionen umfassen Zweigestellenverbindungen (über die Konnektivitätsautomatisierung von Virtual WAN-Partnereinrichtungen wie SD-WAN oder VPN CPE), Site-to-Site-VPN-Konnektivität, Remotebenutzer-VPN (Point-to-Site), private Konnektivität (ExpressRoute), Konnektivität zwischen Clouds (transitive Konnektivität für virtuelle Netzwerke), VPN ExpressRoute-Interkonnektivität, Routing, Azure Firewall und Verschlüsselung für private Konnektivität. Sie müssen nicht all diese Anwendungsfälle abdecken, um mit der Nutzung von Virtual WAN beginnen zu können. Sie können einfach mit nur einem Anwendungsfall loslegen und das Netzwerk dann abhängig von der weiteren Entwicklung anpassen.
 
@@ -98,15 +98,15 @@ Der Router kann über vier Routingstatus verfügen: „Bereitgestellt“, „Wir
 * Mit dem Status **Keine** wird angegeben, dass der Router nicht vom virtuellen Hub bereitgestellt wurde. Dies kann passieren, wenn das Virtual WAN den Typ *Basic* aufweist oder wenn der virtuelle Hub vor dem Verfügbarmachen des Diensts bereitgestellt wurde.
 * Mit dem Status **Fehler** wird angegeben, dass während der Instanziierung ein Fehler aufgetreten ist. Zum Instanziieren oder Zurücksetzen des Routers können Sie die Option **Router zurücksetzen** verwenden. Navigieren Sie hierzu im Azure-Portal zur Übersichtsseite des virtuellen Hubs.
 
-Für jeden Router eines virtuellen Hubs wird ein aggregierter Durchsatz von bis zu 50 GBit/s unterstützt. Für die Konnektivität zwischen den VNET-Verbindungen wird übergreifend für alle VNETs eines Virtual WAN eine Gesamtworkload von 2.000 VMs vorausgesetzt.
+Für jeden Router eines virtuellen Hubs wird ein aggregierter Durchsatz von bis zu 50 GBit/s unterstützt. Für die Konnektivität zwischen den VNET-Verbindungen wird übergreifend für alle mit einem einzelnen virtuellen Hub verbundenen VNETs eine Gesamtworkload von 2.000 VMs vorausgesetzt.
 
 #### <a name="transit-connectivity-between-vpn-and-expressroute"></a><a name="transit-er"></a>Transitkonnektivität zwischen VPN und ExpressRoute
 
-Virtual WAN ermöglicht Transitkonnektivität zwischen VPN und ExpressRoute. Dies impliziert, dass per VPN verbundene Sites oder Remotebenutzer mit Sites, die per ExpressRoute verbunden sind, kommunizieren können. Ferner wird explizit vorausgesetzt, dass das **Branch-to-Branch-Flag** aktiviert ist. Dieses Flag finden Sie in den Azure Virtual WAN-Einstellungen im Azure-Portal. Die gesamte Routenverwaltung wird vom Router des virtuellen Hubs bereitgestellt, der auch die Transitkonnektivität zwischen virtuellen Netzwerken ermöglicht.
+Virtual WAN ermöglicht Transitkonnektivität zwischen VPN und ExpressRoute. Dies impliziert, dass per VPN verbundene Sites oder Remotebenutzer mit Sites, die per ExpressRoute verbunden sind, kommunizieren können. Außerdem wird implizit vorausgesetzt, dass das **Branch-to-Branch-Flag** aktiviert ist und BGP bei VPN- und ExpressRoute-Verbindungen unterstützt wird. Dieses Flag finden Sie in den Azure Virtual WAN-Einstellungen im Azure-Portal. Die gesamte Routenverwaltung wird vom Router des virtuellen Hubs bereitgestellt, der auch die Transitkonnektivität zwischen virtuellen Netzwerken ermöglicht.
 
 ### <a name="custom-routing"></a><a name="routing"></a>Benutzerdefiniertes Routing
 
-Virtual WAN verfügt über erweiterte Routingoptionen. Beispiele hierfür sind die Einrichtung von benutzerdefinierten Routingtabellen, Optimierung des VNET-Routings mit Routenzuordnung und -verteilung, logischer Gruppierung von Routingtabellen mit Bezeichnungen und Vereinfachung vieler Routingszenarien mit virtuellen Netzwerkgeräten oder gemeinsam genutzten Diensten.
+Virtual WAN verfügt über erweiterte Routingoptionen. Beispiele hierfür sind die Einrichtung von benutzerdefinierten Routingtabellen, Optimierung des VNET-Routings mit Routenzuordnung und -verteilung, logischer Gruppierung von Routingtabellen mit Bezeichnungen und Vereinfachung vieler Routingszenarien mit virtuellen Netzwerkgeräten (Network Virtual Appliance, NVA) oder gemeinsam genutzten Diensten.
 
 ### <a name="global-vnet-peering"></a><a name="global"></a>Globales VNET-Peering
 
@@ -120,17 +120,21 @@ Azure Virtual WAN ermöglicht die Verschlüsselung Ihres ExpressRoute-Datenverke
 
 Informationen zu Standorten finden Sie in dem Artikel [Virtual WAN-Partner und -Standorte](virtual-wan-locations-partners.md).
 
-## <a name="route-tables-in-basic-and-standard-virtual-wans"></a><a name="route"></a>Routingtabellen in Virtual WAN-Instanzen vom Typ „Basic“ und „Standard“
+## <a name="route-tables-for-basic-and-standard-virtual-wans"></a><a name="route"></a>Routingtabellen für Virtual WAN-Instanzen vom Typ „Basic“ und „Standard“
 
 Routingtabellen verfügen jetzt über Features für die Zuordnung und Verteilung. Wenn eine Routingtabelle bereits vorhanden ist, verfügt sie nicht über diese Features. Falls bei Ihnen im Rahmen des Hub-Routings bereits vorhandene Routen genutzt werden und Sie diese neuen Funktionen nutzen möchten, sollten Sie Folgendes beachten:
 
-* **Kunden mit Virtual WAN vom Typ „Standard“ mit bereits vorhandenen Routen auf dem virtuellen Hub**: Wenn Sie neue Routingtabellenfunktionen verwenden möchten, warten Sie bis zum Abschluss des Rollouts in Azure in der Woche ab dem 17. August. Wenn Sie bereits über vorhandene Routen im Routing-Abschnitt für den Hub im Azure-Portal verfügen, müssen Sie diese zuerst löschen und dann versuchen, neue Routentabellen zu erstellen (verfügbar im Abschnitt „Routentabellen“ für den Hub im Azure-Portal).
+* **Kunden mit Virtual WAN vom Typ „Standard“ mit bereits vorhandenen Routen auf dem virtuellen Hub**: Wenn Sie neue Routingtabellenfunktionen verwenden möchten, warten Sie bis zum Abschluss des Rollouts in Azure in der Woche ab dem 17. August. Wenn im Azure-Portal im Abschnitt „Routing“ für den Hub bereits Routen vorhanden sind, müssen Sie diese zuerst löschen und dann versuchen, neue Routingtabellen zu erstellen (verfügbar im Abschnitt „Routingtabellen“ für den Hub im Azure-Portal).
 
-* **Kunden mit Virtual WAN vom Typ „Basic“ mit bereits vorhandenen Routen auf dem virtuellen Hub**: Wenn Sie die neuen Routingtabellenfunktionen verwenden möchten, warten Sie bis zum Abschluss des Rollouts in Azure in der Woche ab dem 17. August. Wenn Sie bereits über vorhandene Routen im Routing-Abschnitt für den Hub im Azure-Portal verfügen, müssen Sie diese zuerst löschen und dann Virtual WAN vom Typ „Basic“ auf „Standard“ **upgraden**. Weitere Informationen finden Sie unter [Upgrade eines Virtual WAN von Basic auf Standard](upgrade-virtual-wan.md).
+* **Kunden mit Virtual WAN vom Typ „Basic“ mit bereits vorhandenen Routen auf dem virtuellen Hub**: Wenn Sie die neuen Routingtabellenfunktionen verwenden möchten, warten Sie bis zum Abschluss des Rollouts in Azure in der Woche ab dem 17. August. Wenn im Azure-Portal im Abschnitt „Routing“ für den Hub bereits Routen vorhanden sind, müssen Sie diese zuerst löschen und dann Ihre Virtual WAN-Instanz vom Typ „Basic“ auf „Standard“ **upgraden**. Weitere Informationen finden Sie unter [Upgrade eines Virtual WAN von Basic auf Standard](upgrade-virtual-wan.md).
 
 ## <a name="faq"></a><a name="faq"></a>Häufig gestellte Fragen
 
 [!INCLUDE [Virtual WAN FAQ](../../includes/virtual-wan-faq-include.md)]
+
+## <a name="view-the-latest-feature-updates"></a><a name="new"></a>Anzeigen der aktuellen Featureupdates
+
+Abonnieren Sie den RSS-Feed, und zeigen Sie die neuesten Virtual WAN-Featureupdates auf der Seite [Azure-Updates](https://azure.microsoft.com/updates/?category=networking&query=VIRTUAL%20WAN) an.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

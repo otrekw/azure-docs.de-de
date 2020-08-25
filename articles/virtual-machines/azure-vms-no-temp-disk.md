@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: brbell
 ms.reviewer: mimckitt
 ms.date: 06/15/2020
-ms.openlocfilehash: c36e37ba876b4b768d852d6ecedb8e3b4d8f09d0
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 15b9495b95ec4efb4f8e9f315595ea6bfca6cd5a
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87288551"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88191153"
 ---
 # <a name="azure-vm-sizes-with-no-local-temporary-disk"></a>Azure-VM-Größen ohne lokalen temporären Datenträger 
 In diesem Artikel finden Sie Antworten auf häufig gestellte Fragen zu Azure-VM-Größen, die nicht über einen lokalen temporären Datenträger verfügen. Weitere Informationen zu diesen VM-Größen finden Sie in den [Spezifikationen für die Dv4- und Dsv4-Serie (universelle Workloads)](dv4-dsv4-series.md) oder den [Spezifikationen für die Ev4- und Esv4-Serie (arbeitsspeicheroptimierte Workloads)](ev4-esv4-series.md).
@@ -56,7 +56,7 @@ Wenn das benutzerdefinierte Betriebssystemimage auf den lokalen temporären Date
 Füllen Sie das [Feedbackformular]( https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR_Y3toRKxchLjARedqtguBRUMzdCQkw0OVVRTldFUUtXSTlLQVBPUkVHSy4u) aus. 
 
 ## <a name="next-steps"></a>Nächste Schritte 
-In diesem Artikel haben Sie Antworten auf die am häufigsten gestellten Fragen im Zusammenhang mit Azure-VMs mit lokalem temporärem Datenträger erhalten. Weitere Informationen zu diesen VM-Größen finden Sie in den folgenden Artikeln:
+In diesem Dokument haben Sie Antworten auf die am häufigsten gestellten Fragen im Zusammenhang mit Azure-VMs ohne lokalen temporären Datenträger erhalten. Weitere Informationen zu diesen VM-Größen finden Sie in den folgenden Artikeln:
 
 - [Spezifikationen für die Dv4- und Dsv4-Serie (universelle Workload)](dv4-dsv4-series.md)
 - [Spezifikationen für die Ev4- und Esv4-Serie (arbeitsspeicheroptimierte Workload)](ev4-esv4-series.md)

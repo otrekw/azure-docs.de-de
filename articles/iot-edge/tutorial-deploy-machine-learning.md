@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: ae76fab6359675a87ad252a08ebb199bf724f129
-ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
+ms.openlocfilehash: fd297ec5cfb7831a438fc51e72e3c2fc163eff49
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87439373"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88271276"
 ---
 # <a name="tutorial-deploy-azure-machine-learning-as-an-iot-edge-module-preview"></a>Tutorial: Bereitstellen von Azure Machine Learning als IoT Edge-Modul (Vorschauversion)
 
@@ -49,7 +49,7 @@ Cloudressourcen:
 
 * Eine [IoT Hub](../iot-hub/iot-hub-create-through-portal.md)-Instanz in Azure im Tarif „Free“ oder „Standard“.
 * Ein Azure Machine Learning-Arbeitsbereich. Befolgen Sie die Anweisungen unter [Verwenden des Azure-Portals zum Ausführen der ersten Schritte mit Azure Machine Learning](../machine-learning/tutorial-1st-experiment-sdk-setup.md), um einen zu erstellen und zu erfahren, wie Sie ihn verwenden.
-  * Notieren Sie sich den Arbeitsbereichsnamen, die Ressourcengruppe und die Abonnement-ID. Diese Werte sind in der Übersicht über den Arbeitsbereich im Azure-Portal verfügbar. Diese Werte verwenden Sie später im Tutorial zum Verbinden eines Azure-Notebooks mit Ihren Arbeitsbereichsressourcen.
+  * Notieren Sie sich den Arbeitsbereichsnamen, die Ressourcengruppe und die Abonnement-ID. Diese Werte sind in der Übersicht über den Arbeitsbereich im Azure-Portal verfügbar. Diese Werte verwenden Sie später im Tutorial zum Verbinden einer Azure Notebooks-Datei mit Ihren Arbeitsbereichsressourcen.
 
 ## <a name="create-and-deploy-azure-machine-learning-module"></a>Erstellen und Bereitstellen eines Azure Machine Learning-Moduls
 

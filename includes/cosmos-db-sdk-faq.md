@@ -2,36 +2,36 @@
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: include
-ms.date: 11/09/2018
+ms.date: 8/12/2020
 ms.author: sngun
-ms.openlocfilehash: 99dddd86c9348c9791d3012b382298bb020e63c9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5c5ed4e1bbe54c642202c19e1beb61de94b4f751
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "67177842"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88515211"
 ---
 **1. Wie werden Kunden über die Deaktivierung eines SDK benachrichtigt?**
 
-Bei Deaktivierung eines SDK benachrichtigt Microsoft seine Kunden 12 Monate vor Beendigung der Unterstützung, um einen reibungslosen Übergang zu einem unterstützten SDK sicherzustellen. Kunden werden über verschiedene Kommunikationskanäle benachrichtigt: Azure-Verwaltungsportal, Developer Center, Blogbeitrag und direkter Austausch mit den Administratoren der entsprechenden Dienste.
+Um einen reibungslosen Übergang zu einem unterstützten SDK zu ermöglichen, informiert Microsoft die Kunden 12 Monate im Voraus über das Ende des Supports des einzustellenden SDK. Darüber hinaus werden Kunden über verschiedene Kommunikationskanäle benachrichtigt: Azure-Portal, Azure-Updates und direkte Kommunikation mit den entsprechenden Dienstadministratoren.
 
-**2. Können Kunden mit einem Azure Cosmos DB SDK, das deaktiviert werden soll, während des 12-monatigen Zeitraums Anwendungen entwickeln?** 
+**2. Können Kunden mit einem Azure Cosmos DB SDK, das eingestellt werden soll, während des 12-monatigen Zeitraums Anwendungen erstellen?** 
 
-Ja, mit einem solchen Azure Cosmos DB SDK können Kunden während der 12-monatigen Frist Anwendungen bei vollem Zugriff erstellen, bereitstellen und ändern. Während der 12-monatigen Frist wird Kunden empfohlen, ggf. zu einer neueren unterstützten Version des Azure Cosmos DB SDK zu wechseln.
+Ja, mit einem solchen Azure Cosmos DB SDK können Kunden während der 12-monatigen Frist Anwendungen bei vollem Zugriff erstellen, bereitstellen und ändern. Während der 12-monatigen Frist wird Kunden empfohlen, ggf. zu einer neueren unterstützten Version des Azure Cosmos DB SDK zu migrieren. 
 
-**3. Können Kunden mit einem deaktivierten Azure Cosmos DB SDK nach Ablauf des 12-monatigen Benachrichtigungszeitraums Anwendungen erstellen und ändern?**
+**3. Was geschieht nach dem Deaktivierungsdatum mit Anwendungen, die das nicht unterstützte Azure Cosmos DB SDK verwenden?** 
 
-Das SDK wird nach Ablauf des 12-monatigen Benachrichtigungszeitraums deaktiviert. Der Zugriff auf Azure Cosmos DB durch eine Anwendung mithilfe eines deaktivierten SDK wird von der Azure Cosmos DB-Plattform nicht zugelassen. Darüber hinaus bietet Microsoft keinen Kundensupport für das deaktivierte SDK.
+Nach dem Deaktivierungsdatum werden von Azure Cosmos DB für die eingestellten SDK-Versionen keine Fehlerbehebungen mehr durchgeführt und keine neuen Funktionen hinzugefügt, und es wird auch keine Unterstützung mehr dafür bereitgestellt. Wenn Sie kein Upgrade durchführen möchten, werden von den eingestellten Versionen des SDK gesendete Anforderungen weiterhin vom Azure Cosmos DB-Dienst bedient. 
 
-**4. Was geschieht mit Kunden, die Anwendungen ausführen, für die eine nicht unterstützte Version des Azure Cosmos DB SDK verwendet wird?**
+**4. Welche SDK-Versionen werden über die neuesten Funktionen und Updates verfügen?**
 
-Alle Versuche zum Herstellen einer Verbindung mit dem Azure Cosmos DB-Dienst mit einer deaktivierten SDK-Version werden abgelehnt. 
+Neue Funktionen und Updates werden nur der aktuellen Nebenversion der neuesten unterstützten SDK-Hauptversion hinzugefügt. Es wird empfohlen, immer die aktuelle Version zu verwenden, um die Vorteile von neuen Funktionen, Leistungsverbesserungen und Fehlerbehebungen nutzen zu können. Wenn Sie eine alte, noch aktivierte Version des SDK verwenden, funktionieren Ihre Anforderungen an Azure Cosmos DB weiterhin, aber Sie haben keinen Zugriff auf neue Funktionen.  
 
-**5. Werden neue Features und Funktionen auf alle noch aktivierten SDKs angewendet?**
+**5. Was muss ich tun, wenn ich meine Anwendung nicht vor einem Stichtag aktualisieren kann?**
 
-Neue Features und Funktionen werden nur neuen Versionen hinzugefügt. Wenn Sie eine alte, noch aktivierte Version des SDK verwenden, funktionieren Ihre Anforderungen an Azure Cosmos DB weiter wie bisher, aber Sie haben keinen Zugriff auf neue Funktionen.  
+Es wird empfohlen, so früh wie möglich auf das neueste SDK zu aktualisieren. Nachdem ein SDK für die Einstellung markiert wurde, bleiben Ihnen 12 Monate zur Aktualisierung Ihrer Anwendung. Wenn Sie die Aktualisierung nicht bis zum Deaktivierungsdatum vornehmen können, werden von den eingestellten Versionen des SDK gesendete Anforderungen weiterhin von Azure Cosmos DB bedient, sodass Ihre ausgeführten Anwendungen weiterhin funktionieren. Für die eingestellten SDK-Versionen werden jedoch von Azure Cosmos DB keine Fehlerbehebungen mehr durchgeführt und keine neuen Funktionen hinzugefügt, und es wird auch keine Unterstützung mehr dafür bereitgestellt. 
 
-**6. Was muss ich tun, wenn ich meine Anwendung nicht vor einem Stichtag aktualisieren kann?**
+Wenn Sie über einen Supportplan verfügen und technischen Support benötigen, [kontaktieren Sie uns](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview), indem Sie ein Supportticket erstellen.
+    
 
-Es wird empfohlen, so früh wie möglich auf das neueste SDK zu aktualisieren. Sobald ein SDK für die Deaktivierung markiert wurde, bleiben Ihnen 12 Monate zur Aktualisierung Ihrer Anwendung. Wenn Sie aus einem beliebigen Grund die Aktualisierung der Anwendung in diesem Zeitraum nicht schaffen, kontaktieren Sie das [Cosmos DB-Team](mailto:askcosmosdb@microsoft.com), und bitten Sie vor dem Stichtag um Hilfe.
 

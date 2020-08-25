@@ -1,17 +1,17 @@
 ---
 title: 'Tutorial: Erstellen des Azure FXT Edge Filer-Cacheclusters'
-description: Erstellen eines Cacheclusters für Hybridspeicher mit Azure FXT Edge Filer
+description: Hier erfahren Sie, wie Sie mit Azure FXT Edge Filer einen Cachecluster für Hybridspeicher erstellen und sich zum Konfigurieren der Clustereinstellungen bei der Systemsteuerung des Clusters anmelden.
 author: ekpgh
 ms.author: rohogue
 ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 07/01/2019
-ms.openlocfilehash: bfe1d1aeeac55039acf0c7eb295001277be9cd2e
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 7a471868bac8f5e0623942c0cc1dc4af4e3881e7
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84693072"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185348"
 ---
 # <a name="tutorial-create-the-azure-fxt-edge-filer-cluster"></a>Tutorial: Erstellen des Azure FXT Edge Filer-Clusters
 

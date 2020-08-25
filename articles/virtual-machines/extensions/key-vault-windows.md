@@ -8,12 +8,12 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: d66ef8f142a72bfdea2dcf3eeb996b18173de04d
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 18ca9244f818fa745725f13d79a23c1a232e01ed
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86502961"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88545385"
 ---
 # <a name="key-vault-virtual-machine-extension-for-windows"></a>Key Vault-VM-Erweiterung für Windows
 
@@ -73,9 +73,9 @@ Im folgenden JSON-Code ist das Schema für die Key Vault-VM-Erweiterung dargeste
 > 
 > Der Grund: Der Pfad `/secrets` gibt das vollständige Zertifikat einschließlich des privaten Schlüssels zurück, der Pfad `/certificates` dagegen nicht. Weitere Informationen zu Zertifikaten finden Sie hier: [Key Vault-Zertifikate](../../key-vault/general/about-keys-secrets-certificates.md)
 
-> [!NOTE]
-> Die Eigenschaft „authenticationSettings“ ist optional für Szenarios, in denen der VM mehrere Identitäten zugewiesen sind.
-> Mit dieser Eigenschaft kann die Identität angegeben werden, die für die Authentifizierung bei Key Vault verwendet werden soll.
+> [!IMPORTANT]
+> Die Eigenschaft „authenticationSettings“ ist nur **erforderlich**, wenn Sie VMs mit **benutzerseitig zugewiesenen Identitäten** verwenden.
+> Sie gibt die Identität an, die für die Authentifizierung bei Key Vault verwendet werden soll.
 
 
 ### <a name="property-values"></a>Eigenschaftswerte

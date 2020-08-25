@@ -5,14 +5,14 @@ keywords: App Service, Azure App Service, Domänenzuordnung, Domänenname, vorha
 ms.assetid: dc446e0e-0958-48ea-8d99-441d2b947a7c
 ms.devlang: nodejs
 ms.topic: tutorial
-ms.date: 04/27/2020
+ms.date: 08/13/2020
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 96a947a20a17c4dc08851824a392143ce162f186
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: c301876a57b3be4a112c7df2706bf17389a5af44
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543559"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88190056"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>Tutorial: Zuordnen eines vorhandenen benutzerdefinierten DNS-Namens zu Azure App Service
 
@@ -125,11 +125,11 @@ Falls Sie eine andere Unterdomäne als `www` verwenden, müssen Sie `www` durch 
 
 #### <a name="create-the-cname-record"></a>Erstellen des CNAME-Eintrags
 
-Ordnen Sie dem Standarddomänennamen der App (`<app_name>.azurewebsites.net`, wobei `<app_name>` der Name Ihrer App ist) eine Unterdomäne zu. Erstellen Sie zwei Einträge, um eine CNAME-Zuordnung für die Unterdomäne `www` zu erstellen:
+Ordnen Sie dem Standarddomänennamen der App (`<app-name>.azurewebsites.net`, wobei `<app-name>` der Name Ihrer App ist) eine Unterdomäne zu. Erstellen Sie zwei Einträge, um eine CNAME-Zuordnung für die Unterdomäne `www` zu erstellen:
 
 | Eintragstyp | Host | Wert | Kommentare |
 | - | - | - |
-| CNAME | `www` | `<app_name>.azurewebsites.net` | Die Domänenzuordnung selbst |
+| CNAME | `www` | `<app-name>.azurewebsites.net` | Die Domänenzuordnung selbst |
 | TXT | `asuid.www` | [Die zuvor abgerufene Verifizierungs-ID](#get-domain-verification-id) | App Service greift auf den TXT-Eintrag `asuid.<subdomain>` zu, um den Besitz der benutzerdefinierten Domäne zu überprüfen. |
 
 Nach dem Hinzufügen des CNAME- und des TXT-Eintrags sieht die Seite mit den DNS-Einträgen wie im folgenden Beispiel aus:
@@ -210,7 +210,7 @@ Erstellen Sie zwei Einträge, um einer App (in der Regel der Stammdomäne) einen
 > | Eintragstyp | Host | Wert |
 > | - | - | - |
 > | Ein | `www` | IP-Adresse aus dem Schritt [Kopieren der IP-Adresse der App](#info) |
-> | TXT | `asuid.www` | `<app_name>.azurewebsites.net` |
+> | TXT | `asuid.www` | `<app-name>.azurewebsites.net` |
 >
 
 Wenn die Einträge hinzugefügt werden, sieht die Seite mit den DNS-Einträgen wie im folgenden Beispiel aus:
@@ -262,9 +262,14 @@ Im Beispiel des Tutorials ordnen Sie der App Service-App einen [DNS-Platzhaltern
 
 #### <a name="create-the-cname-record"></a>Erstellen des CNAME-Eintrags
 
-Fügen Sie einen CNAME-Eintrag hinzu, um dem Standarddomänennamen der App (`<app_name>.azurewebsites.net`) einen Platzhalternamen zuzuordnen.
+Ordnen Sie dem Standarddomänennamen der App (`<app-name>.azurewebsites.net`, wobei `<app-name>` der Name Ihrer App ist) den Platzhalternamen `*` zu. Erstellen Sie zwei Datensätze, um den Platzhalternamen zuzuordnen:
 
-Im Domänenbeispiel `*.contoso.com` ordnet der CNAME-Eintrag `<app_name>.azurewebsites.net` den Namen `*` zu.
+| Eintragstyp | Host | Wert | Kommentare |
+| - | - | - |
+| CNAME | `*` | `<app-name>.azurewebsites.net` | Die Domänenzuordnung selbst |
+| TXT | `asuid` | [Die zuvor abgerufene Verifizierungs-ID](#get-domain-verification-id) | App Service greift auf den TXT-Eintrag `asuid` zu, um den Besitz der benutzerdefinierten Domäne zu überprüfen. |
+
+Im Domänenbeispiel `*.contoso.com` ordnet der CNAME-Eintrag `<app-name>.azurewebsites.net` den Namen `*` zu.
 
 Wenn der CNAME-Eintrag hinzugefügt wird, sieht die Seite mit den DNS-Einträgen wie im folgenden Beispiel aus:
 
@@ -272,7 +277,7 @@ Wenn der CNAME-Eintrag hinzugefügt wird, sieht die Seite mit den DNS-Einträgen
 
 #### <a name="enable-the-cname-record-mapping-in-the-app"></a>Aktivieren der Zuordnung von CNAME-Einträgen in der App
 
-Sie können jetzt eine beliebige Unterdomäne hinzufügen, mit der der Platzhaltername der App zugeordnet wird (z.B. `sub1.contoso.com` und `sub2.contoso.com` zu `*.contoso.com`).
+Sie können jetzt eine beliebige Unterdomäne hinzufügen, mit der der Platzhaltername der App zugeordnet wird (z. B. `sub1.contoso.com` und `sub2.contoso.com` zu `*.contoso.com`).
 
 Wählen Sie im linken Navigationsbereich der App-Seite im Azure-Portal die Option **Benutzerdefinierte Domänen**.
 
@@ -336,13 +341,13 @@ Nach Abschluss des Vorgangs sollte Ihre App die korrekte Seite unter dem Stammpf
 
 Durch die [Azure CLI](/cli/azure/install-azure-cli) oder durch [Azure PowerShell](/powershell/azure/) können Sie mithilfe von Skripts die Verwaltung von benutzerdefinierten Domänen automatisieren. 
 
-### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle 
+### <a name="azure-cli"></a>Azure CLI 
 
 Mit dem folgenden Befehl wird ein konfigurierter benutzerdefinierter DNS-Name zu einer App Service-App hinzugefügt. 
 
 ```bash 
 az webapp config hostname add \
-    --webapp-name <app_name> \
+    --webapp-name <app-name> \
     --resource-group <resource_group_name> \
     --hostname <fully_qualified_domain_name>
 ``` 
@@ -357,9 +362,9 @@ Mit dem folgenden Befehl wird ein konfigurierter benutzerdefinierter DNS-Name zu
 
 ```powershell  
 Set-AzWebApp `
-    -Name <app_name> `
+    -Name <app-name> `
     -ResourceGroupName <resource_group_name> ` 
-    -HostNames @("<fully_qualified_domain_name>","<app_name>.azurewebsites.net")
+    -HostNames @("<fully_qualified_domain_name>","<app-name>.azurewebsites.net")
 ```
 
 Weitere Informationen finden Sie unter [Zuordnen einer benutzerdefinierten Domäne zu einer Web-App](scripts/powershell-configure-custom-domain.md).

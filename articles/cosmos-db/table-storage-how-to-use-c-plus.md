@@ -8,12 +8,12 @@ ms.topic: sample
 ms.date: 10/07/2019
 author: sakash279
 ms.author: akshanka
-ms.openlocfilehash: e6d61e329ba91f53b11ace4d258b35950e188dcb
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 3d38fa2afe35976283e5129eab7d7f8ef3a1103b
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76771216"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88236487"
 ---
 # <a name="how-to-use-azure-table-storage-and-azure-cosmos-db-table-api-with-c"></a>Verwenden von Azure Table Storage und der Azure Cosmos DB-Tabellen-API mit C++
 
@@ -91,14 +91,14 @@ const utility::string_t storage_connection_string(U("DefaultEndpointsProtocol=ht
 
 Verwenden Sie für `<your_cosmos_db_account>` den Namen Ihres Azure Cosmos DB-Kontos. Geben Sie für `<your_cosmos_db_account_key>` Ihren Primärschlüssel ein. Geben Sie für `<your_cosmos_db_endpoint>` den Endpunkt ein, der im [Azure-Portal](https://portal.azure.com) angegeben ist.
 
-Zum Testen der Anwendung auf Ihrem lokalen Windows-basierten Computer können Sie den Azure-Speicheremulator verwenden, der mit dem [Azure SDK](https://azure.microsoft.com/downloads/) installiert wird. Der Speicheremulator ist ein Dienstprogramm, das die in Azure verfügbaren BLOB-, Warteschlangen- und Tabellenspeicherdienste auf dem lokalen Entwicklungscomputer simuliert. Im folgenden Beispiel ist dargestellt, wie Sie ein statisches Feld zur Übergabe der Verbindungszeichenfolge an den lokalen Speicheremulator deklarieren:  
+Zum Testen der Anwendung auf Ihrem lokalen Windows-basierten Computer können Sie den Azure-Speicheremulator verwenden, der mit dem [Azure SDK](https://azure.microsoft.com/downloads/) installiert wird. Der Speicheremulator ist ein Dienstprogramm, das die in Azure verfügbaren Blob-, Warteschlangen- und Tabellenspeicherdienste auf dem lokalen Entwicklungscomputer simuliert. Im folgenden Beispiel ist dargestellt, wie Sie ein statisches Feld zur Übergabe der Verbindungszeichenfolge an den lokalen Speicheremulator deklarieren:  
 
 ```cpp
 // Define the connection string with Azure storage emulator.
 const utility::string_t storage_connection_string(U("UseDevelopmentStorage=true;"));  
 ```
 
-Wählen Sie auf Ihrem Windows-Desktop die Schaltfläche **Start** oder die Windows-Taste aus, um den Azure-Speicheremulator zu starten. Geben Sie *Microsoft Azure-Speicheremulator* ein, und führen Sie ihn aus. Weitere Informationen finden Sie unter [Einsatz des Azure-Speicheremulators für Entwicklung und Tests](../storage/common/storage-use-emulator.md).
+Wählen Sie auf Ihrem Windows-Desktop die Schaltfläche **Start** oder die Windows-Taste aus, um den Azure-Speicheremulator zu starten. Geben Sie *Microsoft Azure-Speicheremulator* ein, und führen Sie ihn aus. Weitere Informationen finden Sie unter [Verwenden des Azure-Speicheremulators für Entwicklung und Tests](../storage/common/storage-use-emulator.md).
 
 ### <a name="retrieve-your-connection-string"></a>Abrufen der Verbindungszeichenfolge
 
