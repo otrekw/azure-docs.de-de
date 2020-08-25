@@ -4,10 +4,10 @@ description: In diesem Tutorial erstellen Sie über das Azure-Portal ein Lab in 
 ms.topic: tutorial
 ms.date: 06/26/2020
 ms.openlocfilehash: 9d016b38beb2f338a97ac862a060dc5ec3a77780
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "85476562"
 ---
 # <a name="tutorial-set-up-a-lab-by-using-azure-devtest-labs"></a>Tutorial: Erstellen eines Labs mithilfe von Azure DevTest Labs

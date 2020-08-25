@@ -4,10 +4,10 @@ description: 'Tutorial: Hier wird beschrieben, wie Sie eine Azure Relay-Hostanw
 ms.topic: tutorial
 ms.date: 06/23/2020
 ms.openlocfilehash: 0d42bd664be0881ee0c1f036231acc67e49b6f8a
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "85316641"
 ---
 # <a name="tutorial-azure-wcf-relay-rest-tutorial"></a>Tutorial: Tutorial zu Azure WCF Relay mit REST

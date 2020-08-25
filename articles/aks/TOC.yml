@@ -60,7 +60,7 @@
           href: ./security-controls-policy.md
     - name: Netzwerk
       href: concepts-network.md
-    - name: Speicher
+    - name: Storage
       href: concepts-storage.md
     - name: Skalieren
       href: concepts-scale.md
@@ -366,6 +366,8 @@
           href: ssh.md
         - name: Linux-Leistungstools
           href: troubleshoot-linux.md
+        - name: Suchen nach Resource Health-Ereignissen (Vorschau)
+          href: aks-resource-health.md
 - name: Verweis
   items:
     - name: Azure CLI

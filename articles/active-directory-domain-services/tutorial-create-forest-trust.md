@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: a17764984e33e4312b9d81a5743d851dc14b5c05
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 24928ec4117b321cfec7177fdad40f2a3ab7a1f4
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87492155"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88722720"
 ---
 # <a name="tutorial-create-an-outbound-forest-trust-to-an-on-premises-domain-in-azure-active-directory-domain-services"></a>Tutorial: Erstellen einer ausgehenden Gesamtstruktur-Vertrauensstellung zu einer lokalen Domäne in Azure Active Directory Domain Services
 
@@ -128,7 +128,7 @@ Mit den folgenden gängigen Szenarien können Sie überprüfen, ob die Gesamtstr
 
 Der virtuelle Windows Server-Computer muss mit der verwalteten Domäne verknüpft sein. Verwenden Sie diesen virtuellen Computer, um zu testen, ob der lokale Benutzer sich bei einem virtuellen Computer authentifizieren kann. Bei Bedarf können Sie [einen virtuellen Windows-Computer erstellen und mit der verwalteten Domäne verknüpfen][join-windows-vm].
 
-1. Stellen Sie über [Azure Bastion](https://docs.microsoft.com/azure/bastion/bastion-overview) und Ihre Azure AD DS-Administratoranmeldeinformationen eine Verbindung mit dem virtuellen Windows Server-Computer her, der mit der Azure AD DS-Ressourcengesamtstruktur verknüpft ist.
+1. Stellen Sie über [Azure Bastion](../bastion/bastion-overview.md) und Ihre Azure AD DS-Administratoranmeldeinformationen eine Verbindung mit dem virtuellen Windows Server-Computer her, der mit der Azure AD DS-Ressourcengesamtstruktur verknüpft ist.
 1. Öffnen Sie eine Eingabeaufforderung, und verwenden Sie den `whoami`-Befehl, um den kennzeichnenden Namen (distinguished name) des derzeit authentifizierten Benutzers anzuzeigen:
 
     ```console
@@ -150,7 +150,7 @@ Mit dem virtuellen Windows Server-Computer, der mit der Azure AD DS-Ressourcenge
 
 #### <a name="enable-file-and-printer-sharing"></a>Aktivieren von Datei- und Druckerfreigabe
 
-1. Stellen Sie über [Azure Bastion](https://docs.microsoft.com/azure/bastion/bastion-overview) und Ihre Azure AD DS-Administratoranmeldeinformationen eine Verbindung mit dem virtuellen Windows Server-Computer her, der mit der Azure AD DS-Ressourcengesamtstruktur verknüpft ist.
+1. Stellen Sie über [Azure Bastion](../bastion/bastion-overview.md) und Ihre Azure AD DS-Administratoranmeldeinformationen eine Verbindung mit dem virtuellen Windows Server-Computer her, der mit der Azure AD DS-Ressourcengesamtstruktur verknüpft ist.
 
 1. Öffnen Sie **Windows-Einstellungen**, suchen Sie nach **Netzwerk- und Freigabecenter**, und wählen Sie diese Option aus.
 1. Wählen Sie die Option **Erweiterte Freigabeeinstellungen ändern** aus.
