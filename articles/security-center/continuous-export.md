@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 03/13/2020
 ms.author: memildin
-ms.openlocfilehash: 3bfaa9f2961dca2b8b717b1506d112943910485a
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.openlocfilehash: eb7f642e36bd72f963481cb392d7e3a6c2555816
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88042320"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88612383"
 ---
 # <a name="export-security-alerts-and-recommendations"></a>Exportieren von Sicherheitswarnungen und -empfehlungen
 
@@ -35,7 +35,7 @@ Mit diesen Tools können Sie folgende Aktionen ausführen:
 |----|:----|
 |Status des Release:|Allgemein verfügbar|
 |Preise:|Free-Tarif|
-|Erforderliche Rollen und Berechtigungen:|**Leser** für das Abonnement, das die Exportkonfiguration enthält<br>**Rolle „Sicherheitsadministrator“** für die Ressourcengruppe (oder **Besitzer**)<br>Außerdem sind Schreibberechtigungen für die Zielressource erforderlich|
+|Erforderliche Rollen und Berechtigungen:|**Rolle „Sicherheitsadministrator“** für die Ressourcengruppe (oder **Besitzer**)<br>Außerdem sind Schreibberechtigungen für die Zielressource erforderlich|
 |Clouds:|![Ja](./media/icons/yes-icon.png) Kommerzielle Clouds<br>![Ja](./media/icons/yes-icon.png) US Gov<br>![Nein](./media/icons/no-icon.png) China Gov/andere Gov|
 |||
 
@@ -57,7 +57,29 @@ Die folgenden Schritte sind unabhängig davon erforderlich, ob Sie einen fortlau
 
 1. Wählen Sie im Bereich „Exportziel“ aus, wo die Daten gespeichert werden sollen. Daten können in einem Ziel in einem anderen Abonnement gespeichert werden (z.B. in einer Central Event Hub-Instanz oder in einem zentralen Log Analytics-Arbeitsbereich).
 
-1. Klicken Sie auf **Speichern**.
+1. Wählen Sie **Speichern** aus.
+
+
+## <a name="setting-up-continuous-export-via-the-rest-api"></a>Einrichten des fortlaufenden Exports über die REST-API
+
+Das Feature des fortlaufenden Exports kann über die [Automatisierungs-API](https://docs.microsoft.com/rest/api/securitycenter/automations) von Azure Security Center konfiguriert und verwaltet werden. Verwenden Sie diese API, um Automatisierungen für den Export in eines der folgenden möglichen Ziele zu erstellen oder zu aktualisieren:
+
+- Azure Event Hub
+- Log Analytics-Arbeitsbereich
+- Azure Logic Apps 
+
+Die API bietet zusätzliche Funktionen, die im Azure-Portal nicht verfügbar sind, z. B.:
+
+* **Größeres Volumen**Die API ermöglicht es Ihnen, mehrere Exportkonfigurationen für ein einzelnes Abonnement zu erstellen. Die Seite **Fortlaufender Export** in der Benutzeroberfläche des Security Center-Portals unterstützt nur eine Exportkonfiguration pro Abonnement.
+
+* **Zusätzliche Features** – Die API bietet zusätzliche Parameter, die nicht in der Benutzeroberfläche angezeigt werden. Beispielsweise können Sie Ihrer Automatisierungsressource Tags hinzufügen und Ihren Export auf der Grundlage einer breiteren Palette von Warn- und Empfehlungseigenschaften definieren, als sie auf der Seite **Fortlaufender Export** in der Benutzeroberfläche des Security Center-Portals angeboten werden.
+
+* **Stärker fokussierte Bereiche**: Die API bietet eine differenziertere Ebene für den Umfang ihrer Exportkonfigurationen. Wenn Sie einen Export mit der API definieren, können Sie dies auf der Ebene der Ressourcengruppe tun. Wenn Sie die Seite **Fortlaufender Export** in der Benutzeroberfläche des Security Center-Portals verwenden, müssen Sie sie auf der Abonnementsebene definieren.
+
+    > [!TIP]
+    > Wenn Sie mehrere Exportkonfigurationen mit der API eingerichtet haben oder reine API-Parameter verwendet haben, werden diese zusätzlichen Features nicht in der Security Center-Benutzeroberfläche angezeigt. Stattdessen erscheint ein Banner, das Sie darüber informiert, dass andere Konfigurationen existieren.
+
+Weitere Informationen zur Automatisierungen-API finden Sie in der [REST-API-Dokumentation](https://docs.microsoft.com/rest/api/securitycenter/automations).
 
 
 
@@ -109,7 +131,7 @@ Azure Monitor bietet eine einheitliche Warnungsbenutzeroberfläche für eine Vie
 
 Konfigurieren Sie eine Warnungsregel, die auf Log Analytics-Abfragen (Protokollwarnung) basiert, um Warnungen und Empfehlungen von Security Center in Azure Monitor anzuzeigen:
 
-1. Klicken Sie auf der Seite **Warnungen** von Azure Monitor auf **Neue Warnungsregel**.
+1. Wählen Sie auf der Seite **Warnungen** von Azure Monitor **Neue Warnungsregel** aus.
 
     ![Seite „Warnungen“ von Azure Monitor](./media/continuous-export/azure-monitor-alerts.png)
 
@@ -126,12 +148,25 @@ Nun sehen Sie in Azure Monitor-Warnungen neue Azure Security Center-Warnungen od
 
 ## <a name="manual-one-time-export-of-security-alerts"></a>Manueller einmaliger Export von Sicherheitswarnungen
 
-Wenn Sie einen CSV-Bericht für Warnungen oder Empfehlungen herunterladen möchten, öffnen Sie die Seite **Sicherheitswarnungen** oder **Empfehlungen**, und klicken Sie auf **CSV-Bericht herunterladen**.
+Wenn Sie einen CSV-Bericht für Warnungen oder Empfehlungen herunterladen möchten, öffnen Sie die Seite **Sicherheitswarnungen** oder **Empfehlungen**, und wählen Sie **CSV-Bericht herunterladen** aus.
 
 [![Herunterladen von Warnungsdaten als CSV-Datei](media/continuous-export/download-alerts-csv.png)](media/continuous-export/download-alerts-csv.png#lightbox)
 
 > [!NOTE]
 > Diese Berichte enthalten Warnungen und Empfehlungen für Ressourcen in den aktuell ausgewählten Abonnements.
+
+
+
+## <a name="faq---continuous-export"></a>Häufig gestellte Fragen – Fortlaufender Export
+
+### <a name="what-are-the-costs-involved-in-exporting-data"></a>Welche Kosten sind mit dem Datenexport verbunden?
+
+Für die Ermöglichung eines fortlaufenden Exports fallen keine Kosten an. Möglicherweise fallen Kosten für die Erfassung und Aufbewahrung von Daten in Ihrem Log Analytics-Arbeitsbereich an, abhängig von Ihrer Konfiguration. 
+
+Weitere Informationen: [Preise für Log Analytics-Arbeitsbereiche](https://azure.microsoft.com/pricing/details/monitor/).
+
+Weitere Informationen: [Azure Event Hub – Preise](https://azure.microsoft.com/pricing/details/event-hubs/).
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 07/17/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 44c43505bb779c3e00af19bed3a3fd3844c16bfe
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 262c12b1fb1d5c768b178d6e56c2964527f34495
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87923831"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607210"
 ---
 # <a name="quickstart-create-a-public-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>Schnellstart: Erstellen eines öffentlichen Lastenausgleichs für den Lastenausgleich virtueller Computer über das Azure-Portal
 
@@ -36,14 +36,12 @@ Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim 
 
 ---
 
-# <a name="option-1-default-create-a-public-load-balancer-standard-sku"></a>[Option 1 (Standard): Erstellen eines öffentlichen Lastenausgleichs (Standard-SKU)](#tab/option-1-create-load-balancer-standard)
+# <a name="standard-sku"></a>[**Standard-SKU**](#tab/option-1-create-load-balancer-standard)
 
 >[!NOTE]
 >Ein Lastenausgleich mit Standard-SKU wird für Produktionsworkloads empfohlen.  Weitere Informationen zu SKUs finden Sie unter **[Azure Load Balancer-SKUs](skus.md)** .
 
 In diesem Abschnitt wird ein Lastenausgleich für virtuelle Computer erstellt. 
-
-Sie können eine öffentliche oder eine interne Load Balancer-Instanz erstellen. 
 
 Wenn Sie einen öffentlichen Lastenausgleich erstellen, muss für den Lastenausgleich auch eine neue, als Front-End konfigurierte öffentliche IP-Adresse erstellt werden. Dieses Front-End hat standardmäßig den Namen **LoadBalancerFrontend**.
 
@@ -317,14 +315,12 @@ Weitere Informationen zu ausgehenden Verbindungen finden Sie unter [Ausgehende V
 
 8. Wählen Sie **Speichern** aus.
 
-# <a name="option-2-create-a-public-load-balancer-basic-sku"></a>[Option 2: Erstellen eines öffentlichen Lastenausgleichs (Basic-SKU)](#tab/option-1-create-load-balancer-basic)
+# <a name="basic-sku"></a>[**Basic-SKU**](#tab/option-1-create-load-balancer-basic)
 
 >[!NOTE]
 >Ein Lastenausgleich mit Standard-SKU wird für Produktionsworkloads empfohlen.  Weitere Informationen zu SKUs finden Sie unter **[Azure Load Balancer-SKUs](skus.md)** .
 
 In diesem Abschnitt wird ein Lastenausgleich für virtuelle Computer erstellt. 
-
-Sie können eine öffentliche oder eine interne Load Balancer-Instanz erstellen. 
 
 Wenn Sie einen öffentlichen Lastenausgleich erstellen, muss für den Lastenausgleich auch eine neue, als Front-End konfigurierte öffentliche IP-Adresse erstellt werden. Dieses Front-End hat standardmäßig den Namen **LoadBalancerFrontend**.
 

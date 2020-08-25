@@ -3,10 +3,8 @@
 - name: Übersicht
   expanded: true
   items:
-    - name: Worum handelt es sich beim Speech-Dienst?
+    - name: Übersicht über den Speech-Dienst
       href: overview.md
-    - name: Kostenloses Testen des Speech-Diensts
-      href: get-started.md
     - name: Unterstützung von Sprachen und Stimmen
       displayName: 'languages,locales,voice,gender,language code,locale,locale code,neural voice,standard voice'
       href: language-support.md
