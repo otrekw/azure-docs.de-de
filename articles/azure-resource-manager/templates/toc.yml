@@ -23,7 +23,7 @@
             - name: Virtueller Computer für Data Science
               href: ../../machine-learning/data-science-virtual-machine/dsvm-tutorial-resource-manager.md?toc=/azure/azure-resource-manager/templates/toc.json
             - name: Machine Learning
-              href: ../../machine-learning/tutorial-resource-manager-workspace.md?toc=/azure/azure-resource-manager/templates/toc.json
+              href: ../../machine-learning/how-to-create-workspace-template.md?toc=/azure/azure-resource-manager/templates/toc.json
         - name: Analytics
           items:
             - name: Analysis Services
@@ -283,7 +283,7 @@
           href: template-expressions.md
         - name: Parameter
           href: template-parameters.md
-        - name: Variablen
+        - name: Variables
           href: template-variables.md
         - name: Benutzerdefinierte Funktionen
           href: template-user-defined-functions.md

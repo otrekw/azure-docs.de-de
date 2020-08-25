@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: tutorial
 ms.date: 05/26/2020
 ms.author: swmachan
-ms.openlocfilehash: f80d22adc432a81fcc88391e71ed7540399fa559
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 70550b61354c23889836b48be6f09475569ecd52
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83995733"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589655"
 ---
 # <a name="tutorial-create-a-translation-app-with-wpf"></a>Tutorial: Erstellen einer Übersetzungs-App mit WPF
 
@@ -40,7 +40,7 @@ Die Liste enthält die in diesem Tutorial verwendeten Cognitive Services. Verwen
 | Dienst | Funktion | BESCHREIBUNG |
 |---------|---------|-------------|
 | Übersetzer | [Get Languages](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-languages) | Ruft eine vollständige Liste mit den unterstützten Sprachen für die Textübersetzung ab. |
-| Übersetzer | [Translate](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate) | Übersetzt Text in mehr als 60 Sprachen. |
+| Übersetzer | [Translate](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate) | Übersetzt Text in mehr als 70 Sprachen. |
 | Übersetzer | [Detect](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-detect) | Erkennt die Sprache des Eingabetexts. Enthält eine Zuverlässigkeitsbewertung für die Erkennung. |
 | Bing-Rechtschreibprüfung | [Spell Check](https://docs.microsoft.com/rest/api/cognitiveservices/bing-spell-check-api-v7-reference) | Korrigiert Rechtschreibfehler, um die Genauigkeit der Übersetzung zu verbessern. |
 
@@ -263,7 +263,7 @@ Abschließend haben wir Code zum Aufrufen von Methoden hinzugefügt, um Sprachen
 
 ## <a name="get-supported-languages"></a>Abrufen der unterstützten Sprachen
 
-Translator unterstützt derzeit mehr als 60 Sprachen. Da im Laufe der Zeit Unterstützung für neue Sprachen hinzugefügt wird, empfehlen wir Ihnen, die von Translator verfügbar gemachte Ressource „Languages“ aufzurufen, anstatt die Sprachenliste in Ihrer App hartzucodieren.
+Übersetzer unterstützt derzeit mehr als 70 Sprachen. Da im Laufe der Zeit Unterstützung für neue Sprachen hinzugefügt wird, empfehlen wir Ihnen, die von Translator verfügbar gemachte Ressource „Languages“ aufzurufen, anstatt die Sprachenliste in Ihrer App hartzucodieren.
 
 In diesem Abschnitt erstellen wir eine `GET`-Anforderung für die Ressource „Languages“ und geben an, dass für die Übersetzung eine Liste mit Sprachen verfügbar sein soll.
 

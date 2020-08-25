@@ -1,6 +1,6 @@
 ---
 title: 'Schnellstart: Gruppenablaufrichtlinie – Azure AD | Microsoft-Dokumentation'
-description: 'Ablauf für Office 365-Gruppen: Azure Active Directory'
+description: 'Ablauf für Microsoft 365-Gruppen: Azure Active Directory'
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -9,28 +9,28 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: quickstart
-ms.date: 04/29/2020
+ms.date: 08/13/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 616910eda33b3ddc49fa6233ccb3989c5e4214e2
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 178f6a2c1a71d088eeb1a3ea6f7e39198d401ff4
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82582850"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213732"
 ---
-# <a name="quickstart-set-office-365-groups-to-expire-in-azure-active-directory"></a>Schnellstart: Festlegen des Ablaufs von Office 365-Gruppen in Azure Active Directory
+# <a name="quickstart-set-microsoft-365-groups-to-expire-in-azure-active-directory"></a>Schnellstart: Festlegen des Ablaufs von Microsoft 365-Gruppen in Azure Active Directory
 
-In dieser Schnellstartanleitung legen Sie die Ablaufrichtlinie für Ihre Office 365-Gruppen fest. Wenn Benutzer eigene Gruppen einrichten können, entstehen unter Umständen zahlreiche ungenutzte Gruppen. Um das zu vermeiden, kann beispielsweise ein Ablaufdatum für diese Gruppen konfiguriert werden, um den Aufwand für das manuelle Löschen von Gruppen zu verringern.
+In dieser Schnellstartanleitung legen Sie die Ablaufrichtlinie für Ihre Microsoft 365-Gruppen fest. Wenn Benutzer eigene Gruppen einrichten können, entstehen unter Umständen zahlreiche ungenutzte Gruppen. Um das zu vermeiden, kann beispielsweise ein Ablaufdatum für diese Gruppen konfiguriert werden, um den Aufwand für das manuelle Löschen von Gruppen zu verringern.
 
 Eine Ablaufrichtlinie ist einfach:
 
 - Gruppen mit Benutzeraktivitäten werden kurz vor Ablauf automatisch verlängert.
 - Gruppenbesitzer werden benachrichtigt, eine ablaufende Gruppe zu verlängern.
 - Nicht verlängerte Gruppen werden gelöscht.
-- Eine gelöschte Office 365-Gruppe kann innerhalb von 30 Tagen durch einen Gruppenbesitzer oder einen Azure AD-Administrator wiederhergestellt werden.
+- Eine gelöschte Microsoft 365-Gruppe kann innerhalb von 30 Tagen durch einen Gruppenbesitzer oder einen Azure AD-Administrator wiederhergestellt werden.
 
 > [!NOTE]
 > Gruppen verwenden jetzt Azure AD-Intelligence für die automatische Verlängerung, je nachdem, ob sie kürzlich verwendet wurden. Diese Verlängerungsentscheidung basiert auf Benutzeraktivitäten in Gruppen für Office 365-Dienste wie Outlook, SharePoint, Teams, Yammer und anderen.
@@ -49,7 +49,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
   
    ![Seite „Self-Service-Gruppeneinstellungen“](./media/groups-quickstart-expiration/self-service-settings.png)
 
-3. Legen Sie **Benutzer können Office 365-Gruppen erstellen** auf **Ja** fest.
+3. Legen Sie **Benutzer können Microsoft 365-Gruppen in Azure-Portalen erstellen** auf **Ja** fest.
 
 4. Klicken Sie auf **Speichern**, um die Gruppeneinstellungen zu speichern, wenn Sie fertig sind.
 
@@ -63,11 +63,11 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 3. Geben Sie eine E-Mail-Adresse an, an die die Verlängerungsbenachrichtigungen gesendet werden sollen, wenn eine Gruppe keinen Besitzer hat.
 
-4. Legen Sie für diese Schnellstartanleitung **Ablauf für diese Office 365-Gruppen aktivieren** auf **Alle** fest.
+4. Legen Sie für diese Schnellstartanleitung **Ablauf für diese Microsoft 365-Gruppen aktivieren** auf **Alle** fest.
 
 5. Klicken Sie auf **Speichern**, um die Ablaufeinstellungen zu speichern, wenn Sie fertig sind.
 
-Das ist alles! In dieser Schnellstartanleitung haben Sie die Ablaufrichtlinie für die ausgewählten Office 365-Gruppen festgelegt.
+Das ist alles! In dieser Schnellstartanleitung haben Sie die Ablaufrichtlinie für die ausgewählten Microsoft 365-Gruppen festgelegt.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
@@ -75,12 +75,12 @@ Das ist alles! In dieser Schnellstartanleitung haben Sie die Ablaufrichtlinie f�
 
 1. Vergewissern Sie sich, dass Sie beim [Azure-Portal](https://portal.azure.com) über ein Konto angemeldet sind, das als globaler Administrator für Ihre Azure AD-Organisation konfiguriert ist.
 2. Klicken Sie auf **Azure Active Directory** > **Gruppen** > **Ablauf**.
-3. Legen Sie **Ablauf für diese Office 365-Gruppen aktivieren** auf **Keine** fest.
+3. Legen Sie **Ablauf für diese Microsoft 365-Gruppen aktivieren** auf **Keine** fest.
 
 ### <a name="to-turn-off-user-creation-for-groups"></a>So deaktivieren Sie die Benutzererstellung für Gruppen
 
 1. Klicken Sie auf **Azure Active Directory** > **Gruppen** > **Allgemein**. 
-2. Legen Sie **Benutzer können Office 365-Gruppen in Azure-Portalen erstellen.** auf **Nein** fest.
+2. Legen Sie **Benutzer können Microsoft 365-Gruppen in Azure-Portalen erstellen** auf **Nein** fest.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

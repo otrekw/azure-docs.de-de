@@ -5,14 +5,14 @@ author: harelbr
 ms.author: harelbr
 services: monitoring
 ms.topic: conceptual
-ms.date: 7/26/2020
+ms.date: 8/16/2020
 ms.subservice: alerts
-ms.openlocfilehash: bbfbc5e92fc49e45d1d16621992dbf4483f01bb5
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 877134fb1d4417c04da3bf6a96267b413389ecb2
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327156"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88258453"
 ---
 # <a name="supported-resources-for-metric-alerts-in-azure-monitor"></a>Unterstützte Ressourcen für Metrikwarnungen in Azure Monitor
 
@@ -30,10 +30,12 @@ Im Anschluss finden Sie die vollständige Liste der Azure Monitor-Metrikquellen,
 
 |Ressourcentyp  |Unterstützte Dimensionen |Warnungen mit mehreren Ressourcen| Verfügbare Metriken|
 |---------|---------|-----|----------|
+|Microsoft.Aadiam/azureADMetrics | Ja | Nein | |
 |Microsoft.ApiManagement/service | Ja | Nein | [API Management](./metrics-supported.md#microsoftapimanagementservice) |
 |Microsoft.AppConfiguration/configurationStores |Ja | Nein | [App Configuration](./metrics-supported.md#microsoftappconfigurationconfigurationstores) |
 |Microsoft.AppPlatform/Spring | Ja | Nein | [Azure Spring Cloud](./metrics-supported.md#microsoftappplatformspring) |
 |Microsoft.Automation/automationAccounts | Ja| Nein | [Automation-Konten](./metrics-supported.md#microsoftautomationautomationaccounts) |
+|Microsoft.AVS/privateClouds | Nein | Nein | |
 |Microsoft.Batch/batchAccounts | Ja | Nein | [Batch-Konten](./metrics-supported.md#microsoftbatchbatchaccounts) |
 |Microsoft.Cache/Redis | Ja | Nein | [Azure Cache for Redis](./metrics-supported.md#microsoftcacheredis) |
 |Microsoft.ClassicStorage/storageAccounts | Ja | Nein | [Speicherkonten (klassisch)](./metrics-supported.md#microsoftclassicstoragestorageaccounts) |
@@ -53,11 +55,13 @@ Im Anschluss finden Sie die vollständige Liste der Azure Monitor-Metrikquellen,
 |Microsoft.DataShare/accounts | Ja | Nein | |
 |Microsoft.DBforMariaDB/servers | Nein | Nein | [DB for MariaDB](./metrics-supported.md#microsoftdbformariadbservers) |
 |Microsoft.DBforMySQL/servers | Nein | Nein |[Datenbank für MySQL](./metrics-supported.md#microsoftdbformysqlservers)|
+|Microsoft.DBforPostgreSQL/flexibleServers | Ja | Nein | |
 |Microsoft.DBforPostgreSQL/servers | Nein | Nein | [Datenbank für PostgreSQL](./metrics-supported.md#microsoftdbforpostgresqlservers)|
 |Microsoft.DBforPostgreSQL/serversv2 | Nein | Nein | [DB for PostgreSQL V2](./metrics-supported.md#microsoftdbforpostgresqlserversv2)|
 |Microsoft.DBforPostgreSQL/singleservers | Nein | Nein | [DB for PostgreSQL (Einzelserver)](./metrics-supported.md#microsoftdbforpostgresqlsingleservers)|
 |Microsoft.Devices/IotHubs | Ja | Nein |[IoT Hub](./metrics-supported.md#microsoftdevicesiothubs) |
 |Microsoft.Devices/provisioningServices| Ja | Nein | [Device Provisioning Service-Instanzen](./metrics-supported.md#microsoftdevicesprovisioningservices) |
+|Microsoft.DigitalTwins/digitalTwinsInstances | Ja | Nein | |
 |Microsoft.DocumentDB/databaseAccounts | Ja | Nein | [Cosmos DB](./metrics-supported.md#microsoftdocumentdbdatabaseaccounts) |
 |Microsoft.EventGrid/domains | Ja | Nein | [Event Grid-Domänen](./metrics-supported.md#microsofteventgriddomains) |
 |Microsoft.EventGrid/systemTopics | Ja | Nein | [Event Grid-Systemthemen](./metrics-supported.md#microsofteventgridsystemtopics) |
@@ -66,15 +70,16 @@ Im Anschluss finden Sie die vollständige Liste der Azure Monitor-Metrikquellen,
 |Microsoft.EventHub/namespaces |Ja| Nein | [Event Hubs](./metrics-supported.md#microsofteventhubnamespaces) |
 |Microsoft.HDInsight/clusters | Ja | Nein | [HDInsight-Cluster](./metrics-supported.md#microsofthdinsightclusters) |
 |Microsoft.Insights/Components | Ja | Nein | [Application Insights](./metrics-supported.md#microsoftinsightscomponents) |
-|Microsoft.KeyVault/vaults | Nein |Nein |[Tresore](./metrics-supported.md#microsoftkeyvaultvaults)|
+|Microsoft.KeyVault/vaults | Ja |Ja |[Tresore](./metrics-supported.md#microsoftkeyvaultvaults)|
 |Microsoft.Kusto/Clusters | Ja |Nein |[Data Explorer-Cluster](./metrics-supported.md#microsoftkustoclusters)|
+|Microsoft.Logic/integrationServiceEnvironments | Ja | Nein |[Integrationsdienstumgebungen](./metrics-supported.md#microsoftlogicintegrationserviceenvironments) |
 |Microsoft.Logic/workflows | Nein | Nein |[Logik-Apps](./metrics-supported.md#microsoftlogicworkflows) |
 |Microsoft.MachineLearningServices/workspaces | Ja | Nein | [Machine Learning](./metrics-supported.md#microsoftmachinelearningservicesworkspaces) |
 |Microsoft.Maps/accounts | Ja | Nein | [Maps-Konten](./metrics-supported.md#microsoftmapsaccounts) |
 |Microsoft.Media/mediaservices | Nein | Nein | [Media Services](./metrics-supported.md#microsoftmediamediaservices) |
 |Microsoft.Media/mediaservices/streamingEndpoints | Ja | Nein | [Media Services-Streamingendpunkte](./metrics-supported.md#microsoftmediamediaservicesstreamingendpoints) |
-|Microsoft.NetApp/netAppAccounts/capacityPools | Ja | Nein | [Azure NetApp-Kapazitätspools](./metrics-supported.md#microsoftnetappnetappaccountscapacitypools) |
-|Microsoft.NetApp/netAppAccounts/capacityPools/volumes | Ja | Nein | [Azure NetApp-Volumes](./metrics-supported.md#microsoftnetappnetappaccountscapacitypoolsvolumes) |
+|Microsoft.NetApp/netAppAccounts/capacityPools | Ja | Ja | [Azure NetApp-Kapazitätspools](./metrics-supported.md#microsoftnetappnetappaccountscapacitypools) |
+|Microsoft.NetApp/netAppAccounts/capacityPools/volumes | Ja | Ja | [Azure NetApp-Volumes](./metrics-supported.md#microsoftnetappnetappaccountscapacitypoolsvolumes) |
 |Microsoft.Network/applicationGateways | Ja | Nein | [Anwendungsgateways](./metrics-supported.md#microsoftnetworkapplicationgateways) |
 |Microsoft.Network/azurefirewalls | Ja | Nein | [Firewalls](./metrics-supported.md#microsoftnetworkazurefirewalls) |
 |Microsoft.Network/dnsZones | Nein | Nein | [DNS-Zonen](./metrics-supported.md#microsoftnetworkdnszones) |

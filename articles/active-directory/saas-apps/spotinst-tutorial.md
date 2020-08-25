@@ -2,25 +2,21 @@
 title: 'Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Spotinst | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Spotinst konfigurieren.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 2f6dbd70-c2db-4ae9-99ee-976c3090d214
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/03/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5490ff6c6143dff258d74e013bb9d4c821aab625
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 3b8297175c24aac132fd7d83580e0889e0da4730
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76263284"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88587955"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-spotinst"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Spotinst
 
@@ -79,18 +75,11 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
    ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
-1. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus, wenn Sie die Anwendung im **IDP-initiierten** Modus konfigurieren möchten:
+1. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus, wenn Sie die Anwendung im IDP-initiierten Modus konfigurieren möchten:
 
-    a. Aktivieren Sie **Zusätzliche URLs festlegen**.
-
-    b. Geben Sie im Textfeld **Relayzustand** einen Wert ein: `<ID>`
-
-1. Klicken Sie auf **Zusätzliche URLs festlegen**, und führen Sie die folgenden Schritte aus, wenn Sie die Anwendung im **SP-initiierten** Modus konfigurieren möchten:
-
-    Geben Sie im Textfeld **Anmelde-URL** die URL ein: `https://console.spotinst.com/auth/saml`.
-
-    > [!NOTE]
-    > Der Wert für den Relayzustand entspricht nicht dem tatsächlichen Wert. Sie aktualisieren den Wert für den Relayzustand mit dem tatsächlichen Wert für den Relayzustand. Dies wird später in diesem Tutorial beschrieben.
+   1. Stellen Sie sicher, dass die **Antwort-URL** auf https://console.spotinst.com/auth/saml festgelegt ist.
+   1. Geben Sie unter **Relayzustand** die Spotinst-Organisations-ID an, die Sie auch auf der Registerkarte **SSO** überprüfen können.
+   1. Das Feld **Anmelde-URL** muss leer sein.
 
 1. Klicken Sie auf **Speichern**.
 

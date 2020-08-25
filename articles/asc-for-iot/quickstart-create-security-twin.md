@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/08/2019
 ms.author: mlottner
-ms.openlocfilehash: e9c4470ea16f1840274a6fa8613822b20d6772b3
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 7b867f5bcbbdc5deab2d67f356df69ee870c21f3
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81310863"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88142246"
 ---
 # <a name="quickstart-create-an-azureiotsecurity-module-twin"></a>Schnellstart: Erstellen eines Azure IoT-Sicherheitsmodulzwillings
 
@@ -76,7 +76,7 @@ Weitere Informationen zum Anpassen der Eigenschaften von Modulzwillingen in Azur
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Fahren Sie mit dem nächsten Artikel fort, um sich über das Konfigurieren von benutzerdefinierten Warnungen zu informieren.
+Im nächsten Artikel erfahren Sie, wie Sie Sicherheitsempfehlungen untersuchen:
 
 > [!div class="nextstepaction"]
-> [Konfigurieren von benutzerdefinierten Warnungen](quickstart-create-custom-alerts.md)
+> [Untersuchen von Sicherheitsempfehlungen](quickstart-investigate-security-recommendations.md)

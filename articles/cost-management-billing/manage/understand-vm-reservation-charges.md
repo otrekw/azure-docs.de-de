@@ -4,14 +4,14 @@ description: Hier erfahren Sie, wie der Rabatt für reservierte Azure-VM-Instanz
 author: yashesvi
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 02/13/2020
+ms.date: 08/13/2020
 ms.author: banders
-ms.openlocfilehash: a9d9a5661e8a094b7d92a9dd83db3cdcd76b8b65
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: ddf232dbe6c6ff61f685e2910286188fb92e1f17
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84018381"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192216"
 ---
 # <a name="how-the-azure-reservation-discount-is-applied-to-virtual-machines"></a>Anwendung des Rabatts für Azure-Reservierungen auf virtuelle Computer
 
@@ -56,11 +56,15 @@ Wenn Sie Windows-VM-Instanzen ausführen, wird die Reservierung angewendet, um d
 
 ## <a name="discount-can-apply-to-different-sizes"></a>Rabatt kann für verschiedene Größen gelten.
 
-Wenn Sie reservierte VM-Instanzen erwerben, und Sie unter **Optimiert für** die **Instanzgrößenflexibilität** auswählen, hängt die Abdeckung des Rabatts von der ausgewählten VM-Größe ab. Die Reservierung kann für VM-Größen in derselben Größenordnung gelten. Weitere Informationen finden Sie unter [Flexibilität bei der VM-Größe mit reservierten VM-Instanzen](../../virtual-machines/windows/reserved-vm-instance-size-flexibility.md).
+Wenn Sie reservierte VM-Instanzen erwerben und Sie unter **Optimiert für: Flexibilität bei der Instanzgröße** auswählen, hängt die Abdeckung des Rabatts von der ausgewählten VM-Größe ab. Sie kann auch auf andere VM-Größen angewendet werden, die sich in der gleichen Gruppe für Instanzgrößenflexibilität der Serie befinden. Weitere Informationen finden Sie unter [Flexibilität bei der VM-Größe mit reservierten VM-Instanzen](../../virtual-machines/windows/reserved-vm-instance-size-flexibility.md).
 
-## <a name="discount-applies-to-matching-servicetype-only"></a>Rabatt gilt nur bei Übereinstimmung von „ServiceType“.
+## <a name="premium-storage-vms-dont-get-non-premium-discounts"></a>Virtuelle Storage Premium-Computer erhalten keine Nicht-Premium-Rabatte.
 
-Ein Reservierungsrabatt gilt nur für die VM-Nutzung, bei der der Wert `ServiceType` in `AdditionalInfo` mit der gekauften Reservierung übereinstimmt. Bei der Anwendung von Reservierungsrabatten wird die für virtuelle Computer verwendete Verbrauchseinheit ignoriert, nur `ServiceType` wird ausgewertet. Sie müssen wissen, für welchen Diensttyp Sie den virtuellen Computer gekauft haben. Sie können eine VM-Reservierung ohne Storage Premium gegen eine Reservierung mit Storage Premium umtauschen und umgekehrt.
+Hier sehen Sie ein Beispiel. Angenommen, Sie haben eine Reservierung für fünf virtuelle Computer vom Typ „Standard_D1“ gekauft. Dann gilt der Reservierungsrabatt nur für virtuelle Computer vom Typ „Standard_D1“ oder andere virtuelle Computer in der gleichen Instanzfamilie. Der Rabatt gilt nicht für virtuelle Computer vom Typ „Standard_DS1“ oder andere Größen in der Gruppe für Instanzgrößenflexibilität „DS1“.
+
+Bei der Anwendung von Reservierungsrabatten wird die für virtuelle Computer verwendete Verbrauchseinheit ignoriert, nur ServiceType wird ausgewertet. Sehen Sie sich den Wert `ServiceType` in `AdditionalInfo` an, um die Informationen zur Instanzflexibilitätsgruppe/-serie der virtuellen Computer zu ermitteln. Die Werte befinden sich in der CSV-Datei zur Nutzung.
+
+Sie können die Instanzflexibilitätsgruppe/-serie der Reservierung nach dem Kauf nicht direkt ändern. Sie können jedoch eine VM-Reservierung aus einer Instanzflexibilitätsgruppe/-serie mit einer anderen *tauschen*.
 
 ## <a name="services-that-get-vm-reservation-discounts"></a>Dienste, die VM-Reservierungsrabatte erhalten
 

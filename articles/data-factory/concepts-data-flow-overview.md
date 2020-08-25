@@ -6,36 +6,36 @@ ms.author: makromer
 ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
-ms.custom: seo-lt-2019
-ms.date: 06/09/2020
-ms.openlocfilehash: 850879675d4554329f24c86f2ac28660b303084c
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.custom: references_regions
+ms.date: 08/12/2020
+ms.openlocfilehash: ad3fa9db5a15f68f0538b5de29d9a89858c472e9
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475565"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212045"
 ---
-# <a name="what-are-mapping-data-flows"></a>Was sind Zuordnungsdatenflüsse?
+# <a name="mapping-data-flows-in-azure-data-factory"></a>Zuordnungsdatenflüsse in Azure Data Factory
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Mapping Data Flows (Zuordnungsdatenflüsse) sind visuell entworfene Datentransformationen in Azure Data Factory. Mit Data Flows können Data Engineers grafische Datentransformationslogik entwickeln, ohne Code schreiben zu müssen. Die daraus resultierenden Datenflüsse werden als Aktivitäten in Azure Data Factory-Pipelines ausgeführt, für die erweiterte Apache Spark-Cluster verwendet werden. Datenflussaktivitäten können über vorhandene Planungs-, Steuerungs-, Fluss- und Überwachungsfunktionen in Data Factory aktiviert werden.
+## <a name="what-are-mapping-data-flows"></a>Was sind Zuordnungsdatenflüsse?
 
-Zuordnungsdatenflüsse bieten eine vollständig visuelle Darstellung, ohne Code geschrieben werden muss. Ihre Datenflüsse werden in Ihrem eigenen Ausführungscluster für erweiterte Datenverarbeitung ausgeführt. Azure Data Factory übernimmt die gesamte Codeübersetzung, Pfadoptimierung und Ausführung Ihrer Datenflussaufträge.
+Mapping Data Flows (Zuordnungsdatenflüsse) sind visuell entworfene Datentransformationen in Azure Data Factory. Mit Datenflüssen können Data Engineers eine Datentransformationslogik entwickeln, ohne Code schreiben zu müssen. Die daraus resultierenden Datenflüsse werden als Aktivitäten in Azure Data Factory-Pipelines ausgeführt, für die erweiterte Apache Spark-Cluster verwendet werden. Datenflussaktivitäten können mithilfe vorhandener Planungs-, Steuerungs-, Fluss- und Überwachungsfunktionen in Data Factory operationalisiert werden.
 
-![Aufbau](media/data-flow/adf-data-flows.png "Aufbau")
+Zuordnungsdatenflüsse bieten eine vollständig visuelle Darstellung, ohne Code geschrieben werden muss. Ihre Datenflüsse werden in ADF-verwalteten Ausführungsclustern für erweiterte Datenverarbeitung ausgeführt. Azure Data Factory übernimmt die gesamte Codeübersetzung, Pfadoptimierung und Ausführung Ihrer Datenflussaufträge.
 
 ## <a name="getting-started"></a>Erste Schritte
 
-Wählen Sie zum Erstellen eines Datenflusses unter **Factory Resources** (Factory-Ressourcen) das Pluszeichen und dann die Option **Datenfluss** aus. 
+Datenflüsse werden über den Bereich mit Factory-Ressourcen wie Pipelines und Datasets erstellt. Wählen Sie zum Erstellen eines Datenflusses das Pluszeichen neben **Factory-Ressourcen** und dann die Option **Datenfluss** aus. 
 
-![Neuer Datenfluss](media/data-flow/newdataflow2.png "neuer Datenfluss")
+![Neuer Datenfluss](media/data-flow/new-data-flow.png "neuer Datenfluss")
 
 Mit dieser Aktion gelangen Sie zur Datenflusscanvas, auf der Sie Ihre Transformationslogik erstellen können. Wählen Sie **Quelle hinzufügen** aus, um mit der Konfiguration Ihrer Quelltransformation zu beginnen. Weitere Informationen finden Sie im Artikel zur [Quelltransformation](data-flow-source.md).
 
-## <a name="data-flow-canvas"></a>Datenflusscanvas
+## <a name="authoring-data-flows"></a>Erstellen von Datenflüssen
 
-Die Datenflusscanvas ist in drei Bereiche unterteilt: die obere Leiste, das Diagramm und den Konfigurationsbereich. 
+Ein Zuordnungsdatenfluss verfügt über einen einzigartigen Erstellungsbereich für das vereinfachte Erstellen von Transformationslogik. Die Datenflusscanvas ist in drei Bereiche unterteilt: die obere Leiste, das Diagramm und den Konfigurationsbereich. 
 
 ![Canvas](media/data-flow/canvas1.png "Canvas")
 
@@ -44,40 +44,6 @@ Die Datenflusscanvas ist in drei Bereiche unterteilt: die obere Leiste, das Diag
 Das Diagramm zeigt den Transformationsdatenstrom. Es zeigt die Herkunft der Quelldaten beim Fließen in eine oder mehrere Senken. Wählen Sie die Option **Quelle hinzufügen** aus, um eine neue Quelle hinzuzufügen. Wählen Sie zum Hinzufügen einer neuen Transformation unten rechts in einer vorhandenen Transformation das Pluszeichen aus.
 
 ![Canvas](media/data-flow/canvas2.png "Canvas")
-
-### <a name="azure-integration-runtime-data-flow-properties"></a>Azure Integration Runtime: Datenflusseigenschaften
-
-![Schaltfläche „Debuggen“](media/data-flow/debugbutton.png "Schaltfläche „Debuggen“")
-
-Wenn Sie in ADF mit der Verwendung von Datenflüssen beginnen, sollten Sie oben in der Benutzeroberfläche des Browsers die Option „Debuggen“ für Datenflüsse aktivieren. Hiermit wird ein Spark-Cluster erstellt, der für das interaktive Debuggen, die Datenvorschau und die Ausführung von Debugvorgängen für die Pipeline verwendet wird. Sie können die Größe des verwendeten Clusters festlegen, indem Sie eine benutzerdefinierte [Azure Integration Runtime](concepts-integration-runtime.md)-Instanz auswählen. Die Debugsitzung bleibt nach Ihrer letzten Datenvorschau bzw. letzten Ausführung eines Debugvorgangs für die Pipeline bis zu 60 Minuten lang aktiv.
-
-Wenn Sie Ihre Pipelines mit Datenflussaktivitäten operationalisieren, wird von ADF die Azure Integration Runtime-Instanz verwendet, die in der „Run On“-Eigenschaft der [Aktivität](control-flow-execute-data-flow-activity.md) zugeordnet ist.
-
-Die Azure Integration Runtime-Standardinstanz ist ein einzelner kleiner Workerknotencluster mit vier Kernen, der Ihnen das Anzeigen einer Datenvorschau und das schnelle Ausführen von Debugpipelines zu geringen Kosten ermöglicht. Legen Sie eine höhere Azure IR-Konfiguration fest, wenn Sie Vorgänge für große Datasets durchführen.
-
-Sie können ADF anweisen, einen Pool mit Clusterressourcen (VMs) vorzuhalten, indem Sie in den Datenflusseigenschaften der Azure IR-Instanz eine Gültigkeitsdauer angeben. Diese Aktion führt bei nachfolgenden Aktivitäten zu einer schnelleren Auftragsausführung.
-
-#### <a name="azure-integration-runtime-and-data-flow-strategies"></a>Azure Integration Runtime und Datenflussstrategien
-
-##### <a name="execute-data-flows-in-parallel"></a>Paralleles Ausführen von Datenflüssen
-
-Wenn Sie Datenflüsse in einer Pipeline parallel ausführen, erstellt ADF separate Spark-Cluster für jede Ausführung einer Aktivität. Dies erfolgt basierend auf den Einstellungen in Ihrer Azure Integration Runtime-Instanz, die jeder Aktivität zugeordnet ist. Fügen Sie zum Entwerfen von parallelen Ausführungen in ADF-Pipelines Ihre Datenflussaktivitäten ohne Rangfolgeneinschränkung in der Benutzeroberfläche hinzu.
-
-Von diesen drei Optionen weist diese Option normalerweise die kürzeste Ausführungsdauer auf. Da jeder parallele Datenfluss gleichzeitig in separaten Clustern ausgeführt wird, ist die Sortierung der Ereignisse nicht deterministisch.
-
-Wenn Sie Ihre Datenflussaktivitäten in ihren Pipelines parallel ausführen, sollten Sie nicht TTL verwenden. Dies liegt daran, dass die gleichzeitige parallele Ausführung Ihrer Datenflüsse mit derselben Azure Integration Runtime zu mehreren aktiven Poolinstanzen für Ihre Data Factory führt.
-
-##### <a name="overload-single-data-flow"></a>Überladen eines einzelnen Datenflusses
-
-Wenn Sie Ihre gesamte Logik in einem einzelnen Datenfluss anordnen, verwendet ADF für die gesamte Ausführung denselben Auftragsausführungskontext in einer einzelnen Spark-Clusterinstanz.
-
-Bei dieser Option kann die Verfolgung und Problembehandlung unter Umständen eine größere Herausforderung sein, weil Ihre Geschäftsregeln und die Geschäftslogik durcheinander geworfen werden können. Zudem bietet diese Option keine gute Wiederverwendbarkeit.
-
-##### <a name="execute-data-flows-sequentially"></a>Sequenzielles Ausführen von Datenflüssen
-
-Wenn Sie Ihre Datenflussaktivitäten in der Pipeline nacheinander ausführen und für die Azure IR-Konfiguration eine Gültigkeitsdauer festgelegt haben, werden die Computeressourcen (VMs) von ADF wiederverwendet. Dies führt zu kürzeren nachfolgenden Ausführungszeiten. Sie erhalten weiterhin einen neuen Spark-Kontext für jede Ausführung.
-
-Von diesen drei Optionen weist diese Aktion normalerweise die längste Ausführungsdauer des Gesamtprozesses auf. Sie ermöglicht aber eine saubere Trennung der logischen Vorgänge in jedem Datenflussschritt.
 
 ### <a name="configuration-panel"></a>Konfigurationsbereich
 
@@ -111,13 +77,85 @@ Bei aktiviertem Debugmodus können Sie auf der Registerkarte **Datenvorschau** e
 
 ### <a name="top-bar"></a>Obere Leiste
 
-Die obere Leiste enthält Aktionen, die sich auf den gesamten Datenfluss auswirken, z. B. das Speichern und Überprüfen. Sie können auch mithilfe der Schaltflächen **Diagramm anzeigen** und **Diagramm ausblenden** zwischen dem Diagramm- und Konfigurationsmodus wechseln.
+Die obere Leiste enthält Aktionen, die sich auf den gesamten Datenfluss auswirken, z. B. das Speichern und Überprüfen. Sie können auch den zugrunde liegenden JSON-Code und das Datenflussskript Ihrer Transformationslogik anzeigen. Weitere Informationen finden Sie unter [Datenflussskript](data-flow-script.md).
 
-![Diagramm ausblenden](media/data-flow/hideg.png "Diagramm ausblenden")
+## <a name="available-transformations"></a>Verfügbare Transformationen
 
-Wenn Sie das Diagramm ausblenden, können Sie über die Schaltflächen **Zurück** und **Weiter** seitwärts durch die Transformationsknoten blättern.
+Unter [Zuordnungsdatenfluss – Übersicht über Transformationen](data-flow-transformation-overview.md) finden Sie eine Liste der verfügbaren Transformationen.
 
-![Schaltflächen „Zurück“ und „Weiter“](media/data-flow/showhide.png "Schaltflächen „Zurück“ und „Weiter“")
+## <a name="data-flow-activity"></a>Datenflussaktivität
+
+Zuordnungsdatenflüsse werden innerhalb von ADF-Pipelines mithilfe der [Datenflussaktivität](control-flow-execute-data-flow-activity.md) operationalisiert. Der Benutzer muss lediglich angeben, welche Integration Runtime verwendet werden soll, und Parameterwerte übergeben. Weitere Informationen finden Sie unter [Azure Integration Runtime](concepts-integration-runtime.md#azure-integration-runtime).
+
+## <a name="debug-mode"></a>Debugmodus
+
+Im Debugmodus können Sie die Ergebnisse jedes Transformationsschritts interaktiv anzeigen, während Sie Datenflüsse erstellen und debuggen. Die Debugsitzung kann sowohl beim Erstellen der Datenflusslogik als auch beim Ausführen von Debugläufen für die Pipeline mit Datenflussaktivitäten ausgeführt werden. Weitere Informationen finden Sie in der [Dokumentation zum Debugmodus](concepts-data-flow-debug-mode.md).
+
+## <a name="monitoring-data-flows"></a>Überwachen von Datenflüssen
+
+Der Zuordnungsdatenfluss ist in vorhandene Azure Data Factory-Überwachungsfunktionen integriert. Informationen zum Verständnis der Ausgabe der Datenflussüberwachung finden Sie unter [Überwachen von Zuordnungsdatenflüssen](concepts-data-flow-monitoring.md).
+
+Das Azure Data Factory-Team hat eine [Anleitung zur Leistungsoptimierung](concepts-data-flow-performance.md) erstellt, mit deren Hilfe Sie die Ausführungszeit Ihrer Datenflüsse nach dem Erstellen der Geschäftslogik optimieren können.
+
+## <a name="available-regions"></a>Verfügbare Regionen
+
+Zuordnungsdatenflüsse sind in den folgenden Regionen verfügbar:
+
+| Azure-Region | Datenflüsse in ADF | Datenflüsse in Synapse Studio |
+| ------------ | ----------------- | ---------------------------- |
+|  Australien, Mitte | | |  
+| Australien, Mitte 2 | | |
+| Australien (Osten) | ✓ |  ✓ |
+| Australien, Südosten   | ✓ | ✓ |
+| Brasilien Süd  | ✓ |  |
+| Kanada, Mitte | ✓ |  |
+| Indien, Mitte | ✓ |   ✓ |
+| USA (Mitte)    | ✓ |   ✓ |
+| China, Osten |      | ✓ |
+| China, Osten 2  |   |    |
+| China, landesweit | | |
+| China, Norden |     | |
+| China, Norden 2 | |  |
+| Asien, Osten | ✓ | |
+| East US   | ✓ | ✓ |
+| USA (Ost) 2 | ✓ | ✓ |
+| Frankreich, Mitte | ✓ | ✓ |
+| Frankreich, Süden  | | |
+| Deutschland, Mitte (Sovereign) | | |
+| Deutschland, landesweit (Sovereign) | | |
+| Deutschland, Norden (Öffentlich) | | |
+| Deutschland, Nordosten (Sovereign) | | |
+| Deutschland, Westen-Mitte (Öffentlich) |  | ✓ |
+| Japan, Osten | ✓ |  |
+| Japan, Westen |  | |
+| Korea, Mitte | ✓ |  |
+| Korea, Süden | | |
+| USA Nord Mitte  | ✓ | ✓ |
+| Nordeuropa  | ✓ |    |
+| Norwegen, Osten | | |
+| Norwegen, Westen | | |
+| Südafrika, Norden    | ✓ | |
+| Südafrika, Westen |  |    |
+| USA Süd Mitte  | | ✓ |
+| Indien (Süden) | | |
+| Asien, Südosten    | ✓ | ✓ |
+| Schweiz, Norden |   |  |
+| Schweiz, Westen | | |
+| VAE, Mitte | | |
+| Vereinigte Arabische Emirate, Norden |  |    |
+| UK, Süden  | ✓ |   | ✓ |
+| UK, Westen |     | ✓ |
+| US DoD, Mitte | |  |
+| US DoD, Osten | |  |
+| US Gov Arizona |      |  |
+| US Gov, landesweit | |  |
+| US Gov Texas | |  |
+| US Government, Virginia |     |  |
+| USA, Westen-Mitte |     | ✓ |
+| Europa, Westen   | ✓ |   ✓ |
+| Indien, Westen | | |
+| USA (Westen)   | ✓ |   |
+| USA, Westen 2 | ✓ |   ✓ | 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

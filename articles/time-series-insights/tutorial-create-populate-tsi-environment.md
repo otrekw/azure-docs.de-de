@@ -7,14 +7,14 @@ ms.author: dpalled
 manager: diviso
 ms.service: time-series-insights
 ms.topic: tutorial
-ms.date: 06/30/2020
+ms.date: 08/14/2020
 ms.custom: seodec18
-ms.openlocfilehash: 9f74be239bee1d6da3dfdb516c4fc410669e338d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 36687f6394ef03a3fceb70c73601680dd262d90c
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87020650"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245399"
 ---
 # <a name="tutorial-create-an-azure-time-series-insights-gen1-environment"></a>Tutorial: Erstellen einer Azure Time Series Insights Gen1-Umgebung
 
@@ -22,7 +22,7 @@ In diesem Tutorial wird der Prozess zum Erstellen einer Azure Time Series Insigh
 
 > [!div class="checklist"]
 >
-> * Erstellen einer Azure Time Series Insights-Umgebung
+> * Erstellen einer Azure Time Series Insights-Umgebung.
 > * Erstellen einer Lösung für die Gerätesimulation mit einem IoT Hub
 > * Herstellen einer Verbindung der Azure Time Series Insights-Umgebung mit dem IoT-Hub
 > * Ausführen einer Gerätesimulation zum Streamen von Daten in die Azure Time Series Insights-Umgebung
@@ -37,13 +37,13 @@ In diesem Tutorial wird der Prozess zum Erstellen einer Azure Time Series Insigh
 
 ## <a name="review-video"></a>Video
 
-### <a name="learn-how-to-use-an-azure-iot-solution-accelerator-to-generate-data-and-get-started-with-azure-time-series-insights-br"></a>Hier wird gezeigt, wie Sie einen Azure IoT Solution Accelerator verwenden, um Daten zu generieren und die ersten Schritte mit Azure Time Series Insights auszuführen. </br>
+Hier wird gezeigt, wie Sie einen Azure IoT Solution Accelerator verwenden, um Daten zu generieren und die ersten Schritte mit Azure Time Series Insights auszuführen.
 
 > [!VIDEO https://www.youtube.com/embed/6ehNf6AJkFo]
 
 ## <a name="overview"></a>Übersicht
 
-In der Azure Time Series Insights-Umgebung werden Gerätedaten erfasst und gespeichert. Nach dem Speichern können der [Azure Time Series Insights-Explorer](time-series-quickstart.md) und die [Azure Time Series Insights-Abfrage-API](/rest/api/time-series-insights/ga-query-api) verwendet werden, um die Daten abzufragen und zu analysieren.
+In der Azure Time Series Insights-Umgebung werden Gerätedaten erfasst und gespeichert. Nach dem Speichern können der [Azure Time Series Insights-Explorer](time-series-quickstart.md) und die [Azure Time Series Insights-Abfrage-API](/rest/api/time-series-insights/gen1-query-api) verwendet werden, um die Daten abzufragen und zu analysieren.
 
 Azure IoT Hub ist die Ereignisquelle, die von allen (simulierten oder physischen) Geräten in diesem Tutorial zum sicheren Herstellen einer Verbindung und zum Übertragen von Daten in Ihre Azure-Cloud verwendet wird.
 
@@ -98,7 +98,7 @@ Erstellen Sie als Nächstes in Ihrem Azure-Abonnement eine Azure Time Series Ins
 
    Parameter|BESCHREIBUNG
    ---|---
-   **Umgebungsname** | Wählen Sie einen eindeutigen Namen für die Azure Time Series Insights-Umgebung aus. Die Namen werden vom Azure Time Series Insights-Explorer und von den [Abfrage-APIs](https://docs.microsoft.com/rest/api/time-series-insights/ga-query) verwendet.
+   **Umgebungsname** | Wählen Sie einen eindeutigen Namen für die Azure Time Series Insights-Umgebung aus. Die Namen werden vom Azure Time Series Insights-Explorer und von den [Abfrage-APIs](https://docs.microsoft.com/rest/api/time-series-insights/gen1-query) verwendet.
    **Abonnement** | Abonnements sind Container für Azure-Ressourcen. Wählen Sie ein Abonnement aus, um die Azure Time Series Insights-Umgebung zu erstellen.
    **Ressourcengruppe** | Eine Ressourcengruppe ist ein Container für Azure-Ressourcen. Wählen Sie eine vorhandene Ressourcengruppe für die Azure Time Series Insights-Umgebungsressource aus, oder erstellen Sie eine neue.
    **Location** | Wählen Sie eine Rechenzentrumsregion für Ihre Azure Time Series Insights-Umgebung aus. Erstellen Sie die Azure Time Series Insights-Umgebung in derselben Region wie andere IoT-Ressourcen, um zusätzliche Wartezeit zu vermeiden.
@@ -191,7 +191,7 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 
 > [!div class="checklist"]
 >
-> * Erstellen einer Azure Time Series Insights-Umgebung
+> * Erstellen einer Azure Time Series Insights-Umgebung.
 > * Erstellen einer Lösung für die Gerätesimulation mit einem IoT Hub
 > * Herstellen einer Verbindung der Azure Time Series Insights-Umgebung mit dem IoT-Hub
 > * Ausführen einer Gerätesimulation zum Streamen von Daten in die Azure Time Series Insights-Umgebung

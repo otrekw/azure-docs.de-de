@@ -2,7 +2,7 @@
 title: Dynamische Paketerstellung in Azure Media Services v3
 titleSuffix: Azure Media Services
 description: Dieser Artikel bietet eine Übersicht über die dynamische Paketerstellung in Azure Media Services.
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 services: media-services
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 07/31/2020
-ms.author: juliako
-ms.openlocfilehash: 032a3c719610d658ec32492033a04a610117643d
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.date: 08/18/2020
+ms.author: inhenkel
+ms.openlocfilehash: 8a5d52f2705a04c290f1122335430c12db8d294c
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87489774"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88604570"
 ---
 # <a name="dynamic-packaging-in-media-services-v3"></a>Dynamische Paketerstellung in Media Services v3
 
@@ -80,8 +80,10 @@ Ihr Streamingclient kann folgende Smooth Streaming-Formate angeben:
 
 Die folgenden Schritte zeigen einen allgemeinen Media Services-Streamingworkflow mit dynamischer Paketerstellung und dem Standard-Encoder in Azure Media Services.
 
-1. Laden Sie eine Eingabedatei hoch, z. B. eine QuickTime-/MOV- oder MXF-Datei. Diese Datei wird auch als Mezzanine- oder Quelldatei bezeichnet. Eine Liste der unterstützten Formate finden Sie unter [Media Encoder Standard-Formate und -Codecs](media-encoder-standard-formats.md).
+1. [Laden Sie eine Eingabedatei hoch](job-input-from-http-how-to.md), etwa eine MP4-, QuickTime- oder MOV-Datei oder ein anderes unterstütztes Dateiformat. Diese Datei wird auch als Mezzanine- oder Quelldatei bezeichnet. Eine Liste der unterstützten Formate finden Sie unter [Media Encoder Standard-Formate und -Codecs](media-encoder-standard-formats.md).
 1. [Codieren](#encode-to-adaptive-bitrate-mp4s) Sie Ihre Mezzaninedatei als H.264/AAC-MP4-Satz mit adaptiver Bitrate.
+
+    Falls Sie bereits codierte Dateien besitzen und die Dateien nur kopieren und streamen möchten, verwenden Sie Folgendes: APIs [CopyVideo](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#copyvideo) und [CopyAudio](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#copyaudio). Daraufhin wird eine neue MP4-Datei mit einem Streamingmanifest (ISM-Datei) erstellt.
 1. Veröffentlichen Sie das Ausgabemedienobjekt, das den MP4-Satz mit adaptiver Bitrate enthält. Zur Veröffentlichung wird ein [Streaminglocator](streaming-locators-concept.md) erstellt.
 1. Erstellen Sie URLs für unterschiedliche Formate (HLS, MPEG-DASH und Smooth Streaming). Der *Streamingendpunkt* sorgt dafür, dass das korrekte Manifest bereitgestellt wird und die Anforderungen für alle diese Formate korrekt verarbeitet werden.
     

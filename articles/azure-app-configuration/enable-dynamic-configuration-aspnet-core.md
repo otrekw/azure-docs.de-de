@@ -14,13 +14,13 @@ ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 02/24/2019
 ms.author: lcozzens
-ms.custom: mvc
-ms.openlocfilehash: 5ac09aae724cf7481245ba9e898b52945b394cae
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.custom: devx-track-csharp, mvc
+ms.openlocfilehash: 217c564a6bdb340ec15262c1eaf54a75bbffc833
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85856527"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88585014"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-an-aspnet-core-app"></a>Tutorial: Verwenden der dynamischen Konfiguration in einer ASP.NET Core-App
 
@@ -57,6 +57,9 @@ Ein *Sentinel-Schlüssel* ist ein spezieller Schlüssel, mit dem signalisiert wi
 1. Geben Sie unter **Schlüssel** die Zeichenfolge *TestApp:Settings:Sentinel* ein. Geben Sie unter **Wert** den Wert „1“ ein. Lassen Sie **Bezeichnung** und **Inhaltstyp** leer.
 
 1. Wählen Sie **Übernehmen**.
+
+    > [!NOTE]
+    > Wenn Sie keinen Sentinel-Schlüssel verwenden, müssen Sie manuell jeden zu überwachenden Schlüssel registrieren.
 
 ## <a name="reload-data-from-app-configuration"></a>Erneutes Laden von Daten aus App Configuration
 
@@ -159,6 +162,9 @@ Ein *Sentinel-Schlüssel* ist ein spezieller Schlüssel, mit dem signalisiert wi
     }
     ```
     ---
+
+    > [!TIP]
+    > Weiter Informationen zu den Optionsmustern beim Lesen von Konfigurationswerten finden Sie unter  [Optionsmuster in ASP.NET Core](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/options?view=aspnetcore-3.1).
 
 4. Aktualisieren Sie die `Configure`-Methode so, dass `UseAzureAppConfiguration`-Middleware hinzugefügt wird, mit der die für die Aktualisierung registrierten Konfigurationseinstellungen aktualisiert werden können, während die ASP.NET Core-Web-App weiterhin Anforderungen empfängt.
 

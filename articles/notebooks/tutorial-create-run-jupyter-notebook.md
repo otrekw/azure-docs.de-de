@@ -1,21 +1,21 @@
 ---
-title: 'Tutorial: Erstellen und Ausführen eines Jupyter-Notebooks – Azure Notebooks (Vorschauversion)'
-description: Hier erfahren Sie, wie Sie eine Jupyter Notebook-Datei in Azure Notebooks (Vorschauversion) erstellen und ausführen, die den Prozess der linearen Regression in der Data Science veranschaulicht.
+title: 'Tutorial: Erstellen und Ausführen einer Jupyter Notebook-Instanz – Azure Notebooks (Vorschauversion)'
+description: Hier erfahren Sie, wie Sie eine Jupyter Notebook-Instanz in Azure Notebooks (Vorschauversion) erstellen und ausführen, die den Prozess der linearen Regression in der Data Science veranschaulicht.
 ms.topic: tutorial
 ms.date: 01/11/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: f6480a93610761061462be8e83ce3e719f3e8bdf
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: cb8be1618de7e95a7096e4ea9dec78bf4aa277f6
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87846911"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589250"
 ---
-# <a name="tutorial-create-and-run-a-jupyter-notebook-with-python"></a>Tutorial: Erstellen und Ausführen einer Jupyter Notebook-Datei mit Python
+# <a name="tutorial-create-and-run-a-jupyter-notebook-with-python"></a>Tutorial: Erstellen und Ausführen einer Jupyter Notebook-Datei mit Python
 
 [!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
-In diesem Tutorial durchlaufen Sie den Prozess zur Verwendung von Azure Notebooks zum Erstellen einer vollständigen Jupyter Notebook-Datei, die eine einfache lineare Regression veranschaulicht. Im Laufe dieses Tutorials machen Sie sich mit der Benutzeroberfläche von Jupyter Notebook vertraut, die das Erstellen verschiedener Zellen, das Ausführen von Zellen und eine Anzeige des Notebooks als Diaschau umfasst.
+In diesem Tutorial durchlaufen Sie den Prozess zur Verwendung von Azure Notebooks zum Erstellen einer vollständigen Jupyter Notebook-Datei, die eine einfache lineare Regression veranschaulicht. Im Laufe dieses Tutorials machen Sie sich mit der Benutzeroberfläche von Jupyter Notebook vertraut, die das Erstellen verschiedener Zellen, das Ausführen von Zellen und eine Anzeige des Notebooks als Diaschau umfasst.
 
 Das vollständige Notebook finden Sie unter [GitHub - Azure Notebooks Samples (GitHub: Azure Notebooks-Beispiele)](https://github.com/Microsoft/AzureNotebooks/tree/master/Samples/Linear%20Regression%20-%20Cricket%20Chirps). Dieses Tutorial beginnt jedoch mit einem neuen Projekt und einem leeren Notebook, damit Sie die Erstellung Schritt für Schritt kennenlernen können.
 
@@ -219,7 +219,7 @@ Sie verwenden mehrere von diesen Befehlen, wenn Sie das Notebook in den folgende
 
 ## <a name="create-a-code-cell-with-commands"></a>Erstellen einer Codezelle mit Befehlen
 
-Wie in der vorherigen Markdownzelle erläutert, können sie Befehle direkt im Notebook einfügen. Sie können Befehle verwenden, um Pakete zu installieren, um cURL oder Wget zum Abrufen von Daten auszuführen oder um andere Aktionen durchzuführen. Jupyter-Notebooks werden innerhalb einer Linux-VM effektiv ausgeführt. Ihnen steht also der gesamte Linux-Befehlssatz zur Verfügung.
+Wie in der vorherigen Markdownzelle erläutert, können sie Befehle direkt im Notebook einfügen. Sie können Befehle verwenden, um Pakete zu installieren, um cURL oder Wget zum Abrufen von Daten auszuführen oder um andere Aktionen durchzuführen. Jupyter Notebook-Dateien werden innerhalb einer Linux-VM effektiv ausgeführt. Ihnen steht also der gesamte Linux-Befehlssatz zur Verfügung.
 
 1. Geben Sie die Befehle unten in die Codezelle ein, die angezeigt wird, nachdem sie den **Run**-Befehl für die vorherige Markdownzelle verwendet haben. Wenn keine neue Zelle angezeigt wird, erstellen Sie über **Insert** > **Insert Cell Below** (Einfügen > Zelle unten einfügen) eine Zelle, oder verwenden Sie die Schaltfläche **+** auf der Symbolleiste.
 
@@ -417,9 +417,9 @@ Wenn sich Codezellen im Notebook nicht so verhalten, wie Sie es von ihnen erwart
 
 Sie können glücklicherweise die *IPYNB*-Datei des Notebooks herunterladen und dann in Visual Studio Code unter Verwendung der Python-Erweiterung öffnen. Die Erweiterung importiert ein Notebook direkt als einzelne Codedatei, die Markdown-Zellen in den Kommentaren beibehält. Sobald Sie das Notebook importiert haben, können Sie den Visual Studio Code-Debugger ausführen, um Ihren Code schrittweise zu durchlaufen, Haltepunkte festzulegen, den Zustand zu untersuchen usw. Nachdem Sie Ihren Code korrigiert haben, exportieren Sie die *IPYNB*-Datei aus Visual Studio Code und laden sie wieder in Azure Notebooks hoch.
 
-Weitere Informationen finden Sie in der Visual Studio Code-Dokumentation unter [Debug a Jupyter notebook (Debuggen eines Jupyter-Notebooks)](https://code.visualstudio.com/docs/python/jupyter-support#debug-a-jupyter-notebook).
+Weitere Informationen finden Sie in der Visual Studio Code-Dokumentation unter [Debuggen einer Jupyter Notebook-Instanz](https://code.visualstudio.com/docs/python/jupyter-support#debug-a-jupyter-notebook).
 
-Zusätzliche Funktionen von Visual Studio Code für Jupyter-Notebooks werden auch in [Working with Jupyter Notebooks in Visual Studio Code (Arbeiten mit Jupyter-Notebooks in Visual Studio Code)](https://code.visualstudio.com/docs/python/jupyter-support) beschrieben.
+Zusätzliche Funktionen von Visual Studio Code für Jupyter Notebook-Instanzen werden außerdem unter [Arbeiten mit Jupyter Notebook-Instanzen in Visual Studio Code](https://code.visualstudio.com/docs/python/jupyter-support) beschrieben.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

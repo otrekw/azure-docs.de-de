@@ -1,21 +1,21 @@
 ---
 title: 'Gewähren der Berechtigung zum Zugreifen auf einen Azure-Schlüsseltresor für Anwendungen: Azure Key Vault | Microsoft-Dokumentation'
-description: Es wird beschrieben, wie Sie vielen Anwendungen die Berechtigung zum Zugreifen auf einen Schlüsseltresor gewähren.
+description: Hier erfahren Sie, wie Sie manuell einen Dienstprinzipal registrieren und mithilfe einer Zugriffssteuerungsrichtlinie (die in manchen Fällen erforderlich sein kann) Zugriff auf Azure Key Vault ermöglichen.
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
-ms.topic: tutorial
+ms.topic: how-to
 ms.date: 09/27/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 8369c507ee7a9e11969c17bbaac7c6e31892e196
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: d0607b1adb76fd32ce9f4dc9ebede92c7aa96862
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87406247"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88588720"
 ---
 # <a name="provide-key-vault-authentication-with-an-access-control-policy"></a>Bereitstellen der Key Vault-Authentifizierung mit einer Zugriffssteuerungsrichtlinie
 

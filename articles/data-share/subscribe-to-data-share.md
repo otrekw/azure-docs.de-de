@@ -5,13 +5,13 @@ author: jifems
 ms.author: jife
 ms.service: data-share
 ms.topic: tutorial
-ms.date: 07/30/2020
-ms.openlocfilehash: 999d99b0ed4701eb6758ed0bf7a71ca625e622b5
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.date: 08/14/2020
+ms.openlocfilehash: 409f143ce67e301e3b2a973d8d2db80380fbd50e
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87512090"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88258652"
 ---
 # <a name="tutorial-accept-and-receive-data-using-azure-data-share"></a>Tutorial: Akzeptieren und Empfangen von Daten mithilfe von Azure Data Share  
 
@@ -93,38 +93,35 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
    Im Feld **Received Share Name** (Name der empfangenen Freigabe) können Sie den vom Datenanbieter angegebenen Standardnamen übernehmen oder einen neuen Namen für die empfangene Freigabe angeben. 
 
-   ![Datenfreigabe-Zielkonto](./media/target-data-share.png "Datenfreigabe-Zielkonto") 
-
-1. Nachdem Sie den Nutzungsbedingungen zugestimmt und einen Speicherort für Ihre Freigabe angegeben haben, wählen Sie *Accept and configure* (Akzeptieren und konfigurieren) aus. Ein Freigabeabonnement wird erstellt.
-
-   Bei einer momentaufnahmebasierten Freigabe werden Sie im nächsten Bildschirm zum Auswählen eines Zielspeicherkontos aufgefordert, in das Ihre Daten kopiert werden sollen. 
+   Nachdem Sie den Nutzungsbedingungen zugestimmt und ein Data Share-Konto für die Verwaltung der empfangenen Freigabe angegeben haben, wählen Sie **Accept and configure** (Akzeptieren und konfigurieren) aus. Ein Freigabeabonnement wird erstellt. 
 
    ![Optionen zum Akzeptieren](./media/accept-options.png "Optionen zum Akzeptieren") 
 
-   Wenn Sie die Einladung jetzt annehmen, Ihren Zieldatenspeicher aber erst später konfigurieren möchten, wählen Sie *Accept and configure later* (Akzeptieren und später konfigurieren) aus. Informationen zum späteren Konfigurieren Ihres Speichers finden Sie auf der Seite [Konfigurieren einer Datasetzuordnung für eine empfangene Freigabe in Azure Data Share](how-to-configure-mapping.md). Dort wird ausführlich beschrieben, wie Sie die Konfiguration Ihrer Datenfreigabe fortsetzen. 
-
-   Informationen zum direkten Freigeben finden Sie auf der Seite [Konfigurieren einer Datasetzuordnung für eine empfangene Freigabe in Azure Data Share](how-to-configure-mapping.md). Dort wird ausführlich beschrieben, wie Sie die Konfiguration Ihrer Datenfreigabe fortsetzen. 
+   Dadurch gelangen Sie zu der empfangenen Freigabe in Ihrem Data Share-Konto. 
 
    Wählen Sie *Ablehnen*, falls Sie die Einladung nicht annehmen möchten. 
 
-## <a name="configure-storage"></a>Konfigurieren des Speichers
-1. Wählen Sie unter *Target Storage Settings* (Einstellungen für Zielspeicher) das Abonnement, die Ressourcengruppe und das Speicherkonto für den Empfang der Daten aus. 
+## <a name="configure-received-share"></a>Konfigurieren der empfangenen Freigabe
+Führen Sie die folgenden Schritte aus, um zu konfigurieren, wo Sie Daten empfangen möchten.
 
-   ![Zielspeichereinstellungen](./media/target-storage-settings.png "Zielspeicher") 
+1. Wählen Sie die Registerkarte **Datasets** aus. Aktivieren Sie das Kontrollkästchen neben dem Dataset, dem Sie ein Ziel zuweisen möchten. Wählen Sie **+ Dem Ziel zuordnen** aus, um einen Zieldatenspeicher auszuwählen. 
 
-1. Aktivieren Sie die Einstellungen für Momentaufnahmen, um regelmäßige Aktualisierungen Ihrer Daten zu erhalten. Beachten Sie, dass nur dann ein Zeitplan für die Momentaufnahmeneinstellungen angezeigt wird, wenn Ihr Datenanbieter diesen in die Datenfreigabe einbezogen hat. 
+   ![Dem Ziel zuordnen](./media/dataset-map-target.png "Dem Ziel zuordnen") 
 
-   ![Momentaufnahmeeinstellungen](./media/snapshot-settings.png "Momentaufnahmeeinstellungen") 
+1. Wählen Sie einen Zieldatenspeichertyp aus, in dem die Daten gespeichert werden sollen. Alle Datendateien oder -tabellen im Zieldatenspeicher mit demselben Pfad und Namen werden überschrieben. 
 
-1. Wählen Sie *Speichern* aus. 
+   Wählen Sie für die direkte Freigabe einen Datenspeicher am angegebenen Speicherort aus. Der Speicherort ist das Azure-Rechenzentrum, in dem sich der Quelldatenspeicher des Datenanbieters befindet. Nach der Zuordnung des Datasets können Sie über den Link im Zielpfad auf die Daten zugreifen.
 
-> [!IMPORTANT]
-> Wenn Sie SQL-basierte Daten in einer SQL-basierten Quelle empfangen möchten, lesen Sie die [Anleitung zum Konfigurieren einer Datasetzuordnung](how-to-configure-mapping.md), um zu erfahren, wie Sie eine SQL Server-Instanz als Ziel für das Dataset konfigurieren. 
+   ![Zielspeicherkonto](./media/dataset-map-target-sql.png "Zielspeicher") 
+
+1. Wenn der Datenanbieter für die momentaufnahmebasierte Freigabe einen Momentaufnahmezeitplan erstellt hat, um die Daten regelmäßig zu aktualisieren, können Sie auch den Momentaufnahmezeitplan aktivieren, indem Sie die Registerkarte **Momentaufnahmezeitplan** auswählen. Aktivieren Sie das Kontrollkästchen neben „Momentaufnahmezeitplan“, und wählen Sie **+ Aktivieren** aus.
+
+   ![Aktivieren von „Momentaufnahmezeitplan“](./media/enable-snapshot-schedule.png "Aktivieren des Momentaufnahmezeitplans")
 
 ## <a name="trigger-a-snapshot"></a>Auslösen einer Momentaufnahme
 Diese Schritte sind nur für die momentaufnahmebasierte Freigabe relevant.
 
-1. Sie können eine Momentaufnahme auf der Registerkarte „Empfangene Freigaben“ > „Details“ auslösen, indem Sie **Trigger snapshot** (Momentaufnahme auslösen) wählen. Hier können Sie eine vollständige oder inkrementelle Momentaufnahme Ihrer Daten auslösen. Wählen Sie die Option für das vollständige Kopieren, falls Sie zum ersten Mal Daten von Ihrem Datenanbieter erhalten. 
+1. Sie können eine Momentaufnahme auslösen, indem Sie die Registerkarte **Details** und anschließend **Trigger snapshot** (Momentaufnahme auslösen) auswählen. Hier können Sie eine vollständige oder inkrementelle Momentaufnahme Ihrer Daten auslösen. Wählen Sie die Option für das vollständige Kopieren, falls Sie zum ersten Mal Daten von Ihrem Datenanbieter erhalten. 
 
    ![Auslösen der Momentaufnahme](./media/trigger-snapshot.png "Auslösen der Momentaufnahme") 
 
@@ -133,7 +130,7 @@ Diese Schritte sind nur für die momentaufnahmebasierte Freigabe relevant.
    ![Consumerdatasets](./media/consumer-datasets.png "Consumerdatasetzuordnung") 
 
 ## <a name="view-history"></a>Anzeigen des Verlaufs
-Navigieren Sie zum Anzeigen eines Verlaufs Ihrer Momentaufnahmen zu „Empfangene Freigaben“ > „Verlauf“. Hier ist ein Verlauf aller Momentaufnahmen angegeben, die in den letzten 60 Tagen generiert wurden. 
+Dieser Schritt ist nur für die momentaufnahmebasierte Freigabe relevant. Wählen Sie zum Anzeigen des Verlaufs der Momentaufnahmen die Registerkarte **Verlauf** aus. Hier ist ein Verlauf aller Momentaufnahmen angegeben, die in den letzten 30 Tagen generiert wurden. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Tutorial haben Sie gelernt, wie Sie eine Azure Data Share-Instanz akzeptieren und empfangen. Weitere Informationen zu den Konzepten von Azure Data Share finden Sie unter [Konzepte: Azure Data Share-Terminologie](terminology.md).

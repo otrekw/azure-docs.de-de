@@ -2,26 +2,21 @@
 title: 'Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Maxient Conduct Manager Software | Microsoft-Dokumentation'
 description: Hier erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Maxient Conduct Manager Software konfigurieren.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 85e71b76-cac3-4ce6-a35f-796d2cb7bdb5
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/18/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 09399f59e61ded49fef5a2388900b7b478111119
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: dd6872fd8dca3f29b61c6f1dffb5f219abac5cb8
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83847190"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88518889"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-maxient-conduct-manager-software"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Maxient Conduct Manager Software
 
@@ -113,7 +108,7 @@ In diesem Abschnitt gewähren Sie allen Konten Zugriff, um sich mithilfe des Azu
 
 ## <a name="test-with-maxient"></a>Testen mit Maxient 
 
-Wenn nicht bereits ein Supportticket bei einem Maxient-Implementierungs-/Supportmitarbeiter geöffnet wurde, senden Sie eine E-Mail an [support@maxient.com](mailto:support@maxient.com) mit dem Betreff „Campus-basierte Authentifizierung/Azure Setup – \<\<Name der Schule/Uni\>\>“. Geben Sie im Textkörper der E-Mail die **App-Verbundmetadaten-URL** an. Ein Maxient-Mitarbeiter wird mit einem Testlink antworten, um zu überprüfen, ob die richtigen Attribute freigegeben werden.  
+Wenn nicht bereits ein Supportticket bei einem Implementierungs-/Supportmitarbeiter von Maxient geöffnet wurde, senden Sie eine E-Mail mit dem Betreff „Campus-basierte Authentifizierung/Azure Setup – \<\<School Name\>\>“ an [support@maxient.com](mailto:support@maxient.com). Geben Sie im Textkörper der E-Mail die **App-Verbundmetadaten-URL** an. Ein Maxient-Mitarbeiter wird mit einem Testlink antworten, um zu überprüfen, ob die richtigen Attribute freigegeben werden.  
     
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

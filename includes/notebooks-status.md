@@ -4,15 +4,15 @@ ms.author: joshuapa
 ms.service: azure-notebooks
 ms.topic: include
 ms.date: 07/01/2020
-ms.openlocfilehash: c866ebac9701f31dbdafab87cdda6fc26edcf88c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5011a5d265c61cf26520f6c012037a67a8afacae
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85830303"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "86181493"
 ---
 > [!IMPORTANT]
-> Am 29. September wird die Website von Azure Notebooks Public Preview eingestellt und durch integrierte Dienste aus Visual Studio, Azure und GitHub ersetzt.
+> Am 9. Oktober 2020 wird die Website von Azure Notebooks Public Preview eingestellt und durch integrierte Dienste aus Visual Studio, Azure und GitHub ersetzt.
 > [Erfahren Sie mehr](https://aka.ms/aznb-notebooks-at-msft/) zu Ihren Optionen und zu den Notebookumgebungen von Microsoft.
 >
 > Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar.

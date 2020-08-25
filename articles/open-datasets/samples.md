@@ -7,12 +7,12 @@ ms.topic: sample
 author: cjgronlund
 ms.author: cgronlun
 ms.date: 05/06/2020
-ms.openlocfilehash: a25f0ddeb35aaf880682780fd61bcbc3cedbad08
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: c24363caac1db8dd8ce21b690ef989b2beb97f2d
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82930317"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88506055"
 ---
 # <a name="example-jupyter-notebooks-show-how-to-enrich-data-with-open-datasets"></a>Jupyter-Beispielnotebooks zeigen das Anreichern von Daten mit öffentlichen Datasets. 
 Die Jupyter-Beispielnotebooks für öffentliche Azure-Datasets zeigen Ihnen, wie Sie öffentliche Datasets laden und zum Anreichern von Demodaten verwenden. Zu den Techniken gehören die Verwendung von Apache Spark und Pandas zur Verarbeitung von Daten.
@@ -43,3 +43,4 @@ Die Jupyter-Beispielnotebooks für öffentliche Azure-Datasets zeigen Ihnen, wie
 * [Tutorial: Regressionsmodellierung mit automatisiertem maschinellem Lernen und einem öffentlichen Dataset](/azure/machine-learning/tutorial-auto-train-models?context=azure/open-datasets/context/open-datasets-context)
 * [Python-SDK für öffentliche Datasets](/python/api/azureml-opendatasets/azureml.opendatasets?view=azure-ml-py)
 * [Katalog öffentlicher Azure-Datasets](https://azure.microsoft.com/services/open-datasets/catalog/)
+* [Erstellen von Azure Machine Learning-Datasets über Open Datasets](how-to-create-azure-machine-learning-dataset-from-open-dataset.md)

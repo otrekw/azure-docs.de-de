@@ -3,15 +3,16 @@ title: Verwenden der Abhängigkeitsinjektion in Azure Functions (.NET)
 description: Verwenden von Abhängigkeitsinjektionen für die Registrierung und Verwendung von Diensten in .NET-Funktionen
 author: craigshoemaker
 ms.topic: conceptual
-ms.date: 09/05/2019
+ms.custom: devx-track-csharp
+ms.date: 08/15/2020
 ms.author: cshoe
 ms.reviewer: jehollan
-ms.openlocfilehash: 05b845f3284ea95dd2be595c4d59767e45149306
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 4919dc8f08a745a029eb6c3755f8cfc9c39f827f
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87500463"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88603857"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>Verwenden der Abhängigkeitsinjektion in Azure Functions (.NET)
 
@@ -225,10 +226,10 @@ Innerhalb der `Startup.Configure`-Methode können Sie Werte aus der `IConfigurat
 
 ```csharp
 builder.Services.AddOptions<MyOptions>()
-                .Configure<IConfiguration>((settings, configuration) =>
-                                           {
-                                                configuration.GetSection("MyOptions").Bind(settings);
-                                           });
+    .Configure<IConfiguration>((settings, configuration) =>
+    {
+        configuration.GetSection("MyOptions").Bind(settings);
+    });
 ```
 
 Durch den Aufruf von `Bind` werden Werte mit übereinstimmenden Eigenschaftsnamen aus der Konfiguration in die benutzerdefinierte Instanz kopiert. Die Optionsinstanz ist nun im IoC-Container zum Injizieren in eine Funktion verfügbar.
@@ -252,8 +253,57 @@ public class HttpTrigger
 
 Weitere Informationen zum Arbeiten mit Optionen finden Sie unter [Optionsmuster in ASP.NET Core](/aspnet/core/fundamentals/configuration/options).
 
-> [!WARNING]
-> Vermeiden Sie es, Werte aus Dateien wie *local.settings.json* oder *appsettings.{Umgebung}.json* im Verbrauchsplan zu lesen. Mit Triggerverbindungen zusammenhängende Werte, die aus diesen Dateien gelesen werden, sind bei der Skalierung der App nicht verfügbar, da die Hostinginfrastruktur keinen Zugriff auf die Konfigurationsinformationen hat, während der Skalierungscontroller neue Instanzen der App erstellt.
+### <a name="customizing-configuration-sources"></a>Anpassen von Konfigurationsquellen
+
+> [!NOTE]
+> Die Anpassung von Konfigurationsquellen ist ab Azure Functions-Hostversionen 2.0.14192.0 und 3.0.14191.0 verfügbar.
+
+Zum Angeben zusätzlicher Konfigurationsquellen überschreiben Sie die `ConfigureAppConfiguration`-Methode in der `StartUp`-Klasse Ihrer Funktions-App.
+
+Im folgenden Beispiel werden Konfigurationswerte aus einer Basisdatei und einer Datei mit optionalen umgebungsspezifischen App-Einstellungen hinzugefügt.
+
+```csharp
+using System.IO;
+using Microsoft.Azure.Functions.Extensions.DependencyInjection;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+
+[assembly: FunctionsStartup(typeof(MyNamespace.Startup))]
+
+namespace MyNamespace
+{
+    public class Startup : FunctionsStartup
+    {
+        public override void ConfigureAppConfiguration(IFunctionsConfigurationBuilder builder)
+        {
+            FunctionsHostBuilderContext context = builder.GetContext();
+
+            builder.ConfigurationBuilder
+                .AddJsonFile(Path.Combine(context.ApplicationRootPath, "appsettings.json"), optional: true, reloadOnChange: false)
+                .AddJsonFile(Path.Combine(context.ApplicationRootPath, $"appsettings.{context.EnvironmentName}.json"), optional: true, reloadOnChange: false);
+        }
+    }
+}
+```
+
+Fügen Sie der Eigenschaft `ConfigurationBuilder` von `IFunctionsConfigurationBuilder` Konfigurationsanbieter hinzu. Weitere Informationen zur Verwendung von Konfigurationsanbietern finden Sie unter [Konfiguration in ASP.NET Core](/aspnet/core/fundamentals/configuration/?view=aspnetcore-3.1#configuration-providers).
+
+`FunctionsHostBuilderContext` wird aus `IFunctionsConfigurationBuilder.GetContext()` abgerufen. Verwenden Sie diesen Kontext, um den aktuellen Umgebungsnamen abzurufen und den Speicherort der Konfigurationsdateien in Ihrem Funktions-App-Ordner aufzulösen.
+
+Standardmäßig werden Konfigurationsdateien wie *appsettings.json* nicht automatisch in den Ausgabeordner der Funktions-App kopiert. Aktualisieren Sie die Datei mit der Endung *.csproj* entsprechend dem folgenden Beispiel, um sicherzustellen, dass die Dateien kopiert werden.
+
+```xml
+<None Update="appsettings.json">
+    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>      
+</None>
+<None Update="appsettings.Development.json">
+    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    <CopyToPublishDirectory>Never</CopyToPublishDirectory>
+</None>
+```
+
+> [!IMPORTANT]
+> Bei Funktions-Apps, die im Nutzungs- oder Premium-Plan ausgeführt werden, können Änderungen an Konfigurationswerten, die in Triggern verwendet werden, zu Skalierungsfehlern führen. Alle Änderungen an diesen Eigenschaften durch die `FunctionsStartup`-Klasse führen zu einem Startfehler der Funktions-App.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

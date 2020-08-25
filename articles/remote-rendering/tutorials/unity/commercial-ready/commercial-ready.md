@@ -5,12 +5,12 @@ author: FlorianBorn71
 ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
-ms.openlocfilehash: e827f7eff707f5a7c467f53eacab6973bff2ef2f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0dad78ad76a870ea9f1db28a3cb5ccace5cd804f
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87076425"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88510928"
 ---
 # <a name="tutorial-creating-a-commercial-ready-azure-remote-rendering-application"></a>Tutorial: Erstellen einer Azure Remote Rendering-Anwendung für gewerbliche Zwecke
 
@@ -78,13 +78,13 @@ Weitere Informationen finden Sie unter:
 
 Ihr Anwendungsfall erfordert möglicherweise einen schnellen Start vom Anwendungsstart bis hin zur Anzeige von 3D-Modellen. Dies kann beispielsweise während einer wichtigen Besprechung der Fall sein, bei der bereits vorab alles einsatzbereit sein muss. Ein weiteres Beispiel ist die Überprüfung eines CAD-3D-Modells, bei dem eine schnelle Entwurfsiteration zwischen einer CAD-Anwendung und Mixed Reality von entscheidender Bedeutung ist, um die Effizienz sicherzustellen.
 
-Azure Remote Rendering erfordert vorverarbeitete 3D-Modelle, und Azure braucht derzeit einige Minuten, um einen virtuellen Computer zu erstellen und ein Modell zum Rendern zu laden. Damit dieser Prozess so reibungslos und schnell wie möglich abläuft, ist es erforderlich, die Daten des 3D-Modells und die ARR-Sitzung vorab vorzubereiten.
+Azure Remote Rendering erfordert vorverarbeitete 3D-Modelle, und Azure benötigt derzeit einige Minuten, um eine Sitzung zu erstellen und ein Modell zum Rendern zu laden. Damit dieser Prozess so reibungslos und schnell wie möglich abläuft, ist es erforderlich, die Daten des 3D-Modells und die ARR-Sitzung vorab vorzubereiten.
 
 Die hier genannten Vorschläge sind zurzeit nicht Standard bei Azure Remote Rendering, Sie können sie jedoch selbst implementieren, um kürzere Startzeiten zu erreichen.
 
 ### <a name="initiate-early"></a>Frühe Initialisierung
 
-Die einfachste Option zum Verkürzen der Startzeit besteht darin, die Erstellung und Initialisierung des virtuellen Computers im Benutzerworkflow so früh wie möglich durchzuführen. Eine Strategie besteht darin, die Sitzung zu initialisieren, sobald bekannt ist, dass eine ARR-Sitzung benötigt wird. Dies ist häufig der Fall, wenn der Benutzer mit dem Hochladen eines 3D-Modells in Azure Blob Storage beginnt, das mit Azure Remote Rendering verwendet werden soll. In dem Fall können die Sitzungserstellung und die Initialisierung des virtuellen Computers gleichzeitig mit dem Hochladen des 3D-Modells initiiert werden, sodass beides parallel ausgeführt wird.
+Die einfachste Option zum Verkürzen der Startzeit besteht darin, die Erstellung und Initialisierung der Sitzung so früh wie möglich im Benutzerworkflow durchzuführen. Eine Strategie besteht darin, die Sitzung zu initialisieren, sobald bekannt ist, dass eine ARR-Sitzung benötigt wird. Dies ist häufig der Fall, wenn der Benutzer mit dem Hochladen eines 3D-Modells in Azure Blob Storage beginnt, das mit Azure Remote Rendering verwendet werden soll. In dem Fall können Sitzungserstellung und -initialisierung gleichzeitig mit dem Hochladen des 3D-Modells initiiert werden, sodass beides parallel ausgeführt wird.
 
 Dieser Prozess kann weiter optimiert werden, indem sichergestellt wird, dass sich die ausgewählten Azure Blob Storage-Eingabe- und Ausgabecontainer im gleichen regionalen Rechenzentrum wie die Azure Remote Rendering-Sitzung befinden.
 
@@ -92,41 +92,41 @@ Dieser Prozess kann weiter optimiert werden, indem sichergestellt wird, dass sic
 
 Wenn Sie wissen, dass Sie Azure Remote Rendering in Zukunft benötigen, können Sie ein bestimmtes Datum und eine bestimmte Uhrzeit für das Starten der Azure Remote Rendering-Sitzung festlegen.
 
-Diese Option kann über ein Webportal angeboten werden, in dem Benutzer ein 3D-Modell hochladen und einen Zeitpunkt für die spätere Anzeige planen können. Dies ist auch ein guter Ausgangspunkt, um nach anderen Einstellungen wie Standard- oder Premium-Rendering zu fragen. Das Premium-Rendering ist möglicherweise geeignet, wenn eine Mischung aus Ressourcen angezeigt werden soll, bei der es schwieriger ist, die ideale Größe automatisch zu bestimmen, oder wenn sichergestellt werden muss, dass in der Azure-Region zu einem bestimmten Zeitpunkt virtuelle Computer verfügbar sind.
+Diese Option kann über ein Webportal angeboten werden, in dem Benutzer ein 3D-Modell hochladen und einen Zeitpunkt für die spätere Anzeige planen können. Dies ist auch ein guter Ausgangspunkt, um nach anderen Einstellungen wie [*Standard*](../../../reference/vm-sizes.md)- oder [*Premium*](../../../reference/vm-sizes.md)-Rendering zu fragen. Das *Premium*-Rendering ist möglicherweise geeignet, wenn eine Mischung aus Ressourcen angezeigt werden soll, bei der es schwieriger ist, die ideale Größe automatisch zu bestimmen, oder wenn sichergestellt werden muss, dass in der Azure-Region zu einem bestimmten Zeitpunkt virtuelle Computer verfügbar sind.
 
 ### <a name="session-pooling"></a>Sitzungspools
 
 In äußerst anspruchsvollen Situationen sind Sitzungspools eine weitere Option, bei der immer eine oder mehrere Sitzungen erstellt und initialisiert werden. Dadurch wird ein Sitzungspool erstellt, der vom anfordernden Benutzer unmittelbar genutzt werden kann. Der Nachteil dieses Ansatzes besteht darin, dass die Abrechnung für den Dienst gleich nach der Initialisierung des virtuellen Computers beginnt. Es ist möglicherweise nicht kostengünstig, einen Sitzungspool durchgehend auszuführen. Basierend auf der Analyse ist es jedoch möglich, Spitzenauslastungen vorherzusagen, oder dieser Ansatz kann mit der obigen Planungsstrategie kombiniert werden, um vorherzusagen, wann Sitzungen benötigt werden, und den Sitzungspool entsprechend anzupassen.
 
-Diese Strategie hilft auch bei der Optimierung der Auswahl zwischen Standard- und Premium-Sitzungen auf dynamischere Weise, da es viel schneller ist, zwischen den beiden Typen innerhalb einer einzelnen Benutzersitzung zu wechseln, z. B. wenn zuerst ein komplexes Premium-Modell angezeigt wird, gefolgt von einem Modell, das in einer Standard-Sitzung angezeigt werden kann. Wenn die Benutzersitzungen recht lang sind, führt dies ggf. zu erheblichen Kosteneinsparungen.
+Diese Strategie hilft auch bei der Optimierung der Auswahl zwischen *Standard*- und *Premium*-Sitzungen auf dynamischere Weise. Es ist nämlich viel schneller, zwischen den beiden Typen innerhalb einer einzelnen Benutzersitzung zu wechseln, z. B. wenn zuerst ein komplexes *Premium*-Modell angezeigt wird, gefolgt von einem Modell, das in einer *Standard*-Sitzung angezeigt werden kann. Wenn die Benutzersitzungen recht lang sind, führt dies ggf. zu erheblichen Kosteneinsparungen.
 
 Weitere Informationen zu Azure Remote Rendering-Sitzungen finden Sie unter:
 
 * [Remote Rendering-Sitzungen](https://docs.microsoft.com/azure/remote-rendering/concepts/sessions)
 
-## <a name="standard-vs-premium-vm-routing-strategies"></a>VM-Routingstrategien: Standard und Premium
+## <a name="standard-vs-premium-server-size-routing-strategies"></a>Routingstrategien für die Servergröße: Standard und Premium
 
-Wenn es erforderlich ist, auszuwählen, ob Sie einen virtuellen Standard- oder Premium-Computer erstellen, stellt dies eine Herausforderung bei der Gestaltung der Benutzererfahrung und des End-to-End-Systems dar. Die ausschließliche Verwendung von Premium-Sitzungen ist eine Option, Standard-Sitzungen verbrauchen jedoch deutlich weniger Azure-Computeressourcen und sind kostengünstiger als Premium. Dies ist ein Anreiz, nach Möglichkeit Standard-Sitzungen zu verwenden und Premium nur bei Bedarf zu nutzen.
+Wenn Sie auswählen müssen, ob eine *Standard*- oder *Premium*-Servergröße erstellt wird, stellt dies eine Herausforderung bei der Gestaltung der Benutzererfahrung und des End-to-End-Systems dar. Die ausschließliche Verwendung von *Premium*-Sitzungen ist eine Option, *Standard*-Sitzungen verbrauchen jedoch deutlich weniger Azure-Computeressourcen und sind kostengünstiger als *Premium*. Dies ist ein Anreiz, nach Möglichkeit *Standard*-Sitzungen zu verwenden und *Premium* nur bei Bedarf zu nutzen.
 
 Im Folgenden sind verschiedene Optionen mit unterschiedlichem Umfang beschrieben, mit denen Sie die Sitzungsauswahl verwalten können.
 
 ### <a name="use-only-standard-or-premium"></a>Ausschließliches Verwenden von Standard oder Premium
 
-Wenn Sie genau wissen, dass Ihre Anforderungen *immer* unterhalb des Schwellenwerts zwischen Standard und Premium liegen, ist die Entscheidung einfach: Nutzen Sie einfach Standard. Beachten Sie jedoch, dass es bedeutende Auswirkungen auf die Benutzererfahrung hat, wenn die Gesamtkomplexität der geladenen Ressourcen für eine Standard-Sitzung abgelehnt wird, da sie zu komplex sind.
+Wenn Sie genau wissen, dass Ihre Anforderungen *immer* unterhalb des Schwellenwerts zwischen *Standard* und *Premium* liegen, ist die Entscheidung einfach: Nutzen Sie einfach *Standard*. Beachten Sie jedoch, dass es bedeutende Auswirkungen auf die Benutzererfahrung hat, wenn die Gesamtkomplexität der geladenen Ressourcen für eine *Standard*-Sitzung abgelehnt wird, da sie zu komplex sind.
 
-Wenn Sie davon ausgehen, dass ein großer Teil der Anwendungen den Schwellenwert zwischen Standard und Premium überschreitet oder der Kostenfaktor in Ihrem Anwendungsfall keine Rolle spielt, können Sie der Einfachheit halber durchgehend Premium wählen.
+Wenn Sie davon ausgehen, dass ein großer Teil der Anwendungen den Schwellenwert zwischen *Standard* und *Premium* überschreitet oder der Kostenfaktor in Ihrem Anwendungsfall keine Rolle spielt, können Sie der Einfachheit halber durchgehend *Premium* wählen.
 
 ### <a name="ask-the-user"></a>Auswahl durch die Benutzer
 
-Wenn Sie sowohl Standard als auch Premium unterstützen möchten, können Sie auch einfach die Benutzer fragen, welcher Typ von VM-Sitzung initiiert werden soll, wenn sie die anzuzeigenden 3D-Ressourcen auswählen. Das Problem bei diesem Ansatz besteht darin, dass die Benutzer die Komplexität der 3D-Ressource bzw. sogar mehrerer Ressourcen, die angezeigt werden, kennen müssen. Aus diesem Grund empfiehlt sich diese Option in der Regel nicht. Wenn die Benutzer eine falsche Auswahl treffen und Standard wählen, könnte die resultierende Benutzererfahrung zu einem ungünstigen Zeitpunkt kompromittiert werden.
+Wenn Sie sowohl *Standard* als auch *Premium* unterstützen möchten, können Sie auch einfach die Benutzer fragen, welcher Sitzungstyp initiiert werden soll, wenn sie die anzuzeigenden 3D-Ressourcen auswählen. Das Problem bei diesem Ansatz besteht darin, dass die Benutzer die Komplexität der 3D-Ressource bzw. sogar mehrerer Ressourcen, die angezeigt werden, kennen müssen. Aus diesem Grund empfiehlt sich diese Option in der Regel nicht. Wenn die Benutzer eine falsche Auswahl treffen und *Standard* wählen, könnte die resultierende Benutzererfahrung zu einem ungünstigen Zeitpunkt kompromittiert werden.
 
 ### <a name="analyze-the-3d-model"></a>Analysieren des 3D-Modells
 
-Ein weiterer relativ einfacher Ansatz besteht darin, die Komplexität der ausgewählten 3D-Objekte zu analysieren. Wenn die Komplexität des Modells unter dem Schwellenwert für Standard liegt, initiieren Sie eine Standard-Sitzung. Andernfalls initiieren Sie eine Premium-Sitzung. Hier besteht die Herausforderung darin, dass eine einzelne Sitzung letztendlich verwendet werden kann, um mehrere Modelle anzuzeigen, von denen einige möglicherweise den Komplexitätsschwellenwert einer Standard-Sitzung überschreiten, was dazu führt, dass diese Sitzung nicht nahtlos für eine Sequenz verschiedener 3D-Objekte verwendet werden kann.
+Ein weiterer relativ einfacher Ansatz besteht darin, die Komplexität der ausgewählten 3D-Objekte zu analysieren. Wenn die Komplexität des Modells unter dem Schwellenwert für *Standard* liegt, initiieren Sie eine *Standard*-Sitzung. Andernfalls initiieren Sie eine *Premium*-Sitzung. Hier besteht die Herausforderung darin, dass eine einzelne Sitzung letztendlich verwendet werden kann, um mehrere Modelle anzuzeigen, von denen einige möglicherweise den Komplexitätsschwellenwert einer *Standard*-Sitzung überschreiten, was dazu führt, dass diese Sitzung nicht nahtlos für eine Sequenz verschiedener 3D-Objekte verwendet werden kann.
 
 ### <a name="automatic-switching"></a>Automatischer Wechsel
 
-Das automatische Wechseln zwischen Standard- und Premium-Sitzungen kann bei einem Systementwurf sinnvoll sein, der auch Sitzungspools umfasst. Diese Strategie ermöglicht eine weitere Optimierung der Ressourcennutzung. Wenn der Benutzer Modelle lädt, die angezeigt werden sollen, wird die Komplexität bestimmt, und die richtige Sitzungsgröße wird vom Sitzungspoooldienst angefordert.
+Das automatische Wechseln zwischen *Standard*- und *Premium*-Sitzungen kann bei einem Systementwurf sinnvoll sein, der auch Sitzungspools umfasst. Diese Strategie ermöglicht eine weitere Optimierung der Ressourcennutzung. Wenn der Benutzer Modelle lädt, die angezeigt werden sollen, wird die Komplexität bestimmt, und die richtige Sitzungsgröße wird vom Sitzungspoooldienst angefordert.
 
 ## <a name="working-with-networks"></a>Arbeiten mit Netzwerken
 
@@ -213,7 +213,7 @@ Bestimmen Sie basierend auf dem erwarteten Anwendungsfall den besten Ort bzw. ei
 
 Wenn Ihr Anwendungsfall über Verwendungsmuster verfügt, bei denen dasselbe 3D-Objekt mehrmals hochgeladen werden kann, verfolgt das Back-End nach, welche Modelle bereits für die Verwendung mit ARR konvertiert wurden, sodass ein Modell nur einmal für eine spätere Auswahl vorverarbeitet wird. Ein Beispiel für eine Entwurfsüberprüfung wäre ein Fall, in dem ein Team auf ein häufig genutztes 3D-Originalobjekt zugreifen kann. Jedes Teammitglied soll das Modell irgendwann mithilfe von ARR überprüfen. Nur das erste Anzeigen löst anschließend den Vorabverarbeitungsschritt aus. Beim nachfolgenden Anzeigen wird die dazugehörige nachverarbeitete Datei im SAS-Ausgabecontainer gesucht.
 
-Abhängig vom Anwendungsfall möchten Sie wahrscheinlich die richtige Größe der Azure Remote Rendering-VM (Standard oder Premium) für jedes 3D-Objekt oder jede Gruppe von Objekten, die in derselben Sitzung zusammen angezeigt werden, ermitteln und potenziell beibehalten.  
+Abhängig vom Anwendungsfall möchten Sie wahrscheinlich die richtige Größe des Azure Remote Rendering-Servers (*Standard* oder *Premium*) für jedes 3D-Objekt oder jede Gruppe von Objekten, die in derselben Sitzung zusammen angezeigt werden, ermitteln und potenziell beibehalten.  
 
 ### <a name="on-device-model-selection-list"></a>Auswahlliste für Gerätemodelle
 

@@ -4,15 +4,15 @@ description: 'Tutorial: Es wird beschrieben, wie Sie Python-Skripts als Teil ein
 author: mammask
 ms.devlang: python
 ms.topic: tutorial
-ms.date: 07/29/2020
+ms.date: 08/12/2020
 ms.author: komammas
 ms.custom: mvc, devx-track-python
-ms.openlocfilehash: 9b58aa06b67f01cf9ce0b30cef0326185124306c
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: f4c71cffe00faa6dd8cc440c59f94b8c2d60f712
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87853312"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185110"
 ---
 # <a name="tutorial-run-python-scripts-through-azure-data-factory-using-azure-batch"></a>Tutorial: Ausführen von Python-Skripts per Azure Data Factory mit Azure Batch
 
@@ -67,8 +67,7 @@ Hier erstellen Sie Blobcontainer, in denen die Eingabe- und Ausgabedateien für 
 1. Melden Sie sich mit Ihren Azure-Anmeldeinformationen bei Storage-Explorer an.
 1. Erstellen Sie unter Verwendung des mit Ihrem Batch-Konto verknüpften Speicherkontos entsprechend den unter [Erstellen eines Blobcontainers](../vs-azure-tools-storage-explorer-blobs.md#create-a-blob-container) beschriebenen Schritten zwei Blobcontainer (einen für Eingabedateien und einen für Ausgabedateien).
     * In diesem Beispiel hat der Eingabecontainer den Namen `input`, und der Ausgabecontainer heißt `output`.
-1. Laden Sie `main.py` und [`iris.csv`](https://www.kaggle.com/uciml/iris/version/2#Iris.csv) per Storage-Explorer in Ihren Eingabecontainer `input` hoch, indem Sie die Schritte unter [Verwalten von Blobs in einem Blobcontainer](../vs-azure-tools-storage-explorer-blobs.md#managing-blobs-in-a-blob-container) ausführen.
-
+1. Laden Sie [`iris.csv`](https://www.kaggle.com/uciml/iris/version/2#Iris.csv) per Storage-Explorer in Ihren Eingabecontainer `input` hoch, indem Sie die Schritte unter [Verwalten von Blobs in einem Blobcontainer](../vs-azure-tools-storage-explorer-blobs.md#managing-blobs-in-a-blob-container) ausführen.
 
 ## <a name="develop-a-script-in-python"></a>Entwickeln eines Skripts in Python
 

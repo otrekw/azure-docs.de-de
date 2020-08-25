@@ -1,17 +1,17 @@
 ---
 title: Was ist Azure App Configuration?
-description: Enthält eine Übersicht über den Dienst „Azure App Configuration“.
+description: Lesen Sie eine Übersicht über den Dienst „Azure App Configuration“. Hier werden die Gründe für die Verwendung von App Configuration erläutert, und Sie erfahren, wie Sie den Dienst verwenden können.
 author: lisaguthrie
 ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: overview
 ms.date: 02/19/2020
-ms.openlocfilehash: 1f1cec68813d33e7fa19a414a30adfc9a41df91f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f38b8de37e84cd8a65c5a5caadf8d3b6b71ce455
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77523474"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88587071"
 ---
 # <a name="what-is-azure-app-configuration"></a>Was ist Azure App Configuration?
 
@@ -51,7 +51,7 @@ App Configuration ergänzt die Lösung [Azure Key Vault](https://azure.microsoft
 
 Die einfachste Möglichkeit zum Hinzufügen eines App Configuration-Speichers zu Ihrer Anwendung ist eine von Microsoft bereitgestellte Clientbibliothek. Die folgenden Methoden sind verfügbar, um je nach gewählter Sprache und Framework eine Verbindung mit Ihrer Anwendung herzustellen.
 
-| Programmiersprache und Framework | Gewusst wie: Herstellen einer Verbindung |
+| Programmiersprache und Framework | Herstellen der Verbindung |
 |---|---|
 | .NET Core und ASP.NET Core | App Configuration-Anbieter für .NET Core |
 | .NET Framework und ASP.NET | App Configuration-Generator für .NET |

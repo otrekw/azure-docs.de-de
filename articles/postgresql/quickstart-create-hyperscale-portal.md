@@ -1,5 +1,5 @@
 ---
-title: Erstellen verteilter Tabellen – Hyperscale (Citus) – Azure Database for PostgreSQL
+title: 'Schnellstart: Erstellen einer Servergruppe – Hyperscale (Citus) – Azure Database for PostgreSQL'
 description: Schnellstartanleitung zum Erstellen und Abfragen verteilter Tabellen in Azure Database for PostgreSQL – Hyperscale (Citus)
 author: jonels-msft
 ms.author: jonels
@@ -7,15 +7,15 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.custom: mvc
 ms.topic: quickstart
-ms.date: 05/14/2019
-ms.openlocfilehash: 6e03b8f89ec22b74ad7dd14d9225c11fde78ec7f
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.date: 08/17/2020
+ms.openlocfilehash: 977082b7f9055b90ee5c93913154934741d93772
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88135622"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88547697"
 ---
-# <a name="quickstart-create-an-azure-database-for-postgresql---hyperscale-citus-in-the-azure-portal"></a>Schnellstart: Erstellen einer Instanz von Azure Database for PostgreSQL – Hyperscale (Citus) über das Azure-Portal
+# <a name="quickstart-create-a-hyperscale-citus-server-group-in-the-azure-portal"></a>Schnellstart: Erstellen einer Hyperscale (Citus)-Servergruppe im Azure-Portal
 
 Azure-Datenbank für PostgreSQL ist ein verwalteter Dienst, mit dem Sie hochverfügbare PostgreSQL-Datenbanken in der Cloud ausführen, verwalten und skalieren können. In dieser Schnellstartanleitung erfahren Sie, wie Sie über das Azure-Portal eine Servergruppe vom Typ „Azure Database for PostgreSQL – Hyperscale (Citus)“ erstellen. Dabei erkunden Sie verteilte Daten: knotenübergreifendes Sharding von Tabellen, Erfassen von Beispieldaten und Ausführen von Abfragen, die auf mehreren Knoten ausgeführt werden.
 

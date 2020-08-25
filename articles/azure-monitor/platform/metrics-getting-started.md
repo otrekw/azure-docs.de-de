@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 14f21b1c0bff5f4d5f77b1547c09ddd6c370ece0
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.openlocfilehash: 3e5514c4a54083bcc6ef8187f2cd97515d2dd680
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86276429"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88590182"
 ---
 # <a name="getting-started-with-azure-metrics-explorer"></a>Erste Schritte mit dem Azure-Metrik-Explorer
 
@@ -41,16 +41,19 @@ Der Azure Monitor-Metrik-Explorer ist eine Komponente des Microsoft Azure-Portal
 
 4. Optional können Sie die [Metrikaggregation ändern](metrics-charts.md#changing-aggregation), wenn Sie beispielsweise möchten, dass Ihr Diagramm nur die minimalen, maximalen oder durchschnittlichen Werte der Metrik anzeigt.
 
-> [!NOTE]
+> [!TIP]
 > Klicken Sie auf **Metrik hinzufügen**, und wiederholen Sie diese Schritte, wenn mehrere Metriken im gleichen Diagramm angezeigt werden sollen. Wenn mehrere Diagramme in einer Ansicht angezeigt werden sollen, klicken Sie oben auf **Diagramm hinzufügen**.
 
 ## <a name="select-a-time-range"></a>Auswählen eines Zeitbereichs
+
+> [!WARNING]
+> [Die meisten Metriken werden in Azure 93 Tage lang gespeichert](data-platform-metrics.md#retention-of-metrics). Sie können jedoch maximal Daten für 30 Tage in einem einzelnen Diagramm abfragen. Diese Einschränkung gilt nicht für [protokollbasierte Metriken](../app/pre-aggregated-metrics-log-metrics.md#log-based-metrics).
 
 Das Diagramm zeigt standardmäßig die Metrikdaten der letzten 24 Stunden an. Verwenden Sie den Bereich **Zeitauswahl**, um den Zeitraum, die Vergrößerung oder die Verkleinerung Ihres Diagramms zu ändern. 
 
 ![Bereich zum Ändern des Zeitraums](./media/metrics-getting-started/time-picker.png)
 
-> [!NOTE]
+> [!TIP]
 > Verwenden Sie **Time Brush**, um einen interessanten Bereich des Diagramms (Spitze oder Senke) zu untersuchen. Setzen Sie den Mauszeiger an den Anfang des Bereichs, klicken und halten Sie die linke Maustaste gedrückt, ziehen Sie den Mauszeiger zur anderen Seite des Bereichs, und lassen Sie die Maustaste dann los. Im Diagramm wird dieser Zeitbereich vergrößert. 
 
 ## <a name="apply-dimension-filters-and-splitting"></a>Anwenden von Dimensionsfiltern und Aufteilung

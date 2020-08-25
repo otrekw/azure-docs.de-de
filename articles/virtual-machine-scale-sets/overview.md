@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 06/30/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: 7539b951a4a138802150d9408221b6e4ad19e92b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0fcad26bb78e0e9a03d51818ac66a98af1ef0b18
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075545"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88590386"
 ---
 # <a name="what-are-virtual-machine-scale-sets"></a>Was sind Skalierungsgruppen für virtuelle Computer?
 Mit Azure-VM-Skalierungsgruppen können Sie eine Gruppe VMs mit Lastenausgleich erstellen und verwalten. Die Anzahl von VM-Instanzen kann automatisch erhöht oder verringert werden, wenn sich der Bedarf ändert, oder es kann ein Zeitplan festgelegt werden. Skalierungsgruppen ermöglichen Hochverfügbarkeit für Ihre Anwendungen und das zentrale Verwalten, Konfigurieren und Aktualisieren einer großen Zahl von VMs. Mit VM-Skalierungsgruppen können Sie umfassende Dienste für Bereiche wie Compute, Big Data und Containerworkloads erstellen.
@@ -60,6 +60,10 @@ Für Skalierungsgruppen fallen keine zusätzlichen Kosten an. Sie zahlen nur fü
 Verwenden Sie [Azure Monitor für VMs](../azure-monitor/insights/vminsights-overview.md), das einen einfachen Onboarding-Prozess enthält und die Erfassung wichtiger Leistungsindikatoren für CPU, Arbeitsspeicher, Datenträger und Netzwerk der VMs in der Skalierungsgruppe automatisiert. Außerdem sind weitere Überwachungsfunktionen und vordefinierte Visualisierungen verfügbar, mit der Sie sich auf Verfügbarkeit und Leistung Ihrer Skalierungsgruppen konzentrieren können.
 
 Aktivieren Sie die Überwachung für Ihre [VM-Skalierungsgruppenanwendung](../azure-monitor/app/azure-vm-vmss-apps.md) mit Application Insights, um ausführliche Informationen zur Anwendung zu erfassen, einschließlich der Anzahl der Seitenaufrufe, Anwendungsanforderungen und Ausnahmen. Überprüfen Sie darüber hinaus die Verfügbarkeit Ihrer Anwendung, indem Sie einen [Verfügbarkeitstest](../azure-monitor/app/monitor-web-app-availability.md) konfigurieren, um Benutzerdatenverkehr zu simulieren.
+
+## <a name="singapore-data-residency"></a>Data Residency in Singapur
+
+Das Feature zum Aktivieren der Speicherung von Kundendaten in einer einzelnen Region ist in Azure derzeit nur in der Region „Asien, Südosten“ (Singapur) des geografischen Raums „Asien-Pazifik“ verfügbar. Bei allen anderen Regionen werden Kundendaten unter „Geografien“ gespeichert. Weitere Informationen finden Sie unter [Trust Center](https://azuredatacentermap.azurewebsites.net/).
 
 ## <a name="next-steps"></a>Nächste Schritte
 Erstellen Sie im Azure-Portal Ihre erste VM-Skalierungsgruppe, um zu beginnen.

@@ -1,29 +1,29 @@
 ---
-title: 'Schnellstart: Extrahieren von gedrucktem Text (OCR) – REST, C#'
+title: 'Schnellstart: Extrahieren von Text mit dem OCR-Vorgang der REST-API von Maschinelles Sehen 2.0 und C#'
 titleSuffix: Azure Cognitive Services
-description: In dieser Schnellstartanleitung extrahieren Sie gedruckten Text aus einem Bild mithilfe der Maschinelles Sehen-API und C#.
+description: In dieser Schnellstartanleitung extrahieren Sie Text aus einem Bild, indem Sie den OCR-Vorgang der Maschinelles Sehen-REST-API mit C# verwenden.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 08/05/2020
+ms.date: 08/11/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 4ce9e530f536893fe3d9753e43928cf53f9dde53
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 4306b82793dd62765c07dfa808add4e16dc06be5
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87835390"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88209185"
 ---
-# <a name="quickstart-extract-printed-text-ocr-using-the-computer-vision-rest-api-and-c"></a>Schnellstart: Extrahieren von gedrucktem Text (OCR) mithilfe der Maschinelles Sehen-REST-API und C#
+# <a name="quickstart-extract-text-using-the-computer-vision-20-rest-api-ocr-operation-and-c"></a>Schnellstart: Extrahieren von Text mit dem OCR-Vorgang der REST-API von Maschinelles Sehen 2.0 und C#
 
-> [!NOTE]
-> Wenn Sie englischsprachigen Text extrahieren, sollten Sie den neuen [Lesevorgang](https://docs.microsoft.com/azure/cognitive-services/computer-vision/concept-recognizing-text) verwenden. Es steht ein [C#-Schnellstart](https://docs.microsoft.com/azure/cognitive-services/computer-vision/quickstarts/csharp-hand-text) zur Verfügung. 
+> [!IMPORTANT]
+> Falls Sie Text in den Sprachen Englisch, Niederländisch, Französisch, Deutsch, Italienisch, Portugiesisch, Spanisch oder vereinfachtes Chinesisch (Vorschauversion) extrahieren, empfehlen wir Ihnen, den neueren [Read-Vorgang](https://docs.microsoft.com/azure/cognitive-services/computer-vision/concept-recognizing-text) zu nutzen. Es steht ein [C#-Schnellstart](https://docs.microsoft.com/azure/cognitive-services/computer-vision/quickstarts/csharp-hand-text) zur Verfügung. 
 
-In dieser Schnellstartanleitung verwenden Sie die Maschinelles Sehen-REST-API, um mittels optischer Zeichenerkennung (Optical Character Recognition, OCR) gedruckten Text aus einem Bild zu extrahieren. Mit der [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc)-Funktion können Sie gedruckten Text in einem Bild erkennen und erkannte Zeichen als computerlesbare Zeichenfolge extrahieren.
+In dieser Schnellstartanleitung extrahieren Sie gedruckten Text aus einem Bild, indem Sie das [OCR-Feature](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) der Maschinelles Sehen-REST-API verwenden. Mit diesem Feature können Sie gedruckten Text in einem Bild erkennen und erkannte Zeichen als computerlesbare Zeichenfolge extrahieren.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

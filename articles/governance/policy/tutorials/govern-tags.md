@@ -1,14 +1,14 @@
 ---
 title: 'Tutorial: Verwalten der Tag-Governance'
 description: In diesem Tutorial verwenden Sie die Auswirkung „modify“ von Azure Policy, um ein Tag-Governancemodell für neue und bereits vorhandene Ressourcen zu erstellen und zu erzwingen.
-ms.date: 04/21/2020
+ms.date: 08/17/2020
 ms.topic: tutorial
-ms.openlocfilehash: 8b3d0db100a601950ec82824897a3ba3e5145b79
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: f49eedb00c98d3c362140fdca9b195a086903f10
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84142264"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88545504"
 ---
 # <a name="tutorial-manage-tag-governance-with-azure-policy"></a>Tutorial: Verwalten der Tag-Governance mit Azure Policy
 

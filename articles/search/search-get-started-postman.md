@@ -8,13 +8,13 @@ ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.devlang: rest-api
-ms.date: 02/10/2020
-ms.openlocfilehash: 07c5e73ecd53bad0e5d5ec7959b288e0b6237a87
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.date: 08/17/2020
+ms.openlocfilehash: 04619df8009aca3fecf317481d030280d5532281
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86171923"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88510911"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-postman-using-rest-apis"></a>Schnellstart: Erstellen eines Azure Cognitive Search-Index in Postman mit REST-APIs
 > [!div class="op_single_selector"]
@@ -25,9 +25,9 @@ ms.locfileid: "86171923"
 > * [PowerShell](search-howto-dotnet-sdk.md)
 >*
 
-Eine der einfachsten Möglichkeiten zum Erkunden der [Azure Cognitive Search-REST-APIs](https://docs.microsoft.com/rest/api/searchservice) besteht darin, mithilfe von Postman oder eines anderen Webtesttools HTTP-Anforderungen zu formulieren und die Antworten zu untersuchen. Mit den richtigen Tools und dieser Anleitung können Sie vor dem Schreiben von Code Anforderungen senden und Antworten anzeigen.
+In diesem Artikel wird erläutert, wie Sie mithilfe der [Azure Cognitive Search REST-APIs](https://docs.microsoft.com/rest/api/searchservice) und eines API-Clients zum Senden und Empfangen von Anforderungen interaktiv REST-API-Anforderungen formulieren. Mit einem API-Client und dieser Anleitung können Sie vor dem Schreiben von Code Anforderungen senden und Antworten anzeigen.
 
-In diesem Artikel wird erläutert, wie Anforderungen interaktiv formuliert werden. Alternativ können [Sie eine Postman-Sammlung](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/Quickstart) herunterladen und importieren, um vordefinierte Anforderungen zu verwenden.
+In diesem Artikel kommt die Anwendung Postman zum Einsatz. Sie können [eine Postman-Sammlung herunterladen und importieren](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/Quickstart), wenn Sie lieber vordefinierte Anforderungen verwenden möchten. 
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
@@ -61,14 +61,14 @@ Bei beiden Tools müssen Sie einen Befehl auswählen (GET, POST, PUT usw.) und e
 
 Beachten Sie, das HTTPS-Präfix, den Namen des Diensts, den Namen eines Objekts (in diesem Fall: die Indexsammlung) und die [API-Version](search-api-versions.md). Die API-Version ist eine erforderliche Zeichenfolge in Kleinbuchstaben und wird für die aktuelle Version als `?api-version=2020-06-30` angegeben. API-Versionen werden regelmäßig aktualisiert. Wenn Sie die API-Version in jede Anforderung einfügen, haben Sie die vollständige Kontrolle darüber, welche jeweils verwendet wird.  
 
-Der Anforderungsheader setzt sich aus dem Inhaltstyp (content-type) sowie dem API-Schlüssel (api-key) für die Authentifizierung bei Azure Cognitive Search zusammen. Ersetzen Sie den Administrator-API-Schlüssel (YOUR-AZURE-SEARCH-ADMIN-API-KEY) durch einen gültigen Wert. 
+Der Anforderungsheader setzt sich aus zwei Elementen zusammen: `Content-Type` und `api-key` für die Authentifizierung bei Azure Cognitive Search. Ersetzen Sie den Administrator-API-Schlüssel (YOUR-AZURE-SEARCH-ADMIN-API-KEY) durch einen gültigen Wert. 
 
 ```http
 api-key: <YOUR-AZURE-SEARCH-ADMIN-API-KEY>
 Content-Type: application/json
 ```
 
-Formulieren Sie in Postman eine Anforderung, die wie auf dem folgenden Screenshot aussieht. Wählen Sie **GET** als Verb aus, geben Sie die URL an, und klicken Sie auf **Senden**. Dieser Befehl stellt eine Verbindung mit Azure Cognitive Search her, liest die Indexsammlung und gibt nach erfolgreicher Verbindungsherstellung den HTTP-Statuscode 200 zurück. Falls Ihr Dienst bereits über Indizes verfügt, enthält die Antwort auch Indexdefinitionen.
+Formulieren Sie in Postman eine Anforderung, die wie auf dem folgenden Screenshot aussieht. Wählen Sie **GET** als Befehl aus, geben Sie die URL an, und klicken Sie auf **Senden**. Dieser Befehl stellt eine Verbindung mit Azure Cognitive Search her, liest die Indexsammlung und gibt nach erfolgreicher Verbindungsherstellung den HTTP-Statuscode 200 zurück. Falls Ihr Dienst bereits über Indizes verfügt, enthält die Antwort auch Indexdefinitionen.
 
 ![Postman-Anforderungs-URL und -Header](media/search-get-started-postman/postman-url.png "Postman-Anforderungs-URL und -Header")
 
@@ -80,7 +80,7 @@ Die URL wird um den Indexnamen `hotels` erweitert.
 
 Gehen Sie dazu in Postman wie folgt vor:
 
-1. Ändern Sie das Verb in **PUT**.
+1. Ändern Sie den Befehl in **PUT**.
 
 2. Fügen Sie diese URL ein: `https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotels-quickstart?api-version=2020-06-30`.
 
@@ -92,7 +92,7 @@ Gehen Sie dazu in Postman wie folgt vor:
 
 ### <a name="index-definition"></a>Indexdefinition
 
-Die Feldsammlung definiert die Dokumentstruktur. Jedes Dokument muss über diese Felder verfügen, und jedes Feld muss einen Datentyp besitzen. Da Zeichenfolgenfelder in der Volltextsuche verwendet werden, kann es ratsam sein, numerische Daten in Zeichenfolgen umzuwandeln, wenn dieser Inhalt durchsuchbar sein soll.
+Die Feldsammlung definiert die Dokumentstruktur. Jedes Dokument muss über diese Felder verfügen, und jedes Feld muss einen Datentyp besitzen. Zeichenfolgenfelder werden in der Volltextsuche verwendet. Wenn numerische Daten durchsuchbar sein müssen, müssen Sie numerische Daten in Zeichenfolgen umwandeln.
 
 Die Attribute im Feld bestimmen die zulässige Aktion. Die REST-APIs ermöglichen standardmäßig viele Aktionen. Beispielsweise sind alle Zeichenfolgen durchsuchbar, abrufbar, filterbar und facettierbar. Häufig müssen Sie Attribute nur festlegen, wenn Sie ein Verhalten deaktivieren möchten.
 
@@ -128,13 +128,13 @@ Wenn Sie diese Anforderung senden, sollten Sie die Antwort „HTTP 201“ erhalt
 
 ## <a name="2---load-documents"></a>2\. Laden von Dokumenten
 
-Das Erstellen und das Auffüllen des Index sind separate Schritte. In Azure Cognitive Search enthält der Index alle durchsuchbaren Daten, die Sie als JSON-Dokumente bereitstellen können. Für diese Aufgabe wird die [REST-API zum Hinzufügen, Aktualisieren oder Löschen von Dokumenten](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) verwendet. 
+Das Erstellen und das Auffüllen des Index sind separate Schritte. In Azure Cognitive Search enthält der Index alle durchsuchbaren Daten. In diesem Szenario werden die Daten als JSON-Dokumente bereitgestellt. Für diese Aufgabe wird die [REST-API zum Hinzufügen, Aktualisieren oder Löschen von Dokumenten](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) verwendet. 
 
 Die URL wird um die Sammlungen vom Typ `docs` sowie um den Vorgang `index` erweitert.
 
 Gehen Sie dazu in Postman wie folgt vor:
 
-1. Ändern Sie das Verb in **POST**.
+1. Ändern Sie den Befehl in **POST**.
 
 2. Fügen Sie diese URL ein: `https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotels-quickstart/docs/index?api-version=2020-06-30`.
 
@@ -241,13 +241,13 @@ Falls Sie eine 207-Antwort erhalten, ist der Upload von mindestens einem Dokumen
 
 ## <a name="3---search-an-index"></a>3\. Durchsuchen eines Index
 
-Nachdem Sie einen Index erstellt und Dokumente geladen haben, können Sie nun über die [Search Documents-REST-API](https://docs.microsoft.com/rest/api/searchservice/search-documents) Abfragen ausführen.
+Nachdem Sie einen Index und Dokumente geladen haben, können Sie nun über die [Search Documents-REST-API](https://docs.microsoft.com/rest/api/searchservice/search-documents) Abfragen ausführen.
 
 Die URL wird um einen Abfrageausdruck erweitert, der unter Verwendung des Suchoperators angegeben wird.
 
 Gehen Sie dazu in Postman wie folgt vor:
 
-1. Ändern Sie das Verb in **GET**.
+1. Ändern Sie den Befehl in **GET**.
 
 2. Fügen Sie diese URL ein: `https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotels-quickstart/docs?search=*&$count=true&api-version=2020-06-30`.
 

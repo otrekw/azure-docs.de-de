@@ -2,26 +2,21 @@
 title: 'Tutorial: Azure Active Directory-Integration mit HubSpot | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und HubSpot konfigurieren.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 57343ccd-53ea-4e62-9e54-dee2a9562ed5
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: c4b235426a7029abb9bb79ba56e582cccc3b14a6
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 51e27526b10bcdd74d6e2bffb8bf620d7b022aac
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "68944448"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88551453"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hubspot"></a>Tutorial: Azure Active Directory-Integration in HubSpot
 
@@ -106,9 +101,9 @@ In diesem Abschnitt konfigurieren Sie das einmalige Anmelden von Azure AD mit Hu
 
 1. Zum Konfigurieren des *IDP-initiierten Modus* führen Sie im Bereich **Grundlegende SAML-Konfiguration** die folgenden Schritte aus:
 
-    1. Geben Sie im Feld **Bezeichner** eine URL im folgenden Format ein: https:\//api.hubspot.com/login-api/v1/saml/login?portalId=\<KUNDEN-ID\>.
+    1. Geben Sie im Feld **Bezeichner** eine URL im folgenden Format ein: https:\//api.hubspot.com/login-api/v1/saml/login?portalId=\<CUSTOMER ID\>.
 
-    1. Geben Sie im Feld **Antwort-URL** eine URL im folgenden Format ein: https:\//api.hubspot.com/login-api/v1/saml/acs?portalId=\<KUNDEN-ID\>.
+    1. Geben Sie im Feld **Antwort-URL** eine URL im folgenden Format ein: https:\//api.hubspot.com/login-api/v1/saml/acs?portalId=\<CUSTOMER ID\>.
 
     ![SSO-Informationen zur Domäne und zu den URLs für HubSpot](common/idp-intiated.png)
 
@@ -183,7 +178,7 @@ In diesem Abschnitt erstellen Sie im Azure-Portal eine Testbenutzerin mit dem Na
 
     1. Geben Sie in das Feld **Name** den Namen **BrittaSimon** ein.
   
-    1. Geben Sie im Feld **Benutzername** den Namen **brittasimon\@\<IhreUnternehmensdomäne>.\<Erweiterung\>** ein. Beispiel: **brittasimon\@contoso.com**
+    1. Geben Sie in das Feld **Benutzername** den Namen **brittasimon\@\<your-company-domain>.\<extension\>** ein. Beispiel: **brittasimon\@contoso.com**
 
     1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**. Notieren Sie sich den Wert, der im Feld **Kennwort** angezeigt wird.
 

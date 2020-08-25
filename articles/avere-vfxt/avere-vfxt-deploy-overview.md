@@ -1,17 +1,17 @@
 ---
 title: Übersicht über die Bereitstellung – Avere vFXT für Azure
-description: Übersicht über das Bereitstellen von Avere vFXT für Azure
+description: In dieser Übersicht erfahren Sie, wie Sie einen Avere vFXT für Azure-Cluster bereitstellen. Verwandte Artikel enthalten spezifische Anweisungen zur Bereitstellung.
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 01/13/2020
 ms.author: rohogue
-ms.openlocfilehash: 78140fea74272dff6056bebfbd44ed9d55b0e1db
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4c63fdf2164dd4dce12912669eec29c79755cc2a
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76153682"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88271225"
 ---
 <!-- filename is linked to in the marketplace template, make sure it gets a redirect if we rename it -->
 

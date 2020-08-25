@@ -1,5 +1,5 @@
 ---
-title: Wiederherstellen einer gelöschten Office 365-Gruppe – Azure AD | Microsoft-Dokumentation
+title: 'Wiederherstellen einer gelöschten Microsoft 365-Gruppe: Azure AD | Microsoft-Dokumentation'
 description: Hier erfahren Sie, wie Sie eine gelöschte Gruppe wiederherstellen, wiederherstellbare Gruppen anzeigen und eine Gruppe in Azure Active Directory endgültig löschen.
 services: active-directory
 author: curtand
@@ -8,34 +8,34 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: quickstart
-ms.date: 04/29/2020
+ms.date: 08/13/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c0e17cf2f969b1dc2c5d700a010e3c4ce4474978
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 133371007702ce6443455d7381722fdbbc79eabc
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87015752"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213667"
 ---
-# <a name="restore-a-deleted-office-365-group-in-azure-active-directory"></a>Wiederherstellen einer gelöschten Office 365-Gruppe in der Azure Active Directory-Vorschau
+# <a name="restore-a-deleted-microsoft-365-group-in-azure-active-directory"></a>Wiederherstellen einer gelöschten Microsoft 365-Gruppe in Azure Active Directory
 
-Wenn Sie eine Office 365-Gruppe in Azure Active Directory (Azure AD) löschen, wird die gelöschte Gruppe beibehalten, ist aber 30 Tage lang nach dem Löschdatum nicht sichtbar. Damit soll sichergestellt werden, dass die Gruppe und dessen Inhalte bei Bedarf wiederhergestellt werden können. Diese Funktionalität ist ausschließlich auf Office 365-Gruppen in Azure AD beschränkt. Sie ist nicht für Sicherheits- und Verteilergruppen verfügbar. Beachten Sie, dass der 30-tägige Wiederherstellungszeitraum für Gruppen nicht angepasst werden kann.
+Wenn Sie eine Microsoft 365-Gruppe in Azure Active Directory (Azure AD) löschen, wird die gelöschte Gruppe beibehalten, ist aber 30 Tage lang nach dem Löschdatum nicht sichtbar. Damit soll sichergestellt werden, dass die Gruppe und dessen Inhalte bei Bedarf wiederhergestellt werden können. Diese Funktionalität ist ausschließlich auf Microsoft 365-Gruppen in Azure AD beschränkt. Sie ist nicht für Sicherheits- und Verteilergruppen verfügbar. Beachten Sie, dass der 30-tägige Wiederherstellungszeitraum für Gruppen nicht angepasst werden kann.
 
 > [!NOTE]
-> Verwenden Sie nicht `Remove-MsolGroup`, da hierbei die Gruppe endgültig gelöscht wird. Verwenden Sie immer `Remove-AzureADMSGroup`, um eine Office 365-Gruppe zu löschen.
+> Verwenden Sie nicht `Remove-MsolGroup`, da hierbei die Gruppe endgültig gelöscht wird. Verwenden Sie immer `Remove-AzureADMSGroup`, um eine Microsoft 365-Gruppe zu löschen.
 
 Die Berechtigungen, die zum Wiederherstellen einer Gruppe erforderlich sind, können Folgende umfassen:
 
 Role | Berechtigungen
 --------- | ---------
-Globaler Administrator, Gruppenadministrator, Partnersupport der Ebene 2 und Intune-Administrator | Können eine beliebige gelöschte Office 365-Gruppe wiederherstellen
-Benutzeradministrator und Partnersupport der Ebene 1 | Können eine beliebige gelöschte Office 365-Gruppe wiederherstellen (mit Ausnahme von Gruppen, die der Rolle „Unternehmensadministrator“ zugewiesen sind)
-Benutzer | Kann eine beliebige gelöschte Office 365-Gruppe wiederherstellen, die sich in seinem Besitz befand.
+Globaler Administrator, Gruppenadministrator, Partnersupport der Ebene 2 und Intune-Administrator | Können eine beliebige gelöschte Microsoft 365-Gruppe wiederherstellen
+Benutzeradministrator und Partnersupport der Ebene 1 | Können eine beliebige gelöschte Microsoft 365-Gruppe wiederherstellen (mit Ausnahme von Gruppen, die der Rolle „Unternehmensadministrator“ zugewiesen sind)
+Benutzer | Kann eine beliebige gelöschte Microsoft 365-Gruppe wiederherstellen, die sich in seinem Besitz befand
 
-## <a name="view-and-manage-the-deleted-office-365-groups-that-are-available-to-restore"></a>Anzeigen und Verwalten der wiederherstellbaren gelöschten Office 365-Gruppen
+## <a name="view-and-manage-the-deleted-microsoft-365-groups-that-are-available-to-restore"></a>Anzeigen und Verwalten der wiederherstellbaren gelöschten Microsoft 365-Gruppen
 
 1. Melden Sie sich mit einem Benutzeradministratorkonto beim [Azure AD Admin Center](https://aad.portal.azure.com) an.
 
@@ -48,11 +48,11 @@ Benutzer | Kann eine beliebige gelöschte Office 365-Gruppe wiederherstellen, di
    - Sie können **Gruppe wiederherstellen** auswählen, um die gelöschte Gruppe und deren Inhalt wiederherzustellen.
    - Sie können **Endgültig löschen** auswählen, um die gelöschte Gruppe endgültig zu entfernen. Gruppen können nur von einem Administrator endgültig entfernt werden.
 
-## <a name="view-the-deleted-office-365-groups-that-are-available-to-restore-using-powershell"></a>Anzeigen der wiederherstellbaren gelöschten Office 365-Gruppen mithilfe von PowerShell
+## <a name="view-the-deleted-microsoft-365-groups-that-are-available-to-restore-using-powershell"></a>Anzeigen der wiederherstellbaren gelöschten Microsoft 365-Gruppen mithilfe von PowerShell
 
 Mit den folgenden Cmdlets können gelöschte Gruppen angezeigt werden, um sicherzustellen, dass die gewünschten Gruppen noch nicht endgültig gelöscht wurden. Diese Cmdlets sind Teil des [Azure AD PowerShell-Moduls](https://www.powershellgallery.com/packages/AzureAD/). Weitere Informationen zu diesem Modul finden Sie im Artikel [Azure Active Directory PowerShell Version 2](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0).
 
-1.  Führen Sie das folgende Cmdlet aus, um alle gelöschten Office 365-Gruppen in Ihrer Azure AD-Organisation anzuzeigen, die noch zur Wiederherstellung verfügbar sind.
+1.  Führen Sie das folgende Cmdlet aus, um alle gelöschten Microsoft 365-Gruppen in Ihrer Azure AD-Organisation anzuzeigen, die noch zur Wiederherstellung verfügbar sind.
    
 
     ```powershell
@@ -65,7 +65,7 @@ Mit den folgenden Cmdlets können gelöschte Gruppen angezeigt werden, um sicher
     Get-AzureADMSDeletedGroup –Id <objectId>
     ```
 
-## <a name="how-to-restore-your-deleted-office-365-group-using-powershell"></a>So stellen Sie Ihre gelöschte Office 365-Gruppe mithilfe von PowerShell wieder her
+## <a name="how-to-restore-your-deleted-microsoft-365-group-using-powershell"></a>So stellen Sie Ihre gelöschte Microsoft 365-Gruppe mithilfe von PowerShell wieder her
 
 Nachdem Sie sichergestellt haben, dass die Gruppe noch zur Wiederherstellung verfügbar ist, stellen Sie die gelöschte Gruppe über eine der folgenden Methoden wieder her. Wenn die Gruppe Dokumente, SharePoint-Websites oder andere beständige Objekte enthält, kann es bis zu 24 Stunden dauern, bis eine Gruppe und dessen Inhalte vollständig wiederhergestellt werden.
 
@@ -85,12 +85,12 @@ Nachdem Sie sichergestellt haben, dass die Gruppe noch zur Wiederherstellung ver
 
 ## <a name="how-do-you-know-this-worked"></a>Wie finde ich heraus, ob es funktioniert hat?
 
-Um sicherzustellen, dass Sie eine Office 365-Gruppe erfolgreich wiederhergestellt haben, führen Sie das Cmdlet `Get-AzureADGroup –ObjectId <objectId>` aus, um Informationen zur Gruppe anzuzeigen. Nach Durchführung der Wiederherstellungsanforderung:
+Um sicherzustellen, dass Sie eine Microsoft 365-Gruppe erfolgreich wiederhergestellt haben, führen Sie das Cmdlet `Get-AzureADGroup –ObjectId <objectId>` aus, um Informationen zur Gruppe anzuzeigen. Nach Durchführung der Wiederherstellungsanforderung:
 
 - Die Gruppe wird in der linken Navigationsleiste in Exchange angezeigt.
 - Der Plan für die Gruppe wird in Planner angezeigt.
 - Alle SharePoint-Websites und deren Inhalte sind verfügbar.
-- Die Gruppe kann über einen der Exchange-Endpunkte und andere Office 365-Workloads, die Office 365-Gruppen unterstützen, aufgerufen werden.
+- Die Gruppe kann über einen der Exchange-Endpunkte und andere Microsoft 365-Workloads, die Microsoft 365-Gruppen unterstützen, aufgerufen werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -1,24 +1,24 @@
 ---
-title: Verwaltung von VM-Erweiterungen mit Azure Arc für Server
-description: Azure Arc für Server (Vorschau) kann die Bereitstellung von Erweiterungen für virtuelle Computer verwalten, die Konfigurations- und Automatisierungsaufgaben nach der Bereitstellung für nicht in Azure gehostete VMs bereitstellen.
+title: Verwaltung von VM-Erweiterungen mit Azure Arc-fähigen Servern (Vorschauversion)
+description: Mit Azure Arc-fähigen Servern (Vorschauversion) kann die Bereitstellung von Erweiterungen für virtuelle Computer verwaltet werden, die Konfigurations- und Automatisierungsaufgaben nach der Bereitstellung für nicht in Azure gehostete VMs bereitstellen.
 ms.date: 06/17/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0319420fe528d41a23ee8fae90c4ad8c326f35a0
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 1b27172a14896041cb4217b12af41d6a04118721
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121305"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213118"
 ---
-# <a name="virtual-machine-extension-management-with-azure-arc-for-servers-preview"></a>Verwaltung von Erweiterungen für virtuelle Computer mit Azure Arc für Server (Vorschau)
+# <a name="virtual-machine-extension-management-with-azure-arc-enabled-servers-preview"></a>Verwaltung von Erweiterungen für virtuelle Computer mit Azure Arc-fähigen Servern (Vorschauversion)
 
 Erweiterungen für virtuelle Computer sind kleine Anwendungen, die Konfigurations- und Automatisierungsaufgaben auf virtuellen Azure-Computern nach der Bereitstellung ermöglichen. Wenn z.B. Software auf einem virtuellen Computer (virtual machine, VM) installiert werden muss, Virenschutz oder die Ausführung eines Skripts erforderlich ist, kann eine VM-Erweiterung verwendet werden.
 
-Mit Azure Arc für Server (Vorschau) können Sie Azure-VM-Erweiterungen für nicht auf Azure gehostete virtuelle Windows- und Linux-Computer bereitstellen, um die Verwaltung Ihrer hybriden Computer vor Ort, auf dem Edge und in anderen Cloudumgebungen über ihren gesamten Lebenszyklus zu vereinfachen.
+Mit Azure Arc-fähigen Servern (Vorschauversion) können Sie Azure-VM-Erweiterungen für nicht auf Azure gehostete virtuelle Windows- und Linux-Computer bereitstellen, um die Verwaltung Ihrer hybriden Computer vor Ort, auf dem Edge und in anderen Cloudumgebungen über ihren gesamten Lebenszyklus zu vereinfachen.
 
 ## <a name="key-benefits"></a>Hauptvorteile
 
-Die Unterstützung von VM-Erweiterungen in Azure Arc für Server (Vorschau) bietet die folgenden Hauptvorteile:
+Die Unterstützung von VM-Erweiterungen durch Azure Arc-fähige Server (Vorschauversion) bietet die folgenden Hauptvorteile:
 
 * Verwendung von [Azure Automation State Configuration](../../automation/automation-dsc-overview.md), um Konfigurationen zentral zu speichern und den gewünschten Zustand hybrid verbundener Computer mithilfe der DSC-VM-Erweiterung zu verwalten.
 
@@ -47,7 +47,7 @@ In dieser Vorschau unterstützen wir die folgenden VM-Erweiterungen auf Windows-
 |Log Analytics-Agent |Linux |Microsoft.EnterpriseCloud.Monitoring |[Log Analytics VM-Erweiterung für Linux](../../virtual-machines/extensions/oms-linux.md) |
 |Microsoft Dependency-Agent | Linux |Microsoft.Compute | [VM-Erweiterung für den Dependency-Agent für Linux](../../virtual-machines/extensions/agent-dependency-linux.md) |
 
-VM-Erweiterungen können auf Hybridservern, die von Arc für Server (Vorschau) verwaltet werden, mit Azure Resource Manager-Vorlagen, über das Azure-Portal oder in Azure PowerShell ausgeführt werden.
+VM-Erweiterungen können auf Hybridservern, die von Azure Arc-fähigen Servern (Vorschauversion) verwaltet werden, mit Azure Resource Manager-Vorlagen, über das Azure-Portal oder in Azure PowerShell ausgeführt werden.
 
 Weitere Informationen zum Azure Connected Machine-Agent-Paket und Details zur Erweiterungs-Agent-Komponente finden Sie in der [Agent-Übersicht](agent-overview.md#agent-component-details).
 
@@ -98,7 +98,7 @@ VM-Erweiterungen können über das Azure-Portal auf Ihren mit Arc für Server (V
 
 ## <a name="azure-resource-manager-templates"></a>Azure-Ressourcen-Manager-Vorlagen
 
-VM-Erweiterungen können einer Azure Resource Manager-Vorlage hinzugefügt und mit der Bereitstellung der Vorlage ausgeführt werden. Mit den von Arc für Server (Vorschau) unterstützten VM-Erweiterungen können Sie die unterstützte VM-Erweiterung mithilfe von Azure PowerShell auf Linux- oder Windows-Computern bereitstellen. Jedes Beispiel unten beinhaltet eine Vorlagendatei und eine Parameterdatei mit Beispielwerten für die Vorlage.
+VM-Erweiterungen können einer Azure Resource Manager-Vorlage hinzugefügt und mit der Bereitstellung der Vorlage ausgeführt werden. Mit den von Azure Arc-fähigen Servern (Vorschauversion) unterstützten VM-Erweiterungen können Sie die unterstützte VM-Erweiterung mithilfe von Azure PowerShell auf Linux- oder Windows-Computern bereitstellen. Jedes Beispiel unten beinhaltet eine Vorlagendatei und eine Parameterdatei mit Beispielwerten für die Vorlage.
 
 >[!NOTE]
 >Zwar können mehrere Erweiterungen in einem Batch zusammengefasst und verarbeitet werden, die Installation erfolgt jedoch nacheinander. Sobald die Installation der ersten Erweiterung abgeschlossen ist, wird die Installation der nächsten Erweiterung versucht.
@@ -223,7 +223,7 @@ New-AzResourceGroupDeployment -ResourceGroupName "ContosoEngineering" -TemplateF
 
 Zum Verwenden der Erweiterung für benutzerdefinierte Skripts steht das folgende Beispiel für die Ausführung unter Windows oder Linux zur Verfügung. Wenn Sie mit der Erweiterung für benutzerdefinierte Skripts nicht vertraut sind, lesen Sie [Erweiterung für benutzerdefinierte Skripts für Windows](../../virtual-machines/extensions/custom-script-windows.md) oder [Erweiterung für benutzerdefinierte Skripts für Linux](../../virtual-machines/extensions/custom-script-linux.md). Es gibt eine Reihe abweichender Merkmale, die Sie kennen sollten, wenn Sie diese Erweiterung für Hybridcomputer verwenden:
 
-* Die Liste der unterstützten Betriebssysteme für die Azure VM-Erweiterung für benutzerdefinierte Skripts trifft auf Azure Arc für Server nicht zu. Die Liste der unterstützten Betriebssysteme für Arc für Server finden Sie [hier](agent-overview.md#supported-operating-systems).
+* Die Liste der unterstützten Betriebssysteme für die Azure VM-Erweiterung für benutzerdefinierte Skripts trifft auf Azure Arc-fähige Server nicht zu. Die Liste der unterstützten Betriebssysteme für Arc-fähige Server finden Sie [hier](agent-overview.md#supported-operating-systems).
 
 * Konfigurationsdetails, die Azure-VM-Skalierungsgruppen oder klassische VMs betreffen, sind nicht anwendbar.
 
@@ -379,7 +379,7 @@ In der Konfiguration der benutzerdefinierten Skripterweiterung werden Aspekte wi
 
 Zum Verwenden der PowerShell DSC-Erweiterung steht das folgende Beispiel für die Ausführung unter Windows oder Linux zur Verfügung. Wenn Sie mit der PowerShell DSC-Erweiterung nicht vertraut sind, informieren Sie sich in der [Übersicht zum DSC-Erweiterungshandler](../../virtual-machines/extensions/dsc-overview.md). Es gibt eine Reihe abweichender Merkmale, die Sie kennen sollten, wenn Sie diese Erweiterung für Hybridcomputer verwenden:
 
-* Die Liste der unterstützten Betriebssysteme für die Azure VM-PowerShell DSC-Erweiterung trifft auf Azure Arc für Server nicht zu. Die Liste der unterstützten Betriebssysteme für Arc für Server finden Sie [hier](agent-overview.md#supported-operating-systems).
+* Die Liste der unterstützten Betriebssysteme für die Azure VM PowerShell DSC-Erweiterung trifft auf Azure Arc-fähige Server nicht zu. Die Liste der unterstützten Betriebssysteme für Arc-fähige Server finden Sie [hier](agent-overview.md#supported-operating-systems).
 
 * Wenn Ihre Computer ein Skript extern herunterladen müssen und nur über einen Proxyserver Daten austauschen können, müssen Sie den [Connected Machine-Agent so konfigurieren](manage-agent.md#update-or-remove-proxy-settings), dass er die Umgebungsvariable des Proxyservers festlegt.
 

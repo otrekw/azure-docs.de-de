@@ -1,20 +1,20 @@
 ---
 title: 'Azure Key Vault: Verwenden des vorläufigen Löschens mit PowerShell'
-description: Beispiele für Anwendungsfälle für vorläufiges Löschen mit PowerShell-Codeausschnitten
+description: Hier erfahren Sie, wie Sie über Azure PowerShell das Feature für vorläufiges Löschen von Azure Key Vault nutzen, das die Wiederherstellung von Schlüsseltresoren und Schlüsseltresorobjekten ermöglicht.
 services: key-vault
 author: ShaneBala-keyvault
 manager: ravijan
 ms.service: key-vault
 ms.subservice: general
-ms.topic: tutorial
+ms.topic: how-to
 ms.date: 08/11/2020
 ms.author: sudbalas
-ms.openlocfilehash: 55e4bd20b6cc17a5cbad620d3a404d6ada41b81a
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: 6ec784048d2c30d215fe046ccda39ef6f8a3daa5
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88136472"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88585541"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-powershell"></a>Verwenden des vorläufigen Löschens in Key Vault mit PowerShell
 

@@ -2,15 +2,15 @@
 author: areddish
 ms.author: areddish
 ms.service: cognitive-services
-ms.date: 04/14/2020
-ms.openlocfilehash: dd587279e05b00304eda6edd763ecda9bd6e3c8f
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.date: 08/17/2020
+ms.openlocfilehash: f54b5c7bec7d2b9af67b967ff34ab43bd1818a7d
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85805862"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88511299"
 ---
-Dieser Artikel enthält Informationen zu den ersten Schritten mit dem Custom Vision SDK mit Python und unterstützt Sie beim Erstellen eines Objekterkennungsmodells. Nach der Erstellung können Sie markierte Bereiche hinzufügen, Bilder hochladen, das Projekt trainieren, die veröffentlichte Endpunkt-URL für Vorhersagen des Projekts abrufen und den Endpunkt für die programmgesteuerte Überprüfung eines Bilds verwenden. Verwenden Sie dieses Beispiel als Vorlage für die Erstellung Ihrer eigenen Python-Anwendung.
+Dieser Artikel enthält Informationen zu den ersten Schritten mit der Custom Vision-Clientbibliothek und Python und unterstützt Sie beim Erstellen eines Objekterkennungsmodells. Nach der Erstellung können Sie markierte Bereiche hinzufügen, Bilder hochladen, das Projekt trainieren, die veröffentlichte Endpunkt-URL für Vorhersagen des Projekts abrufen und den Endpunkt für die programmgesteuerte Überprüfung eines Bilds verwenden. Verwenden Sie dieses Beispiel als Vorlage für die Erstellung Ihrer eigenen Python-Anwendung.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -18,9 +18,9 @@ Dieser Artikel enthält Informationen zu den ersten Schritten mit dem Custom Vis
 - [Pip](https://pip.pypa.io/en/stable/installing/)-Tool
 - [!INCLUDE [create-resources](../../includes/create-resources.md)]
 
-## <a name="install-the-custom-vision-sdk"></a>Installieren des Custom Vision SDK
+## <a name="install-the-custom-vision-client-library"></a>Installieren der Custom Vision-Clientbibliothek
 
-Führen Sie den folgenden Befehl in PowerShell aus, um das Custom Vision Service SDK für Python zu installieren:
+Führen Sie in PowerShell den folgenden Befehl aus, um die Clientbibliothek des Custom Vision-Diensts für Python zu installieren:
 
 ```powershell
 pip install azure-cognitiveservices-vision-customvision

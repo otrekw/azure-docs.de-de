@@ -2,26 +2,21 @@
 title: 'Tutorial: Azure Active Directory-Integration mit ARcGIS Enterprise | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und ArcGIS Enterprise konfigurieren.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: barbkess
-ms.assetid: 24809e9d-a4aa-4504-95a9-e4fcf484f431
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/28/2018
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 57eda7e1d5ffedf7d5b867bfa7a59850fbadaf99
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: a544a98b3a9d5c2d30f95240325e91018d2f40c9
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87905005"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88549608"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-arcgis-enterprise"></a>Tutorial: Azure Active Directory-Integration in ArcGIS Enterprise
 
@@ -48,8 +43,6 @@ Um die Azure AD-Integration mit ArcGIS Enterprise konfigurieren zu können, ben�
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
-
-
 
 * ArcGIS Enterprise unterstützt **SP- und IDP**-initiiertes einmaliges Anmelden.
 * ArcGIS Enterprise unterstützt die **Just-in-Time**-Benutzerbereitstellung.
@@ -132,21 +125,30 @@ Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD m
 
 ### <a name="configure-arcgis-enterprise-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens für ArcGIS Enterprise
 
-1. Melden Sie sich in einem anderen Webbrowserfenster bei der ArcGIS Enterprise-Unternehmenswebsite als Administrator an.
+1. Wenn Sie die Konfiguration in ArcGIS Enterprise automatisieren möchten, müssen Sie die **Browsererweiterung „Meine Apps“ für die sichere Anmeldung** installieren, indem Sie auf **Erweiterung installieren** klicken.
 
-2. Wählen Sie **Organisation > EINSTELLUNGEN BEARBEITEN**.
+    ![Erweiterung „Meine Apps“](common/install-myappssecure-extension.png)
+
+1. Klicken Sie nach dem Hinzufügen der Erweiterung zum Browser auf **ArcGIS Enterprise einrichten**, um zur Anwendung ArcGIS Enterprise weitergeleitet zu werden. Geben Sie dort die Administratoranmeldeinformationen ein, um sich bei ArcGIS Enterprise anzumelden. Die Browsererweiterung konfiguriert die Anwendung automatisch für Sie und automatisiert die Schritte 3 bis 7.
+
+    ![Einrichtungskonfiguration](common/setup-sso.png)
+
+1. Wenn Sie ArcGIS Enterprise manuell einrichten möchten, melden Sie sich bei der ArcGIS Enterprise-Unternehmenswebsite als Administrator an.
+
+
+1. Wählen Sie **Organisation > EINSTELLUNGEN BEARBEITEN**.
 
     ![ArcGIS Enterprise-Konfiguration](./media/arcgisenterprise-tutorial/configure1.png)
 
-3. Wählen Sie die Registerkarte **Security** (Sicherheit) aus.
+1. Wählen Sie die Registerkarte **Security** (Sicherheit) aus.
 
     ![ArcGIS Enterprise-Konfiguration](./media/arcgisenterprise-tutorial/configure2.png)
 
-4. Führen Sie einen Bildlauf nach unten zum Abschnitt **Enterprise-Anmeldungen über SAML** aus, und wählen Sie **ENTERPRISE-ANMELDUNG FESTLEGEN** aus.
+1. Führen Sie einen Bildlauf nach unten zum Abschnitt **Enterprise-Anmeldungen über SAML** aus, und wählen Sie **ENTERPRISE-ANMELDUNG FESTLEGEN** aus.
 
     ![ArcGIS Enterprise-Konfiguration](./media/arcgisenterprise-tutorial/configure3.png)
 
-5. Führen Sie im Abschnitt **Festlegen des Identitätsanbieters** die folgenden Schritte aus:
+1. Führen Sie im Abschnitt **Festlegen des Identitätsanbieters** die folgenden Schritte aus:
 
     ![ArcGIS Enterprise-Konfiguration](./media/arcgisenterprise-tutorial/configure4.png)
 

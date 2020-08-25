@@ -8,12 +8,12 @@ ms.date: 6/30/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: dca903591c5d6805108d55163aaedc2435d9297e
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: 718f4c0b41400ae2e35b88820b2d4154dab23111
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85610079"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272823"
 ---
 # <a name="tutorial-send-data-via-transparent-gateway"></a>Tutorial: Senden von Daten per transparentem Gateway
 
@@ -225,7 +225,7 @@ Falls Sie die in diesem umfassenden Tutorial verwendeten Ressourcen weiter erkun
 
 1. Löschen Sie die erstellten Ressourcengruppen für den virtuellen Entwicklungscomputer, den virtuellen IoT Edge-Computer, das Speicherkonto und den Machine Learning Service-Arbeitsbereich (und die erstellten Ressourcen „Containerregistrierung“, „Application Insights“, „Schlüsseltresor“ und „Speicherkonto“).
 
-1. Löschen Sie das Machine Learning-Projekt in [Azure Notebooks](https://notebooks.azure.com).
+1. Löschen Sie das Machine Learning-Projekt in [Azure Notebooks](https://notebooks.azure.com).
 
 1. Gehen Sie wie folgt vor, wenn Sie das Repository lokal geklont haben: Schließen Sie alle PowerShell- oder VS Code-Fenster, in denen auf das lokale Repository verwiesen wird, und löschen Sie anschließend das Repositoryverzeichnis.
 

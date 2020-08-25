@@ -1,21 +1,21 @@
 ---
-title: Erstellen und Teilen eines Jupyter-Notebooks auf Azure Notebooks (Vorschauversion)
-description: Erstellen Sie schnell ein Jupyter-Notebook in Azure Notebooks (Vorschauversion), führen Sie es aus, und teilen Sie das Notebook dann mit anderen.
+title: Erstellen und Teilen einer Jupyter Notebook-Instanz in Azure Notebooks (Vorschauversion)
+description: Erstellen Sie schnell eine Jupyter Notebook-Instanz in Azure Notebooks (Vorschauversion), führen Sie sie aus, und teilen Sie sie dann mit anderen.
 ms.topic: quickstart
 ms.date: 12/04/2018
 ms.custom: devx-track-python
-ms.openlocfilehash: 19773a6857d58f5b6af2a02ac28a3414c51fc917
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 77575b5b9e006ac9881d03dc95509d55c53c26d7
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87849399"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589332"
 ---
 # <a name="quickstart-create-and-share-a-notebook-in-azure-notebooks-preview"></a>Schnellstart: Erstellen und Teilen eines Notebooks in Azure Notebooks (Vorschauversion)
 
 [!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
-In dieser Schnellstartanleitung erstellen Sie eine Jupyter Notebook-Instanz in Azure Notebooks, führen sie aus und geben das Notebook dann für andere Benutzer frei. Jupyter ermöglicht es Ihnen, auf einfache Weise Markdowntext, ausführbaren Code, persistente Daten, Grafiken und Visualisierungen auf einer einzelnen Canvas zu kombinieren, die als „Notebook“ bezeichnet wird. Azure Notebooks ist ein kostenloser gehosteter Dienst zum Entwickeln und Ausführen von Jupyter-Notebooks in der Cloud ohne Installation.
+In dieser Schnellstartanleitung erstellen Sie eine Jupyter Notebook-Instanz in Azure Notebooks, führen sie aus und geben sie dann für andere Benutzer frei. Jupyter ermöglicht es Ihnen, auf einfache Weise Markdowntext, ausführbaren Code, persistente Daten, Grafiken und Visualisierungen auf einer einzelnen Canvas zu kombinieren, die als „Notebook“ bezeichnet wird. Azure Notebooks ist ein kostenloser gehosteter Dienst zum Entwickeln und Ausführen von Jupyter Notebook-Instanzen in der Cloud ohne Installation.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Keine.
@@ -91,7 +91,7 @@ Keine.
 
 1. Wählen Sie die Schaltfläche „Speichern“ aus, um Ihre Arbeit zu speichern:
 
-    ![Symbol „Speichern“ auf der Jupyter-Notebooksymbolleiste](media/quickstarts/hello-results-save-icon.png)
+    ![Symbol „Speichern“ auf der Jupyter Notebook-Symbolleiste](media/quickstarts/hello-results-save-icon.png)
 
 1. Wählen Sie den Menübefehl **File** (Datei)  > **Close and Halt** (Beenden und schließen) aus, um den Server zu beenden und das Browserfenster zu schließen.
 
