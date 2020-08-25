@@ -4,12 +4,12 @@ description: Erfahren Sie mehr über die Symptome, Ursachen und Lösungen von Az
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.service: backup
-ms.openlocfilehash: 274435a958820c3fd08fef4a61643a1d656e31e3
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: d690ed23f49d3aa3f77b88c8d57c963ae2a98682
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88167928"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88611856"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Behandeln von Azure Backup-Fehlern: Probleme mit dem Agent oder der Erweiterung
 
@@ -31,7 +31,7 @@ Die häufigsten Sicherungsfehler können mithilfe der unten aufgeführten Schrit
 - **Sicherstellen, dass der Gast-Agent-Dienst auf der Azure-VM gestartet wurde und aktuell ist:**
   - Auf einer Windows-VM:
     - Navigieren Sie zu **services.msc**, und stellen Sie sicher, dass der **Gast-Agent-Dienst auf der Microsoft Azure-VM** ausgeführt wird. Stellen Sie außerdem sicher, dass die [neueste Version](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409) installiert ist. Weitere Informationen finden Sie unter [Der Agent ist auf dem virtuellen Computer installiert, reagiert aber nicht (bei virtuellen Windows-Computern)](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms).
-    - Der Azure-VM-Agent wird standardmäßig auf allen Windows-VMs installiert, die über das Azure Marketplace-Image über das Portal, PowerShell, die Befehlszeilenschnittstelle oder eine Azure Resource Manager-Vorlage bereitgestellt werden. Eine [manuelle Installation des Agents](../virtual-machines/extensions/agent-windows.md#manual-installation) kann erforderlich sein, wenn Sie ein benutzerdefiniertes VM-Image erstellen, das in Azure bereitgestellt wird.
+    - Der Azure-VM-Agent wird standardmäßig auf allen Windows-VMs installiert, die über ein Azure Marketplace-Image über das Portal, PowerShell, die Befehlszeilenschnittstelle oder eine Azure Resource Manager-Vorlage bereitgestellt werden. Eine [manuelle Installation des Agents](../virtual-machines/extensions/agent-windows.md#manual-installation) kann erforderlich sein, wenn Sie ein benutzerdefiniertes VM-Image erstellen, das in Azure bereitgestellt wird.
     - Überprüfen Sie die Unterstützungsmatrix, um zu prüfen, ob die VM auf dem [unterstützten Windows-Betriebssystem](backup-support-matrix-iaas.md#operating-system-support-windows) ausgeführt wird.
   - Auf einer Linux-VM:
     - Indem Sie den Befehl `ps-e` ausführen, können Sie sicherstellen, dass der Gast-Agent-Dienst auf der Azure-VM ausgeführt wird. Stellen Sie außerdem sicher, dass die [neueste Version](../virtual-machines/extensions/update-linux-agent.md) installiert ist. Weitere Informationen finden Sie unter [Der auf dem virtuellen Computer installierte Agent ist veraltet (bei virtuellen Linux-Computern)](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms).
@@ -65,7 +65,7 @@ Azure Backup führt mithilfe der VM-Momentaufnahmenerweiterung eine anwendungsko
 
 - **Sicherstellen, dass der VSS Writer-Dienst ausgeführt wird:** Führen Sie diese Schritte aus, um [Probleme mit VSS Writer zu beheben](backup-azure-vms-troubleshoot.md#extensionfailedvsswriterinbadstate---snapshot-operation-failed-because-vss-writers-were-in-a-bad-state).
 - **Berücksichtigen bewährter Methoden für Sicherungen:** Lesen Sie die [bewährten Methoden zum Aktivieren von Azure-VM-Sicherungen](backup-azure-vms-introduction.md#best-practices).
-- **Überprüfen der Richtlinien für verschlüsselte Datenträger:** Wenn Sie die Sicherung für VMs mit verschlüsseltem Datenträger aktivieren, stellen Sie sicher, dass Sie alle erforderlichen Berechtigungen bereitgestellt haben. Weitere Informationen finden Sie unter [Sichern und Wiederherstellen eines verschlüsselten virtuellen Azure-Computers](backup-azure-vms-encryption.md#encryption-support).
+- **Überprüfen der Richtlinien für verschlüsselte Datenträger:** Wenn Sie die Sicherung für VMs mit verschlüsseltem Datenträger aktivieren, stellen Sie sicher, dass Sie alle erforderlichen Berechtigungen bereitgestellt haben. Weitere Informationen finden Sie unter [Sichern und Wiederherstellen eines verschlüsselten virtuellen Azure-Computers](backup-azure-vms-encryption.md).
 
 ## <a name="usererrorguestagentstatusunavailable---vm-agent-unable-to-communicate-with-azure-backup"></a><a name="UserErrorGuestAgentStatusUnavailable-vm-agent-unable-to-communicate-with-azure-backup"></a>UserErrorGuestAgentStatusUnavailable: VM Agent unable to communicate with Azure Backup (VM-Agent kann nicht mit Azure Backup kommunizieren).
 
@@ -175,13 +175,13 @@ Wenn Sie eine VM auf einer Datenträgergröße von mehr als 32 TB sichern, könn
 
 Bei Ihrem zuletzt ausgeführten Sicherungsauftrag ist ein Fehler aufgetreten, weil gerade ein vorhandener Sicherungsauftrag ausgeführt wird. Es ist nicht möglich, einen neuen Sicherungsauftrag zu starten, bevor der aktuelle Auftrag abgeschlossen ist. Stellen Sie sicher, dass der derzeit ausgeführte Sicherungsvorgang abgeschlossen wurde, bevor Sie weitere Sicherungsvorgänge auslösen oder planen. Führen Sie die folgenden Schritte aus, um den Status der Sicherungsaufträge zu überprüfen:
 
-1. Melden Sie sich beim Azure-Portal an, und klicken Sie auf **Alle Dienste**. Geben Sie „Recovery Services“ ein, und klicken Sie auf **Recovery Services-Tresore**. Die Liste mit den Recovery Services-Tresoren wird angezeigt.
+1. Melden Sie sich beim Azure-Portal an, und wählen Sie die Option **Alle Dienste** aus. Geben Sie „Recovery Services“ ein, und wählen Sie **Recovery Services-Tresore** aus. Die Liste mit den Recovery Services-Tresoren wird angezeigt.
 2. Wählen Sie in der Liste mit den Recovery Services-Tresoren einen Tresor aus, für den die Sicherung konfiguriert ist.
-3. Klicken Sie im Tresordashboard-Menü auf **Sicherungsaufträge**, um alle Sicherungsaufträge anzuzeigen.
+3. Wählen Sie im Dashboard-Menü des Tresorraums **Sicherungsaufträge** aus, um alle Sicherungsaufträge anzuzeigen.
    - Falls gerade ein Sicherungsauftrag ausgeführt wird, müssen Sie auf den Abschluss warten oder den Auftrag abbrechen.
-     - Klicken Sie zum Abbrechen des Sicherungsauftrags mit der rechten Maustaste darauf, und klicken Sie dann auf **Abbrechen**, oder verwenden Sie [PowerShell](/powershell/module/az.recoveryservices/stop-azrecoveryservicesbackupjob).
+     - Klicken Sie zum Abbrechen des Sicherungsauftrags mit der rechten Maustaste darauf, und wählen Sie dann **Abbrechen** aus, oder verwenden Sie [PowerShell](/powershell/module/az.recoveryservices/stop-azrecoveryservicesbackupjob).
    - Wenn Sie die Sicherung in einem anderen Tresor neu konfiguriert haben, sollten Sie sicherstellen, dass im alten Tresor keine Sicherungsaufträge ausgeführt werden. Wenn ein Sicherungsauftrag vorhanden ist, brechen Sie ihn ab.
-     - Klicken Sie zum Abbrechen des Sicherungsauftrags mit der rechten Maustaste darauf, und klicken Sie dann auf **Abbrechen**, oder verwenden Sie [PowerShell](/powershell/module/az.recoveryservices/stop-azrecoveryservicesbackupjob).
+     - Klicken Sie zum Abbrechen des Sicherungsauftrags mit der rechten Maustaste darauf, und wählen Sie dann **Abbrechen** aus, oder verwenden Sie [PowerShell](/powershell/module/az.recoveryservices/stop-azrecoveryservicesbackupjob).
 4. Führen Sie den Sicherungsvorgang erneut durch.
 
 Wenn der geplante Sicherungsvorgang länger dauert und dadurch mit der nächsten Sicherungskonfiguration in Konflikt steht, lesen Sie [Bewährte Methoden](backup-azure-vms-introduction.md#best-practices), [Backupleistung](backup-azure-vms-introduction.md#backup-performance) und [Aspekte bei der Wiederherstellung](backup-azure-vms-introduction.md#backup-and-restore-considerations).
@@ -191,7 +191,7 @@ Wenn der geplante Sicherungsvorgang länger dauert und dadurch mit der nächsten
 **Fehlercode**: UserErrorCrpReportedUserError <br>
 **Fehlermeldung**: Fehler bei der Sicherung. Weitere Informationen finden Sie in den Details zur Auftragsfehlermeldung.
 
-Dieser Fehler wird von der IaaS-VM gemeldet. Um die Grundursache des Problems zu ermitteln, gehen Sie zu den Recovery Services-Tresoreinstellungen. Wählen Sie im Abschnitt **Überwachung** die Option **Sicherungsaufträge** aus, um den Status zu filtern und anzuzeigen. Klicken Sie auf **Fehler**, um die Details zur zugrunde liegenden Fehlermeldung zu überprüfen. Ergreifen Sie weitere Maßnahmen entsprechend den Empfehlungen auf der Fehlerdetailseite.
+Dieser Fehler wird von der IaaS-VM gemeldet. Um die Grundursache des Problems zu ermitteln, gehen Sie zu den Recovery Services-Tresoreinstellungen. Wählen Sie im Abschnitt **Überwachung** die Option **Sicherungsaufträge** aus, um den Status zu filtern und anzuzeigen. Wählen Sie **Fehler** aus, um die Details zur zugrunde liegenden Fehlermeldung zu überprüfen. Ergreifen Sie weitere Maßnahmen entsprechend den Empfehlungen auf der Fehlerdetailseite.
 
 ## <a name="usererrorbcmdatasourcenotpresent---backup-failed-this-virtual-machine-is-not-actively-protected-by-azure-backup"></a>UserErrorBcmDatasourceNotPresent – Sicherungsfehler: Diese VM wird nicht (aktiv) über Azure Backup geschützt.
 
@@ -204,7 +204,7 @@ Dieser Fehler wird von der IaaS-VM gemeldet. Um die Grundursache des Problems zu
 
 ### <a name="the-agent-is-installed-in-the-vm-but-its-unresponsive-for-windows-vms"></a><a name="the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms"></a>Der Agent ist auf dem virtuellen Computer installiert, reagiert aber nicht (bei virtuellen Windows-Computern)
 
-#### <a name="solution"></a>Lösung
+#### <a name="solution-for-this-error"></a>Lösung für diesen Fehler
 
 Der VM-Agent wurde möglicherweise beschädigt, oder der Dienst wurde angehalten. Durch Neuinstallation des VM-Agents erhalten Sie die neueste Version. Dadurch wird auch die Kommunikation mit dem Dienst neu gestartet.
 
@@ -258,7 +258,7 @@ Eine vollständige Liste der Optionen für die VM-Agent-Konfigurationsdatei find
 
 Wenn Sie [AppLocker](/windows/security/threat-protection/windows-defender-application-control/applocker/what-is-applocker) (oder eine andere Anwendungssteuerungslösung) ausführen und die Regeln auf dem Herausgeber oder Pfad basieren, blockieren sie ggf. das Ausführen der ausführbaren Datei **IaaSBcdrExtension.exe**.
 
-#### <a name="solution"></a>Lösung
+#### <a name="solution-to-this-issue"></a>Lösung für dieses Problem
 
 Schließen Sie den Pfad `/var/lib` oder die ausführbare Datei **IaaSBcdrExtension.exe** von AppLocker (oder anderer Anwendungssteuerungssoftware) aus.
 
@@ -266,7 +266,7 @@ Schließen Sie den Pfad `/var/lib` oder die ausführbare Datei **IaaSBcdrExtensi
 
 Die VM-Sicherung basiert auf dem Ausführen eines Momentaufnahmenbefehls für das zugrunde liegende Speicherkonto. Bei der Sicherung können Fehler auftreten, weil kein Zugriff auf das Speicherkonto besteht oder weil sich der Momentaufnahmetask verzögert.
 
-#### <a name="solution"></a>Lösung
+#### <a name="solution-for-this-issue"></a>Lösung für dieses Problem
 
 Die folgenden Umstände können zu Fehlern bei Momentaufnahmetasks führen:
 
@@ -280,7 +280,7 @@ Die folgenden Umstände können zu Fehlern bei Momentaufnahmetasks führen:
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 2. Navigieren Sie zur Option **Alle Ressourcen**, und wählen Sie die Wiederherstellungspunktsammlungs-Ressourcengruppe im folgenden Format aus: AzureBackupRG_`<Geo>`_`<number>`.
 3. Wählen Sie im Abschnitt **Einstellungen** die Option **Sperren** aus, um die Sperren anzuzeigen.
-4. Um die Sperre zu entfernen, wählen Sie die Auslassungspunkte aus, und klicken Sie dann auf **Löschen**.
+4. Um die Sperre zu entfernen, wählen Sie die Auslassungspunkte und dann **Löschen** aus.
 
     ![Löschen der Sperre](./media/backup-azure-arm-vms-prepare/delete-lock.png)
 
@@ -307,16 +307,16 @@ Nach dem Entfernen der Sperre lösen Sie eine On-Demand-Sicherung aus. Durch die
 Um die Wiederherstellungspunktsammlung, die aufgrund der Sperre der Ressourcengruppe nicht bereinigt wird, manuell zu bereinigen, führen Sie die folgenden Schritte aus:
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
-2. Klicken Sie im Menü **Hub** auf **Alle Ressourcen**, und wählen Sie die Ressourcengruppe mit dem folgenden Format AzureBackupRG_`<Geo>`_`<number>` aus, in der sich Ihr virtueller Computer befindet.
+2. Wählen Sie im Menü **Hub** die Option **Alle Ressourcen** und dann die Ressourcengruppe mit dem folgenden Format „AzureBackupRG_`<Geo>`_`<number>`“ aus, in der sich Ihr virtueller Computer befindet.
 
-    ![Löschen der Sperre](./media/backup-azure-arm-vms-prepare/resource-group.png)
+    ![Auswählen der Ressourcengruppe](./media/backup-azure-arm-vms-prepare/resource-group.png)
 
-3. Klicken Sie auf die Ressourcengruppe. Der Bereich **Übersicht** wird angezeigt.
+3. Wählen Sie die Ressourcengruppe aus. Der Bereich **Übersicht** wird angezeigt.
 4. Wählen Sie die Option **Ausgeblendete Typen anzeigen** aus, um alle ausgeblendeten Ressourcen anzuzeigen. Wählen Sie die Wiederherstellungspunktsammlungen mit dem folgenden Format aus: AzureBackupRG_`<VMName>`_`<number>`.
 
-    ![Löschen der Sperre](./media/backup-azure-arm-vms-prepare/restore-point-collection.png)
+    ![Auswählen der Wiederherstellungspunktsammlung](./media/backup-azure-arm-vms-prepare/restore-point-collection.png)
 
-5. Klicken Sie auf **Löschen**, um die Wiederherstellungspunktsammlung zu bereinigen.
+5. Wählen Sie **Löschen** aus, um die Wiederherstellungspunktsammlung zu bereinigen.
 6. Wiederholen Sie den Sicherungsvorgang erneut.
 
 > [!NOTE]

@@ -1,6 +1,6 @@
 ---
 title: HTTP-Variablen für Azure CDN-Regel-Engine | Microsoft-Dokumentation
-description: HTTP-Variablen ermöglichen Ihnen das Abrufen von HTTP-Anforderungs- und -Antwortmetadaten.
+description: Erfahren Sie mehr über HTTP-Variablen, mit denen Sie HTTP-Anforderungs- und Antwortmetadaten für einige Funktionen der Regel-Engine abrufen können. Verwenden Sie Metadaten, um eine Anforderung/Antwort zu ändern.
 services: cdn
 documentationcenter: ''
 author: asudbring
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2018
 ms.author: allensu
-ms.openlocfilehash: 6e601e3e06965faf8ec0fd238c54115570150b61
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: a2d9fc98ba6f514afbd88e543a859a69e0fc6c6b
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86203570"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192676"
 ---
 # <a name="http-variables-for-azure-cdn-rules-engine"></a>HTTP-Variablen für Azure CDN-Regel-Engine
 HTTP-Variablen stellen die Methoden für den Abruf von HTTP-Anforderungs- und -Antwortmetadaten bereit. Diese Metadaten können dann zur dynamischen Änderung einer Anforderung oder Antwort verwendet werden. Die Verwendung von HTTP-Variablen ist auf die folgenden Regel-Engine-Features beschränkt :
@@ -96,7 +96,7 @@ Die Trennzeichen sind in der folgenden Tabelle beschrieben.
 | --------- | ----------- |
 | := | Gibt an, dass der Variablen ein Standardwert zugewiesen wird, wenn eine der folgenden Bedingungen auf sie zutrifft: <br />– Fehlt <br />– Auf NULL festgelegt. |
 | :+ | Gibt an, dass der Variablen ein Standardwert zugewiesen wird, wenn ihr ein Wert zugewiesen wurde. |
-| decodiert werden: | Gibt an, dass eine Teilzeichenfolge des Werts erweitert wird, die der Variablen zugewiesen ist. |
+| : | Gibt an, dass eine Teilzeichenfolge des Werts erweitert wird, die der Variablen zugewiesen ist. |
 | # | Gibt an, dass das nach diesem Trennzeichen angegebene Muster gelöscht werden soll, wenn es sich am Anfang des der Variablen zugeordneten Werts befindet. |
 | % | Gibt an, dass das nach diesem Trennzeichen angegebene Muster gelöscht werden soll, wenn es sich am Ende des der Variablen zugeordneten Werts befindet. <br />Diese Definition ist nur anwendbar, wenn das Symbol „%“ als Trennzeichen verwendet wird. |
 | / | Begrenzt eine HTTP-Variable oder ein Muster. |

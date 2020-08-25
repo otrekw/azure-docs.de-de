@@ -10,17 +10,17 @@ ms.service: active-directory
 ms.topic: how-to
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.date: 11/08/2019
+ms.date: 08/13/2020
 ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fbdebd8d59034bd16a3199c1304606ccf12ab2c2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f2f055a6b8f4a8876c024bdd131a6001e21004e5
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84727669"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88209461"
 ---
 # <a name="scenarios-limitations-and-known-issues-using-groups-to-manage-licensing-in-azure-active-directory"></a>Szenarien, Einschränkungen und bekannte Probleme mit der Verwendung von Gruppen zum Verwalten der Lizenzierung in Azure Active Directory
 
@@ -205,7 +205,7 @@ Wenn Sie die gruppenbasierte Lizenzierung verwenden, ist es ratsam, sich mit der
 
 - Die gruppenbasierte Lizenzierung unterstützt derzeit keine Gruppen, die andere Gruppen enthalten (geschachtelte Gruppen). Wenn Sie eine Lizenz auf eine geschachtelte Gruppe anwenden, werden die Lizenzen nur auf unmittelbare Mitglieder der obersten Gruppenebene angewendet.
 
-- Das Feature kann nur mit Sicherheitsgruppen und Office 365-Gruppen verwendet werden, für die „securityEnabled=TRUE“ gilt.
+- Das Feature kann nur bei Sicherheitsgruppen und Microsoft 365-Gruppen verwendet werden, für die „securityEnabled=TRUE“ gilt.
 
 - Das [Microsoft 365 Admin Center](https://admin.microsoft.com) unterstützt derzeit keine gruppenbasierte Lizenzierung. Wenn ein Benutzer eine Lizenz aus einer Gruppe erbt, wird diese Lizenz im Office-Verwaltungsportal als normale Benutzerlizenz angezeigt. Wenn Sie versuchen, diese Lizenz zu ändern oder zu entfernen, wird im Portal eine Fehlermeldung zurückgegeben. Geerbte Gruppenlizenzen können nicht direkt für einen Benutzer geändert werden.
 

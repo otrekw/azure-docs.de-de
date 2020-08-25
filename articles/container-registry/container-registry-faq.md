@@ -5,16 +5,21 @@ author: sajayantony
 ms.topic: article
 ms.date: 03/18/2020
 ms.author: sajaya
-ms.openlocfilehash: 1c2330f1ba71e2a72a1a44df7af6444181f5f9ea
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 02facedda206a5621cabe62a07520303635dc3ff
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836393"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245365"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>Häufig gestellte Fragen zu Azure Container Registry (ACR)
 
 Dieser Artikel behandelt häufig gestellte Fragen zu Azure Container Registry.
+
+Hinweise zur Problembehandlung in der Registrierung finden Sie hier:
+* [Beheben von Problemen mit der Registrierungsanmeldung](container-registry-troubleshoot-login.md)
+* [Beheben von Netzwerkproblemen mit der Registrierung](container-registry-troubleshoot-access.md)
+* [Beheben von Problemen mit der Registrierungsleistung](container-registry-troubleshoot-performance.md)
 
 ## <a name="resource-management"></a>Ressourcenverwaltung
 

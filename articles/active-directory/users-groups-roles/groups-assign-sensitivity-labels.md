@@ -9,21 +9,21 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: how-to
-ms.date: 02/24/2020
+ms.date: 08/13/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 63097ac520f1d49098054d64ceae614036f59df3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 59f80b986a9d1a3b2be9aa413ce4175d8eb88bc4
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85807803"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213836"
 ---
-# <a name="assign-sensitivity-labels-to-office-365-groups-in-azure-active-directory"></a>Zuweisen von Vertraulichkeitsbezeichnungen zu Office 365-Gruppen in Azure Active Directory
+# <a name="assign-sensitivity-labels-to-microsoft-365-groups-in-azure-active-directory"></a>Zuweisen von Vertraulichkeitsbezeichnungen zu Microsoft 365-Gruppen in Azure Active Directory
 
-Azure Active Directory (Azure AD) unterstützt das Anwenden von Vertraulichkeitsbezeichnungen, die vom [Microsoft 365 Compliance Center](https://sip.protection.office.com/homepage) für Office 365-Gruppen veröffentlicht werden. Vertraulichkeitsbezeichnungen gelten für Gruppen über Dienste wie Outlook, Microsoft Teams und SharePoint hinweg. Dieses Feature ist aktuell in der allgemein verfügbaren Version erhältlich. Weitere Informationen zur Unterstützung von Office 365-Apps finden Sie unter [Office 365-Unterstützung für Vertraulichkeitsbezeichnungen](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels-teams-groups-sites#support-for-the-sensitivity-labels).
+Azure Active Directory (Azure AD) unterstützt das Anwenden von Vertraulichkeitsbezeichnungen, die vom [Microsoft 365 Compliance Center](https://sip.protection.office.com/homepage) für Microsoft 365-Gruppen veröffentlicht werden. Vertraulichkeitsbezeichnungen gelten für Gruppen über Dienste wie Outlook, Microsoft Teams und SharePoint hinweg. Dieses Feature ist aktuell in der allgemein verfügbaren Version erhältlich. Weitere Informationen zur Unterstützung von Office 365-Apps finden Sie unter [Office 365-Unterstützung für Vertraulichkeitsbezeichnungen](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels-teams-groups-sites#support-for-the-sensitivity-labels).
 
 > [!IMPORTANT]
 > Um dieses Feature zu konfigurieren, muss mindestens eine aktive Azure Active Directory Premium P1-Lizenz in Ihrer Azure AD-Organisation vorhanden sein.
@@ -114,7 +114,7 @@ Die Option „Vertraulichkeitsbezeichnung“ wird nur für Gruppen angezeigt, we
 
 1. Für diese Azure AD-Organisation werden die Bezeichnungen im Microsoft 365 Compliance Center veröffentlicht.
 1. Das Feature ist aktiviert, „EnableMIPLabels“ ist in PowerShell auf „True“ festgelegt.
-1. Die Gruppe ist eine Office 365-Gruppe.
+1. Die Gruppe ist eine Microsoft 365-Gruppe.
 1. Die Organisation verfügt über eine Active Azure Active Directory Premium P1-Lizenz.
 1. Der aktuell angemeldete Benutzer verfügt über ausreichende Berechtigungen, um Bezeichnungen zuzuweisen. Der Benutzer muss entweder ein globaler Administrator, ein Gruppenadministrator oder der Gruppenbesitzer sein.
 
@@ -145,7 +145,7 @@ Wenn Sie eine Änderung vornehmen müssen, verwenden Sie ein [Azure AD PowerShel
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Verwenden von Vertraulichkeitsbezeichnungen mit Microsoft Teams, Office 365-Gruppen und SharePoint-Websites](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels-teams-groups-sites)
+- [Verwenden von Vertraulichkeitsbezeichnungen bei Microsoft Teams, Microsoft 365-Gruppen und SharePoint-Websites](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels-teams-groups-sites)
 - [Manuelles Aktualisieren von Gruppen nach der Änderung der Bezeichnungsrichtlinie mit einem Azure AD PowerShell-Skript](https://github.com/microsoftgraph/powershell-aad-samples/blob/master/ReassignSensitivityLabelToO365Groups.ps1)
 - [Bearbeiten Ihrer Gruppeneinstellungen](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-groups-settings-azure-portal)
 - [Verwalten von Gruppen mithilfe von PowerShell-Befehlen](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-settings-v2-cmdlets)

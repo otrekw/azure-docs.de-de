@@ -1,14 +1,14 @@
 ---
 title: Hinzufügen eines Artefaktrepositorys zu Ihrem Lab in Azure DevTest Labs | Microsoft-Dokumentation
-description: Hier erfahren Sie, wie Sie Ihrem Lab in Azure DevTest Labs ein Artefaktrepository hinzufügen.
+description: Erfahren Sie, wie Sie Ihr eigenes Artefaktrepository für Ihr Lab in Azure DevTest Labs angeben, um Tools zu speichern, die im öffentlichen Artefaktrepository nicht verfügbar sind.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: d823f437cddef0a33c7d7ea3b4c4fbdaad90fb8e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7553f6b1afa416a5428577a8313bdadb669e32c2
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87013454"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88270970"
 ---
 # <a name="add-an-artifact-repository-to-your-lab-in-devtest-labs"></a>Hinzufügen eines Artefaktrepositorys zu Ihrem Lab in DevTest Labs
 DevTest Labs ermöglicht das Angeben eines Artefakts, das einem virtuellen Computer hinzugefügt werden soll – entweder beim Erstellen des virtuellen Computers oder nach Erstellung des virtuellen Computers. Bei diesem Artefakt kann es sich beispielsweise um ein Tool oder um eine Anwendung handeln, das bzw. die Sie auf dem virtuellen Computer installieren möchten. Artefakte werden in einer JSON-Datei definiert, die aus einem GitHub- oder Azure DevOps-Git-Repository geladen wird.

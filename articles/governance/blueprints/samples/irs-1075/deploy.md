@@ -1,14 +1,14 @@
 ---
 title: Bereitstellen des IRS 1075-Blaupausenbeispiels
 description: Bereitstellungsschritte für das Blaupausenbeispiel „IRS 1075 (Rev.11-2016)“, einschließlich Details zum Blaupausenartefaktparameter.
-ms.date: 05/13/2020
+ms.date: 08/19/2020
 ms.topic: sample
-ms.openlocfilehash: 59e9194e3f7839ce0826717e2f8fcef35de7decb
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 5f2c58b69519f27f759ddfc79d3333e55ed4eb54
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86044769"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88653731"
 ---
 # <a name="deploy-the-irs-1075-blueprint-sample"></a>Bereitstellen des IRS 1075-Blaupausenbeispiels
 

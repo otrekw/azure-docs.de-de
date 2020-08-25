@@ -3,12 +3,12 @@ title: Sichern von Dateien auf virtuellen Azure Stack-Computern
 description: Verwenden Sie Azure Backup, um Azure Stack-Dateien und -Anwendungen in Ihrer Azure Stack-Umgebung zu sichern und wiederherzustellen.
 ms.topic: conceptual
 ms.date: 06/05/2018
-ms.openlocfilehash: 07a64e5457963ea4a6d3b39b3f2326dbcfc5e63a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b45e3a0916f46f247503ea336105646f5538246c
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87032764"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88263128"
 ---
 # <a name="back-up-files-and-applications-on-azure-stack"></a>Sichern von Dateien und Anwendungen in Azure Stack
 
@@ -24,45 +24,45 @@ In diesem Artikel wird nicht die Installation von Azure Backup Server in der Azu
 
 Um Azure Backup Server zum Schutz von Dateien auf virtuellen Azure Stack-Computern zu konfigurieren, öffnen Sie die Azure Backup Server-Konsole. Sie verwenden die Konsole, um Schutzgruppen zu konfigurieren und die Daten auf Ihren virtuellen Computern zu schützen.
 
-1. Klicken Sie in der Azure Backup Server-Konsole auf **Schutz** und dann auf der Symbolleiste auf **Neu**, um den**Assistenten zum Erstellen einer neuen Schutzgruppe zu** öffnen.
+1. Wählen Sie in der Azure Backup Server-Konsole **Schutz** und dann auf der Symbolleiste **Neu** aus, um den**Assistenten zum Erstellen einer neuen Schutzgruppe zu** öffnen.
 
    ![Konfigurieren des Schutzes in der Azure Backup Server-Konsole](./media/backup-mabs-files-applications-azure-stack/1-mabs-menu-create-protection-group.png)
 
-    Das Öffnen des Assistenten kann einige Sekunden dauern. Klicken Sie im geöffneten Assistenten auf **Weiter**, um mit dem Bildschirm **Schutzgruppentyp auswählen** fortzufahren.
+    Das Öffnen des Assistenten kann einige Sekunden dauern. Wählen Sie im geöffneten Assistenten **Weiter** aus, um mit dem Bildschirm **Schutzgruppentyp auswählen** fortzufahren.
 
    ![Der Assistent zum Erstellen einer neuen Schutzgruppe wird geöffnet.](./media/backup-mabs-files-applications-azure-stack/2-create-new-protection-group-wiz.png)
 
-2. Wählen Sie auf dem Bildschirm **Schutzgruppentyp auswählen** die Option **Server** aus, und klicken Sie auf **Weiter**.
+2. Wählen Sie auf dem Bildschirm **Schutzgruppentyp auswählen** die Option **Server** und dann **Weiter** aus.
 
-    ![Der Assistent zum Erstellen einer neuen Schutzgruppe wird geöffnet.](./media/backup-mabs-files-applications-azure-stack/3-select-protection-group-type.png)
+    ![Schutzgruppentyp auswählen](./media/backup-mabs-files-applications-azure-stack/3-select-protection-group-type.png)
 
     Der Bildschirm **Gruppenmitglieder auswählen** wird geöffnet.
 
-    ![Der Assistent zum Erstellen einer neuen Schutzgruppe wird geöffnet.](./media/backup-mabs-files-applications-azure-stack/4-opening-screen-choose-servers.png)
+    ![Auswählen von Gruppenmitgliedern](./media/backup-mabs-files-applications-azure-stack/4-opening-screen-choose-servers.png)
 
-3. Klicken Sie auf dem Bildschirm **Gruppenmitglieder auswählen** auf **+** , um die Liste mit Unterelementen zu erweitern. Aktivieren Sie das Kontrollkästchen für alle Elemente, die Sie schützen möchten. Nachdem alle Elemente ausgewählt wurden, klicken Sie auf **Weiter**.
+3. Wählen Sie auf dem Bildschirm **Gruppenmitglieder auswählen** die Option **+** aus, um die Liste mit Unterelementen zu erweitern. Aktivieren Sie das Kontrollkästchen für alle Elemente, die Sie schützen möchten. Nachdem alle Elemente ausgewählt wurden, wählen Sie **Weiter** aus.
 
-    ![Der Assistent zum Erstellen einer neuen Schutzgruppe wird geöffnet.](./media/backup-mabs-files-applications-azure-stack/5-select-group-members.png)
+    ![Wählen Sie die einzelnen Elemente aus, die Sie schützen möchten.](./media/backup-mabs-files-applications-azure-stack/5-select-group-members.png)
 
     Microsoft empfiehlt, alle Daten, für die eine gemeinsame Schutzrichtlinie gilt, in einer Schutzgruppe zusammenzufassen. Ausführliche Informationen zur Planung und Bereitstellung von Schutzgruppen finden Sie im System Center DPM-Artikel [Bereitstellen von Schutzgruppen](/system-center/dpm/create-dpm-protection-groups).
 
-4. Geben Sie auf dem Bildschirm **Datenschutzmethode auswählen** einen Namen für die Schutzgruppe ein. Aktivieren Sie das Kontrollkästchen **Ich möchte kurzfristigen Schutz per:** und **Ich möchte Onlineschutz**. Klicken Sie auf **Weiter**.
+4. Geben Sie auf dem Bildschirm **Datenschutzmethode auswählen** einen Namen für die Schutzgruppe ein. Aktivieren Sie das Kontrollkästchen **Ich möchte kurzfristigen Schutz per:** und **Ich möchte Onlineschutz**. Wählen Sie **Weiter** aus.
 
-    ![Der Assistent zum Erstellen einer neuen Schutzgruppe wird geöffnet.](./media/backup-mabs-files-applications-azure-stack/6-select-data-protection-method.png)
+    ![Auswählen der Datenschutzmethode](./media/backup-mabs-files-applications-azure-stack/6-select-data-protection-method.png)
 
     Um **Ich möchte Onlineschutz** auszuwählen, müssen Sie zuerst **Ich möchte kurzfristigen Schutz per: Datenträger** auswählen. Azure Backup Server sorgt nicht mittels Bandtechnologie für Schutz, weshalb ein Datenträger die einzige Wahl für kurzfristigen Schutz ist.
 
-5. Wählen Sie auf dem Bildschirm **Kurzfristige Ziele angeben**, wie lange die auf dem Datenträger gespeicherten Wiederherstellungspunkte beibehalten und wann inkrementelle Sicherungen gespeichert werden sollen. Klicken Sie auf **Weiter**.
+5. Wählen Sie auf dem Bildschirm **Kurzfristige Ziele angeben**, wie lange die auf dem Datenträger gespeicherten Wiederherstellungspunkte beibehalten und wann inkrementelle Sicherungen gespeichert werden sollen. Wählen Sie **Weiter** aus.
 
     > [!IMPORTANT]
     > Sie sollten Sicherungsdaten für die Wiederherstellung des Betriebs **nicht** länger als fünf Tage auf Datenträgern aufbewahren, die an Azure Backup Server angefügt sind.
     >
 
-    ![Der Assistent zum Erstellen einer neuen Schutzgruppe wird geöffnet.](./media/backup-mabs-files-applications-azure-stack/7-select-short-term-goals.png)
+    ![Kurzfristige Ziele angeben](./media/backup-mabs-files-applications-azure-stack/7-select-short-term-goals.png)
 
-    Anstatt ein Intervall für inkrementelle Sicherungen auszuwählen, klicken Sie auf **Direkt vor einem Wiederherstellungspunkt**, um eine schnelle vollständige Sicherung unmittelbar vor jedem geplanten Wiederherstellungspunkt durchzuführen. Wenn Sie Anwendungsworkloads schützen, erstellt Azure Backup Server Wiederherstellungspunkte gemäß dem Zeitplan für die Synchronisierungsfrequenz (sofern die Anwendung inkrementelle Sicherungen unterstützt). Wenn die Anwendung keine inkrementellen Sicherungen unterstützt, führt Azure Backup Server eine schnelle vollständige Sicherung durch.
+    Anstatt ein Intervall für inkrementelle Sicherungen auszuwählen, wählen Sie **Direkt vor einem Wiederherstellungspunkt** aus, um eine schnelle vollständige Sicherung unmittelbar vor jedem geplanten Wiederherstellungspunkt durchzuführen. Wenn Sie Anwendungsworkloads schützen, erstellt Azure Backup Server Wiederherstellungspunkte gemäß dem Zeitplan für die Synchronisierungsfrequenz (sofern die Anwendung inkrementelle Sicherungen unterstützt). Wenn die Anwendung keine inkrementellen Sicherungen unterstützt, führt Azure Backup Server eine schnelle vollständige Sicherung durch.
 
-    Geben Sie für **Dateiwiederherstellungspunkte** an, wann Wiederherstellungspunkte erstellt werden sollen. Klicken Sie auf **Ändern**, um die Uhrzeiten und Wochentage festzulegen, an denen Wiederherstellungspunkte erstellt werden.
+    Geben Sie für **Dateiwiederherstellungspunkte** an, wann Wiederherstellungspunkte erstellt werden sollen. Wählen Sie **Ändern** aus, um die Uhrzeiten und Wochentage festzulegen, an denen Wiederherstellungspunkte erstellt werden.
 
 6. Überprüfen Sie auf dem Bildschirm **Datenträgerzuordnungen überprüfen** den Speicherplatz im Speicherpool, der der Schutzgruppe zugeordnet ist.
 
@@ -83,19 +83,19 @@ Um Azure Backup Server zum Schutz von Dateien auf virtuellen Azure Stack-Compute
 
 12. Geben Sie auf der Seite **Onlinereplikation wählen** an, wie die erste vollständige Replikation der Daten erfolgt.
 
-13. Überprüfen Sie unter **Zusammenfassung** Ihre Einstellungen. Wenn Sie auf **Gruppe erstellen** klicken, erfolgt die erstmalige Datenreplikation. Nach Abschluss der Datenreplikation wird der Status der Schutzgruppe auf der Seite **Status** als **OK** angezeigt. Der erstmalige Sicherungsauftrag erfolgt entsprechend den Einstellungen der Schutzgruppe.
+13. Überprüfen Sie unter **Zusammenfassung** Ihre Einstellungen. Wenn Sie **Gruppe erstellen** auswählen, erfolgt die erstmalige Datenreplikation. Nach Abschluss der Datenreplikation wird der Status der Schutzgruppe auf der Seite **Status** als **OK** angezeigt. Der erstmalige Sicherungsauftrag erfolgt entsprechend den Einstellungen der Schutzgruppe.
 
 ## <a name="recover-file-data"></a>Wiederherstellen von Dateidaten
 
 Verwenden Sie die Azure Backup Server-Konsole, um Daten auf dem virtuellen Computer wiederherzustellen.
 
-1. Klicken Sie in der Azure Backup Server-Konsole auf der Navigationsleiste auf **Wiederherstellung**, und suchen Sie die Daten, die Sie wiederherstellen möchten. Wählen Sie die Daten im Ergebnisbereich aus.
+1. Wählen Sie in der Azure Backup Server-Konsole auf der Navigationsleiste **Wiederherstellung** aus, und suchen Sie die Daten, die Sie wiederherstellen möchten. Wählen Sie die Daten im Ergebnisbereich aus.
 
 2. Im Kalender im Abschnitt „Wiederherstellungspunkte“ bedeuten fett gedruckte Datumsangaben, dass Wiederherstellungspunkte verfügbar sind. Wählen Sie das Datum aus, für das die Wiederherstellung durchgeführt werden soll.
 
 3. Wählen Sie im Bereich **Wiederherstellbares Element** das Element aus, das Sie wiederherstellen möchten.
 
-4. Klicken Sie im Bereich **Aktionen** auf **Wiederherstellen**, um den Wiederherstellungs-Assistenten zu öffnen.
+4. Wählen Sie im Bereich **Aktionen** die Option **Wiederherstellen** aus, um den Wiederherstellungs-Assistenten zu öffnen.
 
 5. Sie können Daten wie folgt wiederherstellen:
 
@@ -106,11 +106,11 @@ Verwenden Sie die Azure Backup Server-Konsole, um Daten auf dem virtuellen Compu
 
     * Wählen Sie für **Wiederherstellungsverhalten für vorhandene Versionen** entweder **Kopie erstellen**, **Überspringen** oder **Überschreiben** aus. „Überschreiben“ ist nur für das Wiederherstellen am ursprünglichen Speicherort verfügbar.
     * Wählen Sie für **Sicherheit wiederherstellen** entweder **Sicherheitseinstellungen des Zielcomputers anwenden** oder **Sicherheitseinstellungen der Wiederherstellungspunktversion anwenden**.
-    * Klicken Sie für **Netzwerk-Bandbreiteneinschränkung** auf **Ändern**, um die Netzwerk-Bandbreiteneinschränkung zu aktivieren.
-    * **Benachrichtigung**: Klicken Sie auf **Eine E-Mail senden, wenn diese Wiederherstellung abgeschlossen ist**, und geben Sie dann die Empfänger an, die die Benachrichtigung erhalten sollen. Trennen Sie die E-Mail-Adressen durch Kommas.
-    * Klicken Sie auf **Weiter**, nachdem Sie Ihre Auswahl getroffen haben.
+    * Wählen Sie für **Netzwerk-Bandbreiteneinschränkung** die Option **Ändern** aus, um die Netzwerk-Bandbreiteneinschränkung zu aktivieren.
+    * **Benachrichtigung**: Wählen Sie **Eine E-Mail senden, wenn diese Wiederherstellung abgeschlossen ist** aus, und geben Sie dann die Empfänger an, die die Benachrichtigung erhalten sollen. Trennen Sie die E-Mail-Adressen durch Kommas.
+    * Wählen Sie **Weiter** aus, nachdem Sie Ihre Auswahl getroffen haben.
 
-7. Überprüfen Sie Ihre Wiederherstellungseinstellungen, und klicken Sie auf **Wiederherstellen**.
+7. Überprüfen Sie Ihre Wiederherstellungseinstellungen, und wählen Sie **Wiederherstellen** aus.
 
     >[!Note]
     >Alle Synchronisierungsaufträge für das ausgewählte Wiederherstellungselement werden abgebrochen, während der Wiederherstellungsauftrag ausgeführt wird.
@@ -119,14 +119,14 @@ Wenn Sie Modern Backup Storage(MBS) verwenden, wird die Wiederherstellung durch 
 
 1. Navigieren Sie zu den geschützten Dateien, klicken Sie mit der rechten Maustaste auf den Dateinamen, und wählen Sie **Eigenschaften** aus.
 
-2. Klicken Sie im Menü **Eigenschaften** auf **Vorherige Versionen**, und wählen Sie die Version, die Sie wiederherstellen möchten.
+2. Wählen Sie im Menü **Eigenschaften** die Option **Vorherige Versionen** und dann die Version aus, die Sie wiederherstellen möchten.
 
 ## <a name="view-azure-backup-server-with-a-vault"></a>Anzeigen von Azure Backup Server mit einem Tresor
 
 Mit folgenden Schritten können Sie Azure Backup Server-Entitäten im Azure-Portal anzeigen:
 
 1. Recovery Services-Tresor öffnen
-2. Auf „Sicherungsinfrastruktur“ klicken
+2. Sicherungsinfrastruktur auswählen
 3. Sicherungsverwaltungsserver anzeigen
 
 ## <a name="next-steps"></a>Nächste Schritte

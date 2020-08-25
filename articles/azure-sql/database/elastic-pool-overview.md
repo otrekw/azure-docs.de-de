@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: ninarn, carlrab
 ms.date: 07/28/2020
-ms.openlocfilehash: 33f87bf6f030adb48f2c4f8eb45027c1b298d812
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: c36a8e6f2e104d91bd7738849918c46802cd0dca
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87419715"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88225919"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-databases-in-azure-sql-database"></a>Pools für elastische Datenbanken als Hilfe beim Verwalten und Skalieren vieler Datenbanken in Azure SQL-Datenbank
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -113,11 +113,11 @@ Die folgenden Schritte können Ihnen dabei helfen, einzuschätzen, ob ein Pool k
 
 DTU-basiertes Kaufmodell:
 
-MAX(<*Gesamtanzahl von Datenbanken* x *durchschnittliche DTU-Auslastung pro Datenbank*>, <*Anzahl von gleichzeitigen Datenbanken mit Spitzenauslastung* x *DTU-Spitzenauslastung pro Datenbank*)
+MAX(<*Gesamtanzahl von Datenbanken* x *durchschnittliche DTU-Auslastung pro Datenbank*>, <*Anzahl von parallelen Datenbanken mit Spitzenauslastung* x *DTU-Spitzenauslastung pro Datenbank*>)
 
 vCore-basiertes Kaufmodell:
 
-MAX(<*Gesamtanzahl von Datenbanken* x *durchschnittliche vCore-Auslastung pro Datenbank*>, <*Anzahl von gleichzeitigen Datenbanken mit Spitzenauslastung* x *vCore-Spitzenauslastung pro Datenbank*)
+MAX(<*Gesamtanzahl von Datenbanken* x *durchschnittliche vCore-Auslastung pro Datenbank*>, <*Anzahl von parallelen Datenbanken mit Spitzenauslastung* x *vCore-Spitzenauslastung pro Datenbank*>)
 
 2. Schätzen Sie den für den Pool benötigten Speicherplatz, indem Sie die Menge der für alle Datenbanken im Pool benötigten Bytes addieren. Ermitteln Sie dann die eDTU-Poolgröße, die diese Menge an Speicher bietet.
 3. Verwenden Sie für das DTU-basierte Kaufmodell die größere der eDTU-Schätzungen aus Schritt 1 und Schritt 2. Verwenden Sie für das vCore-basierte Kaufmodell die V-Kern-Schätzung aus Schritt 1.

@@ -3,12 +3,12 @@ title: Verbessern der Leistung von Azure-Anwendungen mit Advisor
 description: Anhand der Empfehlungen zur Leistung in Azure Advisor können Sie die Geschwindigkeit und Reaktionszeit Ihrer unternehmenskritischen Anwendungen verbessern.
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: 7ecd6a45dc255f4748ed5074a3adb3d948f4122e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: bdca8cd39427fb0d25f8b3308eaf2be24e0eb81a
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87057564"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88257468"
 ---
 # <a name="improve-the-performance-of-azure-applications-by-using-azure-advisor"></a>Verbessern der Leistung von Azure-Anwendungen mit Azure Advisor
 
@@ -20,7 +20,7 @@ Verwenden Sie die [Gültigkeitsdauereinstellungen](../traffic-manager/traffic-ma
 
 Azure Advisor ermittelt Traffic Manager-Profile, für die eine längere Gültigkeitsdauer konfiguriert ist. Es wird empfohlen, eine Gültigkeitsdauer von 20 oder 60 Sekunden zu konfigurieren, je nachdem, ob das Profil für [Schnelles Failover](https://azure.microsoft.com/roadmap/fast-failover-and-tcp-probing-in-azure-traffic-manager/) konfiguriert ist.
 
-## <a name="improve-database-performance-by-using-sql-database-advisor"></a>Verbessern der Datenbankleistung mit SQL Database Advisor
+## <a name="improve-database-performance-by-using-sql-database-advisor-temporarily-disabled"></a>Verbessern der Datenbankleistung mithilfe von SQL Database Advisor (vorübergehend deaktiviert)
 
 In Azure Advisor erhalten Sie eine einheitliche, konsolidierte Übersicht über die Empfehlungen für alle Ihre Azure-Ressourcen. Integriert ist SQL Database Advisor, um Empfehlungen zum Verbessern der Leistung Ihrer Datenbank zu geben. SQL Database Advisor bewertet die Leistung Ihrer Datenbank durch eine Analyse des Nutzungsverlaufs. Anschließend werden Empfehlungen gegeben, die für die typische Workload der Datenbank am besten geeignet sind.
 
@@ -152,6 +152,22 @@ Advisor ermittelt Azure Cosmos DB-Container, die die standardmäßige Indizieru
 
 Azure Advisor ermittelt Azure Cosmos DB-Container, die eine Abfrageseitengröße von 100 verwenden. Zum Beschleunigen von Scans wird empfohlen, eine Seitengröße von –1 zu verwenden. [Weitere Informationen über MaxItemCount](https://aka.ms/cosmosdb/sql-api-query-metrics-max-item-count)
 
+## <a name="consider-using-accelerated-writes-feature-in-your-hbase-cluster-to-improve-cluster-performance"></a>Verwenden Sie zum Verbessern der Clusterleistung ggf. die Funktion für beschleunigte Schreibvorgänge in Ihrem HBase-Cluster.
+Azure Advisor analysiert die Systemprotokolle aus den letzten 7 Tagen und identifiziert, ob in Ihrem Cluster die folgenden Szenarien aufgetreten sind:
+1. Hohe Latenz bei der WAL-Synchronisierung 
+2. Hohe Anzahl von Schreibanforderungen (mindestens 3 Ein-Stunden-Fenster mit mehr als 1.000 avg_write_requests/s/Knoten)
+
+Diese Umstände sind Hinweise darauf, dass der Cluster eine hohe Schreiblatenz aufweist. Dies kann auf eine hohe Arbeitsauslastung in Ihrem Cluster zurückzuführen sein. Zur Leistungsverbesserung beim Cluster empfiehlt es sich, die von Azure HDInsight HBase bereitgestellte Funktion für beschleunigte Schreibvorgänge zu nutzen. Mit der Funktion für beschleunigte Schreibvorgänge für HDInsight-Apache HBase-Cluster werden jedem RegionServer (Workerknoten) verwaltete SSD Premium-Datenträger hinzugefügt, anstatt auf Cloudspeicher zurückzugreifen. Dies führt zu einer niedrigen Schreiblatenz und höherer Resilienz für Ihre Anwendungen. Weitere Informationen zu dieser Funktion finden Sie [hier](https://docs.microsoft.com/azure/hdinsight/hbase/apache-hbase-accelerated-writes#how-to-enable-accelerated-writes-for-hbase-in-hdinsight).
+
+## <a name="review-azure-data-explorer-table-cache-period-policy-for-better-performance-preview"></a>Überprüfen des Cachezeitraums von Azure Data Explorer-Tabellen (Richtlinie) zur Leistungsverbesserung (Vorschau)
+Bei dieser Empfehlung werden Azure Data Explorer-Tabellen mit einer hohen Zahl von Abfragen ermittelt, die über den konfigurierten Cachezeitraum (Richtlinie) hinausgehen. (Es werden die obersten zehn Tabellen nach Abfrageprozentsatz angezeigt, von denen auf Daten außerhalb des Caches zugegriffen wird.) Die empfohlene Aktion zum Verbessern der Leistung des Clusters lautet: Beschränken Sie die Abfragen für diese Tabelle auf den erforderlichen Mindestzeitbereich (innerhalb der definierten Richtlinie). Falls Daten des gesamten Zeitbereichs erforderlich sind, können Sie als Alternative den Cachezeitraum auch auf den empfohlenen Wert erhöhen.
+
+## <a name="improve-performance-by-optimizing-mysql-temporary-table-sizing"></a>Verbessern der Leistung durch Optimierung der Größenanpassung für die temporäre MySQL-Tabelle
+Die Advisor-Analyse zeigt, dass es für Ihren MySQL-Server ggf. zu unnötigem E/A-Mehraufwand kommt, weil die Parametereinstellungen für temporäre Tabellen zu niedrig sind. Dies kann zu unnötigen Datenträgertransaktionen und einer verringerten Leistung führen. Wir empfehlen Ihnen, die Parameterwerte „tmp_table_size“ und „max_heap_table_size“ zu erhöhen, um die Anzahl von Datenträgertransaktionen zu reduzieren. [Weitere Informationen](https://aka.ms/azure_mysql_tmp_table)
+
+## <a name="distribute-data-in-server-group-to-distribute-workload-among-nodes"></a>Verteilen der Daten in einer Servergruppe, um eine Workload auf Knoten zu verteilen
+Advisor identifiziert die Servergruppen, in denen die Daten nicht verteilt wurden, aber im Koordinator bleiben. Basierend darauf empfiehlt Advisor, dass für alle Vorteile von Hyperscale (Citus) Daten auf Workerknoten für Ihre Servergruppen verteilt werden sollten. Dies wird die Abfrageleistung durch Nutzung der Ressourcen der einzelnen Knoten in der Servergruppe verbessern. [Weitere Informationen](https://go.microsoft.com/fwlink/?linkid=2135201) 
+
 ## <a name="how-to-access-performance-recommendations-in-advisor"></a>Zugreifen auf Advisor-Empfehlungen zur Leistung
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und öffnen Sie [Advisor](https://aka.ms/azureadvisordashboard).
@@ -164,8 +180,8 @@ Hier finden Sie weitere Informationen zu Empfehlungen des Advisor:
 
 * [Einführung in Advisor](advisor-overview.md)
 * [Erste Schritte mit Advisor](advisor-get-started.md)
-* [Kostenempfehlungen von Advisor](advisor-cost-recommendations.md)
+* [Reduzieren der Dienstkosten mithilfe des Azure Advisors](advisor-cost-recommendations.md)
 * [Zuverlässigkeitsempfehlungen von Advisor](advisor-high-availability-recommendations.md)
 * [Sicherheitsempfehlungen von Advisor](advisor-security-recommendations.md)
-* [Empfehlungen von Advisor zum optimalen Betrieb](advisor-operational-excellence-recommendations.md)
+* [Sicherstellen des optimalen Betriebs mit dem Azure Advisor](advisor-operational-excellence-recommendations.md)
 * [Advisor-REST-API](/rest/api/advisor/)

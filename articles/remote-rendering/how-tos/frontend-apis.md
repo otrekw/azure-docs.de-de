@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/12/2010
 ms.topic: how-to
-ms.openlocfilehash: c43ed412116d0cb30f7d06ba65467fd529f367ac
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dcff550b5411ac00dc54d2103278812f32f56543
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85552695"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88509976"
 ---
 # <a name="use-the-azure-frontend-apis-for-authentication"></a>Verwenden der Azure-Front-End-APIs für die Authentifizierung
 
@@ -64,7 +64,7 @@ Die relevanten Klassen lauten ```AzureFrontend``` und ```AzureSession```. ```Azu
 
 Jede geöffnete/erstellte ```AzureSession``` verfügt über einen Verweis auf das Front-End, von dem sie erstellt wurde. Zum ordnungsgemäßen Herunterfahren muss die Zuordnung aller Sitzungen aufgehoben werden, bevor die Zuordnung des Front-Ends aufgehoben wird.
 
-Durch Aufheben der Zuordnung einer Sitzung wird die VM in Azure nicht beendet; `AzureSession.StopAsync` muss explizit aufgerufen werden.
+Durch Aufheben der Zuordnung einer Sitzung wird der Server in Azure nicht beendet; `AzureSession.StopAsync` muss explizit aufgerufen werden.
 
 Nachdem eine Sitzung erstellt und ihr Status als bereit markiert wurde, kann sie mittels `AzureSession.ConnectToRuntime` mit der Remote Rendering-Runtime verbunden werden.
 

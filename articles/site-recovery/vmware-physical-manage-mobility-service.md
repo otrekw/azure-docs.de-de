@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: ramamill
-ms.openlocfilehash: ff77d6cad60b459b1fe6a4f83641c7aebe204dfa
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: e65fecb70b7e3adf009396c0daa00fc50b81b519
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87460098"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88604535"
 ---
 # <a name="manage-the-mobility-agent"></a>Verwalten des Mobilitäts-Agent 
 
@@ -26,8 +26,9 @@ Sie richten einen Mobilitäts-Agent auf Ihrem Server ein, wenn Sie Azure Site Re
 ## <a name="update-mobility-service-from-azure-portal"></a>Aktualisieren des Mobilitätsdiensts über das Azure-Portal
 
 1. Stellen Sie vor dem Start sicher, dass der Konfigurationsserver, der Prozessserver für horizontales Skalieren und alle Masterzielserver, die Teil der Bereitstellung sind, aktualisiert werden, bevor Sie mit der Aktualisierung von Mobility Service auf den geschützten Computern beginnen.
-2. Öffnen Sie im Portal den Tresor > **Replizierte Elemente**.
-3. Wenn der Konfigurationsserver bereits die neueste Version verwendet, wird eine Benachrichtigung angezeigt, dass ein neues Update für den Site Recovery-Replikations-Agent verfügbar ist. Sie können es per Klick installieren.
+    1. Stellen Sie ab [Version 9.36](https://support.microsoft.com/help/4578241/) für SuSE Linux Enterprise Server 11 SP4 sicher, dass das neueste Installationsprogramm [auf dem Konfigurationsserver und dem Prozessserver für horizontales Hochskalieren verfügbar ist](vmware-physical-mobility-service-overview.md#download-latest-mobility-agent-installer-for-suse-11-sp3-server).
+1. Öffnen Sie im Portal den Tresor > **Replizierte Elemente**.
+1. Wenn der Konfigurationsserver bereits die neueste Version verwendet, wird eine Benachrichtigung angezeigt, dass ein neues Update für den Site Recovery-Replikations-Agent verfügbar ist. Sie können es per Klick installieren.
 
      ![Fenster „Replizierte Elemente“](./media/vmware-azure-install-mobility-service/replicated-item-notif.png)
 

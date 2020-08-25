@@ -3,12 +3,12 @@ title: Verbessern des optimalen Betriebs mit Advisor
 description: Verwenden Sie Azure Advisor, um den optimalen Betrieb für Ihre Azure-Abonnements zu verbessern und weiterzuentwickeln.
 ms.topic: article
 ms.date: 10/24/2019
-ms.openlocfilehash: 2b4c4726400134e4eec3868e155da47cb8c515b5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 036adb7e7d59bd78980c72b210ad41faea277d00
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87057636"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88258480"
 ---
 # <a name="achieve-operational-excellence-by-using-azure-advisor"></a>Sicherstellen des optimalen Betriebs mit Azure Advisor
 
@@ -54,13 +54,23 @@ Azure Policy ist ein Dienst in Azure, mit dem Sie Richtlinien erstellen, zuweise
 
 **Aktivieren Sie *Tag von der Ressourcengruppe erben*.** Diese Richtlinie dient zum Hinzufügen oder Ersetzen des angegebenen Tags aus der übergeordneten Ressourcengruppe und des zugehörigen Werts, wenn eine Ressource erstellt oder aktualisiert wird. Vorhandene Ressourcen können durch Auslösen eines Wartungstasks gewartet werden.
 
+## <a name="no-validation-environment-enabled"></a>Keine Überprüfungsumgebung aktiviert
+Azure Advisor stellt fest, dass in Ihrem aktuellen Abonnement keine Überprüfungsumgebung aktiviert wurde. Beim Erstellen Ihrer Hostpools haben Sie auf der Registerkarte „Eigenschaften“ unter \"Überprüfungsumgebung\" die Option \"Nein\" ausgewählt. Mit der Aktivierung von mindestens einem Hostpool mit einer Überprüfungsumgebung sorgen Sie für Geschäftskontinuität durch Windows Virtual Desktop-Dienstbereitstellungen mit frühzeitiger Erkennung potenzieller Probleme. [Weitere Informationen](https://docs.microsoft.com/azure/virtual-desktop/create-validation-host-pool)
+
+## <a name="ensure-production-non-validation-environment-to-benefit-from-stable-functionality"></a>Sicherstellen, dass die Produktionsumgebung (keine Überprüfungsumgebung) von stabiler Funktionalität profitiert
+Azure Advisor erkennt, dass bei Ihnen für zu viele Hostpools eine Überprüfungsumgebung aktiviert wurde. Damit Überprüfungsumgebungen Ihren Zweck am besten erfüllen können, sollten Sie mindestens eine davon nutzen. Die Anzahl von Überprüfungsumgebungen sollte aber niemals die Hälfte Ihrer Anzahl von Hostpools überschreiten. Indem Sie eine ausgewogene Anzahl von Hostpools mit aktivierter und mit deaktivierter Überprüfungsumgebung nutzen, können Sie von den Vorteilen der mehrstufigen Bereitstellungen am besten profitieren, die Ihnen Windows Virtual Desktop bei bestimmten Updates bietet. Öffnen Sie zum Beheben dieses Problems die Eigenschaften Ihres Hostpools, und wählen Sie neben der Einstellung \"Überprüfungsumgebung\" die Option \"Nein\" aus.
+
+## <a name="enable-traffic-analytics-to-view-insights-into-traffic-patterns-across-azure-resources"></a>Aktivieren von Traffic Analytics zum Anzeigen von Erkenntnissen zu Datenverkehrsmustern für Azure-Ressourcen
+Traffic Analytics ist eine cloudbasierte Lösung, die Einblick in Benutzer- und Anwendungsaktivitäten in Azure bietet. Traffic Analytics analysiert Flussprotokolle von Network Watcher für Netzwerksicherheitsgruppen (NSGs), um Einblicke in den Datenfluss zu ermöglichen. Mit Traffic Analytics können Sie „Top Talkers“ für Azure-Bereitstellungen und andere Bereitstellungen anzeigen, geöffnete Ports, Protokolle und schädliche Datenflüsse in Ihrer Umgebung untersuchen und Ihre Netzwerkbereitstellung in Bezug auf die Leistung optimieren. Sie können Datenflussprotokolle mit Verarbeitungsintervallen von 10 und 60 Minuten verarbeiten, um schnellere Analyseergebnisse für Ihren Datenverkehr zu erhalten. Es empfiehlt sich, Traffic Analytics für Ihre Azure-Ressourcen zu aktivieren. 
+
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 Hier finden Sie weitere Informationen zu Empfehlungen des Advisor:
 * [Einführung in Advisor](advisor-overview.md)
 * [Erste Schritte](advisor-get-started.md)
 * [Kostenempfehlungen von Advisor](advisor-cost-recommendations.md)
-* [Leistungsempfehlungen von Advisor](advisor-performance-recommendations.md)
+* [Verbessern der Leistung von Azure-Anwendungen mit dem Azure Advisor](advisor-performance-recommendations.md)
 * [Zuverlässigkeitsempfehlungen von Advisor](advisor-high-availability-recommendations.md)
 * [Sicherheitsempfehlungen von Advisor](advisor-security-recommendations.md)
 * [Advisor-REST-API](/rest/api/advisor/)

@@ -8,13 +8,13 @@ ms.topic: conceptual
 author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
-ms.date: 07/27/2020
-ms.openlocfilehash: bfe609dc480dcdb71f162ca1bfd383a27257fedc
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.date: 08/17/2020
+ms.openlocfilehash: d8268ebf89bed6b67919e77576118343b58edb6c
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321699"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88516621"
 ---
 # <a name="azure-active-directory-service-principal-with-azure-sql"></a>Azure Active Directory-Dienstprinzipal mit Azure SQL
 
@@ -80,6 +80,8 @@ Zum Aktivieren einer Azure AD-Objekterstellung in SQL-Datenbank und Azure Synap
 
 > [!IMPORTANT]
 > Die Schritte 1 und 2 müssen in der vorstehenden Reihenfolge ausgeführt werden. Erstellen Sie zuerst die Serveridentität, oder weisen Sie sie zu, und erteilen Sie dann die Berechtigung [**Verzeichnisleseberechtigte**](../../active-directory/users-groups-roles/directory-assign-admin-roles.md#directory-readers). Wenn Sie einen dieser Schritte oder beide auslassen, tritt während der Erstellung eines Azure AD-Objekts in Azure SQL im Auftrag einer Azure AD-Anwendung ein Ausführungsfehler auf. Schrittanweisungen zum Erstellen eines Azure AD-Benutzers im Auftrag einer Azure AD-Anwendung finden Sie im [Tutorial: Erstellen von Azure AD-Benutzern mithilfe von Azure AD-Anwendungen](authentication-aad-service-principal-tutorial.md).
+>
+> In der **öffentlichen Vorschau** können Sie die Rolle **Verzeichnisleseberechtigte** einer Gruppe in Azure AD zuweisen. Die Gruppenbesitzer können dann die verwaltete Identität als Mitglied dieser Gruppe hinzufügen. Dadurch wird die Notwendigkeit eines **Globalen Administrators** oder **Administrators für privilegierte Rollen** umgangen, um die Rolle **Verzeichnisleseberechtigter** zuzuweisen. Weitere Informationen zu diesem Feature finden Sie unter [Rolle „Verzeichnisleseberechtigte“ in Azure Active Directory für Azure SQL](authentication-aad-directory-readers-role.md).
 
 ## <a name="troubleshooting-and-limitations-for-public-preview"></a>Problembehandlung und Einschränkungen für die öffentliche Vorschau
 

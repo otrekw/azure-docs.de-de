@@ -4,12 +4,12 @@ description: In diesem Artikel finden Sie Antworten auf häufig gestellte Fragen
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: bf09c4e56c3881987e14d27d5f2166c68e311ab3
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 03e2f004fa54ee235eabc49afd6abd7532a6ee44
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533494"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88262771"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>Häufig gestellte Fragen – Sicherung von Azure-VMs
 
@@ -101,6 +101,10 @@ Wenn Sie die Groß- und Kleinschreibung im Namen Ihrer VM oder VM-Ressourcengrup
 
 Azure Backup unterstützt jetzt die selektive Datenträgersicherung und -wiederherstellung mithilfe der Azure Virtual Machine-Sicherungslösung. Weitere Informationen finden Sie unter [Selektives Sichern und Wiederherstellen von Datenträgern auf Azure-VMs](selective-disk-backup-restore.md).
 
+### <a name="are-managed-identities-preserved-if-a-tenant-change-occurs-during-backup"></a>Bleiben verwaltete Identitäten erhalten, wenn während der Sicherung eine Mandantenänderung auftritt?
+
+Wenn [Mandantenänderungen](https://docs.microsoft.com/azure/devops/organizations/accounts/change-azure-ad-connection) auftreten, müssen Sie [verwaltete Identitäten](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) deaktivieren und erneut aktivieren, damit Sicherungen wieder funktionieren.
+
 ## <a name="restore"></a>Restore
 
 ### <a name="how-do-i-decide-whether-to-restore-disks-only-or-a-full-vm"></a>Wie entscheide ich, ob ich nur Datenträger oder eine vollständige VM wiederherstelle?
@@ -188,3 +192,11 @@ Die Wiederherstellungspunkte der alten VM können bei Bedarf wiederhergestellt w
 ### <a name="is-there-a-limit-on-number-of-vms-that-can-beassociated-with-the-same-backup-policy"></a>Gibt es einen Grenzwert bei der Anzahl von VMs, die derselben Sicherungsrichtlinie zugeordnet werden können?
 
 Ja. Im Portal können maximal 100 VMs derselben Sicherungsrichtlinie zugeordnet werden. Wir empfehlen, dass Sie bei mehr als 100 VMs mehrere Sicherungsrichtlinien mit demselben Zeitplan oder einem anderen Zeitplan erstellen.
+
+### <a name="how-can-i-view-the-retention-settings-for-my-backups"></a>Wie kann ich die Aufbewahrungseinstellungen für meine Sicherungen anzeigen?
+
+Derzeit können Sie die Aufbewahrungseinstellungen auf der Ebene eines Sicherungselements (VM) auf der Grundlage der Sicherungsrichtlinie anzeigen, die der VM zugewiesenen ist. 
+
+Eine Möglichkeit, die Aufbewahrungseinstellungen für Ihre Sicherungen anzuzeigen, besteht darin, zum [Dashboard](https://docs.microsoft.com/azure/backup/backup-azure-manage-vms#view-vms-on-the-dashboard) des Sicherungselements für Ihre VM im Azure-Portal zu navigieren. Wenn Sie auf den Link zu ihrer Sicherungsrichtlinie klicken, können Sie die Aufbewahrungsdauer aller täglichen, wöchentlichen, monatlichen und jährlichen Aufbewahrungspunkte anzeigen, die mit der VM verbunden sind.
+
+Sie können auch den [Sicherungs-Explorer](https://docs.microsoft.com/azure/backup/monitor-azure-backup-with-backup-explorer) verwenden, um die Aufbewahrungseinstellungen für alle Ihre VMs in einer zentralisierten Benutzeroberfläche anzuzeigen. Navigieren Sie von einem beliebigen Recovery Services-Tresor aus zum Sicherungs-Explorer, wechseln Sie zur Registerkarte **Sicherungselemente**, und wählen Sie die erweiterte Ansicht aus, um detaillierte Aufbewahrungsinformationen für jede VM anzuzeigen.  

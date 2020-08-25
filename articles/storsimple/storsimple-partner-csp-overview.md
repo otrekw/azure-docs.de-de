@@ -1,6 +1,6 @@
 ---
 title: Übersicht über Microsoft Azure StorSimple und das Cloudlösungsanbieter-Programm | Microsoft-Dokumentation
-description: Eine Übersicht über StorSimple und das Cloudlösungsanbieter-Programm für StorSimple-Partner.
+description: Erhalten Sie einführende Informationen zu StorSimple und dem Cloudlösungsanbieter-Programm (CSP) für StorSimple-Partner.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/08/2017
 ms.author: alkohli
-ms.openlocfilehash: e2adccaf1371cf322b5a50b0e1f6ef64dde14b66
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 358399426798ac20897d207c93a8874357e8b781
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "60628658"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88181999"
 ---
 # <a name="what-is-storsimple-for-cloud-solutions-providers-program"></a>Was ist das StorSimple für Cloudlösungsanbieter-Programm?
 

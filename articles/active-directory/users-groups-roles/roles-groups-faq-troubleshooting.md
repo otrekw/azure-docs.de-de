@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 07/27/2020
+ms.date: 08/13/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 901815ba40459bd50562e557a0a766474c731ce0
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: 84bf041f64a2f85f3aa3eada1dc1955c93dc034a
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475875"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88208194"
 ---
 # <a name="troubleshooting-roles-assigned-to-cloud-groups"></a>Problembehandlung bei Rollen, die Cloudgruppen zugewiesen sind
 
@@ -51,7 +51,7 @@ Nachfolgend sind einige häufig gestellte Fragen und Tipps zur Problembehandlung
 
 **A:** Ja, das ist möglich. Der globale Administrator und der Benutzeradministrator haben die Möglichkeit, einem Zugriffspaket eine beliebige Gruppe hinzuzufügen. Für den globalen Administrator ändert sich nichts, doch bei den Rollenberechtigungen für den Benutzeradministrator gibt es eine geringfügige Änderung. Wenn Sie einem Zugriffspaket eine Gruppe mit Rollenzuweisung hinzufügen möchten, müssen Sie ein Benutzeradministrator und außerdem Besitzer der Gruppe mit Rollenzuweisung sein. In der folgenden Tabelle sind alle Rollen aufgeführt, die Zugriffspakete in Enterprise License Management erstellen können:
 
-Azure AD-Verzeichnisrolle | Berechtigungsverwaltungsrolle | Kann Sicherheitsgruppe hinzufügen\* | Kann Office 365-Gruppe hinzufügen\* | Kann App hinzufügen | Kann SharePoint Online-Website hinzufügen
+Azure AD-Verzeichnisrolle | Berechtigungsverwaltungsrolle | Kann Sicherheitsgruppe hinzufügen\* | Kann Microsoft 365-Gruppe hinzufügen\* | Kann App hinzufügen | Kann SharePoint Online-Website hinzufügen
 ----------------------- | --------------------------- | ----------------------- | ------------------------- | ----------- |  -----------------------------
 Globaler Administrator | – | ✔️ | ✔️ | ✔️  | ✔️
 Benutzeradministrator  | –  | ✔️  | ✔️  | ✔️

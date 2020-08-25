@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: JenCook
-ms.openlocfilehash: 6e853edf5b7ba756aaedceaf59b1f7d1d7e48b39
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: f9b73e0919d660947edd0417f7379b3f6e6140c0
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85985425"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245851"
 ---
 # <a name="solutions-on-azure-virtual-machines"></a>Lösungen auf virtuellen Azure-Computern
 
@@ -32,41 +32,18 @@ Beginnen Sie mit der Bereitstellung einer VM der DCsv2-Serie über den kommerzie
 Um eine Liste aller allgemein verfügbaren Größen für Confidential Computing-VMs in verfügbaren Regionen und Verfügbarkeitszonen zu erhalten, führen Sie in der [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli-windows?view=azure-cli-latest) den folgenden Befehl aus:
 
 ```azurecli-interactive
-az vm list-skus 
-    --size dc 
-    --query "[?family=='standardDCSv2Family'].{name:name,locations:locationInfo[0].location,AZ_a:locationInfo[0].zones[0],AZ_b:locationInfo[0].zones[1],AZ_c:locationInfo[0].zones[2]}" 
-    --all 
+az vm list-skus `
+    --size dc `
+    --query "[?family=='standardDCSv2Family'].{name:name,locations:locationInfo[0].location,AZ_a:locationInfo[0].zones[0],AZ_b:locationInfo[0].zones[1],AZ_c:locationInfo[0].zones[2]}" `
+    --all `
     --output table
-```
-
-Ab Mai 2020 sind diese SKUs in den folgenden Regionen und Verfügbarkeitszonen verfügbar:
-
-```output
-Name              Locations      AZ_a
-----------------  -------------  ------
-Standard_DC8_v2   eastus         2
-Standard_DC1s_v2  eastus         2
-Standard_DC2s_v2  eastus         2
-Standard_DC4s_v2  eastus         2
-Standard_DC8_v2   CanadaCentral
-Standard_DC1s_v2  CanadaCentral
-Standard_DC2s_v2  CanadaCentral
-Standard_DC4s_v2  CanadaCentral
-Standard_DC8_v2   uksouth        3
-Standard_DC1s_v2  uksouth        3
-Standard_DC2s_v2  uksouth        3
-Standard_DC4s_v2  uksouth        3
-Standard_DC8_v2   CentralUSEUAP
-Standard_DC1s_v2  CentralUSEUAP
-Standard_DC2s_v2  CentralUSEUAP
-Standard_DC4s_v2  CentralUSEUAP
 ```
 
 Um eine detailliertere Ansicht der oben genannten Größen zu erhalten, führen Sie den folgenden Befehl aus:
 
 ```azurecli-interactive
-az vm list-skus 
-    --size dc 
+az vm list-skus `
+    --size dc `
     --query "[?family=='standardDCSv2Family']"
 ```
 ### <a name="dedicated-host-requirements"></a>Anforderungen an dedizierte Hosts
@@ -101,17 +78,17 @@ Wenn Sie VMs in Azure nutzen, müssen Sie eine Lösung für Hochverfügbarkeit u
 
 Azure Confidential Computing unterstützt derzeit keine Zonenredundanz über Verfügbarkeitszonen. Um für Confidential Computing maximale Verfügbarkeit und Redundanz zu erreichen, verwenden Sie [Verfügbarkeitsgruppen](../virtual-machines/windows/manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy). Aufgrund von Hardwarebeschränkungen können Verfügbarkeitsgruppen für Confidential Computing-Instanzen nur maximal 10 Updatedomänen haben. 
 
-## <a name="deploying-via-an-azure-resource-manager-template"></a>Bereitstellen über eine Azure Resource Manager-Vorlage 
+## <a name="deployment-with-azure-resource-manager-arm-template"></a>Bereitstellung mit ARM-Vorlage (Azure Resource Manager)
 
 Azure Resource Manager ist der Bereitstellungs- und Verwaltungsdienst für Azure. Er bietet eine Verwaltungsebene, die das Erstellen, Aktualisieren und Löschen von Ressourcen in Ihrem Azure-Abonnement ermöglicht. Mithilfe von Verwaltungsfeatures wie Zugriffssteuerung, Sperren und Tags können Sie Ihre Ressourcen nach der Bereitstellung schützen und organisieren.
 
-Informationen zu Azure Resource Manager-Vorlagen finden Sie in der [Übersicht über die Vorlagenbereitstellung](../azure-resource-manager/templates/overview.md).
+Weitere Informationen zu ARM-Vorlagen finden Sie in der [Übersicht über die Vorlagenbereitstellung](../azure-resource-manager/templates/overview.md).
 
-Um eine VM der DCsv2-Serie mithilfe einer Azure Resource Manager-Vorlage bereitzustellen, verwenden Sie die [Ressource eines virtuellen Computers](../virtual-machines/windows/template-description.md). Stellen Sie sicher, dass Sie die richtigen Eigenschaften für **vmSize** und **imageReference** angeben.
+Um eine VM der DCsv2-Serie mithilfe einer Resource Manager-Vorlage bereitzustellen, verwenden Sie die Ressource [Virtual Machine](../virtual-machines/windows/template-description.md). Stellen Sie sicher, dass Sie die richtigen Eigenschaften für **vmSize** und **imageReference** angeben.
 
 ### <a name="vm-size"></a>Größe des virtuellen Computers
 
-Geben Sie in der Azure Resource Manager-Vorlage in der Ressource des virtuellen Computers eine der folgenden Größen an. Diese Zeichenfolge wird in **properties** als **vmSize** eingegeben.
+Geben Sie in der Resource Manager-Vorlage in der Ressource „Virtual Machine“ die folgenden Größen an. Diese Zeichenfolge wird in **properties** als **vmSize** eingegeben.
 
 ```json
   [

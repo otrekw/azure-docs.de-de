@@ -3,12 +3,12 @@ title: Mit Azure Backup Server V3 RTM sicherbare Elemente
 description: Dieser Artikel bietet eine Schutzmatrix aller Workloads, Datentypen und Installationen, die von Azure Backup Server V3 RTM geschützt werden.
 ms.date: 11/13/2018
 ms.topic: conceptual
-ms.openlocfilehash: aebd1d1f90a2c0b84d7a6e1cb77d0e50915b091e
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 86e192e13b49b89e8d66c5f912ef88f02a1b21b4
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86538565"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88611975"
 ---
 # <a name="azure-backup-server-v3-rtm-protection-matrix"></a>Azure Backup Server V3 RTM-Schutzmatrix
 

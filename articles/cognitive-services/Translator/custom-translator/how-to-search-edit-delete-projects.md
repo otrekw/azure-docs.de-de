@@ -6,15 +6,15 @@ author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.date: 05/26/2020
+ms.date: 08/17/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 40a0429c4296426042e5baa58c9575ddb195cd7c
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 4c48a8a18a3ad0487b4c3840847c7f5edbb6d29f
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83996736"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88510348"
 ---
 # <a name="search-edit-and-delete-projects"></a>Suchen, Bearbeiten und Löschen von Projekten
 
@@ -24,36 +24,35 @@ Custom Translator bietet mehrere Möglichkeiten, Ihre Projekte effizient zu verw
 
 Das Filtertool ermöglicht es Ihnen, Projekte nach verschiedenen Filterbedingungen zu suchen. Es filtert z.B. nach Projektname, Status, Ausgangs- und Zielsprache sowie Projektkategorie.
 
-1.  Klicken Sie auf die Schaltfläche „Filter“.
+1. Klicken Sie auf die Schaltfläche „Filter“.
 
     ![Suchen nach Projekt](media/how-to/how-to-search-project.png)
 
-1.  Sie können nach den folgenden Feldern filtern: Projektname, Status, Ausgangssprache, Zielsprache und Kategorie.
+2. Sie können nach den folgenden Feldern filtern: Projektname, Ausgangssprache, Zielsprache, Kategorie und Projektverfügbarkeit.
 
-2.  Klicken Sie auf „Übernehmen“.
+3. Klicken Sie auf „Übernehmen“.
 
     ![Filteroptionen für die Suche nach Projekten](media/how-to/how-to-search-project-filters.png)
 
-3.  Löschen Sie den Filter durch Tippen auf „Löschen“, damit alle Projekte angezeigt werden.
-
+4. Löschen Sie den Filter durch Tippen auf „Löschen“, damit alle Projekte angezeigt werden.
 
 ## <a name="edit-a-project"></a>Bearbeiten eines Projekts
 
 Der benutzerdefinierte Translator bietet Ihnen die Möglichkeit, den Namen und die Beschreibung eines Projekts zu bearbeiten. Andere Projektmetadaten wie Kategorie, Ausgangs- und Zielsprache können nicht bearbeitet werden. Die folgenden Schritte beschreiben, wie Sie ein Projekt bearbeiten können.
 
-1.  Klicken Sie auf das Bleistiftsymbol, das erscheint, wenn Sie mit der Maus auf ein Projekt zeigen.
+1. Klicken Sie auf das Bleistiftsymbol, das erscheint, wenn Sie mit der Maus auf ein Projekt zeigen.
 
     ![Bearbeiten eines Projekts](media/how-to/how-to-edit-project.png)
 
-2.  Im Dialog können Sie entweder den Projektnamen oder die Projektbeschreibung ändern, jedoch nicht die Projektbezeichnung, die Kategorie oder das Sprachenpaar.
+2. Im Dialogfeld können Sie den Projektnamen, die Beschreibung des Projekts, die Kategoriebeschreibung und die Projektbezeichnung ändern, wenn kein Modell bereitgestellt wird. Sie können die Kategorie oder das Sprachpaar nicht ändern, nachdem das Projekt erstellt wurde.
 
     ![Dialogfeld „Projekt bearbeiten“](media/how-to/how-to-edit-project-dialog.png)
 
-3.  Klicken Sie auf die Schaltfläche „Filter“.
+3. Klicken Sie auf die Schaltfläche „Speichern“.
 
 ## <a name="delete-a-project"></a>Löschen eines Projekts
 
-Sie können ein Projekt löschen, wenn Sie es nicht mehr benötigen. Die folgenden Schritte beschreiben, wie Sie ein Projekt löschen können.
+Sie können ein Projekt löschen, wenn Sie es nicht mehr benötigen. Stellen Sie sicher, dass das Projekt keine Modelle im aktivem Zustand aufweist (z. B. „deployed“ (bereitgestellt), „training submitted“ (Training übermittelt), „data processing“ (Datenverarbeitung), „deploying“ (wird bereitgestellt) usw.), andernfalls schlägt der Löschvorgang fehl. Die folgenden Schritte beschreiben, wie Sie ein Projekt löschen können.
 
 1. Zeigen Sie mit der Maus auf einen beliebigen Projektdatensatz, und klicken Sie auf das Papierkorbsymbol.
 
