@@ -4,14 +4,14 @@ description: In diesem Artikel erfahren Sie, wie Sie für Ihre Workload zwischen
 author: deborahc
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/19/2020
+ms.date: 08/19/2020
 ms.author: dech
-ms.openlocfilehash: 94022b9959b6a7f2bc30e31f918f2f5a916ccd8c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fbe17d75ad809c54939624b1409e281b2f62a037
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85116807"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88605199"
 ---
 # <a name="how-to-choose-between-standard-manual-and-autoscale-provisioned-throughput"></a>Auswählen zwischen standardmäßig (manuell) bereitgestelltem und automatisch skaliertem Durchsatz 
 
@@ -37,7 +37,10 @@ In der folgenden Tabelle wird der standardmäßig (manuell) bereitgestellte Durc
 ## <a name="understand-your-traffic-patterns"></a>Grundlegendes zu Ihren Datenverkehrsmustern
 
 ### <a name="new-applications"></a>Neue Anwendungen ###
-Wenn Sie eine neue Anwendung erstellen und Ihr Datenverkehrsmuster noch nicht kennen, sollten Sie mit den Einstiegspunkt-RU/s (oder der Mindestzahl von RU/s) beginnen, um eine überflüssige Bereitstellung am Anfang zu vermeiden. Wenn Ihre Anwendung klein ist und keine hohe Skalierbarkeit erfordert, sollten Sie nur die minimalen Einstiegspunkt-RU/s bereitstellen, um die Kosten zu optimieren. In beiden Fällen eignet sich sowohl der standardmäßig (manuell) bereitgestellte und der automatisch skalierte Durchsatz. Folgendes sollten Sie bedenken:
+
+Wenn Sie eine neue Anwendung erstellen und Ihr Datenverkehrsmuster noch nicht kennen, sollten Sie mit den Einstiegspunkt-RU/s (oder der Mindestzahl von RU/s) beginnen, um eine überflüssige Bereitstellung am Anfang zu vermeiden. Wenn Ihre Anwendung klein ist und keine hohe Skalierbarkeit erfordert, sollten Sie nur die minimalen Einstiegspunkt-RU/s bereitstellen, um die Kosten zu optimieren. Für kleine Anwendungen mit geringem zu erwartenden Datenverkehr können Sie auch den Kapazitätsmodus [serverlos](throughput-serverless.md) in Betracht ziehen.
+
+Unabhängig davon, ob Sie standardmäßige (manuelle) Skalierung oder Autoskalierung verwenden möchten, sollten Sie Folgendes berücksichtigen:
 
 Wenn Sie den standardmäßig (manuell) bereitgestellten Durchsatz mit einem Einstiegspunkt von 400 RU/s bereitstellen, können Sie nicht mehr als 400 RU/s nutzen, es sei denn, Sie ändern den festgelegten Durchsatz manuell. Ihnen werden pro Stunde 400 RU/s zum Tarif des standardmäßig (manuell) bereitgestellten Durchsatzes berechnet.
 

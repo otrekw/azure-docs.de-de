@@ -1,15 +1,15 @@
 ---
 title: 'Erstellen einer Blockchainanwendung: Azure Blockchain Workbench'
 description: Tutorial mit einer Beschreibung der Erstellung einer Blockchainanwendung in der Vorschauversion von Azure Blockchain Workbench.
-ms.date: 10/14/2019
+ms.date: 08/24/2020
 ms.topic: tutorial
-ms.reviewer: brendal
-ms.openlocfilehash: 7be79757f506ea9fb854a248e77f0ff4f1b74f47
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.reviewer: ravastra
+ms.openlocfilehash: add790a069d2e0ea66d84bbd632825cf9331fd38
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87073116"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88784027"
 ---
 # <a name="tutorial-create-a-blockchain-application-for-azure-blockchain-workbench"></a>Tutorial: Erstellen einer Blockchainanwendung in Azure Blockchain Workbench
 
@@ -40,7 +40,7 @@ Führen Sie die Schritte zum Erstellen der Anwendungsdateien aus, oder [laden Si
 
 ## <a name="configuration-file"></a>Konfigurationsdatei
 
-Konfigurationsmetadaten definieren die allgemeinen Workflows und das Interaktionsmodell der Blockchainanwendung. Zudem stellen die Konfigurationsmetadaten die Workflowstufen und das Interaktionsmodell der Blockchainanwendung dar.
+Konfigurationsmetadaten definieren die allgemeinen Workflows und das Interaktionsmodell der Blockchainanwendung. Zudem stellen die Konfigurationsmetadaten die Workflowstufen und das Interaktionsmodell der Blockchainanwendung dar. Weitere Informationen zum Inhalt von Konfigurationsdateien finden Sie unter [Referenz zur Azure Blockchain-Workflowkonfiguration](configuration.md).
 
 1. Erstellen Sie in Ihrem bevorzugten Editor eine Datei namens `HelloBlockchain.json`.
 2. Fügen Sie die folgende JSON-Funktion hinzu, um die Konfiguration der Blockchainanwendung zu definieren.
@@ -211,8 +211,6 @@ Der Abschnitt zu den Anwendungsrollen definiert die Benutzerrollen, die innerhal
 ### <a name="workflows"></a>Workflows
 
 Workflows definieren eine oder mehrere Stufen und Aktionen des Vertrages. Im Anforderung/Antwort-Szenario ist die erste Stufe (Zustand) des Workflows ein Anforderer (Rolle), der eine Aktion (Übergang) ausführt, um eine Anforderung (Funktion) zu senden. Die nächste Stufe (Zustand) ist ein Antwortdienst (Rolle), der eine Aktion (Übergang) ausführt, um eine Antwort (Funktion) zu senden. Der Workflow einer Anwendung kann Eigenschaften, Funktionen und Zustände beinhalten, die den Ablauf eines Vertrages beschreiben.
-
-Weitere Informationen zum Inhalt von Konfigurationsdateien finden Sie unter [Referenz zur Azure Blockchain-Workflowkonfiguration](configuration.md).
 
 ## <a name="smart-contract-code-file"></a>Datei mit intelligentem Vertragscode
 

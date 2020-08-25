@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/12/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: d73782d9de7da2c5daacbff5397d9a365ff9ae03
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f93df91f87f8119a503f2f7c452b61e3af5924f8
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87038408"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88208770"
 ---
 # <a name="indexers-in-azure-cognitive-search"></a>Indexer in Azure Cognitive Search
 
@@ -38,7 +38,7 @@ Ein neuer Indexer wird zunächst als Vorschaufeature angekündigt. Vorschaufeatu
 
 ## <a name="permissions"></a>Berechtigungen
 
-Alle Vorgänge im Zusammenhang mit Indexern, einschließlich GET-Anforderungen für den Status oder Definitionen, erfordern einen [Admin-API-Schlüssel](search-security-api-keys.md). 
+Alle Vorgänge im Zusammenhang mit Indexern, einschließlich GET-Anforderungen für den Status oder Definitionen, erfordern einen [Admin-API-Schlüssel](search-security-api-keys.md).
 
 <a name="supported-data-sources"></a>
 
@@ -54,7 +54,44 @@ Indexer durchforsten Datenspeicher in Azure.
 * [SQL Server auf virtuellen Azure-Computern](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md)
 * [SQL Managed Instance](search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers.md)
 
+## <a name="indexer-stages"></a>Indexerphasen
+
+Bei einer anfänglichen Ausführung, bei der der Index leer ist, liest ein Indexer alle Daten, die in der Tabelle oder im Container bereitgestellt werden. Bei nachfolgenden Ausführungen kann der Indexer in der Regel nur die geänderten Daten erkennen und abrufen. Bei Blobdaten erfolgt die Änderungserkennung automatisch. Bei anderen Datenquellen wie Azure SQL oder Cosmos DB muss die Änderungserkennung aktiviert werden.
+
+Für jedes Dokument, das ein Indexer erfasst, implementiert oder koordiniert er mehrere Schritte, vom Abrufen des Dokuments bis hin zu einer endgültigen Suchmaschinenübergabe für die Indizierung. Optional ist ein Indexer auch bei der Initiierung von Skillset-Ausführungen und -Ausgaben dienlich, vorausgesetzt, dass ein Skillset definiert ist.
+
+![Indexerphasen](./media/search-indexer-overview/indexer-stages.png "Indexerphasen")
+
+### <a name="stage-1-document-cracking"></a>Phase 1: Dokumententschlüsselung
+
+Dokumententschlüsselung ist der Vorgang des Öffnens von Dateien und des Extrahierens von Inhalt. Abhängig vom Typ der Datenquelle versucht der Indexer, verschiedene Vorgänge auszuführen, um potenziell indizierbaren Inhalt zu extrahieren.  
+
+Beispiele:  
+
+* Wenn es sich bei dem Dokument um einen Datensatz in einer [Azure SQL-Datenquelle](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md) handelt, extrahiert der Indexer alle Felder für den Datensatz.
+* Wenn das Dokument eine PDF-Datei in einer [Azure Blob Storage-Datenquelle](search-howto-indexing-azure-blob-storage.md) ist, extrahiert der Indexer den Text, die Bilder und die Metadaten für die Datei.
+* Wenn das Dokument ein Datensatz in einer [Cosmos DB-Datenquelle](search-howto-index-cosmosdb.md) ist, extrahiert der Indexer die Felder und Unterfelder aus dem Cosmos DB-Dokument.
+
+### <a name="stage-2-field-mappings"></a>Phase 2: Feldzuordnungen 
+
+Ein Indexer extrahiert Text aus einem Quellfeld und sendet ihn an ein Zielfeld in einem Index oder Wissensspeicher. Wenn Feldnamen und -typen übereinstimmen, ist der Pfad klar. Möglicherweise möchten Sie aber unterschiedliche Namen oder Typen in der Ausgabe, in welchem Fall Sie dem Indexer mitteilen müssen, wie das Feld zugeordnet werden soll. Dieser Schritt erfolgt nach der Dokumententschlüsselung, aber vor Transformationen, wenn der Indexer aus den Quelldokumenten liest. Wenn Sie eine [Feldzuordnung](search-indexer-field-mappings.md) definieren, wird der Wert des Quellfelds unverändert an das Zielfeld gesendet. Feldzuordnungen sind optional.
+
+### <a name="stage-3-skillset-execution"></a>Phase 3: Skillset-Ausführung
+
+Skillset-Ausführung ist ein optionaler Schritt, der die integrierte oder benutzerdefinierte KI-Verarbeitung aufruft. Sie benötigen diese möglicherweise für die optische Zeichenerkennung (OCR) in Form einer Bildanalyse, oder Sie benötigen eventuelle eine Sprachübersetzung. Wie auch immer die Transformation aussieht, die Skillset-Ausführung ist der Zeitpunkt, an dem eine Anreicherung erfolgt. Wenn ein Indexer eine Pipeline ist, können Sie sich einen [Skillset](cognitive-search-defining-skillset.md) als „Pipeline innerhalb der Pipeline“ vorstellen. Ein Skillset verfügt über eine eigene Abfolge von Schritten, die als Skills bezeichnet werden.
+
+### <a name="stage-4-output-field-mappings"></a>Phase 4: Ausgabefeldzuordnungen
+
+Die Ausgabe eines Skillsets ist tatsächlich eine Struktur von Informationen, die als angereichertes Dokument bezeichnet wird. Mithilfe von Ausgabefeldzuordnungen können Sie auswählen, welche Teile dieser Struktur Feldern in Ihrem Index zugeordnet werden sollen. Erfahren Sie, wie Sie [Ausgabefeldzuordnungen definieren](cognitive-search-output-field-mapping.md).
+
+Wie bei Feldzuordnungen, die Literalwerte aus den Quellfeldern den Zielfeldern zuordnen, weisen Ausgabefeldzuordnungen den Indexer an, wie die transformierten Werte im angereicherten Dokument den Zielfeldern im Index zugeordnet werden sollen. Anders als bei Feldzuordnungen, die als optional angesehen werden, müssen Sie immer eine Ausgabefeldzuordnung für jeglichen transformierten Inhalt definieren, der sich in einem Index befinden muss.
+
+Die nächste Abbildung zeigt eine Beispieldarstellung einer Indexer-[Debugsitzung](cognitive-search-debug-session.md)der Indexerphasen: Dokumententschlüsselung, Feldzuordnungen, Skillset-Ausführung und Ausgabefeldzuordnungen.
+
+:::image type="content" source="media/search-indexer-overview/sample-debug-session.png" alt-text="Beispieldebugsitzung" lightbox="media/search-indexer-overview/sample-debug-session.png":::
+
 ## <a name="basic-configuration-steps"></a>Grundlegende Konfigurationsschritte
+
 Indexer können Features bereitstellen, die für die Datenquelle eindeutig sind. In dieser Hinsicht variieren einige Aspekte von Indexern oder der Datenquellenkonfiguration nach Indexertyp. Für alle Indexer werden aber die gleiche grundlegende Zusammenstellung und die gleichen Anforderungen verwendet. Die Schritte, die für alle Indexer gelten, sind unten beschrieben.
 
 ### <a name="step-1-create-a-data-source"></a>Schritt 1: Erstellen einer Datenquelle

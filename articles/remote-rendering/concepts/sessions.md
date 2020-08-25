@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/21/2020
 ms.topic: conceptual
-ms.openlocfilehash: 509375459d019ead5a7992b808044a75e2666393
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a74fae74a2d0ebbb71d65420475e5772e44a8d84
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83758859"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88507092"
 ---
 # <a name="remote-rendering-sessions"></a>Remote Rendering-Sitzungen
 
@@ -40,10 +40,10 @@ Jede Sitzung durchläuft mehrere Phasen.
 
 Wenn Sie in ARR die [Erstellung einer neuen Sitzung](../how-tos/session-rest-api.md#create-a-session) anfordern, wird als Erstes eine [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier) für die Sitzung zurückgegeben. Diese UUID ermöglicht Ihnen das Abfragen von Informationen zur Sitzung. Die UUID und einige grundlegende Informationen zur Sitzung werden 30 Tage lang gespeichert, damit Sie diese auch dann noch abfragen können, nachdem die Sitzung beendet wurde. An diesem Punkt wird der **Sitzungszustand** als **Wird gestartet** angegeben.
 
-Als Nächstes sucht Azure Remote Rendering nach einem Server, auf dem Ihre Sitzung gehostet werden kann. Bei dieser Suche sind zwei Faktoren zu berücksichtigen. Erstens werden nur Server in Ihrer [Region](../reference/regions.md) reserviert. Der Grund ist, dass die Netzwerklatenz zwischen den Regionen unter Umständen zu hoch ist, um eine angemessene Benutzerfreundlichkeit sicherstellen zu können. Der zweite Faktor ist die gewünschte *Größe*, die Sie angegeben haben. In jeder Region gibt es eine begrenzte Anzahl von Servern, die die Größenanforderung für *Standard* oder *Premium* erfüllen. Daher ist die Sitzungserstellung nicht erfolgreich, wenn alle Server der angeforderten Größe in Ihrer Region gerade verwendet werden. Sie können den Grund für den Fehler [abfragen](../how-tos/session-rest-api.md#get-sessions-properties).
+Als Nächstes sucht Azure Remote Rendering nach einem Server, auf dem Ihre Sitzung gehostet werden kann. Bei dieser Suche sind zwei Faktoren zu berücksichtigen. Erstens werden nur Server in Ihrer [Region](../reference/regions.md) reserviert. Der Grund ist, dass die Netzwerklatenz zwischen den Regionen unter Umständen zu hoch ist, um eine angemessene Benutzerfreundlichkeit sicherstellen zu können. Der zweite Faktor ist die gewünschte *Größe*, die Sie angegeben haben. In jeder Region gibt es eine begrenzte Anzahl von Servern, die die Größenanforderung für [*Standard*](../reference/vm-sizes.md) oder [*Premium*](../reference/vm-sizes.md) erfüllen. Daher ist die Sitzungserstellung nicht erfolgreich, wenn alle Server der angeforderten Größe in Ihrer Region gerade verwendet werden. Sie können den Grund für den Fehler [abfragen](../how-tos/session-rest-api.md#get-sessions-properties).
 
 > [!IMPORTANT]
-> Wenn Sie eine VM-Größe vom Typ *Standard* anfordern und die Anforderung aufgrund einer hohen Nachfrage nicht erfolgreich ist, bedeutet dies nicht, dass auch beim Anfordern eines Servers vom Typ *Premium* ein Fehler auftritt. Falls dies für Sie eine Option ist, können Sie also auch versuchen, als Fallbacklösung auf eine *Premium*-VM zurückzugreifen.
+> Wenn Sie eine Servergröße vom Typ *Standard* anfordern und die Anforderung aufgrund einer hohen Nachfrage nicht erfolgreich ist, bedeutet dies nicht, dass auch beim Anfordern eines Servers vom Typ *Premium* ein Fehler auftritt. Falls dies für Sie eine Option ist, können Sie also auch versuchen, als Fallbacklösung auf eine *Premium*-Servergröße zurückzugreifen.
 
 Wenn der Dienst einen geeigneten Server findet, muss er den richtigen virtuellen Computer (VM) auf den Server kopieren, um ihn zu einem Azure Remote Rendering-Host zu machen. Dieser Vorgang dauert einige Minuten. Anschließend wird der virtuelle Computer gestartet, und der **Sitzungszustand** ändert sich in **Bereit**.
 
@@ -72,7 +72,7 @@ Eine Sitzung kann auch aufgrund eines Fehlers beendet werden.
 In allen Fällen werden Ihnen keine weiteren Gebühren berechnet, nachdem eine Sitzung beendet wurde.
 
 > [!WARNING]
-> Ob Sie eine Verbindung mit einer Sitzung herstellen und wie lange diese aktiv ist, hat keinerlei Auswirkung auf die Abrechnung. Die Kosten für den Dienst richten sich nach der *Sitzungsdauer* (Zeitraum, in dem ein Server exklusiv für Sie reserviert ist) und den angeforderten Hardwarefunktionen (VM-Größe). Wenn Sie eine Sitzung starten, eine Verbindung mit einer Dauer von fünf Minuten herstellen und die Sitzung dann nicht abbrechen, wird Ihnen die gesamte Leasedauer der Sitzung in Rechnung gestellt. Der Vorgang läuft weiter, bis die Lease abgelaufen ist. Die *maximale Leasedauer* dient quasi nur als Sicherheitsmechanismus. Es spielt keine Rolle, ob Sie eine Sitzung mit einer Leasedauer von acht Stunden anfordern und diese dann nur fünf Minuten lang nutzen, sofern Sie die Sitzung anschließend manuell beenden.
+> Ob Sie eine Verbindung mit einer Sitzung herstellen und wie lange diese aktiv ist, hat keinerlei Auswirkung auf die Abrechnung. Die Kosten für den Dienst richten sich nach der *Sitzungsdauer* (Zeitraum, in dem ein Server exklusiv für Sie reserviert ist) und den angeforderten Hardwarefunktionen (der [zugeordneten Größe](../reference/vm-sizes.md)). Wenn Sie eine Sitzung starten, eine Verbindung mit einer Dauer von fünf Minuten herstellen und die Sitzung dann nicht abbrechen, wird Ihnen die gesamte Leasedauer der Sitzung in Rechnung gestellt. Der Vorgang läuft weiter, bis die Lease abgelaufen ist. Die *maximale Leasedauer* dient quasi nur als Sicherheitsmechanismus. Es spielt keine Rolle, ob Sie eine Sitzung mit einer Leasedauer von acht Stunden anfordern und diese dann nur fünf Minuten lang nutzen, sofern Sie die Sitzung anschließend manuell beenden.
 
 #### <a name="extend-a-sessions-lease-time"></a>Verlängern der Leasedauer einer Sitzung
 

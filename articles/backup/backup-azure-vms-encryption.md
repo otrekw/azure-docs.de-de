@@ -2,24 +2,29 @@
 title: Sichern und Wiederherstellen von verschlüsselten virtuellen Azure-Computern
 description: Beschreibt, wie verschlüsselte virtuelle Azure-Computer (VMs) mit dem Azure Backup-Dienst gesichert und wiederhergestellt werden.
 ms.topic: conceptual
-ms.date: 07/29/2020
-ms.openlocfilehash: 25c5e66bde817e824a307df2a2b1b5f76c773c01
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.date: 08/18/2020
+ms.openlocfilehash: 74658f695387a776fe12cef97887075ae0bc161d
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87405762"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88611295"
 ---
-# <a name="back-up-and-restore-encrypted-azure-vm"></a>Sichern und Wiederherstellen eines verschlüsselten virtuellen Azure-Computers
+# <a name="back-up-and-restore-encrypted-azure-virtual-machines"></a>Sichern und Wiederherstellen verschlüsselter virtueller Azure-Computer
 
-In diesem Artikel wird beschrieben, wie Sie virtuelle Azure-Computer (VMs) unter Windows oder Linux mit verschlüsselten Datenträgern mithilfe des Diensts [Azure Backup](backup-overview.md) sichern und wiederherstellen.
+In diesem Artikel wird beschrieben, wie Sie virtuelle Azure-Computer (VMs) unter Windows oder Linux mit verschlüsselten Datenträgern mithilfe des Diensts [Azure Backup](backup-overview.md) sichern und wiederherstellen. Weitere Informationen finden Sie unter [Verschlüsseln von Azure-VM-Sicherungen](backup-azure-vms-introduction.md#encryption-of-azure-vm-backups).
 
-Wenn Sie zunächst mehr dazu erfahren möchten, wie Azure Backup mit Azure VMs interagiert, lesen Sie diese Ressourcen:
+## <a name="encryption-using-platform-managed-keys"></a>Verschlüsselung mithilfe plattformseitig verwalteter Schlüssel
 
-- [Überprüfen Sie](backup-architecture.md#architecture-built-in-azure-vm-backup) die Architektur für die Azure-VM-Sicherung.
-- [Erfahren Sie mehr](backup-azure-vms-introduction.md) über die Azure-VM-Sicherung und die Azure Backup-Erweiterung.
+Standardmäßig werden alle Datenträger in Ihren VMs automatisch im Ruhezustand mit plattformseitig verwalteten Schlüsseln (PMK) verschlüsselt, die [Speicherdienstverschlüsselung (SSE)](https://docs.microsoft.com/azure/storage/common/storage-service-encryption) verwenden. Sie können diese VMs mit Azure Backup sichern, ohne dass spezifische Aktionen zur Unterstützung der Verschlüsselung auf Ihrer Seite erforderlich sind. Weitere Informationen zur Verschlüsselung mit plattformseitig verwalteten Schlüsseln [finden Sie in diesem Artikel](https://docs.microsoft.com/azure/virtual-machines/windows/disk-encryption#platform-managed-keys).
 
-## <a name="encryption-support"></a>Verschlüsselungsunterstützung
+![Verschlüsselte Datenträger](./media/backup-encryption/encrypted-disks.png)
+
+## <a name="encryption-using-customer-managed-keys"></a>Verschlüsselung mithilfe kundenseitig verwalteter Schlüssel
+
+Wenn Sie Datenträger mit kundenseitig verwalteten Schlüsseln (CMK) verschlüsseln, wird der für die Verschlüsselung der Datenträger verwendete Schlüssel im Azure Key Vault gespeichert und von Ihnen verwaltet. Speicherdienstverschlüsselung (SSE) mit CMK unterscheidet sich von der Azure Disk Encryption (ADE)-Verschlüsselung. ADE verwendet die Verschlüsselungstools des Betriebssystems. SSE verschlüsselt Daten im Speicherdienst, sodass Sie beliebige Betriebssysteme oder Images für Ihre VMs verwenden können. Weitere Informationen zur Verschlüsselung verwalteter Datenträger mit kundenseitig verwalteten Schlüsseln [finden Sie in diesem Artikel](https://docs.microsoft.com/azure/virtual-machines/windows/disk-encryption#customer-managed-keys).
+
+## <a name="encryption-support-using-ade"></a>Verschlüsselungsunterstützung mit ADE
 
 Azure Backup unterstützt die Sicherung von Azure-VMs, deren Betriebssystem/Datenträger mit Azure Disk Encryption (ADE) verschlüsselt wurde(n). ADE verwendet BitLocker für die Verschlüsselung von Windows-VMs und die Funktion „dm-crypt“ für Linux-VMs. ADE ist in Azure Key Vault integriert, um die Verwaltung von Datenträger-Verschlüsselungsschlüsseln und Geheimnissen zu erleichtern. Key Vault-Schlüssel für die Schlüsselverschlüsselung (Key Encryption Keys, KEKs) können verwendet werden, um eine zusätzliche Sicherungsebene hinzuzufügen. Sie dient zum Verschlüsseln von Verschlüsselungsgeheimnissen, bevor sie in Key Vault geschrieben werden.
 
@@ -64,19 +69,19 @@ Darüber hinaus gibt es einige Schritte, die Sie in bestimmten Fällen mögliche
 1. Wählen Sie unter **Sicherungsziel** > **Wo wird Ihre Workload ausgeführt?** den Eintrag **Azure** aus.
 1. Wählen Sie für **Was möchten Sie sichern?** die Option **Virtueller Computer** aus. Wählen Sie dann **Sichern** aus.
 
-      ![Blatt „Szenario“](./media/backup-azure-vms-encryption/select-backup-goal-one.png)
+      ![Szenariobereich](./media/backup-azure-vms-encryption/select-backup-goal-one.png)
 
 1. Wählen Sie unter **Sicherungsrichtlinie** > **Sicherungsrichtlinie auswählen** die Richtlinie aus, die Sie dem Tresor zuordnen möchten. Klicken Sie anschließend auf **OK**.
     - Eine Sicherungsrichtlinie gibt an, wann Sicherungen erstellt und wie lange sie gespeichert werden.
     - Die Details zur Standardrichtlinie werden unter dem Dropdownmenü aufgeführt.
 
-    ![Blatt „Szenario“ öffnen](./media/backup-azure-vms-encryption/select-backup-goal-two.png)
+    ![Auswählen der Sicherungsrichtlinie](./media/backup-azure-vms-encryption/select-backup-goal-two.png)
 
 1. Wenn Sie nicht die Standardrichtlinie verwenden möchten, wählen Sie **Neu erstellen** und [Benutzerdefinierte Richtlinie erstellen](backup-azure-arm-vms-prepare.md#create-a-custom-policy) aus.
 
 1. Wählen Sie in unter **Virtuelle Computer** die Option **Hinzufügen** aus.
 
-    ![Blatt „Szenario“ öffnen](./media/backup-azure-vms-encryption/add-virtual-machines.png)
+    ![Virtuelle Computer hinzufügen](./media/backup-azure-vms-encryption/add-virtual-machines.png)
 
 1. Wählen Sie die verschlüsselten VMs, die Sie mit der ausgewählten Richtlinie sichern möchten, und dann **OK** aus.
 
@@ -119,11 +124,6 @@ So legen Sie Berechtigungen fest:
 1. Wählen Sie **Zugriffsrichtlinien** > **Zugriffsrichtlinie hinzufügen** aus.
 
     ![Zugriffsrichtlinie hinzufügen](./media/backup-azure-vms-encryption/add-access-policy.png)
-
-1. Wählen Sie **Prinzipal auswählen** aus, und geben Sie **Sicherungsverwaltung** ein.
-1. Wählen Sie **Sicherungsverwaltungsdienst** > **Auswählen** aus.
-
-    ![Auswählen des Sicherungsdiensts](./media/backup-azure-vms-encryption/select-backup-service.png)
 
 1. Wählen Sie unter **Zugriffsrichtlinie hinzufügen** > **Anhand einer Vorlage konfigurieren (optional)** die Option **Azure Backup** aus.
     - Unter **Schlüsselberechtigungen** und **Berechtigungen für Geheimnis** sind bereits die erforderlichen Berechtigungen angegeben.

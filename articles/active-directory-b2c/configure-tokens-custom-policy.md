@@ -11,18 +11,18 @@ ms.topic: how-to
 ms.date: 05/07/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 3a35662a3f21aec1306b7b6994e7a08f9cbd467e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9f3cd5c3280308f6da15a52361857fa02567d595
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85389529"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88505460"
 ---
 # <a name="manage-sso-and-token-customization-using-custom-policies-in-azure-active-directory-b2c"></a>Verwalten von SSO und der Tokenanpassung mit benutzerdefinierten Richtlinien in Azure Active Directory B2C
 
 Dieser Artikel enthält Informationen zum Verwalten der Token-, Sitzungs- und SSO-Konfiguration (Single Sign-On, einmaliges Anmelden) mithilfe von [benutzerdefinierten Richtlinien](custom-policy-overview.md) in Azure Active Directory B2C (Azure AD B2C).
 
-## <a name="jtw-token-lifetimes-and-claims-configuration"></a>JTW-Tokengültigkeitsdauer und Anspruchskonfiguration
+## <a name="jwt-token-lifetimes-and-claims-configuration"></a>JWT-Tokengültigkeitsdauern und Anspruchskonfiguration
 
 Zum Ändern der Einstellungen für Ihre Tokengültigkeitsdauern fügen Sie in der Datei der vertrauenden Seite für die gewünschte Richtlinie ein [ClaimsProviders](claimsproviders.md)-Element hinzu.  Das **ClaimsProviders**-Element ist dem [TrustFrameworkPolicy](trustframeworkpolicy.md)-Element untergeordnet.
 

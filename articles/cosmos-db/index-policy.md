@@ -4,14 +4,14 @@ description: In diesem Artikel werden das Konfigurieren und Ändern der Standard
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 08/11/2020
+ms.date: 08/19/2020
 ms.author: tisande
-ms.openlocfilehash: e1254b31bffa72918b46c550e8354bd1c2195dfb
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: f723d7ac218869313f02212d27d9f96b74bb7f0f
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88077593"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607515"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Indizierungsrichtlinien in Azure Cosmos DB
 
@@ -30,7 +30,7 @@ Azure Cosmos DB unterstützt zwei Indizierungsmodi:
 - **Keine:** Die Indizierung ist für den Container deaktiviert. Dies wird häufig verwendet, wenn ein Container als reiner Schlüssel-Wert-Speicher verwendet wird, für den keine sekundären Indizes erforderlich sind. Sie kann auch verwendet werden, um die Leistung von Massenvorgängen zu verbessern. Nach Abschluss der Massenvorgänge kann der Indexmodus auf „Konsistent“ festgelegt und dann mit [IndexTransformationProgress](how-to-manage-indexing-policy.md#dotnet-sdk) überwacht werden, bis er abgeschlossen ist.
 
 > [!NOTE]
-> Azure Cosmos DB unterstützt auch einen verzögerten Indizierungsmodus. Bei der verzögerten Indizierung werden Updates des Indexes mit einer wesentlich niedrigeren Prioritätsstufe ausgeführt, wenn die Engine keine andere Arbeit ausführt. Dies kann zu **inkonsistenten oder unvollständigen** Abfrageergebnissen führen. Wenn Sie beabsichtigen, einen Cosmos-Container abzufragen, sollten Sie nicht die verzögerte Indizierung verwenden. Im Juni 2020 haben wir eine Änderung eingeführt, die es nicht mehr ermöglicht, neue Container auf den verzögerten Indizierungsmodus festzulegen. Wenn Ihr Azure Cosmos DB-Konto bereits mindestens einen Container mit verzögerter Indizierung enthält, wird dieses Konto automatisch von der Änderung ausgenommen. Sie können auch eine Ausnahme anfordern, indem Sie sich an den [Azure-Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) wenden.
+> Azure Cosmos DB unterstützt auch einen verzögerten Indizierungsmodus. Bei der verzögerten Indizierung werden Updates des Indexes mit einer wesentlich niedrigeren Prioritätsstufe ausgeführt, wenn die Engine keine andere Arbeit ausführt. Dies kann zu **inkonsistenten oder unvollständigen** Abfrageergebnissen führen. Wenn Sie beabsichtigen, einen Cosmos-Container abzufragen, sollten Sie nicht die verzögerte Indizierung verwenden. Im Juni 2020 haben wir eine Änderung eingeführt, die es nicht mehr ermöglicht, neue Container auf den verzögerten Indizierungsmodus festzulegen. Wenn Ihr Azure Cosmos DB-Konto bereits mindestens einen Container mit verzögerter Indizierung enthält, wird dieses Konto automatisch von der Änderung ausgenommen. Sie können auch eine Ausnahme beantragen, indem Sie sich an den [Azure-Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) wenden (außer wenn Sie ein Azure Cosmos-Konto im [serverlosen](serverless.md) Modus verwenden, der keine verzögerte Indizierung unterstützt).
 
 Diese Indizierungsrichtlinie ist standardmäßig auf `automatic` festgelegt. Hierzu wird die `automatic`-Eigenschaft der Indizierungsrichtlinie auf `true` festgelegt. Ist diese Eigenschaft auf `true` festgelegt, kann Azure Cosmos DB Dokumente automatisch indizieren, während sie geschrieben werden.
 
@@ -260,6 +260,9 @@ Bei der Erstellung zusammengesetzter Indizes für die Optimierung einer Abfrage 
 ## <a name="modifying-the-indexing-policy"></a>Ändern der Indizierungsrichtlinie
 
 Die Indizierungsrichtlinie eines Containers kann jederzeit [im Azure-Portal oder mit einem der unterstützten SDKs](how-to-manage-indexing-policy.md) aktualisiert werden. Die Aktualisierung einer Indizierungsrichtlinie löst eine Transformation vom alten Index auf den neuen aus. Dies erfolgt online und direkt (sodass während des Vorgangs kein zusätzlicher Speicherplatz verbraucht wird). Der Index der alten Richtlinie wird anhand der neuen Richtlinie effizient transformiert, ohne die Schreibverfügbarkeit, Leseverfügbarkeit oder den Durchsatz, der für den Container bereitgestellt wird, zu beeinträchtigen. Die Indextransformation ist ein asynchroner Vorgang. Der erforderliche Zeitaufwand hängt vom bereitgestellten Durchsatz, der Anzahl der Elemente und ihrer Größe ab.
+
+> [!IMPORTANT]
+> Indextransformation ist ein Vorgang, der [Anforderungseinheiten](request-units.md) verbraucht. Von einer Indextransformation verbrauchte Anforderungseinheiten werden derzeit nicht in Rechnung gestellt, wenn Sie [serverlose](serverless.md) Container verwenden. Diese Anforderungseinheiten werden in Rechnung gestellt, sobald serverlos allgemein verfügbar wird.
 
 > [!NOTE]
 > Es ist möglich, den Fortschritt der Indextransformation [mit einem der SDKs](how-to-manage-indexing-policy.md) zu verfolgen.

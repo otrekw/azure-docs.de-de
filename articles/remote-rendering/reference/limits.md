@@ -5,12 +5,12 @@ author: erscorms
 ms.author: erscor
 ms.date: 02/11/2020
 ms.topic: reference
-ms.openlocfilehash: 17f98f452764abdc8458cdc38661d464ecb0a60d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: af935aeaaeee11ab50b327b7f7b5b77246cb974b
+ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84808541"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88566045"
 ---
 # <a name="limitations"></a>Einschränkungen
 
@@ -35,18 +35,17 @@ Eine Reihe von Features besitzen Einschränkungen hinsichtlich Größe, Anzahl o
 
 Die zulässige Anzahl von Polygonen für alle geladenen Modelle ist von der Größe der VM abhängig, die an die [Sitzungsverwaltungs-REST-API](../how-tos/session-rest-api.md#create-a-session) übergeben wurde:
 
-| Größe des virtuellen Computers | Maximale Anzahl von Polygonen |
+| Servergröße | Maximale Anzahl von Polygonen |
 |:--------|:------------------|
 |Standard| 20 Mio. |
 |premium| Keine Begrenzung |
 
-Ausführlichere Informationen zu dieser Einschränkung finden Sie im Kapitel [VM-Größe](../reference/vm-sizes.md).
+Ausführlichere Informationen zu dieser Einschränkung finden Sie im Kapitel [Servergröße](../reference/vm-sizes.md).
 
 ## <a name="platform-limitations"></a>Plattformeinschränkungen
 
 **Windows 10 Desktop**
 
-* UWP/x86 ist die einzige unterstützte UWP-Plattform. UWP/x64 wird nicht unterstützt.
 * Win32/x64 ist die einzige unterstützte Win32-Plattform. Win32/x86 wird nicht unterstützt.
 
 **Hololens 2**

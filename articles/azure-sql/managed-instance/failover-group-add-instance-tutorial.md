@@ -12,12 +12,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sashan, carlrab
 ms.date: 08/27/2019
-ms.openlocfilehash: 47f33d8b1a7792487491cbe7f2ddb5c7f5b087af
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: c898eeaf99b8a24b992f1daa82b9149327b7a457
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88002992"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245780"
 ---
 # <a name="tutorial-add-sql-managed-instance-to-a-failover-group"></a>Tutorial: Hinzufügen einer SQL Managed Instance zu einer Failovergruppe
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -52,7 +52,7 @@ Für dieses Tutorial wird Folgendes vorausgesetzt:
 ---
 
 
-## <a name="1---create-a-resource-group-and-primary-managed-instance"></a>1\. Erstellen einer Ressourcengruppe und einer primären verwalteten Instanz
+## <a name="create-a-resource-group-and-primary-managed-instance"></a>Erstellen einer Ressourcengruppe und einer primären verwalteten Instanz
 
 In diesem Schritt erstellen Sie die Ressourcengruppe und die primäre verwaltete Instanz für Ihre Failovergruppe mithilfe des Azure-Portals oder mit PowerShell. 
 
@@ -404,7 +404,7 @@ In diesem Teil des Tutorials werden die folgenden PowerShell-Cmdlets verwendet:
 
 ---
 
-## <a name="2---create-secondary-virtual-network"></a>2\. Erstellen eines sekundären virtuellen Netzwerks
+## <a name="create-secondary-virtual-network"></a>Erstellen eines sekundären virtuellen Netzwerks
 
 Wenn Sie das Azure-Portal zum Erstellen der verwalteten Instanz verwenden, müssen Sie das virtuelle Netzwerk separat erstellen, da die Anforderung besteht, dass das Subnetz der primären und sekundären verwalteten Instanz keine überlappenden Bereiche aufweisen darf. Wenn Sie PowerShell zum Konfigurieren der verwalteten Instanz verwenden, fahren Sie mit Schritt 3 fort. 
 
@@ -444,7 +444,7 @@ Dieser Schritt ist nur erforderlich, wenn Sie das Azure-Portal zum Bereitstellen
 
 ---
 
-## <a name="3---create-a-secondary-managed-instance"></a>3\. Erstellen einer sekundären verwalteten Instanz
+## <a name="create-a-secondary-managed-instance"></a>Erstellen einer sekundären verwalteten Instanz
 In diesem Schritt erstellen Sie eine sekundäre verwaltete Instanz im Azure-Portal, durch die auch die Netzwerkverbindung zwischen den beiden verwalteten Instanzen konfiguriert wird. 
 
 Die zweite verwaltete Instanz muss die folgenden Bedingungen erfüllen:
@@ -734,9 +734,9 @@ In diesem Teil des Tutorials werden die folgenden PowerShell-Cmdlets verwendet:
 
 ---
 
-## <a name="4---create-a-primary-gateway"></a>4\. Erstellen eines primären Gateways 
+## <a name="create-a-primary-gateway"></a>Erstellen eines primären Gateways 
 
-Damit zwei verwaltete Instanzen an einer Failovergruppe teilnehmen können, muss zwischen den virtuellen Netzwerken der beiden verwalteten Instanzen ExpressRoute oder ein Gateway konfiguriert sein, um die Netzwerkkommunikation zuzulassen. Wenn Sie sich dafür entscheiden, [ExpressRoute](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md) zu konfigurieren, anstatt zwei VPN-Gateways zu verbinden, fahren Sie mit [Schritt 7](#7---create-a-failover-group) fort.  
+Damit zwei verwaltete Instanzen an einer Failovergruppe teilnehmen können, muss zwischen den virtuellen Netzwerken der beiden verwalteten Instanzen ExpressRoute oder ein Gateway konfiguriert sein, um die Netzwerkkommunikation zuzulassen. Wenn Sie sich dafür entscheiden, [ExpressRoute](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md) zu konfigurieren, anstatt zwei VPN-Gateways zu verbinden, fahren Sie mit [Schritt 7](#create-a-failover-group) fort.  
 
 In diesem Artikel wird beschrieben, wie Sie die beiden VPN-Gateways erstellen und verbinden. Sie können aber mit dem Erstellen der Failovergruppe fortfahren, wenn Sie stattdessen ExpressRoute konfiguriert haben. 
 
@@ -767,7 +767,6 @@ Erstellen Sie das Gateway für das virtuelle Netzwerk der primären verwalteten 
     | **Gatewaytyp** | Wählen Sie **VPN** aus. |
     | **VPN-Typ** | Wählen Sie **Routenbasiert** aus. |
     | **SKU**| Lassen Sie den Standardwert `VpnGw1` unverändert. |
-    | **Location**| Der Standort, an dem sich Ihre primäre verwaltete Instanz und das primäre virtuelle Netzwerk befinden.   |
     | **Virtuelles Netzwerk**| Wählen Sie das virtuelle Netzwerk aus, das in Abschnitt 2 erstellt wurde, z.B. `vnet-sql-mi-primary`. |
     | **Öffentliche IP-Adresse**| Wählen Sie **Neu erstellen**. |
     | **Name der öffentlichen IP-Adresse**| Geben Sie einen Namen für die IP-Adresse ein, z.B. `primary-gateway-IP`. |
@@ -831,7 +830,7 @@ In diesem Teil des Tutorials werden die folgenden PowerShell-Cmdlets verwendet:
 ---
 
 
-## <a name="5---create-secondary-gateway"></a>5\. Erstellen eines sekundären Gateways 
+## <a name="create-secondary-gateway"></a>Erstellen eines sekundären Gateways 
 In diesem Schritt erstellen Sie das Gateway für das virtuelle Netzwerk der sekundären verwalteten Instanz mithilfe des Azure-Portals. 
 
 
@@ -849,8 +848,7 @@ Wiederholen Sie im Azure-Portal die Schritte im vorherigen Abschnitt, um das Sub
    | **Gatewaytyp** | Wählen Sie **VPN** aus. |
    | **VPN-Typ** | Wählen Sie **Routenbasiert** aus. |
    | **SKU**| Lassen Sie den Standardwert `VpnGw1` unverändert. |
-   | **Location**| Der Standort, an dem sich Ihre sekundäre verwaltete Instanz und das sekundäre virtuelle Netzwerk befinden.   |
-   | **Virtuelles Netzwerk**| Wählen Sie das virtuelle Netzwerk aus, das in Abschnitt 2 erstellt wurde, z.B. `vnet-sql-mi-secondary`. |
+   | **Virtuelles Netzwerk**| Wählen Sie das virtuelle Netzwerk für die sekundäre verwaltete Instanz aus, z. B. `vnet-sql-mi-secondary`. |
    | **Öffentliche IP-Adresse**| Wählen Sie **Neu erstellen**. |
    | **Name der öffentlichen IP-Adresse**| Geben Sie einen Namen für die IP-Adresse ein, z.B. `secondary-gateway-IP`. |
    | &nbsp; | &nbsp; |
@@ -883,7 +881,7 @@ Erstellen Sie das Gateway für das virtuelle Netzwerk der sekundären verwaltete
                      -VirtualNetwork $secondaryVirtualNetwork
    $drLocation = $secondaryVirtualNetwork.Location
    
-   Write-host "Creating primary gateway..."
+   Write-host "Creating secondary gateway..."
    Write-host "This will take some time."
    $secondaryGWPublicIP = New-AzPublicIpAddress -Name $secondaryGWPublicIPAddress -ResourceGroupName $resourceGroupName `
             -Location $drLocation -AllocationMethod Dynamic
@@ -911,7 +909,7 @@ In diesem Teil des Tutorials werden die folgenden PowerShell-Cmdlets verwendet:
 ---
 
 
-## <a name="6---connect-the-gateways"></a>6\. Verbinden der Gateways
+## <a name="connect-the-gateways"></a>Verbinden der Gateways
 In diesem Schritt erstellen Sie eine bidirektionale Verbindung zwischen den beiden Gateways der beiden virtuellen Netzwerke. 
 
 
@@ -923,21 +921,24 @@ Verbinden Sie die beiden Gateways mithilfe des Azure-Portals.
 1. Wählen Sie im [Azure-Portal](https://portal.azure.com) die Option **Ressource erstellen** aus.
 1. Geben Sie `connection` in das Suchfeld ein, und drücken Sie die EINGABETASTE, um die Suche zu starten. Sie gelangen zur Ressource **Verbindung**, die von Microsoft veröffentlicht wurde.
 1. Wählen Sie **Erstellen** aus, um die Verbindung zu erstellen. 
-1. Wählen Sie auf der Registerkarte **Grundlagen** die folgenden Werte und dann **OK** aus. 
+1. Wählen Sie auf der Seite **Grundlagen** die folgenden Werte und dann **OK** aus. 
     1. Wählen Sie für **Verbindungstyp** den Eintrag `VNet-to-VNet` aus. 
     1. Wählen Sie in der Dropdownliste Ihr Abonnement aus. 
     1. Wählen Sie die Ressourcengruppe für SQL Managed Instance in der Dropdownliste aus. 
     1. Wählen Sie den Speicherort der primären verwalteten Instanz aus der Dropdownliste aus. 
 1. Wählen Sie auf der Seite **Einstellungen** die folgenden Werte aus, oder geben Sie die Werte ein, und klicken Sie dann auf **OK**:
-    1. Wählen Sie das primäre Netzwerkgateway für **Erstes Gateway für virtuelle Netzwerke** aus, z.B. `Primary-Gateway`.  
-    1. Wählen Sie das sekundäre Netzwerkgateway für **Zweites Gateway für virtuelle Netzwerke** aus, z.B. `Secondary-Gateway`. 
+    1. Wählen Sie das primäre Netzwerkgateway für **Erstes Gateway für virtuelle Netzwerke** aus, z.B. `primaryGateway`.  
+    1. Wählen Sie das sekundäre Netzwerkgateway für **Zweites Gateway für virtuelle Netzwerke** aus, z.B. `secondaryGateway`. 
     1. Aktivieren Sie das Kontrollkästchen neben **Bidirektionale Konnektivität einrichten**. 
     1. Übernehmen Sie entweder den Standardnamen für die primäre Verbindung, oder ändern Sie ihn in einen Namen Ihrer Wahl. 
     1. Geben Sie einen **Gemeinsam verwendeter Schlüssel (PSK)** für die Verbindung an, z.B. `mi1m2psk`. 
+    1. Klicken Sie auf **OK**, um die Einstellungen zu speichern. 
 
-   ![Erstellen einer Gatewayverbindung](./media/failover-group-add-instance-tutorial/create-gateway-connection.png)
+    ![Erstellen einer Gatewayverbindung](./media/failover-group-add-instance-tutorial/create-gateway-connection.png)
 
-1. Überprüfen Sie auf der Registerkarte **Zusammenfassung** die Einstellungen für die bidirektionale Verbindung, und wählen Sie dann **OK** aus, um die Verbindung zu erstellen. 
+    
+
+1. Überprüfen Sie auf der Seite **Überprüfen und erstellen** die Einstellungen für die bidirektionale Verbindung, und wählen Sie dann **OK** aus, um die Verbindung zu erstellen. 
 
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
@@ -970,7 +971,7 @@ In diesem Teil des Tutorials wird das folgende PowerShell-Cmdlet verwendet:
 ---
 
 
-## <a name="7---create-a-failover-group"></a>7\. Erstellen einer Failovergruppe
+## <a name="create-a-failover-group"></a>Erstellen einer Failovergruppe
 In diesem Schritt erstellen Sie die Failovergruppe und fügen ihr beide verwalteten Instanzen hinzu. 
 
 
@@ -1013,7 +1014,7 @@ In diesem Teil des Tutorials wird das folgende PowerShell-Cmdlet verwendet:
 ---
 
 
-## <a name="8---test-failover"></a>8\. Testen des Failovers
+## <a name="test-failover"></a>Testfailover
 In diesem Schritt führen Sie ein Failover für Ihre Failovergruppe auf dem sekundären Server und anschließend ein Failback mit dem Azure-Portal aus. 
 
 

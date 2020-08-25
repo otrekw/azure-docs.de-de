@@ -7,18 +7,18 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/20/2020
 ms.reviewer: sngun
-ms.openlocfilehash: d7408f3b3e955d397ba4a54d07323f80dd72c3d3
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 23f99dc5c648948ce07f1b40106667d24906328a
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83697343"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88236793"
 ---
 # <a name="reading-azure-cosmos-db-change-feed"></a>Lesen des Azure Cosmos DB-Änderungsfeeds
 
-Für die Arbeit mit dem Azure Cosmos DB-Änderungsfeed können Sie ein Pushmodell oder ein Pullmodell verwenden. Bei einem Pushmodell fordert ein Client Arbeit von einem Server an und verarbeitet die Änderung dann über die eigene Geschäftslogik. Die Komplexität der Überprüfung auf Änderungen und das Speichern des Zustands der zuletzt verarbeiteten Änderungen wird jedoch auf dem Server behandelt.
+Für die Arbeit mit dem Azure Cosmos DB-Änderungsfeed können Sie ein Pushmodell oder ein Pullmodell verwenden. Bei einem Pushmodell pusht ein Server (der Änderungsfeed) die Aufgaben an einen Client, der über Geschäftslogik zur Verarbeitung dieser Aufgaben verfügt. Die Komplexität der Überprüfung auf Aufgaben und das Speichern des Zustands der zuletzt verarbeiteten Aufgaben wird jedoch auf dem Server behandelt.
 
-Bei einem Pullmodell fordert ein Server Arbeit an – häufig von einer zentralen Arbeitswarteschlange. Der Client verfügt in diesem Fall nicht nur über Geschäftslogik für die Verarbeitung von Änderungen, sondern kümmert sich auch um die Speicherung des Zustands für die zuletzt verarbeitete Änderung, den Lastenausgleich für mehrere Clients, die die Änderungen parallel verarbeiten, und die Fehlerbehandlung.
+Bei einem Pullmodell muss der Client die Aufgaben vom Server abrufen. Der Client verfügt in diesem Fall nicht nur über Geschäftslogik für die Verarbeitung von Aufgaben, sondern kümmert sich auch um die Speicherung des Zustands für die zuletzt verarbeitete Aufgabe, den Lastenausgleich für mehrere Clients, die die Aufgaben parallel verarbeiten, und die Fehlerbehandlung.
 
 Beim Lesen aus dem Azure Cosmos DB-Änderungsfeed empfiehlt es sich in der Regel, ein Pushmodell zu verwenden, da Sie sich über Folgendes keine Gedanken machen müssen:
 
