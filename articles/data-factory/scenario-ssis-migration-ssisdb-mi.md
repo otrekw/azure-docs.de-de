@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 9/12/2019
-ms.openlocfilehash: c91731d70d5db59ecf5daa726fd42ee42c58f51e
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 6de08faee78deeb86117084b420eb5043153f62d
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84116309"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88186045"
 ---
 # <a name="ssis-migration-with-azure-sql-managed-instance-as-the-database-workload-destination"></a>SSIS-Migration mit Azure SQL Managed Instance als Datenbankworkloadziel
 
@@ -32,7 +32,9 @@ Die SSISDB-Migration kann mithilfe von DMS erfolgen, wie im folgenden Artikel be
 
 ## <a name="ssis-jobs-to-sql-managed-instance-agent"></a>SSIS-Aufträge für den SQL Managed Instance-Agent
 
-SQL Managed Instance verfügt wie der lokale SQL Server-Agent über einen nativen, erstklassigen Planer.  Da noch kein Migrationstool für SSIS-Aufträge verfügbar ist, müssen sie vom lokalen SQL Server-Agent mithilfe von Skripts bzw. durch manuelles Kopieren zum SQL Managed Instance-Agent migriert werden.
+SQL Managed Instance verfügt wie der lokale SQL Server-Agent über einen nativen, erstklassigen Planer.  Sie können [SSIS-Pakete über den Azure SQL Managed Instance-Agent ausführen](how-to-invoke-ssis-package-managed-instance-agent.md).
+
+Da noch kein Migrationstool für SSIS-Aufträge verfügbar ist, müssen sie vom lokalen SQL Server-Agent mithilfe von Skripts bzw. durch manuelles Kopieren zum SQL Managed Instance-Agent migriert werden.
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

@@ -1,18 +1,18 @@
 ---
-title: Behandeln von Verbindungsproblemen im Zusammenhang mit dem Azure Arc für Server-Agent
-description: In diesem Artikel erfahren Sie, wie Sie Probleme mit dem Connected Machine-Agent behandeln und beheben, die im Zusammenhang mit Azure Arc für Server (Vorschauversion) bei dem Versuch auftreten, eine Verbindung mit dem Dienst herzustellen.
+title: Behandeln von Verbindungsproblemen mit dem Agent für Azure Arc-fähige Server (Vorschauversion)
+description: In diesem Artikel erfahren Sie, wie Sie Probleme mit dem Connected Machine-Agent behandeln und beheben, die im Zusammenhang mit Azure Arc-fähigen Servern (Vorschauversion) bei dem Versuch auftreten, eine Verbindung mit dem Dienst herzustellen.
 ms.date: 07/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: 5cd2560279085485a8ac7b285e4f601060a924f1
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: aeb370fb6cd4eacf20c1acf29e84c03e5e322d39
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88118007"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213545"
 ---
 # <a name="troubleshoot-the-connected-machine-agent-connection-issues"></a>Behandeln von Verbindungsproblemen für den Connected Machine-Agent
 
-Dieser Artikel enthält Informationen zur Behandlung und Behebung von Problemen, die auftreten können, wenn versucht wird, den Connected Machine-Agent von Azure Arc für Server (Vorschauversion) für Windows oder Linux zu konfigurieren. Hier wird sowohl die interaktive als auch die skalierbare Installationsmethode beim Konfigurieren der Verbindung mit dem Dienst behandelt. Allgemeine Informationen finden Sie in der [Übersicht über Arc für Server](./overview.md).
+Dieser Artikel enthält Informationen zur Behandlung und Behebung von Problemen, die auftreten können, wenn versucht wird, den Connected Machine-Agent für Azure Arc-fähige Server (Vorschauversion) für Windows oder Linux zu konfigurieren. Hier wird sowohl die interaktive als auch die skalierbare Installationsmethode beim Konfigurieren der Verbindung mit dem Dienst behandelt. Allgemeine Informationen finden Sie in der [Übersicht über Arc-fähige Server](./overview.md).
 
 ## <a name="agent-verbose-log"></a>Ausführliches Agent-Protokoll
 
@@ -22,13 +22,13 @@ Für die weiter unten in diesem Artikel beschriebenen Schritte benötigen Sie mi
 
 Hier sehen Sie ein Beispiel für den Befehl zum Aktivieren der ausführlichen Protokollierung mit dem Connected Machine-Agent für Windows bei einer interaktiven Installation:
 
-```
+```console
 & "$env:ProgramFiles\AzureConnectedMachineAgent\azcmagent.exe" connect --resource-group "resourceGroupName" --tenant-id "tenantID" --location "regionName" --subscription-id "subscriptionID" --verbose
 ```
 
 Hier sehen Sie ein Beispiel für den Befehl zum Aktivieren der ausführlichen Protokollierung mit dem Connected Machine-Agent für Windows bei einer skalierbaren Installation unter Verwendung eines Dienstprinzipals:
 
-```
+```console
 & "$env:ProgramFiles\AzureConnectedMachineAgent\azcmagent.exe" connect `
   --service-principal-id "{serviceprincipalAppID}" `
   --service-principal-secret "{serviceprincipalPassword}" `
@@ -46,13 +46,13 @@ Hier sehen Sie ein Beispiel für den Befehl zum Aktivieren der ausführlichen Pr
 >[!NOTE]
 >Sie müssen auf Linux-Computern über *Stamm*zugriffsberechtigungen verfügen, um **azcmagent** ausführen zu können.
 
-```
+```bash
 azcmagent connect --resource-group "resourceGroupName" --tenant-id "tenantID" --location "regionName" --subscription-id "subscriptionID" --verbose
 ```
 
 Hier sehen Sie ein Beispiel für den Befehl zum Aktivieren der ausführlichen Protokollierung mit dem Connected Machine-Agent für Linux bei einer skalierbaren Installation unter Verwendung eines Dienstprinzipals:
 
-```
+```bash
 azcmagent connect \
   --service-principal-id "{serviceprincipalAppID}" \
   --service-principal-secret "{serviceprincipalPassword}" \

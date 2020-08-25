@@ -4,12 +4,12 @@ description: Überwachung der Anwendungsleistung für Azure App Services. Ladeze
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-javascript
-ms.openlocfilehash: d30d5fa8532b9bdec2b231daf9a59732dc1ebce8
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 33ad4503b744b4737c2d63f74e146a79d36080e1
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88079687"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88258729"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Überwachen der Leistung von Azure App Service
 
@@ -114,16 +114,14 @@ Auf App Service basierende Python-Webanwendungen unterstützen derzeit keine aut
 
 Die clientseitige Überwachung für ASP.NET ist optional. Zum Aktivieren der clientseitigen Überwachung gehen Sie folgendermaßen vor:
 
-* Wählen Sie **Einstellungen** > ** **Anwendungseinstellungen** ** aus.
-   * Fügen Sie unter „Anwendungseinstellungen“ einen neuen **Name der App-Einstellung** und einen **Wert** hinzu:
+* **Einstellungen** **>** **Konfiguration**
+   * Erstellen Sie unter „Anwendungseinstellungen“ eine **neue Anwendungseinstellung**:
 
      Name: `APPINSIGHTS_JAVASCRIPT_ENABLED`
 
      Wert: `true`
 
    * **Speichern** Sie die Einstellungen, und **starten Sie die App neu**.
-
-![Screenshot der Benutzeroberfläche für Anwendungseinstellungen](./media/azure-web-apps/appinsights-javascript-enabled.png)
 
 Zum Deaktivieren der clientseitigen Überwachung entfernen Sie entweder das zugeordnete Schlüssel-Wert-Paar aus den Anwendungseinstellungen oder legen Sie den Wert auf „false“ fest.
 
@@ -133,16 +131,14 @@ Die clientseitige Überwachung für .NET Core-Apps ist mit **Empfohlene Sammlung
 
 Wenn Sie aus irgendeinem Grund die clientseitige Überwachung deaktivieren möchten, gehen Sie folgendermaßen vor:
 
-* Wählen Sie **Einstellungen** > **Anwendungseinstellungen** aus.
-   * Fügen Sie unter „Anwendungseinstellungen“ einen neuen **Name der App-Einstellung** und einen **Wert** hinzu:
+* **Einstellungen** **>** **Konfiguration**
+   * Erstellen Sie unter „Anwendungseinstellungen“ eine **neue Anwendungseinstellung**:
 
      Name: `APPINSIGHTS_JAVASCRIPT_ENABLED`
 
      Wert: `false`
 
    * **Speichern** Sie die Einstellungen, und **starten Sie die App neu**.
-
-![Screenshot der Benutzeroberfläche für Anwendungseinstellungen](./media/azure-web-apps/appinsights-javascript-disabled.png)
 
 # <a name="nodejs"></a>[Node.js](#tab/nodejs)
 

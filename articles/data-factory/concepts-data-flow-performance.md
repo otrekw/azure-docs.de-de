@@ -6,13 +6,13 @@ ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
-ms.date: 07/27/2020
-ms.openlocfilehash: 55483b93b770687703b381366d48edbc7d48f26e
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.date: 08/12/2020
+ms.openlocfilehash: cf91dd0b7f16bf0dcd3d84da1b942b2353ec5bd0
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475321"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212032"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Anleitung zur Leistung und Optimierung der Mapping Data Flow-Funktion
 
@@ -273,6 +273,29 @@ Falls Ihre Daten nach einer Transformation nicht gleichmäßig partitioniert sin
 
 > [!TIP]
 > Wenn Sie Ihre Daten neu partitionieren, aber die Daten bei Ihnen von nachgeschalteten Transformationen dann neu angeordnet werden, sollten Sie die Hashpartitionierung für eine Spalte verwenden, die als Joinschlüssel genutzt wird.
+
+## <a name="using-data-flows-in-pipelines"></a>Verwenden von Datenflüssen in Pipelines 
+
+Wenn Sie komplexe Pipelines mit mehreren Datenflüssen erstellen, kann der logische Datenfluss große Auswirkungen auf Zeit und Kosten haben. In diesem Abschnitt werden die Auswirkungen verschiedener Architekturstrategien behandelt.
+
+### <a name="executing-data-flows-in-parallel"></a>Paralleles Ausführen von Datenflüssen
+
+Wenn Sie mehrere Datenflüsse parallel ausführen, richtet ADF separate Spark-Cluster für jede Aktivität ein. Dadurch kann jeder Auftrag isoliert und parallel ausgeführt werden, führt aber dazu, dass mehrere Cluster gleichzeitig ausgeführt werden.
+
+Bei paralleler Ausführung Ihrer Datenflüsse wird empfohlen, die Eigenschaft für die Gültigkeitsdauer der Azure IR nicht zu aktivieren, da diese zu mehreren nicht verwendeten aktiven Pools führt.
+
+> [!TIP]
+> Anstatt denselben Datenfluss mehrmals für jede Aktivität auszuführen, können Sie die Daten in einem Data Lake bereitstellen und Platzhalterpfade verwenden, um die Daten in einem einzelnen Datenfluss zu verarbeiten.
+
+### <a name="execute-data-flows-sequentially"></a>Sequenzielles Ausführen von Datenflüssen
+
+Wenn Sie Ihre Datenflussaktivitäten nacheinander ausführen, empfiehlt es sich, in der Azure IR-Konfiguration eine Gültigkeitsdauer festzulegen. Die Computeressourcen werden von ADF wiederverwendet, was zu einer schnelleren Startzeit des Clusters führt. Jede Aktivität wird weiterhin isoliert und erhält einen neuen Spark-Kontext für jede Ausführung.
+
+Die sequenzielle Ausführung von Aufträgen dauert insgesamt wahrscheinlich am längsten, bietet jedoch eine saubere Trennung logischer Vorgänge.
+
+### <a name="overloading-a-single-data-flow"></a>Überladen eines einzelnen Datenflusses
+
+Wenn Sie die gesamte Logik innerhalb eines einzelnen Datenflusses anordnen, führt ADF den gesamten Auftrag auf einer einzelnen Spark-Instanz aus. Dies mag zwar als eine Möglichkeit zur Kostenreduzierung erscheinen, doch werden unterschiedliche logische Datenflüsse kombiniert und das Überwachen und Debuggen kann schwierig sein. Wenn eine Komponente ausfällt, können auch alle anderen Teile des Auftrags nicht ausgeführt werden. Das Azure Data Factory-Team empfiehlt, Datenflüsse anhand unabhängiger Flüsse der Geschäftslogik zu organisieren. Wenn der Datenfluss zu groß wird, werden Überwachung und Debugging durch Aufteilen in separate Komponenten erleichtert. Es gibt zwar kein festes Limit für die Anzahl von Transformationen in einem Datenfluss, doch wird der Auftrag bei zu vielen Transformationen sehr komplex.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -1,18 +1,18 @@
 ---
 title: Verbinden von Hybridcomputern mit Azure im großen Stil
-description: In diesem Artikel erfahren Sie, wie Sie Computer mithilfe von Azure Arc für Server (Vorschauversion) unter Verwendung eines Dienstprinzipals mit Azure verbinden.
+description: In diesem Artikel erfahren Sie, wie Sie Computer über Azure Arc-fähige Server (Vorschauversion) unter Verwendung eines Dienstprinzipals mit Azure verbinden.
 ms.date: 07/23/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0f599ae6bab8a2b1ce442df677ba5de206d11ab2
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 07266ce7fb9579e1d4fb1b65394e0b7fdf7aa13d
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121815"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88211411"
 ---
 # <a name="connect-hybrid-machines-to-azure-at-scale"></a>Verbinden von Hybridcomputern mit Azure im großen Stil
 
-Sie können Azure Arc für Server (Vorschauversion) mithilfe mehrerer flexibler Optionen, je nach Ihren Anforderungen, für mehrere Windows- oder Linux-Computer in Ihrer Umgebung aktivieren. Mithilfe des von uns bereitgestellten Vorlagenskripts können Sie jeden Schritt der Installation automatisieren, einschließlich des Einrichtens der Verbindung mit Azure Arc. Allerdings müssen Sie dieses Skript interaktiv mit einem Konto ausführen, das über erhöhte Berechtigungen auf dem Zielcomputer und in Azure verfügt. Um die Computer mit Azure Arc für Server zu verbinden, können Sie einen Azure Active Directory-[Dienstprinzipal](../../active-directory/develop/app-objects-and-service-principals.md) verwenden, anstatt Ihre privilegierte Identität zu verwenden, um [den Computer interaktiv zu verbinden](onboard-portal.md). Bei einem Dienstprinzipal handelt es sich um eine spezielle eingeschränkte Verwaltungsidentität, der nur die Mindestberechtigung erteilt wird, die erforderlich ist, um Computer mithilfe des Befehls `azcmagent` mit Azure zu verbinden. Dies ist sicherer als die Verwendung eines Kontos mit höherer Berechtigung, wie z. B. einem Mandantenadministrator, und befolgt unsere bewährten Methoden für die Sicherheit der Zugriffssteuerung. Der Dienstprinzipal wird nur während des Onboardings verwendet und nicht für andere Zwecke.  
+Sie können Azure Arc-fähige Server (Vorschauversion) je nach Anforderungen mithilfe verschiedener flexibler Optionen für mehrere Windows- oder Linux-Computer in Ihrer Umgebung aktivieren. Mithilfe des von uns bereitgestellten Vorlagenskripts können Sie jeden Schritt der Installation automatisieren, einschließlich des Einrichtens der Verbindung mit Azure Arc. Allerdings müssen Sie dieses Skript interaktiv mit einem Konto ausführen, das über erhöhte Berechtigungen auf dem Zielcomputer und in Azure verfügt. Um die Computer mit Azure Arc-fähigen Servern (Vorschauversion) zu verbinden, können Sie einen Azure Active Directory-[Dienstprinzipal](../../active-directory/develop/app-objects-and-service-principals.md) verwenden, anstatt Ihre privilegierte Identität zum [interaktiven Verbinden des Computers](onboard-portal.md) zu nutzen. Bei einem Dienstprinzipal handelt es sich um eine spezielle eingeschränkte Verwaltungsidentität, der nur die Mindestberechtigung erteilt wird, die erforderlich ist, um Computer mithilfe des Befehls `azcmagent` mit Azure zu verbinden. Dies ist sicherer als die Verwendung eines Kontos mit höherer Berechtigung, wie z. B. einem Mandantenadministrator, und befolgt unsere bewährten Methoden für die Sicherheit der Zugriffssteuerung. Der Dienstprinzipal wird nur während des Onboardings verwendet und nicht für andere Zwecke.  
 
 Die Methoden zum Installieren und Konfigurieren des Connected Machine-Agents erfordern, dass die von Ihnen verwendete automatisierte Methode über Administratorberechtigungen auf den Computern verfügt. Unter Linux muss hierfür das root-Konto verwendet werden. Unter Windows müssen Sie Mitglied der Gruppe „Lokale Administratoren“ sein.
 
@@ -20,7 +20,7 @@ Bevor Sie beginnen, sollten Sie die [Voraussetzungen](agent-overview.md#prerequi
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
-Am Ende dieses Prozesses haben Sie dann Ihre Hybridcomputer erfolgreich mit Azure Arc für Server verbunden.
+Am Ende dieses Prozesses haben Sie dann Ihre Hybridcomputer erfolgreich mit Azure Arc-fähigen Servern (Vorschauversion) verbunden.
 
 ## <a name="create-a-service-principal-for-onboarding-at-scale"></a>Erstellen eines Dienstprinzipals für flexibles Onboarding
 
@@ -133,7 +133,7 @@ azcmagent connect \
 >[!NOTE]
 >Sie müssen auf Linux-Computern über *Stamm*zugriffsberechtigungen verfügen, um **azcmagent** ausführen zu können.
 
-Vergewissern Sie sich im Azure-Portal, dass die Serververbindung erfolgreich hergestellt wurde, nachdem Sie den Agent installiert und für die Verbindungsherstellung mit Azure Arc für Server (Vorschauversion) konfiguriert haben. Zeigen Sie Ihre Computer im [Azure-Portal](https://aka.ms/hybridmachineportal) an.
+Vergewissern Sie sich im Azure-Portal, dass die Serververbindung erfolgreich hergestellt wurde, nachdem Sie den Agent installiert und für die Verbindungsherstellung mit Azure Arc-fähigen Servern (Vorschauversion) konfiguriert haben. Zeigen Sie Ihre Computer im [Azure-Portal](https://aka.ms/hybridmachineportal) an.
 
 ![Erfolgreiche Serververbindung](./media/onboard-portal/arc-for-servers-successful-onboard.png)
 

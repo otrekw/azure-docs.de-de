@@ -3,12 +3,12 @@ title: Leitfaden zum Azure Relay-Hybridverbindungsprotokoll | Microsoft-Dokument
 description: In diesem Artikel werden die clientseitigen Interaktionen mit dem Hybridverbindungsrelay für die Verbindung von Clients in Listener- und Absenderrollen beschrieben.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 798be7f0003509aee6ae616ba33fcc41e5c86275
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fec021d961a17102f8d979c61ee46af6b938f073
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85316656"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272008"
 ---
 # <a name="azure-relay-hybrid-connections-protocol"></a>Azure Relay-Hybridverbindungsprotokoll
 
@@ -467,7 +467,7 @@ https://{namespace-address}/{path}?sbc-hc-token=...
 
 Die _namespace-address_ ist der vollqualifizierte Domänenname des Azure Relaynamespace, der die Hybridverbindung hostet, typischerweise in der Form `{myname}.servicebus.windows.net`.
 
-Die Anforderung kann beliebige zusätzliche HTTP-Header enthalten, z.B. auch von der Anwendung definierte Header. Alle bereitgestellten Header – mit Ausnahme der direkt in RFC7230 definierten (siehe [Request-Nachricht](#Request message)) – fließen an den Listener und befinden sich im `requestHeader`-Objekt der **request**-Nachricht.
+Die Anforderung kann beliebige zusätzliche HTTP-Header enthalten, z.B. auch von der Anwendung definierte Header. Alle bereitgestellten Header – mit Ausnahme der direkt in RFC7230 definierten (siehe [Request-Nachricht](#request-message)) – fließen an den Listener und befinden sich im `requestHeader`-Objekt der **request**-Nachricht.
 
 Die Optionen des Abfragezeichenfolgenparameters lauten wie folgt:
 

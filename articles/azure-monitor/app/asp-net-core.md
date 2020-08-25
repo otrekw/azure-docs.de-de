@@ -3,12 +3,12 @@ title: Azure Application Insights für ASP.NET Core-Anwendungen | Microsoft-Doku
 description: Überwachen Sie ASP.NET Core-Webanwendungen auf Verfügbarkeit, Leistung und Auslastung.
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: 1a9bc3e46e108c50b36e0318e0f9a51a94e83573
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: 81d7ab38080aac941bce1f5d1dd17145f8075036
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475514"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88518083"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>Application Insights für ASP.NET Core-Anwendungen
 
@@ -36,6 +36,8 @@ Mit dem [Application Insights SDK für ASP.NET Core](https://nuget.org/packages/
 - Ein gültiger Application Insights-Instrumentierungsschlüssel. Dieser ist erforderlich, um Telemetriedaten an Application Insights zu senden. Wenn Sie eine neue Application Insights-Ressource erstellen müssen, um einen Instrumentierungsschlüssel abzurufen, finden Sie unter [Erstellen einer Application Insights-Ressource](./create-new-resource.md) weitere Informationen.
 
 ## <a name="enable-application-insights-server-side-telemetry-visual-studio"></a>Aktivieren der serverseitigen Telemetrie für Application Insights (Visual Studio)
+
+Verwenden Sie für Visual Studio für Mac den [Leitfaden für manuelles Aktivieren](#enable-application-insights-server-side-telemetry-no-visual-studio). Dieses Verfahren wird nur von der Windows-Version von Visual Studio unterstützt.
 
 1. Öffnen Sie Ihr Projekt in Visual Studio.
 
@@ -115,6 +117,10 @@ Mit dem [Application Insights SDK für ASP.NET Core](https://nuget.org/packages/
 
     > [!NOTE]
     > Ein Instrumentierungsschlüssel, der im Code angegeben ist, erhält Vorrang vor der Umgebungsvariable `APPINSIGHTS_INSTRUMENTATIONKEY`, die wiederum Vorrang vor anderen Optionen hat.
+
+### <a name="user-secrets-and-other-configuration-providers"></a>Benutzergeheimnisse und andere Konfigurationsanbieter
+
+Wenn Sie den Instrumentierungsschlüssel in ASP.NET Core-Benutzergeheimnissen speichern oder von einem anderen Konfigurationsanbieter abrufen möchten, können Sie die Überladung mit einem Parameter `Microsoft.Extensions.Configuration.IConfiguration` verwenden. Beispiel: `services.AddApplicationInsightsTelemetry(Configuration);`.
 
 ## <a name="run-your-application"></a>Ausführen der Anwendung
 

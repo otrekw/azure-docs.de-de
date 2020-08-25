@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 07/15/2020
+ms.date: 08/10/2020
 ms.author: alkohli
-ms.openlocfilehash: a99499110951ccbc0458b5ce848930fed9205dad
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 7cac14708adecbdf3c809e3a9656d25c727d80e3
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372010"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88206134"
 ---
 # <a name="use-the-local-web-ui-to-administer-your-data-box-and-data-box-heavy"></a>Verwalten von Data Box und Data Box Heavy über die lokale Webbenutzeroberfläche
 
@@ -25,7 +25,7 @@ Dieser Artikel enthält folgende Lernprogramme:
 
 - Erstellen eines Unterstützungspakets
 - Herunterfahren oder Neustarten des Geräts
-- Herunterladen von BOM- oder Manifestdateien
+- Herunterladen der Stückliste (Bill of Material, BOM) oder Manifestdateien
 - Anzeigen der verfügbaren Kapazität des Geräts
 - Überspringen der Überprüfung der Prüfsumme
 
@@ -81,33 +81,32 @@ Führen Sie zum Neustarten Ihres Data Box-Geräts die folgenden Schritte aus.
 
 ## <a name="download-bom-or-manifest-files"></a>Herunterladen von BOM- oder Manifestdateien
 
-Die Stückliste (Bill of Material, BOM) oder die Manifestdateien enthalten die Liste der Dateien, die auf das Data Box- oder Data Box Heavy-Gerät kopiert werden. Diese Dateien werden beim Vorbereiten des Geräts für den Versand für einen Importauftrag generiert.
+Die BOM- oder Manifestdateien enthalten die Liste der Dateien, die auf das Data Box- oder Data Box Heavy-Gerät kopiert werden. Diese Dateien werden beim Vorbereiten des Geräts für den Versand für einen Importauftrag generiert.
 
-Stellen Sie zunächst sicher, dass für Ihr Gerät der Schritt **Versandvorbereitung** ausgeführt wurde. Führen Sie zum Herunterladen der BOM- oder Manifestdateien für Ihren Importauftrag die folgenden Schritte aus:
+Führen Sie zunächst zum Herunterladen der BOM- oder Manifestdateien für Ihren Importauftrag die folgenden Schritte aus:
 
-1. Rufen Sie die lokale Webbenutzeroberfläche für Ihr Gerät auf. Dort sehen Sie, dass für das Gerät der Schritt zur Versandvorbereitung abgeschlossen wurde. Wenn die Vorbereitung des Geräts abgeschlossen ist, ändert sich der Gerätestatus in **Bereit für den Versand**.
+1. Rufen Sie die lokale Webbenutzeroberfläche für Ihr Gerät auf. Vergewissern Sie sich, dass für Ihr Gerät der Schritt **Versandvorbereitung** ausgeführt wurde. Wenn die Vorbereitung des Geräts abgeschlossen ist, ändert sich der Gerätestatus in **Bereit für den Versand**.
 
-    ![Gerät bereit für den Versand](media/data-box-portal-admin/ready-to-ship.png)
+    ![Gerät bereit für den Versand](media/data-box-local-web-ui-admin/prepare-to-ship-3.png)
 
 2. Wählen Sie **Dateiliste herunterladen** aus, um die Liste der Dateien herunterzuladen, die auf Ihre Data Box kopiert wurden.
 
-    ![Wählen Sie „Dateiliste herunterladen“ aus.](media/data-box-portal-admin/download-list-of-files.png)
+    <!-- ![Select Download list of files](media/data-box-portal-admin/download-list-of-files.png) -->
 
 3. Sie sehen im Datei-Explorer, dass eine separate Dateiliste generiert wird. Ausschlaggebend hierfür sind das Protokoll, das für die Verbindungsherstellung mit dem Gerät verwendet wird, und der verwendete Azure Storage-Typ.
 
-    ![Dateien für Speichertyp und Verbindungsprotokoll](media/data-box-portal-admin/files-storage-connection-type.png)
+    <!-- ![Files for storage type and connection protocol](media/data-box-portal-admin/files-storage-connection-type.png) -->
+    ![Dateien für Speichertyp und Verbindungsprotokoll](media/data-box-local-web-ui-admin/prepare-to-ship-5.png)
 
    In der folgenden Tabelle sind die Dateinamen dem verwendeten Azure Storage-Typ und dem verwendeten Verbindungsprotokoll zugeordnet.
 
     |Dateiname  |Azure Storage-Typ  |Verwendetes Verbindungsprotokoll |
     |---------|---------|---------|
-    |databoxe2etest_BlockBlob.txt     |Blockblobs         |SMB/NFS         |
-    |databoxe2etest_PageBlob.txt     |Seitenblobs         |SMB/NFS         |
-    |databoxe2etest_AzFile-BOM.txt    |Azure Files         |SMB/NFS         |
-    |databoxe2etest_PageBlock_Rest-BOM.txt     |Seitenblobs         |REST        |
-    |databoxe2etest_BlockBlock_Rest-BOM.txt    |Blockblobs         |REST         |
-    |mydbmdrg1_MDisk-BOM.txt    |Verwalteter Datenträger         |SMB/NFS         |
-    |mydbmdrg2_MDisk-BOM.txt     |Verwalteter Datenträger         |SMB/NFS         |
+    |utSAC1_202006051000_BlockBlob-BOM.txt     |Blockblobs         |SMB/NFS         |
+    |utSAC1_202006051000_PageBlob-BOM.txt     |Seitenblobs         |SMB/NFS         |
+    |utSAC1_202006051000_AzFile-BOM.txt    |Azure Files         |SMB/NFS         |
+    |utsac1_PageBlock_Rest-BOM.txt     |Seitenblobs         |REST        |
+    |utsac1_BlockBlock_Rest-BOM.txt    |Blockblobs         |REST         |
 
 Nach dem Zurücksenden der Data Box an das Azure-Datencenter können Sie anhand dieser Liste die in das Azure Storage-Konto hochgeladenen Dateien überprüfen. Nachfolgend sehen Sie eine Beispielmanifestdatei:
 
@@ -209,7 +208,7 @@ Azure Data Box nutzt standardmäßig Transport Layer Security (TLS) 1.2 für di
 
 Weitere Informationen zu TLS finden Sie unter [Azure Data Box Gateway – Sicherheit](../databox-online/data-box-gateway-security.md).
 
-So aktivieren Sie TLS 1.1 auf Ihrem Azure-Gerät
+Führen Sie zum Aktivieren von TLS 1.1 auf Ihrem Azure-Gerät die folgenden Schritte aus:
 
 1. Wählen Sie in der lokalen Webbenutzeroberfläche für Ihr Gerät in der oberen rechten Ecke **Einstellungen** aus.
 
