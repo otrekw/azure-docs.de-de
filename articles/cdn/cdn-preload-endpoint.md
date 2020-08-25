@@ -1,6 +1,6 @@
 ---
 title: Vorabladen von Assets auf einen Azure CDN-Endpunkt | Microsoft Docs
-description: Erfahren Sie, wie Sie zwischengespeicherten Inhalt auf einen Azure CDN-Endpunkt vorab laden.
+description: Erfahren Sie, wie Sie zwischengespeicherten Inhalt für einen Azure Content Delivery Network-Endpunkt vorab laden. Diese Funktion ist für bestimmte Versionen des Produkts verfügbar.
 services: cdn
 documentationcenter: ''
 author: asudbring
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 02/12/2018
 ms.author: allensu
-ms.openlocfilehash: 587a6c4104693e8ccf610a670064832364a166d7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2f0968af5cb52904f6044e130adba8b0ba9a6cd1
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84887570"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192571"
 ---
 # <a name="pre-load-assets-on-an-azure-cdn-endpoint"></a>Vorabladen von Assets auf einen Azure CDN-Endpunkt
 [!INCLUDE [cdn-verizon-only](../../includes/cdn-verizon-only.md)]
@@ -66,7 +66,7 @@ In diesem Tutorial wird Schritt für Schritt erläutert, wie Sie zwischengespeic
 > 
 > 
 
-## <a name="see-also"></a>Weitere Informationen
+## <a name="see-also"></a>Siehe auch
 * [Löschen eines Azure CDN-Endpunkts](cdn-purge-endpoint.md)
 * [Azure CDN-REST-API-Referenz: Vorabladen von Assets auf einen Azure CDN-Endpunkt](https://docs.microsoft.com/rest/api/cdn/endpoints/loadcontent)
 * [Azure CDN-REST-API-Referenz: Löschen von Inhalt von einem Endpunkt](https://docs.microsoft.com/rest/api/cdn/endpoints/purgecontent)

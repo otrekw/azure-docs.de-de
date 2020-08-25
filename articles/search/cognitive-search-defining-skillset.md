@@ -8,16 +8,20 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: bdbe157198ad62578613d86f3b3a55b72ca0acf8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 779aa96fcf58d45bb53757f7fe974a0fe4c61ffa
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85557461"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88214079"
 ---
 # <a name="how-to-create-a-skillset-in-an-ai-enrichment-pipeline-in-azure-cognitive-search"></a>Erstellen eines Skillsets in einer KI-Anreicherungspipeline in der kognitiven Azure-Suche 
 
-Bei der KI-Anreicherung werden Daten extrahiert und angereichert, sodass sie in der kognitiven Azure-Suche durchsucht werden können. Extrahierungs- und Anreicherungsschritte werden als *kognitive Skills* bezeichnet, die in einem *Skillset* kombiniert sind, auf das während der Indizierung verwiesen wird. Ein Skillset kann [integrierte Qualifikationen](cognitive-search-predefined-skills.md) oder benutzerdefinierte Qualifikationen verwenden. Weitere Informationen finden Sie unter [Beispiel: Erstellen eines benutzerdefinierten Skills in einer KI-Anreicherungspipeline](cognitive-search-create-custom-skill-example.md)).
+![Indexerstufen](media/cognitive-search-defining-skillset/indexer-stages-skillset.png "Indexerstufen")
+
+Ein Skillset definiert die Vorgänge, die Daten extrahieren und anreichern, um sie durchsuchbar zu machen. Ein Skillset wird ausgeführt, nachdem Text- und Bildinhalte aus Quelldokumenten extrahiert wurden, und nachdem alle Felder aus dem Quelldokument Zielfeldern in einem Index oder Wissensspeicher (optional) zugeordnet wurden.
+
+Ein Skillset enthält eine oder mehrere *kognitive Skills*, die einen bestimmten Anreicherungsvorgang darstellen, wie z. B. das Übersetzen von Text, das Extrahieren von Schlüsselausdrücken oder das Durchführen einer optischen Zeichenerkennung in einer Bilddatei. Um ein Skillset zu erstellen, können Sie [integrierte Skills](cognitive-search-predefined-skills.md) von Microsoft verwenden, oder benutzerdefinierte Skills, die Modelle oder Verarbeitungslogik enthalten, die Sie bereitstellen (siehe [Beispiel: Erstellen eines benutzerdefinierten Skills in einer KI-Anreicherungspipeline](cognitive-search-create-custom-skill-example.md)).
 
 In diesem Artikel erfahren Sie, wie Sie eine Anreicherungspipeline für die Skills erstellen, die Sie verwenden möchten. Ein Skillset wird an einen [Indexer](search-indexer-overview.md) der kognitiven Azure-Suche angefügt. Ein Teil des Pipelineentwurfs, der in diesem Artikel behandelt wird, ist die Konstruktion des Skillsets selbst. 
 

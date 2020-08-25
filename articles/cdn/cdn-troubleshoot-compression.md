@@ -1,6 +1,6 @@
 ---
 title: Problembehandlung bei der Azure CDN-Dateikomprimierung | Microsoft Docs
-description: Behandeln Sie Probleme mit der Azure CDN-Dateikomprimierung.
+description: Erfahren Sie, wie Sie Probleme mit der Dateikomprimierung im Azure Content Delivery Network beheben können. In diesem Artikel werden verschiedene mögliche Ursachen behandelt.
 services: cdn
 documentationcenter: ''
 author: sohamnc
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 5c56564ee6f07c5d208ea5d3089a2c96fd8bbc33
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 53db148eac0d56e53bb96e0597ad53d3183d86e9
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84888698"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192529"
 ---
 # <a name="troubleshooting-cdn-file-compression"></a>Problembehandlung bei der CDN-Dateikomprimierung
 Dieser Artikel unterstützt Sie bei der Behandlung von Problemen mit der [CDN-Dateikomprimierung](cdn-improve-performance.md).
@@ -118,5 +118,5 @@ Um sich für die Komprimierung zu eignen, muss eine Datei folgende Größenanfor
 Der **Über** -HTTP-Header informiert den Webserver darüber, dass die Anforderung von einem Proxyserver übergeben wird.  Microsoft IIS-Webserver komprimieren Antworten standardmäßig nicht, wenn die Anforderung einen **Über** -Header enthält.  Führen Sie folgende Schritte aus, um dieses Verhalten außer Kraft zu setzen:
 
 * **IIS 6**: [Legen Sie in den IIS-Metabasiseigenschaften „HcNoCompressionForProxies="FALSE"“ fest](/previous-versions/iis/6.0-sdk/ms525390(v=vs.90))
-* **IIS 7 und höher**: [Legen Sie in der Serverkonfiguration sowohl für **noCompressionForHttp10** als auch für **noCompressionForProxies** die Option „False“ fest](https://www.iis.net/configreference/system.webserver/httpcompression)
+* **IIS 7 oder höher**: [Legen Sie in der Serverkonfiguration sowohl für **noCompressionForHttp10** als auch für **noCompressionForProxies** die Option „False“ fest.](https://www.iis.net/configreference/system.webserver/httpcompression)
 

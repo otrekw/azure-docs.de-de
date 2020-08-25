@@ -136,6 +136,8 @@
           href: load-balancer-common-deployment-errors.md
         - name: Beheben allgemeiner Probleme bei der ausgehenden Verbindung
           href: troubleshoot-outbound-connection.md
+        - name: Beheben von Problemen mit Ressourcenintegrität und eingehender Verfügbarkeit
+          href: troubleshoot-rhc.md
 - name: Verweis
   items:
     - name: Codebeispiele

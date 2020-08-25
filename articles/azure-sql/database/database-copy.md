@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sashan
 ms.reviewer: carlrab
 ms.date: 07/29/2020
-ms.openlocfilehash: 4189ea5fd0b2b52b5bf1e0614e4b43b9411df31d
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 02ff222337e1b1c22df79724c232d4ca2b8b9f67
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87530370"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88225732"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-a-database-in-azure-sql-database"></a>Kopieren einer transaktionskonsistenten Kopie einer Datenbank in Azure SQL-Datenbank
 
@@ -118,7 +118,7 @@ Sie können Ihre Datenbank mit den im Abschnitt [Kopieren einer SQL-Datenbank au
 > Das [Azure-Portal](https://portal.azure.com), PowerShell und die Azure CLI bieten keine Unterstützung für das Kopieren von Datenbanken in ein anderes Abonnement.
 
 > [!TIP]
-> Die Datenbankkopie, die T-SQL verwendet, unterstützt das Kopieren einer Datenbank aus einem Abonnement in einem anderen Azure-Mandanten.
+> Die Datenbankkopie, die T-SQL verwendet, unterstützt das Kopieren einer Datenbank aus einem Abonnement in einem anderen Azure-Mandanten. Dies wird nur unterstützt, wenn für die Anmeldung am Zielserver eine SQL-Authentifizierungsanmeldung verwendet wird.
 
 ## <a name="monitor-the-progress-of-the-copying-operation"></a>Überwachen des Fortschritts des Kopiervorgangs
 

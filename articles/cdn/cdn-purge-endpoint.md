@@ -1,6 +1,6 @@
 ---
 title: Löschen eines Azure CDN-Endpunkts | Microsoft Docs
-description: Erfahren Sie, wie alle zwischengespeicherten Inhalte aus einem Azure CDN-Endpunkt gelöscht werden.
+description: Erfahren Sie, wie Sie alle zwischengespeicherten Inhalte in einem Azure Content Delivery Network-Endpunkt bereinigen. Edgeknoten speichern Ressourcen zwischen, bis ihre Gültigkeitsdauer abläuft.
 services: cdn
 documentationcenter: ''
 author: asudbring
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 05/17/2019
 ms.author: allensu
-ms.openlocfilehash: 1946da6a18956b420684f4c2ffe86f35d0084eaf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cc09c35ba5499c6e911ebd7dd23482ef30f931da
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84887293"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192534"
 ---
 # <a name="purge-an-azure-cdn-endpoint"></a>Löschen eines Azure CDN-Endpunkts
 ## <a name="overview"></a>Übersicht
@@ -52,7 +52,7 @@ Dieses Lernprogramm führt Sie durch das Löschen von Assets aus allen Edgeknote
    > 
    > 
 4. Wählen Sie, welche Assets Sie aus dem Edgeknoten löschen möchten.  Wenn Sie alle Assets löschen möchten, klicken Sie auf das Kontrollkästchen **Alles löschen**.  Geben Sie andernfalls den vollständigen Pfad jedes Assets, das Sie löschen möchten, im Textfeld **Pfad** ein. Folgende Formate werden im Pfad unterstützt.
-    1. **Einzelne URL löschen**: Löschen Sie einzelne Assets, indem Sie die vollständige URL mit oder ohne Dateierweiterung angeben. Beispiel: `/pictures/strasbourg.png`; `/pictures/strasbourg`.
+    1. **Einzelne URL löschen**: Löschen Sie einzelne Ressourcen, indem Sie die vollständige URL mit oder ohne Dateiendung angeben. Beispiele: `/pictures/strasbourg.png`; `/pictures/strasbourg`.
     2. **Mit Platzhalter löschen**: Das Sternchen (\*) kann als Platzhalterzeichen verwendet werden. Löschen Sie alle Ordner, Unterordner und Dateien unter einem Endpunkt, indem Sie `/*` im Pfad angeben, oder löschen Sie alle Unterordner und Dateien unter einem bestimmten Ordner, indem Sie den Ordner gefolgt von `/*` angeben. Beispiel: `/pictures/*`.  Beachten Sie, dass das Löschen mit Platzhalter derzeit nicht vom Azure-CDN von Akamai unterstützt wird. 
     3. **Stammdomäne löschen**: Löschen Sie den Stamm des Endpunkts, indem Sie „/“ im Pfad angeben.
    
@@ -73,7 +73,7 @@ Dieses Lernprogramm führt Sie durch das Löschen von Assets aus allen Edgeknote
 > 
 > 
 
-## <a name="see-also"></a>Weitere Informationen
+## <a name="see-also"></a>Siehe auch
 * [Vorabladen von Assets auf einen Azure CDN-Endpunkt](cdn-preload-endpoint.md)
 * [Azure CDN-REST-API-Referenz – Löschen oder Vorabladen eines Endpunkts](/rest/api/cdn/endpoints)
 

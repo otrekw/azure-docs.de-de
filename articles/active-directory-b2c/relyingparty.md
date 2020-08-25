@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 04/20/2020
+ms.date: 08/17/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: c8c4e65c7ee97b33acbd68bfd8267a334508e25c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 40672ac958e84d816d4b582472ae04502a910c6a
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85203740"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88521262"
 ---
 # <a name="relyingparty"></a>RelyingParty
 
@@ -192,7 +192,15 @@ Das **Protocol**-Element enthält die folgenden Attribute:
 | --------- | -------- | ----------- |
 | Name | Ja | Der Name eines gültigen Protokolls, das von Azure AD B2C unterstützt und als Teil des technischen Profils verwendet wird. Mögliche Werte: `OpenIdConnect` oder `SAML2`. Der Wert `OpenIdConnect` stellt den Protokollstandard „OpenID Connect 1.0“ gemäß der Vorgaben der OpenID Foundation dar. Der Wert `SAML2` stellt den Protokollstandard „SAML 2.0“ gemäß der Vorgaben von OASIS dar. |
 
-## <a name="outputclaims"></a>OutputClaims
+### <a name="metadata"></a>Metadaten
+
+Wenn `SAML` das Protokoll ist, enthält ein Metadatenelement die folgenden Elemente:
+
+| attribute | Erforderlich | BESCHREIBUNG |
+| --------- | -------- | ----------- |
+| XmlSignatureAlgorithm | Nein | Die Methode, die Azure AD B2C zur Signierung der SAML-Antwort verwendet. Mögliche Werte: `Sha256`, `Sha384`, `Sha512` oder `Sha1`. Vergewissern Sie sich, dass Sie den Signaturalgorithmus auf beiden Seiten mit demselben Wert konfigurieren. Verwenden Sie nur den Algorithmus, den Ihr Zertifikat unterstützt. Informationen zum Konfigurieren der SAML-Assertion finden Sie unter [Metadaten für das technische Profil des SAML-Ausstellers](saml-issuer-technical-profile.md#metadata). |
+
+### <a name="outputclaims"></a>OutputClaims
 
 Das **OutputClaims**-Element enthält das folgende Element:
 
@@ -212,13 +220,14 @@ Das **OutputClaim**-Element enthält die folgenden Attribute:
 
 Mit dem **SubjectNameingInfo**-Element steuern Sie den Wert des Tokenantragstellers:
 - **JWT-Token:** Der `sub`-Anspruch. Dies ist ein Prinzipal, für den das Token Informationen zusichert, z.B. der Benutzer einer Anwendung. Dieser Wert ist unveränderlich und kann nicht erneut zugewiesen oder wiederverwendet werden. Er kann für die Durchführung von sicheren Autorisierungsüberprüfungen verwendet werden, z.B. wenn das Token verwendet wird, um auf eine Ressource zuzugreifen. Der Anspruch „Antragsteller“ wird standardmäßig mit der Objekt-ID des Benutzers im Verzeichnis aufgefüllt. Weitere Informationen finden Sie unter [Token, Sitzung und einmaliges Anmelden – Konfiguration](session-behavior.md).
-- **SAML-Token:** Das `<Subject><NameID>`-Element, das das Subject-Element identifiziert.
+- **SAML-Token:** Das `<Subject><NameID>`-Element, das das Subject-Element identifiziert. Das NameID-Format kann geändert werden.
 
 Das **SubjectNamingInfo**-Element enthält das folgende Attribut:
 
 | attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | ClaimType | Ja | Ein Verweis auf das **PartnerClaimType**-Element eines Ausgabeanspruchs. Die Ausgabeansprüche müssen in der Richtlinie der **OutputClaims**-Sammlung der vertrauenden Seite definiert werden. |
+| Format | Nein | Wird bei vertrauenden SAML-Seiten zum Festlegen des **NameID-Formats** verwendet, das in der SAML-Assertion zurückgegeben wird. |
 
 Im folgenden Beispiel wird gezeigt, wie eine vertrauende OpenID Connect-Seite definiert wird. Die Informationen zum Namen des Antragstellers werden als `objectId` konfiguriert:
 
@@ -248,4 +257,25 @@ Das JWT-Token enthält den `sub`-Anspruch mit der Objekt-ID des Benutzers:
   "sub": "6fbbd70d-262b-4b50-804c-257ae1706ef2",
   ...
 }
+```
+
+Im folgenden Beispiel wird gezeigt, wie eine vertrauende SAML-Seite definiert wird. Die Informationen zum Namen des Antragstellers werden als `objectId` konfiguriert, und die „NameID“ `format` wurde angegeben:
+
+```xml
+<RelyingParty>
+  <DefaultUserJourney ReferenceId="SignUpOrSignIn" />
+  <TechnicalProfile Id="PolicyProfile">
+    <DisplayName>PolicyProfile</DisplayName>
+    <Protocol Name="SAML2" />
+    <OutputClaims>
+      <OutputClaim ClaimTypeReferenceId="displayName" />
+      <OutputClaim ClaimTypeReferenceId="givenName" />
+      <OutputClaim ClaimTypeReferenceId="surname" />
+      <OutputClaim ClaimTypeReferenceId="email" />
+      <OutputClaim ClaimTypeReferenceId="objectId" PartnerClaimType="sub"/>
+      <OutputClaim ClaimTypeReferenceId="identityProvider" />
+    </OutputClaims>
+    <SubjectNamingInfo ClaimType="sub" Format="urn:oasis:names:tc:SAML:2.0:nameid-format:transient"/>
+  </TechnicalProfile>
+</RelyingParty>
 ```

@@ -1,6 +1,6 @@
 ---
 title: Herstellen einer Verbindung zwischen Azure Data Lake Storage Gen1 und VNETs | Microsoft-Dokumentation
-description: Herstellen einer Verbindung zwischen Azure Data Lake Storage Gen1 und VNETs
+description: Erfahren Sie, wie Sie den Zugriff auf Azure Data Lake Storage Gen1 von virtuellen Azure-Computern aus aktivieren, die eingeschränkten Zugriff auf Ressourcen haben.
 services: data-lake-store,data-catalog
 documentationcenter: ''
 author: esung22
@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 01/31/2018
 ms.author: elsung
-ms.openlocfilehash: 5793e1659f18818b85748dc0f2979895318ea913
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 0fa836ea31793d9177ad6e838ddea1516bf51733
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85985406"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88191407"
 ---
 # <a name="access-azure-data-lake-storage-gen1-from-vms-within-an-azure-vnet"></a>Zugreifen auf Azure Data Lake Storage Gen1 von virtuellen Computern in einem Azure-VNET
 Bei Azure Data Lake Storage Gen1 handelt es sich um einen PaaS-Dienst, der unter öffentlichen Internet-IP-Adressen ausgeführt wird. Jeder Server, der eine Verbindung mit dem öffentlichen Internet herstellen kann, kann in der Regel auch eine Verbindung mit Azure Data Lake Storage Gen1-Endpunkten herstellen. Standardmäßig können alle virtuellen Computer in Azure-VNETs auf das Internet und damit auf Azure Data Lake Storage Gen1 zugreifen. Allerdings ist es möglich, virtuelle Computer in einem VNet so zu konfigurieren, dass sie nicht auf das Internet zugreifen können. Bei diesen virtuellen Computern ist auch der Zugriff auf Azure Data Lake Storage Gen1 eingeschränkt. Der Zugriff auf das öffentliche Internet kann für virtuelle Computer in Azure-VNETs mit einer der folgenden Methoden blockiert werden:

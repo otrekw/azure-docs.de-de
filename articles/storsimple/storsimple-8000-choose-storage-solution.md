@@ -1,18 +1,18 @@
 ---
 title: Optionen für die Datenübertragung an Azure mithilfe einer Appliance | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie die richtige Appliance zum Übertragen von Daten an Azure auswählen.
+description: Erfahren Sie, wie Sie das richtige Gerät für die lokale Datenübertragung an Azure zwischen Data Box Edge, Azure-Dateisynchronisierung und StorSimple 8000-Serie auswählen.
 services: storsimple
 author: alkohli
 ms.service: storsimple
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: alkohli
-ms.openlocfilehash: dc7de4e69d42a2165f5845f3d8214975d67cdc3c
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 903342230b28f8e4fbdcdfd93543e5a0aa54975e
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86203985"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88183274"
 ---
 # <a name="compare-storsimple-with-azure-file-sync-and-data-box-edge-data-transfer-options"></a>Vergleich der Datenübertragungsoptionen für StorSimple mit denen für Azure-Dateisynchronisierung und Data Box Edge 
 

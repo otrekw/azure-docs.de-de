@@ -3,12 +3,12 @@ title: Wiederherstellen von VMware-VMs mit Azure Backup Server
 description: Verwenden Sie Azure Backup Server (MABS), um VMware-VMs wiederherzustellen, die auf einem VMware vCenter-/ESXi-Server ausgeführt werden.
 ms.topic: conceptual
 ms.date: 08/18/2019
-ms.openlocfilehash: d11b9259a44c32891f5fefa6f175681838927586
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: b3f61aa828db39aeb11b1ce46a850d9a5b868653
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86524521"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88263519"
 ---
 # <a name="restore-vmware-virtual-machines"></a>Wiederherstellen von virtuellen VMware-Computern
 
@@ -22,7 +22,7 @@ In diesem Artikel wird beschrieben, wie Sie Microsoft Azure Backup Server (MABS)
 
 ## <a name="restore-a-recovery-point"></a>Wiederherstellen eines Wiederherstellungspunkts
 
-1. Klicken Sie in der MABS-Administratorkonsole auf die Ansicht „Wiederherstellung“.
+1. Wählen Sie in der MABS-Administratorkonsole die Ansicht **Wiederherstellung** aus.
 
 2. Suchen oder filtern Sie im Bereich „Durchsuchen“, um die wiederherzustellende VM zu ermitteln. Nachdem Sie eine VM oder einen Ordner ausgewählt haben, werden im entsprechenden Bereich die verfügbaren Wiederherstellungspunkte angezeigt.
 
@@ -30,15 +30,15 @@ In diesem Artikel wird beschrieben, wie Sie Microsoft Azure Backup Server (MABS)
 
 3. Verwenden Sie im Feld **Wiederherstellungspunkte für:** den Kalender und die Dropdownmenüs, um ein Datum auszuwählen, an dem ein Wiederherstellungspunkt erstellt wurde. Für fett formatierte Kalenderdaten sind Wiederherstellungspunkte verfügbar.
 
-4. Klicken Sie im Menüband des Tools auf **Wiederherstellen**, um den **Wiederherstellungs-Assistenten** zu öffnen.
+4. Wählen Sie im Menüband des Tools **Wiederherstellen** aus, um den **Wiederherstellungs-Assistenten** zu öffnen.
 
     ![Wiederherstellungs-Assistent, Wiederherstellungsauswahl überprüfen](./media/restore-azure-backup-server-vmware/recovery-wizard.png)
 
-5. Klicken Sie auf **Weiter**, um zum Bildschirm **Wiederherstellungsoptionen angeben**  zu wechseln.
+5. Wählen Sie **Weiter** aus, um zum Bildschirm **Wiederherstellungsoptionen angeben**  zu wechseln.
 
-6. Klicken Sie auf dem Bildschirm **Wiederherstellungsoptionen angeben** auf **Ändern**, wenn Sie die Drosselung der Netzwerkbandbreite aktivieren möchten. Klicken Sie auf **Weiter**, falls die Netzwerkdrosselung deaktiviert bleiben soll. Für VMware-VMs sind auf diesem Bildschirm des Assistenten keine weiteren Optionen verfügbar. Wenn Sie sich für die Änderung einer Drosselung der Netzwerkbandbreite entscheiden, müssen Sie dies aktivieren, indem Sie im Dialogfeld „Drosselung“ die Option **Netzwerk-Bandbreiteneinschränkung aktivieren** auswählen. Konfigurieren Sie nach der Aktivierung die Optionen **Einstellungen** und **Arbeitszeitplan**.
+6. Wählen Sie auf dem Bildschirm **Wiederherstellungsoptionen angeben** die Option **Ändern** aus, wenn Sie die Drosselung der Netzwerkbandbreite aktivieren möchten. Wenn die Netzwerk-Bandbreiteneinschränkung deaktiviert bleiben soll, wählen Sie **Weiter** aus. Für VMware-VMs sind auf diesem Bildschirm des Assistenten keine weiteren Optionen verfügbar. Wenn Sie sich für die Änderung einer Drosselung der Netzwerkbandbreite entscheiden, müssen Sie dies aktivieren, indem Sie im Dialogfeld „Drosselung“ die Option **Netzwerk-Bandbreiteneinschränkung aktivieren** auswählen. Konfigurieren Sie nach der Aktivierung die Optionen **Einstellungen** und **Arbeitszeitplan**.
 
-7. Wählen Sie auf dem Bildschirm **Wiederherstellungstyp auswählen** aus, ob die Wiederherstellung auf der ursprünglichen Instanz oder an einem anderen Speicherort durchgeführt werden soll, und klicken Sie auf **Weiter**.
+7. Wählen Sie auf dem Bildschirm **Wiederherstellungstyp auswählen** aus, ob die Wiederherstellung auf der ursprünglichen Instanz oder an einem anderen Speicherort durchgeführt werden soll. Wählen Sie **Weiter**aus.
 
      * Bei Auswahl von **In ursprünglicher Instanz wiederherstellen**  müssen Sie im Assistenten keine weiteren Angaben machen. Es werden die Daten für die ursprüngliche Instanz verwendet.
 
@@ -46,37 +46,37 @@ In diesem Artikel wird beschrieben, wie Sie Microsoft Azure Backup Server (MABS)
 
       ![Auswählen des Wiederherstellungstyps](./media/restore-azure-backup-server-vmware/recovery-type.png)
 
-8. Überprüfen Sie Ihre Einstellungen auf dem Bildschirm **Zusammenfassung**, und klicken Sie auf **Wiederherstellen**, um den Wiederherstellungsprozess zu starten. Auf dem Bildschirm **Wiederherstellungsstatus** wird der Status des Wiederherstellungsvorgangs angezeigt.
+8. Überprüfen Sie Ihre Einstellungen auf dem Bildschirm **Zusammenfassung**, und wählen Sie **Wiederherstellen** aus, um den Wiederherstellungsprozess zu starten. Auf dem Bildschirm **Wiederherstellungsstatus** wird der Status des Wiederherstellungsvorgangs angezeigt.
 
 ## <a name="restore-an-individual-file-from-a-vm"></a>Wiederherstellen einer einzelnen Datei von einem virtuellen Computer
 
-Sie können einzelne Dateien eines geschützten VM-Wiederherstellungspunkts wiederherstellen. Dieses Feature ist nur für Windows Server-VMs verfügbar. Die Wiederherstellung einzelner Dateien ähnelt dem Wiederherstellen der gesamten VM. Der Unterschied besteht aber darin, dass Sie das VMDK durchsuchen und die gewünschten Dateien ermitteln, bevor Sie den Wiederherstellungsprozess starten. Gehen Sie zum Wiederherstellen einer einzelnen Datei oder zum Auswählen von Dateien von einer Windows Server-VM wie folgt vor:
+Sie können einzelne Dateien eines geschützten VM-Wiederherstellungspunkts wiederherstellen. Dieses Feature ist nur für Windows Server-VMs verfügbar. Die Wiederherstellung einzelner Dateien ähnelt der Wiederherstellung einer vollständigen VM. Allerdings müssen Sie zunächst zur VMDK navigieren und die gewünschten Dateien suchen, bevor Sie den Wiederherstellungsprozess starten. Gehen Sie zum Wiederherstellen einer einzelnen Datei oder zum Auswählen von Dateien von einer Windows Server-VM wie folgt vor:
 
 >[!NOTE]
 >Das Wiederherstellen einer einzelnen Datei von einem virtuellen Computer ist nur für Wiederherstellungspunkte virtueller Windows-Computer und -Datenträger verfügbar.
 
-1. Klicken Sie in der MABS-Administratorkonsole auf die Ansicht **Wiederherstellung**.
+1. Wählen Sie in der MABS-Administratorkonsole die Ansicht **Wiederherstellung** aus.
 
-2. Suchen oder filtern Sie im Bereich **Durchsuchen**, um die wiederherzustellende VM zu ermitteln. Nachdem Sie eine VM oder einen Ordner ausgewählt haben, werden im entsprechenden Bereich die verfügbaren Wiederherstellungspunkte angezeigt.
+2. Suchen oder filtern Sie im Bereich **Durchsuchen**, um die wiederherzustellende VM zu ermitteln. Nachdem Sie eine VM oder einen Ordner ausgewählt haben, werden im Bereich **Wiederherstellungspunkte für** die verfügbaren Wiederherstellungspunkte angezeigt.
 
-    ![Verfügbare Wiederherstellungspunkte](./media/restore-azure-backup-server-vmware/vmware-rp-disk.png)
+    ![Bereich „Wiederherstellungspunkte für“](./media/restore-azure-backup-server-vmware/vmware-rp-disk.png)
 
-3. Verwenden Sie im Bereich **Wiederherstellungspunkte für:** den Kalender, um das Datum mit den gewünschten Wiederherstellungspunkten auszuwählen. Je nach Konfiguration der Sicherungsrichtlinie können Daten ggf. über mehr als einen Wiederherstellungspunkt verfügen. Nachdem Sie den Tag ausgewählt haben, an dem der Wiederherstellungspunkt erstellt wurde, sollten Sie sicherstellen, dass Sie die richtige **Wiederherstellungszeit** angegeben haben. Falls das ausgewählte Datum über mehrere Wiederherstellungspunkte verfügt, sollten Sie Ihren Wiederherstellungspunkt über das Dropdownmenü „Wiederherstellungszeit“ auswählen. Nach Auswahl des Wiederherstellungspunkts wird die Liste mit den wiederherstellbaren Elementen im Bereich **Pfad:** angezeigt.
+3. Verwenden Sie im Bereich **Wiederherstellungspunkte für** den Kalender, um das Datum auszuwählen, das die gewünschten Wiederherstellungspunkte enthält. Je nach Konfiguration der Sicherungsrichtlinie können Daten ggf. über mehr als einen Wiederherstellungspunkt verfügen. Nachdem Sie den Tag ausgewählt haben, an dem der Wiederherstellungspunkt erstellt wurde, sollten Sie sicherstellen, dass Sie die richtige **Wiederherstellungszeit** angegeben haben. Falls das ausgewählte Datum über mehrere Wiederherstellungspunkte verfügt, sollten Sie Ihren Wiederherstellungspunkt über das Dropdownmenü „Wiederherstellungszeit“ auswählen. Nach Auswahl des Wiederherstellungspunkts wird die Liste mit den wiederherstellbaren Elementen im Bereich **Pfad:** angezeigt.
 
-4. Ermitteln Sie die wiederherzustellenden Dateien, indem Sie im Bereich **Pfad** auf das Element in der Spalte **Wiederherstellbares Element** doppelklicken, um es zu öffnen. Wählen Sie die Dateien bzw. Ordner aus, die Sie wiederherstellen möchten. Wenn Sie mehrere Elemente auswählen möchten, können Sie beim Klicken auf die Elemente jeweils **STRG** drücken. Verwenden Sie den Bereich **Pfad**, um die Liste mit den Dateien oder Ordnern in der Spalte **Wiederherstellbares Element** zu durchsuchen. Bei der Option **Liste unten durchsuchen** werden die Unterordner nicht durchsucht. Doppelklicken Sie auf den Ordner, um die Unterordner zu durchsuchen. Verwenden Sie die Schaltfläche **Nach oben**, um von einem untergeordneten Ordner in den übergeordneten Ordner zu wechseln. Sie können mehrere Elemente (Dateien und Ordner) auswählen, aber diese müssen in demselben übergeordneten Ordner enthalten sein. Sie können mit demselben Wiederherstellungsauftrag nicht Elemente aus mehreren Ordnern wiederherstellen.
+4. Um die Dateien zu finden, die wiederhergestellt werden sollen, doppelklicken Sie im Bereich **Pfad** auf das Element in der Spalte **Wiederherstellbares Element**, um es zu öffnen. Wählen Sie die Dateien oder Ordner aus, die Sie wiederherstellen möchten. Um mehrere Elemente auszuwählen, drücken Sie die **STRG**-Taste, während Sie die einzelnen Elemente auswählen. Durchsuchen Sie im Bereich **Pfad** die Liste der Dateien oder Ordnern, die in der Spalte **Wiederherstellbares Element** angezeigt werden. Bei der Option **Liste unten durchsuchen** werden die Unterordner nicht in die Suche einbezogen. Doppelklicken Sie auf den Ordner, um die Unterordner zu durchsuchen. Verwenden Sie die Schaltfläche **Nach oben**, um von einem untergeordneten Ordner in den übergeordneten Ordner zu wechseln. Sie können mehrere Elemente (Dateien und Ordner) auswählen, aber diese müssen in demselben übergeordneten Ordner enthalten sein. Es ist nicht möglich, in einem einzigen Wiederherstellungsauftrag Elemente aus mehreren Ordnern wiederherzustellen.
 
     ![Wiederherstellungsauswahl prüfen](./media/restore-azure-backup-server-vmware/vmware-rp-disk-ilr-2.png)
 
-5. Klicken Sie nach dem Auswählen der wiederherzustellenden Elemente im Menüband der Administratorkonsole auf **Wiederherstellen**, um den **Wiederherstellungs-Assistenten** zu öffnen. Im Wiederherstellungs-Assistenten werden auf dem Bildschirm **Wiederherstellungsauswahl überprüfen** die ausgewählten Elemente angezeigt, die wiederhergestellt werden sollen.
+5. Wählen Sie nach dem Auswählen der wiederherzustellenden Elemente im Menüband der Administratorkonsole **Wiederherstellen** aus, um den **Wiederherstellungs-Assistenten** zu öffnen. Im Wiederherstellungs-Assistenten werden auf dem Bildschirm **Wiederherstellungsauswahl überprüfen** die zur Wiederherstellung ausgewählten Elemente angezeigt.
 
-6. Klicken Sie auf dem Bildschirm **Wiederherstellungsoptionen angeben** auf **Ändern**, wenn Sie die Drosselung der Netzwerkbandbreite aktivieren möchten. Klicken Sie auf **Weiter**, falls die Netzwerkdrosselung deaktiviert bleiben soll. Für VMware-VMs sind auf diesem Bildschirm des Assistenten keine weiteren Optionen verfügbar. Wenn Sie sich für die Änderung einer Drosselung der Netzwerkbandbreite entscheiden, müssen Sie dies aktivieren, indem Sie im Dialogfeld „Drosselung“ die Option **Netzwerk-Bandbreiteneinschränkung aktivieren** auswählen. Konfigurieren Sie nach der Aktivierung die Optionen **Einstellungen** und **Arbeitszeitplan**.
-7. Klicken Sie auf dem Bildschirm **Wiederherstellungstyp auswählen** auf **Weiter**. Sie können Ihre Dateien oder Ordner nur in einem Netzwerkordner wiederherstellen.
-8. Klicken Sie auf dem Bildschirm **Ziel angeben** auf **Durchsuchen**, um eine Netzwerkadresse für Ihre Dateien bzw. Ordner zu ermitteln. MABS erstellt einen Ordner, in den alle wiederhergestellten Elemente kopiert werden. Der Name des Ordners enthält das Präfix „MABS_day-month-year“. Wenn Sie einen Speicherort für die wiederhergestellten Dateien oder den Ordner auswählen, werden die Details für diesen Speicherort angegeben (Ziel, Zielpfad und verfügbarer Speicherplatz).
+6. Wählen Sie auf dem Bildschirm **Wiederherstellungsoptionen angeben** die Option **Ändern** aus, wenn Sie die Drosselung der Netzwerkbandbreite aktivieren möchten. Wenn die Netzwerk-Bandbreiteneinschränkung deaktiviert bleiben soll, wählen Sie **Weiter** aus. Keine anderen Optionen auf dieser Seite des Assistenten sind für VMware-VMs verfügbar. Wenn Sie die Netzwerk-Bandbreiteneinschränkung ändern möchten, klicken Sie im Dialogfeld „Drosselung“ auf **Netzwerk-Bandbreiteneinschränkung aktivieren**, um die Option zu aktivieren. Konfigurieren Sie nach der Aktivierung die Optionen **Einstellungen** und **Arbeitszeitplan**.
+7. Wählen Sie auf dem Bildschirm **Wiederherstellungstyp auswählen** die Option **Weiter** aus. Sie können die Dateien oder Ordner nur in einem Netzwerkordner wiederherstellen.
+8. Wählen Sie auf dem Bildschirm **Ziel angeben** die Option **Durchsuchen** aus, um eine Netzwerkadresse für Ihre Dateien bzw. Ordner auszuwählen. MABS erstellt einen Ordner, in den alle wiederhergestellten Elemente kopiert werden. Der Name des Ordners enthält das Präfix „MABS_day-month-year“. Wenn Sie einen Speicherort für die wiederhergestellten Dateien oder den Ordner auswählen, werden die Details für diesen Speicherort angegeben (Ziel, Zielpfad und verfügbarer Speicherplatz).
 
     ![Angeben des Speicherorts zum Wiederherstellen von Dateien](./media/restore-azure-backup-server-vmware/specify-destination.png)
 
 9. Wählen Sie auf dem Bildschirm **Wiederherstellungsoptionen angeben** aus, welche Sicherheitseinstellung angewendet werden soll. Sie können sich für eine Änderung der Drosselung der Netzwerkbandbreite entscheiden, aber die Drosselung ist standardmäßig deaktiviert. Auch die Optionen **SAN-Wiederherstellung** und **Benachrichtigung** sind nicht aktiviert.
-10. Überprüfen Sie Ihre Einstellungen auf dem Bildschirm **Zusammenfassung**, und klicken Sie auf **Wiederherstellen**, um den Wiederherstellungsprozess zu starten. Auf dem Bildschirm **Wiederherstellungsstatus** wird der Status des Wiederherstellungsvorgangs angezeigt.
+10. Überprüfen Sie Ihre Einstellungen auf dem Bildschirm **Zusammenfassung**, und wählen Sie **Wiederherstellen** aus, um den Wiederherstellungsprozess zu starten. Auf dem Bildschirm **Wiederherstellungsstatus** wird der Status des Wiederherstellungsvorgangs angezeigt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

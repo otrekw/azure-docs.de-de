@@ -6,19 +6,19 @@ author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.date: 05/26/2020
+ms.date: 08/17/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: af46b48d47a53d5a8a19db7c50a9356824607a5d
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 488ca52abdd5f8d6cfd1f92a5f91861a17a77d19
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85962950"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88510522"
 ---
 # <a name="how-to-manage-settings"></a>Verwalten von Einstellungen
 
-Auf der Custom-Translator-Seite „Einstellungen“ können Sie einen neuen Arbeitsbereich erstellen, Ihren Arbeitsbereich freigeben und Ihren Abonnementschlüssel für Microsoft Translator hinzufügen oder ändern.
+Auf der Seite „Einstellungen“ von Benutzerdefinierter Translator können Sie Ihren Arbeitsbereich freigeben, Ihren Translator-Abonnementschlüssel ändern sowie den Arbeitsbereich löschen.
 
 So greifen Sie auf die Seite „Einstellungen“ zu
 
@@ -33,23 +33,35 @@ Zum Trainieren oder Bereitstellen von Modellen muss Ihrem Arbeitsbereich ein Tra
 
 Wenn Sie über kein Abonnement verfügen, gehen Sie folgendermaßen vor:
 
-1. Abonnieren Sie Translator. In diesem Artikel erfahren Sie, wie Sie Translator abonnieren.
-2. Notieren Sie sich den Schlüssel Ihres Microsoft Translator-Abonnements. „Key1“ oder „Key2“ sind zulässig.
+1. Abonnieren Sie Translator, um eine Translator-Ressource zu erstellen. Befolgen Sie die Schritte unter [Registrieren für Translator](https://docs.microsoft.com/azure/cognitive-services/translator/translator-how-to-signup), um Translator zu abonnieren und einen Translator-Schlüssel abzurufen.
+2. Notieren Sie sich den Schlüssel Ihres Translator-Abonnements. „Key1“ oder „Key2“ sind zulässig.
 3. Navigieren Sie zurück zum Custom Translator-Portal.
 
-### <a name="add-existing-key"></a>Hinzufügen eines vorhandenen Schlüssels
+## <a name="create-a-new-workspace"></a>Erstellen eines neuen Arbeitsbereichs
 
-1.    Navigieren Sie zur Seite „Einstellungen“ für Ihren Arbeitsbereich.
-2.    Klicken Sie auf „Schlüssel hinzufügen“.
+1. Klicken Sie in der Randleiste „Benutzerdefinierter Translator“ auf die Schaltfläche „+ Arbeitsbereich erstellen“.
 
-   ![Hinzufügen eines Abonnementschlüssels](media/how-to/how-to-add-subscription-key.png)
+    ![Erstellen eines neuen Arbeitsbereichs](media/how-to/create-new-workspace.png)
 
-3. Geben Sie im Dialogfeld den Schlüssel für Ihr Translator-Abonnement ein, und klicken Sie dann auf die Schaltfläche „Hinzufügen“.
+2. Geben Sie im Dialogfeld den Namen des neuen Arbeitsbereichs ein.
+3. Klicken Sie auf „Weiter“.
+4. Wählen Sie den Abonnementtyp aus.
+5. Wählen Sie die Abonnementregion aus. Die Region muss der Region entsprechen, die beim Erstellen des Translator-Schlüssels ausgewählt war.
+6. Geben Sie den Schlüssel für Ihr Translator-Abonnement ein, und klicken Sie dann auf die Schaltfläche „Speichern“.
+
+    ![Dialogfeld „Neuen Arbeitsbereich erstellen“](media/how-to/create-new-workspace-dialog.png)
+
+
+### <a name="modify-existing-key"></a>Ändern eines vorhandenen Schlüssels
+
+1. Navigieren Sie zur Seite „Einstellungen“ für Ihren Arbeitsbereich.
+2. Klicken Sie auf „Schlüssel ändern“.
+
+    ![Hinzufügen eines Abonnementschlüssels](media/how-to/how-to-add-subscription-key.png)
+
+3. Geben Sie im Dialogfeld den Schlüssel für Ihr Translator-Abonnement ein, und klicken Sie dann auf die Schaltfläche „Speichern“.
 
     ![Hinzufügen eines Abonnementschlüssels](media/how-to/how-to-add-subscription-key-dialog.png)
-4.    Wenn Sie einen Schlüssel hinzugefügt haben, können Sie den Schlüssel jederzeit ändern oder löschen.
-
-   ![Abonnementschlüssel nach dem Hinzufügen](media/how-to/subscription-key-after-add.png)
 
 ## <a name="manage-your-workspace"></a>Verwalten Ihres Arbeitsbereichs
 
@@ -57,50 +69,50 @@ Ein Arbeitsbereich ist ein Bereich zum Erstellen und Entwickeln Ihres benutzerde
 
 Wenn Sie unterschiedliche Teilbereiche Ihrer Arbeit für verschiedene Personen freigegeben möchten, ist es sinnvoll, mehrerer Arbeitsbereiche zu erstellen.
 
-## <a name="create-a-new-workspace"></a>Erstellen eines neuen Arbeitsbereichs
-
-1.    Navigieren Sie im Arbeitsbereich zur Seite „Einstellungen“.
-2.    Klicken Sie im Abschnitt „Neuen Arbeitsbereich erstellen“ auf die Schaltfläche „Neuer Arbeitsbereich“.
-
-   ![Erstellen eines neuen Arbeitsbereichs](media/how-to/create-new-workspace.png)
-
-4.    Geben Sie im Dialogfeld den Namen des neuen Arbeitsbereichs ein.
-5.    Klicken Sie auf „Erstellen“.
-
-   ![Dialogfeld „Neuen Arbeitsbereich erstellen“](media/how-to/create-new-workspace-dialog.png)
-
 ## <a name="share-your-workspace"></a>Freigeben Ihres Arbeitsbereichs
 
 In Custom Translator können Sie Ihren Arbeitsbereich für andere freigeben, z.B. wenn verschiedene Teilbereiche Ihrer Arbeit mit unterschiedlichen Personen geteilt werden sollen.
 
-1.    Navigieren Sie im Arbeitsbereich zur Seite „Einstellungen“.
-2.    Klicken Sie im Abschnitt „Freigabeeinstellungen“ auf die Schaltfläche „Freigeben“.
+1. Navigieren Sie im Arbeitsbereich zur Seite „Einstellungen“.
+2. Klicken Sie im Abschnitt „Freigabeeinstellungen“ auf die Schaltfläche „Personen hinzufügen“.
 
-   ![Freigeben des Arbeitsbereichs](media/how-to/share-workspace.png)
+    ![Freigeben des Arbeitsbereichs](media/how-to/share-workspace.png)
 
-3.    Geben Sie im Dialogfeld eine durch Trennzeichen getrennte Liste der E-Mail-Adressen ein, für die Sie diesen Arbeitsbereich freigeben möchten. Achten Sie darauf, dass Sie die E-Mail-Adressen angeben, mit denen sich die Benutzer bei Custom Translator anmelden. Wählen Sie dann die gewünschte Stufe für die Freigabeberechtigung aus.
+3. Geben Sie im Dialogfeld eine durch Trennzeichen getrennte Liste der E-Mail-Adressen ein, für die Sie diesen Arbeitsbereich freigeben möchten. Achten Sie darauf, dass Sie die E-Mail-Adressen angeben, mit denen sich die Benutzer bei Custom Translator anmelden. Wählen Sie dann die gewünschte Stufe für die Freigabeberechtigung aus, und klicken Sie auf die Schaltfläche „Speichern“.
 
-4.    Wenn Ihr Arbeitsbereich noch den Standardnamen „Mein Arbeitsbereich“ hat, müssen Sie diesen vor der Freigabe ändern.
-5.    Klicken Sie auf „Speichern“.
+    ![Dialogfeld „Arbeitsbereich freigeben“](media/how-to/share-workspace-dialog.png)
+
+4. Wenn Ihr Arbeitsbereich noch den Standardnamen „Mein Arbeitsbereich“ hat, müssen Sie diesen vor der Freigabe ändern.
+5. Klicken Sie auf „Speichern“.
 
 ## <a name="sharing-permissions"></a>Freigabeberechtigungen
 
-1.    **Leser**: Benutzer mit dieser Freigabeberechtigung können alle Informationen im Arbeitsbereich anzeigen.
+1. **Leser**: Benutzer mit dieser Freigabeberechtigung können alle Informationen im Arbeitsbereich anzeigen.
 
-2.    **Bearbeiter**: Benutzer mit dieser Freigabeberechtigung können im Arbeitsbereich Dokumente hinzufügen, Modelle trainieren sowie Dokumente und Projekte löschen. Außerdem haben sie die Möglichkeit, einen Abonnementschlüssel hinzuzufügen. Allerdings können diese Benutzer nicht ändern, für wen der Arbeitsbereich freigegeben ist, den Arbeitsbereich löschen oder den Arbeitsbereichsnamen ändern.
+2. **Bearbeiter**: Benutzer mit dieser Freigabeberechtigung können im Arbeitsbereich Dokumente hinzufügen, Modelle trainieren sowie Dokumente und Projekte löschen. Außerdem haben sie die Möglichkeit, einen Abonnementschlüssel hinzuzufügen. Allerdings können diese Benutzer nicht ändern, für wen der Arbeitsbereich freigegeben ist, den Arbeitsbereich löschen oder den Arbeitsbereichsnamen ändern.
 
-3.    **Besitzer**: Benutzer mit dieser Freigabeberechtigung verfügen über uneingeschränkte Berechtigungen für den Arbeitsbereich.
+3. **Besitzer**: Benutzer mit dieser Freigabeberechtigung verfügen über uneingeschränkte Berechtigungen für den Arbeitsbereich.
 
 ## <a name="change-sharing-permission"></a>Ändern der Freigabeberechtigung
 
-Wenn ein Arbeitsbereich freigegeben wurde, zeigt der Abschnitt „Freigabeeinstellungen“ alle E-Mail-Adressen an, für die das gilt. Sie können die aktuelle Freigabeberechtigung jeder E-Mail-Adresse ändern, wenn Sie für den Arbeitsbereich über die Freigabeberechtigung „Besitzer“ verfügen.
+Wenn ein Arbeitsbereich freigegeben wurde, zeigt der Abschnitt „Freigabeeinstellungen“ alle E-Mail-Adressen an, für die die Freigabe gilt. Sie können die aktuelle Freigabeberechtigung jeder E-Mail-Adresse ändern, wenn Sie für den Arbeitsbereich über die Freigabeberechtigung „Besitzer“ verfügen.
 
-1.    Im Abschnitt „Freigabeeinstellungen“ zeigt ein Dropdownmenü die aktuelle Berechtigungsstufe jeder E-Mail-Adresse an.
+1. Im Abschnitt „Freigabeeinstellungen“ zeigt ein Dropdownmenü die aktuelle Berechtigungsstufe jeder E-Mail-Adresse an.
 
-2.    Klicken Sie auf das Dropdownmenü, und wählen Sie die neue Berechtigungsstufe aus, die Sie der jeweiligen E-Mail-Adresse zuweisen möchten.
+2. Klicken Sie auf das Dropdownmenü, und wählen Sie die neue Berechtigungsstufe aus, die Sie der jeweiligen E-Mail-Adresse zuweisen möchten.
 
-   ![Einstellungen für die Freigabeberechtigung](media/how-to/sharing-permission-settings.png)
+    ![Einstellungen für die Freigabeberechtigung](media/how-to/sharing-permission-settings.png)
+
+## <a name="pin-your-workspace"></a>Anheften Ihres Arbeitsbereichs
+
+Der erste erstellte Arbeitsbereich wird standardmäßig angeheftet. Jedes Mal, wenn Sie sich anmelden, wird der angeheftete Arbeitsbereich beim Laden der Website angezeigt. Wenn Sie viele Arbeitsbereiche erstellt haben und einen von diesen bei der Anmeldung als Standard festlegen möchten, müssen Sie ihn anheften.
+
+1. Klicken Sie auf der Randleiste auf den Namen des Arbeitsbereichs, den Sie anheften möchten.
+2. Navigieren Sie zur Seite „Einstellungen“ für Ihren Arbeitsbereich.
+3. Klicken Sie auf das Stecknadelsymbol.
+
+    ![Anheften des Arbeitsbereichs](media/how-to/how-to-pin-workspace.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Erfahren Sie mehr über das [Migrieren Ihres Arbeitsbereichs und Projekts](how-to-migrate.md) aus [Microsoft Translator Hub](https://hub.microsofttranslator.com).
+- Weitere Informationen zum [Erstellen Ihres Arbeitsbereichs und Ihrer Projekte](workspace-and-project.md)

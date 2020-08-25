@@ -1,18 +1,18 @@
 ---
 title: Übersicht über die Sicherheit in Azure Data Lake Storage Gen1 | Microsoft Docs
-description: Erfahren Sie, warum Azure Data Lake Storage Gen1 ein Big Data-Speicher mit erhöhter Sicherheit ist.
+description: Erfahren Sie mehr über die Sicherheitsfunktionen von Azure Data Lake Storage Gen1, einschließlich Authentifizierung, Autorisierung, Netzwerkisolation, Datenschutz und Überwachung.
 services: data-lake-store
 author: twooley
 ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: twooley
-ms.openlocfilehash: 4992be004a4b60b7b5fb591d834e8938cf03f34f
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: ec0e62297e6eee995fc571589d450176c81f8aac
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87926279"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192828"
 ---
 # <a name="security-in-azure-data-lake-storage-gen1"></a>Sicherheit in Azure Data Lake Storage Gen1
 

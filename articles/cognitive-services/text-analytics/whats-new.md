@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.author: aahi
-ms.openlocfilehash: 95e9b208159e9af41563f12ce8af7892e13f6629
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 1a5f7dcd37a970d5e039ebc38f1059839424ff68
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121849"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192022"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>Neuigkeiten bei der Textanalyse-API
 
@@ -34,7 +34,7 @@ Die Textanalyse-API wird fortlaufend aktualisiert. Damit Sie bezüglich der aktu
 Die folgenden Updates gelten spezifisch nur für das August-Release des Containers „Text Analytics for Health“.
 
 * Neue Modellversion für Text Analytics for Health: `2020-07-24`
-* Neue URL zum Senden von „Text Analytics for Health“-Anforderungen: `http://<serverURL>:5000/text/analytics/v3.2-preview.1/entities/health` 
+* Neue URL zum Senden von Text Analytics for Health-Anforderungen: `http://<serverURL>:5000/text/analytics/v3.2-preview.1/entities/health` (Beachten Sie, dass ein Löschvorgang für den Browsercache erforderlich ist, um die in diesem neuen Containerimage enthaltene Demo-Web-App zu verwenden.)
 
 In der JSON-Antwort wurden die folgenden Eigenschaften geändert:
 

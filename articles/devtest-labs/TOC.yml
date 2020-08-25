@@ -83,6 +83,8 @@
           href: devtest-lab-internal-support-message.md
         - name: Festlegen von Richtlinien und Zeitplänen
           href: devtest-lab-set-lab-policy.md
+        - name: "Konfigurieren einer Labidentität\_"
+          href: configure-lab-identity.md
         - name: Konfigurieren eines Labs zur Verwendung eines Remotedesktopgateways
           href: configure-lab-remote-desktop-gateway.md
         - name: Beitragsankündigung in einem Lab
@@ -95,8 +97,6 @@
           href: devtest-lab-auto-startup-vm.md
         - name: Skalieren des Labs
           href: devtest-lab-scale-lab.md
-        - name: Aktivieren von verwalteten Identitäten für virtuelle Lab-Computer
-          href: enable-managed-identities-lab-vms.md
         - name: Verwalten von Basen virtueller Computer
           items:
             - name: Konfigurieren von Azure Marketplace-Images
@@ -167,6 +167,8 @@
           href: start-machines-use-automation-runbooks.md
         - name: Importieren von virtuellen Computern aus einem anderen Lab
           href: import-virtual-machines-from-another-lab.md
+        - name: Aktivieren von verwalteten Identitäten für virtuelle Lab-Computer
+          href: enable-managed-identities-lab-vms.md
     - name: Verwenden von Umgebungen in einem Lab
       items:
         - name: Erstellen einer Umgebung
