@@ -4,15 +4,15 @@ description: Erfahren Sie mehr über die SQL-Systemfunktion GetCurrentTimestamp 
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 07/09/2020
+ms.date: 08/19/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 9c35f83ce7a9a478f706e9ed560d884d9bf5e508
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: c1e0a8d69edab0c01005268ee49c23625236f03a
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86261287"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88606929"
 ---
 # <a name="getcurrenttimestamp-azure-cosmos-db"></a>GetCurrentTimestamp (Azure Cosmos DB)
 
@@ -26,13 +26,13 @@ GetCurrentTimestamp ()
   
 ## <a name="return-types"></a>Rückgabetypen
   
-  Ein numerischer Wert, der der aktuellen Anzahl der Millisekunden entspricht, die seit der Unix-Epoche vergangen sind, d. h. die Anzahl der Millisekunden, die seit dem Donnerstag am 1. Januar 1970 um 00:00:00 Uhr vergangen sind, wird zurückgegeben.
+Gibt einen numerischen Wert mit Vorzeichen zurück, der der aktuellen Anzahl der Millisekunden entspricht, die seit der Unix-Epoche verstrichen sind, d. h. die Anzahl der Millisekunden, die seit Donnerstag, 1. Januar 1970, 00:00:00 Uhr verstrichen sind.
 
 ## <a name="remarks"></a>Bemerkungen
 
-  GetCurrentTimestamp() ist eine nichtdeterministische Funktion.
-  
-  Das zurückgegebene Ergebnis entspricht der koordinierten Weltzeit (UTC).
+GetCurrentTimestamp() ist eine nichtdeterministische Funktion. Das zurückgegebene Ergebnis entspricht der koordinierten Weltzeit (UTC).
+
+Der Index wird von dieser Systemfunktion nicht verwendet.
 
 ## <a name="examples"></a>Beispiele
   

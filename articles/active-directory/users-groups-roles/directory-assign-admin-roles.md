@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: reference
-ms.date: 06/15/2020
+ms.date: 08/13/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 09050bc6895076994baf1c98c65aa87672a5652e
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: 03a51cc8aa86f40b5333bd79e95e6d02be1adfc4
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88066065"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213846"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Berechtigungen der Administratorrolle in Azure Active Directory
 
@@ -89,11 +89,11 @@ Die Rolle [Privilegierter Authentifizierungsadministrator](#privileged-authentic
 > [!IMPORTANT]
 > Benutzer mit dieser Rolle können Anmeldeinformationen für Benutzer ändern, die Zugriff auf vertrauliche oder private Informationen bzw. kritische Konfigurationen innerhalb und außerhalb von Azure Active Directory haben. Das bedeutet, dass Benutzer, die Anmeldeinformationen ändern können, ggf. auch die Identität und die Berechtigungen des betreffenden Benutzers annehmen können. Beispiel:
 >
->- Besitzer von Anwendungsregistrierungen und Unternehmensanwendungen, die Anmeldeinformationen von Apps verwalten können, die sie besitzen. Diese Apps können über höhere Berechtigungen in Azure AD und in anderen Diensten verfügen, die Authentifizierungsadministratoren nicht gewährt werden. So kann ein Authentifizierungsadministrator die Identität eines Anwendungsbesitzers annehmen und dann die Identität einer privilegierten Anwendung durch Aktualisieren der Anmeldeinformationen für die Anwendung annehmen.
->- Besitzer von Azure-Abonnements, die ggf. auf vertrauliche oder private Informationen bzw. kritische Konfigurationen in Azure zugreifen können.
->- Besitzer von Sicherheitsgruppen und Office 365-Gruppen, die die Gruppenmitgliedschaft verwalten können. Diese Gruppen können Zugriff auf vertrauliche oder private Informationen bzw. kritische Konfigurationen in Azure AD und in anderen Diensten gewähren.
->- Administratoren in anderen Diensten außerhalb von Azure AD wie Exchange Online, Office Security and Compliance Center und Personalwesen.
->- Nichtadministratoren wie Führungskräfte, Rechtsberater und Mitarbeiter der Personalabteilung mit Zugriff auf vertrauliche oder private Informationen.
+>* Besitzer von Anwendungsregistrierungen und Unternehmensanwendungen, die Anmeldeinformationen von Apps verwalten können, die sie besitzen. Diese Apps können über höhere Berechtigungen in Azure AD und in anderen Diensten verfügen, die Authentifizierungsadministratoren nicht gewährt werden. So kann ein Authentifizierungsadministrator die Identität eines Anwendungsbesitzers annehmen und dann die Identität einer privilegierten Anwendung durch Aktualisieren der Anmeldeinformationen für die Anwendung annehmen.
+>* Besitzer von Azure-Abonnements, die ggf. auf vertrauliche oder private Informationen bzw. kritische Konfigurationen in Azure zugreifen können.
+>* Besitzer von Sicherheitsgruppen und Microsoft 365-Gruppen, die die Gruppenmitgliedschaft verwalten können. Diese Gruppen können Zugriff auf vertrauliche oder private Informationen bzw. kritische Konfigurationen in Azure AD und in anderen Diensten gewähren.
+>* Administratoren in anderen Diensten außerhalb von Azure AD wie Exchange Online, Office Security and Compliance Center und Personalwesen.
+>* Nichtadministratoren wie Führungskräfte, Rechtsberater und Mitarbeiter der Personalabteilung mit Zugriff auf vertrauliche oder private Informationen.
 
 ### <a name="azure-devops-administrator"></a>[Azure DevOps-Administrator](#azure-devops-administrator-permissions)
 
@@ -206,7 +206,7 @@ Benutzer mit dieser Rolle besitzen globale Berechtigungen innerhalb von Microsof
 
 ### <a name="exchange-administrator"></a>[Exchange-Administrator](#exchange-service-administrator-permissions)
 
-Benutzer mit dieser Rolle besitzen globale Berechtigungen in Microsoft Exchange Online, wenn der Dienst verfügbar ist. Außerdem haben sie die Möglichkeit, alle Office 365-Gruppen zu erstellen und zu verwalten, Supporttickets zu verwalten und die Dienstintegrität zu überwachen. Weitere Informationen finden Sie unter [Informationen zu Administratorrollen von Office 365](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d).
+Benutzer mit dieser Rolle besitzen globale Berechtigungen in Microsoft Exchange Online, wenn der Dienst verfügbar ist. Außerdem haben sie die Möglichkeit zum Erstellen und Verwalten aller Microsoft 365-Gruppen, Verwalten von Supporttickets und Überwachen der Dienstintegrität. Weitere Informationen finden Sie unter [Informationen zu Administratorrollen von Office 365](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d).
 
 > [!NOTE]
 > In Microsoft Graph-API und Azure AD PowerShell wird diese Rolle als „Exchange-Dienstadministrator“ bezeichnet. Im [Azure-Portal](https://portal.azure.com) lautet sie „Exchange-Administrator“. Im [Exchange Admin Center](https://go.microsoft.com/fwlink/p/?LinkID=529144) lautet sie „Exchange Online-Administrator“.
@@ -277,7 +277,7 @@ Benutzer mit dieser Rolle können Kennwörter ändern, Aktualisierungstoken für
 >
 >- Besitzer von Anwendungsregistrierungen und Unternehmensanwendungen, die Anmeldeinformationen von Apps verwalten können, die sie besitzen. Diese Apps können über höhere Berechtigungen in Azure AD und in anderen Diensten verfügen, die Helpdeskadministratoren nicht gewährt werden. So kann ein Helpdeskadministrator die Identität eines Anwendungsbesitzers annehmen und dann die Identität einer privilegierten Anwendung durch Aktualisieren der Anmeldeinformationen für die Anwendung annehmen.
 >- Besitzer von Azure-Abonnements, die möglicherweise auf vertrauliche oder private Informationen oder kritische Konfigurationen in Azure zugreifen können.
->- Besitzer von Sicherheitsgruppen und Office 365-Gruppen, die die Gruppenmitgliedschaft verwalten können. Diese Gruppen können Zugriff auf vertrauliche oder private Informationen bzw. kritische Konfigurationen in Azure AD und in anderen Diensten gewähren.
+>- Besitzer von Sicherheitsgruppen und Microsoft 365-Gruppen, die die Gruppenmitgliedschaft verwalten können. Diese Gruppen können Zugriff auf vertrauliche oder private Informationen bzw. kritische Konfigurationen in Azure AD und in anderen Diensten gewähren.
 >- Administratoren in anderen Diensten außerhalb von Azure AD wie Exchange Online, Office Security and Compliance Center und Personalwesen.
 >- Nichtadministratoren wie Führungskräfte, Rechtsberater und Mitarbeiter der Personalabteilung mit Zugriff auf vertrauliche oder private Informationen.
 
@@ -467,7 +467,7 @@ Benutzer mit dieser Rolle können bei Microsoft Supportanfragen für Azure- und 
 
 ### <a name="sharepoint-administrator"></a>[SharePoint-Administrator](#sharepoint-service-administrator-permissions)
 
-Benutzer mit dieser Rolle besitzen globale Berechtigungen innerhalb von Microsoft SharePoint Online, wenn der Dienst verfügbar ist, und können alle Office 365-Gruppen erstellen und verwalten, Supporttickets verwalten und die Dienstintegrität überwachen. Weitere Informationen finden Sie unter [Informationen zu Administratorrollen](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d).
+Benutzer mit dieser Rolle besitzen globale Berechtigungen innerhalb von Microsoft SharePoint Online, wenn der Dienst verfügbar ist, und sie können alle Microsoft 365-Gruppen erstellen und verwalten, Supporttickets verwalten sowie die Dienstintegrität überwachen. Weitere Informationen finden Sie unter [Informationen zu Administratorrollen](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d).
 
 > [!NOTE]
 > In Microsoft Graph-API und Azure AD PowerShell wird diese Rolle als „SharePoint-Dienstadministrator“ bezeichnet. Im [Azure-Portal](https://portal.azure.com) lautet sie „SharePoint-Administrator“.
@@ -496,7 +496,7 @@ Benutzer in dieser Rolle können Kommunikationsprobleme innerhalb von Microsoft 
 
 ### <a name="teams-service-administrator"></a>[Teams-Dienstadministrator](#teams-service-administrator-permissions)
 
-Benutzer mit dieser Rolle können alle Aspekte der Microsoft Teams-Workload über das Admin Center von Microsoft Teams und Skype for Business und die entsprechenden PowerShell-Module verwalten. Dazu zählen unter anderem alle Verwaltungstools im Zusammenhang mit Telefonie, Messaging, Besprechungen und den Teams selbst. Außerdem bietet diese Rolle die Möglichkeit, alle Office 365-Gruppen zu erstellen und zu verwalten, Supporttickets zu verwalten und die Dienstintegrität zu überwachen.
+Benutzer mit dieser Rolle können alle Aspekte der Microsoft Teams-Workload über das Admin Center von Microsoft Teams und Skype for Business und die entsprechenden PowerShell-Module verwalten. Dazu zählen unter anderem alle Verwaltungstools im Zusammenhang mit Telefonie, Messaging, Besprechungen und den Teams selbst. Außerdem bietet diese Rolle die Möglichkeit zum Erstellen und Verwalten aller Microsoft 365-Gruppen, Verwalten von Supporttickets und Überwachen der Dienstintegrität.
 
 ### <a name="user-administrator"></a>[Benutzeradministrator](#user-administrator-permissions)
 
@@ -513,7 +513,7 @@ Benutzer mit dieser Rolle können Benutzer erstellen und alle Aspekte von Benutz
 >
 >- Besitzer von Anwendungsregistrierungen und Unternehmensanwendungen, die Anmeldeinformationen von Apps verwalten können, die sie besitzen. Diese Apps können über höhere Berechtigungen in Azure AD und in anderen Diensten verfügen, die Benutzeradministratoren nicht gewährt werden. So kann ein Benutzeradministrator die Identität eines Anwendungsbesitzers annehmen und dann die Identität einer privilegierten Anwendung durch Aktualisieren der Anmeldeinformationen für die Anwendung annehmen.
 >- Besitzer von Azure-Abonnements, die ggf. auf vertrauliche oder private Informationen bzw. kritische Konfigurationen in Azure zugreifen können.
->- Besitzer von Sicherheitsgruppen und Office 365-Gruppen, die die Gruppenmitgliedschaft verwalten können. Diese Gruppen können Zugriff auf vertrauliche oder private Informationen bzw. kritische Konfigurationen in Azure AD und in anderen Diensten gewähren.
+>- Besitzer von Sicherheitsgruppen und Microsoft 365-Gruppen, die die Gruppenmitgliedschaft verwalten können. Diese Gruppen können Zugriff auf vertrauliche oder private Informationen bzw. kritische Konfigurationen in Azure AD und in anderen Diensten gewähren.
 >- Administratoren in anderen Diensten außerhalb von Azure AD wie Exchange Online, Office Security and Compliance Center und Personalwesen.
 >- Nichtadministratoren wie Führungskräfte, Rechtsberater und Mitarbeiter der Personalabteilung mit Zugriff auf vertrauliche oder private Informationen.
 
@@ -1030,7 +1030,6 @@ Lesen und Schreiben von grundlegenden Verzeichnisinformationen. Die Rolle gewäh
 | microsoft.directory/users/reprocessLicenseAssignment | Erneutes Verarbeiten der Lizenzzuweisungen für einen Benutzer in Azure Active Directory |
 | microsoft.directory/users/userPrincipalName/update | Aktualisieren der users.userPrincipalName-Eigenschaft in Azure Active Directory |
 
-
 ### <a name="exchange-service-administrator-permissions"></a>Berechtigungen von Exchange-Dienstadministratoren
 
 Verwalten sämtlicher Aspekte des Produkts Exchange.
@@ -1045,11 +1044,11 @@ Verwalten sämtlicher Aspekte des Produkts Exchange.
 | microsoft.azure.serviceHealth/allEntities/allTasks | Lesen und Konfigurieren von Azure Service Health |
 | microsoft.azure.supportTickets/allEntities/allTasks | Erstellen und Verwalten von Azure-Supporttickets |
 | microsoft.directory/groups/unified/appRoleAssignments/update | Aktualisieren der groups.unified-Eigenschaft in Azure Active Directory |
-| microsoft.directory/groups/unified/basic/update | Aktualisieren der Basiseigenschaften von Office 365-Gruppen |
-| microsoft.directory/groups/unified/create | Erstellen von Office 365-Gruppen |
-| microsoft.directory/groups/unified/delete | Löschen von Office 365-Gruppen |
-| microsoft.directory/groups/unified/members/update | Aktualisieren der Mitgliedschaft von Office 365-Gruppen |
-| microsoft.directory/groups/unified/owners/update | Aktualisieren des Besitzers von Office 365-Gruppen |
+| microsoft.directory/groups/unified/basic/update | Aktualisieren der Basiseigenschaften von Microsoft 365-Gruppen |
+| microsoft.directory/groups/unified/create | Erstellen von Microsoft 365-Gruppen |
+| microsoft.directory/groups/unified/delete | Löschen von Microsoft 365-Gruppen |
+| microsoft.directory/groups/unified/members/update | Aktualisieren der Mitgliedschaft von Microsoft 365-Gruppen |
+| microsoft.directory/groups/unified/owners/update | Aktualisieren des Besitzes von Microsoft 365-Gruppen |
 | microsoft.office365.exchange/allEntities/allTasks | Verwalten sämtlicher Aspekte von Exchange Online. |
 | microsoft.office365.network/performance/allProperties/read | Lesen von Seiten zur Netzwerkleistung in Admin Center von M365 |
 | microsoft.office365.serviceHealth/allEntities/allTasks | Lesen und Konfigurieren des Office 365-Dienststatus. |
@@ -1759,11 +1758,11 @@ Verwalten sämtlicher Aspekte des SharePoint-Diensts.
 | microsoft.azure.serviceHealth/allEntities/allTasks | Lesen und Konfigurieren von Azure Service Health |
 | microsoft.azure.supportTickets/allEntities/allTasks | Erstellen und Verwalten von Azure-Supporttickets |
 | microsoft.directory/groups/unified/appRoleAssignments/update | Aktualisieren der groups.unified-Eigenschaft in Azure Active Directory |
-| microsoft.directory/groups/unified/basic/update | Aktualisieren der Basiseigenschaften von Office 365-Gruppen |
-| microsoft.directory/groups/unified/create | Erstellen von Office 365-Gruppen |
-| microsoft.directory/groups/unified/delete | Löschen von Office 365-Gruppen |
-| microsoft.directory/groups/unified/members/update | Aktualisieren der Mitgliedschaft von Office 365-Gruppen |
-| microsoft.directory/groups/unified/owners/update | Aktualisieren des Besitzers von Office 365-Gruppen |
+| microsoft.directory/groups/unified/basic/update | Aktualisieren der Basiseigenschaften von Microsoft 365-Gruppen |
+| microsoft.directory/groups/unified/create | Erstellen von Microsoft 365-Gruppen |
+| microsoft.directory/groups/unified/delete | Löschen von Microsoft 365-Gruppen |
+| microsoft.directory/groups/unified/members/update | Aktualisieren der Mitgliedschaft von Microsoft 365-Gruppen |
+| microsoft.directory/groups/unified/owners/update | Aktualisieren des Besitzes von Microsoft 365-Gruppen |
 | microsoft.office365.network/performance/allProperties/read | Lesen von Seiten zur Netzwerkleistung in Admin Center von M365 |
 | microsoft.office365.serviceHealth/allEntities/allTasks | Lesen und Konfigurieren des Office 365-Dienststatus. |
 | microsoft.office365.sharepoint/allEntities/allTasks | Erstellen und Löschen aller Ressourcen und Lesen und Aktualisieren von Standardeigenschaften in microsoft.office365.sharepoint |
@@ -1834,11 +1833,11 @@ Kann den Microsoft Teams-Dienst verwalten.
 | microsoft.azure.supportTickets/allEntities/allTasks | Erstellen und Verwalten von Azure-Supporttickets |
 | microsoft.directory/groups/hiddenMembers/read | Lesen der groups.hiddenMembers-Eigenschaft in Azure Active Directory |
 | microsoft.directory/groups/unified/appRoleAssignments/update | Aktualisieren der groups.unified-Eigenschaft in Azure Active Directory |
-| microsoft.directory/groups/unified/basic/update | Aktualisieren der Basiseigenschaften von Office 365-Gruppen |
-| microsoft.directory/groups/unified/create | Erstellen von Office 365-Gruppen |
-| microsoft.directory/groups/unified/delete | Löschen von Office 365-Gruppen |
-| microsoft.directory/groups/unified/members/update | Aktualisieren der Mitgliedschaft von Office 365-Gruppen |
-| microsoft.directory/groups/unified/owners/update | Aktualisieren des Besitzers von Office 365-Gruppen |
+| microsoft.directory/groups/unified/basic/update | Aktualisieren der Basiseigenschaften von Microsoft 365-Gruppen |
+| microsoft.directory/groups/unified/create | Erstellen von Microsoft 365-Gruppen |
+| microsoft.directory/groups/unified/delete | Löschen von Microsoft 365-Gruppen |
+| microsoft.directory/groups/unified/members/update | Aktualisieren der Mitgliedschaft von Microsoft 365-Gruppen |
+| microsoft.directory/groups/unified/owners/update | Aktualisieren des Besitzes von Microsoft 365-Gruppen |
 | microsoft.office365.network/performance/allProperties/read | Lesen von Seiten zur Netzwerkleistung in Admin Center von M365 |
 | microsoft.office365.serviceHealth/allEntities/allTasks | Lesen und Konfigurieren des Office 365-Dienststatus. |
 | microsoft.office365.supportTickets/allEntities/allTasks | Erstellen und Verwalten von Office 365-Supporttickets. |

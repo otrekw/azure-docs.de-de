@@ -3,12 +3,12 @@ title: Upgraden von Clusterknoten für die Verwendung verwalteter Azure-Datentr�
 description: Im diesem Artikel wird erläutert, wie Sie einen vorhandenen Service Fabric-Cluster mit geringer oder gar keiner Downtime so upgraden, dass dieser verwaltete Azure-Datenträger verwendet.
 ms.topic: how-to
 ms.date: 4/07/2020
-ms.openlocfilehash: 10863626945483e21aa264e2b05e94a6f08a22f6
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 1ca85af86df28691e2194c40e1cdde1abd7c8a4d
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87542852"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192299"
 ---
 # <a name="upgrade-cluster-nodes-to-use-azure-managed-disks"></a>Upgraden von Clusterknoten für die Verwendung verwalteter Azure-Datenträger
 
@@ -23,6 +23,9 @@ Die allgemeine Vorgehensweise beim Upgraden eines Service Fabric-Clusterknotens 
 3. Überprüfen Sie, ob der Cluster und die neuen Knoten fehlerfrei sind, und entfernen Sie dann die ursprüngliche Skalierungsgruppe und den Knotenzustand für die gelöschten Knoten.
 
 In diesem Artikel wird beschrieben, mit welchen Schritten Sie den primären Knotentyp eines Beispielclusters upgraden, sodass dieser verwaltete Datenträger verwendet, und dabei jegliche Clusterdowntime vermeiden (siehe Hinweis unten). Der anfängliche Zustand des Beispieltestclusters besteht aus einem Knotentyp der [Dauerhaftigkeitsstufe „Silber“](service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster), der eine einzelne Skalierungsgruppe mit fünf Knoten enthält.
+
+> [!NOTE]
+> Durch die Einschränkungen eines Lastenausgleichs der SKU „Basic“ wird verhindert, dass eine weitere Skalierungsgruppe hinzugefügt wird. Es wird empfohlen, stattdessen den Lastenausgleich der SKU „Standard“ zu verwenden. Weitere Informationen finden Sie im [Vergleich der beiden SKUs](/azure/load-balancer/skus).
 
 > [!CAUTION]
 > Bei diesem Verfahren treten nur dann Ausfälle auf, wenn im Cluster-DNS Abhängigkeiten bestehen (z. B. beim Zugriff auf [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)). Zu den [bewährten Architekturmethoden für Front-End-Dienste](/azure/architecture/microservices/design/gateway) zählt das Implementieren eines [Lastenausgleichs](/azure/architecture/guide/technology-choices/load-balancing-overview), der Ihren Knotentypen vorgeschaltet ist und den Knotenaustausch ohne Dienstausfälle ermöglicht.
@@ -165,7 +168,7 @@ Nachfolgend finden Sie abschnittsweise die Änderungen an der ursprünglichen Be
 
 #### <a name="parameters"></a>Parameter
 
-Fügen Sie einen Parameter für den Instanznamen der neuen Skalierungsgruppe hinzu. Beachten Sie, dass `vmNodeType1Name` für die neue Skalierungsgruppe spezifisch ist, während die Anzahl und die Größe mit der ursprünglichen Skalierungsgruppe identisch sind.
+Fügen Sie neue Parameter für den Instanznamen, die Instanzanzahl und die Größe der neuen Skalierungsgruppe hinzu. Beachten Sie, dass `vmNodeType1Name` für die neue Skalierungsgruppe spezifisch ist, während die Anzahl und die Größe mit der ursprünglichen Skalierungsgruppe identisch sind.
 
 **Vorlagendatei**
 
@@ -174,7 +177,18 @@ Fügen Sie einen Parameter für den Instanznamen der neuen Skalierungsgruppe hin
     "type": "string",
     "defaultValue": "NTvm2",
     "maxLength": 9
-}
+},
+"nt1InstanceCount": {
+    "type": "int",
+    "defaultValue": 5,
+    "metadata": {
+        "description": "Instance count for node type"
+    }
+},
+"vmNodeType1Size": {
+    "type": "string",
+    "defaultValue": "Standard_D2_v2"
+},
 ```
 
 **Parameterdatei**
@@ -182,6 +196,12 @@ Fügen Sie einen Parameter für den Instanznamen der neuen Skalierungsgruppe hin
 ```json
 "vmNodeType1Name": {
     "value": "NTvm2"
+},
+"nt1InstanceCount": {
+    "value": 5
+},
+"vmNodeType1Size": {
+    "value": "Standard_D2_v2"
 }
 ```
 
@@ -199,13 +219,13 @@ Fügen Sie im Abschnitt `variables` der Bereitstellungsvorlage einen Eintrag fü
 
 Fügen Sie im Abschnitt *resources* der Bereitstellungsvorlage die neue VM-Skalierungsgruppe hinzu, und beachten Sie dabei Folgendes:
 
-* Die neue Skalierungsgruppe verweist auf den neuen Knotentyp:
+* Die neue Skalierungsgruppe verweist auf denselben Knotentyp wie die ursprüngliche:
 
     ```json
-    "nodeTypeRef": "[parameters('vmNodeType1Name')]",
+    "nodeTypeRef": "[parameters('vmNodeType0Name')]",
     ```
 
-* Die neue Skalierungsgruppe verweist auf dieselbe Back-End-Adresse und dasselbe Subnetz des Lastenausgleichs wie die ursprüngliche, verwendet jedoch einen anderen eingehenden NAT-Pool für den Lastenausgleich:
+* Die neue Skalierungsgruppe verweist auf dieselbe Back-End-Adresse und dasselbe Subnetz des Lastenausgleichs (verwendet jedoch einen anderen eingehenden NAT-Pool für den Lastenausgleich):
 
    ```json
     "loadBalancerBackendAddressPools": [
@@ -236,33 +256,6 @@ Fügen Sie im Abschnitt *resources* der Bereitstellungsvorlage die neue VM-Skali
         "storageAccountType": "[parameters('storageAccountType')]"
     }
     ```
-
-Fügen Sie als Nächstes der Liste `nodeTypes` der Ressource *Microsoft.ServiceFabric/clusters* einen Eintrag hinzu. Verwenden Sie die gleichen Werte wie beim ursprüngliche Knotentypeintrag, mit Ausnahme von `name`, der auf den neuen Knotentyp (*vmNodeType1Name*) verweisen soll.
-
-```json
-"nodeTypes": [
-    {
-        "name": "[parameters('vmNodeType0Name')]",
-        ...
-    },
-    {
-        "name": "[parameters('vmNodeType1Name')]",
-        "applicationPorts": {
-            "endPort": "[parameters('nt0applicationEndPort')]",
-            "startPort": "[parameters('nt0applicationStartPort')]"
-        },
-        "clientConnectionEndpointPort": "[parameters('nt0fabricTcpGatewayPort')]",
-        "durabilityLevel": "Silver",
-        "ephemeralPorts": {
-            "endPort": "[parameters('nt0ephemeralEndPort')]",
-            "startPort": "[parameters('nt0ephemeralStartPort')]"
-        },
-        "httpGatewayEndpointPort": "[parameters('nt0fabricHttpGatewayPort')]",
-        "isPrimary": true,
-        "vmInstanceCount": "[parameters('nt0InstanceCount')]"
-    }
-],
-```
 
 Wenn Sie alle Änderungen in der Vorlagen- und der Parameterdatei implementiert haben, fahren Sie mit dem nächsten Abschnitt fort, um Ihre Key Vault-Verweise abzurufen und die Updates in Ihrem Cluster bereitzustellen.
 

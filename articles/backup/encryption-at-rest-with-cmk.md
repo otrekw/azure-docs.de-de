@@ -3,12 +3,12 @@ title: Verschlüsselung von Sicherungsdaten mit von Kunden verwalteten Schlüsse
 description: Hier erfahren Sie, wie Sie mit Azure Backup Sicherungsdaten mithilfe von kundenseitig verwalteten Schlüsseln (Customer-Managed Keys, CMK) verschlüsseln können.
 ms.topic: conceptual
 ms.date: 07/08/2020
-ms.openlocfilehash: 1586a40d115a591c474c3bc8c1fed5448eb90bcd
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: dfed3f983867568befc77d7dbc81cdde70eef9ed
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387998"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589604"
 ---
 # <a name="encryption-of-backup-data-using-customer-managed-keys"></a>Verschlüsselung von Sicherungsdaten mit von Kunden verwalteten Schlüsseln
 
@@ -39,7 +39,7 @@ In diesem Artikel werden die folgenden Themen behandelt:
 
 - Diese Funktion kann derzeit nur über das Azure-Portal konfiguriert werden.
 
-[!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
+Wenn Sie Ihren Recovery Services-Tresor noch nicht erstellt und konfiguriert haben, wird [hier](backup-create-rs-vault.md) beschrieben, wie Sie dies tun können.
 
 ## <a name="configuring-a-vault-to-encrypt-using-customer-managed-keys"></a>Konfigurieren eines Tresors mithilfe von kundenseitig verwalteten Schlüsseln
 

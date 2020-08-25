@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/11/2020
 ms.topic: article
-ms.openlocfilehash: 46560f067e020236031487677ad4f48a9560d4e1
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: 4e65655f1809c6badc50e39a2a5e932516ef99d2
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80679216"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88509840"
 ---
 # <a name="use-the-session-management-rest-api"></a>Verwenden der REST-API für die Sitzungsverwaltung
 
@@ -71,9 +71,9 @@ Dieser Befehl erstellt eine Sitzung. Er gibt die ID der neuen Sitzung zurück. S
 
 **Anforderungstext:**
 
-* maxLeaseTime (Zeitspanne): ein Timeoutwert, nach dem die VM automatisch außer Betrieb gesetzt wird
+* maxLeaseTime (Zeitspanne): ein Timeoutwert, nach dem die Sitzung automatisch außer Betrieb gesetzt wird
 * models (Array): Ressourcencontainer-URLs, die vorab geladen werden sollen
-* size (Zeichenfolge): die VM-Größe (**standard** oder **premium**). Weitere Informationen finden Sie bei den spezifischen [VM-Größenbeschränkungen](../reference/limits.md#overall-number-of-polygons).
+* size (Zeichenfolge): die zu konfigurierende Servergröße ([ **„Standard“** ](../reference/vm-sizes.md) oder [ **„Premium“** ](../reference/vm-sizes.md)). Weitere Informationen finden Sie bei den spezifischen [Größenbeschränkungen](../reference/limits.md#overall-number-of-polygons).
 
 **Antworten:**
 
@@ -130,7 +130,7 @@ Mit diesem Befehl werden die Parameter einer Sitzung aktualisiert. Derzeit könn
 
 **Anforderungstext:**
 
-* maxLeaseTime (Zeitspanne): ein Timeoutwert, nach dem die VM automatisch außer Betrieb gesetzt wird
+* maxLeaseTime (Zeitspanne): ein Timeoutwert, nach dem die Sitzung automatisch außer Betrieb gesetzt wird
 
 **Antworten:**
 

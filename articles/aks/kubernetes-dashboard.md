@@ -6,12 +6,12 @@ author: mlearned
 ms.topic: article
 ms.date: 06/03/2020
 ms.author: mlearned
-ms.openlocfilehash: 69e60c3e4ac91a5d0ca9a0245dc61f090c625c60
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 35424c0a9e566a9dfa780c524e23945348335040
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86499864"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88225987"
 ---
 # <a name="access-the-kubernetes-web-dashboard-in-azure-kubernetes-service-aks"></a>Zugreifen auf das Kubernetes-Webdashboard in Azure Kubernetes Service (AKS)
 
@@ -20,7 +20,7 @@ Kubernetes enthält ein Webdashboard, das für einfache Verwaltungsvorgänge ver
 Weitere Informationen zum Kubernetes-Dashboard finden Sie unter [Web UI (Dashboard)][kubernetes-dashboard] (Webbenutzeroberfläche (Dashboard)). AKS verwendet Version 2.0 und höher des Open-Source-Dashboards.
 
 > [!WARNING]
-> **Das AKS-Dashboard-Add-On ist für die Einstellung festgelegt.** 
+> **Das AKS-Dashboard-Add-On ist zur Einstellung festgelegt. Verwenden Sie stattdessen die [Kubernetes-Ressourcenansicht im Azure-Portal (Vorschau)][kubernetes-portal].** 
 > * Das Kubernetes-Dashboard ist für Cluster mit einer Kubernetes-Version unter 1.18 standardmäßig aktiviert.
 > * Das Dashboard-Add-On wird standardmäßig für alle neuen Cluster deaktiviert, die unter Kubernetes 1.18 oder höher erstellt werden. 
  > * Ab Kubernetes 1.19 in der Vorschauversion unterstützt AKS die Installation des verwalteten Add-Ons „kube-dashboard“ nicht mehr. 
@@ -209,3 +209,4 @@ Weitere Informationen zum Kubernetes-Dashboard finden Sie unter [Kubernetes-Dash
 [az-aks-browse]: /cli/azure/aks#az-aks-browse
 [az-aks-get-credentials]: /cli/azure/aks?view=azure-cli-latest#az-aks-get-credentials
 [install-azure-cli]: /cli/azure/install-azure-cli
+[kubernetes-portal]: ./kubernetes-portal.md

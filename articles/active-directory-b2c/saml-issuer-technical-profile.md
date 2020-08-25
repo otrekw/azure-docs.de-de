@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 04/27/2020
+ms.date: 08/17/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: d709bf02f1cb504121e52f88385d0f6c074b24a0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bb5383ee7930cb3d54593f71a709c033d3850889
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85203587"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88521211"
 ---
 # <a name="define-a-technical-profile-for-a-saml-token-issuer-in-an-azure-active-directory-b2c-custom-policy"></a>Definieren eines technischen Profils für einen SAML-Tokenaussteller in einer benutzerdefinierten Richtlinie in Azure Active Directory B2C
 
@@ -57,6 +57,7 @@ Die Elemente **InputClaims**, **OutputClaims** und **PersistClaims** sind leer o
 | attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | IssuerUri | Nein | Der Ausstellername, der in der SAML-Antwort angezeigt wird. Der Wert sollte mit dem Namen übereinstimmen, der in der Anwendung der vertrauenden Seite konfiguriert ist. |
+| XmlSignatureAlgorithm | Nein | Die Methode, die Azure AD B2C zur Signierung der SAML-Assertion verwendet. Mögliche Werte: `Sha256`, `Sha384`, `Sha512` oder `Sha1`. Vergewissern Sie sich, dass Sie den Signaturalgorithmus auf beiden Seiten mit demselben Wert konfigurieren. Verwenden Sie nur den Algorithmus, den Ihr Zertifikat unterstützt. Informationen zum Konfigurieren der SAML-Antwort finden Sie unter [SAML-Metadaten der vertrauenden Seite](relyingparty.md#metadata)|
 
 ## <a name="cryptographic-keys"></a>Kryptografische Schlüssel
 
@@ -76,15 +77,4 @@ Zum Konfigurieren der Azure AD B2C-SAML-Sitzungen zwischen einer Anwendung der v
 Im folgenden Artikel finden Sie ein Beispiel für die Verwendung eines technischen Profils für einen SAML-Aussteller:
 
 - [Registrieren einer SAML-Anwendung in Azure AD B2C](connect-with-saml-service-providers.md)
-
-
-
-
-
-
-
-
-
-
-
 

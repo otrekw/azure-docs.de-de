@@ -4,12 +4,12 @@ description: In diesem Artikel erfahren Sie, wie Sie Ihren Cluster mithilfe der 
 services: container-service
 ms.topic: article
 ms.date: 07/18/2019
-ms.openlocfilehash: af09d594dd745b64901965499df4245fa2e6a85f
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 9f1dcc64569e9822e3703312740450e2528479dc
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87130833"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88257505"
 ---
 # <a name="automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>Automatisches Skalieren eines Clusters zur Erfüllung von Anwendungsanforderungen in Azure Kubernetes Service (AKS)
 
@@ -20,12 +20,6 @@ In diesem Artikel wird gezeigt, wie Sie die Autoskalierung für Cluster in einem
 ## <a name="before-you-begin"></a>Voraussetzungen
 
 Der Artikel setzt voraus, dass Sie mindestens Version 2.0.76 der Azure-Befehlszeilenschnittstelle (Azure CLI) ausführen. Führen Sie `az --version` aus, um die Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI][azure-cli-install].
-
-## <a name="limitations"></a>Einschränkungen
-
-Die folgenden Einschränkungen gelten für die Erstellung und Verwaltung von AKS-Clustern, die die automatische Clusterskalierung verwenden:
-
-* Das Add-On für das HTTP-Anwendungsrouting kann nicht verwendet werden.
 
 ## <a name="about-the-cluster-autoscaler"></a>Grundlegendes zur Autoskalierung für Cluster
 
@@ -44,7 +38,7 @@ Sowohl über die horizontale automatische Podskalierung als auch über die Autos
 
 Weitere Informationen dazu, warum ein zentrales Herunterskalieren über die Autoskalierung für Cluster möglicherweise nicht möglich ist, finden Sie unter [What types of pods can prevent the cluster autoscaler from removing a node?][autoscaler-scaledown] (Welche Podtypen können das Entfernen eines Knotens durch die Autoskalierung für Cluster verhindern?).
 
-Die Autoskalierung für Cluster verwendet Startparameter, um z.B. Zeitintervalle zwischen Skalierungsereignissen und Ressourcenschwellenwerte zu steuern. Weitere Informationen zu den von der Autoskalierung für Cluster verwendeten Parametern finden Sie unter [What are the cluster autoscaler parameters?][autoscaler-parameters] (Welche Parameter verwendet die Autoskalierung für Cluster?).
+Die Autoskalierung für Cluster verwendet Startparameter, um z.B. Zeitintervalle zwischen Skalierungsereignissen und Ressourcenschwellenwerte zu steuern. Weitere Informationen zu den Parametern, die von der Autoskalierung für Cluster verwendet werden, finden Sie unter [Verwenden des Autoskalierungsprofils](#using-the-autoscaler-profile).
 
 Die automatische Clusterskalierung und die horizontale automatische Podskalierung können zusammenarbeiten und werden häufig beide in einem Cluster bereitgestellt. In Kombination konzentriert sich die horizontale automatische Podskalierung auf die Anzahl von Pods, die zum Erfüllen der Anwendungsanforderungen benötigt werden. Die Autoskalierung für Cluster konzentriert sich auf die Anzahl von Knoten, die zum Unterstützen der geplanten Pods erforderlich sind.
 

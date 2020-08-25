@@ -3,12 +3,12 @@ title: 'Wiedergeben von mehrtägigen Aufzeichnungen: Azure'
 description: In diesem Tutorial erfahren Sie, wie Sie Azure Media Service-APIs verwenden, um eine mehrtägige fortlaufende Videoaufzeichnung wiederzugeben.
 ms.topic: tutorial
 ms.date: 05/27/2020
-ms.openlocfilehash: 52ef33e8c4380e9c21e99c4ba45b7f25f7c57780
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.openlocfilehash: 19a42c61ef250fecce4503d3aed70b36d71ee3cf
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84433658"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88649090"
 ---
 # <a name="tutorial-playback-of-multi-day-recordings"></a>Tutorial: Wiedergeben von mehrtägigen Aufzeichnungen  
 
@@ -40,7 +40,7 @@ Es empfiehlt sich, sich mit den folgenden Dokumentationsseiten vertraut zu mache
 
 ## <a name="run-the-sample"></a>Ausführen des Beispiels 
 
-Im Rahmen des [CVR-Tutorials](continuous-video-recording-tutorial.md) haben Sie ein Media Service-Konto erstellt. Für dieses Tutorial benötigen Sie vollständigen API-Zugriff auf dieses Konto. Sie können mithilfe der Schritte in [Abrufen von Anmeldeinformationen für den Zugriff auf die Media Services-API](../latest/access-api-howto.md#use-the-azure-portal) einen Dienstprinzipal erstellen. Sie sollten einen JSON-Block aus dem Azure-Portal abrufen können, der wie folgt aussieht:
+Im Rahmen des [CVR-Tutorials](continuous-video-recording-tutorial.md) haben Sie ein Media Service-Konto erstellt. Für dieses Tutorial benötigen Sie vollständigen API-Zugriff auf dieses Konto. Sie können mithilfe der Schritte in [Abrufen von Anmeldeinformationen für den Zugriff auf die Media Services-API](../latest/access-api-howto.md?tabs=portal) einen Dienstprinzipal erstellen. Sie sollten einen JSON-Block aus dem Azure-Portal abrufen können, der wie folgt aussieht:
 
 ```
 {

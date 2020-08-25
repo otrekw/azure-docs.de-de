@@ -3,12 +3,12 @@ title: Informationen zur Sicherung von Azure-VMs
 description: In diesem Artikel erfahren Sie, wie der Azure Backup-Dienst virtuelle Azure-Computer sichert und wie bewährte Methoden befolgt werden können.
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: 3c73b489404d1e8198fbd984b5188a7a2ccb973f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 04ea9fa49d95ced3245f88fee58a23ba67aaa0d7
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091044"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88587496"
 ---
 # <a name="an-overview-of-azure-vm-backup"></a>Ein Überblick über die Sicherung von Azure-VMs
 
@@ -51,8 +51,8 @@ Wenn Sie Azure-VMs mit Azure Backup sichern, werden ruhende VMs mit der Speicher
 
 **Verschlüsselung** | **Details** | **Unterstützung**
 --- | --- | ---
+**SSE** | Mit SSE bietet Azure Storage eine Verschlüsselung im Ruhezustand, indem Daten vor der Speicherung automatisch verschlüsselt werden. Azure Storage entschlüsselt auch Daten vor dem Abrufen. Azure Backup unterstützt Sicherungen von VMs mit zwei Arten von Speicherdienstverschlüsselung:<li> **SSE mit von der Plattform verwalteten Schlüsseln**: Diese Verschlüsselung gilt standardmäßig für alle Datenträger in Ihren VMs. Weitere Informationen finden Sie [hier](https://docs.microsoft.com/azure/virtual-machines/windows/disk-encryption#platform-managed-keys).<li> **SSE mit von Kunden verwalteten Schlüsseln** (CMK). Mit CMK verwalten Sie die Schlüssel, die zum Verschlüsseln der Datenträger verwendet werden. Weitere Informationen finden Sie [hier](https://docs.microsoft.com/azure/virtual-machines/windows/disk-encryption#customer-managed-keys). | Azure Backup verwendet SSE zur Verschlüsselung ruhender Azure-VMs.
 **Azure-Datenträgerverschlüsselung** | Azure Disk Encryption verschlüsselt sowohl Betriebssystemdatenträger als auch sonstige Datenträger für Azure-VMs.<br/><br/> Azure Disk Encryption kann in BitLocker-Verschlüsselungsschlüssel (BEK) integriert werden, die in einem Schlüsseltresor als Geheimnisse geschützt werden. Azure Disk Encryption kann auch in Azure Key Vault-Schlüssel für die Schlüsselverschlüsselung (Key Encryption Keys, KEK) integriert werden. | Azure Backup unterstützt die Sicherung verwalteter und nicht verwalteter Azure-VMs, die nur mit BEKs oder sowohl mit BEKs als auch mit KEKs verschlüsselt sind.<br/><br/> Sowohl BEKs als auch KEKs werden gesichert und verschlüsselt.<br/><br/> Da KEKs und BEKs gesichert werden, können Benutzer mit den erforderlichen Berechtigungen bei Bedarf Schlüssel und Geheimnisse im Schlüsseltresor wiederherstellen. Diese Benutzer können auch die verschlüsselte VM wiederherstellen.<br/><br/> Verschlüsselte Schlüssel und Geheimnisse können von nicht dafür autorisierten Benutzern oder von Azure nicht gelesen werden.
-**SSE** | Mit SSE bietet Azure Storage eine Verschlüsselung im Ruhezustand, indem Daten vor der Speicherung automatisch verschlüsselt werden. Azure Storage entschlüsselt auch Daten vor dem Abrufen. | Azure Backup verwendet SSE zur Verschlüsselung ruhender Azure-VMs.
 
 Backup unterstützt die Sicherung verwalteter und nicht verwalteter Azure-VMs, die nur mit BEKs oder sowohl mit BEKs als auch mit KEKs verschlüsselt sind.
 
@@ -140,4 +140,4 @@ Die tatsächliche Größe der VM beträgt in diesem Fall 17 GB + 30 GB + 0 GB = 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Bereiten Sie jetzt die Azure-VM-Sicherung vor](backup-azure-arm-vms-prepare.md).
+- [Vorbereitungen für die Azure VM-Sicherung](backup-azure-arm-vms-prepare.md).

@@ -9,18 +9,17 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/18/2020
-ms.openlocfilehash: 48b94b8cd047f62ea13bf4e062254088ea11840e
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 6b07236fd639c9878c59523f78de5215b173ffc6
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83663598"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88553163"
 ---
 # <a name="set-up-an-indexer-connection-to-a-data-source-using-a-managed-identity-preview"></a>Einrichten einer Indexerverbindung mit einer Datenquelle mithilfe einer verwalteten Identität (Vorschau)
 
 > [!IMPORTANT] 
-> Das Einrichten einer Verbindung mit einer Datenquelle mithilfe einer verwalteten Identität wird derzeit in einer geschlossenen öffentlichen Vorschauversion unterstützt. Die Vorschaufunktion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen.
-> Füllen Sie [dieses Formular](https://aka.ms/azure-cognitive-search/mi-preview-request) aus, wenn Sie Zugriff auf die Vorschauversion anfordern möchten.
+> Das Einrichten einer Verbindung mit einer Datenquelle mithilfe einer verwalteten Identität wird derzeit in einer öffentlichen Vorschauversion unterstützt. Die Vorschaufunktion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen.
 
 Ein [Indexer](search-indexer-overview.md) in Azure Cognitive Search ist ein Crawler, mit dem Daten aus Ihrer Datenquelle in Azure Cognitive Search abgerufen werden können. Ein Indexer ruft eine Datenquellenverbindung aus dem von Ihnen erstellten Datenquellenobjekt ab. Das Datenquellenobjekt enthält im Allgemeinen Anmeldeinformationen für die Zieldatenquelle. Beispielsweise kann das Datenquellenobjekt einen Azure Storage-Kontoschlüssel enthalten, wenn Sie Daten aus einem Blobspeichercontainer indizieren möchten.
 

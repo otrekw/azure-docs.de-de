@@ -5,29 +5,36 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 08/01/2019
+ms.date: 08/19/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 596296069686e843d0be1899cce8929417b70bcc
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: bf041163c6b2759b3d38e48ee98a0d528ec601db
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85964582"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88606901"
 ---
 # <a name="understand-your-azure-cosmos-db-bill"></a>Grundlegendes zu Ihrer Azure Cosmos DB-Rechnung
 
-Als vollständig verwalteter cloudnativer Datenbankdienst vereinfacht Azure Cosmos DB die Abrechnung, da nur der bereitgestellte Durchsatz und die Speichernutzung berechnet werden. Im Vergleich zu lokalen oder über IaaS gehostete Alternativen gibt es keine zusätzlichen Lizenzgebühren und keine Kosten für Hardware, Hilfsprogramme oder Gebäude. Wenn Sie dazu noch die Funktionalität zum Einbeziehen mehrerer Regionen berücksichtigen, sorgt der Datenbankdienst gegenüber vorhandenen lokalen oder über IaaS gehosteten Lösungen für eine deutliche Reduzierung der Kosten.
+Als vollständig verwalteter cloudnativer Datenbankdienst vereinfacht Azure Cosmos DB die Abrechnung, da nur die Datenbankvorgänge und die Speichernutzung berechnet werden. Im Vergleich zu lokalen oder über IaaS gehostete Alternativen gibt es keine zusätzlichen Lizenzgebühren und keine Kosten für Hardware, Hilfsprogramme oder Gebäude. Wenn Sie dazu noch die Funktionalität zum Einbeziehen mehrerer Regionen berücksichtigen, sorgt der Datenbankdienst gegenüber vorhandenen lokalen oder über IaaS gehosteten Lösungen für eine deutliche Reduzierung der Kosten.
 
-Azure Cosmos DB wird auf Stundenbasis und auf Grundlage des bereitgestellten Durchsatzes und des genutzten Speichers berechnet. Die Abrechnungseinheit für bereitgestellten Durchsatz ist 100 RUs/Sek. pro Stunde. Aktuelle Preisinformationen finden Sie auf der Seite [Azure Cosmos DB – Preise](https://azure.microsoft.com/pricing/details/cosmos-db/). Die Speichernutzung wird pro 1 GB/Monat berechnet. Aktuelle Preisinformationen finden Sie auf der Seite [Azure Cosmos DB – Preise](https://azure.microsoft.com/pricing/details/cosmos-db/).
+- **Datenbankvorgänge**: Die Art und Weise, wie Ihre Datenbankvorgänge abgerechnet werden, hängt vom Typ des Azure Cosmos-Kontos ab, das Sie verwenden.
 
-Dieser Artikel enthält einige Beispiele, damit die einzelnen Positionen auf der monatlichen Rechnung besser verständlich sind. Die in den Beispielen genannten Zahlen können von Ihren Zahlen abweichen, wenn Sie für Ihre Azure Cosmos-Container eine andere Menge als bereitgestellten Umsatz ausgewählt haben, die Container sich über mehrere Regionen erstrecken oder ein anderer Ausführungszeitraum abgerechnet wird (z. B. mehr als ein Monat). Die Berechnung der Rechnung basiert in den Beispielen dieses Artikels jeweils auf den Preisinformationen, die auf der Seite [Azure Cosmos DB – Preise](https://azure.microsoft.com/pricing/details/cosmos-db/) angegeben sind.
+  - **Bereitgestellter Durchsatz**: Die Abrechnung erfolgt auf Stundenbasis für den für die jeweilige Stunde bereitgestellten maximalen Durchsatz in Inkrementen von 100 RU/s.
+  - **Serverlos**: Ihnen wird die Gesamtmenge der durch Ihre Datenbankvorgänge pro Stunde verbrauchten Anforderungseinheiten in Rechnung gestellt.
+
+- **Storage**: Für die Gesamtmenge des Speichers (in GB), der für Daten und Indizes für eine angegebene Stunde genutzt wird, wird eine Pauschale berechnet.
+
+Aktuelle Preisinformationen finden Sie auf der [Preisseite](https://azure.microsoft.com/pricing/details/cosmos-db/).
+
+Dieser Artikel enthält einige Beispiele, damit die einzelnen Positionen auf der monatlichen Rechnung besser verständlich sind. Die in den Beispielen genannten Zahlen können von Ihren Zahlen abweichen, wenn Sie für Ihre Azure Cosmos-Container eine andere Menge als bereitgestellten Umsatz ausgewählt haben, die Container sich über mehrere Regionen erstrecken oder ein anderer Ausführungszeitraum abgerechnet wird (z. B. mehr als ein Monat). Die Abrechnung basiert in den Beispielen dieses Artikels jeweils auf den Preisinformationen, die auf der Seite [Azure Cosmos DB – Preise](https://azure.microsoft.com/pricing/details/cosmos-db/) angegeben sind.
 
 > [!NOTE]
 > Die Abrechnung erfolgt für einen beliebigen Teil einer Stunde, nicht die Dauer von 60 Minuten. Alle in diesem Dokument gezeigten Beispiele basieren auf dem Preis für ein Azure Cosmos-Konto, das in einer Region in den USA bereitgestellt wird, bei der es sich nicht um eine Government-Region handelt. Die Preise und die Berechnung variieren je nach verwendeter Region. Aktuelle Preisinformationen finden Sie auf der Seite [Azure Cosmos DB – Preise](https://azure.microsoft.com/pricing/details/cosmos-db/).
 
 ## <a name="billing-examples"></a>Abrechnungsbeispiele
 
-### <a name="billing-example---throughput-on-a-container-full-month"></a>Abrechnungsbeispiel: Durchsatz für einen Container (ganzer Monat)
+### <a name="billing-example---provisioned-throughput-on-a-container-full-month"></a>Abrechnungsbeispiel: bereitgestellter Durchsatz für einen Container (ganzer Monat)
 
 * Angenommen, Sie konfigurieren einen Durchsatz von 1.000 RUs/Sek. für einen Container, und zwar für 24 Stunden x 30 Tage im Monat = 720 Stunden.  
 
@@ -39,13 +46,21 @@ Dieser Artikel enthält einige Beispiele, damit die einzelnen Positionen auf der
 
 * Auf der monatlichen Gesamtrechnung sind 7.200 Einheiten (à 100 RUs/Sek.) ausgewiesen, die 57,60 US-Dollar kosten.
 
-### <a name="billing-example---throughput-on-a-container-partial-month"></a>Abrechnungsbeispiel: Durchsatz für einen Container (anteiliger Monat)
+### <a name="billing-example---provisioned-throughput-on-a-container-partial-month"></a>Abrechnungsbeispiel: bereitgestellter Durchsatz für einen Container (anteiliger Monat)
 
 * Angenommen, Sie erstellen einen Container mit einem bereitgestellten Durchsatz von 2.500 RU/Sek. Der Container ist im betreffenden Monat 24 Stunden lang in Betrieb. (Er wird beispielsweise 24 Stunden nach der Erstellung wieder gelöscht).  
 
 * Dann werden auf der Rechnung 600 Einheiten ausgewiesen (2.500 RUs/Sek. geteilt durch die Grundeinheit von 100 RUs/Sek. x 24 Stunden). Die Kosten belaufen sich auf 4,80 US-Dollar (600 Einheiten mal 0,008 US-Dollar pro Einheit).
 
 * Die Gesamtrechnung für den Monat beträgt 4,80 US-Dollar.
+
+### <a name="billing-example---serverless-container"></a>Abrechnungsbeispiel: serverloser Container
+
+* Angenommen, wir erstellen einen serverlosen Container. 
+
+* Im Laufe eines Monats geben wir Datenbankanforderungen aus, die insgesamt 500.000-Anforderungseinheiten nutzen. Die Kosten belaufen sich auf 0,125 USD (500.000 * 0,25 USD/Million).
+
+* Die Gesamtrechnung für den Monat beträgt 0,125 USD.
 
 ### <a name="billing-rate-if-storage-size-changes"></a>Abrechnungssatz bei Änderung der Speichergröße
 
@@ -55,7 +70,7 @@ Die Einheit für die Speicherkapazität ist die pro Stunde maximal gespeicherte 
 
 Ihnen wird für jede Stunde, die der Container oder die Datenbank vorhanden ist, die Stundenpauschale in Rechnung gestellt, und zwar unabhängig von der Nutzung oder davon, ob der Container oder die Datenbank weniger als eine Stunde aktiv ist. Wenn Sie beispielsweise einen Container oder eine Datenbank erstellen und diesen bzw. diese fünf Minuten später löschen, enthält Ihre Rechnung eine Stunde.
 
-### <a name="billing-rate-when-throughput-on-a-container-or-database-scales-updown"></a>Abrechnungssatz beim Hoch- oder Herunterskalieren eines Containers oder einer Datenbank
+### <a name="billing-rate-when-provisioned-throughput-on-a-container-or-database-scales-updown"></a>Abrechnungsrate für bereitgestellten Durchsatz für einen Container oder Hoch-/Herunterskalieren einer Datenbank
 
 Wenn Sie um 9.30 Uhr den bereitgestellten Durchsatz von 400 RUs/Sek. auf 1.000 RUs/Sek. erhöhen und um 10.45 Uhr wieder auf 400 RUs/Sek. reduzieren, wird Ihnen der Durchsatz von 1.000 RUs/Sek. für zwei Stunden berechnet. 
 
@@ -75,7 +90,7 @@ Wenn Sie um 9.30 Uhr den bereitgestellten Durchsatz für einen oder mehrere Cont
 
 :::image type="content" source="./media/understand-your-bill/bill-example1.png" alt-text="Abrechnungsbeispiel für dedizierten Durchsatz":::
 
-### <a name="billing-example-containers-with-shared-throughput-mode"></a>Abrechnungsbeispiel: Mehrere Container mit gemeinsam genutztem Durchsatz
+### <a name="billing-example-containers-with-shared-provisioned-throughput-mode"></a>Abrechnungsbeispiel: Container mit gemeinsam genutztem (bereitgestelltem) Durchsatzmodus
 
 * Wenn Sie in der Region „USA, Osten 2“ ein Azure Cosmos-Konto mit zwei Azure Cosmos-Datenbanken (mit einer Reihe von Containern, die sich den Durchsatz auf Datenbankebene teilen) und einem bereitgestellten Durchsatz von 50.000 RUs/Sek. bzw. 70.000 RUs/Sek. erstellen, verfügen Sie über einen bereitgestellten Gesamtdurchsatz von 120.000 RUs/Sek.  
 

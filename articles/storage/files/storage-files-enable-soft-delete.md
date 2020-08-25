@@ -8,12 +8,12 @@ ms.date: 05/28/2020
 ms.author: rogarana
 ms.subservice: files
 services: storage
-ms.openlocfilehash: f432c544d8632a548c397b63ffa8066f63424f67
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 2d2a000879a95f86a6cdda3324add5b692476eee
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86528382"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88590114"
 ---
 # <a name="enable-soft-delete-on-azure-file-shares"></a>Aktivieren des vorläufigen Löschens für Azure-Dateifreigaben
 
@@ -22,6 +22,8 @@ Azure Storage bietet vorläufiges Löschen für Dateifreigaben (Vorschau), damit
 In den folgenden Abschnitten erfahren Sie, wie Sie vorläufiges Löschen für Azure-Dateifreigaben eines bereits vorhandenen Speicherkontos aktivieren und verwenden:
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
+
+## <a name="getting-started"></a>Erste Schritte
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 1. Navigieren Sie zu Ihrem Speicherkonto, und wählen Sie unter **Dateidienst** die Option **Vorläufiges Löschen** aus.
@@ -33,7 +35,13 @@ In den folgenden Abschnitten erfahren Sie, wie Sie vorläufiges Löschen für Az
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Cmdlets für vorläufiges Löschen sind in der Vorschauversion 2.1.1 des Az.Storage-Moduls verfügbar. Zum Aktivieren des vorläufigen Löschens müssen die Diensteigenschaften eines Dateiclients aktualisiert werden. Im folgenden Beispiel wird das vorläufige Löschen für alle Dateifreigaben in einem Speicherkonto aktiviert:
+## <a name="prerequisite"></a>Voraussetzung
+
+Cmdlets für vorläufiges Löschen sind derzeit nur in den Versionen [2.1.1-preview](https://www.powershellgallery.com/packages/Az.Storage/2.1.1-preview) und [2.3.1-preview](https://www.powershellgallery.com/packages/Az.Storage/2.3.1-preview) des Az.Storage-Moduls verfügbar. 
+
+## <a name="getting-started"></a>Erste Schritte
+
+Zum Aktivieren des vorläufigen Löschens müssen die Diensteigenschaften eines Dateiclients aktualisiert werden. Im folgenden Beispiel wird das vorläufige Löschen für alle Dateifreigaben in einem Speicherkonto aktiviert:
 
 ```azurepowershell-interactive
 $rgName = "yourResourceGroupName"

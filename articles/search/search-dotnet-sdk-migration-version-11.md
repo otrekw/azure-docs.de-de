@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 08/05/2020
-ms.openlocfilehash: 03d40dcaeaefe01fecbc201cf28dc20c8634af9d
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 390376216700b760e96c2348b1ad61bb4561aad2
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87926670"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88211501"
 ---
 # <a name="upgrade-to-azure-cognitive-search-net-sdk-version-11"></a>Upgrade auf Version 11 des Azure Cognitive Search .NET SDK
 
@@ -71,7 +71,7 @@ Abgesehen von den Clientunterschieden (die bereits erwähnt und daher hier wegge
 | [Feld](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field) | [SearchField](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.searchfield) |
 | [DataType](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datatype) | [SearchFieldDataType](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.searchfielddatatype) |
 | [ItemError](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.itemerror) | [SearchIndexerError](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.searchindexererror) |
-| [Analyzer](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzer) | [LexicalAnalyzer](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.lexicalanalyze) (auch `AnalyzerName` in `LexicalAnalyzerName`) |
+| [Analyzer](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzer) | [LexicalAnalyzer](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.lexicalanalyzer) (auch `AnalyzerName` in `LexicalAnalyzerName`) |
 | [AnalyzeRequest](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzerequest) | [AnalyzeTextOptions](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.analyzetextoptions) |
 | [StandardAnalyzer](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.standardanalyzer) | [LuceneStandardAnalyzer](https://docs.microsoft.com//dotnet/api/azure.search.documents.indexes.models.lucenestandardanalyzer) |
 | [StandardTokenizer](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.standardtokenizer) | [LuceneStandardTokenizer](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.lucenestandardtokenizer) (auch `StandardTokenizerV2` in `LuceneStandardTokenizerV2`) |
@@ -88,7 +88,7 @@ Felddefinitionen sind optimiert: [SearchableField](https://docs.microsoft.com/do
 | [Indexer](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer) | [SearchIndexer](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.searchindexer) |
 | [DataSource](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasource) | [SearchIndexerDataSourceConnection](https://docs.microsoft.com//dotnet/api/azure.search.documents.indexes.models.searchindexerdatasourceconnection) |
 | [Skill](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.skill) | [SearchIndexerSkill](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.searchindexerskill) |
-| [Qualifikationsgruppe](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.skillset) | [SearchIndexerSkillset](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.searchindexerskillse) |
+| [Qualifikationsgruppe](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.skillset) | [SearchIndexerSkillset](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.searchindexerskill) |
 | [DataSourceType](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasourcetype) | [SearchIndexerDataSourceType](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.searchindexerdatasourcetype) |
 
 ### <a name="data-import"></a>Datenimport
@@ -153,7 +153,7 @@ Mit den folgenden Schritten können Sie eine Codemigration beginnen, indem Sie d
 
 1. Aktualisieren Sie Clientverweise für Abfragen und Datenimport. Instanzen von [SearchIndexClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchindexclient) müssen in [SearchClient](https://docs.microsoft.com/dotnet/api/azure.search.documents.searchclient) geändert werden. Stellen Sie sicher, dass Sie alle Instanzen abfangen, bevor Sie mit dem nächsten Schritt fortfahren, um Namensverwechslungen zu vermeiden.
 
-1. Aktualisieren Sie Clientverweise für Index-, Indexer-, Synonymzuordnungs- und Analysetoolobjekte. Instanzen von [SearchServiceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient) müssen in [SearchIndexClient](https://docs.microsoft.com/dotnet/api/azure.search.documents.searchindexclient) geändert werden. 
+1. Aktualisieren Sie Clientverweise für Index-, Indexer-, Synonymzuordnungs- und Analysetoolobjekte. Instanzen von [SearchServiceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient) müssen in [SearchIndexClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchindexclient) geändert werden. 
 
 1. Aktualisieren Sie die Klassen, Methoden und Eigenschaften so weit wie möglich, um die APIs der neuen Bibliothek zu verwenden. Sie können mit dem Abschnitt [Benennungsunterschiede](#naming-differences) beginnen oder auch das [Änderungsprotokoll](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Azure.Search.Documents/CHANGELOG.md) einsehen.
 

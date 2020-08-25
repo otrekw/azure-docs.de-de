@@ -1,6 +1,6 @@
 ---
 title: Bereitstellen von StorSimple Virtual Array für das Cloud Solution Provider-Programm
-description: Eine Übersicht über StorSimple und das Cloudlösungsanbieter-Programm für StorSimple-Partner.
+description: Erfahren Sie, wie ein CSP-Partner einen neuen Kunden oder einem Bestandskunden ein neues Abonnement hinzufügen und dann einen Dienst zum Bereitstellen eines StorSimple Virtual Array im CSP-Programm erstellen kann.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/08/2017
 ms.author: alkohli
-ms.openlocfilehash: 7f1927a67127766c72be463c283225135b2a2aad
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dc0cf718ee51e23fb749bdf57d5344977de009d8
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77466908"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88182220"
 ---
 # <a name="deploy-storsimple-virtual-array-for-cloud-solution-provider-program"></a>Bereitstellen von StorSimple Virtual Array für das Cloud Solution Provider-Programm
 

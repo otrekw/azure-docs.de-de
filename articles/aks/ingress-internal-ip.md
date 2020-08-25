@@ -4,13 +4,13 @@ titleSuffix: Azure Kubernetes Service
 description: Erfahren Sie, wie Sie einen NGINX-Eingangscontroller für ein internes privates Netzwerk in einem Azure Kubernetes Service-Cluster (AKS) installieren und konfigurieren.
 services: container-service
 ms.topic: article
-ms.date: 07/21/2020
-ms.openlocfilehash: a20ef3155e41a438aed7cea7e7d9814b3add4d14
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/17/2020
+ms.openlocfilehash: f7bb917387accb986f1fc97a9ebc752281234b35
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87056968"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272615"
 ---
 # <a name="create-an-ingress-controller-to-an-internal-virtual-network-in-azure-kubernetes-service-aks"></a>Erstellen eines Eingangscontrollers für ein internes virtuelles Netzwerk in Azure Kubernetes Service (AKS)
 
@@ -27,7 +27,7 @@ Sie können außerdem:
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
-In diesem Artikel wird [Helm 3][helm] für die Installation des NGINX-Eingangscontrollers und von cert-manager verwendet. Weitere Informationen zum Konfigurieren und Verwenden von Helm finden Sie unter [Installieren von Anwendungen mit Helm in Azure Kubernetes Service (AKS)][use-helm].
+In diesem Artikel wird [Helm 3][helm] für die Installation des NGINX-Eingangscontrollers verwendet. Stellen Sie sicher, dass Sie die neueste Version von Helm verwenden und auf das *stabile* Helm-Repository zugreifen können. Weitere Informationen zum Konfigurieren und Verwenden von Helm finden Sie unter [Installieren von Anwendungen mit Helm in Azure Kubernetes Service (AKS)][use-helm].
 
 Für den Artikel wird außerdem mindestens Version 2.0.64 der Azure-Befehlszeilenschnittstelle benötigt. Führen Sie `az --version` aus, um die Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI][azure-cli-install].
 
@@ -193,6 +193,7 @@ metadata:
   annotations:
     kubernetes.io/ingress.class: nginx
     nginx.ingress.kubernetes.io/ssl-redirect: "false"
+    nginx.ingress.kubernetes.io/use-regex: "true"
     nginx.ingress.kubernetes.io/rewrite-target: /$1
 spec:
   rules:
@@ -201,11 +202,15 @@ spec:
       - backend:
           serviceName: aks-helloworld
           servicePort: 80
-        path: /(.*)
+        path: /hello-world-one(/|$)(.*)
       - backend:
           serviceName: ingress-demo
           servicePort: 80
         path: /hello-world-two(/|$)(.*)
+      - backend:
+          serviceName: aks-helloworld
+          servicePort: 80
+        path: /(.*)
 ```
 
 Erstellen Sie die Eingangsressource mit dem Befehl `kubectl apply -f hello-world-ingress.yaml`.

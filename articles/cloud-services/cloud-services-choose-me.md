@@ -1,18 +1,18 @@
 ---
 title: Was ist Azure Cloud Services? | Microsoft-Dokumentation
-description: Weitere Informationen zu Azure Cloud Services
+description: Informieren Sie sich darüber, was Azure Cloud Services sind, insbesondere darüber, dass sie für die Unterstützung von Anwendungen konzipiert wurden, die skalierbar, zuverlässig und kostengünstig zu betreiben sind.
 services: cloud-services
 author: tgore03
 ms.service: multiple
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: tagore
-ms.openlocfilehash: c531e02656c9f6342670024b2220386e789a2d98
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0013a3a29bae9d2dde7896b3ae23d0d358946f2b
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75386849"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88224287"
 ---
 # <a name="overview-of-azure-cloud-services"></a>Übersicht zu Azure Cloud Services
 Azure Cloud Services sind ein Beispiel für [Platform-as-a-Service](https://azure.microsoft.com/overview/what-is-paas/) (PaaS). Diese Technologie unterstützt genau wie [Azure App Service](../app-service/overview.md) skalierbare und zuverlässige Anwendungen mit geringen Betriebskosten. Azure Cloud Services werden wie App Service auf virtuellen Computern (VMs) gehostet. Sie haben jedoch mehr Kontrolle über die virtuellen Computer. Sie können Ihre eigene Software auf virtuellen Computern installieren, die Azure Cloud Services verwenden, und remote darauf zugreifen.

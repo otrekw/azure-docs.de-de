@@ -11,19 +11,19 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 09/27/2019
 ms.author: diberry
-ms.openlocfilehash: 05ad340b3856291832ba0521c7da70ad55260384
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d41ec3abfa2e562d5a6e11dd9ed0fcbcffead5c6
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78270614"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88191979"
 ---
 # <a name="prebuilt-domain-reference-for-your-luis-app"></a>Vordefinierter Domänenverweis für die LUIS-App
 Diese Referenz enthält Informationen über die [vordefinierten Domänen](luis-how-to-use-prebuilt-domains.md), bei denen es sich um vordefinierte Sammlungen der von LUIS gebotenen Absichten und Entitäten handelt.
 
 [Benutzerdefinierte Domänen](luis-how-to-start-new-app.md) weisen im Gegensatz dazu anfänglich keine Absichten und Modelle auf. Sie können einem benutzerdefinierten Modell beliebige Absichten und Entitäten aus einer vordefinierten Domäne hinzufügen.
 
-## <a name="custom-domains-per-language"></a>Benutzerdefinierte Domänen pro Sprache
+## <a name="prebuilt-domains-per-language"></a>Vordefinierte Domänen pro Sprache
 
 In der folgenden Tabelle sind die derzeit unterstützten Domänen zusammengefasst. Die Unterstützung für Englisch ist in der Regel vollständiger als für andere Sprachen.
 

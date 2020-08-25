@@ -13,12 +13,12 @@ ms.workload: iaas-sql-server
 ms.date: 02/16/2017
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: a83755a08a3579484796cd56623cb3401d03d874
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 9cf6fa26cec0abbc52a990d71c1c2fcc5d6023e4
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284284"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88612553"
 ---
 # <a name="configure-a-load-balancer-for-a-sql-server-always-on-availability-group-in-azure-virtual-machines"></a>Konfigurieren eines Load Balancers für eine SQL Server-AlwaysOn-Verfügbarkeitsgruppe auf virtuellen Azure-Computern
 
@@ -71,6 +71,7 @@ Erstellen Sie zuerst den Load Balancer.
    | --- | --- |
    | **Name** |Namenstext für den Load Balancer. Beispiel: **sqlLB**. |
    | **Typ** |**Intern:** Die meisten Implementierungen verwenden einen internen Lastenausgleich, wodurch Anwendungen innerhalb des gleichen virtuellen Netzwerks eine Verbindung mit der Verfügbarkeitsgruppe herstellen können.  </br> **Extern:** Dieser Typ ermöglicht es Anwendungen, über eine öffentliche Internetverbindung eine Verbindung mit der Verfügbarkeitsgruppe herzustellen. |
+   | **SKU** |**Standard**: Erforderlich, wenn sich Ihre SQL-Instanzen in einer anderen Verfügbarkeitsgruppe als der Load Balancer befinden. </br> **Basic**: Die Standardoption. |
    | **Virtuelles Netzwerk** |Wählen Sie das virtuelle Netzwerk aus, in dem sich die SQL Server-Instanzen befinden. |
    | **Subnetz** |Wählen Sie das Subnetz aus, in dem sich die SQL Server-Instanzen befinden. |
    | **IP-Adresszuweisung** |**Statisch** |
@@ -313,7 +314,7 @@ Wiederholen Sie diese Schritte für den Lastenausgleich in den anderen Verfügba
 
 Wenn Sie über eine Azure-Netzwerksicherheitsgruppe verfügen, um den Zugriff einzuschränken, stellen Sie sicher, dass die Zulassungsregeln Folgendes umfassen:
 - Die VM-IP-Adressen des Back-End-SQL Servers
-- Die Floating IP-Adressen des Load Balancers für den Verfügbarkeitsgruppenlistener
+- Die Floating IP-Adressen des Lastenausgleichs für den Verfügbarkeitsgruppenlistener
 - Die IP-Adresse der Hauptressource des Clusters, falls zutreffend.
 
 ## <a name="next-steps"></a>Nächste Schritte

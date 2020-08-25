@@ -84,7 +84,7 @@ Zum Erstellen eines virtuellen Geräts benötigen Sie Folgendes:
 ## <a name="bitlocker-considerations"></a>Überlegungen zu BitLocker
 
 * Wir empfehlen, dass Sie auf Ihrem virtuellen Data Box Gateway-Computer BitLocker aktivieren. Standardmäßig ist BitLocker nicht aktiviert. Weitere Informationen finden Sie unter
-  * [Einstellungen für die Verschlüsselungsunterstützung in Hyper-V-Manager](hhttps://docs.microsoft.com/windows-server/virtualization/hyper-v/learn-more/generation-2-virtual-machine-security-settings-for-hyper-v#encryption-support-settings-in-hyper-v-manager)
+  * [Einstellungen für die Verschlüsselungsunterstützung in Hyper-V-Manager](h https://docs.microsoft.com/windows-server/virtualization/hyper-v/learn-more/generation-2-virtual-machine-security-settings-for-hyper-v#encryption-support-settings-in-hyper-v-manager)
   * [BitLocker-Unterstützung auf einem virtuellen Computer](https://kb.vmware.com/s/article/2036142)
 
 ## <a name="provision-a-virtual-device-in-hypervisor"></a>Bereitstellen eines virtuellen Geräts in VMware

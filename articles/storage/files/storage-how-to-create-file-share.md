@@ -8,13 +8,13 @@ ms.topic: how-to
 ms.date: 2/22/2020
 ms.author: rogarana
 ms.subservice: files
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: a642aa9735c4360c11d50cf475e5de63259c55df
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.custom: devx-track-azurecli, references_regions
+ms.openlocfilehash: aaba608ba80a751c40cd300dee80f673897c22a8
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87495708"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88525648"
 ---
 # <a name="create-an-azure-file-share"></a>Erstellen einer Azure-Dateifreigabe
 Um eine Azure-Dateifreigabe zu erstellen, müssen Sie drei Fragen zur Verwendung beantworten:
@@ -229,6 +229,60 @@ Für diesen Befehl tritt ein Fehler auf, wenn sich das Speicherkonto in einem vi
 
 > [!Note]  
 > Der Name der Dateifreigabe darf nur Kleinbuchstaben enthalten. Ausführliche Informationen zur Benennung von Dateifreigaben und Dateien finden Sie unter  [Benennen und Referenzieren von Freigaben, Verzeichnissen, Dateien und Metadaten](https://msdn.microsoft.com/library/azure/dn167011.aspx).
+
+### <a name="create-a-hot-or-cool-file-share"></a>Erstellen einer Dateifreigabe der heißen oder kalten Speicherebene
+Eine Dateifreigabe in einem **GPv2-Speicherkonto (General Purpose v2)** kann für Transaktionen optimierte Dateifreigaben oder Dateifreigaben der heißen oder kalten Speicherebene (oder eine Mischung davon) enthalten. Für Transaktionen optimierte Dateifreigaben sind in allen Azure-Regionen verfügbar, aber Dateifreigaben der heißen oder kalten Speicherebene sind nur [in einer Teilmenge von Regionen](storage-files-planning.md#storage-tiers) verfügbar. Sie können eine Dateifreigabe der heißen oder kalten Speicherebene erstellen, indem Sie das Azure PowerShell-Vorschaumodul oder die Azure CLI verwenden. 
+
+# <a name="portal"></a>[Portal](#tab/azure-portal)
+Das Azure-Portal unterstützt noch keine Erstellung von Dateifreigaben der heißen und kalten Speicherebene oder das Verschieben vorhandener, für Transaktionen optimierter Dateifreigaben in eine heiße oder kalte Speicherebene. Sehen Sie sich die Anweisungen zum Erstellen einer Dateifreigabe mit PowerShell oder der Azure CLI an.
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+```PowerShell
+# Update the Azure storage module to use the preview version. You may need to close and 
+# reopen PowerShell before running this command. If you are running PowerShell 5.1, ensure 
+# the following:
+# - Run the below cmdlets as an administrator.
+# - Have PowerShellGet 2.2.3 or later. Uncomment the following line to check.
+# Get-Module -ListAvailable -Name PowerShellGet
+Remove-Module -Name Az.Storage -ErrorAction SilentlyContinue
+Uninstall-Module -Name Az.Storage
+Install-Module -Name Az.Storage -RequiredVersion "2.1.1-preview" -AllowClobber -AllowPrerelease 
+
+# Assuming $resourceGroupName and $storageAccountName from earlier in this document have already
+# been populated. The access tier parameter may be TransactionOptimized, Hot, or Cool for GPv2 
+# storage accounts. Standard tiers are only available in standard storage accounts. 
+$shareName = "myhotshare"
+
+New-AzRmStorageShare `
+    -ResourceGroupName $resourceGroupName `
+    -StorageAccountName $storageAccountName `
+    -Name $shareName `
+    -AccessTier Hot
+
+# You can also change an existing share's tier.
+Update-AzRmStorageShare `
+    -ResourceGroupName $resourceGroupName `
+    -StorageAccountName $storageAccountName `
+    -Name $shareName `
+    -AccessTier Cool
+```
+
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+Die Funktionalität zum Erstellen oder Verschieben einer Dateifreigabe in eine bestimmte Dienstebene ist im letzten Azure CLI-Update verfügbar. Das Aktualisieren von Azure CLI ist für die von Ihnen verwendete Betriebssystem-/Linux-Distribution spezifisch. Anweisungen zum Aktualisieren der Azure CLI auf Ihrem System finden Sie unter [Installieren der Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
+
+```bash
+# Assuming $resourceGroupName and $storageAccountName from earlier in this document have already
+# been populated. The access tier parameter may be TransactionOptimized, Hot, or Cool for GPv2
+# storage accounts. Standard tiers are only available in standard storage accounts.
+shareName="myhotshare"
+
+az storage share-rm create \
+    --resource-group $resourceGroupName \
+    --storage-account $storageAccountName \
+    --name $shareName \
+    --access-tier "Hot"
+```
+---
 
 ## <a name="next-steps"></a>Nächste Schritte
 - [Planen der Bereitstellung von Azure Files](storage-files-planning.md) oder [Planen der Bereitstellung der Azure-Dateisynchronisierung](storage-sync-files-planning.md). 

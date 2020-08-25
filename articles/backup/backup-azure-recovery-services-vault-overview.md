@@ -2,19 +2,17 @@
 title: Übersicht über Recovery Services-Tresore
 description: Übersicht über Recovery Services-und Azure Backup-Tresore sowie Vergleich dieser Tresore
 ms.topic: conceptual
-ms.date: 08/10/2018
-ms.openlocfilehash: 0e1d061c6baf31fad2e937a604098f0baff6086d
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.date: 08/17/2020
+ms.openlocfilehash: 5334bc2aea5ddbf734c3fd3ef314ff4da609d61d
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88041900"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88587751"
 ---
 # <a name="recovery-services-vaults-overview"></a>Übersicht über Recovery Services-Tresore
 
 In diesem Artikel werden die Funktionen eines Recovery Services-Tresors beschrieben. Ein Recovery Services-Tresor ist eine Speicherentität in Azure, die Daten enthält. Bei den Daten handelt es sich in der Regel um Kopien von Daten oder Konfigurationsinformationen für virtuelle Computer (VMs), Workloads, Server oder Arbeitsstationen. Mit Recovery Services-Tresoren können Sie Sicherungsdaten für verschiedene Azure-Dienste speichern, z. B. IaaS-VMs (Linux oder Windows) und Azure SQL-Datenbanken. Recovery Services-Tresore unterstützen System Center DPM, Windows Server, Azure Backup Server etc. Recovery Services-Tresore vereinfachen die Organisation Ihrer Sicherungsdaten und minimieren gleichzeitig den Verwaltungsaufwand. Recovery Services-Tresore basieren auf dem Azure Resource Manager-Modell von Azure. Dieses bietet die folgenden Features:
-
-## <a name="comparing-recovery-services-vaults-and-backup-vaults"></a>Vergleich zwischen Recovery Services- und Sicherungstresoren
 
 - **Erweiterte Funktionen zum Schutz von Sicherungsdaten**: Durch Recovery Services-Tresore bietet Azure Backup Sicherheitsfunktionen zum Schutz von Cloudsicherungen. Mit diesen Sicherheitsfunktionen wird sichergestellt, dass Sie Ihre Sicherungen schützen und Daten sicher wiederherstellen können, selbst wenn Produktions- und Sicherungsserver kompromittiert sind. [Weitere Informationen](backup-azure-security-feature.md)
 
@@ -34,10 +32,19 @@ Bei einem Recovery Services-Tresor handelt es sich um eine Entität, in der alle
 
 - Weitere Informationen zur Speicherredundanz finden Sie in diesen Artikeln zur [Georedundanz](../storage/common/storage-redundancy.md) und zur [lokalen](../storage/common/storage-redundancy.md) Redundanz.
 
-### <a name="additional-resources"></a>Zusätzliche Ressourcen
+## <a name="encryption-settings-in-the-recovery-services-vault"></a>Verschlüsselungseinstellungen im Recovery Services-Tresor
 
-- [Unterstützung für Tresore](backup-support-matrix.md#vault-support)
-- [Azure Backup – häufig gestellte Fragen](backup-azure-backup-faq.md)
+In diesem Abschnitt werden die verfügbaren Optionen zur Verschlüsselung Ihrer im Recovery Services-Tresor gespeicherten Sicherungsdaten behandelt.
+
+### <a name="encryption-of-backup-data-using-platform-managed-keys"></a>Verschlüsselung von Sicherungsdaten mit von der Plattform verwalteten Schlüsseln
+
+Standardmäßig werden alle Ihre Daten mit von der Plattform verwalteten Schlüsseln verschlüsselt. Sie müssen Ihrerseits keine besonderen Maßnahmen ergreifen, um diese Verschlüsselung zu aktivieren. Dies gilt für alle Workloads, die in Ihrem Recovery Services-Tresor gesichert werden.
+
+### <a name="encryption-of-backup-data-using-customer-managed-keys"></a>Verschlüsselung von Sicherungsdaten mit von Kunden verwalteten Schlüsseln
+
+Sie können Ihre Daten mit eigenen, von Ihnen selbst verwalteten Verschlüsselungsschlüsseln verschlüsseln. Mit Azure Backup können Sie die in Azure Key Vault gespeicherten RSA-Schlüssel zum Verschlüsseln Ihrer Sicherungen verwenden. Der Verschlüsselungsschlüssel, der zum Verschlüsseln von Sicherungen verwendet wird, kann sich von dem für die Quelle verwendeten Verschlüsselungsschlüssel unterscheiden. Die Daten werden mithilfe eines AES-256 basierten Datenverschlüsselungsschlüssels (DEK) geschützt, der wiederum mit Ihren Schlüsseln geschützt wird. Dadurch erhalten Sie vollständige Kontrolle über die Daten und Schlüssel. Um die Verschlüsselung zu ermöglichen, muss dem Recovery Services-Tresor der Zugriff auf den Verschlüsselungsschlüssel in Azure Key Vault gewährt werden. Bei Bedarf können Sie den Schlüssel deaktivieren oder den Zugriff widerrufen. Sie müssen jedoch die Verschlüsselung mit ihren Schlüsseln aktivieren, bevor Sie versuchen, Elemente im Tresor zu schützen.
+
+Weitere Informationen zum Verschlüsseln Ihrer Sicherungsdaten [mit kundenseitig verwalteten Schlüsseln](encryption-at-rest-with-cmk.md).
 
 ## <a name="azure-advisor"></a>Azure Advisor
 
@@ -47,9 +54,15 @@ Azure Advisor stellt stündlich [Empfehlungen](../advisor/advisor-high-availabil
 
 ![Azure Advisor](./media/backup-azure-recovery-services-vault-overview/azure-advisor.png)
 
+## <a name="additional-resources"></a>Zusätzliche Ressourcen
+
+- [Unterstützung für Tresore](backup-support-matrix.md#vault-support)
+- [Azure Backup – häufig gestellte Fragen](backup-azure-backup-faq.md)
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-Verwenden Sie die folgenden Artikel für:</br>
-[Sichern eines virtuellen IaaS-Computers](backup-azure-arm-vms-prepare.md)</br>
-[Sichern eines Azure Backup Server-Computers](backup-azure-microsoft-azure-backup.md)</br>
-[Sichern eines Windows Server-Computers](backup-windows-with-mars-agent.md)
+Verwenden Sie die folgenden Artikel für:
+
+- [Sichern eines virtuellen IaaS-Computers](backup-azure-arm-vms-prepare.md)
+- [Sichern eines Azure Backup Server-Computers](backup-azure-microsoft-azure-backup.md)
+- [Sichern eines Windows Server-Computers](backup-windows-with-mars-agent.md)

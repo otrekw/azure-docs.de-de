@@ -10,46 +10,99 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 8/11/2020
+ms.date: 8/17/2020
 ms.author: yohaddad
-ms.openlocfilehash: 3fb9c863b94c65d7a4333d734648d308a904e355
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: 5e5bcef36bb283b8b3f2b67578e0f3118302d936
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88142348"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88510163"
 ---
 # <a name="azure-guest-os"></a>Azure-Gastbetriebssystem
 Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MSRC), die auf das Azure-Gastbetriebssystem angewendet wurden. Durchsuchen Sie diesen Artikel, um zu ermitteln, ob ein bestimmtes Update für das Gastbetriebssystem gilt, das Sie verwenden. Updates werden für die [Familie][family-explain], in der sie eingeführt wurden, immer in die jeweils neueste Version übertragen.
 
-## <a name="july-2020-guest-os"></a>Gastbetriebssystem für Juli 2020
+## <a name="august-2020-guest-os"></a>Gastbetriebssystem August 2020
 >[!NOTE]
->Das Gastbetriebssystem für Juli wird derzeit auf virtuellen Clouddienstcomputern eingeführt, die für automatische Updates konfiguriert sind. Wenn die Bereitstellung abgeschlossen ist, wird diese Version für manuelle Updates über das Azure-Portal und Konfigurationsdateien verfügbar gemacht. Die folgenden Patches sind im Gastbetriebssystem für Juli enthalten. Änderungen der Liste vorbehalten.
+>Das Gastbetriebssystem für August wird derzeit auf virtuellen Clouddienstcomputern eingeführt, die für automatische Updates konfiguriert sind. Wenn die Bereitstellung abgeschlossen ist, wird diese Version für manuelle Updates über das Azure-Portal und Konfigurationsdateien verfügbar gemacht. Die folgenden Patches sind im Gastbetriebssystem für August enthalten. Änderungen der Liste vorbehalten.
 
 
 | Produktkategorie | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
 | --- | --- | --- | --- | --- |
-|  Rel 20-07 |  [4565479]  |  Internet Explorer | 2.100, 3.87, 4.80 | 14. Jul 2020 |
-|  Rel 20-07 |  [4565511]  |  Letztes kumulatives Update | 5,45 | 14. Jul 2020 |
-|  Rel 20-07 |  [4558998]  |  Letztes kumulatives Update | 6,21 | 14. Jul 2020 |
-|  Rel 20-07 |  [4565524]  |  Monatlicher Rollup | 2.100 | 14. Jul 2020 |
-|  Rel 20-07 |  [4565616]  |  Monatlicher Rollup | 2.100 | 16. Jul 2020 |
-|  Rel 20-07 |  [4565354]  |  Wartungsstapelaktualisierung | 2.100 | 14. Jul 2020 |
-|  Rel 20-07 |  [4565612]  |  Monatlicher Rollup | 2.100 | 14. Jul 2020 |
-|  Rel 20-07 |  [4565615]  |  Monatlicher Rollup | 3,87 | 14. Jul 2020 |
-|  Rel 20-07 |  [4566426]  |  Wartungsstapelaktualisierung | 3,87 | 14. Jul 2020 |
-|  Rel 20-07 |  [4565537]  |  Monatlicher Rollup | 3,87 | 14. Jul 2020 |
-|  Rel 20-07 |  [4565610]  |  Monatlicher Rollup | 3,87 | 14. Jul 2020 |
-|  Rel 20-07 |  [4565541]  |  Monatlicher Rollup | 4.80 | 14. Jul 2020 |
-|  Rel 20-07 |  [4566425]  |  Wartungsstapelaktualisierung | 4.80 | 14. Jul 2020 |
-|  Rel 20-07 |  [4565614]  |  Monatlicher Rollup | 4.80 | 14. Jul 2020 |
-|  Rel 20-07 |  [4565613]  |  Monatlicher Rollup | 4.80 | 14. Jul 2020 |
-|  Rel 20-07 |  [4565912]  |  Wartungsstapelaktualisierung | 5,45 | 14. Jul 2020 |
-|  Rel 20-07 |  [4565628]  |  Monatlicher Rollup | 5,45 | 14. Jul 2020 |
-|  Rel 20-07 |  [4494175]  |  Microcode | 5,45 | 25. Feb 2020 |
-|  Rel 20-07 |  [4565632]  |  Monatlicher Rollup | 6,21 | 14. Jul 2020 |
-|  Rel 20-07 |  [4558997]  |  Wartungsstapelaktualisierung | 6,21 | 14. Jul 2020 |
-|  Rel 20-07 |  [4494174]  |  Microcode | 6,21 | 25. Feb 2020 |
+|  Rel 20-08 |  [4571687]  |  Kumulatives IE-Update | 2.101, 3.88, 4.81 | 11. August 2020 |
+|  Rel 20-08 |  [4561600]  |  Flash-Update | 3.88, 4.81, 5.46, 6.22 | 9\. Juni 2020 |
+|  Rel 20-08 |  [4571694]  |  Letztes kumulatives Update | 6,22 | 11. August 2020 |
+|  Rel 20-08 |  [4565349]  |  Letztes kumulatives Update | 5.46 | 11. August 2020 |
+|  Rel 20-08 |  [4570673]  |  Wartungsstapelaktualisierung | 2.101 | 11. August 2020 |
+|  Rel 20-08 |  [4571729]  |  Monatlicher Rollup | 2.101 | 11. August 2020 |
+|  Rel 20-08 |  [4569767]  |  .NET Framework 3.5.1: Sicherheits- und Qualitätsrollup | 2.101 | 11. August 2020 |
+|  Rel 20-08 |  [4569780]  |  .NET Framework 4.5.2: Sicherheits- und Qualitätsrollup | 2.101 | 11. August 2020 |
+|  Rel 20-08 |  [4569765]  |  .NET Framework 3.5: Sicherheits- und Qualitätsrollup | 3.88 | 11. August 2020 |
+|  Rel 20-08 |  [4569779]  |  .NET Framework 4.5.2: Sicherheits- und Qualitätsrollup | 3.88 | 11. August 2020 |
+|  Rel 20-08 |  [4566426]  |  Wartungsstapelaktualisierung | 3.88 | 14. Jul 2020 |
+|  Rel 20-08 |  [4571736]  |  Monatlicher Rollup | 3.88 | 11. August 2020 |
+|  Rel 20-08 |  [4566425]  |  Wartungsstapelaktualisierung | 4.81 | 14. Jul 2020 |
+|  Rel 20-08 |  [4571703]  |  Monatlicher Rollup | 4.81 | 11. August 2020 |
+|  Rel 20-08 |  [4569768]  |  .NET Framework 3.5: Sicherheits- und Qualitätsrollup | 4.81 | 11. August 2020 |
+|  Rel 20-08 |  [4569778]  |  .NET Framework 4.5.2: Sicherheits- und Qualitätsrollup | 4.81 | 11. August 2020 |
+|  Rel 20-08 |  [4494175]  |  Microcode | 5.46 | 25. Feb 2020 |
+|  Rel 20-08 |  [4565912]  |  Wartungsstapelaktualisierung | 5.46 | 14. Jul 2020 |
+|  Rel 20-08 |  [4569746]  |  .NET Framework 4.8: Sicherheits- und Qualitätsrollup | 5.46 | 11. August 2020 |
+|  Rel 20-08 |  [4569776]  |  Kumulatives Update für .NET Framework 3.5 und 4.7.2 | 6,22 | 11. August 2020 |
+|  Rel 20-08 |  [4569750]  |  Kumulatives Update für .NET Framework 3.5 und 4.8 | 6,22 | 11. August 2020 |
+|  Rel 20-08 |  [4566424]  |  Wartungsstapelaktualisierung | 6,22 | 11. August 2020 |
+
+
+
+[4571687]: https://support.microsoft.com/kb/4571687
+[4561600]: https://support.microsoft.com/kb/4561600
+[4571694]: https://support.microsoft.com/kb/4571694
+[4565349]: https://support.microsoft.com/kb/4565349
+[4570673]: https://support.microsoft.com/kb/4570673
+[4571729]: https://support.microsoft.com/kb/4571729
+[4569767]: https://support.microsoft.com/kb/4569767
+[4569780]: https://support.microsoft.com/kb/4569780
+[4569765]: https://support.microsoft.com/kb/4569765
+[4569779]: https://support.microsoft.com/kb/4569779
+[4566426]: https://support.microsoft.com/kb/4566426
+[4571736]: https://support.microsoft.com/kb/4571736
+[4566425]: https://support.microsoft.com/kb/4566425
+[4571703]: https://support.microsoft.com/kb/4571703
+[4569768]: https://support.microsoft.com/kb/4569768
+[4569778]: https://support.microsoft.com/kb/4569778
+[4494175]: https://support.microsoft.com/kb/4494175
+[4565912]: https://support.microsoft.com/kb/4565912
+[4569746]: https://support.microsoft.com/kb/4569746
+[4569776]: https://support.microsoft.com/kb/4569776
+[4569750]: https://support.microsoft.com/kb/4569750
+[4566424]: https://support.microsoft.com/kb/4566424
+
+
+## <a name="july-2020-guest-os"></a>Gastbetriebssystem für Juli 2020
+
+| Produktkategorie | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
+| --- | --- | --- | --- | --- |
+|  Rel 20-07 |  [4565479]  |  Internet Explorer | [2.100], [3.87], [4.80] | 14. Jul 2020 |
+|  Rel 20-07 |  [4565511]  |  Letztes kumulatives Update | [5,45] | 14. Jul 2020 |
+|  Rel 20-07 |  [4558998]  |  Letztes kumulatives Update | [6,21] | 14. Jul 2020 |
+|  Rel 20-07 |  [4565524]  |  Monatlicher Rollup | [2.100] | 14. Jul 2020 |
+|  Rel 20-07 |  [4565616]  |  Monatlicher Rollup | [2.100] | 16. Jul 2020 |
+|  Rel 20-07 |  [4565354]  |  Wartungsstapelaktualisierung | [2.100] | 14. Jul 2020 |
+|  Rel 20-07 |  [4565612]  |  Monatlicher Rollup | [2.100] | 14. Jul 2020 |
+|  Rel 20-07 |  [4565615]  |  Monatlicher Rollup | [3,87] | 14. Jul 2020 |
+|  Rel 20-07 |  [4566426]  |  Wartungsstapelaktualisierung | [3,87] | 14. Jul 2020 |
+|  Rel 20-07 |  [4565537]  |  Monatlicher Rollup | [3,87] | 14. Jul 2020 |
+|  Rel 20-07 |  [4565610]  |  Monatlicher Rollup | [3,87] | 14. Jul 2020 |
+|  Rel 20-07 |  [4565541]  |  Monatlicher Rollup | [4.80] | 14. Jul 2020 |
+|  Rel 20-07 |  [4566425]  |  Wartungsstapelaktualisierung | [4.80] | 14. Jul 2020 |
+|  Rel 20-07 |  [4565614]  |  Monatlicher Rollup | [4.80] | 14. Jul 2020 |
+|  Rel 20-07 |  [4565613]  |  Monatlicher Rollup | [4.80] | 14. Jul 2020 |
+|  Rel 20-07 |  [4565912]  |  Wartungsstapelaktualisierung | [5,45] | 14. Jul 2020 |
+|  Rel 20-07 |  [4565628]  |  Monatlicher Rollup | [5,45] | 14. Jul 2020 |
+|  Rel 20-07 |  [4494175]  |  Microcode | [5,45] | 25. Feb 2020 |
+|  Rel 20-07 |  [4565632]  |  Monatlicher Rollup | [6,21] | 14. Jul 2020 |
+|  Rel 20-07 |  [4558997]  |  Wartungsstapelaktualisierung | [6,21] | 14. Jul 2020 |
+|  Rel 20-07 |  [4494174]  |  Microcode | [6,21] | 25. Feb 2020 |
 
 
 [4565479]: https://support.microsoft.com/kb/4565479
@@ -73,6 +126,11 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 [4565632]: https://support.microsoft.com/kb/4565632
 [4558997]: https://support.microsoft.com/kb/4558997
 [4494174]: https://support.microsoft.com/kb/4494174
+[2.100]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-2-releases
+[3,87]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-3-releases
+[4.80]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-4-releases
+[5,45]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases
+[6,21]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases
 
 
 ## <a name="june-2020-guest-os"></a>Gastbetriebssystem für Juni 2020
