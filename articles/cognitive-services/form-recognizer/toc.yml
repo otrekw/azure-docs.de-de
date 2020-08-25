@@ -34,6 +34,10 @@
               href: quickstarts/curl-receipts.md
             - name: Python
               href: quickstarts/python-receipts.md
+        - name: Verwenden eines vordefinierten Visitenkartenmodells
+          items:
+            - name: Python
+              href: quickstarts/python-business-cards.md
         - name: Abrufen von Textlayoutinformationen
           items:
             - name: Python
@@ -44,6 +48,12 @@
       href: 'https://docs.microsoft.com/azure/search/cognitive-search-custom-skill-form'
     - name: Verwenden der Formularerkennung mit AI Builder
       href: tutorial-ai-builder.md
+- name: Konzepte
+  items:
+    - name: Receipts
+      href: concept-receipts.md
+    - name: Visitenkarten
+      href: concept-business-cards.md
 - name: Anleitungen
   items:
     - name: Erstellen eines Trainingsdatasets
@@ -64,6 +74,8 @@
       href: disaster-recovery.md
 - name: Verweis
   items:
+    - name: Formularerkennungs-API Version 2.1 (Vorschau)
+      href: 'https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/AnalyzeBusinessCardAsync'
     - name: Formularerkennungs-API Version 2.0
       href: 'https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm'
     - name: SDKs
@@ -90,7 +102,7 @@
       href: 'https://go.microsoft.com/fwlink/?linkid=2087185'
     - name: Sprachunterstützung
       href: language-support.md
-    - name: Kompatibilität
+    - name: Compliance
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Verschlüsselung
       href: form-recognizer-encryption-of-data-at-rest.md

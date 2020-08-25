@@ -16,10 +16,10 @@ ms.date: 03/11/2019
 ms.author: allensu
 ms.custom: seodec18
 ms.openlocfilehash: 8961a50490bdbf8b456e87e1c00577c2c8afd050
-ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/25/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "80240360"
 ---
 # <a name="tutorial-load-balance-internet-traffic-to-vms-using-the-azure-portal"></a>Tutorial: Vornehmen eines Lastausgleichs für den Internetdatenverkehr virtueller Computer mit dem Azure-Portal
@@ -122,12 +122,12 @@ In den Schritten dieses Abschnitts müssen die folgenden Parameter wie folgt ers
 
 | Parameter                   | Wert                |
 |-----------------------------|----------------------|
-| **\<Ressourcengruppenname>**  | myResourceGroupSLB (Wählen Sie die vorhandene Ressourcengruppe aus.) |
-| **\<VNET-Name>** | myVNet          |
-| **\<Regionsname>**          | Europa, Westen      |
-| **\<IPv4-Adressraum>**   | 10.1.0.0/16          |
-| **\<Subnetzname>**          | mySubnet        |
-| **\<Subnetzadressbereich>** | 10.1.0.0/24          |
+| **\<resource-group-name>**  | myResourceGroupSLB (Wählen Sie die vorhandene Ressourcengruppe aus.) |
+| **\<virtual-network-name>** | myVNet          |
+| **\<region-name>**          | Europa, Westen      |
+| **\<IPv4-address-space>**   | 10.1.0.0/16          |
+| **\<subnet-name>**          | mySubnet        |
+| **\<subnet-address-range>** | 10.1.0.0/24          |
 
 [!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
@@ -162,7 +162,7 @@ Load Balancer Standard unterstützt nur virtuelle Computer mit Standard-IP-Adres
 1. Wählen Sie die Registerkarte **Verwaltung** oder **Weiter** > **Verwaltung**. Legen Sie unter **Überwachung** die Option **Startdiagnose** auf **Aus** fest. 
 1. Klicken Sie auf **Überprüfen + erstellen**.   
 1. Überprüfen Sie die Einstellungen, und wählen Sie dann die Option **Erstellen**.
-1. Erstellen Sie mithilfe der entsprechenden Schritte zwei weitere virtuelle Computer (*myVM2* und *myVM3*) mit einer öffentlichen IP-Adresse für eine Standard-SKU in der **Verfügbarkeitszone** **2** bzw. **3**. (Verwenden Sie ansonsten die gleichen Einstellungen wie für *myVM1*.)  
+1. Erstellen Sie mithilfe der entsprechenden Schritte zwei weitere virtuelle Computer (*myVM2* und *myVM3*) mit einer öffentlichen IP-Adresse für eine Standard-SKU in der **Verfügbarkeitszone** **2** bzw. **3**. (Verwenden Sie ansonsten die gleichen Einstellungen wie für *myVM1*.)  
 
 ### <a name="create-network-security-group-rule"></a>Erstellen einer Netzwerksicherheitsgruppen-Regel
 
@@ -179,7 +179,7 @@ In diesem Abschnitt erstellen Sie eine Netzwerksicherheitsgruppen-Regel, um eing
     - *100* für **Priorität**
     - *myHTTPRule* als Name
     - *Allow HTTP* als Beschreibung
-4. Wählen Sie **Hinzufügen**.
+4. Wählen Sie **Hinzufügen** aus.
 
 ### <a name="install-iis-on-vms"></a>Installieren von IIS auf VMs
 

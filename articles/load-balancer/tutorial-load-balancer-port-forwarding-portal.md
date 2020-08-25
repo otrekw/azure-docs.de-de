@@ -16,10 +16,10 @@ ms.date: 02/26/2019
 ms.author: allensu
 ms.custom: seodec18
 ms.openlocfilehash: dcb151c8be0ab3a2393d0659b75985a92ac60507
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "82207886"
 ---
 # <a name="tutorial-configure-port-forwarding-in-azure-load-balancer-using-the-portal"></a>Tutorial: Konfigurieren der Portweiterleitung im Azure Load Balancer mit dem Portal
@@ -76,10 +76,10 @@ In den Schritten dieses Abschnitts müssen die folgenden Parameter wie folgt ers
 |-----------------------------|----------------------|
 | **\<resource-group-name>**  | myResourceGroupLB (Wählen Sie die vorhandene Ressourcengruppe aus.) |
 | **\<virtual-network-name>** | myVNet          |
-| **\<Regionsname>**          | Europa, Westen      |
+| **\<region-name>**          | Europa, Westen      |
 | **\<IPv4-address-space>**   | 10.3.0.0\16          |
-| **\<Subnetzname>**          | myBackendSubnet        |
-| **\<Subnetzadressbereich>** | 10.3.0.0\24          |
+| **\<subnet-name>**          | myBackendSubnet        |
+| **\<subnet-address-range>** | 10.3.0.0\24          |
 
 [!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
@@ -101,7 +101,7 @@ In den Schritten dieses Abschnitts müssen die folgenden Parameter wie folgt ers
    - **Virtuelles Netzwerk:** **MyVNet**
    - **Subnetz**: **MyBackendSubnet**
    
-1. Wählen Sie auf der Seite **Öffentliche IP-Adresse erstellen** unter **Öffentliche IP-Adresse** **Neue erstellen**, **Standard** aus, und wählen Sie dann **OK** aus. 
+1. Wählen Sie auf der Seite **Öffentliche IP-Adresse erstellen** unter **Öffentliche IP-Adresse****Neue erstellen**, **Standard** aus, und wählen Sie dann **OK** aus. 
    
 1. Wählen Sie zum Erstellen einer neuen Netzwerksicherheitsgruppe (NSG) – einer Art Firewall – unter **Netzwerksicherheitsgruppe** die Option **Erweitert** aus. 
    1. Wählen Sie im Feld **Netzwerksicherheitsgruppe konfigurieren** die Option **Neu erstellen**. 
@@ -115,7 +115,7 @@ In den Schritten dieses Abschnitts müssen die folgenden Parameter wie folgt ers
    1. Wählen Sie unter **LASTENAUSGLEICH** > **Diese VM hinter einer vorhandenen Lastenausgleichslösung platzieren?** **Ja** aus. 
    1. Öffnen Sie die Dropdownliste für **Optionen für den Lastenausgleich**, und wählen Sie **Azure Load Balancer** aus. 
    1. Öffnen Sie die Dropdownliste für **Load Balancer auswählen**, und wählen Sie **MyLoadBalancer** aus. 
-   1. Wählen Sie unter **Back-End-Pool auswählen** **Neuen erstellen** aus, geben Sie dann *MyBackendPool* ein, und wählen Sie **Erstellen** aus. 
+   1. Wählen Sie unter **Back-End-Pool auswählen****Neuen erstellen** aus, geben Sie dann *MyBackendPool* ein, und wählen Sie **Erstellen** aus. 
    
    ![Erstellen eines virtuellen Netzwerks](./media/tutorial-load-balancer-port-forwarding-portal/create-vm-networking.png)
    
@@ -129,7 +129,7 @@ In den Schritten dieses Abschnitts müssen die folgenden Parameter wie folgt ers
    
    Öffnen Sie die Dropdownliste für **Netzwerksicherheitsgruppe** nach der Auswahl von **Erweitert**, und wählen Sie die **MyNetworkSecurityGroup** aus, die Sie bereits erstellt haben. 
    
-   Stellen Sie sicher, dass unter **Back-End-Pool auswählen** **MyBackendPool** ausgewählt ist. 
+   Stellen Sie sicher, dass unter **Back-End-Pool auswählen****MyBackendPool** ausgewählt ist. 
 
 ### <a name="create-an-nsg-rule-for-the-vms"></a>Erstellen einer NSG-Regel für die VMs
 
@@ -144,16 +144,16 @@ Erstellen Sie eine Netzwerksicherheitsgruppen-Regel (NSGS) für die virtuellen C
    
 1. Geben Sie im Dialogfeld **Eingangssicherheitsregel hinzufügen** die folgenden Werte ein (bzw. wählen Sie sie aus):
    
-   - **Quelle**: Wählen Sie **Diensttag** aus.  
-   - **Quelldiensttag**: Wählen Sie **Internet** aus. 
+   - **Quelle**: Wählen Sie **Diensttag**.  
+   - **Quelldiensttag**: Wählen Sie **Internet**. 
    - **Zielportbereiche**: Geben Sie *80* ein.
    - **Protokoll:** Wählen Sie **TCP** aus. 
-   - **Aktion:** Wählen Sie **Zulassen** aus.  
-   - **Priorität:** Geben Sie *100* ein. 
+   - **Aktion**: Wählen Sie **Zulassen**.  
+   - **Priorität**: Geben Sie *100* ein. 
    - **Name**: Geben Sie *MyHTTPRule* ein. 
-   - **Beschreibung**: Geben Sie *Allow HTTP* ein. 
+   - **Beschreibung**: Geben Sie *HTTP zulassen* ein. 
    
-1. Wählen Sie **Hinzufügen**. 
+1. Wählen Sie **Hinzufügen** aus. 
    
    ![Erstellen einer NSG-Regel](./media/tutorial-load-balancer-port-forwarding-portal/8-load-balancer-nsg-rules.png)
    
