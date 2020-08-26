@@ -1,0 +1,38 @@
+### YamlMime:Landing
+title: Kubernetes in Azure Arc (Vorschauversion)
+summary: Hier erfahren Sie, wie Sie Kubernetes-Cluster mit Azure Arc verwalten.
+metadata:
+  title: Kubernetes in Azure Arc
+  description: Informationen zur Verwaltung lokaler Computer in Azure
+  author: 
+  ms.service: azure-arc
+  ms.topic: landing-page
+  ms.date: 06/26/2020
+  ms.author: 
+  ms.openlocfilehash: 7c643d10971d93a3c6194bc7390d2271c1ed561b
+  ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 08/24/2020
+  ms.locfileid: "88763736"
+landingContent:
+- title: Verbinden von Kubernetes-Clustern mit Azure mithilfe von Azure Arc
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Was ist Kubernetes mit Azure Arc-Aktivierung?
+      url: overview.md
+  - linkListType: quickstart
+    links:
+    - text: Herstellen einer Clusterverbindung
+      url: connect-cluster.md
+  - linkListType: how-to-guide
+    links:
+    - text: Bereitstellen von Konfigurationen mithilfe von GitOps
+      url: use-gitops-connected-cluster.md
+    - text: Bereitstellen von Helm-Charts mithilfe von GitOps
+      url: use-gitops-with-helm.md
+    - text: Erzwingen von GitOps mithilfe von Azure Policy
+      url: use-azure-policy.md
+    - text: Bereitstellen von Azure IoT Edge-Workloads
+      url: deploy-azure-iot-edge-workloads.md

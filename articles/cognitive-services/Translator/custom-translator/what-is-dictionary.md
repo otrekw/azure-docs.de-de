@@ -6,27 +6,27 @@ author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.date: 05/26/2020
+ms.date: 08/17/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 826da5c3754ad03ac1fb62288f0b03ee2353d1f3
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: f4c3d23f6abbdc20d210e5ddda6c527d27654bb0
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85962261"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88510758"
 ---
 # <a name="what-is-a-dictionary"></a>Definition: Wörterbuch
 
-Ein Wörterbuch umfasst Dokumente, die paarweise zugeordnet sind, und gibt Ausdrücke oder Sätze mit ihren entsprechenden Übersetzungen an. Verwenden Sie ein Wörterbuch in Ihrem Training, wenn Translator für alle Instanzen des Ausgangssatzes bzw. -ausdrucks immer die Übersetzung verwenden soll, die Sie im Wörterbuch angegeben haben. Wörterbücher werden auch als Glossare oder Terminologiedatenbanken bezeichnet. Sie können sich das so vorstellen, dass das Wörterbuch für alle Begriffe, die Sie angeben, den Ansatz „Kopieren und Ersetzen“ verfolgt. Darüber hinaus erstellt das Custom Translator-Feature eigene Universalwörterbücher und verwendet sie, um die Qualität seiner Übersetzung zu steigern. Ein vom Kunden bereitgestelltes Wörterbuch hat jedoch Vorrang und wird zuerst nach Wörtern oder Sätzen durchsucht.
+Ein Wörterbuch umfasst Dokumente, die paarweise zugeordnet sind, und gibt Ausdrücke oder Sätze mit ihren entsprechenden Übersetzungen an. Verwenden Sie ein Wörterbuch in Ihrem Training, wenn Sie Microsoft Translator für alle Instanzen des Ausgangssatzes bzw. -ausdrucks immer die Übersetzung verwenden soll, die Sie im Wörterbuch angegeben haben. Wörterbücher werden auch als Glossare oder Terminologiedatenbanken bezeichnet. Sie können sich das so vorstellen, dass das Wörterbuch für alle Begriffe, die Sie angeben, den Ansatz „Kopieren und Ersetzen“ verfolgt. Darüber hinaus erstellt der Microsoft Custom Translator-Dienst eigene Universalwörterbücher und verwendet sie, um die Qualität seiner Übersetzung zu steigern. Ein vom Kunden bereitgestelltes Wörterbuch hat jedoch Vorrang und wird zuerst nach Wörtern oder Sätzen durchsucht.
 
 Wörterbücher eignen sich nur für Projekte mit Sprachpaaren, die auf einem vollständig unterstützten allgemeinen neuronalen Netzwerkmodell von Microsoft basieren. [Vollständige Liste der Sprachen anzeigen](https://docs.microsoft.com/azure/cognitive-services/translator/language-support#customization).
 
 ## <a name="phrase-dictionary"></a>Ausdruckswörterbuch
-Wenn Sie ein Ausdruckswörterbuch für das Training Ihres Modells verwenden, wird jedes aufgeführte Wort bzw. jeder aufgeführte Ausdruck wie von Ihnen angegeben übersetzt. Der Rest des Satzes wird wie gewohnt übersetzt. Sie können mithilfe eines Ausdruckswörterbuchs Ausdrücke angeben, die nicht mit dem gleichen unübersetzten Ausdruck in der Quell- und Zieldatei im Wörterbuch übersetzt werden sollen.
+Beim Ausdruckswörterbuch wird die Groß-/Kleinschreibung unterschieden. Es handelt sich um einen exakten Such- und Ersetzungsvorgang. Wenn Sie ein Ausdruckswörterbuch für das Training Ihres Modells verwenden, wird jedes aufgeführte Wort bzw. jeder aufgeführte Ausdruck wie von Ihnen angegeben übersetzt. Der Rest des Satzes wird wie gewohnt übersetzt. Sie können mithilfe eines Ausdruckswörterbuchs Ausdrücke angeben, die nicht mit dem gleichen unübersetzten Ausdruck in der Quell- und Zieldatei im Wörterbuch übersetzt werden sollen.
 
 ## <a name="sentence-dictionary"></a>Satzwörterbuch
-Im Satzwörterbuch können Sie eine genaue zielsprachliche Übersetzung für einen Ausgangssatz festlegen. Damit eine Übereinstimmung im Satzwörterbuch gefunden wird, muss der gesamte übermittelte Satz dem Wörterbucheintrag in der Ausgangssprache entsprechen.  Wenn die Übereinstimmung nur für einen Teil des Satzes gilt, zählt der Eintrag nicht als Entsprechung.  Wenn eine Übereinstimmung erkannt wird, wird der zielsprachliche Eintrag des Satzwörterbuchs zurückgegeben.
+Beim Satzwörterbuch wird die Groß-/Kleinschreibung nicht unterschieden. Im Satzwörterbuch können Sie eine genaue zielsprachliche Übersetzung für einen Ausgangssatz festlegen. Damit eine Übereinstimmung im Satzwörterbuch gefunden wird, muss der gesamte übermittelte Satz dem Wörterbucheintrag in der Ausgangssprache entsprechen. Wenn der Quellwörterbucheintrag mit Interpunktionszeichen endet, wird er während des Abgleichs ignoriert. Wenn die Übereinstimmung nur für einen Teil des Satzes gilt, zählt der Eintrag nicht als Entsprechung.  Wenn eine Übereinstimmung erkannt wird, wird der zielsprachliche Eintrag des Satzwörterbuchs zurückgegeben.
 
 ## <a name="dictionary-only-trainings"></a>Training nur mit Wörterbüchern
 Sie können ein Modell nur mit Wörterbuchdaten trainieren. Wählen Sie dazu nur das Wörterbuchdokument (oder mehrere Wörterbuchdokumente) aus, das Sie einbinden möchten, und tippen Sie auf „Modell erstellen“. Da es sich um ein Training handelt, das ausschließlich auf Wörterbuchdaten basiert, ist keine Mindestanzahl von Trainingssätzen erforderlich. Ihr Modell schließt das Training in der Regel viel schneller als das Standardtraining ab.  Die resultierenden Modelle verwenden die Microsoft-Grundmodelle zum Übersetzen samt der von Ihnen hinzugefügten Wörterbücher.  Sie erhalten keinen Testbericht.
@@ -40,6 +40,7 @@ Sie können ein Modell nur mit Wörterbuchdaten trainieren. Wählen Sie dazu nur
 - Verwenden Sie das Ausdruckswörterbuch sparsam. Machen Sie sich bewusst, dass beim Ersetzen eines Ausdrucks in einem Satz der Kontext dieses Satzes verloren geht oder für die Übersetzung des restlichen Satzes nicht mehr ausreicht. Das heißt, wenn der Ausdruck oder das Wort im Satzzusammenhang gemäß dem bereitgestellten Wörterbuch übersetzt wird, leidet oft die allgemeine Übersetzungsqualität des Satzes darunter.
 - Das Ausdruckswörterbuch eignet sich gut für zusammengesetzte Substantive wie Produktnamen („Microsoft SQL Server“), Eigennamen („City of Hamburg“) oder Produktmerkmale („Pivottabelle“). Weniger geeignet ist es für Verben oder Adjektive, da diese in der Regel in der Ausgangs- oder Zielsprache flektiert werden. Die bewährte Methode ist das ausschließliche Verwenden von Ausdruckswörterbucheinträgen für zusammengesetzte Substantive.
 - Beim Verwenden eines Ausdruckswörterbuchs sind Groß-/Kleinschreibung und Interpunktion wichtig. Wörterbucheinträge stimmen nur mit Wörtern und Ausdrücken im Eingangssatz überein, die genau die gleiche Groß- und Kleinschreibung verwenden, die in der Quell-Wörterbuchdatei angeben ist. Außerdem geben die Übersetzungen die Groß-/Kleinschreibung und Interpunktion wieder, die in der Ziel-Wörterbuchdatei angegeben ist. Nehmen wir beispielsweise an, Sie haben ein System für die Übersetzung von Englisch in Spanisch trainiert, das „US“ in der Quelldatei und „EE.UU.“ in der Zieldatei angibt. Wenn Sie die Übersetzung eines Satzes anfordern, der das Wort „us“ (nicht groß geschrieben) enthält, stimmt dies NICHT mit dem Wörterbuch überein. Wenn Sie jedoch die Übersetzung eines Satzes anfordern, der das Wort „US“ (groß geschrieben) enthält, stimmte es mit dem Wörterbuch überein, und die Übersetzung würde „EE.UU.“ enthalten. Beachten Sie, dass die Groß-/Kleinschreibung und Interpunktion in der Übersetzung sich von der Angabe in der Wörterbuch-Zieldatei unterscheiden kann und ebenfalls von der Groß-/Kleinschreibung und Interpunktion in der Quelle. Sie folgt den Regeln der Zielsprache.
+- Bei Verwendung eines Satzwörterbuchs wird das Satzzeichen am Ende des Satzes ignoriert. Wenn das Quellwörterbuch beispielsweise „Dieser Satz endet mit einem Satzzeichen!“ enthält, stimmen alle Übersetzungsanforderungen überein, die „Dieser Satz endet mit einem Satzzeichen“ enthalten.
 - Wenn ein Wort mehrmals in einer Wörterbuchdatei vorkommt, verwendet das System stets den zuletzt angegebenen Eintrag. Daher sollte Ihr Wörterbuch jeweils nur eine Übersetzung für ein Wort enthalten.
 
 ## <a name="next-steps"></a>Nächste Schritte

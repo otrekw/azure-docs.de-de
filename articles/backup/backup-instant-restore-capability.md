@@ -4,12 +4,12 @@ description: Azure-Funktion zur sofortigen Wiederherstellung und häufig gestell
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: 6ea4c3757da4e24ae0455cf35f119bf57ed644a6
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: bb9a7a32306fc76ea8852787601f3b3b3828daf8
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87531828"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88611804"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>Verbesserte Sicherungs- und Wiederherstellungsleistung mit der Azure Backup-Funktion zur sofortigen Wiederherstellung
 
@@ -24,7 +24,7 @@ Das neue Modell für die sofortige Wiederherstellung bietet die folgenden Featur
 * Es werden Datenträgergrößen von bis zu 32 TB unterstützt. Ein Ändern der Datenträgergröße wird von Azure Backup nicht empfohlen.
 * Unterstützt SSD Standard-Datenträger sowie HDD Standard-Datenträger und SSD Premium-Datenträger.
 * Die Möglichkeit zur Verwendung der ursprünglichen Speicherkonten (pro Datenträger) eines nicht verwalteten virtuellen Computers bei der Wiederherstellung. Diese Funktion ist auch dann vorhanden, wenn die VM Datenträger enthält, die an mehrere Speicherkonten verteilt werden. Sie beschleunigt Wiederherstellungsvorgänge für verschiedene VM-Konfigurationen.
-* Wenn Sie virtuelle Computer, die nicht verwaltete Premium-Datenträger in Speicherkonten verwenden, mit der sofortigen Wiederherstellung sichern, empfiehlt es sich, *50 Prozent* freien Speicherplatz des gesamten zugeordneten Speicherplatzes zuzuweisen. Dies ist **nur** für die erste Sicherung erforderlich. Der freie Speicherplatz von 50 % ist keine Voraussetzung für Sicherungen, die nach Abschluss der ersten Sicherung ausgeführt werden.
+* Wenn Sie virtuelle Computer, die nicht verwaltete Premium-Datenträger in Speicherkonten verwenden, mit der sofortigen Wiederherstellung sichern, empfiehlt es sich, *50 Prozent* freien Speicherplatz des gesamten zugeordneten Speicherplatzes zuzuweisen. Dies ist **nur** für die erste Sicherung erforderlich. Der freie Speicherplatz von 50 % ist keine Voraussetzung für Sicherungen, die nach Abschluss der ersten Sicherung ausgeführt werden.
 
 ## <a name="whats-new-in-this-feature"></a>Was ist neu in diesem Feature?
 
@@ -44,8 +44,8 @@ Standardmäßig werden Momentaufnahmen zwei Tage lang aufbewahrt. Mit diesem Fea
 * Momentaufnahmen werden zur Verbesserung der Erstellung eines Wiederherstellungspunkts und zur Beschleunigung von Wiederherstellungsvorgängen zusammen mit den Datenträgern gespeichert. Aus diesem Grund werden Ihnen Speicherkosten angezeigt, die den Momentaufnahmen aus diesem Zeitraum entsprechen.
 * Inkrementelle Momentaufnahmen werden als Seitenblobs gespeichert. Für alle Benutzer, die nicht verwaltete Datenträger verwenden, werden die Momentaufnahmen berechnet, die in ihrem lokalen Speicherkonto gespeichert sind. Da die Wiederherstellungspunktsammlungen für Sicherungen von verwalteten virtuellen Computern Blobmomentaufnahmen auf der zugrunde liegenden Speicherebene verwenden, werden für verwaltete Datenträger Kosten angezeigt, die Preisen für Blobmomentaufnahmen entsprechen, und inkrementell sind.
 * Bei Premium-Speicherkonten werden die für die Momentaufnahmen, die für die Punkte erstellt werden, die zur sofortigen Wiederherstellung dienen, zu den 10 TB des zugeordneten Speicherplatzes gezählt.
-* Sie haben die Möglichkeit, die Aufbewahrung von Momentaufnahmen entsprechend den Wiederherstellungsanforderungen zu konfigurieren. Je nach Anforderungen können Sie die Aufbewahrung von Momentaufnahmen auf dem Blatt „Sicherungsrichtlinie“ auf ein Minimum von einem Tag festlegen, wie es weiter unten beschrieben ist. Dadurch können Sie Kosten für die Aufbewahrung von Momentaufnahmen sparen, wenn Wiederherstellungen nicht häufig ausgeführt werden.
-* Es handelt sich dabei um ein unidirektionales Upgrade: Das Upgrade für sofortige Wiederherstellung kann nicht rückgängig gemacht werden.
+* Sie haben die Möglichkeit, die Aufbewahrung von Momentaufnahmen entsprechend den Wiederherstellungsanforderungen zu konfigurieren. Je nach Anforderungen können Sie die Aufbewahrung von Momentaufnahmen im Bereich „Sicherungsrichtlinie“ auf ein Minimum von einem Tag festlegen, wie es weiter unten beschrieben ist. Dadurch können Sie Kosten für die Aufbewahrung von Momentaufnahmen sparen, wenn Wiederherstellungen nicht häufig ausgeführt werden.
+* Dabei handelt es sich um ein unwiderrufliches Upgrade. Sie können das Upgrade auf die sofortige Wiederherstellung nicht rückgängig machen.
 
 >[!NOTE]
 >Mit diesem Upgrade für die sofortige Wiederherstellung wird die Aufbewahrungsdauer für Momentaufnahmen für alle Kunden (**sowohl neue als auch bestehende**) auf einen Standardwert von zwei Tagen festgelegt. Sie können die Dauer aber auch nach Bedarf auf einen beliebigen Wert zwischen einem und fünf Tagen festlegen.
@@ -61,7 +61,7 @@ Die inkrementellen Momentaufnahmen werden im Speicherkonto des virtuellen Comput
 
 ### <a name="using-azure-portal"></a>Verwenden des Azure-Portals
 
-Im Azure-Portal wird ein zusätzliches Feld auf dem Blatt **VM-Sicherungsrichtlinie** unter dem Abschnitt **Sofortige Wiederherstellung** angezeigt. Sie können die Aufbewahrungsdauer für Momentaufnahmen über das Blatt **VM-Sicherungsrichtlinie** für alle virtuellen Computer ändern, die der jeweiligen Sicherungsrichtlinie zugeordnet sind.
+Im Azure-Portal wird ein zusätzliches Feld im Bereich **VM-Sicherungsrichtlinie** unter dem Abschnitt **Sofortige Wiederherstellung** angezeigt. Sie können die Aufbewahrungsdauer für Momentaufnahmen im Bereich **VM-Sicherungsrichtlinie** für alle virtuellen Computer ändern, die der jeweiligen Sicherungsrichtlinie zugeordnet sind.
 
 ![Funktion zur sofortigen Wiederherstellung](./media/backup-azure-vms/instant-restore-capability.png)
 
@@ -106,7 +106,7 @@ Wenn der Wiederherstellungstyp „Momentaufnahme und Tresor“ ist, erfolgt die 
 
 ### <a name="what-happens-if-i-select-retention-period-of-restore-point-tier-2-less-than-the-snapshot-tier1-retention-period"></a>Was passiert, wenn ich für den Aufbewahrungszeitraum des Wiederherstellungspunkts (Tarif 2) einen geringeren Wert als für den Aufbewahrungszeitraum der Momentaufnahme (Tarif 1) auswähle?
 
-Das neue Modell lässt das Löschen des Wiederherstellungspunkts (Tarif2) nur zu, wenn die Momentaufnahme (Tarif1) gelöscht wird. Es empfiehlt sich, den Aufbewahrungszeitraum für den Wiederherstellungspunkt (Tarif2) auf einen höheren Wert als den Aufbewahrungszeitraum der Momentaufnahme festzulegen.
+Das neue Modell lässt das Löschen des Wiederherstellungspunkts (Tarif 2) nur zu, wenn die Momentaufnahme (Tarif 1) gelöscht wird. Es empfiehlt sich, den Aufbewahrungszeitraum für den Wiederherstellungspunkt (Tarif2) auf einen höheren Wert als den Aufbewahrungszeitraum der Momentaufnahme festzulegen.
 
 ### <a name="why-is-my-snapshot-existing-even-after-the-set-retention-period-in-backup-policy"></a>Warum ist meine Momentaufnahme auch nach Ablauf des in der Sicherungsrichtlinie festgelegten Aufbewahrungszeitraum noch vorhanden?
 

@@ -4,12 +4,12 @@ description: In diesem Artikel finden Sie Antworten auf häufig gestellte Fragen
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 07/05/2019
-ms.openlocfilehash: 35957a1e8a3d6c3d9be06d9d44dbcd47efa0e6ee
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b2994e250c37d707eee5428e83c151728f83a1ab
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74173158"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88522928"
 ---
 # <a name="azure-backup-server-and-dpm---faq"></a>Azure Backup Server und DPM – häufig gestellte Fragen
 
@@ -36,6 +36,10 @@ Ja. Sie sollten jedoch zuerst DPM einrichten und dann den Azure Backup-Agent ins
 ### <a name="why-cant-i-add-an-external-dpm-server-after-installing-ur7-and-latest-azure-backup-agent"></a>Warum kann ich nach der Installation von UR7 und des neuesten Azure Backup-Agents keinen externen DPM-Server hinzufügen?
 
 Für die vorhandenen DPM-Server mit Datenquellen, die in der Cloud (mithilfe eines Updaterollups vor Update Rollup 7) geschützt sind, müssen Sie mindestens einen Tag nach der Installation von UR7 und des neuesten Azure Backup-Agents warten, bevor Sie **externe DPM-Server hinzufügen**. Diese eintägige Frist ist erforderlich, um die Metadaten der DPM-Schutzgruppen in Azure hochzuladen. Schutzgruppen-Metadaten werden erstmalig über einen nächtlichen Auftrag hochgeladen.
+
+### <a name="are-there-recommendations-for-configuring-exclusions-for-antivirus-software"></a>Gibt es Empfehlungen zum Konfigurieren von Ausschlüssen für Antivirussoftware?
+
+Ja, der Antivirenausschluss sollte konfiguriert werden. Informationen zu Ausschlüssen für DPM finden Sie unter [Ausführen von Antivirensoftware auf dem DPM-Server](https://docs.microsoft.com/system-center/dpm/run-antivirus-server?view=sc-dpm-2019). Informationen zu Ausschlüssen für MABS finden Sie unter [Konfigurieren von Antivirensoftware für MABS-Server](backup-azure-mabs-troubleshoot.md#configure-antivirus-for-mabs-server).
 
 ## <a name="vmware-and-hyper-v-backup"></a>VMware- und Hyper-V-Sicherung
 

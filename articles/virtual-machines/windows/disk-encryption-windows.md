@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8b2a8d552a2b9a1d6d3bb02bf02be95af031a5e4
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 10e306d26ebfd5ffafe65d7aa52753e993b085bf
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87291975"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88509160"
 ---
 # <a name="azure-disk-encryption-scenarios-on-windows-vms"></a>Azure Disk Encryption-Szenarien auf virtuellen Windows-Computern
 
@@ -264,7 +264,7 @@ Die folgenden Szenarios, Features und Technologien werden von Azure Disk Encrypt
 - Erstellen eines Images oder einer Momentaufnahme einer verschlüsselten VM und dessen oder deren Verwendung zum Bereitstellen weiterer VMs
 - Gen2-VMs (siehe: [Unterstützung für VMs der Generation 2 in Azure](generation-2.md#generation-1-vs-generation-2-capabilities))
 - VMs der M-Serie mit Datenträgern mit Schreibbeschleunigung
-- Anwenden von ADE auf eine VM mit einem Datenträger, der mit [serverseitiger Verschlüsselung mit kundenseitig verwalteten Schlüsseln](disk-encryption.md) (SSE + CMK) verschlüsselt ist, oder das Anwenden von SSE + CMK auf einen Datenträger auf einer mit ADE verschlüsselten VM.
+- Anwenden von ADE auf einen virtuellen Computer, der über Datenträger, die mit *serverseitiger Verschlüsselung mit kundenseitig verwalteten Schlüsseln* (SSE + CMK) verschlüsselt werden, verfügt oder [immer](disk-encryption.md) verfügte. Das Anwenden von SSE + CMK auf einen Datenträger auf einer mit ADE verschlüsselten VM ist ebenfalls ein nicht unterstütztes Szenario.
 - Migrieren einer mit ADE verschlüsselten VM zur [serverseitigen Verschlüsselung mit kundenseitig verwalteten Schlüsseln](disk-encryption.md).
 
 

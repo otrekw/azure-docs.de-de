@@ -4,12 +4,12 @@ description: In diesem Artikel erfahren Sie, wie Sie Recovery Services-Tresore z
 ms.topic: conceptual
 ms.date: 05/30/2019
 ms.custom: references_regions
-ms.openlocfilehash: 244562efdc4c274a79ea27cdfa00dd51ae671fa4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7084fb9b599e127fac2b8c75748448d37d3f5365
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87032951"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88586187"
 ---
 # <a name="create-and-configure-a-recovery-services-vault"></a>Erstellen und Konfigurieren von Recovery Services-Tresoren
 
@@ -25,10 +25,10 @@ Azure Backup übernimmt automatisch die Speicherung für den Tresor. Sie müssen
 >- Wenn Sie noch keine Sicherung konfiguriert haben, [führen Sie die folgenden Schritte aus](#set-storage-redundancy), um die Einstellungen zu überprüfen und zu ändern.
 >- Wenn Sie die Sicherung bereits konfiguriert haben und von georedundantem Speicher (GRS) zu lokal redundantem Speicher (LRS) wechseln müssen, [überprüfen Sie diese Problemumgehungen](#how-to-change-from-grs-to-lrs-after-configuring-backup).
 
-1. Klicken Sie auf dem Blatt **Recovery Services-Tresore** auf den neuen Tresor. Klicken Sie im Abschnitt **Einstellungen** auf **Eigenschaften**.
-1. Klicken Sie in **Eigenschaften** unter **Sicherungskonfiguration** auf **Aktualisieren**.
+1. Wählen Sie im Bereich **Recovery Services-Tresore** den neuen Tresor aus. Wählen Sie im Abschnitt **Einstellungen** die Option **Eigenschaften** aus.
+1. Wählen Sie in **Eigenschaften** unter **Sicherungskonfiguration** die Option **Aktualisieren** aus.
 
-1. Wählen Sie den Speicherreplikationstyps aus, und klicken Sie auf **Speichern**.
+1. Wählen Sie den Speicherreplikationstyp und dann **Speichern** aus.
 
      ![Speicherkonfiguration für neuen Tresor festlegen](./media/backup-try-azure-backup-in-10-mins/recovery-services-vault-backup-configuration.png)
 
@@ -46,7 +46,7 @@ Als eine der Wiederherstellungsoptionen ermöglicht die bereichsübergreifende W
 - Durchführen von Übungen für Audit- oder Complianceanforderungen
 - Wiederherstellen des virtuellen Computers oder dessen Datenträgers im Falle eines Notfalls in der primären Region
 
-Legen Sie zum Auswählen dieses Features auf dem Blatt **Sicherungskonfiguration** die Option **Bereichsübergreifende Wiederherstellung** auf „Aktiviert“ fest.
+Wählen Sie zur Auswahl dieses Features im Bereich **Sicherungskonfiguration** die Option **Bereichsübergreifende Wiederherstellung aktivieren** aus.
 
 Dieser Prozess hat Auswirkungen auf den Preis, da er auf der Speicherebene erfolgt.
 
@@ -62,22 +62,40 @@ Dieser Prozess hat Auswirkungen auf den Preis, da er auf der Speicherebene erfol
 
 ### <a name="configure-cross-region-restore"></a>Konfigurieren der bereichsübergreifenden Wiederherstellung
 
-Bei einem mit GRS-Redundanz erstellten Tresor kann die bereichsübergreifende Wiederherstellung konfiguriert werden. Jeder GRS-Tresor verfügt über ein Banner, das mit der Dokumentation verknüpft ist. Wenn Sie CRR für den Tresor konfigurieren möchten, navigieren Sie zum Blatt mit der Sicherungskonfiguration. Dort befindet sich die Option zum Aktivieren dieses Features.
+Bei einem mit GRS-Redundanz erstellten Tresor kann die bereichsübergreifende Wiederherstellung konfiguriert werden. Jeder GRS-Tresor verfügt über ein Banner, das mit der Dokumentation verknüpft ist. Wenn Sie CRR für den Tresor konfigurieren möchten, navigieren Sie zum Bereich mit der Sicherungskonfiguration. Dort befindet sich die Option zum Aktivieren dieses Features.
 
  ![Banner für die Sicherungskonfiguration](./media/backup-azure-arm-restore-vms/banner.png)
 
 1. Navigieren Sie im Portal zu „Recovery Services-Tresor“ > „Einstellungen“ > „Eigenschaften“.
-2. Klicken Sie unter **Bereichsübergreifende Wiederherstellung** auf „Aktivieren“, um die Funktion zu aktivieren.
+2. Wählen Sie unter **Bereichsübergreifende Wiederherstellung in diesem Tresor aktivieren** aus, um die Funktionalität zu aktivieren.
 
-   ![Vor Aktivierung der bereichsübergreifenden Wiederherstellung in diesem Tresor](./media/backup-azure-arm-restore-vms/backup-configuration1.png)
+   ![Vor Auswahl der bereichsübergreifenden Wiederherstellung in diesem Tresor](./media/backup-azure-arm-restore-vms/backup-configuration1.png)
 
-   ![Nach Aktivierung der bereichsübergreifenden Wiederherstellung in diesem Tresor](./media/backup-azure-arm-restore-vms/backup-configuration2.png)
+   ![Nach Auswahl der bereichsübergreifenden Wiederherstellung in diesem Tresor](./media/backup-azure-arm-restore-vms/backup-configuration2.png)
 
 Informationen zum Anzeigen von Sicherungselementen in der sekundären Region finden Sie [hier](backup-azure-arm-restore-vms.md#view-backup-items-in-secondary-region).
 
 Informationen zur Wiederherstellung in der sekundären Region finden Sie [hier](backup-azure-arm-restore-vms.md#restore-in-secondary-region).
 
 Informationen zum Überwachen von Wiederherstellungsaufträgen für die sekundäre Regionen finden Sie [hier](backup-azure-arm-restore-vms.md#monitoring-secondary-region-restore-jobs).
+
+## <a name="set-encryption-settings"></a>Festlegen von Verschlüsselungseinstellungen
+
+Standardmäßig werden die Daten im Recovery Services-Tresor mit plattformseitig verwalteten Schlüsseln verschlüsselt. Sie müssen von Ihrer Seite aus keine expliziten Maßnahmen ergreifen, um diese Verschlüsselung zu aktivieren, und sie gilt für alle Workloads, die in Ihrem Recovery Services-Tresor gesichert werden.  Sie können die Sicherungsdaten in diesem Tresor mit einem eigenen Schlüssel verschlüsseln. Dieser Schlüssel wird als kundenseitig verwalteter Schlüssel bezeichnet. Wenn Sie Sicherungsdaten mithilfe Ihres eigenen Schlüssels verschlüsseln möchten, muss der Verschlüsselungsschlüssel angegeben werden, bevor ein Element in diesem Tresor geschützt wird. Wenn Sie die Verschlüsselung mit Ihrem Schlüssel aktiviert haben, kann sie nicht mehr rückgängig gemacht werden.
+
+### <a name="configuring-a-vault-to-encrypt-using-customer-managed-keys"></a>Konfigurieren eines Tresors mithilfe von kundenseitig verwalteten Schlüsseln
+
+Zum Konfigurieren des Tresors für die Verschlüsselung mit kundenseitig verwalteten Schlüsseln müssen Sie diese Schritte in dieser Reihenfolge befolgen:
+
+1. Aktivieren der verwalteten Identität für den Recovery Services-Tresor
+
+1. Zuweisen von Berechtigungen zum Tresor für den Zugriff auf den Verschlüsselungsschlüssel im Azure Key Vault
+
+1. Aktivieren des vorläufigen Löschens und des Löschschutzes im Azure Key Vault
+
+1. Zuweisen des Verschlüsselungsschlüssels zum Recovery Services-Tresor
+
+Die Anweisungen für die einzelnen Schritte finden Sie [in diesem Artikel](encryption-at-rest-with-cmk.md#configuring-a-vault-to-encrypt-using-customer-managed-keys).
 
 ## <a name="modifying-default-settings"></a>Ändern der Standardeinstellungen
 
@@ -132,7 +150,6 @@ Wenn Sie die aktuell geschützten Daten im GRS-Tresor aufbewahren und den Schutz
   - Die Beibehaltung der Wiederherstellungspunkte im GRS-Tresor ist kostenpflichtig (Einzelheiten finden Sie unter [Azure Backup – Preise](azure-backup-pricing.md)).
   - Sie können den virtuellen Computer bei Bedarf aus dem GRS-Tresor wiederherstellen.
   - Die erste Sicherung des virtuellen Computers in der neuen Ressourcengruppe im LRS-Tresor erfolgt als Erstreplikat.
-
 
 ## <a name="next-steps"></a>Nächste Schritte
 

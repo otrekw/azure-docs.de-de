@@ -3,14 +3,14 @@ title: Azure VM-Bewertungen mit der Azure Migrate-Serverbewertung
 description: Erfahren Sie mehr über Bewertungen mit der Azure Migrate-Serverbewertung.
 ms.topic: conceptual
 ms.date: 05/27/2020
-ms.openlocfilehash: 7664c8296f0d47f37f9542dee82d3c718be40126
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 1d9c887f42089611ce7402aa32174958cd8c0b07
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87825989"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88261853"
 ---
-# <a name="azure-vm-assessments-in-azure-migrate-server-assessment"></a>Azure VM-Bewertungen in Azure Migrate: Migrate-Serverbewertung
+# <a name="server-assessment-overview-migrate-to-azure-vms"></a>Serverbewertungsübersicht (Migration zu Azure-VMs)
 
 In diesem Artikel finden Sie eine Übersicht über Bewertungen im [Serverbewertungstool von Azure Migrate](migrate-services-overview.md#azure-migrate-server-assessment-tool). Mit diesem Tool können Sie lokale VMware-VMs, Hyper-V-VMs und physische Server für die Migration zu Azure bewerten.
 
@@ -122,7 +122,7 @@ Eine Azure VM-Bewertung mit dem Serverbewertungstool umfasst Folgendes:
 **Leistungsverlauf** | Wird bei der leistungsbasierten Größenanpassung verwendet. Der Leistungsverlauf gibt den Zeitraum für die Bewertung von Leistungsdaten an.
 **Perzentilwert der Nutzung** | Wird bei der leistungsbasierten Größenanpassung verwendet. Der Perzentilwert der Nutzung gibt den für die Größenanpassung zu verwendenden Perzentilwert der Leistungsstichprobe an.
 **VM-Serie** | Die Azure-VM-Serie, die für die Größenanpassung berücksichtigt werden soll. Wenn Sie beispielsweise in der Produktionsumgebung keine virtuellen Computer der A-Serie in Azure benötigen, können Sie die A-Serie aus der Liste der Serien ausschließen.
-**Komfortfaktor** | Der bei der Bewertung verwendete Puffer. Dieser Wert wird auf die Daten zur Auslastung von CPU, RAM, Datenträger und Netzwerk für VMs angewendet. Er berücksichtigt Aspekte wie saisonale Nutzung, einen kurzen Leistungsverlauf und eine voraussichtliche Zunahme der zukünftigen Nutzung.<br/><br/> Beispiel: Für einen virtuellen Computer mit zehn Kernen und einer Auslastung von 20 % ergibt sich normalerweise ein virtueller Computer mit zwei Kernen. Bei einem Komfortfaktor von 2.0 ist das Ergebnis dagegen ein virtueller Computer mit vier Kernen.
+**Komfortfaktor** | Der bei der Bewertung verwendete Puffer. Er wird auf die CPU-, RAM-, Datenträger- und Netzwerkdaten für VMs angewendet. Er berücksichtigt Aspekte wie saisonale Nutzung, einen kurzen Leistungsverlauf und eine voraussichtliche Zunahme der zukünftigen Nutzung.<br/><br/> Beispiel: Für einen virtuellen Computer mit zehn Kernen und einer Auslastung von 20 % ergibt sich normalerweise ein virtueller Computer mit zwei Kernen. Bei einem Komfortfaktor von 2.0 ist das Ergebnis dagegen ein virtueller Computer mit vier Kernen.
 **Angebot** | Das [Azure-Angebot](https://azure.microsoft.com/support/legal/offer-details/), für das Sie registriert sind. Bei der Serverbewertung werden die Kosten für dieses Angebot geschätzt.
 **Währung** | Die Rechnungswährung für Ihr Konto.
 **Rabatt (%)** | Abonnementspezifische Rabatte, die Sie zusätzlich zum Azure-Angebot erhalten. Die Standardeinstellung ist 0 %.
@@ -151,8 +151,8 @@ Für eine Azure VM-Bewertung überprüft die Serverbewertung die folgenden Eigen
 Eigenschaft | Details | Azure-Bereitschaftsstatus
 --- | --- | ---
 **Starttyp** | Azure unterstützt virtuelle Computer mit dem Starttyp BIOS, jedoch nicht UEFI. | Bedingt bereit, wenn der Starttyp UEFI ist
-**Kerne** | Pro Computer sind maximal 128 Kerne zulässig. Dies ist die maximale Anzahl, die von einer Azure-VM unterstützt wird.<br/><br/> Wenn der Leistungsverlauf verfügbar ist, berücksichtigt Azure Migrate die genutzten Kerne beim Vergleich. Wenn in den Bewertungseinstellungen ein Komfortfaktor festgelegt ist, wird die Anzahl von genutzten Kernen mit diesem Komfortfaktor multipliziert.<br/><br/> Wenn kein Leistungsverlauf vorhanden ist, verwendet Azure Migrate die zugeordneten Kerne ohne Anwendung des Komfortfaktors. | Bereit, wenn die Anzahl von Kernen innerhalb des Limits liegt
-**RAM** | Pro Computer sind maximal 3.892 GB RAM zulässig. Dies ist die maximale Größe, die von einer Azure-VM der M-Serie vom Typ Standard_M128m&nbsp;<sup>2</sup> unterstützt wird. [Weitere Informationen](../virtual-machines/sizes.md)<br/><br/> Wenn der Leistungsverlauf verfügbar ist, berücksichtigt Azure Migrate den genutzten RAM zum Vergleich. Wenn ein Komfortfaktor festgelegt ist, wird der genutzte RAM mit dem Komfortfaktor multipliziert.<br/><br/> Wenn kein Verlauf vorhanden ist, wird der zugeordnete RAM verwendet, ohne einen Komfortfaktor anzuwenden.<br/><br/> | Bereit, wenn die RAM-Größe innerhalb des Limits liegt
+**Kerne** | Pro Computer sind maximal 128 Kerne zulässig. Dies ist die maximale Anzahl, die von einer Azure-VM unterstützt wird.<br/><br/> Wenn der Leistungsverlauf verfügbar ist, berücksichtigt Azure Migrate die genutzten Kerne beim Vergleich. Wenn in den Bewertungseinstellungen ein Komfortfaktor festgelegt ist, wird die Anzahl von genutzten Kernen mit diesem Komfortfaktor multipliziert.<br/><br/> Wenn kein Leistungsverlauf vorhanden ist, verwendet Azure Migrate die zugeordneten Kerne zur Anwendung des Komfortfaktors. | Bereit, wenn die Anzahl von Kernen innerhalb des Limits liegt
+**RAM** | Pro Computer sind maximal 3.892 GB RAM zulässig. Dies ist die maximale Größe, die von einer Azure-VM der M-Serie vom Typ Standard_M128m&nbsp;<sup>2</sup> unterstützt wird. [Weitere Informationen](../virtual-machines/sizes.md)<br/><br/> Wenn der Leistungsverlauf verfügbar ist, berücksichtigt Azure Migrate den genutzten RAM zum Vergleich. Wenn ein Komfortfaktor festgelegt ist, wird der genutzte RAM mit dem Komfortfaktor multipliziert.<br/><br/> Wenn kein Verlauf vorhanden ist, wird der zugeordnete RAM verwendet, um einen Komfortfaktor anzuwenden.<br/><br/> | Bereit, wenn die RAM-Größe innerhalb des Limits liegt
 **Speicherdatenträger** | Die zugeordnete Größe eines Datenträgers darf maximal 32 TB betragen. Wenngleich in Azure 64-TB-Datenträger mit Azure SSD Ultra-Datenträgern unterstützt werden, überprüft die Serverbewertung von Azure Migrate derzeit die Datenträgergröße auf Überschreitung von 32 TB, da sie SSD Ultra aktuell noch nicht unterstützt. <br/><br/> Pro Computer dürfen einschließlich des Betriebssystemdatenträgers höchstens 65 Datenträger angefügt sein. | Bereit, wenn die Größe und Anzahl von Datenträgern innerhalb der Limits liegen
 **Netzwerk** | Pro Computer dürfen maximal 32 Netzwerkschnittstellen (NICs) angefügt sein. | Bereit, wenn die Anzahl von NICs innerhalb des Limits liegt
 

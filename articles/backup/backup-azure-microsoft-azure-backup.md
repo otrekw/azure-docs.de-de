@@ -3,12 +3,12 @@ title: Sichern von Workloads mithilfe von Azure Backup Server
 description: In diesem Artikel erfahren Sie, wie Sie Ihre Umgebung für den Schutz und die Sicherung von Workloads mithilfe von Microsoft Azure Backup Server (MABS) vorbereiten.
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: 74706e772371c39b96b0cb02bd09ec70ad4d43f6
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 9ae8fd824144c70edeb1e084155e8cdff95cd8b9
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539124"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88612332"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Installieren und Durchführen eines Upgrades für Azure Backup Server
 
@@ -35,7 +35,7 @@ Bei Bereitstellung von MABS auf einem virtuellen Azure-Computer können VMs in A
 >
 >
 
-Azure Backup Server erbt einen Großteil der Funktionalität für die Workloadsicherung von Data Protection Manager (DPM). Dieser Artikel enthält Links zur DPM-Dokumentation mit einer Beschreibung der gemeinsamen Funktionen. Obwohl Azure Backup Server einen Großteil der Funktionen als DPM freigegeben hat, führt Azure Backup Server weder Sicherungen auf Band durch noch wird der Dienst in System Center integriert.
+Azure Backup Server erbt einen Großteil der Funktionalität für die Workloadsicherung von Data Protection Manager (DPM). Dieser Artikel enthält Links zur DPM-Dokumentation mit einer Beschreibung der gemeinsamen Funktionen. Obwohl Azure Backup Server viel Funktionalität mit DPM gemeinsam hat, führt Azure Backup Server weder Sicherungen auf Band durch, noch wird der Dienst in System Center integriert.
 
 ## <a name="choose-an-installation-platform"></a>Auswahl der Installationsplattform
 
@@ -46,7 +46,7 @@ Der erste Schritt zur Inbetriebnahme von Azure Backup Server ist die Einrichtung
 
 ### <a name="using-a-server-in-azure"></a>Verwenden eines Servers in Azure
 
-Beim Auswählen eines Servers zum Ausführen von Azure Backup Server wird empfohlen, mit einem Katalogimage von Windows Server 2016 Datacenter oder Windows Server 2019 Datacenter zu beginnen. Der Artikel [Erstellen Ihres ersten virtuellen Windows-Computers im Azure-Portal](../virtual-machines/windows/quick-create-portal.md?toc=/azure/virtual-machines/windows/toc.json) enthält ein Tutorial zu den ersten Schritten für den empfohlenen virtuellen Computer in Azure. Dies gilt auch, wenn Sie Azure noch nie verwendet haben. Die empfohlenen Mindestanforderungen für den virtuellen Servercomputer (VM) lauten: Standard_A4_v2 mit vier Kernen und 8 GB RAM.
+Beim Auswählen eines Servers zum Ausführen von Azure Backup Server sollten Sie mit einem Katalogimage von Windows Server 2016 Datacenter oder Windows Server 2019 Datacenter zu beginnen. Der Artikel [Erstellen Ihres ersten virtuellen Windows-Computers im Azure-Portal](../virtual-machines/windows/quick-create-portal.md?toc=/azure/virtual-machines/windows/toc.json) enthält ein Tutorial zu den ersten Schritten für den empfohlenen virtuellen Computer in Azure. Dies gilt auch, wenn Sie Azure noch nie verwendet haben. Die empfohlenen Mindestanforderungen für den virtuellen Servercomputer (VM) lauten: Standard_A4_v2 mit vier Kernen und 8 GB RAM.
 
 Beim Schützen von Workloads mit Azure Backup Server sind viele Feinheiten zu beachten. Die [Schutzmatrix für MABS](./backup-mabs-protection-matrix.md) hilft, diese Nuancen zu erklären. Lesen Sie sich den Artikel ganz durch, bevor Sie den Computer bereitstellen.
 
@@ -84,10 +84,10 @@ Bei der Speicherreplikation haben Sie die Wahl zwischen georedundantem Speicher 
 
 So bearbeiten Sie die Einstellung für die Speicherreplikation:
 
-1. Klicken Sie auf dem Blatt **Recovery Services-Tresore** auf den neuen Tresor. Klicken Sie im Abschnitt **Einstellungen** auf **Eigenschaften**.
-2. Klicken Sie in **Eigenschaften** unter **Sicherungskonfiguration** auf **Aktualisieren**.
+1. Wählen Sie im Bereich **Recovery Services-Tresore** den neuen Tresor aus. Wählen Sie im Abschnitt **Einstellungen** die Option **Eigenschaften** aus.
+2. Wählen Sie in **Eigenschaften** unter **Sicherungskonfiguration** die Option **Aktualisieren** aus.
 
-3. Wählen Sie den Speicherreplikationstyps aus, und klicken Sie auf **Speichern**.
+3. Wählen Sie den Speicherreplikationstyp und dann **Speichern** aus.
 
      ![Speicherkonfiguration für neuen Tresor festlegen](./media/backup-try-azure-backup-in-10-mins/recovery-services-vault-backup-configuration.png)
 
@@ -96,10 +96,10 @@ So bearbeiten Sie die Einstellung für die Speicherreplikation:
 ### <a name="downloading-the-software-package"></a>Herunterladen des Softwarepakets
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
-2. Falls Sie bereits über einen geöffneten Recovery Services-Tresor verfügen, können Sie mit Schritt 3 fortfahren. Wenn Sie keinen Recovery Services-Tresor geöffnet haben, sich aber im Azure-Portal befinden, klicken Sie im Hauptmenü auf **Durchsuchen**.
+2. Falls Sie bereits einen Recovery Services-Tresor geöffnet haben, fahren Sie mit Schritt 3 fort. Wenn Sie keinen Recovery Services-Tresor geöffnet haben, sich aber im Azure-Portal befinden, wählen Sie im Hauptmenü **Durchsuchen** aus.
 
    * Geben Sie in der Liste mit den Ressourcen **Recovery Services**ein.
-   * Wenn Sie mit der Eingabe beginnen, wird die Liste anhand Ihrer Eingaben gefiltert. Wenn **Recovery Services-Tresore**angezeigt wird, klicken Sie auf den Eintrag.
+   * Wenn Sie mit der Eingabe beginnen, wird die Liste anhand Ihrer Eingaben gefiltert. Wählen Sie **Recovery Services-Tresore**, wenn der Eintrag angezeigt wird.
 
      ![Erstellen eines Recovery Services-Tresors – Schritt 1](./media/backup-azure-microsoft-azure-backup/open-recovery-services-vault.png)
 
@@ -108,23 +108,23 @@ So bearbeiten Sie die Einstellung für die Speicherreplikation:
 
      Das ausgewählte Tresor-Dashboard wird geöffnet.
 
-     ![Tresorblatt öffnen](./media/backup-azure-microsoft-azure-backup/vault-dashboard.png)
-3. Standardmäßig wird das Blatt **Einstellungen** geöffnet. Wenn es geschlossen ist, klicken Sie auf **Einstellungen** , um das Blatt mit den Einstellungen zu öffnen.
+     ![Tresordashboard](./media/backup-azure-microsoft-azure-backup/vault-dashboard.png)
+3. Der Bereich **Einstellungen** wird standardmäßig geöffnet. Wenn er geschlossen ist, wählen Sie **Einstellungen** aus, um den Einstellungenbereich zu öffnen.
 
-    ![Tresorblatt öffnen](./media/backup-azure-microsoft-azure-backup/vault-setting.png)
-4. Klicken Sie auf **Sicherung**, um den Assistenten für erste Schritte zu öffnen.
+    ![Einstellungenbereich](./media/backup-azure-microsoft-azure-backup/vault-setting.png)
+4. Wählen Sie **Sicherung** aus, um den Assistenten für Erste Schritte zu öffnen.
 
     ![Erste Schritte zur Sicherung](./media/backup-azure-microsoft-azure-backup/getting-started-backup.png)
 
-    Beim Öffnen des Blatts **Erste Schritte mit der Sicherung** wird automatisch **Sicherungsziele** ausgewählt.
+    Beim Öffnen des Bereichs **Erste Schritte mit der Sicherung** wird automatisch **Sicherungsziele** ausgewählt.
 
     ![Backup-goals-default-opened](./media/backup-azure-microsoft-azure-backup/getting-started.png)
 
-5. Wählen Sie auf dem Blatt **Sicherungsziel** im Menü **Wo wird Ihre Workload ausgeführt?** die Option **Lokal** aus.
+5. Wählen Sie im Bereich **Sicherungsziel** im Menü **Wo wird Ihre Workload ausgeführt?** die Option **Lokal** aus.
 
     ![lokal und Workloads als Ziele](./media/backup-azure-microsoft-azure-backup/backup-goals-azure-backup-server.png)
 
-    Wählen Sie im Dropdownmenü **Was möchten Sie sichern?** die Workloads aus, die Sie mithilfe von Azure Backup Server schützen möchten, und klicken Sie anschließend auf **OK**.
+    Wählen Sie im Dropdownmenü **Was möchten Sie sichern?** die Workloads aus, die Sie mithilfe von Azure Backup Server schützen möchten, und wählen Sie anschließend **OK** aus.
 
     Der Assistent **Erste Schritte mit der Sicherung** ändert die Option **Infrastruktur vorbereiten**, sodass Workloads in Azure gesichert werden.
 
@@ -135,11 +135,11 @@ So bearbeiten Sie die Einstellung für die Speicherreplikation:
 
     ![Ändern des Erste-Schritte-Assistenten](./media/backup-azure-microsoft-azure-backup/getting-started-prep-infra.png)
 
-6. Klicken Sie auf dem Blatt **Infrastruktur vorbereiten**, das geöffnet wird, auf die **Downloadlinks**, um Azure Backup Server zu installieren und Tresoranmeldedaten herunterzuladen. Sie verwenden die Tresoranmeldedaten bei der Registrierung von Azure Backup Server beim Recovery Services-Tresor. Mit den Links gelangen Sie zum Download Center, in dem Sie das Softwarepaket herunterladen können.
+6. Wählen Sie im Bereich **Infrastruktur vorbereiten**, der geöffnet wird, die **Downloadlinks** aus, um Azure Backup Server zu installieren und Tresoranmeldedaten herunterzuladen. Sie verwenden die Tresoranmeldedaten bei der Registrierung von Azure Backup Server beim Recovery Services-Tresor. Mit den Links gelangen Sie zum Download Center, in dem Sie das Softwarepaket herunterladen können.
 
     ![Vorbereiten der Infrastruktur für Azure Backup Server](./media/backup-azure-microsoft-azure-backup/azure-backup-server-prep-infra.png)
 
-7. Wählen Sie alle Dateien aus, und klicken Sie auf **Weiter**. Laden Sie alle Dateien herunter, die von der Microsoft Azure Backup-Downloadseite eingehen, und speichern Sie alle Dateien in dem gleichen Ordner.
+7. Wählen Sie alle Dateien und dann **Weiter** aus. Laden Sie alle Dateien herunter, die von der Microsoft Azure Backup-Downloadseite eingehen, und speichern Sie alle Dateien in dem gleichen Ordner.
 
     ![Download Center 1](./media/backup-azure-microsoft-azure-backup/downloadcenter.png)
 
@@ -147,26 +147,26 @@ So bearbeiten Sie die Einstellung für die Speicherreplikation:
 
 ### <a name="extracting-the-software-package"></a>Extrahieren des Softwarepakets
 
-Nachdem Sie alle Dateien heruntergeladen haben, klicken Sie auf **MicrosoftAzureBackupInstaller.exe**. Der **Setup-Assistent von Microsoft Azure Backup** wird gestartet, um die Setupdateien an einem Speicherort Ihrer Wahl zu extrahieren. Fahren Sie mit dem Assistenten fort, und klicken Sie auf die Schaltfläche **Extrahieren** , um den Extrahierungsprozess zu starten.
+Nachdem Sie alle Dateien heruntergeladen haben, wählen Sie **MicrosoftAzureBackupInstaller.exe** aus. Der **Setup-Assistent von Microsoft Azure Backup** wird gestartet, um die Setupdateien an einem Speicherort Ihrer Wahl zu extrahieren. Fahren Sie mit dem Assistenten fort, und wählen Sie die Schaltfläche **Extrahieren** aus, um den Extrahierungsprozess zu starten.
 
 > [!WARNING]
 > Zum Extrahieren der Setupdateien sind mindestens 4 GB freier Speicherplatz erforderlich.
 >
 >
 
-![Setup-Assistent von Microsoft Azure Backup](./media/backup-azure-microsoft-azure-backup/extract/03.png)
+![Setup zum Extrahieren von Dateien für die Installation](./media/backup-azure-microsoft-azure-backup/extract/03.png)
 
-Aktivieren Sie nach Abschluss der Extrahierung das Kontrollkästchen, um die gerade extrahierte Datei *setup.exe* zu starten und mit der Installation von Microsoft Azure Backup Server zu beginnen. Klicken Sie dann auf die Schaltfläche **Fertig stellen**.
+Aktivieren Sie nach Abschluss der Extrahierung das Kontrollkästchen, um die gerade extrahierte Datei *setup.exe* zu starten und mit der Installation von Microsoft Azure Backup Server zu beginnen. Wählen Sie dann die Schaltfläche **Fertig stellen** aus.
 
 ### <a name="installing-the-software-package"></a>Installieren des Softwarepakets
 
-1. Klicken Sie auf **Microsoft Azure Backup** , um den Setup-Assistenten zu starten.
+1. Wählen Sie **Microsoft Azure Backup** aus, um den Setup-Assistenten zu starten.
 
     ![Setup-Assistent von Microsoft Azure Backup](./media/backup-azure-microsoft-azure-backup/launch-screen2.png)
-2. Klicken Sie auf der Willkommensseite auf die Schaltfläche **Weiter**. Sie gelangen zum Abschnitt *Voraussetzungsüberprüfungen* . Klicken Sie auf diesem Bildschirm auf **Überprüfen**, um zu ermitteln, ob die Hardware- und Softwarevoraussetzungen für Azure Backup Server erfüllt sind. Wenn alle Voraussetzungen erfolgreich erfüllt wurden, sehen Sie eine Meldung, die darauf hinweist, dass der Computer die Anforderungen erfüllt. Klicken Sie auf die Schaltfläche **Weiter** .
+2. Wählen Sie auf dem Begrüßungsbildschirm die Schaltfläche **Weiter** aus. Sie gelangen zum Abschnitt *Voraussetzungsüberprüfungen* . Wählen Sie auf diesem Bildschirm **Überprüfen** aus, um zu ermitteln, ob die Hardware- und Softwarevoraussetzungen für Azure Backup Server erfüllt sind. Wenn alle Voraussetzungen erfolgreich erfüllt wurden, sehen Sie eine Meldung, die darauf hinweist, dass der Computer die Anforderungen erfüllt. Wählen Sie die Schaltfläche **Weiter** aus.
 
     ![Azure Backup Server – Willkommen und Voraussetzungsüberprüfung](./media/backup-azure-microsoft-azure-backup/prereq/prereq-screen2.png)
-3. Zum Azure Backup Server-Installationspaket gehören die erforderlichen SQL Server-Binärdateien. Wählen Sie beim Starten einer neuen Azure Backup Server-Installation die Option **Neue Instanz von SQL Server bei diesem Setup installieren** aus, und klicken Sie auf die Schaltfläche **Prüfen und installieren**. Nachdem die erforderlichen Komponenten erfolgreich installiert wurden, klicken Sie auf **Weiter**.
+3. Zum Azure Backup Server-Installationspaket gehören die erforderlichen SQL Server-Binärdateien. Wählen Sie beim Starten einer neuen Azure Backup Server-Installation die Option **Neue Instanz von SQL Server bei diesem Setup installieren** aus, und wählen Sie die Schaltfläche **Prüfen und installieren** aus. Nachdem die erforderlichen Komponenten erfolgreich installiert wurden, wählen Sie **Weiter** aus.
 
     >[!NOTE]
     >Die folgenden SQL Server-Versionen werden unterstützt: SQL Server 2014 SP1 oder höher, 2016 und 2017.  Alle SQL Server-Versionen müssen Standard- oder Enterprise-Versionen (64-Bit) sein.
@@ -174,7 +174,7 @@ Aktivieren Sie nach Abschluss der Extrahierung das Kontrollkästchen, um die ger
 
     ![Azure Backup Server – SQL-Überprüfung](./media/backup-azure-microsoft-azure-backup/sql/01.png)
 
-    Tritt ein Fehler mit der Empfehlung auf, den Computer neu zu starten, tun Sie dies, und klicken Sie auf **Erneut prüfen**. Konfigurieren Sie SQL bei Problemen mit der SQL-Konfiguration gemäß den SQL-Richtlinien neu, und versuchen Sie, MABS mithilfe der vorhandenen SQL-Instanz zu installieren bzw. ein Upgrade für diese durchzuführen.
+    Tritt ein Fehler mit der Empfehlung auf, den Computer neu zu starten, tun Sie dies, und wählen Sie **Erneut prüfen** aus. Konfigurieren Sie SQL bei Problemen mit der SQL-Konfiguration gemäß den SQL-Richtlinien neu, und versuchen Sie, MABS mithilfe der vorhandenen SQL-Instanz zu installieren bzw. ein Upgrade für diese durchzuführen.
 
    **Manuelle Konfiguration**
 
@@ -195,33 +195,33 @@ Aktivieren Sie nach Abschluss der Extrahierung das Kontrollkästchen, um die ger
     > [!NOTE]
     > Die Lizenzierung für SQL Server, das als Datenbank für MABS verwendet wird, wird durch [Microsoft Online Services-Bestimmungen](https://www.microsoft.com/licensing/product-licensing/products) (OST) geregelt. Gemäß OST kann SQL Server, das mit MABS gebündelt ist, nur als Datenbank für MABS verwendet werden.
 
-4. Geben Sie einen Speicherort für die Installation der Microsoft Azure Backup-Serverdateien an, und klicken Sie auf **Weiter**.
+4. Geben Sie einen Speicherort für die Installation der Microsoft Azure Backup-Serverdateien an, und wählen Sie **Weiter** aus.
 
-    ![Voraussetzungen 2 für Microsoft Azure Backup](./media/backup-azure-microsoft-azure-backup/space-screen.png)
+    ![Angeben eines Speicherorts für die Installation von Dateien](./media/backup-azure-microsoft-azure-backup/space-screen.png)
 
     Das Scratchverzeichnis ist eine Anforderung für die Sicherung in Azure. Stellen Sie sicher, dass das Scratchverzeichnis eine Größe von mindestens 5 % der Daten aufweist, die in der Cloud gesichert werden. Für den Datenträgerschutz müssen separate Datenträger nach Abschluss der Installation konfiguriert werden. Weitere Informationen zu Speicherpools finden Sie unter [Vorbereiten der Datenspeicherung](/system-center/dpm/plan-long-and-short-term-data-storage?view=sc-dpm-2019).
-5. Geben Sie ein sicheres Kennwort für eingeschränkte lokale Benutzerkonten an, und klicken Sie auf **Weiter**.
+5. Geben Sie ein sicheres Kennwort für eingeschränkte lokale Benutzerkonten an, und wählen Sie **Weiter** aus.
 
-    ![Voraussetzungen 2 für Microsoft Azure Backup](./media/backup-azure-microsoft-azure-backup/security-screen.png)
-6. Bestimmen Sie, ob Sie mit *Microsoft Update* nach Updates suchen möchten, und klicken Sie auf **Weiter**.
+    ![Angeben eines sicheres Kennworts](./media/backup-azure-microsoft-azure-backup/security-screen.png)
+6. Bestimmen Sie, ob Sie mit *Microsoft Update* nach Updates suchen möchten, und wählen Sie **Weiter** aus.
 
    > [!NOTE]
    > Es wird empfohlen, Windows Update an Microsoft Update umzuleiten, da Microsoft Update Sicherheit und wichtige Updates für Windows und andere Produkte wie Microsoft Azure Backup Server bietet.
    >
    >
 
-    ![Voraussetzungen 2 für Microsoft Azure Backup](./media/backup-azure-microsoft-azure-backup/update-opt-screen2.png)
-7. Überprüfen Sie die *Zusammenfassung der Einstellungen* , und klicken Sie auf **Installieren**.
+    ![Microsoft Update-Abonnement](./media/backup-azure-microsoft-azure-backup/update-opt-screen2.png)
+7. Überprüfen Sie die *Zusammenfassung der Einstellungen*, und wählen Sie **Installieren** aus.
 
-    ![Voraussetzungen 2 für Microsoft Azure Backup](./media/backup-azure-microsoft-azure-backup/summary-screen.png)
-8. Die Installation erfolgt in mehreren Phasen. In der ersten Phase wird der Microsoft Azure Recovery Services-Agent auf dem Server installiert. Der Assistent überprüft auch das Vorhandensein der Internetverbindung. Wenn eine Internetverbindung verfügbar ist, können Sie mit der Installation fortfahren, andernfalls müssen Sie Proxydetails angeben, um die Verbindung mit dem Internet herzustellen.
+    ![Zusammenfassung der Einstellungen](./media/backup-azure-microsoft-azure-backup/summary-screen.png)
+8. Die Installation erfolgt in mehreren Phasen. In der ersten Phase wird der Microsoft Azure Recovery Services-Agent auf dem Server installiert. Der Assistent überprüft auch das Vorhandensein der Internetverbindung. Ist eine Internetverbindung verfügbar, können Sie die Installation fortsetzen. Wenn nicht, müssen Sie die Proxydetails bereitstellen, um eine Verbindung mit dem Internet herzustellen.
 
     Der nächste Schritt ist die Konfiguration des Microsoft Azure Recovery Services-Agents. Bei der Konfiguration müssen Sie Ihre Tresoranmeldeinformationen zum Registrieren des Computers beim Recovery Services-Tresor angeben. Sie geben auch eine Passphrase zum Verschlüsseln bzw. Entschlüsseln von Daten an, die zwischen Azure und Ihrem lokalen Standort ausgetauscht werden. Sie können eine automatische Passphrase generieren oder eine eigene Passphrase mit mindestens 16 Zeichen angeben. Fahren Sie mit dem Assistenten fort, bis der Agent konfiguriert wurde.
 
-    ![Voraussetzungen 2 für Azure Backup Server](./media/backup-azure-microsoft-azure-backup/mars/04.png)
+    ![Server-Assistent registrieren](./media/backup-azure-microsoft-azure-backup/mars/04.png)
 9. Nach Abschluss der Registrierung von Microsoft Azure Backup Server fährt der übergreifende Setup-Assistent mit der Installation und Konfiguration von SQL Server und der Azure Backup Server-Komponenten fort. Nachdem die Installation der SQL Server-Komponenten abgeschlossen ist, werden die Azure Backup Server-Komponenten installiert.
 
-    ![Azure Backup Server](./media/backup-azure-microsoft-azure-backup/final-install/venus-installation-screen.png)
+    ![Fortschritt beim Azure Backup Server-Setup](./media/backup-azure-microsoft-azure-backup/final-install/venus-installation-screen.png)
 
 Wenn der Installationsschritt abgeschlossen ist, wurden auch die Desktopsymbole des Produkts bereits erstellt. Doppelklicken Sie einfach auf das Symbol, um das Produkt zu starten.
 
@@ -323,7 +323,7 @@ Nach dem Wiederherstellen der Verbindung mit Azure für den Azure Backup Server-
 Es ist möglich, den Status eines Azure-Abonnements von *Abgelaufen* oder *Bereitstellung aufgehoben* in *Aktiv* zu ändern. Dies ist aber mit Auswirkungen auf das Produktverhalten verbunden, solange der Status nicht *Aktiv* lautet:
 
 * Ein Abonnement mit dem Status *Bereitstellung aufgehoben* verliert für den Zeitraum der Aufhebung die Funktionalität. Beim Festlegen auf *Aktiv*wird die Produktfunktionalität für Sicherung/Wiederherstellung wieder aktiviert. Die Sicherungsdaten auf der lokalen Festplatte können auch abgerufen werden, sofern sie mit einer ausreichend langen Beibehaltungsdauer versehen sind. Die Sicherungsdaten in Azure gehen aber unwiederbringlich verloren, wenn das Abonnement in den Status *Bereitstellung aufgehoben* versetzt wird.
-* Für ein Abonnement mit dem Status *Abgelaufen* geht die Funktionalität nur so lange verloren, bis es wieder in den Status *Aktiv* versetzt wird. Alle Sicherungen für den Zeitraum, in dem sich das Abonnement im Status *Abgelaufen* befindet, werden nicht ausgeführt.
+* Für ein Abonnement mit dem Status *Abgelaufen* geht die Funktionalität nur so lange verloren, bis es wieder in den Status *Aktiv* versetzt wird. Alle für den Zeitraum, in dem sich das Abonnement im Status *Abgelaufen* befindet, geplanten Sicherungen werden nicht ausgeführt.
 
 ## <a name="upgrade-mabs"></a>Durchführen eines Upgrades von MABS
 
@@ -353,7 +353,7 @@ Führen Sie die folgenden Schritte aus, um ein Upgrade für MABS durchzuführen:
 
 3. Aktualisieren Sie die Schutz-Agents auf den geschützten Servern.
 4. Sicherungen sollten fortgesetzt werden, ohne dass Ihre Produktionsserver neugestartet werden müssen.
-5. Nun können Sie mit der Konfiguration von Schutzmaßnahmen für Ihre Daten beginnen. Wenn Sie bei bestehendem Schutz ein Upgrade auf Modern Backup Storage durchführen, können Sie auch die Volumes auswählen, in denen die Sicherungen gespeichert werden sollen und auf unzureichend bereitgestellten Speicher prüfen. [Weitere Informationen](backup-mabs-add-storage.md)
+5. Nun können Sie mit der Konfiguration von Schutzmaßnahmen für Ihre Daten beginnen. Wenn Sie bei bestehendem Schutz ein Upgrade auf Modern Backup Storage durchführen, können Sie auch die Volumes auswählen, in denen die Sicherungen gespeichert werden sollen, und auf unzureichend bereitgestellten Speicher prüfen. [Weitere Informationen](backup-mabs-add-storage.md)
 
 ## <a name="troubleshooting"></a>Problembehandlung
 

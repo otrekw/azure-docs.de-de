@@ -3,12 +3,12 @@ title: 'Entwerfen der Application Insights-Bereitstellung: Eine oder mehrere Res
 description: Leiten Sie Telemetriedaten für Entwicklungs-, Test- und Produktionsabläufe an verschiedene Ressourcen.
 ms.topic: conceptual
 ms.date: 05/11/2020
-ms.openlocfilehash: 4f539862432fcdc67632e91caadf71d6584fbc3e
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 264cbe35e7af50577b345d686b639e47760f428d
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420565"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88258712"
 ---
 # <a name="how-many-application-insights-resources-should-i-deploy"></a>Wie viele Application Insights-Ressourcen soll ich bereitstellen?
 
@@ -41,7 +41,7 @@ Jede Application Insights-Ressource umfasst Metriken, die standardmäßig verfü
 
 ## <a name="dynamic-instrumentation-key"></a><a name="dynamic-ikey"></a> Dynamischer Instrumentationsschlüssel
 
-Um das Ändern des ikeys beim Fortschreiten des Codes von einer Produktionsphase zur nächsten zu erleichtern, legen Sie ihn im Code statt in der Konfigurationsdatei fest.
+Um das Ändern des iKeys beim Fortschreiten des Codes von einer Produktionsphase zur nächsten zu erleichtern, verweisen Sie im Code dynamisch auf den Schlüssel, statt einen hartcodierten/statischen Wert zu verwenden.
 
 Legen Sie den Schlüssel in einer Initialisierungsmethode fest, wie z. B. "global.aspx.cs" in einem ASP.NET-Dienst:
 

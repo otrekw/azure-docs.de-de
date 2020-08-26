@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/08/2020
 ms.reviewer: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 223514e8e873d36f8551e18956aafc0a54243990
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4cd0ad1553f04a781349a4664fbb408108015632
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85119374"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88510282"
 ---
 # <a name="change-feed-in-azure-cosmos-db"></a>Änderungsfeed in Azure Cosmos DB
 
@@ -56,7 +56,7 @@ Wenn eine TTL-Eigenschaft (Time to Live, Gültigkeitsdauer) für ein Element auf
 
 ### <a name="change-feed-and-_etag-_lsn-or-_ts"></a>Änderungsfeed und „_etag“, „_lsn“ oder „_ts“
 
-Das _etag-Format ist intern, und Sie sollten nicht darauf aufbauen, da es jederzeit geändert werden kann. „_ts“ ist ein Änderungs- oder Erstellungszeitstempel. Sie können „_ts“ für chronologische Vergleiche verwenden. „_lsn“ ist eine Batch-ID, die nur für den Änderungsfeed hinzugefügt wird. Sie stellt die Transaktions-ID dar. Viele Elemente können die gleiche „_lsn“ aufweisen. „ETag“ in der FeedResponse unterscheidet sich von dem „_etag“, das für das Element angezeigt wird. „_etag“ ist ein interner Bezeichner und wird zur Gleichzeitigkeitssteuerung verwendet, er gibt die Version des Elements an. „ETag“ wird dagegen für die Sequenzierung des Feeds verwendet.
+Das _etag-Format ist intern, und Sie sollten nicht darauf aufbauen, da es jederzeit geändert werden kann. „_ts“ ist ein Änderungs- oder Erstellungszeitstempel. Sie können „_ts“ für chronologische Vergleiche verwenden. „_lsn“ ist eine Batch-ID, die nur für den Änderungsfeed hinzugefügt wird. Sie stellt die Transaktions-ID dar. Viele Elemente können die gleiche „_lsn“ aufweisen. „ETag“ in der FeedResponse unterscheidet sich von dem „_etag“, das für das Element angezeigt wird. „_etag“ ist ein interner Bezeichner, der für die Gleichzeitigkeitssteuerung verwendet wird. Die _etag-Eigenschaft informiert über die Version des Elements, während die ETag-Eigenschaft zum Sequenzieren des Feeds verwendet wird.
 
 ## <a name="working-with-change-feed"></a>Verwenden des Änderungsfeeds
 

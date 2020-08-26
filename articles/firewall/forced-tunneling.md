@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 06/01/2020
+ms.date: 08/19/2020
 ms.author: victorh
-ms.openlocfilehash: a467aa60b131e47e9251366369b3fae8dd95c004
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: da2b206bf24cb33180305e32e270b989eb64dfa3
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84267697"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88612593"
 ---
 # <a name="azure-firewall-forced-tunneling"></a>Azure Firewall-Tunnelerzwingung
 
@@ -24,13 +24,13 @@ Standardmäßig ist die Tunnelerzwingung in Azure Firewall nicht zulässig, um s
 
 Zur Unterstützung der Tunnelerzwingung wird der Datenverkehr der Dienstverwaltung vom Kundendatenverkehr getrennt. Ein zusätzliches dediziertes Subnetz namens *AzureFirewallManagementSubnet* (Mindestsubnetz-Größe / 26) mit einer eigenen zugeordneten öffentlichen IP-Adresse ist erforderlich. Die einzige in diesem Subnetz zulässige Route ist eine Standardroute zum Internet, und die BGP-Routenverteilung muss deaktiviert sein.
 
-Wenn Sie über BGP eine Standardroute aufgerufen haben, um den Datenverkehr an eine lokale Umgebung zu erzwingen, müssen Sie die Subnetze *AzureFirewallSubnet* und *AzureFirewallManagementSubnet* erstellen, bevor Sie Ihre Firewall bereitstellen, und Sie müssen über eine UDR mit einer Standardroute zum Internet verfügen sowie die **Routenverteilung des Gateways für virtuelle Netzwerke** deaktiviert haben.
+Wenn Sie über BGP eine Standardroute aufgerufen haben, um den Datenverkehr an eine lokale Umgebung zu erzwingen, müssen Sie die Subnetze *AzureFirewallSubnet* und *AzureFirewallManagementSubnet* erstellen, bevor Sie Ihre Firewall bereitstellen, und Sie müssen über eine UDR mit einer Standardroute zum Internet verfügen sowie **Gatewayrouten verteilen** deaktiviert haben.
 
-Innerhalb dieser Konfiguration kann das Subnetz *AzureFirewallSubnet* jetzt Routen zu jeder beliebigen lokalen Firewall oder jedem NVA enthalten, die bzw. das den Netzwerkverkehr erst verarbeitet, bevor er ans Internet übergeben wird. Sie können diese Routen auch über BGP an *AzureFirewallSubnet* veröffentlichen, wenn die **Routenverteilung des Gateways für virtuelle Netzwerke** in diesem Subnetz aktiviert ist.
+Innerhalb dieser Konfiguration kann das Subnetz *AzureFirewallSubnet* jetzt Routen zu jeder beliebigen lokalen Firewall oder jedem NVA enthalten, die bzw. das den Netzwerkverkehr erst verarbeitet, bevor er ans Internet übergeben wird. Sie können diese Routen auch über BGP an *AzureFirewallSubnet* veröffentlichen, wenn **Gatewayrouten verteilen** in diesem Subnetz aktiviert ist.
 
-Sie können z. B. eine Standardroute im Subnetz *AzureFirewallSubnet* mit Ihrem VPN-Gateway als nächstem Hop erstellen, um auf Ihr lokales Gerät zu gelangen. Sie können auch **Routenverteilung des Gateways für virtuelle Netzwerke** aktivieren, um die entsprechenden Routen zum lokalen Netzwerk abzurufen.
+Sie können z. B. eine Standardroute im Subnetz *AzureFirewallSubnet* mit Ihrem VPN-Gateway als nächstem Hop erstellen, um auf Ihr lokales Gerät zu gelangen. Sie können auch **Gatewayrouten verteilen** aktivieren, um die entsprechenden Routen zum lokalen Netzwerk abzurufen.
 
-![Routenverteilung des Gateways für virtuelle Netzwerke](media/forced-tunneling/route-propagation.png)
+:::image type="content" source="media/forced-tunneling/route-propagation.png" alt-text="Routenverteilung des Gateways für virtuelle Netzwerke":::
 
 Wenn Sie jedoch die Tunnelerzwingung aktiviert haben, wird der Internet-gebundene Datenverkehr an eine der privaten IP-Adressen der Firewall in AzureFirewallSubnet übersetzt, wodurch die Quelle vor Ihrer lokalen Firewall verborgen wird.
 

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 06/16/2020
 ms.author: jawilley
-ms.openlocfilehash: 9816ea7dd9f5aef9dcdd62319f8cc4408eff3fd8
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.openlocfilehash: 90b4ffb273fc314a7c92971490fb09b6f0c131ee
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87987255"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88258342"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Leistungstipps für Azure Cosmos DB und .NET
 
@@ -71,15 +71,12 @@ Die Art der Verbindungsherstellung zwischen einem Client und Azure Cosmos DB ha
      Wenn Ihre Anwendung in einem Unternehmensnetzwerk mit strengen Firewalleinschränkungen ausgeführt wird, ist der Gatewaymodus die beste Wahl, da er den HTTPS-Standardport und einen einzelnen Endpunkt verwendet. Im Gatewaymodus ist jedoch jeweils ein zusätzlicher Netzwerkhop erforderlich, wenn Daten in Azure Cosmos DB geschrieben oder daraus gelesen werden, was sich negativ auf die Leistung auswirkt. Aus diesem Grund bietet der direkte Modus die bessere Leistung, da weniger Netzwerkhops erforderlich sind. Der Gatewayverbindungsmodus wird auch empfohlen, wenn Sie Anwendungen in Umgebungen mit einer begrenzten Anzahl von Socketverbindungen ausführen.
 
      Beachten Sie bei Verwendung des SDK in Azure Functions – insbesondere beim [Verbrauchstarif](../azure-functions/functions-scale.md#consumption-plan) – die aktuellen [Grenzwerte für Verbindungen](../azure-functions/manage-connections.md). In diesem Fall empfiehlt sich möglicherweise der Gatewaymodus, wenn Sie auch mit anderen HTTP-basierten Clients innerhalb Ihrer Azure Functions-Anwendung arbeiten.
-
-
-Im Gatewaymodus verwendet Azure Cosmos DB Port 443 sowie die Ports 10250, 10255 und 10256, wenn Sie die Azure Cosmos DB-API für MongoDB verwenden. Port 10250 ist einer MongoDB-Standardinstanz ohne Georeplikation zugeordnet. Die Ports 10255 und 10256 sind der MongoDB-Instanz mit Georeplikation zugeordnet.
      
-Wenn Sie TCP im direkten Modus verwenden, müssen Sie zusätzlich zu den Gatewayports sicherstellen, dass der Portbereich zwischen 10000 und 20000 offen ist, da Azure Cosmos DB dynamische TCP-Ports verwendet (bei Verwendung des direkten Modus für [private Endpunkte](./how-to-configure-private-endpoints.md) muss der volle Bereich der TCP-Ports zwischen 0 und 65535 offen sein). Die Ports sind bei der Azure VM-Standardkonfiguration standardmäßig offen. Wenn diese Ports nicht geöffnet sind und Sie versuchen, TCP zu verwenden, wird der Fehler „503 – Dienst nicht verfügbar“ angezeigt. Die folgende Tabelle enthält die für verschiedene APIs verfügbaren Konnektivitätsmodi und die für jede API verwendeten Dienstports:
+Wenn Sie das TCP im direkten Modus verwenden, müssen Sie zusätzlich zu den Gatewayports sicherstellen, dass der Portbereich zwischen 10000 und 20000 offen ist, da Azure Cosmos DB dynamische TCP-Ports verwendet. Wenn Sie den direkten Modus auf [privaten Endpunkten](./how-to-configure-private-endpoints.md) verwenden, sollte der gesamte Bereich der TCP-Ports von 0 bis 65535 geöffnet sein. Die Ports sind bei der Azure VM-Standardkonfiguration standardmäßig offen. Wenn diese Ports nicht geöffnet sind und Sie versuchen, TCP zu verwenden, wird der Fehler „503 – Dienst nicht verfügbar“ angezeigt. Die folgende Tabelle enthält die für verschiedene APIs verfügbaren Konnektivitätsmodi und die für jede API verwendeten Dienstports:
 
 |Verbindungsmodus  |Unterstütztes Protokoll  |Unterstützte SDKs  |API/Dienstport  |
 |---------|---------|---------|---------|
-|Gateway  |   HTTPS    |  Alle SDKs    |   SQL (443), MongoDB (10250, 10255, 10256), Tabelle (443), Cassandra (10350), Graph (443)    |
+|Gateway  |   HTTPS    |  Alle SDKs    |   SQL (443), MongoDB (10250, 10255, 10256), Tabelle (443), Cassandra (10350), Graph (443) <br> Port 10250 ist einer Azure Cosmos DB API für MongoDB-Instanz ohne Georeplikation zugeordnet. Die Ports 10255 und 10256 hingegen sind der Instanz mit Georeplikation zugeordnet.   |
 |Direkt    |     TCP    |  .NET SDK    | Bei Verwendung von öffentlichen oder Dienstendpunkten: Ports im Bereich zwischen 10000 und 20000<br>Bei Verwendung von privaten Endpunkten: Ports im Bereich zwischen 0 und 65535 |
 
 Azure Cosmos DB bietet ein einfaches und offenes RESTful-Programmiermodell über HTTPS. Darüber hinaus ist ein effizientes TCP-Protokoll vorhanden, das ebenfalls über ein RESTful-Kommunikationsmodell verfügt und über das .NET-Client-SDK verfügbar ist. Das TCP-Protokoll nutzt TLS für die erste Authentifizierung und Verschlüsselung des Datenverkehrs. Die beste Leistung erzielen Sie mit dem TCP-Protokoll.

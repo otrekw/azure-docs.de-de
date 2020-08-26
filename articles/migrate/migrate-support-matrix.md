@@ -4,12 +4,12 @@ description: Enthält eine Zusammenfassung der Unterstützungseinstellungen und 
 ms.topic: conceptual
 ms.date: 07/23/2020
 ms.author: raynew
-ms.openlocfilehash: fae5af9c8717604d71ec2bf2628ea25125d5b2d5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: aac7b7d39102a1fe115ddea483aee36af79e7fc4
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87022717"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88612111"
 ---
 # <a name="azure-migrate-support-matrix"></a>Unterstützungsmatrix für Azure Migrate
 
@@ -45,7 +45,7 @@ Azure Migrate-Servermigration | Nicht verfügbar | Dient zum Migrieren von [VMwa
 [DMA](/sql/dma/dma-overview?view=sql-server-2017) | Überprüfen von SQL Server-Datenbanken | Nicht verfügbar
 [DMS](../dms/dms-overview.md) | Nicht verfügbar | Dient zum Migrieren von SQL Server, Oracle, MySQL, PostgreSQL und MongoDB. 
 [Lakeside](https://go.microsoft.com/fwlink/?linkid=2104908) | Dient zum Bewerten der Virtual Desktop Infrastructure (VDI). | Nicht verfügbar
-[Movere](https://www.movere.io/) | Dient zum Bewerten von VMWare-VMs, Hyper-V-VMs, Xen-VMs, physischen Computern, Arbeitsstationen (z. B. VDI) und Public Cloud-Workloads. | Nicht verfügbar
+[Movere](https://www.movere.io/) | Dient zum Bewerten von VMware-VMs, Hyper-V-VMs, Xen-VMs, physischen Computern, Arbeitsstationen (z. B. VDI) und Public Cloud-Workloads. | Nicht verfügbar
 [RackWare](https://go.microsoft.com/fwlink/?linkid=2102735) | Nicht verfügbar | Dient zum Migrieren von VMWare-VMs, Hyper-V-VMs, Xen-VMs, KVM-VMs, physischen Computern und Public Cloud-Workloads. 
 [Turbonomic](https://go.microsoft.com/fwlink/?linkid=2094295)  | Dient zum Bewerten von VMware-VMs, Hyper-V-VMs, physischen Servern und Public Cloud-Workloads. | Nicht verfügbar
 [UnifyCloud](https://go.microsoft.com/fwlink/?linkid=2097195) | Dient zum Bewerten von VMware-VMs, Hyper-V-VMs, physischen Servern, Public Cloud-Workloads und SQL Server-Datenbanken. | Nicht verfügbar

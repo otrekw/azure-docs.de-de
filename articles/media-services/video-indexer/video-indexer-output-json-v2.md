@@ -8,35 +8,50 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 12/09/2019
+ms.date: 08/10/2020
 ms.author: juliako
-ms.openlocfilehash: 5e3501ea8bc327f0dd906a42702194abce18c5fd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ddd1a5b9217962b595408973874a59219af298cf
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84656583"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88604774"
 ---
-# <a name="examine-the-video-indexer-output-produced-by-api"></a>Untersuchen der von der API erstellten Video Indexer-Ausgabe
+# <a name="examine-the-video-indexer-output"></a>Überprüfen der Video Indexer-Ausgabe
 
-Wenn Sie die API zum Abrufen des Videoindex (**Get Video Index**) aufrufen und der Antwortstatus „OK“ lautet, erhalten Sie eine ausführliche JSON-Ausgabe als Inhalt der Antwort. Die JSON-Daten enthalten Details zu den angegebenen Erkenntnissen aus Videos. Zu diesen Erkenntnissen gehören Transkripts, OCRs, Gesichter, Themen, Blöcke usw. Jeder Erkenntnistyp enthält Instanzen von Zeitbereichen, die anzeigen, wann die Erkenntnis im Video angezeigt wird. 
+Beim Indizieren eines Videos erzeugt Video Indexer den JSON-Inhalt, der Details zu den angegebenen Videoinformationen enthält. Zu diesen Erkenntnissen gehören Transkripts, OCRs, Gesichter, Themen, Blöcke usw. Jeder Erkenntnistyp enthält Instanzen von Zeitbereichen, die anzeigen, wann die Erkenntnis im Video angezeigt wird. 
+
+Sie können die zusammengefassten Erkenntnisse des Videos visuell untersuchen, indem Sie auf der [Video Indexer-Website](https://www.videoindexer.ai/) auf die Schaltfläche **Wiedergabe** klicken. 
+
+Sie können auch die API verwenden. Wenn Sie die **Get Video Index**-API aufrufen und der Antwortstatus „OK“ lautet, erhalten Sie eine ausführliche JSON-Ausgabe als Inhalt der Antwort.
+
+![Einblicke](./media/video-indexer-output-json/video-indexer-summarized-insights.png)
+
+In diesem Artikel wird die Video Indexer-Ausgabe (JSON-Inhalt) untersucht. Informationen über die Features und Erkenntnisse, die Ihnen zur Verfügung stehen, finden Sie unter [Video Indexer-Erkenntnisse](video-indexer-overview.md#video-insights).
+
+> [!NOTE]
+> Der Zeitraum bis zum Ablauf aller Zugriffstoken in Video Indexer beträgt eine Stunde.
+
+## <a name="get-the-insights"></a>Abrufen der Erkenntnisse
+
+### <a name="insightsoutput-produced-in-the-websiteportal"></a>Auf der Website/im Portal erstellte Erkenntnisse/Ausgaben
+
+1. Navigieren Sie zur [Video Indexer](https://www.videoindexer.ai/)-Website, und melden Sie sich an.
+1. Suchen Sie nach einem Video, dessen Ausgabe Sie untersuchen möchten.
+1. Klicken Sie auf die Schaltfläche für die **Wiedergabe**.
+1. Wählen Sie die Registerkarte **Erkenntnisse** (zusammengefasste Erkenntnisse) oder **Zeitachse** aus (ermöglicht das Filtern der relevanten Erkenntnisse).
+1. Laden Sie Artefakte und was in ihnen enthalten ist herunter.
+
+Weitere Informationen finden Sie unter [View and edit video insights](video-indexer-view-edit.md) (Anzeigen und Bearbeiten von Videoinformationen).
+
+## <a name="insightsoutput-produced-by-api"></a>Von der API produzierte Erkenntnisse/Ausgaben
 
 1. Rufen Sie zum Abrufen der JSON-Datei die [Get-Video-Index-API](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Index?) auf.
 1. Falls Sie sich auch für spezifische Artefakte interessieren, rufen Sie die [Get-Video-Artifact-Download-URL-API](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Artifact-Download-Url?) auf.
 
     Geben Sie in dem API-Aufruf den angeforderten Artefakttyp (OCR, Gesichter, Keyframes usw.) an.
 
-Sie können die zusammengefassten Erkenntnisse des Videos auch visuell untersuchen, indem Sie auf der [Video Indexer-Website](https://www.videoindexer.ai/) auf die Schaltfläche **Wiedergabe** klicken. Weitere Informationen finden Sie unter [View and edit video insights](video-indexer-view-edit.md) (Anzeigen und Bearbeiten von Videoinformationen).
-
-![Einblicke](./media/video-indexer-output-json/video-indexer-summarized-insights.png)
-
-In diesem Artikel wird der JSON-Inhalt untersucht, der von der API zum Abrufen des Videoindex (**Get Video Index**) zurückgegeben wird. 
-
-> [!NOTE]
-> Der Zeitraum bis zum Ablauf aller Zugriffstoken in Video Indexer beträgt eine Stunde.
-
-
-## <a name="root-elements"></a>Stammelemente
+## <a name="root-elements-of-the-insights"></a>Stammelemente der Erkenntnisse
 
 |Name|BESCHREIBUNG|
 |---|---|
@@ -86,7 +101,7 @@ In diesem Abschnitt wird die Zusammenfassung der Erkenntnisse angezeigt.
 |duration|Enthält eine Dauer, mit der der Zeitbereich beschrieben wird, in dem eine Erkenntnis gewonnen wurde. Die Dauer wird in Sekunden angegeben.|
 |thumbnailVideoId|Die ID des Videos, aus dem die Miniaturansicht entnommen wurde.
 |thumbnailId|Die Miniaturansicht-ID des Videos. Rufen Sie [Get-Thumbnail](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Thumbnail) auf, und übergeben Sie „thumbnailVideoId“ und „thumbnailId“, um die eigentliche Miniaturansicht zu erhalten.|
-|faces|Kann null oder mehr Gesichter enthalten. Ausführlichere Informationen finden Sie unter [faces](#faces).|
+|faces/animatedCharacters|Kann null oder mehr Gesichter enthalten. Ausführlichere Informationen finden Sie unter [faces/animatedCharacters](#facesanimatedcharacters).|
 |keywords|Kann null oder mehr Schlüsselwörter enthalten. Ausführlichere Informationen finden Sie unter [keywords](#keywords).|
 |sentiments|Kann null oder mehr Stimmungen enthalten. Ausführlichere Informationen finden Sie unter [sentiments](#sentiments).|
 |audioEffects| Kann null oder mehr Audioeffekte (audioEffects) enthalten. Ausführlichere Informationen finden Sie unter [audioEffects](#audioeffects).|
@@ -162,7 +177,7 @@ Ein Gesicht kann eine ID, einen Namen, eine Miniaturansicht, andere Metadaten un
 |ocr|Die Erkenntnis [OCR](#ocr).|
 |keywords|Die Erkenntnis [keywords](#keywords).|
 |blocks|Kann einen oder mehrere Blöcke ([blocks](#blocks)) enthalten.|
-|faces|Die Erkenntnis [faces](#faces).|
+|faces/animatedCharacters|Die Erkenntnis [faces/animatedCharacters](#facesanimatedcharacters).|
 |Bezeichnungen|Die Erkenntnis [labels](#labels).|
 |shots|Die Erkenntnis [shots](#shots).|
 |brands|Die Erkenntnis [brands](#brands).|
@@ -305,7 +320,11 @@ Beispiel:
 }
 ```
 
-#### <a name="faces"></a>faces
+#### <a name="facesanimatedcharacters"></a>faces/animatedCharacters
+
+Das `animatedCharacters`-Element ersetzt `faces` für den Fall, dass das Video mit einem Modell mit animierten Zeichen indiziert wurde. Dies erfolgt mithilfe eines benutzerdefinierten Modells in Custom Vision, das Video Indexer in Keyframes ausführt.
+
+Wenn Gesichter (keine animierten Zeichen) vorhanden sind, verwendet Video Indexer die Gesichtserkennungs-API in allen Frames des Videos, um Gesichter und Prominente zu erkennen.
 
 |Name|BESCHREIBUNG|
 |---|---|

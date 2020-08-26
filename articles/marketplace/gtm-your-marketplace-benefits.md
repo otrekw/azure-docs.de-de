@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/06/2020
 author: keferna
 ms.author: keferna
-ms.openlocfilehash: c2481ca9894a1af3b363db8d5043b7fcd4eefc3d
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: e9fe02903d2dc76c931e58682a0d632d5e492963
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87498020"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607388"
 ---
 # <a name="your-commercial-marketplace-benefits"></a>Ihre Vorteile des kommerziellen Marketplace
 
@@ -32,7 +32,7 @@ Sie werden basierend auf Ihrer Berechtigung von einem Mitglied des Prämienteams
 
 Bei Transaktionspartnern ermöglichen Sie durch die Steigerung der abgerechneten Verkäufe über die kommerzielle Marketplace-Plattform größere Vorteile pro Ebene.
 
-Die Mindestanforderung für die Veröffentlichung in den Storefronts ist eine MPN-ID – diese Vorteile stehen also allen Partnern unabhängig von ihrem MPN-Kompetenzstatus und ihrem Partnertyp zur Verfügung. Jeder Partner kann sein Geschäft über den kommerziellen Marketplace als Plattform vergrößern.
+Die Mindestanforderung für die Veröffentlichung in den Onlinestores ist eine MPN-ID – diese Vorteile stehen also allen Partnern unabhängig von ihrem MPN-Kompetenzstatus und ihrem Partnertyp zur Verfügung. Jeder Partner kann sein Geschäft über den kommerziellen Marketplace als Plattform vergrößern.
 
 Sie erhalten Unterstützung beim Verständnis der für Sie verfügbaren Ressourcen und der Implementierung bewährter Methoden, die Sie auch [eigenständig lesen](https://partner.microsoft.com/asset/collection/azure-marketplace-and-appsource-publisher-toolkit#/) können.
 

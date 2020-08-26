@@ -11,20 +11,24 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
-ms.date: 08/09/2020
+ms.date: 08/18/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9bb290106c5ceafe8c636bbeeab38b74ea475eb4
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 1be8a714d57d0f84b195c9f3846964aa2bf2525b
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056192"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88605086"
 ---
 # <a name="create-an-access-review-of-groups-and-applications-in-azure-ad-access-reviews"></a>Erstellen einer Zugriffsüberprüfung für Gruppen und Anwendungen in Azure AD-Zugriffsüberprüfungen
 
 Der Zugriff auf Gruppen und Anwendungen für Mitarbeiter und Gäste ändert sich im Laufe der Zeit. Zur Senkung der Risiken im Zusammenhang mit veralteten Zugriffszuweisungen können Administratoren mithilfe von Azure Active Directory (Azure AD) Zugriffsüberprüfungen für Gruppenmitglieder oder Anwendungszugriff erstellen. Für eine routinemäßige Überprüfung können bei Bedarf auch wiederkehrende Zugriffsüberprüfungen erstellt werden. Weitere Informationen zu diesen Szenarien finden Sie unter [Verwalten des Benutzerzugriffs mit Azure AD-Zugriffsüberprüfungen](manage-user-access-with-access-reviews.md) sowie unter [Verwalten des Gastzugriffs mit Azure AD-Zugriffsüberprüfungen](manage-guest-access-with-access-reviews.md).
+
+Sehen Sie sich ein kurzes Video zum Aktivieren von Zugriffsüberprüfungen an:
+
+>[!VIDEO https://www.youtube.com/embed/X1SL2uubx9M]
 
 In diesem Artikel wird die Erstellung einer oder mehrerer Zugriffsüberprüfungen für Gruppenmitglieder oder Anwendungszugriff beschrieben.
 
@@ -55,7 +59,12 @@ Weitere Informationen finden Sie unter [Lizenzanforderungen](access-reviews-over
 
 1. Wenn die Zugriffsüberprüfung wiederholt ausgeführt werden soll, ändern Sie die Einstellung **Häufigkeit** von **Einmal** in **Wöchentlich**, **Monatlich**,  **Vierteljährlich**, **Halbjährlich** oder **Jährlich**. Verwenden Sie den Schieberegler oder das Textfeld **Dauer**, um festzulegen, wie viele Tage Prüfer Eingaben für jede Überprüfung der Serie vornehmen können. Für eine monatliche Überprüfung kann beispielsweise eine maximale Dauer von 27 Tagen angegeben werden, um Überschneidungen zu vermeiden.
 
-1. Geben Sie mithilfe der Einstellung **Ende** an, wie die wiederkehrende Zugriffsüberprüfungsreihe beendet werden soll. Die Reihe kann auf drei Arten enden: Die Serie wird unendlich ausgeführt, um Überprüfungen ohne zeitliche Beschränkung zu starten, die Serie wird bis zu einem bestimmten Datum ausgeführt, oder sie wird nach einer bestimmten Anzahl von Vorkommen beendet. Sie (oder ein anderer Benutzeradministrator oder globaler Administrator) können die Serie nach der Erstellung beenden, indem Sie unter **Einstellungen** das Datum ändern, sodass die Serie an diesem Datum endet.
+1. Geben Sie mithilfe der Einstellung **Ende** an, wie die wiederkehrende Zugriffsüberprüfungsreihe beendet werden soll. Die Serie kann auf drei Arten enden: 
+    1. Sie wird fortlaufend ausgeführt, um unbegrenzt Überprüfungen zu starten
+    1. An einem bestimmten Datum
+    1. Nach einer festgelegten Anzahl von Ausführungen. 
+  
+    Sie (oder ein anderer Benutzeradministrator oder globaler Administrator) können die Serie nach der Erstellung beenden, indem Sie unter **Einstellungen** das Datum ändern, sodass die Serie an diesem Datum endet.
 
 1. Geben Sie im Abschnitt **Benutzer** die Benutzer an, für die die Zugriffsüberprüfung gelten soll. Zugriffsüberprüfungen können für die Mitglieder einer Gruppe oder für Benutzer erfolgen, die einer Anwendung zugewiesen wurden. Sie können die Zugriffsüberprüfung weiter anpassen, um nur die Gastbenutzer zu überprüfen, die Mitglieder (oder der Anwendung zugewiesen) sind, anstatt alle Benutzer zu überprüfen, die Mitglieder sind oder Zugriff auf die Anwendung haben.
 
@@ -83,7 +92,7 @@ Weitere Informationen finden Sie unter [Lizenzanforderungen](access-reviews-over
 
     ![Erstellen einer Zugriffsüberprüfung – Programme](./media/create-access-review/programs.png)
 
-    Sie können die Nachverfolgung und das Erfassen von Zugriffsüberprüfungen für verschiedene Zwecke vereinfachen, indem Sie diese Aufgaben in Programmen organisieren. Jede Zugriffsüberprüfung kann mit einem Programm verknüpft werden. Wenn Sie dann Berichte für einen Auditor vorbereiten, können Sie sich auf die Zugriffsüberprüfungen im Bereich einer bestimmten Initiative konzentrieren. Programme und Ergebnisse der Zugriffsüberprüfung werden Benutzern mit der Rolle „Globaler Administrator“, „Benutzeradministrator“, „Sicherheitsadministrator“ oder „Sicherheitsleseberechtigter“ angezeigt.
+    Sie können die Sammlung und Nachverfolgung von Zugriffsüberprüfungen vereinfachen, indem Sie sie in Programme organisieren. Jede Zugriffsüberprüfung kann mit einem Programm verknüpft werden. Wenn Sie dann Berichte für einen Auditor vorbereiten, können Sie sich auf die Zugriffsüberprüfungen im Bereich einer bestimmten Initiative konzentrieren. Programme und Ergebnisse der Zugriffsüberprüfung werden Benutzern mit der Rolle „Globaler Administrator“, „Benutzeradministrator“, „Sicherheitsadministrator“ oder „Sicherheitsleseberechtigter“ angezeigt.
 
     Um eine Liste der Programme anzuzeigen, navigieren Sie zur Seite „Zugriffsüberprüfungen“, und wählen Sie **Programme** aus. Globale Administratoren und Benutzeradministratoren können weitere Programme erstellen. Sie können z.B. ein Programm für jede Konformitätsinitiative oder für jedes Geschäftsziel verwenden. Wenn ein Programm nicht mehr benötigt wird und keine Steuerelemente mit ihm verknüpft sind, können Sie es löschen.
 
@@ -119,7 +128,7 @@ Weitere Informationen finden Sie unter [Lizenzanforderungen](access-reviews-over
     >[!NOTE]
     > Standardmäßig sendet Azure AD automatisch eine Erinnerung, wenn die Prüfer nach der Hälfte der Zeit noch nicht reagiert haben.
 
-1. (Vorschau) Der Inhalt der an Prüfer gesendeten E-Mail wird automatisch basierend auf den Überprüfungsdetails generiert, z. B. Name der Überprüfung, Name der Ressource, Fälligkeitsdatum usw. Wenn Sie eine Möglichkeit benötigen, zusätzliche Informationen wie etwa weitere Anweisungen oder Kontaktinformationen mitzuteilen, können Sie diese Informationen in die E-Mail mit zusätzlichen Inhalten für Prüfer einfügen. Diese E-Mail wird in die Einladung sowie in Erinnerungs-E-Mails an die zugewiesenen Prüfer einbezogen. Diese Informationen werden in der folgenden Abbildung im hervorgehobenen Abschnitt angezeigt.
+1. (Vorschau) Der Inhalt der an Prüfer gesendeten E-Mail wird automatisch basierend auf den Überprüfungsdetails generiert, z. B. Name der Überprüfung, Name der Ressource, Fälligkeitsdatum usw. Wenn Sie eine Möglichkeit benötigen, zusätzliche Informationen wie etwa weitere Anweisungen oder Kontaktinformationen mitzuteilen, können Sie diese Informationen in die **E-Mail mit zusätzlichen Inhalten für Prüfer** einfügen. Diese E-Mail wird in die Einladung sowie in Erinnerungs-E-Mails an die zugewiesenen Prüfer einbezogen. Diese Informationen werden in der folgenden Abbildung im hervorgehobenen Abschnitt angezeigt.
 
     ![Überprüfen des Benutzerzugriffs auf eine Gruppe](./media/create-access-review/review-users-access-group.png)
 
@@ -142,7 +151,7 @@ Wenn Sie Gäste als Prüfer zugewiesen haben, diese die Einladung aber nicht ang
 |Wird gestartet | Die Überprüfung wird gestartet. Wenn E-Mail-Benachrichtigungen erlaubt sind, werden E-Mails an Überprüfer gesendet. |
 |InProgress | Die Überprüfung hat begonnen. Wenn E-Mail-Benachrichtigungen aktiviert sind, wurden E-Mails an Überprüfer gesendet. Überprüfer können Entscheidungen bis zum Fälligkeitsdatum einreichen. |
 |Wird abgeschlossen | Die Überprüfung wird abgeschlossen, und E-Mails werden an den Besitzer der Überprüfung gesendet. |
-|Die automatische Überprüfung wird ausgeführt | Die Überprüfung befindet sich in einer Systemüberprüfungsphase. Das System zeichnet Entscheidungen für Benutzer auf, die auf der Grundlage von Empfehlungen oder vorkonfigurierten Entscheidungen nicht geprüft wurden. |
+|Automatische Überprüfung | Die Überprüfung befindet sich in einer Systemüberprüfungsphase. Das System zeichnet Entscheidungen für Benutzer auf, die auf der Grundlage von Empfehlungen oder vorkonfigurierten Entscheidungen nicht geprüft wurden. |
 |Automatisch überprüft | Für alle Benutzer, die nicht überprüft wurden, wurden Entscheidungen vom System aufgezeichnet. Die Überprüfung ist bereit, zu **Anwenden** fortzuschreiten, wenn die automatische Übernahme aktiviert ist. |
 |Anwenden | Für Benutzer, die genehmigt wurden, wird der Zugriff nicht geändert. |
 |Übernommen | Abgelehnte Benutzer, sofern vorhanden, wurden aus der Ressource oder dem Verzeichnis entfernt. |
