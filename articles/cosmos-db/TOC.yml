@@ -510,6 +510,8 @@
           href: unique-keys.md
         - name: Transaktionen und Steuerung für optimistische Nebenläufigkeit
           href: database-transactions-optimistic-concurrency.md
+        - name: Attachments
+          href: attachments.md
     - name: Änderungsfeed
       items:
         - name: Übersicht über den Änderungsfeed

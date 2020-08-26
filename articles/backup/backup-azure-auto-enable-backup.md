@@ -3,12 +3,12 @@ title: Automatisches Aktivieren der Sicherung bei der VM-Erstellung mithilfe von
 description: In diesem Artikel wird beschrieben, wie Sie Azure Policy für die automatische Aktivierung der Sicherung für alle VMs verwenden, die in einem bestimmten Bereich erstellt wurden.
 ms.topic: conceptual
 ms.date: 11/08/2019
-ms.openlocfilehash: 2b4ce7825b714eed1b025a6a807a62759177b81f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 19985ebc51fe713ee0392800e2791ea1891ff3cd
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86514219"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88612672"
 ---
 # <a name="auto-enable-backup-on-vm-creation-using-azure-policy"></a>Automatisches Aktivieren der Sicherung bei der VM-Erstellung mithilfe von Azure Policy
 
@@ -33,18 +33,18 @@ Heute bietet Azure Backup eine integrierte Richtlinie (unter Verwendung von Azur
 Um die Richtlinie dem erforderlichen Bereich zuzuweisen, führen Sie die folgenden Schritte aus:
 
 1. Melden Sie sich beim Azure-Portal an, und navigieren Sie zum Dashboard **Richtlinie**.
-2. Wählen Sie im Menü auf der linken Seite **Definitionen** aus, um eine Liste aller integrierten Richtlinien für Azure-Ressourcen abzurufen.
-3. Filtern Sie die Liste nach **Category=Backup**. Angezeigt wird die bis auf eine einzige Richtlinie mit dem Namen „Sicherung von VMs eines Standorts in einem vorhandenen zentralen Tresor am selben Standort konfigurieren“ gefilterte Liste.
+1. Wählen Sie im Menü auf der linken Seite **Definitionen** aus, um eine Liste aller integrierten Richtlinien für Azure-Ressourcen abzurufen.
+1. Filtern Sie die Liste nach **Category=Backup**. Angezeigt wird die bis auf eine einzige Richtlinie mit dem Namen „Sicherung von VMs eines Standorts in einem vorhandenen zentralen Tresor am selben Standort konfigurieren“ gefilterte Liste.
 ![Dashboard „Richtlinie“](./media/backup-azure-auto-enable-backup/policy-dashboard.png)
-4. Klicken Sie auf den Namen der Richtlinie. Sie werden zur detaillierten Definition für diese Richtlinie umgeleitet.
-![Blatt „Richtliniendefinition“](./media/backup-azure-auto-enable-backup/policy-definition-blade.png)
-5. Klicken Sie oben auf dem Blatt auf die Schaltfläche **Zuweisen**. Dadurch werden Sie zum Blatt **Richtlinie zuweisen** umgeleitet.
-6. Klicken Sie unter **Grundlagen** auf die drei Punkte neben dem Feld **Bereich**. Dadurch wird ein Blatt mit dem richtigen Kontextgeöffnet, auf dem Sie das Abonnement auswählen können, auf das die Richtlinie angewendet werden soll. Optional können Sie auch eine Ressourcengruppe auswählen, damit die Richtlinie nur für VMs in einer bestimmten Ressourcengruppe angewendet wird.
+1. Wählen Sie den Namen der Richtlinie aus. Sie werden zur detaillierten Definition für diese Richtlinie umgeleitet.
+![Bereich „Richtliniendefinition“](./media/backup-azure-auto-enable-backup/policy-definition-blade.png)
+1. Wählen Sie oben im Bereich die Schaltfläche **Zuweisen** aus. Dadurch werden Sie zum Bereich **Richtlinie zuweisen** umgeleitet.
+1. Wählen Sie unter **Grundlagen** die drei Punkte neben dem Feld **Bereich** aus. Dadurch wird ein Bereich mit dem richtigen Kontext geöffnet, auf dem Sie das Abonnement auswählen können, auf das die Richtlinie angewendet werden soll. Optional können Sie auch eine Ressourcengruppe auswählen, damit die Richtlinie nur für VMs in einer bestimmten Ressourcengruppe angewendet wird.
 ![Grundlegendes zur Richtlinienzuweisung](./media/backup-azure-auto-enable-backup/policy-assignment-basics.png)
-7. Wählen Sie auf der Registerkarte **Parameter** einen Speicherort aus der Dropdownliste aus, und wählen Sie dann den Tresor und die Sicherungsrichtlinie aus, denen die VMs im Bereich zugeordnet werden müssen.
+1. Wählen Sie auf der Registerkarte **Parameter** einen Speicherort aus der Dropdownliste aus, und wählen Sie dann den Tresor und die Sicherungsrichtlinie aus, denen die VMs im Bereich zugeordnet werden müssen.
 ![Parameter der Richtlinienzuweisung](./media/backup-azure-auto-enable-backup/policy-assignment-parameters.png)
-8. Stellen Sie sicher, dass **Effekt** auf „deployIfNotExists“ festgelegt ist.
-9. Navigieren Sie zu **Überprüfen und erstellen**, und klicken Sie auf **Erstellen**.
+1. Stellen Sie sicher, dass **Effekt** auf „deployIfNotExists“ festgelegt ist.
+1. Navigieren Sie zu **Überprüfen und erstellen**, und wählen Sie **Erstellen** aus.
 
 > [!NOTE]
 >

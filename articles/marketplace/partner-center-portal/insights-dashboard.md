@@ -7,16 +7,16 @@ ms.topic: article
 ms.date: 07/22/2019
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: 877d5436628fdeb973f6d7f30cc71e91eeb92364
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: cc950c4915a57dd949941fbb9802c51a47c9a00d
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323280"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607152"
 ---
 # <a name="marketplace-insights-dashboard-in-partner-center"></a>Dashboard mit Marketplace-Erkenntnissen in Partner Center
 
-Dieser Artikel bietet Informationen zum Dashboard „Marketplace-Erkenntnisse“ im Partner Center. In diesem Dashboard wird eine Zusammenfassung der Marketplace-Webanalysen angezeigt, mit deren Hilfe Herausgeber die Kundeninteraktion mit ihren jeweiligen Produktdetailseiten messen können, die in den Storefronts des kommerziellen Marketplace aufgelistet sind: Microsoft AppSource und Azure Marketplace.
+Dieser Artikel bietet Informationen zum Dashboard „Marketplace-Erkenntnisse“ im Partner Center. In diesem Dashboard wird eine Zusammenfassung der Marketplace-Webanalysen angezeigt, mit deren Hilfe Herausgeber die Kundeninteraktion mit ihren jeweiligen Produktdetailseiten messen können, die in den Onlineshops des kommerziellen Marketplace aufgelistet sind: Microsoft AppSource und Azure Marketplace.
 
 ## <a name="marketplace-insights-dashboard"></a>Dashboard „Marketplace-Erkenntnisse“
 
@@ -42,11 +42,11 @@ Die maximale Latenz zwischen dem Zeitpunkt, zu dem sich Benutzer Angebote im Azu
 
 Sie können Metriken des kommerziellen Marketplace auf verschiedene Arten anzeigen:
 
-- Storefront-Registerkarten
+- Onlineshop-Registerkarten
 - Seitenfilter
 - Datumsfilter
 
-**Storefront-Registerkarten**: Sie können die Metriken Ihrer Angebote separat auf den Registerkarte von AppSource und Azure Marketplace anzeigen. Wählen Sie auf der rechten Seite in der Dropdownliste für Angebote die Angebote aus, um eine Visualisierung der Metriken für die ausgewählten Angebote anzuzeigen. Standardmäßig sind alle Angebote ausgewählt.
+**Onlineshop-Registerkarten**: Sie können die Metriken Ihrer Angebote separat auf den Registerkarte von AppSource und Azure Marketplace anzeigen. Wählen Sie auf der rechten Seite in der Dropdownliste für Angebote die Angebote aus, um eine Visualisierung der Metriken für die ausgewählten Angebote anzuzeigen. Standardmäßig sind alle Angebote ausgewählt.
 
 ![Partner Center-Erkenntnisse: Dashboard-Dropdownliste für Angebote](./media/insights-offer-dropdown.png)
 
@@ -96,7 +96,7 @@ Das Wärmebild umfasst die folgenden Funktionen:
 
 ## <a name="page-visits-versus-unique-visitors-trend"></a>Trend: Seitenbesuche/unterschiedliche Besucher im Vergleich
 
-In den folgenden Spalten ist die Anzahl monatlicher Seitenbesuche dargestellt. Sie werden auf der Y-Achse (linke Seite des Diagramms) angezeigt. Die Trendlinie stellt den monatlichen Trend unterschiedlicher Besucher dar. Sie wird auf der sekundären Y-Achse (rechte Seite des Diagramms) für Ihre in den Storefronts veröffentlichten Angebote angezeigt: Azure Marketplace und AppSource.
+In den folgenden Spalten ist die Anzahl monatlicher Seitenbesuche dargestellt. Sie werden auf der Y-Achse (linke Seite des Diagramms) angezeigt. Die Trendlinie stellt den monatlichen Trend unterschiedlicher Besucher dar. Sie wird auf der sekundären Y-Achse (rechte Seite des Diagramms) für Ihre in den Onlineshops veröffentlichten Angebote angezeigt: Azure Marketplace und AppSource.
 
 ![Seite „Partner Center-Erkenntnisse“ – Trend: Seitenbesuche/unterschiedliche Besucher im Vergleich](./media/insights-page-vists-unique-visitors.png)
 

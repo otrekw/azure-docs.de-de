@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 07/30/2020
 ms.author: absha
-ms.openlocfilehash: 9315884db30c053d86c889ff3b45aaea17d48b17
-ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
+ms.openlocfilehash: 32809c33e1c365d8d333bb89a5c2f773b311c2ff
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87438914"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88511081"
 ---
 # <a name="application-gateway-configuration-overview"></a>Application Gateway – Konfigurationsübersicht
 
@@ -38,11 +38,13 @@ Ein Application Gateway ist eine dedizierte Bereitstellung in Ihrem virtuellen N
 
 Application Gateway nutzt eine private IP-Adresse pro Instanz sowie eine weitere private IP-Adresse, wenn eine private Front-End-IP konfiguriert ist.
 
-Azure reserviert außerdem fünf IP-Adressen in jedem Subnetz für die interne Verwendung: die ersten vier und die letzte IP-Adresse. Stellen Sie sich beispielsweise 15 Application Gateway-Instanzen ohne private Front-End-IP vor. Sie benötigen mindestens 20 IP-Adressen für dieses Subnetz: fünf zur internen Verwendung und 15 für die Application Gateway-Instanzen. Sie benötigen also mindestens ein /27-Subnetz.
+Azure reserviert außerdem fünf IP-Adressen in jedem Subnetz für die interne Verwendung: die ersten vier und die letzte IP-Adresse. Stellen Sie sich beispielsweise 15 Application Gateway-Instanzen ohne private Front-End-IP vor. Sie benötigen mindestens 20 IP-Adressen für dieses Subnetz: fünf zur internen Verwendung und 15 für die Application Gateway-Instanzen.
 
-Stellen Sie sich ein Subnetz mit 27 Application Gateway-Instanzen und einer privaten Front-End-IP vor. In diesem Fall benötigen Sie 33 IP-Adressen: 27 für die Application Gateway-Instanzen, eine für das private Front-End und fünf für die interne Verwendung. Sie benötigen also mindestens ein /26-Subnetz.
+Stellen Sie sich ein Subnetz mit 27 Application Gateway-Instanzen und einer privaten Front-End-IP vor. In diesem Fall benötigen Sie 33 IP-Adressen: 27 für die Application Gateway-Instanzen, eine für das private Front-End und fünf für die interne Verwendung.
 
-Sie sollten mindestens ein /28-Subnetz verwenden. Diese Größe bietet Ihnen 11 nutzbare IP-Adressen. Wenn für Ihre Anwendungslast mehr als zehn Application Gateway-Instanzen erforderlich sind, sollten Sie eine Subnetzgröße von /27 oder /26 in Betracht ziehen.
+Die Application Gateway-SKU (Standard oder WAF) kann bis zu 32 Instanzen unterstützen (32 Instanz-IP-Adressen + 1 private Front-End-IP + 5 für Azure reserviert). Daher wird eine Subnetzmindestgröße von /26 empfohlen.
+
+Die Application Gateway-SKU (Standard_v2 oder WAF_v2) kann bis zu 125 Instanzen unterstützen (125 Instanz-IP-Adressen + 1 private Front-End-IP + 5 für Azure reserviert). Daher wird eine Subnetzmindestgröße von /24 empfohlen.
 
 #### <a name="network-security-groups-on-the-application-gateway-subnet"></a>Netzwerksicherheitsgruppen im Application Gateway-Subnetz
 

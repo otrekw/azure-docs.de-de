@@ -9,18 +9,65 @@ ms.topic: reference
 ms.author: jmartens
 author: j-martens
 ms.date: 03/10/2020
-ms.openlocfilehash: b1f45cad5def0e7d9a576a05299b065705ff3e30
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: d93e01cdec79f739367dc219d81028c1abc2d66e
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87553442"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88508208"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning: Anmerkungen zu dieser Version
 
 In diesem Artikel erhalten Sie Informationen zu Azure Machine Learning-Versionen.  Den vollständigen SDK-Referenzinhalt finden Sie auf der Hauptseite der Referenz zum [**Azure Machine Learning SDK für Python**](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py).
 
 Sehen Sie die [Liste der bekannten Probleme](resource-known-issues.md) an, um mehr über bekannte Fehler und Problemumgehungen zu erfahren.
+
+## <a name="2020-08-17"></a>2020-08-17
+
+### <a name="azure-machine-learning-sdk-for-python-v1120"></a>Azure Machine Learning SDK für Python v1.12.0
+
++ **Fehlerbehebungen und Verbesserungen**
+  + **azure-cli-ml**
+    + Fügen Sie die Parameter image_name und image_label zu Model.package() hinzu, um das Umbenennen des erstellten Paketimages zu ermöglichen.
+  + **azureml-automl-core**
+    + AutoML löst einen neuen Fehlercode von dataprep aus, wenn Inhalt während des Lesens geändert wird.
+  + **azureml-automl-runtime**
+    + Es wurden Warnungen für den Benutzer hinzugefügt, wenn Daten fehlende Werte enthalten, die Featureisierung aber deaktiviert ist.
+    + Es wurden Fehler bei der Ausführung untergeordneter Elemente behoben, wenn Daten „nan“ enthalten und die Featurisierung deaktiviert ist.
+    + AutoML löst einen neuen Fehlercode von dataprep aus, wenn Inhalt während des Lesens geändert wird.
+    + Die Normalisierung für die Vorhersage von Metriken, die nach Intervall auftreten, wurde aktualisiert.
+    + Die Berechnung von Vorhersagequantilen wurde verbessert, wenn Rückblickfeatures deaktiviert sind.
+    + Die Behandlung der booleschen Sparsematrix bei der Berechnung von Erklärungen nach AutoML wurde behoben.
+  + **azureml-core**
+    + Eine neue `run.get_detailed_status()`-Methode zeigt jetzt die detaillierte Erklärung des aktuellen Ausführungsstatus an. Derzeit wird nur eine Erklärung für den `Queued`-Status angezeigt.
+    + Fügen Sie die Parameter image_name und image_label zu Model.package() hinzu, um das Umbenennen des erstellten Paketimages zu ermöglichen.
+    + Neue `set_pip_requirements()`-Methode, um den gesamten Abschnitt „pip“ in [`CondaDependencies`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.conda_dependencies.condadependencies?view=azure-ml-py) auf einmal festzulegen.
+    + Die Registrierung von Anmeldeinformationen ohne ADLS Gen2-Datenspeicher wurde aktiviert.
+    + Die Fehlermeldung beim Versuch, einen falschen Datasettyp herunterzuladen oder einzubinden, wurde verbessert.
+    + Das Beispielnotebook für Zeitreihen-Datasetfilter wurde mit weiteren Beispielen von „partition_timestamp“ aktualisiert, die eine Filteroptimierung bieten.
+    + Das SDK und die CLI wurden geändert, um „subscriptionId“, „resourceGroup“, „workspaceName“, „peConnectionName“ anstelle von „ArmResourceId“ als Parameter zu akzeptieren, wenn private Endpunktverbindungen gelöscht werden.
+    + Experimenteller Decorator zeigt zur leichteren Identifizierung den Klassennamen an.
+    + Beschreibungen für die Ressourcen innerhalb von Modellen werden nicht mehr automatisch auf der Grundlage einer Ausführung generiert.
+  + **azureml-datadrift**
+    + Markiert „create_from_model“-API in DataDriftDetector als veraltet.
+  + **azureml-dataprep**
+    + Die Fehlermeldung beim Versuch, einen falschen Datasettyp herunterzuladen oder einzubinden, wurde verbessert.
+  + **azureml-pipeline-core**
+    + Fehler bei der Deserialisierung von Pipelinegraphen, die registrierte Datasets enthalten, wurde behoben.
+  + **azureml-pipeline-steps**
+    + RScriptStep unterstützt RSection aus azureml.core.environment.
+    + Der Parameter „passthru_automl_config“ wurde aus der öffentlichen `AutoMLStep`-API entfernt und in einen rein internen Parameter konvertiert.
+  + **azureml-train-automl-client**
+    + Die lokalen asynchronen, verwalteten Umgebungsausführungen wurden aus AutoML entfernt. Alle lokalen Ausführungen werden in der Umgebung ausgeführt, in der die Ausführung gestartet wurde.
+    + Probleme mit der Momentaufnahme bei der Übermittlung von AutoML-Ausführungen ohne vom Benutzer bereitgestellte Skripts wurde behoben.
+    + Es wurden Fehler bei der Ausführung untergeordneter Elemente behoben, wenn Daten „nan“ enthalten und die Featurisierung deaktiviert ist.
+  + **azureml-train-automl-runtime**
+    + AutoML löst einen neuen Fehlercode von dataprep aus, wenn Inhalt während des Lesens geändert wird.
+    + Probleme mit der Momentaufnahme bei der Übermittlung von AutoML-Ausführungen ohne vom Benutzer bereitgestellte Skripts wurde behoben.
+    + Es wurden Fehler bei der Ausführung untergeordneter Elemente behoben, wenn Daten „nan“ enthalten und die Featurisierung deaktiviert ist.
+  + **azureml-train-core**
+    + Unterstützung für die Angabe von pip-Optionen (z. B. --extra-index-url) in der pip-Anforderungsdatei, die an einen [`Estimator`](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py) bis `pip_requirements_file` Parameter übergeben wird, wurde hinzugefügt.
+
 
 ## <a name="2020-08-03"></a>2020-08-03
 

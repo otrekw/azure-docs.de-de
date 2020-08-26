@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 07/28/2020
-ms.openlocfilehash: 28fa3fdfdb8915d528d0765bd1fded8128621208
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: bdb7ba30d9fa2d0bd1eff9368d6e30e516b53895
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 08/13/2020
-ms.locfileid: "88166517"
+ms.locfileid: "88192728"
 ---
 # <a name="configure-azure-private-link-for-an-azure-machine-learning-workspace-preview"></a>Konfigurieren von Azure Private Link für einen Azure Machine Learning-Arbeitsbereich (Vorschauversion)
 
@@ -39,7 +39,7 @@ Azure Private Link ermöglicht Ihnen das Herstellen einer Verbindung mit Ihrem A
 > [!IMPORTANT]
 > Derzeit wird das Aktivieren eines privaten Endpunkts nur beim Erstellen eines neuen Azure Machine Learning-Arbeitsbereichs unterstützt.
 
-[https://github.com/Azure/azure-quickstart-templates/tree/master/201-machine-learning-advanced](https://github.com/Azure/azure-quickstart-templates/tree/master/201-machine-learning-advanced) kann zur Erstellung eines Arbeitsbereichs mit einem privaten Endpunkt verwendet werden.
+Die Vorlage unter [https://github.com/Azure/azure-quickstart-templates/tree/master/201-machine-learning-advanced](https://github.com/Azure/azure-quickstart-templates/tree/master/201-machine-learning-advanced) kann zur Erstellung eines Arbeitsbereichs mit einem privaten Endpunkt verwendet werden.
 
 Informationen zur Verwendung dieser Vorlage, einschließlich privater Endpunkte, finden Sie unter [Verwenden einer Azure Resource Manager-Vorlage zum Erstellen eines Arbeitsbereichs für Azure Machine Learning](how-to-create-workspace-template.md).
 

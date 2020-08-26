@@ -2,13 +2,13 @@
 title: Entitätstypen – LUIS
 description: Eine Entität extrahiert zur Vorhersagelaufzeit Daten aus einer Benutzeräußerung. Ein _optionaler_ sekundärer Zweck besteht darin, die Vorhersage der Absicht oder anderer Entitäten zu verstärken, indem die Entität als Feature verwendet wird.
 ms.topic: conceptual
-ms.date: 06/10/2020
-ms.openlocfilehash: ced4a3e23b8e532b54d0b3cf974dab233b81b375
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.date: 08/06/2020
+ms.openlocfilehash: 8751bdd52bb1c3738103dc074184a3cf72bfeb09
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87337618"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88207751"
 ---
 # <a name="extract-data-with-entities"></a>Extrahieren von Daten mit Entitäten
 
@@ -140,9 +140,16 @@ Eine Entität vom Typ „Pattern.any“ ist nur in einem [Muster](luis-concept-p
 
 Sollte das [Limit](luis-limits.md#model-limits) nicht ausreichen, wenden Sie sich an den Support. Sammeln Sie dazu ausführliche Informationen über Ihr System, navigieren Sie zur [LUIS](luis-reference-regions.md#luis-website)-Website, und wählen Sie dann **Support** aus. Wenn Ihr Azure-Abonnement Supportdienste umfasst, wenden Sie sich an den [technischen Support von Azure](https://azure.microsoft.com/support/options/).
 
-## <a name="entity-prediction-status"></a>Status der Entitätsvorhersage
+## <a name="entity-prediction-status-and-errors"></a>Status der Entitätsvorhersage und Fehler
 
-Im LUIS-Portal sehen Sie, ob die Entität in einer Beispieläußerung eine andere Entitätsvorhersage aufweist als die Entität, die Sie für eine Beispieläußerung ausgewählt haben. Der Unterschied beim Score kommt vom aktuellen trainierten Modell. Verwenden Sie diese Informationen, um Trainingsfehler mithilfe einer oder mehrerer der folgenden Maßnahmen zu beheben:
+Im LUIS-Portal sehen Sie, ob die Entität in einer Beispieläußerung eine andere Entitätsvorhersage aufweist als die Entität, die Sie für eine Beispieläußerung ausgewählt haben. Der Unterschied beim Score kommt vom aktuellen trainierten Modell. 
+
+:::image type="content" source="./media/luis-concept-entities/portal-entity-prediction-error.png" alt-text="Im LUIS-Portal sehen Sie, ob die Entität in einer Beispieläußerung eine andere Entitätsvorhersage aufweist als die Entität, die Sie für eine Beispieläußerung ausgewählt haben.":::
+
+Der Fehlermeldungstext wird in der Beispieläußerung hervorgehoben, und die Beispieläußerungszeile weist rechts einen Fehlerindikator in Form eines roten Dreiecks auf. 
+
+Verwenden Sie diese Informationen, um Entitätsfehler mithilfe einer oder mehrerer der folgenden Maßnahmen zu beheben:
+* Der markierte Text ist falsch bezeichnet. So beheben Sie Fehler, überprüfen, korrigieren und trainieren erneut. 
 * Erstellen eines [Features](luis-concept-feature.md) für die Entität, um die Ermittlung des Konzepts der Entität zu erleichtern
 * Hinzufügen weiterer [Beispieläußerungen](luis-concept-utterance.md) und Beschriften mit der Entität
 * [Überprüfen von Vorschlägen für aktives Lernen](luis-concept-review-endpoint-utterances.md) für Äußerungen, die vom Vorhersageendpunkt empfangen werden und zur Ermittlung des Konzepts der Entität beitragen können

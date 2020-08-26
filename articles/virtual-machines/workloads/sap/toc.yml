@@ -227,6 +227,8 @@
               href: high-availability-guide-rhel-netapp-files.md
         - name: SAP-Multi-SID
           items:
+            - name: Windows mit freigegebenem Azure-Datenträger für die (A)SCS-Instanz
+              href: sap-ascs-ha-multi-sid-wsfc-azure-shared-disk.md
             - name: Windows mit freigegebenem Datenträger für die (A)SCS-Instanz
               href: sap-ascs-ha-multi-sid-wsfc-shared-disk.md
             - name: Windows mit SOFS-Dateifreigabe für die (A)SCS-Instanz

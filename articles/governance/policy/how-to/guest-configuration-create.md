@@ -1,14 +1,14 @@
 ---
 title: Erstellen von Richtlinien für Gastkonfigurationen für Windows
 description: Erfahren Sie, wie Sie eine Azure Policy-Richtlinie für Gastkonfigurationen für Windows erstellen.
-ms.date: 03/20/2020
+ms.date: 08/17/2020
 ms.topic: how-to
-ms.openlocfilehash: b53c8ec8189516305de8b0b8c05b2be8ea49f7f2
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 4ee0c9d1912338235e53eb287bfc86a14b75cc97
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045126"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88547663"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-windows"></a>Erstellen von Richtlinien für Gastkonfigurationen für Windows
 
@@ -16,8 +16,7 @@ Vor dem Erstellen von benutzerdefinierten Richtliniendefinitionen empfiehlt es s
  
 Informationen zum Erstellen von Richtlinien für Gastkonfigurationen für Linux finden Sie auf der Seite [Erstellen von Richtlinien für Gastkonfigurationen für Linux](./guest-configuration-create-linux.md)
 
-Beim Überwachen von Windows wird für die Gastkonfiguration ein [DSC](/powershell/scripting/dsc/overview/overview)-Ressourcenmodul (Desired State Configuration) zum Erstellen der Konfigurationsdatei verwendet. Die DSC-Konfiguration definiert den Zustand, in dem sich der Computer befinden soll.
-Wenn bei der Auswertung der Konfiguration ein Fehler auftritt, wird die Richtlinienauswirkung **auditIfNotExists** ausgelöst, und der Computer wird als **nicht konform** eingestuft.
+Beim Überwachen von Windows wird für die Gastkonfiguration ein [DSC](/powershell/scripting/dsc/overview/overview)-Ressourcenmodul (Desired State Configuration) zum Erstellen der Konfigurationsdatei verwendet. Die DSC-Konfiguration definiert den Zustand, in dem sich der Computer befinden soll. Wenn bei der Auswertung der Konfiguration ein Fehler auftritt, wird die Richtlinienauswirkung **auditIfNotExists** ausgelöst, und der Computer wird als **nicht konform** eingestuft.
 
 Die [Azure Policy-Gastkonfiguration](../concepts/guest-configuration.md) kann nur zur Überwachung von Einstellungen in Computern verwendet werden. Die Wiederherstellung von Einstellungen in Computern ist noch nicht verfügbar.
 
@@ -56,7 +55,7 @@ Für das Ressourcenmodul für Gastkonfigurationen wird die folgende Software ben
 
 - PowerShell 6.2 oder höher. Falls es noch nicht installiert ist, befolgen Sie [diese Anweisungen](/powershell/scripting/install/installing-powershell).
 - Azure PowerShell 1.5.0 oder höher. Falls es noch nicht installiert ist, befolgen Sie [diese Anweisungen](/powershell/azure/install-az-ps).
-  - Nur die AZ-Module „Az.Accounts“ und „Az.Resources“ sind erforderlich.
+  - Nur die Az-Module „Az.Accounts“ und „Az.Resources“ sind erforderlich.
 
 ### <a name="install-the-module"></a>Installieren des Moduls
 
@@ -90,8 +89,7 @@ Wenn die Gastkonfiguration einen Computer überwacht, weicht die Abfolge der Ere
 1. Der von der Funktion zurückgegebene boolesche Wert bestimmt, ob der Zustand von Azure Resource Manager für die Gastzuweisung konform/nicht konform sein soll.
 1. Der Anbieter führt `Get-TargetResource` aus, um den aktuellen Zustand der einzelnen Einstellungen zurückzugeben. Dadurch sind Details dazu verfügbar, warum ein Computer nicht konform ist, bzw. eine Bestätigung, dass der aktuelle Zustand konform ist.
 
-Parameter in Azure Policy, die Werte an Gastkonfigurationszuweisungen übergeben, müssen den Typ _Zeichenfolge_ aufweisen.
-Arrays können nicht über Parameter übergeben werden. Dies gilt selbst dann, wenn die DSC-Ressource Arrays unterstützt.
+Parameter in Azure Policy, die Werte an Gastkonfigurationszuweisungen übergeben, müssen den Typ _Zeichenfolge_ aufweisen. Arrays können nicht über Parameter übergeben werden. Dies gilt selbst dann, wenn die DSC-Ressource Arrays unterstützt.
 
 ### <a name="get-targetresource-requirements"></a>Get-TargetResource-Anforderungen
 
@@ -121,7 +119,7 @@ return @{
 }
 ```
 
-Die Reasons-Eigenschaft muss auch dem Schema-MOF für die Ressource als eingebettete Klasse hinzugefügt werden.
+Die Reasons-Eigenschaft muss dem Schema-MOF für die Ressource als eingebettete Klasse hinzugefügt werden.
 
 ```mof
 [ClassVersion("1.0.0.0")] 
@@ -166,8 +164,7 @@ Das Paketformat muss eine ZIP-Datei sein.
 ### <a name="storing-guest-configuration-artifacts"></a>Speichern von Gastkonfigurationsartefakten
 
 Das ZIP-Paket muss an einem Speicherort gespeichert werden, auf den von den verwalteten virtuellen Computern zugegriffen werden kann.
-Beispiele hierfür sind GitHub-Repositorys, ein Azure-Repository oder Azure Storage. Falls Sie das Paket nicht öffentlich zugänglich machen möchten, können Sie ein [SAS-Token](../../../storage/common/storage-sas-overview.md) in die URL einfügen.
-Sie können auch einen [Dienstendpunkt](../../../storage/common/storage-network-security.md#grant-access-from-a-virtual-network) für Computer in einem privaten Netzwerk implementieren. Diese Konfiguration gilt aber nur für den Zugriff auf das Paket und nicht für die Kommunikation mit dem Dienst.
+Beispiele hierfür sind GitHub-Repositorys, ein Azure-Repository oder Azure Storage. Falls Sie das Paket nicht öffentlich zugänglich machen möchten, können Sie ein [SAS-Token](../../../storage/common/storage-sas-overview.md) in die URL einfügen. Sie können auch einen [Dienstendpunkt](../../../storage/common/storage-network-security.md#grant-access-from-a-virtual-network) für Computer in einem privaten Netzwerk implementieren. Diese Konfiguration gilt aber nur für den Zugriff auf das Paket und nicht für die Kommunikation mit dem Dienst.
 
 ## <a name="step-by-step-creating-a-custom-guest-configuration-audit-policy-for-windows"></a>Schrittanleitung: Erstellen einer benutzerdefinierten Überwachungsrichtlinie für Gastkonfigurationen für Windows
 
@@ -307,6 +304,8 @@ Parameter des Cmdlets `New-GuestConfigurationPolicy`:
 - **Version**: Version der Richtlinie.
 - **Pfad**: Zielpfad, unter dem Richtliniendefinitionen erstellt werden.
 - **Plattform**: Zielplattform (Windows/Linux) für das Paket mit den Richtlinien und dem Inhalt der Gastkonfiguration.
+- Mit **Tag** werden der Richtliniendefinition ein oder mehrere Tags hinzugefügt.
+- Mit **Category** wird das Feld mit den Kategoriemetadaten in der Richtliniendefinition festgelegt.
 
 Im folgenden Beispiel werden die Richtliniendefinitionen in einem angegebenen Pfad aus einem benutzerdefinierten Richtlinienpaket erstellt:
 
@@ -328,14 +327,6 @@ Mit `New-GuestConfigurationPolicy` werden die folgenden Dateien erstellt:
 - **Initiative.json**
 
 In der Ausgabe des Cmdlets wird ein Objekt zurückgegeben, das den Anzeigenamen der Initiative und den Pfad der Richtliniendateien enthält.
-
-> [!Note]
-> Das aktuelle Gastkonfigurationsmodul enthält neue Parameter:
-> - Mit **Tag** werden der Richtliniendefinition ein oder mehrere Tags hinzugefügt.
->   - Weitere Informationen finden Sie im Abschnitt [Filtern von Richtlinien der Gastkonfiguration mit Tags](#filtering-guest-configuration-policies-using-tags).
-> - Mit **Category** wird das Feld mit den Kategoriemetadaten in der Richtliniendefinition festgelegt.
->   - Wenn der Parameter nicht hinzugefügt wird, wird standardmäßig „Gastkonfiguration“ als Kategorie verwendet.
-> Diese Features befinden sich in der Vorschauphase. Hierfür ist Version 1.20.1 des Gastkonfigurationsmoduls erforderlich, das Sie mit `Install-Module GuestConfiguration -AllowPrerelease` installieren können.
 
 Abschließend veröffentlichen Sie die Richtliniendefinitionen mit dem Cmdlet `Publish-GuestConfigurationPolicy`. Das Cmdlet verfügt nur über den Parameter **Path**, mit dem auf den Speicherort der JSON-Dateien verwiesen wird, die mit `New-GuestConfigurationPolicy` erstellt werden.
 
@@ -377,9 +368,6 @@ New-AzRoleDefinition -Role $role
 ```
 
 ### <a name="filtering-guest-configuration-policies-using-tags"></a>Filtern von Richtlinien der Gastkonfiguration mit Tags
-
-> [!Note]
-> Dieses Feature befindet sich in der Vorschauphase. Hierfür ist Version 1.20.1 des Gastkonfigurationsmoduls erforderlich, das Sie mit `Install-Module GuestConfiguration -AllowPrerelease` installieren können.
 
 Die mit Cmdlets im Gastkonfigurationsmodul erstellten Richtliniendefinitionen können optional einen Filter für Tags enthalten. Der Parameter **Tag** von `New-GuestConfigurationPolicy` unterstützt ein Array mit Hashtabellen, die die einzelnen Tageinträge enthalten. Die Tags werden dem Abschnitt `If` der Richtliniendefinition hinzugefügt und können nicht per Richtlinienzuweisung geändert werden.
 
@@ -439,10 +427,6 @@ New-GuestConfigurationPolicy
 ```
 
 ## <a name="extending-guest-configuration-with-third-party-tools"></a>Erweitern der Gastkonfiguration mit Drittanbietertools
-
-> [!Note]
-> Dieses Feature befindet sich in der Vorschauphase. Hierfür ist Version 1.20.3 des Gastkonfigurationsmoduls erforderlich, das Sie mit `Install-Module GuestConfiguration -AllowPrerelease` installieren können.
-> In Version 1.20.3 ist dieses Feature nur für Richtliniendefinitionen verfügbar, mit denen Windows-Computer überwacht werden
 
 Die Artefaktpakete für die Gastkonfiguration können um Drittanbietertools erweitert werden.
 Für die Erweiterung der Gastkonfiguration müssen zwei Komponenten entwickelt werden.
@@ -575,11 +559,6 @@ Wenn Sie eine Aktualisierung der Richtliniendefinition freigeben möchten, sind 
 
 Die einfachste Möglichkeit zum Freigeben eines aktualisierten Pakets ist das Wiederholen des Prozesses in diesem Artikel und das Angeben einer aktualisierten Versionsnummer. Mit dieser Vorgehensweise wird sichergestellt, dass alle Eigenschaften richtig aktualisiert wurden.
 
-## <a name="converting-windows-group-policy-content-to-azure-policy-guest-configuration"></a>Konvertieren des Inhalts der Windows-Gruppenrichtlinie in eine Azure Policy-Gastkonfiguration
-
-Bei der Überwachung von Windows-Computern ist die Gastkonfiguration eine Implementierung der Desired State Configuration-Syntax von PowerShell. Von der DSC-Community wurde ein Tool zum Konvertieren exportierter Gruppenrichtlinienvorlagen in das DSC-Format veröffentlicht. Sie können dieses Tool zusammen mit den oben beschriebenen Gastkonfigurations-Cmdlets verwenden, um den Inhalt der Windows-Gruppenrichtlinie zu konvertieren und zur Überwachung für Azure Policy zu packen und zu veröffentlichen. Ausführliche Informationen zur Verwendung des Tools finden Sie im Artikel [Schnellstart: Konvertieren von Gruppenrichtlinien in DSC](/powershell/scripting/dsc/quickstarts/gpo-quickstart).
-Nach dem Konvertieren des Inhalts sind die obigen Schritte, mit denen ein Paket erstellt und in Azure Policy veröffentlicht wird, die gleichen wie bei jedem anderen DSC-Inhalt.
-
 ## <a name="optional-signing-guest-configuration-packages"></a>Optional: Signieren von Paketen für Gastkonfigurationen
 
 Benutzerdefinierte Richtlinien für Gastkonfigurationen verwenden SHA256-Hash, um zu überprüfen, ob sich das Richtlinienpaket nicht geändert hat.
@@ -620,5 +599,5 @@ Verwenden Sie zum Abrufen weiterer Informationen zu den Cmdlets in diesem Tool d
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Informieren Sie sich über die Überprüfung von VMs mit [Gastkonfiguration](../concepts/guest-configuration.md).
-- Informieren Sie sich über das [programmgesteuerte Erstellen von Richtlinien](programmatically-create.md).
-- Informieren Sie sich über das [Abrufen von Konformitätsdaten](get-compliance-data.md).
+- Informieren Sie sich über das [programmgesteuerte Erstellen von Richtlinien](./programmatically-create.md).
+- Informieren Sie sich über das [Abrufen von Konformitätsdaten](./get-compliance-data.md).

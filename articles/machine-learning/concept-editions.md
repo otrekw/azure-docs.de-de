@@ -8,14 +8,14 @@ ms.topic: conceptual
 author: j-martens
 ms.author: jmartens
 ms.date: 06/11/2020
-ms.openlocfilehash: aa754868677802b7d0000045f22090fbca62d9b6
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: fbe3f0109ca3af2cf9ff44061c7882e6bd72c8a6
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87927418"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88508601"
 ---
-# <a name="enterprise-and-basic-editions-of-azure-machine-learning"></a>Die Editionen Enterprise und Basic für Azure Machine Learning 
+# <a name="enterprise-preview-and-basic-editions-of-azure-machine-learning"></a>Die Editionen Enterprise (Vorschau) und Basic für Azure Machine Learning 
 
 Azure Machine Learning bietet zwei Editionen auf Ihre Anforderungen an maschinelles Lernen abgestimmte Editionen. Mit diesen Editionen wird ermittelt, welche Machine Learning-Tools für Entwickler und Data Scientists in ihrem Arbeitsbereich verfügbar sind.
 
@@ -23,7 +23,7 @@ Azure Machine Learning bietet zwei Editionen auf Ihre Anforderungen an maschinel
 
 Sie weisen die Edition jeweils zu, wenn Sie einen Arbeitsbereich erstellen. Kunden sind während dieses Zeitraums für Kosten für Computevorgänge und für andere Azure-Ressourcen verantwortlich. Erfahren Sie mehr unter [Verwalten von Kosten für Azure Machine Learning](concept-plan-manage-cost.md).
 
-Informieren Sie sich über das [Durchführen eines Upgrades eines Basic-Arbeitsbereichs auf die Enterprise-Edition](how-to-manage-workspace.md#upgrade). 
+Informieren Sie sich über das [Durchführen eines Upgrades eines Basic-Arbeitsbereichs auf die Enterprise-Edition (Vorschau)](how-to-manage-workspace.md#upgrade). 
 
 ## <a name="whats-in-each-edition"></a>Was haben die Editionen zu bieten?
 

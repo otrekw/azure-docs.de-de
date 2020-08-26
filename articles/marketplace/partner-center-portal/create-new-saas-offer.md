@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 08/07/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: 6140d369c2dbc0968d2f28ff6b8cf447dd721d10
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 7500eddc2416a1cb705ef207930c5fe4c6f1068a
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88166721"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88604755"
 ---
 # <a name="create-a-saas-offer-in-the-commercial-marketplace"></a>Erstellen eines SaaS-Angebots im kommerziellen Marketplace
 
@@ -30,7 +30,7 @@ Um mit dem Erstellen von SaaS-Angeboten (Software-as-a-Service) im kommerziellen
    ![Darstellung des Navigationsmenüs auf der linken Seite.](./media/new-offer-saas.png)
 
 > [!NOTE]
-> Nach der Veröffentlichung eines Angebots werden die daran im Partner Center vorgenommenen Änderungen erst nach der erneuten Veröffentlichung des Angebots in der digitalen Ladenzeile angezeigt. Achten Sie darauf, nach dem Vornehmen von Änderungen immer erneut zu veröffentlichen.
+> Nach der Veröffentlichung eines Angebots werden die daran im Partner Center vorgenommenen Änderungen erst nach der erneuten Veröffentlichung des Angebots in Onlineshops angezeigt. Achten Sie darauf, nach dem Vornehmen von Änderungen immer erneut zu veröffentlichen.
 
 ## <a name="new-offer"></a>Neues Angebot
 
@@ -185,7 +185,7 @@ Ihr Angebot wird in AppSource oder im Azure Marketplace je nach Transaktionsfunk
 - Mindestens eine und bis zu zwei Kategorien, einschließlich einer primären und einer sekundären Kategorie (optional).
 - Bis zu zwei Unterkategorien für jede primäre und/oder sekundäre Kategorie. Wenn keine Unterkategorie für Ihr Angebot infrage kommt, wählen Sie **Nicht zutreffend** aus.
 
-Eine vollständige Liste der Kategorien und Unterkategorien für jede Storefront finden Sie unter [Bewährte Methoden für Angebotslistung](../gtm-offer-listing-best-practices.md).
+Eine vollständige Liste der Kategorien und Unterkategorien für jeden Onlineshop finden Sie unter [Angebotslistung: Bewährte Methoden](../gtm-offer-listing-best-practices.md).
 
 ### <a name="industries"></a>Branchen
 
@@ -289,7 +289,7 @@ Dies ist ein Pflichtfeld.
   - **Groß** (216 x 216 Pixel, erforderlich)
   - **Breit** (255 x 115 Pixel, optional)
 
-   Diese drei Logogrößen werden an verschiedenen Stellen in den Storefronts verwendet:
+   Diese drei Logogrößen werden an verschiedenen Stellen in den Onlineshops verwendet:
 
    -   Das kleine Logo (48 x 48 Pixel) erscheint in den Suchergebnissen von Azure Marketplace sowie auf der Hauptseite und Suchergebnisseite von Microsoft AppSource. 
    -   Das mittelgroße Logo (90 x 90 Pixel) wird angezeigt, wenn Sie eine neue Ressource in Microsoft Azure erstellen.

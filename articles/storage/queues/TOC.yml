@@ -126,7 +126,7 @@
                   href: ../common/storage-access-blobs-queues-portal.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
                 - name: PowerShell
                   href: ../common/authorize-active-directory-powershell.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-                - name: Azure-Befehlszeilenschnittstelle
+                - name: Azure CLI
                   href: ../common/authorize-data-operations-cli.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
             - name: Verwalten von Zugriffsrechten mit RBAC
               items:
@@ -134,7 +134,7 @@
                   href: ../common/storage-auth-aad-rbac-portal.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
                 - name: PowerShell
                   href: ../common/storage-auth-aad-rbac-powershell.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-                - name: Azure-Befehlszeilenschnittstelle
+                - name: Azure CLI
                   href: ../common/storage-auth-aad-rbac-cli.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
             - name: Authentifizieren und Autorisieren mit Azure AD
               items:
@@ -160,7 +160,7 @@
                   href: ../common/storage-encryption-keys-portal.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
                 - name: PowerShell
                   href: ../common/storage-encryption-keys-powershell.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-                - name: Azure-Befehlszeilenschnittstelle
+                - name: Azure CLI
                   href: ../common/storage-encryption-keys-cli.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
             - name: Überprüfen des Verschlüsselungsschlüsselmodells für das Konto
               href: ../common/storage-encryption-key-model-get.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
@@ -210,14 +210,14 @@
           href: storage-dotnet-how-to-use-queues.md
         - name: Java
           href: storage-java-how-to-use-queue-storage.md
+        - name: Python
+          href: storage-python-how-to-use-queue-storage.md
         - name: Node.js
           href: storage-nodejs-how-to-use-queues.md
         - name: C++
           href: storage-c-plus-plus-how-to-use-queues.md
         - name: PHP
           href: storage-php-how-to-use-queues.md
-        - name: Python
-          href: storage-python-how-to-use-queue-storage.md
         - name: Ruby
           href: storage-ruby-how-to-use-queue-storage.md
     - name: Warteschlangen verwalten
@@ -253,12 +253,12 @@
           href: ../common/storage-explorer-troubleshooting.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
         - name: Barrierefreiheit des Speicher-Explorers
           href: ../../vs-azure-tools-storage-explorer-accessibility.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-    - name: Azure Storage-Forum
+    - name: Azure Storage auf Microsoft Q&A
       href: 'https://docs.microsoft.com/answers/topics/azure-queue-storage.html'
     - name: Azure Storage auf Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/windows-azure-storage'
-    - name: Preise für Azure-Speicher
-      href: 'https://azure.microsoft.com/pricing/details/storage/'
+    - name: Preise für Queue Storage
+      href: 'https://azure.microsoft.com/pricing/details/storage/queues/'
     - name: Azure-Preisrechner
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: Videos

@@ -5,12 +5,12 @@ author: gundarev
 ms.topic: how-to
 ms.date: 05/06/2019
 ms.author: denisgun
-ms.openlocfilehash: dd5eb8acb76fe5901149d90a6d551d8d14d363cc
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 8a253723367681d947a9bd94c1505ab4cc156c08
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88007775"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88612638"
 ---
 # <a name="configure-graphics-processing-unit-gpu-acceleration-for-windows-virtual-desktop"></a>Konfigurieren der Beschleunigung durch Graphics Processing Units (GPUs) für Windows Virtual Desktop
 
@@ -51,7 +51,7 @@ Apps und Desktops, die mit Konfigurationen für mehrere Sitzungen ausgeführt we
 1. Stellen Sie mit einem Konto mit lokalen Administratorrechten eine Verbindung mit dem Desktop der VM her.
 2. Öffnen Sie das Startmenü, und geben Sie „gpedit.msc“ ein, um den Gruppenrichtlinien-Editor zu öffnen.
 3. Navigieren Sie zu **Computer Configuration** > **Administrative Templates** > **Windows Components** > **Remote Desktop Services** > **Remote Desktop Session Host** > **Remote Session Environment** (Computerkonfiguration > Administrative Vorlagen > Windows-Komponenten > Remotedesktopdienste > Remotedesktop-Sitzungshost > Remotesitzungsumgebung).
-4. Wählen Sie die Richtlinie **Standard-Hardwaregrafikadapter für alle Remotedesktopdienste-Sitzungen verwenden** aus, und **aktivieren Sie diese**, um das GPU-Rendering in der Remotesitzung zu aktivieren.
+4. Wählen Sie die Richtlinie **Hardwaregrafikadapter für alle Remotedesktopdienste-Sitzungen verwenden** aus, und legen Sie für diese Richtlinie **Aktiviert** fest, um das GPU-Rendern in der Remotesitzung zu aktivieren.
 
 ## <a name="configure-gpu-accelerated-frame-encoding"></a>Konfigurieren der durch GPU beschleunigten Framecodierung
 

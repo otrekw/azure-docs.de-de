@@ -88,7 +88,7 @@
       href: 'https://docs.microsoft.com/samples/browse/?products=azure-cognitive-search&languages=python'
     - name: REST-Beispiele
       href: 'https://docs.microsoft.com/samples/browse/?languages=http&expanded=azure&products=azure-cognitive-search'
-    - name: Azure Policy-Integrationen
+    - name: Integrierte Azure Policy-Aktionen
       displayName: 'samples, policies, definitions'
       href: ./policy-samples.md
 - name: Konzepte
@@ -155,7 +155,7 @@
           href: search-howto-large-index.md
         - name: Verarbeiten gleichzeitiger Aktualisierungen
           href: search-howto-concurrency.md
-    - name: Erfassen von Azure-Daten
+    - name: Ausschließliches Erfassen von Azure-Daten
       items:
         - name: Konfigurieren von Indexern
           href: search-indexer-overview.md
@@ -203,7 +203,7 @@
               href: search-howto-managed-identities-cosmos-db.md
             - name: SQL-Datenbank
               href: search-howto-managed-identities-sql.md
-    - name: Erfassen mithilfe von KI
+    - name: Verwenden von Skills (KI)
       items:
         - name: Anfügen einer Cognitive Services-Ressource
           href: cognitive-search-attach-cognitive-services.md
@@ -215,7 +215,7 @@
               href: cognitive-search-concept-annotations-syntax.md
             - name: Zuordnen zu Indexfeldern
               href: cognitive-search-output-field-mapping.md
-            - name: Extrahieren von Informationen aus Bildern
+            - name: Verarbeiten von Bilddateien
               href: cognitive-search-concept-image-scenarios.md
             - name: Cacheanreicherung (inkrementell)
               href: search-howto-incremental-index.md
@@ -387,7 +387,7 @@
           href: cognitive-search-common-errors-warnings.md
 - name: Verweis
   items:
-    - name: Azure-Befehlszeilenschnittstelle
+    - name: Azure CLI
       href: /cli/azure/search?view=azure-cli-latest
     - name: Azure PowerShell
       href: /powershell/module/az.search

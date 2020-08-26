@@ -1,6 +1,6 @@
 ---
 title: Verwalten von Benutzer- und Administratorberechtigungen – Azure Active Directory | Microsoft-Dokumentation
-description: Hier erfahren Sie, wie Sie Berechtigungen für Ihre Anwendung in Azure AD überprüfen und verwalten. Dies gilt für das Szenario, dass Sie beispielsweise alle Berechtigungen, die einer Anwendung erteilt wurden, widerrufen möchten.
+description: Hier erfahren Sie, wie Sie Berechtigungen für Ihre Anwendung in Azure AD überprüfen und verwalten. Dazu zählt beispielsweise auch das Widerrufen aller Berechtigungen, die einer Anwendung erteilt wurden.
 services: active-directory
 author: mimart
 manager: CelesteDG
@@ -12,22 +12,22 @@ ms.date: 7/10/2020
 ms.author: mimart
 ms.reviewer: luleonpla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 00d878c7b2f78d037e89235f3bb30c02fd11a7ae
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.openlocfilehash: 95e13cedc0cdbaedc8c00b9d855057da7e631c19
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86277598"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88510877"
 ---
-# <a name="take-action-on-overpriviledged-or-suspicious-application-in-azure-active-directory"></a>Maßnahmen gegenüber verdächtigen Anwendungen oder Anwendungen mit zu vielen Berechtigungen in Azure Active Directory
+# <a name="take-action-on-overprivileged-or-suspicious-applications-in-azure-active-directory"></a>Maßnahmen bei verdächtigen Anwendungen oder Anwendungen mit zu vielen Berechtigungen in Azure Active Directory
 
-Hier erfahren Sie, wie Sie Anwendungsberechtigungen überprüfen und verwalten. Basierend auf dem Szenario werden in diesem Artikel verschiedene Aktionen beschrieben, die Sie zum Schutz Ihrer Anwendung ausführen können. Dies gilt für alle Anwendungen, die Ihrem Azure Active Directory-Mandanten (Azure AD) per Benutzer- oder Administratoreinwilligung hinzugefügt wurden.
+Hier erfahren Sie, wie Sie Anwendungsberechtigungen überprüfen und verwalten. In diesem Artikel werden verschiedene Aktionen vorgestellt, die Sie entsprechend des jeweiligen Szenarios zum Schutz Ihrer Anwendung ausführen können. Diese Aktionen gelten für alle Anwendungen, die Ihrem Azure Active Directory (Azure AD)-Mandanten per Benutzer- oder Administratoreinwilligung hinzugefügt wurden.
 
 Weitere Informationen zur Einwilligung für Anwendungen finden Sie unter [Azure Active Directory-Zustimmungsframework](../develop/consent-framework.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Sie müssen sich als globaler Administrator, Anwendungsadministrator oder Cloudanwendungsadministrator anmelden, um die folgenden Aktionen ausführen zu können.
+Zum Ausführen der folgenden Aktionen müssen Sie sich als globaler Administrator, als Anwendungsadministrator oder als Cloudanwendungsadministrator anmelden.
 
 Um den Zugriff auf Anwendungen zu beschränken, benötigen Sie die Benutzerzuweisung, und weisen Sie dann Benutzer oder Gruppen der Anwendung zu.  Weitere Informationen finden Sie unter [Zuweisen von Benutzern und Gruppen zu einer Anwendung in Azure Active Directory](methods-for-assigning-users-and-groups.md).
 
@@ -35,64 +35,66 @@ Um den Zugriff auf Anwendungen zu beschränken, benötigen Sie die Benutzerzuwei
  
 1. Melden Sie sich globaler Administrator, als Anwendungsadministrator oder als Cloudanwendungsadministrator beim [Azure-Portal](https://portal.azure.com) an.
 2. Wählen Sie **Azure Active Directory** > **Unternehmensanwendungen** aus.
-3. Wählen Sie die Anwendung aus, deren Zugriffsberechtigungen Sie einschränken möchten.
+3. Wählen Sie die Anwendung aus, für die ein eingeschränkter Zugriff eingerichtet werden sollen.
 4. Wählen Sie **Berechtigungen** aus. Klicken Sie in der Befehlsleiste auf **Berechtigungen überprüfen**.
 
-![Berechtigungen überprüfen](./media/manage-application-permissions/review-permissions.png)
+![Screenshot des Fensters „Berechtigungen überprüfen“](./media/manage-application-permissions/review-permissions.png)
 
-## <a name="i-want-to-control-access-to-an-application"></a>Steuern des Zugriffs auf eine Anwendung
 
-Wenn Sie steuern möchten, wer auf eine Anwendung zugreifen kann, aktivieren Sie die Einstellung „Benutzerzuweisung“.
+## <a name="control-access-to-an-application"></a>Steuern des Zugriffs auf eine Anwendung
+
+Wir empfehlen, den Zugriff auf eine Anwendung durch Aktivieren der Einstellung **Benutzerzuweisung** einzuschränken.
 
 1. Melden Sie sich globaler Administrator, als Anwendungsadministrator oder als Cloudanwendungsadministrator beim [Azure-Portal](https://portal.azure.com) an.
 2. Wählen Sie **Azure Active Directory** > **Unternehmensanwendungen** aus.
-3. Wählen Sie die Anwendung aus, deren Zugriffsberechtigungen Sie einschränken möchten.
-4. Klicken Sie auf **Eigenschaften**, und legen Sie die Einstellung „Benutzerzuweisung erforderlich?“ auf „Ja“ fest.
-5. Klicken Sie auf **Benutzer und Gruppen**, und entfernen Sie unerwünschte Benutzer.
+3. Wählen Sie die Anwendung aus, für die ein eingeschränkter Zugriff eingerichtet werden sollen.
+4. Wählen Sie **Eigenschaften** aus, und legen Sie **Benutzerzuweisung erforderlich** auf **Ja** fest.
+5. Wählen Sie **Benutzer und Gruppen** aus, und entfernen Sie dann Benutzer, die der Anwendung zugewiesen, aber unerwünscht sind.
 6. Weisen Sie der Anwendung Benutzer oder Gruppen zu.
 
 Optional können Sie auch mithilfe von PowerShell alle Benutzer entfernen, die der Anwendung zugewiesen sind.
 
-## <a name="i-want-to-revoke-all-permissions-for-an-application"></a>Widerrufen aller Berechtigungen für eine Anwendung
+## <a name="revoke-all-permissions-for-an-application"></a>Widerrufen aller Berechtigungen für eine Anwendung
 
-Mithilfe von PowerShell können Sie alle Berechtigungen widerrufen, die der Anwendung erteilt wurden.
+Mit dem PowerShell-Skript werden alle Berechtigungen widerrufen, die der jeweiligen Anwendung erteilt wurden.
 
 > [!NOTE]
-> Durch das Widerrufen aktueller Berechtigungen wird nicht verhindert, dass Benutzer einer Anwendung erneut zustimmen. Wenn Sie verhindern möchten, dass Benutzer einer Anwendung zustimmen, lesen Sie [Konfigurieren der Art und Weise, wie Benutzer Anwendungen zustimmen können](configure-user-consent.md).
+> Durch das Widerrufen aktueller Berechtigungen wird eine erneute Benutzereinwilligung für die Anwendung nicht verhindert. Wenn Sie die Benutzereinwilligung blockieren möchten, lesen Sie [Konfigurieren der Benutzereinwilligung für Anwendungen](configure-user-consent.md).
 
-Optional können Sie die Anwendung deaktivieren, um zu verhindern, dass Benutzer auf die App und die App auf Ihre Daten zugreifen können.
+Optional können Sie die Anwendung deaktivieren, um den Zugriff von Benutzern auf die App und den Zugriff der App auf Ihre Daten zu verhindern.
 
 1. Melden Sie sich globaler Administrator, als Anwendungsadministrator oder als Cloudanwendungsadministrator beim [Azure-Portal](https://portal.azure.com) an.
 2. Wählen Sie **Azure Active Directory** > **Unternehmensanwendungen** aus.
-3. Wählen Sie die Anwendung aus, deren Zugriffsberechtigungen Sie einschränken möchten.
-4. Klicken Sie auf **Eigenschaften**, und legen Sie die Einstellung „Aktiviert für die Benutzeranmeldung?“ auf „Nein“ fest.
+3. Wählen Sie die Anwendung aus, für die ein eingeschränkter Zugriff eingerichtet werden sollen.
+4. Wählen Sie **Eigenschaften** aus, und legen Sie dann **Aktiviert für die Benutzeranmeldung?** auf **Nein** fest.
 
-## <a name="application-is-suspicious-and-i-want-to-investigate"></a>Untersuchen verdächtiger Anwendungen
+## <a name="investigate-a-suspicious-application"></a>Untersuchen einer verdächtigen Anwendung
 
-Bei einer verdächtigen Anwendung sollten Sie den Zugriff darauf einschränken, indem Sie die Einstellung „Benutzerzuweisung“ aktivieren. Zudem sollten Sie die Berechtigungen überprüfen, die Benutzer und Administratoren der Anwendung erteilt haben.
+Wir empfehlen, den Zugriff auf die Anwendung durch Aktivieren der Einstellung **Benutzerzuweisung** einzuschränken. Überprüfen Sie dann die Berechtigungen, die Benutzer und Administratoren der Anwendung erteilt haben.
 
 1. Melden Sie sich globaler Administrator, als Anwendungsadministrator oder als Cloudanwendungsadministrator beim [Azure-Portal](https://portal.azure.com) an.
 3. Wählen Sie **Azure Active Directory** > **Unternehmensanwendungen** aus.
-5. Wählen Sie die Anwendung aus, deren Zugriffsberechtigungen Sie einschränken möchten.
-6. Klicken Sie auf **Eigenschaften**, und legen Sie die Einstellung „Benutzerzuweisung erforderlich?“ auf „Ja“ fest.
-7. Klicken Sie auf **Berechtigungen**, und überprüfen Sie die per Administrator- und Benutzereinwilligung erteilten Berechtigungen.
+5. Wählen Sie die Anwendung aus, für die ein eingeschränkter Zugriff eingerichtet werden sollen.
+6. Wählen Sie **Eigenschaften** aus, und legen Sie **Benutzerzuweisung erforderlich** auf **Ja** fest.
+7. Wählen Sie **Berechtigungen** aus, und überprüfen Sie die per Administrator- und Benutzereinwilligung erteilten Berechtigungen.
 
-Optional können Sie folgende Aktionen ausführen:
+Optional können Sie mithilfe von PowerShell folgende Aktionen ausführen:
 
-- Entfernen Sie mithilfe von PowerShell alle zugewiesenen Benutzer, um eine erneute Anmeldung bei der Anwendung zu verhindern.
-- Annullieren Sie mithilfe von PowerShell die Aktualisierungstoken für Benutzer, die auf die Anwendung zugreifen können.
-- Widerrufen Sie mithilfe von PowerShell alle Berechtigungen für diese Anwendung.
-- Deaktivieren Sie die Anwendung, um zu verhindern, dass Benutzer auf die Anwendung und die Anwendung auf Ihre Daten zugreifen.
+- Entfernen aller zugewiesenen Benutzer, um eine erneute Anmeldung bei der Anwendung zu verhindern
+- Annullieren der Aktualisierungstoken für die Benutzer, die auf die Anwendung zugreifen können
+- Widerrufen aller Berechtigungen für die Anwendung
+
+Alternativ können Sie auch die Anwendung deaktivieren, um den Zugriff von Benutzern auf die Anwendung und den Zugriff der Anwendung auf Ihre Daten zu verhindern.
 
 
-## <a name="application-is-malicious-and-im-compromised"></a>Vorgehen bei bösartigen Anwendungen
+## <a name="disable-a-malicious-application"></a>Deaktivieren einer bösartigen Anwendung 
 
-Wurde die Anwendung kompromittiert, sollten Sie sie deaktivieren, um zu verhindern, dass Benutzer auf die App und die App auf Ihre Daten zugreifen können. Wenn Sie stattdessen die Anwendung löschen, können Benutzer der Anwendung erneut zustimmen und Zugriff auf Ihre Daten gewähren.
+Wir empfehlen, die Anwendung zu deaktivieren, um den Benutzerzugriff zu blockieren und den Zugriff der Anwendung auf Ihre Daten zu verhindern. Wenn Sie stattdessen die Anwendung löschen, können Benutzer der Anwendung erneut zustimmen und Zugriff auf Ihre Daten gewähren.
 
 1. Melden Sie sich globaler Administrator, als Anwendungsadministrator oder als Cloudanwendungsadministrator beim [Azure-Portal](https://portal.azure.com) an.
 2. Wählen Sie **Azure Active Directory** > **Unternehmensanwendungen** aus.
-3. Wählen Sie die Anwendung aus, deren Zugriffsberechtigungen Sie einschränken möchten.
-4. Klicken Sie auf **Eigenschaften**, und kopieren Sie die Objekt-ID.
+3. Wählen Sie die Anwendung aus, für die ein eingeschränkter Zugriff eingerichtet werden sollen.
+4. Wählen Sie **Eigenschaften** aus, und kopieren Sie dann die Objekt-ID.
 
 ### <a name="powershell-commands"></a>PowerShell-Befehle
 
@@ -101,8 +103,8 @@ Rufen Sie die Objekt-ID des Dienstprinzipals ab.
 
 1. Melden Sie sich globaler Administrator, als Anwendungsadministrator oder als Cloudanwendungsadministrator beim [Azure-Portal](https://portal.azure.com) an.
 2. Wählen Sie **Azure Active Directory** > **Unternehmensanwendungen** aus.
-3. Wählen Sie die Anwendung aus, deren Zugriffsberechtigungen Sie einschränken möchten.
-4. Klicken Sie auf **Eigenschaften**, und kopieren Sie die Objekt-ID.
+3. Wählen Sie die Anwendung aus, für die ein eingeschränkter Zugriff eingerichtet werden sollen.
+4. Wählen Sie **Eigenschaften** aus, und kopieren Sie dann die Objekt-ID.
 
 ```powershell
     $sp = Get-AzureADServicePrincipal -Filter "displayName eq '$app_name'"
@@ -152,7 +154,7 @@ Widerrufen Sie die Berechtigungen, die der Anwendung erteilt wurden.
         Remove-AzureADServiceAppRoleAssignment -ObjectId $_.PrincipalId -AppRoleAssignmentId $_.objectId
     }
 ```
-Annullieren Sie Aktualisierungstoken.
+Machen Sie die Aktualisierungstoken ungültig.
 ```powershell
         Connect-AzureAD
 

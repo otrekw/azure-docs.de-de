@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/11/2020
+ms.date: 08/18/2020
 ms.author: b-juche
-ms.openlocfilehash: 29055da1ea8093d413691a41d38d6280f43f728a
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: eeb22672829dca9ba342079183dcc5ed7c35393c
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88134495"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88590369"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Häufig gestellte Fragen zu Azure NetApp Files
 
@@ -54,7 +54,9 @@ Nein. Die IP-Zuweisung zu Azure NetApp Files-Volumes ist dynamisch. Die statisch
 
 ### <a name="can-the-network-traffic-between-the-azure-vm-and-the-storage-be-encrypted"></a>Kann der Netzwerkdatenverkehr zwischen Azure-VM und Speicher verschlüsselt werden?
 
-Datenverkehr (vom NFSv3-, NFSv4.1- oder SMBv3-Client zu Azure NetApp Files-Volumes) ist nicht verschlüsselt. Der Datenverkehr von einer Azure-VM (auf der ein NFS- oder SMB-Client ausgeführt wird) zu Azure NetApp Files ist jedoch so sicher wie jeder andere Datenverkehr zwischen Azure-VMs. Dieser Datenverkehr wird lokal im Azure-Rechenzentrumsnetzwerk ausgeführt. 
+Der Datenverkehr zwischen NFSv4.1-Clients und Azure NetApp Files-Volumes kann mit Kerberos per AES-256-Verschlüsselung verschlüsselt werden. Weitere Informationen finden Sie unter [Konfigurieren der NFSv4.1-Kerberos-Verschlüsselung für Azure NetApp Files](configure-kerberos-encryption.md).   
+
+Datenverkehr zwischen NFSv3- oder SMBv3-Clients und Azure NetApp Files-Volumes ist nicht verschlüsselt. Der Datenverkehr von einer Azure-VM (auf der ein NFS- oder SMB-Client ausgeführt wird) zu Azure NetApp Files ist jedoch so sicher wie jeder andere Datenverkehr zwischen Azure-VMs. Dieser Datenverkehr wird lokal im Azure-Rechenzentrumsnetzwerk ausgeführt. 
 
 ### <a name="can-the-storage-be-encrypted-at-rest"></a>Kann der Speicher im Ruhezustand verschlüsselt werden?
 
@@ -125,7 +127,7 @@ Azure NetApp Files unterstützt NFSv3 und NFSv4.1. Für die [Volumeerstellung](a
 
 ### <a name="how-do-i-enable-root-squashing"></a>Wie aktiviere ich das Root Squashing?
 
-Das Root Squashing wird derzeit nicht unterstützt.
+Sie können angeben, ob für das Stammkonto (Root) Zugriff auf das Volume besteht, indem Sie die Exportrichtlinie des Volumes verwenden. Weitere Informationen finden Sie unter [Konfigurieren der Exportrichtlinie für ein NFS-Volume](azure-netapp-files-configure-export-policy.md).
 
 ## <a name="smb-faqs"></a>Häufig gestellte Fragen zu SMB
 

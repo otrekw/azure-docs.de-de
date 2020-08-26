@@ -1,0 +1,36 @@
+- name: Dokumentation zu Kubernetes mit Azure Arc-Unterstützung
+  href: index.yml
+- name: Übersicht
+  items:
+    - name: "Informationen zu Kubernetes mit Azure\_Arc-Aktivierung"
+      href: overview.md
+- name: Beispiele
+  items:
+    - name: Azure Policy-Integrationen
+      items:
+        - name: Kubernetes mit Arc-Aktivierung
+          href: policy-samples.md
+- name: Anleitungen
+  items:
+    - name: Herstellen einer Verbindung mit Azure Arc
+      items:
+        - name: Herstellen einer Clusterverbindung
+          href: connect-cluster.md
+        - name: Durchführen des Onboardings für den Dienstprinzipal
+          href: create-onboarding-service-principal.md
+    - name: Verwalten
+      items:
+        - name: Bereitstellen von Konfigurationen mithilfe von GitOps
+          href: use-gitops-connected-cluster.md
+        - name: Bereitstellen von Helm-Charts mithilfe von GitOps
+          href: use-gitops-with-helm.md
+        - name: Erzwingen von GitOps mithilfe von Azure Policy
+          href: use-azure-policy.md
+        - name: Überwachen mithilfe von Azure Monitor für Container
+          href: ../../azure-monitor/insights/container-insights-enable-arc-enabled-clusters.md?toc=/azure/azure-arc/kubernetes/toc.yml
+        - name: Zugangskontrollrichtlinien mit Azure Policy
+          href: ../../governance/policy/concepts/policy-for-kubernetes.md?toc=/azure/azure-arc/kubernetes/toc.yml
+        - name: Bereitstellen von IoT-Workloads
+          href: deploy-azure-iot-edge-workloads.md
+    - name: Problembehandlung
+      href: Troubleshooting.md

@@ -4,13 +4,13 @@ titleSuffix: Azure Kubernetes Service
 description: Erfahren Sie, wie Sie einen einfachen NGINX-Eingangscontroller in einem Azure Kubernetes Service-Cluster (AKS) installieren und konfigurieren.
 services: container-service
 ms.topic: article
-ms.date: 07/20/2020
-ms.openlocfilehash: 2c75d41d827ad1838898736ba8ff41aaef0b6f13
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.date: 08/17/2020
+ms.openlocfilehash: 08d9e100e5f1c3f3be41473f5b6ccda02cf0b6c3
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87927049"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272865"
 ---
 # <a name="create-an-ingress-controller-in-azure-kubernetes-service-aks"></a>Erstellen eines Eingangscontrollers in Azure Kubernetes Service (AKS)
 
@@ -27,7 +27,7 @@ Sie können außerdem:
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
-In diesem Artikel wird [Helm 3][helm] für die Installation des NGINX-Eingangscontrollers verwendet.
+In diesem Artikel wird [Helm 3][helm] für die Installation des NGINX-Eingangscontrollers verwendet. Stellen Sie sicher, dass Sie die neueste Version von Helm verwenden und auf das Helm-Repository *stable* zugreifen können.
 
 Für den Artikel wird außerdem mindestens Version 2.0.64 der Azure-Befehlszeilenschnittstelle benötigt. Führen Sie `az --version` aus, um die Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI][azure-cli-install].
 
@@ -174,7 +174,8 @@ metadata:
   annotations:
     kubernetes.io/ingress.class: nginx
     nginx.ingress.kubernetes.io/ssl-redirect: "false"
-    nginx.ingress.kubernetes.io/rewrite-target: /$2
+    nginx.ingress.kubernetes.io/use-regex: "true"
+    nginx.ingress.kubernetes.io/rewrite-target: /$1
 spec:
   rules:
   - http:
@@ -187,6 +188,10 @@ spec:
           serviceName: aks-helloworld-two
           servicePort: 80
         path: /hello-world-two(/|$)(.*)
+      - backend:
+          serviceName: aks-helloworld-one
+          servicePort: 80
+        path: /(.*)
 ---
 apiVersion: networking.k8s.io/v1beta1
 kind: Ingress

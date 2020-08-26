@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 08/05/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 8b2b62ac4d79964c0a597f40d8154e5f57350f0b
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 9db8a0397c836e8cbc45404d9c4f149255fc76fa
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88031080"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88271055"
 ---
 # <a name="monitor-azure-file-sync"></a>Überwachen der Azure-Dateisynchronisierung
 
@@ -135,7 +135,7 @@ Verwenden Sie das Telemetrieereignisprotokoll auf dem Server, um die Integrität
 
 Synchronisierungsintegrität
 
-- Nach Abschluss einer Synchronisierungssitzung wird ein Ereignis mit der ID 9102 protokolliert. Anhand dieses Ereignisses können Sie bestimmen, ob Synchronisierungssitzungen erfolgreich abgeschlossen wurden (**HResult = 0**) und ob Synchronisierungsfehler auf Elementebene vorliegen. Weitere Informationen finden Sie in der Dokumentation zur [Synchronisierungsintegrität](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#broken-sync) und zu [Fehlern auf Elementebene](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-see-if-there-are-specific-files-or-folders-that-are-not-syncing).
+- Nach Abschluss einer Synchronisierungssitzung wird ein Ereignis mit der ID 9102 protokolliert. Anhand dieses Ereignisses können Sie bestimmen, ob Synchronisierungssitzungen erfolgreich abgeschlossen wurden (**HResult = 0**) und ob Synchronisierungsfehler auf Elementebene (**PerItemErrorCount**) vorliegen. Weitere Informationen finden Sie in der Dokumentation zur [Synchronisierungsintegrität](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#broken-sync) und zu [Fehlern auf Elementebene](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-see-if-there-are-specific-files-or-folders-that-are-not-syncing).
 
   > [!Note]  
   > Manchmal tritt bei Synchronisierungssitzungen allgemein ein Fehler auf oder PerItemErrorCount ist ungleich 0. Jedoch wird trotzdem ein Fortschritt angezeigt, und einige Dateien synchronisieren erfolgreich. Dies kann bei den Feldern beobachtet werden, die mit „Applied“ beginnen (AppliedFileCount, AppliedDirCount, AppliedTombstoneCount und AppliedSizeBytes). Die Werte dieser Felder geben an, bis zu welchem Anteil die Sitzung erfolgreich durchgeführt wurde. Wenn für mehrere aufeinanderfolgende Synchronisierungssitzungen Fehler angezeigt werden, die Sitzungen jedoch steigende „Applied“-Werte aufweisen, sollten Sie der Synchronisierung Zeit für einen erneuten Versuch geben, bevor Sie ein Supportticket öffnen.
@@ -156,12 +156,13 @@ Cloudtieringintegrität
   - Die Ereignis-ID 9016 stellt Ghostingergebnisse für ein Volume bereit. Beispiel: Freier Speicherplatz in Prozent, Anzahl der Dateien in der Sitzung, für die ein Ghosting durchgeführt wurde, und Anzahl von Dateien, bei denen beim Ghosting ein Fehler aufgetreten ist.
   - Die Ereignis-ID 9029 bietet Informationen zu Ghostingsitzungen für einen Serverendpunkt. Beispiel: Anzahl der in der Sitzung herangezogenen Dateien, Anzahl der Dateien in der Sitzung, für die in der Sitzung ein Tiering durchgeführt wurde, und Anzahl der Dateien, für die bereits ein Tiering durchgeführt wurde.
   
-- Verwenden Sie die Ereignis-IDs 9005, 9006, 9009 und 9059 im Telemetrieereignisprotokoll (in der Ereignisanzeige unter *Anwendungen und Dienste\Microsoft\FileSync\Agent*), um die Rückrufaktivität auf einem Server zu überwachen.
+- Verwenden Sie die Ereignis-IDs 9005, 9006, 9009, 9059 und 9071 im Telemetrieereignisprotokoll (in der Ereignisanzeige unter *Anwendungen und Dienste\Microsoft\FileSync\Agent*), um die Rückrufaktivität auf einem Server zu überwachen.
 
   - Die Ereignis-ID 9005 bietet Zuverlässigkeit beim Rückruf für einen Serverendpunkt. Beispiel: Gesamtanzahl eindeutiger Dateien, auf die zugegriffen wird, und Gesamtanzahl eindeutiger Dateien, bei denen beim Zugriff ein Fehler aufgetreten ist.
   - Die Ereignis-ID 9006 ermöglicht die Rückruffehlerverteilung für einen Serverendpunkt. Beispiel: Gesamtanzahl der Anforderungen, bei denen ein Fehler aufgetreten ist, und ErrorCode. Pro Fehlercode wird ein Ereignis protokolliert.
   - Die Ereignis-ID 9009 bietet Informationen zu Rückrufsitzungen für einen Serverendpunkt. Beispiel: DurationSeconds, CountFilesRecallSucceeded und CountFilesRecallFailed.
   - Die Ereignis-ID 9059 bietet Informationen zur Anwendungsrückrufverteilung für einen Serverendpunkt. Beispiel: ShareId, Anwendungsname und TotalEgressNetworkBytes.
+  - Über die Ereignis-ID 9071 wird die Cloudtieringeffizienz für einen Serverendpunkt angegeben. Beispiel: TotalDistinctFileCountCacheHit, TotalDistinctFileCountCacheMiss, TotalCacheHitBytes und TotalCacheMissBytes.
 
 ### <a name="performance-counters"></a>Leistungsindikatoren
 

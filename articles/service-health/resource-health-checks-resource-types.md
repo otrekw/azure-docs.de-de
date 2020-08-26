@@ -3,12 +3,12 @@ title: Durch Azure Resource Health unterstützte Ressourcentypen | Microsoft-Dok
 description: Durch Azure Resource Health unterstützte Ressourcentypen
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: f4d622ac6d37059731b51a679e13f824670b9dc8
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2c002ab89b1cae4db6d3337908bb401039cb2295
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87071282"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88611941"
 ---
 # <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Ressourcentypen und Integritätsprüfungen in Azure Resource Health
 Es folgt eine vollständige Auflistung nach Ressourcentypen aller von Resource Health ausgeführten Überprüfungen.
@@ -42,6 +42,11 @@ Es folgt eine vollständige Auflistung nach Ressourcentypen aller von Resource H
 |Ausgeführte Überprüfungen|
 |---|
 |<ul><li>Ist der Hostserver funktionstüchtig?</li><li>Ist das Starten des Hostbetriebssystems abgeschlossen?</li><li>Ist der VM-Container bereitgestellt und hochgefahren?</li><li>Besteht Netzwerkkonnektivität zwischen Host und Speicherkonto?</li><li>Ist das Starten des Gastbetriebssystems abgeschlossen?</li><li>Gibt es eine laufende geplante Wartung?</li><li>Wurde die Hosthardware heruntergestuft und ein baldiger Ausfall vorhergesagt?</li></ul>|
+
+## <a name="microsoftclassiccomputedomainnames"></a>Microsoft.classiccompute/domainnames
+|Ausgeführte Überprüfungen|
+|---|
+|<ul><li>Ist die Produktionsslotbereitstellung in allen Rolleninstanzen fehlerfrei?</li><li>Ist die Rolle in allen VM-Instanzen fehlerfrei?</li><li>Wie ist der Integritätsstatus der einzelnen virtuellen Computer innerhalb einer Rolle eines Clouddiensts?</li><li>Hat sich der VM-Status aufgrund eines von der Plattform oder vom Kunden initiierten Vorgangs geändert?</li><li>Ist das Starten des Gastbetriebssystems abgeschlossen?</li><li>Gibt es eine laufende geplante Wartung?</li><li>Wurde die Hosthardware heruntergestuft und ein baldiger Ausfall vorhergesagt?</li></ul>|
 
 ## <a name="microsoftcognitiveservicesaccounts"></a>Microsoft.cognitiveservices/accounts
 |Ausgeführte Überprüfungen|

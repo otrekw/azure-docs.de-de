@@ -11,12 +11,12 @@ manager: cgronlun
 ms.date: 06/15/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 3973e94c9d3add25dba0af7a6b0c0deb18b77440
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: c2fc0b0bc1b59bcb3fa4a84235135d9b8ff1fc27
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87850439"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88510248"
 ---
 # <a name="use-automated-ml-in-an-azure-machine-learning-pipeline-in-python"></a>Verwenden von automatisiertem ML in einer Azure Machine Learning-Pipeline in Python
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -328,8 +328,9 @@ automl_config = AutoMLConfig(task = 'classification',
 
 train_step = AutoMLStep(name='AutoML_Classification',
     automl_config=automl_config,
-    passthru_automl_config=False,
     outputs=[metrics_data,model_data],
+    enable_default_model_output=False,
+    enable_default_metrics_output=False,
     allow_reuse=True)
 ```
 Dieser Codeausschnitt zeigt einen häufig mit `AutoMLConfig` verwendeten Ausdruck. Veränderliche Argumente (Hyperparameter) werden in einem separaten Verzeichnis angegeben. Werte, bei denen eine Änderung weniger wahrscheinlich ist, werden direkt im `AutoMLConfig`-Konstruktor angegeben. In diesem Fall wird über `automl_settings` eine kurze Ausführung festgelegt: Die Ausführung wird nach zwei Iterationen bzw. 15 Minuten beendet (je nachdem, welcher Fall zuerst eintritt).
@@ -346,7 +347,7 @@ Das `automl_settings`-Verzeichnis wird als kwargs an den `AutoMLConfig`-Konstruk
 `AutoMLStep` selbst verwendet `AutoMLConfig` und gibt die `PipelineData`-Objekte aus, die für die Metriken und Modelldaten erstellt wurden. 
 
 >[!Important]
-> Wenn `AutoMLStep` `PipelineOutputTabularDataset`-Objekte als Eingabe verwendet, müssen Sie `passthru_automl_config` auf `False` festlegen.
+> Sie müssen `enable_default_model_output` und `enable_default_metrics_output` nur dann auf `True` festlegen, wenn Sie `AutoMLStepRun` verwenden.
 
 In diesem Beispiel führt der Prozess für automatisiertes ML eine Kreuzvalidierung für die `training_data` durch. Die Anzahl von Kreuzvalidierungen kann über das Argument `n_cross_validations` gesteuert werden. Wenn Sie Ihre Trainingsdaten im Rahmen Ihrer Datenaufbereitungsschritte bereits unterteilt haben, können Sie für `validation_data` ein eigenes `Dataset` festlegen.
 

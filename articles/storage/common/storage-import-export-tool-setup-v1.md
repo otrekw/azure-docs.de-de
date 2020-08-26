@@ -1,6 +1,6 @@
 ---
 title: Einrichten des Azure Import/Export-Tools (V1) | Microsoft-Dokumentation
-description: Es wird beschrieben, wie Sie das Tool für die Laufwerkvorbereitung und Reparatur für den Azure Import/Export-Dienst einrichten. Dies bezieht sich auf V1 des Import/Export-Tools.
+description: Es wird beschrieben, wie Sie das Tool für die Laufwerkvorbereitung und Reparatur für den Azure Import/Export-Dienst einrichten. Dieser Artikel bezieht sich auf Version 1 des Import/Export-Tools.
 author: twooley
 services: storage
 ms.service: storage
@@ -8,28 +8,28 @@ ms.topic: how-to
 ms.date: 01/15/2017
 ms.author: twooley
 ms.subservice: common
-ms.openlocfilehash: ca74e3aea8a847344c75ca7167c46675e1339459
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f2aeb010d0c6f62284f1347bd90b952be50c665e
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077825"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88530799"
 ---
 # <a name="setting-up-the-azure-importexport-tool-v1"></a>Einrichten des Azure Import/Export-Tools Version 1
 Das Microsoft Azure Import/Export-Tool ist das Tool für die Laufwerkvorbereitung und Reparatur, das Sie für den Microsoft Azure Import/Export-Dienst verwenden können. Sie können das Tool für die folgenden Funktionen verwenden:  
 
--   Vor dem Erstellen eines Importauftrags können Sie dieses Tool zum Kopieren von Daten auf die Laufwerke verwenden, die Sie an ein Windows Azure-Rechenzentrum senden.  
+-   Vor dem Erstellen eines Importauftrags können Sie dieses Tool zum Kopieren von Daten auf die Laufwerke verwenden, die Sie an ein Microsoft Azure-Rechenzentrum senden.  
 
 -   Nach Abschluss eines Importauftrags können Sie dieses Tool zum Reparieren von Blobs verwenden, die beschädigt sind, fehlen oder in Konflikt mit anderen Blobs stehen.  
 
 -   Nachdem Sie die Laufwerke für einen abgeschlossenen Exportauftrag erhalten haben, können Sie dieses Tool nutzen, um Dateien zu reparieren, die beschädigt waren oder auf den Laufwerken fehlten.  
 
 ## <a name="prerequisites"></a>Voraussetzungen  
-Wenn Sie die Laufwerkvorbereitung für einen Importauftrag durchführen, müssen Sie die folgenden Voraussetzungen erfüllen:  
+Bei der Laufwerkvorbereitung für einen Importauftrag müssen Sie die folgenden Voraussetzungen erfüllen:  
 
 -   Sie benötigen ein aktives Azure-Abonnement.  
 
--   Ihr Abonnement muss ein Speicherkonto mit genügend verfügbarem Speicherplatz zum Speichern der zu importierenden Dateien enthalten.  
+-   Ihr Abonnement muss ein Speicherkonto mit genügend verfügbarem Speicherplatz zum Speichern der importierten Dateien enthalten.  
 
 -   Sie benötigen mindestens einen der Kontoschlüssel für das Speicherkonto.  
 
@@ -253,5 +253,4 @@ Examples:
 * [Anzeigen einer Vorschau der Laufwerknutzung für einen Exportauftrag](../storage-import-export-tool-previewing-drive-usage-export-v1.md)   
 * [Überprüfen des Auftragsstatus mit Protokollkopiedateien](../storage-import-export-tool-reviewing-job-status-v1.md)   
 * [Reparieren eines Importauftrags](../storage-import-export-tool-repairing-an-import-job-v1.md)   
-* [Reparieren eines Exportauftrags](../storage-import-export-tool-repairing-an-export-job-v1.md)   
-* [Behandeln von Problemen mit dem Azure Import/Export-Tool](storage-import-export-tool-troubleshooting-v1.md)
+* [Reparieren eines Exportauftrags](../storage-import-export-tool-repairing-an-export-job-v1.md)

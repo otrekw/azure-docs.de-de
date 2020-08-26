@@ -3,14 +3,14 @@ title: 'Azure Automation: Übersicht über Änderungsnachverfolgung und Bestand'
 description: In diesem Artikel wird das Feature „Änderungsnachverfolgung und Bestand“ beschrieben, mit dem Sie Änderungen an Software und Microsoft-Diensten in Ihrer Umgebung erkennen können.
 services: automation
 ms.subservice: change-inventory-management
-ms.date: 06/08/2020
+ms.date: 08/17/2020
 ms.topic: conceptual
-ms.openlocfilehash: ca96f817407aaef808fa10fbedec7af7b5912dc8
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 2fe92942e263cf53b9827ccbcb13a2d7bafc367c
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87447928"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88511047"
 ---
 # <a name="change-tracking-and-inventory-overview"></a>Übersicht über Änderungsnachverfolgung und Bestand
 
@@ -26,10 +26,10 @@ Dieser Artikel bietet eine Einführung in Änderungsnachverfolgung und Bestand i
 > [!NOTE]
 > Informationen zum Nachverfolgen von Eigenschaftenänderungen in Azure Resource Manager finden Sie im [Änderungsverlauf](../governance/resource-graph/how-to/get-resource-changes.md) von Azure Resource Graph.
 
-Änderungsnachverfolgung und Bestand rufen ihre Daten aus Azure Monitor ab. Virtuelle Computer, die mit Log Analytics-Arbeitsbereichen verbunden sind, verwenden Log Analytics-Agents, um Daten zu Änderungen an installierter Software, Microsoft-Diensten, Windows-Registrierung und -Dateien sowie Linux-Daemons auf überwachten Servern zu sammeln. Wenn Daten verfügbar sind, sendet der Agent diese zur Verarbeitung an Azure Monitor. Azure Monitor wendet Logik auf die empfangenen Daten an, zeichnet sie auf und macht sie verfügbar. 
+Änderungsnachverfolgung und Bestand rufen ihre Daten aus Azure Monitor ab. Virtuelle Computer, die mit Log Analytics-Arbeitsbereichen verbunden sind, verwenden den Log Analytics-Agent, um Daten zu Änderungen an installierter Software, Microsoft-Diensten, Windows-Registrierung und -Dateien sowie Linux-Daemons auf überwachten Servern zu sammeln. Wenn Daten verfügbar sind, sendet der Agent diese zur Verarbeitung an Azure Monitor. Azure Monitor wendet Logik auf die empfangenen Daten an, zeichnet sie auf und macht sie verfügbar.
 
 > [!NOTE]
-> Wenn Sie Änderungsnachverfolgung und Bestand verwenden möchten, müssen sich alle virtuellen Computer im gleichen Abonnement und in der gleichen Region wie das Automation-Konto befinden.
+> Die Funktion „Änderungsnachverfolgung und Bestand“ setzt voraus, dass ein Log Analytics-Arbeitsbereich mit Ihrem Automation-Konto verknüpft wird. Eine aktuelle Liste der unterstützten Regionen finden Sie unter [Arbeitsbereichzuordnungen in Azure](./how-to/region-mappings.md). Die Regionszuordnungen haben keine Auswirkung auf die Möglichkeit, virtuelle Computer in einer anderen Region als der Ihres Automation-Kontos zu verwalten.
 
 Änderungsnachverfolgung und Bestand unterstützt die folgenden Elemente derzeit nicht:
 
@@ -53,7 +53,7 @@ Folgende Probleme treten derzeit mit Änderungsnachverfolgung und Bestand auf:
 
 ## <a name="supported-operating-systems"></a>Unterstützte Betriebssysteme
 
-Änderungsnachverfolgung und Bestand werden unter allen Betriebssystemen unterstützt, die die Anforderungen des Log Analytics-Agent erfüllen. Die offiziellen Betriebssystemversionen sind Windows Server 2008 SP1 oder höher und Windows 7 SP1 oder höher. Das Feature wird auch von einigen Linux-Betriebssystemen unterstützt. Informationen zu Betriebssystemen, die Log Analytics unterstützen, finden Sie in der [Übersicht über den Log Analytics-Agent](../azure-monitor/platform/log-analytics-agent.md).
+Änderungsnachverfolgung und Bestand werden unter allen Betriebssystemen unterstützt, die die Anforderungen des Log Analytics-Agent erfüllen. Die offiziellen Betriebssystemversionen sind Windows Server 2008 SP1 oder höher und Windows 7 SP1 oder höher. Das Feature wird auch von einigen Linux-Betriebssystemen unterstützt. Eine Liste der unterstützten Betriebssysteme finden Sie unter [Übersicht über den Log Analytics-Agent](../azure-monitor/platform/log-analytics-agent.md).
 
 Informationen zu den Clientanforderungen für TLS 1.2 finden Sie unter [Erzwingen von TLS 1.2 für Azure Automation](automation-managing-data.md#tls-12-enforcement-for-azure-automation).
 

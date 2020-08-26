@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 39e76468238a911c7a9e5543bf5063d1c7b6a8b8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 81f3f771987ce2ff11aab88a4d35df01b6c85941
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85253323"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88184345"
 ---
 # <a name="azure-active-directory-terms-of-use"></a>Nutzungsbedingungen für Azure Active Directory
 
@@ -363,7 +363,7 @@ A: Nein. Wenn ein Administrator die Details der Nutzungsbedingungen (den Namen, 
 A: Derzeit können Sie ein vorhandenes Dokument mit Nutzungsbedingungen nicht aktualisieren. Um ein Dokument mit Nutzungsbedingungen zu ändern, müssen Sie eine neue Instanz der Nutzungsbedingungen erstellen.
 
 **F: Wenn das PDF-Dokument mit den Nutzungsbedingungen Links enthält, können Benutzer darauf klicken?**<br />
-A: Ja, Endbenutzer können Links zu weiteren Seiten auswählen. Links zu Abschnitten innerhalb des Dokuments werden hingegen nicht unterstützt.
+A: Ja, Endbenutzer können Links zu weiteren Seiten auswählen. Links zu Abschnitten innerhalb des Dokuments werden hingegen nicht unterstützt. Außerdem funktionieren Links im PDF-Dokument mit den Nutzungsbedingungen nicht, wenn Sie aus dem Azure AD-Portal „Meine Apps“/„Mein Konto“ darauf zugreifen.
 
 **F: Können Nutzungsbedingungen mehrere Sprachen unterstützen?**<br />
 A: Ja. Derzeit sind 108 verschiedene Sprachen verfügbar, die ein Administrator für eine einzelne Version der Nutzungsbedingungen konfigurieren kann. Ein Administrator kann mehrere PDF-Dokumente hochladen und diese Dokumente mit einer unterstützten Sprache (bis zu 108) kennzeichnen. Wenn sich Endbenutzer anmelden, wird die Spracheinstellung des Browsers überprüft und das entsprechende Dokument angezeigt. Wenn es keine Übereinstimmung gibt, wird das Standarddokument angezeigt. Dies ist das erste Dokument, das hochgeladen wurde.
@@ -383,7 +383,7 @@ A: Der Benutzer kann nicht auf die Anwendung zugreifen. Wenn der Benutzer auf di
 **F: Ist es möglich, die Zustimmung zu zuvor akzeptierten Nutzungsbedingungen zu widerrufen?**<br />
 A: Sie können [zuvor akzeptierte Nutzungsbedingungen überprüfen](#how-users-can-review-their-terms-of-use), aber zurzeit besteht keine Möglichkeit, die Zustimmung zu widerrufen.
 
-**F: Was geschieht, wenn ich auch Intune-Nutzungsbedingungen verwende?**<br />
+**F: Was geschieht, wenn ich auch Intune-Geschäftsbedingungen verwende?**<br />
 A: Wenn Sie sowohl Azure AD-Nutzungsbedingungen als auch [Intune-Nutzungsbedingungen](/intune/terms-and-conditions-create) konfiguriert haben, muss der Benutzer beide akzeptieren. Weitere Informationen finden Sie im Blogbeitrag [Choosing the right Terms solution for your organization](https://go.microsoft.com/fwlink/?linkid=2010506&clcid=0x409) (Auswählen der richtigen Lösung für Bestimmungen für Ihre Organisation).
 
 **F: Welche Endpunkte werden vom Dienst für die Nutzungsbedingungen zur Authentifizierung verwendet?**<br />

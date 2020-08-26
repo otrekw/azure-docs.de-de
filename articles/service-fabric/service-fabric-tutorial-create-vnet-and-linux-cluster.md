@@ -4,12 +4,12 @@ description: Hier erfahren Sie, wie Sie mithilfe der Azure CLI einen Service Fab
 ms.topic: conceptual
 ms.date: 02/14/2019
 ms.custom: mvc
-ms.openlocfilehash: 14e029622f17e8aae392cc55ba4418b3971a5ad2
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: c4b71328ce59284f8870407c9492d24afe9acd8a
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86260225"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88586919"
 ---
 # <a name="deploy-a-linux-service-fabric-cluster-into-an-azure-virtual-network"></a>Bereitstellen eines Service Fabric-Linux-Clusters in einem virtuellen Azure-Netzwerk
 
@@ -41,7 +41,12 @@ Für Ubuntu 18.04 LTS:
 * [AzureDeploy.json][template2]
 * [AzureDeploy.Parameters.json][parameters2]
 
-Der Unterschied zwischen den beiden Vorlagen besteht darin, dass das Attribut **vmImageSku** auf „18.04-LTS“ und die **typeHandlerVersion** jedes Knotens auf 1.1 festgelegt wird.
+Für Ubuntu 18.04 LTS umfasst der Unterschied zwischen den beiden Vorlagen Folgendes: 
+* Attribut **vmImageSku** ist auf „18.04-LTS“ festgelegt
+* **typeHandlerVersion**-Element jedes Knotens ist auf 1.1 festgelegt
+* Für die Ressource „Microsoft.ServiceFabric/clusters“:
+   - **apiVersion** ist auf „2019-03-01“ oder höher festgelegt
+   - **vmImage**-Eigenschaft ist auf „Ubuntu18_04“ festgelegt
 
 Diese Vorlage stellt einen sicheren Cluster mit sieben virtuellen Computern und drei Knotentypen in einem virtuellen Netzwerk bereit.  Weitere Beispielvorlagen finden Sie auf [GitHub](https://github.com/Azure-Samples/service-fabric-cluster-templates). Die Datei [AzureDeploy.json][template] stellt verschiedene Ressourcen bereit, einschließlich der folgenden.
 

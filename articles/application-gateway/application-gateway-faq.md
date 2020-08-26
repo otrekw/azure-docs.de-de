@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/26/2020
 ms.author: victorh
 ms.custom: references_regions
-ms.openlocfilehash: d76506141b2563b3ae8d5779e774ad564022494d
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: a5825cf5461213e3440893597059c84dcdc9ad33
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87810002"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88236096"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Häufig gestellte Fragen zu Application Gateway
 
@@ -259,7 +259,7 @@ Beispiel-NSG-Konfiguration für den ausschließlichen Zugriff auf private IP-Adr
 
 ### <a name="what-certificates-does-application-gateway-support"></a>Welche Zertifikate werden von Application Gateway unterstützt?
 
-Application Gateway unterstützt selbstsignierte Zertifikate, Zertifizierungsstellenzertifikate, Zertifikate für die erweiterte Validierung und Platzhalterzertifikate.
+Application Gateway unterstützt selbstsignierte Zertifikate, Zertifizierungsstellenzertifikate (CA), Zertifikate für die erweiterte Validierung (EV), Zertifikate mit mehreren Domänen (SAN) und Platzhalterzertifikate.
 
 ### <a name="what-cipher-suites-does-application-gateway-support"></a>Welche Verschlüsselungssammlungen werden von Application Gateway unterstützt?
 

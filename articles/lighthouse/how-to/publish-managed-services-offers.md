@@ -1,14 +1,14 @@
 ---
 title: Veröffentlichen eines Angebots für verwaltete Dienste im Azure Marketplace
 description: Erfahren Sie, wie Sie ein Angebot für verwaltete Dienste veröffentlichen, das das Onboarding von Kunden in Azure Lighthouse durchführt.
-ms.date: 07/28/2020
+ms.date: 08/18/2020
 ms.topic: how-to
-ms.openlocfilehash: ab12238bac7e479766b3e328c02f73521d08ad96
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 11fb0073bcc3ba4437f78de8b263d165f0069db8
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88167216"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589723"
 ---
 # <a name="publish-a-managed-service-offer-to-azure-marketplace"></a>Veröffentlichen eines Angebots für verwaltete Dienste im Azure Marketplace
 
@@ -22,8 +22,19 @@ Gemäß den [Zertifizierungsanforderungen für Angebote für verwaltete Dienste]
 
 Ihre MPN-ID (Microsoft Partner Network) den von Ihnen veröffentlichten Angeboten [automatisch zugeordnet](../../cost-management-billing/manage/link-partner-id.md), um ihre Wirksamkeit hinsichtlich der Kundenbindung zu verfolgen.
 
-> [!NOTE]
-> Wenn Sie ein Angebot nicht im Azure Marketplace veröffentlichen möchten, können Sie das Onboarding von Kunden mithilfe von Azure Resource Manager-Vorlagen manuell durchführen. Weitere Informationen finden Sie unter [Onboarding eines Kunden in Azure Lighthouse durchführen](onboard-customer.md).
+Wenn Sie ein Angebot nicht im Azure Marketplace veröffentlichen möchten oder nicht alle Anforderungen erfüllen, können Sie das Onboarding von Kunden mithilfe von Azure Resource Manager-Vorlagen manuell durchführen. Weitere Informationen finden Sie unter [Onboarding eines Kunden in Azure Lighthouse durchführen](onboard-customer.md).
+
+Die folgende Tabelle kann bei der Ermittlung helfen, ob das Onboarding der Kunden durch Veröffentlichen des Angebots eines verwalteten Diensts oder durch Verwenden von Azure Resource Manager-Vorlagen durchgeführt wurde.
+
+|**Aspekt**  |**Angebot eines verwalteten Diensts**  |**ARM-Vorlagen**  |
+|---------|---------|---------|
+|Erfordert ein [Partner Center-Konto](../../marketplace/partner-center-portal/create-account.md)   |Ja         |Nein        |
+|Erfordert eine [Silver oder Gold Cloud Platform-Kompetenzebene](/partner-center/learn-about-competencies) oder ein [Azure Expert MSP](https://partner.microsoft.com/membership/azure-expert-msp)      |Ja         |Nein         |
+|Verfügbar für neue Kunden über Azure Marketplace     |Ja     |Nein       |
+|Das Angebot kann auf bestimmte Kunden beschränkt werden     |Ja (nur bei privaten Angeboten, die nicht mit Abonnements genutzt werden können, die über einen Handelspartner des Cloud Solution Provider-Programms (CSP) abgeschlossen wurden)         |Ja         |
+|Erfordert Kundenakzeptanz im Azure-Portal     |Ja     |Nein   |
+|Kann die Automatisierung nutzen, um das Onboarding für mehrere Abonnements, Ressourcengruppen oder Kunden durchzuführen |Nein     |Ja    |
+|Sofortiger Zugriff auf neue integrierte Rollen und Azure Lighthouse-Features     |Nicht immer (im Allgemeinen nach einiger Verzögerung verfügbar)         |Ja         |
 
 ## <a name="create-your-offer"></a>Erstellen Ihres Angebots
 

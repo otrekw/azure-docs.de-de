@@ -7,31 +7,32 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 07/06/2020
-ms.openlocfilehash: b7bcdaf9e3935c01a0906ecfaa1570e4bc7caba9
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 7bf4860e8c42ef8aacc2e564dacd6de1a7d39149
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87798119"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607404"
 ---
 # <a name="offer-listing-best-practices"></a>Bewährte Methoden für Angebotslistung
 
-Dieser Artikel enthält Vorschläge für die Erstellung ansprechender Angebote für den kommerziellen Marketplace. In den folgenden Tabellen werden Best Practices für das Angeben von Angebotsinformationen in Partner Center erläutert. Eine Analyse der Beliebtheit Ihrer Angebote finden Sie im [Dashboard „Marketplace-Erkenntnisse“](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/marketplaceinsights) in Partner Center. 
+Dieser Artikel enthält Vorschläge für die Erstellung ansprechender Angebote für den kommerziellen Microsoft-Marketplace. In den folgenden Tabellen werden Best Practices für das Angeben von Angebotsinformationen in Partner Center erläutert. Eine Analyse der Beliebtheit Ihrer Angebote finden Sie im [Dashboard „Marketplace-Erkenntnisse“](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/marketplaceinsights) in Partner Center. 
 
-## <a name="storefront-offer-details"></a>Storefront-Angebotsdetails
+## <a name="online-store-offer-details"></a>Details zum Angebot im Onlineshop
 
-| Storefronteinstellungen | Bewährte Methode |
+| Einstellung | Bewährte Methode |
 |:--- |:--- |  
-| Angebotsname | Geben Sie für Apps einen eindeutigen Titel einschließlich Suchbegriffen an, die Kunden das Auffinden Ihres Angebot erleichtern. <br> <br> Verwenden Sie für Beratungsdienste folgendes Format: [Angebotsname: [Dauer] [Angebotstyp] (z. B. Contoso: zweiwöchige Implementierung) <br> <br> Beachten Sie die Markenrichtlinien: Befolgen Sie beim Verweisen auf Microsoft-Marken sowie auf Namen von Microsoft-Software, -Produkten und -Diensten die [Microsoft-Markenrichtlinien](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/general.aspx) sowie die entsprechenden produktspezifischen Richtlinien. |
+| Angebotsname | Geben Sie für Apps einen eindeutigen Titel einschließlich Suchbegriffen an, die Kunden das Auffinden Ihres Angebot erleichtern. <br> <br> Verwenden Sie für Beratungsdienste folgendes Format: [Angebotsname: [Dauer] [Angebotstyp] (z. B. Contoso: zweiwöchige Implementierung) |
 | Beschreibung des Angebots | Schildern Sie in den ersten Sätzen Ihrer Beschreibung deutlich das Nutzenversprechen Ihres Angebots.  Beachten Sie, dass diese Sätze in den Ergebnissen von Suchmaschinen verwendet werden können. Die Kernbestandteile Ihres Nutzenversprechens sollten Folgendes umfassen: <ul> <li>Beschreibung des Produkts oder der Lösung </li> <li> Benutzerpersona, die vom Produkt oder der Lösung profitiert </li> <li> Ansprüche oder Probleme der Kunden, die das Produkt oder die Lösung erfüllt bzw. behebt. </li> </ul> <br> Verwenden Sie möglichst branchenübliche Begriffe oder nutzenorientierte Formulierungen.  Setzen Sie sich nicht nur auf Features und Funktionen, um Ihr Produkt zu verkaufen.  Konzentrieren Sie stattdessen auf den Nutzen, den Sie bieten. <br> <br> Nennen Sie in Listungen für Beratungsdienste klar und deutlich die von Ihnen angebotene professionelle Dienstleistung. |
 
-Die Tabellen in diesem Abschnitt enthalten Vorschläge zum Erstellen ansprechender Marketplace-Angebote. Zum Schreiben und Konfigurieren dieser Marketingmaterialien wechseln Sie zu [Partner Center](https://partner.microsoft.com/dashboard/commercial-marketplace/). 
+> [!IMPORTANT]
+> Wenn Sie in Ihrem Angebotsnamen und der Angebotsbeschreibung auf Microsoft-Marken sowie auf Namen von Microsoft-Software, -Produkten und -Diensten verweisen, müssen Sie auf die Einhaltung der **[Markenrichtlinien von Microsoft](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/general.aspx)** und anderer relevanter produktspezifischer Richtlinien achten.
 
-## <a name="storefront-listing-details"></a>Storefront-Listungsdetails
+## <a name="online-store-listing-details"></a>Onlineshop-Listungsdetails
 
-Für verschiedene Angebotstypen gelten Kategorien und Branchen für verschiedene Storefronts.
+Für verschiedene Angebotstypen gelten Kategorien und Branchen für verschiedene Onlineshops.
 
-| Storefront | Kategorien <br>nach Storefront | Kategorien <br>nach Storefront | Branchen <br> für AppSource |
+| Onlineshop | Kategorien <br>nach Onlineshop | Kategorien <br>nach Onlineshop | Branchen <br> für AppSource |
 | :------------------- |:----------------:|:------:|:-------------:|
 | **Angebotstyp**   |  **Azure Marketplace**  | **AppSource**  |
 | Azure-App | X | |
@@ -47,9 +48,9 @@ Für verschiedene Angebotstypen gelten Kategorien und Branchen für verschiedene
 
 ### <a name="categories"></a>Kategorien
 
-Microsoft AppSource und der Azure Marketplace sind zwei verschiedene Storefronts für individuelle Kundenanforderungen. Azure Marketplace richtet sich an IT-Experten und Entwickler, die Lösungen in Azure entwickeln.  Microsoft AppSource richtet sich an Geschäftsanwender, die geschäfts- und/oder branchenspezifische SaaS-Anwendungen, Dynamics 365-Add-Ins, Microsoft 365-Add-Ins und Power Platform-Apps benötigen.
+Microsoft AppSource und der Azure Marketplace sind zwei verschiedene Onlineshops für individuelle Kundenanforderungen. Azure Marketplace richtet sich an IT-Experten und Entwickler, die Lösungen in Azure entwickeln.  Microsoft AppSource richtet sich an Geschäftsanwender, die geschäfts- und/oder branchenspezifische SaaS-Anwendungen, Dynamics 365-Add-Ins, Microsoft 365-Add-Ins und Power Platform-Apps benötigen.
 
-Kategorien und Unterkategorien werden den einzelnen Storefronts basierend auf der Zielgruppe zugeordnet. Ihr Angebot wird in Microsoft AppSource oder im Azure Marketplace veröffentlicht und zwar je nach Angebotstyp, Transaktionsfähigkeit des Angebots und ausgewählter Kategorie/Unterkategorie. 
+Kategorien und Unterkategorien werden den einzelnen Onlineshops basierend auf der Zielgruppe zugeordnet. Ihr Angebot wird in Microsoft AppSource oder im Azure Marketplace veröffentlicht und zwar je nach Angebotstyp, Transaktionsfähigkeit des Angebots und ausgewählter Kategorie/Unterkategorie. 
 
 Wählen Sie Kategorien und Unterkategorien aus, die am besten zu Ihrem Angebot und Ihrer Zielgruppe passen. Sie können Folgendes auswählen:
 
@@ -60,9 +61,9 @@ Wählen Sie Kategorien und Unterkategorien aus, die am besten zu Ihrem Angebot u
 
 **WICHTIG: SaaS-Angebote und Microsoft 365-Add-Ins**
 
-Im [Leitfaden nach Angebotstyp](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-overview) wird ausführlich beschrieben, wie sich die Transaktionsfähigkeit u. U. darauf auswirkt, wie Ihr Angebot von Marketplace-Kunden angezeigt und erworben werden kann. Bei SaaS-Angeboten bestimmen sowohl die Transaktionsfähigkeit des Angebots als auch die Kategorieauswahl, in welcher Storefront Ihr Angebot veröffentlicht wird:
+Im [Leitfaden nach Angebotstyp](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-overview) wird ausführlich beschrieben, wie sich die Transaktionsfähigkeit u. U. darauf auswirkt, wie Ihr Angebot von Marketplace-Kunden angezeigt und erworben werden kann. Bei SaaS-Angeboten bestimmen sowohl die Transaktionsfähigkeit des Angebots als auch die Kategorieauswahl, in welchem Onlineshop Ihr Angebot veröffentlicht wird:
 
-| SaaS-Angebot    | SaaS-Angebot   | SaaS-Angebot  | SaaS-Angebot   | SaaS-Angebot   | SaaS-Angebot   | SaaS-Angebot    | Storefront | Storefront |
+| SaaS-Angebot    | SaaS-Angebot   | SaaS-Angebot  | SaaS-Angebot   | SaaS-Angebot   | SaaS-Angebot   | SaaS-Angebot    | Onlineshop| Onlineshop |
 |:-------------:|:---:|:--------:|:---------:|:--:|:--:|:---:|:---------------------:|:-------------:|
 | Getaktete Abrechnung | Microsoft 365-Add-Ins | Kontakt mit mir aufnehmen | Transaktion (mindestens 1 Plan) | Nur privater Plan | Nur öffentlicher Plan | Öffentliche und private Pläne | AppSource | Azure Marketplace |
 |  | X |  |  |  |  |  | X |  |
@@ -116,18 +117,18 @@ Wählen Sie die geeigneten Produkte aus, mit denen Ihre App zusammenarbeitet, da
 
 Anhand von Schlüsselwörtern können Kunden Ihr Angebot bei der Suche besser finden. Identifizieren Sie die besten Suchschlüsselwörter für Ihr Angebot, und fügen Sie diese in Ihre Angebotszusammenfassung und -beschreibung sowie in den Schlüsselwortabschnitt im Detailbereich der Angebotslistung ein.
 
-## <a name="storefront-marketing-details"></a>Storefront-Marketingdetails
-| Storefronteinstellungen | Bewährte Methode |
+## <a name="online-store-marketing-details"></a>Onlineshop-Marketingdetails
+| Einstellung | Bewährte Methode |
 |:--- |:--- |  
-| Angebotslogo (PNG-Format, zwischen 216 × 216 und 350 × 350 Pixel): Seite für App-Details | Entwerfen und optimieren Sie Ihr Logo für ein digitales Medium:<br>Laden Sie das Logo im PNG-Format auf die Seite mit den Details Ihres Angebotslistings hoch. Partner Center ändert die Größe in die erforderlichen Logogrößen. |
-| Angebotslogo (PNG-Format, 48 × 48 Pixel): Suchseite | Partner Center generiert dieses Logo aus dem hochgeladenen großen Logo. Sie können das Logo durch ein anderes Bild ersetzen. |
-| Dokumente mit weiteren Informationen | Fügen Sie ergänzende Vertriebs- und Marketingressourcen unter „Weitere Informationen“ hinzu. Beispiele:<ul><li>Whitepaper</li><li> Broschüren</li><li>Prüflisten</li><li> PowerPoint-Präsentationen</li></ul><br>Speichern Sie alle Dateien im PDF-Format. Ihr Ziel an dieser Stelle sollte sein, die Kunden zu informieren, und nicht, ihnen etwas zu verkaufen.<br><br>Fügen Sie allen Ihren Dokumenten den Link zu Ihrer App-Angebotsseite hinzu. Fügen Sie außerdem URL-Parameter hinzu, damit Sie Besucher und Tests verfolgen können. |
+| Angebotslogo (PNG-Format, 48&nbsp;&times;&nbsp;48): Suchseite | Entwerfen und optimieren Sie Ihr Logo für ein digitales Medium:<br>Laden Sie das Logo im PNG-Format auf die Suchseite Ihres Angebots hoch. |
+| Angebotslogo (PNG-Format, 216&nbsp;&times;&nbsp;216): Seite „App-Details“ | Entwerfen und optimieren Sie Ihr Logo für ein digitales Medium:<br>Laden Sie das Logo im PNG-Format auf die Seite mit den Details Ihres Angebotslistings hoch. |
+| Dokumente mit weiteren Informationen | Fügen Sie ergänzende Vertriebs- und Marketingressourcen unter „Weitere Informationen“ hinzu. Beispiele: <ul> <li> Whitepaper </li> <li> Broschüren </li> <li> Prüflisten </li> <li> PowerPoint-Präsentationen</li> </ul>Speichern Sie alle Dateien im PDF-Format. Ihr Ziel an dieser Stelle sollte sein, die Kunden zu informieren, und nicht, ihnen etwas zu verkaufen. <br><br>Fügen Sie allen Ihren Dokumenten den Link zu Ihrer App-Angebotsseite hinzu. Fügen Sie außerdem URL-Parameter hinzu, damit Sie Besucher und Tests verfolgen können. |
 | Videos: nur AppSource, Beratungsdienste und SaaS-Angebote | Die besten Videos kommunizieren den Nutzen Ihres Angebots in erzählerischer Form:<ul> <li> Stellen Sie Ihre Kunden und nicht Ihre Firma in den Mittelpunkt der Story. </li> <li> Ihr Video sollte die wichtigsten Herausforderungen und Ziele der Zielkunden ansprechen. </li> <li> Empfohlene Länge: 60 bis 90 Sekunden.</li> <li> Binden Sie wichtige Suchbegriffe in den Namen der Videos ein. </li> <li> Erwägen Sie das Hinzufügen weiterer Videos, wie z.B. eines Anleitungsvideos, eines Videos für den Einstieg oder eines Videos mit Kundenstimmen. </li> </ul> |
 | Screenshots (1280&nbsp;&times;&nbsp;720) | Fügen Sie bis zu fünf Screenshots hinzu:<br>Binden Sie wichtige Suchbegriffe in die Dateinamen ein. |
 
 ## <a name="link-to-your-offer-page-from-your-website"></a>Verknüpfen Ihrer Angebotsseite über Ihre Website
 
-Wenn Sie auf Ihrer Website einen Link von Ihrem AppSource- oder Azure Marketplace-Badge zu Ihrer Listung im Marketplace erstellen, müssen Sie am Ende der URL die folgenden Abfrageparameter hinzufügen, um umfassende Analysen und Berichte zu unterstützen:
+Wenn Sie auf Ihrer Website einen Link vom AppSource- oder Azure Marketplace-Badge mit Ihrer Listung im kommerziellen Marketplace erstellen, müssen Sie am Ende der URL die folgenden Abfrageparameter hinzufügen, um umfassende Analysen und Berichte zu unterstützen:
 * **src**: Geben Sie die Quelle an, von der aus der Datenverkehr an AppSource geleitet wird (z.B. eine Website, LinkedIn oder Facebook).
 * **mktcmpid**: Die ID Ihrer Marketingkampagne, die bis zu 16 Zeichen in einer beliebigen Kombination aus Buchstaben, Zahlen, Unterstrichen und Bindestrichen enthalten darf (z.B. *blogpost_12*).
 

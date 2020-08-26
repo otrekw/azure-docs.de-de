@@ -7,23 +7,23 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 07/30/2020
-ms.openlocfilehash: 37647a9591c0f686e4fc3f1fd858baa46e01f7ac
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 1b0846c68f6860b5c7dac9e93808088dac4f6a05
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87498071"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607437"
 ---
 # <a name="determine-your-publishing-option"></a>Bestimmung Ihrer Veröffentlichungsoption
 
 Die Veröffentlichungsoption, die Sie für Ihr Angebot auswählen, bezieht sich direkt sowohl auf die erforderlichen Berechtigungen als auch die kommerziellen Marketplace-GTM-Vorteile. Wichtiger ist, dass durch die Auswahl der Veröffentlichungsoption und des Angebotstyps definiert wird, wie Benutzer mit Ihrem kommerziellen Marketplace-Angebot interagieren.
 
-Sie müssen zum Konfigurieren Ihres Angebots die folgenden wesentlichen kommerziellen Marketplace-Konzepte verstehen: Veröffentlichungsoptionen, Angebotstypen und -konfigurationen sowie Handlungsaufforderungen, die regeln, wie und wo Ihr Angebot in den kommerziellen Marketplace-Storefronts präsentiert wird.
+Sie müssen zum Konfigurieren Ihres Angebots die folgenden wesentlichen Konzepte des kommerziellen Marketplace verstehen: Veröffentlichungsoptionen, Angebotstypen und -konfigurationen sowie Handlungsaufforderungen, die regeln, wie und wo Ihr Angebot in den Onlineshops des kommerziellen Marketplace präsentiert wird.
 
 In diesem Artikel lernen Sie Folgendes:
 
-- Bestimmen der geeigneten Storefront für Ihre Lösung
-- Welche Veröffentlichungsoptionen und Aktionsaufrufe in den jeweiligen Storefronts zur Verfügung stehen
+- Bestimmen des geeigneten Onlineshops für Ihre Lösung
+- Welche Veröffentlichungsoptionen und Handlungsaufforderungen in den einzelnen Onlineshops zur Verfügung stehen
 - Welche Angebotstypen für die einzelnen Veröffentlichungsoptionen verfügbar sind
 
 ## <a name="commercial-marketplace-publishing-options"></a>Veröffentlichungsoptionen im kommerziellen Marketplace
@@ -37,8 +37,8 @@ In der folgenden Tabelle sind die Veröffentlichungsoptionen für Angebotstypen 
 | **Containerimage** |  |  | Azure Marketplace | Azure Marketplace |   |
 | **IoT Edge-Modul** |  |  | Azure Marketplace | Azure Marketplace |   |
 | **Verwaltete Dienste** |  |  |  | Azure Marketplace |   |
-| **Beratungsdienste** | Beide Storefronts |  |  |  |   |
-| **SaaS-App** | Beide Storefronts | Beide Storefronts | Beide Storefronts |  | Beide Storefronts* |
+| **Beratungsdienste** | Beide Onlineshops |  |  |  |   |
+| **SaaS-App** | Beide Onlineshops | Beide Onlineshops | Beide Onlineshops |  | Beide Onlineshops* |
 | **Microsoft 365-App** | AppSource | AppSource |  |  | AppSource**  |
 | **Dynamics 365-Add-In** |  AppSource | AppSource |  |  |   |
 | **PowerApps** | AppSource |AppSource  |  |  |   |
@@ -61,19 +61,19 @@ Die verfügbaren Veröffentlichungsoptionen ermöglichen eine differenzierte Kun
 > [!Note]
 > Bei Verwendung der Veröffentlichungsoption „Transaktion“ sollten Sie sich zunächst mit der Preisgestaltung, Abrechnung, Rechnungsstellung und Auszahlung vertraut machen, bevor Sie einen Angebotstyp auswählen und Ihr Angebot erstellen. Weitere Informationen finden Sie im Artikel [Transaktionsfunktionen im kommerziellen Marketplace](./marketplace-commercial-transaction-capabilities-and-considerations.md).
 
-## <a name="selecting-a-storefront"></a>Auswählen einer Storefront
+## <a name="selecting-an-online-store"></a>Auswählen eines Onlineshops
 
-Jede Storefront bedient spezielle Kundenanforderungen und richtet sich an bestimmte Zielgruppen. Ihr Angebotstyp, Ihre Transaktionsfunktionen und Ihre Kategorie bestimmen, wo Ihr Angebot veröffentlicht wird. Kategorien und Unterkategorien werden den einzelnen Storefronts basierend auf der Zielgruppe zugeordnet:
+Jeder Onlineshop bedient spezielle Kundenanforderungen und richtet sich an bestimmte Zielgruppen. Ihr Angebotstyp, Ihre Transaktionsfunktionen und Ihre Kategorie bestimmen, wo Ihr Angebot veröffentlicht wird. Kategorien und Unterkategorien werden den einzelnen Onlineshops basierend auf der Zielgruppe zugeordnet:
 
 **Microsoft AppSource** richtet sich an Geschäftskunden, die branchenspezifische Lösungen und Beratungsdienste für Dynamics 365, Microsoft 365 und Power Platform benötigen.
 
 **Azure Marketplace** richtet sich an IT-Experten und Entwickler, die sich für Lösungen interessieren, die für oder in Azure entwickelt wurden, sowie für Beratungsdienste, die Ihre Nutzung von Azure beschleunigen.
 
-Wählen Sie die Kategorie und Unterkategorie aus, die am besten auf Ihre Zielgruppe ausgerichtet ist. Beispielsweise sollte eine Web Application Firewall im Azure Marketplace unter der Kategorie „Sicherheit“ veröffentlicht werden, da es sich bei der Zielgruppe um IT-Experten handelt. Eine Anwendung für das Vertragsmanagement sollte stattdessen in AppSource unter der Kategorie „Vertrieb“ veröffentlicht werden, da es sich bei der Zielgruppe um Geschäftskunden handelt. Die Auswahl der falschen Kategorie oder Unterkategorie kann dazu führen, dass das Angebot in der falschen Storefront veröffentlicht wird.
+Wählen Sie die Kategorie und Unterkategorie aus, die am besten auf Ihre Zielgruppe ausgerichtet ist. Beispielsweise sollte eine Web Application Firewall im Azure Marketplace unter der Kategorie „Sicherheit“ veröffentlicht werden, da es sich bei der Zielgruppe um IT-Experten handelt. Eine Anwendung für das Vertragsmanagement sollte stattdessen in AppSource unter der Kategorie „Vertrieb“ veröffentlicht werden, da es sich bei der Zielgruppe um Geschäftskunden handelt. Die Auswahl der falschen Kategorie oder Unterkategorie kann dazu führen, dass das Angebot im falschen Onlineshop veröffentlicht wird.
 
-### <a name="publishing-to-both-storefronts-saas-offers-only"></a>Veröffentlichen in beiden Storefronts (nur SaaS-Angebote)
+### <a name="publishing-to-both-online-stores-saas-offers-only"></a>Veröffentlichen in beiden Onlineshops (nur SaaS-Angebote)
 
-SaaS-Angebote können im Azure Marketplace oder in AppSource veröffentlicht werden. Wenn Ihr SaaS-Angebot für eine technische Zielgruppe (Azure Marketplace) *und* für Geschäftskunden (AppSource) ausgelegt ist, wählen Sie eine Kategorie und/oder Unterkategorie aus, die für jede Storefront gilt. Bei Angeboten, die in beiden Storefronts veröffentlicht werden, sollte sich das Nutzenversprechen auf IT-Experten *und* auf Geschäftskunden beziehen.
+SaaS-Angebote können im Azure Marketplace oder in AppSource veröffentlicht werden. Wenn Ihr SaaS-Angebot für eine technische Zielgruppe (Azure Marketplace) *und* für Geschäftskunden (AppSource) ausgelegt ist, wählen Sie eine Kategorie und/oder Unterkategorie aus, die für jeden Onlineshop gilt. Bei Angeboten, die in beiden Onlineshops veröffentlicht werden, sollte sich das Nutzenversprechen auf IT-Experten *und* auf Geschäftskunden beziehen.
 
 > [!IMPORTANT]
 > SaaS-Angebote mit getakteter Abrechnung sind über den Azure Marketplace und das Azure-Portal verfügbar. SaaS-Angebote, die nur private Pläne umfassen, sind über das Azure-Portal verfügbar.
@@ -91,7 +91,7 @@ Beispielsweise wird ein Angebot mit getakteter Abrechnung, das nur einen private
 
 ### <a name="categories"></a>Kategorien
 
-Kategorien und Unterkategorien werden den einzelnen Storefronts basierend auf der Zielgruppe zugeordnet. Wählen Sie die Kategorien und Unterkategorien aus, die am besten zu Ihrem Angebot und Ihrer Zielgruppe passen. Sie können Folgendes auswählen:
+Kategorien und Unterkategorien werden den einzelnen Onlineshops basierend auf der Zielgruppe zugeordnet. Wählen Sie die Kategorien und Unterkategorien aus, die am besten zu Ihrem Angebot und Ihrer Zielgruppe passen. Sie können Folgendes auswählen:
 
 - Wählen Sie mindestens eine und maximal zwei Kategorien aus. Sie können eine primäre und eine sekundäre Kategorie auswählen.
 - Bis zu zwei Unterkategorien für jede primäre und/oder sekundäre Kategorie. Wenn keine Unterkategorie ausgewählt wird, ist das Angebot weiterhin unter der ausgewählten Kategorie auffindbar.
@@ -102,4 +102,4 @@ Kategorien und Unterkategorien werden den einzelnen Storefronts basierend auf de
 
 - Sobald Sie sich für eine Veröffentlichungsoption entschieden haben, können Sie den [Angebotstyp auswählen](./publisher-guide-by-offer-type.md), der verwendet wird, um Ihr Angebot zu präsentieren.
 - Informieren Sie sich über die erforderlichen Berechtigungen in den Veröffentlichungsoptionen des entsprechenden Angebotstypabschnitts, um Auswahl und Konfiguration Ihres Angebots abzuschließen.
-- Entnehmen Sie den Veröffentlichungsmustern der Storefronts Beispiele für die Zuordnung ihrer Lösung zu einem Angebotstyp und einer Konfiguration.
+- Entnehmen Sie den Veröffentlichungsmustern der Onlineshops Beispiele für die Zuordnung Ihrer Lösung zu einem Angebotstyp und einer Konfiguration.

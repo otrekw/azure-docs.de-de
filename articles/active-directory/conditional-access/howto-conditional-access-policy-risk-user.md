@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a015f7dd58bae328a8c18e3de3202c0ca615c9cf
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 916ff4a5e6afd68106d70f386436723c24574df1
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86034710"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88605587"
 ---
 # <a name="conditional-access-user-risk-based-conditional-access"></a>Bedingter Zugriff: Auf dem Benutzerrisiko basierender bedingter Zugriff
 
@@ -29,7 +29,7 @@ Es gibt zwei Möglichkeiten, diese Richtlinie zuzuweisen. Organisationen sollten
 1. Melden Sie sich beim **Azure-Portal** als globaler Administrator, Sicherheitsadministrator oder Administrator für bedingten Zugriff an.
 1. Navigieren Sie zu **Azure Active Directory** > **Sicherheit** > **Bedingter Zugriff**.
 1. Wählen Sie **Neue Richtlinie**.
-1. Benennen Sie Ihre Richtlinie. Es wird empfohlen, dass Unternehmen einen aussagekräftigen Standard für die Namen ihrer Richtlinien erstellen.
+1. Benennen Sie Ihre Richtlinie. Es wird empfohlen, dass Unternehmen einen aussagekräftigen Standard für die Namen ihrer Richtlinien erstellen. Weitere Informationen finden Sie unter [Festlegen von Benennungsstandards für Ihre Richtlinien](https://docs.microsoft.com/azure/active-directory/conditional-access/plan-conditional-access#set-naming-standards-for-your-policies).
 1. Klicken Sie unter **Zuweisungen** auf **Benutzer und Gruppen**.
    1. Wählen Sie unter **Einschließen** die Option **Alle Benutzer** aus.
    1. Wählen Sie unter **Ausschließen** die Option **Benutzer und Gruppen** und dann die Konten für den Notfallzugriff Ihres Unternehmens aus. 

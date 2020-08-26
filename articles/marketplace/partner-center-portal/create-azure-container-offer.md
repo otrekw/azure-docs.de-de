@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 06/17/2020
-ms.openlocfilehash: 4b1c2ea437168d00823bc5527eaeda33db6ae733
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 9196bea663d037f269316dc108f99d3f2c282ec7
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88166738"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88606364"
 ---
 # <a name="create-an-azure-container-offer-in-azure-marketplace"></a>Erstellen eines Azure-Containerangebots in Azure Marketplace
 
@@ -29,7 +29,7 @@ In diesem Artikel wird beschrieben, wie Sie ein Containerangebot für Azure Mark
    ![Darstellung des Navigationsmenüs auf der linken Seite.](./media/new-offer-azure-container.png)
 
 > [!TIP]
-> Nach der Veröffentlichung eines Angebots werden die daran im Partner Center vorgenommenen Änderungen erst nach der erneuten Veröffentlichung des Angebots in der digitalen Ladenzeile angezeigt. Achten Sie darauf, nach dem Vornehmen von Änderungen immer erneut zu veröffentlichen.
+> Nach der Veröffentlichung eines Angebots werden die daran im Partner Center vorgenommenen Änderungen erst nach der erneuten Veröffentlichung des Angebots in Onlineshops angezeigt. Achten Sie darauf, nach dem Vornehmen von Änderungen immer erneut zu veröffentlichen.
 
 ### <a name="offer-id-and-alias"></a>Angebots-ID und Angebotsalias
 

@@ -3,14 +3,14 @@ title: Skalierung und Hosting von Azure Functions
 description: Erfahren Sie, wie Sie zwischen einem Azure Functions-Verbrauchstarif und -Premium-Plan (Premium-Tarif) wählen.
 ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
 ms.topic: conceptual
-ms.date: 03/27/2019
+ms.date: 08/17/2020
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 26924498f32b8aac2e3e7fb5cfd7c1965ee5884f
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 80bb59527f416afd78b992fb12a4ef72956f91b7
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86025827"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88587224"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Skalierung und Hosting von Azure Functions
 
@@ -144,11 +144,19 @@ Wenn sich Ihre Funktions-App einige Minuten im Leerlauf befunden hat, skaliert d
 
 Die Skalierung variiert ausgehend von verschiedenen Faktoren, und die Skalierung ist je nach dem ausgewählten Auslöser und der Sprache unterschiedlich. Es gibt einige Feinheiten des Skalierungsverhaltens, die zu beachten sind:
 
-* Eine einzelne Funktions-App wird maximal auf 200 Instanzen erweitert. Eine einzelne Instanz kann mehrere Meldungen oder Anforderungen gleichzeitig verarbeiten, weshalb es keine Grenze für die Anzahl gleichzeitiger Ausführungen gibt.
+* Eine einzelne Funktions-App wird maximal auf 200 Instanzen erweitert. Eine einzelne Instanz kann mehrere Meldungen oder Anforderungen gleichzeitig verarbeiten, weshalb es keine Grenze für die Anzahl gleichzeitiger Ausführungen gibt.  Sie können [ein niedrigeres Maximum angeben](#limit-scale-out), um die Skalierung nach Bedarf zu drosseln.
 * Bei HTTP-Triggern werden neue Instanzen höchstens einmal pro Sekunde zugeordnet.
 * Bei Nicht-HTTP-Triggern werden neue Instanzen höchstens einmal alle 30 Sekunden zugeordnet. Die Skalierung ist schneller, wenn sie in einem [Premium-Plan](#premium-plan) ausgeführt wird.
 * Verwenden Sie für Service Bus-Trigger _Verwaltungsrechte_ für Ressourcen, um eine möglichst effiziente Skalierung zu erreichen. Mit _Lauschrechten_ ist die Skalierung unpräziser, da die Warteschlangenlänge nicht in Skalierungsentscheidungen einbezogen werden kann. Weitere Informationen zum Festlegen von Berechtigungen in Service Bus-Zugriffsrichtlinien finden Sie unter [SAS-Autorisierungsrichtlinien](../service-bus-messaging/service-bus-sas.md#shared-access-authorization-policies).
 * Informationen zu Event Hub-Triggern finden Sie im Referenzartikel im [Skalierungsleitfaden](functions-bindings-event-hubs-trigger.md#scaling). 
+
+### <a name="limit-scale-out"></a>Begrenzen des horizontalen Hochskalierens
+
+Möglicherweise möchten Sie die Anzahl der Instanzen einschränken, auf die eine App horizontal hochskaliert wird.  Dies ist am häufigsten der Fall, wenn der Durchsatz einer Downstreamkomponente wie einer Datenbank begrenzt ist.  Standardmäßig werden die Funktionen des Verbrauchsplans auf bis zu 200 Instanzen horizontal hochskaliert, und Premium-Planfunktionen werden auf bis zu 100 Instanzen horizontal hochskaliert.  Sie können einen niedrigeren Höchstwert für eine bestimmte App angeben, indem Sie den `functionAppScaleLimit`-Wert ändern.  Der `functionAppScaleLimit`-Wert kann auf 0 (null) oder NULL festgelegt werden, wenn keine Einschränkungen erforderlich sind, oder auf einen gültigen Wert zwischen 1 und dem App-Maximum.
+
+```azurecli
+az resource update --resource-type Microsoft.Web/sites -g <resource_group> -n <function_app_name>/config/web --set properties.functionAppScaleLimit=<scale_limit>
+```
 
 ### <a name="best-practices-and-patterns-for-scalable-apps"></a>Bewährte Methoden und Muster für skalierbare Apps
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: navits09
 ms.author: navits
 ms.date: 06/17/2020
-ms.openlocfilehash: 000413267d09f5f51ffdb50ccc5aeaab78a18b5e
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 159cdef6b2c831e8c20d7249334bebac4f2061c5
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88036656"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88606123"
 ---
 # <a name="create-a-dynamics-365-for-customer-engagement--powerapps-offer"></a>Erstellen eines Angebots für Dynamics 365 for Customer Engagement und PowerApps
 
@@ -29,7 +29,7 @@ Bevor Sie beginnen, [erstellen Sie ein Konto im kommerziellen Marketplace in Par
     ![Darstellung des Navigationsmenüs auf der linken Seite.](./media/new-offer-dynamics-365-customer-engagement-powerapps.png)
 
 > [!NOTE]
-> Nach der Veröffentlichung eines Angebots werden die daran im Partner Center vorgenommenen Änderungen erst nach der erneuten Veröffentlichung des Angebots in der digitalen Ladenzeile angezeigt. Achten Sie darauf, nach dem Vornehmen von Änderungen immer erneut zu veröffentlichen.
+> Nach der Veröffentlichung eines Angebots werden die daran im Partner Center vorgenommenen Änderungen erst nach der erneuten Veröffentlichung des Angebots in Onlineshops angezeigt. Achten Sie darauf, nach dem Vornehmen von Änderungen immer erneut zu veröffentlichen.
 
 ## <a name="new-offer"></a>Neues Angebot
 

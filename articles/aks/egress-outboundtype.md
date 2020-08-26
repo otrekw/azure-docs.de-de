@@ -6,12 +6,12 @@ ms.topic: article
 ms.author: juluk
 ms.date: 06/29/2020
 author: jluk
-ms.openlocfilehash: 5fe674fa7ab6a6a3f222a215ebc6912549776fee
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: 2ffe9d525e92fa2154889cea43f681a0f31a18ab
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88067357"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88214221"
 ---
 # <a name="customize-cluster-egress-with-a-user-defined-route"></a>Anpassen des ausgehenden Clusterdatenverkehrs mit einer benutzerdefinierten Route
 
@@ -71,7 +71,8 @@ Um die Anwendung eines Clusters mit ausgehendem Typ und einer benutzerdefinierte
 > [!IMPORTANT]
 > Für den ausgehenden Typ „UDR“ muss in der Routingtabelle eine Route für das Ziel 0.0.0.0/0 und den nächsten Hop des virtuellen Netzwerkgeräts (Network Virtual Appliance, NVA) vorhanden sein.
 > Die Routingtabelle weist bereits den Standardwert 0.0.0.0/0 zum Internet auf. Ohne eine öffentliche IP-Adresse zum SNAT wird Ihnen allein das Hinzufügen dieser Route keinen Ausgang ermöglichen. AKS wird überprüfen, dass Sie keine 0.0.0.0/0-Route erstellen, die auf das Internet verweist, sondern stattdessen auf NVA oder ein Gateway usw.
-
+> 
+> Bei Verwendung eines ausgehenden Typs von UDR wird nur dann eine öffentliche IP-Adresse des Lastenausgleichs erstellt, wenn ein Dienst vom Typ *loadbalancer* konfiguriert ist.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

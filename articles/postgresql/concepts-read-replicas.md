@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 07/10/2020
-ms.openlocfilehash: f2f752d6435b311c1737d531f5572aed5af223f2
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.date: 08/10/2020
+ms.openlocfilehash: 608740ea52cf82485bae073d9679107ac52baa28
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86276650"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88611125"
 ---
 # <a name="read-replicas-in-azure-database-for-postgresql---single-server"></a>Lesereplikate in Azure Database for PostgreSQL – Einzelserver
 
@@ -163,16 +163,19 @@ Ein Lesereplikat wird als neuer Azure Database for PostgreSQL-Server erstellt. E
 ### <a name="replica-configuration"></a>Replikatkonfiguration
 Ein Replikat wird mit den gleichen Compute- und Speichereinstellungen erstellt wie der Master. Nach der Erstellung eines Replikats können einige Einstellungen geändert werden, einschließlich des Aufbewahrungszeitraums für Speicher und Sicherungen.
 
-Darüber hinaus können virtuelle Kerne und der Tarif für das Replikat unter folgenden Bedingungen geändert werden:
-* Für PostgreSQL muss der Wert des Parameters `max_connections` auf dem Lesereplikat mindestens so groß sein wie der Wert auf dem Masterserver. Andernfalls wird das Replikat nicht gestartet. In Azure Database for PostgreSQL basiert der Parameterwert `max_connections` auf der SKU (virtuelle Kerne und Tarif). Weitere Informationen finden Sie unter [Einschränkungen in Azure Database for PostgreSQL](concepts-limits.md). 
-* Skalierungen auf den bzw. vom Tarif „Basic“ werden nicht unterstützt.
-
-> [!IMPORTANT]
-> Bevor eine Mastereinstellung in einen neuen Wert aktualisiert wird, aktualisieren Sie die Replikatkonfiguration in den gleichen oder einen größeren Wert. Durch diese Aktion wird sichergestellt, dass das Replikat mit allen Änderungen, die auf dem Masterserver durchgeführt werden, Schritt halten kann.
-
-Wenn Sie versuchen, die oben beschriebenen Serverwerte zu aktualisieren, dabei aber nicht die Grenzwerte einhalten, erhalten Sie eine Fehlermeldung.
-
 Firewallregeln, VNET-Regeln und Parametereinstellungen werden beim Erstellen eines Replikats oder danach nicht vom Masterserver geerbt.
+
+### <a name="scaling"></a>Skalierung
+Skalieren virtueller Kerne zwischen „Universell“ und „Arbeitsspeicheroptimiert“:
+* PostgreSQL erfordert, dass die Einstellung `max_connections` auf einem sekundären Server [größer oder gleich der Einstellung auf dem primären Server](https://www.postgresql.org/docs/current/hot-standby.html) ist. Andernfalls wird der sekundäre Server nicht gestartet.
+* In Azure Database for PostgreSQL ist die maximal zulässige Anzahl von Verbindungen für jeden Server an die Compute-SKU gebunden, da Verbindungen Speicher belegen. Weitere Informationen zur [Zuordnung zwischen „max_connections“ und Compute-SKUs](concepts-limits.md)
+* **Hochskalieren**: Skalieren Sie zuerst die Computekapazität eines Replikats und dann den primären Server hoch. Diese Reihenfolge verhindert, dass die `max_connections`-Anforderung durch Fehler beeinträchtigt wird.
+* **Herunterskalieren**: Skalieren Sie zuerst die Computekapazität des primären Servers und dann das Replikat herunter. Wenn Sie auf das Replikat eine geringere Skalierung anwenden als auf den primären Server, tritt ein Fehler auf, weil die `max_connections`-Anforderung verletzt wird.
+
+Skalieren des Speichers:
+* Für alle Replikate ist die automatische Speichervergrößerung aktiviert. Dies soll verhindern, dass aufgrund eines vollen Replikatspeichers Replikationsprobleme auftreten. Diese Einstellung kann nicht deaktiviert werden.
+* Sie können den Speicher wie bei jedem anderen Server auch manuell hochskalieren.
+
 
 ### <a name="basic-tier"></a>Basic-Tarif
 Server im Tarif „Basic“ unterstützen nur die Replikation in derselben Region.

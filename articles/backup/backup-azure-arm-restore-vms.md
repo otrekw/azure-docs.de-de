@@ -4,12 +4,12 @@ description: Wiederherstellen eines virtuellen Azure-Computers mithilfe eines Wi
 ms.reviewer: geg
 ms.topic: conceptual
 ms.date: 08/02/2020
-ms.openlocfilehash: a006988049925d2d81c3f15fe24cfe60205b5789
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: af9b505e762e201713b8e554b7886e5e2062dfef
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88006331"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88263009"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>Wiederherstellen von Azure-VM-Daten im Azure-Portal
 
@@ -53,7 +53,7 @@ Wenn dies nicht zutrifft, können Sie [einen Datenträger wiederherstellen](#res
 
 1. Wählen Sie in dem Tresor, der der wiederherzustellenden VM zugeordnet ist, die Option **Sicherungselemente** > **Virtuelle Azure-Computer** aus.
 1. Wählen Sie einen virtuellen Computer aus. Standardmäßig werden im VM-Dashboard die Wiederherstellungspunkte der letzten 30 Tage angezeigt. Sie können Wiederherstellungspunkte anzeigen, die älter als 30 Tage sind, oder nach Wiederherstellungspunkten filtern, die auf Daten, Zeitbereichen und verschiedenen Arten von Momentaufnahmen basieren.
-1. Um eine VM wiederherzustellen, klicken Sie auf **VM wiederherstellen**.
+1. Wählen Sie die Option **Virtuellen Computer wiederherstellen** aus, um die VM wiederherzustellen.
 
     ![Wiederherstellungspunkt](./media/backup-azure-arm-restore-vms/restore-point.png)
 
@@ -85,7 +85,7 @@ Als eine der [Wiederherstellungsoptionen](#restore-options) können Sie von eine
 
 ## <a name="restore-disks"></a>Wiederherstellen von Datenträgern
 
-Als eine der [Wiederherstellungsoptionen](#restore-options) können einen Datenträger aus einem Wiederherstellungspunkt erstellen. Anschließend haben Sie mit dem Datenträger folgende Möglichkeiten:
+Als eine der [Wiederherstellungsoptionen](#restore-options) können einen Datenträger aus einem Wiederherstellungspunkt erstellen. Anschließend können Sie für den Datenträger die folgenden Aktionen durchführen:
 
 - Verwenden Sie die Vorlage, die während des Wiederherstellungsvorgangs generiert wurde, um Einstellungen anzupassen und die Bereitstellung der VM auszulösen. Bearbeiten Sie die Standardeinstellungen für die Vorlage, und übermitteln Sie die Vorlage für die Bereitstellung des virtuellen Computers.
 - [Fügen Sie wiederhergestellte Datenträger](../virtual-machines/windows/attach-managed-disk-portal.md) an eine vorhandene VM an.
@@ -95,7 +95,7 @@ Als eine der [Wiederherstellungsoptionen](#restore-options) können einen Datent
 1. Wählen Sie unter **Ressourcengruppe** eine vorhandene Ressourcengruppe für den wiederhergestellten Datenträger aus, oder erstellen Sie eine neue Ressourcengruppe mit einem global eindeutigen Namen.
 1. Geben Sie unter **Stagingspeicherort** das Speicherkonto an, in das die virtuellen Festplatten kopiert werden sollen. [Weitere Informationen](#storage-accounts)
 
-    ![Konfiguration der Wiederherstellung abgeschlossen](./media/backup-azure-arm-restore-vms/trigger-restore-operation1.png)
+    ![Auswählen der Ressourcengruppe und des Stagingspeicherorts](./media/backup-azure-arm-restore-vms/trigger-restore-operation1.png)
 
 1. Wählen Sie **Wiederherstellen** aus, um den Wiederherstellungsvorgang zu starten.
 

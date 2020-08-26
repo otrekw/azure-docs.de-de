@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bc2030f589185fd39c0f10b00c012db038a4e008
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 394a4c171153ecf50ff5d755c42e3c5f939b2ec7
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85848707"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88507177"
 ---
 # <a name="integrate-your-vpn-infrastructure-with-azure-mfa-by-using-the-network-policy-server-extension-for-azure"></a>Integration Ihrer VPN-Infrastruktur in Azure MFA mit der Netzwerkrichtlinienserver-Erweiterung für Azure
 
@@ -308,17 +308,23 @@ Unterstützung beim Konfigurieren von Benutzern für Multi-Factor Authentication
 
 Dieser Abschnitt enthält Anweisungen zum Konfigurieren von VPN zur Verwendung der MFA für die Clientauthentifizierung mit dem VPN-Server.
 
+> [!NOTE]
+> Beim Registrierungsschlüssel REQUIRE_USER_MATCH wird die Groß-/Kleinschreibung beachtet. Alle Werte müssen in GROSSBUCHSTABEN angegeben werden.
+>
+
 Nachdem Sie die NPS-Erweiterung installiert und konfiguriert haben, muss bei jeder von diesem Server verarbeiteten RADIUS-basierten Clientauthentifizierung MFA verwendet werden. Wenn nicht alle VPN-Benutzer bei Azure Multi-Factor Authentication registriert sind, haben Sie folgende Möglichkeiten:
 
 * Einrichten eines anderen RADIUS-Servers zum Authentifizieren von Benutzern, die nicht zur Verwendung von MFA konfiguriert sind
 
 * Erstellen eines Registrierungseintrags, der Benutzern ermöglicht, einen zweiten Authentifizierungsfaktor anzugeben, wenn sie bei Multi-Factor Authentication registriert sind
 
-Erstellen Sie einen neuen Zeichenfolgenwert mit dem Namen _REQUIRE_USER_MATCH in HKLM\SOFTWARE\Microsoft\AzureMfa_, und legen Sie den Wert auf *True* oder *False* fest.
+Erstellen Sie einen neuen Zeichenfolgenwert namens _REQUIRE_USER_MATCH in HKLM\SOFTWARE\Microsoft\AzureMfa_, und legen Sie den Wert auf *TRUE* oder *FALSE* fest.
 
 ![Einstellung „Benutzerabgleich erfordern“](./media/howto-mfa-nps-extension-vpn/image34.png)
 
-Wenn der Wert auf *True* festgelegt oder leer ist, unterliegen alle Authentifizierungsanforderungen einer MFA-Überprüfung. Wenn der Wert auf *False* festgelegt ist, werden MFA-Überprüfungen nur für Benutzer ausgegeben, die bei Azure Multi-Factor Authentication registriert sind. Verwenden Sie die Einstellung *False* nur während eines Onboardingzeitraums in Test- oder Produktionsumgebungen.
+Wenn der Wert auf *TRUE* festgelegt oder leer ist, unterliegen alle Authentifizierungsanforderungen einer MFA-Überprüfung. Wenn der Wert auf *FALSE* festgelegt ist, werden MFA-Überprüfungen nur für Benutzer ausgegeben, die für Azure Multi-Factor Authentication registriert sind. Verwenden Sie die Einstellung *FALSE* nur zu Testzwecken oder in Produktionsumgebungen während des Onboardingzeitraums.
+
+
 
 ### <a name="obtain-the-azure-active-directory-tenant-id"></a>Abrufen der Azure Active Directory-Mandanten-ID
 

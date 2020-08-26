@@ -3,20 +3,20 @@ title: Bekannte Probleme und Problembehandlung
 titleSuffix: Azure Machine Learning
 description: Hier finden Sie Hilfe zum Suchen und Beheben von Fehlern in Azure Machine Learning. Erfahren Sie mehr über bekannte Probleme, Problembehandlung und Problemumgehungen.
 services: machine-learning
-author: j-martens
-ms.author: jmartens
+author: likebupt
+ms.author: keli19
 ms.reviewer: mldocs
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.custom: troubleshooting, contperfq4
-ms.date: 08/06/2020
-ms.openlocfilehash: 17d6137dd243c3bce011a1841ea9bca64e0b64ba
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.date: 08/13/2020
+ms.openlocfilehash: 71457be4e572a0e04dfffd0689bfbd458f7c2622
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88120761"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88190500"
 ---
 # <a name="known-issues-and-troubleshooting-in-azure-machine-learning"></a>Bekannte Probleme und Problembehandlung in Azure Machine Learning
 
@@ -248,6 +248,27 @@ Es kann bis zu 10 Minuten dauern, bis Daten aus dem Modelldatensammler in Ihrem
 ```python
 import time
 time.sleep(600)
+```
+
+* **Protokoll für Echtzeitendpunkte:**
+
+Protokolle von Echtzeitendpunkten sind Kundendaten. Für die Problembehandlung für Echtzeitendpunkte können Sie den folgenden Code zum Aktivieren von Protokollen verwenden. 
+
+Weitere Informationen zur Überwachung von Webdienst-Endpunkten finden Sie in [diesem Artikel](https://docs.microsoft.com/azure/machine-learning/how-to-enable-app-insights#query-logs-for-deployed-models).
+
+```python
+from azureml.core import Workspace
+from azureml.core.webservice import Webservice
+
+ws = Workspace.from_config()
+service = Webservice(name="service-name", workspace=ws)
+logs = service.get_logs()
+```
+Wenn Sie über mehrere Mandanten verfügen, müssen Sie vor `ws = Workspace.from_config()` ggf. den folgenden Code für die Authentifizierung hinzufügen:
+
+```python
+from azureml.core.authentication import InteractiveLoginAuthentication
+interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in which your workspace resides")
 ```
 
 ## <a name="train-models"></a>Trainieren von Modellen

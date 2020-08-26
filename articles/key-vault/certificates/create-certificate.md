@@ -1,6 +1,6 @@
 ---
 title: Methoden für die Zertifikaterstellung
-description: Möglichkeiten zum Erstellen eines Zertifikats in Key Vault.
+description: Enthält eine Beschreibung der unterschiedlichen Optionen zum Erstellen oder Importieren eines Key Vault-Zertifikats in Azure Key Vault. Es gibt mehrere Möglichkeiten, ein Key Vault-Zertifikat zu erstellen.
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 7450dd79247078afe02d1bb63727cfd260d674fc
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.openlocfilehash: 71d8961af372f927fab909073daa715766542f87
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81866253"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88606675"
 ---
 # <a name="certificate-creation-methods"></a>Methoden für die Zertifikaterstellung
 
@@ -82,7 +82,7 @@ Die Zertifikatserstellung kann manuell oder über einen „Self“-Zertifikataus
 
 |Anbieter|Zertifikattyp|Konfigurationssetup  
 |--------------|----------------------|------------------|  
-|DigiCert|Key Vault bietet OV- oder EV-SSL-Zertifikate mit DigiCert| [Integrationsleitfaden](https://docs.digicert.com/certificate-tools/azure-key-vault-integration-guide/)
+|DigiCert|Key Vault bietet OV- oder EV-SSL-Zertifikate mit DigiCert| [Integrationsleitfaden](https://docs.microsoft.com/azure/key-vault/certificates/how-to-integrate-certificate-authority)
 |GlobalSign|Key Vault bietet OV- oder EV-SSL-Zertifikate mit GlobalSign| [Integrationsleitfaden](https://support.globalsign.com/digital-certificates/digital-certificate-installation/generating-and-importing-certificate-microsoft-azure-key-vault)
 
  Ein Zertifikataussteller ist eine Entität, die in Azure Key Vault (KV) als eine CertificateIssuer-Ressource dargestellt wird. Sie dient zur Bereitstellung von Informationen zur Quelle eines KV-Zertifikats: Ausstellername, Anbieter, Anmeldeinformationen und andere administrative Details.

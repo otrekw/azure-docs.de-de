@@ -7,12 +7,12 @@ ms.service: iot-fundamentals
 ms.topic: conceptual
 ms.date: 06/16/2020
 ms.author: jlian
-ms.openlocfilehash: 7776345ee4e02baa2d2a6ae7bc08389aa94bd09b
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 3c097260812e72dfaa3678a4aade556a337e6a6c
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534480"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272898"
 ---
 # <a name="iot-hub-support-for-virtual-networks-with-private-link-and-managed-identity"></a>IoT Hub-Unterstützung für virtuelle Netzwerke mit Private Link und verwalteter Identität
 
@@ -182,7 +182,7 @@ IoT Hub kann Nachrichten an ein Speicherkonto im Kundenbesitz weiterleiten. Dami
 
 5. Navigieren Sie zum Abschnitt **Benutzerdefinierte Endpunkte**, und klicken Sie auf **Hinzufügen**. Wählen Sie **Storage** als Endpunkttyp aus.
 
-6. Geben Sie auf der angezeigten Seite einen Namen für den Endpunkt ein, wählen Sie den Container aus, den Sie in Blob Storage verwenden möchten, und geben Sie das Codierungs- und Dateinamenformat an. Wählen Sie **Vom System zugewiesen** als **Authentifizierungstyp** für Ihren Speicherendpunkt aus. Klicken Sie auf die Schaltfläche **Erstellen** .
+6. Geben Sie auf der angezeigten Seite einen Namen für den Endpunkt ein, wählen Sie den Container aus, den Sie in Blob Storage verwenden möchten, und geben Sie das Codierungs- und Dateinamenformat an. Wählen Sie **Identitätsbasiert** als **Authentifizierungstyp** für Ihren Speicherendpunkt aus. Klicken Sie auf die Schaltfläche **Erstellen** .
 
 Nun ist Ihr benutzerdefinierter Speicherendpunkt für die Verwendung der vom System zugewiesenen Identität des Hubs eingerichtet und verfügt trotz der Firewalleinschränkungen über die Berechtigung, auf Ihre Speicherressource zuzugreifen. Sie können diesen Endpunkt jetzt zum Einrichten einer Routingregel verwenden.
 
@@ -234,7 +234,7 @@ Das IoT Hub-Feature für den Dateiupload ermöglicht Geräten das Hochladen von 
 
 4. Navigieren Sie auf der Seite Ihrer IoT Hub-Ressource zur Registerkarte **Dateiupload**.
 
-5. Wählen Sie auf der angezeigten Seite den Container aus, den Sie in Blob Storage verwenden möchten, und konfigurieren Sie die **Dateibenachrichtigungseinstellungen**, **SAS TTL**, **Standard-TTL** und die **Anzahl maximaler Zustellungen** nach Bedarf. Wählen Sie **Vom System zugewiesen** als **Authentifizierungstyp** für Ihren Speicherendpunkt aus. Klicken Sie auf die Schaltfläche **Erstellen** .
+5. Wählen Sie auf der angezeigten Seite den Container aus, den Sie in Blob Storage verwenden möchten, und konfigurieren Sie die **Dateibenachrichtigungseinstellungen**, **SAS TTL**, **Standard-TTL** und die **Anzahl maximaler Zustellungen** nach Bedarf. Wählen Sie **Identitätsbasiert** als **Authentifizierungstyp** für Ihren Speicherendpunkt aus. Klicken Sie auf die Schaltfläche **Erstellen** .
 
 Nun ist Ihr Speicherendpunkt für den Dateiupload für die Verwendung der vom System zugewiesenen Identität des Hubs eingerichtet und verfügt trotz der Firewalleinschränkungen über die Berechtigung, auf Ihre Speicherressource zuzugreifen.
 

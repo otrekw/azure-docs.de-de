@@ -12,12 +12,12 @@ ms.date: 08/20/2019
 ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9d839fc71992802e9ee2b6a66d0bc407c5caaecf
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 1f85d4203c0fe3978f776b418ab6d7850061416c
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87799054"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88605379"
 ---
 # <a name="azure-active-directory-deployment-plans"></a>Azure Active Directory-Bereitstellungspläne
 Sie suchen nach umfassenden Anleitungen für die Bereitstellung von Azure Active Directory-Funktionen (Azure AD)? In Azure AD-Bereitstellungsplänen werden der Geschäftswert, Planungsüberlegungen und Betriebsverfahren erläutert, die Sie zur erfolgreichen Bereitstellung gängiger Azure AD-Funktionen benötigen.
@@ -97,3 +97,4 @@ Die Erweiterung des Rollouts auf größere Benutzergruppen sollte durch eine Aus
 | -| -|
 | [Privileged Identity Management](../privileged-identity-management/pim-deployment-plan.md)| Azure AD Privileged Identity Management (PIM) dient zur Verwaltung von privilegierten Administratorrollen in Azure AD, Azure-Ressourcen und anderen Microsoft-Onlinediensten. PIM bietet Lösungen wie Just-In-Time-Zugriff, Workflows für die Anforderungsgenehmigung und vollständig integrierte Zugriffsüberprüfungen, damit Sie schädliche Aktivitäten von privilegierten Rollen in Echtzeit identifizieren, aufdecken und verhindern können. |
 | [Berichterstellung und Überwachung](../reports-monitoring/plan-monitoring-and-reporting.md)| Der Entwurf Ihrer Azure AD-Lösung für die Berichterstellung und Überwachung hängt von gesetzlichen, betrieblichen und sicherheitstechnischen Anforderungen sowie von vorhandenen Umgebungen und Prozessen ab. In diesem Artikel werden die unterschiedlichen Entwurfsoptionen vorgestellt. Zudem dient er als Richtlinie zur Ausarbeitung der geeigneten Bereitstellungsstrategie. |
+| [Zugriffsüberprüfungen](../governance/deploy-access-reviews.md) | Zugriffsüberprüfungen sind ein wichtiger Bestandteil Ihrer Governancestrategie. Sie können damit ermitteln und steuern, welche Benutzer worauf Zugriff haben. Dieser Artikel enthält hilfreiche Informationen zur Planung und Bereitstellung von Zugriffsüberprüfungen, damit Sie Ihren gewünschten Sicherheits- und Kollaborationsstatus erzielen können. |

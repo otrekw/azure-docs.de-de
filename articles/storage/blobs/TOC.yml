@@ -572,12 +572,14 @@
               href: ../common/storage-explorer-support-policy-lifecycle.md
             - name: Barrierefreiheit des Speicher-Explorers
               href: ../../vs-azure-tools-storage-explorer-accessibility.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: Azure Storage-Forum
+        - name: Azure Storage auf Microsoft Q&A
           href: 'https://docs.microsoft.com/answers/topics/azure-blob-storage.html'
         - name: Azure Storage auf Stack Overflow
           href: 'https://stackoverflow.com/questions/tagged/windows-azure-storage'
-        - name: Preise für Blob-Speicher
+        - name: Preise für Blockblobs
           href: 'https://azure.microsoft.com/pricing/details/storage/blobs/'
+        - name: Preise für Seitenblobs
+          href: 'https://azure.microsoft.com/pricing/details/storage/page-blobs/'
         - name: Azure-Preisrechner
           href: 'https://azure.microsoft.com/pricing/calculator/'
         - name: Videos

@@ -7,12 +7,12 @@ ms.topic: article
 author: keferna
 ms.author: keferna
 ms.date: 07/14/2020
-ms.openlocfilehash: 757f729caa7ea8a038a29f8e0a56465848b774ad
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 69be4118aca45582c38bb49a996782d661d8084f
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88035109"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88604408"
 ---
 # <a name="azure-marketplace-listing-guidelines"></a>Richtlinien für die Azure Marketplace-Auflistung
 
@@ -50,8 +50,8 @@ In diesem Artikel werden die Anforderungen und Richtlinien für die Auflistung n
 | 1 | Titel des Angebots |<ul><li>Darf nur klein geschriebene Buchstaben, alphanumerische Zeichen, Bindestriche und Unterstriche enthalten. Der Titel kann nach der Veröffentlichung nicht geändert werden.</li><li>Beschreibt das Lösungsangebot.</li><li>Entspricht der Onlinewerbung für die Lösung auf der Website des Partners. | Enthält wichtige Suchbegriffe. |
 | 2 | Technische Informationen: Konfiguration |<ul><li>Entscheiden Sie bei SaaS-Apps (Software-as-a-Service), ob Ihre App nur aufgelistet werden soll oder Kunden in der Lage sein sollen, die App über Azure zu erwerben.</li><li>Wählen Sie den gewünschten Text für die Schaltfläche zum Beziehen Ihres Angebots aus: *Kostenlos*, *Kostenlose Testversion* oder *Kontakt mit mir aufnehmen*</li><li>Wählen Sie im Popupfenster nur ein zutreffendes Produkt aus, wenn Ihre App die Technologie verwendet: Cortana Intelligence, Power BI-Lösungsvorlagen oder Power Apps. |  |
 | 3 | Testversion | Wählen Sie *Ja* oder *Nein*. | Die nächsten Schritte sind für den Kunden leicht zu verstehen: <ol><li>Testversion ausprobieren</li><li>Jetzt kaufen</li><li>Per E-Mail oder telefonisch Kontakt aufnehmen, um einen Termin für Proofs of Concept, Bewertungen oder Briefings zu vereinbaren</li></ol> |
-| 4 | Storefrontdetails: Angebotszusammenfassung | Wird auf der Suchseite Ihrer App angezeigt und umfasst maximal 100 Zeichen. | |
-| 5 | Storefrontdetails: Branchen | Branchen (max. 2): Wählen Sie die Branchen aus, für die Ihre App am besten geeignet und am relevantesten ist. | |
+| 4 | Details zum Onlineshop: Angebotszusammenfassung | Wird auf der Suchseite Ihrer App angezeigt und umfasst maximal 100 Zeichen. | |
+| 5 | Details zum Onlineshop: Branchen | Branchen (max. 2): Wählen Sie die Branchen aus, für die Ihre App am besten geeignet und am relevantesten ist. | |
 | 6 | Beschreibung des Angebots | <ul><li>Einfacher HTML-Code ist zulässig, einschließlich \<p>, \<em>, \<ul>, \<li>, \<ol> und Headertags. Maximal 3000 Zeichen.</li><li>Umfasst 2 bis 3 Absätze.</li><li>Das Lösungsangebot ist auf einen Blick leicht verständlich.</li><li>Die Beschreibung ist ausführlich und enthält die Zielgruppe, den Benutzertyp sowie den Nutzen des Angebots (Wertversprechen).</li><li>Ist in Absätze in erzählerischer Form gegliedert und besteht aus kurzen Sätzen, die einfach zu verstehen sind. | <ul><li>Die Zielbranche ist kurz beschrieben (sofern relevant).</li><li>Der Text ist gut formatiert mit Absatzüberschriften, die den folgenden Inhalt in einem einzigen Satz oder Schlagwort zusammenfassen, und Aufzählungszeichen (sofern angebracht) zum Hervorheben der Hauptvorteile. Der Leser soll das Angebot in einem übersichtlichen Format auf einen Blick verstehen, ohne mehrere Absätze lesen zu müssen.</li><li>Zwischen den einzelnen Absätzen sind geeignete Abstände vorhanden. Die Beschreibung liest sich wie eine Autobroschüre. Das heißt, sie ist umfassend und beschreibt das Angebot in einfachen Worten ohne technischen Fachjargon. | 
 | 7 | Marketingartefakte | Logos werden korrekt angezeigt. | <ul><li>Logos: Erforderlich sind kleine (48 x 48 Pixel), mittlere (90 x 90 Pixel) und große Logos (zwischen 216 x 216 und 350 x 350 Pixel).</li><li>Screenshots (max. 5): Erfordert ein PNG-Bild mit einer Auflösung von 1.280 × 720 Pixel. |
 | 8 | Kategorien und Branchen | <ul><li>Die Kategorien entsprechen den Funktionen des Lösungsangebots.</li><li>Wählen Sie mindestens ein Element im Popupfenster aus.</li><li>Wählen Sie keine Kategorien aus, denen die Lösung nicht entspricht.</li><li>Die optimale Branche oder „alle Branchen“ (sofern es keine optimalen Branchen gibt) ist ausgewählt. | Maximal drei Kategorien können ausgewählt werden (sofern zutreffend). |

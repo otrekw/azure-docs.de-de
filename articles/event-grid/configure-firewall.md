@@ -1,16 +1,16 @@
 ---
-title: Konfigurieren der IP-Firewall für Azure Event Grid-Themen oder -Domänen (Vorschau)
+title: Konfigurieren der IP-Firewall für Azure Event Grid-Themen oder -Domänen
 description: In diesem Artikel wird beschrieben, wie Firewalleinstellungen für Azure Event Grid-Themen oder -Domänen konfiguriert werden.
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 1cb285af6a463b2e0f413b1f876df96f82bb7f93
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: df6098df4817ee6c47378704c25d07433d6b9480
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86116470"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88509417"
 ---
-# <a name="configure-ip-firewall-for-azure-event-grid-topics-or-domains-preview"></a>Konfigurieren der IP-Firewall für Azure Event Grid-Themen oder -Domänen (Vorschau)
+# <a name="configure-ip-firewall-for-azure-event-grid-topics-or-domains"></a>Konfigurieren der IP-Firewall für Azure Event Grid-Themen oder -Domänen 
 Standardmäßig kann auf Themen und Domänen über das Internet zugegriffen werden, solange die Anforderung eine gültige Authentifizierung und Autorisierung aufweist. Mit der IP-Firewall können Sie den Zugriff auf eine Gruppe von IPv4-Adressen oder IPv4-Adressbereichen in [CIDR-Notation (Classless Inter-Domain Routing)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) weiter einschränken. Herausgeber, die von einer anderen IP-Adresse stammen, werden abgelehnt und erhalten eine 403-Antwort (Verboten). Weitere Informationen zu Netzwerksicherheitsfunktionen, die von Event Grid unterstützt werden, finden Sie unter [Netzwerksicherheit für Event Grid](network-security.md).
 
 In diesem Artikel wird beschrieben, wie IP-Firewalleinstellungen für Azure Event Grid-Themen oder -Domänen konfiguriert werden.
@@ -195,7 +195,7 @@ Standardmäßig ist der öffentliche Netzwerkzugriff für Themen und Domänen ak
 $body = @{"properties"=@{"publicNetworkAccess"="enabled"}} | ConvertTo-Json -Depth 5
 
 Invoke-RestMethod -Method 'Patch' `
-    -Uri "https://management.azure.com/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<EVENT GRID TOPIC NAME>?api-version=2020-04-01-preview" `
+    -Uri "https://management.azure.com/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<EVENT GRID TOPIC NAME>?api-version=2020-06-01" `
     -Headers $Headers `
     -Body $body `
     | ConvertTo-Json -Depth 5
@@ -208,7 +208,7 @@ Wenn öffentlicher Netzwerkzugriff für ein Thema oder eine Domäne deaktiviert 
 $body = @{"properties"=@{"publicNetworkAccess"="disabled"}} | ConvertTo-Json -Depth 5
 
 Invoke-RestMethod -Method 'Patch' `
-    -Uri "https://management.azure.com/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<EVENT GRID TOPIC NAME>?api-version=2020-04-01-preview" `
+    -Uri "https://management.azure.com/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<EVENT GRID TOPIC NAME>?api-version=2020-06-01" `
     -Headers $Headers `
     -Body $body `
     | ConvertTo-Json -Depth 5
@@ -223,13 +223,13 @@ $body = @{"location"="<LOCATION>"; "sku"= @{"name"="basic"}; "properties"=@{"pub
 
 # create the event grid topic with inbound IP rules
 Invoke-RestMethod -Method 'Put' `
-    -Uri "https://management.azure.com/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<EVENT GRID TOPIC NAME>?api-version=2020-04-01-preview" `
+    -Uri "https://management.azure.com/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<EVENT GRID TOPIC NAME>?api-version=2020-06-01" `
     -Headers $Headers `
     -Body $body
 
 # verify that the topic was created
 Invoke-RestMethod -Method 'Get' `
-    -Uri "https://management.azure.com/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<EVENT GRID TOPIC NAME>?api-version=2020-04-01-preview" `
+    -Uri "https://management.azure.com/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<EVENT GRID TOPIC NAME>?api-version=2020-06-01" `
     -Headers $Headers `
     | ConvertTo-Json -Depth 5
 ```
@@ -244,13 +244,13 @@ $body = @{"location"="<LOCATION>"; "sku"= @{"name"="basic"}; "properties"=@{"pub
 
 # create the Event Grid topic
 Invoke-RestMethod -Method 'Put' `
-    -Uri "https://management.azure.com/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<EVENT GRID TOPIC NAME>?api-version=2020-04-01-preview" `
+    -Uri "https://management.azure.com/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<EVENT GRID TOPIC NAME>?api-version=2020-06-01" `
     -Headers $Headers `
     -Body $body`
 
 # verify that the topic was created
 Invoke-RestMethod -Method 'Get' `
-    -Uri "https://management.azure.com/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<EVENT GRID TOPIC NAME>?api-version=2020-04-01-preview" `
+    -Uri "https://management.azure.com/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<EVENT GRID TOPIC NAME>?api-version=2020-06-01" `
     -Headers $Headers `
     | ConvertTo-Json -Depth 5
 
@@ -259,13 +259,13 @@ $body = @{"location"="<LOCATION>"; "sku"= @{"name"="basic"}; "properties"=@{"pub
 
 # update the topic with inbound IP rules
 Invoke-RestMethod -Method 'Put' `
-    -Uri "https://management.azure.com/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<EVENT GRID TOPIC NAME>?api-version=2020-04-01-preview" `
+    -Uri "https://management.azure.com/subscriptions/<AZURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<EVENT GRID TOPIC NAME>?api-version=2020-06-01" `
     -Headers $Headers `
     -Body $body
 
 # verify that the topic was updated
 Invoke-RestMethod -Method 'Get' 
-    -Uri "https://management.azure.com/subscriptions/<AzURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<EVENT GRID TOPIC NAME>?api-version=2020-04-01-preview" `
+    -Uri "https://management.azure.com/subscriptions/<AzURE SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventGrid/topics/<EVENT GRID TOPIC NAME>?api-version=2020-06-01" `
     -Headers $Headers `
     | ConvertTo-Json -Depth 5
 

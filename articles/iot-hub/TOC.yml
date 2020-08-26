@@ -53,6 +53,9 @@
           href: quickstart-device-streams-proxy-nodejs.md
         - name: C
           href: quickstart-device-streams-proxy-c.md
+    - name: Automatisches Weiterleiten von Nachrichten mithilfe einer ARM-Vorlage
+      displayName: Resource Manager
+      href: horizontal-arm-route-messages.md
 - name: Tutorials
   items:
     - name: Weiterleiten von Nachrichten
@@ -83,7 +86,7 @@
       href: tutorial-connectivity.md
 - name: Beispiele
   items:
-    - name: Azure Policy-Integrationen
+    - name: Integrierte Azure Policy-Aktionen
       displayName: 'samples, policies, definitions'
       href: ./policy-samples.md
 - name: Konzepte

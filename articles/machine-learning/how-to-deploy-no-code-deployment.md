@@ -9,21 +9,23 @@ ms.author: gopalv
 author: gvashishtha
 ms.date: 07/31/2020
 ms.topic: conceptual
-ms.openlocfilehash: d6c70f27eebc9d502ce7275603e99975c2efc267
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 9d6e234e1f4c8ac5199b92a09eb12bf7aa41b01b
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87544483"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185484"
 ---
 # <a name="preview-no-code-model-deployment"></a>(Vorschau) Modellimplementierung ohne Code
 
 Die Modellimplementierung ohne Code ist derzeit in der Vorschauphase und unterstützt die folgenden Frameworks für maschinelles Lernen:
 
-## <a name="tensorflow-savedmodel-format"></a>Tensorflow SavedModel-Format
-Tensorflow-Modelle müssen im **SavedModel-Format** registriert werden, um mit der Modellbereitstellung ohne Code zu funktionieren.
+## <a name="tensorflow-savedmodel-format"></a>TensorFlow SavedModel-Format
+TensorFlow-Modelle müssen im **SavedModel-Format** registriert werden, um mit der Modellimplementierung ohne Code zu funktionieren.
 
 Informationen zum Erstellen von „SavedModel“ finden Sie unter [diesem Link](https://www.tensorflow.org/guide/saved_model).
+
+Wir unterstützen jede TensorFlow Version, die unter „Tags“ im [TensorFlow Serving DockerHub](https://registry.hub.docker.com/r/tensorflow/serving/tags) aufgelistet ist.
 
 ```python
 from azureml.core import Model

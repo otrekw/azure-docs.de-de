@@ -1,6 +1,6 @@
 ---
 title: 'Azure ExpressRoute: Konfigurieren von ExpressRoute Direct: Befehlszeilenschnittstelle (CLI)'
-description: Dieser Artikel enthält Informationen zum Konfigurieren von ExpressRoute Direct mit der Azure-Befehlszeilenschnittstelle.
+description: Es wird beschrieben, wie Sie Azure ExpressRoute Direct mit der Azure CLI so konfigurieren, dass eine direkte Verbindung mit dem globalen Netzwerk von Microsoft an Peeringstandorten auf der ganzen Welt hergestellt wird.
 services: expressroute
 author: cherylmc
 ms.service: expressroute
@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/20/2019
 ms.author: cherylmc
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 4cbacf997413c4eba1e8a142925cc6cde58fb0ec
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 5d1e1d6ab5a8d4444ad4a5a4748859fd12aa3c1e
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87488005"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192275"
 ---
 # <a name="configure-expressroute-direct-by-using-the-azure-cli"></a>Konfigurieren von ExpressRoute Direct mit der Azure-Befehlszeilenschnittstelle
 

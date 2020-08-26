@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 09/22/2018
 ms.author: sharadag
-ms.openlocfilehash: f4310350e83284d6a2839f8c3d86526d3cda74ff
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 40809fae312401cb62fabb10140b9bb7f60e3715
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84743574"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88234770"
 ---
 # <a name="troubleshooting-common-routing-issues"></a>Behandeln von häufigen Routingproblemen
 
@@ -102,7 +102,7 @@ Dieses Symptom kann verschiedene Ursachen haben:
          - Wenn das Back-End beispielsweise nur HTTP-Anforderungen akzeptiert, wären die folgenden Konfigurationen gültig:
             - _Zulässige Protokolle_ sind HTTP und HTTPS. _Weiterleitungsprotokoll_ ist HTTP. Die Übereinstimmungsanforderung funktioniert nicht, da HTTPS ein zulässiges Protokoll ist, und wenn eine Anforderung als HTTPS gesendet wird, würde Front Door versuchen, sie über HTTPS weiterzuleiten.
 
-            - _Zulässiges Protokoll_ ist HTTP. _Weiterleitungsprotokoll_ ist entweder Übereinstimmungsanforderung oder HTTPS.
+            - _Zulässiges Protokoll_ ist HTTP. _Weiterleitungsprotokoll_ ist entweder Übereinstimmungsanforderung oder HTTP.
 
     - _URL-Rewrite_ ist standardmäßig deaktiviert. Verwenden Sie dieses Feld nur, wenn Sie den Umfang der auf dem Back-End gehosteten Ressourcen, die verfügbar sein sollen, einschränken möchten. Wenn das Feld deaktiviert ist, leitet Front Door den gleichen Anforderungspfad weiter, der eingegangen ist. Es ist möglich, dass dieses Feld falsch konfiguriert ist und Front Door eine Ressource vom Back-End anfordert, die nicht verfügbar ist. Daher wird der HTTP-Statuscode 404 zurückgegeben.
 

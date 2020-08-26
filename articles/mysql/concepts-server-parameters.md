@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 6/25/2020
-ms.openlocfilehash: de1345fca418118e88929870cd2f4007dd36b3a4
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: e7ca86d0146f05d5171d5eae18aac81d75122bcc
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87835985"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88258552"
 ---
 # <a name="server-parameters-in-azure-database-for-mysql"></a>Serverparameter in Azure Database for MySQL
 
@@ -212,6 +212,9 @@ Weitere Informationen zu diesem Parameter finden Sie in der [MySQL-Dokumentation
 Wenn ein Fehler wie „Zeile zu groß (> 8126)“ angezeigt wird, sollten Sie den Parameter **innodb_strict_mode** deaktivieren. Der Serverparameter **innodb_strict_mode** darf nicht global auf der Serverebene geändert werden, da die Daten bei Überschreitung einer Zeilendatengröße von 8.000 ohne Fehlermeldung gekürzt werden, was zu Datenverlusten führen kann. Es wird empfohlen, das Schema so zu ändern, dass es der Seitengrößenbeschränkung entspricht. 
 
 Dieser Parameter kann mithilfe von `init_connect` auf Sitzungsebene festgelegt werden. Informationen zum Festlegen von **innodb_strict_mode** auf Sitzungsebene finden Sie [Nicht aufgeführte Einstellungsparameter](https://docs.microsoft.com/azure/mysql/howto-server-parameters#setting-parameters-not-listed).
+
+> [!NOTE]
+> Wenn Sie über einen Lesereplikatserver verfügen, wird die Replikation unterbrochen, wenn Sie **innodb_strict_mode** auf einem Masterserver auf Sitzungsebene auf OFF festlegen. Wir empfehlen, den Parameter auf OFF zu belassen, wenn Sie über Lesereplikate verfügen.
 
 ### <a name="sort_buffer_size"></a>sort_buffer_size
 

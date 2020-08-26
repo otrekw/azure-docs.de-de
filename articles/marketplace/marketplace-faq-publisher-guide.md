@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 07/22/2020
-ms.openlocfilehash: 20c82793726221515ad4d1019f4d8f4754b3ae08
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 82a6b2674fe73bd448bb7ccbd230e837bd1cbb2a
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88036571"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607330"
 ---
 # <a name="common-questions-about-the-microsoft-commercial-marketplace"></a>Häufig gestellte Fragen zum kommerziellen Marketplace von Microsoft
 
@@ -120,11 +120,11 @@ Herausgeber im kommerziellen Marketplace sind für die Unterstützung ihrer Soft
 
 Während des Veröffentlichungsvorgangs erhalten Sie Zugriff auf eine Vorschau Ihres Angebots. Der Zugriff ist auf die Benutzer beschränkt, die Sie auf der Registerkarte **Vorschau** angeben, und das Angebot ist nicht für andere Benutzer sichtbar. Sie können eine Vorschauversion kaufen und den Vorgang testen. Ihnen wird jedoch der volle Betrag gemäß der Einrichtung Ihres Angebots in Rechnung gestellt.
 
-Um einen Kauf zu einem sehr niedrigen Preis abzuschließen, wird empfohlen, einen privaten Plan zu veröffentlichen, der nur für Sie selbst sichtbar ist und dessen Preis Sie als Testkosten akzeptieren können. Ein Preis von 0,00 USD wird unterstützt. Mit diesem wird jedoch nicht das vollständige Erlebnis geboten, das ein kostenpflichtiges Abonnement bietet. Deshalb wird empfohlen, den Preis auf 1,00 USD festzulegen.
+Um einen Kauf zu einem niedrigen Preis zu tätigen, wird empfohlen, einen privaten Plan zu veröffentlichen, der nur für Sie selbst sichtbar ist und dessen Preis Sie als Testkosten akzeptieren können. Ein Preis von 0,00 USD wird unterstützt. Mit diesem wird jedoch nicht das vollständige Erlebnis geboten, das ein kostenpflichtiges Abonnement bietet. Deshalb wird empfohlen, den Preis auf 1,00 USD festzulegen.
 
 ### <a name="what-are-leads-from-the-commercial-marketplace-and-what-should-i-do-with-them"></a>Was sind Leads aus dem kommerziellen Marketplace, und wie soll ich damit umgehen?
 
-Wenn Kunden Ihre Angebote in den Microsoft AppSource- und Azure Marketplace-Storefronts nutzen, werden Informationen erfasst. Nachdem Kunden genügend Interesse gezeigt haben, wird ein Lead erstellt und eine Verkaufschance an das System Ihrer Wahl gesendet. Herausgeber, die im kommerziellen Marketplace erfolgreich sind, verfolgen häufig Leads, bauen Beziehungen auf und wandeln Interesse in Geschäfte um.
+Wenn Kunden Ihre Angebote in den Microsoft AppSource- und Azure Marketplace-Onlineshops nutzen, werden Informationen erfasst. Nachdem Kunden genügend Interesse gezeigt haben, wird ein Lead erstellt und eine Verkaufschance an das System Ihrer Wahl gesendet. Herausgeber, die im kommerziellen Marketplace erfolgreich sind, verfolgen häufig Leads, bauen Beziehungen auf und wandeln Interesse in Geschäfte um.
 
 Weitere Informationen finden Sie unter [Kundenleads aus Ihrem Marketplace-Angebot](partner-center-portal/commercial-marketplace-get-customer-leads.md).
 
@@ -140,7 +140,7 @@ Angebote werden Kunden je nach Konfiguration und Kontext der Kundenaktionen übe
 
 ### <a name="can-my-offer-appear-in-both-microsoft-appsource-and-azure-marketplace"></a>Kann mein Angebot in beidem, Microsoft AppSource und Azure Marketplace, angezeigt werden?
 
-Microsoft AppSource dient als Ziel für Geschäfts- und Branchenlösungen, und Azure Marketplace ist für IT- und Entwicklerlösungen konzipiert. Die Angebote sind in jeder der Storefronts auf der Grundlage von Kategorien und Branchen verfügbar, die Sie bei der Angebotserstellung ausgewählt haben. In den seltenen Fällen, in denen das Angebot für die Benutzer beider Storefronts relevant ist, kann es in beiden angezeigt werden.
+Microsoft AppSource dient als Ziel für Geschäfts- und Branchenlösungen, und Azure Marketplace ist für IT- und Entwicklerlösungen konzipiert. Die Angebote sind in den einzelnen Onlineshops nach der Kategorie und der Branche aufgeführt, die Sie bei der Angebotserstellung ausgewählt haben. In den seltenen Fällen, in denen das Angebot für die Benutzer beider Onlineshops relevant ist, kann es in beiden angezeigt werden.
 
 ### <a name="what-is-the-cloud-solution-provider-program"></a>Was ist das Cloud Solution Provider-Programm?
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/11/2019
 author: shganesh-dev
 ms.author: shganesh
-ms.openlocfilehash: 2bd38bc7a499aa9178d49f54e27a88a38206e521
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 5b688d64641f6dd8779d699bcd1d646e40b19b87
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87317568"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245671"
 ---
 # <a name="downloads-dashboard-in-commercial-marketplace-analytics"></a>Dashboard „Downloads“ in Analysen für den kommerziellen Marketplace
 
@@ -25,9 +25,7 @@ Um auf das Dashboard „Downloads“ zuzugreifen, öffnen Sie das Dashboard **[A
 
 ## <a name="downloads-dashboard"></a>Dashboard „Downloads“
 
-Das Dashboard **Downloads** im Menü **Analyse** zeigt Anforderungen von Downloads mit mehr als 1000 Kunden- oder Bestelldatenzeilen an.
-
-Sie erhalten eine Popupbenachrichtigung und eine E-Mail mit einem Link zum Dashboard **Downloads**, wenn Sie einen Download mit mehr als 1.000 Datenzeilen anfordern. Diese Datendownloads stehen für einen Zeitraum von 30 Tagen zur Verfügung, und werden dann entfernt.
+Das Dashboard **Downloads** im Menü **Analyse** zeigt Anforderungen von Downloads mit mehr als 1000 Kunden- oder Bestelldatenzeilen an. Diese Datendownloads stehen für 30 Tage zur Verfügung und werden dann entfernt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

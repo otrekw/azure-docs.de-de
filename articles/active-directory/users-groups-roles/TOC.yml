@@ -62,12 +62,14 @@
           href: users-revoke-access.md
         - name: Schließen eines Kontos in einem nicht verwalteten Verzeichnis
           href: users-close-account.md
-        - name: Hinzufügen von B2B-Benutzern
-          href: ../external-identities/what-is-b2b.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context
-        - name: Zuweisen einer Rolle zu einem B2B-Benutzer
-          href: ../external-identities/add-guest-to-role.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context
-        - name: Dynamische Gruppen und B2B
-          href: ../external-identities/use-dynamic-groups.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context
+        - name: Hinzufügen von Gastbenutzern
+          href: /azure/active-directory/b2b/what-is-b2b?context=azure/active-directory/users-groups-roles/context/ugr-context
+        - name: Zuweisen einer Rolle zu einem Gastbenutzer
+          href: /azure/active-directory/b2b/add-guest-to-role?context=azure/active-directory/users-groups-roles/context/ugr-context
+        - name: Einschränken des Zugriffs durch Gastbenutzer
+          href: users-restrict-guest-permissions.md
+        - name: Dynamische Gruppen und Gäste
+          href: /azure/active-directory/b2b/use-dynamic-groups?context=azure/active-directory/users-groups-roles/context/ugr-context
     - name: Verwalten Ihres Verzeichnisses
       items:
         - name: Azure AD-Organisationen

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: navits09
 ms.author: navits
 ms.date: 08/07/2020
-ms.openlocfilehash: ff93a336b50ceac1106b31726d865ed3e0b41108
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 0d00f779031ec294523c861a4e9868f7cbbe790d
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88031471"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88606150"
 ---
 # <a name="create-a-dynamics-365-business-central-offer"></a>Erstellen eines Angebots für Dynamics 365 Business Central
 
@@ -29,7 +29,7 @@ Bevor Sie beginnen, [erstellen Sie ein Konto im kommerziellen Marketplace in Par
     ![Darstellung des Navigationsmenüs auf der linken Seite.](./media/new-offer-dynamics-365-business-central.png)
 
 > [!NOTE]
-> Nach der Veröffentlichung eines Angebots werden die daran im Partner Center vorgenommenen Änderungen erst nach der erneuten Veröffentlichung des Angebots in der digitalen Ladenzeile angezeigt. Achten Sie darauf, nach dem Vornehmen von Änderungen immer erneut zu veröffentlichen.
+> Nach der Veröffentlichung eines Angebots werden die daran in Partner Center vorgenommenen Änderungen erst nach der erneuten Veröffentlichung des Angebots in Onlineshops angezeigt. Achten Sie darauf, nach dem Vornehmen von Änderungen immer erneut zu veröffentlichen.
 
 ## <a name="new-offer"></a>Neues Angebot
 

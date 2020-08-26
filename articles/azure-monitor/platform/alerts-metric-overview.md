@@ -1,15 +1,15 @@
 ---
 title: Erhalten Sie Informationen zur Funktionsweise von Metrikwarnungen in Azure Monitor.
 description: Verschaffen Sie sich einen Überblick darüber, was Sie mit Metrikwarnungen erreichen können und wie sie in Azure Monitor funktionieren.
-ms.date: 07/16/2020
+ms.date: 08/16/2020
 ms.topic: conceptual
 ms.subservice: alerts
-ms.openlocfilehash: 9ac034eb144e5873f8f73ab7b1d7459394ce4775
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 035b68afed7383956beb13e367aa7a1f6dfcd070
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327139"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88258439"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>Informationen zur Funktionsweise von Metrikwarnungen in Azure Monitor
 
@@ -138,9 +138,12 @@ Diese Funktion wird derzeit für Plattformmetriken (keine benutzerdefinierten Me
 | Dienst | Öffentliches Azure | Behörden | China |
 |:--------|:--------|:--------|:--------|
 | Virtuelle Computer  | **Ja** | Nein | Nein |
-| SQL Server-Datenbanken | **Ja** | **Ja** | Nein |
-| Pools für elastische SQL-Datenbanken | **Ja** | **Ja** | Nein |
-| Data Box Edge-Geräte | **Ja** | **Ja** | Nein |
+| SQL Server-Datenbanken | **Ja** | **Ja** | **Ja** |
+| Pools für elastische SQL-Datenbanken | **Ja** | **Ja** | **Ja** |
+| NetApp Files-Kapazitätspools | **Ja** | **Ja** | **Ja** |
+| NetApp Files-Volumes | **Ja** | **Ja** | **Ja** |
+| Schlüsseltresore | **Ja** | **Ja** | **Ja** |
+| Data Box Edge-Geräte | **Ja** | **Ja** | **Ja** |
 
 Sie können den Bereich für die Überwachung mit einer einzelnen Metrikwarnregel auf drei Arten angeben. Beispielsweise können Sie bei virtuellen Computern den Bereich wie folgt angeben:  
 

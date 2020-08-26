@@ -4,16 +4,16 @@ description: Verwenden Sie Umgebungsvariablen und Erstellungsoptionen, um den Mo
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 11/18/2019
+ms.date: 08/14/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 079d5845917e63fadcf0466e5a744ed637d704ca
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fe24cc79d749761b697a8d1a162ec2867da9a649
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75434517"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88257477"
 ---
 # <a name="give-modules-access-to-a-devices-local-storage"></a>Gewähren des Zugriff auf den lokalen Speicher eines Geräts für Module
 
@@ -82,6 +82,12 @@ sudo chmod 700 <HostStoragePath>
 ```
 
 Weitere Details zu Erstellungsoptionen finden Sie in der [Docker-Dokumentation](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate).
+
+## <a name="encrypted-data-in-module-storage"></a>Verschlüsselte Daten im Modulspeicher
+
+Wenn Module die Workload-API des IoT Edge-Dämons aufrufen, um Daten zu verschlüsseln, wird der Verschlüsselungsschlüssel unter Verwendung der Modul-ID und der Generations-ID des Moduls abgeleitet. Eine Generations-ID wird verwendet, um Geheimnisse zu schützen, wenn ein Modul aus der Bereitstellung entfernt wird und dann später ein anderes Modul mit derselben Modul-ID auf demselben Gerät bereitgestellt wird. Sie können die Generations-ID eines Moduls mit dem Azure CLI-Befehl [az iot hub module-identity show](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub/module-identity?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-hub-module-identity-show) anzeigen.
+
+Wenn Sie Dateien zwischen Modulen über Generationen hinweg austauschen möchten, dürfen sie keine Geheimnisse enthalten, da sie sonst nicht entschlüsselt werden können.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/26/2020
 ms.author: kumud
-ms.openlocfilehash: 19c08029e78e68273298e76635136ff35ae724e0
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: c242b08c598b04c84ab330e846704eace23c4858
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87924120"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88205474"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure Virtual Network – häufig gestellte Fragen
 
@@ -356,7 +356,7 @@ Nein, es fallen keinerlei zusätzliche Kosten für die Verwendung von VNET-Diens
 Ja, das ist möglich. Virtuelle Netzwerke und Ressourcen von Azure-Diensten können sich in demselben oder in unterschiedlichen Abonnements befinden. Es gilt lediglich die Voraussetzung, dass sich das virtuelle Netzwerk und die Azure-Dienstressourcen zu demselben Active Directory-Mandanten gehören.
 
 ### <a name="can-i-turn-on-vnet-service-endpoints-and-set-up-vnet-acls-if-the-virtual-network-and-the-azure-service-resources-belong-to-different-ad-tenants"></a>Kann ich VNET-Dienstendpunkte aktivieren und VNET-ACLs einrichten, wenn das virtuelle Netzwerk und die Azure-Dienstressourcen zu unterschiedlichen AD-Mandanten gehören?
-Nein, VNET-Dienstendpunkte und VNET-ACLs werden nicht über verschiedene AD-Mandanten unterstützt.
+Ja. Dies ist möglich, wenn Sie Dienstendpunkte für Azure Storage und Azure Key Vault verwenden. Für die restlichen Dienste werden VNET-Dienstendpunkte und VNET-ACLs für AD-Mandanten nicht übergreifend unterstützt.
 
 ### <a name="can-an-on-premises-devices-ip-address-that-is-connected-through-azure-virtual-network-gateway-vpn-or-expressroute-gateway-access-azure-paas-service-over-vnet-service-endpoints"></a>Kann die IP-Adresse eines lokalen Geräts, das über ein Azure Virtual Network-Gateway (VPN) oder ein ExpressRoute-Gateway verbunden ist, über VNET-Dienstendpunkte auf einen Azure-PaaS-Dienst zugreifen?
 Standardmäßig sind Azure-Dienstressourcen, die auf virtuelle Netzwerke beschränkt und so geschützt sind, über lokale Netzwerke nicht erreichbar. Wenn Sie Datenverkehr aus der lokalen Umgebung zulassen möchten, müssen Sie auch öffentliche IP-Adressen (meist NAT) aus der lokalen Umgebung bzw. per ExpressRoute zulassen. Diese IP-Adressen können über die Konfiguration der IP-Firewall für die Azure-Dienstressourcen hinzugefügt werden.

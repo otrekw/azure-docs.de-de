@@ -69,6 +69,8 @@
       href: howto-use-iot-pnp-cli.md
     - name: Verwalten digitaler Zwillinge
       href: howto-manage-digital-twin.md
+    - name: Zertifizieren eines Geräts
+      href: howto-certify-device.md
 - name: Verweis
   items:
     - name: Bibliotheken und SDKs

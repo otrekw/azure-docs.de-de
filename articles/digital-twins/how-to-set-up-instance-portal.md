@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 33772d46f363b161c1faa5c953f48a702ae2b8bf
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 1f7486f1080c0fbb25b1be6ab70bb647a546ceca
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009650"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88234988"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-portal"></a>Einrichten einer Azure Digital Twins-Instanz und der Authentifizierung (Portal)
 
@@ -126,6 +126,9 @@ Wählen Sie auf der Portalseite für Ihre App-Registrierung im Menü *API-Berech
 Wechseln Sie auf der folgenden Seite *API-Berechtigungen anfordern* zur Registerkarte *Von meiner Organisation verwendete APIs*, und suchen Sie dann nach *azure digital twins*. Wählen Sie *Azure Digital Twins* aus den Suchergebnissen aus, um mit dem Zuweisen von Berechtigungen für die Azure Digital Twins-APIs fortzufahren.
 
 :::image type="content" source="media/how-to-set-up-instance/portal/request-api-permissions-1.png" alt-text="Ansicht des Suchergebnisses „Azure Digital Twins“ der Seite „API-Berechtigungen anfordern“":::
+
+>[!NOTE]
+> Wenn Sie noch über eine bestehende Azure Digital Twins-Instanz aus der vorherigen öffentlichen Vorschau des Diensts (vor Juli 2020) in Ihrem Abonnement verfügen, müssen Sie stattdessen nach *Azure Smart Spaces Service* suchen. Dies ist ein älterer Name für dieselbe Gruppe von APIs und wird Ihre Erfahrung über diesen Schritt hinaus nicht verändern.
 
 Nun wählen Sie die Berechtigungen aus, die für diese APIs erteilt werden sollen. Erweitern Sie die Berechtigung **Lesen (1)** , und aktivieren Sie das Kontrollkästchen *Read.Write*, um diesem App-Registrierungsleser und -writer Berechtigungen zu erteilen.
 

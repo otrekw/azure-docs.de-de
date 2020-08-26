@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 272dd95b97c65ecc52dd73909f1ed87d5e5ae3ca
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 3c4869859e11cb6c0cc868ec9deacb3e5cb972c6
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170495"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88586570"
 ---
 # <a name="add-a-connected-organization-in-azure-ad-entitlement-management"></a>Hinzufügen einer verbundenen Organisation in der Azure AD-Berechtigungsverwaltung
 
@@ -103,7 +103,7 @@ Führen Sie die Anweisungen in diesem Abschnitt aus, um ein externes Azure AD-Ve
 
 Wenn die verbundene Organisation in eine andere Domäne wechselt, sich der Name der Organisation ändert, oder wenn Sie die Sponsoren ändern möchten, können Sie die verbundene Organisation aktualisieren. Führen Sie dazu die Anweisungen in diesem Abschnitt aus.
 
-**Erforderliche Rolle:** *Globaler Administrator*, *Benutzeradministrator* oder *Gasteinladender*
+**Erforderliche Rolle:** *Globaler Administrator* oder *Benutzeradministrator*
 
 1. Wählen Sie im Azure-Portal die Option **Azure Active Directory** und dann **Identity Governance** aus.
 
@@ -120,7 +120,7 @@ Wenn die verbundene Organisation in eine andere Domäne wechselt, sich der Name 
 
 Wenn die Beziehung mit einem externen Azure AD-Verzeichnis bzw. einer externe Domäne nicht länger besteht, können Sie die verbundene Organisation löschen.
 
-**Erforderliche Rolle:** *Globaler Administrator*, *Benutzeradministrator* oder *Gasteinladender*
+**Erforderliche Rolle:** *Globaler Administrator* oder *Benutzeradministrator*
 
 1. Wählen Sie im Azure-Portal die Option **Azure Active Directory** und dann **Identity Governance** aus.
 
@@ -131,6 +131,10 @@ Wenn die Beziehung mit einem externen Azure AD-Verzeichnis bzw. einer externe Do
     Derzeit kann eine verbundene Organisation nur gelöscht werden, wenn keine verbundenen Benutzer vorhanden sind.
 
     ![Schaltfläche „Löschen“ für die verbundene Organisation](./media/entitlement-management-organization/organization-delete.png)
+
+## <a name="managing-a-connected-organization-programmatically"></a>Programmgesteuertes Verwalten einer verbundenen Organisation
+
+Mit Microsoft Graph können Sie auch verbundene Organisationen erstellen, auflisten, aktualisieren und löschen. Ein Benutzer mit einer entsprechenden Rolle und einer Anwendung, die über die delegierte `EntitlementManagement.ReadWrite.All`-Berechtigung verfügt, kann die API aufrufen, um [connectedOrganization](https://docs.microsoft.com/graph/api/resources/connectedorganization?view=graph-rest-beta)-Objekte aufzurufen und Sponsoren dafür festzulegen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

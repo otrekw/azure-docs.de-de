@@ -7,14 +7,14 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: laobri
 author: lobrien
-ms.date: 04/01/2020
+ms.date: 08/17/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 441575a33e7c3d54de7b25c06f7a839805f8ac1b
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: a62d12aa92e41d4a91f963d962616af11d917195
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87875284"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88604462"
 ---
 # <a name="what-are-azure-machine-learning-pipelines"></a>Beschreibung von Azure Machine Learning-Pipelines
 
@@ -31,10 +31,6 @@ In diesem Artikel erfahren Sie, wie Sie mithilfe von Machine Learning-Pipelines 
 
 Diese Vorteile werden in dem Moment wichtig, da Ihr Machine Learning-Projekt das Feld des reinen Experiments verlässt und in die Weiterentwicklung eintritt. Sogar einfache Pipelines mit nur einem Schritt können nützlich sein. Machine Learning-Projekte befinden sich oftmals in einem komplexen Zustand, und es kann wirklich erholsam sein, aus der präzisen Erfüllung eines einzelnen Workflows einen trivialen Vorgang zu machen.
 
-Erfahren Sie, wie Sie [Ihre erste Pipeline erstellen](how-to-create-your-first-pipeline.md).
-
-![Machine Learning-Pipelines in Azure Machine Learning](./media/concept-ml-pipelines/pipeline-flow.png)
-
 <a name="compare"></a>
 ### <a name="which-azure-pipeline-technology-should-i-use"></a>Welche Azure-Pipelinetechnologie sollte ich verwenden?
 
@@ -43,7 +39,7 @@ Die Azure-Cloud bietet mehrere andere Pipelines, die jeweils einem anderen Zweck
 | Szenario | Primäre Persona | Angebot von Azure | OSS-Angebot | Kanonische Pipe | Stärken | 
 | -------- | --------------- | -------------- | ------------ | -------------- | --------- | 
 | Modellorchestrierung (maschinelles Lernen) | Data Scientist | Azure Machine Learning-Pipelines | Kubeflow-Pipelines | Daten -> Modell | Verteilung, Caching, Code-First, Wiederverwendung | 
-| Datenorchestrierung (Datenvorbereitung) | Datentechniker | [Azure Data Factory-Pipelines](https://docs.microsoft.com/azure/data-factory/concepts-pipelines-activities) | Apache Airflow | Daten -> Daten | Stark typisierte Verschiebung Datenorientierte Aktivitäten |
+| Datenorchestrierung (Datenvorbereitung) | Datentechniker | [Azure Data Factory-Pipelines](https://docs.microsoft.com/azure/data-factory/concepts-pipelines-activities) | Apache Airflow | Daten -> Daten | Stark typisierte Verschiebung, datenorientierte Aktivitäten |
 | Code- und App-Orchestrierung (CI/CD) | App-Entwickler/Vorgänge | [Azure DevOps Pipelines](https://azure.microsoft.com/services/devops/pipelines/) | Jenkins | Code + Modell -> App/Dienst | Offenste und flexibelste Aktivitätsunterstützung, Genehmigungswarteschlangen, Phasen mit Beschränkung | 
 
 ## <a name="what-can-azure-ml-pipelines-do"></a>Wozu sind Azure ML-Pipelines imstande?
@@ -53,39 +49,25 @@ Eine Azure Machine Learning-Pipeline ist ein unabhängig ausführbarer Workflow 
 + Datenvorbereitung einschließlich Import, Validierung und Bereinigung, Verfremdung und Transformation, Normalisierung und Staging
 + Trainingskonfiguration einschließlich Parametrisierungsargumenten, Dateipfaden und Protokollierungs-/Berichtskonfigurationen
 + Effizienz und Wiederholung bei Training und Überprüfung. Effizienz ergibt sich möglicherweise durch die Angabe von bestimmten Datenteilmengen, verschiedenen Hardware-Computeressourcen sowie durch verteilte Verarbeitung und Fortschrittsüberwachung
-+ Bereitstellung, einschließlich Versionierung, Skalierung, Bereitstellung und Zugriffssteuerung 
++ Bereitstellung, einschließlich Versionierung, Skalierung, Bereitstellung und Zugriffssteuerung
 
 Durch unabhängige Schritte können mehrere Datenanalysten gleichzeitig an derselben Pipeline arbeiten, ohne die Computeressourcen zu überlasten. Außerdem ist es bei einzelnen Schritten einfacher, für jeden Schritt verschiedene Computetypen/-größen zu verwenden.
 
-Nachdem die Pipeline entworfen wurde, wird ihr Trainingsprozess in der Regel weiter optimiert. Wenn Sie eine Pipeline erneut ausführen, springt die Ausführung zu den Schritten, die wiederholt werden müssen, z.B. zu einem aktualisierten Trainingsskript. Schritte, die nicht erneut ausgeführt werden müssen, werden übersprungen. Das gleiche ergibt sich für unveränderte Skripts, die zum Ausführen des Schritts verwendet werden. Diese Wiederverwendungsfunktion hilft bei der Ausführung kostspieliger und zeitintensiver Schritte wie der Datenerfassung und -transformation, wenn die zugrunde liegenden Daten unverändert sind.
+Nachdem die Pipeline entworfen wurde, wird ihr Trainingsprozess in der Regel weiter optimiert. Wenn Sie eine Pipeline erneut ausführen, springt die Ausführung zu den Schritten, die wiederholt werden müssen, z.B. zu einem aktualisierten Trainingsskript. Schritte, die nicht erneut ausgeführt werden müssen, werden übersprungen. 
 
-Mit Azure Machine Learning können Sie verschiedene Toolkits und Frameworks wie PyTorch oder TensorFlow für jeden Pipelineschritt verwenden. Azure koordiniert die verschiedenen [Computeziele](concept-azure-machine-learning-architecture.md), die Sie verwenden, sodass Ihre Zwischendaten für die nachgelagerten Computeziele freigegeben werden können.
+Mit Pipelines können Sie verschiedene Hardware für verschiedene Aufgaben verwenden. Azure koordiniert die verschiedenen [Computeziele](concept-azure-machine-learning-architecture.md), die Sie verwenden, sodass Ihre Zwischendaten nahtlos zu den nachfolgenden Computezielen fließen.
 
 Für das [Nachverfolgen der Metriken für Ihre Pipelineexperimente](https://docs.microsoft.com/azure/machine-learning/how-to-track-experiments) haben Sie zwei Möglichkeiten: Nachverfolgung direkt im Azure-Portal oder über die [Landing Page Ihres Arbeitsbereichs (Vorschau)](https://ml.azure.com). Nach dem Veröffentlichen einer Pipeline können Sie einen REST-Endpunkt konfigurieren, mit dem Sie die Pipeline über eine beliebige Plattform bzw. einen beliebigen Stapel erneut ausführen können.
 
 Kurz gesagt können alle komplexen Aufgaben des Machine Learning-Lebenszyklus mithilfe von Pipelines unterstützt werden. Andere Azure-Pipelinetechnologien weisen ihre eigenen Stärken auf. [Azure Data Factory-Pipelines](https://docs.microsoft.com/azure/data-factory/concepts-pipelines-activities) zeichnen sich durch die Arbeit mit Daten aus und [Azure Pipelines](https://azure.microsoft.com/services/devops/pipelines/) ist das richtige Tool für Continuous Integration und Continuous Deployment. Wenn Ihr Schwerpunkt jedoch auf Machine Learning liegt, sind Azure Machine Learning-Pipelines wahrscheinlich die beste Wahl für Ihre Workflowanforderungen. 
 
-## <a name="what-are-azure-ml-pipelines"></a>Beschreibung von Azure ML-Pipelines
-
-Eine Azure ML-Pipeline führt einen vollständigen logischen Workflow mit einer geordneten Abfolge von Schritten aus. Jeder Schritt stellt eine diskrete Verarbeitungsaktion dar. Pipelines werden im Kontext eines Azure Machine Learning-[Experiments](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py) ausgeführt.
-
-In den frühen Phasen eines ML-Projekts ist nichts dagegen einzuwenden, dass ein einzelnes Jupyter Notebook oder Python-Skript sämtliche Aufgaben der Azure-Arbeitsbereichs- und -Ressourcenkonfiguration durchführt und für Datenvorbereitung, Laufzeitkonfiguration, Training und Überprüfung zuständig ist. Aber genau wie Funktionen und Klassen schnell den Vorzug vor einem einzelnen, gebieterischen Codeblock erhalten, werden ML-Workflows schnell zur bevorzugten Option im Vergleich mit einem monolithischen Notebook oder Skript. 
-
-Durch Modularisierung von ML-Aufgaben unterstützen Pipelines den Imperativ der Informatik, dass eine Komponente „(nur) eine Sache gut machen“ sollte. Modularität ist eindeutig kritisch für den Erfolg eines Projekts, wenn die Programmierung in Teams erfolgt, aber selbst bei der Arbeit ohne Mitstreiter umfassen auch kleine ML-Projekte verschiedene Aufgaben, von denen jede einen erheblichen Grad an Komplexität aufweist. Zu den Aufgaben gehören: Workspacekonfiguration und Datenzugriff, Datenvorbereitung, Modelldefinition und -konfiguration und Bereitstellung. Während die Ausgaben einer oder mehrerer Aufgaben jeweils die Eingaben weiterer Aufgaben bilden, stellen die Implementierungsdetails jeder einzelnen Aufgabe für die nächste bestenfalls eine irrelevante Ablenkung dar. Im schlimmsten Fall kann der Berechnungszustand einer Aufgabe einen Fehler in einer anderen verursachen. 
-
 ### <a name="analyzing-dependencies"></a>Analysieren von Abhängigkeiten
 
-Viele Programmierökosysteme weisen Tools zum Orchestrieren von Ressourcen-, Bibliotheks- oder Kompilierungsabhängigkeiten auf. Im Allgemeinen verwenden diese Tools Dateizeitstempel zum Berechnen von Abhängigkeiten. Wenn eine Datei geändert wird, werden nur sie und ihre Abhängigkeiten aktualisiert (heruntergeladen, erneut kompiliert oder verpackt). Azure ML-Pipelines erweitern dieses Konzept erheblich. Wie herkömmliche Buildtools errechnen Pipelines Abhängigkeiten zwischen Schritten und wiederholen nur die erforderlichen Neuberechnungen. 
+Viele Programmierökosysteme weisen Tools zum Orchestrieren von Ressourcen-, Bibliotheks- oder Kompilierungsabhängigkeiten auf. Im Allgemeinen verwenden diese Tools Dateizeitstempel zum Berechnen von Abhängigkeiten. Wenn eine Datei geändert wird, werden nur sie und ihre Abhängigkeiten aktualisiert (heruntergeladen, erneut kompiliert oder verpackt). Azure ML-Pipelines erweitern dieses Konzept. Wie herkömmliche Buildtools errechnen Pipelines Abhängigkeiten zwischen Schritten und wiederholen nur die erforderlichen Neuberechnungen. 
 
-Die Abhängigkeitsanalyse in Azure ML-Pipelines ist jedoch anspruchsvoller als einfache Zeitstempel. Jeder Schritt kann in einer anderen Hardware- und Softwareumgebung ausgeführt werden. Die Datenaufbereitung ist möglicherweise ein zeitaufwändiger Vorgang, sie muss aber nicht auf Hardware mit leistungsstarken GPUs ausgeführt werden, für bestimmte Schritte ist vielleicht betriebssystemspezifische Software erforderlich, oder Sie entscheiden sich für verteiltes Training usw. Zwar können die Kosteneinsparungen durch das Optimieren von Ressourcen erheblich sein, es kann aber schlicht erdrückend sein, manuell durch all die verschiedenen Variationen in Hardware- und Softwareressoucen zu balancieren. Noch schwieriger ist es, all dies zu erreichen, ohne jemals einen Fehler bei der Übertragung der Daten zwischen den einzelnen Schritten zu machen. 
+Die Abhängigkeitsanalyse in Azure ML-Pipelines ist jedoch anspruchsvoller als einfache Zeitstempel. Jeder Schritt kann in einer anderen Hardware- und Softwareumgebung ausgeführt werden. Die Datenaufbereitung ist möglicherweise ein zeitaufwändiger Vorgang, sie muss aber nicht auf Hardware mit leistungsstarken GPUs ausgeführt werden, für bestimmte Schritte ist vielleicht betriebssystemspezifische Software erforderlich, oder Sie entscheiden sich für verteiltes Training usw. 
 
-Pipelines lösen diese Probleme. Azure Machine Learning orchestriert automatisch alle Abhängigkeiten zwischen den Schritten der Pipeline. Diese Orchestrierung kann das Hoch- und Herunterfahren von Docker-Images, das Einbinden und Trennen von Computeressourcen und das automatisierte Verschieben der Daten zwischen den einzelnen Schritten in konsistenter Weise beinhalten.
-
-### <a name="reusing-results"></a>Wiederverwendung von Ergebnissen
-
-Darüber hinaus kann die Ausgabe eines Schritts auf Wunsch wiederverwendet werden. Wenn Sie die Wiederverwendung als eine Möglichkeit angeben und keine Abhängigkeiten im Upstream die Neuberechnung auslösen, verwendet der Pipelinedienst eine zwischengespeicherte Version der Ergebnisse des Schritts. Durch diese Art von Wiederverwendung kann die Entwicklungszeit erheblich verkürzt werden. Wenn Sie eine komplexe Datenaufbereitungsaufgabe bewältigen müssen, führen Sie sie wahrscheinlich öfter aus als unbedingt erforderlich. Pipelines nehmen Ihnen diese Sorge ab: Wenn es erforderlich ist, wird der Schritt ausgeführt, sonst nicht.
-
-Diese gesamte Abhängigkeitsanalyse, -orchestrierung und -aktivierung werden von Azure Machine Learning ausgeführt, wenn Sie ein [Pipeline](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline(class)?view=azure-ml-py)-Objekt instanziieren, es an einen `Experiment` übergeben und `submit()` aufrufen. 
+Azure Machine Learning orchestriert automatisch alle Abhängigkeiten zwischen den Schritten der Pipeline. Diese Orchestrierung kann das Hoch- und Herunterfahren von Docker-Images, das Einbinden und Trennen von Computeressourcen und das automatisierte Verschieben der Daten zwischen den einzelnen Schritten in konsistenter Weise beinhalten.
 
 ### <a name="coordinating-the-steps-involved"></a>Koordinieren der beteiligten Schritte
 
@@ -110,25 +92,6 @@ Beim Erstellen und Ausführen eines `Pipeline`-Objekts finden die folgenden Schr
 Im [Azure Machine Learning Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py) ist eine Pipeline ein Python-Objekt, das im `azureml.pipeline.core`-Modul definiert ist. Ein [Pipeline](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline%28class%29?view=azure-ml-py)-Objekt enthält eine geordnete Abfolge von einem oder mehreren [PipelineStep](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.builder.pipelinestep?view=azure-ml-py)-Objekten. Die `PipelineStep`-Klasse ist abstrakt, und die eigentlichen Schritte gehören Unterklassen an, wie etwa [EstimatorStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.estimatorstep?view=azure-ml-py), [PythonScriptStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.pythonscriptstep?view=azure-ml-py) oder [DataTransferStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.datatransferstep?view=azure-ml-py). Die [ModuleStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.modulestep?view=azure-ml-py)-Klasse enthält eine wiederverwendbare Abfolge von Schritten, die von mehreren Pipelines gemeinsam verwendet werden können. Eine `Pipeline` wird als Teil einer `Experiment` ausgeführt.
 
 Eine Azure ML-Pipeline ist einem Azure Machine Learning-Arbeitsbereich zugeordnet, und ein Pipelineschritt ist einem verfügbaren Computeziel in diesem Arbeitsbereich zugeordnet. Weitere Informationen finden Sie unter [Erstellen und Verwalten von Azure Machine Learning-Arbeitsbereichen im Azure-Portal](https://docs.microsoft.com/azure/machine-learning/how-to-manage-workspace) oder [Was sind Computeziele in Azure Machine Learning?](https://docs.microsoft.com/azure/machine-learning/concept-compute-target).
-
-Für Azure Machine Learning stellt ein Computeziel die Umgebung dar, in der eine ML-Phase stattfindet. Bei der Softwareumgebung kann es sich um eine Remote-VM, Azure Machine Learning Compute, Azure Databricks, Azure Batch usw. handeln. Die Hardwareumgebung kann ebenfalls eine erhebliche Streubreite aufweisen, abhängig von GPU-Unterstützung, Arbeitsspeicher, Speicherplatz usw. Sie können das Computeziel für jeden Schritt festlegen, was Ihnen eine feiner abgestufte Kostenkontrolle erlaubt. Sie können für die spezifische Aktion, das Datenvolumen und die Leistungsanforderungen Ihres Projekts mehr oder weniger leistungsstarke Ressourcen einsetzen. 
-
-## <a name="building-pipelines-with-the-designer"></a>Erstellen von Pipelines mit dem Designer
-
-Entwickler, die eine visuelle Entwurfsoberfläche bevorzugen, können Pipelines mit dem Azure Machine Learning-Designer erstellen. Sie können über die Auswahl **Designer** auf der Startseite Ihres Arbeitsbereichs auf dieses Tool zugreifen.  Der Designer ermöglicht Ihnen, Schritte per Drag & Drop auf die Entwurfsoberfläche zu verschieben. Zur schnellen Entwicklung können Sie vorhandene Module im gesamten Spektrum von ML-Aufgaben verwenden. Die vorhandenen Module decken alle Schritte von der Datentransformation über die Algorithmusauswahl bis hin zur Bereitstellung ab. Sie können auch eine vollständig benutzerdefinierte Pipeline erstellen, indem Sie Ihre eigenen in Python-Skripts definierten Schritte kombinieren.
-
-Wenn Sie Pipelines visuell entwerfen, werden die Eingaben und Ausgaben eines Schritts sichtbar angezeigt. Für die Datenverbindungen wird Drag & Drop unterstützt, sodass Sie den Datenfluss Ihrer Pipeline schnell verstehen und ändern können.
- 
-![Azure Machine Learning-Designer: Beispiel](./media/concept-designer/designer-drag-and-drop.gif)
-
-### <a name="understanding-the-execution-graph"></a>Grundlegendes zum Ausführungsdiagramm
-
-Die Schritte in einer Pipeline weisen möglicherweise Abhängigkeiten von anderen Schritten auf. Der Azure ML-Pipelinedienst übernimmt die Arbeit, diese Abhängigkeiten zu orchestrieren und zu analysieren. Die Knoten im resultierenden „Ausführungsdiagramm“ stellen Verarbeitungsschritte dar. Jeder Schritt kann das Erstellen oder Wiederverwenden einer bestimmten Kombination aus Hardware und Software, die Wiederverwendung zwischengespeicherter Ergebnisse usw. beinhalten. Die Orchestrierung und Optimierung dieses Ausführungsdiagramms kann eine ML-Phase erheblich beschleunigen und die Kosten verringern. 
-
-Da die Schritte unabhängig ausgeführt werden, müssen die Objekte zur Aufnahme der Eingabe- und Ausgabedaten, die zwischen den verschiedenen Schritten fließen, extern definiert werden. Dies ist die Rolle von [DataSet](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py)- und [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py)-Objekten. Diese Datenobjekte sind mit einem [Datastore](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore%28class%29?view=azure-ml-py)-Objekt verknüpft, in dem ihre Speicherkonfiguration verkapselt ist. Die `PipelineStep`-Basisklasse wird immer mit einer `name`-Zeichenfolge, einer Liste von `inputs` und einer Liste von `outputs` erstellt. Normalerweise ist außerdem eine Liste `arguments` von und häufig auch eine Liste von `resource_inputs` vorhanden. Unterklassen verfügen in der Regel ebenfalls über zusätzliche Argumente (beispielsweise erfordert `PythonScriptStep`den Dateinamen und Pfad des auszuführenden Skripts). 
-
-Das Ausführungsdiagramm ist azyklisch, Pipelines können aber planmäßig wiederholt werden und sind imstande, Python-Skripts ausführen, die Statusinformationen in das Dateisystem schreiben können, wodurch die Erstellung komplexer Profile möglich wird. Wenn Sie Ihre Pipeline so entwerfen, dass bestimmte Schritte parallel oder asynchron ausgeführt werden können, verarbeitet Azure Machine Learning die Abhängigkeitsanalyse und die Koordination von Auffächern und Zusammenführen (Fan-out, Fan-in) transparent. Im Allgemeinen brauchen Sie sich nicht mit den Details des Ausführungsdiagramms zu befassen, sie können aber über das [Pipeline.Graph](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline.pipeline?view=azure-ml-py#attributes) Attribut abgerufen werden. 
-
 
 ### <a name="a-simple-python-pipeline"></a>Eine einfache Python-Pipeline
 
@@ -166,27 +129,13 @@ Dieser Codeausschnitt beginnt mit gebräuchlichen Azure Machine Learning-Objekte
 
 Weitere Informationen zum Verbinden Ihrer Pipeline mit Ihren Daten finden Sie in den Artikeln [Datenzugriff in Azure Machine Learning](concept-data.md) und [Verschieben von Daten in ML-Pipelineschritte und zwischen ML-Pipelineschritten (Python)](how-to-move-data-in-out-of-pipelines.md). 
 
-## <a name="best-practices-when-using-pipelines"></a>Bewährte Methoden bei der Verwendung von Pipelines
+## <a name="building-pipelines-with-the-designer"></a>Erstellen von Pipelines mit dem Designer
 
-Wie Sie sehen können, ist das Erstellen einer Azure ML-Pipeline etwas komplexer als das Starten eines Skripts. Für Pipelines müssen einige Python-Objekte konfiguriert und erstellt werden. 
+Entwickler, die eine visuelle Entwurfsoberfläche bevorzugen, können Pipelines mit dem Azure Machine Learning-Designer erstellen. Sie können über die Auswahl **Designer** auf der Startseite Ihres Arbeitsbereichs auf dieses Tool zugreifen.  Der Designer ermöglicht Ihnen, Schritte per Drag & Drop auf die Entwurfsoberfläche zu verschieben. 
 
-Einige Situationen, in denen sich die Verwendung einer Pipeline anbietet:
+Wenn Sie Pipelines visuell entwerfen, werden die Eingaben und Ausgaben eines Schritts sichtbar angezeigt. Für die Datenverbindungen wird Drag & Drop unterstützt, sodass Sie den Datenfluss Ihrer Pipeline schnell verstehen und ändern können.
 
-* In einer Teamumgebung: Teilen Sie ML-Aufgaben in mehrere unabhängige Schritte auf, damit Entwickler unabhängig voneinander arbeiten und ihre Programme weiterentwickeln können. 
-
-* Während oder kurz vor der Bereitstellung: Schreiben Sie die Konfiguration fest, und verwenden Sie geplante und ereignisgesteuerte Vorgänge, um trotz sich ändernder Daten den Überblick zu behalten.
-
-* In den frühen Phasen eines ML-Projekts oder beim Arbeiten ohne Mitarbeiter: Verwenden Sie Pipelines, um den Build zu automatisieren. Vielleicht haben Sie sich schon einmal Gedanken über die Neuerstellung der Konfiguration und des Berechnungsstatus gemacht, bevor Sie eine neue Idee implementieren – das ist genau das Signal, dass Sie die Verwendung einer Pipeline zum Automatisieren des Workflows zumindest in Erwägung ziehen sollten. 
-
-Angesichts der Wiederverwendung zwischengespeicherter Ergebnisse, der fein abgestuften Kontrolle der Berechnungskosten und der Prozessisolation ist es leicht, in Enthusiasmus zu verfallen, aber auch Pipelines haben ihren Preis. Zu den Antimustern gehören:
-
-* Pipelines als einziges Mittel zur Trennung von Anliegen zu verwenden. Die integrierten Funktionen, Objekte und Module von Python helfen bei der Vermeidung verwirrender Programmzustände ein gutes Stück weiter! Ein Pipelineschritt ist viel aufwändiger als ein Funktionsaufruf.
-
-* Enge Kopplung zwischen Schritten einer Pipeline. Wenn das Refactoring eines abhängigen Schritts häufig die Änderung der Ausgaben eines früheren Schritts erforderlich macht, ist es recht wahrscheinlich, dass die separaten Schritte zurzeit mehr kosten als sie nutzen. Ein weiterer Hinweis auf übermäßig enge Kopplung sind Argumente für einen Schritt, die nicht Daten darstellen sondern Flags zur Prozesssteuerung. 
-
-* Vorzeitiges Optimieren von Computeressourcen. Beispielsweise besteht die Datenaufbereitung häufig aus verschiedenen Phasen, und man stößt häufig auf solche Stellen „Oh, an dieser Stelle könnte ich ein `MpiStep` für parallele Programmierung einsetzen, aber hier ist eine Stelle, wo ich `PythonScriptStep` mit einem weniger leistungsstarken Computeziel verwenden könnte“ usw. Und vielleicht erweist sich das Erstellen fein abgestufter Schritte auf lange Sicht wirklich als lohnend, insbesondere, wenn die Möglichkeit zur Verwendung zwischengespeicherter Ergebnisse besteht, statt immer neu zu berechnen. Aber Pipelines sind nicht als Ersatz für das native `multiprocessing`-Modul von Python vorgesehen. 
-
-Bis zu dem Punkt, dass ein Projekt groß wird oder sich der Bereitstellung nähert, sollten Ihre Pipelines eher grob statt fein abgestuft sein. Wenn Sie sich Ihr ML-Projekt in Form von _Phasen_ und eine Pipeline als Mittel zur Bereitstellung eines vollständigen Workflows vorstellen, der Sie durch eine bestimmte Phase bringt, sind Sie auf dem richtigen Weg. 
+![Azure Machine Learning-Designer: Beispiel](./media/concept-designer/designer-drag-and-drop.gif)
 
 ## <a name="key-advantages"></a>Hauptvorteile
 
@@ -200,26 +149,6 @@ Die wichtigsten Argumente für das Verwenden von Pipelines für Ihre Workflows m
 |**Nachverfolgung und Versionierung**|Statt Daten- und Ergebnispfade bei der Iteration manuell zu verfolgen, verwenden Sie das Pipelines SDK, um Ihre Datenquellen, Eingaben und Ausgaben explizit zu benennen und Versionen zu verwalten. Sie können Skripts und Daten auch separat verwalten, um die Produktivität zu steigern.|
 | **Modularität** | Das Trennen von Bereichen mit verschiedenen Anliegen und das Isolieren von Änderungen ermöglicht die schnellere Entwicklung von Software mit höherer Qualität. | 
 |**Kollaboration**|Pipelines ermöglichen Data Scientists, in allen Bereichen des Entwurfsprozesses für maschinelles Lernen zusammenzuarbeiten, während sie gleichzeitig an Pipelineschritten arbeiten können.|
-
-### <a name="choosing-the-proper-pipelinestep-subclass"></a>Auswählen der richtigen PipelineStep-Unterklasse
-
-`PythonScriptStep` ist die flexibelste Unterklasse des abstrakten `PipelineStep`. Andere Unterklassen, z. B. `EstimatorStep`-Unterklassen und `DataTransferStep`, können bestimmte Aufgaben mit weniger Code durchführen. So kann z. B. ein `EstimatorStep` durch einfache Eingabe eines Namens für den Schritt, eines `Estimator` und eines Computeziels erstellt werden. Oder Sie können Ein- und Ausgaben, Pipelineparameter und Argumente außer Kraft setzen. Weitere Informationen finden Sie unter [Trainieren von Azure Machine Learning-Modellen mit einem Estimator](how-to-train-ml-models.md). 
-
-Der `DataTransferStep` gestaltet das Verschieben von Daten zwischen Datenquellen und -senken einfach. Der Code, um diese Übertragung manuell durchzuführen, ist unkompliziert, aber redundant. Stattdessen können Sie einfach ein `DataTransferStep` mit einem Namen, Verweisen auf eine Datenquelle und eine Datensenke sowie ein Computeziel erstellen. Diese Flexibilität wird durch das Notebook [Azure Machine Learning-Pipeline mit DataTransferStep](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/intro-to-pipelines/aml-pipelines-data-transfer.ipynb) veranschaulicht.
-
-## <a name="modules"></a>Module
-
-Während Pipelineschritte die Wiederverwendung der Ergebnisse eines früheren Laufs ermöglichen, geht die Konstruktion des Schritts in vielen Fällen davon aus, dass die erforderlichen Skripts und abhängigen Dateien lokal verfügbar sein müssen. Wenn ein Data Scientist den Buildvorgang auf vorhandenem Code aufsetzen möchte, müssen die Skripts und Abhängigkeiten häufig aus einem separaten Repository geklont werden.
-
-Module ähneln in der Verwendung Pipelineschritten, bieten jedoch Versionsverwaltung, die über den Arbeitsbereich ermöglicht wird, was die Zusammenarbeit und Wiederverwendbarkeit ermöglicht. Module werden für die Wiederverwendung in mehreren Pipelines konzipiert und können sich weiterentwickeln, um eine bestimmte Berechnung an verschiedene Anwendungsfälle anzupassen. Benutzer können die folgenden Aufgaben über den Arbeitsbereich ausführen, ohne externe Repositorys zu verwenden:
-
-* Erstellen neuer Module und Veröffentlichen neuer Versionen vorhandener Module
-* Kennzeichnen vorhandener Versionen als veraltet
-* Markieren von Versionen als deaktiviert, um zu verhindern, dass Consumer diese Version verwenden
-* Festlegen von Standardversionen
-* Abrufen von Modulen nach Version aus dem Arbeitsbereich, um sicherzustellen, dass Teams denselben Code verwenden
-
-Im [Notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/intro-to-pipelines/aml-pipelines-how-to-use-modulestep.ipynb) finden Sie Codebeispiele zum Erstellen, Verbinden und Verwenden von Modulen in Azure Machine Learning-Pipelines.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
