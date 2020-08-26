@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 02/19/2020
 ms.author: glenga
-ms.openlocfilehash: edf5fc33ec14d41630462cca1a4ace0663473196
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: ca8da227c97a44abe14354a5c530d508ce357884
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78191028"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88704305"
 ---
 ## <a name="run-the-function-locally"></a>Lokales Ausführen der Funktion
 
@@ -30,7 +30,7 @@ Azure Functions Core Tools arbeitet mit Visual Studio Code zusammen, um das loka
 
     Die GET-Anforderung kann auch über einen Browser über die folgende URL ausgeführt werden.
 
-    <http://localhost:7071/api/HttpExample?name=PowerShell>
+    `http://localhost:7071/api/HttpExample?name=PowerShell`
 
     Wenn Sie den Endpunkt „HttpTrigger“ aufrufen, ohne einen Parameter vom Typ `name` zu übergeben (entweder als Abfrageparameter oder im Text), gibt die Funktion den Fehler `BadRequest` zurück. Wenn Sie den Code in „run.ps1“ überprüfen, sehen Sie, dass dieser Fehler beabsichtigt ist.
 

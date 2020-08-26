@@ -17,12 +17,12 @@ ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
 ms.custom: contperfq1
-ms.openlocfilehash: 956e61894113b4728760de519ad49be71ed184cc
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: c69a5e153377eee86eaf0c43d6c982dee2938ddf
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88605004"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88783670"
 ---
 # <a name="what-are-azure-ad-access-reviews"></a>Was sind Azure AD-Zugriffsüberprüfungen?
 
@@ -81,7 +81,7 @@ Sie benötigen für Ihr Verzeichnis mindestens so viele Azure AD Premium P2-Liz
 
 Azure AD Premium P2-Lizenzen sind **nicht** für Benutzer mit den Rollen „Globaler Administrator“ oder „Benutzeradministrator“ erforderlich, von denen Zugriffsüberprüfungen eingerichtet, Einstellungen konfiguriert oder die Entscheidungen aus den Überprüfungen umgesetzt werden.
 
-Für jede kostenpflichtige Azure AD Premium P2-Lizenz, die Sie einem Benutzer Ihrer eigenen Organisation zuweisen, können Sie mit Azure AD B2B (Business-to-Business) unter dem Kontingent für externe Benutzer bis zu fünf Gastbenutzer einladen. Diese Gastbenutzer können auch Azure AD Premium P2-Features nutzen. Weitere Informationen finden Sie unter [Leitfaden zur Lizenzierung von Azure Active Directory B2B-Kollaboration](../b2b/licensing-guidance.md).
+Für jede kostenpflichtige Azure AD Premium P2-Lizenz, die Sie einem Benutzer Ihrer eigenen Organisation zuweisen, können Sie mit Azure AD B2B (Business-to-Business) unter dem Kontingent für externe Benutzer bis zu fünf Gastbenutzer einladen. Diese Gastbenutzer können auch Azure AD Premium P2-Features nutzen. Weitere Informationen finden Sie unter [Leitfaden zur Lizenzierung von Azure Active Directory B2B-Kollaboration](../external-identities/licensing-guidance.md).
 
 Weitere Informationen zu Lizenzen finden Sie unter [Zuweisen oder Entfernen von Lizenzen im Azure Active Directory-Portal](../fundamentals/license-users-groups.md).
 

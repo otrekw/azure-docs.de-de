@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/26/2020
 ms.author: allensu
 ms.custom: mvc,subject-armqs
-ms.openlocfilehash: ebf2f926f5be86ffee5f3a3e30277962a6060762
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.openlocfilehash: d83d58d608fc184f94ae70e60c56fe8fdc1e5eaa
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2020
-ms.locfileid: "85479759"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88706046"
 ---
 # <a name="quickstart-create-a-load-balancer-to-load-balance-vms-by-using-an-arm-template"></a>Schnellstart: Erstellen eines Load Balancers für den Lastenausgleich virtueller Computer durch Verwendung einer ARM-Vorlage
 
@@ -42,7 +42,7 @@ Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit 
 
 Die Load Balancer-SKU und die SKU für öffentliche IP-Adressen müssen übereinstimmen. Wenn Sie eine Load Balancer Standard-Instanz erstellen, müssen Sie auch eine neue öffentliche Standard-IP-Adresse erstellen, die als Front-End für diese Load Balancer Standard-Instanz konfiguriert ist. Wenn Sie eine Load Balancer Basic-Instanz erstellen möchten, verwenden Sie [diese Vorlage](https://azure.microsoft.com/resources/templates/201-2-vms-loadbalancer-natrules/). Microsoft empfiehlt für Produktionsworkloads die Verwendung der Standard-SKU.
 
-:::code language="json" source="~/quickstart-templates/101-load-balancer-standard-create/azuredeploy.json" range="1-324" highlight="57-122":::
+:::code language="json" source="~/quickstart-templates/101-load-balancer-standard-create/azuredeploy.json":::
 
 In der Vorlage wurden mehrere Azure-Ressourcen definiert:
 

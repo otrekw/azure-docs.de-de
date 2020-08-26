@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 093f4f3cd54f1e4638a0fbcd161a2af4fecba5da
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: 276b6cc8038a7ac8e0ddd27a3c3eb7c87f05ed1b
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475786"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88795897"
 ---
 # <a name="administrative-units-management-in-azure-active-directory-preview"></a>Verwalten von Verwaltungseinheiten in Azure Active Directory (Vorschau)
 
@@ -47,8 +47,8 @@ Bei der Verwendung von Verwaltungseinheiten ist für jeden Administrator einer V
 In dieser Vorschauversion können Sie Verwaltungseinheiten im Azure-Portal, mithilfe von PowerShell-Cmdlets oder mit Microsoft Graph verwalten. Ausführliche Informationen finden Sie in unserer Dokumentation:
 
 - [Erstellen, Entfernen, Auffüllen und Hinzufügen von Rollen zu Verwaltungseinheiten](roles-admin-units-manage.md): Umfassende schrittweise Anleitungen
-- [Arbeiten mit Verwaltungseinheiten](https://docs.microsoft.com/powershell/azure/active-directory/working-with-administrative-units?view=azureadps-2.0): Arbeiten mit Verwaltungseinheiten mithilfe von PowerShell
-- [Unterstützung von Verwaltungseinheiten in Microsoft Graph](https://docs.microsoft.com/graph/api/resources/administrativeunit?view=graph-rest-beta): Ausführliche Dokumentation zu Verwaltungseinheiten in Microsoft Graph.
+- [Arbeiten mit Verwaltungseinheiten](/powershell/azure/active-directory/working-with-administrative-units?view=azureadps-2.0): Arbeiten mit Verwaltungseinheiten mithilfe von PowerShell
+- [Unterstützung von Verwaltungseinheiten in Microsoft Graph](/graph/api/resources/administrativeunit?view=graph-rest-beta): Ausführliche Dokumentation zu Verwaltungseinheiten in Microsoft Graph.
 
 ### <a name="planning-your-administrative-units"></a>Planen Ihrer Verwaltungseinheiten
 

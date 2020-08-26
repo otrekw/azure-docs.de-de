@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/14/2020
 ms.topic: quickstart
-ms.openlocfilehash: d6acc16780179654975d63ab2c0b04caf141510c
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 3eec935d0a25f9510cd9a2f6e00b7ac22756e697
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85557048"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88796798"
 ---
 # <a name="quickstart-deploy-unity-sample-to-hololens"></a>Schnellstart: Bereitstellen des Unity-Beispiels für HoloLens
 
@@ -44,7 +44,7 @@ Stellen Sie sicher, dass Ihre Anmeldeinformationen ordnungsgemäß mit der Szene
 1. Ändern Sie die Konfiguration in **Release** und **ARM64**.
 1. Ändern Sie den Debuggermodus in **Remote Machine**\ (Remotecomputer).
     ![Projektmappenkonfiguration](media/unity-deploy-config.png)
-1. Erstellen Sie die Projektmappe (F7).
+1. Erstellen der Projektmappe
 1. Navigieren Sie für das Projekt „Schnellstart“ zu *Properties > Debugging* (Eigenschaften > Debuggen).
     1. Stellen Sie sicher, dass die Konfiguration *Release* aktiv ist.
     1. Legen Sie *Debugger to Launch* (Zu startender Debugger) auf **Remote Machine** (Remotecomputer) fest.

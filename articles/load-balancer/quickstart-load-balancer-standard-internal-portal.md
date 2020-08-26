@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 07/30/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 1a7511ed0e7bb1d9032331efa87f0d61a99cf5dc
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: e8d11c2122a21b67620987ad9ef74efc99eeb98b
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88065232"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654496"
 ---
 # <a name="quickstart-create-an-internal-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>Schnellstart: Erstellen eines internen Lastenausgleichs für virtuelle Computer über das Azure-Portal
 
@@ -36,7 +36,7 @@ Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim 
 
 ---
 
-# <a name="option-1-default-create-a-internal-load-balancer-standard-sku"></a>[Option 1 (Standard): Erstellen eines internen Lastenausgleichs (Standard-SKU)](#tab/option-1-create-internal-load-balancer-standard)
+# <a name="standard-sku"></a>[**Standard-SKU**](#tab/option-1-create-internal-load-balancer-standard)
 
 >[!NOTE]
 >Ein Lastenausgleich mit Standard-SKU wird für Produktionsworkloads empfohlen.  Weitere Informationen zu SKUs finden Sie unter **[Azure Load Balancer-SKUs](skus.md)** .
@@ -280,7 +280,7 @@ Diese virtuellen Computer werden dem Back-End-Pool des zuvor erstellten Lastenau
     | Netzwerksicherheitsgruppe | Wählen Sie die vorhandene Netzwerksicherheitsgruppe (**myNSG**) aus.|
 
 
-# <a name="option-2-create-a-internal-load-balancer-basic-sku"></a>[Option 2: Erstellen eines internen Lastenausgleichs (Basic-SKU)](#tab/option-1-create-internal-load-balancer-basic)
+# <a name="basic-sku"></a>[**Basic-SKU**](#tab/option-1-create-internal-load-balancer-basic)
 
 >[!NOTE]
 >Ein Lastenausgleich mit Standard-SKU wird für Produktionsworkloads empfohlen.  Weitere Informationen zu SKUs finden Sie unter **[Azure Load Balancer-SKUs](skus.md)** .

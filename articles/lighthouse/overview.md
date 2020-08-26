@@ -1,18 +1,18 @@
 ---
 title: Was ist Azure Lighthouse?
 description: Mit Azure Lighthouse können Dienstanbieter verwaltete Dienste für Ihre Kunden bereitstellen, bei denen bedarfsorientiert eine höhere Automatisierung und Effizienz erzielt werden können.
-ms.date: 08/12/2020
+ms.date: 08/19/2020
 ms.topic: overview
-ms.openlocfilehash: f65411c03725058e8aa6491245ffd94987efa6c9
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: d21d11d1316b177f38b6bce197dec4f2c3d3fac8
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88163219"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88660732"
 ---
 # <a name="what-is-azure-lighthouse"></a>Was ist Azure Lighthouse?
 
-Azure Lighthouse bietet eine zentrale Steuerungsebene, um Azure-Ressourcen mandantenübergreifend mit höherer Automatisierung, Skalierbarkeit und verbesserter Governance anzuzeigen und zu verwalten. Mit Azure Lighthouse können Dienstanbieter verwaltete Dienste mithilfe umfassender und stabiler Verwaltungstools bereitstellen, die in die Azure-Plattform integriert sind. Dieses Angebot kann auch IT-Abteilungen von Unternehmen zugutekommen, die Ressourcen in mehreren Mandanten verwalten.
+Azure Lighthouse ermöglicht die mandantenübergreifende Verwaltung sowie die Verwaltung mehrerer Mandanten mit stärkerer Automatisierung, besserer Skalierbarkeit und verbesserter Governance für alle Ressourcen und Mandanten. Mit Azure Lighthouse können Dienstanbieter verwaltete Dienste mithilfe umfassender und stabiler Verwaltungstools bereitstellen, die in die Azure-Plattform integriert sind. Dieses Angebot kann auch IT-Abteilungen von Unternehmen zugutekommen, die Ressourcen in mehreren Mandanten verwalten.
 
 ![Übersichtsdiagramm von Azure Lighthouse](media/azure-lighthouse-overview.jpg)
 

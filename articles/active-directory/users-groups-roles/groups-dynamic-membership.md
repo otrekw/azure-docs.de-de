@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8dda8c742a0aafe7ec3f46a0a9dbf0abd4a516b4
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: f36e5d8974caea0eecff7e0b399b6aab5d200664
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213803"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88797104"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Regeln für eine dynamische Mitgliedschaft für Gruppen in Azure Active Directory
 
@@ -341,13 +341,13 @@ device.objectId -ne null
 
 ## <a name="extension-properties-and-custom-extension-properties"></a>Erweiterungseigenschaften und benutzerdefinierte Erweiterungseigenschaften
 
-Erweiterungsattribute und benutzerdefinierte Erweiterungsattribute werden als Zeichenfolgeneigenschaften in den Regeln für eine dynamische Mitgliedschaft unterstützt. [Erweiterungsattribute](https://docs.microsoft.com/graph/api/resources/onpremisesextensionattributes?view=graph-rest-1.0) werden von einer lokalen Windows Server AD-Instanz synchronisiert und erhalten das Format „ExtensionAttributeX“, wobei X den Zahlen 1 bis 15 entspricht. Dies ist ein Beispiel für eine Regel, die ein Erweiterungsattribut als Eigenschaft verwendet:
+Erweiterungsattribute und benutzerdefinierte Erweiterungsattribute werden als Zeichenfolgeneigenschaften in den Regeln für eine dynamische Mitgliedschaft unterstützt. [Erweiterungsattribute](/graph/api/resources/onpremisesextensionattributes?view=graph-rest-1.0) werden von einer lokalen Windows Server AD-Instanz synchronisiert und erhalten das Format „ExtensionAttributeX“, wobei X den Zahlen 1 bis 15 entspricht. Dies ist ein Beispiel für eine Regel, die ein Erweiterungsattribut als Eigenschaft verwendet:
 
 ```
 (user.extensionAttribute15 -eq "Marketing")
 ```
 
-[Benutzerdefinierte Erweiterungseigenschaften](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-feature-directory-extensions) werden von einer lokalen Windows Server AD-Instanz oder einer verbundenen SaaS-Anwendung synchronisiert und weisen das Format `user.extension_[GUID]_[Attribute]` auf. Dabei gilt Folgendes:
+[Benutzerdefinierte Erweiterungseigenschaften](../hybrid/how-to-connect-sync-feature-directory-extensions.md) werden von einer lokalen Windows Server AD-Instanz oder einer verbundenen SaaS-Anwendung synchronisiert und weisen das Format `user.extension_[GUID]_[Attribute]` auf. Dabei gilt Folgendes:
 
 * [GUID] ist der eindeutige Bezeichner in Azure AD für die Anwendung, die die Eigenschaft in Azure AD erstellt hat.
 * [Attribute] ist der Name der Eigenschaft bei ihrer Erstellung.
@@ -393,7 +393,7 @@ Die folgenden Geräteattribute können verwendet werden.
  systemLabels | Eine beliebige Zeichenfolge, die mit der Intune-Geräteeigenschaft zum Kennzeichnen von Geräten der modernen Arbeitswelt übereinstimmt | (device.systemLabels -contains "M365Managed")
 
 > [!Note]  
-> Für das Geräteattribut „deviceOwnership“ müssen Sie beim Erstellen dynamischer Gruppen für Geräte den Wert auf „Company“ festlegen. In Intune wird der Gerätebesitz dagegen mit „Corporate“ angegeben. Weitere Informationen finden Sie unter [OwnerTypes](https://docs.microsoft.com/intune/reports-ref-devices#ownertypes). 
+> Für das Geräteattribut „deviceOwnership“ müssen Sie beim Erstellen dynamischer Gruppen für Geräte den Wert auf „Company“ festlegen. In Intune wird der Gerätebesitz dagegen mit „Corporate“ angegeben. Weitere Informationen finden Sie unter [OwnerTypes](/intune/reports-ref-devices#ownertypes). 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

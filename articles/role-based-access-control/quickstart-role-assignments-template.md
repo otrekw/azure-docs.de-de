@@ -10,12 +10,12 @@ ms.custom: subject-armqs
 ms.workload: identity
 ms.date: 05/21/2020
 ms.author: rolyon
-ms.openlocfilehash: 9320a68684a25949e8a0b4e2c7d72a6267401add
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 622f37fa4fda20fdc854edf5cd7c192b4113c4e3
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86252350"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88690441"
 ---
 # <a name="quickstart-add-an-azure-role-assignment-using-an-arm-template"></a>Schnellstart: Hinzufügen einer Azure-Rollenzuweisung mithilfe einer Resource Manager-Vorlage
 
@@ -39,7 +39,7 @@ Sie benötigen Folgendes, um Rollenzuweisungen hinzufügen zu können:
 
 Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/101-rbac-builtinrole-resourcegroup/). Die Vorlage hat drei Parameter und einen Ressourcenabschnitt. Beachten Sie im Abschnitt „Ressourcen“, dass er die drei Elemente einer Rollenzuweisung enthält: Sicherheitsprinzipal, Rollendefinition und Bereich.
 
-:::code language="json" source="~/quickstart-templates/101-rbac-builtinrole-resourcegroup/azuredeploy.json" highlight="30-32":::
+:::code language="json" source="~/quickstart-templates/101-rbac-builtinrole-resourcegroup/azuredeploy.json":::
 
 In der Vorlage ist die folgende Ressource definiert:
 
