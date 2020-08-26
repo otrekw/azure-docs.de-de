@@ -1,6 +1,6 @@
 ---
 title: Dienstgrenzwerte für Azure Key Vault – Azure Key Vault | Microsoft-Dokumentation
-description: Weitere Informationen zu den Grenzwerten des Azure-Schlüsseltresordiensts
+description: Erfahren Sie mehr über Dienstgrenzwerte für Azure Key Vault, einschließlich Schlüsseltransaktionen und der Integration von Azure Private Link.
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 75fec93be9b43785a91c93b7c609231e37188602
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: ec1894a54e9ebc10e10c40984b4891be9272bd33
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81427014"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88191738"
 ---
 # <a name="azure-key-vault-service-limits"></a>Grenzwerte des Azure Key Vault-Diensts
 

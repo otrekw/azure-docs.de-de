@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 06/12/2019
-ms.openlocfilehash: 57f9338841b599e10c8a1d7eec8fd4f371ceecb9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6a01e86f4afe397ed78cd279231a2429b17c60a8
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87081014"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88651368"
 ---
 # <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-powershell"></a>Schnellstart: Erstellen eines Apache Kafka-Clusters in Azure HDInsight mithilfe von PowerShell
 
@@ -133,7 +133,7 @@ New-AzHDInsightCluster `
 
 Das Erstellen des HDInsight-Clusters kann bis zu 20 Minuten dauern.
 
-Mit dem Parameter `-DisksPerWorkerNode` wird die Skalierbarkeit von Kafka in HDInsight konfiguriert. Kafka in HDInsight verwendet den lokalen Datenträger der virtuellen Computer im Cluster, um Daten zu speichern. Da Kafka sehr E/A-intensiv ist, wird [Azure Managed Disks](../../virtual-machines/windows/managed-disks-overview.md) verwendet, um einen hohen Durchsatz zu ermöglichen und mehr Speicher pro Knoten bereitzustellen.
+Mit dem Parameter `-DisksPerWorkerNode` wird die Skalierbarkeit von Kafka in HDInsight konfiguriert. Kafka in HDInsight verwendet den lokalen Datenträger der virtuellen Computer im Cluster, um Daten zu speichern. Da Kafka sehr E/A-intensiv ist, wird [Azure Managed Disks](../../virtual-machines/managed-disks-overview.md) verwendet, um einen hohen Durchsatz zu ermöglichen und mehr Speicher pro Knoten bereitzustellen.
 
 Der Typ des verwalteten Datenträgers kann entweder __Standard__ (HDD) oder __Premium__ (SSD) sein. Der Typ des Datenträgers hängt von der VM-Größe ab, die von den Workerknoten (Kafka-Broker) verwendet werden. Premium-Datenträger werden automatisch mit virtuellen Computern der DS- und GS-Serie verwendet. Alle anderen virtuellen Computertypen verwenden den Standardtyp. Sie können den VM-Typ mit dem `-WorkerNodeSize`-Parameter festlegen. Weitere Informationen zu Parametern finden Sie in der Dokumentation [New-AzHDInsightCluster](/powershell/module/az.HDInsight/New-azHDInsightCluster).
 
