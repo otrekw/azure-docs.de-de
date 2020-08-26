@@ -4,15 +4,16 @@ description: In diesem Artikel erfahren Sie, wie Rabatte für reservierte Instan
 author: bandersmsft
 ms.reviewer: yashar
 ms.service: cost-management-billing
+ms.subservice: reservations
 ms.topic: conceptual
 ms.date: 03/22/2020
 ms.author: banders
-ms.openlocfilehash: cd09bb7bde759c543b066070c5d2450404949610
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.openlocfilehash: 1c038e896a9f9fc65c3b2201b3e763e966285c56
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82627108"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88684676"
 ---
 # <a name="how-a-reservation-discount-is-applied"></a>Anwendung eines Reservierungsrabatts
 
@@ -38,7 +39,7 @@ Wenn Sie eine Reservierung erwerben, kann der Rabatt auf andere Instanzen mit At
 
 Servicepläne:
 
-- Reservierte VM-Instanzen: Wenn Sie die Reservierung erwerben und **Optimiert für: Flexibilität bei der Instanzgröße** wählen, hängt die Abdeckung des Rabatts von der ausgewählten VM-Größe ab. Die Reservierung kann für VM-Größen in derselben Größenordnung gelten. Weitere Informationen finden Sie unter [Flexibilität bei der VM-Größe mit reservierten VM-Instanzen](../../virtual-machines/windows/reserved-vm-instance-size-flexibility.md).
+- Reservierte VM-Instanzen: Wenn Sie die Reservierung erwerben und **Optimiert für: Flexibilität bei der Instanzgröße** wählen, hängt die Abdeckung des Rabatts von der ausgewählten VM-Größe ab. Die Reservierung kann für VM-Größen in derselben Größenordnung gelten. Weitere Informationen finden Sie unter [Flexibilität bei der VM-Größe mit reservierten VM-Instanzen](../../virtual-machines/reserved-vm-instance-size-flexibility.md).
 - Reservierte Azure Storage-Kapazität: Sie können reservierte Kapazität für Azure Storage Standard-Konten in Einheiten von 100 TiB oder 1 PiB pro Monat erwerben. Informationen zu den Regionen, die reservierte Azure Storage-Kapazität unterstützen, finden Sie unter [Preise für Blockblobs](https://azure.microsoft.com/pricing/details/storage/blobs/). Reservierte Azure Storage-Kapazität ist für alle Zugriffsebenen („Heiß“, „Kalt“ und „Archiv“) und für alle Replikationskonfigurationen (LRS, GRS und ZRS) verfügbar.
 - Reservierte SQL-Datenbank-Kapazität: Die Rabattabdeckung hängt von der ausgewählten Leistungsstufe ab. Weitere Informationen finden Sie unter [Grundlegendes zur Anwendung eines Rabatts für Azure-Reservierungen auf SQL-Datenbank-Instanzen](understand-reservation-charges.md).
 - Reservierte Azure Cosmos DB-Kapazität: Die Rabattabdeckung hängt vom bereitgestellten Durchsatz ab. Weitere Informationen finden Sie unter [Understand how an Azure Cosmos DB reservation discount is applied (Grundlegendes zur Anwendung eines Rabatts für Azure Cosmos DB-Reservierungen)](understand-cosmosdb-reservation-charges.md).
