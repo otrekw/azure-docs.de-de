@@ -1,32 +1,32 @@
 ---
-title: VM-Größen
-description: Beschreibt die unterschiedlichen VM-Größen, die zugeordnet werden können
+title: Servergrößen
+description: Beschreibt die unterschiedlichen Servergrößen, die zugeordnet werden können
 author: florianborn71
 ms.author: flborn
 ms.date: 05/28/2020
 ms.topic: reference
-ms.openlocfilehash: e8e439a055b71ed291573965c561ee31610e3ed4
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: b9479c2ab5b63440a03bd74d2503930108a49091
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121611"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88511184"
 ---
-# <a name="vm-sizes"></a>VM-Größen
+# <a name="server-sizes"></a>Servergrößen
 
-Der Renderingdienst kann auf zwei verschiedenen Arten von Computern in Azure ausgeführt werden, die als `Standard` und `Premium` bezeichnet werden.
+Azure Remote Rendering ist als zwei Serverkonfigurationen verfügbar: `Standard` und `Premium`.
 
 ## <a name="polygon-limits"></a>Maximale Polygonzahl
 
-Bei der `Standard`-VM-Größe gibt es eine feste Beschränkung auf **20 Millionen Polygone**. Bezüglich der `Premium`-Größe gibt es keinerlei Einschränkung.
+Remote Rendering mit einem Server der Größe `Standard` hat eine maximale Szenengröße von 20 Millionen Polygonen. Remote Rendering mit der Größe `Premium` erzwingt kein hartes Maximum, die Leistung kann jedoch beeinträchtigt werden, wenn Ihre Inhalte die Renderingkapazität des Diensts überschreiten.
 
-Wenn der Renderer auf einer Standard-VM diesen Grenzwert erreicht, schaltet er das Rendering in einen Schachbretthintergrund um:
+Wenn der Renderer auf einem Server mit der Größe „Standard“ diesen Grenzwert erreicht, schaltet er das Rendering in einen Schachbretthintergrund um:
 
 ![Schachbrett](media/checkerboard.png)
 
-## <a name="allocate-the-vm"></a>Zuordnen der VM
+## <a name="specify-the-server-size"></a>Angeben der Servergröße
 
-Der gewünschte VM-Typ muss bei der Initialisierung der Renderingsitzung angegeben werden. Er kann nicht während einer laufenden Sitzung geändert werden. Die folgenden Codebeispiele zeigen, wo die VM-Größe angegeben werden muss:
+Der gewünschte Serverkonfigurationstyp muss bei der Initialisierung der Renderingsitzung angegeben werden. Er kann nicht während einer laufenden Sitzung geändert werden. Die folgenden Codebeispiele zeigen, wo die Servergröße angegeben werden muss:
 
 ```cs
 async void CreateRenderingSession(AzureFrontend frontend)
@@ -51,7 +51,7 @@ void CreateRenderingSession(ApiHandle<AzureFrontend> frontend)
 }
 ```
 
-Für die [PowerShell-Beispielskripts](../samples/powershell-example-scripts.md) muss die VM-Größe in der Datei `arrconfig.json` angegeben werden:
+Für die [PowerShell-Beispielskripts](../samples/powershell-example-scripts.md) muss die Servergröße in der Datei `arrconfig.json` angegeben werden:
 
 ```json
 {
@@ -74,13 +74,13 @@ Dementsprechend ist es möglich, eine Anwendung zu schreiben, die auf die `stand
 
 ### <a name="how-to-determine-the-number-of-polygons"></a>Bestimmen der Anzahl der Polygone
 
-Es gibt zwei Möglichkeiten, die Anzahl der Polygone eines Modells oder einer Szene zu ermitteln, die zum Budgetlimit der VM mit `standard`-Größe beitragen:
+Es gibt zwei Möglichkeiten, die Anzahl der Polygone eines Modells oder einer Szene zu ermitteln, die zum Budgetlimit der `standard`-Konfigurationsgröße beitragen:
 * Rufen Sie auf der Modellkonvertierungsseite die [JSON-Datei der Konvertierungsausgabe](../how-tos/conversion/get-information.md) ab, und überprüfen Sie den `numFaces`-Eintrag im Abschnitt [*inputStatistics*](../how-tos/conversion/get-information.md#the-inputstatistics-section) (Eingabestatistik).
 * Wenn die Anwendung dynamische Inhalte verarbeitet, kann die Anzahl gerenderter Polygone während der Runtime dynamisch abgefragt werden. Verwenden Sie eine [Leistungsbewertungsabfrage](../overview/features/performance-queries.md#performance-assessment-queries), und suchen Sie in der `FrameStatistics`-Struktur nach dem Element `polygonsRendered`. Das Feld `polygonsRendered` wird auf `bad` festgelegt, wenn der Renderer den Grenzwert für Polygone erreicht. Der Schachbretthintergrund wird stets mit einiger Verzögerung ausgeblendet, um sicherzustellen, dass nach dieser asynchronen Abfrage eine Benutzeraktion durchgeführt werden kann. Eine Benutzeraktion kann beispielsweise Modellinstanzen ausblenden oder löschen.
 
 ## <a name="pricing"></a>Preise
 
-Eine detaillierte Aufschlüsselung der Preise für die einzelnen VM-Typen finden Sie auf der Seite [Remote Rendering – Preise](https://azure.microsoft.com/pricing/details/remote-rendering).
+Eine detaillierte Aufschlüsselung der Preise für die einzelnen Konfigurationstypen finden Sie auf der Seite [Remote Rendering – Preise](https://azure.microsoft.com/pricing/details/remote-rendering).
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [PowerShell-Beispielskripts](../samples/powershell-example-scripts.md)

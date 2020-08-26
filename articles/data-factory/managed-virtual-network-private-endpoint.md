@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 07/15/2020
-ms.openlocfilehash: c0f23c864430b6cb2f49f924d5aaa8bde296037c
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: 14a3a76ef4fefb7a33b272b846e1f1cb66644c3e
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88135962"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88225681"
 ---
 # <a name="azure-data-factory-managed-virtual-network-preview"></a>Verwaltetes virtuelles Netzwerk in Azure Data Factory (Vorschauversion)
 
@@ -82,15 +82,11 @@ Die nachstehenden Datenquellen werden für eine Verbindung über einen privaten 
 - Azure Synapse Analytics (ehemals Azure SQL Data Warehouse)
 - Azure Cosmos DB SQL
 - Azure-Schlüsseltresor
-- Azure Private Link
+- Azure Private Link-Dienst
 
 ### <a name="outbound-communications-through-public-endpoint-from-adf-managed-virtual-network"></a>Ausgehende Kommunikation über einen öffentlichen Endpunkt von einem verwaltetem virtuellen ADF-Netzwerk
 - Nur Port 443 wird für die ausgehende Kommunikation geöffnet.
 - Azure Storage und Azure Data Lake Gen2 werden für eine Verbindung über einen öffentlichen Endpunkt von einem verwalteten virtuellen ADF-Netzwerk nicht unterstützt.
-
-### <a name="other-known-issues"></a>Andere bekannte Probleme
-Die Debugausführung für Cosmos DB-Verbindungen funktioniert nicht gleichzeitig mit Dataflow-Debuging und Pipelinedebugging.
-
 
 ## <a name="next-steps"></a>Nächste Schritte
 

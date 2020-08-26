@@ -3,12 +3,12 @@ title: Verwalten von Azure Recovery Services-Tresoren und -Servern
 description: In diesem Artikel erfahren Sie, wie Sie das Dashboard „Übersicht“ des Recovery Services-Tresors zum Überwachen und Verwalten Ihrer Recovery Services-Tresore verwenden.
 ms.topic: conceptual
 ms.date: 07/08/2019
-ms.openlocfilehash: 1b3cc317b8a26b16bbeda9793f87d089f2fbc59f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 68c6354fa15ee2a6873b57e5c1622afb108b9a10
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87054902"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88263327"
 ---
 # <a name="monitor-and-manage-recovery-services-vaults"></a>Überwachen und Verwalten von Recovery Services-Tresoren
 
@@ -30,11 +30,11 @@ Die Voraussetzungen für diesen Artikel sind: ein Azure-Abonnement, ein Recovery
 
    ![Öffnen der Liste mit den Recovery Services-Tresoren – Schritt 1](./media/backup-azure-manage-windows-server/open-rs-vault-list.png)
 
-3. Geben Sie im Dialogfeld **Alle Dienste** **Recovery Services** ein. Sobald Sie mit der Eingabe beginnen, wird die Liste auf der Grundlage Ihrer Eingabe gefiltert. Wenn die Option **Recovery Services-Tresore** angezeigt wird, klicken Sie darauf, um die Liste mit den Recovery Services-Tresoren in Ihrem Abonnement anzuzeigen.
+3. Geben Sie im Dialogfeld **Alle Dienste** **Recovery Services** ein. Sobald Sie mit der Eingabe beginnen, wird die Liste auf der Grundlage Ihrer Eingabe gefiltert. Wenn die Option **Recovery Services-Tresore** angezeigt wird, wählen Sie sie aus, um die Liste mit den Recovery Services-Tresoren in Ihrem Abonnement anzuzeigen.
 
     ![Erstellen eines Recovery Services-Tresors – Schritt 1](./media/backup-azure-manage-windows-server/list-of-rs-vaults.png) <br/>
 
-4. Klicken Sie in der Liste mit den Tresoren auf einen Tresor, um dessen Dashboard **Übersicht** zu öffnen.
+4. Wählen Sie in der Liste mit den Tresoren einen Tresor aus, um dessen Dashboard **Übersicht** zu öffnen.
 
     ![Dashboard des Recovery Services-Tresors](./media/backup-azure-manage-windows-server/rs-vault-blade.png) <br/>
 
@@ -42,7 +42,7 @@ Die Voraussetzungen für diesen Artikel sind: ein Azure-Abonnement, ein Recovery
 
 ## <a name="monitor-backup-jobs-and-alerts"></a>Überwachen von Sicherungsaufträgen und Warnungen
 
-Das Dashboard **Übersicht** des Recovery Services-Tresors enthält Kacheln für Überwachungs- und Nutzungsinformationen. Auf den Kacheln im Abschnitt „Überwachung“ werden kritische Warnungen und allgemeine Warnmeldungen sowie in Bearbeitung befindliche und fehlerhaften Aufträge angezeigt. Klicken Sie auf eine bestimmte Warnung oder einen Auftrag, um das Menü „Sicherungswarnungen“ oder „Sicherungsaufträge“, nach diesem Auftrag oder dieser Warnung gefiltert, zu öffnen.
+Das Dashboard **Übersicht** des Recovery Services-Tresors enthält Kacheln für Überwachungs- und Nutzungsinformationen. Auf den Kacheln im Abschnitt „Überwachung“ werden kritische Warnungen und allgemeine Warnmeldungen sowie in Bearbeitung befindliche und fehlerhaften Aufträge angezeigt. Wählen Sie eine bestimmte Warnung oder einen Auftrag aus, um das nach dieser Warnung bzw. diesem Auftrag gefilterte Menü „Sicherungswarnungen“ oder „Sicherungsaufträge“ zu öffnen.
 
 ![Aufgaben im Sicherungsdashboard](./media/backup-azure-manage-windows-server/monitor-dashboard-tiles-warning.png)
 
@@ -57,7 +57,7 @@ Die Kacheln des Abschnitts „Nutzung“ enthalten folgende Informationen:
 * Die Anzahl der für den Tresor konfigurierten Sicherungselemente.
 * Der vom Tresor belegte Azure-Speicher (aufgeteilt nach LRS und GRS).
 
-Klicken Sie auf die Kacheln (außer „Sicherungsspeicher“), um das zugehörige Menü zu öffnen. In der Abbildung oben werden auf der Kachel „Sicherungswarnungen“ drei kritische Warnungen angezeigt. Durch Klicken auf die Zeile „Kritische Warnungen“ auf der Kachel „Sicherungswarnungen“ werden die Sicherungswarnungen, gefiltert nach kritischen Warnungen, angezeigt.
+Wählen Sie die Kacheln (außer „Sicherungsspeicher“) aus, um das zugehörige Menü zu öffnen. In der Abbildung oben werden auf der Kachel „Sicherungswarnungen“ drei kritische Warnungen angezeigt. Durch Auswählen der Zeile „Kritische Warnungen“ auf der Kachel „Sicherungswarnungen“ werden die nach kritischen Warnungen gefilterten Sicherungswarnungen angezeigt.
 
 ![Menü „Sicherungswarnungen“, gefiltert nach kritischen Warnungen](./media/backup-azure-manage-windows-server/critical-backup-alerts.png)
 
@@ -81,13 +81,13 @@ Führen Sie die folgenden Schritte aus, um alle Probleme zu beheben, die von den
 
 ## <a name="manage-backup-alerts"></a>Verwalten von Sicherungswarnungen
 
-Klicken Sie im Menü „Recovery Services-Tresor“ auf **Sicherungswarnungen**, um in das Menü „Sicherungswarnungen“ zu gelangen.
+Wählen Sie im Menü „Recovery Services-Tresor“ die Option **Sicherungswarnungen** aus, um das Menü „Sicherungswarnungen“ zu öffnen.
 
 ![Sicherungswarnungen](./media/backup-azure-manage-windows-server/backup-alerts-menu.png)
 
 Im Bericht „Sicherungswarnungen“ sind die Warnungen für den Tresor aufgelistet.
 
-![Sicherungswarnungen](./media/backup-azure-manage-windows-server/backup-alerts.png)
+![Bericht „Sicherungswarnungen“](./media/backup-azure-manage-windows-server/backup-alerts.png)
 
 ### <a name="alerts"></a>Alerts
 
@@ -96,14 +96,14 @@ Die Liste „Sicherungswarnungen“ enthält die ausgewählten Informationen fü
 | Warnstufe | Ereignisse, die Warnungen generieren |
 | ----------- | ----------- |
 | Kritisch | Sie erhalten kritische Warnungen, wenn: Sicherungsaufträge fehlschlagen, wenn Wiederherstellungsaufträge fehlschlagen und wenn Sie den Schutz auf einem Server beenden, aber die Daten beibehalten.|
-| Warnung | Allgemeine Warnmeldungen werden angezeigt, wenn: Sicherungsaufträge mit Warnungen abgeschlossen werden, z.B. wenn weniger als 100 Dateien aufgrund von Beschädigungen nicht gesichert wurden oder wenn mehr als 1.000.000 Dateien erfolgreich gesichert wurden). |
+| Warnung | Allgemeine Warnmeldungen werden angezeigt, wenn: Sicherungsaufträge mit Warnungen abgeschlossen werden (z. B. wenn weniger als 100 Dateien aufgrund von Beschädigungen nicht gesichert wurden oder wenn mehr als 1.000.000 Dateien erfolgreich gesichert wurden). |
 | Informational | Derzeit werden keine Informationsmeldungen verwendet. |
 
 ### <a name="viewing-alert-details"></a>Anzeigen von Warnungsdetails
 
 Der Bericht „Sicherungswarnungen“ verfolgt acht Details zu jeder Warnung. Verwenden Sie die Schaltfläche **Spalten auswählen**, um die Details im Bericht zu bearbeiten.
 
-![Sicherungswarnungen](./media/backup-azure-manage-windows-server/backup-alerts.png)
+![Schaltfläche „Spalten auswählen“ für Sicherungswarnungen](./media/backup-azure-manage-windows-server/backup-alerts.png)
 
 Standardmäßig werden alle Details, im Bericht angezeigt, mit Ausnahme von **Zeitpunkt des letzten Auftretens**.
 
@@ -118,9 +118,9 @@ Standardmäßig werden alle Details, im Bericht angezeigt, mit Ausnahme von **Ze
 
 ### <a name="change-the-details-in-alerts-report"></a>Ändern der Details im Bericht „Warnungen“
 
-1. Zum Ändern der Berichtsinformationen klicken Sie im Menü **Sicherungswarnungen** auf **Spalten auswählen**.
+1. Zum Ändern der Berichtsinformationen wählen Sie im Menü **Sicherungswarnungen** die Option **Spalten auswählen** aus.
 
-   ![Sicherungswarnungen](./media/backup-azure-manage-windows-server/alerts-menu-choose-columns.png)
+   ![„Spalten auswählen“ auswählen](./media/backup-azure-manage-windows-server/alerts-menu-choose-columns.png)
 
    Das Menü **Spalten auswählen** wird geöffnet.
 
@@ -128,9 +128,9 @@ Standardmäßig werden alle Details, im Bericht angezeigt, mit Ausnahme von **Ze
 
     ![Menü „Spalten auswählen“](./media/backup-azure-manage-windows-server/choose-columns-menu.png)
 
-3. Klicken Sie auf **Fertig**, um die Änderungen zu speichern und das Menü „Spalten auswählen“ zu schließen.
+3. Wählen Sie **Fertig** aus, um die Änderungen zu speichern und das Menü „Spalten auswählen“ zu schließen.
 
-   Wenn Sie Änderungen vornehmen, die Änderungen aber nicht beibehalten möchten, klicken Sie auf **Zurücksetzen**, um die zur letzten gespeicherten Konfiguration zurückzukehren.
+   Wenn Sie Änderungen vornehmen, die Änderungen aber nicht beibehalten möchten, wählen Sie **Zurücksetzen** aus, um zur letzten gespeicherten Konfiguration zurückzukehren.
 
 ### <a name="change-the-filter-in-alerts-report"></a>Ändern des Filters im Bericht „Warnungen“
 
@@ -140,15 +140,15 @@ Verwenden Sie das Menü **Filter**, um Schweregrad, Status, Startzeit und Endzei
 > Durch Bearbeiten des Filters für die Sicherungswarnungen werden die kritischen Warnungen oder allgemeinen Warnmeldungen im Dashboard „Übersicht“ des Tresors nicht geändert.
 >  
 
-1. Zum Ändern des Filters für die Sicherungswarnungen klicken Sie im Menü „Sicherungswarnungen“ auf **Filter**.
+1. Zum Ändern des Filters für die Sicherungswarnungen wählen Sie im Menü „Sicherungswarnungen“ die Option **Filter** aus.
 
    ![Menü „Filter“ auswählen](./media/backup-azure-manage-windows-server/alerts-menu-choose-filter.png)
 
    Das Menü „Filter“ wird angezeigt.
 
-   ![Menü „Filter“ auswählen](./media/backup-azure-manage-windows-server/filter-alert-menu.png)
+   ![Menü „Filter“ für Warnungen](./media/backup-azure-manage-windows-server/filter-alert-menu.png)
 
-2. Bearbeiten Sie Schweregrad, Status, Startzeit oder Endzeit, und klicken Sie zum Speichern der Änderungen auf **Fertig**.
+2. Bearbeiten Sie Schweregrad, Status, Startzeit oder Endzeit, und wählen Sie zum Speichern der Änderungen die Option **Fertig** aus.
 
 ## <a name="configuring-notifications-for-alerts"></a>Konfigurieren von Benachrichtigungen für Warnungen
 
@@ -156,7 +156,7 @@ Konfigurieren Sie Benachrichtigungen, um E-Mails zu generieren, wenn eine Warnme
 
    ![Warnungen filtern](./media/backup-azure-manage-windows-server/configure-notification.png)
 
-E-Mail-Benachrichtigungen sind standardmäßig **aktiviert**. Klicken Sie auf **Aus**, um die E-Mail-Benachrichtigungen zu beenden.
+E-Mail-Benachrichtigungen sind standardmäßig **aktiviert**. Wählen Sie **Aus** aus, damit keine E-Mail-Benachrichtigungen mehr gesendet werden.
 
 Wählen Sie im Steuerelement **Benachrichtigen** die Option **Pro Warnung** aus, wenn keine Gruppierung erfolgen soll, oder wenn Sie nur über wenige Elemente verfügen, die Warnungen generieren können. Jede Warnung führt zu einer Benachrichtigung (Standardeinstellung), und es wird sofort eine Lösungs-E-Mail gesendet.
 
@@ -166,7 +166,7 @@ Wählen Sie den Schweregrad der Warnung aus (kritische Warnung oder allgemeine W
 
 ## <a name="manage-backup-items"></a>Verwalten von Sicherungselementen
 
-In einem Recovery Services-Tresor werden viele Arten von Sicherungsdaten gespeichert. [Erfahren Sie mehr](backup-overview.md#what-can-i-back-up) über die Elemente, die Sie sichern können. Um die verschiedenen Server, Computer, Datenbanken und Workloads zu verwalten, klicken Sie auf die Kachel **Sicherungselemente**, um den Inhalt des Tresors anzuzeigen.
+In einem Recovery Services-Tresor werden viele Arten von Sicherungsdaten gespeichert. [Erfahren Sie mehr](backup-overview.md#what-can-i-back-up) über die Elemente, die Sie sichern können. Um die verschiedenen Server, Computer, Datenbanken und Workloads zu verwalten, wählen Sie die Kachel **Sicherungselemente** aus, um den Inhalt des Tresors anzuzeigen.
 
 ![Kachel „Sicherungselemente“](./media/backup-azure-manage-windows-server/backup-items.png)
 
@@ -174,47 +174,47 @@ Die Liste der Sicherungselemente wird geöffnet, organisiert nach Sicherungsverw
 
 ![Liste der Sicherungselemente](./media/backup-azure-manage-windows-server/list-backup-items.png)
 
-Um einen bestimmten Typ einer geschützten Instanz zu untersuchen, klicken Sie auf das Element in der Spalte „Sicherungsverwaltungstyp“. In der Abbildung oben sind beispielsweise zwei virtuelle Azure-Computer dargestellt, die in diesem Tresor geschützt werden. Indem Sie auf **Virtuellen Azure-Computer** klicken, wird die Liste der geschützten virtuellen Computer in diesem Tresor geöffnet.
+Um einen bestimmten Typ einer geschützten Instanz zu untersuchen, wählen Sie das Element in der Spalte „Sicherungsverwaltungstyp“ aus. In der Abbildung oben sind beispielsweise zwei virtuelle Azure-Computer dargestellt, die in diesem Tresor geschützt werden. Indem Sie **Virtueller Azure-Computer** auswählen, wird die Liste der geschützten virtuellen Computer in diesem Tresor geöffnet.
 
-![Liste der Sicherungstypen](./media/backup-azure-manage-windows-server/list-of-protected-virtual-machines.png)
+![Liste der geschützten virtuellen Computer](./media/backup-azure-manage-windows-server/list-of-protected-virtual-machines.png)
 
 Die Liste der virtuellen Computer enthält nützliche Daten: die zugeordnete Ressourcengruppe, die vorherige [Sicherungsvorüberprüfung](#backup-pre-check-status), der Status der letzten Sicherung und das Datum des letzten Wiederherstellungspunkts. Über die Auslassungspunkte in der letzten Spalte wird das Menü zum Auslösen allgemeiner Aufgaben geöffnet. Die Spalten enthalten für die einzelnen Sicherungstypen unterschiedliche hilfreiche Daten.
 
-![Liste der Sicherungstypen](./media/backup-azure-manage-windows-server/ellipsis-menu.png)
+![Öffnen des Menüs mit den Auslassungspunkten für häufige Aufgaben](./media/backup-azure-manage-windows-server/ellipsis-menu.png)
 
 ## <a name="manage-backup-jobs"></a>Verwalten von Sicherungsaufträgen
 
 Auf der Kachel **Sicherungsaufträge** im Dashboard des Tresors wird die Anzahl der Aufträge angezeigt, die in den letzten 24 Stunden ausgeführt wurden oder fehlgeschlagen sind. Die Kachel bietet einen Einblick in das Menü „Sicherungsaufträge“.
 
-![Sicherungselemente aus Einstellungen](./media/backup-azure-manage-windows-server/backup-jobs-tile.png)
+![Kachel „Sicherungsaufträge“](./media/backup-azure-manage-windows-server/backup-jobs-tile.png)
 
-Um weitere Details zu den Aufträgen anzuzeigen, klicken Sie auf **In Bearbeitung** oder **Fehler** um das Menü „Sicherungsaufträge“ zu öffnen und nach dem jeweiligen Status zu filtern.
+Um weitere Details zu den Aufträgen anzuzeigen, wählen Sie **In Bearbeitung** oder **Fehler** aus, um das Menü „Sicherungsaufträge“ zu öffnen und nach dem jeweiligen Status zu filtern.
 
 ### <a name="backup-jobs-menu"></a>Menü„Sicherungsaufträge“
 
 Im Menü **Sicherungsaufträge** werden Informationen zu Elementtyp, Vorgang, Status, Startzeit und Dauer angezeigt.  
 
-Um das Menü „Sicherungsaufträge“ im Hauptmenü des Tresors zu öffnen, klicken Sie auf **Sicherungsaufträge**.
+Um das Menü „Sicherungsaufträge“ im Hauptmenü des Tresors zu öffnen, wählen Sie **Sicherungsaufträge** aus.
 
-![Sicherungselemente aus Einstellungen](./media/backup-azure-manage-windows-server/backup-jobs-menu-item.png)
+![Sicherungsaufträge auswählen](./media/backup-azure-manage-windows-server/backup-jobs-menu-item.png)
 
 Die Liste der Sicherungsaufträge wird geöffnet.
 
-![Sicherungselemente aus Einstellungen](./media/backup-azure-manage-windows-server/backup-jobs-list.png)
+![Liste der Sicherungstypen](./media/backup-azure-manage-windows-server/backup-jobs-list.png)
 
 Im Menü „Sicherungsaufträge“ wird der Status für alle Vorgänge für alle Sicherungstypen für die letzten 24 Stunden angezeigt. Verwenden Sie **Filter**, um den Filter zu ändern. Die Filter werden in den folgenden Abschnitten erläutert.
 
 So ändern Sie die Filter:
 
-1. Klicken Sie im Menü „Sicherungsaufträge“ des Tresors auf **Filter**.
+1. Wählen Sie im Menü „Sicherungsaufträge“ des Tresors **Filter** aus.
 
-   ![Sicherungselemente aus Einstellungen](./media/backup-azure-manage-windows-server/vault-backup-job-menu-filter.png)
+   ![Filter für Sicherungsaufträge auswählen](./media/backup-azure-manage-windows-server/vault-backup-job-menu-filter.png)
 
     Das Menü „Filter“ wird geöffnet.
 
-   ![Sicherungselemente aus Einstellungen](./media/backup-azure-manage-windows-server/filter-menu-backup-jobs.png)
+   ![Menü „Filter“ für Sicherungsaufträge wird geöffnet](./media/backup-azure-manage-windows-server/filter-menu-backup-jobs.png)
 
-2. Wählen Sie die Filtereinstellungen aus, und klicken Sie auf **Fertig**. Die gefilterte Liste wird basierend auf den neuen Einstellungen aktualisiert.
+2. Wählen Sie die Filtereinstellungen und dann **Fertig** aus. Die gefilterte Liste wird basierend auf den neuen Einstellungen aktualisiert.
 
 #### <a name="item-type"></a>Elementtyp
 
@@ -261,7 +261,7 @@ Der Tag und die Uhrzeit, zu der die Abfrage endet.
 
 Verwenden Sie **Aufträge exportieren** zum Erstellen einer Tabelle, die alle Auftragsmenüinformationen enthält. Die Tabelle verfügt über ein Blatt, das eine Zusammenfassung aller Aufträge enthält, sowie einzelne Blätter für jeden Auftrag.
 
-Um die Auftragsinformationen in eine Tabelle zu exportieren, klicken Sie auf **Aufträge exportieren**. Der Dienst erstellt eine Tabelle mit dem Namen des Tresors und dem Datum, aber Sie können den Namen ändern.
+Um die Auftragsinformationen in eine Tabelle zu exportieren, wählen Sie **Aufträge exportieren** aus. Der Dienst erstellt eine Tabelle mit dem Namen des Tresors und dem Datum, aber Sie können den Namen ändern.
 
 ## <a name="monitor-backup-usage"></a>Überwachen der Sicherungsverwendung
 
@@ -272,7 +272,7 @@ Auf der Kachel „Sicherungsspeicher“ im Dashboard wird der in Azure genutzte 
 
 ## <a name="troubleshooting-monitoring-issues"></a>Problembehandlung bei der Überwachung
 
-**Problem:** Aufträge und/oder Warnungen vom Azure Backup-Agent werden im Portal nicht angezeigt.
+**Problem:** Aufträge und/oder Warnungen aus dem Azure Backup-Agent werden im Portal nicht angezeigt.
 
 **Schritte zur Problembehandlung:** Der Prozess ```OBRecoveryServicesManagementAgent``` sendet den Auftrag und die Warnungsdaten an den Azure Backup-Dienst. Gelegentlich kann es bei diesem Prozess zu Unterbrechungen kommen, oder er kann ungewollt beendet werden.
 

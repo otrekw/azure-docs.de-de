@@ -9,18 +9,17 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/18/2020
-ms.openlocfilehash: d0933f5305007bc4a8238adb2b6b949ab0c11edf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 321c13e88cb09c7078a169c3e1666cf781ec7787
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85559935"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88553137"
 ---
 # <a name="set-up-an-indexer-connection-to-azure-sql-database-using-a-managed-identity-preview"></a>Einrichten einer Indexerverbindung mit Azure SQL-Datenbank mithilfe einer verwalteten Identität (Vorschau)
 
 > [!IMPORTANT] 
-> Das Einrichten einer Verbindung mit einer Datenquelle mithilfe einer verwalteten Identität wird derzeit in einer geschlossenen öffentlichen Vorschauversion unterstützt. Die Vorschaufunktion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen.
-> Füllen Sie [dieses Formular](https://aka.ms/azure-cognitive-search/mi-preview-request) aus, wenn Sie Zugriff auf die Vorschauversion anfordern möchten.
+> Das Einrichten einer Verbindung mit einer Datenquelle mithilfe einer verwalteten Identität wird derzeit in einer öffentlichen Vorschauversion unterstützt. Die Vorschaufunktion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen.
 
 Auf dieser Seite wird beschrieben, wie Sie eine Indexerverbindung mit Azure SQL-Datenbank mithilfe einer verwalteten Identität einrichten, anstatt Anmeldeinformationen in der Verbindungszeichenfolge des Datenquellenobjekts anzugeben.
 
@@ -86,7 +85,7 @@ In diesem Schritt erteilen Sie dem Azure Cognitive Search-Dienst die Berechtigun
 
 1. Navigieren Sie im Azure-Portal zur Seite des Azure SQL Servers.
 2. Wählen Sie **Zugriffssteuerung (IAM)** aus.
-3. Wählen Sie **Hinzufügen** und dann **Rollenzuweisung hinzufügen** aus.
+3. Klicken Sie auf **Hinzufügen** und dann auf **Rollenzuweisung hinzufügen**.
 
     ![Hinzufügen der Rollenzuweisung](./media/search-managed-identities/add-role-assignment-sql-server.png "Rollenzuweisung hinzufügen")
 
@@ -98,7 +97,9 @@ In diesem Schritt erteilen Sie dem Azure Cognitive Search-Dienst die Berechtigun
 
 ### <a name="5---create-the-data-source"></a>5\. Erstellen der Datenquelle
 
-Bei der Indizierung aus einer SQL-Datenbank muss die Datenquelle über die folgenden erforderlichen Eigenschaften verfügen:
+Die Verbindungszeichenfolge für verwaltete Identitäten wird von der [REST-API](https://docs.microsoft.com/rest/api/searchservice/create-data-source), dem Azure-Portal und dem [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasource?view=azure-dotnet) unterstützt. Im Folgenden finden Sie ein Beispiel für das Erstellen einer Datenquelle zum Indizieren von Daten aus einer Azure SQL-Datenbank mithilfe der [REST-API](https://docs.microsoft.com/rest/api/searchservice/create-data-source) und einer Verbindungszeichenfolge für verwaltete Identitäten. Das Format der Verbindungszeichenfolge für verwaltete Identitäten ist für die REST-API, das .NET SDK und das Azure-Portal identisch.
+
+Beim Erstellen einer Datenquelle mit der [REST-API](https://docs.microsoft.com/rest/api/searchservice/create-data-source) muss die Datenquelle die folgenden erforderlichen Eigenschaften aufweisen:
 
 * **name** ist der eindeutige Name der Datenquelle im Suchdienst.
 * **type** ist `azuresql`.
@@ -122,8 +123,6 @@ api-key: [admin key]
     "container" : { "name" : "my-table" }
 } 
 ```
-
-Die Verbindungszeichenfolge für verwaltete Identitäten wird auch über das Azure-Portal und das [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasource?view=azure-dotnet) unterstützt. Im Azure-Portal ist ein Featureflag erforderlich, das Sie bei der Registrierung für die Vorschauversion über den Link oben auf dieser Seite erhalten. 
 
 ### <a name="6---create-the-index"></a>6\. Erstellen des Index
 

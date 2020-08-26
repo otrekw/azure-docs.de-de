@@ -3,12 +3,12 @@ title: Verschlüsseln von Betriebssystemdatenträgern mithilfe von kundenseitig 
 description: Erfahren Sie, wie Sie Betriebssystemdatenträger mithilfe von kundenseitig verwalteten Schlüsseln in Azure DevTest Labs verschlüsseln.
 ms.topic: article
 ms.date: 07/28/2020
-ms.openlocfilehash: b9eb401521f6bd81efe3238dc05d07e4554c4f62
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 209ab1f74dce0982af66777f211c41066d53b8f9
+ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87542417"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88566198"
 ---
 # <a name="encrypt-operating-system-os-disks-using-customer-managed-keys-in-azure-devtest-labs"></a>Verschlüsseln von Betriebssystem-Datenträgern mithilfe von kundenseitig verwalteten Schlüsseln in Azure DevTest Labs
 Die serverseitige Verschlüsselung (Server-side Encryption, SSE) schützt Ihre Daten und unterstützt Sie beim Einhalten der Sicherheits- und Complianceanforderungen Ihrer Organisation. Durch SSE werden Ihre auf verwalteten Datenträgern (Betriebssystemdatenträger und reguläre Datenträger) in Azure gespeicherten ruhenden Daten standardmäßig automatisch verschlüsselt, wenn sie in der Cloud gespeichert werden. Erfahren Sie mehr über [Datenträgerverschlüsselung](../virtual-machines/windows/disk-encryption.md) in Azure. 
@@ -28,12 +28,11 @@ Der folgende Abschnitt zeigt, wie ein Lab-Besitzer die Verschlüsselung mit eine
 1. Wenn Sie über keinen Datenträgerverschlüsselungssatz verfügen, vollziehen Sie die Anleitungen in diesem Artikel nach, um [einen Key Vault und einen Datenträgerverschlüsselungssatz einzurichten](../virtual-machines/windows/disks-enable-customer-managed-keys-portal.md#set-up-your-azure-key-vault). Beachten Sie die folgenden Anforderungen für den Datenträgerverschlüsselungssatz: 
 
     - Der Datenträgerverschlüsselungssatz muss sich **in derselben Region und im gleichen Abonnement wie ihr Lab befinden**. 
-    - Stellen Sie sicher, dass Sie (der Lab-Besitzer) mindestens über **Zugriff auf Leserebene** für den Datenträgerverschlüsselungssatz verfügen, der zum Verschlüsseln von Lab-Betriebssystemdatenträgern verwendet wird.  
-2. Damit das Lab die Verschlüsselung für alle Lab-Betriebssystemdatenträger verarbeitet, muss der Besitzer des Labs der **vom System zugewiesenen Identität** des Labs explizit die Berechtigung für den Datenträgerverschlüsselungssatz erteilen. Der Lab-Besitzer kann zu diesem Zweck die folgenden Schritte ausführen:
+    - Stellen Sie sicher, dass Sie (der Lab-Besitzer) mindestens über **Zugriff auf Leserebene** für den Datenträgerverschlüsselungssatz verfügen, der zum Verschlüsseln von Lab-Betriebssystemdatenträgern verwendet wird. 
+2. Bei Labs, die vor dem 1.8.2020 erstellt wurden, muss der Labbesitzer sicherstellen, dass die zugewiesene Identität des Labsystems aktiviert ist. Hierzu kann der Labbesitzer zum Lab wechseln, auf **Konfiguration und Richtlinien** und dann auf das Blatt **Identität (Vorschau)** klicken, die vom System zugewiesene Identität **Status** in **Ein** ändern und auf **Speichern** klicken. Bei neuen Labs, die nach dem 1.8.2020 erstellt wurden, ist die vom System zugewiesene Labidentität standardmäßig aktiviert. 
+3. Damit das Lab die Verschlüsselung für alle Lab-Betriebssystemdatenträger verarbeitet, muss der Besitzer des Labs dem Lab explizit die Leserolle der **vom System zugewiesenen Identität** für den Datenträgerverschlüsselungssatz und die Rolle „Mitwirkender für virtuelle Computer“ für das zugrunde liegende Azure-Abonnement gewähren. Der Lab-Besitzer kann zu diesem Zweck die folgenden Schritte ausführen:
 
-    > [!IMPORTANT]
-    > Sie müssen diese Schritte für Labs ausführen, die ab dem 01.08.2020 erstellt wurden. Für Labs, die vor diesem Datum erstellt wurden, ist keine Aktion erforderlich.
-
+   
     1. Stellen Sie sicher, dass Sie Mitglied der [Rolle „Benutzerzugriffsadministrator“](../role-based-access-control/built-in-roles.md#user-access-administrator) auf Azure-Abonnementebene sind, damit Sie den Benutzerzugriff auf Azure-Ressourcen verwalten können. 
     1. Wählen Sie im linken Menü der Seite **Datenträgerverschlüsselungssatz** die Option **Zugriffssteuerung (IAM)** aus. 
     1. Klicken Sie auf der Symbolleiste auf **+ Hinzufügen**, und wählen Sie **Rollenzuweisung hinzufügen** aus.  
@@ -48,9 +47,7 @@ Der folgende Abschnitt zeigt, wie ein Lab-Besitzer die Verschlüsselung mit eine
         :::image type="content" source="./media/encrypt-disks-customer-managed-keys/save-role-assignment.png" alt-text="Speichern der Rollenzuweisung":::
 3. Fügen Sie die **vom System zugewiesene Identität** des Labs mithilfe der Seite **Abonnement** -> **Zugriffssteuerung (IAM)** der Rolle **Mitwirkender für virtuelle Computer** hinzu. Die Schritte den vorherigen Schritten. 
 
-    > [!IMPORTANT]
-    > Sie müssen diese Schritte für Labs ausführen, die ab dem 01.08.2020 erstellt wurden. Für Labs, die vor diesem Datum erstellt wurden, ist keine Aktion erforderlich.
-
+    
     1. Navigieren Sie im Azure-Portal zur Seite **Abonnement**. 
     1. Wählen Sie die Option **Zugriffssteuerung (IAM)** aus. 
     1. Klicken Sie auf der Symbolleiste auf **+ Hinzufügen**, und wählen Sie **Rollenzuweisung hinzufügen** aus. 

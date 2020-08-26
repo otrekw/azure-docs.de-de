@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f6bd09a24202b599c1f008e7b046ea5f93ff0323
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 4c4e34c6f13f7013847e99a362716fc9c570cdaf
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87489791"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88224916"
 ---
 # <a name="enable-and-use-azure-multi-factor-authentication-with-legacy-applications-using-app-passwords"></a>Aktivieren und Verwenden von Azure Multi-Factor Authentication mit ältere Anwendungen mithilfe von App-Kennwörtern
 
@@ -41,6 +41,8 @@ Beim Verwenden von App-Kennwörtern sind folgende Überlegungen zu beachten:
 * Bei Anwendungen, die Kennwörter zwischenspeichern und in lokalen Szenarien nutzen, können Fehler auftreten, da das App-Kennwort außerhalb des Geschäfts-, Schul- oder Unikontos nicht bekannt ist. Ein Beispiel dafür sind Exchange-E-Mails, die lokal vorhanden sind, bei denen sich die archivierten Nachrichten jedoch in der Cloud befinden. Das gleiche Kennwort funktioniert in diesem Fall nicht.
 * Nachdem Azure Multi-Factor Authentication für ein Benutzerkonto aktiviert wurde, können für die meisten nicht auf Browsern basierenden Clients wie Outlook oder Microsoft Skype for Business App-Kennwörter verwendet werden. Bei Verwendung von App-Kennwörtern können jedoch keine administrativen Aufgaben durch nicht auf Browsern basierende Anwendungen (z. B. Windows PowerShell) durchgeführt werden. Die Aufgaben können selbst dann nicht durchgeführt werden, wenn der betreffende Benutzer über ein administratives Konto verfügt.
     * Erstellen Sie zum Ausführen von PowerShell-Skripts ein Dienstkonto mit einem sicheren Kennwort, und aktivieren Sie für das Konto nicht die zweistufige Überprüfung.
+* Wenn Sie vermuten, dass ein Benutzerkonto gefährdet ist, und das Kontokennwort widerrufen bzw. zurücksetzen, sollten die App-Kennwörter ebenfalls aktualisiert werden. App-Kennwörter werden nicht automatisch widerrufen, wenn das Kennwort eines Benutzerkontos widerrufen bzw. zurückgesetzt wird. Der Benutzer sollte vorhandene App-Kennwörter löschen und neue erstellen.
+   * Weitere Informationen finden Sie unter [Erstellen und Löschen von App-Kennwörtern auf der Seite „Zusätzliche Sicherheitsüberprüfung“](../user-help/multi-factor-authentication-end-user-app-passwords.md#create-and-delete-app-passwords-from-the-additional-security-verification-page).
 
 >[!WARNING]
 > App-Kennwörter funktionieren nicht in Hybridumgebungen, in denen Clients sowohl mit lokalen AutoErmittlung-Endpunkten als auch mit solchen in der Cloud kommunizieren. Für die lokale Authentifizierung werden Domänenkennwörter benötigt. Für die Authentifizierung in der Cloud sind App-Kennwörter erforderlich.

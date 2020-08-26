@@ -9,15 +9,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 04/10/2019
+ms.date: 08/18/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 366a302e4683c74e2ba62d76c066365a3c81b045
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 947f50c1a92985c057f39a5efb1be250bf8ef06c
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87051881"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88587156"
 ---
 # <a name="ibm-db2-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Azure Virtual Machines – IBM DB2-DBMS-Bereitstellung für SAP-Workload
 
@@ -30,8 +30,8 @@ Es gibt verschiedene Artikel zu SAP-Workload in Azure.  Es wird empfohlen, zuers
 
 Die nachstehenden SAP-Hinweise beziehen sich auf SAP in Azure und die in diesem Dokument behandelten Themen:
 
-| Hinweisnummer | Titel |
-| --- | --- |
+| Hinweisnummer |Titel |
+| --- |--- |
 | [1928533] |SAP-Anwendungen auf Azure: Unterstützte Produkte und Azure VM-Typen |
 | [2015553] |SAP auf Microsoft Azure: Voraussetzungen für die Unterstützung |
 | [1999351] |Problembehandlung für die erweiterte Azure-Überwachung für SAP |
@@ -54,10 +54,10 @@ Informationen zu den unterstützten SAP-Produkten und Typen der Azure-VM erhalte
 
 ## <a name="ibm-db2-for-linux-unix-and-windows-configuration-guidelines-for-sap-installations-in-azure-vms"></a>Konfigurationsrichtlinien für IBM Db2 für Linux, UNIX und Windows für SAP-Installationen in Azure-VMs
 ### <a name="storage-configuration"></a>Speicherkonfiguration
-Sämtliche Datenbankdateien müssen im NTFS-Dateisystem auf direkt angefügten Datenträgern gespeichert werden. Diese Datenträger werden in den virtuellen Azure-Computer eingebunden und basieren auf Azure Page Blob Storage (<https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs>) oder Managed Disks (<https://docs.microsoft.com/azure/storage/storage-managed-disks-overview>). Jegliche Arten von Netzlaufwerken und Remotefreigaben wie die folgenden Azure-Dateidienste werden für Datenbankdateien **NICHT** unterstützt: 
+Eine Übersicht über Azure Storage-Typen für die SAP-Workload finden Sie im Artikel [Azure Storage-Typen für die SAP-Workload](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide-storage). Sämtliche Datenbankdateien müssen auf eingebundenen Datenträgern von Azure Block Storage (Windows: NFFS, Linux: xfs, ext4 oder ext3) gespeichert werden. Jegliche Arten von Netzlaufwerken und Remotefreigaben wie die folgenden Azure-Dienste werden für Datenbankdateien **NICHT** unterstützt: 
 
-* <https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx>
-* <https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx>
+* [Microsoft Azure-Dateidienst](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx)
+* [Azure NetApp Files](https://azure.microsoft.com/services/netapp/)
 
 Die in Artikel [Azure Virtual Machines – DBMS-Bereitstellung für SAP-Workload](dbms_guide_general.md) getroffenen Aussagen gelten auch für Bereitstellungen mit dem Db2-DBMS, wenn Sie Datenträger auf Basis von Azure Page Blob Storage oder Managed Disks verwenden.
 
@@ -67,13 +67,65 @@ Solange das bestehende IOPS-Kontingent pro Datenträger ausreicht, ist es mögli
 
 Weitere Informationen zur Leistung finden Sie auch im Kapitel „Datensicherheit und Leistung bei Datenbankverzeichnissen“ (in englischer Sprache) in den SAP-Installationshandbüchern.
 
-Sie können auch Windows-Speicherpools (nur verfügbar unter Windows Server 2012 und höher) verwenden (siehe [Azure Virtual Machines – DBMS-Bereitstellung für SAP-Workload](dbms_guide_general.md)), um ein einziges großes, logisches Gerät aus mehreren Datenträgern zu erstellen.
+Sie können auch Windows-Speicherpools (nur verfügbar unter Windows Server 2012 und höher) verwenden (siehe [Azure Virtual Machines – DBMS-Bereitstellung für SAP-Workload](dbms_guide_general.md)) oder LVM oder mdadm unter Linux, um ein einziges großes, logisches Gerät aus mehreren Datenträgern zu erstellen.
 
 <!-- sapdata and saptmp are terms in the SAP and DB2 world and now spelling errors -->
 
 Legen Sie für die Datenträger, die die Db2-Speicherpfade für die Verzeichnisse „sapdata“ und „saptmp“ enthalten, eine physische Datenträgersektorgröße von 512 KB fest. Wenn Sie Windows-Speicherpools verwenden, müssen die Speicherpools manuell über die Befehlszeilenschnittstelle erstellt werden. Der Parameter hierfür lautet `-LogicalSectorSizeDefault`. Weitere Informationen finden Sie unter <https://technet.microsoft.com/itpro/powershell/windows/storage/new-storagepool>.
 
-Bei Azure-VMs der M-Serie kann die Latenz beim Schreiben in die Transaktionsprotokolle im Vergleich zu Azure Storage Premium um Faktoren reduziert werden, wenn Azure-Schreibbeschleunigung verwendet wird. Daher sollten Sie Azure-Schreibbeschleunigung für die VHD(s) bereitstellen, die das Volume für die Db2-Transaktionsprotokolle bilden. Details finden Sie im Dokument [Schreibbeschleunigung](../../windows/how-to-enable-write-accelerator.md).
+Bei Azure-VMs der M-Serie kann die Latenz beim Schreiben in die Transaktionsprotokolle im Vergleich zu Azure Storage Premium um Faktoren reduziert werden, wenn Azure-Schreibbeschleunigung verwendet wird. Daher sollten Sie Azure-Schreibbeschleunigung für die VHD(s) bereitstellen, die das Volume für die Db2-Transaktionsprotokolle bilden. Details finden Sie im Dokument [Schreibbeschleunigung](../../how-to-enable-write-accelerator.md).
+
+## <a name="recommendation-on-vm-and-disk-structure-for-ibm-db2-deployment"></a>Empfehlung zur VM- und Datenträgerstruktur für die Bereitstellung von IBM Db2
+
+IBM Db2 für SAP NetWeaver-Anwendungen wird auf allen VM-Typen unterstützt, die im SAP-Supporthinweis [1928533] aufgeführt sind.  Empfohlene VM-Familien für die Ausführung der IBM Db2-Datenbank sind die Esd_v4/Eas_v4/Es_v3- und M/M_v2-Serie für große Datenbanken mit mehreren Terabyte. Die Leistung des Datenträgers beim Schreiben des IBM Db2-Transaktionsprotokolls kann durch Aktivieren der Schreibbeschleunigung für die M-Serie verbessert werden. 
+
+Im Folgenden finden Sie eine Baselinekonfiguration für verschiedene Größen und Verwendungsmöglichkeiten von SAP-Bereitstellungen für Db2, von klein bis sehr groß:
+
+#### <a name="extra-small-sap-system-database-size-50---200-gb-example-solution-manager"></a>Besonders kleines SAP-System: Datenbankgröße 50–200 GB: Beispiel-Lösungs-Manager
+| Name/Größe des virtuellen Computers |Db2-Bereitstellungspunkt |Azure-Premium-Datenträger |Anzahl der Datenträger |IOPS |Durchsatz [MB/s] |Größe [GB] |Burst-IOPS |Burstdurchsatz [GB] | Stripegröße | Caching |
+| --- | --- | --- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+|E4ds_v4 |/db2 |P6 |1 |240  |50  |64  |3,500  |170  ||  |
+|vCPU: 4 |/db2/<SID>/sapdata |P10 |2 |1,000  |200  |256  |7,000  |340  |256 KB |ReadOnly |
+|RAM: 32 GiB |/db2/<SID>/saptmp |P6 |1 |240  |50  |128  |3,500  |170  | ||
+| |/db2/<SID>/log_dir |P6 |2 |480  |100  |128  |7,000  |340  |64 KB ||
+| |/db2/<SID>/offline_log_dir |P10 |1 |500  |100  |128  |3,500  |170  || |
+
+#### <a name="small-sap-system-database-size-200---750-gb-small-business-suite"></a>Kleines SAP-System: Datenbankgröße 200–750 GB: kleine Business Suite
+| Name/Größe des virtuellen Computers |Db2-Bereitstellungspunkt |Azure-Premium-Datenträger |Anzahl der Datenträger |IOPS |Durchsatz [MB/s] |Größe [GB] |Burst-IOPS |Burstdurchsatz [GB] | Stripegröße | Caching |
+| --- | --- | --- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+|E16ds_v4 |/db2 |P6 |1 |240  |50  |64  |3,500  |170  || |
+|vCPU: 16 |/db2/<SID>/sapdata |P15 |4 |4.400  |500  |1.024  |14.000  |680  |256 KB |ReadOnly |
+|RAM: 128 GB |/db2/<SID>/saptmp |P6 |2 |480  |100  |128  |7,000  |340  |128 KB ||
+| |/db2/<SID>/log_dir |P15 |2 |2.200  |250  |512  |7,000  |340  |64 KB ||
+| |/db2/<SID>/offline_log_dir |P10 |1 |500  |100  |128  |3,500  |170  ||| 
+
+#### <a name="medium-sap-system-database-size-500---1000-gb-small-business-suite"></a>Mittleres SAP-System: Datenbankgröße 500–1000 GB: kleine Business Suite
+| Name/Größe des virtuellen Computers |Db2-Bereitstellungspunkt |Azure-Premium-Datenträger |Anzahl der Datenträger |IOPS |Durchsatz [MB/s] |Größe [GB] |Burst-IOPS |Burstdurchsatz [GB] | Stripegröße | Caching |
+| --- | --- | --- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+|E32ds_v4 |/db2 |P6 |1 |240  |50  |64  |3,500  |170  || |
+|vCPU: 32 |/db2/<SID>/sapdata |P30 |2 |10.000  |400  |2.048  |10.000  |400  |256 KB |ReadOnly |
+|RAM: 256 GiB |/db2/<SID>/saptmp |P10 |2 |1,000  |200  |256  |7,000  |340  |128 KB ||
+| |/db2/<SID>/log_dir |P20 |2 |4.600  |300  |1.024  |7,000  |340  |64 KB ||
+| |/db2/<SID>/offline_log_dir |P15 |1 |1.100  |125  |256  |3,500  |170  ||| 
+
+#### <a name="large-sap-system-database-size-750---2000-gb-business-suite"></a>Großes SAP-System: Datenbankgröße 750–2000 GB: Business Suite
+| Name/Größe des virtuellen Computers |Db2-Bereitstellungspunkt |Azure-Premium-Datenträger |Anzahl der Datenträger |IOPS |Durchsatz [MB/s] |Größe [GB] |Burst-IOPS |Burstdurchsatz [GB] | Stripegröße | Caching |
+| --- | --- | --- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+|E64ds_v4 |/db2 |P6 |1 |240  |50  |64  |3,500  |170  || |
+|vCPU: 64 |/db2/<SID>/sapdata |P30 |4 |20.000  |800  |4.096  |20.000  |800  |256 KB |ReadOnly |
+|RAM: 504 GiB |/db2/<SID>/saptmp |P15 |2 |2.200  |250  |512  |7,000  |340  |128 KB ||
+| |/db2/<SID>/log_dir |P20 |4 |9.200  |600  |2.048  |14.000  |680  |64 KB ||
+| |/db2/<SID>/offline_log_dir |P20 |1 |2.300  |150  |512  |3,500  |170  || |
+
+#### <a name="large-multi-terabyte-sap-system-database-size-2tb-global-business-suite-system"></a>Großes SAP-System mit mehreren Terabyte: Datenbankgröße mindestens 2 TB: Globales Business Suite-System
+| Name/Größe des virtuellen Computers |Db2-Bereitstellungspunkt |Azure-Premium-Datenträger |Anzahl der Datenträger |IOPS |Durchsatz [MB/s] |Größe [GB] |Burst-IOPS |Burstdurchsatz [GB] | Stripegröße | Caching |
+| --- | --- | --- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+|M128s |/db2 |P10 |1 |500  |100  |128  |3,500  |170  || |
+|vCPU: 128 |/db2/<SID>/sapdata |P40 |4 |30.000  |1,000  |8.192  |30.000  |1,000  |256 KB |ReadOnly |
+|RAM:  2048 GiB |/db2/<SID>/saptmp |P20 |2 |4.600  |300  |1.024  |7,000  |340  |128 KB ||
+| |/db2/<SID>/log_dir |P30 |4 |20.000  |800  |4.096  |20.000  |800  |64 KB |WriteAccelerator |
+| |/db2/<SID>/offline_log_dir |P30 |1 |5.000  |200  |1.024  |5.000  |200  || |
+
 
 ### <a name="backuprestore"></a>Sichern und Wiederherstellen
 Die Funktionen zum Sichern und Wiederherstellen werden für IBM Db2 für LUW genauso unterstützt wie auf standardmäßigen Windows Server-Betriebssystemen und Hyper-V.
@@ -95,6 +147,15 @@ Wenn Sie die Anzahl der Ziele erhöhen möchten, stehen Ihnen je nach Anforderun
 >Db2 für Windows unterstützt nicht die Windows VSS-Technologie. Daher kann nicht die anwendungskonsistente VM-Sicherung des Azure Backup-Diensts nicht für VMs genutzt werden, in denen Db2-DBMS bereitgestellt wird.
 
 ### <a name="high-availability-and-disaster-recovery"></a>Hochverfügbarkeit und Notfallwiederherstellung
+
+#### <a name="linux-pacemaker"></a>Linux Pacemaker
+
+Hochverfügbarkeit und Notfallwiederherstellung (HADR) in Db2 mit Pacemaker wird unterstützt. Die Betriebssysteme SLES und RHEL werden unterstützt. Diese Konfiguration ermöglicht die Hochverfügbarkeit von IBM Db2 für SAP. Bereitstellungsrichtlinien:
+* SLES: [Hochverfügbarkeit von IBM Db2 LUW auf Azure-VMs unter SUSE Linux Enterprise Server mit Pacemaker](dbms-guide-ha-ibm.md) 
+* RHEL: [Hochverfügbarkeit von IBM Db2 LUW auf Azure-VMs unter Red Hat Enterprise Linux Server](high-availability-guide-rhel-ibm-db2-luw.md)
+
+#### <a name="windows-cluster-server"></a>Windows Cluster Server
+
 Microsoft Cluster Server (MSCS) wird nicht unterstützt.
 
 Hochverfügbarkeit und Notfallwiederherstellung (HADR) in Db2 wird unterstützt. Wenn die an der Hochverfügbarkeitskonfiguration teilnehmenden virtuellen Computer über eine funktionierende Namensauflösung verfügen, unterscheidet sich die Einrichtung in Azure nicht von anderen, lokal ausgeführten Einrichtungen. Es wird nicht empfohlen, ausschließlich die IP-Auflösung zugrunde zu legen.

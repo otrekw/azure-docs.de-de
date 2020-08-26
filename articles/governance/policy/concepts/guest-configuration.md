@@ -3,17 +3,16 @@ title: Informationen zum Überwachen der Inhalte virtueller Computer
 description: Hier erfahren Sie, wie Azure Policy mithilfe des Gastkonfigurations-Agents Einstellungen in VMs überprüft.
 ms.date: 08/07/2020
 ms.topic: conceptual
-ms.openlocfilehash: 906c86856342febc92f070493fde31af42e4ca10
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.openlocfilehash: 624f0a2464323e8002b9940471c93b3030f053d5
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87987102"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88544671"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Informationen zu Guest Configuration von Azure Policy
 
-Mit Azure Policy können Einstellungen innerhalb eines Computers überwacht werden. Dies gilt für in Azure ausgeführte Computer sowie für [über Arc verbundene Computer](../../../azure-arc/servers/overview.md).
-Für die Überprüfung verwenden Sie die Erweiterung und den Client Guest Configuration. Die Erweiterung überprüft über den Client u. a. die folgenden Einstellungen:
+Mit Azure Policy können Einstellungen innerhalb eines Computers überwacht werden. Dies gilt für in Azure ausgeführte Computer sowie für [über Arc verbundene Computer](../../../azure-arc/servers/overview.md). Für die Überprüfung verwenden Sie die Erweiterung und den Client Guest Configuration. Die Erweiterung überprüft über den Client u. a. die folgenden Einstellungen:
 
 - Die Konfiguration des Betriebssystems
 - Die Konfiguration oder das Vorhandensein der Anwendung
@@ -93,8 +92,7 @@ Der Datenverkehr wird mithilfe der [virtuellen öffentlichen IP-Adresse](../../.
 
 ### <a name="azure-arc-connected-machines"></a>Vernetzte Azure Arc-Computer
 
-Knoten, die sich außerhalb von Azure befinden und über Azure Arc verbunden sind, benötigen eine Verbindung mit dem Gastkonfigurationsdienst.
-Details zu den Netzwerk- und Proxyanforderungen finden Sie in der [Azure Arc-Dokumentation](../../../azure-arc/servers/overview.md).
+Knoten, die sich außerhalb von Azure befinden und über Azure Arc verbunden sind, benötigen eine Verbindung mit dem Gastkonfigurationsdienst. Details zu den Netzwerk- und Proxyanforderungen finden Sie in der [Azure Arc-Dokumentation](../../../azure-arc/servers/overview.md).
 
 Für die Kommunikation mit dem Gastkonfigurations-Ressourcenanbieter in Azure benötigen Computer ausgehenden Zugriff auf Azure-Rechenzentren über Port **443**. Wenn ein Netzwerk in Azure keinen ausgehenden Datenverkehr zulässt, müssen Ausnahmen über [Netzwerksicherheitsgruppen](../../../virtual-network/manage-network-security-group.md#create-a-security-rule)-Regeln konfiguriert werden. Der [Diensttag](../../../virtual-network/service-tags-overview.md) „GuestAndHybridManagement“ kann verwendet werden, um auf den Gastkonfigurationsdienst zu verweisen.
 

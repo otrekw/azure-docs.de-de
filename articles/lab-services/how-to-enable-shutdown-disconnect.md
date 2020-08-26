@@ -1,34 +1,44 @@
 ---
-title: 'Azure Lab Services: Aktivieren des Herunterfahrens von VMs beim Trennen | Microsoft-Dokumentation'
+title: Konfigurieren des automatischen Herunterfahrens von VMs für ein Lab in Azure Lab Services
 description: Hier erfahren Sie, wie Sie das automatische Herunterfahren von VMs aktivieren oder deaktivieren, wenn eine Remotedesktopverbindung getrennt wird.
 ms.topic: article
-ms.date: 06/26/2020
-ms.openlocfilehash: 0c5c22d5e4a9d66413e37cce095f5497915bd122
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/17/2020
+ms.openlocfilehash: 3188117ac651f31057b4db88e32dfb42c45abb60
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85445711"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88604885"
 ---
-# <a name="enable-automatic-shutdown-of-vms-on-disconnect"></a>Aktivieren des automatischen Herunterfahrens von VMs beim Trennen
-In diesem Artikel erfahren Sie, wie Sie das automatische Herunterfahren von **Windows 10**-Lab-VMs (VM-Vorlage oder VM für Schüler und Studenten) aktivieren oder deaktivieren, nachdem eine Remotedesktopverbindung getrennt wurde. Sie können auch angeben, wie lange die VMs warten sollen, bis die Verbindung des Benutzers wieder hergestellt wird, bevor sie automatisch heruntergefahren werden.
+# <a name="configure-automatic-shutdown-of-vms-for-a-lab"></a>Konfigurieren des automatischen Herunterfahrens von virtuellen Computern für ein Lab
 
-Ein Labkontoadministrator kann diese Einstellung für das Labkonto konfigurieren, in dem Sie Labs erstellen. Weitere Informationen finden Sie unter [Konfigurieren des automatischen Herunterfahrens von VMs beim Trennen für ein Labkonto](how-to-configure-lab-accounts.md). Als Labbesitzer können Sie die Einstellung beim oder nach dem Erstellen eines Labs außer Kraft setzen. 
+In diesem Artikel erfahren Sie, wie Sie das automatische Herunterfahren von virtuellen Computern für ein Lab konfigurieren können.
 
-## <a name="configure-when-creating-a-lab"></a>Konfigurieren beim Erstellen eines Labs
-Auf der Seite „Schritt 3“ des Laberstellungsassistenten können Sie dieses Feature aktivieren oder deaktivieren. Außerdem können Sie angeben, wie lange die VM warten soll, bis die Verbindung des Benutzers wieder hergestellt wird, bevor sie automatisch heruntergefahren wird. 
+Sie können mehrere Features zur Kostenkontrolle beim automatischen Herunterfahren aktivieren, um proaktiv zusätzliche Kosten zu verhindern, wenn die virtuellen Computer nicht aktiv genutzt werden. Die Kombination der folgenden drei Features zum automatischen Herunterfahren und Trennen deckt den größten Teil der Fälle ab, in denen Benutzer die Ausführung der virtuellen Computer versehentlich nicht beenden:
+ 
+* Automatisches Trennen der Benutzer von virtuellen Computern, die vom Betriebssystem als Computer im Leerlauf erkannt werden (nur Windows).
+* Automatisches Herunterfahren virtueller Computer, wenn Benutzer die Verbindung trennen (Windows und Linux).
+* Automatisches Herunterfahren von virtuellen Computern, die gestartet wurden, mit denen jedoch von den Benutzern keine Verbindung hergestellt wurde.
 
-![Konfigurieren zum Zeitpunkt der Laberstellung](./media/how-to-enable-shutdown-disconnect/configure-lab-creation.png)
+Weitere Informationen zu den Features zum automatischen Herunterfahren finden Sie im Abschnitt [Maximieren der Kostenkontrolle durch Einstellungen zum automatischen Herunterfahren](cost-management-guide.md#maximize-cost-control-with-auto-shutdown-settings).
 
-## <a name="configure-after-the-lab-is-created"></a>Konfigurieren nach Erstellen des Labs
-Sie können diese Einstellung auf der Seite **Einstellungen** konfigurieren, wie in der folgenden Abbildung dargestellt: 
+Ein Labkontoadministrator kann diese Einstellung für das Labkonto konfigurieren, in dem Sie Labs erstellen. Weitere Informationen finden Sie unter [Konfigurieren des automatischen Herunterfahrens von VMs für ein Labkonto](how-to-configure-lab-accounts.md). Als Labbesitzer können Sie die Einstellung beim oder nach dem Erstellen eines Labs außer Kraft setzen. 
 
-![Konfigurieren nach Erstellen des Labs](./media/how-to-enable-shutdown-disconnect/configure-lab-automatic-shutdown.png)
+## <a name="configure-for-the-lab-level"></a>Konfigurieren für die Labebene
+
+Sie können die Einstellung für das automatische Herunterfahren in den [Azure Lab Services](https://labs.azure.com/) konfigurieren.
+
+* beim Erstellen eines Labs (in **Labrichtlinien**) oder
+* nach dem Erstellen des Labs (in **Einstellungen**)
+
+> [!div class="mx-imgBorder"]
+> ![Konfigurieren zum Zeitpunkt der Laberstellung](./media/how-to-enable-shutdown-disconnect/configure-lab-creation.png)
+
+Lesen Sie unbedingt die Informationen zum automatischen Herunterfahren im Abschnitt [Maximieren der Kostenkontrolle durch Einstellungen zum automatischen Herunterfahren](cost-management-guide.md#maximize-cost-control-with-auto-shutdown-settings).
 
 > [!WARNING]
 > Wenn Sie das Windows-Betriebssystem einer VM herunterfahren, bevor Sie eine RDP-Sitzung mit der VM trennen, funktioniert das automatische Herunterfahren nicht ordnungsgemäß.  
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen finden Sie in folgenden Artikeln:
 
-- [Dashboard für Classroom-Labs](use-dashboard.md)
+[Dashboard für Classroom-Labs](use-dashboard.md)

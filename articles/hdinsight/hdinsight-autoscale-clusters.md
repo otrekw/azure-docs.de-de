@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/29/2020
-ms.openlocfilehash: 29c04fc8f6af016200e06ad239095a3665de5869
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 730df91d922c4bd6187748654f8184cfb7dc6ea0
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086431"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88612706"
 ---
 # <a name="automatically-scale-azure-hdinsight-clusters"></a>Automatisches Skalieren von Azure HDInsight-Clustern
 
@@ -133,7 +133,7 @@ Weitere Informationen zum Erstellen von HDInsight-Clustern mit dem Azure-Portal 
 
 #### <a name="load-based-autoscaling"></a>Lastbasierte Autoskalierung
 
-Sie können einen HDInsight-Cluster mit lastbasierter Autoskalierung und einer Azure Resource Manager-Vorlage erstellen, indem Sie dem Abschnitt `computeProfile` > `workernode` einen `autoscale`-Knoten mit den Eigenschaften `minInstanceCount` und `maxInstanceCount` hinzufügen, wie im folgenden JSON-Codeausschnitt gezeigt.
+Sie können einen HDInsight-Cluster mit lastbasierter Autoskalierung und einer Azure Resource Manager-Vorlage erstellen, indem Sie dem Abschnitt `computeProfile` > `workernode` einen `autoscale`-Knoten mit den Eigenschaften `minInstanceCount` und `maxInstanceCount` hinzufügen, wie im folgenden JSON-Codeausschnitt gezeigt. Eine umfassende Resource Manager-Vorlage finden Sie unter [Schnellstartvorlage: Deploy Spark Cluster with Loadbased Autoscale Enabled](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-autoscale-loadbased) (Bereitstellen eines Spark-Clusters mit aktivierter lastbasierter Autoskalierung, in englischer Sprache).
 
 ```json
 {
@@ -161,7 +161,7 @@ Sie können einen HDInsight-Cluster mit lastbasierter Autoskalierung und einer A
 
 #### <a name="schedule-based-autoscaling"></a>Zeitplanbasierte Autoskalierung
 
-Sie können einen HDInsight-Cluster mit zeitplanbasierter Autoskalierung und einer Azure Resource Manager-Vorlage erstellen, indem Sie dem Abschnitt `computeProfile` > `workernode` einen `autoscale`-Knoten hinzufügen. Der `autoscale`-Knoten enthält ein `recurrence` mit einer `timezone` und einem `schedule`. Damit wird beschrieben, wann die Änderung erfolgen wird.
+Sie können einen HDInsight-Cluster mit zeitplanbasierter Autoskalierung und einer Azure Resource Manager-Vorlage erstellen, indem Sie dem Abschnitt `computeProfile` > `workernode` einen `autoscale`-Knoten hinzufügen. Der `autoscale`-Knoten enthält ein `recurrence` mit einer `timezone` und einem `schedule`. Damit wird beschrieben, wann die Änderung erfolgen wird. Eine umfassende Resource Manager-Vorlage finden Sie unter [Deploy Spark Cluster with schedule-based Autoscale Enabled](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-autoscale-schedulebased) (Bereitstellen eines Spark-Clusters mit aktivierter zeitplanbasierter Autoskalierung, in englischer Sprache).
 
 ```json
 {
@@ -258,6 +258,26 @@ Die ausgeführten Aufträge werden weiterhin ausgeführt. Für die ausstehenden 
 ### <a name="minimum-cluster-size"></a>Minimale Clustergröße
 
 Skalieren Sie den Cluster nicht auf weniger als drei Knoten herunter. Die Skalierung des Clusters auf weniger als drei Knoten kann dazu führen, dass der Cluster aufgrund unzureichender Dateireplikation im abgesicherten Modus hängen bleibt.  Weitere Informationen finden Sie unter [Hängenbleiben im abgesicherten Modus](./hdinsight-scaling-best-practices.md#getting-stuck-in-safe-mode).
+
+### <a name="llap-daemons-count"></a>Anzahl der LLAP-Daemons
+
+Für LLAP-Cluster mit aktivierter Autoskalierung wird bei der Autoskalierung (zentrales Hochskalieren/Herunterskalieren) auch die Anzahl der LLAP-Daemons entsprechend der Anzahl aktiver Workerknoten zentral hochskaliert/herunterskaliert. Diese Änderung der Anzahl der Daemons wird jedoch in der **num_llap_nodes**-Konfiguration in Ambari nicht beibehalten. Wenn Hive-Dienste manuell neu gestartet werden, wird die Anzahl der LLAP-Daemons gemäß der Konfiguration in Ambari zurückgesetzt.
+
+Betrachten wir das folgende Szenario:
+1. Es wird ein LLAP-Cluster mit aktivierter Autoskalierung mit 3 Workerknoten erstellt. Die lastbasierte Autoskalierung ist mit der minimalen Anzahl von 3 Workerknoten und der maximalen Anzahl von 10 Workerknoten aktiviert.
+2. Die Anzahl der LLAP-Daemons gemäß der LLAP-Konfiguration und Ambari ist 3, da der Cluster mit 3 Workerknoten erstellt wurde.
+3. Anschließend wird aufgrund der Last des Clusters eine automatische zentrale Hochskalierung des Clusters auf 10 Knoten ausgelöst.
+4. Bei der in regelmäßigen Abständen ausgeführten Autoskalierungsüberprüfung wird festgestellt, dass die Anzahl der LLAP-Daemons 3 beträgt. Da jedoch 10 aktive Workerknoten vorhanden sind, wird durch die Autoskalierung die Anzahl der LLAP-Daemons auf 10 erhöht. Diese Änderung wird jedoch in der Ambari-Konfiguration „num_llap_nodes“ nicht beibehalten.
+5. Autoskalierung ist jetzt deaktiviert.
+6. Der Cluster verfügt nun über 10 Workerknoten und 10 LLAP-Daemons.
+7. Der LLAP-Dienst wird manuell neu gestartet.
+8. Während des Neustarts wird die num_llap_nodes-Konfiguration in der LLAP-Konfiguration überprüft. Da der Wert 3 lautet, werden 3 Daemon-Instanzen gestartet, die Anzahl der Workerknoten ist jedoch 10. Es gibt jetzt einen Konflikt zwischen den beiden.
+
+In diesem Fall müssen wir die **num_llap_node Konfiguration (Anzahl der Knoten zum Ausführen des Hive-LLAP-Daemons) unter „Advanced hive-interactive-env“** entsprechend der aktuellen Anzahl aktiver Workerknoten ändern.
+
+**Hinweis**
+
+Die Hive-Konfiguration **Maximale Anzahl gleichzeitiger Abfragen** in Ambari wird durch Autoskalierungsereignisse nicht geändert. Dies bedeutet, dass der HiveServer 2 Interactive-Dienst **immer nur die angegebene Anzahl gleichzeitiger Abfragen verarbeiten kann, auch wenn die Anzahl der LLAP-Daemons last- oder zeitplanbasiert zentral hoch- oder herunterskaliert wird**. Im Allgemeinen empfiehlt es sich, diese Konfiguration entsprechend der Spitzenlast festzulegen, damit kein manueller Eingriff erforderlich ist. Beachten Sie jedoch, dass durch das **Festlegen eines hohen Werts für die maximale Gesamtzahl gleichzeitiger Abfragen der Neustart des HiveServer 2 Interactive-Diensts möglicherweise fehlschlägt, wenn die minimale Anzahl von Workerknoten die vorhandene Anzahl von Tez-AMS (entspricht der konfigurierten maximalen Gesamtzahl gleichzeitiger Abfragen) nicht bewältigen kann.**
 
 ## <a name="next-steps"></a>Nächste Schritte
 

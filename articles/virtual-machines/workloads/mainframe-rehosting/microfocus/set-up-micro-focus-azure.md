@@ -12,12 +12,12 @@ ms.date: 06/29/2020
 tags: ''
 keywords: ''
 ms.service: multiple
-ms.openlocfilehash: cc61d842550f82dc8b408ed5cd421af65d0e2be6
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 59566fc051b1e84d8e271b3c9d061f2481dcc58f
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86507895"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245314"
 ---
 # <a name="install-micro-focus-enterprise-server-50-and-enterprise-developer-50-on-azure"></a>Installieren von Micro Focus Enterprise Server 5.0 und Enterprise Developer 5.0 in Azure
 
@@ -67,9 +67,9 @@ Die entsprechende Entwicklungsumgebung für Enterprise Server ist Enterprise Dev
 
 8.  Laden Sie aus der RDP-Sitzung die beiden folgenden Dateien. Da Sie Windows verwenden, können Sie die Dateien per Drag & Drop in die RDP-Sitzung ziehen:
 
-    -   **es\_50.exe**, die Installationsdatei von Enterprise Server.
+    -   `es\_50.exe`, die Enterprise Server-Installationsdatei.
 
-    -   **mflic**, die entsprechende Lizenzdatei – Enterprise Server lädt ohne sie nicht.
+    -   `mflic`, die entsprechende Lizenzdatei – Enterprise Server lädt ohne sie nicht.
 
 9.  Doppelklicken Sie auf die Datei, um die Installation zu starten. Wählen Sie im ersten Fenster den Installationsspeicherort aus, und stimmen Sie dem Endbenutzer-Lizenzvertrag zu.
 
@@ -87,11 +87,11 @@ Achten Sie nach der Installation darauf, auf eventuell verfügbare Updates zu pr
 
 1.  Starten der Micro Focus-Lizenzverwaltung.
 
-2.  Wählen Sie **Start** \> **Micro Focus-Lizenz-Manager** \> **Lizenzverwaltung** aus, und klicken Sie dann auf die Registerkarte **Installieren**. Wählen Sie den Typ des hochzuladenden Lizenzformats aus: eine Lizenzdatei oder ein 16-stelliger Lizenzcode. Navigieren Sie beispielsweise für eine Datei unter **Lizenzdatei** zu der **mflic**-Datei, die Sie zuvor in die VM hochgeladen haben, und wählen Sie **Lizenzen installieren** aus.
+2.  Wählen Sie **Start** \> **Micro Focus-Lizenz-Manager** \> **Lizenzverwaltung** aus, und klicken Sie dann auf die Registerkarte **Installieren**. Wählen Sie den Typ des hochzuladenden Lizenzformats aus: eine Lizenzdatei oder ein 16-stelliger Lizenzcode. Navigieren Sie beispielsweise für eine Datei unter **Lizenzdatei** zu der Datei „*`mflic`, die Sie zuvor in die VM hochgeladen haben, und wählen Sie **Lizenzen installieren** aus.
 
     ![Micro Fokus-Lizenzverwaltung (Dialogfeld)](media/install-image-3.png)
 
-3.  Überprüfen Sie, ob Enterprise Server geladen wird. Versuchen Sie, die Enterprise Server Administration-Website in einem Browser zu starten, indem Sie diese URL verwenden: <http://localhost:86/>. Die Enterprise Server Administration-Seite wird wie dargestellt angezeigt.
+3.  Überprüfen Sie, ob Enterprise Server geladen wird. Versuchen Sie, die Enterprise Server Administration-Website in einem Browser zu starten, indem Sie diese URL verwenden: `http://localhost:86/`. Die Enterprise Server Administration-Seite wird wie dargestellt angezeigt.
 
     ![Enterprise Server Administration-Seite](media/install-image-4.png)
 
@@ -103,9 +103,9 @@ Achten Sie nach der Installation darauf, auf eventuell verfügbare Updates zu pr
 
 3.  Laden Sie aus der RDP-Sitzung die beiden folgenden Dateien (per Drag & Drop, wenn Sie möchten):
 
-    -   **edvs2017.exe**, die Enterprise Server-Installationsdatei.
+    -   `edvs2017.exe`, die Enterprise Server-Installationsdatei.
 
-    -   **mflic**, die entsprechende Lizenzdatei (Enterprise Developer lädt ohne sie nicht).
+    -   `mflic`, die entsprechende Lizenzdatei (Enterprise Developer lädt ohne sie nicht).
 
 4.  Doppelklicken Sie auf die **edvs2017.exe**-Datei, um die Installation zu starten. Wählen Sie im ersten Fenster den Installationsspeicherort aus, und stimmen Sie dem Endbenutzer-Lizenzvertrag zu. Wenn gewünscht, wählen Sie **Rumba 9.5 installieren** aus, um diesen Terminalemulator zu installieren, den Sie wahrscheinlich benötigen.
 
@@ -117,7 +117,7 @@ Achten Sie nach der Installation darauf, auf eventuell verfügbare Updates zu pr
 
 6.  Starten Sie den Micro Focus-Lizenz-Manager, genau so, wie Sie das für Enterprise Server getan haben. Wählen Sie **Start** \> **Micro Focus-Lizenz-Manager** \> **Lizenzverwaltung** aus, und klicken Sie auf die Registerkarte **Installieren**.
 
-7.  Wählen Sie den Typ des hochzuladenden Lizenzformats aus: eine Lizenzdatei oder ein 16-stelliger Lizenzcode. Navigieren Sie beispielsweise für eine Datei unter **Lizenzdatei** zu der **mflic**-Datei, die Sie zuvor in die VM hochgeladen haben, und wählen Sie **Lizenzen installieren** aus.
+7.  Wählen Sie den Typ des hochzuladenden Lizenzformats aus: eine Lizenzdatei oder ein 16-stelliger Lizenzcode. Navigieren Sie beispielsweise für eine Datei unter **Lizenzdatei** zu der `mflic`-Datei, die Sie zuvor in die VM hochgeladen haben, und wählen Sie **Lizenzen installieren** aus.
 
     ![Micro Fokus-Lizenzverwaltung (Dialogfeld)](media/install-image-7.png)
 

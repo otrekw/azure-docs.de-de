@@ -10,12 +10,12 @@ ms.custom: how-to, devx-track-azurecli
 ms.author: larryfr
 author: Blackmist
 ms.date: 07/27/2020
-ms.openlocfilehash: 5ddd4fc368a4e479d3d720698c7447d2b3cdf3cc
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.openlocfilehash: 6d1042ea21308dd0f82165c288824aaef000e36d
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87986561"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192327"
 ---
 # <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning"></a>Verwenden einer Azure Resource Manager-Vorlage zum Erstellen eines Arbeitsbereichs für Azure Machine Learning
 
@@ -380,9 +380,9 @@ Wenn Sie den `vnetOption`-Parameterwert entweder auf `new` oder `existing`festle
 Wenn sich ihre zugeordneten Ressourcen nicht hinter einem virtuellen Netzwerk befinden, können Sie den Parameter **privateEndpointType** auf `AutoAproval` oder `ManualApproval` festlegen, um den Arbeitsbereich hinter einem privaten Endpunkt bereitzustellen. Dies kann für neue und vorhandene Arbeitsbereiche erfolgen. Wenn Sie einen vorhandenen Arbeitsbereich aktualisieren, geben Sie die Vorlagenparameter anhand der Informationen aus dem vorhandenen Arbeitsbereich ein.
 
 > [!IMPORTANT]
-> Die Bereitstellung ist nur in Regionen gültig, die private Endpunkte unterstützen.
+> Die Verwendung von Azure Private Link zum Erstellen eines privaten Endpunkts für den Azure Machine Learning-Arbeitsbereich befindet sich derzeit in der öffentlichen Vorschau. Diese Funktionalität ist nur in den Regionen **USA, Osten** und **USA, Westen 2** verfügbar. Diese Vorschau wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azcli)
 
 ```azurecli
 az deployment group create \
@@ -412,7 +412,7 @@ New-AzResourceGroupDeployment `
 
 Legen Sie zum Bereitstellen einer Ressource hinter einem neuen virtuellen Netzwerk die **vnetOption** zusammen mit den Einstellungen des virtuellen Netzwerks für die jeweilige Ressource auf **neu** fest. Die folgende Bereitstellung zeigt, wie Sie einen Arbeitsbereich mit der Speicherkontoressource hinter einem neuen virtuellen Netzwerk bereitstellen.
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azcli)
 
 ```azurecli
 az deployment group create \

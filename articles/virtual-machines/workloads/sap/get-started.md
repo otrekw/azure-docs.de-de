@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 08/11/2020
+ms.date: 08/18/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f13d0d2ba26f49daac49c4dd88f3bdf8621c4ad4
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 538ea1746e92b3ec7d45f06031cfdc965e286d7a
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121492"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88603855"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Verwenden von Azure zum Hosten und Ausführen von SAP-Workloadszenarien
 
@@ -88,6 +88,9 @@ Informationen zur Integration von Azure-Diensten in SAP-Komponenten finden Sie u
 
 ## <a name="change-log"></a>Änderungsprotokoll
 
+- 18.08.2020: Release von [HA für SAP HANA-Hochskalierung mit ANF auf RHEL](./sap-hana-high-availability-netapp-files-red-hat.md)
+- 17.08.2020: Informationen zum Verwenden von Azure Site Recovery zum Verschieben von SAP NetWeaver-Systemen aus einer lokalen Umgebung nach Azure im Artikel [Azure Virtual Machines – Planung und Implementierung für SAP NetWeaver](./planning-guide.md) hinzugefügt.
+- 14.08.2020: Empfehlungen für die Datenträgerkonfiguration für DB2 im Artikel [Azure Virtual Machines – IBM DB2-DBMS-Bereitstellung für SAP-Workload](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_ibm) hinzugefügt.
 - 11.08.2020: Dem Artikel [Kompatible Betriebssysteme für HANA (große Instanzen)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/os-compatibility-matrix-hana-large-instance) wurde RHEL 7.6 als verfügbares Betriebssystem für HLI-Einheiten des Typs I hinzugefügt.
 - 10.08.2020: Die kostenbewusste SAP HANA-Speicherkonfiguration wurde im Artikel [SAP HANA: Speicherkonfigurationen für virtuelle Azure-Computer](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage) eingeführt, und einige Aktualisierungen der [Prüfliste für die Planung und Bereitstellung von SAP-Workloads in Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-deployment-checklist) wurden vorgenommen.
 - 4\.8.2020: Es wurden Änderungen an den Artikeln [Einrichten von Pacemaker unter SLES in Azure](./high-availability-guide-suse-pacemaker.md) und [Einrichten von Pacemaker unter RHEL in Azure](./high-availability-guide-rhel-pacemaker.md) vorgenommen, um die Wichtigkeit der zuverlässigen Namensauflösung für Pacemaker-Cluster hervorzuheben.

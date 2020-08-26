@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 10/7/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: bbee9881addf66d762f1eadb837e5a4e41bf79de
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 7ef9d87db1981c7721c2398e858404c2527dd274
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88167894"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88605791"
 ---
 # <a name="develop-for-azure-files-with-net"></a>Entwickeln für Azure Files mit .NET
 
@@ -99,7 +99,7 @@ Speichern Sie als Nächstes Ihre Anmeldeinformationen in der Datei `App.config` 
 ```
 
 > [!NOTE]
-> Die neueste Version des Azure-Speicheremulators unterstützt Azure Files nicht. Die Verbindungszeichenfolge muss auf ein Azure Storage-Konto in der Cloud verweisen, um mit Azure Files arbeiten zu können.
+> Azure Files wird von den neuesten Versionen von Azure Storage Emulator und des Azurite-Open-Source-Emulators nicht unterstützt. Die Verbindungszeichenfolge muss auf ein Azure Storage-Konto in der Cloud verweisen, um mit Azure Files arbeiten zu können.
 
 ## <a name="add-using-directives"></a>Hinzufügen von using-Direktiven
 

@@ -4,15 +4,15 @@ description: Erfahren Sie mehr über die SQL-Systemfunktionen für Datum und Uhr
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 07/09/2020
+ms.date: 08/18/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: e3666f58b12855c19dd9b8ecf5519ab772c49743
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 1ea838224f9d91b000100d5fa9308289619fd963
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86246936"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88605186"
 ---
 # <a name="date-and-time-functions-azure-cosmos-db"></a>Datums- und Uhrzeitfunktionen (Azure Cosmos DB)
 
@@ -20,18 +20,24 @@ Mit den Datums- und Uhrzeitfunktionen können Sie DateTime- und Zeitstempelvorg�
 
 ## <a name="functions-to-obtain-the-date-and-time"></a>Funktionen zum Abrufen von Datum und Uhrzeit
 
-Mit den folgenden Skalarfunktionen können Sie das aktuelle UTC-Datum und die aktuelle UTC-Uhrzeit in zwei Formaten abrufen: als Zeichenfolge im ISO 8601-Format oder als numerischer Zeitstempel, dessen Wert der Unix-Epochenzeit in Millisekunden entspricht.
+Mit den folgenden skalaren Funktionen können das aktuelle UTC-Datum und die aktuelle UTC-Zeit in drei Formaten abgerufen werden: als Zeichenfolge, die dem ISO 8601-Format entspricht, als numerischer Zeitstempel, dessen Wert der Anzahl der seit der UNIX-Epoche verstrichenen Millisekunden entspricht, oder als Anzahl der Takte, die der Anzahl der 100-Nanosekunden-Takte seit der UNIX-Epoche entspricht:
 
 * [GetCurrentDateTime](sql-query-getcurrentdatetime.md)
 * [GetCurrentTimestamp](sql-query-getcurrenttimestamp.md)
+* [GetCurrentTicks](sql-query-getcurrentticks.md)
 
 ## <a name="functions-to-work-with-datetime-values"></a>Funktionen für die Arbeit mit DateTime-Werten
 
-Mithilfe der folgenden Funktionen können DateTime-Werte ganz einfach bearbeitet werden:
+Mithilfe der folgenden Funktionen können DateTime-Werte, Zeitstempelwerte und Taktwerte ganz einfach bearbeitet werden:
 
 * [DateTimeAdd](sql-query-datetimeadd.md)
 * [DateTimeDiff](sql-query-datetimediff.md)
 * [DateTimeFromParts](sql-query-datetimefromparts.md)
+* [DateTimePart](sql-query-datetimepart.md)
+* [DateTimeToTicks](sql-query-datetimetoticks.md)
+* [DateTimeToTimestamp](sql-query-datetimetotimestamp.md)
+* [TicksToDateTime](sql-query-tickstodatetime.md)
+* [TimestampToDateTime](sql-query-timestamptodatetime.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

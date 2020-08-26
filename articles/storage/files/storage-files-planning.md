@@ -7,12 +7,13 @@ ms.topic: conceptual
 ms.date: 1/3/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 2e8a2030acd4297ab3032e8f1e3bde5b6df66659
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.custom: references_regions
+ms.openlocfilehash: aab06b4870efd88893b4a14c1127de7ffcd2ba68
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037166"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88520521"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Planung für eine Azure Files-Bereitstellung
 [Azure Files](storage-files-introduction.md) kann auf zwei Arten bereitgestellt werden: durch direktes Einbinden der serverlosen Azure-Dateifreigaben oder durch lokales Zwischenspeichern von Azure-Dateifreigaben mithilfe von Azure-Dateisynchronisierung. Welche Bereitstellungsoption Sie auswählen, ändert die Aspekte, die Sie beim Planen der Bereitstellung berücksichtigen müssen. 
@@ -103,7 +104,7 @@ Weitere Informationen finden Sie unter [Konfigurieren von Advanced Threat Protec
 ## <a name="storage-tiers"></a>Speicherebenen
 [!INCLUDE [storage-files-tiers-overview](../../../includes/storage-files-tiers-overview.md)]
 
-Im Allgemeinen sind Azure Files-Features und die Interoperabilität mit anderen Diensten für Premium-Dateifreigaben und Standarddateifreigaben identisch. Es gibt jedoch einige wichtige Unterschiede:
+Im Allgemeinen sind Azure Files-Features und die Interoperabilität mit anderen Diensten für Premium-Dateifreigaben und Standarddateifreigaben (einschließlich heißer, kalter und für Transaktionen optimierter Dateifreigaben) identisch. Es gibt jedoch einige wichtige Unterschiede:
 - **Abrechnungsmodell**
     - Premium-Dateifreigaben werden über ein bereitgestelltes Abrechnungsmodell abgerechnet. Dies bedeutet, dass Sie für den Speicherplatz bezahlen, den Sie bereitstellen, und nicht für den Speicherplatz, den Sie tatsächlich anfordern. 
     - Standard-Dateifreigaben werden mit einem Modell mit nutzungsbasierter Bezahlung abgerechnet, das die Grundkosten für den Speicherplatz für den tatsächlich genutzten Speicher und dann zusätzliche Transaktionskosten basierend auf der Nutzung der Freigabe umfasst. Mit Standard-Dateifreigaben erhöht sich Ihre Rechnung, wenn Sie die Azure-Dateifreigabe umfangreicher nutzen (Lesen/Schreiben/Einbinden).

@@ -10,16 +10,16 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 06/10/2020
 ms.author: swmachan
-ms.openlocfilehash: 4e4200e291db81ff759e21eac5b1a9b785b5657f
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: d692daf2f7f8b77358e73246fd8d8760f95982ac
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84888298"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88510792"
 ---
 # <a name="language-and-region-support-for-text-and-speech-translation"></a>Sprach- und Regionsunterstützung für Text- und Sprachübersetzung
 
-Verwenden Sie den Translator zum Übersetzen in jede und aus jeder der über 60 Textübersetzungssprachen. Die neuronale maschinelle Übersetzung (Neural Machine Translation, NMT) ist der neue Standard für qualitativ hochwertige, auf künstlicher Intelligenz basierende maschinelle Übersetzungen und steht standardmäßig in V3 von Translator zur Verfügung, wenn ein neuronales System verfügbar ist.
+Verwenden Sie den Translator zum Übersetzen in jede und aus jeder der über 70 Textübersetzungssprachen. Die neuronale maschinelle Übersetzung (Neural Machine Translation, NMT) ist der neue Standard für qualitativ hochwertige, auf künstlicher Intelligenz basierende maschinelle Übersetzungen und steht standardmäßig in V3 von Translator zur Verfügung, wenn ein neuronales System verfügbar ist.
 
 Sie können den Translator auch in Verbindung mit dem benutzerdefinierten Translator verwenden, um neuronale Übersetzungssysteme zu erstellen, die die in Ihrem Unternehmen und Ihrer Branche verwendete Terminologie verstehen, oder in Verbindung mit dem Spracherkennungsdienst von Microsoft, um Ihrer App die Sprachübersetzung hinzuzufügen.
 
@@ -47,6 +47,7 @@ Der Translator unterstützt die folgenden Sprachen für die Übersetzung von Tex
 |Chinesisch (traditionell)|   `zh-Hant`       |
 |Kroatisch|  `hr`    |
 |Tschechisch| `cs`    |
+|Dari|  `prs`   |
 |Dänisch|    `da`        |
 |Niederländisch| `nl`|
 |Englisch|   `en`    |
@@ -83,6 +84,8 @@ Der Translator unterstützt die folgenden Sprachen für die Übersetzung von Tex
 |Maori| `mi`  |
 |Marathi| `mr`  |
 |Norwegisch| `nb`    |
+|Odia|  `or`    |
+|Paschtu|    `ps`    |
 |Persisch|   `fa`    |
 |Polnisch|    `pl`    |
 |Portugiesisch (Brasilien)|   `pt-br` |

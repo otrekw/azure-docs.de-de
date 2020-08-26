@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7452a08125008e3d25ffb7d0eff59f55ca9be0b1
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 88a0239409d29700d95b8949c1499dd30f50bb5f
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372653"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88510724"
 ---
 # <a name="azure-disk-encryption-scenarios-on-linux-vms"></a>Azure Disk Encryption-Szenarien auf virtuellen Linux-Computern
 
@@ -413,7 +413,7 @@ Die folgenden Linux-Szenarien,- Features und -Technologien werden von Azure Disk
 - Eine VM mit „geschachtelten Bereitstellungspunkten“, also mehrere Bereitstellungspunkte in einem einzelnen Pfad (z. B. „/1stmountpoint/data/2stmountpoint“).
 - Eine VM mit einem Datenlaufwerk, das über einem Betriebssystemordner eingebunden ist
 - VMs der M-Serie mit Datenträgern mit Schreibbeschleunigung
-- Anwenden von ADE auf eine VM mit einem Datenträger, der mit [serverseitiger Verschlüsselung mit kundenseitig verwalteten Schlüsseln](disk-encryption.md) (SSE + CMK) verschlüsselt ist, oder das Anwenden von SSE + CMK auf einen Datenträger auf einer mit ADE verschlüsselten VM.
+- Anwenden von ADE auf einen virtuellen Computer, der über Datenträger, die mit [serverseitiger Verschlüsselung mit kundenseitig verwalteten Schlüsseln](disk-encryption.md) (SSE + CMK) verschlüsselt werden, verfügt oder *zu irgendeinem Zeitpunkt* verfügte. Das Anwenden von SSE + CMK auf einen Datenträger auf einer mit ADE verschlüsselten VM ist ebenfalls ein nicht unterstütztes Szenario.
 - Migrieren einer mit ADE verschlüsselten VM zur [serverseitigen Verschlüsselung mit kundenseitig verwalteten Schlüsseln](disk-encryption.md).
 
 ## <a name="next-steps"></a>Nächste Schritte

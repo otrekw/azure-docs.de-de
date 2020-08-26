@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 07/17/2020
+ms.date: 08/17/2020
 ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: common
-ms.openlocfilehash: 185992284e353c3e58104bc46296c1741fbca7d9
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: b9882168cd063cb4448269cc6a4949778fe93fb1
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502170"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88509857"
 ---
 # <a name="grant-limited-access-to-azure-storage-resources-using-shared-access-signatures-sas"></a>Gewähren von eingeschränktem Zugriff auf Azure Storage-Ressourcen mithilfe von SAS (Shared Access Signature)
 
@@ -29,7 +29,7 @@ Azure Storage unterstützt drei Arten von Shared Access Signatures:
 
     Weitere Informationen zur SAS für die Benutzerdelegierung finden Sie unter [Erstellen einer SAS für die Benutzerdelegierung (Rest-API)](/rest/api/storageservices/create-user-delegation-sas).
 
-- **Dienst-SAS:** Eine Dienst-SAS wird mit dem Speicherkontoschlüssel geschützt. Eine Dienst-SAS delegiert den Zugriff auf eine Ressource in nur einem der Azure Storage-Dienste: Blob Storage, Queue Storage, Table Storage oder Azure Files. 
+- **Dienst-SAS:** Eine Dienst-SAS wird mit dem Speicherkontoschlüssel geschützt. Eine Dienst-SAS delegiert den Zugriff auf eine Ressource in nur einem der Azure Storage-Dienste: Blob Storage, Queue Storage, Table Storage oder Azure Files.
 
     Weitere Informationen zur Dienst-SAS finden Sie unter [Erstellen einer Dienst-SAS (Rest-API)](/rest/api/storageservices/create-service-sas).
 
@@ -38,7 +38,7 @@ Azure Storage unterstützt drei Arten von Shared Access Signatures:
     Weitere Informationen zur Konto-SAS finden Sie unter [Erstellen einer Konto-SAS (Rest-API)](/rest/api/storageservices/create-account-sas).
 
 > [!NOTE]
-> Microsoft empfiehlt als bewährte Methode, nach Möglichkeit Azure AD-Anmeldeinformationen anstelle des Kontoschlüssels zu verwenden, der leichter kompromittiert werden kann. Wenn ihr Anwendungsentwurf Shared Access Signatures für den Zugriff auf Blobspeicher erfordert, verwenden Sie Azure AD-Anmeldeinformationen, um nach Möglichkeit eine SAS für die Benutzerdelegierung zu erstellen und damit die Sicherheit zu erhöhen.
+> Microsoft empfiehlt als bewährte Methode, nach Möglichkeit Azure AD-Anmeldeinformationen anstelle des Kontoschlüssels zu verwenden, der leichter kompromittiert werden kann. Wenn ihr Anwendungsentwurf Shared Access Signatures für den Zugriff auf Blobspeicher erfordert, verwenden Sie Azure AD-Anmeldeinformationen, um nach Möglichkeit eine SAS für die Benutzerdelegierung zu erstellen und damit die Sicherheit zu erhöhen. Weitere Informationen finden Sie unter [Autorisieren des Zugriffs auf Blobs und Warteschlangen mit Azure Active Directory](storage-auth-aad.md).
 
 Shared Access Signatures können zwei unterschiedliche Formen haben:
 
@@ -52,15 +52,27 @@ Shared Access Signatures können zwei unterschiedliche Formen haben:
 
 Eine Shared Access Signature ist ein signierter URI, der auf eine oder mehrere Speicherressourcen verweist und über ein Token verfügt, das einen speziellen Satz von Abfrageparametern enthält. Das Token gibt an, wie der Client auf die Ressourcen zugreifen kann. Einer der Abfrageparameter ist die Signatur. Sie besteht aus den SAS-Parametern und wird mit dem Schlüssel signiert, der zum Erstellen der SAS verwendet wurde. Diese Signatur wird von Azure Storage verwendet, um den Zugriff auf die Speicherressource zu autorisieren.
 
-### <a name="sas-signature"></a>SAS-Signatur
+### <a name="sas-signature-and-authorization"></a>SAS-Signatur und Autorisierung
 
-Zum Signieren einer SAS stehen zwei Möglichkeiten zur Verfügung:
+Zum Signieren eines SAS-Tokens stehen zwei Möglichkeiten zur Verfügung:
 
 - Mit einem *Benutzerdelegierungsschlüssel*, der mit Azure Active Directory-Anmeldeinformationen (Azure AD) erstellt wurde. Eine SAS für die Benutzerdelegierung wird mit dem Benutzerdelegierungsschlüssel signiert.
 
     Um den Benutzerdelegierungsschlüssel abzurufen und die SAS zu erstellen, muss einem Azure AD-Sicherheitsprinzipal eine Azure-Rolle zugewiesen werden, die die Aktion **Microsoft.Storage/storageAccounts/blobServices/generateUserDelegationKey** beinhaltet. Ausführliche Informationen zu Azure-Rollen mit Berechtigungen zum Abrufen des Benutzerdelegierungsschlüssels finden Sie unter [Erstellen einer SAS für die Benutzerdelegierung (Rest-API)](/rest/api/storageservices/create-user-delegation-sas).
 
-- Mit dem Speicherkontoschlüssel. Sowohl eine Dienst-SAS als auch eine Konto-SAS werden mit dem Speicherkontoschlüssel signiert. Zum Erstellen einer SAS, die mit dem Kontoschlüssel signiert ist, muss eine Anwendung Zugriff auf den Kontoschlüssel besitzen.
+- Mit dem Speicherkontoschlüssel (gemeinsam verwendeter Schlüssel). Sowohl eine Dienst-SAS als auch eine Konto-SAS werden mit dem Speicherkontoschlüssel signiert. Zum Erstellen einer SAS, die mit dem Kontoschlüssel signiert ist, muss eine Anwendung Zugriff auf den Kontoschlüssel besitzen.
+
+Wenn eine Anforderung ein SAS-Token enthält, wird diese Anforderung basierend auf der Signierung dieses SAS-Tokens autorisiert. Der Zugriffsschlüssel oder die Anmeldeinformationen, die Sie zum Erstellen eines SAS-Tokens verwenden, werden auch von Azure Storage verwendet, um Zugriff auf einen Client zu gewähren, der die SAS besitzt.
+
+In der folgenden Tabelle wird zusammengefasst, wie die einzelnen Typen von SAS-Token autorisiert werden, wenn sie in einer Anforderung an Azure Storage enthalten sind:
+
+| SAS-Typ | Autorisierungstyp |
+|-|-|
+| SAS für Benutzerdelegierung (nur Blobspeicher) | Azure AD |
+| Dienst-SAS | Gemeinsam verwendeter Schlüssel |
+| Konto-SAS | Gemeinsam verwendeter Schlüssel |
+
+Microsoft empfiehlt, für höhere Sicherheit nach Möglichkeit eine SAS für die Benutzerdelegierung zu verwenden.
 
 ### <a name="sas-token"></a>SAS-Token
 

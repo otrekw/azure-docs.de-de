@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 06/16/2020
-ms.openlocfilehash: 594a47f397ca78476ed987ac0e06a3cacc79ec3b
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 5878ea6a554439c261399706eec708b06ed59b11
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319897"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88225371"
 ---
 # <a name="issues-and-solutions-during-virtual-machine-certification"></a>Probleme und ihre Behebung bei der Zertifizierung virtueller Computer 
 
@@ -314,6 +314,57 @@ In der folgenden Tabelle sind Fehlerbehebungsoptionen für Fehler in Verbindung 
 Wenn für das Windows-Image nicht die RDP-Option (Remote Desktop Protocol, Remotedesktopprotokoll) aktiviert ist, wird dieser Fehler angezeigt. 
 
 Aktivieren Sie vor dem Senden den RDP-Zugriff für Windows-Images.
+
+## <a name="bash-history-failed"></a>Fehler beim Bashverlauf
+
+Dieser Fehler tritt auf, wenn die Größe des Bashverlaufs in Ihrem gesendeten Image 1 Kilobyte (KB) überschreitet. Die Größe ist auf 1 KB beschränkt, um sicherzustellen, dass keine potenziell sensiblen Informationen in der Bashverlaufsdatei erfasst werden.
+
+Im Folgenden finden Sie die Schritte zum Löschen des Bashverlaufs:
+
+Schritt 1: Stellen Sie den virtuellen Computer bereit, und klicken Sie im Azure-Portal auf die Option „Befehl ausführen“.
+![„Befehl ausführen“ im Azure-Portal](./media/vm-certification-issues-solutions-3.png)
+
+Schritt 2: Wählen Sie die erste Option „RunShellScript“ aus, und führen Sie den folgenden Befehl aus:
+
+Befehl: „cat /dev/null > ~/.bash_history && history -c“ ![Befehl für den Bashverlauf im Azure-Portal](./media/vm-certification-issues-solutions-4.png)
+
+Schritt 3: Nachdem der Befehl erfolgreich ausgeführt wurde, starten Sie den virtuellen Computer neu.
+
+Schritt 4. Generalisieren Sie den virtuellen Computer, extrahieren Sie die Image-VHD, und beenden Sie den virtuellen Computer.
+
+Schritt 5:     Übermitteln Sie das generalisierte Image erneut.
+
+## <a name="requesting-exceptions-custom-templates-on-vm-images-for-selective-tests"></a>Anfordern von Ausnahmen (benutzerdefinierte Vorlagen) für VM-Images für selektive Tests
+
+Herausgeber können Ausnahmen bei der VM-Zertifizierung für bestimmte Tests anfordern. Ausnahmen werden in äußerst seltenen Fällen gemacht, wenn der Herausgeber die Anforderung fundiert begründet.
+Das Zertifizierungsteam behält sich das Recht vor, Ausnahmen jederzeit abzulehnen oder zu genehmigen.
+
+In den folgenden Abschnitten werden die wichtigsten Szenarien erläutert, in denen Ausnahmen angefordert werden, und es wird beschrieben, wie Sie eine Ausnahme anfordern.
+
+Szenarien für eine Ausnahme
+
+Herausgeber fordern diese Ausnahmen in der Regel in drei Szenarien/Fällen an. 
+
+* **Ausnahme für einen oder mehrere Testfälle:** Herausgeber können sich an den [Marketplace-Support für Herausgeber](https://aka.ms/marketplacepublishersupport) wenden, um Ausnahmen für Testfälle anzufordern. 
+
+* **Gesperrte VMs/kein Root-Zugriff:** Einige Herausgeber verfügen über Szenarien, in denen VMs gesperrt werden müssen, da Software wie Firewalls auf der VM installiert ist. 
+       In diesem Fall können Herausgeber das [Certified Test Tool](https://aka.ms/AzureCertificationTestTool) hier herunterladen und den Bericht dem [Marketplace-Support für Herausgeber](https://aka.ms/marketplacepublishersupport) zur Verfügung stellen.
+
+
+* **Benutzerdefinierte Vorlagen:** Einige Herausgeber veröffentlichen VM-Images, für die eine benutzerdefinierte ARM-Vorlage zum Bereitstellen der VMs erforderlich ist. In diesem Fall werden die Herausgeber aufgefordert, die benutzerdefinierten Vorlagen dem [Marketplace-Support für Herausgeber](https://aka.ms/marketplacepublishersupport) zur Verfügung zu stellen, damit diese vom Zertifizierungsteam für die Überprüfung verwendet werden können. 
+
+### <a name="information-to-provide-for-exception-scenarios"></a>Zu übermittelnde Informationen für Ausnahmeszenarien
+
+Herausgeber müssen sich unter Angabe der folgenden Informationen an den [Marketplace-Support für Herausgeber](https://aka.ms/marketplacepublishersupport) wenden, um Ausnahmen für das weiter oben beschriebene Szenario anzufordern:
+
+   1.   Herausgeber-ID: die Herausgeber-ID im Partner Center-Portal
+   2.   Angebots-ID/-Name: ID/Name des Angebots, für das die Ausnahme angefordert wird 
+   3.   SKU/Plan-ID: die Plan-ID/SKU des VM-Angebots, für das eine Ausnahme angefordert wird
+   4.    Version: die Version des VM-Angebots, für das eine Ausnahme angefordert wird
+   5.   Ausnahmetyp: Tests, gesperrte VM, benutzerdefinierte Vorlagen
+   6.   Grund für die Anforderung: der Grund für diese Ausnahme und Informationen zu den auszuschließenden Tests 
+   7.   Anlage: Fügen Sie alle relevanten Belege an. Fügen Sie bei gesperrten VMs den Testbericht und bei benutzerdefinierten Vorlagen die benutzerdefinierte ARM-Vorlage als Anlage an. Wenn Sie den Testbericht für gesperrte VMs und die benutzerdefinierte ARM-Vorlage für benutzerdefinierte Vorlagen nicht anfügen, wird die Anforderung abgelehnt.
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

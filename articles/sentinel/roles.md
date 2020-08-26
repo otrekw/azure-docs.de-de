@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/28/2020
 ms.author: yelevin
-ms.openlocfilehash: 7dded3b938444198e72d6eb87476f571dd3f4d78
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: b48ff1043ae8128a5cbfdcbba0548d89b5af2624
+ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836767"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88565841"
 ---
 # <a name="permissions-in-azure-sentinel"></a>Berechtigungen in Azure Sentinel
 
@@ -59,6 +59,10 @@ Benutzern mit besonderen Arbeitsanforderungen müssen möglicherweise zusätzlic
 - Verbinden von Datenquellen mit Azure Sentinel
 
     Damit ein Benutzer **Data Connectors**hinzufügen kann, müssen Sie dem Benutzer Schreibberechtigungen im Azure Sentinel-Arbeitsbereich zuweisen. Beachten Sie außerdem die erforderlichen zusätzlichen Berechtigungen für jeden Connector, die auf der Seite zum jeweiligen Connector aufgeführt werden.
+
+- Gastbenutzer, die Incidents zuweisen
+
+    Wenn ein Gastbenutzer in der Lage sein muss, Incidents zuzuweisen, muss dem Benutzer zusätzlich zur Rolle „Azure Sentinel-Antwortberechtigter“ auch die Rolle [Verzeichnisleseberechtigte](../active-directory/users-groups-roles/directory-assign-admin-roles.md#directory-readers) zugewiesen werden. Beachten Sie, dass diese Rolle *keine* Azure RBAC-Rolle, sondern eine **Azure Active Directory**-Rolle ist, und dass Standardbenutzern (keine Gastbenutzer) diese Rolle standardmäßig zugewiesen ist. 
 
 Eine Gegenüberstellung finden Sie in der [Tabelle unten](#roles-and-allowed-actions).
 

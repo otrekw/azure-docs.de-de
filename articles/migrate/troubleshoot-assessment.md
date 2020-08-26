@@ -7,12 +7,12 @@ author: musa-57
 ms.manager: abhemraj
 ms.author: hamusa
 ms.date: 01/02/2020
-ms.openlocfilehash: f9598ad508e3760bf1bad04f8694838465e4961f
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: 24e7a1660da4dd021ef7ceb2594b4db2340cf104
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87460982"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88263026"
 ---
 # <a name="troubleshoot-assessmentdependency-visualization"></a>Behandeln von Problemen bei der Bewertung- und Abhängigkeitsvisualisierung
 
@@ -28,7 +28,7 @@ Beheben Sie Probleme mit der Bewertungsbereitschaft wie folgt:
 Nicht unterstützter Starttyp | Azure unterstützt keine virtuellen Computer mit dem Starttyp „EFI“. Wir empfehlen, dass Sie vor einer Migration den Starttyp in „BIOS“ ändern. <br/><br/>Sie können die Azure Migrate-Servermigration verwenden, um die Migration solcher virtuellen Computer zu verarbeiten. Sie ändert den Starttyp des virtuellen Computers im Rahmen der Migration in „BIOS“.
 Bedingt unterstütztes Windows-Betriebssystem | Der Unterstützungszeitraum für das Betriebssystem ist abgelaufen. Für die [Unterstützung in Azure](https://aka.ms/WSosstatement) wird eine benutzerdefinierte Supportvereinbarung (Custom Support Agreement, CSA) benötigt. Ziehen Sie vor der Migration zu Azure ein Upgrade in Erwägung.
 Nicht unterstütztes Windows-Betriebssystem | Azure unterstützt nur [ausgewählte Windows-Betriebssystemversionen](https://aka.ms/WSosstatement). Ziehen Sie vor der Migration zu Azure ein Upgrade des Computers in Erwägung.
-Bedingt unterstütztes Linux-Betriebssystem | Azure unterstützt nur [ausgewählte Linux-Betriebssystemversionen](../virtual-machines/linux/endorsed-distros.md). Ziehen Sie vor der Migration zu Azure ein Upgrade des Computers in Erwägung.
+Bedingt unterstütztes Linux-Betriebssystem | Azure unterstützt nur [ausgewählte Linux-Betriebssystemversionen](../virtual-machines/linux/endorsed-distros.md). Ziehen Sie vor der Migration zu Azure ein Upgrade des Computers in Erwägung. Weitere Informationen finden Sie auch [hier](https://docs.microsoft.com/azure/migrate/troubleshoot-assessment#linux-vms-are-conditionally-ready-in-an-azure-vm-assessment).
 Nicht unterstütztes Linux-Betriebssystem | Der Computer startet möglicherweise in Azure, aber Azure stellt keine Betriebssystemunterstützung bereit. Ziehen Sie vor der Migration zu Azure ein Upgrade auf eine [unterstützte Linux-Version](../virtual-machines/linux/endorsed-distros.md) in Erwägung.
 Unbekanntes Betriebssystem | Das Betriebssystem der VM wurde in vCenter Server als „Sonstige“ angegeben. Dieses Verhalten hindert Azure Migrate daran, die Azure-Bereitschaft der VM zu überprüfen. Stellen Sie sicher, dass das Betriebssystem von Azure [unterstützt](https://aka.ms/azureoslist) wird, bevor Sie den Computer migrieren.
 Nicht unterstützte Bitversion | Virtuelle Computer mit einem 32-Bit-Betriebssystem starten zwar unter Umständen in Azure, es empfiehlt sich jedoch, vor der Migration zu Azure ein Upgrade auf 64-Bit durchzuführen.
@@ -74,7 +74,6 @@ Bei physischen Servern sollten Informationen zur Nebenversion des Betriebssystem
 
 Je nach Art der Bewertung empfiehlt die Azure Migrate-Serverbewertung möglicherweise Azure-VM-SKUs mit mehr Kernen und Arbeitsspeicher als bei der aktuellen lokalen Zuordnung:
 
-
 - Die Empfehlung für VM-SKUs richtet sich nach den Bewertungseigenschaften.
 - Dies hängt von der Art der Bewertung ab, die Sie in der Serverbewertung ausführen: *Leistungsbasiert* oder *Wie lokal*.
 - Bei leistungsbasierten Bewertungen berücksichtigt die Serverbewertung die Nutzungsdaten der lokalen virtuellen Computer (CPU-, Speicher-, Datenträger- und Netzwerkauslastung), um die richtige Ziel-VM-SKU für Ihre lokalen virtuellen Computer zu bestimmen. Außerdem wird bei der Bestimmung der effektiven Auslastung ein Komfortfaktor hinzugefügt.
@@ -88,7 +87,7 @@ Wir haben einen lokalen virtuellen Computer mit vier Kernen und 8 GB Arbeitsspei
 - Bei der leistungsbasierten Bewertung würde auf Basis der effektiven CPU- und Speicherauslastung (50 % von 4 Kernen * 1,3 = 2,6 Kerne und 50 % von 8 GB Arbeitsspeicher * 1,3 = 5,3 GB Arbeitsspeicher) die günstigste VM-SKU mit vier Kernen (nächste unterstützte Kernanzahl) und 8 GB Arbeitsspeichergröße (nächste unterstützte Arbeitsspeichergröße) empfohlen.
 - Weitere Informationen zur Dimensionierung bei Bewertungen finden Sie [hier](concepts-assessment-calculation.md#types-of-assessments).
 
-## <a name="azure-disk-skus-bigger-than-on-premises-in-an-azure-vm-assessment"></a>Azure-Datenträger-SKUs größer als lokal in einer Azure-VM-Bewertung
+## <a name="why-is-the-recommended-azure-disk-skus-bigger-than-on-premises-in-an-azure-vm-assessment"></a>Warum sind die empfohlenen Azure-Datenträger-SKUs größer als lokal in einer Azure-VM-Bewertung?
 
 Die Azure Migrate-Serverbewertung empfiehlt möglicherweise je nach Art der Bewertung einen größeren Datenträger.
 - Die Datenträgerdimensionierung in der Serverbewertung hängt von zwei Bewertungseigenschaften ab: dem Dimensionierungskriterium und dem Speichertyp.
@@ -97,14 +96,26 @@ Die Azure Migrate-Serverbewertung empfiehlt möglicherweise je nach Art der Bewe
 
 Wenn Sie beispielsweise einen lokalen Datenträger mit 32 GB Speicher haben, die aggregierten Lese- und Schreib-IOPS für den Datenträger aber 800 IOPS sind, empfiehlt die Serverbewertung einen Premium-Datenträger (aufgrund der höheren IOPS-Anforderungen) und dann eine Datenträger-SKU, welche die erforderlichen IOPS und die Größe unterstützen kann. Die nächstliegende Übereinstimmung in diesem Beispiel wäre P15 (256 GB, 1100 IOPS). Für den lokalen Datenträger ist also nur eine Größe von 32 GB erforderlich, von der Serverbewertung wurde jedoch aufgrund der hohen IOPS-Anforderungen des lokalen Datenträgers ein größerer Datenträger empfohlen.
 
-## <a name="utilized-corememory-percentage-missing"></a>Prozentsatz der Kern-/Arbeitsspeicherauslastung fehlt
+## <a name="why-is-performance-data-missing-for-someall-vms-in-my-assessment-report"></a>Warum fehlen in meinem Bewertungsbericht die Leistungsdaten für einige oder alle VMs?
 
-Die Serverbewertung gibt die Meldung „PercentageOfCoresUtilizedMissing“ oder „PercentageOfMemoryUtilizedMissing“ aus, wenn die Azure Migrate-Appliance keine Leistungsdaten für den relevanten lokalen virtuellen Computer sammeln kann.
+Für eine Bewertung vom Typ „Leistungsbasiert“ enthält der Bewertungsbericht „PercentageOfCoresUtilizedMissing“ oder „PercentageOfMemoryUtilizedMissing“, wenn die Azure Migrate-Appliance keine Leistungsdaten für die lokalen virtuellen Computer sammeln kann. Überprüfen Sie Folgendes:
 
-- Dies kann vorkommen, wenn die virtuellen Computer während der Bewertung ausgeschaltet sind. Die Appliance kann keine Leistungsdaten für eine VM erfassen, wenn sie ausgeschaltet ist.
-- Falls nur Arbeitsspeicher-Leistungsindikatoren fehlen und Sie versuchen, virtuelle Hyper-V-Computer zu bewerten, überprüfen Sie, ob auf diesen virtuellen Computern dynamischer Arbeitsspeicher aktiviert ist. Aufgrund eines bekannten Problems, das nur bei virtuellen Hyper-V-Computern auftritt, kann die Azure Migrate-Appliance keine Arbeitsspeichernutzungsdaten für virtuelle Computer sammeln, für die kein dynamischer Arbeitsspeicher aktiviert ist.
-- Wenn einer der Leistungsindikatoren fehlt, greift die Azure Migrate-Serverbewertung auf die zugewiesenen Kerne und den Arbeitsspeicher zurück und empfiehlt eine entsprechende VM-Größe.
+- Ob die VMs im Zeitraum, in dem Sie die Bewertung erstellen, eingeschaltet sind
+- Falls nur Arbeitsspeicher-Leistungsindikatoren fehlen und Sie versuchen, virtuelle Hyper-V-Computer zu bewerten, überprüfen Sie, ob auf diesen virtuellen Computern dynamischer Arbeitsspeicher aktiviert ist. Die Azure Migrate-Appliance kann derzeit aufgrund eines bekannten Problems keine Arbeitsspeicherauslastung für virtuelle Computer dieser Art erfassen.
 - Wenn alle Leistungsindikatoren fehlen, stellen Sie sicher, dass die Portzugriffsanforderungen für die Bewertung erfüllt sind. Erfahren Sie mehr über die Portzugriffsanforderungen für [VMware](./migrate-support-matrix-vmware.md#port-access-requirements)-, [Hyper-V](./migrate-support-matrix-hyper-v.md#port-access)- und [physische](./migrate-support-matrix-physical.md#port-access) Serverbewertung.
+Hinweis: Falls einer der Leistungsindikatoren fehlt, greift die Azure Migrate-Serverbewertung auf die lokalen zugeordneten Kerne bzw. den zugeordneten Arbeitsspeicher zurück und empfiehlt eine entsprechende VM-Größe.
+
+## <a name="why-is-the-confidence-rating-of-my-assessment-low"></a>Weshalb weist meine Bewertung eine niedrige Zuverlässigkeitsstufe auf?
+
+Die Zuverlässigkeitsstufe wird für Bewertungen vom Typ „Leistungsbasiert“ anhand des Prozentsatzes von [verfügbaren Datenpunkten](https://docs.microsoft.com/azure/migrate/concepts-assessment-calculation#ratings) berechnet, die zum Berechnen der Bewertung benötigt werden. Im Folgenden werden mögliche Gründe für eine niedrige Zuverlässigkeitsstufe einer Bewertung aufgeführt:
+
+- Sie haben für den Zeitraum, für den Sie die Bewertung erstellen, kein Profil Ihrer Umgebung erstellt. Wenn Sie beispielsweise eine Bewertung mit einer auf eine Woche festgelegten Leistungsdauer erstellen, müssen Sie nach dem Start der Ermittlung mindestens eine Woche warten, damit alle Datenpunkte erfasst werden können. Falls Sie nicht so lange warten können, sollten Sie die Leistungsdauer in einen kürzeren Zeitraum ändern und die Bewertung neu berechnen (Option „Neu berechnen“).
+ 
+- Die Serverbewertung kann die Leistungsdaten für einige oder alle VMs im Bewertungszeitraum nicht erfassen. Überprüfen Sie, ob die VMs während der Dauer der Bewertung eingeschaltet und ausgehende Verbindungen über Port 443 zulässig waren. Wenn bei Verwendung von Hyper-V-VMs der dynamische Arbeitsspeicher aktiviert ist, fehlen Arbeitsspeicher-Leistungsindikatoren. Dies führt zu einer niedrigen Zuverlässigkeitsstufe. Führen Sie die erneute Berechnung der Bewertung mit der Option „Neu berechnen“ durch, um die neuesten Änderungen an der Zuverlässigkeitsstufe widerzuspiegeln. 
+
+- Nach dem Start der Ermittlung in der Serverbewertung wurden wenige VMs erstellt. Ein Beispiel: Angenommen, Sie erstellen eine Bewertung für den Leistungsverlauf des letzten Monats, und in der Umgebung wurden letzte Woche einige virtuelle Computer erstellt. In diesem Fall stehen für die gesamte Dauer keine Leistungsdaten für die neuen VMs zur Verfügung und die Zuverlässigkeitsstufe wäre gering.
+
+[Weitere Informationen](https://docs.microsoft.com/azure/migrate/concepts-assessment-calculation#confidence-ratings-performance-based) zur Zuverlässigkeitsstufe.
 
 ## <a name="is-the-operating-system-license-included-in-an-azure-vm-assessment"></a>Ist die Betriebssystemlizenz in einer Azure-VM-Bewertung inbegriffen?
 
@@ -133,10 +144,6 @@ Die Bereitschaftskategorie wird im Falle eines physischen Servers mit aktivierte
 ## <a name="number-of-discovered-nics-higher-than-actual-for-physical-servers"></a>Anzahl der ermittelten NICs höher als die tatsächliche Anzahl der physischen Server
 
 Dies kann vorkommen, wenn die Hyper-V-Virtualisierung auf dem physischen Server aktiviert ist. Auf diesen Servern werden von Azure Migrate derzeit sowohl der physische als auch der virtuelle Adapter ermittelt. Daher ist die Anzahl der ermittelten NICs höher als die tatsächliche Anzahl.
-
-
-## <a name="low-confidence-rating-on-physical-server-assessments"></a>Niedrige Zuverlässigkeitsstufe bei physischen Serverbewertungen
-Die Bewertung wird basierend auf der Verfügbarkeit von Datenpunkten, die zum Berechnen der Bewertung erforderlich sind, zugewiesen. Bei physischen Servern, bei denen die Hyper-V-Virtualisierung aktiviert ist, gibt es eine bekannte Produktlücke, aufgrund derer Bewertungen physischer Server fälschlicherweise eine niedrige Zuverlässigkeitsstufe zugeordnet werden kann. Auf diesen Servern werden von Azure Migrate derzeit sowohl der physische als auch der virtuelle Adapter ermittelt. Der Netzwerkdurchsatz wird auf den erkannten virtuellen Netzwerkadaptern aufgezeichnet, aber nicht auf die physischen Netzwerkadapter. Aufgrund fehlender Datenpunkte auf den physischen Netzwerkadaptern kann die Zuverlässigkeitsstufe beeinträchtigt werden, was zu einer niedrigen Bewertung führt. Dies ist eine Produktlücke, die in Zukunft behoben wird.
 
 ## <a name="dependency-visualization-in-azure-government"></a>Abhängigkeitsvisualisierung in Azure Government
 

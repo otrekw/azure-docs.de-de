@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 07/23/2019
 ms.author: kenwith
 ms.reviewer: zhchia
-ms.openlocfilehash: 479bbe2dbef2d28a2744b667184c45e85faf9adc
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 7ffdef43aa0fdcaab9e8ceae519cef9dfe5cdf6e
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87283094"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88235637"
 ---
 # <a name="enable-automatic-user-provisioning-for-your-multi-tenant-application"></a>Aktivieren der automatischen Benutzerbereitstellung für Ihre mehrinstanzenfähige Anwendung
 
@@ -54,7 +54,7 @@ Azure AD umfasst mehrere Integrationspfade zum Aktivieren der automatischen Ben
 
 * Der [Azure AD-Bereitstellungsdienst](../app-provisioning/user-provisioning.md) verwaltet das Bereitstellen und Aufheben der Bereitstellung von Benutzern aus Azure AD in Ihrer Anwendung (ausgehende Bereitstellung) und aus Ihrer Anwendung in Azure AD (eingehende Bereitstellung). Der Dienst stellt eine Verbindung mit den in der Anwendung angegebenen Endpunkten der SCIM-Benutzerverwaltungs-API (System for Cross-domain Identity Management) her.
 
-* Wenn Sie [Microsoft Graph](https://docs.microsoft.com/graph/) verwenden, verwaltet Ihre Anwendung die eingehende und ausgehende Bereitstellung von Benutzern und Gruppen aus Azure AD in Ihrer Anwendung durch Abfragen der Microsoft Graph-API.
+* Wenn Sie [Microsoft Graph](/graph/) verwenden, verwaltet Ihre Anwendung die eingehende und ausgehende Bereitstellung von Benutzern und Gruppen aus Azure AD in Ihrer Anwendung durch Abfragen der Microsoft Graph-API.
 
 * Die Security Assertion Markup Language-Just-In-Time-Benutzerbereitstellung (SAML JIT) kann aktiviert werden, wenn die Anwendung SAML für den Verbund verwendet. Dabei werden die im SAML-Token gesendeten Informationen zu Ansprüchen zum Bereitstellen von Benutzern verwendet.
 
@@ -89,7 +89,7 @@ Weitere Informationen zur Verwendung von SCIM im Azure AD-Bereitstellungsdienst
 
 ## <a name="microsoft-graph-for-provisioning"></a>Microsoft Graph für die Bereitstellung
 
-Bei Verwendung von Microsoft Graph für die Bereitstellung haben Sie Zugriff auf alle in Graph verfügbaren umfassenden Benutzerdaten. Neben den Details von Benutzern und Gruppen können Sie auch weitere Informationen abrufen, z. B. die Rollen, Manager und direkten Mitarbeiter von Benutzern, Geräte im Besitz von Benutzern und registrierte Geräte sowie Hunderte anderer Datenelemente, die in [Microsoft Graph](https://docs.microsoft.com/graph/api/overview?view=graph-rest-1.0) verfügbar sind. 
+Bei Verwendung von Microsoft Graph für die Bereitstellung haben Sie Zugriff auf alle in Graph verfügbaren umfassenden Benutzerdaten. Neben den Details von Benutzern und Gruppen können Sie auch weitere Informationen abrufen, z. B. die Rollen, Manager und direkten Mitarbeiter von Benutzern, Geräte im Besitz von Benutzern und registrierte Geräte sowie Hunderte anderer Datenelemente, die in [Microsoft Graph](/graph/api/overview?view=graph-rest-1.0) verfügbar sind. 
 
 Mehr als 15 Millionen Organisationen und 90 % der Fortune 500-Unternehmen, die Microsoft-Clouddienste wie Office 365, Microsoft Azure, Enterprise Mobility Suite oder Microsoft 365 abonniert haben, verwenden Azure AD. Mithilfe von Microsoft Graph können Sie Ihre Anwendung in administrative Workflows integrieren, z. B. Onboarding (und Kündigung) von Mitarbeitern, Profilwartung und vieles mehr. 
 
@@ -97,9 +97,9 @@ Weitere Informationen zur Verwendung von Microsoft Graph für die Bereitstellung
 
 * [Homepage von Microsoft Graph](https://developer.microsoft.com/graph)
 
-* [Übersicht über Microsoft Graph](https://docs.microsoft.com/graph/overview)
+* [Übersicht über Microsoft Graph](/graph/overview)
 
-* [Übersicht über die Microsoft Graph-Authentifizierung](https://docs.microsoft.com/graph/auth/)
+* [Übersicht über die Microsoft Graph-Authentifizierung](/graph/auth/)
 
 * [Erste Schritte mit Microsoft Graph](https://developer.microsoft.com/graph/get-started)
 

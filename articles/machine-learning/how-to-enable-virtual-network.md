@@ -11,12 +11,12 @@ author: aashishb
 ms.date: 07/07/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq4, tracking-python
-ms.openlocfilehash: 16065b45a6afea25615b985d3c89445dee48bd1d
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 9f92e703dd45e893a3dfdd8a4c1d6aa3e9b8e96e
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88167724"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88506497"
 ---
 # <a name="network-isolation-during-training--inference-with-private-virtual-networks"></a>Netzwerkisolation während Training und Rückschluss mit privaten virtuellen Netzwerken
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -32,6 +32,13 @@ Ein __virtuelles Netzwerk__ fungiert als Sicherheitsgrenze und schirmt Ihre Azur
 + Allgemeine Kenntnisse zum [Azure Virtual Network-Dienst](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) und [IP-Netzwerken](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm)
 
 + Ein bereits vorhandenes virtuelles Netzwerk und Subnetz, das mit Ihren Computeressourcen verwendet werden kann
+
++ Ihr Benutzerkonto muss über die rollenbasierte Zugriffssteuerung von Azure (Role-Based Access Control, RBAC) zu den folgenden Aktionen berechtigt werden, um Ressourcen in einem virtuellen Netzwerk oder Subnetz bereitstellen zu können:
+
+    - „Microsoft.Network/virtualNetworks/join/action“ auf der virtuellen Netzwerkressource
+    - „Microsoft.Network/virtualNetworks/subnet/join/action“ auf der Subnetzressource
+
+    Weitere Informationen zur RBAC in Netzwerken finden Sie unter [Integrierte Netzwerkrollen](/azure/role-based-access-control/built-in-roles#networking).
 
 ## <a name="private-endpoints"></a>Private Endpunkte
 
@@ -85,7 +92,7 @@ Das Studio unterstützt das Lesen von Daten aus den folgenden Datenspeichertypen
 
 Fügen Sie Ihren Arbeitsbereich und Ihr Speicherkonto dem gleichen virtuellen Netzwerk hinzu, damit sie aufeinander zugreifen können.
 
-1. Um Ihren Arbeitsbereich mit dem virtuellen Netzwerk zu verbinden, [aktivieren Sie Azure Private Link](how-to-configure-private-link.md). Diese Funktion befindet sich derzeit in der Vorschauphase und ist in den Regionen „USA, Osten“, „USA, Westen 2“ und „USA, Süden-Mitte“ verfügbar.
+1. Um Ihren Arbeitsbereich mit dem virtuellen Netzwerk zu verbinden, [aktivieren Sie Azure Private Link](how-to-configure-private-link.md). Diese Funktion befindet sich derzeit in der Vorschauphase und ist in den Regionen „USA, Osten“ und „USA, Westen 2“ verfügbar.
 
 1. Um Ihr Speicherkonto mit dem virtuellen Netzwerk zu verbinden, [konfigurieren Sie die Einstellungen für Firewalls und virtuelle Netzwerke](#use-a-storage-account-for-your-workspace).
 

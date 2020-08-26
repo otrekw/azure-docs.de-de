@@ -5,53 +5,55 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 07/20/2020
+ms.date: 08/17/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2bd688a9e488c1206b0c8531698b061f650e2afe
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: d949f4b10bc6b7b592556d78edfcf02a05ec7144
+ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87417929"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88565773"
 ---
 # <a name="enable-per-user-azure-multi-factor-authentication-to-secure-sign-in-events"></a>Benutzerspezifisches Aktivieren von Azure Multi-Factor Authentication zum Schutz von Anmeldeereignissen
 
-Es gibt zwei Möglichkeiten, Benutzeranmeldeereignisse zu schützen, indem in Azure AD eine mehrstufige Authentifizierung angefordert wird. Die erste und bevorzugte Option ist die Einrichtung einer Richtlinie für bedingten Zugriff, die unter bestimmten Bedingungen eine mehrstufige Authentifizierung verlangt. Die zweite Option besteht darin, jeden Benutzer für Azure Multi-Factor Authentication zu aktivieren. Wenn Benutzer individuell aktiviert werden, führen sie die mehrstufige Authentifizierung bei jeder Anmeldung durch (bis auf einige Ausnahmen, beispielsweise wenn sie sich von vertrauenswürdigen IP-Adressen aus anmelden oder wenn die Funktion _Gespeicherte Geräte_ aktiviert ist).
+Um Benutzeranmeldeereignisse in Azure AD zu schützen, können Sie mehrstufige Authentifizierung (Multi-Factor Authentication, MFA) anfordern. Der empfohlene Ansatz für den Schutz der Benutzer ist das Aktivieren von Azure Multi-Factor Authentication mit Richtlinien für bedingten Zugriff. Bedingter Zugriff ist ein Azure AD Premium P1- oder P2-Feature, mit dem Sie Regeln anwenden können, die in bestimmten Szenarien MFA erforderlich machen. Informationen zu den ersten Schritten mit bedingtem Zugriff finden Sie im [Tutorial: Schützen von Benutzeranmeldeereignissen mit Azure Multi-Factor Authentication](tutorial-enable-azure-mfa.md).
 
-> [!NOTE]
-> Der empfohlene Ansatz ist das Aktivieren von Azure Multi-Factor Authentication mit Richtlinien für bedingten Zugriff. Das Ändern von Benutzerstatus wird nicht mehr empfohlen, es sei denn, Ihre Lizenzen decken den bedingten Zugriff nicht ab, da Benutzer in dem Fall bei jeder Anmeldung eine mehrstufige Authentifizierung durchführen müssen. Informationen zu den ersten Schritten mit bedingtem Zugriff finden Sie im [Tutorial: Schützen von Benutzeranmeldeereignissen mit Azure Multi-Factor Authentication](tutorial-enable-azure-mfa.md).
+Für kostenlose Azure AD-Mandanten ohne bedingten Zugriff können Sie [Sicherheitsstandards zum Schützen von Benutzern verwenden](../fundamentals/concept-fundamentals-security-defaults.md). Benutzer werden ggf. zur Durchführung von MFA aufgefordert. Sie können jedoch keine eigenen Regeln definieren, um das Verhalten zu steuern.
+
+Bei Bedarf können Sie stattdessen für die einzelnen Konten Azure Multi-Factor Authentication pro Benutzer aktivieren. Wenn Benutzer individuell aktiviert werden, führen sie die mehrstufige Authentifizierung bei jeder Anmeldung durch (bis auf einige Ausnahmen, beispielsweise wenn sie sich von vertrauenswürdigen IP-Adressen aus anmelden oder wenn das Feature zum _Speichern von MFA auf vertrauenswürdigen Geräten_ aktiviert ist).
+
+Das Ändern der Benutzerstatus wird nur empfohlen, wenn Ihre Azure AD Lizenzen keinen bedingten Zugriff enthalten und Sie keine Standardeinstellungen für die Sicherheit verwenden möchten. Weitere Informationen zu den verschiedenen Möglichkeiten zum Aktivieren von MFA finden Sie unter [Features und Lizenzen für Azure Multi-Factor Authentication](concept-mfa-licensing.md).
+
+> [!IMPORTANT]
 >
-> Für kostenlose Azure AD-Mandanten ohne bedingten Zugriff können Sie [Sicherheitsstandards zum Schützen von Benutzern verwenden](../fundamentals/concept-fundamentals-security-defaults.md).
+> In diesem Artikel wird erläutert, wie Sie die Status für Azure Multi-Factor Authentication pro Benutzer anzeigen und ändern. Wenn Sie bedingten Zugriff oder Sicherheitsstandardeinstellungen verwenden, führen Sie nicht die folgenden Schritte aus, um Benutzerkonten zu überprüfen oder zu aktivieren.
+>
+> Wenn Sie Azure Multi-Factor Authentication über eine Richtlinie für bedingten Zugriff aktivieren, ändert sich der Status des Benutzers nicht. Keine Sorge, falls Benutzer als deaktiviert angezeigt werden. Der Status wird durch bedingten Zugriff nicht geändert.
+>
+> **Aktivieren oder erzwingen Sie keine Azure Multi-Factor Authentication pro Benutzer, wenn Sie Richtlinien für den bedingten Zugriff verwenden.**
 
 ## <a name="azure-multi-factor-authentication-user-states"></a>Benutzerstatus in Microsoft Azure Multi-Factor Authentication
 
-Benutzerkonten in Azure Multi-Factor Authentication können die folgenden drei Zustände aufweisen:
+Der Status eines Benutzers gibt an, ob ein Administrator den Benutzer bei Azure Multi-Factor Authentication pro Benutzer registriert hat. Benutzerkonten in Azure Multi-Factor Authentication können die folgenden drei Zustände aufweisen:
 
-> [!IMPORTANT]
-> Wenn Sie Azure Multi-Factor Authentication über eine Richtlinie für bedingten Zugriff aktivieren, ändert sich der Status des Benutzers nicht. Keine Sorge, falls Benutzer als deaktiviert angezeigt werden. Der Status wird durch bedingten Zugriff nicht geändert.
->
-> **Bei Verwendung von Richtlinien für bedingten Zugriff sollten Sie Benutzer nicht für MFA aktivieren oder diese erzwingen.**
-
-| Status | BESCHREIBUNG | Nicht-Browser-Apps betroffen | Browser-Apps betroffen | Moderne Authentifizierung betroffen |
+| State | BESCHREIBUNG | Legacyauthentifizierung betroffen | Browser-Apps betroffen | Moderne Authentifizierung betroffen |
 |:---:| --- |:---:|:--:|:--:|
-| Disabled | Der Standardstatus eines neuen Benutzers, der nicht in Azure Multi-Factor Authentication registriert ist. | Nein | Nein | Nein |
-| Aktiviert | Der Benutzer wurde zwar in Multi-Factor Authentication registriert, hat aber keine Authentifizierungsmethoden registriert. Der Benutzer wird aufgefordert, sich bei der nächsten Anmeldung zu registrieren. | Nein.  Sie werden weiterhin ausgeführt, bis die Registrierung abgeschlossen ist. | Ja. Nach Ablauf der Sitzung ist eine Registrierung bei Azure Multi-Factor Authentication erforderlich.| Ja. Nach Ablauf des Zugriffstokens ist eine Registrierung bei Azure Multi-Factor Authentication erforderlich. |
-| Erzwungen | Der Benutzer wurde registriert und hat den Registrierungsprozess für Azure Multi-Factor Authentication abgeschlossen. | Ja. Für Apps sind App-Kennwörter erforderlich. | Ja. Azure Multi-Factor Authentication ist bei der Anmeldung erforderlich. | Ja. Azure Multi-Factor Authentication ist bei der Anmeldung erforderlich. |
+| Disabled | Der Standardstatus eines Benutzers, der nicht bei Azure Multi-Factor Authentication pro Benutzer registriert ist. | Nein | Nein | Nein |
+| Aktiviert | Der Benutzer ist bei Azure Multi-Factor Authentication pro Benutzer registriert, kann jedoch weiterhin sein Kennwort für die Legacyauthentifizierung verwenden. Wenn der Benutzer noch keine MFA-Authentifizierungsmethoden registriert hat, wird er beim nächsten Anmelden mit moderner Authentifizierung (z. B. über einen Webbrowser) zum Registrieren aufgefordert. | Nein. Legacyauthentifizierung wird weiterhin ausgeführt, bis die Registrierung abgeschlossen ist. | Ja. Nach Ablauf der Sitzung ist eine Registrierung bei Azure Multi-Factor Authentication erforderlich.| Ja. Nach Ablauf des Zugriffstokens ist eine Registrierung bei Azure Multi-Factor Authentication erforderlich. |
+| Erzwungen | Der Benutzer wird bei Azure Multi-Factor Authentication pro Benutzer registriert. Wenn der Benutzer noch keine Authentifizierungsmethoden registriert hat, wird er beim nächsten Anmelden mit moderner Authentifizierung (z. B. über einen Webbrowser) zum Registrieren aufgefordert. Benutzern, die beim Durchführen der Registrierung den Status *Aktiviert* aufweisen, wird automatisch der Status *Erzwungen* zugewiesen. | Ja. Für Apps sind App-Kennwörter erforderlich. | Ja. Azure Multi-Factor Authentication ist bei der Anmeldung erforderlich. | Ja. Azure Multi-Factor Authentication ist bei der Anmeldung erforderlich. |
 
-Der Status eines Benutzers gibt an, ob ein Administrator den Benutzer bei Azure Multi-Factor Authentication registriert hat und ob der Registrierungsprozess abgeschlossen ist.
-
-Der Anfangsstatus aller Benutzer lautet *Deaktiviert*. Wenn Sie Benutzer für Azure Multi-Factor Authentication registrieren, ändert sich der Status in *Aktiviert*. Wenn aktivierte Benutzer sich anmelden und den Registrierungsprozess abschließen, ändert sich ihr Status in *Erzwungen*.
+Der Anfangsstatus aller Benutzer lautet *Deaktiviert*. Wenn Sie Benutzer bei Azure Multi-Factor Authentication pro Benutzer registrieren, ändert sich der Status in *Aktiviert*. Wenn aktivierte Benutzer sich anmelden und den Registrierungsprozess abschließen, ändert sich ihr Status in *Erzwungen*. Administratoren können die Status der Benutzer ändern, z. B. von *Erzwungen* in *Aktiviert* oder *Deaktiviert*.
 
 > [!NOTE]
-> Wenn MFA für ein Benutzerobjekt reaktiviert wird, das bereits über Registrierungsdetails wie Telefonnummer oder E-Mail-Adresse verfügt, müssen die Administratoren den betreffenden Benutzer zur erneuten MFA-Registrierung über das Azure-Portal oder über PowerShell auffordern. Wenn sich der Benutzer nicht erneut registriert, ändert sich der MFA-Zustand auf der MFA-Verwaltungsoberfläche nicht von *Aktiviert* in *Erzwungen*.
+> Wenn MFA pro Benutzer für einen Benutzer erneut aktiviert wird und sich der Benutzer nicht erneut registriert, ändert sich der MFA-Status auf der MFA-Verwaltungsoberfläche nicht von *Aktiviert* in *Erzwungen*. Der Administrator muss dem Benutzer *Erzwungen* direkt zuweisen.
 
 ## <a name="view-the-status-for-a-user"></a>Anzeigen des Status eines Benutzers
 
-Führen Sie die folgenden Schritte aus, um auf das Azure-Portal zuzugreifen, in dem Sie Benutzerstatus anzeigen und verwalten können:
+Führen Sie zum Anzeigen und Verwalten der Benutzerstatus die folgenden Schritte aus, um auf das Azure-Portal zuzugreifen:
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) als Administrator an.
 1. Suchen und wählen Sie *Azure Active Directory* und dann **Benutzer** > **Alle Benutzer** aus.
@@ -61,16 +63,16 @@ Führen Sie die folgenden Schritte aus, um auf das Azure-Portal zuzugreifen, in 
 
 ## <a name="change-the-status-for-a-user"></a>Ändern des Status eines Benutzers
 
-Um den Azure Multi-Factor Authentication-Status eines Benutzers zu ändern, führen Sie die folgenden Schritte aus:
+Um den Azure Multi-Factor Authentication-Status pro Benutzer zu ändern, führen Sie die folgenden Schritte aus:
 
-1. Führen Sie die vorstehenden Schritte aus, um zur Seite mit den Azure Multi-Factor Authentication-**Benutzern** zu gelangen.
-1. Suchen Sie den Benutzer, für den Sie Azure Multi-Factor Authentication aktivieren möchten. Sie müssen möglicherweise oben die Ansicht in **Benutzer** ändern.
+1. Führen Sie die vorstehenden Schritte zum [Anzeigen des Status eines Benutzers](#view-the-status-for-a-user) aus, um zur Seite mit den **Benutzern** von Azure Multi-Factor Authentication zu gelangen.
+1. Suchen Sie den Benutzer, für den Sie Azure Multi-Factor Authentication pro Benutzer aktivieren möchten. Sie müssen möglicherweise oben die Ansicht in **Benutzer** ändern.
    ![Benutzer, für den der Status geändert werden soll, auf der Registerkarte „Benutzer“ auswählen](./media/howto-mfa-userstates/enable1.png)
 1. Aktivieren Sie das Kontrollkästchen neben den Namen der Benutzer, deren Status geändert werden soll.
 1. Wählen Sie auf der rechten Seite unter **QuickSteps** die Option **Aktivieren** oder **Deaktivieren** aus. Im folgenden Beispiel hat der Benutzer *John Smith* ein Häkchen neben seinem Namen und ist für die Verwendung aktiviert: ![Ausgewählten Benutzer durch Klicken auf „Aktivieren“ (im Menü „QuickSteps“) aktivieren](./media/howto-mfa-userstates/user1.png)
 
    > [!TIP]
-   > *Aktivierte* Benutzer werden automatisch in *Erzwungen* geändert, wenn sie sich für Azure Multi-Factor Authentication registrieren. Ändern Sie den Benutzerstatus keinesfalls manuell in *Erzwungen*.
+   > *Aktivierte* Benutzer werden automatisch in *Erzwungen* geändert, wenn sie sich für Azure Multi-Factor Authentication registrieren. Ändern Sie den Benutzerstatus nicht manuell in *Erzwungen*, es sei denn, der Benutzer ist bereits registriert, oder die Unterbrechung der Verbindung mit den Legacyauthentifizierungsprotokollen ist für den Benutzer akzeptabel.
 
 1. Bestätigen Sie Ihre Auswahl im Popupfenster, das geöffnet wird.
 
@@ -84,7 +86,7 @@ Zum Ändern des Benutzerstatus mit [Azure AD PowerShell](/powershell/azure/) än
 * *Erzwungen*
 * *Disabled*  
 
-Ändern Sie nicht direkt den Status *Erzwungen* für Benutzer. Wenn Sie dies tun, funktionieren nicht browserbasierte Apps nicht mehr, weil der Benutzer die Azure Multi-Factor Authentication-Registrierung nicht durchlaufen und kein [App-Kennwort](howto-mfa-app-passwords.md) erhalten hat.
+Im Allgemeinen sollte der Status von Benutzern nicht direkt in *Erzwungen* geändert werden, wenn sie nicht bereits für MFA registriert sind. Andernfalls werden Apps mit Legacyauthentifizierung nicht mehr ausgeführt, da der Benutzer keine Azure Multi-Factor Authentication-Registrierung durchlaufen und kein [App-Kennwort](howto-mfa-app-passwords.md) erhalten hat. In einigen Fällen ist dieses Verhalten möglicherweise erwünscht, es beeinträchtigt jedoch das Benutzererlebnis, bis der Benutzer registriert ist.
 
 Installieren Sie zunächst das Modul *MSOnline* mithilfe von [Install-Module](/powershell/module/powershellget/install-module) wie folgt:
 
@@ -138,7 +140,7 @@ Sie können MFA für einen Benutzer auch direkt deaktivieren, indem Sie [Set-Mso
 Set-MsolUser -UserPrincipalName bsimon@contoso.com -StrongAuthenticationRequirements @()
 ```
 
-## <a name="convert-users-from-per-user-mfa-to-conditional-access-based-mfa"></a>Konvertieren von Benutzern von „MFA pro Benutzer“ zu „MFA mit bedingtem Zugriff“
+## <a name="convert-users-from-per-user-mfa-to-conditional-access"></a>Konvertieren von Benutzern von „MFA pro Benutzer“ zu „MFA mit bedingtem Zugriff“
 
 Das folgende PowerShell-Skript kann Ihnen bei der Konvertierung in Azure Multi-Factor Authentication mit bedingtem Zugriff helfen.
 
@@ -177,7 +179,7 @@ Get-MsolUser -All | Set-MfaState -State Disabled
 ```
 
 > [!NOTE]
-> Wenn MFA für ein Benutzerobjekt reaktiviert wird, das bereits über Registrierungsdetails wie Telefonnummer oder E-Mail-Adresse verfügt, müssen die Administratoren den betreffenden Benutzer zur erneuten MFA-Registrierung über das Azure-Portal oder über PowerShell auffordern. Wenn sich der Benutzer nicht erneut registriert, ändert sich der MFA-Zustand auf der MFA-Verwaltungsoberfläche nicht von *Aktiviert* in *Erzwungen*.
+> Wenn MFA für einen Benutzer erneut aktiviert wird und sich der Benutzer nicht erneut registriert, ändert sich der MFA-Status auf der MFA-Verwaltungsoberfläche nicht von *Aktiviert* in *Erzwungen*. In diesem Fall muss der Administrator dem Benutzer den Status *Erzwungen* direkt zuweisen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

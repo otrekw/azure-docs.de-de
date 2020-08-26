@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/25/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 2cb143e08e3901b1d0ab7181df68f06887069012
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f2c5b6ef0792e418d873d84341a0fffc356c799e
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85563263"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88509279"
 ---
 # <a name="troubleshoot"></a>Problembehandlung
 
@@ -105,7 +105,7 @@ Wenn diese beiden Schritte nicht hilfreich waren, müssen Sie herausfinden, ob d
 
 **Das Modell überschreitet die Grenzwerte des ausgewählten virtuellen Computers, insbesondere die maximale Anzahl von Polygonen:**
 
-Weitere Informationen finden Sie bei den spezifischen [VM-Größenbeschränkungen](../reference/limits.md#overall-number-of-polygons).
+Weitere Informationen finden Sie bei den spezifischen [Servergrößenbeschränkungen](../reference/limits.md#overall-number-of-polygons).
 
 **Das Modell befindet sich nicht im Kamerafrustum:**
 
@@ -148,7 +148,7 @@ Azure Remote Rendering erstellt Hooks in der Unity-Renderpipeline, um die Framez
 
 ## <a name="checkerboard-pattern-is-rendered-after-model-loading"></a>Schachbrettmuster wird nach dem Laden des Modells gerendert
 
-Wenn das gerenderte Bild wie folgt aussieht: ![Schachbrett](../reference/media/checkerboard.png), dann trifft der Renderer auf die [Polygongrenzwerte für die VM-Standardgröße](../reference/vm-sizes.md). Zum Minimieren der Auswirkungen kann entweder zur Größe **Premium-VM** gewechselt oder die Anzahl der sichtbaren Polygone reduziert werden.
+Wenn das gerenderte Bild wie folgt aussieht: ![Schachbrett](../reference/media/checkerboard.png), dann trifft der Renderer auf die [Polygongrenzwerte für die Standardkonfigurationsgröße](../reference/vm-sizes.md). Zum Minimieren der Auswirkungen kann entweder zur Größe **Premium**-Konfiguration gewechselt oder die Anzahl der sichtbaren Polygone reduziert werden.
 
 ## <a name="the-rendered-image-in-unity-is-upside-down"></a>Das gerenderte Bild in Unity steht auf dem Kopf
 

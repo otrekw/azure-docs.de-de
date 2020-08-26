@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 08/04/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: f48b30e0e4e76a4cf4c855008776f6b7541ad5a2
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 7a344b9c1383976cfe1b7507c120e19221f3555f
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87850649"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589349"
 ---
 # <a name="scenario-azure-firewall---custom"></a>Szenario: Azure Firewall: Benutzerdefiniert
 
@@ -26,7 +26,7 @@ Sie können eine Verbindungsmatrix erstellen, in der jede Zelle angibt, ob eine 
 
 **Konnektivitätsmatrix**
 
-| From           | Nach:      | *VNETs*      | *Branches*    | *Internet*   |
+| Von           | Nach:      | *VNETs*      | *Branches*    | *Internet*   |
 |---             |---       |---           |---            |---           |
 | **VNETs**      |   &#8594;|     X        |     AzFW      |     AzFW     |
 | **Branches**   |   &#8594;|    AzFW      |       X       |       X      |
@@ -40,6 +40,8 @@ In der obigen Tabelle stellt ein „X“ die direkte Konnektivität zwischen zwe
   * Zugeordnete Routingtabelle: **Standard**
   * Weitergabe an Routingtabellen: **Standard**
 
+> [!NOTE]
+> Sie können eine separate Virtual WAN-Instanz mit einem einzelnen geschützten virtuellen Hub in jeder Region erstellen. Anschließend können Sie die einzelnen Virtual WAN über ein Site-to-Site-VPN miteinander verbinden.
 
 Weitere Informationen zum Routing für virtuelle Hubs finden Sie unter [Informationen zum Routing virtueller Hubs](about-virtual-hub-routing.md).
 

@@ -1,20 +1,20 @@
 ---
 title: Azure Cosmos DB SQL Python-API, SDK und Ressourcen
 description: Wichtige Informationen zur SQL Python-API und zum SDK, einschließlich Veröffentlichungsterminen, Deaktivierungsterminen und Änderungen an den einzelnen Versionen des Azure Cosmos DB Python SDK.
-author: anfeldma-ms
+author: Rodrigossz
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: python
 ms.topic: reference
-ms.date: 08/05/2020
+ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-python
-ms.openlocfilehash: 44d9521e9d02195cb1d4ff61fd519f31ce9c0018
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: e9f9daea2c0d570efb81603784ee730b11668426
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87876256"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88585983"
 ---
 # <a name="azure-cosmos-db-python-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Python SDK für die SQL-API: Versionshinweise und Ressourcen
 
@@ -27,7 +27,8 @@ ms.locfileid: "87876256"
 > * [Java SDK v4](sql-api-sdk-java-v4.md)
 > * [Async Java SDK v2](sql-api-sdk-async-java.md)
 > * [Sync Java SDK v2](sql-api-sdk-java.md)
-> * [Spring Data](sql-api-sdk-java-spring.md)
+> * [Spring Data v2](sql-api-sdk-java-spring-v2.md)
+> * [Spring Data v3](sql-api-sdk-java-spring-v3.md)
 > * [Spark-Connector](sql-api-sdk-java-spark.md)
 > * [Python](sql-api-sdk-python.md)
 > * [REST](/rest/api/cosmos-db/)
@@ -45,6 +46,20 @@ ms.locfileid: "87876256"
 |**Aktuell unterstützte Plattform**|[Python 2.7](https://www.python.org/downloads/) und [Python 3.5.3+](https://www.python.org/downloads/)|
 
 ## <a name="release-history"></a>Releaseverlauf
+
+### <a name="410-2020-08-10"></a>4.1.0 (10.08.2020)
+
+- Warnung bezüglich der Einstellung des Modus der verzögerten Indizierung hinzugefügt. Das Back-End lässt das Erstellen von Containern mit diesem Modus nicht mehr zu und legt sie stattdessen auf konsistent fest.
+
+**Neue Features**
+- Die Möglichkeit zum Festlegen der Gültigkeitsdauer des analytischen Speichers beim Erstellen eines neuen Containers wurde hinzugefügt.
+
+**Fehlerbehebungen**
+- Die Unterstützung von Wörterbüchern als Eingaben für get_client-APIs wurde korrigiert.
+- Die Kompatibilität mit Python 2/3 in Abfrageiteratoren wurde korrigiert.
+- Typhinweisfehler wurde behoben (Problem Nr. 12570).
+- Der Fehler wurde behoben, aufgrund dessen der upsert_item-Funktion keine Optionsheader hinzugefügt wurden. Problem Nr. 11791 – vielen Dank an @aalapatirvbd.
+- Der Fehler wurde behoben, der bei Verwendung einer Nicht-Zeichenfolgen-ID in einem Element ausgelöst wurde. Jetzt wird ein TypeError anstelle eines AttributeError ausgelöst (Problem Nr. 11793).
 
 ### <a name="400"></a>4.0.0
 

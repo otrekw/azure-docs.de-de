@@ -1,14 +1,14 @@
 ---
 title: Sichern des Windows-Systemstatus in Azure
-description: Erfahren Sie, wie Sie den Systemstatus von Windows Server und/oder Windows-Computern in Azure sichern.
+description: Erfahren Sie, wie Sie den Systemstatus von Windows Server-Computern in Azure sichern.
 ms.topic: conceptual
 ms.date: 05/23/2018
-ms.openlocfilehash: ea38b76d9a8b7b8ccc1898ed9450177da2cb2458
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a56e500cc0330a6406b4465ab5baeafa39b544aa
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87003844"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88263043"
 ---
 # <a name="back-up-windows-system-state-to-azure"></a>Sichern des Windows-Systemstatus in Azure
 
@@ -24,16 +24,16 @@ Falls Sie noch nicht über ein Azure-Abonnement verfügen, können Sie ein [kost
 
 Vergewissern Sie sich beim Erstellen eines Recovery Services-Tresors, dass die Speicherredundanz wie gewünscht konfiguriert ist.
 
-1. Klicken Sie auf dem Blatt **Recovery Services-Tresore** auf den neuen Tresor.
+1. Wählen Sie im Bereich **Recovery Services-Tresore** den neuen Tresor aus.
 
     ![Auswählen des neuen Tresors in der Liste mit Recovery Services-Tresoren](./media/backup-try-azure-backup-in-10-mins/rs-vault-list.png)
 
-    Wenn Sie den Tresor auswählen, wird das Blatt **Recovery Services-Tresor** schmaler, und das Blatt mit den Einstellungen (*auf dem oben der Name des Tresors angegeben ist*) sowie das Blatt mit den Tresordetails werden geöffnet.
+    Wenn Sie den Tresor auswählen, wird der Bereich **Recovery Services-Tresor** schmaler, und der Bereich mit den Einstellungen (*auf dem oben der Name des Tresors angegeben ist*) sowie der Bereich mit den Tresordetails werden geöffnet.
 
     ![Anzeigen der Speicherkonfiguration für den neuen Tresor](./media/backup-try-azure-backup-in-10-mins/set-storage-configuration-2.png)
-2. Scrollen Sie auf dem Blatt mit den Einstellungen des neuen Tresors mithilfe des vertikalen Schiebereglers nach unten zum Verwaltungsabschnitt, und klicken Sie auf **Sicherungsinfrastruktur**.
-    Das Blatt der Sicherungsinfrastruktur wird geöffnet.
-3. Klicken Sie auf dem Blatt der Sicherungsinfrastruktur auf **Sicherungskonfiguration**, um das Blatt **Sicherungskonfiguration** zu öffnen.
+2. Scrollen Sie im Bereich mit den Einstellungen des neuen Tresors mithilfe des vertikalen Schiebereglers nach unten zum Verwaltungsabschnitt, und wählen Sie **Sicherungsinfrastruktur** aus.
+    Der Bereich Sicherungsinfrastruktur wird geöffnet.
+3. Klicken Sie im Bereich „Sicherungsinfrastruktur“ auf **Sicherungskonfiguration**, um den Bereich **Sicherungskonfiguration** zu öffnen.
 
     ![Speicherkonfiguration für neuen Tresor festlegen](./media/backup-try-azure-backup-in-10-mins/set-storage-configuration.png)
 4. Wählen Sie die passende Speicherreplikationsoption für Ihren Tresor aus.
@@ -46,47 +46,47 @@ Sie haben einen Tresor erstellt und können ihn nun für das Sichern des Windows
 
 ## <a name="configure-the-vault"></a>Konfigurieren des Tresors
 
-1. Klicken Sie auf dem Blatt „Recovery Services-Tresor“ (für den gerade erstellten Tresor) im Abschnitt „Erste Schritte“ auf **Backup**. Wählen Sie dann auf dem Blatt **Erste Schritte mit der Sicherung** die Option **Sicherungsziel** aus.
+1. Wählen Sie im Bereich „Recovery Services-Tresor“ (für den gerade erstellten Tresor) im Abschnitt „Erste Schritte“ **Backup** aus. Wählen Sie dann im Bereich **Erste Schritte mit der Sicherung** die Option **Sicherungsziel** aus.
 
-    ![Öffnen des Blatts „Backup Goal“ (Sicherungsziel)](./media/backup-try-azure-backup-in-10-mins/open-backup-settings.png)
+    ![Öffnen der Sicherungseinstellungen](./media/backup-try-azure-backup-in-10-mins/open-backup-settings.png)
 
-    Das Blatt **Sicherungsziel** wird geöffnet.
+    Der Bereich **Sicherungsziel** wird geöffnet.
 
-    ![Öffnen des Blatts „Backup Goal“ (Sicherungsziel)](./media/backup-try-azure-backup-in-10-mins/backup-goal-blade.png)
+    ![Öffnen des Bereichs „Sicherungsziel“](./media/backup-try-azure-backup-in-10-mins/backup-goal-blade.png)
 
 2. Wählen Sie im Dropdownmenü **Wo wird Ihre Workload ausgeführt?** die Option **Lokal** aus.
 
     Sie wählen **Lokal**, da Ihr Windows Server- oder Windows-Computer ein physischer Computer ist, der sich nicht in Azure befindet.
 
-3. Wählen Sie im Menü **Welche Daten möchten Sie sichern?** die Option **Systemstatus** aus, und klicken Sie auf **OK**.
+3. Wählen Sie im Menü **Welche Daten möchten Sie sichern?** die Option **Systemstatus** aus, und wählen Sie **OK** aus.
 
     ![Konfigurieren von Dateien und Ordnern](./media/backup-azure-system-state/backup-goal-system-state.png)
 
-    Nach dem Klicken auf „OK“ erscheint ein Häkchen neben **Sicherungsziel**, und das Blatt **Vorbereiten der Infrastruktur** wird geöffnet.
+    Nach dem Klicken auf „OK“ erscheint ein Häkchen neben **Sicherungsziel**, und der Bereich **Vorbereiten der Infrastruktur** wird geöffnet.
 
     ![Sicherungsziel konfiguriert, dann Vorbereiten der Infrastruktur](./media/backup-try-azure-backup-in-10-mins/backup-goal-configed.png)
 
-4. Klicken Sie auf dem Blatt **Vorbereiten der Infrastruktur** auf **Agent für Windows Server oder Windows-Client herunterladen**.
+4. Wählen Sie im Bereich **Vorbereiten der Infrastruktur** die Option **Agent für Windows Server oder Windows-Client herunterladen** aus.
 
-    ![Agent für Windows Server oder Windows-Client herunterladen](./media/backup-try-azure-backup-in-10-mins/choose-agent-for-server-client.png)
+    ![Infrastruktur vorbereiten](./media/backup-try-azure-backup-in-10-mins/choose-agent-for-server-client.png)
 
     Wenn Sie Windows Server Essential verwenden, laden Sie den Agent für Windows Server Essential herunter. Sie werden in einem Popupmenü aufgefordert, „MARSAgentInstaller.exe“ auszuführen oder zu speichern.
 
     ![Dialogfeld „MARSAgentInstaller“](./media/backup-try-azure-backup-in-10-mins/mars-installer-run-save.png)
 
-5. Klicken Sie im Downloadpopupmenü auf **Speichern**.
+5. Wählen Sie im Downloadpopupmenü **Speichern** aus.
 
     Die Datei **MARSagentinstaller.exe** wird standardmäßig in Ihrem Downloadordner gespeichert. Nachdem das Installationsprogramm heruntergeladen wurde, erscheint ein Popup mit der Frage, ob Sie das Installationsprogramm ausführen oder den Ordner öffnen möchten.
 
-    ![Agent für Windows Server oder Windows-Client herunterladen](./media/backup-try-azure-backup-in-10-mins/mars-installer-complete.png)
+    ![Das MARS-Installationsprogramm ist abgeschlossen.](./media/backup-try-azure-backup-in-10-mins/mars-installer-complete.png)
 
     Sie müssen den Agent noch nicht installieren. Sie können den Agent installieren, nachdem Sie die Anmeldeinformationen für den Tresor heruntergeladen haben.
 
-6. Klicken Sie auf dem Blatt **Vorbereiten der Infrastruktur** auf **Herunterladen**.
+6. Wählen Sie im Bereich **Vorbereiten der Infrastruktur** die Option **Herunterladen** aus.
 
     ![Herunterladen der Tresoranmeldeinformationen](./media/backup-try-azure-backup-in-10-mins/download-vault-credentials.png)
 
-    Die Anmeldeinformationen für den Tresor werden in den Ordner „Downloads“ heruntergeladen. Nach dem Herunterladen der Anmeldeinformationen für den Tresor erscheint ein Popup mit der Frage, ob Sie die Anmeldeinformationen öffnen oder speichern möchten. Klicken Sie auf **Speichern**. Wenn Sie versehentlich auf **Öffnen** klicken, brechen Sie den Vorgang zum Öffnen der Anmeldeinformationen für den Tresor ab. Sie können die Anmeldeinformationen für den Tresor nicht öffnen. Fahren Sie mit dem nächsten Schritt fort. Die Anmeldeinformationen für den Tresor befinden sich im Ordner „Downloads“.
+    Die Anmeldeinformationen für den Tresor werden in den Ordner **Downloads** heruntergeladen. Nach dem Herunterladen der Anmeldeinformationen für den Tresor erscheint ein Popup mit der Frage, ob Sie die Anmeldeinformationen öffnen oder speichern möchten. Wählen Sie **Speichern** aus. Wenn Sie versehentlich **Öffnen** auswählen, brechen Sie den Vorgang zum Öffnen der Anmeldeinformationen für den Tresor ab. Sie können die Anmeldeinformationen für den Tresor nicht öffnen. Fahren Sie mit dem nächsten Schritt fort. Die Anmeldeinformationen für den Tresor befinden sich im Ordner **Downloads**.
 
     ![Herunterladen der Tresoranmeldeinformationen abgeschlossen](./media/backup-try-azure-backup-in-10-mins/vault-credentials-downloaded.png)
    > [!NOTE]
@@ -142,39 +142,39 @@ Für die erste Sicherung verwenden Sie den Microsoft Azure Recovery Services-Age
 
     ![Starten des Azure Recovery Services-Agents](./media/backup-try-azure-backup-in-10-mins/snap-in-search.png)
 
-2. Klicken Sie im der Recovery Services-Agent auf **Sicherung planen**.
+2. Wählen Sie im Recovery Services-Agent **Sicherung planen** aus.
 
     ![Planen einer Windows Server-Sicherung](./media/backup-try-azure-backup-in-10-mins/schedule-first-backup.png)
 
-3. Klicken Sie im Assistenten zum Planen der Sicherung auf der Seite mit den ersten Schritten auf **Weiter**.
+3. Wählen Sie im Assistenten zum Planen der Sicherung auf der Seite für **Erste Schritte** die Option **Weiter** aus.
 
-4. Klicken Sie auf der Seite „Elemente für Sicherung auswählen“ auf **Elemente hinzufügen**.
+4. Wählen Sie auf der Seite **Elemente für Sicherung auswählen** die Option **Elemente hinzufügen** aus.
 
-5. Wählen Sie **Systemstatus** aus, und klicken Sie anschließend auf **OK**.
+5. Wählen Sie **Systemstatus** aus, und wählen Sie anschließend **OK** aus.
 
-6. Klicken Sie auf **Weiter**.
+6. Wählen Sie **Weiter** aus.
 
 7. Wählen Sie auf den nachfolgenden Seiten die erforderliche Sicherungshäufigkeit und Aufbewahrungsrichtlinie für die Systemstatussicherungen.
 
-8. Lesen Sie sich die Informationen auf der Seite „Bestätigung“ durch, und klicken Sie dann auf **Fertig stellen**.
+8. Lesen Sie sich die Informationen auf der Seite Bestätigung durch, und wählen Sie dann **Fertig stellen** aus.
 
-9. Klicken Sie auf **Schließen**, nachdem der Assistent die Erstellung des Sicherungszeitplans abgeschlossen hat.
+9. Wählen Sie **Schließen** aus, nachdem der Assistent die Erstellung des Sicherungszeitplans abgeschlossen hat.
 
 ### <a name="to-back-up-windows-server-system-state-for-the-first-time"></a>So sichern Sie den Windows Server-Systemstatus zum ersten Mal
 
 1. Stellen Sie sicher, dass es keine ausstehenden Updates für Windows Server gibt, die einen Neustart erfordern.
 
-2. Klicken Sie im Recovery Services-Agent auf **Jetzt sichern** , um das anfängliche Seeding über das Netzwerk abzuschließen.
+2. Wählen Sie im Recovery Services-Agent **Jetzt sichern** aus, um das anfängliche Seeding über das Netzwerk abzuschließen.
 
     ![Windows Server jetzt sichern](./media/backup-try-azure-backup-in-10-mins/backup-now.png)
 
-3. Wählen Sie auf dem angezeigten Bildschirm **Sicherungselement auswählen** die Option **Systemstatus**, und klicken Sie auf **Weiter**.
+3. Wählen Sie auf dem angezeigten Bildschirm **Sicherungselement auswählen** die Option **Systemstatus** aus, und wählen Sie **Weiter**.
 
-4. Überprüfen Sie auf der Seite „Bestätigung“ die Einstellungen, die vom Assistenten für die sofortige Sicherung zum Sichern des Computers verwendet werden. Klicken Sie dann auf **Sichern**.
+4. Überprüfen Sie auf der Seite „Bestätigung“ die Einstellungen, die vom Assistenten für die sofortige Sicherung zum Sichern des Computers verwendet werden. Wählen Sie anschließend **Sichern** aus.
 
-5. Klicken Sie auf **Schließen** , um den Assistenten zu schließen. Wenn Sie den Assistenten schließen, bevor der Sicherungsvorgang abgeschlossen ist, wird der Assistent im Hintergrund weiter ausgeführt.
+5. Wählen Sie **Schließen** aus, um den Assistenten zu schließen. Wenn Sie den Assistenten schließen, bevor der Sicherungsvorgang abgeschlossen ist, wird der Assistent im Hintergrund weiter ausgeführt.
     > [!NOTE]
-    > Der MARS-Agent löst SFC/verifyonly als Teil der Vorabüberprüfungen vor jeder Systemstatussicherung aus. Dadurch wird sichergestellt, dass Dateien, die im Rahmen des Systemstatus gesichert werden, die richtigen Versionen entsprechend der Windows-Version aufweisen. Weitere Informationen zu System File Checker (SFC) finden Sie in [diesem Artikel](/windows-server/administration/windows-commands/sfc).
+    > Der MARS-Agent löst `SFC /verifyonly` als Teil der Vorabüberprüfungen vor jeder Systemstatussicherung aus. Dadurch wird sichergestellt, dass Dateien, die im Rahmen des Systemstatus gesichert werden, die richtigen Versionen entsprechend der Windows-Version aufweisen. Weitere Informationen zu System File Checker (SFC) finden Sie in [diesem Artikel](/windows-server/administration/windows-commands/sfc).
     >
 
 Nach Abschluss des ersten Backups wird der Status des Auftrags in der Backup-Konsole als **Auftrag abgeschlossen** angezeigt.
@@ -183,7 +183,7 @@ Nach Abschluss des ersten Backups wird der Status des Auftrags in der Backup-Kon
 
 ## <a name="questions"></a>Fragen?
 
-Wenn Sie Fragen haben oder Anregungen zu gewünschten Funktionen mitteilen möchten, [senden Sie uns Ihr Feedback](https://feedback.azure.com/forums/258995-azure-backup).
+Wenn Sie Fragen haben, [senden Sie uns Feedback](https://feedback.azure.com/forums/258995-azure-backup).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

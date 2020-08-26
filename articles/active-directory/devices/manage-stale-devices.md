@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 94a4b2a44902dde798f760f970ccff2c1e8f15c5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: fc8f599860b6095e1bab90e8e29818d8079e89a9
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87025630"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88184940"
 ---
 # <a name="how-to-manage-stale-devices-in-azure-ad"></a>Anleitung: Verwalten von veralteten Geräte in Azure AD
 
@@ -162,7 +162,7 @@ Wenn sie konfiguriert sind, werden BitLocker-Schlüssel für Windows 10-Geräte 
 
 ### <a name="why-should-i-worry-about-windows-autopilot-devices"></a>Warum sollte ich mir Gedanken über Windows Autopilot-Geräte machen?
 
-Wenn ein Azure AD-Gerät einem Windows Autopilot-Objekt zugeordnet wurde, können die folgenden drei Szenarien eintreten, wenn das Gerät in der Zukunft für einen anderen Zweck verwendet wird:
+Wenn Sie ein Azure AD-Gerät löschen, das einem Windows Autopilot-Objekt zugeordnet war, können die folgenden drei Szenarien eintreten, wenn das Gerät in der Zukunft für einen anderen Zweck verwendet wird:
 - Bei benutzergesteuerten Nicht-White-Glove-Bereitstellungen mit Windows Autopilot wird ein neues Azure AD-Gerät erstellt, das jedoch nicht mit der ZTDID gekennzeichnet wird.
 - Bei Windows Autopilot-Bereitstellungen im Selbstbereitstellungsmodus wird ein Fehler auftreten, weil ein zugeordnetes Azure AD-Gerät nicht gefunden werden kann.  (Dies ist ein Sicherheitsmechanismus, um sicherzustellen, dass keine „Eindringling“-Geräte versuchen, Azure AD ohne Anmeldeinformationen beizutreten.) Der Fehler weist auf eine fehlende ZTDID-Übereinstimmung hin.
 - Bei White-Glove-Bereitstellungen mit Windows Autopilot wird ein Fehler auftreten, weil ein zugeordnetes Azure AD-Gerät nicht gefunden werden kann. (Im Hintergrund verwenden White-Glove-Bereitstellungen denselben Selbstbereitstellungsmodus-Prozess, sodass sie die gleichen Sicherheitsmechanismen erzwingen.)

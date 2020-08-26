@@ -3,16 +3,20 @@ title: Selektive Datenträgersicherung und -wiederherstellung für Azure-VMs
 description: In diesem Artikel lernen Sie die selektive Datenträgersicherung und -wiederherstellung mithilfe der Azure-VM-Sicherungslösung kennen.
 ms.topic: conceptual
 ms.date: 07/17/2020
-ms.openlocfilehash: e61014a4fde7bfce316671ff0b081ff7bc2205a5
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.custom: references_regions
+ms.openlocfilehash: 6a5e574795dfded98260da20711dab7d16cabd5b
+ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87535234"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88566232"
 ---
 # <a name="selective-disk-backup-and-restore-for-azure-virtual-machines"></a>Selektive Datenträgersicherung und -wiederherstellung für Azure-VMs
 
 Azure Backup unterstützt die Sicherung aller Datenträger (Betriebssystem und Daten) einer VM mithilfe der VM-Sicherungslösung. Mithilfe der Funktionalität der selektiven Datenträgersicherung und -wiederherstellung können Sie nun eine Teilmenge der Datenträger auf einem virtuellen Computer sichern. Dies stellt eine effiziente und kostengünstige Lösung für Ihre Sicherungs- und Wiederherstellungsanforderungen dar. Jeder Wiederherstellungspunkt enthält nur die Datenträger, die im Sicherungsvorgang enthalten sind. So können Sie außerdem während des Wiederherstellungsvorgangs vom angegebenen Wiederherstellungspunkt aus eine Teilmenge der Datenträger wiederherstellen. Dies gilt sowohl für Wiederherstellungen von Momentaufnahmen als auch vom Tresor.
+
+>[!NOTE]
+>Selektive Datenträgersicherung und -wiederherstellung für virtuelle Azure-Computer befindet sich in allen Regionen in der öffentlichen Vorschau.
 
 ## <a name="scenarios"></a>Szenarien
 

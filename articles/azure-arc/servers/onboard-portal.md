@@ -1,19 +1,19 @@
 ---
 title: Verbinden von Hybridcomputern mit Azure über das Azure-Portal
-description: In diesem Artikel erfahren Sie, wie Sie Azure Arc für Server (Vorschauversion) im Azure-Portal verwenden, um den Agent zu installieren und Computer mit Azure zu verbinden.
+description: In diesem Artikel erfahren Sie, wie Sie Azure Arc-fähige Server (Vorschauversion) im Azure-Portal verwenden, um den Agent zu installieren und Computer mit Azure zu verbinden.
 ms.date: 08/07/2020
 ms.topic: conceptual
 ms.custom: references_regions
-ms.openlocfilehash: 08f2563aaa67cdd45760af34ef3bef3e8e472ae7
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 23415bc648ae31b9073adb71d6f066a28c144c9d
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88120982"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213500"
 ---
 # <a name="connect-hybrid-machines-to-azure-from-the-azure-portal"></a>Verbinden von Hybridcomputern mit Azure über das Azure-Portal
 
-Azure Arc für Server (Vorschauversion) kann mithilfe einiger manueller Schritte für einen oder einige wenige Windows- oder Linux-Computer in Ihrer Umgebung aktiviert werden. Alternativ steht auch eine automatisierte Methode in Form eines uns bereitgestellten Vorlagenskripts zur Verfügung. Dieses Skript automatisiert das Herunterladen und Installieren beider Agents.
+Azure Arc-fähige Server (Vorschauversion) können mithilfe einiger manueller Schritte für einen oder einige wenige Windows- oder Linux-Computer in Ihrer Umgebung aktiviert werden. Alternativ steht auch eine automatisierte Methode in Form eines uns bereitgestellten Vorlagenskripts zur Verfügung. Dieses Skript automatisiert das Herunterladen und Installieren beider Agents.
 
 Für diese Methode müssen Sie auf dem Computer über Administratorberechtigungen verfügen, um den Agent installieren und konfigurieren zu können. Unter Linux muss hierfür das root-Konto verwendet werden. Unter Windows müssen Sie der Gruppe der lokalen Administratoren angehören.
 
@@ -34,7 +34,7 @@ Das Skript zum Automatisieren des Download- und Installationsvorgangs sowie zum 
 1. Wählen Sie auf der Seite **Skript generieren** das Abonnement und die Ressourcengruppe für die Verwaltung des Computers in Azure aus. Wählen Sie einen Azure-Standort zum Speichern der Computermetadaten aus.
 
     >[!NOTE]
-    >Von Azure Arc für Server (Vorschauversion) werden nur folgende Regionen unterstützt:
+    >Von Azure Arc-fähigen Servern (Vorschauversion) werden nur folgende Regionen unterstützt:
     >- EastUS
     >- WestUS2
     >- Europa, Westen
@@ -147,7 +147,7 @@ bash ~/Install_linux_azcmagent.sh --proxy "{proxy-url}:{proxy-port}"
 
 ## <a name="verify-the-connection-with-azure-arc"></a>Überprüfen der Verbindung mit Azure Arc
 
-Vergewissern Sie sich im Azure-Portal, dass die Serververbindung erfolgreich hergestellt wurde, nachdem Sie den Agent installiert und für die Verbindungsherstellung mit Azure Arc für Server (Vorschauversion) konfiguriert haben. Zeigen Sie Ihre Computer im [Azure-Portal](https://aka.ms/hybridmachineportal) an.
+Vergewissern Sie sich im Azure-Portal, dass die Serververbindung erfolgreich hergestellt wurde, nachdem Sie den Agent installiert und für die Verbindungsherstellung mit Azure Arc-fähigen Servern (Vorschauversion) konfiguriert haben. Zeigen Sie Ihre Computer im [Azure-Portal](https://aka.ms/hybridmachineportal) an.
 
 ![Erfolgreiche Serververbindung](./media/onboard-portal/arc-for-servers-successful-onboard.png)
 

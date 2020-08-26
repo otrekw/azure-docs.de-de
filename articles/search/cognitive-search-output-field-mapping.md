@@ -8,23 +8,34 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: c9b0b34202f35babcaa3dce37331d31edf641254
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ef840dc84c04875333958fa59ce399f2d16d07b5
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85557260"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88214011"
 ---
 # <a name="how-to-map-ai-enriched-fields-to-a-searchable-index"></a>Zuordnen von mit KI angereicherten Feldern zu einem durchsuchbaren Index
 
-In diesem Artikel erfahren Sie, wie Sie angereicherte Eingabefelder Ausgabefeldern in einem durchsuchbaren Index zuordnen. Nachdem Sie ein [Skillset definiert](cognitive-search-defining-skillset.md) haben, müssen Sie die Ausgabefelder aller Skills zuordnen, die Werte direkt für ein bestimmtes Feld in Ihrem Suchindex bereitstellen. 
+![Indexerphasen](./media/cognitive-search-output-field-mapping/indexer-stages-output-field-mapping.png "Indexerphasen")
 
-Ausgabefeldzuordnungen sind für das Verschieben von Inhalt aus angereicherten Dokumenten in den Index erforderlich.  Das angereicherte Dokument ist eine Informationsstruktur, und selbst wenn der Support für komplexe Typen im Index verfügbar ist, sollten Sie die Informationen von der angereicherten Struktur in einen einfacheren Typ (z. B. ein Array von Zeichenfolgen) transformieren. Mithilfe von Ausgabefeldzuordnungen können Sie Datenformtransformationen ausführen, indem Sie Informationen vereinfachen.
+In diesem Artikel erfahren Sie, wie Sie angereicherte Eingabefelder Ausgabefeldern in einem durchsuchbaren Index zuordnen. Nachdem Sie ein [Skillset definiert](cognitive-search-defining-skillset.md) haben, müssen Sie die Ausgabefelder aller Skills zuordnen, die Werte direkt für ein bestimmtes Feld in Ihrem Suchindex bereitstellen.
+
+Ausgabefeldzuordnungen sind für das Verschieben von Inhalt aus angereicherten Dokumenten in den Index erforderlich.  Das angereicherte Dokument ist eine Informationsstruktur, und selbst wenn der Support für komplexe Typen im Index verfügbar ist, sollten Sie die Informationen von der angereicherten Struktur in einen einfacheren Typ (z. B. ein Array von Zeichenfolgen) transformieren. Mithilfe von Ausgabefeldzuordnungen können Sie Datenformtransformationen ausführen, indem Sie Informationen vereinfachen. Ausgabefeldzuordnungen erfolgen immer nach der Skillsetausführung. Die Ausführung dieser Phase ist aber auch möglich, wenn kein Skillset definiert ist.
+
+Beispiele für Ausgabefeldzuordnungen:
+
+* Im Rahmen Ihres Skillsets haben Sie die Namen von Organisationen extrahiert, die auf den einzelnen Seiten Ihres Dokuments erwähnt werden. Als Nächstes möchten Sie diese Organisationsnamen jeweils einem Feld Ihres Index vom Typ „Edm.Collection(Edm.String)“ zuordnen.
+
+* Im Rahmen Ihres Skillsets haben Sie einen neuen Knoten mit dem Namen „document/translated_text“ erstellt. Sie möchten die Informationen zu diesem Knoten einem bestimmten Feld in Ihrem Index zuordnen.
+
+* Sie verfügen nicht über ein Skillset, sondern indizieren einen komplexen Typ über eine Cosmos DB-Datenbank. Sie möchten einen Knoten mit diesem komplexen Typ erreichen und ihn einem Feld in Ihrem Index zuordnen.
 
 > [!NOTE]
 > Vor kurzem haben wir die Funktionalität von Zuordnungsfunktionen für Ausgabefeldzuordnungen aktiviert. Weitere Informationen zu Zuordnungsfunktionen finden Sie unter [Feldzuordnungsfunktionen](https://docs.microsoft.com/azure/search/search-indexer-field-mappings#field-mapping-functions).
 
 ## <a name="use-outputfieldmappings"></a>Verwenden von „outputFieldMappings“
+
 Um Felder zuzuordnen, fügen Sie `outputFieldMappings` zu Ihrer Indexerdefinition hinzu, wie unten gezeigt:
 
 ```http

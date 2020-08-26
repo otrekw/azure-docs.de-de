@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/22/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: c6964a28956230dabad007d60d84dcdd1cffab23
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 9b8432a54aa90b7d500898b2f6959d075ac89460
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319914"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245331"
 ---
 # <a name="usage-dashboard-in-microsoft-commercial-marketplace-analytics"></a>Dashboard „Nutzung“ in Analysen für den kommerziellen Microsoft-Marketplace
 
@@ -111,6 +111,8 @@ Auf der Registerkarte **Nutzung nach getakteter Abrechnung** werden Nutzungsinfo
 - **Überschreitungstrend nach Plan**: Stellt den Trend der Nutzungsmenge der ausgewählten Verbrauchseinheitsdimension nach Plänen dar. Die angezeigten Pläne stellen die 5 Top-Pläne mit der höchsten Nutzungsmenge für das ausgewählte Angebot dar.
 - **Überschreitungstrend nach wichtigsten 50 Kunden**: Die 50 Top-Angebote mit den meisten Nutzungsstunden werden in einer ***Bestenliste*** angezeigt und nach der höchsten Nutzung der benutzerdefinierten Verbrauchseinheit bewertet. Wählen Sie einen Kunden in der Bestenliste aus, um den Nutzungstrend einer ausgewählten Verbrauchseinheitsdimension anzuzeigen.
 - **Überschreitungstrend nach wichtigsten Kunden**: Stellt das bzw. die Perzentile der wichtigsten Kunden dar, die einen prozentualen Anteil an der Gesamtnutzung haben. Das Perzentil der wichtigsten Kunden wird entlang der X-Achse angezeigt und durch die Nutzungsmenge des Kunden bestimmt. Auf der Y-Achse wird die Nutzungsmenge angezeigt. Sie können Details anzeigen, indem Sie den Cursor über Punkte entlang des Liniendiagramms bewegen.
+
+Wenn Sie über mehrere Angebote verfügen, bei denen benutzerdefinierte Verbrauchseinheiten verwendet werden, werden im Nutzungsbericht für die getaktete Abrechnung Nutzungsinformationen für alle Angebote entsprechend ihren Dimensionen für benutzerdefinierte Verbrauchseinheiten angezeigt.
 
 > [!NOTE]
 > Die Nutzungsdetails und alle Diagramme auf dieser Seite werden für beliebige für den Seitenfilter ausgewählte Verbrauchseinheitsdimensionen angezeigt.

@@ -11,12 +11,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.author: sstein
-ms.openlocfilehash: e1e6c9254c3906b79c3a20de4672dff1b9ac6c63
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 0e44280c0a6c0d39c98e3aeecd5e9a3707332e81
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121458"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88236572"
 ---
 # <a name="whats-new-in-azure-sql-database--sql-managed-instance"></a>Welche Neuerungen gibt es in Azure SQL-Datenbank und SQL Managed Instance?
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -97,6 +97,7 @@ Die folgenden Funktionen sind im SQL Managed Instance-Bereitstellungsmodell in d
 
 |Problem  |Entdeckt am  |Status  |Gelöst am  |
 |---------|---------|---------|---------|
+|[Der Dienstprinzipal kann nicht auf Azure AD und Azure Key Vault zugreifen](#service-principal-cannot-access-azure-ad-and-akv)|August 2020|Mit Problemumgehung||
 |[Wiederherstellen der manuellen Sicherung ohne CHECKSUM schlägt möglicherweise fehl](#restoring-manual-backup-without-checksum-might-fail)|Mai 2020|Gelöst|Juni 2020|
 |[Der Agent reagiert beim Ändern, Deaktivieren oder Aktivieren vorhandener Aufträge nicht mehr](#agent-becomes-unresponsive-upon-modifying-disabling-or-enabling-existing-jobs)|Mai 2020|Gelöst|Juni 2020|
 |[Berechtigungen für Ressourcengruppe werden nicht auf SQL Managed Instance angewendet](#permissions-on-resource-group-not-applied-to-sql-managed-instance)|Februar 2020|Mit Problemumgehung||
@@ -124,6 +125,11 @@ Die folgenden Funktionen sind im SQL Managed Instance-Bereitstellungsmodell in d
 |Datenbank-E-Mail-Feature bei externen (Nicht-Azure-)E-Mail-Servern über sichere Verbindung||Gelöst|Oktober 2019|
 |Eigenständige Datenbanken werden in SQL Managed Instance nicht unterstützt||Gelöst|August 2019|
 
+### <a name="service-principal-cannot-access-azure-ad-and-akv"></a>Der Dienstprinzipal kann nicht auf Azure AD und Azure Key Vault zugreifen.
+
+In einigen Fällen kann ein Problem bei dem Dienstprinzipal auftreten, der für den Zugriff auf Azure AD- und Azure Key Vault-Dienste (AKV) verwendet wird. Dieses Problem beeinträchtigt die Verwendung von Azure AD-Authentifizierung und Transparent Database Encryption (TDE) mit SQL Managed Instance. Dabei kann es sich um ein vorübergehendes Konnektivitätsproblem handeln, oder Anweisungen, z. B. „CREATE LOGIN/USER FROM EXTERNAL PROVIDER“ oder „EXECUTE AS LOGIN/USER“, können nicht ausgeführt werden. In manchen Fällen ist es eventuell nicht möglich, TDE mit einem kundenseitig verwalteten Schlüssel in einer neuen Azure SQL Managed Instance einzurichten.
+
+**Problemumgehung**: Um zu verhindern, dass dieses Problem in der SQL Managed Instance auftritt, bevor Sie Updatebefehle ausführen, oder falls dieses Problem bereits nach Updatebefehlen aufgetreten ist, wechseln Sie zum Azure-Portal, und greifen Sie in SQL Managed Instance auf das [Blatt „Active Directory Administrator“](https://docs.microsoft.com/azure/azure-sql/database/authentication-aad-configure?tabs=azure-powershell#azure-portal) zu. Überprüfen Sie, ob die Fehlermeldung „Die verwaltete Instanz benötigt einen Dienstprinzipal für den Zugriff auf Azure Active Directory. Klicken Sie hier, um einen Dienstprinzipal zu erstellen.“ angezeigt wird. Falls diese Fehlermeldung auftritt, klicken Sie darauf, und befolgen Sie die Schritt-für-Schritt-Anweisungen, die so lange angezeigt werden, bis der Fehler behoben wurde.
 
 ### <a name="restoring-manual-backup-without-checksum-might-fail"></a>Wiederherstellen der manuellen Sicherung ohne CHECKSUM schlägt möglicherweise fehl
 

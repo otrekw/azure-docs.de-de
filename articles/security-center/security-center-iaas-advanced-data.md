@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/28/2020
 ms.author: memildin
-ms.openlocfilehash: f159d2cdc48b144d0c75c62cd8a7ba6667424243
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: e0085ef5213853a1577ec039d5e360114aa7c64e
+ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86043868"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88566266"
 ---
 # <a name="advanced-data-security-for-sql-machines-preview"></a>Advanced Data Security für SQL-Computer (Vorschau)
 
@@ -72,7 +72,7 @@ Diese beiden Schritte werden nachfolgend beschrieben.
 
     [![Security Center-Seite „Preise“ mit optionalen Paketen](media/security-center-advanced-iaas-data/sql-servers-on-vms-in-pricing-small.png)](media/security-center-advanced-iaas-data/sql-servers-on-vms-in-pricing-large.png#lightbox)
 
-    Advanced Data Security für SQL Server-Instanzen auf Computern wird auf allen SQL Server-Instanzen aktiviert, die mit dem ausgewählten Arbeitsbereich verbunden sind. Der Schutz ist nach dem ersten Neustart der SQL Server-Instanz vollständig aktiv. 
+    Advanced Data Security für SQL Server-Instanzen auf Computern wird auf allen SQL Server-Instanzen aktiviert, die mit dem ausgewählten Arbeitsbereich verbunden sind. Der Schutz ist nach dem ersten Neustart der SQL Server-Instanz vollständig aktiv.
 
     >[!TIP] 
     > Um einen neuen Arbeitsbereich zu erstellen, befolgen Sie die Anweisungen unter [Erstellen eines Log Analytics-Arbeitsbereichs](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace).

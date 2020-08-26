@@ -6,15 +6,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: reference
-ms.date: 08/05/2020
+ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 72b3b190492be5cec9986729875c5b09e2559ae5
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 46ddbd18051ffa44232468704ce189d4171b50e7
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87854119"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88590008"
 ---
 # <a name="azure-cosmos-db-apache-spark-connector-for-core-sql-api-release-notes-and-resources"></a>Azure Cosmos DB-Connector für Apache Spark für die Core-API (SQL): Versionshinweise und Ressourcen
 > [!div class="op_single_selector"]
@@ -24,9 +24,10 @@ ms.locfileid: "87854119"
 > * [.NET Change Feed SDK v2](sql-api-sdk-dotnet-changefeed.md)
 > * [Node.js](sql-api-sdk-node.md)
 > * [Java SDK v4](sql-api-sdk-java-v4.md)
-> * [Asynchrones Java SDK v2](sql-api-sdk-async-java.md)
+> * [Async Java SDK v2](sql-api-sdk-async-java.md)
 > * [Sync Java SDK v2](sql-api-sdk-java.md)
-> * [Spring Data](sql-api-sdk-java-spring.md)
+> * [Spring Data v2](sql-api-sdk-java-spring-v2.md)
+> * [Spring Data v3](sql-api-sdk-java-spring-v3.md)
 > * [Spark-Connector](sql-api-sdk-java-spark.md)
 > * [Python](sql-api-sdk-python.md)
 > * [REST](/rest/api/cosmos-db/)
@@ -51,7 +52,7 @@ Sie können den Connector mit [Azure Databricks](https://azure.microsoft.com/ser
 > Verwenden Sie für die Cosmos DB-Cassandra-API den [Cassandra-Spark-Connector](https://github.com/datastax/spark-cassandra-connector).
 >
 
-## <a name="helpful-content"></a>Hilfreiche Inhalte
+## <a name="helpful-content"></a>Nützliche Inhalte
 
 | Inhalt | Link |
 |---|---|

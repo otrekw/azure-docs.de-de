@@ -1,14 +1,14 @@
 ---
 title: 'Offlinesicherung für Data Protection Manager (DPM) und Microsoft Azure Backup Server (MABS): Vorherige Versionen'
-description: Mit Azure Backup können Sie Daten unter Verwendung des Azure Import/Export-Diensts aus dem Netzwerk senden. In diesem Artikel wird der Offlinesicherungsworkflow für DPM und Azure Backup Server erläutert.
+description: Mit Azure Backup können Sie Daten unter Verwendung des Azure Import/Export-Diensts aus dem Netzwerk senden. In diesem Artikel wird der Offlinesicherungsworkflow für frühere Versionen von DPM und Azure Backup Server erläutert.
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 128051210984a55620be60a5965a7067e74de7c7
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: e986baaf6ac2943bd210761ff2194eacdee5984a
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186944"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88261921"
 ---
 # <a name="offline-backup-workflow-for-dpm-and-azure-backup-server-previous-versions"></a>Offlinesicherungsworkflow für DPM und Azure Backup Server (vorherige Versionen)
 

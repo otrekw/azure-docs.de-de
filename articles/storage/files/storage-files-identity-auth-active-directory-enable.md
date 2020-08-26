@@ -7,16 +7,16 @@ ms.subservice: files
 ms.topic: how-to
 ms.date: 07/12/2020
 ms.author: rogarana
-ms.openlocfilehash: c3e8299a5acd7cbd3a6fd3cd76af33f4a798ad12
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 3faa86fe67e3f0a208bf42dc3e49de8335b25c95
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87832993"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272330"
 ---
 # <a name="overview---on-premises-active-directory-domain-services-authentication-over-smb-for-azure-file-shares"></a>Übersicht – lokale Active Directory Domain Services-Authentifizierung über SMB für Azure-Dateifreigaben
 
-[Azure Files](storage-files-introduction.md) unterstützt die identitätsbasierte Authentifizierung über SMB (Server Message Block) über zwei Arten von Domänendiensten: lokale Active Directory Domain Services (AD DS) und Azure Active Directory Domain Services (Azure AD DS). Es wird dringend empfohlen, den Abschnitt [Funktionsweise](https://docs.microsoft.com/azure/storage/files/storage-files-active-directory-overview#how-it-works) zu überprüfen, um den richtigen Domänendienst für die Autorisierung auszuwählen. Die Einrichtung unterscheidet sich abhängig von dem von Ihnen gewählten Domänendienst. Diese Artikelreihe behandelt das Aktivieren und Konfigurieren von lokalen AD DS für die Authentifizierung mit Azure-Dateifreigaben.
+[Azure Files](storage-files-introduction.md)  unterstützt die identitätsbasierte Authentifizierung per SMB (Server Message Block) über zwei Arten von Domänendiensten: lokales Active Directory Domain Services (AD DS) und Azure Active Directory Domain Services (Azure AD DS). Es wird dringend empfohlen, den Abschnitt [Funktionsweise](https://docs.microsoft.com/azure/storage/files/storage-files-active-directory-overview#how-it-works) zu lesen, damit Sie den richtigen Domänendienst für die Autorisierung auswählen. Die Einrichtung unterscheidet sich je nach gewähltem Domänendienst. Diese Artikelreihe behandelt das Aktivieren und Konfigurieren von lokalen AD DS für die Authentifizierung mit Azure-Dateifreigaben.
 
 Wenn Sie noch nicht mit Azure-Dateifreigaben vertraut sind, empfiehlt es sich, unsere [Planhinweisliste](storage-files-planning.md) zu lesen, bevor Sie die folgende Artikelreihe lesen.
 

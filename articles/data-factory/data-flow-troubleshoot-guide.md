@@ -7,13 +7,13 @@ author: kromerm
 manager: anandsub
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 04/27/2020
-ms.openlocfilehash: 2edd5b661240b6156cf8a02059b2b9a668c402f3
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.date: 08/16/2020
+ms.openlocfilehash: 0a691b562ebf030712eb0c13a688ea9a52fdb164
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83829119"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88263468"
 ---
 # <a name="troubleshoot-data-flows-in-azure-data-factory"></a>Problembehandlung für Datenflüsse in Azure Data Factory
 
@@ -70,6 +70,13 @@ In diesem Artikel werden die gängigen Problembehandlungsmethoden für Datenflü
 - **Ursachen**: Dies ist ein Fehler beim Back-End-Dienst. Sie können den Vorgang wiederholen und auch die Debugsitzung neu starten.
 - **Empfehlung**: Wenn das Problem durch Wiederholung und Neustart nicht behoben werden kann, wenden Sie sich an den Kundensupport.
 
+### <a name="error-code-debug-data-preview-no-output-data-on-join"></a>Fehlercode: Debug data preview No Output Data on Join (Debugdatenvorschau – keine Ausgabedaten bei Verknüpfung)
+
+- **Meldung**: There are a high number of null values or missing values which may be caused by having too few rows sampled. Try updating the debug row limit and refreshing the data. (Es ist eine hohe Anzahl von NULL-Werten oder fehlenden Werten vorhanden. Möglicherweise wurden von zu wenigen Zeilen Stichproben genommen. Aktualisieren Sie das Debugzeilenlimit, und aktualisieren Sie die Daten.)
+- **Ursachen**: Die Verknüpfungsbedingung wurde von keiner Zeile erfüllt oder bewirkte eine hohe Anzahl von NULL-Werten in der Datenvorschau.
+- **Empfehlung**: Wechseln Sie zu den Debugeinstellungen, und erhöhen Sie die maximale Anzahl der Quellzeilen. Stellen Sie sicher, dass Sie für Azure IR einen ausreichend großen Datenflusscluster ausgewählt haben, um mehr Daten verarbeiten zu können.
+
+
 ## <a name="general-troubleshooting-guidance"></a>Allgemeine Anleitungen zur Problembehandlung
 
 1. Überprüfen Sie den Status der Datasetverbindungen. Besuchen Sie in jeder Quell-und Senkentransformation den verknüpften Dienst für jedes verwendete Dataset, und testen Sie die Verbindungen.
@@ -79,9 +86,9 @@ In diesem Artikel werden die gängigen Problembehandlungsmethoden für Datenflü
 ## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Informationen zur Problembehandlung finden Sie in diesen Ressourcen:
-*  [Data Factory-Blog](https://azure.microsoft.com/blog/tag/azure-data-factory/)
+*  [Data Factory-Blog](https://techcommunity.microsoft.com/t5/azure-data-factory/bg-p/AzureDataFactoryBlog)
 *  [Data Factory-Funktionsanfragen](https://feedback.azure.com/forums/270578-data-factory)
-*  [Azure-Videos](https://azure.microsoft.com/resources/videos/index/?sort=newest&services=data-factory)
+*  [Azure-Videos](https://www.youtube.com/channel/UC2S0k7NeLcEm5_IhHUwpN0g/videos)
 *  [Frageseite von Microsoft Q&A (Fragen und Antworten)](https://docs.microsoft.com/answers/topics/azure-data-factory.html)
 *  [Stack Overflow-Forum für Data Factory](https://stackoverflow.com/questions/tagged/azure-data-factory)
 *  [Twitter-Informationen über Data Factory](https://twitter.com/hashtag/DataFactory)

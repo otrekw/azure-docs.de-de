@@ -7,12 +7,12 @@ ms.topic: article
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: fe909ba25191aa21e8a5bfa51c72690fd9c402eb
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 55b789363397945e01d02d76cb0e573660d18b67
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056549"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607510"
 ---
 # <a name="frequently-asked-questions-about-transitioning-from-the-cloud-partner-portal-to-partner-center"></a>Häufig gestellte Fragen zur Umstellung vom Cloud-Partnerportal auf Partner Center
 
@@ -20,17 +20,17 @@ Das Cloud-Partnerportal wurde auf Partner Center umgestellt. Partner Center verf
 
 ## <a name="what-does-the-transition-to-partner-center-mean-for-me"></a>Was bedeutet die Umstellung auf Partner Center für mich?
 
-Sie können in Partner Center normal weiterarbeiten:
+Sie können im Partner Center weiterarbeiten:
 
 | Bereich<img src="" width=200px> | Änderungen |
 | --- | --- |
 | Konto | Sie müssen kein neues Partner Center-Konto erstellen, und Sie können Ihre vorhandenen Anmeldeinformationen für das Cloud-Partnerportal verwenden, um sich an Partner Center anzumelden. In Partner Center verwalten Sie nun Ihr Konto, die Benutzer, die Berechtigungen und die Abrechnung. Der Herausgebervertrag und die Informationen zum Unternehmensprofil werden zu Ihrem neuen Partner Center-Konto migriert. Dies gilt auch für alle Auszahlungsprofilinformationen, Benutzerkonten und Berechtigungen sowie für die aktiven Angebote. Weitere Informationen finden Sie unter [Verwalten Ihres Kontos im kommerziellen Marketplace in Partner Center](partner-center-portal/manage-account.md). |
 | Benutzerumgebung für die Veröffentlichung und Verwaltung von Angeboten | Wir haben Ihre Angebotsdaten aus dem Cloud-Partnerportal in Partner Center verschoben. Sie greifen auf Ihre Angebote nun in Partner Center zu und können die verbesserte Benutzerumgebung und eine intuitive Benutzeroberfläche verwenden. Informieren Sie sich über das [Aktualisieren eines bestehenden Angebots im kommerziellen Marketplace](partner-center-portal/update-existing-offer.md). |
-| Verfügbarkeit Ihrer Angebote auf dem kommerziellen Marketplace | Keine Änderungen. Wenn sich Ihr Angebot auf dem kommerziellen Marketplace im Livezustand befindet, bleibt dieser Livezustand unverändert. |
+| Verfügbarkeit Ihrer Angebote auf dem kommerziellen Marketplace | Keine Änderungen. Wenn Ihr Angebot im kommerziellen Marketplace live geschaltet ist, bleibt dieser Livezustand unverändert. |
 | Neue Käufe und Bereitstellungen | Keine Änderungen. Ihre Kunden können Ihre Angebote ohne Unterbrechung weiter erwerben und bereitstellen. |
 | Auszahlungen | Alle Auszahlungen für Käufe und Bereitstellungen werden wie bisher für Sie durchgeführt. Erfahren Sie mehr zum [Zahlungserhalt im kommerziellen Marketplace](partner-center-portal/get-paid.md). |
 | API-Integrationen mit vorhandenen [Cloud-Partnerportal-APIs](cloud-partner-portal-api-overview.md) | Vorhandene Cloud-Partnerportal-APIs werden weiterhin unterstützt, und Ihre vorhandenen Integrationen funktionieren. Weitere Informationen hierzu finden Sie unter [Werden die Cloud-Partnerportal-REST-APIs nach der Migration unterstützt?](#are-the-cloud-partner-portal-rest-apis-still-supported). |
-| Analytics | Sie können mit dem Überwachen der Verkäufe, Auswerten der Leistung und Optimieren Ihrer Angebote auf dem kommerziellen Marketplace fortfahren, indem Sie die Analysedaten in Partner Center anzeigen. Analyseberichte werden im Cloud-Partnerportal (CPP) und in Partner Center auf unterschiedliche Weise angezeigt. Beispielsweise verfügt **Verkäufer-Insights** in CPP über die Registerkarte **Bestellungen und Nutzung**, die Daten für nutzungsbasierte und nicht nutzungsbasierte Angebote anzeigt. In Partner Center dagegen enthält die Seite **Bestellungen** eine separate Registerkarte für SaaS-Angebote. Weitere Informationen finden Sie unter [Zugreifen auf Analysen für den kommerziellen Marketplace in Partner Center](partner-center-portal/analytics.md). |
+| Analytics | Sie können mit dem Überwachen der Verkäufe, Auswerten der Leistung und Optimieren Ihrer Angebote auf dem kommerziellen Marketplace fortfahren, indem Sie die Analysedaten in Partner Center anzeigen. Analyseberichte werden im Cloud-Partnerportal (CPP) und in Partner Center auf unterschiedliche Weise angezeigt. Beispielsweise verfügt **Verkäufer-Insights** in CPP über die Registerkarte **Bestellungen und Nutzung**, auf der Daten für nutzungsbasierte und nicht nutzungsbasierte Angebote angezeigt werden. Im Partner Center enthält die Seite **Bestellungen** hingegen eine separate Registerkarte für SaaS-Angebote. Weitere Informationen finden Sie unter [Zugreifen auf Analysen für den kommerziellen Marketplace in Partner Center](partner-center-portal/analytics.md). |
 |||
 
 ## <a name="do-i-need-to-create-a-new-account-to-manage-my-offers-in-partner-center"></a>Muss ich ein neues Konto erstellen, um meine Angebote in Partner Center verwalten zu können?

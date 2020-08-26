@@ -7,12 +7,12 @@ ms.date: 02/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: 0bdc9451f0dbc32e14197cde48a3613196b864c0
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: e0670aeb3a41506ef302364c6eeaff332520abc5
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037132"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245433"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Häufig gestellte Fragen (FAQ) zu Azure Files
 [Azure Files](storage-files-introduction.md) bietet vollständig verwaltete Dateifreigaben in der Cloud, auf die über das branchenübliche [Protokoll Server Message Block (SMB) zugegriffen werden kann](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx). Sie können Azure-Dateifreigaben gleichzeitig unter Cloud- und lokalen Bereitstellungen von Windows, Linux und macOS einbinden. Azure-Dateifreigaben können auch auf Windows Server-Computern zwischengespeichert werden, indem die Azure-Dateisynchronisierung verwendet wird, um den schnellen Zugriff in der Nähe der Datennutzung zu ermöglichen.
@@ -77,13 +77,14 @@ In diesem Artikel werden häufig gestellte Fragen zu Azure Files-Features und -F
     > [!NOTE]
     > Es ist nicht möglich, Azure-Dateifreigaben basierend auf Blobspeicherkonten oder universellen *Premium*-Speicherkonten (GPv1 oder GPv2) zu erstellen. Standard-Azure-Dateifreigaben können nur in universellen *Standard*-Konten und Premium-Azure-Dateifreigaben nur in FileStorage-Speicherkonten erstellt werden. Universelle *Premium*-Speicherkonten (GPv1 und GPv2) sind nur für Premium-Seitenblobs bestimmt. 
 
+* <a id="file-locking"></a>
+  **Unterstützt Azure Files das Sperren von Dateien?**  
+    Ja. Die Dateisperrung im SMB-/Windows-Stil wird von Azure Files vollständig unterstützt. Ausführliche Informationen finden Sie [hier](https://docs.microsoft.com/rest/api/storageservices/managing-file-locks).
+
 * <a id="give-us-feedback"></a>
   **Ich wünsche mir, dass Azure Files ein bestimmtes Feature hinzugefügt wird. Können Sie es hinzufügen?**  
     Das Azure Files-Team legt großen Wert darauf, Ihr Feedback zu unserem Dienst zu erhalten. Stimmen Sie in [Azure Files UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files) über Funktionsanfragen ab! Wir hoffen, dass wir Sie mit vielen neuen Funktionen begeistern können.
 
-  **Unterstützt Azure Files das Sperren von Dateien?**  
-    Ja. Die Dateisperrung im SMB-/Windows-Stil wird von Azure Files vollständig unterstützt. Ausführliche Informationen finden Sie [hier](https://docs.microsoft.com/rest/api/storageservices/managing-file-locks). 
-    
 ## <a name="azure-file-sync"></a>Azure-Dateisynchronisierung
 
 * <a id="afs-region-availability"></a>
@@ -208,6 +209,13 @@ In diesem Artikel werden häufig gestellte Fragen zu Azure Files-Features und -F
 **Welche Richtlinien zur Datenkonformität werden von Azure Files unterstützt?**  
 
    Azure Files wird zusätzlich zu der gleichen Speicherarchitektur ausgeführt, die auch in anderen Speicherdiensten in Azure Storage genutzt wird. Für Azure Files werden die gleichen Richtlinien zur Datenkonformität wie in anderen Azure-Speicherdiensten angewendet. Weitere Informationen zur Datenkonformität von Azure Storage finden Sie unter [Azure Storage-Complianceangebote](https://docs.microsoft.com/azure/storage/common/storage-compliance-offerings) und im [Microsoft Trust Center](https://microsoft.com/trustcenter/default.aspx).
+
+* <a id="file-auditing"></a>
+**Wie kann ich den Dateizugriff und Änderungen in Azure Files überwachen?**
+
+  Bei den Überwachungsfunktionen für Azure Files haben Sie zwei Optionen:
+  - Wenn Benutzer direkt auf die Azure-Dateifreigabe zugreifen, können [Azure Storage-Protokolle (Vorschau)](https://docs.microsoft.com/azure/storage/common/monitor-storage?tabs=azure-powershell#logs-in-azure-monitor-preview) verwendet werden, um Dateiänderungen und den Benutzerzugriff nachzuverfolgen. Diese Protokolle können für die Problembehandlung genutzt werden, und die Anforderungen werden bestmöglich protokolliert.
+  - Wenn Benutzer auf die Azure-Dateifreigabe über eine Windows Server-Instanz zugreifen, auf der der Azure-Dateisynchronisierungs-Agent installiert ist, sollten Sie eine [Überwachungsrichtlinie](https://docs.microsoft.com/windows/security/threat-protection/auditing/apply-a-basic-audit-policy-on-a-file-or-folder) oder ein Drittanbieterprodukt verwenden, um Dateiänderungen und den Benutzerzugriff auf der Windows Server-Instanz nachzuverfolgen. 
    
 ### <a name="ad-ds--azure-ad-ds-authentication"></a>AD DS- und Azure AD DS-Authentifizierung
 * <a id="ad-support-devices"></a>
@@ -274,7 +282,6 @@ In diesem Artikel werden häufig gestellte Fragen zu Azure Files-Features und -F
 **Sind REST-APIs zur Unterstützung von Get/Set/Copy-Vorgängen für Windows-ACLs auf Verzeichnis-/Dateiebene vorhanden?**
 
     Ja, wir unterstützen REST-APIs, die NTFS-ACLs für Verzeichnisse oder Dateien bei Verwendung der REST-API [2019-07-07](https://docs.microsoft.com/rest/api/storageservices/versioning-for-the-azure-storage-services#version-2019-07-07) (oder höher) erfassen, festlegen oder kopieren. Außerdem wird das Beibehalten von Windows-ACLs in REST-basierten Tools unterstützt: [AzCopy v10.4+](https://github.com/Azure/azure-storage-azcopy/releases).
-
 
 ## <a name="on-premises-access"></a>Lokaler Zugriff
 

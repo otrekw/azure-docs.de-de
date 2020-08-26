@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: yelevin
-ms.openlocfilehash: 564041da0be6874acae1bec69e4ab2d744d89323
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4ef08ac8d386bd8a28dce38cb53aed31d79b37a2
+ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85565245"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88566334"
 ---
 # <a name="tutorial-investigate-incidents-with-azure-sentinel"></a>Tutorial: Untersuchen von Vorfällen mit Azure Sentinel
 
@@ -40,7 +40,9 @@ In diesem Artikel wird Folgendes behandelt:
 Ein Vorfall kann mehrere Warnungen enthalten. Es ist eine Aggregation aller relevanten Beweise für eine bestimmte Untersuchung. Ein Vorfall wird auf der Grundlage von Analyseregeln erstellt, die Sie auf der Seite **Analytics** erstellt haben. Die Eigenschaften, die zu den Warnungen gehören, z. B. Schweregrad und Status, werden auf Vorfallsebene festgelegt. Nachdem Azure Sentinel die Informationen dazu hat, welche Bedrohungsarten Sie suchen und wie diese gefunden werden, können Sie erkannte Bedrohungen überwachen, indem Sie Vorfälle untersuchen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
-Sie können den Vorfall nur untersuchen, wenn Sie beim Einrichten der Analyseregel die Entitätszuordnungsfelder verwendet haben. Das Untersuchungsdiagramm fordert, dass Ihr ursprünglicher Vorfall Entitäten enthält.
+- Sie können den Vorfall nur untersuchen, wenn Sie beim Einrichten der Analyseregel die Entitätszuordnungsfelder verwendet haben. Das Untersuchungsdiagramm fordert, dass Ihr ursprünglicher Vorfall Entitäten enthält.
+
+- Wenn ein Gastbenutzer Vorfälle zuweisen muss, muss diesem im Azure AD-Mandanten die Rolle [Verzeichnisleseberechtigter](../active-directory/users-groups-roles/directory-assign-admin-roles.md#directory-readers) zugewiesen werden. Regulären Benutzern (keine Gastbenutzer) ist diese Rolle standardmäßig zugewiesen.
 
 ## <a name="how-to-investigate-incidents"></a>Untersuchen von Vorfällen
 

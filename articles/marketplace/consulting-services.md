@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/08/2020
 author: Microsoft-BradleyWright
 ms.author: brwrigh
-ms.openlocfilehash: 31bb6dd188786fda532bf85d071e119e69e5bccc
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 2ca0031d3ae9fc1347c3a8bd7bf24c2780e502a8
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87797864"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607450"
 ---
 # <a name="consulting-service-offers"></a>Beratungsdienstangebote
 
@@ -22,7 +22,7 @@ Beratungsdienstangebote sind kundengebundene Angebote. Herausgeber können den A
 
 ## <a name="compare-consulting-services"></a>Vergleichen von Beratungsdiensten
 
-Die Storefronts des kommerziellen Marketplace, Microsoft AppSource und der Azure Marketplace, orientieren sich an Zielgruppen und Cloudprodukten, damit Kunden das finden, was sie benötigen. Jede Storefront verfügt über spezielle Veröffentlichungsoptionen, damit sich Ihre Investitionen in die Veröffentlichung noch besser amortisieren. Weitere Informationen zum Unterschied zwischen den beiden Storefronts finden Sie unter [Vergleich von Microsoft AppSource und Azure Marketplace](comparing-appsource-azure-marketplace.md).
+Die Onlineshops im kommerziellen Marketplace, Microsoft AppSource und Azure Marketplace orientieren sich an Zielgruppen und Cloudprodukten, damit Kunden das finden, was sie benötigen. Jeder Onlineshop verfügt über spezielle Veröffentlichungsoptionen, damit sich Ihre Investitionen in die Veröffentlichung noch besser amortisieren. Weitere Informationen zum Unterschied zwischen den beiden Onlineshops finden Sie unter [Vergleich von Microsoft AppSource und Azure Marketplace](comparing-appsource-azure-marketplace.md).
 
 Die auf Dynamics 365, Power Apps und Power BI basierenden Beratungsdienstangebote sind für das Listing in AppSource geeignet. Weitere Informationen finden Sie in der herunterladbaren PDF-Datei mit den [Richtlinien zum Listing von Microsoft AppSource-Beratungsdiensten](https://go.microsoft.com/fwlink/?LinkId=828734&clcid=0x409).
 
@@ -34,7 +34,7 @@ Beratungsdienstangebote und Angebote verwalteter Dienste, die auf Microsoft Azur
 > Beratungsdienste in AppSource sollten sich auf Angebote für Benutzer mit Fachkenntnissen bei der Bereitstellung qualitativ hochwertiger Lösungen für Dynamics 365, Power BI oder Power Apps konzentrieren.
  
 > [!TIP]
-> Wählen Sie zum Veröffentlichen in der Azure Marketplace-Storefront im Partner Center in der Dropdownliste **Primäres Produkt** die Option **Azure** aus.
+> Wählen Sie zum Veröffentlichen im Azure Marketplace im Partner Center in der Dropdownliste **Primäres Produkt** die Option **Azure** aus.
 >
 > Wählen Sie zum Veröffentlichen in AppSource im Partner Center in der Dropdownliste **Primäres Produkt** die Option **Dynamics 365**, **Power BI** oder **Power Apps** aus.
 
@@ -86,12 +86,12 @@ Systemintegratorpartner können Beratungsdienstangebote für die folgenden 20 L
 [Registrieren](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) Sie zunächst ihre Unternehmensinformationen in Azure Marketplace. Eine vollständige Prüfliste der Registrierungsanforderungen finden Sie unter [Ihr Weg zum Herausgeber im Marketplace](become-publisher.md). 
 
 ## <a name="prepare-your-publishing-artifacts"></a>Vorbereiten von Veröffentlichungsartefakten
-Vor der Registrierung können Sie mit der Sammlung und Vorbereitung der Inhalte beginnen, mit denen Sie im Rahmen Ihrer Auflistung den Wert Ihres Diensts und Ihrer Lösung gegenüber Ihrem Zielkunden darstellen können.
+Vor der Registrierung können Sie mit der Sammlung und Vorbereitung der Inhalte beginnen, mit denen Sie im Rahmen Ihrer Auflistung den Wert Ihres Diensts und Ihrer Lösung gegenüber Ihrem Zielkunden darstellen können. 
 
 |Einrichtung für neue Herausgeber  |
 |---------|
 |MPN-ID     |
-|Unternehmenslogos: 48 × 48 Pixel (optional), 216 × 216 Pixel – 350 × 350 Pixel (erforderlich)  |
+|Unternehmenslogos (48 × 48, 216 × 216 Pixel)     |
 |Leadzielgruppe     |
 ||
 

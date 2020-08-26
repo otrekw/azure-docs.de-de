@@ -3,15 +3,15 @@ title: 'Übersicht: Automatisieren der Bereitstellung für Azure Logic Apps'
 description: Erfahren Sie mehr über Azure Resource Manager-Vorlagen, um die Bereitstellung für Azure Logic Apps zu automatisieren.
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: logicappspm
 ms.topic: article
-ms.date: 07/25/2019
-ms.openlocfilehash: 6a89eb16c8042efc86bb5cc8bd5fba7c821dc341
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 08/17/2020
+ms.openlocfilehash: 391692d708adbd542b2cf358f0ac597dc1db3fa0
+ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86520968"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88565552"
 ---
 # <a name="overview-automate-deployment-for-azure-logic-apps-by-using-azure-resource-manager-templates"></a>Übersicht: Automatisieren der Bereitstellung für Azure Logic Apps durch Verwenden von Azure Resource Manager-Vorlagen
 
@@ -237,7 +237,7 @@ In dieser Beispielparameterdatei sind die Werte für die Vorlagenparameter angeg
 
 ## <a name="template-resources"></a>Vorlagenressourcen
 
-Die Vorlage hat ein `resources`-Objekt. Dieses Objekt ist ein Array, das Definitionen für jede Ressource enthält, die in Azure erstellt und bereitgestellt werden soll. Dazu gehören die [Ressourcendefinition Ihrer Logik-App](#logic-app-resource-definition), jegliche [Verbindungsressourcendefinitionen](#connection-resource-definitions) und alle weiteren Ressourcen, die ihre Logik-App zur Bereitstellung benötigt.
+Die Vorlage hat ein `resources`-Objekt. Dieses Objekt ist ein Array, das Definitionen für jede Ressource enthält, die in Azure erstellt und bereitgestellt werden soll. Dazu gehören die [Ressourcendefinition Ihrer Logik-App](#logic-app-resource-definition), [Verbindungsressourcendefinitionen](#connection-resource-definitions) und alle weiteren Ressourcen, die Ihre Logik-App zur Bereitstellung benötigt.
 
 ```json
 {
@@ -264,6 +264,22 @@ Die Vorlage hat ein `resources`-Objekt. Dieses Objekt ist ein Array, das Definit
 
 > [!NOTE]
 > Vorlagen können Ressourcendefinitionen für mehrere Logik-Apps enthalten. Stellen Sie daher sicher, dass in allen Ihrer Logik-App-Ressourcen dieselbe Azure-Ressourcengruppe angegeben ist. Wenn Sie die Vorlage über Visual Studio in einer Azure-Ressourcengruppe bereitstellen, werden Sie zur Angabe der Logik-App aufgefordert, die Sie öffnen möchten. Außerdem kann Ihr Azure-Ressourcengruppenprojekt mehrere Vorlagen enthalten. Achten Sie daher darauf, dass Sie die richtige Parameterdatei auswählen, wenn Sie dazu aufgefordert werden.
+
+<a name="view-resource-definitions"></a>
+
+### <a name="view-resource-definitions"></a>Anzeigen von Ressourcendefinitionen
+
+Zum Überprüfen der Ressourcendefinitionen für alle Ressourcen [laden Sie die Logik-App von Azure in Visual Studio herunter](../logic-apps/manage-logic-apps-with-visual-studio.md). Dies ist die einfachste Möglichkeit, um eine gültige parametrisierte Logik-App-Vorlage zu erstellen, die größtenteils für die Bereitstellung bereit ist. Alternativ können Sie im Azure-Portal die folgenden Schritte ausführen:
+
+1. Melden Sie sich mit den Anmeldeinformationen Ihres Azure-Kontos beim [Azure-Portal](https://portal.azure.com) an.
+
+1. Suchen Sie die Azure-Ressourcengruppe, die die Logik-App, Verbindungen und andere Ressourcen enthält.
+
+1. Wählen Sie auf der Ressourcengruppen-Symbolleiste **Übersicht** aus, und wählen Sie dann alle Ressourcen in der Ressourcengruppe aus.
+
+1. Wählen Sie auf der Ressourcengruppen-Symbolleiste unter **Einstellungen** die Option **Vorlage exportieren** aus.
+
+   Im Portal werden die Definitionen für die Ressourcen angezeigt, die Sie ausgewählt haben. Weitere Informationen finden Sie unter [Exportieren von einzelnen oder mehreren Ressourcen in eine Vorlage im Azure-Portal](../azure-resource-manager/templates/export-template-portal.md).
 
 Allgemeine Informationen zu Vorlagenressourcen und deren Attributen finden Sie in den folgenden Themen:
 
@@ -1013,7 +1029,7 @@ Weitere Informationen zum Arbeiten mit Dienstprinzipale finden Sie in den folgen
 
 ## <a name="references-to-parameters"></a>Verweise auf Parameter
 
-Um auf Vorlagenparameter zu verweisen, können Sie Vorlagenausdrücke mit [Vorlagenfunktionen](../azure-resource-manager/templates/template-functions.md) verwenden, die bei einer Bereitstellung ausgewertet werden. Für Vorlagenausdrücke werden eckige Klammern ( **[]** ) verwendet:
+Um auf Vorlagenparameter zu verweisen, können Sie Vorlagenausdrücke mit [Vorlagenfunktionen](../azure-resource-manager/templates/template-functions.md) verwenden, die bei einer Bereitstellung ausgewertet werden. Für Vorlagenausdrücke werden eckige Klammern (**[]**) verwendet:
 
 `"<attribute-name>": "[parameters('<template-parameter-name>')]"`
 

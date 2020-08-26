@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/29/2019
 ms.author: memildin
-ms.openlocfilehash: 4d65b43dad80cb130d582132d21e2d10bd8051dc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6363100c844d071a3bb47521cec6ff7e988f6af8
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84791383"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88263214"
 ---
 # <a name="security-recommendations-in-azure-security-center"></a>Sicherheitsempfehlungen in Azure Security Center 
 In diesem Thema wird erläutert, wie Sie die Empfehlungen in Azure Security Center anzeigen und nutzen können, mit denen Sie Ihre Azure-Ressourcen schützen.
@@ -31,14 +31,13 @@ In diesem Thema wird erläutert, wie Sie die Empfehlungen in Azure Security Cent
 
 Empfehlungen sind Maßnahmen, die Sie ergreifen sollten, um Ihre Ressourcen zu schützen.
 
-Security Center analysiert in regelmäßigen Abständen den Sicherheitsstatus der Azure-Ressourcen, um mögliche Sicherheitsrisiken zu identifizieren. Anschließend erhalten Sie Empfehlungen dazu, wie sie behoben werden können.
+Azure Security Center analysiert in regelmäßigen Abständen den Sicherheitsstatus der Azure-Ressourcen, um mögliche Sicherheitsrisiken zu erkennen. Anschließend erhalten Sie Empfehlungen dazu, wie Sie diese Sicherheitsrisiken beheben können.
 
 Jede Empfehlung beinhaltet Folgendes:
 
-- Eine kurze Beschreibung der empfohlenen Aktion
-- Die Schritte zur Bereinigung, die zum Implementieren der Empfehlung ausgeführt werden müssen <!-- In some cases, Quick Fix remediation is available. -->
-- Angaben zu den Ressourcen, für die die empfohlene Aktion ausgeführt werden sollte
-- Die **Auswirkung auf die Sicherheitsbewertung**, d. h. die Punkte, um die Ihre Sicherheitsbewertung erhöht wird, wenn Sie die Empfehlung implementieren.
+- Eine kurze Beschreibung des Problems
+- Die Schritte zur Bereinigung, die zum Implementieren der Empfehlung ausgeführt werden müssen
+- Die betroffenen Ressourcen
 
 ## <a name="monitor-recommendations"></a>Überwachen von Empfehlungen<a name="monitor-recommendations"></a>
 
@@ -48,26 +47,28 @@ Security Center analysiert den Sicherheitsstatus Ihrer Ressourcen, um mögliche 
 
 1. Wählen Sie die Kachel **Empfehlungen** unter **Übersicht** aus. Die Liste **Empfehlungen** wird geöffnet.
 
-      ![Anzeigen von Empfehlungen](./media/security-center-recommendations/view-recommendations.png)
+1. Die Empfehlungen sind nach Sicherheitssteuerungen gruppiert.
 
-    Sie können Empfehlungen filtern. Wählen Sie auf dem Blatt **Empfehlungen** die Option **Filter**, um die Empfehlungen zu filtern. Das Blatt **Filter** wird geöffnet. Sie können Werte für Schweregrad und Status auswählen, die Sie anzeigen möchten.
+      ![Nach Sicherheitssteuerung gruppierte Empfehlungen](./media/security-center-recommendations/view-recommendations.png)
 
-   * **EMPFEHLUNGEN:** Die Empfehlung
-   * **SECURE SCORE-AUSWIRKUNG:** Eine Bewertung, die von Security Center anhand Ihrer Sicherheitsempfehlungen generiert wurde, samt Anwendung von komplexen Algorithmen, mit denen bestimmt wird, wie wichtig jede Empfehlung ist. Weitere Informationen finden Sie unter [Berechnung der Sicherheitsbewertung](secure-score-security-controls.md#how-your-secure-score-is-calculated).
-   * **RESSOURCE**: Eine Liste mit den Ressourcen, für die diese Empfehlung gilt.
-   * **STATUSLEISTEN:**  Beschreibt den Schweregrad der jeweiligen Empfehlung:
-       * **Hoch (rot):** Ein Sicherheitsrisiko betrifft eine wichtige Ressource (z. B. eine Anwendung, eine VM oder eine Netzwerksicherheitsgruppe) und erfordert einen Eingriff.
-       * **Mittel (orange):** Es besteht ein Sicherheitsrisiko, und es sind nicht kritische oder zusätzliche Schritte erforderlich, um es zu beseitigen oder einen Prozess abzuschließen.
-       * **Niedrig (blau):** Es besteht ein Sicherheitsrisiko, das behandelt werden sollte, aber keinen unmittelbaren Eingriff erfordert. (Standardmäßig werden Empfehlungen mit dem Status „Niedrig“ nicht angezeigt, aber Sie können bei Bedarf nach diesen Empfehlungen filtern.) 
-       * **Fehlerfrei (grün):**
-       * **Nicht verfügbar (grau):**
+1. Erweitern Sie eine Steuerung, und wählen Sie eine bestimmte Empfehlung aus, um die Empfehlungsseite anzuzeigen.
 
-1. Um die Details einer Empfehlung anzuzeigen, klicken Sie auf die Empfehlung.
+    :::image type="content" source="./media/security-center-recommendations/recommendation-details-page.png" alt-text="Seite mit den Empfehlungsdetails" lightbox="./media/security-center-recommendations/recommendation-details-page.png":::
 
-    ![Empfehlungsdetails](./media/security-center-recommendations/recommendation-details.png)
+    Inhalt der Seite:
 
->[!NOTE] 
-> Informationen zu Azure-Ressourcen finden Sie in der Beschreibung für das [klassische und das Resource Manager-Bereitstellungsmodell](../azure-classic-rm.md).
+    - **Angabe des Schweregrads**
+    - **Aktualisierungsintervall** (sofern relevant) 
+    - **Beschreibung**: Eine kurze Beschreibung des Problems
+    - **Schritte zur Bereinigung**: Eine Beschreibung der manuellen Schritte, die erforderlich sind, um das Sicherheitsproblem für die betroffenen Ressourcen zu beheben. Für Empfehlungen unter „Schnellkorrektur“ können Sie **Korrekturlogik anzeigen** auswählen, bevor Sie die vorgeschlagene Lösung auf die Ressourcen anwenden. 
+    - **Betroffene Ressourcen**: Die Ressourcen sind in Registerkarten unterteilt:
+        - **Fehlerfreie Ressourcen**: Relevante Ressourcen, die entweder nicht beeinträchtigt sind oder bei denen das Problem bereits behoben wurde.
+        - **Fehlerhafte Ressourcen**: Ressourcen, die weiterhin vom identifizierten Problem betroffen sind.
+        - **Nicht anwendbare Ressourcen**: Ressourcen, für die die Empfehlung keine definitive Antwort geben kann. Auf dieser Registerkarte werden auch Gründe für die jeweilige Ressource angegeben. 
+
+            :::image type="content" source="./media/security-center-recommendations/recommendations-not-applicable-reasons.png" alt-text="Nicht anwendbare Ressourcen mit Gründen":::
+
+
  
 ## <a name="next-steps"></a>Nächste Schritte
 

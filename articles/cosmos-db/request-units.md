@@ -1,27 +1,25 @@
 ---
-title: Anforderungseinheiten und Durchsatz in Azure Cosmos DB
+title: Anforderungseinheiten als Währung für Durchsatz und Leistung in Azure Cosmos DB
 description: Hier erfahren Sie, wie Sie die erforderlichen Anforderungseinheiten in Azure Cosmos DB angeben und einschätzen.
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 07/24/2020
-ms.openlocfilehash: f1f203d17de9fb0fc9fe8bb0f6de80fe2b93ba8b
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.date: 08/19/2020
+ms.openlocfilehash: 6831cb3f39c25eb69d16300156f456980cf57fa0
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327802"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88604828"
 ---
 # <a name="request-units-in-azure-cosmos-db"></a>Anforderungseinheiten in Azure Cosmos DB
 
-Bei Azure Cosmos DB zahlen Sie für den bereitgestellten Durchsatz und den verwendeten Speicher auf Stundenbasis. Durchsatz muss bereitgestellt werden, um zu gewährleisten, dass jederzeit genügend Systemressourcen für Ihre Azure Cosmos-Datenbank zur Verfügung stehen. Sie benötigen ausreichend Ressourcen, um die [Azure Cosmos DB-SLAs](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_2/) zu erfüllen oder zu übertreffen.
-
 Azure Cosmos DB unterstützt viele APIs wie z.B. SQL, MongoDB, Cassandra, Gremlin und Tabelle. Jede API verfügt über einen eigenen Satz von Datenbankvorgängen. Diese Vorgänge reichen von einfachen Lese- und Schreibvorgängen für Datenpunkte bis hin zu komplexen Abfragen. Jeder Datenbankvorgang beansprucht je nach Komplexität eine bestimmte Menge an Systemressourcen.
 
-Die Kosten sämtlicher Datenbankvorgänge werden von Azure Cosmos DB normalisiert und als *Anforderungseinheiten* (Request Units, kurz RUs) ausgedrückt. RUs pro Sekunde ist also gewissermaßen die Währung für Durchsatz. RUs pro Sekunde ist eine ratenbasierte Währung. Sie abstrahiert die Systemressourcen wie CPU, IOPS und Arbeitsspeicher, die zum Ausführen der von Azure Cosmos DB unterstützten Datenbankvorgänge erforderlich sind. Ein Minimum von 10 RUs pro Sekunde ist pro Gigabyte an Daten erforderlich.
+Die Kosten sämtlicher Datenbankvorgänge werden von Azure Cosmos DB normalisiert und als *Anforderungseinheiten* (Request Units, kurz RUs) ausgedrückt. Sie können sich Anforderungseinheiten als Währung zur Abstrahierung der Systemressourcen wie CPU, IOPS und Arbeitsspeicher vorstellen, die zum Ausführen der von Azure Cosmos DB unterstützten Datenbankvorgänge erforderlich sind.
 
-Eine Anforderungseinheit (oder eine RU) entspricht den Kosten für das Lesen eines Elements mit einer Größe von 1 KB. Allen anderen Datenbankvorgängen werden analog dazu ebenfalls Kosten in RUs zugewiesen. Unabhängig davon, welche API Sie für die Interaktion mit Ihrem Azure Cosmos-Container verwenden, werden die Kosten immer in RUs gemessen. Unabhängig davon, ob es sich bei dem Datenbankvorgang um einen Schreib-, Lese- oder Abfragevorgang handelt, werden die Kosten immer in RUs gemessen.
+Die Kosten für einen Punktlesevorgang (d. h. das Abrufen eines einzelnen Elements anhand seiner ID und seines Partitionsschlüsselwerts) für ein Element von 1 KB betragen 1 Anforderungseinheit (oder 1 RU). Allen anderen Datenbankvorgängen werden analog dazu ebenfalls Kosten in RUs zugewiesen. Unabhängig davon, welche API Sie für die Interaktion mit Ihrem Azure Cosmos-Container verwenden, werden die Kosten immer in RUs gemessen. Unabhängig davon, ob es sich bei dem Datenbankvorgang um einen Schreib-, Lese- oder Abfragevorgang handelt, werden die Kosten immer in RUs gemessen.
 
 Die folgende Abbildung zeigt eine Übersicht über RUs:
 
@@ -29,16 +27,16 @@ Die folgende Abbildung zeigt eine Übersicht über RUs:
 
 Zur Verwaltung und Planung der Kapazität stellt Azure Cosmos DB sicher, dass die Anzahl von RUs für einen bestimmten Datenbankvorgang und ein bestimmtes Dataset deterministisch ist. Sie können den Antwortheader untersuchen, um die von einem Datenbankvorgang genutzte Anzahl von RUs zu ermitteln. Wenn Sie mit den [Faktoren, die sich auf die Gebühren für RUs auswirken](request-units.md#request-unit-considerations), sowie mit den Durchsatzanforderungen Ihrer Anwendung vertraut sind, können Sie Ihre Anwendung kostengünstig ausführen.
 
-Die Anzahl von Anforderungseinheiten für Ihre Anwendung wird auf Sekundenbasis (in Schritten von jeweils 100 RUs pro Sekunde) bereitgestellt. Um den bereitgestellten Durchsatz für Ihre Anwendung zu skalieren, können Sie die Anzahl der RUs jederzeit erhöhen oder verringern. Die Skalierung kann in Inkrementen oder Dekrementen von 100 RUs erfolgen. Sie können Ihre Änderungen entweder programmgesteuert oder über das Azure-Portal vornehmen. Die Abrechnung erfolgt auf Stundenbasis.
+Der Typ des Azure Cosmos-Kontos, das Sie verwenden, bestimmt, wie verbrauchte RUs abgerechnet werden:
 
-Durchsatz kann in zwei Granularitäten bereitgestellt werden:
-
-* **Container**: Weitere Informationen finden Sie unter [Bereitstellen von Durchsatz für einen Azure Cosmos-Container](how-to-provision-container-throughput.md).
-* **Datenbanken**: Weitere Informationen finden Sie unter [Bereitstellen von Durchsatz für eine Azure Cosmos-Datenbank](how-to-provision-database-throughput.md).
+- Im Modus [Bereitgestellter Durchsatz](set-throughput.md) wird die Anzahl von Anforderungseinheiten für Ihre Anwendung auf Sekundenbasis (in Schritten von jeweils 100 RUs pro Sekunde) bereitgestellt. Um den bereitgestellten Durchsatz für Ihre Anwendung zu skalieren, können Sie die Anzahl der RUs jederzeit in Schritten von 100 RUs erhöhen oder verringern. Sie können Ihre Änderungen entweder programmgesteuert oder über das Azure-Portal vornehmen. Die Menge der bereitgestellten RUs pro Sekunde wird auf Stundenbasis abgerechnet. Durchsatz kann in zwei Granularitäten bereitgestellt werden:
+  - **Container**: Weitere Informationen finden Sie unter [Bereitstellen von Durchsatz für einen Azure Cosmos-Container](how-to-provision-container-throughput.md).
+  - **Datenbanken**: Weitere Informationen finden Sie unter [Bereitstellen von Durchsatz für eine Azure Cosmos-Datenbank](how-to-provision-database-throughput.md).
+- Im [serverlosen](serverless.md) Modus müssen Sie beim Erstellen von Ressourcen in Ihrem Azure Cosmos-Konto keinen Durchsatz bereitstellen. Am Ende des Abrechnungszeitraums wird Ihnen die Anzahl der Anforderungseinheiten in Rechnung gestellt, die von den Datenbankvorgängen genutzt wurden.
 
 ## <a name="request-unit-considerations"></a>Aspekte zu Anforderungseinheiten
 
-Während Sie die Anzahl der RUs pro Sekunde für die Bereitstellung schätzen, berücksichtigen Sie die folgenden Faktoren:
+Berücksichtigen Sie die folgenden Faktoren, wenn Sie die Anzahl der für Ihre Workload verbrauchen RUs schätzen:
 
 * **Elementgröße**: Je größer ein Element, desto mehr RUs werden beim Lesen oder Schreiben des Elements genutzt.
 
@@ -50,7 +48,7 @@ Während Sie die Anzahl der RUs pro Sekunde für die Bereitstellung schätzen, b
 
 * **Datenkonsistenz**: Im Vergleich zu anderen, weniger strengen Konsistenzebenen nutzen die Konsistenzebenen „Stark“ und „Begrenzte Veraltung“ bei Lesevorgängen ungefähr zweimal mehr RUs.
 
-* **Lesetypen:** Punktlesevorgänge kosten erheblich weniger RU als Abfragen.
+* **Lesetypen:** Punktlesevorgänge kosten erheblich weniger RUs als Abfragen.
 
 * **Abfragemuster**: Die Komplexität einer Abfrage wirkt sich darauf aus, wie viele RUs für einen Vorgang verbraucht werden. Faktoren, die die Kosten von Abfragevorgängen beeinflussen: 
     
@@ -69,6 +67,7 @@ Während Sie die Anzahl der RUs pro Sekunde für die Bereitstellung schätzen, b
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Erfahren Sie mehr über das [Bereitstellen von Durchsatz für Cosmos-Container und -Datenbanken](set-throughput.md).
+* Weitere Informationen zum [serverlosen Modus in Azure Cosmos DB](serverless.md).
 * Erfahren Sie mehr über [logische Partitionen](partition-data.md).
 * Erfahren Sie mehr über [globales Skalieren von bereitgestelltem Durchsatz](scaling-throughput.md).
 * Erfahren Sie mehr über das [Bereitstellen von Durchsatz für einen Azure Cosmos-Container](how-to-provision-container-throughput.md).

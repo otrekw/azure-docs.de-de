@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 07/08/2020
 ms.reviewer: mahender
 ms.custom: seodec18, fasttrack-edit, has-adal-ref
-ms.openlocfilehash: 8362cc3b8f8477f77d8ec672144e7c68d2e3434d
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: b6984e16d1ddcee7d3f276ddcdf8c89609f14fe5
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88080727"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88271021"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service-and-azure-functions"></a>Authentifizierung und Autorisierung in Azure App Service und Azure Functions
 
@@ -77,7 +77,7 @@ In der Regel müssen Sie Code schreiben, um diese Token in Ihrer Anwendung zu er
 
 Die ID-, Zugriffs- und Aktualisierungstoken werden für die authentifizierte Sitzung zwischengespeichert und sind nur für den zugehörigen Benutzer zugänglich.  
 
-Wenn Sie in Ihrer App nicht mit Token arbeiten müssen, können Sie den Tokenspeicher deaktivieren.
+Wenn Sie in Ihrer App nicht mit Token arbeiten müssen, können Sie auf der Seite **Authentifizierung/Autorisierung** Ihrer App den Tokenspeicher deaktivieren.
 
 ### <a name="logging-and-tracing"></a>Protokollierung und Nachverfolgung
 

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: how-to
 ms.date: 04/10/2020
 ms.author: ramamill
-ms.openlocfilehash: d73e2776d0d9c86fe0331f9804bfeade3f1de676
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 431f1da463e4bd9970bc92b0842393f2de882220
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86131795"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88604733"
 ---
 # <a name="about-the-mobility-service-for-vmware-vms-and-physical-servers"></a>Informationen zum Mobilitätsdienst auf virtuellen VMware-Computern und physischen Servern
 
@@ -37,6 +37,7 @@ Die Pushinstallation ist ein wesentlicher Bestandteil des Auftrags, der über da
 
 - Alle [Voraussetzungen](vmware-azure-install-mobility-service.md) für die Pushinstallation müssen erfüllt sein.
 - Stellen Sie sicher, dass alle Serverkonfigurationen die Kriterien in der [Unterstützungsmatrix für die Notfallwiederherstellung von virtuellen VMware-Computern und physischen Servern in Azure](vmware-physical-azure-support-matrix.md) erfüllen.
+- Stellen Sie ab [Version 9.36](https://support.microsoft.com/help/4578241/) für SuSE Linux Enterprise Server 11 SP4 sicher, dass das neueste Installationsprogramm [auf dem Konfigurationsserver und dem Prozessserver für horizontales Hochskalieren verfügbar ist](#download-latest-mobility-agent-installer-for-suse-11-sp3-server).
 
 Der Workflow für die Pushinstallation wird in den folgenden Abschnitten beschrieben:
 
@@ -132,7 +133,7 @@ Einstellung | Details
 Syntax | `UnifiedAgent.exe /Role \<MS/MT> /InstallLocation \<Install Location> /Platform "VmWare" /Silent`
 Setupprotokolle | `%ProgramData%\ASRSetupLogs\ASRUnifiedAgentInstaller.log`
 `/Role` | Erforderlicher Installationsparameter. Gibt an, ob der Mobilitätsdienst oder das Masterziel installiert werden soll.
-`/InstallLocation`| Optionaler Parameter. Gibt den Installationspfad des Mobilitätsdiensts an (beliebiger Ordner).
+`/InstallLocation`| Dieser Parameter ist optional. Gibt den Installationspfad des Mobilitätsdiensts an (beliebiger Ordner).
 `/Platform` | Erforderlich. Gibt die Plattform an, auf der der Mobilitätsdienst installiert wird: <br/> **VMware** für VMware-VMs/physische Server. <br/> **Azure** für Azure-VMs.<br/><br/> Wenn Sie virtuelle Azure-Computer als physische Computer behandeln, geben Sie **VMware** an.
 `/Silent`| Optional. Gibt an, ob das Installationsprogramm im unbeaufsichtigten Modus ausgeführt werden soll.
 
@@ -204,13 +205,27 @@ Installerdatei | Betriebssystem (nur 64-Bit)
 `Microsoft-ASR_UA_version_RHEL6-64_GA_date_release.tar.gz` | Red Hat Enterprise Linux (RHEL) 6 </br> CentOS 6
 `Microsoft-ASR_UA_version_RHEL7-64_GA_date_release.tar.gz` | Red Hat Enterprise Linux 7 (RHEL) </br> CentOS 7:
 `Microsoft-ASR_UA_version_SLES12-64_GA_date_release.tar.gz` | SUSE Linux Enterprise Server 12 SP1 </br> Umfasst SP2 und SP3.
-`Microsoft-ASR_UA_version_SLES11-SP3-64_GA_date_release.tar.gz` | SUSE Linux Enterprise Server 11 SP3
+[Muss manuell heruntergeladen und in diesem Ordner abgelegt werden](#download-latest-mobility-agent-installer-for-suse-11-sp3-server). | SUSE Linux Enterprise Server 11 SP3
 `Microsoft-ASR_UA_version_SLES11-SP4-64_GA_date_release.tar.gz` | SUSE Linux Enterprise Server 11 SP4
 `Microsoft-ASR_UA_version_OL6-64_GA_date_release.tar.gz` | Oracle Enterprise Linux 6.4 </br> Oracle Enterprise Linux 6.5
 `Microsoft-ASR_UA_version_UBUNTU-14.04-64_GA_date_release.tar.gz` | Ubuntu Linux 14.04
 `Microsoft-ASR_UA_version_UBUNTU-16.04-64_GA_date_release.tar.gz` | Ubuntu Linux 16.04 LTS-Server
 `Microsoft-ASR_UA_version_DEBIAN7-64_GA_date_release.tar.gz` | Debian 7
 `Microsoft-ASR_UA_version_DEBIAN8-64_GA_date_release.tar.gz` | Debian 8
+
+### <a name="download-latest-mobility-agent-installer-for-suse-11-sp3-server"></a>Herunterladen des aktuellen Mobility Agent-Installers für SUSE Linux Enterprise 11 SP3
+
+Als **erforderliche Komponente zum Aktualisieren oder Schützen von SUSE Linux Enterprise Server 11 SP3-Computern** ab [Version 9.36](https://support.microsoft.com/help/4578241/):
+
+1. Stellen Sie sicher, dass der aktuelle Mobility Agent-Installer aus dem Microsoft Download Center heruntergeladen und auf dem Konfigurationsserver und allen Prozessservern für horizontales Hochskalieren im Pushinstallerrepository abgelegt wurde.
+2. [Laden Sie das SUSE Linux Enterprise Server 11 SP3-Agent-Installationsprogramm herunter](https://download.microsoft.com/download/0/3/4/0341b388-1ff5-4ead-b197-7cf6d2bb3e40/Microsoft-ASR_UA_9.36.0.0_SLES11-SP3-64_GA_06Aug2020_release.tar.gz).
+3. Navigieren Sie zum Konfigurationsserver, und kopieren Sie das SUSE Linux Enterprise Server 11 SP3-Agent-Installationsprogramm in die folgenden Pfade.
+    1. INSTALL_DIR\home\svsystems\pushinstallsvc\repository
+    1.  Ordner INSTALL_DIR\home\svsystems\admin\web\sw
+4. Navigieren Sie nun zu den zugeordneten Prozessservern für horizontales Hochskalieren, und kopieren Sie das Installationsprogramm in beide Pfade, die im dritten Schritt genannt werden.
+5. **Wenn z. B.** der Installationspfad. „C:\Programme (x86)\Microsoft Azure Site Recovery“ lautet, lauten die oben genannten Verzeichnisse
+    1. C:\Programme (x86)\Microsoft Azure Site Recovery\home\svsystems\pushinstallsvc\repository
+    1. Pfad C:\Programme (x86)\Microsoft Azure Site Recovery\home\svsystems\admin\web\sw
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -3,17 +3,17 @@ title: Erstellen einer Azure Image Builder-Vorlage (Preview)
 description: Erfahren Sie, wie Sie eine Vorlage für die Verwendung mit Azure Image Builder erstellen.
 author: danielsollondon
 ms.author: danis
-ms.date: 08/03/2020
+ms.date: 08/13/2020
 ms.topic: conceptual
 ms.service: virtual-machines-linux
 ms.subservice: imaging
 ms.reviewer: cynthn
-ms.openlocfilehash: 2f1db4e6c45602fb7fde84079e8ef78179a4ec6b
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 095aa4ddbdc9ceb04c65d8c896642a0f1a91e547
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87830341"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88205550"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>Vorschau: Erstellen einer Azure Image Builder-Vorlage 
 
@@ -435,7 +435,8 @@ Anpassungseigenschaften:
 - **filters**: Optional können Sie einen Filter zum Ein- oder Ausschließen von Updates angeben.
 - **updateLimit**: Optional, definiert, wie viele Updates installiert werden können. Der Standardwert ist „1000“.
  
- 
+> [!NOTE]
+> Die Windows Update-Anpassung kann einen Fehler verursachen, wenn Windows-Neustarts ausstehen oder Anwendungsinstallationen noch ausgeführt werden. in der Regel wird dieser Fehler in der Datei „customization.log“ angezeigt: `System.Runtime.InteropServices.COMException (0x80240016): Exception from HRESULT: 0x80240016`. Es wird dringend empfohlen, einen Windows-Neustart hinzuzufügen und/oder Anwendungen mithilfe von [sleep] oder Wait-Befehlen (https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/start-sleep?view=powershell-7) in den Inlinebefehlen oder Skripts genug Zeit zum Abschluss ihrer Installation zu geben, bevor Sie Windows Update ausführen.
 
 ### <a name="generalize"></a>Generalize 
 Azure Image Builder führt außerdem standardmäßig Code zum „Aufheben der Bereitstellung“ nach jeder Imageanpassungsphase aus, um das Image zu „generalisieren“. Das Generalisieren ist ein Prozess, bei dem das Image so eingerichtet wird, dass es für die Erstellung mehrerer VMs wiederverwendet werden kann. Azure Image Builder verwendet Sysprep für Windows-VMs. Für Linux führt Azure Image Builder „waagent -deprovision“ aus. 

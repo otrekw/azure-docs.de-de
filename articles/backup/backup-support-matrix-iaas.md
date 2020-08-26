@@ -4,12 +4,12 @@ description: Enthält eine Zusammenfassung der Unterstützungseinstellungen und 
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.custom: references_regions
-ms.openlocfilehash: 9d7e3b4f565fac42d0a91d155846e672c7437f2d
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: cfa8a6c7cb2da35929151dfce09c0bc31ee69bb2
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87810461"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88611533"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Unterstützungsmatrix für die Sicherung virtueller Azure-Computer
 
@@ -141,7 +141,7 @@ Größe des virtuellen Computers |Jede Größe von virtuellen Azure-Computern mi
 Sicherung virtueller Computer in [Verfügbarkeitsgruppen](../virtual-machines/availability.md#availability-sets) | Unterstützt.<br/><br/> Sie können eine VM in einer Verfügbarkeitsgruppe nicht mit der Option zum schnellen Erstellen einer VM wiederherstellen. Stattdessen müssen Sie bei der Wiederherstellung der VM den Datenträger wiederherstellen und damit entweder eine VM bereitstellen oder einen vorhandenen Datenträger ersetzen.
 Sicherung von mit [Hybridvorteil (HUB)](../virtual-machines/windows/hybrid-use-benefit-licensing.md) bereitgestellten VMs | Unterstützt.
 Sicherung von in einer [Skalierungsgruppe](../virtual-machine-scale-sets/overview.md) bereitgestellten VMs |Unterstützt. Für die Fehlerdomäne sollte der [Orchestrierungsmodus](../virtual-machine-scale-sets/orchestration-modes.md) auf 2 festgelegt werden. Verfügbarkeitsgruppen werden nicht unterstützt.
-Sicherung von über den [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps?filters=virtual-machine-images) bereitgestellten VMs<br/><br/> (Veröffentlicht von Microsoft oder Drittanbietern) |Unterstützt.<br/><br/> Auf dem virtuellen Computer muss ein unterstütztes Betriebssystem ausgeführt werden.<br/><br/> Die Wiederherstellung von Dateien auf dem virtuellen Computer kann nur unter einem kompatiblen Betriebssystem (kein früheres oder späteres Betriebssystem) durchgeführt werden. Gesicherte Azure Marketplace-VMs werden nicht als VMs wiederhergestellt, da dafür Kaufinformationen erforderlich sind. Sie werden als Datenträger wiederhergestellt.
+Sicherung von auf dem [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps?filters=virtual-machine-images) bereitgestellten VMs<br/><br/> (Veröffentlicht von Microsoft oder Drittanbietern) |Unterstützt.<br/><br/> Auf dem virtuellen Computer muss ein unterstütztes Betriebssystem ausgeführt werden.<br/><br/> Die Wiederherstellung von Dateien auf dem virtuellen Computer kann nur unter einem kompatiblen Betriebssystem (kein früheres oder späteres Betriebssystem) durchgeführt werden. Als VMs gesicherte Azure Marketplace-VMs werden nicht wiederhergestellt, da dafür Kaufinformationen erforderlich sind. Sie werden als Datenträger wiederhergestellt.
 Sicherung von über ein benutzerdefiniertes Image bereitgestellten VMs (Drittanbieter) |Unterstützt.<br/><br/> Auf dem virtuellen Computer muss ein unterstütztes Betriebssystem ausgeführt werden.<br/><br/> Die Wiederherstellung von Dateien auf dem virtuellen Computer kann nur unter einem kompatiblen Betriebssystem (kein früheres oder späteres Betriebssystem) durchgeführt werden.
 Sicherung von zu Azure migrierten VMs| Unterstützt.<br/><br/> Für die Sicherung des virtuellen Computers muss der VM-Agent auf dem migrierten Computer installiert werden.
 Sichern der Konsistenz mehrerer virtueller Computer | Azure Backup bietet keine mehrere VMs übergreifende Konsistenz von Daten und Anwendungen.
@@ -155,7 +155,7 @@ Sicherung virtueller Azure-Computer mit Sperren | Wird für nicht verwaltete vir
 
 **Komponente** | **Unterstützung**
 --- | ---
-Azure-VM-Datenträger (für Daten) | Die Unterstützung für die Sicherung von Azure-VMs mit bis zu 32 Datenträgern ist in allen Regionen mit Ausnahme von nationalen Clouds (Azure Government, Azure China 21Vianet und Azure Deutschland) in der öffentlichen Vorschau verfügbar.<br><br> Die Unterstützung für die Sicherung virtueller Azure-Computer mit nicht verwalteten Datenträgern oder klassischer VMs umfasst nur bis zu 16 Datenträger.
+Azure-VM-Datenträger (für Daten) | Die Unterstützung der Sicherung virtueller Azure-Computer mit bis zu 32 Datenträgern befindet sich in allen Regionen in der öffentlichen Vorschau.<br><br> Die Unterstützung für die Sicherung virtueller Azure-Computer mit nicht verwalteten Datenträgern oder klassischer VMs umfasst nur bis zu 16 Datenträger.
 Datenträgergröße | Die Größe einzelner Datenträger kann bis zu 32 TB und maximal 256 TB für alle Datenträger in einer VM betragen.
 Speichertyp | HDD Standard, SSD Standard, SSD Premium.
 Verwaltete Datenträger | Unterstützt.

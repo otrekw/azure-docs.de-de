@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, carlrab
-ms.date: 07/27/2020
-ms.openlocfilehash: f98e540a6764869f1d37edfbb0f00bf8d1cc2198
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.date: 08/17/2020
+ms.openlocfilehash: 3eb1a4cbfcf62617796af6a26cb4688b734eb617
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87499176"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88551839"
 ---
 # <a name="configure-and-manage-azure-ad-authentication-with-azure-sql"></a>Konfigurieren und Verwalten der Azure Active Directory-Authentifizierung mit Azure SQL
 
@@ -71,7 +71,9 @@ Bei Verwendung von Azure Active Directory mit Georeplikation muss der Azure Acti
 ## <a name="provision-azure-ad-admin-sql-managed-instance"></a>Bereitstellen eines Azure AD-Administrators (SQL Managed Instance)
 
 > [!IMPORTANT]
-> Führen Sie diese Schritte nur aus, wenn Sie SQL Managed Instance bereitstellen. Dieser Vorgang kann nur von einem globalen Administrator/Unternehmensadministrator oder von einem Administrator für privilegierte Rollen in Azure AD durchgeführt werden. Mit den folgenden Schritten wird der Prozess zum Gewähren von Berechtigungen für Benutzer mit unterschiedlichen Berechtigungen für das Verzeichnis beschrieben.
+> Führen Sie diese Schritte nur aus, wenn Sie SQL Managed Instance bereitstellen. Dieser Vorgang kann nur von einem globalen Administrator/Unternehmensadministrator oder von einem Administrator für privilegierte Rollen in Azure AD durchgeführt werden.
+>
+> In der **öffentlichen Vorschau** können Sie die Rolle **Verzeichnisleseberechtigte** einer Gruppe in Azure AD zuweisen. Die Gruppenbesitzer können dann die Identität der verwalteten Instanz als Mitglied dieser Gruppe hinzufügen. Dadurch können Sie einen Azure AD-Administrator für die verwaltete SQL-Instanz bereitstellen. Weitere Informationen zu diesem Feature finden Sie unter [Rolle „Verzeichnisleseberechtigte“ in Azure Active Directory für Azure SQL](authentication-aad-directory-readers-role.md).
 
 Für SQL Managed Instance werden Leseberechtigungen für Azure AD benötigt, damit Aufgaben wie die Authentifizierung von Benutzern über die Mitgliedschaft in Sicherheitsgruppen oder die Erstellung neuer Benutzer erfolgreich durchgeführt werden können. Damit dies funktioniert, müssen Sie SQL Managed Instance Leseberechtigungen für Azure AD gewähren. Dies ist mithilfe des Azure-Portals oder mit PowerShell möglich.
 
@@ -188,7 +190,7 @@ Um einen Azure AD-Administrator bereitzustellen, führen Sie die folgenden Azure
 
 Zum Bereitstellen und Verwalten des Azure AD-Administrators für Ihre Instanz von SQL Managed Instance stehen folgende Cmdlets zur Verfügung:
 
-| Cmdlet-Name | Beschreibung |
+| Cmdlet-Name | BESCHREIBUNG |
 | --- | --- |
 | [Set-AzSqlInstanceActiveDirectoryAdministrator](/powershell/module/az.sql/set-azsqlinstanceactivedirectoryadministrator) |Stellt einen Azure AD-Administrator für SQL Managed Instance im aktuellen Abonnement bereit. (Muss aus dem aktuellen Abonnement stammen.)|
 | [Remove-AzSqlInstanceActiveDirectoryAdministrator](/powershell/module/az.sql/remove-azsqlinstanceactivedirectoryadministrator) |Entfernt einen Azure AD-Administrator für SQL Managed Instance aus dem aktuellen Abonnement. |
@@ -216,7 +218,7 @@ Remove-AzSqlInstanceActiveDirectoryAdministrator -ResourceGroupName "ResourceGro
 
 Sie können einen Azure AD-Administrator für SQL Managed Instance auch mithilfe der folgenden CLI-Befehle bereitstellen:
 
-| Befehl | Beschreibung |
+| Befehl | BESCHREIBUNG |
 | --- | --- |
 |[az sql mi ad-admin create](/cli/azure/sql/mi/ad-admin#az-sql-mi-ad-admin-create) | Stellt einen Azure AD-Administrator für SQL Managed Instance bereit (muss aus dem aktuellen Abonnement stammen). |
 |[az sql mi ad-admin delete](/cli/azure/sql/mi/ad-admin#az-sql-mi-ad-admin-delete) | Entfernt einen Azure Active Directory-Administrator für SQL Managed Instance. |

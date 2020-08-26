@@ -4,12 +4,12 @@ description: Hier finden Sie Anweisungen zum Verschieben eines Recovery Services
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.custom: references_regions
-ms.openlocfilehash: 40ef55fa3b86856051b840c5d88ab8fadae3b7c3
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: fbbe914b3e567a1a136d735fc52965524bc17b67
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86514100"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88612570"
 ---
 # <a name="move-a-recovery-services-vault-across-azure-subscriptions-and-resource-groups"></a>Verschieben eines Recovery Services-Tresors zwischen Azure-Abonnements und Ressourcengruppen
 
@@ -57,23 +57,23 @@ So verschieben Sie einen Recovery Services-Tresor und die zugehörigen Ressource
 
    ![Öffnen des Recovery Services-Tresors](./media/backup-azure-move-recovery-services/open-recover-service-vault.png)
 
-   Klicken Sie auf das Dropdownsymbol, falls die **Essentials**-Informationen für Ihren Tresor nicht angezeigt werden. Jetzt sollten die Essentials-Informationen für Ihren Tresor angezeigt werden.
+   Wählen Sie das Dropdownsymbol aus, falls die **Essentials**-Informationen für Ihren Tresor nicht angezeigt werden. Jetzt sollten die Essentials-Informationen für Ihren Tresor angezeigt werden.
 
    ![Registerkarte „Essentials“-Informationen](./media/backup-azure-move-recovery-services/essentials-information-tab.png)
 
-3. Klicken Sie im Übersichtsmenü des Tresors auf **Ändern** neben **Ressourcengruppe**, um das Blatt **Ressourcen verschieben** zu öffnen.
+3. Wählen Sie im Übersichtsmenü des Tresors **Ändern** neben **Ressourcengruppe** aus, um den Bereich **Ressourcen verschieben** zu öffnen.
 
    ![Ressourcengruppe ändern](./media/backup-azure-move-recovery-services/change-resource-group.png)
 
-4. Auf dem Blatt **Ressourcen verschieben** für den ausgewählten Tresor sollten die optionalen verwandten Ressourcen durch das Aktivieren des Kontrollkästchens verschoben werden. Dies ist in der folgenden Abbildung dargestellt.
+4. Im Bereich **Ressourcen verschieben** für den ausgewählten Tresor sollten die optionalen verwandten Ressourcen durch das Aktivieren des Kontrollkästchens verschoben werden. Dies ist in der folgenden Abbildung dargestellt.
 
    ![Abonnement verschieben](./media/backup-azure-move-recovery-services/move-resource.png)
 
-5. Um die Zielressourcengruppe hinzuzufügen, wählen Sie in der Dropdownliste **Ressourcengruppe** eine vorhandene Ressource aus, oder klicken Sie auf die Option **Neue Gruppe erstellen**.
+5. Um die Zielressourcengruppe hinzuzufügen, wählen Sie in der Dropdownliste **Ressourcengruppe** eine vorhandene Ressource aus, oder wählen Sie die Option **Neue Gruppe erstellen** aus.
 
    ![Resource erstellen](./media/backup-azure-move-recovery-services/create-a-new-resource.png)
 
-6. Bestätigen Sie nach dem Hinzufügen der Ressourcengruppe mit der Option **Mir ist bewusst, dass Tools und Skripts, die den verschobenen Ressourcen zugeordnet sind, erst funktionieren, wenn ich sie auf die Verwendung neuer Ressourcen-IDs und Namespacereferenzen aktualisiere**, und klicken Sie dann auf **OK**, um das Verschieben des Tresors abzuschließen.
+6. Bestätigen Sie nach dem Hinzufügen der Ressourcengruppe mit der Option **Mir ist bewusst, dass Tools und Skripts, die den verschobenen Ressourcen zugeordnet sind, erst funktionieren, wenn ich sie auf die Verwendung neuer Ressourcen-IDs und Namespacereferenzen aktualisiere**, und wählen Sie dann **OK** aus, um das Verschieben des Tresors abzuschließen.
 
    ![Bestätigungsmeldung](./media/backup-azure-move-recovery-services/confirmation-message.png)
 
@@ -86,11 +86,11 @@ Sie können einen Recovery Services-Tresor und die zugehörigen Ressourcen in ei
 
     ![Öffnen des Recovery Services-Tresors](./media/backup-azure-move-recovery-services/open-recover-service-vault.png)
 
-    Wenn Sie die **Essentials**-Informationen für Ihren Tresor nicht sehen, klicken Sie auf das Dropdownsymbol. Jetzt sollten die Essentials-Informationen für Ihren Tresor angezeigt werden.
+    Wählen Sie das Dropdownsymbol aus, falls die **Essentials**-Informationen für Ihren Tresor nicht angezeigt werden. Jetzt sollten die Essentials-Informationen für Ihren Tresor angezeigt werden.
 
     ![Registerkarte „Essentials“-Informationen](./media/backup-azure-move-recovery-services/essentials-information-tab.png)
 
-3. Klicken Sie im Übersichtsmenü des Tresors auf **Ändern** neben **Abonnement**, um das Blatt **Ressourcen verschieben** zu öffnen.
+3. Wählen Sie im Übersichtsmenü des Tresors **Ändern** neben **Abonnement** aus, um den Bereich **Ressourcen verschieben** zu öffnen.
 
    ![Abonnement ändern](./media/backup-azure-move-recovery-services/change-resource-subscription.png)
 
@@ -99,11 +99,11 @@ Sie können einen Recovery Services-Tresor und die zugehörigen Ressourcen in ei
    ![Ressource verschieben](./media/backup-azure-move-recovery-services/move-resource-source-subscription.png)
 
 5. Wählen Sie das Zielabonnement, in das der Tresor verschoben werden soll, in der Dropdownliste **Abonnement** aus.
-6. Um die Zielressourcengruppe hinzuzufügen, wählen Sie in der Dropdownliste **Ressourcengruppe** eine vorhandene Ressource aus, oder klicken Sie auf die Option **Neue Gruppe erstellen**.
+6. Um die Zielressourcengruppe hinzuzufügen, wählen Sie in der Dropdownliste **Ressourcengruppe** eine vorhandene Ressource aus, oder wählen Sie die Option **Neue Gruppe erstellen** aus.
 
    ![Abonnement hinzufügen](./media/backup-azure-move-recovery-services/add-subscription.png)
 
-7. Klicken Sie zur Bestätigung auf **Mir ist bewusst, dass Tools und Skripts, die den verschobenen Ressourcen zugeordnet sind, erst funktionieren, wenn ich sie auf die Verwendung neuer Ressourcen-IDs** aktualisiere, und klicken Sie auf **OK**.
+7. Wählen Sie zur Bestätigung **Mir ist bewusst, dass Tools und Skripts, die den verschobenen Ressourcen zugeordnet sind, erst funktionieren, wenn ich sie auf die Verwendung neuer Ressourcen-IDs aktualisiere** aus, und wählen Sie dann **OK** aus.
 
 > [!NOTE]
 > Abonnementübergreifende Sicherung (RS-Tresor und geschützte virtuelle Computer befinden sich in verschiedenen Abonnements) wird nicht unterstützt. Außerdem kann die Speicherredundanzoption von lokalem redundantem Speicher (LRS) zu globalem redundantem Speicher (GRS) und umgekehrt während der Verschiebung des Tresors nicht geändert werden.

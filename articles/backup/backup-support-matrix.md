@@ -4,12 +4,12 @@ description: Enthält eine Zusammenfassung der Unterstützungseinstellungen und 
 ms.topic: conceptual
 ms.date: 02/17/2019
 ms.custom: references_regions
-ms.openlocfilehash: f2f3d26f74c6227ad257c188d4088fd41fca7075
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 5871e61229277d8036727c11b42d9d7a061bad99
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87922315"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88612519"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Supportmatrix für Azure Backup
 
@@ -79,8 +79,8 @@ Im Folgenden werden die Informationen zur Unterstützung beim Sichern von Linux-
 --- | ---
 **Direkte Sicherung lokaler Linux-Computer** | Wird nicht unterstützt. Der MARS-Agent kann nur auf Windows-Computern installiert werden.
 **Verwendung der Agent-Erweiterung zum Sichern von Azure-VMs, auf denen Linux ausgeführt wird** | App-konsistente Sicherung mit [benutzerdefinierten Skripts](backup-azure-linux-app-consistent.md)<br/><br/> Wiederherstellung auf Dateiebene.<br/><br/> Wiederherstellung, indem über einen Wiederherstellungspunkt oder Datenträger eine VM erstellt wird.
-**Verwendung von DPM zum Sichern lokaler Computer unter Linux** | Dateikonsistente Sicherung von Linux-Gast-VMs unter Hyper-V und VMWare<br/><br/> VM-Wiederherstellung von Hyper-V- und VMWare-Linux-Gast-VMs
-**Verwendung von MABS zum Sichern lokaler Computer unter Linux** | Dateikonsistente Sicherung von Linux-Gast-VMs unter Hyper-V und VMWare<br/><br/> VM-Wiederherstellung von Hyper-V- und VMWare-Linux-Gast-VMs
+**Verwendung von DPM zum Sichern lokaler Computer unter Linux** | Dateikonsistente Sicherung von Linux-Gast-VMs unter Hyper-V und VMware<br/><br/> VM-Wiederherstellung von Hyper-V- und VMware-Linux-Gast-VMs
+**Verwendung von MABS zum Sichern lokaler Computer unter Linux** | Dateikonsistente Sicherung von Linux-Gast-VMs unter Hyper-V und VMware<br/><br/> VM-Wiederherstellung von Hyper-V- und VMware-Linux-Gast-VMs
 **Verwendung von MABS oder DPM zum Sichern virtueller Azure-Computer unter Linux** | Wird nicht unterstützt.
 
 ## <a name="daylight-saving-time-support"></a>Unterstützung für die Sommerzeit

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/13/2019
-ms.openlocfilehash: e0ecfd3acb6a8a1d40e006aef1bbf63eae0e1ff4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d3937eaa5017ed66641d886ecd45e812f7070b83
+ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84770797"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88566283"
 ---
 # <a name="move-a-log-analytics-workspace-to-different-subscription-or-resource-group"></a>Verschieben von Log Analytics-Arbeitsbereichen in ein anderes Abonnement oder eine andere Ressourcengruppe
 
@@ -39,7 +39,10 @@ Folgende Lösungen müssen vor dem Aufheben der Verknüpfung mit Ihrem Automatio
 - Azure Security Center
 
 >[!IMPORTANT]
-> - Nach der Aktivierung für einen Arbeitsbereich bietet Azure Sentinel **derzeit keine Unterstützung** für das Verschieben dieses Arbeitsbereichs in andere Ressourcengruppen oder Abonnements. Wenn Sie den Arbeitsbereich verschieben müssen, wenden Sie sich an [Azure Sentinel](mailto:AzureSentinel@microsoft.com).
+> **Azure Sentinel-Kunden:**
+> - Nach der Bereitstellung in einem Arbeitsbereich bietet Azure Sentinel **derzeit keine Unterstützung** für das Verschieben dieses Arbeitsbereichs in andere Ressourcengruppen oder Abonnements. 
+>
+>   Haben Sie den Arbeitsbereich bereits verschoben, deaktivieren Sie alle aktiven Regeln unter **Analytics**, und aktivieren Sie sie nach fünf Minuten wieder. Dieser Vorgang sollte in den meisten Fällen wirksam sein. Für die Iteration wird er jedoch nicht unterstützt und auf eigenes Risiko ausgeführt.
 
 ### <a name="delete-solutions-in-azure-portal"></a>Löschen von Lösungen aus dem Azure-Portal
 Verwenden Sie das folgende Verfahren, um die Lösungen mithilfe des Azure-Portals zu entfernen:

@@ -3,20 +3,20 @@ title: Leitfaden zur Kostenverwaltung für Azure Lab Services
 description: Informieren Sie sich über die verschiedenen Möglichkeiten, die Kosten für Lab Services anzuzeigen.
 author: rbest
 ms.author: rbest
-ms.date: 06/26/2020
+ms.date: 08/16/2020
 ms.topic: article
-ms.openlocfilehash: fbbaf4a3646260fc09467e214b82fd0213415635
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0aaa454df05cd8981b314abe238163caced7864c
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85445303"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88604592"
 ---
 # <a name="cost-management-for-azure-lab-services"></a>Kostenverwaltung für Azure Lab Services
 
 Kostenverwaltung kann in zwei verschiedene Bereiche aufgeteilt werden: Kostenschätzung und Kostenanalyse.  Die Kostenschätzung wird beim Einrichten des Labs durchgeführt, um sicherzustellen, dass die anfängliche Struktur des Labs in das erwartete Budget passt.  Die Kostenanalyse erfolgt in der Regel am Ende des Monats, um die Kosten zu analysieren und die für den nächsten Monat erforderlichen Aktionen zu bestimmen.
 
-## <a name="estimating-the-lab-costs"></a>Schätzen der Labkosten
+## <a name="estimate-the-lab-costs"></a>Schätzen der Labkosten
 
 Jedes Lab-Dashboard verfügt über einen Abschnitt **Kosten und Abrechnung**, in dem eine grobe Schätzung der Kosten des Labs für den Monat festgelegt wird.  Die Kostenschätzung rechnet die Stundennutzung mit der maximalen Anzahl von Benutzern nach den geschätzten Kosten pro Stunde zusammen.  Damit die Schätzung so genau wie möglich ist, richten Sie das Lab einschließlich des [Zeitplans](how-to-create-schedules.md) ein, und das Dashboard spiegelt die geschätzten Kosten wider.  
 
@@ -25,7 +25,7 @@ Diese Schätzung umfasst möglicherweise nicht alle möglichen Kosten. Einige Re
 > [!div class="mx-imgBorder"]
 > ![Dashboard-Kostenschätzung](./media/cost-management-guide/dashboard-cost-estimation.png)
 
-## <a name="analyzing-previous-months-usage"></a>Analysieren der Nutzung in vorherigen Monaten
+## <a name="analyze-previous-months-usage"></a>Analysieren der Nutzung in vorherigen Monaten
 
 Die Kostenanalyse dient zum Analysieren der Nutzung in vorherigen Monaten, um ggf. Anpassungen für das Lab zu ermitteln.  Die Aufschlüsselung der Kosten in der Vergangenheit finden Sie in der [Abonnementkostenanalyse](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis).  Im Azure-Portal können Sie „Abonnements“ in das obere Suchfeld eingeben und dann die Option „Abonnements“ auswählen.  
 
@@ -39,14 +39,14 @@ Wählen Sie das Abonnement aus, das Sie überprüfen möchten.
 
  Wählen Sie im linken Bereich unter **Kostenverwaltung** die Option „Kostenanalyse“ aus.
 
- > [!div class="mx-imgBorder"]
+> [!div class="mx-imgBorder"]
 > ![Abonnementkostenanalyse](./media/cost-management-guide/subscription-cost-analysis.png)
 
 Dieses Dashboard ermöglicht eine gründliche Kostenanalyse, die die Möglichkeit einschließt, nach einem Zeitplan in verschiedene Dateitypen zu exportieren.  Die Kostenverwaltung bietet zahlreiche Funktionen, um weitere Informationen zu erhalten. Lesen Sie hierzu [Was ist die Azure-Kostenverwaltung und -Abrechnung?](https://docs.microsoft.com/azure/cost-management-billing/cost-management-billing-overview).
 
 Filtern nach Ressourcentyp: In `microsoft.labservices/labaccounts` werden nur die Kosten angezeigt, die Lab Services zugeordnet sind.
 
-## <a name="understanding-the-usage"></a>Grundlegendes zur Nutzung
+## <a name="understand-the-usage"></a>Erläuterungen der Auslastung
 
 Im Folgenden finden Sie ein Beispiel für die Kostenanalyse.
 
@@ -68,9 +68,69 @@ Einige Universitäten haben Labkonto und Ressourcengruppe zur Differenzierung de
 
 Abhängig vom Typ der Klasse gibt es Möglichkeiten, die Kosten zu verwalten, um zu verhindern, dass die VMs ausgeführt werden, ohne dass ein Student den Computer verwendet.
 
-### <a name="auto-shutdown-on-disconnect"></a>Automatisches Herunterfahren beim Trennen
+### <a name="maximize-cost-control-with-auto-shutdown-settings"></a>Maximieren der Kostenkontrolle durch Einstellungen zum automatischen Herunterfahren
 
-Bei der Erstellung des Labs kann der Labbesitzer die virtuellen Computer im Lab so festlegen, dass [heruntergefahren wird, wenn die RDP-Verbindung mit dem virtuellen Computer getrennt ist](how-to-enable-shutdown-disconnect.md).  Diese Einstellung ist für das Szenario gedacht, dass der Student die Verbindung trennt, aber vergisst, den virtuellen Computer anzuhalten.
+Die Kostenkontrolle durch automatisches Herunterfahren ermöglicht es Ihnen, unnötige Nutzungsstunden virtueller Computer in den Labs zu vermeiden. Die Kombination der folgenden drei Features zum automatischen Herunterfahren und Trennen deckt den größten Teil der Fälle ab, in denen Benutzer die Ausführung der virtuellen Computer versehentlich nicht beenden:
+
+> [!div class="mx-imgBorder"]
+> ![Abonnementkostenanalyse](./media/cost-management-guide/auto-shutdown-disconnect.png)
+
+Diese Einstellungen können sowohl auf Labkontoebene als auch auf Labebene konfiguriert werden. Wenn die Einstellungen auf Labkontoebene aktiviert sind, werden sie auf alle Labs im Labkonto angewendet. Für alle neuen Labkonten sind diese Einstellungen standardmäßig aktiviert. 
+
+#### <a name="details-about-auto-shutdown-settings"></a>Details zu den Einstellungen für automatisches Herunterfahren
+
+* Automatisches Trennen der Benutzer von virtuellen Computern, die vom Betriebssystem als Computer im Leerlauf erkannt werden (nur Windows).
+
+    > [!NOTE]
+    > Diese Einstellung ist nur für virtuelle Windows-Computer verfügbar.
+
+    Wenn die Einstellung aktiviert ist, wird der Benutzer von allen Computern im Lab getrennt, wenn das Windows-Betriebssystem die Sitzung als Sitzung im Leerlauf erachtet (einschließlich der Vorlagen-VMs). Für die [Definition von Leerlauf durch das Windows-Betriebssystem](https://docs.microsoft.com/windows/win32/taskschd/task-idle-conditions#detecting-the-idle-state) werden zwei Kriterien verwendet: 
+
+    * Benutzerabwesenheit: keine Tastatur- oder Mauseingabe.
+    * Kein Ressourcenverbrauch: Alle Prozessoren und alle Datenträger befanden sich für einen bestimmten Zeitraum (in Prozent) im Leerlauf.
+
+    Bevor Benutzer getrennt werden, wird auf dem virtuellen Computer eine Meldung wie die folgende angezeigt: 
+
+    > [!div class="mx-imgBorder"]
+    > ![Abonnementkostenanalyse](./media/cost-management-guide/idle-timer-expired.png)
+    
+    Der virtuelle Computer wird immer noch ausgeführt, wenn der Benutzer getrennt wurde. Wenn der Benutzer durch Anmelden die Verbindung mit dem virtuellen Computer wiederherstellt, sind Fenster oder Dateien, die vor der Trennung geöffnet waren, oder Inhalte, die vor der Trennung nicht gespeichert wurden, noch vorhanden. Da der virtuelle Computer ausgeführt wird, gilt er in diesem Status weiterhin als aktiv, und es fallen Kosten an. 
+    
+    Verwenden Sie zum automatischen Herunterfahren von virtuellen Windows-Computern, die nicht getrennt sind, die beiden Einstellungen **Benutzerverbindung bei Leerlauf der VMs trennen** und **VMs bei Trennen der Benutzerverbindung herunterfahren**.
+
+    Angenommen, Sie konfigurieren die Einstellungen wie folgt:
+    
+    * Benutzerverbindung bei Leerlauf der VMs trennen – 15 Minuten nach Feststellung des Leerlaufzustands
+    * VMs bei Trennen der Benutzerverbindung herunterfahren – 5 minutes after user disconnects (5 Minuten nach Trennen durch Benutzer)
+    
+    Die virtuellen Windows-Computer werden automatisch 20 Minuten nach der letzten Verwendung durch den Benutzer heruntergefahren. 
+    
+    > [!div class="mx-imgBorder"]
+    > ![Abonnementkostenanalyse](./media/cost-management-guide/vm-idle-diagram.png)
+* Automatisches Herunterfahren virtueller Computer, wenn Benutzer die Verbindung trennen (Windows und Linux).
+    
+    Diese Einstellung wird für virtuelle Windows- und Linux-Computer unterstützt. Wenn sie aktiviert ist, erfolgt das automatische Herunterfahren unter folgenden Bedingungen:
+    
+    * Für Windows – die Remotedesktopverbindung (RDP) ist getrennt.
+    * Für Linux – die SSH-Verbindung ist getrennt.
+    
+    > [!NOTE]
+    > Es werden nur [bestimmte Distributionen und Versionen von Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/diagnostics-linux#supported-linux-distributions) unterstützt.
+    
+    Sie können angeben, wie lange die VMs auf eine erneute Verbindungsherstellung des Benutzers warten sollen, bevor sie automatisch heruntergefahren werden. 
+* Automatisches Herunterfahren von virtuellen Computern, die gestartet wurden, mit denen jedoch von den Benutzern keine Verbindung hergestellt wurde.
+     
+    Möglicherweise startet ein Benutzer in einem Lab einen virtuellen Computer und stellt keine Verbindung mit ihm her. Beispiel:
+    
+    * Durch einen Zeitplan im Lab werden alle virtuellen Computer für eine Unterrichtssitzung gestartet, einige Studenten bleiben jedoch dem Unterricht fern und stellen keine Verbindung mit ihren Computern her.  
+    * Ein Benutzer startet einen virtuellen Computer, vergisst aber, eine Verbindung herzustellen. 
+    
+    Durch die Einstellung „VMs herunterfahren, wenn Benutzer keine Verbindung herstellen“ werden diese Fälle behandelt und die virtuellen Computer automatisch heruntergefahren.  
+    
+Informationen zum Konfigurieren und Aktivieren des automatischen Herunterfahrens von virtuellen Computern bei Verbindungstrennung finden Sie in den folgenden Artikeln:
+
+* [Konfigurieren des automatischen Herunterfahrens von virtuellen Computern für ein Labkonto](how-to-configure-lab-accounts.md)
+* [Konfigurieren des automatischen Herunterfahrens von virtuellen Computern für ein Lab](how-to-enable-shutdown-disconnect.md)
 
 ### <a name="quota-vs-scheduled-time"></a>Kontingentzeit und geplante Zeit
 

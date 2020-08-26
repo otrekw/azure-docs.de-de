@@ -6,12 +6,12 @@ ms.assetid: dea3f41e-cf35-481b-a6bc-33d7fc9d01b1
 ms.topic: article
 ms.date: 08/12/2020
 ms.custom: seodec18
-ms.openlocfilehash: c6aa5200220c55407ade5910b4232fffed3ffe19
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: 3b339b359ddbaf105b95bdf5d94ee0f66f339a82
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88141583"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88611448"
 ---
 # <a name="azure-app-service-plan-overview"></a>Azure App Service-Plan – Übersicht
 
@@ -65,11 +65,11 @@ Informationen zum Aufskalieren einer App finden Sie unter [Manuelles oder automa
 
 In diesem Abschnitt wird die Abrechnung von App Service-Apps beschrieben. Ausführliche Preisinformationen nach Region finden Sie unter [App Service – Preise](https://azure.microsoft.com/pricing/details/app-service/).
 
-Mit Ausnahme des Tarifs **Free** fällt für einen App Service-Plan eine Gebühr auf Stundenbasis für die verbrauchten Computeressourcen an.
+Mit Ausnahme des Tarifs **Free** fällt für einen App Service-Plan eine Gebühr für die verbrauchten Computeressourcen an.
 
-- Beim Tarif **Shared** erhält jede App ein Kontingent von CPU-Minuten, sodass für _jede App_ eine Stundengebühr gemäß dem CPU-Kontingent anfällt.
-- Bei dedizierten Computetarifen (**Basic**, **Standard**, **Premium**, **PremiumV2**) ist im App Service-Plan die Anzahl von VM-Instanzen definiert, auf die Apps skaliert werden. Für _jede VM-Instanz_ des App Service-Plans fällt also eine Gebühr auf Stundenbasis an. Diese VM-Instanzen werden unabhängig davon, wie viele Apps darauf ausgeführt werden, jeweils gleich berechnet. Informieren Sie sich unter [Manage an App Service plan in Azure](app-service-plan-manage.md#delete) (Verwalten eines App Service-Plans in Azure), um unerwartete Gebühren zu vermeiden.
-- Beim Tarif **Isolated** definiert die App Service-Umgebung die Anzahl von isolierten Workern, die zum Ausführen Ihrer Apps verwendet werden, und _jeder Worker_ wird auf Stundenbasis berechnet. Darüber hinaus fällt eine stündliche Grundgebühr für die Ausführung der eigentlichen App Service-Umgebung an.
+- Beim Tarif **Shared** erhält jede App ein Kontingent von CPU-Minuten, sodass für _jede App_ eine Gebühr gemäß dem CPU-Kontingent anfällt.
+- Bei dedizierten Computetarifen (**Basic**, **Standard**, **Premium**, **PremiumV2**) ist im App Service-Plan die Anzahl von VM-Instanzen definiert, auf die Apps skaliert werden. Für _jede VM-Instanz_ des App Service-Plans fällt also eine Gebühr an. Diese VM-Instanzen werden unabhängig davon, wie viele Apps darauf ausgeführt werden, jeweils gleich berechnet. Informieren Sie sich unter [Manage an App Service plan in Azure](app-service-plan-manage.md#delete) (Verwalten eines App Service-Plans in Azure), um unerwartete Gebühren zu vermeiden.
+- Beim Tarif **Isolated** definiert die App Service-Umgebung die Anzahl von isolierten Workern, die zum Ausführen Ihrer Apps verwendet werden, und _jeder Worker_ wird berechnet. Darüber hinaus fällt eine Stempelgebührpauschale für die Ausführung der eigentlichen App Service-Umgebung an.
 
 Für die Nutzung der App Service-Features, die für Sie verfügbar sind (Konfiguration von benutzerdefinierten Domänen, TLS/SSL-Zertifikaten, Bereitstellungsslots, Sicherungen usw.), fallen keine Gebühren an. Es gelten folgende Ausnahmen:
 

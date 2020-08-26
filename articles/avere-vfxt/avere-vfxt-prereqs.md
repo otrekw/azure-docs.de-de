@@ -1,17 +1,17 @@
 ---
 title: Voraussetzungen für Avere vFXT – Azure
-description: Voraussetzungen für Avere vFXT für Azure
+description: Informieren Sie sich über Aufgaben, die Sie vor dem Erstellen eines Clusters in Avere vFXT for Azure ausführen müssen, einschließlich der Verwendung von Abonnements, Kontingenten und Speicherdienstendpunkten.
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: how-to
 ms.date: 01/21/2020
 ms.author: rohogue
-ms.openlocfilehash: 538f3f18e1c8889834b9ee6588b85c9094dfbebe
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: be5c640ef069690c408460b7374aee82c35b3a67
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87496711"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272415"
 ---
 # <a name="prepare-to-create-the-avere-vfxt"></a>Vorbereiten der Avere vFXT-Erstellung
 

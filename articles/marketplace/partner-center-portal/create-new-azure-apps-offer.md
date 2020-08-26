@@ -7,12 +7,12 @@ ms.topic: article
 author: AarathiN
 ms.author: aarathin
 ms.date: 07/14/2020
-ms.openlocfilehash: 420ca9ff6a3ccc0e0bb76887e777f05dd955e97b
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: f62483880d2572b6487c87bbd73e0dd7033238d3
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88166687"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88606184"
 ---
 # <a name="create-an-azure-application-offer"></a>Erstellen eines Azure-Anwendungsangebots
 
@@ -103,7 +103,7 @@ Weitere Informationen über Veröffentlichungsanforderungen für Anwendungsplän
 ## <a name="create-a-new-offer"></a>Erstellen eines neuen Angebots
 
 >[!NOTE]
->Nachdem ein Angebot veröffentlicht wurde, werden die Änderungen, die Sie in Partner Center vornehmen, nicht in Storefronts angezeigt, bis Sie das Angebot erneut veröffentlichen. Achten Sie darauf, dass Sie die Veröffentlichung immer erneut durchführen, nachdem Sie Änderungen vorgenommen haben.
+>Nach dem Veröffentlichen eines Angebots werden Änderungen, die Sie in Partner Center vornehmen, erst in den Onlineshops angezeigt, nachdem Sie das Angebot erneut veröffentlicht haben. Achten Sie darauf, dass Sie die Veröffentlichung immer erneut durchführen, nachdem Sie Änderungen vorgenommen haben.
 
 1. Melden Sie sich bei [Partner Center](https://partner.microsoft.com/dashboard/home) an.
 

@@ -1,14 +1,14 @@
 ---
 title: Bewährte Methoden
 description: Erhalten Sie Informationen über bewährte Methoden und nützliche Tipps für das Entwickeln Ihrer Azure Batch-Lösung.
-ms.date: 07/30/2020
+ms.date: 08/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: 535deebd0ba683d9387408ad081d165a504c91d1
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: 8f557403426fe4e37287acb681c91069e90fb926
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87474902"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88191801"
 ---
 # <a name="azure-batch-best-practices"></a>Azure Batch: bewährte Methoden
 
@@ -56,6 +56,10 @@ Fehler bei der Poolzuordnung können jederzeit während der ersten Zuordnung ode
 Es ist möglich, dass es bei Batch-Pools in Azure zu Ausfallzeiten kommt. Beachten Sie dies, wenn Sie Ihr Szenario oder Ihren Workflow für Batch planen und entwickeln.
 
 Wenn ein Knoten ausfällt, versucht Batch automatisch, diese Computeknoten in Ihrem Auftrag wiederherzustellen. Dadurch wird möglicherweise eine Neuplanung aller laufenden Aufgaben auf dem Knoten ausgelöst, der wiederhergestellt wird. Weitere Informationen zu unterbrochenen Aufgaben finden Sie unter [Entwerfen für Wiederholungsversuche](#design-for-retries-and-re-execution).
+
+### <a name="custom-image-pools"></a>Benutzerdefinierte Imagepools
+
+Wenn Sie einen Azure Batch-Pool mithilfe der Konfiguration des virtuellen Computers erstellen, geben Sie das Image eines virtuellen Computers (VM) an, das das Betriebssystem für jeden Computeknoten im Pool bereitstellt. Sie können den Pool mit einem unterstützten Azure Marketplace-Image erstellen oder [ein benutzerdefiniertes Image aus einem Shared Image Gallery-Image erstellen](batch-sig-images.md). Sie können zum Erstellen eines benutzerdefinierten Imagepools ein [verwaltetes Image](batch-custom-images.md) verwenden. Es empfiehlt sich jedoch, nach Möglichkeit mit Shared Image Gallery benutzerdefinierte Images zu erstellen. Durch die Verwendung von Shared Image Gallery können Sie Pools schneller bereitstellen, eine größere Anzahl von virtuellen Computern skalieren und die Zuverlässigkeit bei der Bereitstellung virtueller Computer verbessern.
 
 ### <a name="third-party-images"></a>Images von Drittanbietern
 

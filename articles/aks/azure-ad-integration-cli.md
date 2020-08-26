@@ -6,12 +6,12 @@ author: TomGeske
 ms.topic: article
 ms.date: 07/20/2020
 ms.author: thomasge
-ms.openlocfilehash: dfcbf214c374f449a04139ce7bf4fbb6853ed524
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: ab25ec5406c75316aaa1ee8efd0192dc0207ad79
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88006858"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88612417"
 ---
 # <a name="integrate-azure-active-directory-with-azure-kubernetes-service-using-the-azure-cli-legacy"></a>Integrieren von Azure Active Directory in Azure Kubernetes Service mit Azure CLI (Legacy)
 
@@ -27,6 +27,7 @@ Die vollständiges Beispielskript, das in diesem Artikel verwendet wird, finden 
 ## <a name="the-following-limitations-apply"></a>Es gelten die folgenden Einschränkungen:
 
 - Azure AD kann nur für RBAC-fähige Cluster aktiviert werden.
+- Die Integration von Legacy-Azure AD kann nur während der Clustererstellung aktiviert werden.
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 

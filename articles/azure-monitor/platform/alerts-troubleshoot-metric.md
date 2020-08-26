@@ -4,14 +4,14 @@ description: In diesem Artikel werden gängige Probleme mit Azure Monitor-Metrik
 author: harelbr
 ms.author: harelbr
 ms.topic: reference
-ms.date: 08/09/2020
+ms.date: 08/13/2020
 ms.subservice: alerts
-ms.openlocfilehash: c6b7d1fb28e81957ded56662a06946e56c3dc00e
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 1c1fe613721ea2bc2d4b9665d6da73b094487efc
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88114896"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88190677"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>Behandeln von Problemen mit Azure Monitor-Metrikwarnungen 
 
@@ -130,9 +130,9 @@ Um zu vermeiden, dass bei der Bereitstellung Fehler auftreten, wenn Sie versuche
         }
 ```
 
-## <a name="export-the-arm-template-of-a-metric-alert-rule-via-the-azure-portal"></a>Exportieren der ARM-Vorlage einer Metrikwarnungsregel über das Azure-Portal
+## <a name="export-the-azure-resource-manager-template-of-a-metric-alert-rule-via-the-azure-portal"></a>Exportieren der Azure Resource Manager-Vorlage einer Metrikwarnungsregel über das Azure-Portal
 
-Indem Sie die ARM-Vorlage einer Metrikwarnungsregel exportieren, können Sie die JSON-Syntax und -Eigenschaften besser nachvollziehen. Der Export kann außerdem zur Automatisierung zukünftiger Bereitstellungen verwendet werden.
+Indem Sie die Resource Manager-Vorlage einer Metrikwarnungsregel exportieren, können Sie die JSON-Syntax und -Eigenschaften besser nachvollziehen. Der Export kann außerdem zur Automatisierung zukünftiger Bereitstellungen verwendet werden.
 1. Navigieren Sie im Portal zum Abschnitt **Ressourcengruppen**, und wählen Sie die Ressourcengruppe aus, die die Regel enthält.
 2. Aktivieren Sie im Abschnitt „Übersicht“ das Kontrollkästchen **Ausgeblendete Typen anzeigen**.
 3. Wählen Sie im Filter **Typ** die Option *microsoft.insights/metricalerts* aus.
@@ -207,7 +207,7 @@ Stellen Sie sicher, dass Sie die richtigen CLI-Befehle für Metrikwarnungen verw
 
    - Bei einer Plattformmetrik: Vergewissern Sie sich, dass Sie den Namen der **Metrik** von der [Azure Monitor-Seite mit unterstützten Metriken](./metrics-supported.md) und nicht den **Metrikanzeigenamen** verwenden.
 
-   - Bei einer benutzerdefinierten Metrik: Vergewissern Sie sich, dass die Metrik bereits ausgegeben wird (Sie können keine Warnungsregel auf der Grundlage einer benutzerdefinierten Metrik erstellen, die noch nicht vorhanden ist). Stellen Sie zudem sicher, dass Sie den Namespace der benutzerdefinierten Metrik angeben (ein Beispiel für eine ARM-Vorlage finden Sie [hier](./alerts-metric-create-templates.md#template-for-a-static-threshold-metric-alert-that-monitors-a-custom-metric)).
+   - Bei einer benutzerdefinierten Metrik: Vergewissern Sie sich, dass die Metrik bereits ausgegeben wird (Sie können keine Warnungsregel auf der Grundlage einer benutzerdefinierten Metrik erstellen, die noch nicht vorhanden ist). Stellen Sie zudem sicher, dass Sie den Namespace der benutzerdefinierten Metrik angeben (ein Beispiel für eine Resource Manager-Vorlage finden Sie [hier](./alerts-metric-create-templates.md#template-for-a-static-threshold-metric-alert-that-monitors-a-custom-metric)).
 
 - Stellen Sie bei der Erstellung von [Metrikwarnungen in Protokollen](./alerts-metric-logs.md) sicher, dass die entsprechenden Abhängigkeiten enthalten sind. Eine Beispielvorlage finden Sie [hier](./alerts-metric-logs.md#resource-template-for-metric-alerts-for-logs).
 

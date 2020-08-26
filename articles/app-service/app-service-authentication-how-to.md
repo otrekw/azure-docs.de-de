@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie das Feature zur Authentifizierung und Autoris
 ms.topic: article
 ms.date: 07/08/2020
 ms.custom: seodec18
-ms.openlocfilehash: d69a75092f4ede5d5467357a7ac254be6e7c379b
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 7ec16b5de6053256fa6565db510ee94776def2c4
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88078392"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272313"
 ---
 # <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>Erweiterte Verwendung der Authentifizierung und Autorisierung in Azure App Service
 
@@ -146,7 +146,7 @@ App Service übergibt Benutzeransprüche mithilfe spezieller Header an Ihre Anwe
 
 Anhand dieser Header kann jeder Code unabhängig von Programmiersprache oder Framework die benötigten Informationen ermitteln. Bei ASP.NET 4.6-Apps wird **ClaimsPrincipal** automatisch mit entsprechenden Werten festgelegt. ASP.NET Core hingegen bietet keine Authentifizierungs-Middleware, die mit App Service-Benutzeransprüchen integriert ist. Eine Problemumgehung finden Sie unter [MaximeRouiller.Azure.AppService.EasyAuth](https://github.com/MaximRouiller/MaximeRouiller.Azure.AppService.EasyAuth).
 
-Ihre Anwendung kann durch Aufrufen von `/.auth/me` auch zusätzliche Details zum authentifizierten Benutzer abrufen. Die Mobile Apps-Server-SDKs enthalten Hilfsmethoden für die Verwendung dieser Daten. Weitere Informationen finden Sie unter [Verwenden des Azure Mobile Apps SDK für Node.js](../app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#howto-tables-getidentity) sowie unter [Arbeiten mit dem .NET-Back-End-Server-SDK für Azure Mobile Apps](../app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#user-info).
+Wenn der [Tokenspeicher](overview-authentication-authorization.md#token-store) für Ihre App aktiviert ist, können Sie auch zusätzliche Details zum authentifizierten Benutzer abrufen, indem Sie `/.auth/me` aufrufen. Die Mobile Apps-Server-SDKs enthalten Hilfsmethoden für die Verwendung dieser Daten. Weitere Informationen finden Sie unter [Verwenden des Azure Mobile Apps SDK für Node.js](../app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#howto-tables-getidentity) sowie unter [Arbeiten mit dem .NET-Back-End-Server-SDK für Azure Mobile Apps](../app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#user-info).
 
 ## <a name="retrieve-tokens-in-app-code"></a>Abrufen von Token in App-Code
 
@@ -161,14 +161,14 @@ Die anbieterspezifischen Token werden aus dem Servercode in den Anforderungshead
 | Twitter | `X-MS-TOKEN-TWITTER-ACCESS-TOKEN` <br/> `X-MS-TOKEN-TWITTER-ACCESS-TOKEN-SECRET` |
 |||
 
-Senden Sie von Ihrem Clientcode (z.B. einer mobilen App oder JavaScript im Browser) eine HTTP-`GET`-Anforderung an `/.auth/me`. Der zurückgegebene JSON-Code enthält die anbieterspezifischen-Token.
+Senden Sie von Ihrem Clientcode (z. B. einer mobilen App oder JavaScript im Browser) eine HTTP-`GET`-Anforderung an `/.auth/me` (der [Tokenspeicher](overview-authentication-authorization.md#token-store) muss aktiviert sein). Der zurückgegebene JSON-Code enthält die anbieterspezifischen-Token.
 
 > [!NOTE]
 > Zugriffstoken sind für den Zugriff auf Anbieterressourcen vorgesehen, daher sind sie nur vorhanden, wenn Sie den Anbieter mit einem geheimen Clientschlüssel konfigurieren. Informationen zum Abrufen von Aktualisierungstoken finden Sie unter „Zugriffstoken für die Aktualisierung“.
 
 ## <a name="refresh-identity-provider-tokens"></a>Aktualisieren von Identitätsanbieter-Token
 
-Wenn das Zugriffstoken Ihres Anbieters (nicht das [Sitzungstoken](#extend-session-token-expiration-grace-period)) abgelaufen ist, müssen Sie den Benutzer erneut authentifizieren, bevor Sie dieses Token erneut verwenden. Sie können den Tokenablauf vermeiden, indem Sie einen `GET`-Aufruf an den `/.auth/refresh`-Endpunkt Ihrer Anwendung durchführen. Bei einem Aufruf aktualisiert App Service automatisch die Zugriffstoken im Tokenspeicher für den authentifizierten Benutzer. Bei nachfolgenden Anforderungen von Token durch Ihren App-Code werden die aktualisierten Token abgerufen. Damit die Tokenaktualisierung funktioniert, muss der Tokenspeicher jedoch [Aktualisierungstoken](https://auth0.com/learn/refresh-tokens/) für Ihren Anbieter enthalten. Die jeweilige Methode zum Abrufen von Aktualisierungstoken ist von den einzelnen Anbietern dokumentiert, die folgende Liste stellt jedoch eine kurze Zusammenfassung dar:
+Wenn das Zugriffstoken Ihres Anbieters (nicht das [Sitzungstoken](#extend-session-token-expiration-grace-period)) abgelaufen ist, müssen Sie den Benutzer erneut authentifizieren, bevor Sie dieses Token erneut verwenden. Sie können den Tokenablauf vermeiden, indem Sie einen `GET`-Aufruf an den `/.auth/refresh`-Endpunkt Ihrer Anwendung durchführen. Bei einem Aufruf aktualisiert App Service automatisch die Zugriffstoken im [Tokenspeicher](overview-authentication-authorization.md#token-store) für den authentifizierten Benutzer. Bei nachfolgenden Anforderungen von Token durch Ihren App-Code werden die aktualisierten Token abgerufen. Damit die Tokenaktualisierung funktioniert, muss der Tokenspeicher jedoch [Aktualisierungstoken](https://auth0.com/learn/refresh-tokens/) für Ihren Anbieter enthalten. Die jeweilige Methode zum Abrufen von Aktualisierungstoken ist von den einzelnen Anbietern dokumentiert, die folgende Liste stellt jedoch eine kurze Zusammenfassung dar:
 
 - **Google**: Fügen Sie einen Abfragezeichenfolgen-Parameter vom Typ `access_type=offline` an Ihren `/.auth/login/google`-API-Aufruf an. Bei Verwendung des Mobile Apps SDK können Sie den Parameter einer der `LogicAsync`-Überladungen hinzufügen (siehe [Google-Aktualisierungstoken](https://developers.google.com/identity/protocols/OpenIDConnect#refresh-tokens)).
 - **Facebook**: Stellt keine Aktualisierungstoken bereit. Langlebige Token laufen nach 60 ab (siehe [Verlängern von Zugriffsschlüsseln für Seiten](https://developers.facebook.com/docs/facebook-login/access-tokens/expiration-and-extension)).
@@ -297,6 +297,9 @@ Ihre Authentifizierungseinstellungen können optional über eine Datei konfiguri
     1.  Legen Sie `enabled` auf TRUE fest.
     2.  Legen Sie `isAuthFromFile` auf TRUE fest.
     3.  Legen Sie `authFilePath` auf den Namen der Zertifikatdatei fest (z. B. „auth.json“).
+
+> [!NOTE]
+> Das Format für `authFilePath` variiert je nach Plattform. Unter Windows werden sowohl relative als auch absolute Pfade unterstützt. Relative Pfade werden empfohlen. Unter Linux werden derzeit nur absolute Pfade unterstützt. Daher sollte der Wert der Einstellung „/home/site/wwwroot/auth.json“ oder ähnlich lauten.
 
 Nachdem Sie dieses Konfigurationsupdate vorgenommen haben, wird der Inhalt der Datei verwendet, um das Verhalten der App Service-Authentifizierung bzw. -Autorisierung für diesen Standort zu definieren. Wenn Sie zur Azure Resource Manager-Konfiguration zurückkehren möchten, legen Sie `isAuthFromFile` wieder auf FALSE fest.
 

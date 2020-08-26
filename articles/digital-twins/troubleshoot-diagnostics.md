@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/28/2020
 ms.topic: troubleshooting
 ms.service: digital-twins
-ms.openlocfilehash: d47bb7cc868c5733c6e36290f097fec783764cd3
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 5091edbf9138cb8ff03df193dcbeed692aaf13e3
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88003580"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88612400"
 ---
 # <a name="troubleshooting-azure-digital-twins-diagnostics-logging"></a>Problembehandlung von Azure Digital Twins: Diagnoseprotokollierung
 
@@ -88,7 +88,7 @@ Im Folgenden finden Sie eine umfassende Liste der Vorgänge und entsprechenden [
 | ADTEventRoutesOperation | Microsoft.DigitalTwins/eventroutes/write | API zum Hinzufügen von Ereignisrouten |
 |  | Microsoft.DigitalTwins/eventroutes/read | API zum Abrufen nach ID und Auflisten von Ereignisrouten |
 |  | Microsoft.DigitalTwins/eventroutes/delete | API zum Löschen von Ereignisrouten |
-|  | Microsoft.DigitalTwins/eventroutes/action | Ausgehende Daten eines Ereignisses an einen Endpunktdienst (kein API-Aufruf) |
+|  | Microsoft.DigitalTwins/eventroutes/action | Fehler beim Veröffentlichen von Ereignissen in einem Endpunktdienst (kein API-Aufruf). |
 | ADTDigitalTwinsOperation | Microsoft.DigitalTwins/digitaltwins/write | Vorgänge zum Hinzufügen, Hinzufügen von Beziehungen, Aktualisieren und Aktualisieren von Komponenten von Digital Twins |
 |  | Microsoft.DigitalTwins/digitaltwins/read | Vorgänge zum Abrufen nach ID, Abrufen von Komponenten, Abrufen der Beziehung nach ID, Auflisten eingehender Beziehungen und Auflisten von Beziehungen von Digital Twins |
 |  | Microsoft.DigitalTwins/digitaltwins/delete | Vorgänge zum Löschen und Löschen von Beziehungen von Digital Twins |

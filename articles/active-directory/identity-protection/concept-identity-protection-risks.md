@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: conceptual
-ms.date: 06/26/2020
+ms.date: 08/15/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: de905c61642c36a07c7f87e0be910b0f035bffc1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5c92994fee6de4c56257343af2ef418393b505ad
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85555256"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88507432"
 ---
 # <a name="what-is-risk"></a>Was bedeutet Risiko?
 
@@ -65,6 +65,12 @@ Diese Risiken können in Echtzeit oder offline anhand interner und externer Thre
 | Zusätzliches Risiko erkannt | Echtzeit oder offline | Diese Erkennung gibt an, dass eine der oben genannten Premium-Erkennungen erkannt wurde. Da die Premium-Erkennungen nur für Azure AD Premium P2-Kunden sichtbar sind, werden sie für Kunden ohne Azure AD Premium P2-Lizenzen mit der Bezeichnung „Zusätzliches Risiko erkannt“ angezeigt. |
 
 ## <a name="common-questions"></a>Häufig gestellte Fragen
+
+### <a name="risk-levels"></a>Risikostufen
+
+Mit Identity Protection werden Risiken in drei Stufen eingeteilt: niedrig, mittel und hoch. 
+
+Microsoft macht zwar keine spezifischen Angaben zur Berechnung von Risiken, mit den einzelnen Stufen wird jedoch jeweils eine höhere Zuverlässigkeit bei der Einschätzung erreicht, ob eine Kompromittierung des Benutzers oder der Anmeldung vorliegt. Beispielsweise sind einmalige ungewöhnliche Anmeldeeigenschaften eines Benutzers unter Umständen nicht so riskant wie kompromittierte Anmeldeinformationen eines anderen Benutzers.
 
 ### <a name="leaked-credentials"></a>Kompromittierte Anmeldeinformationen
 

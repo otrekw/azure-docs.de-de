@@ -4,12 +4,12 @@ description: Lernen Sie Netzwerke in Azure Kubernetes Service (AKS) kennen, eins
 ms.topic: conceptual
 ms.date: 06/11/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: dacb14664b21412df1b1d48c023017378cf364c9
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: edb195fae2e05a1f746c10482576f7e0b1bff7c9
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387760"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88243903"
 ---
 # <a name="network-concepts-for-applications-in-azure-kubernetes-service-aks"></a>Netzwerkkonzepte für Anwendungen in Azure Kubernetes Service (AKS)
 
@@ -72,6 +72,8 @@ Weitere Informationen finden Sie unter [Konfigurieren von kubernet-Netzwerken f�
 ### <a name="azure-cni-advanced-networking"></a>Azure CNI-Netzwerke – „Advanced“ (Erweitert)
 
 Mit Azure CNI erhält jeder Pod eine IP-Adresse aus dem Subnetz und kann direkt angesprochen werden. Diese IP-Adressen müssen in Ihrem Netzwerkadressraum eindeutig sein und im Voraus geplant werden. Jeder Knoten verfügt über einen Konfigurationsparameter für die maximale Anzahl von Pods, die er unterstützt. Die entsprechende Anzahl von IP-Adressen pro Knoten wird dann im Voraus für diesen Knoten reserviert. Dieser Ansatz erfordert mehr Planung, da andernfalls die IP-Adressen ausgehen können oder der Cluster in einem größeren Subnetz neu erstellt werden muss, wenn die Anforderungen Ihrer Anwendung zunehmen.
+
+Anders als bei Kubenet wird der Datenverkehr zu Endpunkten in demselben virtuellen Netzwerk nicht per NAT zur primären IP-Adresse des Knotens geleitet. Die Quelladresse für den Datenverkehr im virtuellen Netzwerk ist die Pod-IP-Adresse. Datenverkehr außerhalb des virtuellen Netzwerks wird weiterhin per NAT zur primären IP-Adresse des Knotens geleitet.
 
 Knoten verwenden das Kubernetes-Plug-In [Azure Container Networking Interface (CNI)][cni-networking].
 

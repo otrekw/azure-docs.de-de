@@ -1,6 +1,6 @@
 ---
 title: 'ExpressRoute: Verknüpfen eines VNET mit einer Verbindung: Azure-Portal'
-description: Verbinden Sie ein VNET mit einer Azure ExpressRoute-Verbindung. Ausführliche Schritte.
+description: Hier erfahren Sie, wie Sie eine Verbindung zum Verknüpfen eines virtuellen Netzwerks mit einer Azure ExpressRoute-Verbindung mithilfe des Azure-Portals erstellen.
 services: expressroute
 author: cherylmc
 ms.service: expressroute
@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 09/17/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: a4ed99d69d1c2389e73c215bccfd6112895e791d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ad222e55f1e3051266c1398d76c8d246e342aba9
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84737069"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88190916"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-the-portal"></a>Verbinden eines virtuellen Netzwerks mit einer ExpressRoute-Verbindung mithilfe des Portals
 > [!div class="op_single_selector"]
@@ -124,7 +124,7 @@ Der Verbindungsbenutzer benötigt die Ressourcen-ID und einen Autorisierungsschl
 5. Wählen Sie auf der Seite **Einstellungen** die Option **Gateway für virtuelle Netzwerke** aus, und aktivieren Sie das Kontrollkästchen **Autorisierung einlösen**.
 6. Geben Sie den **Autorisierungsschlüssel** und **Peerleitungs-URI** ein, und benennen Sie die Verbindung. Klicken Sie auf **OK**. Der **Peerleitungs-URI** ist die Ressourcen-ID der ExpressRoute-Leitung (die Sie im Einstellungsbereich „Eigenschaften“ der ExpressRoute-Leitung finden).
 
-   ![Seite "Einstellungen"](./media/expressroute-howto-linkvnet-portal-resource-manager/Connection4.png)
+   ![Einstellungsseite](./media/expressroute-howto-linkvnet-portal-resource-manager/Connection4.png)
 7. Überprüfen Sie die Informationen auf der Seite **Zusammenfassung**, und klicken Sie auf **OK**.
 
 **So geben Sie eine Verbindungsautorisierung frei**
