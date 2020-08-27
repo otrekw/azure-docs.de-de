@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/03/2020
-ms.openlocfilehash: c01806194156fb43524e2db5f4c9bf636186de95
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: f0c8fe6b8df5efef0cf3948c8d628d20c79502ff
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009204"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88928682"
 ---
 # <a name="set-azure-roles-for-administrative-access-to-azure-cognitive-search"></a>Festlegen von Azure-Rollen für den Administratorzugriff auf Azure Cognitive Search
 
@@ -30,7 +30,7 @@ Für die kognitive Azure-Suche sind Rollen mit Berechtigungsebenen zugeordnet, d
 | --- | --- |
 | Besitzer |Erstellen oder löschen Sie den Dienst bzw. jedes Objekt im Dienst, einschließlich API-Schlüsseln, Indizes, Indexern sowie Datenquellen und Zeitplänen für Indexer.<p>Zeigen Sie den Dienststatus an, einschließlich Anzahl und Speichergröße.<p>Hinzufügen oder Löschen von Rollenmitgliedschaften (Nur ein Besitzer kann die Rollenmitgliedschaften verwalten.)<p>Abonnementadministratoren und Dienstbesitzer sind automatisch Mitglieder der Besitzerrolle. |
 | Mitwirkender |Die gleiche Zugriffsebene wie „Besitzer“, mit Ausnahme der Azure-Rollenverwaltung. So kann z.B. ein Mitwirkender Objekte erstellen oder löschen bzw. [API-Schlüssel](search-security-api-keys.md) anzeigen und neu generieren, aber nicht die Rollenmitgliedschaften ändern. |
-| [Mitwirkender von Suchdienst](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#search-service-contributor) | Entspricht der Rolle „Mitwirkender“. |
+| [Mitwirkender von Suchdienst](../role-based-access-control/built-in-roles.md#search-service-contributor) | Entspricht der Rolle „Mitwirkender“. |
 | Leser |Anzeigen von Dienstzusammenfassungen und Metriken. Mitglieder dieser Rolle können Index, Indexer, Datenquelle oder Schlüsselinformationen nicht anzeigen.  |
 
 Rollen erteilen keine Zugriffsrechte für den Dienstendpunkt. Suchdienstoperationen, wie z. B. die Indexverwaltung, Auffüllung des Indexes und Abfragen von Suchdaten werden durch die API-Schlüssel und nicht durch Rollen gesteuert. Weitere Informationen finden Sie unter [Verwalten von API-Schlüsseln](search-security-api-keys.md).

@@ -8,12 +8,12 @@ ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/12/2020
-ms.openlocfilehash: 96ad10fcca260223d92203a80f396de816238efc
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: dce3c484a16918931df80d5201fad090b2c0cb2e
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86529558"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88922632"
 ---
 # <a name="synonyms-in-azure-cognitive-search"></a>Synonyme in der kognitiven Azure-Suche
 
@@ -23,7 +23,7 @@ Bei der kognitiven Azure-Suche erfolgt die Synonymerweiterung zur Abfragezeit. S
 
 ## <a name="create-synonyms"></a>Erstellen von Synonymen
 
-Die Erstellung von Synonymen wird über das Portal nicht unterstützt, Sie können dafür jedoch die REST-API oder das .NET SDK verwenden. Zum Einstieg in REST werden die [Verwendung von Postman](search-get-started-postman.md) und die Erstellung von Anforderungen mit der folgenden API empfohlen: [Create Synonym Map](https://docs.microsoft.com/rest/api/searchservice/create-synonym-map). C#-Entwickler können mit dem [Hinzufügen von Synonymen in der kognitiven Azure-Suche mit C#](search-synonyms-tutorial-sdk.md) beginnen.
+Die Erstellung von Synonymen wird über das Portal nicht unterstützt, Sie können dafür jedoch die REST-API oder das .NET SDK verwenden. Zum Einstieg in REST werden die [Verwendung von Postman](search-get-started-postman.md) und die Erstellung von Anforderungen mit der folgenden API empfohlen: [Create Synonym Map](/rest/api/searchservice/create-synonym-map). C#-Entwickler können mit dem [Hinzufügen von Synonymen in der kognitiven Azure-Suche mit C#](search-synonyms-tutorial-sdk.md) beginnen.
 
 Bei Verwendung von [von Kunden verwalteten Schlüsseln](search-security-manage-encryption-keys.md) für die dienstseitige Verschlüsselung ruhender Daten können Sie diesen Schutz optional auf die Inhalte der Synonymzuordnung anwenden.
 
@@ -173,4 +173,4 @@ Wenn Sie über einen vorhandenen Index in einer Entwicklungsumgebung (nicht Prod
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Erstellen einer Synonymzuordnung](https://docs.microsoft.com/rest/api/searchservice/create-synonym-map)
+> [Erstellen einer Synonymzuordnung](/rest/api/searchservice/create-synonym-map)

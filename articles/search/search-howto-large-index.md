@@ -8,12 +8,12 @@ ms.author: delegenz
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/05/2020
-ms.openlocfilehash: e544e720f024b265e957e67d5bd2ee8af91f5c7f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 80307c97464e61d7b7d338703de90d1199adc819
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84484564"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88927016"
 ---
 # <a name="how-to-index-large-data-sets-in-azure-cognitive-search"></a>Indizieren großer Datasets in der kognitiven Azure-Suche
 
@@ -50,7 +50,7 @@ Im Allgemeinen wird empfohlen, Feldern nur dann zusätzliche Eigenschaften hinzu
 
 ### <a name="batch-size"></a>Batchgröße
 
-Eines der einfachsten Verfahren für die Indizierung eines größeren Datasets ist das Senden mehrerer Dokumente oder Datensätze in einer einzelnen Anforderung. Solange die gesamte Nutzlast kleiner als 16MB ist, kann eine Anforderung bis zu 1.000 Dokumente in einem Uploadmassenvorgang verarbeiten. Diese Grenzwerte gelten unabhängig davon, ob Sie die [REST-API „Dokumente hinzufügen“](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) oder die [index-Methode](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions.index?view=azure-dotnet) im .NET SDK verwenden. Für beide APIs würden Sie 1000 Dokumente im Text der einzelnen Anforderungen verpacken.
+Eines der einfachsten Verfahren für die Indizierung eines größeren Datasets ist das Senden mehrerer Dokumente oder Datensätze in einer einzelnen Anforderung. Solange die gesamte Nutzlast kleiner als 16MB ist, kann eine Anforderung bis zu 1.000 Dokumente in einem Uploadmassenvorgang verarbeiten. Diese Grenzwerte gelten unabhängig davon, ob Sie die [REST-API „Dokumente hinzufügen“](/rest/api/searchservice/addupdate-or-delete-documents) oder die [index-Methode](/dotnet/api/microsoft.azure.search.documentsoperationsextensions.index?view=azure-dotnet) im .NET SDK verwenden. Für beide APIs würden Sie 1000 Dokumente im Text der einzelnen Anforderungen verpacken.
 
 Wenn Sie Dokumente in Batches indizieren, verbessert sich die Indizierungsleistung erheblich. Die Bestimmung der optimalen Batchgröße für Ihre Daten ist ein wichtiger Faktor bei der Optimierung der Indizierungsgeschwindigkeit. Die optimale Batchgröße wird hauptsächlich durch die beiden folgenden Faktoren beeinflusst:
 + Indexschema
@@ -74,14 +74,14 @@ Sie können dieses Beispiel ändern und mit einer anderen Threadanzahl testen, u
 > [!NOTE]
 > Wenn Sie die Ebene des Suchdiensts erhöhen oder die Partitionen vergrößern, sollten Sie auch die Anzahl der gleichzeitigen Threads erhöhen.
 
-Im Zuge der Erhöhung der Anforderungen für den Suchdienst werden möglicherweise [HTTP-Statuscodes](https://docs.microsoft.com/rest/api/searchservice/http-status-codes) mit dem Hinweis zurückgegeben, dass die Anforderung nicht vollständig erfolgreich war. Zwei gängige HTTP-Statuscodes im Zusammenhang mit der Indizierung sind:
+Im Zuge der Erhöhung der Anforderungen für den Suchdienst werden möglicherweise [HTTP-Statuscodes](/rest/api/searchservice/http-status-codes) mit dem Hinweis zurückgegeben, dass die Anforderung nicht vollständig erfolgreich war. Zwei gängige HTTP-Statuscodes im Zusammenhang mit der Indizierung sind:
 
 + **503 Dienst nicht verfügbar**: Dieser Fehler bedeutet, dass die Auslastung des Systems sehr hoch ist und Ihre Anforderungen aktuell nicht verarbeitet werden können.
 + **207 Multi-Status**: Dieser Fehler bedeutet, dass der Vorgang für einige Dokumente erfolgreich war, bei mindestens einem Dokument aber ein Fehler aufgetreten ist.
 
 ### <a name="retry-strategy"></a>Wiederholungsstrategie 
 
-Im Falle eines Fehlers sollten Anforderungen unter Verwendung einer [Wiederholungsstrategie mit exponentiellem Backoff](https://docs.microsoft.com/dotnet/architecture/microservices/implement-resilient-applications/implement-retries-exponential-backoff) wiederholt werden.
+Im Falle eines Fehlers sollten Anforderungen unter Verwendung einer [Wiederholungsstrategie mit exponentiellem Backoff](/dotnet/architecture/microservices/implement-resilient-applications/implement-retries-exponential-backoff) wiederholt werden.
 
 Anforderungen mit 503-Fehlern und anderen Fehlern werden vom .NET SDK von Azure Cognitive Search automatisch wiederholt. Für die Wiederholung bei 207-Fehlern muss allerdings eine eigene Logik implementiert werden. Eine Wiederholungsstrategie kann auch mithilfe von Open-Source-Tools wie [Polly](https://github.com/App-vNext/Polly) implementiert werden.
 
@@ -95,14 +95,14 @@ Mit [Indexern](search-indexer-overview.md) werden unterstützte Azure-Datenquell
 
 + Mit Schedulern können Sie die Indizierung in regelmäßige Intervalle gliedern, sodass Sie sie im Laufe der Zeit verteilen können.
 + Geplante Indizierung kann am letzten bekannten Haltepunkt fortgesetzt werden. Wenn eine Datenquelle innerhalb eines 24-Stunden-Zeitfensters nicht vollständig durchsucht wird, setzt der Indexer die Indizierung am nächsten Tag fort, unabhängig davon, wo er aufgehört hat.
-+ Partitionieren von Daten in kleinere einzelne Datenquellen ermöglicht die parallele Verarbeitung. Sie können Quelldaten in kleinere Komponenten teilen, z. B. in mehrere Container in Azure Blob Storage, und anschließend mehrere entsprechende [Datenquellenobjekte](https://docs.microsoft.com/rest/api/searchservice/create-data-source) in der kognitiven Azure-Suche erstellen, die parallel indiziert werden können.
++ Partitionieren von Daten in kleinere einzelne Datenquellen ermöglicht die parallele Verarbeitung. Sie können Quelldaten in kleinere Komponenten teilen, z. B. in mehrere Container in Azure Blob Storage, und anschließend mehrere entsprechende [Datenquellenobjekte](/rest/api/searchservice/create-data-source) in der kognitiven Azure-Suche erstellen, die parallel indiziert werden können.
 
 > [!NOTE]
 > Indexer sind datenquellenspezifisch, also eignet sich ein Indexeransatz nur für ausgewählte Datenquellen in Azure: [SQL-Datenbank](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md), [Blobspeicher](search-howto-indexing-azure-blob-storage.md), [Tabellenspeicher](search-howto-indexing-azure-tables.md), [Cosmos DB](search-howto-index-cosmosdb.md).
 
 ### <a name="batch-size"></a>Batchgröße
 
-Wie die Push-API ermöglichen auch Indexer, die Anzahl von Elementen pro Batch zu konfigurieren. Für Indexer basierend auf der [Create Indexer-REST-API](https://docs.microsoft.com/rest/api/searchservice/Create-Indexer) können Sie das `batchSize`-Argument zum Anpassen dieser Einstellung festlegen, damit die Eigenschaften besser Ihren Daten entsprechen. 
+Wie die Push-API ermöglichen auch Indexer, die Anzahl von Elementen pro Batch zu konfigurieren. Für Indexer basierend auf der [Create Indexer-REST-API](/rest/api/searchservice/Create-Indexer) können Sie das `batchSize`-Argument zum Anpassen dieser Einstellung festlegen, damit die Eigenschaften besser Ihren Daten entsprechen. 
 
 Die Standardbatchgrößen sind datenquellenspezifisch. Azure SQL-Datenbank und Azure Cosmos DB verfügen über eine Standardbatchgröße von 1000. Im Gegensatz dazu wird bei der Azure-Blobindizierung eine Batchgröße von 10 Dokumenten unter Berücksichtigung der größeren durchschnittlichen Dokumentgröße festgelegt. 
 
@@ -112,7 +112,7 @@ Indexerzeitpläne sind ein wichtiger Mechanismus zum Verarbeiten von großen Dat
 
 Standardmäßig startet die geplante Indizierung zu bestimmten Zeitintervallen. Dabei wird ein Vorgang in der Regel abgeschlossen, bevor die Indizierung zum nächsten geplanten Intervall fortgesetzt wird. Wenn der Vorgang jedoch nicht innerhalb des Intervalls abgeschlossen wird, wird der Indexer beendet, da ein Timeout auftritt. Beim nächsten Intervall wird die Verarbeitung an der Stelle fortgesetzt, an der sie während des letzten Intervalls unterbrochen wurde. Dabei verfolgt das System nach, an welcher Stelle dies der Fall ist. 
 
-Das heißt in der Praxis, dass Sie für Indexladungen, die sich über mehrere Tage erstrecken, einen 24-Stunden-Zeitplan für den Indexer festlegen können. Wenn eine Indizierung für den nächsten 24-Stunden-Zyklus fortgesetzt wird, startet diese bei dem letzten erfolgreich verarbeiteten Dokument neu. Auf diese Weise kann sich ein Indexer über mehrere Tage hinweg durch das Dokumentbacklog durcharbeiten, bis alle nicht verarbeitete Dokumente verarbeitet wurden. Weitere Informationen zu diesem Ansatz finden Sie unter [Indizieren großer Datasets](search-howto-indexing-azure-blob-storage.md#indexing-large-datasets). Weitere Informationen zum Festlegen der Zeitpläne im Allgemeinen finden Sie unter [Create Indexer-REST-API](https://docs.microsoft.com/rest/api/searchservice/Create-Indexer) (REST-API zum Erstellen von Indexern) oder [Festlegen eines Zeitplans für Indexer in der kognitiven Azure-Suche](search-howto-schedule-indexers.md).
+Das heißt in der Praxis, dass Sie für Indexladungen, die sich über mehrere Tage erstrecken, einen 24-Stunden-Zeitplan für den Indexer festlegen können. Wenn eine Indizierung für den nächsten 24-Stunden-Zyklus fortgesetzt wird, startet diese bei dem letzten erfolgreich verarbeiteten Dokument neu. Auf diese Weise kann sich ein Indexer über mehrere Tage hinweg durch das Dokumentbacklog durcharbeiten, bis alle nicht verarbeitete Dokumente verarbeitet wurden. Weitere Informationen zu diesem Ansatz finden Sie unter [Indizieren großer Datasets](search-howto-indexing-azure-blob-storage.md#indexing-large-datasets). Weitere Informationen zum Festlegen der Zeitpläne im Allgemeinen finden Sie unter [Create Indexer-REST-API](/rest/api/searchservice/Create-Indexer) (REST-API zum Erstellen von Indexern) oder [Festlegen eines Zeitplans für Indexer in der kognitiven Azure-Suche](search-howto-schedule-indexers.md).
 
 <a name="parallel-indexing"></a>
 
@@ -125,8 +125,8 @@ Für nicht routinemäßige, rechenintensive Indizierungsanforderungen – wie z.
 Parallele Verarbeitung verfügt über die folgenden Elemente:
 
 + Verteilen Sie Ihre Quelldaten auf mehrere Container oder mehrere virtuelle Ordner innerhalb desselben Containers. 
-+ Ordnen Sie jedes noch so kleine Dataset einer eigenen [Datenquelle](https://docs.microsoft.com/rest/api/searchservice/create-data-source) zu, die an einen eignen [Indexer](https://docs.microsoft.com/rest/api/searchservice/create-indexer) gekoppelt ist.
-+ Verweisen Sie für die kognitive Suche in jeder Indexerdefinition auf dieselbe [Fähigkeitsgruppe](https://docs.microsoft.com/rest/api/searchservice/create-skillset).
++ Ordnen Sie jedes noch so kleine Dataset einer eigenen [Datenquelle](/rest/api/searchservice/create-data-source) zu, die an einen eignen [Indexer](/rest/api/searchservice/create-indexer) gekoppelt ist.
++ Verweisen Sie für die kognitive Suche in jeder Indexerdefinition auf dieselbe [Fähigkeitsgruppe](/rest/api/searchservice/create-skillset).
 + Schreiben Sie in denselben Suchindex für das Ziel. 
 + Legen Sie für die Ausführung aller Indexer denselben Zeitpunkt fest.
 

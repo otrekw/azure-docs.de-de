@@ -99,10 +99,14 @@
           href: troubleshoot-guide-windows-boot-manager-menu.md
         - name: 'Der virtuelle Computer reagiert nicht, weil er gerade aktualisiert wird.'
           href: unresponsive-vm-apply-windows-update.md
+        - name: 'Der virtuelle Computer reagiert nicht, während die Überwachungskonfigurationsrichtlinie angewendet wird.'
+          href: vm-unresponsive-applying-audit-configuration-policy.md
         - name: 'Der virtuelle Computer reagiert nicht, wenn eine Gruppenrichtlinie angewendet wird.'
           href: unresponsive-vm-apply-group-policy.md
         - name: 'Der virtuelle Computer reagiert nicht, wenn eine Sicherheitsrichtlinie angewendet wird.'
           href: unresponsive-vm-apply-security-policy.md
+        - name: 'Windows-kritischer Fehler: Fehlerhafte Systemkonfigurationsinformationen'
+          href: windows-stop-error-bad-system-config-info.md
         - name: 'Windows-kritischer Fehler: Status „Nicht genügend Arbeitsspeicher“'
           href: troubleshoot-windows-stop-error.md
 - name: Es kann keine Verbindung mit meinem virtuellen Computer hergestellt werden

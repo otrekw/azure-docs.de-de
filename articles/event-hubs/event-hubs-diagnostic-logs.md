@@ -3,12 +3,12 @@ title: Einrichten der Diagnoseprotokolle – Azure Event Hubs | Microsoft-Dokume
 description: Erfahren Sie, wie Sie Aktivitäts- und Diagnoseprotokolle für Event Hubs in Azure einrichten.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 65c3fc783506eae19c911eb035ebc51b2db19849
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ccd38d8924765df7bfd91b4fc26bb5304f6f180d
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86521937"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88927730"
 ---
 # <a name="set-up-diagnostic-logs-for-an-azure-event-hub"></a>Einrichten von Diagnoseprotokollen für Azure Event Hubs
 
@@ -61,18 +61,18 @@ JSON-Zeichenfolgen im Archivprotokoll enthalten Elemente, die in der folgenden T
 
 Name | BESCHREIBUNG
 ------- | -------
-TaskName | Beschreibung der fehlgeschlagenen Aufgabe
-ActivityId | Interne ID zur Nachverfolgung
-trackingId | Interne ID zur Nachverfolgung
-resourceId | Azure Resource Manager-Ressourcen-ID
-eventHub | Vollständiger Event Hub-Name (mit Namespace-Name)
-partitionId | Event Hub-Partition, auf die geschrieben wird
-archiveStep | Mögliche Werte: ArchiveFlushWriter, DestinationInit
-startTime | Fehlerstartzeit
-failures | Häufigkeit des Fehlers
-durationInSeconds | Dauer des Fehlers
-message | Fehlermeldung
-category | ArchiveLogs
+`TaskName` | Beschreibung der fehlgeschlagenen Aufgabe
+`ActivityId` | Interne ID zur Nachverfolgung
+`trackingId` | Interne ID zur Nachverfolgung
+`resourceId` | Azure Resource Manager-Ressourcen-ID
+`eventHub` | Vollständiger Event Hub-Name (mit Namespace-Name)
+`partitionId` | Event Hub-Partition, auf die geschrieben wird
+`archiveStep` | Mögliche Werte: ArchiveFlushWriter, DestinationInit
+`startTime` | Fehlerstartzeit
+`failures` | Häufigkeit des Fehlers
+`durationInSeconds` | Dauer des Fehlers
+`message` | Fehlermeldung
+`category` | ArchiveLogs
 
 Es folgt ein Codebeispiel für eine JSON-Zeichenfolge im Archivierungsprotokoll:
 
@@ -99,15 +99,15 @@ JSON-Zeichenfolgen im Betriebsprotokoll enthalten Elemente, die in der folgenden
 
 Name | BESCHREIBUNG
 ------- | -------
-ActivityId | Interne ID zur Nachverfolgung |
-EventName | Vorgangsname |
-resourceId | Azure Resource Manager-Ressourcen-ID |
-SubscriptionId | Abonnement-ID |
-EventTimeString | Vorgangsdauer |
-EventProperties | Vorgangseigenschaften |
-Status | Vorgangsstatus |
-Caller | Aufrufer des Vorgangs (Azure-Portal oder Verwaltungsclient) |
-Category | OperationalLogs |
+`ActivityId` | Interne ID zur Nachverfolgung |
+`EventName` | Vorgangsname |
+`resourceId` | Azure Resource Manager-Ressourcen-ID |
+`SubscriptionId` | Abonnement-ID |
+`EventTimeString` | Vorgangsdauer |
+`EventProperties` | Vorgangseigenschaften |
+`Status` | Vorgangsstatus |
+`Caller` | Aufrufer des Vorgangs (Azure-Portal oder Verwaltungsclient) |
+`Category` | OperationalLogs |
 
 Es folgt ein Codebeispiel für eine JSON-Zeichenfolge im Betriebsprotokoll:
 
@@ -131,8 +131,8 @@ Die JSON-Zeichenfolge im Protokoll für automatische Skalierung enthält Element
 
 | Name | BESCHREIBUNG |
 | ---- | ----------- | 
-| TrackingId | Interne ID, die für Ablaufverfolgungszwecke verwendet wird. |
-| resourceId | Azure Resource Manager-Ressourcen-ID |
+| `TrackingId` | Interne ID, die für Ablaufverfolgungszwecke verwendet wird. |
+| `ResourceId` | Azure Resource Manager-Ressourcen-ID |
 | `Message` | Informationsmeldung, die Details zur Aktion der automatischen Vergrößerung enthält. Die Meldung enthält den vorherigen und den aktuellen Wert der Durchsatzeinheit für einen bestimmten Namespace und den Grund, warum die Vergrößerung der Durchsatzeinheit ausgelöst wurde. |
 
 Beispiel für ein Autoskalierungsereignis: 
@@ -150,12 +150,12 @@ Die JSON-Zeichenfolge im Kafka-Koordinatorprotokoll enthält Elemente, die in de
 
 | Name | BESCHREIBUNG |
 | ---- | ----------- | 
-| RequestId | Anforderungs-ID, die zur Ablaufverfolgung verwendet wird |
-| resourceId | Azure Resource Manager-Ressourcen-ID |
-| Vorgang | Der Name des Vorgangs, der während der Gruppenkoordination ausgeführt wird. |
-| ClientId | Client-ID |
-| NamespaceName | Namespacename | 
-| SubscriptionId | Azure-Abonnement-ID |
+| `RequestId` | Anforderungs-ID, die zur Ablaufverfolgung verwendet wird |
+| `ResourceId` | Azure Resource Manager-Ressourcen-ID |
+| `Operation` | Der Name des Vorgangs, der während der Gruppenkoordination ausgeführt wird. |
+| `ClientId` | Client-ID |
+| `NamespaceName` | Namespacename | 
+| `SubscriptionId` | Azure-Abonnement-ID |
 | `Message` | Informative Meldung oder Warnmeldung, die Details zu den Aktionen bereitstellt, die während der Gruppenkoordination ausgeführt wurden. |
 
 ### <a name="example"></a>Beispiel
@@ -178,13 +178,13 @@ Die JSON-Zeichenfolge im Kafka-Benutzerfehlerprotokoll enthält Elemente, die in
 
 | Name | BESCHREIBUNG |
 | ---- | ----------- |
-| TrackingId | Nachverfolgungs-ID, die zur Ablaufverfolgung verwendet wird. |
-| NamespaceName | Namespacename |
-| Eventhub | Event Hub-Name |
-| PartitionId | Partitions-ID |
-| GroupId | Gruppen-ID |
-| ClientId | Client-ID |
-| resourceId | Azure Resource Manager-Ressourcen-ID |
+| `TrackingId` | Nachverfolgungs-ID, die zur Ablaufverfolgung verwendet wird. |
+| `NamespaceName` | Namespacename |
+| `Eventhub` | Event Hub-Name |
+| `PartitionId` | Partitions-ID |
+| `GroupId` | Gruppen-ID |
+| `ClientId` | Client-ID |
+| `ResourceId` | Azure Resource Manager-Ressourcen-ID |
 | `Message` | Informationsmeldung, die Details zu einem Fehler enthält. |
 
 ## <a name="event-hubs-virtual-network-connection-event-schema"></a>Schema für Event Hubs-Verbindungsereignis mit virtuellem Netzwerk
@@ -193,13 +193,13 @@ Die JSON-Zeichenfolge für das Event Hubs-Verbindungsereignis mit virtuellem Net
 
 | Name | BESCHREIBUNG |
 | ---  | ----------- | 
-| SubscriptionId | Azure-Abonnement-ID |
-| NamespaceName | Namespacename |
-| IPAddress | IP-Adresse eines Clients, der eine Verbindung mit dem Event Hubs-Dienst herstellt. |
-| Aktion | Aktion, die vom Event Hubs-Dienst beim Auswerten von Verbindungsanforderungen ausgeführt wird. Unterstützt werden die Aktionen zum **Akzeptieren von Verbindungen** und **Ablehnen von Verbindungen**. |
+| `SubscriptionId` | Azure-Abonnement-ID |
+| `NamespaceName` | Namespacename |
+| `IPAddress` | IP-Adresse eines Clients, der eine Verbindung mit dem Event Hubs-Dienst herstellt. |
+| `Action` | Aktion, die vom Event Hubs-Dienst beim Auswerten von Verbindungsanforderungen ausgeführt wird. Unterstützt werden die Aktionen zum **Akzeptieren von Verbindungen** und **Ablehnen von Verbindungen**. |
 | `Reason` | Gibt einen Grund an, warum die Aktion durchgeführt wurde. |
-| Anzahl | Anzahl von Vorkommen für die angegebene Aktion. |
-| resourceId | Azure Resource Manager-Ressourcen-ID |
+| `Count` | Anzahl von Vorkommen für die angegebene Aktion. |
+| `ResourceId` | Azure Resource Manager-Ressourcen-ID |
 
 ### <a name="example"></a>Beispiel
 
@@ -221,13 +221,13 @@ Die JSON-Zeichenfolge im Benutzerprotokoll für kundenseitig verwaltete Schlüss
 
 | Name | BESCHREIBUNG |
 | ---- | ----------- | 
-| Category | Typ der Kategorie für eine Meldung. Es handelt sich um einen der folgenden Werte: **error** oder **info** |
-| resourceId | Interne Ressourcen-ID, die die Azure-Abonnement-ID und den Namespacenamen umfasst. |
-| KeyVault | Name der Key Vault-Ressource. |
-| Schlüssel | Name des Key Vault-Schlüssels. |
-| Version | Version des Key Vault-Schlüssels. |
-| Vorgang | Der Name eines Vorgangs, der zum Verarbeiten von Anforderungen ausgeführt wird. |
-| Code | Statuscode |
+| `Category` | Typ der Kategorie für eine Meldung. Es handelt sich um einen der folgenden Werte: **error** oder **info** |
+| `ResourceId` | Interne Ressourcen-ID, die die Azure-Abonnement-ID und den Namespacenamen umfasst. |
+| `KeyVault` | Name der Key Vault-Ressource. |
+| `Key` | Name des Key Vault-Schlüssels. |
+| `Version` | Version des Key Vault-Schlüssels. |
+| `Operation` | Der Name eines Vorgangs, der zum Verarbeiten von Anforderungen ausgeführt wird. |
+| `Code` | Statuscode |
 | `Message` | Meldung, die Details zu einem Fehler oder einer Informationsmeldung enthält. |
 
 
@@ -236,7 +236,7 @@ Die JSON-Zeichenfolge im Benutzerprotokoll für kundenseitig verwaltete Schlüss
 - [Einführung in Event Hubs](./event-hubs-about.md)
 - [Event Hubs-Beispiele](sdks.md)
 - Erste Schritte mit Event Hubs
-    - [.NET Core](get-started-dotnet-standard-send-v2.md)
-    - [Java](get-started-java-send-v2.md)
-    - [Python](get-started-python-send-v2.md)
-    - [JavaScript](get-started-java-send-v2.md)
+    - [.NET Core](event-hubs-dotnet-standard-getstarted-send.md)
+    - [Java](event-hubs-java-get-started-send.md)
+    - [Python](event-hubs-python-get-started-send.md)
+    - [JavaScript](event-hubs-java-get-started-send.md)

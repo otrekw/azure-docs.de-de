@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/11/2020
-ms.openlocfilehash: a57232853284dad6f363797c009b1c38738d5b37
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 26be48e7968345863799191539bd668ea6d9a4a2
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86519778"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88929566"
 ---
 # <a name="how-to-index-tables-from-azure-table-storage-with-azure-cognitive-search"></a>Indizieren von Tabellen aus Azure Blob Storage mit der kognitiven Azure-Suche
 
@@ -25,8 +25,8 @@ In diesem Artikel wird beschrieben, wie Sie die kognitive Azure-Suche zum Indizi
 Sie können einen Azure Table Storage-Indexer mithilfe der folgenden Ressourcen einrichten:
 
 * [Azure portal](https://ms.portal.azure.com)
-* [REST-API](https://docs.microsoft.com/rest/api/searchservice/Indexer-operations) für die kognitive Azure-Suche
-* [.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search) für die kognitive Azure-Suche
+* [REST-API](/rest/api/searchservice/Indexer-operations) für die kognitive Azure-Suche
+* [.NET SDK](/dotnet/api/overview/azure/search) für die kognitive Azure-Suche
 
 Hier wird der Ablauf unter Verwendung der REST-API veranschaulicht. 
 
@@ -62,7 +62,7 @@ So erstellen Sie eine Datenquelle
     }   
 ```
 
-Weitere Informationen zur API für das Erstellen einer Datenquelle finden Sie unter [Create Data Source](https://docs.microsoft.com/rest/api/searchservice/create-data-source) (Erstellen einer Datenquelle).
+Weitere Informationen zur API für das Erstellen einer Datenquelle finden Sie unter [Create Data Source](/rest/api/searchservice/create-data-source) (Erstellen einer Datenquelle).
 
 <a name="Credentials"></a>
 #### <a name="ways-to-specify-credentials"></a>Möglichkeiten zum Angeben von Anmeldeinformationen ####
@@ -73,7 +73,7 @@ Sie können die Anmeldeinformationen für die Tabelle mit einer der folgenden Me
 - **Verbindungszeichenfolge für die Shared Access Signature eines Speicherkontos**: `TableEndpoint=https://<your account>.table.core.windows.net/;SharedAccessSignature=?sv=2016-05-31&sig=<the signature>&spr=https&se=<the validity end time>&srt=co&ss=t&sp=rl` Die Shared Access Signature muss über Listen- und Leseberechtigungen für Container (in diesem Fall Tabellen) und Objekte (Tabellenzeilen) verfügen.
 -  **Shared Access Signature für eine Tabelle**: `ContainerSharedAccessUri=https://<your storage account>.table.core.windows.net/<table name>?tn=<table name>&sv=2016-05-31&sig=<the signature>&se=<the validity end time>&sp=r` Die Shared Access Signature sollte über Abfrageberechtigungen (Lesen) für die Tabelle verfügen.
 
-Weitere Informationen zu Shared Access Signatures (SAS) finden Sie unter [Verwenden von Shared Access Signatures (SAS)](../storage/common/storage-dotnet-shared-access-signature-part-1.md).
+Weitere Informationen zu Shared Access Signatures (SAS) finden Sie unter [Verwenden von Shared Access Signatures (SAS)](../storage/common/storage-sas-overview.md).
 
 > [!NOTE]
 > Bei Verwendung von SAS-Anmeldeinformationen müssen Sie die Anmeldedaten für die Datenquellen in regelmäßigen Abständen mit erneuerten Signaturen aktualisieren, um den Ablauf zu verhindern. Wenn SAS-Anmeldeinformationen ablaufen, zeigt der Indexer eine Fehlermeldung wie „Die in der Verbindungszeichenfolge angegebenen Anmeldeinformationen sind ungültig oder abgelaufen“ an.  
@@ -97,7 +97,7 @@ So erstellen Sie einen Index
     }
 ```
 
-Weitere Informationen zum Erstellen von Indizes finden Sie unter [Create Index](https://docs.microsoft.com/rest/api/searchservice/create-index) (Erstellen eines Index).
+Weitere Informationen zum Erstellen von Indizes finden Sie unter [Create Index](/rest/api/searchservice/create-index) (Erstellen eines Index).
 
 ### <a name="step-3-create-an-indexer"></a>Schritt 3: Erstellen eines Indexers
 Ein Indexer verbindet eine Datenquelle mit einem Zielsuchindex und stellt einen Zeitplan zur Automatisierung der Datenaktualisierung bereit. 
@@ -119,7 +119,7 @@ Nach der Erstellung von Index und Datenquelle können Sie den Indexer erstellen:
 
 Dieser Indexer wird alle zwei Stunden ausgeführt. (Das Zeitplanintervall ist auf „PT2H“ festgelegt.) Um einen Indexer alle 30 Minuten auszuführen, legen Sie das Intervall auf „PT30M“ fest. Das kürzeste unterstützte Intervall beträgt fünf Minuten. Der Zeitplan ist optional. Ohne Zeitplan wird ein Indexer nur einmal bei seiner Erstellung ausgeführt. Allerdings können Sie einen Indexer bei Bedarf jederzeit ausführen.   
 
-Weitere Informationen zur API für das Erstellen eines Indexers finden Sie unter [Create Data Source](https://docs.microsoft.com/rest/api/searchservice/create-indexer) (Erstellen eines Indexers).
+Weitere Informationen zur API für das Erstellen eines Indexers finden Sie unter [Create Data Source](/rest/api/searchservice/create-indexer) (Erstellen eines Indexers).
 
 Weitere Informationen zum Definieren von Indexerzeitplänen finden Sie unter [Festlegen eines Zeitplans für Indexer in der kognitiven Azure-Suche](search-howto-schedule-indexers.md).
 
@@ -170,7 +170,7 @@ Hier lernen Sie zwei Möglichkeiten zum Verbessern der Tabellenindizierungsleist
 
 - Wenn Ihre Daten nach der Zeit partitioniert sind (wenn Sie beispielsweise jeden Tag oder jede Woche eine neue Partition erstellen), ziehen Sie folgenden Ansatz in Betracht: 
     - Verwenden Sie eine Abfrage dieser Form: `(PartitionKey ge <TimeStamp>) and (other filters)`. 
-    - Überwachen Sie den Indexerverlauf mit der [API zum Abrufen des Indexerstatus](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status), und aktualisieren Sie regelmäßig die `<TimeStamp>`-Bedingung der Abfrage basierend auf dem aktuellen Markierungswert für die Obergrenze. 
+    - Überwachen Sie den Indexerverlauf mit der [API zum Abrufen des Indexerstatus](/rest/api/searchservice/get-indexer-status), und aktualisieren Sie regelmäßig die `<TimeStamp>`-Bedingung der Abfrage basierend auf dem aktuellen Markierungswert für die Obergrenze. 
     - Wenn Sie eine vollständige Neuindizierung auslösen müssen, müssen Sie mit diesem Ansatz die Datenquellenabfrage zusätzlich zum Indexer zurücksetzen. 
 
 

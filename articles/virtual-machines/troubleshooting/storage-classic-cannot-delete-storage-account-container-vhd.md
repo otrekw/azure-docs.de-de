@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: troubleshooting
 ms.date: 01/11/2019
 ms.author: annayak
-ms.openlocfilehash: 95c85309058911d6767eb44efd7b37ddac7a9119
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3e7469f0d53a154f605480b811d36937e3d4ad6c
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77915036"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88649851"
 ---
 # <a name="troubleshoot-classic-storage-resource-deletion-errors"></a>Behebung von Problemen beim Löschen klassischer Speicherressourcen
 Dieser Artikel enthält Informationen zur Problembehandlung, wenn beim Versuch, ein klassisches Azure Storage-Konto, einen Azure-Container oder eine Seitenblobdatei (*.vhd) zu löschen, einer der folgenden Fehler auftritt. 
@@ -21,7 +21,7 @@ Dieser Artikel enthält Informationen zur Problembehandlung, wenn beim Versuch, 
 
 In diesem Artikel werden nur Probleme mit klassischen Speicherressourcen behandelt. Wenn ein Benutzer einen klassischen virtuellen Computer über das Azure-Portal, PowerShell oder die Befehlszeilenschnittstelle löscht, werden die Datenträger nicht automatisch gelöscht. Der Benutzer erhält die Option, die Datenträgerressource zu löschen. Wenn die Option nicht ausgewählt wird, verhindert die Datenträgerressource das Löschen des Speicherkontos, des Containers und der eigentlichen Seitenblobdatei (*.vhd).
 
-Weitere Informationen zu Azure-Datenträgern finden Sie [hier](../../virtual-machines/windows/managed-disks-overview.md). Azure verhindert das Löschen eines an eine VM angefügten Datenträgers, um eine Beschädigung zu vermeiden. Zudem wird das Löschen von Containern und Speicherkonten, die ein an eine VM angefügtes Seitenblob aufweisen, verhindert. 
+Weitere Informationen zu Azure-Datenträgern finden Sie [hier](../../virtual-machines/managed-disks-overview.md). Azure verhindert das Löschen eines an eine VM angefügten Datenträgers, um eine Beschädigung zu vermeiden. Zudem wird das Löschen von Containern und Speicherkonten, die ein an eine VM angefügtes Seitenblob aufweisen, verhindert. 
 
 ## <a name="what-is-a-disk"></a>Was ist ein „Datenträger“?
 Eine „Datenträgerressource“ wird verwendet, um eine Seitenblobdatei (*.vhd) auf einem virtuellen Computer als Betriebssystem-Datenträger oder Datenträger für Daten einzubinden. Die Ressource eines Betriebssystem-Datenträgers oder Datenträgers für Daten behält bis zum Löschen eine Lease für die VHD-Datei bei. Eine Speicherressource in dem im unten stehenden Bild dargestellten Pfad kann nicht gelöscht werden, wenn eine Datenträgerressource auf sie verweist.
