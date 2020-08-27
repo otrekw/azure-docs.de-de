@@ -3,12 +3,12 @@ title: Kostenanalyse und Budget
 description: Erfahren Sie, wie Sie eine Kostenanalyse erhalten und ein Budget für die zugrunde liegenden Computeressourcen und Softwarelizenzen festlegen, die für die Ausführung Ihrer Batch-Workloads verwendet werden.
 ms.topic: how-to
 ms.date: 07/19/2019
-ms.openlocfilehash: 13c8cc508a4940b5e21570104527c40988879919
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 50ca1ecfd0a973ff39dabfcb62175ce820d0a0d6
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83725770"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654241"
 ---
 # <a name="cost-analysis-and-budgets-for-azure-batch"></a>Kostenanalyse und Budget für Azure Batch
 
@@ -68,7 +68,7 @@ Weitere Informationen zum Einrichten von VMs mit niedriger Priorität für Ihre 
 
 ### <a name="virtual-machine-os-disk-type"></a>Typen von Betriebssystemdatenträgern für VMs
 
-Es gibt mehrere [Typen von Betriebssystemdatenträgern für VMs](../virtual-machines/windows/disks-types.md). Die meisten VM-Serien verfügen über Größen, die sowohl Premium- als auch Standard-Speicher unterstützen. Wenn für einen Pool die VM-Größe „S“ ausgewählt wird, werden von Batch SSD Premium-Betriebssystemdatenträger konfiguriert. Bei Auswahl der VM-Größe „Nicht S“ wird der kostengünstigere Datenträgertyp „HDD Standard“ verwendet. Beispielsweise werden SSD Premium-Betriebssystemdatenträger für `Standard_D2s_v3` und HDD Standard-Betriebssystemdatenträger für `Standard_D2_v3` verwendet.
+Es gibt mehrere [Typen von Betriebssystemdatenträgern für VMs](../virtual-machines/disks-types.md). Die meisten VM-Serien verfügen über Größen, die sowohl Premium- als auch Standard-Speicher unterstützen. Wenn für einen Pool die VM-Größe „S“ ausgewählt wird, werden von Batch SSD Premium-Betriebssystemdatenträger konfiguriert. Bei Auswahl der VM-Größe „Nicht S“ wird der kostengünstigere Datenträgertyp „HDD Standard“ verwendet. Beispielsweise werden SSD Premium-Betriebssystemdatenträger für `Standard_D2s_v3` und HDD Standard-Betriebssystemdatenträger für `Standard_D2_v3` verwendet.
 
 SSD Premium-Betriebssystemdatenträger sind teurer, verfügen aber auch über eine höhere Leistung. VMs mit Premium-Datenträgern können etwas schneller als VMs mit HDD Standard-Betriebssystemdatenträgern gestartet werden. Bei Batch wird der Betriebssystemdatenträger häufig nicht viel genutzt, da sich die Anwendungen und Taskdateien auf dem temporären SSD-Datenträger der VMs befinden. Daher ist es in vielen Fällen nicht erforderlich, die höheren Kosten für SSD Premium-Datenträger zu bezahlen, die bereitgestellt werden, wenn „S“ als VM-Größe angegeben wird.
 

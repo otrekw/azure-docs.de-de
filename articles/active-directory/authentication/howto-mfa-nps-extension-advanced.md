@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: beaed8a3e23cba90b2afe476b1e993ed1f99dae7
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: c7dab1d9e46aec64cc3c0fda9e8e6ba503f696b0
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87445510"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88716757"
 ---
 # <a name="advanced-configuration-options-for-the-nps-extension-for-multi-factor-authentication"></a>Erweiterte Konfigurationsoptionen für die NPS-Erweiterung für Multi-Factor Authentication
 
@@ -32,7 +32,7 @@ Wechseln Sie zum Konfigurieren alternativer Anmelde-IDs zu `HKLM\SOFTWARE\Micros
 
 | Name | type | Standardwert | BESCHREIBUNG |
 | ---- | ---- | ------------- | ----------- |
-| LDAP_ALTERNATE_LOGINID_ATTRIBUTE | string | Leer | Legen Sie den Namen des Active Directory-Attributs fest, das Sie anstelle des UPN verwenden möchten. Dieses Attribut wird als AlternateLoginId-Attribut verwendet. Wenn dieser Registrierungswert auf ein [gültiges Active Directory-Attribut](https://msdn.microsoft.com/library/ms675090.aspx) (z.B. mail oder displayName) festgelegt wird, wird der Wert des Attributs anstelle des UPN des Benutzers zur Authentifizierung verwendet. Wenn dieser Registrierungswert leer oder nicht konfiguriert ist, wird AlternateLoginId deaktiviert und der UPN des Benutzers wird zur Authentifizierung verwendet. |
+| LDAP_ALTERNATE_LOGINID_ATTRIBUTE | string | Leer | Legen Sie den Namen des Active Directory-Attributs fest, das Sie anstelle des UPN verwenden möchten. Dieses Attribut wird als AlternateLoginId-Attribut verwendet. Wenn dieser Registrierungswert auf ein [gültiges Active Directory-Attribut](/windows/win32/adschema/attributes-all) (z.B. mail oder displayName) festgelegt wird, wird der Wert des Attributs anstelle des UPN des Benutzers zur Authentifizierung verwendet. Wenn dieser Registrierungswert leer oder nicht konfiguriert ist, wird AlternateLoginId deaktiviert und der UPN des Benutzers wird zur Authentifizierung verwendet. |
 | LDAP_FORCE_GLOBAL_CATALOG | boolean | False | Verwenden Sie dieses Flag, um die Verwendung des globalen Katalogs für LDAP-Suchvorgänge beim Suchen nach AlternateLoginId zu erzwingen. Konfigurieren Sie einen Domänencontroller als globalen Katalog, fügen Sie das AlternateLoginId-Attribut zum globalen Katalog hinzu, und aktivieren Sie dann dieses Flag. <br><br> Wenn LDAP_LOOKUP_FORESTS konfiguriert (nicht leer) ist, wird **dieses Flag als TRUE erzwungen**, unabhängig vom Wert der Registrierungseinstellung. In diesem Fall erfordert die NPS-Erweiterung, dass der globale Katalog mit dem AlternateLoginId-Attribut für jede Gesamtstruktur konfiguriert werden kann. |
 | LDAP_LOOKUP_FORESTS | string | Leer | Stellen Sie eine durch Semikolons getrennte Liste der Gesamtstrukturen bereit, die durchsucht werden sollen. Beispiel: *contoso.com;foobar.com*. Wenn dieser Registrierungswert konfiguriert wird, durchsucht die NPS-Erweiterung iterativ alle Gesamtstrukturen in der Reihenfolge, in der sie aufgelistet wurden, und gibt den ersten erfolgreichen AlternateLoginId-Wert zurück. Wenn dieser Registrierungswert nicht konfiguriert wird, ist die Suche nach AlternateLoginId auf die aktuelle Domäne beschränkt.|
 

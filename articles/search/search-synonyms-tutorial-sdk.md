@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 6232ba859c985929c9df0fb5020fb932611bbb40
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f27822ee6be26f955e4db52548da7fa2a22236c2
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85079444"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88922751"
 ---
 # <a name="example-add-synonyms-for-azure-cognitive-search-in-c"></a>Beispiel: Hinzufügen von Synonymen für die kognitive Azure-Suche in C#
 
@@ -22,8 +22,8 @@ Anhand von Synonymen wird eine Abfrage erweitert, indem Begriffe, die als semant
 In der kognitiven Azure-Suche werden Synonyme in einer *Synonymzuordnung* anhand von *Zuordnungsregeln* für gleichwertige Begriffe definiert. Dieses Beispiel behandelt die wesentlichen Schritte zum Hinzufügen und Verwenden von Synonymen bei einem vorhandenen Index. Folgendes wird vermittelt:
 
 > [!div class="checklist"]
-> * Erstellen einer Synonymzuordnung mithilfe der Klasse [SynonymMap](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.synonymmap?view=azure-dotnet) 
-> * Festlegen der Eigenschaft [SynonymMaps](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.synonymmaps?view=azure-dotnet) in Feldern, die die Abfrageerweiterung über Synonyme unterstützen sollen
+> * Erstellen einer Synonymzuordnung mithilfe der Klasse [SynonymMap](/dotnet/api/microsoft.azure.search.models.synonymmap?view=azure-dotnet) 
+> * Festlegen der Eigenschaft [SynonymMaps](/dotnet/api/microsoft.azure.search.models.field.synonymmaps?view=azure-dotnet) in Feldern, die die Abfrageerweiterung über Synonyme unterstützen sollen
 
 Sie können ein für Synonyme aktiviertes Feld auf die übliche Weise abfragen. Für den Zugriff auf Synonyme ist keine zusätzliche Abfragesyntax erforderlich.
 
@@ -38,8 +38,8 @@ Für das Tutorial gelten die folgenden Anforderungen:
 
 * [Visual Studio](https://www.visualstudio.com/downloads/)
 * [Dienst für die kognitive Azure-Suche](search-create-service-portal.md)
-* [Microsoft.Azure.Search-.NET-Bibliothek](https://docs.microsoft.com/dotnet/api/overview/azure/search)
-* [Verwenden der kognitiven Azure-Suche aus einer .NET-Anwendung](https://docs.microsoft.com/azure/search/search-howto-dotnet-sdk)
+* [Microsoft.Azure.Search-.NET-Bibliothek](/dotnet/api/overview/azure/search)
+* [Verwenden der kognitiven Azure-Suche aus einer .NET-Anwendung](./search-howto-dotnet-sdk.md)
 
 ## <a name="overview"></a>Übersicht
 
@@ -77,7 +77,7 @@ Anhand von Vorher- und Nachher-Abfragen soll der Nutzen von Synonymen veranschau
       Console.ReadKey();
   }
 ```
-Die Schritte zum Erstellen und Auffüllen des Beispielindex sind unter [Verwenden der kognitiven Azure-Suche aus einer .NET-Anwendung](https://docs.microsoft.com/azure/search/search-howto-dotnet-sdk) beschrieben.
+Die Schritte zum Erstellen und Auffüllen des Beispielindex sind unter [Verwenden der kognitiven Azure-Suche aus einer .NET-Anwendung](./search-howto-dotnet-sdk.md) beschrieben.
 
 ## <a name="before-queries"></a>Vorher-Abfragen
 
@@ -173,7 +173,7 @@ Die schnellste Möglichkeit zum Bereinigen des Systems nach einem Beispiel beste
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Beispiel wurde die Funktion für Synonyme in C#-Code veranschaulicht, um Zuordnungsregeln zu erstellen und zu veröffentlichen sowie anschließend die Synonymzuordnung für eine Abfrage aufzurufen. Weitere Informationen finden Sie in der Referenzdokumentation für [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search) und [REST-API](https://docs.microsoft.com/rest/api/searchservice/).
+In diesem Beispiel wurde die Funktion für Synonyme in C#-Code veranschaulicht, um Zuordnungsregeln zu erstellen und zu veröffentlichen sowie anschließend die Synonymzuordnung für eine Abfrage aufzurufen. Weitere Informationen finden Sie in der Referenzdokumentation für [.NET SDK](/dotnet/api/microsoft.azure.search) und [REST-API](/rest/api/searchservice/).
 
 > [!div class="nextstepaction"]
 > [Verwenden von Synonymen in der kognitiven Azure-Suche](search-synonyms.md)

@@ -11,18 +11,18 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2eff16e0d1aa242ed4ca8b427c7af8e8defa7804
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6e210a11dbcde17c8a5dfd16c46c0d3b3d5c6523
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87051300"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88716332"
 ---
 # <a name="self-service-password-reset-frequently-asked-questions"></a>Häufig gestellte Fragen zur Self-Service-Kennwortzurücksetzung
 
 Im Folgenden sind einige häufig gestellte Fragen (FAQ) rund um die Self-Service-Kennwortzurücksetzung aufgeführt.
 
-Wenn Sie eine allgemeine Frage zu Azure Active Directory (Azure AD) und zur Self-Service-Kennwortzurücksetzung (Self-Service Password Reset, SSPR) haben, die hier nicht beantwortet wird, können Sie die Community auf der [Microsoft-Frageseite „Q&A“ für Azure Active Directory](https://docs.microsoft.com/answers/topics/azure-active-directory.html) um Unterstützung bitten. Zu den Mitgliedern der Community gehören Techniker, Produktmanager MVPs und andere IT-Experten.
+Wenn Sie eine allgemeine Frage zu Azure Active Directory (Azure AD) und zur Self-Service-Kennwortzurücksetzung (Self-Service Password Reset, SSPR) haben, die hier nicht beantwortet wird, können Sie die Community auf der [Microsoft-Frageseite „Q&A“ für Azure Active Directory](/answers/topics/azure-active-directory.html) um Unterstützung bitten. Zu den Mitgliedern der Community gehören Techniker, Produktmanager MVPs und andere IT-Experten.
 
 Diese FAQ sind in folgende Abschnitte unterteilt:
 
@@ -197,7 +197,7 @@ Diese FAQ sind in folgende Abschnitte unterteilt:
   >
 * **F:  Können meine Benutzer im Office-Portal benachrichtigt werden, wenn ihr lokales Kennwort abläuft?**
 
-  > **A:** Ja, das ist möglich, wenn Sie die Active Directory-Verbunddienste (AD FS) verwenden. Wenn Sie AD FS verwenden, befolgen Sie die Anweisungen im Artikel [Senden von Kennwortrichtlinienansprüchen mit AD FS](https://technet.microsoft.com/windows-server-docs/identity/ad-fs/operations/configure-ad-fs-to-send-password-expiry-claims?f=255&MSPPError=-2147217396). Wenn Sie die Kennworthashsynchronisierung verwenden, ist dies derzeit nicht möglich. Da wir keine Kennwortrichtlinien aus lokalen Verzeichnissen synchronisieren, können wir auch keine Ablaufbenachrichtigungen in Cloudumgebungen veröffentlichen. In beiden Fällen können Sie [Benutzer, deren Kennwörter demnächst ablaufen, auch über PowerShell benachrichtigen](https://social.technet.microsoft.com/wiki/contents/articles/23313.notify-active-directory-users-about-password-expiry-using-powershell.aspx).
+  > **A:** Ja, das ist möglich, wenn Sie die Active Directory-Verbunddienste (AD FS) verwenden. Wenn Sie AD FS verwenden, befolgen Sie die Anweisungen im Artikel [Senden von Kennwortrichtlinienansprüchen mit AD FS](/windows-server/identity/ad-fs/operations/configure-ad-fs-to-send-password-expiry-claims?f=255&MSPPError=-2147217396). Wenn Sie die Kennworthashsynchronisierung verwenden, ist dies derzeit nicht möglich. Da wir keine Kennwortrichtlinien aus lokalen Verzeichnissen synchronisieren, können wir auch keine Ablaufbenachrichtigungen in Cloudumgebungen veröffentlichen. In beiden Fällen können Sie [Benutzer, deren Kennwörter demnächst ablaufen, auch über PowerShell benachrichtigen](https://social.technet.microsoft.com/wiki/contents/articles/23313.notify-active-directory-users-about-password-expiry-using-powershell.aspx).
   >
   >
 * **F:  Kann ich das Ändern von Kennwörtern durch Benutzer blockieren?**
@@ -243,7 +243,7 @@ Diese FAQ sind in folgende Abschnitte unterteilt:
 
 * **F:  Wie funktioniert das Kennwortrückschreiben im Detail?**
 
-  > **A:** Im Artikel [Funktionsweise des Kennwortrückschreibens](howto-sspr-writeback.md) wird erläutert, was geschieht, wenn Sie das Kennwortrückschreiben aktivieren, und wie Daten durch das System wieder in Ihre lokale Umgebung übertragen werden.
+  > **A:** Im Artikel [Funktionsweise des Kennwortrückschreibens](./tutorial-enable-sspr-writeback.md) wird erläutert, was geschieht, wenn Sie das Kennwortrückschreiben aktivieren, und wie Daten durch das System wieder in Ihre lokale Umgebung übertragen werden.
   >
   >
 * **F:  Wie lange dauert es, bis das Kennwortrückschreiben funktioniert? Gibt es eine Synchronisierungsverzögerung wie bei der Kennworthashsynchronisierung?**
@@ -273,7 +273,7 @@ Diese FAQ sind in folgende Abschnitte unterteilt:
   >
 * **F:  Ist die Kennwortrückschreibung sicher?  Wie kann ich sicher sein, dass ich nicht gehackt werde?**
 
-  > **A:** Ja, das Kennwortrückschreiben ist sicher. Weitere Informationen zu den mehrere Sicherheitsstufen, die durch den Dienst zum Kennwortrückschreiben implementiert werden, finden Sie im Abschnitt [Sicherheit für das Kennwortrückschreiben](concept-sspr-writeback.md#password-writeback-security) im Artikel [Übersicht über die Kennwortrückschreibung](howto-sspr-writeback.md).
+  > **A:** Ja, das Kennwortrückschreiben ist sicher. Weitere Informationen zu den mehrere Sicherheitsstufen, die durch den Dienst zum Kennwortrückschreiben implementiert werden, finden Sie im Abschnitt [Sicherheit für das Kennwortrückschreiben](concept-sspr-writeback.md#password-writeback-security) im Artikel [Übersicht über die Kennwortrückschreibung](./tutorial-enable-sspr-writeback.md).
   >
   >
 
@@ -286,7 +286,7 @@ Diese FAQ sind in folgende Abschnitte unterteilt:
 * [Bereitstellen der Kennwortzurücksetzung ohne erforderliche Endbenutzerregistrierung](howto-sspr-authenticationdata.md)
 * [Authentifizierungsmethoden](concept-sspr-howitworks.md#authentication-methods)
 * [Kennwortrichtlinien und -einschränkungen in Azure Active Directory](concept-sspr-policy.md)
-* [Übersicht über die Kennwortrückschreibung](howto-sspr-writeback.md)
+* [Übersicht über die Kennwortrückschreibung](./tutorial-enable-sspr-writeback.md)
 * [Berichterstellungsoptionen für die Kennwortverwaltung von Azure AD](howto-sspr-reporting.md)
 * [Welche Optionen sind für SSPR verfügbar, und was bedeuten sie?](concept-sspr-howitworks.md)
 * [Anscheinend ist ein Fehler aufgetreten. Wie behebe ich Probleme mit SSPR?](active-directory-passwords-troubleshoot.md)

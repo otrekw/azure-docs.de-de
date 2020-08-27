@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 89d9d06433e2b915b8a96375bb39157adbce6ef2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: fce07575fe95ffbd4fd906bcde7d76d89e50d48b
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87027651"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88716315"
 ---
 # <a name="how-it-works-azure-ad-self-service-password-reset"></a>So funktioniert's: Self-Service-Kennwortzurücksetzung in Azure AD
 
@@ -139,7 +139,7 @@ Benutzer können ihre mobile App nicht registrieren, wenn sie sich unter [https:
 >
 > Wenn Sie SSPR-Richtlinien konfigurieren, die die Authenticator-App als Methode vorsehen, sollten bei einer oder zwei erforderlichen Methoden jeweils eine bzw. zwei zusätzliche Methoden konfiguriert werden.
 >
-> Dies ist erforderlich, da es bei der aktuellen SSPR-Registrierung nicht möglich ist, die Authenticator-App zu registrieren. Die Option zum Registrieren der Authenticator-App ist in der neuen [kombinierten Registrierung](concept-registration-mfa-sspr-converged.md) enthalten.
+> Dies ist erforderlich, da es bei der aktuellen SSPR-Registrierung nicht möglich ist, die Authenticator-App zu registrieren. Die Option zum Registrieren der Authenticator-App ist in der neuen [kombinierten Registrierung](./concept-registration-mfa-sspr-combined.md) enthalten.
 >
 > Das Zulassen von Richtlinien, die nur die Authenticator-App (bei einer erforderlichen Methode) oder die Authenticator-App und nur eine zusätzliche Methode (bei zwei erforderlichen Methoden) verwenden, kann dazu führen, dass die SSPR-Registrierung für Benutzer nicht verfügbar ist, solange die neue kombinierte Registrierung nicht für sie konfiguriert wurde.
 
@@ -191,13 +191,13 @@ Azure AD überprüft Ihre aktuelle Hybridverbindung und zeigt eine der folgende
 * Azure AD Connect ist online und mit Ihrem lokalen Client für das Rückschreiben verbunden. Die installierte Version von Azure AD Connect ist jedoch offenbar veraltet. Ziehen Sie ein [Upgrade von Azure AD Connect](../hybrid/how-to-upgrade-previous-version.md) in Betracht, um sicherzustellen, dass Sie über die neuesten Konnektivitätsfeatures und wichtige Fehlerbehebungen verfügen.
 * Unfortunately, we can't check your on-premises writeback client status because the installed version of Azure AD Connect is out-of-date. (Der Status Ihres lokalen Rückschreibeclients kann nicht überprüft werden, weil die installierte Version von Azure AD Connect veraltet ist.) [Aktualisieren Sie Azure AD Connect](../hybrid/how-to-upgrade-previous-version.md), um den Verbindungsstatus überprüfen zu können.
 * Leider können wir keine Verbindung mit Ihrem lokalen Client für das Rückschreiben herstellen. [Führen Sie eine Problembehandlung für Azure AD Connect durch](active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback-connectivity), um die Verbindung wiederherzustellen.
-* Leider können wir keine Verbindung mit Ihrem lokalen Client für das Rückschreiben herstellen, weil das Kennwortrückschreiben nicht ordnungsgemäß konfiguriert wurde. [Konfigurieren Sie das Kennwortrückschreiben](howto-sspr-writeback.md), um die Verbindung wiederherzustellen.
+* Leider können wir keine Verbindung mit Ihrem lokalen Client für das Rückschreiben herstellen, weil das Kennwortrückschreiben nicht ordnungsgemäß konfiguriert wurde. [Konfigurieren Sie das Kennwortrückschreiben](./tutorial-enable-sspr-writeback.md), um die Verbindung wiederherzustellen.
 * Leider können wir keine Verbindung mit Ihrem lokalen Client für das Rückschreiben herstellen. Möglicherweise liegen auf unserer Seite vorübergehende Probleme vor. Wenn das Problem weiterhin besteht, [führen Sie eine Problembehandlung für Azure AD Connect durch](active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback-connectivity), um die Verbindung wiederherzustellen.
 
 Nutzen Sie das folgende Tutorial, um sich mit dem SSPR-Rückschreiben vertraut zu machen:
 
 > [!div class="nextstepaction"]
-> [Tutorial: Aktivieren des Rückschreibens von Self-Service-Kennwortzurücksetzungen (SSPR)](tutorial-enable-writeback.md)
+> [Tutorial: Aktivieren des Rückschreibens von Self-Service-Kennwortzurücksetzungen (SSPR)](./tutorial-enable-sspr-writeback.md)
 
 ### <a name="write-back-passwords-to-your-on-premises-directory"></a>Kennwörter in Ihr lokales Verzeichnis zurückschreiben?
 
@@ -223,7 +223,7 @@ Das Zurücksetzen und Ändern von Kennwörtern wird von allen B2B-Konfiguratione
 
 * **Benutzer aus einer Partnerorganisation mit einem vorhandenen Azure AD-Mandanten:** Falls die Organisation, mit der Sie eine Partnerschaft eingegangen sind, über einen bestehenden Azure AD-Mandanten verfügt, werden alle in diesem Mandanten aktivierten Richtlinien für die Kennwortzurücksetzung berücksichtigt. Damit die Kennwortzurücksetzung funktioniert, muss die Partnerorganisation nur sicherstellen, dass Azure AD SSPR aktiviert ist. Es fallen keine zusätzlichen Gebühren für Office 365-Kunden an.
 * **Benutzer, die sich per Self-Service-Registrierung registriert haben:** Wenn die Organisation, mit der Sie eine Partnerschaft eingegangen sind, die [Self-Service-Registrierung](../users-groups-roles/directory-self-service-signup.md) für den Zugriff auf einen Mandanten verwendet, kann das Kennwort mithilfe der registrierten E-Mail-Adresse zurückgesetzt werden.
-* **B2B-Benutzer:** Alle neuen B2B-Benutzer, die mithilfe der neuen [Azure AD-B2B-Funktionen](../b2b/what-is-b2b.md) erstellt werden, können ihre Kennwörter unter Verwendung der E-Mail-Adresse zurücksetzen, mit der sie sich im Rahmen des Einladungsprozesses registriert haben.
+* **B2B-Benutzer:** Alle neuen B2B-Benutzer, die mithilfe der neuen [Azure AD-B2B-Funktionen](../external-identities/what-is-b2b.md) erstellt werden, können ihre Kennwörter unter Verwendung der E-Mail-Adresse zurücksetzen, mit der sie sich im Rahmen des Einladungsprozesses registriert haben.
 
 Um dieses Szenario zu testen, wechseln Sie mit einem der Partnerbenutzer zu https://passwordreset.microsoftonline.com. Sofern eine alternative E-Mail-Adresse oder eine E-Mail-Adresse für die Authentifizierung definiert ist, funktioniert die Kennwortzurücksetzung wie erwartet.
 

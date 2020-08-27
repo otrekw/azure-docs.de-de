@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: baselden, librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e3ed549e51b911452bca7d4d4a16c7ef45594a8f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4d9ca8b7e188a7ed438feb5e2b99c6db22ad12b3
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81451430"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88717148"
 ---
 # <a name="plan-a-passwordless-authentication-deployment-in-azure-active-directory"></a>Planen einer Bereitstellung mit kennwortloser Authentifizierung in Azure Active Directory
 
@@ -43,9 +43,9 @@ Beim kennwortlosen Zugriff wird das Kennwort durch etwas ersetzt, das Sie haben,
 ## <a name="passwordless-authentication-methods"></a>Methoden zur kennwortlosen Authentifizierung
 Microsoft bietet drei Optionen für die kennwortlose Authentifizierung, die viele Szenarios abdecken. Diese Methoden können miteinander kombiniert werden:
 
-- [Windows Hello for Business-](https://docs.microsoft.com/azure/security/fundamentals/ad-passwordless) eignet sich am besten für Benutzer von dedizierten Windows-Computern.
-- Die Sicherheitsschlüsselanmeldung mit [FIDO2-Sicherheitsschlüsseln](https://docs.microsoft.com/azure/security/fundamentals/ad-passwordless) ist besonders nützlich für Benutzer, die sich bei gemeinsam genutzten Computern wie Kiosken anmelden, sowie in Situationen, in denen die Verwendung von Telefonen eingeschränkt ist, und für hochprivilegierte Identitäten.
-- Die Anmeldung per Telefon mit der [Microsoft Authenticator-App](https://docs.microsoft.com/azure/security/fundamentals/ad-passwordless) ist hilfreich, um für Benutzer mit mobilen Geräten eine kennwortlose Option bereitzustellen. Die Authenticator-App verwandelt jedes iOS- oder Android-Smartphone in eine sichere, kennwortlose Anmeldeinformation und ermöglicht es Benutzern, sich bei beliebigen Plattformen oder Browsern anzumelden. Für die Anmeldung erhalten Benutzer eine Benachrichtigung auf ihrem Smartphone, gleichen eine auf dem Bildschirm angezeigte Zahl mit der Zahl auf ihrem Smartphone ab und verwenden dann zur Bestätigung ihre biometrischen Daten oder ihre PIN.
+- [Windows Hello for Business-](./concept-authentication-passwordless.md) eignet sich am besten für Benutzer von dedizierten Windows-Computern.
+- Die Sicherheitsschlüsselanmeldung mit [FIDO2-Sicherheitsschlüsseln](./concept-authentication-passwordless.md) ist besonders nützlich für Benutzer, die sich bei gemeinsam genutzten Computern wie Kiosken anmelden, sowie in Situationen, in denen die Verwendung von Telefonen eingeschränkt ist, und für hochprivilegierte Identitäten.
+- Die Anmeldung per Telefon mit der [Microsoft Authenticator-App](./concept-authentication-passwordless.md) ist hilfreich, um für Benutzer mit mobilen Geräten eine kennwortlose Option bereitzustellen. Die Authenticator-App verwandelt jedes iOS- oder Android-Smartphone in eine sichere, kennwortlose Anmeldeinformation und ermöglicht es Benutzern, sich bei beliebigen Plattformen oder Browsern anzumelden. Für die Anmeldung erhalten Benutzer eine Benachrichtigung auf ihrem Smartphone, gleichen eine auf dem Bildschirm angezeigte Zahl mit der Zahl auf ihrem Smartphone ab und verwenden dann zur Bestätigung ihre biometrischen Daten oder ihre PIN.
 
 ### <a name="passwordless-authentication-scenarios"></a>Szenarien der kennwortlosen Authentifizierung
 
@@ -59,7 +59,7 @@ Die Methoden zur kennwortlosen Authentifizierung von Microsoft ermöglichen vers
 | **Web-App-Anmeldung**: <br> Von einem Mobilgerät oder Nicht-Windows-Gerät | **Ja** | **Nein** | **Nein** |
 | **Computeranmeldung**: <br> Nicht-Windows-Computer | **Nein** | **Nein** | **Nein** |
 
-Weitere Informationen zum Auswählen der besten Methode für Ihre Organisation finden Sie unter [Auswählen einer kennwortlosen Methode](https://docs.microsoft.com/azure/active-directory/authentication/concept-authentication-passwordless#choose-a-passwordless-method).
+Weitere Informationen zum Auswählen der besten Methode für Ihre Organisation finden Sie unter [Auswählen einer kennwortlosen Methode](./concept-authentication-passwordless.md#choose-a-passwordless-method).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -72,11 +72,11 @@ Für eine kennwortlose Bereitstellung müssen Organisationen die folgenden Vorau
 | [Benutzer haben sich für Azure MFA und SSPR registriert.](howto-registration-mfa-sspr-combined.md) | √ | √ |
 | [Benutzer haben ihre mobilen Geräte für Azure Active Directory registriert](../devices/overview.md) | √ |   |
 | Windows 10, Version 1809 oder höher, mit einem unterstützten Browser wie Microsoft Edge oder Mozilla Firefox <br> (Version 67 oder höher). <br> *Microsoft empfiehlt Version 1903 oder höher für native Unterstützung*. |   | √ |
-| Kompatible FIDO2-Sicherheitsschlüssel. Stellen Sie sicher, dass Sie ein [von Microsoft getestetes und verifiziertes](howto-authentication-passwordless-enable.md) FIDO2-Sicherheitsgerät oder ein anderes kompatibles FIDO2-Sicherheitsgerät verwenden. |   | √ |
+| Kompatible FIDO2-Sicherheitsschlüssel. Stellen Sie sicher, dass Sie ein [von Microsoft getestetes und verifiziertes](./concept-authentication-passwordless.md) FIDO2-Sicherheitsgerät oder ein anderes kompatibles FIDO2-Sicherheitsgerät verwenden. |   | √ |
 
 ### <a name="prerequisites-for-windows-hello-for-business"></a>Voraussetzungen für Windows Hello for Business
 
-Die Voraussetzungen für Windows Hello for Business sind stark davon abhängig, ob Sie die Bereitstellung in einer lokalen Konfiguration, in einer Hybridkonfiguration oder in einer reinen Cloudkonfiguration durchführen. Weitere Informationen finden Sie in der [vollständigen Liste der Voraussetzungen für Windows Hello for Business](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification).
+Die Voraussetzungen für Windows Hello for Business sind stark davon abhängig, ob Sie die Bereitstellung in einer lokalen Konfiguration, in einer Hybridkonfiguration oder in einer reinen Cloudkonfiguration durchführen. Weitere Informationen finden Sie in der [vollständigen Liste der Voraussetzungen für Windows Hello for Business](/windows/security/identity-protection/hello-for-business/hello-identity-verification).
 
 ### <a name="azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication
 
@@ -132,7 +132,7 @@ Weitere Informationen finden Sie auf der Bereitstellungspläneseite unter [Bewä
 
 Die Microsoft Authenticator-App ist als kostenloser Download bei Google Play und im Apple App Store verfügbar. Erfahren Sie mehr über das [Herunterladen der Microsoft Authenticator-App](https://www.microsoft.com/p/microsoft-authenticator/9nblgggzmcj6). Lassen Sie die Benutzer die Microsoft Authenticator-App herunterladen. Befolgen Sie die Anweisungen zum Aktivieren der Anmeldung per Telefon. 
 
-Sie wandelt jedes iOS- oder Android-Telefon in sichere kennwortlose Anmeldeinformationen um. Benutzer können sich bei jeder beliebigen Plattform oder jedem beliebigen Browser anmelden, indem sie eine Benachrichtigung auf ihrem Telefon erhalten, eine auf dem Bildschirm angezeigte Zahl mit der Zahl auf dem Telefon abgleichen und dann ihre biometrischen Daten oder ihre PIN zur Bestätigung verwenden. [Erfahren Sie, wie die Microsoft Authenticator-App funktioniert](https://docs.microsoft.com/azure/active-directory/authentication/concept-authentication-passwordless#microsoft-authenticator-app).
+Sie wandelt jedes iOS- oder Android-Telefon in sichere kennwortlose Anmeldeinformationen um. Benutzer können sich bei jeder beliebigen Plattform oder jedem beliebigen Browser anmelden, indem sie eine Benachrichtigung auf ihrem Telefon erhalten, eine auf dem Bildschirm angezeigte Zahl mit der Zahl auf dem Telefon abgleichen und dann ihre biometrischen Daten oder ihre PIN zur Bestätigung verwenden. [Erfahren Sie, wie die Microsoft Authenticator-App funktioniert](./concept-authentication-passwordless.md#microsoft-authenticator-app).
 
 ![Anmelden mit der Authenticator-App](./media/howto-authentication-passwordless-deployment/passwordless-dp-sign-in.png)
 
@@ -150,7 +150,7 @@ Es gibt drei Arten von Bereitstellungen der kennwortlosen Anmeldung mit Sicherhe
 -    Azure Active Directory-Web-Apps in einem unterstützten Browser
 -    In Azure Active Directory eingebundene Windows 10-Geräte
 -    Windows 10-Geräte mit Azure Active Directory-Hybrideinbindung (Vorschauversion)
-     -    Sie ermöglichen den Zugriff auf cloudbasierte und lokale Ressourcen. Weitere Informationen zum Zugriff auf lokale Ressourcen finden Sie unter [Aktivieren der kennwortlosen Anmeldung mit Sicherheitsschlüsseln bei lokalen Ressourcen mit Azure Active Directory (Vorschauversion)](https://docs.microsoft.com/azure/active-directory/authentication/howto-authentication-passwordless-security-key-on-premises).
+     -    Sie ermöglichen den Zugriff auf cloudbasierte und lokale Ressourcen. Weitere Informationen zum Zugriff auf lokale Ressourcen finden Sie unter [Aktivieren der kennwortlosen Anmeldung mit Sicherheitsschlüsseln bei lokalen Ressourcen mit Azure Active Directory (Vorschauversion)](./howto-authentication-passwordless-security-key-on-premises.md).
 
 Sie müssen **kompatible FIDO2-Sicherheitsschlüssel** aktivieren. Microsoft hat [Schlüsselpartnerschaften mit FIDO2-Schlüsselanbietern](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Microsoft-passwordless-partnership-leads-to-innovation-and-great/ba-p/566493) angekündigt.
 
@@ -164,7 +164,7 @@ Sie müssen **kompatible FIDO2-Sicherheitsschlüssel** aktivieren. Microsoft hat
 -    Vollständig gepatchte Domänenserver unter Windows Server 2016 oder 2019.
 -    Neue Version von Azure AD Connect
 
-Eine vollständige Liste der Anforderungen finden Sie unter [Aktivieren der kennwortlosen Anmeldung mit Sicherheitsschlüsseln bei Windows 10-Geräten mit Azure Active Directory](https://docs.microsoft.com/azure/active-directory/authentication/howto-authentication-passwordless-security-key-windows#requirements).
+Eine vollständige Liste der Anforderungen finden Sie unter [Aktivieren der kennwortlosen Anmeldung mit Sicherheitsschlüsseln bei Windows 10-Geräten mit Azure Active Directory](./howto-authentication-passwordless-security-key-windows.md#requirements).
 
 
 ### <a name="security-key-life-cycle"></a>Lebenszyklus von Sicherheitsschlüsseln
@@ -320,7 +320,7 @@ Führen Sie die Schritte im Artikel [Aktivieren der kennwortlosen Anmeldung mit 
 | --- | --- |
 | Der Benutzer kann keine kombinierte Registrierung ausführen. | Sicherstellen, dass die [kombinierte Registrierung](concept-registration-mfa-sspr-combined.md) aktiviert ist. |
 | Der Benutzer kann in seinen [Sicherheitseinstellungen](https://aka.ms/mysecurityinfo) keinen Sicherheitsschlüssel hinzufügen. | Sicherstellen, dass [Sicherheitsschlüssel](howto-authentication-passwordless-security-key.md) aktiviert sind. |
-| Der Benutzer kann in den Windows 10-Anmeldeoptionen keinen Sicherheitsschlüssel hinzufügen. | [Sicherstellen, dass Sicherheitsschlüssel für die Windows-Anmeldung vorhanden sind](howto-authentication-passwordless-enable.md) |
+| Der Benutzer kann in den Windows 10-Anmeldeoptionen keinen Sicherheitsschlüssel hinzufügen. | [Sicherstellen, dass Sicherheitsschlüssel für die Windows-Anmeldung vorhanden sind](./concept-authentication-passwordless.md) |
 | **Fehlermeldung**: Wir haben festgestellt, dass dieser Browser oder dieses Betriebssystem keine FIDO2-Sicherheitsschlüssel unterstützt. | Kennwortlose FIDO2-Sicherheitsgeräte können nur in unterstützten Browsern (Microsoft Edge, Firefox-Version 67) unter Windows 10, Version 1809 oder höher, registriert werden. |
 | **Fehlermeldung**: Für Ihre Unternehmensrichtlinie müssen Sie eine andere Anmeldungsmethode verwenden. | Unsichere Sicherheitsschlüssel sind im Mandanten aktiviert. |
 | Benutzer kann meinen Sicherheitsschlüssel unter Windows 10, Version 1809 nicht verwalten | Version 1809 erfordert, dass Sie die vom FIDO2-Schlüsselanbieter bereitgestellte Sicherheitsschlüssel-Verwaltungssoftware verwenden. Bitten Sie den Anbieter um Support. |
@@ -331,4 +331,3 @@ Führen Sie die Schritte im Artikel [Aktivieren der kennwortlosen Anmeldung mit 
 - [Aktivieren der kennwortlosen Anmeldung mit Sicherheitsschlüsseln bei Azure AD](howto-authentication-passwordless-security-key.md)
 - [Aktivieren der kennwortlosen Anmeldung mit der Microsoft Authenticator-App (Vorschauversion)](howto-authentication-passwordless-phone.md)
 - [Authentifizierungsmethoden: Nutzung und Erkenntnisse](howto-authentication-methods-usage-insights.md)
-

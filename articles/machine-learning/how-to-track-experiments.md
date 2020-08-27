@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/30/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 7a0fd4178df92cc9102456c1fa2ae4e8927337e4
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 18c7e5b3a1401540d7a94186fda647d413d562c0
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547323"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88723842"
 ---
 # <a name="enable-logging-in-azure-ml-training-runs"></a>Aktivieren der Protokollierung in Azure ML-Trainingsausführungen
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -70,8 +70,6 @@ Sie können denselben Parameter auch in der `wait_for_completion`-Funktion der r
 run.wait_for_completion(show_output=True)
 ```
 
-Ein vollständiges Beispiel-Notebook, das ScriptRunConfigs-Protokolle verwendet, finden Sie unter [Lokales Trainieren eines Modells](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-on-local/train-on-local.ipynb).
-
 ## <a name="native-python-logging"></a>Native Python-Protokollierung
 
 Einige Protokolle im SDK können einen Fehler enthalten, der Sie anweist, den Protokolliergrad auf DEBUG festzulegen. Um den Protokolliergrad festzulegen, fügen Sie Ihrem Skript den folgenden Code hinzu.
@@ -88,8 +86,8 @@ Azure Machine Learning kann während des Trainings auch Informationen aus andere
 Informationen zur Protokollierung von Metriken im Azure Machine Learning-Designer (Vorschauversion) finden Sie unter [Protokollieren von Metriken im Designer (Vorschauversion)](how-to-track-designer-experiments.md)
 
 ## <a name="example-notebooks"></a>Beispielnotebooks
+
 Die folgenden Notebooks verdeutlichen die Konzepte in diesem Artikel:
-* [how-to-use-azureml/training/train-within-notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook)
 * [how-to-use-azureml/training/train-on-local](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-on-local)
 * [how-to-use-azureml/track-and-monitor-experiments/logging-api](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/track-and-monitor-experiments/logging-api)
 

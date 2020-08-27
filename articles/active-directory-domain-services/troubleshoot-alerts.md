@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 07/09/2020
 ms.author: iainfou
-ms.openlocfilehash: 91a060e8a5fe1bdaf3e6ea08811814297c355108
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 29bd7490ea9a03118f134ba11923ede2075e6fd5
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86222971"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88722584"
 ---
 # <a name="known-issues-common-alerts-and-resolutions-in-azure-active-directory-domain-services"></a>Bekannte Probleme: Häufige Warnungen und deren Auflösung in Azure AD Domain Services
 
@@ -106,7 +106,7 @@ Azure AD DS erfordert ein aktives Abonnement und kann nicht in ein anderes Abonn
 
 Azure AD DS erfordert ein aktives Abonnement. Wenn das Azure-Abonnement, dem die verwaltete Domäne zugeordnet war, nicht aktiv ist, müssen Sie es erneuern, um das Abonnement zu reaktivieren.
 
-1. [Erneuern Sie Ihr Azure-Abonnement.](https://docs.microsoft.com/azure/billing/billing-subscription-become-disable)
+1. [Erneuern Sie Ihr Azure-Abonnement.](../cost-management-billing/manage/subscription-disabled.md)
 2. Nachdem das Abonnement erneuert wurde, können Sie mithilfe einer Azure AD DS-Benachrichtigung die verwaltete Domäne erneut aktivieren.
 
 Nach der erneuten Aktivierung der verwalteten Domäne wird die Integrität der verwalteten Domäne innerhalb von zwei Stunden automatisch aktualisiert, und die Warnung wird entfernt.
@@ -162,7 +162,7 @@ Dieser Fehler ist nicht behebbar. Zum Auflösen der Warnung müssen Sie [Ihre vo
 
 Einige automatisch generierte Dienstprinzipale werden zum Verwalten und Erstellen von Ressourcen für eine verwaltete Domäne verwendet. Wenn die Zugriffsberechtigungen für einen dieser Dienstprinzipale geändert werden, können Ressourcen von der Domäne nicht ordnungsgemäß verwaltet werden. In den folgenden Schritten lernen Sie die Zugriffsberechtigungen für Dienstprinzipale kennen und erfahren, wie diese gewährt werden:
 
-1. Lesen Sie hierzu auch [Verwalten des Zugriffs auf Azure-Ressourcen mit RBAC und dem Azure-Portal](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal).
+1. Lesen Sie hierzu auch [Verwalten des Zugriffs auf Azure-Ressourcen mit RBAC und dem Azure-Portal](../role-based-access-control/role-assignments-portal.md).
 2. Überprüfen Sie den Zugriff des Dienstprinzipals mit der ID *abba844e-bc0e-44b0-947a-dc74e5d09022*, und gewähren Sie den Zugriff, der zu einem früheren Zeitpunkt verweigert wurde.
 
 ## <a name="aadds112-not-enough-ip-address-in-the-managed-domain"></a>AADDS112: Nicht genügend IP-Adressen in der verwalteten Domäne
@@ -276,7 +276,7 @@ Die folgenden häufigen Gründe können dazu führen, dass die Synchronisierung 
 
 Azure AD DS erfordert ein aktives Abonnement. Wenn das Azure-Abonnement, dem die verwaltete Domäne zugeordnet war, nicht aktiv ist, müssen Sie es erneuern, um das Abonnement zu reaktivieren.
 
-1. [Erneuern Sie Ihr Azure-Abonnement.](https://docs.microsoft.com/azure/billing/billing-subscription-become-disable)
+1. [Erneuern Sie Ihr Azure-Abonnement.](../cost-management-billing/manage/subscription-disabled.md)
 2. Nachdem das Abonnement erneuert wurde, können Sie mithilfe einer Azure AD DS-Benachrichtigung die verwaltete Domäne erneut aktivieren.
 
 Nach der erneuten Aktivierung der verwalteten Domäne wird die Integrität der verwalteten Domäne innerhalb von zwei Stunden automatisch aktualisiert, und die Warnung wird entfernt.

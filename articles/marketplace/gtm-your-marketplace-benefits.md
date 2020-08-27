@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/06/2020
 author: keferna
 ms.author: keferna
-ms.openlocfilehash: e9fe02903d2dc76c931e58682a0d632d5e492963
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 0a98bf7d6a035dbf293bda5d8afe5d0e1130f58f
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88607388"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88705553"
 ---
 # <a name="your-commercial-marketplace-benefits"></a>Ihre Vorteile des kommerziellen Marketplace
 
@@ -26,7 +26,7 @@ Marketplace-Prämien sind darauf ausgelegt, Sie in Ihrer ganz persönlichen Wach
 
 Das Programm erzeugt eine positive Rückkopplung: Die Vorteile in den einzelnen Wachstumsphasen sind so konzipiert, dass Sie zur nächsten Phase fortschreiten können. Sie können so Ihr Unternehmen im Geschäftsfeld von Microsoft und über den Kanal von Microsoft auf Microsoft-Kunden ausweiten, indem Sie den kommerziellen Marketplace als Plattform nutzen.
 
-Ihre Vorteile variieren in Abhängigkeit davon, ob es sich bei Ihrem Angebot um [List, Trial oder Transact](determine-your-listing-type.md#choose-a-call-to-action) handelt.
+Ihre Vorteile variieren in Abhängigkeit davon, ob es sich bei Ihrem Angebot um [List, Trial oder Transact](determine-your-listing-type.md#choose-a-listing-option) handelt.
 
 Sie werden basierend auf Ihrer Berechtigung von einem Mitglied des Prämienteams kontaktiert, wenn Ihr Angebot veröffentlicht wird.
 

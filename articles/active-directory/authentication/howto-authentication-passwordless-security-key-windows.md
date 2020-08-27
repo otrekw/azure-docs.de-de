@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: acf7f89ab7c84d74dcd6e3dff2c2c688da1cefea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d70fe8a1fbaee285843bfd76ad2a8076df96b49b
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85550615"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88717964"
 ---
 # <a name="enable-passwordless-security-key-sign-in-to-windows-10-devices-with-azure-active-directory-preview"></a>Aktivieren der kennwortlosen Anmeldung mit Sicherheitsschlüsseln bei Windows 10-Geräten mit Azure Active Directory (Vorschauversion)
 
@@ -37,7 +37,7 @@ In diesem Dokument liegt der Schwerpunkt auf der Aktivierung der auf FIDO2-Siche
 | [In Azure AD Hybrid eingebundene Geräte](../devices/concept-azure-ad-join-hybrid.md) erfordern Windows 10, Version 2004 oder höher |   | X |
 | Vollständig gepatchte Windows Server 2016/2019-Domänencontroller. |   | X |
 | [Azure AD Connect](../hybrid/how-to-connect-install-roadmap.md#install-azure-ad-connect) Version 1.4.32.0 oder höher |   | X |
-| [Microsoft Intune](https://docs.microsoft.com/intune/fundamentals/what-is-intune) (optional) | X | X |
+| [Microsoft Intune](/intune/fundamentals/what-is-intune) (optional) | X | X |
 | Bereitstellungspaket (optional) | X | X |
 | Gruppenrichtlinie (optional) |   | X |
 
@@ -100,7 +100,7 @@ Verwenden Sie zum Festlegen bestimmter Gerätegruppen als Ziel die folgenden ben
       - OMA-URI: ./Device/Vendor/MSFT/PassportForWork/SecurityKey/UseSecurityKeyForSignin
       - Datentyp: Integer
       - Wert: 1
-1. Diese Richtlinie kann bestimmten Benutzern, Geräten oder Gruppen zugewiesen werden. Weitere Informationen finden Sie unter [Zuweisen von Benutzer- und Geräteprofilen in Microsoft Intune](https://docs.microsoft.com/intune/device-profile-assign).
+1. Diese Richtlinie kann bestimmten Benutzern, Geräten oder Gruppen zugewiesen werden. Weitere Informationen finden Sie unter [Zuweisen von Benutzer- und Geräteprofilen in Microsoft Intune](/intune/device-profile-assign).
 
 ![Screenshot: Richtlinienerstellung für die benutzerdefinierte Gerätekonfiguration in Intune](./media/howto-authentication-passwordless-security-key/intune-custom-profile.png)
 
@@ -122,10 +122,10 @@ Für nicht von Intune verwaltete Geräte können Sie ein Bereitstellungspaket in
 1. Notieren Sie sich den Pfad oder ändern Sie diesen im Fenster **Erstellen** unter **Speicherort des Bereitstellungspakets auswählen**, und klicken Sie dann auf **Weiter**.
 1. Klicken Sie auf der Seite **Bereitstellungspaket erstellen** auf **Erstellen**.
 1. Speichern Sie die zwei erstellten Dateien (*ppkg* und *cat*) an einem Speicherort, von dem aus Sie sie später auf Computer anwenden können.
-1. Um das von Ihnen erstellte Bereitstellungspaket anzuwenden, befolgen Sie die Anweisungen unter [Anwenden eines Bereitstellungspakets](https://docs.microsoft.com/windows/configuration/provisioning-packages/provisioning-apply-package).
+1. Um das von Ihnen erstellte Bereitstellungspaket anzuwenden, befolgen Sie die Anweisungen unter [Anwenden eines Bereitstellungspakets](/windows/configuration/provisioning-packages/provisioning-apply-package).
 
 > [!NOTE]
-> Auf Geräten unter Windows 10 (Version 1809) muss auch der Modus für freigegebene PCs (*EnableSharedPCMode*) aktiviert werden. Weitere Informationen zum Aktivieren dieser Funktion finden Sie unter [Einrichten eines freigegebenen oder Gast-PCs unter Windows 10](https://docs.microsoft.com/windows/configuration/set-up-shared-or-guest-pc).
+> Auf Geräten unter Windows 10 (Version 1809) muss auch der Modus für freigegebene PCs (*EnableSharedPCMode*) aktiviert werden. Weitere Informationen zum Aktivieren dieser Funktion finden Sie unter [Einrichten eines freigegebenen oder Gast-PCs unter Windows 10](/windows/configuration/set-up-shared-or-guest-pc).
 
 ### <a name="enable-with-group-policy"></a>Aktivieren mit Gruppenrichtlinie
 

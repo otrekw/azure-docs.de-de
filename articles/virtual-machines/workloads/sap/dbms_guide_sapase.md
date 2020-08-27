@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 04/13/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 82dbb73da06097407d91f23d4d372aaa4cc76e99
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: ce13c3bce7cdeb0f3e6dcf1f731be22d93a65587
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88510894"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654598"
 ---
 # <a name="sap-ase-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Azure Virtual Machines – SAP ASE-DBMS-Bereitstellung für SAP-Workload
 
@@ -71,7 +71,7 @@ SAP ASE schreibt Daten sequenziell in Datenträgerspeichergeräte, sofern sie ni
 Es wird empfohlen, die automatische Datendankerweiterung so zu konfigurieren, wie im Artikel [Configuring Automatic Database Space Expansion in SAP Adaptive Server Enterprise](https://blogs.sap.com/2014/07/09/configuring-automatic-database-space-expansion-in-sap-adaptive-server-enterprise/) (Konfigurieren der automatischen Datenbankspeichererweiterung in SAP Adaptive Server Enterprise) und im [SAP-Supporthinweis Nr. 1815695](https://launchpad.support.sap.com/#/notes/1815695) beschrieben wird. 
 
 ### <a name="sample-sap-ase-on-azure-virtual-machine-disk-and-file-system-configurations"></a>Beispielkonfigurationen für SAP ASE auf virtuellen Azure-Computern, Datenträgern und Dateisystemen 
-Die nachstehenden Vorlagen zeigen Beispielkonfigurationen für Linux und Windows. Vergewissern Sie sich vor der Bestätigung des virtuellen Computers und der Datenträgerkonfiguration, dass die Netzwerk- und Speicherbandbreitenkontingente der einzelnen virtuellen Computer ausreichen, um die Geschäftsanforderungen zu erfüllen. Beachten Sie außerdem, dass unterschiedliche Azure-VM-Typen eine unterschiedliche maximale Anzahl von Datenträgern aufweisen, die an den virtuellen Computer angefügt werden können. Beispielsweise hat eine E4s_v3-VM einen Speicher-E/A-Durchsatz mit einem Grenzwert von 48 MB/Sek. Wenn der für die Datenbanksicherungsaktivität erforderliche Speicherdurchsatz mehr als 48 MB/Sek. erfordert, ist ein größerer VM-Typ mit mehr Speicherbandbreitendurchsatz unvermeidlich. Beim Konfigurieren von Azure Storage müssen Sie auch bedenken, dass sich vor allem bei [Azure Storage Premium](../../windows/premium-storage-performance.md) der Durchsatz und die IOPS pro GB Kapazität ändern. Weitere Informationen zu diesem Thema finden Sie im Artikel [Welche Datenträgertypen stehen in Azure zur Verfügung?](../../windows/disks-types.md). Die Kontingente für bestimmte Azure-VM-Typen werden im Artikel [Arbeitsspeicheroptimierte Größen virtueller Computer](../../sizes-memory.md) und den damit verlinkten Artikeln dokumentiert. 
+Die nachstehenden Vorlagen zeigen Beispielkonfigurationen für Linux und Windows. Vergewissern Sie sich vor der Bestätigung des virtuellen Computers und der Datenträgerkonfiguration, dass die Netzwerk- und Speicherbandbreitenkontingente der einzelnen virtuellen Computer ausreichen, um die Geschäftsanforderungen zu erfüllen. Beachten Sie außerdem, dass unterschiedliche Azure-VM-Typen eine unterschiedliche maximale Anzahl von Datenträgern aufweisen, die an den virtuellen Computer angefügt werden können. Beispielsweise hat eine E4s_v3-VM einen Speicher-E/A-Durchsatz mit einem Grenzwert von 48 MB/Sek. Wenn der für die Datenbanksicherungsaktivität erforderliche Speicherdurchsatz mehr als 48 MB/Sek. erfordert, ist ein größerer VM-Typ mit mehr Speicherbandbreitendurchsatz unvermeidlich. Beim Konfigurieren von Azure Storage müssen Sie auch bedenken, dass sich vor allem bei [Azure Storage Premium](../../windows/premium-storage-performance.md) der Durchsatz und die IOPS pro GB Kapazität ändern. Weitere Informationen zu diesem Thema finden Sie im Artikel [Welche Datenträgertypen stehen in Azure zur Verfügung?](../../disks-types.md). Die Kontingente für bestimmte Azure-VM-Typen werden im Artikel [Arbeitsspeicheroptimierte Größen virtueller Computer](../../sizes-memory.md) und den damit verlinkten Artikeln dokumentiert. 
 
 > [!NOTE]
 >  Wenn ein DBMS-System von einem lokalen Standort nach Azure verschoben wird, wird empfohlen, die Überwachung auf dem virtuellen Computer durchzuführen sowie CPU, Arbeitsspeicher, IOPS und den Speicherdurchsatz zu bewerten. Vergleichen Sie die Spitzenwerte, die bei den in den oben erwähnten Artikeln dokumentierten VM-Kontingentgrenzwerten festgestellt wurden.

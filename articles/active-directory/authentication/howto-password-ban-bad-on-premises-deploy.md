@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7870b62dea01f680126f5b4aac3dc2328407cd61
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 759a5fa2be5a3df50160d2fd0ac4231c9f49329b
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82143226"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88718950"
 ---
 # <a name="plan-and-deploy-on-premises-azure-active-directory-password-protection"></a>Planen und Bereitstellen des lokalen Azure AD-Kennwortschutzes
 
@@ -101,7 +101,7 @@ Die folgenden Anforderungen gelten für den Azure AD-Kennwortschutz-DC-Agent:
     * Die Active Directory-Domäne oder -Gesamtstruktur muss sich nicht ebenfalls in einer Windows Server 2012-Domänenfunktionsebene oder der Funktionsebene der Gesamtstruktur befinden. Wie unter [Entwurfsprinzipien](concept-password-ban-bad-on-premises.md#design-principles) ausgeführt, gibt es für das Ausführen des DC-Agents oder der Proxysoftware keine Mindestanforderungen an die Domänenfunktionsebene (DFL) oder die Funktionsebene der Gesamtstruktur (FFL).
 * Auf allen Computern, auf denen der Azure AD-Kennwortschutz-DC-Agent ausgeführt wird, muss .NET 4.5 installiert sein.
 * Alle Active Directory-Domänen, die den DC-Agent-Dienst für den Azure AD-Kennwortschutz ausführen, müssen DFSR (Distributed File System Replication) für die SYSVOL-Replikation verwenden.
-   * Sollte DFSR von Ihrer Domäne noch nicht verwendet werden, müssen Sie vor der Installation des Azure AD-Kennwortschutzes eine Migration durchführen. Weitere Informationen finden Sie im [Migrationshandbuch für die SYSVOL-Replikation: Replikation von FRS zu DFS](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd640019(v=ws.10))
+   * Sollte DFSR von Ihrer Domäne noch nicht verwendet werden, müssen Sie vor der Installation des Azure AD-Kennwortschutzes eine Migration durchführen. Weitere Informationen finden Sie im [Migrationshandbuch für die SYSVOL-Replikation: Replikation von FRS zu DFS](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd640019(v=ws.10))
 
     > [!WARNING]
     > Die DC-Agent-Software für den Azure AD-Kennwortschutz wird derzeit auf Domänencontrollern in Domänen installiert, von denen noch FRS (die Vorgängertechnologie zu DFSR) für die SYSVOL-Replikation verwendet wird. Die Software funktioniert in dieser Umgebung allerdings NICHT ordnungsgemäß.
@@ -124,14 +124,14 @@ Die folgenden Anforderungen gelten für den Azure AD-Kennwortschutz-Proxydienst
 * Alle Computer, auf denen der Proxydienst für den Azure AD-Kennwortschutz gehostet wird, müssen so konfiguriert werden, dass Domänencontrollern die Anmeldung beim Proxydienst ermöglicht wird. Dies wird über die Zuweisung der Berechtigung „Auf diesen Computer vom Netzwerk aus zugreifen“ gesteuert.
 * Alle Computer, die den Proxydienst für den Azure AD-Kennwortschutz hosten, müssen so konfiguriert sein, dass sie ausgehenden HTTP-Datenverkehr mit TLS 1.2 zulassen.
 * Ein *globales Administratorkonto* zum Registrieren des Azure AD-Kennwortschutz-Proxydiensts und der Gesamtstruktur bei Azure AD.
-* Außerdem müssen Sie Netzwerkzugriff für die Ports und URLs aktivieren, die im Artikel [Setupprozeduren für die Anwendungsproxyumgebung](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-add-on-premises-application#prepare-your-on-premises-environment) angegeben sind.
+* Außerdem müssen Sie Netzwerkzugriff für die Ports und URLs aktivieren, die im Artikel [Setupprozeduren für die Anwendungsproxyumgebung](../manage-apps/application-proxy-add-on-premises-application.md#prepare-your-on-premises-environment) angegeben sind.
 
 ### <a name="microsoft-azure-ad-connect-agent-updater-prerequisites"></a>Voraussetzungen für Microsoft Azure AD Connect Agent Updater
 
 Der Microsoft Azure AD Connect Agent Updater-Dienst wird zusammen mit dem Azure AD-Kennwortschutz-Proxydienst installiert. Damit der Microsoft Azure AD Connect Agent Updater-Dienst funktionieren kann, ist eine zusätzliche Konfiguration erforderlich:
 
-* Wenn in Ihrer Umgebung ein HTTP-Proxyserver verwendet wird, befolgen Sie die im Artikel [Verwenden von vorhandenen lokalen Proxyservern](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-configure-connectors-with-proxy-servers) angegebenen Richtlinien.
-* Der Microsoft Azure AD Connect Agent Updater-Dienst erfordert auch die TLS 1.2-Schritte, die in den [TLS-Anforderungen](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-add-on-premises-application#tls-requirements) angegeben werden.
+* Wenn in Ihrer Umgebung ein HTTP-Proxyserver verwendet wird, befolgen Sie die im Artikel [Verwenden von vorhandenen lokalen Proxyservern](../manage-apps/application-proxy-configure-connectors-with-proxy-servers.md) angegebenen Richtlinien.
+* Der Microsoft Azure AD Connect Agent Updater-Dienst erfordert auch die TLS 1.2-Schritte, die in den [TLS-Anforderungen](../manage-apps/application-proxy-add-on-premises-application.md#tls-requirements) angegeben werden.
 
 > [!WARNING]
 > Für den Azure AD-Kennwortschutz-Proxy und den Azure AD-Anwendungsproxy werden unterschiedliche Versionen des Microsoft Azure AD Connect Agent Updater-Diensts installiert. Daher beziehen sich die Anweisungen auf Inhalte für den Anwendungsproxy. Diese verschiedenen Versionen sind nicht kompatibel, wenn sie parallel installiert sind. Eine solche parallele Installation verhindert, dass der Agent Updater-Dienst Azure für Softwareupdates kontaktiert. Sie sollten also nie den Azure AD-Kennwortschutzproxy und den Azure AD-Anwendungsproxy auf demselben Computer installieren.
