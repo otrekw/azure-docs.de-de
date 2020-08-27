@@ -4,19 +4,19 @@ ms.author: dapine
 ms.date: 06/25/2019
 ms.service: cognitive-services
 ms.topic: include
-ms.openlocfilehash: 84cd8ed79281b005407b5a857398b5669635c072
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ce4cc68826b39b5707549afc799d2d214e8876c6
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "68320490"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88638900"
 ---
 Wenn Sie einen HTTP-Proxy für ausgehende Anforderungen konfigurieren müssen, verwenden Sie diese zwei Argumente:
 
 | Name | Datentyp | BESCHREIBUNG |
 |--|--|--|
-|HTTP_PROXY|string|Der zu verwendende Proxy, z. B. `http://proxy:8888`.<br>`<proxy-url>`|
-|HTTP_PROXY_CREDS|string|Beliebige Anmeldeinformationen, die zur Authentifizierung bei dem Proxy erforderlich sind, z. B. Benutzername:Kennwort.|
+|HTTPS_PROXY|string|Der zu verwendende Proxy, z. B. `https://proxy:8888`.<br>`<proxy-url>`|
+|HTTPS_PROXY_CREDS|string|Beliebige Anmeldeinformationen, die zur Authentifizierung bei dem Proxy erforderlich sind, z. B. Benutzername:Kennwort.|
 |`<proxy-user>`|string|Der Benutzer für den Proxy.|
 |`<proxy-password>`|string|Das Kennwort, das dem `<proxy-user>` für den Proxy zugeordnet ist.|
 ||||
@@ -30,6 +30,6 @@ docker run --rm -it -p 5000:5000 \
 Eula=accept \
 Billing=<endpoint> \
 ApiKey=<api-key> \
-HTTP_PROXY=<proxy-url> \
-HTTP_PROXY_CREDS=<proxy-user>:<proxy-password> \
+HTTPS_PROXY=<proxy-url> \
+HTTPS_PROXY_CREDS=<proxy-user>:<proxy-password> \
 ```
