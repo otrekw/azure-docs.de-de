@@ -1,14 +1,14 @@
 ---
 title: Erstellen von Richtlinien für Gastkonfigurationen für Linux
 description: Hier wird beschrieben, wie Sie eine Azure Policy-Richtlinie für Gastkonfigurationen für Linux erstellen.
-ms.date: 03/20/2020
+ms.date: 08/17/2020
 ms.topic: how-to
-ms.openlocfilehash: 5ce6dce034c9479924901e5a20b38c343dd8bac6
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 8bf01d8f69439f7b4d60fba76de0b7abf636c274
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86026711"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88547719"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-linux"></a>Erstellen von Richtlinien für Gastkonfigurationen für Linux
 
@@ -25,9 +25,8 @@ Verwenden Sie die folgenden Aktionen, um Ihre eigene Konfiguration zum Überprü
 > [!IMPORTANT]
 > Benutzerdefinierte Richtlinien für Gastkonfigurationen sind eine Previewfunktion.
 >
-> Die Gastkonfigurationserweiterung ist zum Durchführen von Überprüfungen in virtuellen Azure-Computern erforderlich.
-> Weisen Sie die folgende Richtliniendefinition zu, um die Erweiterung auf allen Linux-Computern im gewünschten Umfang bereitzustellen:
->   - [Erforderliche Komponenten bereitstellen, um die Gastkonfigurationsrichtlinie auf Linux-VMs zu aktivieren](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffb27e9e0-526e-4ae1-89f2-a2a0bf0f8a50)
+> Die Gastkonfigurationserweiterung ist zum Durchführen von Überprüfungen in virtuellen Azure-Computern erforderlich. Weisen Sie die folgende Richtliniendefinition zu, um die Erweiterung auf allen Linux-Computern im gewünschten Umfang bereitzustellen:
+> - [Erforderliche Komponenten bereitstellen, um die Gastkonfigurationsrichtlinie auf Linux-VMs zu aktivieren](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffb27e9e0-526e-4ae1-89f2-a2a0bf0f8a50)
 
 ## <a name="install-the-powershell-module"></a>Installieren des PowerShell-Moduls
 
@@ -51,11 +50,14 @@ Betriebssysteme, unter denen das Modul installiert werden kann:
 - macOS
 - Windows
 
+> [!NOTE]
+> Das Cmdlet „Test-GuestConfigurationPackage“ erfordert die OpenSSL-Version 1.0, da eine Abhängigkeit von OMI besteht. Dies führt zu einem Fehler in Umgebungen mit OpenSSL 1.1 oder höher.
+
 Für das Ressourcenmodul für Gastkonfigurationen wird die folgende Software benötigt:
 
 - PowerShell 6.2 oder höher. Falls es noch nicht installiert ist, befolgen Sie [diese Anweisungen](/powershell/scripting/install/installing-powershell).
 - Azure PowerShell 1.5.0 oder höher. Falls es noch nicht installiert ist, befolgen Sie [diese Anweisungen](/powershell/azure/install-az-ps).
-  - Nur die AZ-Module „Az.Accounts“ und „Az.Resources“ sind erforderlich.
+  - Nur die Az-Module „Az.Accounts“ und „Az.Resources“ sind erforderlich.
 
 ### <a name="install-the-module"></a>Installieren des Moduls
 
@@ -77,7 +79,8 @@ Führen Sie zum Installieren des Moduls **GuestConfiguration** in PowerShell die
 
 ## <a name="guest-configuration-artifacts-and-policy-for-linux"></a>Artefakte und Richtlinien für Gastkonfigurationen für Linux
 
-Auch in Linux-Umgebungen verwendet die Gastkonfiguration die Konfiguration des gewünschten Zustands (Desired State Configuration, DSC) als Sprachabstraktion. Die Implementierung basiert auf nativem Code (C++), sodass ein Laden von PowerShell nicht erforderlich ist. Es wird jedoch eine MOF-Konfiguration benötigt, die Details der Umgebung beschreibt. DSC fungiert als Wrapper für InSpec, um dessen Ausführung, die Bereitstellung von Parametern und die Rückgabe von Ausgaben an den Dienst zu standardisieren. Bei der Arbeit mit benutzerdefinierten InSpec-Inhalten sind nur geringe Kenntnisse über DSC erforderlich.
+Auch in Linux-Umgebungen verwendet die Gastkonfiguration die Konfiguration des gewünschten Zustands (Desired State Configuration, DSC) als Sprachabstraktion. Die Implementierung basiert auf nativem Code (C++), sodass ein Laden von PowerShell nicht erforderlich ist. Es wird jedoch eine MOF-Konfiguration benötigt, die Details der Umgebung beschreibt.
+DSC fungiert als Wrapper für InSpec, um dessen Ausführung, die Bereitstellung von Parametern und die Rückgabe von Ausgaben an den Dienst zu standardisieren. Bei der Arbeit mit benutzerdefinierten InSpec-Inhalten sind nur geringe Kenntnisse über DSC erforderlich.
 
 #### <a name="configuration-requirements"></a>Konfigurationsanforderungen
 
@@ -137,8 +140,6 @@ AuditFilePathExists -out ./Config
 Speichern Sie diese Datei mit dem Namen `config.ps1` im Projektordner. Führen Sie sie in PowerShell aus, indem Sie `./config.ps1` im Terminal ausführen. Eine neue MOF-Datei wird erstellt.
 
 Der Befehl `Node AuditFilePathExists` ist aus technischer Sicht nicht erforderlich, doch wird damit eine Datei namens `AuditFilePathExists.mof` anstelle der Standarddatei `localhost.mof` erstellt. Wenn der Name der MOF-Datei der Konfiguration folgt, können beim Arbeiten in großem Umfang viele Dateien problemlos organisiert werden.
-
-
 
 Sie sollten jetzt über folgende Projektstruktur verfügen:
 
@@ -260,6 +261,8 @@ Parameter des Cmdlets `New-GuestConfigurationPolicy`:
 - **Version**: Version der Richtlinie.
 - **Pfad**: Zielpfad, unter dem Richtliniendefinitionen erstellt werden.
 - **Plattform**: Zielplattform (Windows/Linux) für das Paket mit den Richtlinien und dem Inhalt der Gastkonfiguration.
+- Mit **Tag** werden der Richtliniendefinition ein oder mehrere Tags hinzugefügt.
+- Mit **Category** wird das Feld mit den Kategoriemetadaten in der Richtliniendefinition festgelegt.
 
 Im folgenden Beispiel werden die Richtliniendefinitionen in einem angegebenen Pfad aus einem benutzerdefinierten Richtlinienpaket erstellt:
 
@@ -282,16 +285,7 @@ Mit `New-GuestConfigurationPolicy` werden die folgenden Dateien erstellt:
 
 In der Ausgabe des Cmdlets wird ein Objekt zurückgegeben, das den Anzeigenamen der Initiative und den Pfad der Richtliniendateien enthält.
 
-> [!Note]
-> Das aktuelle Gastkonfigurationsmodul enthält neue Parameter:
-> - Mit **Tag** werden der Richtliniendefinition ein oder mehrere Tags hinzugefügt.
->   - Weitere Informationen finden Sie im Abschnitt [Filtern von Richtlinien der Gastkonfiguration mit Tags](#filtering-guest-configuration-policies-using-tags).
-> - Mit **Category** wird das Feld mit den Kategoriemetadaten in der Richtliniendefinition festgelegt.
->   - Wenn der Parameter nicht hinzugefügt wird, wird standardmäßig „Gastkonfiguration“ als Kategorie verwendet.
-> Diese Features befinden sich derzeit in der Vorschauphase. Hierfür ist Version  1.20.1 des Gastkonfigurationsmoduls erforderlich, das Sie mit `Install-Module GuestConfiguration -AllowPrerelease` installieren können.
-
-Abschließend veröffentlichen Sie die Richtliniendefinitionen mit dem Cmdlet `Publish-GuestConfigurationPolicy`.
-Das Cmdlet verfügt nur über den Parameter **Path**, mit dem auf den Speicherort der JSON-Dateien verwiesen wird, die mit `New-GuestConfigurationPolicy` erstellt werden.
+Abschließend veröffentlichen Sie die Richtliniendefinitionen mit dem Cmdlet `Publish-GuestConfigurationPolicy`. Das Cmdlet verfügt nur über den Parameter **Path**, mit dem auf den Speicherort der JSON-Dateien verwiesen wird, die mit `New-GuestConfigurationPolicy` erstellt werden.
 
 Um den Veröffentlichungsbefehl auszuführen, benötigen Sie Zugriff zum Erstellen von Richtlinien in Azure. Die entsprechenden Autorisierungsanforderungen sind auf der Seite mit der [Übersicht über Azure Policy](../overview.md) dokumentiert. Die beste integrierte Rolle ist **Mitwirkender bei Ressourcenrichtlinien**.
 
@@ -405,9 +399,6 @@ Die einfachste Möglichkeit zum Freigeben eines aktualisierten Pakets ist das Wi
 
 ### <a name="filtering-guest-configuration-policies-using-tags"></a>Filtern von Richtlinien der Gastkonfiguration mit Tags
 
-> [!Note]
-> Dieses Feature befindet sich derzeit in der Vorschauphase. Hierfür ist Version  1.20.1 des Gastkonfigurationsmoduls erforderlich, das Sie mit `Install-Module GuestConfiguration -AllowPrerelease` installieren können.
-
 Die mit Cmdlets im Gastkonfigurationsmodul erstellten Richtlinien können optional einen Filter für Tags enthalten. Der Parameter **-Tag** von `New-GuestConfigurationPolicy` unterstützt ein Array mit Hashtabellen, die die einzelnen Tageinträge enthalten. Die Tags werden dem Abschnitt `If` der Richtliniendefinition hinzugefügt und können nicht per Richtlinienzuweisung geändert werden.
 
 Unten ist ein Beispielcodeausschnitt einer Richtliniendefinition angegeben, mit der nach Tags gefiltert wird.
@@ -464,5 +455,5 @@ Verwenden Sie zum Abrufen weiterer Informationen zu den Cmdlets in diesem Tool d
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Informieren Sie sich über die Überprüfung von VMs mit [Gastkonfiguration](../concepts/guest-configuration.md).
-- Informieren Sie sich über das [programmgesteuerte Erstellen von Richtlinien](programmatically-create.md).
-- Informieren Sie sich über das [Abrufen von Konformitätsdaten](get-compliance-data.md).
+- Informieren Sie sich über das [programmgesteuerte Erstellen von Richtlinien](./programmatically-create.md).
+- Informieren Sie sich über das [Abrufen von Konformitätsdaten](./get-compliance-data.md).

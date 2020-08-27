@@ -7,16 +7,16 @@ ms.topic: article
 author: keferna
 ms.author: keferna
 ms.date: 07/14/2020
-ms.openlocfilehash: 8ac69d7d611aa75584955ed6ed83ab79c70ed73a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 51f4c9a5748896eff9e9f3ae9719b2e7e7cdd4e7
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87082803"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607487"
 ---
 # <a name="cloud-solution-provider-program"></a>Cloud Solution Provider-Programm
 
-In diesem Artikel wird erläutert, wie Sie Ihr Angebot so konfigurieren, dass es im Cloud Solution Provider-Programm (CSP) verfügbar ist. Sie können Ihre Angebote nicht nur über [Webstorefronts im kommerziellen Marketplace](comparing-appsource-azure-marketplace.md), sondern auch über das CSP-Programm verkaufen, um Millionen berechtigter Microsoft-Kunden zu erreichen, die das Programm nutzen können.
+In diesem Artikel wird erläutert, wie Sie Ihr Angebot so konfigurieren, dass es im Cloud Solution Provider-Programm (CSP) verfügbar ist. Sie können Ihre Angebote nicht nur über [Onlineshops im kommerziellen Marketplace](comparing-appsource-azure-marketplace.md), sondern auch über das CSP-Programm verkaufen, um Millionen berechtigter Microsoft-Kunden zu erreichen, die das Programm nutzen können.
 
 Sie können neue oder bestehende Angebote für die Verfügbarkeit im CSP-Programm auf Abonnementbasis konfigurieren, sodass CSP-Partner Ihre Produkte verkaufen und gebündelte Lösungen für Kunden erstellen können.
 
@@ -166,7 +166,7 @@ Wenn für Ihr Angebot derzeit **Option 3: Keine Partner im CSP-Programm** ausgew
 
 ## <a name="sharing-sales-and-support-materials-with-partners-in-the-csp-program"></a>Bereitstellen von Verkaufs- und Begleitmaterialien für Partner im CSP-Programm
 
-Um es Partnern im Cloud Solution Provider-Programm zu ermöglichen, Ihr Angebot bestmöglich zu präsentieren und mit Ihrem Unternehmen in Kontakt zu treten, müssen Sie Verkaufs- und Begleitmaterialien übermitteln, die den Handelspartnern dann zur Verfügung stehen. Diese Ressourcen werden Kunden in den digitalen Marketplace-Ladenzeilen nicht verfügbar gemacht.
+Um es Partnern im Cloud Solution Provider-Programm zu ermöglichen, Ihr Angebot bestmöglich zu präsentieren und mit Ihrem Unternehmen in Kontakt zu treten, müssen Sie Verkaufs- und Begleitmaterialien übermitteln, die den Handelspartnern dann zur Verfügung stehen. Diese Ressourcen stehen Kunden in den Onlineshops nicht zur Verfügung.
 
 ### <a name="partner-center-csp-channel"></a>Partner Center-CSP-Kanal
 

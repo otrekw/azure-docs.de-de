@@ -12,12 +12,12 @@ ms.date: 02/03/2020
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: 3b529c8112683281148751091ee93dd12ae73b4a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dbe05f264b0fca6c1a5e8e7d944d94a6bed55392
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83741924"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798022"
 ---
 # <a name="perform-an-access-review-from-the-my-apps-portal"></a>Durchführen einer Zugriffsüberprüfung im Portal „Meine Apps“
 
@@ -28,7 +28,7 @@ Sollten Sie keinen Zugriff auf das Portal **Meine Apps** haben, wenden Sie sich 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-portal.md)]
 
 >[!Important]
->Dieser Inhalt richtet sich an Benutzer von **Meine Apps**. Administratoren können sich in der [Dokumentation zur Anwendungsverwaltung](https://docs.microsoft.com/azure/active-directory/manage-apps) über die Einrichtung und Verwaltung cloudbasierter Apps informieren.
+>Dieser Inhalt richtet sich an Benutzer von **Meine Apps**. Administratoren können sich in der [Dokumentation zur Anwendungsverwaltung](../manage-apps/index.yml) über die Einrichtung und Verwaltung cloudbasierter Apps informieren.
 
 ## <a name="manage-access-reviews"></a>Verwalten von Zugriffsüberprüfungen
 
@@ -58,7 +58,7 @@ Wenn Ihr Administrator Ihnen die Berechtigung zum Durchführen eigener Zugriffs�
     ![Seite „Zugriffsüberprüfung“ mit den Details zur Überprüfung](media/my-apps-portal/my-apps-portal-perform-access-reviews-page.png)
 
     >[!Note]
-    >Wenn Sie Administrator sind und den Zugriff Ihrer Organisation auf Gruppen und Apps überprüfen können, wird eine andere Seite angezeigt. Weitere Informationen zum Überprüfen des Zugriffs auf Gruppen oder Apps für Ihre Organisation finden Sie unter [Prüfen des Zugriffs auf Gruppen und Anwendungen mit Azure AD-Zugriffsüberprüfungen](https://docs.microsoft.com/azure/active-directory/governance/perform-access-review).
+    >Wenn Sie Administrator sind und den Zugriff Ihrer Organisation auf Gruppen und Apps überprüfen können, wird eine andere Seite angezeigt. Weitere Informationen zum Überprüfen des Zugriffs auf Gruppen oder Apps für Ihre Organisation finden Sie unter [Prüfen des Zugriffs auf Gruppen und Anwendungen mit Azure AD-Zugriffsüberprüfungen](../governance/perform-access-review.md).
 
 6. Wählen Sie **Ja** aus, um den Zugriff zu behalten, oder wählen Sie **Nein** aus, um Ihren Zugriff zu entfernen.
 

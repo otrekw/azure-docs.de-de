@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: mingshen
 author: mingshen-ms
-ms.openlocfilehash: 20d14d656132b2809fe5a79d909c27799438a247
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 9f488675e4f2437982e2426da73b4db1a713905d
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87280935"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607290"
 ---
 # <a name="saas-applications-offer-publishing-guide"></a>SaaS-Anwendungen: Leitfaden für die Veröffentlichung von Angeboten
 
@@ -21,10 +21,10 @@ Sie können SaaS-Anwendungen im kommerziellen Marketplace mit drei verschiedenen
 
 ## <a name="offer-overview"></a>Angebotsübersicht  
 
-SaaS-Anwendungen sind in Microsoft AppSource und Azure Marketplace verfügbar.  Beide Storefronts unterstützen das Auflisten von Angeboten, Testversionen und Transaktionsangebote.
+SaaS-Anwendungen sind in Microsoft AppSource und Azure Marketplace verfügbar.  Beide Onlineshops unterstützen das Auflisten von Angeboten, Testversionen und Transaktionsangebote.
 
 **Liste**:  Diese Veröffentlichungsoption besteht aus dem Angebotstyp „Kontakt mit mir aufnehmen“ und wird verwendet, wenn eine Teilnahme auf Testversions- oder Transaktionsebene nicht möglich ist. Dieser Ansatz hat den Vorteil, dass Herausgeber, die eine Lösung auf dem Markt anbieten, sofort Leads gewinnen können, die zu Abschlüssen führen und zum Wachstum Ihres Geschäfts beitragen.  
-**Testversion/Transaktion**:  Der Kunde hat die Möglichkeit, Ihre Lösung direkt zu kaufen oder eine Testversion für Ihre Lösung anzufordern. Die Bereitstellung einer Testversion führt zu einer stärkeren Einbindung von Kunden und ermöglicht es ihnen, Ihre Lösung vor dem Kauf in Augenschein zu nehmen. Eine Testversion steigert Ihre Verkaufschancen in den Storefronts, und die Interaktion mit den Kunden führt in der Regel zu weiteren und lukrativeren Leads. Testversionen müssen mindestens für die Dauer des Testzeitraums kostenlosen Support enthalten.  
+**Testversion/Transaktion**:  Der Kunde hat die Möglichkeit, Ihre Lösung direkt zu kaufen oder eine Testversion für Ihre Lösung anzufordern. Die Bereitstellung einer Testversion führt zu einer stärkeren Einbindung von Kunden und ermöglicht es ihnen, Ihre Lösung vor dem Kauf in Augenschein zu nehmen. Eine Testversion steigert Ihre Verkaufschancen in den Onlineshops, und die Interaktion mit den Kunden führt in der Regel zu weiteren und lukrativeren Leads. Testversionen müssen mindestens für die Dauer des Testzeitraums kostenlosen Support enthalten.  
 
 | SaaS-Apps-Angebot | Geschäftliche Anforderungen | Technische Anforderungen |  
 | --- | --- | --- |  

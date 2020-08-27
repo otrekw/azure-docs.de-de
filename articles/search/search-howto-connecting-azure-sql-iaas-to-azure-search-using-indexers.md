@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/12/2020
-ms.openlocfilehash: eacfc75b31efaf9a53ed116ed9e75983146d8575
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ec1e74c6a029ab0f8defc3ae783c9e974f387289
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87084125"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88922972"
 ---
 # <a name="configure-a-connection-from-an-azure-cognitive-search-indexer-to-sql-server-on-an-azure-vm"></a>Konfigurieren einer Verbindung eines Indexers der kognitiven Azure-Suche mit SQL Server auf einer Azure-VM
 
@@ -53,7 +53,7 @@ Bei der kognitiven Azure-Suche ist für alle Indexeranforderungen über eine öf
 Nachdem Sie die für die kognitive Azure-Suche erforderliche verschlüsselte Verbindung eingerichtet haben, müssen noch weitere Konfigurationsschritte für SQL Server auf Azure-VMs ausgeführt werden. Falls dies noch nicht erfolgt ist, ist der nächste Schritt das Abschließen der Konfiguration mit einem dieser Artikel:
 
 * Informationen für eine **Resource Manager** -VM finden unter [Verbinden mit SQL Server-Instanzen auf virtuellen Azure-Maschinen (Ressourcen-Manager)](../azure-sql/virtual-machines/windows/ways-to-connect-to-sql.md). 
-* Informationen für eine **klassische** VM finden unter [Herstellen einer Verbindung mit einem virtuellen SQL Server-Computer in Azure (Klassische Bereitstellung)](../virtual-machines/windows/classic/sql-connect.md).
+* Informationen für eine **klassische** VM finden unter [Herstellen einer Verbindung mit einem virtuellen SQL Server-Computer in Azure (Klassische Bereitstellung)](/previous-versions/azure/virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-sql-connect).
 
 Sehen Sie sich in den Artikeln vor allem jeweils den Abschnitt zum „Verbinden über das Internet“ an.
 
@@ -68,16 +68,16 @@ Die folgenden Links führen zu Anleitungen zur NSG-Konfiguration für VM-Bereits
 > 
 
 * Informationen für eine **Resource Manager** -VM finden unter [Verwalten von NSGs mithilfe des Azure-Portals](../virtual-network/tutorial-filter-network-traffic.md). 
-* Informationen für eine **klassische** VM finden Sie unter [Erstellen von NSGs (klassisch) in PowerShell](../virtual-network/virtual-networks-create-nsg-classic-ps.md).
+* Informationen für eine **klassische** VM finden Sie unter [Erstellen von NSGs (klassisch) in PowerShell](/previous-versions/azure/virtual-network/virtual-networks-create-nsg-classic-ps).
 
 Die IP-Adressierung kann mit einigen Schwierigkeiten verbunden sein, die leicht bewältigt werden können, wenn Sie mit den Problemen und den entsprechenden Lösungen bereits vertraut sind. Die restlichen Abschnitte enthalten Empfehlungen für die Behandlung von Problemen in Bezug auf IP-Adressen in der ACL.
 
 #### <a name="restrict-access-to-the-azure-cognitive-search"></a>Einschränken des Zugriffs auf Azure Cognitive Search
-Wir empfehlen dringend, den Zugriff auf die IP-Adresse Ihres Suchdiensts und den IP-Adressbereich des [Diensttags](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags) `AzureCognitiveSearch` in der ACL einzuschränken, anstatt Ihre SQL Azure-VMs für alle Verbindungsanfragen zu öffnen.
+Wir empfehlen dringend, den Zugriff auf die IP-Adresse Ihres Suchdiensts und den IP-Adressbereich des [Diensttags](../virtual-network/service-tags-overview.md#available-service-tags) `AzureCognitiveSearch` in der ACL einzuschränken, anstatt Ihre SQL Azure-VMs für alle Verbindungsanfragen zu öffnen.
 
 Sie können die IP-Adresse herausfinden, indem Sie den vollqualifizierten Domänennamen (z. B. `<your-search-service-name>.search.windows.net`) Ihres Suchdiensts pingen.
 
-Sie können den IP-Adressbereich des [Diensttags](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags) `AzureCognitiveSearch` ermitteln, indem Sie entweder [herunterladbare JSON-Dateien](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#discover-service-tags-by-using-downloadable-json-files) oder die [Diensttagermittlungs-API](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#use-the-service-tag-discovery-api-public-preview) verwenden. Der IP-Adressbereich wird wöchentlich aktualisiert.
+Sie können den IP-Adressbereich des [Diensttags](../virtual-network/service-tags-overview.md#available-service-tags) `AzureCognitiveSearch` ermitteln, indem Sie entweder [herunterladbare JSON-Dateien](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) oder die [Diensttagermittlungs-API](../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api-public-preview) verwenden. Der IP-Adressbereich wird wöchentlich aktualisiert.
 
 #### <a name="managing-ip-address-fluctuations"></a>Verwalten der Fluktuation von IP-Adressen
 Wenn Ihr Suchdienst nur über eine Sucheinheit verfügt (also ein Replikat und eine Partition), ändert sich die IP-Adresse bei routinemäßigen Neustarts des Diensts, sodass eine vorhandene ACL mit der IP-Adresse Ihres Suchdiensts ungültig wird.
@@ -93,4 +93,3 @@ Wenn Sie zum Erstellen eines Indexers das Azure-Portal verwenden, benötigt die 
 
 ## <a name="next-steps"></a>Nächste Schritte
 Da die Konfiguration nun abgeschlossen ist, können Sie jetzt eine SQL Server-Instanz auf der Azure-VM als Datenquelle für einen Indexer der kognitiven Azure angeben. Weitere Informationen finden Sie unter [Verbinden von Azure SQL-Datenbank mit der kognitiven Azure-Suche mithilfe von Indexern](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md).
-

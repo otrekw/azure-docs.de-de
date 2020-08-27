@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/11/2020
-ms.openlocfilehash: 47a8d58d6ca0a8a04823fe09fb52490f13cfead7
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 2211dbe8a5e336ec10562bb8a66ed0e8cc2a9e15
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88208750"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935176"
 ---
 # <a name="field-mappings-and-transformations-using-azure-cognitive-search-indexers"></a>Feldzuordnungen und Transformationen mithilfe von Indexern der kognitiven Azure-Suche
 
@@ -30,7 +30,7 @@ Feldzuordnungen sind beispielsweise in folgenden Situationen hilfreich:
 * Sie müssen Ihre Daten mit Base64 codieren oder decodieren. Feldzuordnungen unterstützen mehrere **Zuordnungsfunktionen**, einschließlich Funktionen für die Base64-Codierung und -Decodierung.
 
 > [!NOTE]
-> Feldzuordnungen in Indexern sind eine einfache Möglichkeit, um Datenfelder Indexfeldern zuzuordnen, wobei in gewissem Umfang eine einfache Datenkonvertierung möglich ist. Komplexere Daten müssen möglicherweise vorverarbeitet werden, um sie in eine für die Indizierung geeignete Form umzuwandeln. Eine Option, die Sie ggf. in Betracht ziehen sollten, ist [Azure Data Factory](https://docs.microsoft.com/azure/data-factory/).
+> Feldzuordnungen in Indexern sind eine einfache Möglichkeit, um Datenfelder Indexfeldern zuzuordnen, wobei in gewissem Umfang eine einfache Datenkonvertierung möglich ist. Komplexere Daten müssen möglicherweise vorverarbeitet werden, um sie in eine für die Indizierung geeignete Form umzuwandeln. Eine Option, die Sie ggf. in Betracht ziehen sollten, ist [Azure Data Factory](../data-factory/index.yml).
 
 ## <a name="set-up-field-mappings"></a>Einrichten von Feldzuordnungen
 
@@ -47,7 +47,7 @@ Feldzuordnungen werden dem Array `fieldMappings` der Indexerdefinition hinzugef�
 
 ## <a name="map-fields-using-the-rest-api"></a>Zuordnen von Feldern mithilfe der REST-API
 
-Sie können Feldzuordnungen beim Erstellen eines neuen Indexers mithilfe der API-Anforderung [Indexer erstellen](https://docs.microsoft.com/rest/api/searchservice/create-Indexer) hinzufügen. Sie können die Feldzuordnungen eines vorhandenen Indexers mithilfe der API-Anforderung [Indexer aktualisieren](https://docs.microsoft.com/rest/api/searchservice/update-indexer) verwalten.
+Sie können Feldzuordnungen beim Erstellen eines neuen Indexers mithilfe der API-Anforderung [Indexer erstellen](/rest/api/searchservice/create-Indexer) hinzufügen. Sie können die Feldzuordnungen eines vorhandenen Indexers mithilfe der API-Anforderung [Indexer aktualisieren](/rest/api/searchservice/update-indexer) verwalten.
 
 Aus dem nachstehenden Beispiel geht hervor, wie Sie ein Quellfeld einem Zielfeld mit einem anderen Namen zuordnen:
 
@@ -80,7 +80,7 @@ Auf ein Quellfeld kann in mehreren Feldzuordnungen verwiesen werden. Im folgende
 
 ## <a name="map-fields-using-the-net-sdk"></a>Zuordnen von Feldern mithilfe des .NET SDK
 
-Sie definieren Feldzuordnungen im .NET SDK mit der [FieldMapping](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.fieldmapping)-Klasse. Diese weist die Eigenschaften `SourceFieldName` und `TargetFieldName` und einen optionalen `MappingFunction`-Verweis auf.
+Sie definieren Feldzuordnungen im .NET SDK mit der [FieldMapping](/dotnet/api/microsoft.azure.search.models.fieldmapping)-Klasse. Diese weist die Eigenschaften `SourceFieldName` und `TargetFieldName` und einen optionalen `MappingFunction`-Verweis auf.
 
 Sie können Feldzuordnungen beim Erstellen des Indexers oder später durch direktes Festlegen der `Indexer.FieldMappings`-Eigenschaft angeben.
 
@@ -125,7 +125,7 @@ Führt eine *URL-sichere* Base64-Codierung der Eingabezeichenfolge durch. Geht d
 
 #### <a name="example---document-key-lookup"></a>Beispiel: Dokumentschlüsselsuche
 
-Nur URL-sichere Zeichen können in einem Dokumentschlüssel der kognitiven Azure-Suche enthalten sein (da Kunden in der Lage sein müssen, das Dokument über die [Lookup-API](https://docs.microsoft.com/rest/api/searchservice/lookup-document) aufzurufen). Wenn das Quellfeld für den Schlüssel URL-unsichere Zeichen enthält, können Sie die Funktion `base64Encode` verwenden, um die Zeichenfolge bei der Indizierung zu konvertieren. Ein Dokumentschlüssel darf (vor und nach der Konvertierung) jedoch nicht länger als 1.024 Zeichen sein.
+Nur URL-sichere Zeichen können in einem Dokumentschlüssel der kognitiven Azure-Suche enthalten sein (da Kunden in der Lage sein müssen, das Dokument über die [Lookup-API](/rest/api/searchservice/lookup-document) aufzurufen). Wenn das Quellfeld für den Schlüssel URL-unsichere Zeichen enthält, können Sie die Funktion `base64Encode` verwenden, um die Zeichenfolge bei der Indizierung zu konvertieren. Ein Dokumentschlüssel darf (vor und nach der Konvertierung) jedoch nicht länger als 1.024 Zeichen sein.
 
 Wenn Sie den codierten Schlüssel während der Suche abrufen, können Sie die Funktion `base64Decode` verwenden, um den ursprünglichen Schlüsselwert abzurufen, mit dem Sie dann das Quelldokument abrufen können.
 
@@ -200,10 +200,10 @@ Die kognitive Azure-Suche unterstützt zwei verschiedene Base64-Codierungen. Ver
 
 Azure Cognitive Search unterstützt die URL-sichere Base64-Codierung sowie normale Base64-Codierung. Eine während der Indizierung base64-codierte Zeichenfolge muss später mit denselben Codierungsoptionen decodiert werden. Andernfalls stimmt das Ergebnis nicht mit dem ursprünglichen Wert überein.
 
-Wenn der Parameter `useHttpServerUtilityUrlTokenEncode` zum Codieren bzw. `useHttpServerUtilityUrlTokenDecode` zum Decodieren auf `true` festgelegt ist, verhält sich `base64Encode` wie [HttpServerUtility.UrlTokenEncode](https://msdn.microsoft.com/library/system.web.httpserverutility.urltokenencode.aspx) und `base64Decode` wie [HttpServerUtility.UrlTokenDecode](https://msdn.microsoft.com/library/system.web.httpserverutility.urltokendecode.aspx).
+Wenn der Parameter `useHttpServerUtilityUrlTokenEncode` zum Codieren bzw. `useHttpServerUtilityUrlTokenDecode` zum Decodieren auf `true` festgelegt ist, verhält sich `base64Encode` wie [HttpServerUtility.UrlTokenEncode](/dotnet/api/system.web.httpserverutility.urltokenencode?view=netframework-4.8) und `base64Decode` wie [HttpServerUtility.UrlTokenDecode](/dotnet/api/system.web.httpserverutility.urltokendecode?view=netframework-4.8).
 
 > [!WARNING]
-> Wenn `base64Encode` verwendet wird, um Schlüsselwerte zu erzeugen, muss `useHttpServerUtilityUrlTokenEncode` auf „true“ festgelegt werden. Für Schlüsselwerte kann nur die URL-sichere Base64-Codierung verwendet werden. Weitere Informationen zum vollständigen Satz der Einschränkungen für Zeichen in Schlüsselwerten finden Sie unter [Benennungsregeln &#40;Azure Cognitive Search&#41;](https://docs.microsoft.com/rest/api/searchservice/naming-rules).
+> Wenn `base64Encode` verwendet wird, um Schlüsselwerte zu erzeugen, muss `useHttpServerUtilityUrlTokenEncode` auf „true“ festgelegt werden. Für Schlüsselwerte kann nur die URL-sichere Base64-Codierung verwendet werden. Weitere Informationen zum vollständigen Satz der Einschränkungen für Zeichen in Schlüsselwerten finden Sie unter [Benennungsregeln &#40;Azure Cognitive Search&#41;](/rest/api/searchservice/naming-rules).
 
 Die .NET-Bibliotheken in Azure Cognitive Search setzen das vollständige .NET Framework voraus, das integrierte Codierung bereitstellt. Die Optionen `useHttpServerUtilityUrlTokenEncode` und `useHttpServerUtilityUrlTokenDecode` nutzen diese integrierte Funktion. Wenn Sie .NET Core oder ein anderes Framework verwenden, empfiehlt es sich, diese Optionen auf `false` festzulegen und die Codierungs- und Decodierungsfunktionen Ihres Frameworks direkt aufzurufen.
 

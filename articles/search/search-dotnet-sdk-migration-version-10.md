@@ -9,16 +9,16 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 61fee97323d110875cb05fb48157527a39c80f56
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 101fd5298482f2f92e2a3fa4284d6e3fe94989a1
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87905780"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88923227"
 ---
 # <a name="upgrade-to-azure-cognitive-search-net-sdk-version-10"></a>Upgrade auf Version 10 des Azure Cognitive Search .NET SDK
 
-Wenn Sie die Version 9.0 oder eine frühere Version des [.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search) verwenden, unterstützt dieser Artikel Sie beim Upgrade Ihrer Anwendung auf Version 10.
+Wenn Sie die Version 9.0 oder eine frühere Version des [.NET SDK](/dotnet/api/overview/azure/search) verwenden, unterstützt dieser Artikel Sie beim Upgrade Ihrer Anwendung auf Version 10.
 
 Azure Search wurde in Version 10 in Azure Cognitive Search umbenannt, aber Namespaces und Paketnamen sind unverändert. Frühere Versionen des SDK (9.0 und früher) verwenden weiterhin den früheren Namen. Weitere Informationen zur Verwendung des SDK und Beispiele finden Sie unter [Verwenden von Azure Cognitive Search aus einer .NET-Anwendung](search-howto-dotnet-sdk.md).
 
@@ -35,13 +35,13 @@ In Version 10 wurden mehrere Features und Fehlerbehebungen hinzugefügt. Dadurch
 Version 10 des Azure Cognitive Search .NET SDK ist für die REST-API `2019-05-06` mit diesen Updates konzipiert:
 
 * Die Einführung zwei neuer Qualifikationen: [Qualifikation „Bedingt“](cognitive-search-skill-conditional.md) und [Qualifikation „Textübersetzung“](cognitive-search-skill-text-translation.md).
-* [Qualifikation „Shaper“](cognitive-search-skill-shaper.md)-Eingaben wurden neu strukturiert, um Konsolidierung aus geschachtelten Kontexten zu ermöglichen. Weitere Informationen finden Sie in dieser [JSON-Beispieldefinition](https://docs.microsoft.com/azure/search/cognitive-search-skill-shaper#scenario-3-input-consolidation-from-nested-contexts).
+* [Qualifikation „Shaper“](cognitive-search-skill-shaper.md)-Eingaben wurden neu strukturiert, um Konsolidierung aus geschachtelten Kontexten zu ermöglichen. Weitere Informationen finden Sie in dieser [JSON-Beispieldefinition](./cognitive-search-skill-shaper.md#scenario-3-input-consolidation-from-nested-contexts).
 * Das Hinzufügen von zwei neuen [Feldzuordnungsfunktionen](search-indexer-field-mappings.md):
-    - [urlEncode](https://docs.microsoft.com/azure/search/search-indexer-field-mappings#urlencode-function)
-    - [urlDecode](https://docs.microsoft.com/azure/search/search-indexer-field-mappings#urldecode-function)
-* In bestimmten Fällen können Fehler und Warnungen, die im [Status der Indexer-Ausführung](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status) angezeigt werden, zusätzliche Details enthalten, die beim Debuggen nützlich sind. `IndexerExecutionResult` wurde entsprechend diesem Verhalten aktualisiert.
+    - [urlEncode](./search-indexer-field-mappings.md#urlencode-function)
+    - [urlDecode](./search-indexer-field-mappings.md#urldecode-function)
+* In bestimmten Fällen können Fehler und Warnungen, die im [Status der Indexer-Ausführung](/rest/api/searchservice/get-indexer-status) angezeigt werden, zusätzliche Details enthalten, die beim Debuggen nützlich sind. `IndexerExecutionResult` wurde entsprechend diesem Verhalten aktualisiert.
 * Einzelne Qualifikationen, die in einem [Skillset](cognitive-search-defining-skillset.md) definiert sind, können optional gekennzeichnet werden, indem eine `name`-Eigenschaft angegeben wird.
-* `ServiceLimits` zeigt Grenzwerte für [komplexe Typen](https://docs.microsoft.com/azure/search/search-howto-complex-data-types) und `IndexerExecutionInfo` zeigt relevante Indexergrenzwerte/-kontingente an.
+* `ServiceLimits` zeigt Grenzwerte für [komplexe Typen](./search-howto-complex-data-types.md) und `IndexerExecutionInfo` zeigt relevante Indexergrenzwerte/-kontingente an.
 
 <a name="UpgradeSteps"></a>
 
@@ -159,4 +159,3 @@ Das `ItemError`- und das `ItemWarning`-Modell, die Details zu Fehlern bzw. Warnu
 - Änderungen an der Qualifikation „Shaper“ haben die größten möglichen Auswirkungen auf neuen oder vorhandenen Code. Im nächsten Schritt sollten Sie sich dieses Beispiel zur Veranschaulichung der Eingabestruktur erneut ansehen: [Beispiel für JSON-Definition einer „Shaper“-Qualifikation](cognitive-search-skill-shaper.md).
 - Lesen Sie die [Übersicht über die KI-Anreicherung](cognitive-search-concept-intro.md).
 - Wir freuen uns auf Ihr Feedback zum SDK! Wenn Probleme auftreten, können Sie sich gerne über [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-search) an uns wenden. Wenn Sie einen Fehler finden, können Sie das Problem im [Azure .NET SDK-GitHub-Repository](https://github.com/Azure/azure-sdk-for-net/issues)melden. Stellen Sie sicher, dass Sie dem Titel des Problems „[Kognitive Azure-Suche]“ voranstellen.
-

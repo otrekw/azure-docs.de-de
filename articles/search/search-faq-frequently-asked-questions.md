@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/10/2020
-ms.openlocfilehash: d3c5a998db5e76118b0c5a73b6df8bdedadc6dfb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9d6acdcf9487b2d1a5964d4ec686cd23666275b0
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85317233"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88923091"
 ---
 # <a name="azure-cognitive-search---frequently-asked-questions-faq"></a>Kognitive Azure-Suche – Häufig gestellte Fragen (FAQ)
 
@@ -23,7 +23,7 @@ ms.locfileid: "85317233"
 
 ### <a name="how-is-azure-cognitive-search-different-from-full-text-search-in-my-dbms"></a>Wie unterscheidet sich die kognitive Azure-Suche von der Volltextsuche in meinem DBMS?
 
-Die kognitive Azure-Suche unterstützt mehrere Datenquellen, die [linguistische Analyse für viele Sprachen](https://docs.microsoft.com/rest/api/searchservice/language-support), die [benutzerdefinierte Analyse für interessante und ungewöhnliche Dateneingaben](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search), Suchrangsteuerungen mithilfe von [Bewertungsprofilen](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index) und Benutzeroberflächenfunktionen wie automatische Vervollständigungen, Treffermarkierung und Facettennavigation. Darüber hinaus sind weitere Features vorhanden, z.B. Synonyme und umfassende Abfragesyntax, aber dies sind normalerweise keine außergewöhnlichen Features.
+Die kognitive Azure-Suche unterstützt mehrere Datenquellen, die [linguistische Analyse für viele Sprachen](/rest/api/searchservice/language-support), die [benutzerdefinierte Analyse für interessante und ungewöhnliche Dateneingaben](/rest/api/searchservice/custom-analyzers-in-azure-search), Suchrangsteuerungen mithilfe von [Bewertungsprofilen](/rest/api/searchservice/add-scoring-profiles-to-a-search-index) und Benutzeroberflächenfunktionen wie automatische Vervollständigungen, Treffermarkierung und Facettennavigation. Darüber hinaus sind weitere Features vorhanden, z.B. Synonyme und umfassende Abfragesyntax, aber dies sind normalerweise keine außergewöhnlichen Features.
 
 ### <a name="can-i-pause-azure-cognitive-search-service-and-stop-billing"></a>Kann ich den Dienst für die kognitive Azure-Suche anhalten und so die Abrechnung von Gebühren stoppen?
 
@@ -39,7 +39,7 @@ Oder Sie möchten eine Indexmomentaufnahme in Dateien sichern, die später zum W
 
 Für all dies können Sie den **index-backup-restore**-Beispielcode in diesem [.NET-Beispielrepository für die kognitive Azure-Suche](https://github.com/Azure-Samples/azure-search-dotnet-samples) verwenden. 
 
-Sie können auch jederzeit mit der REST-API für die kognitive Azure-Suche eine [Indexdefinition abrufen](https://docs.microsoft.com/rest/api/searchservice/get-index).
+Sie können auch jederzeit mit der REST-API für die kognitive Azure-Suche eine [Indexdefinition abrufen](/rest/api/searchservice/get-index).
 
 Zurzeit gibt es im Azure-Portal keine integrierten Features für Indexextrahierung, Momentaufnahme oder Sicherung/Wiederherstellung. Wir erwägen jedoch, in einem zukünftigen Release Funktionen für Sicherung und Wiederherstellung hinzuzufügen. Wenn Sie Ihre Unterstützung dieses Feature ausdrücken möchten, können Sie auf [User Voice](https://feedback.azure.com/forums/263029-azure-search/suggestions/8021610-backup-snapshot-of-index) Ihre Stimme dafür abgeben.
 
@@ -53,7 +53,7 @@ Um einen Index neu zu erstellen, müssen Sie Daten aus externen Quellen neu indi
 
 Alternativ können Sie den **index-backup-restore**-Beispielcode in diesem [.NET-Beispielrepository für die kognitive Azure-Suche](https://github.com/Azure-Samples/azure-search-dotnet-samples) verwenden, um eine Indexdefinition und die Indexmomentaufnahme in einer Reihe von JSON-Dateien zu sichern. Später können Sie das Tool und die Dateien bei Bedarf verwenden, um den Index wiederherzustellen.  
 
-### <a name="can-i-index-from-sql-database-replicas-applies-to-azure-sql-database-indexers"></a>Kann ich die Indizierung von SQL-Datenbankreplikaten aus durchführen (gilt für [Azure SQL-Datenbank-Indexer](https://docs.microsoft.com/azure/search/search-howto-connecting-azure-sql-database-to-azure-search-using-indexers))?
+### <a name="can-i-index-from-sql-database-replicas-applies-to-azure-sql-database-indexers"></a>Kann ich die Indizierung von SQL-Datenbankreplikaten aus durchführen (gilt für [Azure SQL-Datenbank-Indexer](./search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md))?
 
 Es gelten keine Einschränkungen für die Verwendung von primären oder sekundären Replikaten als Datenquelle, wenn Sie einen Index völlig neu erstellen. Wenn Sie einen Index mit inkrementellen Updates (basierend auf geänderten Datensätzen) aktualisieren, wird aber das primäre Replikat benötigt. Diese Anforderung stammt aus SQL-Datenbank und garantiert die ausschließliche Änderungsnachverfolgung für primäre Replikate. Wenn Sie versuchen, sekundäre Replikate für eine Workload zur Indexaktualisierung zu verwenden, ist nicht garantiert, dass Sie alle Daten erhalten.
 
@@ -65,17 +65,17 @@ Nein. Dieser Vorgang wird nicht unterstützt. Die Suche ist immer auf einen einz
 
 ### <a name="can-i-restrict-search-index-access-by-user-identity"></a>Kann ich den Zugriff auf den Suchindex nach Benutzeridentität beschränken?
 
-Sie können [Sicherheitsfilter](https://docs.microsoft.com/azure/search/search-security-trimming-for-azure-search) mit einem `search.in()`-Filter implementieren. Der Filter lässt sich gut mit [Identitätsverwaltungsdiensten wie Azure Active Directory(AAD)](https://docs.microsoft.com/azure/search/search-security-trimming-for-azure-search-with-aad) kombinieren, um Suchergebnisse auf der Grundlage definierter Benutzergruppenzugehörigkeit zu trimmen.
+Sie können [Sicherheitsfilter](./search-security-trimming-for-azure-search.md) mit einem `search.in()`-Filter implementieren. Der Filter lässt sich gut mit [Identitätsverwaltungsdiensten wie Azure Active Directory(AAD)](./search-security-trimming-for-azure-search-with-aad.md) kombinieren, um Suchergebnisse auf der Grundlage definierter Benutzergruppenzugehörigkeit zu trimmen.
 
 ### <a name="why-are-there-zero-matches-on-terms-i-know-to-be-valid"></a>Warum ergeben sich keine Übereinstimmungen für Begriffe, von denen ich weiß, dass sie gültig sind?
 
 Häufig ist Benutzern in diesem Zusammenhang nicht bekannt, dass jeder Abfragetyp unterschiedliche Suchverhalten und Grade der linguistischen Analyse unterstützt. Die Volltextsuche, bei der es sich um eine gängige Workload handelt, enthält eine Sprachanalysephase, in der Ausdrücke in ihre Grundformen unterteilt werden. Dieser Aspekt der Analyse von Abfragen bewirkt, dass sich mehr Möglichkeiten für potenzielle Übereinstimmungen ergeben, da der in Token unterteilte Ausdruck mit einer größeren Zahl von Varianten übereinstimmt.
 
-Platzhalter-, Fuzzy- und RegEx-Abfragen werden jedoch nicht wie reguläre Begriffs- oder Ausdruckabfragen analysiert und können zu einem schlechten Abruf führen, wenn die Abfrage nicht mit der analysierten Wortform im Suchindex übereinstimmt. Weitere Informationen zur Abfragenanalyse und anderen Analysen finden Sie unter [Abfragearchitektur](https://docs.microsoft.com/azure/search/search-lucene-query-architecture).
+Platzhalter-, Fuzzy- und RegEx-Abfragen werden jedoch nicht wie reguläre Begriffs- oder Ausdruckabfragen analysiert und können zu einem schlechten Abruf führen, wenn die Abfrage nicht mit der analysierten Wortform im Suchindex übereinstimmt. Weitere Informationen zur Abfragenanalyse und anderen Analysen finden Sie unter [Abfragearchitektur](./search-lucene-query-architecture.md).
 
 ### <a name="my-wildcard-searches-are-slow"></a>Meine Platzhaltersuchen sind langsam.
 
-Die meisten Platzhaltersuchabfragen wie Präfix-, Fuzzy- und RegEx-Abfragen werden intern mit übereinstimmenden Begriffen im Suchindex umgeschrieben. Diese zusätzliche Verarbeitung aufgrund des Durchsuchens des Suchindexes erhöht die Latenz. Darüber hinaus können weit gefasste Suchabfragen, wie z.B. `a*`, die wahrscheinlich mit vielen Begriffen umgeschrieben werden, sehr langsam sein. Für leistungsstarke Platzhaltersuchen sollten Sie die Definition eines [benutzerdefinierten Analysetools](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search) in Betracht ziehen.
+Die meisten Platzhaltersuchabfragen wie Präfix-, Fuzzy- und RegEx-Abfragen werden intern mit übereinstimmenden Begriffen im Suchindex umgeschrieben. Diese zusätzliche Verarbeitung aufgrund des Durchsuchens des Suchindexes erhöht die Latenz. Darüber hinaus können weit gefasste Suchabfragen, wie z.B. `a*`, die wahrscheinlich mit vielen Begriffen umgeschrieben werden, sehr langsam sein. Für leistungsstarke Platzhaltersuchen sollten Sie die Definition eines [benutzerdefinierten Analysetools](/rest/api/searchservice/custom-analyzers-in-azure-search) in Betracht ziehen.
 
 ### <a name="why-is-the-search-rank-a-constant-or-equal-score-of-10-for-every-hit"></a>Warum ist der Suchrang für jeden Treffer eine Konstante bzw. immer der Wert 1,0?
 
@@ -95,7 +95,7 @@ Erfahren Sie mehr über die [inkrementelle Anreicherung](cognitive-search-increm
 
 ### <a name="what-is-the-best-approach-for-implementing-localized-search"></a>Was ist der beste Ansatz zum Implementieren der lokalisierten Suche?
 
-Die meisten Kunden wählen keine Sammlung, sondern dedizierte Felder, wenn in demselben Index unterschiedliche Gebietsschemas (Sprachen) unterstützt werden sollen. Gebietsschemaspezifische Felder ermöglichen die Zuweisung eines passenden Analysemoduls. Beispiel: Der Microsoft French Analyzer wird einem Feld zugewiesen, das französische Zeichenfolgen enthält. Hierdurch wird auch die Filterung vereinfacht. Wenn Sie wissen, dass eine Abfrage auf einer französischsprachigen Seite (fr-fr) initiiert wird, können Sie die Suchergebnisse auf dieses Feld beschränken. Oder erstellen Sie ein [Bewertungsprofil](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index), um dem Feld eine höhere relative Gewichtung zu verleihen. Für die kognitive Azure-Suche stehen über [50 unterstützte Sprachanalysetools](https://docs.microsoft.com/azure/search/search-language-support) zur Auswahl.
+Die meisten Kunden wählen keine Sammlung, sondern dedizierte Felder, wenn in demselben Index unterschiedliche Gebietsschemas (Sprachen) unterstützt werden sollen. Gebietsschemaspezifische Felder ermöglichen die Zuweisung eines passenden Analysemoduls. Beispiel: Der Microsoft French Analyzer wird einem Feld zugewiesen, das französische Zeichenfolgen enthält. Hierdurch wird auch die Filterung vereinfacht. Wenn Sie wissen, dass eine Abfrage auf einer französischsprachigen Seite (fr-fr) initiiert wird, können Sie die Suchergebnisse auf dieses Feld beschränken. Oder erstellen Sie ein [Bewertungsprofil](/rest/api/searchservice/add-scoring-profiles-to-a-search-index), um dem Feld eine höhere relative Gewichtung zu verleihen. Für die kognitive Azure-Suche stehen über [50 unterstützte Sprachanalysetools](./search-language-support.md) zur Auswahl.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/20/2020
-ms.openlocfilehash: 591bff468c90b17812554b02810d9a6cd4f874d1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a05d58108561856f61a8c484882c996eee96e44d
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85262156"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88918076"
 ---
 # <a name="analyzers-for-text-processing-in-azure-cognitive-search"></a>Analysetools für Textverarbeitung in der kognitiven Azure-Suche
 
@@ -48,7 +48,7 @@ Die folgende Liste gibt Aufschluss darüber, welche Analysetools in der kognitiv
 |----------|-------------|
 | [Lucene-Standardanalyse](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/analysis/standard/StandardAnalyzer.html) | Standard. Muss nicht angegeben oder konfiguriert werden. Dieses allgemeine Analysetool eignet sich für viele Sprachen und Szenarios.|
 | Vordefinierte Analysen | Werden als fertiges Produkt angeboten und in der Regel unverändert verwendet. <br/>Es gibt spezialisierte und sprachspezifische Typen. Sie sind „vordefiniert“, da Sie ihren Namen angeben und sie nicht weiter konfigurieren oder anpassen. <br/><br/>[Spezialisierte (sprachunabhängige) Analysetools](index-add-custom-analyzers.md#AnalyzerTable) werden verwendet, wenn Texteingaben eine spezielle oder minimale Verarbeitung erfordern. Zu sprachunabhängigen vordefinierten Analysen zählen **Asciifolding**, **Keyword**, **Pattern**, **Simple**, **Stop** und **Whitespace**.<br/><br/>[Sprachanalyzer](index-add-language-analyzers.md) werden verwendet, wenn umfassende linguistische Unterstützung für einzelne Sprachen benötigt werden. Die kognitive Azure-Suche unterstützt 35 Lucene-Sprachanalysen und 50 Microsoft-Analysen für die Verarbeitung natürlicher Sprache. |
-|[Benutzerdefinierte Analysen](https://docs.microsoft.com/rest/api/searchservice/Custom-analyzers-in-Azure-Search) | Eine benutzerdefinierte Konfiguration einer Kombination vorhandener Elemente, bestehend aus einem Tokenizer (erforderlich) und optionalen Filtern („char“ oder „token“).|
+|[Benutzerdefinierte Analysen](/rest/api/searchservice/Custom-analyzers-in-Azure-Search) | Eine benutzerdefinierte Konfiguration einer Kombination vorhandener Elemente, bestehend aus einem Tokenizer (erforderlich) und optionalen Filtern („char“ oder „token“).|
 
 Ein paar vordefinierte Analysetools, wie z.B. **Pattern** oder **Stop**, unterstützen eine begrenzte Anzahl von Konfigurationsoptionen. Um diese Optionen festzulegen, erstellen Sie ein benutzerdefiniertes Analysetool, bestehend aus dem vordefinierten Analysetool und einer der unter [Vordefinierte Analysetoolreferenz](index-add-custom-analyzers.md#AnalyzerTable) dokumentierten alternativen Optionen. Versehen Sie Ihre neue Konfiguration wie üblich mit einem Namen (etwa *myPatternAnalyzer*), damit sie von der Lucene-Musteranalyse zu unterscheiden ist.
 
@@ -56,7 +56,7 @@ Ein paar vordefinierte Analysetools, wie z.B. **Pattern** oder **Stop**, unterst
 
 Das Festlegen eines Analysetools ist optional. Es wird generell empfohlen, zunächst das Lucene-Standardanalysetool zu verwenden, um herauszufinden, wie es funktioniert. Wenn Abfragen nicht die erwarteten Ergebnisse zurückgeben, ist der Wechsel zu einem anderen Analysetool häufig die richtige Lösung.
 
-1. Wenn Sie im [Index](https://docs.microsoft.com/rest/api/searchservice/create-index) eine Felddefinition erstellen, legen Sie die Eigenschaft **analyzer** auf einen der folgenden Werte fest: ein [vordefiniertes Analysetool](index-add-custom-analyzers.md#AnalyzerTable) wie `keyword`, ein [Sprachanalysetool](index-add-language-analyzers.md) wie `en.microsoft` oder ein benutzerdefiniertes Analysetool (definiert im gleichen Indexschema).  
+1. Wenn Sie im [Index](/rest/api/searchservice/create-index) eine Felddefinition erstellen, legen Sie die Eigenschaft **analyzer** auf einen der folgenden Werte fest: ein [vordefiniertes Analysetool](index-add-custom-analyzers.md#AnalyzerTable) wie `keyword`, ein [Sprachanalysetool](index-add-language-analyzers.md) wie `en.microsoft` oder ein benutzerdefiniertes Analysetool (definiert im gleichen Indexschema).  
  
    ```json
      "fields": [
@@ -88,7 +88,7 @@ Das Festlegen eines Analysetools ist optional. Es wird generell empfohlen, zunä
     },
    ```
 
-1. Erstellen Sie für benutzerdefinierte Analysetools einen Eintrag im Abschnitt **[Analysetool]** des Indexes, und weisen Sie der Felddefinition dann gemäß den beiden vorherigen Schritten das benutzerdefinierte Analysetool zu. Weitere Informationen finden Sie unter [Create Index](https://docs.microsoft.com/rest/api/searchservice/create-index) (Index erstellen) sowie unter [Add a custom analyzer](index-add-custom-analyzers.md) (Benutzerdefiniertes Analysetool hinzufügen).
+1. Erstellen Sie für benutzerdefinierte Analysetools einen Eintrag im Abschnitt **[Analysetool]** des Indexes, und weisen Sie der Felddefinition dann gemäß den beiden vorherigen Schritten das benutzerdefinierte Analysetool zu. Weitere Informationen finden Sie unter [Create Index](/rest/api/searchservice/create-index) (Index erstellen) sowie unter [Add a custom analyzer](index-add-custom-analyzers.md) (Benutzerdefiniertes Analysetool hinzufügen).
 
 ## <a name="when-to-add-analyzers"></a>Gründe zum Hinzufügen von Analysetools
 
@@ -96,11 +96,11 @@ Der beste Zeitpunkt zum Hinzufügen und Zuweisen von Analysetools ist während d
 
 Da Analysetools für das Umwandeln von Ausdrücken in Token verwendet werden, sollten Sie ein Analysetool zuweisen, wenn das Feld erstellt wird. Das Zuweisen von **analyzer** oder **indexAnalyzer** zu einem Feld, das bereits physisch erstellt wurde, ist nicht zulässig (obwohl Sie die Eigenschaft **searchAnalyzer** jederzeit ohne Auswirkung auf den Index ändern können).
 
-Sie müssen den [Index vollständig neu erstellen](search-howto-reindex.md), um das Analysetool eines vorhandenen Felds zu ändern (einzelne Felder können nicht neu erstellt werden). Für Indizes in der Produktion können Sie ein erneutes Erstellen aufschieben, indem Sie ein neues Feld mit der neuen Analysetoolzuweisung erstellen und diese anstelle der alten verwenden. Integrieren Sie das neue Feld mit [Update Index](https://docs.microsoft.com/rest/api/searchservice/update-index) (Index aktualisieren), und füllen Sie es mit [mergeOrUpload](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents). Später können Sie den Index als Bestandteil der geplanten Indexwartung bereinigen, um veraltete Felder zu entfernen.
+Sie müssen den [Index vollständig neu erstellen](search-howto-reindex.md), um das Analysetool eines vorhandenen Felds zu ändern (einzelne Felder können nicht neu erstellt werden). Für Indizes in der Produktion können Sie ein erneutes Erstellen aufschieben, indem Sie ein neues Feld mit der neuen Analysetoolzuweisung erstellen und diese anstelle der alten verwenden. Integrieren Sie das neue Feld mit [Update Index](/rest/api/searchservice/update-index) (Index aktualisieren), und füllen Sie es mit [mergeOrUpload](/rest/api/searchservice/addupdate-or-delete-documents). Später können Sie den Index als Bestandteil der geplanten Indexwartung bereinigen, um veraltete Felder zu entfernen.
 
-Rufen Sie [Update Index](https://docs.microsoft.com/rest/api/searchservice/update-index) (Index aktualisieren) auf, um ein neues Feld zu einem vorhandenen Index hinzuzufügen, und verwenden Sie [mergeOrUpload](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents), um es aufzufüllen.
+Rufen Sie [Update Index](/rest/api/searchservice/update-index) (Index aktualisieren) auf, um ein neues Feld zu einem vorhandenen Index hinzuzufügen, und verwenden Sie [mergeOrUpload](/rest/api/searchservice/addupdate-or-delete-documents), um es aufzufüllen.
 
-Wenn Sie diesen Fehler vermeiden möchten, übergeben Sie das Flag **allowIndexDowntime** in [Update Index](https://docs.microsoft.com/rest/api/searchservice/update-index) (Index aktualisieren), um ein benutzerdefiniertes Analysetool zu einem vorhandenen Index hinzuzufügen.
+Wenn Sie diesen Fehler vermeiden möchten, übergeben Sie das Flag **allowIndexDowntime** in [Update Index](/rest/api/searchservice/update-index) (Index aktualisieren), um ein benutzerdefiniertes Analysetool zu einem vorhandenen Index hinzuzufügen.
 
 *„Indexupdate ist nicht zulässig, weil es eine Downtime verursachen würde. Um einem vorhandenen Index neue Analysetools, Tokenizer, Tokenfilter oder Zeichenfilter hinzuzufügen, legen Sie für den Abfrageparameter „allowIndexDowntime“ in der Indexupdateanforderung „True“ fest. Beachten Sie, dass dieser Vorgang Ihren Index für mindestens ein paar Sekunden offline schaltet, sodass Indizierungs- und Abfrageanforderungen nicht gelingen. Leistung und Schreibverfügbarkeit des Indexes können nach der Indexaktualisierung mehrere Minuten lang eingeschränkt sein, bei sehr großen Indizes auch länger.“*
 
@@ -120,7 +120,7 @@ Wenn Sie die Standardanalyse überschreiben, muss der Index neu erstellt werden.
 
 ### <a name="inspect-tokenized-terms"></a>Überprüfen von tokenisierten Begriffen
 
-Wenn eine Suche nicht die erwarteten Ergebnisse zurückgibt, ist das wahrscheinlichste Szenario, dass Abweichungen zwischen Begriffseingaben für die Abfrage und tokenisierten Begriffen im Index vorliegen. Wenn die Token nicht identisch sind, können Übereinstimmungen nicht materialisiert werden. Zur Überprüfung der Tokenizer-Ausgabe wird empfohlen, die [Analyse-API](https://docs.microsoft.com/rest/api/searchservice/test-analyzer) als Untersuchungstool zu verwenden. Die Antwort besteht aus Token, die von einem bestimmten Analyzer generiert wurden.
+Wenn eine Suche nicht die erwarteten Ergebnisse zurückgibt, ist das wahrscheinlichste Szenario, dass Abweichungen zwischen Begriffseingaben für die Abfrage und tokenisierten Begriffen im Index vorliegen. Wenn die Token nicht identisch sind, können Übereinstimmungen nicht materialisiert werden. Zur Überprüfung der Tokenizer-Ausgabe wird empfohlen, die [Analyse-API](/rest/api/searchservice/test-analyzer) als Untersuchungstool zu verwenden. Die Antwort besteht aus Token, die von einem bestimmten Analyzer generiert wurden.
 
 <a name="examples"></a>
 
@@ -316,7 +316,7 @@ Jedes in unveränderter Form ohne Konfiguration verwendete Analysetool wird in e
 
 In diesem Beispiel werden Beschreibungsfeldern Microsoft-Analysetools für Englisch und Französisch zugewiesen. Es ist ein Codeausschnitt aus einer größeren Definition des Hotelindex, der unter Verwendung der Hotelklasse in der Datei „hotels.cs“ des Beispiels [DotNetHowTo](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowTo) erstellt wird.
 
-Rufen Sie das [Analysetool](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzer?view=azure-dotnet) unter Angabe des Typs [AnalyzerName](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzername?view=azure-dotnet) auf, mit dem ein in der kognitiven Azure-Suche unterstütztes Textanalysetool bereitgestellt wird.
+Rufen Sie das [Analysetool](/dotnet/api/microsoft.azure.search.models.analyzer?view=azure-dotnet) unter Angabe des Typs [AnalyzerName](/dotnet/api/microsoft.azure.search.models.analyzername?view=azure-dotnet) auf, mit dem ein in der kognitiven Azure-Suche unterstütztes Textanalysetool bereitgestellt wird.
 
 ```csharp
     public partial class Hotel
@@ -342,7 +342,7 @@ Rufen Sie das [Analysetool](https://docs.microsoft.com/dotnet/api/microsoft.azur
 
 Wenn eine Anpassung oder Konfiguration erforderlich ist, müssen Sie ein Analysetoolkonstrukt zu einem Index hinzufügen. Nach der Definition können Sie es der Felddefinition hinzufügen, wie im vorherigen Beispiel gezeigt.
 
-Erstellen Sie ein [CustomAnalyzer](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.customanalyzer?view=azure-dotnet)-Objekt. Weitere Beispiele finden Sie unter [CustomAnalyzerTests.cs](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Microsoft.Azure.Search/tests/Tests/CustomAnalyzerTests.cs).
+Erstellen Sie ein [CustomAnalyzer](/dotnet/api/microsoft.azure.search.models.customanalyzer?view=azure-dotnet)-Objekt. Weitere Beispiele finden Sie unter [CustomAnalyzerTests.cs](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Microsoft.Azure.Search/tests/Tests/CustomAnalyzerTests.cs).
 
 ```csharp
 {
@@ -368,7 +368,7 @@ Erstellen Sie ein [CustomAnalyzer](https://docs.microsoft.com/dotnet/api/microso
 
 + Lesen Sie unsere umfassende Erläuterung der [Funktionsweise der Volltextsuche in der kognitiven Azure-Suche](search-lucene-query-architecture.md). In diesem Artikel werden anhand von Beispielen Verhaltensweisen erklärt, die auf den ersten Blick vielleicht nicht intuitiv erscheinen.
 
-+ Probieren Sie andere Abfragesyntax in den Beispielen unter [Search Documents](https://docs.microsoft.com/rest/api/searchservice/search-documents#bkmk_examples) (Suchen nach Dokumenten) oder unter [Simple query syntax in Azure Search](query-simple-syntax.md) (Einfache Abfragesyntax in Azure Search) im Suchexplorer im Portal aus.
++ Probieren Sie andere Abfragesyntax in den Beispielen unter [Search Documents](/rest/api/searchservice/search-documents#bkmk_examples) (Suchen nach Dokumenten) oder unter [Simple query syntax in Azure Search](query-simple-syntax.md) (Einfache Abfragesyntax in Azure Search) im Suchexplorer im Portal aus.
 
 + Informieren Sie sich darüber, wie Sie [sprachspezifische lexikalische Analysen](index-add-language-analyzers.md) anwenden.
 
@@ -376,7 +376,7 @@ Erstellen Sie ein [CustomAnalyzer](https://docs.microsoft.com/dotnet/api/microso
 
 ## <a name="see-also"></a>Weitere Informationen
 
- [Search Documents (Azure Search Service REST API)](https://docs.microsoft.com/rest/api/searchservice/search-documents) (Suchen nach Dokumenten (Azure Search Service-REST-API)) 
+ [Search Documents (Azure Search Service REST API)](/rest/api/searchservice/search-documents) (Suchen nach Dokumenten (Azure Search Service-REST-API)) 
 
  [Einfache Abfragesyntax](query-simple-syntax.md) 
 

@@ -1,32 +1,32 @@
 ---
 title: Vergleich von Microsoft AppSource und Azure Marketplace
-description: In diesem Artikel werden die Unterschiede zwischen den im kommerziellen Microsoft-Marketplace verfügbaren Storefronts Microsoft AppSource und Azure Marketplace erläutert.
+description: In diesem Artikel werden die Unterschiede zwischen den im kommerziellen Microsoft-Marketplace verfügbaren Onlinestores „Microsoft AppSource“ und „Azure Marketplace“ erläutert.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 04/14/2020
-ms.openlocfilehash: fc0a03871ee3191f24a886cc1b9d7f90e8d54b62
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 10560d1407d4e9f899578d6d4eb9cdf9b7fe7dc9
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121808"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607463"
 ---
 # <a name="comparing-microsoft-appsource-and-azure-marketplace"></a>Vergleich von Microsoft AppSource und Azure Marketplace
 
-Der kommerzielle Microsoft-Marketplace enthält die Storefronts [Microsoft AppSource](https://appsource.microsoft.com) und [Azure Marketplace](https://azuremarketplace.microsoft.com). Jede Storefront bedient spezielle Kundenanforderungen und unterschiedliche Zielgruppen, sodass Sie sicherstellen können, dass Ihre Lösung oder Ihr Dienst für die richtigen Kunden verfügbar ist.
+Der kommerzielle Microsoft-Marketplace enthält die Storefronts [Microsoft AppSource](https://appsource.microsoft.com) und [Azure Marketplace](https://azuremarketplace.microsoft.com). Jeder Onlinestore bedient spezielle Kundenanforderungen und unterschiedliche Zielgruppen, sodass Sie sicherstellen können, dass Ihre Lösung oder Ihr Dienst für die richtigen Kunden verfügbar ist.
 
-## <a name="understanding-the-differences-between-storefronts"></a>Grundlegendes zu den Unterschieden zwischen Storefronts
+## <a name="understanding-the-differences-between-online-stores"></a>Grundlegendes zu den Unterschieden zwischen Onlinestores
 
-Wenn Sie eine Storefront auswählen möchten, müssen Sie zuerst die Zielgruppe Ihres Angebots identifizieren. Wenn Sie Zielgruppen in mehreren Storefronts erreichen möchten, können Sie einmal veröffentlichen, um in mehreren Storefronts zu verkaufen.
+Wenn Sie einen Onlinestore auswählen möchten, müssen Sie zuerst die Zielgruppe Ihres Angebots identifizieren. Wenn Sie Zielgruppen in mehreren Onlinestores erreichen möchten, können Sie ein einzelnes Produkt in beiden Onlinestores veröffentlichen und verkaufen.
 
 | Azure Marketplace | AppSource |
 |:--- |:--- |
 | IT-Profis und Entwickler | Geschäftsbenutzer und Entscheidungsträger |
 
-In der folgenden Tabelle werden die Vorteile der Verwendung einer Storefront aufgeführt:
+In der folgenden Tabelle werden die Vorteile von Onlinestores aufgeführt:
 
 | Vorteile | Azure Marketplace | AppSource |
 |:--- |:--- | :--- |

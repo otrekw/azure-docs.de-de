@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 852d8f8f85536dc62dd792e5727dd7ec0571ba29
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: eb5771a6e615535a9a158e6378cd36b6e0df58bc
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87084210"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88923125"
 ---
 # <a name="how-to-build-a-facet-filter-in-azure-cognitive-search"></a>Erstellen eines Facettenfilters in der kognitiven Azure-Suche 
 
@@ -38,7 +38,7 @@ Facets können über Felder mit einzelnen Werten und auch über Sammlungen berec
 
 Das Faceting wird pro Feld aktiviert, wenn Sie den Index erstellen, indem Sie das `facetable`-Attribut auf `true` festlegen. Generell sollten Sie das `filterable`-Attribut auch für solche Felder auf `true` festlegen, damit Ihre Suchanwendung nach diesen Feldern auf Grundlage der Facetten, die der Endbenutzer auswählt, filtern kann. 
 
-Bei der Erstellung eines Index mithilfe der REST-API, wird jeder [Feldtyp](https://docs.microsoft.com/rest/api/searchservice/supported-data-types), der theoretisch für die Facettennavigation verwendet werden könnte, standardmäßig als `facetable` markiert:
+Bei der Erstellung eines Index mithilfe der REST-API, wird jeder [Feldtyp](/rest/api/searchservice/supported-data-types), der theoretisch für die Facettennavigation verwendet werden könnte, standardmäßig als `facetable` markiert:
 
 + `Edm.String`
 + `Edm.DateTimeOffset`
@@ -77,11 +77,11 @@ Indexattribute, mit denen gesteuert wird, wie ein Feld verwendet wird, werden ei
 ```
 
 > [!Note]
-> Diese Indexdefinition wurde aus [Erstellen eines Index für die kognitive Azure-Suche mit der REST-API](https://docs.microsoft.com/azure/search/search-create-index-rest-api) kopiert. Sie ist bis auf einige vernachlässigbare Unterschiede bei den Felddefinitionen identisch. Die `filterable`- und `facetable`-Attribute werden `category`-, `tags`-, `parkingIncluded`-, `smokingAllowed`- und `rating`-Feldern explizit hinzugefügt. In der Praxis wären `filterable` und `facetable` standardmäßig für diese Felder aktiviert, wenn die REST-API verwendet wird. Wenn das .NET SDK verwendet wird, müssen diese Attribute explizit aktiviert werden.
+> Diese Indexdefinition wurde aus [Erstellen eines Index für die kognitive Azure-Suche mit der REST-API](./search-get-started-powershell.md) kopiert. Sie ist bis auf einige vernachlässigbare Unterschiede bei den Felddefinitionen identisch. Die `filterable`- und `facetable`-Attribute werden `category`-, `tags`-, `parkingIncluded`-, `smokingAllowed`- und `rating`-Feldern explizit hinzugefügt. In der Praxis wären `filterable` und `facetable` standardmäßig für diese Felder aktiviert, wenn die REST-API verwendet wird. Wenn das .NET SDK verwendet wird, müssen diese Attribute explizit aktiviert werden.
 
 ## <a name="build-and-load-an-index"></a>Erstellen und Laden eines Index
 
-Ein (wahrscheinlich naheliegender) Zwischenschritt vor der Erstellung einer Abfrage ist das [Erstellen und Auffüllen des Index](https://docs.microsoft.com/azure/search/search-get-started-dotnet#1---create-index). Er wird daher nur der Vollständigkeit halber erwähnt. Die Verfügbarkeit des Index kann unter anderem durch das Überprüfen der Indexliste im [Portal](https://portal.azure.com) ermittelt werden.
+Ein (wahrscheinlich naheliegender) Zwischenschritt vor der Erstellung einer Abfrage ist das [Erstellen und Auffüllen des Index](./search-get-started-dotnet.md#1---create-an-index). Er wird daher nur der Vollständigkeit halber erwähnt. Die Verfügbarkeit des Index kann unter anderem durch das Überprüfen der Indexliste im [Portal](https://portal.azure.com) ermittelt werden.
 
 ## <a name="add-facet-filters-to-a-query"></a>Hinzufügen von Facettenfiltern zu einer Abfrage
 
@@ -124,5 +124,5 @@ Dies ist zwar ein häufiger Anwendungsfall, aber dieser Vorgang ist noch nicht s
 ## <a name="see-also"></a>Weitere Informationen
 
 + [Filter in Azure Cognitive Search](search-filters.md)
-+ [Create Index (Azure Search Service REST API)](https://docs.microsoft.com/rest/api/searchservice/create-index) (Create Index (Azure Search-Dienst-REST-API))
-+ [Search Documents (Azure Search Service REST API)](https://docs.microsoft.com/rest/api/searchservice/search-documents) (Suchen nach Dokumenten (Azure Search Service-REST-API))
++ [Create Index (Azure Search Service REST API)](/rest/api/searchservice/create-index) (Create Index (Azure Search-Dienst-REST-API))
++ [Search Documents (Azure Search Service REST API)](/rest/api/searchservice/search-documents) (Suchen nach Dokumenten (Azure Search Service-REST-API))

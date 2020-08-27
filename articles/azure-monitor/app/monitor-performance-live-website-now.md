@@ -3,12 +3,13 @@ title: Überwachen einer ASP.NET-Live-Web-App mit Azure Application Insights | M
 description: Überwachen Sie die Leistung einer Website, ohne sie erneut bereitzustellen. Funktioniert mit ASP.NET-Web-Apps, die lokal oder auf virtuellen Computern gehostet werden.
 ms.topic: conceptual
 ms.date: 08/26/2019
-ms.openlocfilehash: 70a405d2c32641be2ed4038fbffebce0e1340f83
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.custom: devx-track-dotnet
+ms.openlocfilehash: 603cbde20ae6e8d19e4ad3ae290bbfc925483595
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87310445"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88923822"
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights-codeless-attach"></a>Instrumentieren von Web-Apps zur Laufzeit mit Anfügen ohne Code in Application Insights
 

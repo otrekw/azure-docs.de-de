@@ -6,14 +6,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: tutorial
-ms.date: 08/14/2020
+ms.date: 08/21/2020
 ms.author: victorh
-ms.openlocfilehash: c73e09e241baff7c4719acfd4257f537e27b010a
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 6fb613578e520f50701c9a09169f2d78c0c08c4f
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88236186"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88723995"
 ---
 # <a name="tutorial-create-and-configure-an-application-gateway-to-host-multiple-web-sites-using-the-azure-portal"></a>Tutorial: Erstellen und Konfigurieren eines Anwendungsgateways als Host mehrerer Websites über das Azure-Portal
 
@@ -78,7 +78,7 @@ Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim 
 
 2. Wählen Sie **Neu erstellen** für die **Öffentliche IP-Adresse** aus, und geben Sie *myAGPublicIPAddress* als Namen der öffentlichen IP-Adresse ein. Wählen Sie dann **OK** aus. 
 
-     :::image type="content" source="./media/application-gateway-create-gateway-portal/application-gateway-create-frontends.png" alt-text="Erstellen eines VNET":::
+     :::image type="content" source="./media/application-gateway-create-gateway-portal/application-gateway-create-frontends.png" alt-text="Erstellen eines weiteren VNET":::
 
 3. Klicken Sie auf **Weiter: Back-Ends**.
 
@@ -156,14 +156,14 @@ Gehen Sie zum Hinzufügen von Back-End-Zielen wie folgt vor:
 
     - **Ressourcengruppe**: Wählen Sie **myResourceGroupAG** als Namen der Ressourcengruppe aus.
     - **Name des virtuellen Computers**: Geben Sie *contosoVM* für den Namen des virtuellen Computers ein.
-    - **Benutzername**: Geben *azureuser* als Namen des Administratorbenutzers ein.
-    - **Kennwort**: Geben Sie *Azure123456!* als Administratorkennwort ein.
-4. Übernehmen Sie für die anderen Einstellungen die Standardwerte, und klicken Sie auf **Weiter: Datenträger**.  
-5. Übernehmen Sie auf der Registerkarte **Datenträger** die Standardwerte, und klicken Sie auf **Weiter: Netzwerk**.
-6. Vergewissern Sie sich auf der Registerkarte **Netzwerk**, dass **myVNet** für **Virtuelles Netzwerk** ausgewählt und **Subnetz** auf **myBackendSubnet** festgelegt ist. Übernehmen Sie für die anderen Einstellungen die Standardwerte, und klicken Sie auf **Weiter: Verwaltung** aus.<br>Application Gateway kann mit Instanzen außerhalb des eigenen virtuellen Netzwerks kommunizieren, es muss jedoch sichergestellt werden, dass eine IP-Verbindung besteht.
-7. Legen Sie auf der Registerkarte **Verwaltung** die Option **Startdiagnose** auf **Aus** fest. Übernehmen Sie für die anderen Einstellungen die Standardwerte, und klicken Sie auf **Bewerten + erstellen**.
-8. Überprüfen Sie auf der Registerkarte **Bewerten + erstellen** die Einstellungen, beheben Sie alle Validierungsfehler, und wählen Sie dann **Erstellen** aus.
-9. Warten Sie, bis die Erstellung des virtuellen Computers abgeschlossen ist, bevor Sie fortfahren.
+    - **Benutzername**: Geben Sie einen Benutzernamen für den Administrator ein.
+    - **Kennwort**: Geben Sie ein Kennwort für den Administrator ein.
+1. Übernehmen Sie für die anderen Einstellungen die Standardwerte, und klicken Sie auf **Weiter: Datenträger**.  
+2. Übernehmen Sie auf der Registerkarte **Datenträger** die Standardwerte, und klicken Sie auf **Weiter: Netzwerk**.
+3. Vergewissern Sie sich auf der Registerkarte **Netzwerk**, dass **myVNet** für **Virtuelles Netzwerk** ausgewählt und **Subnetz** auf **myBackendSubnet** festgelegt ist. Übernehmen Sie für die anderen Einstellungen die Standardwerte, und klicken Sie auf **Weiter: Verwaltung** aus.<br>Application Gateway kann mit Instanzen außerhalb des eigenen virtuellen Netzwerks kommunizieren, es muss jedoch sichergestellt werden, dass eine IP-Verbindung besteht.
+4. Legen Sie auf der Registerkarte **Verwaltung** die Option **Startdiagnose** auf **Aus** fest. Übernehmen Sie für die anderen Einstellungen die Standardwerte, und klicken Sie auf **Bewerten + erstellen**.
+5. Überprüfen Sie auf der Registerkarte **Bewerten + erstellen** die Einstellungen, beheben Sie alle Validierungsfehler, und wählen Sie dann **Erstellen** aus.
+6. Warten Sie, bis die Erstellung des virtuellen Computers abgeschlossen ist, bevor Sie fortfahren.
 
 ### <a name="install-iis-for-testing"></a>Installieren von IIS für Testzwecke
 
@@ -173,7 +173,7 @@ In diesem Beispiel installieren Sie IIS auf den virtuellen Computern nur, um zu 
 
     ![Installieren der benutzerdefinierten Erweiterung](./media/application-gateway-create-gateway-portal/application-gateway-extension.png)
 
-2. Führen Sie den folgenden Befehl aus, um IIS auf dem virtuellen Computer zu installieren: 
+2. Führen Sie den folgenden Befehl aus, um IIS auf dem virtuellen Computer zu installieren. Ersetzen Sie „<location\>“ durch Ihre Ressourcengruppenregion: 
 
     ```azurepowershell-interactive
     Set-AzVMExtension `
@@ -184,7 +184,7 @@ In diesem Beispiel installieren Sie IIS auf den virtuellen Computern nur, um zu 
       -ExtensionType CustomScriptExtension `
       -TypeHandlerVersion 1.4 `
       -SettingString '{"commandToExecute":"powershell Add-WindowsFeature Web-Server; powershell Add-Content -Path \"C:\\inetpub\\wwwroot\\Default.htm\" -Value $($env:computername)"}' `
-      -Location EastUS
+      -Location <location>
     ```
 
 3. Erstellen Sie eine zweite VM, und installieren Sie IIS mithilfe der zuvor ausgeführten Schritte. Verwenden Sie *fabrikamVM* für den VM-Namen und für die Einstellung **VMName** des Cmdlets **Set-AzVMExtension**.

@@ -10,12 +10,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/11/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 6295dfbbee2d44b61b5dc832163adc8d643ab0f1
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 9caa377ebcdff5b0ae379f1b0b8269dac5b8f499
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88036146"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88924094"
 ---
 # <a name="how-to-index-documents-in-azure-blob-storage-with-azure-cognitive-search"></a>Indizieren von Dokumenten in Azure Blob Storage mit der kognitiven Azure-Suche
 
@@ -32,8 +32,8 @@ Der Blobindexer kann Text aus den folgenden Dokumentformaten extrahieren:
 Sie können einen Azure Blob Storage-Indexer über folgende Elemente einrichten:
 
 * [Azure portal](https://ms.portal.azure.com)
-* [REST-API](https://docs.microsoft.com/rest/api/searchservice/Indexer-operations) für die kognitive Azure-Suche
-* [.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search) für die kognitive Azure-Suche
+* [REST-API](/rest/api/searchservice/Indexer-operations) für die kognitive Azure-Suche
+* [.NET SDK](/dotnet/api/overview/azure/search) für die kognitive Azure-Suche
 
 > [!NOTE]
 > Einige Features (z.B. Feldzuordnungen) sind im Portal noch nicht verfügbar und müssen programmgesteuert verwendet werden.
@@ -66,7 +66,7 @@ So erstellen Sie eine Datenquelle:
     }   
 ```
 
-Weitere Informationen über die API zum Erstellen einer Datenquelle finden Sie unter [Datenquelle erstellen](https://docs.microsoft.com/rest/api/searchservice/create-data-source).
+Weitere Informationen über die API zum Erstellen einer Datenquelle finden Sie unter [Datenquelle erstellen](/rest/api/searchservice/create-data-source).
 
 <a name="Credentials"></a>
 #### <a name="how-to-specify-credentials"></a>Angeben von Anmeldeinformationen ####
@@ -77,7 +77,7 @@ Sie haben folgende Möglichkeiten zum Angeben der Anmeldeinformationen für den 
 - Verbindungszeichenfolge für eine **Shared Access Signature (SAS) für ein Speicherkonto**: `BlobEndpoint=https://<your account>.blob.core.windows.net/;SharedAccessSignature=?sv=2016-05-31&sig=<the signature>&spr=https&se=<the validity end time>&srt=co&ss=b&sp=rl` Die SAS muss über Listen- und Leseberechtigungen für Container und Objekte (in diesem Fall Blobs) verfügen.
 -  **Shared Access Signature des Containers**: `ContainerSharedAccessUri=https://<your storage account>.blob.core.windows.net/<container name>?sv=2016-05-31&sr=c&sig=<the signature>&se=<the validity end time>&sp=rl` Die SAS muss über Listen- und Leseberechtigungen für den Container verfügen.
 
-Weitere Informationen zu Shared Access Signatures von Speichern finden Sie unter [Verwenden von Shared Access Signatures (SAS)](../storage/common/storage-dotnet-shared-access-signature-part-1.md).
+Weitere Informationen zu Shared Access Signatures von Speichern finden Sie unter [Verwenden von Shared Access Signatures (SAS)](../storage/common/storage-sas-overview.md).
 
 > [!NOTE]
 > Bei Verwendung von SAS-Anmeldeinformationen müssen Sie die Anmeldedaten für die Datenquellen in regelmäßigen Abständen mit erneuerten Signaturen aktualisieren, um den Ablauf zu verhindern. Falls SAS-Anmeldedaten ablaufen, tritt beim Indexer ein Fehler mit ungefähr folgender Fehlermeldung auf: `Credentials provided in the connection string are invalid or have expired.`.  
@@ -101,7 +101,7 @@ Hier sehen Sie, wie Sie einen Index mit einem durchsuchbaren `content`-Feld zum 
     }
 ```
 
-Weitere Informationen zum Erstellen von Indizes finden Sie unter [Create Index](https://docs.microsoft.com/rest/api/searchservice/create-index) (Index erstellen).
+Weitere Informationen zum Erstellen von Indizes finden Sie unter [Create Index](/rest/api/searchservice/create-index) (Index erstellen).
 
 ### <a name="step-3-create-an-indexer"></a>Schritt 3: Erstellen eines Indexers
 Ein Indexer verbindet eine Datenquelle mit einem Zielsuchindex und stellt einen Zeitplan zur Automatisierung der Datenaktualisierung bereit.
@@ -123,7 +123,7 @@ Nach der Erstellung von Index und Datenquelle können Sie den Indexer erstellen:
 
 Dieser Indexer wird alle zwei Stunden ausgeführt (das Planungsintervall wird auf „PT2H“ festgelegt). Um einen Indexer alle 30 Minuten auszuführen, legen Sie das Intervall auf „PT30M“ fest. Das kürzeste unterstützte Intervall beträgt fünf Minuten. Der Zeitplan ist optional. Ohne Zeitplan wird ein Indexer nur einmal bei seiner Erstellung ausgeführt. Allerdings können Sie ein Indexer bei Bedarf jederzeit ausführen.   
 
-Weitere Informationen zur API zum Erstellen eines Indexers finden Sie unter [Erstellen eines Indexers](https://docs.microsoft.com/rest/api/searchservice/create-indexer).
+Weitere Informationen zur API zum Erstellen eines Indexers finden Sie unter [Erstellen eines Indexers](/rest/api/searchservice/create-indexer).
 
 Weitere Informationen zum Definieren von Indexerzeitplänen finden Sie unter [Festlegen eines Zeitplans für Indexer in der kognitiven Azure-Suche](search-howto-schedule-indexers.md).
 
@@ -169,8 +169,8 @@ In der kognitiven Azure-Suche wird ein Dokument mit dem Dokumentschlüssel einde
 
 Sie sollten sorgfältig abwägen, welches extrahierte Feld Sie dem Schlüsselfeld für Ihren Index zuordnen. Die Kandidaten lauten:
 
-* **metadata\_storage\_name**: Dies ist gegebenenfalls ein passender Kandidat. Beachten Sie aber, dass 1) die Namen unter Umständen nicht eindeutig sind, falls Blobs mit dem gleichen Namen in unterschiedlichen Ordnern enthalten sind, und 2) der Name Zeichen enthalten kann, die in Dokumentschlüsseln ungültig sind, z.B. Bindestriche. Als Lösung für ungültige Zeichen können Sie die `base64Encode`-[Feldzuordnungsfunktion](search-indexer-field-mappings.md#base64EncodeFunction) verwenden. Denken Sie in diesem Fall daran, die Dokumentschlüssel zu codieren, wenn Sie sie in API-Aufrufen übergeben, z.B. bei einem Lookup. (Unter .NET können Sie hierfür beispielsweise die [UrlTokenEncode-Methode](https://msdn.microsoft.com/library/system.web.httpserverutility.urltokenencode.aspx) verwenden.)
-* **metadata\_storage\_path**: Die Verwendung des vollständigen Pfads sorgt für Eindeutigkeit, aber der Pfad enthält auf jeden Fall `/`-Zeichen, die [in einem Dokumentschlüssel ungültig sind](https://docs.microsoft.com/rest/api/searchservice/naming-rules).  Wie oben auch, haben Sie hierbei die Möglichkeit, die Schlüssel mit der `base64Encode`-[Funktion](search-indexer-field-mappings.md#base64EncodeFunction) zu codieren.
+* **metadata\_storage\_name**: Dies ist gegebenenfalls ein passender Kandidat. Beachten Sie aber, dass 1) die Namen unter Umständen nicht eindeutig sind, falls Blobs mit dem gleichen Namen in unterschiedlichen Ordnern enthalten sind, und 2) der Name Zeichen enthalten kann, die in Dokumentschlüsseln ungültig sind, z.B. Bindestriche. Als Lösung für ungültige Zeichen können Sie die `base64Encode`-[Feldzuordnungsfunktion](search-indexer-field-mappings.md#base64EncodeFunction) verwenden. Denken Sie in diesem Fall daran, die Dokumentschlüssel zu codieren, wenn Sie sie in API-Aufrufen übergeben, z.B. bei einem Lookup. (Unter .NET können Sie hierfür beispielsweise die [UrlTokenEncode-Methode](/dotnet/api/system.web.httpserverutility.urltokenencode?view=netframework-4.8) verwenden.)
+* **metadata\_storage\_path**: Die Verwendung des vollständigen Pfads sorgt für Eindeutigkeit, aber der Pfad enthält auf jeden Fall `/`-Zeichen, die [in einem Dokumentschlüssel ungültig sind](/rest/api/searchservice/naming-rules).  Wie oben auch, haben Sie hierbei die Möglichkeit, die Schlüssel mit der `base64Encode`-[Funktion](search-indexer-field-mappings.md#base64EncodeFunction) zu codieren.
 * Falls keine der Optionen oben für Sie geeignet ist, können Sie den Blobs eine benutzerdefinierte Metadateneigenschaft hinzufügen. Bei dieser Option ist es aber erforderlich, dass diese Metadateneigenschaft im Rahmen des Blob-Uploadvorgangs allen Blobs hinzugefügt wird. Da der Schlüssel eine erforderliche Eigenschaft ist, tritt für alle Blobs, die nicht über diese Eigenschaft verfügen, beim Indizieren ein Fehler auf.
 
 > [!IMPORTANT]
@@ -268,7 +268,7 @@ Wenn sowohl der `indexedFileNameExtensions`- als auch der `excludedFileNameExten
 
 Sie können mithilfe des Konfigurationsparameters `dataToExtract` steuern, welche Teile der Blobs indiziert werden. Die folgenden Werte sind möglich:
 
-* `storageMetadata` ‒ Gibt an, dass nur die [standardmäßigen Blob-Eigenschaften und benutzerspezifischen Metadaten](../storage/blobs/storage-properties-metadata.md) indiziert werden
+* `storageMetadata` ‒ Gibt an, dass nur die [standardmäßigen Blob-Eigenschaften und benutzerspezifischen Metadaten](../storage/blobs/storage-blob-container-properties-metadata.md) indiziert werden
 * `allMetadata` ‒ Gibt an, dass Speichermetadaten und die [inhaltstypspezifischen Metadaten](#ContentSpecificMetadata), die aus dem Blobinhalt extrahiert wurden, indiziert werden
 * `contentAndMetadata` ‒ Gibt an, dass alle Metadaten und Textinhalte, die aus dem Blob extrahiert wurden, indiziert werden Dies ist der Standardwert.
 
@@ -316,7 +316,7 @@ Für einige Blobs kann in der kognitiven Azure-Suche der Inhaltstyp nicht bestim
       "parameters" : { "configuration" : { "failOnUnprocessableDocument" : false } }
 ```
 
-Die kognitive Azure-Suche beschränkt die Größe der indizierten Blobs. Diese Grenzwerte sind unter [Dienstgrenzwerte in der kognitiven Azure-Suche](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity) angegeben. Zu große Blobs werden standardmäßig als Fehler behandelt. Sie können jedoch weiterhin Speichermetadaten übergroßer Blobs indizieren, wenn Sie den Konfigurationsparameter `indexStorageMetadataOnlyForOversizedDocuments` auf „true“ setzen: 
+Die kognitive Azure-Suche beschränkt die Größe der indizierten Blobs. Diese Grenzwerte sind unter [Dienstgrenzwerte in der kognitiven Azure-Suche](./search-limits-quotas-capacity.md) angegeben. Zu große Blobs werden standardmäßig als Fehler behandelt. Sie können jedoch weiterhin Speichermetadaten übergroßer Blobs indizieren, wenn Sie den Konfigurationsparameter `indexStorageMetadataOnlyForOversizedDocuments` auf „true“ setzen: 
 
 ```http
     "parameters" : { "configuration" : { "indexStorageMetadataOnlyForOversizedDocuments" : true } }
@@ -345,15 +345,15 @@ Es gibt zwei Möglichkeiten, den Ansatz des vorläufigen Löschens zu implementi
 ### <a name="native-blob-soft-delete-preview"></a>Natives vorläufiges Löschen von Blobs (Vorschau)
 
 > [!IMPORTANT]
-> Die Unterstützung für das native vorläufige Löschen von Blobs ist als Vorschauversion verfügbar. Die Vorschaufunktion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Dieses Feature wird durch die [REST-API-Version 2020-06-30-Preview](https://docs.microsoft.com/azure/search/search-api-preview) bereitgestellt. Derzeit werden weder das Portal noch das .NET SDK unterstützt.
+> Die Unterstützung für das native vorläufige Löschen von Blobs ist als Vorschauversion verfügbar. Die Vorschaufunktion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Dieses Feature wird durch die [REST-API-Version 2020-06-30-Preview](./search-api-preview.md) bereitgestellt. Derzeit werden weder das Portal noch das .NET SDK unterstützt.
 
 > [!NOTE]
 > Bei Verwendung der Richtlinie zum nativen vorläufigen Löschen von Blobs müssen die Dokumentschlüssel für die Dokumente in Ihrem Index entweder eine Blobeigenschaft oder Blobmetadaten sein.
 
-Bei dieser Methode verwenden Sie das Feature zum [nativen vorläufigen Löschen von Blobs](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete), das Azure Blob Storage bietet. Wenn natives vorläufiges Löschen von Blobs für Ihr Speicherkonto aktiviert ist, wird für die Datenquelle eine Richtlinie für natives vorläufiges Löschen festgelegt, und der Indexer sucht ein Blob, das in einen vorläufig gelöschten Zustand versetzt wurde. Der Indexer entfernt dieses Dokument aus dem Index. Die Richtlinie zum nativen vorläufigen Löschen von Blobs wird beim Indizieren von Blobs aus Azure Data Lake Storage Gen2 nicht unterstützt.
+Bei dieser Methode verwenden Sie das Feature zum [nativen vorläufigen Löschen von Blobs](../storage/blobs/soft-delete-blob-overview.md), das Azure Blob Storage bietet. Wenn natives vorläufiges Löschen von Blobs für Ihr Speicherkonto aktiviert ist, wird für die Datenquelle eine Richtlinie für natives vorläufiges Löschen festgelegt, und der Indexer sucht ein Blob, das in einen vorläufig gelöschten Zustand versetzt wurde. Der Indexer entfernt dieses Dokument aus dem Index. Die Richtlinie zum nativen vorläufigen Löschen von Blobs wird beim Indizieren von Blobs aus Azure Data Lake Storage Gen2 nicht unterstützt.
 
 Führen Sie die folgenden Schritte durch:
-1. Aktivieren Sie [natives vorläufiges Löschen für Azure Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete). Sie sollten für die Aufbewahrungsrichtlinie einen Wert festlegen, der wesentlich höher ist als der Intervallzeitplan Ihres Indexers. Wenn ein Problem beim Ausführen des Indexers vorliegt oder eine große Anzahl von Dokumenten indiziert werden muss, steht dem Indexer viel Zeit für die endgültige Verarbeitung der vorläufig gelöschten Blobs zur Verfügung. Indexer von Azure Cognitive Suche löschen nur dann ein Dokument aus dem Index, wenn sie das Blob verarbeiten, während es sich in einem vorläufig gelöschten Zustand befindet.
+1. Aktivieren Sie [natives vorläufiges Löschen für Azure Blob Storage](../storage/blobs/soft-delete-blob-overview.md). Sie sollten für die Aufbewahrungsrichtlinie einen Wert festlegen, der wesentlich höher ist als der Intervallzeitplan Ihres Indexers. Wenn ein Problem beim Ausführen des Indexers vorliegt oder eine große Anzahl von Dokumenten indiziert werden muss, steht dem Indexer viel Zeit für die endgültige Verarbeitung der vorläufig gelöschten Blobs zur Verfügung. Indexer von Azure Cognitive Suche löschen nur dann ein Dokument aus dem Index, wenn sie das Blob verarbeiten, während es sich in einem vorläufig gelöschten Zustand befindet.
 1. Konfigurieren Sie für die Datenquelle eine Richtlinie zur Erkennung des nativen vorläufigen Löschens von Blobs. Ein entsprechendes Beispiel ist nachfolgend dargestellt. Da dieses Feature in der Vorschauversion verfügbar ist, müssen Sie die Vorschau-REST-API verwenden.
 1. Führen Sie den Indexer aus, oder legen Sie fest, dass der Indexer gemäß einem Zeitplan ausgeführt wird. Wenn der Indexer das Blob ausführt und verarbeitet, wird das Dokument aus dem Index entfernt.
 
@@ -434,7 +434,7 @@ Das Indizieren von Blobs kann sehr zeitaufwändig sein. In Fällen, in denen Sie
 
 Sie möchten möglicherweise Dokumente aus mehreren Quellen in Ihrem Index „zusammenbauen“. Womöglich möchten Sie z.B. Text aus Blobs mit anderen Metadaten zusammenführen, die in Cosmos DB gespeichert sind. Sie können auch die Indizierungs-API mit Push zusammen mit unterschiedlichen Indexern zum Erstellen von Suchdokumenten aus mehreren Teilen verwenden. 
 
-Damit dies funktioniert, müssen sich alle Indexer und andere Komponenten auf den Dokumentschlüssel einigen. Weitere Informationen zu diesem Thema finden Sie unter [Indizieren mehrerer Azure-Datenquellen](https://docs.microsoft.com/azure/search/tutorial-multiple-data-sources). Eine ausführliche exemplarische Vorgehensweise finden Sie im externen Artikel: [Combine documents with other data in Azure Cognitive Search](https://blog.lytzen.name/2017/01/combine-documents-with-other-data-in.html) (Zusammenführen von Dokumenten mit anderen Daten in der kognitiven Azure-Suche).
+Damit dies funktioniert, müssen sich alle Indexer und andere Komponenten auf den Dokumentschlüssel einigen. Weitere Informationen zu diesem Thema finden Sie unter [Indizieren mehrerer Azure-Datenquellen](./tutorial-multiple-data-sources.md). Eine ausführliche exemplarische Vorgehensweise finden Sie im externen Artikel: [Combine documents with other data in Azure Cognitive Search](https://blog.lytzen.name/2017/01/combine-documents-with-other-data-in.html) (Zusammenführen von Dokumenten mit anderen Daten in der kognitiven Azure-Suche).
 
 <a name="IndexingPlainText"></a>
 ## <a name="indexing-plain-text"></a>Indizierung von Nur-Text 

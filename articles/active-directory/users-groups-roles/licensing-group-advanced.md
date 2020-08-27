@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f2f055a6b8f4a8876c024bdd131a6001e21004e5
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 937c5dbf3417e5914a0b4285c3bb114d7499e0fb
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88209461"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88799059"
 ---
 # <a name="scenarios-limitations-and-known-issues-using-groups-to-manage-licensing-in-azure-active-directory"></a>Szenarien, Einschränkungen und bekannte Probleme mit der Verwendung von Gruppen zum Verwalten der Lizenzierung in Azure Active Directory
 
@@ -211,7 +211,7 @@ Wenn Sie die gruppenbasierte Lizenzierung verwenden, ist es ratsam, sich mit der
 
 - Wenn Lizenzen für eine große Gruppe zugewiesen oder geändert werden (z.B. 100.000 Benutzer), kann dies die Leistung beeinträchtigen. Vor allem das Volumen der Änderungen, das von der Azure AD-Automation generiert wird, kann sich negativ auf die Leistung Ihrer Verzeichnissynchronisierung zwischen Azure AD und lokalen Systemen auswirken.
 
-- Wenn Sie dynamische Gruppen für die Verwaltung der Benutzermitgliedschaft verwenden, vergewissern Sie sich, dass der Benutzer Mitglied der Gruppe ist. Dies ist für die Lizenzzuweisung erforderlich. Ist er kein Mitglied, [überprüfen Sie den Verarbeitungsstatus für die Mitgliedschaftsregel](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-create-rule) der dynamischen Gruppe.
+- Wenn Sie dynamische Gruppen für die Verwaltung der Benutzermitgliedschaft verwenden, vergewissern Sie sich, dass der Benutzer Mitglied der Gruppe ist. Dies ist für die Lizenzzuweisung erforderlich. Ist er kein Mitglied, [überprüfen Sie den Verarbeitungsstatus für die Mitgliedschaftsregel](./groups-create-rule.md) der dynamischen Gruppe.
 
 - In bestimmten Situationen mit hoher Auslastung kann es lange dauern, Lizenzänderungen für Gruppen oder Änderungen der Mitgliedschaft für Gruppen mit vorhandenen Lizenzen zu verarbeiten. Wenn die Verarbeitung Ihrer Änderungen für Gruppen mit einer Größe von mehr als 60.000 Benutzern länger als 24 Stunden dauert, sollten Sie ein [Supportticket erstellen](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/supportRequest), damit wir den Fall untersuchen können. 
 
