@@ -3,12 +3,12 @@ title: Abschätzen der Kosten des Verbrauchstarifs in Azure Functions
 description: Erfahren Sie, wie Sie die Kosten besser abschätzen, die Sie eventuell verursachen, wenn Sie Ihre Funkions-App in einem Verbrauchstarif in Azure ausführen.
 ms.date: 9/20/2019
 ms.topic: conceptual
-ms.openlocfilehash: 880d1c20c75ce297b556ac203e309e446227e97a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 33c892bd7904d2921039a4b2afb9c775d6a4926a
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87083037"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88207774"
 ---
 # <a name="estimating-consumption-plan-costs"></a>Abschätzen der Kosten des Verbrauchstarifs
 
@@ -36,6 +36,8 @@ Da sich die Speichernutzung im Laufe der Zeit ändert, ist die Berechnung im Wes
 
 > [!NOTE]
 > Obwohl die CPU-Nutzung in den Ausführungskosten nicht direkt berücksichtigt wird, kann sie sich auf die Kosten auswirken, wenn sie die Ausführungszeit der Funktion beeinflusst.
+
+Bei durch HTTP ausgelösten Funktionen werden Ihnen keine Ausführungen in Rechnung gestellt, wenn ein Fehler auftritt, bevor die Ausführung Ihres Funktionscodes beginnt. Dies bedeutet, dass 401-Antworten von der Plattform aufgrund der API-Schlüsselüberprüfung oder des Authentifizierungs-/Autorisierungsfeatures von App Service nicht auf Ihre Ausführungskosten angerechnet werden. Ebenso werden 5xx-Statuscodeantworten nicht gezählt, wenn diese auf der Plattform auftreten, bevor eine Funktion die Anforderung verarbeitet. Eine 5xx-Antwort, die nach dem Ausführungsbeginn Ihres Funktionscodes generiert wurde, wird dennoch als Ausführung gezählt, selbst wenn der Fehler nicht von Ihrem Funktionscode ausgelöst wird.
 
 ## <a name="other-related-costs"></a>Andere verwandte Kosten
 

@@ -4,12 +4,12 @@ ms.service: azure-resource-manager
 ms.topic: include
 ms.date: 02/24/2020
 ms.author: tomfitz
-ms.openlocfilehash: 33a63280f6973d2c5e29db29f7a6f3fc68c57c77
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f0ab7c2efc499c43245680e56a7e5ca1b5261397
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84424730"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88748785"
 ---
 | Resource | Begrenzung |
 | --- | --- |
@@ -17,7 +17,7 @@ ms.locfileid: "84424730"
 | Ressourcen pro Ressourcengruppe pro Ressourcentyp |800: Einige Ressourcentypen können den Grenzwert von 800 überschreiten. Weitere Informationen finden Sie unter [Ressourcen ohne Beschränkung auf 800 Instanzen pro Ressourcengruppe](../articles/azure-resource-manager/management/resources-without-resource-group-limit.md). |
 | Bereitstellungen pro Ressourcenverlauf im Bereitstellungsverlauf |800<sup>1</sup> |
 | Ressourcen pro Bereitstellung |800 |
-| Managementsperren pro eindeutigem Bereich |20 |
+| Managementsperren pro eindeutigem [Bereich](../articles/azure-resource-manager/management/overview.md#understand-scope)  |20 |
 | Anzahl Tags pro Ressource oder Ressourcengruppe |50 |
 | Tagschlüssellänge |512 |
 | Tagwertlänge |256 |

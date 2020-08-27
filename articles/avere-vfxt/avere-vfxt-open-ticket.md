@@ -1,17 +1,17 @@
 ---
 title: Anfordern von Support für Avere vFXT für Azure
-description: Erläuterung zum Öffnen von Supporttickets für Avere vFXT für Azure
+description: Hier erfahren Sie, wie Sie Probleme behandeln können, die bei der Bereitstellung oder Verwendung von Avere vFXT for Azure auftreten können, indem Sie ein Supportticket über das Azure-Portal erstellen.
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 01/13/2020
 ms.author: rohogue
-ms.openlocfilehash: b3c604003f78a150067875fb2064ab5eca0600db
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 522d29505d7d10f5f6d97136f270f07a63053d19
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85847355"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88271106"
 ---
 # <a name="get-help-with-your-system"></a>Abrufen von Hilfe zu Ihrem System
 

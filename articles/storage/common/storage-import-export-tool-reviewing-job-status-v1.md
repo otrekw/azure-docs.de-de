@@ -1,6 +1,6 @@
 ---
 title: Überprüfen des Status von Azure Import/Export-Aufträgen (V1) | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie mithilfe der Protokolldateien, die beim Ausführen des Import- oder Exportauftrags erstellt werden, den Status des Import/Export-Auftrags ermitteln.
+description: In diesem Artikel erfahren Sie, wie Sie mithilfe von Protokolldateien, die vom Import- oder Exportvorgang erstellt wurden, der Status von Aufträgen anzeigen.
 author: twooley
 services: storage
 ms.service: storage
@@ -8,15 +8,15 @@ ms.topic: how-to
 ms.date: 01/26/2017
 ms.author: twooley
 ms.subservice: common
-ms.openlocfilehash: 5ab0dd7f0e0ed90c205c37ddbb7ea3a9fca74ae9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c9093af25e621b3ab9a60d9894f0a875340fda45
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85512269"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88525668"
 ---
 # <a name="reviewing-azure-importexport-job-status-with-copy-log-files"></a>Überprüfen des Status von Azure Import/Export-Aufträgen mithilfe von Kopierprotokolldateien
-Wenn der Microsoft Azure Import/Export-Dienst Laufwerke im Rahmen eines Import- oder Exportauftrags verarbeitet, schreibt er Kopierprotokolldateien in das Speicherkonto, in das bzw. aus dem Sie Blobs importieren oder exportieren. Die Protokolldatei enthält ausführliche Statusinformationen zu den einzelnen importierten oder exportierten Dateien. Die URL zu den einzelnen Kopierprotokolldateien wird zurückgegeben, wenn Sie den Status eines abgeschlossenen Auftrags abfragen. (Weitere Informationen finden Sie unter [Get Job](https://docs.microsoft.com/rest/api/storageimportexport/Jobs/Get).)  
+Wenn der Dienst „Microsoft Azure Import/Export“ Laufwerke im Rahmen eines Import- oder Exportauftrags verarbeitet, schreibt er Kopierprotokolldateien in das Speicherkonto, in das oder aus dem Sie Blobs importiert bzw. exportiert haben. Die Protokolldatei enthält ausführliche Statusinformationen zu den einzelnen importierten oder exportierten Dateien. Der Dienst gibt die URL für jede Kopierprotokolldatei zurück, wenn Sie den Status eines abgeschlossenen Auftrags abfragen. Weitere Informationen finden Sie unter [Abrufen von Aufträgen](https://docs.microsoft.com/rest/api/storageimportexport/Jobs/Get).  
 
 ## <a name="example-urls"></a>Beispiel-URLs
 
@@ -33,5 +33,4 @@ Im Anschluss finden Sie Beispiel-URLs für Kopierprotokolldateien für einen Imp
  * [Einrichten des Azure Import/Export-Tools](storage-import-export-tool-setup-v1.md)   
  * [Vorbereiten von Festplatten für einen Importauftrag](../storage-import-export-tool-preparing-hard-drives-import-v1.md)   
  * [Reparieren eines Importauftrags](../storage-import-export-tool-repairing-an-import-job-v1.md)   
- * [Reparieren eines Exportauftrags](../storage-import-export-tool-repairing-an-export-job-v1.md)   
- * [Behandeln von Problemen mit dem Azure Import/Export-Tool](storage-import-export-tool-troubleshooting-v1.md)
+ * [Reparieren eines Exportauftrags](../storage-import-export-tool-repairing-an-export-job-v1.md)

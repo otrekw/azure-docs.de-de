@@ -1,6 +1,6 @@
 ---
 title: Übersicht über die Zugriffssteuerung in Data Lake Storage Gen1 | Microsoft-Dokumentation
-description: Grundlegende Informationen zur Funktionsweise der Zugriffssteuerung in Azure Data Lake Storage Gen1
+description: Hier erfahren Sie mehr über die Grundlagen des Zugriffssteuerungsmodells von Azure Data Lake Storage Gen1, das von HDFS abgeleitet ist.
 services: data-lake-store
 documentationcenter: ''
 author: twooley
@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: twooley
-ms.openlocfilehash: 276e691351d852d6dcb0075d47bf33af6767fc10
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 11629338a808ae0f83ac513b6475dce7a53814da
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85847828"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88190151"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen1"></a>Zugriffssteuerung in Azure Data Lake Storage Gen1
 

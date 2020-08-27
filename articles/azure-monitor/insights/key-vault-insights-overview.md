@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 04/13/2019
-ms.openlocfilehash: 7b52a1ee67c22fb3bded49a80d35305bdf612f10
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: c669946ab76fcaeaaa6fd681f521408643c5a63c
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86498950"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88531258"
 ---
 # <a name="monitoring-your-key-vault-service-with-azure-monitor-for-key-vault-preview"></a>Überwachen Ihres Schlüsseltresordiensts mit Azure Monitor für Key Vault (Vorschauversion)
 Azure Monitor für Key Vault (Vorschauversion) ermöglicht eine umfassende Überwachung Ihrer Schlüsseltresore. Zu diesem Zweck wird eine einheitliche Darstellung der Anforderungen, Leistung, Fehler und Wartezeit im Zusammenhang mit Key Vault bereitgestellt.
@@ -45,7 +45,7 @@ Von Azure Monitor für Key Vault werden Protokolle mit Metriken kombiniert, um e
 
 In Azure Monitor können Sie Details zu Anforderungen, zur Wartezeit und zu Fehlern mehrerer Schlüsseltresore in Ihrem Abonnement anzeigen sowie Leistungsprobleme und Drosselungsszenarien leichter identifizieren.
 
-Gehen Sie wie folgt vor, um die Nutzung und Vorgänge Ihrer Speicherkonten für alle Ihre Abonnements anzuzeigen:
+Führen Sie die folgenden Schritte aus, um die Nutzung und Vorgänge Ihrer Schlüsseltresore für alle Ihre Abonnements anzuzeigen:
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 

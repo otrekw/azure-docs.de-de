@@ -4,20 +4,21 @@ description: Hier erfahren Sie, wie ein Rabatt für reservierte Azure-Datenträg
 author: roygara
 ms.author: rogarana
 ms.service: cost-management-billing
+ms.subservice: reservations
 ms.topic: conceptual
 ms.date: 01/30/2020
-ms.openlocfilehash: 3541e3f12a6d0b1beecdd67821d31f71b47f6c68
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: cd89c3ddc3c58de02f1104109ce7f243c4d1e6fd
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82509464"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88682449"
 ---
 # <a name="understand-how-your-reservation-discount-is-applied-to-azure-disk-storage"></a>Grundlegendes zur Anwendung Ihres Reservierungsrabatts auf Azure-Datenträgerspeicher
 
 Nach dem Erwerb von reservierter Azure-Datenträgerkapazität wird ein Reservierungsrabatt automatisch auf Datenträgerressourcen angewendet, die den Reservierungsbedingungen entsprechen. Der Reservierungsrabatt gilt nur für Datenträger-SKUs. Für Datenträger-Momentaufnahmen werden die Preise für die nutzungsbasierte Bezahlung verwendet.
 
-Weitere Informationen zur Azure-Datenträgerreservierung finden Sie unter [Einsparen von Kosten durch Azure-Datenträgerreservierung](../../virtual-machines/linux/disks-reserved-capacity.md). Informationen zu den Preisen für die Azure-Datenträgerreservierung finden Sie unter [Verwaltete Datenträger – Preise](https://azure.microsoft.com/pricing/details/managed-disks/).
+Weitere Informationen zur Azure-Datenträgerreservierung finden Sie unter [Einsparen von Kosten durch Azure-Datenträgerreservierung](../../virtual-machines/disks-reserved-capacity.md). Informationen zu den Preisen für die Azure-Datenträgerreservierung finden Sie unter [Verwaltete Datenträger – Preise](https://azure.microsoft.com/pricing/details/managed-disks/).
 
 ## <a name="how-the-reservation-discount-is-applied"></a>Anwendung des Reservierungsrabatts
 
@@ -53,6 +54,5 @@ Wenn Sie weitere Fragen haben oder Hilfe benötigen, [erstellen Sie eine Support
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Senken der Kosten durch die Azure-Datenträgerreservierung (Linux)](../../virtual-machines/linux/disks-reserved-capacity.md)
-- [Senken der Kosten durch die Azure-Datenträgerreservierung (Windows)](../../virtual-machines/windows/disks-reserved-capacity.md)
+- [Senken der Kosten durch Azure-Datenträgerreservierung](../../virtual-machines/disks-reserved-capacity.md)
 - [Was sind Azure-Reservierungen?](save-compute-costs-reservations.md)

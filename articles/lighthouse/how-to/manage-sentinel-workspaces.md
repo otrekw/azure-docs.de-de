@@ -1,14 +1,14 @@
 ---
 title: Verwalten von Azure Sentinel-Arbeitsbereichen im großen Maßstab
 description: Erfahren Sie, wie Sie Azure Sentinel auf delegierten Kundenressourcen effektiv verwalten.
-ms.date: 06/17/2020
+ms.date: 08/17/2020
 ms.topic: how-to
-ms.openlocfilehash: fc6d66a31ed46766bbe664fd8656792c97ff69fd
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 1734efb57b18cfc559144b13aaecb882612ca73b
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88163236"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88511251"
 ---
 # <a name="manage-azure-sentinel-workspaces-at-scale"></a>Verwalten von Azure Sentinel-Arbeitsbereichen im großen Maßstab
 
@@ -69,9 +69,9 @@ Sie können Arbeitsmappen in Ihrem Verwaltungsmandanten bereitstellen und in gro
 
 Darüber hinaus können Sie Arbeitsmappen direkt in einem einzelnen von Ihnen verwalteten Mandanten bereitstellen, um für diesen Kunden spezifische Szenarien zu behandeln.
 
-## <a name="run-queries-across-azure-sentinel-workspaces"></a>Ausführen von Abfragen in mehreren Azure Sentinel-Arbeitsbereichen
+## <a name="run-log-analytics-and-hunting-queries-across-azure-sentinel-workspaces"></a>Ausführen von Log Analytics- und Hunting-Abfragen für Azure Sentinel-Arbeitsbereiche
 
-Log Analytics-Abfragen zur Bedrohungserkennung können zentral im Verwaltungsmandanten erstellt und gespeichert werden. Diese Abfragen können dann mit dem Vereinigungsoperator und dem Arbeitsbereichsausdruck () übergreifend in allen Azure Sentinel-Arbeitsbereichen Ihrer Kunden ausgeführt werden. Weitere Informationen finden Sie unter [Arbeitsbereichsübergreifende Abfragen](../../sentinel/extend-sentinel-across-workspaces-tenants.md#cross-workspace-querying).
+Sie können Log Analytics-Abfragen zur Bedrohungserkennung einschließlich [Hunting-Abfragen](../../sentinel/extend-sentinel-across-workspaces-tenants.md#cross-workspace-hunting) zentral im Verwaltungsmandanten erstellen und speichern. Diese Abfragen können dann mit dem Vereinigungsoperator und dem Arbeitsbereichsausdruck () übergreifend in allen Azure Sentinel-Arbeitsbereichen Ihrer Kunden ausgeführt werden. Weitere Informationen finden Sie unter [Arbeitsbereichsübergreifende Abfragen](../../sentinel/extend-sentinel-across-workspaces-tenants.md#cross-workspace-querying).
 
 ## <a name="use-automation-for-cross-workspace-management"></a>Verwenden von Automation für die arbeitsbereichsübergreifende Verwaltung
 

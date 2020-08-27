@@ -5,37 +5,37 @@ author: jifems
 ms.author: jife
 ms.service: data-share
 ms.topic: how-to
-ms.date: 07/30/2020
-ms.openlocfilehash: 82de05e7169c5803dd999521f61a33b9dd17b567
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.date: 08/14/2020
+ms.openlocfilehash: eed3e8275400a3e677df53b9d62cf0e0bc70271c
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87511954"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88257831"
 ---
 # <a name="how-to-configure-a-dataset-mapping-for-a-received-share-in-azure-data-share"></a>Konfigurieren einer Datasetzuordnung für eine empfangene Freigabe in Azure Data Share
 
-In diesem Artikel wird gezeigt, wie eine Datasetzuordnung für eine empfangene Freigabe in Azure Data Share konfiguriert wird. Sie sollten so vorgehen, wenn Sie eine Datenfreigabeeinladung zwar angenommen, sich aber für „Annehmen und später konfigurieren“ entschieden haben oder wenn Daten direkt freigegeben werden. Möglicherweise möchten Sie eine Datasetzuordnung konfigurieren, wenn Sie das Ziel für Daten ändern müssen, die für Sie freigegeben wurden, oder wenn Sie Daten in einer SQL Server-Instanz empfangen möchten. 
+In diesem Artikel wird gezeigt, wie eine Datasetzuordnung für eine empfangene Freigabe in Azure Data Share konfiguriert wird. Diese müssen Sie konfigurieren, um einen Zieldatenspeicher für empfangene Daten festzulegen oder um diesen zu ändern.
 
 ## <a name="navigate-to-a-received-data-share"></a>Navigieren zu einer empfangenen Datenfreigabe
 
-Navigieren Sie im Azure Data Share-Dienst zu der empfangenen Freigabe, und wählen Sie die Registerkarte **Details** aus. 
+Navigieren Sie in Azure Data Share zu der empfangenen Freigabe, und klicken Sie auf die Registerkarte **Datasets**. 
 
 ![Datasetzuordnung](./media/dataset-mapping.png "Datasetzuordnung") 
 
-Aktivieren Sie das Kontrollkästchen neben dem Dataset, dem Sie ein Ziel zuweisen möchten. Wählen Sie **Zuordnung aufheben** aus, um die vorhandene Zuordnung aufzuheben. Wählen Sie **+ Dem Ziel zuordnen** aus, um einen neuen Zielspeicher auszuwählen. 
+Aktivieren Sie das Kontrollkästchen neben dem Dataset, dem Sie ein Ziel zuweisen möchten. Wählen Sie **+ Dem Ziel zuordnen** aus, um einen neuen Zielspeicher auszuwählen. Klicken Sie zuerst auf **Zuordnung aufheben**, wenn das Dataset bereits zugeordnet wurde und Sie den Zieldatenspeicher ändern möchten.
 
 ![Dem Ziel zuordnen](./media/dataset-map-target.png "Dem Ziel zuordnen") 
 
-## <a name="select-a-new-target-store"></a>Auswählen eines neuen Zielspeichers
+## <a name="select-a-target-store"></a>Auswählen eines Zielspeichers
 
-Wählen Sie einen Zieldatentyp aus, in dem die Daten gespeichert werden sollen. Bei der auf Momentaufnahmen basierenden Freigabe werden Daten, die in zuvor zugeordneten Speicherkonten bereits vorhanden sind, nicht automatisch in den neuen Zielspeicher verschoben. Wählen Sie für die direkte Freigabe einen Datenspeicher am angegebenen Speicherort aus. Der Speicherort ist das Azure-Rechenzentrum, in dem sich der Quelldatenspeicher des Datenanbieters befindet.
+Wählen Sie den Typ des Zieldatenspeichers aus, in dem die empfangenen Daten gespeichert werden sollen. Bei der auf Momentaufnahmen basierenden Freigabe werden Daten, die in zuvor zugeordneten Speicherkonten bereits vorhanden sind, nicht automatisch in den neuen Zielspeicher verschoben. Wählen Sie für die direkte Freigabe einen Datenspeicher am angegebenen Speicherort aus. Der Speicherort ist das Azure-Rechenzentrum, in dem sich der Quelldatenspeicher des Datenanbieters befindet.
 
 ![Zielspeicherkonto](./media/dataset-map-target-sql.png "Zielspeicher") 
 
 ## <a name="select-a-file-format-sql-sources-only"></a>Auswählen eines Dateiformats (nur SQL-Quellen)
 
-Wenn die Quelldaten aus einer SQL-basierten Quelle stammen, können Sie auswählen, in welchem Format sie empfangen werden. 
+Wenn die Quelldaten aus einer SQL-basierten Quelle stammen und Sie diese als Datei erhalten möchten, können Sie das Empfangsformat selbst festlegen. 
 
 ![Auswählen des Formats](./media/sql-file-formats.png "SQL-Dateiformate")
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/15/2020
 ms.author: memildin
-ms.openlocfilehash: f80403946b3097e81678383c4829ef6606f26cd6
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 9594e1ed14b017591ea2c4ddda59ba61feb81b0c
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87430356"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272279"
 ---
 # <a name="enhanced-secure-score-in-azure-security-center"></a>Erweiterte Sicherheitsbewertung in Azure Security Center
 
@@ -140,7 +140,7 @@ In der folgenden Tabelle sind die Sicherheitskontrollen in Azure Security Center
   </tr>
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px"> Manage access and permissions (Zugriff und Berechtigungen verwalten) (max. Bewertung: 4)</p></strong>Ein zentraler Bestandteil von Sicherheitsprogrammen ist es, sicherzustellen, dass Ihre Benutzer über die für ihre Aufgaben erforderlichen Zugriffsberechtigungen verfügen, und gleichzeitig das <a href="https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/implementing-least-privilege-administrative-models">Modell des geringstprivilegierten Zugriffs</a> umzusetzen.<br>Sie steuern den Zugriff auf Ihre Ressourcen, indem Sie mit <a href="https://docs.microsoft.com/azure/role-based-access-control/overview">rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC)</a> Rollenzuweisungen erstellen. Eine Rollenzuweisung besteht aus drei Elementen:<br>- <strong>Sicherheitsprinzipal:</strong> das Objekt, auf das der Benutzer Zugriff anfordert<br>- <strong>Rollendefinition:</strong> die Berechtigungen<br>- <strong>Umfang:</strong> die Ressourcen, für die die Berechtigungen gelten</td>
-    <td class="tg-lboi"; width=55%>- Veraltete Konten sollten aus Ihrem Abonnement entfernt werden (Vorschau).<br>- Veraltete Konten mit Besitzerberechtigungen sollten aus Ihrem Abonnement entfernt werden (Vorschau).<br>- Externe Konten mit Besitzerberechtigungen sollten aus Ihrem Abonnement entfernt werden (Vorschau).<br>- Externe Konten mit Schreibberechtigungen sollten aus Ihrem Abonnement entfernt werden (Vorschau).<br>- Ihrem Abonnement sollte mehr als ein Besitzer zugewiesen sein.<br>- Für Kubernetes-Dienste sollte die rollenbasierte Zugriffssteuerung verwendet werden (Vorschau).<br>- Service Fabric-Cluster sollten nur Azure Active Directory für die Clientauthentifizierung verwenden.</td>
+    <td class="tg-lboi"; width=55%>- Veraltete Konten sollten aus Ihrem Abonnement entfernt werden (Vorschau).<br>- Veraltete Konten mit Besitzerberechtigungen sollten aus Ihrem Abonnement entfernt werden (Vorschau).<br>- Externe Konten mit Besitzerberechtigungen sollten aus Ihrem Abonnement entfernt werden (Vorschau).<br>- Externe Konten mit Schreibberechtigungen sollten aus Ihrem Abonnement entfernt werden (Vorschau).<br>- Ihrem Abonnement sollte mehr als ein Besitzer zugewiesen sein.<br>- Für Kubernetes-Dienste sollte die rollenbasierte Zugriffssteuerung verwendet werden (Vorschau).<br>- Service Fabric-Cluster sollten nur Azure Active Directory für die Clientauthentifizierung verwenden.<br>- Zum Schutz Ihrer Abonnements Dienstprinzipale anstelle von Verwaltungszertifikaten verwenden</td>
   </tr>
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">Sicherheitskonfigurationen korrigieren (max. Bewertung: 4)</p></strong>Falsch konfigurierte IT-Ressourcen haben ein höheres Angriffsrisiko. Grundlegende Härtungsmaßnahmen werden häufig vergessen, wenn Ressourcen bereitgestellt und Fristen erfüllt werden müssen. Sicherheitsfehlkonfigurationen können auf jeder Infrastrukturebene vorliegen: in den Betriebssystemen und Netzwerkgeräten bis hin zu den Cloudressourcen.<br>Azure Security Center vergleicht die Konfiguration Ihrer Ressourcen kontinuierlich mit den Anforderungen von Branchenstandards, Vorschriften und Benchmarks. Wenn Sie die relevanten Compliancepakete (Standards und Baselines) konfiguriert haben, die für Ihre Organisation relevant sind, werden zu allen Lücken Sicherheitsempfehlungen gegeben, die die CCEID und eine Erläuterung der möglichen Sicherheitsauswirkungen enthalten.<br>Häufig verwendete Pakete sind <a href="https://docs.microsoft.com/azure/security/benchmarks/introduction">Azure Security Benchmark</a> und <a href="https://www.cisecurity.org/benchmark/azure/">CIS Microsoft Azure Foundations Benchmark, Version 1.1.0</a>.</td>

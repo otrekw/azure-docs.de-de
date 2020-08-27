@@ -3,12 +3,12 @@ title: MABS (Azure Backup Server) V3 UR1-Schutzmatrix
 description: Dieser Artikel bietet eine Unterstützungsmatrix aller Workloads, Datentypen und Installationen, die von Azure Backup Server geschützt werden.
 ms.date: 03/19/2020
 ms.topic: conceptual
-ms.openlocfilehash: cdbe874baf45d9858acbf891af3c0aae4bd0c2d2
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: fa8e2a33718c17df7b918b2aaa545ca80c473c29
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88036724"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88190855"
 ---
 # <a name="mabs-azure-backup-server-v3-ur1-protection-matrix"></a>MABS (Azure Backup Server) V3 UR1-Schutzmatrix
 
@@ -40,7 +40,7 @@ In den folgenden Abschnitten wird die Schutzunterstützungsmatrix für MABS deta
 | **Workload**               | **Version**                                                  | **Azure Backup Server V2-Installation**                       | **Unterstützte Azure Backup Server-Instanz** | **Schutz und Wiederherstellung**                                  |
 | -------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | --------------------------------- | ------------------------------------------------------------ |
 | Clientcomputer (64-Bit) | Windows 10                                                  | Physischer Server  <br><br>    Virtueller Hyper-V-Computer   <br><br>   Virtueller VMware-Computer | V3 UR1                            | Volume, Freigabe, Ordner, Dateien, deduplizierte Volumes   <br><br>   Geschützte Volumes müssen mit NTFS formatiert sein. FAT und FAT32 werden nicht unterstützt.  <br><br>    Volumes müssen mindestens 1 GB groß sein. Azure Backup Server verwendet den Volumeschattenkopie-Dienst (Volume Shadow Copy Service, VSS) für die Daten der Momentaufnahme, und die Momentaufnahme funktioniert nur, wenn das Volume mindestens 1GB groß ist. |
-| Server (64 Bit)          | Windows Server 2019, 2016, 2012 R2, 2012                    | Virtueller Azure-Computer (wenn die Workload als virtueller Azure-Computer ausgeführt wird)  <br><br>    Physischer Server  <br><br>    Virtueller Hyper-V-Computer <br><br>     Virtueller VMware-Computer  <br><br>    Azure Stack | V3 UR1                            | Volume, Freigabe, Ordner, Datei, deduplizierte Volumes (NTFS und ReFS)  <br><br>   Systemstatus und Bare-Metal (wird nicht unterstützt, wenn die Workload als virtueller Azure-Computer ausgeführt wird) |
+| Server (64 Bit)          | Windows Server 2019, 2016, 2012 R2, 2012                    | Virtueller Azure-Computer (wenn die Workload als virtueller Azure-Computer ausgeführt wird)  <br><br>    Physischer Server  <br><br>    Virtueller Hyper-V-Computer <br><br>     Virtueller VMware-Computer  <br><br>    Azure Stack | V3 UR1                            | Volume, Freigabe, Ordner, Datei <br><br>    deduplizierte Volumes (nur NTFS)  <br><br>   Systemstatus und Bare-Metal (wird nicht unterstützt, wenn die Workload als virtueller Azure-Computer ausgeführt wird) |
 | Server (64 Bit)          | Windows Server 2008 R2 SP1, Windows Server 2008 SP2 (Sie müssen [Windows Management Frame 4.0](https://www.microsoft.com/download/details.aspx?id=40855) installieren.) | Physischer Server  <br><br>    Virtueller Hyper-V-Computer  <br><br>      Virtueller VMware-Computer  <br><br>   Azure Stack | V3 UR1                            | Volume, Freigabe, Ordner, Datei, Systemstatus/Bare-Metal        |
 | SQL Server                | SQL Server 2019, 2017, 2016 und [unterstützte SPs](https://support.microsoft.com/lifecycle/search?alpha=SQL%20Server%202016), 2014 und unterstützte [SPs](https://support.microsoft.com/lifecycle/search?alpha=SQL%20Server%202014) | Physischer Server  <br><br>     Virtueller Hyper-V-Computer   <br><br>     Virtueller VMware-Computer  <br><br>   Virtueller Azure-Computer (wenn die Workload als virtueller Azure-Computer ausgeführt wird)  <br><br>     Azure Stack | V3 UR1                            | Alle Bereitstellungsszenarien: Datenbank       <br><br>  MABS v3 UR1 unterstützt die Sicherung von SQL-Datenbanken über ReFS-Volumes.                  |
 | Exchange                   | Exchange 2019, 2016                                         | Physischer Server   <br><br>   Virtueller Hyper-V-Computer  <br><br>      Virtueller VMware-Computer  <br><br>   Azure Stack  <br><br>    Virtueller Azure-Computer (wenn die Workload als virtueller Azure-Computer ausgeführt wird) | V3 UR1                            | Schutz (alle Bereitstellungsszenarien): Eigenständiger Exchange-Server, Datenbank unter einer Database Availability Group (DAG)  <br><br>    Wiederherstellen (alle Bereitstellungsszenarien): Postfach, Postfachdatenbanken unter einer DAG    <br><br>  Die Sicherung von Exchange über ReFS wird mit MABS v3 UR1 unterstützt. |

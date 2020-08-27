@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 9/25/2018
 ms.author: rohink
 ms.openlocfilehash: 2b122a34cfd382a58f7680743d3a1cb1ae598fd1
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "76939245"
 ---
 # <a name="tutorial-create-an-alias-record-to-refer-to-a-zone-resource-record"></a>Tutorial: Erstellen eines Aliaseintrags, um auf einen Zonenressourceneintrag zu verweisen
@@ -58,7 +58,7 @@ Erstellen eines Aliaseintrags, der auf einen Ressourceneintrag in der Zone verwe
 ## <a name="test-the-alias-record"></a>Testen des Aliaseintrags
 
 1. Starten Sie Ihr bevorzugtes nslookup-Tool. Eine Möglichkeit besteht darin, zu [https://network-tools.com/nslook](https://network-tools.com/nslook) zu navigieren.
-2. Legen Sie den Abfragetyp für A-Einträge fest, und suchen Sie **test.\<Ihr Domänenname\>** . Die Antwort ist **10.10.10.10**.
+2. Legen Sie den Abfragetyp für A-Einträge fest, und suchen Sie **test.\<your domain name\>** . Die Antwort ist **10.10.10.10**.
 3. Ändern Sie im Azure-Portal den A-Eintrag **Server** in **10.11.11.11**.
 4. Warten Sie einige Minuten, und verwenden Sie dann nslookup für den Eintrag **Test**. Die Antwort ist **10.11.11.11**.
 

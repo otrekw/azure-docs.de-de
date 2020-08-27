@@ -5,7 +5,7 @@ services: active-directory
 author: curtand
 ms.author: curtand
 manager: mtillman
-ms.date: 04/27/2020
+ms.date: 08/11/2020
 ms.topic: how-to
 ms.service: active-directory
 ms.subservice: users-groups-roles
@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f603623e2b47a8ac1a8530880e10c919f63b66c
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: d4cb24a89d19abb753e2be704dbad7fd5b2ddcad
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423608"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88236555"
 ---
 # <a name="bulk-create-users-in-azure-active-directory"></a>Massenerstellung von Benutzern in Azure Active Directory
 
@@ -34,6 +34,9 @@ Laden Sie die CSV-Vorlage für den Massenupload herunter, und füllen Sie sie au
 
 ![Hochzuladendes Arbeitsblatt mit Anmerkungen zum Zweck und den Werten für die Zeilen und Spalten](./media/users-bulk-add/create-template-example.png)
 
+> [!WARNING]
+> Wenn Sie versuchen, nur einen Eintrag in der CSV-Vorlage hinzuzufügen, müssen Sie Zeile 3 beibehalten und den neuen Eintrag zu Zeile 4 hinzufügen. 
+
 ### <a name="csv-template-structure"></a>CSV-Vorlagenstruktur
 
 Die Zeilen der heruntergeladenen CSV-Vorlage lauten wie folgt:
@@ -46,7 +49,7 @@ Die Zeilen der heruntergeladenen CSV-Vorlage lauten wie folgt:
 
 - Die ersten zwei Zeilen der hochzuladenden Vorlage dürfen nicht entfernt oder geändert werden, da der Upload sonst nicht verarbeitet werden kann.
 - Die erforderlichen Spalten werden zuerst aufgelistet.
-- Es wird davon abgeraten, der Vorlage neue Spalten hinzuzufügen. Jegliche Spalten, die Sie zusätzlich hinzufügen, werden ignoriert und nicht verarbeitet.
+- Es wird davon abgeraten, neue Spalten zur Vorlage hinzuzufügen. Jegliche Spalten, die Sie zusätzlich hinzufügen, werden ignoriert und nicht verarbeitet.
 - Es wird empfohlen, möglichst häufig die neueste Version der CSV-Vorlage herunterzuladen.
 - Vergewissern Sie sich unbedingt, dass vor und nach allen Feldern keine unbeabsichtigten Leerräume vorhanden sind. Beim **Benutzerprinzipalnamen** würde ein solcher Leerraum einen Importfehler verursachen.
 

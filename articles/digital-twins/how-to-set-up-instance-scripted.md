@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 82ddba67a6bd9fcc56b74c3f830663228feb945b
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 86597521f762237b5c4bc9a7a5268d7dae1303b4
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009697"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88587972"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-scripted"></a>Einrichten einer Azure Digital Twins-Instanz und -Authentifizierung (per Skript)
 
@@ -110,12 +110,14 @@ Die vom Skript erstellten Ressourcen und eingerichteten Berechtigungen können S
 
 > [!NOTE]
 > Beachten Sie, dass das Skript diese erforderliche Rolle derzeit demselben Benutzer zuweist, der auch das Skript in Cloud Shell ausführt. Falls erforderlich, können Sie diese Rolle nun über das Azure-Portal ([Anweisungen](how-to-set-up-instance-portal.md#set-up-user-access-permissions)) oder die CLI ([Anweisungen](how-to-set-up-instance-cli.md#set-up-user-access-permissions)) einem anderen Benutzer zuweisen, der für die Verwaltung der Instanz zuständig ist.
+>
+> Sie können auch das Portal oder die CLI verwenden, um Ihre eigene Rollenzuweisung zu wiederholen, wenn beim Skriptsetup Probleme aufgetreten sind.
 
 ### <a name="verify-app-registration"></a>Überprüfen der App-Registrierung
 
 [!INCLUDE [digital-twins-setup-verify-app-registration-1.md](../../includes/digital-twins-setup-verify-app-registration-1.md)]
 
-Vergewissern Sie sich zunächst, dass die Azure Digital Twins-Berechtigungseinstellungen für die Registrierung ordnungsgemäß festgelegt wurden. Klicken Sie hierzu auf der Menüleiste auf *Manifest*, um den Manifestcode der App-Registrierung anzuzeigen. Scrollen Sie zum unteren Bereich des Codefensters, und suchen Sie unter `requiredResourceAccess` nach diesen Feldern. Die Werte sollten den Werten im nachstehenden Screenshot entsprechen:
+Vergewissern Sie sich zunächst, dass die Azure Digital Twins-Berechtigungseinstellungen für die Registrierung ordnungsgemäß festgelegt wurden. Wählen Sie hierzu auf der Menüleiste *Manifest* aus, um den Manifestcode der App-Registrierung anzuzeigen. Scrollen Sie zum unteren Bereich des Codefensters, und suchen Sie nach diesen Feldern unter `requiredResourceAccess`. Die Werte sollten den Werten im nachstehenden Screenshot entsprechen:
 
 [!INCLUDE [digital-twins-setup-verify-app-registration-2.md](../../includes/digital-twins-setup-verify-app-registration-2.md)]
 
@@ -125,5 +127,5 @@ Vergewissern Sie sich zunächst, dass die Azure Digital Twins-Berechtigungseinst
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Unter folgendem Link erfahren Sie, wie Sie eine Verbindung zwischen Ihrer Clientanwendung und Ihrer Instanz herstellen, indem Sie den Authentifizierungscode der Clientanwendung schreiben:
-* [*Verwenden Authentifizieren einer Clientanwendung für Azure Digital Twins*](how-to-authenticate-client.md)
+Erfahren Sie, wie Sie Ihre Clientanwendung mit Ihrer Instanz verbinden, indem Sie den Authentifizierungscode der Clientanwendung schreiben:
+* [*Verwenden Schreiben von App-Authentifizierungscode*](how-to-authenticate-client.md)

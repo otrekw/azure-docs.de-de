@@ -1,17 +1,17 @@
 ---
 title: 'Leistungsoptimierung: Hive bei Azure Data Lake Storage Gen1'
-description: Anleitung für die Leistungsoptimierung für Hive in HDInsight und Azure Data Lake Storage Gen1
+description: Hier erfahren Sie mehr über die Leistungsoptimierung für Hive in HDInsight und Azure Data Lake Storage Gen1. Sie können Hive für E/A-intensive Abfragen optimieren, um eine bessere Leistung zu erhalten.
 author: stewu
 ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 12/19/2016
 ms.author: stewu
-ms.openlocfilehash: 9e05773955fb79007a5d5899babf8680c69aa654
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: d10b1811257e14238cb04a79ff184cee57aab471
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281717"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88189951"
 ---
 # <a name="performance-tuning-guidance-for-hive-on-hdinsight-and-azure-data-lake-storage-gen1"></a>Anleitung für die Leistungsoptimierung für Hive in HDInsight und Azure Data Lake Storage Gen1
 

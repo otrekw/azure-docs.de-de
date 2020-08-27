@@ -4,12 +4,12 @@ description: In diesem Tutorial wird beschrieben, wie Sie SAP HANA-Datenbanken,
 ms.topic: tutorial
 ms.date: 12/4/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 282f0ee61ffae455d6d3e49ea445d5ddc2fe56ac
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: a1dbf0593c7c9b65c4e285b7162411de6c01bbbf
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87500826"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88762282"
 ---
 # <a name="tutorial-restore-sap-hana-databases-in-an-azure-vm-using-azure-cli"></a>Tutorial: Wiederherstellen von SAP HANA-Datenbanken auf einem virtuellen Azure-Computer über die Azure CLI
 
@@ -89,7 +89,7 @@ In diesem Tutorial stellen Sie die Daten eines zurückliegenden Wiederherstellun
 Mit dem obigen Wiederherstellungspunkt-Namen und unter Nutzung des Wiederherstellungsmodus erstellen wir nun das Objekt für die Wiederherstellungskonfiguration. Hierfür verwenden wir das Cmdlet [az backup recoveryconfig show](/cli/azure/backup/recoveryconfig?view=azure-cli-latest#az-backup-recoveryconfig-show). Die übrigen Parameter dieses Cmdlets haben die folgende Bedeutung:
 
 * **--target-item-name**: Dies ist der Name, der von der wiederhergestellten Datenbank verwendet wird. In diesem Fall haben wir den Namen *restored_database* genutzt.
-* **--target-server-name**: Dies ist der Name eines SAP HANA-Servers, der erfolgreich für einen Recovery Services-Tresor registriert wurde und in derselben Region wie die wiederherzustellende Datenbank angeordnet ist. In diesem Tutorial stellen wir die Datenbank auf demselben SAP HANA-Server mit dem Namen *hxehost* wieder her, den wir geschützt haben.
+* **--target-server-name**: Dies ist der Name eines SAP HANA-Servers, der erfolgreich für einen Recovery Services-Tresor registriert wurde und sich in derselben Region wie die wiederherzustellende Datenbank befindet. In diesem Tutorial stellen wir die Datenbank auf demselben SAP HANA-Server mit dem Namen *hxehost* wieder her, den wir geschützt haben.
 * **--target-server-type**: Für die Wiederherstellung von SAP HANA-Datenbanken muss **SapHanaDatabase** verwendet werden.
 
 ```azurecli-interactive
@@ -181,7 +181,7 @@ In diesem Tutorial wählen wir den vorherigen Zeitpunkt `28-11-2019-09:53:00` f�
 
 Mit dem oben aufgeführten Wiederherstellungspunktnamen und unter Nutzung des Wiederherstellungsmodus erstellen wir nun das Objekt für die Wiederherstellungskonfiguration. Hierfür verwenden wir das Cmdlet [az backup recoveryconfig show](/cli/azure/backup/recoveryconfig?view=azure-cli-latest#az-backup-recoveryconfig-show). Die übrigen Parameter dieses Cmdlets haben die folgende Bedeutung:
 
-* **--target-container-name**: Dies ist der Name eines SAP HANA-Servers, der erfolgreich für einen Recovery Services-Tresor registriert wurde und in derselben Region wie die wiederherzustellende Datenbank angeordnet ist. In diesem Tutorial stellen wir die Datenbank als Datenen auf demselben SAP HANA-Server mit dem Namen *hxehost* wieder her, den wir geschützt haben.
+* **--target-container-name**: Dies ist der Name eines SAP HANA-Servers, der erfolgreich für einen Recovery Services-Tresor registriert wurde und sich in derselben Region wie die wiederherzustellende Datenbank befindet. In diesem Tutorial stellen wir die Datenbank als Datenen auf demselben SAP HANA-Server mit dem Namen *hxehost* wieder her, den wir geschützt haben.
 * **--rp-name**: Für eine Point-in-Time-Wiederherstellung lautet der Wiederherstellungspunktname **DefaultRangeRecoveryPoint**.
 
 ```azurecli-interactive
@@ -302,7 +302,7 @@ Verschieben Sie diese wiederhergestellten Dateien auf den SAP HANA-Server, auf d
     hdbbackupdiag --generate --dataDir <DataFileDir> --logDirs <LogFilesDir> -d <PathToPlaceCatalogFile>
     ```
 
-    Im obigen Befehl gilt Folgendes:
+    Im obigen Befehl:
 
     * `<DataFileDir>` ist der Ordner mit den vollständigen Sicherungen.
     * `<LogFilesDir>` ist der Ordner mit den Protokollsicherungen.

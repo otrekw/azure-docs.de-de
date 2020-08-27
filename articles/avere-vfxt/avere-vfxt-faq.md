@@ -1,18 +1,18 @@
 ---
 title: 'Häufig gestellte Fragen: Avere vFXT für Azure'
-description: Häufig gestellte Fragen zu Avere vFXT für Azure
+description: Verwenden Sie diese häufig gestellten Fragen, um zu entscheiden, ob Avere vFXT for Azure Ihren Anforderungen entspricht. Informieren Sie sich, wie Avere vFXT for Azure mit anderen Azure-Komponenten funktioniert.
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 12/19/2019
 ms.author: rohogue
 ms.custom: references_regions
-ms.openlocfilehash: 55423119e55401d5176e228eba784f2eb498bfef
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c6459e2daf17772b28ee53289754deb33b4823ae
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84196344"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272690"
 ---
 # <a name="avere-vfxt-for-azure-faq"></a>Avere vFXT für Azure: Häufig gestellte Fragen
 

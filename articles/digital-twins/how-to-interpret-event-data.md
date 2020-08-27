@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 6/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 3bb4d70b4c4f3f9edc525ffe5973bca633ddd1be
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 10b74f7b795df2cf8c19d044fce44da3f798af7a
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87800414"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88587632"
 ---
 # <a name="understand-event-data"></a>Grundlegendes zu Ereignisdaten
 
@@ -30,7 +30,7 @@ Im Allgemeinen bestehen Benachrichtigungen aus zwei Teilen: Header und Hauptteil
 
 Header von Benachrichtigungsmeldungen werden mit Schlüssel-Wert-Paaren dargestellt. Je nach verwendetem Protokoll (MQTT, AMQP oder HTTP) werden die Meldungsheader unterschiedlich serialisiert. Dieser Abschnitt behandelt allgemeine Headerinformationen für Benachrichtigungsmeldungen, unabhängig vom gewählten bestimmten Protokoll und der gewählten Serialisierung.
 
-Einige Benachrichtigungen entsprechen dem CloudEvents-Standard. Die CloudEvents-Konformität sieht wie folgt aus.
+Einige Benachrichtigungen entsprechen dem [CloudEvents](https://cloudevents.io/)-Standard. Die CloudEvents-Konformität sieht wie folgt aus.
 * Von Geräten ausgegebene Benachrichtigungen folgen weiterhin den bestehenden Spezifikationen für Benachrichtigungen.
 * Die von IoT Hub verarbeiteten und ausgegebenen Benachrichtigungen folgen weiterhin den bestehenden Spezifikationen für Benachrichtigungen, es sei denn, IoT Hub entscheidet sich für die Unterstützung von CloudEvents, z. B. durch Event Grid.
 * Benachrichtigungen, die von [Digital Twins](concepts-twins-graph.md) mit einem [Modell](concepts-models.md) ausgegeben werden, entsprechen CloudEvents.
@@ -107,7 +107,7 @@ Hier folgen die Felder des Hauptteils einer Lebenszyklusbenachrichtigung.
 | --- | --- |
 | `id` | Bezeichner der Benachrichtigung, z. B. eine UUID oder ein vom Dienst verwalteter Zähler. `source` + `id` ist für jedes einzelne Ereignis eindeutig. |
 | `source` | Name der IoT Hub- oder Azure Digital Twins-Instanz, z. B. *myhub.azure-devices.net* oder *mydigitaltwins.westus2.azuredigitaltwins.net*. |
-| `specversion` | 1.0 |
+| `specversion` | *1.0*<br>Die Meldung entspricht dieser Version der [CloudEvents-Spezifikation](https://github.com/cloudevents/spec). |
 | `type` | `Microsoft.DigitalTwins.Twin.Create`<br>`Microsoft.DigitalTwins.Twin.Delete` |
 | `datacontenttype` | `application/json` |
 | `subject` | ID des digitalen Zwillings. |
@@ -193,7 +193,7 @@ Hier folgen die Felder des Hauptteils einer Edge-Änderungsbenachrichtigung.
 | --- | --- |
 | `id` | Bezeichner der Benachrichtigung, z. B. eine UUID oder ein vom Dienst verwalteter Zähler. `source` + `id` ist für jedes einzelne Ereignis eindeutig. |
 | `source` | Name der Azure Digital Twins-Instanz, z. B. *mydigitaltwins.westus2.azuredigitaltwins.net* |
-| `specversion` | 1.0 |
+| `specversion` | *1.0*<br>Die Meldung entspricht dieser Version der [CloudEvents-Spezifikation](https://github.com/cloudevents/spec). |
 | `type` | `Microsoft.DigitalTwins.Relationship.Create`<br>`Microsoft.DigitalTwins.Relationship.Update`<br>`Microsoft.DigitalTwins.Relationship.Delete`
 |`datacontenttype`| `application/json` |
 | `subject` | ID der Beziehung, z. B. `<twinID>/relationships/<relationshipID>`. |
@@ -249,7 +249,7 @@ Hier folgen die Felder des Hauptteils einer Änderungsbenachrichtigung für digi
 | --- | --- |
 | `id` | Bezeichner der Benachrichtigung, z. B. eine UUID oder ein vom Dienst verwalteter Zähler. `source` + `id` ist für jedes einzelne Ereignis eindeutig. |
 | `source` | Name der IoT Hub- oder Azure Digital Twins-Instanz, z. B. *myhub.azure-devices.net* oder *mydigitaltwins.westus2.azuredigitaltwins.net*.
-| `specversion` | 1.0 |
+| `specversion` | *1.0*<br>Die Meldung entspricht dieser Version der [CloudEvents-Spezifikation](https://github.com/cloudevents/spec). |
 | `type` | `Microsoft.DigitalTwins.Twin.Update` |
 | `datacontenttype` | `application/json` |
 | `subject` | ID des digitalen Zwillings. |

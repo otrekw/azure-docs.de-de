@@ -16,12 +16,12 @@ ms.date: 10/07/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f621ed1342928b7f05fc8b84bfc2fceadf494fb5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ea5c3e0ffc000d3d239e87e9771d1b49d98fd206
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87019730"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589043"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-frequently-asked-questions"></a>Nahtloses einmaliges Anmelden mit Azure Active Directory: Häufig gestellte Fragen
 
@@ -135,6 +135,8 @@ Führen Sie diese Schritte auf dem lokalen Server durch, auf dem Azure AD Connec
    3. Importieren Sie das PowerShell-Modul „Nahtlose SSO“ mit folgendem Befehl: `Import-Module .\AzureADSSO.psd1`.
    4. Führen Sie PowerShell als Administrator aus. Rufen Sie in PowerShell `New-AzureADSSOAuthenticationContext` auf. Mit diesem Befehl sollte ein Popupfenster geöffnet werden, in dem Sie die Anmeldeinformationen des globalen Administrators Ihres Mandanten eingeben können.
    5. Rufen Sie `Enable-AzureADSSO -Enable $false` auf.
+   
+   Hier wird nahtloses einmaliges Anmelden deaktiviert, die Domänen behalten jedoch ihre Konfiguration, falls Sie das nahtlose einmalige Anmelden später wieder aktivieren möchten. Wenn Sie die Domänen vollständig aus der Konfiguration für nahtloses einmaliges Anmelden entfernen möchten, rufen Sie das folgende Cmdlet auf, nachdem Sie Schritt 5 oben ausgeführt haben: `Disable-AzureADSSOForest -DomainFqdn <fqdn>`.
 
    >[!IMPORTANT]
    >Das Deaktivieren des nahtlosen SSO mithilfe von PowerShell ändert nicht den Status in Azure AD Connect. Das nahtlose einmalige Anmelden wird auf der Seite **Benutzeranmeldung ändern** als aktiviert angezeigt.

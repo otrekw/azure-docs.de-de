@@ -4,12 +4,12 @@ description: Behandeln von Problemen bei der Installation, bei der Registrierung
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 07/05/2019
-ms.openlocfilehash: a4882867f9bbe5123df275b8d1c69fe4e163f294
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 54b7295eaed5f04a118cf5097ebc7b25b18f67d2
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87054826"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88522843"
 ---
 # <a name="troubleshoot-azure-backup-server"></a>Behandeln von Problemen mit Azure Backup Server
 
@@ -20,13 +20,46 @@ Verwenden Sie die Informationen in der folgenden Tabelle für die Problembehandl
 Wir empfehlen, dass Sie die nachstehende Prüfung durchführen, bevor Sie mit der Problembehandlung von Microsoft Azure Backup Server (MABS) beginnen:
 
 - [Sicherstellen, dass der Microsoft Azure Recovery Services-Agent (MARS) auf dem neuesten Stand ist](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409)
-- [Sicherstellen, dass zwischen dem MARS-Agent und Azure Netzwerkkonnektivität besteht](./backup-azure-mars-troubleshoot.md#the-microsoft-azure-recovery-service-agent-was-unable-to-connect-to-microsoft-azure-backup)
+- [Stellen Sie sicher, dass zwischen dem MARS-Agent und Azure Netzwerkkonnektivität besteht.](./backup-azure-mars-troubleshoot.md#the-microsoft-azure-recovery-service-agent-was-unable-to-connect-to-microsoft-azure-backup)
 - Vergewissern Sie sich, dass Microsoft Azure Recovery Services ausgeführt wird (auf der Dienstkonsole). Führen Sie bei Bedarf einen Neustart durch, und wiederholen Sie den Vorgang.
 - [Sicherstellen, dass am Speicherort des Ablageordners 5 - 10% freier Volumespeicherplatz vorhanden ist](./backup-azure-file-folder-backup-faq.md#whats-the-minimum-size-requirement-for-the-cache-folder)
 - Wenn bei der Registrierung ein Fehler auftritt, stellen Sie sicher, dass der Server, auf dem Sie Azure Backup Server installieren möchten, nicht bereits für einen anderen Tresor registriert wurde.
 - Wenn die Pushinstallation nicht erfolgreich ist, sollten Sie überprüfen, ob der DPM-Agent bereits vorhanden ist. Wenn ja, können Sie den Agent deinstallieren und dann versuchen, die Installation durchzuführen.
 - [Stellen Sie sicher, dass kein anderer Prozess oder Antivirensoftware in Azure Backup eingreift](./backup-azure-troubleshoot-slow-backup-performance-issue.md#cause-another-process-or-antivirus-software-interfering-with-azure-backup)<br>
 - Stellen Sie sicher, dass der SQL Agent-Dienst ausgeführt und auf dem MABS-Server auf „Automatisch“ festgelegt ist.<br>
+
+## <a name="configure-antivirus-for-mabs-server"></a>Konfigurieren von Virenschutz für MABS-Server
+
+MABS ist mit den beliebtesten Antivirensoftwareprodukten kompatibel. Die folgenden Schritte werden empfohlen, um Konflikte zu vermeiden:
+
+1. **Deaktivieren der Echtzeitüberwachung:** Deaktivieren Sie die Echtzeitüberwachung durch die Antivirensoftware für Folgendes:
+    - `C:\Program Files<MABS Installation path>\XSD` "
+    - `C:\Program Files<MABS Installation path>\Temp` "
+    - Laufwerkbuchstabe des Modern Backup Storage-Volumes
+    - Replikat- und Übertragungsprotokolle: Deaktivieren Sie hierzu die Echtzeitüberwachung der Datei **dpmra.exe**, die sich im Ordner `Program Files\Microsoft Azure Backup Server\DPM\DPM\bin` befindet. Durch die Echtzeitüberwachung wird die Leistung beeinträchtigt, da die Antivirensoftware die Replikate jedes Mal überprüft, wenn MABS eine Synchronisierung mit dem geschützten Server durchführt, und alle betroffenen Dateien jedes Mal, wenn MABS Änderungen auf die Replikate anwendet.
+    - Administratorkonsole: Deaktivieren Sie die Echtzeitüberwachung des Prozesses **csc.exe**, um Auswirkungen auf die Leistung zu vermeiden. Bei dem Prozess **csc.exe** handelt es sich um den C\#-Compiler. Die Echtzeitüberwachung kann zu Leistungsbeeinträchtigungen führen, da hierbei die vom Prozess **csc.exe** beim Generieren von XML-Meldungen ausgegebenen Dateien von der Antivirensoftware überprüft werden. **CSC.exe** ist unter den folgenden Pfaden zu finden:
+        - `\Windows\Microsoft.net\Framework\v2.0.50727\csc.exe`
+        - `\Windows\Microsoft.NET\Framework\v4.0.30319\csc.exe`
+    - Für den auf dem MABS-Server installierten MARS-Agent wird empfohlen, die folgenden Dateien und Speicherorte auszuschließen:
+        - `C:\Program Files\Microsoft Azure Backup Server\DPM\MARS\Microsoft Azure Recovery Services Agent\bin\cbengine.exe` als Prozess
+        - `C:\Program Files\Microsoft Azure Backup Server\DPM\MARS\Microsoft Azure Recovery Services Agent\folder`
+        - Scratchverzeichnis (falls Sie nicht den Standardspeicherort verwenden).
+2. **Deaktivieren der Echtzeitüberwachung auf dem geschützten Server:** Deaktivieren Sie die Echtzeitüberwachung der Datei **dpmra.exe**, die sich auf dem geschützten Server im Ordner `C:\Program Files\Microsoft Data Protection Manager\DPM\bin` befindet.
+3. **Konfigurieren der Antivirensoftware für das Löschen der infizierten Dateien auf geschützten Servern und dem MABS-Server:** Konfigurieren Sie die Antivirensoftware so, dass infizierte Dateien gelöscht werden statt automatisch gesäubert oder unter Quarantäne gestellt. So können Sie Replikate und Wiederherstellungspunkte mit beschädigten Daten vermeiden. Das automatische Säubern und eine automatische Quarantäne führen möglicherweise dazu, dass die Antivirensoftware Änderungen an Dateien vornimmt, die MABS nicht erkennen kann.
+
+Sie sollten eine manuelle Synchronisierung mit Konsistenzprüfung durchführen. Überprüfen Sie den Auftrag jedes Mal, wenn die Antivirensoftware eine Datei aus dem Replikat löscht, auch wenn das Replikat als inkonsistent gekennzeichnet ist.
+
+### <a name="mabs-installation-folders"></a>MABS-Installationsordner
+
+Die Standardinstallationsordner für DPM lauten wie folgt:
+
+- `C:\Program Files\Microsoft Azure Backup Server\DPM\DPM`
+
+Sie können auch den folgenden Befehl ausführen, um den Installationsordnerpfad zu suchen:
+
+```cmd
+Reg query "HKLM\SOFTWARE\Microsoft\Microsoft Data Protection Manager\Setup"
+```
 
 ## <a name="invalid-vault-credentials-provided"></a>Es wurden ungültige Tresoranmeldeinformationen angegeben.
 

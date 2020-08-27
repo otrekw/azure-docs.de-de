@@ -1,19 +1,19 @@
 ---
-title: Verwenden von Azure Digital Twins zum Aktualisieren eines Azure Maps-Gebäudeplans
+title: Integration in Azure Maps
 titleSuffix: Azure Digital Twins
-description: Erfahren Sie, wie Sie eine Azure-Funktion erstellen, die den Zwillingsgraphen und die Azure Digital Twins-Benachrichtigungen verwenden kann, um die in Azure Maps angezeigten Informationen zu aktualisieren.
+description: Hier erfahren Sie, wie Sie eine Azure-Funktion erstellen, die den Zwillingsgraphen und die Azure Digital Twins-Benachrichtigungen verwenden kann, um einen Azure Maps-Gebäudeplan zu aktualisieren.
 author: alexkarcher-msft
 ms.author: alkarche
 ms.date: 6/3/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.reviewer: baanders
-ms.openlocfilehash: 6aad6201136bb925d5e094de115cc7274cc7872a
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: a2dff1ea9c830fa48545dc25654cc3c5318c3415
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131411"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88235909"
 ---
 # <a name="use-azure-digital-twins-to-update-an-azure-maps-indoor-map"></a>Verwenden von Azure Digital Twins zum Aktualisieren eines Azure Maps-Gebäudeplans
 

@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 09/27/2018
 ms.author: cynthn
 ms.custom: legacy
-ms.openlocfilehash: d1cd4a25a2a9f07c75976d5eb5c97ba450ffdabb
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: e579223691ed7593d04c3b67004a6dd511f72c78
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284641"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88236606"
 ---
 # <a name="create-a-managed-image-of-a-generalized-vm-in-azure"></a>Erstellen eines verwalteten Images eines generalisierten virtuellen Computers in Azure
 
@@ -39,13 +39,15 @@ Führen Sie zum Generalisieren Ihres virtuellen Windows-Computers die folgenden 
 
 1. Melden Sie sich beim virtuellen Windows-Computer an.
    
-2. Öffnen Sie ein Eingabeaufforderungsfenster als ein Administrator. Wechseln Sie in das Verzeichnis „%windir%\system32\sysprep“, und führen Sie anschließend `sysprep.exe` aus.
+2. Öffnen Sie ein Eingabeaufforderungsfenster als ein Administrator. 
+
+3. Löschen Sie das Verzeichnis „Panther“ (c:\Windows\Panther). Wechseln Sie dann in das Verzeichnis „%windir%\system32\sysprep“, und führen Sie anschließend `sysprep.exe` aus.
    
-3. Wählen Sie im Dialogfeld **Systemvorbereitungsprogramm** die Option **Out-of-Box-Experience (OOBE) für System aktivieren**, und aktivieren Sie das Kontrollkästchen **Verallgemeinern**.
+4. Wählen Sie im Dialogfeld **Systemvorbereitungsprogramm** die Option **Out-of-Box-Experience (OOBE) für System aktivieren**, und aktivieren Sie das Kontrollkästchen **Verallgemeinern**.
    
-4. Wählen Sie unter **Optionen für Herunterfahren** die Option **Herunterfahren** aus.
+5. Wählen Sie unter **Optionen für Herunterfahren** die Option **Herunterfahren** aus.
    
-5. Klicken Sie auf **OK**.
+6. Klicken Sie auf **OK**.
    
     ![Starten von Sysprep](./media/upload-generalized-managed/sysprepgeneral.png)
 

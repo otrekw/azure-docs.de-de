@@ -1,7 +1,7 @@
 ---
 title: Visualisieren der Azure-NSG-Flussprotokolle – Power BI
 titleSuffix: Azure Network Watcher
-description: Auf dieser Seite wird beschrieben, wie Sie NSG-Datenflussprotokolle mit Power BI visualisieren.
+description: Hier erfahren Sie, wie Sie mit Power BI Datenflussprotokolle für Netzwerksicherheitsgruppen visualisieren, um Informationen zum IP-Datenverkehr in Azure Network Watcher anzeigen zu können.
 services: network-watcher
 documentationcenter: na
 author: damendo
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 1ef2e32614b5a57208f91ac0fe5a4c17affa38e4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a4c97b8baaf5265f984622e2dc47e6c8c714172a
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84738548"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272636"
 ---
 # <a name="visualizing-network-security-group-flow-logs-with-power-bi"></a>Visualisieren der Datenflussprotokolle von Netzwerksicherheitsgruppen mit Power BI
 

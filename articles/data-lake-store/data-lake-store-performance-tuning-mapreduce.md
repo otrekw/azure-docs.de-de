@@ -1,17 +1,17 @@
 ---
 title: Optimierung der Leistung von Azure Data Lake Storage Gen1 – MapReduce
-description: Leitfaden für die Optimierung der Leistung von Azure Data Lake Storage Gen1 für MapReduce
+description: Hier erfahren Sie mehr über die Leistungsoptimierung für MapReduce in Azure Data Lake Storage Gen1, einschließlich der Parameter, Anleitungen, einer Beispielberechnung und Einschränkungen.
 author: stewu
 ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 12/19/2016
 ms.author: stewu
-ms.openlocfilehash: 27dadb7ef5b93f5d6b674116ca8bba1d6e2597fc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 03c35d0af97cf24d1683d0ff21f10a0371391616
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85510916"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88190212"
 ---
 # <a name="performance-tuning-guidance-for-mapreduce-on-hdinsight-and-azure-data-lake-storage-gen1"></a>Anleitung für die Leistungsoptimierung für MapReduce in HDInsight und Azure Data Lake Storage Gen1
 

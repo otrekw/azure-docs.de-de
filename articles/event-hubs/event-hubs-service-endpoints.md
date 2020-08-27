@@ -3,12 +3,12 @@ title: 'Virtual Network-Dienstendpunkte: Azure Event Hubs | Microsoft-Dokumentat
 description: In diesem Artikel werden Informationen zum Hinzufügen eines Microsoft.EventHub-Dienstendpunkts zu einem virtuellen Netzwerk beschrieben.
 ms.topic: article
 ms.date: 07/29/2020
-ms.openlocfilehash: 8c798efc21f5b846965f2247d7e76249177ef946
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: cb0d9a9c4d5e2503e68620ec4e6386d8e05d471c
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87554072"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185065"
 ---
 # <a name="allow-access-to-azure-event-hubs-namespaces-from-specific-virtual-networks"></a>Zulassen des Zugriffs auf Azure Event Hubs-Namespaces aus bestimmten virtuellen Netzwerken 
 
@@ -16,26 +16,22 @@ Die Integration von Event Hubs und [VNET-Dienstendpunkten][vnet-sep] ermöglicht
 
 Nachdem die Konfiguration der Bindung an mindestens einen Dienstendpunkt des VNET-Subnetzes durchgeführt wurde, akzeptiert der entsprechende Event Hubs-Namespace nur noch Datenverkehr von autorisierten Subnetzen in virtuellen Netzwerken. Aus Sicht des virtuellen Netzwerks wird durch die Bindung eines Event Hubs-Namespace an einen Dienstendpunkt ein isolierter Netzwerktunnel vom Subnetz des virtuellen Netzwerks zum Messagingdienst konfiguriert. 
 
-Das Ergebnis ist eine private und isolierte Beziehung zwischen den Workloads, die an das Subnetz gebunden sind, und dem entsprechenden Event Hubs-Namespace, obwohl sich die beobachtbare Netzwerkadresse des Messaging-Dienstendpunkts in einem öffentlichen IP-Bereich befindet. Es gibt bei diesem Verhalten eine Ausnahme. Durch die Aktivierung eines Dienstendpunkts wird standardmäßig die `denyall`-Regel in der [IP-Firewall](event-hubs-ip-filtering.md) aktiviert, die dem virtuellen Netzwerk zugeordnet ist. Sie können bestimmte IP-Adressen in der IP-Firewall hinzufügen, um den Zugriff auf den öffentlichen Endpunkt des Event Hub zu ermöglichen. 
+Das Ergebnis ist eine private und isolierte Beziehung zwischen den Workloads, die an das Subnetz gebunden sind, und dem entsprechenden Event Hubs-Namespace, obwohl sich die beobachtbare Netzwerkadresse des Messaging-Dienstendpunkts in einem öffentlichen IP-Bereich befindet. Es gibt eine Ausnahme für dieses Verhalten. Durch die Aktivierung eines Dienstendpunkts wird standardmäßig die `denyall`-Regel in der [IP-Firewall](event-hubs-ip-filtering.md) aktiviert, die dem virtuellen Netzwerk zugeordnet ist. Sie können bestimmte IP-Adressen in der IP-Firewall hinzufügen, um den Zugriff auf den öffentlichen Endpunkt des Event Hub zu ermöglichen. 
 
->[!WARNING]
-> Die Implementierung der VNET-Integration kann verhindern, dass andere Azure-Dienste mit Event Hubs interagieren.
+>[!IMPORTANT]
+> Virtuelle Netzwerke werden in den Tarifen **Standard** und **Dediziert** von Event Hubs unterstützt. Im **Basic**-Tarif werden sie nicht unterstützt.
 >
-> Vertrauenswürdige Microsoft-Dienste werden bei Implementierung von Virtual Networks nicht unterstützt.
+> Durch das Aktivieren von Firewallregeln für Ihren Event Hubs-Namespace werden eingehende Anforderungen automatisch blockiert, es sei denn, die Anforderungen stammen von einem Dienst, der in zulässigen virtuellen Netzwerken operiert. Unter anderem werden Anforderungen von anderen Azure-Diensten, aus dem Azure-Portal und von Protokollierungs-/Metrikdiensten blockiert. 
 >
-> Allgemeine Azure-Szenarien, die nicht mit Virtual Networks funktionieren (beachten Sie, dass die Liste **NICHT** vollständig ist):
+> Nachstehend finden Sie einige der Dienste, die nicht auf Event Hubs-Ressourcen zugreifen können, wenn virtuelle Netzwerke aktiviert sind. Beachten Sie, dass diese Liste **NICHT** alle Komponenten enthält.
+>
 > - Azure Stream Analytics
 > - Azure IoT Hub-Routen
 > - Azure IoT Device Explorer
->
-> Die folgenden Microsoft-Dienste müssen sich in einem virtuellen Netzwerk befinden:
-> - Azure-Web-Apps
-> - Azure-Funktionen
+> - Azure Event Grid
 > - Azure Monitor (Diagnoseeinstellungen)
-
-
-> [!IMPORTANT]
-> Virtuelle Netzwerke werden in den Tarifen **Standard** und **Dediziert** von Event Hubs unterstützt. Im **Basic**-Tarif werden sie nicht unterstützt.
+>
+> Als Ausnahme können Sie bestimmten vertrauenswürdigen Diensten selbst dann den Zugriff auf Event Hubs-Ressourcen erlauben, wenn virtuelle Netzwerke aktiviert sind. Eine Liste der vertrauenswürdigen Dienste finden Sie unter [Vertrauenswürdige Dienste](#trusted-microsoft-services).
 
 ## <a name="advanced-security-scenarios-enabled-by-vnet-integration"></a>Erweiterte Sicherheitsszenarien basierend auf der VNET-Integration 
 
@@ -57,12 +53,10 @@ Die VNET-Regel ist eine Zuordnung des Event Hubs-Namespace zu einem Subnetz eine
 In diesem Abschnitt erfahren Sie, wie Sie mit dem Azure-Portal einen VNET-Dienstendpunkt hinzufügen. Zum Beschränken des Zugriffs müssen Sie den VNET-Dienstendpunkt für diesen Event Hubs-Namespace integrieren.
 
 1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrem **Event Hubs-Namespace**.
-4. Wählen Sie im linken Menü unter **Einstellungen** die Option **Netzwerk** aus. 
+4. Wählen Sie im linken Menü unter **Einstellungen** die Option **Netzwerk** aus. Die Registerkarte **Netzwerk** wird nur für Namespaces vom Typ **Standard** oder **Dediziert** angezeigt. 
 
     > [!NOTE]
-    > Die Registerkarte **Netzwerk** wird nur für Namespaces vom Typ **Standard** oder **Dediziert** angezeigt. 
-
-    Standardmäßig ist die Option **Ausgewählte Netzwerke** ausgewählt. Wenn Sie auf dieser Seite keine IP-Firewallregel angeben oder kein virtuelles Netzwerk hinzufügen, kann aus allen Netzwerken, einschließlich des öffentlichen Internets, (mit dem Zugriffsschlüssel) auf den Namespace zugegriffen werden. 
+    > Die Option **Ausgewählte Netzwerke** wird wie in der folgenden Abbildung gezeigt ausgewählt. Wenn Sie auf dieser Seite keine IP-Firewallregel angeben oder kein virtuelles Netzwerk hinzufügen, kann über das **öffentliche Internet** (mit dem Zugriffsschlüssel) auf den Namespace zugegriffen werden. 
 
     :::image type="content" source="./media/event-hubs-firewall/selected-networks.png" alt-text="Registerkarte „Netzwerk“ mit ausgewählter Option „Netzwerk“" lightbox="./media/event-hubs-firewall/selected-networks.png":::    
 
@@ -83,12 +77,15 @@ In diesem Abschnitt erfahren Sie, wie Sie mit dem Azure-Portal einen VNET-Dienst
 
     > [!NOTE]
     > Falls Sie den Dienstendpunkt nicht aktivieren können, können Sie den fehlenden VNET-Dienstendpunkt ignorieren und die Resource Manager-Vorlage verwenden. Diese Funktionalität ist nicht im Portal verfügbar.
+5. Wählen Sie unter **Vertrauenswürdigen Microsoft-Diensten die Umgehung dieser Firewall erlauben?** die Option „Ja“ oder „Nein“ aus. Weitere Informationen finden Sie unter [Vertrauenswürdige Microsoft-Dienste](#trusted-microsoft-services). 
 6. Wählen Sie auf der Symbolleiste **Speichern** aus, um die Einstellungen zu speichern. Warten Sie einige Minuten, bis die Bestätigung in den Portalbenachrichtigungen angezeigt wird.
 
     ![Speichern des Netzwerks](./media/event-hubs-tutorial-vnet-and-firewalls/save-vnet.png)
 
     > [!NOTE]
     > Informationen, wie Sie den Zugriff auf bestimmte IP-Adressen oder -Adressbereiche beschränken, finden Sie unter [Zulassen des Zugriffs von bestimmten IP-Adressen oder -Adressbereichen](event-hubs-ip-filtering.md).
+
+[!INCLUDE [event-hubs-trusted-services](../../includes/event-hubs-trusted-services.md)]
 
 ## <a name="use-resource-manager-template"></a>Verwenden von Resource Manager-Vorlagen
 

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/10/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 0f4d9811dc288222c0a2190805a8b052cb1ae47b
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: 9f140594ef18df7f9a6a3b919998962c966cde76
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87563924"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88587598"
 ---
 # <a name="manage-digital-twins"></a>Verwalten digitaler Zwillinge
 
@@ -37,18 +37,22 @@ Zum Erstellen eines digitalen Zwillings müssen Sie Folgendes angeben:
 
 Optional können Sie Anfangswerte für alle Eigenschaften des digitalen Zwillings bereitstellen. 
 
-Die Modell- und ursprünglichen Eigenschaftswerte werden über den `initData`-Parameter bereitgestellt. Dabei handelt es sich um eine JSON-Zeichenfolge, die die relevanten Daten enthält.
+Die Modell- und ursprünglichen Eigenschaftswerte werden über den `initData`-Parameter bereitgestellt. Dabei handelt es sich um eine JSON-Zeichenfolge, die die relevanten Daten enthält. Weitere Informationen zum Strukturieren dieses Objekts finden Sie im nächsten Abschnitt.
 
 > [!TIP]
 > Nachdem Sie einen Zwilling erstellt oder aktualisiert haben, kann es bis zu 10 Sekunden dauern, bis sich die Änderungen in [Abfragen](how-to-query-graph.md) widerspiegeln. Bei der `GetDigitalTwin`-API (siehe [weiter unten in diesem Artikel](#get-data-for-a-digital-twin)) tritt diese Verzögerung nicht auf. Verwenden Sie daher den API-Befehl anstelle von Abfragen, um die neu erstellten Zwillinge anzuzeigen, wenn Sie eine sofortige Antwort benötigen. 
 
-### <a name="initialize-properties"></a>Initialisieren von Eigenschaften
+### <a name="initialize-model-and-properties"></a>Initialisieren des Modells und der Eigenschaften
 
-Die Zwillingserstellungs-API akzeptiert ein Objekt, das in eine gültige JSON-Beschreibung der Zwillingseigenschaften serialisiert werden kann. Unter [*Konzepte: digitale Zwillinge und das Zwillingsdiagramm*](concepts-twins-graph.md) finden Sie eine Beschreibung des JSON-Formats für einen Zwilling.
+Die Zwillingserstellungs-API akzeptiert ein Objekt, das in eine gültige JSON-Beschreibung der Zwillingseigenschaften serialisiert wird. Unter [*Konzepte: digitale Zwillinge und das Zwillingsdiagramm*](concepts-twins-graph.md) finden Sie eine Beschreibung des JSON-Formats für einen Zwilling. 
+
+Daher erstellen Sie zunächst ein Datenobjekt, das den Zwilling und seine Eigenschaftsdaten darstellt. Anschließend können Sie mit `JsonSerializer` eine serialisierte Version davon an den API-Aufruf für den `initdata`-Parameter übergeben.
 
 Sie können ein Parameterobjekt entweder manuell oder mithilfe einer bereitgestellten Hilfsklasse erstellen. Im Folgenden finden Sie Beispiele für beides.
 
 #### <a name="create-twins-using-manually-created-data"></a>Erstellen von Zwillingen mithilfe manuell erstellter Daten
+
+Sie können die Eigenschaften eines Zwillings ohne benutzerdefinierte Hilfsklassen in `Dictionary<string, object>` darstellen, wobei `string` der Name der Eigenschaft ist und `object` ein Objekt, das die Eigenschaft und ihren Wert darstellt.
 
 ```csharp
 // Define the model type for the twin to be created
@@ -68,6 +72,8 @@ client.CreateDigitalTwin("myNewRoomID", JsonSerializer.Serialize<Dictionary<stri
 
 #### <a name="create-twins-with-the-helper-class"></a>Erstellen von Zwillingen mithilfe der Hilfsklasse
 
+Die Hilfsklasse `BasicDigitalTwin` ermöglicht es Ihnen, Eigenschaftsfelder in einem Zwillingsobjekt direkter zu speichern. Sie sollten dennoch die Liste der Eigenschaften mit `Dictionary<string, object>` erstellen, was dann dem Zwillingsobjekt direkt als `CustomProperties` hinzugefügt werden kann.
+
 ```csharp
 BasicDigitalTwin twin = new BasicDigitalTwin();
 twin.Metadata = new DigitalTwinMetadata();
@@ -80,6 +86,13 @@ twin.CustomProperties = props;
 
 client.CreateDigitalTwin("myNewRoomID", JsonSerializer.Serialize<BasicDigitalTwin>(twin));
 ```
+
+>[!NOTE]
+> `BasicDigitalTwin`-Objekte verfügen über ein `Id`-Feld. Sie können dieses Feld leer lassen. Wenn Sie einen ID-Wert hinzufügen, muss dieser jedoch dem an den `CreateDigitalTwin`-Aufruf übergebenen ID-Parameter entsprechen. Für das obige Beispiel sähe dies so aus:
+>
+>```csharp
+>twin.Id = "myNewRoomID";
+>```
 
 ## <a name="get-data-for-a-digital-twin"></a>Abrufen von Daten für einen digitalen Zwilling
 
@@ -181,6 +194,8 @@ Um die Eigenschaften eines digitalen Zwillings zu aktualisieren, schreiben Sie d
 await client.UpdateDigitalTwin(id, patch);
 ```
 
+Ein Patchaufruf kann beliebig viele Eigenschaften auf einem einzelnen Zwilling aktualisieren (sogar alle). Wenn Sie Eigenschaften für mehrere Zwillinge aktualisieren müssen, benötigen Sie für jeden Zwilling einen separaten Updateaufruf.
+
 > [!TIP]
 > Nachdem Sie einen Zwilling erstellt oder aktualisiert haben, kann es bis zu 10 Sekunden dauern, bis sich die Änderungen in [Abfragen](how-to-query-graph.md) widerspiegeln. Bei der `GetDigitalTwin`-API (siehe [weiter oben in diesem Artikel](#get-data-for-a-digital-twin)) tritt diese Verzögerung nicht auf. Verwenden Sie daher den API-Befehl anstelle von Abfragen, um die neu aktualisierten Zwillinge anzuzeigen, wenn Sie eine sofortige Antwort benötigen. 
 
@@ -204,6 +219,7 @@ Im Folgenden finden Sie ein Beispiel für JSON Patch-Code. Dieses Dokument erset
 Sie können Patches manuell oder mithilfe einer Serialisierungshilfsklasse im [SDK](how-to-use-apis-sdks.md) erstellen. Im Folgenden finden Sie Beispiele für beides.
 
 #### <a name="create-patches-manually"></a>Manuelles Erstellen von Patches
+
 ```csharp
 List<object> twinData = new List<object>();
 twinData.Add(new Dictionary<string, object>() {
@@ -278,6 +294,19 @@ Der Patch für diese Situation muss sowohl das Modell als auch die Eigenschaft �
   }
 ]
 ```
+
+### <a name="handle-conflicting-update-calls"></a>Verarbeitung von in Konflikt stehenden Updateaufrufen
+
+Azure Digital Twins stellt sicher, dass alle eingehenden Anforderungen nacheinander verarbeitet werden. Dies bedeutet, dass Sie selbst dann, wenn mehrere Funktionen versuchen, dieselbe Eigenschaft für einen Zwilling gleichzeitig zu aktualisieren, **keinen** expliziten Sperrcode schreiben müssen, um den Konflikt zu beheben.
+
+Dieses Verhalten erfolgt für jeden Zwilling einzeln. 
+
+Stellen Sie sich beispielsweise ein Szenario vor, in dem die folgenden drei Aufrufe gleichzeitig eingehen: 
+*   Schreiben von Eigenschaft A auf *Zwilling1*
+*   Schreiben von Eigenschaft B auf *Zwilling1*
+*   Schreiben von Eigenschaft A auf *Zwilling2*
+
+Die beiden Aufrufe, die *Zwilling1* ändern, werden nacheinander ausgeführt, und für jede Änderung werden Änderungsnachrichten generiert. Der Aufruf zum Ändern von *Zwilling2* kann ohne Konflikt zeitgleich ausgeführt werden, sobald er eingeht.
 
 ## <a name="delete-a-digital-twin"></a>Löschen eines digitalen Zwillings
 

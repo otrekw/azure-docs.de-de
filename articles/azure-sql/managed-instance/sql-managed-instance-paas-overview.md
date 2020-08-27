@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab, vanto
-ms.date: 06/25/2020
-ms.openlocfilehash: 7194e4553386c25691bb3ede8096da7fb63c5dc0
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.date: 08/14/2020
+ms.openlocfilehash: 72d0745e5a885ddbc57a9a849a7537a40e0b1215
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88055208"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88590063"
 ---
 # <a name="what-is-azure-sql-managed-instance"></a>Was ist Azure SQL Managed Instance?
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -73,8 +73,8 @@ Das auf [virtuellen Kernen basierende Kaufmodell](../database/service-tiers-vcor
 
 Beim V-Kern-Modell können Sie verschiedene Hardwaregenerationen auswählen.
 
-- **Gen4**: Logische CPUs basierend auf Intel-Prozessoren vom Typ E5-2673 v3 (Haswell) mit 2,4 GHz, angefügtem SSD, physischen Kernen, 7 GB RAM pro Kern und Computegrößen zwischen acht und 24 virtuellen Kernen.
-- **Gen5**: Logische CPUs basieren auf Intel-Prozessoren vom Typ E5-2673 v4 (Broadwell) mit 2,3 GHz und Intel-Prozessoren vom Typ SP-8160 (Skylake), schnellem NVMe-SSD, einem logischem Kern mit Hyperthreading und Computegrößen zwischen vier und 80 Kernen.
+- **Gen4:** Logische CPUs basierend auf Intel®-Prozessoren vom Typ E5-2673 v3 (Haswell) mit 2,4 GHz, angefügtem SSD, physischen Kernen, 7 GB RAM pro Kern und Computegrößen zwischen acht und 24 virtuellen Kernen.
+- **Gen5**: Logische CPUs basierend auf Intel®-Prozessoren vom Typ E5-2673 v4 (Broadwell) mit 2,3 GHz und Intel®-Prozessoren vom Typ SP-8160 (Skylake) sowie Intel®-Prozessoren vom Typ 8272CL (Cascade Lake) mit 2,5 GHz, schnellem NVMe-SSD, einem logischem Kern mit Hyperthreading und Computegrößen zwischen vier und 80 Kernen.
 
 Weitere Informationen zu den Unterschieden zwischen Hardwaregenerationen finden Sie unter [Ressourceneinschränkungen für SQL Managed Instance](resource-limits.md#hardware-generation-characteristics).
 

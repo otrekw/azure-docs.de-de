@@ -6,13 +6,13 @@ author: jifems
 ms.author: jife
 ms.service: data-share
 ms.topic: troubleshooting
-ms.date: 07/30/2020
-ms.openlocfilehash: 0fb2f9dd156d18705308b41ef8d6b015b3b6d71b
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.date: 08/14/2020
+ms.openlocfilehash: c68c9dc961475d6916b1f00e7d4f596bfd8c77dd
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534446"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88257806"
 ---
 # <a name="troubleshoot-common-issues-in-azure-data-share"></a>Behandeln allgemeiner Probleme in Azure Data Share 
 
@@ -34,7 +34,7 @@ Dies könnte die folgenden Gründe haben:
     1. Suchen Sie nach **Microsoft.DataShare**.
     1. Klicken Sie auf **Registrieren**. 
 
-    Für diese Schritte benötigen Sie die [Rolle „Azure-Mitwirkender“](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor). 
+    Für diese Schritte benötigen Sie die Rolle [Azure-Mitwirkender](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor) für das Azure-Abonnement. 
 
 * **Die Einladung wird an Ihren E-Mail-Alias statt an Ihre E-Mail-Adresse für die Anmeldung bei Azure gesendet.** Wenn Sie den Azure Data Share-Dienst registriert oder bereits eine Data Share-Ressource im Azure-Mandanten erstellt haben, die Einladung aber immer noch nicht angezeigt wird, liegt dies möglicherweise daran, dass der Anbieter Ihren E-Mail-Alias statt Ihrer E-Mail-Adresse für die Anmeldung bei Azure als Empfänger eingegeben hat. Wenden Sie sich an Ihren Datenanbieter, und stellen Sie sicher, dass die Einladung an Ihre E-Mail-Adresse für die Anmeldung bei Azure und nicht an Ihren E-Mail-Alias gesendet wurde.
 

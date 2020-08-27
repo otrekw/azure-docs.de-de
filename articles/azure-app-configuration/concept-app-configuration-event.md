@@ -1,18 +1,18 @@
 ---
 title: Reagieren auf Schlüssel-Wert-Ereignisse von Azure App Configuration
-description: Verwenden Sie Azure Event Grid, um App Configuration-Ereignisse zu abonnieren.
+description: Verwenden Sie Azure Event Grid, um App Configuration-Ereignisse zu abonnieren, mit denen Anwendungen auf Änderungen in Schlüsselwerten reagieren können, ohne dass komplizierter Code erforderlich ist.
 services: azure-app-configuration,event-grid
 author: jimmyca
 ms.author: jimmyca
 ms.date: 02/20/2020
 ms.topic: article
 ms.service: azure-app-configuration
-ms.openlocfilehash: a4f61d147ba1abf73ada6360b8d0d965d8e063a5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ae3417f991c0d810d8946cdaf358218ebbe4f6a5
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77523797"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88590029"
 ---
 # <a name="reacting-to-azure-app-configuration-events"></a>Reagieren auf Azure App Configuration-Ereignisse
 

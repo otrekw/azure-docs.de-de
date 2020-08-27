@@ -1,20 +1,20 @@
 ---
-title: 'Häufig gestellte Fragen: Custom Translator'
+title: 'Häufig gestellte Fragen: Benutzerdefinierter Translator'
 titleSuffix: Azure Cognitive Services
 description: Dieser Artikel enthält Antworten auf häufig gestellte Fragen zum benutzerdefinierten Translator von Azure Cognitive Services.
 author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.date: 05/26/2020
+ms.date: 08/17/2020
 ms.author: swmachan
 ms.topic: reference
-ms.openlocfilehash: 2edc5e9e255af321a30521ba1e707eea30d81f73
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 06caafe75682a2375a8023787f9905ca1e8117c9
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85957595"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88507228"
 ---
 # <a name="custom-translator-frequently-asked-questions"></a>Häufig gestellte Fragen: Benutzerdefinierter Translator
 
@@ -41,7 +41,7 @@ Die Bereitstellung dauert in der Regel weniger als eine Stunde.
 
 ## <a name="how-do-you-access-a-deployed-system"></a>Wie erfolgt der Zugriff auf ein bereitgestelltes System?
 
-Auf bereitgestellte Systeme kann über Translator durch Angabe der Kategorie-ID zugegriffen werden. Weitere Informationen zu Translator finden Sie auf der Webseite mit der [API-Referenz](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference).
+Auf bereitgestellte Systeme kann über die Microsoft-Textübersetzungs-API (V3) durch Angabe der Kategorie-ID zugegriffen werden. Weitere Informationen zur Textübersetzungs-API finden Sie auf der [Webseite mit der API-Referenz](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference).
 
 ## <a name="how-do-i-skip-alignment-and-sentence-breaking-if-my-data-is-already-sentence-aligned"></a>Wie kann ich Abstimmung und Satzaufteilung überspringen, wenn die Sätze in meinen Daten bereits abgestimmt sind?
 
@@ -50,5 +50,6 @@ Satzabstimmung und -aufteilung werden von Custom Translator für TMX-Dateien sow
 Sollte die Anzahl extrahierter Sätze in den beiden Dateien mit dem gleichen Basisnamen nicht übereinstimmen, führt Custom Translator die Satzabstimmung für Dateien mit der Erweiterung `.align` trotzdem aus.
 
 ## <a name="i-tried-uploading-my-tmx-but-it-says-document-processing-failed"></a>Ich habe versucht, meine TMX-Datei hochzuladen, dabei tritt jedoch ein Dokumentverarbeitungsfehler auf.
+
 
 Vergewissern Sie sich, dass die TMX-Datei den Spezifikationen für TMX 1.4b (<https://www.gala-global.org/tmx-14b>) entspricht.

@@ -3,18 +3,23 @@ title: Überprüfen des Registrierungszustands
 description: Erfahren Sie, wie Sie einen Kurzdiagnosebefehl ausführen können, um gängige Probleme bei Verwendung einer Azure-Containerregistrierung zu ermitteln, einschließlich lokaler Docker-Konfiguration und Konnektivität mit der Registrierung.
 ms.topic: article
 ms.date: 07/02/2019
-ms.openlocfilehash: ea4432c9e92c4a0380517e39678814e2d1cb3bfc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f27a99818260553cbd7ba26158db0064c145a21f
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74456413"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245382"
 ---
 # <a name="check-the-health-of-an-azure-container-registry"></a>Überprüfen der Integrität einer Azure-Containerregistrierung
 
 Wenn Sie eine Azure-Containerregistrierung verwenden, können gelegentlich Probleme auftreten. Möglich ist beispielsweise, dass Sie ein Containerimage aufgrund eines Problems mit Docker nicht per Pull in Ihre lokale Umgebung übertragen können. Oder ein Netzwerkproblem verhindert ggf. das Herstellen einer Verbindung mit der Registrierung. 
 
 Führen Sie als ersten Diagnoseschritt den Befehl [az acr check-health][az-acr-check-health] aus, um Informationen zur Integrität der Umgebung abzurufen und optional Zugriff auf eine Zielregistrierung zu erhalten. Dieser Befehl ist ab Version 2.0.67 der Azure-Befehlszeilenschnittstelle verfügbar. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI][azure-cli].
+
+Weitere Hinweise zum Beheben von Problemen bei der Registrierung finden Sie hier:
+* [Beheben von Problemen mit der Registrierungsanmeldung](container-registry-troubleshoot-login.md)
+* [Beheben von Netzwerkproblemen mit der Registrierung](container-registry-troubleshoot-access.md)
+* [Beheben von Problemen mit der Registrierungsleistung](container-registry-troubleshoot-performance.md)
 
 ## <a name="run-az-acr-check-health"></a>Ausführen von „az acr check-health“
 

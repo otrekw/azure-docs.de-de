@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
-ms.date: 06/17/2020
+ms.date: 08/13/2020
 ms.author: diberry
-ms.openlocfilehash: cc14f1cd60f048ba01060b9ebdbca434af6b9751
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 4c9dc04770e5fadd72c5460a4b44c05ffda47cb7
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86145629"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245450"
 ---
 # <a name="migrate-to-an-azure-resource-authoring-key"></a>Migrieren zu einem Schlüssel einer Azure-Erstellungsressource
 
@@ -34,6 +34,7 @@ Eine Migration muss über das LUIS-Portal erfolgen. Wenn Sie die Erstellungsschl
 
 ## <a name="note-before-you-migrate"></a>Vor der Migration zu beachten
 
+* Sie müssen die Erstellungsfunktion bis **2. November 2020** migrieren. 
 * Migration ist ein unidirektionaler Prozess. Sie können nach der Migration nicht mehr zum vorherigen Zustand zurückkehren.
 * Anwendungen werden automatisch zusammen mit Ihnen migriert, wenn Sie der Besitzer der Anwendung sind.
 * Der Besitzer kann keine Teilmenge zu migrierender Apps auswählen, und der Prozess kann nicht rückgängig gemacht werden.
@@ -51,7 +52,7 @@ Eine Migration muss über das LUIS-Portal erfolgen. Wenn Sie die Erstellungsschl
 
 ## <a name="migration-prerequisites"></a>Voraussetzungen für die Migration
 
-* Sie müssen einem gültigen Azure-Abonnement zugeordnet sein. Bitten Sie Ihren Mandantenadministrator, Sie dem Abonnement hinzuzufügen, oder [registrieren Sie sich für ein kostenloses Abonnement](https://azure.microsoft.com/free/).
+* Sie müssen einem gültigen Azure-Abonnement zugeordnet sein. Bitten Sie Ihren Mandantenadministrator, Sie dem Abonnement hinzuzufügen, oder [registrieren Sie sich für ein kostenloses Abonnement](https://azure.microsoft.com/free/cognitive-services).
 * Sie müssen eine LUIS Azure-Erstellungsressource im LUIS-Portal oder im Azure-Portal erstellen. Das Erstellen einer Erstellungsressource im LUIS-Portal ist Bestandteil des Migrationsflusses, der im nächsten Abschnitt erläutert wird.
 * Wenn Sie Projektmitarbeiter an Anwendungen sind, werden die Anwendungen nicht automatisch migriert. Es wird empfohlen, diese Anwendungen zu sichern, indem Sie sie exportieren oder die [Export-API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c40) verwenden. Sie können die App nach der Migration wieder zurück in LUIS importieren. Beim Importvorgang wird eine neue App mit einer neuen App-ID erstellt, deren Besitzer Sie sind.
 * Wenn Sie der Besitzer der Anwendung sind, müssen Sie Ihre Apps nicht exportieren, da sie automatisch migriert werden. Es wird empfohlen, die Liste der Projektmitarbeiter jeder App zu speichern. Eine E-Mail-Vorlage, die diese Liste enthält, wird optional als Bestandteil des Migrationsprozesses bereitgestellt.
@@ -59,7 +60,7 @@ Eine Migration muss über das LUIS-Portal erfolgen. Wenn Sie die Erstellungsschl
 
 |Portal|Zweck|
 |--|--|
-|[Azure](https://azure.microsoft.com/free/)| Erstellen von Vorhersage- und Erstellungsressourcen<br> Zuweisen von Projektmitarbeitern zu Ressourcen|
+|[Azure](https://azure.microsoft.com/free/cognitive-services)| Erstellen von Vorhersage- und Erstellungsressourcen<br> Zuweisen von Projektmitarbeitern zu Ressourcen|
 |[LUIS](https://www.luis.ai)| Migrieren zu neuen Erstellungsressourcen<br> Erstellen neuer Erstellungsressourcen im Migrationsfluss<br> Zuweisen oder Aufheben der Zuweisung von Vorhersage- und Erstellungsressourcen zu Apps über die Seite **Verwalten** > **Azure-Ressourcen** <br> Verschieben von Anwendungen aus einer Erstellungsressource in eine andere  |
 
 > [!Note]

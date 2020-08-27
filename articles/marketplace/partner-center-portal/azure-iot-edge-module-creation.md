@@ -7,12 +7,12 @@ ms.topic: how-to
 author: keferna
 ms.author: keferna
 ms.date: 08/07/2020
-ms.openlocfilehash: 38e51f8bc66e8c47807a9b265ade3f196745db26
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 2584d10a73f183958e3b7010255979cc47bc2cd9
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88167180"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88606348"
 ---
 # <a name="create-an-iot-edge-module-offer"></a>Erstellen eines IoT Edge-Modulangebots
 
@@ -27,7 +27,7 @@ In diesem Artikel wird beschrieben, wie Sie ein IoT Edge-Modulangebot (Internet 
     ![Darstellung des Navigationsmenüs auf der linken Seite.](./media/new-offer-iot-edge.png)
 
 > [!IMPORTANT]
-> Nach der Veröffentlichung eines Angebots werden die daran im Partner Center vorgenommenen Änderungen erst nach der erneuten Veröffentlichung des Angebots in der digitalen Ladenzeile angezeigt. Achten Sie darauf, nach dem Vornehmen von Änderungen immer erneut zu veröffentlichen.
+> Nach der Veröffentlichung eines Angebots werden die daran im Partner Center vorgenommenen Änderungen erst nach der erneuten Veröffentlichung des Angebots in Onlineshops angezeigt. Achten Sie darauf, nach dem Vornehmen von Änderungen immer erneut zu veröffentlichen.
 
 ### <a name="offer-id-and-alias"></a>Angebots-ID und Angebotsalias
 

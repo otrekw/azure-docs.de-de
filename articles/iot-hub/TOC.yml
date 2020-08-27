@@ -66,7 +66,7 @@
               href: tutorial-routing.md
             - name: Azure RM-Vorlage
               href: tutorial-routing-config-message-routing-RM-template.md
-            - name: Azure CLI
+            - name: Azure-Befehlszeilenschnittstelle
               href: tutorial-routing-config-message-routing-CLI.md
             - name: PowerShell
               href: tutorial-routing-config-message-routing-PowerShell.md
@@ -188,6 +188,9 @@
           href: /azure/iot-fundamentals/iot-security-architecture?context=azure/iot-hub/rc/rc
         - name: Schützen Ihrer IoT-Bereitstellung
           href: /azure/iot-fundamentals/iot-security-deployment?context=azure/iot-hub/rc/rc
+        - name: Sicherheitskontrollen von Azure Policy
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./security-controls-policy.md
     - name: Schützen mit X.509-Zertifikaten einer Stammzertifizierungsstelle
       items:
         - name: Sicherheit durch X.509-Zertifikate einer Stammzertifizierungsstelle – Übersicht
@@ -420,7 +423,7 @@
               href: iot-hub-troubleshoot-error-504101-gatewaytimeout.md
 - name: Verweis
   items:
-    - name: Azure CLI
+    - name: Azure-Befehlszeilenschnittstelle
       href: /cli/azure/azure-cli-reference-for-IoT
     - name: Azure PowerShell
       href: /powershell/module/az.iothub#iothub

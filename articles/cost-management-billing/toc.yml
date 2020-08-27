@@ -172,6 +172,10 @@
               href: manage/pay-by-invoice.md
             - name: Erstellen zusätzlicher Abonnements
               href: manage/create-subscription.md
+            - name: Programmgesteuerte Erstellung von Abonnements
+              href: manage/programmatically-create-subscription.md
+            - name: Gewähren des Zugriffs zur Erstellung von EA-Abonnements
+              href: manage/grant-access-to-create-subscription.md
             - name: Exportieren der Abonnementinformationen
               href: manage/export-subscriptions.md
             - name: Ändern der Kreditkarte

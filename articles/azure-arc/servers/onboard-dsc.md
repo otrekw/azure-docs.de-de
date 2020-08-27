@@ -1,18 +1,18 @@
 ---
 title: Installieren des Connected Machine-Agent mithilfe von Windows PowerShell DSC
-description: In diesem Artikel erfahren Sie, wie Sie Computer mithilfe von Azure Arc für Server (Vorschauversion) unter Verwendung von Windows PowerShell DSC mit Azure verbinden.
+description: In diesem Artikel erfahren Sie, wie Sie Computer mithilfe von Azure Arc-fähigen Servern (Vorschauversion) und Windows PowerShell DSC mit Azure verbinden.
 ms.date: 03/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: cdda3e6681d3e6912d031c45f5c6da9e92814e8f
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 25d6e435c261a83bf81c15d5dd445a936d48a08b
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88120999"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213085"
 ---
 # <a name="how-to-install-the-connected-machine-agent-using-windows-powershell-dsc"></a>Installieren des Connected Machine-Agent mithilfe von Windows PowerShell DSC
 
-Mit [Windows PowerShell Desired State Configuration](/powershell/scripting/dsc/getting-started/winGettingStarted?view=powershell-7) (DSC) können Sie die Softwareinstallation und -konfiguration für einen Windows-Computer automatisieren. In diesem Artikel wird beschrieben, wie Sie mit DSC den Connected Machine-Agent von Azure Arc für Server auf Windows-Hybridcomputern installieren.
+Mit [Windows PowerShell Desired State Configuration](/powershell/scripting/dsc/getting-started/winGettingStarted?view=powershell-7) (DSC) können Sie die Softwareinstallation und -konfiguration für einen Windows-Computer automatisieren. In diesem Artikel wird beschrieben, wie Sie mit DSC den Connected Machine-Agent für Azure Arc-fähige Server (Vorschauversion) auf Windows-Hybridcomputern installieren.
 
 ## <a name="requirements"></a>Requirements (Anforderungen)
 
@@ -20,7 +20,7 @@ Mit [Windows PowerShell Desired State Configuration](/powershell/scripting/dsc/g
 
 - Das [AzureConnectedMachineDsc](https://www.powershellgallery.com/packages/AzureConnectedMachineDsc/1.0.1.0)-DSC-Modul
 
-- Ein Dienstprinzipal zum nicht interaktiven Herstellen einer Verbindung der Computer mit Azure Arc für Server. Führen Sie die Schritte im Abschnitt [Erstellen eines Dienstprinzipals für flexibles Onboarding](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale) aus, wenn Sie noch keinen Dienstprinzipal für Arc für Server erstellt haben.
+- Ein Dienstprinzipal zum nicht interaktiven Herstellen einer Verbindung der Computer mit Azure Arc-fähigen Servern (Vorschauversion) Führen Sie die Schritte im Abschnitt [Erstellen eines Dienstprinzipals für das Onboarding im großen Stil](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale) aus, wenn Sie noch keinen Dienstprinzipal für Arc-fähige Server (Vorschauversion) erstellt haben.
 
 ## <a name="install-the-connectedmachine-dsc-module"></a>Installieren des ConnectedMachine-DSC-Moduls
 
@@ -76,7 +76,7 @@ Im Folgenden werden die Parameter angegeben, die Sie an das zu verwendende Power
 
 3. Dadurch wird eine `localhost.mof file` in einem neuen Ordner namens `C:\dsc` erstellt.
 
-Vergewissern Sie sich im Azure-Portal, dass die Serververbindung erfolgreich hergestellt wurde, nachdem Sie den Agent installiert und für die Verbindungsherstellung mit Azure Arc für Server (Vorschauversion) konfiguriert haben. Zeigen Sie Ihre Computer im [Azure-Portal](https://aka.ms/hybridmachineportal) an.
+Vergewissern Sie sich im Azure-Portal, dass die Serververbindung erfolgreich hergestellt wurde, nachdem Sie den Agent installiert und für die Verbindungsherstellung mit Azure Arc-fähigen Servern (Vorschauversion) konfiguriert haben. Zeigen Sie Ihre Computer im [Azure-Portal](https://aka.ms/hybridmachineportal) an.
 
 ## <a name="adding-to-existing-configurations"></a>Hinzufügen zu vorhandenen Konfigurationen
 

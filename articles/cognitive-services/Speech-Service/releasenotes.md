@@ -8,17 +8,96 @@ manager: jhakulin
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/07/2020
+ms.date: 08/17/2020
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: f2aebee24c4de8a1bd92ad3db8e5d110184cbaee
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 8df54adf8f3aeaa58e30d6d9218cec8bec8c1121
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87415022"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88525920"
 ---
 # <a name="speech-service-release-notes"></a>Versionshinweise zum Speech-Dienst
+
+## <a name="text-to-speech-2020-august-release"></a>Release der Sprachsynthese vom August 2020
+
+### <a name="new-features"></a>Neue Funktionen
+
+* **Neuronale Sprachsynthese: Neuer Sprachstil für die Aria-Stimme in `en-US`:** AriaNeural kann wie ein Nachrichtensprecher beim Lesen der Nachrichten klingen. Der Stil „newscast-formal“ klingt seriöser, während der Stil „newscast-casual“ lockerer und informell klingt. Weitere Informationen finden Sie unter [Verwenden der Sprachstile in SSML](speech-synthesis-markup.md).
+
+* **Custom Voice: Release eines neuen Features zur automatischen Überprüfung der Trainingsdatenqualität:** Wenn Sie Ihre Daten hochladen, untersucht das System verschiedene Aspekte Ihrer Audio- und Transkriptdaten und behebt oder filtert automatisch Probleme, um die Qualität des Sprachmodells zu verbessern. Dies umfasst die Lautstärke Ihrer Audiodaten, den Rauschpegel, die Aussprachegenauigkeit, die Ausrichtung der Sprache mit dem normalisierten Text, die Stille in den Audiodaten sowie das Audio- und Skriptformat. 
+
+* **Audioinhaltserstellung: Neue Features für leistungsstärkere Sprachoptimierungs- und Audioverwaltungsfunktionen:**
+
+    * Aussprache: Feature zur Optimierung der Aussprache wurde mit dem aktuellen Phonemsatz aktualisiert. Sie können das richtige Phonemelement aus der Bibliothek auswählen und die Aussprache der ausgewählten Wörter verfeinern. 
+
+    * Herunterladen: Die Audiofeatures „Herunterladen“ und „Exportieren“ wurde verbessert, um das Generieren von Audiodaten nach Absatz zu unterstützen. Sie können den Inhalt in derselben Datei oder in SSML bearbeiten, während Sie mehrere Audioausgaben erzeugen. Die Dateistruktur von „Herunterladen“ wurde ebenfalls optimiert. Sie können jetzt problemlos alle Audiodateien in einem Ordner erhalten. 
+
+    * Taskstatus: Die Funktion zum Exportieren mehrerer Dateien wurde verbessert. Wenn beim Exportieren von mehreren Dateien in der Vergangenheit ein Fehler bei einer der Dateien aufgetreten ist, ist der gesamte Task fehlgeschlagen. Nun werden alle anderen Dateien erfolgreich exportiert. Der Taskbericht wurde um mehr Details und strukturierte Informationen erweitert. Sie können die Protokolle nun mithilfe des Berichts auf alle fehlerhaften Dateien und Sätze überprüfen. 
+
+    * SSML-Dokumentation: Ein Link zur SSML-Dokumentation wurde bereitgestellt, damit Sie die Regeln zur Verwendung der Optimierungsfeatures überprüfen können.
+
+* **Die Voice List-API wurde aktualisiert, sodass nun ein benutzerfreundlicher Anzeigename und die unterstützten Sprachstile für neuronale Stimmen enthalten sind.**
+
+### <a name="general-tts-voice-quality-improvements"></a>Allgemeine Verbesserungen bei der Stimmenqualität der Sprachsynthese
+
+* Der Prozentsatz an Aussprachefehlern für `ru-RU` (Fehlerrate wurde um 56 % reduziert) und `sv-SE` (Fehlerrate wurde um 49 % reduziert) wurde reduziert.
+
+* Das Lesen von Wörtern mit Polyphonie von neuronalen Stimmen in `en-US` wurde um 40 % verbessert. Beispiele für Wörter mit Polyphonie sind „read“, „live“, „content“, „record“ und „object“. 
+
+* Die Natürlichkeit der Betonung von Fragen in `fr-FR` wurde verbessert. MOS-Erhöhung (Mean Opinion Score): +0,28
+
+* Die Vocoder für die folgenden Stimmen wurden mit Genauigkeitsverbesserungen und allgemeiner Leistungsverbesserung um 40 % aktualisiert.
+
+    | Gebietsschema | Sprache |
+    |---|---|    
+    | `en-GB` | Mia |
+    | `es-MX` | Dalia |
+    | `fr-CA` | Sylvie |
+    | `fr-FR` | Denise |
+    | `ja-JP` | Nanami |
+    | `ko-KR` | Sun-Hi |
+
+### <a name="bug-fixes"></a>Behebung von Programmfehlern
+
+* Einige Fehler mit dem Audioinhaltserstellungs-Tool wurden behoben. 
+    * Ein Problem mit der automatischen Aktualisierung wurde behoben. 
+    * Probleme mit Sprachstilen in zh-CN in der Region „Asien, Südosten“ wurden behoben.
+    * Ein Stabilitätsproblem, einschließlich eines Exportfehlers mit dem Tag „break“, sowie Satzzeichenfehler wurden behoben.    
+
+## <a name="new-speech-to-text-locales-2020-august-release"></a>Neue Gebietsschemas für die Spracherkennung: Release vom August 2020
+Im August wurden 26 neue Gebietsschemas für die Spracherkennung veröffentlicht: 2 europäische Sprachen (`cs-CZ` und `hu-HU`), 5 englische Gebietsschemas und 19 spanische Gebietsschemas, die die meisten Länder in Südamerika abdecken. Im Folgenden finden Sie eine Liste der neuen Gebietsschemas. Eine vollständige Liste der Sprachen finden Sie [hier](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support).
+
+| Gebietsschema  | Sprache                          |
+|---------|-----------------------------------|
+| `cs-CZ` | Tschechisch (Tschechische Republik)            | 
+| `en-HK` | Englisch (Hongkong)               | 
+| `en-IE` | Englisch (Irland)                 | 
+| `en-PH` | Englisch (Philippinen)             | 
+| `en-SG` | Englisch (Singapur)               | 
+| `en-ZA` | Englisch (Südafrika)            | 
+| `es-AR` | Spanisch (Argentinien)               | 
+| `es-BO` | Spanisch (Bolivien)                 | 
+| `es-CL` | Spanisch (Chile)                   | 
+| `es-CO` | Spanisch (Kolumbien)                | 
+| `es-CR` | Spanisch (Costa Rica)              | 
+| `es-CU` | Spanisch (Kuba)                    | 
+| `es-DO` | Spanisch (Dominikanische Republik)      | 
+| `es-EC` | Spanisch (Ecuador)                 | 
+| `es-GT` | Spanisch (Guatemala)               | 
+| `es-HN` | Spanisch (Honduras)                | 
+| `es-NI` | Spanisch (Nicaragua)               | 
+| `es-PA` | Spanisch (Panama)                  | 
+| `es-PE` | Spanisch (Peru)                    | 
+| `es-PR` | Spanisch (Puerto Rico)             | 
+| `es-PY` | Spanisch (Paraguay)                | 
+| `es-SV` | Spanisch (El Salvador)             | 
+| `es-US` | Spanisch (USA)                     | 
+| `es-UY` | Spanisch (Uruguay)                 | 
+| `es-VE` | Spanisch (Venezuela)               | 
+| `hu-HU` | Ungarisch (Ungarn)               | 
+
 
 ## <a name="speech-sdk-1130-2020-july-release"></a>Speech SDK 1.13.0: Release 2020-July
 

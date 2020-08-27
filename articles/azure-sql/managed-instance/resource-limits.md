@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
-ms.date: 02/25/2020
-ms.openlocfilehash: faa338e32577e713472601fde52e038a685b7826
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/14/2020
+ms.openlocfilehash: 902fa34be149f0b876729409c530186e34c706e5
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87086828"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88587309"
 ---
 # <a name="overview-of-azure-sql-managed-instance-resource-limits"></a>Übersicht über Ressourcenlimits für Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -33,7 +33,7 @@ SQL Managed Instance umfasst Merkmale und Ressourcenlimits, die von der zugrunde
 
 |   | **Gen4** | **Gen5** |
 | --- | --- | --- |
-| **Hardware** | Intel E5-2673 v3-Prozessoren (Haswell) mit 2,4 GHz, angefügte SSD, virtueller Kern = 1 physischer Kern | Intel E5-2673 v4-Prozessoren (Broadwell) mit 2,3 GHz und Intel SP-8160-Prozessoren (Skylake), schnelle NVMe-SSD, virtueller Kern = 1 LP (Hyperthread) |
+| **Hardware** | Intel® E5-2673 v3-Prozessoren (Haswell) mit 2,4 GHz, angefügte SSD, virtueller Kern = 1 PP (physischer Kern) | Intel® E5-2673 v4-Prozessoren (Broadwell) mit 2,3 GHz, Intel® SP-8160- und Intel® 8272CL-Prozessoren (Skylake bzw. Cascade Lake) mit 2,5 GHz, schnelle NVMe-SSD, virtueller Kern = 1 LP (Hyperthread) |
 | **Anzahl von virtuellen Kernen** | 8, 16, 24 virtuelle Kerne | 4, 8, 16, 24, 32, 40, 64, 80 virtuelle Kerne |
 | **Max. Arbeitsspeicher (Verhältnis Arbeitsspeicher/Kerne)** | 7 GB pro V-Kern<br/>Fügen Sie weitere virtuelle Kerne hinzu, um mehr Arbeitsspeicher zu erhalten. | 5,1 GB pro virtuellem Kern<br/>Fügen Sie weitere virtuelle Kerne hinzu, um mehr Arbeitsspeicher zu erhalten. |
 | **Max. In-Memory-OLTP-Speicher** | Grenzwert für Instanzen: 1–1,5 GB pro virtuellem Kern| Grenzwert für Instanzen: 0,8–1,65 GB pro virtuellem Kern |

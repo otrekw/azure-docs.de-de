@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 03/20/2020
 ms.author: justipat
 ms.reviewer: sngun
-ms.openlocfilehash: e1076c7bb480a52c9436e336a49169953d0d8285
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: acb74d806f1ad361d3772438eec7fb788a843b02
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88135769"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88243716"
 ---
 # <a name="use-system-assigned-managed-identities-to-access-azure-cosmos-db-data"></a>Verwenden von systemseitig zugewiesenen verwalteten Identitäten für den Zugriff auf Azure Cosmos DB-Daten
 
@@ -75,9 +75,10 @@ In diesem Szenario liest die Funktions-App die Temperatur des Aquariums und schr
 
 ### <a name="assign-the-role-using-azure-cli"></a>Zuweisen der Rolle über die Azure CLI
 
-Um die Rolle über die Azure CLI zuzuweisen, verwenden Sie die folgenden Befehle:
+Öffnen Sie Azure Cloud Shell, und führen Sie die folgenden Befehle aus, um die Rolle mithilfe der Azure CLI zuzuweisen:
 
 ```azurecli-interactive
+
 scope=$(az cosmosdb show --name '<Your_Azure_Cosmos_account_name>' --resource-group '<CosmosDB_Resource_Group>' --query id)
 
 principalId=$(az webapp identity show -n '<Your_Azure_Function_name>' -g '<Azure_Function_Resource_Group>' --query principalId)

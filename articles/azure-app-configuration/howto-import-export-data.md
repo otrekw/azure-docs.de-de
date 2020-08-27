@@ -1,18 +1,18 @@
 ---
 title: Importieren oder Exportieren von Daten mit Azure App Configuration
-description: Es wird beschrieben, wie Sie Daten für Azure App Configuration importieren oder exportieren.
+description: Hier erfahren Sie, wie Sie Konfigurationsdaten in Azure App Configuration importieren oder daraus exportieren. Tauschen Sie Daten zwischen dem App Configuration-Speicher und dem Codeprojekt.
 services: azure-app-configuration
 author: lisaguthrie
 ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: lcozzens
-ms.openlocfilehash: 5b3d6d0561d7d6d6b23cb4f579b0988850da9771
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 21eba653bcd853db9550d0d3781aacd281884605
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80056863"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88588074"
 ---
 # <a name="import-or-export-configuration-data"></a>Importieren oder Exportieren von Konfigurationsdaten
 
@@ -44,7 +44,7 @@ Sie können Daten entweder mit dem [Azure-Portal](https://portal.azure.com) oder
 
     ![Dateiimport abgeschlossen](./media/import-file-complete.png)
 
-## <a name="export-data"></a>Exportieren von Daten
+## <a name="export-data"></a>Daten exportieren
 
 Beim Export werden in App Configuration gespeicherte Daten an ein anderes Ziel geschrieben. Verwenden Sie die Exportfunktion beispielsweise zum Speichern von Daten eines App Configuration-Speichers in einer Datei, die während der Bereitstellung in Ihren Anwendungscode eingebettet wird.
 

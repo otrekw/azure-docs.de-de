@@ -3,33 +3,30 @@ title: Firewallregeln für Azure Event Hubs | Microsoft-Dokumentation
 description: Verwenden von Firewallregeln zum Zulassen von Verbindungen von bestimmten IP-Adressen mit Azure Event Hubs.
 ms.topic: article
 ms.date: 07/16/2020
-ms.openlocfilehash: 7870260b77785af59f4f186274775067f2292ef6
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: fbf3e67cdde43dbe3d5e02cd4b044d5473f409ac
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88066048"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185127"
 ---
 # <a name="allow-access-to-azure-event-hubs-namespaces-from-specific-ip-addresses-or-ranges"></a>Zulassen des Zugriffs auf Azure Event Hubs-Namespaces von bestimmten IP-Adressen oder -Adressbereichen
 Standardmäßig kann über das Internet auf Event Hubs-Namespaces zugegriffen werden, solange die Anforderung eine gültige Authentifizierung und Autorisierung aufweist. Mit der IP-Firewall können Sie den Zugriff auf eine Gruppe von IPv4-Adressen oder IPv4-Adressbereichen in der [CIDR-Notation (Classless Inter-Domain Routing)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) weiter einschränken.
 
 Diese Funktion ist in Szenarien hilfreich, in denen Azure Event Hubs nur von bestimmten bekannten Websites aus zugänglich sein soll. Mithilfe von Firewallregeln können Sie Regeln konfigurieren, um Datenverkehr von bestimmten IPv4-Adressen zuzulassen. Wenn Sie z. B. Event Hubs mit [Azure Express Route][express-route] verwenden, können Sie eine **Firewallregel** erstellen, um Datenverkehr nur von den IP-Adressen Ihrer lokalen Infrastruktur zuzulassen. 
 
->[!WARNING]
-> Durch das Aktivieren von IP-Filtern kann verhindert werden, dass andere Azure-Dienste mit Event Hubs interagieren.
+>[!IMPORTANT]
+> Durch das Aktivieren von Firewallregeln für Ihren Event Hubs-Namespace werden eingehende Anforderungen automatisch blockiert, es sei denn, die Anforderungen stammen von einem Dienst, der von zulässigen öffentlichen IP-Adressen aus operiert. Unter anderem werden Anforderungen von anderen Azure-Diensten, aus dem Azure-Portal und von Protokollierungs-/Metrikdiensten blockiert. 
 >
-> Vertrauenswürdige Microsoft-Dienste werden bei implementierter IP-Filterung nicht unterstützt.
+> Nachstehend finden Sie einige der Dienste, die nicht auf Event Hubs-Ressourcen zugreifen können, wenn IP-Filter aktiviert sind. Beachten Sie, dass diese Liste **NICHT** alle Komponenten enthält.
 >
-> Im Anschluss finden Sie einige allgemeine Azure-Szenarien, in denen die IP-Filterung nicht funktioniert. (Hinweis: Die Liste ist **NICHT** vollständig.)
 > - Azure Stream Analytics
 > - Azure IoT Hub-Routen
 > - Azure IoT Device Explorer
->
-> Die folgenden Microsoft-Dienste müssen sich in einem virtuellen Netzwerk befinden:
-> - Azure-Web-Apps
-> - Azure-Funktionen
+> - Azure Event Grid
 > - Azure Monitor (Diagnoseeinstellungen)
-
+>
+> Als Ausnahme können Sie bestimmten vertrauenswürdigen Diensten selbst dann den Zugriff auf Event Hubs-Ressourcen erlauben, wenn IP-Filter aktiviert sind. Eine Liste der vertrauenswürdigen Dienste finden Sie unter [Vertrauenswürdige Microsoft-Dienste](#trusted-microsoft-services).
 
 ## <a name="ip-firewall-rules"></a>IP-Firewallregeln
 Die IP-Firewallregeln werden auf der Event Hubs-Namespaceebene angewendet. Daher gelten die Regeln für alle Clientverbindungen mit einem beliebigen unterstützten Protokoll. Jeder Verbindungsversuch von einer IP-Adresse, die nicht mit einer zulässigen IP-Regel im Event Hubs-Namespace übereinstimmt, wird als nicht autorisiert abgelehnt. In der Antwort wird die IP-Regel nicht erwähnt. IP-Filterregeln werden der Reihe nach angewendet, und die erste Regel, die eine Übereinstimmung mit der IP-Adresse ergibt, bestimmt die Aktion (Zulassen oder Ablehnen).
@@ -38,12 +35,9 @@ Die IP-Firewallregeln werden auf der Event Hubs-Namespaceebene angewendet. Daher
 In diesem Abschnitt erfahren Sie, wie Sie im Azure-Portal IP-Firewallregeln für einen Event Hubs-Namespace erstellen. 
 
 1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrem **Event Hubs-Namespace**.
-4. Wählen Sie im linken Menü unter **Einstellungen** die Option **Netzwerk** aus. 
-
+4. Wählen Sie im linken Menü unter **Einstellungen** die Option **Netzwerk** aus. Die Registerkarte **Netzwerk** wird nur für Namespaces vom Typ **Standard** oder **Dediziert** angezeigt. 
     > [!NOTE]
-    > Die Registerkarte **Netzwerk** wird nur für Namespaces vom Typ **Standard** oder **Dediziert** angezeigt. 
-
-    Standardmäßig ist die Option **Ausgewählte Netzwerke** ausgewählt. Wenn Sie auf dieser Seite keine IP-Firewallregel angeben oder kein virtuelles Netzwerk hinzufügen, kann über das öffentliche Internet (mit dem Zugriffsschlüssel) auf den Namespace zugegriffen werden. 
+    > Die Option **Ausgewählte Netzwerke** wird wie in der folgenden Abbildung gezeigt ausgewählt. Wenn Sie auf dieser Seite keine IP-Firewallregel angeben oder kein virtuelles Netzwerk hinzufügen, kann über das **öffentliche Internet** (mit dem Zugriffsschlüssel) auf den Namespace zugegriffen werden.  
 
     :::image type="content" source="./media/event-hubs-firewall/selected-networks.png" alt-text="Registerkarte „Netzwerk“ mit ausgewählter Option „Netzwerk“" lightbox="./media/event-hubs-firewall/selected-networks.png":::    
 
@@ -53,13 +47,16 @@ In diesem Abschnitt erfahren Sie, wie Sie im Azure-Portal IP-Firewallregeln für
 1. Um den Zugriff auf bestimmte IP-Adressen zu beschränken, vergewissern Sie sich, dass die Option **Ausgewählte Netzwerke** ausgewählt ist. Gehen Sie im Abschnitt **Firewall** wie folgt vor:
     1. Wählen Sie die Option **Client-IP-Adresse hinzufügen** aus, um Ihrer aktuellen Client-IP Zugriff auf den Namespace zu gewähren. 
     2. Geben Sie für **Adressbereich** eine bestimmte IPv4-Adresse oder einen Bereich von IPv4-Adressen in der CIDR-Notation ein. 
-    3. Wählen Sie unter **Vertrauenswürdigen Microsoft-Diensten die Umgehung dieser Firewall erlauben?** die Option „Ja“ oder „Nein“ aus. 
+3. Wählen Sie unter **Vertrauenswürdigen Microsoft-Diensten die Umgehung dieser Firewall erlauben?** die Option „Ja“ oder „Nein“ aus. Weitere Informationen finden Sie unter [Vertrauenswürdige Microsoft-Dienste](#trusted-microsoft-services). 
 
-        ![Firewall: Option „Alle Netzwerke“ ausgewählt](./media/event-hubs-firewall/firewall-selected-networks-trusted-access-disabled.png)
+      ![Firewall: Option „Alle Netzwerke“ ausgewählt](./media/event-hubs-firewall/firewall-selected-networks-trusted-access-disabled.png)
 3. Klicken Sie auf der Symbolleiste auf **Speichern**, um die Einstellungen zu speichern. Warten Sie einige Minuten, bis die Bestätigung in den Portalbenachrichtigungen angezeigt wird.
 
     > [!NOTE]
     > Informationen zum Beschränken des Zugriffs auf bestimmte virtuelle Netzwerke finden Sie unter [Zulassen des Zugriffs aus bestimmten Netzwerken](event-hubs-service-endpoints.md).
+
+[!INCLUDE [event-hubs-trusted-services](../../includes/event-hubs-trusted-services.md)]
+
 
 ## <a name="use-resource-manager-template"></a>Verwenden von Resource Manager-Vorlagen
 

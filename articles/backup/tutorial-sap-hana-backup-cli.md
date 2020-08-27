@@ -4,12 +4,12 @@ description: In diesem Tutorial wird beschrieben, wie Sie SAP HANA-Datenbanken,
 ms.topic: tutorial
 ms.date: 12/4/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 4113ba75f007bfa03fed5cfeaed7737797e37ed9
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: a0b6683183d6bf73b5376c6320106373ffd4ba78
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87489502"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88762401"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm-using-azure-cli"></a>Tutorial: Sichern von SAP HANA-Datenbanken auf einem virtuellen Azure-Computer über die Azure CLI
 
@@ -71,7 +71,7 @@ westus2    saphanaVault     saphanaResourceGroup
 
 Damit die SAP HANA-Instanz (die VM mit der SAP HANA-Installation) von den Azure-Diensten ermittelt werden kann, muss auf dem SAP HANA-Computer ein [Vorregistrierungsskript](https://aka.ms/scriptforpermsonhana) ausgeführt werden. Stellen Sie sicher, dass alle [Voraussetzungen](./tutorial-backup-sap-hana-db.md#prerequisites) erfüllt sind, bevor Sie das Skript ausführen. Weitere Informationen zu den Funktionen des Skripts finden Sie im Abschnitt [Einrichten von Berechtigungen](tutorial-backup-sap-hana-db.md#what-the-pre-registration-script-does).
 
-Nachdem das Skript ausgeführt wurde, kann die SAP HANA-Instanz für den Recovery Services-Tresor registriert werden, den wir zuvor erstellt haben. Verwenden Sie das Cmdlet [az backup container register](/cli/azure/backup/container?view=azure-cli-latest#az-backup-container-register), um die Instanz zu registrieren. *VMResourceId* ist die Ressourcen-ID der VM, die Sie für die Installation von SAP HANA erstellt haben.
+Nachdem das Skript ausgeführt wurde, kann die SAP HANA-Instanz für den Recovery Services-Tresor registriert werden, den Sie zuvor erstellt haben. Verwenden Sie das Cmdlet [az backup container register](/cli/azure/backup/container?view=azure-cli-latest#az-backup-container-register), um die Instanz zu registrieren. *VMResourceId* ist die Ressourcen-ID der VM, die Sie für die Installation von SAP HANA erstellt haben.
 
 ```azurecli-interactive
 az backup container register --resource-group saphanaResourceGroup \

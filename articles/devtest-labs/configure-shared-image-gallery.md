@@ -1,14 +1,14 @@
 ---
 title: Konfigurieren eines Katalogs mit freigegebenen Images in Azure DevTest Labs | Microsoft-Dokumentation
-description: Hier erfahren Sie, wie Sie einen Katalog mit freigegebenen Images in Azure DevTest Labs konfigurieren.
+description: Hier erfahren Sie, wie Sie einen freigegebenen Imagekatalog in Azure DevTest Labs konfigurieren, mit dem Benutzer beim Erstellen von Labressourcen von einem freigegebenen Speicherort aus auf Images zugreifen können.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: f4a80062a245530c5d15e761a9eb7dc95fee091e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7ec08fa741c1b52d3dd1d1e2b4247d3689190020
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85483787"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88271038"
 ---
 # <a name="configure-a-shared-image-gallery-in-azure-devtest-labs"></a>Konfigurieren eines gemeinsamen Image-Katalogs in Azure DevTest Labs
 DevTest Labs unterstützt jetzt die Funktion [Katalog mit freigegebenen Images](../virtual-machines/windows/shared-image-galleries.md). Diese Funktion ermöglicht es Labbenutzern, beim Erstellen von Labressourcen auf Images an einem freigegebenen Speicherort zuzugreifen. Außerdem hilft sie Ihnen, Ihre benutzerdefinierten verwalteten VM-Images zu strukturieren und zu organisieren. Die Funktion „Katalog mit freigegebenen Images“ unterstützt Folgendes:

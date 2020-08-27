@@ -3,12 +3,12 @@ title: Aktivieren der Sicherung beim Erstellen eines virtuellen Azure-Computers
 description: Hier wird beschrieben, wie die Sicherung beim Erstellen eines virtuellen Azure-Computers mit Azure Backup aktiviert wird.
 ms.topic: conceptual
 ms.date: 06/13/2019
-ms.openlocfilehash: 7fb6fd25f5031669633641ea02f34180f6f795d4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c744f6aa2bef6d3d6800aa6b6dc077915fc5205b
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87032849"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88586697"
 ---
 # <a name="enable-backup-when-you-create-an-azure-vm"></a>Aktivieren der Sicherung beim Erstellen eines virtuellen Azure-Computers
 
@@ -47,6 +47,9 @@ Falls Sie noch nicht bei Ihrem Konto angemeldet sind, melden Sie beim [Azure-Por
     - [Weitere Informationen](backup-instant-restore-capability.md) zur Funktionalität der sofortigen Wiederherstellung.
 
       ![Standardsicherungsrichtlinie](./media/backup-during-vm-creation/daily-policy.png)
+
+>[!NOTE]
+>[SSE und PMK sind die Standardverschlüsselungsmethoden](backup-encryption.md) für Azure-VMs. Azure Backup unterstützt die Sicherung und Wiederherstellung dieser virtuellen Azure-Computer.
 
 ## <a name="azure-backup-resource-group-for-virtual-machines"></a>Azure Backup-Ressourcengruppe für virtuelle Computer
 

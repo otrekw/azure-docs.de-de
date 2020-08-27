@@ -4,12 +4,12 @@ ms.service: storage
 ms.topic: include
 ms.date: 05/06/2019
 ms.author: rogarana
-ms.openlocfilehash: ae431d27af4a1717a32e348ba852f9b2b9fe9331
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 8034a7a520cc50b2e57e0ad26205da2e408296a1
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87451236"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88760586"
 ---
 | Resource | Standarddateifreigaben | Premium-Dateifreigaben |
 |----------|---------------|------------------------------------------|
@@ -17,7 +17,7 @@ ms.locfileid: "87451236"
 | Maximale Größe einer Dateifreigabe | 100 TiB*, 5 TiB | ca. 100 TiB |
 | Maximale Größe einer Datei in einer Dateifreigabe | 1 TiB | 4 TiB |
 | Maximale Anzahl an Dateien in einer Dateifreigabe | Keine Begrenzung | Keine Begrenzung |
-| Maximale Anzahl IOPS pro Freigabe | 10.000 IOPS*, 1.000 IOPS | 100.000 IOPS |
+| Maximale Anzahl IOPS pro Freigabe | 10.000 IOPS*, 1.000 IOPS oder 100 Anforderungen in 100 ms | 100.000 IOPS |
 | Maximale Anzahl gespeicherter Zugriffsrichtlinien pro Dateifreigabe | 5 | 5 |
 | Zieldurchsatz für eine einzelne Dateifreigabe | bis zu 300 MiB/s*, bis zu 60 MiB/s  | Siehe: Ein- und Ausgangswerte für Premium-Dateifreigabe|
 | Maximaler Ausgang für eine einzelne Dateifreigabe | Siehe: Zieldurchsatz für Standard-Dateifreigabe | Bis zu 6.204 MiB/s |

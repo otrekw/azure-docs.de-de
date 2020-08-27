@@ -1,14 +1,14 @@
 ---
 title: Beispiele erweiterter Abfragen
 description: Verwenden Sie Azure Resource Graph, um einige erweiterte Abfragen auszuführen, z. B. mit Verwendung von Spalten, zum Auflisten sämtlicher verwendeter Tags und zum Abgleichen von Ressourcen mit regulären Ausdrücken.
-ms.date: 07/14/2020
+ms.date: 08/13/2020
 ms.topic: sample
-ms.openlocfilehash: 3277d904ebf955c9f924e60dbf6df12eac138a15
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: ba00144a53afd041abe2513862d8a05a51e78809
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534786"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88795676"
 ---
 # <a name="advanced-resource-graph-query-samples"></a>Erweiterte Beispiele für Resource Graph-Abfragen
 
@@ -29,6 +29,7 @@ Wir behandeln die folgenden erweiterten Abfragen:
 - [Suchen von Speicherkonten mit einem bestimmten Tag in der Ressourcengruppe](#join-findstoragetag)
 - [Vereinen von Ergebnissen aus zwei Abfragen in einem einzigen Ergebnis](#unionresults)
 - [Einbeziehen der Mandanten- und Abonnementnamen mit „DisplayNames“](#displaynames)
+- [Zusammenfassen virtueller Computer anhand der erweiterten Eigenschaft für Energiezustände](#vm-powerstate)
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free) erstellen, bevor Sie beginnen.
 
@@ -525,9 +526,42 @@ Search-AzGraph -Query "ResourceContainers | where type=='microsoft.resources/sub
 
 ---
 
+## <a name="summarize-virtual-machine-by-the-power-states-extended-property"></a><a name="vm-powerstate"></a>Zusammenfassen virtueller Computer anhand der erweiterten Eigenschaft für Energiezustände
+
+Diese Abfrage verwendet die [erweiterten Eigenschaften](../concepts/query-language.md#extended-properties) auf virtuellen Computern, um sie nach Energiezuständen zusammenzufassen.
+
+
+```kusto
+Resources
+| where type == 'microsoft.compute/virtualmachines'
+| summarize count() by tostring(properties.extended.instanceView.powerState.code)
+```
+
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+
+```azurecli-interactive
+az graph query -q "Resources | where type == 'microsoft.compute/virtualmachines' | summarize count() by tostring(properties.extended.instanceView.powerState.code)"
+```
+
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+```azurepowershell-interactive
+Search-AzGraph -Query "Resources | where type == 'microsoft.compute/virtualmachines' | summarize count() by tostring(properties.extended.instanceView.powerState.code)"
+```
+
+# <a name="portal"></a>[Portal](#tab/azure-portal)
+
+:::image type="icon" source="../media/resource-graph-small.png":::Probieren Sie im Azure Resource Graph-Explorer die folgende Abfrage aus:
+
+- Azure-Portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D%3D%20%27microsoft.compute%2Fvirtualmachines%27%20%7C%20summarize%20count%28%29%20by%20tostring%28properties.extended.instanceView.powerState.code%29" target="_blank">portal.azure.com <span class="docon docon-navigate-external x-hidden-focus"></span></a>
+- Azure Government-Portal: <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D%3D%20%27microsoft.compute%2Fvirtualmachines%27%20%7C%20summarize%20count%28%29%20by%20tostring%28properties.extended.instanceView.powerState.code%29" target="_blank">portal.azure.us <span class="docon docon-navigate-external x-hidden-focus"></span></a>
+- Azure China 21Vianet-Portal: <a href="https://portal.azure.cn/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D%3D%20%27microsoft.compute%2Fvirtualmachines%27%20%7C%20summarize%20count%28%29%20by%20tostring%28properties.extended.instanceView.powerState.code%29" target="_blank">portal.azure.cn <span class="docon docon-navigate-external x-hidden-focus"></span></a>
+
+---
+
 ## <a name="include-the-tenant-and-subscription-names-with-displaynames"></a><a name="displaynames"></a>Einbeziehen der Mandanten- und Abonnementnamen mit „DisplayNames“
 
-Diese Abfrage verwendet den neuen Parameter **Include** mit der Option _DisplayNames_, um **subscriptionDisplayName** und **tenantDisplayName** in die Ergebnisse aufzunehmen. Dieser Parameter ist nur für die Azure CLI und Azure PowerShell verfügbar.
+Diese Abfrage verwendet den Parameter **Include** mit der Option _DisplayNames_, um **subscriptionDisplayName** und **tenantDisplayName** in die Ergebnisse aufzunehmen. Dieser Parameter ist nur für die Azure CLI und Azure PowerShell verfügbar.
 
 ```azurecli-interactive
 az graph query -q "limit 1" --include displayNames

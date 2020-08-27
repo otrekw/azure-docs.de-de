@@ -68,7 +68,7 @@
               href: ../../api-management/api-management-howto-migrate.md?toc=/azure/azure-resource-manager/management/toc.json
             - name: Azure App Service
               href: ../../app-service/manage-move-across-regions.md?toc=/azure/azure-resource-manager/management/toc.json
-            - name: Azure Automation
+            - name: Azure-Automatisierung
               href: ../../automation/automation-managing-data.md?toc=/azure/azure-resource-manager/management/toc.json#geo-replication-in-azure-automation
             - name: Azure Batch
               href: ../../batch/best-practices.md?toc=/azure/azure-resource-manager/management/toc.json#moving-batch-accounts-across-regions
@@ -119,7 +119,7 @@
         - name: Azure-Portal
           displayName: 'create,list,open,delete,deploy,move,lock,tag,export'
           href: manage-resource-groups-portal.md
-        - name: Azure CLI
+        - name: Azure-Befehlszeilenschnittstelle
           displayName: 'create,list,open,delete,deploy,move,lock,tag,export'
           href: manage-resource-groups-cli.md
         - name: Azure PowerShell
@@ -130,7 +130,7 @@
         - name: Azure-Portal
           displayName: 'open,delete,deploy,move,lock,tag,monitor'
           href: manage-resources-portal.md
-        - name: Azure CLI
+        - name: Azure-Befehlszeilenschnittstelle
           displayName: 'open,delete,deploy,move,lock,tag'
           href: manage-resources-cli.md
         - name: Azure PowerShell
@@ -139,9 +139,9 @@
     - name: EA-Abonnements
       items:
         - name: Erstellen
-          href: programmatically-create-subscription.md
+          href: ../../cost-management-billing/manage/programmatically-create-subscription.md?toc=/azure/azure-resource-manager/management/toc.json
         - name: Gewähren des Zugriffs zur Erstellung
-          href: grant-access-to-create-subscription.md
+          href: ../../cost-management-billing/manage/grant-access-to-create-subscription.md?toc=/azure/azure-resource-manager/management/toc.json
     - name: Ressourcenanbieter und -typen
       href: resource-providers-and-types.md
     - name: Löschen von Ressourcengruppen und Ressourcen

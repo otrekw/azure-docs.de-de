@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 06/26/2020
 ms.author: sngun
-ms.openlocfilehash: c6c1b30716b52554afebe39562692de181dd7d1a
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: bc73292d7ed01468fc31e5a6203a4ba53a6425a2
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85921220"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88505766"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net-sdk-v2"></a>Leistungstipps für Azure Cosmos DB und .NET SDK v2
 
@@ -72,21 +72,19 @@ Die Art der Verbindungsherstellung zwischen einem Client und Azure Cosmos DB ha
 
   * Gatewaymodus (Standard)
       
-    Der Gatewaymodus wird auf allen SDK-Plattformen unterstützt und ist für das [Microsoft.Azure.DocumentDB SDK](sql-api-sdk-dotnet.md) als Standardoption konfiguriert. Wenn Ihre Anwendung in einem Unternehmensnetzwerk mit strengen Firewalleinschränkungen ausgeführt wird, ist der Gatewaymodus die beste Wahl, da er den HTTPS-Standardport und einen einzelnen Endpunkt verwendet. Im Gatewaymodus ist jedoch jeweils ein zusätzlicher Netzwerkhop erforderlich, wenn Daten in Azure Cosmos DB geschrieben oder daraus gelesen werden, was sich negativ auf die Leistung auswirkt. Aus diesem Grund bietet der direkte Modus die bessere Leistung, da weniger Netzwerkhops erforderlich sind. Der Gatewayverbindungsmodus wird auch empfohlen, wenn Sie Anwendungen in Umgebungen mit einer begrenzten Anzahl von Socketverbindungen ausführen.
+    Der Gatewaymodus wird auf allen SDK-Plattformen unterstützt und ist für das [Microsoft.Azure.DocumentDB SDK](sql-api-sdk-dotnet.md) als Standardoption konfiguriert. Wenn Ihre Anwendung in einem Unternehmensnetzwerk mit strengen Firewalleinschränkungen ausgeführt wird, ist der Gatewaymodus die beste Wahl, da er den HTTPS-Standardport und einen einzelnen DNS-Endpunkt verwendet. Im Gatewaymodus ist jedoch jeweils ein zusätzlicher Netzwerkhop erforderlich, wenn Daten in Azure Cosmos DB geschrieben oder daraus gelesen werden, was sich negativ auf die Leistung auswirkt. Aus diesem Grund bietet der direkte Modus die bessere Leistung, da weniger Netzwerkhops erforderlich sind. Der Gatewayverbindungsmodus wird auch empfohlen, wenn Sie Anwendungen in Umgebungen mit einer begrenzten Anzahl von Socketverbindungen ausführen.
 
     Beachten Sie bei Verwendung des SDK in Azure Functions – insbesondere beim [Verbrauchstarif](../azure-functions/functions-scale.md#consumption-plan) – die aktuellen [Grenzwerte für Verbindungen](../azure-functions/manage-connections.md). In diesem Fall empfiehlt sich möglicherweise der Gatewaymodus, wenn Sie auch mit anderen HTTP-basierten Clients innerhalb Ihrer Azure Functions-Anwendung arbeiten.
 
   * Direkter Modus
 
     Der direkte Modus unterstützt Verbindungen über das TCP-Protokoll.
-
-Im Gatewaymodus verwendet Azure Cosmos DB Port 443 sowie die Ports 10250, 10255 und 10256, wenn Sie die Azure Cosmos DB-API für MongoDB verwenden. Port 10250 ist einer MongoDB-Standardinstanz ohne Georeplikation zugeordnet. Die Ports 10255 und 10256 sind der MongoDB-Instanz mit Georeplikation zugeordnet.
      
-Wenn Sie TCP im direkten Modus verwenden, müssen Sie zusätzlich zu den Gatewayports sicherstellen, dass der Portbereich zwischen 10000 und 20000 offen ist, da Azure Cosmos DB dynamische TCP-Ports verwendet. (Bei Verwendung des direkten Modus für [private Endpunkte](./how-to-configure-private-endpoints.md) muss der volle Bereich der TCP-Ports zwischen 0 und 65535 offen sein.) Wenn diese Ports nicht geöffnet sind und Sie versuchen, TCP zu verwenden, wird der Fehler „503 – Dienst nicht verfügbar“ angezeigt. Die folgende Tabelle enthält die für verschiedene APIs verfügbaren Konnektivitätsmodi und die für jede API verwendeten Dienstports:
+Wenn Sie das TCP im direkten Modus verwenden, müssen Sie zusätzlich zu den Gatewayports sicherstellen, dass der Portbereich zwischen 10000 und 20000 offen ist, da Azure Cosmos DB dynamische TCP-Ports verwendet. Wenn Sie den direkten Modus auf [privaten Endpunkten](./how-to-configure-private-endpoints.md) verwenden, sollte der gesamte Bereich der TCP-Ports von 0 bis 65535 geöffnet sein. Wenn diese Ports nicht geöffnet sind und Sie versuchen, das TCP zu verwenden, wird der 503-Fehler „Dienst nicht verfügbar“ angezeigt. Die folgende Tabelle enthält die für verschiedene APIs verfügbaren Konnektivitätsmodi und die für die einzelnen APIs verwendeten Dienstports:
 
 |Verbindungsmodus  |Unterstütztes Protokoll  |Unterstützte SDKs  |API/Dienstport  |
 |---------|---------|---------|---------|
-|Gateway  |   HTTPS    |  Alle SDKs    |   SQL (443), MongoDB (10250, 10255, 10256), Tabelle (443), Cassandra (10350), Graph (443)    |
+|Gateway  |   HTTPS    |  Alle SDKs    |   SQL (443), MongoDB (10250, 10255, 10256), Tabelle (443), Cassandra (10350), Graph (443) <br> Port 10250 ist einer Instanz der Azure Cosmos DB-API für MongoDB ohne Georeplikation zugeordnet. Die Ports 10255 und 10256 hingegen sind der Instanz mit Georeplikation zugeordnet.   |
 |Direkt    |     TCP    |  .NET SDK    | Bei Verwendung von öffentlichen oder Dienstendpunkten: Ports im Bereich zwischen 10000 und 20000<br>Bei Verwendung von privaten Endpunkten: Ports im Bereich zwischen 0 und 65535 |
 
 Azure Cosmos DB bietet ein einfaches und offenes RESTful-Programmiermodell über HTTPS. Darüber hinaus ist ein effizientes TCP-Protokoll vorhanden, das ebenfalls über ein RESTful-Kommunikationsmodell verfügt und über das .NET-Client-SDK verfügbar ist. Das TCP-Protokoll nutzt TLS für die erste Authentifizierung und Verschlüsselung des Datenverkehrs. Die beste Leistung erzielen Sie mit dem TCP-Protokoll.

@@ -2,13 +2,13 @@
 title: Versionsanmerkungen für Application Insights | Microsoft Docs
 description: Fügen Sie den Diagrammen im Metrik-Explorer in Application Insights Bereitstellungs- oder Buildmarker hinzu.
 ms.topic: conceptual
-ms.date: 07/01/2019
-ms.openlocfilehash: 8e9e0cb49343524e8a45831566cf802b1c8c5d9b
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.date: 08/14/2020
+ms.openlocfilehash: e21981f134f6a78109d70b1edf6d61e204b64e12
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320662"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88258421"
 ---
 # <a name="annotations-on-metric-charts-in-application-insights"></a>Anmerkungen zu Metrik-Diagrammen in Application Insights
 
@@ -68,6 +68,10 @@ Erstellen Sie für Ihre Azure Pipelines-Versionsvorlagen jeweils einen separate
    ![Wählen Sie auf der Azure DevOps-Registerkarte „Variablen“ die Option „Hinzufügen“ aus, nennen Sie die Variable „ApiKey“, und fügen Sie unter „Wert“ den API-Schlüssel ein.](./media/annotations/7-paste-api-key.png)
    
 1. Wählen Sie im Hauptfenster der Versionsvorlage die Option **Speichern** aus, um die Vorlage zu speichern.
+
+
+   > [!NOTE]
+   > Einschränkungen für API-Schlüssel werden in der [Dokumentation zur REST-API-Ratenbegrenzungen](https://dev.applicationinsights.io/documentation/Authorization/Rate-limits) beschrieben.
 
 ## <a name="view-annotations"></a>Anmerkungen anzeigen
 

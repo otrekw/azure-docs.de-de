@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 07/27/2020
+ms.date: 08/11/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 65aed14ec7f644f2792aaecde5c8bccfffdd8081
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 30d18041a746a0c1046a51cf408494ccb81019c9
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88078443"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88183206"
 ---
 # <a name="use-cloud-groups-to-manage-role-assignments-in-azure-active-directory-preview"></a>Verwenden von Cloudgruppen zum Verwalten von Rollenzuweisungen in Azure Active Directory (Vorschau)
 
@@ -60,7 +60,7 @@ Folgende Szenarios werden derzeit nicht unterstützt:
 
 - Es ist nicht möglich, eine dynamische Gruppe zu erstellen oder zu ändern, wenn die Rolle über eine Gruppe zugewiesen wird.
 - Das Feature **Gestaffelten Rollout für verwaltete Benutzeranmeldung aktivieren** unterstützt keine Zuweisung über eine Gruppe.
-- *Nur Kunden mit Azure AD P2-Lizenz*: Weisen Sie einer Rolle eine Gruppe nicht über Azure AD und Privileged Identity Management als „Aktiv“ zu. Dies führt zu Problemen, bei denen Benutzer ihre aktiven Rollenzuweisungen in PIM nicht sehen können und es nicht möglich ist, diese PIM-Zuweisung zu entfernen. Berechtigte Zuweisungen sind in diesem Szenario nicht beeinträchtigt. Wenn Sie versuchen, diese Zuweisung vorzunehmen, tritt möglicherweise ein unerwartetes Verhalten wie z. B. Folgendes auf:
+- *Nur Kunden mit Azure AD P2-Lizenz*: Weisen Sie einer Rolle eine Gruppe nicht über Azure AD und Privileged Identity Management (PIM) als „Aktiv“ zu. Vermeiden Sie es, einer Gruppe, der eine Rolle zugewiesen werden kann, eine Rolle bei ihrer Erstellung *und* später noch eine Rolle über PIM zuzuweisen. Dies führt zu Problemen, bei denen Benutzer ihre aktiven Rollenzuweisungen in PIM nicht sehen können und es nicht möglich ist, diese PIM-Zuweisung zu entfernen. Berechtigte Zuweisungen sind in diesem Szenario nicht beeinträchtigt. Wenn Sie versuchen, diese Zuweisung vorzunehmen, tritt möglicherweise ein unerwartetes Verhalten wie z. B. Folgendes auf:
   - Die Endzeit für die Rollenzuweisung wird möglicherweise falsch angezeigt.
   - Im PIM-Portal kann unter **Meine Rollen** nur eine Rollenzuweisung angezeigt werden, unabhängig davon, durch wie viele Methoden die Zuweisung gewährt wird (über eine oder mehrere Gruppen und direkt).
 - *Nur Kunden mit Azure AD P2-Lizenz*: Auch nach dem Löschen der Gruppe wird sie noch immer als ein berechtigtes Mitglied der Rolle auf der PIM-Benutzeroberfläche angezeigt. Funktionell gibt es kein Problem. Es ist lediglich ein Cacheproblem im Azure-Portal.  

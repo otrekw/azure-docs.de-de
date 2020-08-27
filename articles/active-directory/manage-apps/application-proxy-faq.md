@@ -2,25 +2,21 @@
 title: Häufig gestellte Fragen zum Azure AD-Anwendungsproxy | Microsoft-Dokumentation
 description: Hier finden Sie Antworten auf häufig gestellte Fragen (Frequently Asked Questions, FAQ) zur Verwendung des Azure AD-Anwendungsproxys zum Veröffentlichen interner, lokaler Anwendungen für Remotebenutzer.
 services: active-directory
-documentationcenter: ''
 author: kenwith
 manager: celestedg
-ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: reference
 ms.date: 07/23/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 78a0cb6217d8c1d25f08801066a970d6bc94e1b0
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.openlocfilehash: edf51dad768e8d8b5ea5dc6c1eff88f43f0f6b70
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88042104"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589162"
 ---
 # <a name="active-directory-azure-ad-application-proxy-frequently-asked-questions"></a>Häufig gestellte Fragen zum Azure Active Directory-Anwendungsproxy (Azure AD-Anwendungsproxy)
 
@@ -90,6 +86,15 @@ Für diesen Anwendungsproxy ist Windows Server 2012 R2 oder höher erforderlic
 
 
 ## <a name="application-configuration"></a>Anwendungskonfiguration
+
+### <a name="i-am-receiving-an-error-about-an-invalid-certificate-or-possible-wrong-password"></a>Ich erhalte einen Fehler für ein ungültiges Zertifikat oder möglicherweise falsches Kennwort
+
+Nachdem Sie das SSL-Zertifikat hochgeladen haben, erhalten Sie im Portal die Meldung „Invalid certificate, possible wrong password“ (Ungültiges Zertifikat, möglicherweise falsches Kennwort).
+
+So können Sie diesen Fehler z. B. beheben:
+- Überprüfen Sie, ob Probleme mit dem Zertifikat vorliegen. Installieren Sie es auf Ihrem lokalen Computer. Wenn keine weiteren Probleme auftreten, ist das Zertifikat in Ordnung.
+- Stellen Sie sicher, dass das Kennwort keine Sonderzeichen enthält. Für Tests sollte das Kennwort nur die Zeichen 0–9, A–Z und a–z enthalten.
+- Wenn das Zertifikat mit Microsoft Software Key Storage Provider erstellt wurde, muss der RSA-Algorithmus verwendet werden.
 
 ### <a name="what-is-the-length-of-the-default-and-long-back-end-timeout-can-the-timeout-be-extended"></a>Wie lauten die Werte für das Standard- und das „lange“ Back-End-Timeout? Kann das Timeoutlimit verlängert werden?
 

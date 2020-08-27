@@ -7,16 +7,16 @@ manager: craigg
 ms.service: synapse-analytics
 ms.subservice: sql-dw
 ms.topic: conceptual
-ms.date: 05/19/2020
+ms.date: 08/13/2020
 ms.author: rortloff
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 8032e8809f7849ab7497da7821788c017adff12d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c61e8df05c4bc199c0d91b8ed0cbd73fa6f196cf
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85212053"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192321"
 ---
 # <a name="convert-resource-classes-to-workload-groups"></a>Konvertieren von Ressourcenklassen in Arbeitsauslastungsgruppen
 
@@ -44,13 +44,13 @@ Da Arbeitsauslastungsgruppen basierend auf dem Prozentsatz der Gesamtsystemresso
 
 Wenn der Parameter `REQUEST_MIN_RESOURCE_GRANT_PERCENT` bekannt ist, können Sie die CREATE WORKLOAD GROUP<link>-Syntax zum Erstellen der Arbeitsauslastungsgruppe verwenden.  Sie können optional einen Wert größer als 0 (null) für `MIN_PERCENTAGE_RESOURCE` angeben, um Ressourcen für die Arbeitsauslastungsgruppe zu isolieren.  Außerdem können Sie optional einen Wert kleiner als 100 für `CAP_PERCENTAGE_RESOURCE` angeben, um die Menge an Ressourcen einzuschränken, die von der Arbeitsauslastungsgruppe genutzt werden kann.  
 
-Im folgenden Beispiel wird `MIN_PERCENTAGE_RESOURCE` so festgelegt, dass 9,6 % der Systemressourcen für `wgDataLoads` bestimmt sind, und es wird sichergestellt, dass eine Abfrage immer ausgeführt werden kann.  Außerdem wird `CAP_PERCENTAGE_RESOURCE` auf 38,4 % festgelegt und diese Arbeitsauslastungsgruppe auf vier gleichzeitige Anforderungen beschränkt.  Durch Festlegen des Parameters `QUERY_EXECUTION_TIMEOUT_SEC` auf 3600 werden alle Abfragen, die länger als eine Stunde ausgeführt werden, automatisch abgebrochen.
+Unter Verwendung von mediumrc als Basis für ein Beispiel wird im untenstehenden Code `MIN_PERCENTAGE_RESOURCE` so festgelegt, dass zehn Prozent der Systemressourcen für `wgDataLoads` dediziert sind. Außerdem wird sichergestellt, dass eine Abfrage jederzeit ausgeführt werden kann.  Außerdem wird `CAP_PERCENTAGE_RESOURCE` auf 40 Prozent festgelegt und diese Arbeitsauslastungsgruppe auf vier gleichzeitige Anforderungen beschränkt.  Durch Festlegen des Parameters `QUERY_EXECUTION_TIMEOUT_SEC` auf 3600 werden alle Abfragen, die länger als eine Stunde ausgeführt werden, automatisch abgebrochen.
 
 ```sql
 CREATE WORKLOAD GROUP wgDataLoads WITH  
-( REQUEST_MIN_RESOURCE_GRANT_PERCENT = 9.6
- ,MIN_PERCENTAGE_RESOURCE = 9.6
- ,CAP_PERCENTAGE_RESOURCE = 38.4
+( REQUEST_MIN_RESOURCE_GRANT_PERCENT = 10
+ ,MIN_PERCENTAGE_RESOURCE = 10
+ ,CAP_PERCENTAGE_RESOURCE = 40
  ,QUERY_EXECUTION_TIMEOUT_SEC = 3600)
 ```
 

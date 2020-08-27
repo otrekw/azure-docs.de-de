@@ -1,24 +1,24 @@
 ---
-title: Autorisieren des Zugriffs auf Blob- oder Warteschlangendaten mit der Azure CLI
+title: Auswählen der Autorisierung des Zugriffs auf Blob- oder Warteschlangendaten mit der Azure CLI
 titleSuffix: Azure Storage
 description: Geben Sie an, wie Vorgänge für Blob- oder Warteschlangendaten mit der Azure CLI autorisiert werden. Sie können Datenvorgänge mit Azure AD-Anmeldeinformationen, dem Kontozugriffsschlüssel oder einem SAS-Token (Shared Access Signature) autorisieren.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 02/26/2020
+ms.date: 08/18/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: a656ccc56d198943c8631077466115eb6411a64a
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: a089ffb7631ded7bd36a4eee5fb862ced3fd2ad0
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534888"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589061"
 ---
-# <a name="authorize-access-to-blob-or-queue-data-with-azure-cli"></a>Autorisieren des Zugriffs auf Blob- oder Warteschlangendaten mit der Azure CLI
+# <a name="choose-how-to-authorize-access-to-blob-or-queue-data-with-azure-cli"></a>Auswählen der Autorisierung des Zugriffs auf Blob- oder Warteschlangendaten mit der Azure CLI
 
 Azure Storage stellt Erweiterungen für die Azure CLI bereit, mit denen Sie angeben können, wie Vorgänge für Blob- oder Warteschlangendaten autorisiert werden sollen. Sie können Datenvorgänge auf folgende Weise autorisieren:
 

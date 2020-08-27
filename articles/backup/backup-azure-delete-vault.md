@@ -3,12 +3,12 @@ title: Löschen eines Microsoft Azure Recovery Services-Tresors
 description: In diesem Artikel erfahren Sie, wie Sie die Abhängigkeiten eines Azure Backup-Recovery Services-Tresors aufheben und ihn dann löschen.
 ms.topic: conceptual
 ms.date: 06/04/2020
-ms.openlocfilehash: 5446c54ac070555987dfc05afa67825f307ee61b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 41d0cbc8e1c59f33efc24f38b535aa9cf91b2cc9
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87055193"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88257950"
 ---
 # <a name="delete-an-azure-backup-recovery-services-vault"></a>Löschen eines Azure Backup-Recovery Services-Tresors
 
@@ -43,8 +43,9 @@ Zum ordnungsgemäßen Löschen eines Tresors müssen Sie die Schritte in dieser 
 - **Schritt 3:** Überprüfen Sie, ob an den folgenden drei Stellen geschützte Elemente vorhanden sind:
 
   - **In der Cloud geschützte Elemente**: Wählen Sie im Dashbordmenü des Tresors die Option **Sicherungselemente** aus. Alle hier aufgelisteten Elemente müssen mit **Sicherung abbrechen** oder **Sicherungsdaten löschen** zusammen mit den zugehörigen Sicherungsdaten gelöscht werden.  [Führen Sie die folgenden Schritte aus](#delete-protected-items-in-the-cloud), um diese Elemente zu entfernen.
+  - **SQL Server-Instanz:** Wählen Sie im Dashbordmenü des Tresors die Option **Sicherungsinfrastruktur** > **Geschützte Server** aus. Wählen Sie unter Geschützte Server den Server aus, dessen Registrierung Sie aufheben möchten. Sie müssen die Registrierung aller Server aufheben, um den Tresor zu löschen. Klicken Sie mit der rechten Maustaste auf den geschützten Server und dann auf **Registrierung aufheben**.
   - **MARS-geschützte Server**: Wählen Sie im Dashbordmenü des Tresors die Option **Sicherungsinfrastruktur** > **Geschützte Server** aus. Wenn Sie über Mars-geschützte Server verfügen, müssen alle hier aufgeführten Elemente zusammen mit den zugehörigen Sicherungsdaten gelöscht werden. [Führen Sie die folgenden Schritte aus](#delete-protected-items-on-premises), um MARS-geschützten Server zu löschen.
-  - **MABS- oder DPM-Verwaltungs Server**: Wählen Sie im Dashbordmenü des Tresors die Option **Sicherungsinfrastruktur** > **Server für die Sicherungsverwaltung** aus. Wenn Sie über DPM- oder Azure Backup Server (MABS) verfügen, müssen alle hier aufgelisteten Elemente zusammen mit den zugehörigen Sicherungsdaten gelöscht werden bzw deren Registrierung muss aufgehoben werden. [Führen Sie die folgenden Schritte aus](#delete-protected-items-on-premises), um die Verwaltungsserver zu löschen.
+   - **MABS- oder DPM-Verwaltungs Server**: Wählen Sie im Dashbordmenü des Tresors die Option **Sicherungsinfrastruktur** > **Server für die Sicherungsverwaltung** aus. Wenn Sie über DPM- oder Azure Backup Server (MABS) verfügen, müssen alle hier aufgelisteten Elemente zusammen mit den zugehörigen Sicherungsdaten gelöscht werden bzw deren Registrierung muss aufgehoben werden. [Führen Sie die folgenden Schritte aus](#delete-protected-items-on-premises), um die Verwaltungsserver zu löschen.
 
 - **Schritt 4:** Sie müssen sicherstellen, dass alle registrierten Speicherkonten gelöscht werden. Wählen Sie im Dashbordmenü des Tresors die Option **Sicherungsinfrastruktur** > **Speicherkonten** aus. Wenn hier Speicherkonten aufgeführt sind, müssen Sie die Registrierung für alle diese Kosten aufheben. Weitere Informationen zum Aufheben der Registrierung des Kontos finden Sie unter [Aufheben der Registrierung eines Speicherkontos](manage-afs-backup.md#unregister-a-storage-account).
 

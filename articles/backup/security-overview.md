@@ -3,12 +3,12 @@ title: Übersicht über Sicherheitsfeatures
 description: Erfahren Sie mehr über die Sicherheitsfunktionen in Azure Backup, die Ihnen helfen, Ihre Sicherungsdaten zu schützen und die Sicherheitsanforderungen Ihres Unternehmens zu erfüllen.
 ms.topic: conceptual
 ms.date: 03/12/2020
-ms.openlocfilehash: 944ef2e86ad8e56501692b29d0958bc4fc19bf0a
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 8a63585635f578f55b274c3257807fc731eacc47
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319302"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589383"
 ---
 # <a name="overview-of-security-features-in-azure-backup"></a>Übersicht über Sicherheitsfeatures in Azure Backup
 
@@ -48,9 +48,9 @@ Die Verschlüsselung schützt Ihre Daten und unterstützt Sie beim Einhalten der
 
 * In Azure werden Daten bei der Übertragung zwischen Azure Storage und dem Tresor [per HTTPS geschützt](backup-support-matrix.md#network-traffic-to-azure). Diese Daten bleiben im Azure-Backbone-Netzwerk.
 
-* Sicherungsdaten werden automatisch mit [von Microsoft verwalteten Schlüsseln](backup-encryption.md#encryption-of-backup-data-using-platform-managed-keys) verschlüsselt, und Sie müssen keine expliziten Maßnahmen ergreifen, um die Verschlüsselung zu aktivieren. Sie können Ihre gesicherten Daten auch mit [vom Kunden verwalteten Schlüsseln (CMK)](encryption-at-rest-with-cmk.md) verschlüsseln, die in Azure Key Vault gespeichert sind. Dies gilt für alle Workloads, die in Ihrem Recovery Services-Tresor gesichert werden.
+* Sicherungsdaten werden automatisch mit [plattformseitig verwalteten Schlüsseln](backup-encryption.md) verschlüsselt, und Sie müssen keine expliziten Maßnahmen ergreifen, um die Verschlüsselung zu aktivieren. Sie können Ihre gesicherten Daten auch mit [vom Kunden verwalteten Schlüsseln (CMK)](encryption-at-rest-with-cmk.md) verschlüsseln, die in Azure Key Vault gespeichert sind. Dies gilt für alle Workloads, die in Ihrem Recovery Services-Tresor gesichert werden.
 
-* Azure Backup unterstützt die Sicherung und Wiederherstellung von virtuellen Azure-Computern, deren Datenträger für Betriebssystem/Daten mit [Azure Disk Encryption (ADE)](backup-encryption.md#backup-of-vms-encrypted-using-ade) verschlüsselt wurden, und [VMs mit CMK-verschlüsselten Datenträgern](backup-encryption.md#backup-of-managed-disk-vms-encrypted-using-customer-managed-keys). [Hier finden Sie weitere Informationen zu verschlüsselten virtuellen Azure-Computern und Azure Backup](./backup-azure-vms-encryption.md).
+* Azure Backup unterstützt die Sicherung und Wiederherstellung von virtuellen Azure-Computern, deren Datenträger für Betriebssystem/Daten mit [Azure Disk Encryption (ADE)](backup-azure-vms-encryption.md#encryption-support-using-ade) verschlüsselt wurden, und [VMs mit CMK-verschlüsselten Datenträgern](backup-azure-vms-encryption.md#encryption-using-customer-managed-keys). [Hier finden Sie weitere Informationen zu verschlüsselten virtuellen Azure-Computern und Azure Backup](./backup-azure-vms-encryption.md).
 
 * Werden die Daten von lokalen Servern mit dem MARS-Agent gesichert, werden die Daten vor dem Hochladen nach Azure Backup mit einer Passphrase verschlüsselt und erst nach dem Herunterladen von Azure Backup entschlüsselt. Weitere Informationen finden Sie unter [Sicherheitsfeatures für den Schutz von Hybridsicherungen](#security-features-to-help-protect-hybrid-backups).
 

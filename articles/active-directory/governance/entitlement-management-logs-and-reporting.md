@@ -16,12 +16,12 @@ ms.date: 06/17/2020
 ms.author: barclayn
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4756ced858210f86bb8e979705db99a563441490
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 89d6379f3fa41036836288ed5c75fbdaad0031da
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85078190"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88783818"
 ---
 # <a name="archive-logs-and-reporting-on-azure-ad-entitlement-management-in-azure-monitor"></a>Archivieren von Protokollen und Erstellen von Berichten mit Azure Monitor in der Azure AD-Berechtigungsverwaltung
 
@@ -59,7 +59,7 @@ Zum Archivieren von Azure AD-Überwachungsprotokollen müssen Sie über Azure Mo
 
 ## <a name="view-events-for-an-access-package"></a>Anzeigen von Ereignissen für ein Zugriffspaket  
 
-Um Ereignisse für ein Zugriffspaket anzuzeigen, benötigen Sie Zugriff auf den zugrunde liegenden Azure Monitor-Arbeitsbereich (siehe [Verwalten des Zugriffs auf Protokolldaten und Arbeitsbereiche in Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/manage-access#manage-access-using-azure-permissions)) und eine der folgenden Rollen: 
+Um Ereignisse für ein Zugriffspaket anzuzeigen, benötigen Sie Zugriff auf den zugrunde liegenden Azure Monitor-Arbeitsbereich (siehe [Verwalten des Zugriffs auf Protokolldaten und Arbeitsbereiche in Azure Monitor](../../azure-monitor/platform/manage-access.md#manage-access-using-azure-permissions)) und eine der folgenden Rollen: 
 
 - Globaler Administrator  
 - Sicherheitsadministrator  
@@ -170,7 +170,7 @@ $wks | ft CustomerId, Name
 
 ### <a name="send-the-query-to-the-log-analytics-workspace"></a>Senden der Abfrage an den Log Analytics-Arbeitsbereich
 Abschließend können Sie, wenn Sie einen Arbeitsbereich identifiziert haben, mit dem Befehl [Invoke-AzOperationalInsightsQuery](/powershell/module/az.operationalinsights/Invoke-AzOperationalInsightsQuery?view=azps-3.3.0
-) eine Kusto-Abfrage an diesen Arbeitsbereich senden. Diese Abfragen werden in der [Kusto-Abfragesprache](https://docs.microsoft.com/azure/kusto/query/) geschrieben.
+) eine Kusto-Abfrage an diesen Arbeitsbereich senden. Diese Abfragen werden in der [Kusto-Abfragesprache](/azure/kusto/query/) geschrieben.
  
 Sie können beispielsweise mit PowerShell-Cmdlets den Datenbereich der aufgezeichneten Überwachungsereignisse aus dem Log Analytics-Arbeitsbereich abrufen. Dazu senden Sie eine Abfrage ähnlich der Folgenden:
  
@@ -189,5 +189,4 @@ $bResponse.Results |ft
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte:
-- [Erstellen interaktiver Berichte mit Azure Monitor-Arbeitsmappen](../../azure-monitor/platform/workbooks-overview.md) 
-
+- [Erstellen interaktiver Berichte mit Azure Monitor-Arbeitsmappen](../../azure-monitor/platform/workbooks-overview.md)

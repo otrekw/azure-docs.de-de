@@ -1,27 +1,22 @@
 ---
-title: Benutzerdefinierte Domänen im Azure AD-Anwendungsproxy | Microsoft-Dokumentation
+title: Benutzerdefinierte Domänen im Azure AD-Anwendungsproxy
 description: Es wird beschrieben, wie Sie benutzerdefinierte Domänen im Azure AD-Anwendungsproxy konfigurieren und verwalten.
 services: active-directory
-documentationcenter: ''
 author: kenwith
 manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: how-to
 ms.date: 10/24/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.custom: it-pro
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 646a32509921709711b208c263ac6b077555eac5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6688875385d34fcbece964d43827c6d62ae7ced4
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84764909"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88587768"
 ---
 # <a name="configure-custom-domains-with-azure-ad-application-proxy"></a>Konfigurieren von benutzerdefinierten Domänen per Azure AD-Anwendungsproxy
 
@@ -91,11 +86,11 @@ Veröffentlichen Sie Ihre App wie folgt per Anwendungsproxy mit einer benutzerde
    
    ![Auswählen der benutzerdefinierten Domäne](./media/application-proxy-configure-custom-domain/application-proxy.png)
    
-6. Wenn die Domäne bereits über ein Zertifikat verfügt, werden im Feld **Zertifikat** die Zertifikatinformationen angezeigt. Wählen Sie andernfalls das Feld **Zertifikat** aus. 
+6. Wenn die Domäne bereits über ein Zertifikat verfügt, werden im Feld **Zertifikat** die Zertifikatinformationen angezeigt. Wählen Sie andernfalls das Feld **Zertifikat** aus.
    
    ![Klicken zum Hochladen eines Zertifikats](./media/application-proxy-configure-custom-domain/certificate.png)
    
-7. Navigieren Sie auf der Seite **SSL-Zertifikat** zur PFX-Zertifikatsdatei, und wählen Sie sie aus. Geben Sie das Kennwort für das Zertifikat ein, und wählen Sie **Zertifikat hochladen** aus. Weitere Informationen zu Zertifikaten finden Sie im Abschnitt [Zertifikate für benutzerdefinierte Domänen](#certificates-for-custom-domains).
+7. Navigieren Sie auf der Seite **SSL-Zertifikat** zur PFX-Zertifikatsdatei, und wählen Sie sie aus. Geben Sie das Kennwort für das Zertifikat ein, und wählen Sie **Zertifikat hochladen** aus. Weitere Informationen zu Zertifikaten finden Sie im Abschnitt [Zertifikate für benutzerdefinierte Domänen](#certificates-for-custom-domains). Wenn das Zertifikat nicht gültig ist oder ein anderes Problem mit dem Kennwort besteht, wird eine Fehlermeldung angezeigt. Die [Anwendungsproxy-FAQ](application-proxy-faq.md#application-configuration) enthalten einige Problembehandlungsschritte, die Sie testen können.
    
    ![Hochladen des Zertifikats](./media/application-proxy-configure-custom-domain/ssl-certificate.png)
    
@@ -126,7 +121,7 @@ Mit einem Zertifikat wird die sichere TLS-Verbindung für Ihre benutzerdefiniert
 
 Sie müssen ein PFX-Zertifikat verwenden, um sicherzustellen, dass alle erforderlichen Zwischenzertifikate enthalten sind. Das Zertifikat muss den privaten Schlüssel enthalten.
 
-Es gibt keine Einschränkung für die Zertifikatsignaturmethoden. Elliptic Curve Cryptography (ECC), alternativer Antragstellername (Subject Alternative Name, SAN) und andere gängige Zertifikattypen werden unterstützt. 
+Die gängigsten Zertifikatsignaturmethoden wie alternative Antragstellernamen (Subject Alternative Names, SANs) werden unterstützt. 
 
 Sie können Platzhalterzertifikate verwenden, solange der Platzhalter mit der externen URL übereinstimmt. Sie müssen Platzhalterzertifikate für [Platzhalteranwendungen](application-proxy-wildcard.md) verwenden. Wenn Sie das Zertifikat auch zum Zugreifen auf Unterdomänen verwenden möchten, müssen Sie die Unterdomänen-Platzhalter als alternative Antragstellernamen demselben Zertifikat hinzufügen. Ein Zertifikat für *\*.adventure-works.com* funktioniert beispielsweise nur für *\*.apps.adventure-works.com*, wenn Sie *\*.apps.adventure-works.com* als alternativen Antragstellernamen hinzufügen. 
 

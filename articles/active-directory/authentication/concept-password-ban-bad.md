@@ -11,18 +11,18 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f0f7571cf9f8d355330c4acf425e38ce215e840
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 68419c33286457a770a9988f1f00cc0b5e1f91bc
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87050875"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88235297"
 ---
 # <a name="eliminate-bad-passwords-using-azure-active-directory-password-protection"></a>Ausschließen von ungeeigneten Kennwörtern mit dem Azure Active Directory-Kennwortschutz
 
 Viele Sicherheitsanleitungen enthalten die Empfehlung, dass dasselbe Kennwort nicht mehrfach verwendet werden sollte, dass es komplex sein muss und dass einfache Versionen wie *Kennwort123* vermieden werden sollten. Sie können für Ihre Benutzer zwar eine [Anleitung zum Wählen von Kennwörtern](https://www.microsoft.com/research/publication/password-guidance) bereitstellen, aber unsichere Kennwörter werden trotzdem häufig verwendet. Der Azure AD-Kennwortschutz erkennt und blockiert bekannte unsichere Kennwörter und deren Varianten und kann außerdem unsichere Ausdrücke blockieren, die spezifisch für Ihre Organisation sind.
 
-Beim Azure AD-Kennwortschutz werden globale Standardlisten mit gesperrten Kennwörtern automatisch auf alle Cloudbenutzer angewendet. Zur Unterstützung Ihrer eigenen Geschäfts- und Sicherheitsanforderungen können Sie Einträge in einer benutzerdefinierten Liste mit gesperrten Kennwörtern definieren. Wenn Benutzer ihre Kennwörter ändern oder zurücksetzen, werden diese anhand dieser Listen mit gesperrten Kennwörtern überprüft, um die Nutzung von sicheren Kennwörtern zu erzwingen.
+Beim Azure AD-Kennwortschutz werden globale Standardlisten mit gesperrten Kennwörtern automatisch auf alle Benutzer eines Azure AD-Mandanten angewendet. Zur Unterstützung Ihrer eigenen Geschäfts- und Sicherheitsanforderungen können Sie Einträge in einer benutzerdefinierten Liste mit gesperrten Kennwörtern definieren. Wenn Benutzer ihre Kennwörter ändern oder zurücksetzen, werden diese anhand dieser Listen mit gesperrten Kennwörtern überprüft, um die Nutzung von sicheren Kennwörtern zu erzwingen.
 
 Sie sollten auch zusätzliche Features wie [Azure Multi-Factor Authentication](concept-mfa-howitworks.md) nutzen und sich nicht nur auf die sicheren Kennwörter verlassen, die mit dem Azure AD-Kennwortschutz erzwungen werden. Weitere Informationen zur Verwendung mehrerer Sicherheitsebenen für Ihre Anmeldeereignisse finden Sie unter [Ihr Kennwort spielt keine Rolle](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Your-Pa-word-doesn-t-matter/ba-p/731984).
 
@@ -37,7 +37,7 @@ Das Azure AD Identity Protection-Team analysiert ständig die Azure AD-Sicherhei
 
 Wenn ein Kennwort für einen Benutzer auf einem Azure AD-Mandanten geändert oder zurückgesetzt wird, wird die aktuelle Version der globalen Liste mit den gesperrten Kennwörtern verwendet, um die Sicherheit des Kennworts zu überprüfen. Diese Überprüfung führt zu einer höheren Sicherheit der Kennwörter aller Azure AD-Kunden.
 
-Die globale Liste mit den gesperrten Kennwörtern wird automatisch auf alle Cloudbenutzer eines Azure AD-Mandanten angewendet. Sie müssen nichts aktivieren oder konfigurieren, und sie kann nicht deaktiviert werden.
+Die globale Liste mit den gesperrten Kennwörtern wird automatisch auf alle Benutzer eines Azure AD-Mandanten angewendet. Sie müssen nichts aktivieren oder konfigurieren, und sie kann nicht deaktiviert werden. Diese globale Liste mit gesperrten Kennwörtern wird auf Benutzer angewendet, wenn diese ihr eigenes Kennwort über Azure AD ändern oder zurücksetzen.
 
 > [!NOTE]
 > Cyberkriminelle verwenden bei ihren Angriffen ähnliche Strategien, um häufig verwendete unsichere Kennwörter und deren Varianten zu identifizieren. Zur Verbesserung der Sicherheit wird der Inhalt der globalen Liste mit den gesperrten Kennwörtern von Microsoft nicht veröffentlicht.
@@ -99,7 +99,7 @@ Die globale Liste mit den gesperrten Kennwörtern ist gegenüber den langen List
 
 ## <a name="on-premises-hybrid-scenarios"></a>Lokale Hybridszenarien
 
-Viele Organisationen verfügen über ein Hybrididentitätsmodell, das lokale AD DS-Umgebungen (Active Directory Domain Services) umfasst. Um die Sicherheitsvorteile des Azure AD-Kennwortschutzes auch auf Ihre AD DS-Umgebung auszuweiten, können Sie Komponenten auf Ihren lokalen Servern installieren. Mit diesen Agents wird erzwungen, dass bei Kennwortänderungsereignissen in der lokalen AD DS-Umgebung dieselbe Kennwortrichtlinie wie für reine Cloudbenutzer eingehalten wird.
+Viele Organisationen verfügen über ein Hybrididentitätsmodell, das lokale AD DS-Umgebungen (Active Directory Domain Services) umfasst. Um die Sicherheitsvorteile des Azure AD-Kennwortschutzes auch auf Ihre AD DS-Umgebung auszuweiten, können Sie Komponenten auf Ihren lokalen Servern installieren. Mit diesen Agents wird erzwungen, dass bei Kennwortänderungsereignissen in der lokalen AD DS-Umgebung dieselbe Kennwortrichtlinie wie in Azure AD eingehalten wird.
 
 Weitere Informationen finden Sie unter [Erzwingen des Azure AD-Kennwortschutzes für Windows Server Active Directory](concept-password-ban-bad-on-premises.md).
 

@@ -8,13 +8,13 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.devlang: rest-api
 ms.topic: tutorial
-ms.date: 04/25/2020
-ms.openlocfilehash: 66289c512a746a30ed8dbd3e5c2df92bea27d907
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.date: 08/21/2020
+ms.openlocfilehash: 04434753949f0e00eaf99610199cc4997ef53caf
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85565837"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88751063"
 ---
 # <a name="tutorial-query-a-cognitive-search-index-from-power-apps"></a>Tutorial: Abfragen eines Cognitive Search-Index über Power Apps
 
@@ -92,7 +92,7 @@ Ein Connector in Power Apps ist eine Datenquellenverbindung. In diesem Schritt 
 
 1. Für *select*: Legen Sie `HotelName,Description,Address/City` als **Standardwert** fest, wählen Sie unter **Erforderlich** die Option *Nein* aus und unter **Sichtbarkeit** die Option *Keine*.  
 
-    :::image type="content" source="./media/search-howto-powerapps/1-10-4-parameter-metadata-select.png" alt-text="Metadaten des Versionsparameters" border="true":::
+    :::image type="content" source="./media/search-howto-powerapps/1-10-4-parameter-metadata-select.png" alt-text="Auswählen der Parametermetadaten" border="true":::
 
 1. Für *api-version*: Legen Sie `2020-06-30` als **Standardwert** fest, wählen Sie unter **Erforderlich** die Option *Ja* aus und unter **Sichtbarkeit** die Option *Intern*.  
 

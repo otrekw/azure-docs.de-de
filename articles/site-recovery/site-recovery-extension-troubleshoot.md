@@ -5,17 +5,20 @@ author: sideeksh
 manager: rochakm
 ms.topic: troubleshooting
 ms.date: 11/27/2018
-ms.openlocfilehash: 913f1f2a7a03c1abb83d8daa6d4b0c3f6e77e309
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: c1915d108bf9465d3e5b8d6a55053b583ee4f580
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86133751"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88184617"
 ---
 # <a name="troubleshoot-azure-vm-extension-issues"></a>Behandeln von Problemen mit der Azure-VM-Erweiterung
 
 Dieser Artikel enthält Schritte für die Problembehandlung, mit denen Sie Azure Site Recovery-Fehler mit dem VM-Agent und der Erweiterung beheben können.
 
+## <a name="low-system-resources"></a>Geringe Systemressourcen
+
+Dieses Problem tritt auf, wenn das System über wenig verfügbaren Arbeitsspeicher verfügt und nicht in der Lage ist, Arbeitsspeicher für die Installation des Mobilitätsdiensts zuzuweisen. Stellen Sie sicher, dass genügend Arbeitsspeicher verfügbar ist, damit die Installation fortgesetzt und erfolgreich abgeschlossen werden kann.
 
 ## <a name="azure-site-recovery-extension-time-out"></a>Timeout der Azure Site Recovery-Erweiterung  
 

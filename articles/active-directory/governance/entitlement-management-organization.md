@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3c4869859e11cb6c0cc868ec9deacb3e5cb972c6
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 50c5c02327aa9f48a605607de901258827b14896
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88586570"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88783942"
 ---
 # <a name="add-a-connected-organization-in-azure-ad-entitlement-management"></a>Hinzufügen einer verbundenen Organisation in der Azure AD-Berechtigungsverwaltung
 
@@ -43,8 +43,8 @@ In diesem Fall können Sie zwei verbundene Organisationen konfigurieren. Sie ers
 Wie sich Benutzer aus dem Azure AD-Verzeichnis oder der Domäne authentifizieren, hängt vom Authentifizierungstyp ab. Für verbundene Organisationen gibt es folgende Authentifizierungstypen :
 
 - Azure AD
-- [Direkter Verbund](../b2b/direct-federation.md)
-- [Einmalkennung](../b2b/one-time-passcode.md) (Domäne)
+- [Direkter Verbund](../external-identities/direct-federation.md)
+- [Einmalkennung](../external-identities/one-time-passcode.md) (Domäne)
 
 Eine Demonstration, wie Sie eine verbundene Organisation hinzufügen können, finden Sie im folgenden Video:
 
@@ -79,7 +79,7 @@ Führen Sie die Anweisungen in diesem Abschnitt aus, um ein externes Azure AD-Ve
 1. Wählen Sie **Hinzufügen** aus, um das Azure AD-Verzeichnis oder die Domäne hinzuzufügen. Aktuell kann pro verbundener Organisation nur ein Azure AD-Verzeichnis oder eine Domäne hinzugefügt werden.
 
     > [!NOTE]
-    > Alle Benutzer aus dem Azure AD-Verzeichnis oder der Domäne können Zugriffspakete anfordern. Dies schließt in Azure AD auch Benutzer aller Unterdomänen ein, die dem Verzeichnis zugeordnet sind, sofern diese Domänen nicht über die Zulassungs- oder Verweigerungsliste von Azure AD B2B (Business-to-Business) blockiert werden. Weitere Informationen finden Sie unter [Zulassen oder Blockieren von Einladungen für B2B-Benutzer von bestimmten Organisationen](../b2b/allow-deny-list.md).
+    > Alle Benutzer aus dem Azure AD-Verzeichnis oder der Domäne können Zugriffspakete anfordern. Dies schließt in Azure AD auch Benutzer aller Unterdomänen ein, die dem Verzeichnis zugeordnet sind, sofern diese Domänen nicht über die Zulassungs- oder Verweigerungsliste von Azure AD B2B (Business-to-Business) blockiert werden. Weitere Informationen finden Sie unter [Zulassen oder Blockieren von Einladungen für B2B-Benutzer von bestimmten Organisationen](../external-identities/allow-deny-list.md).
 
 1. Nachdem Sie das Azure AD-Verzeichnis oder die Domäne hinzugefügt haben, wählen Sie **Auswählen** aus.
 
@@ -89,7 +89,7 @@ Führen Sie die Anweisungen in diesem Abschnitt aus, um ein externes Azure AD-Ve
 
 1. Wählen Sie die Registerkarte **Sponsoren** aus, und fügen Sie optional Sponsoren für diese verbundene Organisation hinzu.
 
-    Sponsoren sind interne oder externe Benutzer, die sich bereits in Ihrem Verzeichnis befinden und als Ansprechpartner für die Beziehung mit dieser verbundenen Organisation fungieren. Interne Sponsoren sind Mitgliederbenutzer in Ihrem Verzeichnis. Externe Sponsoren sind Gastbenutzer aus der verbundenen Organisation, die zuvor eingeladen wurden und sich bereits in Ihrem Verzeichnis befinden. Sponsoren können als genehmigende Personen fungieren, wenn Benutzer in dieser verbundenen Organisation Zugriff auf ein Zugriffspaket anfordern. Informationen zum Einladen eines Gastbenutzers zu Ihrem Verzeichnis finden Sie unter [Hinzufügen von Azure Active Directory B2B-Zusammenarbeitsbenutzern über das Azure-Portal](../b2b/add-users-administrator.md).
+    Sponsoren sind interne oder externe Benutzer, die sich bereits in Ihrem Verzeichnis befinden und als Ansprechpartner für die Beziehung mit dieser verbundenen Organisation fungieren. Interne Sponsoren sind Mitgliederbenutzer in Ihrem Verzeichnis. Externe Sponsoren sind Gastbenutzer aus der verbundenen Organisation, die zuvor eingeladen wurden und sich bereits in Ihrem Verzeichnis befinden. Sponsoren können als genehmigende Personen fungieren, wenn Benutzer in dieser verbundenen Organisation Zugriff auf ein Zugriffspaket anfordern. Informationen zum Einladen eines Gastbenutzers zu Ihrem Verzeichnis finden Sie unter [Hinzufügen von Azure Active Directory B2B-Zusammenarbeitsbenutzern über das Azure-Portal](../external-identities/add-users-administrator.md).
 
     Wenn Sie **Hinzufügen/Entfernen** auswählen, wird ein Bereich geöffnet, in dem Sie interne oder externe Sponsoren auswählen können. Der Bereich zeigt eine ungefilterte Liste der Benutzer und Gruppen in Ihrem Verzeichnis an.
 
@@ -134,9 +134,9 @@ Wenn die Beziehung mit einem externen Azure AD-Verzeichnis bzw. einer externe Do
 
 ## <a name="managing-a-connected-organization-programmatically"></a>Programmgesteuertes Verwalten einer verbundenen Organisation
 
-Mit Microsoft Graph können Sie auch verbundene Organisationen erstellen, auflisten, aktualisieren und löschen. Ein Benutzer mit einer entsprechenden Rolle und einer Anwendung, die über die delegierte `EntitlementManagement.ReadWrite.All`-Berechtigung verfügt, kann die API aufrufen, um [connectedOrganization](https://docs.microsoft.com/graph/api/resources/connectedorganization?view=graph-rest-beta)-Objekte aufzurufen und Sponsoren dafür festzulegen.
+Mit Microsoft Graph können Sie auch verbundene Organisationen erstellen, auflisten, aktualisieren und löschen. Ein Benutzer mit einer entsprechenden Rolle und einer Anwendung, die über die delegierte `EntitlementManagement.ReadWrite.All`-Berechtigung verfügt, kann die API aufrufen, um [connectedOrganization](/graph/api/resources/connectedorganization?view=graph-rest-beta)-Objekte aufzurufen und Sponsoren dafür festzulegen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Steuern des Zugriffs für externe Benutzer in der Azure AD-Berechtigungsverwaltung (Vorschau)](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-external-users)
+- [Steuern des Zugriffs für externe Benutzer in der Azure AD-Berechtigungsverwaltung (Vorschau)](./entitlement-management-external-users.md)
 - [Steuern des Zugriffs für nicht in Ihrem Verzeichnis befindliche Benutzer](entitlement-management-access-package-request-policy.md#for-users-not-in-your-directory)

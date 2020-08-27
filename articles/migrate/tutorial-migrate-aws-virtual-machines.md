@@ -4,12 +4,12 @@ description: In diesem Artikel wird beschrieben, wie Sie virtuelle AWS-Computer 
 ms.topic: tutorial
 ms.date: 08/19/2020
 ms.custom: MVC
-ms.openlocfilehash: 9e26268010e4287d1f98e99389ffeddf3e4747ce
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: 0ef9adfe7ee88141b67bb9e8c9586c5cc6e5df6f
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88611431"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88762418"
 ---
 # <a name="discover-assess-and-migrate-amazon-web-services-aws-vms-to-azure"></a>Ermitteln, Bewerten und Migrieren von virtuellen AWS-Computern (Amazon Web Services) zu Azure
 
@@ -379,7 +379,7 @@ Nachdem Sie sich vergewissert haben, dass die Testmigration wie erwartet funktio
 **Antwort:** Zurzeit unterstützen wir keinen Import von Bewertungen für diesen Workflow. Um dieses Problem zu umgehen, können Sie die Bewertung exportieren und dann die VM-Empfehlung während des Schritts „Replikation aktivieren“ manuell auswählen.
   
 **Frage:** Ich erhalte die Fehlermeldung „Fehler beim Abrufen der BIOS-GUID“ bei dem Versuch, meine AWS-VMS zu ermitteln.   
-**Antwort:** Überprüfen Sie die unterstützten Betriebssysteme für AWS-VMs.  
+**Antwort:** Verwenden Sie immer die Root-Anmeldung für die Authentifizierung und keinen Pseudobenutzer. Überprüfen Sie außerdem die unterstützten Betriebssysteme für AWS-VMs.  
 
 **Frage:** Mein Replikationsstatus zeigt keinen Fortschritt.    
 **Antwort:** Überprüfen Sie, ob Ihre Replikationsappliance die Anforderungen erfüllt. Stellen Sie sicher, dass Sie die erforderlichen Ports auf Ihrer Replikationsappliance, TCP-Port 9443 und HTTPS 443 für den Datentransport, aktiviert haben. Stellen Sie sicher, dass keine veralteten doppelten Versionen der Replikationsappliance mit demselben Projekt verbunden sind.   

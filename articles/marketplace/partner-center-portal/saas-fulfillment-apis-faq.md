@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/11/2019
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: 164a0e295179bb0c1e8d7da6b43d8e07a4e9f4e9
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 4c5d8b438764fa9aa3838b2225c63d412afc519b
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87304410"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88606803"
 ---
 # <a name="common-questions-about-saas-fulfillment-apis"></a>Häufig gestellte Fragen zu SaaS-Fulfillment-APIs
 
@@ -63,13 +63,13 @@ Die Antwort der `Resolve`-API enthält die Angebots- und Planinformationen, die 
 >[!Note]
 >Sie können Downgrades blockieren, wenn Sie bestimmte Konvertierungspfade nicht unterstützen möchten.
 
-Die folgende Sequenz zeigt den Ablauf, wenn ein Azure-Kunde den Plan in der SaaS-Benutzeroberfläche ändert:
+Die folgende Sequenz zeigt den Ablauf, wenn ein Azure-Kunde den Plan über die SaaS-Benutzeroberfläche ändert:
 
 ![Ablauf einer Planänderung durch den Kunden](media/saas-metering-service-integration-flow-b.png)
 
-Die folgende Sequenz zeigt den Ablauf, wenn der Azure-Kunde seinen Plan über die Storefront von Microsoft ändert:
+Die folgende Sequenz zeigt den Ablauf, wenn der Azure-Kunde seinen Plan in einem Onlineshop von Microsoft ändert:
 
-![Ablauf einer Planänderung über die Storefront](media/saas-metering-service-integration-flow-c.png)
+![Ablauf für das Ändern eines Plans durch einen Kunden im Onlineshop](media/saas-metering-service-integration-flow-c.png)
 
 ### <a name="how-can-the-azure-user-unsubscribe-from-the-plan-associated-with-azure-subscription"></a>Wie kann der Azure-Benutzer den mit dem Azure-Abonnement verbundenen Plan kündigen?
 
@@ -79,9 +79,9 @@ Die folgende Sequenz zeigt den Ablauf, wenn ein Azure-Kunde das SaaS-Angebot in 
 
 ![Kündigung des Abonnements über die SaaS-Benutzeroberfläche](media/saas-metering-service-integration-flow-d.png)
 
-Die folgende Sequenz zeigt den Ablauf, wenn der Azure-Benutzer das Abonnement über die Storefront von Microsoft kündigt:
+Die folgende Sequenz zeigt den Ablauf, wenn der Azure-Benutzer das Abonnement im Onlineshop von Microsoft kündigt:
 
-![Kündigung des Abonnements über die Storefront von Microsoft](media/saas-metering-service-integration-flow-e.png)
+![Kündigung des Abonnements durch einen Kunden in einem Onlineshop von Microsoft](media/saas-metering-service-integration-flow-e.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

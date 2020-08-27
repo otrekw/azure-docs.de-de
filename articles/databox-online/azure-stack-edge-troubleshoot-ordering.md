@@ -2,18 +2,18 @@
 title: Behandeln von Azure Stack Edge-Bestellproblemen über das Azure-Portal | Microsoft-Dokumentation
 description: In diesem Artikel wird beschrieben, wie Azure Stack Edge-Bestellprobleme behandelt werden.
 services: databox
-author: priestlg
+author: twooley
 ms.service: databox
 ms.subservice: edge
 ms.topic: troubleshooting
 ms.date: 08/11/2020
-ms.author: v-grpr
-ms.openlocfilehash: d403fb0da27e3f91e00f3fd8a2fbea77e915898b
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.author: twooley
+ms.openlocfilehash: 226274c52610e24c305400d77dc7737d32c2b722
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88136600"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88783993"
 ---
 # <a name="troubleshoot-your-azure-stack-edge-ordering-issues"></a>Behandeln von Problemen bei Azure Stack Edge-Bestellungen
 

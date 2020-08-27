@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dcb7ab566d861e0c4256acda8f8facd1e94d4ad6
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 711903b106bf6ff7d8f669e2b1d3489057e09fbc
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87796776"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88783296"
 ---
 # <a name="what-is-azure-ad-identity-governance"></a>Was ist Azure AD Identity Governance?
 
@@ -58,9 +58,9 @@ Organisationen benötigen einen Prozess, um den Zugriff über die anfänglich be
 
 In der Regel delegiert die IT-Abteilung Entscheidungen bezüglich der Zugriffsgenehmigung an Entscheidungsträger im Unternehmen.  Darüber hinaus kann die IT die Benutzer selbst in den Prozess einbeziehen.  Beispielsweise müssen Benutzer, die in Europa auf vertrauliche Kundendaten in der Marketinganwendung eines Unternehmens zugreifen, die Richtlinien des Unternehmens kennen. Gastbenutzer kennen die Anforderungen für die Behandlung von Daten in einer Organisation, zu der sie eingeladen wurden, möglicherweise nicht.
 
-Organisationen können den Zugriffslebenszyklus mit Technologien wie [dynamischen Gruppen](../users-groups-roles/groups-dynamic-membership.md) in Verbindung mit der Benutzerbereitstellung in [SaaS-Apps](../saas-apps/tutorial-list.md) oder [in SCIM integrierten Apps](../app-provisioning/use-scim-to-provision-users-and-groups.md) automatisieren.  Außerdem können Organisationen steuern, welche [Gastbenutzer Zugriff auf lokale Anwendungen haben](../b2b/hybrid-cloud-to-on-premises.md).  Diese Zugriffsrechte können dann regelmäßig mithilfe von wiederkehrenden [Azure AD-Zugriffsüberprüfungen](access-reviews-overview.md) überprüft werden.   Mit der [Azure AD-Berechtigungsverwaltung](entitlement-management-overview.md) können Sie außerdem definieren, wie Benutzer übergreifend über Pakete von Gruppen- und Teammitgliedschaften, Anwendungsrollen und SharePoint Online-Rollen Zugriff anfordern.
+Organisationen können den Zugriffslebenszyklus mit Technologien wie [dynamischen Gruppen](../users-groups-roles/groups-dynamic-membership.md) in Verbindung mit der Benutzerbereitstellung in [SaaS-Apps](../saas-apps/tutorial-list.md) oder [in SCIM integrierten Apps](../app-provisioning/use-scim-to-provision-users-and-groups.md) automatisieren.  Außerdem können Organisationen steuern, welche [Gastbenutzer Zugriff auf lokale Anwendungen haben](../external-identities/hybrid-cloud-to-on-premises.md).  Diese Zugriffsrechte können dann regelmäßig mithilfe von wiederkehrenden [Azure AD-Zugriffsüberprüfungen](access-reviews-overview.md) überprüft werden.   Mit der [Azure AD-Berechtigungsverwaltung](entitlement-management-overview.md) können Sie außerdem definieren, wie Benutzer übergreifend über Pakete von Gruppen- und Teammitgliedschaften, Anwendungsrollen und SharePoint Online-Rollen Zugriff anfordern.
 
-Wenn ein Benutzer auf Anwendungen zuzugreifen versucht, erzwingt Azure AD Richtlinien für [bedingten Zugriff](/azure/active-directory/conditional-access/). Richtlinien für bedingten Zugriff können beispielsweise beinhalten, dass [Nutzungsbedingungen](../conditional-access/terms-of-use.md) angezeigt werden und [der Benutzer diesen Bedingungen zustimmen muss](../conditional-access/require-tou.md), bevor er auf eine Anwendung zugreifen kann.
+Wenn ein Benutzer auf Anwendungen zuzugreifen versucht, erzwingt Azure AD Richtlinien für [bedingten Zugriff](../conditional-access/index.yml). Richtlinien für bedingten Zugriff können beispielsweise beinhalten, dass [Nutzungsbedingungen](../conditional-access/terms-of-use.md) angezeigt werden und [der Benutzer diesen Bedingungen zustimmen muss](../conditional-access/require-tou.md), bevor er auf eine Anwendung zugreifen kann.
 
 ## <a name="privileged-access-lifecycle"></a>Privilegierter Zugriffslebenszyklus
 
@@ -100,6 +100,4 @@ Für die Ausführung administrativer Aufgaben in Identity Governance gilt die Ve
 - [Was ist Azure AD-Berechtigungsverwaltung?](entitlement-management-overview.md)
 - [Was sind Azure AD-Zugriffsüberprüfungen?](access-reviews-overview.md)
 - [Was ist Azure AD Privileged Identity Management?](../privileged-identity-management/pim-configure.md)
-- [Welche Möglichkeiten bieten die Nutzungsbedingungen?](active-directory-tou.md)
-
-
+- [Welche Möglichkeiten bieten die Nutzungsbedingungen?](../conditional-access/terms-of-use.md)
