@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: virtual-machines
 ms.tgt_pltfrm: linux
 ms.subservice: disks
-ms.openlocfilehash: 4cc00ecb3810b1499f52ea9f3a0c110e92c75dff
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ec765e2eb635449140d60ee98762e35aea12fe44
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87009611"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88689608"
 ---
 # <a name="upload-a-vhd-to-azure-or-copy-a-managed-disk-to-another-region---azure-powershell"></a>Hochladen einer VHD in Azure oder Kopieren eines verwalteten Datenträgers in eine andere Region – Azure PowerShell
 
@@ -28,7 +28,7 @@ ms.locfileid: "87009611"
 
 ## <a name="getting-started"></a>Erste Schritte
 
-Wenn Sie es vorziehen, Datenträger über eine grafische Benutzeroberfläche hochzuladen, können Sie dazu Azure Storage-Explorer verwenden. Ausführliche Informationen finden Sie unter: [Verwenden von Azure Storage-Explorer zum Verwalten von verwalteten Azure-Datenträgern](disks-use-storage-explorer-managed-disks.md)
+Wenn Sie es vorziehen, Datenträger über eine grafische Benutzeroberfläche hochzuladen, können Sie dazu Azure Storage-Explorer verwenden. Ausführliche Informationen finden Sie unter: [Verwenden von Azure Storage-Explorer zum Verwalten von verwalteten Azure-Datenträgern](../disks-use-storage-explorer-managed-disks.md)
 
 Wenn Sie Ihre VHD in Azure hochladen möchten, müssen Sie einen leeren verwalteten Datenträger erstellen, der für diesen Hochladevorgang konfiguriert ist. Bevor Sie einen solchen Datenträger erstellen, sollten Sie einige zusätzliche Informationen über diese Datenträger wissen.
 

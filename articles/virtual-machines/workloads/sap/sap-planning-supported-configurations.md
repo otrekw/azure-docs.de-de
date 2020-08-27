@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 03/11/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1945dc3b9fa03354ef447f813d95b6040a4b7b91
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: ad1567a3a6cba2c2fbc519ffe5d384aba25ab51d
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87833333"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88648988"
 ---
 # <a name="sap-workload-on-azure-virtual-machine-supported-scenarios"></a>SAP-Workload in Szenarien mit Unterstützung von virtuellen Azure-Computern
 Der Entwurf einer SAP NetWeaver-, Business One-, `Hybris`- oder S/4HANA-Systemarchitektur in Azure eröffnet eine Vielzahl von Möglichkeiten für verschiedene Architekturen und Werkzeuge, um zu einer skalierbaren, effizienten und hochverfügbaren Bereitstellung zu gelangen. Abhängig vom verwendeten Betriebssystem oder DBMS gelten jedoch Einschränkungen. Darüber hinaus werden nicht alle Szenarien, die lokal unterstützt werden, in gleicher Weise auch in Azure unterstützt. Das vorliegende Dokument stellt die unterstützten Nicht-Hochverfügbarkeitskonfigurationen und Hochverfügbarkeitskonfigurationen sowie Architekturen vor, die ausschließlich Azure-VMs verwenden. Informationen zu unterstützten Szenarien mit [großen HANA-Instanzen](./hana-overview-architecture.md) finden Sie im Artikel [Unterstützte Szenarien für große HANA-Instanzen](./hana-supported-scenario.md). 
@@ -215,7 +215,7 @@ Ein Multi-SID-Cluster mit Enqueue Replication-Server sieht schematisch wie folgt
 Szenarien zum Aufskalieren von SAP HANA werden für eine Teilmenge der HANA-zertifizierten Azure-VMs unterstützt, siehe hierzu die Liste im [SAP HANA-Hardwareverzeichnis](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure). Alle VMs, die in der Spalte „Clustering“ mit „Ja“ markiert sind, können entweder für das Aufskalieren von OLAP oder S/4HANA verwendet werden. Konfigurationen ohne Standby werden für die folgenden Azure Storage-Typen unterstützt: 
 
 - Azure Storage Premium, einschließlich Azure-Schreibbeschleunigung für das /hana/log-Volume
-- [Ultra-Datenträger](../../linux/disks-enable-ultra-ssd.md)
+- [Ultra-Datenträger](../../disks-enable-ultra-ssd.md)
 - [Azure NetApp Files](https://azure.microsoft.com/services/netapp/) 
 
 SAP HANA-Konfiguration für das Aufskalieren für OLAP oder S/4HANA mit Standbyknoten werden ausschließlich mit NFS-Freigaben unterstützt, die in Azure NetApp Files gehostet werden.

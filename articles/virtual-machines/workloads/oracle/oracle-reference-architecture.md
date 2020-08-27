@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.date: 12/13/2019
 ms.author: rogardle
 ms.custom: ''
-ms.openlocfilehash: 4be24d645d2145ee07f9b9a4696b825a26dcf5c9
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 8feede515cf7ed861f3219fdf5f4642a33c9e83e
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87448763"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88690356"
 ---
 # <a name="reference-architectures-for-oracle-database-enterprise-edition-on-azure"></a>Referenzarchitekturen für Oracle Database Enterprise Edition in Azure
 
@@ -79,7 +79,7 @@ Das folgende Diagramm zeigt eine empfohlene Architektur für die Verwendung von 
 
 ![Verwendung von Verfügbarkeitszonen mit Data Guard Broker (FSFO) für Oracle Database](./media/oracle-reference-architecture/oracledb_dg_fsfo_az.png)
 
-Im obigen Diagramm greift das Clientsystem auf eine benutzerdefinierte Anwendung per Oracle-Back-End über das Web zu. Das Web-Front-End ist in einem Lastenausgleichsmodul konfiguriert. Zur Verarbeitung sendet das Web-Front-End einen Aufruf an den entsprechenden Anwendungsserver. Der Anwendungsserver fragt die primäre Oracle-Datenbank ab. Die Oracle-Datenbank wurde mit einer [arbeitsspeicheroptimierten Hyperthread-VM](../../sizes-memory.md) mit [vCPUs mit eingeschränkten Kerngrößen](../../../virtual-machines/windows/constrained-vcpu.md) konfiguriert, um Lizenzierungskosten zu sparen und die Leistung zu steigern. Es werden mehrere Premium/Ultra Disks (Managed Disks) verwendet, um die Leistung zu steigern und Hochverfügbarkeit zu erzielen.
+Im obigen Diagramm greift das Clientsystem auf eine benutzerdefinierte Anwendung per Oracle-Back-End über das Web zu. Das Web-Front-End ist in einem Lastenausgleichsmodul konfiguriert. Zur Verarbeitung sendet das Web-Front-End einen Aufruf an den entsprechenden Anwendungsserver. Der Anwendungsserver fragt die primäre Oracle-Datenbank ab. Die Oracle-Datenbank wurde mit einer [arbeitsspeicheroptimierten Hyperthread-VM](../../sizes-memory.md) mit [vCPUs mit eingeschränkten Kerngrößen](../../../virtual-machines/constrained-vcpu.md) konfiguriert, um Lizenzierungskosten zu sparen und die Leistung zu steigern. Es werden mehrere Premium/Ultra Disks (Managed Disks) verwendet, um die Leistung zu steigern und Hochverfügbarkeit zu erzielen.
 
 Die Oracle-Datenbanken werden in mehreren Verfügbarkeitszonen angeordnet, um für Hochverfügbarkeit zu sorgen. Jede Zone besteht aus mindestens einem Rechenzentrum, dessen Stromversorgung, Kühlung und Netzwerkbetrieb unabhängig funktionieren. Zur Sicherstellung der Resilienz sind in allen aktivierten Regionen mindestens drei separate Zonen vorhanden. Die physische Trennung von Verfügbarkeitszonen innerhalb einer Region schützt die Daten vor Ausfällen von Rechenzentren. Darüber hinaus werden über zwei Verfügbarkeitszonen hinweg zwei FSFO-Observer eingerichtet, um die Datenbank zu initiieren und ein Failover zur sekundären Datenbank auszuführen, wenn es zu einem Ausfall kommt. 
 
@@ -113,7 +113,7 @@ Im folgenden Diagramm ist eine Architektur dargestellt, in der Oracle Data Guard
 
 Mit GoldenGate können Sie Daten auf Transaktionsebene für mehrere heterogene Plattformen eines Unternehmens austauschen und bearbeiten. Mit der Anwendung werden Transaktionen, für die ein Commit ausgeführt wurde, unter Bewahrung der Transaktionsintegrität und mit minimalem Aufwand für Ihre vorhandene Infrastruktur verschoben. Aufgrund der modularen Architektur können Sie ausgewählte Datensätze, Transaktionsänderungen und DDL-Änderungen (Datenbeschreibungssprache) für viele verschiedene Topologien flexibel extrahieren und replizieren.
 
-Mit Oracle GoldenGate können Sie Ihre Datenbank für Hochverfügbarkeit konfigurieren, indem Sie die bidirektionale Replikation einrichten. Sie können eine Konfiguration vom Typ **Multimaster** oder **Aktiv/Aktiv** einrichten. Das folgende Diagramm zeigt eine empfohlene Architektur für die Einrichtung des Aktiv/Aktiv-Modus in Azure. In der folgenden Architektur wurde die Oracle-Datenbank mit einer [arbeitsspeicheroptimierten Hyperthread-VM](../../sizes-memory.md) mit [vCPUs mit eingeschränkten Kerngrößen](../../../virtual-machines/windows/constrained-vcpu.md) konfiguriert, um Lizenzierungskosten zu sparen und die Leistung zu steigern. Es werden mehrere Premium-Datenträger bzw. Ultra Disks (Managed Disks) verwendet, um die Leistung zu steigern und eine hohe Verfügbarkeit zu erzielen.
+Mit Oracle GoldenGate können Sie Ihre Datenbank für Hochverfügbarkeit konfigurieren, indem Sie die bidirektionale Replikation einrichten. Sie können eine Konfiguration vom Typ **Multimaster** oder **Aktiv/Aktiv** einrichten. Das folgende Diagramm zeigt eine empfohlene Architektur für die Einrichtung des Aktiv/Aktiv-Modus in Azure. In der folgenden Architektur wurde die Oracle-Datenbank mit einer [arbeitsspeicheroptimierten Hyperthread-VM](../../sizes-memory.md) mit [vCPUs mit eingeschränkten Kerngrößen](../../../virtual-machines/constrained-vcpu.md) konfiguriert, um Lizenzierungskosten zu sparen und die Leistung zu steigern. Es werden mehrere Premium-Datenträger bzw. Ultra Disks (Managed Disks) verwendet, um die Leistung zu steigern und eine hohe Verfügbarkeit zu erzielen.
 
 ![Verwendung von Verfügbarkeitszonen mit Data Guard Broker (FSFO) für Oracle Database](./media/oracle-reference-architecture/oracledb_gg_az.png)
 
@@ -215,7 +215,7 @@ Das Patchen des Betriebssystems Ihres virtuellen Computers kann mit der [Updatev
 
 ## <a name="architecture-and-design-considerations"></a>Architektur- und Entwurfsaspekte
 
-- Erwägen Sie den Einsatz einer [arbeitsspeicheroptimierten Hyperthread-VM](../../sizes-memory.md) mit [vCPUs mit eingeschränkten Kerngrößen](../../../virtual-machines/windows/constrained-vcpu.md) für Ihre Oracle Database-VM, um Lizenzierungskosten zu sparen und die Leistung zu steigern. Verwenden Sie mehrere Premium-Datenträger bzw. Ultra Disks (Managed Disks), um eine gute Leistung und Verfügbarkeit zu erzielen.
+- Erwägen Sie den Einsatz einer [arbeitsspeicheroptimierten Hyperthread-VM](../../sizes-memory.md) mit [vCPUs mit eingeschränkten Kerngrößen](../../../virtual-machines/constrained-vcpu.md) für Ihre Oracle Database-VM, um Lizenzierungskosten zu sparen und die Leistung zu steigern. Verwenden Sie mehrere Premium-Datenträger bzw. Ultra Disks (Managed Disks), um eine gute Leistung und Verfügbarkeit zu erzielen.
 - Bei Verwendung von verwalteten Datenträgern kann es vorkommen, dass sich der Name eines Datenträgers bzw. Geräts ändert. Wir empfehlen Ihnen, anstelle des Namens die Geräte-UUID zu verwenden, um sicherzustellen, dass Ihre Bereitstellungen über Neustartvorgänge hinweg beibehalten werden. Weitere Informationen finden Sie [hier](../../../virtual-machines/linux/configure-raid.md#add-the-new-file-system-to-etcfstab).
 - Verwenden Sie Verfügbarkeitszonen, um für eine Region Hochverfügbarkeit zu erzielen.
 - Verwenden Sie ggf. Ultra Disks (falls verfügbar) oder Premium-Datenträger für Ihre Oracle-Datenbank.

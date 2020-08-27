@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 12/14/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bd8177f6fd8e40e9c4ea37bc7ead910806efbad2
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 66837a0e4118695b19776972fdb4fd88a70ee561
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88504941"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88690322"
 ---
 # <a name="azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Azure Virtual Machines – DBMS-Bereitstellung für SAP-Workload
 
@@ -247,7 +247,7 @@ ms.locfileid: "88504941"
 [storage-azure-cli-copy-blobs]:../../../storage/common/storage-azure-cli.md#copy-blobs
 [storage-introduction]:../../../storage/common/storage-introduction.md
 [storage-powershell-guide-full-copy-vhd]:../../../storage/common/storage-powershell-guide-full.md#how-to-copy-blobs-from-one-storage-container-to-another
-[storage-premium-storage-preview-portal]:../../windows/disks-types.md
+[storage-premium-storage-preview-portal]:../../disks-types.md
 [storage-redundancy]:../../../storage/common/storage-redundancy.md
 [storage-scalability-targets]:../../../storage/common/scalability-targets-standard-accounts.md
 [storage-use-azcopy]:../../../storage/common/storage-use-azcopy.md
@@ -353,9 +353,9 @@ Wenn der verfügbare freie Speicherplatz nicht ausreicht, kann die [Größe](../
 Um die richtige Größe des Speicherplatzes für die tempfiles zu bestimmen, können Sie die Größen der tempfiles auf vorhandenen Systemen überprüfen.
 
 ### <a name="storage-configuration"></a>Speicherkonfiguration
-Unterstützt wird ausschließlich eine einzige Instanz von Oracle unter Verwendung von NTFS-formatierten Datenträgern. Sämtliche Datenbankdateien müssen im NTFS-Dateisystem in Managed Disks (empfohlen) oder auf VHDs gespeichert werden. Diese Datenträger werden in die Azure-VM eingebunden und basieren auf [Azure-Seitenblobspeicher](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs) oder [Azure Managed Disks](../../windows/managed-disks-overview.md). 
+Unterstützt wird ausschließlich eine einzige Instanz von Oracle unter Verwendung von NTFS-formatierten Datenträgern. Sämtliche Datenbankdateien müssen im NTFS-Dateisystem in Managed Disks (empfohlen) oder auf VHDs gespeichert werden. Diese Datenträger werden in die Azure-VM eingebunden und basieren auf [Azure-Seitenblobspeicher](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs) oder [Azure Managed Disks](../../managed-disks-overview.md). 
 
-Wir empfehlen dringend die Verwendung von [Azure Managed Disks](../../windows/managed-disks-overview.md). Außerdem wird dringend empfohlen, [SSD Premium](../../windows/disks-types.md) für Ihre Oracle Database-Bereitstellungen zu verwenden.
+Wir empfehlen dringend die Verwendung von [Azure Managed Disks](../../managed-disks-overview.md). Außerdem wird dringend empfohlen, [SSD Premium](../../disks-types.md) für Ihre Oracle Database-Bereitstellungen zu verwenden.
 
 Netzlaufwerke und Remotefreigaben wie Azure-Dateidienste werden für Oracle Database-Dateien nicht unterstützt. Weitere Informationen finden Sie unter
 
@@ -442,11 +442,11 @@ In diesem Fall wird empfohlen, die Oracle-Verzeichnisse „home“, „stage“,
 
 ### <a name="storage-configuration"></a>Speicherkonfiguration
 
-Die Dateisysteme ext4, xfs oder Oracle ASM werden für Oracle Database-Dateien in Azure unterstützt. Sämtliche Datenbankdateien müssen in diesen Dateisystemen auf VHDs oder in Managed Disks gespeichert werden. Diese Datenträger werden in die Azure-VM eingebunden und basieren auf [Azure-Seitenblobspeicher](<https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs>) oder [Azure Managed Disks](../../windows/managed-disks-overview.md).
+Die Dateisysteme ext4, xfs oder Oracle ASM werden für Oracle Database-Dateien in Azure unterstützt. Sämtliche Datenbankdateien müssen in diesen Dateisystemen auf VHDs oder in Managed Disks gespeichert werden. Diese Datenträger werden in die Azure-VM eingebunden und basieren auf [Azure-Seitenblobspeicher](<https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs>) oder [Azure Managed Disks](../../managed-disks-overview.md).
 
-Für Oracle Linux UEK-Kernels ist mindestens die UEK-Version 4 erforderlich, um [Azure Premium SSD](../../windows/premium-storage-performance.md#disk-caching) unterstützen zu können.
+Für Oracle Linux UEK-Kernels ist mindestens die UEK-Version 4 erforderlich, um [Azure Premium SSD](../../premium-storage-performance.md#disk-caching) unterstützen zu können.
 
-Es wird ausdrücklich empfohlen, [Azure Managed Disks](../../windows/managed-disks-overview.md) zu nutzen. Außerdem wird dringend empfohlen, [Azure Premium SSD](../../windows/disks-types.md) für Ihre Oracle Database-Bereitstellungen zu verwenden.
+Es wird ausdrücklich empfohlen, [Azure Managed Disks](../../managed-disks-overview.md) zu nutzen. Außerdem wird dringend empfohlen, [Azure Premium SSD](../../disks-types.md) für Ihre Oracle Database-Bereitstellungen zu verwenden.
 
 Netzlaufwerke und Remotefreigaben wie Azure-Dateidienste werden für Oracle Database-Dateien nicht unterstützt. Weitere Informationen finden Sie unter 
 

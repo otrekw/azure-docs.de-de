@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: ed6587cab1e90c9b4bd4ceffa64c77fa5d8de574
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: c261ea174f37de51a8fbd5b36aeb40c26d44e6a9
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88005702"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88691393"
 ---
 # <a name="deploy-a-windows-virtual-desktop-classic-management-tool-with-an-azure-resource-manager-template"></a>Bereitstellen eines Windows Virtual Desktop-Verwaltungstools (klassisch) mit einer Azure Resource Manager-Vorlage
 
@@ -83,7 +83,7 @@ Um zu ermitteln, welchen Benutzer Sie für die Anmeldung bei dem Tool verwenden 
 
 Nachdem Sie entschieden haben, welchen Benutzer Sie für die Erteilung der Einwilligung verwenden, gehen Sie folgendermaßen vor, um die Einwilligung für das Tool zu erteilen:
 
-1. Navigieren Sie zu Ihren Azure-Ressourcen, wählen Sie die Azure App Services-Ressource mit dem Namen aus, den Sie in der Vorlage angegeben haben (z. B. Apr3UX), und navigieren Sie zu der damit verknüpften URL, z. B. <https://rdmimgmtweb-210520190304.azurewebsites.net>.
+1. Navigieren Sie zu Ihren Azure-Ressourcen, wählen Sie die Azure App Services-Ressource mit dem Namen aus, den Sie in der Vorlage angegeben haben (z. B. Apr3UX), und navigieren Sie zu der damit verknüpften URL, z. B. `https://rdmimgmtweb-210520190304.azurewebsites.net`.
 2. Melden Sie sich mit dem entsprechenden Azure Active Directory-Benutzerkonto an.
 3. Wenn Sie sich als globaler Administrator authentifiziert haben, können Sie nun das Kontrollkästchen**Zustimmung im Namen Ihrer Organisation** aktivieren. Wählen Sie **Akzeptieren** aus, um die Einwilligung zu erteilen.
 

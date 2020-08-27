@@ -4,23 +4,25 @@ description: Erfahren Sie, wie Sie einen Verschlüsselungsbereich erstellen, um 
 services: storage
 author: tamram
 ms.service: storage
-ms.date: 08/04/2020
+ms.date: 08/25/2020
 ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: d4dd3f3ced8aac6852fe8516a4a5cadca2ebdc49
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: 32b46d21228bcd84fc3da11cc6ed42c740fece39
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87564145"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88870254"
 ---
 # <a name="create-and-manage-encryption-scopes-preview"></a>Erstellen und Verwalten von Verschlüsselungsbereichen (Vorschauversion)
 
 Verschlüsselungsbereiche (Vorschauversion) ermöglichen Ihnen die Verwaltung der Verschlüsselung auf der Ebene einzelner Blobs oder Container. Ein Verschlüsselungsbereich isoliert Blobdaten in einer Secure Enclave innerhalb eines Speicherkontos. Sie können Verschlüsselungsbereiche verwenden, um sichere Grenzen zwischen Daten zu erstellen, die sich im selben Speicherkonto befinden, aber zu unterschiedlichen Kunden gehören. Weitere Informationen zu Verschlüsselungsbereichen finden Sie unter [Verschlüsselungsbereiche für Blobspeicher (Vorschau)](../common/storage-service-encryption.md#encryption-scopes-for-blob-storage-preview).
 
 In diesem Artikel wird gezeigt, wie Sie einen Verschlüsselungsbereich erstellen. Darüber hinaus wird erläutert, wie Sie beim Erstellen eines Blobs oder Containers einen Verschlüsselungsbereich angeben.
+
+[!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
 ## <a name="create-an-encryption-scope"></a>Erstellen eines Verschlüsselungsbereichs
 

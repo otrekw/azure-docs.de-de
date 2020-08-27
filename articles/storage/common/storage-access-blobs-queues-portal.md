@@ -1,23 +1,23 @@
 ---
-title: Zugreifen auf Blob- oder Warteschlangendaten über das Azure-Portal
+title: Auswählen der Autorisierung des Zugriffs auf Blob- oder Warteschlangendaten im Azure-Portal
 titleSuffix: Azure Storage
 description: Wenn Sie über das Azure-Portal auf Blob- oder Warteschlangendaten zugreifen, richtet das Portal tatsächlich Anforderungen an Azure Storage. Diese Anforderungen an Azure Storage können entweder mit Ihrem Azure AD-Konto oder Zugriffsschlüssel für das Speicherkonto authentifiziert und autorisiert werden.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 04/14/2020
+ms.date: 08/18/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: dcd1280dbe3a00a6a7cbdaaf59aa05326dfa8375
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: fea14c62afb03a6c0d9f1bf6894f02bd3fd06c7f
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534174"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88586969"
 ---
-# <a name="use-the-azure-portal-to-access-blob-or-queue-data"></a>Zugreifen auf Blob- oder Warteschlangendaten über das Azure-Portal
+# <a name="choose-how-to-authorize-access-to-blob-or-queue-data-in-the-azure-portal"></a>Auswählen der Autorisierung des Zugriffs auf Blob- oder Warteschlangendaten im Azure-Portal
 
 Wenn Sie über das [Azure-Portal](https://portal.azure.com) auf Blob- oder Warteschlangendaten zugreifen, richtet das Portal tatsächlich Anforderungen an Azure Storage. Eine Anforderung an Azure Storage kann entweder mit Ihrem Azure AD-Konto oder Zugriffsschlüssel für das Speicherkonto autorisiert werden. Das Portal zeigt an, welche Methode Sie verwenden, und ermöglicht Ihnen, zwischen den beiden zu wechseln, sofern Sie die entsprechenden Berechtigungen haben.  
 

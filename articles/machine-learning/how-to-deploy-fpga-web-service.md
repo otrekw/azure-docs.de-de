@@ -11,12 +11,12 @@ author: jpe316
 ms.date: 06/03/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq4, devx-track-python
-ms.openlocfilehash: 0c78245a64fa9bcb7faef2c07973d1d7b5080e76
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 263038ee1be8b31d493282cd920f386132420156
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87843095"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88648784"
 ---
 # <a name="what-are-field-programmable-gate-arrays-fpga-and-how-to-deploy"></a>Was sind Field Programmable Gate Arrays (FPGA) und wie werden sie bereitgestellt?
 
@@ -163,7 +163,7 @@ Verwenden Sie das [Azure Machine Learning SDK für Python](https://docs.microsof
    print(feature_tensor.shape)
    ```
 
-1. Fügen Sie eine Klassifizierung hinzu. Dieser Klassifizierer wurde anhand eines ImageNet-Datasets trainiert.  Beispiele für Übertragungslernen und das Training Ihrer individuellen Gewichtungen finden Sie in der Sammlung der [Beispielnotebooks](https://aka.ms/aml-notebooks).
+1. Fügen Sie eine Klassifizierung hinzu. Dieser Klassifizierer wurde anhand eines ImageNet-Datasets trainiert.  Beispiele für Übertragungslernen und das Training Ihrer individuellen Gewichtungen finden Sie in der Sammlung der [Beispielnotebooks](https://github.com/Azure/MachineLearningNotebooks).
 
    ```python
    classifier_output = model_graph.get_default_classifier(feature_tensor)
@@ -405,7 +405,7 @@ converted_model.delete()
 
 Sehen Sie sich diese Notebooks, Videos und Blogs an:
 
-+ Verschiedene [Beispielnotebooks](https://aka.ms/aml-accel-models-notebooks)
++ Verschiedene [Beispielnotebooks](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/deployment/accelerated-models)
 + Zum Absichern von FPGA-Webdiensten lesen Sie das Dokument [Absichern von Webdiensten](how-to-secure-web-service.md).
 + [Hyperscalehardware: ML mit Skalierung über Azure und FPGA: Build 2018 (Video)](https://channel9.msdn.com/events/Build/2018/BRK3202)
 + [Einblicke in die FPGA-basierte konfigurierbare Cloud von Microsoft (Video)](https://channel9.msdn.com/Events/Build/2017/B8063)
