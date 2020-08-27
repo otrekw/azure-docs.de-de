@@ -8,19 +8,19 @@ ms.author: magottei
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/12/2020
-ms.openlocfilehash: 598a8383350cae98d61b8ab74f7687161d3d33e8
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 6a3916a41635a1c76bddbb092294f6d362fc6050
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86245290"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88924710"
 ---
 # <a name="aml-skill-in-an-azure-cognitive-search-enrichment-pipeline"></a>AML-Skill in einer Anreicherungspipeline von Azure Cognitive Search
 
 > [!IMPORTANT] 
 > Diese Qualifikation ist zurzeit als öffentliche Vorschauversion verfügbar. Die Vorschaufunktion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Derzeit wird das .NET SDK nicht unterstützt.
 
-Mit dem **AML**-Skill können Sie die KI-Anreicherung durch ein benutzerdefiniertes AML-Modell ([Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/overview-what-is-azure-ml)) erweitern. Nachdem ein AML-Modell [trainiert und bereitgestellt](https://docs.microsoft.com/azure/machine-learning/concept-azure-machine-learning-architecture#workflow) wurde, integriert ein **AML**-Skill dieses in die KI-Anreicherung.
+Mit dem **AML**-Skill können Sie die KI-Anreicherung durch ein benutzerdefiniertes AML-Modell ([Azure Machine Learning](../machine-learning/overview-what-is-azure-ml.md)) erweitern. Nachdem ein AML-Modell [trainiert und bereitgestellt](../machine-learning/concept-azure-machine-learning-architecture.md#workspace) wurde, integriert ein **AML**-Skill dieses in die KI-Anreicherung.
 
 Wie integrierte Skills weist ein **AML**-Skill Eingaben und Ausgaben auf. Die Eingaben werden als JSON-Objekt an den bereitgestellten AML-Dienst gesendet, das eine JSON-Nutzlast als Antwort zusammen mit einem Erfolgsstatuscode ausgibt. Es wird erwartet, dass die Antwort die von Ihrem Skill **AML** angegebenen Ergebnisse aufweist. Jede andere Antwort gilt als Fehler und es werden keine Anreicherung durchgeführt.
 
@@ -31,9 +31,9 @@ Wie integrierte Skills weist ein **AML**-Skill Eingaben und Ausgaben auf. Die Ei
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein [AML-Arbeitsbereich](https://docs.microsoft.com/azure/machine-learning/concept-workspace)
-* Eine [Azure Kubernetes Service-AML-Computeziel](https://docs.microsoft.com/azure/machine-learning/concept-compute-target) in diesem Arbeitsbereich mit einem [bereitgestellten Modell](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-azure-kubernetes-service)
-  * Für das [Computeziel sollte SSL aktiviert sein](https://docs.microsoft.com/azure/machine-learning/how-to-secure-web-service#deploy-on-aks-and-field-programmable-gate-array-fpga). Azure Cognitive Search ermöglicht nur Zugriff auf **HTTPS**-Endpunkte.
+* Ein [AML-Arbeitsbereich](../machine-learning/concept-workspace.md)
+* Eine [Azure Kubernetes Service-AML-Computeziel](../machine-learning/concept-compute-target.md) in diesem Arbeitsbereich mit einem [bereitgestellten Modell](../machine-learning/how-to-deploy-azure-kubernetes-service.md)
+  * Für das [Computeziel sollte SSL aktiviert sein](../machine-learning/how-to-secure-web-service.md#deploy-on-aks-and-field-programmable-gate-array-fpga). Azure Cognitive Search ermöglicht nur Zugriff auf **HTTPS**-Endpunkte.
   * Selbstsignierte Zertifikate können nicht verwendet werden.
 
 ## <a name="odatatype"></a>@odata.type  
@@ -45,8 +45,8 @@ Bei den Parametern wird zwischen Groß- und Kleinschreibung unterschieden. Welch
 
 | Parametername | BESCHREIBUNG |
 |--------------------|-------------|
-| `uri` | (Erforderlich für [keine Authentifizierung oder Schlüsselauthentifizierung](#WhatSkillParametersToUse)) Der [Bewertungs-URI des AML-Diensts](https://docs.microsoft.com/azure/machine-learning/how-to-consume-web-service), an den die _JSON_-Nutzlast gesendet wird. Nur das **HTTPS**-URI-Schema ist zulässig. |
-| `key` | (Erforderlich für [Schlüsselauthentifizierung](#WhatSkillParametersToUse)) Der [Schlüssel für den AML-Dienst](https://docs.microsoft.com/azure/machine-learning/how-to-consume-web-service#authentication-with-keys). |
+| `uri` | (Erforderlich für [keine Authentifizierung oder Schlüsselauthentifizierung](#WhatSkillParametersToUse)) Der [Bewertungs-URI des AML-Diensts](../machine-learning/how-to-consume-web-service.md), an den die _JSON_-Nutzlast gesendet wird. Nur das **HTTPS**-URI-Schema ist zulässig. |
+| `key` | (Erforderlich für [Schlüsselauthentifizierung](#WhatSkillParametersToUse)) Der [Schlüssel für den AML-Dienst](../machine-learning/how-to-consume-web-service.md#authentication-with-keys). |
 | `resourceId` | (Erforderlich für [Tokenauthentifizierung](#WhatSkillParametersToUse)). Die Azure Resource Manager-Ressourcen-ID des AML-Diensts. Er sollte im Format „subscriptions/{GUID}/resourceGroups/{Ressourcengruppenname}/Microsoft.MachineLearningServices/workspaces/{Workspacename}/services/{Dienstname} vorliegen. |
 | `region` | (Optional für [Tokenauthentifizierung](#WhatSkillParametersToUse)). Die [Region](https://azure.microsoft.com/global-infrastructure/regions/), in der der AML-Dienst bereitgestellt wird. |
 | `timeout` | (Optional) Wenn angegeben, wird damit das Zeitlimit für den HTTP-Client angegeben, der den API-Aufruf durchführt. Es muss als XSD-Wert „dayTimeDuration“ formatiert sein (eine eingeschränkte Teilmenge eines [ISO 8601-Zeitwerts](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration)). Zum Beispiel `PT60S` für 60 Sekunden. Wenn kein Wert festgelegt ist, wird ein Standardwert von 30 Sekunden ausgewählt. Das Zeitlimit kann auf maximal 230 Sekunden und mindestens 1 Sekunde festgelegt werden. |
@@ -58,9 +58,9 @@ Bei den Parametern wird zwischen Groß- und Kleinschreibung unterschieden. Welch
 
 Welche AML-Skillparameter erforderlich sind, hängt davon ab, welche Authentifizierung der AML-Dienst ggf. erfordert. AML-Dienste bieten drei Authentifizierungsoptionen:
 
-* [Schlüsselbasierte Authentifizierung](https://docs.microsoft.com/azure/machine-learning/concept-enterprise-security#authentication-for-web-service-deployment). Ein statischer Schlüssel wird bereitgestellt, um Bewertungsanforderungen von AML-Skills zu authentifizieren.
+* [Schlüsselbasierte Authentifizierung](../machine-learning/concept-enterprise-security.md#authentication-for-web-service-deployment). Ein statischer Schlüssel wird bereitgestellt, um Bewertungsanforderungen von AML-Skills zu authentifizieren.
   * Verwenden Sie die Parameter _uri_ und _key_.
-* [Tokenbasierte Authentifizierung](https://docs.microsoft.com/azure/machine-learning/concept-enterprise-security#authentication). Der AML-Dienst wird [mithilfe von tokenbasierter Authentifizierung](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-azure-kubernetes-service#authentication-with-tokens) bereitgestellt. Der [verwalteten Identität](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) des Azure Cognitive Search-Diensts wird die [Leserrolle](https://docs.microsoft.com/azure/machine-learning/how-to-assign-roles) im Arbeitsbereich des AML-Diensts erteilt. Der AML-Skill verwendet dann die verwaltete Identität des Azure Cognitive Search-Diensts für die Authentifizierung mit dem AML-Dienst, ohne dass statische Schlüssel erforderlich sind.
+* [Tokenbasierte Authentifizierung](../machine-learning/concept-enterprise-security.md#authentication). Der AML-Dienst wird [mithilfe von tokenbasierter Authentifizierung](../machine-learning/how-to-deploy-azure-kubernetes-service.md#authentication-with-tokens) bereitgestellt. Der [verwalteten Identität](../active-directory/managed-identities-azure-resources/overview.md) des Azure Cognitive Search-Diensts wird die [Leserrolle](../machine-learning/how-to-assign-roles.md) im Arbeitsbereich des AML-Diensts erteilt. Der AML-Skill verwendet dann die verwaltete Identität des Azure Cognitive Search-Diensts für die Authentifizierung mit dem AML-Dienst, ohne dass statische Schlüssel erforderlich sind.
   * Verwenden Sie den _resourceId_-Parameter.
   * Wenn sich der Azure Cognitive Search-Dienst in einer anderen Region als der AML-Arbeitsbereich befindet, verwenden Sie den Parameter _region_, um die Region festzulegen, in der der AML-Dienst bereitgestellt wurde.
 * Keine Authentifizierung. Es ist keine Authentifizierung erforderlich, um den AML-Dienst zu verwenden.
@@ -171,4 +171,4 @@ In Fällen, in denen der AML-Dienst nicht verfügbar ist oder einen HTTP-Fehler 
 ## <a name="see-also"></a>Weitere Informationen
 
 + [Definieren eines Skillsets](cognitive-search-defining-skillset.md)
-+ [Problembehandlung des AML-Diensts](https://docs.microsoft.com/azure/machine-learning/how-to-troubleshoot-deployment)
++ [Problembehandlung des AML-Diensts](../machine-learning/how-to-troubleshoot-deployment.md)

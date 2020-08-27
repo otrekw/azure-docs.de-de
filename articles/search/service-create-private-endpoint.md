@@ -8,12 +8,12 @@ ms.author: mcarter
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/11/2020
-ms.openlocfilehash: 27fb165c36c17cee83cd9f90eba3bdcb9e32d517
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 0cfa7b63d1ce9dd4d9b40cd0eedac247f9c56437
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206900"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935754"
 ---
 # <a name="create-a-private-endpoint-for-a-secure-connection-to-azure-cognitive-search"></a>Erstellen eines privaten Endpunkts für sichere Verbindungen mit Azure Cognitive Search
 
@@ -22,11 +22,11 @@ In diesem Artikel verwenden Sie das Azure-Portal, um eine neue Azure Cognitive S
 Private Endpunkte werden durch [Azure Private Link](../private-link/private-link-overview.md) als separater Dienst bereitgestellt. Weitere Informationen zu den Kosten finden Sie in der [Preisübersicht](https://azure.microsoft.com/pricing/details/private-link/).
 
 > [!Important]
-> Die Unterstützung privater Endpunkte für Azure Cognitive Search kann mithilfe des Azure-Portals oder der [Verwaltungs-REST-API, Version 2020-03-13,](https://docs.microsoft.com/rest/api/searchmanagement/) konfiguriert werden. Wenn der Dienstendpunkt privat ist, sind einige Portalfunktionen deaktiviert. Sie können Informationen auf Dienstebene anzeigen und verwalten, aber der Portalzugriff auf Indexdaten und die verschiedenen Komponenten im Dienst sind aus Sicherheitsgründen eingeschränkt. Dazu zählen beispielsweise Index-, Indexer- und Skillsetdefinitionen.
+> Die Unterstützung privater Endpunkte für Azure Cognitive Search kann mithilfe des Azure-Portals oder der [Verwaltungs-REST-API, Version 2020-03-13,](/rest/api/searchmanagement/) konfiguriert werden. Wenn der Dienstendpunkt privat ist, sind einige Portalfunktionen deaktiviert. Sie können Informationen auf Dienstebene anzeigen und verwalten, aber der Portalzugriff auf Indexdaten und die verschiedenen Komponenten im Dienst sind aus Sicherheitsgründen eingeschränkt. Dazu zählen beispielsweise Index-, Indexer- und Skillsetdefinitionen.
 
 ## <a name="why-use-a-private-endpoint-for-secure-access"></a>Gründe für den sicheren Zugriff über einen privaten Endpunkt
 
-[Private Endpunkte](../private-link/private-endpoint-overview.md) für Azure Cognitive Search ermöglichen, dass ein Client in einem virtuellen Netzwerk über eine [private Verbindung](../private-link/private-link-overview.md) sicher auf Daten in einem Suchindex zugreifen kann. Der private Endpunkt verwendet eine IP-Adresse aus dem [Adressraum des virtuellen Netzwerks](../virtual-network/virtual-network-ip-addresses-overview-arm.md#private-ip-addresses) für Ihren Suchdienst. Der Netzwerkdatenverkehr zwischen dem Client und dem Suchdienst wird über das virtuelle Netzwerk und eine private Verbindung im Microsoft-Backbonenetzwerk geleitet, sodass keine Offenlegung im öffentlichen Internet erfolgt. Eine Liste mit anderen PaaS-Diensten, bei denen Private Link unterstützt wird, finden Sie im Abschnitt [Verfügbarkeit](../private-link/private-link-overview.md#availability) in der Produktdokumentation.
+[Private Endpunkte](../private-link/private-endpoint-overview.md) für Azure Cognitive Search ermöglichen, dass ein Client in einem virtuellen Netzwerk über eine [private Verbindung](../private-link/private-link-overview.md) sicher auf Daten in einem Suchindex zugreifen kann. Der private Endpunkt verwendet eine IP-Adresse aus dem [Adressraum des virtuellen Netzwerks](../virtual-network/private-ip-addresses.md) für Ihren Suchdienst. Der Netzwerkdatenverkehr zwischen dem Client und dem Suchdienst wird über das virtuelle Netzwerk und eine private Verbindung im Microsoft-Backbonenetzwerk geleitet, sodass keine Offenlegung im öffentlichen Internet erfolgt. Eine Liste mit anderen PaaS-Diensten, bei denen Private Link unterstützt wird, finden Sie im Abschnitt [Verfügbarkeit](../private-link/private-link-overview.md#availability) in der Produktdokumentation.
 
 Private Endpunkte für Ihren Suchdienst ermöglichen Folgendes:
 

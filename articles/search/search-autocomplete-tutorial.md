@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 2de282da56a40c92eacde84ac913be0ceacf9e2b
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: be873ed122bb521ce00e2d18d55a9be8197a0048
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87413016"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936757"
 ---
 # <a name="add-autocomplete-and-suggestions-to-client-apps"></a>Hinzufügen von AutoVervollständigen und Vorschlägen zu Client-Apps
 
@@ -23,7 +23,7 @@ ms.locfileid: "87413016"
 Zum Implementieren dieser Verfahren in Azure Cognitive Search benötigen Sie Folgendes:
 
 + Eine *Vorschlagsfunktion* auf dem Back-End.
-+ Eine *Abfrage* mit Angabe der [AutoVervollständigen](https://docs.microsoft.com/rest/api/searchservice/autocomplete)- oder [Vorschlags](https://docs.microsoft.com/rest/api/searchservice/suggestions)-API für die Anforderung.
++ Eine *Abfrage* mit Angabe der [AutoVervollständigen](/rest/api/searchservice/autocomplete)- oder [Vorschlags](/rest/api/searchservice/suggestions)-API für die Anforderung.
 + Ein *UI-Steuerelement*, um Interaktionen bei der Suche während der Eingabe in Ihrer Client-App zu verarbeiten. Wir empfehlen für diesen Zweck eine vorhandene JavaScript-Bibliothek.
 
 In Azure Cognitive Search werden automatisch vervollständigte Abfragen und vorgeschlagene Ergebnisse aus dem Suchindex abgerufen, und zwar aus ausgewählten Feldern, die Sie bei einer Vorschlagsfunktion registriert haben. Eine Vorschlagsfunktion ist Bestandteil des Index und gibt an, welche Felder Inhalte zum Vervollständigen einer Abfrage und/oder zum Vorschlagen eines Ergebnisses bereitstellen. Wenn der Index erstellt und geladen wird, wird intern eine Vorschlagsdatenstruktur zum Speichern von Präfixen erstellt, die für die Übereinstimmung bei partiellen Abfragen verwendet werden. Bei Vorschlägen ist es für die Sucherfahrung äußerst wichtig, geeignete Felder auszuwählen, die einmalig sind oder sich zumindest nicht wiederholen. Weitere Informationen finden Sie unter [Erstellen einer Vorschlagsfunktion](index-add-suggesters.md).
@@ -54,16 +54,16 @@ Die APIs erzwingen keine Mindestanforderungen für die Länge der partiellen Abf
 
 Folgen Sie diesen Links zu den REST- und .NET SDK-Referenzseiten:
 
-+ [Vorschläge-REST-API](https://docs.microsoft.com/rest/api/searchservice/suggestions) 
-+ [AutoVervollständigen-REST-API](https://docs.microsoft.com/rest/api/searchservice/autocomplete) 
-+ [SuggestWithHttpMessagesAsync-Methode](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.idocumentsoperations.suggestwithhttpmessagesasync?view=azure-dotnet)
-+ [AutocompleteWithHttpMessagesAsync-Methode](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.idocumentsoperations.autocompletewithhttpmessagesasync?view=azure-dotnet&viewFallbackFrom=azure-dotnet)
++ [Vorschläge-REST-API](/rest/api/searchservice/suggestions) 
++ [AutoVervollständigen-REST-API](/rest/api/searchservice/autocomplete) 
++ [SuggestWithHttpMessagesAsync-Methode](/dotnet/api/microsoft.azure.search.idocumentsoperations.suggestwithhttpmessagesasync?view=azure-dotnet)
++ [AutocompleteWithHttpMessagesAsync-Methode](/dotnet/api/microsoft.azure.search.idocumentsoperations.autocompletewithhttpmessagesasync?view=azure-dotnet&viewFallbackFrom=azure-dotnet)
 
 ## <a name="structure-a-response"></a>Struktur einer Antwort
 
-Antworten auf AutoVervollständigen und Vorschläge sind das, was Sie wahrscheinlich von dem Muster erwarten: [AutoVervollständigen](https://docs.microsoft.com/rest/api/searchservice/autocomplete#response) gibt eine Liste von Begriffen zurück. [Vorschläge](https://docs.microsoft.com/rest/api/searchservice/suggestions#response) geben Begriffe und eine Dokument-ID zurück, damit Sie das Dokument abrufen können (mit der [Lookup Document](https://docs.microsoft.com/rest/api/searchservice/lookup-document)-API kann das spezielle Dokument für eine Detailseite abgerufen werden).
+Antworten auf AutoVervollständigen und Vorschläge sind das, was Sie wahrscheinlich von dem Muster erwarten: [AutoVervollständigen](/rest/api/searchservice/autocomplete#response) gibt eine Liste von Begriffen zurück. [Vorschläge](/rest/api/searchservice/suggestions#response) geben Begriffe und eine Dokument-ID zurück, damit Sie das Dokument abrufen können (mit der [Lookup Document](/rest/api/searchservice/lookup-document)-API kann das spezielle Dokument für eine Detailseite abgerufen werden).
 
-Antworten werden durch die Parameter in der Abfrage gebildet. Legen Sie bei AutoVervollständigen unter [**autocompleteMode**](https://docs.microsoft.com/rest/api/searchservice/autocomplete#autocomplete-modes) fest, ob die Textvervollständigung für einen Begriff oder zwei Begriffe erfolgen soll. Bei Vorschlägen bestimmt das von Ihnen ausgewählte Feld den Inhalt der Antwort.
+Antworten werden durch die Parameter in der Abfrage gebildet. Legen Sie bei AutoVervollständigen unter [**autocompleteMode**](/rest/api/searchservice/autocomplete#autocomplete-modes) fest, ob die Textvervollständigung für einen Begriff oder zwei Begriffe erfolgen soll. Bei Vorschlägen bestimmt das von Ihnen ausgewählte Feld den Inhalt der Antwort.
 
 Bei Vorschlägen sollten Sie die Antwort verfeinern, um Duplikate oder scheinbar zusammenhanglose Ergebnisse zu vermeiden. Beziehen Sie zum Steuern der Ergebnisse mehr Parameter in die Abfrage ein. Die folgenden Parameter gelten sowohl für AutoVervollständigen als auch für Vorschläge, sind möglicherweise aber für Vorschläge eher erforderlich, besonders wenn eine Vorschlagsfunktion mehrere Felder enthält.
 
@@ -141,7 +141,7 @@ source: "/home/suggest?highlights=true&fuzzy=true&",
 
 Wenn Sie C# und eine MVC-Anwendung verwenden, können Sie in der Datei **HomeController.cs** im Verzeichnis des Controllers eine Klasse für vorgeschlagene Ergebnisse erstellen. In .NET basiert eine Vorschlagsfunktion auf der [DocumentsOperationsExtensions.Suggest-Methode](/dotnet/api/microsoft.azure.search.documentsoperationsextensions.suggest?view=azure-dotnet).
 
-Mit der `InitSearch`-Methode wird für den Azure Cognitive Search-Dienst ein authentifizierter Client für den HTTP-Index erstellt. Weitere Informationen zum .NET SDK finden Sie unter [Verwenden von Azure Cognitive Search aus einer .NET-Anwendung](https://docs.microsoft.com/azure/search/search-howto-dotnet-sdk).
+Mit der `InitSearch`-Methode wird für den Azure Cognitive Search-Dienst ein authentifizierter Client für den HTTP-Index erstellt. Weitere Informationen zum .NET SDK finden Sie unter [Verwenden von Azure Cognitive Search aus einer .NET-Anwendung](./search-howto-dotnet-sdk.md).
 
 ```csharp
 public ActionResult Suggest(bool highlights, bool fuzzy, string term)
@@ -175,7 +175,7 @@ public ActionResult Suggest(bool highlights, bool fuzzy, string term)
 }
 ```
 
-Die Funktion „Suggest“ (Vorschlagen) verwendet zwei Parameter, die bestimmen, ob Treffermarkierungen zurückgegeben werden sollen oder ob zusätzlich zur Eingabe des Suchbegriffs die Fuzzyübereinstimmung verwendet werden soll. Die Methode erstellt das Objekt [SuggestParameters](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.suggestparameters?view=azure-dotnet), das anschließend an die Suggest-API übergeben wird. Das Ergebnis wird anschließend in JSON konvertiert, damit es im Client angezeigt werden kann.
+Die Funktion „Suggest“ (Vorschlagen) verwendet zwei Parameter, die bestimmen, ob Treffermarkierungen zurückgegeben werden sollen oder ob zusätzlich zur Eingabe des Suchbegriffs die Fuzzyübereinstimmung verwendet werden soll. Die Methode erstellt das Objekt [SuggestParameters](/dotnet/api/microsoft.azure.search.models.suggestparameters?view=azure-dotnet), das anschließend an die Suggest-API übergeben wird. Das Ergebnis wird anschließend in JSON konvertiert, damit es im Client angezeigt werden kann.
 
 ## <a name="autocomplete"></a>AutoVervollständigen
 
@@ -218,7 +218,7 @@ $(function () {
 
 ### <a name="autocomplete-function"></a>Funktion „AutoVervollständigen“
 
-AutoVervollständigen basiert auf der [DocumentsOperationsExtensions.Autocomplete-Methode](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions.autocomplete?view=azure-dotnet). Wie bei den Vorschlägen gehört dieser Codeblock in die Datei **HomeController.cs**.
+AutoVervollständigen basiert auf der [DocumentsOperationsExtensions.Autocomplete-Methode](/dotnet/api/microsoft.azure.search.documentsoperationsextensions.autocomplete?view=azure-dotnet). Wie bei den Vorschlägen gehört dieser Codeblock in die Datei **HomeController.cs**.
 
 ```csharp
 public ActionResult AutoComplete(string term)
@@ -243,7 +243,7 @@ public ActionResult AutoComplete(string term)
 }
 ```
 
-Die Funktion „AutoVervollständigen“ übernimmt die Eingabe des Suchbegriffs. Die Methode erstellt ein [AutoCompleteParameters-Objekt](https://docs.microsoft.com/rest/api/searchservice/autocomplete). Das Ergebnis wird anschließend in JSON konvertiert, damit es im Client angezeigt werden kann.
+Die Funktion „AutoVervollständigen“ übernimmt die Eingabe des Suchbegriffs. Die Methode erstellt ein [AutoCompleteParameters-Objekt](/rest/api/searchservice/autocomplete). Das Ergebnis wird anschließend in JSON konvertiert, damit es im Client angezeigt werden kann.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

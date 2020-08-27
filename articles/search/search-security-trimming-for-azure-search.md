@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/04/2020
-ms.openlocfilehash: 443112628edddf9c60cd6469f046b1a9e066dc82
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 8562fd1afaa01e362bd6d95fd4dcf90cf3145c5a
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86496416"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88928522"
 ---
 # <a name="security-filters-for-trimming-results-in-azure-cognitive-search"></a>Sicherheitsfilter zum Einschränken von Ergebnissen in der kognitiven Azure-Suche
 
@@ -109,13 +109,13 @@ Wenn Sie ein vorhandenes Dokument mit der Liste der Gruppen aktualisieren müsse
 }
 ```
 
-Vollständige Details zum Hinzufügen oder Aktualisieren von Dokumenten finden Sie unter [Dokumente bearbeiten](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents).
+Vollständige Details zum Hinzufügen oder Aktualisieren von Dokumenten finden Sie unter [Dokumente bearbeiten](/rest/api/searchservice/addupdate-or-delete-documents).
    
 ## <a name="apply-the-security-filter"></a>Anwenden der Sicherheitsfilter
 
 Für das Kürzen von Dokumenten basierend auf dem `group_ids`-Zugriff sollten Sie eine Suchabfrage mit einem `group_ids/any(g:search.in(g, 'group_id1, group_id2,...'))`-Filter eingeben, bei der „group_id1, group_id2,...“ die Gruppen sind, zu denen der Aussteller der Suchanforderung gehört.
 Dieser Filter vergleicht alle Dokumente, für die das `group_ids`-Feld einen der angegebenen Bezeichner enthält.
-Vollständige Details zum Durchsuchen von Dokumenten mithilfe der kognitiven Azure-Suche finden Sie unter [Durchsuchen von Dokumenten](https://docs.microsoft.com/rest/api/searchservice/search-documents).
+Vollständige Details zum Durchsuchen von Dokumenten mithilfe der kognitiven Azure-Suche finden Sie unter [Durchsuchen von Dokumenten](/rest/api/searchservice/search-documents).
 Beachten Sie, dass dieses Beispiel veranschaulicht, wie Sie Dokumente mithilfe einer POST-Anforderung durchsuchen.
 
 Geben Sie die HTTP POST-Anforderung aus:

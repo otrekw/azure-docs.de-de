@@ -8,12 +8,12 @@ ms.author: pafarley
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/21/2020
-ms.openlocfilehash: c07c00345140d96bf3265fb280fe29b1274bdee6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 58f1c2621165a7074c04752832c6560b2fd3e423
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85321305"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935431"
 ---
 # <a name="example-create-a-form-recognizer-custom-skill"></a>Beispiel: Erstellen eines benutzerdefinierten Skills der Formularerkennung
 
@@ -30,7 +30,7 @@ In diesem Beispiel für ein Azure Cognitive Search-Skillset lernen Sie, wie Sie 
 
 ## <a name="train-your-model"></a>Trainieren Ihres Modells
 
-Sie müssen ein Formularerkennungsmodell mit Ihren Eingabeformularen trainieren, bevor Sie diesen Skill verwenden können. Befolgen Sie den [cURL-Schnellstart](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/quickstarts/curl-train-extract), um zu erfahren, wie Sie ein Modell trainieren. Sie können die in diesem Schnellstart bereitgestellten Beispielformulare oder Ihre eigenen Daten verwenden. Nachdem das Modell trainiert wurde, kopieren Sie seinen ID-Wert an einen sicheren Speicherort.
+Sie müssen ein Formularerkennungsmodell mit Ihren Eingabeformularen trainieren, bevor Sie diesen Skill verwenden können. Befolgen Sie den [cURL-Schnellstart](../cognitive-services/form-recognizer/quickstarts/curl-train-extract.md), um zu erfahren, wie Sie ein Modell trainieren. Sie können die in diesem Schnellstart bereitgestellten Beispielformulare oder Ihre eigenen Daten verwenden. Nachdem das Modell trainiert wurde, kopieren Sie seinen ID-Wert an einen sicheren Speicherort.
 
 ## <a name="set-up-the-custom-skill"></a>Einrichten des benutzerdefinierten Skills
 
@@ -167,5 +167,5 @@ In dieser Anleitung haben Sie einen benutzerdefinierten Skill über den Azure-Fo
 * [Azure Search Power Skills: ein Repository benutzerdefinierter Skills](https://github.com/Azure-Samples/azure-search-power-skills)
 * [Hinzufügen einer benutzerdefinierten Qualifikation zu einer KI-Anreicherungspipeline](cognitive-search-custom-skill-interface.md)
 * [Definieren einer Fähigkeitengruppe](cognitive-search-defining-skillset.md)
-* [Erstellen eines Skillsets (REST)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
+* [Erstellen eines Skillsets (REST)](/rest/api/searchservice/create-skillset)
 * [Zuordnen angereicherter Felder](cognitive-search-output-field-mapping.md)

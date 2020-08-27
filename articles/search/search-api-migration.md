@@ -8,16 +8,16 @@ ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 1e5269333de27c146d4b9e2040801c4b14564125
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 06e25e1426f206a4542444f57954ed4859a11142
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85562622"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88927135"
 ---
 # <a name="upgrade-to-the-latest-azure-cognitive-search-service-rest-api-version"></a>Aktualisieren auf die aktuelle Version der REST-API für den Dienst für die kognitive Azure-Suche
 
-Wenn Sie eine frühere Version der [Search-REST-API](https://docs.microsoft.com/rest/api/searchservice/) verwenden, unterstützt dieser Artikel Sie beim Upgrade Ihrer Anwendung auf die neueste allgemein verfügbare API-Version 2020-06-30.
+Wenn Sie eine frühere Version der [Search-REST-API](/rest/api/searchservice/) verwenden, unterstützt dieser Artikel Sie beim Upgrade Ihrer Anwendung auf die neueste allgemein verfügbare API-Version 2020-06-30.
 
 Version 2020-06-30 der REST-API enthält einige Änderungen im Vergleich zu früheren Versionen. Sie sind größtenteils abwärtskompatibel, daher sollte das Ändern von Code nur minimalen Aufwand bedeuten, abhängig davon, welche Version Sie zuvor verwendet haben. Unter [Schritte zum Upgrade](#UpgradeSteps) sind die erforderlichen Änderungen am Code zur Verwendung der neuen Funktionen beschrieben.
 
@@ -32,7 +32,7 @@ Beim Upgrade auf neue Versionen müssen Sie wahrscheinlich keine Änderungen an 
 
 * Der Code erzeugt Fehler, wenn nicht erkannte Eigenschaften in einer API-Antwort zurückgegeben werden. Standardmäßig sollte die Anwendung Eigenschaften ignorieren, die sie nicht versteht.
 
-* Ihr Code behält API-Anforderungen bei und versucht, sie erneut an die neue API-Version zu senden. Dies kann beispielsweise vorkommen, wenn Ihre Anwendung Fortsetzungstoken beibehält, die von der Search-API zurückgegeben wurden (weitere Informationen finden Sie, indem Sie in der [Search-API-Referenz](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) nach `@search.nextPageParameters` suchen).
+* Ihr Code behält API-Anforderungen bei und versucht, sie erneut an die neue API-Version zu senden. Dies kann beispielsweise vorkommen, wenn Ihre Anwendung Fortsetzungstoken beibehält, die von der Search-API zurückgegeben wurden (weitere Informationen finden Sie, indem Sie in der [Search-API-Referenz](/rest/api/searchservice/Search-Documents) nach `@search.nextPageParameters` suchen).
 
 * Ihr Code verweist auf eine API-Version vor 2019-05-06 und ist von mindestens einem Breaking Change betroffen, der mit dieser Version eingeführt wurde. Weitere Details finden Sie im Abschnitt [Upgrade auf 2019-05-06](#upgrade-to-2019-05-06). 
 
@@ -146,4 +146,4 @@ Mit den folgenden Schritten können Sie „flache“ Indizes mithilfe der API-Ve
 Sehen Sie sich die Referenzdokumentation für die Search-REST-API an. Wenn Probleme auftreten, können Sie sich über [Stack Overflow](https://stackoverflow.com/) an uns wenden oder [den Support kontaktieren](https://azure.microsoft.com/support/community/?product=search).
 
 > [!div class="nextstepaction"]
-> [Referenz zur REST-API für den Azure Search-Dienst](https://docs.microsoft.com/rest/api/searchservice/)
+> [Referenz zur REST-API für den Azure Search-Dienst](/rest/api/searchservice/)
