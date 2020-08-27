@@ -11,12 +11,12 @@ author: mumian
 ms.author: jgao
 ms.reviewer: carlrab
 ms.date: 06/24/2020
-ms.openlocfilehash: 4175792875b3bb60572ef9aa520b1fb09e00bbba
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 2c1ae6bd69a87ad0ae941fba66785344d91e8268
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87503020"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88660828"
 ---
 # <a name="quickstart-create-a-single-database-in-azure-sql-database-using-an-arm-template"></a>Schnellstart: Erstellen einer Einzeldatenbank in Azure SQL-Datenbank mithilfe einer ARM-Vorlage
 
@@ -38,7 +38,7 @@ Eine Einzeldatenbank enthält einen definierten Satz von Compute-, Arbeitsspeich
 
 Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/101-sql-database/).
 
-:::code language="json" source="~/quickstart-templates/101-sql-database/azuredeploy.json" range="1-67" highlight="41-65":::
+:::code language="json" source="~/quickstart-templates/101-sql-database/azuredeploy.json":::
 
 Diese Ressourcen sind in der Vorlage definiert:
 

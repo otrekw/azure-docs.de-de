@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: rest-api
 ms.topic: tutorial
 ms.date: 08/21/2020
-ms.openlocfilehash: 04434753949f0e00eaf99610199cc4997ef53caf
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 887017f60deb832bd5c53f28bde4b57a3d82bde5
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88751063"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88918042"
 ---
 # <a name="tutorial-query-a-cognitive-search-index-from-power-apps"></a>Tutorial: Abfragen eines Cognitive Search-Index über Power Apps
 
@@ -261,5 +261,4 @@ Denken Sie bei Verwendung eines kostenlosen Diensts an die Beschränkung auf max
 Power Apps ermöglicht die schnelle Anwendungsentwicklung von benutzerdefinierten Apps. Nun wissen Sie, wie Sie eine Verbindung mit einem Suchindex herstellen. Als Nächstes können Sie sich darüber informieren, wie Sie eine umfassende Visualisierungsoberfläche in einer benutzerdefinierten Power App erstellen.
 
 > [!div class="nextstepaction"]
-> [Lernkatalog für Power Apps](https://docs.microsoft.com/powerapps/learning-catalog/get-started)
-
+> [Lernkatalog für Power Apps](/powerapps/learning-catalog/get-started)

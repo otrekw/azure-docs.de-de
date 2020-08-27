@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: 00192ab3663944908f282f601396651cdd319df2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5511551f240fe4fdd2f2aa3bc8a3a2615505f35f
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84987470"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936111"
 ---
 #     <a name="custom-entity-lookup-cognitive-skill-preview"></a>Cognitive Search-Qualifikation„Benutzerdefinierte Entitätssuche“
 
@@ -22,7 +22,7 @@ ms.locfileid: "84987470"
 
 Die Qualifikation **Benutzerdefinierte Entitätssuche** sucht nach Text aus einer benutzerdefinierten Liste von Wörtern und Ausdrücken. Mithilfe dieser Liste werden alle Dokumente mit übereinstimmenden Entitäten mit einer Bezeichnung markiert. Die Qualifikation unterstützt auch einen gewissen Grad an Fuzzyübereinstimmung, der für die Suche nach ähnlichen, aber nicht exakten Übereinstimmungen verwendet werden kann.  
 
-Diese Qualifikation ist nicht an eine Cognitive Services-API gebunden und kann während des Vorschauzeitraums kostenlos verwendet werden. Sie sollten jedoch dennoch [eine Cognitive Services-Ressource anfügen](https://docs.microsoft.com/azure/search/cognitive-search-attach-cognitive-services), um das tägliche Anreicherungslimit außer Kraft zu setzen. Das Tageslimit gilt für den kostenlosen Zugriff auf Cognitive Services, wenn dieser über Azure Cognitive Search erfolgt.
+Diese Qualifikation ist nicht an eine Cognitive Services-API gebunden und kann während des Vorschauzeitraums kostenlos verwendet werden. Sie sollten jedoch dennoch [eine Cognitive Services-Ressource anfügen](./cognitive-search-attach-cognitive-services.md), um das tägliche Anreicherungslimit außer Kraft zu setzen. Das Tageslimit gilt für den kostenlosen Zugriff auf Cognitive Services, wenn dieser über Azure Cognitive Search erfolgt.
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Text.CustomEntityLookupSkill 

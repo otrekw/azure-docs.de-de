@@ -8,18 +8,18 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 3ea1c42234267bdbc5f8a7d35f0fd73bbb59b33c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: afc9f8e29cf27734787da9cab3e3456e5414d9ac
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85553427"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88918025"
 ---
 # <a name="create-a-simple-query-in-azure-cognitive-search"></a>Erstellen einer einfachen Abfrage in Azure Cognitive Search
 
 Bei der [einfachen Abfragesyntax](query-simple-syntax.md) in Azure Cognitive Search wird der Standardabfrageparser aufgerufen, um Volltextsuchabfragen für einen Index auszuführen. Dieser Parser ist schnell und verarbeitet gängige Szenarien, z.B. Volltextsuche, Filter- und Facettensuche und geografische Suche. 
 
-In diesem Artikel werden anhand von Beispielen die einfache Syntax veranschaulicht und bei einem Vorgang mit [Suchdokumenten](https://docs.microsoft.com/rest/api/searchservice/search-documents) der Parameter `search=` aufgefüllt.
+In diesem Artikel werden anhand von Beispielen die einfache Syntax veranschaulicht und bei einem Vorgang mit [Suchdokumenten](/rest/api/searchservice/search-documents) der Parameter `search=` aufgefüllt.
 
 Eine Alternative zu dieser Abfragesyntax ist die [vollständige Lucene-Abfragesyntax](query-lucene-syntax.md), bei der auch komplexere Abfragestrukturen unterstützt werden, z.B. Fuzzy- und Platzhaltersuche, sodass sich die Verarbeitungsdauer verlängern kann. Weitere Informationen und Beispiele zur Veranschaulichung der vollständigen Syntax finden Sie unter [Verwenden der vollständigen Lucene-Syntax](search-query-lucene-examples.md).
 
@@ -103,7 +103,7 @@ Möglicherweise ist Ihnen die Suchbewertung in der Antwort aufgefallen. Zu einer
 
 ## <a name="example-2-look-up-by-id"></a>Beispiel 2: Suchen anhand der ID
 
-Dieses Beispiel ist etwas ungewöhnlich. Beim Auswerten des Suchverhaltens ist es aber ratsam, den gesamten Inhalt eines bestimmten Dokuments zu untersuchen, um zu ermitteln, warum er in die Ergebnisse einbezogen bzw. ausgeschlossen wurde. Verwenden Sie zum Zurückgeben eines einzelnen Dokuments in seiner Gesamtheit einen [Suchvorgang](https://docs.microsoft.com/rest/api/searchservice/lookup-document), um die Dokument-ID zu übergeben.
+Dieses Beispiel ist etwas ungewöhnlich. Beim Auswerten des Suchverhaltens ist es aber ratsam, den gesamten Inhalt eines bestimmten Dokuments zu untersuchen, um zu ermitteln, warum er in die Ergebnisse einbezogen bzw. ausgeschlossen wurde. Verwenden Sie zum Zurückgeben eines einzelnen Dokuments in seiner Gesamtheit einen [Suchvorgang](/rest/api/searchservice/lookup-document), um die Dokument-ID zu übergeben.
 
 Alle Dokumente verfügen über einen eindeutigen Bezeichner. Beim Ausprobieren der Syntax für eine Suchabfrage können Sie zuerst eine Liste mit Dokument-IDs zurückgeben, um eine geeignete ID auszuwählen. Für „NYC Jobs“ sind diese Bezeichner im Feld `id` gespeichert.
 
@@ -119,7 +119,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs/9E1E3AF9-0660-4E0
 
 ## <a name="example-3-filter-queries"></a>Beispiel 3: Filterabfragen
 
-Die [Filtersyntax](https://docs.microsoft.com/azure/search/search-query-odata-filter) ist ein OData-Ausdruck, den Sie mit **search** oder allein verwenden können. Ein eigenständiger Filter ohne Suchparameter ist nützlich, wenn der Filterausdruck Dokumente von Interesse vollständig qualifizieren kann. Ohne Abfragezeichenfolge wird keine lexikalische oder linguistische Analyse, Bewertung („1“ für alle Bewertungen) und Rangzuweisung durchgeführt. Beachten Sie, dass die Suchzeichenfolge leer ist.
+Die [Filtersyntax](./search-query-odata-filter.md) ist ein OData-Ausdruck, den Sie mit **search** oder allein verwenden können. Ein eigenständiger Filter ohne Suchparameter ist nützlich, wenn der Filterausdruck Dokumente von Interesse vollständig qualifizieren kann. Ohne Abfragezeichenfolge wird keine lexikalische oder linguistische Analyse, Bewertung („1“ für alle Bewertungen) und Rangzuweisung durchgeführt. Beachten Sie, dass die Suchzeichenfolge leer ist.
 
 ```http
 POST /indexes/nycjobs/docs/search?api-version=2020-06-30
@@ -147,7 +147,7 @@ Eine andere leistungsstarke Möglichkeit zum Kombinieren von Filter und Suche is
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&$count=true&$select=job_id,business_title,agency&search=&$filter=search.ismatch('plan*', 'business_title', 'full', 'any')
 ```
 
-Weitere Informationen zu dieser Funktion finden Sie unter [„search.ismatch“ unter „Filterbeispiele“](https://docs.microsoft.com/azure/search/search-query-odata-full-text-search-functions#examples).
+Weitere Informationen zu dieser Funktion finden Sie unter [„search.ismatch“ unter „Filterbeispiele“](./search-query-odata-full-text-search-functions.md#examples).
 
 ## <a name="example-4-range-filters"></a>Beispiel 4: Bereichsfilter
 
@@ -198,7 +198,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-
 
 ## <a name="example-5-geo-search"></a>Beispiel 5: Geografische Suche
 
-Der Beispielindex enthält das Feld „geo_location“ mit Breiten- und Längengradkoordinaten. In diesem Beispiel wird die [geo.distance-Funktion](https://docs.microsoft.com/azure/search/search-query-odata-geo-spatial-functions#examples) verwendet, mit der Dokumente im Umkreis eines Startpunkts bis zu einer beliebigen festgelegten Entfernung (in Kilometer) gefiltert werden. Sie können den letzten Wert in der Abfrage (4) anpassen, um die Fläche der Abfrage zu verkleinern oder zu vergrößern.
+Der Beispielindex enthält das Feld „geo_location“ mit Breiten- und Längengradkoordinaten. In diesem Beispiel wird die [geo.distance-Funktion](./search-query-odata-geo-spatial-functions.md#examples) verwendet, mit der Dokumente im Umkreis eines Startpunkts bis zu einer beliebigen festgelegten Entfernung (in Kilometer) gefiltert werden. Sie können den letzten Wert in der Abfrage (4) anpassen, um die Fläche der Abfrage zu verkleinern oder zu vergrößern.
 
 Im folgenden Beispiel wird zur besseren Lesbarkeit das POST-Format verwendet:
 
@@ -288,13 +288,13 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-
 ## <a name="next-steps"></a>Nächste Schritte
 Versuchen Sie, Abfragen in Ihrem Code anzugeben. Unter den folgenden Links wird erläutert, wie Sie Suchabfragen sowohl für .NET als auch für die REST-API einrichten, indem Sie die einfache Standardsyntax verwenden.
 
-* [Abfragen des Index mit dem .NET SDK](search-query-dotnet.md)
-* [Abfragen des Index mit der REST-API](search-create-index-rest-api.md)
+* [Abfragen des Index mit dem .NET SDK](./search-get-started-dotnet.md)
+* [Abfragen des Index mit der REST-API](./search-get-started-powershell.md)
 
 Eine zusätzliche Syntaxreferenz, eine Abfragearchitektur und Beispiele finden Sie unter den folgenden Links:
 
 + [Beispiele für die Lucene-Abfragesyntax zum Erstellen von Abfragen in Azure Search](search-query-lucene-examples.md)
 + [Funktionsweise der Volltextsuche in Azure Cognitive Search](search-lucene-query-architecture.md)
-+ [Einfache Abfragesyntax](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)
-+ [Lucene query syntax in Azure Search](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search) (Lucene-Abfragesyntax in Azure Search)
-+ [Filter und Orderby-Syntax](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search)
++ [Einfache Abfragesyntax](/rest/api/searchservice/simple-query-syntax-in-azure-search)
++ [Lucene query syntax in Azure Search](/rest/api/searchservice/lucene-query-syntax-in-azure-search) (Lucene-Abfragesyntax in Azure Search)
++ [Filter und Orderby-Syntax](/rest/api/searchservice/odata-expression-syntax-for-azure-search)

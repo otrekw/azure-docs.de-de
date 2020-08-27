@@ -3,12 +3,12 @@ title: Unterstützung der VMware-Migration in Azure Migrate
 description: Erfahren Sie etwas über die Unterstützung der Migration virtueller VMware-Computer in Azure Migrate.
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 9de0609361e67d5251b25df798b61a4ab13e432c
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 19252a058fd26da6bddf64ad7af132a12cd1e140
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387420"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88869098"
 ---
 # <a name="support-matrix-for-vmware-migration"></a>Unterstützungsmatrix für die VMware-Migration
 
@@ -116,7 +116,7 @@ Die Tabelle enthält eine Übersicht über die Unterstützung für virtuelle VMw
 **Netzwerk/Speicher** | Die neuesten Informationen finden Sie in den Bedingungen für [Netzwerk](../site-recovery/vmware-physical-azure-support-matrix.md#network) und [Speicher](../site-recovery/vmware-physical-azure-support-matrix.md#storage) für Site Recovery. Für Azure Migrate gelten die gleichen Netzwerk-/Speicheranforderungen.
 **Anforderungen für Azure** | Die neuesten Informationen finden Sie in den Bedingungen für [Azure-Netzwerk](../site-recovery/vmware-physical-azure-support-matrix.md#azure-vm-network-after-failover), [Speicher](../site-recovery/vmware-physical-azure-support-matrix.md#azure-storage) und [Compute](../site-recovery/vmware-physical-azure-support-matrix.md#azure-compute) für Site Recovery. Für Azure Migrate gelten die gleichen Anforderungen für die VMware-Migration.
 **Mobilitätsdienst** | Der Mobilitätsdienst-Agent muss auf jeder VM installiert sein, die Sie migrieren möchten.
-**UEFI-Start** | Der migrierte virtuelle Computer in Azure wird automatisch in einen virtuellen Computer mit BIOS-Start konvertiert.<br/><br/> Der Betriebssystemdatenträger sollte bis zu vier Partitionen aufweisen, und Volumes sollten mit NTFS formatiert sein.
+**UEFI-Start** | Unterstützt.
 **Zieldatenträger** | Virtuelle Computer können nur zu verwalteten Datenträgern (HDD Standard, SSD Premium) in Azure migriert werden.
 **Datenträgergröße** | 2 TB für den Betriebssystemdatenträger, 8 TB für Datenträger
 **Einschränkungen für Datenträger** |  Bis zu 63 Datenträger pro virtuellem Computer
@@ -125,7 +125,7 @@ Die Tabelle enthält eine Übersicht über die Unterstützung für virtuelle VMw
 **Unabhängige Datenträger** | Unterstützt.
 **Pass-Through-Datenträger** | Unterstützt.
 **NFS** | NFS-Volumes, die als Volumes auf den VMs bereitgestellt sind, werden nicht repliziert.
-**iSCSI-Ziele** | Virtuelle Computer mit iSCSI-Zielen werden bei der Migration ohne Agent nicht unterstützt.
+**iSCSI-Ziele** | Unterstützt.
 **Multipfad-E/A** | Wird nicht unterstützt.
 **Storage vMotion** | Unterstützt
 **Kombinierte Netzwerkadapter** | Wird nicht unterstützt.

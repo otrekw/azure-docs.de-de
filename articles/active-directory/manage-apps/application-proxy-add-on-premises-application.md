@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 10/24/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: e44de0058af0210ecb42eaa4be8b55d543d66103
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 7d94b8604b2f947463dd760ca7baf25f19a15a26
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212816"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88642145"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>Tutorial: Hinzufügen einer lokalen Anwendung für den Remotezugriff über den Anwendungsproxy in Azure Active Directory
 
@@ -188,7 +188,7 @@ Nun haben Sie Ihre Umgebung vorbereitet, einen Connector installiert und sind be
 
     | Feld | BESCHREIBUNG |
     | :---- | :---------- |
-    | **Name** | Der Name der Anwendung, der im Zugriffsbereich und im Azure-Portal angezeigt wird. |
+    | **Name** | Der Name der Anwendung, der in „Meine Apps“ und im Azure-Portal angezeigt wird |
     | **Interne URL** | Die URL zum Zugreifen auf die Anwendung innerhalb Ihres privaten Netzwerks. Sie können einen bestimmten Pfad auf dem Back-End-Server für die Veröffentlichung angeben, während der Rest des Servers nicht veröffentlicht wird. Auf diese Weise können Sie unterschiedliche Websites auf demselben Server als unterschiedliche Apps veröffentlichen und jeweils einen eigenen Namen und Zugriffsregeln vergeben.<br><br>Stellen Sie beim Veröffentlichen eines Pfads sicher, dass er alle erforderlichen Bilder, Skripts und Stylesheets für Ihre Anwendung enthält. Wenn sich die App beispielsweise unter „https:\//yourapp/app“ befindet und Bilder unter „https:\//yourapp/media“ genutzt werden, sollten Sie „https:\//yourapp/“ als Pfad veröffentlichen. Diese interne URL verfügt nicht über die Zielseite, die den Benutzern angezeigt wird. Weitere Informationen finden Sie unter [Festlegen einer benutzerdefinierten Startseite für veröffentlichte Apps](application-proxy-configure-custom-home-page.md). |
     | **Externe URL** | Die Adresse für den Benutzerzugriff auf die App von außerhalb Ihres Netzwerks. Wenn Sie die Anwendungsproxy-Standarddomäne nicht verwenden möchten, lesen Sie [Benutzerdefinierte Domänen im Azure AD-Anwendungsproxy](application-proxy-configure-custom-domain.md).|
     | **Vorauthentifizierung** | Gibt das Verfahren an, wie der Anwendungsproxy Benutzer überprüft, bevor diese Zugriff auf Ihre Anwendung erhalten.<br><br>**Azure Active Directory**: Der Anwendungsproxy leitet Benutzer an die Anmeldung mit Azure AD um. Hierbei werden deren Berechtigungen für das Verzeichnis und die Anwendung authentifiziert. Es wird empfohlen, diese Option als Standardwert aktiviert zu lassen, damit Sie Azure AD-Sicherheitsfunktionen wie bedingten Zugriff und Multi-Factor Authentication nutzen können. **Azure Active Directory** ist erforderlich, um die Anwendung mit Microsoft Cloud App Security zu überwachen.<br><br>**Passthrough**: Benutzer müssen sich nicht bei Azure AD authentifizieren, um Zugriff auf die Anwendung zu erhalten. Sie können weiterhin Authentifizierungsanforderungen auf dem Back-End einrichten. |

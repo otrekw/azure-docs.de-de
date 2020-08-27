@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 741bf9e2aba6f893f670e86fb8bf5cd6c8b9d803
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 27d5427d34de591f9cfeab2310d79a2fde217624
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86201987"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88917872"
 ---
 # <a name="odata-logical-operators-in-azure-cognitive-search---and-or-not"></a>Logische OData-Operatoren in der kognitiven Azure-Suche: `and`, `or`, `not`
 
@@ -120,4 +120,4 @@ Abgleichen von Dokumenten für Hotels in Vancouver (Kanada), die ein Luxuszimmer
 - [Filter in Azure Cognitive Search](search-filters.md)
 - [Übersicht über die OData-Ausdruckssprache für Azure Cognitive Search](query-odata-filter-orderby-syntax.md)
 - [Referenz zur OData-Ausdruckssyntax für Azure Cognitive Search](search-query-odata-syntax-reference.md)
-- [Suchen von Dokumenten &#40;Azure Cognitive Search-REST-API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [Suchen von Dokumenten &#40;Azure Cognitive Search-REST-API&#41;](/rest/api/searchservice/Search-Documents)

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/15/2020
-ms.openlocfilehash: 9e8d1c012ae07fc458a324315e2635f04c3dbd78
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 3aa4a1917711f8997c282ba577c33e7a7f94472b
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86496495"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88932881"
 ---
 # <a name="create-a-basic-search-index-in-azure-cognitive-search"></a>Erstellen eines einfachen Suchindex in Azure Cognitive Search
 
@@ -26,10 +26,10 @@ Die physische Struktur eines Index wird durch das Schema vorgegeben. Wenn dabei 
 Mit den folgenden Tools und APIs können Sie einen Index erstellen:
 
 * Im Azure-Portal mit den Assistenten zum **Hinzufügen von Indizes** oder **Importieren von Daten**
-* Mit [Create Index (REST-API)](https://docs.microsoft.com/rest/api/searchservice/create-index)
-* Per [.NET SDK](search-create-index-dotnet.md)
+* Mit [Create Index (REST-API)](/rest/api/searchservice/create-index)
+* Per [.NET SDK](./search-get-started-dotnet.md)
 
-Für das Lernen ist es einfacher, ein Portal-Tool zu verwenden. Das Portal erzwingt Anforderungen und Schemaregeln für bestimmte Datentypen, z. B. das Deaktivieren von Funktionen zur Volltextsuche bei numerischen Feldern. Wenn Sie über einen funktionierenden Index verfügen, können Sie zum Code wechseln, indem Sie die JSON-Definition mit [Get Index (REST-API)](https://docs.microsoft.com/rest/api/searchservice/get-index) vom Dienst abrufen und sie der Projektmappe hinzufügen.
+Für das Lernen ist es einfacher, ein Portal-Tool zu verwenden. Das Portal erzwingt Anforderungen und Schemaregeln für bestimmte Datentypen, z. B. das Deaktivieren von Funktionen zur Volltextsuche bei numerischen Feldern. Wenn Sie über einen funktionierenden Index verfügen, können Sie zum Code wechseln, indem Sie die JSON-Definition mit [Get Index (REST-API)](/rest/api/searchservice/get-index) vom Dienst abrufen und sie der Projektmappe hinzufügen.
 
 ## <a name="recommended-workflow"></a>Empfohlener Workflow
 
@@ -59,7 +59,7 @@ Das Vervollständigen bis zu einem endgültigen Indexentwurf ist ein iterativer 
 
    ![Seite „Index hinzufügen“ mit Attributen nach Datentyp](media/search-what-is-an-index//field-definitions.png "Seite „Index hinzufügen“ mit Attributen nach Datentyp")
 
-1. Laden Sie das Indexschema mit [Get Index (REST-API)](https://docs.microsoft.com/rest/api/searchservice/get-index) und einem Webtesttool wie [Postman](search-get-started-postman.md) herunter. Sie verfügen nun über eine JSON-Darstellung des Index, die Sie im Code anpassen können.
+1. Laden Sie das Indexschema mit [Get Index (REST-API)](/rest/api/searchservice/get-index) und einem Webtesttool wie [Postman](search-get-started-postman.md) herunter. Sie verfügen nun über eine JSON-Darstellung des Index, die Sie im Code anpassen können.
 
 1. [Laden Sie Ihren Index mit Daten](search-what-is-data-import.md). Die kognitive Azure-Suche akzeptiert JSON-Dokumente. Um Ihre Daten programmgesteuert zu laden, können Sie Postman mit JSON-Dokumenten in der Anforderungsnutzlast verwenden. Wenn Ihre Daten nicht einfach als JSON-Code ausgedrückt werden, erfordert dieser Schritt den meisten Arbeitsaufwand. 
 
@@ -180,7 +180,7 @@ Felder haben einen Namen, einen Typ, der die gespeicherten Daten klassifiziert, 
 | Edm.DateTimeOffset |Datums-/Uhrzeitwerte im OData V4-Format (z.B. `yyyy-MM-ddTHH:mm:ss.fffZ` oder `yyyy-MM-ddTHH:mm:ss.fff[+/-]HH:mm`). |
 | Edm.GeographyPoint |Ein Punkt, der einen weltweiten geografischen Standort darstellt |
 
-Weitere Informationen finden Sie unter [Unterstützte Datentypen](https://docs.microsoft.com/rest/api/searchservice/Supported-data-types).
+Weitere Informationen finden Sie unter [Unterstützte Datentypen](/rest/api/searchservice/Supported-data-types).
 
 <a name="index-attributes"></a>
 
@@ -195,14 +195,14 @@ Zeichenfolgenfelder werden häufig als „durchsuchbar“ und „abrufbar“ gek
 |„durchsuchbar“ |Volltextsuche ist möglich, unterliegt einer lexikalischen Analyse, z.B. Worttrennung, während der Indizierung. Wenn Sie ein durchsuchbares Feld auf einen Wert wie „sunny day“ festlegen, wird es intern in die einzelnen Token „sunny“ und „day“ unterteilt. Weitere Informationen finden Sie unter [Funktionsweise der Volltextsuche](search-lucene-query-architecture.md).|  
 |„filterbar“ |Wird in $filter-Abfragen angegeben. Filterbare Felder vom Typ `Edm.String` oder `Collection(Edm.String)` werden keiner Worttrennung unterzogen, sodass nur nach exakten Übereinstimmungen gesucht wird. Beispiel: Wenn Sie ein solches Feld „f“ auf „sunny day“ festlegen, werden mit `$filter=f eq 'sunny'` keine Übereinstimmungen gefunden, während Sie mit `$filter=f eq 'sunny day'` Suchergebnisse erhalten. |  
 |„sortierbar“ |Standardmäßig sortiert das System Ergebnisse nach Bewertung, aber Sie können die Sortierung auf Grundlage von Feldern in den Dokumenten konfigurieren. Felder vom Typ `Collection(Edm.String)` können nicht „sortierbar“ sein. |  
-|„facettenreich“ |Wird in der Regel in einer Darstellung der Suchergebnisse verwendet, die eine Trefferanzahl nach Kategorie umfasst (z.B. Hotels in einer bestimmten Stadt). Diese Option kann nicht für Felder vom Typ `Edm.GeographyPoint` verwendet werden. Felder vom Typ `Edm.String`, die „filterbar“, „sortierbar“ oder „facettenreich“ sind, dürfen höchstens 32 KB lang sein. Weitere Details finden Sie unter [Erstellen des Index (REST API)](https://docs.microsoft.com/rest/api/searchservice/create-index).|  
+|„facettenreich“ |Wird in der Regel in einer Darstellung der Suchergebnisse verwendet, die eine Trefferanzahl nach Kategorie umfasst (z.B. Hotels in einer bestimmten Stadt). Diese Option kann nicht für Felder vom Typ `Edm.GeographyPoint` verwendet werden. Felder vom Typ `Edm.String`, die „filterbar“, „sortierbar“ oder „facettenreich“ sind, dürfen höchstens 32 KB lang sein. Weitere Details finden Sie unter [Erstellen des Index (REST API)](/rest/api/searchservice/create-index).|  
 |„Schlüssel“ |Eindeutiger Bezeichner für Dokumente im Index. Es muss genau ein Feld als Schlüsselfeld ausgewählt werden, und es muss vom Typ `Edm.String` sein.|  
 |„abrufbar“ |Legt fest, ob das Feld in einem Suchergebnis zurückgegeben werden kann. Dies ist hilfreich, wenn Sie ein Feld (z.B. *Gewinnspanne*) zum Filtern, Sortieren oder Bewerten verwenden möchten, das Feld jedoch für den Endbenutzer nicht sichtbar sein soll. Dieses Attribut muss für `key`-Felder auf `true` gesetzt sein.|  
 
 Obwohl Sie jederzeit neue Felder hinzufügen können, sind vorhandene Felddefinitionen für die Lebensdauer des Index gesperrt. Aus diesem Grund verwenden Entwickler in der Regel das Portal zum Erstellen einfacher Indizes und zum Testen von Ideen. Oder sie verwenden Seiten des Portals, um eine Einstellung zu suchen. Häufige Iterationen über einen Indexentwurf sind effizienter, wenn Sie einem codebasierten Ansatz folgen, sodass Sie den Index einfach neu erstellen können.
 
 > [!NOTE]
-> Die APIs, die Sie zum Erstellen eines Index verwenden, verfügen über unterschiedliches Standardverhalten. Für die [REST-APIs](https://docs.microsoft.com/rest/api/searchservice/Create-Index) sind die meisten Attribute standardmäßig aktiviert (z. B. sind „durchsuchbar“ und „abrufbar“ für Zeichenfolgenfelder auf TRUE festgelegt). Sie müssen sie häufig nur festlegen, wenn Sie sie deaktivieren möchten. Für das .NET SDK gilt das Gegenteil. Für jede Eigenschaft, die Sie nicht explizit festlegen, wird das entsprechende Suchverhalten standardmäßig deaktiviert, sofern Sie es nicht ausdrücklich aktivieren.
+> Die APIs, die Sie zum Erstellen eines Index verwenden, verfügen über unterschiedliches Standardverhalten. Für die [REST-APIs](/rest/api/searchservice/Create-Index) sind die meisten Attribute standardmäßig aktiviert (z. B. sind „durchsuchbar“ und „abrufbar“ für Zeichenfolgenfelder auf TRUE festgelegt). Sie müssen sie häufig nur festlegen, wenn Sie sie deaktivieren möchten. Für das .NET SDK gilt das Gegenteil. Für jede Eigenschaft, die Sie nicht explizit festlegen, wird das entsprechende Suchverhalten standardmäßig deaktiviert, sofern Sie es nicht ausdrücklich aktivieren.
 
 ## `analyzers`
 
@@ -210,7 +210,7 @@ Das Analysetoolelement legt den Namen des Sprachanalysetools fest, das für das 
 
 ## `suggesters`
 
-Eine Vorschlagsfunktion ist ein Abschnitt des Schemas, das definiert, welche Felder in einem Index verwendet werden, um AutoVervollständigen oder Eingabevorschläge für Abfragen bei Suchvorgängen zu unterstützen. In der Regel werden während der Eingabe einer Suchabfrage Teilzeichenfolgen an die [Suggestions-REST-API](https://docs.microsoft.com/rest/api/searchservice/suggestions) gesendet. Diese gibt daraufhin eine Reihe vorgeschlagener Dokumente oder Ausdrücke zurück. 
+Eine Vorschlagsfunktion ist ein Abschnitt des Schemas, das definiert, welche Felder in einem Index verwendet werden, um AutoVervollständigen oder Eingabevorschläge für Abfragen bei Suchvorgängen zu unterstützen. In der Regel werden während der Eingabe einer Suchabfrage Teilzeichenfolgen an die [Suggestions-REST-API](/rest/api/searchservice/suggestions) gesendet. Diese gibt daraufhin eine Reihe vorgeschlagener Dokumente oder Ausdrücke zurück. 
 
 Mit Feldern, die einer Vorschlagsfunktion hinzugefügt werden, werden Eingabevorschläge von Suchbegriffen erstellt. Alle Suchbegriffe werden während der Indizierung erstellt und separat gespeichert. Weitere Informationen zum Erstellen einer Vorschlagsfunktionsstruktur finden Sie unter [Hinzufügen von Vorschlagsfunktionen zu einem Azure Search-Index](index-add-suggesters.md).
 

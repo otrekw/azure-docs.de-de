@@ -12,12 +12,12 @@ ms.date: 02/03/2020
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: aa9813480425d179bdd11bac6f6f944f9f65e3ab
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 78204be967bafdd7d01af4f9f286bd15347e4a9f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83741964"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798039"
 ---
 # <a name="sign-in-and-start-apps-from-the-my-apps-portal"></a>Anmelden beim Portal „Meine Apps“ und Starten von Apps über dieses
 
@@ -33,7 +33,7 @@ Sollten Sie keinen Zugriff auf das Portal **Meine Apps** haben, wenden Sie sich 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-portal.md)]
 
 > [!Important]
-> Dieser Inhalt richtet sich an Benutzer von „Meine Apps“. Administratoren können sich in der [Dokumentation zur Anwendungsverwaltung](https://docs.microsoft.com/azure/active-directory/manage-apps) über die Einrichtung und Verwaltung cloudbasierter Apps informieren.
+> Dieser Inhalt richtet sich an Benutzer von „Meine Apps“. Administratoren können sich in der [Dokumentation zur Anwendungsverwaltung](../manage-apps/index.yml) über die Einrichtung und Verwaltung cloudbasierter Apps informieren.
 
 ## <a name="supported-browsers"></a>Unterstützte Browser
 
@@ -59,7 +59,7 @@ Diese Erweiterung ermöglicht Folgendes:
 
 - Anzeigen der zuletzt verwendeten Apps im Abschnitt **Zuletzt verwendet**
 
-- Remotezugriff über [Anwendungsproxy](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-get-started) über interne Unternehmens-URLs
+- Remotezugriff über [Anwendungsproxy](../manage-apps/application-proxy.md) über interne Unternehmens-URLs
 
 ### <a name="to-download-and-install-the-extension"></a>So wird die Erweiterung heruntergeladen und installiert
 

@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4e3425407fdb131fb1499b2cd085fbe6d427804a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 9c8557457e3a1dc7d0ed1e50da3070360b1fd76f
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87035297"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88717726"
 ---
 # <a name="reporting-options-for-azure-ad-password-management"></a>Berichterstellungsoptionen für die Kennwortverwaltung von Azure AD
 
@@ -53,7 +53,7 @@ Die Art und Weise, wie Aktivitäten zur Kennwortzurücksetzung und zur Registrie
 
 ### <a name="combined-registration"></a>Kombinierte Registrierung
 
-Wenn Sie die [kombinierte Registrierung](https://docs.microsoft.com/azure/active-directory/authentication/concept-registration-mfa-sspr-combined) aktiviert haben, finden Sie Informationen zur Benutzeraktivität in den Überwachungsprotokollen unter **Sicherheit** > **Authentifizierungsmethoden**.
+Wenn Sie die [kombinierte Registrierung](./concept-registration-mfa-sspr-combined.md) aktiviert haben, finden Sie Informationen zur Benutzeraktivität in den Überwachungsprotokollen unter **Sicherheit** > **Authentifizierungsmethoden**.
 
 ## <a name="description-of-the-report-columns-in-the-azure-portal"></a>Beschreibung der Berichtsspalten im Azure-Portal
 
@@ -179,7 +179,7 @@ In der folgenden Liste werden die Details dieser Aktivität erläutert:
 * [Bereitstellen der Kennwortzurücksetzung ohne erforderliche Endbenutzerregistrierung](howto-sspr-authenticationdata.md)
 * [Authentifizierungsmethoden](concept-sspr-howitworks.md#authentication-methods)
 * [Kennwortrichtlinien und -einschränkungen in Azure Active Directory](concept-sspr-policy.md)
-* [Übersicht über die Kennwortrückschreibung](howto-sspr-writeback.md)
+* [Übersicht über die Kennwortrückschreibung](./tutorial-enable-sspr-writeback.md)
 * [Welche Optionen sind für SSPR verfügbar, und was bedeuten sie?](concept-sspr-howitworks.md)
 * [Anscheinend ist ein Fehler aufgetreten. Wie behebe ich Probleme mit SSPR?](active-directory-passwords-troubleshoot.md)
 * [Ich habe eine Frage, die nicht an einer anderen Stelle abgedeckt wurde.](active-directory-passwords-faq.md)

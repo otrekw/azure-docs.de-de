@@ -9,12 +9,12 @@ tags: complex data types; compound data types; aggregate data types
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/12/2020
-ms.openlocfilehash: 0fd7ba1723da77313407725ec676e69b0ef3bca1
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 2b26a317f7338b3e87623b8312d9f7efd10dbed1
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86496671"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88917855"
 ---
 # <a name="how-to-model-complex-data-types-in-azure-cognitive-search"></a>Modellieren komplexer Datentypen in der kognitiven Azure-Suche
 
@@ -62,7 +62,7 @@ Das folgende JSON-Dokument besteht aus einfachen und komplexen Feldern. Komplexe
 
 ## <a name="creating-complex-fields"></a>Erstellen komplexer Felder
 
-Wie jede Indexdefinition können Sie ein Schema, das komplexe Typen enthält, im Portal, mit der [REST-API](https://docs.microsoft.com/rest/api/searchservice/create-index) oder mit dem [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.index?view=azure-dotnet) erstellen. 
+Wie jede Indexdefinition können Sie ein Schema, das komplexe Typen enthält, im Portal, mit der [REST-API](/rest/api/searchservice/create-index) oder mit dem [.NET SDK](/dotnet/api/microsoft.azure.search.models.index?view=azure-dotnet) erstellen. 
 
 Im folgenden Beispiel ist ein JSON-Indexschema mit einfachen Feldern, Sammlungen und komplexen Typen dargestellt. Beachten Sie, dass in einem komplexen Typ jedes Unterfeld einen Typ enthält und Attribute enthalten kann, so wie das auch bei übergeordneten Feldern der Fall ist. Das Schema entspricht den Beispieldaten oben. `Address` ist ein komplexes Feld, das keine Sammlung ist (ein Hotel weist eine Adresse auf). `Rooms` ist ein komplexes Sammlungsfeld (ein Hotel hat viele Zimmer).
 

@@ -34,8 +34,10 @@
       href: release-notes.md
 - name: Schnellstarts
   items:
-    - name: Erstellen eines Synapse-Arbeitsbereichs
+    - name: Erstellen eines Synapse-Arbeitsbereichs über das Azure-Portal
       href: quickstart-create-workspace.md
+    - name: Erstellen eines Synapse-Arbeitsbereichs über die Azure CLI
+      href: quickstart-create-workspace-cli.md
     - name: Verwenden von Synapse Studio
       href: quickstart-synapse-studio.md
     - name: "Verknüpfen eines Power\_BI-Arbeitsbereichs"

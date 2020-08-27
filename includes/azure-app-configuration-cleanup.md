@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 1/31/2020
 ms.author: lcozzens
 ms.custom: include file
-ms.openlocfilehash: e49f68f43044b93f329295181717ec2d3ade9fc6
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 751613e7b3b2252b62dff2c3e1adad83bdc8c393
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88116987"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88639020"
 ---
 Wenn Sie die in diesem Artikel erstellten Ressourcen nicht mehr verwenden möchten, löschen Sie die erstellte Ressourcengruppe, um Kosten zu vermeiden.
 
@@ -22,7 +22,7 @@ Wenn Sie die in diesem Artikel erstellten Ressourcen nicht mehr verwenden möcht
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und klicken Sie auf **Ressourcengruppen**.
 1. Geben Sie im Feld **Nach Name filtern** den Namen Ihrer Ressourcengruppe ein. 
-1. Wählen Sie in der Ergebnisliste die Ressourcengruppe aus, und klicken Sie zum Öffnen des Kontextmenüs entweder mit der rechten Maustaste auf die Zeile, oder verwenden Sie die Schaltfläche mit den **Auslassungspunkten** (**...**).
+1. Wählen Sie in der Ergebnisliste den Ressourcengruppennamen aus, um eine Übersicht anzuzeigen.
 1. Wählen Sie die Option **Ressourcengruppe löschen**.
 1. Sie werden aufgefordert, das Löschen der Ressourcengruppe zu bestätigen. Geben Sie zur Bestätigung den Namen Ihrer Ressourcengruppe ein, und klicken Sie auf **Löschen**.
 

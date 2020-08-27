@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 30d18041a746a0c1046a51cf408494ccb81019c9
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: fe509879c38f979525a673890c05fcfe5c8e3880
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88183206"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798311"
 ---
 # <a name="use-cloud-groups-to-manage-role-assignments-in-azure-active-directory-preview"></a>Verwenden von Cloudgruppen zum Verwalten von Rollenzuweisungen in Azure Active Directory (Vorschau)
 
@@ -33,7 +33,7 @@ Erstellen Sie eine neue Office 365- oder Sicherheitsgruppe, deren Eigenschaft �
 Wenn Sie nicht möchten, dass Mitglieder der Gruppe dauerhaften Zugriff auf die Rolle haben, können Sie Azure AD Privileged Identity Management verwenden. Weisen Sie eine Gruppe als berechtigtes Mitglied einer Azure AD-Rolle zu. Jedes Mitglied der Gruppe ist dann berechtigt, seine Zuweisung für die Rolle, der die Gruppe zugewiesen ist, aktivieren zu lassen. Anschließend kann das Gruppenmitglied seine Rollenzuweisung für eine festgelegte Zeitspanne aktivieren.
 
 > [!Note]
-> Sie müssen über eine aktualisierte Version von Privileged Identity Management verfügen, um einer Azure AD-Rolle über PIM eine Gruppe zuweisen zu können. Möglicherweise verwenden Sie eine ältere PIM-Version, da Ihre Azure AD-Organisation die Privileged Identity Management-API nutzt. Wenden Sie sich an den Alias pim_preview@microsoft.com, um Ihre Organisation umzustellen und die API zu aktualisieren. Weitere Informationen finden Sie unter [Azure AD-Rollen und Features in PIM](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/azure-ad-roles-features).
+> Sie müssen über eine aktualisierte Version von Privileged Identity Management verfügen, um einer Azure AD-Rolle über PIM eine Gruppe zuweisen zu können. Möglicherweise verwenden Sie eine ältere PIM-Version, da Ihre Azure AD-Organisation die Privileged Identity Management-API nutzt. Wenden Sie sich an den Alias pim_preview@microsoft.com, um Ihre Organisation umzustellen und die API zu aktualisieren. Weitere Informationen finden Sie unter [Azure AD-Rollen und Features in PIM](../privileged-identity-management/azure-ad-roles-features.md).
 
 ## <a name="why-we-enforce-creation-of-a-special-group-for-assigning-it-to-a-role"></a>Gründe für das Erstellen einer speziellen Gruppe für die Zuweisung zu einer Rolle
 
@@ -65,7 +65,7 @@ Folgende Szenarios werden derzeit nicht unterstützt:
   - Im PIM-Portal kann unter **Meine Rollen** nur eine Rollenzuweisung angezeigt werden, unabhängig davon, durch wie viele Methoden die Zuweisung gewährt wird (über eine oder mehrere Gruppen und direkt).
 - *Nur Kunden mit Azure AD P2-Lizenz*: Auch nach dem Löschen der Gruppe wird sie noch immer als ein berechtigtes Mitglied der Rolle auf der PIM-Benutzeroberfläche angezeigt. Funktionell gibt es kein Problem. Es ist lediglich ein Cacheproblem im Azure-Portal.  
 - Das Exchange Admin Center erkennt die Rollenmitgliedschaft über eine Gruppe noch nicht, aber das PowerShell-Cmdlet funktioniert.
-- Das Azure Information Protection-Portal (klassisches Portal) erkennt die Rollenmitgliedschaft über eine Gruppe noch nicht. Sie können [zur Plattform für einheitliche Vertraulichkeitsbezeichnungen migrieren](https://docs.microsoft.com/azure/information-protection/configure-policy-migrate-labels) und dann das Office 365 Security & Compliance Center verwenden, um Gruppenzuweisungen für das Verwalten von Rollen zu nutzen.
+- Das Azure Information Protection-Portal (klassisches Portal) erkennt die Rollenmitgliedschaft über eine Gruppe noch nicht. Sie können [zur Plattform für einheitliche Vertraulichkeitsbezeichnungen migrieren](/azure/information-protection/configure-policy-migrate-labels) und dann das Office 365 Security & Compliance Center verwenden, um Gruppenzuweisungen für das Verwalten von Rollen zu nutzen.
 
 Diese Probleme werden derzeit behoben.
 

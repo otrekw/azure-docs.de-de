@@ -3,15 +3,16 @@ title: Anzeigen von Transaktionen für Azure-Reservierungseinkäufe und -erstatt
 description: Erfahren Sie, wie Sie Transaktionen für Azure-Reservierungseinkäufe und -erstattungen anzeigen können.
 author: yashesvi
 ms.service: cost-management-billing
+ms.subservice: reservations
 ms.topic: how-to
 ms.date: 07/24/2020
 ms.author: banders
-ms.openlocfilehash: 988dd057834f6eb19dfd75a868c2893aefb61435
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: d9e5269468f7cd4571e7ae686af7f1ef159b4ef3
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87290761"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88681701"
 ---
 # <a name="view-reservation-purchase-and-refund-transactions"></a>Anzeigen von Transaktionen für Reservierungseinkäufe und -erstattungen
 

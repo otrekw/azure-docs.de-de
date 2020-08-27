@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3c58086a163bf558ffdc71e51e55d296e8d4d25e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 12193b469b6e1f014e6c948da7b2adb370e78d4b
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84728587"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88795338"
 ---
 # <a name="managing-custom-domain-names-in-your-azure-active-directory"></a>Verwalten von benutzerdefinierten Domänennamen in Azure Active Directory
 
@@ -71,9 +71,9 @@ Solche Ressourcen müssen Sie in Ihrem Azure AD-Verzeichnis ändern oder lösche
 
 ### <a name="forcedelete-option"></a>ForceDelete-Option
 
-Sie können das Löschen eines Domänennamens im [Azure AD Admin Center](https://aad.portal.azure.com) oder mithilfe der [Microsoft Graph-API](https://docs.microsoft.com/graph/api/domain-forcedelete?view=graph-rest-beta) per **ForceDelete** erzwingen. Diese Optionen verwenden einen asynchronen Vorgang und aktualisieren alle Verweise vom benutzerdefinierten Domänenamen wie „user@contoso.com“ auf den anfänglichen Standarddomänennamen wie „user@contoso.onmicrosoft.com“. 
+Sie können das Löschen eines Domänennamens im [Azure AD Admin Center](https://aad.portal.azure.com) oder mithilfe der [Microsoft Graph-API](/graph/api/domain-forcedelete?view=graph-rest-beta) per **ForceDelete** erzwingen. Diese Optionen verwenden einen asynchronen Vorgang und aktualisieren alle Verweise vom benutzerdefinierten Domänenamen wie „user@contoso.com“ auf den anfänglichen Standarddomänennamen wie „user@contoso.onmicrosoft.com“. 
 
-Um **ForceDelete** im Azure-Portal aufzurufen, müssen Sie sicherstellen, dass weniger als 1.000 Verweise auf den Domänennamen vorhanden sind und dass alle Verweise, bei denen Exchange der Bereitstellungsdienst ist, im [Exchange Admin Center](https://outlook.office365.com/ecp/) aktualisiert oder entfernt werden. Dazu gehören E-Mail-aktivierte Exchange-Sicherheitsgruppen und verteilte Listen. Weitere Informationen finden Sie unter [Entfernen von E-Mail-aktivierten Sicherheitsgruppen](https://technet.microsoft.com/library/bb123521(v=exchg.160).aspx#Remove%20mail-enabled%20security%20groups). Der **ForceDelete**-Vorgang kann nicht erfolgreich ausgeführt werden, wenn eine der folgenden Aussagen zutrifft:
+Um **ForceDelete** im Azure-Portal aufzurufen, müssen Sie sicherstellen, dass weniger als 1.000 Verweise auf den Domänennamen vorhanden sind und dass alle Verweise, bei denen Exchange der Bereitstellungsdienst ist, im [Exchange Admin Center](https://outlook.office365.com/ecp/) aktualisiert oder entfernt werden. Dazu gehören E-Mail-aktivierte Exchange-Sicherheitsgruppen und verteilte Listen. Weitere Informationen finden Sie unter [Entfernen von E-Mail-aktivierten Sicherheitsgruppen](/Exchange/recipients/mail-enabled-security-groups?view=exchserver-2019#Remove%20mail-enabled%20security%20groups). Der **ForceDelete**-Vorgang kann nicht erfolgreich ausgeführt werden, wenn eine der folgenden Aussagen zutrifft:
 
 * Sie haben eine Domäne über Office 365-Domänenabonnementdienste erworben.
 * Sie sind Partner und führen die Verwaltung im Auftrag einer anderen Organisation des Kunden aus.
@@ -110,11 +110,11 @@ Wenn eine dieser Bedingungen zutrifft, bereinigen Sie die Verweise manuell, und 
 
 Die meisten Verwaltungsaufgaben für Domänennamen in Azure Active Directory können auch über Microsoft PowerShell oder programmgesteuert mit der Microsoft Graph-API durchgeführt werden.
 
-* [Verwenden von PowerShell zum Verwalten von Domänennamen in Azure AD](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#domains)
-* [Domänenressourcentyp](https://docs.microsoft.com/graph/api/resources/domain?view=graph-rest-1.0)
+* [Verwenden von PowerShell zum Verwalten von Domänennamen in Azure AD](/powershell/module/azuread/?view=azureadps-2.0#domains)
+* [Domänenressourcentyp](/graph/api/resources/domain?view=graph-rest-1.0)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Hinzufügen benutzerdefinierter Domänennamen](/azure/active-directory/fundamentals/add-custom-domain?context=azure/active-directory/users-groups-roles/context/ugr-context)
-* [Entfernen von E-Mail-aktivierten Exchange-Sicherheitsgruppen in Exchange Admin Center für einen benutzerdefinierten Domänennamen in Azure AD](https://technet.microsoft.com/library/bb123521(v=exchg.160).aspx#Remove%20mail-enabled%20security%20groups)
-* [ForceDelete eines benutzerdefinierten Domänennamens mit der Microsoft Graph-API](https://docs.microsoft.com/graph/api/domain-forcedelete?view=graph-rest-beta)
+* [Hinzufügen benutzerdefinierter Domänennamen](../fundamentals/add-custom-domain.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context)
+* [Entfernen von E-Mail-aktivierten Exchange-Sicherheitsgruppen in Exchange Admin Center für einen benutzerdefinierten Domänennamen in Azure AD](/Exchange/recipients/mail-enabled-security-groups?view=exchserver-2019#Remove%20mail-enabled%20security%20groups)
+* [ForceDelete eines benutzerdefinierten Domänennamens mit der Microsoft Graph-API](/graph/api/domain-forcedelete?view=graph-rest-beta)

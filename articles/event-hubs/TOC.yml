@@ -17,7 +17,7 @@
       items:
         - name: Azure-Portal
           href: event-hubs-create.md
-        - name: Azure CLI
+        - name: Azure-Befehlszeilenschnittstelle
           href: event-hubs-quickstart-cli.md
         - name: Azure PowerShell
           href: event-hubs-quickstart-powershell.md
@@ -27,13 +27,13 @@
     - name: Senden und Empfangen von Ereignissen
       items:
         - name: .NET (Azure.Messaging.EventHubs)
-          href: get-started-dotnet-standard-send-v2.md
+          href: event-hubs-dotnet-standard-getstarted-send.md
         - name: Java (azure-messaging-eventhubs)
-          href: get-started-java-send-v2.md
+          href: event-hubs-java-get-started-send.md
         - name: Python (azure-eventhub Version 5)
-          href: get-started-python-send-v2.md
+          href: event-hubs-python-get-started-send.md
         - name: JavaScript (azure/event-hubs Version 5)
-          href: get-started-node-send-v2.md
+          href: event-hubs-node-get-started-send.md
         - name: Go
           href: event-hubs-go-get-started-send.md
         - name: C (nur senden)
@@ -43,13 +43,9 @@
     - name: Senden und Empfangen von Ereignissen (alte Versionen/Pakete)
       items:
         - name: .NET (Microsoft.Azure.EventHubs)
-          href: event-hubs-dotnet-standard-getstarted-send.md
+          href: event-hubs-dotnet-standard-get-started-send-legacy.md
         - name: Java (azure-eventhubs)
-          href: event-hubs-java-get-started-send.md
-        - name: Python (azure-eventhub Version 1)
-          href: event-hubs-python-get-started-send.md
-        - name: "JavaScript (Version\_2 von „azure/event-hubs“)"
-          href: event-hubs-node-get-started-send.md
+          href: event-hubs-java-get-started-send-legacy.md
         - name: .NET Framework (Microsoft.ServiceBus)
           href: event-hubs-dotnet-framework-getstarted-send.md
     - name: Erfassen von Ereignissen
@@ -58,9 +54,7 @@
           href: event-hubs-capture-enable-through-portal.md
         - name: Aktivieren von Event Hubs Capture mithilfe einer Resource Manager-Vorlage
           href: event-hubs-resource-manager-namespace-event-hub-enable-capture.md
-        - name: "Lesen von erfassten Daten mithilfe von Python (Version\_5 von „azure-eventhub“)"
-          href: get-started-capture-python-v2.md
-        - name: Lesen von erfassten Daten mithilfe von Python (azure-eventhub Version 1)
+        - name: Lesen erfasster Daten mithilfe von Python
           href: event-hubs-capture-python.md
     - name: Streamen an Event Hubs für Apache Kafka
       href: event-hubs-quickstart-kafka-enabled-event-hubs.md

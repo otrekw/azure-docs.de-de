@@ -9,16 +9,16 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 9d6c30cb7abffc7e25e78eeabf5fb43fc8c1f682
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 3c8e44a3d57ee519ff792de97ed2b3d183bf666b
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86171957"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88923363"
 ---
 # <a name="upgrade-to-azure-search-net-sdk-version-11"></a>Upgrade auf Version 1.1 des Azure Search .NET SDK
 
-Wenn Sie die Version „1.0.2-preview“ oder eine frühere Version des [Azure Search .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search) verwenden, unterstützt dieser Artikel Sie beim Upgrade Ihrer Anwendung auf Version 1.1.
+Wenn Sie die Version „1.0.2-preview“ oder eine frühere Version des [Azure Search .NET SDK](/dotnet/api/overview/azure/search) verwenden, unterstützt dieser Artikel Sie beim Upgrade Ihrer Anwendung auf Version 1.1.
 
 Eine allgemeinere exemplarische Vorgehensweise für das SDK sowie Beispiele finden Sie unter [Verwenden von Azure Search aus einer .NET-Anwendung](search-howto-dotnet-sdk.md).
 
@@ -401,4 +401,3 @@ Error converting value {null} to type 'System.Int32'. Path 'IntValue'.
 Aus diesem Grund empfehlen wir als bewährte Methode in den Modellklassen die Verwendung von Typen, die NULL-Werte zulassen.
 
 Weitere Informationen zu diesem Fehler und der entsprechenden Korrektur finden Sie auf [GitHub](https://github.com/Azure/azure-sdk-for-net/issues/1063).
-

@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 05/21/2020
 ms.author: pepogors
 ms.custom: sfrev
-ms.openlocfilehash: 4949a83ac2aac664c19be46a367fce2bbff4cb02
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 28a01bbc54f752ffc1f25b57dcf2eca566aa635a
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87904818"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88718100"
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Überlegungen zur Kapazitätsplanung für Service Fabric-Cluster
 
@@ -56,7 +56,7 @@ Die Anzahl der ursprünglichen Knoten hängt vom Zweck des Clusters und den dara
 
     Service Fabric unterstützt Cluster, die sich über [Verfügbarkeitszonen](../availability-zones/az-overview.md) erstrecken, indem Knotentypen bereitgestellt werden, die an bestimmte Zonen angeheftet sind. So wird die Hochverfügbarkeit Ihrer Anwendungen sichergestellt. Für Verfügbarkeitszonen müssen Sie die Knotentypen anders planen, und es gelten höhere Mindestanforderungen. Weitere Informationen finden Sie unter [Empfohlene Topologie für den primären Knotentyp von Azure Service Fabric-Clustern, die sich über Verfügbarkeitszonen erstrecken](service-fabric-cross-availability-zones.md#recommended-topology-for-primary-node-type-of-azure-service-fabric-clusters-spanning-across-availability-zones). 
 
-Wenn Sie die Anzahl und die Eigenschaften von Knotentypen für die Erstellung Ihres Clusters bestimmen, müssen Sie bedenken, dass Sie auch nach der Bereitstellung Ihres Clusters jederzeit nicht primäre Knotentypen hinzufügen, bearbeiten oder entfernen können. [Primäre Knotentypen](service-fabric-scale-up-node-type.md) können zudem in ausgeführten Clustern bearbeitet werden. Einige Vorgänge in Produktionsumgebungen müssen jedoch sorgfältig geplant und durchgeführt werden.
+Wenn Sie die Anzahl und die Eigenschaften von Knotentypen für die Erstellung Ihres Clusters bestimmen, müssen Sie bedenken, dass Sie auch nach der Bereitstellung Ihres Clusters jederzeit nicht primäre Knotentypen hinzufügen, bearbeiten oder entfernen können. [Primäre Knotentypen](service-fabric-scale-up-primary-node-type.md) können zudem in ausgeführten Clustern bearbeitet werden. Einige Vorgänge in Produktionsumgebungen müssen jedoch sorgfältig geplant und durchgeführt werden.
 
 Ein weiterer zu berücksichtigender Aspekt für Ihre Knotentypeigenschaften ist der Dauerhaftigkeitsgrad, der über die Berechtigungen der VMs eines Knotentyps in der Azure-Infrastruktur entscheidet. Verwenden Sie die VM-Größen, die Sie für Ihre Cluster auswählen, und die Anzahl der Instanzen, die Sie einzelnen Knotentypen zuweisen, um den geeigneten Dauerhaftigkeitsgrad für die jeweiligen Knotentypen festzulegen. Dies wird im Folgenden erläutert.
 
@@ -105,7 +105,7 @@ Verwenden Sie die Dauerhaftigkeitsgrade „Silber“ oder „Gold“ für alle K
 Berücksichtigen Sie die folgenden Empfehlungen für die Verwaltung von Knotentypen mit der Dauerhaftigkeit „Silber“ oder „Gold“:
 
 * Halten Sie Ihren Cluster und Anwendungen jederzeit fehlerfrei, und stellen Sie sicher, dass Anwendungen rechtzeitig auf alle [Lebenszyklus-Dienstereignisse für Replikate](service-fabric-reliable-services-lifecycle.md) (z.B. Unterbrechung der Replikaterstellung) reagieren.
-* Führen Sie sicherere Methoden für die Änderung von VM-Größen (Hoch-/Herunterskalieren) ein. Das Ändern der VM-Größe einer VM-Skalierungsgruppe muss sorgfältig geplant und durchgeführt werden. Weitere Informationen finden Sie unter [Hochskalieren des primären Knotentyps eines Service Fabric-Clusters](service-fabric-scale-up-node-type.md).
+* Führen Sie sicherere Methoden für die Änderung von VM-Größen (Hoch-/Herunterskalieren) ein. Das Ändern der VM-Größe einer VM-Skalierungsgruppe muss sorgfältig geplant und durchgeführt werden. Weitere Informationen finden Sie unter [Hochskalieren des primären Knotentyps eines Service Fabric-Clusters](service-fabric-scale-up-primary-node-type.md).
 * Verwalten Sie mindestens fünf Knoten für alle VM-Skalierungsgruppen, für die die Dauerhaftigkeitsstufen „Gold“ oder „Silber“ aktiviert wurden. Der Cluster wechselt in den Fehlerzustand, wenn Sie unter diesem Schwellenwert abskalieren, und Sie müssen den Status (`Remove-ServiceFabricNodeState`) für die entfernten Knoten manuell bereinigen.
 * Jede VM-Skalierungsgruppe mit der Dauerhaftigkeitsstufe „Silber“ oder „Gold“ muss einem eigenen Knotentyp im Service Fabric-Cluster zugeordnet werden. Das Zuordnen mehrerer VM-Skalierungsgruppen zu einem einzelnen Knotentyp verhindert die ordnungsgemäße Koordinierung zwischen dem Service Fabric-Cluster und der Azure-Infrastruktur.
 * Löschen Sie keine zufälligen VM-Instanzen, sondern verwenden Sie immer die Funktion zum Abskalieren für VM-Skalierungsgruppen. Das Löschen von zufälligen VM-Instanzen kann zu Ungleichheiten in der auf [Upgradedomänen](service-fabric-cluster-resource-manager-cluster-description.md#upgrade-domains) und [Fehlerdomänen](service-fabric-cluster-resource-manager-cluster-description.md#fault-domains) verteilten VM-Instanz führen. Durch eine solche Ungleichheit kann das System ggf. keinen ordnungsgemäßen Lastenausgleich zwischen den Dienstinstanzen und Dienstreplikaten mehr durchführen.

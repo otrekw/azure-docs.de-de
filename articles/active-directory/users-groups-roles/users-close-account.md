@@ -13,12 +13,12 @@ ms.author: rolyon
 ms.reviewer: ''
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1bbc1644294a471bbb704d10c5f684d7404eae95
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 87e03214e2a00a16064763f35f38bdd3ea0e6123
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85374575"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798328"
 ---
 # <a name="close-your-work-or-school-account-in-an-unmanaged-azure-ad-organization"></a>Schließen Ihres Geschäfts-, Schul- oder Unikontos in einer nicht verwalteten Azure AD-Organisation
 
@@ -32,9 +32,9 @@ Benutzer, die einer nicht verwalteten Organisation zugeordnet sind, werden häuf
 
 Bevor Sie Ihr Konto schließen, sollten Sie Folgendes sicherstellen:
 
-* Vergewissern Sie sich, dass Sie ein Benutzer einer nicht verwalteten Azure AD-Organisation sind. Sie können Ihr Konto nicht schließen, wenn Sie einer verwalteten Organisation zugeordnet sind. Falls eine Zuordnung zu einer verwalteten Organisation besteht und Sie Ihr Konto schließen möchten, müssen Sie sich an Ihren Administrator wenden. Informationen zur Ermittlung, ob Sie einer nicht verwalteten Organisation zugeordnet sind, finden Sie unter [Löschen des Benutzers aus einem nicht verwalteten Mandanten](https://docs.microsoft.com/flow/gdpr-dsr-delete#delete-the-user-from-unmanaged-tenant).
+* Vergewissern Sie sich, dass Sie ein Benutzer einer nicht verwalteten Azure AD-Organisation sind. Sie können Ihr Konto nicht schließen, wenn Sie einer verwalteten Organisation zugeordnet sind. Falls eine Zuordnung zu einer verwalteten Organisation besteht und Sie Ihr Konto schließen möchten, müssen Sie sich an Ihren Administrator wenden. Informationen zur Ermittlung, ob Sie einer nicht verwalteten Organisation zugeordnet sind, finden Sie unter [Löschen des Benutzers aus einem nicht verwalteten Mandanten](/flow/gdpr-dsr-delete#delete-the-user-from-unmanaged-tenant).
 
-* Speichern Sie alle Daten, die Sie beibehalten möchten. Informationen dazu, wie Sie eine Exportanforderung übermitteln, finden Sie unter [Accessing and exporting system-generated logs for Unmanaged Tenants](https://docs.microsoft.com/power-platform/admin/powerapps-gdpr-dsr-guide-systemlogs#accessing-and-exporting-system-generated-logs-for-unmanaged-tenants) (Zugreifen auf und Exportieren von Systemprotokollen für nicht verwaltete Mandanten).
+* Speichern Sie alle Daten, die Sie beibehalten möchten. Informationen dazu, wie Sie eine Exportanforderung übermitteln, finden Sie unter [Accessing and exporting system-generated logs for Unmanaged Tenants](/power-platform/admin/powerapps-gdpr-dsr-guide-systemlogs#accessing-and-exporting-system-generated-logs-for-unmanaged-tenants) (Zugreifen auf und Exportieren von Systemprotokollen für nicht verwaltete Mandanten).
 
 > [!WARNING]
 > Das Schließen Ihres Kontos kann nicht rückgängig gemacht werden. Wenn Sie Ihr Konto schließen, werden alle persönlichen Daten entfernt. Sie haben keinen Zugriff mehr auf Ihr Konto und die zugehörigen Daten.
@@ -56,5 +56,5 @@ Führen Sie diese Schritte aus, um ein nicht verwaltetes Geschäfts-, Schul- ode
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Was ist die Self-Service-Registrierung für Azure Active Directory?](directory-self-service-signup.md)
-- [Löschen des Benutzers aus einem nicht verwalteten Mandanten](https://docs.microsoft.com/flow/gdpr-dsr-delete#delete-the-user-from-unmanaged-tenant)
-- [Accessing and exporting system-generated logs for Unmanaged Tenants](https://docs.microsoft.com/power-platform/admin/powerapps-gdpr-dsr-guide-systemlogs#accessing-and-exporting-system-generated-logs-for-unmanaged-tenants) (Zugreifen auf und Exportieren von Systemprotokollen für nicht verwaltete Mandanten)
+- [Löschen des Benutzers aus einem nicht verwalteten Mandanten](/flow/gdpr-dsr-delete#delete-the-user-from-unmanaged-tenant)
+- [Accessing and exporting system-generated logs for Unmanaged Tenants](/power-platform/admin/powerapps-gdpr-dsr-guide-systemlogs#accessing-and-exporting-system-generated-logs-for-unmanaged-tenants) (Zugreifen auf und Exportieren von Systemprotokollen für nicht verwaltete Mandanten)

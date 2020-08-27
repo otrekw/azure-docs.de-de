@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/11/2020
 ms.topic: reference
-ms.openlocfilehash: f1ae8ca1ef940e45c2d32adc9a002b349f9e1b44
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8313243bf680ea1a1d63f2719b647149a04935a9
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84783009"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88893089"
 ---
 # <a name="material-mapping-for-model-formats"></a>Materialzuordnung für Modellformate
 
@@ -113,7 +113,7 @@ Die Helligkeitsformel wird in dieser [Spezifikation](http://www.itu.int/dms_pubr
 
 `Roughness` wird mithilfe [dieser Formel](https://www.cs.cornell.edu/~srm/publications/EGSR07-btdf.pdf) aus `Specular` und `ShininessExponent` berechnet. Die Formel ist eine Schätzung der Rauheit des Phong-Glanzfarbenexponenten:
 
-```Cpp
+```cpp
 Roughness = sqrt(2 / (ShininessExponent * SpecularIntensity + 2))
 ```
 
@@ -124,6 +124,7 @@ Roughness = sqrt(2 / (ShininessExponent * SpecularIntensity + 2))
 Hierbei wird folgende Gleichung gelöst: Ax<sup>2</sup> + Bx + C = 0.
 Im Grunde reflektieren dielektrische Oberflächen etwa 4 % des Lichts auf eine glänzende Art und Weise, der Rest wird verstreut. Metallische Oberflächen reflektieren kein Licht verstreut, sondern komplett glänzend.
 Diese Formel hat einige Nachteile, da es keine Möglichkeit gibt, zwischen glänzenden Plastik- und glänzenden Metalloberflächen zu unterscheiden. In den meisten Fällen wird davon ausgegangen, dass die Oberfläche metallische Eigenschaften aufweist, weshalb glänzende Plastik- oder Gummioberflächen nicht erwartungsgemäß aussehen.
+
 ```cpp
 dielectricSpecularReflectance = 0.04
 oneMinusSpecularStrength = 1 - SpecularStrength
@@ -143,7 +144,7 @@ Metalness = clamp(value, 0.0, 1.0);
 Wie im Abschnitt zur Metallartigkeit beschrieben, reflektieren dielektrische Oberflächen etwa 4 % des Lichts.  
 Hierbei wird der Wert `Metalness` als Faktor für die lineare Interpolation zwischen den Farben `Dielectric` und `Metal` verwendet. Wenn der metalness-Wert (Metallartigkeit) `0.0` lautet, liegt je nach Glanzfarbe entweder eine dunkle Farbe (bei hohem specular-Wert) vor oder die Streuung wird nicht geändert (wenn kein specular-Wert vorhanden ist). Wenn ein großer metalness-Wert vorliegt, verschwindet die Streufarbe zugunsten der Glanzfarbe.
 
-```Cpp
+```cpp
 dielectricSpecularReflectance = 0.04
 oneMinusSpecularStrength = 1 - SpecularStrength
 

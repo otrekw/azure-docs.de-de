@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 2ebeb7f6fee77c43c9da97b922fc215d75196145
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6c70b42e7d0f647a3b2b60d29b5098a791e4975f
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82117568"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88924519"
 ---
 # <a name="how-to-model-relational-sql-data-for-import-and-indexing-in-azure-cognitive-search"></a>Modellieren von relationalen SQL-Daten für Import und Indizierung in der kognitiven Azure-Suche
 
@@ -107,7 +107,7 @@ Die Lösung besteht darin, die Zimmerdetails als geschachtelten JSON-Code zu erf
 Dieses Rowset kann nun in die kognitive Azure-Suche importiert werden.
 
 > [!NOTE]
-> Bei dieser Vorgehensweise wird davon ausgegangen, dass eingebetteter JSON-Code die [maximalen Spaltengrößenbeschränkungen von SQL Server](https://docs.microsoft.com/sql/sql-server/maximum-capacity-specifications-for-sql-server) nicht überschreitet. 
+> Bei dieser Vorgehensweise wird davon ausgegangen, dass eingebetteter JSON-Code die [maximalen Spaltengrößenbeschränkungen von SQL Server](/sql/sql-server/maximum-capacity-specifications-for-sql-server) nicht überschreitet. 
 
  ## <a name="use-a-complex-collection-for-the-many-side-of-a-one-to-many-relationship"></a>Verwenden einer komplexen Sammlung für die „n“-Seite einer 1: n-Beziehung
 

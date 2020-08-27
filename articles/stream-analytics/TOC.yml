@@ -13,7 +13,7 @@
       items:
         - name: Azure-Portal
           href: stream-analytics-quick-create-portal.md
-        - name: Azure CLI
+        - name: Azure-Befehlszeilenschnittstelle
           href: quick-create-azure-cli.md
         - name: ARM-Vorlage
           displayName: Resource Manager
@@ -73,12 +73,34 @@
         - name: Übersicht über Ausgaben
           href: stream-analytics-define-outputs.md
           displayName: 'adls, sql, blob, event hubs, power bi, table, service bus, cosmos, functions'
-        - name: Ausgabe an Cosmos DB
-          href: stream-analytics-documentdb-output.md
-        - name: Ausgabe an Azure SQL-Datenbank
+        - name: Azure Data Lake Storage Gen 1
+          href: azure-data-lake-storage-gen1-output.md
+        - name: "Azure\_SQL-Datenbank"
+          href: sql-database-output.md
+        - name: SQL-Datenbankleistung
           href: stream-analytics-sql-output-perf.md
+        - name: Azure Synapse Analytics
+          href: azure-synapse-analytics-output.md
+        - name: Blob Storage und Azure Data Lake Gen 2
+          href: blob-storage-azure-data-lake-gen2-output.md
         - name: Benutzerdefinierte Pfadmuster für Blobs
           href: stream-analytics-custom-path-patterns-blob-storage-output.md
+        - name: Event Hubs
+          href: event-hubs-output.md
+        - name: Power BI
+          href: power-bi-output.md
+        - name: Tabellenspeicher
+          href: table-storage-output.md
+        - name: Service Bus-Warteschlangen
+          href: service-bus-queues-output.md
+        - name: Service Bus-Themen
+          href: service-bus-topics-output.md
+        - name: Azure Cosmos DB
+          href: azure-cosmos-db-output.md
+        - name: Cosmos DB-Optimierung
+          href: stream-analytics-documentdb-output.md
+        - name: Azure Functions
+          href: azure-functions-output.md
     - name: Erweitern von Abfragen mit Funktionen
       items:
         - name: Übersicht über Funktionen
@@ -629,7 +651,7 @@
       href: /rest/api/streamanalytics
     - name: Resource Manager-Vorlage
       href: /azure/templates/microsoft.streamanalytics/allversions
-    - name: Azure CLI
+    - name: Azure-Befehlszeilenschnittstelle
       href: /cli/azure/ext/stream-analytics/stream-analytics
 - name: Ressourcen
   items:

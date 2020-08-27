@@ -9,12 +9,12 @@ ms.service: virtual-machines
 ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/04/2020
-ms.openlocfilehash: 0fa4fb1fa55d5d3fa61c923bc024e6536b43c87a
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 3456c37e066818f837bb0eb2f5aedb7c4db299d1
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87829185"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88685203"
 ---
 # <a name="edv4-and-edsv4-series"></a>Edv4- und Edsv4-Serie
 
@@ -71,7 +71,7 @@ Updates mit Speicherbeibehaltung: Unterstützt
 | Standard_E48ds_v4 | 48 | 384 | 1800 | 32 | 462.000/2.904(1.200) | 76800/1152 | 8|24.000 |
 | Standard_E64ds_v4 <sup>1</sup> | 64 | 504 | 2400 | 32 | 615.000/3.872(1.600) | 80000/1200 | 8|30.000 |
 
-<sup>1</sup> [Eingeschränkte Kerngrößen verfügbar](./windows/constrained-vcpu.md).
+<sup>1</sup> [Eingeschränkte Kerngrößen verfügbar](./constrained-vcpu.md).
 
 
 [!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
@@ -87,7 +87,7 @@ Updates mit Speicherbeibehaltung: Unterstützt
 
 Preisrechner: [Preisrechner](https://azure.microsoft.com/pricing/calculator/)
 
-Weitere Informationen zu Datenträgertypen: [Datenträgertypen](./linux/disks-types.md#ultra-disk)
+Weitere Informationen zu Datenträgertypen: [Datenträgertypen](./disks-types.md#ultra-disk)
 
 
 ## <a name="next-steps"></a>Nächste Schritte

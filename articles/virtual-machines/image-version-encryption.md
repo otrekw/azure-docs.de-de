@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 08/11/2020
 ms.author: cynthn
-ms.openlocfilehash: 0d2b840b401dc90b332f91c93a9eda03d6643432
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.openlocfilehash: 21e6dc5a975f43456a077559eebafd975cea66a1
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88245552"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816489"
 ---
 # <a name="preview-use-customer-managed-keys-for-encrypting-images"></a>Vorschau: Verwenden von kundenseitig verwalteten Schlüsseln zum Verschlüsseln von Images
 
@@ -27,9 +27,9 @@ Die serverseitige Verschlüsselung mit kundenseitig verwalteten Schlüsseln verw
 
 In diesem Artikel wird vorausgesetzt, dass Sie bereits über einen Datenträgerverschlüsselungssatz für Ihr Image verfügen.
 
-- Wenn Sie nur einen kundenseitig verwalteten Schlüssel verwenden möchten, lesen Sie **Aktivieren kundenseitig verwalteter Schlüssel mit serverseitiger Verschlüsselung** – [Azure-Portal](./windows/disks-enable-customer-managed-keys-portal.md) oder [PowerShell](./windows/disks-enable-customer-managed-keys-powershell.md#set-up-your-azure-key-vault-and-diskencryptionset).
+- Wenn Sie nur einen kundenseitig verwalteten Schlüssel verwenden möchten, lesen Sie **Aktivieren kundenseitig verwalteter Schlüssel mit serverseitiger Verschlüsselung** – [Azure-Portal](./disks-enable-customer-managed-keys-portal.md) oder [PowerShell](./windows/disks-enable-customer-managed-keys-powershell.md#set-up-your-azure-key-vault-and-diskencryptionset).
 
-- Wenn Sie sowohl plattformseitig als auch kundenseitig verwaltete Schlüssel (für die doppelte Verschlüsselung) verwenden möchten, lesen Sie **Aktivieren der doppelten Verschlüsselung für ruhende Daten** – [Azure-Portal](./windows/disks-enable-double-encryption-at-rest-portal.md) oder [PowerShell](./windows/disks-enable-double-encryption-at-rest-powershell.md).
+- Wenn Sie sowohl plattformseitig als auch kundenseitig verwaltete Schlüssel (für die doppelte Verschlüsselung) verwenden möchten, lesen Sie **Aktivieren der doppelten Verschlüsselung für ruhende Daten** – [Azure-Portal](./disks-enable-double-encryption-at-rest-portal.md) oder [PowerShell](./windows/disks-enable-double-encryption-at-rest-powershell.md).
     > [!IMPORTANT]
     > Für den Zugriff auf das Azure-Portal müssen Sie den Link [https://aka.ms/diskencryptionupdates](https://aka.ms/diskencryptionupdates) verwenden. Die doppelte Verschlüsselung im Ruhezustand ist derzeit im öffentlichen Azure-Portal ohne Verwendung des Links nicht sichtbar.
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 07/24/2020
-ms.openlocfilehash: 4c700a61de80968b17585faf92e268fef8d86f0e
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: a6e304e5ffeab8f0a44cbdfe1566465f2b9bf34a
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323263"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607417"
 ---
 # <a name="integrate-your-commercial-marketplace-listing-with-azure-active-directory"></a>Integrieren Ihres Eintrags im kommerziellen Marketplace mit Azure Active Directory
 
@@ -20,7 +20,7 @@ ms.locfileid: "87323263"
 
 ## <a name="azure-ad-benefits"></a>Vorteile von Azure AD
 
-Microsoft AppSource- und Azure Marketplace-Kunden nutzen die produktinternen Umgebungen, um in den Katalogen für Storefronteinträge zu suchen. Diese Aktionen erfordern die Anmeldung der Kunden beim Produkt. Die Integration von Azure AD bietet folgende Vorteile:
+Microsoft AppSource- und Azure Marketplace-Kunden nutzen die produktinternen Umgebungen, um in den Katalogen für Onlineshopeinträge zu suchen. Diese Aktionen erfordern die Anmeldung der Kunden beim Produkt. Die Integration von Azure AD bietet folgende Vorteile:
 
 - Schnellere Bindung und optimierte Benutzerfreundlichkeit
 - Ermöglicht einmaliges Anmelden (Single Sign-On, SSO) für Millionen von Unternehmensbenutzern
@@ -56,8 +56,8 @@ Während der Authentifizierung sendet Azure AD ein Token an Ihre App oder Ihr An
 
 Wenn Sie Azure AD verwenden, um die Authentifizierung mit einem Klick in Ihrer App oder Ihrer Testauflistung zu aktivieren, erreichen Sie Folgendes:
 
-- Sie optimieren die Benutzerfreundlichkeit zwischen Marketplace und Testauflistung.
-- Auch wenn der Benutzer vom Marketplace an Ihre Domäne oder Testumgebung umgeleitet wird, hat er weiterhin das Gefühl, sich innerhalb des gleichen Produkts zu befinden.
+- Sie optimieren die Benutzerfreundlichkeit zwischen kommerziellem Marketplace und Testauflistung.
+- Auch wenn der Benutzer vom kommerziellen Marketplace an Ihre Domäne oder Testumgebung umgeleitet wird, hat er weiterhin das Gefühl, sich innerhalb des gleichen Produkts zu befinden.
 - Da keine weiteren Anmeldeschritte erforderlich sind, sinkt die Wahrscheinlichkeit, dass Benutzer Ihr Angebot wieder verlassen.
 - Senken Sie Bereitstellungshürden für die große Anzahl von Azure AD-Benutzern.
 
@@ -67,12 +67,12 @@ Wenn Sie Azure AD verwenden, um die Authentifizierung mit einem Klick in Ihrer A
 
 Mit Azure AD können Sie die folgenden Aktionen unterstützen:
 
-- Registrieren Sie Ihre App in einer der Marketplace-Storefronts. Weitere Informationen finden Sie unter [App-Registrierung](../active-directory/develop/quickstart-register-app.md) oder [AppSource-Zertifizierung](../active-directory/azuread-dev/howto-get-appsource-certified.md).
+- Registrieren Sie Ihre App in einem der Onlineshops des kommerziellen Marketplace. Weitere Informationen finden Sie unter [App-Registrierung](../active-directory/develop/quickstart-register-app.md) oder [AppSource-Zertifizierung](../active-directory/azuread-dev/howto-get-appsource-certified.md).
 - Aktivieren Sie das Feature für die Unterstützung der Mehrinstanzenfähigkeit in Azure AD, um für die Testversion die Nutzung per einfachem Klick zu ermöglichen.
 
 Wenn Sie das einmalige Anmelden (Single Sign-On, SSO) im Azure AD-Verbund nicht verwenden, führen Sie diese Schritte aus:
 
-1. Registrieren Sie Ihre App im Marketplace.
+1. Registrieren Sie Ihre App im kommerziellen Marketplace.
 1. Richten Sie das einmalige Anmelden mit Azure AD mithilfe von [OAuth 2.0](../active-directory/azuread-dev/v1-protocols-oauth-code.md) oder [OpenID Connect](../active-directory/azuread-dev/v1-protocols-openid-connect-code.md) ein.
 1. Aktivieren Sie das Feature für die Unterstützung der Mehrinstanzenfähigkeit in Azure AD, um für Ihre Testversion die Nutzung per einfachem Klick zu ermöglichen.
 
@@ -89,7 +89,7 @@ Mit Azure AD können Sie eine der folgenden Aktionen unterstützen:
 
 Falls Sie dies noch nicht getan haben, 
 
-- [Erfahren Sie mehr](https://azuremarketplace.microsoft.com/sell) über den Marketplace.
+- [Hier](https://azuremarketplace.microsoft.com/sell) erhalten Sie weitere Informationen zum kommerziellen Marketplace.
 
 Um sich in Partner Center zu registrieren, ein neues Angebot zu erstellen oder an einem vorhandenen zu arbeiten, gehen Sie wie folgt vor:
 

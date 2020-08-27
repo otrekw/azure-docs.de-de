@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 30b90b89300d6ca63255a000c7a6f7723f648056
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 64b38d0e776a0e3dab155704dcc368cc738c278e
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88118761"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855418"
 ---
 # <a name="web-app-that-signs-in-users-code-configuration"></a>Web-App für Benutzeranmeldungen: Codekonfiguration
 
@@ -225,7 +225,7 @@ Zum Hinzufügen der Authentifizierung mit der Microsoft Identity Platform (ehema
 
 1. Fügen Sie dem Projekt die NuGet-Pakete [Microsoft.Identity.Web](https://www.nuget.org/packages/Microsoft.Identity.Web) und [Microsoft.Identity.Web.UI](https://www.nuget.org/packages/Microsoft.Identity.Web.UI) hinzu. Entfernen Sie, sofern vorhanden, das NuGet-Paket „Microsoft.AspNetCore.Authentication.AzureAD.UI“.
 
-2. Aktualisieren Sie den Code in `ConfigureServices`, sodass er die Methoden `AddMicrosoftWebAppAuthentication` und `AddMicrosoftIdentityUI` verwendet.
+2. Aktualisieren Sie den Code in `ConfigureServices`, sodass er die Methoden `AddMicrosoftIdentityWebAppAuthentication` und `AddMicrosoftIdentityUI` verwendet.
 
    ```c#
    public class Startup
@@ -234,7 +234,7 @@ Zum Hinzufügen der Authentifizierung mit der Microsoft Identity Platform (ehema
     // This method gets called by the runtime. Use this method to add services to the container.
     public void ConfigureServices(IServiceCollection services)
     {
-     services.AddMicrosoftWebAppAuthentication(Configuration, "AzureAd");
+     services.AddMicrosoftIdentityWebAppAuthentication(Configuration, "AzureAd");
 
      services.AddRazorPages().AddMvcOptions(options =>
      {
@@ -259,16 +259,16 @@ Zum Hinzufügen der Authentifizierung mit der Microsoft Identity Platform (ehema
    ```
 
 Im obigen Code gilt Folgendes:
-- Die `AddMicrosoftWebAppAuthentication`-Erweiterungsmethode ist im Paket **Microsoft.Identity.Web** definiert. Sie hat folgende Aufgaben:
+- Die `AddMicrosoftIdentityWebAppAuthentication`-Erweiterungsmethode ist im Paket **Microsoft.Identity.Web** definiert. Sie hat folgende Aufgaben:
   - Hinzufügen des Authentifizierungsdiensts
   - Konfigurieren von Optionen zum Lesen der Konfigurationsdatei (hier aus dem Abschnitt „AzureAD“)
   - Konfigurieren der OpenID Connect-Optionen, damit die verwendete Autorität der Microsoft Identity Platform-Endpunkt ist
   - Validieren des Ausstellers des Tokens
   - Sicherstellen der Zuordnung der dem Namen entsprechenden Ansprüche aus dem Anspruch `preferred_username` im ID-Token
 
-- Neben dem Konfigurationsobjekt können Sie beim Aufruf von `AddMicrosoftWebAppAuthentication` auch den Namen des Konfigurationsabschnitts angeben. Dieser lautet standardmäßig `AzureAd`.
+- Neben dem Konfigurationsobjekt können Sie beim Aufruf von `AddMicrosoftIdentityWebAppAuthentication` auch den Namen des Konfigurationsabschnitts angeben. Dieser lautet standardmäßig `AzureAd`.
 
-- `AddMicrosoftWebAppAuthentication` weist andere Parameter für erweiterte Szenarien auf. Das Verfolgen von Ereignissen der OpenID Connect-Middleware beispielsweise kann bei der Behebung von Fehlern bei Ihrer Webanwendung helfen, wenn die Authentifizierung nicht funktioniert. Wenn Sie den optionalen Parameter `subscribeToOpenIdConnectMiddlewareDiagnosticsEvents` auf `true` festlegen, können Sie sehen, wie Informationen beim Fortschritt von der HTTP-Antwort zur Identität des Benutzers in `HttpContext.User` von der ASP.NET Core-Middleware verarbeitet werden.
+- `AddMicrosoftIdentityWebAppAuthentication` weist andere Parameter für erweiterte Szenarien auf. Das Verfolgen von Ereignissen der OpenID Connect-Middleware beispielsweise kann bei der Behebung von Fehlern bei Ihrer Webanwendung helfen, wenn die Authentifizierung nicht funktioniert. Wenn Sie den optionalen Parameter `subscribeToOpenIdConnectMiddlewareDiagnosticsEvents` auf `true` festlegen, können Sie sehen, wie Informationen beim Fortschritt von der HTTP-Antwort zur Identität des Benutzers in `HttpContext.User` von der ASP.NET Core-Middleware verarbeitet werden.
 
 - Die `AddMicrosoftIdentityUI`-Erweiterungsmethode ist im Paket **Microsoft.Identity.Web.UI** definiert. Sie stellt einen Standardcontroller zum Behandeln der An- und Abmeldung bereit.
 

@@ -11,12 +11,12 @@ ms.author: tracych
 author: tracychms
 ms.date: 08/14/2020
 ms.custom: Build2020, devx-track-python
-ms.openlocfilehash: dddb332498f41437eba77d75c38218c58b8c8379
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 04d1e531f3041ef0a6231607cc795c67168ebf2e
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88507113"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88651198"
 ---
 # <a name="run-batch-inference-on-large-amounts-of-data-by-using-azure-machine-learning"></a>Ausführen von Batchrückschlüssen für große Datenmengen mithilfe von Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -202,7 +202,7 @@ model = Model.register(model_path="models/",
 ## <a name="write-your-inference-script"></a>Schreiben Ihres Rückschlussskripts
 
 >[!Warning]
->Bei dem folgenden Code handelt es sich lediglich um ein Beispiel des [Beispielnotebooks](https://aka.ms/batch-inference-notebooks). Sie müssen ein eigenes Skript für Ihr Szenario erstellen.
+>Bei dem folgenden Code handelt es sich lediglich um ein Beispiel des [Beispielnotebooks](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/machine-learning-pipelines/parallel-run). Sie müssen ein eigenes Skript für Ihr Szenario erstellen.
 
 Das Skript *muss zwei Funktionen enthalten*:
 - `init()`: Verwenden Sie diese Funktion für alle aufwendigen oder allgemeinen Vorbereitungsmaßnahmen für den späteren Rückschluss. Ein Beispiel wäre etwa das Laden des Modells in ein globales Objekt. Diese Funktion wird nur einmal zu Beginn des Prozesses aufgerufen.
@@ -214,7 +214,7 @@ Das Skript *muss zwei Funktionen enthalten*:
 %%writefile digit_identification.py
 # Snippets from a sample script.
 # Refer to the accompanying digit_identification.py
-# (https://aka.ms/batch-inference-notebooks)
+# (https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/machine-learning-pipelines/parallel-run)
 # for the implementation script.
 
 import os
@@ -421,7 +421,7 @@ df.head(10)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Den gesamten Ablauf dieses Prozesses können Sie sich anhand des [Notebooks für Batchrückschlüsse](https://aka.ms/batch-inference-notebooks) ansehen. 
+Den gesamten Ablauf dieses Prozesses können Sie sich anhand des [Notebooks für Batchrückschlüsse](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/machine-learning-pipelines/parallel-run) ansehen. 
 
 Informationen zum Debugging und zur Problembehandlung für ParallelRunStep finden Sie in der [Schrittanleitung](how-to-debug-parallel-run-step.md).
 

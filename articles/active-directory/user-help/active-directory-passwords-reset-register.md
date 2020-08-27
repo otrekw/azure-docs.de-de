@@ -12,12 +12,12 @@ ms.workload: identity
 ms.topic: end-user-help
 ms.date: 05/28/2020
 ms.author: curtand
-ms.openlocfilehash: 999b458985d8ab486e8dbd6bcaa48ddd9e02fc28
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: e460f3fd383286b1e61a979b87a9dfa09f272313
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84266099"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88799025"
 ---
 # <a name="register-your-verification-method-info-to-reset-your-own-password"></a>Registrieren Ihrer Überprüfungsmethode zum Zurücksetzen Ihres Kennworts
 
@@ -26,7 +26,7 @@ Wenn Sie das Kennwort für Ihr Geschäfts-, Schul -oder Unikonto vergessen haben
 Ihr Administrator muss dieses Feature aktivieren, damit Sie Ihre Informationen registrieren und Ihr Kennwort zurücksetzen können. Wenn die Option **Kennwort vergessen** nicht angezeigt wird, bedeutet dies, dass Ihr Administrator das Feature für Ihre Organisation nicht aktiviert hat. Ist dies Ihrer Meinung nach nicht richtig, wenden Sie sich an den Helpdesk.
 
 >[!Important]
->Dieser Artikel richtet sich an Benutzer, die versuchen, sich für die Self-Service-Kennwortzurücksetzung zu registrieren. Dies bedeutet, dass Sie das Kennwort für Ihr Geschäfts-, Schul- oder Unikonto (z. B. alain@contoso.com) ohne die Hilfe Ihres Administrators zurücksetzen können. Wenn Sie ein Administrator sind und nach Informationen zum Aktivieren der Self-Service-Kennwortzurücksetzung für Ihre Mitarbeiter oder andere Benutzer suchen, lesen Sie [Bereitstellen von Self-Service-Kennwortzurücksetzung in Azure AD](https://docs.microsoft.com/azure/active-directory/authentication/howto-sspr-deployment) und weitere Artikel zu diesem Thema.
+>Dieser Artikel richtet sich an Benutzer, die versuchen, sich für die Self-Service-Kennwortzurücksetzung zu registrieren. Dies bedeutet, dass Sie das Kennwort für Ihr Geschäfts-, Schul- oder Unikonto (z. B. alain@contoso.com) ohne die Hilfe Ihres Administrators zurücksetzen können. Wenn Sie ein Administrator sind und nach Informationen zum Aktivieren der Self-Service-Kennwortzurücksetzung für Ihre Mitarbeiter oder andere Benutzer suchen, lesen Sie [Bereitstellen von Self-Service-Kennwortzurücksetzung in Azure AD](../authentication/howto-sspr-deployment.md) und weitere Artikel zu diesem Thema.
 
 ## <a name="set-up-your-password-reset-verification-method"></a>Einrichten Ihrer Überprüfungsmethode für die Kennwortzurücksetzung
 

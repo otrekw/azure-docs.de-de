@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f76073a1ed98dcc51cf7e14219beca914b5b77a4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3959fc7df78a5c1f255f7551a018eec6b7279eb1
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87027596"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88717437"
 ---
 # <a name="how-does-self-service-password-reset-writeback-work-in-azure-active-directory"></a>Funktionsweise des Rückschreibens von Self-Service-Kennwortzurücksetzungen in Azure Active Directory
 
@@ -47,7 +47,7 @@ Kennwortrückschreiben bietet die folgenden Features:
 Nutzen Sie das folgende Tutorial, um sich mit dem SSPR-Rückschreiben vertraut zu machen:
 
 > [!div class="nextstepaction"]
-> [Tutorial: Aktivieren des Rückschreibens von Self-Service-Kennwortzurücksetzungen (SSPR)](tutorial-enable-writeback.md)
+> [Tutorial: Aktivieren des Rückschreibens von Self-Service-Kennwortzurücksetzungen (SSPR)](./tutorial-enable-sspr-writeback.md)
 
 ## <a name="how-password-writeback-works"></a>Funktionsweise der Kennwortrückschreibung
 
@@ -140,7 +140,7 @@ Kennwörter werden in den folgenden Situationen zurückgeschrieben:
    * Jegliche erzwungene Self-Service-Kennwortänderung durch einen Administrator, beispielsweise bei Ablauf des Kennworts
    * Jegliche Self-Service-Kennwortzurücksetzung durch einen Administrator über das [Kennwortzurücksetzungsportal](https://passwordreset.microsoftonline.com)
    * Jegliche durch einen Administrator initiierte Kennwortzurücksetzung durch einen Endbenutzer über das [Azure-Portal](https://portal.azure.com)
-   * Jegliche durch einen Administrator initiierte Endbenutzerkennwortzurücksetzung über die [Betaversion der Microsoft Graph-API](https://docs.microsoft.com/graph/api/passwordauthenticationmethod-resetpassword?view=graph-rest-beta&tabs=http).
+   * Jegliche durch einen Administrator initiierte Endbenutzerkennwortzurücksetzung über die [Betaversion der Microsoft Graph-API](/graph/api/passwordauthenticationmethod-resetpassword?tabs=http&view=graph-rest-beta).
 
 ## <a name="unsupported-writeback-operations"></a>Nicht unterstützte Rückschreibevorgänge
 
@@ -149,7 +149,7 @@ Kennwörter werden in folgenden Situationen nicht zurückgeschrieben:
 * **Nicht unterstützte Vorgänge für Endbenutzer**
    * Jegliches Zurücksetzen des eigenen Kennworts durch einen Endbenutzer über PowerShell Version 1, Version 2 oder die Microsoft Graph-API
 * **Nicht unterstützte Vorgänge für Administratoren**
-   * Jegliche durch einen Administrator initiierte Endbenutzerkennwortzurücksetzung mithilfe von PowerShell Version 1, Version 2 oder der Microsoft-Graph-API (die [Betaversion der Microsoft Graph-API](https://docs.microsoft.com/graph/api/passwordauthenticationmethod-resetpassword?view=graph-rest-beta&tabs=http) wird unterstützt).
+   * Jegliche durch einen Administrator initiierte Endbenutzerkennwortzurücksetzung mithilfe von PowerShell Version 1, Version 2 oder der Microsoft-Graph-API (die [Betaversion der Microsoft Graph-API](/graph/api/passwordauthenticationmethod-resetpassword?tabs=http&view=graph-rest-beta) wird unterstützt).
    * Jegliche durch einen Administrator initiierte Kennwortzurücksetzung durch den Endbenutzer über das [Microsoft 365 Admin Center](https://admin.microsoft.com)
    * Administratoren können das Tool zum Zurücksetzen von Kennwörtern nicht zum Zurücksetzen des eigenen Kennworts für das Kennwortrückschreiben verwenden.
 
@@ -161,4 +161,4 @@ Kennwörter werden in folgenden Situationen nicht zurückgeschrieben:
 Nutzen Sie das folgende Tutorial, um sich mit dem SSPR-Rückschreiben vertraut zu machen:
 
 > [!div class="nextstepaction"]
-> [Tutorial: Aktivieren des Rückschreibens von Self-Service-Kennwortzurücksetzungen (SSPR)](tutorial-enable-writeback.md)
+> [Tutorial: Aktivieren des Rückschreibens von Self-Service-Kennwortzurücksetzungen (SSPR)](./tutorial-enable-sspr-writeback.md)

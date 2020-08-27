@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: afc9a32c4f0fa5b4b6a2f6c0ec56bbc35b6dde68
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.openlocfilehash: 0ed286cf2b11429d5f0f56b3a85f173c2a39bc81
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88244483"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88799297"
 ---
 # <a name="configure-the-expiration-policy-for-microsoft-365-groups"></a>Konfigurieren der Ablaufrichtlinie für Microsoft 365-Gruppen
 
@@ -110,7 +110,7 @@ Wenn die Gruppe, die Sie wiederherstellen, Dokumente, SharePoint-Websites oder a
 
 ## <a name="how-to-retrieve-microsoft-365-group-expiration-date"></a>Abrufen des Ablaufdatums für eine Microsoft 365-Gruppe
 
-Zusätzlich zum Zugriffsbereich, in dem Benutzer Gruppendetails einschließlich Ablaufdatum und letztem Erneuerungsdatum anzeigen können, kann das Ablaufdatum für eine Microsoft 365-Gruppe aus der Betaversion der Microsoft Graph-REST-API abgerufen werden. expirationDateTime als Gruppeneigenschaft wurde in der Betaversion von Microsoft Graph aktiviert. Sie kann mit einer GET-Anforderung abgerufen werden. Weitere Informationen finden Sie in [diesem Beispiel](https://docs.microsoft.com/graph/api/group-get?view=graph-rest-beta#example).
+Zusätzlich zum Zugriffsbereich, in dem Benutzer Gruppendetails einschließlich Ablaufdatum und letztem Erneuerungsdatum anzeigen können, kann das Ablaufdatum für eine Microsoft 365-Gruppe aus der Betaversion der Microsoft Graph-REST-API abgerufen werden. expirationDateTime als Gruppeneigenschaft wurde in der Betaversion von Microsoft Graph aktiviert. Sie kann mit einer GET-Anforderung abgerufen werden. Weitere Informationen finden Sie in [diesem Beispiel](/graph/api/group-get?view=graph-rest-beta#example).
 
 > [!NOTE]
 > Um Gruppenmitgliedschaften im Zugriffsbereich zu verwalten, muss „Zugriff auf Gruppen im Zugriffsbereich einschränken“ in der Allgemeinen Einstellung für Azure Active Directory-Gruppen auf „Nein“ festgelegt werden.
@@ -172,11 +172,10 @@ Hier finden Sie einige Beispiele dafür, wie Sie die Ablaufeinstellungen für Mi
    Remove-AzureADMSGroupLifecyclePolicy -Id "26fcc232-d1c3-4375-b68d-15c296f1f077"
    ```
   
-Die folgenden Cmdlets können verwendet werden, um die Richtlinie ausführlicher zu konfigurieren. Weitere Informationen finden Sie in der [PowerShell-Dokumentation](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview&branch=master#groups).
+Die folgenden Cmdlets können verwendet werden, um die Richtlinie ausführlicher zu konfigurieren. Weitere Informationen finden Sie in der [PowerShell-Dokumentation](/powershell/module/azuread/?branch=master&view=azureadps-2.0-preview#groups).
 
 - Get-AzureADMSGroupLifecyclePolicy
 - New-AzureADMSGroupLifecyclePolicy
-- Get-AzureADMSGroupLifecyclePolicy
 - Set-AzureADMSGroupLifecyclePolicy
 - Remove-AzureADMSGroupLifecyclePolicy
 - Add-AzureADMSLifecyclePolicyGroup

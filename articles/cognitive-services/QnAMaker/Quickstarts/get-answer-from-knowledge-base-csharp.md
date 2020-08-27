@@ -3,14 +3,14 @@ title: 'Schnellstart: Abrufen von Antworten aus einer Wissensdatenbank – REST,
 description: In diesem C#-REST-basierten Schnellstart wird Schritt für Schritt erläutert, wie Sie programmgesteuert eine Antwort auf eine Frage aus einer Wissensdatenbank abrufen.
 ms.date: 02/08/2020
 ROBOTS: NOINDEX,NOFOLLOW
-ms.custom: RESTCURL2020FEB27
+ms.custom: RESTCURL2020FEB27, devx-track-csharp
 ms.topic: how-to
-ms.openlocfilehash: 8e821531fdc7be13833b134b087d26c2b157425a
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: d8a5a576ee3f7be099374b2294b35ec8c1c87f89
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84342832"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934190"
 ---
 # <a name="quickstart-get-answers-to-a-question-from-a-knowledge-base-with-c"></a>Schnellstart: Abrufen von Antworten auf Fragen aus einer Wissensdatenbank mit C#
 

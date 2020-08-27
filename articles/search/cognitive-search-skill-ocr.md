@@ -8,16 +8,16 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: a6902d1420090b81c933f07f7e929aa86c052404
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 56e3c1e48df51cd24d70517ee23d47ef27d378d7
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009238"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935329"
 ---
 # <a name="ocr-cognitive-skill"></a>Der Skill „OCR“
 
-Mit dem Skill für die **optische Zeichenerkennung (OCR)** wird gedruckter und handschriftlicher Text in Bilddateien erkannt. Dieser Skill verwendet die Machine Learning-Modelle, die durch [v3.0](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) der [Maschinelles Sehen](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home)-API in Cognitive Services bereitgestellt werden. Die Qualifikation **OCR** ist den folgenden Funktionen zugeordnet:
+Mit dem Skill für die **optische Zeichenerkennung (OCR)** wird gedruckter und handschriftlicher Text in Bilddateien erkannt. Dieser Skill verwendet die Machine Learning-Modelle, die durch [v3.0](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) der [Maschinelles Sehen](../cognitive-services/computer-vision/home.md)-API in Cognitive Services bereitgestellt werden. Die Qualifikation **OCR** ist den folgenden Funktionen zugeordnet:
 
 + Für Englisch, Spanisch, Deutsch Französisch, Italienisch, Portugiesisch und Niederländisch wird die neue [Lese](../cognitive-services/computer-vision/concept-recognizing-text.md#read-api)-API verwendet.
 + Für alle anderen Sprachen wird die [OCR](../cognitive-services/computer-vision/concept-recognizing-text.md#ocr-api)-API verwendet.
@@ -212,4 +212,4 @@ Im oben gezeigten Beispiel für das Skillset wird davon ausgegangen, dass ein Fe
 + [Integrierte Qualifikationen](cognitive-search-predefined-skills.md)
 + [Der Skill „Text zusammenführen“](cognitive-search-skill-textmerger.md)
 + [Definieren eines Skillsets](cognitive-search-defining-skillset.md)
-+ [Erstellen eines Indexers (REST)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)
++ [Erstellen eines Indexers (REST)](/rest/api/searchservice/create-indexer)

@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 053b052abf6f23c385dc7447639aa40b6c2c58a1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f75c08f0a390e798435b70bbe2409ec4a9732214
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81680183"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88717165"
 ---
 # <a name="authentication-methods-usage--insights-preview"></a>Authentifizierungsmethoden: Nutzung und Erkenntnisse (Vorschau)
 
@@ -98,6 +98,6 @@ Der Bericht kann derzeit nicht gefiltert werden, um externe Benutzer auszuschlie
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Arbeiten mit der Nutzungsbericht-API für Authentifizierungsmethoden](https://docs.microsoft.com/graph/api/resources/authenticationmethods-usage-insights-overview?view=graph-rest-beta)
+- [Arbeiten mit der Nutzungsbericht-API für Authentifizierungsmethoden](/graph/api/resources/authenticationmethods-usage-insights-overview?view=graph-rest-beta)
 - [Auswählen von Authentifizierungsmethoden für Ihr Unternehmen](concept-authentication-methods.md)
 - [Kombinierte Registrierung](concept-registration-mfa-sspr-combined.md)
