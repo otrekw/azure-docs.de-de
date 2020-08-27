@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5022dfc5811f3db59774a46a7034ff14c4dcf4a8
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 6ed1c3628b33d3ed29c3af3b773f2b635e684a67
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87428024"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88717046"
 ---
 # <a name="enable-passwordless-sign-in-with-the-microsoft-authenticator-app-preview"></a>Aktivieren der kennwortlosen Anmeldung mit der Microsoft Authenticator-App (Vorschauversion)
 
@@ -62,7 +62,7 @@ Die Registrierungsfunktionen für Methoden zur kennwortlosen Authentifizierung s
 1. Wählen Sie in **Microsoft Authenticator** im Dropdownmenü „Konto“ die Option **Anmeldung per Telefon aktivieren** aus.
 1. Folgen Sie den Anweisungen in der App, um die Registrierung für die kennwortlose Anmeldung per Telefon abzuschließen. 
 
-Organisationen können ihre Benutzer auf den Artikel [Anmelden an Ihren Konten per Microsoft Authenticator-App](../user-help/microsoft-authenticator-app-phone-signin-faq.md) verweisen, der weitere Unterstützung für die Einrichtung in der Microsoft Authenticator-App und die Aktivierung der Anmeldung per Telefon bietet. Zum Anwenden dieser Einstellungen Sie sich möglicherweise abmelden und erneut beim Mandanten anmelden. 
+Organisationen können ihre Benutzer auf den Artikel [Anmelden an Ihren Konten per Microsoft Authenticator-App](../user-help/user-help-auth-app-sign-in.md) verweisen, der weitere Unterstützung für die Einrichtung in der Microsoft Authenticator-App und die Aktivierung der Anmeldung per Telefon bietet. Zum Anwenden dieser Einstellungen Sie sich möglicherweise abmelden und erneut beim Mandanten anmelden. 
 
 ## <a name="sign-in-with-passwordless-credential"></a>Anmelden mit kennwortlosen Anmeldeinformationen
 

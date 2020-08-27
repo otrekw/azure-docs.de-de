@@ -8,18 +8,18 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/01/2020
-ms.openlocfilehash: fd102706d1fa6c33d8962a5d1caf5aa3e41b231d
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 08641814e2a4fdf6f174f94b1e38e4124cf531d0
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86146174"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934921"
 ---
 # <a name="how-to-work-with-search-results-in-azure-cognitive-search"></a>Arbeiten mit Suchergebnissen in der kognitiven Azure-Suche
 
 In diesem Artikel wird erläutert, wie Sie eine Abfrageantwort abrufen können, die eine Gesamtanzahl übereinstimmender Dokumente, paginierter Ergebnisse, sortierter Ergebnisse sowie von Begriffen mit markierten Treffern enthält.
 
-Die Struktur einer Antwort wird durch Parameter in der Abfrage bestimmt: [Suchdokument](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) in der REST-API oder [DocumentSearchResult-Klasse](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.documentsearchresult-1) im .NET SDK.
+Die Struktur einer Antwort wird durch Parameter in der Abfrage bestimmt: [Suchdokument](/rest/api/searchservice/Search-Documents) in der REST-API oder [DocumentSearchResult-Klasse](/dotnet/api/microsoft.azure.search.models.documentsearchresult-1) im .NET SDK.
 
 ## <a name="result-composition"></a>Ergebniszusammensetzung
 
@@ -98,7 +98,7 @@ Eine weitere Möglichkeit ist die Verwendung eines [benutzerdefinierten Bewertun
 
 ## <a name="hit-highlighting"></a>Treffermarkierung
 
-Die Treffermarkierung bezieht sich auf die Textformatierung (wie Fett- oder Gelbmarkierung), die auf Treffer in einem Ergebnis angewendet werden, sodass die Übereinstimmungen leicht zu erkennen sind. Anweisungen zur Treffermarkierung werden in der [Abfrageanforderung](https://docs.microsoft.com/rest/api/searchservice/search-documents) bereitgestellt. 
+Die Treffermarkierung bezieht sich auf die Textformatierung (wie Fett- oder Gelbmarkierung), die auf Treffer in einem Ergebnis angewendet werden, sodass die Übereinstimmungen leicht zu erkennen sind. Anweisungen zur Treffermarkierung werden in der [Abfrageanforderung](/rest/api/searchservice/search-documents) bereitgestellt. 
 
 Um die Treffermarkierung zu aktivieren, fügen Sie `highlight=[comma-delimited list of string fields]` hinzu, um anzugeben, für welche Felder die Markierung verwendet wird. Die Markierung eignet sich für längere Inhaltsfelder, z. B. ein Beschreibungsfeld, bei denen die Übereinstimmung nicht sofort ersichtlich ist. Für die Treffermarkierung eignen sich nur Felddefinitionen, die das Attribut **durchsuchbar** aufweisen.
 

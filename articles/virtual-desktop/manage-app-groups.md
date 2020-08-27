@@ -3,15 +3,15 @@ title: 'Verwalten von App-Gruppen per Windows Virtual Desktop-Portal: Azure'
 description: Es wird beschrieben, wie Sie Windows Virtual Desktop-App-Gruppen mit dem Azure-Portal verwalten.
 author: Heidilohr
 ms.topic: tutorial
-ms.date: 04/30/2020
+ms.date: 08/20/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 6baada4c3b376b936f693d45e39e5887e77ef54b
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: e495288bcd2c966dab49925a55507ab1f2379f64
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88010088"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88659482"
 ---
 # <a name="tutorial-manage-app-groups-with-the-azure-portal"></a>Tutorial: Verwalten von App-Gruppen mit dem Azure-Portal
 
@@ -34,11 +34,15 @@ Falls Sie bereits einen Hostpool und Sitzungshost-VMs erstellt haben, indem Sie 
 
 2.  Suchen Sie nach **Windows Virtual Desktop**, und wählen Sie diese Option aus.
 
-3.  Wählen Sie im Menü links auf der Seite die Option **Anwendungsgruppen** und dann **+ Hinzufügen** aus.
+3. Sie können eine Anwendungsgruppe direkt oder aus einem vorhandenen Hostpool hinzufügen. Wählen Sie eine der folgenden Option aus:
 
-4. Wählen Sie auf der Registerkarte **Grundlagen** die Abonnementgruppe und Ressourcengruppe aus, für die Sie die App-Gruppe erstellen möchten. Sie können auch eine neue Ressourcengruppe erstellen, anstatt eine vorhandene auszuwählen.
+    - Wählen Sie im Menü links auf der Seite die Option **Anwendungsgruppen** und dann **+ Hinzufügen** aus.
 
-5. Wählen Sie den Hostpool, der der Anwendungsgruppe zugeordnet ist, im Dropdownmenü neben **Hostpool** aus.
+    - Wählen Sie im Menü links auf dem Bildschirm **Hostpools** und den Namen des Hostpools aus. Wählen Sie dann im Menü auf der linken Seite **Anwendungsgruppen** und anschließend **+ Hinzufügen** aus. In diesem Fall ist der Hostpool auf der Registerkarte „Grundlagen“ bereits ausgewählt.
+
+4. Wählen Sie auf der Registerkarte **Grundlagen** das **Abonnement** und die **Ressourcengruppe** aus, für die Sie die App-Gruppe erstellen möchten. Sie können auch eine neue Ressourcengruppe erstellen, anstatt eine vorhandene auszuwählen.
+
+5. Wählen Sie den **Hostpool**, der der Anwendungsgruppe zugeordnet ist, im Dropdownmenü aus.
 
     >[!NOTE]
     >Sie müssen den Hostpool auswählen, der der Anwendungsgruppe zugeordnet ist. App-Gruppen verfügen über Apps oder Desktops, die über einen Sitzungshost bereitgestellt werden, und Sitzungshosts sind Teil von Hostpools. Die App-Gruppe muss bei der Erstellung einem Hostpool zugeordnet werden.
@@ -46,41 +50,27 @@ Falls Sie bereits einen Hostpool und Sitzungshost-VMs erstellt haben, indem Sie 
     > [!div class="mx-imgBorder"]
     > ![Screenshot: Registerkarte „Grundlagen“ im Azure-Portal](media/basics-tab.png)
 
-6. Wählen Sie im Menü links auf der Seite die Option **Hostpools** aus, wenn Sie Ihrem Hostpool Anwendungsgruppen hinzufügen möchten.
-
-    Wählen Sie als Nächstes den Namen des Hostpools aus, dem Sie Anwendungsgruppen hinzufügen möchten.
-
-    Wählen Sie anschließend im Menü links auf der Seite die Option **Anwendungsgruppen** und dann **+ Hinzufügen** aus.
-
-    Wählen Sie abschließend die Abonnementgruppe und Ressourcengruppe aus, in der Sie die App-Gruppe erstellen möchten. Sie können entweder im Dropdownmenü den Namen einer vorhandenen Ressourcengruppe oder die Option **Neu erstellen** auswählen, um eine neue zu erstellen.
-
-      >[!NOTE]
-      >Wenn Sie Ihrem Hostpool Anwendungsgruppen hinzufügen, ist der Hostpool, der zu der Anwendungsgruppe gehört, bereits ausgewählt, weil Sie den Navigationsvorgang von dort aus gestartet haben.
-      >
-      > [!div class="mx-imgBorder"]
-      >![Screenshot: Registerkarte „Grundlagen“ mit vorausgewähltem Hostpool](media/host-pool-selected.png)
-
-7. Wählen Sie als Anwendungsgruppentyp die Option **RemoteApp** aus, und geben Sie dann einen Namen für Ihre RemoteApp ein.
+6. Wählen Sie unter **Anwendungsgruppentyp** die Option **RemoteApp** aus, und geben Sie dann einen Namen für Ihre RemoteApp ein.
 
       > [!div class="mx-imgBorder"]
       > ![Screenshot: Felder für Anwendungsgruppentyp mit Hervorhebung von „RemoteApp“](media/remoteapp-button.png)
 
-8.  Wählen Sie die Registerkarte **Zuweisungen** aus.
+7.  Klicken Sie auf **Weiter: Zuweisungen >** .
 
-9.  Wählen Sie **+ Add Azure AD users or user groups** (+ Azure AD-Benutzer oder -Benutzergruppen hinzufügen) aus, um einzelne Benutzer oder Benutzergruppen für die App-Gruppe zu veröffentlichen.
+8.  Wählen Sie **+ Add Azure AD users or user groups** (+ Azure AD-Benutzer oder -Benutzergruppen hinzufügen) aus, um der App-Gruppe einzelne Benutzer oder Benutzergruppen zuzuweisen.
 
-10.  Wählen Sie die Anzahl von Benutzern aus, denen Sie die Apps hinzufügen möchten. Sie können einzelne oder mehrere Benutzer und Benutzergruppen auswählen.
+9.  Wählen Sie die Benutzer aus, die Zugriff auf die Apps haben sollen. Sie können einzelne oder mehrere Benutzer und Benutzergruppen auswählen.
 
      > [!div class="mx-imgBorder"]
      > ![Screenshot: Menü für Benutzerauswahl](media/select-users.png)
 
-11.  Wählen Sie **Auswählen**.
+10.  Wählen Sie **Auswählen**.
 
-12.  Wählen Sie die Registerkarte **Anwendungen** und dann **+ Anwendungen hinzufügen** aus.
+11.  Klicken Sie auf **Weiter: Anwendungen >** , und wählen Sie dann **+Anwendungen hinzufügen** aus.
 
-13.  Fügen Sie wie folgt eine Anwendung über das Startmenü hinzu:
+12.  Fügen Sie wie folgt eine Anwendung über das Startmenü hinzu:
 
-      - Navigieren Sie zu **Anwendungsquelle**, und wählen Sie im Dropdownmenü **Startmenü** aus. Navigieren Sie als Nächstes zu **Anwendung**, und wählen Sie im Dropdownmenü die Anwendung aus.
+      - Wählen Sie unter **Anwendungsquelle** im Dropdownmenü **Startmenü** aus. Wählen Sie als Nächstes unter **Anwendung** im Dropdownmenü die Anwendung aus.
 
      > [!div class="mx-imgBorder"]
      > ![Screenshot: Bildschirm zum Hinzufügen einer Anwendung mit Auswahl von „Startmenü“](media/add-app-start.png)
@@ -89,11 +79,11 @@ Falls Sie bereits einen Hostpool und Sitzungshost-VMs erstellt haben, indem Sie 
 
       - Lassen Sie die anderen Optionen unverändert, und wählen Sie **Speichern** aus.
 
-14. Fügen Sie eine Anwendung über den jeweiligen Dateipfad wie folgt hinzu:
+13.  So fügen Sie eine Anwendung über den jeweiligen Dateipfad hinzu:
 
-      - Navigieren Sie zu **Anwendungsquelle**, und wählen Sie im Dropdownmenü **Dateipfad** aus.
+      - Wählen Sie unter **Anwendungsquelle** im Dropdownmenü **Dateipfad** aus.
 
-      - Geben Sie den Pfad zur Anwendung auf dem Sitzungshost ein, der beim zugeordneten Hostpool registriert ist.
+      - Geben Sie unter **Anwendungspfad** den Pfad zur Anwendung auf dem Sitzungshost ein, der beim zugeordneten Hostpool registriert ist.
 
       - Geben Sie die Details der Anwendung in die Felder **Anwendungsname**, **Anzeigename**, **Symbolpfad** und **Symbolindex** ein.
 
@@ -102,11 +92,11 @@ Falls Sie bereits einen Hostpool und Sitzungshost-VMs erstellt haben, indem Sie 
      > [!div class="mx-imgBorder"]
      > ![Screenshot: Seite „Anwendung hinzufügen“ mit Auswahl von „Dateipfad“](media/add-app-file.png)
 
-     Wiederholen Sie diesen Vorgang für jede Anwendung, die Sie der Anwendungsgruppe hinzufügen möchten.
+14.  Wiederholen Sie diesen Vorgang für jede Anwendung, die Sie der Anwendungsgruppe hinzufügen möchten.
 
-15.  Wählen Sie als Nächstes die Registerkarte **Arbeitsbereich** aus.
+15.  Wählen Sie dann **Weiter: Arbeitsbereich >** aus.
 
-16.  Navigieren Sie zu **Register application group** (Anwendungsgruppe registrieren), und wählen Sie **Ja** aus, wenn Sie die App-Gruppe in einem Arbeitsbereich registrieren möchten. Wählen Sie **Nein** aus, falls Sie die App-Gruppe zu einem späteren Zeitpunkt registrieren möchten.
+16.  Wenn Sie die App-Gruppe in einem Arbeitsbereich registrieren möchten, wählen Sie **Ja** für **Register application group** (Anwendungsgruppe registrieren) aus. Wählen Sie **Nein** aus, falls Sie die App-Gruppe zu einem späteren Zeitpunkt registrieren möchten.
 
 17.  Bei Auswahl von **Ja** können Sie einen vorhandenen Arbeitsbereich für die Registrierung Ihrer App-Gruppe auswählen.
 
@@ -116,11 +106,11 @@ Falls Sie bereits einen Hostpool und Sitzungshost-VMs erstellt haben, indem Sie 
      > [!div class="mx-imgBorder"]
      > ![Screenshot: Seite für die Registrierung einer Anwendungsgruppenseite für einen bereits vorhandenen Arbeitsbereich. Der Hostpool ist bereits ausgewählt.](media/register-existing.png)
 
-18. Optional können Sie auch die Registerkarte **Tags** auswählen und Ihre Tagnamen eingeben, falls Sie Tags erstellen möchten, um die Organisation Ihres Arbeitsbereichs zu vereinfachen.
+18.  Falls Sie Tags erstellen möchten, um die Organisation Ihres Arbeitsbereichs zu vereinfachen, können Sie optional **Weiter: Tags >** auswählen und Ihre Tagnamen eingeben.
 
-19. Wählen Sie abschließend die Registerkarte **Überprüfen + erstellen** aus.
+19.  Wählen Sie abschließend **Überprüfen + erstellen** aus.
 
-20. Warten Sie kurz ab, bis der Überprüfungsprozess abgeschlossen ist. Wählen Sie anschließend die Option **Erstellen** aus, um Ihre App-Gruppe bereitzustellen.
+20.  Warten Sie kurz ab, bis der Überprüfungsprozess abgeschlossen ist. Wählen Sie anschließend die Option **Erstellen** aus, um Ihre App-Gruppe bereitzustellen.
 
 Beim Bereitstellungsprozess wird Folgendes für Sie durchgeführt:
 

@@ -3,16 +3,16 @@ title: Upgraden von Clusterknoten für die Verwendung verwalteter Azure-Datentr�
 description: Im diesem Artikel wird erläutert, wie Sie einen vorhandenen Service Fabric-Cluster mit geringer oder gar keiner Downtime so upgraden, dass dieser verwaltete Azure-Datenträger verwendet.
 ms.topic: how-to
 ms.date: 4/07/2020
-ms.openlocfilehash: 1ca85af86df28691e2194c40e1cdde1abd7c8a4d
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 152bdaea121e65de8332fcde8543b8158ff11714
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88192299"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88717522"
 ---
 # <a name="upgrade-cluster-nodes-to-use-azure-managed-disks"></a>Upgraden von Clusterknoten für die Verwendung verwalteter Azure-Datenträger
 
-[Verwaltete Azure-Datenträger](../virtual-machines/windows/managed-disks-overview.md) sind die für die dauerhafte Datenspeicherung empfohlene Datenträger-Speicherlösung für Azure-VMs. Sie können die Resilienz Ihrer Service Fabric-Workloads verbessern, indem Sie die VM-Skalierungsgruppen upgraden, die Ihren Knotentypen zugrunde liegen, sodass diese verwaltete Datenträger verwenden. In diesem Artikel erfahren Sie, wie Sie einen vorhandenen Service Fabric-Cluster mit geringer oder gar keiner Downtime so upgraden, dass dieser verwalteten Azure-Datenträger verwendet.
+[Verwaltete Azure-Datenträger](../virtual-machines/managed-disks-overview.md) sind die für die dauerhafte Datenspeicherung empfohlene Datenträger-Speicherlösung für Azure-VMs. Sie können die Resilienz Ihrer Service Fabric-Workloads verbessern, indem Sie die VM-Skalierungsgruppen upgraden, die Ihren Knotentypen zugrunde liegen, sodass diese verwaltete Datenträger verwenden. In diesem Artikel erfahren Sie, wie Sie einen vorhandenen Service Fabric-Cluster mit geringer oder gar keiner Downtime so upgraden, dass dieser verwalteten Azure-Datenträger verwendet.
 
 Die allgemeine Vorgehensweise beim Upgraden eines Service Fabric-Clusterknotens für die Verwendung verwalteter Datenträger lautet wie folgt:
 
@@ -365,7 +365,7 @@ In dieser exemplarischen Vorgehensweise haben Sie gelernt, wie Sie die VM-Skalie
 
 In diesem Artikel werden folgende Themen erläutert:
 
-* [Hochskalieren des primären Knotentyps eines Service Fabric-Clusters](service-fabric-scale-up-node-type.md)
+* [Hochskalieren des primären Knotentyps eines Service Fabric-Clusters](service-fabric-scale-up-primary-node-type.md)
 
 * [Konvertieren einer Skalierungsgruppenvorlage in eine Skalierungsgruppenvorlage für verwaltete Datenträger](../virtual-machine-scale-sets/virtual-machine-scale-sets-convert-template-to-md.md)
 

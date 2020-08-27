@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 07/09/2020
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: f5a2205ec835fb630933dd85b4b0e5846ae864cb
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 42738ff71432284a156d0dfbb1f6cf160cbf4032
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86235759"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88653245"
 ---
 # <a name="migrate-log-disk-to-ultra-disk"></a>Migrieren eines Protokolldatenträgers zu einem Ultra-Datenträger
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -36,7 +36,7 @@ Führen Sie eine [vollständige Sicherung](backup-restore.md) Ihrer Datenbank du
 
 Fügen Sie den SSD Ultra-Datenträger an Ihren virtuellen Computer an, nachdem Sie die Ultra-Datenträgerkompatibilität für den virtuellen Computer aktiviert haben. 
 
-Ultra-Datenträger werden für eine Teilmenge von VM-Größen und Regionen unterstützt. Vergewissern Sie sich vor den nächsten Schritten, dass Ultra-Datenträger für die Region, Zone und Größe Ihres virtuellen Computers unterstützt werden. Zum [Ermitteln der VM-Größe und Regionsverfügbarkeit](../../../virtual-machines/windows/disks-enable-ultra-ssd.md#determine-vm-size-and-region-availability) können Sie die Azure-Befehlszeilenschnittstelle oder PowerShell verwenden. 
+Ultra-Datenträger werden für eine Teilmenge von VM-Größen und Regionen unterstützt. Vergewissern Sie sich vor den nächsten Schritten, dass Ultra-Datenträger für die Region, Zone und Größe Ihres virtuellen Computers unterstützt werden. Zum [Ermitteln der VM-Größe und Regionsverfügbarkeit](../../../virtual-machines/disks-enable-ultra-ssd.md#determine-vm-size-and-region-availability) können Sie die Azure-Befehlszeilenschnittstelle oder PowerShell verwenden. 
 
 ### <a name="enable-compatibility"></a>Aktivieren der Kompatibilität
 
@@ -50,7 +50,7 @@ Gehen Sie zum Aktivieren der Kompatibilität wie folgt vor:
 
 1. Wählen Sie für **Ultra-Datenträgerkompatibilität aktivieren** die Option **Ja** aus. 
 
-   :::image type="content" source="../../../../includes/media/virtual-machines-disks-getting-started-ultra-ssd/ultra-options-yes-enable.png" alt-text="Auswählen zusätzlicher Einstellungen für Datenträger unter „Einstellungen“ im Azure-Portal":::
+   :::image type="content" source="../../../virtual-machines/media/virtual-machines-disks-getting-started-ultra-ssd/ultra-options-yes-enable.png" alt-text="Auswählen zusätzlicher Einstellungen für Datenträger unter „Einstellungen“ im Azure-Portal":::
 
 1. Wählen Sie **Speichern** aus. 
 
@@ -58,7 +58,7 @@ Gehen Sie zum Aktivieren der Kompatibilität wie folgt vor:
 
 ### <a name="attach-disk"></a>Anfügen des Datenträgers
 
-Verwenden Sie das Azure-Portal, um einen Ultra-Datenträger an Ihren virtuellen Computer anzufügen. Ausführliche Informationen finden Sie unter [Anfügen eines Ultra-Datenträgers über das Azure-Portal](../../../virtual-machines/windows/disks-enable-ultra-ssd.md#attach-an-ultra-disk-using-the-azure-portal).
+Verwenden Sie das Azure-Portal, um einen Ultra-Datenträger an Ihren virtuellen Computer anzufügen. Ausführliche Informationen finden Sie unter [Anfügen eines Ultra-Datenträgers über das Azure-Portal](../../../virtual-machines/disks-enable-ultra-ssd.md#attach-an-ultra-disk-using-the-azure-portal).
 
 Starten Sie Ihren virtuellen Computer über das Azure-Portal, nachdem Sie den Datenträger hinzugefügt haben. 
 

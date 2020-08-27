@@ -4,12 +4,12 @@ description: In diesem Tutorial erfahren Sie, wie Sie einen Recovery Services-Tr
 ms.date: 07/26/2020
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: ed91105488b812131d3a908c509998c955cec299
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: 76c09cc02a3545d975de5d6d49b396b12f8abb44
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88263417"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757505"
 ---
 # <a name="use-azure-portal-to-back-up-multiple-virtual-machines"></a>Verwenden des Azure-Portals zum Sichern mehrerer virtueller Computer
 
@@ -136,7 +136,7 @@ So führen Sie einen bedarfsgesteuerten Sicherungsauftrag aus
 
 1. Wählen Sie im Kontextmenü **Jetzt sichern** aus.
 
-    ![Kontextmenü](./media/tutorial-backup-vm-at-scale/context-menu.png)
+    ![Kontextmenü: Auswählen von „Jetzt sichern“](./media/tutorial-backup-vm-at-scale/context-menu.png)
 
     Das Menü „Jetzt sichern“ wird geöffnet.
 
@@ -166,7 +166,7 @@ Wenn Sie planen, mit den nachfolgenden Tutorials fortzufahren, sollten Sie die i
 
 1. Wählen Sie im Menü **Sicherungselemente** die Auslassungszeichen (...) aus, um das Kontextmenü zu öffnen.
 
-    ![Kontextmenü](./media/tutorial-backup-vm-at-scale/context-menu-to-delete-vm.png)
+    ![Öffnen des Kontextmenüs im Menü „Sicherungselemente“](./media/tutorial-backup-vm-at-scale/context-menu-to-delete-vm.png)
 
 1. Wählen Sie im Kontextmenü **Sicherung beenden** aus, um das Menü „Sicherung beenden“ zu öffnen.
 

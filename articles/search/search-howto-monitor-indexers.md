@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/12/2020
-ms.openlocfilehash: 2e62296e95a7b412a24c9d0c151c2bc9175ab4b7
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: cf7ae504e57d0b7947f4ff7dc48d50b2e0141eea
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86529742"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936638"
 ---
 # <a name="how-to-monitor-azure-cognitive-search-indexer-status-and-results"></a>Überwachen des Status und der Ergebnisse von Indexern der kognitiven Azure-Suche
 
@@ -80,7 +80,7 @@ Weitere Informationen zur Untersuchung von Indexerfehlern und -warnungen finden 
 
 ## <a name="monitor-using-rest-apis"></a>Überwachung mithilfe von REST-APIs
 
-Status und Ausführungsverlauf eines Indexers können mithilfe des [Befehls zum Abrufen des Indexerstatus](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status) abgerufen werden:
+Status und Ausführungsverlauf eines Indexers können mithilfe des [Befehls zum Abrufen des Indexerstatus](/rest/api/searchservice/get-indexer-status) abgerufen werden:
 
 ```http
 GET https://[service name].search.windows.net/indexers/[indexer name]/status?api-version=2020-06-30
@@ -125,7 +125,7 @@ Jede Ausführung des Indexers hat auch einen eigenen Status, der angibt, ob die 
 
 Wenn ein Indexer zurückgesetzt wird, um den Zustand seiner Änderungsnachverfolgung zu aktualisieren, wird ein separater Ausführungsverlaufseintrag mit dem Status **Reset** hinzugefügt.
 
-Ausführlichere Informationen zu Statuscodes und zu Indexerüberwachungsdaten finden Sie unter [GetIndexerStatus](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status).
+Ausführlichere Informationen zu Statuscodes und zu Indexerüberwachungsdaten finden Sie unter [GetIndexerStatus](/rest/api/searchservice/get-indexer-status).
 
 <a name="dotnetsdk"></a>
 
@@ -184,8 +184,8 @@ Jede Ausführung des Indexers hat auch einen eigenen Status, der angibt, ob die 
 
 Wenn ein Indexer zurückgesetzt wird, um den Zustand seiner Änderungsnachverfolgung zu aktualisieren, wird ein separater Verlaufseintrag mit dem Status **Reset** hinzugefügt.
 
-Weitere Details zu Statuscodes und zu Informationen für die Indexerüberwachung finden Sie unter [GetIndexerStatus](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status) in der REST-API.
+Weitere Details zu Statuscodes und zu Informationen für die Indexerüberwachung finden Sie unter [GetIndexerStatus](/rest/api/searchservice/get-indexer-status) in der REST-API.
 
 Details zu dokumentspezifischen Fehlern oder Warnungen können über die Listen `IndexerExecutionResult.Errors` und `IndexerExecutionResult.Warnings` abgerufen werden.
 
-Weitere Informationen zu den .NET SDK-Klassen für die Indexerüberwachung finden Sie unter [IndexerExecutionInfo](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexerexecutioninfo?view=azure-dotnet) und [IndexerExecutionResult](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexerexecutionresult?view=azure-dotnet).
+Weitere Informationen zu den .NET SDK-Klassen für die Indexerüberwachung finden Sie unter [IndexerExecutionInfo](/dotnet/api/microsoft.azure.search.models.indexerexecutioninfo?view=azure-dotnet) und [IndexerExecutionResult](/dotnet/api/microsoft.azure.search.models.indexerexecutionresult?view=azure-dotnet).

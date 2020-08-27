@@ -1,25 +1,25 @@
 ---
 title: 'Tutorial: Bereitstellen eines vSphere-Clusters in Azure'
-description: Hier erfahren Sie, wie Sie mithilfe der Azure-VMware-Lösung (Azure VMware Solution, AVS) einen vSphere-Cluster in Azure bereitstellen.
+description: Hier erfahren Sie, wie Sie mithilfe von Azure VMware Solution einen vSphere-Cluster in Azure bereitstellen.
 ms.topic: tutorial
-ms.date: 07/15/2020
-ms.openlocfilehash: 4f3b33ea401c62124ae5f8a4c881d86d2f19b40c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/21/2020
+ms.openlocfilehash: 8aeedeeb785f149239f2bf9a4b58a18ec8bfeb77
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87079416"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88750478"
 ---
-# <a name="tutorial-deploy-an-avs-private-cloud-in-azure"></a>Tutorial: Bereitstellen einer privaten AVS-Cloud in Azure
+# <a name="tutorial-deploy-an-azure-vmware-solution-private-cloud-in-azure"></a>Tutorial: Bereitstellen einer privaten Azure VMware Solution-Cloud in Azure
 
-Die Azure-VMware-Lösung (Azure VMware Solution, AVS) ermöglicht das Bereitstellen eines vSphere-Clusters in Azure. Die Bereitstellung muss mindestens drei Hosts umfassen. Später können nacheinander weitere Host hinzugefügt werden. Pro Cluster sind bis zu 16 Hosts möglich. 
+Azure VMware Solution ermöglicht das Bereitstellen eines vSphere-Clusters in Azure. Die Bereitstellung muss mindestens drei Hosts umfassen. Später können nacheinander weitere Host hinzugefügt werden. Pro Cluster sind bis zu 16 Hosts möglich. 
 
 Da Sie Ihre private Cloud zunächst nicht mit Ihrer lokalen vCenter-Instanz verwalten können, müssen Sie zusätzliche Konfigurationsschritte für eine lokale vCenter-Instanz, ein virtuelles Netzwerk und mehr ausführen sowie eine Verbindung mit diesen Komponenten herstellen. Diese Verfahren und die damit zusammenhängenden Voraussetzungen werden in diesem Tutorial behandelt.
 
 In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
-> * Erstellen einer privaten AVS-Cloud
+> * Erstellen einer privaten Cloud von Azure VMware Solution
 > * Vergewissern, dass die private Cloud bereitgestellt wurde
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -30,7 +30,7 @@ In diesem Tutorial lernen Sie Folgendes:
 
 ## <a name="register-the-resource-provider"></a>Registrieren des Ressourcenanbieters
 
-Für die Verwendung von AVS müssen Sie zunächst den Ressourcenanbieter für Ihr Abonnement registrieren.
+Für die Verwendung von Azure VMware Solution müssen Sie zunächst den Ressourcenanbieter für Ihr Abonnement registrieren.
 
 ```
 azurecli-interactive
@@ -42,7 +42,7 @@ Informationen zu weiteren Möglichkeiten für die Ressourcenanbieterregistrierun
 
 ## <a name="create-a-private-cloud"></a>Erstellen einer privaten Cloud
 
-Sie können eine private AVS-Cloud über das [Azure-Portal](#azure-portal) oder mithilfe der [Azure-Befehlszeilenschnittstelle](#azure-cli) erstellen.
+Sie können eine private Azure VMware Solution-Cloud über das [Azure-Portal](#azure-portal) oder mithilfe der [Azure-Befehlszeilenschnittstelle](#azure-cli) erstellen.
 
 ### <a name="azure-portal"></a>Azure-Portal
 
@@ -57,14 +57,14 @@ Sie können eine private AVS-Cloud über das [Azure-Portal](#azure-portal) oder 
    | **Abonnement** | Das Abonnement, das Sie für die Bereitstellung verwenden möchten.|
    | **Ressourcengruppe** | Die Ressourcengruppe für die Ressourcen Ihrer privaten Cloud. |
    | **Location** | Wählen Sie einen Standort aus (beispielsweise **USA, Osten**).|
-   | **Ressourcenname** | Der Name Ihrer privaten AVS-Cloud. |
+   | **Ressourcenname** | Der Name Ihrer privaten Azure VMware Solution-Cloud |
    | **SKU** | Wählen Sie den folgenden SKU-Wert aus: AV36 |
    | **Hosts** | Die Anzahl von Hosts, die dem privaten Cloudcluster hinzugefügt werden sollen. Der Standardwert ist 3, er kann jedoch nach der Bereitstellung erhöht oder verringert werden.  |
    | **vCenter admin password** (vCenter-Administratorkennwort) | Geben Sie ein Cloudadministratorkennwort ein. |
    | **NSX-T manager password** (NSX-T-Manager-Kennwort) | Geben Sie ein NSX-T-Administratorkennwort ein. |
    | **Adressblock** | Geben Sie einen IP-Adressblock für das CIDR-Netzwerk für die private Cloud ein, etwa 10.175.0.0/22. |
 
-   :::image type="content" source="./media/tutorial-create-private-cloud/create-private-cloud.png" alt-text="Erstellen einer privaten Cloud" border="true":::
+   :::image type="content" source="./media/tutorial-create-private-cloud/create-private-cloud.png" alt-text="Geben Sie auf der Registerkarte „Grundlagen“ Werte für die Felder ein." border="true":::
 
 1. Wählen Sie abschließend **Überprüfen + erstellen** aus. Überprüfen Sie auf dem nächsten Bildschirm die eingegebenen Informationen. Sind alle Informationen korrekt, wählen Sie **Erstellen** aus.
 
@@ -73,11 +73,11 @@ Sie können eine private AVS-Cloud über das [Azure-Portal](#azure-portal) oder 
 
 1. Vergewissern Sie sich, dass die Bereitstellung erfolgreich war. Navigieren Sie zu der von Ihnen erstellten Ressourcengruppe, und wählen Sie Ihre private Cloud aus.  Wenn die Bereitstellung abgeschlossen ist, wird der Status **Erfolgreich** angezeigt. 
 
-   :::image type="content" source="./media/tutorial-create-private-cloud/validate-deployment.png" alt-text="Vergewissern, dass die private Cloud bereitgestellt wurde" border="true":::
+   :::image type="content" source="./media/tutorial-create-private-cloud/validate-deployment.png" alt-text="Vergewissern Sie sich, dass die Bereitstellung erfolgreich war." border="true":::
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Zum Erstellen einer privaten AVS-Cloud können Sie anstelle des Azure-Portals auch die Azure CLI über Azure Cloud Shell verwenden. Azure Cloud Shell ist eine kostenlose interaktive Shell, in der häufig verwendete Azure-Tools vorinstalliert sind und die für die Verwendung mit Ihrem Konto konfiguriert wurde. 
+Zum Erstellen einer privaten Azure VMware Solution-Cloud können Sie anstelle des Azure-Portals auch die Azure CLI über Azure Cloud Shell verwenden. Azure Cloud Shell ist eine kostenlose interaktive Shell, in der häufig verwendete Azure-Tools vorinstalliert sind und die für die Verwendung mit Ihrem Konto konfiguriert wurde. 
 
 #### <a name="open-azure-cloud-shell"></a>Öffnen von Azure Cloud Shell
 
@@ -99,7 +99,7 @@ Geben Sie einen Ressourcengruppennamen, einen Namen für die private Cloud, eine
 | Eigenschaft  | BESCHREIBUNG  |
 | --------- | ------------ |
 | **-g** (Ressourcengruppenname)     | Der Name der Ressourcengruppe für die Ressourcen Ihrer privaten Cloud        |
-| **-n** (Name der privaten Cloud)     | Der Name Ihrer privaten AVS-Cloud.        |
+| **-n** (Name der privaten Cloud)     | Der Name Ihrer privaten Azure VMware Solution-Cloud        |
 | **--location**     | Der für Ihre private Cloud verwendete Standort         |
 | **--cluster-size**     | Die Größe des Clusters. Der Mindestwert ist „3“.         |
 | **--network-block**     | Der für die private Cloud zu verwendende CIDR-IP-Adressenblock des Netzwerks. Der Adressblock darf sich nicht mit Adressblöcken überlappen, die in anderen virtuellen Netzwerken in Ihrem Abonnement und Ihren lokalen Netzwerken verwendet werden.        |
@@ -112,7 +112,7 @@ az vmware private-cloud create -g myResourceGroup -n myPrivateCloudName --locati
 
 ## <a name="delete-a-private-cloud-azure-portal"></a>Löschen einer privaten Cloud (Azure-Portal)
 
-Wenn Sie über eine private AVS-Cloud verfügen, die Sie nicht mehr benötigen, können Sie sie löschen. Beim Löschen einer privaten Cloud werden alle Cluster zusammen mit allen zugehörigen Komponenten gelöscht.
+Wenn Sie über eine private Azure VMware Solution-Cloud verfügen, die Sie nicht mehr benötigen, können Sie sie löschen. Beim Löschen einer privaten Cloud werden alle Cluster zusammen mit allen zugehörigen Komponenten gelöscht.
 
 Navigieren Sie hierzu im Azure-Portal zu Ihrer privaten Cloud, und wählen Sie **Löschen** aus. Geben Sie auf der Bestätigungsseite den Namen der privaten Cloud ein, und wählen Sie **Ja** aus.
 
@@ -124,7 +124,7 @@ Navigieren Sie hierzu im Azure-Portal zu Ihrer privaten Cloud, und wählen Sie *
 In diesem Tutorial haben Sie Folgendes gelernt:
 
 > [!div class="checklist"]
-> * Erstellen einer privaten AVS-Cloud
+> * Erstellen einer privaten Cloud von Azure VMware Solution
 > * Vergewissern, dass die private Cloud bereitgestellt wurde
 
 Im nächsten Tutorial erfahren Sie, wie Sie im Rahmen der Einrichtung der lokalen Verwaltung für Ihre privaten Cloudcluster ein virtuelles Netzwerk für die Verwendung mit Ihrer privaten Cloud erstellen.

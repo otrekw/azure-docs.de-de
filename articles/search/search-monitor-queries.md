@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/18/2020
-ms.openlocfilehash: f6594bbeb9899a255d0c38b6a5b2a378388501b8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a5589a46a63437fb395db280222f8a9e84775df3
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85552531"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935074"
 ---
 # <a name="monitor-query-requests-in-azure-cognitive-search"></a>Überwachen von Abfrageanforderungen in Azure Cognitive Search
 
@@ -100,7 +100,7 @@ Im folgenden Screenshot gibt die erste Zahl die Anzahl (bzw. die Anzahl der an d
 
 Um einen schnellen Überblick über die aktuellen Zahlen zu erhalten, werden auf der Registerkarte **Überwachung** auf der Seite „Übersicht“ des Diensts drei Metriken (**Suchlatenz**, **Suchabfragen pro Sekunde (pro Sucheinheit)** , **Gedrosselte Suchabfragen in Prozent**) in bestimmten Intervallen angezeigt, gemessen in Stunden, Tagen und Wochen, mit der Option, den Aggregationstyp zu ändern.
 
-Zur tiefer gehenden Untersuchung öffnen Sie den Metrik-Explorer aus dem Menü **Überwachung**, um Daten überlagern, vergrößern und visualisieren und so Trends oder Anomalien untersuchen zu können. Weitere Informationen zum Metrik-Explorer erhalten Sie in diesem [Tutorial zum Erstellen eines Metrikdiagramms](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-metrics-explorer).
+Zur tiefer gehenden Untersuchung öffnen Sie den Metrik-Explorer aus dem Menü **Überwachung**, um Daten überlagern, vergrößern und visualisieren und so Trends oder Anomalien untersuchen zu können. Weitere Informationen zum Metrik-Explorer erhalten Sie in diesem [Tutorial zum Erstellen eines Metrikdiagramms](../azure-monitor/learn/tutorial-metrics-explorer.md).
 
 1. Wählen Sie im Abschnitt „Überwachung“ die Option **Metriken** aus, um den Metrik-Explorer mit dem auf Ihren Suchdienst festgelegt Bereich zu öffnen.
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 12/26/2019
 ms.author: mathoma
-ms.openlocfilehash: 21609e38625d0911476c85a9d6e518f5ff7e9e61
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: de0402febe94e50877367dc37d448a4a13893f93
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84667368"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88653340"
 ---
 # <a name="storage-configuration-for-sql-server-vms"></a>Speicherkonfiguration für SQL Server-VMs
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -34,7 +34,7 @@ Zur Verwendung der Einstellungen für die automatische Speicherkonfiguration mus
 
 * Bereitstellung mit einem [SQL Server-Katalogimage](sql-server-on-azure-vm-iaas-what-is-overview.md#payasyougo)
 * Verwendung des [Resource Manager-Bereitstellungsmodells](../../../azure-resource-manager/management/deployment-models.md)
-* Verwendung von [SSD Premium](../../../virtual-machines/windows/disks-types.md)
+* Verwendung von [SSD Premium](../../../virtual-machines/disks-types.md)
 
 ## <a name="new-vms"></a>Neue virtuelle Computer
 
@@ -115,7 +115,7 @@ Sie können die Datenträgereinstellungen für die Laufwerke ändern, die währe
 Dieser Abschnitt dient als Referenz für die Änderungen der Speicherkonfiguration, die von Azure automatisch vorgenommen werden, während die SQL Server-VM-Bereitstellung oder -Konfiguration im Azure-Portal durchgeführt wird.
 
 * Azure konfiguriert einen Speicherpool aus dem ausgewählten Speicher Ihrer VM. Im nächsten Abschnitt dieses Themas sind Details zur Speicherpoolkonfiguration angegeben.
-* Bei der automatischen Speicherkonfiguration werden immer P30-Datenträger vom Typ [SSD Premium](../../../virtual-machines/windows/disks-types.md) verwendet. Daher besteht eine 1:1-Zuordnung zwischen der ausgewählten TB-Menge und der Anzahl von Datenträgern, die an die VM angefügt sind.
+* Bei der automatischen Speicherkonfiguration werden immer P30-Datenträger vom Typ [SSD Premium](../../../virtual-machines/disks-types.md) verwendet. Daher besteht eine 1:1-Zuordnung zwischen der ausgewählten TB-Menge und der Anzahl von Datenträgern, die an die VM angefügt sind.
 
 Preisinformationen finden Sie auf der Seite [Preise für Azure Storage](https://azure.microsoft.com/pricing/details/storage) auf der Registerkarte **Disk Storage** .
 

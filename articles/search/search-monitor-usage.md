@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 421fddb819d4d396d3ab8890789e58ccb935cbc0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d47f6c20246e3210b58dbc9c802a11c866ae305e
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85806810"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935006"
 ---
 # <a name="monitor-operations-and-activity-of-azure-cognitive-search"></a>Überwachen von Vorgängen und Aktivitäten von Azure Cognitive Search
 
@@ -59,7 +59,7 @@ Mithilfe der folgenden APIs können Sie dieselben Informationen abrufen, die auf
 
 ### <a name="activity-logs-and-service-health"></a>Aktivitätsprotokolle und Dienstintegrität
 
-Auf der Seite [**Aktivitätsprotokoll**](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view) im Portal werden Informationen aus Azure Resource Manager und zu Änderungen an der Dienstintegrität erfasst. Sie können das Aktivitätsprotokoll auf kritische, Fehler- und Warnungsbedingungen im Zusammenhang mit der Dienstintegrität überwachen.
+Auf der Seite [**Aktivitätsprotokoll**](../azure-monitor/platform/activity-log.md#view-the-activity-log) im Portal werden Informationen aus Azure Resource Manager und zu Änderungen an der Dienstintegrität erfasst. Sie können das Aktivitätsprotokoll auf kritische, Fehler- und Warnungsbedingungen im Zusammenhang mit der Dienstintegrität überwachen.
 
 Zu den üblichen Einträgen zählen Verweise auf API-Schlüssel, d. h. generische informative Benachrichtigungen wie *Get Admin Key* (Administratorschlüssel abrufen) und *Get Query Keys* (Abfrageschlüssel abrufen). Diese Aktivitäten weisen auf Anforderungen hin, die mithilfe des Administratorschlüssels (Objekte erstellen oder löschen) oder des Abfrageschlüssels durchgeführt wurden, jedoch nicht die Anforderung selbst anzeigen. Um weitere Informationen auf dieser Ebene zu erhalten, müssen Sie die Diagnoseprotokollierung konfigurieren.
 
@@ -75,13 +75,13 @@ Die folgende Abbildung bezieht sich auf den kostenlosen Dienst, der auf 3 Objekt
  "Verwendungsstatus relativ zu den Tarifgrenzwerten")
 
 > [!NOTE]
-> Warnungen im Zusammenhang mit dem Speicher sind derzeit nicht verfügbar. Der Speicherverbrauch wird nicht aggregiert oder in der Tabelle **AzureMetrics** in Azure Monitor protokolliert. Damit Sie Speicherbenachrichtigungen erhalten, müssen Sie [eine benutzerdefinierte Lösung erstellen](../azure-monitor/insights/solutions-creating.md), die ressourcenbezogene Benachrichtigungen ausgibt und in der Ihr Code die Speichergröße überprüft und die Antwort verarbeitet.
+> Warnungen im Zusammenhang mit dem Speicher sind derzeit nicht verfügbar. Der Speicherverbrauch wird nicht aggregiert oder in der Tabelle **AzureMetrics** in Azure Monitor protokolliert. Damit Sie Speicherbenachrichtigungen erhalten, müssen Sie [eine benutzerdefinierte Lösung erstellen](../azure-monitor/insights/solutions.md), die ressourcenbezogene Benachrichtigungen ausgibt und in der Ihr Code die Speichergröße überprüft und die Antwort verarbeitet.
 
 <a name="add-azure-monitor"></a>
 
 ## <a name="add-on-monitoring-with-azure-monitor"></a>Zusätzliches Überwachen mit Azure Monitor
 
-Viele Dienste, einschließlich Azure Cognitive Search, können mit [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/) integriert werden, um zusätzliche Benachrichtigungen zu erhalten, Metriken zu erfassen und Diagnosedaten zu protokollieren. 
+Viele Dienste, einschließlich Azure Cognitive Search, können mit [Azure Monitor](../azure-monitor/index.yml) integriert werden, um zusätzliche Benachrichtigungen zu erhalten, Metriken zu erfassen und Diagnosedaten zu protokollieren. 
 
 [Aktivieren Sie die Diagnoseprotokollierung](search-monitor-logs.md) für einen Suchdienst, wenn Sie die Datenerfassung und den Speicher steuern können möchten. Protokollierte Ereignisse, die von Azure Monitor aufgezeichnet werden, werden in der Tabelle **AzureDiagnostics** gespeichert und bestehen aus operativen Daten zu Abfragen und der Indizierung.
 
@@ -107,4 +107,4 @@ Diese Informationen können nicht getrennt von der Abfragezeichenfolge protokoll
 Kenntnisse von Azure Monitor sind für die Überwachung aller Azure-Dienste, einschließlich Ressourcen wie Azure Cognitive Search, von entscheidender Bedeutung. Wenn Sie mit Azure Monitor nicht vertraut sind, nehmen Sie sich die Zeit, die Artikel zu den Ressourcen zu lesen. Zusätzlich zu den Tutorials stellt der folgende Artikel einen guten Ausgangspunkt dar.
 
 > [!div class="nextstepaction"]
-> [Überwachen von Azure-Ressourcen mit Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/insights/monitor-azure-resource)
+> [Überwachen von Azure-Ressourcen mit Azure Monitor](../azure-monitor/insights/monitor-azure-resource.md)

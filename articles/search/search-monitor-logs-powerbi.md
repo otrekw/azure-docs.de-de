@@ -7,15 +7,15 @@ ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/24/2020
-ms.openlocfilehash: d529e4e4b79f0c34eb8f95b028cca730b316d5f6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2caf4c66cdbb11ed42c4131ef1584c372ec10332
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87060306"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935108"
 ---
 # <a name="visualize-azure-cognitive-search-logs-and-metrics-with-power-bi"></a>Visualisieren von Azure Cognitive Search-Protokollen und -Metriken mit Power BI
-Mit [Azure Cognitive Search](https://docs.microsoft.com/azure/search/search-what-is-azure-search) können Sie Vorgangsprotokolle und Dienstmetriken zu Ihrem Suchdienst in einem Azure Storage-Konto speichern. Diese Seite enthält Anweisungen dazu, wie Sie diese Informationen über eine Power BI-Vorlagen-App visualisieren können. Die App bietet detaillierte Einblicke in ihren Suchdienst, einschließlich Informationen zu Suchen, Indizierung, Vorgängen und Dienstmetriken.
+Mit [Azure Cognitive Search](./search-what-is-azure-search.md) können Sie Vorgangsprotokolle und Dienstmetriken zu Ihrem Suchdienst in einem Azure Storage-Konto speichern. Diese Seite enthält Anweisungen dazu, wie Sie diese Informationen über eine Power BI-Vorlagen-App visualisieren können. Die App bietet detaillierte Einblicke in ihren Suchdienst, einschließlich Informationen zu Suchen, Indizierung, Vorgängen und Dienstmetriken.
 
 Sie finden die Power BI-Vorlagen-App **Azure Cognitive Search: Analyze Logs and Metrics** im [Power BI-Apps-Marketplace](https://appsource.microsoft.com/marketplace/apps).
 
@@ -23,7 +23,7 @@ Sie finden die Power BI-Vorlagen-App **Azure Cognitive Search: Analyze Logs and 
 
 1. Aktivieren Sie Metriken und Ressourcenprotokollierung für Ihren Suchdienst:
 
-    1. Erstellen oder identifizieren Sie ein vorhandenes [Azure Storage-Konto](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account), in dem Sie die Protokolle archivieren können.
+    1. Erstellen oder identifizieren Sie ein vorhandenes [Azure Storage-Konto](../storage/common/storage-account-create.md), in dem Sie die Protokolle archivieren können.
     1. Navigieren Sie im Azure-Portal zu Ihrem Azure Cognitive Search-Dienst.
     1. Wählen Sie in der linken Spalte im Abschnitt „Überwachung“ die Option **Diagnoseeinstellungen** aus.
 
@@ -98,8 +98,8 @@ Wenn Sie feststellen, dass Ihre Daten nicht angezeigt werden, befolgen Sie diese
 1. Überprüfen Sie, ob das Dataset weiterhin aktualisiert wird. Der Aktualisierungsstatusindikator wird oben in Schritt 8 angezeigt. Wenn die Aktualisierung noch immer ausgeführt wird, warten Sie, bis die Aktualisierung beendet ist, um den Bericht zu öffnen und zu aktualisieren.
 
 ## <a name="next-steps"></a>Nächste Schritte
-[Weitere Informationen zu Azure Cognitive Search](https://docs.microsoft.com/azure/search/)
+[Weitere Informationen zu Azure Cognitive Search](./index.yml)
 
-[Was ist Power BI?](https://docs.microsoft.com/power-bi/fundamentals/power-bi-overview)
+[Was ist Power BI?](/power-bi/fundamentals/power-bi-overview)
 
-[Grundlegende Konzepte für Designer im Power BI-Dienst](https://docs.microsoft.com/power-bi/service-basic-concepts)
+[Grundlegende Konzepte für Designer im Power BI-Dienst](/power-bi/service-basic-concepts)

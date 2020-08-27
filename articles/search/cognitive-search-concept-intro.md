@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/18/2020
-ms.openlocfilehash: d6fbfc7dced59580e91c3beceb6054f223a0a17d
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 1c041d594b29c6e93b73eb1b0c623b3e566ceef5
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319047"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935499"
 ---
 # <a name="ai-enrichment-in-azure-cognitive-search"></a>KI-Anreicherung in Azure Cognitive Search
 
@@ -29,7 +29,7 @@ Bei eingebetteten Skills wird zwischen folgenden Kategorien unterschieden:
 
 ![Diagramm der KI-Anreicherungspipeline](./media/cognitive-search-intro/cogsearch-architecture.png "Übersicht über die KI-Anreicherungspipeline")
 
-Eingebettete Skills in Azure Cognitive Search basieren auf vortrainierten Machine Learning-Modellen in Cognitive Services-APIs: [Maschinelles Sehen](https://docs.microsoft.com/azure/cognitive-services/computer-vision/) und [Textanalyse](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview). Wenn Sie diese Ressourcen während der Inhaltsverarbeitung nutzen möchten, können Sie eine Cognitive Services-Ressource anfügen.
+Eingebettete Skills in Azure Cognitive Search basieren auf vortrainierten Machine Learning-Modellen in Cognitive Services-APIs: [Maschinelles Sehen](../cognitive-services/computer-vision/index.yml) und [Textanalyse](../cognitive-services/text-analytics/overview.md). Wenn Sie diese Ressourcen während der Inhaltsverarbeitung nutzen möchten, können Sie eine Cognitive Services-Ressource anfügen.
 
 Die Verarbeitung von natürlicher Sprache und Bildern wird während der Phase der Datenerfassung angewendet, wobei die Ergebnisse zu einem Teil einer Dokumentkomposition in einem durchsuchbaren Index in Azure Cognitive Search werden. Daten stammen aus einem Azure-Dataset und werden dann über eine Indizierungspipeline übertragen, indem jeweils die erforderlichen [integrierten Fähigkeiten](cognitive-search-predefined-skills.md) verwendet werden.  
 
@@ -57,7 +57,7 @@ Ein [Skillset](cognitive-search-defining-skillset.md) mit integrierten Fähigkei
 
 ### <a name="more-about-custom-skills"></a>Weitere Informationen zu benutzerdefinierten Qualifikationen
 
-Benutzerdefinierte Fähigkeiten können komplexere Szenarien unterstützen, z. B. das Erkennen von Formularen oder die benutzerdefinierte Entitätserkennung mithilfe eines Modells, das Sie bereitstellen und in der [benutzerdefinierten Skills-Webschnittstelle](cognitive-search-custom-skill-interface.md) umschließen. Beispiele für benutzerdefinierte Fähigkeiten sind die [Formularerkennung](/azure/cognitive-services/form-recognizer/overview), die Integration der [Bing-Entitätssuche-API](https://docs.microsoft.com/azure/search/cognitive-search-create-custom-skill-example) und [die Erkennung von benutzerdefinierten Entitäten](https://github.com/Microsoft/SkillsExtractorCognitiveSearch).
+Benutzerdefinierte Fähigkeiten können komplexere Szenarien unterstützen, z. B. das Erkennen von Formularen oder die benutzerdefinierte Entitätserkennung mithilfe eines Modells, das Sie bereitstellen und in der [benutzerdefinierten Skills-Webschnittstelle](cognitive-search-custom-skill-interface.md) umschließen. Beispiele für benutzerdefinierte Fähigkeiten sind die [Formularerkennung](../cognitive-services/form-recognizer/overview.md), die Integration der [Bing-Entitätssuche-API](./cognitive-search-create-custom-skill-example.md) und [die Erkennung von benutzerdefinierten Entitäten](https://github.com/Microsoft/SkillsExtractorCognitiveSearch).
 
 ## <a name="steps-in-an-enrichment-pipeline"></a>Schritte in einer Anreicherungspipeline <a name="enrichment-steps"></a>
 
@@ -83,7 +83,7 @@ Die Pipeline generiert intern eine Sammlung angereicherter Dokumente. Sie könne
 
 #### <a name="add-a-knowledgestore-element-to-save-enrichments"></a>Hinzufügen eines knowledgeStore-Elements zum Speichern von Anreicherungen
 
-Die [REST-API-Version 2020-06-30 des Search-Diensts](https://docs.microsoft.com/rest/api/searchservice/) erweitert Qualifikationsgruppen um eine `knowledgeStore`-Definition, die eine Azure Storage-Verbindung und Projektionen bereitstellt, die beschreiben, wie die Anreicherungen gespeichert werden. Dies geschieht zusätzlich zu Ihrem Index. In einer KI-Standardpipeline sind angereicherte Dokumente kurzlebig: Sie werden nur während der Indizierung verwendet und anschließend verworfen. Mit dem Wissensspeicher bleiben erweiterte Dokumente erhalten. Weitere Informationen finden Sie unter [Wissensspeicher](knowledge-store-concept-intro.md).
+Die [REST-API-Version 2020-06-30 des Search-Diensts](/rest/api/searchservice/) erweitert Qualifikationsgruppen um eine `knowledgeStore`-Definition, die eine Azure Storage-Verbindung und Projektionen bereitstellt, die beschreiben, wie die Anreicherungen gespeichert werden. Dies geschieht zusätzlich zu Ihrem Index. In einer KI-Standardpipeline sind angereicherte Dokumente kurzlebig: Sie werden nur während der Indizierung verwendet und anschließend verworfen. Mit dem Wissensspeicher bleiben erweiterte Dokumente erhalten. Weitere Informationen finden Sie unter [Wissensspeicher](knowledge-store-concept-intro.md).
 
 ### <a name="step-3-search-index-and-query-based-access"></a>Schritt 3: Suchindex und abfragebasierter Zugriff
 
@@ -99,13 +99,13 @@ Indizes werden über ein Indexschema generiert, das die Felder, Attribute und we
 
 1. Fügen Sie Teilmengen Ihrer Azure-Quelldaten in eine repräsentative Stichprobe ein. Die Indizierung braucht Zeit. Daher sollten Sie mit einem kleinen, repräsentativen Dataset beginnen, das Sie anschließend schrittweise aufbauen, während sich Ihre Lösung entwickelt.
 
-1. Erstellen Sie ein [Datenquellenobjekt](https://docs.microsoft.com/rest/api/searchservice/create-data-source) in Azure Cognitive Search, um eine Verbindungszeichenfolge für den Datenabruf bereitzustellen.
+1. Erstellen Sie ein [Datenquellenobjekt](/rest/api/searchservice/create-data-source) in Azure Cognitive Search, um eine Verbindungszeichenfolge für den Datenabruf bereitzustellen.
 
-1. Erstellen Sie mithilfe von Anreicherungsschritten [Fähigkeitengruppen](https://docs.microsoft.com/rest/api/searchservice/create-skillset).
+1. Erstellen Sie mithilfe von Anreicherungsschritten [Fähigkeitengruppen](/rest/api/searchservice/create-skillset).
 
-1. Definieren Sie das [Indexschema](https://docs.microsoft.com/rest/api/searchservice/create-index). Die *Fields*-Auflistung enthält Felder aus Quelldaten. Sie sollten zudem zusätzliche Felder durch Stubs ersetzen, um generierte Werte für Inhalte zu speichern, die während der Anreicherung erstellt werden.
+1. Definieren Sie das [Indexschema](/rest/api/searchservice/create-index). Die *Fields*-Auflistung enthält Felder aus Quelldaten. Sie sollten zudem zusätzliche Felder durch Stubs ersetzen, um generierte Werte für Inhalte zu speichern, die während der Anreicherung erstellt werden.
 
-1. Definieren Sie den [Indexer](https://docs.microsoft.com/rest/api/searchservice/create-indexer), der auf die Datenquelle, die Fähigkeitengruppen und den Index verweist.
+1. Definieren Sie den [Indexer](/rest/api/searchservice/create-indexer), der auf die Datenquelle, die Fähigkeitengruppen und den Index verweist.
 
 1. Fügen Sie *outputFieldMappings* innerhalb des Indexers hinzu. In diesem Abschnitt wird die Ausgabe aus der Fähigkeitengruppe (in Schritt 3) den Eingabefeldern im Indexschema (in Schritt 4) zugeordnet.
 

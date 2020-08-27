@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: d562931b7578935a4544dfd953ff2de74a5350a6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 357f44149cb17976556c1e4609f6f2af531b80ee
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85260983"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935771"
 ---
 # <a name="partial-term-search-and-patterns-with-special-characters-wildcard-regex-patterns"></a>Suche nach Teilausdrücken und Mustern mit Sonderzeichen (Platzhalter, reguläre Ausdrücke, Muster)
 
@@ -51,7 +51,7 @@ Wenn Sie nach Fragmenten, Mustern oder Sonderzeichen suchen müssen, können Sie
 + Erstellen und Testen des Index
 
 > [!TIP]
-> Die Auswertung von Analysetools ist ein iterativer Prozess, bei dem der Index häufig neu erstellt werden muss. Sie können diesen Schritt vereinfachen, indem Sie Postman und die REST-APIs für [Index erstellen](https://docs.microsoft.com/rest/api/searchservice/create-index), [Index löschen](https://docs.microsoft.com/rest/api/searchservice/delete-index),[Dokumente laden](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) und [Dokumente durchsuchen](https://docs.microsoft.com/rest/api/searchservice/search-documents) verwenden. Für „Dokumente laden“ sollte der Anforderungstext ein kleines repräsentatives Dataset enthalten, das getestet werden soll (z. B. ein Feld mit Telefonnummern oder Produktcodes). Wenn diese APIs in derselben Postman-Sammlung enthalten sind, können Sie diese Schritte schnell durchlaufen.
+> Die Auswertung von Analysetools ist ein iterativer Prozess, bei dem der Index häufig neu erstellt werden muss. Sie können diesen Schritt vereinfachen, indem Sie Postman und die REST-APIs für [Index erstellen](/rest/api/searchservice/create-index), [Index löschen](/rest/api/searchservice/delete-index),[Dokumente laden](/rest/api/searchservice/addupdate-or-delete-documents) und [Dokumente durchsuchen](/rest/api/searchservice/search-documents) verwenden. Für „Dokumente laden“ sollte der Anforderungstext ein kleines repräsentatives Dataset enthalten, das getestet werden soll (z. B. ein Feld mit Telefonnummern oder Produktcodes). Wenn diese APIs in derselben Postman-Sammlung enthalten sind, können Sie diese Schritte schnell durchlaufen.
 
 ## <a name="duplicate-fields-for-different-scenarios"></a>Doppelte Felder für unterschiedliche Szenarien
 
@@ -85,7 +85,7 @@ Für die Generierung von Token mit vollständigen Ausdrücken werden häufig die
 | [whitespace](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/WhitespaceAnalyzer.html) | Die Trennung erfolgt nur anhand von Leerzeichen. Ausdrücke, die Bindestriche oder andere Zeichen enthalten, werden als einzelnes Token behandelt. |
 | [Benutzerdefiniertes Analysetool](index-add-custom-analyzers.md) | (Empfohlen) Beim Erstellen eines benutzerdefinierten Analysetools können Sie sowohl den Tokenizer als auch den Tokenfilter angeben. Die obigen Analysetools müssen unverändert verwendet werden. Bei einem benutzerdefinierten Analysetool können Sie auswählen, welche Tokenizer und Tokenfilter genutzt werden sollen. <br><br>Eine empfohlene Kombination ist der [Schlüsselwort-Tokenizer](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordTokenizer.html) mit einem [Kleinbuchstaben-Tokenfilter](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/LowerCaseFilter.html). Ohne Filter wandelt das vordefinierte [Schlüsselwort-Analysetool](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordAnalyzer.html) Großbuchstaben nicht in Kleinbuchstaben um. Dies kann dazu führen, dass Abfragen nicht erfolgreich sind. Bei einem benutzerdefinierten Analysetool erhalten Sie einen Mechanismus zum Hinzufügen des Kleinbuchstaben-Tokenfilters. |
 
-Wenn Sie ein Web-API-Testtool wie Postman nutzen, können Sie den [REST-Aufruf für die Textanalyse](https://docs.microsoft.com/rest/api/searchservice/test-analyzer) hinzufügen, um die tokenisierte Ausgabe zu untersuchen.
+Wenn Sie ein Web-API-Testtool wie Postman nutzen, können Sie den [REST-Aufruf für die Textanalyse](/rest/api/searchservice/test-analyzer) hinzufügen, um die tokenisierte Ausgabe zu untersuchen.
 
 Sie müssen über einen ausgefüllten Index verfügen, den Sie verwenden. Bei Verwendung eines vorhandenen Index und eines Felds mit Bindestrichen oder Teilen von Ausdrücken können Sie für bestimmte Ausdrücke verschiedene Analysetools einsetzen, um zu ermitteln, welche Token ausgegeben werden.  
 
@@ -160,7 +160,7 @@ Unabhängig davon, ob Sie Analysetools auswerten oder eine bestimmte Konfigurati
 
 Integrierte oder vordefinierte Analysetools können anhand des Namens in einer `analyzer`-Eigenschaft einer Felddefinition angegeben werden, ohne dass im Index eine zusätzliche Konfiguration erforderlich ist. Im folgenden Beispiel wird veranschaulicht, wie Sie das Analysetool `whitespace` für ein Feld festlegen. 
 
-Weitere Szenarios und weitere Informationen zu anderen integrierten Analysemodulen finden Sie unter [Vordefinierte Analysetoolreferenz](https://docs.microsoft.com/azure/search/index-add-custom-analyzers#predefined-analyzers-reference). 
+Weitere Szenarios und weitere Informationen zu anderen integrierten Analysemodulen finden Sie unter [Vordefinierte Analysetoolreferenz](/azure/search/index-add-custom-analyzers#predefined-analyzers-reference). 
 
 ```json
     {
@@ -222,15 +222,15 @@ Nachdem Sie einen Index mit Analysetools und Felddefinitionen definiert haben, d
 
 In den vorherigen Abschnitten wurde die Logik erläutert. In diesem Abschnitt werden die einzelnen APIs erläutert, die beim Testen der Lösung aufgerufen werden sollten. Wie bereits erwähnt, können Sie diese Aufgaben schnell durchführen, wenn Sie ein interaktives Webtesttool wie Postman verwenden.
 
-+ [Löschen des Index](https://docs.microsoft.com/rest/api/searchservice/delete-index): Entfernt einen vorhandenen Index mit demselben Namen, damit Sie ihn neu erstellen können.
++ [Löschen des Index](/rest/api/searchservice/delete-index): Entfernt einen vorhandenen Index mit demselben Namen, damit Sie ihn neu erstellen können.
 
-+ [Erstellen des Index](https://docs.microsoft.com/rest/api/searchservice/create-index): Erstellt die Indexstruktur für den Suchdienst. Diese enthält Analyesetooldefinitionen und -felder mit einer Analysetoolspezifikation.
++ [Erstellen des Index](/rest/api/searchservice/create-index): Erstellt die Indexstruktur für den Suchdienst. Diese enthält Analyesetooldefinitionen und -felder mit einer Analysetoolspezifikation.
 
-+ [Laden von Dokumenten](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents): Importiert Dokumente, die dieselbe Struktur wie der Index aufweisen, sowie durchsuchbare Inhalte. Nach diesem Schritt kann der Index abgefragt oder getestet werden.
++ [Laden von Dokumenten](/rest/api/searchservice/addupdate-or-delete-documents): Importiert Dokumente, die dieselbe Struktur wie der Index aufweisen, sowie durchsuchbare Inhalte. Nach diesem Schritt kann der Index abgefragt oder getestet werden.
 
-+ [Testen des Analysetools](https://docs.microsoft.com/rest/api/searchservice/test-analyzer) wurde in [Auswählen einer Analyse](#choose-an-analyzer) beschrieben. Testen Sie einige der Zeichenfolgen im Index mithilfe verschiedener Analysetools, um zu verstehen, wie Ausdrücke tokenisiert werden.
++ [Testen des Analysetools](/rest/api/searchservice/test-analyzer) wurde in [Auswählen einer Analyse](#choose-an-analyzer) beschrieben. Testen Sie einige der Zeichenfolgen im Index mithilfe verschiedener Analysetools, um zu verstehen, wie Ausdrücke tokenisiert werden.
 
-+ [Durchsuchen von Dokumenten](https://docs.microsoft.com/rest/api/searchservice/search-documents): Erläutert, wie eine Abfrageanforderung mithilfe [einfacher Syntax](query-simple-syntax.md) oder der [vollständigen Lucene-Syntax](query-lucene-syntax.md) für Platzhalter und reguläre Ausdrücke erstellt wird.
++ [Durchsuchen von Dokumenten](/rest/api/searchservice/search-documents): Erläutert, wie eine Abfrageanforderung mithilfe [einfacher Syntax](query-simple-syntax.md) oder der [vollständigen Lucene-Syntax](query-lucene-syntax.md) für Platzhalter und reguläre Ausdrücke erstellt wird.
 
   Bei Abfragen von Teilausdrücken wie z. B. „3-6214“, um eine Entsprechung für „+ 1 (425) 703-6214“ zu finden, können Sie die einfache Syntax verwenden: `search=3-6214&queryType=simple`.
 
@@ -287,5 +287,5 @@ In diesem Artikel wurde beschrieben, wie Analysetools sowohl Probleme bei Abfrag
 
 + [Sprachanalysen](search-language-support.md)
 + [Analysetools für Textverarbeitung in Azure Cognitive Search](search-analyzers.md)
-+ [Text analysieren (Azure Cognitive Search-REST-API)](https://docs.microsoft.com/rest/api/searchservice/test-analyzer)
++ [Text analysieren (Azure Cognitive Search-REST-API)](/rest/api/searchservice/test-analyzer)
 + [Funktionsweise der Volltextsuche (Abfragearchitektur)](search-lucene-query-architecture.md)

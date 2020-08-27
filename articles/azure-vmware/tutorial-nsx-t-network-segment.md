@@ -1,16 +1,16 @@
 ---
-title: 'Tutorial: Erstellen eines NSX-T-Netzwerksegments in Azure VMware Solution (AVS)'
+title: 'Tutorial: Erstellen eines NSX-T-Netzwerksegments in Azure VMware Solution'
 description: In diesem Tutorial haben Sie die NSX-T-Netzwerksegmente erstellt, die für virtuelle Computer in vCenter verwendet werden.
 ms.topic: tutorial
 ms.date: 07/16/2020
-ms.openlocfilehash: 5654fbb6a063d4dfeb541c20407f9a09dff1509f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: cee65211cbef25ec029c68888bc8e6059f7c7896
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87093584"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88750463"
 ---
-# <a name="tutorial-create-an-nsx-t-network-segment-in-azure-vmware-solution-avs"></a>Tutorial: Erstellen eines NSX-T-Netzwerksegments in Azure VMware Solution (AVS)
+# <a name="tutorial-create-an-nsx-t-network-segment-in-azure-vmware-solution"></a>Tutorial: Erstellen eines NSX-T-Netzwerksegments in Azure VMware Solution
 
 In NSX-T Manager erstellte Netzwerksegmente werden als Netzwerke für virtuelle Computer (VMs) in vCenter verwendet. Die in vCenter erstellten virtuellen Computer werden in den in NSX-T erstellten Netzwerksegmenten platziert und sind in vCenter sichtbar.
 
@@ -23,17 +23,17 @@ In diesem Tutorial lernen Sie Folgendes:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Für dieses Tutorial sind eine private AVS-Cloud mit Zugriff auf die vCenter- und NSX-T Manager-Verwaltungsschnittstellen erforderlich. Eine exemplarische Vorgehensweise zu diesem Beispiel-App-Code finden Sie im [Tutorial: Konfigurieren des Netzwerks für Ihre private VMware-Cloud in Azure](tutorial-configure-networking.md).
+Für dieses Tutorial sind eine private Azure VMware Solution-Cloud mit Zugriff auf die vCenter- und NSX-T Manager-Verwaltungsschnittstellen erforderlich. Eine exemplarische Vorgehensweise zu diesem Beispiel-App-Code finden Sie im [Tutorial: Konfigurieren des Netzwerks für Ihre private VMware-Cloud in Azure](tutorial-configure-networking.md).
 
 ## <a name="provision-a-network-segment-in-nsx-t"></a>Bereitstellen eines Netzwerksegments in NSX-T
 
 1. Wählen Sie in der vCenter-Instanz für Ihre private Cloud **SDDC-Datacenter > Networks** (SDDC-Datacenter > Netzwerke) aus. Beachten Sie, dass noch keine Netzwerke vorhanden sind.
 
-   :::image type="content" source="media/nsxt/vcenter-without-ls01.png" alt-text="Auswählen von „SDDC-Datacenter > Networks“ (SDDC-Datacenter > Netzwerke)":::
+   :::image type="content" source="media/nsxt/vcenter-without-ls01.png" alt-text="Wählen Sie in der vCenter-Instanz für Ihre private Cloud „SDDC-Datacenter > Networks“ (SDDC-Datacenter > Netzwerke) aus. Beachten Sie, dass noch keine Netzwerke vorhanden sind.":::
 
 1. Wählen Sie in NSX-T Manager für Ihre private Cloud **Networking** (Netzwerk) aus.
 
-   :::image type="content" source="media/nsxt/nsxt-network-overview.png" alt-text="Auswählen von „Networking“ (Netzwerk), um zur Übersicht von NSX-T Manager zu navigieren":::
+   :::image type="content" source="media/nsxt/nsxt-network-overview.png" alt-text="Wählen Sie in NSX-T Manager für Ihre private Cloud „Networking“ (Netzwerk) aus.":::
 
 1. Wählen Sie **Segments** (Segmente) aus.
 
@@ -41,7 +41,7 @@ Für dieses Tutorial sind eine private AVS-Cloud mit Zugriff auf die vCenter- un
 
 1. Wählen Sie auf der Übersichtsseite der NSX-T-Segmente die Option **ADD SEGMENT** (SEGMENT HINZUFÜGEN) aus. Im Rahmen der Bereitstellung der privaten Cloud werden drei Segmente erstellt. Diese können nicht für virtuelle Computer verwendet werden.  Für virtuelle Computer muss ein neues Netzwerksegment hinzugefügt werden.
 
-   :::image type="content" source="media/nsxt/nsxt-segments-overview.png" alt-text="Auswählen von „Add Segment“ (Segment hinzufügen) auf der Übersichtsseite der Netzwerksegmente":::
+   :::image type="content" source="media/nsxt/nsxt-segments-overview.png" alt-text="Wählen Sie auf der Übersichtsseite der NSX-T-Segmente die Option „ADD SEGMENT“ (SEGMENT HINZUFÜGEN) aus.":::
 
 1. Geben Sie einen Namen für das Segment ein, wählen Sie unter **Connected Gateway** (Verbundenes Gateway) das vorkonfigurierte Gateway der Ebene 1 (TNTxx-T1) aus, und übernehmen Sie für **Type** (Typ) die Option „Flex“. Wählen Sie unter **Transport Zone** (Transportzone) die vorkonfigurierte Überlagerung (TNTxx-OVERLAY-TZ) und anschließend „Set Subnets“ (Subnetze festlegen) aus. Für alle anderen Einstellungen in diesem Abschnitt sowie für die Einstellungen unter **PORTS** und **SEGMENT PROFILES** (SEGMENTPROFILE) können die Standardwerte übernommen werden.
 
@@ -49,7 +49,7 @@ Für dieses Tutorial sind eine private AVS-Cloud mit Zugriff auf die vCenter- un
 
 1. Legen Sie die IP-Adresse des Gateways für das neue Segment fest, und wählen Sie dann **ADD** (HINZUFÜGEN) aus. Die von Ihnen verwendete IP-Adresse muss Teil eines nicht überlappenden RFC1918-Adressblocks sein. Dadurch wird sichergestellt, dass Sie eine Verbindung mit den virtuellen Computern im neuen Segment herstellen können.
 
-   :::image type="content" source="media/nsxt/nsxt-create-segment-gateway.png" alt-text="Angeben der IP-Adresse des Segmentgateways in CIDR-Notation und Auswählen von „ADD“ (HINZUFÜGEN)":::
+   :::image type="content" source="media/nsxt/nsxt-create-segment-gateway.png" alt-text="Legen Sie die IP-Adresse des Gateways für das neue Segment fest, und wählen Sie dann „ADD“ (HINZUFÜGEN) aus.":::
 
 1. Wenden Sie das neue Netzwerksegment an, indem Sie **APPLY** (ANWENDEN) auswählen und die Konfiguration mithilfe der Option **SAVE** (SPEICHERN) speichern.
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 3/18/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: d979d2d0167a4398d31271bb896c812bbe86be73
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 4223e3bc572a689472dce136b60599034566b274
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87827859"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654258"
 ---
 # <a name="migrate-to-azure-file-shares"></a>Migrieren zu Azure-Dateifreigaben
 
@@ -26,7 +26,7 @@ In Azure sind mehrere Cloudspeichertypen verfügbar. Ein grundlegender Aspekt de
 
 [Azure-Dateifreigaben](storage-files-introduction.md) sind für allgemeine Dateidaten geeignet. Dazu gehören alle Daten, für die Sie eine lokale SMB- oder NFS-Freigabe verwenden. Mit der [Azure-Dateisynchronisierung](storage-sync-files-planning.md) können Sie den Inhalt mehrerer Azure-Dateifreigaben auf Windows-Servern lokal zwischenspeichern.
 
-Für eine App, die derzeit auf einem lokalen Server ausgeführt wird, ist das Speichern von Dateien in einer Azure-Dateifreigabe möglicherweise eine gute Wahl. Sie können die App zu Azure verschieben und Azure-Dateifreigaben als freigegebenen Speicher verwenden. Sie können für dieses Szenario auch [Azure-Datenträger](../../virtual-machines/windows/managed-disks-overview.md) in Erwägung ziehen.
+Für eine App, die derzeit auf einem lokalen Server ausgeführt wird, ist das Speichern von Dateien in einer Azure-Dateifreigabe möglicherweise eine gute Wahl. Sie können die App zu Azure verschieben und Azure-Dateifreigaben als freigegebenen Speicher verwenden. Sie können für dieses Szenario auch [Azure-Datenträger](../../virtual-machines/managed-disks-overview.md) in Erwägung ziehen.
 
 Einige Cloud-Apps sind nicht von SMB oder lokalen Datenzugriff bzw. freigegebenen Zugriff abhängig. Für diese Apps ist Objektspeicher wie [Azure-Blobs](../blobs/storage-blobs-overview.md) oft die beste Wahl.
 

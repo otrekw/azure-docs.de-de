@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
 ms.date: 07/31/2020
-ms.openlocfilehash: 30e123b24a5d2c9e45df6ee6dc6debfb88b920f3
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 76e72e8fd134c65cc9334e635375cc25e9b09a75
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88038025"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88719069"
 ---
 # <a name="tutorial-monitor-and-manage-a-video-analytics---object-and-motion-detection-application"></a>Tutorial: Überwachen und Verwalten einer Anwendung vom Typ „Videoanalyse: Objekt- und Bewegungserkennung“
 
@@ -155,22 +155,22 @@ docker run -it --rm -e amsAadClientId="<FROM_AZURE_PORTAL>" -e amsAadSecret="<FR
 |amsResourceGroup| ResourceGroup |
 |amsAccountName| AccountName|
 
-Navigieren Sie in Ihrer Anwendung zum Dashboard **Überwachung**. Klicken Sie anschließend auf der Kachel **Inference Event Video** (Rückschlussereignis-Video) auf einen der Hyperlinks der erfassten Ereignisse für die Bewegungserkennung. Das Video wird auf einer Seite des lokalen Videoplayers angezeigt:
+Navigieren Sie zum Gerät **camera-003**, und wählen Sie die Registerkarte **Dashboard** aus. Klicken Sie anschließend auf der Kachel **Inference Event Video** (Rückschlussereignis-Video) auf einen der Hyperlinks der erfassten Ereignisse für die Bewegungserkennung. Das Video wird auf einer Seite des lokalen Videoplayers angezeigt:
 
 :::image type="content" source="media/tutorial-video-analytics-manage/video-snippet.png" alt-text="Videocodeausschnitt":::
 
-## <a name="change-the-simulated-devices-in-application-dashboard"></a>Ändern der simulierten Geräte im Anwendungsdashboard
+## <a name="change-the-simulated-devices-in-application-dashboards"></a>Ändern der simulierten Geräte auf Anwendungsdashboards
 
 Die Anwendungsdashboards werden ursprünglich mit Telemetriedaten und Eigenschaften gefüllt, die über die simulierten IoT Central-Geräte generiert werden. Führen Sie diese Schritte aus, um die Kacheln für die Telemetriedaten echter Kameras oder des Live555-Simulators zu konfigurieren:
 
-1. Navigieren Sie zum Dashboard **Real Camera Monitor** (Überwachung für echte Kamera).
+1. Navigieren Sie zum Anwendungsdashboard **(Sample) Real Camera Monitor** ((Beispiel) Überwachung für echte Kamera).
 1. Wählen Sie **Bearbeiten** aus.
+1. Wählen Sie die Kachel **Hinweis** aus, und löschen Sie sie.
+1. Ändern Sie den Titel des Dashboards in *Real Camera Monitor* (Überwachung für echte Kamera).
 1. Wählen Sie auf der Kachel **Inference Count** (Rückschlussanzahl) das Symbol „Konfigurieren“ aus.
 1. Wählen Sie im Abschnitt **Diagramm konfigurieren** in der Gerätegruppe **LVA Edge Object Detector** (LVA-Edgeobjekterkennung) mindestens eine echte Kamera aus.
 1. Wählen Sie das Telemetriedatenfeld `AI Inference Interface/Inference Count` aus.
 1. Wählen Sie **Update** aus.
-
-   
 
 1. Wiederholen Sie die Schritte für die folgenden Kacheln:
     1. Im Kreisdiagramm **Erkennung** wird der Telemetrietyp `AI Inference Interface/Inference/entity/tag/value` verwendet.

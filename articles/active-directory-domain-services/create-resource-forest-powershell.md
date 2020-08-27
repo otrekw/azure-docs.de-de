@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/27/2020
 ms.author: iainfou
-ms.openlocfilehash: 50a8e4f6d966a63a8e727dbacefbc7bb21f5f98b
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 893085179c27ce88c3e310170715e2f83a59ddc7
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88506327"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88723162"
 ---
 # <a name="create-an-azure-active-directory-domain-services-resource-forest-and-outbound-forest-trust-to-an-on-premises-domain-using-azure-powershell"></a>Erstellen einer Azure Active Directory Domain Services-Ressourcengesamtstruktur und einer ausgehenden Gesamtstruktur-Vertrauensstellung zu einer lokalen Domäne mithilfe von Azure PowerShell
 
@@ -148,15 +148,15 @@ Bevor Sie beginnen, vergewissern Sie sich, dass Ihnen die [Überlegungen zum Net
 
 1. Erstellen Sie die Hybridkonnektivität mit dem lokalen Netzwerk in Azure mithilfe einer Azure-VPN- oder Azure ExpressRoute-Verbindung. Die Konfiguration des Hybridnetzwerks geht über den Rahmen dieser Dokumentation hinaus und ist möglicherweise bereits in Ihrer Umgebung vorhanden. Ausführliche Informationen zu bestimmten Szenarien finden Sie in den folgenden Artikeln:
 
-    * [Azure-Site-to-Site-VPN](/azure/vpn-gateway/vpn-gateway-about-vpngateways)
-    * [Übersicht über Azure ExpressRoute](/azure/expressroute/expressroute-introduction)
+    * [Azure-Site-to-Site-VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md)
+    * [Übersicht über Azure ExpressRoute](../expressroute/expressroute-introduction.md)
 
     > [!IMPORTANT]
     > Wenn Sie die Verbindung direkt mit dem virtuellen Netzwerk Ihrer verwalteten Domäne erstellen, verwenden Sie ein separates Gatewaysubnetz. Erstellen Sie das Gateway nicht im Subnetz der verwalteten Domäne.
 
 1. Zum Verwalten einer verwalteten Domäne erstellen Sie eine Verwaltungs-VM, verknüpfen diese mit der verwalteten Domäne und installieren die erforderlichen AD DS-Verwaltungstools.
 
-    Während die Ressourcengesamtstruktur der verwalteten Domäne bereitgestellt wird, [erstellen Sie eine Windows Server-VM](https://docs.microsoft.com/azure/active-directory-domain-services/join-windows-vm) und [installieren die wichtigsten AD DS-Verwaltungstools](https://docs.microsoft.com/azure/active-directory-domain-services/tutorial-create-management-vm), um die erforderlichen Verwaltungstools zu installieren. Binden Sie die Verwaltungs-VM erst in einem der folgenden Schritte in die verwaltete Domäne ein, nachdem die Domäne erfolgreich bereitgestellt wurde.
+    Während die Ressourcengesamtstruktur der verwalteten Domäne bereitgestellt wird, [erstellen Sie eine Windows Server-VM](./join-windows-vm.md) und [installieren die wichtigsten AD DS-Verwaltungstools](./tutorial-create-management-vm.md), um die erforderlichen Verwaltungstools zu installieren. Binden Sie die Verwaltungs-VM erst in einem der folgenden Schritte in die verwaltete Domäne ein, nachdem die Domäne erfolgreich bereitgestellt wurde.
 
 1. Überprüfen Sie die Netzwerkkonnektivität zwischen Ihrem lokalen Netzwerk und dem virtuellen Azure-Netzwerk.
 
@@ -260,7 +260,7 @@ Der virtuelle Windows Server-Computer muss mit der Ressourcendomäne der verwalt
 1. Stellen Sie über Remotedesktop und Ihre Administratoranmeldeinformationen für die verwaltete Domäne eine Verbindung mit der Windows Server-VM her, die mit der Ressourcengesamtstruktur der verwalteten Domäne verknüpft ist. Wird ein „Authentifizierung auf Netzwerkebene“-Fehler gemeldet, überprüfen Sie, ob das von Ihnen verwendete Benutzerkonto tatsächlich ein Domänenbenutzerkonto ist.
 
     > [!TIP]
-    > Um sicher eine Verbindung mit Ihren virtuellen Computern herzustellen, die mit Azure AD Domain Services verknüpft sind, können Sie den [Azure Bastion-Hostdienst](https://docs.microsoft.com/azure/bastion/bastion-overview) in unterstützten Azure-Regionen verwenden.
+    > Um sicher eine Verbindung mit Ihren virtuellen Computern herzustellen, die mit Azure AD Domain Services verknüpft sind, können Sie den [Azure Bastion-Hostdienst](../bastion/bastion-overview.md) in unterstützten Azure-Regionen verwenden.
 
 1. Öffnen Sie eine Eingabeaufforderung, und verwenden Sie den `whoami`-Befehl, um den kennzeichnenden Namen (distinguished name) des derzeit authentifizierten Benutzers anzuzeigen:
 
@@ -286,7 +286,7 @@ Mit der Windows Server-VM, die mit der Ressourcengesamtstruktur der verwalteten 
 1. Stellen Sie über Remotedesktop und Ihre Administratoranmeldeinformationen für die verwaltete Domäne eine Verbindung mit der Windows Server-VM her, die mit der Ressourcengesamtstruktur der verwalteten Domäne verknüpft ist. Wird ein „Authentifizierung auf Netzwerkebene“-Fehler gemeldet, überprüfen Sie, ob das von Ihnen verwendete Benutzerkonto tatsächlich ein Domänenbenutzerkonto ist.
 
     > [!TIP]
-    > Um sicher eine Verbindung mit Ihren virtuellen Computern herzustellen, die mit Azure AD Domain Services verknüpft sind, können Sie den [Azure Bastion-Hostdienst](https://docs.microsoft.com/azure/bastion/bastion-overview) in unterstützten Azure-Regionen verwenden.
+    > Um sicher eine Verbindung mit Ihren virtuellen Computern herzustellen, die mit Azure AD Domain Services verknüpft sind, können Sie den [Azure Bastion-Hostdienst](../bastion/bastion-overview.md) in unterstützten Azure-Regionen verwenden.
 
 1. Öffnen Sie **Windows-Einstellungen**, suchen Sie nach **Netzwerk- und Freigabecenter**, und wählen Sie diese Option aus.
 1. Wählen Sie die Option **Erweiterte Freigabeeinstellungen ändern** aus.

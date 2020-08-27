@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ebcb79088ebac761632e882e98e00f165cc4bd05
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a51d8c45f652173e5b2b0731d64a8e6f14ee46c7
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87035230"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88717352"
 ---
 # <a name="enable-azure-active-directory-self-service-password-reset-at-the-windows-sign-in-screen"></a>Aktivieren der Self-Service-Kennwortzurücksetzung für Azure Active Directory auf dem Windows-Anmeldebildschirm
 
@@ -35,7 +35,7 @@ Die folgenden Einschränkungen gelten für die Verwendung der SSPR auf dem Windo
 
 - Die Kennwortzurücksetzung wird für Remotedesktopsitzungen oder erweiterte Hyper-V-Sitzungen derzeit nicht unterstützt.
 - Einige Anmeldeinformationsanbieter (Drittanbieter) haben bekanntermaßen Probleme mit diesem Feature.
-- Das Deaktivieren der Benutzerkontensteuerung durch die Änderung des [Registrierungsschlüssels „EnableLUA“](https://docs.microsoft.com/openspecs/windows_protocols/ms-gpsb/958053ae-5397-4f96-977f-b7700ee461ec) verursacht bekanntermaßen Probleme.
+- Das Deaktivieren der Benutzerkontensteuerung durch die Änderung des [Registrierungsschlüssels „EnableLUA“](/openspecs/windows_protocols/ms-gpsb/958053ae-5397-4f96-977f-b7700ee461ec) verursacht bekanntermaßen Probleme.
 - Dieses Feature funktioniert nicht bei Netzwerken mit 802.1x-Netzwerkauthentifizierung und der Option „Unmittelbar vor der Benutzeranmeldung ausführen“. In Netzwerken mit 802.1x-Netzwerkauthentifizierung empfiehlt es sich, die Computerauthentifizierung zu verwenden, um dieses Feature zu aktivieren.
 - In Hybrid Azure AD eingebundene Computer müssen über eine direkte Netzwerkverbindung mit einem Domänencontroller verfügen, um das neue Kennwort verwenden und zwischengespeicherte Anmeldeinformationen aktualisieren zu können. Das heißt, die Geräte müssen sich im internen Unternehmensnetzwerk oder in einem VPN mit Netzwerkzugriff auf einen lokalen Domänencontroller befinden.
 - Wenn Sie ein Image verwenden, stellen Sie vor dem Ausführen von Sysprep sicher, dass der Webcache für den integrierten Administrator vor der Durchführung des CopyProfile-Schritts gelöscht ist. Weitere Informationen zu diesem Schritt finden Sie im Supportartikel [Schlechte Leistung bei Verwendung eines benutzerdefinierten Standardbenutzerprofils](https://support.microsoft.com/help/4056823/performance-issue-with-custom-default-user-profile).

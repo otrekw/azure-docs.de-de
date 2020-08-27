@@ -1,16 +1,16 @@
 ---
-title: 'Tutorial: Erstellen einer Inhaltsbibliothek zum Bereitstellen von VMs in Azure VMware Solution (AVS)'
-description: In diesem Tutorial zu Azure VMware Solution (AVS) erstellen Sie eine Inhaltsbibliothek zum Bereitstellen einer VM in einer privaten AVS-Cloud.
+title: 'Tutorial: Erstellen einer Inhaltsbibliothek zum Bereitstellen von VMs in Azure VMware Solution'
+description: In diesem Tutorial zu Azure VMware Solution erstellen Sie eine Inhaltsbibliothek zum Bereitstellen einer VM in einer privaten Azure VMware Solution-Cloud.
 ms.topic: tutorial
 ms.date: 07/16/2020
-ms.openlocfilehash: d86f9cb92dcb8a852b9b178a5e160da0d1a3a692
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: 3abaafac0dbd6f3537d2ca30a093627230780eb5
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88612791"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88750555"
 ---
-# <a name="tutorial-create-a-content-library-to-deploy-vms-in-azure-vmware-solution-avs"></a>Tutorial: Erstellen einer Inhaltsbibliothek zum Bereitstellen von VMs in Azure VMware Solution (AVS)
+# <a name="tutorial-create-a-content-library-to-deploy-vms-in-azure-vmware-solution"></a>Tutorial: Erstellen einer Inhaltsbibliothek zum Bereitstellen von VMs in Azure VMware Solution
 
 In einer Inhaltsbibliothek werden Inhalte in Form von Bibliothekselementen gespeichert und verwaltet. Ein einzelnes Bibliothekselement besteht aus einer oder mehreren Dateien, die Sie zum Bereitstellen virtueller Computer (VMs) verwenden. 
  
@@ -22,7 +22,7 @@ In diesem Tutorial lernen Sie Folgendes:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Für dieses Tutorial sind ein logisches NSX-T-Switchsegment und ein verwalteter DHCP-Dienst erforderlich.  Ausführliche Informationen dazu finden Sie unter [Verwalten von DHCP in der Azure-VMware-Lösung (Vorschauversion)](manage-dhcp.md).
+Für dieses Tutorial sind ein logisches NSX-T-Switchsegment und ein verwalteter DHCP-Dienst erforderlich.  Ausführliche Informationen dazu finden Sie unter [Verwalten von DHCP in Azure VMware Solution (Vorschauversion)](manage-dhcp.md).
 
 ## <a name="create-a-content-library"></a>Erstellen einer Inhaltsbibliothek
 

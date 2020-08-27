@@ -7,10 +7,10 @@ ms.date: 07/22/2019
 ms.author: suhuruli
 ms.custom: mvc
 ms.openlocfilehash: cc1d6e04b19d36f0ca8c7ed4b2bb3d62f5e8e15a
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "78252748"
 ---
 # <a name="tutorial-package-and-deploy-containers-as-a-service-fabric-application-using-yeoman"></a>Tutorial: Packen und Bereitstellen von Containern als Service Fabric-Anwendung mithilfe von Yeoman
@@ -60,7 +60,7 @@ Die Gerüstbautools von Service Fabric unterstützen Sie beim Erstellen von Anwe
     ```
 2. Geben Sie „TestContainer“ als Namen für Ihre Anwendung ein.
 3. Geben Sie „azurevotefront“ als Namen für Ihren Anwendungsdienst ein.
-4. Geben Sie den Pfad des Containerimages für das Front-End-Repository in ACR ein – Beispiel: \<acrName>.azurecr.io/azure-vote-front:v1. Das \<acrName>-Feld muss dem Wert entsprechen, der im vorangehenden Tutorial verwendet wurde.
+4. Geben Sie den Pfad des Containerimages für das Front-End-Repository in ACR ein, z. B. „\<acrName>.azurecr.io/azure-vote-front:v1“. Das Feld \<acrName> muss dem Wert entsprechen, der im vorangehenden Tutorial verwendet wurde.
 5. Drücken Sie die EINGABETASTE, um den Abschnitt „Commands“ leer zu lassen.
 6. Geben Sie als Instanzanzahl 1 an.
 

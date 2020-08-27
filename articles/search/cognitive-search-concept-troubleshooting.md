@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 92c054b42a83d9753e2fcc9c02646c381da795b8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8347ca5a33790d0b35176be47a0fa4811a19e3f1
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85510871"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935465"
 ---
 # <a name="tips-for-ai-enrichment-in-azure-cognitive-search"></a>KI-Anreicherung in Azure Cognitive Search
 
@@ -54,7 +54,7 @@ In diesem Fall sollten Sie den Indexer anweisen, Fehler zu ignorieren. Dazu setz
 
 ## <a name="tip-4-use-debug-sessions-to-identify-and-resolve-issues-with-your-skillset"></a>Tipp 4: Verwenden Sie Debugsitzungen zum Identifizieren und Beheben von Problemen mit Ihrem Skillset 
 
-Bei den Debugsitzungen handelt es sich um einen visuellen Editor, der mit einem vorhandenen Skillset im Azure-Portal arbeitet. In einer Debugsitzung können Sie Fehler identifizieren und beheben sowie Änderungen überprüfen und an Produktionsskillsets in der KI-Anreicherungspipeline committen. Dies ist ein Vorschaufeature [Dokumentation lesen](https://docs.microsoft.com/azure/search/cognitive-search-debug-session). Weitere Informationen zu den Konzepten und den ersten Schritten finden Sie unter [Debugsitzungen](https://docs.microsoft.com/azure/search/cognitive-search-tutorial-debug-sessions).
+Bei den Debugsitzungen handelt es sich um einen visuellen Editor, der mit einem vorhandenen Skillset im Azure-Portal arbeitet. In einer Debugsitzung können Sie Fehler identifizieren und beheben sowie Änderungen überprüfen und an Produktionsskillsets in der KI-Anreicherungspipeline committen. Dies ist ein Vorschaufeature [Dokumentation lesen](./cognitive-search-debug-session.md). Weitere Informationen zu den Konzepten und den ersten Schritten finden Sie unter [Debugsitzungen](./cognitive-search-tutorial-debug-sessions.md).
 
 Debugsitzungen funktionieren für ein einzelnes Dokument und sind eine gute Möglichkeit, iterativ komplexere Anreicherungspipelines zu erstellen.
 

@@ -8,12 +8,12 @@ ms.author: liamca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 69fec93c2426f4274e0c890d76bdcbbb4678fa7d
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: ea0dac74d4f995e41513b3451dd28d177040e672
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86230756"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935023"
 ---
 # <a name="design-patterns-for-multitenant-saas-applications-and-azure-cognitive-search"></a>Entwurfsmuster für mehrinstanzenfähige SaaS-Anwendungen und die kognitive Azure-Suche
 
@@ -119,7 +119,7 @@ Die oben genannten Entwurfsmuster zum Modellieren mehrinstanzenfähiger Szenarie
 
 Wenn das Dienst-pro-Mandant- und Index-pro-Mandant-Modell nicht ausreichend kleine Umfänge darstellen, ist es möglich, einen Index zu modellieren, mit dem ein noch feinerer Grad an Granularität erreicht wird.
 
-Damit sich ein einzelner Index für verschiedene Clientendpunkte anders verhält, kann einem Index ein Feld hinzugefügt werden, dass jedem möglichen Client einen bestimmten Wert zuweist. Immer wenn ein Client die kognitive Azure-Suche zum Abfragen oder Ändern eines Index aufruft, gibt der Code aus der Clientanwendung den entsprechenden Wert für dieses Feld mithilfe der [Filterfunktion](https://msdn.microsoft.com/library/azure/dn798921.aspx) der kognitiven Azure-Suche zum Zeitpunkt der Abfrage an.
+Damit sich ein einzelner Index für verschiedene Clientendpunkte anders verhält, kann einem Index ein Feld hinzugefügt werden, dass jedem möglichen Client einen bestimmten Wert zuweist. Immer wenn ein Client die kognitive Azure-Suche zum Abfragen oder Ändern eines Index aufruft, gibt der Code aus der Clientanwendung den entsprechenden Wert für dieses Feld mithilfe der [Filterfunktion](./query-odata-filter-orderby-syntax.md) der kognitiven Azure-Suche zum Zeitpunkt der Abfrage an.
 
 Mithilfe dieser Methode lassen sich eine Unterstützung getrennter Benutzerkonten und Berechtigungsstufen sowie sogar vollständig getrennter Anwendungen erreichen.
 
@@ -132,4 +132,3 @@ Mithilfe dieser Methode lassen sich eine Unterstützung getrennter Benutzerkonte
 Die kognitive Azure-Suche ist eine hervorragende Wahl für viele Anwendungen. Berücksichtigen Sie beim Bewerten der verschiedenen Entwurfsmuster für mehrinstanzenfähige Anwendungen die [verschiedenen Tarife](https://azure.microsoft.com/pricing/details/search/) und zugehörigen [Dienstgrenzen](search-limits-quotas-capacity.md), um die kognitive Azure-Suche perfekt an Anwendungsworkloads und Architekturen sämtlicher Größen anzupassen.
 
 Alle Fragen zur kognitiven Azure-Suche und Szenarien mit mehreren Mandanten können an azuresearch_contact@microsoft.com gesendet werden.
-

@@ -1,18 +1,18 @@
 ---
 title: Zusammenfassen lokaler Umgebungen mittels Peering zu einer privaten Cloud
-description: In diesem AVS-Tutorial (Azure VMware Solution) wird ein ExpressRoute Global Reach-Peering mit einer privaten Cloud in einer AVS-Instanz erstellt.
+description: In diesem Azure VMware Solution-Tutorial wird ein ExpressRoute Global Reach-Peering mit einer privaten Cloud in einer Azure VMware Solution-Instanz erstellt.
 ms.topic: tutorial
 ms.date: 07/16/2020
-ms.openlocfilehash: a9a002eab3219a0db74062570d31595bfcc0d6a3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: db3f5988cb8c07d9b6e80f500ac6aff8f96dfded
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87093596"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88750449"
 ---
 # <a name="tutorial-peer-on-premises-environments-to-a-private-cloud"></a>Tutorial: Zusammenfassen lokaler Umgebungen mittels Peering zu einer privaten Cloud
 
-Über ExpressRoute Global Reach wird Ihre lokale Umgebung mit Ihren privaten Clouds verbunden. Die ExpressRoute Global Reach-Verbindung wird zwischen einer ExpressRoute-Leitung einer privaten Cloud und einer vorhandenen ExpressRoute-Verbindung mit Ihren lokalen Umgebungen hergestellt.  Es gibt eine Anleitung zum Konfigurieren von ExpressRoute Global Reach per Azure CLI und per PowerShell, und wir haben die [CLI-Befehle](../expressroute/expressroute-howto-set-global-reach-cli.md) mit spezifischen Details und Beispielen erweitert, um Sie bei beim Konfigurieren des ExpressRoute Global Reach-Peerings zwischen lokalen Umgebungen und einer privaten AVS-Cloud (Azure VMware Solution) zu unterstützen.   
+Über ExpressRoute Global Reach wird Ihre lokale Umgebung mit Ihren privaten Clouds verbunden. Die ExpressRoute Global Reach-Verbindung wird zwischen einer ExpressRoute-Leitung einer privaten Cloud und einer vorhandenen ExpressRoute-Verbindung mit Ihren lokalen Umgebungen hergestellt.  Es gibt eine Anleitung zum Konfigurieren von ExpressRoute Global Reach per Azure CLI und per PowerShell, und wir haben die [CLI-Befehle](../expressroute/expressroute-howto-set-global-reach-cli.md) mit spezifischen Details und Beispielen erweitert, um Sie bei beim Konfigurieren des ExpressRoute Global Reach-Peerings zwischen lokalen Umgebungen und einer privaten Azure VMware Solution-Cloud zu unterstützen.   
 
 Lesen Sie zunächst die Dokumentation zum [Aktivieren der Konnektivität zwischen ExpressRoute-Leitungen in verschiedenen Azure-Abonnements](../expressroute/expressroute-howto-set-global-reach-cli.md#enable-connectivity-between-expressroute-circuits-in-different-azure-subscriptions), bevor Sie die Konnektivität zwischen zwei ExpressRoute-Leitungen mit ExpressRoute Global Reach aktivieren.  Für die ExpressRoute-Leitung, die Sie beim [Konfigurieren des Netzwerks zwischen Azure und privater Cloud](tutorial-configure-networking.md) verwenden, müssen Autorisierungsschlüssel erstellt und verwendet werden, wenn Sie ein Peering mit ExpressRoute-Gateways oder mit anderen ExpressRoute-Leitungen unter Verwendung von Global Reach einrichten. Sie haben bereits einen Autorisierungsschlüssel der ExpressRoute-Leitung verwendet, und Sie erstellen einen zweiten Autorisierungsschlüssel, um ein Peering mit Ihrer lokalen ExpressRoute-Leitung einzurichten.
 
@@ -33,7 +33,7 @@ Für dieses Tutorial wird Folgendes benötigt:
 - Eine separate, funktionierende ExpressRoute-Leitung für die Verbindungsherstellung zwischen lokalen Umgebungen und Azure (_Circuit 1_ aus Sicht der Peeringprozeduren).
 - Ein [Netzwerkadressblock](../expressroute/expressroute-routing.md#ip-addresses-used-for-peerings) vom Typ „/29“ ohne Überschneidungen für das ExpressRoute Global Reach-Peering.
 
-## <a name="create-an-expressroute-authorization-key-in-the-avs-private-cloud"></a>Erstellen eines ExpressRoute-Autorisierungsschlüssels in der privaten AVS-Cloud
+## <a name="create-an-expressroute-authorization-key-in-the-azure-vmware-solution-private-cloud"></a>Erstellen eines ExpressRoute-Autorisierungsschlüssels in der privaten Azure VMware Solution-Cloud
 
 1. Navigieren Sie in der **Übersicht** der privaten Cloud unter „Verwalten“ zu **Konnektivität > ExpressRoute > Autorisierungsschlüssel anfordern**.
 

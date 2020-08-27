@@ -11,12 +11,12 @@ author: nibaccam
 ms.author: nibaccam
 ms.date: 04/24/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: ff335cd6276083eb76efd74a4921d2bae96cd7c9
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: dadd3a8316efc5bf090a84a738c8f6da223d4572
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87875301"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88651793"
 ---
 # <a name="secure-data-access-in-azure-machine-learning"></a>Sicherer Datenzugriff in Azure Machine Learning
 
@@ -118,5 +118,4 @@ Weitere Informationen dazu, wie Sie Datendrift bei neuen Daten in einem Dataset 
 ## <a name="next-steps"></a>Nächste Schritte 
 
 + Erstellen Sie ein Dataset in Azure Machine Learning Studio oder mit dem Python SDK, indem Sie [die folgenden Schritte ausführen](how-to-create-register-datasets.md).
-+ Testen Sie Beispiele zum Trainieren von Datasets mit unseren [Beispielnotebooks](https://aka.ms/dataset-tutorial).
-+ Beispiele zu Datendrift finden Sie in diesem [Datendrift-Tutorial](https://aka.ms/datadrift-notebook).
++ Testen Sie Beispiele zum Trainieren von Datasets mit unseren [Beispielnotebooks](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/work-with-data/).

@@ -3,12 +3,12 @@ title: Aktivieren von verwalteten Identitäten auf Ihren Lab-VMs in Azure DevTes
 description: In diesem Artikel wird gezeigt, wie ein Lab-Besitzer benutzerseitig zugewiesene verwaltete Identitäten auf Ihren virtuellen Lab-Computern aktivieren kann.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 886dc3b541c624d9f7a300fbbe696e1d2e143641
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b4bf2900acebaeecd5cbc4cb65635aee6de87dda
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85476001"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88717630"
 ---
 # <a name="enable-user-assigned-managed-identities-on-lab-virtual-machines-in-azure-devtest-labs"></a>Aktivieren von benutzerseitig zugewiesenen verwalteten Identitäten auf virtuellen Lab-Computern in Azure DevTest Labs
 Als Lab-Besitzer können Sie benutzerseitig zugewiesene verwaltete Identitäten auf Ihren virtuellen Lab-Computern in Azure DevTest Labs aktivieren.
@@ -25,14 +25,16 @@ Um eine benutzerseitig zugewiesene verwaltete Identität für Lab-VMs hinzuzufü
 
 1. [Erstellen Sie eine benutzerseitig zugewiesene verwaltete Identität in Ihrem Abonnement](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md#create-a-user-assigned-managed-identity).
 1. Navigieren Sie zu der Seite **Konfiguration und Richtlinien** Ihres Labs.
-2. Wählen Sie im linken Menü **Identität (Preview)** aus.
-3. Wählen Sie die Registerkarte **Virtueller Computer** aus.
-4. Wählen Sie **Hinzufügen** aus, um eine vorhandene Identität aus einer voraufgefüllten Dropdownliste auszuwählen. 
+1. Wählen Sie im linken Menü **Identität (Preview)** aus.
+1. Wählen Sie die Registerkarte **Virtueller Computer** aus.
+1. Wählen Sie **Hinzufügen** aus, um eine vorhandene Identität aus einer voraufgefüllten Dropdownliste auszuwählen. 
 
-    ![Schaltfläche „Identität hinzufügen“](./media/enable-managed-identities-lab-vms/add-identity-button.png)
-5. Wählen Sie eine vorhandene **benutzerseitig verwaltete Identität** aus der Dropdownliste aus, und wählen Sie **OK**aus. 
+    > [!div class="mx-imgBorder"]
+    > ![Schaltfläche „Identität hinzufügen“](./media/enable-managed-identities-lab-vms/add-identity-button.png)
+1. Wählen Sie eine vorhandene **benutzerseitig verwaltete Identität** aus der Dropdownliste aus, und wählen Sie **OK**aus. 
 
-    ![Identität hinzufügen](./media/enable-managed-identities-lab-vms/add-identity.png)
+    > [!div class="mx-imgBorder"]
+    > ![Identität hinzufügen](./media/enable-managed-identities-lab-vms/add-identity.png)
 
 ## <a name="use-api"></a>Verwenden der API
 

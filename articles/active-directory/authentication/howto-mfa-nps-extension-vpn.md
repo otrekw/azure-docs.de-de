@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 394a4c171153ecf50ff5d755c42e3c5f939b2ec7
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 13ed87903845d9f8295e56f187b643d73fbfb04e
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88507177"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88717865"
 ---
 # <a name="integrate-your-vpn-infrastructure-with-azure-mfa-by-using-the-network-policy-server-extension-for-azure"></a>Integration Ihrer VPN-Infrastruktur in Azure MFA mit der Netzwerkrichtlinienserver-Erweiterung für Azure
 
@@ -41,7 +41,7 @@ Die Netzwerkrichtlinien- und Zugriffsdienste bieten Organisationen folgende Mög
 * Richten Sie Netzwerkzugriffsschutz-Clientintegritätsrichtlinien (Network Access Protection, NAP) ein, die bestimmen, ob Geräten uneingeschränkter oder eingeschränkter Zugriff auf Netzwerkressourcen gewährt wird, und erzwingen Sie deren Durchsetzung.
 
 * Möglichkeit zum Erzwingen der Authentifizierung und Autorisierung für den Zugriff auf 802.1X-fähige Funkzugriffspunkte und Ethernet-Switches
-  Weitere Informationen finden Sie unter [Netzwerkrichtlinienserver (NPS)](https://docs.microsoft.com/windows-server/networking/technologies/nps/nps-top).
+  Weitere Informationen finden Sie unter [Netzwerkrichtlinienserver (NPS)](/windows-server/networking/technologies/nps/nps-top).
 
 Um die Sicherheit zu erhöhen und ein hohes Maß an Kompatibilität zu bieten, können Organisationen NPS in Azure Multi-Factor Authentication integrieren, um sicherzustellen, dass Benutzer die zweistufige Überprüfung verwenden, um eine Verbindung mit dem virtuellen Port auf dem VPN-Server herzustellen. Damit Benutzern Zugriff gewährt wird, müssen sie die von ihnen festgelegte Kombination aus Benutzername und Kennwort und andere Informationen angeben. Diese Informationen müssen vertrauenswürdig und dürfen nicht problemlos duplizierbar sein. Dazu gehören z.B. eine Mobiltelefonnummer, eine Festnetznummer oder eine Anwendung auf einem mobilen Gerät.
 
@@ -94,7 +94,7 @@ Wenn Sie nicht über eine funktionierende VPN-Infrastruktur verfügen, können S
 
 Die Rolle „Netzwerkrichtlinien- und Zugriffsdienste“ bietet die RADIUS-Funktionen für Server und Client. In diesem Artikel wird davon ausgegangen, dass Sie die Rolle „Netzwerkrichtlinien- und Zugriffsdienste“ auf einem Mitgliedsserver oder Domänencontroller in Ihrer Umgebung installiert haben. In dieser Anleitung konfigurieren Sie RADIUS für eine VPN-Konfiguration. Installieren Sie die Rolle „Netzwerkrichtlinien- und Zugriffsdienste“ auf einem *anderen* Server als Ihrem VPN-Server.
 
-Informationen zum Installieren des Rollendiensts „Netzwerkrichtlinien- und Zugriffsdienste“ für Windows Server 2012 oder älter finden Sie unter [Install a NAP Health Policy Server](https://technet.microsoft.com/library/dd296890.aspx) (Installieren eines NAP-Integritätsrichtlinienservers). Der Netzwerkzugriffsschutz (NAP) ist in Windows Server 2016 veraltet. Eine Beschreibung der bewährten Methoden für NPS einschließlich der Empfehlung zum Installieren von NPS auf einem Domänencontroller finden Sie unter [Best Practices for NPS](https://technet.microsoft.com/library/cc771746) (Bewährte Methoden für NPS).
+Informationen zum Installieren des Rollendiensts „Netzwerkrichtlinien- und Zugriffsdienste“ für Windows Server 2012 oder älter finden Sie unter [Install a NAP Health Policy Server](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd296890(v=ws.10)) (Installieren eines NAP-Integritätsrichtlinienservers). Der Netzwerkzugriffsschutz (NAP) ist in Windows Server 2016 veraltet. Eine Beschreibung der bewährten Methoden für NPS einschließlich der Empfehlung zum Installieren von NPS auf einem Domänencontroller finden Sie unter [Best Practices for NPS](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc771746(v=ws.10)) (Bewährte Methoden für NPS).
 
 ### <a name="azure-mfa-license"></a>Azure MFA-Lizenz
 
@@ -446,13 +446,13 @@ Ein zugehöriges Ereignis aus dem Azure Multi-Factor Authentication-Protokoll:
 
 ![Azure Multi-Factor Authentication-Protokolle](./media/howto-mfa-nps-extension-vpn/image48.png)
 
-Zur erweiterten Problembehandlung nutzen Sie die NPS-Datenbankformat-Protokolldateien dort, wo der NPS-Dienst installiert ist. Die Protokolldateien werden im Ordner _%SystemRoot%\System32\Logs_ als durch Trennzeichen getrennte Textdateien erstellt. Eine Beschreibung der Protokolldateien finden Sie unter [Interpret NPS Database Format Log Files](https://technet.microsoft.com/library/cc771748.aspx) (Interpretieren von NPS-Datenbankformat-Protokolldateien).
+Zur erweiterten Problembehandlung nutzen Sie die NPS-Datenbankformat-Protokolldateien dort, wo der NPS-Dienst installiert ist. Die Protokolldateien werden im Ordner _%SystemRoot%\System32\Logs_ als durch Trennzeichen getrennte Textdateien erstellt. Eine Beschreibung der Protokolldateien finden Sie unter [Interpret NPS Database Format Log Files](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc771748(v=ws.10)) (Interpretieren von NPS-Datenbankformat-Protokolldateien).
 
 Die Einträge in diesen Protokolldateien sind schwierig zu interpretieren, es sei denn, Sie importieren sie in eine Tabelle oder Datenbank. Sie finden online viele IAS-Analysetools (Internet Authentication Service), die Sie zur Interpretation der Protokolldateien verwenden können. Hier ist die Ausgabe einer solchen herunterladbaren [Sharewareanwendung](https://www.deepsoftware.com/iasviewer) abgebildet:
 
 ![Beispiel für eine IAS-Analyse einer Shareware-App](./media/howto-mfa-nps-extension-vpn/image49.png)
 
-Zur weiteren Problembehandlung können Sie ein Protokollanalyseprogramm wie Wireshark oder [Microsoft Message Analyzer](https://technet.microsoft.com/library/jj649776.aspx) verwenden. Die folgende Abbildung aus Wireshark zeigt die zwischen dem VPN-Server und Netzwerkrichtlinienserver gesendeten RADIUS-Nachrichten.
+Zur weiteren Problembehandlung können Sie ein Protokollanalyseprogramm wie Wireshark oder [Microsoft Message Analyzer](/message-analyzer/microsoft-message-analyzer-operating-guide) verwenden. Die folgende Abbildung aus Wireshark zeigt die zwischen dem VPN-Server und Netzwerkrichtlinienserver gesendeten RADIUS-Nachrichten.
 
 ![Gefilterter Datenverkehr in Microsoft Message Analyzer](./media/howto-mfa-nps-extension-vpn/image50.png)
 

@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
 ms.date: 04/22/2020
-ms.openlocfilehash: 8d94acabb434d0e722e352de46197a86e994e145
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 081da2b3f6fbe97ebce21940d7e0ca8978793b15
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87290034"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88652099"
 ---
 # <a name="what-is-automated-machine-learning-automl"></a>Was ist automatisiertes maschinelles Lernen (AutoML)?
 
@@ -201,8 +201,6 @@ Die Erstellung eines Modells __für jede Instanz oder jede Einzelperson__ kann i
 * Vorhersage der Umsätze für jedes einzelne Geschäft
 * Vorausschauende Wartung für Hunderte von Ölquellen
 * Anpassen einer Erfahrung für einzelne Benutzer
-
-Weitere Informationen finden Sie auf GitHub unter [Many Models Solution Accelerator](https://aka.ms/many-models) (Projektmappenbeschleuniger für viele Modelle).
 
 ## <a name="automl-in-azure-machine-learning"></a>AutoML in Azure Machine Learning
 

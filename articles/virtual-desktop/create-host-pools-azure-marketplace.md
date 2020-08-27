@@ -3,15 +3,15 @@ title: 'Windows Virtual Desktop-Hostpool im Azure-Portal: Azure'
 description: Hier erfahren Sie, wie Sie einen Windows Virtual Desktop-Hostpool im Azure-Portal erstellen.
 author: Heidilohr
 ms.topic: tutorial
-ms.date: 04/30/2020
+ms.date: 08/21/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: c9a421e15f3561bb4de7f528ab1c707a0251dfe5
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 30101d4e9125b0ac283710ebb26205c2bb120766
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88002667"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88755482"
 ---
 # <a name="tutorial-create-a-host-pool-with-the-azure-portal"></a>Tutorial: Erstellen eines Hostpools mit dem Azure-Portal
 
@@ -36,7 +36,7 @@ Außerdem müssen Sie Folgendes wissen:
 - Wo befindet sich die Quelle des Images, das Sie verwenden möchten? Stammt es aus dem Azure-Katalog, oder handelt es sich um ein benutzerdefiniertes Image?
 - Wo befinden sich Ihre Anmeldeinformationen für den Domänenbeitritt?
 
-Stellen Sie außerdem sicher, dass Sie den Ressourcenanbieter „Microsoft.DesktopVirtualization“ registriert haben. Gehen Sie wie folgt vor, falls Sie dies noch nicht getan haben: Navigieren Sie zu **Abonnements**, wählen Sie den Namen Ihres Abonnements und dann **Azure-Ressourcenanbieter** aus.
+Stellen Sie außerdem sicher, dass Sie den Ressourcenanbieter „Microsoft.DesktopVirtualization“ registriert haben. Gehen Sie wie folgt vor, falls Sie dies noch nicht getan haben: Navigieren Sie zu **Abonnements**, und wählen Sie den Namen Ihres Abonnements und dann **Ressourcenanbieter** aus. Suchen Sie nach DesktopVirtualization, und wählen Sie „Microsoft.DesktopVirtualization“ und dann „Registrieren“ aus.
 
 Beim Erstellen eines Windows Virtual Desktop-Hostpools mit der Azure Resource Manager-Vorlage können Sie einen virtuellen Computer über den Azure-Katalog, ein verwaltetes Image oder ein nicht verwaltetes Image erstellen. Weitere Informationen zur Erstellung von VM-Images finden Sie unter [Vorbereiten einer Windows-VHD oder -VHDX zum Hochladen in Azure](../virtual-machines/windows/prepare-for-upload-vhd-image.md) bzw. unter [Erstellen eines verwalteten Images eines generalisierten virtuellen Computers in Azure](../virtual-machines/windows/capture-image-resource.md).
 
@@ -80,9 +80,9 @@ Zum Erstellen des neuen Hostpools führen Sie zunächst die folgenden Schritte a
        > [!div class="mx-imgBorder"]
        > ![Screenshot des Dropdownmenüs „Zuweisungstyp“ mit ausgewählter Option „In Pool“. Der Benutzer zeigt mit dem Cursor auf die Option „Breitenorientierter Lastenausgleich“ im Dropdownmenü „Lastenausgleichsalgorithmus“.](media/pooled-assignment-type.png)
 
-10. Klicken Sie auf **Weiter: Details zum virtuellen Computer**.
+10. Klicken Sie auf **Weiter: Virtuelle Computer >** .
 
-11. Wenn Sie bereits VMs erstellt haben und diese mit dem neuen Hostpool verwenden möchten, wählen Sie **Nein** aus. Möchten Sie neue VMs erstellen und beim neuen Hostpool registrieren, wählen Sie **Ja** aus.
+11. Wenn Sie bereits virtuelle Computer erstellt haben und diese mit dem neuen Hostpool verwenden möchten, wählen Sie **Nein** und dann **Weiter: Arbeitsbereich >** aus, und wechseln Sie zum Abschnitt [Arbeitsbereichsinformationen](#workspace-information). Möchten Sie neue VMs erstellen und beim neuen Hostpool registrieren, wählen Sie **Ja** aus.
 
 Damit ist der erste Teil abgeschlossen. Im nächsten Teil des Einrichtungsprozesses erstellen Sie die VM.
 
@@ -92,16 +92,16 @@ Nachdem Sie den ersten Teil abgeschlossen haben, müssen Sie nun Ihre VM einrich
 
 So richten Sie Ihre VM im Rahmen des Einrichtungsprozesses für den Hostpool ein:
 
-1. Wählen Sie unter „Ressourcengruppe“ die Ressourcengruppe aus, in der Sie die VM erstellen möchten. Dabei kann es sich um eine andere Ressourcengruppe als die für den Hostpool handeln.
+1. Wählen Sie unter **Ressourcengruppe** die Ressourcengruppe aus, in der Sie die virtuellen Computer erstellen möchten. Dabei kann es sich um eine andere Ressourcengruppe als die für den Hostpool handeln.
 
-2. Wählen Sie die **Region** aus, in der Sie die VM erstellen möchten. Sie können die für den Hostpool ausgewählte Region oder eine andere Region verwenden.
+2. Wählen Sie den **VM-Standort** aus, in dem Sie die virtuellen Computer erstellen möchten. Sie können die für den Hostpool ausgewählte Region oder eine andere Region verwenden.
 
-3. Wählen Sie als Nächstes die Größe der VM aus. Sie können entweder die Standardgröße übernehmen oder **Größe ändern** auswählen, um die Größe zu ändern. Wenn Sie auf **Größe ändern** klicken, wählen Sie im angezeigten Fenster die passende VM-Größe für Ihre Workload aus.
+3. Wählen Sie als Nächstes die **VM-Größe** aus. Sie können entweder die Standardgröße übernehmen oder **Größe ändern** auswählen, um die Größe zu ändern. Wenn Sie auf **Größe ändern** klicken, wählen Sie im angezeigten Fenster die passende VM-Größe für Ihre Workload aus.
 
-4. Geben Sie unter „Anzahl von VMs“ die Anzahl von VMs an, die Sie für Ihren Hostpool erstellen möchten.
+4. Geben Sie unter **Anzahl von VMs** die Anzahl von virtuellen Computern an, die Sie für Ihren Hostpool erstellen möchten.
 
     >[!NOTE]
-    >Sie können während der Einrichtung Ihres Hostpools bis zu 400 VMs erstellen, und bei jedem VM-Einrichtungsprozess werden vier Objekte in Ihrer Ressourcengruppe erstellt. Ihr Abonnementkontingent wird bei der Erstellung nicht überprüft. Achten Sie daher darauf, dass die von Ihnen angegebene Anzahl von VMs den Azure-VM- und API-Grenzwerten für Ihre Ressourcengruppe und Ihr Abonnement entspricht. Sie können nach der Erstellung des Hostpools weitere VMs hinzufügen.
+    >Sie können während der Einrichtung Ihres Hostpools bis zu 400 VMs erstellen, und bei jedem VM-Einrichtungsprozess werden vier Objekte in Ihrer Ressourcengruppe erstellt. Ihr Abonnementkontingent wird bei der Erstellung nicht überprüft. Achten Sie daher darauf, dass die von Ihnen angegebene Anzahl virtueller Computer den Azure-VM- und API-Grenzwerten für Ihre Ressourcengruppe und Ihr Abonnement entspricht. Sie können nach der Erstellung des Hostpools weitere VMs hinzufügen.
 
 5. Geben Sie anschließend ein **Namenspräfix** für die Benennung der VMs an, die beim Einrichtungsprozess erstellt werden. Das Suffix ist `-` mit Zahlen ab 0.
 
@@ -109,9 +109,11 @@ So richten Sie Ihre VM im Rahmen des Einrichtungsprozesses für den Hostpool ein
 
     - Wählen Sie bei Auswahl von **Katalog** im Dropdownmenü eines der empfohlenen Images aus:
 
-      - Windows 10 Enterprise (mehrere Sitzungen), Version 1909 + Microsoft 365 Apps for Enterprise – Gen 1
-      - Windows 10 Enterprise mit mehreren Sitzungen, Version 1909 – Gen 1
-      - Windows Server 2019 Datacenter – Gen 1
+      - Windows 10 Enterprise (mehrere Sitzungen), Version 1909
+      - Windows 10 Enterprise (mehrere Sitzungen), Version 1909 + Microsoft 365 Apps
+      - Windows Server 2019 Datacenter
+      - Windows 10 Enterprise (mehrere Sitzungen), Version 2004
+      - Windows 10 Enterprise (mehrere Sitzungen), Version 2004 + Microsoft 365 Apps
 
      Falls das gewünschte Image nicht angezeigt wird, wählen Sie **Alle Images und Datenträger durchsuchen** aus. Sie können dann ein anderes Image in Ihrem Katalog oder ein von Microsoft und anderen Herausgebern bereitgestelltes Image auswählen.
 
@@ -127,7 +129,7 @@ So richten Sie Ihre VM im Rahmen des Einrichtungsprozesses für den Hostpool ein
 
 7. Wählen Sie den gewünschten Typ für die Betriebssystemdatenträger Ihrer VMs aus: „SSD Standard“, „SSD Premium“ oder „HDD Standard“.
 
-8. Wählen Sie unter „Netzwerk und Sicherheit“ das virtuelle Netzwerk und das Subnetz aus, in dem Sie die von Ihnen erstellten VMs platzieren möchten. Stellen Sie sicher, dass das virtuelle Netzwerk eine Verbindung mit dem Domänencontroller herstellen kann, da Sie die VMs im virtuellen Netzwerk der Domäne hinzufügen müssen. Wählen Sie als Nächstes aus, ob die VMs eine öffentliche IP-Adresse haben sollen. Wir empfehlen, **Nein** auszuwählen, weil eine private IP-Adresse sicherer ist.
+8. Wählen Sie unter „Netzwerk und Sicherheit“ das **virtuelle Netzwerk** und das **Subnetz** aus, in dem Sie die von Ihnen erstellten virtuellen Computer platzieren möchten. Stellen Sie sicher, dass das virtuelle Netzwerk eine Verbindung mit dem Domänencontroller herstellen kann, da Sie die VMs im virtuellen Netzwerk der Domäne hinzufügen müssen. Wählen Sie als Nächstes aus, ob die VMs eine öffentliche IP-Adresse haben sollen. Wir empfehlen, **Nein** auszuwählen, weil eine private IP-Adresse sicherer ist.
 
 9. Wählen Sie den gewünschten Sicherheitsgruppentyp aus: **Basic**, **Erweitert** oder **Keine**.
 
@@ -141,11 +143,11 @@ So richten Sie Ihre VM im Rahmen des Einrichtungsprozesses für den Hostpool ein
 
     Wählen Sie bei Auswahl von **Erweitert** eine vorhandene Netzwerksicherheitsgruppe aus, die Sie bereits konfiguriert haben.
 
-10. Wählen Sie anschließend aus, ob die VMs einer bestimmten Domäne und Organisationseinheit beitreten sollen. Geben Sie bei Auswahl von **Ja** die jeweilige Domäne an. Sie können auch eine spezifische Organisationseinheit hinzufügen, in der die VMs enthalten sein sollen.
+10. Wählen Sie anschließend aus, ob die VMs einer bestimmten Domäne und Organisationseinheit beitreten sollen. Geben Sie bei Auswahl von **Ja** die jeweilige Domäne an. Sie können optional eine spezifische Organisationseinheit hinzufügen, in der die virtuellen Computer enthalten sein sollen. Wenn Sie **Nein** auswählen, werden die virtuellen Computer mit der Domäne verknüpft, die dem Suffix des **UPN für AD-Domänenbeitritt** entspricht.
 
 11. Geben Sie unter „Administratorkonto“ die Anmeldeinformationen für den Active Directory-Domänenadministrator des virtuellen Netzwerks an, das Sie ausgewählt haben.
 
-12. Wählen Sie **Arbeitsbereich** aus.
+12. Klicken Sie auf **Weiter: Arbeitsbereich >** .
 
 Damit sind Sie bereit für die nächste Phase der Einrichtung Ihres Hostpools: Registrieren Ihrer App-Gruppe in einem Arbeitsbereich.
 
@@ -161,7 +163,7 @@ So registrieren Sie die Desktop-App-Gruppe in einem Arbeitsbereich:
 
 2. Wählen Sie aus, ob Sie einen neuen Arbeitsbereich erstellen oder einen vorhandenen Arbeitsbereich verwenden möchten. Die App-Gruppe kann nur in Arbeitsbereichen registriert werden, die am gleichen Standort wie der Hostpool erstellt werden.
 
-3. Optional können Sie **Tags** auswählen.
+3. Optional können Sie **Weiter: Tags >** auswählen.
 
     Hier können Sie Tags hinzufügen, damit Sie die Objekte mit Metadaten gruppieren und dadurch Ihren Administratoren die Arbeit erleichtern können.
 

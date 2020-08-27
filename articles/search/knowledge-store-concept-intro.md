@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 78a8e0a46fd60f14ea3bae7485c737aa4fe3c60e
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 3ec556c6198a00f217568f6591bd4b43c7fc743e
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86230773"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88924298"
 ---
 # <a name="knowledge-store-in-azure-cognitive-search"></a>Wissensspeicher in Azure Cognitive Search
 
@@ -21,7 +21,7 @@ Der Wissensspeicher ist ein Feature von Azure Cognitive Search, das Ausgaben aus
 
 Wenn Sie in der Vergangenheit kognitive Fähigkeiten genutzt haben, wissen Sie bereits, dass Dokumente mithilfe von *Skillsets* auf verschiedene Weisen angereichert werden. Bei der Ausgabe kann es sich um einen Suchindex oder um Projektionen in einem Wissensspeicher handeln. Die beiden Ausgaben in Form des Suchindexes und Wissensspeichers werden durch dieselbe Pipeline erzeugt. Sie werden von denselben Eingaben abgeleitet, resultieren jedoch in einer Ausgabe, die auf sehr unterschiedliche Weisen strukturiert, gespeichert und verwendet wird.
 
-Physisch betrachtet handelt es sich bei einem Wissensspeicher um [Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-account-overview) (Azure Table Storage, Azure Blob Storage oder beides). Jedes Tool und jeder Prozess, das bzw. der eine Verbindung mit Azure Storage herstellen kann, kann die Inhalte eines Wissensspeichers nutzen.
+Physisch betrachtet handelt es sich bei einem Wissensspeicher um [Azure Storage](../storage/common/storage-account-overview.md) (Azure Table Storage, Azure Blob Storage oder beides). Jedes Tool und jeder Prozess, das bzw. der eine Verbindung mit Azure Storage herstellen kann, kann die Inhalte eines Wissensspeichers nutzen.
 
 
 > [!VIDEO https://www.youtube.com/embed/XWzLBP8iWqg?version=3&start=235&end=426]
@@ -39,7 +39,7 @@ Wissensspeicher bieten u. a. folgende Vorteile:
 
 + Nutzen Sie angereicherte Dokumente auch in anderen [Analyse- und Berichtstools](#tools-and-apps) als Search. Power BI mit Power Query ist eine hervorragende Wahl, allerdings sind auch alle Tools oder Apps, die eine Verbindung mit Azure Storage herstellen können, in der Lage, Daten aus einem von Ihnen erstellten Wissensspeicher abzurufen.
 
-+ Optimieren Sie eine KI-basierte Indizierungspipeline während der Debuggingschritte und der Definition von Qualifikationen. Ein Wissensspeicher zeigt das Produkt einer Qualifikationsgruppendefinition in einer KI-Indizierungspipeline. Sie können diese Ergebnisse verwenden, um eine bessere Qualifikationsgruppe zu entwerfen, da Sie genau sehen können, wie die Anreicherungen aussehen. Verwenden Sie den [Storage-Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows) in Azure Storage, um die Inhalte eines Wissensspeichers anzuzeigen.
++ Optimieren Sie eine KI-basierte Indizierungspipeline während der Debuggingschritte und der Definition von Qualifikationen. Ein Wissensspeicher zeigt das Produkt einer Qualifikationsgruppendefinition in einer KI-Indizierungspipeline. Sie können diese Ergebnisse verwenden, um eine bessere Qualifikationsgruppe zu entwerfen, da Sie genau sehen können, wie die Anreicherungen aussehen. Verwenden Sie den [Storage-Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows) in Azure Storage, um die Inhalte eines Wissensspeichers anzuzeigen.
 
 + Formen Sie die Daten um. Die Umgestaltung ist in Qualifikationsgruppen codiert, das Wichtigste ist aber, dass diese Funktion nun von einer Qualifikationsgruppe bereitgestellt werden kann. Die [Qualifikation „Shaper“](cognitive-search-skill-shaper.md) in Azure Cognitive Search wurde erweitert, um genau diese Aufgabe zu ermöglichen. Die Umstrukturierung ermöglicht Ihnen die Definition einer Projektion für die beabsichtigte Verwendung der Daten unter Beibehaltung der Beziehungen.
 
@@ -84,7 +84,7 @@ Es ist jedoch möglich, mehrere Sätze von `table`-`object`-`file`-Projektionen 
 
 ## <a name="requirements"></a>Requirements (Anforderungen) 
 
-[Azure Storage](https://docs.microsoft.com/azure/storage/) ist erforderlich und ermöglicht die physische Speicherung. Sie können Blob Storage, Table Storage oder beides verwenden. Blob Storage wird üblicherweise für intakte angereicherte Dokumente verwendet, wenn die Ausgabe an Downstreamprozesse weitergeleitet wird. Table Storage wird für Segmente angereicherter Dokumente verwendet, die häufig für Analysen und Berichte verwendet werden.
+[Azure Storage](../storage/index.yml) ist erforderlich und ermöglicht die physische Speicherung. Sie können Blob Storage, Table Storage oder beides verwenden. Blob Storage wird üblicherweise für intakte angereicherte Dokumente verwendet, wenn die Ausgabe an Downstreamprozesse weitergeleitet wird. Table Storage wird für Segmente angereicherter Dokumente verwendet, die häufig für Analysen und Berichte verwendet werden.
 
 Ein [Skillset-](cognitive-search-working-with-skillsets.md) ist erforderlich. Es enthält die Definition von `knowledgeStore` und bestimmt die Struktur und Zusammensetzung eines angereicherten Dokuments. Es ist nicht möglich, einen Wissensspeicher mit einem leeren Skillset zu erstellen. Ein Skillset muss mindestens eine Qualifikation enthalten.
 
@@ -130,7 +130,7 @@ Wenn die Anreicherungen in Storage gespeichert sind, können Sie beliebige Tools
 
 + Nutzen Sie [Power BI](knowledge-store-connect-power-bi.md) für die Berichterstellung und Analyse. 
 
-+ Verwenden Sie [Azure Data Factory](https://docs.microsoft.com/azure/data-factory/) für die weiterführende Bearbeitung.
++ Verwenden Sie [Azure Data Factory](../data-factory/index.yml) für die weiterführende Bearbeitung.
 
 <a name="kstore-rest-api"></a>
 
@@ -138,8 +138,8 @@ Wenn die Anreicherungen in Storage gespeichert sind, können Sie beliebige Tools
 
 Die REST-API-Version `2020-06-30` stellt den Wissensspeicher mithilfe zusätzlicher Definitionen für Skillsets bereit. Weitere Informationen zum Abrufen der APIs finden Sie neben der Referenz auch unter [Erstellen eines Wissensspeichers mithilfe von Postman](knowledge-store-create-rest.md).
 
-+ [Create Skillset (api-version=2020-06-30)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
-+ [Update Skillset (api-version=2020-06-30)](https://docs.microsoft.com/rest/api/searchservice/update-skillset)
++ [Create Skillset (api-version=2020-06-30)](/rest/api/searchservice/create-skillset)
++ [Update Skillset (api-version=2020-06-30)](/rest/api/searchservice/update-skillset)
 
 
 ## <a name="next-steps"></a>Nächste Schritte

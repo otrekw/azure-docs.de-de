@@ -3,16 +3,16 @@ title: 'Tutorial: Konfigurieren des Netzwerks für Ihre private VMware-Cloud in 
 description: Hier erfahren Sie, wie Sie das erforderliche Netzwerk zum Bereitstellen Ihrer privaten Cloud in Azure erstellen und konfigurieren.
 ms.topic: tutorial
 ms.date: 07/22/2020
-ms.openlocfilehash: aa4247f60c3e1ec54bfcde336d1ae8c8f70ff7a8
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ff071e0d6eaf1552634433a76e4eade530c603b6
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87079433"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88750501"
 ---
 # <a name="tutorial-configure-networking-for-your-vmware-private-cloud-in-azure"></a>Tutorial: Konfigurieren des Netzwerks für Ihre private VMware-Cloud in Azure
 
-Eine private AVS-Cloud (Azure VMware Solution) erfordert ein virtuelles Azure-Netzwerk. Da AVS Ihre lokale vCenter-Instanz in der Vorschauversion nicht unterstützt, müssen Sie zusätzliche Schritte für die Integration in Ihre lokale Umgebung durchführen. Die Einrichtung einer ExpressRoute-Leitung und eines Gateways für das virtuelle Netzwerk ist ebenfalls erforderlich und wird in diesem Tutorial behandelt.
+Eine private Azure VMware Solution-Cloud erfordert ein virtuelles Azure-Netzwerk. Da Azure VMware Solution Ihre lokale vCenter-Instanz in der Vorschauversion nicht unterstützt, müssen Sie zusätzliche Schritte für die Integration in Ihre lokale Umgebung durchführen. Die Einrichtung einer ExpressRoute-Leitung und eines Gateways für das virtuelle Netzwerk ist ebenfalls erforderlich und wird in diesem Tutorial behandelt.
 
 In diesem Tutorial lernen Sie Folgendes:
 
@@ -23,7 +23,7 @@ In diesem Tutorial lernen Sie Folgendes:
 > * Ermitteln der URLs für vCenter und NSX Manager
 
 ## <a name="prerequisites"></a>Voraussetzungen 
-Vergewissern Sie sich, dass Sie eine [private AVS-Cloud](tutorial-create-private-cloud.md) erstellt haben, damit Sie ein virtuelles Netzwerk erstellen können. 
+Vergewissern Sie sich, dass Sie eine [private Azure VMware Solution-Cloud](tutorial-create-private-cloud.md) erstellt haben, damit Sie ein virtuelles Netzwerk erstellen können. 
 
 ## <a name="create-a-virtual-network"></a>Erstellen eines virtuellen Netzwerks
 
@@ -48,7 +48,7 @@ Vergewissern Sie sich, dass Sie eine [private AVS-Cloud](tutorial-create-private
 
 1. Klicken Sie auf **Überprüfen + erstellen**.
 
-   :::image type="content" source="./media/tutorial-configure-networking/create-virtual-network.png" alt-text="Erstellen eines virtuellen Netzwerks" border="true":::
+   :::image type="content" source="./media/tutorial-configure-networking/create-virtual-network.png" alt-text="Auswählen von „Überprüfen + erstellen“" border="true":::
 
 1. Überprüfen Sie die Angaben, und wählen Sie dann **Erstellen** aus. Nach Abschluss der Bereitstellung wird Ihr virtuelles Netzwerk in der Ressourcengruppe angezeigt.
 
@@ -76,20 +76,20 @@ Sie haben ein virtuelles Netzwerk erstellt und erstellen nun ein Gateway für da
    | **Adressbereich für Gatewaysubnetz** | Dieser Wert wird aufgefüllt, wenn Sie das virtuelle Netzwerk auswählen. Lassen Sie den Standardwert unverändert. |
    | **Öffentliche IP-Adresse** | Wählen Sie **Neu erstellen**. |
 
-   :::image type="content" source="./media/tutorial-configure-networking/create-virtual-network-gateway.png" alt-text="Erstellen eines Gateways" border="true":::
+   :::image type="content" source="./media/tutorial-configure-networking/create-virtual-network-gateway.png" alt-text="Angeben von Werten für die Felder auf der Registerkarte „Grundlagen“ der Seite „Gateway für virtuelle Netzwerke erstellen“ und Auswählen von „Überprüfen + erstellen“" border="true":::
 
 1. Überprüfen Sie die Details auf ihre Richtigkeit, und wählen Sie dann **Erstellen** aus, um die Bereitstellung des Gateways für virtuelle Netzwerke zu starten. 
-1. Fahren Sie nach Abschluss der Bereitstellung mit dem nächsten Abschnitt fort, um Ihre ExpressRoute-Verbindung mit dem Gateway für virtuelle Netzwerke zu verbinden, das Ihre private AVS-Cloud enthält.
+1. Fahren Sie nach Abschluss der Bereitstellung mit dem nächsten Abschnitt fort, um Ihre ExpressRoute-Verbindung mit dem Gateway für virtuelle Netzwerke zu verbinden, das Ihre private Azure VMware Solution-Cloud enthält.
 
 ## <a name="connect-expressroute-to-the-virtual-network-gateway"></a>Verbinden von ExpressRoute mit dem Gateway für virtuelle Netzwerke
 
-Sie haben ein Gateway für virtuelle Netzwerke bereitgestellt und fügen nun eine Verbindung zwischen dem Gateway und Ihrer privaten AVS-Cloud hinzu.
+Sie haben ein Gateway für virtuelle Netzwerke bereitgestellt und fügen nun eine Verbindung zwischen dem Gateway und Ihrer privaten Azure VMware Solution-Cloud hinzu.
 
 1. Navigieren Sie zu der privaten Cloud, die Sie im vorherigen Tutorial erstellt haben, wählen Sie unter **Verwalten** die Option **Konnektivität** und dann die Registerkarte **ExpressRoute** aus.
 
-1. Kopieren Sie den Autorisierungsschlüssel. Falls kein Autorisierungsschlüssel angezeigt wird, müssen Sie einen erstellen, indem Sie **+ Request an authorization key** (Autorisierungsschlüssel anfordern) auswählen.
+1. Kopieren Sie den Autorisierungsschlüssel. Falls kein Autorisierungsschlüssel angezeigt wird, müssen Sie einen erstellen, indem Sie **+ Autorisierungsschlüssel anfordern** auswählen.
 
-   :::image type="content" source="./media/tutorial-configure-networking/request-auth-key.png" alt-text="Anfordern eines Autorisierungsschlüssels" border="true":::
+   :::image type="content" source="./media/tutorial-configure-networking/request-auth-key.png" alt-text="Kopieren Sie den Autorisierungsschlüssel. Falls kein Autorisierungsschlüssel angezeigt wird, müssen Sie einen erstellen, indem Sie „Autorisierungsschlüssel anfordern“ auswählen." border="true":::
 
 1. Navigieren Sie zu dem Gateway des virtuellen Netzwerks, das Sie im vorherigen Schritt erstellt haben, und wählen Sie unter **Einstellungen** die Option **Verbindungen** aus. Wählen Sie auf der Seite **Verbindungen** die Option **+ Hinzufügen** aus.
 
@@ -104,7 +104,7 @@ Sie haben ein Gateway für virtuelle Netzwerke bereitgestellt und fügen nun ein
    | **Autorisierungsschlüssel**  | Kopieren Sie den Autorisierungsschlüssel von der Registerkarte „ExpressRoute“ für Ihre Ressourcengruppe, und fügen Sie ihn ein. |
    | **Peerleitungs-URI**  | Kopieren Sie die ExpressRoute-ID von der Registerkarte „ExpressRoute“ für Ihre Ressourcengruppe, und fügen Sie sie ein.  |
 
-   :::image type="content" source="./media/tutorial-configure-networking/add-connection.png" alt-text="Hinzufügen einer Verbindung" border="true":::
+   :::image type="content" source="./media/tutorial-configure-networking/add-connection.png" alt-text="Geben Sie auf der Seite „Verbindung hinzufügen“ Werte für die Felder an, und wählen Sie „OK“ aus." border="true":::
 
 Die Verbindung zwischen Ihrer ExpressRoute-Leitung und Ihrem virtuellen Netzwerk wird erstellt.
 
@@ -114,9 +114,9 @@ Die Verbindung zwischen Ihrer ExpressRoute-Leitung und Ihrem virtuellen Netzwerk
 
 Damit Sie sich bei vCenter und NSX Manager anmelden können, benötigen Sie die URLs des vCenter-Webclients und der NSX-T Manager-Website. 
 
-Navigieren Sie zu Ihrer privaten AVS-Cloud, und wählen Sie unter **Verwalten** die Option **Identität** aus. Dort finden Sie die benötigten Informationen.
+Navigieren Sie zu Ihrer privaten Azure VMware Solution-Cloud, und wählen Sie unter **Verwalten** die Option **Identität** aus. Dort finden Sie die benötigten Informationen.
 
-:::image type="content" source="./media/tutorial-configure-networking/locate-urls.png" alt-text="Ermitteln der vCenter-URLs" border="true":::
+:::image type="content" source="./media/tutorial-configure-networking/locate-urls.png" alt-text="Navigieren Sie zu Ihrer privaten Azure VMware Solution-Cloud, und wählen Sie unter „Verwalten“ die Option „Identität“ aus. Dort finden Sie die benötigten Informationen." border="true":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 
