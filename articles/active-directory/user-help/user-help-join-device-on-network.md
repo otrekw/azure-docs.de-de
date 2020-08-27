@@ -12,12 +12,12 @@ ms.topic: end-user-help
 ms.date: 08/03/2018
 ms.author: curtand
 ms.reviewer: jairoc
-ms.openlocfilehash: 6c93f34068cd296cb2d3a59f208fa644cdbf2260
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 17c0b7bd802d4a50343f88b9517313489943e10c
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83745732"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88799484"
 ---
 # <a name="join-your-work-device-to-your-organizations-network"></a>Einbinden von geschäftlichen Geräten in das Netzwerk der Organisation
 Binden Sie Ihr unternehmenseigenes Windows 10-Gerät in das Netzwerk Ihrer Organisation ein, sodass Sie auf möglicherweise eingeschränkte Ressourcen zugreifen können.
@@ -27,9 +27,9 @@ Wenn Sie Ihr Windows 10-Gerät in das Netzwerk Ihrer Organisation einbinden, ges
 
 - Ihr Gerät wird von Windows beim Netzwerk Ihrer Organisation registriert, sodass Sie über Ihr persönliches Konto auf Ihre Ressourcen zugreifen können. Nachdem Ihr Gerät registriert wurde, wird es von Windows in das Netzwerk eingebunden, sodass Sie den Benutzernamen und das Kennwort Ihrer Organisation zum Anmelden und für den Zugriff auf eingeschränkte Ressourcen verwenden können.
 
-- Abhängig von der Entscheidung Ihrer Organisation werden Sie möglicherweise dazu aufgefordert, eine zweistufige Überprüfung entweder durch [Multi-Factor Authentication](multi-factor-authentication-end-user-first-time.md) oder [Sicherheitsinformation](user-help-security-info-overview.md) einzurichten.
+- Abhängig von der Entscheidung Ihrer Organisation werden Sie möglicherweise dazu aufgefordert, eine zweistufige Überprüfung entweder durch [Multi-Factor Authentication](multi-factor-authentication-end-user-first-time.md) oder [Sicherheitsinformation](./security-info-setup-signin.md) einzurichten.
 
-- Optional, basierend auf der Entscheidung Ihrer Organisation, werden Sie automatisch in der Verwaltung mobiler Geräte, wie z.B. bei Microsoft Intune, registriert. Weitere Informationen zum Registrieren in Microsoft Intune finden Sie unter [Registrieren Ihres Geräts bei Intune](https://docs.microsoft.com/intune-user-help/enroll-your-device-in-intune-all).
+- Optional, basierend auf der Entscheidung Ihrer Organisation, werden Sie automatisch in der Verwaltung mobiler Geräte, wie z.B. bei Microsoft Intune, registriert. Weitere Informationen zum Registrieren in Microsoft Intune finden Sie unter [Registrieren Ihres Geräts bei Intune](/intune-user-help/enroll-your-device-in-intune-all).
 
 - Führen Sie den Anmeldevorgang mithilfe der automatischen Anmeldung mit Ihrem Organisationskonto durch.
 
@@ -115,4 +115,4 @@ Nachdem Sie Ihr Gerät in das Netzwerk der Organisation eingebunden haben, sollt
 
 - Wenn in Ihrer Organisation gewünscht wird, dass Sie sich mit Ihrem persönlichen Gerät, also etwa mit Ihrem Telefon, registrieren, finden Sie die entsprechenden Informationen unter [Register your personal device on your organization's network (Registrieren des persönlichen Geräts im Netzwerk der eigenen Organisation)](user-help-register-device-on-network.md).
 
-- Wenn Ihre Organisation mithilfe von Microsoft Intune verwaltet wird und Sie Fragen zur Registrierung, Anmeldung und zu einem anderen Problem im Zusammenhang mit Intune haben, finden Sie die Antworten im [Inhalt der Intune-Benutzerhilfe](https://docs.microsoft.com/intune-user-help/use-managed-devices-to-get-work-done).
+- Wenn Ihre Organisation mithilfe von Microsoft Intune verwaltet wird und Sie Fragen zur Registrierung, Anmeldung und zu einem anderen Problem im Zusammenhang mit Intune haben, finden Sie die Antworten im [Inhalt der Intune-Benutzerhilfe](/intune-user-help/use-managed-devices-to-get-work-done).

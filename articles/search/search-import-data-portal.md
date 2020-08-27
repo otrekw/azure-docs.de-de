@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 8d786f1ebadc961ab367fdcc9b27c4d829a68400
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7cff009d5d1e187e8d0330fadca530b57b3e3d21
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85321380"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935210"
 ---
 # <a name="import-data-wizard-for-azure-cognitive-search"></a>Datenimport-Assistent für die kognitive Azure-Suche
 
@@ -73,14 +73,14 @@ Diese einzelne Tabelle oder Sicht muss vor dem Ausführen des Assistenten erstel
 
 ## <a name="wizard-output"></a>Ausgabe des Assistenten
 
-Im Hintergrund erstellt und konfiguriert der Assistent die folgenden Objekte, und ruft sie auf. Nachdem der Assistent ausgeführt wurde, finden Sie seine Ausgabe auf den Portalseiten. Die Übersichtsseite Ihres Diensts enthält Listen mit Indizes, Indexern, Datenquellen und Qualifikationsgruppen. Indexdefinitionen können mit vollständigem JSON-Code im Portal angezeigt werden. Für andere Definitionen können Sie die [REST-API](https://docs.microsoft.com/rest/api/searchservice/) verwenden, um bestimmte Objekte mit GET abzurufen.
+Im Hintergrund erstellt und konfiguriert der Assistent die folgenden Objekte, und ruft sie auf. Nachdem der Assistent ausgeführt wurde, finden Sie seine Ausgabe auf den Portalseiten. Die Übersichtsseite Ihres Diensts enthält Listen mit Indizes, Indexern, Datenquellen und Qualifikationsgruppen. Indexdefinitionen können mit vollständigem JSON-Code im Portal angezeigt werden. Für andere Definitionen können Sie die [REST-API](/rest/api/searchservice/) verwenden, um bestimmte Objekte mit GET abzurufen.
 
 | Object | BESCHREIBUNG | 
 |--------|-------------|
-| [Data Source](https://docs.microsoft.com/rest/api/searchservice/create-data-source)  | Speichert die Verbindungsinformationen zu den Quelldaten, einschließlich der Anmeldeinformationen. Ein Datenquellenobjekt wird ausschließlich mit Indexern verwendet. | 
-| [Index](https://docs.microsoft.com/rest/api/searchservice/create-index) | Physische Datenstruktur, die für die Volltextsuche und andere Abfragen verwendet wird. | 
-| [Qualifikationsgruppe](https://docs.microsoft.com/rest/api/searchservice/create-skillset) | Ein kompletter Satz von Anweisungen zum Bearbeiten, Transformieren und Strukturieren von Inhalten, einschließlich der Analyse und Extraktion von Informationen aus Bilddateien. Mit Ausnahme sehr einfacher und eingeschränkter Strukturen umfasst eine Qualifikationsgruppe einen Verweis auf eine Cognitive Services-Ressource, die Anreicherungen bereitstellt. Optional kann sie auch eine Wissensspeicherdefinition enthalten.  | 
-| [Indexer](https://docs.microsoft.com/rest/api/searchservice/create-indexer)  | Ein Konfigurationsobjekt, das eine Datenquelle, einen Zielindex, eine optionale Qualifikationsgruppe, einen optionalen Zeitplan und optionale Konfigurationseinstellungen für die Fehlerbehandlung und Base-64-Codierung festlegt. |
+| [Data Source](/rest/api/searchservice/create-data-source)  | Speichert die Verbindungsinformationen zu den Quelldaten, einschließlich der Anmeldeinformationen. Ein Datenquellenobjekt wird ausschließlich mit Indexern verwendet. | 
+| [Index](/rest/api/searchservice/create-index) | Physische Datenstruktur, die für die Volltextsuche und andere Abfragen verwendet wird. | 
+| [Qualifikationsgruppe](/rest/api/searchservice/create-skillset) | Ein kompletter Satz von Anweisungen zum Bearbeiten, Transformieren und Strukturieren von Inhalten, einschließlich der Analyse und Extraktion von Informationen aus Bilddateien. Mit Ausnahme sehr einfacher und eingeschränkter Strukturen umfasst eine Qualifikationsgruppe einen Verweis auf eine Cognitive Services-Ressource, die Anreicherungen bereitstellt. Optional kann sie auch eine Wissensspeicherdefinition enthalten.  | 
+| [Indexer](/rest/api/searchservice/create-indexer)  | Ein Konfigurationsobjekt, das eine Datenquelle, einen Zielindex, eine optionale Qualifikationsgruppe, einen optionalen Zeitplan und optionale Konfigurationseinstellungen für die Fehlerbehandlung und Base-64-Codierung festlegt. |
 
 
 ## <a name="how-to-start-the-wizard"></a>Starten des Assistenten
@@ -103,7 +103,7 @@ Der Assistent generiert einen unvollständigen Index, der mit Dokumenten aus der
 
 1. Ist die Feldliste vollständig? Fügen Sie neue Felder hinzu, die beim Sampling ausgelassen wurden, und entfernen Sie Felder, die keinen Wert für die Sucherfahrung bieten oder in keinem [Filterausdruck](search-query-odata-filter.md) oder [Bewertungsprofil](index-add-scoring-profiles.md) verwendet werden.
 
-1. Ist der Datentyp für die eingehenden Daten geeignet? Die kognitive Azure-Suche unterstützt die [Datentypen des Entity Data Model (EDM)](https://docs.microsoft.com/rest/api/searchservice/supported-data-types). Für Azure SQL-Daten gibt es ein [Zuordnungsdiagramm](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#TypeMapping), in dem äquivalente Werte aufgeführt sind. Weitere Hintergrundinformationen finden Sie unter [Feldzuordnungen und Transformationen](search-indexer-field-mappings.md).
+1. Ist der Datentyp für die eingehenden Daten geeignet? Die kognitive Azure-Suche unterstützt die [Datentypen des Entity Data Model (EDM)](/rest/api/searchservice/supported-data-types). Für Azure SQL-Daten gibt es ein [Zuordnungsdiagramm](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#TypeMapping), in dem äquivalente Werte aufgeführt sind. Weitere Hintergrundinformationen finden Sie unter [Feldzuordnungen und Transformationen](search-indexer-field-mappings.md).
 
 1. Verfügen Sie über ein Feld, das als *Schlüssel* fungieren kann? Dieses Feld muss vom Typ „Edm.string“ sein und ein Dokument eindeutig identifizieren. Bei relationalen Daten kann dieses einem Primärschlüssel zugeordnet werden. Für Blobs kann es `metadata-storage-path` sein. Wenn Feldwerte Leerzeichen oder Bindestriche enthalten, muss im Schritt **Indexer erstellen** unter **Erweiterte Optionen** die Option **Base64-codierte Schlüssel** festgelegt werden, um die Überprüfung für diese Zeichen zu unterdrücken.
 

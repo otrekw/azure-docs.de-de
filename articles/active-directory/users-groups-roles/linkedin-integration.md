@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: beengen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1c5058e24ee0817ebcc6c5761f7b9e22d1a14203
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 08d6b12f897b8b7efb150b11ae4b3f5e2440f7c8
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84727193"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88797988"
 ---
 # <a name="integrate-linkedin-account-connections-in-azure-active-directory"></a>Integrieren von LinkedIn-Kontoverbindungen in Azure Active Directory
 
@@ -33,7 +33,7 @@ Sie können Benutzern in Ihrer Organisation den Zugriff auf ihre LinkedIn-Verbin
 > * Die Einstellung ist standardmäßig für Azure AD-Organisationen, die in Deutschland bereitgestellt werden, deaktiviert. Beachten Sie, dass die Einstellung nicht für Kunden mit Microsoft Cloud Deutschland verfügbar ist.
 > * Die Einstellung ist standardmäßig für Organisationen, die in Frankreich bereitgestellt werden, deaktiviert.
 >
-> Nachdem LinkedIn-Kontoverbindungen für Ihre Organisation aktiviert wurden, funktionieren die Kontoverbindungen, nachdem die Benutzer zugestimmt haben, dass Apps in ihrem Auftrag auf Unternehmensdaten zugreifen. Informationen zur Einstellung für die Benutzereinwilligung finden Sie unter [Aufheben des Zugriffs eines Benutzers auf eine Anwendung](https://docs.microsoft.com/azure/active-directory/application-access-assignment-how-to-remove-assignment).
+> Nachdem LinkedIn-Kontoverbindungen für Ihre Organisation aktiviert wurden, funktionieren die Kontoverbindungen, nachdem die Benutzer zugestimmt haben, dass Apps in ihrem Auftrag auf Unternehmensdaten zugreifen. Informationen zur Einstellung für die Benutzereinwilligung finden Sie unter [Aufheben des Zugriffs eines Benutzers auf eine Anwendung](../manage-apps/methods-for-removing-user-access.md).
 
 ## <a name="enable-linkedin-account-connections-in-the-azure-portal"></a>Aktivieren von LinkedIn-Kontoverbindungen im Azure-Portal
 

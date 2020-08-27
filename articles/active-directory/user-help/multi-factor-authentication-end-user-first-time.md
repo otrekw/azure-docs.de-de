@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: end-user-help
 ms.date: 05/28/2020
 ms.author: curtand
-ms.openlocfilehash: fc95e988b3f89402967cdbedd06c4b945a99f99a
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: e5b07f8f7ae766d110c87a495a3e1623b815e526
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84266252"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88795982"
 ---
 # <a name="what-is-the-additional-verification-page"></a>Worum handelt es sich bei der Seite „Zusätzliche Sicherheitsüberprüfung“?
 
@@ -33,7 +33,7 @@ Die zweistufige Überprüfung ist sicherer als ein einfaches Kennwort, da sie au
 Die zweistufige Überprüfung kann dazu beitragen, Hacker davon abzuhalten, sich für Sie auszugeben. Selbst wenn sie Ihr Kennwort kennen, stehen die Chancen gut, dass sie nicht auch über Ihr Gerät verfügen.
 
 >[!Important]
->Wenn Sie Administrator sind und Informationen zum Aktivieren der zweistufigen Überprüfung für Ihre Mitarbeiter oder andere Benutzer benötigen, sehen Sie sich die [Dokumentation zur Azure Active Directory-Authentifizierung](https://docs.microsoft.com/azure/active-directory/authentication/) an. Dieser Artikel richtet sich an Benutzer, die die zweistufige Überprüfung mit einem Geschäfts-, Schul- oder Unikonto (z. B. alain@contoso.com) verwenden möchten.
+>Wenn Sie Administrator sind und Informationen zum Aktivieren der zweistufigen Überprüfung für Ihre Mitarbeiter oder andere Benutzer benötigen, sehen Sie sich die [Dokumentation zur Azure Active Directory-Authentifizierung](../authentication/index.yml) an. Dieser Artikel richtet sich an Benutzer, die die zweistufige Überprüfung mit einem Geschäfts-, Schul- oder Unikonto (z. B. alain@contoso.com) verwenden möchten.
 
 ## <a name="who-decides-if-you-use-this-feature"></a>Wer entscheidet über die Verwendung dieser Funktion?
 

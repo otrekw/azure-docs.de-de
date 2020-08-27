@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: jeffsta
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 38b474d4b454c61b83bfb1d62230930a0b569b1d
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: ba22720901cf4b7505d8d5b5295ca4e0c271953f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88164222"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798396"
 ---
 # <a name="sharing-accounts-with-azure-ad"></a>Freigeben von Konten in Azure AD
 
@@ -59,7 +59,7 @@ Zu den Azure AD-Features zur gemeinsamen Nutzung von Konten gehören folgende F
 * Agent für einmaliges Anmelden per Kennwort
 * [Gruppenzuweisung](groups-self-service-management.md)
 * Apps mit benutzerdefinierten Kennwörtern
-* [Dashboard für Anwendungsnutzung/Berichte](../active-directory-passwords-get-insights.md)
+* [Dashboard für Anwendungsnutzung/Berichte](../authentication/howto-sspr-reporting.md)
 * Zugriffsportale für Endbenutzer
 * [Anwendungsproxy](../manage-apps/application-proxy.md)
 * [Active Directory Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureActiveDirectory)
@@ -72,10 +72,10 @@ Folgende Schritte sind erforderlich, um Azure AD zum Freigeben eines Kontos zu v
 * Konfigurieren der Anwendung für einmaliges Anmelden per Kennwort (SSO)
 * Verwenden einer [gruppenbasierten Zuweisung](groups-saasapps.md) mit der Option „Gemeinsam genutzte Anmeldeinformationen“
 
-Mit Multi-Factor Authentication (MFA) lassen sich gemeinsam genutzte Konten sicherer gestalten. Lernen Sie, wie Sie [Anwendungen mit Azure AD sichern](../authentication/concept-mfa-whichversion.md) und mit der [Self-Service-Gruppenverwaltung](groups-self-service-management.md) von Azure AD die Verwaltungsrechte für den Zugriff auf Anwendungen delegieren.
+Mit Multi-Factor Authentication (MFA) lassen sich gemeinsam genutzte Konten sicherer gestalten. Lernen Sie, wie Sie [Anwendungen mit Azure AD sichern](../authentication/concept-mfa-howitworks.md) und mit der [Self-Service-Gruppenverwaltung](groups-self-service-management.md) von Azure AD die Verwaltungsrechte für den Zugriff auf Anwendungen delegieren.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Anwendungsverwaltung in Azure Active Directory](../manage-apps/what-is-application-management.md)
-* [Schützen von Apps durch bedingten Zugriff](../active-directory-conditional-access-azure-portal.md)
+* [Schützen von Apps durch bedingten Zugriff](../conditional-access/overview.md)
 * [Self-Service-Gruppenverwaltung/SSAA](groups-self-service-management.md)

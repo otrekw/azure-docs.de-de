@@ -4,12 +4,12 @@ description: Erläuterung der unterstützten Dienste und Ereignisschemas für Az
 ms.subservice: logs
 ms.topic: reference
 ms.date: 06/15/2020
-ms.openlocfilehash: a6504f28b891fb16bd588b899b7a0402b65b4e44
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: fd2dc4030816ab0b31befe46ac60d5e96fdae917
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87318282"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88782123"
 ---
 # <a name="common-and-service-specific-schema-for-azure-resource-logs"></a>Allgemeines und dienstspezifisches Schema für Azure-Ressourcenprotokolle
 
@@ -64,6 +64,7 @@ Das Schema für Ressourcenprotokolle variiert abhängig von der Ressource und de
 | Data Factory | [Überwachen von Data Factorys mit Azure Monitor](../../data-factory/monitor-using-azure-monitor.md) |
 | Data Lake Analytics |[Zugreifen auf Protokolle für Azure Data Lake Analytics](../../data-lake-analytics/data-lake-analytics-diagnostic-logs.md) |
 | Data Lake Store |[Zugreifen auf Protokolle für Azure Data Lake Store](../../data-lake-store/data-lake-store-diagnostic-logs.md) |
+| Azure Databricks | [Diagnoseprotokollierung in Azure Databricks](https://github.com/MicrosoftDocs/databricks-pr/blob/live/databricks/administration-guide/account-settings/azure-diagnostic-logs.md) |
 | Event Hubs |[Azure Event Hubs-Protokolle](../../event-hubs/event-hubs-diagnostic-logs.md) |
 | ExpressRoute | Schema nicht verfügbar. |
 | Azure Firewall | Schema nicht verfügbar. |

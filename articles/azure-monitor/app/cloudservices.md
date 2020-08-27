@@ -2,13 +2,14 @@
 title: Application Insights für Azure Cloud Services | Microsoft-Dokumentation
 description: Effektives Überwachen Ihrer Web- und Workerrollen mit Application Insights
 ms.topic: conceptual
+ms.custom: devx-track-csharp
 ms.date: 09/05/2018
-ms.openlocfilehash: 2adcdcdc36fdd41b1f871acbea386beb1d7a9451
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 2de853655524e99e958f043b7801ee73e937e7ad
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87318435"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88923856"
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>Application Insights für Azure Cloud Services
 [Application Insights][start] kann [Azure Cloud Services-Apps](https://azure.microsoft.com/services/cloud-services/) auf Verfügbarkeit, Leistung, Fehler und Verwendung überwachen. Dabei werden Daten aus den Application Insights-SDKs mit Daten der [Azure-Diagnose](../platform/diagnostics-extension-overview.md) aus Cloud Services kombiniert. Mit dem Feedback zur Leistung und Effektivität der App in der Praxis können Sie in jedem Entwicklungslebenszyklus eine fundierte Entscheidung für die Richtung des Entwurfs treffen.

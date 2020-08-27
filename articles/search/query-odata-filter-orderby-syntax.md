@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 07f3e270e799753a582227abe53223bd05755eb5
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: d04311fce81d147a0830918aee1d4a2a9c0808d4
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86165208"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88923397"
 ---
 # <a name="odata-language-overview-for-filter-orderby-and-select-in-azure-cognitive-search"></a>OData-Sprachübersicht für `$filter`, `$orderby` und `$select` in der kognitiven Azure-Suche
 
@@ -91,25 +91,25 @@ In diesem Beispiel ist die Bereichsvariable `room` im Feldpfad `room/Type` entha
 
 ### <a name="using-field-paths"></a>Verwenden von Feldpfaden
 
-Feldpfade werden in zahlreichen Parametern der [REST-APIs für die kognitive Azure-Suche](https://docs.microsoft.com/rest/api/searchservice/) verwendet. Die folgende Tabelle enthält alle Stellen, an denen sie verwendet werden können, sowie einige Einschränkungen für ihre Nutzung:
+Feldpfade werden in zahlreichen Parametern der [REST-APIs für die kognitive Azure-Suche](/rest/api/searchservice/) verwendet. Die folgende Tabelle enthält alle Stellen, an denen sie verwendet werden können, sowie einige Einschränkungen für ihre Nutzung:
 
 | API | Parametername | Beschränkungen |
 | --- | --- | --- |
-| [Erstellen](https://docs.microsoft.com/rest/api/searchservice/create-index) oder [Aktualisieren](https://docs.microsoft.com/rest/api/searchservice/update-index) des Index | `suggesters/sourceFields` | Keine |
-| [Erstellen](https://docs.microsoft.com/rest/api/searchservice/create-index) oder [Aktualisieren](https://docs.microsoft.com/rest/api/searchservice/update-index) des Index | `scoringProfiles/text/weights` | Kann nur auf **durchsuchbare** Felder verweisen |
-| [Erstellen](https://docs.microsoft.com/rest/api/searchservice/create-index) oder [Aktualisieren](https://docs.microsoft.com/rest/api/searchservice/update-index) des Index | `scoringProfiles/functions/fieldName` | Kann nur auf **filterbare** Felder verweisen |
-| [Suchen,](https://docs.microsoft.com/rest/api/searchservice/search-documents) | `search`, wenn `queryType` den Wert `full` hat | Kann nur auf **durchsuchbare** Felder verweisen |
-| [Suchen,](https://docs.microsoft.com/rest/api/searchservice/search-documents) | `facet` | Kann nur auf **facettierbare** Felder verweisen |
-| [Suchen,](https://docs.microsoft.com/rest/api/searchservice/search-documents) | `highlight` | Kann nur auf **durchsuchbare** Felder verweisen |
-| [Suchen,](https://docs.microsoft.com/rest/api/searchservice/search-documents) | `searchFields` | Kann nur auf **durchsuchbare** Felder verweisen |
-| [Vorschlagen](https://docs.microsoft.com/rest/api/searchservice/suggestions) und [AutoVervollständigen](https://docs.microsoft.com/rest/api/searchservice/autocomplete) | `searchFields` | Kann nur auf Felder verweisen, die Teil einer [Vorschlagsfunktion](index-add-suggesters.md) sind |
-| [Suchen](https://docs.microsoft.com/rest/api/searchservice/search-documents), [Vorschlagen](https://docs.microsoft.com/rest/api/searchservice/suggestions) und [AutoVervollständigen](https://docs.microsoft.com/rest/api/searchservice/autocomplete) | `$filter` | Kann nur auf **filterbare** Felder verweisen |
-| [Suchen](https://docs.microsoft.com/rest/api/searchservice/search-documents) und [Vorschlagen](https://docs.microsoft.com/rest/api/searchservice/suggestions) | `$orderby` | Kann nur auf **sortierbare** Felder verweisen |
-| [Suchen](https://docs.microsoft.com/rest/api/searchservice/search-documents), [Vorschlagen](https://docs.microsoft.com/rest/api/searchservice/suggestions) und [Nachschlagen](https://docs.microsoft.com/rest/api/searchservice/lookup-document) | `$select` | Kann nur auf **abrufbare** Felder verweisen |
+| [Erstellen](/rest/api/searchservice/create-index) oder [Aktualisieren](/rest/api/searchservice/update-index) des Index | `suggesters/sourceFields` | Keine |
+| [Erstellen](/rest/api/searchservice/create-index) oder [Aktualisieren](/rest/api/searchservice/update-index) des Index | `scoringProfiles/text/weights` | Kann nur auf **durchsuchbare** Felder verweisen |
+| [Erstellen](/rest/api/searchservice/create-index) oder [Aktualisieren](/rest/api/searchservice/update-index) des Index | `scoringProfiles/functions/fieldName` | Kann nur auf **filterbare** Felder verweisen |
+| [Suchen,](/rest/api/searchservice/search-documents) | `search`, wenn `queryType` den Wert `full` hat | Kann nur auf **durchsuchbare** Felder verweisen |
+| [Suchen,](/rest/api/searchservice/search-documents) | `facet` | Kann nur auf **facettierbare** Felder verweisen |
+| [Suchen,](/rest/api/searchservice/search-documents) | `highlight` | Kann nur auf **durchsuchbare** Felder verweisen |
+| [Suchen,](/rest/api/searchservice/search-documents) | `searchFields` | Kann nur auf **durchsuchbare** Felder verweisen |
+| [Vorschlagen](/rest/api/searchservice/suggestions) und [AutoVervollständigen](/rest/api/searchservice/autocomplete) | `searchFields` | Kann nur auf Felder verweisen, die Teil einer [Vorschlagsfunktion](index-add-suggesters.md) sind |
+| [Suchen](/rest/api/searchservice/search-documents), [Vorschlagen](/rest/api/searchservice/suggestions) und [AutoVervollständigen](/rest/api/searchservice/autocomplete) | `$filter` | Kann nur auf **filterbare** Felder verweisen |
+| [Suchen](/rest/api/searchservice/search-documents) und [Vorschlagen](/rest/api/searchservice/suggestions) | `$orderby` | Kann nur auf **sortierbare** Felder verweisen |
+| [Suchen](/rest/api/searchservice/search-documents), [Vorschlagen](/rest/api/searchservice/suggestions) und [Nachschlagen](/rest/api/searchservice/lookup-document) | `$select` | Kann nur auf **abrufbare** Felder verweisen |
 
 ## <a name="constants"></a>Konstanten
 
-Konstanten in OData sind Literalwerte eines bestimmten [Entity Data Model](https://docs.microsoft.com/dotnet/framework/data/adonet/entity-data-model)-Typs (EDM). Eine Liste der in der kognitiven Azure-Suche unterstützten Typen finden Sie unter [Unterstützte Datentypen](https://docs.microsoft.com/rest/api/searchservice/supported-data-types). Konstanten von Sammlungstypen werden nicht unterstützt.
+Konstanten in OData sind Literalwerte eines bestimmten [Entity Data Model](/dotnet/framework/data/adonet/entity-data-model)-Typs (EDM). Eine Liste der in der kognitiven Azure-Suche unterstützten Typen finden Sie unter [Unterstützte Datentypen](/rest/api/searchservice/supported-data-types). Konstanten von Sammlungstypen werden nicht unterstützt.
 
 Die folgende Tabelle zeigt Beispiele für Konstanten für jeden der von der kognitiven Azure-Suche unterstützten Datentypen:
 
@@ -243,6 +243,6 @@ In den folgenden Artikeln werden die Parameter **$filter**, **$orderby** und **$
 
 - [Facettennavigation in der kognitiven Azure-Suche](search-faceted-navigation.md)
 - [Filter in Azure Cognitive Search](search-filters.md)
-- [Suchen von Dokumenten &#40;Azure Cognitive Search-REST-API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [Suchen von Dokumenten &#40;Azure Cognitive Search-REST-API&#41;](/rest/api/searchservice/Search-Documents)
 - [Lucene-Abfragesyntax](query-lucene-syntax.md)
 - [Einfache Abfragesyntax in Azure Cognitive Search](query-simple-syntax.md)

@@ -3,12 +3,13 @@ title: 'Ändern von Daten: LUIS'
 description: Erfahren Sie, wie Daten vor der Vorhersage in Language Understanding Intelligent Service (LUIS) geändert werden können.
 ms.topic: conceptual
 ms.date: 05/06/2020
-ms.openlocfilehash: 3a88739caa9b35679f10b0cb63a804e9464c871c
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.custom: devx-track-csharp
+ms.openlocfilehash: c675ac246f397b5949c870ad91ab936bbd92c7ef
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82872247"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934666"
 ---
 # <a name="alter-utterance-data-before-or-during-prediction"></a>Ändern von Äußerungsdaten vor oder während der Vorhersage
 LUIS bietet Möglichkeiten zum Bearbeiten einer Äußerung vor oder während der Vorhersage. Dazu gehören eine [Korrektur der Rechtschreibung](luis-tutorial-bing-spellcheck.md) und das Beheben von Zeitzonenproblemen für die vordefinierte Entität [datetimeV2](luis-reference-prebuilt-datetimev2.md).

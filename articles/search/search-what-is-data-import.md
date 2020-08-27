@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 86982aa418433ecef6a81252363091714185fe22
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 50c95dc9d045711cb6968b98957d255b4ca73d2c
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86202300"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88932762"
 ---
 # <a name="data-import-overview---azure-cognitive-search"></a>Übersicht über den Datenimport – kognitive Azure-Suche
 
@@ -34,12 +34,12 @@ Dieser Ansatz ist flexibler als ein Pull-Modell, da Sie Dokumente einzeln oder i
 
 Sie können die folgenden APIs verwenden, um ein oder mehrere Dokumente in einen Index zu laden:
 
-+ [Hinzufügen, Aktualisieren oder Löschen von Dokumenten (REST-API)](https://docs.microsoft.com/rest/api/searchservice/AddUpdate-or-Delete-Documents)
-+ [indexAction-Klasse](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexaction?view=azure-dotnet) oder [indexBatch-Klasse](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexbatch?view=azure-dotnet) 
++ [Hinzufügen, Aktualisieren oder Löschen von Dokumenten (REST-API)](/rest/api/searchservice/AddUpdate-or-Delete-Documents)
++ [indexAction-Klasse](/dotnet/api/microsoft.azure.search.models.indexaction?view=azure-dotnet) oder [indexBatch-Klasse](/dotnet/api/microsoft.azure.search.models.indexbatch?view=azure-dotnet) 
 
 Es gibt derzeit keine Toolunterstützung für die Push-Übertragung von Daten über das Portal.
 
-Eine Einführung in jede Methodik finden Sie unter [Schnellstart: Erstellen eines Index der kognitiven Azure-Suche mit PowerShell](search-create-index-rest-api.md) oder [C#-Schnellstart: Erstellen eines Index der kognitiven Azure-Suche mit dem .NET SDK](search-get-started-dotnet.md).
+Eine Einführung in jede Methodik finden Sie unter [Schnellstart: Erstellen eines Index der kognitiven Azure-Suche mit PowerShell](./search-get-started-powershell.md) oder [C#-Schnellstart: Erstellen eines Index der kognitiven Azure-Suche mit dem .NET SDK](search-get-started-dotnet.md).
 
 <a name="indexing-actions"></a>
 
@@ -61,7 +61,7 @@ Beim .NET SDK packen Sie Ihre Daten in einem `IndexBatch`-Objekt. Ein `IndexBatc
 
 ### <a name="formulate-your-query"></a>Formulieren der Abfrage
 
-Es gibt zwei Möglichkeiten, um [den Index mithilfe der REST-API zu durchsuchen](https://docs.microsoft.com/rest/api/searchservice/Search-Documents). Eine Möglichkeit besteht darin, eine HTTP POST-Anforderung auszugeben, wobei die Abfrageparameter in ein JSON-Objekt im Anforderungstext definiert werden. Die andere Möglichkeit besteht darin, eine HTTP GET-Anforderung auszugeben, wobei die Abfrageparameter in der Anforderungs-URL definiert werden. Die Beschränkungen in Bezug auf die Größe der Abfrageparameter sind bei POST [geringer](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) als bei GET. Aus diesem Grund empfehlen wir die Verwendung von POST, sofern GET nicht aufgrund bestimmter Umstände praktischer wäre.
+Es gibt zwei Möglichkeiten, um [den Index mithilfe der REST-API zu durchsuchen](/rest/api/searchservice/Search-Documents). Eine Möglichkeit besteht darin, eine HTTP POST-Anforderung auszugeben, wobei die Abfrageparameter in ein JSON-Objekt im Anforderungstext definiert werden. Die andere Möglichkeit besteht darin, eine HTTP GET-Anforderung auszugeben, wobei die Abfrageparameter in der Anforderungs-URL definiert werden. Die Beschränkungen in Bezug auf die Größe der Abfrageparameter sind bei POST [geringer](/rest/api/searchservice/Search-Documents) als bei GET. Aus diesem Grund empfehlen wir die Verwendung von POST, sofern GET nicht aufgrund bestimmter Umstände praktischer wäre.
 
 Sowohl bei POST- als auch bei GET-Vorgängen müssen in der Anforderungs-URL der *Dienstname*, der *Indexname* und eine *API-Version* angegeben werden. 
 

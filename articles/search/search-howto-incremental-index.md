@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: 4a732bd81b65c0c6b0cc227e1ed82de7bae3a1a0
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: c432b89574949b31612aeba862ece7687c12dde4
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86230705"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88922836"
 ---
 # <a name="how-to-configure-caching-for-incremental-enrichment-in-azure-cognitive-search"></a>Konfigurieren der Zwischenspeicherung für die inkrementelle Anreicherung in Azure Cognitive Search
 
@@ -38,7 +38,7 @@ Wenn Sie über einen Indexer mit einem bereits vorhandenen Skillset verfügen, f
 
 Beginnen Sie mit einem gültigen, vorhandenen Indexer, der über diese Komponenten verfügt: Datenquelle, Skillset, Index. Der Indexer sollte ausführbar sein. 
 
-Erstellen Sie mithilfe eines API-Clients eine [GET Indexer-Anforderung](https://docs.microsoft.com/rest/api/searchservice/get-indexer), um die aktuelle Konfiguration des Indexers abzurufen. Wenn Sie die Vorschauversion der API verwenden, um den Indexer zu erhalten, wird den Definitionen eine `cache`-Eigenschaft hinzugefügt, die auf NULL festgelegt ist.
+Erstellen Sie mithilfe eines API-Clients eine [GET Indexer-Anforderung](/rest/api/searchservice/get-indexer), um die aktuelle Konfiguration des Indexers abzurufen. Wenn Sie die Vorschauversion der API verwenden, um den Indexer zu erhalten, wird den Definitionen eine `cache`-Eigenschaft hinzugefügt, die auf NULL festgelegt ist.
 
 ```http
 GET https://[YOUR-SEARCH-SERVICE].search.windows.net/indexers/[YOUR-INDEXER-NAME]?api-version=2020-06-30-Preview
@@ -75,7 +75,7 @@ Der Standardwert der `cache`-Eigenschaft ist NULL. Verwenden Sie einen API-Clien
 
 ### <a name="step-3-reset-the-indexer"></a>Schritt 3: Zurücksetzen des Indexers
 
-Ein Zurücksetzen des Indexers ist beim Einrichten der inkrementellen Anreicherung für vorhandene Indexer erforderlich, um sicherzustellen, dass sich alle Dokumente in einem konsistenten Zustand befinden. Sie können das Portal oder einen API-Client und die [REST-API „Indexer zurücksetzen“](https://docs.microsoft.com/rest/api/searchservice/reset-indexer) für diese Aufgabe verwenden.
+Ein Zurücksetzen des Indexers ist beim Einrichten der inkrementellen Anreicherung für vorhandene Indexer erforderlich, um sicherzustellen, dass sich alle Dokumente in einem konsistenten Zustand befinden. Sie können das Portal oder einen API-Client und die [REST-API „Indexer zurücksetzen“](/rest/api/searchservice/reset-indexer) für diese Aufgabe verwenden.
 
 ```http
 POST https://[YOUR-SEARCH-SERVICE].search.windows.net/indexers/[YOUR-INDEXER-NAME]/reset?api-version=2020-06-30-Preview
@@ -85,7 +85,7 @@ api-key: [YOUR-ADMIN-KEY]
 
 ### <a name="step-4-save-the-updated-definition"></a>Schritt 4: Speichern der aktualisierten Definition
 
-[Aktualisieren Sie den Indexer](https://docs.microsoft.com/rest/api/searchservice/preview-api/update-indexer) mit einer PUT-Anforderung. Der Anforderungstext sollte die aktualisierte Indexerdefinition mit der Cacheeigenschaft enthalten. Wenn der Fehler 400 angezeigt wird, überprüfen Sie die Indexerdefinition, um sicherzustellen, dass alle Anforderungen erfüllt sind (Datenquelle, Skillset, Index).
+[Aktualisieren Sie den Indexer](/rest/api/searchservice/preview-api/update-indexer) mit einer PUT-Anforderung. Der Anforderungstext sollte die aktualisierte Indexerdefinition mit der Cacheeigenschaft enthalten. Wenn der Fehler 400 angezeigt wird, überprüfen Sie die Indexerdefinition, um sicherzustellen, dass alle Anforderungen erfüllt sind (Datenquelle, Skillset, Index).
 
 ```http
 PUT https://[YOUR-SEARCH-SERVICE].search.windows.net/indexers/[YOUR-INDEXER-NAME]?api-version=2020-06-30-Preview
@@ -115,7 +115,7 @@ Wenn Sie jetzt eine weitere GET-Anforderung für den Indexer ausgeben, enthält 
 
 Sie können den Indexer über das Portal oder die API ausführen. Wählen Sie im Portal den Indexer aus der Liste der Indexer aus, und klicken Sie auf **Ausführen**. Ein Vorteil bei der Verwendung des Portals besteht darin, dass Sie den Indexerstatus überwachen, die Dauer des Auftrags notieren und die Anzahl der verarbeiteten Dokumente ermitteln können. Portalseiten werden alle paar Minuten aktualisiert.
 
-Alternativ können Sie REST verwenden, um den [Indexer auszuführen](https://docs.microsoft.com/rest/api/searchservice/run-indexer):
+Alternativ können Sie REST verwenden, um den [Indexer auszuführen](/rest/api/searchservice/run-indexer):
 
 ```http
 POST https://[YOUR-SEARCH-SERVICE].search.windows.net/indexers/[YOUR-INDEXER-NAME]/run?api-version=2020-06-30-Preview
@@ -137,7 +137,7 @@ Führen Sie den Indexer erneut aus. Es werden nur die Teile einer angereicherten
 
 ## <a name="enable-caching-on-new-indexers"></a>Aktivieren der Zwischenspeicherung für neue Indexer
 
-Um die inkrementelle Anreicherung für einen neuen Indexer einzurichten, müssen Sie lediglich die `cache`-Eigenschaft in die Nutzlast der Indexerdefinition einschließen, wenn Sie [Create Indexer (2020-06-30-Preview)](https://docs.microsoft.com/rest/api/searchservice/preview-api/create-indexer) aufrufen. 
+Um die inkrementelle Anreicherung für einen neuen Indexer einzurichten, müssen Sie lediglich die `cache`-Eigenschaft in die Nutzlast der Indexerdefinition einschließen, wenn Sie [Create Indexer (2020-06-30-Preview)](/rest/api/searchservice/preview-api/create-indexer) aufrufen. 
 
 
 ```json
@@ -165,16 +165,16 @@ Angenommen, Sie verfügen über ein Skillset, das mit der Bildanalyse und der op
 
 ## <a name="working-with-the-cache"></a>Arbeiten mit dem Zwischenspeicher
 
-Sobald der Zwischenspeicher betriebsbereit ist, wird er beim Aufrufen von [Run Indexer](https://docs.microsoft.com/rest/api/searchservice/run-indexer) durch den Indexer überprüft, um zu ermitteln, welche Teile der vorhandenen Ausgabe verwendet werden können. 
+Sobald der Zwischenspeicher betriebsbereit ist, wird er beim Aufrufen von [Run Indexer](/rest/api/searchservice/run-indexer) durch den Indexer überprüft, um zu ermitteln, welche Teile der vorhandenen Ausgabe verwendet werden können. 
 
 In der folgenden Tabelle wird zusammengefasst, wie sich verschiedene APIs auf den Zwischenspeicher beziehen:
 
 | API           | Auswirkung auf den Zwischenspeicher     |
 |---------------|------------------|
-| [Create Indexer (2020-06-30-Preview)](https://docs.microsoft.com/rest/api/searchservice/preview-api/create-indexer) | Erstellt bei der ersten Verwendung einen Indexer und führt ihn aus. Sofern in der Indexerdefinition angegeben, wird auch ein Zwischenspeicher erstellt. |
-| [Run Indexer](https://docs.microsoft.com/rest/api/searchservice/run-indexer) | Führt bei Bedarf eine Anreicherungspipeline aus. Diese API liest aus dem Zwischenspeicher, sofern vorhanden, oder erstellt einen Zwischenspeicher, wenn Sie das Zwischenspeichern zu einer aktualisierten Indexerdefinition hinzugefügt haben. Wenn Sie einen Indexer ausführen, für den das Zwischenspeichern aktiviert ist, lässt der Indexer Schritte aus, wenn zwischengespeicherte Ausgaben verwendet werden können. Sie können die allgemein verfügbare API-Version oder die Vorschauversion dieser API verwenden.|
-| [Reset Indexer](https://docs.microsoft.com/rest/api/searchservice/reset-indexer)| Bereinigt den Indexer von inkrementellen Indizierungsinformationen. Die nächste Indexerausführung (entweder bedarfsgesteuert oder geplant) ist eine vollständige Neuverarbeitung von Grund auf, einschließlich der erneuten Ausführung aller Qualifikationen und der Neuerstellung des Zwischenspeichers. Dies entspricht funktionell dem Löschen und Neuerstellen des Indexers. Sie können die allgemein verfügbare API-Version oder die Vorschauversion dieser API verwenden.|
-| [Reset Skills](https://docs.microsoft.com/rest/api/searchservice/preview-api/reset-skills) | Gibt an, welche Qualifikationen bei der nächsten Indexerausführung erneut ausgeführt werden sollen, auch wenn keine Qualifikationen geändert wurden. Der Zwischenspeicher wird entsprechend aktualisiert. Ausgaben, wie z. B. ein Wissensspeicher oder ein Suchindex, werden mit wiederverwendbaren Daten aus dem Zwischenspeicher und neuen Inhalten gemäß der aktualisierten Qualifikation aktualisiert. |
+| [Create Indexer (2020-06-30-Preview)](/rest/api/searchservice/preview-api/create-indexer) | Erstellt bei der ersten Verwendung einen Indexer und führt ihn aus. Sofern in der Indexerdefinition angegeben, wird auch ein Zwischenspeicher erstellt. |
+| [Run Indexer](/rest/api/searchservice/run-indexer) | Führt bei Bedarf eine Anreicherungspipeline aus. Diese API liest aus dem Zwischenspeicher, sofern vorhanden, oder erstellt einen Zwischenspeicher, wenn Sie das Zwischenspeichern zu einer aktualisierten Indexerdefinition hinzugefügt haben. Wenn Sie einen Indexer ausführen, für den das Zwischenspeichern aktiviert ist, lässt der Indexer Schritte aus, wenn zwischengespeicherte Ausgaben verwendet werden können. Sie können die allgemein verfügbare API-Version oder die Vorschauversion dieser API verwenden.|
+| [Reset Indexer](/rest/api/searchservice/reset-indexer)| Bereinigt den Indexer von inkrementellen Indizierungsinformationen. Die nächste Indexerausführung (entweder bedarfsgesteuert oder geplant) ist eine vollständige Neuverarbeitung von Grund auf, einschließlich der erneuten Ausführung aller Qualifikationen und der Neuerstellung des Zwischenspeichers. Dies entspricht funktionell dem Löschen und Neuerstellen des Indexers. Sie können die allgemein verfügbare API-Version oder die Vorschauversion dieser API verwenden.|
+| [Reset Skills](/rest/api/searchservice/preview-api/reset-skills) | Gibt an, welche Qualifikationen bei der nächsten Indexerausführung erneut ausgeführt werden sollen, auch wenn keine Qualifikationen geändert wurden. Der Zwischenspeicher wird entsprechend aktualisiert. Ausgaben, wie z. B. ein Wissensspeicher oder ein Suchindex, werden mit wiederverwendbaren Daten aus dem Zwischenspeicher und neuen Inhalten gemäß der aktualisierten Qualifikation aktualisiert. |
 
 Weitere Informationen zum Steuern, was mit dem Zwischenspeicher passiert, finden Sie unter [Cacheverwaltung](cognitive-search-incremental-indexing-conceptual.md#cache-management).
 

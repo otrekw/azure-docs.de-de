@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: 6f633a585e4fa6ebd12e8d12408847b5ee758855
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: da75e1d6208db5adf5f0f63d2a5525fc651513b0
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88513026"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855914"
 ---
 # <a name="technical-deep-dive-on-platform-supported-migration-from-classic-to-azure-resource-manager"></a>Ausführliche technische Informationen zur plattformgestützten Migration vom klassischen Bereitstellungsmodell zu Azure Resource Manager
 
@@ -33,7 +33,7 @@ Zunächst einmal ist es wichtig, den Unterschied zwischen Vorgängen auf der Dat
 
 Die Datenebene für das klassische Bereitstellungsmodell und für Resource Manager-Stapel ist identisch. Der Unterschied besteht darin, dass Microsoft die Darstellung der Ressourcen aus dem klassischen Bereitstellungsmodell im Zuge der Migration in die Darstellung des Resource Manager-Stapels umwandelt. Infolgedessen sind für die Verwaltung der Ressourcen im Resource Manager-Stapel neue Tools, APIs und SDKs erforderlich.
 
-![Diagramm zur Veranschaulichung des Unterschieds zwischen Verwaltungs-/Steuerungsebene und Datenebene](~/articles/virtual-machines/media/virtual-machines-windows-migration-classic-resource-manager/data-control-plane.png)
+![Diagramm zur Veranschaulichung des Unterschieds zwischen Verwaltungs-/Steuerungsebene und Datenebene](media/virtual-machines-windows-migration-classic-resource-manager/data-control-plane.png)
 
 
 > [!NOTE]
@@ -52,7 +52,7 @@ Vorbereitung der Migration:
 
 Der Migrationsworkflow sieht wie folgt aus:
 
-![Diagramm zur Veranschaulichung des Migrationsworkflows](~/articles/virtual-machines/windows/media/migration-classic-resource-manager/migration-workflow.png)
+![Diagramm zur Veranschaulichung des Migrationsworkflows](windows/media/migration-classic-resource-manager/migration-workflow.png)
 
 > [!NOTE]
 > Die in den folgenden Abschnitten beschriebenen Vorgänge sind alle idempotent. Sollte ein Problem auftreten, das nicht auf ein nicht unterstütztes Feature oder auf einen Konfigurationsfehler zurückzuführen ist, wiederholen Sie den Vorbereitungs-, Abbruch- oder Commitvorgang. Azure versucht, die Aktion erneut auszuführen.
@@ -94,17 +94,17 @@ Anschließend startet Azure für die zu migrierenden Ressourcen die Migration de
 Nach Abschluss der Vorbereitung können Sie die Ressourcen sowohl im klassischen Bereitstellungsmodell als auch im Resource Manager-Bereitstellungsmodell visualisieren. Für jeden Clouddienst im klassischen Bereitstellungsmodell erstellt die Azure-Plattform einen Ressourcengruppennamen nach dem Muster `cloud-service-name>-Migrated`.
 
 > [!NOTE]
-> Der Name einer für migrierte Ressourcen erstellten Ressourcengruppe kann nicht frei gewählt werden und lautet immer „-Migrated“. Nach Abschluss der Migration können Sie die Ressourcen jedoch mithilfe des Verschiebefeatures von Azure Resource Manager in eine beliebige Ressourcengruppe verschieben. Weitere Informationen finden Sie unter [Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement](~/articles/resource-group-move-resources.md).
+> Der Name einer für migrierte Ressourcen erstellten Ressourcengruppe kann nicht frei gewählt werden und lautet immer „-Migrated“. Nach Abschluss der Migration können Sie die Ressourcen jedoch mithilfe des Verschiebefeatures von Azure Resource Manager in eine beliebige Ressourcengruppe verschieben. Weitere Informationen finden Sie unter [Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement](../azure-resource-manager/management/move-resource-group-and-subscription.md).
 
 Die beiden folgenden Screenshots zeigen das Ergebnis nach einem erfolgreichen Vorbereitungsvorgang. Der erste Screenshot zeigt eine Ressourcengruppe, die den ursprünglichen Clouddienst enthält. Der zweite Screenshot zeigt die neue Ressourcengruppe („-Migrated“) mit den entsprechenden Azure Resource Manager-Ressourcen.
 
-![Screenshot des ursprünglichen Clouddiensts](~/articles/virtual-machines/windows/media/migration-classic-resource-manager/portal-classic.png)
+![Screenshot des ursprünglichen Clouddiensts](windows/media/migration-classic-resource-manager/portal-classic.png)
 
-![Screenshot der Azure Resource Manager-Ressourcen aus dem Vorbereitungsvorgang](~/articles/virtual-machines/windows/media/migration-classic-resource-manager/portal-arm.png)
+![Screenshot der Azure Resource Manager-Ressourcen aus dem Vorbereitungsvorgang](windows/media/migration-classic-resource-manager/portal-arm.png)
 
 Hier sehen Sie, wie Ihre Ressourcen nach Abschluss der Vorbereitungsphase aussehen. Wie Sie sehen, ist die Ressource auf der Datenebene identisch. Sie ist sowohl in der Verwaltungsebene (klassisches Bereitstellungsmodell) als auch in der Steuerungsebene (Resource Manager) vorhanden.
 
-![Diagramm der Vorbereitungsphase](~/articles/virtual-machines/windows/media/migration-classic-resource-manager/behind-the-scenes-prepare.png)
+![Diagramm der Vorbereitungsphase](windows/media/migration-classic-resource-manager/behind-the-scenes-prepare.png)
 
 > [!NOTE]
 > Virtuelle Computer, die sich nicht in einem virtuellen Netzwerk des klassischen Bereitstellungsmodells befinden, werden in dieser Migrationsphase beendet, und ihre Zuordnung wird aufgehoben.
@@ -124,7 +124,7 @@ Falls Probleme auftreten, können Sie die Migration immer abbrechen und zurück 
 ### <a name="abort"></a>Abbruch
 Hierbei handelt es sich um einen optionalen Schritt, mit dem Sie Ihre Änderungen am klassischen Bereitstellungsmodell zurücksetzen und die Migration beenden können. Dieser Vorgang löscht die im vorherigen Vorbereitungsschritt erstellten Resource Manager-Metadaten für Ihre Ressourcen. 
 
-![Diagramm des Abbruchschritts](~/articles/virtual-machines/windows/media/migration-classic-resource-manager/behind-the-scenes-abort.png)
+![Diagramm des Abbruchschritts](windows/media/migration-classic-resource-manager/behind-the-scenes-abort.png)
 
 
 > [!NOTE]
@@ -139,13 +139,13 @@ Nach Abschluss der Überprüfung können Sie einen Commit für die Migration dur
 >
 >
 
-![Diagramm des Commitschritts](~/articles/virtual-machines/windows/media/migration-classic-resource-manager/behind-the-scenes-commit.png)
+![Diagramm des Commitschritts](windows/media/migration-classic-resource-manager/behind-the-scenes-commit.png)
 
 ## <a name="migration-flowchart"></a>Flussdiagramm der Migration
 
 Hier sehen Sie ein Flussdiagramm für die Migration:
 
-![Screenshot that shows the migration steps](~/articles/virtual-machines/windows/media/migration-classic-resource-manager/migration-flow.png)
+![Screenshot that shows the migration steps](windows/media/migration-classic-resource-manager/migration-flow.png)
 
 ## <a name="translation-of-the-classic-deployment-model-to-resource-manager-resources"></a>Umwandlung klassischer Ressourcen in Resource Manager-Ressourcen
 Die folgende Tabelle zeigt die Darstellung der Ressourcen im klassischen Bereitstellungsmodell und in Resource Manager. Andere Features und Ressourcen werden derzeit nicht unterstützt.

@@ -3,12 +3,12 @@ title: 'Ausgleichen der Partitionsauslastung über mehrere Instanzen hinweg: Azu
 description: Beschreibt, wie Sie die Partitionsauslastung über mehrere Instanzen Ihrer Anwendung hinweg mithilfe eines Ereignisprozessors und des Azure Event Hubs SDK ausgleichen können.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: ff68408be15d8160ea7ecd878a05441d82700f99
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 8bf3f05b823a784f4f3fc2074719ed346f769f5e
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86512315"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88933792"
 ---
 # <a name="balance-partition-load-across-multiple-instances-of-your-application"></a>Ausgleichen der Partitionsauslastung über mehrere Instanzen der Anwendung hinweg
 Um die Ereignisverarbeitungsanwendung zu skalieren, können Sie mehrere Instanzen der Anwendung ausführen und die Auslastung zwischen diesen untereinander ausgleichen. In älteren Versionen konnte [EventProcessorHost](event-hubs-event-processor-host.md) die Last zwischen mehreren Instanzen Ihres Programms und Prüfpunktereignissen bei deren Empfang ausgleichen. In den neueren Versionen (5.0 oder höher) ermöglichen **EventProcessorClient** (.NET und Java) oder **EventHubConsumerClient** (Python und JavaScript) die gleiche Funktionalität. Das Entwicklungsmodell wird durch die Verwendung von-Ereignissen vereinfacht. Sie abonnieren die Ereignisse, an denen Sie interessiert sind, indem Sie einen Ereignishandler registrieren.
@@ -88,7 +88,7 @@ Standardmäßig wird die Funktion zur Verarbeitung der Ereignisse für eine best
 ## <a name="next-steps"></a>Nächste Schritte
 Sehen Sie sich die folgenden Schnellstarts an:
 
-- [.NET Core](get-started-dotnet-standard-send-v2.md)
+- [.NET Core](event-hubs-dotnet-standard-getstarted-send.md)
 - [Java](event-hubs-java-get-started-send.md)
-- [Python](get-started-python-send-v2.md)
-- [JavaScript](get-started-node-send-v2.md)
+- [Python](event-hubs-python-get-started-send.md)
+- [JavaScript](event-hubs-node-get-started-send.md)

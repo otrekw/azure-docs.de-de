@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: e44878b6d65725f08aeca4eb07088315ae2bb78a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ff098da778221868b0eddc17c426d2bf36eec0fe
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78302218"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88794340"
 ---
 # <a name="rand-azure-cosmos-db"></a>RAND (Azure Cosmos DB)
  Gibt einen nach dem Zufallsprinzip generierten numerischen Wert aus [0,1] zurück.
@@ -29,7 +29,8 @@ RAND ()
 
 ## <a name="remarks"></a>Bemerkungen
 
-  `RAND` ist eine nichtdeterministische Funktion. Wiederkehrende Aufrufe von `RAND` geben nicht die gleichen Ergebnisse zurück.
+  `RAND` ist eine nichtdeterministische Funktion. Wiederkehrende Aufrufe von `RAND` geben nicht die gleichen Ergebnisse zurück. Der Index wird von dieser Systemfunktion nicht verwendet.
+
 
 ## <a name="examples"></a>Beispiele
   
@@ -44,10 +45,6 @@ SELECT RAND() AS rand
 ```json
 [{"rand": 0.87860053195618093}]  
 ``` 
-
-## <a name="remarks"></a>Bemerkungen
-
-Der Index wird von dieser Systemfunktion nicht verwendet.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

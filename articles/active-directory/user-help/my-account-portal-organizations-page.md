@@ -11,12 +11,12 @@ ms.subservice: user-help
 ms.topic: end-user-help
 ms.date: 07/29/2020
 ms.author: curtand
-ms.openlocfilehash: bd8b8deed2afafc22e99ac15f2bcffdf65af83c4
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: bb0f0b93f3890a06f4ecbdc6cf39a173ea048940
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422441"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798175"
 ---
 # <a name="manage-your-connected-organizations-from-the-organizations-page"></a>Verwalten Ihrer verbundenen Organisationen auf der Seite „Organisationen“
 
@@ -30,7 +30,7 @@ Im Portal **Mein Konto** können Sie auf der Seite **Organisationen** die Organi
 - **Andere Organisationen**. Zu den anderen Organisationen gehören alle Gruppen, bei denen Sie sich zuvor mit Ihrem Geschäfts-, Schul- oder Unikonto angemeldet haben. Sie können jede dieser Organisationen jederzeit verlassen.
 
 >[!Important]
->Dieser Artikel richtet sich an Benutzer, die versuchen, die Informationen der mit einem Geschäfts-, Schul- oder Unikonto verbundenen Organisationen zu aktualisieren. Wenn Sie ein Administrator sind und nach Informationen zur Gruppen- und Benutzerverwaltung für Ihre Mitarbeiter und andere Verwendungszwecke suchen, lesen Sie die [Dokumentation zur Verwaltung von Unternehmensbenutzern](https://docs.microsoft.com/azure/active-directory/users-groups-roles/index).
+>Dieser Artikel richtet sich an Benutzer, die versuchen, die Informationen der mit einem Geschäfts-, Schul- oder Unikonto verbundenen Organisationen zu aktualisieren. Wenn Sie ein Administrator sind und nach Informationen zur Gruppen- und Benutzerverwaltung für Ihre Mitarbeiter und andere Verwendungszwecke suchen, lesen Sie die [Dokumentation zur Verwaltung von Unternehmensbenutzern](../users-groups-roles/index.yml).
 
 ## <a name="view-your-organizations"></a>Anzeigen Ihrer Organisationen
 
@@ -61,7 +61,7 @@ Mit Ausnahme Ihrer eigenen Organisation können Sie jederzeit alle Organisatione
 
 Nach dem Anzeigen Ihrer Organisationen haben Sie folgende Möglichkeiten:
 
-- Anzeigen oder Verwalten der [Sicherheitsinformationen](user-help-security-info-overview.md).
+- Anzeigen oder Verwalten der [Sicherheitsinformationen](./security-info-setup-signin.md).
 
 - Anzeigen oder Verwalten Ihrer verbundenen [Geräte](my-account-portal-devices-page.md).
 

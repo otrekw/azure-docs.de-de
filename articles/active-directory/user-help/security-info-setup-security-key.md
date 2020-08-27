@@ -11,12 +11,12 @@ ms.subservice: user-help
 ms.topic: end-user-help
 ms.date: 07/18/2019
 ms.author: curtand
-ms.openlocfilehash: 91138f104c787148042b187f4cf59a60bc1448d3
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: c056e439deac71417ff14dcfc3f2c3c95db41946
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744416"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88797665"
 ---
 # <a name="set-up-a-security-key-as-your-verification-method"></a>Einrichten eines Sicherheitsschlüssels als Überprüfungsmethode
 
@@ -158,13 +158,13 @@ Sie können eine neue Sicherheitsschlüssel-PIN für Ihren Sicherheitsschlüssel
 
 ## <a name="additional-security-info-methods"></a>Weitere Methoden für Sicherheitsinformationen
 
-Um einen Sicherheitsschlüssel registrieren zu können, müssen Sie mindestens eine zusätzliche Methode für die Sicherheitsüberprüfung registriert haben. Weitere Informationen finden Sie im Abschnitt mit der [Übersicht](security-info-add-update-methods-overview.md). 
+Um einen Sicherheitsschlüssel registrieren zu können, müssen Sie mindestens eine zusätzliche Methode für die Sicherheitsüberprüfung registriert haben. Weitere Informationen finden Sie im Abschnitt mit der [Übersicht](./security-info-setup-auth-app.md). 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Lesen Sie den Blogbeitrag [Microsoft Azure AD startet die öffentliche Vorschauversion von FIDO2-Sicherheitsschlüsseln, die kennwortlose Anmeldungen ermöglichen](https://www.onmsft.com/news/microsofts-azure-ad-begins-public-preview-of-fido2-security-keys-enabling-passwordless-logins) oder die Artikel [Wozu dient die Microsoft Authenticator-App?](user-help-auth-app-overview.md) und [Übersicht über Windows Hello](https://www.microsoft.com/windows/windows-hello), um weitere Informationen zu kennwortlosen Überprüfungsmethoden zu erhalten.
 
-- Lesen Sie ausführlichere Informationen zu [Microsoft-kompatiblen Sicherheitsschlüsseln](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/microsoft-compatible-security-key).
+- Lesen Sie ausführlichere Informationen zu [Microsoft-kompatiblen Sicherheitsschlüsseln](/windows/security/identity-protection/hello-for-business/microsoft-compatible-security-key).
 
 - Setzen Sie Ihr Kennwort zurück, wenn Sie es verloren oder vergessen haben. Verwenden Sie dazu das [Portal für die Kennwortzurücksetzung](https://passwordreset.microsoftonline.com/), oder führen Sie die Schritte im Artikel [Reset your work or school password](active-directory-passwords-update-your-own-password.md) (Zurücksetzen des Kennworts eines Geschäfts-, Schul- oder Unikontos) aus.
 

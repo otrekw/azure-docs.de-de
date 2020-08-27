@@ -11,12 +11,12 @@ ms.subservice: user-help
 ms.topic: end-user-help
 ms.date: 07/29/2020
 ms.author: curtand
-ms.openlocfilehash: e150143e726c75d96372b11fb3d451f0dc9956bc
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 784ee418c3713cce53d7e99e30fd445e75d144da
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422476"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798209"
 ---
 # <a name="manage-your-connected-devices-from-the-devices-page"></a>Verwalten von verbundenen Geräten auf der Seite „Geräte“
 
@@ -27,7 +27,7 @@ Auf der Seite **Geräte** im Portal **Mein Konto** können Sie die mit Ihrem Ges
 - Deaktivieren aller Geräte, die Sie nicht mehr besitzen, verloren haben oder die gestohlen wurden.
 
 >[!Important]
->Dieser Artikel richtet sich an Benutzer, die versuchen, die Geräteinformationen von mit einem Geschäfts-, Schul- oder Unikonto verbundenen Geräten zu aktualisieren. Wenn Sie ein Administrator sind und Informationen zur Geräteverwaltung für Ihre Mitarbeiter und andere Verwendungszwecke suchen, finden Sie in der [Dokumentation zu Geräteidentitäten](https://docs.microsoft.com/azure/active-directory/devices/index) weitere Informationen.
+>Dieser Artikel richtet sich an Benutzer, die versuchen, die Geräteinformationen von mit einem Geschäfts-, Schul- oder Unikonto verbundenen Geräten zu aktualisieren. Wenn Sie ein Administrator sind und Informationen zur Geräteverwaltung für Ihre Mitarbeiter und andere Verwendungszwecke suchen, finden Sie in der [Dokumentation zu Geräteidentitäten](../devices/index.yml) weitere Informationen.
 
 ## <a name="view-your-connected-devices"></a>Anzeigen Ihrer verbundenen Geräte
 
@@ -68,7 +68,7 @@ Wenn Ihr Gerät für Sie gesperrt oder ein schwerwiegender Fehler aufgetreten is
 
 Nach der Anzeige der verbundenen Geräte können Sie folgende Aktionen ausführen:
 
-- Anzeigen oder Verwalten Ihrer [Sicherheitsinformationen](user-help-security-info-overview.md)
+- Anzeigen oder Verwalten Ihrer [Sicherheitsinformationen](./security-info-setup-signin.md)
 
 - Anzeigen oder Verwalten Ihrer [Organisationen](my-account-portal-organizations-page.md)
 

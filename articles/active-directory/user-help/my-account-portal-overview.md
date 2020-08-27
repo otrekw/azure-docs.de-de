@@ -11,12 +11,12 @@ ms.subservice: user-help
 ms.topic: end-user-help
 ms.date: 07/29/2020
 ms.author: curtand
-ms.openlocfilehash: da00d77138eb3ff737c26d7fa52ab0bb56ec6ae4
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 95947a9350f19f0f0ff45b7c65e14729b66f26cf
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422408"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798158"
 ---
 # <a name="what-is-the-my-account-portal"></a>Was ist das Portal „Mein Konto“?
 
@@ -33,11 +33,11 @@ Sie können auf das Portal **Mein Konto** (https://myaccount.microsoft.com) in d
 ![Portal „Mein Konto“, Übersichtsseite](media/my-account-portal/my-account-portal-overview.png)
 
 >[!Important]
->Dieser Artikel richtet sich an Benutzer, die das Portal „Mein Konto“ aufrufen möchten, um die Sicherheitsinformationen, Geräteinformationen, das Kennwort, verbundene Organisationen, Spracheinstellungen, den Datenschutz oder frühere Anmeldeinformationen zu aktualisieren. Wenn Sie Administrator sind und Informationen zum Aktivieren der Authentifizierung und anderer Azure AD-Funktionen (Azure Active Directory) für Ihre Mitarbeiter oder andere Benutzer benötigen, sehen Sie sich die [Dokumentation zu Azure Active Directory](https://docs.microsoft.com/azure/active-directory/) an.
+>Dieser Artikel richtet sich an Benutzer, die das Portal „Mein Konto“ aufrufen möchten, um die Sicherheitsinformationen, Geräteinformationen, das Kennwort, verbundene Organisationen, Spracheinstellungen, den Datenschutz oder frühere Anmeldeinformationen zu aktualisieren. Wenn Sie Administrator sind und Informationen zum Aktivieren der Authentifizierung und anderer Azure AD-Funktionen (Azure Active Directory) für Ihre Mitarbeiter oder andere Benutzer benötigen, sehen Sie sich die [Dokumentation zu Azure Active Directory](../index.yml) an.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Anzeigen oder Verwalten Ihrer [Sicherheitsinformation](user-help-security-info-overview.md)
+- Anzeigen oder Verwalten Ihrer [Sicherheitsinformation](./security-info-setup-signin.md)
 
 - Anzeigen oder Verwalten Ihrer verbundenen [Geräte](my-account-portal-devices-page.md)
 

@@ -3,12 +3,12 @@ title: Konfigurieren des automatischen Herunterfahrens von VMs in Azure Lab Serv
 description: In diesem Artikel wird beschrieben, wie Sie das automatische Herunterfahren von VMs im Lab-Konto konfigurieren.
 ms.topic: article
 ms.date: 08/17/2020
-ms.openlocfilehash: 8dbc54ad14530006b56bf336d9d78e7d59843485
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 8647aed0e66993b8a7b8e5c0a42c8ceabbb1fb9e
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88603900"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798447"
 ---
 # <a name="configure-automatic-shutdown-of-vms-for-a-lab-account"></a>Konfigurieren des automatischen Herunterfahrens von virtuellen Computern für ein Labkonto
 
@@ -18,7 +18,7 @@ Sie können mehrere Features zur Kostenkontrolle beim automatischen Herunterfahr
 - Automatisches Herunterfahren virtueller Computer, wenn Benutzer die Verbindung trennen (Windows und Linux).
 - Automatisches Herunterfahren von virtuellen Computern, die gestartet wurden, mit denen jedoch von den Benutzern keine Verbindung hergestellt wurde.
 
-Weitere Informationen zu den Features zum automatischen Herunterfahren finden Sie im Abschnitt [Maximieren der Kostenkontrolle durch Einstellungen zum automatischen Herunterfahren](cost-management-guide.md#maximize-cost-control-with-auto-shutdown-settings).
+Weitere Informationen zu den Features zum automatischen Herunterfahren finden Sie im Abschnitt [Maximieren der Kostenkontrolle durch Einstellungen zum automatischen Herunterfahren](cost-management-guide.md#automatic-shutdown-settings-for-cost-control).
 
 ## <a name="enable-automatic-shutdown"></a>Aktivieren des automatischen Herunterfahrens
 

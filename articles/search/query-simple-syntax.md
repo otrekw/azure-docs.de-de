@@ -8,12 +8,12 @@ ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/24/2020
-ms.openlocfilehash: 5b585a903267386358552154228705c1921df619
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d07364e20cc11abc52ad9b308eb5daed8a65c146
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85255329"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88923380"
 ---
 # <a name="simple-query-syntax-in-azure-cognitive-search"></a>Einfache Abfragesyntax in der kognitiven Azure-Suche
 
@@ -21,7 +21,7 @@ Die kognitive Azure-Suche implementiert zwei Lucene-basierte Abfragesprachen: [E
 
 Der einfache Parser ist flexibler und versucht auch dann, eine Anforderung zu interpretieren, wenn sie nicht perfekt zusammengesetzt ist. Aufgrund dieser Flexibilität ist er die Standardeinstellung für Abfragen in Azure Cognitive Search. 
 
-Die einfache Syntax wird für Abfrageausdrücke verwendet, die im Parameter `search` einer [Anforderung zum Durchsuchen von Dokumenten](https://docs.microsoft.com/rest/api/searchservice/search-documents) übergeben werden. Sie ist nicht mit der [OData-Syntax](query-odata-filter-orderby-syntax.md) zu verwechseln, die für den Parameter [$filter expressions](search-filters.md) dieser API zum Durchsuchen von Dokumenten verwendet wird. Die Parameter `search` und `$filter` weisen eine unterschiedliche Syntax mit jeweils eigenen Regeln für Abfrageerstellung, Escapezeichen für Zeichenfolgen usw. auf.
+Die einfache Syntax wird für Abfrageausdrücke verwendet, die im Parameter `search` einer [Anforderung zum Durchsuchen von Dokumenten](/rest/api/searchservice/search-documents) übergeben werden. Sie ist nicht mit der [OData-Syntax](query-odata-filter-orderby-syntax.md) zu verwechseln, die für den Parameter [$filter expressions](search-filters.md) dieser API zum Durchsuchen von Dokumenten verwendet wird. Die Parameter `search` und `$filter` weisen eine unterschiedliche Syntax mit jeweils eigenen Regeln für Abfrageerstellung, Escapezeichen für Zeichenfolgen usw. auf.
 
 Der einfache Parser basiert zwar auf der [Apache Lucene Simple Query Parser](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/simple/SimpleQueryParser.html)-Klasse, die Implementierung in Azure Cognitive Search schließt jedoch die Fuzzysuche aus. Wenn Sie [Fuzzysuche](search-query-fuzzy.md) oder andere erweiterte Abfrageformen benötigen, sollten Sie stattdessen die alternative [vollständige Lucene-Abfragesyntax](query-lucene-syntax.md) in Betracht ziehen.
 
@@ -66,7 +66,7 @@ Unsichere Zeichen sind ``" ` < > # % { } | \ ^ ~ [ ]``. Reservierte Zeichen sind
 
 Unter bestimmten Umständen möchten Sie möglicherweise nach einem Sonderzeichen suchen, z. B. dem Emoji ❤ oder dem €-Zeichen. Stellen Sie in diesem Fall sicher, dass das verwendete Analysetool diese Zeichen nicht herausfiltert.  Das Standardanalysetool ignoriert viele der Sonderzeichen, sodass diese nicht zu Token in Ihrem Index werden.
 
-Der erste Schritt besteht demnach darin, ein Analysetool zu verwenden, das diese Elementtoken berücksichtigt. Beispielsweise berücksichtigt das Leerzeichen-Analysetool alle durch Leerzeichen getrennten Zeichensequenzen als Token, sodass die Zeichenfolge „❤“ als Token angesehen wird. Ein Analysetool wie das Microsoft-Analysetool für englische Sprache („en.microsoft“) würde außerdem die Zeichenfolge „€“ als Token berücksichtigen. Sie können [ein Analysetool testen](https://docs.microsoft.com/rest/api/searchservice/test-analyzer), um herauszufinden, welche Token für eine bestimmte Abfrage generiert werden.
+Der erste Schritt besteht demnach darin, ein Analysetool zu verwenden, das diese Elementtoken berücksichtigt. Beispielsweise berücksichtigt das Leerzeichen-Analysetool alle durch Leerzeichen getrennten Zeichensequenzen als Token, sodass die Zeichenfolge „❤“ als Token angesehen wird. Ein Analysetool wie das Microsoft-Analysetool für englische Sprache („en.microsoft“) würde außerdem die Zeichenfolge „€“ als Token berücksichtigen. Sie können [ein Analysetool testen](/rest/api/searchservice/test-analyzer), um herauszufinden, welche Token für eine bestimmte Abfrage generiert werden.
 
 Wenn Sie Unicode-Zeichen verwenden, stellen Sie sicher, dass die Symbole in der Abfrage-URL ordnungsgemäß mit Escapezeichen versehen werden (z. B. muss für „❤“ die Escapefolge `%E2%9D%A4+` verwendet werden). Postman übernimmt diese Übersetzung automatisch.
 
@@ -119,6 +119,6 @@ Eine Begriffsuche ist eine Abfrage für einen oder mehrere Begriffe, bei denen j
 + [Funktionsweise der Volltextsuche in Azure Cognitive Search](search-lucene-query-architecture.md)
 + [Abfragebeispiele für die einfache Suche](search-query-simple-examples.md)
 + [Abfragebeispiele für die vollständige Lucene-Suche](search-query-lucene-examples.md)
-+ [Search Documents (Azure Search Service REST API)](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) (Suchen nach Dokumenten (Azure Search Service-REST-API))
++ [Search Documents (Azure Search Service REST API)](/rest/api/searchservice/Search-Documents) (Suchen nach Dokumenten (Azure Search Service-REST-API))
 + [Lucene-Abfragesyntax](query-lucene-syntax.md)
-+ [OData-Ausdruckssyntax](query-odata-filter-orderby-syntax.md) 
++ [OData-Ausdruckssyntax](query-odata-filter-orderby-syntax.md)

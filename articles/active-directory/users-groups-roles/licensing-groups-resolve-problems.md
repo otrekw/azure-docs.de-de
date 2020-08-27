@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 79552c099adfa94f3515ff1b9c78103cb82830a1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f0d7703af48ba33edea81ca45516191266a79fa4
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85611287"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88799552"
 ---
 # <a name="identify-and-resolve-license-assignment-problems-for-a-group-in-azure-active-directory"></a>Identifizieren und Beheben von Lizenzzuweisungsproblemen für eine Gruppe in Azure Active Directory
 
@@ -107,7 +107,7 @@ Bei Verwendung von Exchange Online sind unter Umständen einige Benutzer in Ihre
 > ```
 > Get-Recipient -ResultSize unlimited | where {$_.EmailAddresses -match "user@contoso.onmicrosoft.com"} | fL Name, RecipientType,emailaddresses
 > ```
-> Weitere Informationen zu diesem Problem finden Sie unter ["Proxy address is already being used" error message in Exchange Online](https://support.microsoft.com/help/3042584/-proxy-address-address-is-already-being-used-error-message-in-exchange-online) (Fehlermeldung „Proxyadresse wird bereits verwendet“ in Exchange Online). Der Artikel enthält auch Informationen zum [Herstellen einer Verbindung mit Exchange Online mithilfe einer PowerShell-Remotesitzung](https://technet.microsoft.com/library/jj984289.aspx).
+> Weitere Informationen zu diesem Problem finden Sie unter ["Proxy address is already being used" error message in Exchange Online](https://support.microsoft.com/help/3042584/-proxy-address-address-is-already-being-used-error-message-in-exchange-online) (Fehlermeldung „Proxyadresse wird bereits verwendet“ in Exchange Online). Der Artikel enthält auch Informationen zum [Herstellen einer Verbindung mit Exchange Online mithilfe einer PowerShell-Remotesitzung](/powershell/exchange/connect-to-exchange-online-powershell?view=exchange-ps).
 
 Nachdem Sie die Probleme mit den Proxyadressen für die betroffenen Benutzer behoben haben, erzwingen Sie die Lizenzverarbeitung für diese Gruppe, um sicherzustellen, dass die Lizenzen nun zugewiesen werden können.
 

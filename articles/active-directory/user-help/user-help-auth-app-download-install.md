@@ -12,17 +12,17 @@ ms.topic: end-user-help
 ms.date: 05/31/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: d4053d4979861146705489dc02e628f03f3c4d85
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 5aac6c0b903a3b2adf481a2c63847272122ce2d7
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84266218"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798974"
 ---
 # <a name="download-and-install-the-microsoft-authenticator-app"></a>Herunterladen und Installieren der Microsoft Authenticator-App
 
 >[!Important]
->Dieser Inhalt richtet sich an Benutzer. Weitere Informationen für Administratoren zum Einrichten und Verwalten der Azure Active Directory-Umgebung (Azure AD) finden Sie in der [Azure Active Directory-Dokumentation für Administratoren](https://docs.microsoft.com/azure/active-directory).
+>Dieser Inhalt richtet sich an Benutzer. Weitere Informationen für Administratoren zum Einrichten und Verwalten der Azure Active Directory-Umgebung (Azure AD) finden Sie in der [Azure Active Directory-Dokumentation für Administratoren](../index.yml).
 >
 > Wenn Sie Probleme bei der Anmeldung bei Ihrem Konto haben, lesen Sie den Artikel [Wenn Sie sich nicht bei Ihrem Microsoft-Konto anmelden können](https://support.microsoft.com/help/12429).  Außerdem finden Sie unter [Dieses Microsoft-Konto ist nicht vorhanden](https://support.microsoft.com/help/13811) weitere Informationen zu den Maßnahmen, die Sie ergreifen können, wenn Sie diese Meldung beim Versuch erhalten, sich bei Ihrem Microsoft-Konto anzumelden.
 

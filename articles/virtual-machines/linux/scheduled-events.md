@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.date: 06/01/2020
 ms.author: ericrad
 ms.reviewer: mimckitt
-ms.openlocfilehash: f91b5879922fc473ff1e46f817b3d649b1b30a9c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: fee57efb3517131049f986c743125f17573fdc34
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87088732"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816727"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-linux-vms"></a>Instance Metadata Service: Scheduled Events für Linux-VMs
 
@@ -42,7 +42,7 @@ Geplante Ereignisse umfasst Ereignisse in den folgenden Anwendungsfällen:
 - [Von der Plattform ausgelöste Wartung](../maintenance-and-updates.md?bc=/azure/virtual-machines/linux/breadcrumb/toc.json&toc=/azure/virtual-machines/linux/toc.json) (z. B. Neustart des virtuellen Computers, Livemigration oder Updates für den Host mit Speicherbeibehaltung)
 - Der virtuelle Computer wird auf [heruntergestufter Hosthardware](https://azure.microsoft.com/blog/find-out-when-your-virtual-machine-hardware-is-degraded-with-scheduled-events) ausgeführt, deren baldiger Ausfall erwartet wird.
 - Benutzerinitiierte Wartung (z.B. Neustart oder erneute Bereitstellung eines virtuellen Computers durch den Benutzer)
-- Instanzentfernungen von [Spot-VM](spot-vms.md) und [Spot-Skalierungsgruppen](../../virtual-machine-scale-sets/use-spot.md)
+- Instanzentfernungen von [Spot-VM](../spot-vms.md) und [Spot-Skalierungsgruppen](../../virtual-machine-scale-sets/use-spot.md)
 
 ## <a name="the-basics"></a>Die Grundlagen  
 
@@ -139,7 +139,7 @@ Sofern geplante Ereignisse vorliegen, enthält die Antwort ein Array mit Ereigni
 | EventStatus | Status dieses Ereignisses <br><br> Werte: <ul><li>`Scheduled`: Dieses Ereignis erfolgt nach dem in der `NotBefore`-Eigenschaft angegebenen Zeitpunkt.<li>`Started`: Dieses Ereignis wurde gestartet.</ul> `Completed` oder ein ähnlicher Status wird nie angegeben. Das Ergebnis wird nicht länger zurückgegeben, wenn es abgeschlossen wurde.
 | NotBefore| Zeitpunkt, nach dem dieses Ereignis gestartet werden kann. <br><br> Beispiel: <br><ul><li> Mo., 19. September 2016 18:29:47 GMT  |
 | BESCHREIBUNG | Beschreibung dieses Ereignisses. <br><br> Beispiel: <br><ul><li> Der Hostserver befindet sich im Wartungsmodus. |
-| EventSource | Initiator des Ereignisses. <br><br> Beispiel: <br><ul><li> `Platform`: Dieses Ereignis wurde durch die Plattform initiiert. <li>`User`: Dieses Ereignis wurde durch den Benutzer initiiert. |
+| EventSource | Initiator des Ereignisses. <br><br> Beispiel: <br><ul><li> `Platform`: Dieses Ereignis wird durch die Plattform initiiert. <li>`User`: Dieses Ereignis wurde durch den Benutzer initiiert. |
 
 ### <a name="event-scheduling"></a>Ereigniszeitplanung
 Jedes Ereignis wird, basierend auf dem Ereignistyp, mit einer minimalen Vorlaufzeit geplant. Diese Zeit ist in der `NotBefore`-Eigenschaft eines Ereignisses angegeben. 

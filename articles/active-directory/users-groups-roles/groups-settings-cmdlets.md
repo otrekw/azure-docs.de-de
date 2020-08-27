@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 58fc6726811ac01b585dd51b2086966f7a3f7c51
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 63f0c55823899be8eb4146860787aede2cd2d6b5
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213586"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88797903"
 ---
 # <a name="azure-active-directory-cmdlets-for-configuring-group-settings"></a>Azure Active Directory-Cmdlets zum Konfigurieren von Gruppeneinstellungen
 
@@ -28,11 +28,11 @@ Dieser Artikel enthält Anweisungen für die Verwendung von PowerShell-Cmdlets f
 > [!IMPORTANT]
 > Für einige Einstellungen ist eine Azure Active Directory Premium P1-Lizenz erforderlich. Weitere Informationen finden Sie in der Tabelle [Vorlageneinstellungen](#template-settings).
 
-Um Benutzer ohne Administratorrechte am Erstellen von Sicherheitsgruppen zu hindern, legen Sie  `Set-MsolCompanySettings -UsersPermissionToCreateGroupsEnabled $False` (wie unter [Set-MSOLCompanySettings](https://docs.microsoft.com/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0) beschrieben) fest.
+Um Benutzer ohne Administratorrechte am Erstellen von Sicherheitsgruppen zu hindern, legen Sie  `Set-MsolCompanySettings -UsersPermissionToCreateGroupsEnabled $False` (wie unter [Set-MSOLCompanySettings](/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0) beschrieben) fest.
 
 Microsoft 365-Gruppeneinstellungen werden mithilfe eines „Settings“- und eines „SettingsTemplate“-Objekts konfiguriert. Zu Beginn werden keine Einstellungsobjekte in Ihrem Verzeichnis angezeigt, da Ihr Verzeichnis mit den Standardeinstellungen konfiguriert ist. Um die Standardeinstellungen zu ändern, erstellen Sie mithilfe einer Einstellungsvorlage ein neues Einstellungsobjekt. Einstellungsvorlagen werden von Microsoft definiert. Es werden verschiedene Einstellungsvorlagen unterstützt. Zum Konfigurieren von Microsoft 365-Gruppeneinstellungen für Ihr Verzeichnis verwenden Sie die Vorlage „Group.Unified“. Zum Konfigurieren von Microsoft 365-Gruppeneinstellungen für eine einzelne Gruppe verwenden Sie die Vorlage „Group.Unified.Guest“. Diese Vorlage dient zum Verwalten des Gastzugriffs auf eine Microsoft 365-Gruppe. 
 
-Die Cmdlets gehören zum Modul Azure Active Directory PowerShell V2. Weitere Anweisungen zum Herunterladen und Installieren des Moduls auf Ihrem Computer finden Sie im Artikel [Azure Active Directory PowerShell Version 2](https://docs.microsoft.com/powershell/azure/active-directory/overview). Sie können die Version 2 des Moduls über den [PowerShell-Katalog](https://www.powershellgallery.com/packages/AzureAD/) installieren.
+Die Cmdlets gehören zum Modul Azure Active Directory PowerShell V2. Weitere Anweisungen zum Herunterladen und Installieren des Moduls auf Ihrem Computer finden Sie im Artikel [Azure Active Directory PowerShell Version 2](/powershell/azure/active-directory/overview). Sie können die Version 2 des Moduls über den [PowerShell-Katalog](https://www.powershellgallery.com/packages/AzureAD/) installieren.
 
 ## <a name="install-powershell-cmdlets"></a>Installieren von PowerShell-Cmdlets
 

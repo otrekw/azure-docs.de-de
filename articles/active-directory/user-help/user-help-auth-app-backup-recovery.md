@@ -11,12 +11,12 @@ ms.topic: end-user-help
 ms.date: 06/03/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: b13de16b2080d28d3b779921456cfb20d99f0af9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3148f8ba84674c79764d0fc69acdbc02e7a12dc4
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84415990"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798991"
 ---
 # <a name="back-up-and-recover-account-credentials-using-the-microsoft-authenticator-app"></a>Sichern und Wiederherstellen von Kontoanmeldeinformationen mithilfe der Microsoft Authenticator-App
 
@@ -100,7 +100,7 @@ Bei persönlichen Microsoft-Konten können Sie Ihre Identität bestätigen, inde
     :::image type="content" source="media/user-help-auth-app-backup-recovery/work-or-school-recovery-qr-code.png" alt-text="Microsoft Authenticator stellt ein Einmalkennwort als Prüfcode bereit" border="true":::
 
 >[!NOTE]
->Weitere Informationen zu QR-Codes und zum Abrufen eines QR-Codes finden Sie unter [Erste Schritte mit der Microsoft Authenticator-App](https://docs.microsoft.com/azure/active-directory/user-help/user-help-auth-app-download-install) oder [Einrichten der Sicherheitsinformationen zur Verwendung einer Authentifikator-App](https://docs.microsoft.com/azure/active-directory/user-help/security-info-setup-auth-app) – basierend darauf, ob Ihr Administrator die Sicherheitsinformation aktiviert hat.
+>Weitere Informationen zu QR-Codes und zum Abrufen eines QR-Codes finden Sie unter [Erste Schritte mit der Microsoft Authenticator-App](./user-help-auth-app-download-install.md) oder [Einrichten der Sicherheitsinformationen zur Verwendung einer Authentifikator-App](./security-info-setup-auth-app.md) – basierend darauf, ob Ihr Administrator die Sicherheitsinformation aktiviert hat.
 >
 >Wenn Sie die Microsoft Authenticator-App zum ersten Mal einrichten, werden Sie möglicherweise in einer Meldung gefragt, ob Sie der App den Zugriff auf Ihre Kamera (iOS) oder die Aufnahme von Foto- und Videodateien (Android) erlauben möchten. Sie müssen **Zulassen** auswählen, damit die Authentifikator-App im nächsten Schritt auf Ihre Kamera zugreifen und den QR-Code aufnehmen kann. Wenn Sie den Zugriff auf die Kamera nicht zulassen, können Sie die Authentifikator-App auch einrichten, müssen die Codeinformationen aber manuell hinzufügen. Informationen zum manuellen Hinzufügen des Codes finden Sie unter [Manuelles Hinzufügen eines Kontos zur App](user-help-auth-app-add-account-manual.md).
 
@@ -130,4 +130,4 @@ Sie haben Ihre Kontoinformationen gesichert und auf dem neuen Gerät wiederherge
 
 - [Microsoft Authenticator-App – häufig gestellte Fragen](user-help-auth-app-faq.md)
 
-- [Multi-Factor Authentication](https://docs.microsoft.com/azure/multi-factor-authentication/)
+- [Multi-Factor Authentication](/azure/multi-factor-authentication/)

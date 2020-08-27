@@ -12,12 +12,12 @@ ms.topic: end-user-help
 ms.date: 02/03/2020
 ms.author: curtand
 ms.custom: user-help
-ms.openlocfilehash: 4249f753181ea4b54d7e1e1f098717ef669bae4a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8507a53959e7d28cbcec2dec6783b2470696d59b
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83744029"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798107"
 ---
 # <a name="edit-or-revoke-application-permissions-in-the-my-apps-portal"></a>Bearbeiten oder Widerrufen von Anwendungsberechtigungen im Portal „Meine Apps“
 
@@ -26,7 +26,7 @@ Wenn Sie Organisationsanwendungen im Portal **Meine Apps** verwenden, erteilen S
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-and-workspaces.md)]
 
 >[!Important]
->Dieser Inhalt richtet sich an Benutzer. Administratoren können sich in der [Dokumentation zur Anwendungsverwaltung](https://docs.microsoft.com/azure/active-directory/manage-apps/access-panel-workspaces) über die Einrichtung und Verwaltung cloudbasierter Apps informieren.
+>Dieser Inhalt richtet sich an Benutzer. Administratoren können sich in der [Dokumentation zur Anwendungsverwaltung](../manage-apps/access-panel-collections.md) über die Einrichtung und Verwaltung cloudbasierter Apps informieren.
 
 ## <a name="manage-app-permissions"></a>Verwalten von App-Berechtigungen
 

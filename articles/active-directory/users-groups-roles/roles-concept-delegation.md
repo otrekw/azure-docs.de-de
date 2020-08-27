@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c26951d5ab7552dc6c63288ce92cdb8134bd58ed
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 468b874ae4a19b8b5ea2a9a91a258722cef60e3a
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87498224"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798600"
 ---
 # <a name="delegate-administration-in-azure-active-directory"></a>Delegieren der Administration in Azure Active Directory (Azure AD)
 
@@ -60,7 +60,7 @@ Bestimmen Sie die Active Directory-Aufgaben, die von Administratoren durchgefüh
 Jede Aufgabe sollte nach Häufigkeit, Wichtigkeit und Schwierigkeit bewertet werden. Diese Kriterien sind bei der Aufgabendefinition wichtig, weil sie bestimmen, ob eine Berechtigung delegiert werden soll.
 
 * Aufgaben, die routinemäßig und einfach durchgeführt werden können und begrenzte Risiken aufweisen, sind gut für die Delegierung geeignet.
-* Bei Aufgaben, die selten durchgeführt werden, aber einen großen Einfluss auf die Organisation haben und ausgeprägte Fähigkeiten erfordern, sollte sorgfältig überlegt werden, ob diese delegiert werden können. Stattdessen können Sie [ein Konto vorübergehend auf die erforderliche Rolle erhöhen](../active-directory-privileged-identity-management-configure.md) oder die Aufgabe neu zuweisen.
+* Bei Aufgaben, die selten durchgeführt werden, aber einen großen Einfluss auf die Organisation haben und ausgeprägte Fähigkeiten erfordern, sollte sorgfältig überlegt werden, ob diese delegiert werden können. Stattdessen können Sie [ein Konto vorübergehend auf die erforderliche Rolle erhöhen](../privileged-identity-management/pim-configure.md) oder die Aufgabe neu zuweisen.
 
 ## <a name="delegate-app-administration"></a>Delegieren Sie die Verwaltung der App.
 
@@ -110,7 +110,7 @@ Wenn Angreifer den Zugriff auf privilegierte Konten erlangen können, können di
 
 ## <a name="elevate-privilege-temporarily"></a>Temporäres Erhöhen von Berechtigungen
 
-Für die meisten alltäglichen Aktivitäten benötigen nicht alle Benutzer globale Administratorrechte, und nicht alle von ihnen sollten dauerhaft der Rolle „Globaler Administrator“ zugewiesen werden. Wenn Benutzer die Berechtigungen eines globalen Administrators benötigen, sollte die Rollenzuweisung in Azure AD [Privileged Identity Management](../active-directory-privileged-identity-management-configure.md) aktiviert werden – entweder für ihr eigenes Konto oder ein alternatives Administratorkonto.
+Für die meisten alltäglichen Aktivitäten benötigen nicht alle Benutzer globale Administratorrechte, und nicht alle von ihnen sollten dauerhaft der Rolle „Globaler Administrator“ zugewiesen werden. Wenn Benutzer die Berechtigungen eines globalen Administrators benötigen, sollte die Rollenzuweisung in Azure AD [Privileged Identity Management](../privileged-identity-management/pim-configure.md) aktiviert werden – entweder für ihr eigenes Konto oder ein alternatives Administratorkonto.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

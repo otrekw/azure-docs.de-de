@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 6f47200f6978d91f46c010640bb9c2bb26e9b7d5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6869abb3040feb6431d60799536c9986c6ccb954
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78302490"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798243"
 ---
 # <a name="log10-azure-cosmos-db"></a>LOG10 (Azure Cosmos DB)
  Gibt den dekadischen Logarithmus des angegebenen numerischen Ausdrucks zurück.  
@@ -34,7 +34,7 @@ LOG10 (<numeric_expr>)
   
 ## <a name="remarks"></a>Bemerkungen
   
-  Die Funktionen LOG10 und POWER sind ihre gegenseitigen Umkehrfunktionen. Beispiel: 10 ^ LOG10(n) = n.  
+  Die Funktionen LOG10 und POWER sind ihre gegenseitigen Umkehrfunktionen. Beispiel: 10 ^ LOG10(n) = n. Der Index wird von dieser Systemfunktion nicht verwendet.
   
 ## <a name="examples"></a>Beispiele
   
@@ -49,10 +49,6 @@ SELECT LOG10(100) AS log10
 ```json
 [{log10: 2}]  
 ```  
-
-## <a name="remarks"></a>Bemerkungen
-
-Der Index wird von dieser Systemfunktion nicht verwendet.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
