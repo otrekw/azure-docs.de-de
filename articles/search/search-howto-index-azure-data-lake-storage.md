@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/11/2020
-ms.openlocfilehash: 5862654dac99bea7755eab41cf3c1bd6cdd84526
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: b1a88398d657e6bc242c7db12f3c0ddc1af828ca
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87760310"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935856"
 ---
 # <a name="indexing-documents-in-azure-data-lake-storage-gen2"></a>Indizieren von Dokumenten in Azure Data Lake Storage Gen2
 
@@ -22,7 +22,7 @@ ms.locfileid: "87760310"
 > Azure Data Lake Storage Gen2 befindet sich zurzeit in der öffentlichen Vorschau. Die Vorschaufunktion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Füllen Sie [dieses Formular](https://aka.ms/azure-cognitive-search/indexer-preview) aus, wenn Sie Zugriff auf die Vorschauversionen anfordern möchten. Dieses Feature steht in der [REST-API-Version 2020-06-30-Preview](search-api-preview.md) und im Portal zur Verfügung. Derzeit wird das .NET SDK nicht unterstützt.
 
 
-Beim Einrichten eines Azure-Speicherkontos haben Sie die Möglichkeit, einen [hierarchischen Namespace](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-namespace) zu aktivieren. Auf diese Weise kann die Sammlung von Inhalten in einem Konto in einer Hierarchie von Verzeichnissen und geschachtelten Unterverzeichnissen organisiert werden. Durch das Aktivieren eines hierarchischen Namespace aktivieren Sie [Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction).
+Beim Einrichten eines Azure-Speicherkontos haben Sie die Möglichkeit, einen [hierarchischen Namespace](../storage/blobs/data-lake-storage-namespace.md) zu aktivieren. Auf diese Weise kann die Sammlung von Inhalten in einem Konto in einer Hierarchie von Verzeichnissen und geschachtelten Unterverzeichnissen organisiert werden. Durch das Aktivieren eines hierarchischen Namespace aktivieren Sie [Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md).
 
 In diesem Artikel wird beschrieben, wie Sie mit dem Indizieren von Dokumenten beginnen, die in Azure Data Lake Storage Gen2 vorliegen.
 
@@ -44,9 +44,9 @@ Das Indizieren von Inhalten in Data Lake Storage Gen2 ist mit dem Indizieren von
 
 ## <a name="access-control"></a>Zugriffssteuerung
 
-Azure Data Lake Storage Gen2 implementiert ein [Zugriffssteuerungsmodell](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control), das sowohl die rollenbasierte Zugriffssteuerung (Role Based Access Control, RBAC) in Azure als auch POSIX-ähnliche Zugriffssteuerungslisten (Access Control Lists, ACLs) unterstützt. Beim Indizieren von Inhalten aus Data Lake Storage Gen2 extrahiert Azure Cognitive Search keine RBAC- und ACL-Informationen aus den Inhalten. Als Ergebnis sind diese Informationen nicht in Ihrem Azure Cognitive Search-Index enthalten.
+Azure Data Lake Storage Gen2 implementiert ein [Zugriffssteuerungsmodell](../storage/blobs/data-lake-storage-access-control.md), das sowohl die rollenbasierte Zugriffssteuerung (Role Based Access Control, RBAC) in Azure als auch POSIX-ähnliche Zugriffssteuerungslisten (Access Control Lists, ACLs) unterstützt. Beim Indizieren von Inhalten aus Data Lake Storage Gen2 extrahiert Azure Cognitive Search keine RBAC- und ACL-Informationen aus den Inhalten. Als Ergebnis sind diese Informationen nicht in Ihrem Azure Cognitive Search-Index enthalten.
 
-Wenn die Verwaltung der Zugriffssteuerung für jedes Dokument im Index wichtig ist, kann der Anwendungsentwickler [Sicherheitsfilter](https://docs.microsoft.com/azure/search/search-security-trimming-for-azure-search) implementieren.
+Wenn die Verwaltung der Zugriffssteuerung für jedes Dokument im Index wichtig ist, kann der Anwendungsentwickler [Sicherheitsfilter](./search-security-trimming-for-azure-search.md) implementieren.
 
 ## <a name="change-detection"></a>Änderungserkennung
 

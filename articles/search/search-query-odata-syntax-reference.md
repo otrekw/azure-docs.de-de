@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: f3422fd10e062ae87bc165491e0d01ac2b4943d2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 83e9ae4aa68bc0c819d02a0cc6c39758549811cb
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72793233"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88928852"
 ---
 # <a name="odata-expression-syntax-reference-for-azure-cognitive-search"></a>Referenz zur OData-Ausdruckssyntax für Azure Cognitive Search
 
@@ -217,6 +217,6 @@ Nutzen Sie das interaktive Syntaxdiagramm, um sich visuell mit der von Azure Cog
 ## <a name="see-also"></a>Weitere Informationen  
 
 - [Filter in Azure Cognitive Search](search-filters.md)
-- [Suchen von Dokumenten &#40;Azure Cognitive Search-REST-API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [Suchen von Dokumenten &#40;Azure Cognitive Search-REST-API&#41;](/rest/api/searchservice/Search-Documents)
 - [Lucene-Abfragesyntax](query-lucene-syntax.md)
 - [Einfache Abfragesyntax in Azure Cognitive Search](query-simple-syntax.md)

@@ -8,16 +8,16 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: 716951616a82dfd13d6bdcf127c4c4382576e792
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fd35f297e88c37aec39938b0bfd60288e591a62c
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85080855"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936077"
 ---
 #    <a name="entity-recognition-cognitive-skill"></a>Die kognitive Qualifikation „Entitätserkennung“
 
-Mit der Qualifikation **Entitätserkennung** (EntityRecognitionSkill) können Sie Entitäten aus verschiedenen Arten von Text extrahieren. Bei dieser Qualifikation werden die Machine Learning-Modelle verwendet, die in Cognitive Services über die [Textanalyse](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview) bereitgestellt werden.
+Mit der Qualifikation **Entitätserkennung** (EntityRecognitionSkill) können Sie Entitäten aus verschiedenen Arten von Text extrahieren. Bei dieser Qualifikation werden die Machine Learning-Modelle verwendet, die in Cognitive Services über die [Textanalyse](../cognitive-services/text-analytics/overview.md) bereitgestellt werden.
 
 > [!NOTE]
 > Wenn Sie den Umfang erweitern, indem Sie die Verarbeitungsfrequenz erhöhen oder weitere Dokumente oder KI-Algorithmen hinzufügen, müssen Sie [eine kostenpflichtige Cognitive Services-Ressource anfügen](cognitive-search-attach-cognitive-services.md). Gebühren fallen beim Aufrufen von APIs in Cognitive Services sowie für die Bildextraktion im Rahmen der Dokumententschlüsselungsphase in Azure Cognitive Search an. Für die Textextraktion aus Dokumenten fallen keine Gebühren an.
@@ -29,7 +29,7 @@ Mit der Qualifikation **Entitätserkennung** (EntityRecognitionSkill) können Si
 Microsoft.Skills.Text.EntityRecognitionSkill
 
 ## <a name="data-limits"></a>Datengrenzwerte
-Die maximale Größe eines Datensatzes beträgt 50.000 Zeichen (gemessen durch [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length)). Wenn Sie Ihre Daten teilen müssen, bevor Sie sie an die Schlüsselbegriffserkennung senden, denken Sie daran, den [Skill „Text teilen“](cognitive-search-skill-textsplit.md) zu verwenden.
+Die maximale Größe eines Datensatzes beträgt 50.000 Zeichen (gemessen durch [`String.Length`](/dotnet/api/system.string.length)). Wenn Sie Ihre Daten teilen müssen, bevor Sie sie an die Schlüsselbegriffserkennung senden, denken Sie daran, den [Skill „Text teilen“](cognitive-search-skill-textsplit.md) zu verwenden.
 
 ## <a name="skill-parameters"></a>Skillparameter
 
@@ -53,7 +53,7 @@ Bei den Parametern, die alle optional sind, wird die Groß-/Kleinschreibung beac
 ## <a name="skill-outputs"></a>Skillausgaben
 
 > [!NOTE]
-> Nicht alle Entitätskategorien werden für alle Sprachen unterstützt. Die Entitätskategorietypen `"Person"`, `"Location"` und `"Organization"` werden für die vollständige Liste der oben genannten Sprachen unterstützt. Nur _de_, _en_, _es_, _fr_ und _zh-hans_ unterstützen die Extraktion der Typen `"Quantity"`, `"Datetime"`, `"URL"` und `"Email"`. Weitere Informationen finden Sie unter [Sprach- und Regionsunterstützung für die Textanalyse-API](https://docs.microsoft.com/azure/cognitive-services/text-analytics/language-support).  
+> Nicht alle Entitätskategorien werden für alle Sprachen unterstützt. Die Entitätskategorietypen `"Person"`, `"Location"` und `"Organization"` werden für die vollständige Liste der oben genannten Sprachen unterstützt. Nur _de_, _en_, _es_, _fr_ und _zh-hans_ unterstützen die Extraktion der Typen `"Quantity"`, `"Datetime"`, `"URL"` und `"Email"`. Weitere Informationen finden Sie unter [Sprach- und Regionsunterstützung für die Textanalyse-API](../cognitive-services/text-analytics/language-support.md).  
 
 | Ausgabename      | BESCHREIBUNG                   |
 |---------------|-------------------------------|
@@ -187,7 +187,7 @@ Bei den Parametern, die alle optional sind, wird die Groß-/Kleinschreibung beac
 }
 ```
 
-Beachten Sie, dass die für Entitäten in der Ausgabe dieses Skills zurückgegebenen Offsets direkt von der [Textanalyse-API](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview) zurückgegeben werden. Dies bedeutet, dass Sie, wenn Sie sie zum Indizieren in der ursprünglichen Zeichenfolge verwenden, die [StringInfo](https://docs.microsoft.com/dotnet/api/system.globalization.stringinfo?view=netframework-4.8)-Klasse in .NET verwenden müssen, um den richtigen Inhalt zu extrahieren.  [Weitere Informationen finden Sie hier.](https://docs.microsoft.com/azure/cognitive-services/text-analytics/concepts/text-offsets)
+Beachten Sie, dass die für Entitäten in der Ausgabe dieses Skills zurückgegebenen Offsets direkt von der [Textanalyse-API](../cognitive-services/text-analytics/overview.md) zurückgegeben werden. Dies bedeutet, dass Sie, wenn Sie sie zum Indizieren in der ursprünglichen Zeichenfolge verwenden, die [StringInfo](/dotnet/api/system.globalization.stringinfo?view=netframework-4.8)-Klasse in .NET verwenden müssen, um den richtigen Inhalt zu extrahieren.  [Weitere Informationen finden Sie hier.](../cognitive-services/text-analytics/concepts/text-offsets.md)
 
 ## <a name="error-cases"></a>Auftretende Fehler
 Wird der Sprachcode für das Dokument nicht unterstützt, wird ein Fehler zurückgegeben, und es werden keine Entitäten extrahiert.

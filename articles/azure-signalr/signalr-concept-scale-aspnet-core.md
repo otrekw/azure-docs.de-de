@@ -4,14 +4,15 @@ description: Eine Übersicht zur Verwendung des Azure SignalR-Diensts zum Skalie
 author: sffamily
 ms.service: signalr
 ms.topic: conceptual
+ms.custom: devx-track-dotnet
 ms.date: 03/01/2019
 ms.author: zhshang
-ms.openlocfilehash: 8a4012d204b6dafa1233e4ce3d878590120be47d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d104e0f1f2c6a978a5fce2c046a36e50a7056970
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "60640224"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88928499"
 ---
 # <a name="scale-aspnet-core-signalr-applications-with-azure-signalr-service"></a>Skalieren von ASP.NET Core SignalR-Anwendungen mit Azure SignalR
 

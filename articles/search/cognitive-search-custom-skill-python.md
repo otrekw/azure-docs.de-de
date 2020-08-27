@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/15/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: aac184b9dc7eae8afcf796376d2f7dca684b4367
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 40e20ad4bab0275b44cd868521c7dc70dec52567
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87852785"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936128"
 ---
 # <a name="example-create-a-custom-skill-using-python"></a>Beispiel: Erstellen einer benutzerdefinierten Qualifikation mit Python
 
@@ -26,12 +26,12 @@ Die benutzerdefinierte Qualifikation ist vom Design her einfach (sie verknüpft 
 
 + Unter [Schnittstelle für benutzerdefinierte Qualifikationen](cognitive-search-custom-skill-interface.md) finden Sie eine Einführung in die Eingabe/Ausgabe-Schnittstelle, die eine benutzerdefinierte Qualifikation implementieren sollte.
 
-+ Einrichten Ihrer Umgebung. Wir sind [diesem Tutorial von Anfang bis Ende](https://docs.microsoft.com/azure/python/tutorial-vs-code-serverless-python-01) gefolgt, um die serverlose Azure Function unter Verwendung von Visual Studio-Code und Python-Erweiterungen einzurichten. Das Tutorial führt Sie durch die Installation der folgenden Tools und Komponenten: 
++ Einrichten Ihrer Umgebung. Wir sind [diesem Tutorial von Anfang bis Ende](/azure/python/tutorial-vs-code-serverless-python-01) gefolgt, um die serverlose Azure Function unter Verwendung von Visual Studio-Code und Python-Erweiterungen einzurichten. Das Tutorial führt Sie durch die Installation der folgenden Tools und Komponenten: 
 
   + [Python 3.75](https://www.python.org/downloads/release/python-375/)
   + [Visual Studio Code](https://code.visualstudio.com/)
   + [Python-Erweiterung für Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
-  + [Azure Functions Core Tools](https://docs.microsoft.com/azure/azure-functions/functions-run-local#v2)
+  + [Azure Functions Core Tools](../azure-functions/functions-run-local.md#v2)
   + [Azure Functions-Erweiterung für Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions)
 
 ## <a name="create-an-azure-function"></a>Erstellen einer Azure Function
@@ -270,5 +270,5 @@ Glückwunsch! Sie haben Ihre erste benutzerdefinierte Qualifikation erstellt. Nu
 + [Power Skills: ein Repository benutzerdefinierter Skills](https://github.com/Azure-Samples/azure-search-power-skills)
 + [Hinzufügen einer benutzerdefinierten Qualifikation zu einer KI-Anreicherungspipeline](cognitive-search-custom-skill-interface.md)
 + [Definieren eines Skillsets](cognitive-search-defining-skillset.md)
-+ [Erstellen eines Skillsets (REST)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
++ [Erstellen eines Skillsets (REST)](/rest/api/searchservice/create-skillset)
 + [Zuordnen angereicherter Felder](cognitive-search-output-field-mapping.md)

@@ -3,12 +3,12 @@ title: 'Empfangen von Ereignissen unter Verwendung von Event Processor Host: Azu
 description: Dieser Artikel beschreibt den Event Processor Host in Azure Event Hubs, der die parallele Verwaltung von Prüfpunkten, Leases und das Lesen von Ereignissen vereinfacht.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: dd11e3ef77ff665a0207a2cf7e63b1b9f2df0e08
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 41778425a0ec6ba1732c8e604dead2deb7c97f12
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87002521"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936179"
 ---
 # <a name="event-processor-host"></a>Ereignisprozessorhost
 > [!NOTE]
@@ -192,10 +192,10 @@ Es wird nicht empfohlen, einen Empfänger mit epoch-Wert zu erstellen und dann i
 Nachdem Sie sich mit dem Ereignisprozessorhost vertraut gemacht haben, finden Sie in den folgenden Artikeln weitere Informationen zu Event Hubs:
 
 - Erste Schritte mit Event Hubs
-    - [.NET Core](get-started-dotnet-standard-send-v2.md)
-    - [Java](get-started-java-send-v2.md)
-    - [Python](get-started-python-send-v2.md)
-    - [JavaScript](get-started-node-send-v2.md)
+    - [.NET Core](event-hubs-dotnet-standard-getstarted-send.md)
+    - [Java](event-hubs-java-get-started-send.md)
+    - [Python](event-hubs-python-get-started-send.md)
+    - [JavaScript](event-hubs-node-get-started-send.md)
 * [Programmierleitfaden für Event Hubs](event-hubs-programming-guide.md)
 * [Verfügbarkeit und Konsistenz in Event Hubs](event-hubs-availability-and-consistency.md)
 * [Event Hubs – häufig gestellte Fragen](event-hubs-faq.md)

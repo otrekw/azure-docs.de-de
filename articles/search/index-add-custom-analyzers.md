@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/05/2020
-ms.openlocfilehash: 402fd8da8e29e8f3fec6747be5d9480ca176fc55
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 8a9f8b02d8821c76b2a7766f35244834934db1d0
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86511397"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935907"
 ---
 # <a name="add-custom-analyzers-to-string-fields-in-an-azure-cognitive-search-index"></a>Hinzufügen von benutzerdefinierten Analysetools zu Zeichenfolgenfeldern in einem Azure Cognitive Search-Index
 
@@ -53,7 +53,7 @@ Ein *benutzerdefiniertes Analysetool* ist eine bestimmte Art von [Textanalysetoo
 
  Der `tokenizer_name` ist der Name eines Tokenizers, `token_filter_name_1` und `token_filter_name_2` sind die Namen von Tokenfiltern, und `char_filter_name_1` und `char_filter_name_2` sind die Namen von Zeichenfiltern (gültige Werte finden Sie in den Tabellen [Tokenizer](#Tokenizers), [Tokenfilter](#TokenFilters) und „Zeichenfilter“).
 
-Die Definition der Analysetools ist ein Teil des größeren Index. Weitere Informationen zum Rest des Index finden Sie unter [Index-API erstellen](https://docs.microsoft.com/rest/api/searchservice/create-index).
+Die Definition der Analysetools ist ein Teil des größeren Index. Weitere Informationen zum Rest des Index finden Sie unter [Index-API erstellen](/rest/api/searchservice/create-index).
 
 ```
 "analyzers":(optional)[
@@ -133,7 +133,7 @@ Definitionen für Zeichenfilter, Tokenizer und Tokenfilter werden dem Index nur 
 
 ## <a name="test-custom-analyzers"></a>Testen von benutzerdefinierten Analysetools
 
-Sie können den Vorgang **Analysetool testen** in der [REST-API](https://docs.microsoft.com/rest/api/searchservice/test-analyzer) verwenden, um zu sehen, wie ein Analysetool bestimmten Text in Token zerlegt.
+Sie können den Vorgang **Analysetool testen** in der [REST-API](/rest/api/searchservice/test-analyzer) verwenden, um zu sehen, wie ein Analysetool bestimmten Text in Token zerlegt.
 
 **Anforderung**
 ```
@@ -372,6 +372,6 @@ In der folgenden Tabelle bieten die Tokenfilter, die mit Apache Lucene implement
 
 
 ## <a name="see-also"></a>Weitere Informationen  
- [REST-APIs für die kognitive Azure-Suche](https://docs.microsoft.com/rest/api/searchservice/)   
+ [REST-APIs für die kognitive Azure-Suche](/rest/api/searchservice/)   
  [Analysetools in der kognitiven Azure-Suche > Beispiele](search-analyzers.md#examples)    
- [Erstellen eines Index &#40;REST-API für die kognitive Azure-Suche&#41;](https://docs.microsoft.com/rest/api/searchservice/create-index)  
+ [Erstellen eines Index &#40;REST-API für die kognitive Azure-Suche&#41;](/rest/api/searchservice/create-index)

@@ -8,12 +8,12 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/18/2020
-ms.openlocfilehash: 3957884a8c559194c436487050f0dbc09acf0441
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 5596a2db32a0fe5b6b5eddf3ae20501e6edb0b99
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232507"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935380"
 ---
 # <a name="incremental-enrichment-and-caching-in-azure-cognitive-search"></a>Inkrementelle Anreicherung und Zwischenspeicherung in Azure Cognitive Search
 
@@ -28,9 +28,9 @@ Ein Workflow, der inkrementelle Anreicherung verwendet, besteht aus den folgende
 
 1. [Erstellen oder Bestimmen eines Azure-Speicherkontos](../storage/common/storage-account-create.md) zum Aufnehmen des Zwischenspeichers.
 1. [Aktivieren von inkrementeller Anreicherung](search-howto-incremental-index.md) im Indexer.
-1. [Erstellen eines Indexers](https://docs.microsoft.com/rest/api/searchservice/create-indexer) – sowie eines [Skillsets](https://docs.microsoft.com/rest/api/searchservice/create-skillset) – zum Aufrufen der Pipeline. Während der Verarbeitung werden für jedes Dokument Phasen der Anreicherung für jedes Dokument zur zukünftigen Verwendung in Blob-Speicher gespeichert.
-1. Testen Sie Ihren Code, und verwenden Sie nach ggf. erforderlichen Änderungen [Skillset aktualisieren](https://docs.microsoft.com/rest/api/searchservice/update-skillset), um eine Definition zu ändern.
-1. [Führen Sie den Indexer aus](https://docs.microsoft.com/rest/api/searchservice/run-indexer), um die Pipeline aufzurufen, wobei zwischengespeicherte Ausgaben für eine schnellere und kostengünstigere Verarbeitung abgerufen werden.
+1. [Erstellen eines Indexers](/rest/api/searchservice/create-indexer) – sowie eines [Skillsets](/rest/api/searchservice/create-skillset) – zum Aufrufen der Pipeline. Während der Verarbeitung werden für jedes Dokument Phasen der Anreicherung für jedes Dokument zur zukünftigen Verwendung in Blob-Speicher gespeichert.
+1. Testen Sie Ihren Code, und verwenden Sie nach ggf. erforderlichen Änderungen [Skillset aktualisieren](/rest/api/searchservice/update-skillset), um eine Definition zu ändern.
+1. [Führen Sie den Indexer aus](/rest/api/searchservice/run-indexer), um die Pipeline aufzurufen, wobei zwischengespeicherte Ausgaben für eine schnellere und kostengünstigere Verarbeitung abgerufen werden.
 
 Weitere Informationen zu Schritten und Überlegungen beim Arbeiten mit einem vorhandenen Indexer finden Sie unter [Einrichten der inkrementellen Anreicherung](search-howto-incremental-index.md).
 
@@ -109,7 +109,7 @@ PUT https://customerdemos.search.windows.net/datasources/callcenter-ds?api-versi
 
 Der Zweck des Caches ist es, unnötige Verarbeitung zu vermeiden, aber angenommen, Sie nehmen eine Änderung an einer Qualifikation vor, die der Indexer nicht erkennt (etwa eine Änderung an Elementen in externem Code, wie z. B. einer benutzerdefinierten Qualifikation).
 
-In diesem Fall können Sie [Reset Skills](https://docs.microsoft.com/rest/api/searchservice/preview-api/reset-skills) verwenden, um die erneute Verarbeitung einer bestimmten Qualifikation zu erzwingen, einschließlich aller Downstreamqualifikationen, die von der Ausgabe dieser Qualifikation abhängig sind. Diese API akzeptiert eine POST-Anforderung mit einer Liste von Qualifikationen, die ungültig gemacht und zur erneuten Verarbeitung markiert werden sollten. Führen Sie nach „Reset Skills“ den Indexer aus, um die Pipeline aufzurufen.
+In diesem Fall können Sie [Reset Skills](/rest/api/searchservice/preview-api/reset-skills) verwenden, um die erneute Verarbeitung einer bestimmten Qualifikation zu erzwingen, einschließlich aller Downstreamqualifikationen, die von der Ausgabe dieser Qualifikation abhängig sind. Diese API akzeptiert eine POST-Anforderung mit einer Liste von Qualifikationen, die ungültig gemacht und zur erneuten Verarbeitung markiert werden sollten. Führen Sie nach „Reset Skills“ den Indexer aus, um die Pipeline aufzurufen.
 
 ## <a name="change-detection"></a>Änderungserkennung
 
@@ -152,15 +152,15 @@ Bei der inkrementellen Verarbeitung wird Ihre Skillsetdefinition ausgewertet, un
 
 Die REST-API-Version `2020-06-30-Preview` bietet eine inkrementelle Anreicherung durch zusätzliche Eigenschaften für Indexer. Skillsets und Datenquellen können die allgemein verfügbare Version verwenden. Ergänzende Informationen zur Referenzdokumentation mit Einzelheiten zum Aufrufen der APIs finden Sie unter [Konfigurieren der Zwischenspeicherung für die inkrementelle Anreicherung](search-howto-incremental-index.md).
 
-+ [Create Indexer (api-version=2020-06-30-Preview)](https://docs.microsoft.com/rest/api/searchservice/create-indexer) 
++ [Create Indexer (api-version=2020-06-30-Preview)](/rest/api/searchservice/create-indexer) 
 
-+ [Update Indexer (api-version=2020-06-30-Preview)](https://docs.microsoft.com/rest/api/searchservice/update-indexer) 
++ [Update Indexer (api-version=2020-06-30-Preview)](/rest/api/searchservice/update-indexer) 
 
-+ [Update Skillset (api-version=2020-06-30)](https://docs.microsoft.com/rest/api/searchservice/update-skillset) (Neuer URI-Parameter in der Anforderung)
++ [Update Skillset (api-version=2020-06-30)](/rest/api/searchservice/update-skillset) (Neuer URI-Parameter in der Anforderung)
 
-+ [Reset Skills (api-version=2020-06-30)](https://docs.microsoft.com/rest/api/searchservice/preview-api/reset-skills)
++ [Reset Skills (api-version=2020-06-30)](/rest/api/searchservice/preview-api/reset-skills)
 
-+ Datenbankindexer (Azure SQL, Cosmos DB). Einige Indexer rufen Daten über Abfragen ab. Für Abfragen, die Daten abrufen, unterstützt [Update Data Source](https://docs.microsoft.com/rest/api/searchservice/update-data-source) einen neuen Parameter in einer Anforderung: **ignoreResetRequirement**, der auf `true` festgelegt werden sollte, wenn Ihre Aktualisierungsaktion den Cache nicht ungültig machen soll. 
++ Datenbankindexer (Azure SQL, Cosmos DB). Einige Indexer rufen Daten über Abfragen ab. Für Abfragen, die Daten abrufen, unterstützt [Update Data Source](/rest/api/searchservice/update-data-source) einen neuen Parameter in einer Anforderung: **ignoreResetRequirement**, der auf `true` festgelegt werden sollte, wenn Ihre Aktualisierungsaktion den Cache nicht ungültig machen soll. 
 
   Setzen Sie **ignoreResetRequirement** mit Bedacht ein, da diese Option zu unerwünschten Inkonsistenzen in Ihren Daten führen kann, die nicht ohne Weiteres erkennbar sind.
 

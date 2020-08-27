@@ -8,12 +8,12 @@ ms.author: abmotley
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 83c3797cc3d9232f8589527285cc56c5cbff9a8a
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: fdae02ca9d3c434a77eb972bfd4b955161bd72c4
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84221316"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935550"
 ---
 # <a name="troubleshooting-common-indexer-errors-and-warnings-in-azure-cognitive-search"></a>Beheben von häufigen Fehler und Warnungen bei Suchindexern in Azure Cognitive Search
 
@@ -21,10 +21,10 @@ Dieser Artikel enthält Informationen und Lösungen für häufige Fehler und War
 
 Die Indizierung wird angehalten, wenn die Fehleranzahl ['maxFailedItems'](cognitive-search-concept-troubleshooting.md#tip-3-see-what-works-even-if-there-are-some-failures) überschreitet. 
 
-Wenn Sie möchten, dass Indexer diese Fehler ignorieren (und „fehlerhafte Dokumente“ überspringen), sollten Sie `maxFailedItems` und `maxFailedItemsPerBatch` wie [hier](https://docs.microsoft.com/rest/api/searchservice/create-indexer#general-parameters-for-all-indexers) beschrieben aktualisieren.
+Wenn Sie möchten, dass Indexer diese Fehler ignorieren (und „fehlerhafte Dokumente“ überspringen), sollten Sie `maxFailedItems` und `maxFailedItemsPerBatch` wie [hier](/rest/api/searchservice/create-indexer#general-parameters-for-all-indexers) beschrieben aktualisieren.
 
 > [!NOTE]
-> Jedes fehlerhafte Dokumente mit dem dazugehörigen Dokumentschlüssel (falls verfügbar) wird im Status der Indexer-Ausführung als Fehler angezeigt. Sie können die [Index-API](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) verwenden, um die Dokumente zu einem späteren Zeitpunkt manuell hochzuladen, wenn Sie festgelegt haben, dass der Indexer Fehler toleriert.
+> Jedes fehlerhafte Dokumente mit dem dazugehörigen Dokumentschlüssel (falls verfügbar) wird im Status der Indexer-Ausführung als Fehler angezeigt. Sie können die [Index-API](/rest/api/searchservice/addupdate-or-delete-documents) verwenden, um die Dokumente zu einem späteren Zeitpunkt manuell hochzuladen, wenn Sie festgelegt haben, dass der Indexer Fehler toleriert.
 
 Anhand der Fehlerinformationen in diesem Artikel können Sie Fehler beheben, damit die Indizierung fortgesetzt werden kann.
 
@@ -71,7 +71,7 @@ Der Indexer hat das Dokument aus der Datenquelle gelesen, aber es gab ein Proble
 
 | `Reason` | Details/Beispiel | Lösung |
 | --- | --- | --- |
-| Dokumentschlüssel fehlt | Der Dokumentschlüssel darf nicht fehlen oder leer sein | Stellen Sie sicher, dass alle Dokumente über gültige Dokumentschlüssel verfügen. Der Dokumentschlüssel wird durch Festlegen der Eigenschaft „key“ als Teil der [Indexdefinition](https://docs.microsoft.com/rest/api/searchservice/create-index#request-body) bestimmt. Indexer geben diesen Fehler aus, wenn die als „key“ gekennzeichnete Eigenschaft in einem bestimmten Dokument nicht gefunden werden kann. |
+| Dokumentschlüssel fehlt | Der Dokumentschlüssel darf nicht fehlen oder leer sein | Stellen Sie sicher, dass alle Dokumente über gültige Dokumentschlüssel verfügen. Der Dokumentschlüssel wird durch Festlegen der Eigenschaft „key“ als Teil der [Indexdefinition](/rest/api/searchservice/create-index#request-body) bestimmt. Indexer geben diesen Fehler aus, wenn die als „key“ gekennzeichnete Eigenschaft in einem bestimmten Dokument nicht gefunden werden kann. |
 | Dokumentschlüssel ist ungültig | Der Dokumentschlüssel darf nicht länger als 1024 Zeichen sein | Ändern Sie den Dokumentschlüssel so, dass er die Überprüfungsanforderungen erfüllt. |
 | Feldzuordnung konnte nicht auf ein Feld angewendet werden | Die Zuordnungsfunktion `'functionName'` konnte nicht auf das Feld `'fieldName'` angewendet werden. Das Array darf nicht NULL sein. Parametername: Bytes | Überprüfen Sie die [Feldzuordnungen](search-indexer-field-mappings.md), die im Indexer definiert sind, und vergleichen Sie sie mit den Daten des angegebenen Felds des fehlerhaften Dokuments. Es kann erforderlich sein, die Feldzuordnungen oder die Dokumentdaten zu ändern. |
 | Feldwert konnte nicht gelesen werden | Der Wert der Spalte `'fieldName'` bei Index `'fieldIndex'` konnte nicht gelesen werden. Beim Empfangen von Ergebnissen vom Server ist ein Fehler auf Übertragungsebene aufgetreten. (Anbieter: TCP-Anbieter, Fehler: 0 – Eine vorhandene Verbindung wurde erzwungenermaßen vom Remotehost geschlossen.) | Diese Fehler sind in der Regel auf unerwartete Konnektivitätsprobleme beim zugrunde liegenden Dienst der Datenquelle zurückzuführen. Versuchen Sie später erneut, das Dokument über den Indexer laufen zu lassen. |
@@ -155,7 +155,7 @@ Das Dokument wurde gelesen und verarbeitet, aber der Indexer konnte es nicht zum
 | Probleme beim Herstellen einer Verbindung mit dem Zielindex (die nach Wiederholungsversuchen weiterhin bestehen), da der Dienst durch eine andere Aufgabe ausgelastet ist, z.B. eine Abfrage oder Indizierung. | Die Verbindung zum Hochladen des Indexes konnte nicht hergestellt werden. Der Suchdienst ist stark ausgelastet. | [Hochskalieren des Suchdiensts](search-capacity-planning.md)
 | Der Suchdienst wird für das Dienstupdate gepatcht oder befindet sich mitten in einer Neukonfiguration der Topologie. | Die Verbindung zum Hochladen des Indexes konnte nicht hergestellt werden. Der Suchdienst ist derzeit nicht verfügbar / Der Suchdienst befindet sich im Übergang. | Konfigurieren Sie den Dienst mit mindestens 3 Replikaten für eine Verfügbarkeit von 99,9 % gemäß [SLA-Dokumentation](https://azure.microsoft.com/support/legal/sla/search/v1_0/).
 | Fehler in der zugrunde liegenden Compute-/Netzwerkressource (selten) | Die Verbindung zum Hochladen des Indexes konnte nicht hergestellt werden. Ein unbekannter Fehler ist aufgetreten. | Konfigurieren Sie Indexer für die [Ausführung nach Zeitplan](search-howto-schedule-indexers.md), um den Betrieb nach einem Fehler wieder aufzunehmen.
-| Eine Indizierungsanforderung an den Zielindex wurde aufgrund von Netzwerkproblemen nicht innerhalb eines Zeitlimits bestätigt. | Die Verbindung mit dem Suchindex konnte nicht rechtzeitig hergestellt werden. | Konfigurieren Sie Indexer für die [Ausführung nach Zeitplan](search-howto-schedule-indexers.md), um den Betrieb nach einem Fehler wieder aufzunehmen. Versuchen Sie außerdem, die [Batchgröße](https://docs.microsoft.com/rest/api/searchservice/create-indexer#parameters) des Indexers zu verringern, wenn dieser Fehler weiterhin auftritt.
+| Eine Indizierungsanforderung an den Zielindex wurde aufgrund von Netzwerkproblemen nicht innerhalb eines Zeitlimits bestätigt. | Die Verbindung mit dem Suchindex konnte nicht rechtzeitig hergestellt werden. | Konfigurieren Sie Indexer für die [Ausführung nach Zeitplan](search-howto-schedule-indexers.md), um den Betrieb nach einem Fehler wieder aufzunehmen. Versuchen Sie außerdem, die [Batchgröße](/rest/api/searchservice/create-indexer#parameters) des Indexers zu verringern, wenn dieser Fehler weiterhin auftritt.
 
 <a name="could-not-index-document-because-the-indexer-data-to-index-was-invalid"></a>
 
@@ -171,11 +171,11 @@ Das Dokument wurde vom Indexer gelesen und verarbeitet, konnte jedoch aufgrund e
 | Im Quelldokument wurde ein unbekannter Typ gefunden. | Unbekannter Typ _unknown_ kann nicht indiziert werden. |
 | Im Quelldokument wurde eine nicht kompatible Notation für Geografiepunkte verwendet. | WKT POINT-Zeichenfolgenliterale werden nicht unterstützt. Verwenden Sie stattdessen GeoJson-Punkt-Literale. |
 
-Beachten Sie in allen diesen Fällen die Informationen unter [Unterstützte Datentypen](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) und [Datentypzuordnung für Indexer](https://docs.microsoft.com/rest/api/searchservice/data-type-map-for-indexers-in-azure-search), um sicherzustellen, dass Sie das Indexschema ordnungsgemäß erstellen und geeignete [Indexerfeldzuordnungen](search-indexer-field-mappings.md) eingerichtet haben. Die Fehlermeldung enthält Details, anhand derer die Quelle des Konflikts ermittelt werden kann.
+Beachten Sie in allen diesen Fällen die Informationen unter [Unterstützte Datentypen](/rest/api/searchservice/supported-data-types) und [Datentypzuordnung für Indexer](/rest/api/searchservice/data-type-map-for-indexers-in-azure-search), um sicherzustellen, dass Sie das Indexschema ordnungsgemäß erstellen und geeignete [Indexerfeldzuordnungen](search-indexer-field-mappings.md) eingerichtet haben. Die Fehlermeldung enthält Details, anhand derer die Quelle des Konflikts ermittelt werden kann.
 
 ## <a name="error-integrated-change-tracking-policy-cannot-be-used-because-table-has-a-composite-primary-key"></a>Error: Die integrierte Änderungsnachverfolgungs-Richtlinie kann nicht verwendet werden, da die Tabelle einen zusammengesetzten Primärschlüssel aufweist.
 
-Dies betrifft SQL-Tabellen und geschieht in der Regel, wenn der Schlüssel als zusammengesetzter Schlüssel definiert ist oder wenn in der Tabelle ein eindeutiger gruppierter Index definiert ist (d. h. wie in einem SQL-Index, nicht in einem Azure Search-Index). Der Hauptgrund ist, dass das Schlüsselattribut bei einem [eindeutigen gruppierten Index](https://docs.microsoft.com/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described?view=sql-server-ver15) geändert wird, sodass es sich um einen zusammengesetzten Primärschlüssel handelt. Stellen Sie in diesem Fall sicher, dass die SQL-Tabelle keinen eindeutigen gruppierten Index aufweist oder dass Sie das Schlüsselfeld einem Feld zuordnen, das garantiert keine doppelten Werte aufweist.
+Dies betrifft SQL-Tabellen und geschieht in der Regel, wenn der Schlüssel als zusammengesetzter Schlüssel definiert ist oder wenn in der Tabelle ein eindeutiger gruppierter Index definiert ist (d. h. wie in einem SQL-Index, nicht in einem Azure Search-Index). Der Hauptgrund ist, dass das Schlüsselattribut bei einem [eindeutigen gruppierten Index](/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described?view=sql-server-ver15) geändert wird, sodass es sich um einen zusammengesetzten Primärschlüssel handelt. Stellen Sie in diesem Fall sicher, dass die SQL-Tabelle keinen eindeutigen gruppierten Index aufweist oder dass Sie das Schlüsselfeld einem Feld zuordnen, das garantiert keine doppelten Werte aufweist.
 
 <a name="could-not-process-document-within-indexer-max-run-time"></a>
 
@@ -255,8 +255,8 @@ Wenn Sie wissen, dass Ihr Dataset mehrere Sprachen enthält und Sie daher die Ei
 ```
 
 Im folgenden finden Sie einige Referenzen für die derzeit unterstützten Sprachen für jede der Qualifikationen, die diese Fehlermeldung verursachen können:
-* [Unterstützte Sprachen für die Textanalyse](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages) (für die Qualifikationen [KeyPhraseExtractionSkill](cognitive-search-skill-keyphrases.md), [EntityRecognitionSkill](cognitive-search-skill-entity-recognition.md), [SentimentSkill](cognitive-search-skill-sentiment.md) und [PIIDetectionSkill](cognitive-search-skill-pii-detection.md))
-* [Unterstützte Sprachen für den Übersetzer](https://docs.microsoft.com/azure/cognitive-services/translator/language-support) (für die Qualifikation [Text TranslationSkill](cognitive-search-skill-text-translation.md))
+* [Unterstützte Sprachen für die Textanalyse](../cognitive-services/text-analytics/language-support.md) (für die Qualifikationen [KeyPhraseExtractionSkill](cognitive-search-skill-keyphrases.md), [EntityRecognitionSkill](cognitive-search-skill-entity-recognition.md), [SentimentSkill](cognitive-search-skill-sentiment.md) und [PIIDetectionSkill](cognitive-search-skill-pii-detection.md))
+* [Unterstützte Sprachen für den Übersetzer](../cognitive-services/translator/language-support.md) (für die Qualifikation [Text TranslationSkill](cognitive-search-skill-text-translation.md))
 * [Text SplitSkill](cognitive-search-skill-textsplit.md) Unterstützte Sprachen: `da, de, en, es, fi, fr, it, ko, pt`
 
 <a name="skill-input-was-truncated"></a>
@@ -304,7 +304,7 @@ Weitere Informationen finden Sie unter [Inkrementeller Status und benutzerdefini
 
 ## <a name="warning-some-data-was-lost-during-projection-row-x-in-table-y-has-string-property-z-which-was-too-long"></a>Warnung: Einige Daten sind während der Projektion verloren gegangen. Zeile „X“ in Tabelle „Y“ weist Zeichenfolgeneigenschaft „Z“ auf, die zu lang war.
 
-Im [Table Storage-Dienst](https://azure.microsoft.com/services/storage/tables) ist die Größe der [Entitätseigenschaften](https://docs.microsoft.com/rest/api/storageservices/understanding-the-table-service-data-model#property-types) begrenzt. Zeichenfolgen können maximal 32.000 Zeichen enthalten. Wird eine Zeile mit einer Zeichenfolgeneigenschaft, die länger als 32.000 Zeichen ist, projiziert, werden nur die ersten 32.000 Zeichen beibehalten. Um dieses Problem zu umgehen, vermeiden Sie das Projizieren von Zeilen mit Zeichenfolgeneigenschaften, die länger als 32.000 Zeichen sind.
+Im [Table Storage-Dienst](https://azure.microsoft.com/services/storage/tables) ist die Größe der [Entitätseigenschaften](/rest/api/storageservices/understanding-the-table-service-data-model#property-types) begrenzt. Zeichenfolgen können maximal 32.000 Zeichen enthalten. Wird eine Zeile mit einer Zeichenfolgeneigenschaft, die länger als 32.000 Zeichen ist, projiziert, werden nur die ersten 32.000 Zeichen beibehalten. Um dieses Problem zu umgehen, vermeiden Sie das Projizieren von Zeilen mit Zeichenfolgeneigenschaften, die länger als 32.000 Zeichen sind.
 
 <a name="truncated-extracted-text-to-x-characters"></a>
 
@@ -326,13 +326,13 @@ Ausgabefeldzuordnungen, die auf nicht vorhandene oder Nulldaten verweisen, führ
 <a name="the-data-change-detection-policy-is-configured-to-use-key-column-x"></a>
 
 ## <a name="warning-the-data-change-detection-policy-is-configured-to-use-key-column-x"></a>Warnung: Die Richtlinie zur Erkennung von Datenänderungen ist für die Verwendung der Schlüsselspalte „X“ konfiguriert.
-[Richtlinien für die Datenänderungserkennung](https://docs.microsoft.com/rest/api/searchservice/create-data-source#data-change-detection-policies) weisen bestimmte Anforderungen an die zum Erkennen von Änderungen verwendeten Spalten auf. Eine dieser Anforderungen besteht darin, dass diese Spalte jedes Mal aktualisiert wird, wenn das Quellelement geändert wird. Eine weitere Anforderung besteht darin, dass der neue Wert für diese Spalte größer als der vorherige Wert ist. Schlüsselspalten erfüllen diese Anforderung nicht, da Sie nicht bei jeder Aktualisierung geändert werden. Um dieses Problem zu umgehen, wählen Sie eine andere Spalte für die Änderungserkennungsrichtlinie aus.
+[Richtlinien für die Datenänderungserkennung](/rest/api/searchservice/create-data-source#data-change-detection-policies) weisen bestimmte Anforderungen an die zum Erkennen von Änderungen verwendeten Spalten auf. Eine dieser Anforderungen besteht darin, dass diese Spalte jedes Mal aktualisiert wird, wenn das Quellelement geändert wird. Eine weitere Anforderung besteht darin, dass der neue Wert für diese Spalte größer als der vorherige Wert ist. Schlüsselspalten erfüllen diese Anforderung nicht, da Sie nicht bei jeder Aktualisierung geändert werden. Um dieses Problem zu umgehen, wählen Sie eine andere Spalte für die Änderungserkennungsrichtlinie aus.
 
 <a name="document-text-appears-to-be-utf-16-encoded-but-is-missing-a-byte-order-mark"></a>
 
 ## <a name="warning-document-text-appears-to-be-utf-16-encoded-but-is-missing-a-byte-order-mark"></a>Warnung: Der Dokumenttext scheint UTF-16-codiert zu sein, es fehlt jedoch eine Bytereihenfolge-Marke.
 
-Die [Indexer-Analysemodi](https://docs.microsoft.com/rest/api/searchservice/create-indexer#blob-configuration-parameters) müssen erkennen, wie Text codiert ist, bevor die Analyse gestartet werden kann. Die beiden gängigsten Methoden zum Codieren von Text sind UTF-16 und UTF-8. UTF-8 ist eine Codierung mit variabler Länge, bei der jedes Zeichen eine Länge zwischen 1 Byte und 4 Bytes aufweist. UTF-16 ist eine Codierung mit fester Länge, bei der jedes Zeichen 2 Bytes lang ist. Für UTF-16 gibt es zwei verschiedene Varianten: „Big-Endian“ und „Little-Endian“. Die Textcodierung wird durch eine sogenannte Bytereihenfolge-Marke bestimmt, eine Folge von Bytes vor dem Text.
+Die [Indexer-Analysemodi](/rest/api/searchservice/create-indexer#blob-configuration-parameters) müssen erkennen, wie Text codiert ist, bevor die Analyse gestartet werden kann. Die beiden gängigsten Methoden zum Codieren von Text sind UTF-16 und UTF-8. UTF-8 ist eine Codierung mit variabler Länge, bei der jedes Zeichen eine Länge zwischen 1 Byte und 4 Bytes aufweist. UTF-16 ist eine Codierung mit fester Länge, bei der jedes Zeichen 2 Bytes lang ist. Für UTF-16 gibt es zwei verschiedene Varianten: „Big-Endian“ und „Little-Endian“. Die Textcodierung wird durch eine sogenannte Bytereihenfolge-Marke bestimmt, eine Folge von Bytes vor dem Text.
 
 | Codieren | Bytereihenfolge-Marke |
 | --- | --- |
@@ -348,4 +348,4 @@ Um diese Warnung zu umgehen, ermitteln Sie die Textcodierung für dieses Blob, u
 
 ## <a name="warning-cosmos-db-collection-x-has-a-lazy-indexing-policy-some-data-may-be-lost"></a>Warnung: Cosmos DB Sammlung „X“ weist eine Indizierungsrichtlinie vom Typ „Verzögert“ auf. Unter Umständen gehen einige Daten verloren.
 
-Sammlungen mit Indizierungsrichtlinien vom Typ [Verzögert](https://docs.microsoft.com/azure/cosmos-db/index-policy#indexing-mode) können nicht konsistent abgefragt werden, was dazu führt, dass Ihr Indexer Daten auslässt. Um diese Warnung zu umgehen, ändern Sie die Indizierungsrichtlinie in „Konsistent“.
+Sammlungen mit Indizierungsrichtlinien vom Typ [Verzögert](/azure/cosmos-db/index-policy#indexing-mode) können nicht konsistent abgefragt werden, was dazu führt, dass Ihr Indexer Daten auslässt. Um diese Warnung zu umgehen, ändern Sie die Indizierungsrichtlinie in „Konsistent“.

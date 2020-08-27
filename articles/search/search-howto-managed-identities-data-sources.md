@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/18/2020
-ms.openlocfilehash: 6b07236fd639c9878c59523f78de5215b173ffc6
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: d303de23a04d183d0ca280c3b3591299d883adf7
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88553163"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936587"
 ---
 # <a name="set-up-an-indexer-connection-to-a-data-source-using-a-managed-identity-preview"></a>Einrichten einer Indexerverbindung mit einer Datenquelle mithilfe einer verwalteten Identität (Vorschau)
 
@@ -31,7 +31,7 @@ Diese Probleme lassen sich durch Einrichten der Verbindung mithilfe einer verwal
 
 ## <a name="using-managed-identities"></a>Verwenden von verwalteten Identitäten
 
-[Verwaltete Identitäten](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) sind eine Funktion, die für Azure-Dienste eine automatisch verwaltete Identität in Azure Active Directory (Azure AD) bereitstellt. Sie können diese Funktion in Azure Cognitive Search verwenden, um ein Datenquellenobjekt mit einer Verbindungszeichenfolge zu erstellen, die keine Anmeldeinformationen enthält. Stattdessen wird dem Suchdienst durch die rollenbasierte Zugriffssteuerung (RBAC) Zugriff auf die Datenquelle erteilt.
+[Verwaltete Identitäten](../active-directory/managed-identities-azure-resources/overview.md) sind eine Funktion, die für Azure-Dienste eine automatisch verwaltete Identität in Azure Active Directory (Azure AD) bereitstellt. Sie können diese Funktion in Azure Cognitive Search verwenden, um ein Datenquellenobjekt mit einer Verbindungszeichenfolge zu erstellen, die keine Anmeldeinformationen enthält. Stattdessen wird dem Suchdienst durch die rollenbasierte Zugriffssteuerung (RBAC) Zugriff auf die Datenquelle erteilt.
 
 Wenn Sie eine Datenquelle mithilfe einer verwalteten Identität einrichten, können Sie die Anmeldeinformationen der Datenquelle ändern, und die Indexer können weiterhin eine Verbindung mit der Datenquelle herstellen. Sie können außerdem Datenquellenobjekte in Ihrem Code erstellen, ohne einen Kontoschlüssel einfügen oder Key Vault zum Abrufen eines Kontoschlüssels verwenden zu müssen.
 

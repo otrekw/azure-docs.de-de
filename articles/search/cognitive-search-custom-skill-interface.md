@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/06/2020
-ms.openlocfilehash: 7a1a2aa92549bcab35532120c4af5bd0b6904f58
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.openlocfilehash: e78f0d1e8d6d637dfebe1ff475ab8416ba49a263
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82891243"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935414"
 ---
 # <a name="how-to-add-a-custom-skill-to-an-azure-cognitive-search-enrichment-pipeline"></a>Hinzufügen eines benutzerdefinierten Skills zu einer Anreicherungspipeline der kognitiven Azure-Suche
 
@@ -168,5 +168,5 @@ In diesem Artikel wurden die Schnittstellenanforderungen behandelt, die für die
 + [Power Skills: ein Repository benutzerdefinierter Skills](https://github.com/Azure-Samples/azure-search-power-skills)
 + [Beispiel: Erstellen eines benutzerdefinierten Skills für die KI-Anreicherung](cognitive-search-create-custom-skill-example.md)
 + [Definieren eines Skillsets](cognitive-search-defining-skillset.md)
-+ [Erstellen eines Skillsets (REST)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
++ [Erstellen eines Skillsets (REST)](/rest/api/searchservice/create-skillset)
 + [Zuordnen angereicherter Felder](cognitive-search-output-field-mapping.md)

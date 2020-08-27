@@ -8,16 +8,16 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: d535866881fa6ed73b51eb6039baa9d515b770b2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 63a1f8e30be2983c0df93ff5a7229460f8f39214
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85080831"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936043"
 ---
 # <a name="image-analysis-cognitive-skill"></a>Bildanalyse – kognitiver Skill
 
-Der Skill **Bildanalyse** extrahiert einen umfangreichen Satz von visuellen Merkmalen aus dem Bildinhalt. So können Sie beispielsweise anhand eines Bilds eine Beschriftung erstellen, Tags generieren oder Prominente und Sehenswürdigkeiten identifizieren. Diese Qualifikation verwendet die durch [Maschinelles Sehen](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) in Cognitive Services bereitgestellten Machine Learning-Modelle. 
+Der Skill **Bildanalyse** extrahiert einen umfangreichen Satz von visuellen Merkmalen aus dem Bildinhalt. So können Sie beispielsweise anhand eines Bilds eine Beschriftung erstellen, Tags generieren oder Prominente und Sehenswürdigkeiten identifizieren. Diese Qualifikation verwendet die durch [Maschinelles Sehen](../cognitive-services/computer-vision/home.md) in Cognitive Services bereitgestellten Machine Learning-Modelle. 
 
 > [!NOTE]
 > Kleine Volumen (unter 20 Transaktionen) können in der kognitiven Azure-Suche kostenlos ausgeführt werden, größere Workloads erfordern jedoch das [Anfügen einer abrechnungsfähigen Cognitive Services-Ressource](cognitive-search-attach-cognitive-services.md). Gebühren fallen beim Aufrufen von APIs in Cognitive Services sowie für die Bildextraktion im Rahmen der Dokumententschlüsselungsphase in Azure Cognitive Search an. Für die Textextraktion aus Dokumenten fallen keine Gebühren an.
@@ -35,7 +35,7 @@ Bei den Parametern wird zwischen Groß- und Kleinschreibung unterschieden.
 | Parametername     | BESCHREIBUNG |
 |--------------------|-------------|
 | `defaultLanguageCode` |  Eine Zeichenfolge, die angibt, welche Sprache zurückgegeben werden soll. Der Dienst gibt die Ergebnisse der Erkennung in einer bestimmten Sprache zurück. Wenn dieser Parameter nicht angegeben wird, ist der Standardwert „en“. <br/><br/>Unterstützte Sprachen: <br/>*en*: Englisch (Standard) <br/> *es:* Spanisch <br/> *ja:* Japanisch <br/> *pt:* Portugiesisch <br/> *zh*: vereinfachtes Chinesisch|
-| `visualFeatures` |    Ein Array aus Zeichenfolgen, die angibt, welche Arten von visuellen Merkmalen zurückgegeben werden sollen. Folgende Arten von visuellen Merkmalen sind gültig:  <ul><li>*adult:* erkennt, ob das Bild pornografischer Natur (Nacktheit oder sexuelle Handlungen) oder gewalttätig (extreme Gewalt oder Blut) ist. Zweideutige und freizügige Inhalte werden ebenfalls erkannt.</li><li>*brands:* erkennt verschiedene Marken in einem Bild, einschließlich der ungefähren Position. Das visuelle Feature *brands* ist nur für Englisch verfügbar.</li><li> *categories:* kategorisiert Bildinhalte gemäß einer Taxonomie, die in der [Dokumentation zum maschinellen Sehen](https://docs.microsoft.com/azure/cognitive-services/computer-vision/category-taxonomy) in Cognitive Services definiert ist. </li><li>*description:* beschreibt den Bildinhalt in unterstützten Sprachen mit einem vollständigen Satz.</li><li>*faces*: Erkennt, ob Gesichter vorhanden sind. Wenn Gesichter vorhanden sind, generiert dieses Merkmal Informationen zu Koordinaten, Geschlecht und Alter.</li><li>   *objects:* erkennt verschiedene Objekte in einem Bild, einschließlich der ungefähren Position. Das visuelle Feature *objects* ist nur für Englisch verfügbar.</li><li> *tags*: Erstellt Tags für das Bild in einer detaillierten Liste aus Wörtern, die sich auf den Bildinhalt beziehen.</li></ul> Bei den Namen der visuellen Merkmale wird die Groß- und Kleinschreibung beachtet. Beachten Sie, dass die visuellen Features *color* und *imageType* veraltet sind, auf diese Funktionalität aber weiterhin über eine [benutzerdefinierte Qualifikation](https://docs.microsoft.com/azure/search/cognitive-search-custom-skill-interface) zugegriffen werden kann.|
+| `visualFeatures` |    Ein Array aus Zeichenfolgen, die angibt, welche Arten von visuellen Merkmalen zurückgegeben werden sollen. Folgende Arten von visuellen Merkmalen sind gültig:  <ul><li>*adult:* erkennt, ob das Bild pornografischer Natur (Nacktheit oder sexuelle Handlungen) oder gewalttätig (extreme Gewalt oder Blut) ist. Zweideutige und freizügige Inhalte werden ebenfalls erkannt.</li><li>*brands:* erkennt verschiedene Marken in einem Bild, einschließlich der ungefähren Position. Das visuelle Feature *brands* ist nur für Englisch verfügbar.</li><li> *categories:* kategorisiert Bildinhalte gemäß einer Taxonomie, die in der [Dokumentation zum maschinellen Sehen](../cognitive-services/computer-vision/category-taxonomy.md) in Cognitive Services definiert ist. </li><li>*description:* beschreibt den Bildinhalt in unterstützten Sprachen mit einem vollständigen Satz.</li><li>*faces*: Erkennt, ob Gesichter vorhanden sind. Wenn Gesichter vorhanden sind, generiert dieses Merkmal Informationen zu Koordinaten, Geschlecht und Alter.</li><li>  *objects:* erkennt verschiedene Objekte in einem Bild, einschließlich der ungefähren Position. Das visuelle Feature *objects* ist nur für Englisch verfügbar.</li><li> *tags*: Erstellt Tags für das Bild in einer detaillierten Liste aus Wörtern, die sich auf den Bildinhalt beziehen.</li></ul> Bei den Namen der visuellen Merkmale wird die Groß- und Kleinschreibung beachtet. Beachten Sie, dass die visuellen Features *color* und *imageType* veraltet sind, auf diese Funktionalität aber weiterhin über eine [benutzerdefinierte Qualifikation](./cognitive-search-custom-skill-interface.md) zugegriffen werden kann.|
 | `details` | Ein Array aus Zeichenfolgen, die angeben, welche domänenspezifischen Informationen zurückgegeben werden sollen. Folgende Arten von visuellen Merkmalen sind gültig: <ul><li>*celebrities*: Identifiziert Prominente in einem Bild.</li><li>*landmarks*: Identifiziert Sehenswürdigkeiten in einem Bild. </li></ul> |
 
 ## <a name="skill-inputs"></a>Skilleingaben
@@ -542,4 +542,4 @@ Wenn Sie eine Fehlermeldung ähnlich `"One or more skills are invalid. Details: 
 
 + [Integrierte Qualifikationen](cognitive-search-predefined-skills.md)
 + [Definieren eines Skillsets](cognitive-search-defining-skillset.md)
-+ [Erstellen eines Indexers (REST)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)
++ [Erstellen eines Indexers (REST)](/rest/api/searchservice/create-indexer)

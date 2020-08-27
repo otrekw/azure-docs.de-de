@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 779aa96fcf58d45bb53757f7fe974a0fe4c61ffa
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 39a7c92ca6c83684658cf767722698806ed994ec
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88214079"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935448"
 ---
 # <a name="how-to-create-a-skillset-in-an-ai-enrichment-pipeline-in-azure-cognitive-search"></a>Erstellen eines Skillsets in einer KI-Anreicherungspipeline in der kognitiven Azure-Suche 
 
@@ -49,14 +49,14 @@ Das folgende Diagramm veranschaulicht eine hypothetische Anreicherungspipeline:
 ![Hypothetische Anreicherungspipeline](media/cognitive-search-defining-skillset/sample-skillset.png "Hypothetische Anreicherungspipeline")
 
 
-Sobald Sie eine ungefähre Vorstellung davon haben, wie die Pipeline aussehen soll, können Sie das Skillset für die erforderlichen Schritte erstellen. Funktionell wird das Skillset ausgedrückt, wenn Sie die Indexerdefinition in die kognitive Azure-Suche hochladen. Weitere Informationen darüber, wie Sie Ihren Indexer hochladen können, finden Sie in der [Indexerdokumentation](https://docs.microsoft.com/rest/api/searchservice/create-indexer).
+Sobald Sie eine ungefähre Vorstellung davon haben, wie die Pipeline aussehen soll, können Sie das Skillset für die erforderlichen Schritte erstellen. Funktionell wird das Skillset ausgedrückt, wenn Sie die Indexerdefinition in die kognitive Azure-Suche hochladen. Weitere Informationen darüber, wie Sie Ihren Indexer hochladen können, finden Sie in der [Indexerdokumentation](/rest/api/searchservice/create-indexer).
 
 
 Im Diagramm erfolgt der Schritt zur *Dokumententschlüsselung* automatisch. Bekannte Dateien werden in der kognitiven Azure-Suche problemlos geöffnet, und es wird ein *content*-Feld erstellt, das den aus jedem Dokument extrahierten Text enthält. Die weißen Felder sind integrierte Anreicherungsfunktionen, und das gepunktete Feld „Bing Entity Search“ (Bing-Entitätssuche) stellt eine benutzerdefinierte Anreicherungsfunktion dar, die Sie erstellen. Wie dargestellt, enthält das Skillset drei Skills.
 
 ## <a name="skillset-definition-in-rest"></a>Skillsetdefinition in REST
 
-Ein Skillset wird als ein Array von Skills definiert. Jeder Skill definiert die Quelle der Eingaben und den Namen der erzeugten Ausgaben. Mit der [REST-API zum Erstellen von Skillsets](https://docs.microsoft.com/rest/api/searchservice/create-skillset) können Sie einen Skillset definieren, der dem vorherigen Diagramm entspricht: 
+Ein Skillset wird als ein Array von Skills definiert. Jeder Skill definiert die Quelle der Eingaben und den Namen der erzeugten Ausgaben. Mit der [REST-API zum Erstellen von Skillsets](/rest/api/searchservice/create-skillset) können Sie einen Skillset definieren, der dem vorherigen Diagramm entspricht: 
 
 ```http
 PUT https://[servicename].search.windows.net/skillsets/[skillset name]?api-version=2020-06-30
@@ -281,4 +281,4 @@ Sie können angereicherte Dokumente auch als Tabellen mit hierarchischen Beziehu
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nun, da Sie mit der Anreicherungspipeline und den Skillsets vertraut sind, können Sie mit den Artikeln [Verweisen auf Anmerkungen in einem Skillset](cognitive-search-concept-annotations-syntax.md) oder [Zuordnen von Ausgaben zu Feldern in einem Index](cognitive-search-output-field-mapping.md) fortfahren. 
+Nun, da Sie mit der Anreicherungspipeline und den Skillsets vertraut sind, können Sie mit den Artikeln [Verweisen auf Anmerkungen in einem Skillset](cognitive-search-concept-annotations-syntax.md) oder [Zuordnen von Ausgaben zu Feldern in einem Index](cognitive-search-output-field-mapping.md) fortfahren.

@@ -2,13 +2,14 @@
 title: Untersuchen von .NET-Ablaufverfolgungsprotokollen in Application Insights
 description: Suchen Sie nach mit Trace, NLog oder Log4Net generierten Protokollen.
 ms.topic: conceptual
+ms.custom: devx-track-csharp
 ms.date: 05/08/2019
-ms.openlocfilehash: c192ae8fad6cf463af892018fcac385b3bdcd345
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: c17f1f4eb8d2fb680f31a42009247b25c74941c9
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321325"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936451"
 ---
 # <a name="explore-netnet-core-and-python-trace-logs-in-application-insights"></a>Untersuchen von .NET/.NET Core- und Python-Ablaufverfolgungsprotokollen in Application Insights
 

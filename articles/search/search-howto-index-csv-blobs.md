@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/11/2020
-ms.openlocfilehash: 9008b30fd89e9d57923f6c612b7a454aa1ba528e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 14846761535a77f28adbd0147d244817cb799d86
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87084091"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935839"
 ---
 # <a name="how-to-index-csv-blobs-using-delimitedtext-parsing-mode-and-blob-indexers-in-azure-cognitive-search"></a>Indizieren von CSV-Blobs mit dem delimitedText-Analysemodus und mit Blobindexern in Azure Cognitive Search
 
@@ -32,7 +32,7 @@ In diesem Artikel erfahren Sie, wie Sie CSV-Blobs mit einem Azure Cognitive Sea
 > Befolgen Sie die Empfehlungen zur Indexerkonfiguration in [1:n-Indizierung](search-howto-index-one-to-many-blobs.md), um mehrere Suchdokumente aus einem Azure-Blob auszugegeben.
 
 ## <a name="setting-up-csv-indexing"></a>Einrichten der CSV-Indizierung
-Erstellen oder aktualisieren Sie zum Indizieren von CSV-Blobs eine Indexerdefinition mit dem `delimitedText`-Analysemodus in einer [Indexer erstellen](https://docs.microsoft.com/rest/api/searchservice/create-indexer)-Anforderung:
+Erstellen oder aktualisieren Sie zum Indizieren von CSV-Blobs eine Indexerdefinition mit dem `delimitedText`-Analysemodus in einer [Indexer erstellen](/rest/api/searchservice/create-indexer)-Anforderung:
 
 ```http
     {
@@ -98,4 +98,3 @@ Indexer:
 
 ## <a name="help-us-make-azure-cognitive-search-better"></a>Helfen Sie uns bei der Verbesserung der kognitiven Azure-Suche
 Wenn Sie sich Features wünschen oder Verbesserungsvorschläge haben, stimmen Sie unter [UserVoice](https://feedback.azure.com/forums/263029-azure-search/) dafür ab.
-

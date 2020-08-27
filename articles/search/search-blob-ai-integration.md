@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 591437eb3951164d53388b6164103948e9ad65e0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ce5eafe0b36f07d8de366b6d4adb92e894fcb67e
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73496433"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936740"
 ---
 # <a name="use-ai-to-understand-blob-storage-data"></a>Verstehen von Blob Storage-Daten mithilfe von KI
 
@@ -112,7 +112,7 @@ Ein angereichertes Dokument am Ende der Pipeline unterscheidet sich von der ursp
 
 Es gibt noch viele weitere Anwendungsmöglichkeiten für die KI-Anreicherung, um Ihre Daten in Azure Storage optimal auszuwerten, einschließlich verschiedener Arten der Kombination von Cognitive Services und der Erstellung benutzerdefinierter Skills für Fälle, in denen kein Cognitive Service für das Szenario vorhanden ist. Weitere Informationen finden Sie unter den folgenden Links.
 
-+ [Hochladen, Herunterladen und Auflisten von Blobs mit dem Azure-Portal (Azure Blob Storage)](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)
++ [Hochladen, Herunterladen und Auflisten von Blobs mit dem Azure-Portal (Azure Blob Storage)](../storage/blobs/storage-quickstart-blobs-portal.md)
 + [Einrichten eines Blobindexers (Azure Cognitive Search)](search-howto-indexing-azure-blob-storage.md) 
 + [Übersicht über KI-Anreicherung (Azure Cognitive Search)](cognitive-search-concept-intro.md) 
 + [Erstellen eines Skillsets (Azure Cognitive Search)](cognitive-search-defining-skillset.md)

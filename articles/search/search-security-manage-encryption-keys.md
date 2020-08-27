@@ -9,18 +9,18 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 08/01/2020
 ms.custom: references_regions
-ms.openlocfilehash: ed5d1f5b35bc9b6dee234678fa82af95e1d53bc7
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: 2dc7458dd905ff84455927c81b4ea93765d4f5cb
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87553994"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88928818"
 ---
 # <a name="configure-customer-managed-keys-for-data-encryption-in-azure-cognitive-search"></a>Konfigurieren von kundenseitig verwalteten Schlüsseln für die Datenverschlüsselung in Azure Cognitive Search
 
-In Azure Cognitive Search werden ruhende indizierte Inhalte automatisch mit [dienstseitig verwalteten Schlüsseln](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest#data-encryption-models) verschlüsselt. Wenn ein weiterer Schutz erforderlich ist, können Sie die Standardverschlüsselung durch eine zusätzliche Verschlüsselungsebene ergänzen, indem Sie Schlüssel verwenden, die Sie in Azure Key Vault erstellen und verwalten. Dieser Artikel führt Sie durch die Schritte zum Einrichten der Verschlüsselung mit kundenseitig verwalteten Schlüsseln (Customer Managed Key, CMK).
+In Azure Cognitive Search werden ruhende indizierte Inhalte automatisch mit [dienstseitig verwalteten Schlüsseln](../security/fundamentals/encryption-atrest.md#azure-encryption-at-rest-components) verschlüsselt. Wenn ein weiterer Schutz erforderlich ist, können Sie die Standardverschlüsselung durch eine zusätzliche Verschlüsselungsebene ergänzen, indem Sie Schlüssel verwenden, die Sie in Azure Key Vault erstellen und verwalten. Dieser Artikel führt Sie durch die Schritte zum Einrichten der Verschlüsselung mit kundenseitig verwalteten Schlüsseln (Customer Managed Key, CMK).
 
-Die CMK-Verschlüsselung ist von [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview) abhängig. Sie können Ihre eigenen Verschlüsselungsschlüssel erstellen und in einem Schlüsseltresor speichern oder mit Azure Key Vault-APIs Verschlüsselungsschlüssel generieren. Mit Azure Key Vault können Sie auch die Schlüsselverwendung überwachen, wenn Sie die [Protokollierung aktivieren](../key-vault/general/logging.md).  
+Die CMK-Verschlüsselung ist von [Azure Key Vault](../key-vault/general/overview.md) abhängig. Sie können Ihre eigenen Verschlüsselungsschlüssel erstellen und in einem Schlüsseltresor speichern oder mit Azure Key Vault-APIs Verschlüsselungsschlüssel generieren. Mit Azure Key Vault können Sie auch die Schlüsselverwendung überwachen, wenn Sie die [Protokollierung aktivieren](../key-vault/general/logging.md).  
 
 Die Verschlüsselung mit kundenseitig verwalteten Schlüsseln wird auf der Ebene einzelner Indizes oder Synonymzuordnungen angewandt, wenn diese Objekte erstellt werden, und nicht auf der Ebene des Suchdiensts selbst angegeben. Nur neue Objekte können verschlüsselt werden. Bereits vorhandene Inhalte können nicht verschlüsselt werden.
 
@@ -44,14 +44,14 @@ In diesem Beispiel werden die folgenden Dienste verwendet.
 
 + [Erstellen Sie einen Azure Cognitive Search-Dienst](search-create-service-portal.md), oder [suchen Sie nach einem vorhandenen Dienst](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices). 
 
-+ [Erstellen Sie eine Azure Key Vault-Ressource](https://docs.microsoft.com/azure/key-vault/quick-create-portal#create-a-vault), oder suchen Sie einen vorhandenen Tresor im selben Abonnement wie Azure Cognitive Search. Auch für dieses Feature gilt die Anforderung, dasselbe Abonnement zu verwenden.
++ [Erstellen Sie eine Azure Key Vault-Ressource](../key-vault/secrets/quick-create-portal.md#create-a-vault), oder suchen Sie einen vorhandenen Tresor im selben Abonnement wie Azure Cognitive Search. Auch für dieses Feature gilt die Anforderung, dasselbe Abonnement zu verwenden.
 
-+ Für Konfigurationsaufgaben wird [Azure PowerShell](https://docs.microsoft.com/powershell/azure/) oder die [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/install-azure-cli) verwendet.
++ Für Konfigurationsaufgaben wird [Azure PowerShell](/powershell/azure/) oder die [Azure-Befehlszeilenschnittstelle](/cli/azure/install-azure-cli) verwendet.
 
-+ [Postman](search-get-started-postman.md), [Azure PowerShell](search-create-index-rest-api.md) und [.NET SDK (Vorschauversion)](https://aka.ms/search-sdk-preview) können verwendet werden, um die REST-API aufzurufen, mit der Indizes und Synonymzuordnungen erstellt werden, die einen Parameter für den Verschlüsselungsschlüssel enthalten. Derzeit wird das Hinzufügen eines Schlüssels zu Indizes oder Synonymzuordnungen über das Portal nicht unterstützt.
++ [Postman](search-get-started-postman.md), [Azure PowerShell](./search-get-started-powershell.md) und [.NET SDK (Vorschauversion)](https://aka.ms/search-sdk-preview) können verwendet werden, um die REST-API aufzurufen, mit der Indizes und Synonymzuordnungen erstellt werden, die einen Parameter für den Verschlüsselungsschlüssel enthalten. Derzeit wird das Hinzufügen eines Schlüssels zu Indizes oder Synonymzuordnungen über das Portal nicht unterstützt.
 
 >[!Note]
-> Aufgrund der Art der Verschlüsselung mit kundenseitig verwalteten Schlüsseln können Ihre Daten in Azure Cognitive Search nicht abgerufen werden, wenn der Azure Key Vault-Schlüssel gelöscht wird. Um Datenverluste aufgrund versehentlich gelöschter Key Vault-Schlüssel zu vermeiden, müssen im Schlüsseltresor die Optionen „Vorläufiges Löschen“ und „Löschschutz“ aktiviert werden. Vorläufiges Löschen ist standardmäßig aktiviert, sodass nur dann Probleme auftreten, wenn Sie das Feature absichtlich deaktiviert haben. Der Löschschutz ist standardmäßig nicht aktiviert, er ist aber für die CMK-Verschlüsselung in Azure Cognitive Search erforderlich. Weitere Informationen finden Sie in den Übersichten zum [vorläufigen Löschen](../key-vault/key-vault-ovw-soft-delete.md) und zum [Löschschutz](../key-vault/general/soft-delete-overview.md#purge-protection).
+> Aufgrund der Art der Verschlüsselung mit kundenseitig verwalteten Schlüsseln können Ihre Daten in Azure Cognitive Search nicht abgerufen werden, wenn der Azure Key Vault-Schlüssel gelöscht wird. Um Datenverluste aufgrund versehentlich gelöschter Key Vault-Schlüssel zu vermeiden, müssen im Schlüsseltresor die Optionen „Vorläufiges Löschen“ und „Löschschutz“ aktiviert werden. Vorläufiges Löschen ist standardmäßig aktiviert, sodass nur dann Probleme auftreten, wenn Sie das Feature absichtlich deaktiviert haben. Der Löschschutz ist standardmäßig nicht aktiviert, er ist aber für die CMK-Verschlüsselung in Azure Cognitive Search erforderlich. Weitere Informationen finden Sie in den Übersichten zum [vorläufigen Löschen](../key-vault/general/soft-delete-overview.md) und zum [Löschschutz](../key-vault/general/soft-delete-overview.md#purge-protection).
 
 ## <a name="1---enable-key-recovery"></a>1: Aktivieren der Schlüsselwiederherstellung
 
@@ -117,7 +117,7 @@ Bei der kognitiven Azure-Suche werden zwei Methoden zum Zuweisen einer Identitä
 
 Verwenden Sie möglichst eine verwaltete Identität. Dies ist die einfachste Möglichkeit zum Zuweisen einer Identität zu Ihrem Suchdienst und sollte in den meisten Szenarien funktionieren. Wenn Sie mehrere Schlüssel für Indizes und Synonymzuordnungen verwenden oder wenn die Lösung in einer verteilten Architektur verwendet wird, die eine identitätsbasierte Authentifizierung ausschließt, verwenden Sie die erweiterte Methode einer [extern verwalteten Azure Active Directory-Instanz](#aad-app), die am Ende dieses Artikels beschrieben wird.
 
- Im Allgemeinen kann der Suchdienst über eine verwaltete Identität bei Azure Key Vault authentifiziert werden, ohne dass Anmeldeinformationen im Code gespeichert werden. Der Lebenszyklus dieses Typs einer verwalteten Identität ist an den Lebenszyklus des Suchdiensts gebunden, der nur eine verwaltete Identität enthalten kann. [Weitere Informationen zu verwalteten Identitäten](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).
+ Im Allgemeinen kann der Suchdienst über eine verwaltete Identität bei Azure Key Vault authentifiziert werden, ohne dass Anmeldeinformationen im Code gespeichert werden. Der Lebenszyklus dieses Typs einer verwalteten Identität ist an den Lebenszyklus des Suchdiensts gebunden, der nur eine verwaltete Identität enthalten kann. [Weitere Informationen zu verwalteten Identitäten](../active-directory/managed-identities-azure-resources/overview.md).
 
 1. [Melden Sie sich beim Azure-Portal an](https://portal.azure.com), und öffnen Sie die Übersichtsseite Ihres Suchdiensts. 
 
@@ -129,7 +129,7 @@ Verwenden Sie möglichst eine verwaltete Identität. Dies ist die einfachste Mö
 
 Um den Suchdienst zur Verwendung des Key Vault-Schlüssels zu aktivieren, müssen Sie bestimmte Zugriffsberechtigungen für den Suchdienst erteilen.
 
-Die Zugriffsberechtigungen können jederzeit aufgehoben werden. Nach dem Aufheben können alle Indizes oder Synonymzuordnungen des Suchdiensts, die diese Key Vault-Instanz verwenden, nicht mehr verwendet werden. Durch Wiederherstellen der Key Vault-Zugriffsberechtigungen zu einem späteren Zeitpunkt wird der Zugriff auf die Indizes oder Synonymzuordnungen wiederhergestellt. Weitere Informationen finden Sie unter [Sicherer Zugriff auf einen Schlüsseltresor](https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault).
+Die Zugriffsberechtigungen können jederzeit aufgehoben werden. Nach dem Aufheben können alle Indizes oder Synonymzuordnungen des Suchdiensts, die diese Key Vault-Instanz verwenden, nicht mehr verwendet werden. Durch Wiederherstellen der Key Vault-Zugriffsberechtigungen zu einem späteren Zeitpunkt wird der Zugriff auf die Indizes oder Synonymzuordnungen wiederhergestellt. Weitere Informationen finden Sie unter [Sicherer Zugriff auf einen Schlüsseltresor](../key-vault/general/secure-your-key-vault.md).
 
 1. [Melden Sie sich beim Azure-Portal an](https://portal.azure.com), und öffnen Sie die Übersichtsseite Ihrer Key Vault-Instanz. 
 
@@ -143,7 +143,7 @@ Die Zugriffsberechtigungen können jederzeit aufgehoben werden. Nach dem Aufhebe
 
 1. Klicken Sie auf **Schlüsselberechtigungen**, und aktivieren Sie *Abrufen*, *Schlüssel entpacken* und *Schlüssel packen*. Sie können die Vorlage von *Azure Data Lake Storage oder Azure Storage* verwenden, um die gewünschten Berechtigungen schnell auszuwählen.
 
-   Der kognitiven Azure-Suche müssen die folgenden [Zugriffsberechtigungen](https://docs.microsoft.com/azure/key-vault/about-keys-secrets-and-certificates#key-operations) erteilt werden:
+   Der kognitiven Azure-Suche müssen die folgenden [Zugriffsberechtigungen](../key-vault/keys/about-keys.md#key-operations) erteilt werden:
 
    * *Abrufen:* ermöglicht im Suchdienst das Abrufen des öffentlichen Teils Ihres Schlüssels in einem Key Vault.
    * *Schlüssel packen:* ermöglicht im Suchdienst die Verwendung Ihres Schlüssels zum Schutz des internen Verschlüsselungsschlüssels.
@@ -162,7 +162,7 @@ Die Zugriffsberechtigungen können jederzeit aufgehoben werden. Nach dem Aufhebe
 
 ## <a name="5---encrypt-content"></a>5: Verschlüsseln von Inhalten
 
-Wenn Sie einen kundenseitig verwalteten Schlüssel für einen Index oder eine Synonymzuordnung hinzufügen möchten, müssen Sie die [Search-REST-API](https://docs.microsoft.com/rest/api/searchservice/) oder ein SDK verwenden. Das Portal macht keine Synonymzuordnungen oder Verschlüsselungseigenschaften verfügbar. Wenn Sie eine gültige API verwenden, unterstützen sowohl Indizes als auch Synonymzuordnungen eine **encryptionKey**-Eigenschaft auf oberster Ebene. 
+Wenn Sie einen kundenseitig verwalteten Schlüssel für einen Index oder eine Synonymzuordnung hinzufügen möchten, müssen Sie die [Search-REST-API](/rest/api/searchservice/) oder ein SDK verwenden. Das Portal macht keine Synonymzuordnungen oder Verschlüsselungseigenschaften verfügbar. Wenn Sie eine gültige API verwenden, unterstützen sowohl Indizes als auch Synonymzuordnungen eine **encryptionKey**-Eigenschaft auf oberster Ebene. 
 
 Mithilfe des **Schlüsseltresor-URI**, des **Schlüsselnamens** und der **Schlüsselversion** Ihres Key Vault-Schlüssels kann wie folgt eine **encryptionKey**-Definition erstellt werden:
 
@@ -194,7 +194,7 @@ Wenn Sie eine AAD-Anwendung für die Key Vault-Authentifizierung anstelle einer 
 ```
 
 ## <a name="example-index-encryption"></a>Beispiel: Indexverschlüsselung
-Die Angaben zum Erstellen eines neuen Index über die REST-API finden Sie unter [Index erstellen (REST-API für die kognitive Azure-Suche)](https://docs.microsoft.com/rest/api/searchservice/create-index). Der einzige Unterschied besteht hier darin, dass die Angaben des Verschlüsselungsschlüssels als Teil der Indexdefinition angegeben werden: 
+Die Angaben zum Erstellen eines neuen Index über die REST-API finden Sie unter [Index erstellen (REST-API für die kognitive Azure-Suche)](/rest/api/searchservice/create-index). Der einzige Unterschied besteht hier darin, dass die Angaben des Verschlüsselungsschlüssels als Teil der Indexdefinition angegeben werden: 
 
 ```json
 {
@@ -222,7 +222,7 @@ Dann können Sie die Anforderung zur Indexerstellung senden und anschließend de
 
 ## <a name="example-synonym-map-encryption"></a>Beispiel: Verschlüsselung einer Synonymzuordnung
 
-Die Angaben zum Erstellen einer neuen Synonymzuordnung über die REST-API finden Sie unter [Synonymzuordnung erstellen (REST-API für die kognitive Azure-Suche)](https://docs.microsoft.com/rest/api/searchservice/create-synonym-map). Der einzige Unterschied besteht hier darin, dass die Angaben des Verschlüsselungsschlüssels als Teil der Definition der Synonymzuordnung angegeben werden: 
+Die Angaben zum Erstellen einer neuen Synonymzuordnung über die REST-API finden Sie unter [Synonymzuordnung erstellen (REST-API für die kognitive Azure-Suche)](/rest/api/searchservice/create-synonym-map). Der einzige Unterschied besteht hier darin, dass die Angaben des Verschlüsselungsschlüssels als Teil der Definition der Synonymzuordnung angegeben werden: 
 
 ```json
 {   
@@ -254,9 +254,9 @@ Wenn die Verwendung einer verwalteten Identität nicht möglich ist, können Sie
 Für diese Topologien unterstützt die kognitive Azure-Suche die Verwendung von Azure Active Directory-Anwendungen (AAD-Anwendungen) zur Authentifizierung zwischen dem Suchdienst und der Key Vault-Instanz.    
 So erstellen Sie eine AAD-Anwendung im Portal
 
-1. [Erstellen Sie eine Azure Active Directory-Anwendung.](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#create-an-azure-active-directory-application)
+1. [Erstellen Sie eine Azure Active Directory-Anwendung.](../active-directory/develop/howto-create-service-principal-portal.md)
 
-1. [Rufen Sie die Anwendungs-ID und den Authentifizierungsschlüssel ab](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in), da diese zum Erstellen eines verschlüsselten Index benötigt werden. Zu den Werten, die Sie angeben müssen, gehören auch die **Anwendungs-ID** und der **Authentifizierungsschlüssel**.
+1. [Rufen Sie die Anwendungs-ID und den Authentifizierungsschlüssel ab](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in), da diese zum Erstellen eines verschlüsselten Index benötigt werden. Zu den Werten, die Sie angeben müssen, gehören auch die **Anwendungs-ID** und der **Authentifizierungsschlüssel**.
 
 >[!Important]
 > Berücksichtigen Sie bei der Entscheidung, eine AAD-Anwendung zur Authentifizierung anstelle einer verwalteten Identität zu verwenden, auch, dass die AAD-Anwendung von der kognitiven Azure-Suche nicht in Ihrem Namen verwaltet werden kann und Sie selbst die AAD-Anwendung verwalten müssen, beispielsweise die regelmäßige Rotation des Anwendungsauthentifizierungsschlüssels.
@@ -271,14 +271,14 @@ Es wird erwartet, dass im Lauf der Zeit eine Schlüsselrotation erfolgt. Wenn Si
 
 1. [Ermitteln Sie den Schlüssel, der von einem Index oder einer Synonymzuordnung verwendet wird.](search-security-get-encryption-keys.md)
 1. [Erstellen Sie einen neuen Schlüssel im Schlüsseltresor](../key-vault/keys/quick-create-portal.md), aber lassen Sie den ursprünglichen Schlüssel verfügbar.
-1. [Aktualisieren Sie die Eigenschaften der encryptionKey-Eigenschaft](https://docs.microsoft.com/rest/api/searchservice/update-index) für einen Index oder eine Synonymzuordnung, damit die neuen Werte verwendet werden. Nur Objekte, die ursprünglich mit dieser Eigenschaft erstellt wurden, können aktualisiert werden, um einen anderen Wert zu verwenden.
+1. [Aktualisieren Sie die Eigenschaften der encryptionKey-Eigenschaft](/rest/api/searchservice/update-index) für einen Index oder eine Synonymzuordnung, damit die neuen Werte verwendet werden. Nur Objekte, die ursprünglich mit dieser Eigenschaft erstellt wurden, können aktualisiert werden, um einen anderen Wert zu verwenden.
 1. Deaktivieren oder löschen Sie den vorherigen Schlüssel aus dem Schlüsseltresor. Überwachen Sie den Schlüsselzugriff, um sicherzustellen, dass der neue Schlüssel verwendet wird.
 
 Aus Leistungsgründen speichert der Suchdienst den Schlüssel für mehrere Stunden zwischen. Wenn Sie den Schlüssel deaktivieren oder löschen, ohne einen neuen bereitzustellen, funktionieren Abfragen weiter, bis der Cache abläuft. Wenn der Suchdienst die Inhalte aber nicht mehr entschlüsseln kann, wird diese Meldung angezeigt: „Zugriff untersagt. Der Abfrageschlüssel wurde möglicherweise widerrufen. Versuchen Sie es noch mal.“ 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Wenn Sie nicht mit der Azure-Sicherheitsarchitektur vertraut sind, finden Sie entsprechende Informationen in der [Dokumentation zur Azure-Sicherheit](https://docs.microsoft.com/azure/security/) und insbesondere in folgendem Artikel:
+Wenn Sie nicht mit der Azure-Sicherheitsarchitektur vertraut sind, finden Sie entsprechende Informationen in der [Dokumentation zur Azure-Sicherheit](../security/index.yml) und insbesondere in folgendem Artikel:
 
 > [!div class="nextstepaction"]
-> [Verschlüsselung ruhender Daten](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest)
+> [Verschlüsselung ruhender Daten](../security/fundamentals/encryption-atrest.md)

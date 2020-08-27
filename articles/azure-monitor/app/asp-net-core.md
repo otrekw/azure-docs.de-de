@@ -2,13 +2,14 @@
 title: Azure Application Insights für ASP.NET Core-Anwendungen | Microsoft-Dokumentation
 description: Überwachen Sie ASP.NET Core-Webanwendungen auf Verfügbarkeit, Leistung und Auslastung.
 ms.topic: conceptual
+ms.custom: devx-track-csharp
 ms.date: 04/30/2020
-ms.openlocfilehash: 81d7ab38080aac941bce1f5d1dd17145f8075036
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 719bf997254c98c5790d6d6733982fea08541967
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88518083"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936519"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>Application Insights für ASP.NET Core-Anwendungen
 

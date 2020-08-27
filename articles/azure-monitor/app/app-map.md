@@ -3,13 +3,14 @@ title: Anwendungszuordnung in Azure Application Insights | Microsoft-Dokumentati
 description: Überwachen von komplexen Anwendungstopologien mit der Anwendungsübersicht
 ms.topic: conceptual
 ms.date: 03/15/2019
+ms.custom: devx-track-csharp
 ms.reviewer: sdash
-ms.openlocfilehash: b99998a7b1bcb2348a1a73696661de7cf8b44b85
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: d4067b23c4ff365857c37d7dfdce6dc42e129989
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421296"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936604"
 ---
 # <a name="application-map-triage-distributed-applications"></a>Anwendungsübersicht: Selektieren verteilter Anwendungen
 

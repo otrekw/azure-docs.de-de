@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 2994c55b39d30ff16a0ca135e93a116784feb201
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 46170a0eede92584b8ac4cc77ad61ca673cae65c
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74113820"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935482"
 ---
 # <a name="example-create-a-custom-skill-using-the-bing-entity-search-api"></a>Beispiel: Erstellen einer benutzerdefinierten Qualifikation mit der Bing-Entitätssuche-API
 
@@ -481,5 +481,5 @@ Glückwunsch! Sie haben Ihre erste benutzerdefinierte Qualifikation erstellt. Nu
 + [Power Skills: ein Repository benutzerdefinierter Skills](https://github.com/Azure-Samples/azure-search-power-skills)
 + [Hinzufügen einer benutzerdefinierten Qualifikation zu einer KI-Anreicherungspipeline](cognitive-search-custom-skill-interface.md)
 + [Definieren eines Skillsets](cognitive-search-defining-skillset.md)
-+ [Erstellen eines Skillsets (REST)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
++ [Erstellen eines Skillsets (REST)](/rest/api/searchservice/create-skillset)
 + [Zuordnen angereicherter Felder](cognitive-search-output-field-mapping.md)

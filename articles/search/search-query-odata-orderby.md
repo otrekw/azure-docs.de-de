@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 333e48ff963ec42dd2ee00956fa046a5a038c099
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 83ab2c6b97435ace0d2bc508cbf522600391b60b
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87903781"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88926829"
 ---
 # <a name="odata-orderby-syntax-in-azure-cognitive-search"></a>OData-Syntax von „$orderby“ in Azure Cognitive Search
 
@@ -93,4 +93,4 @@ Sortieren von Hotels in absteigender Reihenfolge nach Suchergebnis und Bewertung
 - [Arbeiten mit Suchergebnissen in der kognitiven Azure-Suche](search-pagination-page-layout.md)
 - [Übersicht über die OData-Ausdruckssprache für Azure Cognitive Search](query-odata-filter-orderby-syntax.md)
 - [Referenz zur OData-Ausdruckssyntax für Azure Cognitive Search](search-query-odata-syntax-reference.md)
-- [Suchen von Dokumenten &#40;Azure Cognitive Search-REST-API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [Suchen von Dokumenten &#40;Azure Cognitive Search-REST-API&#41;](/rest/api/searchservice/Search-Documents)
