@@ -10,12 +10,12 @@ ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5ede7ddb81bae69d92983e787e779ee9d410bd87
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 584fb5c370fa0be629d057eb94dc4c2a8b9edc15
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82144071"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88716434"
 ---
 # <a name="azure-active-directory-certificate-based-authentication-on-ios"></a>Zertifikatbasierte Authentifizierung mit Azure Active Directory unter iOS
 
@@ -69,7 +69,7 @@ Als bewährte Methode sollten Sie auch die AD FS-Fehlerseiten Ihrer Organisatio
 * Voraussetzungen für die Installation von Microsoft Authenticator unter iOS
 * Anleitungen zum Abrufen eines Benutzerzertifikats
 
-Weitere Informationen finden Sie unter [Anpassen der AD FS-Anmeldeseite](https://technet.microsoft.com/library/dn280950.aspx).
+Weitere Informationen finden Sie unter [Anpassen der AD FS-Anmeldeseite](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn280950(v=ws.11)).
 
 ## <a name="use-modern-authentication-with-office-apps"></a>Verwenden der modernen Authentifizierung mit Office-Apps
 

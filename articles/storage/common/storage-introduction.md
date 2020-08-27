@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/08/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 81ee07eb41df6d8d663510913572b829feffd995
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b603776ce19bca8d6fefa7c3c85366ebe3b7b01f
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82133783"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88653799"
 ---
 # <a name="introduction-to-the-core-azure-storage-services"></a>Einführung in die zentralen Azure Storage-Dienste
 
@@ -33,7 +33,7 @@ Die Azure Storage-Plattform umfasst die folgenden Datendienste:
 - [Azure Files](../files/storage-files-introduction.md): Verwaltete Dateifreigaben für Bereitstellungen lokal oder in der Cloud.
 - [Azure-Warteschlangen](../queues/storage-queues-introduction.md): Ein Messagingspeicher für zuverlässiges Messaging zwischen Anwendungskomponenten.
 - [Azure-Tabellen](../tables/table-storage-overview.md): Ein NoSQL-Speicher für die schemalose Speicherung von strukturierten Daten.
-- [Azure-Datenträger](../../virtual-machines/windows/managed-disks-overview.md): Speichervolumes auf Blockebene für virtuelle Azure-Computer.
+- [Azure-Datenträger](../../virtual-machines/managed-disks-overview.md): Speichervolumes auf Blockebene für virtuelle Azure-Computer.
 
 Auf jeden Dienst wird über ein Speicherkonto zugegriffen. Informationen zu den ersten Schritten finden Sie unter [Speicherkonto erstellen](storage-account-create.md).
 
@@ -101,7 +101,7 @@ Weitere Informationen zu Table Storage finden Sie unter [Übersicht über Azure 
 
 Ein verwalteter Azure-Datenträger ist eine virtuelle Festplatte (Virtual Hard Disk, VHD). Sie können sich dies wie einen physischen Datenträger in einem lokalen Server vorstellen, aber der Unterschied besteht darin, dass er virtualisiert ist. Verwaltete Azure-Datenträger werden als Seitenblobs gespeichert, bei denen es sich in Azure um ein zufälliges E/A-Speicherobjekt handelt. Wir bezeichnen einen verwalteten Datenträger als „verwaltet“, weil es eine Abstraktion ist, die sich über Seitenblobs, Blobcontainer und Azure-Speicherkonten erstreckt. Bei verwalteten Datenträgern müssen Sie nicht mehr tun, als den Datenträger bereitzustellen. Azure übernimmt dann den Rest.
 
-Weitere Informationen zu verwalteten Datenträgern finden Sie in der [Einführung in Azure Managed Disks](../../virtual-machines/windows/managed-disks-overview.md).
+Weitere Informationen zu verwalteten Datenträgern finden Sie in der [Einführung in Azure Managed Disks](../../virtual-machines/managed-disks-overview.md).
 
 ## <a name="types-of-storage-accounts"></a>Speicherkontentypen
 

@@ -5,12 +5,12 @@ author: mscurrell
 ms.topic: how-to
 ms.date: 03/19/2020
 ms.custom: seodec18
-ms.openlocfilehash: 48350a684844ca0e1624826afeca8e0b9ab36f3b
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: e33119213d4ae28347334e60923d5ba222cd3a66
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85959992"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816693"
 ---
 # <a name="use-low-priority-vms-with-batch"></a>Verwenden von VMs mit niedriger Priorität mit Batch
 
@@ -23,7 +23,7 @@ Die Verwendung von VMs mit niedriger Priorität hat jedoch auch Nachteile: Mögl
 VMs mit niedriger Priorität werden im Vergleich zu dedizierten VMs zu einem deutlich günstigeren Preis angeboten. Ausführliche Preisinformationen finden Sie unter [Preise für Batch](https://azure.microsoft.com/pricing/details/batch/).
 
 > [!NOTE]
-> [Spot-VMs](https://azure.microsoft.com/pricing/spot/) sind jetzt für [VMs mit einer einfachen Instanz](../virtual-machines/linux/spot-vms.md) und [VM-Skalierungsgruppen](../virtual-machine-scale-sets/use-spot.md) verfügbar. Spot-VMs sind eine Weiterentwicklung von VMs mit niedriger Priorität, unterscheiden sich aber dadurch, dass die Preise variieren können und bei der Zuweisung von Spot-VMs ein optionaler Maximalpreis festgelegt werden kann.
+> [Spot-VMs](https://azure.microsoft.com/pricing/spot/) sind jetzt für [VMs mit einer einfachen Instanz](../virtual-machines/spot-vms.md) und [VM-Skalierungsgruppen](../virtual-machine-scale-sets/use-spot.md) verfügbar. Spot-VMs sind eine Weiterentwicklung von VMs mit niedriger Priorität, unterscheiden sich aber dadurch, dass die Preise variieren können und bei der Zuweisung von Spot-VMs ein optionaler Maximalpreis festgelegt werden kann.
 >
 > Azure Batch-Pools unterstützen in wenigen Monaten Spot-VMs und sind dann mit neuen Versionen der [Batch-APIs und -Tools](./batch-apis-tools.md) allgemein verfügbar. Sobald die Unterstützt für Spot-VMs verfügbar ist, werden VMs mit niedriger Priorität für mindestens 12 Monate weiterhin unterstützt, indem die aktuellen API- und Toolversionen verwendet werden, damit ausreichend Zeit für die Migration zu Spot-VMs bleibt. 
 >

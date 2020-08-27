@@ -3,13 +3,13 @@ title: Automatisches Skalieren von Computeknoten in einem Azure Batch-Pool
 description: Aktivieren Sie das automatische Skalieren in einem Cloudpool, um die Anzahl von Computeknoten im Pool dynamisch anzupassen.
 ms.topic: how-to
 ms.date: 07/27/2020
-ms.custom: H1Hack27Feb2017,fasttrack-edit
-ms.openlocfilehash: 0309a5665cf9338340a21f4c8d0eb5bc3c848a04
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.custom: H1Hack27Feb2017, fasttrack-edit, devx-track-csharp
+ms.openlocfilehash: e3e7a354e015ffa8a6164de59edcf572ab773319
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387471"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88932320"
 ---
 # <a name="create-an-automatic-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>Erstellen einer Formel für die automatische Skalierung von Computeknoten in einem Batch-Pool
 

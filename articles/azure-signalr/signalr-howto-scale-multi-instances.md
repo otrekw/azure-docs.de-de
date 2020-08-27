@@ -4,14 +4,15 @@ description: In vielen Skalierungsszenarien muss der Kunde häufig mehrere Insta
 author: sffamily
 ms.service: signalr
 ms.topic: conceptual
+ms.custom: devx-track-csharp
 ms.date: 03/27/2019
 ms.author: zhshang
-ms.openlocfilehash: 43d703312cbc1fc067a2d51d5623ed028ba01405
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ecf4a35fc239a70e87550a97e71d7abd3d00ecfa
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74158162"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88921986"
 ---
 # <a name="how-to-scale-signalr-service-with-multiple-instances"></a>Skalieren von SignalR Service mit mehreren Instanzen
 Das neueste SignalR Service SDK unterstützt mehrere Endpunkte für SignalR Service-Instanzen. Sie können dieses Feature zum Skalieren der gleichzeitigen Verbindungen oder für das regionsübergreifende Messaging verwenden.

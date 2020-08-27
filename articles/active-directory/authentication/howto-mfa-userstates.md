@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d949f4b10bc6b7b592556d78edfcf02a05ec7144
-ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
+ms.openlocfilehash: 433cfa3789aa37f4145982da97719526c0abfc47
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88565773"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88719494"
 ---
 # <a name="enable-per-user-azure-multi-factor-authentication-to-secure-sign-in-events"></a>Benutzerspezifisches Aktivieren von Azure Multi-Factor Authentication zum Schutz von Anmeldeereignissen
 
@@ -76,7 +76,7 @@ Um den Azure Multi-Factor Authentication-Status pro Benutzer zu ändern, führen
 
 1. Bestätigen Sie Ihre Auswahl im Popupfenster, das geöffnet wird.
 
-Benachrichtigen Sie die Benutzer per E-Mail, nachdem Sie die Benutzer aktiviert haben. Teilen Sie den Benutzern mit, dass eine Aufforderung angezeigt wird, sich bei der nächsten Anmeldung zu registrieren. Und wenn Ihre Organisation auch nicht auf Browsern basierende Apps verwendet, die die moderne Authentifizierung nicht unterstützen, müssen die Benutzer App-Kennwörter erstellen. Weitere Informationen finden Sie in der [Anleitung zu Azure Multi-Factor Authentication für Endbenutzer](../user-help/multi-factor-authentication-end-user.md).
+Benachrichtigen Sie die Benutzer per E-Mail, nachdem Sie die Benutzer aktiviert haben. Teilen Sie den Benutzern mit, dass eine Aufforderung angezeigt wird, sich bei der nächsten Anmeldung zu registrieren. Und wenn Ihre Organisation auch nicht auf Browsern basierende Apps verwendet, die die moderne Authentifizierung nicht unterstützen, müssen die Benutzer App-Kennwörter erstellen. Weitere Informationen finden Sie in der [Anleitung zu Azure Multi-Factor Authentication für Endbenutzer](../user-help/multi-factor-authentication-end-user-first-time.md).
 
 ## <a name="change-state-using-powershell"></a>Ändern des Status mithilfe von PowerShell
 

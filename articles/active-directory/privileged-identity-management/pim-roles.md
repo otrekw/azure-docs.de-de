@@ -14,12 +14,12 @@ ms.date: 05/11/2020
 ms.author: curtand
 ms.custom: pim ; H1Hack27Feb2017;oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 80762511591d10bd2823101e2ff233fdd0f0eb00
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 862b304d1f36567aecd4452f91f31d1a50c3198a
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87495623"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88782480"
 ---
 # <a name="roles-you-cant-manage-in-privileged-identity-management"></a>Rollen, die nicht in Privileged Identity Management verwaltet werden können
 
@@ -37,7 +37,7 @@ Weitere Informationen zu Administratorrollen klassischer Abonnements finden Sie 
 
 ## <a name="what-about-office-365-admin-roles"></a>Informationen zu Office 365-Administratorrollen
 
-Es werden alle Office 365-Rollen in der Azure AD-Rollenumgebung und im Administratorportal unterstützt, z. B. „Exchange-Administrator“ und „SharePoint-Administrator“, aber es werden keine spezifischen Rollen innerhalb von Exchange-RBAC oder SharePoint-RBAC unterstützt. Weitere Informationen zu diesen Office 365-Diensten finden Sie unter [Office 365-Administratorrollen](https://docs.microsoft.com/office365/admin/add-users/about-admin-roles).
+Es werden alle Office 365-Rollen in der Azure AD-Rollenumgebung und im Administratorportal unterstützt, z. B. „Exchange-Administrator“ und „SharePoint-Administrator“, aber es werden keine spezifischen Rollen innerhalb von Exchange-RBAC oder SharePoint-RBAC unterstützt. Weitere Informationen zu diesen Office 365-Diensten finden Sie unter [Office 365-Administratorrollen](/office365/admin/add-users/about-admin-roles).
 
 > [!NOTE]
 > Bei berechtigten Benutzern für die Rolle „SharePoint-Administrator“, die Rolle „Geräteadministrator“ sowie allen Rollen, die versuchen, auf das Microsoft Security and Compliance Center zuzugreifen, können nach dem Aktivieren ihrer Rolle Verzögerungen von bis zu einigen Stunden auftreten. Wir arbeiten mit diesen Teams zusammen daran, diese Probleme zu beheben.

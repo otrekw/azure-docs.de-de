@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d6f5cabace81d53edf36ac6be0a2eb8830e6cc5f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e4e09637a7d990e1555b5443b9931cf8ff8c271b
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87035076"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88718865"
 ---
 # <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>Häufig gestellte Fragen zu Azure Multi-Factor Authentication
 
@@ -259,6 +259,6 @@ Um diesen Fehler zu umgehen, können Sie separate Benutzerkonten für Administra
 Wenn Ihre Frage hier nicht beantwortet wird, sind die folgenden Supportoptionen verfügbar:
 
 * Durchsuchen Sie die [Microsoft Support Wissensdatenbank](https://support.microsoft.com) nach Lösungen für häufige technische Probleme.
-* In [Azure Active Directory Q&A](https://docs.microsoft.com/answers/topics/azure-active-directory.html)können Sie nach technischen Fragen und Antworten aus der Community suchen oder eine eigene Frage stellen.
+* In [Azure Active Directory Q&A](/answers/topics/azure-active-directory.html)können Sie nach technischen Fragen und Antworten aus der Community suchen oder eine eigene Frage stellen.
 * Wenden Sie sich über den [Support für Azure Multi-Factor Authentication-Server](https://support.microsoft.com/oas/default.aspx?prid=14947) an einen Support-Experten. Es ist hilfreich, wenn Sie uns so viele Informationen wie möglich über Ihr Problem geben, wenn Sie sich mit uns in Verbindung setzen. Diese Informationen können die Website umfassen, auf der der Fehler aufgetreten ist, den spezifischen Fehlercode, die spezifische Sitzungs-ID, und die ID des Benutzers, der den Fehler beobachtet hat.
 * Wenn Sie ein PhoneFactor-Kunde mit einem älteren Gerät sind und Fragen haben oder Hilfe beim Zurücksetzen eines Kennworts benötigen, öffnen Sie über die E-Mail-Adresse [phonefactorsupport@microsoft.com](mailto:phonefactorsupport@microsoft.com) einen Supportvorgang.

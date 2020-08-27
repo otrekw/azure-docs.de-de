@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 07/21/2020
+ms.date: 08/25/2020
 ms.author: victorh
-ms.openlocfilehash: 9d0a46135e5f763e6253540fe62d63cb59026ccb
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 51804a9f98bfa17dcfbeb90a268b91b2d28dbbde
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87086590"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88827221"
 ---
 # <a name="azure-firewall-logs-and-metrics"></a>Azure Firewall-Protokolle und -Metriken
 
@@ -125,7 +125,7 @@ Für Azure Firewall sind folgende Metriken verfügbar:
 
     Einheit: Prozent
 
-   Wenn Sie der Firewall weitere öffentliche IP-Adressen hinzufügen, sind zusätzliche SNAT-Ports verfügbar, wodurch die Auslastung der SNAT-Ports reduziert wird. Wenn die Firewall aus unterschiedlichen Gründen horizontal hochskaliert wird (z. B. CPU oder Durchsatz), sind ebenfalls zusätzliche SNAT-Ports verfügbar. Ein bestimmter Prozentsatz der SNAT-Portnutzung kann sich also effektiv verringern, ohne dass Sie öffentliche IP-Adressen hinzufügen, sondern nur weil der Dienst horizontal hochskaliert wurde. Sie können die Anzahl der verfügbaren öffentlichen IP-Adressen direkt steuern, um die für die Firewall verfügbaren Ports zu erhöhen. Die Firewallskalierung können Sie jedoch nicht direkt steuern. Derzeit werden SNAT-Ports nur für die ersten fünf öffentlichen IP-Adressen hinzugefügt.   
+   Wenn Sie der Firewall weitere öffentliche IP-Adressen hinzufügen, sind zusätzliche SNAT-Ports verfügbar, wodurch die Auslastung der SNAT-Ports reduziert wird. Wenn die Firewall aus unterschiedlichen Gründen horizontal hochskaliert wird (z. B. CPU oder Durchsatz), sind ebenfalls zusätzliche SNAT-Ports verfügbar. Ein bestimmter Prozentsatz der SNAT-Portnutzung kann sich also effektiv verringern, ohne dass Sie öffentliche IP-Adressen hinzufügen, sondern nur weil der Dienst horizontal hochskaliert wurde. Sie können die Anzahl der verfügbaren öffentlichen IP-Adressen direkt steuern, um die für die Firewall verfügbaren Ports zu erhöhen. Die Firewallskalierung können Sie jedoch nicht direkt steuern.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

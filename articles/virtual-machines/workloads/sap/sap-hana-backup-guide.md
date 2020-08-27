@@ -12,12 +12,12 @@ ums.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/01/2020
 ms.author: juergent
-ms.openlocfilehash: e1cfe7216c1b37812c482cfacbd5d1c3f155418f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: b5a83b3976dd3d3af1bfd5695815f7571d73dd9d
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86507827"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88652184"
 ---
 # <a name="backup-guide-for-sap-hana-on-azure-virtual-machines"></a>Sicherungsanleitung für SAP HANA in Azure Virtual Machines
 
@@ -45,7 +45,7 @@ Im ersten gezeigten Szenario werden der Azure Backup-Dienst und die SAP HANA-Sch
 
 Azure Backup ist eine integrierte und zertifizierte Sicherungslösung für SAP HANA, die die proprietäre SAP HANA-Schnittstelle [backint](https://www.sap.com/dmc/exp/2013_09_adpd/enEN/#/d/solutions?id=8f3fd455-a2d7-4086-aa28-51d8870acaa5) verwendet. Weitere Einzelheiten zur Lösung, ihren Fähigkeiten und den Azure-Regionen, in denen sie verfügbar ist, finden Sie im Artikel [Unterstützungsmatrix für die Sicherung von SAP HANA-Datenbanken auf virtuellen Azure-Computern](../../../backup/sap-hana-backup-support-matrix.md#scenario-support). Einzelheiten und grundsätzliche Informationen zum Azure Backup-Dienst für HANA finden Sie im Artikel [Informationen zur SAP HANA-Datenbanksicherung in Azure Virtual Machines](../../../backup/sap-hana-db-about.md). 
 
-Die zweite Möglichkeit, den Azure Backup-Dienst zu nutzen, ist die Erstellung einer anwendungskonsistenten Sicherung mithilfe von Datenträger-Momentaufnahmen von Azure Storage Premium. Andere für HANA zertifizierte Azure-Speicher wie [Azure Ultra Disk](../../linux/disks-enable-ultra-ssd.md) und [Azure NetApp Files](https://azure.microsoft.com/services/netapp/) unterstützen diese Art von Momentaufnahmen über den Azure Backup-Dienst nicht. Lesen Sie diese Artikel:
+Die zweite Möglichkeit, den Azure Backup-Dienst zu nutzen, ist die Erstellung einer anwendungskonsistenten Sicherung mithilfe von Datenträger-Momentaufnahmen von Azure Storage Premium. Andere für HANA zertifizierte Azure-Speicher wie [Azure Ultra Disk](../../disks-enable-ultra-ssd.md) und [Azure NetApp Files](https://azure.microsoft.com/services/netapp/) unterstützen diese Art von Momentaufnahmen über den Azure Backup-Dienst nicht. Lesen Sie diese Artikel:
 
 - [Planen der Sicherungsinfrastruktur für virtuelle Computer in Azure](../../../backup/backup-azure-vms-introduction.md)
 - [Anwendungskonsistente Sicherung von virtuellen Linux-Computern in Azure](../../../backup/backup-azure-linux-app-consistent.md) 

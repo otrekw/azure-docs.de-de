@@ -16,12 +16,12 @@ ms.date: 08/14/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1cccab009ddd5624fcc98ad6f871fe40d9540823
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 46a56e830c8c9b55c9bbe48cd7d23ad8475b51b8
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88603934"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88853025"
 ---
 # <a name="planning-azure-active-directory-access-reviews-deployment"></a>Planen der Bereitstellung von Azure Active Directory-Zugriffsüberprüfungen
 
@@ -180,7 +180,7 @@ Typische Ziele für die Überprüfung:
 
 * [Anwendungen, die für das einmalige Anmelden in Azure AD integriert sind](../manage-apps/what-is-application-management.md) (z. B. SaaS, Branchenanwendungen).
 
-* [Mitgliedschaft](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-manage-groups?context=azure/active-directory/users-groups-roles/context/ugr-context) in Gruppen (mit Azure AD synchronisiert oder in Azure AD oder Office 365 erstellt, einschließlich Microsoft Teams).
+* [Mitgliedschaft](../fundamentals/active-directory-manage-groups.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context) in Gruppen (mit Azure AD synchronisiert oder in Azure AD oder Office 365 erstellt, einschließlich Microsoft Teams).
 
 * [Zugriffspaket](/entitlement-management-overview.md) zum Gruppieren von Ressourcen (Gruppen, Apps und Websites) in einem Paket für die Zugriffsverwaltung.
 
@@ -283,7 +283,7 @@ Externen Identitäten kann über eine der folgenden Aktionen Zugriff auf Unterne
 
 * Zuweisen einer privilegierten Rolle in Azure AD oder in einem Azure-Abonnement
 
-Siehe das [Beispielskript](https://github.com/microsoft/access-reviews-samples/tree/master/ExternalIdentityUse.). Das Skript zeigt, wo externe Identitäten, die zum Mandanten eingeladen wurden, verwendet werden. Sie können die Gruppenmitgliedschaft, die Rollen- und Anwendungszuweisungen externer Benutzer in Azure AD ablesen. Das Skript zeigt keine Zuweisungen außerhalb von Azure AD an, z. B. direkt zugewiesene Rechte für SharePoint-Ressourcen, wenn keine Gruppen verwendet werden.
+Siehe das [Beispielskript](https://github.com/microsoft/access-reviews-samples/tree/master/ExternalIdentityUse). Das Skript zeigt, wo externe Identitäten, die zum Mandanten eingeladen wurden, verwendet werden. Sie können die Gruppenmitgliedschaft, die Rollen- und Anwendungszuweisungen externer Benutzer in Azure AD ablesen. Das Skript zeigt keine Zuweisungen außerhalb von Azure AD an, z. B. direkt zugewiesene Rechte für SharePoint-Ressourcen, wenn keine Gruppen verwendet werden.
 
 Wenn Sie eine Zugriffsüberprüfung für Gruppen oder Anwendungen erstellen, können Sie festlegen, dass sich der Prüfer auf alle Benutzer mit Zugriff oder nur auf Gastbenutzer konzentrieren soll. Wenn nur Gastbenutzer ausgewählt werden, wird den Prüfern eine gefilterte Liste externer Identitäten aus Azure AD B2B zugewiesen, die Zugriff auf die Ressource haben.
 
@@ -389,7 +389,7 @@ Zugriffsüberprüfungen können für die Mitglieder einer Gruppe oder für Benut
 
 ## <a name="plan-review-of-azure-ad-and-azure-resource-roles"></a>Planen der Überprüfung von Azure AD- und Azure-Ressourcenrollen
 
-[Privileged Identity Management (PIM)](../privileged-identity-management/pim-configure.md) vereinfacht für Unternehmen die Verwaltung des privilegierten Zugriffs auf Ressourcen in Azure AD. Dadurch wird die Liste der privilegierten Rollen in [Azure AD](../users-groups-roles/directory-assign-admin-roles.md) und [Azure-Ressourcen](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) erheblich kleiner, und die Gesamtsicherheit des Verzeichnisses wird erhöht.
+[Privileged Identity Management (PIM)](../privileged-identity-management/pim-configure.md) vereinfacht für Unternehmen die Verwaltung des privilegierten Zugriffs auf Ressourcen in Azure AD. Dadurch wird die Liste der privilegierten Rollen in [Azure AD](../users-groups-roles/directory-assign-admin-roles.md) und [Azure-Ressourcen](../../role-based-access-control/built-in-roles.md) erheblich kleiner, und die Gesamtsicherheit des Verzeichnisses wird erhöht.
 
 Anhand von Zugriffsüberprüfungen können Prüfer feststellen, ob Benutzer eine Rolle weiterhin benötigen. Ebenso wie Zugriffsüberprüfungen für Zugriffspakete sind die Überprüfungen für Azure AD-Rollen und Azure-Ressourcen in die PIM-Administratoroberfläche integriert. Es wird empfohlen, die folgenden Rollenzuweisungen regelmäßig zu überprüfen:
 
@@ -452,9 +452,9 @@ Folgen Sie den Anweisungen unter den nachstehenden Links:
 
 | Anleitungen | BESCHREIBUNG |
 | - | - |
- [Erstellen von Zugriffsüberprüfungen](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-how-to-start-security-review?toc=/azure/active-directory/governance/toc.json)| Erstellen Sie Zugriffsüberprüfungen für privilegierte Azure AD-Rollen in PIM. |
-| [Selbstüberprüfung des Zugriffs](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-how-to-perform-security-review?toc=/azure/active-directory/governance/toc.json)| Wenn Sie einer Administratorrolle zugewiesen sind, genehmigen oder verweigern Sie den Zugriff Ihrer Rolle. |
-| [Abschließen einer Zugriffsüberprüfung](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-how-to-complete-review?toc=/azure/active-directory/governance/toc.json)| Öffnen Sie eine Zugriffsüberprüfung, und wenden Sie die Ergebnisse an. |
+ [Erstellen von Zugriffsüberprüfungen](../privileged-identity-management/pim-how-to-start-security-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)| Erstellen Sie Zugriffsüberprüfungen für privilegierte Azure AD-Rollen in PIM. |
+| [Selbstüberprüfung des Zugriffs](../privileged-identity-management/pim-how-to-perform-security-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)| Wenn Sie einer Administratorrolle zugewiesen sind, genehmigen oder verweigern Sie den Zugriff Ihrer Rolle. |
+| [Abschließen einer Zugriffsüberprüfung](../privileged-identity-management/pim-how-to-complete-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)| Öffnen Sie eine Zugriffsüberprüfung, und wenden Sie die Ergebnisse an. |
 
 
 ### <a name="review-azure-resource-roles"></a>Überprüfen von Azure-Ressourcenrollen
@@ -467,14 +467,14 @@ Folgen Sie den Anweisungen unter den nachstehenden Links:
 
 | Anleitungen| BESCHREIBUNG |
 | - | -|
-| [Erstellen von Zugriffsüberprüfungen](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-resource-roles-start-access-review?toc=/azure/active-directory/governance/toc.json)| Erstellen Sie Zugriffsüberprüfungen für privilegierte Azure-Ressourcenrollen in PIM. |
-| [Selbstüberprüfung des Zugriffs](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-resource-roles-perform-access-review?toc=/azure/active-directory/governance/toc.json)| Wenn Sie einer Administratorrolle zugewiesen sind, genehmigen oder verweigern Sie den Zugriff Ihrer Rolle. |
-| [Abschließen einer Zugriffsüberprüfung](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-resource-roles-complete-access-review?toc=/azure/active-directory/governance/toc.json)| Öffnen Sie eine Zugriffsüberprüfung, und wenden Sie die Ergebnisse an. |
+| [Erstellen von Zugriffsüberprüfungen](../privileged-identity-management/pim-resource-roles-start-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)| Erstellen Sie Zugriffsüberprüfungen für privilegierte Azure-Ressourcenrollen in PIM. |
+| [Selbstüberprüfung des Zugriffs](../privileged-identity-management/pim-resource-roles-perform-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)| Wenn Sie einer Administratorrolle zugewiesen sind, genehmigen oder verweigern Sie den Zugriff Ihrer Rolle. |
+| [Abschließen einer Zugriffsüberprüfung](../privileged-identity-management/pim-resource-roles-complete-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)| Öffnen Sie eine Zugriffsüberprüfung, und wenden Sie die Ergebnisse an. |
 
 
 ## <a name="use-the-access-reviews-api"></a>Verwenden der Zugriffsüberprüfungs-API
 
-Weitere Informationen zur Verwendung und Verwaltung von überprüfbaren Ressourcen finden Sie unter [Graph-API-Methoden](https://docs.microsoft.com/graph/api/resources/accessreviews-root?view=graph-rest-beta) und [Autorisierungsüberprüfungen für Rollen- und Anwendungsberechtigungen](https://docs.microsoft.com/graph/api/resources/accessreviews-root?view=graph-rest-beta). Die Zugriffsüberprüfungsmethoden in der Microsoft Graph-API stehen im Anwendungs- und Benutzerkontext zur Verfügung. Beim Ausführen von Skripts im Anwendungskontext muss dem Konto, das zum Ausführen der API verwendet wird (d. h. dem Dienstprinzipal), die Berechtigung „AccessReview.Read.All“ erteilt werden, um Informationen über Zugriffsüberprüfungen abfragen zu können.
+Weitere Informationen zur Verwendung und Verwaltung von überprüfbaren Ressourcen finden Sie unter [Graph-API-Methoden](/graph/api/resources/accessreviews-root?view=graph-rest-beta) und [Autorisierungsüberprüfungen für Rollen- und Anwendungsberechtigungen](/graph/api/resources/accessreviews-root?view=graph-rest-beta). Die Zugriffsüberprüfungsmethoden in der Microsoft Graph-API stehen im Anwendungs- und Benutzerkontext zur Verfügung. Beim Ausführen von Skripts im Anwendungskontext muss dem Konto, das zum Ausführen der API verwendet wird (d. h. dem Dienstprinzipal), die Berechtigung „AccessReview.Read.All“ erteilt werden, um Informationen über Zugriffsüberprüfungen abfragen zu können.
 
 Gängige Aufgaben bei Zugriffsüberprüfungen, die mit der Graph-API für Zugriffsüberprüfungen automatisiert werden können:
 
@@ -519,4 +519,3 @@ Informieren Sie sich über die im folgenden aufgeführten verwandten Technologie
 
 * [Was ist Azure AD Privileged Identity Management?](../privileged-identity-management/pim-configure.md)
 
- 

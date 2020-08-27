@@ -8,12 +8,12 @@ ms.author: jlembicz
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 8bb10c8e0e1f62e72d48d80014d75dd656490889
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c2d5b4758f80d07516500c663762d7c8607e2a30
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85565925"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88917957"
 ---
 # <a name="full-text-search-in-azure-cognitive-search"></a>Volltextsuche in Azure Cognitive Search
 
@@ -49,7 +49,7 @@ Im Diagramm unten sind die Komponenten dargestellt, die zum Verarbeiten einer Su
 
 Eine Suchanfrage ist eine vollständige Spezifikation dessen, was in einem Resultset zurückgegeben werden soll. In ihrer einfachsten Form handelt es sich um eine leere Abfrage ohne jegliche Kriterien. Ein realistischeres Beispiel enthält Parameter, mehrere Abfrageausdrücke, die ggf. auf einen bestimmten Feldbereich festgelegt sind, und unter Umständen einen Filterausdruck und Regeln für die Sortierung.  
 
-Das folgende Beispiel ist eine Suchanforderung, die Sie per [REST-API](https://docs.microsoft.com/rest/api/searchservice/search-documents) an die kognitive Azure-Suche senden können.  
+Das folgende Beispiel ist eine Suchanforderung, die Sie per [REST-API](/rest/api/searchservice/search-documents) an die kognitive Azure-Suche senden können.  
 
 ~~~~
 POST /indexes/hotels/docs/search?api-version=2020-06-30
@@ -69,7 +69,7 @@ Für diese Anforderung führt das Suchmodul die folgenden Schritte aus:
 2. Führt die Abfrage aus. In diesem Beispiel besteht die Suchabfrage aus Wortgruppen und Ausdrücken: `"Spacious, air-condition* +\"Ocean view\""`. (Benutzer geben häufig keine Satzzeichen ein, aber anhand der Verwendung im Beispiel können wir erklären, wie sie von Analysemodulen verarbeitet werden.) Für diese Abfrage durchsucht das Suchmodul die Felder mit der Beschreibung und dem Titel, die in `searchFields` angegeben sind, nach Dokumenten mit dem Text „Ocean view“ sowie nach dem Begriff „spacious“ oder nach Begriffen, die mit „air-condition“ beginnen. Der Parameter `searchMode` wird verwendet, um eine Übereinstimmung für einen beliebigen Begriff (Standard) oder alle Begriffe zu erzielen, wenn ein Begriff nicht explizit erforderlich ist (`+`).
 3. Sortiert die sich ergebenden Hotels nach ihrer Entfernung zu einem bestimmten geografischen Ort und gibt die Daten dann an die aufrufende Anwendung zurück. 
 
-In diesem Artikel geht es hauptsächlich um die Verarbeitung der *Suchabfrage*: `"Spacious, air-condition* +\"Ocean view\""`. Auf die Filterung und Sortierung wird hier nicht näher eingegangen. Weitere Informationen finden Sie in der [Referenzdokumentation zur Search-API](https://docs.microsoft.com/rest/api/searchservice/search-documents).
+In diesem Artikel geht es hauptsächlich um die Verarbeitung der *Suchabfrage*: `"Spacious, air-condition* +\"Ocean view\""`. Auf die Filterung und Sortierung wird hier nicht näher eingegangen. Weitere Informationen finden Sie in der [Referenzdokumentation zur Search-API](/rest/api/searchservice/search-documents).
 
 <a name="stage1"></a>
 ## <a name="stage-1-query-parsing"></a>Phase 1: Abfrageanalyse 
@@ -86,7 +86,7 @@ Der Abfrageparser trennt Operatoren (z.B. `*` und `+` im Beispiel) von Suchbegri
 + *Ausdrucksabfrage* für Begriffe in Anführungszeichen (z.B. „ocean view“)
 + *Präfixabfrage* für Ausdrücke, auf die der Präfixoperator `*` folgt (z.B. „air-condition“)
 
-Eine vollständige Liste mit unterstützten Abfragetypen finden Sie unter [Lucene-Abfragesyntax](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search).
+Eine vollständige Liste mit unterstützten Abfragetypen finden Sie unter [Lucene-Abfragesyntax](/rest/api/searchservice/lucene-query-syntax-in-azure-search).
 
 Mit Operatoren, denen eine Unterabfrage zugeordnet ist, wird bestimmt, ob die Abfrage erfüllt werden „muss“ oder erfüllt sein „sollte“, damit ein Dokument als Übereinstimmung angesehen wird. `+"Ocean view"` „muss“ aufgrund des Operators `+` beispielsweise erfüllt sein. 
 
@@ -96,7 +96,7 @@ Der Abfrageparser strukturiert die Unterabfragen als *Abfragestruktur* (interne 
 
 ### <a name="supported-parsers-simple-and-full-lucene"></a>Unterstützte Parser: Lucene-Optionen „simple“ und „full“ 
 
- Bei der kognitiven Azure-Suche werden zwei unterschiedliche Abfragesprachen verfügbar gemacht: `simple` (Standard) und `full`. Indem Sie den Parameter `queryType` für Ihre Suchanfrage festlegen, weisen Sie den Abfrageparser an, welche Abfragesprache zur Verwendung ausgewählt werden soll. Er verfügt somit über die Funktionen zum Interpretieren der Operatoren und der Syntax. Die [einfache Abfragesprache](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) ist intuitiv und robust und häufig gut geeignet, um die Benutzereingabe unverändert ohne clientseitige Verarbeitung zu interpretieren. Sie unterstützt Abfrageoperatoren, die Sie aus anderen Websuchmodulen kennen. Bei der [vollständigen Lucene-Abfragesprache](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search), die Sie durch das Festlegen von `queryType=full` erhalten, wird die einfache Abfragesprache erweitert. Es wird Unterstützung für weitere Operatoren und Abfragetypen hinzugefügt, z.B. Platzhalter, Fuzzy Matching, reguläre Ausdrücke und feldbezogene Abfragen. Ein regulärer Ausdruck, der mit einfacher Abfragesyntax gesendet wird, wird beispielsweise als Abfragezeichenfolge und nicht als Ausdruck interpretiert. Für die Beispielabfrage in diesem Artikel wird die vollständige Lucene-Abfragesprache verwendet.
+ Bei der kognitiven Azure-Suche werden zwei unterschiedliche Abfragesprachen verfügbar gemacht: `simple` (Standard) und `full`. Indem Sie den Parameter `queryType` für Ihre Suchanfrage festlegen, weisen Sie den Abfrageparser an, welche Abfragesprache zur Verwendung ausgewählt werden soll. Er verfügt somit über die Funktionen zum Interpretieren der Operatoren und der Syntax. Die [einfache Abfragesprache](/rest/api/searchservice/simple-query-syntax-in-azure-search) ist intuitiv und robust und häufig gut geeignet, um die Benutzereingabe unverändert ohne clientseitige Verarbeitung zu interpretieren. Sie unterstützt Abfrageoperatoren, die Sie aus anderen Websuchmodulen kennen. Bei der [vollständigen Lucene-Abfragesprache](/rest/api/searchservice/lucene-query-syntax-in-azure-search), die Sie durch das Festlegen von `queryType=full` erhalten, wird die einfache Abfragesprache erweitert. Es wird Unterstützung für weitere Operatoren und Abfragetypen hinzugefügt, z.B. Platzhalter, Fuzzy Matching, reguläre Ausdrücke und feldbezogene Abfragen. Ein regulärer Ausdruck, der mit einfacher Abfragesyntax gesendet wird, wird beispielsweise als Abfragezeichenfolge und nicht als Ausdruck interpretiert. Für die Beispielabfrage in diesem Artikel wird die vollständige Lucene-Abfragesprache verwendet.
 
 ### <a name="impact-of-searchmode-on-the-parser"></a>Auswirkung von searchMode auf den Parser 
 
@@ -123,7 +123,7 @@ Eine geänderte Abfragestruktur für diese Abfrage, bei der ein übereinstimmend
  ![Boolesche Abfrage: Suchmodus „all“][3]
 
 > [!Note] 
-> Sie können am besten entscheiden, ob Sie `searchMode=any` oder `searchMode=all` wählen sollen, indem Sie jeweils aussagekräftige Testabfragen durchführen. Benutzer, die Operatoren verwenden (häufig beim Durchsuchen von Dokumentspeichern), empfinden die Ergebnisse ggf. als intuitiver, wenn `searchMode=all` für boolesche Abfragen genutzt wird. Weitere Informationen zum Zusammenwirken von `searchMode` und Operatoren finden Sie unter [Einfache Abfragesyntax](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search).
+> Sie können am besten entscheiden, ob Sie `searchMode=any` oder `searchMode=all` wählen sollen, indem Sie jeweils aussagekräftige Testabfragen durchführen. Benutzer, die Operatoren verwenden (häufig beim Durchsuchen von Dokumentspeichern), empfinden die Ergebnisse ggf. als intuitiver, wenn `searchMode=all` für boolesche Abfragen genutzt wird. Weitere Informationen zum Zusammenwirken von `searchMode` und Operatoren finden Sie unter [Einfache Abfragesyntax](/rest/api/searchservice/simple-query-syntax-in-azure-search).
 
 <a name="stage2"></a>
 ## <a name="stage-2-lexical-analysis"></a>Phase 2: Lexikalische Analyse 
@@ -137,10 +137,10 @@ Die häufigste Form der lexikalischen Analyse ist die *linguistische Analyse*, b
 * Aufteilen eines zusammengesetzten Worts in seine Bestandteile 
 * Konvertieren eines kleingeschriebenen Worts in ein großgeschriebenes Wort 
 
-Bei all diesen Vorgängen werden Unterschiede zwischen der Texteingabe des Benutzers und den im Index gespeicherten Begriffen normalerweise beseitigt. Vorgänge dieser Art gehen über die Textverarbeitung hinaus und erfordern umfassende Kenntnisse der Sprache. Um diese Ebene der linguistischen Erkennung hinzuzufügen, unterstützt die kognitive Azure-Suche eine lange Liste mit [Sprachanalysen](https://docs.microsoft.com/rest/api/searchservice/language-support) von Lucene und Microsoft.
+Bei all diesen Vorgängen werden Unterschiede zwischen der Texteingabe des Benutzers und den im Index gespeicherten Begriffen normalerweise beseitigt. Vorgänge dieser Art gehen über die Textverarbeitung hinaus und erfordern umfassende Kenntnisse der Sprache. Um diese Ebene der linguistischen Erkennung hinzuzufügen, unterstützt die kognitive Azure-Suche eine lange Liste mit [Sprachanalysen](/rest/api/searchservice/language-support) von Lucene und Microsoft.
 
 > [!Note]
-> Die Analyseanforderungen können je nach Szenario von minimal bis ausführlich reichen. Sie können die Komplexität der lexikalischen Analyse steuern, indem Sie eine der vordefinierten Analysen auswählen oder Ihre eigene [benutzerdefinierte Analyse](https://docs.microsoft.com/rest/api/searchservice/Custom-analyzers-in-Azure-Search) erstellen. Der Bereich der Analysen ist auf die suchbaren Felder festgelegt, und die Analysen werden als Teil einer Felddefinition angegeben. So können Sie die lexikalische Analyse pro Feld festlegen. Wenn keine Angabe vorhanden ist, wird die Analyse *Standard* von Lucene verwendet.
+> Die Analyseanforderungen können je nach Szenario von minimal bis ausführlich reichen. Sie können die Komplexität der lexikalischen Analyse steuern, indem Sie eine der vordefinierten Analysen auswählen oder Ihre eigene [benutzerdefinierte Analyse](/rest/api/searchservice/Custom-analyzers-in-Azure-Search) erstellen. Der Bereich der Analysen ist auf die suchbaren Felder festgelegt, und die Analysen werden als Teil einer Felddefinition angegeben. So können Sie die lexikalische Analyse pro Feld festlegen. Wenn keine Angabe vorhanden ist, wird die Analyse *Standard* von Lucene verwendet.
 
 In unserem Beispiel enthält die erste Abfragestruktur vor der Analyse den Begriff „Spacious“ mit einem großen „S“ und einem Komma, das vom Abfrageparser als Teil des Abfrageausdrucks interpretiert wird (ein Komma wird nicht als Operator einer Abfragesprache angesehen).  
 
@@ -150,7 +150,7 @@ Wenn die Standardanalyse den Ausdruck verarbeitet, werden „ocean view“ und �
 
 ### <a name="testing-analyzer-behaviors"></a>Testen des Analyseverhaltens 
 
-Das Verhalten einer Analyse kann mit der [Analyse-API](https://docs.microsoft.com/rest/api/searchservice/test-analyzer) getestet werden. Geben Sie den Text ein, den Sie analysieren möchten, um zu ermitteln, welche Ausdrücke von der jeweiligen Analyse generiert werden. Sie können beispielsweise die folgende Anfrage ausgeben, um zu ermitteln, wie die Standardanalyse den Text „air-condition“ verarbeitet:
+Das Verhalten einer Analyse kann mit der [Analyse-API](/rest/api/searchservice/test-analyzer) getestet werden. Geben Sie den Text ein, den Sie analysieren möchten, um zu ermitteln, welche Ausdrücke von der jeweiligen Analyse generiert werden. Sie können beispielsweise die folgende Anfrage ausgeben, um zu ermitteln, wie die Standardanalyse den Text „air-condition“ verarbeitet:
 
 ~~~~
 {
@@ -359,8 +359,8 @@ In einem Beispiel ist dargestellt, warum dies wichtig ist. Platzhaltersuchen mit
 
 Es gibt zwei Möglichkeiten, wie Sie Relevanzbewertungen in der kognitiven Azure-Suche optimieren können:
 
-1. Mit **Bewertungsprofilen** werden Dokumente in der Rangfolgenliste der Ergebnisse basierend auf einer Gruppe von Regeln höhergestuft. In unserem Beispiel können wir Dokumente, für die sich Übereinstimmungen im Feld „title“ ergeben, als relevanter als Dokumente einstufen, für die sich Übereinstimmungen im Feld „description“ ergeben. Wenn unser Index über ein Preisfeld für jedes Hotel verfügen würde, könnten wir zusätzlich Dokumente mit einem niedrigeren Preis höherstufen. Lesen Sie die weiteren Informationen zum [Hinzufügen von Bewertungsprofilen zu einem Suchindex](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index).
-2. Beim **Term Boosting** („Begriffsverstärkung“, nur in der vollständigen Lucene-Abfragesyntax verfügbar) wird der Verstärkungsoperator `^` bereitgestellt, der auf alle Teile der Abfragestruktur angewendet werden kann. In unserem Beispiel könnten wir anstatt nach dem Präfix *air-condition*\* auch entweder nach dem exakten Begriff *air-condition* oder dem Präfix suchen. Dokumente, für die sich eine Übereinstimmung mit dem exakten Begriff ergibt, werden dann höher eingestuft, indem die Begriffsabfrage verstärkt wird: *air-condition^2||air-condition*\*. [Hier finden Sie weitere Informationen zum „Term Boosting“](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search#bkmk_termboost).
+1. Mit **Bewertungsprofilen** werden Dokumente in der Rangfolgenliste der Ergebnisse basierend auf einer Gruppe von Regeln höhergestuft. In unserem Beispiel können wir Dokumente, für die sich Übereinstimmungen im Feld „title“ ergeben, als relevanter als Dokumente einstufen, für die sich Übereinstimmungen im Feld „description“ ergeben. Wenn unser Index über ein Preisfeld für jedes Hotel verfügen würde, könnten wir zusätzlich Dokumente mit einem niedrigeren Preis höherstufen. Lesen Sie die weiteren Informationen zum [Hinzufügen von Bewertungsprofilen zu einem Suchindex](/rest/api/searchservice/add-scoring-profiles-to-a-search-index).
+2. Beim **Term Boosting** („Begriffsverstärkung“, nur in der vollständigen Lucene-Abfragesyntax verfügbar) wird der Verstärkungsoperator `^` bereitgestellt, der auf alle Teile der Abfragestruktur angewendet werden kann. In unserem Beispiel könnten wir anstatt nach dem Präfix *air-condition*\* auch entweder nach dem exakten Begriff *air-condition* oder dem Präfix suchen. Dokumente, für die sich eine Übereinstimmung mit dem exakten Begriff ergibt, werden dann höher eingestuft, indem die Begriffsabfrage verstärkt wird: *air-condition^2||air-condition*\*. [Hier finden Sie weitere Informationen zum „Term Boosting“](/rest/api/searchservice/lucene-query-syntax-in-azure-search#bkmk_termboost).
 
 
 ### <a name="scoring-in-a-distributed-index"></a>Durchführen von Bewertungen in einem verteilten Index
@@ -383,23 +383,23 @@ In diesem Artikel wurde die Volltextsuche im Kontext der kognitiven Azure-Suche 
 
 + Erstellen Sie den Beispielindex, probieren Sie verschiedene Abfragen aus, und sehen Sie sich die Ergebnisse an. Eine Anleitung finden Sie unter [Erstellen und Abfragen Ihres ersten Azure Search-Index im Portal](search-get-started-portal.md#query-index) im Abschnitt „Abfragen des Index“.
 
-+ Probieren Sie andere Abfragesyntax in den Beispielen unter [Search Documents](https://docs.microsoft.com/rest/api/searchservice/search-documents#bkmk_examples) (Suchen nach Dokumenten) oder unter [Simple query syntax in Azure Search](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) (Einfache Abfragesyntax in Azure Search) im Suchexplorer im Portal aus.
++ Probieren Sie andere Abfragesyntax in den Beispielen unter [Search Documents](/rest/api/searchservice/search-documents#bkmk_examples) (Suchen nach Dokumenten) oder unter [Simple query syntax in Azure Search](/rest/api/searchservice/simple-query-syntax-in-azure-search) (Einfache Abfragesyntax in Azure Search) im Suchexplorer im Portal aus.
 
-+ Sehen Sie sich die [Bewertungsprofile](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index) an, wenn Sie die Rangfolge in Ihrer Suchanwendung optimieren möchten.
++ Sehen Sie sich die [Bewertungsprofile](/rest/api/searchservice/add-scoring-profiles-to-a-search-index) an, wenn Sie die Rangfolge in Ihrer Suchanwendung optimieren möchten.
 
-+ Informieren Sie sich darüber, wie Sie [sprachspezifische lexikalische Analysen](https://docs.microsoft.com/rest/api/searchservice/language-support) anwenden.
++ Informieren Sie sich darüber, wie Sie [sprachspezifische lexikalische Analysen](/rest/api/searchservice/language-support) anwenden.
 
-+ [Konfigurieren Sie benutzerdefinierte Analysen](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search) für die minimale oder spezielle Verarbeitung anhand von bestimmten Feldern.
++ [Konfigurieren Sie benutzerdefinierte Analysen](/rest/api/searchservice/custom-analyzers-in-azure-search) für die minimale oder spezielle Verarbeitung anhand von bestimmten Feldern.
 
 ## <a name="see-also"></a>Weitere Informationen
 
-[Search Documents (Azure Search Service REST API)](https://docs.microsoft.com/rest/api/searchservice/search-documents) (Suchen nach Dokumenten (Azure Search Service-REST-API)) 
+[Search Documents (Azure Search Service REST API)](/rest/api/searchservice/search-documents) (Suchen nach Dokumenten (Azure Search Service-REST-API)) 
 
-[Einfache Abfragesyntax](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) 
+[Einfache Abfragesyntax](/rest/api/searchservice/simple-query-syntax-in-azure-search) 
 
-[Vollständige Lucene-Abfragesyntax](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search) 
+[Vollständige Lucene-Abfragesyntax](/rest/api/searchservice/lucene-query-syntax-in-azure-search) 
 
-[Verarbeiten von Suchergebnissen](https://docs.microsoft.com/azure/search/search-pagination-page-layout)
+[Verarbeiten von Suchergebnissen](./search-pagination-page-layout.md)
 
 <!--Image references-->
 [1]: ./media/search-lucene-query-architecture/architecture-diagram2.png

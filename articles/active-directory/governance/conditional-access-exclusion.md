@@ -16,12 +16,12 @@ ms.date: 06/17/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 64a619843f781fa24bfdc2a339e67fdb49b1bff1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: def74cccb3ad2c45a18210cc9d5a0d7ff0ba76f6
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85078845"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88783687"
 ---
 # <a name="use-azure-ad-access-reviews-to-manage-users-excluded-from-conditional-access-policies"></a>Verwenden von Azure AD-Zugriffsüberprüfungen zum Verwalten von Benutzern, die aus Richtlinien für den bedingten Zugriff ausgeschlossen sind
 
@@ -144,7 +144,7 @@ Angenommen, Sie verfügen über eine Richtlinie für bedingten Zugriff, die den 
     ![Erstellen eines Zugriffsüberprüfungsbereichs für Beispiel 2](./media/conditional-access-exclusion/create-access-review-2.png)
 
 >[!IMPORTANT] 
->Wenn Sie über viele Ausschlussgruppen verfügen und deshalb mehrere Zugriffsüberprüfungen erstellen müssen, können Sie am Microsoft Graph Beta-Endpunkt jetzt eine API nutzen, um die Erstellung und Verwaltung programmgesteuert durchzuführen. Informationen zu den ersten Schritten finden Sie unter [Azure AD access reviews API reference](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/accessreviews_root) (Azure AD-Zugriffsüberprüfungen – API-Referenz) und [Example of retrieving Azure AD access reviews via Microsoft Graph](https://techcommunity.microsoft.com/t5/Azure-Active-Directory/Example-of-retrieving-Azure-AD-access-reviews-via-Microsoft/td-p/236096) (Beispiel für das Abrufen von Azure AD-Zugriffsüberprüfungen mit Microsoft Graph).
+>Wenn Sie über viele Ausschlussgruppen verfügen und deshalb mehrere Zugriffsüberprüfungen erstellen müssen, können Sie am Microsoft Graph Beta-Endpunkt jetzt eine API nutzen, um die Erstellung und Verwaltung programmgesteuert durchzuführen. Informationen zu den ersten Schritten finden Sie unter [Azure AD access reviews API reference](/graph/api/resources/accessreviews-root?view=graph-rest-beta) (Azure AD-Zugriffsüberprüfungen – API-Referenz) und [Example of retrieving Azure AD access reviews via Microsoft Graph](https://techcommunity.microsoft.com/t5/Azure-Active-Directory/Example-of-retrieving-Azure-AD-access-reviews-via-Microsoft/td-p/236096) (Beispiel für das Abrufen von Azure AD-Zugriffsüberprüfungen mit Microsoft Graph).
 
 ## <a name="access-review-results-and-audit-logs"></a>Zugreifen auf Überprüfungsergebnisse und Überwachungsprotokolle
 

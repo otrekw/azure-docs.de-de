@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 06/26/2020
 ms.author: cynthn
 ms.reviewer: jagaveer
-ms.openlocfilehash: f8515668cc30f62edadc0975533fe3bb9646e5e5
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 165a2c6221c8d3c14f71134deef962d0859bb438
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87288386"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816710"
 ---
 # <a name="deploy-spot-vms-using-the-azure-cli"></a>Bereitstellen von Spot-VMs mithilfe der Azure-Befehlszeilenschnittstelle
 
@@ -21,7 +21,7 @@ Mithilfe von [Azure Spot-VMs](spot-vms.md) profitieren Sie von unserer ungenutzt
 
 Die Preise für Spot-VMs variieren je nach Region und SKU. Weitere Informationen finden Sie unter den VM-Preisen für [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) und [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/). 
 
-Sie haben die Möglichkeit, einen maximalen Preis festzulegen, den Sie pro Stunde für die VM bezahlen möchten. Der maximale Preis für eine Spot-VM kann in US-Dollar (USD) mit bis zu fünf Dezimalstellen festgelegt werden. Der Wert `0.98765` würde beispielsweise einem maximalen Preis von 0,98765 US-Dollar pro Stunde entsprechen. Wenn Sie den maximalen Preis auf `-1` festlegen, wird die VM nicht basierend auf dem Preis entfernt. Der Preis für die VM entspricht dem aktuellen Preis für Spot-VMs oder dem Preis für eine Standard-VM, je nachdem, welcher Preis niedriger ist, solange Kapazität und Kontingente verfügbar sind. Weitere Informationen zum Festlegen des maximalen Preises finden Sie unter [Spot-VMs – Preise](spot-vms.md#pricing).
+Sie haben die Möglichkeit, einen maximalen Preis festzulegen, den Sie pro Stunde für die VM bezahlen möchten. Der maximale Preis für eine Spot-VM kann in US-Dollar (USD) mit bis zu fünf Dezimalstellen festgelegt werden. Der Wert `0.98765` würde beispielsweise einem maximalen Preis von 0,98765 US-Dollar pro Stunde entsprechen. Wenn Sie den maximalen Preis auf `-1` festlegen, wird die VM nicht basierend auf dem Preis entfernt. Der Preis für die VM entspricht dem aktuellen Preis für Spot-VMs oder dem Preis für eine Standard-VM, je nachdem, welcher Preis niedriger ist, solange Kapazität und Kontingente verfügbar sind. Weitere Informationen zum Festlegen des maximalen Preises finden Sie unter [Spot-VMs – Preise](../spot-vms.md#pricing).
 
 Der Vorgang zum Erstellen einer VM mit Spot unter Verwendung der Azure-Befehlszeilenschnittstelle ist identisch mit dem im [Schnellstartartikel](./quick-create-cli.md) beschriebenen Vorgang. Fügen Sie einfach den Parameter „--priority Spot“ hinzu, legen Sie `--eviction-policy` entweder auf die Standardeinstellung „Deallocate“ oder auf `Delete` fest, und geben Sie einen maximalen Preis oder `-1` an. 
 

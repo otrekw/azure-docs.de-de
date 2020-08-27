@@ -10,12 +10,12 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: reference
 ms.date: 12/16/2019
-ms.openlocfilehash: f0673732bd657b237ed0f4b4db276b8bf9a3a2b5
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 95fb9798bc62236d785c911ec75db8d6e11f6e97
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87424374"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88685713"
 ---
 # <a name="azure-key-vault-rest-api-error-codes"></a>Azure Key Vault: REST-API-Fehlercodes
  
@@ -89,7 +89,7 @@ Token sind Base64-codiert, und die Werte können auf Websites wie [http://jwt.ca
 
 In diesem Token finden sich viele wichtige Informationen:
 
-- aud (audience, Zielgruppe) Die Ressource des Tokens. Beachten Sie, dass dies <https://vault.azure.net> ist. Dieses Token funktioniert NICHT für Ressourcen, die nicht explizit mit diesem Wert übereinstimmen, z.B. Graph.
+- aud (audience, Zielgruppe) Die Ressource des Tokens. Beachten Sie, dass dies `https://vault.azure.net` ist. Dieses Token funktioniert NICHT für Ressourcen, die nicht explizit mit diesem Wert übereinstimmen, z.B. Graph.
 - iat (issued at, ausgestellt um): Die Anzahl der Takte seit dem Beginn der Epoche, in der das Token ausgestellt wurde.
 - nbf (not before, nicht bevor): Die Anzahl der Takte seit dem Beginn der Epoche, in der dieses Token gültig wird.
 - exp (expiration, Ablauf): Die Anzahl der Takte seit dem Beginn der Epoche, in der dieses Token abläuft.

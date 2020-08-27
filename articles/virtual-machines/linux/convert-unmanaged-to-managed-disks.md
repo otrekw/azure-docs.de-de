@@ -7,21 +7,21 @@ ms.topic: how-to
 ms.date: 12/15/2017
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 072b0e3bcf4da8e2c71082a549d42d105c06ea8d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 89035d26e05ca4b93dc271f02fef1afea24b0f20
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84659803"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815333"
 ---
 # <a name="convert-a-linux-virtual-machine-from-unmanaged-disks-to-managed-disks"></a>Konvertieren einer Linux-VM von nicht verwalteten Datenträgern in verwaltete Datenträger
 
-Wenn Sie über vorhandene virtuelle Linux-Computer (VMs) verfügen, die nicht verwaltete Datenträger verwenden, können Sie die VMs konvertieren, sodass [verwaltete Azure-Datenträger](../linux/managed-disks-overview.md) verwendet werden. Bei diesem Prozess werden sowohl der Betriebssystemdatenträger als auch alle anderen angefügten Datenträger konvertiert.
+Wenn Sie über vorhandene virtuelle Linux-Computer (VMs) verfügen, die nicht verwaltete Datenträger verwenden, können Sie die VMs konvertieren, sodass [verwaltete Azure-Datenträger](../managed-disks-overview.md) verwendet werden. Bei diesem Prozess werden sowohl der Betriebssystemdatenträger als auch alle anderen angefügten Datenträger konvertiert.
 
 In diesem Artikel wird beschrieben, wie Sie VMs über die Azure-Befehlszeilenschnittstelle konvertieren. Wenn Sie die Befehlszeilenschnittstelle installieren oder aktualisieren müssen, finden Sie unter [Installieren der Azure CLI](/cli/azure/install-azure-cli) Informationen dazu. 
 
 ## <a name="before-you-begin"></a>Voraussetzungen
-* Lesen Sie die [häufig gestellten Fragen zu Managed Disks](faq-for-disks.md#migrate-to-managed-disks).
+* Lesen Sie die [häufig gestellten Fragen zu Managed Disks](../faq-for-disks.md#migrate-to-managed-disks).
 
 [!INCLUDE [virtual-machines-common-convert-disks-considerations](../../../includes/virtual-machines-common-convert-disks-considerations.md)]
 
@@ -104,4 +104,4 @@ Nach Abschluss der Migration wird die VM angehalten und neu gestartet.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zu Speicheroptionen finden Sie in der [Übersicht über Managed Disks](../windows/managed-disks-overview.md).
+Weitere Informationen zu Speicheroptionen finden Sie in der [Übersicht über Managed Disks](../managed-disks-overview.md).

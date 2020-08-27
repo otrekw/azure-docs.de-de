@@ -10,12 +10,12 @@ ms.date: 10/01/2019
 ms.author: tamram
 ms.reviewer: ozge
 ms.subservice: common
-ms.openlocfilehash: d43df68f48273b03fa9bde9633b487d69c0834ed
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 29bec00916f4cc3683dae5b6d3065e02a3cbe10f
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87905379"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88724165"
 ---
 # <a name="call-rest-api-operations-with-shared-key-authorization"></a>Aufrufen von REST-API-Vorgängen mit Autorisierung mit gemeinsam verwendetem Schlüssel
 
@@ -65,7 +65,7 @@ Sehen Sie sich die Referenz zum Vorgang [List Containers](/rest/api/storageservi
 
 **Anforderungsmethode**: GET. Dieses Verb ist die HTTP-Methode, die Sie als Eigenschaft des Anforderungsobjekts angeben. Andere Werte für dieses Verb sind HEAD, PUT und DELETE – je nach aufgerufener API.
 
-**Anforderungs-URI**: `https://myaccount.blob.core.windows.net/?comp=list`.  Der Anforderungs-URI wird aus dem Blob Storage-Kontoendpunkt `http://myaccount.blob.core.windows.net` und der Ressourcenzeichenfolge `/?comp=list` erstellt.
+**Anforderungs-URI**: `https://myaccount.blob.core.windows.net/?comp=list`.  Der Anforderungs-URI wird aus dem Blob Storage-Kontoendpunkt `https://myaccount.blob.core.windows.net` und der Ressourcenzeichenfolge `/?comp=list` erstellt.
 
 [URI-Parameter](/rest/api/storageservices/List-Containers2#uri-parameters): Es sind zusätzliche Abfrageparameter vorhanden, die Sie beim Aufrufen von ListContainers verwenden können. Zwei dieser Parameter sind *timeout* für den Aufruf (in Sekunden) und *prefix* für die Filterung.
 

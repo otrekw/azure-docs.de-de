@@ -3,17 +3,17 @@ title: Verschlüsseln von Betriebssystemdatenträgern mithilfe von kundenseitig 
 description: Erfahren Sie, wie Sie Betriebssystemdatenträger mithilfe von kundenseitig verwalteten Schlüsseln in Azure DevTest Labs verschlüsseln.
 ms.topic: article
 ms.date: 07/28/2020
-ms.openlocfilehash: 209ab1f74dce0982af66777f211c41066d53b8f9
-ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
+ms.openlocfilehash: 241f53f0c8f289b43b8de465eb7509489345b955
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88566198"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815920"
 ---
 # <a name="encrypt-operating-system-os-disks-using-customer-managed-keys-in-azure-devtest-labs"></a>Verschlüsseln von Betriebssystem-Datenträgern mithilfe von kundenseitig verwalteten Schlüsseln in Azure DevTest Labs
 Die serverseitige Verschlüsselung (Server-side Encryption, SSE) schützt Ihre Daten und unterstützt Sie beim Einhalten der Sicherheits- und Complianceanforderungen Ihrer Organisation. Durch SSE werden Ihre auf verwalteten Datenträgern (Betriebssystemdatenträger und reguläre Datenträger) in Azure gespeicherten ruhenden Daten standardmäßig automatisch verschlüsselt, wenn sie in der Cloud gespeichert werden. Erfahren Sie mehr über [Datenträgerverschlüsselung](../virtual-machines/windows/disk-encryption.md) in Azure. 
 
-In DevTest Labs werden alle Betriebssystemdatenträger und Datenträger, die als Teil eines Labs erstellt werden, mit von der Plattform verwalteten Schlüsseln verschlüsselt. Als Lab-Besitzer können Sie jedoch Lab-VM-Betriebssystemdatenträger mit ihren eigenen Schlüsseln verschlüsseln. Wenn Sie die Verschlüsselung mit eigenen Schlüsseln verwalten möchten, können Sie einen **kundenseitig verwalteten Schlüssel** angeben, der zum Verschlüsseln von Daten auf Lab-Betriebssystemdatenträgern verwendet werden soll. Weitere Informationen zur serverseitigen Verschlüsselung (Server Side Encryption, SSE) mit kundenseitig verwalteten Schlüsseln und anderen Verschlüsselungstypen für verwaltete Datenträger finden Sie unter [Kundenseitig verwaltete Schlüssel](../virtual-machines/windows/disk-encryption.md#customer-managed-keys). Lesen Sie auch [Einschränkungen bei der Verwendung von kundenseitig verwalteten Schlüsseln](../virtual-machines/windows/disks-enable-customer-managed-keys-portal.md#restrictions).
+In DevTest Labs werden alle Betriebssystemdatenträger und Datenträger, die als Teil eines Labs erstellt werden, mit von der Plattform verwalteten Schlüsseln verschlüsselt. Als Lab-Besitzer können Sie jedoch Lab-VM-Betriebssystemdatenträger mit ihren eigenen Schlüsseln verschlüsseln. Wenn Sie die Verschlüsselung mit eigenen Schlüsseln verwalten möchten, können Sie einen **kundenseitig verwalteten Schlüssel** angeben, der zum Verschlüsseln von Daten auf Lab-Betriebssystemdatenträgern verwendet werden soll. Weitere Informationen zur serverseitigen Verschlüsselung (Server Side Encryption, SSE) mit kundenseitig verwalteten Schlüsseln und anderen Verschlüsselungstypen für verwaltete Datenträger finden Sie unter [Kundenseitig verwaltete Schlüssel](../virtual-machines/windows/disk-encryption.md#customer-managed-keys). Lesen Sie auch [Einschränkungen bei der Verwendung von kundenseitig verwalteten Schlüsseln](../virtual-machines/disks-enable-customer-managed-keys-portal.md#restrictions).
 
 
 > [!NOTE]
@@ -25,7 +25,7 @@ Der folgende Abschnitt zeigt, wie ein Lab-Besitzer die Verschlüsselung mit eine
 
 ## <a name="pre-requisites"></a>Voraussetzungen
 
-1. Wenn Sie über keinen Datenträgerverschlüsselungssatz verfügen, vollziehen Sie die Anleitungen in diesem Artikel nach, um [einen Key Vault und einen Datenträgerverschlüsselungssatz einzurichten](../virtual-machines/windows/disks-enable-customer-managed-keys-portal.md#set-up-your-azure-key-vault). Beachten Sie die folgenden Anforderungen für den Datenträgerverschlüsselungssatz: 
+1. Wenn Sie über keinen Datenträgerverschlüsselungssatz verfügen, vollziehen Sie die Anleitungen in diesem Artikel nach, um [einen Key Vault und einen Datenträgerverschlüsselungssatz einzurichten](../virtual-machines/disks-enable-customer-managed-keys-portal.md). Beachten Sie die folgenden Anforderungen für den Datenträgerverschlüsselungssatz: 
 
     - Der Datenträgerverschlüsselungssatz muss sich **in derselben Region und im gleichen Abonnement wie ihr Lab befinden**. 
     - Stellen Sie sicher, dass Sie (der Lab-Besitzer) mindestens über **Zugriff auf Leserebene** für den Datenträgerverschlüsselungssatz verfügen, der zum Verschlüsseln von Lab-Betriebssystemdatenträgern verwendet wird. 

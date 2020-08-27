@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 6a292201796ccb08f684d2c44a3cee71442edbfe
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: f991e38c184fe44f63af63809deb14eda22f8f4c
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85848672"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88716723"
 ---
 # <a name="resolve-error-messages-from-the-nps-extension-for-azure-multi-factor-authentication"></a>Auflösen von Fehlermeldungen in der NPS-Erweiterung für Azure Multi-Factor Authentication
 
@@ -43,7 +43,7 @@ Wenn Fehler in der NPS-Erweiterung für Azure Multi-Factor Authentication auftre
 | Fehlercode | Fehlermeldung | Schritte zur Problembehandlung |
 | ---------- | ------------- | --------------------- |
 | **ALTERNATE_LOGIN_ID_ERROR** | Fehler: userObjectSid lookup failed (Fehler bei der userObjectSid-Suche) | Stellen Sie sicher, dass der Benutzer in Ihrer lokalen Active Directory-Instanz vorhanden ist. Wenden Sie sich bei Verwendung von gesamtstrukturübergreifenden Vertrauensstellungen [an den Support](#contact-microsoft-support), um weitere Hilfe zu erhalten. |
-| **ALTERNATE_LOGIN_ID_ERROR** | Error: Alternate LoginId lookup failed (Fehler bei der Suche nach alternativer Anmelde-ID) | Stellen Sie sicher, dass LDAP_ALTERNATE_LOGINID_ATTRIBUTE auf ein [gültiges Active Directory-Attribut](https://msdn.microsoft.com/library/ms675090(v=vs.85).aspx) festgelegt ist. <br><br> Wenn LDAP_FORCE_GLOBAL_CATALOG auf „TRUE“ festgelegt, oder LDAP_LOOKUP_FORESTS mit einem nicht leeren Wert konfiguriert wurde, stellen Sie sicher, dass Sie einen globalen Katalog konfiguriert haben, und dass das AlternateLoginId-Attribut hinzugefügt wurde. <br><br> Wenn LDAP_LOOKUP_FORESTS mit einem nicht leeren Wert konfiguriert wurde, stellen Sie sicher, dass der Wert richtig ist. Wenn mehr als ein Name der Gesamtstruktur vorhanden ist, müssen die Namen durch Semikolons und nicht durch Leerzeichen getrennt werden. <br><br> Wenn diese Schritte das Problem nicht beheben, [wenden Sie sich an den Support](#contact-microsoft-support), um mehr Unterstützung zu erhalten. |
+| **ALTERNATE_LOGIN_ID_ERROR** | Error: Alternate LoginId lookup failed (Fehler bei der Suche nach alternativer Anmelde-ID) | Stellen Sie sicher, dass LDAP_ALTERNATE_LOGINID_ATTRIBUTE auf ein [gültiges Active Directory-Attribut](/windows/win32/adschema/attributes-all) festgelegt ist. <br><br> Wenn LDAP_FORCE_GLOBAL_CATALOG auf „TRUE“ festgelegt, oder LDAP_LOOKUP_FORESTS mit einem nicht leeren Wert konfiguriert wurde, stellen Sie sicher, dass Sie einen globalen Katalog konfiguriert haben, und dass das AlternateLoginId-Attribut hinzugefügt wurde. <br><br> Wenn LDAP_LOOKUP_FORESTS mit einem nicht leeren Wert konfiguriert wurde, stellen Sie sicher, dass der Wert richtig ist. Wenn mehr als ein Name der Gesamtstruktur vorhanden ist, müssen die Namen durch Semikolons und nicht durch Leerzeichen getrennt werden. <br><br> Wenn diese Schritte das Problem nicht beheben, [wenden Sie sich an den Support](#contact-microsoft-support), um mehr Unterstützung zu erhalten. |
 | **ALTERNATE_LOGIN_ID_ERROR** | Error: Alternate LoginId value is empty (Der AlternateLoginId-Wert ist leer) | Stellen Sie sicher, dass das AlternateLoginId-Attribut für den Benutzer konfiguriert ist. |
 
 ## <a name="errors-your-users-may-encounter"></a>Fehler, die bei Ihren Benutzern auftreten können
@@ -99,7 +99,7 @@ Wenn Ihre Benutzer [Probleme mit der zweistufigen Überprüfung haben](../user-h
 
 ### <a name="health-check-script"></a>Skript zur Integritätsprüfung
 
-Das [Skript zur Integritätsprüfung der Azure MFA NPS-Erweiterung](https://docs.microsoft.com/samples/azure-samples/azure-mfa-nps-extension-health-check/azure-mfa-nps-extension-health-check/) führt eine grundlegende Integritätsprüfung bei der Problembehandlung der NPS-Erweiterung durch. Führen Sie das Skript aus, und wählen Sie Option 3 aus.
+Das [Skript zur Integritätsprüfung der Azure MFA NPS-Erweiterung](/samples/azure-samples/azure-mfa-nps-extension-health-check/azure-mfa-nps-extension-health-check/) führt eine grundlegende Integritätsprüfung bei der Problembehandlung der NPS-Erweiterung durch. Führen Sie das Skript aus, und wählen Sie Option 3 aus.
 
 ### <a name="contact-microsoft-support"></a>Microsoft-Support kontaktieren
 

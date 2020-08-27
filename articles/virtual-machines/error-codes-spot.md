@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: troubleshooting
 ms.date: 03/25/2020
 ms.author: cynthn
-ms.openlocfilehash: e5e621cc3763cfa7fe28790baf2f5d9866c8d618
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3e151145bd3c4d1db87ef5d1b0d553555a580279
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87069799"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816744"
 ---
 # <a name="error-messages-for-spot-vms-and-scale-sets"></a>Fehlermeldungen für Spot-VMs und Skalierungsgruppen
 
@@ -31,11 +31,11 @@ Im Folgenden finden Sie einige mögliche Fehlercodes, die Sie bei der Verwendung
 | MaxPriceChangeNotAllowedForAllocatedVMs | Eine Änderung des Höchstpreises ist nicht erlaubt, wenn die VM {0} derzeit zugeordnet ist. Heben Sie die Zuordnungen auf, und versuchen Sie es nochmal. | Beenden Sie die VM, oder heben Sie deren Zuordnung auf, damit Sie den Höchstpreis ändern können. |
 | MaxPriceChangeNotAllowed | Eine Änderung des Höchstpreises ist nicht zulässig. | Sie können den Höchstpreis für diese VM nicht ändern. |
 | AzureSpotIsNotSupportedForThisAPIVersion  |  Azure Spot wird für diese API-Version nicht unterstützt. | Die API-Version muss 2019-03-01 lauten. |
-| AzureSpotIsNotSupportedForThisVMSize  |  Azure Spot wird für diese VM-Größe {0} nicht unterstützt. | Wählen Sie eine andere VM-Größe aus. Weitere Informationen finden Sie unter [Spot-VMs](./linux/spot-vms.md). |
-| MaxPriceIsSupportedOnlyForAzureSpotVirtualMachines  |  Der Höchstpreis wird nur für Azure Spot-VMs unterstützt. | Weitere Informationen finden Sie unter [Spot-VMs](./linux/spot-vms.md). |
+| AzureSpotIsNotSupportedForThisVMSize  |  Azure Spot wird für diese VM-Größe {0} nicht unterstützt. | Wählen Sie eine andere VM-Größe aus. Weitere Informationen finden Sie unter [Spot-VMs](./spot-vms.md). |
+| MaxPriceIsSupportedOnlyForAzureSpotVirtualMachines  |  Der Höchstpreis wird nur für Azure Spot-VMs unterstützt. | Weitere Informationen finden Sie unter [Spot-VMs](./spot-vms.md). |
 | MoveResourcesWithAzureSpotVMNotSupported  |  Die Anforderung zum Verschieben von Ressourcen enthält eine Azure-Spot-VM. Dies wird derzeit nicht unterstützt. Überprüfen Sie die Fehlerdetails für die IDs der virtuellen Computer. | Spot-VMs können nicht verschoben werden. |
 | MoveResourcesWithAzureSpotVmssNotSupported  |  Die Anforderung zum Verschieben von Ressourcen enthält eine Azure-Spot-VM-Skalierungsgruppe. Dies wird derzeit nicht unterstützt. Überprüfen Sie die Fehlerdetails für die IDs der VM-Skalierungsgruppen. | Spot-Skalierungsgruppeninstanzen können nicht verschoben werden. |
 | AzureSpotVMNotSupportedInVmssWithVMOrchestrationMode | Azure Spot-VM wird in der VM-Skalierungsgruppe mit dem VM-Orchestrierungsmodus nicht unterstützt. | Legen Sie den Orchestrierungsmodus auf die VM-Skalierungsgruppe fest, um Spot-Instanzen zu verwenden. |
 
 
-**Nächste Schritte**: Weitere Informationen finden Sie unter [Spot-VMs](./linux/spot-vms.md).
+**Nächste Schritte**: Weitere Informationen finden Sie unter [Spot-VMs](./spot-vms.md).

@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 10/21/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 703c08cd5a884c8bfdd027b4ecf457c9e954a2dc
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: dcec4d0bc93433c768faf10e4520131aeecc5e77
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87043407"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88719188"
 ---
 # <a name="develop-with-media-services-v3-apis"></a>Entwickeln mit Media Services v3-APIs
 
@@ -86,7 +86,7 @@ Die Namen von Dateien/Blobs innerhalb einer Ressource müssen die [Anforderungen
 
 Die in den [swagger-Dateien](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01/streamingservice.json) von Azure Media Services mit `x-ms-long-running-operation` gekennzeichneten Vorgänge sind zeitintensive Vorgänge. 
 
-Weitere Informationen zum Verfolgen asynchroner Azure-Vorgänge finden Sie unter [Asynchrone Vorgänge](../../azure-resource-manager/management/async-operations.md#monitor-status-of-operation).
+Weitere Informationen zum Verfolgen asynchroner Azure-Vorgänge finden Sie unter [Asynchrone Vorgänge](../../azure-resource-manager/management/async-operations.md).
 
 Media Services verfügt über die folgenden zeitintensiven Vorgänge:
 

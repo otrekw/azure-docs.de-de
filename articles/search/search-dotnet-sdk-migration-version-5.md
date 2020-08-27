@@ -9,16 +9,16 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 81159b1d19c4c5d46b223158df3ba2c81665c7d7
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: ade326b7dda19478398de4ec3ab2be8996d98535
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86171906"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88923210"
 ---
 # <a name="upgrade-to-azure-search-net-sdk-version-5"></a>Upgrade auf Version 5 des Azure Search .NET SDK
 
-Wenn Sie die Version 4.0-preview oder eine frühere Version des [.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search) verwenden, unterstützt dieser Artikel Sie beim Upgrade Ihrer Anwendung auf Version 5.
+Wenn Sie die Version 4.0-preview oder eine frühere Version des [.NET SDK](/dotnet/api/overview/azure/search) verwenden, unterstützt dieser Artikel Sie beim Upgrade Ihrer Anwendung auf Version 5.
 
 Eine allgemeinere exemplarische Vorgehensweise für das SDK sowie Beispiele finden Sie unter [Verwenden von Azure Search aus einer .NET-Anwendung](search-howto-dotnet-sdk.md).
 
@@ -35,7 +35,7 @@ Version 5 des Azure Search .NET SDK enthält einige Änderungen zu früheren Ver
 Version 5 des Azure Search .NET SDK ist für die neueste allgemein verfügbare Version der Azure Search-REST-API (2017-11-11) konzipiert. Dadurch können neue Features von Azure Search in einer .NET-Anwendung verwendet werden. Hierzu zählen etwa folgende:
 
 * [Synonyme](search-synonyms.md).
-* Sie können jetzt programmgesteuert im Ausführungsverlauf des Indexers auf Warnungen zugreifen (weitere Einzelheiten finden Sie unter der Eigenschaft `Warning` von `IndexerExecutionResult` in der [.NET-Referenz](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexerexecutionresult?view=azure-dotnet)).
+* Sie können jetzt programmgesteuert im Ausführungsverlauf des Indexers auf Warnungen zugreifen (weitere Einzelheiten finden Sie unter der Eigenschaft `Warning` von `IndexerExecutionResult` in der [.NET-Referenz](/dotnet/api/microsoft.azure.search.models.indexerexecutionresult?view=azure-dotnet)).
 * Unterstützung für .NET Core 2.
 * Eine neue Paketstruktur unterstützt, dass nur die Teile des SDK verwendet werden, die Sie benötigen (weitere Einzelheiten finden Sie unter [Wichtige Änderungen in Version 5](#ListOfChanges)).
 

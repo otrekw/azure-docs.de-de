@@ -9,12 +9,12 @@ author: deepakpalled
 ms.author: dpalled
 manager: diviso
 ms.custom: include file
-ms.openlocfilehash: 1e07f56bc2e820b325414e124c7825c1d356ca26
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1aff5780aa5f4cf21d862a5cee3b140179dac03c
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87046424"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88703796"
 ---
 Im Folgenden werden die wichtigsten Grenzwerte in Azure Time Series Insights Gen1 zusammengefasst.
 
@@ -60,4 +60,4 @@ Maximal zwei Ereignisquellen werden pro Instanz unterstützt.
 
 ### <a name="api-limits"></a>API-Grenzwerte
 
-REST-API-Grenzwerte für Azure Time Series Insights Gen1 sind in der [Referenzdokumentation zur REST-API](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#limits) angegeben.
+REST-API-Grenzwerte für Azure Time Series Insights Gen1 sind in der [Referenzdokumentation zur REST-API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/query/getavailability) angegeben.

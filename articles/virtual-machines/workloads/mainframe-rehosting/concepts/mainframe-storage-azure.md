@@ -6,12 +6,12 @@ ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: storage
-ms.openlocfilehash: 7f83d798bbffeb232b45701beee828114ad3db7d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 639764c9cae5e27e90a55da00b246807e49d2a20
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87042596"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88652847"
 ---
 # <a name="move-mainframe-storage-to-azure"></a>Verschieben von Mainframespeicher zu Azure
 
@@ -45,7 +45,7 @@ Azure-IaaS-Optionen ([ Infrastructure-as-a-Service](https://azure.microsoft.com/
 
 Microsoft bietet Petabytes an Speicher für in Azure gehostete Anwendungen, und es besteht eine Reihe von Speicheroptionen. Diese reichen von SSD-Speicher für hohe Leistung bis zu preisgünstigem Blob-Speicher für die Massenspeicherung und Archive. Darüber hinaus bietet Azure eine Datenredundanzoption für die Speicherung – etwas, was sich in einer Mainframeumgebung nur mit größerem Aufwand realisieren lässt.
 
-Azure-Speicher steht in Form von [Azure-Datenträgern](../../../windows/managed-disks-overview.md), [Azure Files](../../../../storage/files/storage-files-introduction.md) und [Azure-Blobs](../../../../storage/blobs/storage-blobs-overview.md) zur Verfügung, wie in der folgenden Tabelle zusammengefasst. Erfahren Sie mehr über die [Einsatzzwecke der einzelnen Optionen](../../../../storage/common/storage-introduction.md).
+Azure-Speicher steht in Form von [Azure-Datenträgern](../../../managed-disks-overview.md), [Azure Files](../../../../storage/files/storage-files-introduction.md) und [Azure-Blobs](../../../../storage/blobs/storage-blobs-overview.md) zur Verfügung, wie in der folgenden Tabelle zusammengefasst. Erfahren Sie mehr über die [Einsatzzwecke der einzelnen Optionen](../../../../storage/common/storage-introduction.md).
 
 <!-- markdownlint-disable MD033 -->
 
@@ -108,7 +108,7 @@ Blob-Speicher bietet das größte Speichervolumen auf Azure. Neben der Speicherg
 - [Mainframerehosting auf virtuellen Azure-Computern](../overview.md)
 - [Move mainframe compute to Azure (Migrieren von Mainframecomputeressourcen zu Azure)](mainframe-compute-Azure.md)
 - [Deciding when to use Azure Blobs, Azure Files, or Azure Disks (Kriterien für den Einsatz von Azure-Blobs, Azure-Dateifreigaben und verwalteten Azure-Datenträgern)](../../../../storage/common/storage-introduction.md)
-- [Verwaltete SSD Standard-Datenträger für Azure-VM-Workloads](../../../windows/disks-types.md#standard-ssd)
+- [Verwaltete SSD Standard-Datenträger für Azure-VM-Workloads](../../../disks-types.md#standard-ssd)
 
 ### <a name="ibm-resources"></a>IBM-Ressourcen
 

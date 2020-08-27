@@ -8,14 +8,14 @@ ms.author: gwallace
 ms.date: 07/19/2019
 ms.topic: conceptual
 ms.service: container-service
-ms.openlocfilehash: d4f53238951784a74e6e3fc8a73d1f112ce75608
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 35474df96254b158a39b6d913171c553bf30aea4
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79139112"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816438"
 ---
-# <a name="manage-projects-templates-image-streams-in-an-azure-red-hat-openshift-cluster"></a>Verwalten von Projekten, Vorlagen, Imagestreams in einem Azure Red Hat OpenShift-Cluster 
+# <a name="manage-projects-templates-image-streams-in-an-azure-red-hat-openshift-cluster"></a>Verwalten von Projekten, Vorlagen, Imagestreams in einem Azure Red Hat OpenShift-Cluster
 
 In OpenShift Container Platform werden Projekte zum Gruppieren und Isolieren verwandter Objekte verwendet. Als Administrator können Sie Entwicklern den Zugriff auf bestimmte Projekte gewähren, das Erstellen eigener Projekte gestatten und Administratorrechte für einzelne Projekte erteilen.
 

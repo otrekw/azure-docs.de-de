@@ -7,12 +7,12 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 05/28/2019
-ms.openlocfilehash: 44370b378899228949aa1bddcc92570ad282fe92
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 094b78fa35da451101f4f5664cca46292d78d146
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284726"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88650552"
 ---
 # <a name="regions-for-virtual-machines-in-azure"></a>Regionen für virtuelle Computer in Azure
 
@@ -79,7 +79,7 @@ Die folgende Tabelle bietet einen schnellen Überblick über die Unterschiede zw
 | Daten können vom sekundären Standort und vom primären Standort aus gelesen werden. |Nein |Nein |Nein |Ja |
 | Anzahl von Datenkopien, die auf separaten Knoten aufbewahrt werden. |3 |3 |6 |6 |
 
-Sie erhalten weitere Informationen über [Azure Storage-Replikationsoptionen hier](../storage/common/storage-redundancy.md). Weitere Informationen zu verwalteten Datenträgern finden Sie in der [Übersicht über Managed Disks](./windows/managed-disks-overview.md).
+Sie erhalten weitere Informationen über [Azure Storage-Replikationsoptionen hier](../storage/common/storage-redundancy.md). Weitere Informationen zu verwalteten Datenträgern finden Sie in der [Übersicht über Managed Disks](./managed-disks-overview.md).
 
 ### <a name="storage-costs"></a>Speicherkosten
 Die Preise hängen vom gewählten Speichertyp und der gewünschten Verfügbarkeit ab.

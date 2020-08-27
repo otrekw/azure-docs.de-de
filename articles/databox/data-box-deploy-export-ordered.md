@@ -2,18 +2,18 @@
 title: Tutorial zum Exportieren von Daten aus Azure Data Box | Microsoft-Dokumentation
 description: Hier erfahren Sie, welche Voraussetzungen für die Bereitstellung gelten und wie Sie Daten aus einer Azure Data Box exportieren.
 services: databox
-author: priestlg
+author: twooley
 ms.service: databox
 ms.subservice: pod
 ms.topic: how-to
 ms.date: 07/10/2020
-ms.author: v-grpr
-ms.openlocfilehash: 5b17488ebab8dc29221723fabf8efe0c00467509
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.author: twooley
+ms.openlocfilehash: 0ddadd8d2bddda0fdff6a126fe6c09d863139b44
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86209001"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88783619"
 ---
 # <a name="tutorial-create-export-order-for-azure-data-box-preview"></a>Tutorial: Erstellen eines Exportauftrags für Azure Data Box (Vorschau)
 

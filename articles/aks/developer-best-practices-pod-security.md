@@ -5,12 +5,12 @@ services: container-service
 ms.topic: conceptual
 ms.date: 07/28/2020
 ms.author: zarhoads
-ms.openlocfilehash: bd6891ff4d15dc326c846efbaa37aea997ef2e17
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: b09fb7cb5e631d3405adf39d5c92a72288249aff
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320679"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88893130"
 ---
 # <a name="best-practices-for-pod-security-in-azure-kubernetes-service-aks"></a>Best Practices für Podsicherheit in Azure Kubernetes Service (AKS)
 
@@ -85,7 +85,7 @@ Mit den folgenden [zugehörigen AKS-Open-Source-Projekten][aks-associated-projec
 
 Eine verwaltete Identität für Azure-Ressourcen ermöglicht es einem Pod, sich bei jedem Azure-Dienst zu authentifizieren, der dies unterstützt, z. B. Storage oder SQL. Dem Pod wird eine Azure-Identität zugewiesen, mit der er sich bei Azure Active Directory authentifizieren und ein digitales Token abrufen kann. Dieses digitale Token kann anderen Azure-Diensten vorgelegt werden, die überprüfen, ob der Pod berechtigt ist, auf den Dienst zuzugreifen und die erforderlichen Aktionen auszuführen. Dieser Ansatz bedeutet z. B., dass keine Geheimnisse für Datenbankverbindungszeichenketten erforderlich sind. Der vereinfachte Workflow für eine verwaltete Podidentität ist im folgenden Diagramm dargestellt:
 
-![Vereinfachter Workflow für verwaltete Podidentität in Azure](media/developer-best-practices-pod-security/basic-pod-identity.png)
+:::image type="content" source="media/developer-best-practices-pod-security/basic-pod-identity.svg" alt-text="Vereinfachter Workflow für verwaltete Podidentität in Azure":::
 
 Bei einer verwalteten Identität muss Ihr Anwendungscode keine Anmeldeinformationen für den Zugriff auf einen Dienst, wie beispielsweise Azure Storage, enthalten. Da sich jeder Pod mit seiner eigenen Identität authentifiziert, können Sie den Zugriff überwachen und überprüfen. Wenn sich Ihre Anwendung mit anderen Azure-Diensten verbindet, verwenden Sie verwaltete Identitäten, um die Wiederverwendung von Berechtigungen und das Risiko einer Offenlegung zu begrenzen.
 
@@ -97,7 +97,7 @@ Die Verwendung des Identitätsprojekts für Pods ermöglicht die Authentifizieru
 
 Wenn Anwendungen Anmeldeinformationen benötigen, kommunizieren sie mit dem digitalen Tresor, rufen die neuesten Geheimnisinhalte ab und stellen dann die Verbindung mit dem gewünschten Dienst her. Azure Key Vault kann dieser digitale Tresor sein. Der vereinfachte Workflow zum Abrufen von Anmeldeinformationen aus Azure Key Vault unter Verwendung von verwalteten Podidentitäten ist im folgenden Diagramm dargestellt:
 
-![Vereinfachter Workflow zum Abrufen von Anmeldeinformationen aus dem Schlüsseltresor unter Verwendung einer verwalteten Podidentität](media/developer-best-practices-pod-security/basic-key-vault.png)
+:::image type="content" source="media/developer-best-practices-pod-security/basic-key-vault.svg" alt-text="Vereinfachter Workflow zum Abrufen von Anmeldeinformationen aus dem Schlüsseltresor unter Verwendung einer verwalteten Podidentität":::
 
 Mit Key Vault werden Geheimnisse wie Anmeldeinformationen, Speicherkontenschlüssel oder Zertifikate gespeichert und regelmäßig rotiert. Sie können Azure Key Vault mit einem AKS-Cluster unter Verwendung des [Azure Key Vault-Anbieters für den Secrets Store CSI-Treiber](https://github.com/Azure/secrets-store-csi-driver-provider-azure#usage) integrieren. Mit dem Secrets Store CSI-Treiber kann der AKS-Cluster nativ Geheimnisinhalte aus Azure Key Vault abrufen und diese ausschließlich dem anfordernden Pod sicher zur Verfügung stellen. Arbeiten Sie mit Ihrem Clusteroperator zusammen, um den Secrets Store CSI-Treiber auf AKS-Workerknoten bereitzustellen. Sie können eine vom Pod verwaltete Identität verwenden, um Zugriff auf Key Vault anzufordern und die erforderlichen Geheimnisinhalte über den Secrets Store CSI-Treiber abzurufen.
 

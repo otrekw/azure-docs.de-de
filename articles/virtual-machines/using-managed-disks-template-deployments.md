@@ -10,12 +10,12 @@ ms.workload: storage
 ms.date: 06/01/2017
 ms.author: jaboes
 ms.subservice: disks
-ms.openlocfilehash: 15c3f2de30509a7dc6836f5d39fac4c0ea8b7f25
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 708df0a8ed1085c6e7d435c6f3c3b811ef2ed64e
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88513071"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88854331"
 ---
 # <a name="using-managed-disks-in-azure-resource-manager-templates"></a>Verwenden verwalteter Datenträger mit Resource Manager-Vorlagen
 
@@ -263,7 +263,7 @@ Lesen Sie bitte die REST-API-Dokumentation zum Erstellen eines verwalteten Daten
 * Vollständige Vorlagen, die verwaltete Datenträger verwenden, finden Sie unter den folgenden Links des Repositorys für Azure-Schnellstartvorlagen.
     * [Windows VM with managed disk (Virtueller Windows-Computer mit verwalteten Datenträgern)](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows)
     * [Linux VM with managed disk (Virtueller Linux-Computer mit verwalteten Datenträgern)](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-linux)
-* Im Dokument [Azure Managed Disks – Übersicht](~/articles/virtual-machines/windows/managed-disks-overview.md) finden Sie weitere Informationen zu verwalteten Datenträgern.
+* Im Dokument [Azure Managed Disks – Übersicht](managed-disks-overview.md) finden Sie weitere Informationen zu verwalteten Datenträgern.
 * Lesen Sie die Referenzdokumentation zu den Vorlagen für VM-Ressourcen. Diese finden Sie im Dokument [Microsoft.Compute/virtualMachines template reference](/azure/templates/microsoft.compute/virtualmachines).
 * Lesen Sie die Referenzdokumentation zu den Vorlagen für Datenträgerressourcen. Diese finden Sie im Dokument [Microsoft.Compute/disks template reference](/azure/templates/microsoft.compute/disks).
 * Informationen zum Verwenden von verwalteten Datenträgern in Azure-VM-Skalierungsgruppen finden Sie im Dokument [Verwenden von Datenträgern mit Skalierungsgruppen](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-attached-disks).

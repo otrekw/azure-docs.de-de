@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/29/2020
 ms.author: wachegha
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 8d48a8a9f52c3edb4350c16a25deda9894dcdda1
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: 4dd253aa5dc1b8b89b1b387a555dde416c601f9c
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88271157"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88691495"
 ---
 # <a name="add-an-api-to-azure-static-web-apps-preview-with-azure-functions"></a>Hinzufügen einer API zu Azure Static Web Apps (Vorschau) mit Azure Functions
 
@@ -147,7 +147,7 @@ Dank der Integration zwischen Visual Studio Code und [Azure Functions Core Tools
 
     :::image type="content" source="media/add-api/create-azure-functions-vscode-2.png" alt-text="Erstellen einer neuen Azure Functions-Instanz mit Visual Studio Code":::
 
-1. Wenn die Core Tools ausgeführt werden, navigieren Sie zu der folgenden URL, um zu überprüfen, ob die API ordnungsgemäß ausgeführt wird: <http://localhost:7071/api/message>.
+1. Wenn die Core Tools ausgeführt werden, navigieren Sie zu der folgenden URL, um zu überprüfen, ob die API ordnungsgemäß ausgeführt wird: `http://localhost:7071/api/message`.
 
    Die Antwort im Browser sollte ähnlich wie im folgenden Beispiel aussehen:
 

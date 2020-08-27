@@ -4,12 +4,12 @@ description: In diesem Artikel finden Sie Antworten auf häufig gestellte Fragen
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: 03e2f004fa54ee235eabc49afd6abd7532a6ee44
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: b29f1a11f6600f013fdf1d5aa71883ab44dfe635
+ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88262771"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88761507"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>Häufig gestellte Fragen – Sicherung von Azure-VMs
 
@@ -195,8 +195,8 @@ Ja. Im Portal können maximal 100 VMs derselben Sicherungsrichtlinie zugeordnet
 
 ### <a name="how-can-i-view-the-retention-settings-for-my-backups"></a>Wie kann ich die Aufbewahrungseinstellungen für meine Sicherungen anzeigen?
 
-Derzeit können Sie die Aufbewahrungseinstellungen auf der Ebene eines Sicherungselements (VM) auf der Grundlage der Sicherungsrichtlinie anzeigen, die der VM zugewiesenen ist. 
+Derzeit können Sie die Aufbewahrungseinstellungen auf der Ebene eines Sicherungselements (VM) auf der Grundlage der Sicherungsrichtlinie anzeigen, die der VM zugewiesenen ist.
 
 Eine Möglichkeit, die Aufbewahrungseinstellungen für Ihre Sicherungen anzuzeigen, besteht darin, zum [Dashboard](https://docs.microsoft.com/azure/backup/backup-azure-manage-vms#view-vms-on-the-dashboard) des Sicherungselements für Ihre VM im Azure-Portal zu navigieren. Wenn Sie auf den Link zu ihrer Sicherungsrichtlinie klicken, können Sie die Aufbewahrungsdauer aller täglichen, wöchentlichen, monatlichen und jährlichen Aufbewahrungspunkte anzeigen, die mit der VM verbunden sind.
 
-Sie können auch den [Sicherungs-Explorer](https://docs.microsoft.com/azure/backup/monitor-azure-backup-with-backup-explorer) verwenden, um die Aufbewahrungseinstellungen für alle Ihre VMs in einer zentralisierten Benutzeroberfläche anzuzeigen. Navigieren Sie von einem beliebigen Recovery Services-Tresor aus zum Sicherungs-Explorer, wechseln Sie zur Registerkarte **Sicherungselemente**, und wählen Sie die erweiterte Ansicht aus, um detaillierte Aufbewahrungsinformationen für jede VM anzuzeigen.  
+Sie können auch den [Sicherungs-Explorer](https://docs.microsoft.com/azure/backup/monitor-azure-backup-with-backup-explorer) verwenden, um die Aufbewahrungseinstellungen für alle Ihre VMs in einer zentralisierten Benutzeroberfläche anzuzeigen. Navigieren Sie von einem beliebigen Recovery Services-Tresor aus zum Sicherungs-Explorer, wechseln Sie zur Registerkarte **Sicherungselemente**, und wählen Sie die erweiterte Ansicht aus, um detaillierte Aufbewahrungsinformationen für jede VM anzuzeigen.

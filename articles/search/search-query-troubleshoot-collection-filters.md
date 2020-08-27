@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: e82fa00226c964d5ba774cdf06f5b0f3898bdc55
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3050f701c11773207aa6054d4d08d908d87b2ce7
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74113077"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88932065"
 ---
 # <a name="troubleshooting-odata-collection-filters-in-azure-cognitive-search"></a>Problembehandlung von OData-Sammlungsfiltern in der kognitiven Azure-Suche
 
@@ -229,4 +229,4 @@ Wenn Sie häufig Filter schreiben und das Verstehen der Regeln der ersten Prinzi
 - [Filter in Azure Cognitive Search](search-filters.md)
 - [Übersicht über die OData-Ausdruckssprache für Azure Cognitive Search](query-odata-filter-orderby-syntax.md)
 - [Referenz zur OData-Ausdruckssyntax für Azure Cognitive Search](search-query-odata-syntax-reference.md)
-- [Suchen von Dokumenten &#40;Azure Cognitive Search-REST-API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [Suchen von Dokumenten &#40;Azure Cognitive Search-REST-API&#41;](/rest/api/searchservice/Search-Documents)

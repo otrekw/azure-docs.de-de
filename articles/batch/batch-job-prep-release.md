@@ -3,13 +3,13 @@ title: Erstellen von Aufgaben zum Vorbereiten und Durchführen von Aufträgen au
 description: Verwenden Sie Vorbereitungs- und Freigabeaufgaben auf Auftragsebene, um Datenübertragungen auf Azure Batch-Computeknoten zu minimieren und Knoten nach Abschluss des Auftrags zu bereinigen.
 ms.topic: how-to
 ms.date: 02/17/2020
-ms.custom: seodec18
-ms.openlocfilehash: 4bd7c87028dc01fdccecdb7beac765e74fb3435c
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.custom: seodec18, devx-track-csharp
+ms.openlocfilehash: 5b1084cfdd5995b7983badcdce71460f7bdec3d5
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85964361"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88919453"
 ---
 # <a name="run-job-preparation-and-job-release-tasks-on-batch-compute-nodes"></a>Ausführen von Tasks zum Vorbereiten und Freigeben von Aufträgen auf Azure Batch-Computeknoten
 
