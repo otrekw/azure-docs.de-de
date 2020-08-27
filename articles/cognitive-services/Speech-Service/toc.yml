@@ -520,17 +520,11 @@
           href: speech-container-faq.md
 - name: Sprach-SDK
   items:
-    - name: Übersicht
-      items:
-        - name: Informationen zum Speech SDK
-          href: speech-sdk.md
-        - name: Szenarioverfügbarkeit
-          href: scenario-availability.md
-    - name: Schnellstart
-      items:
-        - name: Einrichten des Speech SDK
-          displayName: 'install the speech sdk, install the speech sdk java, install the speech sdk C#, install the speech sdk python, install the speech sdk C++, setup speech sdk, install, install C#, install C++, install Python, install Java, install Javascript'
-          href: quickstarts/setup-platform.md
+    - name: Übersicht über das Speech SDK
+      href: speech-sdk.md
+    - name: Einrichten des Speech SDK
+      displayName: 'install the speech sdk, install the speech sdk java, install the speech sdk C#, install the speech sdk python, install the speech sdk C++, setup speech sdk, install, install C#, install C++, install Python, install Java, install Javascript'
+      href: quickstarts/setup-platform.md
     - name: Anleitungen
       items:
         - name: Aktivieren der Protokollierung

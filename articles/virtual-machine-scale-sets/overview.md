@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 06/30/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: 0fcad26bb78e0e9a03d51818ac66a98af1ef0b18
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: f381afa69d1a445d2bdb14dd663341e4a18f8cd9
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88590386"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88648665"
 ---
 # <a name="what-are-virtual-machine-scale-sets"></a>Was sind Skalierungsgruppen für virtuelle Computer?
 Mit Azure-VM-Skalierungsgruppen können Sie eine Gruppe VMs mit Lastenausgleich erstellen und verwalten. Die Anzahl von VM-Instanzen kann automatisch erhöht oder verringert werden, wenn sich der Bedarf ändert, oder es kann ein Zeitplan festgelegt werden. Skalierungsgruppen ermöglichen Hochverfügbarkeit für Ihre Anwendungen und das zentrale Verwalten, Konfigurieren und Aktualisieren einer großen Zahl von VMs. Mit VM-Skalierungsgruppen können Sie umfassende Dienste für Bereiche wie Compute, Big Data und Containerworkloads erstellen.
@@ -40,7 +40,7 @@ Zur Sicherstellung von Redundanz und einer höheren Leistung werden Anwendungen 
 
 - **Großer Umfang**
     - Skalierungsgruppen unterstützen bis zu 1.000 VM-Instanzen. Wenn Sie Ihre eigenen benutzerdefinierten VM-Images erstellen und hochladen, beträgt das Limit 600 VM-Instanzen.
-    - Verwenden Sie [Azure Managed Disks](../virtual-machines/windows/managed-disks-overview.md), um für Produktionsworkloads die beste Leistung zu erzielen.
+    - Verwenden Sie [Azure Managed Disks](../virtual-machines/managed-disks-overview.md), um für Produktionsworkloads die beste Leistung zu erzielen.
 
 
 ## <a name="differences-between-virtual-machines-and-scale-sets"></a>Unterschiede zwischen virtuellen Computern und Skalierungsgruppen

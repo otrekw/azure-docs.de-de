@@ -8,18 +8,18 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/22/2020
-ms.openlocfilehash: 8f170d541ec314020702ab53606eed4d660cea9e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 018c3fb08c7fa0ad35fa567bffbeae48b6fbbce9
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85130805"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88928835"
 ---
 # <a name="query-types-and-composition-in-azure-cognitive-search"></a>Abfragetypen und -komposition in der kognitiven Azure-Suche
 
 In der kognitiven Azure-Suche ist eine Abfrage eine vollständige Spezifikation eines Roundtripvorgangs. Die Anforderung enthält Parameter, die Ausführungsanweisungen für die Engine enthalten, sowie Parameter zur Formatierung der zurückgegebenen Antwort. (`search=*`) ohne Angaben, ohne Übereinstimmungskriterien und ohne Parameter oder mit Standardparametern führt eine Abfrage für alle durchsuchbaren Felder als Volltextsuche aus, und es wird ein Resultset ohne Bewertungen in zufälliger Reihenfolge zurückgegeben.
 
-Das folgende Beispiel ist eine repräsentative Abfrage, die in der [REST-API](https://docs.microsoft.com/rest/api/searchservice/search-documents) erstellt wurde. Dieses Beispiel zielt auf den [Hotel-Demoindex](search-get-started-portal.md) ab und enthält allgemeine Parameter, um Ihnen eine Vorstellung vom Aussehen einer Abfrage zu vermitteln.
+Das folgende Beispiel ist eine repräsentative Abfrage, die in der [REST-API](/rest/api/searchservice/search-documents) erstellt wurde. Dieses Beispiel zielt auf den [Hotel-Demoindex](search-get-started-portal.md) ab und enthält allgemeine Parameter, um Ihnen eine Vorstellung vom Aussehen einer Abfrage zu vermitteln.
 
 ```
 {
@@ -65,7 +65,7 @@ Die Indexattribute für ein Feld bestimmen die zulässigen Vorgänge – ob ein 
 
 ![Indexdefinition für das „hotels“-Beispiel](./media/search-query-overview/hotel-sample-index-definition.png "Indexdefinition für das „hotels“-Beispiel")
 
-Der obige Screenshot zeigt eine unvollständige Liste der Indexattribute für das „hotels“-Beispiel. Das gesamte Indexschema können Sie im Portal anzeigen. Weitere Informationen zu Indexattributen finden Sie unter [Create Index REST API](https://docs.microsoft.com/rest/api/searchservice/create-index) (REST-API zum Erstellen von Indizes).
+Der obige Screenshot zeigt eine unvollständige Liste der Indexattribute für das „hotels“-Beispiel. Das gesamte Indexschema können Sie im Portal anzeigen. Weitere Informationen zu Indexattributen finden Sie unter [Create Index REST API](/rest/api/searchservice/create-index) (REST-API zum Erstellen von Indizes).
 
 > [!Note]
 > Einige Abfragefunktionen werden für den gesamten Index und nicht nur für einzelne Felder aktiviert. Zu diesen Funktionen zählen [Synonymzuordnungen](search-synonyms.md), [benutzerdefinierte Analysetools](index-add-custom-analyzers.md), [Vorschlagskonstrukte (für AutoVervollständigen und vorgeschlagene Abfragen)](index-add-suggesters.md) sowie die [Bewertungslogik für Ergebnisse](index-add-scoring-profiles.md).
@@ -82,7 +82,7 @@ Erforderliche Elemente in einer Abfrageanforderung enthalten die folgenden Kompo
 + **`queryType`** (einfach oder vollständig) kann weggelassen werden, wenn Sie die integrierte einfache Standardsyntax verwenden.
 + **`search`** oder **`filter`** gibt die Übereinstimmungskriterien an, die weggelassen werden können, wenn Sie eine leere Suche durchführen möchten. Beide Abfragetypen werden in Bezug auf den einfachen Parser erläutert, doch auch erweiterte Abfragen erfordern den Parameter „search“ zur Übergabe komplexer Abfrageausdrücke.
 
-Alle anderen Suchparameter sind optional. Die vollständige Liste der Attribute finden Sie unter [Create Index (REST)](https://docs.microsoft.com/rest/api/searchservice/create-index) (Erstellen des Index [REST]). Eine ausführlichere Erläuterung, wie Parameter während der Verarbeitung verwendet werden, finden Sie unter [Funktionsweise der Volltextsuche in der kognitiven Azure-Suche](search-lucene-query-architecture.md).
+Alle anderen Suchparameter sind optional. Die vollständige Liste der Attribute finden Sie unter [Create Index (REST)](/rest/api/searchservice/create-index) (Erstellen des Index [REST]). Eine ausführlichere Erläuterung, wie Parameter während der Verarbeitung verwendet werden, finden Sie unter [Funktionsweise der Volltextsuche in der kognitiven Azure-Suche](search-lucene-query-architecture.md).
 
 ## <a name="choose-apis-and-tools"></a>Auswählen von APIs und Tools
 
@@ -92,8 +92,8 @@ In der folgenden Tabelle sind die APIs und toolbasierten Ansätze zum Übermitte
 |-------------|-------------|
 | [Suchexplorer (Portal)](search-explorer.md) | Stellt eine Suchleiste und Optionen für die Auswahl des Index und von API-Versionen bereit. Die Ergebnisse werden als JSON-Dokumente zurückgegeben. Empfohlen für das Erkunden, Testen und Validieren. <br/>[Weitere Informationen.](search-get-started-portal.md#query-index) | 
 | [Postman oder andere REST-Tools](search-get-started-postman.md) | Webtesttools sind eine hervorragende Wahl für das Formulieren von REST-Aufrufen. Die REST-API unterstützt alle möglichen Vorgänge in der kognitiven Azure-Suche. In diesem Artikel erfahren Sie, wie Sie einen HTTP-Anforderungsheader und -text zum Senden von Anforderungen an die kognitive Azure-Suche einrichten.  |
-| [SearchIndexClient (.NET)](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchindexclient?view=azure-dotnet) | Client, der zum Abfragen eines Index für die kognitive Azure-Suche verwendet werden kann.  <br/>[Weitere Informationen.](search-howto-dotnet-sdk.md#core-scenarios)  |
-| [Search Documents (REST API)](https://docs.microsoft.com/rest/api/searchservice/search-documents) (Durchsuchen von Dokumenten (REST-API)) | GET- oder POST-Methoden für einen Index, wobei Abfrageparameter für zusätzliche Eingaben verwendet werden.  |
+| [SearchIndexClient (.NET)](/dotnet/api/microsoft.azure.search.searchindexclient?view=azure-dotnet) | Client, der zum Abfragen eines Index für die kognitive Azure-Suche verwendet werden kann.  <br/>[Weitere Informationen.](search-howto-dotnet-sdk.md#core-scenarios)  |
+| [Search Documents (REST API)](/rest/api/searchservice/search-documents) (Durchsuchen von Dokumenten (REST-API)) | GET- oder POST-Methoden für einen Index, wobei Abfrageparameter für zusätzliche Eingaben verwendet werden.  |
 
 ## <a name="choose-a-parser-simple--full"></a>Auswählen eines Parsers: einfach | vollständig
 
@@ -123,7 +123,7 @@ Die kognitive Azure-Suche unterstützt eine breite Palette von Abfragetypen.
 |------------|--------|-------------------------------|
 | Freitextsuche | Suchparameter und einer der beiden Parser| Die Volltextsuche sucht nach einem oder mehreren Begriffen in allen *durchsuchbaren* Feldern im Index. Sie funktioniert so, wie Sie es von einer Suchmaschine wie Google oder Bing erwarten. Bei dem Beispiel in der Einführung handelt es sich um eine Volltextsuche.<br/><br/>Die Volltextsuche durchläuft (standardmäßig) eine lexikalische Analyse mit dem Lucene-Standardanalysetool, um alle Begriffe in Kleinbuchstaben umzuwandeln und Stoppwörter wie „das“ zu entfernen. Sie können die Standardeinstellung außer Kraft setzen und durch [nicht englischsprachige Analysetools](index-add-language-analyzers.md#language-analyzer-list) oder [spezielle sprachunabhängig Analysetools](index-add-custom-analyzers.md#AnalyzerTable) überschreiben, die die lexikalische Analyse ändern. Ein Beispiel hierfür ist ein [Schlüsselwort](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordAnalyzer.html), durch das der gesamte Inhalt eines Felds als ein einzelnes Token behandelt wird. Dies ist nützlich für Daten wie Postleitzahlen, IDs und einige Produktnamen. | 
 | Gefilterte Suche | [OData-Filterausdruck](query-odata-filter-orderby-syntax.md) und einer der beiden Parser | Filterabfragen werten einen booleschen Ausdruck für alle *filterbaren* Felder in einem Index aus. Im Gegensatz zu einer Suche wird bei einer Filterabfrage der genaue Inhalt eines Felds abgeglichen, einschließlich Unterscheidung nach Groß-/Kleinschreibung bei Zeichenfolgenfeldern. Ein weiterer Unterschied ist, dass Filterabfragen in der OData-Syntax ausgedrückt werden. <br/>[Beispiel für einen Filterausdruck](search-query-simple-examples.md#example-3-filter-queries) |
-| Geografische Suche | [Typ „Edm.GeographyPoint“](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) für das Feld, Filterausdruck und einer der beiden Parser | In einem Feld mit dem Typ „Edm.GeographyPoint“ gespeicherte Koordinaten werden für Steuerelemente zur Umgebungssuche oder kartenbasierten Suche verwendet. <br/>[Beispiel für die geografische Suche](search-query-simple-examples.md#example-5-geo-search)|
+| Geografische Suche | [Typ „Edm.GeographyPoint“](/rest/api/searchservice/supported-data-types) für das Feld, Filterausdruck und einer der beiden Parser | In einem Feld mit dem Typ „Edm.GeographyPoint“ gespeicherte Koordinaten werden für Steuerelemente zur Umgebungssuche oder kartenbasierten Suche verwendet. <br/>[Beispiel für die geografische Suche](search-query-simple-examples.md#example-5-geo-search)|
 | Bereichssuche | Filterausdruck und einfacher Parser | In der kognitiven Azure-Suche werden Bereichsabfragen anhand des Filterparameters erstellt. <br/>[Beispiel für den Bereichsfilter](search-query-simple-examples.md#example-4-range-filters) | 
 | [Feldbezogene Suche](query-lucene-syntax.md#bkmk_fields) | Suchparameter und vollständiger Parser | Erstellen Sie einen zusammengesetzten Abfrageausdruck für ein einzelnes Feld. <br/>[Beispiel für die feldbezogene Suche](search-query-lucene-examples.md#example-2-fielded-search) |
 | [Fuzzysuche](query-lucene-syntax.md#bkmk_fuzzy) | Suchparameter und vollständiger Parser | Sucht nach Begriffen mit ähnlichem Aufbau oder ähnlicher Rechtschreibung. <br/>[Beispiel für die Fuzzysuche](search-query-lucene-examples.md#example-3-fuzzy-search) |
@@ -169,5 +169,5 @@ In der kognitiven Azure-Suche ist das Hervorheben der exakten Menge von Sucherge
 
 + [Funktionsweise der Volltextsuche in der kognitiven Azure-Suche (Architektur für Abfrageanalyse)](search-lucene-query-architecture.md)
 + [Suchexplorer](search-explorer.md)
-+ [Abfragen des Azure Search-Index mit dem .NET SDK](search-query-dotnet.md)
-+ [Abfragen des Azure Search-Index mit der REST-API](search-create-index-rest-api.md)
++ [Abfragen des Azure Search-Index mit dem .NET SDK](./search-get-started-dotnet.md)
++ [Abfragen des Azure Search-Index mit der REST-API](./search-get-started-powershell.md)

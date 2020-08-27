@@ -323,7 +323,7 @@
                   href: ../common/storage-access-blobs-queues-portal.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                 - name: PowerShell
                   href: ../common/authorize-active-directory-powershell.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                - name: Azure CLI
+                - name: Azure-Befehlszeilenschnittstelle
                   href: ../common/authorize-data-operations-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Verwalten von Zugriffsrechten mit RBAC
               items:
@@ -331,7 +331,7 @@
                   href: ../common/storage-auth-aad-rbac-portal.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                 - name: PowerShell
                   href: ../common/storage-auth-aad-rbac-powershell.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                - name: Azure CLI
+                - name: Azure-Befehlszeilenschnittstelle
                   href: ../common/storage-auth-aad-rbac-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Authentifizieren und Autorisieren mit Azure AD
               items:
@@ -353,7 +353,7 @@
                   items:
                     - name: PowerShell
                       href: storage-blob-user-delegation-sas-create-powershell.md
-                    - name: Azure CLI
+                    - name: Azure-Befehlszeilenschnittstelle
                       href: storage-blob-user-delegation-sas-create-cli.md
                     - name: .NET
                       href: storage-blob-user-delegation-sas-create-dotnet.md
@@ -387,7 +387,7 @@
                           href: ../common/storage-encryption-keys-portal.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                         - name: PowerShell
                           href: ../common/storage-encryption-keys-powershell.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                        - name: Azure CLI
+                        - name: Azure-Befehlszeilenschnittstelle
                           href: ../common/storage-encryption-keys-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                 - name: Angeben eines Verschlüsselungsschlüssels bei einer Anforderung
                   href: storage-blob-customer-provided-key.md
@@ -739,6 +739,8 @@
               href: data-lake-storage-explorer.md
             - name: Befehlszeilenschnittstelle des Hadoop-Dateisystemclients
               href: data-lake-storage-use-hdfs-data-lake-storage.md
+            - name: Rekursives Festlegen von ACLs
+              href: recursive-access-control-lists.md
         - name: Abfrage
           items:
             - name: Filtern von Daten mit Abfragebeschleunigung

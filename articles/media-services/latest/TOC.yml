@@ -56,6 +56,8 @@
           href: stream-files-dotnet-quickstart.md
         - name: Mit Node.js
           href: stream-files-nodejs-quickstart.md
+    - name: Speichern von AMS-Ereignissen in Azure Log Analytics
+      href: tutorial-events-log-analytics.md
     - name: Codieren von hochgeladenen Dateien und Streamen von Videos
       displayName: 'encode, encoding, job, transform'
       href: stream-files-tutorial-with-api.md
@@ -364,7 +366,7 @@
       displayName: schema
     - name: REST
       href: /rest/api/media/
-    - name: Azure CLI
+    - name: Azure-Befehlszeilenschnittstelle
       href: 'https://aka.ms/ams-v3-cli-ref'
     - name: SDKs
       items:
@@ -401,7 +403,7 @@
       href: 'https://aka.ms/ams-v3-rest-sdk'
     - name: SDKs/Tools
       items:
-        - name: Azure CLI
+        - name: Azure-Befehlszeilenschnittstelle
           href: 'https://aka.ms/ams-v3-cli'
         - name: .NET
           href: 'https://aka.ms/ams-v3-dotnet-sdk'

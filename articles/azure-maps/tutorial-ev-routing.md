@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc, devx-track-python
-ms.openlocfilehash: 843094a58868e7751f1fa2dbee70535f2192ae62
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 506429f51ac442b73adea98058a833f52a728c72
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87850167"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88639748"
 ---
 # <a name="tutorial-route-electric-vehicles-by-using-azure-notebooks-python"></a>Tutorial: Routenplanung für Elektrofahrzeuge mit Azure Notebooks (Python)
 
@@ -27,7 +27,7 @@ In diesem Tutorial helfen Sie einem Fahrer, der den Akku seines Elektrofahrzeugs
 In diesem Lernprogramm lernen Sie Folgendes:
 
 > [!div class="checklist"]
-> * Erstellen und Ausführen eines Jupyter-Notebooks in [Azure Notebooks](https://docs.microsoft.com/azure/notebooks) in der Cloud
+> * Erstellen und Ausführen einer Jupyter Notebook-Datei in [Azure Notebooks](https://docs.microsoft.com/azure/notebooks) in der Cloud
 > * Aufrufen von Azure Maps-REST-APIs in Python
 > * Suchen nach einem erreichbaren Bereich auf Grundlage des Verbrauchsmodells des Elektrofahrzeugs
 > * Suchen nach Ladestationen für Elektrofahrzeuge im erreichbaren Bereich bzw. in der Isochrone
@@ -45,9 +45,9 @@ Gehen Sie wie unter [Abrufen des Primärschlüssels](quick-demo-map-app.md#get-t
 
 Weitere Informationen zur Authentifizierung in Azure Maps finden Sie unter [Verwalten der Authentifizierung in Azure Maps](./how-to-manage-authentication.md).
 
-## <a name="create-an-azure-notebook"></a>Erstellen eines Azure-Notebooks
+## <a name="create-an-azure-notebooks-project"></a>Erstellen eines Azure Notebooks-Projekts
 
-Um die Schritte in diesem Tutorial ausführen zu können, müssen Sie ein Azure-Notebookprojekt erstellen und die Jupyter Notebook-Datei herunterladen und ausführen. Die Notebook-Datei enthält Python-Code, der das Szenario in diesem Tutorial implementiert. Gehen Sie wie folgt vor, um ein Azure-Notebookprojekt zu erstellen und das Jupyter Notebook-Dokument in das Projekt hochzuladen:
+Um die Schritte in diesem Tutorial ausführen zu können, müssen Sie ein Azure Notebooks-Projekt erstellen und die Jupyter Notebook-Datei herunterladen und ausführen. Die Jupyter Notebook-Datei enthält Python-Code, der das Szenario in diesem Tutorial implementiert. Gehen Sie wie folgt vor, um ein Azure Notebooks-Projekt zu erstellen und das Jupyter Notebook-Dokument in das Projekt hochzuladen:
 
 1. Navigieren Sie zu [Azure Notebooks](https://notebooks.azure.com), und melden Sie sich an Weitere Informationen finden Sie unter [Quickstart: Anmelden und Festlegen einer Benutzer-ID](https://docs.microsoft.com/azure/notebooks/quickstart-sign-in-azure-notebooks).
 1. Wählen Sie oben auf Ihrer öffentlichen Profilseite die Option **Meine Projekte** aus.
@@ -64,23 +64,23 @@ Um die Schritte in diesem Tutorial ausführen zu können, müssen Sie ein Azure-
 
 1. Klicken Sie auf **Erstellen**.
 
-1. Nachdem das Projekt erstellt wurde, laden Sie die [Jupyter Notebook-Dokumentdatei](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook/blob/master/AzureMapsJupyterSamples/Tutorials/EV%20Routing%20and%20Reachable%20Range/EVrouting.ipynb) aus dem [Repository für Jupyter Notebook in Azure Maps](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook) herunter.
+1. Nachdem das Projekt erstellt wurde, laden Sie [diese Jupyter Notebook-Dokumentdatei](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook/blob/master/AzureMapsJupyterSamples/Tutorials/EV%20Routing%20and%20Reachable%20Range/EVrouting.ipynb) aus dem [Repository für Jupyter Notebook in Azure Maps](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook) herunter.
 
-1. Wählen Sie in der Projektliste auf der Seite **Meine Projekte** Ihr Projekt und dann die Option **Hochladen** aus, um die Jupyter Notebook-Dokumentdatei hochzuladen. 
+1. Wählen Sie in der Projektliste auf der Seite **Meine Projekte** Ihr Projekt und dann die Option **Hochladen** aus, um die Jupyter Notebook-Dokumentdatei hochzuladen. 
 
-    ![Hochladen des Notebooks](./media/tutorial-ev-routing/upload-notebook.png)
+    ![Hochladen der Jupyter Notebook-Datei](./media/tutorial-ev-routing/upload-notebook.png)
 
 1. Laden Sie die Datei von Ihrem Computer hoch, und wählen Sie anschließend **Fertig** aus.
 
-1. Nachdem der Upload erfolgreich abgeschlossen wurde, wird die Datei auf Ihrer Projektseite angezeigt. Doppelklicken Sie auf die Datei, um sie als Jupyter-Notebook zu öffnen.
+1. Nachdem der Upload erfolgreich abgeschlossen wurde, wird die Datei auf Ihrer Projektseite angezeigt. Doppelklicken Sie auf die Datei, um sie als Jupyter Notebook-Datei zu öffnen.
 
-Versuchen Sie, die in der Notebook-Datei implementierten Funktionen nachzuvollziehen. Führen Sie den Code in der Notebook-Datei Zelle für Zelle aus. Sie können den Code in jeder Zelle ausführen, indem Sie oben in der Notebook-App die Schaltfläche **Ausführen** auswählen.
+Versuchen Sie, die in der Jupyter Notebook-Datei implementierten Funktionen nachzuvollziehen. Führen Sie den Code in der Jupyter Notebook-Datei Zelle für Zelle aus. Sie können den Code in jeder Zelle ausführen, indem Sie oben in der Jupyter Notebook-App die Schaltfläche **Ausführen** auswählen.
 
   ![Schaltfläche „Ausführen“](./media/tutorial-ev-routing/run.png)
 
 ## <a name="install-project-level-packages"></a>Installieren von Paketen auf Projektebene
 
-Installieren Sie Pakete wie folgt auf der Projektebene, um den Code im Notebook auszuführen:
+Installieren Sie Pakete wie folgt auf der Projektebene, um den Code in Jupyter Notebook auszuführen:
 
 1. Laden Sie die Datei [*requirements.txt*](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook/blob/master/AzureMapsJupyterSamples/Tutorials/EV%20Routing%20and%20Reachable%20Range/requirements.txt) aus dem [Repository für Jupyter Notebook in Azure Maps](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook) herunter, und laden Sie sie dann in Ihr Projekt hoch.
 1. Klicken Sie auf dem Projektdashboard auf **Project Settings** (Projekteinstellungen). 

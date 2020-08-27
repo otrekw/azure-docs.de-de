@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 04/14/2020
-ms.openlocfilehash: 72acd5c3c5fbab08b2e97421689b4f562b2ae2e8
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 9b23fbe55589bbbe6d560967119206fb1ea1d85c
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119717"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607272"
 ---
 # <a name="publishing-guide-by-offer-type"></a>Leitfaden zur Veröffentlichung nach Angebotstyp
 
@@ -22,7 +22,7 @@ Bevor Sie ein Angebot erstellen können, und nachdem Sie [sich für eine Veröff
 
 Ein einzelner Angebotstyp kann auf verschiedene Weise konfiguriert werden, um unterschiedliche Veröffentlichungsoptionen, Aktionsaufrufe, Bereitstellungen oder Preisgestaltungen zu ermöglichen. Die Veröffentlichungsoption und Konfiguration des Angebotstyps entsprechen auch der Angebotsberechtigung und technischen Anforderungen.
 
-Bevor Sie Ihr Angebot erstellen, informieren Sie sich über die erforderlichen Berechtigungen für Storefront und Angebotstyp und darüber hinaus über die technischen Anforderungen der Veröffentlichung.
+Bevor Sie Ihr Angebot erstellen, informieren Sie sich über die erforderlichen Berechtigungen für Onlineshop und Angebotstyp und darüber hinaus über die technischen Anforderungen der Veröffentlichung.
 
 ## <a name="list-of-offer-types"></a>Liste der Angebotsarten
 
@@ -45,4 +45,4 @@ Informationen zu den Anforderungen für das einmalige Anmelden für die einzelne
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Berücksichtigen Sie im entsprechenden Artikel für Ihren Angebotstyp (in den folgenden Abschnitten) die erforderlichen Berechtigungen, um die Auswahl und Konfiguration Ihres Angebots abzuschließen.
-- Entnehmen Sie den Veröffentlichungsmustern der Storefronts Beispiele für die Zuordnung ihrer Lösung zu einem Angebotstyp und einer Konfiguration.
+- Entnehmen Sie den Veröffentlichungsmustern der Onlineshops Beispiele für die Zuordnung Ihrer Lösung zu einem Angebotstyp und einer Konfiguration.

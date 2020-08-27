@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: f7bf1c8f3f1ecbb21207776a99bba99d123ea891
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: dd00c357a422a407a3367e45531e3443577f9bec
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86171940"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88923244"
 ---
 # <a name="how-to-implement-faceted-navigation-in-azure-cognitive-search"></a>Implementieren der Facettennavigation in der kognitiven Azure-Suche
 
@@ -63,7 +63,7 @@ Im Anwendungscode werden Facettenabfrageparameter für die Rückgabe der Facette
 
 ### <a name="query-basics"></a>Grundlagen der Abfrage
 
-In der kognitiven Azure-Suche wird eine Anforderung mithilfe von Abfrageparametern angegeben. (Eine Beschreibung der einzelnen Parameter finden Sie unter [Durchsuchen von Dokumenten](https://docs.microsoft.com/rest/api/searchservice/Search-Documents).) Keiner der Abfrageparameter ist erforderlich, Sie benötigen jedoch mindestens einen, damit die Abfrage gültig ist.
+In der kognitiven Azure-Suche wird eine Anforderung mithilfe von Abfrageparametern angegeben. (Eine Beschreibung der einzelnen Parameter finden Sie unter [Durchsuchen von Dokumenten](/rest/api/searchservice/Search-Documents).) Keiner der Abfrageparameter ist erforderlich, Sie benötigen jedoch mindestens einen, damit die Abfrage gültig ist.
 
 Genauigkeit (d.h. die Möglichkeit zum Herausfiltern irrelevanter Treffer), wird durch mindestens einen der folgenden Ausdrücke erzielt:
 
@@ -230,7 +230,7 @@ SearchParameters sp = new SearchParameters()
 };
 ```
 
-Ein Facettenabfrageparameter wird auf ein Feld festgelegt und kann abhängig vom Datentyp durch eine kommagetrennte Liste mit `count:<integer>`, `sort:<>`, `interval:<integer>` und `values:<list>` weiter parametrisiert werden. Für numerische Daten wird beim Einrichten von Bereichen eine Werteliste unterstützt. Ausführlichere Informationen zur Verwendung finden Sie unter [Dokumente durchsuchen (API für die kognitive Azure-Suche)](https://docs.microsoft.com/rest/api/searchservice/Search-Documents).
+Ein Facettenabfrageparameter wird auf ein Feld festgelegt und kann abhängig vom Datentyp durch eine kommagetrennte Liste mit `count:<integer>`, `sort:<>`, `interval:<integer>` und `values:<list>` weiter parametrisiert werden. Für numerische Daten wird beim Einrichten von Bereichen eine Werteliste unterstützt. Ausführlichere Informationen zur Verwendung finden Sie unter [Dokumente durchsuchen (API für die kognitive Azure-Suche)](/rest/api/searchservice/Search-Documents).
 
 Neben Facetten muss die von Ihrer Anwendung erstellte Anforderung auch Filter zum Einschränken der auf der Grundlage der Facettenwertauswahl infrage kommenden Dokumente erstellen. Für ein Fahrradgeschäft bietet Facettennavigation bietet Hinweise zu Fragen wie *Welche Farben, Hersteller und Fahrradtypen sind verfügbar?* . Filtern Sie Antworten auf Fragen wie *Welche Fahrräder in diesem Preisspanne sind rote Mountainbikes?* . Wenn Sie durch Klicken auf „Rot“ angeben, dass nur rote Produkte angezeigt werden sollen, enthält die nächste von der Anwendung gesendete Abfrage `$filter=Color eq 'Red'`.
 
@@ -319,7 +319,7 @@ Wenn Sie einer Facettenabfrage einen Filter hinzufügen, empfiehlt es sich unter
 
 **Stellen Sie sicher, dass Sie die genaue Facettenanzahl erhalten**
 
-Unter bestimmten Umständen kann es vorkommen, dass die Facettenanzahl nicht den Resultsets entspricht (mehr auf der Q&A-Seite von Microsoft unter [Facettennavigation in Azure Cognitive Search](https://docs.microsoft.com/answers/topics/azure-cognitive-search.html)).
+Unter bestimmten Umständen kann es vorkommen, dass die Facettenanzahl nicht den Resultsets entspricht (mehr auf der Q&A-Seite von Microsoft unter [Facettennavigation in Azure Cognitive Search](/answers/topics/azure-cognitive-search.html)).
 
 Die Abweichung der Facettenanzahl kann auf die Sharding-Architektur zurückzuführen sein. Jeder Suchindex besitzt mehrere Shards, von denen jeweils die x relevantesten Facetten (auf der Grundlage der Dokumentanzahl) zurückgegeben werden. Diese werden dann zu einem einzelnen Ergebnis zusammengefasst. Falls nun für einige Shards viele und für andere Shards weniger Werte vorhanden sind, kann es vorkommen, dass einige Facettenwerte fehlen oder in den Ergebnissen nicht korrekt erfasst wurden.
 
@@ -333,7 +333,7 @@ Beschriftungen werden üblicherweise im HTML-Code oder im Formular definiert (`i
 <a name="rangefacets"></a>
 
 ## <a name="filter-based-on-a-range"></a>Filtern nach einem Bereich
-Die Verwendung von Facettenwertbereichen ist eine verbreitete Anforderung für Suchanwendungen. Bereiche werden für numerische Daten und für DateTime-Werte unterstützt. Weitere Informationen zu den einzelnen Ansätzen finden Sie unter [Dokumente durchsuchen (API für die kognitive Azure-Suche)](https://docs.microsoft.com/rest/api/searchservice/Search-Documents).
+Die Verwendung von Facettenwertbereichen ist eine verbreitete Anforderung für Suchanwendungen. Bereiche werden für numerische Daten und für DateTime-Werte unterstützt. Weitere Informationen zu den einzelnen Ansätzen finden Sie unter [Dokumente durchsuchen (API für die kognitive Azure-Suche)](/rest/api/searchservice/Search-Documents).
 
 Die kognitive Azure-Suche vereinfacht die Bereichserstellung durch zwei Bereichsberechnungsansätze. Bei beiden Ansätzen erstellt Azure Cognitive Search die entsprechenden Bereiche auf der Grundlage Ihrer Eingaben. Wenn Sie also beispielsweise die Bereichswerte „10|20|30“ angeben, werden automatisch folgende Bereiche erstellt: 0–10, 10–20, 20–30. Ihre Anwendung kann optional alle leeren Intervalle entfernen. 
 
@@ -404,4 +404,3 @@ Weitere Einblicke in die Entwurfsprinzipien der Facettennavigation erhalten Sie 
 
 * [Entwurfsmuster: Facettennavigation](https://alistapart.com/article/design-patterns-faceted-navigation)
 * [Front End Concerns When Implementing Faceted Search – Part 1 ](https://articles.uie.com/faceted_search2/) (Front-End-Aspekte bei der Implementierung von facettierten Suche – Teil 1)
-

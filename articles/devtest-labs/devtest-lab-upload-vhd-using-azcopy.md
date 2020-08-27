@@ -3,18 +3,18 @@ title: Hochladen von VHD-Dateien nach Azure DevTest Labs mit AzCopy | Microsoft 
 description: Dieser Artikel bietet eine exemplarische Vorgehensweise zum Hochladen einer VHD-Datei in das Speicherkonto eines Labs in Azure DevTest Labs mithilfe des Befehlszeilenhilfsprogramms AzCopy.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: cbed78af3e74af5cf72fd20866abf1ee79011ef4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1d8ede0f78726b04ac862a00b559b8d42c3ed1cd
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85483209"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88650773"
 ---
 # <a name="upload-vhd-file-to-labs-storage-account-using-azcopy"></a>Hochladen von VHD-Dateien in das Lab-Speicherkonto mit AzCopy
 
 [!INCLUDE [devtest-lab-upload-vhd-selector](../../includes/devtest-lab-upload-vhd-selector.md)]
 
-In Azure DevTest Labs können VHD-Dateien verwendet werden, um benutzerdefinierte Images zu erstellen. Diese können wiederum verwendet werden, um virtuelle Computer bereitzustellen. Die folgenden Schritte führen Sie durch die Verwendung des Befehlszeilenprogramms AzCopy für das Hochladen einer VHD-Datei in das Speicherkonto eines Labs. Nachdem Sie die VHD-Datei hochgeladen haben, finden Sie im Abschnitt [Nächste Schritte](#next-steps) einige Artikel, die veranschaulichen, wie aus der hochgeladenen VHD-Datei ein benutzerdefiniertes Image erstellt wird. Weitere Informationen zu Datenträgern und VHDs in Azure finden Sie unter [Einführung in verwaltete Datenträger](../virtual-machines/linux/managed-disks-overview.md).
+In Azure DevTest Labs können VHD-Dateien verwendet werden, um benutzerdefinierte Images zu erstellen. Diese können wiederum verwendet werden, um virtuelle Computer bereitzustellen. Die folgenden Schritte führen Sie durch die Verwendung des Befehlszeilenprogramms AzCopy für das Hochladen einer VHD-Datei in das Speicherkonto eines Labs. Nachdem Sie die VHD-Datei hochgeladen haben, finden Sie im Abschnitt [Nächste Schritte](#next-steps) einige Artikel, die veranschaulichen, wie aus der hochgeladenen VHD-Datei ein benutzerdefiniertes Image erstellt wird. Weitere Informationen zu Datenträgern und VHDs in Azure finden Sie unter [Einführung in verwaltete Datenträger](../virtual-machines/managed-disks-overview.md).
 
 > [!NOTE] 
 >  

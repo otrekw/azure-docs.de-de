@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 9213ef03f383dec7109652246411fac154b4a7f9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 74d07076fb322214348d52fe65dbc98bdff3cd44
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78302507"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798260"
 ---
 # <a name="log-azure-cosmos-db"></a>LOG (Azure Cosmos DB)
  Gibt den natürlichen Logarithmus des angegebenen numerischen Ausdrucks zurück.  
@@ -41,7 +41,9 @@ LOG (<numeric_expr> [, <base>])
   
   Der natürliche Logarithmus ist der Logarithmus zur Basis **e**, wobei **e** eine irrationale Konstante mit einem Wert von ungefähr 2,718281828 ist.  
   
-  Der natürliche Logarithmus des Exponentialwerts einer Zahl ist die Zahl selbst: LOG( EXP(n) ) = n. Und der Exponentialwert des natürlichen Logarithmus einer Zahl ist die Zahl selbst: EXP( LOG (n) ) = n.  
+  Der natürliche Logarithmus des Exponentialwerts einer Zahl ist die Zahl selbst: LOG( EXP(n) ) = n. Und der Exponentialwert des natürlichen Logarithmus einer Zahl ist die Zahl selbst: EXP( LOG (n) ) = n.
+
+  Der Index wird von dieser Systemfunktion nicht verwendet.
   
 ## <a name="examples"></a>Beispiele
   
@@ -68,10 +70,6 @@ SELECT EXP(LOG(10)) AS expLog
 ```json
 [{expLog: 10.000000000000002}]  
 ```  
-
-## <a name="remarks"></a>Bemerkungen
-
-Der Index wird von dieser Systemfunktion nicht verwendet.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

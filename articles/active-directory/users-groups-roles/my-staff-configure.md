@@ -13,12 +13,12 @@ ms.date: 05/08/2020
 ms.author: curtand
 ms.reviewer: sahenry
 ms.custom: oldportal;it-pro;
-ms.openlocfilehash: dc4e71f4283d78c2b241441810a8c1313f002152
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: da358ecb126dda21d18120bbe698fec234c85e4f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85850893"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798957"
 ---
 # <a name="manage-your-users-with-my-staff-preview"></a>Verwalten Ihrer Benutzer mit „Meine Mitarbeiter“ (Vorschau)
 
@@ -64,7 +64,7 @@ Nachdem Sie die Verwaltungseinheiten konfiguriert haben, können Sie diesen Bere
 
 Sie können das Portal „Meine Mitarbeiter“ mit der Azure AD-Richtlinie für bedingten Zugriff schützen. Verwenden Sie sie für Aufgaben wie die Anforderung einer mehrstufigen Authentifizierung vor dem Zugriff auf „Meine Mitarbeiter“.
 
-Wir empfehlen dringend, dass Sie „Meine Mitarbeiter“ mit [Azure AD-Richtlinien für bedingten Zugriff](https://docs.microsoft.com/azure/active-directory/conditional-access/) schützen. Um eine Richtlinie für bedingten Zugriff auf „Meine Mitarbeiter“ anzuwenden, müssen Sie den Dienstprinzipal „Meine Mitarbeiter“ manuell mit PowerShell erstellen.
+Wir empfehlen dringend, dass Sie „Meine Mitarbeiter“ mit [Azure AD-Richtlinien für bedingten Zugriff](../conditional-access/index.yml) schützen. Um eine Richtlinie für bedingten Zugriff auf „Meine Mitarbeiter“ anzuwenden, müssen Sie den Dienstprinzipal „Meine Mitarbeiter“ manuell mit PowerShell erstellen.
 
 ### <a name="apply-a-conditional-access-policy-to-my-staff"></a>Anwenden einer Richtlinie für bedingten Zugriff auf „Meine Mitarbeiter“
 

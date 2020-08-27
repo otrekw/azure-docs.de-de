@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/13/2019
 ms.author: mayg
-ms.openlocfilehash: e4525bdc6165e8e736db5f539c764d25250cb248
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 46db5f7d3e5d3844fb297e512d8d701e6da79de9
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84700884"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654309"
 ---
 # <a name="azure-expressroute-with-azure-site-recovery"></a>Azure ExpressRoute mit Azure Site Recovery
 
@@ -50,7 +50,7 @@ Das kombinierte Szenario wird in der folgenden Abbildung dargestellt: ![Migratio
 
 ## <a name="azure-to-azure-replication-with-expressroute"></a>Replikation von Azure zu Azure mit ExpressRoute
 
-Azure Site Recovery ermöglicht die Notfallwiederherstellung für [Azure-VMs](azure-to-azure-architecture.md). Je nachdem, ob Ihre virtuellen Azure-Computer [Azure Managed Disks](../virtual-machines/windows/managed-disks-overview.md) verwenden, werden Replikationsdaten an ein Azure Storage-Konto oder einen verwalteten Replikatdatenträger in der Azure-Zielregion gesendet. Obwohl die Replikationsendpunkte öffentlich sind, läuft der Replikationsdatenverkehr für die Replikation von Azure VM nicht über das Internet, unabhängig davon, in welcher Azure-Region sich das virtuelle Quellnetzwerk befindet. Sie können die Standardsystemroute von Azure für das Adresspräfix 0.0.0.0/0 mit einer [benutzerdefinierten Route](../virtual-network/virtual-networks-udr-overview.md#custom-routes) überschreiben und VM-Datenverkehr auf ein lokales virtuelles Netzwerkgerät umleiten, aber diese Konfiguration wird für die Site Recovery-Replikation nicht empfohlen. Wenn Sie benutzerdefinierte Routen verwenden, sollten Sie [einen VNET-Dienstendpunkt](azure-to-azure-about-networking.md#create-network-service-endpoint-for-storage) in Ihrem virtuellen Netzwerk für „Storage“ erstellen, damit der Replikationsdatenverkehr innerhalb der Azure-Begrenzung bleibt.
+Azure Site Recovery ermöglicht die Notfallwiederherstellung für [Azure-VMs](azure-to-azure-architecture.md). Je nachdem, ob Ihre virtuellen Azure-Computer [Azure Managed Disks](../virtual-machines/managed-disks-overview.md) verwenden, werden Replikationsdaten an ein Azure Storage-Konto oder einen verwalteten Replikatdatenträger in der Azure-Zielregion gesendet. Obwohl die Replikationsendpunkte öffentlich sind, läuft der Replikationsdatenverkehr für die Replikation von Azure VM nicht über das Internet, unabhängig davon, in welcher Azure-Region sich das virtuelle Quellnetzwerk befindet. Sie können die Standardsystemroute von Azure für das Adresspräfix 0.0.0.0/0 mit einer [benutzerdefinierten Route](../virtual-network/virtual-networks-udr-overview.md#custom-routes) überschreiben und VM-Datenverkehr auf ein lokales virtuelles Netzwerkgerät umleiten, aber diese Konfiguration wird für die Site Recovery-Replikation nicht empfohlen. Wenn Sie benutzerdefinierte Routen verwenden, sollten Sie [einen VNET-Dienstendpunkt](azure-to-azure-about-networking.md#create-network-service-endpoint-for-storage) in Ihrem virtuellen Netzwerk für „Storage“ erstellen, damit der Replikationsdatenverkehr innerhalb der Azure-Begrenzung bleibt.
 
 Für die Notfallwiederherstellung einer Azure-VM wird ExpressRoute standardmäßig nicht für die Replikation benötigt. Nach dem Failover der virtuellen Computer zur Azure-Zielregion können Sie darauf über [privates Peering](../expressroute/expressroute-circuit-peerings.md#privatepeering) zugreifen. Beachten Sie, dass Datenübertragungspreise unabhängig vom Modus der Azure-regionsübergreifenden Datenreplikation gelten.
 

@@ -11,12 +11,12 @@ metadata:
   author: spelluru
   ms.author: spelluru
   ms.date: 03/15/2020
-  ms.openlocfilehash: f70bdf831d5b65aab9d6d01f88122d1a0fdd9957
-  ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+  ms.openlocfilehash: 13bb875c371458969ae5b4e8592085c5faa2c947
+  ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 05/12/2020
-  ms.locfileid: "83200399"
+  ms.lasthandoff: 08/26/2020
+  ms.locfileid: "88927424"
 highlightedContent:
   items:
   - title: Wählen zwischen Azure-Messagingdiensten
@@ -74,13 +74,13 @@ conceptualContent:
       text: Weitere Informationen
   - title: Senden und Empfangen von Ereignissen
     links:
-    - url: ../event-hubs/get-started-dotnet-standard-send-v2.md
+    - url: ../event-hubs/event-hubs-dotnet-standard-getstarted-send.md
       itemType: quickstart
       text: Senden und Empfangen von Ereignissen von Azure Event Hubs mithilfe von .NET Core
     - url: ../event-hubs/event-hubs-java-get-started-send.md
       itemType: quickstart
       text: Senden von Ereignissen an oder Empfangen von Ereignissen von Event Hubs mithilfe von Java
-    - url: ../event-hubs/get-started-python-send-v2.md
+    - url: ../event-hubs/event-hubs-python-get-started-send.md
       itemType: quickstart
       text: Senden von Ereignissen an oder Empfangen von Ereignissen von Event Hubs mithilfe von Python
     footerLink:

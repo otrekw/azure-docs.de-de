@@ -3,12 +3,12 @@ title: 'Tutorial: Sichern von SAP HANA-Datenbanken auf virtuellen Azure-Compute
 description: In diesem Tutorial wird beschrieben, wie Sie SAP HANA-Datenbanken, die auf einem virtuellen Azure-Computer ausgeführt werden, in einem Azure Backup Recovery Services-Tresor sichern.
 ms.topic: tutorial
 ms.date: 02/24/2020
-ms.openlocfilehash: 3903630a657c2cf8a0b39f3e4c8fc22456097941
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: 50c71d58a2409d0062c414b4328eaf8a919e338b
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88611822"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757488"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm"></a>Tutorial: Sichern von SAP HANA-Datenbanken auf einem virtuellen Azure-Computer
 
@@ -125,7 +125,7 @@ Die Ausgabe des Befehls sollte den Schlüssel {SID} {DBNAME} und den Benutzer AZ
 >[!NOTE]
 > Stellen Sie sicher, dass sich unter `/usr/sap/{SID}/home/.hdb/` eine eindeutige Gruppe von SSFS-Dateien befindet. In diesem Pfad darf nur ein Ordner vorhanden sein.
 
-## <a name="create-a-recovery-service-vault"></a>Erstellen eines Recovery Services-Tresors
+## <a name="create-a-recovery-services-vault"></a>Erstellen eines Recovery Services-Tresors
 
 Bei einem Recovery Services-Tresor handelt es sich um eine Entität, in der alle im Laufe der Zeit erstellten Sicherungen und Wiederherstellungspunkte gespeichert werden. Der Recovery Services-Tresor enthält auch die Sicherungsrichtlinien, die den geschützten virtuellen Computern zugeordnet sind.
 
@@ -149,7 +149,7 @@ So erstellen Sie einen Recovery Services-Tresor
 
    ![Erstellen eines Recovery Services-Tresors](./media/tutorial-backup-sap-hana-db/create-vault.png)
 
-   * **Name**: Der Name wird zum Identifizieren des Recovery Services-Tresors verwendet und muss für das Azure-Abonnement eindeutig sein. Geben Sie einen Namen ein, der mindestens zwei, aber nicht mehr als 50 Zeichen enthält. Der Name muss mit einem Buchstaben beginnen und darf nur Buchstaben, Zahlen und Bindestriche enthalten. In diesem Tutorial haben wir den Namen **SAPHanaVault**verwendet.
+   * **Name**: Der Name wird zum Identifizieren des Recovery Services-Tresors verwendet und muss für das Azure-Abonnement eindeutig sein. Geben Sie einen Namen ein, der mindestens zwei, aber nicht mehr als 50 Zeichen enthält. Der Name muss mit einem Buchstaben beginnen und darf nur Buchstaben, Zahlen und Bindestriche enthalten. In diesem Tutorial haben wir den Namen **SAPHanaVault**verwendet.
    * **Abonnement**: Wählen Sie das zu verwendende Abonnement aus. Wenn Sie nur in einem Abonnement Mitglied sind, wird dessen Name angezeigt. Falls Sie nicht sicher sind, welches Abonnement geeignet ist, können Sie das Standardabonnement bzw. das vorgeschlagene Abonnement verwenden. Es sind nur dann mehrere Auswahlmöglichkeiten verfügbar, wenn Ihr Geschäfts-, Schul- oder Unikonto mehreren Azure-Abonnements zugeordnet ist. Hier haben wir das Abonnement **SAP HANA Solution Lab** verwendet.
    * **Ressourcengruppe**: Verwenden Sie eine vorhandene Ressourcengruppe, oder erstellen Sie eine neue Ressourcengruppe. Hier haben wir **SAPHANADemo** verwendet.<br>
    Um eine Liste der verfügbaren Ressourcengruppen in Ihrem Abonnement anzuzeigen, wählen Sie **Vorhandene verwenden** und dann eine Ressource im Dropdownlistenfeld aus. Wählen Sie zum Erstellen einer neuen Ressourcengruppe **Neu erstellen** aus, und geben Sie den Namen ein. Umfassende Informationen zu Ressourcengruppen finden Sie unter [Übersicht über den Azure Resource Manager](../azure-resource-manager/management/overview.md).
@@ -159,7 +159,7 @@ So erstellen Sie einen Recovery Services-Tresor
 
    ![Auswählen von „Bewerten + erstellen“](./media/tutorial-backup-sap-hana-db/review-create.png)
 
-Der Recovery Services-Tresor wird jetzt erstellt.
+Der Recovery Services-Tresor wird jetzt erstellt.
 
 ## <a name="discover-the-databases"></a>Ermitteln der Datenbanken
 

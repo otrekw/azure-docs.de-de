@@ -3,13 +3,13 @@ title: Verwenden von Tasks mit mehreren Instanzen zum Ausführen von MPI-Anwendu
 description: Erfahren Sie, wie MPI-Anwendungen (Message Passing Interface) mithilfe des Tasktyps mit mehreren Instanzen in Azure Batch ausgeführt werden.
 ms.topic: how-to
 ms.date: 03/13/2019
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 66cedc4cdb7c55401b7dbbc892687d08f56eb875
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.custom: H1Hack27Feb2017, devx-track-csharp
+ms.openlocfilehash: fd39af127d975f085bbd55fe2a21f925b5aae8e6
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86147374"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88926370"
 ---
 # <a name="use-multi-instance-tasks-to-run-message-passing-interface-mpi-applications-in-batch"></a>Verwenden von Tasks mit mehreren Instanzen zum Ausführen von MPI-Anwendungen (Message Passing Interface) in Batch
 

@@ -3,14 +3,14 @@ title: Konfigurieren von Azure Red Hat OpenShift, Version 3.x mit Azure Monitor
 description: In diesem Artikel wird beschrieben, wie Sie die Überwachung eines in Azure Red Hat OpenShift, Version 3 und höher gehosteten Kubernetes-Clusters mit Azure Monitor konfigurieren können.
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: aac70ccc40da15318dd2dece17e429bb091e1860
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: e462fb25672fa1912f7bb24efad4ea9a6d27d078
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87317976"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816642"
 ---
-# <a name="configure-azure-red-hat-openshift-v3-with-azure-monitor-for-containers"></a>Konfigurieren von Azure Red Hat OpenShift, Version 3 mit Azure Monitor für Container
+# <a name="configure-azure-red-hat-openshift-v3-with-azure-monitor-for-containers"></a>Konfigurieren von Azure Red Hat OpenShift, Version 3 mit Azure Monitor für Container 
 
 Azure Monitor für Container bietet umfassende Überwachungsfunktionen für Azure Kubernetes Service- (AKS) und AKS-Engine-Cluster. In diesem Artikel wird beschrieben, wie Sie die Überwachung von auf [Azure Red Hat OpenShift,](../../openshift/intro-openshift.md) Version 3 und der aktuell unterstützten Unterversion gehosteten Kubernetes-Clustern aktivieren, um eine ähnliche Überwachung zu erreichen.
 

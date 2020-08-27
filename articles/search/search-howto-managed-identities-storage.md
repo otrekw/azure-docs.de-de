@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/18/2020
-ms.openlocfilehash: dacfeeff06d58a084d4313ca50b51f262cf61381
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 30305607ea291587f7751b7e8048924f995251e9
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88553079"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88917974"
 ---
 # <a name="set-up-a-connection-to-an-azure-storage-account-using-a-managed-identity-preview"></a>Einrichten einer Verbindung mit einem Azure Storage-Konto mithilfe einer verwalteten Identität (Vorschau)
 
@@ -68,7 +68,7 @@ In diesem Schritt erteilen Sie dem Azure Cognitive Search-Dienst die Berechtigun
 
 ### <a name="3---create-the-data-source"></a>3\. Erstellen der Datenquelle
 
-Die Verbindungszeichenfolge für verwaltete Identitäten wird von der [REST-API](https://docs.microsoft.com/rest/api/searchservice/create-data-source), dem Azure-Portal und dem [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasource?view=azure-dotnet) unterstützt. Im Folgenden finden Sie ein Beispiel für das Erstellen einer Datenquelle zum Indizieren von Daten aus einem Speicherkonto mithilfe der [REST-API](https://docs.microsoft.com/rest/api/searchservice/create-data-source) und einer Verbindungszeichenfolge für verwaltete Identitäten. Das Format der Verbindungszeichenfolge für verwaltete Identitäten ist für die REST-API, das .NET SDK und das Azure-Portal identisch.
+Die Verbindungszeichenfolge für verwaltete Identitäten wird von der [REST-API](/rest/api/searchservice/create-data-source), dem Azure-Portal und dem [.NET SDK](/dotnet/api/microsoft.azure.search.models.datasource?view=azure-dotnet) unterstützt. Im Folgenden finden Sie ein Beispiel für das Erstellen einer Datenquelle zum Indizieren von Daten aus einem Speicherkonto mithilfe der [REST-API](/rest/api/searchservice/create-data-source) und einer Verbindungszeichenfolge für verwaltete Identitäten. Das Format der Verbindungszeichenfolge für verwaltete Identitäten ist für die REST-API, das .NET SDK und das Azure-Portal identisch.
 
 Bei der Indizierung über ein Speicherkonto muss die Datenquelle über die folgenden erforderlichen Eigenschaften verfügen:
 
@@ -83,7 +83,7 @@ Bei der Indizierung über ein Speicherkonto muss die Datenquelle über die folge
         * *ResourceId=/subscriptions/**Ihre Abonnement-ID**/resourceGroups/**Ihr Ressourcengruppenname**/providers/Microsoft.Storage/storageAccounts/**Ihr Speicherkontoname**/;*
 * Mit **container** wird ein Container oder Tabellenname in Ihrem Speicherkonto festgelegt. Standardmäßig können alle Blobs im Container abgerufen werden. Wenn Sie nur Blobs in einem bestimmten virtuellen Verzeichnis indizieren möchten, können Sie dieses Verzeichnis mit dem optionalen **query**-Parameter angeben.
 
-Beispiel zum Erstellen eines Blob-Datenquellenobjekts mithilfe der [REST-API](https://docs.microsoft.com/rest/api/searchservice/create-data-source):
+Beispiel zum Erstellen eines Blob-Datenquellenobjekts mithilfe der [REST-API](/rest/api/searchservice/create-data-source):
 
 ```
 POST https://[service name].search.windows.net/datasources?api-version=2020-06-30
@@ -118,7 +118,7 @@ Hier sehen Sie, wie Sie einen Index mit einem durchsuchbaren `content`-Feld zum 
     }
 ```
 
-Weitere Informationen zum Erstellen von Indizes finden Sie unter [Create Index](https://docs.microsoft.com/rest/api/searchservice/create-index) (Index erstellen).
+Weitere Informationen zum Erstellen von Indizes finden Sie unter [Create Index](/rest/api/searchservice/create-index) (Index erstellen).
 
 ### <a name="5---create-the-indexer"></a>5\. Erstellen des Indexers
 
@@ -143,7 +143,7 @@ Beispielindexerdefinition für einen Blobindexer:
 
 Dieser Indexer wird alle zwei Stunden ausgeführt (das Planungsintervall wird auf „PT2H“ festgelegt). Um einen Indexer alle 30 Minuten auszuführen, legen Sie das Intervall auf „PT30M“ fest. Das kürzeste unterstützte Intervall beträgt fünf Minuten. Der Zeitplan ist optional. Ohne Zeitplan wird ein Indexer nur einmal bei seiner Erstellung ausgeführt. Allerdings können Sie ein Indexer bei Bedarf jederzeit ausführen.   
 
-Weitere Informationen zur API zum Erstellen eines Indexers finden Sie unter [Erstellen eines Indexers](https://docs.microsoft.com/rest/api/searchservice/create-indexer).
+Weitere Informationen zur API zum Erstellen eines Indexers finden Sie unter [Erstellen eines Indexers](/rest/api/searchservice/create-indexer).
 
 Weitere Informationen zum Definieren von Indexerzeitplänen finden Sie unter [Festlegen eines Zeitplans für Indexer in der kognitiven Azure-Suche](search-howto-schedule-indexers.md).
 

@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 31bc9a5f38d50318f858a4d7169391e9d2e5e610
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 775b296185f9f0f0e967ada2688e24158f36360e
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87848729"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88648359"
 ---
 # <a name="eav4-and-easv4-series"></a>Eav4- und Easv4-Serie
 
@@ -83,7 +83,7 @@ Die Größen der Easv4-Serie basieren auf dem AMD-Prozessor EPYC<sup>TM</sup> 74
 
 Preisrechner: [Preisrechner](https://azure.microsoft.com/pricing/calculator/)
 
-Weitere Informationen zu Datenträgertypen: [Datenträgertypen](./linux/disks-types.md#ultra-disk)
+Weitere Informationen zu Datenträgertypen: [Datenträgertypen](./disks-types.md#ultra-disk)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

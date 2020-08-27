@@ -46,9 +46,11 @@
       href: dns-settings.md
     - name: 'Bereitstellen mehrerer öffentlicher IP-Adressen: PowerShell'
       href: multiple-public-ip-powershell.md
+    - name: Definieren einer Regelhierarchie
+      href: rule-hierarchy.md
 - name: Verweis
   items:
-    - name: Azure CLI
+    - name: Azure-Befehlszeilenschnittstelle
       href: /cli/azure/ext/azure-firewall/network/firewall/policy
     - name: Azure PowerShell
       href: /powershell/module/az.network/new-azfirewallpolicy

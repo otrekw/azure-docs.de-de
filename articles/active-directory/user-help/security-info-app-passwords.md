@@ -11,12 +11,12 @@ ms.subservice: user-help
 ms.topic: end-user-help
 ms.date: 02/13/2018
 ms.author: curtand
-ms.openlocfilehash: e5ad882f172007e2563f832ec8eb61145cd0b36a
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 9de054162a59b10fbd02bed9b3e84634ee12125b
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744506"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88799195"
 ---
 # <a name="create-app-passwords-from-the-security-info-preview-page"></a>Erstellen von App-Kennwörtern auf der Seite „Sicherheitsinformationen“ (Vorschau)
 
@@ -84,4 +84,4 @@ Wenn Sie eine App, die ein App-Kennwort erfordert, nicht mehr benötigen, könne
 
 ## <a name="for-more-information"></a>Weitere Informationen finden Sie unter
 
-- Weitere Informationen zur Seite **Sicherheitsinformationen** und deren Einrichtung finden Sie unter [Übersicht über die Sicherheitsinformation](user-help-security-info-overview.md).
+- Weitere Informationen zur Seite **Sicherheitsinformationen** und deren Einrichtung finden Sie unter [Übersicht über die Sicherheitsinformation](./security-info-setup-signin.md).

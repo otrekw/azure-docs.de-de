@@ -11,21 +11,21 @@ ms.subservice: user-help
 ms.topic: end-user-help
 ms.date: 05/28/2020
 ms.author: curtand
-ms.openlocfilehash: 58ec2c00e75b12d6010b106ca7daed0da234bf1d
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: b83cdf0b069eac2e46cfdd54edc11a1aa5a41075
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84266116"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88799042"
 ---
 # <a name="reset-your-work-or-school-password-using-security-info"></a>Zurücksetzen des Kennworts für Ihr Geschäfts-, Schul- oder Unikonto mithilfe von Sicherheitsinformationen
 
-Wenn Sie das Kennwort für Ihr Geschäfts-, Schul -oder Unikonto vergessen haben, von Ihrem Unternehmen keines erhalten haben oder aus Ihrem Konto ausgesperrt wurden, können Sie Ihre Sicherheitsinformation und Ihr mobiles Gerät verwenden, um das Kennwort Ihres Geschäfts-, Schul -oder Unikontos zurückzusetzen. Ihr Administrator muss dieses Feature aktivieren, damit Sie Ihre Informationen einrichten und [Ihr Kennwort zurücksetzen](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-passwords-reset-register) können.
+Wenn Sie das Kennwort für Ihr Geschäfts-, Schul -oder Unikonto vergessen haben, von Ihrem Unternehmen keines erhalten haben oder aus Ihrem Konto ausgesperrt wurden, können Sie Ihre Sicherheitsinformation und Ihr mobiles Gerät verwenden, um das Kennwort Ihres Geschäfts-, Schul -oder Unikontos zurückzusetzen. Ihr Administrator muss dieses Feature aktivieren, damit Sie Ihre Informationen einrichten und [Ihr Kennwort zurücksetzen](./active-directory-passwords-reset-register.md) können.
 
-Wenn Sie Ihr Kennwort kennen und es ändern möchten, führen Sie die Schritte in den Abschnitten zum [Ändern des Kennworts](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-passwords-update-your-own-password#how-to-change-your-password) dieses Artikels aus.
+Wenn Sie Ihr Kennwort kennen und es ändern möchten, führen Sie die Schritte in den Abschnitten zum [Ändern des Kennworts](#how-to-change-your-password) dieses Artikels aus.
 
 >[!Important]
->Dieser Artikel richtet sich an Benutzer, die versuchen, ein vergessenes oder unbekanntes Kennwort für ein Geschäfts-, Schul- oder Unikonto zurückzusetzen. Wenn Sie ein Administrator sind und nach Informationen zum Aktivieren der Self-Service-Kennwortzurücksetzung für Ihre Mitarbeiter oder andere Benutzer suchen, lesen Sie [Bereitstellen von Self-Service-Kennwortzurücksetzung in Azure AD](https://docs.microsoft.com/azure/active-directory/authentication/howto-sspr-deployment) und weitere Artikel zu diesem Thema.
+>Dieser Artikel richtet sich an Benutzer, die versuchen, ein vergessenes oder unbekanntes Kennwort für ein Geschäfts-, Schul- oder Unikonto zurückzusetzen. Wenn Sie ein Administrator sind und nach Informationen zum Aktivieren der Self-Service-Kennwortzurücksetzung für Ihre Mitarbeiter oder andere Benutzer suchen, lesen Sie [Bereitstellen von Self-Service-Kennwortzurücksetzung in Azure AD](../authentication/howto-sspr-deployment.md) und weitere Artikel zu diesem Thema.
 
 ## <a name="how-to-reset-or-unlock-your-password-for-a-work-or-school-account"></a>Zurücksetzen oder Entsperren Ihres Kennworts für ein Geschäfts-, Schul- oder Unikonto
 
@@ -164,6 +164,6 @@ Hier finden Sie einige häufige Fehler und die passenden Lösungen:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Unter [Übersicht über die Sicherheitsinformationen (Vorschau)](user-help-security-info-overview.md) erfahren Sie mehr über die Sicherheitsinformationen.
+- Unter [Übersicht über die Sicherheitsinformationen (Vorschau)](./security-info-setup-signin.md) erfahren Sie mehr über die Sicherheitsinformationen.
 
 - Wenn Sie versuchen, wieder Zugriff auf ein persönliches Konto (beispielsweise ein Xbox-, hotmail.com- oder outlook.com-Konto) zu erhalten, probieren Sie die Vorschläge im Artikel [Wenn Sie sich nicht bei Ihrem Microsoft-Konto anmelden können](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) aus.

@@ -1,22 +1,22 @@
 ---
 title: 'Auszahlungsdetails nach Region: Kommerzieller Microsoft-Marketplace'
-description: Hier erfahren Sie, wie die voraussichtliche Zeit zum Überweisen von Zahlungen und die Microsoft-Storefronts, von denen Sie Zahlungen erhalten können, von Ihrem Land/Ihrer Region und dem Typ des Auszahlungskontos abhängen.
+description: Hier erfahren Sie, wie die voraussichtliche Zeit zum Überweisen von Zahlungen und die Microsoft-Onlineshops, von denen Sie Zahlungen erhalten können, von Ihrem Land/Ihrer Region und dem Typ des Auszahlungskontos abhängen.
 author: mingshen-ms
 ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/24/2020
-ms.openlocfilehash: 44246fa122b7c602e47c44e48c43c2a42d01de77
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: f5614da7eac0717894d2bcb3c9cfdd959cb57f72
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327326"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607289"
 ---
 # <a name="payment-thresholds-methods-and-time-frames"></a>Zahlungsschwellenwerte, -methoden und -zeitrahmen
 
-Die voraussichtliche Zeit zum Überweisen von Zahlungen und die Storefronts, von denen Sie Zahlungen erhalten können, hängen von Ihrem Land/Ihrer Region und dem Typ des Auszahlungskontos ab. In diesem Artikel werden die in den einzelnen Ländern und Regionen unterstützten Zahlungsmethoden beschrieben.
+Die voraussichtliche Zeit zum Überweisen von Zahlungen und die Onlineshops, von denen Sie Zahlungen erhalten können, hängen von Ihrem Land/Ihrer Region und dem Typ des Auszahlungskontos ab. In diesem Artikel werden die in den einzelnen Ländern und Regionen unterstützten Zahlungsmethoden beschrieben.
 
 Für jedes Land und jede Region verwenden wir ACH/SEPA-Überweisungen oder telegrafische Geldüberweisungen für Zahlungen. In einigen Ländern und Regionen wird auch PayPal als Zahlungsmethode unterstützt.
 

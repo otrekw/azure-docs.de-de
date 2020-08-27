@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 06/16/2020
 ms.custom: sfrev
-ms.openlocfilehash: 1dcb2095416b74eb8dd805d811ecc7142a6bafb8
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 005a04833b95e893758fda768113801c5a4f6f66
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091622"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88207455"
 ---
 # <a name="prepare-your-development-environment-on-windows"></a>Vorbereiten Ihrer Entwicklungsumgebung unter Windows
 
@@ -68,8 +68,8 @@ Wenn Sie nur das SDK benötigen, können Sie dieses Paket installieren:
 
 Aktuelle Versionen:
 
-* Service Fabric-SDK und -Tools 4.1.428
-* Service Fabric-Runtime 7.1.428
+* Service Fabric-SDK und -Tools 4.1.456
+* Service Fabric-Runtime 7.1.456
 
 Eine Liste mit unterstützten Versionen finden Sie unter [Unterstützte Service Fabric-Versionen](service-fabric-versions.md).
 

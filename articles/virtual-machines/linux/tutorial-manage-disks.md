@@ -1,26 +1,20 @@
 ---
 title: 'Tutorial: Verwalten von Azure-Datenträgern mit der Azure-CLI'
 description: In diesem Tutorial erfahren Sie, wie Sie die Azure CLI zum Erstellen und Verwalten von Azure-Datenträgern für virtuelle Computer verwenden.
-services: virtual-machines-linux
-documentationcenter: virtual-machines
 author: cynthn
-manager: gwallace
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.topic: tutorial
-ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 11/14/2018
+ms.date: 08/20/2020
 ms.author: cynthn
 ms.custom: mvc, devx-track-azurecli
 ms.subservice: disks
-ms.openlocfilehash: 48d9c51c5d008bf652e782573c891cb0e0580f8c
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 4806fa51be859bd1bdc2a2abd5410f8aa8f4a32b
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87831310"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757672"
 ---
 # <a name="tutorial---manage-azure-disks-with-the-azure-cli"></a>Tutorial: Verwalten von Azure-Datenträgern mit der Azure-CLI
 
@@ -49,20 +43,20 @@ Zusätzliche Datenträger können hinzugefügt werden, wenn Sie Anwendungen inst
 
 ## <a name="vm-disk-types"></a>VM-Datenträgertypen
 
-In Azure stehen zwei Arten von Datenträgern zur Verfügung: Standard und Premium.
+In Azure stehen zwei Arten von Datenträgern zur Verfügung.
 
-### <a name="standard-disk"></a>Standarddatenträger
+**Standarddatenträger:** Basieren auf Festplatten und stellen eine kostengünstige, leistungsstarke Speicherlösung dar. Standarddatenträger sind ideal für eine kostengünstige Entwicklungs- und Testworkload.
 
-Standardspeicher basiert auf Festplatten und stellt eine kostengünstige, performante Speicherlösung dar. Standarddatenträger sind ideal für eine kostengünstige Entwicklungs- und Testworkload.
+**Premium-Datenträger:** Zeichnen sich durch SSD-basierte hohe Leistung und geringe Wartezeit aus. Sie eignen sich hervorragend für virtuelle Computer, auf denen die Produktionsworkload ausgeführt wird. VM-Größen mit dem Buchstaben **S** im [Namen der Größe](../vm-naming-conventions.md) unterstützen in der Regel Storage Premium. Virtuelle Computer der DS-, DSv2-, GS- und Fs-Serie etwa unterstützen Storage Premium. Bei Auswahl einer Datenträgergröße wird der Wert auf den nächsten Datenträgertyp aufgerundet. Liegt die Größe des Datenträgers beispielsweise über 64 GB, aber unter 128 GB, ist der Datenträgertyp P10. 
 
-### <a name="premium-disk"></a>Premium-Datenträger
+<br>
 
-Premium-Datenträger zeichnen sich durch SSD-basierte hohe Leistung und geringe Wartezeit aus. Sie eignen sich hervorragend für virtuelle Computer, auf denen die Produktionsworkload ausgeführt wird. Storage Premium unterstützt virtuelle Computer der DS-, DSv2-, GS- und FS-Serie. Bei Auswahl einer Datenträgergröße wird der Wert auf den nächsten Datenträgertyp aufgerundet. Liegt die Größe des Datenträgers z.B. unter 128GB, ist der Datenträgertyp P10. Wenn die Größe des Datenträgers zwischen 129 und 512GB liegt, ist die Größe P20. Bei mehr als 512 GB ist die Größe P30.
 
-### <a name="premium-disk-performance"></a>Leistung von Premium-Datenträgern
 [!INCLUDE [disk-storage-premium-ssd-sizes](../../../includes/disk-storage-premium-ssd-sizes.md)]
 
-In dieser Tabelle ist zwar die maximale IOPS-Anzahl pro Datenträger angegeben, eine höhere Leistung kann aber durch Striping mehrerer Datenträger erreicht werden. Eine Standard_GS5-VM kann z.B. ein Maximum von 80.000 IOPS erreichen. Ausführliche Informationen zur maximalen IOPS-Anzahl pro virtuellem Computer finden Sie unter [Größen für virtuelle Linux-Computer](../sizes.md).
+Im Gegensatz zu einem Standard-Speicherdatenträger sind bei der Bereitstellung eines Storage Premium-Datenträgers die Kapazität, die IOPS und der Durchsatz dieses Datenträgers garantiert. Wenn Sie beispielsweise einen P50-Datenträger erstellen, stellt Azure eine Speicherkapazität von 4.095 GB, 7.500 IOPS und einen Durchsatz von 250 MB/s für diesen Datenträger bereit. Die Anwendung kann die Kapazität und Leistung ganz oder teilweise nutzen. SSD Premium-Datenträger sind dafür ausgelegt, Wartezeiten im niedrigen einstelligen Millisekundenbereich sowie die in der vorherigen Tabelle beschriebenen IOPS und Durchsätze 99,9 % der Zeit bereitzustellen.
+
+In dieser Tabelle ist zwar die maximale IOPS-Anzahl pro Datenträger angegeben, eine höhere Leistung kann aber durch Striping mehrerer Datenträger erreicht werden. An einen virtuellen Standard_GS5-Computer können beispielsweise 64 Datenträger angefügt werden. Wenn jeder dieser Datenträger die Größe P30 hat, kann eine maximale Größe von 80.000 IOPS erreicht werden. Ausführliche Informationen zur maximalen IOPS-Anzahl pro VM finden Sie unter [Größen für virtuelle Windows-Computer in Azure](../sizes.md).
 
 ## <a name="launch-azure-cloud-shell"></a>Starten von Azure Cloud Shell
 
@@ -119,16 +113,17 @@ Stellen Sie eine SSH-Verbindung mit dem virtuellen Computer her. Ersetzen Sie di
 ssh 10.101.10.10
 ```
 
-Partitionieren Sie den Datenträger mit `fdisk`.
+Partitionieren Sie den Datenträger mit `parted`.
 
 ```bash
-(echo n; echo p; echo 1; echo ; echo ; echo w) | sudo fdisk /dev/sdc
+sudo parted /dev/sdc --script mklabel gpt mkpart xfspart xfs 0% 100%
 ```
 
-Schreiben Sie mit dem Befehl `mkfs` ein Dateisystem auf die Partition:
+Schreiben Sie mit dem Befehl `mkfs` ein Dateisystem auf die Partition: Verwenden Sie `partprobe`, um das Betriebssystem über die Änderung zu informieren.
 
 ```bash
-sudo mkfs -t ext4 /dev/sdc1
+sudo mkfs.xfs /dev/sdc1
+sudo partprobe /dev/sdc1
 ```
 
 Binden Sie den neuen Datenträger ein, damit im Betriebssystem darauf zugegriffen werden kann.
@@ -137,18 +132,19 @@ Binden Sie den neuen Datenträger ein, damit im Betriebssystem darauf zugegriffe
 sudo mkdir /datadrive && sudo mount /dev/sdc1 /datadrive
 ```
 
-Auf den Datenträger kann jetzt über den Bereitstellungspunkt *datadrive* zugegriffen werden. Dies kann durch Ausführung des Befehls `df -h` überprüft werden.
+Auf den Datenträger kann jetzt über den Bereitstellungspunkt `/datadrive` zugegriffen werden. Dies kann durch Ausführung des Befehls `df -h` überprüft werden.
 
 ```bash
-df -h
+df -h | grep -i "sd"
 ```
 
-Die Ausgabe zeigt das neue, auf */datadrive* bereitgestellte Laufwerk.
+Die Ausgabe zeigt das neue, auf `/datadrive` bereitgestellte Laufwerk.
 
 ```bash
 Filesystem      Size  Used Avail Use% Mounted on
-/dev/sda1        30G  1.4G   28G   5% /
-/dev/sdb1       6.8G   16M  6.4G   1% /mnt
+/dev/sda1        29G  2.0G   27G   7% /
+/dev/sda15      105M  3.6M  101M   4% /boot/efi
+/dev/sdb1        14G   41M   13G   1% /mnt
 /dev/sdc1        50G   52M   47G   1% /datadrive
 ```
 
@@ -164,11 +160,22 @@ Die Ausgabe zeigt die UUID des Laufwerks an, in diesem Fall `/dev/sdc1`.
 /dev/sdc1: UUID="33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e" TYPE="ext4"
 ```
 
-Fügen Sie der Datei */etc/fstab* eine Zeile ähnlich der folgenden hinzu.
+> [!NOTE]
+> Eine falsche Bearbeitung der Datei **/etc/fstab** könnte zu einem nicht startfähigen System führen. Wenn Sie sich nicht sicher sind, helfen Ihnen die Informationen zur richtigen Bearbeitung dieser Datei in der Dokumentation weiter. Außerdem wird empfohlen, ein Backup der Datei /etc/fstab zu erstellen, bevor Sie sie bearbeiten.
+
+Öffnen Sie die Datei `/etc/fstab` wie folgt in einem Text-Editor:
+
+```bash
+sudo nano /etc/fstab
+```
+
+Fügen Sie der Datei */etc/fstab* eine Zeile ähnlich der folgenden hinzu. Ersetzen Sie dabei den UUID-Wert durch Ihren eigenen Wert.
 
 ```bash
 UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive  ext4    defaults,nofail   1  2
 ```
+
+Wenn die Bearbeitung der Datei abgeschlossen ist, verwenden Sie `Ctrl+O`, um die Datei zu schreiben, und `Ctrl+X`, um den Editor zu beenden.
 
 Jetzt ist der Datenträger konfiguriert, und Sie können die SSH-Sitzung schließen.
 
@@ -182,7 +189,7 @@ Bei einer Momentaufnahme des Datenträger erstellt Azure eine schreibgeschützte
 
 ### <a name="create-snapshot"></a>Erstellen einer Momentaufnahme
 
-Vor dem Erstellen der Momentaufnahme eines VM-Datenträgers wird die ID oder der Name des Datenträgers benötigt. Rufen Sie die Datenträger-ID mit dem Befehl [az vm show](/cli/azure/vm#az-vm-show) ab. In diesem Beispiel wird die Datenträger-ID in einer Variablen gespeichert und kann in einem späteren Schritt verwendet werden.
+Damit Sie eine Momentaufnahme erstellen können, benötigen Sie die ID oder den Namen des Datenträgers. Zeigen Sie die Datenträger-ID mithilfe von [az vm show](/cli/azure/vm#az-vm-show) an. In diesem Beispiel wird die Datenträger-ID in einer Variablen gespeichert und kann in einem späteren Schritt verwendet werden.
 
 ```azurecli-interactive
 osdiskid=$(az vm show \
@@ -192,7 +199,7 @@ osdiskid=$(az vm show \
    -o tsv)
 ```
 
-Nachdem Sie jetzt die ID des VM-Datenträgers haben, wird mit dem folgenden Befehl dessen Momentaufnahme erstellt:
+Sie haben nun die ID und können mithilfe von [az snapshot create](/cli/azure/snapshot#az-snapshot-create) eine Momentaufnahme des Datenträgers erstellen.
 
 ```azurecli-interactive
 az snapshot create \
@@ -203,7 +210,7 @@ az snapshot create \
 
 ### <a name="create-disk-from-snapshot"></a>Erstellen eines Datenträgers aus der Momentaufnahme
 
-Diese Momentaufnahme kann dann in einen Datenträger konvertiert werden, mit dem wiederum der virtuelle Computer neu erstellt werden kann.
+Diese Momentaufnahme kann dann mithilfe von [az disk create](/cli/azure/disk#az-disk-create) in einen Datenträger konvertiert werden, mit dem wiederum der virtuelle Computer neu erstellt werden kann.
 
 ```azurecli-interactive
 az disk create \
@@ -214,7 +221,7 @@ az disk create \
 
 ### <a name="restore-virtual-machine-from-snapshot"></a>Wiederherstellen des virtuellen Computers aus der Momentaufnahme
 
-Löschen Sie den vorhandenen virtuellen Computer, um die Wiederherstellung des virtuellen Computers durchzuführen.
+Löschen Sie mithilfe von [az vm delete](/cli/azure/vm#az-vm-delete) den vorhandenen virtuellen Computer, um die Wiederherstellung des virtuellen Computers durchzuführen.
 
 ```azurecli-interactive
 az vm delete \
@@ -236,7 +243,7 @@ az vm create \
 
 Alle Datenträger müssen dem virtuellen Computer erneut angefügt werden.
 
-Finden Sie zuerst mithilfe des Befehls [az disk list](/cli/azure/disk#az-disk-list) den Namen des Datenträgers. In diesem Beispiel wird der Name des Datenträgers in eine Variable namens *datadisk* eingefügt, die im nächsten Schritt verwendet wird.
+Ermitteln Sie mithilfe des Befehls [az disk list](/cli/azure/disk#az-disk-list) den Namen des Datenträgers. In diesem Beispiel wird der Name des Datenträgers in eine Variable namens `datadisk` eingefügt, die im nächsten Schritt verwendet wird.
 
 ```azurecli-interactive
 datadisk=$(az disk list \
