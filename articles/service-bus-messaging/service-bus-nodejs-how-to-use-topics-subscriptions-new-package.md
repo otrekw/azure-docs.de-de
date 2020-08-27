@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 06/23/2020
 ms.author: spelluru
 ms.custom: devx-track-javascript
-ms.openlocfilehash: fafdf18a3593f7ec444e9970d99807cbfe0cb13d
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: bbb0f530d95c78b8b5da178ee1544830ac3f7132
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88080625"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88660595"
 ---
 # <a name="quickstart-how-to-use-service-bus-topics-and-subscriptions-with-nodejs-and-the-azureservice-bus-package"></a>Schnellstart: Verwenden von Service Bus-Themen und -Abonnements mit Node.js und dem Paket „azure/service-bus“
 In diesem Tutorial erfahren Sie, wie Sie ein Node.js-Programm schreiben, um mithilfe des neuen Pakets [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) Nachrichten an ein Service Bus-Thema zu senden und Nachrichten von einem Service Bus-Abonnement zu empfangen. Dieses Paket verwendet das schnellere [Advance Message Queueing Protocol 1.0](service-bus-amqp-overview.md). Im Gegensatz dazu hat das ältere Paket [azure-sb](https://www.npmjs.com/package/azure-sb) die [Service Bus-REST-Laufzeit-APIs](/rest/api/servicebus/service-bus-runtime-rest) verwendet. Die Beispiele sind in JavaScript geschrieben.
@@ -86,7 +86,7 @@ Service Bus-Themen unterstützen eine maximale Nachrichtengröße von 256 KB im 
 Die Interaktion mit einem Service Bus-Abonnement beginnt damit, die [ServiceBusClient](/javascript/api/@azure/service-bus/servicebusclient)-Klasse zu instanziieren und diese dann zum Instanziieren der [SubscriptionClient](/javascript/api/@azure/service-bus/subscriptionclient)-Klasse zu verwenden. Wenn Sie über den Abonnementclient verfügen, können Sie einen Empfänger erstellen und mit diesem die Methoden [receiveMessages](/javascript/api/@azure/service-bus/receiver#receivemessages-number--undefined---number-) oder [registerMessageHandler](/javascript/api/@azure/service-bus/receiver#registermessagehandler-onmessage--onerror--messagehandleroptions-) zum Empfangen von Nachrichten verwenden.
 
 1. Öffnen Sie Ihren bevorzugten Editor, z. B. [Visual Studio Code](https://code.visualstudio.com/).
-2. Erstellen Sie eine Datei namens `recieve.js`, und fügen Sie den folgenden Code ein. Mit diesem Code wird versucht, 10 Nachrichten aus dem Abonnement zu empfangen. Die tatsächliche Anzahl der empfangenen Nachrichten hängt von der Anzahl der Nachrichten im Abonnement und der Netzwerklatenz ab.
+2. Erstellen Sie eine Datei namens `receive.js`, und fügen Sie den folgenden Code ein. Mit diesem Code wird versucht, 10 Nachrichten aus dem Abonnement zu empfangen. Die tatsächliche Anzahl der empfangenen Nachrichten hängt von der Anzahl der Nachrichten im Abonnement und der Netzwerklatenz ab.
 
     ```javascript
     const { ServiceBusClient, ReceiveMode } = require("@azure/service-bus"); 
@@ -117,7 +117,7 @@ Die Interaktion mit einem Service Bus-Abonnement beginnt damit, die [ServiceBusC
     });
     ```
 3. Geben Sie die Verbindungszeichenfolge und den Namen des Abonnements im obigen Code ein.
-4. Führen Sie anschließend den Befehl `node receiveMessages.js` in einer Eingabeaufforderung aus, um diese Datei auszuführen.
+4. Führen Sie anschließend den Befehl `node receive.js` in einer Eingabeaufforderung aus, um diese Datei auszuführen.
 
 Glückwunsch! Sie haben soeben Nachrichten aus einem Service Bus-Abonnement erhalten.
 

@@ -4,15 +4,16 @@ description: Erfahren Sie, warum für Ihr kostenloses Azure-Konto Gebühren ange
 author: amberbhargava
 tags: billing
 ms.service: cost-management-billing
+ms.subservice: billing
 ms.topic: conceptual
-ms.date: 02/12/2020
+ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 557e099b4250d5514920aa6c22399ce225f35d92
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: f81c33f3b49352933801c8b89a2c3a1787c2356a
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77200947"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88682925"
 ---
 # <a name="avoid-charges-with-your-azure-free-account"></a>Vermeiden von Gebühren mit Ihrem kostenlosen Azure-Konto
 
@@ -23,7 +24,6 @@ Sehen wir uns einige der Gründe an, aus denen Gebühren für Ihr kostenloses Az
 ## <a name="your-credit-runs-out-or-is-expired"></a>Ihr Guthaben ist verbraucht oder abgelaufen
 
 Wenn Ihr Guthaben verbraucht oder nach 30 Tagen abgelaufen ist, werden Ihr Abonnement und Ihre Dienste deaktiviert. Damit Sie die Azure-Dienste weiterhin verwenden können, ist ein Upgrade Ihres Kontos erforderlich. Weitere Informationen finden Sie unter [Upgrade Ihres kostenlosen Azure-Kontos](upgrade-azure-subscription.md). Nach dem Upgrade haben Sie zwölf Monate lang weiterhin Zugriff auf kostenlose Dienst, und Ihnen wird nur die Nutzung in Rechnung gestellt, die über die kostenlosen Dienste und Mengen hinausgeht.
-
 
 ## <a name="usage-exceeds-the-limits-of-free-services"></a>Nutzung überschreitet die Grenzwerte für kostenlose Dienste
 

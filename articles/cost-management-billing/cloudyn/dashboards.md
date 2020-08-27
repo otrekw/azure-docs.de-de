@@ -6,15 +6,16 @@ ms.author: banders
 ms.date: 03/12/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
+ms.subservice: cloudyn
 ms.reviewer: vitavor
 ms.custom: seodec18
 ROBOTS: NOINDEX
-ms.openlocfilehash: 892df9a6e0eb4d791f818eed0a78c96a829e25a0
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 03d5e3959b85a2b0bd9ae30744051895ff026b77
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79464222"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88691223"
 ---
 # <a name="view-key-cost-metrics-with-dashboards"></a>Anzeigen der wichtigsten Kostenmetriken mit Dashboards
 
@@ -43,7 +44,7 @@ Um schnell mit einem benutzerdefinierten Dashboard zu beginnen, können Sie ein 
 
 So erstellen Sie ein benutzerdefiniertes Dashboard
 
-1. Klicken Sie auf der Startseite auf **Neu hinzufügen +** . Die Seite „Mein Dashboard“ wird angezeigt.  
+1. Klicken Sie auf der Startseite auf **Neu hinzufügen +**. Die Seite „Mein Dashboard“ wird angezeigt.  
     ![Die Seite „Mein Dashboard“, auf der Sie neue Berichte hinzufügen](./media/dashboards/my-dashboard.png)
 2. Klicken Sie auf **Neuen Bericht hinzufügen**. Das Feld „Bericht hinzufügen“ wird angezeigt.
 3. Wählen Sie den Bericht, den Sie dem Dashboardgadget hinzufügen möchten. Das Gadget wird dem Dashboard hinzugefügt.
