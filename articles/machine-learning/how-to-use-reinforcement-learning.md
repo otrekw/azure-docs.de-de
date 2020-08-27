@@ -10,12 +10,12 @@ author: peterclu
 ms.date: 05/05/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 0a043bf79818480e045fb1f82640639fd7dcb232
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: b5ad09925c4a81dd09bd1ddf171ffccb8413b12b
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87847634"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88650824"
 ---
 # <a name="reinforcement-learning-preview-with-azure-machine-learning"></a>Lernen durch Bestärkung (Vorschau) mit Azure Machine Learning
 
@@ -34,7 +34,7 @@ In diesem Artikel lernen Sie Folgendes:
 > * Übermitteln eines Experiments zum Starten eines Testlaufs
 > * Anzeigen der Ergebnisse
 
-Dieser Artikel basiert auf dem [RLlib Pong-Beispiel](https://aka.ms/azureml-rl-pong), das im Azure Machine Learning-Notebook-[GitHub-Repository](https://aka.ms/azureml-rl-notebooks) zu finden ist.
+Dieser Artikel basiert auf dem [RLlib Pong-Beispiel](https://aka.ms/azureml-rl-pong), das im Azure Machine Learning-Notebook-[GitHub-Repository](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/reinforcement-learning/README.md) zu finden ist.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -433,4 +433,4 @@ In kurzer Zeit haben Sie gelernt, mehrere Computeressourcen zu konfigurieren, um
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Artikel haben Sie erfahren, wie Sie einen Agent für Lernen durch Bestärkung mithilfe eines IMPALA-Agents trainieren. Weitere Beispiele finden Sie im [GitHub-Repository für Lernen durch Bestärkung von Azure Machine Learning](https://aka.ms/azureml-rl-notebooks).
+In diesem Artikel haben Sie erfahren, wie Sie einen Agent für Lernen durch Bestärkung mithilfe eines IMPALA-Agents trainieren. Weitere Beispiele finden Sie im [GitHub-Repository für Lernen durch Bestärkung von Azure Machine Learning](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/reinforcement-learning/README.md).

@@ -3,13 +3,13 @@ title: Verwenden von Azure Active Directory zum Authentifizieren von Batch Manag
 description: Es wird beschrieben, wie Azure Active Directory zum Authentifizieren von Anwendungen verwendet werden kann, für die die Batch Management .NET-Bibliothek genutzt wird.
 ms.topic: how-to
 ms.date: 04/27/2017
-ms.custom: has-adal-ref
-ms.openlocfilehash: 829a742c144f2bba39f1ca392e80db25640d4dee
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.custom: has-adal-ref, devx-track-csharp
+ms.openlocfilehash: ff49d5e88df7c56ed4dee0685f09e45eb372aa5c
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86141963"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88930212"
 ---
 # <a name="authenticate-batch-management-solutions-with-active-directory"></a>Authentifizieren von Batch Management-Lösungen mit Active Directory
 

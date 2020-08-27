@@ -15,22 +15,22 @@ ms.workload: infrastructure
 ms.date: 08/11/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4e1b510ed970b253adedef0fb6efb4abe0c3b65b
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: aa6aba12af08e2b5e044eaeb299ec6090ab6d750
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88506395"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88650467"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>SAP HANA: Speicherkonfigurationen für virtuelle Azure-Computer
 
 Azure bietet verschiedene geeignete Speichertypen für virtuelle Azure-Computer mit SAP HANA. Für **SAP HANA-zertifizierte Azure-Speichertypen** kommen unter anderem folgende Azure-Speichertypen in Frage: 
 
 - Azure SSD Premium oder Storage Premium 
-- [Ultra-Datenträger](../../linux/disks-enable-ultra-ssd.md)
+- [Ultra-Datenträger](../../disks-enable-ultra-ssd.md)
 - [Azure NetApp Files](https://azure.microsoft.com/services/netapp/) 
 
-Informationen zu diesen Datenträgertypen finden Sie im Artikel [Azure Storage-Typen für die SAP-Workload](./planning-guide-storage.md) und [Auswählen eines Datenträgertyps](../../linux/disks-types.md).
+Informationen zu diesen Datenträgertypen finden Sie im Artikel [Azure Storage-Typen für die SAP-Workload](./planning-guide-storage.md) und [Auswählen eines Datenträgertyps](../../disks-types.md).
 
 Azure bietet zwei Bereitstellungsmethoden für virtuelle Festplatten (VHDs) in Azure Storage Standard und Premium. Wir erwarten, dass Sie [verwalteter Azure-Datenträger](https://azure.microsoft.com/services/managed-disks/) für Azure Blob Storage-Bereitstellungen nutzen. 
 
@@ -59,7 +59,7 @@ Da für DBMS-Systeme (und somit auch für SAP HANA) eine geringe Speicherlatenz 
 
 Einige Leitprinzipien bei der Auswahl Ihrer Speicherkonfiguration für HANA können wie folgt aufgeführt werden:
 
-- Entscheiden Sie sich für den Speichertyp auf der Grundlage von [Azure Storage-Typen für die SAP-Workload](./planning-guide-storage.md) und [Auswählen eines Datenträgertyps](../../linux/disks-types.md).
+- Entscheiden Sie sich für den Speichertyp auf der Grundlage von [Azure Storage-Typen für die SAP-Workload](./planning-guide-storage.md) und [Auswählen eines Datenträgertyps](../../disks-types.md).
 - Beachten Sie den E/A-Gesamtdurchsatz und die IOPS-Grenzwerte eines virtuellen Computers, wenn Sie die Größe festlegen oder sich für einen virtuellen Computer entscheiden. Der VM-Gesamtspeicherdurchsatz ist im Artikel [Arbeitsspeicheroptimierte Größen virtueller Computer](../../sizes-memory.md) beschrieben.
 - Versuchen Sie bei der Entscheidung für die Speicherkonfiguration mit Ihrer **/hana/data**-Volumenkonfiguration unter dem Gesamtdurchsatz des virtuellen Computers zu bleiben. Beim Schreiben von Sicherungspunkten kann SAP HANA bei der E/A-Ausgabe aggressiv sein. Es ist leicht möglich, beim Schreiben eines Sicherungspunkts bis an die Durchsatzgrenzen Ihres **/hana/data**-Volumens zu gehen. Wenn Ihre Datenträger, die das **/hana/data**-Volume bilden, einen höheren Durchsatz aufweisen, als Ihre VM zulässt, könnten Sie in Situationen geraten, in denen der vom Sicherungspunkt verwendete Durchsatz die Durchsatzanforderungen der Schreibvorgänge für das Wiederholungsprotokoll stört. Eine Situation, die sich auf den Durchsatz der Anwendung auswirken kann.
 - Wenn Sie Azure Storage Premium verwenden, ist die kostengünstigste Konfiguration die Verwendung von logischen Volume-Managern zur Erstellung von Stripesets für die Volumes **/hana/data** und **/hana/log**.
@@ -218,7 +218,7 @@ Für die anderen Volumes, einschließlich **/hana/log** auf Disk Ultra, könnte 
 
 
 ## <a name="azure-ultra-disk-storage-configuration-for-sap-hana"></a>Azure Ultra-Datenträgerspeicherkonfiguration für SAP HANA
-Ein weiterer Azure-Speichertyp wird [Azure Disk Ultra](../../windows/disks-types.md#ultra-disk) genannt. Der wesentliche Unterschied zwischen dem bisher angebotenen Azure-Speicher und einem Ultra-Datenträger besteht darin, dass die Datenträgermerkmale nicht mehr an die Größe des Datenträgers gebunden sind. Als Kunde können Sie diese Merkmale für einen Ultra-Datenträger definieren:
+Ein weiterer Azure-Speichertyp wird [Azure Disk Ultra](../../disks-types.md#ultra-disk) genannt. Der wesentliche Unterschied zwischen dem bisher angebotenen Azure-Speicher und einem Ultra-Datenträger besteht darin, dass die Datenträgermerkmale nicht mehr an die Größe des Datenträgers gebunden sind. Als Kunde können Sie diese Merkmale für einen Ultra-Datenträger definieren:
 
 - Größe eines Datenträgers zwischen 4 GiB und 65.536 GiB
 - IOPS-Bereich zwischen 100 IOPS und 160.000 IOPS (Höchstwert abhängig von VM-Typen)

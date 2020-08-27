@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/21/2019
 ms.author: mayg
-ms.openlocfilehash: 0d39f763d3cdc90f89e0bcd17d0facc67551ffc0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b2bb351de292ff2015cdcbd388155063a86a7359
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84710268"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88653578"
 ---
 # <a name="analyze-the-azure-site-recovery-deployment-planner-report"></a>Analysieren des Azure Site Recovery-Bereitstellungsplaner-Berichts
 In diesem Artikel werden die Arbeitsblätter beschrieben, die im Excel-Bericht enthalten sind, der mit dem Azure Site Recovery-Bereitstellungsplaner für das Szenario „Hyper-V zu Azure“ erstellt wird.
@@ -179,7 +179,7 @@ Der Excel-Bericht, der mit dem Site Recovery-Bereitstellungsplaner erstellt wurd
 
 **VM Name** (Name des virtuellen Computers): Der VM-Name, der in „VMListFile“ verwendet wird, wenn ein Bericht erstellt wird. In dieser Spalte sind auch die Datenträger (VHDs) angegeben, die an die VMs angefügt sind. Die Namen enthalten die Hyper-V-Hostnamen, für die die VMs angeordnet wurden, als sie vom Tool während des Profilerstellungszeitraums erkannt wurden.
 
-**VM Compatibility** (VM-Kompatibilität): Mögliche Werte sind **Yes** und **Yes**\*. **Yes**\* steht für Fälle, in denen die VM für [Premium-SSDs](../virtual-machines/windows/disks-types.md) geeignet ist. Hier wird für die hohe Datenänderungsrate der Profilerstellung bzw. den IOPS-Datenträger eine höhere Premium-Datenträgergröße als die Größe verwendet, die dem Datenträger zugeordnet ist. Das Speicherkonto entscheidet basierend auf der Größe, welchem Storage Premium-Datenträgertyp ein Datenträger zugeordnet wird: 
+**VM Compatibility** (VM-Kompatibilität): Mögliche Werte sind **Yes** und **Yes**\*. **Yes**\* steht für Fälle, in denen die VM für [Premium-SSDs](../virtual-machines/disks-types.md) geeignet ist. Hier wird für die hohe Datenänderungsrate der Profilerstellung bzw. den IOPS-Datenträger eine höhere Premium-Datenträgergröße als die Größe verwendet, die dem Datenträger zugeordnet ist. Das Speicherkonto entscheidet basierend auf der Größe, welchem Storage Premium-Datenträgertyp ein Datenträger zugeordnet wird: 
 * Bei weniger als 128 GB ist die Kategorie P10.
 * Bei 128 GB bis 256 GB wird die Kategorie P15 verwendet.
 * Bei 256 GB bis 512 GB wird die Kategorie P20 verwendet.

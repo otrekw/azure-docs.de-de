@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 03/05/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 78a4a22771f7880c48722f410f3a2fae0c66e9c8
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8265d328a23e871dc25692f22138a7bb648a8323
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87035790"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88653595"
 ---
 # <a name="sap-workload-configurations-with-azure-availability-zones"></a>SAP-Workloadkonfigurationen mit Azure-Verfügbarkeitszonen
 [Azure-Verfügbarkeitszonen](../../../availability-zones/az-overview.md) sind eines der Hochverfügbarkeitsfeatures von Azure. Die Verwendung von Verfügbarkeitszonen verbessert die allgemeine Verfügbarkeit von SAP-Workloads in Azure. Dieses Feature steht bereits in einigen [Azure-Regionen](https://azure.microsoft.com/global-infrastructure/regions/) zur Verfügung. Künftig wird es in weiteren Regionen verfügbar sein.
@@ -109,7 +109,7 @@ Die folgenden Überlegungen gelten für diese Konfiguration:
 - Die Lastenausgleichsmodule für die Failovercluster von SAP Central Services und die DBMS-Ebene müssen [Azure Load Balancer-Instanzen der Standard-SKU](../../../load-balancer/load-balancer-standard-availability-zones.md) sein. Der Load Balancer Basic funktioniert nicht zonenübergreifend.
 - Das virtuelle Azure-Netzwerk, das Sie zum Hosten des SAP-Systems bereitgestellt haben, wird gemeinsam mit seinen Subnetzen über Zonen verteilt. Sie benötigen keine separaten virtuellen Netzwerke für jede Zone.
 - Für alle VMs, die Sie bereitstellen, müssen Sie [Azure Managed Disks](https://azure.microsoft.com/services/managed-disks/) verwenden. Nicht verwaltete Datenträger werden für zonale Bereitstellungen nicht unterstützt.
-- Azure Storage Premium und [SSD Ultra-Speicher](../../windows/disks-types.md#ultra-disk) unterstützen keinen zonenübergreifenden Speicherreplikationstyp. Die Anwendung (DBMS oder SAP Central Services) muss wichtige Daten replizieren.
+- Azure Storage Premium und [SSD Ultra-Speicher](../../disks-types.md#ultra-disk) unterstützen keinen zonenübergreifenden Speicherreplikationstyp. Die Anwendung (DBMS oder SAP Central Services) muss wichtige Daten replizieren.
 - Das gilt auch für das freigegebene Verzeichnis „sapmnt“, das ein freigegebener Datenträger (Windows), eine CIFS-Freigabe (Windows) oder NFS-Freigabe (Linux) ist. Sie müssen eine Technologie verwenden, die diese freigegebenen Datenträger oder Dateifreigaben zwischen den Zonen repliziert. Die folgenden Technologien werden unterstützt:
   - Für Windows: eine Clusterlösung, die SIOS DataKeeper verwendet, wie in [Gruppieren einer SAP ASCS/SCS-Instanz in einem Windows-Failovercluster mithilfe freigegebener Clusterdatenträger in Azure](./sap-high-availability-guide-wsfc-shared-disk.md) dokumentiert.
   - Für SUSE Linux: eine NFS-Freigabe, die wie in [Hochverfügbarkeit für NFS auf Azure-VMs unter SUSE Linux Enterprise Server](./high-availability-guide-suse-nfs.md) dokumentiert erstellt wird.
@@ -137,7 +137,7 @@ Die folgenden Überlegungen gelten für diese Konfiguration:
 - Die Lastenausgleichsmodule für die Failovercluster von SAP Central Services und die DBMS-Ebene müssen [Azure Load Balancer-Instanzen der Standard-SKU](../../../load-balancer/load-balancer-standard-availability-zones.md) sein. Der Load Balancer Basic funktioniert nicht zonenübergreifend.
 - Das virtuelle Azure-Netzwerk, das Sie zum Hosten des SAP-Systems bereitgestellt haben, wird gemeinsam mit seinen Subnetzen über Zonen verteilt. Sie benötigen keine separaten virtuellen Netzwerke für jede Zone.
 - Für alle VMs, die Sie bereitstellen, müssen Sie [Azure Managed Disks](https://azure.microsoft.com/services/managed-disks/) verwenden. Nicht verwaltete Datenträger werden für zonale Bereitstellungen nicht unterstützt.
-- Azure Storage Premium und [SSD Ultra-Speicher](../../windows/disks-types.md#ultra-disk) unterstützen keinen zonenübergreifenden Speicherreplikationstyp. Die Anwendung (DBMS oder SAP Central Services) muss wichtige Daten replizieren.
+- Azure Storage Premium und [SSD Ultra-Speicher](../../disks-types.md#ultra-disk) unterstützen keinen zonenübergreifenden Speicherreplikationstyp. Die Anwendung (DBMS oder SAP Central Services) muss wichtige Daten replizieren.
 - Das gilt auch für das freigegebene Verzeichnis „sapmnt“, das ein freigegebener Datenträger (Windows), eine CIFS-Freigabe (Windows) oder NFS-Freigabe (Linux) ist. Sie müssen eine Technologie verwenden, die diese freigegebenen Datenträger oder Dateifreigaben zwischen den Zonen repliziert. Die folgenden Technologien werden unterstützt:
     - Für Windows: eine Clusterlösung, die SIOS DataKeeper verwendet, wie in [Gruppieren einer SAP ASCS/SCS-Instanz in einem Windows-Failovercluster mithilfe freigegebener Clusterdatenträger in Azure](./sap-high-availability-guide-wsfc-shared-disk.md) dokumentiert.
     - Für SUSE Linux: eine NFS-Freigabe, die wie in [Hochverfügbarkeit für NFS auf Azure-VMs unter SUSE Linux Enterprise Server](./high-availability-guide-suse-nfs.md) dokumentiert erstellt wird.
@@ -167,7 +167,7 @@ Die folgenden Überlegungen gelten für diese Konfiguration:
 - Die Lastenausgleichsmodule für die Failovercluster von SAP Central Services und die DBMS-Ebene müssen [Azure Load Balancer-Instanzen der Standard-SKU](../../../load-balancer/load-balancer-standard-availability-zones.md) sein. Der Load Balancer Basic funktioniert nicht zonenübergreifend.
 - Das virtuelle Azure-Netzwerk, das Sie zum Hosten des SAP-Systems bereitgestellt haben, wird gemeinsam mit seinen Subnetzen über Zonen verteilt. Sie benötigen keine separaten virtuellen Netzwerke für jede Zone.
 - Für alle VMs, die Sie bereitstellen, müssen Sie [Azure Managed Disks](https://azure.microsoft.com/services/managed-disks/) verwenden. Nicht verwaltete Datenträger werden für zonale Bereitstellungen nicht unterstützt.
-- Azure Storage Premium und [SSD Ultra-Speicher](../../windows/disks-types.md#ultra-disk) unterstützen keinen zonenübergreifenden Speicherreplikationstyp. Die Anwendung (DBMS oder SAP Central Services) muss wichtige Daten replizieren.
+- Azure Storage Premium und [SSD Ultra-Speicher](../../disks-types.md#ultra-disk) unterstützen keinen zonenübergreifenden Speicherreplikationstyp. Die Anwendung (DBMS oder SAP Central Services) muss wichtige Daten replizieren.
 - Das gilt auch für das freigegebene Verzeichnis „sapmnt“, das ein freigegebener Datenträger (Windows), eine CIFS-Freigabe (Windows) oder NFS-Freigabe (Linux) ist. Sie müssen eine Technologie verwenden, die diese freigegebenen Datenträger oder Dateifreigaben zwischen den Zonen repliziert. Die folgenden Technologien werden unterstützt:
     - Für Windows: eine Clusterlösung, die SIOS DataKeeper verwendet, wie in [Gruppieren einer SAP ASCS/SCS-Instanz in einem Windows-Failovercluster mithilfe freigegebener Clusterdatenträger in Azure](./sap-high-availability-guide-wsfc-shared-disk.md) dokumentiert.
     - Für SUSE Linux: eine NFS-Freigabe, die wie in [Hochverfügbarkeit für NFS auf Azure-VMs unter SUSE Linux Enterprise Server](./high-availability-guide-suse-nfs.md) dokumentiert erstellt wird.

@@ -11,12 +11,12 @@ ms.author: shipatel
 author: shivp950
 ms.reviewer: larryfr
 ms.date: 05/11/2020
-ms.openlocfilehash: 3b6f115e27b5cf956a524bd1a610797c689b5d6c
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 464d945708fba83877fe6cef9ec1b64ec444bd95
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319489"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88650416"
 ---
 # <a name="trigger-applications-processes-or-cicd-workflows-based-on-azure-machine-learning-events-preview"></a>Auslösen von Anwendungen, Prozessen oder CI/CD-Workflows basierend auf Azure Machine Learning-Ereignissen (Vorschau)
 
@@ -199,7 +199,7 @@ In diesem Beispiel wird gezeigt, wie Event Grid mit einer Azure-Logik-App verwen
 
 Führen Sie zur Vorbereitung zunächst die folgenden Aktionen aus:
 
-* Einrichten einer Datasetüberwachung zum [Erkennen von Datendrift]( https://aka.ms/datadrift) in einem Arbeitsbereich
+* Einrichten einer Datasetüberwachung zum [Erkennen von Datendrift](how-to-monitor-datasets.md) in einem Arbeitsbereich
 * Erstellen einer veröffentlichten [Azure Data Factory-Pipeline](https://docs.microsoft.com/azure/data-factory/)
 
 In diesem Beispiel wird eine einfache Data Factory-Pipeline verwendet, um Dateien in einen Blobspeicher zu kopieren und eine veröffentlichte Machine Learning-Pipeline auszuführen. Weitere Informationen zu diesem Szenario finden Sie unter [Ausführen von Azure Machine Learning Service-Pipelines in Azure Data Factory-Pipelines](https://docs.microsoft.com/azure/data-factory/transform-data-machine-learning-service).

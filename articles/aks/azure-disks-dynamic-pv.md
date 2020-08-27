@@ -5,12 +5,12 @@ description: Erfahren Sie, wie Sie ein persistentes Volume mit Azure-Datenträge
 services: container-service
 ms.topic: article
 ms.date: 07/10/2020
-ms.openlocfilehash: 0e7bc057d756215b1aa155f0e227c75c99c8737c
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 06aad076836c0f6fdc59c4ed5d0116231080d15c
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518010"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88683605"
 ---
 # <a name="dynamically-create-and-use-a-persistent-volume-with-azure-disks-in-azure-kubernetes-service-aks"></a>Dynamisches Erstellen und Verwenden eines persistenten Volumes mit Azure-Datenträgern in Azure Kubernetes Service (AKS)
 
@@ -40,7 +40,7 @@ Jeder AKS-Cluster enthält vier vorab erstellte Speicherklassen, von denen zwei 
     
 Wenn Sie eine der Standardspeicherklassen verwenden, können Sie die Volumegröße nicht mehr aktualisieren, nachdem die Speicherklasse erstellt wurde. Wenn Sie die Volumegröße auch nach der Erstellung einer Speicherklasse noch ändern können möchten, fügen Sie einer der Standardspeicherklassen die Zeile `allowVolumeExpansion: true` hinzu, oder Sie erstellen Ihre eigene, benutzerdefinierte Speicherklasse. Beachten Sie, dass eine Reduzierung der PVC-Größe nicht unterstützt wird (zur Vermeidung von Datenverlusten). Sie können eine vorhandene Speicherklasse mit dem Befehl `kubectl edit sc` bearbeiten. 
 
-Wenn Sie beispielsweise einen Datenträger mit einer Größe von 4 TiB verwenden möchten, müssen Sie eine Speicherklasse erstellen, die `cachingmode: None` definiert, da [Datenträgerzwischenspeicherungen für Datenträger ab 4 TiB nicht unterstützt werden](../virtual-machines/windows/premium-storage-performance.md#disk-caching).
+Wenn Sie beispielsweise einen Datenträger mit einer Größe von 4 TiB verwenden möchten, müssen Sie eine Speicherklasse erstellen, die `cachingmode: None` definiert, da [Datenträgerzwischenspeicherungen für Datenträger ab 4 TiB nicht unterstützt werden](../virtual-machines/premium-storage-performance.md#disk-caching).
 
 Weitere Informationen zu Speicherklassen und der Erstellung eigener Speicherklassen finden Sie unter [Speicheroptionen für Anwendungen in AKS][storage-class-concepts].
 
@@ -276,7 +276,7 @@ Erfahren Sie mehr über persistente Kubernetes-Volumes bei Verwendung von Azure-
 <!-- LINKS - internal -->
 [azure-disk-volume]: azure-disk-volume.md
 [azure-files-pvc]: azure-files-dynamic-pv.md
-[premium-storage]: ../virtual-machines/windows/disks-types.md
+[premium-storage]: ../virtual-machines/disks-types.md
 [az-disk-list]: /cli/azure/disk#az-disk-list
 [az-snapshot-create]: /cli/azure/snapshot#az-snapshot-create
 [az-disk-create]: /cli/azure/disk#az-disk-create

@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 03/05/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e44edff9ac81588e4f861b7a1d1ae1a1628d5e04
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3589b4af06bc27a79c429bb0ccd743857651db97
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87035637"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88653544"
 ---
 # <a name="sap-hana-high-availability-for-azure-virtual-machines"></a>Hochverfügbarkeit von SAP HANA für virtuelle Azure-Computer
 
@@ -60,7 +60,7 @@ Azure bietet unterschiedliche Verfügbarkeits-SLAs für verschiedene Komponenten
 
 Unter [SLA für virtuelle Computer](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/) werden drei verschiedene SLAs für drei unterschiedliche Konfigurationen beschrieben:
 
-- Eine einzelne VM, die [Azure SSD Premium](../../windows/managed-disks-overview.md) für den Betriebssystemdatenträger und alle Datenträger verwendet. Diese Option bietet eine monatliche Betriebszeit von 99,9 Prozent.
+- Eine einzelne VM, die [Azure SSD Premium](../../managed-disks-overview.md) für den Betriebssystemdatenträger und alle Datenträger verwendet. Diese Option bietet eine monatliche Betriebszeit von 99,9 Prozent.
 - Mehrere (mindestens zwei) VMs, die in einer [Azure-Verfügbarkeitsgruppe](../../windows/tutorial-availability-sets.md) organisiert sind. Diese Option bietet eine monatliche Betriebszeit von 99,95 Prozent.
 - Mehrere (mindestens zwei) VMs, die in einer [Verfügbarkeitszone](../../../availability-zones/az-overview.md) organisiert sind. Diese Option bietet eine monatliche Betriebszeit von 99,99 Prozent.
 
