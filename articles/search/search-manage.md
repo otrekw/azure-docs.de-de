@@ -9,20 +9,20 @@ tags: azure-portal
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/24/2020
-ms.openlocfilehash: a623436cdeaac89d140b3834808fb975bd733f4e
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 84ddc4b427f6dc168c044f34b41e81e3b0ff19e5
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87835951"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935040"
 ---
 # <a name="service-administration-for-azure-cognitive-search-in-the-azure-portal"></a>Dienstverwaltung für Azure Cognitive Search im Azure-Portal
 
 > [!div class="op_single_selector"]
 >
 > * [PowerShell](search-manage-powershell.md)
-> * [REST-API](https://docs.microsoft.com/rest/api/searchmanagement/)
-> * [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.search)
+> * [REST-API](/rest/api/searchmanagement/)
+> * [.NET SDK](/dotnet/api/microsoft.azure.management.search)
 > * [Portal](search-manage.md)
 > * [Python](https://pypi.python.org/pypi/azure-mgmt-search/0.1.0)> 
 
@@ -33,9 +33,9 @@ Azure Cognitive Search ist ein vollständig verwalteter cloudbasierter Suchdiens
 * Verwalten des Zugriffs über die Seite **Schlüssel** auf der linken Seite
 * Anpassen der Kapazität über die Seite **Skalierung** auf der linken Seite
 
-Die gleichen Aufgaben, die im Portal ausgeführt werden, können auch programmgesteuert über die [Verwaltungs-APIs](https://docs.microsoft.com/rest/api/searchmanagement/) und das [PowerShell-Modul „Az.Search“](search-manage-powershell.md) ausgeführt werden. Verwaltungsaufgaben werden vollständig über Portal- und befehlsorientierte Benutzerschnittstellen dargestellt. Es gibt keine bestimmte Verwaltungsaufgabe, die nur in einer Modalität verfügbar ist.
+Die gleichen Aufgaben, die im Portal ausgeführt werden, können auch programmgesteuert über die [Verwaltungs-APIs](/rest/api/searchmanagement/) und das [PowerShell-Modul „Az.Search“](search-manage-powershell.md) ausgeführt werden. Verwaltungsaufgaben werden vollständig über Portal- und befehlsorientierte Benutzerschnittstellen dargestellt. Es gibt keine bestimmte Verwaltungsaufgabe, die nur in einer Modalität verfügbar ist.
 
-Azure Cognitive Search nutzt andere Azure-Dienste zur detaillierteren Überwachung und Verwaltung. An sich sind die einzigen in einem Suchdienst gespeicherten Daten Inhalte (Indizes, Indexer und Datenquellendefinitionen sowie andere Objekte). Metriken, die auf Portalseiten gemeldet werden, werden alle 30 Tage aus internen Protokollen abgerufen. Für die benutzergesteuerte Protokollaufbewahrung und zusätzliche Ereignisse benötigen Sie [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/). 
+Azure Cognitive Search nutzt andere Azure-Dienste zur detaillierteren Überwachung und Verwaltung. An sich sind die einzigen in einem Suchdienst gespeicherten Daten Inhalte (Indizes, Indexer und Datenquellendefinitionen sowie andere Objekte). Metriken, die auf Portalseiten gemeldet werden, werden alle 30 Tage aus internen Protokollen abgerufen. Für die benutzergesteuerte Protokollaufbewahrung und zusätzliche Ereignisse benötigen Sie [Azure Monitor](../azure-monitor/index.yml). 
 
 ## <a name="fixed-service-properties"></a>Feste Diensteigenschaften
 
@@ -58,7 +58,7 @@ Jeder mit Zugriff auf die Dienst-URL und einen API-Schlüssel hat auch Zugriff a
 
 Rechte für das Dienstbereitstellungsgerät werden über Rollenzuweisungen gewährt. Der [rollenbasierte Zugriff in Azure (Azure Role-Based Access Control, Azure RBAC)](../role-based-access-control/overview.md) ist ein Autorisierungssystem für die Bereitstellung von Azure-Ressourcen, das auf [Azure Resource Manager](../azure-resource-manager/management/overview.md) basiert. 
 
-Im Kontext von Azure Cognitive Search bestimmen die [Azure-Rollenzuweisungen](search-security-rbac.md), wer Aufgaben ausführen kann, unabhängig davon, ob Sie das [Portal](search-manage.md), [PowerShell](search-manage-powershell.md) oder die [Verwaltungs-REST-APIs](https://docs.microsoft.com/rest/api/searchmanagement/search-howto-management-rest-api) verwenden:
+Im Kontext von Azure Cognitive Search bestimmen die [Azure-Rollenzuweisungen](search-security-rbac.md), wer Aufgaben ausführen kann, unabhängig davon, ob Sie das [Portal](search-manage.md), [PowerShell](search-manage-powershell.md) oder die [Verwaltungs-REST-APIs](/rest/api/searchmanagement/search-howto-management-rest-api) verwenden:
 
 * Erstellen oder Löschen eines Diensts
 * Skalieren des Diensts
@@ -73,12 +73,12 @@ Im Kontext von Azure Cognitive Search bestimmen die [Azure-Rollenzuweisungen](se
 
 Im Basic-Tarif und höher überwacht Microsoft alle Azure Cognitive Search-Dienste auf eine Verfügbarkeit von 99,9% gemäß der Vereinbarung zum Servicelevel (SLA). Wenn der Dienst langsam ist oder der Anforderungsdurchsatz unter die SLA-Schwellenwerte fällt, überprüfen Supportteams die verfügbaren Protokolldateien und kümmern sich um die Lösung des Problems.
 
-Azure Cognitive Search nutzt [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/), um Indizierungs- und Abfrageaktivität zu erfassen und zu speichern. Ein Suchdienst selbst speichert nur seinen Inhalt (Indizes, Indexerdefinitionen, Datenquellendefinitionen, Skillsetdefinitionen, Synonymzuordnungen). Zwischenspeicherungen und protokollierte Informationen werden außerhalb des Diensts gespeichert, oftmals in einem Azure Storage-Konto. Weitere Informationen zum Protokollieren von Indizierungs- und Abfrageworkloads finden Sie unter [Sammeln und Analysieren von Protokolldaten für Azure Cognitive Search](search-monitor-logs.md).
+Azure Cognitive Search nutzt [Azure Monitor](../azure-monitor/index.yml), um Indizierungs- und Abfrageaktivität zu erfassen und zu speichern. Ein Suchdienst selbst speichert nur seinen Inhalt (Indizes, Indexerdefinitionen, Datenquellendefinitionen, Skillsetdefinitionen, Synonymzuordnungen). Zwischenspeicherungen und protokollierte Informationen werden außerhalb des Diensts gespeichert, oftmals in einem Azure Storage-Konto. Weitere Informationen zum Protokollieren von Indizierungs- und Abfrageworkloads finden Sie unter [Sammeln und Analysieren von Protokolldaten für Azure Cognitive Search](search-monitor-logs.md).
 
 Allgemeine Informationen zu Ihrem Dienst erhalten Sie, wenn Sie nur die Möglichkeiten in Azure Cognitive Search verwenden, folgendermaßen:
 
 * Über die Dienstseite **Übersicht** durch Benachrichtigungen, Eigenschaften und Statusmeldungen
-* Über [PowerShell](search-manage-powershell.md) oder die [REST-API für die Verwaltung](https://docs.microsoft.com/rest/api/searchmanagement/), um [Diensteigenschaften abzurufen](https://docs.microsoft.com/rest/api/searchmanagement/services): Auf programmgesteuerter Ebene werden keine neuen Informationen oder Vorgänge bereitgestellt. Die Schnittstellen sind vorhanden, sodass Sie Skripts schreiben können.
+* Über [PowerShell](search-manage-powershell.md) oder die [REST-API für die Verwaltung](/rest/api/searchmanagement/), um [Diensteigenschaften abzurufen](/rest/api/searchmanagement/services): Auf programmgesteuerter Ebene werden keine neuen Informationen oder Vorgänge bereitgestellt. Die Schnittstellen sind vorhanden, sodass Sie Skripts schreiben können.
 
 ## <a name="monitor-resource-usage"></a>Überwachen der Ressourcenauslastung
 
@@ -86,8 +86,8 @@ Die Ressourcenüberwachung im Dashboard ist auf die Informationen im Dienst-Dash
 
 Mit der Suchdienst-REST-API können Sie Gesamtzahlen für Dokumente und Indizes programmgesteuert abrufen: 
 
-* [Indexstatistiken abrufen](https://docs.microsoft.com/rest/api/searchservice/Get-Index-Statistics)
-* [Dokumentenanzahl](https://docs.microsoft.com/rest/api/searchservice/count-documents)
+* [Indexstatistiken abrufen](/rest/api/searchservice/Get-Index-Statistics)
+* [Dokumentenanzahl](/rest/api/searchservice/count-documents)
 
 ## <a name="disaster-recovery-and-service-outages"></a>Notfallwiederherstellung und Dienstausfälle
 
@@ -135,7 +135,7 @@ Im Gegensatz zum Entfernen von Replikaten, bei dem Sie keine weiteren Schritte a
 
 Es ist nicht möglich, herauszufinden, welche Index-Shards auf welcher Partition gespeichert sind. Jede Partition bietet ca. 25 GB an Speicherplatz an. Sie müssen Ihren Speicherverbrauch also auf einen Wert senken, der von Ihren konfigurierten Partitionen unterstützt werden kann. Wenn Sie auf eine Partition zurückschalten, müssen alle 12 Shards in diese Partition passen.
 
-Für die zukünftige Planung können Sie den Speicherverbrauch prüfen (siehe [Abrufen der Index-Statistiken](https://docs.microsoft.com/rest/api/searchservice/Get-Index-Statistics)), um herauszufinden, wie viel Speicher Sie tatsächlich nutzen. 
+Für die zukünftige Planung können Sie den Speicherverbrauch prüfen (siehe [Abrufen der Index-Statistiken](/rest/api/searchservice/Get-Index-Statistics)), um herauszufinden, wie viel Speicher Sie tatsächlich nutzen. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

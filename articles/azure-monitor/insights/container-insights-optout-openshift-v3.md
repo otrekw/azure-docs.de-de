@@ -3,16 +3,16 @@ title: Beenden der Überwachung Ihres Azure Red Hat OpenShift 3-Clusters | Micr
 description: In diesem Artikel wird beschrieben, wie Sie die Überwachung Ihres Azure Red Hat OpenShift-Clusters mit Azure Monitor für Container beenden können.
 ms.topic: conceptual
 ms.date: 04/24/2020
-ms.openlocfilehash: 26c8a574894e117694545508174d0ce7d0f0f5ed
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6ed92cd4cda1f3b5d43cc605d7224236528b94bf
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091214"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815435"
 ---
-# <a name="how-to-stop-monitoring-your-azure-red-hat-openshift-v3-cluster"></a>Beenden der Überwachung Ihres Azure Red Hat OpenShift 3-Clusters
+# <a name="how-to-stop-monitoring-your-azure-red-hat-openshift-v3-cluster"></a>Beenden der Überwachung Ihres Azure Red Hat OpenShift 3-Clusters 
 
-Die Überwachung Ihres Azure Red Hat OpenShift 3-Clusters kann nach der Aktivierung wieder beendet werden, wenn Sie den Cluster nicht mehr mit Azure Monitor für Container überwachen möchten. In diesem Artikel erfahren Sie, wie Sie dies mithilfe der bereitgestellten Azure Resource Manager-Vorlage umsetzen.  
+Die Überwachung Ihres Azure Red Hat OpenShift 3-Clusters kann nach der Aktivierung wieder beendet werden, wenn Sie den Cluster nicht mehr mit Azure Monitor für Container überwachen möchten. In diesem Artikel erfahren Sie, wie Sie dies mithilfe der bereitgestellten Azure Resource Manager-Vorlage umsetzen. 
 
 ## <a name="azure-resource-manager-template"></a>Azure Resource Manager-Vorlage
 

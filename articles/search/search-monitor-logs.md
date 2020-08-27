@@ -8,26 +8,26 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: c940d0dd4c92aca92291bfe1dbd6c15f1091f0b8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 52230d6b13c4210e0ff8e85d0a3efe39af55f6e2
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85611610"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935057"
 ---
 # <a name="collect-and-analyze-log-data-for-azure-cognitive-search"></a>Sammeln und Analysieren von Protokolldaten für Azure Cognitive Search
 
 Diagnose- oder Betriebsprotokolle bieten Einblicke in die detaillierten Vorgänge von Azure Cognitive Search und sind für die Überwachung von Dienst- und Workloadprozessen nützlich. Intern werden für einen kurzen Zeitraum bestimmte Systeminformationen im Back-End gespeichert, der für den Fall, dass Sie ein Supportticket erstellen, für die Untersuchung und Analyse ausreicht. Wenn Sie jedoch eine Selbststeuerung der Betriebsdaten wünschen, sollten Sie eine Diagnoseeinstellung konfigurieren, um anzugeben, wo die Protokollinformationen gesammelt werden.
 
-Die Diagnoseprotokollierung wird durch Integration in [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/) aktiviert. 
+Die Diagnoseprotokollierung wird durch Integration in [Azure Monitor](../azure-monitor/index.yml) aktiviert. 
 
 Beim Einrichten der Diagnoseprotokollierung werden Sie zur Angabe eines Speichermechanismus aufgefordert. In der folgenden Tabelle werden Optionen zum Erfassen und Beibehalten von Daten aufgelistet.
 
 | Resource | Syntaxelemente |
 |----------|----------|
-| [Senden an den Log Analytics-Arbeitsbereich](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-resource-logs) | Ereignisse und Metriken werden an einen Log Analytics-Arbeitsbereich gesendet, der im Portal abgefragt werden kann, um ausführliche Informationen zurückzugeben. Eine Einführung finden Sie unter [Erste Schritte mit Azure Monitor-Protokollen](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-viewdata). |
-| [Archivieren mit Blobspeicher](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) | Ereignisse und Metriken werden in einem Blobcontainer archiviert und in JSON-Dateien gespeichert. Protokolle können sehr präzise sein (nach Stunde/Minute), was für die Untersuchung eines bestimmten Vorfalls nützlich ist, aber nicht für eine Untersuchung mit offenem Ende. Mit einem JSON-Editor können Sie eine unformatierte Protokolldatei oder Power BI anzeigen, um Protokolldaten zu aggregieren und zu visualisieren.|
-| [Streamen an Event Hub](https://docs.microsoft.com/azure/event-hubs/) | Ereignisse und Metriken werden an einen Azure Event Hubs-Dienst gestreamt. Wählen Sie diese Lösung als alternativen Datensammlungsdienst für sehr große Ereignisprotokolle aus. |
+| [Senden an den Log Analytics-Arbeitsbereich](../azure-monitor/learn/tutorial-resource-logs.md) | Ereignisse und Metriken werden an einen Log Analytics-Arbeitsbereich gesendet, der im Portal abgefragt werden kann, um ausführliche Informationen zurückzugeben. Eine Einführung finden Sie unter [Erste Schritte mit Azure Monitor-Protokollen](../azure-monitor/log-query/get-started-portal.md). |
+| [Archivieren mit Blobspeicher](../storage/blobs/storage-blobs-overview.md) | Ereignisse und Metriken werden in einem Blobcontainer archiviert und in JSON-Dateien gespeichert. Protokolle können sehr präzise sein (nach Stunde/Minute), was für die Untersuchung eines bestimmten Vorfalls nützlich ist, aber nicht für eine Untersuchung mit offenem Ende. Mit einem JSON-Editor können Sie eine unformatierte Protokolldatei oder Power BI anzeigen, um Protokolldaten zu aggregieren und zu visualisieren.|
+| [Streamen an Event Hub](../event-hubs/index.yml) | Ereignisse und Metriken werden an einen Azure Event Hubs-Dienst gestreamt. Wählen Sie diese Lösung als alternativen Datensammlungsdienst für sehr große Ereignisprotokolle aus. |
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -35,7 +35,7 @@ Erstellen Sie Ressourcen vorab, damit Sie beim Konfigurieren der Diagnoseprotoko
 
 + [Erstellen eines Log Analytics-Arbeitsbereichs](../azure-monitor/learn/quick-create-workspace.md)
 
-+ [Erstellen eines Speicherkontos](../storage/common/storage-quickstart-create-account.md)
++ [Erstellen eines Speicherkontos](../storage/common/storage-account-create.md)
 
 + [Erstellen eines Event Hubs](../event-hubs/event-hubs-create.md)
 
@@ -122,9 +122,9 @@ Von Azure Monitor werden auch Ereignisse im Zusammenhang mit Indizierung und Abf
 
 | Vorgangsname | BESCHREIBUNG |
 |---------------|-------------|
-| ServiceStats | Bei diesem Vorgang handelt es sich um einen Routineaufruf zum [Abrufen von Dienststatistiken](https://docs.microsoft.com/rest/api/searchservice/get-service-statistics), der entweder direkt oder implizit erfolgt, um eine Übersicht im Portal aufzufüllen, wenn diese geladen oder aktualisiert wird. |
+| ServiceStats | Bei diesem Vorgang handelt es sich um einen Routineaufruf zum [Abrufen von Dienststatistiken](/rest/api/searchservice/get-service-statistics), der entweder direkt oder implizit erfolgt, um eine Übersicht im Portal aufzufüllen, wenn diese geladen oder aktualisiert wird. |
 | Query.Search |  Abfrageanforderungen für einen Index. Weitere Informationen zu protokollierten Abfragen finden Sie unter [Überwachen von Abfragen](search-monitor-queries.md).|
-| Indexing.Index  | Dieser Vorgang dient dem [Hinzufügen, Aktualisieren oder Löschen von Dokumenten](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents). |
+| Indexing.Index  | Dieser Vorgang dient dem [Hinzufügen, Aktualisieren oder Löschen von Dokumenten](/rest/api/searchservice/addupdate-or-delete-documents). |
 | indexes.Prototype | Dies ist ein Index, der vom Datenimport-Assistenten erstellt wird. |
 | Indexers.Create | Erstellt explizit oder implizit einen Indexer mithilfe des Datenimport-Assistenten. |
 | Indexers.Get | Gibt jeweils den Namen eines Indexers zurück, wenn der Indexer ausgeführt wird. |

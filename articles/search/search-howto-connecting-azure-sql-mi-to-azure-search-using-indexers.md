@@ -8,12 +8,12 @@ ms.author: victliu
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 65e483fd772e20daa73b465ea17dfa6ecde42233
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a1304ad05e05285aa75167ec21519ec90d157662
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76964888"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88922887"
 ---
 # <a name="configure-a-connection-from-an-azure-cognitive-search-indexer-to-sql-managed-instance"></a>Konfigurieren einer Verbindung eines Indexers der kognitiven Azure-Suche mit einer verwalteten SQL-Datenbank-Instanz
 
@@ -38,7 +38,7 @@ Sie können den öffentlichen Endpunkt auch auf einer vorhandenen verwalteten SQ
 > Indexer erfordern weiterhin, dass die verwaltete SQL-Instanz mit einem öffentlichen Endpunkt konfiguriert wird, um Daten lesen zu können.
 > Sie können jedoch festlegen, dass der eingehende Zugriff auf diesen öffentlichen Endpunkt eingeschränkt werden soll, indem Sie die aktuelle Regel (`public_endpoint_inbound`) durch die folgenden zwei Regeln ersetzen:
 >
-> * Eingehenden Zugriff über das `AzureCognitiveSearch`-[Diensttag](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags) zulassen ("SOURCE" = `AzureCognitiveSearch`, "NAME" = `cognitive_search_inbound`)
+> * Eingehenden Zugriff über das `AzureCognitiveSearch`-[Diensttag](../virtual-network/service-tags-overview.md#available-service-tags) zulassen ("SOURCE" = `AzureCognitiveSearch`, "NAME" = `cognitive_search_inbound`)
 >
 > * Eingehenden Zugriff von der IP-Adresse des Suchdienstanbieters zulassen; kann durch Pingen des vollqualifizierten Domänennamens abgerufen werden (z. B. `<your-search-service-name>.search.windows.net`). ("SOURCE" = `IP address`, "NAME" = `search_service_inbound`)
 >

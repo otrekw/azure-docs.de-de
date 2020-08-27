@@ -16,12 +16,12 @@ ms.date: 06/17/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8bf19123888dd26073016131c93047b0cd0afaf4
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 216cff03ac6ce64dee9aae1e9daa4a86385eeb0e
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86145766"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88783330"
 ---
 # <a name="troubleshoot-azure-ad-entitlement-management"></a>Problembehandlung bei der Azure AD-Berechtigungsverwaltung
 
@@ -45,9 +45,9 @@ In diesem Artikel werden einige Punkte beschrieben, die Sie überprüfen sollten
 
 * Wenn bereits Benutzer einer Ressource zugewiesen wurden, die Sie mit einem Zugriffspaket verwalten möchten, stellen Sie sicher, dass die Benutzer dem Zugriffspaket mit einer entsprechenden Richtlinie zugewiesen sind. Möglicherweise möchten Sie beispielsweise eine Gruppe in ein Zugriffspaket einschließen, das bereits Benutzer in der Gruppe enthält. Wenn diese Benutzer in der Gruppe weiterhin Zugriff benötigen, müssen sie über eine entsprechende Richtlinie für die Zugriffspakete verfügen, damit sie ihren Zugriff auf die Gruppe nicht verlieren. Sie können das Zugriffspaket zuweisen, indem Sie entweder die Benutzer bitten, das Zugriffspaket mit der entsprechenden Ressource anzufordern, oder die Benutzer direkt dem Zugriffspaket zuweisen. Weitere Informationen finden Sie unter [Ändern der Anforderungs- und Genehmigungseinstellungen für ein Zugriffspaket](entitlement-management-access-package-request-policy.md).
 
-* Wenn Sie ein Teammitglied entfernen, wird es auch aus der Microsoft 365-Gruppe entfernt. Das Entfernen aus der Chatfunktion des Teams kann etwas länger dauern. Weitere Informationen finden Sie unter [Gruppenmitgliedschaft](https://docs.microsoft.com/microsoftteams/office-365-groups#group-membership).
+* Wenn Sie ein Teammitglied entfernen, wird es auch aus der Microsoft 365-Gruppe entfernt. Das Entfernen aus der Chatfunktion des Teams kann etwas länger dauern. Weitere Informationen finden Sie unter [Gruppenmitgliedschaft](/microsoftteams/office-365-groups#group-membership).
 
-* Stellen Sie sicher, dass Ihr Verzeichnis nicht für Multi-Geo-Funktionen konfiguriert ist. Die Berechtigungsverwaltung unterstützt aktuell keine Multi-Geo-Standorte für SharePoint Online. SharePoint Online-Standorte müssen sich am standardmäßigen geografischen Standort befinden, um mit der Berechtigungsverwaltung gesteuert werden zu können. Weitere Informationen finden Sie unter [Multi-Geo-Funktionen in OneDrive und SharePoint Online](https://docs.microsoft.com/Office365/Enterprise/multi-geo-capabilities-in-onedrive-and-sharepoint-online-in-office-365).
+* Stellen Sie sicher, dass Ihr Verzeichnis nicht für Multi-Geo-Funktionen konfiguriert ist. Die Berechtigungsverwaltung unterstützt aktuell keine Multi-Geo-Standorte für SharePoint Online. SharePoint Online-Standorte müssen sich am standardmäßigen geografischen Standort befinden, um mit der Berechtigungsverwaltung gesteuert werden zu können. Weitere Informationen finden Sie unter [Multi-Geo-Funktionen in OneDrive und SharePoint Online](/Office365/Enterprise/multi-geo-capabilities-in-onedrive-and-sharepoint-online-in-office-365).
 
 ## <a name="access-packages"></a>Zugriffspakete
 
@@ -69,7 +69,7 @@ In diesem Artikel werden einige Punkte beschrieben, die Sie überprüfen sollten
 
 * Wenn sich ein Benutzer, der noch nicht in Ihrem Verzeichnis enthalten ist, sich beim Portal „Mein Zugriff“ anmeldet, um ein Zugriffspaket anzufordern, müssen Sie sicherstellen, dass er sich mit seinem Organisationskonto authentifiziert. Bei dem Organisationskonto kann es sich um ein Konto im Ressourcenverzeichnis oder um ein Konto in einem Verzeichnis handeln, das in einer der Richtlinien des Zugriffspakets enthalten ist. Wenn es sich bei dem Konto des Benutzers nicht um ein Organisationskonto handelt oder das Verzeichnis, bei dem sie sich authentifizieren, nicht in der Richtlinie enthalten ist, wird dem Benutzer das Zugriffspaket nicht angezeigt. Weitere Informationen finden Sie unter [Anfordern des Zugriffs auf ein Zugriffspaket](entitlement-management-request-access.md).
 
-* Wenn die Benutzeranmeldung beim Ressourcenverzeichnis blockiert wird, kann der Benutzer keinen Zugriff im Portal „Mein Zugriff“ anfordern. Bevor der Benutzer den Zugriff anfordern kann, müssen Sie die Anmeldeblockierung aus dem Profil des Benutzers entfernen. Um die Anmeldeblockierung zu entfernen, klicken Sie im Azure-Portal auf **Azure Active Directory**, klicken Sie auf **Benutzer**, klicken Sie auf den Benutzer, und klicken Sie dann auf **Profil**. Bearbeiten Sie den Abschnitt **Einstellungen**, und ändern Sie **Anmeldung blockieren** in **Nein**. Weitere Informationen finden Sie unter [Hinzufügen oder Aktualisieren von Benutzerprofilinformationen mit Azure Active Directory](../fundamentals/active-directory-users-profile-azure-portal.md).  Sie können auch überprüfen, ob der Benutzer aufgrund einer [Identity Protection-Richtlinie](../identity-protection/howto-unblock-user.md) blockiert wurde.
+* Wenn die Benutzeranmeldung beim Ressourcenverzeichnis blockiert wird, kann der Benutzer keinen Zugriff im Portal „Mein Zugriff“ anfordern. Bevor der Benutzer den Zugriff anfordern kann, müssen Sie die Anmeldeblockierung aus dem Profil des Benutzers entfernen. Um die Anmeldeblockierung zu entfernen, klicken Sie im Azure-Portal auf **Azure Active Directory**, klicken Sie auf **Benutzer**, klicken Sie auf den Benutzer, und klicken Sie dann auf **Profil**. Bearbeiten Sie den Abschnitt **Einstellungen**, und ändern Sie **Anmeldung blockieren** in **Nein**. Weitere Informationen finden Sie unter [Hinzufügen oder Aktualisieren von Benutzerprofilinformationen mit Azure Active Directory](../fundamentals/active-directory-users-profile-azure-portal.md).  Sie können auch überprüfen, ob der Benutzer aufgrund einer [Identity Protection-Richtlinie](../identity-protection/howto-identity-protection-remediate-unblock.md) blockiert wurde.
 
 * Wenn ein Benutzer sowohl Anforderer als auch Genehmiger ist, wird ihm im Portal „Mein Zugriff“ auf der Seite **Genehmigungen** die Anforderung für ein Zugriffspaket nicht angezeigt. Dieses Verhalten ist beabsichtigt: Ein Benutzer kann seine eigene Anforderung nicht genehmigen. Stellen Sie sicher, dass für das angeforderte Zugriffspaket zusätzliche genehmigende Personen in der Richtlinie konfiguriert sind. Weitere Informationen finden Sie unter [Ändern der Anforderungs- und Genehmigungseinstellungen für ein Zugriffspaket](entitlement-management-access-package-request-policy.md).
 

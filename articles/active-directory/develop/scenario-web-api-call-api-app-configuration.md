@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 08/05/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 29c57411a2a35c36d0b4a9d4def931821b795094
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: e9faea3462ae953e474b5053b651808b03f07c23
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121135"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855450"
 ---
 # <a name="a-web-api-that-calls-web-apis-code-configuration"></a>Web-API, die Web-APIs aufruft: Codekonfiguration
 
@@ -71,7 +71,7 @@ Microsoft.Identity.Web bietet verschiedene Möglichkeiten, Zertifikate zu beschr
 
 ## <a name="startupcs"></a>Startup.cs
 
-Wenn Sie Microsoft.Identity.Web verwenden und möchten, dass Ihre Web-API Downstream-Web-APIs aufruft, fügen Sie in der Datei *Startup.cs* nach `.AddMicrosoftWebApiAuthentication(Configuration)` die Zeile `.AddMicrosoftWebApiCallsWebApi()` hinzu, und wählen Sie dann eine Tokencacheimplementierung aus, z. B. `.AddInMemoryTokenCaches()`:
+Wenn Sie Microsoft.Identity.Web verwenden und möchten, dass Ihre Web-API Downstream-Web-APIs aufruft, fügen Sie in der Datei *Startup.cs* nach `.AddMicrosoftIdentityWebApi(Configuration)` die Zeile `.EnableTokenAcquisitionToCallDownstreamApi()` hinzu, und wählen Sie dann eine Tokencacheimplementierung aus, z. B. `.AddInMemoryTokenCaches()`:
 
 ```csharp
 using Microsoft.Identity.Web;
@@ -82,9 +82,10 @@ public class Startup
   public void ConfigureServices(IServiceCollection services)
   {
    // ...
-   services.AddMicrosoftWebApiAuthentication(Configuration)
-           .AddMicrosoftWebApiCallsWebApi(Configuration)
-           .AddInMemoryTokenCaches();
+    services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+            .AddMicrosoftIdentityWebApi(Configuration, "AzureAd")
+                .EnableTokenAcquisitionToCallDownstreamApi()
+                .AddInMemoryTokenCaches();
   // ...
   }
   // ...
@@ -92,8 +93,6 @@ public class Startup
 ```
 
 Wie bei Web-Apps können Sie verschiedene Tokencacheimplementierungen auswählen. Weitere Informationen finden Sie unter [Microsoft.Identity.Web-Wiki: Tokencacheserialisierung](https://aka.ms/ms-id-web/token-cache-serialization) auf GitHub.
-
-Wenn Sie wissen, dass Ihre Web-API bestimmte Bereiche benötigt, können Sie diese optional als Argumente an `AddMicrosoftWebApiCallsWebApi` übergeben.
 
 # <a name="java"></a>[Java](#tab/java)
 

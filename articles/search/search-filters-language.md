@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/22/2020
-ms.openlocfilehash: 3bd0f01193b1e6579d60b581b43ad71ebb6001e3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 49a12203c833fc817b1898e6179d7f812d0a994e
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87084193"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88923108"
 ---
 # <a name="how-to-filter-by-language-in-azure-cognitive-search"></a>Filtern nach Sprache in der kognitiven Azure-Suche 
 
@@ -37,11 +37,11 @@ Das folgende Beispiel stammt aus dem [Immobilienbeispiel](search-get-started-por
   ![Screenshot für den Bildschirm „Felder“ des Immobilienbeispiels. Eine Gruppe von Feldern wird hervorgehoben, um darauf hinzuweisen, wie die Zuweisungen der Sprachanalyse den Sprachen für die hervorgehobenen Felder entsprechen.](./media/search-filters-language/lang-fields.png)
 
 > [!Note]
-> Codebeispiele zur Veranschaulichung von Felddefinitionen mit Sprachanalysen finden Sie unter [Definieren eines Index (.NET)](https://docs.microsoft.com/azure/search/search-create-index-dotnet) sowie unter [Definieren eines Index (REST)](search-create-index-rest-api.md).
+> Codebeispiele zur Veranschaulichung von Felddefinitionen mit Sprachanalysen finden Sie unter [Definieren eines Index (.NET)](./search-get-started-dotnet.md) sowie unter [Definieren eines Index (REST)](./search-get-started-powershell.md).
 
 ## <a name="build-and-load-an-index"></a>Erstellen und Laden eines Index
 
-Ein (wahrscheinlich naheliegender) Zwischenschritt vor der Erstellung einer Abfrage ist das [Erstellen und Auffüllen des Index](https://docs.microsoft.com/azure/search/search-create-index-dotnet). Er wird daher nur der Vollständigkeit halber erwähnt. Die Verfügbarkeit des Index kann unter anderem durch das Überprüfen der Indexliste im [Portal](https://portal.azure.com) ermittelt werden.
+Ein (wahrscheinlich naheliegender) Zwischenschritt vor der Erstellung einer Abfrage ist das [Erstellen und Auffüllen des Index](./search-get-started-dotnet.md). Er wird daher nur der Vollständigkeit halber erwähnt. Die Verfügbarkeit des Index kann unter anderem durch das Überprüfen der Indexliste im [Portal](https://portal.azure.com) ermittelt werden.
 
 ## <a name="constrain-the-query-and-trim-results"></a>Einschränken der Abfrage und Ausschließen von Ergebnissen
 
@@ -63,7 +63,6 @@ parameters =
 ## <a name="see-also"></a>Weitere Informationen
 
 + [Filter in Azure Cognitive Search](search-filters.md)
-+ [Sprachanalysen](https://docs.microsoft.com/rest/api/searchservice/language-support)
++ [Sprachanalysen](/rest/api/searchservice/language-support)
 + [Funktionsweise der Volltextsuche in Azure Cognitive Search](search-lucene-query-architecture.md)
-+ [Search Documents (Azure Search Service REST API)](https://docs.microsoft.com/rest/api/searchservice/search-documents) (Suchen nach Dokumenten (Azure Search Service-REST-API))
-
++ [Search Documents (Azure Search Service REST API)](/rest/api/searchservice/search-documents) (Suchen nach Dokumenten (Azure Search Service-REST-API))

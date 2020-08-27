@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 006a79c91cd9bfb4c3bbf4a7e0ffb58314af49cc
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 56948b700f816c13d35915400658136ffcf48846
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87798636"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88783585"
 ---
 # <a name="change-resource-roles-for-an-access-package-in-azure-ad-entitlement-management"></a>Ändern von Ressourcenrollen für ein Zugriffspaket in der Azure AD-Berechtigungsverwaltung
 
@@ -78,7 +78,7 @@ Sie können eine beliebige [Azure AD-Sicherheitsgruppe oder Office 365-Gruppe]
 - In Azure AD kann die Mitgliedschaft einer Gruppe, die über Windows Server Active Directory mit Azure AD Connect synchronisiert oder in Exchange Online als Verteilergruppe erstellt wurde, nicht geändert werden.  
 - Die Mitgliedschaft von dynamischen Gruppen kann nicht durch Hinzufügen oder Entfernen eines Mitglieds aktualisiert werden. Daher eignen sich dynamische Gruppenmitgliedschaften nicht für die Azure AD-Berechtigungsverwaltung.
 
-Weitere Informationen finden Sie unter [Vergleichen von Gruppen](https://docs.microsoft.com/office365/admin/create-groups/compare-groups) und [Office 365-Gruppen und Microsoft-Teams](https://docs.microsoft.com/microsoftteams/office-365-groups).
+Weitere Informationen finden Sie unter [Vergleichen von Gruppen](/office365/admin/create-groups/compare-groups) und [Office 365-Gruppen und Microsoft-Teams](/microsoftteams/office-365-groups).
 
 1. Klicken Sie auf der Seite **Hinzufügen von Ressourcenrollen zu einem Zugriffspaket** auf **Gruppen und Teams**, um den Bereich „Gruppen auswählen“ zu öffnen.
 
@@ -178,7 +178,7 @@ Mit Azure AD kann Benutzern, die einem Zugriffspaket zugewiesen sind, automatisc
 
 In der Azure AD-Berechtigungsverwaltung werden Massenänderungen an Zuweisungen und Ressourcen in Zugriffspaketen mehrmals täglich verarbeitet. Wenn Sie also eine Zuweisung vornehmen oder die Ressourcenrollen Ihres Zugriffspakets ändern, kann es bis zu 24 Stunden dauern, bis diese Änderungen in Azure AD übernommen werden. Hinzu kommt die Zeit für die Weitergabe der Änderungen an andere Microsoft Online Services oder verbundene SaaS-Anwendungen. Betrifft Ihre Änderung nur einige wenige Objekte, wird sie wahrscheinlich innerhalb von ein paar Minuten in Azure AD übernommen. Anschließend wird diese Änderung von anderen Azure AD-Komponenten erkannt, und die SaaS-Anwendungen werden aktualisiert. Betrifft die Änderung hingegen Tausende von Objekten, dauert die Übernahme länger. Enthält Ihr Zugriffspaket beispielsweise zwei Anwendungen und 100 Benutzerzuweisungen, und Sie möchten dem Zugriffspaket eine Rolle für eine SharePoint-Website hinzufügen, kann es möglicherweise eine Weile dauern, bis alle Benutzer Teil dieser SharePoint-Rolle sind. Sie können den Fortschritt über das Azure AD-Überwachungsprotokoll, das Azure AD-Bereitstellungsprotokoll und die Überwachungsprotokolle der SharePoint-Website überwachen.
 
-Wenn Sie ein Teammitglied entfernen, wird es auch aus der Office 365-Gruppe entfernt. Das Entfernen aus der Chatfunktion des Teams kann etwas länger dauern. Weitere Informationen finden Sie unter [Gruppenmitgliedschaft](https://docs.microsoft.com/microsoftteams/office-365-groups#group-membership).
+Wenn Sie ein Teammitglied entfernen, wird es auch aus der Office 365-Gruppe entfernt. Das Entfernen aus der Chatfunktion des Teams kann etwas länger dauern. Weitere Informationen finden Sie unter [Gruppenmitgliedschaft](/microsoftteams/office-365-groups#group-membership).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

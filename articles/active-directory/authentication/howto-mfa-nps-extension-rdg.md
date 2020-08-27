@@ -11,18 +11,18 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d6ede429de686dd005785b44cf5c6d9571aac5a2
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 4a75b6be3796a21e3f765ad69eee0578d5f2e9d0
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88117021"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88717845"
 ---
 # <a name="integrate-your-remote-desktop-gateway-infrastructure-using-the-network-policy-server-nps-extension-and-azure-ad"></a>Integrieren Sie Ihre Remotedesktopgateway-Infrastruktur mit der Netzwerkrichtlinienserver-Erweiterung (Network Policy Server, NPS) und Azure AD
 
 Dieser Artikel bietet nähere Informationen zur Integration Ihrer Remotedesktopgateway-Infrastruktur in Azure Multi-Factor Authentication (MFA) mit der Netzwerkrichtlinienserver-Erweiterung (Network Policy Server, NPS) für Microsoft Azure.
 
-Die Netzwerkrichtlinienserver-Erweiterung (NPS) für Azure ermöglicht Kunden, ihre RADIUS-Clientauthentifizierung (Remote Authentication Dial-in User Service) mit der cloudbasierten [Multi-Factor Authentication (MFA)](multi-factor-authentication.md) von Azure zu schützen. Diese Lösung ermöglicht die zweistufige Überprüfung, um eine zweite Sicherheitsebene für Benutzeranmeldungen und Transaktionen hinzuzufügen.
+Die Netzwerkrichtlinienserver-Erweiterung (NPS) für Azure ermöglicht Kunden, ihre RADIUS-Clientauthentifizierung (Remote Authentication Dial-in User Service) mit der cloudbasierten [Multi-Factor Authentication (MFA)](./concept-mfa-howitworks.md) von Azure zu schützen. Diese Lösung ermöglicht die zweistufige Überprüfung, um eine zweite Sicherheitsebene für Benutzeranmeldungen und Transaktionen hinzuzufügen.
 
 Dieser Artikel enthält schrittweise Anleitungen zum Integrieren der NPS-Infrastruktur in Azure MFA mithilfe der NPS-Erweiterung für Azure. Dies ermöglicht eine sichere Überprüfung von Benutzern, die sich bei einem Remotedesktopgateway anmelden.
 
@@ -75,7 +75,7 @@ In diesem Abschnitt werden die erforderlichen Voraussetzungen zur Integration vo
 Eine funktionsfähige Remotedesktopdienste-Infrastruktur (RDS) muss vorhanden sein. Wenn dies nicht der Fall ist, können Sie diese Infrastruktur mithilfe der folgenden Schnellstartvorlage schnell in Azure erstellen: [Erstellen der Bereitstellung einer Remotedesktopsitzungs-Sammlung](https://github.com/Azure/azure-quickstart-templates/tree/ad20c78b36d8e1246f96bb0e7a8741db481f957f/rds-deployment).
 
 Wenn Sie eine lokale RDS-Infrastruktur schnell manuell zu Testzwecken erstellen möchten, führen Sie die Schritte zu deren Bereitstellung aus.
-**Weitere Informationen:** [Nahtlose RDS-Bereitstellung mit ARM und Azure Marketplace](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-in-azure) und [Bereitstellen Ihrer Remotedesktopumgebung](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-deploy-infrastructure).
+**Weitere Informationen:** [Nahtlose RDS-Bereitstellung mit ARM und Azure Marketplace](/windows-server/remote/remote-desktop-services/rds-in-azure) und [Bereitstellen Ihrer Remotedesktopumgebung](/windows-server/remote/remote-desktop-services/rds-deploy-infrastructure).
 
 ### <a name="azure-mfa-license"></a>Azure MFA-Lizenz
 
@@ -89,7 +89,7 @@ Die NPS-Erweiterung erfordert Windows Server 2008 R2 SP1 oder höher mit install
 
 Der NPS-Rollendienst bietet sowohl die RADIUS-Server- und -Clientfunktionalität als auch den Netzwerkzugriffsrichtlinien-Integritätsdienst. Diese Rolle muss auf mindestens zwei Computern in Ihrer Infrastruktur installiert werden: Das Remotedesktopgateway und ein weiterer Mitgliedsserver oder Domänencontroller. Standardmäßig ist die Rolle bereits auf dem Computer vorhanden, der als Remotedesktopgateway konfiguriert ist.  Sie müssen auch die NPS-Rolle auf mindestens einem anderen Computer installieren, z.B. einen Domänencontroller oder Mitgliedsserver.
 
-Informationen zum Installieren des NPS-Rollendiensts für Windows Server 2012 oder älter finden Sie unter [Install a NAP Health Policy Server](https://technet.microsoft.com/library/dd296890.aspx) (Installieren eines NAP-Integritätsrichtlinienservers). Eine Beschreibung der bewährten Methoden für NPS einschließlich der Empfehlung zum Installieren von NPS auf einem Domänencontroller finden Sie unter [Best Practices for NPS](https://technet.microsoft.com/library/cc771746) (Bewährte Methoden für NPS).
+Informationen zum Installieren des NPS-Rollendiensts für Windows Server 2012 oder älter finden Sie unter [Install a NAP Health Policy Server](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd296890(v=ws.10)) (Installieren eines NAP-Integritätsrichtlinienservers). Eine Beschreibung der bewährten Methoden für NPS einschließlich der Empfehlung zum Installieren von NPS auf einem Domänencontroller finden Sie unter [Best Practices for NPS](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc771746(v=ws.10)) (Bewährte Methoden für NPS).
 
 ### <a name="azure-active-directory-synched-with-on-premises-active-directory"></a>Azure Active Directory synchronisiert mit der lokalen Active Directory-Instanz
 
@@ -109,7 +109,7 @@ Führen Sie die Schritte in [Erste Schritte mit Azure Multi-Factor Authenticatio
 
 Nachdem ein Konto für MFA aktiviert wurde, können Sie sich erst dann bei Ressourcen anmelden, die der MFA-Richtlinie unterliegen, wenn Sie erfolgreich ein vertrauenswürdiges Gerät für den zweiten Authentifizierungsfaktor konfiguriert und die Authentifizierung mit der zweistufigen Überprüfung durchgeführt haben.
 
-Führen Sie die Schritte in [Was ist Azure Multi-Factor Authentication?](../user-help/multi-factor-authentication-end-user.md) aus, um Ihre Geräte ordnungsgemäß mit Ihrem Benutzerkonto für MFA zu konfigurieren.
+Führen Sie die Schritte in [Was ist Azure Multi-Factor Authentication?](../user-help/multi-factor-authentication-end-user-first-time.md) aus, um Ihre Geräte ordnungsgemäß mit Ihrem Benutzerkonto für MFA zu konfigurieren.
 
 > [!IMPORTANT]
 > Das Anmeldeverhalten für Remotedesktopgateway umfasst keine Option zur Eingabe eines Verifizierungscodes über Azure Multi-Factor Authentication. Benutzerkonten müssen für die Telefonüberprüfung oder die Microsoft Authenticator-App über Pushbenachrichtigungen konfiguriert sein.
@@ -250,7 +250,7 @@ Wenn Sie das RD-Gateway zur Verwendung eines zentralen Richtlinienspeichers für
 1. Klicken Sie auf **Abbrechen**.
 
 >[!NOTE]
-> Weitere Informationen zum Erstellen einer Verbindungsanforderungsrichtlinie finden im Artikel „Konfigurieren von Verbindungsanforderungsrichtlinien“ unter [Hinzufügen einer Verbindungsanforderungsrichtlinie](https://docs.microsoft.com/windows-server/networking/technologies/nps/nps-crp-configure#add-a-connection-request-policy). 
+> Weitere Informationen zum Erstellen einer Verbindungsanforderungsrichtlinie finden im Artikel „Konfigurieren von Verbindungsanforderungsrichtlinien“ unter [Hinzufügen einer Verbindungsanforderungsrichtlinie](/windows-server/networking/technologies/nps/nps-crp-configure#add-a-connection-request-policy). 
 
 ## <a name="configure-nps-on-the-server-where-the-nps-extension-is-installed"></a>Konfigurieren von NPS auf dem Server, auf dem die NPS-Erweiterung installiert ist
 
@@ -378,13 +378,13 @@ Es folgt ein verwandtes Ereignis aus den Azure MFA-Protokollen:
 
 Zum Ausführen erweiterter Problembehandlungsoptionen nutzen Sie die NPS-Datenbankformat-Protokolldateien dort, wo der NPS-Dienst installiert ist. Diese Protokolldateien werden im Ordner _%SystemRoot%\System32\Logs_ als durch Trennzeichen getrennte Textdateien erstellt.
 
-Eine Beschreibung dieser Protokolldateien finden Sie unter [Interpret NPS Database Format Log Files](https://technet.microsoft.com/library/cc771748.aspx) (Interpretieren von NPS-Datenbankformat-Protokolldateien). Die Einträge in diesen Protokolldateien können schwierig zu interpretieren sein, ohne sie in eine Tabelle oder eine Datenbank zu importieren. Sie finden online mehrere IAS-Parser, die Ihnen die Interpretation der Protokolldateien erleichtern.
+Eine Beschreibung dieser Protokolldateien finden Sie unter [Interpret NPS Database Format Log Files](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc771748(v=ws.10)) (Interpretieren von NPS-Datenbankformat-Protokolldateien). Die Einträge in diesen Protokolldateien können schwierig zu interpretieren sein, ohne sie in eine Tabelle oder eine Datenbank zu importieren. Sie finden online mehrere IAS-Parser, die Ihnen die Interpretation der Protokolldateien erleichtern.
 
 Das folgende Bild zeigt die Ausgabe einer solchen herunterladbaren [Sharewareanwendung](https://www.deepsoftware.com/iasviewer).
 
 ![Beispiel für eine IAS-Analyse einer Shareware-App](./media/howto-mfa-nps-extension-rdg/image35.png)
 
-Schließlich können Sie für zusätzliche Problembehandlungsoptionen ein Protokollanalyseprogramm wie [Microsoft Message Analyzer](https://technet.microsoft.com/library/jj649776.aspx) verwenden.
+Schließlich können Sie für zusätzliche Problembehandlungsoptionen ein Protokollanalyseprogramm wie [Microsoft Message Analyzer](/message-analyzer/microsoft-message-analyzer-operating-guide) verwenden.
 
 Die Abbildung unten aus der Microsoft-Nachrichtenanalyse (Microsoft Message Analyzer) zeigt den Netzwerkdatenverkehr, der mit dem RADIUS-Protokoll gefiltert ist, das den Benutzernamen **CONTOSO\AliceC** enthält.
 

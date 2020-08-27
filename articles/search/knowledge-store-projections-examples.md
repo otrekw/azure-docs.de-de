@@ -8,12 +8,12 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: f030e382a5378c84df347c545e9426adee6eacb1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 18646fc92dda7cebb7a8c1030285956d8fe4df74
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85565997"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88924161"
 ---
 # <a name="how-to-shape-and-export-enrichments"></a>Strukturieren und Exportieren von Anreicherungen
 
@@ -206,7 +206,7 @@ Die Projektion in Tabellen in Azure Storage eignet sich für die Berichterstellu
 Wir erstellen ein Dashboard, um die Schlüsselausdrücke zu visualisieren, die aus Dokumenten als Wortwolke extrahiert werden. Um die richtige Datenstruktur zu erstellen, fügen wird dem Skillset eine Shaper-Qualifikation hinzu, um eine benutzerdefinierte Form zu erstellen, die dokumentspezifische Details und Schlüsselausdrücke enthält. Die benutzerdefinierte Form wird im Stammknoten von `document` als `pbiShape` bezeichnet.
 
 > [!NOTE] 
-> Tabellenprojektionen sind Azure Storage-Tabellen, die durch die durch Azure Storage vorgegebenen Speicherlimits gesteuert werden. Weitere Informationen finden Sie unter [Grenzwerte von Table Storage](https://docs.microsoft.com/rest/api/storageservices/understanding-the-table-service-data-model). Sie sollten auch wissen, dass die Entitätsgröße 1 MB nicht überschreiten und eine einzelne Eigenschaft nicht größer als 64 KB sein darf. Aufgrund dieser Einschränkungen stellen Tabellen eine gute Lösung für die Speicherung einer großen Anzahl kleiner Entitäten dar.
+> Tabellenprojektionen sind Azure Storage-Tabellen, die durch die durch Azure Storage vorgegebenen Speicherlimits gesteuert werden. Weitere Informationen finden Sie unter [Grenzwerte von Table Storage](/rest/api/storageservices/understanding-the-table-service-data-model). Sie sollten auch wissen, dass die Entitätsgröße 1 MB nicht überschreiten und eine einzelne Eigenschaft nicht größer als 64 KB sein darf. Aufgrund dieser Einschränkungen stellen Tabellen eine gute Lösung für die Speicherung einer großen Anzahl kleiner Entitäten dar.
 
 ### <a name="using-a-shaper-skill-to-create-a-custom-shape"></a>Verwenden einer Shaper-Qualifikation zum Erstellen einer benutzerdefinierten Form
 
@@ -677,4 +677,3 @@ Hier finden Sie eine Übersicht über Projektionen, erfahren mehr über Funktion
 
 > [!div class="nextstepaction"]
 > [Projektionen in einem Wissensspeicher](knowledge-store-projection-overview.md)
-

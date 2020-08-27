@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: 6d3e35f44d11cd9ed41badbc64ff7528b5b15558
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 31f64a504156134b1d622705d5301d9cd5a5f5b1
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86084391"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88756825"
 ---
 # <a name="troubleshoot-linux-vm-device-name-changes"></a>Behandeln von Problemen mit geänderten Gerätenamen von Linux-VMs
 
@@ -42,7 +42,7 @@ Das Problem tritt auf, weil die vom SCSI-Subsystem geplante Geräteüberprüfung
 
 Um dieses Problem zu beheben, können Sie die persistente Benennung verwenden. Für die persistente Benennung stehen vier Methoden zur Verfügung: nach der Dateisystembezeichnung, nach der UUID, nach der ID oder nach dem Pfad. Für Azure-Linux-VMs wird die Verwendung der Dateisystembezeichnung oder UUID empfohlen.
 
-Die meisten Verteilungen stellen die Parameter `fstab` **nofail** oder **nobootwait** bereit. Mit diesen Parametern kann ein System neu gestartet werden, wenn der Datenträger beim Start nicht bereitgestellt werden kann. Weitere Informationen zu diesen Parametern finden Sie in der Dokumentation zu Ihrer Distribution. Informationen zum Konfigurieren einer Linux-VM für die Verwendung einer UUID beim Hinzufügen eines Datenträgers finden Sie unter [Herstellen einer Verbindung mit dem virtuellen Linux-Computer zum Bereitstellen des neuen Datenträgers](../linux/add-disk.md#connect-to-the-linux-vm-to-mount-the-new-disk).
+Die meisten Verteilungen stellen die Parameter `fstab` **nofail** oder **nobootwait** bereit. Mit diesen Parametern kann ein System neu gestartet werden, wenn der Datenträger beim Start nicht bereitgestellt werden kann. Weitere Informationen zu diesen Parametern finden Sie in der Dokumentation zu Ihrer Distribution. Informationen zum Konfigurieren einer Linux-VM für die Verwendung einer UUID beim Hinzufügen eines Datenträgers finden Sie unter [Herstellen einer Verbindung mit dem virtuellen Linux-Computer zum Bereitstellen des neuen Datenträgers](../linux/add-disk.md#format-and-mount-the-disk).
 
 Beim Installieren des Azure Linux-Agents auf einer VM werden für die Erstellung einer Reihe symbolischer Verknüpfungen unter dem Pfad „/dev/disk/azure“ udev-Regeln verwendet. Anwendungen und Skripts ermitteln mithilfe von udev-Regeln Datenträger, die an die VM angefügt sind, sowie den Datenträgertyp und die Datenträger-LUNs.
 

@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: mayg
-ms.openlocfilehash: bf12a5b7850a56d945e1082be6c522c31738669c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0e1f670f2ba5ad31f29d56b2de40acd6e2bf18a9
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73954083"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654377"
 ---
 # <a name="integrate-expressroute-with-disaster-recovery-for-azure-vms"></a>Integrieren von ExpressRoute mit Notfallwiederherstellung für virtuelle Azure-Computer
 
@@ -22,7 +22,7 @@ In diesem Artikel wird beschrieben, wie Sie Azure ExpressRoute mit [Azure Site R
 
 Site Recovery ermöglicht die Notfallwiederherstellung von Azure-VMs durch Replikation der Daten von Azure-VMs zu Azure.
 
-- Wenn Azure-VMs [verwaltete Azure-Datenträger](../virtual-machines/windows/managed-disks-overview.md) verwenden, werden VM-Daten auf einen replizierten verwalteten Datenträger in der sekundären Region repliziert.
+- Wenn Azure-VMs [verwaltete Azure-Datenträger](../virtual-machines/managed-disks-overview.md) verwenden, werden VM-Daten auf einen replizierten verwalteten Datenträger in der sekundären Region repliziert.
 - Wenn Azure-VMs keine verwalteten Datenträger verwenden, werden VM-Daten in ein Azure-Speicherkonto repliziert.
 - Replikationsendpunkte sind öffentlich, aber der Replikationsdatenverkehr für virtuelle Azure-Computer wird nicht über das Internet übertragen.
 

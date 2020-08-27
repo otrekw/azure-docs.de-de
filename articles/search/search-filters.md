@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 7f2eb7cff5d8fe77a56117a0be57f0edb86889a9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 75932acb740eeff6f95180cf2eaa332ad0f5fb6a
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85562292"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88923074"
 ---
 # <a name="filters-in-azure-cognitive-search"></a>Filter in der kognitiven Azure-Suche 
 
@@ -61,7 +61,7 @@ Zur Abfragezeit akzeptiert ein Filterparser Kriterien als Eingabe, wandelt den A
 Die Filterung erfolgt zusammen mit Suche und bestimmt, welche Dokumente für den Dokumentabruf und die Relevanzbewertung in die nachgelagerte Verarbeitung einbezogen werden sollen. In Kombination mit einem Suchbegriff reduziert der Filter wirkungsvoll die Abrufmenge des nachfolgenden Suchvorgangs. Bei alleiniger Verwendung (z. B. wenn die Abfragezeichenfolge bei `search=*` leer ist) ist das Filterkriterium die einzige Eingabe. 
 
 ## <a name="defining-filters"></a>Definieren von Filtern
-Filter sind OData-Ausdrücke, die mittels einer [in der kognitiven Azure-Suche unterstützten Teilmenge der OData V4-Syntax](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search) definiert werden. 
+Filter sind OData-Ausdrücke, die mittels einer [in der kognitiven Azure-Suche unterstützten Teilmenge der OData V4-Syntax](/rest/api/searchservice/odata-expression-syntax-for-azure-search) definiert werden. 
 
 Sie können für jeden **Suchvorgang** einen Filter angeben. Doch der Filter selbst kann mehrere Felder, mehrere Kriterien und, wenn Sie eine **ismatch**-Funktion verwenden, mehrere Volltextsuchausdrücke enthalten. Bei einem mehrteiligen Filterausdruck können Sie Prädikate in beliebiger Reihenfolge angeben (gemäß den Regeln der Rangfolge von Operatoren). Es ergibt sich kein nennenswerter Leistungszuwachs, wenn Sie versuchen, Prädikate in einer bestimmten Reihenfolge neu anzuordnen.
 
@@ -95,7 +95,7 @@ POST https://[service name].search.windows.net/indexes/hotels/docs/search?api-ve
 
 ## <a name="filter-usage-patterns"></a>Filtern von Verwendungsmustern
 
-Die folgenden Beispiele veranschaulichen einige Verwendungsmuster für Filterszenarios. Weitere Vorschläge finden Sie unter [OData-Ausdruckssyntax > Beispiele](https://docs.microsoft.com/azure/search/search-query-odata-filter#examples).
+Die folgenden Beispiele veranschaulichen einige Verwendungsmuster für Filterszenarios. Weitere Vorschläge finden Sie unter [OData-Ausdruckssyntax > Beispiele](./search-query-odata-filter.md#examples).
 
 + Eigenständige **$filter**-Filter ohne Abfragezeichenfolge; nützlich, wenn der Filterausdruck Dokumente von Interesse vollständig qualifizieren kann. Ohne Abfragezeichenfolge gibt es keine lexikalische oder linguistische Analyse, Bewertung und Rangfolge. Beachten Sie, dass die Suchzeichenfolge nur ein Sternchen ist, und alle Dokumente abgeglichen werden.
 
@@ -135,9 +135,9 @@ Diese Artikel bieten eine umfassende Anleitung zu bestimmten Anwendungsfällen:
 
 ## <a name="field-requirements-for-filtering"></a>Feldanforderungen für das Filtern
 
-In der REST-API ist „filterable“ (filterbar) für einfache Felder standardmäßig *aktiviert*. Filterbare Felder erhöhen die Indexgröße. Stellen Sie sicher, dass Sie `"filterable": false` für Felder festlegen, die Sie nicht in einem Filter verwenden möchten. Weitere Informationen zu Einstellungen für Felddefinitionen finden Sie unter [Erstellen eines Indexes](https://docs.microsoft.com/rest/api/searchservice/create-index).
+In der REST-API ist „filterable“ (filterbar) für einfache Felder standardmäßig *aktiviert*. Filterbare Felder erhöhen die Indexgröße. Stellen Sie sicher, dass Sie `"filterable": false` für Felder festlegen, die Sie nicht in einem Filter verwenden möchten. Weitere Informationen zu Einstellungen für Felddefinitionen finden Sie unter [Erstellen eines Indexes](/rest/api/searchservice/create-index).
 
-Im .NET SDK ist die Eigenschaft „filterable“ standardmäßig *deaktiviert*. Sie können Felder filterbar machen, indem Sie die Eigenschaft [IsFilterable](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.isfilterable?view=azure-dotnet) des entsprechenden [Feld](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field?view=azure-dotnet)-Objekts auf `true` festlegen. Das ist auch deklarativ möglich, indem Sie das Attribut [IsFilterable](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.isfilterableattribute) verwenden. Im folgenden Beispiel ist das Attribut auf die `BaseRate`-Eigenschaft einer Modellklasse festgelegt, die der Indexdefinition zugeordnet wird.
+Im .NET SDK ist die Eigenschaft „filterable“ standardmäßig *deaktiviert*. Sie können Felder filterbar machen, indem Sie die Eigenschaft [IsFilterable](/dotnet/api/microsoft.azure.search.models.field.isfilterable?view=azure-dotnet) des entsprechenden [Feld](/dotnet/api/microsoft.azure.search.models.field?view=azure-dotnet)-Objekts auf `true` festlegen. Das ist auch deklarativ möglich, indem Sie das Attribut [IsFilterable](/dotnet/api/microsoft.azure.search.isfilterableattribute) verwenden. Im folgenden Beispiel ist das Attribut auf die `BaseRate`-Eigenschaft einer Modellklasse festgelegt, die der Indexdefinition zugeordnet wird.
 
 ```csharp
     [IsFilterable, IsSortable, IsFacetable]
@@ -193,12 +193,12 @@ search=John Leclerc&$count=true&$select=source,city,postCode,baths,beds&$filter=
 search=John Leclerc&$count=true&$select=source,city,postCode,baths,beds&$filter=city gt 'Seattle'
 ```
 
-Weitere Beispiele finden Sie unter [OData-Filterausdrucksyntax > Beispiele](https://docs.microsoft.com/azure/search/search-query-odata-filter#examples).
+Weitere Beispiele finden Sie unter [OData-Filterausdrucksyntax > Beispiele](./search-query-odata-filter.md#examples).
 
 ## <a name="see-also"></a>Weitere Informationen
 
 + [Funktionsweise der Volltextsuche in Azure Cognitive Search](search-lucene-query-architecture.md)
-+ [Search Documents (Azure Search Service REST API)](https://docs.microsoft.com/rest/api/searchservice/search-documents) (Suchen nach Dokumenten (Azure Search Service-REST-API))
-+ [Einfache Abfragesyntax](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)
-+ [Lucene-Abfragesyntax](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)
-+ [Unterstützte Datentypen](https://docs.microsoft.com/rest/api/searchservice/supported-data-types)
++ [Search Documents (Azure Search Service REST API)](/rest/api/searchservice/search-documents) (Suchen nach Dokumenten (Azure Search Service-REST-API))
++ [Einfache Abfragesyntax](/rest/api/searchservice/simple-query-syntax-in-azure-search)
++ [Lucene-Abfragesyntax](/rest/api/searchservice/lucene-query-syntax-in-azure-search)
++ [Unterstützte Datentypen](/rest/api/searchservice/supported-data-types)

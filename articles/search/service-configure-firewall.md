@@ -8,19 +8,19 @@ ms.author: mcarter
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/11/2020
-ms.openlocfilehash: 699715e1188616c2d6bda47016ec1ea7b05cef83
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 3e8a94b6b9b71d2d71b634edd70ea4150652b143
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83125583"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88932796"
 ---
 # <a name="configure-ip-firewall-for-azure-cognitive-search"></a>Konfigurieren einer IP-Firewall für Azure Cognitive Search
 
 Azure Cognitive Search unterstützt IP-Regeln zur Unterstützung eingehender Firewalls. Dieses Modell bietet eine zusätzliche Sicherheitsebene für Ihren Suchdienst, ähnlich den IP-Regeln, die Sie in einer Azure Virtual Network-Sicherheitsgruppe finden. Mit diesen IP-Regeln können Sie nun Ihren Suchdienst so konfigurieren, dass nur von einer genehmigten Gruppe von Computern und/oder Clouddiensten darauf zugegriffen werden kann. Für den Zugriff auf gespeicherte Daten in Ihrem Suchdienst über diese genehmigten Gruppen von Computern und Diensten muss der Aufrufer weiterhin ein gültiges Autorisierungstoken vorlegen.
 
 > [!Important]
-> IP-Regeln für Ihren Azure Cognitive Search-Dienst können mithilfe des Azure-Portals oder der [Verwaltungs-REST-API, Version 2020-03-13,](https://docs.microsoft.com/rest/api/searchmanagement/) konfiguriert werden.
+> IP-Regeln für Ihren Azure Cognitive Search-Dienst können mithilfe des Azure-Portals oder der [Verwaltungs-REST-API, Version 2020-03-13,](/rest/api/searchmanagement/) konfiguriert werden.
 
 ## <a name="configure-an-ip-firewall-using-the-azure-portal"></a><a id="configure-ip-policy"></a> Konfigurieren einer IP-Firewall über das Azure-Portal
 

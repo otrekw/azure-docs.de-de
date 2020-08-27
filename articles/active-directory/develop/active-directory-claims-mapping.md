@@ -10,15 +10,15 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.workload: identity
 ms.topic: how-to
-ms.date: 08/06/2020
+ms.date: 08/25/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
-ms.openlocfilehash: d518dcf833a49e32d72938a31da412d53cc40037
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: 1cd2b7550d47ecc92f8ca7f5531fab923e13930c
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88141532"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88853359"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>Gewusst wie: Anpassen von in Token ausgegebenen Ansprüchen für eine bestimmte App in einem Mandanten (Vorschau)
 
@@ -143,7 +143,6 @@ Es gibt bestimmte Sätze von Ansprüchen, die definieren, wie und wann sie in To
 | onprem_sid |
 | openid2_id |
 | password |
-| platf |
 | polids |
 | pop_jwk |
 | preferred_username |
@@ -248,11 +247,11 @@ Um zu steuern, welche Ansprüche ausgegeben werden und woher die Daten stammen, 
 
 **Zusammenfassung:** Diese Eigenschaft bestimmt, ob der grundlegende Anspruchssatz in von dieser Richtlinie betroffenen Token enthalten ist.
 
-- Wenn der Wert auf TRUE festgelegt wird, werden alle Ansprüche im grundlegenden Anspruchssatz in Token ausgegeben, die von der Richtlinie betroffen sind. 
+- Wenn der Wert auf TRUE festgelegt wird, werden alle Ansprüche im grundlegenden Anspruchssatz in Token ausgegeben, die von der Richtlinie betroffen sind.
 - Wenn der Wert auf FALSE festgelegt wird, werden die Ansprüche im grundlegenden Anspruchssatz nicht in Token ausgegeben, es sei denn, sie werden einzeln in der Ansprücheschemaeigenschaft derselben Richtlinie hinzugefügt.
 
-> [!NOTE] 
-> Ansprüche im Hauptanspruchssatz sind in jedem Token vorhanden, unabhängig davon, wie diese Eigenschaft festgelegt wird. 
+> [!NOTE]
+> Ansprüche im Hauptanspruchssatz sind in jedem Token vorhanden, unabhängig davon, wie diese Eigenschaft festgelegt wird.
 
 ### <a name="claims-schema"></a>Anspruchsschema
 
@@ -267,14 +266,14 @@ Für jeden Anspruchsschemaeintrag in dieser Eigenschaft definiert sind bestimmte
 
 **Wert:** Das Wertelement definiert die Daten, die im Anspruch ausgegeben werden sollen, als statischen Wert.
 
-**Quelle/ID-Paar:** Die Quell- und ID-Elemente definieren, woher die Daten im Anspruch stammen.  
+**Quelle/ID-Paar:** Die Quell- und ID-Elemente definieren, woher die Daten im Anspruch stammen.
 
 **Quelle-Erweiterungs-ID-Paar:** Die Quell- und Erweiterungs-ID-Elemente definieren das Verzeichnisschema-Erweiterungsattribut, aus dem die Daten im Anspruch stammen. Weitere Informationen finden Sie unter [Verwenden von Verzeichnisschema-Erweiterungsattributen in Ansprüchen](active-directory-schema-extensions.md).
 
-Legen Sie das Quellelement auf einen der folgenden Werte fest: 
+Legen Sie das Quellelement auf einen der folgenden Werte fest:
 
-- „user“: Die Daten im Anspruch sind eine Eigenschaft des User-Objekts. 
-- „application“: Die Daten im Anspruch sind eine Eigenschaft des Dienstprinzipals der Anwendung (Client). 
+- „user“: Die Daten im Anspruch sind eine Eigenschaft des User-Objekts.
+- „application“: Die Daten im Anspruch sind eine Eigenschaft des Dienstprinzipals der Anwendung (Client).
 - „resource“: Die Daten im Anspruch sind eine Eigenschaft des Dienstprinzipals der Ressource.
 - „audience“: Die Daten im Anspruch sind eine Eigenschaft des Dienstprinzipals, der die Zielgruppe des Token ist (Client- oder Ressourcendienstprinzipal).
 - „company“: Die Daten im Anspruch sind eine Eigenschaft des „Company“-Objekts des Ressourcenmandanten.
@@ -349,7 +348,7 @@ Das ID-Element identifiziert, welche Eigenschaft in der Quelle den Wert für den
 
 **Zeichenfolge:** ClaimsTransformation
 
-**Datentyp:** JSON-Blob mit mindestens einem Transformationseintrag 
+**Datentyp:** JSON-Blob mit mindestens einem Transformationseintrag
 
 **Zusammenfassung:** Mit dieser Eigenschaft können Sie allgemeine Transformationen auf Quelldaten anwenden, um Ausgabedaten für Ansprüche zu generieren, die im Anspruchsschema angegeben wurden.
 
@@ -368,7 +367,7 @@ Auf der Grundlage der ausgewählten Methode wird eine Reihe von Eingaben und Aus
 
 **InputClaims:** Verwenden Sie ein InputClaims-Element, um die Daten aus einem Anspruchsschemaeintrag an eine Transformation zu übergeben. Es verfügt über zwei Attribute: **ClaimTypeReferenceId** und **TransformationClaimType**.
 
-- **ClaimTypeReferenceId** ist mit dem ID-Element des Anspruchsschemaeintrags verknüpft, um den entsprechenden Eingabeanspruch zu suchen. 
+- **ClaimTypeReferenceId** ist mit dem ID-Element des Anspruchsschemaeintrags verknüpft, um den entsprechenden Eingabeanspruch zu suchen.
 - **TransformationClaimType** wird verwendet, um dieser Eingabe einen eindeutigen Namen zu geben. Dieser Name muss einem der erwarteten Eingaben für die Transformationsmethode entsprechen.
 
 **InputParameters:** Verwenden Sie ein InputParameters-Element, um einen konstanten Wert an eine Transformation zu übergeben. Es verfügt über zwei Attribute: **Value** und **ID**.
@@ -420,7 +419,7 @@ Auf der Grundlage der ausgewählten Methode wird eine Reihe von Eingaben und Aus
 
 Ein benutzerdefinierter Signaturschlüssel muss dem Dienstprinzipalobjekt zugewiesen werden, damit die Anspruchszuordnungsrichtlinie wirksam werden kann. Dies sorgt für die Bestätigung, dass Token vom Ersteller der Anspruchszuordnungsrichtlinie geändert wurden. Zudem werden Anwendungen vor Anspruchszuordnungsrichtlinien geschützt, die von böswilligen Akteuren erstellt wurden. Zum Hinzufügen eines benutzerdefinierten Signaturschlüssels können Sie mit dem Azure PowerShell-Cmdlet `new-azureadapplicationkeycredential` Anmeldeinformationen für einen symmetrischen Schlüssel für Ihr Anwendungsobjekt erstellen. Weitere Informationen zu diesem Azure PowerShell-Cmdlet finden Sie unter [New-AzureADApplicationKeyCredential](/powerShell/module/Azuread/New-AzureADApplicationKeyCredential?view=azureadps-2.0).
 
-Apps mit aktivierter Anspruchszuordnung müssen ihre Tokensignaturschlüssel überprüfen, indem sie `appid={client_id}` an ihre [OpenID Connect-Metadatenanforderungen](v2-protocols-oidc.md#fetch-the-openid-connect-metadata-document) anfügen. Im Folgenden finden Sie das Format des OpenID Connect-Metadatendokuments, das Sie verwenden sollten: 
+Apps mit aktivierter Anspruchszuordnung müssen ihre Tokensignaturschlüssel überprüfen, indem sie `appid={client_id}` an ihre [OpenID Connect-Metadatenanforderungen](v2-protocols-oidc.md#fetch-the-openid-connect-metadata-document) anfügen. Im Folgenden finden Sie das Format des OpenID Connect-Metadatendokuments, das Sie verwenden sollten:
 
 ```
 https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration?appid={client-id}
@@ -464,20 +463,20 @@ Führen Sie die folgenden Schritte aus, um zu beginnen:
 In diesem Beispiel erstellen Sie eine Richtlinie, die den grundlegenden Anspruchssatz aus den Token entfernt, die an den verknüpften Dienstprinzipal ausgestellte wurden.
 
 1. Erstellen Sie eine Anspruchszuordnungsrichtlinie. Diese Richtlinie, verknüpft mit bestimmten Dienstprinzipalen, entfernt den grundlegenden Anspruchsatz aus den Token.
-   1. Führen Sie diesen Befehl aus, um die Richtlinie zu erstellen: 
-    
+   1. Führen Sie diesen Befehl aus, um die Richtlinie zu erstellen:
+
       ``` powershell
       New-AzureADPolicy -Definition @('{"ClaimsMappingPolicy":{"Version":1,"IncludeBasicClaimSet":"false"}}') -DisplayName "OmitBasicClaims" -Type "ClaimsMappingPolicy"
       ```
    2. Führen Sie den folgenden Befehl aus, um Ihre neue Richtlinie anzuzeigen und deren „ObjectId“ abzurufen:
-    
+
       ``` powershell
       Get-AzureADPolicy
       ```
 1. Weisen Sie die Richtlinie Ihrem Dienstprinzipal zu. Rufen Sie außerdem die „ObjectId“ Ihres Dienstprinzipals ab.
    1. Wenn Sie alle Dienstprinzipale Ihrer Organisation anzeigen möchten, können Sie [die Microsoft Graph-API abfragen](/graph/traverse-the-graph). Oder melden Sie sich im [Microsoft Graph-Explorer](https://developer.microsoft.com/graph/graph-explorer) bei Ihrem Azure AD-Konto an.
-   2. Führen Sie den folgenden Befehl aus, wenn Sie über die ObjectId Ihres Dienstprinzipals verfügen:  
-     
+   2. Führen Sie den folgenden Befehl aus, wenn Sie über die ObjectId Ihres Dienstprinzipals verfügen:
+
       ``` powershell
       Add-AzureADServicePrincipalPolicy -Id <ObjectId of the ServicePrincipal> -RefObjectId <ObjectId of the Policy>
       ```
@@ -487,21 +486,21 @@ In diesem Beispiel erstellen Sie eine Richtlinie, die den grundlegenden Anspruch
 In diesem Beispiel erstellen Sie eine Richtlinie, die Token, die für verknüpfte Dienstprinzipale ausgestellt wurden, EmployeeID und TenantCountry hinzufügt. EmployeeID wird als Namensanspruchstyp in den SAML-Token und JWTs ausgegeben. „TenantCountry“ wird als Anspruchstyp für Land/Region in den SAML-Token und JWTs ausgegeben. In diesem Beispiel fahren wir mit dem Einschließen des grundlegenden Anspruchssatzes in Token fort.
 
 1. Erstellen Sie eine Anspruchszuordnungsrichtlinie. Diese Richtlinie, die mit bestimmten Dienstprinzipalen verknüpft ist, fügt den Token die Ansprüche „EmployeeID“ und „TenantCountry“ hinzu.
-   1. Führen Sie den folgenden Befehl aus, um die Richtlinie zu erstellen:  
-     
+   1. Führen Sie den folgenden Befehl aus, um die Richtlinie zu erstellen:
+
       ``` powershell
       New-AzureADPolicy -Definition @('{"ClaimsMappingPolicy":{"Version":1,"IncludeBasicClaimSet":"true", "ClaimsSchema": [{"Source":"user","ID":"employeeid","SamlClaimType":"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/employeeid","JwtClaimType":"name"},{"Source":"company","ID":"tenantcountry","SamlClaimType":"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/country","JwtClaimType":"country"}]}}') -DisplayName "ExtraClaimsExample" -Type "ClaimsMappingPolicy"
       ```
-    
+
    2. Führen Sie den folgenden Befehl aus, um Ihre neue Richtlinie anzuzeigen und deren „ObjectId“ abzurufen:
-     
-      ``` powershell  
+
+      ``` powershell
       Get-AzureADPolicy
       ```
-1. Weisen Sie die Richtlinie Ihrem Dienstprinzipal zu. Rufen Sie außerdem die „ObjectId“ Ihres Dienstprinzipals ab. 
+1. Weisen Sie die Richtlinie Ihrem Dienstprinzipal zu. Rufen Sie außerdem die „ObjectId“ Ihres Dienstprinzipals ab.
    1. Wenn Sie alle Dienstprinzipale Ihrer Organisation anzeigen möchten, können Sie [die Microsoft Graph-API abfragen](/graph/traverse-the-graph). Oder melden Sie sich im [Microsoft Graph-Explorer](https://developer.microsoft.com/graph/graph-explorer) bei Ihrem Azure AD-Konto an.
-   2. Führen Sie den folgenden Befehl aus, wenn Sie über die ObjectId Ihres Dienstprinzipals verfügen:  
-     
+   2. Führen Sie den folgenden Befehl aus, wenn Sie über die ObjectId Ihres Dienstprinzipals verfügen:
+
       ``` powershell
       Add-AzureADServicePrincipalPolicy -Id <ObjectId of the ServicePrincipal> -RefObjectId <ObjectId of the Policy>
       ```
@@ -512,20 +511,20 @@ In diesem Beispiel erstellen Sie eine Richtlinie, die einen benutzerdefinierten 
 
 1. Erstellen Sie eine Anspruchszuordnungsrichtlinie. Diese Richtlinie, die mit bestimmten Dienstprinzipalen verknüpft ist, fügt den Token die Ansprüche „EmployeeID“ und „TenantCountry“ hinzu.
    1. Führen Sie den folgenden Befehl aus, um die Richtlinie zu erstellen:
-     
+
       ``` powershell
       New-AzureADPolicy -Definition @('{"ClaimsMappingPolicy":{"Version":1,"IncludeBasicClaimSet":"true", "ClaimsSchema":[{"Source":"user","ID":"extensionattribute1"},{"Source":"transformation","ID":"DataJoin","TransformationId":"JoinTheData","JwtClaimType":"JoinedData"}],"ClaimsTransformations":[{"ID":"JoinTheData","TransformationMethod":"Join","InputClaims":[{"ClaimTypeReferenceId":"extensionattribute1","TransformationClaimType":"string1"}], "InputParameters": [{"ID":"string2","Value":"sandbox"},{"ID":"separator","Value":"."}],"OutputClaims":[{"ClaimTypeReferenceId":"DataJoin","TransformationClaimType":"outputClaim"}]}]}}') -DisplayName "TransformClaimsExample" -Type "ClaimsMappingPolicy"
       ```
-    
-   2. Führen Sie den folgenden Befehl aus, um Ihre neue Richtlinie anzuzeigen und deren „ObjectId“ abzurufen: 
-     
+
+   2. Führen Sie den folgenden Befehl aus, um Ihre neue Richtlinie anzuzeigen und deren „ObjectId“ abzurufen:
+
       ``` powershell
       Get-AzureADPolicy
       ```
-1. Weisen Sie die Richtlinie Ihrem Dienstprinzipal zu. Rufen Sie außerdem die „ObjectId“ Ihres Dienstprinzipals ab. 
+1. Weisen Sie die Richtlinie Ihrem Dienstprinzipal zu. Rufen Sie außerdem die „ObjectId“ Ihres Dienstprinzipals ab.
    1. Wenn Sie alle Dienstprinzipale Ihrer Organisation anzeigen möchten, können Sie [die Microsoft Graph-API abfragen](/graph/traverse-the-graph). Oder melden Sie sich im [Microsoft Graph-Explorer](https://developer.microsoft.com/graph/graph-explorer) bei Ihrem Azure AD-Konto an.
-   2. Führen Sie den folgenden Befehl aus, wenn Sie über die ObjectId Ihres Dienstprinzipals verfügen: 
-     
+   2. Führen Sie den folgenden Befehl aus, wenn Sie über die ObjectId Ihres Dienstprinzipals verfügen:
+
       ``` powershell
       Add-AzureADServicePrincipalPolicy -Id <ObjectId of the ServicePrincipal> -RefObjectId <ObjectId of the Policy>
       ```

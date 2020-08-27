@@ -11,19 +11,19 @@ ms.subservice: user-help
 ms.topic: end-user-help
 ms.date: 07/29/2020
 ms.author: curtand
-ms.openlocfilehash: d1191fdd757b4614eca543660eccddea5c20d033
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 55df08b0782c446d7313e709de9b8ceaeb58ab2b
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422509"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798192"
 ---
 # <a name="change-your-work-or-school-account-password-from-the-change-password-page"></a>Ändern des Kennworts für Ihr Geschäfts-, Schul- oder Unikonto auf der Seite „Kennwort ändern“
 
 Im Portal **Mein Konto** können Sie auf der Seite **Kennwort ändern** ein vorhandenes Kennwort für Ihr Geschäfts-, Schul- oder Unikonto aktualisieren, sofern Sie sich das Kennwort gemerkt haben und Ihr Konto nicht für Sie gesperrt ist. Wenn Sie Ihr Kennwort vergessen haben, Ihr Konto für Sie gesperrt ist oder Sie von Ihrer Organisation kein Kennwort erhalten haben, können Sie Ihre Sicherheitsinformationen und Ihr mobiles Gerät verwenden, um Ihr Kennwort zurückzusetzen.
 
 >[!Important]
->Dieser Artikel richtet sich an Benutzer, die versuchen, ein bekanntes Kennwort für ein vorhandenes Geschäfts-, Schul- oder Unikonto zu aktualisieren. Wenn Sie ein Benutzer sind, der versucht, Zugriff auf ein persönliches Konto (beispielsweise ein Xbox-, Hotmail- oder Outlook.com-Konto) zu erhalten, probieren Sie die Vorschläge im Artikel [Wenn Sie sich nicht bei Ihrem Microsoft-Konto anmelden können](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) aus. Wenn Sie ein Administrator sind und nach weiteren Informationen zum Testen der Self-Service-Kennwortzurücksetzung für Ihre Mitarbeiter oder andere Benutzer suchen, lesen Sie [Schnellstart: Konfigurieren der Self-Service-Kennwortzurücksetzung in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/authentication/quickstart-sspr).
+>Dieser Artikel richtet sich an Benutzer, die versuchen, ein bekanntes Kennwort für ein vorhandenes Geschäfts-, Schul- oder Unikonto zu aktualisieren. Wenn Sie ein Benutzer sind, der versucht, Zugriff auf ein persönliches Konto (beispielsweise ein Xbox-, Hotmail- oder Outlook.com-Konto) zu erhalten, probieren Sie die Vorschläge im Artikel [Wenn Sie sich nicht bei Ihrem Microsoft-Konto anmelden können](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) aus. Wenn Sie ein Administrator sind und nach weiteren Informationen zum Testen der Self-Service-Kennwortzurücksetzung für Ihre Mitarbeiter oder andere Benutzer suchen, lesen Sie [Schnellstart: Konfigurieren der Self-Service-Kennwortzurücksetzung in Azure Active Directory](../authentication/tutorial-enable-sspr.md).
 
 ## <a name="update-a-password-from-the-change-password-page"></a>Aktualisieren eines Kennworts auf der Seite „Kennwort ändern“
 
@@ -45,7 +45,7 @@ Im Portal **Mein Konto** können Sie auf der Seite **Kennwort ändern** ein vorh
 
 Nach dem Ändern Ihres Kennworts können Sie folgende Schritte ausführen:
 
-- Anzeigen oder Verwalten der [Sicherheitsinformationen](user-help-security-info-overview.md).
+- Anzeigen oder Verwalten der [Sicherheitsinformationen](./security-info-setup-signin.md).
 
 - Anzeigen oder Verwalten Ihrer verbundenen [Geräte](my-account-portal-devices-page.md).
 

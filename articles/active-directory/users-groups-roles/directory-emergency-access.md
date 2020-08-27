@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e9d4f293f3835e26def97aa2f52dd0c42d9137c7
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: a98ff68500593c644e6f0fa5eacb338ab90f5604
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421721"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88795394"
 ---
 # <a name="manage-emergency-access-accounts-in-azure-ad"></a>Verwalten von Konten für den Notfallzugriff in Azure AD
 
@@ -44,7 +44,7 @@ Erstellen Sie mindestens zwei Konten für den Notfallzugriff. Bei diesen Konten 
 Beim Konfigurieren dieser Konten müssen die folgenden Anforderungen erfüllt werden:
 
 - Die Konten für den Notfallzugriff dürfen keinem Einzelbenutzer in der Organisation zugeordnet werden. Stellen Sie sicher, dass Ihre Konten nicht mit Mobiltelefonen von Mitarbeitern, Hardwaretoken einzelner Mitarbeiter oder anderen mitarbeiterspezifischen Anmeldeinformationen verbunden sind. Durch diese Vorsichtsmaßnahme werden Fälle abgedeckt, in denen einzelne Mitarbeiter nicht erreichbar sind, wenn die Anmeldeinformationen benötigt werden. Es muss unbedingt sichergestellt werden, dass alle registrierten Geräte an einem bekannten, sicheren Ort aufbewahrt werden, die über verschiedene Wege mit Azure AD kommunizieren können.
-- Der für ein Konto für den Notfallzugriff verwendete Authentifizierungsmechanismus sollte sich von dem unterscheiden, der für Ihre anderen Administratorkonten einschließlich anderer Konten für den Notfallzugriff verwendet wird.  Erfolgt beispielsweise die normale Administratoranmeldung über lokale MFA, würde Azure MFA einen anderen Mechanismus darstellen.  Wenn jedoch Azure MFA Ihr primäres Authentifizierungselement für Ihre Administratorkonten ist, sollten Sie einen anderen Ansatz für diese Konten in Betracht ziehen, z. B. die Verwendung von bedingtem Zugriff mit einem MFA-Drittanbieter über [benutzerdefinierte Steuerelemente](https://docs.microsoft.com/azure/active-directory/conditional-access/controls).
+- Der für ein Konto für den Notfallzugriff verwendete Authentifizierungsmechanismus sollte sich von dem unterscheiden, der für Ihre anderen Administratorkonten einschließlich anderer Konten für den Notfallzugriff verwendet wird.  Erfolgt beispielsweise die normale Administratoranmeldung über lokale MFA, würde Azure MFA einen anderen Mechanismus darstellen.  Wenn jedoch Azure MFA Ihr primäres Authentifizierungselement für Ihre Administratorkonten ist, sollten Sie einen anderen Ansatz für diese Konten in Betracht ziehen, z. B. die Verwendung von bedingtem Zugriff mit einem MFA-Drittanbieter über [benutzerdefinierte Steuerelemente](../conditional-access/controls.md).
 - Die jeweiligen Geräte oder die Anmeldeinformationen dürfen nicht ablaufen oder aufgrund mangelnder Verwendung in den Bereich der automatisierten Bereinigung fallen.  
 - Sie sollten die Rolle „Globaler Administrator“ für Ihre Konten für den Notfallzugriff dauerhaft zuweisen. 
 
@@ -74,7 +74,7 @@ Organisationen sollten die von den Notfallkonten ausgehenden Anmelde- und Überw
 
 ### <a name="prerequisites"></a>Voraussetzungen
 
-1. [Senden Sie Azure AD-Anmeldeprotokolle](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics) an Azure Monitor.
+1. [Senden Sie Azure AD-Anmeldeprotokolle](../reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md) an Azure Monitor.
 
 ### <a name="obtain-object-ids-of-the-break-glass-accounts"></a>Abrufen von Objekt-IDs der Konten für den Notfallzugriff
 
@@ -156,5 +156,5 @@ Diese Schritte sollten in regelmäßigen Abständen und für wichtige Änderunge
 - [Hinzufügen von Benutzern in Azure AD](../fundamentals/add-users-azure-active-directory.md) und [Zuweisen der Rolle „Globaler Administrator“ zum neuen Benutzer](../fundamentals/active-directory-users-assign-role-azure-portal.md)
 - [Registrieren für Azure Active Directory Premium](../fundamentals/active-directory-get-started-premium.md), sofern nicht bereits geschehen
 - [Vorgehensweise zum Erzwingen einer zweistufigen Überprüfung für einen Benutzer](../authentication/howto-mfa-userstates.md)
-- [Konfigurieren zusätzlicher Schutzmechanismen für globale Administratoren in Microsoft 365](https://docs.microsoft.com/office365/enterprise/protect-your-global-administrator-accounts) bei Verwendung von Microsoft 365
+- [Konfigurieren zusätzlicher Schutzmechanismen für globale Administratoren in Microsoft 365](/office365/enterprise/protect-your-global-administrator-accounts) bei Verwendung von Microsoft 365
 - [Starten einer Zugriffsüberprüfung für globale Administratoren](../privileged-identity-management/pim-how-to-start-security-review.md) und [Umstellen der vorhandenen globalen Administratoren auf spezifischere Administratorrollen](directory-assign-admin-roles.md)

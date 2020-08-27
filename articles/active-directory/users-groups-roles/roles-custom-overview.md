@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ce2ea7bed7da5226868afcf4d284ba893f2208a
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 915098130c7a8462bc0e009be04a61b5b0a7985d
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87828658"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88795591"
 ---
 # <a name="custom-administrator-roles-in-azure-active-directory-preview"></a>Benutzerdefinierte Administratorrollen in Azure Active Directory (Vorschau)
 
@@ -46,7 +46,7 @@ Im Folgenden finden Sie die allgemeinen Schritte, anhand derer Azure AD ermitte
 
 1. Abhängig von der jeweiligen Situation führt Azure AD eine der folgenden Aktionen aus:
 
-    - Wertet die Rollenmitgliedschaften des Benutzers basierend auf dem [wids-Anspruch](https://docs.microsoft.com/azure/active-directory/develop/access-tokens) im Zugriffstoken des Benutzers aus.
+    - Wertet die Rollenmitgliedschaften des Benutzers basierend auf dem [wids-Anspruch](../develop/access-tokens.md) im Zugriffstoken des Benutzers aus.
     - Ruft alle für den Benutzer entweder direkt oder über eine Gruppenmitgliedschaft geltenden Rollenzuweisungen für die Ressource ab, für die die Aktion ausgeführt wird.
 
 1. Azure AD ermittelt, ob die Aktion im API-Aufruf in den Rollen enthalten ist, die dem Benutzer für diese Ressource zugewiesen sind.

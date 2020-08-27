@@ -12,12 +12,12 @@ ms.subservice: user-help
 ms.topic: end-user-help
 ms.date: 07/06/2020
 ms.author: curtand
-ms.openlocfilehash: 259468d0d3b04b354e782529cefa2149974c9ca0
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: e0a6c566e8e0dfb77b5899f735020d0f1facf3d1
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85983304"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798379"
 ---
 # <a name="change-your-two-factor-verification-method-and-settings"></a>Ändern der zweistufigen Überprüfungsmethode und der Einstellungen
 
@@ -31,10 +31,10 @@ Nachdem Sie Ihre Methoden für die Sicherheitsüberprüfung für Ihre Geschäfts
 
 ## <a name="using-the-additional-security-verification-page"></a>Verwenden der Seite „Zusätzliche Sicherheitsüberprüfung“
 
-Wenn Ihre Organisation Ihnen bestimmte Schritte zum Aktivieren und Verwalten der zweistufigen Überprüfung zur Verfügung gestellt hat, sollten Sie zuerst diese Anweisungen befolgen. Andernfalls finden Sie die Einstellungen Ihrer Methode für die Sicherheitsüberprüfung auf der Seite [Zusätzliche Sicherheitsüberprüfung](https://docs.microsoft.com/azure/active-directory/user-help/multi-factor-authentication-end-user-first-time).
+Wenn Ihre Organisation Ihnen bestimmte Schritte zum Aktivieren und Verwalten der zweistufigen Überprüfung zur Verfügung gestellt hat, sollten Sie zuerst diese Anweisungen befolgen. Andernfalls finden Sie die Einstellungen Ihrer Methode für die Sicherheitsüberprüfung auf der Seite [Zusätzliche Sicherheitsüberprüfung](./multi-factor-authentication-end-user-first-time.md).
 
 >[!Note]
->Wenn die auf Ihrem Bildschirm angezeigten Optionen nicht den in diesem Artikel behandelten Inhalten entsprechen, hat Ihr Administrator die Benutzeroberfläche **Sicherheitsinformation (Vorschau)** aktiviert, oder Ihre Organisation hat ein eigenes benutzerdefiniertes Portal bereitgestellt. Weitere Informationen zur neuen Benutzeroberfläche „Sicherheitsinformation“ finden Sie unter [Übersicht über die Sicherheitsinformationen (Vorschau)](user-help-security-info-overview.md). Um weitere Informationen zum benutzerdefinierten Portal Ihrer Organisation zu erhalten, wenden Sie sich an den Helpdesk Ihrer Organisation.
+>Wenn die auf Ihrem Bildschirm angezeigten Optionen nicht den in diesem Artikel behandelten Inhalten entsprechen, hat Ihr Administrator die Benutzeroberfläche **Sicherheitsinformation (Vorschau)** aktiviert, oder Ihre Organisation hat ein eigenes benutzerdefiniertes Portal bereitgestellt. Weitere Informationen zur neuen Benutzeroberfläche „Sicherheitsinformation“ finden Sie unter [Übersicht über die Sicherheitsinformationen (Vorschau)](./security-info-setup-signin.md). Um weitere Informationen zum benutzerdefinierten Portal Ihrer Organisation zu erhalten, wenden Sie sich an den Helpdesk Ihrer Organisation.
 
 ### <a name="to-get-to-the-additional-security-verification-page"></a>So gelangen Sie zur Seite „Zusätzliche Sicherheitsüberprüfung“
 

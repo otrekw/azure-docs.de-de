@@ -16,17 +16,17 @@ ms.date: 07/22/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 66f8020ec2561bf06716db0720a7ec4292f36eb3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 77c560ffd01fe6d0b93e18b963574136c086fdc4
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87034121"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88783194"
 ---
 # <a name="manage-guest-access-with-azure-ad-access-reviews"></a>Verwalten des Gastzugriffs mit Azure AD-Zugriffsüberprüfungen
 
 
-Mit Azure Active Directory (Azure AD) können Sie problemlos die Zusammenarbeit über Organisationsgrenzen hinweg ermöglichen, indem Sie das Feature [Azure AD B2B](../b2b/what-is-b2b.md) verwenden. Gastbenutzer von anderen Mandanten können von [Administratoren](../b2b/add-users-administrator.md) oder [anderen Benutzern eingeladen](../b2b/what-is-b2b.md) werden. Dies gilt auch für soziale Identitäten wie z.B. Microsoft-Konten.
+Mit Azure Active Directory (Azure AD) können Sie problemlos die Zusammenarbeit über Organisationsgrenzen hinweg ermöglichen, indem Sie das Feature [Azure AD B2B](../external-identities/what-is-b2b.md) verwenden. Gastbenutzer von anderen Mandanten können von [Administratoren](../external-identities/add-users-administrator.md) oder [anderen Benutzern eingeladen](../external-identities/what-is-b2b.md) werden. Dies gilt auch für soziale Identitäten wie z.B. Microsoft-Konten.
 
 Sie können auch auf einfache Weise sicherstellen, dass Gastbenutzer über entsprechenden Zugriff verfügen. Hierzu können Sie die Gäste selbst oder einen Entscheidungsträger bitten, an einer Zugriffsüberprüfung teilzunehmen und den Zugriff des Gasts erneut zu zertifizieren (oder zu „bescheinigen“). Basierend auf Vorschlägen von Azure AD können die Prüfer die Notwendigkeit des weiteren Zugriffs der einzelnen Benutzer abwägen. Nach Abschluss einer Zugriffsüberprüfung können Sie dann Änderungen vornehmen und Zugriffsrechte für Gäste entfernen, die diese nicht mehr benötigen.
 
@@ -120,10 +120,3 @@ In einigen Organisationen sind Gästen ihre Gruppenmitgliedschaften möglicherwe
 ## <a name="next-steps"></a>Nächste Schritte
 
 [Erstellen einer Zugriffsüberprüfung von Gruppen oder Anwendungen](create-access-review.md)
-
-
-
-
-
-
-

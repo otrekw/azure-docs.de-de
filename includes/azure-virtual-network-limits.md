@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/14/2020
 ms.author: anavin
 ms.custom: include file
-ms.openlocfilehash: 511354633b9f88f3d6cd2e2170ce3b7ca1f4ecdb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b963cc459094e823499e962736550dcea2345ba2
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82096058"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88854105"
 ---
 ### <a name="networking-limits---azure-resource-manager"></a><a name="azure-resource-manager-virtual-networking-limits"></a>Netzwerkgrenzwerte – Azure Resource Manager
 Die folgenden Grenzwerte gelten nur für Netzwerkressourcen, die über den **Azure Resource Manager** pro Region pro Abonnement verwaltet werden. Erfahren Sie, wie Sie [die aktuelle Ressourcennutzung anhand der Grenzwerte Ihres Abonnements anzeigen](../articles/networking/check-usage-against-limits.md).
@@ -100,7 +100,7 @@ Die folgenden Grenzwerte gelten nur für Netzwerkressourcen, die über den Azure
 | Private IP-Adressen pro virtuellem Netzwerk |4\.096 |4\.096 |
 | Parallele TCP-Flüsse pro NIC eines virtuellen Computers bzw. einer Rolleninstanz |500.000 bis 1.000.000 für zwei oder mehr NICs. |500.000 bis 1.000.000 für zwei oder mehr NICs. |
 | Netzwerksicherheitsgruppen |200 |200 |
-| NSG-Regeln pro NSG |1\.000 |1\.000 |
+| NSG-Regeln pro NSG |200 |1\.000 |
 | Benutzerdefinierte Routingtabellen |200 |200 |
 | Benutzerdefinierte Routen pro Routingtabelle |400 |400 |
 | Öffentliche IP-Adressen (dynamisch) |500 |500 |

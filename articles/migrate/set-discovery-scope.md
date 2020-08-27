@@ -3,12 +3,12 @@ title: Festlegen des Bereichs für die Ermittlung von VMware-VMs mit Azure Migra
 description: In diesem Artikel wird beschrieben, wie Sie den Suchbereich für die Bewertung und Migration von VMware-VMs mithilfe von Azure Migrate festlegen.
 ms.topic: how-to
 ms.date: 06/09/2020
-ms.openlocfilehash: e53eb0d01df2152aeced2901335f75879885fd22
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dfc9c12edd93fc720ef716fd43b04e0c193d5803
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84770389"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88919725"
 ---
 # <a name="set-discovery-scope-for-vmware-vms"></a>Festlegen des Suchbereichs für VMware-VMs
 
@@ -60,4 +60,4 @@ Durch die Einrichtung der rollenbasierten Zugriffssteuerung wird sichergestellt,
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Richten Sie die Appliance ein](how-to-set-up-appliance-vmware.md), und [starten Sie die kontinuierliche Ermittlung](how-to-set-up-appliance-vmware.md#start-continuous-discovery-by-providing-vcenter-server-and-vm-credential).
+[Einrichten der Appliance](how-to-set-up-appliance-vmware.md)

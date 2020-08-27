@@ -11,12 +11,12 @@ ms.subservice: user-help
 ms.topic: end-user-help
 ms.date: 07/29/2020
 ms.author: curtand
-ms.openlocfilehash: 4566d32682c8d0345c66d99ba5e4fd58695a325d
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 7dcaae80842f06714759cb5c933a62ccd85aac63
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87424740"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798090"
 ---
 # <a name="view-or-change-your-settings-in-the-my-account-portal"></a>Anzeigen oder Ändern Ihrer Einstellungen im Portal „Mein Konto“
 
@@ -47,7 +47,7 @@ Nachdem Sie die Anzeigesprache geändert haben, sollten Sie sich abmelden und be
 
 Nachdem Sie die Einstellungen im Portal „Mein Konto“ geändert haben, haben Sie folgende Möglichkeiten:
 
-- Anzeigen oder Verwalten der [Sicherheitsinformationen](user-help-security-info-overview.md).
+- Anzeigen oder Verwalten der [Sicherheitsinformationen](./security-info-setup-signin.md).
 
 - Anzeigen oder Verwalten Ihrer verbundenen [Geräte](my-account-portal-devices-page.md).
 

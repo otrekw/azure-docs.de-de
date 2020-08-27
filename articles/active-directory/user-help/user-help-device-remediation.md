@@ -13,12 +13,12 @@ ms.date: 10/10/2018
 ms.author: curtand
 ms.reviewer: jairoc
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: b76e84f6ae2449347604ab823fde5b74d5c68f07
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: df3941c895ce67862eb53b8e96bc7a6d53c1ed02
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83740994"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88799416"
 ---
 # <a name="possible-fixes-for-the-you-cant-get-there-from-here-error-message"></a>Mögliche Korrekturen für die Fehlermeldung „Der Wechsel von hier nach dort ist nicht möglich“
 
@@ -68,6 +68,6 @@ Falls Ihr Gerät nicht in das Netzwerk Ihrer Organisation eingebunden ist, haben
 - **Registrieren Sie Ihr persönliches Gerät für die Arbeit.** Registrieren Sie Ihr persönliches Gerät, in der Regel ein Smartphone oder ein Tablet, im Netzwerk Ihrer Organisation. Nach der Registrierung Ihres Geräts können Sie damit auf die geschützten Ressourcen Ihrer Organisation zugreifen. Weitere Informationen und eine ausführliche Anleitung finden Sie unter [Registrieren Ihres persönlichen Geräts im Netzwerk Ihrer Organisation](user-help-register-device-on-network.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
-- [Was ist das MyApps-Portal?](active-directory-saas-access-panel-introduction.md)
+- [Was ist das MyApps-Portal?](./my-apps-portal-end-user-access.md)
 
 - [Anmelden per Smartphone anstelle Ihres Kennworts](user-help-auth-app-sign-in.md)

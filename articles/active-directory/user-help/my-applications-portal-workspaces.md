@@ -12,12 +12,12 @@ ms.topic: end-user-help
 ms.date: 02/06/2020
 ms.author: curtand
 ms.custom: user-help
-ms.openlocfilehash: 29a202b3833bbc6ee550df89b240d95ecb38ef83
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d1059bae047774864868fbe90df50a877f9a3869
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83742046"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798056"
 ---
 # <a name="use-collections-in-the-my-apps-portal"></a>Verwenden von Sammlungen im Portal „Meine Apps“
 
@@ -26,7 +26,7 @@ Sammlungen sind unterschiedliche App-Ansichten, die im Portal **Meine Apps** ang
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-and-workspaces.md)]
 
 >[!Important]
->Dieser Inhalt richtet sich an Benutzer von **Meine Apps**. Administratoren können sich in der [Dokumentation zur Anwendungsverwaltung](https://docs.microsoft.com/azure/active-directory/manage-apps/access-panel-workspaces) über die Einrichtung und Verwaltung cloudbasierter Apps informieren.
+>Dieser Inhalt richtet sich an Benutzer von **Meine Apps**. Administratoren können sich in der [Dokumentation zur Anwendungsverwaltung](../manage-apps/access-panel-collections.md) über die Einrichtung und Verwaltung cloudbasierter Apps informieren.
 
 ## <a name="access-apps-using-collections"></a>Zugreifen auf Apps mithilfe von Sammlungen
 

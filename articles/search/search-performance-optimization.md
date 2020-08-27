@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/14/2020
-ms.openlocfilehash: 7c2857de0613be400f83544e1dabe079b7497bbd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5fd949466978714fe1dc0c4ccc67a3cb8f993314
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77212389"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934955"
 ---
 # <a name="scale-for-performance-on-azure-cognitive-search"></a>Skalieren zur Verbesserung der Leistung in Azure Cognitive Search
 
@@ -30,7 +30,7 @@ Vor der Durchführung eines größeren Bereitstellungsaufwands sollten Sie unbed
 
 1. Beginnen Sie mit einer geringen Anzahl von Abfragen pro Sekunde (QPS), und erhöhen Sie die im Test ausgeführte Abfrageanzahl dann schrittweise, bis die Abfragelatenz den vordefinierten Zielwert unterschreitet. Dies ist ein wichtiger Benchmark, mit dem Sie die Skalierung planen können, wenn die Nutzungsrate Ihrer Anwendung steigt.
 
-1. Verwenden Sie HTTP-Verbindungen nach Möglichkeit wieder. Bei Verwendung des .NET SDK der kognitiven Azure-Suche sollten Sie eine Instanz oder eine [SearchIndexClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchindexclient)-Instanz wiederverwenden. Wenn Sie die REST-API nutzen, sollten Sie eine einzelne HttpClient-Instanz wiederverwenden.
+1. Verwenden Sie HTTP-Verbindungen nach Möglichkeit wieder. Bei Verwendung des .NET SDK der kognitiven Azure-Suche sollten Sie eine Instanz oder eine [SearchIndexClient](/dotnet/api/microsoft.azure.search.searchindexclient)-Instanz wiederverwenden. Wenn Sie die REST-API nutzen, sollten Sie eine einzelne HttpClient-Instanz wiederverwenden.
 
 1. Variieren Sie die Inhalte von Abfrageanforderungen, sodass die Suche über verschiedene Teile Ihres Index erfolgt. Das Variieren ist wichtig, denn wenn Sie immer wieder die gleichen Suchanforderungen ausführen, führt die Zwischenspeicherung von Daten dazu, dass die Leistung besser aussieht als bei ungleichartigen Abfragen.
 
@@ -43,7 +43,7 @@ Beim Erstellen dieser Testworkloads müssen Sie einige Merkmale der kognitiven A
 + Bei der kognitiven Azure-Suche werden keine Indizierungsaufgaben im Hintergrund ausgeführt. Wenn Ihr Dienst Abfrage- und Indizierungsworkloads gleichzeitig verarbeitet, berücksichtigen Sie dies, indem Sie entweder Indizierungsaufträge in Ihre Abfragetests integrieren oder Optionen für die Ausführung von Indizierungsaufträgen während der Nebenzeiten untersuchen.
 
 > [!Tip]
-> Mithilfe von Tools für Auslastungstests können Sie eine realistische Abfragelast simulieren. Führen Sie [Auslastungstests mit Azure DevOps](https://docs.microsoft.com/azure/devops/test/load-test/get-started-simple-cloud-load-test?view=azure-devops) aus, oder verwenden Sie eine dieser [Alternativen](https://docs.microsoft.com/azure/devops/test/load-test/overview?view=azure-devops#alternatives).
+> Mithilfe von Tools für Auslastungstests können Sie eine realistische Abfragelast simulieren. Führen Sie [Auslastungstests mit Azure DevOps](/azure/devops/test/load-test/get-started-simple-cloud-load-test?view=azure-devops) aus, oder verwenden Sie eine dieser [Alternativen](/azure/devops/test/load-test/overview?view=azure-devops#alternatives).
 
 ## <a name="scale-for-high-query-volume"></a>Skalieren im Hinblick auf ein hohes Abfragevolume
 
@@ -99,7 +99,7 @@ Das Ziel bei der Einrichtung geografisch verteilter Suchdienste ist es, über mi
 
 ### <a name="keep-data-synchronized-across-multiple-services"></a>Gewährleisten der Synchronisierung von Daten über mehrere Dienste hinweg
 
-Es gibt zwei Optionen für die Synchronisierung Ihrer verteilten Suchdienste: den [Azure Cognitive Search-Indexer](search-indexer-overview.md) und die Push-API (auch als [Azure Cognitive Search-REST-API](https://docs.microsoft.com/rest/api/searchservice/) bezeichnet).  
+Es gibt zwei Optionen für die Synchronisierung Ihrer verteilten Suchdienste: den [Azure Cognitive Search-Indexer](search-indexer-overview.md) und die Push-API (auch als [Azure Cognitive Search-REST-API](/rest/api/searchservice/) bezeichnet).  
 
 ### <a name="use-indexers-for-updating-content-on-multiple-services"></a>Verwenden von Indexern zur Aktualisierung von Inhalten für mehrere Dienste
 
@@ -111,7 +111,7 @@ Diese Architektur würde ganz allgemein in etwa wie folgt aussehen.
 
 ### <a name="use-rest-apis-for-pushing-content-updates-on-multiple-services"></a>Verwenden von REST-APIs zur Übertragung von Inhaltsupdates für mehrere Dienste
 
-Wenn Sie die REST-API für die kognitive Azure-Suche zum [Übertragen von Inhalten in Ihren Index der kognitiven Azure-Suche](https://docs.microsoft.com/rest/api/searchservice/update-index) verwenden, können Sie die verschiedenen Suchdienste synchronisieren, indem Sie bei jedem Update per Push alle Änderungen an alle Suchdienste übertragen. Stellen Sie sicher, dass Ihr Code auch mit Fällen zurecht kommt, in denen die Aktualisierung eines einzelnen Suchdiensts nicht erfolgreich ist, andere Suchdienste aber erfolgreich aktualisiert werden.
+Wenn Sie die REST-API für die kognitive Azure-Suche zum [Übertragen von Inhalten in Ihren Index der kognitiven Azure-Suche](/rest/api/searchservice/update-index) verwenden, können Sie die verschiedenen Suchdienste synchronisieren, indem Sie bei jedem Update per Push alle Änderungen an alle Suchdienste übertragen. Stellen Sie sicher, dass Ihr Code auch mit Fällen zurecht kommt, in denen die Aktualisierung eines einzelnen Suchdiensts nicht erfolgreich ist, andere Suchdienste aber erfolgreich aktualisiert werden.
 
 ## <a name="leverage-azure-traffic-manager"></a>Nutzen von Azure Traffic Manager
 

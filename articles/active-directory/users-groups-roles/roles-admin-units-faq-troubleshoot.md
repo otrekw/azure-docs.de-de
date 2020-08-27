@@ -14,16 +14,16 @@ ms.author: curtand
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0db710385448ed3cdd54e3cbe692ea8b610741af
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b48bebe6aa5f9862d5f51fea257c4b7f3057639b
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84732241"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88794463"
 ---
 # <a name="azure-ad-administrative-units-troubleshooting-and-faq"></a>Azure AD-Verwaltungseinheiten: Problembehandlung und häufig gestellte Fragen
 
-Um eine präzisere administrative Steuerung in Azure Active Directory (Azure AD) zu ermöglichen, können Sie Benutzer einer Azure AD-Rolle mit einem auf eine oder mehrere Verwaltungseinheiten beschränkten Bereich zuweisen. PowerShell-Beispielskripts für häufige Aufgaben finden Sie unter [Arbeiten mit Verwaltungseinheiten](https://docs.microsoft.com/powershell/azure/active-directory/working-with-administrative-units?view=azureadps-2.0).
+Um eine präzisere administrative Steuerung in Azure Active Directory (Azure AD) zu ermöglichen, können Sie Benutzer einer Azure AD-Rolle mit einem auf eine oder mehrere Verwaltungseinheiten beschränkten Bereich zuweisen. PowerShell-Beispielskripts für häufige Aufgaben finden Sie unter [Arbeiten mit Verwaltungseinheiten](/powershell/azure/active-directory/working-with-administrative-units?view=azureadps-2.0).
 
 ## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
 
@@ -67,9 +67,9 @@ Um eine Rechteerweiterung zu verhindern, kann ein Administrator einer Verwaltung
 
 **F: Werden Verwaltungseinheiten in PowerShell und in der Graph-API unterstützt?**
 
-**A:** Ja. Entsprechende Informationen zur Unterstützung von Verwaltungseinheiten finden Sie in der [Dokumentation zu PowerShell-Cmdlets](https://docs.microsoft.com/powershell/module/Azuread/?view=azureadps-2.0-preview) und in [Beispielskripts](https://docs.microsoft.com/powershell/azure/active-directory/working-with-administrative-units?view=azureadps-2.0-preview). 
+**A:** Ja. Entsprechende Informationen zur Unterstützung von Verwaltungseinheiten finden Sie in der [Dokumentation zu PowerShell-Cmdlets](/powershell/module/Azuread/?view=azureadps-2.0-preview) und in [Beispielskripts](/powershell/azure/active-directory/working-with-administrative-units?view=azureadps-2.0-preview). 
 
-Informationen zur Unterstützung in Microsoft Graph finden Sie unter [Ressourcentyp „administrativeUnit“](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/administrativeunit).
+Informationen zur Unterstützung in Microsoft Graph finden Sie unter [Ressourcentyp „administrativeUnit“](/graph/api/resources/administrativeunit?view=graph-rest-beta).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

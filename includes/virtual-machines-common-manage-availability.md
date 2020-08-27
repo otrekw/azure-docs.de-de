@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: f1517fd577c5e6bd7341e5dde0204456524ba976
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: d7f7b0eb2c49e4abba9e12e09d70e321cc6c06f4
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87545159"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88760615"
 ---
 ## <a name="understand-vm-reboots---maintenance-vs-downtime"></a>Grundlegendes zu VM-Neustarts – Gegenüberstellung von Wartung und Ausfallzeit
 Drei Szenarien können zu einer Beeinträchtigung virtueller Computer in Azure führen: eine ungeplante Hardwarewartung, eine unerwartete Ausfallzeit und eine geplante Wartung.
@@ -34,7 +34,7 @@ Um die Downtime aufgrund eines oder mehrerer dieser Ereignisse zu verringern, so
 * [Verwenden von verwalteten Datenträgern für virtuelle Computer in einer Verfügbarkeitsgruppe]
 * [Verwenden von geplanten Ereignissen für proaktive Antworten auf Ereignisse, die sich auf virtuelle Computer auswirken](../articles/virtual-machines/linux/scheduled-events.md)
 * [Konfigurieren einzelner Logikschichten in separaten Verfügbarkeitsgruppen]
-* [Kombinieren des Lastenausgleichs mit Verfügbarkeitsgruppen]
+* [Kombinieren eines Lastenausgleichs mit Verfügbarkeitszonen oder -gruppen]
 * [Verwenden von Verfügbarkeitszonen als Schutz vor Ausfällen auf Datencenterebene]
 
 ## <a name="use-availability-zones-to-protect-from-datacenter-level-failures"></a>Verwenden von Verfügbarkeitszonen als Schutz vor Ausfällen auf Datencenterebene
@@ -67,7 +67,7 @@ Mit Fehlerdomänen wird die Gruppe der virtuellen Computer definiert, die eine S
 ## <a name="use-managed-disks-for-vms-in-an-availability-set"></a>Verwenden von verwalteten Datenträgern für virtuelle Computer in einer Verfügbarkeitsgruppe
 Falls Sie derzeit VMs mit nicht verwalteten Datenträgern verwenden, empfehlen wir Ihnen dringend, [VMs in der Verfügbarkeitsgruppe für die Verwendung von Managed Disks zu konvertieren](../articles/virtual-machines/windows/convert-unmanaged-to-managed-disks.md).
 
-[Managed Disks](../articles/virtual-machines/windows/managed-disks-overview.md) ermöglicht eine bessere Zuverlässigkeit für Verfügbarkeitsgruppen, indem sichergestellt wird, dass die Datenträger virtueller Computer in einer Verfügbarkeitsgruppe ausreichend voneinander isoliert sind, um einzelne Fehlerquellen zu vermeiden. Dies wird automatisch durch Platzieren der Datenträger in verschiedenen Speicherfehlerdomänen (Speicherclustern) und Anpassen an die VM-Fehlerdomäne sichergestellt. Wenn eine Speicherfehlerdomäne aufgrund eines Hardware- oder Softwarefehlers ausfällt, tritt der Fehler nur bei der VM-Instanz mit Datenträgern in dieser Speicherfehlerdomäne auf.
+[Managed Disks](../articles/virtual-machines/managed-disks-overview.md) ermöglicht eine bessere Zuverlässigkeit für Verfügbarkeitsgruppen, indem sichergestellt wird, dass die Datenträger virtueller Computer in einer Verfügbarkeitsgruppe ausreichend voneinander isoliert sind, um einzelne Fehlerquellen zu vermeiden. Dies wird automatisch durch Platzieren der Datenträger in verschiedenen Speicherfehlerdomänen (Speicherclustern) und Anpassen an die VM-Fehlerdomäne sichergestellt. Wenn eine Speicherfehlerdomäne aufgrund eines Hardware- oder Softwarefehlers ausfällt, tritt der Fehler nur bei der VM-Instanz mit Datenträgern in dieser Speicherfehlerdomäne auf.
 ![Fehlerdomänen für verwaltete Datenträger](./media/virtual-machines-common-manage-availability/md-fd-updated.png)
 
 > [!IMPORTANT]
@@ -111,7 +111,7 @@ Ein Tutorial dazu, wie ein Lastenausgleich über Verfügbarkeitszonen hinweg vor
 
 <!-- Link references -->
 [Konfigurieren mehrerer virtueller Computer in einer Verfügbarkeitsgruppe für höhere Redundanz]: #configure-multiple-virtual-machines-in-an-availability-set-for-redundancy
-[Kombinieren des Lastenausgleichs mit Verfügbarkeitsgruppen]: #combine-a-load-balancer-with-availability-zones-or-sets
+[Kombinieren eines Lastenausgleichs mit Verfügbarkeitszonen oder -gruppen]: #combine-a-load-balancer-with-availability-zones-or-sets
 [Avoid single instance virtual machines in availability sets]: #avoid-single-instance-virtual-machines-in-availability-sets
 [Verwenden von verwalteten Datenträgern für virtuelle Computer in einer Verfügbarkeitsgruppe]: #use-managed-disks-for-vms-in-an-availability-set
 [Verwenden von Verfügbarkeitszonen als Schutz vor Ausfällen auf Datencenterebene]: #use-availability-zones-to-protect-from-datacenter-level-failures
