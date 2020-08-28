@@ -2,17 +2,17 @@
 title: Azure-Rollen und -Berechtigungen
 description: Verwenden Sie die rollenbasierte Zugriffssteuerung (Azure RBAC) und das Identity & Access Management (IAM) von Azure, um differenzierte Berechtigungen für Ressourcen in einer Azure-Containerregistrierung bereitzustellen.
 ms.topic: article
-ms.date: 12/02/2019
-ms.openlocfilehash: 23a9c08162c03d4b34ed289d650fddcd7413ed08
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.date: 08/17/2020
+ms.openlocfilehash: b8562d3e33cd49082d4ba4d8567d5f0c816070b0
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87920074"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88661383"
 ---
 # <a name="azure-container-registry-roles-and-permissions"></a>Azure Container Registry: Rollen und Berechtigungen
 
-Der Azure Container Registry-Dienst unterstützt mehrere [integrierte Azure-Rollen](../role-based-access-control/built-in-roles.md), die unterschiedliche Berechtigungsstufen für eine Azure-Containerregistrierung bereitstellen. Verwenden Sie die [rollenbasierte Zugriffssteuerung von Azure](../role-based-access-control/index.yml) (Azure Role-Based Access Control, Azure RBAC), um Benutzern, Dienstprinzipalen oder anderen Identitäten, die mit einer Registrierung interagieren müssen, bestimmte Berechtigungen zuzuweisen. 
+Der Azure Container Registry-Dienst unterstützt mehrere [integrierte Azure-Rollen](../role-based-access-control/built-in-roles.md), die unterschiedliche Berechtigungsstufen für eine Azure-Containerregistrierung bereitstellen. Verwenden Sie die [rollenbasierte Zugriffssteuerung von Azure](../role-based-access-control/index.yml) (Azure Role-Based Access Control, Azure RBAC), um Benutzern, Dienstprinzipalen oder anderen Identitäten, die mit einer Registrierung interagieren müssen, bestimmte Berechtigungen zuzuweisen. Sie können für verschiedene Vorgänge auch [benutzerdefinierte Rollen](#custom-roles) mit differenzierten Berechtigungen für eine Registrierung definieren.
 
 | Rolle/Berechtigung       | [Zugreifen auf Resource Manager](#access-resource-manager) | [Erstellen/löschen einer Registrierung](#create-and-delete-registry) | [Übertragen eines Image mithilfe von Push](#push-image) | [Übertragen eines Images mithilfe von Pull](#pull-image) | [Löschen von Imagedaten](#delete-image-data) | [Ändern von Richtlinien](#change-policies) |   [Signieren von Images](#sign-images)  |
 | ---------| --------- | --------- | --------- | --------- | --------- | --------- | --------- |
@@ -70,7 +70,7 @@ Die Fähigkeit, Images zu signieren, die in der Regel einem automatisierten Proz
 
 ## <a name="custom-roles"></a>Benutzerdefinierte Rollen
 
-Wie bei anderen Azure-Ressourcen können Sie eigene [benutzerdefinierte Rollen](../role-based-access-control/custom-roles.md) mit differenzierten Berechtigungen für Azure Container Registry erstellen. Weisen Sie die benutzerdefinierten Rollen dann Benutzern, Dienstprinzipalen oder anderen Identitäten zu, die mit einer Registrierung interagieren müssen. 
+Wie bei anderen Azure-Ressourcen können Sie [benutzerdefinierte Rollen](../role-based-access-control/custom-roles.md) mit differenzierten Berechtigungen für Azure Container Registry erstellen. Weisen Sie die benutzerdefinierten Rollen dann Benutzern, Dienstprinzipalen oder anderen Identitäten zu, die mit einer Registrierung interagieren müssen. 
 
 Um festzustellen, welche Berechtigungen für eine benutzerdefinierte Rolle gelten sollen, lesen Sie die Liste der Microsoft.ContainerRegistry-[Aktionen](../role-based-access-control/resource-provider-operations.md#microsoftcontainerregistry), überprüfen Sie die zulässigen Aktionen der [integrierten ACR-Rollen](../role-based-access-control/built-in-roles.md), oder führen Sie den folgenden Befehl aus:
 
@@ -82,6 +82,36 @@ Um eine benutzerdefinierte Rolle zu definieren, lesen Sie [Schritte zum Erstelle
 
 > [!IMPORTANT]
 > In einer benutzerdefinierten Rolle unterstützt Azure Container Registry zurzeit keine Platzhalter wie `Microsoft.ContainerRegistry/*` oder `Microsoft.ContainerRegistry/registries/*`, die Zugriff auf alle übereinstimmenden Aktionen gewähren. Geben Sie die erforderlichen Aktionen einzeln in der Rolle an.
+
+### <a name="example-custom-role-to-import-images"></a>Beispiel: Benutzerdefinierte Rolle zum Importieren von Images
+
+Der folgende JSON-Code definiert beispielsweise die minimalen Aktionen für eine benutzerdefinierte Rolle, die das [Importieren von Images](container-registry-import-images.md) in eine Registrierung erlaubt.
+
+```json
+{
+   "assignableScopes": [
+     "/subscriptions/<optional, but you can limit the visibility to one or more subscriptions>"
+   ],
+   "description": "Can import images to registry",
+   "Name": "AcrImport",
+   "permissions": [
+     {
+       "actions": [
+         "Microsoft.ContainerRegistry/registries/push/write",
+         "Microsoft.ContainerRegistry/registries/pull/read",
+         "Microsoft.ContainerRegistry/registries/read",
+         "Microsoft.ContainerRegistry/registries/importImage/action"
+       ],
+       "dataActions": [],
+       "notActions": [],
+       "notDataActions": []
+     }
+   ],
+   "roleType": "CustomRole"
+ }
+```
+
+Um eine benutzerdefinierte Rolle unter Verwendung der JSON-Beschreibung zu erstellen oder zu aktualisieren, verwenden Sie die [Azure CLI](../role-based-access-control/custom-roles-cli.md), die [Azure Resource Manager-Vorlage](../role-based-access-control/custom-roles-template.md), [Azure PowerShell](../role-based-access-control/custom-roles-powershell.md) oder andere Azure-Tools. Sie können Rollenzuweisungen für eine benutzerdefinierte Rolle auf dieselbe Weise hinzufügen oder entfernen, wie Sie Rollenzuweisungen für integrierte Azure-Rollen verwalten.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

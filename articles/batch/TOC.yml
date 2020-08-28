@@ -134,6 +134,8 @@
           href: batch-sig-images.md
         - name: Erstellen eines Pools mit einer verwalteten Imageressource
           href: batch-custom-images.md
+        - name: Erstellen eines Pools mit aktivierter Datenträgerverschlüsselung
+          href: disk-encryption.md
         - name: Erstellen eines Pools in einem virtuellen Netzwerk
           href: batch-virtual-network.md
         - name: Erstellen eines Pools mit öffentlichen IP-Adressen
@@ -227,7 +229,7 @@
           href: ../data-factory/transform-data-using-dotnet-custom-activity.md?toc=%2fazure%2fbatch%2ftoc.json
 - name: Verweis
   items:
-    - name: Azure CLI
+    - name: Azure-Befehlszeilenschnittstelle
       href: /cli/azure/batch
     - name: Azure PowerShell
       href: /powershell/module/az.batch

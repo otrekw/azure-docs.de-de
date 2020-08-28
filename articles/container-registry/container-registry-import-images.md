@@ -2,13 +2,13 @@
 title: Importieren von Containerimages
 description: Importieren von Containerimages in eine Azure-Containerregistrierung mithilfe von Azure-APIs, ohne dass Docker-Befehle ausgeführt werden müssen
 ms.topic: article
-ms.date: 03/16/2020
-ms.openlocfilehash: a7a6566540880d027b1dc3428d394b352f34318d
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.date: 08/17/2020
+ms.openlocfilehash: 66c3a8b19e2288c1f8720dd4fe79f348a11f052e
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86023515"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88660494"
 ---
 # <a name="import-container-images-to-a-container-registry"></a>Importieren von Containerimages in eine Containerregistrierung
 
@@ -28,6 +28,8 @@ Der Imageimport in eine Azure-Containerregistrierung bietet gegenüber der Verwe
 
 * Wenn Sie Images mit mehreren Architekturen (etwa offizielle Docker-Images) importieren, werden Images für alle Architekturen und Plattformen kopiert, die in der Manifestliste angegeben sind.
 
+* Der Zugriff auf die Quell- und die Zielregistrierung muss nicht über die öffentlichen Endpunkte der Registrierung erfolgen.
+
 Damit Sie Containerimages importieren können, muss für diesen Artikel die Azure-Befehlszeilenschnittstelle in Azure Cloud Shell oder lokal (Version 2.0.55 oder höhere Version empfohlen) ausgeführt werden. Führen Sie `az --version` aus, um die Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI][azure-cli].
 
 > [!NOTE]
@@ -38,7 +40,7 @@ Damit Sie Containerimages importieren können, muss für diesen Artikel die Azur
 
 Wenn Sie nicht bereits über eine Azure-Containerregistrierung verfügen, erstellen Sie eine Registrierung. Die hierzu erforderlichen Schritte finden Sie unter [Schnellstart: Erstellen einer privaten Containerregistrierung mit der Azure CLI](container-registry-get-started-azure-cli.md).
 
-Um ein Image in eine Azure-Containerregistrierung importieren zu können, muss Ihre Identität über Schreibberechtigungen für die Zielregistrierung (mindestens die Rolle „Mitwirkender“) verfügen. Informationen hierzu finden Sie unter [Azure Container Registry: Rollen und Berechtigungen](container-registry-roles.md). 
+Um ein Image in eine Azure-Containerregistrierung importieren zu können, muss Ihre Identität über Schreibberechtigungen für die Zielregistrierung (mindestens die Rolle „Mitwirkender“ oder eine benutzerdefinierte Rolle, die die importImage-Aktion zulässt) verfügen. Informationen hierzu finden Sie unter [Azure Container Registry: Rollen und Berechtigungen](container-registry-roles.md#custom-roles). 
 
 ## <a name="import-from-a-public-registry"></a>Importieren aus einer öffentlichen Registrierung
 
@@ -85,9 +87,11 @@ az acr import \
 
 Mithilfe integrierter Azure Active Directory-Berechtigungen können Sie ein Image aus einer anderen Azure-Containerregistrierung importieren.
 
-* Ihre Identität muss über Azure Active Directory-Berechtigungen zum Lesen aus der Quellregistrierung (Rolle „Leser“) und zum Schreiben in die Zielregistrierung (Rolle „Mitwirkender“) verfügen.
+* Ihre Identität muss über Azure Active Directory-Berechtigungen zum Lesen aus der Quellregistrierung (Rolle „Leser“) und zum Importieren in die Zielregistrierung (Rolle „Mitwirkender“ bzw. [benutzerdefinierte Rolle](container-registry-roles.md#custom-roles), die die importImage-Aktion zulässt) verfügen.
 
 * Die Registrierung kann sich in dem gleichen oder einem anderen Azure-Abonnement im gleichen Active Directory-Mandanten befinden.
+
+* Der [öffentliche Zugriff](container-registry-access-selected-networks.md#disable-public-network-access) auf die Quellregistrierung kann deaktiviert werden. Wenn der öffentliche Zugriff deaktiviert ist, geben Sie die Quellregistrierung nach Ressourcen-ID anstelle des Servernamens der Registrierungsanmeldung an.
 
 ### <a name="import-from-a-registry-in-the-same-subscription"></a>Importieren aus einer Registrierung im gleichen Abonnement
 
@@ -98,6 +102,16 @@ az acr import \
   --name myregistry \
   --source mysourceregistry.azurecr.io/aci-helloworld:latest \
   --image aci-helloworld:latest
+```
+
+Das folgende Beispiel importiert das `aci-helloworld:latest`-Image in *myregistry* aus einer Quellregistrierung *mysourceregistry*, in der der Zugriff auf den öffentlichen Endpunkt der Registrierung deaktiviert ist. Geben Sie die Ressourcen-ID der Quellregistrierung mit dem Parameter `--registry` an. Beachten Sie, dass der Parameter `--source` nur das Quellrepository und Tag, aber nicht den Namen des Anmeldeservers für die Registrierung angibt.
+
+```azurecli
+az acr import \
+  --name myregistry \
+  --source aci-helloworld:latest \
+  --image aci-helloworld:latest \
+  --registry /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/sourceResourceGroup/providers/Microsoft.ContainerRegistry/registries/mysourceregistry
 ```
 
 Das folgende Beispiel importiert ein Image nicht anhand des Tags, sondern anhand des Manifest-Digest (SHA-256-Hash, dargestellt als `sha256:...`):

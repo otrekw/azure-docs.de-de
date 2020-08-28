@@ -5,12 +5,12 @@ author: pkshultz
 ms.topic: how-to
 ms.date: 07/17/2020
 ms.author: peshultz
-ms.openlocfilehash: 2af82233013f064b185aefde3f2e1710bd86ed43
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: a89d0182f6a659cee65ebc1de7d97d40418b4b20
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88053744"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654887"
 ---
 # <a name="configure-customer-managed-keys-for-your-azure-batch-account-with-azure-key-vault-and-managed-identity"></a>Konfigurieren von kundenseitig verwalteten Schlüsseln für Ihr Azure Batch-Konto mit Azure Key Vault und Verwaltete Identität
 
@@ -19,7 +19,7 @@ Standardmäßig werden von Azure Batch plattformseitig verwaltete Schlüssel ver
 Die von Ihnen angegebenen Schlüssel müssen in [Azure Key Vault](../key-vault/general/basic-concepts.md) generiert sein, und die Batch-Konten, die Sie mit kundenseitig verwalteten Schlüsseln konfigurieren möchten, müssen mit dem Azure-Dienst [Verwaltete Identität](../active-directory/managed-identities-azure-resources/overview.md) aktiviert worden sein.
 
 > [!IMPORTANT]
-> Die Unterstützung für kundenseitig verwaltete Schlüssel in Azure Batch befindet sich derzeit in der öffentlichen Vorschau für die Regionen USA, Westen-Mitte, USA, Osten, USA, Süden-Mitte, USA, Westen 2, US Gov Virginia und US Gov Arizona.
+> Die Unterstützung für kundenseitig verwaltete Schlüssel in Azure Batch befindet sich derzeit in der öffentlichen Vorschau für die Regionen Europa, Westen; Europa, Norden; Schweiz, Norden; USA, Mitte; USA, Süden-Mitte; USA, Westen-Mitte; USA, Osten; USA, Osten 2; USA, Westen 2; US Gov Virginia und US Gov Arizona.
 > Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar.
 > Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 

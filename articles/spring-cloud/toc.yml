@@ -10,14 +10,21 @@
 - name: Schnellstarts
   expanded: true
   items:
-    - name: 'Starten einer Spring Cloud-App: Portal'
-      href: spring-cloud-quickstart-launch-app-portal.md
-    - name: 'Starten einer Spring Cloud-App: Azure CLI'
-      href: spring-cloud-quickstart-launch-app-cli.md
-    - name: 'Starten einer Spring Cloud-App: Quelle'
-      href: spring-cloud-launch-from-source.md
-    - name: 'Starten einer Spring Cloud-App: Maven'
-      href: spring-cloud-quickstart-launch-app-maven.md
+    - name: Starten Ihrer ersten App
+      href: spring-cloud-quickstart.md
+    - name: Erstellen und Ausführen von Microservices
+      expanded: true
+      items:
+        - name: Einführung in Beispiel-Apps
+          href: spring-cloud-quickstart-sample-app-introduction.md
+        - name: Bereitstellen des Azure Spring Cloud-Diensts
+          href: spring-cloud-quickstart-provision-service-instance.md
+        - name: Einrichten eines Konfigurationsservers
+          href: spring-cloud-quickstart-setup-config-server.md
+        - name: Erstellen und Bereitstellen von Apps
+          href: spring-cloud-quickstart-deploy-apps.md
+        - name: 'Verwenden von Protokollen, Metriken und Ablaufverfolgung'
+          href: spring-cloud-quickstart-logs-metrics-tracing.md
 - name: Tutorials
   items:
     - name: Manuelles Skalieren einer App
@@ -44,7 +51,7 @@
       href: spring-cloud-tutorial-deploy-in-azure-virtual-network.md
 - name: Beispiele
   items:
-    - name: Integrierte Azure Policy-Aktionen
+    - name: Azure Policy-Integrationen
       displayName: 'samples, policies, definitions'
       href: ./policy-samples.md
 - name: Konzepte

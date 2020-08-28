@@ -246,7 +246,7 @@
               href: application-types.md
             - name: Unerwarteter Benutzer zugewiesen
               href: ways-users-get-assigned-to-applications.md
-        - name: Problembehandlung für den Zugriffsbereich
+        - name: Problembehandlung für „Meine Apps“
           items:
             - name: Verwalten der Browsererweiterung
               href: manage-access-panel-browser-extension.md
@@ -256,8 +256,6 @@
               href: access-panel-troubleshoot-unexpected-application.md
             - name: Anmeldung nicht möglich
               href: access-panel-troubleshoot-web-sign-in-problem.md
-            - name: Fehler beim Installieren der Browsererweiterung
-              href: access-panel-extension-problem-installing.md
             - name: Fehler beim Verwenden des Self-Service-App-Zugriffs
               href: access-panel-troubleshoot-self-service-access.md
         - name: Problembehandlung für lokale Apps

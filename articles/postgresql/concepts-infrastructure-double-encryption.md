@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 6/30/2020
-ms.openlocfilehash: 8468d733756ef92ffc9078e945dc46d23e1ab54a
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: d54bef277d80a178c45ce918290d46c11387b7d1
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88067493"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88918093"
 ---
 # <a name="azure-database-for-postgresql-infrastructure-double-encryption"></a>Azure Database for PostgreSQL: doppelte Infrastrukturverschlüsselung
 
@@ -62,6 +62,12 @@ Die Verschlüsselungsfunktionen, die von Azure Database for PostgreSQL geboten w
 Bei Azure Database for PostgreSQL unterliegt die Unterstützung der doppelten Infrastrukturverschlüsselung mit dienstseitig verwaltetem Schlüssel den folgenden Einschränkungen:
 
 * Die Unterstützung dieser Funktionalität ist auf die Tarife **Universell** und **Arbeitsspeicheroptimiert** beschränkt.
+* Sie können ein Instanz von Azure Database for PostgreSQL mit aktivierter doppelter Infrastrukturverschlüsselung in folgenden Regionen erstellen:
+
+   * East US
+   * USA Süd Mitte
+   * USA, Westen 2
+   
 * Diese Funktion wird nur in Regionen und auf Servern unterstützt, die eine Speicherkapazität bis zu 16 TB unterstützen. Eine Liste der Azure-Regionen, die Speicher mit bis zu 16 TB unterstützen, finden Sie in der [Speicherdokumentation](concepts-pricing-tiers.md#storage).
 
     > [!NOTE]

@@ -2,14 +2,14 @@
 title: Ausführen von Aufgaben unter Benutzerkonten
 description: Erfahren Sie mehr über die Typen von Benutzerkonten und deren Konfiguration.
 ms.topic: how-to
-ms.date: 11/18/2019
+ms.date: 08/20/2020
 ms.custom: seodec18
-ms.openlocfilehash: 412947b939d95be29dde374b311776829fa12582
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: cce374e7d7ffb513bed882b048ea54bcbad81b0b
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86142688"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88719358"
 ---
 # <a name="run-tasks-under-user-accounts-in-batch"></a>Ausführen von Aufgaben unter Benutzerkonten in Batch
 
@@ -49,18 +49,13 @@ Die Rechteerweiterungsebene des Benutzerkontos lässt erkennen, ob eine Aufgabe 
 
 ## <a name="auto-user-accounts"></a>Automatische Benutzerkonten
 
-Standardmäßig werden Aufgaben in Batch unter einem automatischen Benutzerkonto als Standardbenutzer ohne erhöhte Zugriffsrechte und mit Aufgabenbereich ausgeführt. Wenn die automatische Benutzerspezifikation für den Aufgabenbereich konfiguriert ist, erstellt der Batch-Dienst ausschließlich für diese Aufgabe ein automatisches Benutzerkonto.
+Standardmäßig werden Aufgaben in Batch unter einem automatischen Benutzerkonto als Standardbenutzer ohne erhöhte Zugriffsrechte und mit Poolbereich ausgeführt. Poolbereich bedeutet, dass die Aufgabe unter einem automatischen Benutzerkonto ausgeführt wird, das für alle Aufgaben im Pool verfügbar ist. Weitere Informationen zum Poolbereich finden Sie unter [Ausführen einer Aufgabe als automatischer Benutzer mit Poolbereich](#run-a-task-as-an-auto-user-with-pool-scope).
 
-Die Alternative zum Aufgabenbereich ist der Poolbereich. Wenn die automatische Benutzerspezifikation für eine Aufgabe für den Poolbereich konfiguriert ist, wird die Aufgabe unter einem automatischen Benutzerkonto ausgeführt, das für jede Aufgabe im Pool verfügbar ist. Weitere Informationen zum Poolbereich finden Sie unter [Ausführen einer Aufgabe als automatischer Benutzer mit Poolbereich](#run-a-task-as-an-auto-user-with-pool-scope).
-
-Der Standardbereich ist auf Windows- und Linux-Knoten unterschiedlich:
-
-- Auf Windows-Knoten werden Aufgaben standardmäßig unter dem Aufgabenbereich ausgeführt.
-- Auf Linux-Knoten werden Aufgaben immer unter dem Poolbereich ausgeführt.
+Die Alternative zum Poolbereich ist der Aufgabenbereich. Wenn die automatische Benutzerspezifikation für den Aufgabenbereich konfiguriert ist, erstellt der Batch-Dienst ausschließlich für diese Aufgabe ein automatisches Benutzerkonto.
 
 Es gibt vier mögliche Konfigurationen für die automatische Benutzerspezifikation, von denen jede einem eindeutigen automatischen Benutzerkonto entspricht:
 
-- Zugriff ohne Administratorrechte mit Aufgabenbereich (die standardmäßige automatische Benutzerspezifikation)
+- Zugriff ohne Administratorrechte mit Aufgabenbereich
 - Administratorzugriff (erhöht) mit Aufgabenbereich
 - Zugriff ohne Administratorrechte mit Poolbereich
 - Administratorzugriff mit Poolbereich
@@ -75,7 +70,7 @@ Sie können die automatische Benutzerspezifikation für die Administratorrechte 
 > [!NOTE]
 > Verwenden Sie erhöhte Zugriffsrechte nur bei Bedarf. Es hat sich als Methode bewährt, die Mindestberechtigungen zu erteilen, mit denen das gewünschte Ergebnis erzielt werden kann. Wenn eine Startaufgabe z.B. Software für den aktuellen Benutzer anstatt für alle Benutzer installiert, können Sie vermeiden, erhöhte Zugriffsrechte für Aufgaben zu gewähren. Sie können die automatische Benutzerspezifikation für den Poolbereich und den Zugriff ohne Administratorrechte für alle Aufgaben konfigurieren, die unter dem gleichen Konto ausgeführt werden müssen, inklusive der Startaufgabe.
 
-Die folgenden Codeausschnitte veranschaulichen das Konfigurieren der automatischen Benutzerspezifikation. In den Beispielen ist die Rechteerweiterungsebene auf `Admin` und der Bereich auf `Task` festgelegt. Der Aufgabenbereich ist die Standardeinstellung, wird hier jedoch zu Beispielzwecken einbezogen.
+Die folgenden Codeausschnitte veranschaulichen das Konfigurieren der automatischen Benutzerspezifikation. In den Beispielen ist die Rechteerweiterungsebene auf `Admin` und der Bereich auf `Task` festgelegt.
 
 #### <a name="batch-net"></a>Batch .NET
 
@@ -90,7 +85,7 @@ taskToAdd.withId(taskId)
             .withAutoUser(new AutoUserSpecification()
                 .withElevationLevel(ElevationLevel.ADMIN))
                 .withScope(AutoUserScope.TASK));
-        .withCommandLine("cmd /c echo hello");                        
+        .withCommandLine("cmd /c echo hello");
 ```
 
 #### <a name="batch-python"></a>Batch Python
@@ -113,7 +108,7 @@ Wenn ein Knoten bereitgestellt wird, werden zwei poolweite automatische Benutzer
 
 Wenn Sie den Poolbereich für den automatischen Benutzer angeben, werden alle mit Administratorzugriff auszuführenden Aufgaben unter dem gleichen poolweiten automatischen Benutzerkonto ausgeführt. Auf ähnliche Weise werden ohne Administratorberechtigungen auszuführende Aufgaben auch unter einem einzelnen poolweiten automatischen Benutzerkonto ausgeführt.
 
-> [!NOTE] 
+> [!NOTE]
 > Die zwei poolweiten automatischen Benutzerkonten sind separate Konten. Aufgaben, die unter dem poolweiten Administratorkonto ausgeführt werden, können keine Daten mit Aufgaben gemeinsam nutzen, die unter dem Standardkonto ausgeführt werden (und umgekehrt).
 
 Der Vorteil der Ausführung unter dem gleichen automatischen Benutzerkonto ist, dass Aufgaben, die auf dem gleichen Knoten ausgeführt werden, Daten gemeinsam nutzen können.

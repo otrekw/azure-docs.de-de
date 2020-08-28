@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: allensu
-ms.openlocfilehash: 1566de36d6176568b148fde965bb7d3051e6b500
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 7456402605328592d4f5677767bcd985941173ec
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543468"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88639833"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Was ist privater Endpunkt in Azure?
 
@@ -47,6 +47,7 @@ Im Folgenden finden Sie einige wichtige Details zu privaten Endpunkten:
  
 - Mehrere private Endpunkte können im gleichen oder in verschiedenen Subnetzen innerhalb desselben virtuellen Netzwerks erstellt werden. Die Anzahl der privaten Endpunkte, die Sie in einem Abonnement anlegen können, ist begrenzt. Ausführliche Informationen finden Sie im Artikel zu  [Azure-Grenzwerten](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#networking-limits).
 
+- Das Abonnement der Private Link-Ressource muss ebenfalls beim Ressourcenanbieter „Micosoft.Network“ registriert werden. Weitere Informationen finden Sie unter  [Azure-Ressourcenanbieter](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types).
 
  
 ## <a name="private-link-resource"></a>Private Link-Ressource 

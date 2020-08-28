@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: allensu
-ms.openlocfilehash: df1896caaa0cba1f62dc1466124b393337fa8c83
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.openlocfilehash: 5657741a1496084b55d2f76aef12c5e84c274feb
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87985783"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88918127"
 ---
 # <a name="azure-private-endpoint-dns-configuration"></a>DNS-Konfiguration für private Azure-Endpunkte
 
@@ -27,12 +27,15 @@ Mit den folgenden Optionen können Sie Ihre DNS-Einstellungen für private Endpu
 - **DNS-Weiterleitung (optional)** . Sie können Ihre DNS-Weiterleitung verwenden, um die DNS-Auflösung für eine bestimmte Private Link-Ressource zu überschreiben. Wenn Ihr [DNS-Server](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server) in einem virtuellen Netzwerk gehostet wird, können Sie zum Verwenden einer privaten DNS-Zone eine DNS-Weiterleitungsregel erstellen, um die Konfiguration für alle Private Link-Ressourcen zu vereinfachen.
  
 > [!IMPORTANT]
-> Es ist nicht empfehlenswert, eine Zone zu überschreiben, die aktiv zur Auflösung öffentlicher Endpunkte genutzt wird. Verbindungen mit Ressourcen können ohne DNS-Weiterleitung an das öffentliche DNS nicht ordnungsgemäß aufgelöst werden. Um Probleme zu vermeiden, erstellen Sie einen anderen Domänennamen, oder halten Sie sich an den vorgeschlagenen Namen für jeden der folgenden Dienste. 
+> Es wird nicht empfohlen, eine Zone zu überschreiben, die aktiv zur Auflösung öffentlicher Endpunkte genutzt wird. Verbindungen mit Ressourcen können ohne DNS-Weiterleitung an das öffentliche DNS nicht ordnungsgemäß aufgelöst werden. Um Probleme zu vermeiden, erstellen Sie einen anderen Domänennamen, oder halten Sie sich an den vorgeschlagenen Namen für jeden der folgenden Dienste. 
 
 ## <a name="azure-services-dns-zone-configuration"></a>DNS-Zonenkonfiguration für Azure-Dienste
 Azure-Dienste erstellen einen DNS-Eintrag vom Typ CNAME (kanonischer Name) im öffentlichen DNS-Dienst, um die Auflösung an den vorgeschlagenen Namen der privaten Domäne umzuleiten. Sie können die Auflösung mit der privaten IP-Adresse Ihrer privaten Endpunkte überschreiben. 
  
 Ihre Anwendungen müssen die Verbindungs-URL nicht ändern. Beim Versuch der Auflösung mithilfe eines öffentlichen DNS-Diensts löst der DNS-Server nun zu Ihren privaten Endpunkten auf. Der Vorgang wirkt sich nicht auf Ihre vorhandenen Anwendungen aus. 
+
+> [!IMPORTANT]
+> Private Netzwerke, die bereits die private DNS-Zone für einen bestimmten Typ verwenden, können sich nur dann mit öffentlichen Ressourcen verbinden, wenn sie über keine privaten Endpunktverbindungen verfügen; andernfalls ist eine entsprechende DNS-Konfiguration für die private DNS-Zone erforderlich, um die DNS-Auflösungssequenz zu vervollständigen. 
 
 Verwenden Sie für Azure-Dienste die empfohlenen Zonennamen in der folgenden Tabelle:
 

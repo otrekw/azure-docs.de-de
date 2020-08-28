@@ -627,7 +627,7 @@
                       href: database/saas-multitenantdb-tenant-analytics.md
     - name: Beispiele
       items:
-        - name: Azure CLI
+        - name: Azure-Befehlszeilenschnittstelle
           href: database/az-cli-script-samples-content-guide.md?tabs=single-database
         - name: Azure PowerShell
           href: database/powershell-script-content-guide.md?tabs=single-database
@@ -905,7 +905,7 @@
           href: managed-instance/user-initiated-failover.md
     - name: Beispiele
       items:
-        - name: Azure CLI
+        - name: Azure-Befehlszeilenschnittstelle
           href: database/az-cli-script-samples-content-guide.md?tabs=managed-instance
         - name: Azure PowerShell
           href: database/powershell-script-content-guide.md?tabs=managed-instance
@@ -986,9 +986,11 @@
                 - name: Lizenzmodell
                   displayName: 'ahb, ahub, payg, change, modify, update'
                   href: virtual-machines/windows/licensing-model-azure-hybrid-benefit-ahb-change.md
-                - name: Edition
+                - name: Ändern der Edition
                   displayName: 'change, modify, update'
                   href: virtual-machines/windows/change-sql-server-edition.md
+                - name: Ändern der Version
+                  href: virtual-machines/windows/change-sql-server-version.md
                 - name: Storage
                   href: virtual-machines/windows/storage-configuration.md
                 - name: Azure Key Vault-Integration
@@ -1024,6 +1026,8 @@
                       href: virtual-machines/windows/automated-backup-sql-2014.md
                 - name: AlwaysOn-Verfügbarkeitsgruppe
                   items:
+                    - name: Azure-Portal
+                      href: virtual-machines/windows/availability-group-azure-portal-configure.md
                     - name: PowerShell oder Azure CLI
                       href: virtual-machines/windows/availability-group-az-commandline-configure.md
                     - name: Azure-Schnellstartvorlagen
@@ -1068,7 +1072,7 @@
           items:
             - name: Azure PowerShell
               href: /powershell/azure/
-            - name: Azure CLI
+            - name: Azure-Befehlszeilenschnittstelle
               href: /cli/azure/
             - name: T-SQL
               href: 'https://docs.microsoft.com/sql/t-sql/language-reference'
@@ -1130,7 +1134,7 @@
   items:
     - name: Referenz zur T-SQL-Sprache
       href: /sql/t-sql/language-reference
-    - name: Azure CLI
+    - name: Azure-Befehlszeilenschnittstelle
       href: /cli/azure/sql
     - name: Azure PowerShell
       href: /powershell/module/az.sql
