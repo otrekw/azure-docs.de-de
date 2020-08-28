@@ -2,26 +2,21 @@
 title: Problembehandlung von Anwendungsproxys | Microsoft-Dokumentation
 description: Behandelt die Problembehandlung von Azure AD-Anwendungsproxys.
 services: active-directory
-documentationcenter: ''
 author: kenwith
 manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 06/24/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.custom: it-pro
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 57a77b486239f1fd49a4979d7acbbfc8f0254311
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 413cfe4f3aed446ad26a210b4faa452c4f624685
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85848448"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88640853"
 ---
 # <a name="troubleshoot-application-proxy-problems-and-error-messages"></a>Beheben von Problemen mit Anwendungsproxys und Fehlermeldungen
 
@@ -84,6 +79,7 @@ Diese Liste enthält Fehler, die bei Ihren Endbenutzern möglicherweise auftrete
 | Auf diese Unternehmens-App kann momentan nicht zugegriffen werden. Versuchen Sie es später erneut. Der Connector hat das Zeitlimit überschritten. | Die Benutzer erhalten beim Versuch, auf die von Ihnen veröffentlichte App zuzugreifen, unter Umständen diese Fehlermeldung, wenn sie für diese Anwendung auf der lokalen Seite nicht ordnungsgemäß definiert sind. Stellen Sie sicher, dass die Benutzer über die entsprechenden Berechtigungen verfügen, wie für diese Back-End-Anwendung auf dem lokalen Computer definiert. |
 | Auf diese Unternehmens-App kann nicht zugegriffen werden. Sie haben keine Befugnis, auf diese Anwendung zuzugreifen. Fehler bei der Autorisierung. Stellen Sie sicher, dass der Benutzer über eine Lizenz für Azure Active Directory Premium verfügt. | Möglicherweise erhält der Benutzer diese Fehlermeldung beim Zugriff auf die von Ihnen veröffentlichte App, wenn ihm nicht explizit eine Premium-Lizenz vom Administrator des Abonnenten zugewiesen wurde. Wechseln Sie zur Active Directory-Registerkarte **Lizenzen** des Abonnenten, und stellen Sie sicher, dass diesem Benutzer oder dieser Benutzergruppe eine Premium-Lizenz zugewiesen ist. |
 | Ein Server mit dem angegebenen Hostnamen konnte nicht gefunden werden. | Der Benutzer erhält unter Umständen beim Versuch, auf die von Ihnen veröffentlichte App zuzugreifen, diese Fehlermeldung, wenn die benutzerdefinierte Domäne der Anwendung nicht ordnungsgemäß konfiguriert wurde. Stellen Sie sicher, dass Sie ein Zertifikat für die Domäne hochgeladen und den DNS-Eintrag ordnungsgemäß konfiguriert haben, indem Sie die Schritte unter [Arbeiten mit benutzerdefinierten Domänen im Azure AD-Anwendungsproxy](application-proxy-configure-custom-domain.md) ausführen. |
+|Verboten: Auf diese Unternehmens-App kann nicht zugegriffen werden, ODER der Benutzer konnte nicht autorisiert werden. Stellen Sie sicher, dass der Benutzer in Ihrem lokalen AD definiert ist und dass er Zugriff auf die App in Ihrem lokalen AD hat. | Hier kann ein Problem beim Zugriff auf Autorisierungsinformationen vorliegen. Weitere Informationen finden Sie unter [Einige Anwendungen und APIs benötigen Zugriff auf Autorisierungsinformationen für Kontoobjekte]( https://support.microsoft.com/help/331951/some-applications-and-apis-require-access-to-authorization-information). Kurz gesagt: Fügen Sie das Computerkonto des App-Proxyconnectors zur Gruppe „Windows-Autorisierungszugriffsgruppe“ hinzu, um das Problem zu beheben. |
 
 ## <a name="my-error-wasnt-listed-here"></a>Mein Fehler wurde hier nicht aufgelistet
 

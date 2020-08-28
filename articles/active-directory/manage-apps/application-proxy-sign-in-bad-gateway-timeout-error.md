@@ -16,12 +16,12 @@ ms.date: 05/21/2019
 ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6eca304901e391c931aba892abf3cb2a19d4ae3b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 18c3b0397a0ad3e9e368d1a14e20a999ced5545b
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85367749"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88690271"
 ---
 # <a name="cant-access-this-corporate-application-error-when-using-an-application-proxy-application"></a>Fehler „Zugriff auf diese Unternehmensanwendung nicht möglich“ bei Verwendung der Anwendungsproxyanwendung
 
@@ -50,7 +50,7 @@ Ein Gatewaytimeout tritt auf, wenn der Dienst versucht, den Connector zu erreich
 Der Fehler „Ungültiges Gateway“ gibt an, dass der Connector die Back-End-Anwendung nicht erreichen kann. Stellen Sie sicher, dass Sie die richtige Anwendung veröffentlicht haben. Häufige Ursachen dieses Fehlers sind Folgende:
 
 - Ein Tippfehler oder ein Fehler in der internen URL
-- Ein nicht veröffentlichtes Stammverzeichnis der Anwendung. Beispiel: <http://expenses/reimbursement> wird veröffentlicht, jedoch wird versucht, auf <http://expenses> zuzugreifen.
+- Ein nicht veröffentlichtes Stammverzeichnis der Anwendung. Beispiel: `http://expenses/reimbursement` wird veröffentlicht, jedoch wird versucht, auf `http://expenses` zuzugreifen.
 - Probleme mit der Konfiguration der eingeschränkten Kerberos-Delegierung (KCD)
 - Probleme mit der Back-End-Anwendung
 
