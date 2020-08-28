@@ -17,7 +17,7 @@
           href: quickstart-aspnet-core-app.md
         - name: .NET Core
           href: quickstart-dotnet-core-app.md
-        - name: .NET Framework
+        - name: ".NET\_Framework"
           href: quickstart-dotnet-app.md
         - name: Azure Functions in .NET Core
           href: quickstart-azure-functions-csharp.md
@@ -123,7 +123,7 @@
   items:
     - name: Konfiguration
       items:
-        - name: Azure CLI
+        - name: Azure-Befehlszeilenschnittstelle
           href: 'https://docs.microsoft.com/cli/azure/appconfig?view=azure-cli-latest'
         - name: .NET Core-Anbieter
           href: 'https://go.microsoft.com/fwlink/?linkid=2074664'
@@ -132,7 +132,7 @@
         - name: Azure SDK für .NET
           href: 'https://go.microsoft.com/fwlink/?linkid=2092056'
         - name: Java Spring-Anbieter
-          href: 'https://go.microsoft.com/fwlink/?linkid=2074659'
+          href: 'https://github.com/microsoft/spring-cloud-azure/tree/master/'
         - name: Azure SDK für Java
           href: 'https://go.microsoft.com/fwlink/?linkid=2098196'
         - name: Azure SDK für Python

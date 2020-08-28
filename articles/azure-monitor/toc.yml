@@ -329,6 +329,28 @@
       items:
         - name: Regeln für die Datensammlung
           href: platform/data-collection-rule-overview.md
+        - name: Agent-Datenquellen
+          items:
+            - name: Übersicht
+              href: platform/agent-data-sources.md
+            - name: Windows-Ereignisse
+              href: platform/data-sources-windows-events.md
+            - name: Benutzerdefinierte JSON-Daten
+              href: platform/data-sources-json.md
+            - name: Collectd-Leistungsdaten
+              href: platform/data-sources-collectd.md
+            - name: syslog
+              href: platform/data-sources-syslog.md
+            - name: Leistungsindikatoren
+              href: platform/data-sources-performance-counters.md
+            - name: Linux-Anwendungsleistung
+              href: platform/data-sources-linux-applications.md
+            - name: IIS-Protokolle
+              href: platform/data-sources-iis-logs.md
+            - name: Benutzerdefinierte Protokolle
+              href: platform/data-sources-custom-logs.md
+            - name: Benutzerdefinierte Felder
+              href: platform/custom-fields.md
         - name: Benutzerdefinierte Metriken
           items:
             - name: Benutzerdefinierte Metriken
@@ -361,6 +383,24 @@
             - name: Datensammlung
               displayname: 'data collection rule,Azure Monitor agent'
               href: platform/data-collection-rule-azure-monitor-agent.md
+        - name: Log Analytics-Agent
+          items:
+            - name: Übersicht
+              href: platform/log-analytics-agent.md
+            - name: Windows-Agents
+              href: platform/agent-windows.md
+            - name: Linux-Agents
+              href: platform/agent-linux.md
+            - name: VM-Erweiterung für Windows
+              href: ../virtual-machines/extensions/oms-windows.md?toc=/azure/azure-monitor/toc.json
+            - name: VM-Erweiterung für Linux
+              href: ../virtual-machines/extensions/oms-linux.md?toc=/azure/azure-monitor/toc.json
+            - name: Log Analytics-Gateway
+              href: platform/gateway.md
+            - name: Agentverwaltung
+              href: platform/agent-manage.md
+            - name: Agent-Integrität
+              href: insights/solution-agenthealth.md
         - name: Azure-Diagnoseerweiterung
           items:
             - name: Übersicht
@@ -403,46 +443,6 @@
                   href: ../virtual-machines/extensions/diagnostics-linux.md?toc=/azure/azure-monitor/toc.json
                 - name: Erfassen von Metriken mit Telegraf
                   href: platform/collect-custom-metrics-linux-telegraf.md
-        - name: Log Analytics-Agent
-          items:
-            - name: Übersicht
-              href: platform/log-analytics-agent.md
-            - name: Windows-Agents
-              href: platform/agent-windows.md
-            - name: Linux-Agents
-              href: platform/agent-linux.md
-            - name: VM-Erweiterung für Windows
-              href: ../virtual-machines/extensions/oms-windows.md?toc=/azure/azure-monitor/toc.json
-            - name: VM-Erweiterung für Linux
-              href: ../virtual-machines/extensions/oms-linux.md?toc=/azure/azure-monitor/toc.json
-            - name: Log Analytics-Gateway
-              href: platform/gateway.md
-            - name: Agentverwaltung
-              href: platform/agent-manage.md
-            - name: Agent-Integrität
-              href: insights/solution-agenthealth.md
-            - name: Datenquellen
-              items:
-                - name: Übersicht
-                  href: platform/agent-data-sources.md
-                - name: Windows-Ereignisse
-                  href: platform/data-sources-windows-events.md
-                - name: Benutzerdefinierte JSON-Daten
-                  href: platform/data-sources-json.md
-                - name: Collectd-Leistungsdaten
-                  href: platform/data-sources-collectd.md
-                - name: syslog
-                  href: platform/data-sources-syslog.md
-                - name: Leistungsindikatoren
-                  href: platform/data-sources-performance-counters.md
-                - name: Linux-Anwendungsleistung
-                  href: platform/data-sources-linux-applications.md
-                - name: IIS-Protokolle
-                  href: platform/data-sources-iis-logs.md
-                - name: Benutzerdefinierte Protokolle
-                  href: platform/data-sources-custom-logs.md
-                - name: Benutzerdefinierte Felder
-                  href: platform/custom-fields.md
         - name: Problembehandlung
           items:
             - name: Log Analytics-Erweiterung für virtuelle Computer

@@ -82,7 +82,7 @@
             - name: Kopieren eines verwalteten Datenträgers
               href: ../scripts/virtual-machines-windows-powershell-sample-copy-managed-disks-to-same-or-different-subscription.md
             - name: Exportieren einer Momentaufnahme als VHD in ein Speicherkonto
-              href: ../scripts/virtual-machines-windows-powershell-sample-copy-snapshot-to-storage-account.md
+              href: ../scripts/virtual-machines-powershell-sample-copy-snapshot-to-storage-account.md
             - name: Exportieren der VHD eines verwalteten Datenträgers in ein Speicherkonto
               href: ../scripts/virtual-machines-windows-powershell-sample-copy-managed-disks-vhd.md
             - name: Erstellen einer Momentaufnahme aus einer VHD
@@ -124,7 +124,7 @@
             - name: Kopieren verwalteter Datenträger
               href: ../scripts/virtual-machines-windows-cli-sample-copy-managed-disks-to-same-or-different-subscription.md
             - name: Exportieren einer Momentaufnahme als VHD-Datei in ein Speicherkonto
-              href: ../scripts/virtual-machines-windows-cli-sample-copy-snapshot-to-storage-account.md
+              href: ../scripts/virtual-machines-cli-sample-copy-snapshot-to-storage-account.md
             - name: Exportieren der VHD eines verwalteten Datenträgers in ein Speicherkonto
               href: ../scripts/virtual-machines-windows-cli-sample-copy-managed-disks-vhd.md
             - name: Kopieren einer Momentaufnahme
@@ -1026,7 +1026,7 @@
   href: ../troubleshooting/index.yml
 - name: Verweis
   items:
-    - name: Azure CLI
+    - name: Azure-Befehlszeilenschnittstelle
       href: /cli/azure/vm
     - name: Azure PowerShell
       href: /powershell/azure/

@@ -186,6 +186,8 @@
               displayName: 'managed identity, identities, authenticate'
         - name: Verschlüsseln Ihrer Daten
           href: data-protection.md
+        - name: Georedundanz
+          href: geo-redundancy.md
     - name: Erstellen von Lösungen
       items:
         - name: Twitter-Stimmungsanalyse

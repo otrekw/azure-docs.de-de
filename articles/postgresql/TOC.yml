@@ -54,7 +54,7 @@
           items:
             - name: Azure-Portal
               href: tutorial-design-database-using-azure-portal.md
-            - name: Azure CLI
+            - name: Azure-Befehlszeilenschnittstelle
               href: tutorial-design-database-using-azure-cli.md
             - name: Azure PowerShell
               href: tutorial-design-database-using-powershell.md
@@ -166,7 +166,7 @@
                 - name: Konfigurieren von Spring Data-JPA
                   href: /azure/developer/java/spring-framework/configure-spring-data-jpa-with-azure-postgresql?toc=/azure/postgresql/toc.json&bc=/azure/bread/toc.json
                 - name: Konfigurieren von Spring Data R2DBC
-                  href: /azure/developer/java/spring-framework/configure-spring-data-r2dbc-with-azure-postgresl?toc=/azure/postgresql/toc.json&bc=/azure/bread/toc.json
+                  href: /azure/developer/java/spring-framework/configure-spring-data-r2dbc-with-azure-mysql
         - name: Replikation
           items:
             - name: Lesereplikate
@@ -241,13 +241,13 @@
           items:
             - name: Azure-Portal
               href: howto-manage-firewall-using-portal.md
-            - name: Azure CLI
+            - name: Azure-Befehlszeilenschnittstelle
               href: howto-manage-firewall-using-cli.md
         - name: Wiederherstellen eines Servers
           items:
             - name: Azure-Portal
               href: howto-restore-server-portal.md
-            - name: Azure CLI
+            - name: Azure-Befehlszeilenschnittstelle
               href: howto-restore-server-cli.md
             - name: Azure PowerShell
               href: howto-restore-server-powershell.md
@@ -269,7 +269,7 @@
           items:
             - name: Azure-Portal
               href: howto-configure-server-parameters-using-portal.md
-            - name: Azure CLI
+            - name: Azure-Befehlszeilenschnittstelle
               href: howto-configure-server-parameters-using-cli.md
             - name: Azure PowerShell
               href: howto-configure-server-parameters-using-powershell.md
@@ -277,7 +277,7 @@
           items:
             - name: Azure-Portal
               href: howto-auto-grow-storage-portal.md
-            - name: Azure CLI
+            - name: Azure-Befehlszeilenschnittstelle
               href: howto-auto-grow-storage-cli.md
             - name: Azure PowerShell
               href: howto-auto-grow-storage-powershell.md
@@ -285,7 +285,7 @@
           items:
             - name: Azure-Portal
               href: howto-configure-server-logs-in-portal.md
-            - name: Azure CLI
+            - name: Azure-Befehlszeilenschnittstelle
               href: howto-configure-server-logs-using-cli.md
         - name: Überwachen
           items:
@@ -305,13 +305,13 @@
           items:
             - name: Azure-Portal
               href: howto-manage-vnet-using-portal.md
-            - name: Azure CLI
+            - name: Azure-Befehlszeilenschnittstelle
               href: howto-manage-vnet-using-cli.md
         - name: Private Link
           items:
             - name: Azure-Portal
               href: howto-configure-privatelink-portal.md
-            - name: Azure CLI
+            - name: Azure-Befehlszeilenschnittstelle
               href: howto-configure-privatelink-cli.md
         - name: Datenverschlüsselung
           items:
@@ -329,7 +329,7 @@
           items:
             - name: Azure-Portal
               href: howto-restart-server-portal.md
-            - name: Azure CLI
+            - name: Azure-Befehlszeilenschnittstelle
               href: howto-restart-server-cli.md
             - name: Azure PowerShell
               href: howto-restart-server-powershell.md

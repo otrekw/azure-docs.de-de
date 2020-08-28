@@ -91,7 +91,7 @@
             - name: Kopieren eines verwalteten Datenträgers in dasselbe oder ein anderes Abonnement
               href: ../scripts/virtual-machines-linux-cli-sample-copy-managed-disks-to-same-or-different-subscription.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
             - name: Exportieren einer Momentaufnahme als VHD-Datei in ein Speicherkonto
-              href: ../scripts/virtual-machines-linux-cli-sample-copy-snapshot-to-storage-account.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+              href: ../scripts/virtual-machines-cli-sample-copy-snapshot-to-storage-account.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
             - name: Exportieren der VHD eines verwalteten Datenträgers in ein Speicherkonto
               href: ../scripts/virtual-machines-linux-cli-sample-copy-managed-disks-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
             - name: Kopieren einer Momentaufnahme in dasselbe oder ein anderes Abonnement
@@ -137,7 +137,7 @@
             - name: Erstellen eines verwalteten Datenträgers aus einer Momentaufnahme
               href: ../scripts/virtual-machines-linux-powershell-sample-create-managed-disk-from-snapshot.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
             - name: Exportieren einer Momentaufnahme als VHD in ein Speicherkonto
-              href: ../scripts/virtual-machines-linux-powershell-sample-copy-snapshot-to-storage-account.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+              href: ../scripts/virtual-machines-powershell-sample-copy-snapshot-to-storage-account.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
             - name: Exportieren der VHD eines verwalteten Datenträgers in ein Speicherkonto
               href: ../scripts/virtual-machines-linux-powershell-sample-copy-managed-disks-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
             - name: Erstellen einer Momentaufnahme aus einer VHD
@@ -948,7 +948,7 @@
       items:
         - name: Hinzufügen eines Datenträgers
           items:
-            - name: Azure CLI
+            - name: Azure-Befehlszeilenschnittstelle
               href: add-disk.md
             - name: Azure-Portal
               href: attach-disk-portal.md
@@ -1133,7 +1133,7 @@
               href: ../../site-recovery/migrate-overview.md?bc=/azure/virtual-machines/linux/breadcrumb/toc.json&toc=/azure/virtual-machines/linux/toc.json
 - name: Verweis
   items:
-    - name: Azure CLI
+    - name: Azure-Befehlszeilenschnittstelle
       href: /cli/azure/vm
     - name: PowerShell
       href: /powershell/azure/
