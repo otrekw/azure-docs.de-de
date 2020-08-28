@@ -5,22 +5,26 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 05/11/2020
+ms.date: 08/20/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c6a2c1a9b908503ee5afc2687ebef473ffed626a
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: ae8bb66141e4cc4e67f1502b208cf519d37c0374
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87907531"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88705990"
 ---
 # <a name="enable-b2b-external-collaboration-and-manage-who-can-invite-guests"></a>Aktivieren der externen B2B-Zusammenarbeit und Steuern, wer Gäste einladen kann
 
-In diesem Artikel wird beschrieben, wie die B2B-Zusammenarbeit in Azure Active Directory (Azure AD) aktiviert wird und wie Sie festlegen, wer Gäste einladen darf. Per Standardeinstellung können alle Benutzer und Gäste in Ihrem Verzeichnis Gäste einladen, auch denn, wenn ihnen keine Administratorrolle zugewiesen ist. In den Einstellungen für die externe Zusammenarbeit können Sie die Möglichkeit, Gäste einzuladen, für verschiedene Benutzertypen in Ihrer Organisation aktivieren oder deaktivieren. Diese Möglichkeit können Sie auch an einzelne Benutzer delegieren, indem Sie diesen Benutzern Rollen zuweisen, die es ihnen ermöglichen, Gäste einzuladen.
+In diesem Artikel wird beschrieben, wie die B2B-Zusammenarbeit in Azure Active Directory (Azure AD) aktiviert wird und wie Sie festlegen, wer Gäste einladen darf und welche Berechtigungen die Gastbenutzer in Azure AD erhalten. 
+
+Per Standardeinstellung können alle Benutzer und Gäste in Ihrem Verzeichnis Gäste einladen, auch denn, wenn ihnen keine Administratorrolle zugewiesen ist. In den Einstellungen für die externe Zusammenarbeit können Sie die Möglichkeit, Gäste einzuladen, für verschiedene Benutzertypen in Ihrer Organisation aktivieren oder deaktivieren. Diese Möglichkeit können Sie auch an einzelne Benutzer delegieren, indem Sie diesen Benutzern Rollen zuweisen, die es ihnen ermöglichen, Gäste einzuladen.
+
+Mit Azure AD können Sie einschränken, was externe Gastbenutzer in Ihrem Azure AD-Verzeichnis sehen können. Standardmäßig ist Gastbenutzern eine eingeschränkte Berechtigungsstufe zugewiesen, die sie daran hindert, Benutzer, Gruppen oder andere Verzeichnisressourcen aufzulisten, ihnen aber ermöglicht, die Mitgliedschaft in allen nicht ausgeblendeten Gruppen anzuzeigen. Mit einer neuen Vorschaueinstellung können Sie den Gastzugriff noch weiter einschränken, sodass Gäste nur ihre eigenen Profilinformationen sehen können. 
 
 ## <a name="configure-b2b-external-collaboration-settings"></a>Konfigurieren der Einstellungen für externe B2B-Zusammenarbeit
 
@@ -38,19 +42,38 @@ Per Standardeinstellung können alle Benutzer, einschließlich Gäste, Gastbenut
 1. Melden Sie sich als Mandantenadministrator im [Azure-Portal](https://portal.azure.com) an.
 2. Wählen Sie **Azure Active Directory** aus.
 3. Wählen Sie **Externe Identitäten** > **Einstellungen für externe Zusammenarbeit** aus.
-6. Wählen Sie auf der Seite **Einstellungen für externe Zusammenarbeit** die Richtlinien aus, die Sie aktivieren möchten.
 
-   ![Einstellungen für externe Zusammenarbeit](./media/delegate-invitations/control-who-to-invite.png)
+4. Wählen Sie unter **Zugriffseinschränkungen für Gastbenutzer (Vorschau)** die Zugriffsebene aus, die Gastbenutzern zugewiesen werden soll:
 
-  - **Berechtigungen für Gastbenutzer sind eingeschränkt:** Diese Richtlinie legt Berechtigungen für Gäste in Ihrem Verzeichnis fest. Wenn Sie verhindern möchten, dass Gäste bestimmte Verzeichnisaufgaben ausführen können, z. B. Benutzer, Gruppen oder andere Verzeichnisressourcen aufzulisten, legen Sie diese Richtlinie auf **Ja** fest. Wenn Sie Gästen denselben Zugriff auf Verzeichnisdaten gewähren möchten wie regulären Benutzern in Ihrem Verzeichnis, legen Sie diese Richtlinie auf **Nein** fest.
+   > [!IMPORTANT]
+   > Für kurze Zeit werden diese neuen Portalsteuerelemente für Gastbenutzerberechtigungen nur unter Verwendung der URL [https://aka.ms/AADRestrictedGuestAccess](https://aka.ms/AADRestrictedGuestAccess) sichtbar sein. Weitere Informationen finden Sie unter [Gastzugriffsberechtigungen einschränken (Vorschau)](https://aka.ms/exid-users-restrict-guest-permissions).
+
+   - **Gastbenutzer haben denselben Zugriff wie Mitglieder (umfassendste Einstellung)** : Diese Option gibt Gästen den gleichen Zugriff auf die Ressourcen und Verzeichnisdaten von Azure AD wie Mitgliedsbenutzern.
+
+   - **Gastbenutzer haben eingeschränkten Zugriff auf Eigenschaften und Mitgliedschaften von Verzeichnisobjekten**: (Standard) Diese Einstellung verhindert, dass Gäste bestimmte Verzeichnisaufgaben ausführen können, z. B. Benutzer, Gruppen oder andere Verzeichnisressourcen aufzulisten. Gäste können die Mitgliedschaft in allen nicht ausgeblendeten Gruppen anzeigen.
+
+   - **Der Gastbenutzerzugriff ist auf Eigenschaften und Mitgliedschaften eigener Verzeichnisobjekte beschränkt (restriktivste Einstellung)** : Mit dieser Einstellung können Gäste nur auf Ihre eigenen Profile zugreifen. Gäste dürfen keine Profile, Gruppen oder Gruppenmitgliedschaften anderer Benutzer anzeigen.
+  
+    ![Einstellungen für Zugriffseinschränkungen für Gastbenutzer](./media/delegate-invitations/guest-user-access.png)
+
+5. Wählen Sie unter **Einstellungen für Gasteinladungen** die entsprechenden Einstellungen aus:
+
    - **Administratoren und Benutzer mit der Rolle „Gasteinladender“ können einladen:** Wenn Sie Administratoren und Gästen, die die Rolle „Gasteinladender“ innehaben, erlauben möchten, Gäste einzuladen, legen Sie diese Richtlinie auf **Ja** fest.
+
    - **Mitglieder können einladen:** Wenn Sie Mitgliedern in Ihrem Verzeichnis, die keine Administratoren sind, erlauben möchten, Gäste einzuladen, legen Sie diese Richtlinie auf **Ja** fest.
+
    - **Gäste können einladen:** Wenn Sie Gästen erlauben möchten, andere Gäste einzuladen, legen Sie diese Richtlinie auf **Ja** fest.
-   - **Einmalkennung per E-Mail für Gastbenutzer aktivieren (Vorschau):** Weitere Informationen zum Einmalkennungsfeature finden Sie unter [Authentifizierung mit Einmalkennung per E-Mail (Vorschauversion)](one-time-passcode.md).
-   - **Einschränkungen für die Zusammenarbeit:** Weitere Informationen dazu, wie Sie Einladungen für bestimmte Domains erlauben oder verbieten können, finden Sie unter [Zulassen oder Blockieren von Einladungen für B2B-Benutzer von bestimmten Organisationen](allow-deny-list.md).
-   
+
+   - **Einmalkennung per E-Mail für Gastbenutzer aktivieren (Vorschau):** Weitere Informationen zum Feature „Einmalkennung“ finden Sie unter [Authentifizierung mit Einmalkennung per E-Mail (Vorschau)](one-time-passcode.md).
+
+   - **Self-Service-Registrierung von Gästen über Benutzerflows aktivieren (Vorschau)** : Weitere Informationen zu dieser Einstellung finden Sie unter [Hinzufügen eines Benutzerflows für die Self-Service-Registrierung zu einer App (Vorschau)](self-service-sign-up-user-flow.md).
+
    > [!NOTE]
    > Wenn **Mitglieder können einladen** auf **Nein** festgelegt ist und **Administratoren und Benutzer mit der Rolle „Gasteinladender“ können einladen** auf **Ja** festgelegt ist, können Benutzer mit der Rolle **Gasteinladender** weiterhin Gäste einladen.
+
+    ![Einstellungen für Gasteinladungen](./media/delegate-invitations/guest-invite-settings.png)
+
+6. Wählen Sie unter **Einschränkungen für die Zusammenarbeit** aus, ob Sie Einladungen zu bestimmten Domänen zulassen oder verweigern möchten. Weitere Informationen finden Sie unter [Zulassen oder Blockieren von Einladungen für B2B-Benutzer von bestimmten Organisationen](allow-deny-list.md).
 
 ## <a name="assign-the-guest-inviter-role-to-a-user"></a>Zuweisen der Rolle „Gasteinladender“ an einen Benutzer
 

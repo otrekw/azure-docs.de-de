@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 07/29/2020
 ms.author: kenwith
-ms.openlocfilehash: 1193e6f9ed637f6bd28b2fef6488b2d4902ec67b
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: be6a8a58f1d66df9d0fe557584c4731e42ae9c59
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87459384"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88640547"
 ---
 # <a name="configure-password-based-single-sign-on"></a>Konfigurieren des kennwortbasierten einmaligen Anmeldens
 
@@ -29,7 +29,7 @@ Einmaliges Anmelden per Kennwort eignet sich hervorragend, um Anwendungen schnel
 
 - Unterstützen Sie Anwendungen, die mehrere Anmeldefelder erfordern, für Anwendungen, die zum Anmelden mehr als Benutzername und Kennwort erfordern.
 
-- Passen Sie die Bezeichnungen der Felder für Benutzernamen und Kennwort an, die Ihren Benutzern beim Eingeben ihrer Anmeldeinformationen im [Anwendungszugriffsbereich](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) angezeigt werden.
+- Passen Sie die Bezeichnungen der Felder für Benutzernamen und Kennwort an, die Ihren Benutzern beim Eingeben ihrer Anmeldeinformationen in [Meine Apps](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) angezeigt werden.
 
 - Ermöglichen Sie Ihren Benutzern, eigene Benutzernamen und Kennwörter für vorhandene Anwendungskonten bereitzustellen und manuell einzugeben.
 
@@ -71,7 +71,7 @@ Falls der Analyseversuch von Azure AD nicht erfolgreich ist, können Sie die Anm
    ![Manuelle Konfiguration des kennwortbasierten einmaligen Anmeldens](./media/configure-password-single-sign-on/password-configure-sign-on.png)
 3. Wählen Sie **Anmeldefelder erfassen** aus. Auf einer neuen Registerkarte wird eine Seite mit dem Erfassungsstatus geöffnet, auf der die Meldung **Die Metadatenerfassung wird aktuell ausgeführt.** angezeigt wird.
 
-4. Wenn auf einer neuen Registerkarte das Feld **Erweiterung für Zugriffsbereich erforderlich** angezeigt wird, klicken Sie auf **Jetzt installieren**, um die Browsererweiterung **Erweiterung zur sicheren Anmeldung bei "Meine Apps"** zu installieren. (Die Browsererweiterung erfordert Microsoft Edge, Chrome oder Firefox.) Installieren, starten und aktivieren Sie die Erweiterung, und aktualisieren Sie die Seite mit dem Erfassungsstatus.
+4. Wenn auf einer neuen Registerkarte das Feld **Erweiterung für „Meine Apps“ erforderlich** angezeigt wird, klicken Sie auf **Jetzt installieren**, um die Browsererweiterung **Erweiterung zur sicheren Anmeldung bei „Meine Apps“** zu installieren. (Die Browsererweiterung erfordert Microsoft Edge, Chrome oder Firefox.) Installieren, starten und aktivieren Sie die Erweiterung, und aktualisieren Sie die Seite mit dem Erfassungsstatus.
 
    Die Browsererweiterung wird in einer anderen Registerkarte geöffnet, die die eingegebene URL anzeigt.
 5. Führen Sie auf der Registerkarte mit der eingegebenen URL den Anmeldevorgang durch. Füllen Sie die Felder für Benutzername und Kennwort aus, und versuchen Sie, sich anzumelden. (Sie müssen nicht das richtige Kennwort angeben.)
