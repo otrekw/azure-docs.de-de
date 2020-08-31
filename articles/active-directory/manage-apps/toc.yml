@@ -212,16 +212,10 @@
               href: application-sign-in-unexpected-user-consent-prompt.md
             - name: Benutzerzustimmungsfehler
               href: application-sign-in-unexpected-user-consent-error.md
-            - name: Probleme beim Anmelden über das benutzerdefinierte Portal
-              href: application-sign-in-other-problem-deeplink.md
-            - name: Probleme beim Anmelden über den Zugriffsbereich
+            - name: Probleme beim Anmelden über „Meine Apps“
               href: application-sign-in-other-problem-access-panel.md
             - name: Fehler auf der Anwendungsanmeldeseite
               href: application-sign-in-problem-application-error.md
-            - name: 'Problem beim einmaligen Anmelden per Kennwort: Nicht-Katalog-App'
-              href: application-sign-in-problem-password-sso-non-gallery.md
-            - name: 'Problem beim einmaligen Anmelden per Kennwort: Katalog-App'
-              href: application-sign-in-problem-password-sso-gallery.md
             - name: Problem bei der Anmeldung bei einer Microsoft-App
               href: application-sign-in-problem-first-party-microsoft.md
             - name: 'Problem bei der einmaligen Verbundanmeldung: Nicht-Katalog-App'
@@ -232,14 +226,12 @@
               href: application-sign-in-problem-custom-dev.md
         - name: Behandeln von Problemen beim einmaligen Anmelden
           items:
+            - name: Behandeln von Problemen beim kennwortbasierten einmaligen Anmelden
+              href: troubleshoot-password-based-sso.md
             - name: 'Allgemeine Probleme beim Konfigurieren eines Verbunds: Katalog-Apps'
               href: configure-federated-single-sign-on-gallery-applications-problems.md
             - name: 'Allgemeine Probleme beim Konfigurieren eines Verbunds: Nicht-Katalog-Apps'
               href: configure-federated-single-sign-on-non-gallery-applications-problems.md
-            - name: 'Allgemeine Probleme beim Konfigurieren von Kennwörtern: Katalog-Apps'
-              href: configure-password-single-sign-on-gallery-applications-problems.md
-            - name: 'Allgemeine Probleme beim Konfigurieren von Kennwörtern: Nicht-Katalog-Apps'
-              href: configure-password-single-sign-on-non-gallery-applications-problems.md
         - name: Problembehandlung für App-Liste und -Zuweisung
           items:
             - name: Verwalten der Anwendungsliste für Ihren Mandanten
@@ -248,16 +240,10 @@
               href: ways-users-get-assigned-to-applications.md
         - name: Problembehandlung für „Meine Apps“
           items:
-            - name: Verwalten der Browsererweiterung
-              href: manage-access-panel-browser-extension.md
             - name: App wird nicht angezeigt
               href: access-panel-troubleshoot-application-not-appearing.md
             - name: App wird unerwartet angezeigt
               href: access-panel-troubleshoot-unexpected-application.md
-            - name: Anmeldung nicht möglich
-              href: access-panel-troubleshoot-web-sign-in-problem.md
-            - name: Fehler beim Verwenden des Self-Service-App-Zugriffs
-              href: access-panel-troubleshoot-self-service-access.md
         - name: Problembehandlung für lokale Apps
           items:
             - name: Problembehandlung für Anwendungsproxys
