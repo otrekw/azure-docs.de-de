@@ -7,7 +7,7 @@
     - name: Was ist die Azure AD Connect-Cloudbereitstellung?
       href: what-is-cloud-provisioning.md
       maintainContext: true
-- name: Lernprogramme
+- name: Tutorials
   expanded: true
   items:
     - name: "Integrieren einer einzelnen AD-Gesamtstruktur in einen einzelnen Azure\_AD-Mandanten"
@@ -19,12 +19,12 @@
 - name: Konzepte
   items:
     - name: Was ist Kennworthashsynchronisierung?
-      href: /azure/active-directory/hybrid/whatis-phs?context=azure/active-directory/cloud-provisioning/context/cloud-provisioning-context
+      href: ../hybrid/whatis-phs.md?context=azure%2factive-directory%2fcloud-provisioning%2fcontext%2fcloud-provisioning-context
     - name: Grundlegendes zum Schema sowie zu den Attributen und Ausdrücken von Azure AD
       href: concept-attributes.md
     - name: Schreiben von Ausdrücken für Attributzuordnungen in Azure Active Directory
       href: reference-expressions.md
-- name: Gewusst-wie-Anleitungen
+- name: Anleitungen
   items:
     - name: Installation und Upgrade
       items:
@@ -36,7 +36,7 @@
           href: how-to-configure.md
         - name: Verwenden des einmaligen Anmeldens
           href: how-to-sso.md
-    - name: Planen und Entwerfen
+    - name: Planung und Entwurf
       items:
         - name: Topologien und Szenarien für die Azure AD Connect-Cloudbereitstellung
           href: plan-cloud-provisioning-topologies.md
@@ -49,20 +49,20 @@
         - name: Transformationen
           href: how-to-transformation.md
         - name: Azure AD-Synchronisierungs-API
-          href: 'https://docs.microsoft.com/graph/api/resources/synchronization-overview'
+          href: /graph/api/resources/synchronization-overview
     - name: Problembehandlung
       items:
         - name: Problembehandlung für die Cloudbereitstellung
           href: how-to-troubleshoot.md
         - name: Duplizierte Attribute
-          href: 'https://docs.microsoft.com/office365/troubleshoot/administration/duplicate-attributes-prevent-dirsync'
+          href: /office365/troubleshoot/administration/duplicate-attributes-prevent-dirsync
 - name: Verweis
   items:
     - name: Versionsverlauf des Agents für die Azure AD Connect-Cloudbereitstellung
-      href: /azure/active-directory/manage-apps/provisioning-agent-release-version-history?context=azure/active-directory/cloud-provisioning/context/cp-context
+      href: ../app-provisioning/provisioning-agent-release-version-history.md?context=azure%2factive-directory%2fcloud-provisioning%2fcontext%2fcp-context
     - name: Häufig gestellte Fragen zur Azure AD Connect-Cloudbereitstellung
       href: reference-cloud-provisioning-faq.md
     - name: 'Attribute, die synchronisiert werden'
-      href: /azure/active-directory/hybrid/reference-connect-sync-attributes-synchronized?context=azure/active-directory/cloud-provisioning/context/cp-context
+      href: ../hybrid/reference-connect-sync-attributes-synchronized.md?context=azure%2factive-directory%2fcloud-provisioning%2fcontext%2fcp-context
     - name: "Grundlegende Active Directory- und Azure\_AD-Umgebung"
       href: tutorial-basic-ad-azure.md
