@@ -9,12 +9,12 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 12/07/2017
-ms.openlocfilehash: 89c79f668da3ff924dbb7f27574260118003655f
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: c283ef2f6eb28dca7ca5bc5e391ef30465c65dc0
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87433241"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88691274"
 ---
 # <a name="create-and-share-an-machine-learning-studio-classic-workspace"></a>Erstellen und Freigeben eines Machine Learning Studio (Classic)-Arbeitsbereichs
 
@@ -70,7 +70,7 @@ Wenn ein Problem beim Erstellen des Arbeitsbereichs auftritt, finden Sie weitere
 
 
 ## <a name="share-an-azure-machine-learning-studio-classic-workspace"></a>Freigeben eines (klassischen) Azure Machine Learning Studio-Arbeitsbereichs
-Sobald ein (klassischer) Machine Learning Studio-Arbeitsbereich erstellt wurde, können Sie Benutzer zu Ihrem Arbeitsbereich einladen, um den Zugriff auf Ihren Arbeitsbereich und alle zugehörigen Experimente, Datasets, Notizbücher usw. freizugeben. Sie können Benutzer in einer der beiden Rollen hinzufügen:
+Sobald ein (klassischer) Machine Learning Studio-Arbeitsbereich erstellt wurde, können Sie Benutzer zu Ihrem Arbeitsbereich einladen, um den Zugriff auf Ihren Arbeitsbereich und alle zugehörigen Experimente, Datasets usw. freizugeben. Sie können Benutzer in einer der beiden Rollen hinzufügen:
 
 * **Benutzer**: Ein Arbeitsbereichsbenutzer kann Experimente, Datasets etc. im Arbeitsbereich erstellen, öffnen, ändern und löschen.
 * **Besitzer**: Zusätzlich zu den Möglichkeiten eines Benutzers kann ein Besitzer Benutzer im Arbeitsbereich einladen und entfernen.

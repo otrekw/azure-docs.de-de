@@ -3,20 +3,20 @@ title: Verwenden von Softwareumgebungen
 titleSuffix: Azure Machine Learning
 description: Erstellen und Verwalten von Umgebungen für Modelltraining und -bereitstellung. Verwalten von Python-Paketen und anderen Einstellungen für die Umgebung.
 services: machine-learning
-author: rastala
-ms.author: roastala
+author: saachigopal
+ms.author: sagopal
 ms.reviewer: nibaccam
 ms.service: machine-learning
 ms.subservice: core
 ms.date: 07/23/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: e6e4b8d7cc3b22737e7e76c31fd1377912fe28cb
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 3368a42248e084476eb27318abbcd1ca9fbfdacf
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88167146"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88927543"
 ---
 # <a name="create--use-software-environments-in-azure-machine-learning"></a>Erstellen und Verwenden von Softwareumgebungen in Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -62,11 +62,6 @@ ws = Workspace.from_config()
 env = Environment.get(workspace=ws, name="AzureML-Minimal")
 ```
 
-Um eine zusammengestellte Umgebung ändern zu können, muss diese kopiert werden:
-
-```python
-env = Environment.get(workspace=ws, name="AzureML-Tutorial").clone("new_env")
-```
 Sie können die zusammengestellten Umgebungen und deren Pakete mit folgendem Code auflisten:
 
 ```python
@@ -158,7 +153,7 @@ Sie fügen einer Umgebung Pakete mithilfe von Conda-, pip- oder Private Wheels-D
 
 Wenn ein Paket in einem Conda-Paketrepository verfügbar ist, empfehlen wir, die Conda-Installation anstelle der pip-Installation zu verwenden. Conda-Pakete verfügen in der Regel über vorgefertigte Binärdateien, die die Installation zuverlässiger machen.
 
-Das folgende Beispiel zeigt eine Hinzufügung zur Umgebung. Sie fügt Version 1.17.0 von `numpy` hinzu. Außerdem wird das `pillow`-Paket `myenv` hinzugefügt. Im Beispiel wird die [`add_conda_package()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.conda_dependencies.condadependencies?view=azure-ml-py#add-conda-package-conda-package-)-Methode bzw. die [`add_pip_package()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.conda_dependencies.condadependencies?view=azure-ml-py#add-pip-package-pip-package-)-Methode verwendet.
+Das folgende Beispiel zeigt eine Hinzufügung zur Umgebung `myenv`. Sie fügt Version 1.17.0 von `numpy` hinzu. Außerdem wird das `pillow`-Paket hinzugefügt. Im Beispiel wird die [`add_conda_package()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.conda_dependencies.condadependencies?view=azure-ml-py#add-conda-package-conda-package-)-Methode bzw. die [`add_pip_package()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.conda_dependencies.condadependencies?view=azure-ml-py#add-pip-package-pip-package-)-Methode verwendet.
 
 ```python
 from azureml.core.environment import Environment
@@ -247,10 +242,14 @@ build = env.build(workspace=ws)
 build.wait_for_completion(show_output=True)
 ```
 
-Es ist hilfreich, Images mithilfe der [`build_local()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py#build-local-workspace--platform-none----kwargs-)-Methode zuerst lokal zu kompilieren. Durch Festlegen des optionalen Parameters `pushImageToWorkspaceAcr = True` wird das resultierende Image per Push in die Containerregistrierung des Azure ML-Arbeitsbereichs übertragen. 
+Es ist hilfreich, Images mithilfe der [`build_local()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py#build-local-workspace--platform-none----kwargs-)-Methode zuerst lokal zu kompilieren. Legen Sie zum Erstellen eines Docker-Images den optionalen Parameter `useDocker=True` fest. Um das sich ergebende Image in die Containerregistrierung des AzureML-Arbeitsbereichs zu pushen, legen Sie `pushImageToWorkspaceAcr=True` fest.
+
+```python
+build = env.build_local(workspace=ws, useDocker=True, pushImageToWorkspaceAcr=True)
+```
 
 > [!WARNING]
->  Das Ändern der Reihenfolge von Abhängigkeiten oder Kanälen in einer Umgebung führt zu einer neuen Umgebung und erfordert einen neuen Imagebuild.
+>  Das Ändern der Reihenfolge von Abhängigkeiten oder Kanälen in einer Umgebung führt zu einer neuen Umgebung und erfordert einen neuen Imagebuild. Außerdem werden beim Aufrufen der `build()`-Methode für ein vorhandenes Image die Abhängigkeiten aktualisiert, wenn neue Versionen vorhanden sind. 
 
 ## <a name="enable-docker"></a>Aktivieren von Docker
 
@@ -328,7 +327,7 @@ myenv.python.interpreter_path = "/opt/miniconda/bin/python"
 Für eine registrierte Umgebung können Sie die Imagedetails mithilfe des folgenden Codes abrufen, wobei `details` eine Instanz von [DockerImageDetails](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.dockerimagedetails?view=azure-ml-py) (AzureML Python SDK >= 1.11) ist und alle Informationen über das Umgebungsimage bereitstellt, z. B. die Dockerfile-Datei, die Registrierung und den Imagenamen.
 
 ```python
-details = environment.get_image_details()
+details = environment.get_image_details(workspace=ws)
 ```
 
 ## <a name="use-environments-for-training"></a>Verwenden von Umgebungen für das Training
@@ -422,10 +421,6 @@ service = Model.deploy(
 ## <a name="notebooks"></a>Notebooks
 
 Dieser [Artikel](https://docs.microsoft.com/azure/machine-learning/how-to-run-jupyter-notebooks#add-new-kernels) enthält Informationen darüber, wie Sie eine Conda-Umgebung als Kernel in einem Notebook installieren können.
-
-Dieses [Beispiel-Notebook](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training/using-environments) geht tiefer auf Konzepte und Methoden ein, die in diesem Artikel demonstriert wurden.
-
-Dieses [Beispiel-Notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-on-local/train-on-local.ipynb) zeigt, wie ein Modell lokal mit verschiedenen Arten von Umgebungen trainiert werden kann.
 
 [Bereitstellen eines Modells mithilfe eines benutzerdefinierten Docker-Basisimages](how-to-deploy-custom-docker-image.md) veranschaulicht, wie ein Modell mit einem benutzerdefinierten Docker-Basisimage bereitgestellt wird.
 

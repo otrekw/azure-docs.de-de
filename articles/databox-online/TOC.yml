@@ -1,73 +1,181 @@
 - name: "Dokumentation zu Azure Stack\_Edge und Data\_Box\_Gateway"
   href: /azure/databox-online/
   expanded: true
-- name: Data Box Gateway
+- name: Azure Stack Edge with GPU (Vorschau)
   items:
     - name: Übersicht
       items:
-        - name: Was ist Data Box Gateway?
-          href: data-box-gateway-overview.md
+        - name: Was ist Azure Stack Edge with GPU?
+          href: azure-stack-edge-gpu-overview.md
     - name: Tutorials
       items:
-        - name: 1 – Vorbereiten
-          href: data-box-gateway-deploy-prep.md
-        - name: 2A – Bereitstellen in Hyper-V
-          href: data-box-gateway-deploy-provision-hyperv.md
-        - name: 2B – Bereitstellen in VMware
-          href: data-box-gateway-deploy-provision-vmware.md
-        - name: '3 – Herstellen der Verbindung, Einrichten, Aktivieren'
-          href: data-box-gateway-deploy-connect-setup-activate.md
-        - name: '4 – Hinzufügen, Herstellen der Verbindung zum Freigeben'
-          href: data-box-gateway-deploy-add-shares.md
+        - name: 0. Abrufen der Prüfliste
+          href: azure-stack-edge-gpu-deploy-checklist.md
+        - name: '1. Bestellen, Vorbereiten'
+          href: azure-stack-edge-gpu-deploy-prep.md
+        - name: '2: Installieren'
+          href: azure-stack-edge-gpu-deploy-install.md
+        - name: 3. Herstellen einer Verbindung
+          href: azure-stack-edge-gpu-deploy-connect.md
+        - name: 4. Konfigurieren des Netzwerks
+          href: azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy.md
+        - name: 5. Konfigurieren des Geräts
+          href: azure-stack-edge-gpu-deploy-set-up-device-update-time.md
+        - name: 6. Konfigurieren der Zertifikate
+          href: azure-stack-edge-gpu-deploy-configure-certificates.md
+        - name: 7. Aktivieren
+          href: azure-stack-edge-gpu-deploy-activate.md
+        - name: 8. Konfigurieren der Computeumgebung
+          href: azure-stack-edge-gpu-deploy-configure-compute.md
+        - name: '9A. Hinzufügen, Herstellen einer Verbindung mit einer Freigabe'
+          href: azure-stack-edge-j-series-deploy-add-shares.md
+        - name: '9B. Hinzufügen, Herstellen einer Verbindung mit Speicherkonten'
+          href: azure-stack-edge-j-series-deploy-add-storage-accounts.md
     - name: Konzepte
       items:
         - name: Überprüfen der Anforderungen
-          href: data-box-gateway-system-requirements.md
+          href: azure-stack-edge-gpu-system-requirements.md
         - name: Grundlegendes zu den Beschränkungen
-          href: data-box-gateway-limits.md
+          href: azure-stack-edge-limits.md
         - name: Sicherheitsübersicht
-          href: data-box-gateway-security.md
-        - name: Anzeigen von Anwendungsfällen
-          href: data-box-gateway-use-cases.md
+          href: azure-stack-edge-security.md
+        - name: Spezifikationen für die Überprüfung
+          items:
+            - name: Gerätespezifikationen
+              href: azure-stack-edge-gpu-technical-specifications-compliance.md
+            - name: Netzkabelspezifikationen
+              href: azure-stack-edge-technical-specifications-power-cords-regional.md
+        - name: Grundlegendes zu Kubernetes
+          items:
+            - name: Was ist Kubernetes?
+              href: azure-stack-edge-gpu-kubernetes-overview.md
+            - name: Kubernetes-Speicher
+              href: azure-stack-edge-gpu-kubernetes-storage.md
+            - name: Kubernetes-Netzwerke
+              href: azure-stack-edge-gpu-kubernetes-networking.md
+            - name: RBAC in Kubernetes
+              href: azure-stack-edge-gpu-kubernetes-rbac.md
+            - name: Kubernetes-Workloads
+              href: azure-stack-edge-gpu-kubernetes-workload-management.md
     - name: Anleitung
       items:
-        - name: Aktualisieren
-          href: data-box-gateway-apply-updates.md
-        - name: Verwalten
+        - name: "Bereitstellen von IoT\_Edge-Beispielen"
+          items:
+            - name: Modul aus dem NVIDIA-Katalog
+              href: azure-stack-edge-j-series-configure-gpu-modules.md
+            - name: GPU-Modul aus dem Git-Repository
+              href: azure-stack-edge-gpu-deploy-sample-module.md
+            - name: GPU-Modul über den Marketplace
+              href: azure-stack-edge-gpu-deploy-sample-module-marketplace.md
+        - name: Bereitstellen von Kubernetes-Workloads
+          items:
+            - name: Über kubectl
+              items:
+                - name: Zugreifen auf den Kubernetes-Cluster
+                  href: azure-stack-edge-gpu-create-kubernetes-cluster.md
+                - name: Verfügbarmachen einer zustandslosen App
+                  href: azure-stack-edge-j-series-deploy-stateless-application-kubernetes.md
+                - name: Bereitstellen einer zustandsbehafteten App (statische Bereitstellung)
+                  href: azure-stack-edge-gpu-deploy-stateful-application-static-provision-kubernetes.md
+                - name: Bereitstellen einer zustandsbehafteten App (dynamische Bereitstellung)
+                  href: azure-stack-edge-gpu-deploy-stateful-application-dynamic-provision-kubernetes.md
+            - name: Über IoT Edge
+              items:
+                - name: Verfügbarmachen einer zustandslosen App
+                  href: azure-stack-edge-gpu-deploy-stateless-application-iot-edge-module.md
+            - name: Über Azure Arc
+              items:
+                - name: Aktivieren von Arc im Kubernetes-Cluster
+                  href: azure-stack-edge-gpu-deploy-arc-kubernetes-cluster.md
+                - name: Bereitstellen einer zustandslosen App über GitOps
+                  href: azure-stack-edge-gpu-deploy-stateless-application-git-ops-guestbook.md
+        - name: Konfigurieren von Azure Resource Manager
+          items:
+            - name: Herstellen einer Verbindung über Azure PowerShell
+              href: azure-stack-edge-j-series-connect-resource-manager.md
+            - name: Festlegen des Azure Resource Manager-Kennworts
+              href: azure-stack-edge-j-series-set-azure-resource-manager-password.md
+            - name: Konfigurieren von TLS-Clienteinstellungen
+              href: azure-stack-edge-j-series-configure-tls-settings.md
+        - name: Bereitstellen von virtuellen Computern
+          items:
+            - name: 'Bereitstellen von VMs: Vorlagen'
+              href: azure-stack-edge-gpu-deploy-virtual-machine-templates.md
+            - name: 'Bereitstellen von VMs: Azure PowerShell-Cmdlets'
+              href: azure-stack-edge-j-series-deploy-virtual-machine-powershell.md
+            - name: 'Bereitstellen von VMs: Azure PowerShell-Skript'
+              href: azure-stack-edge-j-series-deploy-virtual-machine-powershell-script.md
+            - name: 'Bereitstellen von VMs: Azure CLI/Python'
+              href: azure-stack-edge-j-series-deploy-virtual-machine-cli-python.md
+            - name: Erstellen des VM-Image
+              href: azure-stack-edge-j-series-create-virtual-machine-image.md
+        - name: Verwalten von Zertifikaten
+          items:
+            - name: Anforderungen
+              href: azure-stack-edge-j-series-certificate-requirements.md
+            - name: Bring Your Own
+              href: azure-stack-edge-j-series-manage-certificates.md
+            - name: Erstellen über das Azure Stack Readiness Checker-Tool
+              href: azure-stack-edge-j-series-create-certificates-tool.md
+            - name: Beheben von Zertifikatfehlern
+              href: azure-stack-edge-j-series-certificate-troubleshooting.md
+            - name: Entwickeln eines C#-Moduls
+              href: azure-stack-edge-j-series-create-iot-edge-module.md
+        - name: Verwalten von Edgecomputing
+          href: azure-stack-edge-j-series-manage-compute.md
+        - name: Verwalten von Speichergateways
           items:
             - name: Freigaben
-              href: data-box-gateway-manage-shares.md
+              href: azure-stack-edge-j-series-manage-shares.md
             - name: Benutzer
-              href: data-box-gateway-manage-users.md
+              href: azure-stack-edge-j-series-manage-users.md
+            - name: Speicherkonten
+              href: azure-stack-edge-j-series-manage-storage-accounts.md
             - name: Bandbreitenzeitpläne
-              href: data-box-gateway-manage-bandwidth-schedules.md
-            - name: 'Zugriff, Stromversorgung, Konnektivität'
-              href: data-box-gateway-manage-access-power-connectivity-mode.md
+              href: azure-stack-edge-j-series-manage-bandwidth-schedules.md
+        - name: Verwalten des Geräts
+          items:
+            - name: 'Stromversorgung, Zugriff, Konnektivität'
+              href: azure-stack-edge-manage-access-power-connectivity-mode.md
             - name: Über PowerShell
-              href: data-box-gateway-connect-powershell-interface.md
+              href: azure-stack-edge-gpu-connect-powershell-interface.md
+            - name: Anwenden von Updates
+              href: azure-stack-edge-gpu-install-update.md
+            - name: Zurückgeben des Geräts
+              href: azure-stack-edge-return-device.md
+            - name: Gerät ersetzen
+              href: azure-stack-edge-replace-device.md
         - name: Überwachen
-          href: data-box-gateway-monitor.md
+          items:
+            - name: Verwenden von Metrikdiagrammen
+              href: azure-stack-edge-monitor.md
+            - name: Verwenden des Kubernetes-Dashboards
+              href: azure-stack-edge-gpu-monitor-kubernetes-dashboard.md
         - name: Problembehandlung
-          href: data-box-gateway-troubleshoot.md
-        - name: Microsoft-Support kontaktieren
-          href: azure-stack-edge-contact-microsoft-support.md
+          items:
+            - name: Geräteprobleme
+              href: azure-stack-edge-troubleshoot.md
+            - name: Probleme bei der Bestellung
+              href: azure-stack-edge-troubleshoot-ordering.md
+            - name: Microsoft-Support kontaktieren
+              href: azure-stack-edge-contact-microsoft-support.md
     - name: Versionshinweise
       items:
-        - name: '2007: Aktuell'
-          href: data-box-gateway-2007-release-notes.md
-        - name: 1911
-          href: data-box-gateway-1911-release-notes.md
-        - name: 1906
-          href: data-box-gateway-1906-release-notes.md
-        - name: 1905
-          href: data-box-gateway-1905-release-notes.md
-        - name: 'Allgemeine Verfügbarkeit (General Availability, GA)'
-          href: data-box-gateway-release-notes.md
-- name: "Azure Stack\_Edge"
+        - name: '2008: Versionshinweise'
+          href: azure-stack-edge-gpu-2008-release-notes.md
+    - name: Verweis
+      items:
+        - name: Azure PowerShell
+          href: 'https://docs.microsoft.com/powershell/module/az.stackedge/?view=azps-4.4.0#stack_edge'
+        - name: REST-API
+          href: 'https://docs.microsoft.com/rest/api/databoxedgegateway'
+        - name: .NET SDK
+          href: 'https://docs.microsoft.com/dotnet/api/overview/azure/databoxedge/databoxgateway?view=azure-dotnet'
+- name: Azure Stack Edge with FPGA
   items:
     - name: Übersicht
       items:
-        - name: "Was ist Azure Stack\_Edge?"
+        - name: Was ist Azure Stack Edge with FPGA?
           href: azure-stack-edge-overview.md
     - name: Tutorials
       items:
@@ -151,6 +259,68 @@
           href: 'https://docs.microsoft.com/rest/api/databoxedgegateway'
         - name: .NET SDK
           href: 'https://docs.microsoft.com/dotnet/api/overview/azure/databoxedge/databoxgateway?view=azure-dotnet'
+- name: Data Box Gateway
+  items:
+    - name: Übersicht
+      items:
+        - name: Was ist Data Box Gateway?
+          href: data-box-gateway-overview.md
+    - name: Tutorials
+      items:
+        - name: 1 – Vorbereiten
+          href: data-box-gateway-deploy-prep.md
+        - name: 2A – Bereitstellen in Hyper-V
+          href: data-box-gateway-deploy-provision-hyperv.md
+        - name: 2B – Bereitstellen in VMware
+          href: data-box-gateway-deploy-provision-vmware.md
+        - name: '3 – Herstellen der Verbindung, Einrichten, Aktivieren'
+          href: data-box-gateway-deploy-connect-setup-activate.md
+        - name: '4 – Hinzufügen, Herstellen der Verbindung zum Freigeben'
+          href: data-box-gateway-deploy-add-shares.md
+    - name: Konzepte
+      items:
+        - name: Überprüfen der Anforderungen
+          href: data-box-gateway-system-requirements.md
+        - name: Grundlegendes zu den Beschränkungen
+          href: data-box-gateway-limits.md
+        - name: Sicherheitsübersicht
+          href: data-box-gateway-security.md
+        - name: Anzeigen von Anwendungsfällen
+          href: data-box-gateway-use-cases.md
+    - name: Anleitung
+      items:
+        - name: Aktualisieren
+          href: data-box-gateway-apply-updates.md
+        - name: Verwalten
+          items:
+            - name: Freigaben
+              href: data-box-gateway-manage-shares.md
+            - name: Benutzer
+              href: data-box-gateway-manage-users.md
+            - name: Bandbreitenzeitpläne
+              href: data-box-gateway-manage-bandwidth-schedules.md
+            - name: 'Zugriff, Stromversorgung, Konnektivität'
+              href: data-box-gateway-manage-access-power-connectivity-mode.md
+            - name: Über PowerShell
+              href: data-box-gateway-connect-powershell-interface.md
+        - name: Überwachen
+          href: data-box-gateway-monitor.md
+        - name: Problembehandlung
+          href: data-box-gateway-troubleshoot.md
+        - name: Microsoft-Support kontaktieren
+          href: azure-stack-edge-contact-microsoft-support.md
+    - name: Versionshinweise
+      items:
+        - name: '2007: Aktuell'
+          href: data-box-gateway-2007-release-notes.md
+        - name: 1911
+          href: data-box-gateway-1911-release-notes.md
+        - name: 1906
+          href: data-box-gateway-1906-release-notes.md
+        - name: 1905
+          href: data-box-gateway-1905-release-notes.md
+        - name: 'Allgemeine Verfügbarkeit (General Availability, GA)'
+          href: data-box-gateway-release-notes.md
 - name: Ressourcen
   items:
     - name: "Beispiele für ein Azure Stack\_Edge-C#-Modul (.NET)"

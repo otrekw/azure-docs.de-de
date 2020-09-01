@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 06/12/2020
-ms.openlocfilehash: 9ee0fbd69c0004306b67cbff0aca3b257d905eeb
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: cbba0dd5341ad148831ac3b1f94685bf2beddd5a
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87541123"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855264"
 ---
 # <a name="deploy-a-model-to-azure-container-instances"></a>Bereitstellen eines Modells in Azure Container Instances
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -56,8 +56,9 @@ Informationen zu den für ACI geltenden Kontingenten und zur Verfügbarkeit in d
 Um ein Modell für Azure Container Instances bereitzustellen, erstellen Sie eine __Bereitstellungskonfiguration__, in der die benötigten Computeressourcen beschrieben werden. Dies sind beispielsweise die Anzahl von Kernen und die Arbeitsspeichergröße. Außerdem benötigen Sie eine __Rückschlusskonfiguration__, in der die zum Hosten des Modells und des Webdiensts erforderliche Umgebung beschrieben wird. Weitere Informationen zum Erstellen der Rückschlusskonfiguration finden Sie unter [Wie und wo Modelle bereitgestellt werden](how-to-deploy-and-where.md).
 
 > [!NOTE]
-> * ACI eignet sich nur für kleine Modelle mit einer Größe von <1 GB. 
-> * Wir empfehlen die Verwendung von AKS auf einem einzelnen Knoten für den Dev-Test von größeren Modellen.
+> * ACI eignet sich nur für kleine Modelle, die weniger als 1 GB groß sind. 
+> * Wir empfehlen die Verwendung von AKS mit einem einzelnen Knoten, um größere Modelle zu entwickeln.
+> * Die Anzahl der bereitzustellenden Modelle ist auf 1.000 Modelle pro Bereitstellung (pro Container) beschränkt. 
 
 ### <a name="using-the-sdk"></a>Verwenden des SDK
 

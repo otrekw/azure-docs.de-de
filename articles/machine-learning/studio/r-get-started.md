@@ -9,12 +9,12 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2019
-ms.openlocfilehash: 719b96c9186d463ca3ee41c6fb401a8f22c4c11c
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: b4f3733806eb810cff7722e6432bb274b6d46a37
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87431966"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88854819"
 ---
 # <a name="get-started-with-azure-machine-learning-studio-classic-in-r"></a>Erste Schritte mit Azure Machine Learning Studio (Classic) in R
 
@@ -225,7 +225,7 @@ load("src/yourData.rdata") # Reads a zipped R data file
 
 Das Laden von Datasets wurde bereits unter [Laden des Datasets](#loading) erläutert. Nachdem Sie das im vorherigen Abschnitt gezeigte R-Skript erstellt und getestet haben, führen Sie folgende Schritte aus:
 
-1. Speichern Sie das R-Skript in einer ".R"-Datei. Wir geben unserer Skriptdatei den Namen "simpleplot.R". Der Inhalt lautet wie folgt:
+1. Speichern Sie das R-Skript in einer ".R"-Datei. Wir geben unserer Skriptdatei den Namen "simpleplot.R". Die Datei enthält Folgendes:
 
    ```r
    ## Only one of the following two lines should be used
@@ -570,7 +570,7 @@ Es scheint alles zu funktionieren. Wir haben jetzt die neue Spalte mit den erwar
 
 In diesem Abschnitt führen wir einige einfache Transformationen der Werte in einigen Spalten unseres Dataframes durch. Die R-Sprache unterstützt nahezu beliebige Werttransformationen. Die Referenzen unter [Weitere Informationen](#appendixb) enthalten ausführliche Beispiele.
 
-Wenn Sie sich die Werte in den Zusammenfassungen unseres Dataframes ansehen, sollte Ihnen etwas unpassend vorkommen. Wird in Kalifornien mehr Speiseeis erzeugt, als Milch produziert wird? Nein, natürlich nicht, da dies sinnlos ist, wenn diese Tatsache die Eisliebhaber unter uns auch traurig stimmen mag. Die Einheiten sind unterschiedlich. Der Preis wird in Einheiten von US-Pfund angegeben, Milch in Einheiten von 1 M US-Pfund und Speiseeis in Einheiten von 1.000 US-Gallonen sowie Hüttenkäse in Einheiten von 1.000 US-Pfund. Wenn Speiseeis z. B. ca. 6,5 Pfund pro Gallone wiegt, können wir ganz einfach die Multiplikation durchführen, um diese Werte so zu konvertieren, dass sie alle in gleichen Einheiten von 1.000 Pfund angegeben werden.
+Wenn Sie sich die Werte in den Zusammenfassungen unseres Dataframes ansehen, sollte Ihnen etwas merkwürdig vorkommen. Wird in Kalifornien mehr Speiseeis erzeugt, als Milch produziert wird? Nein, natürlich nicht, da dies sinnlos ist, wenn diese Tatsache die Eisliebhaber unter uns auch traurig stimmen mag. Die Einheiten sind unterschiedlich. Der Preis wird in Einheiten von US-Pfund angegeben, Milch in Einheiten von 1 M US-Pfund und Speiseeis in Einheiten von 1.000 US-Gallonen sowie Hüttenkäse in Einheiten von 1.000 US-Pfund. Wenn Speiseeis z. B. ca. 6,5 Pfund pro Gallone wiegt, können wir ganz einfach eine Multiplikation durchführen, um diese Werte so zu konvertieren, dass sie alle in gleichen Einheiten von 1.000 Pfund angegeben werden.
 
 Für unser Vorhersagemodell verwenden wir ein multiplikatives Modell für die Trend- und saisonale Anpassung dieser Daten. Eine logarithmische Transformation ermöglicht uns, ein lineares Modell zu verwenden, was diesen Prozess vereinfacht. Wir können die logarithmische Transformation in derselben Funktion anwenden, in der der Multiplikator angewendet wird.
 
@@ -1136,7 +1136,7 @@ Es sieht so aus, als ob das Trendmodell ziemlich gut den Daten angepasst ist. Da
 
 Mit dem uns jetzt zur Verfügung stehenden Trendmodell fahren wir fort und berücksichtigen die saisonalen Auswirkungen. Wir verwenden den Monat des Jahres als Platzhaltervariable im linearen Modell, um die Auswirkungen von Monat zu Monat zu erfassen. Beachten Sie, dass bei Einführung von Faktorvariablen in einem Modell das konstante Glied nicht berechnet werden darf. Wenn Sie dies versäumen, ist die Gleichung überspezifiziert, und R lässt einen der gewünschten Faktoren fallen, behält aber den konstanten Gliedterm bei.
 
-Da wir ein zufriedenstellendes Trendmodell haben, können wir die `update()` -Funktion verwenden, um dem vorhandenen Modell die neuen Terme hinzuzufügen. Durch die "-1" in der "update"-Gleichung wird der konstante Gliedterm fallen gelassen. Für den Moment fahren wir in RStudio fort:
+Da wir über ein zufriedenstellendes Trendmodell verfügen, können wir die `update()`-Funktion verwenden, um dem vorhandenen Modell die neuen Terme hinzuzufügen. Durch die "-1" in der "update"-Gleichung wird der konstante Gliedterm fallen gelassen. Für den Moment fahren wir in RStudio fort:
 
 ```r
 milk.lm2 <- update(milk.lm, . ~ . + Month - 1)
@@ -1338,7 +1338,7 @@ RStudio ist ausführlich dokumentiert. Hier finden Sie einige Links zu den wicht
 Dieses Tutorial für die Programmierung in R behandelt die Grundlagen der Sprache R mit Azure Machine Learning Studio (klassisch). Wenn Sie nicht mit R vertraut sind, finden Sie zwei Einführungen im CRAN.
 
 * Die Informationen in [R for Beginners](https://cran.r-project.org/doc/contrib/Paradis-rdebuts_en.pdf) von Emmanuel Paradis sind ein guter Einstieg.  
-* [An Introduction to R](https://cran.r-project.org/doc/manuals/R-intro.html) von W. N. Venables et. al. enthält eingehendere Informationen.
+* [An Introduction to R](https://cran.r-project.org/doc/manuals/R-intro.html) von W. N. Venables et al. bietet ausführlichere Informationen.
 
 Es gibt viele Bücher zu R, die Ihnen beim Einstieg helfen können. Hier finden Sie ein paar, die ich nützlich finde:
 
@@ -1355,7 +1355,8 @@ Das Buch **Introductory Time Series with R** von Paul Cowpertwait und Andrew Met
 Hier finden Sie weitere nützliche Internetressourcen:
 
 * Mit DataCamp erlernen Sie R bequem über den Browser mit Videolektionen und Codierungsübungen. Es gibt interaktive Lernprogramme zu den neuesten R-Techniken und -Paketen. Arbeiten Sie das [kostenlose interaktive R-Tutorial](https://www.datacamp.com/courses/introduction-to-r) durch.
-* [Learn R Programming, The Definitive Guide](https://www.programiz.com/r-programming) von Programiz.
+* [Learn R Programming, The Definitive Guide](https://www.datamentor.io/r-programming/) von DataMentor.
+* [R-CODER](https://r-coder.com/). Ausführliche R-Tutorials und ein kostenloser R-Kurs für Einsteiger.
 * Arbeiten Sie das kompakte [R-Tutorial](https://www.cyclismo.org/tutorial/R/) von Kelly Black von der Clarkson University durch.
 * Unter [Top R language resources to improve your data skills](https://www.computerworld.com/article/2497464/business-intelligence-60-r-resources-to-improve-your-data-skills.html) sind über 60 Ressourcen zu R aufgelistet.
 

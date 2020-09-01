@@ -8,12 +8,12 @@ ms.date: 4/24/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: devx-track-javascript
-ms.openlocfilehash: a93e0b6d29bb10e5e71f48134916cac9cd563fb2
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 3cf14ce3e8ef9b1d783191fe6c01c5e311d57786
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420038"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855948"
 ---
 # <a name="create-custom-sdks-for-azure-digital-twins-using-autorest"></a>Erstellen von benutzerdefinierten SDKs für Azure Digital Twins mit AutoRest
 
@@ -41,10 +41,10 @@ npm install -g autorest@2.0.4413
 Führen Sie die folgenden Schritte aus, um AutoRest für die Azure Digital Twins-Swagger-Datei auszuführen:
 1. Kopieren Sie die Azure Digital Twins-Swagger-Datei und den zugehörigen Ordner mit Beispielen in ein Arbeitsverzeichnis.
 2. Wechseln Sie in einem Eingabeaufforderungsfenster zu diesem Arbeitsverzeichnis.
-3. Führen Sie AutoRest mithilfe des folgenden Befehls aus. Ersetzen Sie den `<language>`-Platzhalter durch Ihre bevorzugte Sprache: `--python`, `--java`, `--go` usw. (Die vollständige Liste der Optionen finden Sie in der [AutoRest-Infodatei](https://github.com/Azure/autorest).)
+3. Führen Sie AutoRest mithilfe des folgenden Befehls aus. Ersetzen Sie den `<language>`-Platzhalter durch Ihre bevorzugte Sprache: `python`, `java`, `go` usw. (Die vollständige Liste der Optionen finden Sie in der [AutoRest-Infodatei](https://github.com/Azure/autorest).)
 
 ```cmd/sh
-autorest --input-file=adtApiSwagger.json --<language> --output-folder=ADTApi --add-credentials --azure-arm --namespace=ADTApi
+autorest --input-file=digitaltwins.json --<language> --output-folder=ADTApi --add-credentials --azure-arm --namespace=ADTApi
 ```
 
 Daraufhin wird ein neuer Ordner mit dem Namen *ADTApi* in Ihrem Arbeitsverzeichnis angezeigt. Die generierten SDK-Dateien verwenden den Namespace *ADTApi*. Sie verwenden diesen Namespace auch in den restlichen Verwendungsbeispielen in diesem Artikel.

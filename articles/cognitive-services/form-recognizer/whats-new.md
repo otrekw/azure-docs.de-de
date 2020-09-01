@@ -9,25 +9,52 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: pafarley
-ms.openlocfilehash: 22eab216714d45e4b8a91fd58325424d4baef95e
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: ddd1f61ada539ebb00341dd83919f1c851a0f3e1
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87272945"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816370"
 ---
 # <a name="whats-new-in-form-recognizer"></a>Neuerungen in der Formularerkennung
 
 Der Formularerkennungsdienst wird fortlaufend aktualisiert. In diesem Artikel finden Sie aktuelle Informationen zu Featureverbesserungen, Fixes und Dokumentationsaktualisierungen.
 
-> [!NOTE]
-> In den Schnellstartanleitungen und Leitfäden für die Formularerkennung wird immer die neueste Version der API verwendet, sofern nicht anders angegeben.
+## <a name="august-2020"></a>August 2020
+
+### <a name="new-features"></a>Neue Funktionen
+
+**Die öffentliche Vorschau der Formularerkennung v2.1 ist jetzt verfügbar.** V2.1-preview.1 wurde veröffentlicht, einschließlich der folgenden Features: 
+
+
+- **REST-API-Referenz ist verfügbar**: [v2.1-preview.1-Referenz](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/AnalyzeBusinessCardAsync) anzeigen 
+- **Zusätzlich zu Englisch werden neue Sprachen unterstützt.** Die folgenden [Sprachen](language-support.md) werden jetzt unterstützt: für `Layout` und `Train Custom Model`: Englisch (`en`), Chinesisch (vereinfacht) (`zh-Hans`), Niederländisch (`nl`), Französisch (`fr`), Deutsch (`de`), Italienisch (`it`), Portugiesisch (`pt`) und Spanisch (`es`).
+- **Kontrollkästchen-/Auswahlmarkierungserkennung**: Die Formularerkennung unterstützt das Erkennen und Extrahieren von Auswahlmarkierungen, z. B. von Kontrollkästchen und Optionsfeldern. Auswahlmarkierungen werden in `Layout` extrahiert, und Sie können jetzt auch `Train Custom Model` - _mit Bezeichnungen trainieren_, um Schlüssel-Wert-Paare für Auswahlmarkierungen zu extrahieren. 
+- **Model Compose** ermöglicht das Zusammensetzen und Aufrufen mehrerer Modelle mit einer einzigen Modell-ID. Wenn ein Dokument zur Analyse mit einer zusammengesetzten Modell-ID übermittelt wird, wird zunächst ein Klassifizierungsschritt durchgeführt, um es an das richtige benutzerdefinierte Modell weiterzuleiten. Model Compose ist für das `Train Custom Model` - _Trainieren mit Bezeichnungen_ verfügbar.
+- **Modellname**: Fügen Sie den benutzerdefinierten Modellen einen Anzeigenamen zur einfacheren Verwaltung und Nachverfolgung hinzu.
+- **[Neues vordefiniertes Modell für Visitenkarten](concept-business-cards.md)** zum Extrahieren allgemeiner Felder auf Visitenkarten in englischer Sprache.
+- **[Neue Gebietsschemas für vordefinierte Belege](concept-receipts.md)** : Neben en-US ist jetzt zusätzliche Unterstützung für en-AU, en-CA, en-GB und en-IN verfügbar.
+- **Qualitätsverbesserungen** für `Layout`, `Train Custom Model` - _Trainieren ohne Bezeichnungen_ und _Trainieren mit Bezeichnungen_.
+
+
+**v2.0** enthält das folgende Update:
+-   Die [Clientbibliotheken](quickstarts/client-library.md) für .NET, Python, Java und JavaScript sind nun allgemein verfügbar. 
+
+
+**Neue Beispiele** sind auf GitHub verfügbar. 
+- Unter [Knowledge Extraction Recipes - Forms Playbook](https://github.com/microsoft/knowledge-extraction-recipes-forms) werden bewährte Methoden aus echten Kundenengagements mit der Formularerkennung gesammelt und nützliche Codebeispiele, Checklisten und Beispielpipelines für die Entwicklung dieser Projekte bereitgestellt. 
+- Das [Samplebezeichnungstool](https://github.com/microsoft/OCR-Form-Tools) wurde aktualisiert, um die neue Funktionalität von v2.1 zu unterstützen. Informationen zu den ersten Schritten mit dem Tool finden Sie in diesem [Schnellstart](quickstarts/label-tool.md). 
+- Im Formularerkennungsbeispiel [Intelligent Kiosk](https://github.com/microsoft/Cognitive-Samples-IntelligentKiosk/blob/master/Documentation/FormRecognizer.md) wird gezeigt, wie `Analyze Receipt` und `Train Custom Model` - _Trainieren ohne Bezeichnungen_ integriert werden.
+
+
 
 ## <a name="july-2020"></a>Juli 2020
 
 ### <a name="new-features"></a>Neue Funktionen
+
 * **v2.0-Referenz verfügbar** Mehr dazu finden Sie in der [v2.0 API-Referenz](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm) und den aktualisierten SDKs für [.NET](https://docs.microsoft.com/dotnet/api/overview/azure/ai.formrecognizer-readme-pre?view=azure-dotnet), [Python](https://docs.microsoft.com/python/api/overview/azure/?view=azure-python), [Java](https://docs.microsoft.com/java/api/overview/azure/ai-formrecognizer-readme-pre?view=azure-java-preview) und [JavaScript](https://docs.microsoft.com/javascript/api/overview/azure/?view=azure-node-latest).
-* **Tabellenerweiterungen und Extraktionserweiterungen** umfasst Verbesserungen der Genauigkeit und der Tabellenextraktion, insbesondere die Funktion zum Erlernen von Tabellenheadern und-Strukturen in benutzerdefinierten Trainings ohne Bezeichnungen. 
+* **Tabellenerweiterungen und Extraktionserweiterungen** umfassen Verbesserungen der Genauigkeit und der Tabellenextraktion, insbesondere eine Funktion zum Erlernen von Tabellenheadern und Strukturen beim _benutzerdefinierten Trainieren ohne Bezeichnungen_. 
+
 * **Währungsunterstützung**: Erkennung und Extraktion von globalen Währungssymbolen.
 * **Azure Gov**: Die Formularerkennung ist jetzt auch in Azure Gov verfügbar.
 * **Erweiterte Sicherheitsfeatures**: 
@@ -39,7 +66,7 @@ Der Formularerkennungsdienst wird fortlaufend aktualisiert. In diesem Artikel fi
 
 ### <a name="new-features"></a>Neue Funktionen
 * **CopyModel-API wurde zu Client-SDKs hinzugefügt** Sie können jetzt die Client-SDKs verwenden, um Modelle von einem Abonnement in ein anderes zu kopieren. Allgemeine Informationen zu diesem Feature finden Sie unter [Sichern und Wiederherstellen von Modellen](./disaster-recovery.md).
-* **Azure Active Directory-Integration** Sie können jetzt Ihre AAD-Anmeldeinformationen verwenden, um Ihre Clientobjekte der Formularerkennung in den SDKs zu authentifizieren.
+* **Azure Active Directory-Integration**: Sie können jetzt Ihre Azure AD-Anmeldeinformationen verwenden, um Clientobjekte der Formularerkennung in den SDKs zu authentifizieren.
 * **SDK-spezifische Änderungen** Dazu gehören sowohl geringfügige Ergänzungen als auch entscheidende Änderungen. Weitere Informationen finden Sie in den SDK-Änderungsprotokollen.
   * [Änderungsprotokoll zu C# SDK Preview 3](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/formrecognizer/Azure.AI.FormRecognizer/CHANGELOG.md)
   * [Änderungsprotokoll zu Python SDK Preview 3](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/CHANGELOG.md)
@@ -52,8 +79,8 @@ Der Formularerkennungsdienst wird fortlaufend aktualisiert. In diesem Artikel fi
 * **SDK-Unterstützung für Version 2.0 der Formularerkennungs-API (Public Preview):** Diesen Monat wurde die Dienstunterstützung um ein Vorschau-SDK für Version 2.0 der Formularerkennung (Vorschauversion) erweitert. Verwenden Sie die folgenden Links, um die ersten Schritte mit Ihrer bevorzugten Sprache auszuführen: 
    * [.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/ai.formrecognizer-readme-pre?view=azure-dotnet)
    * [Java SDK](https://docs.microsoft.com/java/api/overview/azure/ai-formrecognizer-readme-pre?view=azure-java-preview)
-   * [Python SDK](https://docs.microsoft.com/python/api/overview/azure/?view=azure-python)
-   * [JavaScript SDK](https://docs.microsoft.com/javascript/api/overview/azure/?view=azure-node-latest)
+   * [Python SDK](https://docs.microsoft.com/python/api/overview/azure/ai-formrecognizer-readme-pre?view=azure-python-preview)
+   * [JavaScript SDK](https://docs.microsoft.com/javascript/api/overview/azure/ai-form-recognizer-readme-pre?view=azure-node-preview)
 
   Das neue SDK unterstützt alle Features von Version 2.0 der REST-API für die Formularerkennung. Sie können beispielsweise ein Modell mit oder ohne Bezeichnungen trainieren und Text, Schlüssel-Wert-Paare und Tabellen aus Ihren Formularen extrahieren, mit dem vorgefertigten Belegdienst Daten aus Belegen extrahieren sowie mit dem Layoutdienst Text und Tabellen aus Ihren Dokumenten extrahieren. Sie können Ihr Feedback zu den SDKs über das [SDK-Feedbackformular](https://aka.ms/FR_SDK_v1_feedback) teilen.
  

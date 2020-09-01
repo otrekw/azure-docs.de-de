@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/4/2020
 ms.topic: troubleshooting
 ms.service: digital-twins
-ms.openlocfilehash: 5e061e4d6f9e67cc7d92548f54add94097ede7d1
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: dafea083e68b2afe6b6bcf45b4cff8779f817049
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87905199"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88749024"
 ---
 # <a name="troubleshooting-azure-digital-twins-metrics"></a>Problembehandlung von Azure Digital Twins: Metriken
 
@@ -88,9 +88,9 @@ Metriken im Zusammenhang mit Routing:
 
 | Metrik | Anzeigename der Metrik | Einheit | Aggregationstyp| BESCHREIBUNG | Dimensionen |
 | --- | --- | --- | --- | --- | --- |
-| MessagesRouted | Weitergeleitete Nachrichten (Vorschau) | Anzahl | Gesamt | Die Anzahl der Nachrichten, die an einen Azure-Endpunktdienst (z. B. Event Hub, Service Bus oder Event Grid) weitergeleitet werden. | Betrieb, <br>Ergebnis |
-| RoutingFailureRate | Routingfehlerrate (Vorschau) | Percent | Average | Der Prozentsatz der Ereignisse, die zu einem Fehler führen, wenn sie von Azure Digital Twins zu einem Azure-Endpunktdienst wie Event Hub, Service Bus oder Event Grid weitergeleitet werden. | Betrieb, <br>Ergebnis |
-| RoutingLatency | Routinglatenz (Vorschau) | Millisekunden | Average | Die Zeit, die zwischen der Weiterleitung eines Ereignisses von Azure Digital Twins bis zu dem Zeitpunkt verstrichen ist, an dem es an den Azure-Endpunktdienst wie Event Hub, Service Bus oder Event Grid gesendet wird. | Betrieb, <br>Ergebnis |
+| MessagesRouted | Weitergeleitete Nachrichten (Vorschau) | Anzahl | Gesamt | Die Anzahl der Nachrichten, die an einen Azure-Endpunktdienst (z. B. Event Hub, Service Bus oder Event Grid) weitergeleitet werden. | Endpunkttyp, <br>Ergebnis |
+| RoutingFailureRate | Routingfehlerrate (Vorschau) | Percent | Average | Der Prozentsatz der Ereignisse, die zu einem Fehler führen, wenn sie von Azure Digital Twins zu einem Azure-Endpunktdienst wie Event Hub, Service Bus oder Event Grid weitergeleitet werden. | Endpunkttyp, <br>Ergebnis |
+| RoutingLatency | Routinglatenz (Vorschau) | Millisekunden | Average | Die Zeit, die zwischen der Weiterleitung eines Ereignisses von Azure Digital Twins bis zu dem Zeitpunkt verstrichen ist, an dem es an den Azure-Endpunktdienst wie Event Hub, Service Bus oder Event Grid gesendet wird. | Endpunkttyp, <br>Ergebnis |
 
 ## <a name="dimensions"></a>Dimensionen
 
@@ -100,7 +100,7 @@ Mit Dimensionen lassen sich genauere Details zu den Metriken ermitteln. Einige R
 | --- | --- |
 | Authentifizierung | OAuth |
 | Vorgang (für API-Anforderungen) | Microsoft.DigitalTwins/digitaltwins/delete, <br>Microsoft.DigitalTwins/digitaltwins/write, <br>Microsoft.DigitalTwins/digitaltwins/read, <br>Microsoft.DigitalTwins/eventroutes/read, <br>Microsoft.DigitalTwins/eventroutes/write, <br>Microsoft.DigitalTwins/eventroutes/delete, <br>Microsoft.DigitalTwins/models/read, <br>Microsoft.DigitalTwins/models/write, <br>Microsoft.DigitalTwins/models/delete, <br>Microsoft.DigitalTwins/query/action |
-| Vorgang (für Routing) | Event Grid, <br>Event Hub, <br>Service Bus |
+| Endpunkttyp | Event Grid, <br>Event Hub, <br>Service Bus |
 | Protocol | HTTPS |
 | Ergebnis | Erfolg, <br>Fehler |
 | Statuscode | 200, 404, 500 usw. |

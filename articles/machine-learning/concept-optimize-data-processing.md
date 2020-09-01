@@ -10,12 +10,12 @@ ms.subservice: core
 ms.reviewer: nibaccam
 ms.topic: conceptual
 ms.date: 06/26/2020
-ms.openlocfilehash: 6bb85ada5ab1cd443d47ed85024b45d98354e97f
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: c73a5c5339403ecd91d45968405682c59f2f23b4
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87500962"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88719273"
 ---
 # <a name="optimize-data-processing-with-azure-machine-learning"></a>Optimieren der Datenverarbeitung mit Azure Machine Learning
 
@@ -46,6 +46,16 @@ Der Fehler *Zu wenig Arbeitsspeicher* tritt typischerweise auf, wenn Ihr Datenra
 Eine Lösung ist die Vergrößerung Ihres RAM dergestalt, dass der Datenrahmen in den Arbeitsspeicher passt. Wir empfehlen, dass Ihre Computegröße und Verarbeitungsleistung der doppelten Größe des RAM entsprechen. Wenn Ihr Datenrahmen also 10 GB groß ist, benötigen Sie ein Computeziel mit mindestens 20 GB RAM, um sicherzustellen, dass der Datenrahmen bequem in den Arbeitsspeicher passt und verarbeitet werden kann. 
 
 Denken Sie bei mehreren virtuellen CPUs (vCPUs) daran, dass eine Partition bequem in den RAM passen soll, über den jede vCPU der VM verfügen kann. Das heißt, wenn Sie 4 vCPUs mit 16 GB RAM haben, benötigen Sie pro vCPU etwa 2 GB große Datenrahmen.
+
+### <a name="local-vs-remote"></a>Lokal und remote im Vergleich
+
+Möglicherweise stellen Sie fest, dass bestimmte pandas-Datenrahmenbefehle beim Arbeiten auf Ihrem lokalen PC schneller ausgeführt werden als auf einer Remote-VM, die Sie mit Azure Machine Learning bereitgestellt haben. Ihr lokaler PC verfügt in der Regel über eine aktivierte Auslagerungsdatei, die es Ihnen ermöglicht, mehr als die Daten zu laden, die in den physischen Arbeitsspeicher passen, d. h. Ihre Festplatte wird als Erweiterung Ihres RAM verwendet. Derzeit werden Azure Machine Learning-VMs ohne Auslagerungsdatei ausgeführt, daher können nur so viele Daten geladen werden, wie physischer RAM verfügbar ist. 
+
+Für rechenintensive Aufträge empfiehlt es sich, eine größere VM auszuwählen, um die Verarbeitungsgeschwindigkeit zu verbessern.
+
+Erfahren Sie mehr über die [verfügbaren VM-Serien und -Größen](concept-compute-target.md#supported-vm-series-and-sizes) für Azure Machine Learning. 
+
+Informationen zu den RAM-Spezifikationen finden Sie auf den entsprechenden Seiten zu den VM-Serien, z. B. zur [Dv2-DSv2-Serie](../virtual-machines/dv2-dsv2-series-memory.md) oder [NC-Serie](../virtual-machines/nc-series.md).
 
 ### <a name="minimize-cpu-workloads"></a>Minimieren von CPU-Workloads
 

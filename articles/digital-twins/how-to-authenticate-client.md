@@ -8,12 +8,12 @@ ms.date: 4/22/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 008d5f22a48fdd31c90e63643adc94b26a975ca2
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: c211c0e5ef0b39f778db7c922fafc735e2411068
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88589366"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88930042"
 ---
 # <a name="write-client-app-authentication-code"></a>Schreiben von Authentifizierungscode für die Client-App
 
@@ -35,15 +35,9 @@ Als Nächstes benötigen Sie ein Client-App-Projekt, in dem Sie den Code schreib
 
 Binden Sie zunächst die folgenden Pakete in Ihr Projekt ein, sodass Sie das .NET SDK und die Authentifizierungstools für diese Vorgehensweise verwenden können:
 * `Azure.DigitalTwins.Core` (Version `1.0.0-preview.2`)
-* `Azure.Identity` (Version `1.1.1`)
+* `Azure.Identity`
 
 Je nachdem, welche Tools Sie verwenden, können Sie die Pakete mit dem Visual Studio-Paket-Manager oder mit dem Befehlszeilentool `dotnet` einbinden. 
-
-Verwenden Sie für die Authentifizierung beim .NET SDK eine der Methoden zum Abrufen von Anmeldeinformationen, die in der [Azure.Identity](https://docs.microsoft.com/dotnet/api/azure.identity?view=azure-dotnet)-Bibliothek definiert sind.
-
-Die folgenden beiden Methoden werden häufig verwendet: 
-* [InteractiveBrowserCredential](https://docs.microsoft.com/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet). Diese Methode ist für interaktive Anwendungen gedacht und startet einen Webbrowser für die Authentifizierung.
-* [ManagedIdentityCredential](https://docs.microsoft.com/dotnet/api/azure.identity.managedidentitycredential?view=azure-dotnet). Diese Methode eignet sich für Fälle, in denen [verwaltete Identitäten (MSI)](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) benötigt werden, beispielsweise bei er Verwendung von Azure Functions. 
 
 Zudem werden die folgenden using-Anweisungen benötigt:
 
@@ -51,6 +45,13 @@ Zudem werden die folgenden using-Anweisungen benötigt:
 using Azure.Identity;
 using Azure.DigitalTwins.Core;
 ```
+Verwenden Sie für die Authentifizierung beim .NET SDK eine der Methoden zum Abrufen von Anmeldeinformationen, die in der [Azure.Identity](https://docs.microsoft.com/dotnet/api/azure.identity?view=azure-dotnet)-Bibliothek definiert sind. Dies sind zwei Methoden, die häufig verwendet werden (auch zusammen in derselben Anwendung):
+
+* [InteractiveBrowserCredential](https://docs.microsoft.com/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet) ist für interaktive Anwendungen vorgesehen und kann zum Erstellen eines authentifizierten SDK-Clients verwendet werden.
+* [ManagedIdentityCredential](https://docs.microsoft.com/dotnet/api/azure.identity.managedidentitycredential?view=azure-dotnet) funktioniert hervorragend in Fällen, in denen Sie verwaltete Identitäten (MSI) benötigen, und eignet sich gut für das Arbeiten mit Azure Functions.
+
+### <a name="interactivebrowsercredential-method"></a>InteractiveBrowserCredential-Methode
+Die [InteractiveBrowserCredential](https://docs.microsoft.com/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet)-Methode ist für interaktive Anwendungen gedacht und startet einen Webbrowser für die Authentifizierung.
 
 Fügen Sie den folgenden Code hinzu, um die interaktiven Browseranmeldeinformationen zum Erstellen eines authentifizierten SDK-Clients zu verwenden:
 
@@ -79,7 +80,9 @@ try
 >[!NOTE]
 > Die Client-ID, die Mandanten-ID und die URL der Instanz können zwar wie oben dargestellt direkt in den Code eingefügt werden, es empfiehlt sich jedoch, den Code die Werte stattdessen aus einer Konfigurationsdatei oder Umgebungsvariablen abrufen zu lassen.
 
-Dann können Sie die Anmeldeinformationen für die verwaltete Identität wie folgt in einer Azure-Funktion verwenden:
+### <a name="managedidentitycredential-method"></a>ManagedIdentityCredential-Methode
+ Die [ManagedIdentityCredential](https://docs.microsoft.com/dotnet/api/azure.identity.managedidentitycredential?view=azure-dotnet)-Methode eignet sich für Fälle, in denen [verwaltete Identitäten (MSI)](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) benötigt werden, beispielsweise bei der Verwendung von Azure Functions.
+Sie können die Anmeldeinformationen für die verwaltete Identität wie folgt in einer Azure-Funktion verwenden:
 
 ```csharp
 ManagedIdentityCredential cred = new ManagedIdentityCredential(adtAppId);

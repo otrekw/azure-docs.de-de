@@ -1,20 +1,21 @@
 ---
-title: Künstliche Intelligenz
-description: LUIS verwendet künstliche Intelligenz für das Sprachverständnis Ihrer Daten basierend auf dem definierten Schema.
+title: Künstliche Intelligenz (KI)
+description: LUIS verwendet künstliche Intelligenz (KI) basierend auf dem definierten Schemafür das Sprachverständnis Ihrer Daten.
 ms.topic: conceptual
-ms.date: 06/29/2020
-ms.openlocfilehash: 4f145585e097a3cf6a2338dbab879f6fce07f71d
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.date: 08/07/2020
+ms.custom: cog-serv-seo-aug-2020
+ms.openlocfilehash: bdcede01ec6bab5f8b43d89ff40d588a011d5dfb
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85802638"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88751343"
 ---
 # <a name="artificial-intelligence-in-language-understanding-luis"></a>Künstliche Intelligenz in Language Understanding (LUIS)
 
-LUIS verwendet künstliche Intelligenz für das Verstehen natürlicher Sprache (Natural Language Understanding, NLU) Ihrer Daten basierend auf dem definierten Schema.
+LUIS verwendet künstliche Intelligenz (KI) für das Verstehen natürlicher Sprache (Natural Language Understanding, NLU) Ihrer Daten basierend auf dem definierten Schema.
 
-## <a name="natural-language-processing"></a>Verarbeitung natürlicher Sprache
+## <a name="natural-language-processing-nlp"></a>Verarbeitung natürlicher Sprache (Natural Language Processing, NLP)
 
 Das Verstehen natürlicher Sprache (NLU) ist ein spezifisches Unterthema der Verarbeitung natürlicher Sprache (Natural Language Processing, NLP).
 
@@ -31,14 +32,14 @@ Bei der Verarbeitung natürlicher Sprache handelt es sich um ein umfassenderes K
 ## <a name="natural-language-processing-in-luis"></a>Verarbeitung natürlicher Sprache in LUIS
 
 Die Verarbeitung natürlicher Sprache steht in der LUIS-App wie folgt zur Verfügung:
-* [Verstehen natürlicher Sprache](#natural-language-understanding) (LUIS)
+* [Verstehen natürlicher Sprache](#natural-language-processing-nlp) (LUIS)
 * Konfigurierbare Aspekte der Verarbeitung natürlicher Sprache in LUIS:
     * [Tokenisierung](luis-language-support.md#tokenization)
     * Morphologie durch [API-Einstellungen](luis-reference-application-settings.md) für diakritische Zeichen, Interpunktion und Wortformen
 * Vor- und Nachbearbeitung der Abfrageäußerung durch andere [Cognitive Services](../Welcome.md) wie beispielsweise:
     * [Übersetzung](../translator/translator-info-overview.md)
 
-## <a name="natural-language-understanding"></a>Verstehen natürlicher Sprache
+## <a name="natural-language-understanding-nlu"></a>Verstehen natürlicher Sprache (Natural Language Understanding, NLU)
 
 Das Verstehen natürlicher Sprache stellt die Möglichkeit dar, eine sprachliche Aussage in eine Darstellung _umzuwandeln_, die es Ihnen ermöglicht, Benutzer auf natürliche Weise zu verstehen. Das Verstehen natürlicher Sprache ist immer noch eine große Herausforderung und ist als Problem des Typs _AI-hard_ definiert.
 

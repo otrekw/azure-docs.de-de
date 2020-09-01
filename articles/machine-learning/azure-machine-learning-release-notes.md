@@ -9,12 +9,12 @@ ms.topic: reference
 ms.author: jmartens
 author: j-martens
 ms.date: 03/10/2020
-ms.openlocfilehash: d93e01cdec79f739367dc219d81028c1abc2d66e
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: b6a060f4487bed5b820126d7a886cf68fa76868a
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88508208"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88652065"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning: Anmerkungen zu dieser Version
 
@@ -1080,7 +1080,7 @@ Azure Machine Learning ist jetzt ein Ressourcenanbieter für Event Grid, Sie kö
 ### <a name="azure-machine-learning-sdk-for-python-v1072"></a>Azure Machine Learning SDK für Python v1.0.72
 
 + **Neue Features**
-  + Datasetüberwachungen wurden über das Paket [**azureml-datadrift**](https://docs.microsoft.com/python/api/azureml-datadrift) hinzugefügt, sodass Zeitreihendatasets auf Datendrift oder andere statistische Änderungen im Zeitverlauf überwacht werden können. Warnungen und Ereignisse können ausgelöst werden, wenn eine Drift erkannt wird oder andere Bedingungen für die Daten erfüllt werden. Ausführliche Informationen finden Sie in der [Dokumentation](https://aka.ms/datadrift).
+  + Datasetüberwachungen wurden über das Paket [**azureml-datadrift**](https://docs.microsoft.com/python/api/azureml-datadrift) hinzugefügt, sodass Zeitreihendatasets auf Datendrift oder andere statistische Änderungen im Zeitverlauf überwacht werden können. Warnungen und Ereignisse können ausgelöst werden, wenn eine Drift erkannt wird oder andere Bedingungen für die Daten erfüllt werden. Ausführliche Informationen finden Sie in der [Dokumentation](how-to-monitor-datasets.md).
   + Für Azure Machine Learning werden zwei neue Editionen (auch als „SKU“ bezeichnet) bekannt gegeben. Mit diesem Release können Sie nun einen Basic- oder Enterprise-Arbeitsbereich für Azure Machine Learning erstellen. Alle vorhandenen Arbeitsbereiche werden standardmäßig auf die Basic-Edition bezogen, und Sie können den Arbeitsbereich jederzeit im Azure-Portal oder in Studio aktualisieren. Im Azure-Portal können Sie einen Basic- oder einen Enterprise-Arbeitsbereich erstellen. Lesen Sie [die Dokumentation](https://docs.microsoft.com/azure/machine-learning/how-to-manage-workspace), um mehr zu erfahren. Im SDK kann die Edition Ihres Arbeitsbereichs mithilfe der sku-Eigenschaft Ihres Arbeitsbereichsobjekts ermittelt werden.
   + Wir haben auch Verbesserungen an Azure Machine Learning Compute vorgenommen. Sie können nun neben Diagnoseprotokollen zum Debuggen auch Metriken für Ihre Cluster (z. B. Gesamtknoten, ausgeführte Knoten, Gesamtkernkontingent) in Azure Monitor anzeigen. Außerdem können Sie derzeit ausgeführte oder in der Warteschlange befindliche Ausführungen in Ihrem Cluster anzeigen, z. B. die IP-Adressen der verschiedenen Knoten im Cluster. Sie können diese im Portal oder mit den entsprechenden Funktionen im SDK oder in der Befehlszeilenschnittstelle anzeigen.
 
@@ -1328,7 +1328,7 @@ Die Registerkarte „Experiment“ im [Portal für neue Arbeitsbereiche](https:/
   + **azureml-core**
     + Die Möglichkeit zum Abrufen der SAS-URL in das Modell im Speicher über das Modellobjekt wurde hinzugefügt. Beispiel: model.get_sas_url()
     + `run.get_details()['datasets']` wurde eingeführt, um mit der übermittelten Ausführung verknüpfte Datasets abzurufen.
-    + Die API `Dataset.Tabular.from_json_lines_files` wurde hinzugefügt, um ein TabularDataset aus JSON-Lines-Dateien zu erstellen. Weitere Informationen zu diesen Tabellendaten in den JSON-Lines-Dateien für TabularDataset finden Sie in der Dokumentation unter https://aka.ms/azureml-data.
+    + Die API `Dataset.Tabular.from_json_lines_files` wurde hinzugefügt, um ein TabularDataset aus JSON-Lines-Dateien zu erstellen. Weitere Informationen zu diesen Tabellendaten in den JSON Lines-Dateien für TabularDataset finden Sie in der Dokumentation in [diesem Artikel](how-to-create-register-datasets.md).
     + Der supported_vmsizes()-Funktion wurden zusätzliche VM-Größenfelder (Betriebssystemdatenträger, Anzahl von GPUs) hinzugefügt.
     + Der list_nodes()-Funktion wurden zusätzliche Felder hinzugefügt, um die Ausführung, die private und die öffentliche IP-Adresse, den Port usw. anzuzeigen.
     + Die Möglichkeit, bei der Clusterbereitstellung ein neues Feld über --remotelogin_port_public_access anzugeben, wurde hinzugefügt. Dieses kann je nachdem, ob der SSH-Port zum Zeitpunkt der Clustererstellung geöffnet oder geschlossen sein soll, aktiviert oder deaktiviert werden. Wenn keine Angabe erfolgt, öffnet oder schließt der Dienst den Port intelligent in Abhängigkeit davon, ob Sie den Cluster in einem VNET bereitstellen.
@@ -1367,8 +1367,8 @@ Die Registerkarte „Experiment“ im [Portal für neue Arbeitsbereiche](https:/
 ### <a name="azure-machine-learning-sdk-for-python-v1062"></a>Azure Machine Learning SDK für Python v1.0.62
 
 + **Neue Features**
-  + Das Merkmal `timeseries` für TabularDataset wurde eingeführt. Dieses Merkmal ermöglicht eine einfache Zeitstempelfilterung für Daten in einem TabularDataset, wie z. B. das Verwenden aller Daten aus einem Zeitbereich oder der neuesten Daten. Weitere Informationen zum Merkmal `timeseries` für TabularDataset erhalten Sie in der Dokumentation unter https://aka.ms/azureml-data oder im Beispielnotebook unter https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/timeseries-datasets/tabular-timeseries-dataset-filtering.ipynb.
-  + Training mit TabularDataset und FileDataset aktiviert. Unter https://aka.ms/dataset-tutorial finden Sie ein Beispielnotebook.
+  + Das Merkmal `timeseries` für TabularDataset wurde eingeführt. Dieses Merkmal ermöglicht eine einfache Zeitstempelfilterung für Daten in einem TabularDataset, wie z. B. das Verwenden aller Daten aus einem Zeitbereich oder der neuesten Daten.  Unter https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/timeseries-datasets/tabular-timeseries-dataset-filtering.ipynb finden Sie ein Beispielnotebook.
+  + Training mit TabularDataset und FileDataset aktiviert. 
 
   + **azureml-train-core**
       + In der PyTorch-Schätzung wurde die Unterstützung von `Nccl` und `Gloo` hinzugefügt.
@@ -1446,7 +1446,7 @@ Zum Zeitpunkt dieses Releases werden die folgenden Browser unterstützt: Chrome,
 ### <a name="azure-machine-learning-sdk-for-python-v1060"></a>Azure Machine Learning SDK für Python v1.0.60
 
 + **Neue Features**
-  + FileDataset wurde eingeführt, das auf einzelne oder mehrere Dateien in Ihren Datenspeichern oder öffentlichen URLs verweist. Die Dateien können ein beliebiges Format aufweisen. Mit FileDataset haben Sie die Möglichkeit, die Dateien herunterzuladen oder in Ihrer Computeinstanz bereitzustellen. Weitere Informationen zu FileDataset finden Sie unter https://aka.ms/file-dataset.
+  + FileDataset wurde eingeführt, das auf einzelne oder mehrere Dateien in Ihren Datenspeichern oder öffentlichen URLs verweist. Die Dateien können ein beliebiges Format aufweisen. Mit FileDataset haben Sie die Möglichkeit, die Dateien herunterzuladen oder in Ihrer Computeinstanz bereitzustellen. 
   + Hinzugefügte Pipeline-YAML-Unterstützung für PythonScript Step, Adla Step, Databricks Step, DataTransferStep und AzureBatch Step
 
 + **Fehlerbehebungen und Verbesserungen**

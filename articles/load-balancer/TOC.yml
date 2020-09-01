@@ -9,13 +9,15 @@
     - name: 'Erstellen eines öffentlichen Lastenausgleichs: Portal'
       href: quickstart-load-balancer-standard-public-portal.md
     - name: 'Erstellen eines öffentlichen Lastenausgleichs: PowerShell'
-      href: quickstart-create-standard-load-balancer-powershell.md
+      href: quickstart-load-balancer-standard-public-powershell.md
     - name: 'Erstellen eines öffentlichen Lastenausgleichs: Azure CLI'
       href: quickstart-load-balancer-standard-public-cli.md
     - name: 'Erstellen eines öffentlichen Lastenausgleichs: ARM-Vorlage'
       href: quickstart-load-balancer-standard-public-template.md
     - name: 'Erstellen eines internen Lastenausgleichs: Portal'
       href: quickstart-load-balancer-standard-internal-portal.md
+    - name: 'Erstellen eines internen Lastenausgleichs: PowerShell'
+      href: quickstart-load-balancer-standard-internal-powershell.md
     - name: 'Erstellen eines internen Lastenausgleichs: Azure CLI'
       href: quickstart-load-balancer-standard-internal-cli.md
   expanded: true

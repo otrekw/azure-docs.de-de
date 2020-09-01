@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 07/17/2020
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 990a2d5279c796f354055328e6968ea705ea10b2
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 581feff516e0f0cd820c94290d4aaa729cc4d3a4
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87873635"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88889939"
 ---
 # <a name="use-workspace-behind-a-firewall-for-azure-machine-learning"></a>Verwenden des Arbeitsbereichs hinter einer Firewall für Azure Machine Learning
 
@@ -24,9 +24,9 @@ In diesem Artikel erfahren Sie, wie Sie Azure Firewall konfigurieren, um den Zug
 
 Die Informationen in diesem Dokument basieren zwar auf [Azure Firewall](../firewall/tutorial-firewall-deploy-portal.md), können aber auch auf andere Firewallprodukte angewendet werden. Wenn Sie Fragen dazu haben, wie Sie die Kommunikation über die Firewall zulassen, lesen Sie die Dokumentation für die von Ihnen verwendete Firewall.
 
-## <a name="network-rules"></a>Netzwerkregeln
+## <a name="application-rules"></a>Anwendungsregeln
 
-Erstellen Sie in Ihrer Firewall eine Netzwerkregel, die Datenverkehr zu und von den Adressen in diesem Artikel zulässt.
+Erstellen Sie in Ihrer Firewall eine _Anwendungsregel_, die Datenverkehr zu und von den Adressen in diesem Artikel zulässt.
 
 > [!TIP]
 > Legen Sie beim Hinzufügen der Netzwerkregel das __Protokoll__ auf „Beliebig“ und die Ports auf `*` fest.
@@ -57,6 +57,7 @@ Die Hosts in diesem Abschnitt befinden sich im Besitz von Microsoft und stellen 
 | **mcr.microsoft.com** | Microsoft Container Registry für Basis-Docker-Images |
 | **your-acr-server-name.azurecr.io** | Nur erforderlich, wenn sich Ihre Azure Container Registry-Instanz hinter dem virtuellen Netzwerk befindet – in dieser Konfiguration wird ein privater Link von der Microsoft-Umgebung zur ACR-Instanz in Ihrem Abonnement erstellt. Verwenden Sie den ACR-Servernamen für Ihren Azure Machine Learning-Arbeitsbereich. |
 | **\*.notebooks.azure.net** | Wird von den Notebooks in Azure Machine Learning Studio benötigt |
+| **graph.windows.net** | Für Notebooks erforderlich |
 
 ## <a name="python-hosts"></a>Python-Hosts
 
@@ -78,6 +79,15 @@ Die Hosts in diesem Abschnitt werden zum Installieren von R-Paketen verwendet. S
 | **Hostname** | **Zweck** |
 | ---- | ---- |
 | **cloud.r-project.org** | Beim Installieren von CRAN-Paketen verwendet |
+
+## <a name="azure-government-region"></a>Azure Government-Region
+
+Erforderliche URLs für die Azure Government-Regionen.
+
+| **Hostname** | **Zweck** |
+| ---- | ---- |
+| **usgovarizona.api.ml.azure.us** | Die Region „US-Arizona“ |
+| **usgovvirginia.api.ml.azure.us** | Die Region „US-Virginia“ |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

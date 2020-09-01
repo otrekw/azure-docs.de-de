@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 03/09/2020
 ms.author: aahi
 ms.reviewer: jdesousa
-ms.openlocfilehash: 6e404c710a244f06676edf50c3f5c95a7d681e35
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 14fd7c2b034077d818d1a1224d3c4c12a7fc07bc
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79218528"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855642"
 ---
 # <a name="text-offsets-in-the-text-analytics-api-output"></a>Textversätze in der Ausgabe der Textanalyse-API
 
@@ -39,6 +39,16 @@ Versätze können Probleme verursachen, wenn zeichenbasierte substring-Methoden 
 Verwenden Sie in .NET ggf. die [StringInfo](https://docs.microsoft.com/dotnet/api/system.globalization.stringinfo?view=netframework-4.8)-Klasse. Sie ermöglicht es Ihnen, eine Zeichenfolge nicht als einzelne Zeichenobjekte, sondern als eine Reihe von Textelementen zu verarbeiten. Sie können auch nach Graphem-Splitter-Bibliotheken in Ihrer bevorzugten Softwareumgebung suchen. 
 
 Die Textanalyse-API gibt diese Textelemente aus Gründen der Einfachheit ebenfalls zurück.
+
+## <a name="offsets-in-api-version-31-preview"></a>Offsets in API-Version 3.1-preview
+
+Ab API-Version 3.1-preview.1 unterstützen alle Textanalyse-API-Endpunkte, die einen Offset zurückgeben, den `stringIndexType`-Parameter. Mit diesem Parameter werden die `offset`- und `length`-Attribute in der API-Ausgabe an das angeforderte Zeichenfolgeniterationsschema angepasst. Derzeit werden drei Typen unterstützt:
+
+1. `textElement_v8` (Standardwert): Durchläuft Grapheme gemäß der Definition des [Unicode 8.0.0](https://unicode.org/versions/Unicode8.0.0)-Standards.
+2. `unicodeCodePoint`: Durchläuft [Unicode-Codepunkte](http://www.unicode.org/versions/Unicode13.0.0/ch02.pdf#G25564), das Standardschema für Python 3.
+3. `utf16CodeUnit`: Durchläuft [UTF-16-Codeeinheiten](https://unicode.org/faq/utf_bom.html#UTF16), das Standardschema für JavaScript, Java und .NET.
+
+Wenn der angeforderte `stringIndexType` der gewünschten Programmierumgebung entspricht, kann die Extraktion von Substrings mithilfe von Substringstandard- oder -slicemethoden erfolgen. 
 
 ## <a name="see-also"></a>Weitere Informationen
 

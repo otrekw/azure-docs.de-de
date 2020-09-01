@@ -3,49 +3,52 @@ title: Verwenden von von Azure verwalteten Identitäten zum Erstellen von Umgebu
 description: Erfahren Sie, wie Sie verwaltete Identitäten in Azure verwenden, um Umgebungen in einem Lab in Azure DevTest Labs bereitzustellen.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 4d4df9cab17289eba21caf9d7c88eb37626b3349
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e5bac4210afee6db1c7617dac1cd6d2ff9149439
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85478874"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88718974"
 ---
 # <a name="use-azure-managed-identities-to-deploy-environments-in-a-lab"></a>Verwenden von verwalteten Azure-Identitäten zum Bereitstellen von Umgebungen in einem Lab 
+
 Als Lab-Besitzer können Sie eine verwaltete Identität verwenden, um Umgebungen in einem Lab bereitzustellen. Diese Funktion ist in Szenarien hilfreich, in denen die Umgebung Verweise auf Azure-Ressourcen wie Schlüsseltresore, freigegebene Imagekataloge und Netzwerke enthält oder besitzt, die außerhalb der Ressourcengruppe der Umgebung liegen. Sie ermöglicht die Erstellung von Sandboxumgebungen, die nicht auf die Ressourcengruppe dieser Umgebung beschränkt sind.
 
 > [!NOTE]
 > Zurzeit wird eine einzige vom Benutzer zugewiesene Identität pro Lab unterstützt. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
+
 - [Erstellen, Auflisten, Löschen oder Zuweisen einer Rolle zu einer vom Benutzer zugewiesenen verwalteten Identität über das Azure-Portal](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md). 
+    
+    Stellen Sie sicher, dass Ihre verwaltete Identität in der gleichen Region und im gleichen Abonnement wie ihr Lab erstellt wurde. Die verwaltete Identität muss sich nicht in derselben Ressourcengruppe befinden.
 
 ## <a name="use-azure-portal"></a>Verwenden des Azure-Portals
+
 In diesem Abschnitt verwenden Sie als Lab-Besitzer das Azure-Portal, um dem Lab eine vom Benutzer verwaltete Identität hinzuzufügen. 
 
-1. Wählen Sie auf der Seite des Labs die Option **Konfiguration und Richtlinien** aus. 
-1. Wählen Sie im Abschnitt **Einstellungen** die Option **Identität** aus.
-1. Wählen Sie auf der Symbolleiste **Hinzufügen** aus, um eine vom Benutzer zugewiesene Identität hinzuzufügen. 
-1. Wählen Sie eine **Identität** aus einer voraufgefüllten Dropdownliste aus.
-1. Klicken Sie auf **OK**.
-
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+1. Suchen Sie nach **DevTest-Labs**.
+1. Wählen Sie in der Liste der Labs das gewünschte Lab aus.
+1. Wählen Sie **Konfiguration und Richtlinien** -> **Identität (Vorschau)** aus. 
+1. Wählen Sie die Registerkarte **Vom Benutzer zugewiesen** aus, um eine vom Benutzer zugewiesene Identität hinzuzufügen.
+1. Klicken Sie auf **Hinzufügen**.
+1. Wählen Sie einen vorhandenen Benutzer aus der Dropdownliste aus, den Sie erstellt haben und/oder auf den Sie Zugriff besitzen.
+ 
     ![Hinzufügen einer vom Benutzer verwalteten Identität](./media/use-managed-identities-environments/add-user-managed-identity.png)
-2. Die hinzugefügte vom Benutzer verwaltete Identität wird in der Liste angezeigt. 
+1. Klicken Sie oben auf der Seite auf **Speichern**.
 
-    ![Vom Benutzer verwaltete Identität in der Liste](./media/use-managed-identities-environments/identity-in-list.png)
-
-Nach dem Speichern verwendet das Lab diese Identität während der Bereitstellung aller Lab-Umgebungen. Sie können auch auf die Identitätsressource in Azure zugreifen, indem Sie die Identität in der Liste auswählen. 
+    Nach dem Speichern verwendet das Lab diese Identität während der Bereitstellung aller Lab-Umgebungen. Sie können auch auf die Identitätsressource in Azure zugreifen, indem Sie die Identität in der Liste auswählen. 
 
 Der Lab-Besitzer muss beim Bereitstellen einer Umgebung nichts Besonderes tun, solange die dem Lab hinzugefügte Identität über Berechtigungen für die externen Ressourcen verfügt, auf die die Umgebung zugreifen muss. 
 
 Wenn Sie die dem Lab zugewiesene vom Benutzer verwaltete Identität ändern möchten, entfernen Sie zuerst die dem Lab angefügte Identität, und fügen Sie dann dem Lab eine weitere hinzu. Um eine dem Lab angefügte Identität zu entfernen, wählen Sie **... (Auslassungszeichen)** aus, und klicken Sie auf **Entfernen**. 
 
-![Vom Benutzer verwaltete Identität in der Liste](./media/use-managed-identities-environments/replace-identity.png)  
-
 ## <a name="use-api"></a>Verwenden der API
 
 1. Notieren Sie sich nach dem Erstellen einer Identität die Ressourcen-ID dieser Identität. Sie sollte in etwa wie das folgende Beispiel aussehen: 
 
-    [https://login.microsoftonline.com/consumers/](`/subscriptions/0000000000-0000-0000-0000-00000000000000/resourceGroups/<RESOURCE GROUP NAME> /providers/Microsoft.ManagedIdentity/userAssignedIdentities/<NAME of USER IDENTITY>`).
+    `/subscriptions/0000000000-0000-0000-0000-00000000000000/resourceGroups/<RESOURCE GROUP NAME> /providers/Microsoft.ManagedIdentity/userAssignedIdentities/<NAME of USER IDENTITY>`.
 1. Führen Sie eine PUT HTTPS-Methode aus, um dem Lab eine neue `ServiceRunner`-Ressource hinzuzufügen, ähnlich wie im folgenden Beispiel. Die Service Runner-Ressource ist eine Proxyressource zum Verwalten und Steuern verwalteter Identitäten in DevTest Labs. Der Name des Service Runners kann ein beliebiger gültiger Name sein, aber es wird empfohlen, dass Sie den Namen der verwalteten Identitätsressource verwenden. 
  
     ```json
