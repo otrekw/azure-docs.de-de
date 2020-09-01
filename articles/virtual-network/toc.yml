@@ -97,7 +97,11 @@
     - name: Sicherheit
       items:
         - name: Netzwerksicherheitsgruppen
-          href: security-overview.md
+          items:
+            - name: Übersicht
+              href: security-overview.md
+            - name: Funktionsweise
+              href: network-security-group-how-it-works.md
         - name: Anwendungssicherheitsgruppen
           href: application-security-groups.md
         - name: Diensttags
