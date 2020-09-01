@@ -6,14 +6,14 @@ author: vhorne
 ms.service: application-gateway
 ms.topic: overview
 ms.custom: mvc
-ms.date: 03/04/2020
+ms.date: 08/26/2020
 ms.author: victorh
-ms.openlocfilehash: 4a4395801218409fe77d1081689ba80b495fcfad
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7ccc83a61ac4ffe6e1bb6767a9c611bd3fcc0edf
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78302575"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892778"
 ---
 # <a name="what-is-azure-application-gateway"></a>Was ist Azure Application Gateway?
 
@@ -40,10 +40,14 @@ Informationen zu den Preisen von Application Gateway finden Sie unter [Applicati
 
 SLA-Informationen zu Application Gateway finden Sie unter [SLA für Application Gateway](https://azure.microsoft.com/support/legal/sla/application-gateway/v1_2/).
 
+## <a name="whats-new"></a>Neuigkeiten
+
+Informationen zu den Neuerungen in Azure Application Gateway finden Sie unter [Azure-Updates](https://azure.microsoft.com/updates/?category=networking&query=Application%20Gateway).
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 Je nach Ihren Anforderungen und der vorhandenen Umgebung können Sie eine Application Gateway-Testinstanz über das Azure-Portal, mithilfe von Azure PowerShell oder unter Verwendung der Azure-Befehlszeilenschnittstelle erstellen.
 
 - [Schnellstart: Weiterleiten von Webdatenverkehr per Azure Application Gateway – Azure-Portal](quick-create-portal.md)
-- [Schnellstart: Weiterleiten von Webdatenverkehr per Azure Application Gateway – Azure PowerShell](quick-create-powershell.md)
-- [Schnellstart: Weiterleiten von Webdatenverkehr per Azure Application Gateway – Azure CLI](quick-create-cli.md)
+- [Quickstart: Direct web traffic with Azure Application Gateway – Azure PowerShell](quick-create-powershell.md) (Schnellstart: Weiterleiten von Webdatenverkehr per Azure Application Gateway – Azure PowerShell)
+- [Schnellstart: Weiterleiten von Webdatenverkehr per Azure Application Gateway: Azure CLI](quick-create-cli.md)

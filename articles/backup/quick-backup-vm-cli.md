@@ -5,12 +5,12 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 01/31/2019
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: b263d5394d642301c5fc53e169186e4aea56ecab
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 2bd3487e58f204ba7ada9320b50d4b87538ae987
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87497459"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826547"
 ---
 # <a name="back-up-a-virtual-machine-in-azure-with-the-cli"></a>Sichern eines virtuellen Computers in Azure per CLI
 
@@ -71,7 +71,7 @@ az backup protection enable-for-vm \
 ```
 
 > [!IMPORTANT]
-> Wenn Sie die Sicherung mithilfe der CLI für mehrere virtuelle Computer gleichzeitig aktivieren, dürfen pro Richtlinie maximal 100 virtuelle Computer zugeordnet sein. Dies wird als [bewährte Methode](./backup-azure-vm-backup-faq.md#is-there-a-limit-on-number-of-vms-that-can-beassociated-with-the-same-backup-policy) empfohlen. Derzeit blockiert der PS-Client bei mehr als 100 virtuellen Computern die Aktivierung nicht explizit, diese Überprüfung soll jedoch in Zukunft hinzugefügt werden.
+> Wenn Sie die Sicherung mithilfe der CLI für mehrere virtuelle Computer gleichzeitig aktivieren, dürfen pro Richtlinie maximal 100 virtuelle Computer zugeordnet sein. Dies wird als [bewährte Methode](./backup-azure-vm-backup-faq.md#is-there-a-limit-on-number-of-vms-that-can-beassociated-with-the-same-backup-policy) empfohlen. Zurzeit blockiert der PowerShell-Client die Aktivierung bei mehr als 100 virtuellen Computern nicht explizit. Diese Überprüfung soll aber in Zukunft hinzugefügt werden.
 
 ## <a name="start-a-backup-job"></a>Starten eines Sicherungsauftrags
 

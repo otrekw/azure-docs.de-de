@@ -5,16 +5,16 @@ author: vhorne
 ms.service: firewall
 services: firewall
 ms.topic: overview
-ms.custom: mvc
-ms.date: 08/10/2020
+ms.custom: mvc, contperfq1
+ms.date: 08/25/2020
 ms.author: victorh
 Customer intent: As an administrator, I want to evaluate Azure Firewall so I can determine if I want to use it.
-ms.openlocfilehash: a496f91621199dce6dc8e49963938ab0fafe5227
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 914f267edd5a8168fc11af7186e322c306718a4a
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88053200"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88852635"
 ---
 # <a name="what-is-azure-firewall"></a>Was ist Azure Firewall?
 
@@ -54,7 +54,8 @@ Netzwerkfilterregeln für andere Protokolle als TCP/UDP (z.B. ICMP) funktioniere
 |Für die Metrik „NetworkRuleHit“ fehlt eine Protokolldimension.|Die Metrik „ApplicationRuleHit“ ermöglicht protokollbasiertes Filtern, diese Funktion fehlt jedoch in der entsprechenden Metrik vom Typ „NetworkRuleHit“.|Es wird bereits nach einer Lösung gesucht.|
 |NAT-Regeln mit Ports zwischen 64000 und 65535 werden nicht unterstützt.|Azure Firewall lässt beliebige Ports im Bereich 1-65535 in Netzwerk- und Anwendungsregeln zu. NAT-Regeln unterstützen jedoch nur Ports im Bereich 1-63999.|Dies ist eine aktuelle Beschränkung.
 |Konfigurationsaktualisierungen können durchschnittlich fünf Minuten dauern.|Eine Aktualisierung der Azure Firewall-Konfiguration kann durchschnittlich zwischen drei und fünf Minuten dauern, und parallele Aktualisierungen werden nicht unterstützt.|Es wird bereits nach einer Lösung gesucht.|
-|Azure Firewall verwendet SNI-TLS-Header zum Filtern von HTTPS- und MSSQL-Datenverkehr.|Wenn die Browser- oder Serversoftware die Erweiterung Server Name Indication (SNI) nicht unterstützt, können Sie keine Verbindung über Azure Firewall herstellen.|Wenn die Browser- oder Serversoftware SNI nicht unterstützt, können Sie möglicherweise die Verbindung mithilfe einer Netzwerkregel anstelle einer Anwendungsregel steuern. Eine Liste der Software, die SNI unterstützt, finden Sie unter [Server Name Indication](https://wikipedia.org/wiki/Server_Name_Indication).
+|Azure Firewall verwendet SNI-TLS-Header zum Filtern von HTTPS- und MSSQL-Datenverkehr.|Wenn die Browser- oder Serversoftware die Erweiterung Server Name Indication (SNI) nicht unterstützt, können Sie keine Verbindung über Azure Firewall herstellen.|Wenn die Browser- oder Serversoftware SNI nicht unterstützt, können Sie möglicherweise die Verbindung mithilfe einer Netzwerkregel anstelle einer Anwendungsregel steuern. Eine Liste der Software, die SNI unterstützt, finden Sie unter [Server Name Indication](https://wikipedia.org/wiki/Server_Name_Indication).|
+|Benutzerdefiniertes DNS (Vorschau) kann nicht mit Tunnelerzwingung verwendet werden.|Ist Tunnelerzwingung aktiviert, funktioniert benutzerdefiniertes DNS (Vorschau) nicht.|Es wird bereits nach einer Lösung gesucht.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: overview
 ms.date: 08/05/2020
 ms.author: pafarley
-ms.openlocfilehash: a087faee45b8725bc596a5faa92536741d8cd569
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 0df61c2ee42d468562efd67a2a66a90a5e4fda53
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836903"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88723559"
 ---
 # <a name="what-is-form-recognizer"></a>Was ist die Formularerkennung?
 
@@ -24,7 +24,7 @@ Die Azure-Formularerkennung ist ein kognitiver Dienst, der mithilfe von Machine 
 
 Die Formularerkennung besteht aus den folgenden Diensten:
 * **Benutzerdefinierte Modelle**: Extrahieren von Schlüssel-Wert-Paaren und Tabellendaten aus Formularen. Diese Modelle werden mit Ihren eigenen Daten trainiert, sodass Sie auf Ihre Formulare zugeschnitten sind.
-* **Vordefiniertes Belegmodell**: Extrahieren von Daten aus USA-Verkaufsbelegen mithilfe eines vordefinierten Modells.
+* **Vordefinierte Modelle**: Extrahieren von eindeutigen Formulartypen mithilfe vordefinierter Modelle. Derzeit sind vordefinierte Modelle für Verkaufsbelege und Visitenkarten in englischer Sprache verfügbar.
 * **Layout-API**: Extrahieren von Text- und Tabellenstrukturen zusammen mit ihren Begrenzungsrahmenkoordinaten aus Dokumenten.
 
 <!-- add diagram -->
@@ -45,9 +45,18 @@ Wenn Sie mit beschrifteten Daten trainieren, extrahiert das Modell relevante Wer
 
 Die Formularerkennung verwendet die [Layout-API](#layout-api), um die erwarteten Größen und Positionen von gedruckten und handschriftlichen Textelementen zu erlernen. Anschließend werden benutzerdefinierte Beschriftungen verwendet, um die Schlüssel-Wert-Zuordnungen in den Dokumenten zu erlernen. Sie sollten fünf manuell beschriftete Formulare desselben Typs verwenden, um mit dem Trainieren eines neuen Modells zu beginnen, und weitere beschriftete Daten nach Bedarf hinzufügen, um die Modellgenauigkeit zu verbessern.
 
-## <a name="prebuilt-receipt-model"></a>Vordefiniertes Belegmodell
+## <a name="prebuilt-models"></a>Vordefinierte Modelle
 
-Die Formularerkennung umfasst auch ein Modell zum Lesen englischsprachiger Verkaufsbelege aus den USA &mdash; des Typs, der von Restaurants, Tankstellen, Einzelhandel usw. verwendet wird ([Beispielbeleg](./media/contoso-receipt-small.png)). Dieses Modell extrahiert wichtige Informationen wie Zeitpunkt und Datum der Transaktion, Händlerinformationen, Steuer- und Summenbeträge und mehr. Darüber hinaus wird das vorgefertigte Belegmodell dazu trainiert, den gesamten Text eines Belegs zu erkennen und zurückzugeben.
+Die Formularerkennung enthält außerdem vordefinierte Modelle für eindeutige Formulartypen.
+### <a name="prebuilt-receipt-model"></a>Vordefiniertes Belegmodell
+Das vordefinierte Belegmodell wird zum Lesen englischsprachiger Verkaufsbelege aus Australien, Kanada, Großbritannien, Indien und den USA verwendet – des Typs, der von Restaurants, Tankstellen, Einzelhandel usw. verwendet wird. Dieses Modell extrahiert wichtige Informationen wie Zeitpunkt und Datum der Transaktion, Händlerinformationen, Steuer- und Summenbeträge, Einzelposten und mehr. Darüber hinaus wird das vorgefertigte Belegmodell dazu trainiert, den gesamten Text eines Belegs zu erkennen und zurückzugeben. 
+
+![Beispielbeleg](./media/contoso-receipt-small.png)
+
+### <a name="prebuilt-business-cards-model"></a>Vordefiniertes Visitenkartenmodell
+Mit dem Visitenkartenmodell können Sie Informationen wie Name, Position, Adresse, E-Mail-Adresse, Unternehmen und Telefonnummern einer Person aus englischsprachigen Visitenkarten extrahieren. 
+
+![Beispielvisitenkarte](./media/business-card-english.jpg)
 
 ## <a name="layout-api"></a>Layout-API
 
@@ -90,7 +99,7 @@ Sehen Sie sich die [Referenzdokumentation zur REST-API](https://westus2.dev.cogn
 
 [!INCLUDE [input requirements](./includes/input-requirements.md)]
 
-### <a name="prebuilt-receipt-model"></a>Vordefiniertes Belegmodell
+### <a name="prebuilt"></a>Vordefiniert
 
 Die Eingabeanforderungen für das Belegmodell unterscheiden sich geringfügig.
 

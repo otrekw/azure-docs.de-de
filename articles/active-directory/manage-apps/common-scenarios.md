@@ -15,12 +15,12 @@ ms.date: 03/02/2019
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6b81e792d3b3bf491b281e09c00f48a7ad56fa47
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8ce3819ff1f9b0c61f7738f90ff17c2798fe888b
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84763634"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88642111"
 ---
 # <a name="centralize-application-management-with-azure-ad"></a>Zentralisieren der Anwendungsverwaltung mit Azure AD
 
@@ -43,7 +43,7 @@ Kennwortverwaltung ist nicht mehr erforderlich. Greifen Sie mit ihren Unternehme
 |Funktion  | BESCHREIBUNG | Empfehlung |
 |---------|---------|---------|
 |SSO|Auf Standards basierendes Verbund-SSO mit vertrauenswürdigen Branchenstandards.|Verwenden Sie immer [SAML/OIDC](https://docs.microsoft.com/azure/active-directory/manage-apps/isv-choose-multi-tenant-federation) zum Aktivieren von SSO, wenn Ihre Anwendung dies unterstützt.|
-|Zugriffsbereich|Stellen Sie für Ihre Benutzer einen einfachen zentralen Ort zur Verfügung, über den diese alle Anwendungen ermitteln und darauf zugreifen können. Steigern Sie ihre Produktivität mit Self-Service-Funktionen wie dem Anfordern des Zugriffs auf Apps und Gruppen oder dem Verwalten des Zugriffs auf Ressourcen im Namen von anderen Personen.| Stellen Sie den [Zugriffsbereich](https://docs.microsoft.com/azure/active-directory/manage-apps/access-panel-deployment-plan) in Ihrer Organisation bereit, nachdem Sie die Apps in Azure AD für SSO integriert haben.|
+|Meine Apps|Stellen Sie für Ihre Benutzer einen einfachen zentralen Ort zur Verfügung, über den diese alle Anwendungen ermitteln und darauf zugreifen können. Steigern Sie ihre Produktivität mit Self-Service-Funktionen wie dem Anfordern des Zugriffs auf Apps und Gruppen oder dem Verwalten des Zugriffs auf Ressourcen im Namen von anderen Personen.| Stellen Sie [Meine Apps](https://docs.microsoft.com/azure/active-directory/manage-apps/access-panel-deployment-plan) in Ihrer Organisation bereit, nachdem Sie die Apps in Azure AD für SSO integriert haben.|
 
 ## <a name="scenario-2-automate-provisioning-and-deprovisioning"></a>Szenario 2: Automatisieren der Bereitstellung und Aufhebung der Bereitstellung 
 

@@ -1,22 +1,23 @@
 ---
-title: Exportieren eines Jupyter Notebook-Projekts aus Azure Notebooks (Vorschauversion)
-description: Es wird beschrieben, wie Sie schnell ein Jupyter Notebook-Projekt exportieren können.
+title: Exportieren eines Jupyter Notebook-Projekts aus Azure Notebooks (Vorschauversion)
+description: Hier wird beschrieben, wie Sie schnell ein Jupyter Notebook-Projekt exportieren.
 ms.topic: quickstart
 ms.date: 06/29/2020
-ms.openlocfilehash: ad37db7e9bdb1251a3e62bd567960979f556b489
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a2e76f2c1956df4d0de59cfb429dc1c9dce85a62
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85832031"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892098"
 ---
-# <a name="quickstart-export-a-jupyter-notebook-project-in-azure-notebooks-preview"></a>Schnellstart: Exportieren eines Jupyter Notebook-Projekts in Azure Notebooks (Vorschauversion)
+# <a name="quickstart-export-a-jupyter-notebook-project-in-azure-notebooks-preview"></a>Schnellstart: Exportieren eines Jupyter Notebook-Projekts in Azure Notebooks (Vorschauversion)
 
 [!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
-In dieser Schnellstartanleitung laden Sie ein Azure Notebooks-Projekt zur Verwendung in anderen Jupyter Notebook-Lösungen herunter. 
+In dieser Schnellstartanleitung laden Sie ein Azure Notebooks-Projekt zur Verwendung in anderen Jupyter Notebook-Lösungen herunter. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
+
 Ein vorhandenes Azure Notebooks-Projekt.
 
 ## <a name="export-an-azure-notebooks-project"></a>Exportieren eines Azure Notebooks-Projekts
@@ -49,7 +50,7 @@ Wenn Sie eine Umgebung erstellen möchten, die der Umgebung von Azure Notebooks 
 
 ## <a name="use-notebooks-in-visual-studio-code"></a>Verwenden von Notebooks in Visual Studio Code
 
-[VS Code](https://code.visualstudio.com/) ist ein kostenloser Code-Editor, den Sie lokal oder über eine Remote-Computeumgebung nutzen können. In Kombination mit der Python-Erweiterung ergibt sich eine vollständige Umgebung für die Python-Entwicklung, einschließlich einer umfassenden nativen Benutzeroberfläche für die Verwendung von Jupyter Notebooks. 
+[VS Code](https://code.visualstudio.com/) ist ein kostenloser Code-Editor, den Sie lokal oder über eine Remote-Computeumgebung nutzen können. In Kombination mit der Python-Erweiterung ergibt sich eine vollständige Umgebung für die Python-Entwicklung, einschließlich einer umfassenden nativen Benutzeroberfläche für die Verwendung von Jupyter Notebook-Instanzen. 
 
 ![Jupyter Notebook-Unterstützung für VS Code](media/vs-code-jupyter-notebook.png)
 

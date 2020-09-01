@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: overview
-ms.date: 08/15/2020
+ms.date: 08/24/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.custom: contperfq1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 39c9522362ca6710fae5dee5d831e63cc36a3950
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 0f6ec9c1fb5ae359ca88b48dea97c6a00c0f2b40
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88509109"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815180"
 ---
 # <a name="what-is-identity-protection"></a>Was ist Identity Protection?
 
@@ -54,6 +54,7 @@ Identity Protection identifiziert Risiken in folgenden Klassifizierungen:
 | Ungewöhnliche Anmeldeeigenschaften | Anmeldung mit Eigenschaften, die für den angegebenen Benutzer in letzter Zeit nicht verwendet wurden |
 | Mit Schadsoftware verknüpfte IP-Adresse | Anmeldung von einer mit Schadsoftware verknüpften IP-Adresse |
 | Kompromittierte Anmeldeinformationen | Diese Risikoerkennung gibt an, dass die gültigen Anmeldeinformationen des Benutzers kompromittiert wurden. |
+| Kennwortspray | Gibt an, dass für mehrere Benutzernamen unter Verwendung allgemeiner Kennwörtern einheitliche Brute-Force-Angriff ausgeführt werden. |
 | Azure AD Threat Intelligence | Auf der Grundlage der internen und externen Quellen für Bedrohungsdaten von Microsoft wurde ein bekanntes Angriffsmuster identifiziert |
 
 Weitere Informationen zu diesen Risiken sowie zu deren Berechnung finden Sie im Artikel [Was bedeutet Risiko?](concept-identity-protection-risks.md).

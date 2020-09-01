@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 05/27/2020
 ms.author: pafarley
 ms.custom: devx-track-python
-ms.openlocfilehash: a863d8ccc157272ab736201615fb079eaf7f5dbc
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: a93ec3157900a83e799f845e868546cbf5ef6ca9
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88522826"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88823862"
 ---
 # <a name="quickstart-extract-receipt-data-using-the-form-recognizer-rest-api-with-python"></a>Schnellstart: Extrahieren von Verkaufsbelegdaten mithilfe der Formularerkennungs-REST-API mit Python
 
@@ -27,10 +27,10 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 Für diesen Schnellstart benötigen Sie Folgendes:
 - Wenn Sie das Beispiel lokal ausführen möchten, muss [Python](https://www.python.org/downloads/) installiert sein.
-- Eine URL für ein Bild eines Verkaufsbelegs. Für diesen Schnellstart können Sie ein [Beispielbild](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-REST-api-samples/master/curl/form-recognizer/contoso-allinone.jpg) verwenden.
+- Ein Bild eines Verkaufsbelegs. Für diesen Schnellstart können Sie ein [Beispielbild](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-REST-api-samples/master/curl/form-recognizer/contoso-allinone.jpg) verwenden.
 
 > [!NOTE]
-> In dieser Schnellstartanleitung wird ein Remotebeleg verwendet, auf den über eine URL zugegriffen wird. Informationen zum Verwenden von lokalen Dateien finden Sie in der [Referenzdokumentation](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeReceiptAsync).
+> In dieser Schnellstartanleitung wird eine lokale Datei verwendet. Informationen zur Verwendung eines Belegbilds, auf das über eine URL zugegriffen wird, finden Sie in der [Referenzdokumentation](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeReceiptAsync).
 
 ## <a name="create-a-form-recognizer-resource"></a>Erstellen einer Formularerkennungsressource
 
@@ -41,10 +41,12 @@ Für diesen Schnellstart benötigen Sie Folgendes:
 Um mit der Analyse eines Verkaufsbelegs zu beginnen, rufen Sie die **[Analyze Receipt](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeReceiptAsync)** -API mit dem folgenden Python-Skript auf. Nehmen Sie die folgenden Änderungen vor, bevor Sie das Skript ausführen:
 
 1. Ersetzen Sie `<Endpoint>` durch den Endpunkt, den Sie mit Ihrem Abonnement für die Formularerkennung erhalten haben.
-1. Ersetzen Sie `<your receipt URL>` mit der URL-Adresse eines Verkaufsbelegbilds.
+1. Ersetzen Sie `<path to your receipt>` durch den Pfad zu Ihrem lokalen Formulardokument.
 1. Ersetzen Sie `<subscription key>` durch den Abonnementschlüssel, den Sie im vorherigen Schritt kopiert haben.
 
-    ```python
+# <a name="v20"></a>[v2.0](#tab/v2-0)
+
+```python
     ########### Python Form Recognizer Async Receipt #############
 
     import json
@@ -80,7 +82,54 @@ Um mit der Analyse eines Verkaufsbelegs zu beginnen, rufen Sie die **[Analyze Re
     except Exception as e:
         print("POST analyze failed:\n%s" % str(e))
         quit()
-    ```
+```
+    
+# <a name="v21-preview1"></a>[v2.1-preview.1](#tab/v2-1)    
+```python
+    ########### Python Form Recognizer Async Receipt #############
+
+    import json
+    import time
+    from requests import get, post
+    
+    # Endpoint URL
+    endpoint = r"<Endpoint>"
+    apim_key = "<subscription key>"
+    post_url = endpoint + "/formrecognizer/v2.1-preview.1/prebuilt/receipt/analyze"
+    source = r"<path to your receipt>"
+    
+    headers = {
+        # Request headers
+        'Content-Type': '<file type>',
+        'Ocp-Apim-Subscription-Key': apim_key,
+    }
+    
+    params = {
+        "includeTextDetails": True
+        "locale": "en-US"
+    }
+    
+    with open(source, "rb") as f:
+        data_bytes = f.read()
+    
+    try:
+        resp = post(url = post_url, data = data_bytes, headers = headers, params = params)
+        if resp.status_code != 202:
+            print("POST analyze failed:\n%s" % resp.text)
+            quit()
+        print("POST analyze succeeded:\n%s" % resp.headers)
+        get_url = resp.headers["operation-location"]
+    except Exception as e:
+        print("POST analyze failed:\n%s" % str(e))
+        quit()
+```
+
+> [!NOTE]
+> **Spracheneingabe** 
+>
+> Der Vorgang zum Analysieren des Belegs in Release 2.1 enthält einen optionalen Anforderungsparameter für die Sprache bzw. das Gebietsschema des Belegs. Zu den unterstützten Gebietsschemas gehören u. a. folgende: en-AU, en-CA, en-GB, en-IN, en-US. 
+
+---
 
 1. Speichern Sie den Code in einer Datei mit der Erweiterung „.py“. Beispiel: *form-recognizer-receipts.py*.
 1. Öffnen Sie ein Eingabeaufforderungsfenster.
@@ -88,9 +137,15 @@ Um mit der Analyse eines Verkaufsbelegs zu beginnen, rufen Sie die **[Analyze Re
 
 Sie erhalten eine `202 (Success)`-Antwort, die einen **Operation-Location**-Header umfasst, den das Skript an der Konsole ausgibt. Dieser Header enthält eine Vorgangs-ID, mit der Sie den Status des asynchronen Vorgangs abfragen und die Ergebnisse abrufen können. Im folgenden Beispielwert ist die Zeichenfolge nach `operations/` die Vorgangs-ID.
 
+# <a name="v20"></a>[v2.0](#tab/v2-0)    
 ```console
 https://cognitiveservice/formrecognizer/v2.0/prebuilt/receipt/operations/54f0b076-4e38-43e5-81bd-b85b8835fdfb
 ```
+# <a name="v21-preview1"></a>[v2.1-preview.1](#tab/v2-1)    
+```console
+https://cognitiveservice/formrecognizer/v2.1-preview.1/prebuilt/receipt/operations/54f0b076-4e38-43e5-81bd-b85b8835fdfb
+```
+---
 
 ## <a name="get-the-receipt-results"></a>Abrufen der Verkaufsbelegergebnisse
 
@@ -128,13 +183,13 @@ while n_try < n_tries:
 
 ### <a name="examine-the-response"></a>Untersuchen der Antwort
 
-Das Skript gibt Antworten an der Konsole aus, bis der **Analyze Receipt**-Vorgang abgeschlossen ist. Anschließend werden die extrahierten Textdaten im JSON-Format ausgegeben. Das Feld `"recognitionResults"` enthält jede Textzeile, die aus dem Beleg extrahiert wurde, und das Feld `"understandingResults"` enthält Schlüssel-/Wertinformationen für die wichtigsten Teile des Belegs.
+Das Skript gibt Antworten an der Konsole aus, bis der **Analyze Receipt**-Vorgang abgeschlossen ist. Anschließend werden die extrahierten Textdaten im JSON-Format ausgegeben. Das Feld `"readResults"` enthält jede Textzeile, die aus dem Beleg extrahiert wurde, und das Feld `"documentResults"` enthält Schlüssel-/Wertinformationen für die wichtigsten Teile des Belegs.
 
 Vergleichen Sie das folgende Bild des Belegs mit der entsprechenden JSON-Ausgabe. Die Ausgabe wurde zur besseren Lesbarkeit gekürzt.
 
 ![Ein Verkaufsbeleg vom Contoso-Laden](../media/contoso-allinone.jpg)
 
-Der Knoten `"recognitionResults"` enthält den gesamten erkannten Text. Der Text ist nach Seite, dann nach Zeile und dann nach einzelnen Wörtern sortiert. Der Knoten `"understandingResults"` enthält die belegspezifischen Werte, die vom Modell erkannt wurden. Hier finden Sie nützliche Schlüssel-Wert-Paare wie Steuern, Gesamtsumme, Händleranschrift usw.
+Der Knoten `"readResults"` enthält den gesamten erkannten Text. Der Text ist nach Seite, dann nach Zeile und dann nach einzelnen Wörtern sortiert. Der Knoten `"documentResults"` enthält die belegspezifischen Werte, die vom Modell erkannt wurden. Hier finden Sie nützliche Schlüssel-Wert-Paare wie Steuern, Gesamtsumme, Händleranschrift usw.
 
 ```json
 { 

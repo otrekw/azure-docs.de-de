@@ -1,14 +1,14 @@
 ---
 title: Übersicht über Azure Resource Graph
 description: Hier wird erläutert, wie der Azure Resource Graph-Dienst das komplexe bedarfsabhängige Abfragen von Ressourcen für Abonnements und Mandanten ermöglicht.
-ms.date: 07/25/2020
+ms.date: 08/13/2020
 ms.topic: overview
-ms.openlocfilehash: 5a2be5e65ecd5590d992e1883f432c173660e78d
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 73143c13fd83c8b784679ac28bd9a14f1c6a6888
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87541786"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798532"
 ---
 # <a name="what-is-azure-resource-graph"></a>Was ist Azure Resource Graph?
 
@@ -37,6 +37,9 @@ Mit Azure Resource Graph können Sie:
 
 - auf die Eigenschaften zugreifen, die die Ressourcenanbieter zurückgeben, ohne jeden Ressourcenanbieter einzeln anrufen zu müssen.
 - die letzten 14 Tage des Verlaufs der Änderungen der Ressource anzeigen, um festzustellen, welche Eigenschaften wann geändert wurden. (Vorschauversion)
+
+> [!NOTE]
+> Als _Previewfunktion_ stehen für einige `type`-Objekte zusätzliche Resource Manager-fremde Eigenschaften zur Verfügung. Weitere Informationen finden Sie unter [Erweiterte Eigenschaften (Vorschau)](./concepts/query-language.md#extended-properties).
 
 ## <a name="how-resource-graph-is-kept-current"></a>Wie Resource Graph auf dem aktuellen Stand gehalten wird
 

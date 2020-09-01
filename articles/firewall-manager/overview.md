@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: overview
-ms.date: 08/18/2020
+ms.date: 08/25/2020
 ms.author: victorh
-ms.openlocfilehash: b4ef35f2892925919ca9c8eda37a9b0e0d11835e
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: ae220a1b70be7178c4c2fea01103991c8729ae79
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88590403"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855048"
 ---
 # <a name="what-is-azure-firewall-manager"></a>Was ist Azure Firewall Manager?
 
@@ -86,7 +86,7 @@ Für Azure Firewall Manager sind die folgenden Probleme bekannt:
 |Branch-to-Branch-Datenverkehr mit aktivierter Filterung von privatem Datenverkehr|Branch-to-Branch-Datenverkehr wird nicht unterstützt, wenn die Filterung von privatem Datenverkehr aktiviert ist. |Wird untersucht<br><br>Schützen Sie privaten Datenverkehr nicht, wenn die Branch-to-Branch-Konnektivität wichtig ist.|
 |Alle geschützten virtuellen Hubs, die das gleiche virtuelle WAN nutzen, müssen sich in derselben Ressourcengruppe befinden.|Dieses Verhalten orientiert sich heute an Virtual WAN-Hubs.|Erstellen Sie mehrere Virtual WAN-Instanzen, um die Erstellung von geschützten virtuellen Hubs in verschiedenen Ressourcengruppen zu ermöglichen.|
 |Fehler beim Massenhinzufügen von IP-Adressen|Die Firewall des geschützten Hubs wird in einen Fehlerzustand versetzt, wenn Sie eine größere Zahl von öffentlichen IP-Adressen hinzufügen.|Fügen Sie öffentliche IP-Adressen in kleineren Schritten hinzu. Fügen Sie beispielsweise nur zehn gleichzeitig hinzu.|
-|Für Anwendungsregeln tritt auf einem geschützten Hub ein Fehler auf, wenn ein benutzerdefiniertes DNS (Vorschau) konfiguriert ist.|Ein DNS-Proxy bzw. benutzerdefiniertes DNS (Vorschau) funktioniert nicht in Szenarien, in denen eine Netzwerkschnittstelle für die Firewallverwaltung konfiguriert ist. Dies gilt auch für Bereitstellungen von geschützten Hubs und für Fälle, in denen die Tunnelerzwingung aktiviert ist.|Wir arbeiten derzeit an der Fehlerbehebung.|
+|Für Anwendungsregeln tritt auf einem geschützten Hub ein Fehler auf, wenn ein benutzerdefiniertes DNS (Vorschau) konfiguriert ist.|Benutzerdefiniertes DNS (Vorschau) funktioniert nicht in Bereitstellungen von geschützten Hubs und virtuellen Hubnetzwerkbereitstellungen, bei denen die Tunnelerzwingung aktiviert ist.|Wir arbeiten derzeit an der Fehlerbehebung.|
 
 ## <a name="next-steps"></a>Nächste Schritte
 

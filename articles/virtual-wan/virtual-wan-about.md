@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 08/18/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to understand what Virtual WAN is and if it is the right choice for my Azure network.
-ms.openlocfilehash: b58a729397118b01d2ff346c0d1f09f70435efae
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 2d8ac3775021c574d3c03e44b06d6b5e689070e7
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88604695"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88852662"
 ---
 # <a name="what-is-azure-virtual-wan"></a>Was ist Azure Virtual WAN?
 
@@ -124,15 +124,15 @@ Informationen zu Standorten finden Sie in dem Artikel [Virtual WAN-Partner und -
 
 Routingtabellen verfügen jetzt über Features für die Zuordnung und Verteilung. Wenn eine Routingtabelle bereits vorhanden ist, verfügt sie nicht über diese Features. Falls bei Ihnen im Rahmen des Hub-Routings bereits vorhandene Routen genutzt werden und Sie diese neuen Funktionen nutzen möchten, sollten Sie Folgendes beachten:
 
-* **Kunden mit Virtual WAN vom Typ „Standard“ mit bereits vorhandenen Routen auf dem virtuellen Hub**: Wenn Sie neue Routingtabellenfunktionen verwenden möchten, warten Sie bis zum Abschluss des Rollouts in Azure in der Woche ab dem 17. August. Wenn im Azure-Portal im Abschnitt „Routing“ für den Hub bereits Routen vorhanden sind, müssen Sie diese zuerst löschen und dann versuchen, neue Routingtabellen zu erstellen (verfügbar im Abschnitt „Routingtabellen“ für den Hub im Azure-Portal).
+* **Kunden mit Virtual WAN vom Typ „Standard“ mit bereits vorhandenen Routen auf dem virtuellen Hub**: Wenn im Azure-Portal im Abschnitt „Routing“ für den Hub bereits Routen vorhanden sind, müssen Sie diese zuerst löschen und dann versuchen, neue Routingtabellen zu erstellen (verfügbar im Abschnitt „Routingtabellen“ für den Hub im Azure-Portal).
 
-* **Kunden mit Virtual WAN vom Typ „Basic“ mit bereits vorhandenen Routen auf dem virtuellen Hub**: Wenn Sie die neuen Routingtabellenfunktionen verwenden möchten, warten Sie bis zum Abschluss des Rollouts in Azure in der Woche ab dem 17. August. Wenn im Azure-Portal im Abschnitt „Routing“ für den Hub bereits Routen vorhanden sind, müssen Sie diese zuerst löschen und dann Ihre Virtual WAN-Instanz vom Typ „Basic“ auf „Standard“ **upgraden**. Weitere Informationen finden Sie unter [Upgrade eines Virtual WAN von Basic auf Standard](upgrade-virtual-wan.md).
+* **Kunden mit Virtual WAN vom Typ „Basic“ mit bereits vorhandenen Routen auf dem virtuellen Hub**: Wenn im Azure-Portal im Abschnitt „Routing“ für den Hub bereits Routen vorhanden sind, müssen Sie diese zuerst löschen und dann Ihre Virtual WAN-Instanz vom Typ „Basic“ auf „Standard“ **upgraden**. Weitere Informationen finden Sie unter [Upgrade eines Virtual WAN von Basic auf Standard](upgrade-virtual-wan.md).
 
 ## <a name="faq"></a><a name="faq"></a>Häufig gestellte Fragen
 
 [!INCLUDE [Virtual WAN FAQ](../../includes/virtual-wan-faq-include.md)]
 
-## <a name="view-the-latest-feature-updates"></a><a name="new"></a>Anzeigen der aktuellen Featureupdates
+## <a name="whats-new"></a><a name="new"></a>Neuerungen
 
 Abonnieren Sie den RSS-Feed, und zeigen Sie die neuesten Virtual WAN-Featureupdates auf der Seite [Azure-Updates](https://azure.microsoft.com/updates/?category=networking&query=VIRTUAL%20WAN) an.
 

@@ -9,12 +9,12 @@ ms.service: genomics
 ms.topic: quickstart
 ms.date: 01/11/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: 0e106f3ea8a5de80f4961a1d591d31abdbe2ca86
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 7720238bb7e2ff133935b9af545628f744d828d1
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87876290"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88642315"
 ---
 # <a name="quickstart-run-a-workflow-through-the-microsoft-genomics-service"></a>Schnellstart: Ausführen eines Workflows über den Microsoft Genomics-Dienst
 
@@ -144,4 +144,4 @@ Nach Abschluss des Workflows können Sie die Ausgabedateien im konfigurierten Au
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Artikel haben Sie Beispieleingabedaten in Azure Storage hochgeladen und einen Workflow über den `msgen`-Python-Client an den Microsoft Genomics-Dienst übermittelt. Weitere Informationen zu anderen Eingabedateitypen, die mit dem Microsoft Genomics-Dienst verwendet werden können, finden Sie auf den folgenden Seiten: [Übermitteln eines Workflows mit FASTQ-Eingabedateien](quickstart-input-pair-FASTQ.md) | [Übermitteln eines Workflows mit einer BAM-Eingabedatei](quickstart-input-BAM.md) | [Übermitteln eines Workflows mit mehreren Eingaben aus dem gleichen Beispiel](quickstart-input-multiple.md). Sie können dieses Tutorial auch mit unserem [Azure-Notebookbeispiel](https://aka.ms/genomicsnotebook) erkunden. Laden Sie dazu die Datei „Genomics Tutorial.ipynb“ herunter, und verwenden Sie einen Notebook-Reader wie [Jupyter](https://docs.microsoft.com/azure/notebooks/tutorial-create-run-jupyter-notebook), um die Datei zu öffnen und zu durchlaufen.
+In diesem Artikel haben Sie Beispieleingabedaten in Azure Storage hochgeladen und einen Workflow über den `msgen`-Python-Client an den Microsoft Genomics-Dienst übermittelt. Weitere Informationen zu anderen Eingabedateitypen, die mit dem Microsoft Genomics-Dienst verwendet werden können, finden Sie auf den folgenden Seiten: [Übermitteln eines Workflows mit FASTQ-Eingabedateien](quickstart-input-pair-FASTQ.md) | [Übermitteln eines Workflows mit einer BAM-Eingabedatei](quickstart-input-BAM.md) | [Übermitteln eines Workflows mit mehreren Eingaben aus dem gleichen Beispiel](quickstart-input-multiple.md). Sie können dieses Tutorial auch mit unserem [Azure Notebooks-Beispiel](https://aka.ms/genomicsnotebook) erkunden. Laden Sie dazu die Datei „Genomics Tutorial.ipynb“ herunter, und verwenden Sie einen Notebook-Reader wie [Jupyter](https://docs.microsoft.com/azure/notebooks/tutorial-create-run-jupyter-notebook), um die Datei zu öffnen und zu durchlaufen.

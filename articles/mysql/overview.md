@@ -7,12 +7,12 @@ ms.author: andrela
 ms.custom: mvc
 ms.topic: overview
 ms.date: 3/18/2020
-ms.openlocfilehash: c5758fa367ac17ceb687212b4073fd2c1a5c18f6
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 37bc99d9f83f185a5372fd45634351987b85e20b
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206419"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88763659"
 ---
 # <a name="what-is-azure-database-for-mysql"></a>Was ist Azure-Datenbank für MySQL?
 
@@ -37,6 +37,9 @@ Dieser Artikel bietet eine Einführung in die wesentlichen Konzepte und Features
 Eine Reihe von Azure CLI-Beispielen finden Sie unter:
 
 - [Azure CLI-Beispiele für Azure-Datenbank für MySQL](sample-scripts-azure-cli.md)
+
+## <a name="automated-patching"></a>Automatisiertes Patchen
+Der Dienst führt automatisches Patchen für die zugrunde liegende Hardware, das Betriebssystem und die Datenbank-Engine durch. Das Patchen beinhaltet Sicherheits- und Softwareupdates für die zugrunde liegende Hardware, das Betriebssystem und die Datenbank-Engine. Bei der MySQL-Engine werden Upgrades von Nebenversionen automatisch ausgeführt und sind im Patchrelease enthalten. Wenn von der Community eine Nebenversion veröffentlicht wird, wird sie automatisch in den Testzyklus für den Dienst integriert. Die Nebenversion wird für einige der kanonischen Workloads für MySQL getestet. Die Freigabe von Nebenversionen der MySQL-Engine wird im Hinblick auf Zuverlässigkeit (keine Abstürze), Verfügbarkeit, Sicherheit und Leistung ausgewertet. Nicht alle Nebenversionen im Dienst werden für die Produktion veröffentlicht, sie werden jedoch basierend auf der Bedeutung der Fehlerbehebungen und dem zusätzlichen Nutzen ausgewertet. Dadurch soll ein ausgewogenes Verhältnis zwischen zusätzlichem Nutzen und weniger Variablen im System erreicht werden, um die Stabilität zu gewährleisten. Für das Patchen sind keine Benutzeraktionen oder Konfigurationseinstellungen erforderlich. Die Patchhäufigkeit wird basierend auf der Wichtigkeit der Nutzlast durch den Dienst verwaltet. Im Allgemeinen gilt für den Dienst im Rahmen der kontinuierlichen Integration und Veröffentlichung ein monatlicher Releasezeitplan. Benutzer können die [Benachrichtigungen zu geplanten Wartungen](concepts-monitoring.md) abonnieren, um 72 Stunden vorher über anstehende Wartungen benachrichtigt zu werden.
 
 ## <a name="adjust-performance-and-scale-within-seconds"></a>Anpassen von Leistung und Skalierung in nur wenigen Sekunden
 Für den Azure Database for MySQL-Dienst sind verschiedene Dienstebenen verfügbar: „Basic“, „Allgemein“ und „Arbeitsspeicheroptimiert“. Jeder Tarif bietet verschiedene Leistungsstufen und Funktionen zur Unterstützung geringer und hoher Datenbankworkloads. Sie können Ihre erste App mit einer kleinen Datenbank für wenige USD im Monat erstellen und die Skalierung dann so ändern, dass sie den Anforderungen Ihrer Lösung entspricht. Durch die dynamische Skalierung kann Ihre Datenbank transparent auf schnell wechselnde Ressourcenanforderungen reagieren. Sie bezahlen nur für die benötigten Ressourcen und auch nur dann, wenn Sie sie verwenden. Einzelheiten hierzu finden Sie unter  [Tarife](concepts-service-tiers.md).

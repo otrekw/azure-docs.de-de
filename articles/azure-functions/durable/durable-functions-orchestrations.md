@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: overview
 ms.date: 09/08/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 1b349b1e3c4a2fac4cd260dbe83469a776951ab0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5eec15871279f3ca38c726fcd1ef1b21d0d38699
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87033641"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88750192"
 ---
 # <a name="durable-orchestrations"></a>Dauerhafte Orchestrierungen
 
@@ -51,7 +51,7 @@ Wenn eine Orchestrierungsfunktion weitere Aufgaben ausführen muss (z.B. wird ei
 > Damit das Wiedergabemuster ordnungsgemäß und zuverlässig funktioniert, muss der Orchestratorfunktionscode *deterministisch* sein. Weitere Informationen zu Codeeinschränkungen für Orchestratorfunktionen finden Sie im Thema [Codeeinschränkungen für Orchestratorfunktionen](durable-functions-code-constraints.md).
 
 > [!NOTE]
-> Wenn eine Orchestratorfunktion Protokollmeldungen ausgibt, kann das Wiedergabeverhalten zur Ausgabe doppelter Protokollmeldungen führen. Informationen zum Grund für dieses Verhalten sowie zur Umgehung dieses Problems finden Sie im Thema [Protokollierung](durable-functions-diagnostics.md#logging).
+> Wenn eine Orchestratorfunktion Protokollmeldungen ausgibt, kann das Wiedergabeverhalten zur Ausgabe doppelter Protokollmeldungen führen. Informationen zum Grund für dieses Verhalten sowie zur Umgehung dieses Problems finden Sie im Thema [Protokollierung](durable-functions-diagnostics.md#app-logging).
 
 ## <a name="orchestration-history"></a>Orchestrierungsverlauf
 

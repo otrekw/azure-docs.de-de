@@ -1,19 +1,20 @@
 ---
-title: Grundlegendes zu detaillierter Nutzung und Gebühren | Microsoft-Dokumentation
+title: Grundlegendes zu detaillierter Nutzung und Gebühren
 description: Hier erfahren Sie, wie Sie Ihre Datei zu detaillierter Nutzung und Gebühren lesen und verstehen. Zeigen Sie eine Liste der in der Datei verwendeten Begriffe und Beschreibungen an.
 author: bandersmsft
 ms.reviewer: micflan
 tags: billing
 ms.service: cost-management-billing
+ms.subservice: billing
 ms.topic: conceptual
-ms.date: 03/20/2020
+ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 1b53869c9ef90dd0edf3ab9a3120e65db8f16e8a
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: d113ad7d3de3478fbbdcce32363e048b7a8a75ce
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87460285"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88681735"
 ---
 # <a name="understand-the-terms-in-your-azure-usage-and-charges-file"></a>Grundlegendes zu den Bedingungen in der Datei für die Azure-Nutzung und -Gebühren
 

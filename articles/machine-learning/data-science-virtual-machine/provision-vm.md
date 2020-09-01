@@ -8,12 +8,12 @@ author: gvashishtha
 ms.author: gopalv
 ms.topic: quickstart
 ms.date: 12/31/2019
-ms.openlocfilehash: afcb676f68e7be9d3ebef11ea2c6876a86bbd062
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a955f035933955b88200e49e343f7dd0c257c89b
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80281781"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816353"
 ---
 # <a name="quickstart-set-up-the-data-science-virtual-machine-for-windows"></a>Schnellstart: Einrichten der Data Science Virtual Machine für Windows
 
@@ -69,6 +69,5 @@ Sie können eine DSVM-Instanz auch an Azure Notebooks anfügen, um Jupyter-Noteb
 
 * Erkunden Sie die Tools in der DSVM-Instanz über das Menü **Start**.
 * Machen Sie sich mit Azure Machine Learning vertraut. Lesen Sie hierzu [Was ist Azure Machine Learning?](../overview-what-is-azure-ml.md), und probieren Sie die [Tutorials](../index.yml) aus.
-* Lesen Sie den Artikel [Zehn Dinge, die Sie mit der Data Science Virtual Machine machen können](https://aka.ms/dsvmtenthings).
-* Besuchen Sie den [Azure KI-Katalog](https://gallery.cortanaintelligence.com), um Beispiele zu Machine Learning und zur Datenanalyse zu erhalten, in denen Azure Machine Learning und dazugehörige Datendienste in Azure verwendet werden. Wir haben auch ein Symbol für diese Galerie im **Startmenü** und auf dem Desktop der virtuellen Maschine bereitgestellt.
+* Lesen Sie den Artikel zu [Data Science mit einer Data Science Virtual Machine-Instanz für Windows in Azure](./vm-do-ten-things.md).
 

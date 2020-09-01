@@ -5,16 +5,16 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 05/14/2019
 ms.custom: mvc,subject-armqs
-ms.openlocfilehash: 7aef0e7e48bfd3f56bd1c3718b1a547bea66cbe8
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e64aa10d8ddadd367d04b2b480770a99f3ece1dc
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87054469"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826530"
 ---
 # <a name="quickstart-back-up-a-virtual-machine-in-azure-with-an-arm-template"></a>Schnellstart: Sichern eines virtuellen Computers in Azure mit einer ARM-Vorlage
 
-Mit [Azure Backup](backup-overview.md) können Sie lokale Computer und Apps sowie virtuelle Azure-Computer sichern. In diesem Artikel wird gezeigt, wie Sie eine Azure-VM mit einer Azure Resource Manager-Vorlage (ARM-Vorlage) und Azure PowerShell sichern. In dieser Schnellstartanleitung geht es um die Bereitstellung einer ARM-Vorlage zum Erstellen eines Recovery Services-Tresors. Weitere Informationen zur Entwicklung von ARM-Vorlagen finden Sie in der [Azure Resource Manager-Dokumentation](../azure-resource-manager/index.yml) und der [Vorlagenreferenz](/azure/templates/microsoft.recoveryservices/allversions).
+Mit [Azure Backup](backup-overview.md) können Sie lokale Computer und Apps sowie virtuelle Azure-Computer sichern. In diesem Artikel wird gezeigt, wie Sie eine Azure-VM mit einer Azure Resource Manager-Vorlage (ARM-Vorlage) und Azure PowerShell sichern. In dieser Schnellstartanleitung geht es um die Bereitstellung einer ARM-Vorlage zum Erstellen eines Recovery Services-Tresors. Weitere Informationen zur Entwicklung von ARM-Vorlagen finden Sie in der [Azure Resource Manager-Dokumentation](../azure-resource-manager/index.yml) und der [Vorlagenreferenz](/azure/templates/microsoft.recoveryservices/allversions).
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -26,9 +26,9 @@ Wenn Ihre Umgebung die Voraussetzungen erfüllt und Sie mit der Verwendung von A
 
 ## <a name="review-the-template"></a>Überprüfen der Vorlage
 
-Die in dieser Schnellstartanleitung verwendete Vorlage stammt aus den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/101-recovery-services-create-vm-and-configure-backup/). Mit dieser Vorlage können Sie eine einfache Windows-VM und einen Recovery Services-Tresor bereitstellen, der zum Schutz mit der DefaultPolicy konfiguriert ist.
+Die in dieser Schnellstartanleitung verwendete Vorlage stammt aus den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/101-recovery-services-create-vm-and-configure-backup/). Mit dieser Vorlage können Sie eine einfache Windows-VM und einen Recovery Services-Tresor bereitstellen, der zum Schutz mit DefaultPolicy konfiguriert ist.
 
-:::code language="json" source="~/quickstart-templates/101-recovery-services-create-vm-and-configure-backup/azuredeploy.json" range="1-247" highlight="221-245":::
+:::code language="json" source="~/quickstart-templates/101-recovery-services-create-vm-and-configure-backup/azuredeploy.json":::
 
 In der Vorlage sind die folgenden Ressourcen definiert:
 
@@ -47,7 +47,7 @@ Wählen Sie zum Bereitstellen der Vorlage **Jetzt testen** aus, um die Azure Clo
 
 ```azurepowershell-interactive
 $projectName = Read-Host -Prompt "Enter a project name (limited to eight characters) that is used to generate Azure resource names"
-$location = Read-Host -Prompt "Enter the location (i.e. centralus)"
+$location = Read-Host -Prompt "Enter the location (for example, centralus)"
 $adminUsername = Read-Host -Prompt "Enter the administrator username for the virtual machine"
 $adminPassword = Read-Host -Prompt "Enter the administrator password for the virtual machine" -AsSecureString
 $dnsPrefix = Read-Host -Prompt "Enter the unique DNS Name for the Public IP used to access the virtual machine"

@@ -4,18 +4,18 @@ description: Aktivieren Sie mit dem Azure-Portal private Links für Ihre verwalt
 author: roygara
 ms.service: virtual-machines
 ms.topic: overview
-ms.date: 08/11/2020
+ms.date: 08/24/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 83f204a35e48962e525ad7d64c018eef301f9933
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: ab861b3ed265da9060e2367bdfdeeeee7047c584
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88135843"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815860"
 ---
-# <a name="azure-portal---restrict-importexport-access-for-managed-disks-with-private-links"></a>Azure-Portal: Einschränken des Import-/Exportzugriffs für verwaltete Datenträger mit privaten Links
+# <a name="use-the-azure-portal-to-restrict-importexport-access-for-managed-disks-with-private-links"></a>Verwenden Sie das Azure-Portal zum Einschränken des Import-/Exportzugriffs für verwaltete Datenträger mit privaten Links.
 
 Die Unterstützung für private Links für verwaltete Datenträger befindet sich derzeit in der Vorschauphase und ermöglicht es Ihnen, den Export und Import von verwalteten Datenträgern einzuschränken, sodass diese Vorgänge nur in Ihrem virtuellen Azure-Netzwerk stattfinden. Sie können einen zeitgebundenen SAS-URI (Shared Access Signature) für nicht angefügte verwaltete Datenträger und Momentaufnahmen generieren, um die Daten zur regionalen Erweiterung, zur Notfallwiederherstellung und zum Lesen der Daten für die forensische Analyse in eine andere Region zu exportieren. Sie können den SAS-URI auch verwenden, um eine VHD aus der lokalen Umgebung direkt auf einen leeren Datenträger hochzuladen. Der Netzwerkdatenverkehr zwischen den Clients im virtuellen Netzwerk und den verwalteten Datenträgern wird nur über das virtuelle Netzwerk und eine private Verbindung im Microsoft-Backbonenetzwerk geleitet und somit nicht dem öffentlichen Internet ausgesetzt.
 
@@ -100,5 +100,5 @@ Die Konfiguration privater Links ist nun abgeschlossen, und Sie können sie beim
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Häufig gestellte Fragen zu privaten Links](linux/faq-for-disks.md#private-links-for-securely-exporting-and-importing-managed-disks)
+- [Häufig gestellte Fragen zu privaten Links](./faq-for-disks.md#private-links-for-securely-exporting-and-importing-managed-disks)
 - [Exportieren/Kopieren verwalteter Momentaufnahmen als VHD in ein Speicherkonto in einer anderen Region mit PowerShell](scripts/virtual-machines-windows-powershell-sample-copy-snapshot-to-storage-account.md)

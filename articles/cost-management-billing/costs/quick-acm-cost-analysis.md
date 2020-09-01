@@ -3,17 +3,18 @@ title: 'Schnellstart: Ermitteln von Azure-Kosten mithilfe der Kostenanalyse'
 description: In diesem Schnellstart wird beschrieben, wie Sie sich mit der Kostenanalyse einen Überblick über Azure-Kosten für Ihre Organisation verschaffen und wie Sie diese Kosten analysieren.
 author: bandersmsft
 ms.author: banders
-ms.date: 06/08/2020
+ms.date: 08/20/2020
 ms.topic: quickstart
 ms.service: cost-management-billing
+ms.subservice: cost-management
 ms.reviewer: micflan
 ms.custom: seodec18
-ms.openlocfilehash: 72c0b55e1ffc300b42181075247ed3efafe2793a
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 8ca9eaeeb8d484c9aeae6646e6f4814afbaed577
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84560585"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88718525"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>Schnellstart: Ermitteln und Analysieren von Kosten mit der Kostenanalyse
 
@@ -161,6 +162,10 @@ Es kann vorkommen, dass Sie die Daten zur weiteren Analyse herunterladen, mit Ih
 
 Falls Sie das vollständige nicht aggregierte Dataset benötigen, können Sie es über das Abrechnungskonto herunterladen. Navigieren Sie dann aus der Liste der Dienste im linken Navigationsbereich des Portals zu **Kostenverwaltung und Abrechnung**. Wählen Sie ggf. Ihr Abrechnungskonto aus. Navigieren Sie zu **Nutzung und Gebühren**, und wählen Sie dann das **Downloadsymbol** für den gewünschten Abrechnungszeitraum aus.
 
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+
+- Wenn Sie eine angepasste Ansicht für die Kostenanalyse angeheftet haben und sie nicht mehr benötigen, wechseln Sie zum Dashboard, auf dem Sie sie angeheftet haben, und löschen Sie die angeheftete Ansicht.
+- Wenn Sie Nutzungsdatendateien heruntergeladen haben und diese nicht mehr benötigen, sollten Sie sie löschen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

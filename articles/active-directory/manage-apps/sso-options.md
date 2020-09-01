@@ -11,18 +11,18 @@ ms.topic: overview
 ms.date: 12/03/2019
 ms.author: kenwith
 ms.reviewer: arvindh, japere
-ms.openlocfilehash: 3c3d6529b3513a9f82313675b8240cf41b44f12f
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: c380642cd4297a753b113bdbfdfb46060656269e
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88170160"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88642094"
 ---
 # <a name="single-sign-on-options-in-azure-ad"></a>Optionen für einmaliges Anmelden in Azure AD
 
 Einmaliges Anmelden bietet viele Vorteile gegenüber herkömmlichen Anmeldemethoden.
 
-- **Mit einmaligem Anmelden** melden sich Benutzer einmal mit einem Konto an, um auf in die Domäne eingebundene Geräte, Unternehmensressourcen, SaaS-Anwendungen (Software-as-a-Service) und Webanwendungen zuzugreifen. Nach der Anmeldung kann der Benutzer Anwendungen aus dem Office 365-Portal oder dem Azure AD-Zugriffsbereich MyApps starten. Administratoren können die Verwaltung von Benutzerkonten zentralisieren und den Benutzerzugriff auf Anwendungen basierend auf der Gruppenmitgliedschaft automatisch hinzufügen oder entfernen.
+- **Mit einmaligem Anmelden** melden sich Benutzer einmal mit einem Konto an, um auf in die Domäne eingebundene Geräte, Unternehmensressourcen, SaaS-Anwendungen (Software-as-a-Service) und Webanwendungen zuzugreifen. Nach der Anmeldung kann der Benutzer Anwendungen aus dem Office 365-Portal oder über „Meine Apps“ starten. Administratoren können die Verwaltung von Benutzerkonten zentralisieren und den Benutzerzugriff auf Anwendungen basierend auf der Gruppenmitgliedschaft automatisch hinzufügen oder entfernen.
 
 - **Ohne einmaliges Anmelden** müssen sich die Benutzer anwendungsspezifische Kennwörter merken und sich für jede Anwendung anmelden. IT-Mitarbeiter müssen Benutzerkonten für jede Anwendung erstellen und aktualisieren, z.B. Office 365, Box oder Salesforce. Benutzer müssen sich ihre Kennwörter merken und außerdem Zeit für die Anmeldung bei jeder Anwendung verbringen.
 
@@ -123,7 +123,7 @@ Die Kennwörter für die einzelnen Anwendungen können vom Azure AD-Administrato
 
 Wenn der Azure AD-Administrator die Anmeldeinformationen verwaltet, gilt Folgendes:  
 
-- Der Benutzer muss seinen Benutzernamen und sein Kennwort nicht zurücksetzen oder sie sich merken. Der Benutzer kann durch Klicken auf die Anwendung in seinem Zugriffsbereich oder über einen bereitgestellten Link auf diese zugreifen.
+- Der Benutzer muss seinen Benutzernamen und sein Kennwort nicht zurücksetzen oder sie sich merken. Der Benutzer kann durch Klicken auf die Anwendung unter „Meine Apps“ oder über einen bereitgestellten Link auf diese zugreifen.
 - Der Administrator kann Verwaltungsaufgaben für die Anmeldeinformationen ausführen. Beispielsweise kann der Administrator den Anwendungszugriff entsprechend Gruppenmitgliedschaften und dem Mitarbeiterstatus des Benutzers aktualisieren.
 - Der Administrator kann mithilfe von administrativen Anmeldeinformationen Zugriff auf Anwendungen bereitstellen, die von vielen Benutzern gemeinsam verwendet werden. Beispielsweise kann der Administrator jeder Person mit Zugriff auf eine Anwendung den Zugriff auf eine Anwendung für sozialen Medien oder zum Freigeben von Dokumenten gewähren.
 

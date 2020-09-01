@@ -8,12 +8,12 @@ ms.author: rgarcia
 ms.date: 05/18/2020
 ms.topic: overview
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 9f6f428a930f03259986373ca70a95d5df1f7dc3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 9457836a3048ff08b228bf9d5b84400af15d6cc5
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091486"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88854943"
 ---
 # <a name="frequently-asked-questions-about-azure-spatial-anchors"></a>Häufig gestellte Fragen zu Azure Spatial Anchors
 
@@ -51,7 +51,7 @@ Weitere Informationen finden Sie unter [Azure Spatial Anchors-Übersicht](overvi
 
 **F: Wie speichert Azure Spatial Anchors Daten?**
 
-**A:** Alle Daten werden mit einem von Microsoft verwalteten Datenverschlüsselungsschlüssel verschlüsselt gespeichert.
+**A:** Alle Daten werden verschlüsselt mit einem von Microsoft verwalteten Datenverschlüsselungsschlüssel gespeichert, und alle Daten werden für jede der Ressourcen regional gespeichert.
 
 **F: Welche Informationen zu einer Umgebung werden bei Verwendung von Azure Spatial Anchors für den Dienst übertragen und gespeichert? Werden Bilder der Umgebung übertragen und gespeichert?**
 

@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 06/18/2020
 ms.author: allensu
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 46d1f811593571228d21c687be0a98d413cc9854
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: c2959507b8b9275ee2b7a9ebd8159e0014e932c0
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88168149"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88639696"
 ---
 # <a name="what-is-azure-private-link"></a>Was ist Azure Private Link? 
 Mit Azure Private Link können Sie über einen [privaten Endpunkt](private-endpoint-overview.md) in Ihrem virtuellen Netzwerk auf Azure-PaaS-Dienste (beispielsweise Azure Storage und SQL Database) sowie auf in Azure gehostete kundeneigene Dienste/Partnerdienste zugreifen.
@@ -68,6 +68,7 @@ Azure Private Link bietet folgende Vorteile:
 | Azure SignalR | „USA, OSTEN“, „USA, WESTEN 2“, „USA, SÜDEN-MITTE“      |  | Vorschau   <br/> [Weitere Informationen](https://aka.ms/asrs/privatelink)   |
 | Azure Monitor <br/>(Log Analytics und Application Insights) | Alle öffentlichen Regionen      |  | Allgemein verfügbar   <br/> [Weitere Informationen](https://docs.microsoft.com/azure/azure-monitor/platform/private-link-security)   | 
 | Azure-Dateisynchronisierung | Alle öffentlichen Regionen      | |   Allgemein verfügbar   <br/> [Weitere Informationen](https://docs.microsoft.com/azure/storage/files/storage-sync-files-networking-endpoints?tabs=azure-portal)   |
+| Azure Batch | USA, OSTEN; USA, WESTEN 2; USA, SÜDEN-MITTE; USA, WESTEN-MITTE; FRANKREICH, MITTE; ASIEN, OSTEN; VEREINIGTES KÖNIGREICH, SÜDEN; US GOV VIRGINIA; US GOV ARIZONA  | | Allgemein verfügbar <br/> [Weitere Informationen](https://docs.microsoft.com/azure/batch/private-connectivity) |
 
 Aktuelle Benachrichtigungen finden Sie auf der Seite mit den [Azure Private Link-Updates](https://azure.microsoft.com/updates/?product=private-link).
 

@@ -36,11 +36,11 @@
     - name: Nutzungs- und Insights-Bericht
       href: concept-usage-insights-report.md
     - name: Riskante Anmeldungen
-      href: concept-risky-sign-ins.md
+      href: ../identity-protection/overview-identity-protection.md
     - name: Risikoerkennungen
-      href: concept-risk-events.md
+      href: ../identity-protection/overview-identity-protection.md
     - name: Gefährdete Benutzer
-      href: concept-user-at-risk.md
+      href: ../identity-protection/overview-identity-protection.md
     - name: Bereitstellungsprotokolle
       href: concept-provisioning-logs.md
     - name: Berichterstellungs-APIs
@@ -94,9 +94,9 @@
     - name: Azure AD PowerShell-Cmdlets für die Berichterstellung
       href: reference-powershell-reporting.md
     - name: API-Referenz zu Überwachungsprotokollen
-      href: 'https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit'
+      href: /graph/api/resources/directoryaudit?view=graph-rest-beta
     - name: API-Referenz zu Anmeldeprotokollen
-      href: 'https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signin'
+      href: /graph/api/resources/signin?view=graph-rest-beta
     - name: Überwachungsaktivitäten
       href: reference-audit-activities.md
     - name: Datenaufbewahrungsrichtlinien

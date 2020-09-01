@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 04/04/2020
 ms.author: trbye
-ms.openlocfilehash: 2f5a1d190c6e63056c2377641446f617edaa1bd3
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: e859ac13c72ed07d3f57da6e61fd6d9f827f0fca
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88590216"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88854897"
 ---
 # <a name="learn-the-basics-of-the-speech-cli"></a>Erlernen der Grundlagen der Speech-Befehlszeilenschnittstelle
 
@@ -31,10 +31,18 @@ In diesem Abschnitt werden einige grundlegende SPX-Befehle gezeigt, die häufig 
 spx
 ```
 
-Achten Sie auf die Hilfethemen vom Typ **Siehe auch**, die sich rechts von den Befehlsparametern befinden. Sie können Themen auch nach Schlüsselwort durchsuchen. Geben Sie beispielsweise den folgenden Befehl ein, um eine Liste mit Hilfethemen zu Speech-CLI-Beispielen anzuzeigen:
+Achten Sie auf die Hilfethemen vom Typ **Siehe:** , die sich rechts von den Befehlsparametern befinden. Sie können diese Befehle eingeben, um ausführliche Hilfe zu Unterbefehlen zu erhalten.
+
+Sie können Hilfethemen nach Schlüsselwort durchsuchen. Geben Sie beispielsweise den folgenden Befehl ein, um eine Liste der Beispiele für die Speech-CLI-Verwendung anzuzeigen:
 
 ```shell
 spx help find --topics "examples"
+```
+
+Geben Sie den folgenden Befehl ein, um die Optionen für den Befehl „recognize“ anzuzeigen:
+
+```shell
+spx help recognize
 ```
 
 Nutzen Sie nun den Speech-Dienst für eine erste Spracherkennung mit Ihrem Standardmikrofon, indem Sie den unten angegebenen Befehl ausführen.

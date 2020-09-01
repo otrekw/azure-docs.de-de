@@ -6,12 +6,12 @@ ms.topic: overview
 ms.date: 03/12/2020
 ms.author: cgillum
 ms.reviewer: azfuncdf
-ms.openlocfilehash: adf58b667d17393fc905fbf31261530fce88d9f8
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: d1c4f62f19a36867ebc85a98b0cd38bbbf8ce757
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88272347"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88660681"
 ---
 # <a name="what-are-durable-functions"></a>Was ist Durable Functions?
 
@@ -704,8 +704,9 @@ Sie können die ersten Schritte mit Durable Functions in weniger als 10 Minuten 
 * [C# mit Visual Studio 2019](durable-functions-create-first-csharp.md)
 * [JavaScript mit Visual Studio Code](quickstart-js-vscode.md)
 * [Python unter Verwendung von Visual Studio Code](quickstart-python-vscode.md)
+* [PowerShell unter Verwendung von Visual Studio Code](quickstart-powershell-vscode.md)
 
-In beiden Schnellstarts erstellen Sie lokal eine dauerhafte „Hallo Welt“-Funktion und testen diese. Anschließend veröffentlichen Sie den Funktionscode in Azure. Mit der von Ihnen erstellten Funktion werden Aufrufe anderer Funktionen orchestriert und miteinander verkettet.
+In diesen Schnellstarts erstellen und testen Sie lokal eine dauerhafte Funktion vom Typ „Hallo Welt“. Anschließend veröffentlichen Sie den Funktionscode in Azure. Mit der von Ihnen erstellten Funktion werden Aufrufe anderer Funktionen orchestriert und miteinander verkettet.
 
 ## <a name="learn-more"></a>Weitere Informationen
 

@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: overview
 ms.date: 11/13/2019
 ms.author: zhshang
-ms.openlocfilehash: c944ae3a5d647cc457edd20a5d3dd0489e19e286
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 6d104e41a0cae906c346e81a26617a9d29795fb3
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88192286"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88853284"
 ---
 # <a name="azure-signalr-service-faq"></a>Azure SignalR Service FAQ
 
@@ -78,8 +78,8 @@ Auf dem Blatt „Übersicht“ von Azure SignalR Service-Ressourcen ist bereits
 ## <a name="what-is-the-meaning-of-service-mode-defaultserverlessclassic-how-can-i-choose"></a>Welche Bedeutung hat der Dienstmodus `Default`/`Serverless`/`Classic`? Wie kann ich eine Auswahl treffen?
 
 Modi:
-* Der `Default`-Modus **erfordert** einen Hubserver. Wenn für den Hub keine Serververbindung verfügbar ist, schlagen Verbindungsversuche des Clients mit diesem Hub fehl.
-* Der `Serverless`-Modus lässt Serververbindungen **NICHT** zu, d. h. alle Serververbindungen werden abgelehnt. Alle Clients müssen sich im serverlosen Modus befinden.
+* Der `Default`-Modus *erfordert* einen Hubserver. In diesem Modus leitet Azure SignalR Service den Clientdatenverkehr an die Verbindungen der verbundenen Hubserver weiter. Azure SignalR Service überprüft, ob ein verbundener Hubserver vorhanden ist. Wird kein verbundener Hubserver gefunden, lehnt Azure SignalR Service die eingehenden Clientverbindungen ab. Sie können in diesem Modus auch die **Verwaltungs-API** verwenden, um die verbundenen Clients direkt über Azure SignalR Service zu verwalten.
+* Der `Serverless`-Modus lässt Serververbindungen *nicht* zu, d. h. alle Serververbindungen werden abgelehnt. Alle Clients müssen sich im serverlosen Modus befinden. Clients stellen eine Verbindung mit Azure SignalR Service her, und Benutzer verwenden normalerweise serverlose Technologien wie **Azure Functions** für die Verarbeitung der Hublogik. Sehen Sie sich ein [einfaches Beispiel](https://docs.microsoft.com/azure/azure-signalr/signalr-quickstart-azure-functions-javascript?WT.mc_id=signalrquickstart-github-antchu) an, in dem der serverlose Modus von Azure SignalR Service verwendet wird.
 * Der `Classic`-Modus ist ein gemischter Status. Wenn ein Hub über eine Serververbindung verfügt, wird der neue Client an den Hubserver weitergeleitet. Andernfalls wechselt der Client in den serverlosen Modus.
 
   Dies kann zu Problemen führen, z. B. dass alle Serververbindungen für einen Moment verloren gehen und einige Clients in den serverlosen Modus wechseln, anstatt an den Hubserver weitergeleitet zu werden.

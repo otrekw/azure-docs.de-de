@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 10/29/2019
 ms.author: kenwith
-ms.openlocfilehash: beb5c7262a5475f5c1535e120fcebe4c70838c7e
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: 1873cd14883e8b1a5174b8761e4a0bc9ba1ef872
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88135486"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88641856"
 ---
 # <a name="quickstart-configure-properties-for-an-application-in-your-azure-active-directory-azure-ad-tenant"></a>Schnellstart: Konfigurieren von Eigenschaften für eine Anwendung auf Ihrem Azure AD-Mandanten (Azure Active Directory)
 
@@ -47,7 +47,7 @@ So bearbeiten Sie die Anwendungseigenschaften:
 3. Nehmen Sie sich einen Moment Zeit, um sich mit den zur Verfügung stehenden konfigurierbaren Optionen vertraut zu machen:
     - Mit **Aktiviert für die Benutzeranmeldung?** wird festgelegt, ob sich Benutzer, die der Anwendung zugewiesen sind, anmelden können.
     - Mit **Benutzerzuweisung erforderlich?** wird festgelegt, ob sich Benutzer, die der Anwendung nicht zugewiesen sind, anmelden können.
-    - Mit **Für Benutzer sichtbar?** wird festgelegt, ob den einer App zugewiesenen Benutzern die Anwendung im [Zugriffsbereich](https://myapps.microsoft.com) und im Office 365-App-Startfeld angezeigt wird. (Siehe das Waffelmenü in der oberen linken Ecke einer Office 365- oder Microsoft 365-Website.)
+    - Mit **Für Benutzer sichtbar?** wird festgelegt, ob den einer App zugewiesenen Benutzern die Anwendung unter [Meine Apps](https://myapps.microsoft.com) und im Office 365-App-Startfeld angezeigt wird. (Siehe das Waffelmenü in der oberen linken Ecke einer Office 365- oder Microsoft 365-Website.)
     
     > [!TIP]
     > Benutzer werden im Navigationsbereich **Benutzer und Gruppen** zugewiesen.

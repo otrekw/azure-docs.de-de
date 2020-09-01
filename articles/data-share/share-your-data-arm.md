@@ -1,20 +1,20 @@
 ---
-title: 'Schnellstart: Freigeben außerhalb Ihrer Organisation: Azure Data Share'
-description: 'Schnellstart: Freigeben von Daten für Kunden und Partner mit Azure Data Share und einer Resource Manager-Vorlage'
+title: 'Freigeben außerhalb Ihrer Organisation (ARM-Vorlage): Schnellstartanleitung zu Azure Data Share'
+description: In dieser Schnellstartanleitung erfahren Sie, wie Sie mit Azure Data Share und einer Resource Manager-Vorlage Daten für Kunden und Partner freigeben.
 author: mumian
 ms.author: jgao
 ms.service: data-share
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.date: 08/17/2020
-ms.openlocfilehash: 62c800e8da3ab4f99b0933e286debcb05c5c3e22
-ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
+ms.date: 08/19/2020
+ms.openlocfilehash: 76ef44d438b9af7ada6c1c464705a22ee10f4c58
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88575653"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654105"
 ---
-# <a name="tutorial-share-data-using-azure-data-share-and-resource-manager-templates"></a>Tutorial: Freigeben von Daten mithilfe von Azure Data Share und Resource Manager-Vorlagen
+# <a name="quickstart-share-data-using-azure-data-share-and-resource-manager-templates"></a>Schnellstart: Freigeben von Daten mithilfe von Azure Data Share und Resource Manager-Vorlagen
 
 Hier erfahren Sie, wie Sie mithilfe einer Resource Manager-Vorlage eine neue Azure Data Share-Instanz anhand eines Azure-Speicherkontos einrichten und mit dem Freigeben von Daten für Kunden und Partner außerhalb Ihrer Azure-Organisation beginnen. Eine Liste der unterstützten Datenspeicher finden Sie unter [Unterstützte Datenspeicher in Azure Data Share](./supported-data-stores.md).
 
@@ -101,4 +101,4 @@ Write-Host "Press [ENTER] to continue..."
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie erfahren, wie Sie eine Azure Data Share-Instanz erstellen und Empfänger einladen. Fahren Sie mit dem Tutorial [Akzeptieren und Empfangen von Daten](subscribe-to-data-share.md) fort, um mehr darüber zu erfahren, wie ein Datenconsumer eine Datenfreigabe akzeptieren und empfangen kann.
+In dieser Schnellstartanleitung haben Sie erfahren, wie Sie eine Azure Data Share-Instanz erstellen und Empfänger einladen. Fahren Sie mit dem Tutorial [Akzeptieren und Empfangen von Daten](subscribe-to-data-share.md) fort, um mehr darüber zu erfahren, wie ein Datenconsumer eine Datenfreigabe akzeptieren und empfangen kann.

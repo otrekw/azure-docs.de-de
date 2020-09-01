@@ -12,22 +12,23 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.subservice: compliance
-ms.date: 06/18/2020
+ms.date: 08/25/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 710c81c7b5c6abbf499f2cb43570db94df1a3db5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: contperfq1
+ms.openlocfilehash: dbcd8ab2f2825e18943436dcc1a9ca4ff38e2d8d
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87034401"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88871206"
 ---
 # <a name="what-is-azure-ad-entitlement-management"></a>Was ist die Azure AD-Berechtigungsverwaltung?
 
 Die Berechtigungsverwaltung von Azure Active Directory (Azure AD) ist ein [Identitätsgovernance](identity-governance-overview.md)-Feature, mit dem Organisationen Identitäten und Zugriffszyklus skaliert verwalten können, indem sie Zugriffsanforderungsworkflows, Zugriffszuweisungen, Überprüfungen und Ablaufzeiten automatisieren.
 
-Mitarbeiter in Organisationen benötigen für ihre Aufgaben Zugriff auf verschiedene Gruppen, Anwendungen und Websites. Die Verwaltung dieses Zugriffs ist eine Herausforderung, da sich die Anforderungen ändern, weil neue Anwendungen hinzugefügt werden oder Benutzer zusätzliche Zugriffsrechte benötigen.  Dieses Szenario wird noch komplizierter, wenn Sie mit externen Organisationen zusammenarbeiten, weil Sie u. U. nicht wissen, wer in der anderen Organisation Zugriff auf die Ressourcen Ihres Unternehmens benötigt, und diese Organisationen nicht wissen, welche Anwendungen, Gruppen oder Standorte in Ihrer Organisation verwendet werden.
+Mitarbeiter in Organisationen benötigen für ihre Aufgaben Zugriff auf verschiedene Gruppen, Anwendungen und Websites. Die Verwaltung dieses Zugriffs ist eine Herausforderung, da sich die Anforderungen ändern, weil neue Anwendungen hinzugefügt werden oder Benutzer zusätzliche Zugriffsrechte benötigen.  Dieses Szenario wird noch komplizierter, wenn Sie mit externen Organisationen zusammenarbeiten, weil Sie u. U. nicht wissen, wer in der anderen Organisation Zugriff auf die Ressourcen Ihres Unternehmens benötigt, und diese Organisationen nicht wissen, welche Anwendungen, Gruppen oder Standorte in Ihrer Organisation verwendet werden.
 
 Mit der Berechtigungsverwaltung von Azure AD können Sie den Zugriff auf Gruppen, Anwendungen und SharePoint Online-Websites für interne Benutzer und Benutzer außerhalb der Organisation, die auf diese Ressourcen zugreifen müssen, effizienter verwalten.
 
@@ -54,7 +55,10 @@ Einige Funktionen der Berechtigungsverwaltung:
 - Delegieren der Möglichkeit, Zugriffspakete zu erstellen, an Nicht-Administratoren. Diese Zugriffspakete enthalten Ressourcen, die von Benutzern angefordert werden können, und die delegierten Zugriffspaket-Manager können Richtlinien mit Regeln definieren, dein festlegen, welche Benutzer Zugriff anfordern können, wer den Zugriff genehmigen muss und wann der Zugriff abläuft.
 - Auswählen verbundener Organisationen, deren Benutzer Zugriff anfordern können.  Wenn ein Benutzer, der sich noch nicht im Verzeichnis befindet, Zugriff anfordert und dieser genehmigt wird, wird er automatisch in Ihr Verzeichnis eingeladen und Zugriff zugewiesen.  Wenn der Zugriff abläuft und keine anderen Zugriffspaketzuweisungen vorhanden sind, kann das betreffende B2B-Konto in Ihrem Verzeichnis automatisch entfernt werden.
 
-Arbeiten Sie zunächst das [Tutorial zum Erstellen des ersten Zugriffspakets](entitlement-management-access-package-first.md) durch. Sie können auch die [gängigen Szenarios](entitlement-management-scenarios.md) durchlesen oder Videos ansehen, z. B.:
+>[!NOTE]
+>Wenn Sie die Berechtigungsverwaltung ausprobieren möchten, können Sie mit dem [Tutorial zum Erstellen des ersten Zugriffspakets](entitlement-management-access-package-first.md) beginnen.
+
+Sie können auch die [gängigen Szenarios](entitlement-management-scenarios.md) durchlesen oder Videos ansehen, z. B.:
 
 - [Bereitstellen der Azure AD-Berechtigungsverwaltung in Ihrer Organisation](https://www.youtube.com/watch?v=zaaKvaaYwI4)
 - [Überwachen und Skalieren der Verwendung der Azure AD-Berechtigungsverwaltung](https://www.youtube.com/watch?v=omtNJ7ySjS0)
@@ -68,7 +72,7 @@ Die Berechtigungsverwaltung führt in Azure AD das Konzept von *Zugriffspaketen*
 
 - Mitgliedschaft in Azure AD-Sicherheitsgruppen
 - Mitgliedschaft in Microsoft 365-Gruppen und -Teams
-- Zuweisung zu Azure AD-Unternehmensanwendungen wie SaaS-Anwendungen und kundenspezifisch integrierten Anwendungen, die Verbund-/Einzelanmeldung und/oder Bereitstellung unterstützen
+- Zuweisung zu Azure AD-Unternehmensanwendungen wie SaaS-Anwendungen und kundenspezifisch integrierten Anwendungen, die Verbund-/Einzelanmeldung und/oder Bereitstellung unterstützen
 - Mitgliedschaft in SharePoint Online-Websites
 
 Sie können auch den Zugriff auf andere Ressourcen steuern, die auf Azure AD-Sicherheitsgruppen oder Microsoft 365-Gruppen basieren.  Beispiel:
@@ -101,8 +105,8 @@ Im folgenden Diagramm wird ein Beispiel für die verschiedenen Elemente der Bere
 
 Zugriffspakete ersetzen keine anderen Mechanismen für die Zugriffszuweisung.  Sie eignen sich am besten für folgende Situationen:
 
-- Mitarbeiter benötigen zeitlich begrenzten Zugriff für eine bestimmte Aufgabe.  Sie können beispielsweise die gruppenbasierte Lizenzierung und eine dynamische Gruppe verwenden, um sicherzustellen, dass alle Mitarbeiter über ein Exchange Online-Postfach verfügen, und dann Zugriffspakete in Situationen verwenden, in denen Mitarbeiter zusätzliche Zugriffsrechte benötigen, z. B. zum Lesen von abteilungsspezifischen Ressourcen einer anderen Abteilung.
-- Der Zugriff muss vom Vorgesetzten eines Mitarbeiters oder von anderen festgelegten Personen genehmigt werden.
+- Mitarbeiter benötigen zeitlich begrenzten Zugriff für eine bestimmte Aufgabe.  Sie können beispielsweise die gruppenbasierte Lizenzierung und eine dynamische Gruppe verwenden, um sicherzustellen, dass alle Mitarbeiter über ein Exchange Online-Postfach verfügen, und dann Zugriffspakete in Situationen verwenden, in denen Mitarbeiter zusätzliche Zugriffsrechte benötigen, z. B. zum Lesen von abteilungsspezifischen Ressourcen einer anderen Abteilung.
+- Zugriff, der vom Vorgesetzten eines Mitarbeiters oder von anderen festgelegten Personen genehmigt werden muss
 - Abteilungen möchten eigene Zugriffsrichtlinien für ihre Ressourcen ohne Beteiligung der IT verwalten.  
 - Zwei oder mehr Organisationen arbeiten in einem Projekt zusammen, sodass mehrere Benutzer aus einer Organisation über Azure AD B2B integriert werden müssen, um auf die Ressourcen einer anderen Organisation zugreifen zu können.
 
@@ -121,7 +125,7 @@ Zum besseren Verständnis der Berechtigungsverwaltung und der dazugehörigen Dok
 | Zuweisung | Die Zuweisung eines Zugriffspakets für einen Benutzer stellt sicher, dass der Benutzer über alle Ressourcenrollen des betreffenden Zugriffspakets verfügt.  Zugriffspaketzuweisungen sind normalerweise zeitlich begrenzt, bevor sie ablaufen. |
 | catalog | Ein Container verwandter Ressourcen und Zugriffspakete.  Kataloge werden für die Delegierung verwendet, damit Nicht-Administratoren eigene Zugriffspakete erstellen können. Katalogbesitzer können Ressourcen, deren Besitzer sie sind, zu einem Katalog hinzufügen. |
 | Katalogersteller | Eine Auflistung der Benutzer, die berechtigt sind, neue Kataloge zu erstellen.  Wenn ein Nicht-Administratorbenutzer, der als Katalogersteller autorisiert wurde, einen neuen Katalog erstellt, wird er automatisch Besitzer des betreffenden Katalogs. |
-| Verbundene Organisation | Ein externes Azure AD-Verzeichnis bzw. eine externe Domäne, zu der eine Beziehung besteht. Die Benutzer einer verbundenen Organisation können in einer Richtlinie als Benutzer angegeben werden, die Zugriff anfordern dürfen. |
+| Verbundene Organisation | Ein externes Azure AD-Verzeichnis bzw. eine externe Domäne, zu der eine Beziehung besteht. Die Benutzer einer verbundenen Organisation können in einer Richtlinie als Benutzer angegeben werden, die Zugriff anfordern dürfen. |
 | policy | Mehrere Regeln, die den Zugriffslebenszyklus definieren. Sie legen beispielsweise fest, wie Benutzer Zugriff erhalten, wer den Zugriff genehmigen darf und wie lange Benutzer durch eine Zuweisung Zugriff haben. Eine Richtlinie ist mit einem Zugriffspaket verknüpft. Ein Zugriffspaket kann beispielsweise zwei Richtlinien enthalten: eine für Mitarbeiter, um Zugriff anzufordern, und eine zweite für externe Benutzer, um Zugriff anzufordern. |
 | resource | Ein Asset, z. B. eine Office-Gruppe, eine Sicherheitsgruppe, eine Anwendung oder eine SharePoint Online-Website, mit einer Rolle, für die einem Benutzer Berechtigungen erteilt werden können. |
 | Ressourcenverzeichnis | Ein Verzeichnis, das mindestens eine Ressource enthält, die freigegeben (geteilt) werden soll. |
@@ -149,7 +153,7 @@ Für die folgenden Aufgaben sind **keine** Azure AD Premium P2-Lizenzen erforde
 - Für Benutzer, an die administrative Aufgaben (z. B. Katalogersteller, Katalogbesitzer und Zugriffspaketmanager) delegiert wurden, sind keine Lizenzen erforderlich.
 - Für Gäste, die Zugriffspakete anfordern **können**, aber **kein** Zugriffspaket anfordern, sind keine Lizenzen erforderlich.
 
-Für jede bezahlte Azure AD Premium P2-Lizenz, die Sie für Ihre Mitgliedsbenutzer (Mitarbeiter) erwerben, können Sie mit Azure AD B2B bis zu fünf (5) Gastbenutzer einladen. Diese Gastbenutzer können auch Azure AD Premium P2-Features nutzen. Weitere Informationen finden Sie unter [Leitfaden zur Lizenzierung von Azure Active Directory B2B-Kollaboration](../b2b/licensing-guidance.md).
+Für jede bezahlte Azure AD Premium P2-Lizenz, die Sie für Ihre Mitgliedsbenutzer (Mitarbeiter) erwerben, können Sie mit Azure AD B2B bis zu fünf Gastbenutzer einladen. Diese Gastbenutzer können auch Azure AD Premium P2-Features nutzen. Weitere Informationen finden Sie unter [Leitfaden zur Lizenzierung von Azure Active Directory B2B-Kollaboration](../external-identities/licensing-guidance.md).
 
 Weitere Informationen zu Lizenzen finden Sie unter [Zuweisen oder Entfernen von Lizenzen im Azure Active Directory-Portal](../fundamentals/license-users-groups.md).
 

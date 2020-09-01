@@ -5,12 +5,12 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 05/12/2020
 ms.custom: mvc
-ms.openlocfilehash: 80944d99c51ae4880a40df8700a73d08a95efe77
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: c41fb7426cf740b5861b0b571cf7ce5c54d681ef
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83656939"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757607"
 ---
 # <a name="back-up-a-virtual-machine-in-azure"></a>Sichern eines virtuellen Computers in Azure
 
@@ -24,7 +24,7 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
 ## <a name="select-a-vm-to-back-up"></a>Auswählen einer zu sichernden VM
 
-Erstellen Sie eine einfache geplante tägliche Sicherung in einem Recovery Services-Tresor.
+Erstellen Sie eine einfache geplante tägliche Sicherung in einem Recovery Services-Tresor.
 
 1. Wählen Sie im Menü auf der linken Seite **Virtuelle Computer** aus.
 2. Wählen Sie in der Liste eine VM aus, die gesichert werden soll. Bei Verwendung der VM-Beispielbefehle aus der Schnellstartanleitung hat der virtuelle Computer den Namen *myVM* und befindet sich in der Ressourcengruppe *myResourceGroup*.

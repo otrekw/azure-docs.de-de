@@ -9,18 +9,18 @@ ms.topic: quickstart
 ms.date: 05/08/2020
 ms.author: chez
 ms.reviewer: mariozi
-ms.openlocfilehash: 9caa4690fa6b9d6c473bb8863acdcbbe15a37fba
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: c7d3dae2b7da2fcc14e86eb4965ebd99fd7bf681
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85569388"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88650575"
 ---
 # <a name="encrypt-azure-data-factory-with-customer-managed-keys"></a>Verschlüsseln von Azure Data Factory mit vom Kunden verwalteten Schlüsseln
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-Azure Data Factory verschlüsselt ruhende Daten (einschließlich Entitätsdefinitionen), zwischengespeicherte Daten während der Ausführung von Vorgängen sowie für die Datenvorschau zwischengespeicherte Daten. Standardmäßig werden Daten mit einem zufällig generierten und von Microsoft verwalteten Schlüssel verschlüsselt, der Ihrer Data Factory eindeutig zugewiesen ist. Um zusätzliche Sicherheitsgarantien zu erhalten, können Sie jetzt Bring Your Own Key (BYOK) mit vom Kunden verwalteten Schlüsseln in Azure Data Factory aktivieren. Wenn Sie einen vom Kunden verwalteten Schlüssel angeben, verwendet Data Factory zum Verschlüsseln von Kundendaten __sowohl__ den Factory-Systemschlüssel als auch den vom Kunden verwalteten Schlüssel. Wenn einer der Schlüssel fehlt, wird der Zugriff auf die Daten und auf die Data Factory verweigert.
+Azure Data Factory verschlüsselt ruhende Daten (einschließlich Entitätsdefinitionen) und zwischengespeicherte Daten während der Ausführung von Vorgängen. Standardmäßig werden Daten mit einem zufällig generierten und von Microsoft verwalteten Schlüssel verschlüsselt, der Ihrer Data Factory eindeutig zugewiesen ist. Um zusätzliche Sicherheitsgarantien zu erhalten, können Sie jetzt Bring Your Own Key (BYOK) mit vom Kunden verwalteten Schlüsseln in Azure Data Factory aktivieren. Wenn Sie einen vom Kunden verwalteten Schlüssel angeben, verwendet Data Factory zum Verschlüsseln von Kundendaten __sowohl__ den Factory-Systemschlüssel als auch den vom Kunden verwalteten Schlüssel. Wenn einer der Schlüssel fehlt, wird der Zugriff auf die Daten und auf die Data Factory verweigert.
 
 Zum Speichern von kundenseitig verwalteten Schlüsseln ist Azure Key Vault erforderlich. Sie können entweder Ihre eigenen Schlüssel erstellen und in einem Schlüsseltresor speichern oder mit den Azure Key Vault-APIs Schlüssel generieren. Der Schlüsseltresor und Data Factory müssen sich im selben Azure Active Directory-Mandanten (Azure AD-Mandanten) und in derselben Region befinden, aber sie können sich in verschiedenen Abonnements befinden. Weitere Informationen zum Azure-Schlüsseltresor finden Sie unter [Was ist der Azure-Schlüsseltresor?](../key-vault/general/overview.md)
 
@@ -76,7 +76,7 @@ Sie können entweder Ihre eigenen Schlüssel erstellen und in einem Schlüsseltr
 
     ![Screenshot: Abrufen des Schlüssel-URIs aus Azure Key Vault](media/enable-customer-managed-key/04-get-key-identifier.png)
 
-1. Starten Sie das Azure Data Factory-Portal, und wechseln Sie über die Navigationsleiste auf der linken Seite zur Data Factory-Startseite.
+1. Starten Sie das Azure Data Factory-Portal, und wechseln Sie über die Navigationsleiste auf der linken Seite zum Data Factory-Verwaltungsportal.
 
 1. Klicken Sie auf das Symbol __Vom Kunden verwalteter Schlüssel__.
 

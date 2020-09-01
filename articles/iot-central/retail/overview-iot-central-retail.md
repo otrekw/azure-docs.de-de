@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-central
 ms.subservice: iot-central-retail
 services: iot-central
-ms.openlocfilehash: c060b87b24d7467097d06adecb9f34acb4993779
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 3cae2902385eb82f65243c631745df5ca48825f3
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88032287"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88719217"
 ---
 # <a name="building-retail-solutions-with-azure-iot-central"></a>Erstellen von Lösungen für den Einzelhandel mit Azure IoT Central
 
@@ -160,20 +160,20 @@ Die Videoanalyseanwendung verwendet ein in IoT Edge ausgeführtes LVA-Modul ([L
 
 Die Anwendungsvorlage enthält vier Anwendungsdashboards:
 
-* **Setup** (Einrichten): Enthält Informationen zum Anwendungsentwurf und ermöglicht das Hinzufügen und Löschen von Kameras.
-* **Manage** (Verwalten): Ermöglicht die Verwaltung Ihrer Kameras. Hier können Sie beispielsweise die Kameras konfigurieren, Statusinformationen anzeigen und Kameras starten.
-* **Real Cameras** (Echte Kameras): Hier können Sie Informationen Ihrer echten Kameras wie etwa die Anzahl von Erkennungen sowie Kameraereignisse anzeigen.
-* **Monitor** (Überwachen): Hier können Sie ausführliche Informationen von allen Kameras anzeigen.
+* Unter **Erste Schritte** finden Sie Links zu Ressourcen, die Sie bei den ersten Schritten mit der Anwendungsvorlage unterstützen.
+* Das **Demodashboard** enthält eine Darstellung der Arten von Informationen, die Sie von den angeschlossenen Kameras anzeigen können.
+* **(Sample) Real Camera Management** ((Beispiel) Verwaltung echter Kameras) nutzt simulierte Kameras, um zu veranschaulichen, wie Sie Ihre Kameras über die Anwendung verwalten können.
+* **(Sample) Real Camera Monitor** ((Beispiel) Überwachung für echte Kamera) nutzt simulierte Kameras, um zu veranschaulichen, wie Sie Ihre Kameras über die Anwendung überwachen können.
 
 :::image type="content" source="media/overview-iot-central-retail/live-video-analytics.png" alt-text="Videoanalyse: Objekt- und Bewegungserkennung":::
 
 Weitere Informationen zur Architektur der Lösung finden Sie unter [Videoanalyse: Anwendungsarchitektur für die Objekt- und Bewegungserkennung](architecture-video-analytics.md).
 
-Eine Bereitstellungsanleitung für die Lösung finden Sie im Tutorial [Erstellen einer Videoanalyseanwendung mit Objekt- und Bewegungserkennung in Azure IoT Central](tutorial-video-analytics-create-app.md).
+Eine Bereitstellungsanleitung für die Lösung finden Sie im Tutorial [Erstellen einer Videoanalyseanwendung mit Objekt- und Bewegungserkennung in Azure IoT Central](tutorial-video-analytics-deploy.md).
 
 ### <a name="live-video-analytics"></a>Live Video Analytics
 
-Live Video Analytics ist eine Plattform für die Erstellung intelligenter Videoanwendungen, die den Edge und die Cloud umfassen. Die Plattform bietet die Möglichkeit, Livevideos zu erfassen, aufzuzeichnen und zu analysieren sowie die Ergebnisse (Video oder Videoanalyse) in Azure-Diensten zu veröffentlichen. Die Azure-Dienste können in der Cloud oder im Edgebereich ausgeführt werden. Mithilfe der Plattform können IoT-Lösungen durch Videoanalysen ergänzt werden.
+[Live Video Analytics](https://github.com/Azure/live-video-analytics) ist eine Plattform für die Erstellung intelligenter Videoanwendungen, die den Edge und die Cloud umfassen. Die Plattform bietet die Möglichkeit, Livevideos zu erfassen, aufzuzeichnen und zu analysieren sowie die Ergebnisse (Video oder Videoanalyse) in Azure-Diensten zu veröffentlichen. Die Azure-Dienste können in der Cloud oder im Edgebereich ausgeführt werden. Mithilfe der Plattform können IoT-Lösungen durch Videoanalysen ergänzt werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -184,4 +184,5 @@ Gehen Sie wie folgt vor, um eine Lösung für den Einzelhandel zu erstellen:
 * [Bereitstellen und Durchlaufen einer Anwendungsvorlage für digitale Verteilzentren](./tutorial-iot-central-digital-distribution-center.md)
 * [Bereitstellen und Durchlaufen einer Anwendungsvorlage für intelligente Bestandsverwaltung](./tutorial-iot-central-smart-inventory-management.md)
 * [Bereitstellen und Durchlaufen einer Anwendungsvorlage für intelligente Bestandsverwaltung](./tutorial-micro-fulfillment-center.md)
+* [Bereitstellung und exemplarische Vorgehensweise für die Anwendungsvorlage für die Videoanalyse](./tutorial-video-analytics-deploy.md)
 * Weitere Informationen zu IoT Central finden Sie in der [Übersicht über IoT Central](../preview/overview-iot-central.md).

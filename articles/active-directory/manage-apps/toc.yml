@@ -238,12 +238,6 @@
               href: application-types.md
             - name: Unerwarteter Benutzer zugewiesen
               href: ways-users-get-assigned-to-applications.md
-        - name: Problembehandlung für „Meine Apps“
-          items:
-            - name: App wird nicht angezeigt
-              href: access-panel-troubleshoot-application-not-appearing.md
-            - name: App wird unerwartet angezeigt
-              href: access-panel-troubleshoot-unexpected-application.md
         - name: Problembehandlung für lokale Apps
           items:
             - name: Problembehandlung für Anwendungsproxys

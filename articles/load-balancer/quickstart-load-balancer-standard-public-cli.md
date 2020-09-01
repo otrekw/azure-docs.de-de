@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/20/2020
+ms.date: 08/23/2020
 ms.author: allensu
 ms.custom: mvc, devx-track-javascript, devx-track-azurecli
-ms.openlocfilehash: c80b4e57c94737778d8e6f63804d95f4d1b35fb0
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: b437bfa205833594c9e76c6f0d8ff1923f51f117
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87501796"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88762707"
 ---
 # <a name="quickstart-create-a-public-load-balancer-to-load-balance-vms-using-azure-cli"></a>Schnellstart: Erstellen eines öffentlichen Lastenausgleichs für virtuelle Computer mithilfe der Azure CLI
 
@@ -52,118 +52,10 @@ Erstellen Sie mit [az group create](https://docs.microsoft.com/cli/azure/group?v
 ```
 ---
 
-# <a name="option-1-default-create-a-load-balancer-standard-sku"></a>[Option 1 (Standard): Erstellen eines Lastenausgleichs (Standard-SKU)](#tab/option-1-create-load-balancer-standard)
+# <a name="standard-sku"></a>[**Standard-SKU**](#tab/option-1-create-load-balancer-standard)
 
 >[!NOTE]
 >Ein Lastenausgleich mit Standard-SKU wird für Produktionsworkloads empfohlen. Weitere Informationen zu SKUs finden Sie unter **[Azure Load Balancer-SKUs](skus.md)** .
-
-
-## <a name="create-a-public-ip-address"></a>Erstellen einer öffentlichen IP-Adresse
-
-Um über das Internet auf Ihre Web-App zugreifen zu können, benötigen Sie eine öffentliche IP-Adresse für den Lastenausgleich. 
-
-Verwenden Sie [az network public-ip create](https://docs.microsoft.com/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create) für Folgendes:
-
-* Erstellen einer standardmäßigen zonenredundanten öffentlichen IP-Adresse namens **myPublicIP**
-* Ressourcengruppe: **myResourceGroupLB**
-
-```azurecli-interactive
-  az network public-ip create \
-    --resource-group myResourceGroupLB \
-    --name myPublicIP \
-    --sku Standard
-```
-
-So erstellen Sie eine zonenredundante öffentliche IP-Adresse in Zone 1:
-
-```azurecli-interactive
-  az network public-ip create \
-    --resource-group myResourceGroupLB \
-    --name myPublicIP \
-    --sku Standard \
-    --zone 1
-```
-
-## <a name="create-standard-load-balancer"></a>Erstellen eines Standard-Lastenausgleichs
-
-In diesem Abschnitt erfahren Sie, wie Sie die folgenden Komponenten des Lastenausgleichs erstellen und konfigurieren:
-
-  * Front-End-IP-Pool, der den eingehenden Netzwerkdatenverkehr für den Lastenausgleich empfängt
-  * Back-End-IP-Pool, an den der Front-End-Pool den Netzwerkdatenverkehr sendet, für den ein Lastenausgleich durchgeführt wurde
-  * Integritätstest zum Ermitteln der Integrität der Back-End-VM-Instanzen
-  * Lastenausgleichsregel, mit der definiert wird, wie Datenverkehr auf die virtuellen Computer verteilt werden soll
-
-### <a name="create-the-load-balancer-resource"></a>Erstellen der Lastenausgleichsressource
-
-Erstellen Sie mit [az network lb create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest#az-network-lb-create) einen öffentlichen Lastenausgleich:
-
-* Name: **myLoadBalancer**
-* Front-End-Pool namens **myFrontEnd**
-* Back-End-Pool namens **myBackEndPool**
-* Zugeordnet zur öffentlichen IP-Adresse **myPublicIP**, die im vorherigen Schritt erstellt wurde 
-
-```azurecli-interactive
-  az network lb create \
-    --resource-group myResourceGroupLB \
-    --name myLoadBalancer \
-    --sku Standard \
-    --public-ip-address myPublicIP \
-    --frontend-ip-name myFrontEnd \
-    --backend-pool-name myBackEndPool       
-```
-
-### <a name="create-the-health-probe"></a>Erstellen des Integritätstests
-
-Von einem Integritätstest werden alle VM-Instanzen überprüft, um sicherzustellen, dass sie Netzwerkdatenverkehr senden können. 
-
-Ist der Test bei einem virtuellen Computer nicht erfolgreich, wird er aus dem Lastenausgleich entfernt. Nach Behebung des Fehlers wird der virtuelle Computer dem Lastenausgleich wieder hinzugefügt.
-
-Erstellen Sie mit [az network lb probe create](https://docs.microsoft.com/cli/azure/network/lb/probe?view=azure-cli-latest#az-network-lb-probe-create) einen Integritätstest:
-
-* Überwacht die Integrität der virtuellen Computer
-* Name: **myHealthProbe**
-* Protokoll: **TCP**
-* Überwachter Port: **80**
-
-```azurecli-interactive
-  az network lb probe create \
-    --resource-group myResourceGroupLB \
-    --lb-name myLoadBalancer \
-    --name myHealthProbe \
-    --protocol tcp \
-    --port 80   
-```
-
-### <a name="create-the-load-balancer-rule"></a>Erstellen der Lastenausgleichsregel
-
-Durch eine Lastenausgleichsregel wird Folgendes definiert:
-
-* Front-End-IP-Konfiguration für den eingehenden Datenverkehr.
-* Back-End-IP-Pool zum Empfangen des Datenverkehrs.
-* Erforderliche Quell- und Zielports. 
-
-Erstellen Sie mit [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest#az-network-lb-rule-create) eine Lastenausgleichsregel:
-
-* Name: **myHTTPRule**
-* Lauscht am **Port 80** im Front-End-Pool **myFrontEnd**
-* Sendet Netzwerkdatenverkehr, für den ein Lastenausgleich durchgeführt wurde, an den Back-End-Adresspool **myBackEndPool** unter Verwendung von **Port 80** 
-* Verwendet den Integritätstest **myHealthProbe**
-* Protokoll: **TCP**
-* Aktivieren Sie die ausgehende Übersetzung der Quellnetzwerkadresse (Source Network Address Translation, SNAT) unter Verwendung der Front-End-IP-Adresse.
-
-```azurecli-interactive
-  az network lb rule create \
-    --resource-group myResourceGroupLB \
-    --lb-name myLoadBalancer \
-    --name myHTTPRule \
-    --protocol tcp \
-    --frontend-port 80 \
-    --backend-port 80 \
-    --frontend-ip-name myFrontEnd \
-    --backend-pool-name myBackEndPool \
-    --probe-name myHealthProbe \
-    --disable-outbound-snat true 
-```
 
 ## <a name="configure-virtual-network"></a>Konfigurieren eines virtuellen Netzwerks
 
@@ -174,7 +66,9 @@ Erstellen Sie zunächst die unterstützenden virtuellen Netzwerkressourcen, bevo
 Erstellen Sie mit [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet?view=azure-cli-latest#az-network-vnet-createt) ein virtuelles Netzwerk:
 
 * Name: **myVNet**
+* Adresspräfix: **10.1.0.0/16**
 * Subnetzname: **myBackendSubnet**
+* Subnetzpräfix: **10.1.0.0/24**
 * Ressourcengruppe: **myResourceGroupLB**
 * Standort: **eastus**
 
@@ -183,7 +77,9 @@ Erstellen Sie mit [az network vnet create](https://docs.microsoft.com/cli/azure/
     --resource-group myResourceGroupLB \
     --location eastus \
     --name myVNet \
-    --subnet-name myBackendSubnet
+    --address-prefixes 10.1.0.0/16 \
+    --subnet-name myBackendSubnet \
+    --subnet-prefixes 10.1.0.0/24
 ```
 
 ### <a name="create-a-network-security-group"></a>Erstellen einer Netzwerksicherheitsgruppe
@@ -208,7 +104,7 @@ Erstellen Sie mit [az network nsg rule create](https://docs.microsoft.com/cli/az
 * Name: **myNSGRuleHTTP**
 * Netzwerksicherheitsgruppe: **myNSG** (aus dem vorherigen Schritt)
 * Ressourcengruppe: **myResourceGroupLB**
-* Protokoll: **TCP**
+* Protokoll **(*)**
 * Richtung: **Eingehend**
 * Quelle: **(*)**
 * Ziel: **(*)**
@@ -221,7 +117,7 @@ Erstellen Sie mit [az network nsg rule create](https://docs.microsoft.com/cli/az
     --resource-group myResourceGroupLB \
     --nsg-name myNSG \
     --name myNSGRuleHTTP \
-    --protocol tcp \
+    --protocol '*' \
     --direction inbound \
     --source-address-prefix '*' \
     --source-port-range '*' \
@@ -242,7 +138,6 @@ Erstellen Sie mit [az network nic create](https://docs.microsoft.com/cli/azure/n
 * Virtuelles Netzwerk: **myVNet**
 * Subnetz: **myBackendSubnet**
 * Netzwerksicherheitsgruppe: **myNSG**
-* Angefügt an den Lastenausgleich **myLoadBalancer** in **myBackEndPool**
 
 ```azurecli-interactive
 
@@ -251,9 +146,7 @@ Erstellen Sie mit [az network nic create](https://docs.microsoft.com/cli/azure/n
     --name myNicVM1 \
     --vnet-name myVNet \
     --subnet myBackEndSubnet \
-    --network-security-group myNSG \
-    --lb-name myLoadBalancer \
-    --lb-address-pools myBackEndPool
+    --network-security-group myNSG
 ```
 #### <a name="vm2"></a>VM2
 
@@ -261,8 +154,6 @@ Erstellen Sie mit [az network nic create](https://docs.microsoft.com/cli/azure/n
 * Ressourcengruppe: **myResourceGroupLB**
 * Virtuelles Netzwerk: **myVNet**
 * Subnetz: **myBackendSubnet**
-* Netzwerksicherheitsgruppe: **myNSG**
-* Angefügt an den Lastenausgleich **myLoadBalancer** in **myBackEndPool**
 
 ```azurecli-interactive
   az network nic create \
@@ -270,9 +161,7 @@ Erstellen Sie mit [az network nic create](https://docs.microsoft.com/cli/azure/n
     --name myNicVM2 \
     --vnet-name myVnet \
     --subnet myBackEndSubnet \
-    --network-security-group myNSG \
-    --lb-name myLoadBalancer \
-    --lb-address-pools myBackEndPool
+    --network-security-group myNSG
 ```
 #### <a name="vm3"></a>VM3
 
@@ -281,7 +170,6 @@ Erstellen Sie mit [az network nic create](https://docs.microsoft.com/cli/azure/n
 * Virtuelles Netzwerk: **myVNet**
 * Subnetz: **myBackendSubnet**
 * Netzwerksicherheitsgruppe: **myNSG**
-* Angefügt an den Lastenausgleich **myLoadBalancer** in **myBackEndPool**
 
 ```azurecli-interactive
   az network nic create \
@@ -289,9 +177,7 @@ Erstellen Sie mit [az network nic create](https://docs.microsoft.com/cli/azure/n
     --name myNicVM3 \
     --vnet-name myVnet \
     --subnet myBackEndSubnet \
-    --network-security-group myNSG \
-    --lb-name myLoadBalancer \
-    --lb-address-pools myBackEndPool
+    --network-security-group myNSG
 ```
 
 ## <a name="create-backend-servers"></a>Erstellen von Back-End-Servern
@@ -412,6 +298,161 @@ Erstellen Sie mit [az vm create](https://docs.microsoft.com/cli/azure/vm?view=az
     --no-wait
 ```
 Die Bereitstellung der virtuellen Computer kann eine Weile dauern.
+
+## <a name="create-a-public-ip-address"></a>Erstellen einer öffentlichen IP-Adresse
+
+Um über das Internet auf Ihre Web-App zugreifen zu können, benötigen Sie eine öffentliche IP-Adresse für den Lastenausgleich. 
+
+Verwenden Sie [az network public-ip create](https://docs.microsoft.com/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create) für Folgendes:
+
+* Erstellen einer standardmäßigen zonenredundanten öffentlichen IP-Adresse namens **myPublicIP**
+* Ressourcengruppe: **myResourceGroupLB**
+
+```azurecli-interactive
+  az network public-ip create \
+    --resource-group myResourceGroupLB \
+    --name myPublicIP \
+    --sku Standard
+```
+
+So erstellen Sie eine zonenredundante öffentliche IP-Adresse in Zone 1:
+
+```azurecli-interactive
+  az network public-ip create \
+    --resource-group myResourceGroupLB \
+    --name myPublicIP \
+    --sku Standard \
+    --zone 1
+```
+
+## <a name="create-standard-load-balancer"></a>Erstellen eines Standard-Lastenausgleichs
+
+In diesem Abschnitt erfahren Sie, wie Sie die folgenden Komponenten des Lastenausgleichs erstellen und konfigurieren:
+
+  * Front-End-IP-Pool, der den eingehenden Netzwerkdatenverkehr für den Lastenausgleich empfängt
+  * Back-End-IP-Pool, an den der Front-End-Pool den Netzwerkdatenverkehr sendet, für den ein Lastenausgleich durchgeführt wurde
+  * Integritätstest zum Ermitteln der Integrität der Back-End-VM-Instanzen
+  * Lastenausgleichsregel, mit der definiert wird, wie Datenverkehr auf die virtuellen Computer verteilt werden soll
+
+### <a name="create-the-load-balancer-resource"></a>Erstellen der Lastenausgleichsressource
+
+Erstellen Sie mit [az network lb create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest#az-network-lb-create) einen öffentlichen Lastenausgleich:
+
+* Name: **myLoadBalancer**
+* Front-End-Pool namens **myFrontEnd**
+* Back-End-Pool namens **myBackEndPool**
+* Zugeordnet zur öffentlichen IP-Adresse **myPublicIP**, die im vorherigen Schritt erstellt wurde 
+
+```azurecli-interactive
+  az network lb create \
+    --resource-group myResourceGroupLB \
+    --name myLoadBalancer \
+    --sku Standard \
+    --public-ip-address myPublicIP \
+    --frontend-ip-name myFrontEnd \
+    --backend-pool-name myBackEndPool       
+```
+
+### <a name="create-the-health-probe"></a>Erstellen des Integritätstests
+
+Von einem Integritätstest werden alle VM-Instanzen überprüft, um sicherzustellen, dass sie Netzwerkdatenverkehr senden können. 
+
+Ist der Test bei einem virtuellen Computer nicht erfolgreich, wird er aus dem Lastenausgleich entfernt. Nach Behebung des Fehlers wird der virtuelle Computer dem Lastenausgleich wieder hinzugefügt.
+
+Erstellen Sie mit [az network lb probe create](https://docs.microsoft.com/cli/azure/network/lb/probe?view=azure-cli-latest#az-network-lb-probe-create) einen Integritätstest:
+
+* Überwacht die Integrität der virtuellen Computer
+* Name: **myHealthProbe**
+* Protokoll: **TCP**
+* Überwachter Port: **80**
+
+```azurecli-interactive
+  az network lb probe create \
+    --resource-group myResourceGroupLB \
+    --lb-name myLoadBalancer \
+    --name myHealthProbe \
+    --protocol tcp \
+    --port 80   
+```
+
+### <a name="create-the-load-balancer-rule"></a>Erstellen der Lastenausgleichsregel
+
+Durch eine Lastenausgleichsregel wird Folgendes definiert:
+
+* Front-End-IP-Konfiguration für den eingehenden Datenverkehr.
+* Back-End-IP-Pool zum Empfangen des Datenverkehrs.
+* Erforderliche Quell- und Zielports. 
+
+Erstellen Sie mit [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest#az-network-lb-rule-create) eine Lastenausgleichsregel:
+
+* Name: **myHTTPRule**
+* Lauscht am **Port 80** im Front-End-Pool **myFrontEnd**
+* Sendet Netzwerkdatenverkehr, für den ein Lastenausgleich durchgeführt wurde, an den Back-End-Adresspool **myBackEndPool** unter Verwendung von **Port 80** 
+* Verwendet den Integritätstest **myHealthProbe**
+* Protokoll: **TCP**
+* Aktivieren Sie die ausgehende Übersetzung der Quellnetzwerkadresse (Source Network Address Translation, SNAT) unter Verwendung der Front-End-IP-Adresse.
+
+```azurecli-interactive
+  az network lb rule create \
+    --resource-group myResourceGroupLB \
+    --lb-name myLoadBalancer \
+    --name myHTTPRule \
+    --protocol tcp \
+    --frontend-port 80 \
+    --backend-port 80 \
+    --frontend-ip-name myFrontEnd \
+    --backend-pool-name myBackEndPool \
+    --probe-name myHealthProbe \
+    --disable-outbound-snat true 
+```
+### <a name="add-virtual-machines-to-load-balancer-backend-pool"></a>Hinzufügen virtueller Computer zum Back-End-Pool des Lastenausgleichs
+
+Fügen Sie mit [az network nic ip-config address-pool add](https://docs.microsoft.com/cli/azure/network/nic/ip-config/address-pool?view=azure-cli-latest#az-network-nic-ip-config-address-pool-add) die virtuellen Computer zum Back-End-Pool hinzu:
+
+#### <a name="vm1"></a>VM1
+* Back-End-Adresspool: **myBackEndPool**
+* Ressourcengruppe: **myResourceGroupLB**
+* Zugeordnet zur Netzwerkschnittstelle **myNicVM1** und zu **ipconfig1**
+* Zugeordnet zum Lastenausgleich **myLoadBalancer**
+
+```azurecli-interactive
+  az network nic ip-config address-pool add \
+   --address-pool myBackendPool \
+   --ip-config-name ipconfig1 \
+   --nic-name myNicVM1 \
+   --resource-group myResourceGroupLB \
+   --lb-name myLoadBalancer
+```
+
+#### <a name="vm2"></a>VM2
+* Back-End-Adresspool: **myBackEndPool**
+* Ressourcengruppe: **myResourceGroupLB**
+* Zugeordnet zur Netzwerkschnittstelle **myNicVM2** und zu **ipconfig1**
+* Zugeordnet zum Lastenausgleich **myLoadBalancer**
+
+```azurecli-interactive
+  az network nic ip-config address-pool add \
+   --address-pool myBackendPool \
+   --ip-config-name ipconfig1 \
+   --nic-name myNicVM2 \
+   --resource-group myResourceGroupLB \
+   --lb-name myLoadBalancer
+```
+
+#### <a name="vm3"></a>VM3
+* Back-End-Adresspool: **myBackEndPool**
+* Ressourcengruppe: **myResourceGroupLB**
+* Zugeordnet zur Netzwerkschnittstelle **myNicVM3** und zu **ipconfig1**
+* Zugeordnet zum Lastenausgleich **myLoadBalancer**
+
+```azurecli-interactive
+  az network nic ip-config address-pool add \
+   --address-pool myBackendPool \
+   --ip-config-name ipconfig1 \
+   --nic-name myNicVM3 \
+   --resource-group myResourceGroupLB \
+   --lb-name myLoadBalancer
+```
 
 ## <a name="create-outbound-rule-configuration"></a>Erstellen der Konfiguration für Ausgangsregeln
 Ausgangsregeln für den Lastenausgleich konfigurieren das ausgehende SNAT für virtuelle Computer im Back-End-Pool. 
@@ -593,106 +634,10 @@ Fügen Sie mit [az network nic ip-config address-pool add](https://docs.microsof
    --lb-name myLoadBalancer
 ```
 
-# <a name="option-2-create-a-load-balancer-basic-sku"></a>[Option 2: Erstellen eines Lastenausgleichs (Basic-SKU)](#tab/option-1-create-load-balancer-basic)
+# <a name="basic-sku"></a>[**Basic-SKU**](#tab/option-1-create-load-balancer-basic)
 
 >[!NOTE]
 >Ein Lastenausgleich mit Standard-SKU wird für Produktionsworkloads empfohlen. Weitere Informationen zu SKUs finden Sie unter **[Azure Load Balancer-SKUs](skus.md)** .
-
-
-## <a name="create-a-public-ip-address"></a>Erstellen einer öffentlichen IP-Adresse
-
-Um über das Internet auf Ihre Web-App zugreifen zu können, benötigen Sie eine öffentliche IP-Adresse für den Lastenausgleich. 
-
-Verwenden Sie [az network public-ip create](https://docs.microsoft.com/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create) für Folgendes:
-
-* Erstellen einer standardmäßigen zonenredundanten öffentlichen IP-Adresse namens **myPublicIP**
-* Ressourcengruppe: **myResourceGroupLB**
-
-```azurecli-interactive
-  az network public-ip create \
-    --resource-group myResourceGroupLB \
-    --name myPublicIP \
-    --sku Basic
-```
-
-## <a name="create-basic-load-balancer"></a>Erstellen eines Basic-Lastenausgleichs
-
-In diesem Abschnitt erfahren Sie, wie Sie die folgenden Komponenten des Lastenausgleichs erstellen und konfigurieren:
-
-  * Front-End-IP-Pool, der den eingehenden Netzwerkdatenverkehr für den Lastenausgleich empfängt
-  * Back-End-IP-Pool, an den der Front-End-Pool den Netzwerkdatenverkehr sendet, für den ein Lastenausgleich durchgeführt wurde
-  * Integritätstest zum Ermitteln der Integrität der Back-End-VM-Instanzen
-  * Lastenausgleichsregel, mit der definiert wird, wie Datenverkehr auf die virtuellen Computer verteilt werden soll
-
-### <a name="create-the-load-balancer-resource"></a>Erstellen der Lastenausgleichsressource
-
-Erstellen Sie mit [az network lb create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest#az-network-lb-create) einen öffentlichen Lastenausgleich:
-
-* Name: **myLoadBalancer**
-* Front-End-Pool namens **myFrontEnd**
-* Back-End-Pool namens **myBackEndPool**
-* Zugeordnet zur öffentlichen IP-Adresse **myPublicIP**, die im vorherigen Schritt erstellt wurde 
-
-```azurecli-interactive
-  az network lb create \
-    --resource-group myResourceGroupLB \
-    --name myLoadBalancer \
-    --sku Basic \
-    --public-ip-address myPublicIP \
-    --frontend-ip-name myFrontEnd \
-    --backend-pool-name myBackEndPool       
-```
-
-### <a name="create-the-health-probe"></a>Erstellen des Integritätstests
-
-Von einem Integritätstest werden alle VM-Instanzen überprüft, um sicherzustellen, dass sie Netzwerkdatenverkehr senden können. 
-
-Ist der Test bei einem virtuellen Computer nicht erfolgreich, wird er aus dem Lastenausgleich entfernt. Nach Behebung des Fehlers wird der virtuelle Computer dem Lastenausgleich wieder hinzugefügt.
-
-Erstellen Sie mit [az network lb probe create](https://docs.microsoft.com/cli/azure/network/lb/probe?view=azure-cli-latest#az-network-lb-probe-create) einen Integritätstest:
-
-* Überwacht die Integrität der virtuellen Computer
-* Name: **myHealthProbe**
-* Protokoll: **TCP**
-* Überwachter Port: **80**
-
-```azurecli-interactive
-  az network lb probe create \
-    --resource-group myResourceGroupLB \
-    --lb-name myLoadBalancer \
-    --name myHealthProbe \
-    --protocol tcp \
-    --port 80   
-```
-
-### <a name="create-the-load-balancer-rule"></a>Erstellen der Lastenausgleichsregel
-
-Durch eine Lastenausgleichsregel wird Folgendes definiert:
-
-* Front-End-IP-Konfiguration für den eingehenden Datenverkehr.
-* Back-End-IP-Pool zum Empfangen des Datenverkehrs.
-* Erforderliche Quell- und Zielports. 
-
-Erstellen Sie mit [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest#az-network-lb-rule-create) eine Lastenausgleichsregel:
-
-* Name: **myHTTPRule**
-* Lauscht am **Port 80** im Front-End-Pool **myFrontEnd**
-* Sendet Netzwerkdatenverkehr, für den ein Lastenausgleich durchgeführt wurde, an den Back-End-Adresspool **myBackEndPool** unter Verwendung von **Port 80** 
-* Verwendet den Integritätstest **myHealthProbe**
-* Protokoll: **TCP**
-
-```azurecli-interactive
-  az network lb rule create \
-    --resource-group myResourceGroupLB \
-    --lb-name myLoadBalancer \
-    --name myHTTPRule \
-    --protocol tcp \
-    --frontend-port 80 \
-    --backend-port 80 \
-    --frontend-ip-name myFrontEnd \
-    --backend-pool-name myBackEndPool \
-    --probe-name myHealthProbe
-```
 
 ## <a name="configure-virtual-network"></a>Konfigurieren eines virtuellen Netzwerks
 
@@ -703,7 +648,9 @@ Erstellen Sie zunächst die unterstützenden virtuellen Netzwerkressourcen, bevo
 Erstellen Sie mit [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet?view=azure-cli-latest#az-network-vnet-createt) ein virtuelles Netzwerk:
 
 * Name: **myVNet**
+* Adresspräfix: **10.1.0.0/16**
 * Subnetzname: **myBackendSubnet**
+* Subnetzpräfix: **10.1.0.0/24**
 * Ressourcengruppe: **myResourceGroupLB**
 * Standort: **eastus**
 
@@ -712,7 +659,9 @@ Erstellen Sie mit [az network vnet create](https://docs.microsoft.com/cli/azure/
     --resource-group myResourceGroupLB \
     --location eastus \
     --name myVNet \
-    --subnet-name myBackendSubnet
+    --address-prefixes 10.1.0.0/16 \
+    --subnet-name myBackendSubnet \
+    --subnet-prefixes 10.1.0.0/24
 ```
 
 ### <a name="create-a-network-security-group"></a>Erstellen einer Netzwerksicherheitsgruppe
@@ -737,7 +686,7 @@ Erstellen Sie mit [az network nsg rule create](https://docs.microsoft.com/cli/az
 * Name: **myNSGRuleHTTP**
 * Netzwerksicherheitsgruppe: **myNSG** (aus dem vorherigen Schritt)
 * Ressourcengruppe: **myResourceGroupLB**
-* Protokoll: **TCP**
+* Protokoll **(*)**
 * Richtung: **Eingehend**
 * Quelle: **(*)**
 * Ziel: **(*)**
@@ -750,7 +699,7 @@ Erstellen Sie mit [az network nsg rule create](https://docs.microsoft.com/cli/az
     --resource-group myResourceGroupLB \
     --nsg-name myNSG \
     --name myNSGRuleHTTP \
-    --protocol tcp \
+    --protocol '*' \
     --direction inbound \
     --source-address-prefix '*' \
     --source-port-range '*' \
@@ -771,7 +720,6 @@ Erstellen Sie mit [az network nic create](https://docs.microsoft.com/cli/azure/n
 * Virtuelles Netzwerk: **myVNet**
 * Subnetz: **myBackendSubnet**
 * Netzwerksicherheitsgruppe: **myNSG**
-* Angefügt an den Lastenausgleich **myLoadBalancer** in **myBackEndPool**
 
 ```azurecli-interactive
 
@@ -780,9 +728,7 @@ Erstellen Sie mit [az network nic create](https://docs.microsoft.com/cli/azure/n
     --name myNicVM1 \
     --vnet-name myVNet \
     --subnet myBackEndSubnet \
-    --network-security-group myNSG \
-    --lb-name myLoadBalancer \
-    --lb-address-pools myBackEndPool
+    --network-security-group myNSG
 ```
 #### <a name="vm2"></a>VM2
 
@@ -791,17 +737,14 @@ Erstellen Sie mit [az network nic create](https://docs.microsoft.com/cli/azure/n
 * Virtuelles Netzwerk: **myVNet**
 * Subnetz: **myBackendSubnet**
 * Netzwerksicherheitsgruppe: **myNSG**
-* Angefügt an den Lastenausgleich **myLoadBalancer** in **myBackEndPool**
 
 ```azurecli-interactive
   az network nic create \
     --resource-group myResourceGroupLB \
     --name myNicVM2 \
-    --vnet-name myVnet \
+    --vnet-name myVNet \
     --subnet myBackEndSubnet \
-    --network-security-group myNSG \
-    --lb-name myLoadBalancer \
-    --lb-address-pools myBackEndPool
+    --network-security-group myNSG
 ```
 #### <a name="vm3"></a>VM3
 
@@ -810,17 +753,14 @@ Erstellen Sie mit [az network nic create](https://docs.microsoft.com/cli/azure/n
 * Virtuelles Netzwerk: **myVNet**
 * Subnetz: **myBackendSubnet**
 * Netzwerksicherheitsgruppe: **myNSG**
-* Angefügt an den Lastenausgleich **myLoadBalancer** in **myBackEndPool**
 
 ```azurecli-interactive
   az network nic create \
     --resource-group myResourceGroupLB \
     --name myNicVM3 \
-    --vnet-name myVnet \
+    --vnet-name myVNet \
     --subnet myBackEndSubnet \
-    --network-security-group myNSG \
-    --lb-name myLoadBalancer \
-    --lb-address-pools myBackEndPool
+    --network-security-group myNSG
 ```
 
 ## <a name="create-backend-servers"></a>Erstellen von Back-End-Servern
@@ -918,8 +858,7 @@ Erstellen Sie mit [az vm create](https://docs.microsoft.com/cli/azure/vm?view=az
     --generate-ssh-keys \
     --custom-data cloud-init.txt \
     --availability-set myAvSet \
-    --no-wait
-    
+    --no-wait 
 ```
 #### <a name="vm2"></a>VM2
 * Name: **myVM2**
@@ -962,6 +901,151 @@ Erstellen Sie mit [az vm create](https://docs.microsoft.com/cli/azure/vm?view=az
 ```
 Die Bereitstellung der virtuellen Computer kann eine Weile dauern.
 
+
+## <a name="create-a-public-ip-address"></a>Erstellen einer öffentlichen IP-Adresse
+
+Um über das Internet auf Ihre Web-App zugreifen zu können, benötigen Sie eine öffentliche IP-Adresse für den Lastenausgleich. 
+
+Verwenden Sie [az network public-ip create](https://docs.microsoft.com/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create) für Folgendes:
+
+* Erstellen einer standardmäßigen zonenredundanten öffentlichen IP-Adresse namens **myPublicIP**
+* Ressourcengruppe: **myResourceGroupLB**
+
+```azurecli-interactive
+  az network public-ip create \
+    --resource-group myResourceGroupLB \
+    --name myPublicIP \
+    --sku Basic
+```
+
+## <a name="create-basic-load-balancer"></a>Erstellen eines Basic-Lastenausgleichs
+
+In diesem Abschnitt erfahren Sie, wie Sie die folgenden Komponenten des Lastenausgleichs erstellen und konfigurieren:
+
+  * Front-End-IP-Pool, der den eingehenden Netzwerkdatenverkehr für den Lastenausgleich empfängt
+  * Back-End-IP-Pool, an den der Front-End-Pool den Netzwerkdatenverkehr sendet, für den ein Lastenausgleich durchgeführt wurde
+  * Integritätstest zum Ermitteln der Integrität der Back-End-VM-Instanzen
+  * Lastenausgleichsregel, mit der definiert wird, wie Datenverkehr auf die virtuellen Computer verteilt werden soll
+
+### <a name="create-the-load-balancer-resource"></a>Erstellen der Lastenausgleichsressource
+
+Erstellen Sie mit [az network lb create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest#az-network-lb-create) einen öffentlichen Lastenausgleich:
+
+* Name: **myLoadBalancer**
+* Front-End-Pool namens **myFrontEnd**
+* Back-End-Pool namens **myBackEndPool**
+* Zugeordnet zur öffentlichen IP-Adresse **myPublicIP**, die im vorherigen Schritt erstellt wurde 
+
+```azurecli-interactive
+  az network lb create \
+    --resource-group myResourceGroupLB \
+    --name myLoadBalancer \
+    --sku Basic \
+    --public-ip-address myPublicIP \
+    --frontend-ip-name myFrontEnd \
+    --backend-pool-name myBackEndPool       
+```
+
+### <a name="create-the-health-probe"></a>Erstellen des Integritätstests
+
+Von einem Integritätstest werden alle VM-Instanzen überprüft, um sicherzustellen, dass sie Netzwerkdatenverkehr senden können. 
+
+Ist der Test bei einem virtuellen Computer nicht erfolgreich, wird er aus dem Lastenausgleich entfernt. Nach Behebung des Fehlers wird der virtuelle Computer dem Lastenausgleich wieder hinzugefügt.
+
+Erstellen Sie mit [az network lb probe create](https://docs.microsoft.com/cli/azure/network/lb/probe?view=azure-cli-latest#az-network-lb-probe-create) einen Integritätstest:
+
+* Überwacht die Integrität der virtuellen Computer
+* Name: **myHealthProbe**
+* Protokoll: **TCP**
+* Überwachter Port: **80**
+
+```azurecli-interactive
+  az network lb probe create \
+    --resource-group myResourceGroupLB \
+    --lb-name myLoadBalancer \
+    --name myHealthProbe \
+    --protocol tcp \
+    --port 80   
+```
+
+### <a name="create-the-load-balancer-rule"></a>Erstellen der Lastenausgleichsregel
+
+Durch eine Lastenausgleichsregel wird Folgendes definiert:
+
+* Front-End-IP-Konfiguration für den eingehenden Datenverkehr.
+* Back-End-IP-Pool zum Empfangen des Datenverkehrs.
+* Erforderliche Quell- und Zielports. 
+
+Erstellen Sie mit [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest#az-network-lb-rule-create) eine Lastenausgleichsregel:
+
+* Name: **myHTTPRule**
+* Lauscht am **Port 80** im Front-End-Pool **myFrontEnd**
+* Sendet Netzwerkdatenverkehr, für den ein Lastenausgleich durchgeführt wurde, an den Back-End-Adresspool **myBackEndPool** unter Verwendung von **Port 80** 
+* Verwendet den Integritätstest **myHealthProbe**
+* Protokoll: **TCP**
+
+```azurecli-interactive
+  az network lb rule create \
+    --resource-group myResourceGroupLB \
+    --lb-name myLoadBalancer \
+    --name myHTTPRule \
+    --protocol tcp \
+    --frontend-port 80 \
+    --backend-port 80 \
+    --frontend-ip-name myFrontEnd \
+    --backend-pool-name myBackEndPool \
+    --probe-name myHealthProbe
+```
+
+### <a name="add-virtual-machines-to-load-balancer-backend-pool"></a>Hinzufügen virtueller Computer zum Back-End-Pool des Lastenausgleichs
+
+Fügen Sie mit [az network nic ip-config address-pool add](https://docs.microsoft.com/cli/azure/network/nic/ip-config/address-pool?view=azure-cli-latest#az-network-nic-ip-config-address-pool-add) die virtuellen Computer zum Back-End-Pool hinzu:
+
+
+#### <a name="vm1"></a>VM1
+* Back-End-Adresspool: **myBackEndPool**
+* Ressourcengruppe: **myResourceGroupLB**
+* Zugeordnet zur Netzwerkschnittstelle **myNicVM1** und zu **ipconfig1**
+* Zugeordnet zum Lastenausgleich **myLoadBalancer**
+
+```azurecli-interactive
+  az network nic ip-config address-pool add \
+   --address-pool myBackendPool \
+   --ip-config-name ipconfig1 \
+   --nic-name myNicVM1 \
+   --resource-group myResourceGroupLB \
+   --lb-name myLoadBalancer
+```
+
+#### <a name="vm2"></a>VM2
+* Back-End-Adresspool: **myBackEndPool**
+* Ressourcengruppe: **myResourceGroupLB**
+* Zugeordnet zur Netzwerkschnittstelle **myNicVM2** und zu **ipconfig1**
+* Zugeordnet zum Lastenausgleich **myLoadBalancer**
+
+```azurecli-interactive
+  az network nic ip-config address-pool add \
+   --address-pool myBackendPool \
+   --ip-config-name ipconfig1 \
+   --nic-name myNicVM2 \
+   --resource-group myResourceGroupLB \
+   --lb-name myLoadBalancer
+```
+
+#### <a name="vm3"></a>VM3
+* Back-End-Adresspool: **myBackEndPool**
+* Ressourcengruppe: **myResourceGroupLB**
+* Zugeordnet zur Netzwerkschnittstelle **myNicVM3** und zu **ipconfig1**
+* Zugeordnet zum Lastenausgleich **myLoadBalancer**
+
+```azurecli-interactive
+  az network nic ip-config address-pool add \
+   --address-pool myBackendPool \
+   --ip-config-name ipconfig1 \
+   --nic-name myNicVM3 \
+   --resource-group myResourceGroupLB \
+   --lb-name myLoadBalancer
+```
 ---
 
 ## <a name="test-the-load-balancer"></a>Testen des Lastenausgleichs

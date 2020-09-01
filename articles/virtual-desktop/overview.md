@@ -3,15 +3,15 @@ title: Was ist Windows Virtual Desktop? - Azure
 description: Eine Übersicht über Windows Virtual Desktop.
 author: Heidilohr
 ms.topic: overview
-ms.date: 07/10/2020
+ms.date: 08/20/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 003662beefcb2ee8f99a5f565ed680d406421a62
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: cc5ad91c779a3445712db962fb97bab309eda973
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88002370"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88661111"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Was ist Windows Virtual Desktop?
 
@@ -46,7 +46,7 @@ Mit Windows Virtual Desktop können Sie eine skalierbare und flexible Umgebung e
 
 Sie können virtuelle Desktops bereitstellen und verwalten:
 
-* Verwenden Sie die PowerShell- und die REST-Oberfläche von Windows Virtual Desktop, um die Hostpools zu konfigurieren, App-Gruppen zu erstellen, Benutzer zuzuweisen und Ressourcen zu veröffentlichen.
+* Verwenden Sie das Azure-Portal oder die PowerShell- und die REST-Oberfläche von Windows Virtual Desktop, um die Hostpools zu konfigurieren, App-Gruppen zu erstellen, Benutzer zuzuweisen und Ressourcen zu veröffentlichen.
 * Sie können vollständige Desktops oder einzelne Remote-Apps über einen einzelnen Hostpool veröffentlichen, individuelle App-Gruppen für unterschiedliche Benutzergruppen erstellen und sogar Benutzer mehreren App-Gruppen zuweisen, um die Anzahl von Images zu verringern.
 * Bei der Umgebungsverwaltung können Sie dank des integrierten delegierten Zugriffs Rollen zuweisen und Diagnoseinformationen erfassen, um verschiedene Konfigurations- und Benutzerfehler nachzuvollziehen.
 * Verwenden Sie den Diagnosedienst, um Fehler zu behandeln.
@@ -61,7 +61,7 @@ Darüber hinaus können Sie Benutzer zuweisen und mit Ihren virtuellen Desktops 
 
 Für die Einrichtung von Windows Virtual Desktop und die erfolgreiche Verknüpfung Ihrer Benutzer mit ihren Windows-Desktops und -Anwendungen benötigen Sie ein paar Dinge.
 
-Da wir planen, die Unterstützung auf die folgenden Betriebssysteme zu erweitern, vergewissern Sie sich, dass Sie über die [erforderlichen Lizenzen](https://azure.microsoft.com/pricing/details/virtual-desktop/) für die Desktops und Apps verfügen, die Sie für Ihre Benutzer bereitstellen möchten:
+Die folgenden Betriebssysteme werden unterstützt. Vergewissern Sie sich daher, dass Sie über die [erforderlichen Lizenzen](https://azure.microsoft.com/pricing/details/virtual-desktop/) für die Desktops und Apps verfügen, die Sie für Ihre Benutzer bereitstellen möchten:
 
 |OS|Erforderliche Lizenz|
 |---|---|
@@ -71,11 +71,17 @@ Da wir planen, die Unterstützung auf die folgenden Betriebssysteme zu erweitern
 
 In Ihrer Infrastruktur muss Folgendes vorhanden sein, um Windows Virtual Desktop verwenden zu können:
 
-* Eine [Azure Active Directory-Instanz](/azure/active-directory/).
-* Eine mit Azure Active Directory synchronisierte Windows Server Active Directory-Instanz. Sie können diese dann mit einer der folgenden Komponenten konfigurieren:
-  * Azure AD Connect (für Hybridorganisationen)
-  * Azure Active Directory Domain Services (für Hybrid- oder Cloudorganisationen)
-* Ein Azure-Abonnement mit einem virtuellen Netzwerk, das die Windows Server Active Directory-Instanz entweder enthält oder mit ihr verbunden ist.
+* Eine [Azure Active Directory-Instanz](/azure/active-directory/)
+* Eine mit Azure Active Directory synchronisierte Windows Server Active Directory-Instanz. Diese können Sie mit Azure AD Connect (für Hybridorganisationen) oder mit Azure AD Domain Services (für Hybrid- oder Cloudorganisationen) konfigurieren.
+  * Eine mit Azure Active Directory synchronisierte Windows Server AD-Instanz. Der Benutzer stammt aus Windows Server AD, und die Windows Virtual Desktop-VM wird in die Windows Server AD-Domäne eingebunden.
+  * Eine mit Azure Active Directory synchronisierte Windows Server AD-Instanz. Der Benutzer stammt aus Windows Server AD, und die Windows Virtual Desktop-VM wird in die Azure AD Domain Services-Domäne eingebunden.
+  * Eine Azure AD Domain Services-Domäne. Der Benutzer stammt aus Azure Active Directory, und die Windows Virtual Desktop-VM wird in die Azure AD Domain Services-Domäne eingebunden.
+* Ein Azure-Abonnement, das dem gleichen Azure AD-Mandanten übergeordnet ist und ein virtuelles Netzwerk enthält, das die Windows Server Active Directory- oder Azure AD DS-Instanz entweder enthält oder mit ihr verbunden ist
+
+Benutzeranforderungen zum Herstellen einer Verbindung mit Windows Virtual Desktop:
+
+* Der Benutzer muss aus derselben Active Directory Domain Services-Instanz stammen, die mit Azure AD verbunden ist. Windows Virtual Desktop unterstützt keine B2B- oder MSA-Konten.
+* Der UPN, den Sie zum Abonnieren von Windows Virtual Desktop verwenden, muss in der Active Directory-Domäne vorhanden sein, in die der virtuelle Computer eingebunden ist.
 
 Die virtuellen Azure-Computer, die Sie für Windows Virtual Desktop erstellen, müssen folgende Anforderungen erfüllen:
 
@@ -91,7 +97,7 @@ Windows Virtual Desktop umfasst die Windows-Desktops und -Apps, die Sie für Ben
 
 Ihr Netzwerk muss folgende Anforderungen erfüllen, um eine optimale Leistung zu erzielen:
 
-* Die Roundtriplatenz zwischen dem Netzwerk des Clients und der Azure-Region, in der die Hostpools bereitgestellt wurden, muss unter 150 ms liegen.
+* Die Roundtriplatenz zwischen dem Netzwerk des Clients und der Azure-Region, in der die Hostpools bereitgestellt wurden, muss unter 150 ms liegen. Zeigen Sie mithilfe des [Qualitätsschätzers](https://azure.microsoft.com/services/virtual-desktop/assessment) die Verbindungsintegrität und die empfohlene Azure-Region an.
 * Netzwerkdatenverkehr wird ggf. außerhalb der Grenzen des Landes bzw. der Region übertragen, wenn virtuelle Computer, die Desktops und Apps hosten, eine Verbindung mit dem Verwaltungsdienst herstellen.
 * Zur Optimierung der Netzwerkleistung empfiehlt es sich, die virtuellen Computer des Sitzungshosts in der Azure-Region zu platzieren, in der sich auch der Verwaltungsdienst befindet.
 
@@ -111,7 +117,7 @@ Die folgenden Remotedesktopclients unterstützen Windows Virtual Desktop:
 > [!IMPORTANT]
 > Windows Virtual Desktop verfügt derzeit nicht über Unterstützung für den Remotedesktopclient aus dem Windows Store. Die Unterstützung für diesen Client wird in einer zukünftigen Version enthalten sein.
 
-Weitere Informationen zu URLs, die Sie für die Verwendung der Remoteclients entsperren müssen, finden Sie in der [Liste sicherer URLs](safe-url-list.md).
+Weitere Informationen zu URLs, die Sie für die Verwendung der Clients entsperren müssen, finden Sie in der [Liste sicherer URLs](safe-url-list.md).
 
 ## <a name="supported-virtual-machine-os-images"></a>Unterstützte Betriebssystemimages virtueller Computer
 
@@ -130,10 +136,10 @@ Die verfügbaren Automatisierungs- und Bereitstellungsoptionen hängen davon ab,
 
 |Betriebssystem|Azure-Imagekatalog|Manuelle VM-Bereitstellung|Integration von Azure Resource Manager-Vorlagen|Bereitstellungshost-Pools auf Azure Marketplace|
 |--------------------------------------|:------:|:------:|:------:|:------:|
-|Windows 10, Multisession, Version 1903|Ja|Ja|Ja|Ja|
-|Windows 10, Multisession, Version 1809|Ja|Ja|Nein|Nein|
-|Windows 10 Enterprise, Version 1903|Ja|Ja|Ja|Ja|
-|Windows 10 Enterprise, Version 1809|Ja|Ja|Nein|Nein|
+|Windows 10 Enterprise (mehrere Sitzungen), Version 2004|Ja|Ja|Ja|Ja|
+|Windows 10 Enterprise (mehrere Sitzungen), Version 1909|Ja|Ja|Ja|Ja|
+|Windows 10 Enterprise (mehrere Sitzungen), Version 1903|Ja|Ja|Nein|Nein|
+|Windows 10 Enterprise (mehrere Sitzungen), Version 1809|Ja|Ja|Nein|Nein|
 |Windows 7 Enterprise|Ja|Ja|Nein|Nein|
 |Windows Server 2019|Ja|Ja|Nein|Nein|
 |Windows Server 2016|Ja|Ja|Ja|Ja|

@@ -1,6 +1,6 @@
 ---
 title: Überblick über das Erstellen von Linux-Images für Azure
-description: Hier erhalten Sie einen Überblick darüber, wie Sie Ihre Linux-VM-Images zur Verwendung in Azure bereitstellen oder neue Images erstellen.
+description: Hier erfahren Sie, wie Sie Ihre Linux-VM-Images zur Verwendung in Azure bereitstellen oder neue Images erstellen.
 author: danielsollondon
 ms.service: virtual-machines-linux
 ms.subservice: imaging
@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 06/22/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: aa372d4e1b377ecdcbeb49b47f0f9a3a217ee7ad
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 220aa4e0d545eedcd1eb0e6f5a6555b17a361da2
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86502179"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815299"
 ---
 # <a name="bringing-and-creating-linux-images-in-azure"></a>Bereitstellen und Erstellen von Linux-Images in Azure
 
@@ -25,7 +25,7 @@ In diesem Artikel werden die Entscheidungspunkte und Anforderungen für Images s
 ## <a name="difference-between-managed-disks-and-images"></a>Unterschied zwischen verwalteten Datenträgern und Images
 
 
-Azure ermöglicht Ihnen das Bereitstellen einer virtuellen Festplatte (Virtual Hard Disk, VHD) auf der Plattform, die Sie als [verwalteten Datenträger](../windows/faq-for-disks.md#managed-disks) oder als Quelle für ein Image verwenden können. 
+Azure ermöglicht Ihnen das Bereitstellen einer virtuellen Festplatte (Virtual Hard Disk, VHD) auf der Plattform, die Sie als [verwalteten Datenträger](../faq-for-disks.md#managed-disks) oder als Quelle für ein Image verwenden können. 
 
 Verwaltete Azure-Datenträger sind einzelne VHDs. Sie können entweder anhand einer vorhandenen VHD einen verwalteten Datenträger erstellen oder einen leeren verwalteten Datenträger von Grund auf erstellen. Sie können VMs von verwalteten Datenträgern erstellen, indem Sie den Datenträger an den virtuellen Computer anfügen, aber Sie können nur eine VHD mit einem virtuellen Computer verwenden. Sie können keine Betriebssystemeigenschaften ändern. Azure versucht lediglich, den virtuellen Computer zu aktivieren und mit diesem Datenträger zu starten. 
 

@@ -11,20 +11,20 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/01/2020
 ms.author: allensu
-ms.openlocfilehash: 60e8a0dc93e19dfec0982080d0353466b08373de
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 3509b99d1b222fc4f0bfa48effe42496c209d9ae
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88586833"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654479"
 ---
 # <a name="azure-load-balancer-skus"></a>Azure Load Balancer-SKUs
 
-Azure Load Balancer ist in zwei Varianten oder SKUs verfügbar.
+Azure Load Balancer verfügt über zwei SKUs.
 
 ## <a name="sku-comparison"></a><a name="skus"></a> SKU-Vergleich
 
-Der Lastenausgleich unterstützt sowohl Basic- als auch Standard-SKUs. Diese SKUs unterscheiden sich in Bezug auf Skalierung, Features und Preise. Jedes Szenario, das mit dem Lastenausgleich im Tarif „Basic“ möglich ist, kann auch mit dem Lastenausgleich im Tarif „Standard“ erstellt werden.
+Der Lastenausgleich unterstützt sowohl Standard- als auch Basic-SKUs. Diese SKUs unterscheiden sich in Bezug auf Skalierung, Features und Preise. Jedes Szenario, das mit dem Lastenausgleich im Tarif „Basic“ möglich ist, kann auch mit dem Lastenausgleich im Tarif „Standard“ erstellt werden.
 
 Weitere Informationen zu den Unterschieden finden Sie in der folgenden Tabelle. Weitere Informationen finden Sie unter [Übersicht: Azure Load Balancer Standard](load-balancer-standard-overview.md).
 
@@ -37,11 +37,11 @@ Eigenständige virtuelle Computer, Verfügbarkeitsgruppen und VM-Skalierungsgrup
 | **[Größe des Back-End-Pools](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#load-balancer)** | Unterstützt bis zu 1.000 Instanzen | Unterstützt bis zu 300 Instanzen |
 | **Endpunkte des Back-End-Pools** | Virtuelle Computer oder VM-Skalierungsgruppen in einem einzelnen Netzwerk | Virtuelle Computer in einer einzelnen Verfügbarkeitsgruppe oder VM-Skalierungsgruppe |
 | **[Integritätstests](./load-balancer-custom-probe-overview.md#types)** | TCP, HTTP, HTTPS | TCP, HTTP |
-| **[Verhalten bei Ausfall während Integritätstest](./load-balancer-custom-probe-overview.md#probedown)** | TCP-Verbindungen bleiben bei Ausfall eines Instanztests __und__ bei Ausfall aller Tests bestehen. | TCP-Verbindungen bleiben bei Ausfall eines Instanztests bestehen. Bei Ausfall aller Tests werden alle TCP-Verbindungen getrennt. |
+| **[Verhalten bei Ausfall während Integritätstest](./load-balancer-custom-probe-overview.md#probedown)** | TCP-Verbindungen bleiben bei Ausfall eines Instanztests __und__ bei Ausfall aller Tests bestehen. | TCP-Verbindungen bleiben bei Ausfall eines Instanztests bestehen. Sämtliche TCP-Verbindungen werden bei Ausfällen aller Tests beendet. |
 | **Verfügbarkeitszonen** | Zonenredundante und zonale Front-Ends für eingehenden und ausgehenden Datenverkehr | Nicht verfügbar |
 | **Diagnose** | [Mehrdimensionale Azure Monitor-Metriken](./load-balancer-standard-diagnostics.md) | [Azure Monitor-Protokolle](./load-balancer-monitor-log.md) |
 | **Hochverfügbarkeitsports** | [Verfügbar für den internen Lastenausgleich](./load-balancer-ha-ports-overview.md) | Nicht verfügbar |
-| **Standardmäßig sicher** | Für eingehende Datenflüsse geschlossen, sofern nicht durch eine Netzwerksicherheitsgruppe zugelassen. Hinweis: Interner Datenverkehr vom VNET zum internen Lastenausgleich ist zulässig. | Standardmäßig geöffnet. Netzwerksicherheitsgruppe optional. |
+| **Standardmäßig sicher** | Für eingehende Datenflüsse geschlossen, sofern nicht durch eine Netzwerksicherheitsgruppe zugelassen. Interner Datenverkehr vom VNET zum internen Lastenausgleich ist zulässig. | Standardmäßig geöffnet. Netzwerksicherheitsgruppe optional. |
 | **Regeln für ausgehenden Datenverkehr** | [Deklarative ausgehende NAT-Konfiguration](./load-balancer-outbound-rules-overview.md) | Nicht verfügbar |
 | **TCP-Zurücksetzung bei Leerlauf** | [Verfügbar für jede Regel](./load-balancer-tcp-reset.md) | Nicht verfügbar |
 | **[Mehrere Front-Ends](./load-balancer-multivip-overview.md)** | Eingehend und [ausgehend](./load-balancer-outbound-connections.md) | Nur eingehend |
