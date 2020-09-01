@@ -154,7 +154,7 @@
         - name: Problembehandlung
           items:
             - name: Geräteprobleme
-              href: azure-stack-edge-troubleshoot.md
+              href: azure-stack-edge-gpu-troubleshoot.md
             - name: Probleme bei der Bestellung
               href: azure-stack-edge-troubleshoot-ordering.md
             - name: Microsoft-Support kontaktieren

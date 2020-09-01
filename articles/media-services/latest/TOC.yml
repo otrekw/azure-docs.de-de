@@ -7,6 +7,8 @@
     - name: Neuerungen in Media Services
       displayName: release notes
       href: release-notes.md
+    - name: Media Services-Compliance
+      href: concept-compliance.md
 - name: Schnellstarts
   items:
     - name: Einrichten Ihrer Umgebung
@@ -45,33 +47,34 @@
           href: encrypt-content-quickstart.md
 - name: Tutorials
   items:
-    - name: Codieren von Remotedateien und Streamen von Videos
+    - name: .NET
       items:
-        - name: Mit REST
-          displayName: 'encoding, job, transform'
+        - name: Codieren und Streamen einer Remotedatei (REST)
           href: stream-files-tutorial-with-rest.md
-        - name: Mit der Befehlszeilenschnittstelle
-          href: stream-files-cli-quickstart.md
-        - name: Mit .NET
+        - name: Codieren und Streamen einer Remotedatei (.NET)
           href: stream-files-dotnet-quickstart.md
-        - name: Mit Node.js
+        - name: Codieren und Streamen einer hochgeladenen Datei
+          href: stream-files-tutorial-with-api.md
+        - name: Livestreaming
+          href: stream-live-tutorial-with-api.md
+        - name: Analysieren Ihres Videos
+          href: analyze-videos-tutorial-with-api.md
+        - name: Dynamische Verschlüsselung mit AES-128
+          href: protect-with-aes128.md
+        - name: Dynamische Verschlüsselung mit DRM
+          href: protect-with-drm.md
+    - name: Befehlszeilenschnittstelle (CLI)
+      items:
+        - name: Codieren und Streamen einer Remotedatei (CLI)
+          href: stream-files-cli-quickstart.md
+    - name: Node.js
+      items:
+        - name: Codieren und Streamen einer Remotedatei (Node.js)
           href: stream-files-nodejs-quickstart.md
-    - name: Speichern von AMS-Ereignissen in Azure Log Analytics
-      href: tutorial-events-log-analytics.md
-    - name: Codieren von hochgeladenen Dateien und Streamen von Videos
-      displayName: 'encode, encoding, job, transform'
-      href: stream-files-tutorial-with-api.md
-    - name: Livestreaming
-      href: stream-live-tutorial-with-api.md
-      displayName: 'Live Events, Live Outputs, ingest'
-    - name: Analysieren Ihres Videos
-      displayName: 'job, transform, VideoAnalyzerPreset, AudioAnalyzerPreset'
-      href: analyze-videos-tutorial-with-api.md
-    - name: Dynamische Verschlüsselung mit AES-128
-      href: protect-with-aes128.md
-    - name: Dynamische Verschlüsselung mit DRM
-      displayName: 'PlayReady, Widevine, FairPlay'
-      href: protect-with-drm.md
+    - name: Azure-Portal
+      items:
+        - name: Speichern von AMS-Ereignissen in Azure Log Analytics
+          href: tutorial-events-log-analytics.md
 - name: Beispiele
   items:
     - name: Media Services v3-Beispiele
@@ -366,7 +369,7 @@
       displayName: schema
     - name: REST
       href: /rest/api/media/
-    - name: Azure-Befehlszeilenschnittstelle
+    - name: Azure CLI
       href: 'https://aka.ms/ams-v3-cli-ref'
     - name: SDKs
       items:
@@ -403,7 +406,7 @@
       href: 'https://aka.ms/ams-v3-rest-sdk'
     - name: SDKs/Tools
       items:
-        - name: Azure-Befehlszeilenschnittstelle
+        - name: Azure CLI
           href: 'https://aka.ms/ams-v3-cli'
         - name: .NET
           href: 'https://aka.ms/ams-v3-dotnet-sdk'

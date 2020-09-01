@@ -35,8 +35,6 @@
           href: identity-secure-score.md
         - name: Sichern von Remoteworkern
           href: concept-secure-remote-workers.md
-        - name: Fortlaufende Zugriffsevaluierung
-          href: concept-fundamentals-continuous-access-evaluation.md
     - name: Gruppen und Benutzer
       items:
         - name: Gruppen und Zugriffsverwaltung
