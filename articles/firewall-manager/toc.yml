@@ -50,7 +50,7 @@
       href: rule-hierarchy.md
 - name: Verweis
   items:
-    - name: Azure-Befehlszeilenschnittstelle
+    - name: Azure CLI
       href: /cli/azure/ext/azure-firewall/network/firewall/policy
     - name: Azure PowerShell
       href: /powershell/module/az.network/new-azfirewallpolicy
