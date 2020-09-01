@@ -94,6 +94,8 @@
       href: configure-automatic-updates.md
     - name: Installieren von Sprachpaketen
       href: language-packs.md
+    - name: Anwenden von Empfehlungen
+      href: azure-advisor-recommendations.md
 - name: Konzepte
   items:
     - name: Authentifizierung
