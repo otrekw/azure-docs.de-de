@@ -33,8 +33,6 @@
           href: concept-conditional-access-grant.md
         - name: Sitzung
           href: concept-conditional-access-session.md
-    - name: Erkenntnisse und Berichterstellung
-      href: howto-conditional-access-insights-reporting.md
     - name: Modus „Nur Bericht“
       href: concept-conditional-access-report-only.md
     - name: Dienstabhängigkeiten
@@ -78,6 +76,8 @@
           href: howto-conditional-access-policy-block-access.md
     - name: Blockieren älterer Authentifizierungsmethoden
       href: block-legacy-authentication.md
+    - name: Konfigurieren des reinen Berichtsmodus
+      href: howto-conditional-access-insights-reporting.md
     - name: Vorschreiben der Verwendung genehmigter Client-Apps
       href: app-based-conditional-access.md
     - name: App-Schutzrichtlinie erforderlich
@@ -88,12 +88,8 @@
       href: untrusted-networks.md
     - name: Vorschreiben der Verwendung von Nutzungsbedingungen
       href: terms-of-use.md
-    - name: Konfigurieren des Modus „Nur Bericht“
-      href: howto-conditional-access-report-only.md
     - name: Steuerelemente für Anmeldehäufigkeit und Browserpersistenz
       href: howto-conditional-access-session-lifetime.md
-    - name: Migrieren von klassischen Richtlinien
-      href: policy-migration-mfa.md
     - name: Problembehandlung
       items:
         - name: Beheben von Problemen bei der Anmeldung
@@ -102,6 +98,8 @@
           href: troubleshoot-conditional-access-what-if.md
         - name: Häufig gestellte Fragen
           href: faqs.md
+    - name: Migrieren von klassischen Richtlinien
+      href: policy-migration-mfa.md
 - name: Verweis
   items:
     - name: Graph-APIs (Betaversion)

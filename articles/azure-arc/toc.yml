@@ -3,7 +3,7 @@
 - name: Übersicht
   items:
     - name: Informationen zu Azure Arc
-      href: arc-overview.md
+      href: overview.md
 - name: Server mit Arc-Unterstützung
   href: ./servers/overview.md
 - name: Kubernetes mit Arc-Unterstützung

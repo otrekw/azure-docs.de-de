@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: navits09
 ms.author: navits
 ms.date: 06/17/2020
-ms.openlocfilehash: bdce311efbe7e41e09a3be76562c6be752a4b5c1
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 79bf5f0d6b7e3fa4735d94c7b26c1736ab25113e
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88606108"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816999"
 ---
 # <a name="create-a-dynamics-365-for-operations-offer"></a>Erstellen eines Angebots für Dynamics 365 for Operations
 
@@ -21,7 +21,7 @@ In diesem Thema wird erläutert, wie Sie ein neues Angebot für Dynamics 365 for
 Bevor Sie beginnen, [erstellen Sie ein Konto im kommerziellen Marketplace in Partner Center](create-account.md), sofern Sie dies noch nicht getan haben. Vergewissern Sie sich, dass Ihr Konto im Programm „Kommerzieller Marketplace“ registriert ist.
 
 >[!NOTE]
-> Nach der Veröffentlichung eines Angebots werden in Partner Center am Angebot vorgenommene Änderungen erst nach einer erneuten Veröffentlichung im System und den Store Fronts aktualisiert. Stellen Sie sicher, dass Sie das Angebot für die Veröffentlichung einreichen, nachdem Sie Änderungen vorgenommen haben.
+> Nach der Veröffentlichung eines Angebots werden Änderungen am Angebot nur in Partner Center und im Online Store aktualisiert, wenn Sie das Angebot erneut zur Veröffentlichung übermittelt haben.
 
 ## <a name="create-a-new-offer"></a>Erstellen eines neuen Angebots
 
@@ -193,12 +193,16 @@ In diesem Abschnitt können Sie Logos und Bilder bereitstellen, die beim Anzeige
 
 #### <a name="store-logos"></a>Store-Logos
 
-Stellen Sie ein Logo in zwei Bildauflösungen für Ihr Angebot bereit:
+Geben Sie eine PNG-Datei für das **große** Logo an. Dies wird in Partner Center verwendet, um ein **kleines** Logo zu erstellen. Später können Sie dieses Logo optional durch ein anderes Bild ersetzen.
 
-- **Klein** (48 x 48)
-- **Groß** (216 x 216)
+- **Groß** (von 216 x 216 bis 350 x 350 px, erforderlich)
+- **Klein** (48 x 48 px, optional)
+
+Diese Logos werden an unterschiedlichen Stellen in der Auflistung verwendet:
 
 [!INCLUDE [logos-appsource-only](../includes/logos-appsource-only.md)]
+
+[!INCLUDE [Logo tips](../includes/graphics-suggestions.md)]
 
 #### <a name="screenshots"></a>Screenshots
 

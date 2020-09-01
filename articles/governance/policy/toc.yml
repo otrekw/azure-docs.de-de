@@ -167,7 +167,11 @@
           displayName: 'monitor, insights, log analytics, builtin'
           href: ../../azure-monitor/insights/vminsights-enable-policy.md?bc=%2fazure%2fgovernance%2fpolicy%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fgovernance%2fpolicy%2ftoc.json
 - name: Problembehandlung
-  href: ./troubleshoot/general.md
+  items:
+    - name: Häufige Probleme
+      href: ./troubleshoot/general.md
+    - name: Bekannte Probleme
+      href: 'https://github.com/azure/azure-policy#known-issues'
 - name: Verweis
   items:
     - name: Azure CLI
@@ -189,9 +193,9 @@
     - name: Azure SDK für Java
       items:
         - name: Zuweisungen
-          href: /java/api/com.microsoft.azure.management.resources.policyassignment?view=azure-java-stable
+          href: /java/api/com.microsoft.azure.management.resources.policyassignment
         - name: Richtliniendefinitionen
-          href: /java/api/com.microsoft.azure.management.resources.PolicyDefinitions?view=azure-java-stable
+          href: /java/api/com.microsoft.azure.management.resources.PolicyDefinitions
     - name: Azure SDK für JavaScript
       items:
         - name: Richtlinie
@@ -234,31 +238,45 @@
           href: /azure/templates/microsoft.authorization/policysetdefinitions
 - name: Ressourcen
   items:
-    - name: Bekannte Probleme
-      href: 'https://github.com/azure/azure-policy#known-issues'
     - name: GitHub – Azure Policy-Beispiele
       href: 'https://github.com/Azure/azure-policy'
-    - name: GitHub – Repository zu Community-Richtlinien
-      href: 'https://github.com/Azure/Community-Policy'
-    - name: Microsoft Q&A (Fragen und Antworten) für Azure Policy
-      href: /answers/topics/azure-policy.html
-    - name: YouTube-Kanal zu Governance
-      href: 'https://www.youtube.com/channel/UCZZ3-oMrVI5ssheMzaWC4uQ'
-    - name: Videos zur Gastkonfiguration
+    - name: Communitytools
       items:
-        - name: Erste Schritte
-          href: 'https://www.youtube.com/watch?v=mjJw9_EIyHo'
-        - name: Grundlegendes zu Initiativen
-          href: 'https://www.youtube.com/watch?v=4JZH3kuG8bI'
-        - name: Zuweisen der Richtlinie
-          href: 'https://www.youtube.com/watch?v=fbZBaxcjA-Y'
-        - name: Problembehandlungsaufgabe
-          href: 'https://www.youtube.com/watch?v=URE4DUYMgmg'
-    - name: Video – Ignite 2019
-      href: 'https://myignite.techcommunity.microsoft.com/sessions/81584?source=sessions'
+        - name: GitHub – Repository zu Community-Richtlinien
+          href: 'https://github.com/Azure/Community-Policy'
+        - name: GitHub-Aktion für die Azure Policy-Konformitätsprüfung
+          href: 'https://github.com/marketplace/actions/azure-policy-compliance-scan'
+        - name: "Azure\_Governance-Dashboard für CCO"
+          href: 'https://github.com/Azure/ccodashboard/blob/master/README.md#cco-azure-governance-dashboard-report-pages'
+        - name: AzAdvertizer
+          href: 'https://www.azadvertizer.net/'
+        - name: Azure Governance-Schnellansicht
+          href: 'https://github.com/julianhayward/azure-mg-sub-governance-reporting'
+    - name: Feedback und Support
+      items:
+        - name: Microsoft Q&A (Fragen und Antworten) für Azure Policy
+          href: /answers/topics/azure-policy.html
+        - name: Azure-Supportticket
+          href: 'https://azure.microsoft.com/support/create-ticket/'
+        - name: UserVoice
+          href: 'https://feedback.azure.com/forums/915958-azure-governance?category_id=345055'
+    - name: Videos
+      items:
+        - name: YouTube-Kanal zu Governance
+          href: 'https://www.youtube.com/channel/UCZZ3-oMrVI5ssheMzaWC4uQ'
+        - name: Video – Ignite 2019
+          href: 'https://myignite.techcommunity.microsoft.com/sessions/81584?source=sessions'
+        - name: Videos zur Gastkonfiguration
+          items:
+            - name: Erste Schritte
+              href: 'https://www.youtube.com/watch?v=mjJw9_EIyHo'
+            - name: Grundlegendes zu Initiativen
+              href: 'https://www.youtube.com/watch?v=4JZH3kuG8bI'
+            - name: Zuweisen der Richtlinie
+              href: 'https://www.youtube.com/watch?v=fbZBaxcjA-Y'
+            - name: Problembehandlungsaufgabe
+              href: 'https://www.youtube.com/watch?v=URE4DUYMgmg'
     - name: Azure-Roadmap
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Preisrechner
       href: 'https://azure.microsoft.com/pricing/calculator/'
-    - name: UserVoice
-      href: 'https://feedback.azure.com/forums/915958-azure-governance?category_id=345055'

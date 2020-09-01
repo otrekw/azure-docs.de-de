@@ -13,12 +13,12 @@ metadata:
   ms.topic: hub-page
   ms.date: 03/24/2020
   ms.author: trbye
-  ms.openlocfilehash: 74fd89633e4add1c577e44b822f1f90a86b3f498
-  ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+  ms.openlocfilehash: 17cc7914c8e02d3b38e2527e1c0bff3afb885b0b
+  ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 08/13/2020
-  ms.locfileid: "88167775"
+  ms.lasthandoff: 08/28/2020
+  ms.locfileid: "89055095"
 highlightedContent:
   items:
   - title: Worum handelt es sich beim Speech-Dienst?
@@ -65,15 +65,12 @@ conceptualContent:
       url: index-text-to-speech.yml
   - title: Sprachübersetzung
     links:
+    - itemType: overview
+      text: Informationen zur Sprachübersetzung
+      url: speech-translation.md
     - itemType: quickstart
-      text: Übersetzen von Sprache in Text
-      url: quickstarts/translate-speech-to-text.md
-    - itemType: quickstart
-      text: Übersetzen von gesprochener Sprache in mehrere Sprachen
-      url: quickstarts/translate-speech-to-text-multiple-languages.md
-    - itemType: how-to-guide
-      text: Grundlagen der Sprachübersetzung
-      url: speech-translation-basics.md
+      text: Erste Schritte mit der Sprachübersetzung
+      url: get-started-speech-translation.md
     footerLink:
       text: Weitere Informationen
       url: index-speech-translation.yml
