@@ -3,18 +3,18 @@ title: Verwalten von Azure Recovery Services-Tresoren und -Servern
 description: In diesem Artikel erfahren Sie, wie Sie das Dashboard „Übersicht“ des Recovery Services-Tresors zum Überwachen und Verwalten Ihrer Recovery Services-Tresore verwenden.
 ms.topic: conceptual
 ms.date: 07/08/2019
-ms.openlocfilehash: 68c6354fa15ee2a6873b57e5c1622afb108b9a10
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: a34ac44e3fe8d3a0b7789b37b0b0308d42d4e3da
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88263327"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88756060"
 ---
 # <a name="monitor-and-manage-recovery-services-vaults"></a>Überwachen und Verwalten von Recovery Services-Tresoren
 
 In diesem Artikel wird erläutert, wie Sie das Dashboard **Übersicht** des Recovery Services-Tresors zum Überwachen und Verwalten Ihrer Recovery Services-Tresore verwenden. Wenn Sie einen Recovery Services-Tresor aus der Liste öffnen, wird das Dashboard **Übersicht** für den ausgewählten Tresor geöffnet. Das Dashboard stellt verschiedene Details zum Tresor bereit. Es gibt *Kacheln*, auf denen Folgendes angezeigt wird: der Status von kritischen Warnungen und allgemeinen Warnmeldungen, in Bearbeitung befindliche und fehlerhafte Sicherungsaufträge sowie die Menge von belegtem lokal redundantem Speicher (LRS) und georedundantem Speicher (GRS). Wenn Sie Azure-VMs in den Tresor sichern, werden auf der Kachel [**Status der Sicherungsvorüberprüfung** alle kritischen oder fehlerhaften Elemente angezeigt](#backup-pre-check-status). In der folgenden Abbildung wird das Dashboard **Übersicht** für **Contoso-vault** angezeigt. Auf der Kachel **Sicherungselemente** wird angezeigt, dass es neun beim Tresor registrierte Elemente gibt.
 
-![Dashboard des Recovery Services-Tresors](./media/backup-azure-manage-windows-server/rs-vault-blade.png)
+![Dashboard des Recovery Services-Tresors](./media/backup-azure-manage-windows-server/rs-vault-blade.png)
 
 Die Voraussetzungen für diesen Artikel sind: ein Azure-Abonnement, ein Recovery Services-Tresor und mindestens ein für den Tresor konfiguriertes Sicherungselement.
 
@@ -36,7 +36,7 @@ Die Voraussetzungen für diesen Artikel sind: ein Azure-Abonnement, ein Recovery
 
 4. Wählen Sie in der Liste mit den Tresoren einen Tresor aus, um dessen Dashboard **Übersicht** zu öffnen.
 
-    ![Dashboard des Recovery Services-Tresors](./media/backup-azure-manage-windows-server/rs-vault-blade.png) <br/>
+    ![Dashboard des Recovery Services-Tresors](./media/backup-azure-manage-windows-server/rs-vault-blade.png) <br/>
 
     Das Dashboard „Übersicht“ stellt Warnungen und Sicherungsauftragsdaten auf Kacheln bereit.
 
@@ -65,15 +65,15 @@ Das Menü „Sicherungswarnungen“ im Bild oben ist gefiltert nach: Status ist 
 
 ### <a name="backup-pre-check-status"></a>Status der Sicherungsvorüberprüfung
 
-Sicherungsvorüberprüfungen überprüfen die Konfiguration Ihrer virtuellen Computer auf Probleme, die Sicherungen beeinträchtigen können. Die aggregierten Informationen können direkt auf dem Dashboard des Recovery Services-Tresors angezeigt werden. Darüber hinaus werden Empfehlungen für Korrekturmaßnahmen bereitgestellt, um erfolgreiche datei- oder anwendungskonsistente Sicherungen zu gewährleisten. Für die Vorüberprüfungen ist keine Infrastruktur erforderlich, und es fallen keine zusätzlichen Kosten an.  
+Sicherungsvorüberprüfungen überprüfen die Konfiguration Ihrer virtuellen Computer auf Probleme, die Sicherungen beeinträchtigen können. Sie aggregieren diese Informationen, damit Sie sie direkt auf dem Dashboard des Recovery Services-Tresors anzeigen können. Außerdem stellen sie Empfehlungen für Korrekturmaßnahmen bereit, um erfolgreiche datei- oder anwendungskonsistente Sicherungen zu gewährleisten. Für die Vorüberprüfungen ist keine Infrastruktur erforderlich, und es fallen keine zusätzlichen Kosten an.  
 
 Sicherungsvorüberprüfungen werden im Rahmen der geplanten Sicherungsvorgänge für Ihre virtuellen Azure-Computer ausgeführt. Sie werden mit einer der folgenden Statusoptionen abgeschlossen:
 
 * **Erfolgreich**: Dieser Status gibt an, dass die Konfiguration Ihres virtuellen Computers zu erfolgreichen Sicherungen führen sollte und keine Korrekturmaßnahmen erforderlich sind.
-* **Warnung:** Dieser Status gibt an, dass mindestens ein Problem mit der Konfiguration des virtuellen Computers vorliegt, das *möglicherweise* zu Sicherungsfehlern führt. Es werden *empfohlene* Schritte angegeben, um erfolgreiche Sicherungen zu gewährleisten. So kann es beispielsweise zu zeitweiligen Sicherungsfehlern kommen, wenn nicht der aktuelle VM-Agent installiert ist. In diesem Fall wird ein Warnungsstatus angegeben.
-* **Kritisch**: Dieser Status gibt an, dass mindestens ein Problem mit der Konfiguration des virtuellen Computers vorliegt, das *sicher* zu Sicherungsfehlern führt, und es werden *erforderliche* Schritte angegeben, um erfolgreiche Sicherungen zu gewährleisten. So führt beispielsweise ein Netzwerkproblem, das durch eine Aktualisierung der NSG-Regeln eines virtuellen Computers verursacht wird, dazu, dass Sicherungen nicht erfolgreich sind, da der virtuelle Computer nicht mit dem Azure Backup-Dienst kommunizieren kann. In diesem Fall wird ein kritischer Status angegeben.
+* **Warnung:** Dieser Status gibt an, dass mindestens ein Problem mit der Konfiguration des virtuellen Computers vorliegt, das *möglicherweise* zu Sicherungsfehlern führt. Es werden *empfohlene* Schritte angegeben, um erfolgreiche Sicherungen zu gewährleisten. So kann es beispielsweise zu zeitweiligen Sicherungsfehlern kommen, wenn nicht der aktuelle VM-Agent installiert ist. In diesem Fall wird ein Warnungsstatus ausgegeben.
+* **Kritisch**: Dieser Status gibt an, dass mindestens ein Problem mit der Konfiguration des virtuellen Computers vorliegt, das *sicher* zu Sicherungsfehlern führt, und es werden *erforderliche* Schritte angegeben, um erfolgreiche Sicherungen zu gewährleisten. So führt beispielsweise ein Netzwerkproblem, das durch eine Aktualisierung der NSG-Regeln eines virtuellen Computers verursacht wird, dazu, dass Sicherungen nicht erfolgreich sind, da der virtuelle Computer nicht mit dem Azure Backup-Dienst kommunizieren kann. In diesem Fall wird ein kritischer Status ausgegeben.
 
-Führen Sie die folgenden Schritte aus, um alle Probleme zu beheben, die von den Sicherungsvorüberprüfungen für VM-Sicherungen in Ihrem Recovery Services-Tresor gemeldet werden.
+Führen Sie die folgenden Schritte zum Beheben aller Probleme aus, die von den Sicherungsvorüberprüfungen für VM-Sicherungen in Ihrem Recovery Services-Tresor gemeldet werden.
 
 * Wählen Sie im Dashboard des Recovery Services-Tresors die Kachel **Status der Sicherungsvorüberprüfung (Azure-VMs)** aus.
 * Wählen Sie einen beliebigen virtuellen Computer mit dem Sicherungsvorüberprüfungsstatus **Kritisch** oder **Warnung** aus. Daraufhin wird der Bereich **VM-Details** geöffnet.
@@ -96,7 +96,7 @@ Die Liste „Sicherungswarnungen“ enthält die ausgewählten Informationen fü
 | Warnstufe | Ereignisse, die Warnungen generieren |
 | ----------- | ----------- |
 | Kritisch | Sie erhalten kritische Warnungen, wenn: Sicherungsaufträge fehlschlagen, wenn Wiederherstellungsaufträge fehlschlagen und wenn Sie den Schutz auf einem Server beenden, aber die Daten beibehalten.|
-| Warnung | Allgemeine Warnmeldungen werden angezeigt, wenn: Sicherungsaufträge mit Warnungen abgeschlossen werden (z. B. wenn weniger als 100 Dateien aufgrund von Beschädigungen nicht gesichert wurden oder wenn mehr als 1.000.000 Dateien erfolgreich gesichert wurden). |
+| Warnung | Allgemeine Warnmeldungen werden angezeigt, wenn: Sicherungsaufträge mit Warnungen abgeschlossen werden. (Beispielsweise wenn weniger als 100 Dateien aufgrund von Beschädigungen nicht gesichert wurden oder wenn mehr als 1.000.000 Dateien erfolgreich gesichert wurden). |
 | Informational | Derzeit werden keine Informationsmeldungen verwendet. |
 
 ### <a name="viewing-alert-details"></a>Anzeigen von Warnungsdetails

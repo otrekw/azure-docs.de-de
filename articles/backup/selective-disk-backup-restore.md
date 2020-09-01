@@ -4,12 +4,12 @@ description: In diesem Artikel lernen Sie die selektive Datenträgersicherung un
 ms.topic: conceptual
 ms.date: 07/17/2020
 ms.custom: references_regions
-ms.openlocfilehash: 6a5e574795dfded98260da20711dab7d16cabd5b
-ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
+ms.openlocfilehash: 44454977a977a85b8735657a439a265467f1bcf5
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88566232"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88824745"
 ---
 # <a name="selective-disk-backup-and-restore-for-azure-virtual-machines"></a>Selektive Datenträgersicherung und -wiederherstellung für Azure-VMs
 
@@ -28,7 +28,7 @@ Diese Lösung ist besonders in den folgenden Szenarien nützlich:
 Mithilfe von PowerShell oder Azure CLI können Sie die selektive Datenträgersicherung der Azure-VM konfigurieren.  Mithilfe eines Skripts können Sie Datenträger mit ihren LUN-Nummern einschließen oder ausschließen.  Zurzeit ist die Möglichkeit, die selektive Datenträgersicherung über das Azure-Portal zu konfigurieren, auf die Option **Nur Betriebssystemdatenträger sichern** beschränkt. Sie können also die Sicherung Ihres virtuellen Azure-Computers mit dem Betriebssystemdatenträger konfigurieren und alle daran angefügten Datenträger ausschließen.
 
 >[!NOTE]
-> Der Betriebssystemdatenträger wird standardmäßig der VM-Sicherung hinzugefügt und kann nicht ausgeschlossen werden.
+> Der Betriebssystemdatenträger wird der VM-Sicherung standardmäßig hinzugefügt und kann nicht ausgeschlossen werden.
 
 ## <a name="using-azure-cli"></a>Verwenden der Azure-Befehlszeilenschnittstelle
 
@@ -190,7 +190,7 @@ Wenn Sie diese Befehle ausführen, wird `"diskExclusionProperties": null` angeze
 
 ## <a name="using-powershell"></a>PowerShell
 
-Stellen Sie sicher, dass Sie Azure PS Version 3.7.0 oder höher verwenden.
+Stellen Sie sicher, dass Sie Azure PowerShell Version 3.7.0 oder höher verwenden.
 
 ### <a name="enable-backup-with-powershell"></a>Aktivieren der Sicherung mit PowerShell
 
@@ -261,7 +261,7 @@ Hier können Sie die gesicherten Datenträger während der Wiederherstellung anz
 Das Konfigurieren der selektiven Datenträgersicherung für eine VM über das Azure-Portal ist auf die Option **Nur Betriebssystemdatenträger sichern** beschränkt. Um die selektive Datenträgersicherung auf einer bereits gesicherten VM oder für den erweiterten Ein- oder Ausschluss bestimmter Datenträger eines virtuellen Computers zu verwenden, setzen Sie PowerShell oder Azure CLI ein.
 
 >[!NOTE]
->Wenn Daten über mehrere Datenträger verteilt sind, stellen Sie sicher, dass alle abhängigen Datenträger in der Sicherung enthalten sind. Wenn Sie nicht alle abhängigen Datenträger in einem Volume sichern, wird das Volume, das einige nicht gesicherte Datenträger enthält, während der Wiederherstellung nicht erstellt.
+>Wenn Daten über mehrere Datenträger verteilt sind, stellen Sie sicher, dass alle abhängigen Datenträger in der Sicherung enthalten sind. Wenn Sie nicht alle abhängigen Datenträger in einem Volume sichern, wird das Volume, in dem einige nicht gesicherte Datenträger enthalten sind, während der Wiederherstellung nicht erstellt.
 
 ### <a name="backup-os-disk-only-in-the-azure-portal"></a>„Nur Betriebssystemdatenträger sichern“ im Azure-Portal
 
@@ -277,7 +277,7 @@ Selektive Datenträgerwiederherstellung ist eine zusätzliche Funktionalität, d
 - Die selektive Datenträgerwiederherstellung wird nur für Wiederherstellungspunkte unterstützt, die nach der Aktivierung der Datenträgerausschlussfunktion erstellt wurden.
 - Sicherungen mit der Datenträgerausschluss-Einstellung **EIN** unterstützen nur die Option **Datenträgerwiederherstellung**. Die Wiederherstellungsoptionen **VM-Wiederherstellung** oder **Vorhandene ersetzen** werden in diesem Fall nicht unterstützt.
 
-![Die Option zum Wiederherstellen der VM und zum Ersetzen der vorhandenen VM sind während des Wiederherstellungsvorgangs nicht verfügbar.](./media/selective-disk-backup-restore/options-not-available.png)
+![Die Optionen zum Wiederherstellen der VM und zum Ersetzen der vorhandenen VM stehen während des Wiederherstellungsvorgangs nicht zur Verfügung.](./media/selective-disk-backup-restore/options-not-available.png)
 
 ## <a name="limitations"></a>Einschränkungen
 

@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 05/11/2020
-ms.openlocfilehash: 35cac2c05a8603313bb2bbe1bde3817dc88c6ed2
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.date: 08/21/2020
+ms.openlocfilehash: 62a0b0ec5312b4d00724fe7c13a5e20b5d35e34f
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83682635"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88926863"
 ---
 # <a name="service-limits-in-azure-cognitive-search"></a>Dienstgrenzwerte in der kognitiven Azure-Suche
 
@@ -44,8 +44,8 @@ Die Grenzwerte für Speicher, Workloads und Mengen von Indizes und anderen Objek
 | Maximale Anzahl der komplexen Sammlungsfelder pro Index |40 |40 |40 |40 |40 |40 |40 |40 |
 | Maximale Anzahl von Elementen in allen komplexen Sammlungen pro Dokument&nbsp;<sup>2</sup> |3000 |3000 |3000 |3000 |3000 |3000 |3000 |3000 |
 | Maximale Tiefe der komplexen Felder |10 |10 |10 |10 |10 |10 |10 |10 |
-| Maximale Anzahl von [Vorschlägen](https://docs.microsoft.com/rest/api/searchservice/suggesters) pro Index |1 |1 |1 |1 |1 |1 |1 |1 |
-| Maximale Anzahl von [Bewertungsprofilen](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index) pro Index |100 |100 |100 |100 |100 |100 |100 |100 |
+| Maximale Anzahl von [Vorschlägen](/rest/api/searchservice/suggesters) pro Index |1 |1 |1 |1 |1 |1 |1 |1 |
+| Maximale Anzahl von [Bewertungsprofilen](/rest/api/searchservice/add-scoring-profiles-to-a-search-index) pro Index |100 |100 |100 |100 |100 |100 |100 |100 |
 | Maximale Anzahl von Funktionen pro Profil |8 |8 |8 |8 |8 |8 |8 |8 |
 
 <sup>1</sup> Basic-Dienste, die vor Dezember 2017 erstellt wurden, haben niedrigere Grenzwerte (5 statt 15) für Indizes. Der Basic-Tarif ist die einzige SKU mit einem unteren Grenzwert von 100 Feldern pro Index.
@@ -58,7 +58,7 @@ Die Grenzwerte für Speicher, Workloads und Mengen von Indizes und anderen Objek
 
 Seit Oktober 2018 gelten für neue Dienste, die in einem kostenpflichtigen Tarif (Basic, S1, S2, S3, S3 HD) in einer beliebigen Region erstellt werden, keine Grenzwerte für die Anzahl von Dokumenten mehr. Ältere Dienste, die vor Oktober 2018 erstellt wurden, unterliegen möglicherweise weiterhin den Grenzwerten für die Dokumentanzahl.
 
-Um zu ermitteln, ob Ihr Dienst über Dokumentgrenzwerte verfügt, verwenden Sie die [GET Service Statistics-REST-API](https://docs.microsoft.com/rest/api/searchservice/get-service-statistics). Dokumentgrenzwerte werden in der Antwort angezeigt, wobei `null` für keine Grenzwerte steht.
+Um zu ermitteln, ob Ihr Dienst über Dokumentgrenzwerte verfügt, verwenden Sie die [GET Service Statistics-REST-API](/rest/api/searchservice/get-service-statistics). Dokumentgrenzwerte werden in der Antwort angezeigt, wobei `null` für keine Grenzwerte steht.
 
 > [!NOTE]
 > Obwohl der Dienst selbst keine Dokumentgrenzwerte festlegt, gibt es einen Shardgrenzwert von etwa 24 Milliarden Dokumenten pro Index für Basic-, S1-, S2 und S3-Suchdienste. Für S3 HD liegt der Shardgrenzwert bei 2 Milliarden Dokumenten pro Index. Jedes Element einer komplexen Sammlung zählt für den Shardgrenzwert als separates Dokument.
@@ -83,8 +83,8 @@ Es gibt eine maximale Ausführungsdauer, um den Dienst als Ganzes ausgewogen und
 | Maximale Qualifikationsgruppen <sup>4</sup> |3 |5 oder 15 |50 |200 |200 |– |10 |10 |
 | Maximale Indizierungslast pro Aufruf |10.000 Dokumente |Nur durch maximale Dokumentanzahl beschränkt |Nur durch maximale Dokumentanzahl beschränkt |Nur durch maximale Dokumentanzahl beschränkt |Nur durch maximale Dokumentanzahl beschränkt |– |Keine Begrenzung |Keine Begrenzung |
 | Minimaler Zeitplan | 5 Minuten |5 Minuten |5 Minuten |5 Minuten |5 Minuten |5 Minuten |5 Minuten | 5 Minuten |
-| Maximale Ausführungsdauer <sup>5</sup> | 1–3 Minuten |24 Stunden |24 Stunden |24 Stunden |24 Stunden |–  |24 Stunden |24 Stunden |
-| Maximale Ausführungsdauer für Qualifikationsgruppen der kognitiven Suche oder für die BLOB-Indizierung bei Bildanalysen <sup>5</sup> | 3 bis 10 Minuten |2 Stunden |2 Stunden |2 Stunden |2 Stunden |–  |2 Stunden |2 Stunden |
+| Maximale Ausführungszeit| 1–3 Minuten |24 Stunden |24 Stunden |24 Stunden |24 Stunden |–  |24 Stunden |24 Stunden |
+| Maximale Laufzeitdauer für Indexer mit einem Skillset <sup>5</sup> | 3 bis 10 Minuten |2 Stunden |2 Stunden |2 Stunden |2 Stunden |–  |2 Stunden |2 Stunden |
 | Blobindexer: maximale Blobgröße, MB |16 |16 |128 |256 |256 |–  |256 |256 |
 | Blobindexer: maximale Anzahl der Zeichen des aus einem Blob extrahierten Inhalts |32.000 |64.000 |4&nbsp;Millionen |8&nbsp;Mio. |16&nbsp;Mio. |– |4&nbsp;Millionen |4&nbsp;Millionen |
 
@@ -120,7 +120,7 @@ Für die Tarife vom Typ „Storage Optimized“ (L1 und L2) sollten Sie einen ge
 
 ## <a name="data-limits-ai-enrichment"></a>Datengrenzwerte (KI-Anreicherung)
 
-Für eine [KI-Anreicherungspipeline](cognitive-search-concept-intro.md), die Aufrufe zur [Entitätserkennung](cognitive-search-skill-entity-recognition.md), [Schlüsselbegriffserkennung](cognitive-search-skill-keyphrases.md), [Stimmungsanalyse](cognitive-search-skill-sentiment.md), [Sprachenerkennung](cognitive-search-skill-language-detection.md) und [Erkennung personenbezogener Daten](cognitive-search-skill-pii-detection.md) an eine Textanalyseressource sendet, gelten Datengrenzwerte. Die maximale Größe eines Datensatzes beträgt 50.000 Zeichen (gemessen durch [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length)). Wenn Sie Ihre Daten teilen müssen, bevor Sie sie an das Stimmungsanalysetool senden, verwenden Sie den [Skill „Text teilen“](cognitive-search-skill-textsplit.md).
+Für eine [KI-Anreicherungspipeline](cognitive-search-concept-intro.md), die Aufrufe zur [Entitätserkennung](cognitive-search-skill-entity-recognition.md), [Schlüsselbegriffserkennung](cognitive-search-skill-keyphrases.md), [Stimmungsanalyse](cognitive-search-skill-sentiment.md), [Sprachenerkennung](cognitive-search-skill-language-detection.md) und [Erkennung personenbezogener Daten](cognitive-search-skill-pii-detection.md) an eine Textanalyseressource sendet, gelten Datengrenzwerte. Die maximale Größe eines Datensatzes beträgt 50.000 Zeichen (gemessen durch [`String.Length`](/dotnet/api/system.string.length)). Wenn Sie Ihre Daten teilen müssen, bevor Sie sie an das Stimmungsanalysetool senden, verwenden Sie den [Skill „Text teilen“](cognitive-search-skill-textsplit.md).
 
 ## <a name="throttling-limits"></a>Drosselungslimits
 
@@ -141,7 +141,7 @@ Statische Grenzwerte für Anforderungsraten für Indexvorgänge:
 * Maximal 32 Felder in $orderby-Klausel
 * Maximale Suchbegriffgröße ist 32.766 Byte (32 KB minus 2 Bytes) von UTF-8-codiertem Text
 
-<sup>1</sup> In der kognitiven Azure-Suche darf der Inhalt einer Anforderung nicht größer als 16 MB sein. Dies beschränkt möglicherweise den Inhalt einzelner Felder oder Sammlungen, für die keine anderen theoretischen Beschränkungen gelten. (Weitere Informationen zur Feldzusammensetzung und den Beschränkungen finden Sie unter [Unterstützte Datentypen](https://docs.microsoft.com/rest/api/searchservice/supported-data-types).)
+<sup>1</sup> In der kognitiven Azure-Suche darf der Inhalt einer Anforderung nicht größer als 16 MB sein. Dies beschränkt möglicherweise den Inhalt einzelner Felder oder Sammlungen, für die keine anderen theoretischen Beschränkungen gelten. (Weitere Informationen zur Feldzusammensetzung und den Beschränkungen finden Sie unter [Unterstützte Datentypen](/rest/api/searchservice/supported-data-types).)
 
 ## <a name="api-response-limits"></a>API-Antwortengrenzwerte
 * Maximale Rückgabe von 1000 Dokumenten pro Seite mit Suchergebnissen

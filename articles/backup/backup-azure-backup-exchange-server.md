@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie einen Exchange-Server unter Azure Backup mit 
 ms.reviewer: kasinh
 ms.topic: conceptual
 ms.date: 01/31/2019
-ms.openlocfilehash: 2d547b1d86b95a4f90d3faaa2f676c7cc37255d3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 48a0e0f4b838b3f9b26de5a9cf297ddcdfc2a7e9
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091129"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88889718"
 ---
 # <a name="back-up-an-exchange-server-to-azure-backup-with-system-center-2012-r2-dpm"></a>Sichern eines Exchange-Servers unter Azure Backup mit System Center 2012 R2 DPM
 
@@ -32,7 +32,7 @@ Vergewissern Sie sich zunächst, dass für den Schutz von Workloads mit Microsof
 * Die Anmeldeinformationen für den Agent und den Tresor wurden auf den DPM-Server heruntergeladen.
 * Der Agent wurde auf dem DPM-Server installiert.
 * Die Anmeldeinformationen für den Tresor wurden verwendet, um den DPM-Server zu registrieren.
-* Wenn Sie Exchange 2016 schützen, aktualisieren Sie auf DPM 2012 R2 UR9 oder höher.
+* Wenn Sie Exchange 2016 schützen, führen Sie ein Upgrade auf DPM 2012 R2 UR9 oder höher aus.
 
 ## <a name="dpm-protection-agent"></a>DPM-Schutz-Agent
 

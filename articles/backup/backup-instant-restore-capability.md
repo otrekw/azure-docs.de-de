@@ -4,17 +4,17 @@ description: Azure-Funktion zur sofortigen Wiederherstellung und häufig gestell
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: bb9a7a32306fc76ea8852787601f3b3b3828daf8
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: ddc8e8fa460943c09f80ebb462b1dbd578f9b23b
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88611804"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892625"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>Verbesserte Sicherungs- und Wiederherstellungsleistung mit der Azure Backup-Funktion zur sofortigen Wiederherstellung
 
 > [!NOTE]
-> Aufgrund des Feedbacks von Benutzern wird **VM-Sicherungsstapel V2** in **Sofortige Wiederherstellung** umbenannt, um Verwechslungen mit Azure Stack-Funktionen zu vermeiden.
+> Aufgrund des Feedbacks von Benutzern haben wir **VM-Sicherungsstapel V2** in **Sofortige Wiederherstellung** umbenannt, um Verwechslungen mit Azure Stack-Funktionen zu vermeiden.
 > Für alle Azure Backup-Benutzer wurde nun ein Upgrade auf **sofortige Wiederherstellung** ausgeführt.
 
 Das neue Modell für die sofortige Wiederherstellung bietet die folgenden Featureverbesserungen:
@@ -76,7 +76,7 @@ $bkpPol.SnapshotRetentionInDays=5
 Set-AzureRmRecoveryServicesBackupProtectionPolicy -policy $bkpPol
 ```
 
-Die Standardaufbewahrungsdauer von Momentaufnahmen für jede Richtlinie ist auf zwei Tage festgelegt. Benutzer können den Wert auf mindestens einen Tag und maximal fünf Tage ändern. Die Aufbewahrungsdauer von Momentaufnahmen für wöchentliche Richtlinien ist auf fünf Tage festgelegt.
+Die Standardaufbewahrungsdauer von Momentaufnahmen für jede Richtlinie ist auf zwei Tage festgelegt. Sie können den Wert auf mindestens einen Tag und maximal fünf Tage ändern. Die Aufbewahrungsdauer von Momentaufnahmen für wöchentliche Richtlinien ist auf fünf Tage festgelegt.
 
 ## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
 
@@ -115,4 +115,3 @@ Wenn der Wiederherstellungspunkt eine Momentaufnahme aufweist und diese der letz
 ### <a name="i-dont-need-instant-restore-functionality-can-it-be-disabled"></a>Ich benötige keine sofortige Wiederherstellung. Kann ich sie deaktivieren?
 
 Das Feature für die sofortige Wiederherstellung ist für alle Benutzer aktiviert und kann nicht deaktiviert werden. Die Aufbewahrungsdauer der Momentaufnahme kann auf bis zu einen Tag verkürzt werden.
-

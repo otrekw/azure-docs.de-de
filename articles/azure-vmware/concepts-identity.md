@@ -1,16 +1,16 @@
 ---
 title: Konzepte – Identität und Zugriff
-description: Informationen zu den Identitäts- und Zugriffskonzepten von Azure VMware Solution (AVS)
+description: Informationen zu den Identitäts- und Zugriffskonzepten von Azure VMware Solution
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: ce85b60b38db86af14b9e9aa06e568436dc76658
-ms.sourcegitcommit: d9cd51c3a7ac46f256db575c1dfe1303b6460d04
+ms.openlocfilehash: 9d5b7b4c7c2e0d55cffc99a3f371494f40320a16
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82739966"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88750591"
 ---
-# <a name="azure-vmware-solution-avs-identity-concepts"></a>Identitätskonzepte von Azure VMware Solution (AVS)
+# <a name="azure-vmware-solution-identity-concepts"></a>Identitätskonzepte von Azure VMware Solution
 
 Bei der Bereitstellung einer privaten Cloud werden vCenter Server und NSX-T Manager zur Verfügung gestellt. Sie verwenden vCenter, um VM-Workloads zu verwalten, und NSX-T Manager, um das softwaredefinierte Netzwerk der privaten Cloud zu erweitern.
 

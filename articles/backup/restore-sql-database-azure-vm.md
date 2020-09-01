@@ -3,12 +3,12 @@ title: Wiederherstellen von SQL Server-Datenbanken auf einem virtuellen Azure-Co
 description: In diesem Artikel erfahren Sie, wie Sie SQL Server-Datenbanken wiederherstellen, die auf einem virtuellen Azure-Computer ausgeführt und mit Azure Backup gesichert werden.
 ms.topic: conceptual
 ms.date: 05/22/2019
-ms.openlocfilehash: 97cf8a7d7fcae0e31dde14e045b222c5899dbb02
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 682540e498c7531777032b5375f0105c03ce4ec6
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87921145"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826555"
 ---
 # <a name="restore-sql-server-databases-on-azure-vms"></a>Wiederherstellen von SQL Server-Datenbanken auf virtuellen Azure-Computern
 
@@ -165,7 +165,7 @@ Wenn Sie **Vollständig und differenziell** als Wiederherstellungstyp ausgewähl
 
 ### <a name="restore-databases-with-large-number-of-files"></a>Wiederherstellen von Datenbanken mit zahlreichen Dateien
 
-Wenn die gesamte Zeichenfolgegröße von Dateien in einer Datenbank einen [bestimmten Grenzwert](backup-sql-server-azure-troubleshoot.md#size-limit-for-files) übersteigt, speichert Azure Backup die Liste mit den Datenbankdateien in einer anderen PIT-Komponente, sodass Sie während des Wiederherstellungsvorgangs den Wiederherstellungszielpfad nicht angegeben können. Die Dateien werden stattdessen am SQL-Standardpfad wiederhergestellt.
+Wenn die gesamte Zeichenfolgegröße von Dateien in einer Datenbank einen [bestimmten Grenzwert](backup-sql-server-azure-troubleshoot.md#size-limit-for-files) überschreitet, speichert Azure Backup die Liste mit den Datenbankdateien in einer anderen PIT-Komponente, sodass Sie den Wiederherstellungszielpfad während des Wiederherstellungsvorgangs nicht festlegen können. Die Dateien werden stattdessen am SQL-Standardpfad wiederhergestellt.
 
   ![Wiederherstellen einer Datenbank mit großer Datei](./media/backup-azure-sql-database/restore-large-files.jpg)
 

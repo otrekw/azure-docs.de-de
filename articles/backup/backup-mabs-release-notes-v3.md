@@ -4,12 +4,12 @@ description: Dieser Artikel enthält Informationen zu bekannten Problemen und Pr
 ms.topic: conceptual
 ms.date: 06/03/2020
 ms.asset: 0c4127f2-d936-48ef-b430-a9198e425d81
-ms.openlocfilehash: 1f4900bb129ee67cd75d2b793f4179e3135569a6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 26d30a56b3117642678f98ba3e7927c27bfd6a69
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87032560"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826615"
 ---
 # <a name="release-notes-for-microsoft-azure-backup-server"></a>Anmerkungen zu dieser Version für Microsoft Azure Backup Server
 
@@ -81,7 +81,7 @@ Dieser Artikel enthält Informationen über die bekannten Probleme und Problemum
 1. Unter der Webportal-URL ist der Ordner „DPMReports“ im Format **`DPMReports_<GUID>`** vorhanden.
 
     >[!NOTE]
-    >Es gibt immer nur einen Ordner mit dieser Benennungskonvention. Wenn MABS von einer früheren Version aktualisiert wird, ist möglicherweise auch ein anderer älterer Ordner vorhanden, diesen können Sie jedoch nicht öffnen.
+    >Es gibt immer nur einen Ordner mit dieser Benennungskonvention. Wenn MABS von einer früheren Version aktualisiert wird, ist möglicherweise auch ein anderer älterer Ordner vorhanden, den Sie aber nicht öffnen können.
 
     ![Ordner „DPMReports“](./media/backup-mabs-release-notes-v3/dpm-reports-folder.png)
 

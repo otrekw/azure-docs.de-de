@@ -3,12 +3,12 @@ title: Sichern von VMware-VMs mit Azure Backup Server
 description: In diesem Artikel erfahren Sie, wie Sie Azure Backup Server verwenden, um VMware-VMs zu sichern, die auf einem VMware vCenter-/ESXi-Server ausgeführt werden.
 ms.topic: conceptual
 ms.date: 05/24/2020
-ms.openlocfilehash: 892d308df15ef745f34419ec315e2c5000b0852c
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: f498a7b7d2faf9ff857b504043233c46c843a961
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88263536"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826938"
 ---
 # <a name="back-up-vmware-vms-with-azure-backup-server"></a>Sichern von VMware-VMs mit Azure Backup Server
 
@@ -484,7 +484,7 @@ Navigieren Sie zu dem MABS-Server, auf dem die VMware-VM für den Schutz konfigu
   4. Navigieren Sie zum Ausschließen des Datenträgers zum Ordner `Bin`, und führen Sie das Skript *ExcludeDisk.ps1* mit den folgenden Parametern aus:
 
         > [!NOTE]
-        > Beenden Sie vor dem Ausführen dieses Befehls den DPMRA-Dienst auf dem MABS-Server. Andernfalls gibt das Skript die erfolgreiche Ausführung zurück, aktualisiert jedoch die Ausschlussliste nicht. Stellen Sie sicher, dass keine Aufträge ausgeführt werden, bevor Sie den Dienst beenden.
+        > Beenden Sie vor dem Ausführen dieses Befehls den DPMRA-Dienst auf dem MABS-Server. Andernfalls gibt das Skript die erfolgreiche Ausführung zurück, aktualisiert aber die Ausschlussliste nicht. Stellen Sie sicher, dass keine Aufträge ausgeführt werden, bevor Sie den Dienst beenden.
 
      **Führen Sie den folgenden Befehl aus, um den Datenträger in der Ausschlussliste hinzuzufügen oder zu entfernen:**
 

@@ -1,40 +1,40 @@
 ---
-title: Troubleshooting der Timeoutausnahme bei Anforderungen in Azure Cosmos DB
-description: Diagnose und Fehlerbehebung bei Timeoutausnahmen bei Anforderungen in Azure Cosmos DB
+title: Troubleshooting für Timeoutausnahmen bei Dienstanforderungen (Service Requests) in Azure Cosmos DB
+description: Hier erfahren Sie etwas zu Diagnose und Fehlerbehebung für Timeoutausnahmen bei Dienstanforderungen (Service Requests) in Azure Cosmos DB.
 author: j82w
 ms.service: cosmos-db
 ms.date: 07/13/2020
 ms.author: jawilley
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: bd8102ee73721e2a56185709d1076e489ecc7607
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 76a1558534728613dcdedc78b64a0366f2bd643d
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87293784"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88871070"
 ---
-# <a name="diagnose-and-troubleshoot-azure-cosmos-db-request-timeout"></a>Diagnose und Troubleshooting für Anforderungstimeouts in Azure Cosmos DB
+# <a name="diagnose-and-troubleshoot-azure-cosmos-db-request-timeout-exceptions"></a>Diagnose und Troubleshooting für Anforderungstimeoutausnahmen in Azure Cosmos DB
 In Azure Cosmos DB wurde ein HTTP-408-Anforderungstimeout zurückgegeben.
 
 ## <a name="troubleshooting-steps"></a>Schritte zur Problembehandlung
 Die folgende Liste enthält bekannte Gründe und Lösungen für Anforderungstimeoutausnahmen.
 
-### <a name="1-check-the-sla"></a>1. Überprüfen des SLA
-Kunden sollten über die [Überwachungsfunktionen in Azure Cosmos DB](monitor-cosmos-db.md) überprüfen, ob 408-Ausnahmen die SLA für Cosmos DB verletzen.
+### <a name="check-the-sla"></a>Überprüfen des SLA
+Überprüfen Sie unter [Azure Cosmos DB-Überwachung](monitor-cosmos-db.md), ob die Anzahl der 408-Ausnahmen gegen die Azure Cosmos DB-SLA verstößt.
 
-#### <a name="solution-1-it-did-not-violate-the-cosmos-db-sla"></a>Lösung 1: Die Cosmos DB-SLA wurde nicht verletzt
+#### <a name="solution-1-it-didnt-violate-the-azure-cosmos-db-sla"></a>Lösung 1: Die Anzahl hat nicht gegen die Azure Cosmos DB-SLA verstoßen.
 Die Anwendung sollte mit diesem Szenario umgehen können und für diese vorübergehenden Fehler jeweils wiederholte Versuche durchführen.
 
-#### <a name="solution-2-it-did-violate-the-cosmos-db-sla"></a>Lösung 2: Die Cosmos DB-SLA wurde verletzt
-Wenden Sie sich an den Azure-Support: https://aka.ms/azure-support.
+#### <a name="solution-2-it-did-violate-the-azure-cosmos-db-sla"></a>Lösung 2: Die Anzahl hat gegen die Azure Cosmos DB-SLA verstoßen.
+Wenden Sie sich an den [Azure-Support](https://aka.ms/azure-support).
  
-### <a name="2-hot-partition-key"></a>2. Partitionsschlüssel auf heißer Ebene
-Azure Cosmos DB verteilt den gesamten bereitgestellten Durchsatz gleichmäßig auf die physischen Partitionen. Wenn es eine Partition auf heißer Ebene gibt, benötigt mindestens ein logischer Partitionsschlüssel auf einer physischen Partition alle Anforderungseinheiten pro Sekunde der physischen Partition. Die Anforderungseinheiten pro Sekunde aller anderen physischen Partitionen werden nicht genutzt. Die insgesamt genutzten Anforderungseinheiten pro Sekunde sind weniger als die insgesamt bereitgestellten Anforderungseinheiten pro Sekunde in der Datenbank oder im Container. Anforderungen für den logischen Partitionsschlüssel auf heißer Ebene werden jedoch weiterhin gedrosselt (429s). Im Artikel [Überwachen von normalisierten RU/s für einen Azure Cosmos-Container oder ein -Konto](monitor-normalized-request-units.md) finden Sie weitere Informationen, wie Sie erfahren, ob die Workload Probleme mit der Partition auf heißer Ebene hat. 
+### <a name="hot-partition-key"></a>Partitionsschlüssel auf heißer Ebene
+Azure Cosmos DB verteilt den gesamten bereitgestellten Durchsatz gleichmäßig auf die physischen Partitionen. Wenn es eine heiße Partition gibt, werden alle Anforderungseinheiten pro Sekunde (RU/s) einer physischen Partition von einem logischen Partitionsschlüssel (oder mehreren logischen Partitionsschlüsseln) darauf verbraucht. Gleichzeitig werden die RU/s auf anderen physischen Partitionen nicht genutzt. Dies zeigt sich darin, dass die Gesamtanzahl der verbrauchten RU/s geringer als die insgesamt bereitgestellten RU/s in der Datenbank oder im Container ist. Bei den Anforderungen für den Schlüssel für die heiße logische Partition wird weiterhin „Drosselung (429s)“ angezeigt. Im Artikel [Überwachen von normalisierten RU/s für einen Azure Cosmos-Container oder ein -Konto](monitor-normalized-request-units.md) finden Sie weitere Informationen, wie Sie erfahren, ob die Workload Probleme mit der Partition auf heißer Ebene hat. 
 
 #### <a name="solution"></a>Lösung:
 Wählen Sie einen geeigneten Partitionsschlüssel aus, der Anforderungsvolume und -speicher gleichmäßig verteilt. Weitere Informationen finden Sie unter [Ändern des Partitionsschlüssels in Azure Cosmos DB](https://devblogs.microsoft.com/cosmosdb/how-to-change-your-partition-key/).
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Diagnostizieren und Behandeln von Problemen bei Verwendung des .NET SDK für Azure Cosmos DB](troubleshoot-dot-net-sdk.md)
-* Weitere Informationen zu Leistungsrichtlinien für [.NET-Version 3](performance-tips-dotnet-sdk-v3-sql.md) und [.NET-Version 2](performance-tips.md)
+* Informieren Sie sich zu [Diagnostizieren und Behandeln](troubleshoot-dot-net-sdk.md) von Problemen bei Verwendung des .NET SDK für Azure Cosmos DB.
+* Informieren Sie sich zu Leistungsrichtlinien für [.NET v3](performance-tips-dotnet-sdk-v3-sql.md) und [.NET v2](performance-tips.md).

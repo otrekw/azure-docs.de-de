@@ -4,12 +4,12 @@ description: Hier finden Sie Anweisungen zum Verschieben eines Recovery Services
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.custom: references_regions
-ms.openlocfilehash: fbbe914b3e567a1a136d735fc52965524bc17b67
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: 0b06b12c2bb989e4c0fc4e04440fc5f452df2da3
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88612570"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88827119"
 ---
 # <a name="move-a-recovery-services-vault-across-azure-subscriptions-and-resource-groups"></a>Verschieben eines Recovery Services-Tresors zwischen Azure-Abonnements und Ressourcengruppen
 
@@ -50,12 +50,12 @@ Frankreich, Mitte; Frankreich, Süden; Deutschland, Nordosten; Deutschland, Mitt
 
 ## <a name="use-azure-portal-to-move-recovery-services-vault-to-different-resource-group"></a>Verwenden des Azure-Portals zum Verschieben eines Recovery Services-Tresors in eine andere Ressourcengruppe
 
-So verschieben Sie einen Recovery Services-Tresor und die zugehörigen Ressourcen in eine andere Ressourcengruppe
+So verschieben Sie einen Recovery Services-Tresor und seine zugeordneten Ressourcen in eine andere Ressourcengruppe:
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 2. Wählen Sie in der Liste der **Recovery Services-Tresore** den Tresor aus, den Sie verschieben möchten. Wenn das Tresordashboard geöffnet wird, wird es wie in der folgenden Abbildung dargestellt angezeigt.
 
-   ![Öffnen des Recovery Services-Tresors](./media/backup-azure-move-recovery-services/open-recover-service-vault.png)
+   ![Recovery Services-Tresor öffnen](./media/backup-azure-move-recovery-services/open-recover-service-vault.png)
 
    Wählen Sie das Dropdownsymbol aus, falls die **Essentials**-Informationen für Ihren Tresor nicht angezeigt werden. Jetzt sollten die Essentials-Informationen für Ihren Tresor angezeigt werden.
 
@@ -84,7 +84,7 @@ Sie können einen Recovery Services-Tresor und die zugehörigen Ressourcen in ei
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 2. Wählen Sie in der Liste der Recovery Services-Tresore den Tresor aus, den Sie verschieben möchten. Wenn das Tresordashboard geöffnet wird, wird es wie in der folgenden Abbildung dargestellt angezeigt.
 
-    ![Öffnen des Recovery Services-Tresors](./media/backup-azure-move-recovery-services/open-recover-service-vault.png)
+    ![Recovery Services-Tresor öffnen](./media/backup-azure-move-recovery-services/open-recover-service-vault.png)
 
     Wählen Sie das Dropdownsymbol aus, falls die **Essentials**-Informationen für Ihren Tresor nicht angezeigt werden. Jetzt sollten die Essentials-Informationen für Ihren Tresor angezeigt werden.
 
@@ -106,7 +106,7 @@ Sie können einen Recovery Services-Tresor und die zugehörigen Ressourcen in ei
 7. Wählen Sie zur Bestätigung **Mir ist bewusst, dass Tools und Skripts, die den verschobenen Ressourcen zugeordnet sind, erst funktionieren, wenn ich sie auf die Verwendung neuer Ressourcen-IDs aktualisiere** aus, und wählen Sie dann **OK** aus.
 
 > [!NOTE]
-> Abonnementübergreifende Sicherung (RS-Tresor und geschützte virtuelle Computer befinden sich in verschiedenen Abonnements) wird nicht unterstützt. Außerdem kann die Speicherredundanzoption von lokalem redundantem Speicher (LRS) zu globalem redundantem Speicher (GRS) und umgekehrt während der Verschiebung des Tresors nicht geändert werden.
+> Das Szenario „Abonnementübergreifende Sicherung“ (RS-Tresor und geschützte virtuelle Computer befinden sich in verschiedenen Abonnements) wird nicht unterstützt. Außerdem kann die Speicherredundanzoption von lokalem redundantem Speicher (LRS) zu globalem redundantem Speicher (GRS) und umgekehrt während des Verschiebevorgangs für den Tresor nicht geändert werden.
 >
 >
 
@@ -141,7 +141,7 @@ Um Ressourcen in ein neues Abonnement zu verschieben, geben Sie den Parameter`--
 ## <a name="post-migration"></a>Nach der Migration
 
 1. Legen Sie die Zugriffssteuerungen für die Ressourcengruppen fest, bzw. überprüfen Sie sie.  
-2. Die Funktion zur Berichterstellung über die Sicherung und deren Überwachung muss nach Abschluss der Verschiebung für den Tresor neu konfiguriert werden. Die vorherige Konfiguration geht während des Verschiebevorgangs verloren.
+2. Die Backup-Funktion zur Berichterstellung und Überwachung muss nach Abschluss des Verschiebevorgangs für den Tresor neu konfiguriert werden. Die vorherige Konfiguration geht während des Verschiebevorgangs verloren.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

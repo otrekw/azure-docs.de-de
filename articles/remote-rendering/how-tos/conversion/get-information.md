@@ -1,20 +1,40 @@
 ---
-title: Abrufen von Informationen zu einem konvertierten Modell
-description: Beschreibung aller Parameter der Modellkonvertierung.
+title: Abrufen von Informationen zu Konvertierungen
+description: Abrufen von Informationen zu Konvertierungen
 author: malcolmtyrrell
 ms.author: matyrr
 ms.date: 03/05/2020
 ms.topic: how-to
-ms.openlocfilehash: f5c38ac88503416b37b720a091c9e46d819a3146
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 529bfb61b3af7040f3656c04071683841f5abe86
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88509296"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88870288"
 ---
-# <a name="get-information-about-a-converted-model"></a>Abrufen von Informationen zu einem konvertierten Modell
+# <a name="get-information-about-conversions"></a>Abrufen von Informationen zu Konvertierungen
 
-Die vom Konvertierungsdienst erstellte Medienobjektdatei ist ausschließlich für die Nutzung durch den Renderingdienst vorgesehen. Es kann jedoch vorkommen, dass Sie auf Informationen zu einem Modell zugreifen möchten, ohne eine Renderingsitzung zu starten. Daher speichert der Konvertierungsdienst eine JSON-Datei neben der arrAsset-Datei im Ausgabecontainer. Wenn beispielsweise eine Datei `buggy.gltf` konvertiert wird, enthält der Ausgabecontainer eine Datei namens `buggy.info.json` neben dem konvertierten `buggy.arrAsset`-Medienobjekt. Sie enthält Informationen zum Quellmodell, zum konvertierten Modell und zur Konvertierung selbst.
+## <a name="information-about-a-conversion-the-result-file"></a>Informationen zu einer Konvertierung: Die Ergebnisdatei
+
+Wenn der Konvertierungsdienst ein Objekt konvertiert, wird eine Zusammenfassung aller Probleme in eine „Ergebnisdatei“ geschrieben. Wenn beispielsweise eine Datei `buggy.gltf` konvertiert wird, enthält der Ausgabecontainer eine Datei namens `buggy.result.json`.
+
+In der Ergebnisdatei sind alle Fehler und Warnungen aufgelistet, die während der Konvertierung aufgetreten sind, sowie eine Ergebniszusammenfassung, in Form von `succeeded`, `failed` oder `succeeded with warnings`.
+Die Ergebnisdatei ist als ein JSON-Array von Objekten strukturiert, von denen jedes eine Zeichenfolgeneigenschaft in Form der Eigenschaften `warning`, `error`, `internal warning`, `internal error` bzw. `result` aufweist. Es wird höchstens einen Fehler (entweder `error` oder `internal error`) sowie immer ein `result`-Objekt geben.
+
+## <a name="example-result-file"></a>*Beispielergebnisdatei*
+
+Im folgenden Beispiel wird eine Konvertierung beschrieben, die erfolgreich ein arrAsset-Objekt generiert hat. Da jedoch eine Struktur fehlte, ist das resultierende arrAsset-Objekt möglicherweise nicht so wie beabsichtigt.
+
+```JSON
+[
+  {"warning":"4004","title":"Missing texture","details":{"texture":"buggy_baseColor.png","material":"buggy_col"}},
+  {"result":"succeeded with warnings"}
+]
+```
+
+## <a name="information-about-a-converted-model-the-info-file"></a>Informationen zu einem konvertierten Modell: Die Infodatei
+
+Die vom Konvertierungsdienst erstellte Medienobjektdatei ist ausschließlich für die Nutzung durch den Renderingdienst vorgesehen. Es kann jedoch vorkommen, dass Sie auf Informationen zu einem Modell zugreifen möchten, ohne eine Renderingsitzung zu starten. Um diesen Workflow zu unterstützen, speichert der Konvertierungsdienst eine JSON-Datei neben der arrAsset-Datei im Ausgabecontainer. Wenn beispielsweise eine Datei `buggy.gltf` konvertiert wird, enthält der Ausgabecontainer eine Datei namens `buggy.info.json` neben dem konvertierten `buggy.arrAsset`-Medienobjekt. Sie enthält Informationen zum Quellmodell, zum konvertierten Modell und zur Konvertierung selbst.
 
 ## <a name="example-info-file"></a>Beispiel für eine Datei *info*
 
@@ -124,6 +144,11 @@ In diesem Abschnitt werden die vom konvertierten Medienobjekt berechneten Inform
 * `numMeshPartsInstanced`: Die Anzahl der Gittermodelle, die in arrAsset wiederverwendet werden.
 * `recenteringOffset`: Wenn die Option `recenterToOrigin` in den [ConversionSettings](configure-model-conversion.md) aktiviert ist, ist dieser Wert die Übersetzung, die das konvertierte Modell zurück an seine ursprüngliche Position verschieben würde.
 * `boundingBox`: Die Begrenzungen des Modells.
+
+## <a name="deprecated-features"></a>Veraltete Features
+
+Der Konvertierungsdienst schreibt die Dateien `stdout.txt` und `stderr.txt` in den Ausgabecontainer, und diese waren die einzige Quelle für Warnungen und Fehler.
+Diese Dateien sind jetzt veraltet. Verwenden Sie stattdessen [Ergebnisdateien](#information-about-a-conversion-the-result-file) zu diesem Zweck.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

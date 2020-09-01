@@ -3,12 +3,12 @@ title: Verwenden von PowerShell zum Sichern von Windows Server in Azure
 description: In diesem Artikel erfahren Sie, wie Sie PowerShell zum Einrichten von Azure Backup auf einem Windows Server-Computer oder einem Windows-Client sowie zum Verwalten von Sicherungen und Wiederherstellungen verwenden.
 ms.topic: conceptual
 ms.date: 12/2/2019
-ms.openlocfilehash: 0deccc49b82d4a8b81889c35174c3efa81b6d74d
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: 47c8fc39626d3bca3355c1d1e46f1634327748a8
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87564026"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892370"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-windows-serverwindows-client-using-powershell"></a>Bereitstellen und Verwalten der Sicherung in Azure für Windows Server-/Windows-Clientcomputer mit PowerShell
 
@@ -42,10 +42,10 @@ Mit den folgenden Schritten können Sie einen Recovery Services-Tresor erstellen
     New-AzRecoveryServicesVault -Name "testvault" -ResourceGroupName " test-rg" -Location "WestUS"
     ```
 
-4. Geben Sie den Typ der zu verwendenden Speicherredundanz an: [lokal redundanter Speicher (LRS)](../storage/common/storage-redundancy.md) oder [georedundanter Speicher (GRS)](../storage/common/storage-redundancy.md). Das folgende Beispiel zeigt, dass die Option **-BackupStorageRedundancy** für *testVault* auf **GeoRedundant** festgelegt ist.
+4. Geben Sie den Typ der zu verwendenden Speicherredundanz an. Sie können [lokal redundanten Speicher (LRS)](../storage/common/storage-redundancy.md) oder [georedundanten Speicher (GRS)](../storage/common/storage-redundancy.md) verwenden. Das folgende Beispiel zeigt, dass die Option **-BackupStorageRedundancy** für *testVault* auf **GeoRedundant** festgelegt ist.
 
    > [!TIP]
-   > Viele Azure Backup-Cmdlets benötigen das Recovery Services-Tresorobjekt als Eingabe. Aus diesem Grund sollte das zur Sicherung verwendete Recovery Services-Tresorobjekt in einer Variablen gespeichert werden.
+   > Viele Azure Backup-Cmdlets benötigen das Recovery Services-Tresorobjekt als Eingabe. Aus diesem Grund sollte das Backup Recovery Services-Tresorobjekt in einer Variablen gespeichert werden.
    >
    >
 
@@ -124,7 +124,7 @@ Die verfügbaren Optionen umfassen:
 | /pu |Proxyhost-Benutzername |- |
 | /pw |Proxykennwort |- |
 
-## <a name="registering-windows-server-or-windows-client-machine-to-a-recovery-services-vault"></a>Registrieren von Windows-Server oder Windows-Client bei einem Recovery Services-Tresor
+## <a name="registering-windows-server-or-windows-client-machine-to-a-recovery-services-vault"></a>Registrieren von Windows Server oder Windows-Client bei einem Recovery Services-Tresor
 
 Laden Sie nach dem Erstellen des Recovery Services-Tresors den neuesten Agent sowie die Tresoranmeldeinformationen herunter, und speichern Sie sie an einem zentralen Ort wie C:\Downloads.
 
@@ -177,7 +177,7 @@ Machine registration succeeded.
 ```
 
 > [!IMPORTANT]
-> Verwenden Sie keine relativen Pfade, um die Tresoranmeldedatendatei anzugeben. Sie müssen einen absoluten Pfad als Eingabe für das Cmdlet angeben.
+> Verwenden Sie zur Angabe der Tresoranmeldedatendatei keine relativen Pfade. Sie müssen einen absoluten Pfad als Eingabe für das Cmdlet angeben.
 >
 >
 
@@ -226,7 +226,7 @@ Server properties updated successfully
 ```
 
 > [!IMPORTANT]
-> Sichern Sie die Passphraseninformationen, nachdem Sie sie festgelegt haben. Das Wiederherstellen von Daten aus Azure ohne diese Passphrase ist nicht möglich.
+> Sichern Sie die Passphrase-Informationen, nachdem Sie sie festgelegt haben. Das Wiederherstellen von Daten aus Azure ohne diese Passphrase ist nicht möglich.
 >
 >
 

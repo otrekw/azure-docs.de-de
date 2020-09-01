@@ -3,19 +3,19 @@ title: Sichern von SQL Server-Datenbanken in Azure
 description: In diesem Artikel erfahren Sie, wie Sie SQL Server in Azure sichern. In diesem Artikel wird auch die SQL Server-Wiederherstellung beschrieben.
 ms.topic: conceptual
 ms.date: 06/18/2019
-ms.openlocfilehash: 92097f4be02e81d3a8d306f6dc00bb0e8c939005
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: d8cdafe215d9271151d8dacee114d40108e907bd
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88612536"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892438"
 ---
 # <a name="about-sql-server-backup-in-azure-vms"></a>Informationen zur SQL Server-Sicherung auf virtuellen Azure-Computern
 
 [Azure Backup](backup-overview.md) bietet eine streambasierte, spezialisierte Lösung zum Sichern von SQL Server-Instanzen, die auf Azure-VMs ausgeführt werden. Diese Lösung ist an den Vorteilen von Azure Backup ausgerichtet: Sicherungen ohne Infrastruktur, langfristige Speicherung und zentrale Verwaltung. Außerdem bietet sie die folgenden Vorteile speziell für SQL Server:
 
 1. Workloadabhängige Sicherungen, die alle Sicherungstypen unterstützen: vollständige, differenzielle und Protokollsicherungen
-2. RPO (Recovery Point Objective) von 15 Minuten mit häufigen Protokollsicherungen
+2. RPO (Recovery Point Objective) von 15 Minuten mit häufigen Protokollsicherungen
 3. Zeitpunktwiederherstellung von bis zu einer Sekunde
 4. Sicherung und Wiederherstellung einzelner Datenbankebenen
 
@@ -27,17 +27,17 @@ Die Lösung nutzt die nativen SQL-APIs, um Sicherungen Ihrer SQL-Datenbankinstan
 
 * Nachdem Sie die SQL Server-VM angegeben haben, die Sie schützen und deren Datenbanken Sie abfragen möchten, installiert der Azure Backup-Dienst eine Erweiterung zur Workloadsicherung mit dem Namen `AzureBackupWindowsWorkload` auf dem virtuellen Computer.
 * Diese Erweiterung besteht aus einem Koordinator und einem SQL-Plug-In. Während der Koordinator für das Auslösen von Workflows für verschiedene Vorgänge wie Konfigurieren der Sicherung, Sicherung und Wiederherstellung zuständig ist, ist das Plug-In für den tatsächlichen Datenfluss verantwortlich.
-* Um die Datenbanken auf diesem virtuellen Computer ermitteln zu können, erstellt Azure Backup das Konto `NT SERVICE\AzureWLBackupPluginSvc`. Dieses Konto wird zum Sichern und Wiederherstellen verwendet und erfordert SQL-Systemadministratorberechtigungen. Bei dem Konto `NT SERVICE\AzureWLBackupPluginSvc` handelt es sich um ein [virtuelles Dienstkonto](/windows/security/identity-protection/access-control/service-accounts#virtual-accounts), daher ist keine Kennwortverwaltung erforderlich. Azure Backup verwendet das Konto `NT AUTHORITY\SYSTEM` für die Ermittlung von Datenbanken und Anfragen an Datenbanken. Dieses Konto muss also über eine öffentliche Anmeldung in SQL verfügen. Wenn Sie den virtuellen SQL Server-Computer nicht über Azure Marketplace erstellt haben, erhalten Sie möglicherweise den Fehler **UserErrorSQLNoSysadminMembership**. Gehen Sie in diesem Fall [wie folgt vor](#set-vm-permissions):
+* Um die Datenbanken auf diesem virtuellen Computer ermitteln zu können, erstellt Azure Backup das Konto `NT SERVICE\AzureWLBackupPluginSvc`. Dieses Konto wird zum Sichern und Wiederherstellen verwendet und erfordert SQL-Systemadministratorberechtigungen. Weil es sich beim Konto `NT SERVICE\AzureWLBackupPluginSvc` um ein [virtuelles Dienstkonto](/windows/security/identity-protection/access-control/service-accounts#virtual-accounts) handelt, ist keine Kennwortverwaltung erforderlich. Azure Backup verwendet das Konto `NT AUTHORITY\SYSTEM` für die Ermittlung von und Anfragen an Datenbanken. Für dieses Konto muss es also eine öffentliche Anmeldung in SQL geben. Wenn Sie den virtuellen SQL Server-Computer nicht über Azure Marketplace erstellt haben, erhalten Sie möglicherweise den Fehler **UserErrorSQLNoSysadminMembership**. Gehen Sie in diesem Fall [wie folgt vor](#set-vm-permissions):
 * Sobald Sie die Konfiguration des Schutzes der ausgewählten Datenbanken auslösen, richtet der Sicherungsdienst den Koordinator mit den Sicherungszeitplänen und anderen Richtliniendetails ein, die die Erweiterung lokal auf dem virtuellen Computer zwischenspeichert.
 * Zum geplanten Zeitpunkt kommuniziert der Koordinator mit dem Plug-In, und es startet das Streaming der Sicherungsdaten von der SQL Server-Instanz mit VDI.  
-* Das Plug-In sendet die Daten direkt an den Recovery Services-Tresor, sodass kein Stagingspeicherort erforderlich ist. Die Daten werden verschlüsselt und vom Azure Backup-Dienst in Speicherkonten gespeichert.
+* Weil das Plug-In die Daten direkt an den Recovery Services-Tresor sendet, ist kein Stagingspeicherort erforderlich. Die Daten werden verschlüsselt und vom Azure Backup-Dienst in Speicherkonten gespeichert.
 * Wenn die Datenübertragung abgeschlossen ist, bestätigt der Koordinator den Commit mit dem Sicherungsdienst.
 
   ![Die Architektur von SQL Backup](./media/backup-azure-sql-database/backup-sql-overview.png)
 
 ## <a name="before-you-start"></a>Vorbereitung
 
-Überprüfen Sie zunächst Folgendes:
+Überprüfen Sie zunächst die folgenden Anforderungen:
 
 1. Vergewissern Sie sich, dass in Azure eine SQL Server-Instanz ausgeführt wird. Im Marketplace können Sie [schnell eine SQL Server-Instanz erstellen](../azure-sql/virtual-machines/windows/sql-vm-create-portal-quickstart.md).
 2. Informieren Sie sich über [Funktionsaspekte](sql-support-matrix.md#feature-considerations-and-limitations) und [Unterstützung von Szenarien](sql-support-matrix.md#scenario-support).
@@ -51,9 +51,9 @@ Die Lösung nutzt die nativen SQL-APIs, um Sicherungen Ihrer SQL-Datenbankinstan
 * Erstellt das Konto „NT SERVICE\AzureWLBackupPluginSvc“, um Datenbanken auf dem virtuellen Computer zu ermitteln. Dieses Konto wird zum Sichern und Wiederherstellen verwendet und erfordert Systemadministratorberechtigungen für SQL Server.
 * Ermittelt auf einer VM ausgeführte Datenbanken. Azure Backup verwendet das Konto NT AUTHORITY\SYSTEM. Dieses Konto muss eine öffentliche Anmeldung in SQL Server ermöglichen.
 
-Wenn Sie die SQL Server-VM nicht in Azure Marketplace erstellt haben oder mit SQL Server 2008 oder 2008 R2 arbeiten, erhalten Sie unter Umständen die Fehlermeldung **UserErrorSQLNoSysadminMembership**.
+Wenn Sie die SQL Server-VM nicht in Azure Marketplace erstellt haben oder wenn Sie mit SQL Server 2008 oder 2008 R2 arbeiten, erhalten Sie möglicherweise die Fehlermeldung **UserErrorSQLNoSysadminMembership**.
 
-Informationen zur Erteilung von Berechtigungen bei Ausführung von **SQL 2008** und **2008 R2** unter Windows 2008 R2 finden Sie [hier](#give-sql-sysadmin-permissions-for-sql-2008-and-sql-2008-r2).
+Informationen zur Erteilung von Berechtigungen bei Ausführung von **SQL 2008** und **2008 R2** unter Windows 2008 R2 finden Sie [hier](#give-sql-sysadmin-permissions-for-sql-2008-and-sql-2008-r2).
 
 Korrigieren Sie bei allen anderen Versionen die Berechtigungen wie folgt:
 

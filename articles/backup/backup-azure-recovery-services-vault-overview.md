@@ -3,12 +3,12 @@ title: Übersicht über Recovery Services-Tresore
 description: Übersicht über Recovery Services-und Azure Backup-Tresore sowie Vergleich dieser Tresore
 ms.topic: conceptual
 ms.date: 08/17/2020
-ms.openlocfilehash: 5334bc2aea5ddbf734c3fd3ef314ff4da609d61d
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 6b6550bc8c5221547d55ad1e81a985b8ecd303e0
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88587751"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88889616"
 ---
 # <a name="recovery-services-vaults-overview"></a>Übersicht über Recovery Services-Tresore
 
@@ -20,7 +20,7 @@ In diesem Artikel werden die Funktionen eines Recovery Services-Tresors beschrie
 
 - **Rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC)** : Die RBAC ermöglicht eine präzise Verwaltung der Zugriffssteuerung in Azure. [Azure bietet verschiedene integrierte Rollen](../role-based-access-control/built-in-roles.md), während Azure Backup über drei [integrierte Rollen zum Verwalten von Wiederherstellungspunkten](backup-rbac-rs-vault.md) verfügt. Recovery Services-Tresore sind mit der RBAC kompatibel, die den Zugriff auf Sicherungen und Wiederherstellungen auf den definierten Satz von Benutzerrollen beschränkt. [Weitere Informationen](backup-rbac-rs-vault.md)
 
-- **Vorläufiges Löschen:**  Beim vorläufigen Löschen werden die Sicherungsdaten 14 Tage länger aufbewahrt, damit das jeweilige Sicherungselement auch dann ohne Datenverluste wiederhergestellt werden kann, wenn ein böswilliger Akteur eine Sicherung löscht oder die Sicherungsdaten versehentlich gelöscht werden. Für die zusätzlichen 14 Tage der Aufbewahrung von Sicherungsdaten mit dem Status „Vorläufiges Löschen“ fallen für Kunden keine Kosten an. [Weitere Informationen](backup-azure-security-feature-cloud.md)
+- **Vorläufiges Löschen:**  Beim vorläufigen Löschen werden die Sicherungsdaten 14 Tage länger aufbewahrt, damit das jeweilige Sicherungselement auch dann ohne Datenverluste wiederhergestellt werden kann, wenn ein böswilliger Akteur eine Sicherung löscht oder die Sicherungsdaten versehentlich gelöscht werden. Für die zusätzlichen 14 Tage der Aufbewahrung von Sicherungsdaten mit dem Status „Vorläufiges Löschen“ fallen für Sie keine Kosten an. [Weitere Informationen](backup-azure-security-feature-cloud.md)
 
 - **Regionsübergreifende Wiederherstellung:**  Die regionsübergreifende Wiederherstellung (Cross-Region Restore, CRR) ermöglicht es Ihnen, virtuelle Azure-Computer in einer sekundären Region wiederherzustellen, bei der es sich um eine gekoppelte Azure-Region handelt. Wenn Azure einen Notfall in der primären Region feststellt, stehen die in der sekundären Region replizierten Daten für eine Wiederherstellung in der sekundären Region zur Verfügung, um auf einen Notfall mit echter Downtime in der primären Region für die Umgebung zu reagieren. [Weitere Informationen](backup-azure-arm-restore-vms.md#cross-region-restore)
 

@@ -19,19 +19,19 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 3bf9dc0e69707eaed8c2a844f6ed3169e65a5342
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6ea8bc2551df4f85e4b856dc9cf1c06a9bd571fd
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85564076"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88923448"
 ---
 # <a name="lucene-query-syntax-in-azure-cognitive-search"></a>Lucene-Abfragesyntax in Azure Cognitive Search
 
 Sie können für Azure Cognitive Search basierend auf der umfassenden Syntax des [Lucene-Abfrageparsers](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/classic/package-summary.html) spezielle Abfragen schreiben: Platzhaltersuche, Fuzzysuche, NEAR-Suche und Suche mit regulären Ausdrücken sind einige Beispiele hierfür. Der Großteil der Syntax des Lucene-Abfrageparsers wird [in Azure Cognitive Search unverändert implementiert](search-lucene-query-architecture.md). Die einzige Ausnahme sind *Bereichssuchen*, die in Azure Cognitive Search mit `$filter`-Ausdrücken erstellt werden. 
 
 > [!NOTE]
-> Die vollständige Lucene-Syntax wird für Abfrageausdrücke verwendet, die im **search**-Parameter der [Dokumente durchsuchen](https://docs.microsoft.com/rest/api/searchservice/search-documents)-API übergeben werden. Sie sollte nicht mit der [OData-Syntax](query-odata-filter-orderby-syntax.md) verwechselt werden, die für den [$filter](search-filters.md)-Parameter dieser API verwendet wird. Für diese unterschiedlichen Syntaxen gelten eigene Regeln für das Erstellen von Abfragen, das Auskommentieren von Zeichenfolgen usw.
+> Die vollständige Lucene-Syntax wird für Abfrageausdrücke verwendet, die im **search**-Parameter der [Dokumente durchsuchen](/rest/api/searchservice/search-documents)-API übergeben werden. Sie sollte nicht mit der [OData-Syntax](query-odata-filter-orderby-syntax.md) verwechselt werden, die für den [$filter](search-filters.md)-Parameter dieser API verwendet wird. Für diese unterschiedlichen Syntaxen gelten eigene Regeln für das Erstellen von Abfragen, das Auskommentieren von Zeichenfolgen usw.
 
 ## <a name="invoke-full-parsing"></a>Aufrufen der vollständigen Analyse
 
@@ -60,7 +60,7 @@ POST /indexes/hotels/docs/search?api-version=2020-06-30
 }
 ```
 
-Weitere Beispiele finden Sie unter [Beispiele für die Lucene-Abfragesyntax zum Erstellen von Abfragen in Azure Cognitive Search](search-query-lucene-examples.md). Ausführliche Informationen zur Angabe sämtlicher Abfrageparameter finden Sie unter [Durchsuchen von Dokumenten (REST-API für Azure Cognitive Search)](https://docs.microsoft.com/rest/api/searchservice/Search-Documents).
+Weitere Beispiele finden Sie unter [Beispiele für die Lucene-Abfragesyntax zum Erstellen von Abfragen in Azure Cognitive Search](search-query-lucene-examples.md). Ausführliche Informationen zur Angabe sämtlicher Abfrageparameter finden Sie unter [Durchsuchen von Dokumenten (REST-API für Azure Cognitive Search)](/rest/api/searchservice/Search-Documents).
 
 > [!NOTE]  
 >  Azure Cognitive Search unterstützt darüber hinaus die [einfache Abfragesyntax](query-simple-syntax.md), eine unkomplizierte und stabile Abfragesprache, die für die einfache Schlüsselwortsuche verwendet werden kann.  
@@ -139,7 +139,7 @@ Sie können einen feldbezogenen Suchvorgang mit der `fieldName:searchExpression`
 
 Achten Sie darauf, dass Sie mehrere Zeichenfolgen in Anführungszeichen setzen, wenn beide Zeichenfolgen als einzelne Entität ausgewertet werden sollen (in diesem Fall die Suche nach zwei verschiedenen Künstlern im Feld `artists`).  
 
-Das in `fieldName:searchExpression` angegebene Feld muss ein Feld vom Typ `searchable` sein.  Einzelheiten zur Verwendung von Indexattributen in Felddefinitionen finden Sie unter [Create Index](https://docs.microsoft.com/rest/api/searchservice/create-index) (Erstellen eines Index).  
+Das in `fieldName:searchExpression` angegebene Feld muss ein Feld vom Typ `searchable` sein.  Einzelheiten zur Verwendung von Indexattributen in Felddefinitionen finden Sie unter [Create Index](/rest/api/searchservice/create-index) (Erstellen eines Index).  
 
 > [!NOTE]
 > Bei der Verwendung von feldbezogenen Suchausdrücken brauchen Sie den Parameter `searchFields` nicht zu verwenden, da in jedem feldbezogenen Suchausdruck explizit ein Feldname angegeben ist. Allerdings können Sie den Parameter `searchFields` trotzdem verwenden, wenn Sie eine Abfrage ausführen möchten, bei der einige Teile auf ein bestimmtes Feld beschränkt sind, der Rest sich jedoch auf mehrere Felder beziehen kann. Zum Beispiel würde `jazz` in der Abfrage `search=genre:jazz NOT history&searchFields=description` nur mit dem Feld `genre`, und `NOT history` mit dem Feld `description` abgeglichen werden. Der in `fieldName:searchExpression` angegebene Feldname hat immer Vorrang vor dem Parameter `searchFields`, weshalb `genre` in diesem Beispiel nicht in den Parameter `searchFields` aufgenommen werden muss.
@@ -183,7 +183,16 @@ Für die Suffixübereinstimmung, bei denen der Zeichenfolge `*` oder `?` vorange
 > [!NOTE]  
 > Grundsätzlich ist der Musterabgleich langsam, sodass Sie möglicherweise alternative Methoden untersuchen sollten, z. B. Edge-N-Gramm-Tokenisierung, mit der Token für Zeichenfolgen in einem Begriff erstellt werden. Der Index wird damit größer, Abfragen werden jedoch möglicherweise schneller ausgeführt, je nach der Form des Musters und der Länge der Zeichenfolgen, die Sie indizieren.
 >
-> Während der Abfrageanalyse werden Abfragen, die als Präfix-, Suffix-, Platzhaltersuche oder reguläre Ausdrücke formuliert werden, unverändert an die Abfragestruktur übergeben, wobei die [lexikalische Analyse](search-lucene-query-architecture.md#stage-2-lexical-analysis) umgangen wird. Es werden nur Übereinstimmungen gefunden, wenn der Index die Zeichenfolgen in dem in der Abfrage angegebenen Format enthält. In den meisten Fällen benötigen Sie während der Indizierung ein alternatives Analysetool, das die Integrität der Zeichenfolgen beibehält, damit der Abgleich von Teilausdrücken und -mustern funktioniert. Weitere Informationen finden Sie im Thema zur [Suche nach Teilausdrücken in Azure Cognitive Search-Abfragen](search-query-partial-matching.md).
+
+### <a name="impact-of-an-analyzer-on-wildcard-queries"></a>Auswirkung eines Analysetools auf Platzhalterabfragen
+
+Während der Abfrageanalyse werden Abfragen, die als Präfix-, Suffix-, Platzhaltersuche oder reguläre Ausdrücke formuliert werden, unverändert an die Abfragestruktur übergeben, wobei die [lexikalische Analyse](search-lucene-query-architecture.md#stage-2-lexical-analysis) umgangen wird. Es werden nur Übereinstimmungen gefunden, wenn der Index die Zeichenfolgen in dem in der Abfrage angegebenen Format enthält. In den meisten Fällen benötigen Sie während der Indizierung ein Analysetool, das die Integrität der Zeichenfolgen beibehält, damit der Abgleich von Teilausdrücken und -mustern gelingt. Weitere Informationen finden Sie im Thema zur [Suche nach Teilausdrücken in Azure Cognitive Search-Abfragen](search-query-partial-matching.md).
+
+Angenommen, Sie möchten, dass die Suchabfrage „beend*“ Ergebnisse liefert, die Begriffe wie „beenden“, „Beendigung“ und „beendet“ enthalten.
+
+Wenn Sie das Analysetool „de.lucene“ (deutsches Lucene) verwendeten, würde es eine aggressive Wortstammerkennung der einzelnen Begriffe anwenden. Beispielsweise werden „beenden“, „Beendigung“ und „beendet“ alle auf das Token „beend" in Ihrem Index tokenisiert. Einerseits werden Begriffe in Abfragen mit Platzhaltern oder Fuzzysuche überhaupt nicht analysiert. Deshalb gäbe es keine Ergebnisse, wenn die Abfrage „beend*" zum Abgleich verwendet würde.
+
+Andererseits sind die Microsoft-Analysetools (in diesem Fall das Analysetool „de.microsoft“) etwas komplexer und verwenden Lemmatisierung statt Wortstammerkennung. Dies bedeutet, dass alle generierten Token gültige deutsche Wörter sein sollten. Beispielsweise bleiben „beenden“', „beendet“ und „Beendigung“ meistens ganz im Index und wären eine bevorzugte Wahl bei Szenarien, die sehr viel auf Platzhalter und Fuzzysuche angewiesen sind.
 
 ##  <a name="scoring-wildcard-and-regex-queries"></a><a name="bkmk_searchscoreforwildcardandregexqueries"></a> Bewerten von Platzhalterabfragen und Abfragen mit regulären Ausdrücken
 
@@ -193,6 +202,6 @@ Azure Cognitive Search verwendet für Textabfragen die häufigkeitsbasierte Bewe
 
 + [Abfragebeispiele für die einfache Suche](search-query-simple-examples.md)
 + [Abfragebeispiele für die vollständige Lucene-Suche](search-query-lucene-examples.md)
-+ [Dokumente durchsuchen](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
++ [Dokumente durchsuchen](/rest/api/searchservice/Search-Documents)
 + [OData expression syntax for filters and sorting](query-odata-filter-orderby-syntax.md) (OData-Ausdrucksfilter für Filter und die Sortierung)   
-+ [Einfache Abfragesyntax in Azure Cognitive Search](query-simple-syntax.md)   
++ [Einfache Abfragesyntax in Azure Cognitive Search](query-simple-syntax.md)

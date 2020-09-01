@@ -4,12 +4,12 @@ description: Wiederherstellen eines virtuellen Azure-Computers mithilfe eines Wi
 ms.reviewer: geg
 ms.topic: conceptual
 ms.date: 08/02/2020
-ms.openlocfilehash: af9b505e762e201713b8e554b7886e5e2062dfef
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: 0607133f26113123f1c75d714c6c71f19cf2db63
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88263009"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826513"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>Wiederherstellen von Azure-VM-Daten im Azure-Portal
 
@@ -65,7 +65,7 @@ Wenn dies nicht zutrifft, können Sie [einen Datenträger wiederherstellen](#res
     - **Neue erstellen**: Verwenden Sie diese Option, wenn Sie eine neue VM erstellen möchten. Sie können eine VM mit einfachen Einstellungen erstellen oder einen Datenträger wiederherstellen und eine benutzerdefinierte VM erstellen.
     - **Vorhandene ersetzen**: Verwenden Sie diese Option, wenn Sie Datenträger auf einer vorhandenen VM ersetzen möchten.
 
-        ![Assistent für die Wiederherstellungskonfiguration](./media/backup-azure-arm-restore-vms/restore-configuration.png)
+        ![Wiederherstellen des Assistenten zur Konfiguration des virtuellen Computers](./media/backup-azure-arm-restore-vms/restore-configuration.png)
 
 1. Geben Sie die Einstellungen für die ausgewählte Wiederherstellungsoption an.
 
@@ -79,7 +79,7 @@ Als eine der [Wiederherstellungsoptionen](#restore-options) können Sie von eine
 1. Wählen Sie unter **Virtuelles Netzwerk** das virtuelle Netzwerk aus, in das der virtuelle Computer platziert wird. Alle dem Abonnement zugeordneten VNETs werden angezeigt. Wählen Sie das Subnetz aus. Das erste Subnetz wird standardmäßig ausgewählt.
 1. Geben Sie unter **Stagingspeicherort** das Speicherkonto für die VM an. [Weitere Informationen](#storage-accounts)
 
-    ![Assistent für die Wiederherstellungskonfiguration](./media/backup-azure-arm-restore-vms/recovery-configuration-wizard1.png)
+    ![Assistent für die Wiederherstellungskonfiguration – Wiederherstellungsoptionen auswählen](./media/backup-azure-arm-restore-vms/recovery-configuration-wizard1.png)
 
 1. Wählen Sie **Wiederherstellen** aus, um den Wiederherstellungsvorgang zu starten.
 
@@ -162,7 +162,7 @@ Die Benutzeroberfläche zur Wiederherstellung in der sekundären Region ähnelt 
 ![Wiederherstellungskonfiguration](./media/backup-azure-arm-restore-vms/rest-config.png)
 
 >[!NOTE]
->Das virtuelle Netzwerk in der sekundären Region muss eindeutig zugewiesen werden und kann nicht für andere virtuelle Computer in dieser Ressourcengruppe verwendet werden.
+>Das virtuelle Netzwerk in der sekundären Region muss eindeutig zugewiesen werden und kann nicht für andere VMs in dieser Ressourcengruppe verwendet werden.
 
 ![Auslösen der Benachrichtigung „Wiederherstellung wird ausgeführt“](./media/backup-azure-arm-restore-vms/restorenotifications.png)
 
@@ -172,7 +172,7 @@ Die Benutzeroberfläche zur Wiederherstellung in der sekundären Region ähnelt 
 >[!NOTE]
 >
 >- Nachdem die Wiederherstellung ausgelöst wurde und sich in der Datenübertragungsphase befindet, kann der Wiederherstellungsauftrag nicht abgebrochen werden.
->- Das Feature zur regionsübergreifenden Wiederherstellungen stellt VMs mit aktivierten CMKs (kundenseitig verwaltete Schlüssel) die nicht in einem Recovery Services-Tresor mit aktivierten CMKs gesichert sind, als VMs ohne aktivierte CMKs in der sekundären Region wieder her.
+>- Das Feature zur regionsübergreifenden Wiederherstellung stellt Azure VMs mit aktivierten CMKs (customer-managed keys, kundenseitig verwaltete Schlüssel), die nicht in einem Recovery Services-Tresor mit aktivierten CMKs gesichert sind, als VMs ohne aktivierte CMKs in der sekundären Region wieder her.
 >- Die für die Wiederherstellung in der Sekundärregion erforderlichen Azure-Rollen sind die gleichen wie in der Primärregion.
 
 ### <a name="monitoring-secondary-region-restore-jobs"></a>Überwachen von Wiederherstellungsaufträgen für die sekundäre Regionen
@@ -184,7 +184,7 @@ Die Benutzeroberfläche zur Wiederherstellung in der sekundären Region ähnelt 
 
 ## <a name="restoring-unmanaged-vms-and-disks-as-managed"></a>Wiederherstellen nicht verwalteter VMs und Datenträger als verwaltet
 
-Während der Wiederherstellung erhalten Sie eine Option zum Wiederherstellen [nicht verwalteter Datenträger](../storage/common/storage-disaster-recovery-guidance.md#azure-unmanaged-disks) als [verwaltete Datenträger](../virtual-machines/windows/managed-disks-overview.md). Standardmäßig werden die nicht verwalteten VM/Datenträger auch als nicht verwaltete VM/Datenträger wiederhergestellt. Wenn Sie sie jedoch als verwaltete VMs/Datenträger wiederherstellen möchten, ist dies jetzt möglich. Diese Wiederherstellungen werden nicht in der Momentaufnahmenphase ausgelöst, sondern nur in der Tresorphase. Diese Funktion ist für nicht verwaltete verschlüsselte VMs nicht verfügbar.
+Während der Wiederherstellung erhalten Sie eine Option zum Wiederherstellen [nicht verwalteter Datenträger](../storage/common/storage-disaster-recovery-guidance.md#azure-unmanaged-disks) als [verwaltete Datenträger](../virtual-machines/managed-disks-overview.md). Standardmäßig werden die nicht verwalteten VM/Datenträger auch als nicht verwaltete VM/Datenträger wiederhergestellt. Wenn Sie sie jedoch als verwaltete VMs/Datenträger wiederherstellen möchten, ist dies jetzt möglich. Diese Wiederherstellungen werden nicht in der Momentaufnahmenphase ausgelöst, sondern nur in der Tresorphase. Diese Funktion ist für nicht verwaltete verschlüsselte VMs nicht verfügbar.
 
 ![Wiederherstellen als verwaltete Datenträger](./media/backup-azure-arm-restore-vms/restore-as-managed-disks.png)
 

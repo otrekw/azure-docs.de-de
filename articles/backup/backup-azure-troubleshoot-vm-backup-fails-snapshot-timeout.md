@@ -4,12 +4,12 @@ description: Erfahren Sie mehr über die Symptome, Ursachen und Lösungen von Az
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.service: backup
-ms.openlocfilehash: d690ed23f49d3aa3f77b88c8d57c963ae2a98682
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: a3fe61bf5d116d257ed7aeb32226a437d0193c54
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88611856"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892387"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Behandeln von Azure Backup-Fehlern: Probleme mit dem Agent oder der Erweiterung
 
@@ -119,7 +119,7 @@ Dieser Fehler tritt auf, wenn einer der Erweiterungsfehler dazu führt, dass der
 Empfohlene Maßnahme:<br>
 Um dieses Problem zu beheben, entfernen Sie die Sperre für die Ressourcengruppe der VM, und wiederholen Sie den Vorgang, um die Bereinigung auszulösen.
 > [!NOTE]
-> Der Backup-Dienst erstellt eine separate Ressourcengruppe neben der Ressourcengruppe des virtuellen Computers zum Speichern der Wiederherstellungspunktsammlung. Kunden sollten die für die Verwendung durch den Backup-Dienst erstellte Ressourcengruppe nicht sperren. Das Namensformat der vom Backup-Dienst erstellten Ressourcengruppe sieht folgendermaßen aus: AzureBackupRG_`<Geo>`_`<number>` Eg: AzureBackupRG_northeurope_1
+> Der Backup-Dienst erstellt eine separate Ressourcengruppe neben der Ressourcengruppe des virtuellen Computers zum Speichern der Wiederherstellungspunktsammlung. Sie sollten die für die Verwendung durch den Backup-Dienst erstellte Ressourcengruppe nicht sperren. Das Namensformat der vom Backup-Dienst erstellten Ressourcengruppe sieht folgendermaßen aus: AzureBackupRG_`<Geo>`_`<number>`. Beispiel: *AzureBackupRG_northeurope_1*
 
 **Schritt 1: [Entfernen der Sperre von der Wiederherstellungspunkt-Ressourcengruppe](#remove_lock_from_the_recovery_point_resource_group)** <br>
 **Schritt 2: [Bereinigen der Wiederherstellungspunktsammlung](#clean_up_restore_point_collection)**<br>
@@ -176,7 +176,7 @@ Wenn Sie eine VM auf einer Datenträgergröße von mehr als 32 TB sichern, könn
 Bei Ihrem zuletzt ausgeführten Sicherungsauftrag ist ein Fehler aufgetreten, weil gerade ein vorhandener Sicherungsauftrag ausgeführt wird. Es ist nicht möglich, einen neuen Sicherungsauftrag zu starten, bevor der aktuelle Auftrag abgeschlossen ist. Stellen Sie sicher, dass der derzeit ausgeführte Sicherungsvorgang abgeschlossen wurde, bevor Sie weitere Sicherungsvorgänge auslösen oder planen. Führen Sie die folgenden Schritte aus, um den Status der Sicherungsaufträge zu überprüfen:
 
 1. Melden Sie sich beim Azure-Portal an, und wählen Sie die Option **Alle Dienste** aus. Geben Sie „Recovery Services“ ein, und wählen Sie **Recovery Services-Tresore** aus. Die Liste mit den Recovery Services-Tresoren wird angezeigt.
-2. Wählen Sie in der Liste mit den Recovery Services-Tresoren einen Tresor aus, für den die Sicherung konfiguriert ist.
+2. Wählen Sie in der Liste mit den Recovery Services-Tresoren einen Tresor aus, bei dem die Sicherung konfiguriert wurde.
 3. Wählen Sie im Dashboard-Menü des Tresorraums **Sicherungsaufträge** aus, um alle Sicherungsaufträge anzuzeigen.
    - Falls gerade ein Sicherungsauftrag ausgeführt wird, müssen Sie auf den Abschluss warten oder den Auftrag abbrechen.
      - Klicken Sie zum Abbrechen des Sicherungsauftrags mit der rechten Maustaste darauf, und wählen Sie dann **Abbrechen** aus, oder verwenden Sie [PowerShell](/powershell/module/az.recoveryservices/stop-azrecoveryservicesbackupjob).
@@ -297,7 +297,7 @@ Um die Wiederherstellungspunkte zu bereinigen, verwenden Sie eine der folgenden 
 
 #### <a name="clean-up-restore-point-collection-by-running-on-demand-backup"></a><a name="clean-up-restore-point-collection-by-running-on-demand-backup"></a>Bereinigen der Wiederherstellungspunktsammlung durch Ausführen einer On-Demand-Sicherung
 
-Nach dem Entfernen der Sperre lösen Sie eine On-Demand-Sicherung aus. Durch diese Aktion wird sichergestellt, dass die Wiederherstellungspunkte automatisch bereinigt werden. Es ist davon auszugehen, dass dieser On-Demand-Vorgang beim ersten Mal fehlschlägt. Er gewährleistet jedoch eine automatische Bereinigung anstelle des manuellen Löschens von Wiederherstellungspunkten. Nach der Bereinigung sollte die nächste geplante Sicherung erfolgreich sein.
+Nach dem Entfernen der Sperre lösen Sie eine On-Demand-Sicherung aus. Durch diese Aktion wird sichergestellt, dass die Wiederherstellungspunkte automatisch bereinigt werden. Dieser On-Demand-Vorgang schlägt beim ersten Mal meistens fehl. Es wird damit aber eine automatische Bereinigung statt manuellem Löschen von Wiederherstellungspunkten sichergestellt. Nach der Bereinigung sollte die nächste geplante Sicherung erfolgreich sein.
 
 > [!NOTE]
 > Die automatische Bereinigung erfolgt einige Stunden nach dem Auslösen der On-Demand-Sicherung. Wenn bei der geplanten Sicherung weiterhin ein Fehler auftritt, löschen Sie die Wiederherstellungspunktsammlung manuell, indem Sie die [hier](#clean-up-restore-point-collection-from-azure-portal) aufgeführten Schritte verwenden.
@@ -320,4 +320,4 @@ Um die Wiederherstellungspunktsammlung, die aufgrund der Sperre der Ressourcengr
 6. Wiederholen Sie den Sicherungsvorgang erneut.
 
 > [!NOTE]
- >Wenn die Ressource (RP-Sammlung) eine große Anzahl Wiederherstellungspunkte aufweist, kann beim Löschen über das Portal eine Zeitüberschreitung und damit ein Fehler auftreten. Dies ist ein bekanntes CRP-Problem, bei dem nicht alle Wiederherstellungspunkte in der veranschlagten gelöscht werden und ein Timeout des Vorgangs eintritt; allerdings gelingt der Löschvorgang normalerweise nach 2 oder 3 Wiederholungsversuchen.
+ >Wenn die Ressource (RP-Sammlung) eine große Anzahl Wiederherstellungspunkte aufweist, kann beim Löschen über das Portal eine Zeitüberschreitung und damit ein Fehler auftreten. Dies ist ein bekanntes CRP-Problem, bei dem sämtliche Wiederherstellungspunkte in der vorgesehenen Zeit nicht gelöscht werden und beim Vorgang ein Timeout auftritt. Der Löschvorgang gelingt jedoch normalerweise nach zwei oder drei Wiederholungen.

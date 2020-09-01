@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/06/2020
 ms.author: memildin
-ms.openlocfilehash: cbbfddca1a6a07625a69be8ffb0409640d825793
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: d4ed88dea0d230fd3488621c217ef9ea086310d5
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88036963"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88691478"
 ---
 # <a name="use-adaptive-application-controls-to-reduce-your-machines-attack-surfaces"></a>Verwenden von adaptiven Anwendungssteuerungen zum Verringern der Angriffsfläche Ihres Computers
 
@@ -83,7 +83,7 @@ Wählen Sie die Empfehlung aus, oder öffnen Sie die Seite der adaptiven Anwendu
     - **Keine Empfehlung**: Computer ohne definierte Zulassungsliste von Anwendungen, die die Funktion nicht unterstützen. Ihr Computer befindet sich aus folgenden Gründen möglicherweise auf dieser Registerkarte:
       - Ein Log Analytics-Agent fehlt.
       - Der Log Analytics-Agent sendet keine Ereignisse.
-      - Es handelt sich um einen Windows-Computer mit einer bereits vorhandenen [AppLocker](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-application-control/applocker)-Richtlinie, die entweder durch ein Gruppenrichtlinienobjekt oder eine lokale Sicherheitsrichtlinie aktiviert ist.
+      - Es handelt sich um einen Windows-Computer mit einer bereits vorhandenen [AppLocker](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-application-control/applocker/applocker-overview)-Richtlinie, die entweder durch ein Gruppenrichtlinienobjekt oder eine lokale Sicherheitsrichtlinie aktiviert ist.
 
       > [!TIP]
       > Security Center benötigt mindestens die Daten von zwei Wochen, um die eindeutigen Empfehlungen pro Gruppe von Computern zu definieren. Computer, die vor kurzem erstellt wurden oder zu Abonnements gehören, die erst kürzlich mit dem Standard-Tarif aktiviert wurden, werden auf der Registerkarte **Keine Empfehlung** angezeigt.

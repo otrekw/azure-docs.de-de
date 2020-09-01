@@ -3,12 +3,12 @@ title: Verwenden von Diagnoseeinstellungen für Recovery Services-Tresore
 description: In diesem Artikel wird beschrieben, wie die alten und neuen Diagnoseereignisse für Azure Backup verwendet werden.
 ms.topic: conceptual
 ms.date: 10/30/2019
-ms.openlocfilehash: 2b562ee7fc4afbc28119aa36cfa071291dd61f12
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: e5f666886dca0959b0f06b799088cadf4593ec39
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88612621"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826666"
 ---
 # <a name="use-diagnostics-settings-for-recovery-services-vaults"></a>Verwenden von Diagnoseeinstellungen für Recovery Services-Tresore
 
@@ -29,7 +29,7 @@ Azure Backup stellt die folgenden Diagnoseereignisse bereit. Jedes Ereignis biet
 * AddonAzureBackupPolicy
 * AddonAzureBackupStorage
 
-Wenn Sie das [Legacy-Ereignis](#legacy-event) AzureBackupReport verwenden, sollten Sie so bald wie möglich zu den oben aufgeführten Ereignissen wechseln.
+Wenn Sie das [Legacy-Ereignis](#legacy-event) AzureBackupReport weiterhin verwenden, empfiehlt es sich, zu den oben beschriebenen Ereignissen zu wechseln.
 
 Weitere Informationen finden Sie unter [Datenmodell für Azure Backup-Diagnoseereignisse](./backup-azure-reports-data-model.md).
 
@@ -110,7 +110,7 @@ Sie können separate Diagnoseeinstellungen für AzureBackupReport und die sechs 
 > Das AzureBackupReport-Ereignis wird *nur* im Azure-Diagnosemodus unterstützt. *Beim Versuch, Daten für dieses Ereignis im ressourcenspezifischen Modus zu senden, gehen keine Daten im Log Analytics-Arbeitsbereich ein.*
 
 > [!NOTE]
-> Der Umschalter für **Azure-Diagnose** oder **Ressourcenspezifisch** wird nur angezeigt, wenn der Benutzer die Option **An Log Analytics senden** aktiviert. Um Daten an ein Speicherkonto oder einen Event Hub zu senden, wählt der Benutzer das gewünschte Ziel aus und aktiviert die Kontrollkästchen für jedes der gewünschten Ereignisse, und zwar ohne weitere Eingaben. Es wird wiederum für die Zukunft empfohlen, das Legacy-Ereignis AzureBackupReport nicht auszuwählen.
+> Der Umschalter für **Azure-Diagnose** oder **Ressourcenspezifisch** wird nur angezeigt, wenn der Benutzer die Option **An Log Analytics senden** aktiviert. Um Daten an ein Speicherkonto oder einen Event Hub zu senden, wählt der Benutzer das gewünschte Ziel aus und aktiviert die Kontrollkästchen für jedes der gewünschten Ereignisse, und zwar ohne weitere Eingaben. Auch hier wird empfohlen, das Legacy-Ereignis „AzureBackupReport“ zukünftig nicht auszuwählen.
 
 ## <a name="send-azure-site-recovery-events-to-log-analytics"></a>Senden von Azure Site Recovery-Ereignissen an Log Analytics
 

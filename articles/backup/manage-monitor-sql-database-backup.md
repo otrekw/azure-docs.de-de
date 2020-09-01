@@ -3,12 +3,12 @@ title: Verwalten und Überwachen von SQL Server-Datenbanken auf einem virtuelle
 description: In diesem Artikel wird beschrieben, wie auf einer Azure-VM ausgeführte SQL Server-Datenbanken verwaltet und überwacht werden.
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: 14e3a4797fe60a3d1857f1e6d947fa0c669bdcfe
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 26a1a6cf7bc011edce61a8bb60926dad2cb29a16
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81537303"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826632"
 ---
 # <a name="manage-and-monitor-backed-up-sql-server-databases"></a>Verwalten und Überwachen gesicherter SQL Server-Datenbanken
 
@@ -16,15 +16,11 @@ In diesem Artikel werden allgemeine Aufgaben zur Verwaltung und Überwachung von
 
 Wenn Sie noch keine Sicherungen für Ihre SQL Server-Datenbanken konfiguriert haben, finden Sie Näheres dazu unter [Informationen zur SQL Server-Sicherung auf virtuellen Azure-Computern](backup-azure-sql-database.md).
 
-## <a name="monitor-manual-backup-jobs-in-the-portal"></a>Überwachen manueller Sicherungsaufträge im Portal
+## <a name="monitor-backup-jobs-in-the-portal"></a>Überwachen von Sicherungsaufträgen im Portal
 
-Azure Backup zeigt alle manuell ausgelösten Aufträge im Portal **Sicherungsaufträge** an. Zu den Aufträgen, die in diesem Portal angezeigt werden, gehören Datenbankermittlung und -registrierung sowie Sicherungs- und Wiederherstellungsvorgänge.
+Azure Backup zeigt alle geplanten und bedarfsgesteuerten Vorgänge im Portal unter **Sicherungsaufträge** an – mit Ausnahme der geplanten Protokollsicherungen, da diese sehr häufig erfolgen können. Zu den in diesem Portal angezeigten Aufträgen gehören Datenbankermittlung und -registrierung, Konfiguration der Sicherung sowie Sicherungs- und Wiederherstellungsvorgänge.
 
 ![Das Portal „Sicherungsaufträge“](./media/backup-azure-sql-database/jobs-list.png)
-
-> [!NOTE]
-> Im Portal **Sicherungsaufträge** werden keine geplanten Sicherungsaufträge angezeigt. Verwenden Sie SQL Server Management Studio, um geplante Sicherungsaufträge zu überwachen, wie im nächsten Abschnitt beschrieben.
->
 
 Ausführliche Informationen zu Überwachungsszenarios finden Sie unter [Monitoring in the Azure portal](backup-azure-monitoring-built-in-monitor.md) (Überwachung im Azure-Portal) und [Monitoring using Azure Monitor](backup-azure-monitoring-use-azuremonitor.md) (Überwachung mithilfe von Azure Monitor).  
 
@@ -57,7 +53,7 @@ Sie können die Sicherung einer SQL Server-Datenbank auf verschiedene Arten been
 
 Wenn Sie die Wiederherstellungspunkte beibehalten, sollten Sie Folgendes beachten:
 
-- Alle Wiederherstellungspunkte werden unbegrenzt beibehalten, und die Bereinigung endet mit der Beendung des Schutzes unter Beibehaltung der Daten.
+- Alle Wiederherstellungspunkte werden unbegrenzt beibehalten, und die gesamte Bereinigung endet mit der Beendigung des Schutzes unter Beibehaltung der Daten.
 - Ihnen werden die geschützte Instanz und der verbrauchte Speicher in Rechnung gestellt. Weitere Informationen finden Sie unter [Azure Backup – Preise](https://azure.microsoft.com/pricing/details/backup/).
 - Wenn Sie eine Datenquelle löschen, ohne die Sicherungen zu beenden, treten bei neuen Sicherungen Fehler auf. Alte Wiederherstellungspunkte laufen gemäß der Richtlinie ab. Ein letzter Wiederherstellungspunkt wird jedoch immer beibehalten, bis Sie die Sicherungen beenden und die Daten löschen.
 
@@ -117,24 +113,6 @@ Für eine vollständige Sicherung vom Typ „Nur kopieren“ muss eine Aufbewahr
 
 Weitere Informationen finden Sie unter [Typen von SQL Server-Sicherungen](backup-architecture.md#sql-server-backup-types).
 
-## <a name="unregister-a-sql-server-instance"></a>Registrierung einer SQL Server-Instanz aufheben
-
-Heben Sie die Registrierung einer SQL Server-Instanz auf, nachdem Sie den Schutz deaktiviert haben, aber bevor Sie den Tresor löschen:
-
-1. Wählen Sie auf dem Tresordashboard unter **Verwalten** die Option **Sicherungsinfrastruktur** aus.  
-
-   ![Auswählen von „Sicherungsinfrastruktur“](./media/backup-azure-sql-database/backup-infrastructure-button.png)
-
-2. Wählen Sie unter **Verwaltungsserver** **Geschützte Server** aus.
-
-   ![Auswählen von „Geschützte Server“](./media/backup-azure-sql-database/protected-servers.png)
-
-3. Wählen Sie unter **Geschützte Server** den Server aus, dessen Registrierung Sie aufheben möchten. Um den Tresor zu löschen, müssen Sie die Registrierung aller Server aufheben.
-
-4. Klicken Sie mit der rechten Maustaste auf den geschützten Server, und wählen Sie **Registrierung aufheben** aus.
-
-   ![Auswählen von „Löschen“](./media/backup-azure-sql-database/delete-protected-server.jpg)
-
 ## <a name="modify-policy"></a>Ändern der Richtlinie
 
 Bearbeiten Sie die Richtlinie, um die Sicherungshäufigkeit oder die Aufbewahrungsdauer zu ändern.
@@ -160,11 +138,31 @@ Sie können die Richtlinienversion für alle betroffenen Elemente mit einem Maus
 
   ![Korrigieren einer inkonsistenten Richtlinie](./media/backup-azure-sql-database/fix-inconsistent-policy.png)
 
+## <a name="unregister-a-sql-server-instance"></a>Registrierung einer SQL Server-Instanz aufheben
+
+Heben Sie die Registrierung einer SQL Server-Instanz auf, nachdem Sie den Schutz deaktiviert haben, aber bevor Sie den Tresor löschen:
+
+1. Wählen Sie auf dem Tresordashboard unter **Verwalten** die Option **Sicherungsinfrastruktur** aus.  
+
+   ![Auswählen von „Sicherungsinfrastruktur“](./media/backup-azure-sql-database/backup-infrastructure-button.png)
+
+2. Wählen Sie unter **Verwaltungsserver** **Geschützte Server** aus.
+
+   ![Auswählen von „Geschützte Server“](./media/backup-azure-sql-database/protected-servers.png)
+
+3. Wählen Sie unter **Geschützte Server** den Server aus, dessen Registrierung Sie aufheben möchten. Um den Tresor zu löschen, müssen Sie die Registrierung aller Server aufheben.
+
+4. Klicken Sie mit der rechten Maustaste auf den geschützten Server, und wählen Sie **Registrierung aufheben** aus.
+
+   ![Auswählen von „Löschen“](./media/backup-azure-sql-database/delete-protected-server.jpg)
+
 ## <a name="re-register-extension-on-the-sql-server-vm"></a>Erneutes Registrieren einer Erweiterung auf der SQL Server-VM
 
-Manchmal kann die Workload-Erweiterung auf der VM aus irgendeinem Grund beeinträchtigt werden. In solchen Fällen schlagen alle auf der VM ausgelösten Vorgänge fehl. Möglicherweise müssen Sie dann die Erweiterung erneut auf der VM registrieren. Bei der **Neuregistrierung** wird die Workloadsicherungserweiterung erneut auf der VM installiert, damit die Vorgänge fortgesetzt werden können.
+Manchmal kann die Workloaderweiterung auf dem virtuellen Computer aus dem einen oder anderen Grund beeinträchtigt werden. In solchen Fällen schlagen alle auf der VM ausgelösten Vorgänge fehl. Möglicherweise müssen Sie dann die Erweiterung erneut auf der VM registrieren. Beim Vorgang **Neuregistrierung** wird die Workloadsicherungserweiterung auf der VM erneut installiert, damit die Vorgänge fortgesetzt werden können. Sie finden diese Option im Recovery Services-Tresor unter **Sicherungsinfrastruktur**.
 
-Verwenden Sie diese Option mit Vorsicht. Wenn dieser Vorgang auf einer VM mit bereits fehlerfreier Erweiterung ausgelöst wird, wird die Erweiterung dadurch neu gestartet. Dies kann dazu führen, dass alle in Bearbeitung befindlichen Aufträge fehlschlagen. Deshalb sollten Sie vor dem Auslösen der erneuten Registrierung überprüfen, ob ein oder mehrere [Symptome](backup-sql-server-azure-troubleshoot.md#re-registration-failures) vorhanden sind.
+![Geschützte Server unter „Sicherungsinfrastruktur“](./media/backup-azure-sql-database/protected-servers-backup-infrastructure.png)
+
+Verwenden Sie diese Option mit Vorsicht. Wenn dieser Vorgang auf einer VM mit bereits fehlerfreier Erweiterung ausgelöst wird, wird die Erweiterung dadurch neu gestartet. Dies kann dazu führen, dass alle in Bearbeitung befindlichen Aufträge fehlschlagen. Überprüfen Sie vor dem Auslösen der erneuten Registrierung, ob ein oder mehrere [Symptome](backup-sql-server-azure-troubleshoot.md#re-registration-failures) vorhanden sind.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

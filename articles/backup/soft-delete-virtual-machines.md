@@ -4,19 +4,19 @@ description: Erfahren Sie, wie das vorläufige Löschen für virtuelle Computer 
 ms.topic: conceptual
 ms.date: 04/30/2020
 ms.custom: references_regions
-ms.openlocfilehash: e447db2c3f862d2f577a9e7d8767946375abf4e0
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: a79f2bf77bcc184db8ac61b51107c1bb4a2a989d
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86503539"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88889825"
 ---
 # <a name="soft-delete-for-virtual-machines"></a>Vorläufiges Löschen für virtuelle Computer
 
 Vorläufiges Löschen für VMs schützt die Sicherungen Ihrer VMs vor unbeabsichtigtem Löschen. Selbst nachdem die Sicherungen gelöscht wurden, bleiben sie für weitere 14 Tage im Zustand „vorläufig gelöscht“ erhalten.
 
 > [!NOTE]
-> Mit dem vorläufigen Löschen werden nur gelöschte Sicherungsdaten geschützt. Wenn eine VM ohne Sicherung gelöscht wird, bewirkt das Feature „Vorläufiges Löschen“ nicht, dass die Daten erhalten bleiben. Alle Ressourcen sollten per Azure Backup geschützt werden, um die vollständige Resilienz sicherzustellen.
+> Mit dem vorläufigen Löschen werden nur gelöschte Sicherungsdaten geschützt. Wenn eine VM ohne Sicherung gelöscht wird, bleiben die Daten beim Feature „Vorläufiges Löschen“ nicht erhalten. Alle Ressourcen sollten per Azure Backup geschützt werden, um die vollständige Resilienz sicherzustellen.
 >
 
 ## <a name="supported-regions"></a>Unterstützte Regionen
@@ -25,7 +25,7 @@ Vorläufiges Löschen wird derzeit in den folgenden Regionen unterstützt: „US
 
 ## <a name="soft-delete-for-vms-using-azure-portal"></a>Vorläufiges Löschen für VMs über das Azure-Portal
 
-1. Der Sicherungsvorgang muss beendet werden, um die Sicherungsdaten einer VM zu löschen. Navigieren Sie im Azure-Portal zu Ihrem Recovery Services-Tresor, klicken Sie mit der rechten Maustaste auf das Sicherungselement, und wählen Sie die Option **Sicherung beenden** aus.
+1. Der Sicherungsvorgang muss beendet werden, um die Sicherungsdaten einer VM zu löschen. Navigieren Sie im Azure-Portal zu Ihrem Recovery Services-Tresor, klicken Sie mit der rechten Maustaste auf das Sicherungselement, und wählen Sie **Sicherung beenden** aus.
 
    ![Screenshot: Sicherungselemente im Azure-Portal](./media/backup-azure-security-feature-cloud/backup-stopped.png)
 
@@ -33,12 +33,12 @@ Vorläufiges Löschen wird derzeit in den folgenden Regionen unterstützt: „US
 
    ![Screenshot: „Sicherung beenden“ im Azure-Portal](./media/backup-azure-security-feature-cloud/delete-backup-data.png)
 
-3. Während dieser 14 Tage wird die vorläufig gelöschte VM im Recovery Services-Tresor mit einem roten Symbol gekennzeichnet, mit dem der Status „Vorläufig gelöscht“ angezeigt wird.
+3. Während dieser 14 Tage wird die vorläufig gelöschte VM im Recovery Services-Tresor mit dem roten Symbol für „Vorläufig gelöscht“ daneben angezeigt.
 
    ![Screenshot: Vorläufig gelöschte VM im Azure-Portal](./media/backup-azure-security-feature-cloud/vm-soft-delete.png)
 
    > [!NOTE]
-   > Wenn im Tresor vorläufig gelöschte Sicherungselemente vorhanden sind, kann der Tresor nicht gelöscht werden. Versuchen Sie erst, den Tresor zu löschen, nachdem die Sicherungselemente endgültig gelöscht wurden und im Tresor kein Element mit dem Status „Vorläufig gelöscht“ mehr vorhanden ist.
+   > Wenn der Tresor vorläufig gelöschte Sicherungselemente enthält, kann er zu diesem Zeitpunkt nicht gelöscht werden. Versuchen Sie den Tresor erst zu löschen, nachdem die Sicherungselemente endgültig gelöscht wurden und der Tresor kein Element mit dem Status „Vorläufig gelöscht“ mehr enthält.
 
 4. Das Löschen muss zuerst wieder rückgängig gemacht werden, um die vorläufig gelöschte VM wiederherstellen zu können. Wählen Sie zum Rückgängigmachen des Löschvorgangs den vorläufig gelöschten virtuellen Computer und anschließend **Wiederherstellen** aus.
 
@@ -62,7 +62,7 @@ Vorläufiges Löschen wird derzeit in den folgenden Regionen unterstützt: „US
 ## <a name="soft-delete-for-vms-using-azure-powershell"></a>Vorläufiges Löschen für VMs über Azure PowerShell
 
 > [!IMPORTANT]
-> Die erforderliche Mindestversion von Az.RecoveryServices für die Verwendung des vorläufigen Löschens mit Azure PS ist 2.2.0. Verwenden Sie ```Install-Module -Name Az.RecoveryServices -Force```, um die aktuelle Version herunterzuladen.
+> Die erforderliche Mindestversion von Az.RecoveryServices für die Verwendung des vorläufigen Löschens mit Azure PowerShell ist 2.2.0. Verwenden Sie ```Install-Module -Name Az.RecoveryServices -Force```, um die aktuelle Version herunterzuladen.
 
 Wie oben für das Azure-Portal erläutert, ist die Abfolge der Schritte bei der Verwendung von Azure PowerShell identisch.
 
@@ -110,7 +110,7 @@ Der DeleteState des Sicherungselements wird auf „NotDeleted“ zurückgesetzt.
 ## <a name="soft-delete-for-vms-using-rest-api"></a>Vorläufiges Löschen für VMs über die REST-API
 
 - Löschen Sie die Sicherungen mithilfe der REST-API, wie [hier](backup-azure-arm-userestapi-backupazurevms.md#stop-protection-and-delete-data) erläutert.
-- Wenn diese Löschvorgänge rückgängig gemacht werden sollen, finden Sie [hier](backup-azure-arm-userestapi-backupazurevms.md#undo-the-stop-protection-and-delete-data) die entsprechenden Schritte.
+- Wenn Sie diese Löschvorgänge rückgängig machen möchten, finden Sie [hier](backup-azure-arm-userestapi-backupazurevms.md#undo-the-deletion) die entsprechenden Schritte.
 
 ## <a name="how-to-disable-soft-delete"></a>Deaktivieren des vorläufigen Löschens
 

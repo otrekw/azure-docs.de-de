@@ -3,12 +3,12 @@ title: Wiederherstellen von Azure Files mit PowerShell
 description: In diesem Artikel erfahren Sie, wie Sie Azure Files mit dem Azure Backup-Dienst und PowerShell wiederherstellen.
 ms.topic: conceptual
 ms.date: 1/27/2020
-ms.openlocfilehash: 23de6e1e352a1b72d1435fc65d6a59ab37d838b0
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 60c9848e12de80bcafe4553a9e8f3e27e8876d41
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86538546"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826496"
 ---
 # <a name="restore-azure-files-with-powershell"></a>Wiederherstellen von Azure Files mit PowerShell
 
@@ -17,7 +17,7 @@ In diesem Artikel wird erläutert, wie Sie eine vollständige Dateifreigabe oder
 Sie können eine gesamte Dateifreigabe oder aber bestimmte Dateien aus dieser Freigabe wiederherstellen. Dabei haben Sie die Möglichkeit, eine Wiederherstellung am ursprünglichen oder an einem alternativen Speicherort durchzuführen.
 
 > [!WARNING]
-> Stellen Sie für AFS-Sicherungen sicher, dass die PS-Version auf die Mindestversion für Az.RecoveryServices 2.6.0 aktualisiert wird. Weitere Informationen finden Sie im [Abschnitt](backup-azure-afs-automation.md#important-notice-backup-item-identification) zur Anforderung für diese Änderung.
+> Stellen Sie für AFS-Sicherungen sicher, dass die PowerShell-Version auf die Mindestversion für „Az.RecoveryServices 2.6.0“ aktualisiert wird. Weitere Informationen finden Sie im [Abschnitt](backup-azure-afs-automation.md#important-notice-backup-item-identification) zur Anforderung für diese Änderung.
 
 >[!NOTE]
 >Azure Backup unterstützt jetzt das Wiederherstellen mehrerer Dateien oder Ordner am ursprünglichen oder an einem alternativen Speicherort mithilfe von PowerShell. Weitere Informationen dazu finden Sie in [diesem Abschnitt](#restore-multiple-files-or-folders-to-original-or-alternate-location) des Dokuments.

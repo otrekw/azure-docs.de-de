@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 07/15/2020
 ms.author: alkohli
-ms.openlocfilehash: 3024c79b6295762636518e3f77d506ad45f73682
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c6b524fb76c623273c60d39f4102500664c487cb
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090755"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88823980"
 ---
 # <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box: Häufig gestellte Fragen
 
@@ -56,6 +56,18 @@ A.  Informationen dazu, in welchen Ländern/Regionen Data Box verfügbar ist, fi
 
 ### <a name="q-which-regions-can-i-store-data-in-with-data-box"></a>Q. In welchen Regionen kann ich Daten mit Data Box speichern?
 A. Data Box wird in allen Regionen in den USA, Europa, Westen, Europa, Norden, Frankreich, GB, Japan, Australien und Kanada unterstützt. Weitere Informationen finden Sie unter [Regionale Verfügbarkeit](data-box-overview.md#region-availability).
+
+### <a name="q-how-can-i-import-source-data-at-my-location-in-a-particular-country-to-an-azure-region-in-a-different-countryregion-or-export-data-from-an-azure-region-in-one-country-to-a-different-countryregion"></a>Q. Wie kann ich Quelldaten an meinem Speicherort in einem bestimmten Land in einer Azure-Region in einem anderen Land/einer anderen Region importieren oder Daten aus einer Azure-Region in einem Land in ein anderes Land/eine andere Region exportieren?
+
+Data Box unterstützt Datenerfassung oder Datenausgang nur innerhalb desselben Landes/derselben Region wie ihr Ziel und überquert keine internationalen Grenzen. Die einzige Ausnahme betrifft Bestellungen innerhalb der Europäischen Union (EU). Dort können Data Box-Geräte in und aus beliebige(n) EU-Länder(n) bzw. EU-Regionen gesendet werden.
+
+Wenn Sie beispielsweise im Importszenario lokale Daten in Kanada hätten, die Sie in ein Azure WestUS-Speicherkonto verschieben möchten, könnten Sie dazu folgendermaßen vorgehen:
+
+1. Bestellen Sie Data Box in Kanada, indem Sie ein Speicherkonto in Kanada auswählen. Das Gerät wird aus einem Azure-Rechenzentrum in Kanada an die Lieferadresse (in Kanada) geliefert, die während der Auftragserstellung angegeben wurde.
+
+2. Nachdem die lokalen Daten in die Data Box kopiert wurden, müssen Sie das Gerät an das Azure-Rechenzentrum in Kanada zurücksenden. Die Daten in der Data Box werden dann in das Zielspeicherkonto in der Azure-Region „Kanada“ hochgeladen, das während der Auftragserstellung ausgewählt wurde.
+
+3. Anschließend können Sie mithilfe eines Tools wie AzCopy die Daten in ein Speicherkonto in WestUS (USA, Westen) kopieren. Bei diesem Schritt fallen Kosten für [Standardspeicher](https://azure.microsoft.com/pricing/details/storage/) und [Bandbreite](https://azure.microsoft.com/pricing/details/bandwidth/) an, die in der Data Box-Abrechnung nicht enthalten sind.
 
 ### <a name="q-whom-should-i-contact-if-i-encounter-any-issues-with-data-box"></a>Q. An wen sollte ich mich wenden, falls Probleme mit Data Box auftreten?
 A. Falls Probleme mit Data Box auftreten, wenden Sie sich an den [Microsoft-Support](data-box-disk-contact-microsoft-support.md).

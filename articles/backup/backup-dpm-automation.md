@@ -3,12 +3,12 @@ title: Verwenden von PowerShell für Sicherungen von DPM-Workloads
 description: Erfahren Sie, wie Sie Azure Backup für Data Protection Manager (DPM) mithilfe von PowerShell bereitstellen und verwalten.
 ms.topic: conceptual
 ms.date: 01/23/2017
-ms.openlocfilehash: 4d8b8f6ca233c997bc2a94f88903d14009481d37
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 91fd8559b1561ae83967c7fc74a2390ce2460c95
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86538852"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892319"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-data-protection-manager-dpm-servers-using-powershell"></a>Bereitstellen und Verwalten der Sicherung in Azure für Data Protection Manager (DPM)-Server mit PowerShell
 
@@ -51,7 +51,7 @@ Die folgenden Installations- und Registrierungsaufgaben können mit PowerShell a
 
 Mit den folgenden Schritten können Sie einen Recovery Services-Tresor erstellen. Ein Recovery Services-Tresor unterscheidet sich von einem Sicherungstresor.
 
-1. Falls Sie Azure Backup zum ersten Mal verwenden, müssen Sie das Cmdlet **Register-AzResourceProvider** verwenden, um den Azure Recovery Service-Anbieter für Ihr Abonnement zu registrieren.
+1. Falls Sie Azure Backup zum ersten Mal verwenden, müssen Sie das Cmdlet **Register-AzResourceProvider** verwenden, um den Azure Recovery Service-Anbieter bei Ihrem Abonnement zu registrieren.
 
     ```powershell
     Register-AzResourceProvider -ProviderNamespace "Microsoft.RecoveryServices"
@@ -69,10 +69,10 @@ Mit den folgenden Schritten können Sie einen Recovery Services-Tresor erstellen
     New-AzRecoveryServicesVault -Name "testvault" -ResourceGroupName " test-rg" -Location "West US"
     ```
 
-4. Geben Sie den Typ der zu verwendenden Speicherredundanz an: [lokal redundanter Speicher (LRS)](../storage/common/storage-redundancy.md) oder [georedundanter Speicher (GRS)](../storage/common/storage-redundancy.md). Das folgende Beispiel zeigt, dass für die Option BackupStorageRedundancy für testVault der Wert auf GeoRedundant festgelegt ist.
+4. Geben Sie den Typ der zu verwendenden Speicherredundanz an. Sie können [lokal redundanten Speicher (LRS)](../storage/common/storage-redundancy.md) oder [georedundanten Speicher (GRS)](../storage/common/storage-redundancy.md) verwenden. Das folgende Beispiel zeigt, dass für die Option BackupStorageRedundancy für testVault der Wert auf GeoRedundant festgelegt ist.
 
    > [!TIP]
-   > Viele Azure Backup-Cmdlets benötigen das Recovery Services-Tresorobjekt als Eingabe. Aus diesem Grund sollte das zur Sicherung verwendete Recovery Services-Tresorobjekt in einer Variablen gespeichert werden.
+   > Viele Azure Backup-Cmdlets benötigen das Recovery Services-Tresorobjekt als Eingabe. Aus diesem Grund sollte das Backup Recovery Services-Tresorobjekt in einer Variablen gespeichert werden.
    >
    >
 
@@ -111,7 +111,7 @@ Um den Agent zu installieren, führen Sie den folgenden Befehl **auf dem DPM-Ser
 MARSAgentInstaller.exe /q
 ```
 
-Dadurch wird der Agent mit allen Standardoptionen installiert. Der Installationsvorgang im Hintergrund dauert einige Minuten. Wenn Sie die */nu* -Option nicht angeben, wird am Ende der Installation das Fenster **Windows Update** geöffnet, um nach Updates zu suchen.
+Dadurch wird der Agent mit allen Standardoptionen installiert. Der Installationsvorgang im Hintergrund dauert einige Minuten. Wenn Sie die Option */nu* nicht angeben, wird am Ende der Installation das Fenster **Windows Update** geöffnet, um nach Updates zu suchen.
 
 Der Agent wird in der Liste mit den installierten Programmen angezeigt. Um die Liste der installierten Programme anzuzeigen, wechseln Sie zu **Systemsteuerung** > **Programme** > **Programme und Funktionen**.
 
@@ -185,7 +185,7 @@ Set-DPMCloudSubscriptionSetting -DPMServerName "TestingServer" -SubscriptionSett
 
 ## <a name="networking"></a>Netzwerk
 
-Wenn die Verbindung des DPM-Computers mit dem Azure Backup-Dienst im Internet über einen Proxyserver hergestellt wird, müssen die Proxyservereinstellungen angegeben werden, damit die Sicherungen erfolgreich erstellt werden. Dazu werden die Parameter ```-ProxyServer```, ```-ProxyPort```, ```-ProxyUsername``` und ```ProxyPassword``` mit dem Cmdlet [Set-DPMCloudSubscriptionSetting](/powershell/module/dataprotectionmanager/set-dpmcloudsubscriptionsetting?view=systemcenter-ps-2019) verwendet. In diesem Beispiel gibt es keinen Proxyserver, daher werden alle Proxy-bezogenen Informationen explizit gelöscht.
+Wenn die Verbindung des DPM-Computers mit dem Azure Backup-Dienst im Internet über einen Proxyserver hergestellt wird, müssen die Proxyservereinstellungen angegeben werden, damit die Sicherungen erfolgreich erstellt werden. Dazu werden die Parameter ```-ProxyServer```, ```-ProxyPort```, ```-ProxyUsername``` und ```ProxyPassword``` mit dem Cmdlet [Set-DPMCloudSubscriptionSetting](/powershell/module/dataprotectionmanager/set-dpmcloudsubscriptionsetting?view=systemcenter-ps-2019) verwendet. Weil es in diesem Beispiel keinen Proxyserver gibt, löschen wir explizit alle proxybezogenen Informationen.
 
 ```powershell
 Set-DPMCloudSubscriptionSetting -DPMServerName "TestingServer" -SubscriptionSetting $setting -NoProxy
@@ -209,7 +209,7 @@ Im obigen Beispiel wird der Stagingbereich im PowerShell-Objekt ```$setting``` a
 
 ### <a name="encryption-settings"></a>Verschlüsselungseinstellungen
 
-Die Sicherungsdaten, die an Azure Backup gesendet werden, werden verschlüsselt, um die Vertraulichkeit der Daten zu schützen. Die Verschlüsselungspassphrase ist das "Kennwort" zum Entschlüsseln der Daten zum Zeitpunkt der Wiederherstellung. Es ist wichtig, diese Informationen nach dem Festlegen zu sichern.
+Die Sicherungsdaten, die an Azure Backup gesendet werden, werden verschlüsselt, um die Vertraulichkeit der Daten zu schützen. Die Verschlüsselungspassphrase ist das "Kennwort" zum Entschlüsseln der Daten zum Zeitpunkt der Wiederherstellung. Es ist wichtig, dass diese Informationen nach dem Festlegen gesichert werden.
 
 Im folgenden Beispiel konvertiert der erste Befehl die Zeichenfolge ```passphrase123456789``` in eine sichere Zeichenfolge und weist die sichere Zeichenfolge der Variablen namens ```$Passphrase``` zu. Der zweite Befehl legt die sichere Zeichenfolge in ```$Passphrase``` als Kennwort für die Verschlüsselung von Sicherungen fest.
 
@@ -220,7 +220,7 @@ Set-DPMCloudSubscriptionSetting -DPMServerName "TestingServer" -SubscriptionSett
 ```
 
 > [!IMPORTANT]
-> Sichern Sie die Passphraseninformationen, nachdem Sie sie festgelegt haben. Es ist nicht möglich, Daten aus Azure ohne diese Passphrase wiederherzustellen.
+> Sichern Sie die Passphrase-Informationen, nachdem Sie sie festgelegt haben. Sie können nämlich Daten aus Azure ohne diese Passphrase nicht wiederherstellen.
 >
 >
 
@@ -255,14 +255,14 @@ $MPG = Get-ModifiableProtectionGroup $PG
 
 ### <a name="adding-group-members-to-the-protection-group"></a>Hinzufügen von Gruppenmitgliedern zur Schutzgruppe
 
-Jeder DPM-Agent kennt die Liste der Datenquellen auf dem Server, auf dem er installiert ist. Um der Schutzgruppe eine Datenquelle hinzuzufügen, muss der DPM-Agent zunächst eine Liste mit den Datenquellen zurück an den DPM-Server senden. Anschließend werden eine oder mehrere Datenquellen ausgewählt und der Schutzgruppe hinzugefügt. Hierzu müssen in PowerShell die folgenden Schritte ausgeführt werden:
+Jeder DPM-Agent kennt die Liste der Datenquellen auf dem Server, auf dem er installiert wurde. Um der Schutzgruppe eine Datenquelle hinzuzufügen, muss der DPM-Agent zunächst eine Liste mit den Datenquellen zurück an den DPM-Server senden. Anschließend werden eine oder mehrere Datenquellen ausgewählt und der Schutzgruppe hinzugefügt. Hierzu müssen in PowerShell die folgenden Schritte ausgeführt werden:
 
 1. Rufen Sie eine Liste aller von DPM verwalteten Server über den DPM-Agent ab.
 2. Wählen Sie einen Server aus.
 3. Rufen Sie eine Liste aller Datenquellen auf dem Server ab.
 4. Wählen Sie eine oder mehrere Datenquellen aus, und fügen Sie sie der Schutzgruppe hinzu.
 
-Die Liste der Server, auf denen der DPM-Agent installiert ist und vom DPM-Server verwaltet wird, wird mit dem [Get-DPMProductionServer](/powershell/module/dataprotectionmanager/get-dpmproductionserver?view=systemcenter-ps-2019) -Cmdlet abgerufen. In diesem Beispiel filtern wir, um nur den Produktionsserver mit dem Namen *productionserver01* für die Sicherung zu konfigurieren.
+Die Liste der Server, auf denen der DPM-Agent installiert ist und vom DPM-Server verwaltet wird, wird mit dem [Get-DPMProductionServer](/powershell/module/dataprotectionmanager/get-dpmproductionserver?view=systemcenter-ps-2019) -Cmdlet abgerufen. In diesem Beispiel werden wir filtern und PowerShell nur mit dem Namen *productionserver01* für die Sicherung konfigurieren.
 
 ```powershell
 $server = Get-ProductionServer -DPMServerName "TestingServer" | Where-Object {($_.servername) –contains "productionserver01"}

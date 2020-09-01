@@ -3,12 +3,12 @@ title: Sichern und Wiederherstellen von virtuellen Azure-Computern mit PowerShel
 description: Beschreibt das Sichern und Wiederherstellen von virtuellen Azure-Computern mithilfe von Azure Backup und PowerShell
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: 7957253565658ca387502acb413bc3e6f9a1a3a4
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: f34dc0b5ce4b230b3bc2408bd011180cb855cf17
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86538801"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892404"
 ---
 # <a name="back-up-and-restore-azure-vms-with-powershell"></a>Sichern und Wiederherstellen von virtuellen Azure-Computern mit PowerShell
 
@@ -51,14 +51,14 @@ Vorbereitung:
     Get-Command *azrecoveryservices*
     ```
 
-    Die Aliase und Cmdlets für Azure Backup, Azure Site Recovery und den Recovery Services-Tresor werden angezeigt. Die folgende Abbildung ist ein Beispiel für die angezeigten Elemente. Dies ist nicht die vollständige Liste mit den Cmdlets.
+    Die Aliase und Cmdlets für Azure Backup, Azure Site Recovery und den Recovery Services-Tresor werden angezeigt. Die folgende Abbildung ist ein Beispiel für die angezeigten Elemente. Dies ist nicht die vollständige Liste von Cmdlets.
 
     ![Recovery Services-Liste](./media/backup-azure-vms-automation/list-of-recoveryservices-ps.png)
 
 3. Melden Sie sich mithilfe von **Connect-AzAccount** bei Ihrem Azure-Konto an. Dieses Cmdlet ruft eine Webseite auf, die Sie zur Eingabe Ihrer Kontoanmeldeinformationen auffordert:
 
     * Alternativ können Sie Ihre Kontoanmeldeinformationen als Parameter im Cmdlet **Connect-AzAccount** mit dem Parameter **-Credential** angeben.
-    * Wenn Sie als CSP-Partner für einen Mandanten tätig sind, geben Sie den Kunden mit dessen Mandanten-ID oder primärem Mandantendomänennamen als Mandanten an. Beispiel: **Connect-AzAccount -Tenant „fabrikam.com“**
+    * Wenn Sie als CSP-Partner für einen Mandanten tätig sind, geben Sie den Kunden mit dessen Mandanten-ID oder primären Mandantendomänennamen als Mandanten an. Beispiel: **Connect-AzAccount -Tenant „fabrikam.com“**
 
 4. Da ein Konto mehrere Abonnements enthalten kann, müssen Sie das Abonnement, das Sie verwenden möchten, dem Konto zuordnen:
 
@@ -66,7 +66,7 @@ Vorbereitung:
     Select-AzSubscription -SubscriptionName $SubscriptionName
     ```
 
-5. Falls Sie Azure Backup zum ersten Mal verwenden, müssen Sie das Cmdlet **[Register-AzResourceProvider](/powershell/module/az.resources/register-azresourceprovider)** verwenden, um den Azure Recovery Service-Anbieter bei Ihrem Abonnement zu registrieren.
+5. Falls Sie Azure Backup zum ersten Mal verwenden, müssen Sie den Azure Recovery Service-Anbieter mithilfe des Cmdlets **[Register-AzResourceProvider](/powershell/module/az.resources/register-azresourceprovider)** bei Ihrem Abonnement registrieren.
 
     ```powershell
     Register-AzResourceProvider -ProviderNamespace "Microsoft.RecoveryServices"
@@ -96,7 +96,7 @@ Mit den folgenden Schritten können Sie einen Recovery Services-Tresor erstellen
     New-AzRecoveryServicesVault -Name "testvault" -ResourceGroupName "test-rg" -Location "West US"
     ```
 
-3. Geben Sie den Typ der zu verwendenden Speicherredundanz an: [lokal redundanter Speicher (LRS)](../storage/common/storage-redundancy.md) oder [georedundanter Speicher (GRS)](../storage/common/storage-redundancy.md). Das folgende Beispiel zeigt, dass für die Option „BackupStorageRedundancy“ für „testVault“ der Wert auf „GeoRedundant“ festgelegt ist.
+3. Geben Sie den Typ der zu verwendenden Speicherredundanz an. Sie können [lokal redundanten Speicher (LRS)](../storage/common/storage-redundancy.md) oder [georedundanten Speicher (GRS)](../storage/common/storage-redundancy.md) verwenden. Das folgende Beispiel zeigt, dass für die Option „BackupStorageRedundancy“ für „testVault“ der Wert auf „GeoRedundant“ festgelegt ist.
 
     ```powershell
     $vault1 = Get-AzRecoveryServicesVault -Name "testvault"
@@ -104,7 +104,7 @@ Mit den folgenden Schritten können Sie einen Recovery Services-Tresor erstellen
     ```
 
    > [!TIP]
-   > Viele Azure Backup-Cmdlets benötigen das Recovery Services-Tresorobjekt als Eingabe. Aus diesem Grund sollte das zur Sicherung verwendete Recovery Services-Tresorobjekt in einer Variablen gespeichert werden.
+   > Viele Azure Backup-Cmdlets benötigen das Recovery Services-Tresorobjekt als Eingabe. Aus diesem Grund sollte das Backup Recovery Services-Tresorobjekt in einer Variablen gespeichert werden.
    >
    >
 
@@ -189,14 +189,14 @@ DefaultPolicy        AzureVM            AzureVM              4/14/2016 5:00:00 P
 >
 >
 
-Eine Sicherungsschutzrichtlinie ist mindestens einer Aufbewahrungsrichtlinie zugeordnet. In einer Aufbewahrungsrichtlinie wird definiert, wie lange ein Wiederherstellungspunkt gespeichert wird, bevor er gelöscht wird.
+Eine Sicherungsschutzrichtlinie ist mindestens einer Aufbewahrungsrichtlinie zugeordnet. Eine Aufbewahrungsrichtlinie definiert, wie lange ein Wiederherstellungspunkt gespeichert werden soll, bevor er gelöscht wird.
 
 * Verwenden Sie [Get-AzRecoveryServicesBackupRetentionPolicyObject](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupretentionpolicyobject), um die standardmäßige Aufbewahrungsrichtlinie anzuzeigen.
 * Auf ähnliche Weise können Sie [Get-AzRecoveryServicesBackupSchedulePolicyObject](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupschedulepolicyobject) verwenden, um die standardmäßige Zeitplanrichtlinie abzurufen.
 * Das Cmdlet [New-AzRecoveryServicesBackupProtectionPolicy](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupprotectionpolicy) erstellt ein PowerShell-Objekt, das Informationen zu Sicherungsrichtlinien enthält.
 * Die Zeitplan- und Aufbewahrungsrichtlinienobjekte werden als Eingaben für das Cmdlet New-AzRecoveryServicesBackupProtectionPolicy verwendet.
 
-Eine Startzeit wird standardmäßig im Schedule Policy Object (Zeitplanrichtlinienobjekt) definiert. Verwenden Sie das folgende Beispiel, um die Startzeit in die gewünschte Startzeit zu ändern. Die gewünschte Startzeit sollte ebenfalls in UTC angegeben werden. Beim nachstehenden Beispiel wird vorausgesetzt, dass die gewünschte Startzeit für tägliche Sicherungen 01:00 Uhr UTC ist.
+Eine Startzeit wird standardmäßig im Schedule Policy Object (Zeitplanrichtlinienobjekt) definiert. Verwenden Sie das folgende Beispiel, um die Startzeit in die gewünschte Startzeit zu ändern. Die gewünschte Startzeit sollte ebenfalls in UTC angegeben werden. Beim folgenden Beispiel wird vorausgesetzt, dass die gewünschte Startzeit für tägliche Sicherungen 01:00 Uhr UTC ist.
 
 ```powershell
 $schPol = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType "AzureVM"
@@ -206,7 +206,7 @@ $schpol.ScheduleRunTimes[0] = $UtcTime
 ```
 
 > [!IMPORTANT]
-> Sie können die Startzeit nur in 30-Minuten-Einheiten angeben. Im obigen Beispiel kann sie nur „01:00:00“ oder „02:30:00“ lauten. „01:15:00“ kann nicht als Startzeit angegeben werden.
+> Sie können die Startzeit nur in 30-Minuten-Einheiten angeben. Im vorstehenden Beispiel kann sie nur „01:00:00“ oder „02:30:00“ lauten. „01:15:00“ kann nicht als Startzeit angegeben werden.
 
 Im folgenden Beispiel werden die Zeitplanrichtlinie und die Aufbewahrungsrichtlinie in Variablen gespeichert. Im Beispiel werden diese Variablen verwendet, um die Parameter beim Erstellen einer Schutzrichtlinie,*NewPolicy*, zu definieren.
 
@@ -228,7 +228,7 @@ NewPolicy           AzureVM            AzureVM              4/24/2016 1:30:00 AM
 Nachdem Sie die Schutzrichtlinie definiert haben, müssen Sie noch die Richtlinie für ein Element aktivieren. Verwenden Sie [Enable-AzRecoveryServicesBackupProtection](/powershell/module/az.recoveryservices/enable-azrecoveryservicesbackupprotection), um den Schutz zu aktivieren. Zum Aktivieren des Schutzes sind zwei Objekte erforderlich – das Element und die Richtlinie. Sobald die Richtlinie mit dem Tresor verknüpft ist, wird der Sicherungsworkflow zu dem im Richtlinienzeitplan definierten Zeitpunkt gestartet.
 
 > [!IMPORTANT]
-> Wenn Sie die Sicherung mithilfe von PowerShell für mehrere virtuelle Computer gleichzeitig aktivieren, dürfen pro Richtlinie maximal 100 virtuelle Computer zugeordnet sein. Dies wird als [bewährte Methode](./backup-azure-vm-backup-faq.md#is-there-a-limit-on-number-of-vms-that-can-beassociated-with-the-same-backup-policy) empfohlen. Derzeit blockiert der PS-Client bei mehr als 100 virtuellen Computern die Aktivierung nicht explizit, diese Überprüfung soll jedoch in Zukunft hinzugefügt werden.
+> Wenn Sie die Sicherung mithilfe von PowerShell für mehrere virtuelle Computer gleichzeitig aktivieren, dürfen pro Richtlinie maximal 100 virtuelle Computer zugeordnet sein. Dies wird als [bewährte Methode](./backup-azure-vm-backup-faq.md#is-there-a-limit-on-number-of-vms-that-can-beassociated-with-the-same-backup-policy) empfohlen. Zurzeit blockiert der PowerShell-Client die Aktivierung bei mehr als 100 virtuellen Computern nicht explizit. Diese Überprüfung soll aber in Zukunft hinzugefügt werden.
 
 Im folgenden Beispiel wird der Schutz für das Element „V2VM“ mithilfe der Richtlinie „NewPolicy“ aktiviert. Die Beispiele unterscheiden sich in Abhängigkeit davon, ob der virtuelle Computer verschlüsselt ist und welche Art von Verschlüsselung verwendet wird.
 
@@ -256,7 +256,7 @@ Enable-AzRecoveryServicesBackupProtection -Policy $pol -Name "V2VM" -ResourceGro
 ```
 
 > [!NOTE]
-> Wenn Sie die Azure Government-Cloud verwenden, verwenden Sie im Cmdlet [Set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy) den Wert ff281ffe-705c-4f53-9f37-a40e6f2c68f3 für den Parameter ServicePrincipalName.
+> Wenn Sie die Azure Government-Cloud verwenden, geben Sie im Cmdlet [Set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy) für den Parameter **ServicePrincipalName** den Wert `ff281ffe-705c-4f53-9f37-a40e6f2c68f3` an.
 >
 
 ## <a name="monitoring-a-backup-job"></a>Überwachen eines Sicherungsauftrags
@@ -290,11 +290,11 @@ Verwenden Sie [Set-AzRecoveryServicesBackupProtectionPolicy](/powershell/module/
 
 #### <a name="modifying-scheduled-time"></a>Ändern der geplanten Zeit
 
-Beim Erstellen einer Schutzrichtlinie wird ihr standardmäßig eine Startzeit zugewiesen. In den folgenden Beispielen wird gezeigt, wie Sie die Startzeit einer Schutzrichtlinie ändern.
+Wenn Sie eine Schutzrichtlinie erstellen, wird ihr standardmäßig eine Startzeit zugewiesen. In den folgenden Beispielen wird gezeigt, wie Sie die Startzeit einer Schutzrichtlinie ändern.
 
 ````powershell
 $SchPol = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType "AzureVM"
-$UtcTime = Get-Date -Date "2019-03-20 01:00:00Z" (This is the time that the customer wants to start the backup)
+$UtcTime = Get-Date -Date "2019-03-20 01:00:00Z" (This is the time that you want to start the backup)
 $UtcTime = $UtcTime.ToUniversalTime()
 $SchPol.ScheduleRunTimes[0] = $UtcTime
 $pol = Get-AzRecoveryServicesBackupProtectionPolicy -Name "NewPolicy" -VaultId $targetVault.ID
@@ -315,7 +315,7 @@ Set-AzRecoveryServicesBackupProtectionPolicy -Policy $pol  -RetentionPolicy $Ret
 #### <a name="configuring-instant-restore-snapshot-retention"></a>Konfigurieren der Aufbewahrungsdauer von Momentaufnahmen für sofortige Wiederherstellung
 
 > [!NOTE]
-> Ab Az PS, Version 1.6.0, kann die Aufbewahrungsdauer von Momentaufnahmen für sofortige Wiederherstellung in Richtlinien mithilfe von PowerShell aktualisiert werden.
+> Ab Azure PowerShell, Version 1.6.0, können Sie die Aufbewahrungsdauer von Momentaufnahmen für sofortige Wiederherstellung in Richtlinien mithilfe von PowerShell aktualisieren.
 
 ````powershell
 $bkpPol = Get-AzRecoveryServicesBackupProtectionPolicy -WorkloadType "AzureVM" -VaultId $targetVault.ID
@@ -323,12 +323,12 @@ $bkpPol.SnapshotRetentionInDays=7
 Set-AzRecoveryServicesBackupProtectionPolicy -policy $bkpPol -VaultId $targetVault.ID
 ````
 
-Der Standardwert ist „2“. Der Benutzer kann den Wert auf mindestens „1“ und maximal „5“ festlegen. Bei Richtlinien zu wöchentlichen Sicherungen wird der Zeitraum auf „5“ festgelegt und kann nicht geändert werden.
+Dazu wird der Standardwert „2“ verwendet. Sie können für den Wert als Minimum „1“ und als Maximum „5“ festlegen. Bei Richtlinien zu wöchentlichen Sicherungen wird der Zeitraum auf „5“ festgelegt und kann nicht geändert werden.
 
 #### <a name="creating-azure-backup-resource-group-during-snapshot-retention"></a>Erstellen einer Azure Backup-Ressourcengruppe während der Aufbewahrung von Momentaufnahmen
 
 > [!NOTE]
-> Ab Azure PS-Version 3.7.0 können Sie die Ressourcengruppe erstellen und bearbeiten, die für das Speichern von Sofortmomentaufnahmen angelegt wird.
+> Ab Azure PowerShell, Version 3.7.0, können Sie die Ressourcengruppe erstellen und bearbeiten, die für das Speichern von Sofortmomentaufnahmen angelegt wird.
 
 Ausführlichere Informationen zu den Regeln der Erstellung von Ressourcengruppen und andere relevante Details finden Sie in der Dokumentation unter [Azure Backup-Ressourcengruppe für virtuelle Computer](./backup-during-vm-creation.md#azure-backup-resource-group-for-virtual-machines).
 
@@ -365,7 +365,7 @@ V2VM              Backup              InProgress          4/23/2016             
 
 ### <a name="change-policy-for-backup-items"></a>Ändern der Richtlinie für Sicherungselemente
 
-Der Benutzer kann entweder die vorhandene Richtlinie bearbeiten oder die Richtlinie des gesicherten Elements von Richtlinie 1 in Richtlinie 2 ändern. Zum Wechseln der Richtlinien für ein gesichertes Element rufen Sie die entsprechende Richtlinie und das Sicherungselement ab, und verwenden Sie den Befehl [Enable-AzRecoveryServices](/powershell/module/az.recoveryservices/enable-azrecoveryservicesbackupprotection) mit dem Sicherungselement als Parameter.
+Sie können entweder die vorhandene Richtlinie bearbeiten oder die Richtlinie des gesicherten Elements von „Richtlinie1“ in „Richtlinie2“ ändern. Zum Wechseln der Richtlinien für ein gesichertes Element rufen Sie die entsprechende Richtlinie und das Sicherungselement ab, und verwenden Sie den Befehl [Enable-AzRecoveryServices](/powershell/module/az.recoveryservices/enable-azrecoveryservicesbackupprotection) mit dem Sicherungselement als Parameter.
 
 ````powershell
 $TargetPol1 = Get-AzRecoveryServicesBackupProtectionPolicy -Name <PolicyName> -VaultId $targetVault.ID
@@ -385,7 +385,7 @@ TestVM           ConfigureBackup      Completed            3/18/2019 8:00:21 PM 
 
 #### <a name="retain-data"></a>Beibehalten von Daten
 
-Wenn der Benutzer den Schutz beenden möchte, kann er dazu das PS-Cmdlet [Disable-AzRecoveryServicesBackupProtection](/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackupprotection) verwenden. Dadurch werden die geplanten Sicherungen beendet, doch werden die bis zu diesem Zeitpunkt gesicherten Daten dauerhaft beibehalten.
+Wenn Sie den Schutz verhindern möchten, können Sie dafür das PowerShell-Cmdlet [Disable-AzRecoveryServicesBackupProtection](/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackupprotection) verwenden. Dadurch werden die geplanten Sicherungen beendet, doch werden die bis zu diesem Zeitpunkt gesicherten Daten dauerhaft beibehalten.
 
 ````powershell
 $bkpItem = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureVM -WorkloadType AzureVM -Name "<backup item name>" -VaultId $targetVault.ID
@@ -394,7 +394,7 @@ Disable-AzRecoveryServicesBackupProtection -Item $bkpItem -VaultId $targetVault.
 
 #### <a name="delete-backup-data"></a>Löschen von Sicherungsdaten
 
-Um die gespeicherten Sicherungsdaten im Tresor vollständig zu entfernen, fügen Sie einfach das Flag/den Switch „-RemoveRecoveryPoints“ zum [Befehl „Disable“](#retain-data) hinzu.
+Wenn Sie die gespeicherten Sicherungsdaten im Tresor vollständig entfernen möchten, fügen Sie dem [Befehl „disable protection“](#retain-data) das Flag/den Switch „-RemoveRecoveryPoints“ hinzu.
 
 ````powershell
 Disable-AzRecoveryServicesBackupProtection -Item $bkpItem -VaultId $targetVault.ID -RemoveRecoveryPoints
@@ -402,7 +402,7 @@ Disable-AzRecoveryServicesBackupProtection -Item $bkpItem -VaultId $targetVault.
 
 ## <a name="restore-an-azure-vm"></a>Wiederherstellen eines virtuellen Azure-Computers
 
-Es gibt einen wichtigen Unterschied zwischen dem Wiederherstellen eines virtuellen Computers mithilfe des Azure-Portals und dem Wiederherstellen eines virtuellen Computers mithilfe von PowerShell. Mit PowerShell ist der Wiederherstellungsvorgang mit der Erstellung der Datenträger und den Konfigurationsinformationen aus dem Wiederherstellungspunkt abgeschlossen. Beim Wiederherstellungsvorgang wird kein virtueller Computer erstellt. Informationen zum Erstellen eines virtuellen Computers aus einem Datenträger finden Sie im Abschnitt [Erstellen eines virtuellen Computers aus wiederhergestellten Datenträgern](backup-azure-vms-automation.md#create-a-vm-from-restored-disks). Wenn Sie nicht den gesamten virtuellen Computer wiederherstellen möchten, sondern nur einige Dateien aus einer Azure-VM-Sicherung, helfen Ihnen die Informationen im [Abschnitt zur Dateiwiederherstellung](backup-azure-vms-automation.md#restore-files-from-an-azure-vm-backup) weiter.
+Es gibt einen wichtigen Unterschied zwischen dem Wiederherstellen eines virtuellen Computers über das Azure-Portal und dem Wiederherstellen eines virtuellen Computers mithilfe von PowerShell. Mit PowerShell ist der Wiederherstellungsvorgang mit der Erstellung der Datenträger und den Konfigurationsinformationen aus dem Wiederherstellungspunkt abgeschlossen. Beim Wiederherstellungsvorgang wird kein virtueller Computer erstellt. Informationen zum Erstellen eines virtuellen Computers aus einem Datenträger finden Sie im Abschnitt [Erstellen eines virtuellen Computers aus wiederhergestellten Datenträgern](backup-azure-vms-automation.md#create-a-vm-from-restored-disks). Wenn Sie nicht den gesamten virtuellen Computer wiederherstellen möchten, sondern nur einige Dateien aus einer Azure-VM-Sicherung, helfen Ihnen die Informationen im [Abschnitt zur Dateiwiederherstellung](backup-azure-vms-automation.md#restore-files-from-an-azure-vm-backup) weiter.
 
 > [!Tip]
 > Beim Wiederherstellungsvorgang wird kein virtueller Computer erstellt.
@@ -422,7 +422,7 @@ Zum Wiederherstellen eines virtuellen Azure-Computers müssen Sie folgende grund
 * Stellen Sie die Datenträger wieder her.
 * Erstellen Sie den virtuellen Computer über die gespeicherten Datenträger.
 
-### <a name="select-the-vm"></a>Auswählen des virtuellen Computers
+### <a name="select-the-vm-when-restoring-files"></a>Auswählen des virtuellen Computers (beim Wiederherstellen von Dateien)
 
 Zum Abrufen des PowerShell-Objekts, das das richtige Sicherungselement identifiziert, starten Sie vom Container im Tresor aus, und durchlaufen Sie die Objekthierarchie nach unten. Verwenden Sie das Cmdlet [Get-AzRecoveryServicesBackupContainer](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupcontainer), und leiten Sie dessen Ausgabe an das Cmdlet [Get-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupitem) weiter, um den Container auszuwählen, der den virtuellen Computer darstellt.
 
@@ -431,9 +431,9 @@ $namedContainer = Get-AzRecoveryServicesBackupContainer  -ContainerType "AzureVM
 $backupitem = Get-AzRecoveryServicesBackupItem -Container $namedContainer  -WorkloadType "AzureVM" -VaultId $targetVault.ID
 ```
 
-### <a name="choose-a-recovery-point"></a>Auswählen eines Wiederherstellungspunkts
+### <a name="choose-a-recovery-point-when-restoring-files"></a>Auswählen eines Wiederherstellungspunkts (beim Wiederherstellen von Dateien)
 
-Verwenden Sie das Cmdlet [Get-AzRecoveryServicesBackupRecoveryPoint](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackuprecoverypoint), um alle Wiederherstellungspunkte für das Sicherungselement aufzulisten. Wählen Sie anschließend den zu wiederherstellenden Wiederherstellungspunkt. Wenn Sie nicht sicher sind, welchen Wiederherstellungspunkt Sie verwenden sollen, empfiehlt es sich, den letzten Punkt in der Liste auszuwählen, an dem sich RecoveryPointType = AppConsistent befand.
+Verwenden Sie das Cmdlet [Get-AzRecoveryServicesBackupRecoveryPoint](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackuprecoverypoint), um alle Wiederherstellungspunkte für das Sicherungselement aufzulisten. Wählen Sie anschließend den zu wiederherstellenden Wiederherstellungspunkt. Wenn Sie nicht genau wissen, welchen Wiederherstellungspunkt Sie verwenden sollen, empfiehlt es sich, den letzten „RecoveryPointType = AppConsistent“-Punkt in der Liste auszuwählen.
 
 Im folgenden Skript ist die Variable **$rp** ein Array von Wiederherstellungspunkten für das ausgewählte Sicherungselement der letzten sieben Tage. Das Array wird in umgekehrter Reihenfolge sortiert. Der letzte Wiederherstellungspunkt liegt bei Index 0. Verwenden Sie die standardmäßige PowerShell-Arrayindizierung zum Auswählen des Wiederherstellungspunkts. Im Beispiel wählt „$rp[0]“ den letzten Wiederherstellungspunkt aus.
 
@@ -462,7 +462,7 @@ BackupManagementType        : AzureVM
 
 ### <a name="restore-the-disks"></a>Wiederherstellung der Datenträger
 
-Verwenden Sie das Cmdlet [Restore-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/restore-azrecoveryservicesbackupitem), um Daten und die Konfiguration eines Sicherungselements auf einem Wiederherstellungspunkt wiederherzustellen. Nachdem Sie einen Wiederherstellungspunkt ermittelt haben, können Sie ihn als Wert für den **-RecoveryPoint**-Parameter verwenden. Im obigen Beispiel wurde **$rp[0]** als Wiederherstellungspunkt verwendet. Im folgenden Beispielcode ist **$rp[0]** der Wiederherstellungspunkt, der zum Wiederherstellen des Datenträgers verwendet wird.
+Verwenden Sie das Cmdlet [Restore-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/restore-azrecoveryservicesbackupitem), um Daten und die Konfiguration eines Sicherungselements auf einem Wiederherstellungspunkt wiederherzustellen. Nachdem Sie einen Wiederherstellungspunkt ermittelt haben, können Sie ihn als Wert für den **-RecoveryPoint**-Parameter verwenden. Im vorstehenden Beispiel wurde **$rp[0]** als Wiederherstellungspunkt verwendet. Im folgenden Beispielcode ist **$rp[0]** der Wiederherstellungspunkt, der zum Wiederherstellen des Datenträgers verwendet wird.
 
 So stellen Sie den Datenträger und die Konfigurationsinformationen wieder her:
 
@@ -481,7 +481,7 @@ $restorejob
 Geben Sie den zusätzlichen Parameter **TargetResourceGroupName** an, um die RG festzulegen, in der die verwalteten Datenträger gespeichert werden.
 
 > [!IMPORTANT]
-> Es wird dringend empfohlen, den Parameter **TargetResourceGroupName** für die Wiederherstellung verwalteter Datenträger zu verwenden, da dies zu erheblichen Leistungssteigerungen führt. Wenn dieser Parameter nicht angegeben ist, können Kunden nicht von der Funktion zur sofortigen Wiederherstellung profitieren, und der Wiederherstellungsvorgang läuft im Vergleich langsamer ab. Wenn Sie verwaltete Datenträger als nicht verwaltete Datenträger wiederherstellen möchten, geben Sie nicht diesen Parameter an, sondern verdeutlichen Sie Ihre Absicht mit dem Parameter „-RestoreAsUnmanagedDisks“. Der Parameter „-RestoreAsUnmanagedDisks“ ist ab Az PS 3.7.0 verfügbar. In zukünftigen Versionen ist die Bereitstellung eines dieser Parameter für die richtige Wiederherstellung obligatorisch.
+> Es wird dringend empfohlen, den Parameter **TargetResourceGroupName** für die Wiederherstellung von verwalteten Datenträgern zu verwenden, da dies zu erheblichen Leistungssteigerungen führt. Wenn dieser Parameter nicht angegeben wird, können Sie nicht von der Funktionalität zur sofortigen Wiederherstellung profitieren, und der Wiederherstellungsvorgang verläuft im Vergleich langsamer. Wenn Sie verwaltete Datenträger als nicht verwaltete Datenträger wiederherstellen möchten, geben Sie diesen Parameter nicht an, sondern verdeutlichen Sie Ihre Absicht durch Angabe des Parameters `-RestoreAsUnmanagedDisks`. Der Parameter `-RestoreAsUnmanagedDisks` steht ab Azure PowerShell 3.7.0 zur Verfügung. In zukünftigen Versionen ist die Angabe eines dieser Parameter für die richtige Wiederherstellung obligatorisch.
 >
 >
 
@@ -516,7 +516,7 @@ Nachdem Sie die Datenträger wiederhergestellt haben, fahren Sie mit dem nächst
 
 ## <a name="replace-disks-in-azure-vm"></a>Ersetzen der Datenträger in Azure-VM
 
-Um die Datenträger und Konfigurationsinformationen zu ersetzen, führen Sie die folgenden Schritte aus:
+Wenn Sie die Datenträger und Konfigurationsinformationen ersetzen möchten, führen Sie die folgenden Schritte aus:
 
 * Schritt 1: [Wiederherstellen der Datenträger](backup-azure-vms-automation.md#restore-the-disks)
 * Schritt 2: [Trennen des Datenträgers mit PowerShell](../virtual-machines/windows/detach-disk.md#detach-a-data-disk-using-powershell)
@@ -529,8 +529,8 @@ Nachdem Sie die Datenträger wiederhergestellt haben, können Sie die folgenden 
 > [!NOTE]
 >
 > 1. Es ist AzureAz-Modul 3.0.0 erforderlich. <br>
-> 2. Zum Erstellen von verschlüsselten virtuellen Computern aus wiederhergestellten Datenträgern muss Ihre Azure-Rolle über die Berechtigung zum Ausführen der Aktion **Microsoft.KeyVault/vaults/deploy/action** verfügen. Wenn Ihre Rolle nicht über diese Berechtigung verfügt, erstellen Sie mit dieser Aktion eine benutzerdefinierte Rolle. Weitere Informationen finden Sie unter [Benutzerdefinierte Rollen in Azure RBAC](../role-based-access-control/custom-roles.md). <br>
-> 3. Nach der Wiederherstellung von Datenträgern können Sie jetzt eine Bereitstellungsvorlage abrufen, die Sie direkt verwenden können, um einen neuen virtuellen Computer zu erstellen. Zum Erstellen verwalteter/nicht verwalteter VMs, die verschlüsselt/nicht verschlüsselt sind, sind nicht mehr verschiedene PS-Cmdlets erforderlich.<br>
+> 2. Zum Erstellen von verschlüsselten virtuellen Computern aus wiederhergestellten Datenträgern muss Ihre Azure-Rolle über die Berechtigung zum Ausführen der Aktion **Microsoft.KeyVault/vaults/deploy/action** verfügen. Wenn Ihre Rolle über diese Berechtigung nicht verfügt, erstellen Sie mit dieser Aktion eine benutzerdefinierte Rolle. Weitere Informationen finden Sie unter [Benutzerdefinierte Rollen in Azure RBAC](../role-based-access-control/custom-roles.md). <br>
+> 3. Nach der Wiederherstellung von Datenträgern können Sie jetzt eine Bereitstellungsvorlage abrufen, die Sie direkt verwenden können, um einen neuen virtuellen Computer zu erstellen. Sie benötigen zum Erstellen von verwalteten/nicht verwalteten virtuellen Computern, die verschlüsselt/nicht verschlüsselt sind, keine unterschiedlichen PowerShell-Cmdlets.<br>
 > <br>
 
 ### <a name="create-a-vm-using-the-deployment-template"></a>Erstellen eines virtuellen Computers mithilfe der Bereitstellungsvorlage
@@ -546,7 +546,7 @@ Aus den resultierenden Auftragsdetails ergibt sich der Vorlagen-URI, der abgefra
 
 Auf die Vorlage kann nicht direkt zugegriffen werden, da sie sich unter dem Speicherkonto eines Kunden und dem angegebenen Container befindet. Wir benötigen die gesamte URL sowie ein temporäres SAS-Token, um auf diese Vorlage zugreifen zu können.
 
-1. Extrahieren Sie zuerst den Vorlagennamen aus templateBlobURI. Das Format wird unten angegeben. Sie können den Split-Vorgang in PowerShell verwenden, um den endgültigen Vorlagennamen aus dieser URL zu extrahieren.
+1. Extrahieren Sie zuerst den Vorlagennamen aus templateBlobURI. Das Format wird unten angegeben. Sie können mithilfe des Split-Vorgangs in PowerShell den endgültigen Vorlagennamen aus dieser URL extrahieren.
 
     ```http
     https://<storageAccountName.blob.core.windows.net>/<containerName>/<templateName>
@@ -570,7 +570,7 @@ Auf die Vorlage kann nicht direkt zugegriffen werden, da sie sich unter dem Spei
 Im folgenden Abschnitt werden die erforderlichen Schritte zum Erstellen eines virtuellen Computers mithilfe der „VMConfig“-Datei aufgelistet.
 
 > [!NOTE]
-> Es wird dringend empfohlen, die aufgeführte ausführliche Bereitstellungsvorlage zum Erstellen einer VM zu verwenden. Dieser Abschnitt (Punkte 1 bis 6) wird in Kürze veraltet sein.
+> Es wird dringend empfohlen, die oben beschriebene Bereitstellungsvorlage zum Erstellen eines virtuellen Computers zu verwenden. Dieser Abschnitt (Punkte 1 bis 6) wird in Kürze veraltet sein.
 
 1. Fragen Sie die Eigenschaften des wiederhergestellten Datenträgers für die Auftragsdetails ab.
 
@@ -636,7 +636,7 @@ Im folgenden Abschnitt werden die erforderlichen Schritte zum Erstellen eines vi
         }
     ```
 
-    * **Nicht verwaltete, verschlüsselte VMs ohne Azure AD (nur BEK):** Wenn für nicht verwaltete, verschlüsselte VMs ohne Azure AD (nur mit BEK verschlüsselt) das **keyVault/secret der Quelle nicht verfügbar ist**, stellen Sie die Geheimnisse in Key Vault wieder her. Gehen Sie dazu wie unter [Wiederherstellen eines nicht verschlüsselten virtuellen Computers aus einem Azure Backup-Wiederherstellungspunkt](backup-azure-restore-key-secret.md) beschrieben vor. Führen Sie dann die folgenden Skripts aus, um Verschlüsselungsdetails für das wiederhergestellte Betriebssystemblob festzulegen (dieser Schritt ist für Datenblobs nicht erforderlich). Die $dekurl können Sie aus dem wiederhergestellten keyVault abrufen.
+    * **Nicht verwaltete, verschlüsselte VMs ohne Azure AD (nur BEK):** Wenn für nicht verwaltete, verschlüsselte VMs ohne Azure AD (nur mit BEK verschlüsselt) das **keyVault/secret der Quelle nicht verfügbar ist**, stellen Sie die Geheimnisse in Key Vault wieder her. Gehen Sie dazu wie unter [Wiederherstellen eines nicht verschlüsselten virtuellen Computers aus einem Azure Backup-Wiederherstellungspunkt](backup-azure-restore-key-secret.md) beschrieben vor. Führen Sie dann die folgenden Skripts zum Festlegen von Verschlüsselungsdetails für das wiederhergestellte Betriebssystemblob aus (dieser Schritt ist bei einem Datenblob nicht erforderlich). Die $dekurl können Sie aus dem wiederhergestellten keyVault abrufen.
 
     Das folgende Skript muss nur ausgeführt werden, wenn das keyVault/secret der Quelle nicht verfügbar ist.
 
@@ -652,7 +652,7 @@ Im folgenden Abschnitt werden die erforderlichen Schritte zum Erstellen eines vi
 
     Wenn die **Geheimnisse verfügbar sind** und die Verschlüsselungsdetails für das Betriebssystemblob ebenfalls festgelegt wurden, fügen Sie die Datenträger mit dem unten angegebenen Skript an.
 
-    Wenn die keyVault/secrets der Quelle bereits verfügbar sind, müssen Sie das obige Skript nicht ausführen.
+    Wenn die keyVault/secrets der Quelle bereits verfügbar sind, muss das vorstehende Skript nicht ausgeführt werden.
 
     ```powershell
         Set-AzVMOSDisk -VM $vm -Name "osdisk" -VhdUri $obj.'properties.StorageProfile'.osDisk.vhd.Uri -CreateOption "Attach"
@@ -663,7 +663,7 @@ Im folgenden Abschnitt werden die erforderlichen Schritte zum Erstellen eines vi
         }
     ```
 
-    * **Nicht verwaltete, verschlüsselte VMs ohne Azure AD (BEK und KEK):** Wenn für nicht verwaltete, verschlüsselte VMs ohne Azure AD (mit BEK und KEK verschlüsselt) **keyVault/key/secret der Quelle nicht verfügbar ist**, stellen Sie den Schlüssel und die Geheimnisse in Key Vault wieder her. Gehen Sie dazu wie unter [Wiederherstellen eines nicht verschlüsselten virtuellen Computers aus einem Azure Backup-Wiederherstellungspunkt](backup-azure-restore-key-secret.md) beschrieben vor. Führen Sie dann die folgenden Skripts aus, um Verschlüsselungsdetails für das wiederhergestellte Betriebssystemblob festzulegen (dieser Schritt ist für Datenblobs nicht erforderlich). Die $dekurl und die $kekurl können Sie aus dem wiederhergestellten keyVault abrufen.
+    * **Nicht verwaltete, verschlüsselte VMs ohne Azure AD (BEK und KEK):** Wenn für nicht verwaltete, verschlüsselte VMs ohne Azure AD (mit BEK und KEK verschlüsselt) **keyVault/key/secret der Quelle nicht verfügbar ist**, stellen Sie den Schlüssel und die Geheimnisse in Key Vault wieder her. Gehen Sie dazu wie unter [Wiederherstellen eines nicht verschlüsselten virtuellen Computers aus einem Azure Backup-Wiederherstellungspunkt](backup-azure-restore-key-secret.md) beschrieben vor. Führen Sie dann die folgenden Skripts zum Festlegen von Verschlüsselungsdetails für das wiederhergestellte Betriebssystemblob aus (dieser Schritt ist bei einem Datenblob nicht erforderlich). Die $dekurl und die $kekurl können Sie aus dem wiederhergestellten keyVault abrufen.
 
     Das folgende Skript muss nur ausgeführt werden, wenn das keyVault/key/secret der Quelle nicht verfügbar ist.
 
@@ -680,7 +680,7 @@ Im folgenden Abschnitt werden die erforderlichen Schritte zum Erstellen eines vi
 
     Wenn die **Schlüssel/Geheimnisse verfügbar sind** und die Verschlüsselungsdetails für das Betriebssystemblob festgelegt wurden, fügen Sie die Datenträger mit dem unten angegebenen Skript an.
 
-    Wenn die keyVault/key/secrets der Quelle verfügbar sind, müssen Sie das obige Skript nicht ausführen.
+    Wenn die keyVault/key/secrets der Quelle verfügbar sind, muss das vorstehende Skript nicht ausgeführt werden.
 
     ```powershell
         Set-AzVMOSDisk -VM $vm -Name "osdisk" -VhdUri $obj.'properties.StorageProfile'.osDisk.vhd.Uri -CreateOption "Attach"
@@ -697,7 +697,7 @@ Im folgenden Abschnitt werden die erforderlichen Schritte zum Erstellen eines vi
 
     * **Verwaltete, verschlüsselte VMs mit Azure AD (BEK und KEK):** Fügen Sie für verwaltete, verschlüsselte VMs mit Azure AD (mit BEK und KEK verschlüsselt) die wiederhergestellten verwalteten Datenträger an. Ausführliche Informationen finden Sie unter [Anfügen eines Datenträgers an einen virtuellen Windows-Computer mithilfe von PowerShell](../virtual-machines/windows/attach-disk-ps.md).
 
-    * **Verwaltete, verschlüsselte VMs ohne Azure AD (nur BEK):** Wenn für verwaltete, verschlüsselte VMs ohne Azure AD (nur mit BEK verschlüsselt) das **keyVault/secret der Quelle nicht verfügbar ist**, stellen Sie die Geheimnisse in Key Vault wieder her. Gehen Sie dazu wie unter [Wiederherstellen eines nicht verschlüsselten virtuellen Computers aus einem Azure Backup-Wiederherstellungspunkt](backup-azure-restore-key-secret.md) beschrieben vor. Führen Sie dann die folgenden Skripts aus, um Verschlüsselungsdetails für den wiederhergestellte Betriebssystemdatenträger festzulegen (dieser Schritt ist für Datenträger nicht erforderlich). Die $dekurl können Sie aus dem wiederhergestellten keyVault abrufen.
+    * **Verwaltete, verschlüsselte VMs ohne Azure AD (nur BEK):** Wenn für verwaltete, verschlüsselte VMs ohne Azure AD (nur mit BEK verschlüsselt) das **keyVault/secret der Quelle nicht verfügbar ist**, stellen Sie die Geheimnisse in Key Vault wieder her. Gehen Sie dazu wie unter [Wiederherstellen eines nicht verschlüsselten virtuellen Computers aus einem Azure Backup-Wiederherstellungspunkt](backup-azure-restore-key-secret.md) beschrieben vor. Führen Sie dann die folgenden Skripts zum Festlegen von Verschlüsselungsdetails für den wiederhergestellten Betriebssystemdatenträger aus (dieser Schritt ist bei einem Datenträger nicht erforderlich). Die $dekurl können Sie aus dem wiederhergestellten keyVault abrufen.
 
     Das folgende Skript muss nur ausgeführt werden, wenn das keyVault/secret der Quelle nicht verfügbar ist.  
 
@@ -718,9 +718,9 @@ Im folgenden Abschnitt werden die erforderlichen Schritte zum Erstellen eines vi
 
     Informationen darüber, wie Sie die wiederhergestellten verwalteten Datenträger anfügen, nachdem die Geheimnisse verfügbar sind und die Verschlüsselungsdetails auf dem Betriebssystemdatenträger festgelegt wurden, finden Sie unter [Anfügen eines Datenträgers an einen virtuellen Windows-Computer mithilfe von PowerShell](../virtual-machines/windows/attach-disk-ps.md).
 
-    * **Verwaltete, verschlüsselte VMs ohne Azure AD (BEK und KEK):** Wenn für verwaltete, verschlüsselte VMs ohne Azure AD (mit BEK und KEK verschlüsselt) **keyVault/key/secret der Quelle nicht verfügbar ist**, stellen Sie den Schlüssel und die Geheimnisse in Key Vault wieder her. Gehen Sie dazu wie unter [Wiederherstellen eines nicht verschlüsselten virtuellen Computers aus einem Azure Backup-Wiederherstellungspunkt](backup-azure-restore-key-secret.md) beschrieben vor. Führen Sie dann die folgenden Skripts aus, um Verschlüsselungsdetails für den wiederhergestellte Betriebssystemdatenträger festzulegen (dieser Schritt ist für Datenträger nicht erforderlich). Die $dekurl und die $kekurl können Sie aus dem wiederhergestellten keyVault abrufen.
+    * **Verwaltete, verschlüsselte VMs ohne Azure AD (BEK und KEK):** Wenn für verwaltete, verschlüsselte VMs ohne Azure AD (mit BEK und KEK verschlüsselt) **keyVault/key/secret der Quelle nicht verfügbar ist**, stellen Sie den Schlüssel und die Geheimnisse in Key Vault wieder her. Gehen Sie dazu wie unter [Wiederherstellen eines nicht verschlüsselten virtuellen Computers aus einem Azure Backup-Wiederherstellungspunkt](backup-azure-restore-key-secret.md) beschrieben vor. Führen Sie dann die folgenden Skripts zum Festlegen von Verschlüsselungsdetails für den wiederhergestellten Betriebssystemdatenträger aus (dieser Schritt ist bei Datenträgern nicht erforderlich). Die $dekurl und die $kekurl können Sie aus dem wiederhergestellten keyVault abrufen.
 
-    Das folgende Skript muss nur ausgeführt werden, wenn keyVault/key/secret für die Quelle nicht verfügbar ist.
+    Das folgende Skript muss nur ausgeführt werden, wenn das keyVault/key/secret der Quelle nicht verfügbar ist.
 
     ```powershell
     $dekUrl = "https://ContosoKeyVault.vault.azure.net/secrets/ContosoSecret007/xx000000xx0849999f3xx30000003163"
@@ -764,7 +764,7 @@ Im folgenden Abschnitt werden die erforderlichen Schritte zum Erstellen eines vi
     ```
 
 7. Pushen Sie die ADE-Erweiterung.
-   Wenn die ADE-Erweiterungen nicht mithilfe von Push übertragen werden, werden die Datenträger als nicht verschlüsselt gekennzeichnet. Deshalb müssen die nachfolgenden Schritte unbedingt ausgeführt werden:
+   Wenn die ADE-Erweiterungen nicht gepusht werden, werden die Datenträger als nicht verschlüsselt gekennzeichnet. Deshalb müssen die folgenden Schritte unbedingt ausgeführt werden:
 
    * **Für virtuelle Computer mit Azure AD:** Verwenden Sie den folgenden Befehl, um die Verschlüsselung für die Datenträger manuell zu aktivieren.  
 
@@ -811,7 +811,7 @@ Grundlegende Schritte zum Wiederherstellen einer Datei aus einer Sicherung von v
 * Kopieren der erforderlichen Dateien
 * Aufheben der Bereitstellung des Datenträgers
 
-### <a name="select-the-vm"></a>Auswählen des virtuellen Computers
+### <a name="select-the-vm-when-restoring-the-vm"></a>Auswählen des virtuellen Computers (bei seiner Wiederherstellung)
 
 Zum Abrufen des PowerShell-Objekts, das das richtige Sicherungselement identifiziert, starten Sie vom Container im Tresor aus, und durchlaufen Sie die Objekthierarchie nach unten. Verwenden Sie das Cmdlet [Get-AzRecoveryServicesBackupContainer](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupcontainer), und leiten Sie dessen Ausgabe an das Cmdlet [Get-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupitem) weiter, um den Container auszuwählen, der den virtuellen Computer darstellt.
 
@@ -820,9 +820,9 @@ $namedContainer = Get-AzRecoveryServicesBackupContainer  -ContainerType "AzureVM
 $backupitem = Get-AzRecoveryServicesBackupItem -Container $namedContainer  -WorkloadType "AzureVM" -VaultId $targetVault.ID
 ```
 
-### <a name="choose-a-recovery-point"></a>Auswählen eines Wiederherstellungspunkts
+### <a name="choose-a-recovery-point-when-restoring-the-vm"></a>Auswählen eines Wiederherstellungspunkts (beim Wiederherstellen des virtuellen Computers)
 
-Verwenden Sie das Cmdlet [Get-AzRecoveryServicesBackupRecoveryPoint](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackuprecoverypoint), um alle Wiederherstellungspunkte für das Sicherungselement aufzulisten. Wählen Sie anschließend den zu wiederherstellenden Wiederherstellungspunkt. Wenn Sie nicht sicher sind, welchen Wiederherstellungspunkt Sie verwenden sollen, empfiehlt es sich, den letzten Punkt in der Liste auszuwählen, an dem sich RecoveryPointType = AppConsistent befand.
+Verwenden Sie das Cmdlet [Get-AzRecoveryServicesBackupRecoveryPoint](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackuprecoverypoint), um alle Wiederherstellungspunkte für das Sicherungselement aufzulisten. Wählen Sie anschließend den zu wiederherstellenden Wiederherstellungspunkt. Wenn Sie nicht genau wissen, welchen Wiederherstellungspunkt Sie verwenden sollen, empfiehlt es sich, den letzten „RecoveryPointType = AppConsistent“-Punkt in der Liste auszuwählen.
 
 Im folgenden Skript ist die Variable **$rp** ein Array von Wiederherstellungspunkten für das ausgewählte Sicherungselement der letzten sieben Tage. Das Array wird in umgekehrter Reihenfolge sortiert. Der letzte Wiederherstellungspunkt liegt bei Index 0. Verwenden Sie die standardmäßige PowerShell-Arrayindizierung zum Auswählen des Wiederherstellungspunkts. Im Beispiel wählt „$rp[0]“ den letzten Wiederherstellungspunkt aus.
 

@@ -3,12 +3,12 @@ title: Verwalten von gesicherten SAP HANA-Datenbanken für Azure-VMs
 description: In diesem Artikel erfahren Sie mehr über allgemeine Aufgaben zum Verwalten und Überwachen von SAP HANA-Datenbanken, die auf virtuellen Azure-Computern ausgeführt werden.
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.openlocfilehash: 98dd67668d1b88a25dfa3b91174cd96730c435e1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7e23ffc2fe39389725519f7b94a0fe6ffaecf69c
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87049468"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826700"
 ---
 # <a name="manage-and-monitor-backed-up-sap-hana-databases"></a>Verwalten und Überwachen gesicherter SAP HANA-Datenbanken
 
@@ -129,7 +129,7 @@ Sie können die zugrunde liegende Richtlinie für ein SAP HANA-Sicherungselement
 >[!NOTE]
 > Jede Änderung der Aufbewahrungsdauer wird nicht nur auf die neuen Wiederherstellungspunkte angewendet, sondern auch rückwirkend auf alle älteren.
 >
-> Inkrementelle Sicherungsrichtlinien können nicht für SAP HANA-Datenbanken verwendet werden. Inkrementelle Sicherungen werden für diese Datenbanken derzeit nicht unterstützt.
+> Inkrementelle Sicherungsrichtlinien können für SAP HANA-Datenbanken nicht verwendet werden. Inkrementelle Sicherungen werden bei diesen Datenbanken zurzeit nicht unterstützt.
 
 ### <a name="modify-policy"></a>Richtlinie ändern
 
@@ -171,7 +171,7 @@ Sie können den Schutz einer SAP HANA-Datenbank auf verschiedene Weise beenden:
 
 Wenn Sie die Wiederherstellungspunkte beibehalten, sollten Sie Folgendes beachten:
 
-* Alle Wiederherstellungspunkte werden unbegrenzt beibehalten, und die Bereinigung endet mit der Beendung des Schutzes unter Beibehaltung der Daten.
+* Alle Wiederherstellungspunkte werden unbegrenzt beibehalten, und die gesamte Bereinigung endet mit der Beendigung des Schutzes unter Beibehaltung der Daten.
 * Ihnen werden die geschützte Instanz und der verbrauchte Speicher in Rechnung gestellt. Weitere Informationen finden Sie unter [Azure Backup – Preise](https://azure.microsoft.com/pricing/details/backup/).
 * Wenn Sie eine Datenquelle löschen, ohne die Sicherungen zu beenden, treten bei neuen Sicherungen Fehler auf.
 

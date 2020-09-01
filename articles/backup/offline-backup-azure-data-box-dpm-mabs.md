@@ -3,18 +3,18 @@ title: Offlinesicherung mit Azure Data Box für DPM und MABS
 description: Sie können Azure Data Box verwenden, um anfängliche Sicherungsdaten offline von DPM und MABS zu erstellen.
 ms.topic: conceptual
 ms.date: 08/12/2020
-ms.openlocfilehash: 8b585dc46eb2bdd54e48950ca861f0edc8f0a7ed
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 33515cdd943f3816328bfd77d831288c5ee0a608
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88186796"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88890024"
 ---
 # <a name="offline-seeding-using-azure-data-box-for-dpm-and-mabs-preview"></a>Offlineseeding mit Azure Data Box für DPM und MABS (Vorschau)
 
 > [!NOTE]
 > Diese Funktion gilt für Data Protection Manager (DPM) 2019 UR2 und höher.<br><br>
-> Diese Funktion befindet sich derzeit in der Vorschauphase für Microsoft Azure Backup Server (MABS). Wenn Sie an der Verwendung von Azure Data Box für das Offlineseeding mit MABS interessiert sind, wenden Sie sich unter [systemcenterfeedback@microsoft.com](mailto:systemcenterfeedback@microsoft.com) an uns.
+> Diese Funktion befindet sich derzeit in der Vorschauphase für Microsoft Azure Backup Server (MABS). Falls Sie an der Verwendung von Azure Data Box für das Offlineseeding mit MABS interessiert sind, wenden Sie sich unter [systemcenterfeedback@microsoft.com](mailto:systemcenterfeedback@microsoft.com) an uns.
 
 In diesem Artikel erfahren Sie, wie Sie Azure Data Box verwenden können, um ein Offlineseeding für Erstsicherungsdaten von DPM und MABS in einen Recovery Services-Tresor von Azure auszuführen.
 
@@ -58,16 +58,16 @@ Stellen Sie Folgendes sicher:
 
 - Ein gültiges Azure-Abonnement.
 - Der Benutzer, der die Offlinesicherungsrichtlinie ausführen soll, muss ein Besitzer des Azure-Abonnements sein.
-- Der Data Box-Auftrag und der Recovery Services-Tresor, der Ziel des Datenseedings ist, müssen sich im selben Abonnement befinden.
+- Der Data Box-Auftrag und der Recovery Services-Tresor, der Ziel des Datenseedings ist, müssen sich in denselben Abonnements befinden.
     > [!NOTE]
-    > Das Zielspeicherkonto und der Recovery Services-Tresor sollten sich in derselben Region befinden. Dies ist jedoch nicht obligatorisch.
+    > Das Zielspeicherkonto und der Recovery Services-Tresor sollten sich am besten in derselben Region befinden. Dies ist aber nicht zwingend erforderlich.
 
 ### <a name="order-and-receive-the-data-box-device"></a>Bestellen und Empfangen des Data Box-Geräts
 
 Stellen Sie sicher, dass die erforderlichen Data Box-Geräte sich im Zustand *Geliefert* befinden, bevor Sie eine Offlinesicherung auslösen. Im Abschnitt [Größe von Sicherungsdaten und unterstützte Data Box-SKUs](#backup-data-size-and-supported-data-box-skus) finden Sie die nötigen Informationen, um die für Ihre Anforderung am besten geeignete SKU zu bestellen. Führen Sie die Schritte in [diesem Artikel](https://docs.microsoft.com/azure/databox/data-box-disk-deploy-ordered) aus, um Ihre Data Box-Geräte zu bestellen und zu empfangen.
 
 > [!IMPORTANT]
-> Wählen Sie als **Kontoart** nicht *BlobStorage* aus. Für den DPM/MABS-Server ist ein Konto erforderlich, das Seitenblobs unterstützt, was nicht der Fall ist, wenn *BlobStorage* ausgewählt wird. Wählen Sie bei der Erstellung des Zielspeicherkontos für Ihren Azure Data Box-Auftrag als **Kontoart** die Option **StorageV2 (universell, Version 2)** aus.
+> Wählen Sie als **Kontoart** nicht *BlobStorage* aus. Für den DPM/MABS-Server wird ein Konto benötigt, das Seitenblobs unterstützt. Dies ist nicht der Fall, wenn *BlobStorage* ausgewählt wird. Wählen Sie bei der Erstellung des Zielspeicherkontos für Ihren Azure Data Box-Auftrag als **Kontoart** die Option **StorageV2 (universell, Version 2)** aus.
 
 ![Einrichten von Azure Data Box](./media/offline-backup-azure-data-box-dpm-mabs/setup-azure-databox.png)
 
@@ -80,7 +80,7 @@ Wenn Sie das Azure Data Box-Gerät erhalten haben, führen Sie je nach der von I
 Führen Sie die [hier](https://docs.microsoft.com/azure/databox/data-box-disk-deploy-set-up) genannten Schritte zum Entpacken, Verbinden und Entsperren der Data Box Disk aus, wenn Sie mindestens eine Azure Data Box Disk bestellt haben (jeweils bis zu 8 TB).
 
 > [!NOTE]
-> Möglicherweise hat der DPM/MABS-Server keinen USB-Anschluss. In diesem Szenario können Sie Ihre Azure Data Box Disk mit einem anderen Server/Client verbinden und den Gerätepfad als Netzwerkfreigabe angeben.
+> Es ist möglich, dass der DPM/MABS-Server keinen USB-Anschluss hat. In diesem Szenario können Sie Ihre Azure Data Box Disk mit einem anderen Server/Client verbinden und den Gerätepfad als Netzwerkfreigabe angeben.
 
 ## <a name="setup-azure-data-box"></a>Einrichten von Azure Data Box
 
@@ -131,7 +131,7 @@ Geben Sie als alternative Quelle Folgendes an: *WIM:D:\Sources\Install.wim:4*
     ![Auswählen der anfänglichen Onlinereplikation](./media/offline-backup-azure-data-box-dpm-mabs/choose-initial-online-replication.png)
 
     >[!NOTE]
-    > Die Option **Mit Datenträgern von Microsoft übertragen** ist für MABS v3 nicht verfügbar, da sich das Feature in der Vorschauphase befindet. Wenden Sie sich unter [systemcenterfeedback@microsoft.com](mailto:systemcenterfeedback@microsoft.com) an uns, wenn Sie dieses Feature für MABS v3 verwenden möchten.
+    > Die Option **Mit Datenträgern von Microsoft übertragen** steht für MABS v3 nicht zur Verfügung, weil sich das Feature in der Vorschauphase befindet. Wenden Sie sich unter [systemcenterfeedback@microsoft.com](mailto:systemcenterfeedback@microsoft.com) an uns, wenn Sie dieses Feature für MABS v3 verwenden möchten.
 
 12. Melden Sie sich bei einer entsprechenden Aufforderung bei Azure an, und verwenden Sie dazu die Benutzeranmeldeinformationen, mit denen Sie als Besitzer Zugriff auf das Azure-Abonnement haben. Nach erfolgreicher Anmeldung wird der folgende Bildschirm angezeigt:
 
@@ -194,7 +194,7 @@ Geben Sie als alternative Quelle Folgendes an: *WIM:D:\Sources\Install.wim:4*
 Führen Sie die folgenden Schritte aus, nachdem die Datensicherung auf der Azure Data Box Disk erfolgreich war.
 
 - Führen Sie die Schritte in [diesem Artikel](https://docs.microsoft.com/azure/databox/data-box-disk-deploy-picked-up) zum Zurücksenden der Azure Data Box Disk aus. Führen Sie [diese Schritte](https://docs.microsoft.com/azure/databox/data-box-deploy-picked-up) zum Zurücksenden der Azure Data Box an Azure aus, wenn Sie ein Azure Data Box-Gerät mit 100 TB verwendet haben.
-- [Überprüfen Sie den Datenupload aus Azure Data Box Disk](https://docs.microsoft.com/azure/databox/data-box-disk-deploy-upload-verify) im Azure-Portal. Sobald der Azure Data Box-Auftrag *Abgeschlossen* ist, verschiebt der DPM/MABS-Server die Daten zum Zeitpunkt der nächsten geplanten Sicherung automatisch vom Speicherkonto in den Recovery Services-Tresor. Der Sicherungsauftrag wird dann mit *Auftrag abgeschlossen* markiert, sobald erfolgreich ein Wiederherstellungspunkt erstellt wurde.
+- [Überprüfen Sie den Datenupload aus Azure Data Box Disk](https://docs.microsoft.com/azure/databox/data-box-disk-deploy-upload-verify) im Azure-Portal. Sobald der Azure Data Box-Auftrag *Abgeschlossen* ist, verschiebt der DPM/MABS-Server die Daten zum Zeitpunkt der nächsten geplanten Sicherung automatisch aus dem Speicherkonto in den Recovery Services-Tresor. Der Sicherungsauftrag wird dann mit *Auftrag abgeschlossen* markiert, sobald erfolgreich ein Wiederherstellungspunkt erstellt wurde.
 
   > [!NOTE]
   > Der DPM/MABS-Server löst die Sicherungen zu den Zeitpunkten aus, die während der Erstellung der Schutzgruppe geplant worden sind. Diese Aufträge werden jedoch als *Warten auf Abschluss des Azure Data Box-Auftrags* gekennzeichnet, bis der Auftrag abgeschlossen ist.
@@ -234,7 +234,7 @@ Um dieses Problems zu lösen, führen Sie die folgenden Schritte aus und versuch
 2. Wenn das Offlineseeding für keinen anderen Server konfiguriert wurde und kein anderer Server von der `AzureOfflineBackup_<Azure User Id>`-Anwendung abhängig ist, löschen Sie diese Anwendung über **Azure-Portal > Azure Active Directory > App-Registrierungen**.
 
    > [!NOTE]
-   > Überprüfen Sie, ob für die Anwendung `AzureOfflineBackup_<Azure User Id>` kein weiteres Offlineseeding konfiguriert wurde, und überprüfen Sie außerdem, ob kein weiterer Server von dieser Anwendung abhängig ist. Navigieren Sie im Abschnitt „Öffentliche Schlüssel“ zu **Einstellungen > Schlüssel**. Dort sollten keine weiteren **öffentlichen Schlüssel** hinzugefügt worden sein. Als Referenz können Sie sich den folgenden Screenshot ansehen:
+   > Überprüfen Sie, ob für die Anwendung `AzureOfflineBackup_<Azure User Id>` kein weiteres Offlineseeding konfiguriert wurde, und außerdem, ob kein weiterer Server von dieser Anwendung abhängig ist. Navigieren Sie unter dem Abschnitt „Öffentliche Schlüssel“ zu **Einstellungen > Schlüssel**. Es sollten keine weiteren **öffentlichen Schlüssel** hinzugefügt worden sein. Als Referenz können Sie sich den folgenden Screenshot ansehen:
    >
    > ![Öffentliche Schlüssel](./media/offline-backup-azure-data-box-dpm-mabs/public-keys.png)
 
@@ -243,7 +243,7 @@ Um dieses Problems zu lösen, führen Sie die folgenden Schritte aus und versuch
 Führen Sie auf dem DPM/MABS-Server, den Sie für die Offlinesicherung konfigurieren möchten, die folgenden Aktionen aus:
 
 1. Öffnen Sie die Registerkarte **Computerzertifikatanwendung verwalten**  > **Persönlich**, und suchen Sie nach dem Zertifikat mit dem Namen `CB_AzureADCertforOfflineSeeding_<ResourceId>`.
-2. Wählen Sie das oben angegebene Zertifikat aus, klicken Sie mit der rechten Maustaste auf **Alle Aufgaben**, und führen Sie dann einen **Export** ohne privaten Schlüssel im CER-Format aus.
+2. Wählen Sie das Zertifikat oben aus, klicken Sie mit der rechten Maustaste auf **Alle Aufgaben**, und führen Sie einen **Export** ohne privaten Schlüssel im CER-Format aus.
 3. Navigieren Sie zur in **Schritt 2** genannten Anwendung, die mit Azure Backup offline gesichert werden soll. Laden Sie über **Einstellungen** > **Schlüssel** > **Öffentlichen Schlüssel hochladen** das im obigen Schritt exportierte Zertifikat hoch.
 
    ![Hochladen der öffentlichen Schlüssel](./media/offline-backup-azure-data-box-dpm-mabs/upload-public-keys.png)
@@ -260,7 +260,7 @@ Führen Sie auf dem DPM/MABS-Server, den Sie für die Offlinesicherung konfiguri
 6. Klicken Sie zunächst mit der rechten Maustaste auf die im vorherigen Schritt hinzugefügte Zeichenfolge, und wählen Sie dann **Ändern** aus. Geben Sie als Wert den Fingerabdruck des Zertifikats an, das Sie in **Schritt 2** exportiert haben, und wählen Sie **OK** aus.
 7. Doppelklicken Sie auf das Zertifikat, wählen Sie **Details** aus, und scrollen Sie nach unten, bis das Feld „Fingerabdruck“ angezeigt wird, um den Wert des Fingerabdrucks zu erhalten. Wählen Sie **Fingerabdruck** aus, und kopieren Sie den Wert.
 
-   ![Zertifikat](./media/offline-backup-azure-data-box-dpm-mabs/certificate.png)
+   ![Fingerabdruckwert](./media/offline-backup-azure-data-box-dpm-mabs/certificate.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

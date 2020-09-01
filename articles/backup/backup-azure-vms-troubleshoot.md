@@ -4,12 +4,12 @@ description: In diesem Artikel erfahren Sie, wie Sie Fehler beheben können, die
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 08/30/2019
-ms.openlocfilehash: 0f598e0058d817fbba8d816500ab252134be0eb5
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: a5784aeb615c6d84048835bd6169f0819fad2f56
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371735"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892336"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>Problembehandlung bei Sicherungsfehlern auf virtuellen Azure-Computern
 
@@ -28,7 +28,7 @@ Dieser Abschnitt behandelt Fehler im Sicherungsvorgang für virtuelle Azure-Comp
 * Überprüfen Sie, ob der virtuelle Computer über Internetkonnektivität verfügt.
   * Vergewissern Sie sich, dass kein anderer Sicherungsdienst ausgeführt wird.
 * Stellen Sie über `Services.msc` sicher, dass sich der **Microsoft Azure-Gast-Agent-Dienst** im Status **Wird ausgeführt** befindet. Wenn der **Microsoft Azure-Gast-Agent-Dienst** nicht vorhanden ist, installieren Sie ihn aus [Sichern virtueller Azure-Computer in einem Recovery Services-Tresor](./backup-azure-arm-vms-prepare.md#install-the-vm-agent).
-* Das **Ereignisprotokoll** zeigt möglicherweise Sicherungsfehler an, die aus anderen Sicherungsprodukten, z.B. der Windows Server-Sicherung, stammen und nicht auf Azure Backup zurückzuführen sind. Ermitteln Sie anhand der folgenden Schritte, ob das Problem bei Azure Backup liegt:
+* Das **Ereignisprotokoll** zeigt möglicherweise Sicherungsfehler an, die aus anderen Sicherungsprodukten, z. B. der Windows Server-Sicherung, stammen und nicht auf Azure Backup zurückzuführen sind. Ermitteln Sie anhand der folgenden Schritte, ob das Problem bei Azure Backup liegt:
   * Wenn in der Ereignisquelle oder -meldung ein Fehler bei einer **Eintragsicherung** vorliegt, überprüfen Sie, ob die Sicherungen der Azure IaaS-VM-Sicherung erfolgreich waren und ob ein Wiederherstellungspunkt mit dem gewünschten Momentaufnahmetyp erstellt wurde.
   * Wenn Azure Backup funktioniert, liegt das Problem wahrscheinlich bei einer anderen Sicherungslösung.
   * Im Folgenden finden Sie ein Beispiel für einen Fehler 517 in der Ereignisanzeige, bei dem Azure Backup einwandfrei funktionierte, aber die „Windows Server-Sicherung“ fehlgeschlagen ist:<br>
@@ -44,7 +44,7 @@ Im Folgenden werden häufige Probleme bei Sicherungsfehlern auf virtuellen Azure
 Fehlercode: VMRestorePointInternalError
 
 Falls zum Zeitpunkt der Sicherung in den **Anwendungsprotokollen der Ereignisanzeige** ein ähnlicher Eintrag wie der folgende angezeigt wird, **Fehlerhafter Anwendungsname: IaaSBcdrExtension.exe**, wird die Ausführung der Sicherungserweiterung durch das auf der VM konfigurierte Antivirenprogramm tatsächlich eingeschränkt.
-Um dieses Problem zu beheben, schließen Sie die folgenden Verzeichnisse aus der Antivirenkonfiguration aus, und wiederholen Sie den Sicherungsvorgang.
+Schließen Sie zur Behebung dieses Problems die folgenden Verzeichnisse aus der Antivirenkonfiguration aus, und wiederholen Sie den Sicherungsvorgang.
 
 * `C:\Packages\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot`
 * `C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot`
@@ -90,11 +90,11 @@ Fehler beim Sicherungsvorgang aufgrund eines Problems mit dem Windows-Dienst **C
 
 * Versuchen Sie, den Windows-Dienst **COM+-Systemanwendung** zu starten / neu zu starten (über eine Eingabeaufforderung mit erhöhten Rechten **- net start COMSysApp**).
 * Stellen Sie sicher, dass der **Distributed Transaction Coordinator**-Dienst als **Netzwerkdienst**-Konto ausgeführt wird. Wenn nicht, ändern Sie sie zur Ausführung als **Netzwerkdienst**-Konto, und starten Sie **COM+-Systemanwendung** neu.
-* Wenn es nicht möglich ist, den Dienst neu zu starten, installieren Sie den **Distributed Transaction Coordinator**-Dienst mit folgenden Schritten neu:
+* Wenn Sie den Dienst nicht neu starten können, installieren Sie den Dienst **Distributed Transaction Coordinator** (MS DTC) mit folgenden Schritten neu:
   * Beenden Sie den Dienst „MS DTC“.
   * Öffnen Sie eine Eingabeaufforderung (cmd).
-  * Führen Sie den Befehl „msdtc -uninstall“ aus.
-  * Führen Sie den Befehl „msdtc -install“ aus.
+  * Führen Sie den Befehl `msdtc -uninstall` aus.
+  * Führen Sie den Befehl `msdtc -install` aus.
   * Starten Sie den Dienst „MS DTC“.
 * Starten Sie den Windows-Dienst **COM+-Systemanwendung**. Lösen Sie nach dem Starten des Diensts **COM+-Systemanwendung** einen Sicherungsauftrag über das Azure-Portal aus.</ol>
 
@@ -114,7 +114,7 @@ Ein weiteres Verfahren, das Ihnen helfen kann, besteht darin, den folgenden Befe
 REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v SnapshotWithoutThreads /t REG_SZ /d True /f
 ```
 
-Das Hinzufügen dieses Registrierungsschlüssels bewirkt, dass die Threads nicht für BLOB-Momentaufnahmen erstellt werden und ein Timeout verhindert wird.
+Das Hinzufügen dieses Registrierungsschlüssels bewirkt, dass die Threads für Blobmomentaufnahmen nicht erstellt werden und ein Timeout verhindert wird.
 
 ### <a name="extensionconfigparsingfailure--failure-in-parsing-the-config-for-the-backup-extension"></a>ExtensionConfigParsingFailure – Fehler beim Analysieren der Konfigurationsdatei für die Sicherungserweiterung
 
@@ -167,12 +167,12 @@ Fehlermeldung: Fehler bei Momentaufnahmevorgang, weil für einige der angefügte
 
 Beim Momentaufnahmevorgang ist ein Fehler aufgetreten, da das Momentaufnahmenlimit für einige der angefügten Datenträger überschritten wurde. Führen Sie die folgenden Problembehandlungsschritte aus, und wiederholen Sie dann den Vorgang.
 
-* Löschen Sie die nicht erforderlichen Blobmomentaufnahmen von Datenträgern. Achten Sie darauf, dass Sie keine Datenträgerblobs löschen, nur Momentaufnahmenblobs sollten gelöscht werden.
-* Wenn vorläufiges Löschen für die VM-Datenträger-Speicherkonten aktiviert ist, konfigurieren Sie die Aufbewahrung von vorläufigen Löschungen so, dass vorhandene Momentaufnahmen zu jedem Zeitpunkt kleiner als maximal zulässig sind.
+* Löschen Sie die nicht benötigten Datenträgerblob-Momentaufnahmen. Achten Sie darauf, dass Sie keine Datenträgerblobs löschen. Nur Momentaufnahmenblobs sollten gelöscht werden.
+* Wenn „Vorläufiges Löschen“ für die VM-Datenträgerspeicherkonten aktiviert wurde, konfigurieren Sie die Aufbewahrung von vorläufigen Löschungen so, dass vorhandene Momentaufnahmen zu jedem Zeitpunkt kleiner als maximal zulässig sind.
 * Wenn Azure Site Recovery auf dem gesicherten virtuellen Computer aktiviert ist, führen Sie die folgenden Schritte aus:
 
   * Vergewissern Sie sich, dass in „/etc/azure/vmbackup.conf“ für **isanysnapshotfailed** der Wert „false“ festgelegt ist.
-  * Planen Sie Azure Site Recovery für einen anderen Zeitpunkt, sodass kein Konflikt mit dem Sicherungsvorgang auftritt.
+  * Planen Sie Azure Site Recovery für einen anderen Zeitpunkt, damit es beim Sicherungsvorgang zu keinem Konflikt kommt.
 
 ### <a name="extensionfailedtimeoutvmnetworkunresponsive---snapshot-operation-failed-due-to-inadequate-vm-resources"></a>ExtensionFailedTimeoutVMNetworkUnresponsive – Fehler beim Momentaufnahmevorgang aufgrund nicht ausreichender VM-Ressourcen.
 
@@ -183,7 +183,7 @@ Fehler beim Sicherungsvorgang auf der VM aufgrund von Netzwerkaufrufen beim Durc
 
 **Schritt 1:** Erstellen einer Momentaufnahme über den Host
 
-Führen Sie an einer Eingabeaufforderung mit erhöhten Rechten (Administrator) den folgenden Befehl aus:
+Führen Sie an einer Eingabeaufforderung auf höherer Ebene (Administrator) den folgenden Befehl aus:
 
 ```console
 REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v SnapshotMethod /t REG_SZ /d firstHostThenGuest /f
@@ -192,7 +192,7 @@ REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v CalculateSnapshotTi
 
 So wird sichergestellt, dass die Momentaufnahmen nicht über den Gast, sondern über den Host erstellt werden. Wiederholen Sie den Sicherungsvorgang.
 
-**Schritt 2:** Versuchen Sie, den Sicherungszeitplan in einen Zeitpunkt zu ändern, zu dem die VM eine geringere Auslastung aufweist (in Bezug auf CPU/IOPS usw.).
+**Schritt 2:** Versuchen Sie, den Sicherungszeitplan auf einen Zeitpunkt zu ändern, zu dem die VM eine geringere Auslastung (wie z. B. weniger CPU oder IOps) aufweist.
 
 **Schritt 3:** Versuchen Sie, [die Größe der VM zu erhöhen](https://azure.microsoft.com/blog/resize-virtual-machines/) und den Vorgang dann erneut durchzuführen.
 
@@ -246,7 +246,7 @@ Fehlercode: ExtensionSnapshotFailedNoSecureNetwork <br/> Fehlermeldung: Der Mome
 Fehlercode: ExtensionVCRedistInstallationFailure <br/> Fehlermeldung: Der Momentaufnahmevorgang ist aufgrund eines Fehlers beim Installieren von Visual C++ Redistributable für Visual Studio 2012 fehlgeschlagen.
 
 * Navigieren Sie zu `C:\Packages\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot\agentVersion`, und installieren Sie vcredist2013_x64.<br/>Stellen Sie sicher, dass der richtige Registrierungsschlüsselwert zum Zulassen der Dienstinstallation festgelegt wird. Das heißt, legen Sie den Wert für **Start** in **HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Msiserver** auf **3** und nicht auf **4** fest. <br><br>Wenn immer noch Probleme bei der Installation bestehen, starten Sie den Installationsdienst neu, indem Sie an einer Eingabeaufforderung mit erhöhten Rechten den Befehl **MSIEXEC /UNREGISTER** und dann **MSIEXEC /REGISTER** ausführen.
-* Überprüfen Sie das Ereignisprotokoll, auf Zugriffsprobleme. Beispiel: *Product: Microsoft Visual C++ 2013 x64 Minimum Runtime - 12.0.21005 -- Error 1401.Could not create key: Software\Classes.  System error 5.  Verify that you have sufficient access to that key, or contact your support personnel.* (Produkt: Microsoft Visual C++ 2013 x64 Minimum Runtime, 12.0.21005, Fehler 1401. Schlüssel Software\Classes konnte nicht erstellt werden. Systemfehler 5. Überprüfen Sie, ob Sie ausreichende Zugriffsrechte für diesen Schlüssel besitzen, oder setzen Sie sich mit dem Support in Verbindung.) <br><br> Stellen Sie sicher, dass das Administrator- oder Benutzerkonto über ausreichende Berechtigungen zum Aktualisieren des Registrierungsschlüssels **HKEY_LOCAL_MACHINE\SOFTWARE\Classes** verfügt. Erteilen Sie ausreichende Berechtigungen, und starten Sie den Windows Azure-Gast-Agent neu.<br><br> <li> Wenn Sie Antivirusprodukte eingerichtet haben, stellen Sie sicher, dass die richtigen Ausschlussregeln festgelegt wurden, um die Installation zu ermöglichen.
+* Überprüfen Sie das Ereignisprotokoll auf Zugriffsprobleme. Beispiel: *Product: Microsoft Visual C++ 2013 x64 Minimum Runtime - 12.0.21005 -- Error 1401.Could not create key: Software\Classes.  System error 5.  Verify that you have sufficient access to that key, or contact your support personnel.* (Produkt: Microsoft Visual C++ 2013 x64 Minimum Runtime, 12.0.21005, Fehler 1401. Schlüssel Software\Classes konnte nicht erstellt werden. Systemfehler 5. Überprüfen Sie, ob Sie ausreichende Zugriffsrechte für diesen Schlüssel besitzen, oder setzen Sie sich mit dem Support in Verbindung.) <br><br> Stellen Sie sicher, dass das Administrator- oder Benutzerkonto über ausreichende Berechtigungen zum Aktualisieren des Registrierungsschlüssels **HKEY_LOCAL_MACHINE\SOFTWARE\Classes** verfügt. Erteilen Sie ausreichende Berechtigungen, und starten Sie den Windows Azure-Gast-Agent neu.<br><br> <li> Wenn Sie Antivirusprodukte eingerichtet haben, stellen Sie sicher, dass die richtigen Ausschlussregeln festgelegt wurden, um die Installation zu ermöglichen.
 
 ### <a name="usererrorrequestdisallowedbypolicy---an-invalid-policy-is-configured-on-the-vm-which-is-preventing-snapshot-operation"></a>UserErrorRequestDisallowedByPolicy: Auf dem virtuellen Computer ist eine ungültige Richtlinie konfiguriert. Dadurch wird der Momentaufnahmevorgang verhindert.
 
@@ -289,23 +289,23 @@ Wenn die Sicherung länger als 12 Stunden oder die Wiederherstellung länger als
 
 Normalerweise ist der VM-Agent auf virtuellen Computern, die über den Azure-Katalog erstellt werden, bereits vorhanden. Auf virtuellen Computern, die aus lokalen Rechenzentren migriert werden, ist der VM-Agent jedoch nicht installiert. Auf diesen virtuellen Computern muss der VM-Agent explizit installiert werden.
 
-#### <a name="windows-vms"></a>Virtuelle Windows-Computer
+#### <a name="windows-vms---set-up-the-agent"></a>Virtuelle Windows-Computer – Einrichten des Agents
 
 * Laden Sie den [Agent-MSI](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)herunter, und installieren Sie ihn. Sie benötigen Administratorberechtigungen, um die Installation ausführen zu können.
 * [Aktualisieren Sie die VM-Eigenschaft](../virtual-machines/troubleshooting/install-vm-agent-offline.md#use-the-provisionguestagent-property-for-classic-vms) auf mit dem klassischen Bereitstellungsmodell erstellten virtuellen Computern, um anzugeben, dass der Agent installiert wurde. Dieser Schritt ist nicht für virtuelle Azure Resource Manager-Computer erforderlich.
 
-#### <a name="linux-vms"></a>Virtuelle Linux-Computer
+#### <a name="linux-vms---set-up-the-agent"></a>Virtuelle Linux-Computer – Einrichten des Agents
 
 * Installieren Sie die neueste Version des Agents über das Repository der Distribution. Ausführliche Informationen zum Paketnamen finden Sie im [Linux-Agent-Repository](https://github.com/Azure/WALinuxAgent).
 * [Aktualisieren Sie die VM-Eigenschaft](../virtual-machines/troubleshooting/install-vm-agent-offline.md#use-the-provisionguestagent-property-for-classic-vms) auf mit dem klassischen Bereitstellungsmodell erstellten VMs, und stellen Sie sicher, dass der Agent installiert ist. Dieser Schritt ist nicht für virtuelle Azure Resource Manager-Computer erforderlich.
 
 ### <a name="update-the-vm-agent"></a>Aktualisieren des VM-Agents
 
-#### <a name="windows-vms"></a>Virtuelle Windows-Computer
+#### <a name="windows-vms---update-the-agent"></a>Virtuelle Windows-Computer – Aktualisieren des Agents
 
 * Installieren Sie die [Binärdateien für den Agent des virtuellen Computers](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409) neu, um den Agent zu aktualisieren. Stellen Sie vor dem Aktualisieren des Agents sicher, dass während des Agent-Updates für den virtuellen Computer keine Sicherungsvorgänge durchgeführt werden.
 
-#### <a name="linux-vms"></a>Virtuelle Linux-Computer
+#### <a name="linux-vms---update-the-agent"></a>Virtuelle Linux-Computer – Aktualisieren des Agents
 
 * Aktualisieren Sie den Agent des virtuellen Linux-Computers gemäß den Anweisungen im Artikel [Aktualisieren des Azure Linux-Agents](../virtual-machines/extensions/update-linux-agent.md?toc=/azure/virtual-machines/linux/toc.json).
 

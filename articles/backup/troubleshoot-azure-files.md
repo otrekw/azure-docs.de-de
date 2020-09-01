@@ -3,12 +3,12 @@ title: Problembehandlung der Sicherung von Azure-Dateifreigaben
 description: Dieser Artikel enthält Informationen zum Behandeln von Problemen in Verbindung mit dem Schutz Ihrer Azure-Dateifreigaben.
 ms.date: 02/10/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 7b007a9ef893bb772929584eb3137c7a5200d756
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: b6f4c74f6e2e8c463d1bcbd78d6ff79d3fb6ee56
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86524487"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88889807"
 ---
 # <a name="troubleshoot-problems-while-backing-up-azure-file-shares"></a>Behandeln von Problemen beim Sichern von Azure-Dateifreigaben
 
@@ -22,10 +22,10 @@ Dieser Artikel enthält Informationen zur Problembehandlung, mit denen Sie event
 - Überprüfen Sie, ob eine Dateifreigabe unter dem Speicherkonto bereits durch einen anderen Recovery Services-Tresor geschützt ist.
 
   >[!NOTE]
-  >Alle Dateifreigaben in einem Speicherkonto können nur unter einem einzelnen Recovery Services-Tresor geschützt werden. Mithilfe [dieses Skripts](scripts/backup-powershell-script-find-recovery-services-vault.md) können Sie nach dem Recovery Services-Tresor suchen, bei dem Ihr Speicherkonto registriert ist.
+  >Alle Dateifreigaben in einem Speicherkonto können nur unter einem einzelnen Recovery Services-Tresor geschützt werden. Mithilfe [dieses Skripts](scripts/backup-powershell-script-find-recovery-services-vault.md) können Sie nach dem Recovery Services-Tresor suchen, bei dem Ihr Speicherkonto registriert ist.
 
 - Vergewissern Sie sich, dass sich die Dateifreigabe nicht in einem nicht unterstützten Speicherkonto befindet. Sie können die [Unterstützungsmatrix für Sicherungen von Azure-Dateifreigaben](azure-file-share-support-matrix.md) verwenden, um unterstützte Speicherkonten zu finden.
-- Stellen Sie sicher, dass die Kombination aus Speicherkontoname und Ressourcengruppenname eine Gesamtlänge von 84 Zeichen bei neuen Speicherkonten und 77 Zeichen bei klassischen Speicherkonten nicht überschreitet. 
+- Sorgen Sie dafür, dass die Kombination aus Speicherkontoname und Ressourcengruppenname eine Gesamtlänge von 84 Zeichen bei neuen Speicherkonten und 77 Zeichen bei klassischen Speicherkonten nicht überschreitet.
 - Überprüfen Sie die Firewalleinstellungen des Speicherkontos, um sicherzustellen, dass die Option zum Erlauben des Zugriffs auf das Speicherkonto durch vertrauenswürdige Microsoft-Dienste aktiviert ist.
 
 ### <a name="error-in-portal-states-discovery-of-storage-accounts-failed"></a>Im Portal tritt ein Fehler mit dem Hinweis auf, dass die Speicherkonten nicht erfolgreich erkannt wurden.
@@ -54,7 +54,7 @@ Wiederholen Sie die Registrierung. Wenden Sie sich an den Support, wenn das Prob
 Öffnen Sie im Azure-Portal Ihren **Tresor** > **Sicherungsinfrastruktur** > **Speicherkonten**, und klicken Sie anschließend auf **Registrierung aufheben**, um die Speicherkonten aus dem Recovery Services-Tresor zu entfernen.
 
 >[!NOTE]
->Ein Recovery Services-Tresor kann nur nach dem Aufheben der Registrierung aller Speicherkonten gelöscht werden, die beim Tresor registriert sind.
+>Ein Recovery Services-Tresor kann nur nach dem Aufheben der Registrierung aller Speicherkonten gelöscht werden, die beim Tresor registriert wurden.
 
 ## <a name="common-backup-or-restore-errors"></a>Allgemeine Sicherungs- und Wiederherstellungsfehler
 
@@ -251,7 +251,7 @@ Fehlermeldung: Die diesem Wiederherstellungspunkt entsprechende Momentaufnahme d
 - Vergewissern Sie sich, dass die Momentaufnahme der Dateifreigabe, die dem Wiederherstellungspunkt entspricht, den Sie für die Wiederherstellung verwenden möchten, noch vorhanden ist.
 
   >[!NOTE]
-  >Wenn Sie eine von Azure Backup erstellte Dateifreigabe-Momentaufnahme löschen, werden die entsprechenden Wiederherstellungspunkte unbrauchbar. Es empfiehlt sich, keine Momentaufnahmen zu löschen, um die garantierte Wiederherstellung sicherzustellen.
+  >Wenn Sie eine von Azure Backup erstellte Dateifreigabe-Momentaufnahme löschen, werden die entsprechenden Wiederherstellungspunkte unbrauchbar. Wir empfehlen, keine Momentaufnahmen zu löschen, um die garantierte Wiederherstellung sicherzustellen.
 
 - Versuchen Sie, einen anderen Wiederherstellungspunkt auszuwählen, um Ihre Daten wiederherzustellen.
 
@@ -300,7 +300,7 @@ Fehlermeldung: Die aufgeführten Wiederherstellungspunkte sind nicht verfügbar,
 Überprüfen Sie, ob die gesicherte Dateifreigabe gelöscht wurde. Wenn sie sich im vorläufig gelöschten Zustand befand, überprüfen Sie, ob die Beibehaltungsdauer für vorläufiges Löschen abgelaufen ist und sie nicht wiederhergestellt wurde. In beiden Fällen verlieren Sie alle Momentaufnahmen dauerhaft und können die Daten nicht wiederherstellen.
 
 >[!NOTE]
-> Es wird empfohlen, die gesicherte Dateifreigabe nicht zu löschen bzw., wenn sie sich im vorläufig gelöschten Zustand befindet, den Löschvorgang vor dem Ende der Beibehaltungsdauer nicht rückgängig zu machen, um zu vermeiden, dass alle Wiederherstellungspunkte verloren gehen.
+> Wir empfehlen, die gesicherte Dateifreigabe nicht zu löschen bzw. (wenn sie sich im vorläufig gelöschten Zustand befindet) den Löschvorgang vor dem Ende der Beibehaltungsdauer nicht rückgängig zu machen, um zu vermeiden, dass alle Wiederherstellungspunkte verloren gehen.
 
 ### <a name="usererrorbackupafsinsoftdeletestate---backup-failed-as-the-azure-file-share-is-in-soft-deleted-state"></a>UserErrorBackupAFSInSoftDeleteState: Fehler bei der Sicherung, da sich die Azure-Dateifreigabe im vorläufig gelöschten Zustand befindet.
 

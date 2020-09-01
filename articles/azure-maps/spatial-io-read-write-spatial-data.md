@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: devx-track-javascript
-ms.openlocfilehash: a482b860ae13e817727ca0c3848a598fe3632136
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: b094f63c075bdb8af225ff366343c60bc6818224
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87277586"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816761"
 ---
 # <a name="read-and-write-spatial-data"></a>Lesen und Schreiben von räumlichen Daten
 
@@ -153,6 +153,12 @@ GML ist eine XML-Dateispezifikation für räumliche Daten, die häufig als Erwei
 - Die Option `propertyTypes`: Bei dieser Option handelt es sich um eine Nachschlagetabelle für Schlüsselwerte, wobei der Schlüssel der Name einer Eigenschaft im Dataset ist. Der Wert ist der Objekttyp, in den der Wert bei der Analyse umgewandelt werden soll. Die folgenden Typwerte werden unterstützt: `string`, `number`, `boolean` und `date`. Wenn sich eine Eigenschaft nicht in der Nachschlagetabelle befindet oder der Typ nicht definiert ist, wird die Eigenschaft als Zeichenfolge analysiert.
 
 Die Funktion `atlas.io.read` wird standardmäßig auf die Funktion `atlas.io.core.GmlReader.read` festgelegt, wenn sie feststellt, dass die Eingabedaten das XML-Format haben, die Daten aber nicht eines der anderen unterstützten XML-Formate für räumliche Daten aufweisen.
+
+`GmlReader` analysiert Koordinaten, die eine der folgenden SRIDs aufweisen:
+
+- EPSG:4326 (bevorzugt)
+- EPSG:4269, EPSG:4283, EPSG:4258, EPSG:4308, EPSG:4230, EPSG:4272, EPSG:4271, EPSG:4267, EPSG:4608, EPSG:4674 möglicherweise mit einer geringen Fehlertoleranz.
+- EPSG:3857, EPSG:102100, EPSG:3785, EPSG:900913, EPSG:102113, EPSG:41001, EPSG:54004
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -6,12 +6,12 @@ ms.author: thweiss
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/19/2020
-ms.openlocfilehash: d99deea8271a3f9e630a7d2e8cd9f73bd41645a2
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: ef681f861a14fbbf86e7e350441d05f84fc95f58
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88608648"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757896"
 ---
 # <a name="azure-cosmos-db-serverless-preview"></a>Azure Cosmos DB serverlos (Vorschau)
 
@@ -82,7 +82,7 @@ Sie finden dasselbe Diagramm, wenn Sie Azure Monitor verwenden, wie [hier](monit
 Serverlose Ressourcen ergeben bestimmte Leistungsmerkmale, die davon unterscheiden, was Ressourcen mit bereitgestelltem Durchsatz bieten:
 
 - **Verfügbarkeit:** Nachdem das serverlose Angebot allgemein verfügbar ist, wird die Verfügbarkeit der serverlosen Container durch eine Vereinbarung zum Servicelevel (SLA) von 99,9 % abgedeckt, wenn keine Verfügbarkeitszonen (Zonenredundanz) verwendet werden. Die SLA beträgt 99,99 %, wenn Verfügbarkeitszonen verwendet werden.
-- **Latenz**: Nachdem das serverlose Angebot allgemein verfügbar ist, wird die Latenz der serverlosen Container durch ein Servicelevelziel (SLO) von 10 Millisekunden oder weniger für Punktlesevorgänge und 30 Millisekunden oder weniger für Schreibvorgänge abgedeckt. Ein Punktlesevorgang besteht aus dem Abrufen eines einzelnen Elements anhand seiner ID und des Partitionsschlüsselwerts.
+- **Latenz**: Nachdem das serverlose Angebot allgemein verfügbar ist, wird die Latenz der serverlosen Container durch ein Servicelevelziel (SLO) von 10 Millisekunden oder weniger für Punktlesevorgänge und 30 Millisekunden oder weniger für Schreibvorgänge abgedeckt. Ein Punktlesevorgang besteht aus dem Abrufen eines einzelnen Elements anhand seiner ID und seines Partitionsschlüsselwerts.
 - **Burstfähigkeit**: Nachdem das serverlose Angebot allgemein verfügbar ist, wird die Burstfähigkeit von serverlosen Containern durch ein Servicelevelziel (SLO) von 95 % abgedeckt. Dies bedeutet, dass die maximale Burstfähigkeit mindestens 95 % der Zeit erreicht werden kann.
 
 > [!NOTE]
