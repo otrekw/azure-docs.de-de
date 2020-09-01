@@ -4,6 +4,10 @@
   items:
     - name: Was ist ExpressRoute?
       href: expressroute-introduction.md
+- name: Schnellstart
+  items:
+    - name: 'Erstellen einer ExpressRoute-Verbindung: ARM-Vorlage'
+      href: quickstart-create-expressroute-vnet-template.md
 - name: Tutorials
   items:
     - name: Erstellen und Ändern einer Verbindung

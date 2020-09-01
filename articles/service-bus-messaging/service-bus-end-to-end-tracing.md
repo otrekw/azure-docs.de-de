@@ -3,12 +3,13 @@ title: Azure Service Bus – End-to-End-Ablaufverfolgung und Diagnose | Microsof
 description: Übersicht über Service Bus-Clientdiagnose und End-to-End-Ablaufverfolgung (Client durch alle Dienste, die an der Verarbeitung beteiligt sind).
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 6138d3d6424364f28f55f81044768acb894bc651
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 9b46f85e16370d15e3a8def98cdcdf8b3878208d
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85340721"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021628"
 ---
 # <a name="distributed-tracing-and-correlation-through-service-bus-messaging"></a>Verteilte Ablaufverfolgung und Korrelation über Service Bus-Messaging
 

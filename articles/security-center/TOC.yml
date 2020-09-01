@@ -107,12 +107,12 @@
           href: update-regulatory-compliance-packages.md
     - name: Überprüfen Ihrer virtuellen Computer auf Sicherheitsrisiken
       items:
-        - name: "Überprüfung auf Sicherheitsrisiken\_– Übersicht"
-          href: security-center-vulnerability-assessment-recommendations.md
-        - name: Integrierte Überprüfung auf Sicherheitsrisiken für virtuelle Computer
-          href: built-in-vulnerability-assessment.md
-        - name: Verwenden externer Überprüfungen
-          href: partner-vulnerability-assessment.md
+        - name: Bereitstellen der integrierten Überprüfung auf Sicherheitsrisiken auf Ihren virtuellen Computern
+          href: deploy-vulnerability-assessment-vm.md
+        - name: Bereitstellen einer BYOL-Lösung zur Sicherheitsrisikobewertung auf Ihren virtuellen Computern
+          href: deploy-vulnerability-assessment-byol-vm.md
+        - name: Überprüfen und Beseitigen von Sicherheitsrisiken auf Ihren virtuellen Computern
+          href: remediate-vulnerability-findings-vm.md
     - name: Konfigurieren des Bedrohungsschutzes und Behandeln von Warnungen
       items:
         - name: Verwalten von Sicherheitswarnungen

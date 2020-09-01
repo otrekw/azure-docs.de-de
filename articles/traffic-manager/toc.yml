@@ -1,17 +1,20 @@
-- name: Traffic Manager-Dokumentation
+- name: Dokumentation zu Traffic Manager
   href: index.yml
 - name: Übersicht
   items:
     - name: Was ist Traffic Manager?
       href: traffic-manager-overview.md
-- name: Schnellstart
+- name: Schnellstarts
   items:
-    - name: 'Traffic Manager-Profil erstellen: Portal'
+    - name: 'Erstellen eines Traffic Manager-Profils: Portal'
       href: quickstart-create-traffic-manager-profile.md
     - name: 'Traffic Manager-Profil erstellen: PowerShell'
       href: quickstart-create-traffic-manager-profile-powershell.md
     - name: 'Erstellen eines Traffic Manager-Profils: Azure CLI'
       href: quickstart-create-traffic-manager-profile-cli.md
+    - name: 'Erstellen eines Traffic Manager-Profils: ARM-Vorlage'
+      href: quickstart-create-traffic-manager-profile-template.md
+  expanded: true
 - name: Tutorials
   items:
     - name: Weiterleiten von Datenverkehr für geringe Latenz
@@ -30,7 +33,7 @@
       href: ../dns/tutorial-alias-tm.md?toc=%2fazure%2ftraffic-manager%2ftoc.json
 - name: Beispiele
   items:
-    - name: Azure CLl
+    - name: Azure CLI
       href: cli-samples.md
     - name: Azure PowerShell
       href: powershell-samples.md
@@ -59,7 +62,7 @@
       href: traffic-manager-how-it-works.md
     - name: Häufig gestellte Fragen
       href: traffic-manager-FAQs.md
-- name: Vorgehensweise
+- name: Anleitungen
   items:
     - name: Konfigurieren des leistungsorientierten Routings in Traffic Manager
       href: traffic-manager-configure-performance-routing-method.md
@@ -132,7 +135,7 @@
     - name: Preisrechner
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: Diensteinschränkungen
-      href: '../azure-resource-manager/management/azure-subscription-service-limits.md#traffic-manager-limits'
+      href: ../azure-resource-manager/management/azure-subscription-service-limits.md#traffic-manager-limits
     - name: Dienstupdates
       href: 'https://azure.microsoft.com/updates/?product=traffic-manager'
     - name: SLA

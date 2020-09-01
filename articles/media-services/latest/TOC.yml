@@ -49,20 +49,22 @@
   items:
     - name: .NET
       items:
-        - name: Codieren und Streamen einer Remotedatei (REST)
-          href: stream-files-tutorial-with-rest.md
         - name: Codieren und Streamen einer Remotedatei (.NET)
           href: stream-files-dotnet-quickstart.md
-        - name: Codieren und Streamen einer hochgeladenen Datei
+        - name: Codieren und Streamen einer hochgeladenen Datei (.NET)
           href: stream-files-tutorial-with-api.md
-        - name: Livestreaming
+        - name: Livestreaming mit .NET
           href: stream-live-tutorial-with-api.md
-        - name: Analysieren Ihres Videos
+        - name: Analysieren Ihres Videos mit .NET
           href: analyze-videos-tutorial-with-api.md
         - name: Dynamische Verschlüsselung mit AES-128
           href: protect-with-aes128.md
         - name: Dynamische Verschlüsselung mit DRM
           href: protect-with-drm.md
+    - name: REST
+      items:
+        - name: Codieren und Streamen einer Remotedatei (REST)
+          href: stream-files-tutorial-with-rest.md
     - name: Befehlszeilenschnittstelle (CLI)
       items:
         - name: Codieren und Streamen einer Remotedatei (CLI)

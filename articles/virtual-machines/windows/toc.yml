@@ -461,7 +461,7 @@
                       href: ../vm-specialized-image-version-powershell.md
                 - name: Aktualisieren von Imageressourcen
                   href: ../update-image-resources-powershell.md
-            - name: CLI
+            - name: Befehlszeilenschnittstelle (CLI)
               items:
                 - name: Erstellen eines Katalogs
                   href: ../shared-images-cli.md
@@ -657,6 +657,8 @@
           href: instance-metadata-service.md
         - name: Aktivieren der geschachtelten Virtualisierung
           href: nested-virtualization.md
+        - name: Automatisches Patchen von VM-Gästen (Vorschau)
+          href: automatic-vm-guest-patching.md
     - name: Plattformwartung
       items:
         - name: Wartungsbenachrichtigungen
@@ -673,7 +675,7 @@
           items:
             - name: Übersicht
               href: ../maintenance-control.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
-            - name: CLI
+            - name: Befehlszeilenschnittstelle (CLI)
               href: ../maintenance-control-cli.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: PowerShell
               href: ../maintenance-control-powershell.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json

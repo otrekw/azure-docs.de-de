@@ -116,6 +116,10 @@
               href: howto-authentication-passwordless-security-key-windows.md
             - name: Einmaliges Anmelden bei lokalen Ressourcen
               href: howto-authentication-passwordless-security-key-on-premises.md
+            - name: Häufig gestellte Fragen zu Hybridressourcen
+              href: howto-authentication-passwordless-faqs.md
+            - name: Problembehandlung für Hybridressourcen
+              href: howto-authentication-passwordless-troubleshoot.md
         - name: Kennwortlose Anmeldung per Telefon
           href: howto-authentication-passwordless-phone.md
         - name: Windows Hello for Business
@@ -209,7 +213,7 @@
               href: howto-mfa-nps-extension-errors.md
     - name: Problembehandlung
       items:
-        - name: Problembehandlung bei SSPR
+        - name: SSPR
           href: active-directory-passwords-troubleshoot.md
         - name: Häufig gestellte Fragen zu SSPR
           href: active-directory-passwords-faq.md

@@ -4,6 +4,8 @@
   items:
     - name: Informationen zu Servern mit Azure Arc-Aktivierung
       href: overview.md
+    - name: Neuerungen beim Connected Machine-Agent
+      href: agent-release-notes.md
 - name: Schnellstarts
   items:
     - name: Server-Agents mit Azure Arc-Unterstützung
