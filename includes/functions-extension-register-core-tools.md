@@ -4,17 +4,26 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 08/07/2020
 ms.author: glenga
-ms.openlocfilehash: 2936d22eacef73daef4433b3fd296dd4757fa410
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: a4f03223b5067d18f5d6e747b3bb630a86031b8f
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88031121"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88689553"
 ---
-Wenn Sie keine Erweiterungspakete verwenden können, können Sie Azure Functions Core Tools lokal nutzen, um die für Ihr Projekt erforderlichen Erweiterungspakete zu installieren. 
+Wenn Sie keine Erweiterungspakete verwenden können, können Sie Azure Functions Core Tools lokal nutzen, um die für Ihr Projekt erforderlichen Erweiterungspakete zu installieren.
+
+> [!IMPORTANT]
+> Erweiterungen können nicht explizit in einer Funktions-App installiert werden, die Erweiterungspakete verwendet. Entfernen Sie den Abschnitt `extensionBundle` in *host.json*, bevor Sie Erweiterungen explizit installieren.
+
+Die folgenden Elemente beschreiben einige Gründe, aus denen Erweiterungen möglicherweise manuell installiert werden müssen:
+
+* Sie müssen auf eine bestimmte Version einer Erweiterung zugreifen, die nicht in einem Paket verfügbar ist.
+* Sie müssen auf eine benutzerdefinierte Erweiterung zugreifen, die nicht in einem Paket verfügbar ist.
+* Sie müssen auf eine bestimmte Kombination von Erweiterungen zugreifen, die nicht in einem einzelnen Paket verfügbar ist.
 
 > [!NOTE]
-> Um Erweiterungen mithilfe von Core Tools manuell zu installieren, müssen Sie das .NET Core 2.x-SDK installiert haben.
+> Um Erweiterungen mithilfe von Core Tools manuell zu installieren, müssen Sie das [.NET Core 2.x SDK](https://dotnet.microsoft.com/download) installiert haben. Das .NET Core SDK wird von Azure Functions Core Tools zum Installieren von Erweiterungen über NuGet verwendet. Für die Verwendung von Azure Functions-Erweiterungen müssen Sie nicht mit .NET vertraut sein.
 
 Bei der expliziten Installation von Erweiterungen wird die .NET-Projektdatei „extensions.csproj“ zum Stamm Ihres Projekts hinzugefügt. Diese Datei definiert die von Ihren Funktionen benötigten NuGet-Pakete. Sie können zwar mit den [NuGet-Paketverweisen](/nuget/consume-packages/package-references-in-project-files) in dieser Datei arbeiten, mit Core Tools können Erweiterungen jedoch installiert werden, ohne die Datei manuell bearbeiten zu müssen.
 
@@ -28,6 +37,8 @@ Verwenden Sie den folgenden Befehl, um automatisch alle Erweiterungspakete hinzu
 func extensions install
 ```
 Der Befehl liest die Datei *function.json*, um zu ermitteln, welche Pakete Sie benötigen, installiert diese und erzeugt das Erweiterungenprojekt (extensions.csproj) neu. Er fügt alle neuen Bindungen an die aktuelle Version hinzu, aktualisiert aber keine vorhandenen Bindungen. Verwenden Sie die Option `--force`, um vorhandene Bindungen beim Installieren neuer auf die neueste Version zu aktualisieren.
+
+Verwendet Ihre Funktions-App Bindungen, die von Core Tools nicht erkannt werden, müssen Sie die jeweilige Erweiterung manuell installieren.
 
 #### <a name="install-a-specific-extension"></a>Installieren einer bestimmten Erweiterung
 

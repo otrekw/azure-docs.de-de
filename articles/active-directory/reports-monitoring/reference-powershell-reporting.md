@@ -17,12 +17,12 @@ ms.date: 08/07/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0510184e2471d61c8911b5fcd484fd5dec0bce28
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 6a198a63d633573ad683a3f8e8215b2975721bc9
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86144490"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88794932"
 ---
 # <a name="azure-ad-powershell-cmdlets-for-reporting"></a>Azure AD PowerShell-Cmdlets für die Berichterstellung
 
@@ -34,7 +34,8 @@ Verwenden Sie folgenden Befehl, um die öffentliche Vorschauversion zu installie
 ```powershell
 Install-module AzureADPreview
 ```
-Weitere Informationen dazu, wie Sie mithilfe von PowerShell eine Verbindung mit Azure AD herstellen, finden Sie im Artikel [Azure AD PowerShell für Graph](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0).  
+
+Weitere Informationen dazu, wie Sie mithilfe von PowerShell eine Verbindung mit Azure AD herstellen, finden Sie im Artikel [Azure AD PowerShell für Graph](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0).  
 
 Mit Azure AD-Berichten (Azure Active Directory) können Sie Details zu Aktivitäten rund um alle Schreibvorgänge in Ihrem Verzeichnis (Überwachungsprotokolle) und Authentifizierungsdaten (Anmeldeprotokolle) erhalten. Diese Informationen stehen zwar schon über die Microsoft Graph-API zur Verfügung, aber jetzt können Sie die gleichen Daten mithilfe der Azure AD-PowerShell-Cmdlets für die Berichterstellung abrufen.
 
@@ -42,7 +43,7 @@ In diesem Artikel erhalten Sie eine Übersicht über die PowerShell-Cmdlets für
 
 ## <a name="audit-logs"></a>Überwachungsprotokolle
 
-[Überwachungsprotokolle](concept-audit-logs.md) ermöglichen die Nachverfolgung sämtlicher Änderungen, die von verschiedenen Features in Azure AD vorgenommen wurden. Hierzu zählen unter anderem Änderungen an Ressourcen in Azure AD, z. B. das Hinzufügen oder Entfernen von Benutzern, Apps, Gruppen, Rollen und Richtlinien.
+[Überwachungsprotokolle](concept-audit-logs.md) ermöglichen die Nachverfolgung sämtlicher Änderungen, die von verschiedenen Features in Azure AD vorgenommen wurden. Hierzu zählen unter anderem Änderungen an Ressourcen in Azure AD, z. B. das Hinzufügen oder Entfernen von Benutzern, Apps, Gruppen, Rollen und Richtlinien.
 
 Sie erhalten mit dem Cmdlet „Get-AzureADAuditDirectoryLogs“ Zugriff auf die Überwachungsprotokolle.
 

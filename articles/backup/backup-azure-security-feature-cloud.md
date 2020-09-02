@@ -3,18 +3,18 @@ title: Vorläufiges Löschen für Azure Backup
 description: In diesem Artikel wird erläutert, wie Sie mit den Azure Backup-Sicherheitsfunktionen für mehr Sicherheit für Ihre Sicherungen sorgen können.
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: 79df345858d89d032b826a0fa8b677195a785df2
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 921d04c530695ee8909fb17b216029849c4fc4a2
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86538835"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892472"
 ---
 # <a name="soft-delete-for-azure-backup"></a>Vorläufiges Löschen für Azure Backup
 
 Die Sorgen bezüglich Sicherheitsproblemen wie Schadsoftware, Ransomware und Eindringlingen werden immer größer. Diese Sicherheitsprobleme können erhebliche Daten- und finanzielle Verluste mit sich bringen. Zum Schutz gegen solche Angriffe verfügt Azure Backup jetzt über Sicherheitsfeatures für den Schutz von Sicherungsdaten auch nach dem Löschen.
 
-Eines dieser Features ist das vorläufige Löschen. Beim vorläufigen Löschen werden die Sicherungsdaten 14 Tage länger aufbewahrt, damit das jeweilige Sicherungselement auch dann ohne Datenverluste wiederhergestellt werden kann, wenn ein böswilliger Akteur eine Sicherung löscht oder die Sicherungsdaten versehentlich gelöscht werden. Für die zusätzlichen 14 Tage der Aufbewahrung von Sicherungsdaten mit dem Status „Vorläufiges Löschen“ fallen für Kunden keine Kosten an.
+Eines dieser Features ist das vorläufige Löschen. Beim vorläufigen Löschen werden die Sicherungsdaten 14 Tage länger aufbewahrt, damit das jeweilige Sicherungselement auch dann ohne Datenverluste wiederhergestellt werden kann, wenn ein böswilliger Akteur eine Sicherung löscht oder die Sicherungsdaten versehentlich gelöscht werden. Für die zusätzlichen 14 Tage der Aufbewahrung von Sicherungsdaten mit dem Status „Vorläufiges Löschen“ fallen für Sie keine Kosten an.
 
 Der Schutz durch das vorläufige Löschen ist für folgende Dienste verfügbar:
 
@@ -29,7 +29,7 @@ Im folgenden Flussdiagramm sind die unterschiedlichen Schritte und Zustände ein
 
 Vorläufiges Löschen ist für neu erstellte Tresore standardmäßig aktiviert, um Sicherungsdaten vor versehentlichen oder vorsätzlichen Löschvorgängen zu schützen.  Es wird davon abgeraten, dieses Feature zu deaktivieren. Sie sollten das vorläufige Löschen nur dann deaktivieren, wenn Sie planen, Ihre geschützten Elemente in einen neuen Tresor zu verschieben, und nicht die 14 Tage warten können, die für das Löschen und erneute Schützen erforderlich sind (z. B. in einer Testumgebung). Nur der Tresorbesitzer kann dieses Feature deaktivieren. Wenn Sie dieses Feature deaktivieren, führen alle künftigen Löschvorgänge geschützter Elemente zu einer sofortigen Entfernung, ohne dass eine Wiederherstellung möglich ist. Sicherungsdaten, die vor der Deaktivierung dieses Features mit dem Status „Vorläufig gelöscht“ vorhanden waren, behalten 14 Tage diesen Status. Wenn Sie diese Elemente umgehend endgültig löschen möchten, müssen Sie sie wiederherstellen und anschließend erneut löschen, damit sie endgültig gelöscht werden.
 
- Beachten Sie, dass die Deaktivierung des Features vorläufiges Löschen für alle Arten von Workloads gilt, einschließlich SQL-Servern und SAP HANA-Workloads. Nachdem z. B. die [Vorschau für SQL Server/SAP HANA](./soft-delete-sql-saphana-in-azure-vm.md#steps-to-enroll-in-preview) für ein Abonnement aktiviert wurde, ist es nicht mehr möglich, vorläufiges Löschen nur für SQL Server- oder SAP HANA-Datenbanken zu deaktivieren, aber gleichzeitig für virtuelle Computer im gleichen Tresor aktiviert zu lassen. Für eine präzisere Steuerung können Sie separate Tresore erstellen.
+ Beachten Sie, dass die Deaktivierung des Features vorläufiges Löschen für alle Arten von Workloads gilt, einschließlich SQL-Servern und SAP HANA-Workloads. Nachdem z. B. die [Vorschau für SQL Server/SAP HANA](./soft-delete-sql-saphana-in-azure-vm.md#steps-to-enroll-in-preview) für ein Abonnement aktiviert wurde, ist es nicht mehr möglich, vorläufiges Löschen nur für SQL Server- oder SAP HANA-Datenbanken zu deaktivieren, aber gleichzeitig für virtuelle Computer im gleichen Tresor aktiviert zu lassen. Für eine präzisere Steuerung können Sie separate Tresore erstellen.
 
 ### <a name="disabling-soft-delete-using-azure-portal"></a>Deaktivieren des vorläufigen Löschens für VMs über das Azure-Portal
 
@@ -44,7 +44,7 @@ Gehen Sie zum Deaktivieren des vorläufigen Löschens wie folgt vor:
 ### <a name="disabling-soft-delete-using-azure-powershell"></a>Deaktivieren des vorläufigen Löschens für VMs über Azure PowerShell
 
 > [!IMPORTANT]
-> Die erforderliche Mindestversion von Az.RecoveryServices für die Verwendung des vorläufigen Löschens mit Azure PS ist 2.2.0. Verwenden Sie ```Install-Module -Name Az.RecoveryServices -Force```, um die aktuelle Version herunterzuladen.
+> Die erforderliche Mindestversion von Az.RecoveryServices für die Verwendung des vorläufigen Löschens mit Azure PowerShell ist 2.2.0. Verwenden Sie ```Install-Module -Name Az.RecoveryServices -Force```, um die aktuelle Version herunterzuladen.
 
 Verwenden Sie zum Deaktivieren das PowerShell-Cmdlet [Set-AzRecoveryServicesVaultBackupProperty](/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupproperty).
 
@@ -136,7 +136,7 @@ AppVM1           DeleteBackupData     Completed            12/5/2019 12:44:15 PM
 
 Wenn Elemente vor der Deaktivierung des vorläufigen Löschens gelöscht wurden, befinden sie sich im vorläufig gelöschten Zustand. Um diese sofort zu löschen, muss der Löschvorgang umgekehrt und dann erneut ausgeführt werden.
 
-1. Machen Sie zunächst die Löschvorgänge mit den [hier](backup-azure-arm-userestapi-backupazurevms.md#undo-the-stop-protection-and-delete-data) erläuterten Schritten rückgängig.
+1. Machen Sie zunächst die Löschvorgänge mit den [hier](backup-azure-arm-userestapi-backupazurevms.md#undo-the-deletion) erläuterten Schritten rückgängig.
 2. Deaktivieren Sie dann die Funktion des vorläufigen Löschens mithilfe der REST-API, indem Sie die [hier](use-restapi-update-vault-properties.md#update-soft-delete-state-using-rest-api) erläuterten Schritte ausführen.
 3. Danach löschen Sie die Sicherungen mithilfe der REST-API, wie [hier](backup-azure-arm-userestapi-backupazurevms.md#stop-protection-and-delete-data) erläutert.
 

@@ -6,12 +6,12 @@ ms.manager: bsiva
 ms.author: anvar
 ms.topic: troubleshooting
 ms.date: 08/17/2020
-ms.openlocfilehash: 5748f758d8ac2f1723a20858920a4f261c07f938
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 6318f426e42612f21da7a43c9857894ae610f68e
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88608686"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88871178"
 ---
 # <a name="troubleshooting-replication-issues-in-agentless-vmware-vm-migration"></a>Behandeln von Replikationsproblemen bei der Migration virtueller VMware-Computer ohne Agent
 
@@ -30,13 +30,36 @@ Führen Sie die folgenden Schritte aus, um den Replikationsstatus Ihrer virtuell
 
   1. Wechseln Sie im Azure-Portal in Azure Migrate zur Seite „Server“.
   2. Navigieren Sie zur Seite „Aktuell replizierte Computer“, indem Sie in der Kachel „Servermigration“ auf „Server werden repliziert“ klicken.
-  3. Eine Liste der replizierten Server wird zusammen mit zusätzlichen Informationen angezeigt, z. B. zum Status, zur Integrität, zur Zeit der letzten Synchronisierung usw. In der Spalte „Integrität“ ist die aktuelle Replikationsintegrität des virtuellen Computers angegeben. Der Wert „Kritisch“ oder „Warnung“ in der Spalte „Integrität“ gibt in der Regel an, dass der vorherige Replikationszyklus für den virtuellen Computer fehlgeschlagen ist. Klicken Sie mit der rechten Maustaste auf den virtuellen Computer, und wählen Sie „Fehlerdetails“ aus, um weitere Informationen zu erhalten. Die Seite „Fehlerdetails“ enthält Informationen zum Fehler und weitere Einzelheiten zur Problembehandlung. Außerdem wird der Link „Aktuelle Ereignisse“ angezeigt, der verwendet werden kann, um zur Ereignisseite für den virtuellen Computer zu navigieren.
+  3. Eine Liste der replizierten Server wird zusammen mit zusätzlichen Informationen angezeigt, z. B. zum Status, zur Integrität, zur Zeit der letzten Synchronisierung usw. In der Spalte „Integrität“ ist die aktuelle Replikationsintegrität des virtuellen Computers angegeben. Die Werte „Kritisch“ oder „Warnung“ in der Spalte „Integrität“ geben in der Regel an, dass beim vorherigen Replikationszyklus für die VM ein Fehler aufgetreten ist. Klicken Sie mit der rechten Maustaste auf den virtuellen Computer, und wählen Sie „Fehlerdetails“ aus, um weitere Informationen zu erhalten. Die Seite „Fehlerdetails“ enthält Informationen zum Fehler und weitere Einzelheiten zur Problembehandlung. Außerdem wird der Link „Aktuelle Ereignisse“ angezeigt, der verwendet werden kann, um zur Ereignisseite für den virtuellen Computer zu navigieren.
   4. Klicken Sie auf „Aktuelle Ereignisse“, um die Fehler vorheriger Replikationszyklen für den virtuellen Computer anzuzeigen. Suchen Sie auf der Ereignisseite das letzte Ereignis vom Typ „Replication cycle failed“ (Fehler bei Replikationszyklus) oder „Replication cycle failed for disk“ (Fehler bei Replikationszyklus für Datenträger) für den virtuellen Computer.
   5. Klicken Sie auf das Ereignis, um die möglichen Ursachen für den Fehler und die empfohlenen Schritte zu dessen Behebung zu ermitteln. Verwenden Sie die bereitgestellten Informationen, um das Problem bzw. den Fehler zu beheben.
     
 ## <a name="common-replication-errors"></a>Häufige Replikationsfehler
 
 In diesem Abschnitt werden einige häufige Fehler und Möglichkeiten beschrieben, diese zu beheben.
+
+## <a name="key-vault-operation-failed-error-when-trying-to-replicate-vms"></a>Fehler beim Key Vault-Vorgang beim Versuch, VMs zu replizieren
+
+**Fehler:** „Fehler beim Key Vault-Vorgang. Vorgang: Beim Konfigurieren des verwalteten Speicherkontos, Schlüsseltresor: Schlüsseltresorname, Speicherkonto: Speicherkontoname ist folgender Fehler aufgetreten:“
+
+**Fehler:** „Fehler beim Key Vault-Vorgang. Vorgang: Beim Generieren einer Shared Access Signature-Definition, Schlüsseltresor: Schlüsseltresorname, Speicherkonto: Speicherkontoname ist folgender Fehler aufgetreten:“
+
+![Key Vault](./media/troubleshoot-changed-block-tracking-replication/key-vault.png)
+
+Dieser Fehler tritt normalerweise auf, da die Benutzerzugriffsrichtlinie für den Schlüsseltresor dem derzeit angemeldeten Benutzer nicht die erforderlichen Berechtigungen zum Konfigurieren von Speicherkonten für die Verwaltung mit Key Vault gewährt. Wechseln Sie zum Überprüfen der Benutzerzugriffsrichtlinie im Schlüsseltresor zur Key Vault-Seite im Portal für den Schlüsseltresor, und wählen Sie „Zugriffsrichtlinien“ aus. 
+
+Wenn das Portal den Schlüsseltresor erstellt, wird auch eine Benutzerzugriffsrichtlinie hinzugefügt, die dem derzeit angemeldeten Benutzer Berechtigungen zum Konfigurieren von Speicherkonten für die Verwaltung mit Key Vault erteilt. Dabei kann aus zwei Gründen ein Fehler auftreten.
+
+- Der angemeldete Benutzer ist ein Remoteprinzipal im Azure-Mandanten des Kunden (CSP-Abonnement, und der angemeldete Benutzer ist der Partneradministrator). Die Problemumgehung besteht in diesem Fall darin, den Schlüsseltresor zu löschen, sich vom Portal abzumelden und dann mit einem Benutzerkonto aus dem Kundenmandanten (kein Remoteprinzipal) wieder anzumelden und den Vorgang zu wiederholen. Der CSP-Partner verfügt in der Regel über ein Benutzerkonto im Azure Active Directory-Mandanten des Kunden, das er verwenden kann. Andernfalls kann er ein neues Benutzerkonto für sich im Azure Active Directory-Mandanten des Kunden erstellen, sich beim Portal als der neue Benutzer anmelden und den Replikationsvorgang dann wiederholen. Das verwendete Konto muss über die Berechtigungen als Besitzer oder als Mitwirkender und Benutzerzugriffsadministrator für das Konto in der Ressourcengruppe (Migrationsprojekt-Ressourcengruppe) verfügen.
+
+- Der andere Fall, in dem dies auftreten kann, ist wenn ein Benutzer (user1) anfänglich versucht hat, die Replikation einzurichten, und dabei ein Fehler aufgetreten ist, der Schlüsseltresor jedoch bereits erstellt wurde (und die Benutzerzugriffsrichtlinie diesem Benutzer ordnungsgemäß zugewiesen wurde). Zu einem späteren Zeitpunkt versucht ein anderer Benutzer (user2), die Replikation einzurichten, aber beim Vorgang zum Konfigurieren eines verwalteten Speicherkontos oder zum Generieren einer SAS-Definition tritt ein Fehler auf, da keine entsprechende Benutzerzugriffsrichtlinie für user2 im Schlüsseltresor vorhanden ist.
+
+**Lösung:** Um dieses Problem zu umgehen, erstellen Sie im Schlüsseltresor eine Benutzerzugriffsrichtlinie für user2, die ihm die Berechtigungen zum Konfigurieren des verwalteten Speicherkontos und zum Generieren von SAS-Definitionen gewährt. Dies kann user2 über Azure PowerShell mithilfe der nachstehenden Cmdlets erreichen:
+
+$userPrincipalId = $(Get-AzureRmADUser -UserPrincipalName "user2_E-Mail-Adresse").Id
+
+Set-AzureRmKeyVaultAccessPolicy -VaultName "keyvaultname" -ObjectId $userPrincipalId -PermissionsToStorage get, list, delete, set, update, regeneratekey, getsas, listsas, deletesas, setsas, recover, backup, restore, purge
+
 
 ## <a name="disposeartefactstimedout"></a>DisposeArtefactsTimedOut
 
@@ -59,7 +82,7 @@ Die Komponente, die versucht, Daten in Azure zu replizieren, ist entweder ausgef
 
    2.  Öffnen Sie das MMC-Snap-In für Microsoft-Dienste (führen Sie „services.msc“ aus), und überprüfen Sie, ob der Microsoft Azure-Gatewaydienst ausgeführt wird. Wenn der Dienst beendet wurde oder nicht ausgeführt wird, starten Sie ihn. Alternativ können Sie eine Eingabeaufforderung oder PowerShell öffnen und „Net Start asrgwy“ ausführen.
 
-3. Stellen Sie fest, ob Verbindungsprobleme zwischen der Azure Migrate-Appliance und dem Cachespeicherkonto vorliegen: 
+3. Überprüfen Sie, ob Verbindungsprobleme zwischen der Azure Migrate-Appliance und dem Appliancespeicherkonto vorliegen: 
 
     Führen Sie den folgenden Befehl aus, nachdem Sie „azcopy“ in die Azure Migrate-Appliance heruntergeladen haben:
     
@@ -149,7 +172,7 @@ Mögliche Ursachen:
     
       1. [Laden Sie „azcopy“ herunter](https://go.microsoft.com/fwlink/?linkid=2138966).
         
-      2. Suchen Sie das Speicherkonto der Appliance in der Ressourcengruppe. Das Speicherkonto weist einen Namen auf, der „migrategwsa\*\*\*\*\*\*\*\*\*\*“ ähnlich ist. Dies ist der Wert des Parameters [account] im obigen Befehl.
+      2. Suchen Sie das Speicherkonto der Appliance in der Ressourcengruppe. Das Speicherkonto weist einen Namen ähnlich wie „migratelsa\*\*\*\*\*\*\*\*\*\*“ auf. Dies ist der Wert des Parameters [account] im obigen Befehl.
         
       3. Suchen Sie im Azure-Portal Ihr Speicherkonto. Stellen Sie sicher, dass das Abonnement, das Sie für die Suche verwenden, das gleiche Abonnement (Zielabonnement) ist, in dem das Speicherkonto erstellt wurde. Wechseln Sie im Abschnitt „Blob-Dienst“ zu „Container“. Klicken Sie auf „+Container“, und erstellen Sie einen Container. Verwenden Sie für „Öffentliche Zugriffsebene“ den ausgewählten Standardwert.
         
@@ -226,7 +249,7 @@ Beispiel: Fehlermeldung: Ein interner Fehler ist aufgetreten. [An Invalid snapsh
 
 Im folgenden Abschnitt werden einige häufige VMware-Fehler und Lösungsmöglichkeiten aufgelistet.
 
-## <a name="error-message-an-internal-error-occurred-server-refused-connection"></a>Fehlermeldung: Ein interner Fehler ist aufgetreten. [Server Refused Connection] (Der Server hat die Verbindung verweigert).
+### <a name="error-message-an-internal-error-occurred-server-refused-connection"></a>Fehlermeldung: Ein interner Fehler ist aufgetreten. [Server Refused Connection] (Der Server hat die Verbindung verweigert).
 
 Dies ist ein bekannter VMware-Fehler, der in VDDK 6.7 auftritt. Sie müssen den Gatewaydienst beenden, der in der Azure Migrate-Appliance ausgeführt wird, [ein Update aus dem VMware-KB-Artikel herunterladen](https://go.microsoft.com/fwlink/?linkid=2138889) und den Gatewaydienst neu starten.
 
@@ -240,33 +263,33 @@ Schritte zum Starten des Gatewaydiensts:
 1. Drücken Sie die WINDOWS-TASTE+R, und öffnen Sie „services.msc“. Klicken Sie mit der rechten Maustaste auf den Microsoft Azure-Gatewaydienst, und starten Sie diesen.
 2. Alternativ können Sie eine Eingabeaufforderung oder PowerShell öffnen und „Net Start asrgwy“ ausführen.
 
-## <a name="error-message-an-internal-error-occurred-an-invalid-snapshot-configuration-was-detected"></a>Fehlermeldung: Ein interner Fehler ist aufgetreten. [An Invalid snapshot configuration was detected] (Es wurde eine ungültige Momentaufnahmekonfiguration erkannt].
+### <a name="error-message-an-internal-error-occurred-an-invalid-snapshot-configuration-was-detected"></a>Fehlermeldung: Ein interner Fehler ist aufgetreten. [An Invalid snapshot configuration was detected] (Es wurde eine ungültige Momentaufnahmekonfiguration erkannt].
 
 Wenn Sie über einen virtuellen Computer mit mehreren Datenträgern verfügen, kann dieser Fehler auftreten, wenn Sie einen Datenträger vom virtuellen Computer entfernen. Um dieses Problem zu beheben, führen Sie die Schritte in [diesem VMware-Artikel](https://go.microsoft.com/fwlink/?linkid=2138890) aus.
 
-## <a name="error-message-an-internal-error-occurred-generate-snapshot-hung"></a>Fehlermeldung: Ein interner Fehler ist aufgetreten. [Generate Snapshot Hung] (Der Task zum Generieren einer Momentaufnahme reagiert nicht mehr).
+### <a name="error-message-an-internal-error-occurred-generate-snapshot-hung"></a>Fehlermeldung: Ein interner Fehler ist aufgetreten. [Generate Snapshot Hung] (Der Task zum Generieren einer Momentaufnahme reagiert nicht mehr).
 
 Dieses Problem tritt auf, wenn der Task zum Generieren einer Momentaufnahme nicht mehr reagiert. Wenn dieses Problem auftritt, werden Sie feststellen, dass der Task zum Erstellen einer Momentaufnahme bei 95 % oder 99 % abbricht. Sie finden die Lösung für dieses Problem in diesem [VMware-KB](https://go.microsoft.com/fwlink/?linkid=2138969)-Artikel.
 
-## <a name="error-message-an-internal-error-occurred-failed-to-consolidate-the-disks-on-vm-_reasons_"></a>Fehlermeldung: Ein interner Fehler ist aufgetreten. [Failed to consolidate the disks on VM _[Reasons]_ ] (Fehler beim Konsolidieren der Datenträger des virtuellen Computers [Ursachen])
+### <a name="error-message-an-internal-error-occurred-failed-to-consolidate-the-disks-on-vm-_reasons_"></a>Fehlermeldung: Ein interner Fehler ist aufgetreten. [Failed to consolidate the disks on VM _[Reasons]_ ] (Fehler beim Konsolidieren der Datenträger des virtuellen Computers [Ursachen])
 
 Wenn Datenträger am Ende des Replikationszyklus konsolidiert werden, tritt ein Fehler auf. Befolgen Sie die Anweisungen im [VMware-KB](https://go.microsoft.com/fwlink/?linkid=2138970)-Artikel, indem Sie die entsprechende _Ursache_ auswählen, um das Problem zu beheben.
 
 Die folgenden Fehler treten auf, wenn Vorgänge im Zusammenhang mit VMware-Momentaufnahmen wie das Erstellen, Löschen oder Konsolidieren von Datenträgern fehlschlagen. Befolgen Sie die Anweisungen im nächsten Abschnitt, um die Fehler zu beheben:
 
-## <a name="error-message-an-internal-error-occurred-another-task-is-already-in-progress"></a>Fehlermeldung: Ein interner Fehler ist aufgetreten. [Another task is already in progress] (Ein anderer Task befindet sich bereits in Bearbeitung).
+### <a name="error-message-an-internal-error-occurred-another-task-is-already-in-progress"></a>Fehlermeldung: Ein interner Fehler ist aufgetreten. [Another task is already in progress] (Ein anderer Task befindet sich bereits in Bearbeitung).
 
 Dieses Problem tritt auf, wenn im Hintergrund in Konflikt stehende Tasks für virtuelle Computer ausgeführt werden oder wenn ein Task innerhalb von vCenter Server ein Timeout verursacht. Befolgen Sie die im folgenden [VMware-KB](https://go.microsoft.com/fwlink/?linkid=2138891)-Artikel angegebenen Lösungsschritte.
 
-## <a name="error-message-an-internal-error-occurred-operation-not-allowed-in-current-state"></a>Fehlermeldung: Ein interner Fehler ist aufgetreten. [Operation not allowed in current state] (Vorgang ist im aktuellen Zustand nicht zulässig).
+### <a name="error-message-an-internal-error-occurred-operation-not-allowed-in-current-state"></a>Fehlermeldung: Ein interner Fehler ist aufgetreten. [Operation not allowed in current state] (Vorgang ist im aktuellen Zustand nicht zulässig).
 
 Dieses Problem tritt auf, wenn vCenter Server-Verwaltungs-Agents nicht mehr funktionieren. Um dieses Problem zu beheben, befolgen Sie die Lösungsschritte im folgenden [VMware-KB](https://go.microsoft.com/fwlink/?linkid=2138971)-Artikel.
 
-## <a name="error-message-an-internal-error-occurred-snapshot-disk-size-invalid"></a>Fehlermeldung: Ein interner Fehler ist aufgetreten. [Snapshot Disk size invalid] (Größe des Momentaufnahme-Datenträgers ist ungültig).
+### <a name="error-message-an-internal-error-occurred-snapshot-disk-size-invalid"></a>Fehlermeldung: Ein interner Fehler ist aufgetreten. [Snapshot Disk size invalid] (Größe des Momentaufnahme-Datenträgers ist ungültig).
 
 Dies ist ein bekanntes VMware-Problem, bei dem die für die Momentaufnahme angegebene Datenträgergröße 0 (null) wird. Befolgen Sie die im [VMware-KB](https://go.microsoft.com/fwlink/?linkid=2138972)-Artikel angegebenen Lösungsschritte.
 
-## <a name="error-message-an-internal-error-occurred-memory-allocation-failed-out-of-memory"></a>Fehlermeldung: Ein interner Fehler ist aufgetreten. [Memory allocation failed. Out of memory] (Fehler bei der Speicherbelegung. Nicht genügend Arbeitsspeicher).
+### <a name="error-message-an-internal-error-occurred-memory-allocation-failed-out-of-memory"></a>Fehlermeldung: Ein interner Fehler ist aufgetreten. [Memory allocation failed. Out of memory] (Fehler bei der Speicherbelegung. Nicht genügend Arbeitsspeicher).
 
 Dies geschieht, wenn der NFC-Hostpuffer nicht über genügend Arbeitsspeicher verfügt. Um dieses Problem zu beheben, müssen Sie den virtuellen Computer (Compute vMotion) auf einen anderen Host mit freien Ressourcen verlagern.
 

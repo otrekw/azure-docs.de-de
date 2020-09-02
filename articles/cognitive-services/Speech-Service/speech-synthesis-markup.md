@@ -10,13 +10,13 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
-ms.custom: devx-track-javascript
-ms.openlocfilehash: ae98f74092c3955a54c0817082e8f29c1b251237
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.custom: devx-track-javascript, devx-track-csharp
+ms.openlocfilehash: f202a9d616809d1f14366350d8d60ef2bc06b96b
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533392"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934513"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>Verbessern der Synthese mit Markupsprache für Sprachsynthese (Speech Synthesis Markup Language, SSML)
 
@@ -192,7 +192,7 @@ speechConfig!.setPropertyTo(
 > [!IMPORTANT]
 > Die Anpassung der Sprechstile funktioniert nur bei neuronalen Stimmen.
 
-Standardmäßig synthetisiert der Sprachanalysedienst Text mithilfe einer neutralen Sprechweise sowohl bei Standard- als auch neuronalen Stimmen. Bei neuronalen Stimmen können Sie mithilfe des Elements „<mstts:express-as>“ die Sprechweise anpassen, um verschiedene Emotionen wie Fröhlichkeit, Mitgefühl oder Gelassenheit auszudrücken, oder die Stimme für verschiedene Szenarien wie Kundenservice, Nachrichtenpräsentation oder Sprach-Assistent optimieren. Dies ist ein optionales Element und für den Speech-Dienst eindeutig.
+Standardmäßig synthetisiert der Sprachanalysedienst Text mithilfe einer neutralen Sprechweise sowohl bei Standard- als auch neuronalen Stimmen. Bei neuronalen Stimmen können Sie mithilfe des Elements `mstts:express-as` die Sprechweise anpassen, um verschiedene Emotionen wie Fröhlichkeit, Mitgefühl oder Gelassenheit auszudrücken, oder die Stimme für verschiedene Szenarien wie Kundenservice, Nachrichtenpräsentation oder Sprach-Assistent optimieren. Dies ist ein optionales Element und für den Speech-Dienst eindeutig.
 
 Anpassungen der Sprechweise werden derzeit bei diesen neuronalen Stimmen unterstützt:
 * `en-US-AriaNeural`

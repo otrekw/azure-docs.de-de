@@ -4,12 +4,12 @@ description: Überwachen von Azure Backup-Workloads und Erstellen von benutzerde
 ms.topic: conceptual
 ms.date: 06/04/2019
 ms.assetid: 01169af5-7eb0-4cb0-bbdb-c58ac71bf48b
-ms.openlocfilehash: fbd1c7f5e7fab9f77815e782160e855a9a854dc9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3f5f663a2f0ed0f91cc414d352e975a2ff3b9649
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87054614"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88827153"
 ---
 # <a name="monitor-at-scale-by-using-azure-monitor"></a>Überwachen im richtigen Maßstab mithilfe von Azure Monitor
 
@@ -46,7 +46,7 @@ Das definierende Merkmal einer Warnung ist die auslösende Bedingung. Wählen Si
 Bei Bedarf können Sie die Kusto-Abfrage bearbeiten. Wählen Sie einen Schwellenwert, einen Zeitraum und eine Häufigkeit aus. Der Schwellenwert bestimmt, wann die Warnung ausgelöst wird. Der Zeitraum ist das Zeitfenster, in dem die Abfrage ausgeführt wird. Wenn der Schwellenwert z.B. größer als 0 ist, der Zeitraum 5 Minuten und die Häufigkeit 5 Minuten beträgt, führt die Regel die Abfrage alle 5 Minuten aus, wobei die letzten 5 Minuten überprüft werden. Wenn die Anzahl der Ergebnisse größer als 0 ist, werden Sie über die ausgewählte Aktionsgruppe benachrichtigt.
 
 > [!NOTE]
-> Um die Warnungsregel einmal täglich auszuführen, ändern Sie für alle an einem bestimmten Tag erstellten Ereignisse/Protokolle den Wert von „period“ und „frequency“ in 1.440, d. h. 24 Stunden.
+> Um die Warnungsregel einmal täglich auszuführen, ändern Sie für alle an einem bestimmten Tag erstellten Ereignisse/Protokolle den Wert von „period“ und „frequency“ in „1.440“, d. h. 24 Stunden.
 
 #### <a name="alert-action-groups"></a>Warnungsaktionsgruppen
 

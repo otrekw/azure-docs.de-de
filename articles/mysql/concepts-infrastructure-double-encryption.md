@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 6/30/2020
-ms.openlocfilehash: 079e3f9219d649d9740d38a8a8452e51b9d84acf
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: a2f319f7bbd3fa0c6c4efb7e225bfc85a76002f2
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88066405"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88919708"
 ---
 # <a name="azure-database-for-mysql-infrastructure-double-encryption"></a>Azure Database for MySQL: doppelte Infrastrukturverschlüsselung
 
@@ -36,7 +36,7 @@ Die Implementierung auf Infrastrukturebene unterstützt zudem eine Vielfalt von 
 
 Die doppelte Infrastrukturverschlüsselung für Azure Database for MySQL bietet die folgenden Vorteile:
 
-1. **Zusätzliche Vielfalt bei der Implementierung von Kryptografie**: Durch die geplante Umstellung auf hardwarebasierte Verschlüsselung werden die Implementierungen weiter diversifiziert, indem zusätzlich zur softwarebasierten Implementierung eine hardwarebasierte Implementierung bereitgestellt wird.
+1. **Mehr Vielfalt bei der Implementierung von Kryptografie**: Durch die geplante Umstellung auf hardwarebasierte Verschlüsselung werden die Implementierungen weiter diversifiziert, indem zusätzlich zur softwarebasierten Implementierung eine hardwarebasierte Implementierung bereitgestellt wird.
 2. **Implementierungsfehler**: Zwei Verschlüsselungsebenen auf Infrastrukturebene schützen vor Fehlern bei der Zwischenspeicherung oder Speicherverwaltung auf höheren Ebenen, die Klartextdaten verfügbar machen. Darüber hinaus gewährleisten die beiden Ebenen auch Schutz vor Fehlern bei der Implementierung der Verschlüsselung im Allgemeinen.
 
 Diese Kombination bietet einen wirksamen Schutz gegen häufige Bedrohungen und Schwachstellen, die für Angriffe auf die Kryptographie ausgenutzt werden.
@@ -62,6 +62,12 @@ Die Verschlüsselungsfunktionen, die von Azure Database for MySQL geboten werden
 Bei Azure Database for MySQL unterliegt die Unterstützung der doppelten Infrastrukturverschlüsselung mit dienstseitig verwaltetem Schlüssel den folgenden Einschränkungen:
 
 * Die Unterstützung dieser Funktionalität ist auf die Tarife **Universell** und **Arbeitsspeicheroptimiert** beschränkt.
+* Sie können eine Instanz von Azure Database for MySQL mit aktivierter Infrastrukturverschlüsselung in folgenden Regionen erstellen:
+
+   * East US
+   * USA Süd Mitte
+   * USA, Westen 2
+   
 * * Diese Funktion wird nur in Regionen und auf Servern unterstützt, die eine Speicherkapazität bis zu 16 TB unterstützen. Eine Liste der Azure-Regionen, die Speicher mit bis zu 16 TB unterstützen, finden Sie in der [Speicherdokumentation](concepts-pricing-tiers.md#storage).
 
     > [!NOTE]

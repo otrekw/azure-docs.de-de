@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/03/2020
 ms.author: trbye
-ms.openlocfilehash: 79f7924b021de9426eeb66adf2ec12f8033efcea
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: ad26fe0d869a2e892a419b1732727c3ff1d1e9a2
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056855"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88870713"
 ---
 # <a name="about-the-speech-sdk"></a>Informationen zum Speech SDK
 
@@ -31,17 +31,52 @@ Das Speech SDK macht eine Vielzahl von Features aus dem Spracherkennungsdienst v
 
 Die [Spracherkennung](speech-to-text.md) (auch als *Speech-to-Text* bezeichnet) wandelt Audiodatenströme in Text um, der von Ihren Anwendungen, Tools oder Geräten genutzt oder angezeigt werden kann. In Kombination mit [Language Understanding (LUIS)](../luis/index.yml) können Sie Benutzerabsichten aus transkribierter Sprache ableiten und auf Sprachbefehle reagieren. Verwenden Sie die [Sprachübersetzung](speech-translation.md), um Spracheingaben mit einem einzigen Aufruf in eine andere Sprache zu übersetzen. Weitere Informationen finden Sie unter [Spracherkennung – Grundlagen](speech-to-text-basics.md).
 
+**Spracherkennung (SR), Begriffsliste, Absicht, Übersetzung und lokale Container** sind auf den folgenden Plattformen verfügbar:
+
+  - C++/Windows und Linux und macOS
+  - C# (Framework und .NET Core)/Windows, UWP, Unity, Xamarin, Linux und macOS
+  - Java (JRE und Android)
+  - JavaScript (Browser und NodeJS)
+  - Python
+  - Swift
+  - Objective-C  
+  - Go (nur SR)
+
 ### <a name="text-to-speech"></a>Text-zu-Sprache
 
 [Text-zu-Sprache](text-to-speech.md) (auch als *Sprachsynthese* bezeichnet) konvertiert Text in menschenähnliche synthetische Sprache. Beim Eingabetext handelt es sich um Zeichenfolgenliterale, oder Sie können [Speech Synthesis Markup Language (SSML)](speech-synthesis-markup.md) verwenden. Weitere Informationen zu standardmäßigen oder neuronalen Stimmen finden Sie unter [Sprach- und Stimmunterstützung für Text-zu-Sprache](language-support.md#text-to-speech).
+
+**Text-zu-Sprache** ist auf den folgenden Plattformen verfügbar:
+
+  - C++/Windows und Linux
+  - C#/Windows, UWP und Unity
+  - Java (JRE und Android)
+  - Python
+  - Swift
+  - Objective-C
+  - Die TTS-REST-API kann in allen anderen Situationen verwendet werden.
 
 ### <a name="voice-assistants"></a>Sprachassistenten
 
 [Sprachassistenten](voice-assistants.md), die das Speech SDK verwenden, ermöglichen es Entwicklern, natürliche Konversationsschnittstellen für ihre Anwendungen und Umgebungen zu erstellen, die der menschlichen Sprache nahekommen. Der Sprachassistentendienst ermöglicht die schnelle, zuverlässige Interaktion zwischen einem Gerät und einem Assistenten. Die Implementierung verarbeitet Aufgaben über den Direct Line Speech-Kanal des Bot Framework oder den integrierten Dienst Benutzerdefinierte Befehle (Vorschauversion). Darüber hinaus können Sprachassistenten benutzerdefinierte Stimmen verwenden, die über das [Custom Voice-Portal](https://aka.ms/customvoice) erstellt werden, um eine unverwechselbare Sprachausgabe zu erzielen.
 
+**Sprach-Assistent** ist auf den folgenden Plattformen verfügbar:
+
+  - C++/Windows und Linux und macOS
+  - C#/Windows
+  - Java/Windows und Linux und macOS und Android (Speech Devices SDK)
+
 #### <a name="keyword-spotting"></a>Schlüsselworterkennung
 
 Das Konzept der [-Schlüsselworterkennung](speech-devices-sdk-create-kws.md) wird im Speech SDK unterstützt. Bei der Schlüsselworterkennung wird ein Schlüsselwort in der Sprache erkannt, und nach der Erfassung des Schlüsselworts folgt eine Aktion. Mit dem Schlüsselwort „Hey Cortana“ wird beispielsweise der Cortana-Assistent aktiviert.
+
+**Schlüsselworterkennung** ist auf den folgenden Plattformen verfügbar:
+
+  - C++/Windows und Linux
+  - C#/Windows und Linux
+  - Python/Windows und Linux
+  - Java/Windows und Linux und Android (Speech Devices SDK)
+  - Die Funktionalität zur Schlüsselworterkennung (Keyword Spotting, KWS) kann eventuell mit allen Mikrofontypen verwendet werden, offiziell wird KWS derzeit jedoch nur für die Mikrofonarrays in der Azure Kinect DK-Hardware oder im Speech-Geräte-SDK unterstützt.
 
 ### <a name="meeting-scenarios"></a>Besprechungsszenarien
 
@@ -51,9 +86,20 @@ Das Speech SDK eignet sich perfekt für die Transkription von Besprechungsszenar
 
 Die [Unterhaltungstranskription](conversation-transcription.md) ermöglicht die Echtzeit- (und asynchrone) Spracherkennung, die Sprecheridentifikation und die Satzzuschreibung zu den einzelnen Sprechern (auch als *Diarisierung* bezeichnet). Er eignet sich optimal für das Transkribieren persönlicher Besprechungen, wobei zwischen Sprechern unterschieden werden kann.
 
+**Unterhaltungstranskription** ist auf den folgenden Plattformen verfügbar:
+
+  - C++/Windows und Linux
+  - C# (Framework und .NET Core)/Windows und UWP und Linux
+  - Java/Windows und Linux und Android (Speech Devices SDK)
+
 #### <a name="multi-device-conversation"></a>Konversation mit mehreren Geräten
 
 Über die [Konversation mit mehreren Geräten](multi-device-conversation.md) verbinden Sie mehrere Geräte oder Clients in einer Konversation, um sprach- oder textbasierte Nachrichten mit einfacher Unterstützung von Transkription und Übersetzung zu senden.
+
+**Konversation mit mehreren Geräten** ist auf den folgenden Plattformen verfügbar:
+
+  - C++/Windows
+  - C# (Framework und .NET Core)/Windows
 
 ### <a name="custom--agent-scenarios"></a>Benutzerdefinierte/Agent-Szenarios
 
@@ -63,9 +109,17 @@ Das Speech SDK kann für die Transkription in Callcenterszenarien verwendet werd
 
 Die [Callcentertranskription](call-center-transcription.md) ist ein häufiges Szenario für die Spracherkennung zum Transkribieren großer Mengen von Telefoniedaten, die aus verschiedenen Systemen stammen können, z. B. Systemen für interaktive Sprachantworten (Interactive Voice Response, IVR). Die neuesten Spracherkennungsmodelle des Speech-Diensts zeichnen sich durch das Transkribieren dieser Telefoniedaten auch in solchen Fällen aus, in denen die Daten für den Menschen schwer verständlich sind.
 
+**Callcentertranskription** steht über die REST-API des Batch-Sprachdiensts zur Verfügung und kann in jeder Situation verwendet werden.
+
 ### <a name="codec-compressed-audio-input"></a>Per Codec komprimierte Audioeingabe
 
 Einige der Speech SDK-Programmiersprachen unterstützen per Codec komprimierte Audioeingabestreams. Weitere Informationen finden Sie unter <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-use-codec-compressed-audio-input-streams" target="_blank">Verwenden komprimierter Audioeingabeformate<span class="docon docon-navigate-external x-hidden-focus"></span></a>.
+
+**Per Codec komprimierte Audioeingabe** ist auf den folgenden Plattformen verfügbar:
+
+  - C++/Linux
+  - C#/Linux
+  - Java/Linux, Android und iOS
 
 ## <a name="rest-api"></a>REST-API
 

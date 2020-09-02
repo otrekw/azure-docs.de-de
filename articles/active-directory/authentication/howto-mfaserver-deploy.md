@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bc4bd817fda762e62e791542aea2df65deb0dae3
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: bbe8b4176e33ff04ff8033af3b50cbdd0d882ae2
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88054050"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88919572"
 ---
 # <a name="getting-started-with-the-azure-multi-factor-authentication-server"></a>Erste Schritte mit Azure Multi-Factor Authentication-Server
 
@@ -27,7 +27,11 @@ ms.locfileid: "88054050"
 Auf dieser Seite werden eine Neuinstallation des Servers und die Einrichtung mit einer lokalen Active Directory-Instanz behandelt. Falls Sie den MFA-Server bereits installiert haben und ein Upgrade vornehmen möchten, lesen Sie unter [Upgrade to the latest Azure Multi-Factor Authentication Server](howto-mfaserver-deploy-upgrade.md) (Upgraden auf den neuesten Azure Multi-Factor Authentication-Server) weiter. Falls Sie nur den Webdienst installieren möchten, lesen Sie unter [Aktivieren der Mobile App-Authentifizierung mit dem Azure Multi-Factor Authentication-Server](howto-mfaserver-deploy-mobileapp.md) weiter.
 
 > [!IMPORTANT]
-> Ab dem 1. Juli 2019 bietet Microsoft keine MFA-Server mehr für neue Bereitstellungen an. Neue Kunden, die eine Multi-Factor Authentication für ihre Benutzer einrichten möchten, können stattdessen die cloudbasierte Multi-Factor Authentication von Azure verwenden. Bestehende Kunden, die ihren MFA-Server vor dem 1. Juli aktiviert haben, können weiterhin die neusten Versionen und zukünftige Updates herunterladen sowie Anmeldedaten zur Aktivierung generieren.
+> Seit dem 1. Juli 2019 bietet Microsoft für neue Bereitstellungen keine MFA-Server mehr an. Neue Kunden, die Multi-Factor Authentication (MFA) während der Anmeldung für ihre Benutzer einrichten möchten, können die cloudbasierte Multi-Factor Authentication von Azure verwenden.
+>
+> Informationen zu den ersten Schritten mit der cloudbasierten MFA finden Sie im [Tutorial: Schützen von Benutzeranmeldeereignissen mit Azure Multi-Factor Authentication](tutorial-enable-azure-mfa.md).
+>
+> Bestandskunden, die ihren MFA-Server vor dem 1. Juli 2019 aktiviert haben, können weiterhin die neuesten Versionen und zukünftige Updates herunterladen sowie Anmeldedaten zur Aktivierung generieren.
 
 ## <a name="plan-your-deployment"></a>Planen der Bereitstellung
 
@@ -106,6 +110,13 @@ Wenn Sie das Ereignisbestätigungsfeature nicht verwenden und Ihre Benutzer kein
 ## <a name="download-the-mfa-server"></a>Herunterladen des MFA-Servers
 
 Führen Sie die folgenden Schritte aus, um den Azure Multi-Factor Authentication-Server im Azure-Portal herunterzuladen:
+
+> [!IMPORTANT]
+> Seit dem 1. Juli 2019 bietet Microsoft für neue Bereitstellungen keine MFA-Server mehr an. Neue Kunden, die eine Multi-Factor Authentication (MFA) für ihre Benutzer einrichten möchten, können die cloudbasierte Multi-Factor Authentication von Azure verwenden.
+>
+> Informationen zu den ersten Schritten mit der cloudbasierten MFA finden Sie im [Tutorial: Schützen von Benutzeranmeldeereignissen mit Azure Multi-Factor Authentication](tutorial-enable-azure-mfa.md).
+>
+> Bestandskunden, die ihren MFA-Server vor dem 1. Juli 2019 aktiviert haben, können weiterhin die neuesten Versionen und zukünftige Updates herunterladen sowie Anmeldedaten zur Aktivierung generieren. Die folgenden Schritte können nur bei vorhandenen MFA Server-Kunden angewandt werden.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) als Administrator an.
 2. Suchen Sie nach *Azure Active Directory*, und wählen Sie diese Option aus. Wählen Sie **Sicherheit** > **MFA** aus.
@@ -209,7 +220,7 @@ Der neue Server ist nun aktiv und wird mit den ursprünglichen Konfigurations- u
 
 ## <a name="managing-the-tlsssl-protocols-and-cipher-suites"></a>Verwalten von TLS/SSL-Protokollen und Verschlüsselungssammlungen
 
-Nachdem Sie MFA Server Version 8.x oder höher installiert bzw. das Upgrade darauf durchgeführt haben, ist es ratsam, ältere und weniger leistungsstarke Verschlüsselungssammlungen zu deaktivieren oder zu entfernen, sofern diese nicht von Ihrer Organisation benötigt werden. Informationen zur Durchführung dieser Aufgabe finden Sie im Artikel [Verwalten von SSL/TLS-Protokollen und Verschlüsselungssammlungen für AD FS](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/manage-ssl-protocols-in-ad-fs).
+Nachdem Sie MFA Server Version 8.x oder höher installiert bzw. das Upgrade darauf durchgeführt haben, ist es ratsam, ältere und weniger leistungsstarke Verschlüsselungssammlungen zu deaktivieren oder zu entfernen, sofern diese nicht von Ihrer Organisation benötigt werden. Informationen zur Durchführung dieser Aufgabe finden Sie im Artikel [Verwalten von SSL/TLS-Protokollen und Verschlüsselungssammlungen für AD FS](/windows-server/identity/ad-fs/operations/manage-ssl-protocols-in-ad-fs).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

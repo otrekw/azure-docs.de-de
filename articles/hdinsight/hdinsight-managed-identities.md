@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 04/15/2020
-ms.openlocfilehash: 1081865a2e138af38ba171197719f08dedf6ffdb
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 07a8c26f7fc314680c51270ebafe03d4e3a84757
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81408939"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88749854"
 ---
 # <a name="managed-identities-in-azure-hdinsight"></a>Verwaltete Identitäten in Azure HDInsight
 
@@ -25,7 +25,9 @@ Es gibt zwei Arten von verwalteten Identitäten: benutzerseitig und systemseitig
 
 ## <a name="hdinsight-managed-identity-implementation"></a>Implementierung verwalteter HDInsight-Identitäten
 
-In Azure HDInsight werden verwaltete Identitäten auf jedem Knoten des Clusters bereitgestellt. Diese Identitätskomponenten können jedoch nur vom HDInsight-Dienst verwendet werden. Es wird derzeit keine Methode unterstützt, mit der Sie Zugriffstoken anhand der verwalteten Identitäten, die auf HDInsight-Clusterknoten installiert sind, generieren können. Für einige Azure-Dienste werden verwaltete Identitäten mit einem Endpunkt implementiert, den Sie zum Beziehen von Zugriffstoken verwenden können. Verwenden Sie die Token, wenn Sie allein mit anderen Azure-Diensten interagieren möchten.
+In Azure HDInsight können verwaltete Identitäten nur vom HDInsight-Dienst für interne Komponenten verwendet werden. Es wird derzeit keine Methode unterstützt, mit der Sie Zugriffstoken anhand der auf HDInsight-Clusterknoten installierten verwalteten Identitäten zum Zugreifen auf externe Dienste generieren können. Für einige Azure-Dienste wie Compute-VMs werden verwaltete Identitäten mit einem Endpunkt implementiert, den Sie zum Beziehen von Zugriffstoken verwenden können. Dieser Endpunkt ist zurzeit nicht in HDInsight-Knoten verfügbar.
+
+Wenn Sie für Ihre Anwendungen ein Bootstrap durchführen müssen, um zu vermeiden, dass Geheimnisse/Kennwörter in Analyseaufträgen (z. B. SCALA-Aufträgen) platziert werden, können Sie Ihre eigenen Zertifikate mithilfe von Skriptaktionen auf die Clusterknoten verteilen und dann mithilfe dieser Zertifikate ein Zugriffstoken abrufen (etwa zum Zugreifen auf Azure Key Vault).
 
 ## <a name="create-a-managed-identity"></a>Erstellen einer verwalteten Identität
 

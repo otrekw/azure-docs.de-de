@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 10e306d26ebfd5ffafe65d7aa52753e993b085bf
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 951c1fd89f9e943b72c32492ff40dae3bd07bb61
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88509160"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88794495"
 ---
 # <a name="azure-disk-encryption-scenarios-on-windows-vms"></a>Azure Disk Encryption-Szenarien auf virtuellen Windows-Computern
 
@@ -264,9 +264,8 @@ Die folgenden Szenarios, Features und Technologien werden von Azure Disk Encrypt
 - Erstellen eines Images oder einer Momentaufnahme einer verschlüsselten VM und dessen oder deren Verwendung zum Bereitstellen weiterer VMs
 - Gen2-VMs (siehe: [Unterstützung für VMs der Generation 2 in Azure](generation-2.md#generation-1-vs-generation-2-capabilities))
 - VMs der M-Serie mit Datenträgern mit Schreibbeschleunigung
-- Anwenden von ADE auf einen virtuellen Computer, der über Datenträger, die mit *serverseitiger Verschlüsselung mit kundenseitig verwalteten Schlüsseln* (SSE + CMK) verschlüsselt werden, verfügt oder [immer](disk-encryption.md) verfügte. Das Anwenden von SSE + CMK auf einen Datenträger auf einer mit ADE verschlüsselten VM ist ebenfalls ein nicht unterstütztes Szenario.
-- Migrieren einer mit ADE verschlüsselten VM zur [serverseitigen Verschlüsselung mit kundenseitig verwalteten Schlüsseln](disk-encryption.md).
-
+- Anwenden von ADE auf eine VM, die mit [serverseitiger Verschlüsselung mit kundenseitig verwalteten Schlüsseln](disk-encryption.md) (SSE + CMK) verschlüsselte Datenträger aufweist. Das Anwenden von SSE + CMK auf einen Datenträger auf einer mit ADE verschlüsselten VM ist ebenfalls ein nicht unterstütztes Szenario.
+- Migrieren einer VM, die mit ADE verschlüsselt ist oder **jemals** mit ADE verschlüsselt war, zur [serverseitigen Verschlüsselung mit kundenseitig verwalteten Schlüsseln](disk-encryption.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

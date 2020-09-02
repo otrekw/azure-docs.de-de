@@ -10,12 +10,12 @@ ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.date: 09/24/2019
 ms.author: yelevin
-ms.openlocfilehash: f06f8d3450f8907aa1be34b738565ac55e5e3d2d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 160912ef53b5c079d026c5d16230f49eadf66366
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85559134"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88794439"
 ---
 # <a name="connect-data-from-azure-information-protection"></a>Verknüpfen von Daten aus Azure Information Protection
 
@@ -57,15 +57,17 @@ Wenn die Protokollierung von Informationen aus Azure Information Protection jedo
 
 Befolgen Sie die folgenden Anweisungen, wenn Sie keinen Log Analytics-Arbeitsbereich für Azure Information Protection konfiguriert haben oder Sie den Arbeitsbereich ändern müssen, in dem die Protokollierungsinformationen von Azure Information Protection gespeichert sind.
 
-1. Wählen Sie in Azure Sentinel die Option **Datenconnectors** und dann **Azure Information Protection (Vorschau)** aus.
+1. Wählen Sie in Azure Sentinel die Option **Datenconnectors** > **Azure Information Protection (Vorschau)** aus.
 
 2. Wählen Sie **Connectorseite öffnen** aus.
 
-3. Wählen Sie auf dem Blatt **Analyse konfigurieren (Vorschauversion)** den Arbeitsbereich aus, den Sie derzeit für Azure Sentinel verwenden. Wenn Sie einen anderen Arbeitsbereich auswählen, stehen die Berichtsdaten von Azure Information Protection für Azure Sentinel nicht zur Verfügung.
+3. Wählen Sie unter **Konfiguration** die Option **Azure Information Protection-Protokolle verbinden** aus.
 
-4. Wenn Sie einen Arbeitsbereich ausgewählt haben, klicken Sie auf **OK**. Der **STATUS** des Connectors sollte sich in **Verbunden** ändern.
+4. Wählen Sie auf dem Blatt **Analyse konfigurieren (Vorschau)** den Arbeitsbereich aus, den Sie derzeit für Azure Sentinel verwenden. Wenn Sie einen anderen Arbeitsbereich auswählen, stehen die Berichtsdaten von Azure Information Protection für Azure Sentinel nicht zur Verfügung.
 
-5. Die Berichtsdaten aus Azure Information Protection werden im ausgewählten Arbeitsbereich in der Tabelle **InformationProtectionLogs_CL** gespeichert. 
+5. Nachdem Sie einen Arbeitsbereich ausgewählt haben, wählen Sie **OK** aus. Der **Status** des Connectors wird in **Verbunden** geändert.
+
+6. Die Berichtsdaten aus Azure Information Protection werden im ausgewählten Arbeitsbereich in der Tabelle **InformationProtectionLogs_CL** gespeichert. 
     
     Um das relevante Schema in Azure Monitor für diese Berichtsdaten zu verwenden, suchen Sie nach **InformationProtectionEvents**. Weitere Informationen zu diesen Ereignisfunktionen finden Sie in der Azure Information Protection-Dokumentation im Abschnitt [Benutzerfreundliche Schemareferenz für Ereignisfunktionen](https://docs.microsoft.com/azure/information-protection/reports-aip#friendly-schema-reference-for-event-functions).
 

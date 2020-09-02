@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
-ms.date: 07/27/2020
+ms.date: 08/18/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e1dcc98366e37455f462fe1a0740aa161201912f
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 06e61bb966313265f7e3772dbbf6017a03a42386
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87505690"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88869643"
 ---
 # <a name="assign-eligibility-for-a-privileged-access-group-preview-in-privileged-identity-management"></a>Zuweisen der Berechtigung für eine Gruppe mit privilegiertem Zugriff (Vorschau) in Privileged Identity Management
 
@@ -33,19 +33,14 @@ Azure Active Directory (Azure AD) Privileged Identity Management (PIM) kann Sie
 
 Führen Sie die folgenden Schritte aus, um einen Benutzer als berechtigt für die Mitgliedschaft oder den Besitz einer Gruppe mit privilegiertem Zugriff einzurichten.
 
-1. Melden Sie sich im Azure-Portal mit den Rollenberechtigungen [Administrator für privilegierte Rollen](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) bei [Privileged Identity Management](https://portal.azure.com/) an.
+1. [Melden Sie sich bei Azure AD](https://aad.portal.azure.com) mit den Berechtigungen eines globalen Administrators oder Gruppenbesitzers an.
+1. Wählen Sie **Gruppen** und dann die Gruppe mit Rollenzuweisung aus, die Sie verwalten möchten. Sie können die Liste durchsuchen und filtern.
 
-    Informationen dazu, wie Sie anderen Administratoren Zugriff zum Verwalten von Privileged Identity Management gewähren, finden Sie unter [Gewähren von Zugriff für andere Administratoren zum Verwalten von PIM](pim-how-to-give-access-to-pim.md).
+    ![Suchen einer Gruppe mit Rollenzuweisung für die Verwaltung in PIM](./media/groups-assign-member-owner/groups-list-in-azure-ad.png)
 
-1. Öffnen Sie **Azure AD Privileged Identity Management**.
+1. Öffnen Sie die Gruppe, und wählen Sie **Privilegierter Zugriff (Vorschau)** aus.
 
-1. Wählen Sie **Privilegierter Zugriff (Vorschau)** aus.
-
-1. Sie können nach einem Gruppennamen suchen und den **Gruppentyp** verwenden, um die Liste zu filtern und die Gruppe auszuwählen, die Sie verwalten möchten.
-
-    ![Liste der zu verwaltenden Gruppen mit privilegiertem Zugriff](./media/groups-assign-member-owner/privileged-access-list.png)
-
-1. Wählen Sie unter **Verwalten** die Option **Zuweisungen** aus.
+    ![Öffnen der Privileged Identity Management-Benutzeroberfläche](./media/groups-assign-member-owner/groups-discover-groups.png)
 
 1. Wählen Sie **Zuweisungen hinzufügen** aus.
 
@@ -77,21 +72,20 @@ Führen Sie die folgenden Schritte aus, um einen Benutzer als berechtigt für di
 
 Befolgen Sie diese Anweisungen zum Aktualisieren oder Entfernen einer vorhandenen Rollenzuweisung.
 
-1. Öffnen Sie **Azure AD Privileged Identity Management**.
+1. [Melden Sie sich bei Azure AD](https://aad.portal.azure.com) mit den Berechtigungen eines globalen Administrators oder Gruppenbesitzers an.
+1. Wählen Sie **Gruppen** und dann die Gruppe mit Rollenzuweisung aus, die Sie verwalten möchten. Sie können die Liste durchsuchen und filtern.
 
-1. Wählen Sie **Privilegierter Zugriff (Vorschau)** aus.
+    ![Suchen einer Gruppe mit Rollenzuweisung für die Verwaltung in PIM](./media/groups-assign-member-owner/groups-list-in-azure-ad.png)
 
-1. Sie können nach einem Gruppennamen suchen und den **Gruppentyp** verwenden, um die Liste zu filtern und die Gruppe auszuwählen, die Sie verwalten möchten.
+1. Öffnen Sie die Gruppe, und wählen Sie **Privilegierter Zugriff (Vorschau)** aus.
 
-    ![Liste der zu verwaltenden Gruppen mit privilegiertem Zugriff](./media/groups-assign-member-owner/privileged-access-list.png)
-
-1. Wählen Sie unter **Verwalten** die Option **Zuweisungen** aus.
+    ![Öffnen der Privileged Identity Management-Benutzeroberfläche](./media/groups-assign-member-owner/groups-discover-groups.png)
 
 1. Wählen Sie die Rolle aus, die Sie aktualisieren oder entfernen möchten.
 
 1. Suchen Sie die Rollenzuweisung auf den Registerkarten **Berechtigte Rollen** oder **Aktive Rollen**.
 
-    ![Aktualisieren oder Entfernen der Rollenzuweisung](./media/groups-assign-member-owner/groups-add-assignment.png)
+    ![Aktualisieren oder Entfernen der Rollenzuweisung](./media/groups-assign-member-owner/groups-bring-under-management.png)
 
 1. Wählen Sie **Aktualisieren** oder **Entfernen** aus, um die Rollenzuweisung zu aktualisieren oder zu entfernen.
 

@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 05/05/2020
 ms.author: sudbalas
 Customer intent: As a key vault administrator, I want to move my vault to another subscription.
-ms.openlocfilehash: d37fae18cd2f3e3bfad647cc176253dc6bb101ab
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: b37b327a535b716bbce845cd5883e58ec5379c48
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88585762"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88782718"
 ---
 # <a name="moving-an-azure-key-vault-to-another-subscription"></a>Verschieben einer Azure Key Vault-Instanz in ein anderes Abonnement
 
@@ -59,7 +59,9 @@ Sie verfügen über eine Anwendung, die mit dem Schlüsseltresor, der Zertifikat
 
 ## <a name="procedure"></a>Verfahren
 
-### <a name="initial-steps-moving-key-vault"></a>Erste Schritte (Verschieben des Schlüsseltresors)
+Wenn Sie 
+
+### <a name="moving-key-vault-to-a-new-subscription-within-the-same-tenant"></a>Verschieben des Schlüsseltresors in ein neues Abonnement innerhalb desselben Mandanten
 
 1. Anmelden beim Azure-Portal
 2. Navigieren zum Schlüsseltresor
@@ -70,9 +72,9 @@ Sie verfügen über eine Anwendung, die mit dem Schlüsseltresor, der Zertifikat
 7. Bestätigen der Warnung zum Verschieben von Ressourcen
 8. Auswählen von „OK“
 
-### <a name="additional-steps-post-move"></a>Zusätzliche Schritte (nach dem Verschieben)
+### <a name="additional-steps-if-you-moved-key-vault-to-a-subscription-in-a-new-tenant"></a>Weitere Schritte nach dem Verschieben des Schlüsseltresors in ein Abonnement in einem neuen Mandanten
 
-Nachdem Sie Ihren Schlüsseltresor in das neue Abonnement verschoben haben, müssen Sie die Mandanten-ID aktualisieren und alte Zugriffsrichtlinien entfernen. Hier finden Sie Tutorials für diese Schritte mit PowerShell und der Azure-Befehlszeilenschnittstelle.
+Wenn Sie Ihren Schlüsseltresor in ein Abonnement in einem neuen Mandanten verschoben haben, müssen Sie die Mandanten-ID manuell aktualisieren und alte Zugriffsrichtlinien entfernen. Hier finden Sie Tutorials für diese Schritte mit PowerShell und der Azure-Befehlszeilenschnittstelle. Wenn Sie PowerShell verwenden, müssen Sie möglicherweise den unten dokumentierten Befehl Clear-AzContext ausführen, damit Sie Ressourcen außerhalb des aktuell ausgewählten Bereichs anzeigen können. 
 
 ```azurepowershell
 Select-AzSubscription -SubscriptionId <your-subscriptionId>                # Select your Azure Subscription

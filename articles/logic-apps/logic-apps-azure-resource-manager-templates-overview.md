@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: logicappspm
 ms.topic: article
 ms.date: 08/17/2020
-ms.openlocfilehash: 391692d708adbd542b2cf358f0ac597dc1db3fa0
-ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
+ms.openlocfilehash: 9d3c5a914fe472dd7e4f797cb633e65951bf07e7
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88565552"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88871461"
 ---
 # <a name="overview-automate-deployment-for-azure-logic-apps-by-using-azure-resource-manager-templates"></a>Übersicht: Automatisieren der Bereitstellung für Azure Logic Apps durch Verwenden von Azure Resource Manager-Vorlagen
 
@@ -269,17 +269,7 @@ Die Vorlage hat ein `resources`-Objekt. Dieses Objekt ist ein Array, das Definit
 
 ### <a name="view-resource-definitions"></a>Anzeigen von Ressourcendefinitionen
 
-Zum Überprüfen der Ressourcendefinitionen für alle Ressourcen [laden Sie die Logik-App von Azure in Visual Studio herunter](../logic-apps/manage-logic-apps-with-visual-studio.md). Dies ist die einfachste Möglichkeit, um eine gültige parametrisierte Logik-App-Vorlage zu erstellen, die größtenteils für die Bereitstellung bereit ist. Alternativ können Sie im Azure-Portal die folgenden Schritte ausführen:
-
-1. Melden Sie sich mit den Anmeldeinformationen Ihres Azure-Kontos beim [Azure-Portal](https://portal.azure.com) an.
-
-1. Suchen Sie die Azure-Ressourcengruppe, die die Logik-App, Verbindungen und andere Ressourcen enthält.
-
-1. Wählen Sie auf der Ressourcengruppen-Symbolleiste **Übersicht** aus, und wählen Sie dann alle Ressourcen in der Ressourcengruppe aus.
-
-1. Wählen Sie auf der Ressourcengruppen-Symbolleiste unter **Einstellungen** die Option **Vorlage exportieren** aus.
-
-   Im Portal werden die Definitionen für die Ressourcen angezeigt, die Sie ausgewählt haben. Weitere Informationen finden Sie unter [Exportieren von einzelnen oder mehreren Ressourcen in eine Vorlage im Azure-Portal](../azure-resource-manager/templates/export-template-portal.md).
+Zum Überprüfen der Ressourcendefinitionen für alle Ressourcen [laden Sie die Logik-App von Azure in Visual Studio herunter](../logic-apps/manage-logic-apps-with-visual-studio.md). Dies ist die einfachste Möglichkeit, eine gültige parametrisierte Logik-App-Vorlage zu erstellen, die größtenteils für die Bereitstellung bereit ist.
 
 Allgemeine Informationen zu Vorlagenressourcen und deren Attributen finden Sie in den folgenden Themen:
 
@@ -584,7 +574,7 @@ Weitere Informationen zu Workflowdefinitionsparametern finden Sie unter [Paramet
 
 ## <a name="connection-resource-definitions"></a>Verbindungsressourcendefinitionen
 
-Werden in Ihrer Logik-App Verbindungen mit anderen Diensten und Systemen erstellt und verwendet, indem [verwaltete Connectors](../connectors/apis-list.md) verwendet werden, enthält Ihr `resources`-Objekt die Ressourcendefinitionen für diese Verbindungen.
+Werden in Ihrer Logik-App Verbindungen mit anderen Diensten und Systemen erstellt und verwendet, indem [verwaltete Connectors](../connectors/apis-list.md) verwendet werden, enthält Ihr `resources`-Objekt die Ressourcendefinitionen für diese Verbindungen. Obwohl Sie Verbindungen in einer Logik-App erstellen, sind Verbindungen separate Azure-Ressourcen mit eigenen Ressourcendefinitionen. Zum Überprüfen dieser Verbindungsressourcendefinitionen [laden Sie die Logik-App von Azure in Visual Studio herunter](../logic-apps/manage-logic-apps-with-visual-studio.md). Dies ist die einfachste Möglichkeit, eine gültige parametrisierte Logik-App-Vorlage zu erstellen, die größtenteils für die Bereitstellung bereit ist.
 
 ```json
 {

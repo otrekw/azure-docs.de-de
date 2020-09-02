@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 08/06/2020
+ms.date: 08/26/2020
 ms.author: aahi
-ms.openlocfilehash: 1a5f7dcd37a970d5e039ebc38f1059839424ff68
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: f017960e304df04148c318b5098f384e6140de9a
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88192022"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88930909"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>Neuigkeiten bei der Textanalyse-API
 
@@ -27,7 +27,9 @@ Die Textanalyse-API wird fortlaufend aktualisiert. Damit Sie bezüglich der aktu
 
 * Modellversion `2020-07-01` für die v3-`/keyphrases`, `/pii` -und `/languages`-Endpunkte, die Folgendes hinzufügt:
     * Zusätzliche behörden- und länderspezifische [Entitätskategorien](named-entity-types.md?tabs=personal) für die Erkennung benannter Entitäten.
+    * Unterstützung für Norwegisch und Türkisch in Standpunktanalyse v3.
 * Ein HTTP 400-Fehler wird jetzt für v3-API-Anforderungen zurückgegeben, die die veröffentlichten [Datenlimits](concepts/data-limits.md) überschreiten. 
+* Endpunkte, die einen Offset zurückgeben, unterstützen jetzt den optionalen Parameter `stringIndexType`, der die zurückgegebenen Werte `offset` und `length` so anpasst, dass sie einem unterstützten [Zeichenfolgenindexschema](concepts/text-offsets.md) entsprechen.
 
 ### <a name="text-analytics-for-health-container-august-updates"></a>August-Updates für den Container „Text Analytics for Health“
 

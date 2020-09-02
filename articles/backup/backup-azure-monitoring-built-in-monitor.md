@@ -4,12 +4,12 @@ description: In diesem Artikel erfahren Sie mehr über die Überwachungs- und Be
 ms.topic: conceptual
 ms.date: 03/05/2019
 ms.assetid: 86ebeb03-f5fa-4794-8a5f-aa5cbbf68a81
-ms.openlocfilehash: 645bf701a8f8561b2cb4f19378036ada82c4bedd
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2fae7cfdb8b316341e01d15b43811d3f0e7638ef
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87054552"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88827187"
 ---
 # <a name="monitoring-azure-backup-workloads"></a>Überwachen von Azure Backup-Workloads
 
@@ -52,7 +52,7 @@ Die folgenden Szenarios werden vom Dienst als solche definiert, in denen Warnung
 - Azure-VM-Sicherungen
 - Azure-Dateisicherungen
 - Azure-Workloadsicherungen wie SQL, SAP HANA
-- Microsoft Azure Recovery Services-Agent (MARS) 
+- Microsoft Azure Recovery Services-Agent (MARS)
 
 > [!NOTE]
 > Warnungen aus System Center Data Protection Manager (SC-DPM) und Microsoft Azure Backup Server (MABS) werden hier nicht aufgeführt.
@@ -70,7 +70,7 @@ Es gibt folgende Ausnahmefälle, in denen keine Warnung ausgelöst wird. Sie lau
 - Wenn der Sicherungsauftrag der VM fehlschlägt, weil die gesicherte Azure-VM nicht mehr existiert
 - [Konsolidierte Warnungen](#consolidated-alerts)
 
-Diese Ausnahmen wurden eingeführt, weil das Ergebnis der oben aufgeführten Vorgänge, die in erster Linie vom Benutzer ausgelöst werden, direkt im Portal bzw. im PS- oder CLI-Client dargestellt wird. Sie sind dem Benutzer also bekannt, sodass keine Benachrichtigung erforderlich ist.
+Diese Ausnahmen wurden eingeführt, da das Ergebnis der oben aufgeführten Vorgänge, die in erster Linie vom Benutzer ausgelöst werden, direkt im Portal bzw. im PowerShell- oder CLI-Client dargestellt wird. Sie sind dem Benutzer also bekannt, sodass keine Benachrichtigung erforderlich ist.
 
 ### <a name="alert-types"></a>Warnungstypen
 
@@ -83,7 +83,7 @@ Je nach Schweregrad der Warnung werden diese drei Arten zugeordnet:
 ## <a name="notification-for-backup-alerts"></a>Benachrichtigungen für Azure Backup-Warnungen
 
 > [!NOTE]
-> Sie können die Benachrichtigungen über nur über das Azure-Portal konfigurieren. PS-, CLI, REST-API- und Azure Resource Manager-Vorlagen werden nicht unterstützt.
+> Sie können die Benachrichtigungen nur über das Azure-Portal konfigurieren. PowerShell, Befehlszeilenschnittstelle, REST-API und Azure Resource Manager-Vorlagen werden nicht unterstützt.
 
 Wenn eine Warnung ausgelöst wird, werden die Benutzer benachrichtigt. Azure Backup enthält einen Mechanismus, der Benachrichtigungen per E-Mail sendet. Sie können einzelne E-Mail-Adressen oder Verteilerlisten angeben, die benachrichtigt werden sollen, wenn eine Warnung generiert wurde. Sie können ebenfalls Benachrichtigungen für jede einzelne Warnung aktivieren oder diese in einer stündlichen Übersicht gruppieren.
 
@@ -95,12 +95,12 @@ Wenn die Häufigkeit auf eine stündliche Übersicht festgelegt und eine Warnung
 
 > [!NOTE]
 >
-> - Wenn ein destruktiver Vorgang wie das **Beenden des Schutzes inklusive Löschung der Daten** durchgeführt wird, wird eine Warnung ausgelöst und eine E-Mail an den Besitzer des Abonnements sowie an die Administratoren und Co-Admins des Abonnements gesendet, auch wenn die Benachrichtigungen für den Recovery Services-Tresor nicht konfiguriert wurden.
+> - Wenn ein destruktiver Vorgang wie das **Beenden des Schutzes inklusive Löschung** der Daten durchgeführt wird, wird eine Warnung ausgelöst und eine E-Mail an den Besitzer des Abonnements sowie an die Administratoren und Co-Admins des Abonnements gesendet, auch wenn die Benachrichtigungen für den Recovery Services-Tresor nicht konfiguriert wurden.
 > - Verwenden Sie [Log Analytics](backup-azure-monitoring-use-azuremonitor.md#using-log-analytics-workspace), um Benachrichtigungen für erfolgreiche Aufträge zu konfigurieren.
 
 ## <a name="inactivating-alerts"></a>Deaktivieren von Warnungen
 
-Um eine aktive Warnung zu deaktivieren bzw. aufzulösen, können Sie auf das Listenelement klicken, das der Warnung entspricht, die Sie deaktivieren möchten. Dadurch wird ein Bildschirm geöffnet, auf dem detaillierte Informationen zur Warnung angezeigt werden. Oberhalb der Warnung finden Sie eine Schaltfläche zum Deaktivieren. Wenn Sie auf diese Schaltfläche klicken, ändert sich der Status der Warnung zu „Inaktiv“. Sie können eine Warnung auch deaktivieren, indem Sie mit der rechten Maustaste auf das Listenelement klicken, das dieser Warnung entspricht, und dann „Deaktivieren“ auswählen.
+Um eine aktive Warnung zu deaktivieren bzw. aufzulösen, können Sie das Listenelement auswählen, das der Warnung entspricht, die Sie deaktivieren möchten. Dadurch wird ein Bildschirm geöffnet, auf dem detaillierte Informationen zur Warnung angezeigt werden. Oberhalb der Warnung finden Sie eine Schaltfläche zum **Deaktivieren**. Wenn Sie auf diese Schaltfläche klicken, ändert sich der Status der Warnung zu **Inaktiv**. Sie können eine Warnung auch deaktivieren, indem Sie mit der rechten Maustaste auf das Listenelement klicken, das dieser Warnung entspricht, und dann **Deaktivieren** auswählen.
 
 ![Deaktivieren einer Warnung zum Recovery Services-Tresor](media/backup-azure-monitoring-laworkspace/vault-alert-inactivation.png)
 

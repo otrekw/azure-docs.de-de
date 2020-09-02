@@ -1,14 +1,14 @@
 ---
 title: Onboarding eines Kunden in Azure Lighthouse durchführen
 description: Erfahren Sie, wie Sie das Onboarding eines Kunden in Azure Lighthouse durchführen, sodass Ihr eigener Mandant über die delegierte Azure-Ressourcenverwaltung auf dessen Ressourcen zugreifen und sie verwalten kann.
-ms.date: 08/12/2020
+ms.date: 08/20/2020
 ms.topic: how-to
-ms.openlocfilehash: f20df54a4bc689effad210746f93928defdaf0f5
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: db6a819c72f1ef46f542ed47cad6caae23c0d191
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88167316"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88719052"
 ---
 # <a name="onboard-a-customer-to-azure-lighthouse"></a>Onboarding eines Kunden in Azure Lighthouse durchführen
 
@@ -121,7 +121,7 @@ Um Ihren Kunden zu integrieren, müssen Sie eine [Azure Resource Manager](../../
 
 |Feld  |Definition  |
 |---------|---------|
-|**mspOfferName**     |Ein Name, der diese Definition beschreibt. Dieser Wert wird für den Kunden als Titel des Angebots angezeigt.         |
+|**mspOfferName**     |Ein Name, der diese Definition beschreibt. Dieser Wert wird dem Kunden als Titel des Angebots angezeigt und muss ein eindeutiger Wert sein.        |
 |**mspOfferDescription**     |Eine kurze Beschreibung Ihres Angebots (z. B. „Angebot für die Verwaltung von virtuellen Contoso-Computern“)      |
 |**managedByTenantId**     |Ihre Mandanten-ID.          |
 |**authorizations**     |Die **principalId**-Werte für die Benutzer/Gruppen/SPNs Ihres Mandanten, jeweils mit einem **principalIdDisplayName**-Element, um Ihrem Kunden zu helfen, den Zweck der Autorisierung zu verstehen, und einem integrierten **roleDefinitionId**-Wert zugeordnet, um die Zugriffsebene anzugeben      |
@@ -138,7 +138,7 @@ Die ausgewählte Vorlage hängt davon ab, ob Sie ein gesamtes Abonnement, eine R
 |Abonnement (bei Verwendung eines in Azure Marketplace veröffentlichten Angebots)   |[marketplaceDelegatedResourceManagement.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/marketplace-delegated-resource-management/marketplaceDelegatedResourceManagement.json)  |[marketplaceDelegatedResourceManagement.parameters.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/marketplace-delegated-resource-management/marketplaceDelegatedResourceManagement.parameters.json)    |
 
 > [!IMPORTANT]
-> Der hier beschriebene Prozess erfordert für jedes Abonnement, das integriert wird, eine separate Bereitstellung auf Abonnementebene. Dies gilt selbst dann, wenn Sie Abonnements im gleichen Kundenmandanten integrieren. Gesonderte Bereitstellungen sind auch erforderlich, wenn Sie mehrere Ressourcengruppen innerhalb verschiedener Abonnements im gleichen Kundenmandanten integrieren. Das Onboarding mehrerer Ressourcengruppen innerhalb eines einzelnen Abonnements kann jedoch in einer einzigen Bereitstellung auf Abonnementebene erfolgen.
+> Der hier beschriebene Prozess erfordert für jedes Abonnement, das integriert wird, eine separate Bereitstellung. Dies gilt selbst dann, wenn Sie Abonnements im gleichen Kundenmandanten integrieren. Gesonderte Bereitstellungen sind auch erforderlich, wenn Sie mehrere Ressourcengruppen innerhalb verschiedener Abonnements im gleichen Kundenmandanten integrieren. Das Onboarding mehrerer Ressourcengruppen innerhalb eines einzelnen Abonnements kann jedoch in einer einzigen Bereitstellung erfolgen.
 >
 > Separate Bereitstellungen sind auch erforderlich für mehrere Angebote, die auf dasselbe Abonnement (oder dieselben Ressourcengruppen in einem Abonnement) angewendet werden. Für jedes angewendete Angebot muss ein anderer **mspOfferName** verwendet werden.
 
@@ -199,12 +199,22 @@ Die letzte Autorisierung im obigen Beispiel fügt eine **prinzipalId** mit der R
 
 ## <a name="deploy-the-azure-resource-manager-templates"></a>Bereitstellen der Azure Resource Manager-Vorlagen
 
-Nachdem Sie Ihre Parameterdatei aktualisiert haben, muss ein Benutzer im Kundenmandanten die Azure Resource Manager-Vorlage im Mandanten auf Abonnementebene bereitstellen. Eine gesonderte Bereitstellung ist für jedes Abonnement erforderlich, für das Sie ein Onboarding durchführen möchten (oder für jedes Abonnement, das Ressourcengruppen enthält, die Sie integrieren möchten). Die Bereitstellung kann mithilfe von PowerShell oder der Azure-Befehlszeilenschnittstelle erfolgen, wie unten gezeigt.
+Nachdem Sie Ihre Parameterdatei aktualisiert haben, muss ein Benutzer im Kundenmandanten die Azure Resource Manager-Vorlage im Mandanten bereitstellen. Eine gesonderte Bereitstellung ist für jedes Abonnement erforderlich, für das Sie ein Onboarding durchführen möchten (oder für jedes Abonnement, das Ressourcengruppen enthält, die Sie integrieren möchten).
 
 > [!IMPORTANT]
-> Diese Bereitstellung auf Abonnementebene muss von einem Nicht-Gastkonto im Mandanten des Kunden durchgeführt werden, das über die [integrierte Rolle „Besitzer“](../../role-based-access-control/built-in-roles.md#owner) für das Abonnement verfügt, das integriert wird (oder das die Ressourcengruppen enthält, die integriert werden). Um alle Benutzer anzuzeigen, die das Abonnement delegieren können, kann ein Benutzer im Mandanten des Kunden das Abonnement im Azure-Portal auswählen, **Zugriffssteuerung (IAM)** öffnen und [alle Benutzer mit der Rolle „Besitzer“ anzeigen](../../role-based-access-control/role-assignments-list-portal.md#list-owners-of-a-subscription).
+> Diese Bereitstellung muss von einem Nicht-Gastkonto im Mandanten des Kunden durchgeführt werden, das über die [integrierte Rolle „Besitzer“](../../role-based-access-control/built-in-roles.md#owner) für das Abonnement verfügt, das integriert wird (oder das die Ressourcengruppen enthält, die integriert werden). Um alle Benutzer anzuzeigen, die das Abonnement delegieren können, kann ein Benutzer im Mandanten des Kunden das Abonnement im Azure-Portal auswählen, **Zugriffssteuerung (IAM)** öffnen und [alle Benutzer mit der Rolle „Besitzer“ anzeigen](../../role-based-access-control/role-assignments-list-portal.md#list-owners-of-a-subscription). 
 >
 > Wenn das Abonnement über das [CSP-Programm (Cloud Solution Provider)](../concepts/cloud-solution-provider.md) erstellt wurde, kann jeder Benutzer, der die Rolle [Administrator-Agent](/partner-center/permissions-overview#manage-commercial-transactions-in-partner-center-azure-ad-and-csp-roles) in Ihrem Dienstanbietermandanten ausübt, die Bereitstellung ausführen.
+
+Die Bereitstellung kann im Azure-Portal, mit PowerShell oder mit der Azure CLI erfolgen, wie unten dargestellt.
+
+### <a name="azure-portal"></a>Azure-Portal
+
+1. Wählen Sie in unserem [GitHub-Repository](https://github.com/Azure/Azure-Lighthouse-samples/) die Schaltfläche **In Azure bereitstellen** aus, die neben der Vorlage angezeigt wird, die Sie verwenden möchten. Die Vorlage wird im Azure-Portal geöffnet.
+1. Geben Sie Ihre Werte für **Msp Offer Name** (MSP-Angebotsname), **Msp Offer Description** (MSP-Angebotsbeschreibung), **Managed by Tenant Id** (Verwaltet von Mandanten-ID) und **Authorizations** (Autorisierungen) ein. Wenn Sie es vorziehen, können Sie **Parameter bearbeiten** auswählen, um Werte für `mspOfferName`, `mspOfferDescription`, `managedbyTenantId` und `authorizations` direkt in die Parameterdatei einzugeben. Achten Sie darauf, diese Werte zu aktualisieren, anstatt die Standardwerte aus der Vorlage zu verwenden.
+1. Wählen Sie **Überprüfen und erstellen** und dann **Erstellen** aus.
+
+Nach einigen Minuten müsste eine Benachrichtigung angezeigt werden, dass die Bereitstellung abgeschlossen ist.
 
 ### <a name="powershell"></a>PowerShell
 

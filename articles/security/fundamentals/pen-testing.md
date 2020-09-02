@@ -1,6 +1,6 @@
 ---
-title: Penetrationstests | Microsoft Docs
-description: Der Artikel bietet einen Überblick über den Penetrationstestprozess und dazu, wie Sie Penetrationstests an Ihren in der Azure-Infrastruktur ausgeführten Apps durchführen können.
+title: Penetrationstests | Microsoft-Dokumentation
+description: Der Artikel bietet eine Übersicht über den Penetrationstestprozess und darüber, wie Sie Penetrationstests Ihrer in der Azure-Infrastruktur ausgeführten App durchführen können.
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -13,25 +13,26 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/13/2018
+ms.date: 08/24/2020
 ms.author: terrylan
-ms.openlocfilehash: db6e25b6304ee9ac41ca95d5a3a6eac0e91eb41b
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: dfacf124f8db0e5323c9abff56c4a78f85f6f014
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87287769"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816132"
 ---
 # <a name="penetration-testing"></a>Penetrationstests
+
 Einer der Vorteile beim Einsatz von Azure für Testen und Bereitstellung von Anwendungen besteht darin, dass Sie schnell Umgebungen erstellen können. Sie müssen sich keine Gedanken über Anforderung, Erwerb und Aufbau eigener lokaler Hardware machen.
 
-Das ist hervorragend – Sie müssen jedoch noch sicherstellen, dass Sie mit angemessener Sorgfalt für Sicherheit sorgen. Wahrscheinlich möchten Sie einen Penetrationstest der Anwendungen durchführen, die Sie in Azure bereitstellen.
+Das schnelle Erstellen von Umgebungen ist zwar hervorragend – Sie müssen jedoch weiterhin mit angemessener Sorgfalt für Sicherheit sorgen. Wahrscheinlich möchten Sie einen Penetrationstest der Anwendungen durchführen, die Sie in Azure bereitstellen.
 
-Möglicherweise wissen Sie bereits, dass Microsoft einen [Penetrationstests der Azure-Umgebung](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)durchführt. Dies bringt Verbesserungen an Azure voran.
+Möglicherweise wissen Sie bereits, dass Microsoft einen [Penetrationstests der Azure-Umgebung](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)durchführt. Diese Tests bringen Verbesserungen an Azure voran.
 
 Wir führen keinen Penetrationstest Ihrer Anwendung durch, aber wir verstehen, dass Sie Tests Ihrer eigenen Anwendungen durchführen möchten und müssen. Das ist eine gute Sache, denn wenn Sie die Sicherheit Ihrer Anwendungen verbessern, machen Sie das gesamte Azure-Ökosystem sicherer.
 
-Seit dem 15. Juni 2017 benötigt Microsoft keine Vorabgenehmigung mehr, um Penetrationstests für Azure-Ressourcen durchzuführen. Kunden, die die bevorstehenden Penetrationstests gegen Microsoft Azure formell dokumentieren möchten, werden gebeten, das Formular zur [Benachrichtigung bei Azure Service-Penetrationstests](https://portal.msrc.microsoft.com/en-us/engage/pentest) auszufüllen. Dieser Prozess bezieht sich nur auf Microsoft Azure und ist nicht auf andere Microsoft Cloud-Dienste anwendbar.
+Seit dem 15. Juni 2017 benötigt Microsoft keine Vorabgenehmigung mehr, um Penetrationstests für Azure-Ressourcen durchzuführen. Dieser Prozess bezieht sich nur auf Microsoft Azure und ist nicht auf andere Microsoft Cloud-Dienste anwendbar.
 
 >[!IMPORTANT]
 >Obwohl die Benachrichtigung von Microsoft über Penetrationstestaktivitäten nicht mehr erforderlich ist, müssen Kunden weiterhin die [Microsoft Cloud Unified Penetration Testing Rules of Engagement](https://technet.microsoft.com/mt784683) (Einheitliche Einsatzregeln für Penetrationstests für die Microsoft Cloud) einhalten.
@@ -42,6 +43,11 @@ Folgende Standardtests können Sie durchführen:
 * [Fuzzing](https://cloudblogs.microsoft.com/microsoftsecure/2007/09/20/fuzz-testing-at-microsoft-and-the-triage-process/) Ihrer Endpunkte
 * [Portüberwachung](https://en.wikipedia.org/wiki/Port_scanner) Ihrer Endpunkte
 
+Ein Penetrationstesttyp, den Sie nicht ausführen können, ist jegliche Form eines [Denial-of-Service-Angriffs (DoS)](https://en.wikipedia.org/wiki/Denial-of-service_attack). Dies schließt einen selbst initiierten DoS-Angriff bzw. das Durchführen zugehöriger Tests ein, die einen DoS-Angriff bestimmen, demonstrieren oder simulieren könnten.
+
+>[!Note]
+>Microsoft hat mit BreakingPoint Cloud eine Partnerschaft zum Erstellen einer Schnittstelle gebildet, durch die Sie für Simulationen Datenverkehr für mit DDoS Protection geschützte öffentliche IP-Adressen generieren können. Weitere Informationen zur BreakingPoint Cloud-Simulation finden Sie unter [Überprüfen der DDoS-Erkennung](../../virtual-network/manage-ddos-protection.md#validate-ddos-detection).
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Wenn Sie einen bevorstehenden Penetrationstests für Ihre in Microsoft Azure gehosteten Anwendungen formell dokumentieren möchten, navigieren Sie zu [Penetration Testing Rules of Engagement](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=2) (Einsatzregeln für Penetrationstests), und füllen Sie das Testbenachrichtigungsformular aus.
+* Erfahren Sie mehr über [Penetrationstests – Rules of Engagement](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=2).

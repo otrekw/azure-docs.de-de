@@ -3,12 +3,12 @@ title: Verschlüsselung von Sicherungsdaten mit von Kunden verwalteten Schlüsse
 description: Hier erfahren Sie, wie Sie mit Azure Backup Sicherungsdaten mithilfe von kundenseitig verwalteten Schlüsseln (Customer-Managed Keys, CMK) verschlüsseln können.
 ms.topic: conceptual
 ms.date: 07/08/2020
-ms.openlocfilehash: dfed3f983867568befc77d7dbc81cdde70eef9ed
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 55b994d287e4e2d3971b43359936815822bc18a4
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88589604"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892642"
 ---
 # <a name="encryption-of-backup-data-using-customer-managed-keys"></a>Verschlüsselung von Sicherungsdaten mit von Kunden verwalteten Schlüsseln
 
@@ -39,7 +39,7 @@ In diesem Artikel werden die folgenden Themen behandelt:
 
 - Diese Funktion kann derzeit nur über das Azure-Portal konfiguriert werden.
 
-Wenn Sie Ihren Recovery Services-Tresor noch nicht erstellt und konfiguriert haben, wird [hier](backup-create-rs-vault.md) beschrieben, wie Sie dies tun können.
+Wenn Sie Ihren Recovery Services-Tresor noch nicht erstellt und konfiguriert haben, erfahren Sie [hier](backup-create-rs-vault.md), wie Sie vorgehen können.
 
 ## <a name="configuring-a-vault-to-encrypt-using-customer-managed-keys"></a>Konfigurieren eines Tresors mithilfe von kundenseitig verwalteten Schlüsseln
 
@@ -60,7 +60,7 @@ Alle diese Schritte müssen in der oben genannten Reihenfolge ausgeführt werden
 Azure Backup verwendet die vom System zugewiesene verwaltete Identität, um den Recovery Services-Tresor für den Zugriff auf die Verschlüsselungsschlüssel zu authentifizieren, die im Azure Key Vault gespeichert sind. Führen Sie die unten aufgeführten Schritte aus, um die verwaltete Identität für den Recovery Services-Tresor zu aktivieren.
 
 >[!NOTE]
->Nach der Aktivierung darf die verwaltete Identität NICHT deaktiviert werden (auch nicht vorübergehend). Die Deaktivierung der verwalteten Identität kann zu inkonsistentem Verhalten führen.
+>Nach der Aktivierung darf die verwaltete Identität **nicht** deaktiviert werden (auch nicht vorübergehend). Die Deaktivierung der verwalteten Identität kann zu inkonsistentem Verhalten führen.
 
 1. Navigieren Sie zu Ihrem Recovery Services-Tresor und dann zu **Identität**.
 
@@ -138,7 +138,7 @@ Sie können vorläufiges Löschen und Löschschutz auch über PowerShell aktivie
 > - Alle oben genannten Schritte wurden erfolgreich ausgeführt:
 >   - Die verwaltete Identität des Recovery Services-Tresors wurde aktiviert, und dieser wurden die erforderlichen Berechtigungen zugewiesen.
 >   - Vorläufiges Löschen und Löschschutz sind für den Azure Key Vault aktiviert.
-> - Der Recovery Services-Tresor, für den Sie die CMK-Verschlüsselung aktivieren möchten, weist KEINE geschützten oder registrierten Elemente auf.
+> - Der Recovery Services-Tresor, für den Sie die CMK-Verschlüsselung aktivieren möchten, weist **keine** geschützten oder registrierten Elemente auf.
 
 Sobald Sie sich versichert haben, dass die genannten Bedingungen erfüllt sind, können Sie mit der Auswahl des Verschlüsselungsschlüssels für Ihren Tresor fortfahren.
 
@@ -171,7 +171,7 @@ So weisen Sie den Schlüssel zu
 >[!NOTE]
 > Den gleichen Prozess führen Sie aus, wenn Sie den Verschlüsselungsschlüssel aktualisieren oder ändern möchten. Wenn Sie den Schlüssel aktualisieren und einen Schlüssel aus einem anderen Key Vault verwenden möchten (der sich von dem derzeit verwendeten unterscheidet), stellen Sie Folgendes sicher:
 >
-> - Der Key Vault muss sich in der gleichen Region wie der Recovery Services-Tresor befinden.
+> - Der Schlüsseltresor muss sich in derselben Region wie der Recovery Services-Tresor befinden.
 >
 > - Vorläufiges Löschen und Löschschutz sind für den Key Vault aktiviert.
 >
@@ -240,7 +240,7 @@ Nein, die CMK-Verschlüsselung kann nur für neue Tresore aktiviert werden. Dahe
 
 ### <a name="i-tried-to-protect-an-item-to-my-vault-but-it-failed-and-the-vault-still-doesnt-contain-any-items-protected-to-it-can-i-enable-cmk-encryption-for-this-vault"></a>Ich habe versucht, ein Element in meinem Tresor zu schützen, dabei ist jedoch ein Fehler aufgetreten, und der Tresor enthält immer noch keine geschützten Elemente. Kann ich die CMK-Verschlüsselung für diesen Tresor aktivieren?
 
-Nein, mit dem Tresor darf in der Vergangenheit nicht versucht worden sein, Elemente darin zu schützen.
+Nein, es darf in der Vergangenheit nicht versucht worden sein, Elemente im Tresor zu schützen.
 
 ### <a name="i-have-a-vault-that-is-using-cmk-encryption-can-i-later-revert-to-encryption-using-platform-managed-keys-even-if-i-have-backup-items-protected-to-the-vault"></a>Ich verfüge über einen Tresor, der die CMK-Verschlüsselung verwendet. Kann ich später die Verschlüsselung mit plattformseitig verwalteten Schlüsseln wiederherstellen, selbst wenn ich Sicherungselemente im Tresor geschützt habe?
 

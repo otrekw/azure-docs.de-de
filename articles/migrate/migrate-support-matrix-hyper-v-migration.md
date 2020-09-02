@@ -3,12 +3,12 @@ title: Unterstützung der Hyper-V-Migration in Azure Migrate
 description: Hier finden Sie Informationen zur Unterstützung der Hyper-V-Migration mit Azure Migrate.
 ms.topic: conceptual
 ms.date: 04/15/2020
-ms.openlocfilehash: 1ea7d139b3d3cc8c14e43ccfb7c233fcbe4c564c
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 5af2c296147bb972d121183a7d552157b4b824c7
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86122063"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88871495"
 ---
 # <a name="support-matrix-for-hyper-v-migration"></a>Unterstützungsmatrix für die Hyper-V-Migration
 
@@ -25,7 +25,7 @@ Sie können bis zu 10 VMs gleichzeitig für die Replikation auswählen. Wenn Si
 | :-------------------       | :------------------- |
 | **Bereitstellung**       | Der Hyper-V-Host kann eigenständig oder in einem Cluster bereitgestellt werden. <br/>Azure Migrate-Replikationssoftware (Hyper-V-Replikationsanbieter) ist auf den Hyper-V-Hosts installiert.|
 | **Berechtigungen**           | Sie benötigen Administratorrechte auf dem Hyper-V-Host. |
-| **Betriebssystem des Hosts** | Windows Server 2019, Windows Server 2016 oder Windows Server 2012 R2 |
+| **Betriebssystem des Hosts** | Windows Server 2019, Windows Server 2016 oder Windows Server 2012 R2 mit aktuellen Updates. Beachten Sie, dass auch die Server-Kerninstallation dieser Betriebssysteme unterstützt wird. |
 | **Portzugriff** |  Ausgehende Verbindungen über HTTPS-Port 443 zum Senden von VM-Replikationsdaten.
 
 
@@ -38,7 +38,7 @@ Sie können bis zu 10 VMs gleichzeitig für die Replikation auswählen. Wenn Si
 **Linux-VMs in Azure** | Einige VMs erfordern möglicherweise Änderungen, damit sie in Azure ausgeführt werden können.<br/><br/> Bei diesen Linux-Betriebssystemen führt Azure Migrate diese Änderungen automatisch durch:<br/> - Red Hat Enterprise Linux 6.5+, 7.0+<br/> - CentOS 6.5+, 7.0+</br> - SUSE Linux Enterprise Server 12 SP1+<br/> - Ubuntu 14.04LTS, 16.04LTS, 18.04LTS<br/> – Debian 7, 8. Bei anderen Betriebssystemen nehmen Sie die [erforderlichen Änderungen](prepare-for-migration.md#linux-machines) manuell vor.
 | **Erforderliche Änderungen für Azure** | Einige VMs erfordern möglicherweise Änderungen, damit sie in Azure ausgeführt werden können. Nehmen Sie vor der Migration Anpassungen manuell vor. Die entsprechenden Artikel enthalten Anweisungen zur Vorgehensweise. |
 | **Linux-Start**                 | Wenn sich „/boot“ in einer dedizierten Partition befindet, sollte diese auf dem Betriebssystemdatenträger und nicht auf mehrere Datenträger verteilt vorhanden sein.<br/> Wenn „/boot“ Teil der Stammpartition („/“) ist, sollte sich diese auf dem Betriebssystemdatenträger befinden und nicht auf andere Datenträger erstrecken. |
-| **UEFI-Start**                  | Der migrierte virtuelle Computer in Azure wird automatisch in einen virtuellen Computer mit BIOS-Start konvertiert. Auf dem virtuellen Computer sollte nur Windows Server 2012 oder höher ausgeführt werden. Der Betriebssystemdatenträger sollte maximal fünf Partitionen aufweisen, und die Größe des Betriebssystemdatenträgers sollte weniger als 300 GB betragen.|
+| **UEFI-Start**                  | Unterstützt. Wählen Sie eine VM-Größe aus, die für Azure-VMs der Generation 2 unterstützt wird.  |
 | **Datenträgergröße**                  | 2 TB für den Betriebssystemdatenträger, 4 TB für Datenträger|
 | **Anzahl der Datenträger** | Maximal 16 Datenträger pro virtuellem Computer|
 | **Verschlüsselte Datenträger/Volumes**    | Nicht unterstützt für die Migration.|

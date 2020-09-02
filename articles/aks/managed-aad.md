@@ -3,14 +3,14 @@ title: Verwenden von Azure AD in Azure Kubernetes Service
 description: Erfahren Sie, wie Sie Azure AD in Azure Kubernetes Service (AKS) verwenden.
 services: container-service
 ms.topic: article
-ms.date: 07/27/2020
+ms.date: 08/26/2020
 ms.author: thomasge
-ms.openlocfilehash: afc20052680e7f3e5b7d3a6b7320b7ca3b10dbd5
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 32273bbb14e6cee73f03bd83b84be77299186370
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87799856"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936995"
 ---
 # <a name="aks-managed-azure-active-directory-integration"></a>Von AKS verwaltete Azure Active Directory-Integration
 
@@ -20,7 +20,7 @@ Die von AKS verwaltete Azure AD-Integration vereinfacht deren Nutzung, weil es f
 
 Clusteradministratoren können die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) von Kubernetes auf der Grundlage einer Benutzeridentität oder Verzeichnisgruppenmitgliedschaft konfigurieren. Die Azure AD-Authentifizierung wird für AKS-Cluster mit OpenID Connect bereitgestellt. OpenID Connect ist eine Identitätsebene, die auf dem OAuth 2.0-Protokoll aufbaut. Weitere Informationen zu OpenID Connect finden Sie in der [OpenID Connect-Dokumentation][open-id-connect].
 
-Informieren Sie sich in der [Dokumentation zu den Konzepten der Azure Active Directory-Integration](concepts-identity.md#azure-active-directory-integration) über den Ablauf der AAD-Integration.
+Informieren Sie sich in der [Dokumentation zu den Konzepten der Azure Active Directory-Integration](concepts-identity.md#azure-active-directory-integration) über den Ablauf der Azure AD-Integration.
 
 ## <a name="region-availability"></a>Regionale Verfügbarkeit
 
@@ -32,22 +32,24 @@ Die von AKS verwaltete Azure Active Directory-Integration ist in öffentlichen R
 ## <a name="limitations"></a>Einschränkungen 
 
 * Die von AKS verwaltete Azure AD-Integration kann nicht deaktiviert werden.
-* Bei nicht für RBAC aktivierten Clustern wird die von AKS verwaltete AAD-Integration nicht unterstützt.
-* Die Änderung des mit der von AKS verwalteten AAD-Integration verknüpften Azure AD-Mandanten wird nicht unterstützt.
+* Bei nicht für RBAC aktivierten Clustern wird die von AKS verwaltete Azure AD-Integration nicht unterstützt.
+* Die Änderung des mit der von AKS verwalteten Azure AD-Integration verknüpften Azure AD-Mandanten wird nicht unterstützt.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Azure CLI ab Version 2.9.0
-* Kubectl mit der Mindestversion [1.18](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.18.md#v1180)
+* Azure-Befehlszeilenschnittstelle ab Version 2.11.0
+* kubectl mit der Mindestversion [1.18.1](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.18.md#v1181) oder [kubelogin](https://github.com/Azure/kubelogin)
+* Wenn Sie [Helm](https://github.com/helm/helm) verwenden, benötigen Sie mindestens Version 3.3 von Helm.
 
 > [!Important]
-> Sie müssen Kubectl mit der Mindestversion 1.18 verwenden.
+> Sie müssen kubectl mit der Mindestversion 1.18.1 verwenden. Wenn Sie nicht die richtige Version verwenden, können Authentifizierungsprobleme auftreten.
 
-Verwenden Sie zum Installieren von Kubectl die folgenden Befehle:
+Verwenden Sie zum Installieren von kubectl und kubelogin die folgenden Befehle:
 
 ```azurecli-interactive
 sudo az aks install-cli
 kubectl version --client
+kubelogin --version
 ```
 
 Verwenden Sie für andere Betriebssysteme [diese Anweisungen](https://kubernetes.io/docs/tasks/tools/install-kubectl/).
@@ -138,6 +140,31 @@ Zum Ausführen dieser Schritte benötigen Sie Zugriff auf die integrierte [Admin
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myManagedCluster --admin
 ```
+
+## <a name="enable-aks-managed-azure-ad-integration-on-your-existing-cluster"></a>Aktivieren der von AKS verwalteten Azure AD-Integration in einem vorhandenen Cluster
+
+Sie können die von AKS verwaltete Azure AD-Integration in einem vorhandenen Cluster mit RBAC aktivieren. Stellen Sie sicher, dass Ihre Administratorengruppe Zugriff auf Ihren Cluster behält.
+
+```azurecli-interactive
+az aks update -g MyResourceGroup -n MyManagedCluster --enable-aad --aad-admin-group-object-ids <id-1> [--aad-tenant-id <id>]
+```
+
+Eine erfolgreiche Aktivierung eines von AKS verwalteten Azure AD-Clusters wird im Antworttext mit dem folgenden Abschnitt angegeben:
+
+```output
+"AADProfile": {
+    "adminGroupObjectIds": [
+      "5d24****-****-****-****-****afa27aed"
+    ],
+    "clientAppId": null,
+    "managed": true,
+    "serverAppId": null,
+    "serverAppSecret": null,
+    "tenantId": "72f9****-****-****-****-****d011db47"
+  }
+```
+
+Laden Sie die Benutzeranmeldeinformationen erneut herunter, um auf Ihren Cluster zuzugreifen, indem Sie [diese Schritte][access-cluster] ausführen.
 
 ## <a name="upgrading-to-aks-managed-azure-ad-integration"></a>Upgrade auf die von AKS verwaltete Azure AD-Integration
 

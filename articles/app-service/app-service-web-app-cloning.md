@@ -5,12 +5,12 @@ ms.assetid: f9a5cfa1-fbb0-41e6-95d1-75d457347a35
 ms.topic: article
 ms.date: 01/14/2016
 ms.custom: seodec18
-ms.openlocfilehash: e7ad45ea4cb1049ed7eeb454162e23e81ed35019
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 92e893fe9f74d51856faf39d3e4800dd5a8155db
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78255200"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815384"
 ---
 # <a name="azure-app-service-app-cloning-using-powershell"></a>Klonen der Azure App Service-App mit PowerShell
 
@@ -107,6 +107,8 @@ Das folgende Beispiel zeigt, wie nach der Zusammenstellung der Traffic Manager-I
 ```powershell
 $destapp = New-AzWebApp -ResourceGroupName <Resource group name> -Name dest-webapp -Location "South Central US" -AppServicePlan DestinationAppServicePlan -SourceWebApp $srcapp -TrafficManagerProfileId $TMProfileID
 ```
+> [!NOTE]
+> Wenn Sie einen Fehler mit dem Hinweis erhalten, dass bei der SSL-Überprüfung für den Traffic Manager-Hostnamen ein Fehler auftritt, wird empfohlen, beim Klonvorgang das Attribut „-IgnoreCustomHostNames“ im PowerShell-Cmdlet oder das Portal zu verwenden.
 
 ## <a name="current-restrictions"></a>Aktuelle Einschränkungen
 Hier finden Sie die bekannten Einschränkungen für das App-Klonen:

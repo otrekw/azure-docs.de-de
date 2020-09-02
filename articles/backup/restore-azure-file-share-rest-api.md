@@ -3,12 +3,12 @@ title: Wiederherstellen von Azure-Dateifreigaben mit der REST-API
 description: Erfahren Sie, wie Sie die REST-API verwenden, um Azure-Dateifreigaben oder bestimmte Dateien aus einem von Azure Backup erstellten Wiederherstellungspunkt wiederherstellen.
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: 3a1f2999fa1b50507fd3d1b6f21f508ec9f82841
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 60c73caa5db684e38b94b4d5786f2fd24aa65d08
+ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86538155"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88761796"
 ---
 # <a name="restore-azure-file-shares-using-rest-api"></a>Wiederherstellen von Azure-Dateifreigaben mit der REST-API
 
@@ -64,7 +64,7 @@ Der GET-URI enthält alle erforderlichen Parameter. Ein zusätzlicher Anforderun
 GET https://management.azure.com/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48af3d1/resourceGroups/azurefiles/providers/Microsoft.RecoveryServices/vaults/azurefilesvault/backupFabrics/Azure/protectionContainers/StorageContainer;storage;azurefiles;afsaccount/protectedItems/AzureFileShare;azurefiles/recoveryPoints?api-version=2019-05-13
 ```
 
-### <a name="example-response"></a>Beispielantwort
+### <a name="example-response-for-fetch-recovery-points"></a>Beispielantwort für das Abrufen von Wiederherstellungspunkten
 
 Wenn der GET-URI übermittelt wird, wird die Antwort „200“ zurückgegeben:
 
@@ -168,7 +168,7 @@ Die vollständige Liste mit Definitionen des Anforderungstexts und weiteren Einz
 
 ### <a name="restore-to-original-location"></a>An ursprünglichem Speicherort wiederherstellen
 
-#### <a name="request-body-example"></a>Beispiel für Anforderungstext
+#### <a name="request-body-example-for-restore-to-original-location"></a>Beispiel für Anforderungstext für das Wiederherstellen am ursprünglichen Speicherort
 
 Der folgende Anforderungstext definiert Eigenschaften, die zum Auslösen der Wiederherstellung einer Azure-Dateifreigabe erforderlich sind.
 
@@ -192,7 +192,7 @@ Geben Sie die folgenden Parameter für die Wiederherstellung an einem alternativ
 * **name:** Die Dateifreigabe in dem Zielspeicherkonto, in dem der gesicherte Inhalt wiederhergestellt wird.
 * **targetFolderPath**: Der Ordner unter der Dateifreigabe, in dem die Daten wiederhergestellt werden.
 
-#### <a name="request-body-example"></a>Beispiel für Anforderungstext
+#### <a name="request-body-example-for-restore-to-alternate-location"></a>Beispiel für den Anforderungstext für das Wiederherstellen an einem alternativen Speicherort
 
 Der folgende Anforderungstext stellt die Dateifreigabe *azurefiles* im Speicherkonto *afsaccount* in der Dateifreigabe *azurefiles1* im Speicherkonto *afaccount1* wieder her.
 
@@ -366,7 +366,7 @@ Die Werte {containerName} und {protectedItemName} werden wie [hier](#fetch-conta
 POST https://management.azure.com/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48af3d1/resourceGroups/azurefiles/providers/Microsoft.RecoveryServices/vaults/azurefilesvault/backupFabrics/Azure/protectionContainers/StorageContainer;storage;azurefiles;afsaccount/protectedItems/AzureFileShare%3Bazurefiles/recoveryPoints/932886657837421071/restore?api-version=2019-05-13'
 ```
 
-### <a name="create-request-body"></a>Erstellen des Anforderungstexts
+### <a name="create-request-body-for-item-level-recovery-using-rest-api"></a>Erstellen des Anforderungstexts für die Wiederherstellung auf Elementebene mithilfe der REST-API
 
 Zum Auslösen einer Wiederherstellung für eine Azure-Dateifreigabe werden folgende Komponenten des Anforderungstexts angegeben:
 
@@ -376,7 +376,7 @@ Eigenschaften | AzureFileShareRestoreRequest | RestoreRequestResource-Eigenschaf
 
 Die vollständige Liste mit Definitionen des Anforderungstexts und weiteren Einzelheiten finden Sie im [Dokument zur REST-API zum Auslösen der Wiederherstellung](/rest/api/backup/restores/trigger#request-body).
 
-### <a name="restore-to-original-location"></a>An ursprünglichem Speicherort wiederherstellen
+### <a name="restore-to-original-location-for-item-level-recovery-using-rest-api"></a>Wiederherstellen am ursprünglichen Speicherort für die Wiederherstellung auf Elementebene mithilfe der REST-API
 
 Der folgende Anforderungstext soll die Datei *Restoretest.txt* in der Dateifreigabe *azurefiles* im Speicherkonto *afsaccount* wiederherstellen.
 
@@ -402,7 +402,7 @@ Erstellen des Anforderungstexts
 }
 ```
 
-### <a name="restore-to-alternate-location"></a>Wiederherstellen an einem alternativen Speicherort
+### <a name="restore-to-alternate-location-for-item-level-recovery-using-rest-api"></a>Wiederherstellen an einem alternativen Speicherort für die Wiederherstellung auf Elementebene mithilfe der REST-API
 
 Der folgende Anforderungstext soll die Datei *Restoretest.txt* in der Dateifreigabe *azurefiles* im Speicherkonto *afsaccount* im Ordner *restoredata* der Dateifreigabe *azurefiles1* im Speicherkonto *afaccount1* wiederherstellen.
 

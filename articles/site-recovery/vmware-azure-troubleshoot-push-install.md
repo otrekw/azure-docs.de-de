@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.author: ramamill
 ms.date: 04/03/2020
-ms.openlocfilehash: db66137ac4b233a7e5d3040cf38dc69a089b0c9a
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 8ee6449f357a578b30809bb03723ac1556e4f459
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88185212"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816170"
 ---
 # <a name="troubleshoot-mobility-service-push-installation"></a>Beheben von Problemen bei Pushinstallationen von Mobility Service
 
@@ -129,6 +129,28 @@ So beheben Sie den Fehler
 ## <a name="connectivity-failure-errorid-95523"></a>Konnektivitätsfehler (Fehler-ID: 95523)
 
 Dieser Fehler tritt auf, wenn das Netzwerk, in dem sich der Quellcomputer befindet, nicht gefunden wurde. Möglicherweise wurde er gelöscht oder ist nicht mehr verfügbar. Dieser Fehler kann nur behoben werden, indem Sie sicherstellen, dass das Netzwerk vorhanden ist.
+
+## <a name="check-access-for-network-shared-folders-on-source-machine-errorid-9510595523"></a>Überprüfen Sie den Zugriff auf freigegebene Netzwerkordner auf dem Quellcomputer (ErrorID: 95105,95523)
+
+Überprüfen Sie, ob mithilfe der angegebenen Anmeldeinformationen vom Prozessserver (PS) aus auf die freigegebenen Netzwerkordner auf dem virtuellen Computer zugegriffen werden kann. So bestätigen Sie den Zugriff 
+
+1. Melden Sie sich auf dem Prozessservercomputer an.
+2. Öffnen Sie den Datei-Explorer. Geben Sie auf der Adressleiste `\\<SOURCE-MACHINE-IP>\C$` ein, und drücken Sie dann die EINGABETASTE.
+
+    ![Öffnen des Ordners auf dem PS](./media/vmware-azure-troubleshoot-push-install/open-folder-process-server.PNG)
+
+3. Sie werden im Datei-Explorer zur Eingabe von Anmeldeinformationen aufgefordert. Geben Sie den Benutzernamen und das Kennwort ein, und klicken Sie auf „OK“. <br><br/>
+
+    ![Angeben der Anmeldeinformationen](./media/vmware-azure-troubleshoot-push-install/provide-credentials.PNG)
+
+    >[!NOTE]
+    > Wenn der Quellcomputer in eine Domäne eingebunden ist, geben Sie den Domänennamen zusammen mit dem Benutzernamen als `<domainName>\<username>` ein. Wenn der Quellcomputer einer Arbeitsgruppe angehört, geben Sie nur den Benutzernamen an.
+
+4. Wenn die Verbindung erfolgreich ist, können Sie die Ordner des Quellcomputers remote vom Prozessserver aus anzeigen.
+
+    ![Sichtbare Ordner auf dem Quellcomputer](./media/vmware-azure-troubleshoot-push-install/visible-folders-from-source.png)
+
+Wenn die Verbindung nicht erfolgreich ist, überprüfen Sie, ob alle Voraussetzungen erfüllt sind.
 
 ## <a name="file-and-printer-sharing-services-check-errorid-95105--95106"></a>Überprüfung der Datei- und Druckerfreigabedienste (Fehler-ID: 95105 & 95106)
 
@@ -260,7 +282,7 @@ Zum Kopieren des Mobility-Agents auf den Quellcomputer ist freier Speicherplatz 
 
 ## <a name="low-system-resources"></a>Geringe Systemressourcen
 
-Dieses Problem tritt auf, wenn das System über wenig verfügbaren Arbeitsspeicher verfügt und nicht in der Lage ist, Arbeitsspeicher für die Installation des Mobilitätsdiensts zuzuweisen. Stellen Sie sicher, dass genügend Arbeitsspeicher verfügbar ist, damit die Installation fortgesetzt und erfolgreich abgeschlossen werden kann.
+Die möglichen Fehler-IDs für dieses Problem sind 95572 und 95573. Dieses Problem tritt auf, wenn das System über wenig verfügbaren Arbeitsspeicher verfügt und nicht in der Lage ist, Arbeitsspeicher für die Installation des Mobilitätsdiensts zuzuweisen. Stellen Sie sicher, dass genügend Arbeitsspeicher verfügbar ist, damit die Installation fortgesetzt und erfolgreich abgeschlossen werden kann.
 
 ## <a name="vss-installation-failures"></a>Fehler bei der VSS-Installation
 

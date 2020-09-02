@@ -3,12 +3,12 @@ title: Löschen eines Microsoft Azure Recovery Services-Tresors
 description: In diesem Artikel erfahren Sie, wie Sie die Abhängigkeiten eines Azure Backup-Recovery Services-Tresors aufheben und ihn dann löschen.
 ms.topic: conceptual
 ms.date: 06/04/2020
-ms.openlocfilehash: 41d0cbc8e1c59f33efc24f38b535aa9cf91b2cc9
-ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
+ms.openlocfilehash: c0b75d147abba45a745f811de5e4b8ac45088bd8
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2020
-ms.locfileid: "88257950"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826734"
 ---
 # <a name="delete-an-azure-backup-recovery-services-vault"></a>Löschen eines Azure Backup-Recovery Services-Tresors
 
@@ -18,7 +18,7 @@ In diesem Artikel wird beschrieben, wie Sie einen Recovery Services-Tresor von [
 
 Es ist nicht möglich, einen Recovery Services-Tresor zu löschen, der über die folgenden Abhängigkeiten verfügt:
 
-- Es ist nicht möglich, einen Tresor zu löschen, der geschützte Datenquellen (z. B. IaaS-VMs, SQL-Datenbanken, Azure-Dateifreigaben usw.) enthält.  
+- Es ist nicht möglich, einen Tresor zu löschen, der geschützte Datenquellen (z. B. IaaS-VMs, SQL-Datenbanken, Azure-Dateifreigaben) enthält.
 - Es ist nicht möglich, einen Tresor zu löschen, der Sicherungsdaten enthält. Nachdem die Sicherungsdaten gelöscht wurden, werden sie in den vorläufig gelöschten Zustand versetzt.
 - Es ist nicht möglich, einen Tresor zu löschen, der Sicherungsdaten im vorläufig gelöschten Zustand enthält.
 - Es ist nicht möglich, einen Tresor zu löschen, der über registrierte Speicherkonten verfügt.
@@ -45,7 +45,7 @@ Zum ordnungsgemäßen Löschen eines Tresors müssen Sie die Schritte in dieser 
   - **In der Cloud geschützte Elemente**: Wählen Sie im Dashbordmenü des Tresors die Option **Sicherungselemente** aus. Alle hier aufgelisteten Elemente müssen mit **Sicherung abbrechen** oder **Sicherungsdaten löschen** zusammen mit den zugehörigen Sicherungsdaten gelöscht werden.  [Führen Sie die folgenden Schritte aus](#delete-protected-items-in-the-cloud), um diese Elemente zu entfernen.
   - **SQL Server-Instanz:** Wählen Sie im Dashbordmenü des Tresors die Option **Sicherungsinfrastruktur** > **Geschützte Server** aus. Wählen Sie unter Geschützte Server den Server aus, dessen Registrierung Sie aufheben möchten. Sie müssen die Registrierung aller Server aufheben, um den Tresor zu löschen. Klicken Sie mit der rechten Maustaste auf den geschützten Server und dann auf **Registrierung aufheben**.
   - **MARS-geschützte Server**: Wählen Sie im Dashbordmenü des Tresors die Option **Sicherungsinfrastruktur** > **Geschützte Server** aus. Wenn Sie über Mars-geschützte Server verfügen, müssen alle hier aufgeführten Elemente zusammen mit den zugehörigen Sicherungsdaten gelöscht werden. [Führen Sie die folgenden Schritte aus](#delete-protected-items-on-premises), um MARS-geschützten Server zu löschen.
-   - **MABS- oder DPM-Verwaltungs Server**: Wählen Sie im Dashbordmenü des Tresors die Option **Sicherungsinfrastruktur** > **Server für die Sicherungsverwaltung** aus. Wenn Sie über DPM- oder Azure Backup Server (MABS) verfügen, müssen alle hier aufgelisteten Elemente zusammen mit den zugehörigen Sicherungsdaten gelöscht werden bzw deren Registrierung muss aufgehoben werden. [Führen Sie die folgenden Schritte aus](#delete-protected-items-on-premises), um die Verwaltungsserver zu löschen.
+  - **MABS- oder DPM-Verwaltungs Server**: Wählen Sie im Dashbordmenü des Tresors die Option **Sicherungsinfrastruktur** > **Server für die Sicherungsverwaltung** aus. Wenn Sie über DPM- oder Azure Backup Server (MABS) verfügen, müssen alle hier aufgelisteten Elemente zusammen mit den zugehörigen Sicherungsdaten gelöscht werden bzw deren Registrierung muss aufgehoben werden. [Führen Sie die folgenden Schritte aus](#delete-protected-items-on-premises), um die Verwaltungsserver zu löschen.
 
 - **Schritt 4:** Sie müssen sicherstellen, dass alle registrierten Speicherkonten gelöscht werden. Wählen Sie im Dashbordmenü des Tresors die Option **Sicherungsinfrastruktur** > **Speicherkonten** aus. Wenn hier Speicherkonten aufgeführt sind, müssen Sie die Registrierung für alle diese Kosten aufheben. Weitere Informationen zum Aufheben der Registrierung des Kontos finden Sie unter [Aufheben der Registrierung eines Speicherkontos](manage-afs-backup.md#unregister-a-storage-account).
 
@@ -301,7 +301,7 @@ So löschen Sie einen Recovery Services-Tresor:
 Lesen Sie zuerst den Abschnitt **[Vorbereitung](#before-you-start)** , um sich mit den Abhängigkeiten und dem Prozess zum Löschen des Tresors vertraut zu machen.
 
 > [!NOTE]
-> Zurzeit unterstützt Azure Backup CLI nur die Verwaltung von Azure-VM-Sicherungen, sodass der folgende Befehl zum Löschen des Tresors nur dann funktioniert, wenn der Tresor Sicherungen virtueller Azure-Computer enthält. Sie können einen Tresor nicht mithilfe der Azure Backup CLI löschen, wenn der Tresor ein Sicherungselement eines anderen Typs als Azure-VMs enthält.
+> Zurzeit unterstützt Azure Backup CLI nur die Verwaltung von Azure-VM-Sicherungen, sodass der folgende Befehl zum Löschen des Tresors nur dann funktioniert, wenn der Tresor Sicherungen virtueller Azure-Computer enthält. Sie können einen Tresor nicht mithilfe der Azure Backup-Befehlszeilenschnittstelle löschen, wenn der Tresor ein Sicherungselement eines anderen Typs als Azure-VMs enthält.
 
 Führen Sie die folgenden Schritte aus, um den vorhandenen Recovery Services-Tresor zu löschen:
 
@@ -357,13 +357,13 @@ Weitere Informationen zum ARMClient-Befehl finden Sie unter [ARMClient README](h
 1. Führen Sie den folgenden Befehl mit Ihrer Abonnement-ID, dem Namen der Ressourcengruppe und dem Namen des Tresors aus. Wenn keine Abhängigkeiten vorliegen, wird der Tresor beim Ausführen des folgenden Befehls gelöscht:
 
    ```azurepowershell
-   ARMClient.exe delete /subscriptions/<subscriptionID>/resourceGroups/<resourcegroupname>/providers/Microsoft.RecoveryServices/vaults/<recovery services vault name>?api-version=2015-03-15
+   ARMClient.exe delete /subscriptions/<subscriptionID>/resourceGroups/<resourcegroupname>/providers/Microsoft.RecoveryServices/vaults/<Recovery Services vault name>?api-version=2015-03-15
    ```
 
 2. Ist der Tresor nicht leer, erhalten Sie die folgende Fehlermeldung: *Der Tresor kann nicht gelöscht werden, weil sich im Tresor vorhandene Ressourcen befinden.* Führen Sie den folgenden Befehl aus, um in einem Tresor enthaltene geschützte Elemente oder Container zu entfernen:
 
    ```azurepowershell
-   ARMClient.exe delete /subscriptions/<subscriptionID>/resourceGroups/<resourcegroupname>/providers/Microsoft.RecoveryServices/vaults/<recovery services vault name>/registeredIdentities/<container name>?api-version=2016-06-01
+   ARMClient.exe delete /subscriptions/<subscriptionID>/resourceGroups/<resourcegroupname>/providers/Microsoft.RecoveryServices/vaults/<Recovery Services vault name>/registeredIdentities/<container name>?api-version=2016-06-01
    ```
 
 3. Vergewissern Sie sich im Azure-Portal, dass der Tresor gelöscht wurde.

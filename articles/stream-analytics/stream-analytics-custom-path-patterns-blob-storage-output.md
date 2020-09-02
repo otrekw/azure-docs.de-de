@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 02/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: dc37cb985ae561ddbd06c2236ab77d6d20d9242c
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: b6d6838779d4f219a8ce10b2cf3ae6cd620762a3
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83747635"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88869812"
 ---
 # <a name="azure-stream-analytics-custom-blob-output-partitioning"></a>Benutzerdefinierte Blobausgabepartitionierung in Azure Stream Analytics
 
@@ -113,7 +113,7 @@ MSCK REPAIR TABLE while hive.exec.dynamic.partition true
 
 ### <a name="example"></a>Beispiel
 
-Erstellen Sie ein Speicherkonto, eine Ressourcengruppe, einen Stream Analytics-Auftrag und eine Eingabequelle gemäß der Schnellstartanleitung [Azure Stream Analytics Azure-Portal](stream-analytics-quick-create-portal.md). Verwenden Sie dieselben Beispieldaten wie in der Schnellstartanleitung, die auch auf [GitHub](https://raw.githubusercontent.com/Azure/azure-stream-analytics/master/Samples/GettingStarted/HelloWorldASA-InputStream.json) verfügbar sind.
+Erstellen Sie ein Speicherkonto, eine Ressourcengruppe, einen Stream Analytics-Auftrag und eine Eingabequelle gemäß der Schnellstartanleitung [Schnellstart: Erstellen eines Stream Analytics-Auftrags mithilfe des Azure-Portals](stream-analytics-quick-create-portal.md). Verwenden Sie dieselben Beispieldaten wie in der Schnellstartanleitung, die auch auf [GitHub](https://raw.githubusercontent.com/Azure/azure-stream-analytics/master/Samples/GettingStarted/HelloWorldASA-InputStream.json) verfügbar sind.
 
 Erstellen Sie eine Blobausgabesenke mit der folgenden Konfiguration:
 

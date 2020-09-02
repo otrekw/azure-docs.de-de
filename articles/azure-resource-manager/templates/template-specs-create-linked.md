@@ -2,13 +2,13 @@
 title: Erstellen einer Vorlagenspezifikation mit verknüpften Vorlagen
 description: In diesem Artikel erfahren Sie, wie Sie eine Vorlagenspezifikation mit verknüpften Vorlagen erstellen.
 ms.topic: conceptual
-ms.date: 07/22/2020
-ms.openlocfilehash: b952baa465092fef19ad2feb11a43328a6177d1c
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.date: 08/26/2020
+ms.openlocfilehash: 49a26bf61c3c66f41761afe293471575e76c4eb9
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387862"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936366"
 ---
 # <a name="tutorial-create-a-template-spec-with-linked-templates-preview"></a>Tutorial: Erstellen einer Vorlagenspezifikation mit verknüpften Vorlagen (Vorschau)
 
@@ -164,28 +164,59 @@ Die Eigenschaft `relativePath` ist immer relativ zu der Vorlagendatei, in der `r
 
 Vorlagenspezifikationen werden in Ressourcengruppen gespeichert.  Erstellen Sie mit dem folgenden Skript eine Ressourcengruppe und anschließend eine Vorlagenspezifikation. Der Name der Vorlagenspezifikation ist **webSpec**.
 
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
 ```azurepowershell
 New-AzResourceGroup `
   -Name templateSpecRG `
   -Location westus2
 
 New-AzTemplateSpec `
-  -ResourceGroupName templateSpecRG `
   -Name webSpec `
   -Version "1.0.0.0" `
+  -ResourceGroupName templateSpecRG `
   -Location westus2 `
   -TemplateJsonFile "c:\Templates\linkedTS\azuredeploy.json"
 ```
 
+# <a name="cli"></a>[BEFEHLSZEILENSCHNITTSTELLE (CLI)](#tab/azure-cli)
+
+```azurecli
+az group create \
+  --name templateSpecRG \
+  --location westus2
+
+az template-specs create \
+  --name webSpec \
+  --version "1.0.0.0" \
+  --resource-group templateSpecRG \
+  --location "westus2" \
+  --template-file "c:\Templates\linkedTS\azuredeploy.json"
+```
+
+---
+
 Wenn Sie fertig sind, können Sie die Vorlagenspezifikation über das Azure-Portal oder das folgende Cmdlet anzeigen:
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell-interactive
 Get-AzTemplateSpec -ResourceGroupName templatespecRG -Name webSpec
 ```
 
-## <a name="deploy-template-spec"></a>Bereitstellen von Vorlagenspezifikationen
+# <a name="cli"></a>[BEFEHLSZEILENSCHNITTSTELLE (CLI)](#tab/azure-cli)
+
+```azurecli
+az template-specs show --name webSpec --resource-group templateSpecRG --version "1.0.0.0"
+```
+
+---
+
+## <a name="deploy-template-spec"></a>Bereitstellen der Vorlagenspezifikationen
 
 Jetzt können Sie die Vorlagenspezifikation bereitstellen. Das Bereitstellen der Vorlagenspezifikation gestaltet sich genauso wie die Bereitstellung der enthaltenen Vorlage, mit der Ausnahme, dass Sie die Ressourcen-ID der Vorlagenspezifikation übergeben. Sie verwenden dieselben Bereitstellungsbefehle und übergeben bei Bedarf Parameterwerte für die Vorlagenspezifikation.
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroup `
@@ -198,6 +229,25 @@ New-AzResourceGroupDeployment `
   -TemplateSpecId $id `
   -ResourceGroupName webRG
 ```
+
+# <a name="cli"></a>[BEFEHLSZEILENSCHNITTSTELLE (CLI)](#tab/azure-cli)
+
+```azurecli
+az group create \
+  --name webRG \
+  --location westus2
+
+id = $(az template-specs show --name webSpec --resource-group templateSpecRG --version "1.0.0.0" --query "id")
+
+az deployment group create \
+  --resource-group webRG \
+  --template-spec $id
+```
+
+> [!NOTE]
+> Es gibt ein bekanntes Problem beim Abrufen der Vorlagenspezifikations-ID und deren Zuweisung zu einer Variable in Windows PowerShell.
+
+---
 
 ## <a name="next-steps"></a>Nächste Schritte
 

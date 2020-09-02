@@ -6,16 +6,16 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: how-to
-ms.date: 06/05/2020
+ms.date: 08/26/2020
 ms.author: ramkris
 ms.reviewer: sngun
 ms.custom: devx-track-java
-ms.openlocfilehash: a45a47b36ca0e9c426c84bb4b9f87ee5bdeccb84
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 5adc15eb7beab4d54156456ee447a7e6039b6c6d
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87309153"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892608"
 ---
 # <a name="use-bulk-executor-java-library-to-perform-bulk-operations-on-azure-cosmos-db-data"></a>Verwenden der BulkExecutor-Java-Bibliothek zum Ausführen von Massenvorgängen in Azure Cosmos DB
 
@@ -183,7 +183,8 @@ Sie können vorhandene Dokumente mithilfe der BulkUpdateAsync-API aktualisieren.
    |int getNumberOfDocumentsUpdated()  |   Die Gesamtanzahl von Dokumenten, die von allen an den Massenaktualisierungs-API-Aufruf gesendeten Dokumenten erfolgreich aktualisiert wurden.      |
    |double getTotalRequestUnitsConsumed() |  Die Gesamtanzahl von Anforderungseinheiten, die vom Massenaktualisierungs-API-Aufruf verbraucht wurden.       |
    |Duration getTotalTimeTaken()  |   Die Gesamtzeit, die der Massenaktualisierungs-API-Aufruf benötigt, um die Ausführung abzuschließen.      |
-   |List\<Exception> getErrors()   |       Ruft die Liste der Fehler ab, wenn einige der im Batch an den Massenaktualisierungs-API-Aufruf übermittelten Dokumente nicht eingefügt werden konnten.      |
+   |List\<Exception> getErrors()   |       Ruft die Liste der Betriebs- oder Netzwerkprobleme im Zusammenhang mit dem Aktualisierungsvorgang ab.      |
+   |List\<BulkUpdateFailure> getFailedUpdates()   |       Ruft die Liste der Aktualisierungen, die nicht abgeschlossen werden konnten, zusammen mit den spezifischen Ausnahmen ab, die zu den Fehlern geführt haben.|
 
 3. Wenn die Massenaktualisierungsanwendung fertig ist, erstellen Sie das Befehlszeilenprogramm aus der Quelle, indem Sie den Befehl „mvn clean package“ ausführen. Dieser Befehl generiert eine JAR-Datei im Zielordner:  
 

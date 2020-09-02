@@ -6,18 +6,21 @@ author: laurenhughes
 ms.topic: article
 ms.date: 08/11/2020
 ms.author: lahugh
-ms.openlocfilehash: 109192efa19605af003dcfb30592c865ce7495b5
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: 4a0acf284475f3c9119f3b9d012debad656b1faa
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88136627"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88661349"
 ---
 # <a name="access-kubernetes-resources-from-the-azure-portal-preview"></a>Zugreifen auf Kubernetes-Ressourcen über das Azure-Portal (Vorschau)
 
 Das Azure-Portal umfasst eine Kubernetes-Ressourcenanzeige (Vorschau) für den einfachen Zugriff auf die Kubernetes-Ressourcen in Ihrem Azure Kubernetes Service-Cluster (AKS). Durch das Anzeigen von Kubernetes-Ressourcen aus dem Azure-Portal wird das Wechseln des Kontexts zwischen dem Azure-Portal und dem `kubectl`-Befehlszeilentool verringert, wodurch die Erfahrung des Anzeigens und Bearbeitens Ihrer Kubernetes-Ressourcen optimiert wird. Die Ressourcenanzeige enthält derzeit mehrere Ressourcentypen, z. B. Bereitstellungen, Pods und Replikatgruppen.
 
 Die Kubernetes-Ressourcenansicht im Azure-Portal ersetzt das [AKS-Dashboard-Add-On][kubernetes-dashboard], das als veraltet festgelegt wird.
+
+>[!NOTE]
+>Diese Funktion wird zurzeit in [privaten Azure Kubernetes Service-Clustern](https://docs.microsoft.com/azure/aks/private-clusters) nicht unterstützt.
 
 [!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 

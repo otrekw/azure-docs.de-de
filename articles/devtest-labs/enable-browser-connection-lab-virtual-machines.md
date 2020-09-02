@@ -3,12 +3,12 @@ title: Aktivieren der Browserverbindung auf Azure DevTest Labs-VMs
 description: DevTest Labs und Azure Bastion sind jetzt integriert. Als Besitzer des Labs können Sie den Zugriff auf alle Lab-VMs über einen Browser aktivieren.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 8c78b872855b3fe21f2cb41d394c599aeca7a790
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 28a3c11f3df578265f9746a173fcb3029a132b26
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87272350"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88870492"
 ---
 # <a name="enable-browser-connection-on-azure-devtest-labs-virtual-machines"></a>Aktivieren der Browserverbindung auf Azure DevTest Labs-VMs 
 DevTest Labs und [Azure Bastion](../bastion/index.yml) sind integriert, sodass Sie über einen Browser eine Verbindung mit Ihren virtuellen Computern herstellen können. Zuerst müssen Sie die Browserverbindung auf Lab-VMs aktivieren.
@@ -19,14 +19,12 @@ Als Besitzer eines Labs können Sie den Zugriff auf alle Lab-VMs über einen Bro
 Dieser Artikel erläutert, wie Sie die Browserverbindung auf Lab-VMs aktivieren.
 
 ## <a name="prerequisites"></a>Voraussetzungen 
-Sie können einen Bastionhost im virtuellen Netzwerk Ihres bestehenden Labs bereitstellen **ODER** Ihr Lab mit einem mit Bastion konfigurierten virtuellen Netzwerk verbinden. 
-
+- Sie können einen Bastionhost im virtuellen Netzwerk Ihres bestehenden Labs bereitstellen **ODER** Ihr Lab mit einem mit Bastion konfigurierten virtuellen Netzwerk verbinden.
 Informationen zum Bereitstellen eines Bastionhosts in einem virtuellen Netzwerk finden Sie unter [Erstellen eines Azure Bastion-Hosts](../bastion/bastion-create-host-portal.md). Wenn Sie den Bastion-Host erstellen, wählen Sie das virtuelle Netzwerk des Labs aus. 
-
-Zunächst müssen Sie ein zweites Subnetz im virtuellen Bastion-Netzwerk erstellen, da in AzureBastionSubnet keine Nicht-Bastion-Ressourcen erstellt werden können. 
+- Der Labbenutzer muss über eine Rolle **Leser** auf dem Bastionhost und in dem virtuellen Netzwerk verfügen, in dem Bastion konfiguriert ist. 
 
 ## <a name="create-a-second-sub-net-in-the-bastion-virtual-network"></a>Erstellen eines zweiten Subnetzes im virtuellen Bastion-Netzwerk
-Sie können in einem Azure Bastion-Subnetz keine Lab-VMs erstellen. Erstellen Sie ein weiteres Subnetz innerhalb des virtuellen Bastion-Netzwerks, wie in der folgenden Abbildung dargestellt:
+Zunächst müssen Sie ein zweites Subnetz im virtuellen Bastion-Netzwerk erstellen, da in AzureBastionSubnet keine Nicht-Bastion-Ressourcen erstellt werden können. Erstellen Sie ein weiteres Subnetz innerhalb des virtuellen Bastion-Netzwerks, wie in der folgenden Abbildung dargestellt:
 
 ![Zweites Subnetz in einem virtuellen Azure Bastion-Netzwerk](./media/connect-virtual-machine-through-browser/second-subnet.png)
 

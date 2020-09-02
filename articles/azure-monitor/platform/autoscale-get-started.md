@@ -4,12 +4,12 @@ description: Informationen zum Skalieren Ihrer Ressource Web-App, Clouddienst, v
 ms.topic: conceptual
 ms.date: 07/07/2017
 ms.subservice: autoscale
-ms.openlocfilehash: 67b041476ecc5b5da389ab1377025a94675fc42a
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 710d4e1aa77f8ab3153dafc77a72eec2192cf205
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88078885"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88794544"
 ---
 # <a name="get-started-with-autoscale-in-azure"></a>Erste Schritte mit der automatischen Skalierung in Azure
 In diesem Artikel wird beschrieben, wie Sie Ihre automatische Skalierungseinstellung für Ihre Ressource im Microsoft Azure-Portal einrichten.
@@ -112,6 +112,28 @@ Nun können Sie die Anzahl der Instanzen festlegen, die manuell skaliert werden 
 ![Festlegen der manuellen Skalierung][14]
 
 Sie können immer zur automatischen Skalierung zurückkehren, indem Sie auf **Automatische Skalierung aktivieren** und dann auf **Speichern** klicken.
+
+## <a name="route-traffic-to-healthy-instances-app-service"></a>Weiterleiten von Datenverkehr an fehlerfreie Instanzen (App Service)
+
+Wenn Sie auf mehrere Instanzen aufskalieren, kann App Service Integritätsprüfungen für Ihre Instanzen durchführen, damit Datenverkehr nur an die fehlerfreien Instanzen weitergeleitet wird. Öffnen Sie hierzu im Portal Ihre App Service-Instanz, und wählen Sie dann **Integrität überprüfen** unter **Überwachung** aus. Wählen Sie **Aktivieren** aus, und geben Sie einen gültigen URL-Pfad für die Anwendung an, z. B. `/health` oder `/api/health`. Klicken Sie auf **Speichern**.
+
+### <a name="health-check-path"></a>Pfad der Integritätsüberprüfung
+
+Der Pfad muss innerhalb von zwei Minuten mit einem Statuscode zwischen 200 und 299 (einschließlich) antworten. Wenn der Pfad nicht innerhalb von zwei Minuten antwortet oder einen Statuscode außerhalb des Bereichs zurückgibt, gilt die Instanz als fehlerhaft. Die Integritätsüberprüfung ist in die Authentifizierungs- und Autorisierungsfeatures von App Service integriert. Das System erreicht den Endpunkt auch dann, wenn diese Sicherheitsfeatures aktiviert sind. Wenn Sie ein eigenes Authentifizierungssystem verwenden, muss der Pfad der Integritätsüberprüfung anonymen Zugriff zulassen. Wenn für die Website HTTP**S** aktiviert ist, berücksichtigt die Integritätsüberprüfung HTTP**S** und sendet die Anforderung mithilfe dieses Protokolls.
+
+Der Pfad der Integritätsüberprüfung sollte die kritischen Komponenten der Anwendung überprüfen. Wenn Ihre Anwendung z. B. von einer Datenbank und einem Messagingsystem abhängig ist, sollte der Endpunkt der Integritätsüberprüfung eine Verbindung mit diesen Komponenten herstellen. Wenn die Anwendung keine Verbindung mit einer kritischen Komponente herstellen kann, sollte der Pfad einen Antwortcode auf 500-Ebene zurückgeben, um damit anzugeben, dass die App fehlerhaft ist.
+
+### <a name="behavior"></a>Verhalten
+
+Wenn der Pfad der Integritätsprüfung angegeben ist, sendet App Service auf allen Instanzen ein Ping an den Pfad. Wenn nach 5 Pings kein erfolgreicher Antwortcode empfangen wird, gilt diese Instanz als fehlerhaft. Fehlerhafte Instanzen werden von der Lastenausgleichsrotation ausgeschlossen. Wenn Sie darüber hinaus zentral hoch- oder herunterskalieren, pingt App Service den Pfad der Integritätsüberprüfung, um sicherzustellen, dass die neuen Instanzen für Anforderungen bereit sind.
+
+Die verbleibenden fehlerfreien Instanzen werden möglicherweise stärker ausgelastet. Um zu vermeiden, dass die verbleibenden Instanzen überlastet werden, wird nicht mehr als die Hälfte der Instanzen ausgeschlossen. Wenn z. B. ein App Service-Plan auf vier Instanzen aufskaliert wird und drei fehlerhaft sind, werden höchstens zwei von der Lastenausgleichsrotation ausgeschlossen. Die anderen beiden Instanzen (1 fehlerfrei und 1 fehlerhaft) empfangen weiterhin Anforderungen. Im ungünstigsten Fall, in dem alle Instanzen fehlerhaft sind, wird keine ausgeschlossen.
+
+Wenn eine Instanz für eine Stunde fehlerhaft bleibt, wird sie durch eine neue Instanz ersetzt. Pro Stunde wird höchstens eine Instanz ersetzt, wobei der Maximalwert bei drei Instanzen pro Tag und App Service-Plan liegt.
+
+### <a name="monitoring"></a>Überwachung
+
+Nachdem Sie den Pfad der Integritätsüberprüfung der Anwendung angegeben haben, können Sie die Integrität Ihres Standorts mithilfe von Azure Monitor überwachen. Klicken Sie im Portal auf dem Blatt **Integrität überprüfen** auf der oberen Symbolleiste auf **Metriken**. Daraufhin wird ein neues Blatt geöffnet, auf dem Sie den Verlauf des Integritätsstatus der Site anzeigen und eine neue Warnungsregel erstellen können. Weitere Informationen zum Überwachen Ihrer Standorte finden Sie im [Handbuch zu Azure Monitor](../../app-service/web-sites-monitor.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 - [Erstellen einer Aktivitätsprotokollwarnung, um alle Vorgänge der Engine für die automatische Skalierung für Ihr Abonnement zu überwachen](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert)

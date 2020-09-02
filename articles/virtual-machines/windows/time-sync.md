@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: cynthn
-ms.openlocfilehash: 1717ebd5709c05e33e658d3798494324a702b1d9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 830bdd45be4b0365ac45bc3ea366b99a34882a4c
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87074042"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88871478"
 ---
 # <a name="time-sync-for-windows-vms-in-azure"></a>Zeitsynchronisierung für Windows-VMs in Azure
 
@@ -60,7 +60,7 @@ Standardmäßig werden Windows-Betriebssystem-VM-Images für w32time für die Sy
 - Der Zeitanbieter „NtpClient“, der Informationen von „time.windows.com“ abruft.
 - Der VMICTimeSync-Dienst, der verwendet wird, um die Hostzeit an die VMs zu übermitteln und Korrekturen vorzunehmen, nachdem der virtuelle Computer zu Wartungszwecken angehalten wird. Azure-Hosts verwenden Microsoft-eigene Stratum 1-Geräte, um die genaue Uhrzeit beizubehalten.
 
-W32time bevorzugt den Zeitanbieter in der folgenden Prioritätenfolge: Stratum-Ebene, Stammverzögerung, Stammabweichung, Zeitoffset. In den meisten Fällen würde w32time „time.windows.com“ für den Host bevorzugen, weil „time.windows.com“ ein niedrigeres Stratum meldet. 
+W32time bevorzugt den Zeitanbieter in der folgenden Prioritätenfolge: Stratum-Ebene, Stammverzögerung, Stammabweichung, Zeitoffset. In den meisten Fällen bevorzugt w32time auf einer Azure-VM die Hostzeit aufgrund der Auswertung für den Vergleich der beiden Zeitquellen. 
 
 Bei in die Domäne eingebundenen Computern legt die Domäne die Zeitsynchronisierungshierarchie fest, aber der Gesamtstrukturstamm muss die Uhrzeit noch aus einer Quelle abrufen, und die folgenden Aspekte würden weiterhin gelten.
 
@@ -115,8 +115,8 @@ w32tm /query /source
 
 Nachfolgend sehen Sie die Ausgabe, die angezeigt werden könnte und was dies bedeuten würde:
     
-- **time.windows.com**: In der Standardkonfiguration würde w32time die Uhrzeit von „time.windows.com“ abrufen. Die Qualität der Zeitsynchronisierung hängt von der vorhandenen Internetverbindung ab und wird von Paketverzögerungen beeinflusst. Dies ist die übliche Ausgabe der Standardeinrichtung.
-- **VM IC Time Synchronization Provider**: Der virtuelle Computer synchronisiert die Uhrzeit mit dem Host. Das ist in der Regel das Ergebnis, wenn Sie sich für die Nur-Host-Zeitsynchronisierung entscheiden oder der NTP-Server zurzeit nicht verfügbar ist. 
+- **time.windows.com**: In der Standardkonfiguration würde w32time die Uhrzeit von „time.windows.com“ abrufen. Die Qualität der Zeitsynchronisierung hängt von der vorhandenen Internetverbindung ab und wird von Paketverzögerungen beeinflusst. Dies ist die normale Ausgabe, die Sie auf einem physischen Computer erhalten.
+- **VM IC Time Synchronization Provider**: Der virtuelle Computer synchronisiert die Uhrzeit mit dem Host. Dies ist die normale Ausgabe, die Sie auf einem virtuellen Computer unter Azure erhalten. 
 - *Ihr Domänenserver*: Der aktuelle Computer befindet sich in einer Domäne, und die Domäne definiert die Zeitsynchronisierungshierarchie.
 - *Ein anderer Server*: w32time wurde explizit für das Abrufen der Uhrzeit von einem anderen bestimmten Server konfiguriert. Die Qualität der Zeitsynchronisierung hängt von der Qualität dieses Zeitservers ab.
 - **Local CMOS Clock**: Die Uhr wird nicht synchronisiert. Sie erhalten diese Ausgabe, wenn w32time nach einem Neustart nicht genügend Zeit zum Starten hatte oder alle konfigurierten Zeitquellen nicht verfügbar sind.
@@ -160,7 +160,7 @@ reg add HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\w32time\Config /v U
 w32tm /config /update
 ```
 
-Damit w32time die neuen Abrufintervalle verwenden kann, müssen die NTP-Server zur Verwendung dieser gekennzeichnet sein. Wenn die Server mit einer Bitkennzeichenmaske „0x1“ kommentiert werden, würde das diesen Mechanismus außer Kraft setzen, und w32time würde stattdessen „SpecialPollInterval“ verwenden. Stellen Sie sicher, dass die angegebenen NTP-Server entweder „0x8“ oder gar kein Flag verwenden:
+Damit w32time die neuen Abrufintervalle verwenden kann, müssen die NTP-Server zu ihrer Verwendung gekennzeichnet sein. Wenn die Server mit einer Bitkennzeichenmaske „0x1“ kommentiert werden, würde das diesen Mechanismus außer Kraft setzen, und w32time würde stattdessen „SpecialPollInterval“ verwenden. Stellen Sie sicher, dass die angegebenen NTP-Server entweder „0x8“ oder gar kein Flag verwenden:
 
 Überprüfen Sie, welche Flags für die verwendeten NTP-Server verwendet werden.
 

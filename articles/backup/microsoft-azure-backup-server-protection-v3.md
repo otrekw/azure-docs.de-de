@@ -3,12 +3,12 @@ title: Mit Azure Backup Server V3 RTM sicherbare Elemente
 description: Dieser Artikel bietet eine Schutzmatrix aller Workloads, Datentypen und Installationen, die von Azure Backup Server V3 RTM geschützt werden.
 ms.date: 11/13/2018
 ms.topic: conceptual
-ms.openlocfilehash: 86e192e13b49b89e8d66c5f912ef88f02a1b21b4
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: 21c5fbcdf8aa3454a9af968509cb4cbf76b31f9e
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88611975"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88763608"
 ---
 # <a name="azure-backup-server-v3-rtm-protection-matrix"></a>Azure Backup Server V3 RTM-Schutzmatrix
 
@@ -32,9 +32,9 @@ In der folgenden Matrix sind die Elemente aufgelistet, die mit Azure Backup Serv
 |Server (32 Bit und 64 Bit)|Windows Server 2012/2012 mit SP1 – Datacenter und Standard|Physischer Server<br /><br />Lokaler virtueller Hyper-V-Computer<br /> <br /> Azure Stack|V3, V2|Volume, Freigabe, Ordner, Datei, Systemstatus/Bare-Metal<br /><br />Azure Backup Server muss mindestens unter Windows Server 2012 R2 ausgeführt werden, um deduplizierte Windows Server 2012-Volumes zu schützen.|
 |Server (32 Bit und 64 Bit)|Windows Server 2012/2012 mit SP1 – Datacenter und Standard|Virtueller Azure-Computer (wenn die Workload als virtueller Azure-Computer ausgeführt wird)<br /> <br /> Azure Stack|V3, V2|Volume, Freigabe, Ordner, Datei<br /><br />Azure Backup Server muss mindestens unter Windows Server 2012 R2 ausgeführt werden, um deduplizierte Windows Server 2012-Volumes zu schützen.|
 |Server (32 Bit und 64 Bit)|Windows Server 2012/2012 mit SP1 – Datacenter und Standard|Windows-VM in VMware (schützt Workloads auf virtuellen Windows-Computern in VMware)<br /> <br /> Azure Stack|V3, V2|Volume, Freigabe, Ordner, Datei, Systemstatus/Bare-Metal<br /><br />Azure Backup Server muss mindestens unter Windows Server 2012 R2 ausgeführt werden, um deduplizierte Windows Server 2012-Volumes zu schützen.|
-|Server (32 Bit und 64 Bit)|Windows Server 2008 R2 SP1 – Standard und Enterprise|Physischer Server<br /><br />Lokaler virtueller Hyper-V-Computer<br /> <br /> Azure Stack|V3, V2<br />Sie müssen SP1 ausführen und [Windows Management Frame 4.0](https://www.microsoft.com/download/details.aspx?id=40855) installieren.|Volume, Freigabe, Ordner, Datei, Systemstatus/Bare-Metal|
-|Server (32 Bit und 64 Bit)|Windows Server 2008 R2 SP1 – Standard und Enterprise|Virtueller Azure-Computer (wenn die Workload als virtueller Azure-Computer ausgeführt wird)<br /> <br /> Azure Stack|V3, V2<br />Sie müssen SP1 ausführen und [Windows Management Frame 4.0](https://www.microsoft.com/download/details.aspx?id=40855) installieren.|Volume, Freigabe, Ordner, Datei|
-|Server (32 Bit und 64 Bit)|Windows Server 2008 R2 SP1 – Standard und Enterprise|Windows-VM in VMware (schützt Workloads auf virtuellen Windows-Computern in VMware)<br /> <br /> Azure Stack|V3, V2<br />Sie müssen SP1 ausführen und [Windows Management Frame 4.0](https://www.microsoft.com/download/details.aspx?id=40855) installieren.|Volume, Freigabe, Ordner, Datei, Systemstatus/Bare-Metal|
+|Server (32 Bit und 64 Bit)|Windows Server 2008 R2 SP1 – Standard und Enterprise|Physischer Server<br /><br />Lokaler virtueller Hyper-V-Computer<br /> <br /> Azure Stack|V3, V2<br />Sie müssen SP1 ausführen und [Windows Management Framework](https://www.microsoft.com/download/details.aspx?id=54616) installieren.|Volume, Freigabe, Ordner, Datei, Systemstatus/Bare-Metal|
+|Server (32 Bit und 64 Bit)|Windows Server 2008 R2 SP1 – Standard und Enterprise|Virtueller Azure-Computer (wenn die Workload als virtueller Azure-Computer ausgeführt wird)<br /> <br /> Azure Stack|V3, V2<br />Sie müssen SP1 ausführen und [Windows Management Framework](https://www.microsoft.com/download/details.aspx?id=54616) installieren.|Volume, Freigabe, Ordner, Datei|
+|Server (32 Bit und 64 Bit)|Windows Server 2008 R2 SP1 – Standard und Enterprise|Windows-VM in VMware (schützt Workloads auf virtuellen Windows-Computern in VMware)<br /> <br /> Azure Stack|V3, V2<br />Sie müssen SP1 ausführen und [Windows Management Framework](https://www.microsoft.com/download/details.aspx?id=54616) installieren.|Volume, Freigabe, Ordner, Datei, Systemstatus/Bare-Metal|
 |Server (32 Bit und 64 Bit)|Windows Server 2008 SP2|Physischer Server<br /><br />Lokaler virtueller Hyper-V-Computer<br /> <br /> Azure Stack|Nicht unterstützt|Volume, Freigabe, Ordner, Datei, Systemstatus/Bare-Metal|
 |Server (32 Bit und 64 Bit)|Windows Server 2008 SP2|Windows-VM in VMware (schützt Workloads auf virtuellen Windows-Computern in VMware)<br /> <br /> Azure Stack|V3, V2|Volume, Freigabe, Ordner, Datei, Systemstatus/Bare-Metal|
 |Server (32 Bit und 64 Bit)|Windows Storage Server 2008|Physischer Server<br /><br />Lokaler virtueller Hyper-V-Computer<br /> <br /> Azure Stack|V3, V2|Volume, Freigabe, Ordner, Datei, Systemstatus/Bare-Metal|
@@ -92,7 +92,7 @@ Bei öffentlichem Peering: Stellen Sie den Zugriff auf die folgenden Domänen/Ad
 * `.microsoftonline.com`
 * `.windows.net`
 
-Wählen Sie beim Microsoft-Peering die folgenden Dienste/Regionen und relevanten Communitywerte aus:
+Mit Microsoft-Peering: Wählen Sie die folgenden Dienste, Regionen und relevanten Communitywerte aus:
 
 * Azure Active Directory (12076:5060)
 * Microsoft Azure-Region (entsprechend dem Standort Ihres Recovery Services-Tresors)

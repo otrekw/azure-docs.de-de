@@ -11,19 +11,23 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5e7b5f6bef5358acf0709f994b85215e505fa4db
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8f5f1e123447bfff53a603bad23b0444a93e4a83
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80653380"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88919623"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-for-high-availability"></a>Konfigurieren von Azure Multi-Factor Authentication-Server für Hochverfügbarkeit
 
 Um hohe Verfügbarkeit bei Ihrer für Azure MFA Server-Bereitstellung zu erreichen, müssen Sie mehrere MFA-Server bereitstellen. Dieser Abschnitt enthält Informationen zu einem Entwurf mit Lastenausgleich, mit dem Sie Ihre Hochverfügbarkeitsziele für die Azure MFS Server-Bereitstellung erreichen können.
 
 > [!IMPORTANT]
-> Ab dem 1. Juli 2019 bietet Microsoft keine MFA-Server mehr für neue Bereitstellungen an. Neue Kunden, die eine Multi-Factor Authentication für ihre Benutzer einrichten möchten, können stattdessen die cloudbasierte Multi-Factor Authentication von Azure verwenden. Bestehende Kunden, die ihren MFA-Server vor dem 1. Juli aktiviert haben, können weiterhin die neusten Versionen und zukünftige Updates herunterladen sowie Anmeldedaten zur Aktivierung generieren.
+> Seit dem 1. Juli 2019 bietet Microsoft für neue Bereitstellungen keine MFA-Server mehr an. Neue Kunden, die Multi-Factor Authentication (MFA) während der Anmeldung für ihre Benutzer einrichten möchten, können die cloudbasierte Multi-Factor Authentication von Azure verwenden.
+>
+> Informationen zu den ersten Schritten mit der cloudbasierten MFA finden Sie im [Tutorial: Schützen von Benutzeranmeldeereignissen mit Azure Multi-Factor Authentication](tutorial-enable-azure-mfa.md).
+>
+> Bestandskunden, die ihren MFA-Server vor dem 1. Juli 2019 aktiviert haben, können weiterhin die neuesten Versionen und zukünftige Updates herunterladen sowie Anmeldedaten zur Aktivierung generieren.
 
 ## <a name="mfa-server-overview"></a>Übersicht über MFA Server
 

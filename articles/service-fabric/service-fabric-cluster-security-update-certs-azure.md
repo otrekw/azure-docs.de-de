@@ -3,12 +3,12 @@ title: Verwalten von Zertifikaten in einem Azure Service Fabric-Cluster
 description: Es wird beschrieben, wie Sie neue Zertifikate hinzufügen, ein Rollover für Zertifikate durchführen und ein Zertifikat für einen Service Fabric-Cluster entfernen.
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: 43e9c95e0fb8484f7b24c5a0c409d3aa6a68eabc
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: b1ccf83e666f9106a31809ff41d55062826be78c
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83658391"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88869744"
 ---
 # <a name="add-or-remove-certificates-for-a-service-fabric-cluster-in-azure"></a>Hinzufügen oder Entfernen von Zertifikaten für einen Service Fabric-Cluster in Azure
 Es wird empfohlen, dass Sie sich damit vertraut machen, wie Service Fabric X.509-Zertifikate verwendet werden, und dass Sie sich mit den [Szenarien für die Clustersicherheit](service-fabric-cluster-security.md) auskennen. Sie müssen verstehen, was ein Clusterzertifikat ist, und wofür es verwendet wird, bevor Sie den Vorgang fortsetzen.
@@ -260,7 +260,7 @@ Zusätzlich zu den Clusterzertifikaten können Sie Clientzertifikate hinzufügen
 
 Sie können zwei Arten von Clientzertifikaten hinzufügen: „Administrator“ oder „Schreibgeschützt“. Diese können dann zum Steuern des Zugriffs auf die Administratorvorgänge und Abfragevorgänge im Cluster verwendet werden. Standardmäßig werden die Clusterzertifikate der Liste mit den zulässigen Administratorzertifikaten hinzugefügt.
 
-Sie können eine beliebige Zahl von Clientzertifikaten angeben. Jedes Hinzufügen/Löschen führt zu einem Konfigurationsupdate des Service Fabric-Clusters.
+Sie können eine beliebige Anzahl von Clientzertifikaten angeben. Jedes Hinzufügen/Löschen führt zu einem Konfigurationsupdate des Service Fabric-Clusters.
 
 
 ### <a name="adding-client-certificates---admin-or-read-only-via-portal"></a>Hinzufügen von Clientzertifikaten – „Administrator“ oder „Schreibgeschützt“ über das Portal

@@ -3,12 +3,12 @@ title: Wiederherstellen von Azure-Dateifreigaben
 description: Erfahren Sie, wie Sie das Azure-Portal verwenden, um eine vollständige Dateifreigabe oder bestimmte Dateien von einem von Azure Backup erstellten Wiederherstellungspunkt wiederherstellen.
 ms.topic: conceptual
 ms.date: 01/12/2020
-ms.openlocfilehash: f0e232fcde12a0c035afa139e3043bfa52fbe714
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: bb846c4615377259a1c17653cc26e96f37dc32ec
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86503641"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88762822"
 ---
 # <a name="restore-azure-file-shares"></a>Wiederherstellen von Azure-Dateifreigaben
 
@@ -66,7 +66,7 @@ Sie können diese Wiederherstellungsoption verwenden, um die vollständige Datei
     * **Ursprünglicher Speicherort**: Die gesamte Dateifreigabe wird am gleichen Speicherort wie die ursprüngliche Quelle wieder hergestellt.
     * **Alternativer Speicherort:** Die gesamte Dateifreigabe wird an einem alternativen Speicherort wiederhergestellt und die ursprüngliche Dateifreigabe unverändert beibehalten.
 
-#### <a name="restore-to-the-original-location"></a>Am ursprünglichen Speicherort wiederherstellen
+#### <a name="restore-to-the-original-location-full-share-recovery"></a>Wiederherstellen am ursprünglichen Speicherort (vollständige Freigabe)
 
 1. Wählen Sie **Ursprünglicher Speicherort** als **Wiederherstellungsziel** aus, und entscheiden Sie dann, ob Daten bei Konflikten übersprungen oder überschrieben werden sollen, indem Sie in der Dropdownliste **Bei Konflikten** die gewünschte Option wählen.
 
@@ -74,7 +74,7 @@ Sie können diese Wiederherstellungsoption verwenden, um die vollständige Datei
 
     ![Zum Starten „Wiederherstellen“ auswählen](./media/restore-afs/click-restore.png)
 
-#### <a name="restore-to-an-alternate-location"></a>Wiederherstellen an einem alternativen Speicherort
+#### <a name="restore-to-an-alternate-location-full-share-recovery"></a>Wiederherstellen an einem alternativen Speicherort (vollständige Freigabe)
 
 1. Wählen Sie **Alternativer Speicherort** als **Wiederherstellungsziel** aus.
 1. Wählen Sie aus der Dropdownliste **Speicherkonto** das Zielspeicherkonto aus, in dem Sie den gesicherten Inhalt wiederherstellen möchten.
@@ -106,7 +106,7 @@ Sie können diese Wiederherstellungsoption verwenden, um einzelne Dateien oder O
     * **Ursprünglicher Speicherort**: Die ausgewählten Dateien oder Ordner werden in derselben Dateifreigabe wie die ursprüngliche Quelle wiederhergestellt.
     * **Alternativer Standort:** Die ausgewählten Dateien oder Ordner werden an einem alternativen Speicherort wiederhergestellt und der ursprüngliche Inhalt der Dateifreigabe bleibt unverändert erhalten.
 
-#### <a name="restore-to-the-original-location"></a>Am ursprünglichen Speicherort wiederherstellen
+#### <a name="restore-to-the-original-location-item-level-recovery"></a>Wiederherstellen am ursprünglichen Speicherort (auf Elementebene)
 
 1. Wählen Sie **Ursprünglicher Speicherort** als **Wiederherstellungsziel** aus, und entscheiden Sie dann, ob Daten bei Konflikten übersprungen oder überschrieben werden sollen, indem Sie in der Dropdownliste **Bei Konflikten** die gewünschte Option wählen.
 
@@ -125,7 +125,7 @@ Sie können diese Wiederherstellungsoption verwenden, um einzelne Dateien oder O
 
     ![Zum Starten „Wiederherstellen“ auswählen](./media/restore-afs/click-restore.png)
 
-#### <a name="restore-to-an-alternate-location"></a>Wiederherstellen an einem alternativen Speicherort
+#### <a name="restore-to-an-alternate-location-item-level-recovery"></a>Wiederherstellen an einem alternativen Speicherort (auf Elementebene)
 
 1. Wählen Sie **Alternativer Speicherort** als **Wiederherstellungsziel** aus.
 1. Wählen Sie aus der Dropdownliste **Speicherkonto** das Zielspeicherkonto aus, in dem Sie den gesicherten Inhalt wiederherstellen möchten.

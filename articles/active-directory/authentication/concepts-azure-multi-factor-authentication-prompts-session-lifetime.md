@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: inbarc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4834cccff11a70249140f49b498b8f7891787c72
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 13bbea166d699acead932b1ad6779720f82090e6
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86169339"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88919674"
 ---
 # <a name="optimize-reauthentication-prompts-and-understand-session-lifetime-for-azure-multi-factor-authentication"></a>Optimieren von Aufforderungen für die erneute Authentifizierung und Grundlegendes zur Sitzungslebensdauer für Azure Multi-Factor Authentication
 
@@ -45,6 +45,8 @@ Sie können Optionen für die Azure AD-Sitzungslebensdauer konfigurieren, um die
 ### <a name="evaluate-session-lifetime-policies"></a>Evaluieren der Richtlinien für die Sitzungslebensdauer
 
 Ohne Einstellungen für die Sitzungslebensdauer sind in der Browsersitzung keine persistenten Cookies vorhanden. Jedes Mal, wenn ein Benutzer den Browser schließt und öffnet, wird eine Aufforderung zur erneuten Authentifizierung angezeigt. In Office-Clients ist der Standardzeitraum ein rollierendes Fenster von 90 Tagen. Wenn ein Benutzer mit dieser Office-Standardkonfiguration sein Kennwort zurücksetzt oder 90 Tage lang inaktiv war, wird er aufgefordert, sich mit allen erforderlichen Stufen (der ersten und der zweiten Stufe) erneut zu authentifizieren.
+
+Einem Benutzer werden möglicherweise mehrere MFA-Aufforderungen auf einem Gerät angezeigt, das in Azure AD nicht über eine Identität verfügt. Mehrere Aufforderungen treten auf, wenn jede Anwendung über ein eigenes OAuth-Aktualisierungstoken verfügt, das nicht mit anderen Client-Apps gemeinsam verwendet wird. In diesem Szenario erfolgen mehrere MFA-Aufforderungen, da jede Anwendung ein OAuth-Aktualisierungstoken für die Validierung per MFA anfordert.
 
 In Azure AD legt die restriktivste Richtlinie für die Sitzungslebensdauer fest, wann sich der Benutzer erneut authentifizieren muss. Nehmen Sie das folgende Szenario als Beispiel:
 

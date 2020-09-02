@@ -6,13 +6,13 @@ ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
-ms.date: 03/05/2019
-ms.openlocfilehash: 4d0ee48a42814ab2c4229c5f8f239aa1a1c28544
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.date: 8/6/2020
+ms.openlocfilehash: 4c6d1d3877629150493ee2a57a04573760d2772a
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87314219"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88870016"
 ---
 # <a name="stream-analytics-and-power-bi-a-real-time-analytics-dashboard-for-streaming-data"></a>Stream Analytics und Power BI: Ein Dashboard zur Echtzeitanalyse von Streamingdaten
 
@@ -39,7 +39,10 @@ Im Tutorial zur Betrugsermittlung in Echtzeit wird die Ausgabe an Azure Blob Sto
 
 2. Wählen Sie im linken Menü unter **Auftragstopologie** **Ausgaben** aus. Wählen Sie dann **+ Hinzufügen** aus und anschließend **Power BI** aus dem Dropdownmenü.
 
-3. Wählen Sie **+ Hinzufügen** > **Power BI** aus. Geben Sie dann folgende Informationen in das Formular ein, und wählen Sie **Autorisieren** aus:
+3. Wählen Sie **+ Hinzufügen** > **Power BI** aus. Füllen Sie dann das Formular mit den folgenden Details aus, und wählen Sie **Autorisieren** aus, um eine eigene Benutzeridentität für die Verbindungsherstellung mit Power BI zu verwenden. (Das Token ist 90 Tage lang gültig.) 
+
+>[!NOTE]
+>Bei Produktionsaufträgen wird empfohlen, eine Verbindung herzustellen, um [verwaltete Identitäten zum Authentifizieren von Azure Stream Analytics-Aufträgen in Power BI zu verwenden](https://docs.microsoft.com/azure/stream-analytics/powerbi-output-managed-identity).
 
    |**Einstellung**  |**Empfohlener Wert**  |
    |---------|---------|
@@ -230,3 +233,4 @@ Nachdem die Autorisierung mit Power BI aktualisiert wurde, wird im Autorisierung
 * [Stream Analytics-Ausgaben](stream-analytics-define-outputs.md)
 * [Stream Analytics Query Language Reference](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference) (Referenz zur Stream Analytics-Abfragesprache)
 * [Azure Stream Analytics Management REST API reference](https://msdn.microsoft.com/library/azure/dn835031.aspx) (Referenz zur Azure Stream Analytics-Verwaltungs-REST-API)
+* [Verwenden von verwalteten Identitäten zum Authentifizieren von Azure Stream Analytics-Aufträgen in Power BI](https://docs.microsoft.com/azure/stream-analytics/powerbi-output-managed-identity)

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/28/2020
 ms.topic: troubleshooting
 ms.service: digital-twins
-ms.openlocfilehash: 5091edbf9138cb8ff03df193dcbeed692aaf13e3
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: fc397b6d6beb719e11dc3959bbcf4d75c08a8dda
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88612400"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88723927"
 ---
 # <a name="troubleshooting-azure-digital-twins-diagnostics-logging"></a>Problembehandlung von Azure Digital Twins: Diagnoseprotokollierung
 
@@ -49,7 +49,7 @@ Im Folgenden wird beschrieben, wie Sie Diagnoseeinstellungen für Ihre Azure Dig
     
 4. Speichern Sie die neuen Einstellungen. 
 
-    :::image type="content" source="media/troubleshoot-diagnostics/diagnostic-settings-details.png" alt-text="Screenshot der Seite „Diagnoseeinstellungen“ und der Schaltfläche zum Hinzufügen":::
+    :::image type="content" source="media/troubleshoot-diagnostics/diagnostic-settings-details.png" alt-text="Screenshot der Seite mit den Diagnoseeinstellungen, auf der der Benutzer einen Namen für eine Diagnoseeinstellung eingegeben und einige Kontrollkästchen für Kategorie- und Zieldetails aktiviert hat. Die Schaltfläche „Speichern“ ist hervorgehoben.":::
 
 Neue Einstellungen werden in etwa zehn Minuten wirksam. Anschließend werden die Protokolle im konfigurierten Ziel auf der Seite **Diagnoseeinstellungen** für Ihre Instanz angezeigt. 
 
@@ -81,18 +81,147 @@ Im Folgenden finden Sie eine umfassende Liste der Vorgänge und entsprechenden [
 | Protokollkategorie | Vorgang | REST-API-Aufrufe und andere Ereignisse |
 | --- | --- | --- |
 | ADTModelsOperation | Microsoft.DigitalTwins/models/write | API zum Aktualisieren von Digital Twin-Modellen |
-|  | Microsoft.DigitalTwins/models/read | API zum Abrufen nach ID und Auflisten von Digital Twin-Modellen |
+|  | Microsoft.DigitalTwins/models/read | APIs zum Abrufen nach ID und Auflisten von Digital Twin-Modellen |
 |  | Microsoft.DigitalTwins/models/delete | API zum Löschen von Digital Twin-Modellen |
 |  | Microsoft.DigitalTwins/models/action | API zum Hinzufügen von Digital Twin-Modellen |
 | ADTQueryOperation | Microsoft.DigitalTwins/query/action | API zum Abfragen von Digital Twin-Instanzen |
 | ADTEventRoutesOperation | Microsoft.DigitalTwins/eventroutes/write | API zum Hinzufügen von Ereignisrouten |
-|  | Microsoft.DigitalTwins/eventroutes/read | API zum Abrufen nach ID und Auflisten von Ereignisrouten |
+|  | Microsoft.DigitalTwins/eventroutes/read | APIs zum Abrufen nach ID und Auflisten von Ereignisrouten |
 |  | Microsoft.DigitalTwins/eventroutes/delete | API zum Löschen von Ereignisrouten |
 |  | Microsoft.DigitalTwins/eventroutes/action | Fehler beim Veröffentlichen von Ereignissen in einem Endpunktdienst (kein API-Aufruf). |
 | ADTDigitalTwinsOperation | Microsoft.DigitalTwins/digitaltwins/write | Vorgänge zum Hinzufügen, Hinzufügen von Beziehungen, Aktualisieren und Aktualisieren von Komponenten von Digital Twins |
 |  | Microsoft.DigitalTwins/digitaltwins/read | Vorgänge zum Abrufen nach ID, Abrufen von Komponenten, Abrufen der Beziehung nach ID, Auflisten eingehender Beziehungen und Auflisten von Beziehungen von Digital Twins |
 |  | Microsoft.DigitalTwins/digitaltwins/delete | Vorgänge zum Löschen und Löschen von Beziehungen von Digital Twins |
 |  | Microsoft.DigitalTwins/digitaltwins/action | Senden von Komponententelemetrie und Senden von Telemetrie von Digital Twins |
+
+## <a name="log-schemas"></a>Protokollschemas 
+
+Jede Protokollkategorie verfügt über ein Schema, das definiert, wie Ereignisse in dieser Kategorie gemeldet werden. Jeder einzelne Protokolleintrag wird als Text gespeichert und als JSON-Blob formatiert. Die Felder im Protokoll und die JSON-Beispieltexte werden für jeden unten angegebenen Protokolltyp bereitgestellt. 
+
+`ADTDigitalTwinsOperation`, `ADTModelsOperation` und `ADTQueryOperation` verwenden ein konsistentes API-Protokollschema. `ADTEventRoutesOperation` verfügt über ein eigenes separates Schema.
+
+### <a name="api-log-schemas"></a>API-Protokollschemas
+
+Dieses Protokollschema ist für `ADTDigitalTwinsOperation`, `ADTModelsOperation` und `ADTQueryOperation` konsistent. Es enthält Informationen, die für API-Aufrufe an eine Azure Digital Twins-Instanz relevant sind.
+
+Im Folgenden finden Sie die Feld- und Eigenschaftsbeschreibungen für API-Protokolle.
+
+| Feldname | Datentyp | BESCHREIBUNG |
+|-----|------|-------------|
+| `Time` | Datetime | Datum und Uhrzeit des Auftretens dieses Ereignisses in UTC |
+| `ResourceID` | String | Azure Resource Manager-Ressourcen-ID für die Ressource, in der das Ereignis aufgetreten ist |
+| `OperationName` | String  | Typ der Aktion, die während des Ereignisses ausgeführt wurde |
+| `OperationVersion` | String | Während des Ereignisses verwendete API-Version |
+| `Category` | String | Typ der auszugebenden Ressource |
+| `ResultType` | String | Ergebnis des Ereignisses |
+| `ResultSignature` | String | HTTP-Statuscode für das Ereignis |
+| `ResultDescription` | String | Weitere Details zum Ereignis |
+| `DurationMs` | String | Zeit für die Ausführung des Ereignisses in Millisekunden |
+| `CallerIpAddress` | String | Maskierte Quell-IP-Adresse für das Ereignis |
+| `CorrelationId` | Guid | Vom Kunden angegebener eindeutiger Bezeichner für das Ereignis |
+| `Level` | String | Protokollschweregrad des Ereignisses |
+| `Location` | String | Region, in der das Ereignis aufgetreten ist |
+| `RequestUri` | Uri | Während des Ereignisses verwendeter Endpunkt |
+
+Im Folgenden finden Sie Beispiel-JSON-Texte für diese Arten von Protokollen.
+
+#### <a name="adtdigitaltwinsoperation"></a>ADTDigitalTwinsOperation
+
+```json
+{
+  "time": "2020-03-14T21:11:14.9918922Z",
+  "resourceId": "/SUBSCRIPTIONS/BBED119E-28B8-454D-B25E-C990C9430C8F/RESOURCEGROUPS/MYRESOURCEGROUP/PROVIDERS/MICROSOFT.DIGITALTWINS/DIGITALTWINSINSTANCES/MYINSTANCENAME",
+  "operationName": "Microsoft.DigitalTwins/digitaltwins/write",
+  "operationVersion": "2020-05-31-preview",
+  "category": "DigitalTwinOperation",
+  "resultType": "Success",
+  "resultSignature": "200",
+  "resultDescription": "",
+  "durationMs": "314",
+  "callerIpAddress": "13.68.244.*",
+  "correlationId": "2f6a8e64-94aa-492a-bc31-16b9f0b16ab3",
+  "level": "4",
+  "location": "southcentralus",
+  "uri": "https://myinstancename.api.scus.digitaltwins.azure.net/digitaltwins/factory-58d81613-2e54-4faa-a930-d980e6e2a884?api-version=2020-05-31-preview"
+}
+```
+
+#### <a name="adtmodelsoperation"></a>ADTModelsOperation
+
+```json
+{
+  "time": "2020-10-29T21:12:24.2337302Z",
+  "resourceId": "/SUBSCRIPTIONS/BBED119E-28B8-454D-B25E-C990C9430C8F/RESOURCEGROUPS/MYRESOURCEGROUP/PROVIDERS/MICROSOFT.DIGITALTWINS/DIGITALTWINSINSTANCES/MYINSTANCENAME",
+  "operationName": "Microsoft.DigitalTwins/models/write",
+  "operationVersion": "2020-05-31-preview",
+  "category": "ModelsOperation",
+  "resultType": "Success",
+  "resultSignature": "201",
+  "resultDescription": "",
+  "durationMs": "935",
+  "callerIpAddress": "13.68.244.*",
+  "correlationId": "9dcb71ea-bb6f-46f2-ab70-78b80db76882",
+  "level": "4",
+  "location": "southcentralus",
+  "uri": "https://myinstancename.api.scus.digitaltwins.azure.net/Models?api-version=2020-05-31-preview",
+}
+```
+
+#### <a name="adtqueryoperation"></a>ADTQueryOperation
+
+```json
+{
+  "time": "2020-12-04T21:11:44.1690031Z",
+  "resourceId": "/SUBSCRIPTIONS/BBED119E-28B8-454D-B25E-C990C9430C8F/RESOURCEGROUPS/MYRESOURCEGROUP/PROVIDERS/MICROSOFT.DIGITALTWINS/DIGITALTWINSINSTANCES/MYINSTANCENAME",
+  "operationName": "Microsoft.DigitalTwins/query/action",
+  "operationVersion": "2020-05-31-preview",
+  "category": "QueryOperation",
+  "resultType": "Success",
+  "resultSignature": "200",
+  "resultDescription": "",
+  "durationMs": "255",
+  "callerIpAddress": "13.68.244.*",
+  "correlationId": "1ee2b6e9-3af4-4873-8c7c-1a698b9ac334",
+  "level": "4",
+  "location": "southcentralus",
+  "uri": "https://myinstancename.api.scus.digitaltwins.azure.net/query?api-version=2020-05-31-preview",
+}
+```
+
+### <a name="egress-log-schemas"></a>Ausgangsprotokollschemas
+
+Dies ist das Schema für `ADTEventRoutesOperation`-Protokolle. Diese enthalten Details zu Ausnahmen und den API-Vorgängen für Ausgangsendpunkte, die mit einer Instanz von Azure Digital Twins verbunden sind.
+
+|Feldname | Datentyp | BESCHREIBUNG |
+|-----|------|-------------|
+| `Time` | Datetime | Datum und Uhrzeit des Auftretens dieses Ereignisses in UTC |
+| `ResourceId` | String | Azure Resource Manager-Ressourcen-ID für die Ressource, in der das Ereignis aufgetreten ist |
+| `OperationName` | String  | Typ der Aktion, die während des Ereignisses ausgeführt wurde |
+| `Category` | String | Typ der auszugebenden Ressource |
+| `ResultDescription` | String | Weitere Details zum Ereignis |
+| `Level` | String | Protokollschweregrad des Ereignisses |
+| `Location` | String | Region, in der das Ereignis aufgetreten ist |
+| `EndpointName` | String | Name des Ausgangsendpunkts, der in Azure Digital Twins erstellt wurde |
+
+Im Folgenden finden Sie Beispiel-JSON-Texte für diese Arten von Protokollen.
+
+#### <a name="adteventroutesoperation"></a>ADTEventRoutesOperation
+
+```json
+{
+  "time": "2020-11-05T22:18:38.0708705Z",
+  "resourceId": "/SUBSCRIPTIONS/BBED119E-28B8-454D-B25E-C990C9430C8F/RESOURCEGROUPS/MYRESOURCEGROUP/PROVIDERS/MICROSOFT.DIGITALTWINS/DIGITALTWINSINSTANCES/MYINSTANCENAME",
+  "operationName": "Microsoft.DigitalTwins/eventroutes/action",
+  "category": "EventRoutesOperation",
+  "resultDescription": "Unable to send EventGrid message to [my-event-grid.westus-1.eventgrid.azure.net] for event Id [f6f45831-55d0-408b-8366-058e81ca6089].",
+  "correlationId": "7f73ab45-14c0-491f-a834-0827dbbf7f8e",
+  "level": "3",
+  "location": "southcentralus",
+  "properties": {
+    "endpointName": "endpointEventGridInvalidKey"
+  }
+}
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 

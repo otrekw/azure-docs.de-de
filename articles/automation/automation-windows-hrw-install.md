@@ -3,14 +3,14 @@ title: Bereitstellen eines Hybrid Runbook Workers unter Windows in Azure Automat
 description: In diesem Artikel erfahren Sie, wie Sie einen Hybrid Runbook Worker bereitstellen, mit dem Sie Runbooks auf Windows-basierten Computern in Ihrem lokalen Rechenzentrum oder einer Cloudumgebung ausführen können.
 services: automation
 ms.subservice: process-automation
-ms.date: 06/24/2020
+ms.date: 08/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: 90b16f10cfa94ce427a9f6249c72842f8ef6278a
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: 74657743d14b9365f66ed3373592b708a07e11dc
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88270579"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88660511"
 ---
 # <a name="deploy-a-windows-hybrid-runbook-worker"></a>Bereitstellen eines Windows Hybrid Runbook Workers
 
@@ -29,6 +29,9 @@ Die „Hybrid Runbook Worker“-Rolle ist hinsichtlich ihrer Installation und Ko
 Wenn Sie über keinen Azure Monitor Log Analytics-Arbeitsbereich verfügen, lesen Sie zuerst die [Entwurfsanleitung für Azure Monitor-Protokolle](../azure-monitor/platform/design-logs-deployment.md), bevor Sie einen Arbeitsbereich erstellen.
 
 Wenn Sie einen Arbeitsbereich besitzen, dieser aber nicht mit Ihrem Automation-Konto verknüpft ist, fügt das Aktivieren einer Automation-Funktion Funktionen für Azure Automation hinzu, einschließlich der Unterstützung für den Hybrid Runbook Worker. Wenn Sie eine der Azure Automation-Funktionen in Ihrem Log Analytics-Arbeitsbereich aktivieren, insbesondere [Updateverwaltung](update-management/update-mgmt-overview.md) oder [Änderungsnachverfolgung und Bestand](change-tracking.md), werden die Workerkomponenten automatisch auf den Agentcomputer gepusht.
+
+> [!NOTE]
+> Wenn Sie die Updateverwaltung oder das Feature „Änderungsnachverfolgung und Bestand“ aktivieren, unterstützt Azure Automation nur bestimmte Regionen für das Verknüpfen mit einem Log Analytics-Arbeitsbereich und einem Automation-Konto. Eine Liste der unterstützten Zuordnungspaare finden Sie unter [Regionszuordnung für Automation-Konto und Log Analytics-Arbeitsbereich](how-to/region-mappings.md). Lesen Sie vor dem Aktivieren eines der Features die Informationen zu den [Preisen](https://azure.microsoft.com/pricing/details/automation/) für Azure Automation.
 
    Um Ihrem Arbeitsbereich die Funktion „Updateverwaltung“ hinzuzufügen, führen Sie das folgende PowerShell-Cmdlet aus:
 
@@ -123,9 +126,6 @@ Laden Sie das Skript **New-OnPremiseHybridWorker.ps1** aus dem [PowerShell-Katal
 | `SubscriptionID` | Obligatorisch. | Der Bezeichner des Azure-Abonnements, das Ihrem Automation-Konto zugeordnet ist. |
 | `TenantID` | Optional | Der Bezeichner der Mandantenorganisation, die Ihrem Automation-Konto zugeordnet ist. |
 | `WorkspaceName` | Optional | Name des Log Analytics-Arbeitsbereichs. Falls kein Log Analytics-Arbeitsbereich vorhanden ist, wird dieser durch das Skript erstellt und konfiguriert. |
-
-> [!NOTE]
-> Wenn Sie Funktionen aktivieren, unterstützt Azure Automation nur bestimmte Regionen für das Verknüpfen mit einem Log Analytics-Arbeitsbereich und einem Automation-Konto. Eine Liste der unterstützten Zuordnungspaare finden Sie unter [Regionszuordnung für Automation-Konto und Log Analytics-Arbeitsbereich](how-to/region-mappings.md).
 
 ### <a name="step-2---open-windows-powershell-command-line-shell"></a>Schritt 2: Öffnen einer Windows PowerShell-Befehlszeilenshell
 

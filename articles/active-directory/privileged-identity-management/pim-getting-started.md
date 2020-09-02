@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.subservice: pim
 ms.topic: how-to
 ms.workload: identity
-ms.date: 04/23/2020
+ms.date: 08/24/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cad6c41b465e14b11d4fa7b8e7fa6037d49e8eae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8bad5b0256ee445767689ea2752e918a1fbf5fae
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84742910"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815996"
 ---
 # <a name="start-using-privileged-identity-management"></a>Einstieg in Privileged Identity Management
 
@@ -38,9 +38,7 @@ Weitere Informationen finden Sie unter [Lizenzanforderungen für die Verwendung 
 
 ## <a name="prepare-pim-for-azure-ad-roles"></a>Vorbereiten von PIM für Azure AD-Rollen
 
-Nachdem Sie Privileged Identity Management für Ihr Verzeichnis aktiviert haben, können Sie Privileged Identity Management für die Verwaltung von Azure AD-Rollen vorbereiten.
-
-Im Folgenden sind die Aufgaben aufgeführt, die zur Vorbereitung auf Azure AD-Rollen in der angegebenen Reihenfolge ausgeführt werden sollten:
+Folgende Aufgaben werden zur Vorbereitung von Privileged Identity Management für die Verwaltung von Azure AD-Rollen empfohlen:
 
 1. [Konfigurieren von Einstellungen für Azure AD-Rollen](pim-how-to-change-default-settings.md)
 1. [Gewähren der berechtigten Zuweisungen](pim-how-to-add-role-to-user.md)
@@ -48,11 +46,9 @@ Im Folgenden sind die Aufgaben aufgeführt, die zur Vorbereitung auf Azure AD-R
 
 ## <a name="prepare-pim-for-azure-roles"></a>Vorbereiten von PIM für Azure-Rollen
 
-Nachdem Sie Privileged Identity Management für Ihr Verzeichnis aktiviert haben, können Sie Privileged Identity Management für die Verwaltung von Azure-Rollen für den Zugriff auf Azure-Ressourcen in einem Abonnement vorbereiten.
+Folgende Aufgaben werden zur Vorbereitung von Privileged Identity Management für die Verwaltung von Azure-Rollen für ein Abonnement empfohlen:
 
-Im Folgenden sind die Aufgaben aufgeführt, die zur Vorbereitung auf Azure-Rollen in der angegebenen Reihenfolge ausgeführt werden sollten:
-
-1. [Ermitteln der Azure-Ressourcen](pim-resource-roles-discover-resources.md)
+1. [Ermitteln von Azure-Ressourcen](pim-resource-roles-discover-resources.md)
 1. [Konfigurieren von Einstellungen für Azure-Rollen](pim-resource-roles-configure-role-settings.md)
 1. [Gewähren der berechtigten Zuweisungen](pim-resource-roles-assign-roles.md)
 1. [Erlauben der berechtigten Benutzer, ihre Azure-Rollen Just-In-Time zu aktivieren](pim-resource-roles-activate-your-roles.md)
@@ -68,7 +64,7 @@ Nach der Einrichtung von Privileged Identity Management können Sie sich mit der
 | **Meine Rollen**  | Zeigt eine Liste mit berechtigten und aktiven Rollen an, die Ihnen zugewiesen sind. Hier können Sie zugewiesene berechtigte Rollen aktivieren. |
 | **Meine Anforderungen** | Zeigt Ihre ausstehenden Anforderungen zum Aktivieren berechtigter Rollenzuweisungen an. |
 | **Genehmigen von Anforderungen** | Zeigt eine Liste mit Anforderungen zum Aktivieren berechtigter Rollen nach Benutzern in Ihrem Verzeichnis an, für deren Genehmigung Sie zuständig sind. |
-| **Zugriff überprüfen** | Zeigt eine Liste mit aktiven Zugriffsüberprüfungen an, die Ihnen zugewiesen sind. Dabei spielt es keine Rolle, ob Sie den Zugriff für sich selbst oder für eine andere Person überprüfen. |
+| **Überprüfen des Zugriffs** | Zeigt eine Liste mit aktiven Zugriffsüberprüfungen an, die Ihnen zugewiesen sind. Dabei spielt es keine Rolle, ob Sie den Zugriff für sich selbst oder für eine andere Person überprüfen. |
 | **Azure AD-Rollen** | Zeigt für Administratoren privilegierter Rollen ein Dashboard und Einstellungen zum Verwalten von Azure AD-Rollenzuweisungen an. Für Benutzer, die kein Administrator für privilegierte Rollen sind, ist dieses Dashboard deaktiviert. Diese Benutzer haben Zugriff auf ein spezielles Dashboard namens „Meine Ansicht“. Auf dem Dashboard „Meine Ansicht“ werden nur Informationen zu dem Benutzer angezeigt, der auf das Dashboard zugreift (also keine Informationen zur gesamten Organisation). |
 | **Azure-Ressourcen** | Zeigt für Administratoren privilegierter Rollen ein Dashboard und Einstellungen zum Verwalten von Azure-Ressourcenrollenzuweisungen an. Für Benutzer, die kein Administrator für privilegierte Rollen sind, ist dieses Dashboard deaktiviert. Diese Benutzer haben Zugriff auf ein spezielles Dashboard namens „Meine Ansicht“. Auf dem Dashboard „Meine Ansicht“ werden nur Informationen zu dem Benutzer angezeigt, der auf das Dashboard zugreift (also keine Informationen zur gesamten Organisation). |
 
@@ -82,15 +78,15 @@ Fügen Sie Ihrem Dashboard im Azure-Portal eine PIM-Kachel hinzu, um Privileged 
 
     ![Azure AD Privileged Identity Management in „Alle Dienste“](./media/pim-getting-started/pim-all-services-find.png)
 
-1. Wählen Sie den Privileged Identity Management-Schnellstart aus.
+1. Wählen Sie den Privileged Identity Management-**Schnellstart** aus.
 
-1. Aktivieren Sie **Blatt an Dashboard anheften**, um das Blatt für den Schnellstart von Privileged Identity Management an das Dashboard anzuheften.
+1. Wählen Sie **Blatt an Dashboard anheften** aus, um die Seite für den **Schnellstart** von Privileged Identity Management an das Dashboard anzuheften.
 
-    ![Reißzweckensymbol für das Anheften des Privileged Identity Management-Blatts an das Dashboard](./media/pim-getting-started/pim-quickstart-pin-to-dashboard.png)
+    ![Reißzweckensymbol für das Anheften der Privileged Identity Management-Seite an das Dashboard](./media/pim-getting-started/pim-quickstart-pin-to-dashboard.png)
 
     Im Azure-Dashboard wird eine Kachel wie diese angezeigt:
 
-    ![Kachel für den Schnellstart von Privileged Identity Management-Schnellstart auf dem Dashboard](./media/pim-getting-started/pim-quickstart-dashboard-tile.png)
+    ![Kachel für den Privileged Identity Management-Schnellstart auf dem Dashboard](./media/pim-getting-started/pim-quickstart-dashboard-tile.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

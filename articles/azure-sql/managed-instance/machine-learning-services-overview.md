@@ -12,12 +12,12 @@ ms.author: garye
 ms.reviewer: carlrab, davidph
 manager: cgronlun
 ms.date: 06/03/2020
-ms.openlocfilehash: b5daf283df1ef5d6b42da5bf0a4652aedf2f6284
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ad25a9a62757e1e031ce8b93a44e6f2ada4d9964
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708738"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88689506"
 ---
 # <a name="machine-learning-services-in-azure-sql-managed-instance-preview"></a>Machine Learning Services in Azure SQL Managed Instance (Vorschauversion)
 
@@ -52,7 +52,23 @@ In Machine Learning Services sind Basisverteilungen von R und Python enthalten. 
 
 Diese eingeschränkte Public Preview unterliegt den [Azure-Vorschaubestimmungen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). 
 
-Wenn Sie am Vorschauprogramm teilnehmen möchten und diese Bedingungen akzeptieren, können Sie die Registrierung anfordern. Erstellen Sie dazu unter [https://azure.microsoft.com/support/create-ticket/](https://azure.microsoft.com/support/create-ticket/) ein Azure-Supportticket. Wählen Sie als „Typ des Problems“ die Option „Technisch“, als „Dienst“ die Option „SQL Managed Instance“ und als „Problemtyp“ die Option „Andere“ aus. Geben Sie in Ihrer Anforderung an, dass Sie sich für die Public Preview von Machine Learning Services für SQL Managed Instance registrieren möchten, und geben Sie die folgenden Informationen an: Name des logischen Servers, Region und Abonnement-ID.
+Wenn Sie am Vorschauprogramm teilnehmen möchten und diese Bedingungen akzeptieren, können Sie die Registrierung anfordern. Erstellen Sie dazu unter [ **https://azure.microsoft.com/support/create-ticket/** ](https://azure.microsoft.com/support/create-ticket/) ein Azure-Supportticket. 
+
+1. Wählen Sie die folgenden Optionen:
+   - Problemtyp: **Technisch**
+   - Abonnement: *Wählen Sie Ihr Abonnement aus.*
+   - Dienst: **Verwaltete SQL-Datenbank-Instanz**
+   - Zusammenfassung: *Geben Sie eine kurze Beschreibung Ihrer Anfrage ein.*
+   - Problemtyp: **Machine Learning Services in SQL Managed Instance (Vorschauversion)**
+   - Problemuntertyp: **Weitere Probleme oder Fragen zur Vorgehensweise**
+
+1. Klicken Sie auf **Weiter: Lösungen**.
+
+1. Lesen Sie die Informationen zur Vorschauversion, und klicken Sie dann auf **Details**.
+
+1. Geben Sie unter **Beschreibung** Besonderheiten Ihrer Anforderung ein, einschließlich des Namens des logischen Servers, der Region und der Abonnement-ID, die Sie für die Vorschau registrieren möchten. Geben Sie bei Bedarf weitere Details ein.
+
+1. Klicken Sie abschließend auf **Weiter: Überprüfen + erstellen** und dann auf **Erstellen**.
 
 Nachdem Sie für das Programm registriert wurden, führt Microsoft für Sie das Onboarding für die Public Preview durch und aktiviert Machine Learning Services für Ihre vorhandenen oder neuen Datenbanken.
 

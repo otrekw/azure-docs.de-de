@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: Problembehandlung bei häufigen Problemen mit Arc-fähigen Kubernetes-Clustern
 keywords: Kubernetes, Arc, Azure, Container
-ms.openlocfilehash: 1527f8d4ca06c2deaf4ce18b73bfdb515dcadc63
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 404516778255409d56dd5c3a7d1fd96711cc981f
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83725583"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88723672"
 ---
 # <a name="azure-arc-enabled-kubernetes-troubleshooting-preview"></a>Problembehandlung bei Azure Arc-fähigem Kubernetes (Vorschauversion)
 
@@ -69,9 +69,9 @@ pod/metrics-agent-58b765c8db-n5l7k              2/2     Running  0       16h
 pod/resource-sync-agent-5cf85976c7-522p5        3/3     Running  0       16h
 ```
 
-Für alle Pods sollte `STATUS` den Wert `Running` und `READY` entweder den Wert `3/3` oder `2/2` haben. Rufen Sie die Protokolle ab, und überprüfen Sie, ob für Pods der Wert `Error` oder `CrashLoopBackOff` angegeben ist.
+Für alle Pods sollte `STATUS` den Wert `Running` und `READY` entweder den Wert `3/3` oder `2/2` haben. Rufen Sie die Protokolle ab, und überprüfen Sie, ob für Pods der Wert `Error` oder `CrashLoopBackOff` angegeben ist. Wenn einer dieser Pods mit dem Status `Pending` hängen bleibt, liegt dies möglicherweise daran, dass die Ressourcen auf den Clusterknoten nicht ausreichen. Wenn Sie [Ihren Cluster hochskalieren](https://kubernetes.io/docs/tasks/administer-cluster/cluster-management/#resizing-a-cluster), gehen diese Pods in den Status `Running` über.
 
-## <a name="unable-to-connect-my-kubernetes-cluster-to-azure"></a>Keine Verbindung zwischen einem Kubernetes-Cluster und Azure
+## <a name="connecting-kubernetes-clusters-to-azure-arc"></a>Verbinden von Kubernetes-Clustern mit Azure Arc
 
 Das Herstellen einer Verbindung von Clustern mit Azure erfordert Zugriff auf ein Azure-Abonnement und `cluster-admin`-Zugriff auf einen Zielcluster. Wenn der Cluster nicht erreicht werden kann oder unzureichende Berechtigungen aufweist, tritt beim Onboarding ein Fehler auf.
 
@@ -99,8 +99,6 @@ $ az connectedk8s connect --resource-group AzureArc --name AzureArcCluster
 Command group 'connectedk8s' is in preview. It may be changed/removed in a future release.
 Ensure that you have the latest helm version installed before proceeding to avoid unexpected errors.
 This operation might take a while...
-
-There was a problem with connect-agent deployment. Please run 'kubectl -n azure-arc logs -l app.kubernetes.io/component=connect-agent -c connect-agent' to debug the error.
 ```
 
 ## <a name="configuration-management"></a>Konfigurationsverwaltung
@@ -158,4 +156,11 @@ kind: List
 metadata:
   resourceVersion: ""
   selfLink: ""
+```
+## <a name="monitoring"></a>Überwachung
+
+Azure Monitor für Container erfordert die Ausführung des DaemonSet im privilegierten Modus. Führen Sie den folgenden Befehl aus, um einen Canonical Charmed Kubernetes-Cluster für die Überwachung einzurichten:
+
+```console
+juju config kubernetes-worker allow-privileged=true
 ```

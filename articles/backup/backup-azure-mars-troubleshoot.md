@@ -3,12 +3,12 @@ title: Behandeln von Problemen mit dem Azure Backup-Agent
 description: In diesem Artikel erfahren Sie, wie Sie Probleme mit der Installation und Registrierung des Azure Backup-Agents behandeln.
 ms.topic: troubleshooting
 ms.date: 07/15/2019
-ms.openlocfilehash: 1afe437239ec7015bf3bbc195cf0b90e75698142
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: 64996737a18add8ca1bee25e32929f1d602f9018
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87564111"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88763506"
 ---
 # <a name="troubleshoot-the-microsoft-azure-recovery-services-mars-agent"></a>Problembehandlung beim Microsoft Azure Recovery Services-Agent (MARS)
 
@@ -224,7 +224,7 @@ Der Sicherungsvorgang schlägt möglicherweise fehl, wenn der Cacheordner (auch 
 
 ### <a name="prerequisites"></a>Voraussetzungen
 
-Damit MARS-Agent-Vorgänge erfolgreich ausgeführt werden können, muss der Cacheordner den folgenden Anforderungen entsprechen:
+Damit MARS-Agent-Vorgänge erfolgreich ausgeführt werden können, muss der Cacheordner die folgenden Anforderungen erfüllen:
 
 - [Stellen Sie sicher, dass am Speicherort des Ablageordners 5–10 % freier Volumespeicherplatz vorhanden ist](backup-azure-file-folder-backup-faq.md#whats-the-minimum-size-requirement-for-the-cache-folder).
 - [Stellen Sie sicher, dass der Ablageordner gültig ist und auf ihn zugegriffen werden kann](backup-azure-file-folder-backup-faq.md#how-to-check-if-scratch-folder-is-valid-and-accessible).

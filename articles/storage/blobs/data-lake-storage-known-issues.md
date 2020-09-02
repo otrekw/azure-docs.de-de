@@ -5,15 +5,15 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 07/21/2020
+ms.date: 08/26/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 0309f4d07056e3986138139e10ab29faa675cfcd
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: fd500b80f0c564fc0f4c7e311483790a83a4101a
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056077"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88923737"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Bekannte Probleme mit Azure Data Lake Storage Gen2
 
@@ -60,9 +60,9 @@ Nicht verwaltete VM-Datenträger werden für Konten, die über einen hierarchisc
 
 <a id="api-scope-data-lake-client-library"></a>
 
-## <a name="file-system-support-in-sdks-powershell-and-azure-cli"></a>Dateisystemunterstützung in SDKs, PowerShell und der Azure CLI
+## <a name="support-for-setting-access-control-lists-acls-recursively"></a>Unterstützung für das rekursive Festlegen von Zugriffssteuerungslisten (Access Control Lists, ACLs)
 
-- Get- und Set-Vorgänge für Zugriffssteuerungslisten sind derzeit nicht rekursiv.
+Die Möglichkeit, ACL-Änderungen aus dem übergeordneten Verzeichnis rekursiv auf untergeordnete Elemente anzuwenden, befindet sich in der [öffentlichen Vorschauphase](recursive-access-control-lists.md). In der aktuellen Version dieser Funktion können Sie ACL-Änderungen mithilfe von PowerShell, mit dem .NET SDK und dem Python SDK anwenden. Unterstützung für das Java SDK, die Azure CLI, das Azure-Portal oder Azure Storage-Explorer ist noch nicht verfügbar.
 
 <a id="known-issues-tools"></a>
 

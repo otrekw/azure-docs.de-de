@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/10/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 9f140594ef18df7f9a6a3b919998962c966cde76
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 995d621ffbabd6743d248812c88ebe7e65da24ca
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88587598"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88796951"
 ---
 # <a name="manage-digital-twins"></a>Verwalten digitaler Zwillinge
 
@@ -104,8 +104,10 @@ object result = await client.GetDigitalTwin(id);
 
 Dieser Aufruf gibt Zwillingsdaten als JSON-Zeichenfolge zurück. 
 
-> [!TIP]
-> Beim Abrufen eines Zwillings mit `GetDigitalTwin` werden nur Eigenschaften zurückgegeben, die mindestens einmal festgelegt wurden.
+Beim Abrufen eines Zwillings mit `GetDigitalTwin` werden nur Eigenschaften zurückgegeben, die mindestens einmal festgelegt wurden.
+
+>[!TIP]
+>Der `displayName` für einen Zwilling ist ein Teil seiner Modellmetadaten und wird daher nicht angezeigt, wenn Daten für die Zwillingsinstanz abgerufen werden. Um diesen Wert zu sehen, können Sie [ihn aus dem Modell abrufen](how-to-manage-model.md#retrieve-models).
 
 Informationen zum Abrufen mehrerer Zwillinge mithilfe eines einzelnen API-Aufrufs finden Sie in den Beispielen zur Abfrage-API unter [*Gewusst wie: des Zwillingsdiagramms von Azure Digital Twins*](how-to-query-graph.md).
 

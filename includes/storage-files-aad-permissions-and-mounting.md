@@ -2,20 +2,20 @@
 title: include file
 description: include file
 services: storage
-author: tamram
+author: roygara
 ms.service: storage
 ms.topic: include
-ms.date: 04/11/2019
+ms.date: 08/26/2020
 ms.author: rogara
 ms.custom: include file
-ms.openlocfilehash: 55e5290630185466ea0801b06ece71069fc94d89
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 897e5b58aed9c47e0b94ee47d1883e2b7a28bacb
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87545124"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88930797"
 ---
-## <a name="2-assign-access-permissions-to-an-identity"></a>2 Zuweisen von Zugriffsberechtigungen zu einer Identität
+## <a name="assign-access-permissions-to-an-identity"></a>Zuweisen von Zugriffsberechtigungen zu einer Identität
 
 Für den Zugriff auf Azure Files-Ressourcen mit identitätsbasierter Authentifizierung muss eine Identität (Benutzer, Gruppe oder Dienstprinzipal) über die erforderlichen Berechtigungen auf der Freigabeebene verfügen. Dieser Prozess ähnelt der Angabe von Windows-Freigabeberechtigungen, bei denen Sie die Art des Zugriffs eines bestimmten Benutzers auf eine Dateifreigabe angeben. Die Anleitung in diesem Abschnitt zeigt, wie Sie einer Identität Lese-, Schreib- oder Löschberechtigungen für eine Dateifreigabe zuweisen. 
 
@@ -35,7 +35,9 @@ Sie können das Azure-Portal, PowerShell oder die Azure-Befehlszeilenschnittstel
 
 Im Allgemeinen wird empfohlen, Berechtigungen auf Freigabeebene für die Verwaltung des Zugriffs auf hoher Ebene für eine aus Benutzern und Identitäten bestehende AD-Gruppe zu verwenden und dann NTFS-Berechtigungen für eine differenzierte Zugriffssteuerung auf der Verzeichnis-/Dateiebene zu nutzen. 
 
-#### <a name="azure-portal"></a>Azure-Portal
+### <a name="assign-an-azure-role-to-an-ad-identity"></a>Zuweisen einer Azure-Rolle zu einer AD-Identität
+
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 Um einer Azure AD-Identität eine Azure-Rolle zuzuweisen, führen Sie im [Azure-Portal](https://portal.azure.com) die folgenden Schritte aus:
 
 1. Navigieren Sie im Azure-Portal zu Ihrer Dateifreigabe, oder [erstellen Sie eine Dateifreigabe](../articles/storage/files/storage-how-to-create-file-share.md).
@@ -44,7 +46,7 @@ Um einer Azure AD-Identität eine Azure-Rolle zuzuweisen, führen Sie im [Azure
 4. Wählen Sie auf dem Blatt **Rollenzuweisung hinzufügen** in der Liste **Rolle** die entsprechende integrierte Rolle aus (Speicherdateidaten-SMB-Freigabeleser, Speicherdateidaten-SMB-Freigabemitwirkender). Behalten Sie für **Zugriff zuweisen zu** die Standardeinstellung bei: **Azure AD-Benutzer, -Gruppe oder -Dienstprinzipal**. Wählen Sie die Azure AD-Zielidentität anhand des Namens oder der E-Mail-Adresse aus.
 5. Wählen Sie abschließend **Speichern** aus, um den Vorgang der Rollenzuweisung abzuschließen.
 
-#### <a name="powershell"></a>PowerShell
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Das folgende PowerShell-Beispiel zeigt, wie einer Azure AD-Identität basierend auf dem Anmeldenamen eine Azure-Rolle zugewiesen wird. Weitere Informationen zum Zuweisen von Azure-Rollen mit PowerShell finden Sie unter [Verwalten des Zugriffs mit RBAC und Azure PowerShell](../articles/role-based-access-control/role-assignments-powershell.md).
 
@@ -59,7 +61,7 @@ $scope = "/subscriptions/<subscription-id>/resourceGroups/<resource-group>/provi
 New-AzRoleAssignment -SignInName <user-principal-name> -RoleDefinitionName $FileShareContributorRole.Name -Scope $scope
 ```
 
-#### <a name="cli"></a>Befehlszeilenschnittstelle (CLI)
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
   
 Der folgende CLI 2.0-Befehl zeigt, wie einer Azure AD-Identität basierend auf dem Anmeldenamen eine Azure-Rolle zugewiesen wird. Weitere Informationen zum Zuweisen von Azure-Rollen mithilfe der Azure-Befehlszeilenschnittstelle finden Sie unter [Verwalten des Zugriffs mit RBAC und der Azure-Befehlszeilenschnittstelle](../articles/role-based-access-control/role-assignments-cli.md). 
 
@@ -69,8 +71,10 @@ Denken Sie vor dem Ausführen des folgenden Beispielskripts daran, Platzhalterwe
 #Assign the built-in role to the target identity: Storage File Data SMB Share Reader, Storage File Data SMB Share Contributor, Storage File Data SMB Share Elevated Contributor
 az role assignment create --role "<role-name>" --assignee <user-principal-name> --scope "/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>/fileServices/default/fileshares/<share-name>"
 ```
+---
 
-## <a name="3-configure-ntfs-permissions-over-smb"></a>3 Konfigurieren von NTFS-Berechtigungen über SMB 
+## <a name="configure-ntfs-permissions-over-smb"></a>Konfigurieren von NTFS-Berechtigungen über SMB
+
 Nachdem Sie mit RBAC Berechtigungen auf Freigabeebene zugewiesen haben, müssen Sie die richtigen NTFS-Berechtigungen auf Stamm-, Verzeichnis- oder Dateiebene zuweisen. Stellen Sie sich die Berechtigungen auf der Freigabeebene als allgemeinen Gatekeeper vor, der festlegt, ob ein Benutzer auf die Freigabe zugreifen kann. Die NTFS-Berechtigungen agieren hingegen auf einer detaillierteren Ebene und legen fest, welche Vorgänge der Benutzer auf der Verzeichnis- oder Dateiebene ausführen kann.
 
 Azure Files unterstützt den vollständigen Satz an grundlegenden und erweiterten NTFS-Berechtigungen. Sie können NTFS-Berechtigungen für Verzeichnisse und Dateien in einer Azure-Dateifreigabe anzeigen und konfigurieren, indem Sie die Freigabe einbinden und dann den Windows-Datei-Explorer verwenden oder den Windows-Befehl [icacls](https://docs.microsoft.com/windows-server/administration/windows-commands/icacls) oder [Set-ACL](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/set-acl) ausführen. 
@@ -108,6 +112,7 @@ Wenn beim Herstellen einer Verbindung mit Azure Files Probleme auftreten, finden
 
 
 ### <a name="configure-ntfs-permissions-with-windows-file-explorer"></a>Konfigurieren von NTFS-Berechtigungen mit dem Windows-Datei-Explorer
+
 Verwenden Sie den Windows-Datei-Explorer, um allen Verzeichnissen und Dateien unter der Dateifreigabe, einschließlich des Stammverzeichnisses, vollständige Berechtigungen zu erteilen.
 
 1. Öffnen Sie Windows-Explorer, klicken Sie mit der rechten Maustaste auf die Datei bzw. das Verzeichnis, und wählen Sie **Eigenschaften** aus.
@@ -120,6 +125,7 @@ Verwenden Sie den Windows-Datei-Explorer, um allen Verzeichnissen und Dateien un
 9.    Wählen Sie **Übernehmen**.
 
 ### <a name="configure-ntfs-permissions-with-icacls"></a>Konfigurieren von NTFS-Berechtigungen mit icacls
+
 Verwenden Sie den folgenden Windows-Befehl, um allen Verzeichnissen und Dateien unter der Dateifreigabe, einschließlich des Stammverzeichnisses, vollständige Berechtigungen zu erteilen. Denken Sie daran, die Platzhalterwerte in diesem Beispiel durch Ihre eigenen Werte zu ersetzen.
 
 ```
@@ -128,7 +134,7 @@ icacls <mounted-drive-letter>: /grant <user-email>:(f)
 
 Weitere Informationen zur Verwendung von icacls zum Festlegen von NTFS-Berechtigungen und zu den verschiedenen Arten von unterstützten Berechtigungen finden Sie in der [Befehlszeilenreferenz für icacls](https://docs.microsoft.com/windows-server/administration/windows-commands/icacls).
 
-## <a name="4-mount-a-file-share-from-a-domain-joined-vm"></a>4 Bereitstellen einer Dateifreigabe von einem in eine Domäne eingebundenen virtuellen Computer
+## <a name="mount-a-file-share-from-a-domain-joined-vm"></a>Bereitstellen einer Dateifreigabe von einem in eine Domäne eingebundenen virtuellen Computer
 
 Mit dem folgenden Prozess wird überprüft, ob Ihre Dateifreigabe und Ihre Zugriffsberechtigungen ordnungsgemäß eingerichtet wurden und Sie von einem in die Domäne eingebundenen virtuellen Computer aus Zugriff auf eine Azure-Dateifreigabe haben. Beachten Sie, dass es einige Zeit dauern kann, bis die Azure-Rollenzuweisung auf Freigabeebene wirksam wird. 
 

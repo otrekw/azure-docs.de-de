@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/08/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 093f86f0373791326cf4658bdab7179fbca1307d
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: e83faee7d72026dafc50b21d0a0773e663e5a03a
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87849657"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88933109"
 ---
 # <a name="set-up-and-use-compute-targets-for-model-training"></a>Einrichten und Verwenden von Computezielen für das Modelltraining 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -149,19 +149,129 @@ Verwenden Sie eine der folgenden Methoden, um einen virtuellen Computer mit nied
     az ml computetarget create amlcompute --name lowpriocluster --vm-size Standard_NC6 --max-nodes 5 --vm-priority lowpriority
     ```
 
+ ### <a name="set-up-managed-identity"></a><a id="managed-identity"></a> Einrichten einer verwalteten Identität
 
+ Azure Machine Learning-Computecluster unterstützen auch [verwaltete Identitäten](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview), um den Zugriff auf Azure-Ressourcen zu authentifizieren, ohne dass Ihr Code Anmeldeinformationen enthalten muss. Es gibt zwei Arten von verwalteten Identitäten:
 
-### <a name="azure-machine-learning-compute-instance"></a><a id="instance"></a>Azure Machine Learning-Computeinstanz
+* Eine **systemseitig zugewiesene verwaltete Identität** wird direkt im Azure Machine Learning-Computecluster aktiviert. Der Lebenszyklus einer systemseitig zugewiesenen Identität ist direkt an den Computecluster gebunden. Wenn der Computecluster gelöscht wird, bereinigt Azure automatisch die Anmeldeinformationen und die Identität in Azure AD.
+* Eine **benutzerseitig zugewiesene verwaltete Identität** ist eine eigenständige Azure-Ressource, die über den Dienst für verwaltete Azure-Identitäten bereitgestellt wird. Sie können eine benutzerseitig zugewiesene Identität mehreren Ressourcen zuweisen, und sie wird für die gewünschte Dauer beibehalten.
 
-Eine [Azure Machine Learning-Computeinstanz](concept-compute-instance.md) ist eine verwaltete Computeinfrastruktur, die Ihnen das einfache Erstellen einer einzelnen VM ermöglicht. Das Computeziel wird in Ihrer Arbeitsbereichsregion erstellt, aber im Gegensatz zu einem Computecluster kann eine Instanz nicht für andere Benutzer in Ihrem Arbeitsbereich freigegeben werden. Außerdem wird die Instanz nicht automatisch herunterskaliert.  Sie müssen die Ressource beenden, um laufende Gebühren zu vermeiden.
-
-Computeinstanzen können mehrere Aufträge parallel ausführen und verfügen über eine Auftragswarteschlange. 
-
-Sie können Aufträge sicher in einer [virtuellen Netzwerkumgebung](how-to-enable-virtual-network.md#compute-instance) ausführen, ohne dass Unternehmen hierfür SSH-Ports öffnen müssen. Der Auftrag wird in einer Containerumgebung ausgeführt und packt die Abhängigkeiten Ihres Modells in einen Docker-Container. 
-
-1. **Erstellen und Anfügen**: 
+Geben Sie mithilfe einer der folgenden Methoden eine verwaltete Identität für einen Computecluster an:
     
-    [!notebook-python[] (~/MachineLearningNotebooks/how-to-use-azureml/training/train-on-computeinstance/train-on-computeinstance.ipynb?name=create_instance)]
+* Schalten Sie in Studio beim Erstellen von Computeclustern oder beim Bearbeiten von Computeclusterdetails **Verwaltete Identität zuweisen** um, und geben Sie eine systemseitig oder eine benutzerseitig zugewiesene Identität an.
+    
+* Legen Sie mit dem Python SDK das `identity_type`-Attribut in Ihrer Bereitstellungskonfiguration fest.  
+    
+    ```python
+    # configure cluster with a system-assigned managed identity
+    compute_config = AmlCompute.provisioning_configuration(vm_size='STANDARD_D2_V2',
+                                                            max_nodes=5,
+                                                            identity_type="SystemAssigned",
+                                                            )
+
+    # configure cluster with a user-assigned managed identity
+    compute_config = AmlCompute.provisioning_configuration(vm_size='STANDARD_D2_V2',
+                                                            max_nodes=5,
+                                                            identity_type="UserAssigned",
+                                                            identity_id=['/subscriptions/<subcription_id>/resourcegroups/<resource_group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<user_assigned_identity>'])
+
+    cpu_cluster_name = "cpu-cluster"
+    cpu_cluster = ComputeTarget.create(ws, cpu_cluster_name, compute_config)
+    ```
+
+* Legen Sie mit dem Python SDK die Attribute `identity_type` und `identity_id` in der Bereitstellungskonfiguration fest (falls Sie eine benutzerseitig verwaltete Identität erstellen).  
+    
+    ```python
+    # add a system-assigned managed identity
+    cpu_cluster.add_identity(identity_type="SystemAssigned")
+
+    # add a user-assigned managed identity
+    cpu_cluster.add_identity(identity_type="UserAssigned", 
+                                identity_id=['/subscriptions/<subcription_id>/resourcegroups/<resource_group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<user_assigned_identity>'])
+    ```
+    
+* Legen Sie mithilfe der CLI während der Clustererstellung das Attribut `assign-identity` fest:
+    
+    ```azurecli
+    # create a cluster with a user-assigned managed identity
+    az ml computetarget create amlcompute --name cpu-cluster --vm-size Standard_NC6 --max-nodes 5 --assign-identity '/subscriptions/<subcription_id>/resourcegroups/<resource_group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<user_assigned_identity>'
+
+    # create a cluster with a system-managed identity
+    az ml computetarget create amlcompute --name cpu-cluster --vm-size Standard_NC6 --max-nodes 5 --assign-identity '[system]'
+
+* Using the CLI, execute the following commands to assign a managed identity on an existing cluster:
+    
+    ```azurecli
+    # add a user-assigned managed identity
+    az ml computetarget amlcompute identity assign --name cpu-cluster '/subscriptions/<subcription_id>/resourcegroups/<resource_group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<user_assigned_identity>'
+
+    # add a system-assigned managed identity
+    az ml computetarget amlcompute identity assign --name cpu-cluster '[system]'
+
+> [!NOTE]
+> Azure Machine Learning compute clusters support only **one system-assigned identity** or **multiple user-assigned identities**, not both concurrently.
+> 
+> Additionally, you can assign only one managed identity from the studio.
+
+#### Managed identity usage
+
+AML defines the **default managed identity** as the system-assigned managed identity or the first user-assigned managed identity.
+
+During a run there are two applications of an identity:
+1. The system uses an identity to setup the user's storage mounts, container registry, and datastores.
+    * In this case, the system will use the default managed identity.
+
+1. The user applies an identity to access resources from within the code for a submitted run
+    
+    * In this case, the user must provide the *client_id* corresponding to the managed identity they want to use to retrieve a credential. 
+    * Alternatively, AML exposes the user-assigned identity's client ID through the *DEFAULT_IDENTITY_CLIENT_ID* environment variable.
+    
+    For example, to retrieve a token for a datastore with the default managed identity:
+    
+    ```python
+    client_id = os.environ.get('DEFAULT_IDENTITY_CLIENT_ID')
+    credential = ManagedIdentityCredential(client_id=client_id)
+    token = credential.get_token('https://storage.azure.com/')
+
+
+
+### <a id="instance"></a>Azure Machine Learning compute instance
+
+[Azure Machine Learning compute instance](concept-compute-instance.md) is a managed-compute infrastructure that allows you to easily create a single VM. The compute is created within your workspace region, but unlike a compute cluster, an instance cannot be shared with other users in your workspace. Also the instance does not automatically scale down.  You must stop the resource to prevent ongoing charges.
+
+A compute instance can run multiple jobs in parallel and has a job queue. 
+
+Compute instances can run jobs securely in a [virtual network environment](how-to-enable-virtual-network.md#compute-instance), without requiring enterprises to open up SSH ports. The job executes in a containerized environment and packages your model dependencies in a Docker container. 
+
+1. **Create and attach**: 
+    
+    ```python
+    import datetime
+    import time
+    
+    from azureml.core.compute import ComputeTarget, ComputeInstance
+    from azureml.core.compute_target import ComputeTargetException
+    
+    # Choose a name for your instance
+    # Compute instance name should be unique across the azure region
+    compute_name = "ci{}".format(ws._workspace_id)[:10]
+    
+    # Verify that instance does not exist already
+    try:
+        instance = ComputeInstance(workspace=ws, name=compute_name)
+        print('Found existing instance, use it.')
+    except ComputeTargetException:
+        compute_config = ComputeInstance.provisioning_configuration(
+            vm_size='STANDARD_D3_V2',
+            ssh_public_access=False,
+            # vnet_resourcegroup_name='<my-resource-group>',
+            # vnet_name='<my-vnet-name>',
+            # subnet_name='default',
+            # admin_user_ssh_public_key='<my-sshkey>'
+        )
+        instance = ComputeInstance.create(ws, compute_name, compute_config)
+        instance.wait_for_completion(show_output=True)
+    ```
 
 1. **Konfigurieren**: Erstellen Sie eine Laufzeitkonfiguration.
     
@@ -180,8 +290,6 @@ Sie können Aufträge sicher in einer [virtuellen Netzwerkumgebung](how-to-enabl
      
     run = experiment.submit(config=src)
     ```
-
-Weitere nützliche Befehle für die Computeinstanz finden Sie im Notebook [train-on-computeinstance](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-on-computeinstance/train-on-computeinstance.ipynb). Dieses Notebook befindet sich auch im Studio-Ordner **Beispiele** in *training/train-on-computeinstance*.
 
 Nachdem Sie nun das Computeziel angefügt und die Ausführung konfiguriert haben, besteht der nächste Schritt im [Übermitteln der Trainingsausführung](#submit).
 
@@ -315,6 +423,112 @@ except ComputeTargetException:
 
 print("Using Batch compute:{}".format(batch_compute.cluster_resource_id))
 ```
+
+### <a name="azure-databricks"></a><a id="databricks"></a>Azure Databricks
+
+Azure Databricks ist eine Apache Spark-basierte Umgebung in der Azure-Cloud. Sie kann mit einer Azure Machine Learning-Pipeline als Computeziel verwendet werden.
+
+Erstellen Sie vor der Verwendung einen Azure Databricks-Arbeitsbereich. Informationen zum Erstellen einer Arbeitsbereichsressource finden Sie im Dokument [Ausführen eines Spark-Auftrags in Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal).
+
+Geben Sie zum Anfügen von Azure Databricks als Computeziel die folgenden Informationen an:
+
+* __Databricks-Computename__: Der Name, der dieser Computeressource zugewiesen werden soll.
+* __Name des Databricks-Arbeitsbereichs__: Der Name des Azure Databricks-Arbeitsbereichs.
+* __Databricks-Zugriffstoken__: Das zur Authentifizierung bei Azure Databricks verwendete Zugriffstoken. Informationen zum Generieren eines Zugriffstokens finden Sie im Dokument [Authentifizierung](https://docs.azuredatabricks.net/dev-tools/api/latest/authentication.html).
+
+Der folgende Code veranschaulicht, wie Sie Azure Databricks als Computeziel mit dem Azure Machine Learning SDK anfügen (__der Databricks-Arbeitsbereich muss im gleichen Abonnement wie der AML-Arbeitsbereich vorhanden sein__):
+
+```python
+import os
+from azureml.core.compute import ComputeTarget, DatabricksCompute
+from azureml.exceptions import ComputeTargetException
+
+databricks_compute_name = os.environ.get(
+    "AML_DATABRICKS_COMPUTE_NAME", "<databricks_compute_name>")
+databricks_workspace_name = os.environ.get(
+    "AML_DATABRICKS_WORKSPACE", "<databricks_workspace_name>")
+databricks_resource_group = os.environ.get(
+    "AML_DATABRICKS_RESOURCE_GROUP", "<databricks_resource_group>")
+databricks_access_token = os.environ.get(
+    "AML_DATABRICKS_ACCESS_TOKEN", "<databricks_access_token>")
+
+try:
+    databricks_compute = ComputeTarget(
+        workspace=ws, name=databricks_compute_name)
+    print('Compute target already exists')
+except ComputeTargetException:
+    print('compute not found')
+    print('databricks_compute_name {}'.format(databricks_compute_name))
+    print('databricks_workspace_name {}'.format(databricks_workspace_name))
+    print('databricks_access_token {}'.format(databricks_access_token))
+
+    # Create attach config
+    attach_config = DatabricksCompute.attach_configuration(resource_group=databricks_resource_group,
+                                                           workspace_name=databricks_workspace_name,
+                                                           access_token=databricks_access_token)
+    databricks_compute = ComputeTarget.attach(
+        ws,
+        databricks_compute_name,
+        attach_config
+    )
+
+    databricks_compute.wait_for_completion(True)
+```
+
+Ein ausführlicheres Beispiel finden Sie in einem [Beispiel-Notebook](https://aka.ms/pl-databricks) auf GitHub.
+
+### <a name="azure-data-lake-analytics"></a><a id="adla"></a>Azure Data Lake Analytics
+
+Azure Data Lake Analytics ist eine umfangreiche Datenanalyseplattform in der Azure-Cloud. Sie kann mit einer Azure Machine Learning-Pipeline als Computeziel verwendet werden.
+
+Erstellen Sie vor der Verwendung ein Azure Data Lake Analytics-Konto. Informationen zum Erstellen dieser Ressource finden Sie im Dokument [Erste Schritte mit Azure Data Lake Analytics](https://docs.microsoft.com/azure/data-lake-analytics/data-lake-analytics-get-started-portal).
+
+Um Data Lake Analytics als Computeziel anzufügen, müssen Sie das Azure Machine Learning SDK verwenden und die folgenden Informationen angeben:
+
+* __Computename__: Der Name, der dieser Computeressource zugewiesen werden soll.
+* __Ressourcengruppe__: Die Ressourcengruppe, die das Data Lake Analytics-Konto enthält.
+* __Kontoname__: Der Name des Data Lake Analytics-Kontos.
+
+Der folgende Code veranschaulicht, wie Data Lake Analytics als Computeziel angefügt wird:
+
+```python
+import os
+from azureml.core.compute import ComputeTarget, AdlaCompute
+from azureml.exceptions import ComputeTargetException
+
+
+adla_compute_name = os.environ.get(
+    "AML_ADLA_COMPUTE_NAME", "<adla_compute_name>")
+adla_resource_group = os.environ.get(
+    "AML_ADLA_RESOURCE_GROUP", "<adla_resource_group>")
+adla_account_name = os.environ.get(
+    "AML_ADLA_ACCOUNT_NAME", "<adla_account_name>")
+
+try:
+    adla_compute = ComputeTarget(workspace=ws, name=adla_compute_name)
+    print('Compute target already exists')
+except ComputeTargetException:
+    print('compute not found')
+    print('adla_compute_name {}'.format(adla_compute_name))
+    print('adla_resource_id {}'.format(adla_resource_group))
+    print('adla_account_name {}'.format(adla_account_name))
+    # create attach config
+    attach_config = AdlaCompute.attach_configuration(resource_group=adla_resource_group,
+                                                     account_name=adla_account_name)
+    # Attach ADLA
+    adla_compute = ComputeTarget.attach(
+        ws,
+        adla_compute_name,
+        attach_config
+    )
+
+    adla_compute.wait_for_completion(True)
+```
+
+Ein ausführlicheres Beispiel finden Sie in einem [Beispiel-Notebook](https://aka.ms/pl-adla) auf GitHub.
+
+> [!TIP]
+> Azure Machine Learning-Pipelines können nur ausgeführt werden, wenn die Daten im Standarddatenspeicher des Data Lake Analytics-Kontos gespeichert werden. Wenn die Daten, die Sie verwenden möchten, in einem nicht standardmäßigen Speicher gespeichert sind, können Sie die Daten mithilfe von [`DataTransferStep`](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.data_transfer_step.datatransferstep?view=azure-ml-py) vor dem Trainieren kopieren.
 
 ## <a name="set-up-in-azure-machine-learning-studio"></a>Einrichten in Azure Machine Learning Studio
 

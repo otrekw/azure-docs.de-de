@@ -10,12 +10,12 @@ author: gvashishtha
 ms.date: 07/31/2020
 ms.topic: conceptual
 zone_pivot_groups: aml-control-methods
-ms.openlocfilehash: 6bbee606c59482e4a06f344d3221e8611f6dcc9d
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: a3aed23441df225316f52eb3acb1387cbba6d807
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87544467"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935584"
 ---
 # <a name="profile-your-model-to-determine-resource-utilization"></a>Erstellen eines Profils Ihres Modells zur Bestimmung der Ressourcenverwendung
 
@@ -36,6 +36,9 @@ Um ein Profil Ihres Modells erstellen zu können, benötigen Sie Folgendes:
 
 > [!IMPORTANT]
 > An dieser Stelle unterstützen wir nur die Profilerstellung von Diensten, die erwarten, dass ihre Anforderungsdaten eine Zeichenfolge sind. Beispiel: string serialized json, text, string serialized image, usw. Der Inhalt der einzelnen Zeilen des Datasets (Zeichenfolge) wird in den Hauptteil der HTTP-Anforderung eingefügt und an den Dienst gesendet, der das Modell zur Bewertung kapselt.
+
+> [!IMPORTANT]
+> Wir unterstützen nur die Profilerstellung von bis zu 2 CPUs in den Regionen „China, Osten 2“ und „US Gov Arizona“.
 
 Nachfolgend finden Sie ein Beispiel dafür, wie Sie ein Eingabedataset konstruieren können, um ein Profil eines Diensts zu erstellen, der erwartet, dass seine eingehenden Anforderungsdaten serialisierten JSON-Code enthalten. In diesem Fall haben Sie ein Dataset erstellt, das auf 100 Instanzen desselben Anforderungsdateninhalts basiert. In realen Szenarien wird empfohlen, dass Sie größere Datasets mit verschiedenen Eingaben verwenden, insbesondere wenn die Nutzung bzw. das Verhalten Ihrer Modellressourcen von Eingaben abhängig ist.
 

@@ -3,17 +3,17 @@ title: Verwenden von Creator zum Erstellen von Gebäudeplänen
 description: Hier erfahren Sie, wie Sie mithilfe von Azure Maps Creator Gebäudepläne erstellen.
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 06/17/2020
+ms.date: 08/29/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 7ea1995b6d1232b3e4c6371313e5b3d45bdbb756
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: bf2fbb48c34631bc74a3b712e135b618a1718d8e
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075400"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88688084"
 ---
 # <a name="use-creator-to-create-indoor-maps"></a>Verwenden von Creator zum Erstellen von Gebäudeplänen
 
@@ -109,16 +109,25 @@ Bei der Datenupload-API handelt es sich um eine zeitintensive Transaktion, durch
     ```http
     https://atlas.microsoft.com/conversion/convert?subscription-key={Azure-Maps-Primary-Subscription-key}&api-version=1.0&udid={udid}&inputType=DWG
     ```
+
     >[!IMPORTANT]
     > Die API-URLs in diesem Dokument müssen möglicherweise entsprechend dem Speicherort der Creator-Ressource angepasst werden. Weitere Details finden Sie unter [Zugreifen auf Creator-Dienste](how-to-manage-creator.md#access-to-creator-services).
 
-3. Klicken Sie auf die Schaltfläche **Send** (Senden), und warten Sie, bis die Anforderung verarbeitet wurde. Navigieren Sie nach Abschluss der Anforderung zur Registerkarte **Headers** (Header) der Antwort, und suchen Sie nach dem Schlüssel **Location** (Speicherort). Kopieren Sie den Wert des Schlüssels **Location** (Speicherort). Hierbei handelt es sich um die Status-URL (`status URL`) für die Konvertierungsanforderung.
+3. Klicken Sie auf die Schaltfläche **Send** (Senden), und warten Sie, bis die Anforderung verarbeitet wurde. Navigieren Sie nach Abschluss der Anforderung zur Registerkarte **Headers** (Header) der Antwort, und suchen Sie nach dem Schlüssel **Location** (Speicherort). Kopieren Sie den Wert des Schlüssels **Location** (Speicherort). Hierbei handelt es sich um die Status-URL (`status URL`) für die Konvertierungsanforderung. Diesen verwenden Sie im nächsten Schritt.
 
-4. Starten Sie auf der Registerkarte „Builder“ (Generator) eine neue HTTP-Methode vom Typ **GET**. Fügen Sie Ihren primären Abonnementschlüssel für Azure Maps an die Status-URL (`status URL`) an. Erstellen Sie eine Anforderung vom Typ **GET** für die Status-URL (`status URL`) aus dem vorherigen Schritt. Sollte der Konvertierungsprozess noch nicht abgeschlossen sein, wird möglicherweise eine JSON-Antwort wie die folgende angezeigt:
+    :::image type="content" source="./media/tutorial-creator-indoor-maps/copy-location-uri-dialog.png" border="true" alt-text="Kopieren Sie den Wert des Location-Schlüssels":::.
+
+4. Starten Sie auf der Registerkarte „Builder“ (Generator) eine neue HTTP-Methode vom Typ **GET**. Fügen Sie Ihren primären Abonnementschlüssel für Azure Maps an die Status-URL (`status URL`) an. Erstellen Sie eine **GET**-Anforderung an die `status URL`, die Sie in Schritt 3 kopiert haben. Die `status URL` sieht wie die folgende URL aus:
+
+    ```http
+    https://atlas.microsoft.com/conversion/operations/<operationId>?api-version=1.0
+    ```
+
+    Sollte der Konvertierungsprozess noch nicht abgeschlossen sein, wird möglicherweise eine JSON-Antwort wie die folgende angezeigt:
 
     ```json
     {
-        "operationId": "77dc9262-d3b8-4e32-b65d-74d785b53504",
+        "operationId": "<operationId>",
         "created": "2020-04-22T19:39:54.9518496+00:00",
         "status": "Running"
     }
@@ -128,7 +137,7 @@ Bei der Datenupload-API handelt es sich um eine zeitintensive Transaktion, durch
 
     ```json
    {
-        "operationId": "77dc9262-d3b8-4e32-b65d-74d785b53504",
+        "operationId": "<operationId>",
         "created": "2020-04-22T19:39:54.9518496+00:00",
         "status": "Succeeded",
         "resourceLocation": "https://atlas.microsoft.com/conversion/{conversionId}?api-version=1.0",
@@ -143,7 +152,7 @@ Das Beispielzeichnungspaket sollte sich ohne Fehler oder Warnungen konvertieren 
 
 ```json
 {
-    "operationId": "77dc9262-d3b8-4e32-b65d-74d785b53504",
+    "operationId": "<operationId>",
     "created": "2020-04-22T19:39:54.9518496+00:00",
     "status": "Failed",
     "resourceLocation": "https://atlas.microsoft.com/conversion/{conversionId}?api-version=1.0",
@@ -177,7 +186,7 @@ Das Dataset ist eine Sammlung von Kartenfeatures wie Gebäuden, Ebenen und Räum
 
     ```json
     {
-        "operationId": "a93570cb-3e4f-4e45-a2b1-360df174180a",
+        "operationId": "<operationId>",
         "created": "2020-04-22T19:52:38.9352189+00:00",
         "status": "Succeeded",
         "resourceLocation": "https://azure.microsoft.com/dataset/{datasetiId}?api-version=1.0"
@@ -206,7 +215,7 @@ Bei einem Kachelset handelt es sich um eine Gruppe von Vektorkacheln, die auf de
 
     ```json
     {
-        "operationId": "a93570cb-3e4f-4e45-a2b1-360df174180a",
+        "operationId": "<operationId>",
         "createdDateTime": "3/11/2020 8:45:13 PM +00:00",
         "status": "Succeeded",
         "resourceLocation": "https://atlas.microsoft.com/tileset/{tilesetId}?api-version=1.0"

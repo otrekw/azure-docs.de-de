@@ -7,12 +7,12 @@ ms.reviewer: logicappspm
 ms.topic: conceptual
 ms.date: 07/31/2020
 tags: connectors
-ms.openlocfilehash: 768186d4b1cf9ac62d4ffdb0af8fdb3df04e9b19
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: 13732c6d31f19dfb2548154feb8336a1dff3a529
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87461603"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88853294"
 ---
 # <a name="exchange-messages-in-the-cloud-by-using-azure-logic-apps-and-azure-service-bus"></a>Austauschen von Nachrichten in der Cloud mit Azure Logic Apps und Azure Service Bus
 
@@ -78,27 +78,30 @@ Vergewissern Sie sich, dass Ihre Logik-App über Berechtigungen für den Zugriff
 
    Einige Trigger, z. B. der Trigger**Bei Empfang mindestens einer Nachricht in der Warteschlange (autom. abschließen)** , können eine oder mehrere Nachrichten zurückgeben. Wird ein solcher Trigger ausgelöst, gibt er mindestens eine und maximal so viele Nachrichten zurück, wie diese in seiner Eigenschaft **Maximale Nachrichtenanzahl** angegeben ist.
 
+    > [!NOTE]
+    > Mit dem Trigger für die automatische Vervollständigung wird eine Nachricht automatisch abgeschlossen, der Abschluss erfolgt jedoch erst bei der nächsten Ausführung des Auslösers. Dieses Verhalten kann sich auf den Entwurf Ihrer Logik-App auswirken. Wenn Sie z. B. für den Trigger der automatischen Vervollständigung jede Minute eine Überprüfung auf Nachrichten festlegen, die Sperrdauer jedoch auf Service Bus-Seite auf 30 Sekunden festgelegt ist, tritt beim Abschließen der Nachricht ein Fehler vom Typ „Sperre abgelaufen“ auf. Sie müssen die Sperrdauer auf einen längeren Wert als das Abrufintervall festlegen.
+
 1. Wenn Ihr Trigger zum ersten Mal eine Verbindung mit Ihrem Service Bus-Namespace herstellt, führen Sie diese Schritte aus, wenn Sie der Logik-App-Designer auffordert, Ihre Verbindungsinformationen anzugeben.
 
    1. Geben Sie einen Namen für Ihre Verbindung ein, und wählen Sie den Service Bus-Namespace aus.
 
-      ![Erstellen einer Service Bus-Verbindung, Teil 1](./media/connectors-create-api-azure-service-bus/create-service-bus-connection-trigger-1.png)
+      ![Screenshot der Bereitstellung eines Verbindungsnamens und des Auswählens eines Service Bus-Namespace](./media/connectors-create-api-azure-service-bus/create-service-bus-connection-trigger-1.png)
 
       Wenn Sie die Verbindungszeichenfolge stattdessen manuell eingeben möchten, wählen Sie **Verbindungsinformationen manuell eingeben** aus. Wenn Sie die Verbindungszeichenfolge nicht kennen, lesen Sie [Suchen der Verbindungszeichenfolge](#permissions-connection-string).
 
    1. Wählen Sie Ihre Service Bus-Richtlinie und dann **Erstellen** aus.
 
-      ![Service Bus-Verbindung herstellen, Teil 2](./media/connectors-create-api-azure-service-bus/create-service-bus-connection-trigger-2.png)
+      ![Screenshot des Auswählens einer Service Bus-Richtlinie](./media/connectors-create-api-azure-service-bus/create-service-bus-connection-trigger-2.png)
 
    1. Wählen Sie die gewünschte Messagingentität aus, z. B. eine Warteschlange oder ein Thema. In diesem Beispiel wählen Sie Ihre Service Bus-Warteschlange aus.
    
-      ![Auswählen der Service Bus-Warteschlange](./media/connectors-create-api-azure-service-bus/service-bus-select-queue-trigger.png)
+      ![Screenshot des Auswählens einer Service Bus-Warteschlange](./media/connectors-create-api-azure-service-bus/service-bus-select-queue-trigger.png)
 
 1. Geben Sie die erforderlichen Informationen zu Ihrem ausgewählten Trigger ein. Öffnen Sie zum Hinzufügen weiterer verfügbarer Eigenschaften zu der Aktion die Liste **Neuen Parameter hinzufügen**, und wählen Sie die gewünschten Eigenschaften aus.
 
    Für diesen Beispieltrigger: Legen Sie das Abrufintervall und die Häufigkeit für die Überprüfung der Warteschlange fest.
 
-   ![Einrichten des Abrufintervalls](./media/connectors-create-api-azure-service-bus/service-bus-trigger-details.png)
+   ![Screenshot des Festlegens des Abrufintervalls für den Service Bus-Auslöser](./media/connectors-create-api-azure-service-bus/service-bus-trigger-details.png)
 
    Weitere Informationen zu verfügbaren Triggern und Eigenschaften finden Sie auf der [Referenzseite](/connectors/servicebus/) des Connectors.
 
@@ -120,29 +123,29 @@ Vergewissern Sie sich, dass Ihre Logik-App über Berechtigungen für den Zugriff
 
    Wählen Sie für dieses Beispiel die Aktion **Nachricht senden** aus.
 
-   ![Auswählen einer Service Bus-Aktion](./media/connectors-create-api-azure-service-bus/select-service-bus-send-message-action.png) 
+   ![Screenshot des Auswählens einer Service Bus-Aktion](./media/connectors-create-api-azure-service-bus/select-service-bus-send-message-action.png) 
 
 1. Wenn Ihre Aktion zum ersten Mal eine Verbindung mit Ihrem Service Bus-Namespace herstellt, führen Sie diese Schritte aus, wenn Sie der Logik-App-Designer auffordert, Ihre Verbindungsinformationen anzugeben.
 
    1. Geben Sie einen Namen für Ihre Verbindung ein, und wählen Sie den Service Bus-Namespace aus.
 
-      ![Erstellen einer Service Bus-Verbindung, Teil 1](./media/connectors-create-api-azure-service-bus/create-service-bus-connection-action-1.png)
+      ![Screenshot der Bereitstellung eines Verbindungsnamens und des Auswählens eines Service Bus-Namespace](./media/connectors-create-api-azure-service-bus/create-service-bus-connection-action-1.png)
 
       Wenn Sie die Verbindungszeichenfolge stattdessen manuell eingeben möchten, wählen Sie **Verbindungsinformationen manuell eingeben** aus. Wenn Sie die Verbindungszeichenfolge nicht kennen, lesen Sie [Suchen der Verbindungszeichenfolge](#permissions-connection-string).
 
    1. Wählen Sie Ihre Service Bus-Richtlinie und dann **Erstellen** aus.
 
-      ![Service Bus-Verbindung herstellen, Teil 2](./media/connectors-create-api-azure-service-bus/create-service-bus-connection-action-2.png)
+      ![Screenshot des Auswählens einer Service Bus-Richtlinie und des Auswählens der Schaltfläche „Erstellen“](./media/connectors-create-api-azure-service-bus/create-service-bus-connection-action-2.png)
 
    1. Wählen Sie die gewünschte Messagingentität aus, z. B. eine Warteschlange oder ein Thema. In diesem Beispiel wählen Sie Ihre Service Bus-Warteschlange aus.
 
-      ![Auswählen der Service Bus-Warteschlange](./media/connectors-create-api-azure-service-bus/service-bus-select-queue-action.png)
+      ![Screenshot des Auswählens einer Service Bus-Warteschlange](./media/connectors-create-api-azure-service-bus/service-bus-select-queue-action.png)
 
 1. Geben Sie die erforderlichen Informationen zu Ihrer ausgewählten Aktion ein. Öffnen Sie zum Hinzufügen weiterer verfügbarer Eigenschaften zu der Aktion die Liste **Neuen Parameter hinzufügen**, und wählen Sie die gewünschten Eigenschaften aus.
 
    Wählen Sie z. B. die Eigenschaften **Inhalt** und **Inhaltstyp** aus, damit Sie sie der Aktion hinzufügen. Geben Sie dann den Inhalt für die Nachricht an, die Sie senden möchten.
 
-   ![Angeben von Nachrichteninhalt und weiteren Informationen](./media/connectors-create-api-azure-service-bus/service-bus-send-message-details.png)
+   ![Screenshot der Bereitstellung eines Inhaltstyps und von Details für die Nachricht](./media/connectors-create-api-azure-service-bus/service-bus-send-message-details.png)
 
    Weitere Informationen zu verfügbaren Aktionen und deren Eigenschaften finden Sie auf der [Referenzseite](/connectors/servicebus/) des Connectors.
 

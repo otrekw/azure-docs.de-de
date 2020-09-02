@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 11/04/2019
+ms.date: 08/25/2020
 ms.author: markvi
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 38cffdcc9c99cdec2aeac8bf6fe1dc1575691c8d
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: e2a45e6cff7d62dd8841d9d482f799be6977340e
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87924029"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826870"
 ---
 # <a name="provisioning-reports-in-the-azure-active-directory-portal-preview"></a>Bereitstellungsberichte im Azure Active Directory-Portal (Vorschau)
 
@@ -242,6 +242,8 @@ Anhand der folgenden Tabelle können Sie besser verstehen, wie Sie mögliche Feh
 |LicenseLimitExceeded|Der Benutzer konnte in der Zielanwendung nicht erstellt werden, da für diesen Benutzer keine Lizenzen verfügbar sind. Erwerben Sie entweder zusätzliche Lizenzen für die Zielanwendung, oder überprüfen Sie die Konfiguration der Benutzerzuweisungen und Attributzuordnungen, um sicherzustellen, dass die richtigen Attribute den richtigen Benutzern zugewiesen sind.|
 |DuplicateTargetEntries  |Der Vorgang konnte nicht abgeschlossen werden, da in der Zielanwendung mehr als ein Benutzer mit den konfigurierten übereinstimmenden Attributen gefunden wurde. Entfernen Sie entweder den doppelten Benutzer aus der Zielanwendung, oder konfigurieren Sie die Attributzuordnungen neu, wie [hier](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes) beschrieben.|
 |DuplicateSourceEntries | Der Vorgang konnte nicht abgeschlossen werden, da mehr als ein Benutzer mit den konfigurierten übereinstimmenden Attributen gefunden wurde. Entfernen Sie entweder den doppelten Benutzer, oder konfigurieren Sie die Attributzuordnungen neu, wie [hier](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes) beschrieben.|
+|ImportSkipped | Nachdem jeder Benutzer ausgewertet wurde, wird versucht, die Benutzer aus dem Quellsystem zu importieren. Dieser Fehler tritt häufig auf, wenn für den zu importierenden Benutzer die in den Attributzuordnungen definierte Übereinstimmungseigenschaft fehlt. Wenn für das Benutzerobjekt zum entsprechenden Attribut kein Wert vorhanden ist, können keine Bereichs-, Vergleichs- oder Exportänderungen ausgewertet werden. Beachten Sie, dass dieser Fehler nicht darauf hinweist, dass sich der Benutzer im Gültigkeitsbereich befindet, da der Bereich für den Benutzer noch nicht ausgewertet wurde.|
+|EntrySynchronizationSkipped | Der Bereitstellungsdienst hat das Quellsystem erfolgreich abgefragt und den Benutzer identifiziert. Es wurden keine weiteren Aktionen für den Benutzer durchgeführt, und er wurde übersprungen. Dieses Überspringen kann darauf zurückzuführen sein, dass sich der Benutzer außerhalb des Gültigkeitsbereichs befand oder dass er bereits im Zielsystem vorhanden ist und keine Änderungen erforderlich sind.|
 
 ## <a name="next-steps"></a>Nächste Schritte
 

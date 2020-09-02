@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 07/06/2020
-ms.openlocfilehash: 7bf4860e8c42ef8aacc2e564dacd6de1a7d39149
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 19e3e356765099b83f7248a024b55c491a61b110
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88607404"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816268"
 ---
 # <a name="offer-listing-best-practices"></a>Bewährte Methoden für Angebotslistung
 
@@ -54,12 +54,12 @@ Kategorien und Unterkategorien werden den einzelnen Onlineshops basierend auf de
 
 Wählen Sie Kategorien und Unterkategorien aus, die am besten zu Ihrem Angebot und Ihrer Zielgruppe passen. Sie können Folgendes auswählen:
 
-* Bis zu zwei (2) Kategorien, einschließlich einer primären und einer sekundären Kategorie (optional)
-* Bis zu zwei (2) Unterkategorien für jede primäre und/oder sekundäre Kategorie Wenn keine Unterkategorie ausgewählt wird, ist das Angebot weiterhin auffindbar, allerdings nur unter der ausgewählten Kategorie.
+* Bis zu zwei Kategorien, einschließlich einer primären und einer sekundären Kategorie (optional).
+* Bis zu zwei Unterkategorien für jede primäre und/oder sekundäre Kategorie. Wenn keine Unterkategorie ausgewählt wird, ist das Angebot weiterhin auffindbar, allerdings nur unter der ausgewählten Kategorie.
 
 [!INCLUDE [categories and subcategories](./includes/categories.md)]
 
-**WICHTIG: SaaS-Angebote und Microsoft 365-Add-Ins**
+#### <a name="important-saas-offers-and-microsoft-365-add-ins"></a>WICHTIG: SaaS-Angebote und Microsoft 365-Add-Ins
 
 Im [Leitfaden nach Angebotstyp](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-overview) wird ausführlich beschrieben, wie sich die Transaktionsfähigkeit u. U. darauf auswirkt, wie Ihr Angebot von Marketplace-Kunden angezeigt und erworben werden kann. Bei SaaS-Angeboten bestimmen sowohl die Transaktionsfähigkeit des Angebots als auch die Kategorieauswahl, in welchem Onlineshop Ihr Angebot veröffentlicht wird:
 
@@ -120,9 +120,9 @@ Anhand von Schlüsselwörtern können Kunden Ihr Angebot bei der Suche besser fi
 ## <a name="online-store-marketing-details"></a>Onlineshop-Marketingdetails
 | Einstellung | Bewährte Methode |
 |:--- |:--- |  
-| Angebotslogo (PNG-Format, 48&nbsp;&times;&nbsp;48): Suchseite | Entwerfen und optimieren Sie Ihr Logo für ein digitales Medium:<br>Laden Sie das Logo im PNG-Format auf die Suchseite Ihres Angebots hoch. |
-| Angebotslogo (PNG-Format, 216&nbsp;&times;&nbsp;216): Seite „App-Details“ | Entwerfen und optimieren Sie Ihr Logo für ein digitales Medium:<br>Laden Sie das Logo im PNG-Format auf die Seite mit den Details Ihres Angebotslistings hoch. |
-| Dokumente mit weiteren Informationen | Fügen Sie ergänzende Vertriebs- und Marketingressourcen unter „Weitere Informationen“ hinzu. Beispiele: <ul> <li> Whitepaper </li> <li> Broschüren </li> <li> Prüflisten </li> <li> PowerPoint-Präsentationen</li> </ul>Speichern Sie alle Dateien im PDF-Format. Ihr Ziel an dieser Stelle sollte sein, die Kunden zu informieren, und nicht, ihnen etwas zu verkaufen. <br><br>Fügen Sie allen Ihren Dokumenten den Link zu Ihrer App-Angebotsseite hinzu. Fügen Sie außerdem URL-Parameter hinzu, damit Sie Besucher und Tests verfolgen können. |
+| Angebotslogo (PNG-Format, von 216 × 216 bis 350 × 350 Pixel): Seite „App-Details“ | Entwerfen und optimieren Sie Ihr Logo für ein digitales Medium:<br>Laden Sie das Logo im PNG-Format auf die Seite mit den Details Ihres Angebotslistings hoch. Partner Center ändert die Größe in die erforderlichen Logogrößen. |
+| Angebotslogo (PNG-Format, 48 × 48 Pixel): Suchseite | Partner Center generiert dieses Logo aus dem hochgeladenen großen Logo. Sie können dieses Bild später durch ein anderes Bild ersetzen. |
+| Dokumente mit weiteren Informationen | Fügen Sie ergänzende Vertriebs- und Marketingressourcen unter „Weitere Informationen“ hinzu. Beispiele:<ul><li>Whitepaper</li><li> Broschüren</li><li>Prüflisten</li><li> PowerPoint-Präsentationen</li></ul><br>Speichern Sie alle Dateien im PDF-Format. Ihr Ziel an dieser Stelle sollte sein, die Kunden zu informieren, und nicht, ihnen etwas zu verkaufen.<br><br>Fügen Sie allen Ihren Dokumenten den Link zu Ihrer App-Angebotsseite hinzu. Fügen Sie außerdem URL-Parameter hinzu, damit Sie Besucher und Tests verfolgen können. |
 | Videos: nur AppSource, Beratungsdienste und SaaS-Angebote | Die besten Videos kommunizieren den Nutzen Ihres Angebots in erzählerischer Form:<ul> <li> Stellen Sie Ihre Kunden und nicht Ihre Firma in den Mittelpunkt der Story. </li> <li> Ihr Video sollte die wichtigsten Herausforderungen und Ziele der Zielkunden ansprechen. </li> <li> Empfohlene Länge: 60 bis 90 Sekunden.</li> <li> Binden Sie wichtige Suchbegriffe in den Namen der Videos ein. </li> <li> Erwägen Sie das Hinzufügen weiterer Videos, wie z.B. eines Anleitungsvideos, eines Videos für den Einstieg oder eines Videos mit Kundenstimmen. </li> </ul> |
 | Screenshots (1280&nbsp;&times;&nbsp;720) | Fügen Sie bis zu fünf Screenshots hinzu:<br>Binden Sie wichtige Suchbegriffe in die Dateinamen ein. |
 
@@ -141,4 +141,3 @@ Wenn Sie die Parameter Ihrer AppSource-URL hinzufügen, können Sie die Effektiv
 Erfahren Sie mehr über Ihre [Vorteile des kommerziellen Marketplace](./gtm-your-marketplace-benefits.md).
 
 Melden Sie sich bei [Partner Center](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) an, um Ihr Angebot zu erstellen und zu konfigurieren.
-

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/05/2019
+ms.date: 08/20/2020
 ms.author: panosper
-ms.openlocfilehash: f647727c01bbddafe3b10877af3e1d5652bedd29
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f06fda777cbebd8034ac4fd9254a4bd172d011a4
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85833586"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88661502"
 ---
 # <a name="text-to-speech-frequently-asked-questions"></a>Häufig gestellte Fragen zu Text-to-Speech
 
@@ -59,7 +59,7 @@ Wir bieten weitere Dienste, um Sie bei der Erstellung von Skripts für die Aufze
 
 **F: Werden meine Anforderungen gedrosselt?**
 
-**A:** Die REST-API beschränkt Anforderungen für Standardabonnements auf 25 pro 5 Sekunden. Der kostenlose Tarif (F0) ist auf 20 Anforderungen pro Minute beschränkt.
+**A:** Weitere Informationen finden Sie unter [Kontingente und Grenzwerte für Speech Services](speech-services-quotas-and-limits.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

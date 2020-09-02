@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 06/10/2020
 ms.author: swmachan
-ms.openlocfilehash: d692daf2f7f8b77358e73246fd8d8760f95982ac
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: d8e6a4e769b08d674b355f6f88a0967316e95c63
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88510792"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88782327"
 ---
 # <a name="language-and-region-support-for-text-and-speech-translation"></a>Sprach- und Regionsunterstützung für Text- und Sprachübersetzung
 
@@ -75,6 +75,8 @@ Der Translator unterstützt die folgenden Sprachen für die Übersetzung von Tex
 |Klingonisch|   `tlh-Latn`  |
 |Klingonisch (plqaD)|   `tlh-Piqd`  |
 |Koreanisch |`ko`   |
+|Kurdisch (zentral)  |`ku`   |
+|Kurdisch (nördlich) |`kmr`  |
 |Lettisch|   `lv`    |
 |Litauisch|    `lt`    |
 |Madagassisch|  `mg`    |
@@ -158,6 +160,7 @@ Der Translator erkennt die folgenden Sprachen für die Übersetzung und Translit
 |Malaiisch| `ms`        |
 |Maltesisch|   `mt`    |
 |Norwegisch| `nb`    |
+|Paschtu|    `ps`    |
 |Persisch|   `fa`    |
 |Polnisch|    `pl`    |
 |Portugiesisch (Brasilien)|   `pt-br` |
@@ -194,19 +197,19 @@ Die „Transliterate“-Methode unterstützt die folgenden Sprachen. In der Spal
 | Chinesisch (vereinfacht) | `zh-Hans` | Chinesisch (vereinfacht) `Hans`| <--> | Chinesisch (traditionell) `Hant`|
 | Chinesisch (traditionell) | `zh-Hant` | Chinesisch (traditionell) `Hant`| <--> | Latein `Latn` |
 | Chinesisch (traditionell) | `zh-Hant` | Chinesisch (traditionell) `Hant`| <--> | Chinesisch (vereinfacht) `Hans` |
-| Gujarati | `gu`  | Gujarati `Gujr` | --> | Latein `Latn` |
+| Gujarati | `gu`  | Gujarati `Gujr` | <--> | Latein `Latn` |
 | Hebräisch | `he` | Hebräisch `Hebr` | <--> | Latein `Latn` |
 | Hindi | `hi` | Devanagari `Deva` | <--> | Latein `Latn` |
 | Japanisch | `ja` | Japanisch `Jpan` | <--> | Latein `Latn` |
-| Kannada | `kn` | Kannada `Knda` | --> | Latein `Latn` |
-| Malayalam | `ml` | Malayalam `Mlym` | --> | Latein `Latn` |
-| Marathi | `mr` | Devanagari `Deva` | --> | Latein `Latn` |
+| Kannada | `kn` | Kannada `Knda` | <--> | Latein `Latn` |
+| Malayalam | `ml` | Malayalam `Mlym` | <--> | Latein `Latn` |
+| Marathi | `mr` | Devanagari `Deva` | <--> | Latein `Latn` |
 | Odia | `or` | Oriya `Orya` | <--> | Latein `Latn` |
 | Pandschabi | `pa` | Gurmukhi `Guru`  | <--> | Latein `Latn`  |
 | Serbisch (Kyrillisch) | `sr-Cyrl` | Kyrillisch `Cyrl`  | --> | Latein `Latn` |
 | Serbisch (Lateinisch) | `sr-Latn` | Latein `Latn` | --> | Kyrillisch `Cyrl`|
-| Tamilisch | `ta` | Tamilisch `Taml` | --> | Latein `Latn` |
-| Telugu | `te` | Telugu `Telu` | --> | Latein `Latn` |
+| Tamilisch | `ta` | Tamilisch `Taml` | <--> | Latein `Latn` |
+| Telugu | `te` | Telugu `Telu` | <--> | Latein `Latn` |
 | Thailändisch | `th` | Thailändisch `Thai` | --> | Latein `Latn` |
 
 ### <a name="dictionary"></a>Wörterbuch
@@ -296,6 +299,7 @@ Die folgenden Sprachen sind für die Anpassung an das Englische oder aus dem Eng
 | Französisch      | `fr`          |
 | Deutsch      | `de`          |
 | Griechisch      | `el`          |
+| Gujarati| `gu`    |
 | Hebräisch      | `he`          |
 | Hindi      | `hi`          |
 | Ungarisch      | `hu`          |
@@ -309,11 +313,14 @@ Die folgenden Sprachen sind für die Anpassung an das Englische oder aus dem Eng
 | Lettisch      | `lv`          |
 | Litauisch      | `lt`          |
 | Madagassisch| `mg`    |
+| Malaiisch|    `ms`        |
 | Maori| `mi`  |
+| Marathi| `mr`  |
 | Norwegisch      | `nb`          |
 | Persisch      | `fa`          |
 | Polnisch      | `pl`          |
 | Portugiesisch (Brasilien) | `pt-br` |
+| Pandschabi|`pa`|
 | Rumänisch      | `ro`          |
 | Russisch      | `ru`          |
 | Samoanisch|   `sm`    |
@@ -325,6 +332,7 @@ Die folgenden Sprachen sind für die Anpassung an das Englische oder aus dem Eng
 | Thailändisch      | `th`          |
 | Türkisch      | `tr`          |
 | Ukrainisch      | `uk`          |
+| Urdu| `ur`    |
 | Vietnamesisch      | `vi`          |
 | Walisisch | `cy` |
 

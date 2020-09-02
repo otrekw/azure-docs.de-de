@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 07/22/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 2a69bc40090e74ad5885c2576c040693f90d5d03
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5c2fb330149d3e6530e7cb0fc3350d5db3fa24cf
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87094361"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88683877"
 ---
 # <a name="tutorial-for-configuring-experian-with-azure-active-directory-b2c"></a>Tutorial zum Konfigurieren von Experian mit Azure Active Directory B2C
 
@@ -48,7 +48,7 @@ Zunächst benötigen Sie Folgendes:
 
 Die Integration von Experian beinhaltet die folgenden Komponenten:
 
-- Azure AD B2C: Der Autorisierungsserver, der für die Überprüfung der Anmeldeinformationen des Benutzers verantwortlich ist und auch als Identitätsanbieter bezeichnet wird.
+- Azure AD B2C: Der Autorisierungsserver ist für die Überprüfung der Anmeldeinformationen des Benutzers verantwortlich. Er wird auch als Identitätsanbieter bezeichnet.
 
 - Experian: Der Experian-Dienst überprüft anhand der Eingaben des Benutzers dessen Identität.
 
@@ -129,7 +129,7 @@ Suchen Sie in den bereitgestellten benutzerdefinierten Richtlinien die folgenden
 | {your_tenant_extensions_app_objectid}                  | Objekt-ID der Speicheranwendung Ihres Mandanten                                   | 01234567-89ab-cdef-0123-456789abcdef         |
 | {your_api_username_key_name}                           | Name des Benutzernamenschlüssels, den Sie [hier](#part-4---create-api-policy-keys) erstellt haben             | B2C\_1A\_RestApiUsername                     |
 | {your_api_password_key_name}                           | Name des Kennwortschlüssels, den Sie [hier](#part-4---create-api-policy-keys) erstellt haben             | B2C\_1A\_RestApiPassword                     |
-| {your_app_service_URL}                                 | URL des App-Diensts, den Sie eingerichtet haben                                             | <https://yourapp.azurewebsites.net>          |
+| {your_app_service_URL}                                 | URL des App-Diensts, den Sie eingerichtet haben                                             | `https://yourapp.azurewebsites.net`          |
 
 ### <a name="part-6---configure-the-azure-ad-b2c-policy"></a>Teil 6: Konfigurieren der Azure AD B2C-Richtlinie
 

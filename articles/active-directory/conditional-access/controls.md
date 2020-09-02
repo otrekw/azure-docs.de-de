@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 03/18/2020
+ms.date: 08/26/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: inbarc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d926d027b59a225d76f6a73ab3ee4ec09b595e5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 147c6016c56d45fadca4f4b8e583bce54006ef07
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85253306"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88922100"
 ---
 # <a name="custom-controls-preview"></a>Benutzerdefinierte Steuerelemente (Vorschau)
 
@@ -33,11 +33,11 @@ Kopieren Sie die JSON-Daten, und fügen Sie sie in das entsprechende Textfeld ei
 
 Die Option zum Erstellen eines benutzerdefinierten Steuerelements befindet sich im Abschnitt **Verwalten** der Seite **Bedingter Zugriff**.
 
-![Control](./media/controls/82.png)
+![Schnittstelle für benutzerdefinierte Steuerelemente beim bedingtem Zugriff](./media/controls/custom-controls-conditional-access.png)
 
 Wenn Sie auf **New custom control** (Neues benutzerdefiniertes Steuerelement) klicken, wird ein Blatt geöffnet und ein Textfeld für die JSON-Daten des Steuerelements angezeigt.  
 
-![Control](./media/controls/81.png)
+![Neues benutzerdefiniertes Steuerelement](./media/controls/new-custom-controls-conditional-access.png)
 
 ## <a name="deleting-custom-controls"></a>Löschen von benutzerdefinierten Steuerelementen
 
@@ -53,7 +53,7 @@ Um ein benutzerdefiniertes Steuerelement zu bearbeiten, müssen Sie das aktuelle
 
 ## <a name="known-limitations"></a>Bekannte Einschränkungen
 
-Es ist nicht möglich, „Benutzerdefinierte Steuerelemente“ mit der Identity Protection-Automatisierung zu verwenden, für die Azure Multi-Factor Authentication erforderlich ist. Diese Funktion kann auch nicht mit der Self-Service-Kennwortzurücksetzung (SSPR) in Azure AD, bei der Anspruchsanforderungen der mehrstufigen Authentifizierung erfüllt werden, oder zum Erhöhen von Rollen in Privileged Identity Management (PIM) eingesetzt werden.
+Es ist nicht möglich, benutzerdefinierte Steuerelemente mit der Identity Protection-Automatisierung zu verwenden, für die Azure Multi-Factor Authentication erforderlich ist. Diese Funktion kann auch nicht mit der Self-Service-Kennwortzurücksetzung (SSPR) in Azure AD, bei der Anspruchsanforderungen der mehrstufigen Authentifizierung erfüllt werden, zum Heraufstufen von Rollen in Privileged Identity Management (PIM) oder im Rahmen der Registrierung von Intune-Geräten eingesetzt werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

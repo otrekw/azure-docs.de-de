@@ -7,12 +7,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 11/15/2019
 ms.author: matjazl
-ms.openlocfilehash: adc6fdf144927d10f811a00aa33f244cfdc25042
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 652445a96acfa0358211d1d97e0fcf288989d6ba
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84870960"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88795778"
 ---
 # <a name="configure-database-settings"></a>Konfigurieren von Datenbankeinstellungen 
 
@@ -26,7 +26,10 @@ Durchsatz muss bereitgestellt werden, um zu gewährleisten, dass jederzeit genü
 > Da verschiedene Vorgänge eine unterschiedliche Anzahl von RUs beanspruchen, wird die tatsächliche Anzahl verwendeter RUs bei jedem API-Aufruf im Antwortheader zurückgegeben. Auf diese Weise können Sie ein Profil für die Anzahl der von Ihrer Anwendung genutzten RUs erstellen.
 
 ## <a name="update-throughput"></a>Aktualisieren des Durchsatzes
+
 Wenn Sie diese Einstellung im Azure-Portal ändern möchten, navigieren Sie zu Ihrer Azure API for FHIR-Instanz, und öffnen Sie das Blatt „Datenbank“. Anschließend ändern Sie den bereitgestellten Durchsatz in den gewünschten Wert entsprechend Ihren Leistungsanforderungen. Sie können den Wert in maximal 10.000 RU/s ändern. Wenn Sie einen höheren Wert benötigen, wenden Sie sich an den Azure-Support.
+
+Wenn der Datenbankdurchsatz größer als 10.000 RU/s ist oder die in der Datenbank gespeicherten Daten 50 GB übersteigen, muss Ihre Clientanwendung in der Lage sein, Fortsetzungstoken zu verarbeiten. In der Datenbank wird für jeden Durchsatzzuwachs von 10.000 RU/s, oder wenn die Menge der gespeicherten Daten mehr als 50 GB beträgt, eine neue Partition erstellt. Mehrere Partitionen erstellen eine Antwort über mehrere Seiten, in der die Paginierung mithilfe von Fortsetzungstoken implementiert wird.
 
 > [!NOTE] 
 > Ein höherer Wert bedeutet einen höheren Azure API for FHIR-Durchsatz und höhere Kosten für den Dienst.

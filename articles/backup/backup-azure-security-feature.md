@@ -4,12 +4,12 @@ description: In diesem Artikel wird erläutert, wie Sie mithilfe der Azure Backu
 ms.reviewer: utraghuv
 ms.topic: conceptual
 ms.date: 06/08/2017
-ms.openlocfilehash: 03bbcef2ce408a1b1f5e2c2d909728d3ed8e7e19
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: cbd9ee0336953b65b4e2d55d294d30309ebe0de7
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88611244"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892455"
 ---
 # <a name="security-features-to-help-protect-hybrid-backups-that-use-azure-backup"></a>Sicherheitsfeatures für den Schutz von Hybridsicherungen mit Azure Backup
 
@@ -20,7 +20,7 @@ Die Sorgen bezüglich Sicherheitsproblemen wie Schadsoftware, Ransomware und Ein
 - **Wiederherstellen**. Gelöschte Sicherungsdaten werden für zusätzliche 14 Tage ab dem Löschdatum aufbewahrt. So wird gewährleistet, dass die Daten innerhalb des vorgegebenen Zeitraums wiederhergestellt werden können und auch bei Angriffen keine Datenverluste auftreten. Zum Schutz vor beschädigten Daten werden darüber hinaus auch mehr Mindestwiederherstellungspunkte gepflegt.
 
 > [!NOTE]
-> Sicherheitsfeatures sollten nicht aktiviert werden, wenn Sie eine Infrastructure-as-a-Service-VM-Sicherung (IaaS) verwenden. Sie stehen für die IaaS-VM-Sicherung noch nicht zur Verfügung, die Aktivierung hat also keine Auswirkungen. Die Sicherheitsfeatures sollten nur aktiviert werden, wenn Sie die folgenden Elemente verwenden: <br/>
+> Sicherheitsfeatures sollten nicht aktiviert werden, wenn Sie eine IaaS-VM-Sicherung (Infrastructure-as-a-Service) verwenden. Sie stehen für die IaaS-VM-Sicherung noch nicht zur Verfügung, die Aktivierung hat also keine Auswirkungen. Die Sicherheitsfeatures sollten nur aktiviert werden, wenn Sie Folgendes verwenden: <br/>
 >
 > - **Azure Backup-Agent**. Agent-Mindestversion: 2.0.9052. Nach der Aktivierung dieser Features sollten Sie auf diese Agent-Version aktualisieren, um kritische Vorgänge auszuführen. <br/>
 > - **Azure Backup Server**. Azure Backup-Agent-Mindestversion: 2.0.9052 mit Azure Backup Server-Update 1. <br/>
@@ -57,7 +57,7 @@ Wenn Sie einen Recovery Services-Tresor erstellen, können Sie alle Sicherheitsf
 
 ## <a name="recover-deleted-backup-data"></a>Wiederherstellen von gelöschten Sicherungsdaten
 
-Backup bewahrt gelöschte Sicherungsdaten weitere 14 Tage lang auf und löscht sie nicht sofort, wenn der Vorgang **Stop backup with delete backup data** (Sicherung abbrechen mit Löschen der Sicherungsdaten) ausgeführt wird. Um diese Daten innerhalb dieser 14 Tagen wiederherzustellen, gehen Sie je nachdem, was Sie verwenden, folgendermaßen vor:
+Backup bewahrt gelöschte Sicherungsdaten weitere 14 Tage lang auf und löscht sie nicht sofort, wenn der Vorgang **Stop backup with delete backup data** (Sicherung abbrechen mit Löschen der Sicherungsdaten) ausgeführt wird. Um diese Daten innerhalb dieser 14 Tage wiederherzustellen, gehen Sie je nachdem, was Sie verwenden, folgendermaßen vor:
 
 Für Benutzer des **Microsoft Azure Recovery Services-Agent**:
 
@@ -112,9 +112,9 @@ Die in diesem Artikel genannten Sicherheitsfeatures bieten Abwehrmechanismen geg
 
 | Vorgang | Fehlerdetails | Lösung |
 | --- | --- | --- |
-| Richtlinienänderung |Die Sicherungsrichtlinie konnte nicht geändert werden. Error: Beim aktuellen Vorgang ist aufgrund eines internen Dienstfehlers [0x29834] ein Fehler aufgetreten. Wiederholen Sie den Vorgang nach einiger Zeit. Wenn das Problem weiterhin besteht, wenden Sie sich an den Microsoft-Support. |**Ursache:**<br/>Dieser Fehler tritt auf, wenn Sicherheitseinstellungen aktiviert sind, Sie versuchen, die Beibehaltungsdauer unter die oben angegebenen Mindestwerte zu verkürzen, und eine nicht unterstützte Version verwenden (unterstützte Versionen sind im ersten Hinweis in diesem Artikel angegeben). <br/>**Empfohlene Maßnahme:**<br/> In diesem Fall müssen Sie die Beibehaltungsdauer höher als den angegebenen Mindestzeitraum festlegen (sieben Tage für „Täglich“, vier Wochen für „Wöchentlich“, drei Wochen für „Monatlich“ oder ein Jahr für „Jährlich“), um mit richtlinienbezogenen Aktualisierungen fortzufahren. Die bevorzugte, optionale Vorgehensweise ist das Aktualisieren des Backup-Agents, von Azure Backup Server und/oder DPM-Updaterollups (UR), um alle Sicherheitsupdates zu erhalten. |
+| Richtlinienänderung |Die Sicherungsrichtlinie konnte nicht geändert werden. Error: Beim aktuellen Vorgang ist aufgrund eines internen Dienstfehlers [0x29834] ein Fehler aufgetreten. Wiederholen Sie den Vorgang nach einiger Zeit. Wenn das Problem weiterhin besteht, wenden Sie sich an den Microsoft-Support. |**Ursache:**<br/>Dieser Fehler tritt auf, wenn Sicherheitseinstellungen aktiviert sind, Sie versuchen, die Beibehaltungsdauer unter die oben angegebenen Mindestwerte zu verkürzen, und eine nicht unterstützte Version verwenden (die unterstützten Versionen sind im ersten Hinweis in diesem Artikel angegeben). <br/>**Empfohlene Maßnahme:**<br/> In diesem Fall müssen Sie die Beibehaltungsdauer höher als den angegebenen Mindestzeitraum festlegen (sieben Tage für „Täglich“, vier Wochen für „Wöchentlich“, drei Wochen für „Monatlich“ oder ein Jahr für „Jährlich“), um mit richtlinienbezogenen Aktualisierungen fortzufahren. Die bevorzugte, optionale Vorgehensweise ist das Aktualisieren des Backup-Agents, von Azure Backup Server und/oder DPM-Updaterollups (UR), um alle Sicherheitsupdates zu erhalten. |
 | Ändern der Passphrase |Die eingegebene Sicherheits-PIN ist nicht korrekt. (ID: 100130) Geben Sie die richtige Sicherheits-PIN an, um diesen Vorgang abzuschließen. |**Ursache:**<br/> Dieser Fehler tritt bei der Eingabe einer ungültigen oder abgelaufenen Sicherheits-PIN beim Ausführen eines kritischen Vorgangs (z.B. Ändern der Passphrase) auf. <br/>**Empfohlene Maßnahme:**<br/> Um den Vorgang abzuschließen, müssen Sie die gültige Sicherheits-PIN eingeben. Um die PIN abzurufen, melden Sie sich beim Azure-Portal an und navigieren zu „Recovery Services-Tresor > Einstellungen > Eigenschaften > Sicherheits-PIN generieren“. Verwenden Sie diese PIN, um die Passphrase zu ändern. |
-| Ändern der Passphrase |Fehler bei dem Vorgang. ID: 120002 |**Ursache:**<br/>Dieser Fehler tritt auf, wenn Sicherheitseinstellungen aktiviert sind, Sie versuchen, die Passphrase zu ändern, und eine nicht unterstützte Version verwenden (unterstützte Versionen sind im ersten Hinweis in diesem Artikel angegeben).<br/>**Empfohlene Maßnahme:**<br/> Um die Passphrase zu ändern, müssen Sie zuerst den Backup-Agent auf Mindestversion 2.0.9052, Azure Backup-Server auf mindestens Update 1 und/oder DPM auf mindestens DPM 2012 R2 UR12 oder DPM 2016 UR2 (Downloadlinks siehe unten) aktualisieren und dann die gültige Sicherheits-PIN eingeben. Um die PIN abzurufen, melden Sie sich beim Azure-Portal an und navigieren zu „Recovery Services-Tresor > Einstellungen > Eigenschaften > Sicherheits-PIN generieren“. Verwenden Sie diese PIN, um die Passphrase zu ändern. |
+| Ändern der Passphrase |Fehler bei dem Vorgang. ID: 120002 |**Ursache:**<br/>Dieser Fehler tritt auf, wenn Sicherheitseinstellungen aktiviert sind, Sie versuchen, die Passphrase zu ändern, und eine nicht unterstützte Version verwenden (die unterstützten Versionen sind im ersten Hinweis in diesem Artikel angegeben).<br/>**Empfohlene Maßnahme:**<br/> Um die Passphrase zu ändern, müssen Sie zuerst den Backup-Agent auf die Mindestversion 2.0.9052, Azure Backup-Server auf mindestens Update 1 und/oder DPM auf mindestens DPM 2012 R2 UR12 oder DPM 2016 UR2 (Downloadlinks siehe unten) aktualisieren und dann die gültige Sicherheits-PIN eingeben. Um die PIN abzurufen, melden Sie sich beim Azure-Portal an, und navigieren Sie zu „Recovery Services-Tresor“ > „Einstellungen“ > „Eigenschaften“ > „Sicherheits-PIN generieren“. Verwenden Sie diese PIN, um die Passphrase zu ändern. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

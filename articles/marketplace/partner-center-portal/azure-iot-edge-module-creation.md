@@ -7,12 +7,12 @@ ms.topic: how-to
 author: keferna
 ms.author: keferna
 ms.date: 08/07/2020
-ms.openlocfilehash: 2584d10a73f183958e3b7010255979cc47bc2cd9
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: dc1e8bfa9b747b9933762af1b6a5b59cf8cd98de
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88606348"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815775"
 ---
 # <a name="create-an-iot-edge-module-offer"></a>Erstellen eines IoT Edge-Modulangebots
 
@@ -201,16 +201,17 @@ Stellen Sie Logos und Bilder zur Verwendung mit Ihrem Angebot bereit. Alle Bilde
 
 #### <a name="store-logos"></a>Store-Logos
 
-Stellen Sie PNG-Dateien des Logos zu Ihrem Angebot in jeder der folgenden vier Pixelgrößen bereit:
+Geben Sie eine PNG-Datei für das **große** Logo an. Dies wird in Partner Center verwendet, um ein **kleines** und ein **mittleres** Logo zu erstellen. Sie können diese Logos später durch andere Bilder ersetzen.
 
-- **Klein (48 x 48)**
-- **Mittel (90 x 90)**
-- **Groß (216 x 216)**
-- **Breit (255 x 115)**
+- **Groß** (von 216 × 216 bis 350 × 350 Pixel, erforderlich)
+- **Mittel** (90 × 90 Pixel, optional)
+- **Klein** (48 × 48 Pixel, optional)
 
-Alle vier Logos sind erforderlich und werden an verschiedenen Stellen in der Marketplace-Auflistung verwendet.
+Diese Logos werden an unterschiedlichen Stellen in der Auflistung verwendet:
 
 [!INCLUDE [logos-azure-marketplace-only](../includes/logos-azure-marketplace-only.md)]
+
+[!INCLUDE [Logo tips](../includes/graphics-suggestions.md)]
 
 #### <a name="screenshots-optional"></a>Screenshots (optional)
 

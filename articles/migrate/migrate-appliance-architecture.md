@@ -3,12 +3,12 @@ title: Architektur der Azure Migrate-Appliance
 description: Bietet einen Überblick über die Azure Migrate-Appliance, die bei der Serverbewertung und -migration verwendet wird.
 ms.topic: conceptual
 ms.date: 06/09/2020
-ms.openlocfilehash: 0752f7afa7ff8d25f938084fd9e6e863d885f9aa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a83e044acc329572a5f3bfd4856f90379319ba1d
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84770899"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88919742"
 ---
 # <a name="azure-migrate-appliance-architecture"></a>Architektur der Azure Migrate-Appliance
 
@@ -31,7 +31,7 @@ Die Appliance verfügt über eine Reihe von Komponenten.
 
 - **Verwaltungs-App**: Dies ist eine Web-App für Benutzereingaben während der Appliance-Bereitstellung. Wird beim Bewerten von Computern für die Migration zu Azure verwendet.
 - **Ermittlungs-Agent**: Der Agent erfasst Computerkonfigurationsdaten. Wird beim Bewerten von Computern für die Migration zu Azure verwendet. 
-- **Bewertungs-Agent**: Der Agent sammelt Leistungsdaten. Wird beim Bewerten von Computern für die Migration zu Azure verwendet.
+- **Collector-Agent:** Der Agent sammelt Leistungsdaten. Wird beim Bewerten von Computern für die Migration zu Azure verwendet.
 - **DRA-Agent**: Orchestriert die VM-Replikation und koordiniert die Kommunikation zwischen replizierten Computern und Azure. Wird nur bei der Replikation von VMware-VMs in Azure mithilfe der Migration ohne Agent verwendet.
 - **Gateway**: Sendet replizierte Daten an Azure. Wird nur bei der Replikation von VMware-VMs in Azure mithilfe der Migration ohne Agent verwendet.
 - **Dienst für automatische Aktualisierungen**: Aktualisiert Appliancekomponenten (wird alle 24 Stunden ausgeführt).

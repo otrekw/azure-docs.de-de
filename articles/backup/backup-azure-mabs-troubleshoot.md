@@ -4,12 +4,12 @@ description: Behandeln von Problemen bei der Installation, bei der Registrierung
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 07/05/2019
-ms.openlocfilehash: 54b7295eaed5f04a118cf5097ebc7b25b18f67d2
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: cc62418ed1dec3cbcc944d9b66c691062ca552f8
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88522843"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88893016"
 ---
 # <a name="troubleshoot-azure-backup-server"></a>Behandeln von Problemen mit Azure Backup Server
 
@@ -17,7 +17,7 @@ Verwenden Sie die Informationen in der folgenden Tabelle für die Problembehandl
 
 ## <a name="basic-troubleshooting"></a>Grundlegendes zur Problembehandlung
 
-Wir empfehlen, dass Sie die nachstehende Prüfung durchführen, bevor Sie mit der Problembehandlung von Microsoft Azure Backup Server (MABS) beginnen:
+Es wird empfohlen, die nachstehende Prüfung durchzuführen, bevor Sie mit der Problembehandlung von Microsoft Azure Backup Server (MABS) beginnen:
 
 - [Sicherstellen, dass der Microsoft Azure Recovery Services-Agent (MARS) auf dem neuesten Stand ist](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409)
 - [Stellen Sie sicher, dass zwischen dem MARS-Agent und Azure Netzwerkkonnektivität besteht.](./backup-azure-mars-troubleshoot.md#the-microsoft-azure-recovery-service-agent-was-unable-to-connect-to-microsoft-azure-backup)
@@ -119,7 +119,7 @@ Reg query "HKLM\SOFTWARE\Microsoft\Microsoft Data Protection Manager\Setup"
 | Konfigurieren von Schutzgruppen | Die Anwendungskomponente konnte von DPM auf dem geschützten Computer (Name des geschützten Computers) nicht aufgelistet werden. | Wählen Sie auf dem Konfigurationsbildschirm für Schutzgruppen auf der entsprechenden Datenquellen-/Komponentenebene auf **Aktualisieren** aus. |
 | Konfigurieren von Schutzgruppen | Der Schutz kann nicht konfiguriert werden. | Falls es sich bei dem geschützten Server um einen SQL-Server handelt, überprüfen Sie, ob das Systemkonto (NTAuthority\System) auf dem geschützten Computer über Berechtigungen der SysAdmin-Rolle verfügt, wie in [diesem Artikel](/system-center/dpm/back-up-sql-server?view=sc-dpm-2019) beschrieben.
 | Konfigurieren von Schutzgruppen | Im Speicherpool für diese Schutzgruppe ist nicht genügend freier Speicherplatz vorhanden. | Die dem Speicherpool hinzugefügten Datenträger [dürfen keine Partition enthalten](/system-center/dpm/create-dpm-protection-groups?view=sc-dpm-2019). Löschen Sie alle vorhandenen Volumes auf den Datenträgern. Fügen Sie sie dann dem Speicherpool hinzu.|
-| Richtlinienänderung |Die Sicherungsrichtlinie konnte nicht geändert werden. Error: Beim aktuellen Vorgang ist aufgrund eines internen Dienstfehlers [0x29834] ein Fehler aufgetreten. Wiederholen Sie den Vorgang nach einiger Zeit. Wenn das Problem weiterhin besteht, wenden Sie sich an den Microsoft-Support. | **Ursache:**<br/>Für diesen Fehler kommen drei mögliche Ursachen in Betracht: Die Sicherheitseinstellungen sind aktiviert, Sie versuchen, die Beibehaltungsdauer unter die oben angegebenen Mindestwerte zu verkürzen, oder Sie verwenden eine nicht unterstützte Version. (Nicht unterstützte Versionen sind niedrigere Versionen als Microsoft Azure Backup Server, Version 2.0.9052, und Azure Backup Server Update 1.) <br/>**Empfohlene Maßnahme:**<br/> Um mit richtlinienbezogenen Updates fortzufahren, müssen Sie die Beibehaltungsdauer auf einen größeren Wert als die angegebene minimale Beibehaltungsdauer festlegen. (Die minimale Beibehaltungsdauer beträgt sieben Tage für die tägliche Beibehaltungsdauer, vier Wochen für die wöchentliche Beibehaltungsdauer, drei Wochen für die monatliche Beibehaltungsdauer und ein Jahr für die jährliche Beibehaltungsdauer.) <br><br>Optional besteht eine weitere bevorzugte Vorgehensweise darin, den Backup-Agent und Azure Backup Server zu aktualisieren, um alle Sicherheitsupdates zu nutzen. |
+| Richtlinienänderung |Die Sicherungsrichtlinie konnte nicht geändert werden. Error: Beim aktuellen Vorgang ist aufgrund eines internen Dienstfehlers [0x29834] ein Fehler aufgetreten. Wiederholen Sie den Vorgang nach einiger Zeit. Wenn das Problem weiterhin besteht, wenden Sie sich an den Microsoft-Support. | **Ursache:**<br/>Für diesen Fehler kommen drei mögliche Ursachen in Betracht: Die Sicherheitseinstellungen sind aktiviert, Sie versuchen, die Beibehaltungsdauer unter die oben angegebenen Mindestwerte zu verkürzen, oder Sie verwenden eine nicht unterstützte Version. (Nicht unterstützte Versionen sind niedrigere Versionen als Microsoft Azure Backup Server, Version 2.0.9052, und Azure Backup Server Update 1.) <br/>**Empfohlene Maßnahme:**<br/> Um mit richtlinienbezogenen Updates fortzufahren, müssen Sie die Beibehaltungsdauer auf einen größeren Wert als die angegebene minimale Beibehaltungsdauer festlegen. (Die minimale Beibehaltungsdauer beträgt sieben Tage für die tägliche Beibehaltungsdauer, vier Wochen für die wöchentliche Beibehaltungsdauer, drei Wochen für die monatliche Beibehaltungsdauer und ein Jahr für die jährliche Beibehaltungsdauer.) <br><br>Optional besteht eine weitere bevorzugte Vorgehensweise darin, den Backup-Agent und Azure Backup Server zu aktualisieren, um alle Sicherheitsupdates zu nutzen. |
 
 ## <a name="backup"></a>Backup
 
@@ -135,7 +135,7 @@ Reg query "HKLM\SOFTWARE\Microsoft\Microsoft Data Protection Manager\Setup"
 
 | Vorgang | Fehlerdetails | Problemumgehung |
 | --- | --- | --- |
-| Ändern der Passphrase |Die eingegebene Sicherheits-PIN ist nicht richtig. Geben Sie die richtige Sicherheits-PIN an, um diesen Vorgang abzuschließen. |**Ursache:**<br/> Dieser Fehler tritt auf, wenn Sie eine ungültige oder abgelaufene Sicherheits-PIN eingeben, während Sie einen wichtigen Vorgang (z.B. das Ändern einer Passphrase) ausführen. <br/>**Empfohlene Maßnahme:**<br/> Um den Vorgang abzuschließen, müssen Sie eine gültige Sicherheits-PIN eingeben. Um die PIN abzurufen, melden Sie sich am Azure-Portal an, und navigieren Sie dann zum Recovery Services-Tresor. Navigieren Sie dann zu **Einstellungen** > **Eigenschaften** > **Sicherheits-PIN generieren**. Verwenden Sie diese PIN, um die Passphrase zu ändern. |
+| Ändern der Passphrase |Die eingegebene Sicherheits-PIN ist nicht richtig. Geben Sie die richtige Sicherheits-PIN an, um diesen Vorgang abzuschließen. |**Ursache:**<br/> Dieser Fehler tritt auf, wenn Sie eine ungültige oder abgelaufene Sicherheits-PIN eingeben, während Sie einen wichtigen Vorgang (z. B. das Ändern einer Passphrase) ausführen. <br/>**Empfohlene Maßnahme:**<br/> Um den Vorgang abzuschließen, müssen Sie eine gültige Sicherheits-PIN eingeben. Um die PIN abzurufen, melden Sie sich am Azure-Portal an, und navigieren Sie dann zum Recovery Services-Tresor. Navigieren Sie dann zu **Einstellungen** > **Eigenschaften** > **Sicherheits-PIN generieren**. Verwenden Sie diese PIN, um die Passphrase zu ändern. |
 | Ändern der Passphrase |Fehler bei dem Vorgang. ID: 120002 |**Ursache:**<br/>Dieser Fehler tritt auf, wenn Sicherheitseinstellungen aktiviert sind oder Sie versuchen, die Passphrase zu ändern, wenn Sie eine nicht unterstützte Version verwenden.<br/>**Empfohlene Maßnahme:**<br/> Um die Passphrase zu ändern, müssen Sie zunächst den Backup-Agent auf die minimale Version 2.0.9052 aktualisieren. Außerdem müssen Sie Azure Backup Server auf mindestens Update 1 aktualisieren und dann eine gültige Sicherheits-PIN eingeben. Um die PIN abzurufen, melden Sie sich am Azure-Portal an, und navigieren Sie dann zum Recovery Services-Tresor. Navigieren Sie dann zu **Einstellungen** > **Eigenschaften** > **Sicherheits-PIN generieren**. Verwenden Sie diese PIN, um die Passphrase zu ändern. |
 
 ## <a name="configure-email-notifications"></a>Konfigurieren von E-Mail-Benachrichtigungen

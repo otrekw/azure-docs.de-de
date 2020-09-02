@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
-ms.date: 08/06/2020
-ms.openlocfilehash: ca6324bd27749d9be3f516dbcd8ff99eca39d1a6
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.date: 08/26/2020
+ms.openlocfilehash: e4f9fa554a7c0e45abe1e9686605c95bb79d1739
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87875454"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88932949"
 ---
 # <a name="reference-guide-to-using-functions-in-expressions-for-azure-logic-apps-and-power-automate"></a>Referenzhandbuch für die Verwendung von Funktionen in Ausdrücken für Azure Logic Apps und Power Automate
 
@@ -1128,27 +1128,27 @@ bool(<value>)
 
 | Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*value*> | Ja | Any | Der zu konvertierende Wert |
+| <*value*> | Ja | Any | Der Wert, der in einen booleschen Wert konvertiert werden soll. |
 |||||
+
+Wenn Sie `bool()` mit einem Objekt verwenden, muss der Wert des Objekts eine Zeichenfolge oder eine ganze Zahl sein, die in einen booleschen Wert konvertiert werden kann.
 
 | Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
-| true oder false | Boolean | Die booleschen Version des angegebenen Werts |
+| `true` oder `false` | Boolean | Die boolesche Version des angegebenen Werts |
 ||||
 
-*Beispiel*
+*Ausgaben*
 
-In diesen Beispielen werden die angegebenen Werte in boolesche Werte konvertieren:
+In diesen Beispielen werden die verschiedenen unterstützten Eingabetypen für `bool()` gezeigt:
 
-```
-bool(1)
-bool(0)
-```
-
-Dies sind die zurückgegebenen Ergebnisse:
-
-* Erstes Beispiel: `true`
-* Zweites Beispiel: `false`
+| Eingabewert | type | Rückgabewert |
+| ----------- | ---------- | ---------------------- |
+| `bool(1)` | Integer | `true` |
+| `bool(0)` | Integer    | `false` |
+| `bool(-1)` | Integer | `true` |
+| `bool('true')` | String | `true` |
+| `bool('false')` | String | `false` |
 
 <a name="coalesce"></a>
 
@@ -1734,9 +1734,9 @@ Gibt eine URI-codierte (Uniform Resource Identifier) Version für eine Zeichenfo
 encodeUriComponent('<value>')
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*value*> | JaJa | String | Die Zeichenfolge, die in das URI-codierte Format konvertiert werden soll |
+| <*value*> | Ja | String | Die Zeichenfolge, die in das URI-codierte Format konvertiert werden soll |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
@@ -1766,7 +1766,7 @@ empty('<collection>')
 empty([<collection>])
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*collection*> | Ja | Zeichenfolge, Array oder Objekt | Die Sammlung, die überprüft werden soll |
 |||||
@@ -1802,10 +1802,10 @@ Für diese Funktion wird die Groß-/Kleinschreibung nicht beachtet.
 endsWith('<text>', '<searchText>')
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*text*> | JaJa | String | Die Zeichenfolge, die überprüft werden soll |
-| <*searchText*> | JaJa | String | Die beendende Teilzeichenfolge, nach der gesucht werden soll |
+| <*text*> | Ja | String | Die Zeichenfolge, die überprüft werden soll |
+| <*searchText*> | Ja | String | Die beendende Teilzeichenfolge, nach der gesucht werden soll |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
@@ -1844,7 +1844,7 @@ Gibt „true“ zurück, wenn beide gleichwertig sind, gibt andernfalls „false
 equals('<object1>', '<object2>')
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*object1*>, <*object2*> | Ja | Verschiedene | Die Werte, Ausdrücke oder Objekte, die verglichen werden sollen |
 |||||
@@ -1879,7 +1879,7 @@ first('<collection>')
 first([<collection>])
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*collection*> | Ja | Zeichenfolge oder Array | Die Sammlung, aus der das erste Element abgerufen werden soll |
 |||||
@@ -1914,9 +1914,9 @@ Diese Funktion können Sie nur verwenden, wenn Sie benutzerdefinierte Parameter 
 float('<value>')
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*value*> | JaJa | String | Die Zeichenfolge, die die gültige Gleitkommazahl angibt, die konvertiert werden soll |
+| <*value*> | Ja | String | Die Zeichenfolge, die die gültige Gleitkommazahl angibt, die konvertiert werden soll |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
@@ -1944,9 +1944,9 @@ Gibt einen Zeitstempel im angegebenen Format zurück.
 formatDateTime('<timestamp>', '<format>'?)
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*timestamp*> | JaJa | String | Die Zeichenfolge, die den Zeitstempel enthält |
+| <*timestamp*> | Ja | String | Die Zeichenfolge, die den Zeitstempel enthält |
 | <*format*> | Nein | String | Entweder ein [einzelner Formatbezeichner](/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT hh:mm:ss:fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. |
 |||||
 
@@ -1975,9 +1975,9 @@ Gibt ein Array mit den Werten zurück, die mit einem Schlüsselnamen (key-Name) 
 formDataMultiValues('<actionName>', '<key>')
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*actionName*> | JaJa | String | Die Aktion, deren Ausgabe den Schlüsselwert (key-Wert) hat, den Sie abrufen möchten |
+| <*actionName*> | Ja | String | Die Aktion, deren Ausgabe den Schlüsselwert (key-Wert) hat, den Sie abrufen möchten |
 | <*key*> | Ja | String | Der Name des Schlüssels, dessen Wert Sie abrufen möchten |
 |||||
 
@@ -2007,10 +2007,10 @@ Findet die Funktion mehrere Übereinstimmungen, löst sie einen Fehler aus.
 formDataValue('<actionName>', '<key>')
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*actionName*> | JaJa | String | Die Aktion, deren Ausgabe den Schlüsselwert (key-Wert) hat, den Sie abrufen möchten |
-| <*key*> | JaJa | String | Der Name des Schlüssels, dessen Wert Sie abrufen möchten |
+| <*actionName*> | Ja | String | Die Aktion, deren Ausgabe den Schlüsselwert (key-Wert) hat, den Sie abrufen möchten |
+| <*key*> | Ja | String | Der Name des Schlüssels, dessen Wert Sie abrufen möchten |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
@@ -2038,7 +2038,7 @@ Gibt eine Zahl als Zeichenfolge zurück, die auf dem angegebenen Format basiert.
 formatNumber(<number>, <format>, <locale>?)
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*number*> | Ja | Integer oder Double | Der Wert, den Sie formatieren möchten. |
 | <*format*> | Ja | String | Eine kombinierten Formatzeichenfolge, die das Format angibt, das Sie verwenden möchten. Informationen zu den unterstützten Formatzeichenfolgen für Zahlen finden Sie unter [Standardformatzeichenfolgen für Zahlen](/dotnet/standard/base-types/standard-numeric-format-strings), die von `number.ToString(<format>, <locale>)` unterstützt werden. |
@@ -2092,10 +2092,10 @@ Gibt den aktuellen Zeitstempel plus der angegebenen Zeiteinheiten zurück.
 getFutureTime(<interval>, <timeUnit>, <format>?)
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*interval*> | Ja | Integer | Die Anzahl der angegebenen Zeiteinheiten, die hinzugefügt werden sollen |
-| <*timeUnit*> | JaJa | String | Die mit *interval* zu verwendende Zeiteinheit: Second, Minute, Hour, Day, Week, Month, Year |
+| <*timeUnit*> | Ja | String | Die mit *interval* zu verwendende Zeiteinheit: Second, Minute, Hour, Day, Week, Month, Year |
 | <*format*> | Nein | String | Entweder ein [einzelner Formatbezeichner](/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT hh:mm:ss:fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. |
 |||||
 
@@ -2136,10 +2136,10 @@ Gibt den aktuellen Zeitstempel abzüglich der angegebenen Zeiteinheiten zurück.
 getPastTime(<interval>, <timeUnit>, <format>?)
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*interval*> | Ja | Integer | Die Anzahl der angegebenen Zeiteinheiten, die subtrahiert werden sollen |
-| <*timeUnit*> | JaJa | String | Die mit *interval* zu verwendende Zeiteinheit: Second, Minute, Hour, Day, Week, Month, Year |
+| <*timeUnit*> | Ja | String | Die mit *interval* zu verwendende Zeiteinheit: Second, Minute, Hour, Day, Week, Month, Year |
 | <*format*> | Nein | String | Entweder ein [einzelner Formatbezeichner](/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT hh:mm:ss:fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. |
 |||||
 
@@ -2182,7 +2182,7 @@ greater(<value>, <compareTo>)
 greater('<value>', '<compareTo>')
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*value*> | Ja | Integer, Float oder Zeichenfolge | Der Wert (erster Wert), für den überprüft wird, ob er größer ist als der zweite Wert. |
 | <*compareTo*> | Ja | Integer, Float bzw. Zeichenfolge | Der Vergleichswert |
@@ -2219,7 +2219,7 @@ greaterOrEquals(<value>, <compareTo>)
 greaterOrEquals('<value>', '<compareTo>')
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*value*> | Ja | Integer, Float oder Zeichenfolge | Der Wert (erster Wert), für den überprüft werden soll, ob er größer gleich dem zweiten Wert ist. |
 | <*compareTo*> | Ja | Integer, Float bzw. Zeichenfolge | Der Vergleichswert |
@@ -2260,7 +2260,7 @@ Außerdem können Sie für den GUID ein anderes Format angeben, das vom Standard
 guid('<format>')
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*format*> | Nein | String | Ein einzelner [Formatbezeichner](/dotnet/api/system.guid.tostring?view=netcore-3.1#system_guid_tostring_system_string_) für den zurückgegebenen GUID. Das Standardformat ist „D“, Sie können  aber „N“, „D“, „B“, „P“ oder „X“ verwenden. |
 |||||
@@ -2290,7 +2290,7 @@ Dies ist das zurückgegebene Ergebnis: `"(c2ecc88d-88c8-4096-912c-d6f2e2b138ce)"
 if(<expression>, <valueIfTrue>, <valueIfFalse>)
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*expression*> | Ja | Boolean | Der zu überprüfende Ausdruck |
 | <*valueIfTrue*> | Ja | Any | Der Wert, der zurückgegeben werden soll, wenn der Ausdruck gleich „true“ ist |
@@ -2322,10 +2322,10 @@ Für diese Funktion wird die Groß-/Kleinschreibung nicht beachtet, und Indizes 
 indexOf('<text>', '<searchText>')
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*text*> | JaJa | String | Die Zeichenfolge, die die Teilzeichenfolge enthält, nach der gesucht werden soll |
-| <*searchText*> | JaJa | String | Die Teilzeichenfolge, nach der gesucht werden soll |
+| <*text*> | Ja | String | Die Zeichenfolge, die die Teilzeichenfolge enthält, nach der gesucht werden soll |
+| <*searchText*> | Ja | String | Die Teilzeichenfolge, nach der gesucht werden soll |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
@@ -2353,9 +2353,9 @@ Gibt die Ganzzahlversion für eine Zeichenfolge zurück.
 int('<value>')
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*value*> | JaJa | String | Die Zeichenfolge, die konvertiert werden soll |
+| <*value*> | Ja | String | Die Zeichenfolge, die konvertiert werden soll |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
@@ -2408,7 +2408,7 @@ Verwenden Sie diese Funktion in einer for-each-Schleife.
 items('<loopName>')
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*loopName*> | Ja | String | Der Name der for-each-Schleife |
 |||||
@@ -2436,9 +2436,9 @@ Gibt den Indexwert für die aktuelle Iteration in einer „Until“-Schleife zur
 iterationIndexes('<loopName>')
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG | 
+| Parameter | Erforderlich | type | BESCHREIBUNG | 
 | --------- | -------- | ---- | ----------- | 
-| <*loopName*> | JaJa | String | Name der „Until“-Schleife | 
+| <*loopName*> | Ja | String | Name der „Until“-Schleife | 
 ||||| 
 
 | Rückgabewert | type | BESCHREIBUNG | 
@@ -2537,7 +2537,7 @@ Gibt den JSON-Typwert oder das JSON-Objekt (JSON = JavaScript Object Notation) f
 json('<value>')
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*value*> | Ja | Zeichenfolge oder XML | Die Zeichenfolge oder das XML-Objekt, die oder das konvertiert werden soll |
 |||||
@@ -2609,7 +2609,7 @@ intersection([<collection1>], [<collection2>], ...)
 intersection('<collection1>', '<collection2>', ...)
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*collection1*>, <*collection2*>, ... | Ja | Array oder Objekt, aber nicht beide | Die Sammlungen, aus denen Sie *nur* die gemeinsame Elemente wünschen |
 |||||
@@ -2639,7 +2639,7 @@ Gibt eine Zeichenfolge zurück, die alle Elemente aus einem Array enthält und i
 join([<collection>], '<delimiter>')
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*collection*> | Ja | Array | Das Array, das die Elemente enthält, die verknüpft werden sollen |
 | <*delimiter*> | Ja | String | Das Trennzeichen, das zwischen den einzelnen Elementen in der Ergebniszeichenfolge steht. |
@@ -2671,7 +2671,7 @@ last('<collection>')
 last([<collection>])
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*collection*> | Ja | Zeichenfolge oder Array | Die Sammlung, aus der das letzte Element abgerufen werden soll |
 |||||
@@ -2705,10 +2705,10 @@ Gibt die Anfangsposition oder den Indexwert des letzten Vorkommens einer Teilzei
 lastIndexOf('<text>', '<searchText>')
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*text*> | JaJa | String | Die Zeichenfolge, die die Teilzeichenfolge enthält, nach der gesucht werden soll |
-| <*searchText*> | JaJa | String | Die Teilzeichenfolge, nach der gesucht werden soll |
+| <*text*> | Ja | String | Die Zeichenfolge, die die Teilzeichenfolge enthält, nach der gesucht werden soll |
+| <*searchText*> | Ja | String | Die Teilzeichenfolge, nach der gesucht werden soll |
 |||
 
 | Rückgabewert | type | BESCHREIBUNG |

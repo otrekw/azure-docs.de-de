@@ -1,53 +1,53 @@
 ---
-title: Troubleshooting für nicht autorisierte Ausnahmen in Azure Cosmos DB
-description: Diagnose für und Beheben von nicht autorisierten Ausnahmen
+title: Troubleshooting von Ausnahmen bei nicht autorisierten Vorgängen in Azure Cosmos DB
+description: Erfahren Sie mehr über das Diagnostizieren und Beheben von Ausnahmen bei nicht autorisierten Vorgängen.
 author: j82w
 ms.service: cosmos-db
 ms.date: 07/13/2020
 ms.author: jawilley
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 872780ff65dabe5a931ae712c0f99b6e4f3e726d
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: a4f51b641ca38b2b6f74bb77928537270d12f1e8
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87293781"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88870849"
 ---
-# <a name="diagnose-and-troubleshoot-azure-cosmos-db-unauthorized-exception"></a>Diagnose und Troubleshooting für nicht autorisierte Ausnahmen in Azure Cosmos DB
+# <a name="diagnose-and-troubleshoot-azure-cosmos-db-unauthorized-exceptions"></a>Diagnose und Troubleshooting für Ausnahmen bei nicht autorisierten Vorgängen in Azure Cosmos DB
 
-HTTP 401: The MAC signature found in the HTTP request is not the same as the computed signature. (Die in der HTTP-Anforderung gefundene MAC-Signatur entspricht nicht der berechneten Signatur.)
-Wenn Sie die folgende 401-Fehlermeldung erhalten haben: „Die in der HTTP-Anforderung gefundene MAC-Signatur entspricht nicht der berechneten Signatur.“ kann durch die folgenden Szenarien verursacht werden.
+HTTP 401: The MAC signature found in the HTTP request is not the same as the computed signature. (Die MAC-Signatur in der HTTP-Anforderung entspricht nicht der berechneten Signatur.)
+Die Fehlermeldung 401, dass die MAC-Signatur in der HTTP-Anforderung nicht der berechneten Signatur entspricht, kann in folgenden Szenarien auftreten.
 
-Bei älteren SDKs kann die Ausnahme als ungültige JSON-Ausnahme anstatt der richtigen nicht autorisierten 401-Ausnahme angezeigt werden. Bei neueren SDKs ist die Anzeige in diesem Szenario korrekt, und es wird eine gültige Fehlermeldung angezeigt.
+Bei älteren SDKs kann die Ausnahme als ungültige JSON-Ausnahme anstelle der richtigen 401-Ausnahme über nicht autorisierte Vorgänge angezeigt werden. Bei neueren SDKs ist die Anzeige in diesem Szenario korrekt, und es wird eine gültige Fehlermeldung angezeigt.
 
 ## <a name="troubleshooting-steps"></a>Schritte zur Problembehandlung
-Die folgende Liste enthält bekannte Gründe und Lösungen für nicht autorisierte Ausnahmen.
+Die folgende Liste enthält bekannte Gründe und Lösungen für Ausnahmen aufgrund nicht autorisierter Vorgänge.
 
-### <a name="1-key-was-not-properly-rotated-is-the-most-common-scenario"></a>1. Das häufigste Szenario ist, dass der Schlüssel nicht ordnungsgemäß rotiert wurde.
-Die 401-MAC-Signatur wird kurz nach der Schlüsselrotation angezeigt und schließlich ohne Änderungen angehalten. 
+### <a name="the-key-wasnt-properly-rotated-is-the-most-common-scenario"></a>Das häufigste Szenario ist, dass der Schlüssel nicht ordnungsgemäß rotiert wurde.
+Die Fehlermeldung 401 zur MAC-Signatur wird kurz nach der Schlüsselrotation angezeigt und schließlich ohne Änderungen unterbrochen. 
 
 #### <a name="solution"></a>Lösung:
-Der Schlüssel wurde rotiert und entsprach nicht den [bewährten Methoden](secure-access-to-data.md#key-rotation). Abhängig von der Größe des Cosmos DB-Kontos kann die Schlüsselrotation für das Cosmos DB-Konto von nur wenigen Sekunden bis möglicherweise Tage dauern.
+Der Schlüssel wurde rotiert und entsprach nicht den [bewährten Methoden](secure-access-to-data.md#key-rotation). Abhängig von der Größe des Azure Cosmos DB-Kontos kann die Schlüsselrotation für das Azure Cosmos DB-Konto von nur wenigen Sekunden bis möglicherweise Tage dauern.
 
-### <a name="2-the-key-is-misconfigured"></a>2. Der Schlüssel ist falsch konfiguriert. 
-Das Problem mit der 401-MAC-Signatur ist konsistent und tritt bei allen Aufrufen auf, für die dieser Schlüssel verwendet wird.
+### <a name="the-key-is-misconfigured"></a>Der Schlüssel ist falsch konfiguriert. 
+Die Fehlermeldung 401 zur MAC-Signatur ist konsistent und tritt bei allen Aufrufen auf, für die dieser Schlüssel verwendet wird.
 
 #### <a name="solution"></a>Lösung:
 Der Schlüssel ist für die Anwendung falsch konfiguriert, und für das Konto wird der falsche Schlüssel verwendet, oder es wurde nicht der gesamte Schlüssel kopiert.
 
-### <a name="3-the-application-is-using-the-read-only-keys-for-write-operations"></a>3. Die Anwendung verwendet die schreibgeschützten Schlüssel für Schreibvorgänge.
-Das Problem mit der 401-MAC-Signatur tritt nur bei Schreibvorgängen wie dem Erstellen oder Ersetzen auf. Leseanforderungen sind jedoch erfolgreich.
+### <a name="the-application-is-using-the-read-only-keys-for-write-operations"></a>Die Anwendung verwendet die schreibgeschützten Schlüssel für Schreibvorgänge.
+Die Fehlermeldung 401 zur MAC-Signatur tritt nur bei Schreibvorgängen wie dem Erstellen oder Ersetzen auf. Leseanforderungen sind jedoch erfolgreich.
 
 #### <a name="solution"></a>Lösung:
 Ändern Sie die Anwendung so, dass ein Schlüssel für Lese- und Schreibvorgänge verwendet wird, der es ermöglicht, dass Vorgänge erfolgreich abgeschlossen werden.
 
-### <a name="4-race-condition-with-create-container"></a>4. Es gibt eine Racebedingung beim Erstellen eines Containers.
-Das Problem mit der 401-MAC-Signatur tritt oft kurz nach der Erstellung eines Containers auf. Der Fehler tritt aber nur solange auf, bis die Containererstellung abgeschlossen ist.
+### <a name="race-condition-with-create-container"></a>Es gibt eine Racebedingung beim Erstellen eines Containers.
+Die Fehlermeldung 401 zur MAC-Signatur tritt oft kurz nach der Erstellung eines Containers auf. Der Fehler tritt aber nur so lange auf, bis die Containererstellung abgeschlossen ist.
 
 #### <a name="solution"></a>Lösung:
 Es liegt eine Racebedingung bei der Containererstellung vor. Eine Anwendungsinstanz versucht, auf den Container zuzugreifen, bevor die Containererstellung abgeschlossen ist. Das häufigste Szenario für diese Racebedingung ist, dass der Container gelöscht und mit demselben Namen neu erstellt wird, während die Anwendung ausgeführt wird. Das SDK versucht, den neuen Container zu verwenden, aber die Containererstellung wird noch ausgeführt, sodass die Schlüssel noch nicht verfügbar sind.
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Diagnostizieren und Behandeln von Problemen bei Verwendung des .NET SDK für Azure Cosmos DB](troubleshoot-dot-net-sdk.md)
-* Weitere Informationen zu Leistungsrichtlinien für [.NET-Version 3](performance-tips-dotnet-sdk-v3-sql.md) und [.NET-Version 2](performance-tips.md)
+* [Diagnostizieren und Behandeln](troubleshoot-dot-net-sdk.md) von Problemen bei Verwendung des .NET SDK für Azure Cosmos DB
+* Weitere Informationen zu Leistungsrichtlinien für [.NET Version 3](performance-tips-dotnet-sdk-v3-sql.md) und [.NET Version 2](performance-tips.md)

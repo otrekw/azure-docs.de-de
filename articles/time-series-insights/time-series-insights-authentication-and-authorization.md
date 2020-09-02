@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 08/12/2020
 ms.custom: seodec18, has-adal-ref
-ms.openlocfilehash: 7384d03595f36e37eb70ec68d4f59b889facf76f
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: bbec605f25c2e74178bdb5c28d0a7995e4e265f1
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88168030"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88690390"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Authentifizierung und Autorisierung für die Azure Time Series Insights-API
 
@@ -85,7 +85,7 @@ Wenn Sie in **Schritt 3** die Anmeldeinformationen Ihrer Anwendung und Ihrer Ben
 
    1. In C# können Sie das Token für die Anwendung mit dem folgenden Code abrufen. Ein vollständiges Beispiel zum Abfragen von Daten aus einer Gen1-Umgebung finden Sie unter [Abfragen von Daten mit C#](time-series-insights-query-data-csharp.md).
 
-        [!code-csharp[csharpquery-example](~/samples-tsi/gen1-sample/csharp-tsi-gen1-sample/Program.cs)]
+        Informationen zum Zugreifen auf den C#-Code finden Sie im Repository [Azure Time Series Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/blob/master/gen1-sample/csharp-tsi-gen1-sample/Program.cs). 
 
    1. Das Token kann dann im `Authorization`-Header übergeben werden, wenn die Anwendung die Azure Time Series Insights-API aufruft.
 
@@ -157,7 +157,7 @@ Optionale URL-Abfragezeichenfolgen-Parameter umfassen das Festlegen eines Timeou
 
 | Optionaler Abfrageparameter | BESCHREIBUNG | Version |
 | --- |  --- | --- |
-| `timeout=<timeout>` | Das serverseitige Timeout für die Ausführung der HTTP-Anforderung. Gilt nur für die APIs zum [Abrufen von Umgebungsereignissen](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-events-api) und [Abrufen von Umgebungsaggregaten](https://docs.microsoft.com/rest/api/time-series-insights/gen1-query-api#get-environment-aggregates-api). Der Timeoutwert muss das ISO 8601-Format für die Dauer aufweisen (z.B. `"PT20S"`) und sollte im Bereich `1-30 s` liegen. Der Standardwert ist `30 s`. | Gen1 |
+| `timeout=<timeout>` | Das serverseitige Timeout für die Ausführung der HTTP-Anforderung. Gilt nur für die APIs zum [Abrufen von Umgebungsereignissen](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/query/getavailability) und [Abrufen von Umgebungsaggregaten](https://docs.microsoft.com/rest/api/time-series-insights/gen1-query-api#get-environment-aggregates-api). Der Timeoutwert muss das ISO 8601-Format für die Dauer aufweisen (z.B. `"PT20S"`) und sollte im Bereich `1-30 s` liegen. Der Standardwert ist `30 s`. | Gen1 |
 | `storeType=<storeType>` | Für Gen2-Umgebungen mit aktiviertem Warm Storage kann die Abfrage entweder für den `WarmStore` oder den `ColdStore` ausgeführt werden. Dieser Parameter in der Abfrage definiert, in welchem Speicher die Abfrage ausgeführt werden soll. Wenn nicht definiert, wird die Abfrage im kalten Speicher ausgeführt. Um den warmen Speicher abzufragen, muss **storeType** auf `WarmStore` festgelegt werden. Wenn nicht definiert, wird die Abfrage im kalten Speicher ausgeführt. | Gen2 |
 
 ## <a name="next-steps"></a>Nächste Schritte

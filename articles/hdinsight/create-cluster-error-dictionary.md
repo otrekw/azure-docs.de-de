@@ -7,13 +7,13 @@ ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.date: 11/19/2019
-ms.openlocfilehash: 39179c9b6d02d810561485f6a4af0102711ad0ef
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/24/2020
+ms.openlocfilehash: cae8647d970020a22d59dc49b058d43fe28dd00c
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82186633"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816455"
 ---
 # <a name="azure-hdinsight-cluster-creation-errors"></a>Azure HDInsight: Fehler bei der Clustererstellung
 
@@ -24,19 +24,17 @@ In diesem Artikel werden Lösungen für Fehler beschrieben, die beim Erstellen v
 
 ## <a name="error-codedeploymentdocument-csmdocument_2_0-failed-the-validation"></a>Fehlercode: Fehler beim Überprüfen von DeploymentDocument „CsmDocument_2_0“
 
-### <a name="error"></a>Fehler
+**Fehler:** „Script Action location cannot be accessed URI: \<SCRIPT ACTION URL\>“ (Zugriff auf Speicherort der Skriptaktion nicht möglich. URI:)
 
-„Script Action location cannot be accessed URI: \<SCRIPT ACTION URL\>“ (Zugriff auf Speicherort der Skriptaktion nicht möglich. URI:)
-
-#### <a name="error-message"></a>Fehlermeldung
+### <a name="error-message-1"></a>Fehlermeldung 1
 
 Der Remoteserver hat einen Fehler zurückgegeben: (404) Nicht gefunden.“
 
-### <a name="cause"></a>Ursache
+#### <a name="cause"></a>Ursache
 
 Der HDInsight-Dienst kann nicht auf die URL der Skriptaktion zugreifen, die Sie in der Anforderung zum Erstellen eines Clusters angegeben haben. Der Dienst empfängt die oben angegebene Fehlermeldung beim Versuch, auf die Skriptaktion zuzugreifen.
 
-### <a name="resolution"></a>Lösung
+#### <a name="resolution"></a>Lösung
 
 - Bei einer HTTP- oder HTTPS-URL überprüfen Sie die URL, indem Sie sie im Inkognitomodus eines Browsers öffnen.
 - Stellen Sie bei einer WASB-URL sicher, dass das Skript in dem in der Anforderung angegebenen Speicherkonto vorhanden ist. Vergewissern Sie sich ebenfalls, dass der Speicherschlüssel für das Speicherkonto korrekt ist.
@@ -44,37 +42,29 @@ Der HDInsight-Dienst kann nicht auf die URL der Skriptaktion zugreifen, die Sie 
 
 ---
 
-## <a name="error-codedeploymentdocument-csmdocument_2_0-failed-the-validation"></a>Fehlercode: Fehler beim Überprüfen von DeploymentDocument „CsmDocument_2_0“
-
-### <a name="error"></a>Fehler
-
-„Script Action location cannot be accessed URI: \<SCRIPT_ACTION_URL\>“ (Zugriff auf Speicherort der Skriptaktion nicht möglich. URI:)
-
-#### <a name="error-message"></a>Fehlermeldung
+### <a name="error-message-2"></a>Fehlermeldung 2
 
 „The given script URI \<SCRIPT_URI\> is in ADLS, but this cluster has no data lake storage principal“ (Das angegebene Skript-URI <SKRIPT_URI> befindet sich in ADLS, dieser Cluster hat jedoch keinen Data Lake Storage-Prinzipal)
 
-### <a name="cause"></a>Ursache
+#### <a name="cause"></a>Ursache
 
 Der HDInsight-Dienst kann nicht auf die URL der Skriptaktion zugreifen, die Sie in der Anforderung zum Erstellen eines Clusters angegeben haben. Der Dienst empfängt die oben angegebene Fehlermeldung beim Versuch, auf die Skriptaktion zuzugreifen.
 
-### <a name="resolution"></a>Lösung
+#### <a name="resolution"></a>Lösung
 
 Fügen Sie dem Cluster das entsprechende Azure Data Lake Store Gen1-Konto hinzu. Fügen Sie dem Cluster auch den Dienstprinzipal hinzu, der auf das Data Lake Storage Gen1-Konto zugreift.
 
 ---
 
-## <a name="error-code-deploymentdocument-csmdocument_2_0-failed-the-validation"></a>Fehlercode: Fehler beim Überprüfen von DeploymentDocument „CsmDocument_2_0“
-
-### <a name="error"></a>Fehler
+### <a name="error-message-3"></a>Fehlermeldung 3
 
 „Die in der Anforderung angegebene VM-Größe ‚\<CUSTOMER_SPECIFIED_VM_SIZE\>‘ ist ungültig oder wird für die Rolle ‚\<ROLE\>‘ nicht unterstützt. Gültige Werte sind: \<VALID_VM_SIZE_FOR_ROLE\>“.
 
-### <a name="cause"></a>Ursache
+#### <a name="cause"></a>Ursache
 
 Die von Ihnen angegebene VM-Größe ist für die Rolle nicht zulässig. Dieser Fehler kann auftreten, wenn der Wert für die VM-Größe nicht erwartungsgemäß funktioniert oder für die Computerrolle nicht geeignet ist.
 
-### <a name="resolution"></a>Lösung
+#### <a name="resolution"></a>Lösung
 
 In der Fehlermeldung sind die gültigen Werte für die VM-Größe aufgeführt. Wählen Sie einen dieser Werte aus, und wiederholen Sie die Anforderung zum Erstellen eines Clusters.
 

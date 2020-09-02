@@ -3,12 +3,12 @@ title: Offlinesicherung unter Verwendung von Azure Data Box
 description: In diesem Artikel erfahren Sie, wie Sie Azure Data Box verwenden können, um ein Offlineseeding für eine große Menge Erstsicherungsdaten vom MARS-Agent in einen Recovery Services-Tresor auszuführen.
 ms.topic: conceptual
 ms.date: 1/27/2020
-ms.openlocfilehash: e377ccde714c1486ff731d24d5a0cd64364bca37
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6ad97ee60c3c7debea72357cf7fc8d483a3c1d46
+ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091027"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88761558"
 ---
 # <a name="azure-backup-offline-backup-by-using-azure-data-box"></a>Offlinesicherung in Azure Backup unter Verwendung von Azure Data Box
 
@@ -259,13 +259,13 @@ Wenn Sie eine Offlinesicherung konfigurieren, tritt möglicherweise ein Problem 
 
 Um zu ermitteln, ob Ihr Problem mit dem zuvor beschriebenen übereinstimmt, führen Sie einen der folgenden Schritte aus.
 
-#### <a name="step-1"></a>Schritt 1
+#### <a name="step-1-of-verification"></a>Schritt 1 der Überprüfung
 
 Prüfen Sie, ob die folgende Fehlermeldung in der MAB-Konsole angezeigt wird, wenn Sie die Offlinesicherung konfiguriert haben.
 
 ![Fehlermeldung „Die Richtlinie zur Offlinesicherung für das aktuelle Azure-Konto konnte nicht erstellt werden […]“](./media/offline-backup-azure-data-box/unable-to-create-policy.png)
 
-#### <a name="step-2"></a>Schritt 2
+#### <a name="step-2-of-verification"></a>Schritt 2 der Überprüfung
 
 1. Öffnen Sie den Ordner **Temp** im Installationspfad. Der Standardpfad für den temporären Ordner ist *C:\Programme\Microsoft Azure Recovery Services Agent\Temp*. Suchen Sie nach der *CBUICurr*-Datei, und öffnen Sie sie.
 
@@ -275,11 +275,11 @@ Prüfen Sie, ob die folgende Fehlermeldung in der MAB-Konsole angezeigt wird, we
 
 Als Umgehung dieses Problems können Sie die folgenden Schritte ausführen und noch mal versuchen, die Richtlinie zu konfigurieren.
 
-#### <a name="step-1"></a>Schritt 1
+#### <a name="step-1-of-workaround"></a>Schritt 1 der Problemumgehung
 
 Melden Sie sich bei PowerShell an (wird auf der MAB-Benutzeroberfläche angezeigt). Verwenden Sie dazu ein anderes Konto mit Administratorenzugriff auf das Abonnement, für das der Import- oder Exportauftrag erstellt werden soll.
 
-#### <a name="step-2"></a>Schritt 2
+#### <a name="step-2-of-workaround"></a>Schritt 2 der Problemumgehung
 
 Wenn auf keinem anderen Server Offlineseeding konfiguriert und kein anderer Server von der Anwendung `AzureOfflineBackup_<Azure User Id>` abhängig ist, löschen Sie diese Anwendung. Wählen Sie **Azure-Portal** > **Azure Active Directory** > **App-Registrierungen** aus.
 

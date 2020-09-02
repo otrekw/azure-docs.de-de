@@ -3,12 +3,12 @@ title: Verwenden von Modern Backup Storage mit Azure Backup Server
 description: In diesem Artikel erfahren Sie mehr über die neuen Features in Azure Backup Server. Dieser Artikel beschreibt, wie Sie Ihre Backup-Server-Installation aktualisieren.
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: ee55355b0f2cabe97f5d2a838edcbd5cfddf44e6
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: b8620f6999c1fcb1a1e70c73fb71fcaac008d930
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86513709"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88825867"
 ---
 # <a name="add-storage-to-azure-backup-server"></a>Hinzufügen von Speicher zu Azure Backup Server
 
@@ -18,7 +18,7 @@ Azure Backup Server v2 und höhere Versionen unterstützen Modern Backup Storage
 > Zum Verwenden von Modern Backup Storage müssen Sie Backup Server v2 oder v3 unter Windows Server 2016 oder v3 unter Windows Server 2019 ausführen.
 > Wenn Sie Backup Server v2 unter einer früheren Version von Windows Server ausführen, kann Modern Backup Storage nicht von Azure Backup Server genutzt werden. Workloads werden dann wie mit Backup Server v1 geschützt. Weitere Informationen finden Sie in der [Schutzmatrix](backup-mabs-protection-matrix.md) der Backup Server-Versionen.
 >
-> Um verbesserte Sicherungsleistungen zu erzielen, empfehlen wir die Bereitstellung von MABS v3 mit mehrstufigen Speicher unter Windows Server 2019. Die Schritte zum Konfigurieren des mehrstufigen Speichers finden Sie im DPM-Artikel „[Einrichten von MBS mit mehrstufigem Speicher](/system-center/dpm/add-storage?view=sc-dpm-2019#set-up-mbs-with-tiered-storage)".
+> Um verbesserte Sicherungsleistungen zu erzielen, empfehlen wir die Bereitstellung von MABS v3 mit mehrstufigen Speicher unter Windows Server 2019. Die Schritte zum Konfigurieren des mehrstufigen Speichers finden Sie im DPM-Artikel unter [Einrichten von MBS mit mehrstufigem Speicher](/system-center/dpm/add-storage?view=sc-dpm-2019#set-up-mbs-with-tiered-storage).
 
 ## <a name="volumes-in-backup-server"></a>Volumes in Backup Server
 

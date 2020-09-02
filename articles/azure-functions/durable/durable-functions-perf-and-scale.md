@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 58c28160de15bc99c94c84ab23fdbb358125132d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e98792c81604b0f867343db289a44dfec9704b5e
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87033580"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88853709"
 ---
 # <a name="performance-and-scale-in-durable-functions-azure-functions"></a>Leistung und Skalierbarkeit in Durable Functions (Azure Functions)
 
@@ -224,6 +224,10 @@ Es gibt zwei mögliche Nachteile dieser Einstellung, die Sie beachten sollten:
 Wenn `durableTask/extendedSessionIdleTimeoutInSeconds` beispielsweise auf 30 Sekunden festgelegt ist, belegt eine Orchestrator- oder Entitätsfunktionsfolge mit kurzer Dauer, die in weniger als 1 Sekunde ausgeführt wird, dennoch 30 Sekunden lang den Arbeitsspeicher. Zudem wird sie auf das zuvor erwähnte Kontingent `durableTask/maxConcurrentOrchestratorFunctions` angerechnet, sodass möglicherweise verhindert wird, dass andere Orchestrator- oder Entitätsfunktionen ausgeführt werden.
 
 Die spezifischen Auswirkungen von erweiterten Sitzungen auf Orchestrator- und Entitätsfunktionen werden in den nächsten Abschnitten beschrieben.
+
+> [!NOTE]
+> Erweiterte Sitzungen werden derzeit nur in .NET-Programmiersprachen wie C# oder F# unterstützt. Wenn Sie `extendedSessionsEnabled` für andere Plattformen auf `true` festlegen, kann dies zu Laufzeitproblemen führen. So kann z. B. die Ausführung von durch Aktivitäten und Orchestrierung ausgelöste Funktionen ohne Meldung Fehler verursachen.
+
 
 ### <a name="orchestrator-function-replay"></a>Wiedergabe von Orchestratorfunktionen
 

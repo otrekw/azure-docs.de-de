@@ -3,12 +3,12 @@ title: Datenmodell für Azure Backup-Diagnoseereignisse
 description: Dieses Datenmodell bezieht sich auf den ressourcenspezifischen Modus zum Senden von Diagnoseereignissen an Log Analytics (LA).
 ms.topic: conceptual
 ms.date: 10/30/2019
-ms.openlocfilehash: 46d40694da4eb025afc11da0f14b28691bf13bb8
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 8cc671152485bc2781a80f96e48b81263dea221b
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86538869"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892523"
 ---
 # <a name="data-model-for-azure-backup-diagnostics-events"></a>Datenmodell für Azure Backup-Diagnoseereignisse
 
@@ -21,7 +21,7 @@ Diese Tabelle enthält Informationen zu den wichtigsten Sicherungsentitäten wie
 | resourceId                        | Text          | Ressourcenbezeichner der Daten, die erfasst werden. Beispiel: Ressourcen-ID des Recovery Services-Tresors |
 | Vorgangsname                     | Text          | Dieses Feld repräsentiert den Namen des aktuellen Vorgangs: BackupItem, BackupItemAssociation oder ProtectedContainer |
 | Category                          | Text          | Dieses Feld repräsentiert die Kategorie der Diagnosedaten, die mithilfe von Push an Azure Monitor-Protokolle übermittelt werden. Beispiel: CoreAzureBackup |
-| AgentVersion                      | Text          | Versionsnummer der Agent-Sicherung oder des Schutz-Agents (im Fall von SC DPM und MABS) |
+| AgentVersion                      | Text          | Versionsnummer der Agent-Sicherung oder des Schutz-Agents (im Fall von SC DPM und MABS) |
 | AzureBackupAgentVersion           | Text          | Version des Azure Backup-Agenten auf dem Sicherungsverwaltungsserver |
 | AzureDataCenter                   | Text          | Rechenzentrum, in dem sich der Tresor befindet                       |
 | BackupItemAppVersion              | Text          | Anwendungsversion des Sicherungselements                       |
@@ -53,7 +53,7 @@ Diese Tabelle enthält Informationen zu den wichtigsten Sicherungsentitäten wie
 | ProtectedContainerWorkloadType    | Text          | Typ des gesicherten geschützten Containers. Beispielsweise IaaSVMContainer. |
 | ProtectionGroupName               | Text          | Name der Schutzgruppe, in der das Sicherungselement geschützt wird, (falls zutreffend) für System Center Data Protection Manager (SC DPM) und Microsoft Azure Backup Server (MABS) |
 | ResourceGroupName                 | Text          | Ressourcengruppe der Ressource (z. B. Recovery Services-Tresor) für erfasste Daten |
-| SchemaVersion                     | Text          | Dieses Feld gibt die aktuelle Version des Schemas an: **V2** |
+| SchemaVersion                     | Text          | Dieses Feld gibt die aktuelle Version des Schemas an. Dies ist **V2**. |
 | SecondaryBackupProtectionState    | Text          | Gibt an, ob der sekundäre Schutz für das Sicherungselement aktiviert ist  |
 | State                             | Text          | Status des Sicherungselementobjekts. Beispielsweise Active (Aktiv), Deleted (Gelöscht). |
 | StorageReplicationType            | Text          | Typ der Speicherreplikation für den Tresor. Beispiel: GeoRedundant. |
@@ -165,12 +165,12 @@ Diese Tabelle enthält Details zu richtlinienbezogenen Feldern.
 | DiffBackupTime                  | Time           | Zeit für differenzielle Sicherungen für SQL im Azure Backup-Dienst für VMs     |
 | LogBackupFrequency              | Decimal Number | Häufigkeit von Protokollsicherungen für SQL                            |
 | LogBackupRetentionDuration      | Decimal Number | Aufbewahrungsdauer für Protokollsicherungen für SQL im Azure Backup-Dienst für VMs |
-| MonthlyRetentionDaysOfTheMonth  | Text           | Wochen des Monats, in denen die monatliche Beibehaltung konfiguriert ist.  Beispiel: „erste“, „letzte“ usw. |
+| MonthlyRetentionDaysOfTheMonth  | Text           | Wochen des Monats, in denen die monatliche Beibehaltung konfiguriert ist.  Zum Beispiel „erste“, „letzte“ |
 | MonthlyRetentionDaysOfTheWeek   | Text           | Tage der Woche, die für die monatliche Beibehaltung ausgewählt sind              |
 | MonthlyRetentionDuration        | Text           | Gesamte Beibehaltungsdauer in Monaten für konfigurierte Sicherungen    |
 | MonthlyRetentionFormat          | Text           | Typ der Konfiguration für die monatliche Beibehaltung. Beispiel: „daily“ für tägliche Ausführung, „weekly“ für wöchentliche Ausführung |
 | MonthlyRetentionTimes           | Text           | Konfiguration von Datum und Uhrzeit der monatlichen Beibehaltung           |
-| MonthlyRetentionWeeksOfTheMonth | Text           | Wochen des Monats, in denen die monatliche Beibehaltung konfiguriert ist.   Beispiel: „erste“, „letzte“ usw. |
+| MonthlyRetentionWeeksOfTheMonth | Text           | Wochen des Monats, in denen die monatliche Beibehaltung konfiguriert ist.   Zum Beispiel „erste“, „letzte“ |
 | PolicyName                      | Text           | Name der definierten Richtlinie                                   |
 | PolicyUniqueId                  | Text           | Eindeutige ID zur Bezeichnung der Richtlinie                             |
 | PolicyTimeZone                  | Text           | Zeitzone, in der die Richtlinienzeitfelder in den Protokollen angegeben werden |

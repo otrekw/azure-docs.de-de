@@ -3,12 +3,12 @@ title: Wiederherstellen von Dateien auf Windows Server mit dem MARS-Agent
 description: In diesem Artikel erfahren Sie, wie Sie in Azure gespeicherte Daten mit dem Microsoft Azure Recovery Services-Agent (MARS) auf einem Windows-Server oder Windows-Computer wiederherstellen.
 ms.topic: conceptual
 ms.date: 09/07/2018
-ms.openlocfilehash: d96c6c54431d0160bd58be0c3491ef2b22753e53
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: e61ad7083a7b6979222566112820bad133022844
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88263400"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892506"
 ---
 # <a name="restore-files-to-windows-server-using-the-mars-agent"></a>Wiederherstellen von Dateien auf Windows Server mit dem MARS-Agent
 
@@ -47,10 +47,10 @@ Wenn Sie versehentlich eine Datei gelöscht haben und sie auf demselben Computer
 
     ![Screenshot der Seite „Wiederherstellungsmodus auswählen“ des Assistenten zum Wiederherstellen von Daten (Wiederherstellen auf demselben Computer)](./media/backup-azure-restore-windows-server/samemachine_selectrecoverymode_instantrestore.png)
    > [!IMPORTANT]
-   > Für die Option zum Wiederherstellen von einzelnen Dateien und Ordnern ist .NET Framework 4.5.2 oder höher erforderlich. Falls die Option **Individual Files and Folders** (Einzelne Dateien und Ordner) nicht angezeigt wird, müssen Sie .NET Framework auf Version 4.5.2 oder höher aktualisieren und es erneut versuchen.
+   > Für die Option zum Wiederherstellen von einzelnen Dateien und Ordnern ist .NET Framework 4.5.2 oder höher erforderlich. Falls die Option **Einzelne Dateien und Ordner** nicht angezeigt wird, müssen Sie .NET Framework auf Version 4.5.2 oder höher aktualisieren und es erneut versuchen.
 
    > [!TIP]
-   > Die Option **Individual Files and Folders** (Einzelne Dateien und Ordner) ermöglicht den schnellen Zugriff auf Daten des Wiederherstellungspunkts. Sie eignet sich für die Wiederherstellung einzelner Dateien bis maximal 80 GB und bietet während der Wiederherstellung Übertragungs- oder Kopiergeschwindigkeiten von bis zu 6 MB/s. Die Option **Volume** stellt alle gesicherten Daten auf einem angegebenen Volume wieder her. Mit dieser Option erreichen Sie höhere Übertragungsgeschwindigkeiten (bis zu 40 MB/s), sodass sie sich ideal für das Wiederherstellen großer Daten oder ganzer Volumes eignet.
+   > Die Option **Individual Files and Folders** (Einzelne Dateien und Ordner) ermöglicht den schnellen Zugriff auf Daten des Wiederherstellungspunkts. Sie eignet sich für die Wiederherstellung einzelner Dateien und wird für eine Gesamtgröße von unter 80 GB empfohlen. Sie bietet Übertragungs- oder Kopiergeschwindigkeiten von bis zu 6 MBit/s während der Wiederherstellung. Die Option **Volume** stellt alle gesicherten Daten auf einem angegebenen Volume wieder her. Mit dieser Option erreichen Sie höhere Übertragungsgeschwindigkeiten (bis zu 40 MBit/s), daher wird sie für das Wiederherstellen großer Daten oder ganzer Volumes empfohlen.
 
 5. Wählen Sie auf der Seite **Volume und Datum auswählen** das Volume aus, das die wiederherzustellenden Dateien und Ordner enthält.
 
@@ -72,10 +72,10 @@ Wenn Sie versehentlich eine Datei gelöscht haben und sie auf demselben Computer
 
 9. Zum Schluss wählen Sie auf der Seite **Dateien durchsuchen und wiederherstellen** die Option **Bereitstellung aufheben** aus. Wählen Sie anschließend **Ja** aus, um zu bestätigen, dass Sie die Einbindung des Volumes aufheben möchten.
 
-    ![Screenshot der Seite „Dateien suchen und wiederherstellen“ des Assistenten zum Wiederherstellen von Daten (Wiederherstellen auf demselben Computer)](./media/backup-azure-restore-windows-server/samemachine_unmount_instantrestore.png)
+    ![Screenshot der Seite „Dateien suchen und wiederherstellen“ des Assistenten zum Wiederherstellen von Daten (Wiederherstellen auf demselben Computer) – Bereitstellungsaufhebung für Wiederherstellungsvolume bestätigen](./media/backup-azure-restore-windows-server/samemachine_unmount_instantrestore.png)
 
     > [!Important]
-    > Wenn Sie nicht **Bereitstellung aufheben** auswählen, bleibt die Einbindung des Wiederherstellungsvolumes ab dem Einbindungszeitpunkt sechs Stunden lang bestehen. Im Fall eines laufenden Dateikopiervorgangs wird die Einbindungszeit jedoch auf bis zu 24 Stunden verlängert. Während der Bereitstellung des Volumes werden keine Sicherungsvorgänge durchgeführt. Alle Sicherungsvorgänge, deren Ausführung für den Zeitraum der Volumeeinbindung geplant ist, werden ausgeführt, nachdem die Einbindung des Wiederherstellungsvolumes aufgehoben wurde.
+    > Wenn Sie nicht **Bereitstellung aufheben** auswählen, bleibt die Einbindung des Wiederherstellungsvolumes ab dem Einbindungszeitpunkt sechs Stunden lang bestehen. Im Fall eines laufenden Dateikopiervorgangs wird die Einbindungszeit jedoch auf bis zu 24 Stunden verlängert. Während der Bereitstellung des Volumes werden keine Sicherungsvorgänge durchgeführt. Alle Sicherungsvorgänge, deren Ausführung für den Zeitraum der Volumeeinbindung geplant ist, werden ausgeführt, nachdem die Einbindung des Wiederherstellungsvolumes aufgehoben wurde.
     >
 
 ## <a name="use-instant-restore-to-restore-data-to-an-alternate-machine"></a>Verwenden der sofortigen Wiederherstellung zum Wiederherstellen von Daten auf einem anderen Computer
@@ -138,7 +138,7 @@ Bei diesen Schritte wird die folgende Terminologie verwendet:
     ![Bereitstellung des Volumes aufheben (Wiederherstellen auf einem anderen Computer)](./media/backup-azure-restore-windows-server/alternatemachine_unmount_instantrestore.png)
 
     > [!Important]
-    > Wenn Sie nicht **Bereitstellung aufheben** auswählen, bleibt die Einbindung des Wiederherstellungsvolumes ab dem Einbindungszeitpunkt sechs Stunden lang bestehen. Im Fall eines laufenden Dateikopiervorgangs wird die Einbindungszeit jedoch auf bis zu 24 Stunden verlängert. Während der Bereitstellung des Volumes werden keine Sicherungsvorgänge durchgeführt. Alle Sicherungsvorgänge, deren Ausführung für den Zeitraum der Volumeeinbindung geplant ist, werden ausgeführt, nachdem die Einbindung des Wiederherstellungsvolumes aufgehoben wurde.
+    > Wenn Sie nicht **Bereitstellung aufheben** auswählen, bleibt die Einbindung des Wiederherstellungsvolumes ab dem Einbindungszeitpunkt sechs Stunden lang bestehen. Im Fall eines laufenden Dateikopiervorgangs wird die Einbindungszeit jedoch auf bis zu 24 Stunden verlängert. Während der Bereitstellung des Volumes werden keine Sicherungsvorgänge durchgeführt. Alle Sicherungsvorgänge, deren Ausführung für den Zeitraum der Volumeeinbindung geplant ist, werden ausgeführt, nachdem die Einbindung des Wiederherstellungsvolumes aufgehoben wurde.
     >
 
 ## <a name="next-steps"></a>Nächste Schritte

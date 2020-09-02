@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 06/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 885394b2dd50b9f8a94ece409c47609c8f7f18fd
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 39dd9604cf0e58eda94acf6528ab31eca26355d0
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88587561"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936774"
 ---
 # <a name="use-the-azure-digital-twins-apis-and-sdks"></a>Verwenden der Azure Digital Twins-APIs und SDKs
 
@@ -63,16 +63,16 @@ Sie können auch Datenebenen-APIs anwenden, indem Sie mit Azure Digital Twins ü
 Das Azure Digital Twins .NET (C#) SDK ist Teil des Azure SDK für .NET. Es ist Open Source und basiert auf den APIs der Azure Digital Twins-Datenebene.
 
 > [!NOTE]
-> Ausführliche Informationen zum SDK-Entwurf finden Sie in den allgemeinen [Entwurfsprinzipien für Azure SDKs](https://azure.github.io/azure-sdk/general_introduction.html) und in den spezifischen [.NET-Entwurfsrichtlinien](https://azure.github.io/azure-sdk/dotnet_introduction.html).
+> Weitere Informationen zum SDK-Entwurf finden Sie in den allgemeinen [Entwurfsprinzipien für Azure SDKs](https://azure.github.io/azure-sdk/general_introduction.html) und in den spezifischen [.NET-Entwurfsrichtlinien](https://azure.github.io/azure-sdk/dotnet_introduction.html).
 
-Um das SDK zu verwenden, fügen Sie Ihrem Projekt das NuGet-Paket **Azure.DigitalTwins.Core** hinzu. Sie benötigen auch das Paket **Azure.Identity** (Version 1.1.1).
+Um das SDK zu verwenden, fügen Sie Ihrem Projekt das NuGet-Paket **Azure.DigitalTwins.Core** hinzu. Sie benötigen auch die aktuelle Version des Pakets **Azure.Identity**.
 
 * In Visual Studio können Sie Pakete mit dem NuGet-Paket-Manager hinzufügen (Zugriff über *Extras > NuGet-Paket-Manager > NuGet-Pakete für Lösung verwalten*). 
 * Sie können das .NET-Befehlszeilentool verwenden:
 
     ```cmd/sh
     dotnet add package Azure.DigitalTwins.Core --version 1.0.0-preview.3
-    dotnet add package Azure.identity --version 1.1.1
+    dotnet add package Azure.identity
     ```
 
 Eine ausführliche exemplarische Vorgehensweise zur Verwendung der APIs in der Praxis finden Sie im [*Tutorial: Programmieren einer Client-App*](tutorial-code.md). 
@@ -143,7 +143,7 @@ Weitere Beispiele finden Sie auch im [GitHub-Repository für das .NET (C#) SDK](
 
 #### <a name="serialization-helpers"></a>Hilfsprogramme für die Serialisierung
 
-Wie bereits beschrieben, geben die SDK-Kernmethoden Zwillingsdaten im JSON-Format zurück. Das SDK enthält jedoch auch Hilfsklassen für die Serialisierung. Mit diesen Hilfsfunktionen können Sie Zwillingsdaten für den Zugriff auf grundlegende Informationen schnell erstellen oder deserialisieren.
+Serialisierungshilfen sind im SDK verfügbare Hilfsfunktionen zum schnellen Erstellen oder Deserialisieren von Zwillingsdaten für den Zugriff auf grundlegende Informationen. Da die Kernmethoden des SDK Zwillingsdaten standardmäßig als JSON zurückgeben, kann es hilfreich sein, die Zwillingsdaten mithilfe dieser Hilfsklassen weiter zu unterteilen.
 
 Die folgenden Hilfsklassen sind verfügbar:
 * `BasicDigitalTwin`: Stellt die Kerndaten eines digitalen Zwillings dar.
@@ -230,7 +230,7 @@ foreach (string prop in rel.CustomProperties.Keys)
 
 ##### <a name="create-a-relationship"></a>Erstellen einer Beziehung
 
-Mit der Klasse `BasicDigitalTwin` können Sie auch Daten für die Erstellung von Beziehungen auf einer Zwillingsinstanz vorbereiten:
+Mit der Klasse `BasicRelationship` können Sie auch Daten für die Erstellung von Beziehungen auf einer Zwillingsinstanz vorbereiten:
 
 ```csharp
 BasicRelationship rel = new BasicRelationship();

@@ -8,14 +8,14 @@ ms.author: rogarana
 ms.service: virtual-machines
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 413ca677bc778069b92def043bf35ab7bb87b038
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 6174fbeb45c23c0ff04597305c6f65aef05bd26e
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87448933"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815588"
 ---
-# <a name="server-side-encryption-of-azure-disk-storage"></a>Serverseitige Verschlüsselung von Azure Disk Storage
+# <a name="server-side-encryption-of-azure-disk-storage-for-powershell"></a>Serverseitige Verschlüsselung von Azure Disk Storage für PowerShell
 
 Die serverseitige Verschlüsselung (Server-side Encryption, SSE) schützt Ihre Daten und unterstützt Sie beim Einhalten der Sicherheits- und Complianceanforderungen Ihrer Organisation. Durch SSE werden Ihre auf verwalteten Azure-Datenträgern (Betriebssystemdatenträger und reguläre Datenträger) gespeicherten ruhenden Daten standardmäßig automatisch verschlüsselt, wenn sie in der Cloud gespeichert werden. 
 
@@ -84,8 +84,8 @@ Kunden mit besonders hohen Sicherheitsanforderungen, die befürchten, dass ein e
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Aktivieren der End-to-End-Verschlüsselung mit Verschlüsselung auf dem Host mit entweder [PowerShell](disks-enable-host-based-encryption-powershell.md) oder dem [Azure-Portal](disks-enable-host-based-encryption-portal.md).
-- Aktivieren sie doppelte Verschlüsselung für verwaltete Datenträger mithilfe der [PowerShell](disks-enable-double-encryption-at-rest-powershell.md) oder des [Azure-Portals](disks-enable-double-encryption-at-rest-portal.md).
-- Aktivieren Sie kundenseitig verwaltete Schlüssel für verwaltete Datenträger mit der [PowerShell](disks-enable-customer-managed-keys-powershell.md) oder dem [Azure-Portal](disks-enable-customer-managed-keys-portal.md).
+- Aktivieren der End-to-End-Verschlüsselung mit Verschlüsselung auf dem Host mit entweder [PowerShell](disks-enable-host-based-encryption-powershell.md) oder dem [Azure-Portal](../disks-enable-host-based-encryption-portal.md).
+- Aktivieren sie doppelte Verschlüsselung für verwaltete Datenträger mithilfe der [PowerShell](disks-enable-double-encryption-at-rest-powershell.md) oder des [Azure-Portals](../disks-enable-double-encryption-at-rest-portal.md).
+- Aktivieren Sie kundenseitig verwaltete Schlüssel für verwaltete Datenträger mit der [PowerShell](disks-enable-customer-managed-keys-powershell.md) oder dem [Azure-Portal](../disks-enable-customer-managed-keys-portal.md).
 - [Untersuchen der Azure Resource Manager-Vorlagen zum Erstellen verschlüsselter Datenträger mit vom Kunden verwalteten Schlüsseln](https://github.com/ramankumarlive/manageddiskscmkpreview)
 - [Was ist der Azure-Schlüsseltresor?](../../key-vault/general/overview.md)

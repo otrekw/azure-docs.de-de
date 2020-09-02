@@ -5,18 +5,18 @@ description: Azure SQL-Datenbank und Azure SQL Managed Instance erstellen alle p
 services: sql-database
 ms.service: sql-db-mi
 ms.subservice: backup-restore
-ms.custom: sqldbrb=2
+ms.custom: references_regions
 ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
 ms.date: 08/04/2020
-ms.openlocfilehash: 3e37d907d00acd3e2b368700b70b4e268bad3ec9
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 485a137f552ca06fba366d261eb38268d821ccaf
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87921944"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88853219"
 ---
 # <a name="automated-backups---azure-sql-database--sql-managed-instance"></a>Automatisierte Sicherungen – Azure SQL-Datenbank und SQL Managed Instance
 
@@ -36,19 +36,24 @@ Wenn Sie eine Datenbank wiederherstellen, bestimmt der Dienst, welche vollständ
 
 ### <a name="backup-storage-redundancy"></a>Redundanz für Sicherungsspeicher
 
-> [!IMPORTANT]
-> Konfigurierbare Speicherredundanz für Sicherungen steht zurzeit nur für SQL Managed Instance zur Verfügung und kann nur während des Prozesses zum Erstellen einer verwalteten Instanz angegeben werden. Nachdem die Ressource bereitgestellt wurde, können Sie die Option für die Redundanz für Sicherungsspeicher nicht mehr ändern.
+Standardmäßig speichern SQL-Datenbank und SQL Managed Instance Daten in georedundanten (RA-GRS) [Blobspeichern](../../storage/common/storage-redundancy.md), die in ein [Regionspaar](../../best-practices-availability-paired-regions.md) repliziert werden. Dies dient zum Schutz vor Ausfällen, die sich auf den Sicherungsspeicher in der primären Region auswirken, und ermöglicht es Ihnen, Ihren Server bei einem Notfall in einer anderen Region wiederherzustellen. 
 
-Die Option zum Konfigurieren der Redundanz für Sicherungsspeicher bietet Flexibilität bei der Auswahl zwischen lokal redundanten (LRS), zonenredundanten (ZRS) oder georedundanten (RA-GRS) [Speicherblobs](../../storage/common/storage-redundancy.md). Mechanismen der Speicherredundanz speichern mehrere Kopien Ihrer Daten, damit sie vor geplanten und ungeplanten Ereignissen geschützt sind – von vorübergehend auftretenden Hardwarefehlern über Netzwerk- oder Stromausfälle bis hin zu schweren Naturkatastrophen. Dieses Feature steht für SQL Managed Instance zurzeit nicht zur Verfügung.
+SQL Managed Instance bietet die Möglichkeit, die Speicherredundanz entweder in lokal redundante (LRS) oder zonenredundante (ZRS) Blobspeicher zu ändern, um sicherzustellen, dass Ihre Daten innerhalb derselben Region bleiben, in der Ihre verwaltete Instanz bereitgestellt wird. Mechanismen der Speicherredundanz speichern mehrere Kopien Ihrer Daten, damit sie vor geplanten und ungeplanten Ereignissen geschützt sind – von vorübergehend auftretenden Hardwarefehlern über Netzwerk- oder Stromausfälle bis hin zu schweren Naturkatastrophen. 
 
-RA-GRS-Speicherblobs werden in ein [Regionspaar](../../best-practices-availability-paired-regions.md) repliziert. Dies dient zum Schutz vor Ausfällen, die sich auf den Sicherungsspeicher in der primären Region auswirken, und ermöglicht es Ihnen, Ihren Server bei einem Notfall in einer anderen Region wiederherzustellen. 
+Die Option zur Konfiguration der Sicherungsspeicherredundanz bietet die Flexibilität, zwischen LRS-, ZRS- oder RA-GRS-Speicherblobs für eine SQL Managed Instance zu wählen. Konfigurieren Sie die Sicherungsspeicherredundanz während des Erstellungsprozesses der verwalteten Instanz, da es nach der Bereitstellung der Ressource nicht mehr möglich ist, die Speicherredundanz zu ändern. (Zonenredundanter Speicher (ZRS) steht zurzeit nur in [bestimmten Regionen](../../storage/common/storage-redundancy.md#zone-redundant-storage) zur Verfügung.)
 
-Im Gegensatz dazu stellen LRS- und ZRS-Speicherblobs sicher, dass Ihre Daten in derselben Region verbleiben, in der Ihre SQL-Datenbank oder SQL Managed Instance bereitgestellt wird. Zonenredundanter Speicher (ZRS) steht zurzeit nur in [bestimmten Regionen](../../storage/common/storage-redundancy.md#zone-redundant-storage) zur Verfügung.
 
 > [!IMPORTANT]
 > In SQL Managed Instance wird die konfigurierte Sicherungsredundanz sowohl auf die Einstellungen für kurzfristige Sicherungsaufbewahrung angewendet, die für die Zeitpunktwiederherstellung (Point In Time Restore, PITR) verwendet werden, als auch auf die Langzeitaufbewahrung von Sicherungen (Long-Term Retention, LTR), die für langfristige Sicherungen verwendet wird.
 
+
+> [!NOTE]
+> Die konfigurierbare Sicherungsspeicherredundanz von Azure SQL-Datenbank ist derzeit für bestimmte Kunden in der Azure-Region „Asien, Südosten“ als begrenzte private Vorschau verfügbar. Wenn Sie für die Registrierung für diese private Vorschau in Betracht gezogen werden möchten, wenden Sie sich an [sqlbackuppreview@microsoft.com](mailto:sqlbackuppreview@microsoft.com). 
+
+Wenn es gemäß Ihren Sicherheitsregeln erforderlich ist, dass Ihre Sicherungen über einen längeren Zeitraum verfügbar sind (bis zu 10 Jahre), können Sie sowohl für Singletons als auch für Pooldatenbanken die [Langzeitaufbewahrung](long-term-retention-overview.md) konfigurieren.
+
 ### <a name="backup-usage"></a>Sicherungsverwendung
+
 
 Sie können diese Sicherungen für Folgendes verwenden:
 

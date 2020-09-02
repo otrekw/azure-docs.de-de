@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 08/10/2020
-ms.openlocfilehash: af5324373359cea643a3e31b6bb94e614ddb7e36
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.date: 08/19/2020
+ms.openlocfilehash: 177b79e0a33f4d43d07da9d0dea26df40e2ef11e
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88082823"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88723859"
 ---
 # <a name="data-collection-rules-in-azure-monitor-preview"></a>Datensammlungsregeln in Azure Monitor (Vorschau)
 Mit Datensammlungsregeln werden die in Azure Monitor eingehenden Daten definiert, und es wird angegeben, wohin die Daten gesendet bzw. wo sie gespeichert werden sollen. Dieser Artikel enthält eine Übersicht über die Datensammlungsregeln, z. B. zu Inhalt und Struktur und zur Erstellung und Nutzung.
@@ -28,7 +28,7 @@ Eine Datensammlungsregel enthält die unten angegebenen Komponenten.
 
 | Komponente | BESCHREIBUNG |
 |:---|:---|
-| Datenquellen | Eindeutige Quelle für Überwachungsdaten mit einem eigenen Format und einer Methode zum Verfügbarmachen der Daten. Beispiele für eine Datenquelle sind Windows-Ereignisprotokoll, Leistungsindikatoren und Syslog. Jede Datenquelle hat einen bestimmten Datenquellentyp (wie unten beschrieben). |
+| Datenquellen | Eindeutige Quelle für Überwachungsdaten mit einem eigenen Format und einer eigenen Methode zum Verfügbarmachen der Daten. Beispiele für eine Datenquelle sind Windows-Ereignisprotokoll, Leistungsindikatoren und Syslog. Jede Datenquelle hat einen bestimmten Datenquellentyp (wie unten beschrieben). |
 | Datenströme | Eindeutiges Handle zur Beschreibung einer Gruppe von Datenquellen, die unter Verwendung eines gemeinsamen Typs transformiert und schematisiert werden. Für jede Datenquelle wird mindestens ein Datenstrom benötigt, und ein Datenstrom kann von mehreren Datenquellen verwendet werden. Für alle Datenquellen eines Datenstroms wird ein gemeinsames Schema genutzt. Verwenden Sie beispielsweise mehrere Datenströme, wenn Sie eine bestimmte Datenquelle an mehrere Tabellen in demselben Log Analytics-Arbeitsbereich senden möchten. |
 | Destinations | Eine Gruppe von Zielen, an die die Daten gesendet werden sollen. Beispiele hierfür sind Log Analytics-Arbeitsbereich, Azure Monitor-Metriken und Azure Event Hubs. | 
 | Datenflüsse | Definition, welche Datenströme an welche Ziele gesendet werden sollen. | 
@@ -44,7 +44,7 @@ Jede Datenquelle hat einen Datenquellentyp. Mit jedem Typ wird eine eindeutige G
 |:---|:---|
 | Erweiterung | Auf VM-Erweiterung basierende Datenquelle |
 | performanceCounters | Leistungsindikatoren für Windows und Linux |
-| syslog | Syslog-Ereignisse auf dem virtuellen Linux-Computer |
+| syslog | Syslog-Ereignisse unter Linux |
 | windowsEventLogs | Windows-Ereignisprotokoll |
 
 
@@ -54,9 +54,9 @@ In der folgenden Tabelle sind die Grenzwerte angegeben, die derzeit für die ein
 | Begrenzung | Wert |
 |:---|:---|
 | Maximale Anzahl von Datenquellen | 10 |
-| Maximale Anzahl von Indikatorwerten für Leistung | 100 |
+| Maximale Anzahl von Indikatorwerten für den Leistungsindikator | 100 |
 | Maximale Anzahl von Umgebungsnamen in Syslog | 20 |
-| Maximale Anzahl von XPath-Abfragen in EventLog | 100 |
+| Maximale Anzahl von XPath-Abfragen im Ereignisprotokoll | 100 |
 | Maximale Anzahl von Datenflüssen | 10 |
 | Maximale Anzahl von Datenströmen | 10 |
 | Maximale Anzahl von Erweiterungen | 10 |
@@ -68,7 +68,7 @@ In der folgenden Tabelle sind die Grenzwerte angegeben, die derzeit für die ein
 Es gibt derzeit zwei verfügbare Methoden zum Erstellen einer Datensammlungsregel:
 
 - [Verwenden Sie das Azure-Portal](data-collection-rule-azure-monitor-agent.md), um eine Datensammlungsregel zu erstellen und einem oder mehreren virtuellen Computern zuzuordnen.
-- Bearbeiten Sie die Datensammlungsregel in JSON, und übermitteln Sie sie mit der REST-API.
+- Bearbeiten Sie die Datensammlungsregel direkt in JSON, und [übermitteln Sie sie mit der REST-API](https://docs.microsoft.com/rest/api/monitor/datacollectionrules).
 
 ## <a name="sample-data-collection-rule"></a>Beispielregel für die Datensammlung
 Die unten angegebene Beispielregel für die Datensammlung gilt für virtuelle Computer mit Azure-Verwaltungs-Agent und verfügt über die folgenden Details:
@@ -83,8 +83,7 @@ Die unten angegebene Beispielregel für die Datensammlung gilt für virtuelle Co
   - Sammelt Ereignisse vom Typ „Debuggen“, „Kritisch“ und „Notfall“ für die Cron-Komponente.
   - Sammelt Ereignisse vom Typ „Warnung“, „Kritisch“ und „Notfall“ für die Syslog-Komponente.
 - Destinations
-  - Sendet alle Daten an einen Log Analytics-Arbeitsbereich mit dem Namen „centralTeamWorkspace“.
-  - Sendet Leistungsdaten an Azure Monitor-Metriken im aktuellen Abonnement.
+  - Sendet alle Daten an einen Log Analytics-Arbeitsbereich mit dem Namen „centralWorkspace“.
 
 ```json
 {
@@ -157,7 +156,7 @@ Die unten angegebene Beispielregel für die Datensammlung gilt für virtuelle Co
             ]
           },
           {
-            "name": "sylogBase",
+            "name": "syslogBase",
             "streams": [
               "Microsoft-Syslog"
             ],

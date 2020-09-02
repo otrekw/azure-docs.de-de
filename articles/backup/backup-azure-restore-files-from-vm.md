@@ -4,16 +4,16 @@ description: In diesem Artikel erfahren Sie, wie Sie Dateien und Ordner aus eine
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.custom: references_regions
-ms.openlocfilehash: ba97a5812359fc72e52d68e337762f7234aa3883
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: 7b9d97e518282cf150a8f54225c11d9edcbf8892
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88611839"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892574"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Wiederherstellen von Dateien aus einer Sicherung von virtuellen Azure-Computern
 
-Azure Backup bietet die Möglichkeit zum Wiederherstellen von [virtuellen Azure-Computern und Datenträgern](./backup-azure-arm-restore-vms.md) aus Azure-VM-Sicherungen, die auch als „Wiederherstellungspunkte“ bezeichnet werden. In diesem Artikel wird die Wiederherstellung von Dateien und Ordnern aus einer Azure-VM-Sicherung erläutert. Das Wiederherstellen von Dateien und Ordnern ist nur für virtuelle Azure-Computer möglich, die mit dem Ressourcen-Manager-Modell bereitgestellt wurden und durch einen Recovery Services-Tresor geschützt werden.
+Azure Backup bietet die Möglichkeit zum Wiederherstellen von [virtuellen Azure-Computern und Datenträgern](./backup-azure-arm-restore-vms.md) aus Azure-VM-Sicherungen, die auch als „Wiederherstellungspunkte“ bezeichnet werden. In diesem Artikel wird die Wiederherstellung von Dateien und Ordnern aus einer Azure-VM-Sicherung erläutert. Das Wiederherstellen von Dateien und Ordnern ist nur für virtuelle Azure-Computer möglich, die mit dem Resource Manager-Modell bereitgestellt wurden und durch einen Recovery Services-Tresor geschützt werden.
 
 > [!NOTE]
 > Dies ist für Azure-VMs möglich, die mit dem Resource Manager-Modell bereitgestellt wurden und durch einen Recovery Services-Tresor geschützt werden.
@@ -68,7 +68,7 @@ Lesen Sie den Abschnitt [Zugriffsanforderungen](#access-requirements), um sicher
 
 Wenn Sie die ausführbare Datei ausführen, stellt das Betriebssystem neue Volumes bereit, denen Laufwerkbuchstaben zugewiesen werden. Über den Windows-Explorer oder Datei-Explorer können Sie zu diesen Laufwerken navigieren. Die den Volumes zugewiesenen Laufwerkbuchstaben entsprechen gegebenenfalls nicht den Buchstaben der ursprünglichen VM. Der Volumename wird jedoch beibehalten. Beispiel: Wenn das Volume auf dem ursprünglichen virtuellen Computer den Namen „Data Disk (E:`\`)“ trug, kann dieses Volume auf dem lokalen Computer als „Data Disk (<Beliebiger Buchstabe>:`\`)“ angefügt werden. Durchsuchen Sie alle in der Skriptausgabe erwähnten Volumes, bis Sie Ihre Dateien oder Ordner gefunden haben.  
 
-   ![Menü „Dateiwiederherstellung“](./media/backup-azure-restore-files-from-vm/volumes-attached.png)
+   ![Angefügte Wiederherstellungsvolumes](./media/backup-azure-restore-files-from-vm/volumes-attached.png)
 
 #### <a name="for-linux"></a>Für Linux
 
@@ -87,7 +87,7 @@ Nachdem die Bereitstellung der Datenträger aufgehoben wurde, erhalten Sie eine 
 Nachdem unter Linux die Verbindung mit dem Wiederherstellungspunkt getrennt wurde, entfernt das Betriebssystem die entsprechenden Bereitstellungspfade nicht automatisch. Diese sind als „verwaiste“ Volumes vorhanden und sichtbar, lösen aber einen Fehler aus, wenn ein Zugriff bzw. Schreibzugriff auf die Dateien erfolgt. Sie können manuell entfernt werden. Das Skript ermittelt bei seiner Ausführung solche Volumes von vorherigen Wiederherstellungspunkten und bereinigt diese nach Zustimmung.
 
 > [!NOTE]
-> Stellen Sie sicher, dass die Verbindung geschlossen wird, nachdem die erforderlichen Dateien wiederhergestellt wurden. Das ist wichtig, insbesondere in dem Szenario, in dem der Computer, auf dem das Skript ausgeführt wird, auch für die Sicherung konfiguriert ist. Bleibt die Verbindung offen, kann bei der nachfolgenden Sicherung der Fehler „UserErrorUnableToOpenMount“ auftreten. Dies geschieht, weil davon ausgegangen wird, dass die eingebundenen Laufwerke/Volumes verfügbar sind. Wenn auf sie zugegriffen wird, kann ein Fehler auftreten, weil der zugrunde liegende Speicher, d. h. der iSCSI-Zielserver, möglicherweise nicht verfügbar ist. Wenn Sie die Verbindung bereinigen, werden diese Laufwerke/Volumes entfernt, sodass sie während der Sicherung nicht mehr verfügbar sind.
+> Stellen Sie sicher, dass die Verbindung geschlossen wird, nachdem die erforderlichen Dateien wiederhergestellt wurden. Das ist wichtig, insbesondere in dem Szenario, in dem der Computer, auf dem das Skript ausgeführt wird, auch für die Sicherung konfiguriert ist. Bleibt die Verbindung offen, kann bei der nachfolgenden Sicherung der Fehler „UserErrorUnableToOpenMount“ auftreten. Dies geschieht, da davon ausgegangen wird, dass die eingebundenen Laufwerke/Volumes verfügbar sind. Wenn auf sie zugegriffen wird, kann ein Fehler auftreten, da der zugrunde liegende Speicher, d. h. der iSCSI-Zielserver, möglicherweise nicht verfügbar ist. Wenn Sie die Verbindung bereinigen, werden diese Laufwerke/Volumes entfernt, sodass sie während der Sicherung nicht mehr verfügbar sind.
 
 ## <a name="selecting-the-right-machine-to-run-the-script"></a>Auswählen des richtigen Computers zum Ausführen des Skripts
 
@@ -169,7 +169,7 @@ In der ersten Spalte (PV) wird das physische Volume angezeigt, in den folgenden 
 
 ###### <a name="duplicate-volume-groups"></a>Doppelte Volumegruppen
 
-Es gibt Szenarien, in denen Volumegruppennamen nach Ausführung des Skripts 2 UUIDs aufweisen können. Das bedeutet, dass die Volumegruppennamen im Computer, auf dem das Skript ausgeführt wird, und auf der gesicherten VM identisch sind. Dann müssen die gesicherten VM-Volumegruppen umbenannt werden. Sehen Sie sich das folgende Beispiel an.
+Es gibt Szenarien, in denen Volumegruppennamen nach Ausführung des Skripts 2 UUIDs aufweisen können. Das bedeutet, dass die Volumegruppennamen im Computer, auf dem das Skript ausgeführt wird, und auf der gesicherten VM identisch sind. Dann müssen die gesicherten VM-Volumegruppen umbenannt werden. Betrachten Sie das Beispiel unten.
 
 ```bash
 PV         VG        Fmt  Attr PSize   PFree    VG UUID
@@ -234,7 +234,7 @@ mount <LV path from the lvdisplay cmd results> </mountpath>
 ```
 
 > [!WARNING]
-> Verwenden Sie nicht „mount -a“. Mit diesem Befehl werden alle in „/etc/fstab“ beschriebenen Geräte bereitgestellt. Dies könnte bedeuten, dass doppelte Geräte bereitgestellt werden. Daten können auf per Skript erstellte Geräte umgeleitet werden, auf denen die Daten nicht persistent sind, was somit zu Datenverlust führen kann.
+> Verwenden Sie nicht „mount -a“. Mit diesem Befehl werden alle in „/etc/fstab“ beschriebenen Geräte bereitgestellt. Dies könnte bedeuten, dass doppelte Geräte bereitgestellt werden. Daten können auf per Skript erstellte Geräte umgeleitet werden, auf denen die Daten nicht persistent sind, sodass Datenverluste auftreten können.
 
 #### <a name="for-raid-arrays"></a>Für RAID-Arrays
 
@@ -285,7 +285,7 @@ Unter Linux muss das Betriebssystem des Computers zum Wiederherstellen von Datei
 | openSUSE | ab 42.2 |
 
 > [!NOTE]
-> Es wurden einige Probleme mit der Ausführung des Dateiwiederherstellungsskripts auf Computern mit dem Betriebssystem „SLES 12 SP4“ erkannt. Dies wird derzeit in Zusammenarbeit mit dem SLES-Team untersucht.
+> Es wurden einige Probleme mit der Ausführung des Dateiwiederherstellungsskripts auf Computern mit dem Betriebssystem „SLES 12 SP4“ erkannt. Dies wird derzeit in Zusammenarbeit mit dem SLES-Team untersucht.
 > Die Ausführung des Dateiwiederherstellungsskripts funktioniert derzeit auf Computern mit den Betriebssystemen SLES 12 SP2 und SP3.
 >
 
@@ -302,7 +302,7 @@ Das Skript erfordert auch, dass Python- und Bash-Komponenten ausgeführt werden 
 Wenn Sie das Skript auf einem Computer mit eingeschränktem Zugriff ausführen, stellen Sie sicher, dass Zugriff auf Folgendes besteht:
 
 - `download.microsoft.com`
-- Recovery Service-URLs (Geoname bezieht sich auf die Region, in der sich der Recovery Services-Tresor befindet)
+- Recovery Services-URLs (Geoname bezieht sich auf die Region, in der sich der Recovery Services-Tresor befindet)
   - `https://pod01-rec2.geo-name.backup.windowsazure.com` (Für öffentliche Azure-Regionen)
   - `https://pod01-rec2.geo-name.backup.windowsazure.cn` (Für Azure China 21Vianet)
   - `https://pod01-rec2.geo-name.backup.windowsazure.us` (für Azure US Government)
@@ -332,7 +332,7 @@ Da bei der Dateiwiederherstellung alle Datenträger aus der Sicherung angefügt 
     - Stellen Sie sicher, dass das Betriebssystem Windows Server 2012 oder höher ist.
     - Stellen Sie sicher, dass die Registrierungsschlüssel auf dem Wiederherstellungsserver wie unten vorgeschlagen festgelegt sind, und starten Sie den Server neu. Die Zahl neben der GUID kann zwischen 0001 und 0005 liegen. Im folgenden Beispiel lautet sie 0004. Navigieren Sie im Registrierungsschlüsselpfad zum Abschnitt mit den Parametern.
 
-    ![iscsi-reg-key-changes.png](media/backup-azure-restore-files-from-vm/iscsi-reg-key-changes.png)
+    ![Änderungen des Registrierungsschlüssels](media/backup-azure-restore-files-from-vm/iscsi-reg-key-changes.png)
 
 ```registry
 - HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Disk\TimeOutValue – change this from 60 to 1200
@@ -343,7 +343,7 @@ Da bei der Dateiwiederherstellung alle Datenträger aus der Sicherung angefügt 
 
 - Wenn der Wiederherstellungsserver ein virtueller Linux-Computer ist:
   - Ändern Sie in der Datei „/etc/iscsi/iscsid.conf“ die Einstellung:
-    - node.conn[0].timeo.noop_out_timeout = 5  to node.conn[0].timeo.noop_out_timeout = 30
+    - `node.conn[0].timeo.noop_out_timeout = 5` in `node.conn[0].timeo.noop_out_timeout = 30`
 - Nachdem Sie die obige Änderung vorgenommen haben, führen Sie das Skript erneut aus. Mit diesen Änderungen sollte die Dateiwiederherstellung sehr wahrscheinlich erfolgreich sein.
 - Jedes Mal, wenn ein Benutzer ein Skript herunterlädt, initiiert Azure Backup den Prozess zur Vorbereitung des Wiederherstellungspunkts für den Download. Bei großen Datenträgern nimmt dieser Vorgang eine beträchtliche Zeit in Anspruch. Bei aufeinanderfolgenden Anforderungsspitzen verfällt die Zielvorbereitung in eine Downloadspirale. Daher wird empfohlen, ein Skript im Portal, mit PowerShell oder mit der Befehlszeilenschnittstelle herunterzuladen, 20–30 Minuten (ungefähr) zu warten und es dann auszuführen. Zu diesem Zeitpunkt sollte das Ziel für die Verbindung mit dem Skript bereit sein.
 - Wechseln Sie nach der Dateiwiederherstellung unbedingt zurück zum Portal, und wählen Sie dort für die Wiederherstellungspunkte, bei denen Sie keine Volumes einbinden konnten, **Einbindung von Datenträgern aufheben** aus. Mit diesem Schritt werden alle vorhandenen Prozesse/Sitzungen bereinigt, und die Wahrscheinlichkeit für eine Wiederherstellung steigt.
@@ -355,7 +355,7 @@ Wenn Sie Probleme beim Wiederherstellen von Dateien von den virtuellen Computern
 | Fehlermeldung/Szenario | Mögliche Ursache | Empfohlene Maßnahme |
 | ------------------------ | -------------- | ------------------ |
 | EXE-Ausgabe: *Ausnahme beim Herstellen einer Verbindung mit dem Ziel* | Das Skript kann nicht auf den Wiederherstellungspunkt zugreifen.    | Prüfen Sie, ob der Computer die [zuvor genannten Zugriffsanforderungen](#access-requirements) erfüllt. |  
-| EXE-Ausgabe: *Das Ziel wurde bereits in einer iSCSI-Sitzung angemeldet.* | Das Skript wurde bereits auf dem gleichen Computer ausgeführt, und die Laufwerke wurden angefügt. | Die Volumes des Wiederherstellungspunkts wurden bereits angefügt. Sie wurden ggf. NICHT mit denselben Laufwerkbuchstaben des ursprünglichen virtuellen Computers bereitgestellt. Suchen Sie im Datei-Explorer auf allen verfügbaren Volumes nach Ihrer Datei. |
+| EXE-Ausgabe: *Das Ziel wurde bereits in einer iSCSI-Sitzung angemeldet.* | Das Skript wurde bereits auf dem gleichen Computer ausgeführt, und die Laufwerke wurden angefügt. | Die Volumes des Wiederherstellungspunkts wurden bereits angefügt. Sie wurden ggf. nicht mit denselben Laufwerkbuchstaben des ursprünglichen virtuellen Computers eingebunden. Suchen Sie im Datei-Explorer auf allen verfügbaren Volumes nach Ihrer Datei. |
 | EXE-Ausgabe: *Dieses Skript ist ungültig, da die Bereitstellung der Datenträger über das Portal aufgehoben bzw. das 12-Stunden-Limit überschritten wurde. Laden Sie ein neues Skript aus dem Portal herunter.* |    Die Bereitstellung der Datenträger über das Portal wurde aufgehoben oder das 12-Stunden-Limit überschritten. | Diese spezifische EXE-Datei ist jetzt ungültig und kann nicht ausgeführt werden. Wenn Sie auf die Dateien dieser zeitpunktbezogenen Wiederherstellung zugreifen möchten, fordern Sie im Portal eine neue EXE-Datei an.|
 | Auf dem Computer, auf dem die EXE-Datei ausgeführt wird: Die Bereitstellung der neuen Volumes wird erst aufgehoben, nachdem auf die Schaltfläche „Bereitstellung aufheben“ geklickt wurde. | Der iSCSI-Initiator auf dem Computer reagiert nicht bzw. aktualisiert seine Verbindung mit dem Ziel nicht und verwaltet auch den Cache nicht. |  Warten Sie nach dem Klicken auf **Aufheben der Bereitstellung** einige Minuten. Wenn die Bereitstellung der neuen Volumes nicht aufgehoben wurde, blättern Sie durch alle Volumes. Das Blättern durch alle Volumes zwingt den Initiator zum Aktualisieren der Verbindung, und das Volume wird mit der Fehlermeldung aufgehoben, dass der Datenträger nicht verfügbar ist.|
 | EXE-Ausgabe: Das Skript wird erfolgreich ausgeführt, aber in der Ausgabe des Skripts wird nicht „Neue Volumes angefügt“ angezeigt. |    Dies ist ein vorübergehender Fehler.    | Die Volumes wurden bereits angefügt. Öffnen Sie Explorer, um zu ihnen zu navigieren. Wenn Sie zum Ausführen von Skripts jedes Mal den gleichen Computer verwenden, sollten Sie den Computer neu starten, und die Liste sollte in den nachfolgenden Ausführungen der EXE-Datei angezeigt werden. |
@@ -398,7 +398,7 @@ Der Datenfluss zwischen dem Wiederherstellungsdienst und dem Computer wird mithi
 
 Alle Zugriffssteuerungslisten (ACL) für Dateien, die auf der übergeordneten/gesicherten VM vorhanden sind, werden ebenfalls im eingebundenen Dateisystem gespeichert.
 
-Das Skript erteilt einem Wiederherstellungspunkt schreibgeschützten Zugriff und ist 12 Stunden lang gültig. Wenn Sie den Zugriff früher entfernen möchten, müssen Sie sich beim Azure-Portal, bei PowerShell oder bei der CLI anmelden und die **Einbindung von Datenträgern für diesen Wiederherstellungspunkt aufheben**. Daraufhin wird das Skript sofort ungültig.
+Das Skript erteilt einem Wiederherstellungspunkt schreibgeschützten Zugriff und ist 12 Stunden lang gültig. Wenn Sie den Zugriff früher entfernen möchten, müssen Sie sich beim Azure-Portal, bei PowerShell oder bei der Befehlszeilenschnittstelle anmelden und die **Einbindung von Datenträgern für diesen Wiederherstellungspunkt aufheben**. Daraufhin wird das Skript sofort ungültig.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

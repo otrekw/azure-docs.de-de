@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 06/11/2020
-ms.openlocfilehash: 1dd38f0360a4471124497d8357481283cd98383c
-ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
+ms.openlocfilehash: 1bd3cb1c18d1bac078ac1344f574914dba73d07b
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88566300"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88871563"
 ---
 # <a name="connectors-for-azure-logic-apps"></a>Connectors für Azure Logic Apps
 
@@ -48,7 +48,7 @@ Connectors sind entweder als integrierte Trigger und Aktionen oder als verwaltet
 
   Connectors werden entweder als „Standard“ oder als „Enterprise“ (Unternehmen) klassifiziert. [Unternehmensconnectors](#enterprise-connectors) bieten gegen zusätzliche Gebühren Zugriff auf Unternehmenssysteme wie SAP, IBM MQ und IBM 3270. Um zu ermitteln, ob ein Connector Standard oder Enterprise ist, sehen Sie sich die technischen Details auf der Referenzseite des Connectors auf der Übersichtsseite [Connectors](/connectors) an.
 
-  Sie können Connectors auch mithilfe dieser Kategorien identifizieren, obwohl einige Connectors für mehrere Kategorien verwendet werden können. SAP ist beispielsweise ein Unternehmensconnector und ein lokaler Connector:
+  Sie können Connectors auch mithilfe dieser Kategorien identifizieren, obwohl einige Connectors in mehreren Kategorien enthalten sein können. SAP ist beispielsweise ein Unternehmensconnector und ein lokaler Connector:
 
   | Category | Beschreibung |
   |----------|-------------|
@@ -68,7 +68,7 @@ Für Logik-Apps, die Direktzugriff auf Ressourcen in einem virtuellen Azure-Netz
 
 | Bezeichnung | Beispiel | BESCHREIBUNG |
 |-------|---------|-------------|
-| **CORE** | ![Beispiel für einen ISE-Connector](./media/apis-list/example-core-connector.png) | Integrierte Trigger und Aktionen mit dieser Bezeichnung werden in derselben Integrationsdienstumgebung wie Ihre Logik-Apps ausgeführt. |
+| **CORE** | ![CORE-Beispielconnector](./media/apis-list/example-core-connector.png) | Integrierte Trigger und Aktionen mit dieser Bezeichnung werden in derselben Integrationsdienstumgebung wie Ihre Logik-Apps ausgeführt. |
 | **ISE** | ![Beispiel für einen ISE-Connector](./media/apis-list/example-ise-connector.png) | Verwaltete Connectors mit dieser Bezeichnung werden in derselben ISE wie Ihre Logik-Apps ausgeführt. Wenn Sie ein lokales System haben, das mit einem virtuellen Azure-Netzwerk verbunden ist, ermöglicht eine ISE Ihren Logik-Apps den Direktzugriff auf dieses System ohne das [lokale Datengateway](../logic-apps/logic-apps-gateway-connection.md). Stattdessen können Sie entweder, falls verfügbar, den **ISE**-Connector dieses Systems verwenden, eine HTTP-Aktion oder einen [benutzerdefinierten Connector](#custom). Für lokale Systeme, die keine **ISE**-Connectors aufweisen, verwenden Sie das lokale Datengateway. Informationen zu verfügbaren ISE-Connectors finden Sie unter [ISE-Connectors](#ise-connectors). |
 | Keine Bezeichnung | ![Beispiel für einen mehrinstanzenfähigen Connector](./media/apis-list/example-multi-tenant-connector.png) | Alle anderen Connectors ohne die Bezeichnung **CORE** oder **ISE**, die Sie weiterhin verwenden können, werden im globalen, mehrinstanzenfähigen Logic Apps-Dienst ausgeführt. |
 |||
@@ -81,13 +81,13 @@ Logic Apps umfasst integrierte Trigger und Aktionen, sodass Sie zeitplanbasierte
 
 | Name | Beschreibung |
 |------|-------------|
-| [![API-Symbol][schedule-icon]<br>**Zeitplan**][schedule-doc] | – Ausführen einer Logik-App mit einer festgelegten Wiederholung auf Grundlage einfacher bis komplexer Zeitpläne mit dem Trigger [**Wiederholung**][schedule-recurrence-doc]. <br>– Ausführen einer Logik-App, die Daten in kontinuierlichen Blöcken verarbeiten muss, mit dem Trigger [**Gleitendes Fenster**][schedule-sliding-window-doc]. <br>– Anhalten Ihrer Logik-App für einen bestimmten Zeitraum mit der Aktion [**Verzögerung**][schedule-delay-doc]. <br>– Anhalten Ihrer Logik-App bis zum festgelegten Zeitpunkt (Datum und Uhrzeit) mit der Aktion [**Verzögern bis**][schedule-delay-until-doc]. |
-| [![API-Symbol][batch-icon]<br>**Batch**][batch-doc] | - Verarbeiten von Nachrichten in Batches mit dem Trigger **Batchnachrichten**. <br>- Aufrufen von Logik-Apps mit vorhandenen Batchtriggern mit der Aktion **Nachrichten an Batch senden**. |
-| [![API-Symbol][http-icon]<br>**HTTP**][http-doc] | Aufrufen von HTTP- oder HTTPS-Endpunkten mit Triggern und Aktionen für HTTP. Andere integrierte HTTP-Trigger und -Aktionen umfassen [HTTP + Swagger][http-swagger-doc] und [HTTP + Webhook][http-webhook-doc]. |
-| [![API-Symbol][http-request-icon]<br>**Anforderung**][http-request-doc] | - Festlegen, dass die Logik-App über andere Apps oder Dienste aufrufbar ist und bei Event Grid-Ressourcenereignissen oder bei Antworten auf Azure Security Center-Warnungen mit dem Trigger **Anforderung** ausgelöst wird. <br>- Senden von Antworten an eine App oder einen Dienst mit der Aktion **Antwort**. |
-| [![API-Symbol][azure-api-management-icon]<br>**Azure API <br>Management**][azure-api-management-doc] | Aufrufen von Triggern und Aktionen, die in Ihren eigenen APIs definiert sind, die Sie mit Azure API Management verwalten und veröffentlichen. |
-| [![API-Symbol][azure-app-services-icon]<br>**Azure App <br>Services**][azure-app-services-doc] | Aufrufen von Azure API-Apps oder Web-Apps, die in Azure App Service gehostet werden. Die in diesen Apps definierten Trigger und Aktionen werden wie alle anderen erstklassigen Trigger und Aktionen angezeigt, wenn Swagger enthalten ist. |
-| [![API-Symbol][azure-logic-apps-icon]<br>**Azure Logic <br>Apps**][nested-logic-app-doc] | Aufrufen anderer Logik-Apps, die mit dem Trigger **Anforderung** gestartet werden. |
+| [![Integrierter Zeitplanconnector][schedule-icon]<br>**Zeitplan**][schedule-doc] | – Ausführen einer Logik-App mit einer festgelegten Wiederholung auf Grundlage einfacher bis komplexer Zeitpläne mit dem Trigger [**Wiederholung**][schedule-recurrence-doc]. <br>– Ausführen einer Logik-App, die Daten in kontinuierlichen Blöcken verarbeiten muss, mit dem Trigger [**Gleitendes Fenster**][schedule-sliding-window-doc]. <br>– Anhalten Ihrer Logik-App für einen bestimmten Zeitraum mit der Aktion [**Verzögerung**][schedule-delay-doc]. <br>– Anhalten Ihrer Logik-App bis zum festgelegten Zeitpunkt (Datum und Uhrzeit) mit der Aktion [**Verzögern bis**][schedule-delay-until-doc]. |
+| [![Integrierter Batchconnector][batch-icon]<br>**Batch**][batch-doc] | - Verarbeiten von Nachrichten in Batches mit dem Trigger **Batchnachrichten**. <br>- Aufrufen von Logik-Apps mit vorhandenen Batchtriggern mit der Aktion **Nachrichten an Batch senden**. |
+| [![Integrierter HTTP-Connector][http-icon]<br>**HTTP**][http-doc] | Aufrufen von HTTP- oder HTTPS-Endpunkten mit Triggern und Aktionen für HTTP. Andere integrierte HTTP-Trigger und -Aktionen umfassen [Integrierter HTTP + Swagger-Connector][http-swagger-doc] und [HTTP + Webhook][http-webhook-doc]. |
+| [![Integrierter Anforderungsconnector][http-request-icon]<br>**Anforderung**][http-request-doc] | - Festlegen, dass die Logik-App über andere Apps oder Dienste aufrufbar ist und bei Event Grid-Ressourcenereignissen oder bei Antworten auf Azure Security Center-Warnungen mit dem Trigger **Anforderung** ausgelöst wird. <br>- Senden von Antworten an eine App oder einen Dienst mit der Aktion **Antwort**. |
+| [![Integrierter Azure API Management-Connector][azure-api-management-icon]<br>**Azure API <br>Management**][azure-api-management-doc] | Aufrufen von Triggern und Aktionen, die in Ihren eigenen APIs definiert sind, die Sie mit Azure API Management verwalten und veröffentlichen. |
+| [![Integrierter Azure App Services-Connector][azure-app-services-icon]<br>**Azure App <br>Services** ][azure-app-services-doc] | Aufrufen von Azure API-Apps oder Web-Apps, die in Azure App Service gehostet werden. Die in diesen Apps definierten Trigger und Aktionen werden wie alle anderen erstklassigen Trigger und Aktionen angezeigt, wenn Swagger enthalten ist. |
+| [![Integrierter Azure Logic Apps-Connector][azure-logic-apps-icon]<br>**Azure Logic <br>Apps** ][nested-logic-app-doc] | Aufrufen anderer Logik-Apps, die mit dem Trigger **Anforderung** gestartet werden. |
 |||
 
 ### <a name="run-code-from-logic-apps"></a>Ausführen von Code aus Logic Apps
@@ -96,8 +96,8 @@ Logic Apps bietet integrierte Aktionen zum Ausführen Ihres eigenen Codes im Wor
 
 | Name | Beschreibung |
 |------|-------------|
-| [![API-Symbol][azure-functions-icon]<br>**Azure Functions**][azure-functions-doc] | Aufrufen von Azure-Funktionen, die benutzerdefinierte Codeausschnitte (C# oder Node.js) aus Ihren Logik-Apps ausführen. |
-| [![API-Symbol][inline-code-icon]<br>**Inlinecode**][inline-code-doc] | Hinzufügen und Ausführen von JavaScript-Codeausschnitten in Ihren Logik-Apps. |
+| [![Integrierter Azure Functions-Connector][azure-functions-icon]<br>**Azure Functions**][azure-functions-doc] | Aufrufen von Azure-Funktionen, die benutzerdefinierte Codeausschnitte (C# oder Node.js) aus Ihren Logik-Apps ausführen. |
+| [![Integrierter Inlinecodeconnector][inline-code-icon]<br>**Inlinecode**][inline-code-doc] | Hinzufügen und Ausführen von JavaScript-Codeausschnitten in Ihren Logik-Apps. |
 |||
 
 ### <a name="control-workflow"></a>Steuern des Workflows
@@ -106,12 +106,12 @@ Logic Apps bietet integrierte Aktionen zum Strukturieren und Steuern der Aktione
 
 | Name | Beschreibung |
 |------|-------------|
-| [![Symbol für integrierte Aktion][condition-icon]<br>**Condition**][condition-doc] | Auswerten einer Bedingung und Ausführen unterschiedlicher Aktionen abhängig davon, ob die Bedingung TRUE oder FALSE ist. |
-| [![Symbol für integrierte Aktion][for-each-icon]<br>**Foreach**][for-each-doc] | Ausführen der gleichen Aktionen für jedes Element in einem Array. |
-| [![Symbol für integrierte Aktion][scope-icon]<br>**Scope**][scope-doc] | Gruppieren von Aktionen in *Bereiche*, die einen eigenen Status erhalten, nachdem die Ausführung der Aktionen im Bereich beendet ist. |
-| [![Symbol für integrierte Aktion][switch-icon]<br>**Switch**][switch-doc] | Gruppieren von Aktionen in *Fälle*, denen mit Ausnahme des Standardfalls eindeutige Werte zugewiesen werden. Es wird nur der Fall ausgeführt, dessen zugewiesener Wert mit dem Ergebnis eines Ausdrucks, Objekts oder Token übereinstimmt. Wenn keine Übereinstimmungen vorhanden sind, wird der Standardfall ausgeführt. |
-| [![Symbol für integrierte Aktion][terminate-icon]<br>**Terminate**][terminate-doc] | Beenden des aktiv ausgeführten Workflows einer Logik-App. |
-| [![Symbol für integrierte Aktion][until-icon]<br>**Until**][until-doc] | Wiederholen von Aktionen, bis die angegebene Bedingung TRUE ist oder sich ein Status geändert hat. |
+| [![Integrierte Aktion „Condition“][condition-icon]<br>**Condition**][condition-doc] | Auswerten einer Bedingung und Ausführen unterschiedlicher Aktionen abhängig davon, ob die Bedingung TRUE oder FALSE ist. |
+| [![Integrierte Aktion „For Each“][for-each-icon]<br>**For Each**][for-each-doc] | Ausführen der gleichen Aktionen für jedes Element in einem Array. |
+| [![Integrierte Aktion „Scope“][scope-icon]<br>**Scope**][scope-doc] | Gruppieren von Aktionen in *Bereiche*, die einen eigenen Status erhalten, nachdem die Ausführung der Aktionen im Bereich beendet ist. |
+| [![Integrierte Aktion „Switch“][switch-icon]<br>**Switch**][switch-doc] | Gruppieren von Aktionen in *Fälle*, denen mit Ausnahme des Standardfalls eindeutige Werte zugewiesen werden. Es wird nur der Fall ausgeführt, dessen zugewiesener Wert mit dem Ergebnis eines Ausdrucks, Objekts oder Token übereinstimmt. Wenn keine Übereinstimmungen vorhanden sind, wird der Standardfall ausgeführt. |
+| [![Integrierte Aktion „Terminate“][terminate-icon]<br>**Terminate**][terminate-doc] | Beenden des aktiv ausgeführten Workflows einer Logik-App. |
+| [![Integrierte Aktion „Until“][until-icon]<br>**Until**][until-doc] | Wiederholen von Aktionen, bis die angegebene Bedingung TRUE ist oder sich ein Status geändert hat. |
 |||
 
 ### <a name="manage-or-manipulate-data"></a>Verwalten oder Bearbeiten von Daten
@@ -120,9 +120,9 @@ Logic Apps bietet integrierte Aktionen zur Verwendung von Datenausgaben mit den 
 
 | Name | Beschreibung |
 |------|-------------|
-| [![Symbol für integrierte Aktion][data-operations-icon]<br>**Datenvorgänge**][data-operations-doc] | Ausführen von Vorgängen mit Daten: <p>- **Erstellen**: Erstellen einer einzelnen Ausgabe aus mehreren Eingaben mit verschiedenen Typen. <br>- **CSV-Tabelle erstellen**: Erstellen einer Tabelle mit durch Komma getrennten Werten (CSV-Tabelle) aus einem Array mit JSON-Objekten. <br>- **HTML-Tabelle erstellen**: Erstellen einer HTML-Tabelle aus einem Array mit JSON-Objekten. <br>- **Array filtern**: Erstellen eines Arrays aus Elementen in einem anderen Array, die Ihren Kriterien entsprechen. <br>- **Verknüpfen**: Erstellen einer Zeichenfolge aus allen Elementen in einem Array und Trennen dieser Elemente mit dem angegebenen Trennzeichen. <br>- **JSON analysieren**: Erstellen von benutzerfreundlichen Token aus Eigenschaften und den zugehörigen Werten in JSON-Inhalten, sodass Sie diese Eigenschaften in Ihrem Workflow verwenden können. <br>- **Auswählen**: Erstellen eines Arrays mit JSON-Objekten durch Transformieren von Elementen oder Werten in einem anderen Array und Zuordnen dieser Elemente zu angegebenen Eigenschaften. |
-| ![Symbol für integrierte Aktion][date-time-icon]<br>**Datum und Uhrzeit** | Ausführen von Vorgängen mit Zeitstempeln: <p>- **Zu Zeit hinzufügen**: Hinzufügen der angegebenen Anzahl von Einheiten zu einem Zeitstempel. <br>- **Zeitzone konvertieren**: Konvertiert einen Zeitstempel von der Quellzeitzone in die Zielzeitzone. <br>- **Aktuelle Zeit**: Gibt den aktuellen Zeitstempel als Zeichenfolge zurück. <br>- **Zukünftige Zeit abrufen**: Gibt den aktuellen Zeitstempel plus der angegebenen Zeiteinheiten zurück. <br>- **Vergangene Zeit abrufen**: Gibt den aktuellen Zeitstempel abzüglich der angegebenen Zeiteinheiten zurück. <br>- **Von Uhrzeit abziehen**: Subtrahiert eine Anzahl von Zeiteinheiten von einem Zeitstempel. |
-| [![Symbol für integrierte Aktion][variables-icon]<br>**Variablen**][variables-doc] | Ausführen von Vorgängen mit Variablen: <p>- **An Arrayvariable anfügen**: Einfügen eines Werts als letztes Element in einem Array, das in einer Variablen gespeichert ist. <br>- **An Zeichenfolgenvariable anfügen**: Einfügen eines Werts als letztes Element in einer Zeichenfolge, die in einer Variablen gespeichert ist. <br>- **Variablenwert verringern**: Verringern einer Variablen um einen konstanten Wert. <br>- **Variable schrittweise erhöhen**: Erhöhen einer Variablen um einen konstanten Wert. <br>- **Variable initialisieren**: Erstellen einer Variablen und Deklarieren ihres Datentyps und Anfangswert. <br>- **Variable festlegen**: Zuweisen eines anderen Werts zu einer vorhandenen Variable. |
+| [![Integrierte Aktion „Data Operations“][data-operations-icon]<br>**Data Operations**][data-operations-doc] | Ausführen von Vorgängen mit Daten: <p>- **Erstellen**: Erstellen einer einzelnen Ausgabe aus mehreren Eingaben mit verschiedenen Typen. <br>- **CSV-Tabelle erstellen**: Erstellen einer Tabelle mit durch Komma getrennten Werten (CSV-Tabelle) aus einem Array mit JSON-Objekten. <br>- **HTML-Tabelle erstellen**: Erstellen einer HTML-Tabelle aus einem Array mit JSON-Objekten. <br>- **Array filtern**: Erstellen eines Arrays aus Elementen in einem anderen Array, die Ihren Kriterien entsprechen. <br>- **Verknüpfen**: Erstellen einer Zeichenfolge aus allen Elementen in einem Array und Trennen dieser Elemente mit dem angegebenen Trennzeichen. <br>- **JSON analysieren**: Erstellen von benutzerfreundlichen Token aus Eigenschaften und den zugehörigen Werten in JSON-Inhalten, sodass Sie diese Eigenschaften in Ihrem Workflow verwenden können. <br>- **Auswählen**: Erstellen eines Arrays mit JSON-Objekten durch Transformieren von Elementen oder Werten in einem anderen Array und Zuordnen dieser Elemente zu angegebenen Eigenschaften. |
+| ![Integrierte Aktion „Date Time“][date-time-icon]<br>**Datum und Uhrzeit** | Ausführen von Vorgängen mit Zeitstempeln: <p>- **Zu Zeit hinzufügen**: Hinzufügen der angegebenen Anzahl von Einheiten zu einem Zeitstempel. <br>- **Zeitzone konvertieren**: Konvertiert einen Zeitstempel von der Quellzeitzone in die Zielzeitzone. <br>- **Aktuelle Zeit**: Gibt den aktuellen Zeitstempel als Zeichenfolge zurück. <br>- **Zukünftige Zeit abrufen**: Gibt den aktuellen Zeitstempel plus der angegebenen Zeiteinheiten zurück. <br>- **Vergangene Zeit abrufen**: Gibt den aktuellen Zeitstempel abzüglich der angegebenen Zeiteinheiten zurück. <br>- **Von Uhrzeit abziehen**: Subtrahiert eine Anzahl von Zeiteinheiten von einem Zeitstempel. |
+| [![Integrierte Aktion „Variables“][variables-icon]<br>**Variables**][variables-doc] | Ausführen von Vorgängen mit Variablen: <p>- **An Arrayvariable anfügen**: Einfügen eines Werts als letztes Element in einem Array, das in einer Variablen gespeichert ist. <br>- **An Zeichenfolgenvariable anfügen**: Einfügen eines Werts als letztes Element in einer Zeichenfolge, die in einer Variablen gespeichert ist. <br>- **Variablenwert verringern**: Verringern einer Variablen um einen konstanten Wert. <br>- **Variable schrittweise erhöhen**: Erhöhen einer Variablen um einen konstanten Wert. <br>- **Variable initialisieren**: Erstellen einer Variablen und Deklarieren ihres Datentyps und Anfangswert. <br>- **Variable festlegen**: Zuweisen eines anderen Werts zu einer vorhandenen Variable. |
 |||
 
 <a name="managed-api-connectors"></a>
@@ -133,18 +133,18 @@ Logic Apps bietet die folgenden beliebten Standardconnectors zur Automatisierung
 
 | Name | BESCHREIBUNG |
 |------|-------------|
-| [![API-Symbol][azure-service-bus-icon]<br>**Azure Service Bus**][azure-service-bus-doc] | Verwalten von asynchronen Nachrichten, Sitzungen und Themenabonnements mit dem am häufigsten verwendeten Connector in Logic Apps. |
-| [![API-Symbol][sql-server-icon]<br>**SQL Server**][sql-server-doc] | Herstellen einer Verbindung mit Ihrer lokalen SQL Server-Instanz oder einer Azure SQL-Datenbank in der Cloud, sodass Sie Datensätze verwalten, gespeicherte Prozeduren ausführen oder Abfragen ausführen können. |
-| [![API-Symbol][azure-blob-storage-icon]<br>**Azure Blob<br>Storage**][azure-blob-storage-doc] | Herstellen einer Verbindung mit Ihrem Storage-Konto, sodass Sie Blobinhalte erstellen und verwalten können. |
-| [![API-Symbol][office-365-outlook-icon]<br>**Office 365<br>Outlook**][office-365-outlook-doc] | Herstellen einer Verbindung mit Ihrem Office 365-E-Mail-Konto, sodass Sie E-Mails, Aufgaben, Kalenderereignisse und Besprechungen, Kontakte, Anforderungen und mehr erstellen und verwalten können. |
-| [![API-Symbol][sftp-ssh-icon]<br>**SFTP-SSH**][sftp-ssh-doc] | Herstellen einer Verbindung mit SFTP-Servern, auf die Sie über das Internet mittels SSH zugreifen können, sodass Sie Ihre Dateien und Ordner verwenden können. |
-| [![API-Symbol][sharepoint-online-icon]<br>**SharePoint<br>Online**][sharepoint-online-doc] | Herstellen einer Verbindung mit SharePoint Online, sodass Sie Dateien, Anlagen, Ordner und mehr verwalten können. |
-| [![API-Symbol][azure-queues-icon]<br>**Azure <br>Queues**][azure-queues-doc] | Herstellen einer Verbindung mit Ihrem Azure Storage-Konto, sodass Sie Warteschlangen und Nachrichten erstellen und verwalten können. |
-| [![API-Symbol][ftp-icon]<br>**FTP**][ftp-doc] | Herstellen einer Verbindung mit FTP-Servern, auf die Sie über das Internet zugreifen können, sodass Sie Ihre Dateien und Ordner verwenden können. |
-| [![API-Symbol][file-system-icon]<br>**Datei<br>system**][file-system-doc] | Herstellen einer Verbindung mit Ihrer lokalen Dateifreigabe, sodass Sie Dateien erstellen und verwalten können. |
-| [![API-Symbol][azure-event-hubs-icon]<br>**Azure Event Hubs**][azure-event-hubs-doc] | Nutzen und Veröffentlichen von Ereignissen über einen Event Hub. Sie können beispielsweise mithilfe von Event Hubs eine Ausgabe Ihrer Logik-App abrufen und die Ausgabe anschließend an einen Echtzeitanalyseanbieter senden. |
-| [![API-Symbol][azure-event-grid-icon]<br>**Azure Event**<br>**Grid**][azure-event-grid-doc] | Überwachen von Ereignissen, die von Event Grid veröffentlicht werden, z.B. bei Änderungen von Azure-Ressourcen oder Drittanbieterressourcen. |
-| [![API-Symbol][salesforce-icon]<br>**Salesforce**][salesforce-doc] | Herstellen einer Verbindung mit Ihrem Salesforce-Konto, sodass Sie Elemente wie Datensätze, Aufträge, Objekte usw. erstellen und verwalten können. |
+| [![Verwalteter Azure Service Bus-Connector][azure-service-bus-icon]<br>**Azure Service Bus**][azure-service-bus-doc] | Verwalten von asynchronen Nachrichten, Sitzungen und Themenabonnements mit dem am häufigsten verwendeten Connector in Logic Apps. |
+| [![Verwalteter SQL Server-Connector][sql-server-icon]<br>**SQL Server**][sql-server-doc] | Herstellen einer Verbindung mit Ihrer lokalen SQL Server-Instanz oder einer Azure SQL-Datenbank in der Cloud, sodass Sie Datensätze verwalten, gespeicherte Prozeduren ausführen oder Abfragen ausführen können. |
+| [![Verwalteter Azure Blob Storage-Connector][azure-blob-storage-icon]<br>**Azure Blob<br>Storage**][azure-blob-storage-doc] | Herstellen einer Verbindung mit Ihrem Storage-Konto, sodass Sie Blobinhalte erstellen und verwalten können. |
+| [![Verwalteter Office 365 Outlook-Connector][office-365-outlook-icon]<br>**Office 365<br>Outlook**][office-365-outlook-doc] | Herstellen einer Verbindung mit Ihrem Office 365-E-Mail-Konto, sodass Sie E-Mails, Aufgaben, Kalenderereignisse und Besprechungen, Kontakte, Anforderungen und mehr erstellen und verwalten können. |
+| [![Verwalteter SFTP-SSH-Connector][sftp-ssh-icon]<br>**SFTP-SSH**][sftp-ssh-doc] | Herstellen einer Verbindung mit SFTP-Servern, auf die Sie über das Internet mittels SSH zugreifen können, sodass Sie Ihre Dateien und Ordner verwenden können. |
+| [![Verwalteter SharePoint Online-Connector][sharepoint-online-icon]<br>**SharePoint<br>Online**][sharepoint-online-doc] | Herstellen einer Verbindung mit SharePoint Online, sodass Sie Dateien, Anlagen, Ordner und mehr verwalten können. |
+| [![Verwalteter Azure-Warteschlangenconnector][azure-queues-icon]<br>**Azure-<br>Warteschlangen**][azure-queues-doc] | Herstellen einer Verbindung mit Ihrem Azure Storage-Konto, sodass Sie Warteschlangen und Nachrichten erstellen und verwalten können. |
+| [![Verwalteter FTP-Connector][ftp-icon]<br>**FTP**][ftp-doc] | Herstellen einer Verbindung mit FTP-Servern, auf die Sie über das Internet zugreifen können, sodass Sie Ihre Dateien und Ordner verwenden können. |
+| [![Verwalteter Dateisystemconnector][file-system-icon]<br>**Dateisystem<br>** ][file-system-doc] | Herstellen einer Verbindung mit Ihrer lokalen Dateifreigabe, sodass Sie Dateien erstellen und verwalten können. |
+| [![Verwalteter Azure Event Hubs-Connector][azure-event-hubs-icon]<br>**Azure Event Hubs**][azure-event-hubs-doc] | Nutzen und Veröffentlichen von Ereignissen über einen Event Hub. Sie können beispielsweise mithilfe von Event Hubs eine Ausgabe Ihrer Logik-App abrufen und die Ausgabe anschließend an einen Echtzeitanalyseanbieter senden. |
+| [![Verwalteter Azure Event Grid-Connector][azure-event-grid-icon]<br>**Azure Event**<br>**Grid**][azure-event-grid-doc] | Überwachen von Ereignissen, die von Event Grid veröffentlicht werden, z.B. bei Änderungen von Azure-Ressourcen oder Drittanbieterressourcen. |
+| [![Verwalteter Salesforce-Connector][salesforce-icon]<br>**Salesforce**][salesforce-doc] | Herstellen einer Verbindung mit Ihrem Salesforce-Konto, sodass Sie Elemente wie Datensätze, Aufträge, Objekte usw. erstellen und verwalten können. |
 |||
 
 <a name="on-premises-connectors"></a>
@@ -155,38 +155,38 @@ Im Folgenden sind einige häufig verwendete Standardconnectors aufgeführt, die 
 
 :::row:::
     :::column:::
-        [![API-Symbol][biztalk-server-icon]<br>**BizTalk** <br>**Server**][biztalk-server-doc]
+        [![BizTalk Server-Connector][biztalk-server-icon]<br>**BizTalk** <br>**Server**][biztalk-server-doc]
     :::column-end:::
     :::column:::
-        [![API-Symbol][file-system-icon]<br>**Datei<br>system**][file-system-doc]
+        [![Dateisystemconnector][file-system-icon]<br>**Dateisystem<br>** ][file-system-doc]
     :::column-end:::
     :::column:::
-        [![API-Symbol][ibm-db2-icon]<br>**IBM DB2**][ibm-db2-doc]
+        [![DB2-Connector][ibm-db2-icon]<br>**IBM DB2**][ibm-db2-doc]
     :::column-end:::
     :::column:::
-        [![API-Symbol][ibm-informix-icon]<br>**IBM** <br>**Informix**][ibm-informix-doc]
-    :::column-end:::
-:::row-end:::
-:::row:::
-    :::column:::
-        [![API-Symbol][mysql-icon]<br>**MySQL**][mysql-doc]
-    :::column-end:::
-    :::column:::
-        [![API-Symbol][oracle-db-icon]<br>**Oracle DB**][oracle-db-doc]
-    :::column-end:::
-    :::column:::
-        [![API-Symbol][postgre-sql-icon]<br>**PostgreSQL**][postgre-sql-doc]
-    :::column-end:::
-    :::column:::
-        [![API-Symbol][sharepoint-server-icon]<br>**SharePoint <br>Server**][sharepoint-server-doc]
+        [![Informix-Connector][ibm-informix-icon]<br>**IBM** <br>**Informix**][ibm-informix-doc]
     :::column-end:::
 :::row-end:::
 :::row:::
     :::column:::
-        [![API-Symbol][sql-server-icon]<br>**SQL <br>Server**][sql-server-doc]
+        [![MySQL-Connector][mysql-icon]<br>**MySQL**][mysql-doc]
     :::column-end:::
     :::column:::
-        [![API-Symbol][teradata-icon]<br>**Teradata**][teradata-doc]
+        [![Oracle DB-Connector][oracle-db-icon]<br>**Oracle DB**][oracle-db-doc]
+    :::column-end:::
+    :::column:::
+        [![PostgreSQL-Connector][postgre-sql-icon]<br>**PostgreSQL**][postgre-sql-doc]
+    :::column-end:::
+    :::column:::
+        [![SharePoint Server-Connector][sharepoint-server-icon]<br>**SharePoint <br>Server**][sharepoint-server-doc]
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column:::
+        [![SQL Server-Connector][sql-server-icon]<br>**SQL <br>Server**][sql-server-doc]
+    :::column-end:::
+    :::column:::
+        [![Teradata-Connector][teradata-icon]<br>**Teradata**][teradata-doc]
     :::column-end:::
     :::column:::
         
@@ -204,44 +204,44 @@ Logic Apps bietet Standardconnectors zum Erstellen von Business-to-Business-Lös
 
 :::row:::
     :::column:::
-        [![API-Symbol][as2-icon]<br>**AS2-<br>Decodierung**][as2-doc]
+        [![AS2-Decodierungsaktion][as2-icon]<br>**AS2-Decodierung<br>** ][as2-doc]
     :::column-end:::
     :::column:::
-        [![API-Symbol][as2-icon]<br>**AS2-<br>Codierung**][as2-doc]
+        [![AS2 Codierungsaktion][as2-icon]<br>**AS2-Codierung<br>** ][as2-doc]
     :::column-end:::
     :::column:::
-        [![API-Symbol][edifact-icon]<br>**EDIFACT-<br>Decodierung**][edifact-decode-doc]
+        [![EDIFACT-Decodierungsaktion][edifact-icon]<br>**EDIFACT-Decodierung<br>** ][edifact-decode-doc]
     :::column-end:::
     :::column:::
-        [![API-Symbol][edifact-icon]<br>**EDIFACT-<br>Codierung**][edifact-encode-doc]
-    :::column-end:::
-:::row-end:::
-:::row:::
-    :::column:::
-        [![API-Symbol][flat-file-decode-icon]<br>**Flatfile-<br>Decodierung**][flat-file-decode-doc]
-    :::column-end:::
-    :::column:::
-        [![API-Symbol][flat-file-encode-icon]<br>**Flatfile-<br>Codierung**][flat-file-encode-doc]
-    :::column-end:::
-    :::column:::
-        [![API-Symbol][integration-account-icon]<br>**Integrations<br>konto**][integration-account-doc]
-    :::column-end:::
-    :::column:::
-        [![API-Symbol][liquid-icon]<br>**Liquid**-<br>**Transformationen**][json-liquid-transform-doc]
+        [![EDIFACT-Codierungsaktion][edifact-icon]<br>**EDIFACT-Codierung<br>** ][edifact-encode-doc]
     :::column-end:::
 :::row-end:::
 :::row:::
     :::column:::
-        [![API-Symbol][x12-icon]<br>**X12-<br>Decodierung**][x12-decode-doc]
+        [![Flatfile-Decodierungsaktion][flat-file-decode-icon]<br>**Flatfile-Decodierung<br>** ][flat-file-decode-doc]
     :::column-end:::
     :::column:::
-        [![API-Symbol][x12-icon]<br>**X12-<br>Codierung**][x12-encode-doc]
+        [![Flatfile-Codierungsaktion][flat-file-encode-icon]<br>**Flatfile-Codierung<br>** ][flat-file-encode-doc]
     :::column-end:::
     :::column:::
-        [![API-Symbol][xml-transform-icon]<br>**XML**-<br>**Transformationen**][xml-transform-doc]
+        [![Integrationskontoaktion][integration-account-icon]<br>**Integrationskonto<br>** ][integration-account-doc]
     :::column-end:::
     :::column:::
-        [![API-Symbol][xml-validate-icon]<br>**XML-<br>Überprüfung**][xml-validate-doc]
+        [![Liquid-Transformationsaktion][liquid-icon]<br>**Liquid-** <br>**Transformationen**][json-liquid-transform-doc]
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column:::
+        [![X12-Decodierungsaktion][x12-icon]<br>**X12-Decodierung<br>** ][x12-decode-doc]
+    :::column-end:::
+    :::column:::
+        [![X12-Codierungsaktion][x12-icon]<br>**X12-Codierung<br>** ][x12-encode-doc]
+    :::column-end:::
+    :::column:::
+        [![XML-Transformationsaktion][xml-transform-icon]<br>**XML-** <br>**Transformationen**][xml-transform-doc]
+    :::column-end:::
+    :::column:::
+        [![XML-Überprüfungsaktion][xml-validate-icon]<br>**XML-Überprüfung<br>** ][xml-validate-doc]
     :::column-end:::
 :::row-end:::
 
@@ -253,13 +253,13 @@ Logic Apps bietet die folgenden Unternehmensconnectors für den Zugriff auf Unte
 
 :::row:::
     :::column:::
-        [![API-Symbol][ibm-3270-icon]<br>**IBM 3270**][ibm-3270-doc]
+        [![IBM 3270-Connector][ibm-3270-icon]<br>**IBM 3270**][ibm-3270-doc]
     :::column-end:::
     :::column:::
-        [![API-Symbol][ibm-mq-icon]<br>**IBM MQ**][ibm-mq-doc]
+        [![MQ-Connector][ibm-mq-icon]<br>**IBM MQ**][ibm-mq-doc]
     :::column-end:::
     :::column:::
-        [![API-Symbol][sap-icon]<br>**SAP**][sap-connector-doc]
+        [![SAP-Connector][sap-icon]<br>**SAP**][sap-connector-doc]
     :::column-end:::
     :::column:::
         
@@ -274,86 +274,86 @@ Für Logik-Apps, die Sie erstellen und in einer dedizierten [Integrationsdienstu
 
 :::row:::
     :::column:::
-        [![API-Symbol][as2-icon]<br>**AS2**][as2-doc]
+        [![AS2-ISE-Connector][as2-icon]<br>**AS2**][as2-doc]
     :::column-end:::
     :::column:::
-        [![API-Symbol][azure-automation-icon]<br>**Azure <br>Automation**][azure-automation-doc]
+        [![Azure Automation-ISE-Connector][azure-automation-icon]<br>**Azure <br>Automation**][azure-automation-doc]
     :::column-end:::
     :::column:::
-        [![API-Symbol][azure-blob-storage-icon]<br>**Azure Blob<br>Storage**][azure-blob-storage-doc]
+        [![Azure Blob Storage-ISE-Connector][azure-blob-storage-icon]<br>**Azure Blob<br>Storage**][azure-blob-storage-doc]
     :::column-end:::
     :::column:::
-        [![API-Symbol][azure-cosmos-db-icon]<br>**Azure Cosmos <br> DB**][azure-cosmos-db-doc]
-    :::column-end:::
-:::row-end:::
-:::row:::
-    :::column:::
-        [![API-Symbol][azure-event-hubs-icon]<br>**Azure Event <br>Hubs**][azure-event-hubs-doc]
-    :::column-end:::
-    :::column:::
-        [![API-Symbol][azure-event-grid-icon]<br>**Azure Event <br>Raster**][azure-event-grid-doc]
-    :::column-end:::
-    :::column:::
-        [![API-Symbol][azure-file-storage-icon]<br>**Azure File<br>Storage**][azure-file-storage-doc]
-    :::column-end:::
-    :::column:::
-        [![API-Symbol][azure-key-vault-icon]<br>**Azure Key <br>Vault**][azure-key-vault-doc]
+        [![Azure Cosmos DB-ISE-Connector][azure-cosmos-db-icon]<br>**Azure Cosmos <br> DB**][azure-cosmos-db-doc]
     :::column-end:::
 :::row-end:::
 :::row:::
     :::column:::
-        [![API-Symbol][azure-monitor-logs-icon]<br>**Azure Monitor-<br>Protokolle**][azure-monitor-logs-doc]
+        [![Azure Event Hubs-ISE-Connector][azure-event-hubs-icon]<br>**Azure Event <br>Hubs**][azure-event-hubs-doc]
     :::column-end:::
     :::column:::
-        [![API-Symbol][azure-service-bus-icon]<br>**Azure Service <br>Bus**][azure-service-bus-doc]
+        [![Azure Event Grid-ISE-Connector][azure-event-grid-icon]<br>**Azure Event <br>Grid**][azure-event-grid-doc]
     :::column-end:::
     :::column:::
-        [![API-Symbol][azure-sql-data-warehouse-icon]<br>**Azure SQL Data <br>Warehouse**][azure-sql-data-warehouse-doc]
+        [![Azure File Storage-ISE-Connector][azure-file-storage-icon]<br>**Azure File<br>Storage**][azure-file-storage-doc]
     :::column-end:::
     :::column:::
-        [![API-Symbol][azure-table-storage-icon]<br>**Azure Table <br>Storage**][azure-table-storage-doc]
-    :::column-end:::
-:::row-end:::
-:::row:::
-    :::column:::
-        [![API-Symbol][azure-queues-icon]<br>**Azure <br>Queues**][azure-queues-doc]
-    :::column-end:::
-    :::column:::
-        [![API-Symbol][edifact-icon]<br>**EDIFACT**][edifact-doc]
-    :::column-end:::
-    :::column:::
-        [![API-Symbol][file-system-icon]<br>**Datei<br>system**][file-system-doc]
-    :::column-end:::
-    :::column:::
-        [![API-Symbol][ftp-icon]<br>**FTP**][ftp-doc]
+        [![Azure Key Vault-ISE-Connector][azure-key-vault-icon]<br>**Azure Key <br>Vault**][azure-key-vault-doc]
     :::column-end:::
 :::row-end:::
 :::row:::
     :::column:::
-        [![API-Symbol][ibm-3270-icon]<br>**IBM 3270**][ibm-3270-doc]
+        [![Azure Monitor-Protokolle-ISE-Connector][azure-monitor-logs-icon]<br>**Azure Monitor-Protokolle<br>** ][azure-monitor-logs-doc]
     :::column-end:::
     :::column:::
-        [![API-Symbol][ibm-db2-icon]<br>**IBM DB2**][ibm-db2-doc]
+        [![Azure Service Bus-ISE-Connector][azure-service-bus-icon]<br>**Azure Service <br>Bus**][azure-service-bus-doc]
     :::column-end:::
     :::column:::
-        [![API-Symbol][ibm-mq-icon]<br>**IBM MQ**][ibm-mq-doc]
+        [![Azure SQL Data Warehouse-ISE-Connector][azure-sql-data-warehouse-icon]<br>**Azure SQL Data <br>Warehouse**][azure-sql-data-warehouse-doc]
     :::column-end:::
     :::column:::
-        [![API-Symbol][sap-icon]<br>**SAP**][sap-connector-doc]
+        [![Azure Table Storage-ISE-Connector][azure-table-storage-icon]<br>**Azure Table <br>Storage**][azure-table-storage-doc]
     :::column-end:::
 :::row-end:::
 :::row:::
     :::column:::
-        [![API-Symbol][sftp-ssh-icon]<br>**SFTP-SSH**][sftp-ssh-doc]
+        [![Azure-Warteschlangen-ISE-Connector][azure-queues-icon]<br>**Azure-Warteschlangen<br>** ][azure-queues-doc]
     :::column-end:::
     :::column:::
-        [![API-Symbol][smtp-icon]<br>**SMTP**][smtp-doc]
+        [![EDIFACT-ISE-Connector][edifact-icon]<br>**EDIFACT**][edifact-doc]
     :::column-end:::
     :::column:::
-        [![API-Symbol][sql-server-icon]<br>**SQL <br>Server**][sql-server-doc]
+        [![Dateisystem-ISE-Connector][file-system-icon]<br>**Dateisystem<br>** ][file-system-doc]
     :::column-end:::
     :::column:::
-        [![API-Symbol][x12-icon]<br>**X12**][x12-doc]
+        [![FTP-ISE-Connector][ftp-icon]<br>**FTP**][ftp-doc]
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column:::
+        [![IBM 3270-ISE-Connector][ibm-3270-icon]<br>**IBM 3270**][ibm-3270-doc]
+    :::column-end:::
+    :::column:::
+        [![DB2-ISE-Connector][ibm-db2-icon]<br>**IBM DB2**][ibm-db2-doc]
+    :::column-end:::
+    :::column:::
+        [![MQ-ISE-Connector][ibm-mq-icon]<br>**IBM MQ**][ibm-mq-doc]
+    :::column-end:::
+    :::column:::
+        [![SAP-ISE-Connector][sap-icon]<br>**SAP**][sap-connector-doc]
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column:::
+        [![SFTP-SSH-ISE-Connector][sftp-ssh-icon]<br>**SFTP-SSH**][sftp-ssh-doc]
+    :::column-end:::
+    :::column:::
+        [![SMTP-ISE-Connector][smtp-icon]<br>**SMTP**][smtp-doc]
+    :::column-end:::
+    :::column:::
+        [![SQL Server-ISE-Connector][sql-server-icon]<br>**SQL <br>Server**][sql-server-doc]
+    :::column-end:::
+    :::column:::
+        [![X12-ISE-Connector][x12-icon]<br>**X12**][x12-doc]
     :::column-end:::
 :::row-end:::
 
@@ -410,7 +410,7 @@ Falls Ihre Organisation das Herstellen einer Verbindung mit bestimmten Ressource
 
 ## <a name="get-ready-for-deployment"></a>Vorbereiten der Bereitstellung
 
-Obwohl Sie Verbindungen in einer Logik-App erstellen, sind Verbindungen separate Azure-Ressourcen mit eigenen Ressourcendefinitionen. Zum Überprüfen dieser Verbindungsressourcendefinitionen können Sie entweder [im Azure-Portal die Ressourcengruppe für die Logik-App überprüfen](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md#view-resource-definitions) oder [die Logik-App von Azure in Visual Studio herunterladen](../logic-apps/manage-logic-apps-with-visual-studio.md). Dies ist die einfachste Möglichkeit, eine gültige parametrisierte Logik-App-Vorlage zu erstellen, die größtenteils für die Bereitstellung bereit ist.
+Obwohl Sie Verbindungen in einer Logik-App erstellen, sind Verbindungen separate Azure-Ressourcen mit eigenen Ressourcendefinitionen. Zum Überprüfen dieser Verbindungsressourcendefinitionen [laden Sie die Logik-App von Azure in Visual Studio herunter](../logic-apps/manage-logic-apps-with-visual-studio.md). Dies ist die einfachste Möglichkeit, eine gültige parametrisierte Logik-App-Vorlage zu erstellen, die größtenteils für die Bereitstellung bereit ist.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -574,7 +574,7 @@ Obwohl Sie Verbindungen in einer Logik-App erstellen, sind Verbindungen separate
 [azure-service-bus-doc]: ./connectors-create-api-servicebus.md "Senden von Nachrichten aus Service Bus-Warteschlangen und -Themen und Empfangen von Nachrichten aus Service Bus-Warteschlangen und -Abonnements"
 [azure-sql-data-warehouse-doc]: /connectors/sqldw/ "Herstellen einer Verbindung mit Azure SQL Data Warehouse, sodass Sie Ihre Daten anzeigen können"
 [azure-table-storage-doc]: /connectors/azuretables/ "Herstellen einer Verbindung mit Ihrem Azure Storage-Konto, sodass Sie Dateien erstellen und aktualisieren, Tabellen abfragen und mehr können"
-[biztalk-server-doc]: /connectors/biztalk/ "Herstellen einer Verbindung mit Ihrem BizTalk Server, sodass Sie BizTalk-basierte Anwendungen parallel mit Azure Logic Apps ausführen können"
+[biztalk-server-doc]: /connectors/biztalk/ "Herstellen einer Verbindung mit Ihrer BizTalk Server-Instanz, sodass Sie BizTalk-basierte Anwendungen parallel mit Azure Logic Apps ausführen können"
 [file-system-doc]: ../logic-apps/logic-apps-using-file-connector.md "Herstellen einer Verbindung mit einem lokalen Dateisystem"
 [ftp-doc]: ./connectors-create-api-ftp.md "Herstellen einer Verbindung mit einem FTP/FTPS-Server für FTP-Aufgaben, z.B. Hochladen, Abrufen, Löschen von Dateien usw."
 [github-doc]: ./connectors-create-api-github.md "Herstellen einer Verbindung mit GitHub und Nachverfolgen von Problemen"

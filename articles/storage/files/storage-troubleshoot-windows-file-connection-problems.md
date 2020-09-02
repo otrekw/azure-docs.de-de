@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 05/31/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: f9e4fdb0fe8872c505bbbbb10da11d8fb74a22b3
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: e9384dd3865b106488dc8ec303b060736f23ded7
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87927214"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88797784"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>Behandeln von Azure Files-Problemen unter Windows
 
@@ -364,6 +364,16 @@ Beim Versuch, Windows-ACLs mit dem Datei-Explorer auf einer bereitgestellten Dat
 ### <a name="solution"></a>Lösung
 
 Wir empfehlen Ihnen, als Problemumgehung die Berechtigungen auf Verzeichnis-/Dateiebene mithilfe des [icacls-Tools](https://docs.microsoft.com/windows-server/administration/windows-commands/icacls) zu konfigurieren. 
+
+## <a name="errors-when-running-join-azstorageaccountforauth-cmdlet"></a>Fehler beim Ausführen des Cmdlets „Join-AzStorageAccountForAuth“
+
+### <a name="error-the-directory-service-was-unable-to-allocate-a-relative-identifier"></a>Error: „Der Verzeichnisdienst kann keinen relativen Bezeichner zuweisen“
+
+Dieser Fehler kann auftreten, wenn ein Domänencontroller, der die FSMO-Rolle (RID-Master) innehat, nicht verfügbar ist oder aus der Domäne entfernt und aus einer Sicherung wiederhergestellt wurde.  Vergewissern Sie sich, dass alle Domänencontroller ausgeführt werden und verfügbar sind.
+
+### <a name="error-cannot-bind-positional-parameters-because-no-names-were-given"></a>Fehler: „Die Positionsparameter können nicht gebunden werden, da keine Namen angegeben wurden.“
+
+Dieser Fehler wird wahrscheinlich durch einen Syntaxfehler im Befehl „Join-AzStorageAccountforAuth“ verursacht.  Überprüfen Sie den Befehl auf Rechtschreib- oder Syntaxfehler, und vergewissern Sie sich, dass die neueste Version des AzFilesHybrid-Moduls (https://github.com/Azure-Samples/azure-files-samples/releases) installiert ist.  
 
 ## <a name="need-help-contact-support"></a>Sie brauchen Hilfe? Wenden Sie sich an den Support.
 [Wenden Sie sich an den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), falls Sie weitere Hilfe benötigen, um das Problem schnell beheben zu lassen.

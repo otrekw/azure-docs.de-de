@@ -5,15 +5,15 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 07/31/2020
+ms.date: 08/25/2020
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 0d915c0b293e9f3deadbfb2a5fb0ff7f379e1717
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 87e0fe7baaf3d83c18b12227e9ecb5bf1d2fb361
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88053472"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88869455"
 ---
 # <a name="blob-storage-features-available-in-azure-data-lake-storage-gen2"></a>Verfügbare Blob Storage-Features in Azure Data Lake Storage Gen2
 
@@ -53,6 +53,7 @@ In dieser Tabelle sind die Blob Storage-Features aufgeführt, die mit Azure Data
 |Failover des Kontos|Noch nicht unterstützt|Noch nicht unterstützt|[Notfallwiederherstellung und Kontofailover](../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
 |Blobcontainer-ACL|Noch nicht unterstützt<div role="complementary" aria-labelledby="blob-container-ACL"><sup>2</sup></div>|Noch nicht unterstützt<div role="complementary" aria-labelledby="blob-container-ACL"><sup>2</sup></div>|[Set Container ACL](https://docs.microsoft.com/rest/api/storageservices/set-container-acl)|
 |Benutzerdefinierte Domänen|Noch nicht unterstützt|Noch nicht unterstützt|[Zuordnen einer benutzerdefinierten Domäne zu einem Azure Blob Storage-Endpunkt](storage-custom-domain-name.md)|
+|Verschlüsselungsbereiche|Noch nicht unterstützt|Noch nicht unterstützt|[Erstellen und Verwalten von Verschlüsselungsbereichen (Vorschauversion)](encryption-scope-manage.md)|
 
 <div id="diagnostic-logging"><sup>1</sup> Für Blockblobspeicher Premium-Konten, können Diagnoseprotokolle (klassisch) nicht über das Azure-Portal aktiviert werden. Sie können sie mithilfe von PowerShell aktivieren.</div><br>
 

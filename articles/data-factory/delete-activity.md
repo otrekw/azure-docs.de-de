@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/12/2020
-ms.openlocfilehash: 55f2ab7008644ac084782e448e8e761cd19ea37e
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: bcc7ebd8d9a6e61425ba7cd980a400c3fe756492
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88225783"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88762333"
 ---
 # <a name="delete-activity-in-azure-data-factory"></a>Delete-Aktivität in Azure Data Factory
 
@@ -64,8 +64,11 @@ Nachfolgend sind einige Empfehlungen für die Verwendung der Delete-Aktivität a
             "referenceName": "<dataset name>",
             "type": "DatasetReference"
         },
-        "recursive": true/false,
-        "maxConcurrentConnections": <number>,
+        "storeSettings": {
+            "type": "<source type>",
+            "recursive": true/false,
+            "maxConcurrentConnections": <number>
+        },
         "enableLogging": true/false,
         "logStorageSettings": {
             "linkedServiceName": {
@@ -133,7 +136,7 @@ Root/<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_1/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 Nun verwenden Sie die Delete-Aktivität, um Ordner oder Dateien durch die Kombination verschiedener Eigenschaftswerte aus dem Dataset und der Delete-Aktivität zu löschen:
 
-| folderPath (aus Dataset) | fileName (aus Dataset) | recursive (aus Delete-Aktivität) | Output |
+| folderPath | fileName | recursive | Output |
 |:--- |:--- |:--- |:--- |
 | Root/ Folder_A_2 | NULL | False | Root/<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_1/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_2/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>4.txt</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>5.csv</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Folder_B_1/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6.txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Folder_B_2/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8.txt |
 | Root/ Folder_A_2 | NULL | True | Root/<br/>&nbsp;&nbsp;&nbsp;&nbsp;Folder_A_1/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.txt<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strike>Folder_A_2/</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>4.txt</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>5.csv</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>Folder_B_1/</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>6.txt</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>7.csv</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>Folder_B_2/</strike><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strike>8.txt</strike> |
@@ -761,7 +764,7 @@ Sie erhalten die Vorlage zum Verschieben von Dateien auch [hier](solution-templa
 
 -   Die Delete-Aktivität unterstützt das Löschen von Ordnerliste, die durch Platzhalterzeichen beschrieben werden, nicht.
 
--   Stellen Sie bei Verwendung des Dateiattributfilters: „modifiedDatetimeStart“ und „modifiedDatetimeEnd“ zum Auswählen von zu löschenden Dateien sicher, dass „FileName“: „*“ im Dataset festgelegt ist.
+-   Stellen Sie bei Verwendung des Dateiattributfilters in der Löschaktivität modifiedDatetimeStart und modifiedDatetimeEnd zum Auswählen von zu löschenden Dateien sicher, dass folgende Zeichenfolge auch in der Löschaktivität festgelegt ist: "wildcardFileName": "*"
 
 ## <a name="next-steps"></a>Nächste Schritte
 

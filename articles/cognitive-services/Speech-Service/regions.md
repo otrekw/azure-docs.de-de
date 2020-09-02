@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 11/05/2019
+ms.date: 08/20/2020
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: 27e26bb37b444b49797d46dd4e12b61f8fe11b16
-ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
+ms.openlocfilehash: b0574c41042e172af78365bb273c81729ce204ab
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84782533"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88749309"
 ---
 # <a name="speech-service-supported-regions"></a>Vom Speech-Dienst unterstützte Regionen
 
@@ -24,7 +24,11 @@ Mithilfe des Speech-Diensts kann Ihre Anwendung Sprache in Text konvertieren, Sp
 
 Das Sprachportal zum Durchführen benutzerdefinierter Konfigurationen für Ihre Sprachfunktionen für alle Regionen finden Sie hier: https://speech.microsoft.com
 
-Stellen Sie bei Aufrufen Ihres Speech-Diensts sicher, dass der Aufruf mit der Region Ihres Abonnements übereinstimmt.
+Beim Erwägen einer Region sollten Sie die folgenden Punkte bedenken:
+
+* Wenn Ihre Anwendung ein [Speech SDK](speech-sdk.md) verwendet, geben Sie beim Erstellen einer Sprachkonfiguration den Regionsbezeichner (z. B. `westus`) an.
+* Wenn Ihre Anwendung eine der [REST-APIs](rest-apis.md) des Sprachdiensts verwendet, ist die Region Teil des Endpunkt-URIs, den Sie bei der Anforderung verwenden.
+* Schlüssel, die für eine Region erstellt wurden, sind nur in dieser Region gültig. Der Versuch, sie mit anderen Regionen zu verwenden, führt zu Authentifizierungsfehlern.
 
 ## <a name="speech-sdk"></a>Sprach-SDK
 

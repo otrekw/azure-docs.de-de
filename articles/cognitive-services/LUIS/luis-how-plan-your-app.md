@@ -3,12 +3,12 @@ title: Planen Ihrer App – LUIS
 description: Beschreiben Sie kurz relevante App-Absichten und -Entitäten, und erstellen Sie dann Ihre Anwendungspläne in Language Understanding Intelligent Service (LUIS).
 ms.topic: how-to
 ms.date: 05/14/2020
-ms.openlocfilehash: 8141e2a47e2a550a5dba50bc22117649c0bd04e2
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 38d80a77303e248ab137f87f8063b5cbc358f51a
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84340231"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892914"
 ---
 # <a name="plan-your-luis-app-schema-with-subject-domain-and-data-extraction"></a>Planen Ihres LUIS-App-Schemas mit Motivdomäne und Datenextraktion
 
@@ -64,7 +64,7 @@ Sehen Sie sich die folgenden beiden Äußerungen an, deren Wortwahl sich zwar ä
 
 Anstelle von zwei separaten Absichten können Sie eine Absicht mit einer `FlightAction`-Entität für Machine Learning erstellen. Die Machine-Learning-Entität sollte die Einzelheiten der Aktion für eine Buchungs- und Stornierungsanfrage sowie für einen Start- und einen Zielort extrahieren.
 
-Die Entität `FlightAction` wäre nach folgendem Schema für Machine-Learning-Entitäten und -Subentitäten strukturiert:
+Die Entität `FlightAction` wäre nach folgendem Pseudoschema für Entitäten und Subentitäten für maschinelles Lernen strukturiert:
 
 * FlightAction
     * Aktion

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 07/28/2020
 ms.topic: conceptual
-ms.openlocfilehash: ea568acdf356064dc603d30ffba7df3c02bde621
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 0fd416c844ac93ffb77eded98448b2e93e9acd30
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87449584"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88660907"
 ---
 # <a name="update-management-overview"></a>Übersicht über die Updateverwaltung
 
@@ -180,7 +180,7 @@ Die Updateverwaltung überprüft verwaltete Computer auf Daten mithilfe der folg
 
 * Für jeden Linux-Computer: Die Updateverwaltung führt jede Stunde eine Überprüfung durch.
 
-Die durchschnittliche Datennutzung von Azure Monitor-Protokollen für einen Computer mit Updateverwaltung beträgt etwa 25 MB pro Monat. Dieser Wert ist lediglich eine Schätzung und kann sich abhängig von Ihrer Umgebung ändern. Es empfiehlt sich, die Umgebung zu überwachen, um die exakte Nutzung nachzuverfolgen. Weitere Informationen zur Analyse der Datenverwendung finden Sie unter [Verwalten von Nutzung und Kosten](../../azure-monitor/platform/manage-cost-storage.md).
+Die durchschnittliche Datennutzung von Azure Monitor-Protokollen für einen Computer mit Updateverwaltung beträgt etwa 25 MB pro Monat. Dieser Wert ist lediglich eine Schätzung und kann sich abhängig von Ihrer Umgebung ändern. Es empfiehlt sich, die Umgebung zu überwachen, um die exakte Nutzung nachzuverfolgen. Weitere Informationen zum Analysieren des Datenverbrauchs mit Azure Monitor-Protokollen finden Sie unter [Verwalten von Verbrauch und Kosten](../../azure-monitor/platform/manage-cost-storage.md).
 
 ## <a name="network-planning"></a><a name="ports"></a>Netzwerkplanung
 

@@ -3,12 +3,12 @@ title: Problembehandlung bei Sicherungsfehlern in SAP HANA-Datenbanken
 description: Beschreibt, wie häufige Fehler behoben werden, die auftreten können, wenn Sie SAP HANA-Datenbanken mithilfe von Azure Backup sichern.
 ms.topic: troubleshooting
 ms.date: 11/7/2019
-ms.openlocfilehash: 88d8f5e500c39f51e5bc1afbc2ec7804b9bc79db
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 6216c39231ad17a55f0d428fe5e1f85e64cef403
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86503607"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826989"
 ---
 # <a name="troubleshoot-backup-of-sap-hana-databases-on-azure"></a>Behandeln von Problemen beim Sichern von SAP HANA-Datenbanken in Azure
 
@@ -96,7 +96,7 @@ Angenommen, eine SDC HANA-Instanz „H21“ wird gesichert. Auf der Seite mit de
 Beachten Sie folgende Punkte:
 
 - Standardmäßig wird der Name der wiederhergestellten Datenbank mit dem Namen des Sicherungselements aufgefüllt. In diesem Fall: „h21(sdc)“.
-- Wenn Sie als Ziel „H11“ auswählen, wird der Name der wiederhergestellten Datenbank NICHT automatisch geändert. **Er sollte in „h11(sdc)“ geändert werden**. Im Fall von SDC ist der Name der wiederhergestellten Datenbank die ID der Zielinstanz in Kleinbuchstaben, an die „sdc“ in Klammern angefügt wird.
+- Wenn Sie als Ziel „H11“ auswählen, wird der Name der wiederhergestellten Datenbank nicht automatisch geändert. **Er sollte in „h11(sdc)“ geändert werden**. Im Fall von SDC ist der Name der wiederhergestellten Datenbank die ID der Zielinstanz in Kleinbuchstaben, an die „sdc“ in Klammern angefügt wird.
 - Da SDC nur über eine einzelne Datenbank verfügen kann, müssen Sie auch das Kontrollkästchen aktivieren, um das Überschreiben der vorhandenen Datenbankdaten mit den Daten des Wiederherstellungspunkts zuzulassen.
 - Bei Linux muss die Groß-/Kleinschreibung beachtet werden. Verwenden Sie daher unbedingt die korrekte Groß-/Kleinschreibung.
 

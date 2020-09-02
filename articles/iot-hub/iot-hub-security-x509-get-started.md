@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: e9fd4308f89873183e4f5f57cee56887ce181fae
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: d7bf31f7b16fa987bb9c710835d1a3aff8214604
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87307283"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88783262"
 ---
 # <a name="set-up-x509-security-in-your-azure-iot-hub"></a>Einrichten der X.509-Sicherheit in Ihrem Azure IoT Hub
 
@@ -49,6 +49,9 @@ Sie haben folgende Möglichkeiten zum Abrufen Ihrer Zertifikate:
 ## <a name="register-x509-ca-certificates-to-your-iot-hub"></a>Registrieren der X.509-Zertifizierungsstellenzertifikate bei IoT Hub
 
 Diese Schritte veranschaulichen das Hinzufügen einer neuen Zertifizierungsstelle zu Ihrem IoT Hub über das Portal.
+
+> [!NOTE]
+> Die maximale Anzahl von X.509-Zertifizierungsstellenzertifikaten, die bei IoT Hub registriert werden können, beträgt 25. Weitere Informationen finden Sie unter [Azure IoT Hub-Kontingente und -Drosselung](iot-hub-devguide-quotas-throttling.md).
 
 1. Navigieren Sie im Azure-Portal zu Ihrem IoT-Hub, und wählen Sie **Einstellungen** > **Zertifikate** für den Hub aus.
 

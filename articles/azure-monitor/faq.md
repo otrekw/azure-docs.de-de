@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/15/2020
-ms.openlocfilehash: bd575eb5f646b749b431516670c64c764f4d4c9c
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: a78e1b9cc1d9ca8a815fdb586287983020232fd1
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87828505"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88782939"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Häufig gestellte Fragen zu Azure Monitor
 
@@ -80,6 +80,10 @@ Azure-Daten-Explorer ist ein schneller und hochgradig skalierbarer Dienst zur Un
 
 ### <a name="how-do-i-retrieve-log-data"></a>Wie rufe ich Protokolldaten ab?
 Alle Daten werden mithilfe einer in der Kusto-Abfragesprache (KQL) geschriebenen Protokollabfrage aus einem Log Analytics-Arbeitsbereich abgerufen. Sie können eigene Abfragen schreiben oder Lösungen und Erkenntnisse verwenden, die Protokollabfragen für eine bestimmte Anwendung oder einen bestimmten Dienst enthalten. Weitere Informationen finden Sie in der [Übersicht über Protokollabfragen in Azure Monitor](log-query/log-query-overview.md).
+
+### <a name="can-i-delete-data-from-a-log-analytics-workspace"></a>Kann ich Daten aus einem Log Analytics-Arbeitsbereich löschen?
+Daten werden gemäß ihrer [Beibehaltungsdauer](platform/manage-cost-storage.md#change-the-data-retention-period) aus einem Arbeitsbereich entfernt. Sie können bestimmte Daten aus Datenschutz- oder Compliancegründen löschen. Weitere Informationen finden Sie unter [Exportieren und Löschen personenbezogener Daten](platform/personal-data-mgmt.md#how-to-export-and-delete-private-data).
+
 
 ### <a name="what-is-a-log-analytics-workspace"></a>Was ist ein Log Analytics-Arbeitsbereich?
 Alle von Azure Monitor erfassten Protokolldaten werden in einem Log Analytics-Arbeitsbereich gespeichert. Ein Arbeitsbereich ist im Wesentlichen ein Container, in dem Protokolldaten aus einer Vielzahl von Quellen gesammelt werden. Möglicherweise verfügen Sie über einen einzigen Log Analytics-Arbeitsbereich für alle Überwachungsdaten oder es sind mehrere Arbeitsbereiche erforderlich. Weitere Informationen finden Sie unter [Entwerfen Ihrer Azure Monitor-Protokollbereitstellung](platform/design-logs-deployment.md).

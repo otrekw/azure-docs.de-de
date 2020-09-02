@@ -4,13 +4,13 @@ description: Erfahren Sie mehr über die erforderlichen Schritte zum Aktivieren 
 author: mrbullwinkle
 ms.author: mbullwin
 ms.topic: conceptual
-ms.date: 05/18/2020
-ms.openlocfilehash: 186d4c510b58e06fcb0b823ca0d5770a2684196e
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.date: 08/24/2020
+ms.openlocfilehash: d6d6731ae087604e0a53a6721bb76dfba5fbf40c
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87824986"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88783840"
 ---
 # <a name="workspace-based-application-insights-resources-preview"></a>Arbeitsbereichsbasierte Application Insights-Ressourcen (Vorschau)
 
@@ -27,7 +27,7 @@ Um die neue Funktion zu testen, melden Sie sich beim [Azure-Portal](https://port
 
 Wenn Sie noch nicht über einen Log Analytics-Arbeitsbereich verfügen, [sehen Sie sich die Dokumentation zur Erstellung von Log Analytics-Arbeitsbereichen an](../learn/quick-create-workspace.md).
 
-Für die öffentliche Vorschau **sind arbeitsbereichsbasierte Ressourcen derzeit auf die Regionen „USA, Westen 2“, „USA, Osten“ und „USA, Süden-Mitte“ beschränkt**.
+**Arbeitsbereichsbasierte Ressourcen sind zurzeit in allen kommerziellen Regionen und für Azure Government verfügbar.**
 
 Nachdem Ihre Ressource erstellt wurde, sehen Sie die Informationen zum entsprechenden Arbeitsbereich im Bereich **Übersicht**:
 
@@ -184,6 +184,14 @@ Der PowerShell-Befehl `New-AzApplicationInsights` unterstützt derzeit nicht die
 }
 
 ```
+
+## <a name="new-capabilities"></a>Neue Funktionen
+
+Mithilfe des arbeitsbereichsbasierten Application Insights können Sie die neuesten Funktionen von Azure Monitor nutzen, einschließlich:
+
+* [CMK (Customer-Managed Keys, kundenseitig verwaltete Schlüssel)](../platform/customer-managed-keys.md) bietet Verschlüsselung im Ruhezustand für Ihre Daten mit Verschlüsselungsschlüsseln, auf die nur Sie Zugriff haben.
+* Mit [Azure Private Link](../platform/private-link-security.md) können Sie Azure-PaaS-Dienste über private Endpunkte sicher mit Ihrem virtuellen Netzwerk verknüpfen.
+* [Bring your own Storage (BYOS) für Profiler und Momentaufnahmedebugger](./profiler-bring-your-own-storage.md) verleiht Ihnen vollständige Kontrolle über die Richtlinie zur Verschlüsselung ruhender Daten, die Richtlinie zur Lebensdauerverwaltung und den Netzwerkzugriff auf alle Daten, die Application Insights Profiler und dem Momentaufnahmedebugger zugeordnet sind. 
 
 ## <a name="modifying-the-associated-workspace"></a>Ändern des zugeordneten Arbeitsbereichs
 

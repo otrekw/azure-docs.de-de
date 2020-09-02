@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 12/4/2019
+ms.date: 08/20/2020
 ms.author: panosper
-ms.openlocfilehash: 2c84b291aad5ec2da2946e40075b23cc4496ef65
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: a14ac8089aa29a592164168e6ccfc4fd2342f68c
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85921015"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88661519"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>Häufig gestellte Fragen zur Spracherkennung
 
@@ -75,7 +75,7 @@ Wenn Sie ein Modell mit Baseline v1.0 angepasst und bereitgestellt haben, bleibt
 
 **F: Werden meine Anforderungen gedrosselt?**
 
-**A:** Die REST-API beschränkt Anforderungen auf 25 pro 5 Sekunden. Informationen finden Sie auf unseren Seiten für [Spracherkennung](speech-to-text.md).
+**A:** Weitere Informationen finden Sie unter [Kontingente und Grenzwerte für Speech Services](speech-services-quotas-and-limits.md).
 
 **F: Wie werden Zweikanalaudiodaten in Rechnung gestellt?**
 
@@ -85,52 +85,14 @@ Wenn Sie ein Modell mit Baseline v1.0 angepasst und bereitgestellt haben, bleibt
 > Wenn Sie weitere Datenschutzbedenken im Hinblick auf die Nutzung von Custom Speech Service haben, wenden Sie sich an einen der Supportkanäle.
 
 ## <a name="increasing-concurrency"></a>Erhöhen der Parallelität
+Weitere Informationen finden Sie unter [Kontingente und Grenzwerte für Speech Services](speech-services-quotas-and-limits.md).
 
-**F: Was geschieht, wenn ich eine höhere Parallelität für mein bereitgestelltes Modell benötige, als im Portal angeboten wird?**
-
-**A:** Sie können Ihr Modell in Schritten von 20 gleichzeitigen Anforderungen hochskalieren.
-
-Erstellen Sie im [Azure-Portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) mit den erforderlichen Informationen eine Supportanfrage. Veröffentlichen Sie die Informationen nicht auf den öffentlichen Kanälen (GitHub, Stackoverflow usw.), die auf der Seite [Support](support.md) erwähnt werden.
-
-Um die Parallelität für ein ***benutzerdefiniertes Modell*** zu erhöhen, sind folgende Informationen erforderlich:
-
-- Die Azure-Region, in der das Modell bereitgestellt wird,
-- die Endpunkt-ID des bereitgestellten Modells:
-  - Wechseln Sie zum [Custom Speech-Portal](https://aka.ms/customspeech).
-  - Melden Sie sich (bei Bedarf) an.
-  - Wählen Sie Ihr Projekt und die Bereitstellung aus.
-  - Wählen Sie den Endpunkt aus, für den Sie die Parallelitätserhöhung benötigen.
-  - Kopieren Sie den `Endpoint ID`.
-
-Um die Parallelität für ein ***Basismodell*** zu erhöhen, sind folgende Informationen erforderlich:
-
-- Die Region Ihres Diensts
-
-und entweder
-
-- ein Zugriffstoken für Ihr Abonnement (siehe [hier](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-speech-to-text#how-to-get-an-access-token))
-
-oder
-
-- die Ressourcen-ID für Ihr Abonnement:
-  - Navigieren Sie zum [Azure-Portal](https://portal.azure.com),
-  - wählen Sie im Suchfeld die Option `Cognitive Services` aus,
-  - wählen Sie aus den angezeigten Diensten den Speech-Dienst aus, für den Sie die Parallelität erhöhen möchten,
-  - zeigen Sie die `Properties` für diesen Dienst an,
-  - und kopieren Sie die gesamte Ressourcen-ID (`Resource ID`).
-  
-**F: Erhöhen sich meine Kosten, wenn ich das Parallelitätslimit erhöhe?**
-
-**A:** Nein. Die Kosten basieren auf der Nutzung. Eine Erhöhung der Parallelität führt nicht zu höheren Kosten. Ausführliche Informationen zu Kosten finden Sie auf der Seite [Cognitive Services-Preise – Sprachdienste](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/). 
-  
->[!NOTE]
->Für [Container](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-container-howto) muss das Parallelitätslimit nicht erhöht werden, da Container einzig durch die CPUs der Hardware eingeschränkt sind, auf der sie gehostet werden.
 
 ## <a name="importing-data"></a>Importieren von Daten
 
 **F: Wie groß darf das Dataset maximal sein, und was ist der Grund für dieses Limit?**
 
-**A:** Das aktuelle Limit für ein Dataset beträgt 2GB. Grund für das Limit ist, dass die Größe einer Datei für den HTTP-Upload begrenzt ist.
+**A:** Grund für das Limit ist, dass die Größe einer Datei für den HTTP-Upload begrenzt ist. Weitere Informationen zum tatsächlichen Grenzwert finden Sie unter [Kontingente und Grenzwerte für Speech Services](speech-services-quotas-and-limits.md).
 
 **F: Kann ich meine Textdateien komprimieren (ZIP), damit ich eine größere Textdatei hochladen kann?**
 
@@ -198,7 +160,7 @@ oder
 
 **F: Welche Sprachfunktion wird durch das Mandantenmodell verbessert?**
 
-**A:** Wenn das Mandantenmodell aktiviert, erstellt und veröffentlicht ist, wird es verwendet, um die Erkennung für Unternehmensanwendungen zu verbessern, die mithilfe des Speech-Diensts erstellt wurden. Dadurch wird auch ein AAD-Token übergeben, das die Mitgliedschaft im Unternehmen angibt.
+**A:** Wenn das Mandantenmodell aktiviert, erstellt und veröffentlicht ist, wird es verwendet, um die Erkennung für Unternehmensanwendungen zu verbessern, die mithilfe des Speech-Diensts erstellt wurden. Dadurch wird auch ein Azure AD-Token übergeben, das die Mitgliedschaft im Unternehmen angibt.
 
 Die in Office 365 integrierten Sprachfunktionen wie beispielsweise Diktat und PowerPoint-Untertitel werden nicht geändert, wenn Sie ein Mandantenmodell für Ihre Speech-Dienstanwendungen erstellen.
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: luquinta
 author: luisquintanilla
 ms.date: 08/05/2020
-ms.openlocfilehash: 0d3e49fbb11af92d016910e91b0144f6de998238
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 3f051d9fc1599c0877e1e8a58935d09d224ce22b
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87829372"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88689676"
 ---
 # <a name="mitigate-fairness-in-machine-learning-models-preview"></a>Erhöhen der Fairness von Machine Learning-Modellen (Vorschau)
 
@@ -79,7 +79,7 @@ Im Rahmen der Bewertungsphase wird Fairness durch Ungleichheitsmetriken quantifi
 Das Open-Source-Paket Fairlearn umfasst eine Reihe von Algorithmen zur Abmilderung von Unfairness. Diese Algorithmen unterstützen eine Reihe von Einschränkungen für das Vorhersageverhalten, die als **Gleichheitseinschränkungen** oder -kriterien bezeichnet werden. Für Gleichheitseinschränkungen müssen einige Aspekte des Vorhersageverhaltens über die Gruppen hinweg vergleichbar sein, durch die sensible Features definiert werden (beispielsweise unterschiedliche Ethnien). Die Entschärfungsalgorithmen im Open-Source-Paket Fairlearn verwenden derartige Gleichheitseinschränkungen, um die beobachteten Fairnessprobleme abzumildern.
 
 >[!NOTE]
-> Die Entschärfung von Unfairness in einem Modell bedeutet, dass die Unfairness verringert wird. Durch diese technische Entschärfung lässt sich die Unfairness jedoch nicht vollständig beseitigen.  Die Algorithmen zur Entschärfung von Unfairness im Open-Source-Paket Fairlearn können Entschärfungsstrategien empfehlen, die dazu beitragen, die Unfairness in einem Machine Learning-Modell zu verringern. Sie stellen jedoch keine Lösung dar, um Unfairness vollständig zu beseitigen.  Möglicherweise gibt es weitere Gleichheitseinschränkungen oder Kriterien, die für das Machine Learning-Modell eines jeden Entwicklers berücksichtigt werden sollten. Entwickler, die Azure Machine Learning verwenden, müssen selbst entscheiden, ob die Entschärfung eine etwaige Unfairness in der vorgesehenen Verwendung und Bereitstellung von Machine Learning-Modellen ausreichend beseitigt.  
+> Die Entschärfung von Unfairness in einem Modell bedeutet, dass die Unfairness verringert wird. Durch diese technische Entschärfung lässt sich die Unfairness jedoch nicht vollständig beseitigen.  Die Algorithmen zur Entschärfung von Unfairness im Open-Source-Paket Fairlearn können Entschärfungsstrategien empfehlen, die dazu beitragen, die Unfairness in einem Machine Learning-Modell zu verringern. Sie stellen jedoch keine Lösung dar, um Unfairness vollständig zu beseitigen.  Möglicherweise gibt es weitere Gleichheitseinschränkungen oder Kriterien, die für das Machine Learning-Modell eines jeden Entwicklers berücksichtigt werden sollten. Entwickler, die Azure Machine Learning verwenden, müssen selbst entscheiden, ob die Entschärfung eine etwaige Unfairness in der vorgesehenen Verwendung und Bereitstellung von Machine Learning-Modellen ausreichend beseitigt.  
 
 Das Open-Source-Paket Fairlearn unterstützt folgende Arten von Gleichheitseinschränkungen: 
 
@@ -108,6 +108,6 @@ Das Open-Source-Paket Fairlearn bietet Entschärfungsalgorithmen für die Nachbe
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Erfahren Sie in der folgenden Dokumentation zu Fairlearn mehr darüber, wie Sie die verschiedenen Komponenten verwenden: [GitHub](https://github.com/fairlearn/fairlearn/), [Benutzerhandbuch](https://fairlearn.github.io/user_guide/index.html), [Beispiele](https://fairlearn.github.io/auto_examples/notebooks/index.html) und [Beispielnotebooks](https://github.com/fairlearn/fairlearn/tree/master/notebooks).
+- Erfahren Sie in der folgenden Dokumentation zu Fairlearn mehr darüber, wie Sie die verschiedenen Komponenten verwenden: [GitHub](https://github.com/fairlearn/fairlearn/), [Benutzerhandbuch](https://fairlearn.github.io/user_guide/index.html), [Beispiele](https://fairlearn.github.io/auto_examples/) und [Beispielnotebooks](https://github.com/fairlearn/fairlearn/tree/master/notebooks).
 - In der [Anleitung](how-to-machine-learning-fairness-aml.md) wird beschrieben, wie Sie die Fairnessbewertung von Machine Learning-Modellen in Azure Machine Learning aktivieren.
 - Weitere Szenarios zur Fairnessbewertung in Azure Machine Learning finden Sie in den [Beispielnotebooks](https://github.com/Azure/MachineLearningNotebooks/tree/master/contrib/fairness). 

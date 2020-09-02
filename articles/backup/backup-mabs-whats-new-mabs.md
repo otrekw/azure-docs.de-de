@@ -3,12 +3,12 @@ title: Neuerungen in Microsoft Azure Backup Server
 description: Microsoft Azure Backup Server bietet Ihnen erweiterte Sicherungsfunktionen für den Schutz von u.a. virtuellen Computern, Dateien, Ordnern und Workloads.
 ms.topic: conceptual
 ms.date: 05/24/2020
-ms.openlocfilehash: a3ff38d9371ee9b95666ce638d0a6dc4b8822e20
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: fb47d2f14ca686e04cd2d9e3dec27d3ca4a30f5c
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88190842"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88893186"
 ---
 # <a name="whats-new-in-microsoft-azure-backup-server-mabs"></a>Neuerungen in Microsoft Azure Backup Server (MABS)
 
@@ -37,7 +37,7 @@ Mit MABS V3 UR1 können Sie die ReFS-Volumes und die auf den ReFS-Volumes bereit
 >[!NOTE]
 > Sicherungen von auf einem ReFS-Volume gespeicherten virtuellen Hyper-V-Computern werden mit MABS V3 unterstützt.
 
->[WICHTIG] Es wurden einige Probleme bei der Sicherung deduplizierter ReFS-Volumes festgestellt. Wir arbeiten daran, diese Probleme zu beheben und aktualisieren diesen Abschnitt, sobald eine Korrektur verfügbar ist. Bis dahin wird die Sicherung deduplizierter ReFS-Volumes von MABSv3 UR1 nicht unterstützt.
+>[WICHTIG] Es wurden einige Probleme bei der Sicherung deduplizierter ReFS-Volumes festgestellt. Wir arbeiten daran, diese zu beheben, und aktualisieren diesen Abschnitt, sobald eine Korrektur verfügbar ist. Bis dahin wird die Sicherung deduplizierter ReFS-Volumes von MABSv3 UR1 nicht unterstützt.
 
 ### <a name="azure-vmware-solution-protection-support"></a>Unterstützung für den Schutz von Azure VMware Solution
 
@@ -114,7 +114,7 @@ MABS V3 kann mit SQL 2017 als MABS-Datenbank installiert werden. Sie können SQL
 
 ### <a name="windows-server-2019-support"></a>Unterstützung für Windows Server 2019
 
-MABS V3 kann auf Windows Server 2019 installiert werden. Um MABS V3 mit Windows Server 2019 zu verwenden, aktualisieren Sie Ihr Betriebssystem auf Windows Server 2016 vor oder nach der Installation von MABS V3 bzw. dem entsprechenden Upgrade.
+MABS V3 kann auf Windows Server 2019 installiert werden. Um MABS V3 mit Windows Server 2019 zu verwenden, aktualisieren Sie Ihr Betriebssystem vor der Installation/dem Upgrade auf MABS V3 auf Windows Server 2019 oder nach der Installation/dem Upgrade auf MABS V3 unter Windows Server 2016.
 
 MABS V3 ist eine Vollversion und kann direkt auf Windows Server 2016, Windows Server 2019 oder einem Upgrade von MABS V2 installiert werden. Bevor Sie Azure Backup Server V3 installieren oder ein Upgrade dafür ausführen, lesen Sie die Installationsvoraussetzungen.
 [Hier](./backup-azure-microsoft-azure-backup.md#software-package) finden Sie weitere Informationen zur Installation und zum Upgrade von MABS.

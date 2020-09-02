@@ -3,17 +3,16 @@ title: 'Bereitstellen von Live Video Analytics auf einem IoT Edge-Gerät: Azure'
 description: In diesem Artikel werden Schritte aufgelistet, die Sie bei der Bereitstellung von Live Video Analytics auf Ihrem IoT Edge-Gerät unterstützen. Dies können Sie beispielsweise tun, wenn Sie Zugriff auf einen lokalen Linux-Computer besitzen und/oder zuvor ein Azure Media Services-Konto erstellt haben.
 ms.topic: how-to
 ms.date: 04/27/2020
-ms.openlocfilehash: f031f679d8fe8e1c14b6a4086f5e1c37f15c7855
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: 774fdb440307d0df92e9735a8bdf055687f450a2
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88067895"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88684098"
 ---
 # <a name="deploy-live-video-analytics-on-an-iot-edge-device"></a>Bereitstellen von Live Video Analytics auf einem IoT Edge-Gerät
 
 In diesem Artikel werden Schritte aufgelistet, die Sie bei der Bereitstellung von Live Video Analytics auf Ihrem IoT Edge-Gerät unterstützen. Dies können Sie beispielsweise tun, wenn Sie Zugriff auf einen lokalen Linux-Computer besitzen und/oder zuvor ein Azure Media Services-Konto erstellt haben.
-
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -23,6 +22,7 @@ In diesem Artikel werden Schritte aufgelistet, die Sie bei der Bereitstellung vo
 * [Registrierung bei einem IoT Edge-Gerät](../../iot-edge/how-to-register-device.md)
 * [Installieren der Azure IoT Edge-Runtime auf Debian-basierten Linux-Systemen](../../iot-edge/how-to-install-iot-edge-linux.md)
 * [Erstellen eines Azure Media Services-Kontos](../latest/create-account-howto.md)
+
     * Verwenden Sie eine dieser Regionen: USA, Osten 2, USA, Mitte; USA, Norden-Mitte; Japan, Osten; USA, Westen 2; USA, Westen-Mitte, Kanada, Osten, Vereinigtes Königreich, Süden, Frankreich, Mitte, Frankreich, Süden, Schweiz, Norden, Schweiz, Westen und Japan, Westen.
     * Es wird empfohlen, dass Sie Speicherkonten vom Typ „Allgemein v2“ (GPv2) verwenden.
 
@@ -51,7 +51,7 @@ Sie können diesen Befehl verwenden, um den Streamingendpunkt zu starten.
 az ams streaming-endpoint start --resource-group $RESOURCE_GROUP --account-name $AMS_ACCOUNT -n default --no-wait
 ```
 
-Führen Sie die Schritte in diesem Artikel aus, um Anmeldeinformationen für den Zugriff auf die Media Service-APIs zu erhalten: [Zugreifen auf die Media Service-APIs](../latest/access-api-howto.md#use-the-azure-portal).
+Führen Sie die Schritte in diesem Artikel aus, um Anmeldeinformationen für den Zugriff auf die Media Service-APIs zu erhalten: [Zugreifen auf die Media Service-APIs](../latest/access-api-howto.md?tabs=portal). Wählen Sie dann die Registerkarte „Portal“ aus.
 
 ## <a name="create-and-use-local-user-account-for-deployment"></a>Erstellen und Verwenden eines lokalen Benutzerkontos für die Bereitstellung
 Erstellen Sie ein lokales Benutzerkonto mit möglichst geringen Berechtigungen, um Live Video Analytics im IoT Edge-Modul auszuführen. Führen Sie beispielsweise die folgenden Befehle auf Ihrem Linux-Computer aus:
@@ -168,7 +168,7 @@ Ein Bereitstellungsmanifest ist ein JSON-Dokument, das beschreibt, welche Module
     * {resourcegroupname}: Die Ressourcengruppe, zu der Ihr Media Service-Konto gehört
     * {AMS-account-name}: Der Name Ihres Media Services-Kontos
     
-    Informationen zum Abrufen der anderen Werte finden Sie unter [Zugriff auf Azure Media Services API](../latest/access-api-howto.md#use-the-azure-portal).  
+    Informationen zum Abrufen der anderen Werte finden Sie unter [Zugriff auf Azure Media Services API](../latest/access-api-howto.md?tabs=portal). Wählen Sie dann die Registerkarte „Portal“ aus.  
     * aadTenantId: Dies ist die ID Ihres Mandanten, die mit der „AadTenantId“ aus dem Link oben übereinstimmt.
     * aadServicePrincipalAppId: Die App-ID des Dienstprinzipals für Ihr Media Service-Konto, die mit der „AadClientId“ aus dem Link oben übereinstimmt.
     * aadServicePrincipalSecret: Das Kennwort des Dienstprinzipals, das mit „AadSecret“ aus dem Link oben übereinstimmt.
@@ -190,6 +190,7 @@ Ein Bereitstellungsmanifest ist ein JSON-Dokument, das beschreibt, welche Module
     "armEndpoint": "https://management.azure.com/",
     "allowUnsecuredEndpoints": true
     ```
+
    > [!Note]
    > Die Zwillingseigenschaft **allowUnsecuredEndpoints** wird für die Zwecke der Tutorials und Schnellstartanleitungen auf „true“ festgelegt.   
    Sie sollten diese Eigenschaft in Produktionsumgebungen auf **false** festlegen. Dadurch wird sichergestellt, dass die Anwendung alle nicht gesicherten Endpunkte blockiert und zum Ausführen der Graphtopologien gültige Anmeldeinformationen für die Verbindungen benötigt werden.  
@@ -210,8 +211,8 @@ Im Abschnitt zur Überprüfung wird das JSON-Bereitstellungsmanifest angezeigt, 
 
 Nach dem Erstellen der Bereitstellung kehren Sie zur Seite „IoT Edge“ Ihres IoT-Hubs zurück.
 
-1.  Wählen Sie das IoT Edge-Zielgerät für die Bereitstellung aus, um dessen Details zu öffnen.
-2.  Vergewissern Sie sich anhand der Gerätedetails, dass das Blob Storage-Modul als **In Bereitstellung angegeben und als Vom Gerät gemeldet** aufgeführt ist.
+1. Wählen Sie das IoT Edge-Zielgerät für die Bereitstellung aus, um dessen Details zu öffnen.
+2. Vergewissern Sie sich anhand der Gerätedetails, dass das Blob Storage-Modul als **In Bereitstellung angegeben und als Vom Gerät gemeldet** aufgeführt ist.
 
 Unter Umständen dauert es einen Moment, bis das Modul auf dem Gerät gestartet und an IoT Hub gemeldet wurde. Aktualisieren Sie die Seite, um einen aktualisierten Status anzuzeigen.
 Statuscode: 200: OK bedeutet, dass [die IoT Edge-Runtime](../../iot-edge/iot-edge-runtime.md) fehlerfrei ist und ordnungsgemäß funktioniert.
@@ -247,6 +248,7 @@ Als nächstes testen Sie das Beispiel, indem Sie eine direkte Methode aufrufen. 
     ![Die 200-Statusmeldung](./media/deploy-iot-edge-device/connection-timeout.png) 
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 [Schnellstart: Erste Schritte mit Live Video Analytics in IoT Edge](get-started-detect-motion-emit-events-quickstart.md#deploy-modules-on-your-edge-device)
 
 > [!TIP]

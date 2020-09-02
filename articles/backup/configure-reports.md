@@ -3,12 +3,12 @@ title: Konfigurieren von Azure Backup-Berichten
 description: Konfigurieren und Anzeigen von Berichten für Azure Backup mithilfe von Log Analytics und Azure-Arbeitsmappen
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: 94298c5826f7158655367ae1dd6b7dd54cb88d24
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: 4e5e9258540e5cdab14e438cde96cd89aad7498d
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88612434"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826853"
 ---
 # <a name="configure-azure-backup-reports"></a>Konfigurieren von Azure Backup-Berichten
 
@@ -89,7 +89,7 @@ Verwenden Sie diese Registerkarte zum Anzeigen von wichtigen Abrechnungsparamete
    ![Registerkarte „Verwendung“](./media/backup-azure-configure-backup-reports/usage.png)
 
 > [!NOTE]
-> Bei DPM-Workloads bemerken Benutzer möglicherweise einen geringfügigen Unterschied (in der Größenordnung von 20 MB pro DPM-Server) zwischen den Nutzungswerten in den Berichten und dem aggregierten Nutzungswert auf der Registerkarte „Übersicht“ des Recovery Services-Tresors. Dieser Unterschied liegt darin begründet, dass jeder für die Sicherung registrierte DPM-Server über eine zugeordnete Datenquelle für Metadaten verfügt, die in den Berichten nicht als Artefakt aufgeführt wird.
+> Bei DPM-Workloads bemerken Benutzer möglicherweise einen geringfügigen Unterschied (in der Größenordnung von 20 MB pro DPM-Server) zwischen den Nutzungswerten in den Berichten und dem aggregierten Nutzungswert auf der Registerkarte **Übersicht** des Recovery Services-Tresors. Dieser Unterschied liegt darin begründet, dass jeder für die Sicherung registrierte DPM-Server über eine zugeordnete Datenquelle für Metadaten verfügt, die in den Berichten nicht als Artefakt aufgeführt wird.
 
 ##### <a name="jobs"></a>Aufträge
 

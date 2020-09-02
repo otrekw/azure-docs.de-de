@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: keferna
 ms.author: keferna
-ms.date: 04/15/2020
-ms.openlocfilehash: 168d343ea4582d8c19a577cedadf6f1bc3c39971
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.date: 08/18/2020
+ms.openlocfilehash: c475e548cc8e29a83f2d440df43fb8ac31dc1c1e
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88607368"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816251"
 ---
 # <a name="iot-edge-modules"></a>IoT Edge-Module
 
@@ -40,13 +40,13 @@ Beim IoT Edge-Modul-Angebotstyp handelt es sich um einen speziellen Containertyp
 
 **Auswählen des passenden Onlineshops**
 
-IoT Edge-Module werden nur im Azure Marketplace veröffentlicht, in AppSource sind sie nicht verfügbar.  Weitere Informationen zu den Unterschieden und Zielgruppen der jeweiligen Onlineshops finden Sie unter [Bestimmung Ihrer Veröffentlichungsoption](determine-your-listing-type.md).
- 
+IoT Edge-Module werden nur im Azure Marketplace veröffentlicht, in AppSource sind sie nicht verfügbar. Weitere Informationen zu den Unterschieden und Zielgruppen der jeweiligen Onlineshops finden Sie unter [Bestimmung Ihrer Veröffentlichungsoption](determine-your-listing-type.md).
+
 **Abrechnungsoptionen**
 
 Derzeit unterstützt der Marketplace **kostenlose** und an eigene Lizenzen gebundene Abrechnungsoptionen (**BYOL, Bring Your Own License**) für IoT Edge-Module.
- 
-**Veröffentlichungsoptionen**
+
+### <a name="publishing-options"></a>Veröffentlichungsoptionen
 
 Für IoT Edge-Module sollten Sie jedenfalls die Veröffentlichungsoption **Transact** auswählen.  Weitere Informationen zu Veröffentlichungsoptionen finden Sie unter [Auswählen einer Veröffentlichungsoption](determine-your-listing-type.md).  
 
@@ -54,28 +54,27 @@ Für IoT Edge-Module sollten Sie jedenfalls die Veröffentlichungsoption **Trans
 
 Für IoT Edge-Modul-Angebote gelten die Bestimmungen der Microsoft Azure Marketplace-Vereinbarungen und -Richtlinien.  Darüber hinaus müssen für IoT Edge-Module zusätzliche Voraussetzungen und technische Anforderungen erfüllt sein.  
 
-**Voraussetzungen**
+### <a name="prerequisites"></a>Voraussetzungen
 
 Wenn Sie ein IoT Edge-Modul im Azure Marketplace veröffentlichen möchten, müssen Sie folgende Voraussetzungen erfüllen:
 
 - Sie benötigen Zugriff auf Partner Center. Weitere Informationen hierzu finden Sie unter [Veröffentlichungsleitfaden für Azure Marketplace und AppSource](marketplace-publishers-guide.md).
-- Sie müssen Ihr IoT Edge-Modul in einer Azure Container Registry hosten. 
-- Sie müssen unter anderem folgende Metadaten Ihres IoT Edge-Moduls bereithalten: 
+- Sie müssen Ihr IoT Edge-Modul in einer Azure Container Registry hosten.
+- Sie müssen unter anderem folgende Metadaten Ihres IoT Edge-Moduls bereithalten:
     - Titel
     - Beschreibung (im HTML-Format)
-    - Logo (PNG-Format und feste Bildgrößen wie 40 x 40 px, 90 x 90 px, 115 x 115 px, 255 x 115 px)
+    - Logobild (in den Größen 48 × 48 (optional), 90 × 90 (optional) und von 216 × 216 bis 350 × 350 Pixel, alle im PNG-Format)
     - Nutzungsbedingungen und Datenschutzrichtlinie
     - Standardmodulkonfiguration (Route, gewünschte Eigenschaften von Modulzwillingen, createOptions, Umgebungsvariable)
     - Dokumentation
     - Supportkontakte
 
-**Technische Anforderungen**
+### <a name="technical-requirements"></a>Technische Anforderungen
 
 Die wichtigsten technischen Voraussetzungen für die Zertifizierung und Veröffentlichung eines IoT Edge-Moduls im Azure Marketplace finden Sie unter [Vorbereiten der technischen Ressourcen für das IoT Edge-Modul](./partner-center-portal/create-iot-edge-module-asset.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Erfahren Sie mehr](https://azuremarketplace.microsoft.com/sell) über den kommerziellen Marketplace.
-- [Erstellen eines IoT Edge-Modulangebots] in Partner Center.
 - melden Sie sich bei [Partner Center](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) an, um Ihr Angebot zu erstellen oder abzuschließen.
-- Informationen zum Veröffentlichen eines IoT Edge-Modulangebots finden Sie unter [Erstellen eines IoT Edge-Modulangebots](./partner-center-portal/azure-iot-edge-module-creation.md).
+- [Erstellen eines IoT Edge-Modulangebots](./partner-center-portal/azure-iot-edge-module-creation.md) in Partner Center

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 5782f07167f72be2ea7b148ad1b0a61d8cb710e2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f24a04db9317083fb47c0956174e649b5bd7ae10
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77048897"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815690"
 ---
 # <a name="azure-maps-community---open-source-projects"></a>Azure Maps-Community: Open-Source-Projekte
 
@@ -22,16 +22,41 @@ Diese von der Community ausgehenden Open-Source-Initiativen werden vom Azure Map
 
 Im Folgenden sind einige der beliebtesten Open-Source-Projekte und -Beispiele in Azure Maps aufgeführt.
 
+**Bots**
+
+| Projektname | BESCHREIBUNG |
+|-|-|
+| [Bot-Framework – Fähigkeit „Point of Interest“](https://github.com/microsoft/botframework-solutions/tree/488093ac2fddf16096171f6a926315aa45e199e7/skills/csharp/pointofinterestskill) | Die Fähigkeit „Point of Interest“ (POI) stellt mithilfe von Azure Maps, Azure Bot Service und dem Bot-Framework POI-Funktionen für einen virtuellen Assistenten zur Verfügung. |
+| [Bot Builder-Speicherort](https://github.com/Microsoft/BotBuilder-Location) | Ein Open-Source-Steuerelement für die Speicherortauswahl für Microsoft Bot Framework, das von REST-Diensten von Bing Maps unterstützt wird. |
+
+**Offene Web-SDK-Module**
+
+Im Folgenden finden Sie eine Liste von Open-Source-Projekten, mit denen die Funktionen des Azure Maps-Web-SDK erweitert werden können.
+
+| Projektname | BESCHREIBUNG |
+|-|-|
+| [Azure Maps Animation-Modul](https://github.com/Azure-Samples/azure-maps-animations)| Eine umfangreiche Bibliothek mit Animationen für die Verwendung mit dem Azure Maps-Web-SDK. |
+| [Benutzeroberflächenmodul für Azure Maps-Dienste](https://github.com/Azure-Samples/azure-maps-services-ui) | Verschiedene Steuerelemente für die Webbenutzeroberfläche für REST-Dienste von Azure Maps. |
+
+**Beispiele**
+
 | Projektname | BESCHREIBUNG |
 |-|-|
 | [Azure Maps-Codebeispiele](https://github.com/Azure-Samples/AzureMapsCodeSamples) | Hier finden Sie eine Sammlung von Codebeispielen, wie Azure Maps im Rahmen von webbasierten Apps verwendet werden kann. |
 | [Azure Maps-Codebeispiele mit der Azure Government-Cloud](https://github.com/Azure-Samples/AzureMapsCodeSamples) | Hier finden Sie eine Sammlung von Codebeispielen, wie Azure Maps im Rahmen der Azure Government-Cloud verwendet werden kann. |
 | [Beispiele für Azure Maps und Microsoft Azure Active Directory](https://github.com/Azure-Samples/Azure-Maps-AzureAD-Samples) | Hier finden Sie eine Sammlung von Beispielen für die Verwendung von Azure Active Directory mit Azure Maps. | 
-| [Implementieren der räumlichen IoT-Analyse mit Azure Maps](https://github.com/Azure-Samples/iothub-to-azure-maps-geofencing) | Das Nachverfolgen und Erfassen relevanter Ereignisse, die in Raum und Zeit eintreten, ist ein häufiges IoT-Szenario. |
 | [Azure Maps-Beispiele für Jupyter Notebooks](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook) | Hier finden Sie eine Sammlung von Python-Beispielen, für die die REST-Dienste von Azure Maps verwendet werden. |
-| [Bot-Framework – Fähigkeit „Point of Interest“](https://github.com/microsoft/botframework-solutions/tree/488093ac2fddf16096171f6a926315aa45e199e7/skills/csharp/pointofinterestskill) | Die Qualifikation „Point of Interest“ (POI) stellt mithilfe von Azure Maps, Azure Bot Service und dem Bot-Framework POI-Funktionen für einen virtuellen Assistenten zur Verfügung. |
+| [.NET-Remotesteuerung für Azure Maps für UWP-IoT-Geräte](https://github.com/Azure-Samples/azure-maps-dotnet-webgl-uwp-iot-remote-control) | Dies ist eine Beispielanwendung, die zeigt, wie Sie eine ferngesteuerte Karte mithilfe von Azure Maps- und IoT Hub-Diensten erstellen. |
+| [Implementieren der räumlichen IoT-Analyse mit Azure Maps](https://github.com/Azure-Samples/iothub-to-azure-maps-geofencing) | Das Nachverfolgen und Erfassen relevanter Ereignisse, die in Raum und Zeit eintreten, ist ein häufiges IoT-Szenario. |
 
-[Hier](https://github.com/microsoft/Maps/blob/master/AzureMaps.md) finden Sie noch mehr Beispiele für von der Community erstellte Open-Source-Projekte.
+**Tools und Ressourcen**
+
+| Projektname | BESCHREIBUNG |
+|-|-|
+| [Azure Maps Docs](https://github.com/MicrosoftDocs/azure-docs/tree/master/articles/azure-maps) | Quelle für die gesamte Dokumentation zu Azure Location Based Services |
+| [Azure Maps Creator-Tools](https://github.com/Azure-Samples/AzureMapsCreator) | Python-Tools für Azure Maps Creator. |
+
+[Hier](https://github.com/microsoft/Maps/blob/master/AzureMaps.md) finden Sie noch mehr Beispiele für von der Community erstellte Open-Source-Projekte für Azure Maps.
 
 ## <a name="supportability-of-open-source-projects"></a>Unterstützbarkeit von Open-Source-Projekten
 

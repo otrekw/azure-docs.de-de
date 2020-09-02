@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: conceptual
-ms.date: 08/15/2020
+ms.date: 08/24/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5c92994fee6de4c56257343af2ef418393b505ad
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 3ecb25e9bb9625a5ada70be2df61898a462c86af
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88507432"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815051"
 ---
 # <a name="what-is-risk"></a>Was bedeutet Risiko?
 
@@ -39,6 +39,7 @@ Diese Risiken werden offline anhand interner und externer Threat Intelligence-Q
 | Risikoerkennung | BESCHREIBUNG |
 | --- | --- |
 | Kompromittierte Anmeldeinformationen | Dieser Risikoerkennungstyp gibt an, dass die gültigen Anmeldeinformationen des Benutzers kompromittiert wurden. Wenn Internetkriminelle an gültige Kennwörter von berechtigten Benutzern gelangen, geben sie diese Anmeldeinformationen häufig weiter. Diese Freigabe erfolgt in der Regel durch eine Veröffentlichung im Darknet oder auf Paste Sites oder durch den Handel und Verkauf der Anmeldeinformationen auf dem Schwarzmarkt. Wenn der Microsoft-Dienst für kompromittierte Anmeldeinformationen Benutzeranmeldeinformationen aus dem Darknet, von Paste Sites oder anderen Quellen erwirbt, werden sie mit aktuell gültigen Anmeldeinformationen von Azure AD-Benutzern verglichen, um gültige Übereinstimmungen zu finden. Weitere Informationen zu kompromittierten Anmeldeinformationen finden Sie unter [Häufig gestellte Fragen](#common-questions). |
+| Kennwortspray | Bei einem Kennwortspray-Angriff werden mehrere Benutzernamen unter Verwendung gängiger Kennwörter im Rahmen eines koordinierten Brute-Force-Angriffs angegriffen, um nicht autorisierten Zugriff zu erhalten. Die Risikoerkennung wird ausgelöst, wenn ein Kennwortspray-Angriff erfolgt ist. |
 | Azure AD Threat Intelligence | Dieser Risikoerkennungstyp gibt Benutzeraktivitäten an, die für den angegebenen Benutzer unüblich oder mit bekannten Angriffsmustern konsistent sind (basierend auf internen und externen Threat Intelligence-Quellen von Microsoft). |
 
 ### <a name="sign-in-risk"></a>Anmelderisiko
