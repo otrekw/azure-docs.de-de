@@ -9,16 +9,17 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 08/05/2020
-ms.openlocfilehash: a2a860a2ff96c74f9d19fe7abfd845bbae8023cd
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 7901254463ef052f3c13b2c9fc49c31bd8ebc454
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87922267"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020863"
 ---
 # <a name="quickstart-create-a-search-index-using-the-azuresearchdocuments-client-library"></a>Schnellstart: Erstellen eines Suchindexes mithilfe Clientbibliothek „Azure.Search.Documents“
 
-Verwenden Sie die neue [Clientbibliothek „Azure.Search.Documents“ (Version 11)](https://docs.microsoft.com/dotnet/api/overview/azure/search.documents-readme?view=azure-dotnet), um eine .NET Core-Konsolenanwendung in C# zu erstellen, die einen Suchindex erstellt, lädt und abfragt.
+Verwenden Sie die neue [Clientbibliothek „Azure.Search.Documents“ (Version 11)](/dotnet/api/overview/azure/search.documents-readme?view=azure-dotnet), um eine .NET Core-Konsolenanwendung in C# zu erstellen, die einen Suchindex erstellt, lädt und abfragt.
 
 [Laden Sie den Quellcode herunter](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/quickstart-v11), um mit einem fertigen Projekt zu beginnen, oder führen Sie die Schritte in diesem Artikel aus, um ein eigenes zu erstellen.
 
@@ -77,7 +78,7 @@ Fügen Sie nach dem Erstellen des Projekts die Clientbibliothek hinzu. Das [Azur
    using Azure.Search.Documents.Models;
    ```
 
-1. Erstellen Sie zwei Clients: [SearchIndexClient](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.searchindexclient) erstellt den Index, und [SearchClient](https://docs.microsoft.com/dotnet/api/azure.search.documents.searchclient) arbeitet mit einem vorhandenen Index. Beide benötigen den Dienstendpunkt und einen Administrator-API-Schlüssel für die Authentifizierung mit Berechtigungen zum Erstellen/Löschen.
+1. Erstellen Sie zwei Clients: [SearchIndexClient](/dotnet/api/azure.search.documents.indexes.searchindexclient) erstellt den Index, und [SearchClient](/dotnet/api/azure.search.documents.searchclient) arbeitet mit einem vorhandenen Index. Beide benötigen den Dienstendpunkt und einen Administrator-API-Schlüssel für die Authentifizierung mit Berechtigungen zum Erstellen/Löschen.
 
    ```csharp
    static void Main(string[] args)
@@ -99,7 +100,7 @@ Fügen Sie nach dem Erstellen des Projekts die Clientbibliothek hinzu. Das [Azur
 
 In dieser Schnellstartanleitung wird ein Hotelindex erstellt, in den Sie Hoteldaten laden und Abfragen dafür ausführen. In diesem Schritt definieren Sie die Felder im Index. Jede Felddefinition enthält einen Namen, einen Datentyp und Attribute, die bestimmen, wie das Feld verwendet wird.
 
-In diesem Beispiel werden aus Gründen der Einfachheit und Lesbarkeit synchrone Methoden der Bibliothek „Azure.Search.Documents“ verwendet. In Produktionsszenarien sollten Sie jedoch asynchrone Methoden verwenden, um Ihre App skalierbar und reaktionsfähig zu halten. So würden Sie beispielsweise [CreateIndexAsync](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.searchindexclient.createindexasync) anstatt [CreateIndex](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.searchindexclient.createindex) verwenden.
+In diesem Beispiel werden aus Gründen der Einfachheit und Lesbarkeit synchrone Methoden der Bibliothek „Azure.Search.Documents“ verwendet. In Produktionsszenarien sollten Sie jedoch asynchrone Methoden verwenden, um Ihre App skalierbar und reaktionsfähig zu halten. So würden Sie beispielsweise [CreateIndexAsync](/dotnet/api/azure.search.documents.indexes.searchindexclient.createindexasync) anstatt [CreateIndex](/dotnet/api/azure.search.documents.indexes.searchindexclient.createindex) verwenden.
 
 1. Fügen Sie Ihrem Projekt eine leere Klassendefinition hinzu: **Hotel.cs**
 
@@ -131,7 +132,7 @@ In diesem Beispiel werden aus Gründen der Einfachheit und Lesbarkeit synchrone 
     }
     ```
 
-1. Geben Sie in **Program.cs** die Felder und Attribute an. [SearchIndex](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.searchindex) und [CreateIndex](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.searchindexclient.createindex) werden zum Erstellen eines Index verwendet.
+1. Geben Sie in **Program.cs** die Felder und Attribute an. [SearchIndex](/dotnet/api/azure.search.documents.indexes.models.searchindex) und [CreateIndex](/dotnet/api/azure.search.documents.indexes.searchindexclient.createindex) werden zum Erstellen eines Index verwendet.
 
    ```csharp
     // Define an index schema using SearchIndex
@@ -154,9 +155,9 @@ In diesem Beispiel werden aus Gründen der Einfachheit und Lesbarkeit synchrone 
 
 Attribute für das Feld bestimmen die Verwendung in einer Anwendung. So muss beispielsweise jedem Feld, das einen Filterausdruck unterstützt, das Attribut `IsFilterable` zugewiesen werden.
 
-Anders als bei früheren Versionen des .NET SDK, die [IsSearchable](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.issearchable) für durchsuchbare Zeichenfolgenfeldern benötigen, können Sie [SearchableField](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.searchablefield) und [SimpleField](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.simplefield) verwenden, um Felddefinitionen zu optimieren.
+Anders als bei früheren Versionen des .NET SDK, die [IsSearchable](/dotnet/api/microsoft.azure.search.models.field.issearchable) für durchsuchbare Zeichenfolgenfeldern benötigen, können Sie [SearchableField](/dotnet/api/azure.search.documents.indexes.models.searchablefield) und [SimpleField](/dotnet/api/azure.search.documents.indexes.models.simplefield) verwenden, um Felddefinitionen zu optimieren.
 
-Ähnlich wie bei den vorherigen Versionen sind auch andere Attribute für die Definition selbst erforderlich. Beispielsweise müssen [IsFilterable](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.searchfield.isfilterable), [IsSortable](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.searchfield.issortable) und [IsFacetable](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.searchfield.isfacetable) explizit mit Attributen versehen werden, wie im obigen Beispiel gezeigt. 
+Ähnlich wie bei den vorherigen Versionen sind auch andere Attribute für die Definition selbst erforderlich. Beispielsweise müssen [IsFilterable](/dotnet/api/azure.search.documents.indexes.models.searchfield.isfilterable), [IsSortable](/dotnet/api/azure.search.documents.indexes.models.searchfield.issortable) und [IsFacetable](/dotnet/api/azure.search.documents.indexes.models.searchfield.isfacetable) explizit mit Attributen versehen werden, wie im obigen Beispiel gezeigt. 
 
 <a name="load-documents"></a>
 
@@ -166,7 +167,7 @@ Azure Cognitive Search durchsucht im Dienst gespeicherte Inhalte. In diesem Schr
 
 In Azure Cognitive Search sind Dokumente Datenstrukturen, bei denen es sich sowohl um Eingaben für die Indizierung als auch um Ausgaben von Abfragen handeln kann. Beispiele für Dokumenteingaben aus einer externen Datenquelle wären etwa Zeilen in einer Datenbank, Blobs in Blob Storage oder JSON-Dokumente auf dem Datenträger. In diesem Beispiel nehmen wir eine Abkürzung und betten JSON-Dokumente für fünf Hotels direkt in den Code ein. 
 
-Beim Hochladen von Dokumenten muss ein [IndexDocumentsBatch](https://docs.microsoft.com/dotnet/api/azure.search.documents.models.indexdocumentsbatch-1)-Objekt verwendet werden. Ein IndexDocumentsBatch-Objekt enthält eine Sammlung von [Aktionen](https://docs.microsoft.com/dotnet/api/azure.search.documents.models.indexdocumentsbatch-1.actions), und jede dieser Aktionen enthält wiederum ein Dokument und eine Eigenschaft, die Azure Cognitive Search mitteilt, welche Aktion ausgeführt werden soll ([upload, merge, delete oder mergeOrUpload](search-what-is-data-import.md#indexing-actions)).
+Beim Hochladen von Dokumenten muss ein [IndexDocumentsBatch](/dotnet/api/azure.search.documents.models.indexdocumentsbatch-1)-Objekt verwendet werden. Ein IndexDocumentsBatch-Objekt enthält eine Sammlung von [Aktionen](/dotnet/api/azure.search.documents.models.indexdocumentsbatch-1.actions), und jede dieser Aktionen enthält wiederum ein Dokument und eine Eigenschaft, die Azure Cognitive Search mitteilt, welche Aktion ausgeführt werden soll ([upload, merge, delete oder mergeOrUpload](search-what-is-data-import.md#indexing-actions)).
 
 1. Erstellen Sie in **Program.cs** ein Array von Dokumenten und Indexaktionen, und übergeben Sie dann das Array an `ndexDocumentsBatch`. Die unten aufgeführten Dokumente entsprechen den Index „hotels-quickstart-v11“, wie von der Hotelklasse definiert.
 
@@ -185,7 +186,7 @@ Beim Hochladen von Dokumenten muss ein [IndexDocumentsBatch](https://docs.micros
     qryclient.IndexDocuments(batch, idxoptions);
     ```
 
-    Nachdem Sie das [IndexDocumentsBatch](https://docs.microsoft.com/dotnet/api/azure.search.documents.models.indexdocumentsbatch-1)-Objekt initialisiert haben, können Sie es an den Index senden, indem Sie [IndexDocuments](https://docs.microsoft.com/dotnet/api/azure.search.documents.searchclient.indexdocuments) für Ihr [SearchClient](https://docs.microsoft.com/dotnet/api/azure.search.documents.searchclient)-Objekt aufrufen.
+    Nachdem Sie das [IndexDocumentsBatch](/dotnet/api/azure.search.documents.models.indexdocumentsbatch-1)-Objekt initialisiert haben, können Sie es an den Index senden, indem Sie [IndexDocuments](/dotnet/api/azure.search.documents.searchclient.indexdocuments) für Ihr [SearchClient](/dotnet/api/azure.search.documents.searchclient)-Objekt aufrufen.
 
 1. Da es sich hierbei um eine Konsolen-App handelt, die alle Befehle sequenziell ausführt, fügen Sie eine Wartezeit von 2 Sekunden zwischen der Indizierung und Abfragen hinzu.
 
@@ -201,9 +202,9 @@ Beim Hochladen von Dokumenten muss ein [IndexDocumentsBatch](https://docs.micros
 
 Abfrageergebnisse können abgerufen werden, sobald das erste Dokument indiziert wurde. Mit dem Testen des Index sollte aber gewartet werden, bis alle Dokumente indiziert wurden.
 
-In diesem Abschnitt werden zwei Funktionen hinzugefügt: Abfragelogik und Ergebnisse. Verwenden Sie für Abfragen die [Search](https://docs.microsoft.com/dotnet/api/azure.search.documents.searchclient.search)-Methode. Diese Methode akzeptiert sowohl Suchtext (die Abfragezeichenfolge) als auch andere [Optionen](https://docs.microsoft.com/dotnet/api/azure.search.documents.searchoptions).
+In diesem Abschnitt werden zwei Funktionen hinzugefügt: Abfragelogik und Ergebnisse. Verwenden Sie für Abfragen die [Search](/dotnet/api/azure.search.documents.searchclient.search)-Methode. Diese Methode akzeptiert sowohl Suchtext (die Abfragezeichenfolge) als auch andere [Optionen](/dotnet/api/azure.search.documents.searchoptions).
 
-Die [SearchResults](https://docs.microsoft.com/dotnet/api/azure.search.documents.models.searchresults-1)-Klasse stellt die Ergebnisse dar.
+Die [SearchResults](/dotnet/api/azure.search.documents.models.searchresults-1)-Klasse stellt die Ergebnisse dar.
 
 1. Erstellen Sie in **Program.cs** eine WriteDocuments-Methode, die Suchergebnisse in der Konsole ausgibt.
 
@@ -267,17 +268,17 @@ Dieses Beispiel zeigt die zwei [Abgleichsmethoden für Begriffe in einer Abfrage
 
 + Volltextsuchabfragen für einen oder mehrere Begriffe in durchsuchbaren Feldern in Ihrem Index. Die erste Abfrage ist eine Volltextsuche. Die Volltextsuche erzeugt relevante Bewertungen, die dazu dienen, den Ergebnissen einen Rang zuzuweisen.
 
-+ Ein Filter ist ein boolescher Ausdruck, der für Felder vom Typ [IsFilterable](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.searchfield.isfilterable) in einem Index ausgewertet wird. Filterabfragen schließen Werte ein oder aus. Daher ist einer Filterabfrage keine Relevanzbewertung zugeordnet. Die letzten zwei Abfragen veranschaulichen die Filtersuche.
++ Ein Filter ist ein boolescher Ausdruck, der für Felder vom Typ [IsFilterable](/dotnet/api/azure.search.documents.indexes.models.searchfield.isfilterable) in einem Index ausgewertet wird. Filterabfragen schließen Werte ein oder aus. Daher ist einer Filterabfrage keine Relevanzbewertung zugeordnet. Die letzten zwei Abfragen veranschaulichen die Filtersuche.
 
 Volltextsuche und Filter können separat oder zusammen verwendet werden.
 
-Suchen und Filtern erfolgt mithilfe der [SearchClient.Search](https://docs.microsoft.com/dotnet/api/azure.search.documents.searchclient.search)-Methode. Eine Suchabfrage kann in der `searchText`-Zeichenfolge und ein Filterausdruck kann in der [Filter](https://docs.microsoft.com/dotnet/api/azure.search.documents.searchoptions.filter)-Eigenschaft der [SearchOptions](https://docs.microsoft.com/dotnet/api/azure.search.documents.searchoptions)-Klasse übergeben werden. Um ohne Suche zu filtern, übergeben Sie einfach `"*"` für den Parameter `searchText` der [Search](https://docs.microsoft.com/dotnet/api/azure.search.documents.searchclient.search)-Methode. Wenn Sie ohne Filter suchen möchten, legen Sie die Eigenschaft `Filter` nicht fest, oder übergeben Sie einfach keine `SearchOptions`-Instanz.
+Suchen und Filtern erfolgt mithilfe der [SearchClient.Search](/dotnet/api/azure.search.documents.searchclient.search)-Methode. Eine Suchabfrage kann in der `searchText`-Zeichenfolge und ein Filterausdruck kann in der [Filter](/dotnet/api/azure.search.documents.searchoptions.filter)-Eigenschaft der [SearchOptions](/dotnet/api/azure.search.documents.searchoptions)-Klasse übergeben werden. Um ohne Suche zu filtern, übergeben Sie einfach `"*"` für den Parameter `searchText` der [Search](/dotnet/api/azure.search.documents.searchclient.search)-Methode. Wenn Sie ohne Filter suchen möchten, legen Sie die Eigenschaft `Filter` nicht fest, oder übergeben Sie einfach keine `SearchOptions`-Instanz.
 
 ## <a name="run-the-program"></a>Ausführen des Programms
 
 Drücken Sie F5, um die App neu zu erstellen und das fertige Programm auszuführen. 
 
-Die Ausgabe umfasst Nachrichten aus [Console.WriteLIne](https://docs.microsoft.com/dotnet/api/system.console.writeline), wobei Abfrageinformationen und -ergebnisse hinzugefügt werden.
+Die Ausgabe umfasst Nachrichten aus [Console.WriteLIne](/dotnet/api/system.console.writeline), wobei Abfrageinformationen und -ergebnisse hinzugefügt werden.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
@@ -297,4 +298,4 @@ In dieser C#-Schnellstartanleitung haben Sie eine Reihe von Aufgaben ausgeführt
 Möchten Sie Ihre Cloudausgaben optimieren und dabei sparen?
 
 > [!div class="nextstepaction"]
-> [Beginnen mit der Kostenanalyse mit Cost Management](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
+> [Beginnen mit der Kostenanalyse mit Cost Management](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)

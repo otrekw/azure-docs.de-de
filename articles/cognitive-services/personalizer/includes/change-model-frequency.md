@@ -7,15 +7,15 @@ ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: include
 ms.custom: include file
-ms.date: 01/15/2020
-ms.openlocfilehash: d03d904de68720874ea175c95244ba80c586df82
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.date: 08/25/2020
+ms.openlocfilehash: 4eacc1c4e863ad1a278a4974bb0f6c101aafe7e0
+ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87133832"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89055380"
 ---
-## <a name="change-the-model-update-frequency"></a>Ändern der Häufigkeit der Modellaktualisierung
+### <a name="change-the-model-update-frequency"></a>Ändern der Häufigkeit der Modellaktualisierung
 
 Ändern Sie im Azure-Portal auf der Seite **Konfiguration** für die Personalisierungsressource die **Häufigkeit der Modellaktualisierung** in „10 Sekunden“. Mit dieser kurzen Dauer wird der Dienst schnell trainiert, und Sie können sehen, wie sich die oberste Aktion für jede Iteration ändert.
 

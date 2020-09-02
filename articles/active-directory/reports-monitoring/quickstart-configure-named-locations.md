@@ -16,17 +16,17 @@ ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 897762e523a2d20445c3a25e612cf138e021f633
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 94f4d17596936dd9d0ebbdae3c351cac9ed2a570
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83739718"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89299863"
 ---
 # <a name="quickstart-configure-named-locations-in-azure-active-directory"></a>Schnellstart: Konfigurieren benannter Orte in Azure Active Directory
 
 Mit benannten Orten können Sie in Ihrer Organisation vertrauenswürdige IP-Adressbereiche bezeichnen. Azure AD verwendet benannte Orte zum:
-- Erkennen falsch positiver Ergebnisse in [Risikoerkennungen](concept-risk-events.md). Die Anmeldung von einem vertrauenswürdigen Ort aus senkt das Anmelderisiko von Benutzern.   
+- Erkennen falsch positiver Ergebnisse in [Risikoerkennungen](../identity-protection/overview-identity-protection.md). Die Anmeldung von einem vertrauenswürdigen Ort aus senkt das Anmelderisiko von Benutzern.   
 - Konfigurieren des [standortbasierten bedingten Zugriffs](../conditional-access/location-condition.md).
 
 In diesem Schnellstart erfahren Sie, wie Sie benannte Orte in Ihrer Umgebung konfigurieren.
@@ -64,4 +64,4 @@ Für die Durchführung dieses Schnellstarts benötigen Sie Folgendes:
 Weitere Informationen finden Sie unter
 
 - [Standort als Bedingung beim bedingten Zugriff](../conditional-access/concept-conditional-access-conditions.md#locations).
-- [Bericht „Riskante Anmeldungen“](concept-risky-sign-ins.md)  
+- [Bericht „Riskante Anmeldungen“](../identity-protection/overview-identity-protection.md)

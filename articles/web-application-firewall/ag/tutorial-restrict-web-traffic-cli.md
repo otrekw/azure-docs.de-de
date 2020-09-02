@@ -4,16 +4,16 @@ description: Hier erfahren Sie, wie Sie die Azure-Befehlszeilenschnittstelle ver
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 05/21/2020
+ms.date: 08/31/2020
 ms.author: victorh
-ms.topic: overview
+ms.topic: how-to
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 50aaf4f2639f48e5536e6eeaba5edbc246b2bba7
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: faa46b3ad96e9555a08a662f205a0a130c28bac2
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87501064"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89225168"
 ---
 # <a name="enable-web-application-firewall-using-the-azure-cli"></a>Aktivieren einer Web Application Firewall mithilfe der Azure-Befehlszeilenschnittstelle
 
@@ -21,11 +21,10 @@ Sie können Datenverkehr für ein Anwendungsgateway mit einer [Web Application F
 
 In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
-> [!div class="checklist"]
-> * Einrichten des Netzwerks
-> * Erstellen eines Anwendungsgateways mit aktivierter WAF
-> * Erstellen einer Skalierungsgruppe für virtuelle Computer
-> * Erstellen eines Speicherkontos und Konfigurieren der Diagnose
+ * Einrichten des Netzwerks
+ * Erstellen eines Anwendungsgateways mit aktivierter WAF
+ * Erstellen einer Skalierungsgruppe für virtuelle Computer
+ * Erstellen eines Speicherkontos und Konfigurieren der Diagnose
 
 ![Web Application Firewall – Beispiel](../media/tutorial-restrict-web-traffic-cli/scenario-waf.png)
 

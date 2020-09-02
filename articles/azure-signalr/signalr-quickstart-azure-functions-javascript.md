@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 12/14/2019
 ms.author: zhshang
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 3f1051b81666a036203eb1c810875d837ef9816f
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 74f0a1c163380b88986b6866e346a5f044772a0e
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386876"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89050555"
 ---
 # <a name="quickstart-use-javascript-to-create-a-chat-room-with-azure-functions-and-signalr-service"></a>Schnellstart: Erstellen eines Chatraums mit Azure Functions und SignalR Service mithilfe von JavaScript
 
@@ -32,13 +32,21 @@ Mit Azure SignalR Service können Sie Ihrer Anwendung ganz einfach Echtzeitfunkt
 > [!NOTE]
 > Dieser Schnellstart kann unter MacOS, Windows oder Linux ausgeführt werden.
 
+[Treten Probleme auf? Informieren Sie uns darüber.](https://aka.ms/asrs/qsjs)
+
 ## <a name="log-in-to-azure"></a>Anmelden an Azure
 
 Melden Sie sich unter <https://portal.azure.com/> mit Ihrem Azure-Konto beim Azure-Portal an.
 
+[Treten Probleme auf? Informieren Sie uns darüber.](https://aka.ms/asrs/qsjs)
+
 [!INCLUDE [Create instance](includes/signalr-quickstart-create-instance.md)]
 
+[Treten Probleme auf? Informieren Sie uns darüber.](https://aka.ms/asrs/qsjs)
+
 [!INCLUDE [Clone application](includes/signalr-quickstart-clone-application.md)]
+
+[Treten Probleme auf? Informieren Sie uns darüber.](https://aka.ms/asrs/qsjs)
 
 ## <a name="configure-and-run-the-azure-function-app"></a>Konfigurieren und Ausführen der Azure Functions-App
 
@@ -71,9 +79,15 @@ Melden Sie sich unter <https://portal.azure.com/> mit Ihrem Azure-Konto beim Azu
 
     ![Erstellen des SignalR-Diensts](media/signalr-quickstart-azure-functions-javascript/signalr-quickstart-run-application.png)
 
+[Treten Probleme auf? Informieren Sie uns darüber.](https://aka.ms/asrs/qsjs)
+
 [!INCLUDE [Run web application](includes/signalr-quickstart-run-web-application.md)]
 
+[Treten Probleme auf? Informieren Sie uns darüber.](https://aka.ms/asrs/qsjs)
+
 [!INCLUDE [Cleanup](includes/signalr-quickstart-cleanup.md)]
+
+[Treten Probleme auf? Informieren Sie uns darüber.](https://aka.ms/asrs/qsjs)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -81,3 +95,5 @@ In diesem Schnellstart haben Sie eine serverlose Echtzeitanwendung in VS Code er
 
 > [!div class="nextstepaction"]
 > [Bereitstellen von Azure Functions mit VS Code](/azure/developer/javascript/tutorial-vscode-serverless-node-01)
+
+[Treten Probleme auf? Informieren Sie uns darüber.](https://aka.ms/asrs/qsjs)

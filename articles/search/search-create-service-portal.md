@@ -8,12 +8,12 @@ ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 07/14/2020
-ms.openlocfilehash: b9507e500282afbdfba5cedd5420974aa8b3ade8
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: 6813db0b7416695fb9433a701114f2684dd0e122
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87554021"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88927118"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-service-in-the-portal"></a>Schnellstart: Erstellen eines Azure Cognitive Search-Diensts im Portal
 
@@ -96,7 +96,7 @@ Azure Cognitive Search ist in den meisten Region verfügbar. Sie finden die List
 
  Wenn Sie KI-Anreicherung verwenden, erstellen Sie Ihren Suchdienst in derselben Region wie Cognitive Services. *Die Bereitstellung der kognitiven Azure-Suche und von Cognitive Services in der gleichen Region ist eine Voraussetzung für KI-Erweiterungen.*
 
- Kunden, die Anforderungen an Geschäftskontinuität und Notfallwiederherstellung (Business Continuity and Disaster Recovery, BCDR) stellen, sollten ihre Dienste in [Regionspaaren](https://docs.microsoft.com/azure/best-practices-availability-paired-regions#azure-regional-pairs) erstellen. Wenn Sie beispielsweise in Nordamerika tätig sind, können Sie für jeden Dienst „USA, Osten“ und „USA, Westen“ oder „USA, Norden-Mitte“ und „USA, Süden-Mitte“ auswählen.
+ Kunden, die Anforderungen an Geschäftskontinuität und Notfallwiederherstellung (Business Continuity and Disaster Recovery, BCDR) stellen, sollten ihre Dienste in [Regionspaaren](../best-practices-availability-paired-regions.md#azure-regional-pairs) erstellen. Wenn Sie beispielsweise in Nordamerika tätig sind, können Sie für jeden Dienst „USA, Osten“ und „USA, Westen“ oder „USA, Norden-Mitte“ und „USA, Süden-Mitte“ auswählen.
 
 ### <a name="recommendations"></a>Empfehlungen
 
@@ -160,7 +160,7 @@ Die meisten Kunden verwenden nur einen Dienst, der auf einer Ebene bereitgestell
 
 Obwohl die meisten Kunden nur einen Dienst nutzen, kann die Dienstredundanz womöglich nötig sein, wenn die operativen Anforderungen Folgendes enthalten:
 
-+ [Business Continuity und Disaster Recovery (BCDR)](https://docs.microsoft.com/azure/best-practices-availability-paired-regions). Die kognitive Azure-Suche bietet kein sofortiges Failover bei einem Ausfall.
++ [Business Continuity und Disaster Recovery (BCDR)](../best-practices-availability-paired-regions.md). Die kognitive Azure-Suche bietet kein sofortiges Failover bei einem Ausfall.
 
 + [Mehrinstanzenfähige Architekturen](search-modeling-multitenant-saas-applications.md) rufen manchmal zwei oder mehr Dienste auf.
 
